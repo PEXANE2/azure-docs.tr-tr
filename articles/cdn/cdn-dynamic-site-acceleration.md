@@ -15,11 +15,11 @@ ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: allensu
 ms.openlocfilehash: 5387fdc224cd77ee5273767df5033a51dc27608c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778872"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008370"
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Azure CDN aracılığıyla dinamik site hızlandırma
 
@@ -40,13 +40,13 @@ Dinamik dosyaların teslimini iyileştirmek üzere bir CDN uç noktası yapılan
 
 **Azure portal kullanarak DSA iyileştirmesi için bir CDN uç noktası yapılandırmak için:**
 
-1. **CDN profili** sayfasında **uç nokta** ' ı seçin.
+1. **CDN profili** sayfasında **uç nokta**' ı seçin.
 
    ![Yeni bir CDN uç noktası ekle](./media/cdn-dynamic-site-acceleration/cdn-endpoint-profile.png) 
 
    **Uç nokta ekleyin** bölmesi görünür.
 
-2. **Için iyileştirilmiş** altında, **dinamik site hızlandırma** ' yi seçin.
+2. **Için iyileştirilmiş** altında, **dinamik site hızlandırma**' yi seçin.
 
     ![DSA ile yeni bir CDN uç noktası oluşturma](./media/cdn-dynamic-site-acceleration/cdn-endpoint-dsa.png)
 
@@ -54,7 +54,7 @@ Dinamik dosyaların teslimini iyileştirmek üzere bir CDN uç noktası yapılan
 
     Araştırma yolu, DSA 'ya özgü bir özelliktir ve oluşturma için geçerli bir yol gereklidir. DSA, CDN için ağ yönlendirme yapılandırmasını iyileştirmek üzere kaynak sunucuya yerleştirilmiş küçük bir *araştırma yolu* dosyası kullanır. Araştırma yolu dosyası için, örnek dosyayı karşıdan yükleyebilir ve sitenizde karşıya yükleyebilir veya kaynak üzerinde yaklaşık 10 KB boyutunda olan mevcut bir varlığı kullanabilirsiniz.
 
-4. Diğer gerekli uç nokta seçeneklerini girin (daha fazla bilgi için bkz. [Yeni BIR CDN uç noktası oluşturma](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint)) ve ardından **Ekle** ' yi seçin.
+4. Diğer gerekli uç nokta seçeneklerini girin (daha fazla bilgi için bkz. [Yeni BIR CDN uç noktası oluşturma](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint)) ve ardından **Ekle**' yi seçin.
 
    CDN uç noktası oluşturulduktan sonra, belirli ölçütlerle eşleşen tüm dosyalar için DSA iyileştirmeleri uygular. 
 
@@ -63,11 +63,11 @@ Dinamik dosyaların teslimini iyileştirmek üzere bir CDN uç noktası yapılan
 
 1. **CDN profili** sayfasında, değiştirmek istediğiniz uç noktayı seçin.
 
-2. Sol bölmeden **iyileştirme** ' yi seçin. 
+2. Sol bölmeden **iyileştirme**' yi seçin. 
 
    **İyileştirme** sayfası görüntülenir.
 
-3. **Için iyileştirilmiş** altında, **dinamik site hızlandırma** ' yı seçin ve ardından **Kaydet** ' i seçin.
+3. **Için iyileştirilmiş** altında, **dinamik site hızlandırma**' yı seçin ve ardından **Kaydet**' i seçin.
 
 > [!Note]
 > DSA ek ücretler doğurur. Daha fazla bilgi için bkz. [Content Delivery Network fiyatlandırması](https://azure.microsoft.com/pricing/details/cdn/).
@@ -157,7 +157,7 @@ Verizon **Azure CDN ve Akamai profillerden standart** **Azure CDN Standart** iç
 
 Önbelleğe alma kurallarına erişmek için:
 
-1. **CDN profili** sayfasında, ayarlar altında, **önbelleğe alma kuralları** ' nı seçin.  
+1. **CDN profili** sayfasında, ayarlar altında, **önbelleğe alma kuralları**' nı seçin.  
     
     ![CDN Önbelleğe alma kuralları düğmesi](./media/cdn-dynamic-site-acceleration/cdn-caching-rules-btn.png)
 
@@ -169,13 +169,13 @@ Yalnızca **Verizon profillerinin Azure CDN Premium** için, [kurallar ALTYAPıS
 
 Kural altyapısına erişmek için:
     
-1. **CDN profili** sayfasında **Yönet** ' i seçin.  
+1. **CDN profili** sayfasında **Yönet**' i seçin.  
     
     ![CDN profili Yönet düğmesi](./media/cdn-dynamic-site-acceleration/cdn-manage-btn.png)
 
     CDN yönetim portalı açılır.
 
-2. CDN yönetim portalından **ADN** ' yi ve ardından **Rules Engine** ' i seçin. 
+2. CDN yönetim portalından **ADN**' yi ve ardından **Rules Engine**' i seçin. 
 
     ![DSA için kural altyapısı](./media/cdn-dynamic-site-acceleration/cdn-dsa-rules-engine.png)
 

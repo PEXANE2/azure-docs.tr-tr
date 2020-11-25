@@ -11,12 +11,12 @@ ms.date: 09/30/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: Belge işleme
-ms.openlocfilehash: 5df8ced885768308369599d94c5734fa0620c507
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 7671d8d58ffbd0fca444eefe53c46c99a4e76d37
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360879"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96009339"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Örnek etiketleme aracını kullanarak form tanıyıcı modelini etiketlerle eğitme
 
@@ -42,8 +42,17 @@ Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 
 Form tanıyıcı örnek etiketleme aracını çevrimiçi olarak denemek için [Fott Web sitesine](https://fott-preview.azurewebsites.net/)gidin.
 
+# <a name="v20"></a>[v2.0](#tab/v2-0)
 > [!div class="nextstepaction"]
-> [Form tanıyıcı örnek etiketleme aracı](https://fott-preview.azurewebsites.net/)
+> [Önceden oluşturulmuş modelleri deneyin](https://fott.azurewebsites.net/)
+
+# <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)
+> [!div class="nextstepaction"]
+> [Önceden oluşturulmuş modelleri deneyin](https://fott-preview.azurewebsites.net/)
+
+---
+
+Form tanıyıcı hizmetini denemek için bir Azure aboneliğine ([ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)) ve bir [form tanıyıcı kaynak](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) uç noktası ve anahtarına ihtiyacınız olacaktır. 
 
 
 ## <a name="set-up-the-sample-labeling-tool"></a>Örnek etiketleme aracını ayarlama
@@ -68,8 +77,6 @@ Form tanıyıcı örnek etiketleme aracını çevrimiçi olarak denemek için [F
 
 
 
-
-
 1. Komutuyla örnek etiketleme araç kapsayıcısını alın `docker pull` .
 
     # <a name="v20"></a>[v2.0](#tab/v2-0)    
@@ -78,7 +85,7 @@ Form tanıyıcı örnek etiketleme aracını çevrimiçi olarak denemek için [F
     ```
     # <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)    
     ```
-    docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview
+    docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview
     ```
 
     ---
@@ -91,7 +98,7 @@ Form tanıyıcı örnek etiketleme aracını çevrimiçi olarak denemek için [F
     ```
     # <a name="v21-preview"></a>[v 2.1 Önizleme](#tab/v2-1)    
     ```
-    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview eula=accept    
+    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview eula=accept    
     ```
 
     --- 
@@ -130,7 +137,7 @@ Alanları aşağıdaki değerlerle girin:
 
 * **Görünen ad** -bağlantı görünen adı.
 * **Açıklama** -proje tanımlarınız.
-* **SAS URL 'si** -Azure Blob depolama kapsayıcının paylaşılan erişim IMZASı (SAS) URL 'si. SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al** ' ı seçin. Sona erme süresini hizmeti kullandıktan sonraki bir zamana ayarlayın. **Okuma** , **yazma** , **silme** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur** ' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+* **SAS URL 'si** -Azure Blob depolama kapsayıcının paylaşılan erişim IMZASı (SAS) URL 'si. SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. Sona erme süresini hizmeti kullandıktan sonraki bir zamana ayarlayın. **Okuma**, **yazma**, **silme** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 
 :::image type="content" source="../media/label-tool/connections.png" alt-text="Örnek etiketleme aracının bağlantı ayarları.":::
 
@@ -193,7 +200,7 @@ Ardından, Etiketler (Etiketler) oluşturacak ve bunları modelin tanımasını 
    1. **+** Yeni bir etiket oluşturmak için tıklayın.
    1. Etiket adını girin.
    1. Etiketi kaydetmek için ENTER tuşuna basın.
-1. Ana düzenleyicide, vurgulanan metin öğelerinden sözcükler seçmek için tıklayın. _V 2.1 önizlemesinde_ , anahtar değer çiftleri olarak radyo düğmeleri ve onay kutuları gibi _seçim işaretlerini_ seçmek için de tıklayabilirsiniz. Form tanıyıcı, değer olarak seçim işaretinin "seçili" veya "seçilmemiş" olup olmadığını belirler.
+1. Ana düzenleyicide, vurgulanan metin öğelerinden sözcükler seçmek için tıklayın. _V 2.1 önizlemesinde. 2_ Ayrıca radyo düğmeleri ve onay kutuları gibi _seçim işaretlerini_ anahtar değer çiftleri olarak seçmek için de tıklayabilirsiniz. Form tanıyıcı, değer olarak seçim işaretinin "seçili" veya "seçilmemiş" olup olmadığını belirler.
 1. Uygulamak istediğiniz etikete tıklayın veya ilgili klavye tuşuna basın. Sayı tuşları ilk 10 etiketi için kısayol tuşu olarak atanır. Etiket Düzenleyicisi bölmesindeki yukarı ve aşağı ok simgelerini kullanarak etiketlerinizi yeniden düzenleyebilirsiniz.
     > [!Tip]
     > Formlarınızı etiketleyerek aşağıdaki ipuçlarını göz önünde bulundurun.
@@ -237,7 +244,7 @@ Aşağıdaki değer türleri ve Çeşitlemeler Şu anda destekleniyor:
 > 
 > `dmy` `mdy` Tarih biçimlendirme çalışması için bir biçim (,,) belirtmeniz gerekir `ymd` .
 >
-> Aşağıdaki karakterler Tarih sınırlayıcıları olarak kullanılabilir: `, - / . \` . Boşluk, sınırlayıcı olarak kullanılamaz. Örneğin:
+> Aşağıdaki karakterler Tarih sınırlayıcıları olarak kullanılabilir: `, - / . \` . Boşluk, sınırlayıcı olarak kullanılamaz. Örnek:
 > * 01, 01, 2020
 > * 01-01-2020
 > * 01/01/2020

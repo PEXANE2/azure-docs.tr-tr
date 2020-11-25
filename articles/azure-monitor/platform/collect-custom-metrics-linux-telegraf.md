@@ -8,11 +8,11 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: b80f27e490dd3b1890eab7740fb4650ba4280abb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88207800"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008999"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Etkileyen bir Linux VM için özel ölçümler toplama telegraf Aracısı
 
@@ -39,12 +39,12 @@ Bu öğretici için Ubuntu 16,04 LTS işletim sistemini çalıştıran bir Linux
 Yeni bir Linux sanal makinesi oluşturun: 
 
 1. Sol taraftaki gezinti bölmesinden **kaynak oluştur** seçeneğini belirleyin. 
-1. **Sanal makine**araması yapın.  
+1. **Sanal makine** araması yapın.  
 1. **Ubuntu 16,04 LTS** ' yi seçin ve **Oluştur**' u seçin. 
-1. **MyTelegrafVM**gıbı bir VM adı sağlayın.  
-1. Disk türünü **SSD**olarak bırakın. Daha sonra **azureuser**gibi bir **Kullanıcı adı**sağlayın. 
-1. **Kimlik doğrulama türü**için **parola**' yı seçin. Daha sonra bu VM 'ye SSH için kullanacağınız bir parola girin. 
-1. **Yeni kaynak grubu oluşturmayı**seçin. Daha sonra **Myresourcegroup**gibi bir ad sağlayın. **Konumunuzu**seçin. Ardından **Tamam**'ı seçin. 
+1. **MyTelegrafVM** gıbı bir VM adı sağlayın.  
+1. Disk türünü **SSD** olarak bırakın. Daha sonra **azureuser** gibi bir **Kullanıcı adı** sağlayın. 
+1. **Kimlik doğrulama türü** için **parola**' yı seçin. Daha sonra bu VM 'ye SSH için kullanacağınız bir parola girin. 
+1. **Yeni kaynak grubu oluşturmayı** seçin. Daha sonra **Myresourcegroup** gibi bir ad sağlayın. **Konumunuzu** seçin. Ardından **Tamam**’ı seçin. 
 
     ![Ubuntu sanal makinesi oluşturma](./media/collect-custom-metrics-linux-telegraf/create-vm.png)
 
@@ -52,13 +52,13 @@ Yeni bir Linux sanal makinesi oluşturun:
 
     ![Sanal makine boyutu telgraf aracısına genel bakış](./media/collect-custom-metrics-linux-telegraf/vm-size.png)
 
-1. **Settings** **Ağ**  >  **ağ güvenlik grubundaki**ayarlar sayfasında  >  **ortak gelen bağlantı noktaları**' nı seçin, **http** ve **SSH (22)** öğesini seçin. Diğer varsayılan ayarları olduğu gibi bırakın ve **Tamam**’ı seçin. 
+1. **Settings** **Ağ**  >  **ağ güvenlik grubundaki** ayarlar sayfasında  >  **ortak gelen bağlantı noktaları**' nı seçin, **http** ve **SSH (22)** öğesini seçin. Diğer varsayılan ayarları olduğu gibi bırakın ve **Tamam**’ı seçin. 
 
 1. Özet sayfasında **Oluştur**’u seçerek sanal makine dağıtımını başlatın. 
 
 1. VM, Azure portalı panosuna sabitlenir. Dağıtım tamamlandıktan sonra VM Özeti otomatik olarak açılır. 
 
-1. VM bölmesinde **kimlik** sekmesine gidin. VM 'nize sistem tarafından atanan bir kimliğin **Açık**olarak ayarlanmış olduğundan emin olun. 
+1. VM bölmesinde **kimlik** sekmesine gidin. VM 'nize sistem tarafından atanan bir kimliğin **Açık** olarak ayarlanmış olduğundan emin olun. 
  
     ![Telegraf VM kimlik önizlemesi](./media/collect-custom-metrics-linux-telegraf/connect-to-VM.png)
  
@@ -68,7 +68,7 @@ VM ile bir SSH bağlantısı oluşturun. VM’nizin genel bakış sayfasından *
 
 ![Telegraf VM genel bakış sayfası](./media/collect-custom-metrics-linux-telegraf/connect-VM-button2.png)
 
-**Sanal makineye bağlan** sayfasında, 22 numaralı bağlantı noktası üzerinden DNS adına göre bağlanmak için varsayılan seçenekleri olduğu gibi bırakın. **VM yerel hesabı 'nı kullanarak oturum açma**bölümünde bir bağlantı komutu gösterilir. Komutu kopyalamak için düğmeyi seçin. Aşağıdaki örnekte SSH bağlantı komutunun nasıl göründüğü gösterilmiştir: 
+**Sanal makineye bağlan** sayfasında, 22 numaralı bağlantı noktası üzerinden DNS adına göre bağlanmak için varsayılan seçenekleri olduğu gibi bırakın. **VM yerel hesabı 'nı kullanarak oturum açma** bölümünde bir bağlantı komutu gösterilir. Komutu kopyalamak için düğmeyi seçin. Aşağıdaki örnekte SSH bağlantı komutunun nasıl göründüğü gösterilmiştir: 
 
 ```cmd
 ssh azureuser@XXXX.XX.XXX 
@@ -86,7 +86,7 @@ wget https://dl.influxdata.com/telegraf/releases/telegraf_1.8.0~rc1-1_amd64.deb
 # install the package 
 sudo dpkg -i telegraf_1.8.0~rc1-1_amd64.deb
 ```
-Telegraf 'in yapılandırma dosyası telegraf 'ın işlemlerini tanımlıyor. Varsayılan olarak, **/etc/telegraf/telegraf.conf**yoluna örnek bir yapılandırma dosyası yüklenir. Örnek yapılandırma dosyasında tüm olası giriş ve çıkış eklentileri listelenir. Ancak, özel bir yapılandırma dosyası oluşturacağız ve aracının bunu aşağıdaki komutları çalıştırarak kullanması gerekir: 
+Telegraf 'in yapılandırma dosyası telegraf 'ın işlemlerini tanımlıyor. Varsayılan olarak, **/etc/telegraf/telegraf.conf** yoluna örnek bir yapılandırma dosyası yüklenir. Örnek yapılandırma dosyasında tüm olası giriş ve çıkış eklentileri listelenir. Ancak, özel bir yapılandırma dosyası oluşturacağız ve aracının bunu aşağıdaki komutları çalıştırarak kullanması gerekir: 
 
 ```cmd
 # generate the new Telegraf config file in the current directory 

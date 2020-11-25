@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
 ms.openlocfilehash: b97ae5d4ba4295ebbb51c960e4cbb76c53dc88a8
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148068"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009695"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Olay temelli arka plan işleme için Azure Web İşleri SDK'sını kullanma
 
@@ -24,13 +24,13 @@ Bunlar 3. sürüm arasındaki önemli farklardır. *x* ve sürüm 2. Web Işleri
 
 * Sürüm 3. *x* .NET Core için destek ekler.
 * Sürüm 3 ' te. *x*, Web İşleri SDK 'sı tarafından gerekli olan depolama bağlama uzantısını açıkça yüklemeniz gerekir. Sürüm 2 ' de. *x*, depolama bağlamaları SDK 'ya eklenmiştir.
-* .NET Core için Visual Studio Araçları (3.* x*) projeleri, .NET Framework (2) için araç aracılığıyla farklılık gösterir.* x*) projeleri. Daha fazla bilgi için bkz. [Visual Studio kullanarak Web Işleri geliştirme ve dağıtma-Azure App Service](webjobs-dotnet-deploy-vs.md).
+* .NET Core için Visual Studio Araçları (3.*x*) projeleri, .NET Framework (2) için araç aracılığıyla farklılık gösterir.*x*) projeleri. Daha fazla bilgi için bkz. [Visual Studio kullanarak Web Işleri geliştirme ve dağıtma-Azure App Service](webjobs-dotnet-deploy-vs.md).
 
 Mümkün olduğunda, her iki sürüm 3 için örnek sağlanır. *x* ve sürüm 2. *x*.
 
 > [!NOTE]
 > [Azure işlevleri](../azure-functions/functions-overview.md) , Web İşleri SDK 'sı üzerine kurulmuştur ve bu makalede bazı konular Için Azure işlevleri belgelerine bağlantılar sağlanmaktadır. Işlevler ve WebJobs SDK arasındaki bu farklılıkları göz önünde edin:
-> * Azure Işlevleri sürüm 2. *x* , Web İşleri SDK 'sı sürüm 3 ' e karşılık gelir. *x*ve Azure işlevleri 1. *x* , Web İşleri SDK 'sı 2 ' ye karşılık gelir. *x*. Kaynak kodu depoları, WebJobs SDK numaralandırmasını kullanır.
+> * Azure Işlevleri sürüm 2. *x* , Web İşleri SDK 'sı sürüm 3 ' e karşılık gelir. *x* ve Azure işlevleri 1. *x* , Web İşleri SDK 'sı 2 ' ye karşılık gelir. *x*. Kaynak kodu depoları, WebJobs SDK numaralandırmasını kullanır.
 > * Azure Işlevleri C# sınıf kitaplıkları için örnek kod, WebJobs SDK projesinde bir özniteliğe gerek kalmaması dışında WebJobs SDK kodu gibidir `FunctionName` .
 > * Bazı bağlama türleri yalnızca HTTP (Web kancaları) ve Event Grid (HTTP tabanlı) gibi Işlevlerde desteklenir.
 >
@@ -120,7 +120,7 @@ static void Main()
 }
 ```
 
-### <a name="managing-concurrent-connections-version-2x"></a><a name="jobhost-servicepointmanager-settings"></a>Eş zamanlı bağlantıları yönetme (sürüm 2.* x*)
+### <a name="managing-concurrent-connections-version-2x"></a><a name="jobhost-servicepointmanager-settings"></a>Eş zamanlı bağlantıları yönetme (sürüm 2.*x*)
 
 Sürüm 3 ' te. *x*, bağlantı sınırı varsayılan olarak sonsuz bağlantılardır. Bir nedenden dolayı bu sınırı değiştirmeniz gerekiyorsa, [`MaxConnectionsPerServer`](/dotnet/api/system.net.http.winhttphandler.maxconnectionsperserver) sınıfının özelliğini kullanabilirsiniz [`WinHttpHandler`](/dotnet/api/system.net.http.winhttphandler) .
 
@@ -369,7 +369,7 @@ Aşağıdaki bağlamaları yapılandırabilirsiniz:
 * [SendGrid bağlama](#sendgrid-binding-configuration-version-3x)
 * [Service Bus tetikleyicisi](#service-bus-trigger-configuration-version-3x)
 
-### <a name="azure-cosmosdb-trigger-configuration-version-3x"></a>Azure CosmosDB tetikleme yapılandırması (sürüm 3.* x*)
+### <a name="azure-cosmosdb-trigger-configuration-version-3x"></a>Azure CosmosDB tetikleme yapılandırması (sürüm 3.*x*)
 
 Bu örnek, Azure Cosmos DB tetikleyicisinin nasıl yapılandırılacağını göstermektedir:
 
@@ -398,7 +398,7 @@ static async Task Main()
 
 Daha ayrıntılı bilgi için bkz. [Azure CosmosDB bağlama](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings) makalesi.
 
-### <a name="event-hubs-trigger-configuration-version-3x"></a>Event Hubs tetikleyicisi yapılandırması (sürüm 3.* x*)
+### <a name="event-hubs-trigger-configuration-version-3x"></a>Event Hubs tetikleyicisi yapılandırması (sürüm 3.*x*)
 
 Bu örnek, Event Hubs tetikleyicisinin nasıl yapılandırılacağını göstermektedir:
 
@@ -473,7 +473,7 @@ static void Main(string[] args)
 
 Daha fazla ayrıntı için bkz [ . v1. x başvurusuhost.js](../azure-functions/functions-host-json-v1.md#queues).
 
-### <a name="sendgrid-binding-configuration-version-3x"></a>SendGrid bağlama yapılandırması (sürüm 3.* x*)
+### <a name="sendgrid-binding-configuration-version-3x"></a>SendGrid bağlama yapılandırması (sürüm 3.*x*)
 
 Bu örnek, SendGrid çıkış bağlamasının nasıl yapılandırılacağını gösterir:
 
@@ -500,7 +500,7 @@ static async Task Main()
 
 Daha fazla ayrıntı için bkz. [SendGrid bağlama](../azure-functions/functions-bindings-sendgrid.md#hostjson-settings) makalesi.
 
-### <a name="service-bus-trigger-configuration-version-3x"></a>Service Bus tetikleyicisi yapılandırması (sürüm 3.* x*)
+### <a name="service-bus-trigger-configuration-version-3x"></a>Service Bus tetikleyicisi yapılandırması (sürüm 3.*x*)
 
 Bu örnek, Service Bus tetikleyicisinin nasıl yapılandırılacağını göstermektedir:
 
@@ -833,7 +833,7 @@ Bir örnek tarafından oluşturulan her günlük `ILogger` ilişkili bir `Catego
 |Uyarı     | 3 |
 |Hata       | 4 |
 |Kritik    | 5 |
-|Hiçbiri        | 6 |
+|Yok        | 6 |
 
 Her kategoriyi bağımsız olarak belirli bir şekilde filtreleyebilirsiniz [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel) . Örneğin, `Error` diğer her şey için yalnızca ve üzeri blob tetikleyici işleme için tüm günlükleri görmek isteyebilirsiniz.
 
@@ -847,7 +847,7 @@ Sürüm 3. SDK 'nın *x* , .NET Core 'da yerleşik olarak bulunan filtrelemeyi t
 using Microsoft.Azure.WebJobs.Logging; 
 ```
 
-Aşağıdaki örnek, varsayılan olarak tüm günlüklere filtre uygulayan bir filtre oluşturur `Warning` . `Function`Ve `results` kategorileri ( `Host.Results` sürüm 2 ' de eşdeğerdir.* x*) düzeyinde filtrelenmiştir `Error` . Filtre geçerli kategoriyi örnekteki tüm kayıtlı düzeylerine göre karşılaştırır `LogCategories` ve en uzun eşleşmeyi seçer. Diğer bir deyişle, bu `Debug` düzeyin eşleşme için kayıtlı `Host.Triggers` `Host.Triggers.Queue` veya `Host.Triggers.Blob` . Bu, her birini eklemeye gerek kalmadan daha geniş kategorileri denetlemenize olanak tanır.
+Aşağıdaki örnek, varsayılan olarak tüm günlüklere filtre uygulayan bir filtre oluşturur `Warning` . `Function`Ve `results` kategorileri ( `Host.Results` sürüm 2 ' de eşdeğerdir.*x*) düzeyinde filtrelenmiştir `Error` . Filtre geçerli kategoriyi örnekteki tüm kayıtlı düzeylerine göre karşılaştırır `LogCategories` ve en uzun eşleşmeyi seçer. Diğer bir deyişle, bu `Debug` düzeyin eşleşme için kayıtlı `Host.Triggers` `Host.Triggers.Queue` veya `Host.Triggers.Blob` . Bu, her birini eklemeye gerek kalmadan daha geniş kategorileri denetlemenize olanak tanır.
 
 ```cs
 static async Task Main(string[] args)
@@ -878,7 +878,7 @@ static async Task Main(string[] args)
 
 Sürüm 2 ' de. SDK 'nın *x* ' i, `LogCategoryFilter` filtrelemeyi denetlemek için kullanırsınız. , `LogCategoryFilter` `Default` Başlangıç değeri olan bir özelliğine sahiptir `Information` , yani,, `Information` veya düzeylerindeki tüm iletiler `Warning` `Error` `Critical` günlüğe kaydedilir, ancak `Debug` veya düzeylerindeki tüm iletiler `Trace` dışarıda filtrelenir.
 
-`LogCategories`Sürüm 3 ' te olduğu gibi* . x*, bu `CategoryLevels` özellik, günlük çıktısını hassas bir şekilde ayarlayabilmeniz için belirli kategoriler için günlük düzeylerini belirtmenize olanak tanır. Sözlük içinde eşleşme bulunmazsa `CategoryLevels` , `Default` iletiyi filtrelemeye karar verirken filtre değere geri döner.
+`LogCategories`Sürüm 3 ' te olduğu gibi *. x*, bu `CategoryLevels` özellik, günlük çıktısını hassas bir şekilde ayarlayabilmeniz için belirli kategoriler için günlük düzeylerini belirtmenize olanak tanır. Sözlük içinde eşleşme bulunmazsa `CategoryLevels` , `Default` iletiyi filtrelemeye karar verirken filtre değere geri döner.
 
 Aşağıdaki örnek, varsayılan olarak tüm günlüklere filtre uygulayan bir filtre oluşturur `Warning` . `Function`Ve `Host.Results` kategorileri düzeyinde filtrelenmiştir `Error` . `LogCategoryFilter`Geçerli kategoriyi tümü kayıtlı `CategoryLevels` ile karşılaştırır ve en uzun eşleşmeyi seçer. Bu nedenle, `Debug` için kayıtlı olan düzey, `Host.Triggers` veya ile eşleşir `Host.Triggers.Queue` `Host.Triggers.Blob` . Bu, her birini eklemeye gerek kalmadan daha geniş kategorileri denetlemenize olanak tanır.
 

@@ -2,27 +2,28 @@
 title: Azure Media Services v3 hesaplarını yönetme | Microsoft Docs
 description: Azure 'da medya içeriğini yönetmeye, şifrelemeye, kodlamaya, çözümlemeye ve akışla başlamak için bir Media Services hesabı oluşturmanız gerekir. Bu makalede Azure Media Services v3 hesaplarının nasıl yönetileceği açıklanmaktadır.
 services: media-services
-documentationcenter: ''
 author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 11/05/2020
 ms.author: inhenkel
-ms.openlocfilehash: 7c2cbaaf4866edc20f9745abe6759861db7834c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77453aa2d8989a0542beffb1c88ebe7ee53d1506
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89291339"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "96008336"
 ---
 # <a name="manage-azure-media-services-v3-accounts"></a>Azure Media Services v3 hesaplarını yönetme
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 Azure 'da medya içeriğini yönetmeye, şifrelemeye, kodlamaya, çözümlemeye ve akışla başlamak için bir Media Services hesabı oluşturmanız gerekir. Media Services hesabı oluştururken, bir Azure Depolama hesabı kaynağının adını sağlamanız gerekir. Belirtilen depolama hesabı, Media Services hesabınıza eklenir. Media Services hesabı ve onunla ilişkili tüm depolama hesaplarının aynı Azure aboneliğinde olması gerekir. Daha fazla bilgi için bkz. [depolama hesapları](storage-account-concept.md).
+
+[!INCLUDE [account creation note](./includes/note-2020-05-01-account-creation.md)]
 
 ## <a name="moving-a-media-services-account-between-subscriptions"></a>Media Services bir hesabı abonelikler arasında taşıma 
 
@@ -39,7 +40,7 @@ Bir Media Services hesabını yeni bir aboneliğe taşımanız gerekiyorsa, önc
 > [!IMPORTANT]
 > Taşıma başarılı bir şekilde tamamlanana kadar akış uç noktasını başlatmayın.
 
-### <a name="troubleshoot"></a>Sorun giderme 
+### <a name="troubleshoot"></a>Sorun giderme
 
 Kaynak grubu taşıma sonrasında bir Media Services hesabı ya da ilişkili bir Azure depolama hesabı "bağlantısı kesildi" ise, depolama hesabı anahtarlarını döndürmeyi deneyin. Depolama hesabı anahtarlarını döndürmek, Media Services hesabının "bağlantısı kesildi" durumunu çözümlemezse, Media Services hesabındaki "destek + sorun giderme" menüsünden Yeni bir destek isteği ister.  
 

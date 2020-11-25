@@ -4,11 +4,11 @@ description: Bu makalede, Azure Event Grid konu ve Aboneliklerle ilgili ölçüm
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 518d34d39e6fbecc408fe9a44d899fe4745d60d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86114892"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008965"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>İleti teslimini izleme Event Grid 
 Bu makalede, Event Grid konular ve abonelikler için ölçümleri görmek ve bunlar üzerinde uyarı oluşturmak üzere portalın nasıl kullanılacağı açıklanır. 
@@ -38,58 +38,58 @@ Abonelikler için bazı ölçümler aşağıda verilmiştir:
 Özel bir konu yayımladıysanız, onun ölçümlerini görüntüleyebilirsiniz. 
 
 1. [Azure Portal](https://portal.azure.com/)oturum açın.
-2. Konunun arama çubuğunda **Event Grid konular**yazın ve ardından aşağı açılan listeden **Event Grid konular** ' ı seçin. 
+2. Konunun arama çubuğunda **Event Grid konular** yazın ve ardından aşağı açılan listeden **Event Grid konular** ' ı seçin. 
 
     :::image type="content" source="./media/custom-event-quickstart-portal/select-event-grid-topics.png" alt-text="Event Grid konuları arayın ve seçin":::
 3. Konu listesinden özel konu başlığı ' nı seçin. 
 
-    :::image type="content" source="./media/monitor-event-delivery/select-custom-topic.png" alt-text="Event Grid konuları arayın ve seçin":::
+    :::image type="content" source="./media/monitor-event-delivery/select-custom-topic.png" alt-text="Özel konu başlığını seçin":::
 4. **Event Grid konu** sayfasındaki özel olay konusu için ölçümleri görüntüleyin. Aşağıdaki görüntüde, abonelik vb. kaynak grubunu gösteren **temel** bileşenler bölümü simge durumuna küçültülmüş. 
 
-    :::image type="content" source="./media/monitor-event-delivery/custom-topic-metrics.png" alt-text="Event Grid konuları arayın ve seçin":::
+    :::image type="content" source="./media/monitor-event-delivery/custom-topic-metrics.png" alt-text="Olay ölçümlerini görüntüle":::
 
 **Event Grid konu** sayfasının **ölçümler** sekmesini kullanarak desteklenen ölçümlerle grafik oluşturabilirsiniz.
 
-:::image type="content" source="./media/monitor-event-delivery/topics-metrics-page.png" alt-text="Event Grid konuları arayın ve seçin":::
+:::image type="content" source="./media/monitor-event-delivery/topics-metrics-page.png" alt-text="Konu-ölçümler sayfası":::
 
 Ölçümler hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de ölçümler](../azure-monitor/platform/data-platform-metrics.md)
 
 Örneğin, **yayımlanan olaylar** ölçümü için ölçüm grafiğine bakın.
 
-:::image type="content" source="./media/monitor-event-delivery/custom-topic-metrics-example.png" alt-text="Event Grid konuları arayın ve seçin":::
+:::image type="content" source="./media/monitor-event-delivery/custom-topic-metrics-example.png" alt-text="Yayımlanan olaylar ölçümü":::
 
 
 ## <a name="view-subscription-metrics"></a>Abonelik ölçümlerini görüntüle
 1. Önceki bölümde bulunan adımları izleyerek **Event Grid konu** sayfasına gidin. 
 2. Aşağıdaki örnekte gösterildiği gibi alt bölmeden aboneliği seçin. 
 
-    :::image type="content" source="./media/monitor-event-delivery/select-event-subscription.png" alt-text="Event Grid konuları arayın ve seçin":::    
+    :::image type="content" source="./media/monitor-event-delivery/select-event-subscription.png" alt-text="Olay aboneliği seçin":::    
 
-    Ayrıca, bir olay aboneliğini görmek için Azure portal arama çubuğunda **Event Grid abonelikleri** arayabilir, **konu türü**, **abonelik**ve **konum** ' u seçin. 
+    Ayrıca, bir olay aboneliğini görmek için Azure portal arama çubuğunda **Event Grid abonelikleri** arayabilir, **konu türü**, **abonelik** ve **konum** ' u seçin. 
 
-    :::image type="content" source="./media/monitor-event-delivery/event-subscriptions-page.png" alt-text="Event Grid konuları arayın ve seçin":::        
+    :::image type="content" source="./media/monitor-event-delivery/event-subscriptions-page.png" alt-text="Event Grid abonelikler sayfasından olay aboneliği seçin":::        
 
-    Özel Konular için **konu türü**olarak **Event Grid konular** ' ı seçin. Sistem konuları için Azure kaynağının türünü seçin (örneğin, **depolama hesapları (blob, GPv2)**. 
-3. Bir grafikteki aboneliğin ana sayfasında, abonelik ölçümlerine bakın. Son 1 saat, 6 saat, 12 saat, 1 gün, 7 gün veya 30 gün için **genel**, **hata**, **gecikme süresi**ve **atılacak mektup** ölçümlerini görebilirsiniz. 
+    Özel Konular için **konu türü** olarak **Event Grid konular** ' ı seçin. Sistem konuları için Azure kaynağının türünü seçin (örneğin, **depolama hesapları (blob, GPv2)**. 
+3. Bir grafikteki aboneliğin ana sayfasında, abonelik ölçümlerine bakın. Son 1 saat, 6 saat, 12 saat, 1 gün, 7 gün veya 30 gün için **genel**, **hata**, **gecikme süresi** ve **atılacak mektup** ölçümlerini görebilirsiniz. 
 
-    :::image type="content" source="./media/monitor-event-delivery/subscription-home-page-metrics.png" alt-text="Event Grid konuları arayın ve seçin":::    
+    :::image type="content" source="./media/monitor-event-delivery/subscription-home-page-metrics.png" alt-text="Abonelik giriş sayfasındaki ölçümler":::    
 
 ## <a name="view-system-topic-metrics"></a>Sistem konu ölçümlerini görüntüleme
 
 1. [Azure Portal](https://portal.azure.com/)oturum açın.
-2. Konunun arama çubuğunda **Event Grid sistem konuları**yazın ve ardından açılır listeden **Event Grid sistem konuları** ' nı seçin. 
+2. Konunun arama çubuğunda **Event Grid sistem konuları** yazın ve ardından açılır listeden **Event Grid sistem konuları** ' nı seçin. 
 
-    :::image type="content" source="./media/monitor-event-delivery/search-system-topics.png" alt-text="Event Grid konuları arayın ve seçin":::
+    :::image type="content" source="./media/monitor-event-delivery/search-system-topics.png" alt-text="Event Grid sistem konularını arayın ve seçin":::
 3. Konu listesinden sistem konu başlığını seçin. 
 
-    :::image type="content" source="./media/monitor-event-delivery/select-system-topic.png" alt-text="Event Grid konuları arayın ve seçin":::
+    :::image type="content" source="./media/monitor-event-delivery/select-system-topic.png" alt-text="Sistem konusunu seçin":::
 4. **Event Grid sistem konusu** sayfasında sistem konusunun ölçümlerini görüntüleyin. Aşağıdaki görüntüde, abonelik vb. kaynak grubunu gösteren **temel** bileşenler bölümü simge durumuna küçültülmüş. 
 
-    :::image type="content" source="./media/monitor-event-delivery/system-topic-overview-metrics.png" alt-text="Event Grid konuları arayın ve seçin":::
+    :::image type="content" source="./media/monitor-event-delivery/system-topic-overview-metrics.png" alt-text="Genel Bakış sayfasında sistem konu ölçümlerini görüntüleme":::
 
 **Event Grid konu** sayfasının **ölçümler** sekmesini kullanarak desteklenen ölçümlerle grafik oluşturabilirsiniz.
 
-:::image type="content" source="./media/monitor-event-delivery/system-topic-metrics-page.png" alt-text="Event Grid konuları arayın ve seçin":::
+:::image type="content" source="./media/monitor-event-delivery/system-topic-metrics-page.png" alt-text="Sistem konusu-ölçümler sayfası":::
 
 Ölçümler hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de ölçümler](../azure-monitor/platform/data-platform-metrics.md)
 

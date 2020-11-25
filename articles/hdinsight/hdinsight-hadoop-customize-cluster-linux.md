@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli
 ms.date: 09/02/2020
 ms.openlocfilehash: 35c3901e9a48523a10c1a6aacbc52e6c165e278f
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748697"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009798"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Betik eylemlerini kullanarak Azure HDInsight kümelerini özelleştirme
 
@@ -25,8 +25,8 @@ Betik eylemleri, Azure Marketi 'Nde de HDInsight uygulaması olarak yayımlanabi
 
 Etki alanına katılmış bir HDInsight kümesi için, kümeyle birlikte betik eylemlerini kullandığınızda gereken iki Apache ambarı izni vardır:
 
-* **Ambarı. \_özel \_ komutu çalıştırın** . Varsayılan olarak, ambarı yönetici rolü bu izne sahiptir.
-* **Küme. \_özel \_ komutu çalıştırın** . HDInsight kümesi Yöneticisi ve ambarı yöneticisinin bu izni varsayılan olarak vardır.
+* **Ambarı. \_özel \_ komutu çalıştırın**. Varsayılan olarak, ambarı yönetici rolü bu izne sahiptir.
+* **Küme. \_özel \_ komutu çalıştırın**. HDInsight kümesi Yöneticisi ve ambarı yöneticisinin bu izni varsayılan olarak vardır.
 
 Etki alanına katılmış HDInsight ile izinlerle çalışma hakkında daha fazla bilgi için bkz. [Kurumsal güvenlik paketi HDInsight kümelerini yönetme](./domain-joined/apache-domain-joined-manage.md).
 
@@ -133,7 +133,7 @@ Betik eylemi betikleri aşağıdaki yardımcı programlar aracılığıyla kulla
 
 HDInsight, HDInsight kümelerine aşağıdaki bileşenleri yüklemek için komut dosyaları sağlar:
 
-| Ad | Komut Dosyası |
+| Name | Komut Dosyası |
 | --- | --- |
 | Azure depolama hesabı ekleme |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. Bkz. [HDInsight 'a ek depolama hesapları ekleme](hdinsight-hadoop-add-storage.md). |
 | Ton 'yi yükler |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Bkz. [HDInsight Hadoop kümelerinde ton 'U yükleyip kullanma](hdinsight-hadoop-hue-linux.md). |
@@ -145,11 +145,11 @@ Bu bölümde, HDInsight kümesi oluştururken betik eylemlerini kullanmanın far
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-azure-portal"></a>Azure portal küme oluşturma sırasında bir betik eylemi kullanın
 
-1. [Azure Portal kullanarak HDInsight 'Ta Linux tabanlı kümeler oluşturma](hdinsight-hadoop-create-linux-clusters-portal.md)bölümünde açıklandığı gibi bir küme oluşturmaya başlayın. **Yapılandırma + fiyatlandırma** sekmesinden **+ betik eylemi Ekle** ' yi seçin.
+1. [Azure Portal kullanarak HDInsight 'Ta Linux tabanlı kümeler oluşturma](hdinsight-hadoop-create-linux-clusters-portal.md)bölümünde açıklandığı gibi bir küme oluşturmaya başlayın. **Yapılandırma + fiyatlandırma** sekmesinden **+ betik eylemi Ekle**' yi seçin.
 
     ![Azure portal kümesi betik eylemi](./media/hdinsight-hadoop-customize-cluster-linux/azure-portal-cluster-configuration-scriptaction.png)
 
-1. Önceden oluşturulmuş bir betik seçmek için __betik Seç__ girişini kullanın. Özel bir komut dosyası kullanmak için __özel__ ' i seçin. Ardından, betiğiniz için __ad__ ve __Bash betiği URI 'si__ sağlayın.
+1. Önceden oluşturulmuş bir betik seçmek için __betik Seç__ girişini kullanın. Özel bir komut dosyası kullanmak için __özel__' i seçin. Ardından, betiğiniz için __ad__ ve __Bash betiği URI 'si__ sağlayın.
 
     ![Betik Seç formuna betik ekleme](./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png)
 
@@ -157,10 +157,10 @@ Bu bölümde, HDInsight kümesi oluştururken betik eylemlerini kullanmanın far
 
     | Özellik | Değer |
     | --- | --- |
-    | Betik seçin | Kendi komut dosyanızı kullanmak için __özel__ ' i seçin. Aksi takdirde, belirtilen betiklerin birini seçin. |
-    | Ad |Betik eylemi için bir ad belirtin. |
+    | Betik seçin | Kendi komut dosyanızı kullanmak için __özel__' i seçin. Aksi takdirde, belirtilen betiklerin birini seçin. |
+    | Name |Betik eylemi için bir ad belirtin. |
     | Bash betiği URI 'SI |Betiğin URI 'sini belirtin. |
-    | Baş/çalışan/ZooKeeper |Betiğin çalıştırıldığı düğümleri belirtin: **Head** , **Worker** veya **ZooKeeper** . |
+    | Baş/çalışan/ZooKeeper |Betiğin çalıştırıldığı düğümleri belirtin: **Head**, **Worker** veya **ZooKeeper**. |
     | Parametreler |Komut dosyası için gerekliyse parametreleri belirtin. |
 
     Komut dosyasının ölçeklendirme işlemleri sırasında uygulandığından emin olmak için __bu betiği Sürdür eylem__ girişini kullanın.
@@ -217,13 +217,13 @@ Bu bölümde, çalışan bir kümeye betik eylemlerinin nasıl uygulanacağı a�
 
 1. [Azure Portal](https://portal.azure.com) oturum açın ve kümenizi bulun.
 
-1. Varsayılan görünümden **Ayarlar** altında **betik eylemleri** ' ni seçin.
+1. Varsayılan görünümden **Ayarlar** altında **betik eylemleri**' ni seçin.
 
-1. **Betik eylemleri** sayfasının en üstünden **+ Yeni Gönder** ' i seçin.
+1. **Betik eylemleri** sayfasının en üstünden **+ Yeni Gönder**' i seçin.
 
     ![Çalışan bir kümeye betik ekleme](./media/hdinsight-hadoop-customize-cluster-linux/add-script-running-cluster.png)
 
-1. Önceden oluşturulmuş bir betik seçmek için __betik Seç__ girişini kullanın. Özel bir komut dosyası kullanmak için __özel__ ' i seçin. Ardından, betiğiniz için __ad__ ve __Bash betiği URI 'si__ sağlayın.
+1. Önceden oluşturulmuş bir betik seçmek için __betik Seç__ girişini kullanın. Özel bir komut dosyası kullanmak için __özel__' i seçin. Ardından, betiğiniz için __ad__ ve __Bash betiği URI 'si__ sağlayın.
 
     ![Betik Seç formuna betik ekleme](./media/hdinsight-hadoop-customize-cluster-linux/hdinsight-select-script.png)
 
@@ -231,10 +231,10 @@ Bu bölümde, çalışan bir kümeye betik eylemlerinin nasıl uygulanacağı a�
 
     | Özellik | Değer |
     | --- | --- |
-    | Betik seçin | Kendi komut dosyanızı kullanmak için __özel__ ' i seçin. Aksi takdirde, bir belirtilen betiği seçin. |
-    | Ad |Betik eylemi için bir ad belirtin. |
+    | Betik seçin | Kendi komut dosyanızı kullanmak için __özel__' i seçin. Aksi takdirde, bir belirtilen betiği seçin. |
+    | Name |Betik eylemi için bir ad belirtin. |
     | Bash betiği URI 'SI |Betiğin URI 'sini belirtin. |
-    | Baş/çalışan/Zookeeper |Betiğin çalıştırıldığı düğümleri belirtin: **Head** , **Worker** veya **ZooKeeper** . |
+    | Baş/çalışan/Zookeeper |Betiğin çalıştırıldığı düğümleri belirtin: **Head**, **Worker** veya **ZooKeeper**. |
     | Parametreler |Komut dosyası için gerekliyse parametreleri belirtin. |
 
     Komut dosyasının ölçeklendirme işlemleri sırasında uygulandığından emin olmak için __bu betiği Sürdür eylem__ girişini kullanın.
@@ -292,7 +292,7 @@ Bir kümeye betikleri uygulamak üzere .NET SDK kullanmanın bir örneği için 
 
 1. [Azure Portal](https://portal.azure.com) oturum açın ve kümenizi bulun.
 
-1. Varsayılan görünümden **Ayarlar** altında **betik eylemleri** ' ni seçin.
+1. Varsayılan görünümden **Ayarlar** altında **betik eylemleri**' ni seçin.
 
 1. Bu küme için betikler geçmişi betik eylemleri bölümünde görüntülenir. Bu bilgiler, kalıcı betikler listesini içerir. Aşağıdaki ekran görüntüsünde, bu kümede Solr betiğinin çalıştırıldığı gösterilmektedir. Ekran görüntüsünde kalıcı betikler gösterilmez.
 
@@ -302,7 +302,7 @@ Bir kümeye betikleri uygulamak üzere .NET SDK kullanmanın bir örneği için 
 
     ![Betik eylemleri özellikleri yükseltir](./media/hdinsight-hadoop-customize-cluster-linux/promote-script-actions.png)
 
-1. Ayrıca, eylemler için komut dosyası eylemleri bölümünde girişlerin sağındaki **..** . üç nokta simgesini de seçebilirsiniz.
+1. Ayrıca, eylemler için komut dosyası eylemleri bölümünde girişlerin sağındaki **..**. üç nokta simgesini de seçebilirsiniz.
 
     ![Kalıcı betik eylemleri silme](./media/hdinsight-hadoop-customize-cluster-linux/hdi-delete-promoted-sa.png)
 
@@ -319,7 +319,7 @@ Aşağıdaki örnek betik, bir betiği yükseltmek ve alçaltmak için cmdlet 'l
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/use-script-action/use-script-action.ps1?range=123-140)]
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 | Komut | Açıklama |
 | --- | --- |

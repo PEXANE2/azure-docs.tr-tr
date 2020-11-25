@@ -4,11 +4,11 @@ description: Azure geçişi gereci desteğinin bir özetini sağlar.
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: ac3c90f1c09d290d5112a0e0d7abc5218788caf7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450042"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008710"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Geçişi gereci
 
@@ -69,8 +69,8 @@ Aşağıdaki tabloda, VMware için Azure geçişi gereç gereksinimleri özetlen
 **Bulma sınırları** | Bir gereç, 5000 adede kadar Hyper-V VM 'Leri bulabilir.<br/> Bir gereç, 300 adede kadar Hyper-V konaklarına bağlanabilir.
 **VHD şablonu** | VHD dahil olmak üzere daraltılmış klasör. Portalından veya [buradan](https://go.microsoft.com/fwlink/?linkid=2140422)indirin.<br/><br/> İndirme boyutu 8,91 GB 'dir.<br/><br/> İndirilen gereç şablonu, 180 gün için geçerli olan bir Windows Server 2016 değerlendirme lisansıyla birlikte gelir. Değerlendirme süresi sona ermeden yakın ise, yeni bir gereç indirmeniz ve dağıtmanız ya da gereç sanal makinesinin işletim sistemi lisansını etkinleştirmenizi öneririz.
 **PowerShell betiği** | Bu [makaleye](./deploy-appliance-script.md#set-up-the-appliance-for-hyper-v)başvurun.<br/><br/> 
-**Yazılım/donanım***   |  Gereç, Windows Server 2016, 16 GB RAM, 8 vCPU, 80 GB disk depolaması ve harici bir sanal anahtar ile makine üzerinde çalışmalıdır.<br/> Gereç statik veya dinamik bir IP adresine gerek duyar ve doğrudan ya da bir proxy üzerinden internet erişimi gerektirir.<br/><br/> Gereci bir Hyper-V VM 'si olarak çalıştırırsanız, donanım gereksinimlerini ayırmak için Hyper-V konağında yeterli kaynaklara sahip olmanız gerekir.<br/><br/> Gereci fiziksel bir makinede çalıştırırsanız, Windows Server 2016 ' in çalıştığından ve donanım gereksinimlerini karşıladığından emin olun. 
-**Hyper-V gereksinimleri** | Gereci VHD şablonuyla dağıtırsanız, Azure geçişi tarafından sunulan gereç sanal makinesi, Hyper-V VM sürüm 5,0 ' dir.<br/><br/> Hyper-V konağı Windows Server 2012 R2 veya üstünü çalıştırmalıdır. 
+**Yazılım/donanım** _   |  Gereç, Windows Server 2016, 16 GB RAM, 8 vCPU, 80 GB disk depolaması ve harici bir sanal anahtar ile makine üzerinde çalışmalıdır.<br/> Gereç statik veya dinamik bir IP adresine gerek duyar ve doğrudan ya da bir proxy üzerinden internet erişimi gerektirir.<br/><br/> Gereci bir Hyper-V VM 'si olarak çalıştırırsanız, donanım gereksinimlerini ayırmak için Hyper-V konağında yeterli kaynaklara sahip olmanız gerekir.<br/><br/> Gereci fiziksel bir makinede çalıştırırsanız, Windows Server 2016 ' in çalıştığından ve donanım gereksinimlerini karşıladığından emin olun. 
+_ *Hyper-V gereksinimleri** | Gereci VHD şablonuyla dağıtırsanız, Azure geçişi tarafından sunulan gereç sanal makinesi, Hyper-V VM sürüm 5,0 ' dir.<br/><br/> Hyper-V konağı Windows Server 2012 R2 veya üstünü çalıştırmalıdır. 
 **Karma değeri-VHD** | [Doğrula](tutorial-discover-hyper-v.md#verify-security) VHD şablonu karma değerleri.
 **Karma değeri-PowerShell betiği** | PowerShell betiği karma değerlerini [doğrulayın](deploy-appliance-script.md#verify-file-security) .
 
@@ -139,7 +139,7 @@ download.microsoft.com/download | Microsoft Download 'ten indirmelere izin ver.
 
 Gereç meta verileri, performans verilerini ve bağımlılık analizi verilerini (aracısız [bağımlılık Analizi](concepts-dependency-visualization.md) kullanılıyorsa) toplar.
 
-### <a name="metadata"></a>Meta veri
+### <a name="metadata"></a>Meta Veriler
 
 Azure geçişi gereci tarafından bulunan meta veriler, makinelerin ve uygulamaların Azure 'a geçiş için hazır olup olmadığını, makine ve uygulamaları doğru boyuta getirmek, planlama maliyetlerini ve uygulama bağımlılıklarını analiz etmenize yardımcı olur. Microsoft bu verileri hiçbir lisans uyumluluğu denetimine kullanmaz.
 
@@ -152,8 +152,8 @@ VM Kimliği | vm.Config. Instanceuuıd
 VM adı | vm.Config. Ada
 vCenter Server KIMLIĞI | VMwareClient. Instance. UUID
 VM açıklaması | vm.Summary.Config. Ek açıklama
-Lisans ürün adı | 'nin. Client. ServiceContent. about. LicenseProductName
-İşletim sistemi türü | 'nin. SummaryConfig. GuestFullName
+Lisans ürün adı | VM. Client. ServiceContent. about. LicenseProductName
+İşletim sistemi türü | VM. SummaryConfig. GuestFullName
 Önyükleme türü | vm.Config. Yazılımında
 Çekirdek sayısı | vm.Config. Hardware. NumCPU
 Bellek (MB) | vm.Config. Hardware. MemoryMB
@@ -175,12 +175,12 @@ Yazma üretilen işi (MB/saniye) | virtualDisk. Write. Average
 **NIC başına Ayrıntılar** | 
 Ağ bağdaştırıcısı adı | 'i. Anahtar
 MAC adresi | ((Virtualalether, NIC) NIC). MacAddress
-IPv4 adresleri | 'nin. Guest.Net
-IPv6 adresleri | 'nin. Guest.Net
+IPv4 adresleri | vm.Guest.Net
+IPv6 adresleri | vm.Guest.Net
 Aktarım hızını oku (MB/saniye) | net. alınan. Ortalama
 Yazma üretilen işi (MB/saniye) | net. iletilmiş. Average
 **Envanter yolu ayrıntıları** | 
-Adı | kapsayıcı. GetType (). Ada
+Name | kapsayıcı. GetType (). Ada
 Alt nesnenin türü | kapsayıcı. ChildType
 Başvuru ayrıntıları | kapsayıcı. MoRef
 Üst Ayrıntılar | Container. Parent
@@ -227,7 +227,7 @@ Uygulamanın, uygulama bulma için etkinleştirilen her bir VM 'den topladığı
 
 **Veriler**  | **PowerShell cmdlet 'i** | **Özellik**
 --- | --- | ---
-Adı  | Get-WindowsFeature  | Adı
+Name  | Get-WindowsFeature  | Name
 Özellik türü | Get-WindowsFeature  | FeatureType
 Üst  | Get-WindowsFeature  | Üst
 
@@ -237,7 +237,7 @@ Uygulamanın, uygulama bulma için etkinleştirilmiş Microsoft SQL Server çal�
 
 **Veriler**  | **Kayıt Defteri Konumu**  | **Key**
 --- | --- | ---
-Adı  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\ınstance Names\SQL  | ınstalınstalstance
+Name  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\ınstance Names\SQL  | ınstalınstalstance
 Sürüm  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Sürüm 
 Hizmet Paketi  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | SP2
 Sürüm  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Sürüm 
@@ -248,7 +248,7 @@ Bu, gerecin uygulama bulma için etkin her VM 'yi topladığı işletim sistemi 
 
 Veriler  | WMI sınıfı  | WMI sınıfı özelliği
 --- | --- | ---
-Adı  | Win32_operatingsystem  | Başlık
+Name  | Win32_operatingsystem  | Başlık
 Sürüm  | Win32_operatingsystem  | Sürüm
 Mimari  | Win32_operatingsystem  | OSArchitecture
 
@@ -258,7 +258,7 @@ Uygulamanın, uygulama bulma için etkinleştirilen her bir VM 'den topladığı
 
 Veriler  | Komut
 --- | --- 
-Adı | RPM, dpkg-Query, Snap
+Name | RPM, dpkg-Query, Snap
 Sürüm | RPM, dpkg-Query, Snap
 Sağlayıcı | RPM, dpkg-Query, Snap
 
@@ -268,7 +268,7 @@ Bu, gerecin uygulama bulma için etkin her VM 'yi topladığı işletim sistemi 
 
 **Veriler**  | **Komut** 
 --- | --- | ---
-Adı <br/> sürüm | Aşağıdaki dosyalardan bir veya daha fazlası toplanmıştır:<br/> <br/>/etc/OS-Release  <br> /usr/lib/OS-Release  <br> /etc/Enterprise-Release  <br> /etc/redhat-release  <br> /etc/Oracle-Release  <br> /etc/SuSE-release  <br> /etc/LSB-Release  <br> /etc/debian_version 
+Name <br/> sürüm | Aşağıdaki dosyalardan bir veya daha fazlası toplanmıştır:<br/> <br/>/etc/OS-Release  <br> /usr/lib/OS-Release  <br> /etc/Enterprise-Release  <br> /etc/redhat-release  <br> /etc/Oracle-Release  <br> /etc/SuSE-release  <br> /etc/LSB-Release  <br> /etc/debian_version 
 Mimari | uname
 
 
@@ -322,7 +322,7 @@ Uygulama adı | dpkg veya rpm
 
 Gereç meta verileri, performans verilerini ve bağımlılık analizi verilerini (aracısız [bağımlılık Analizi](concepts-dependency-visualization.md) kullanılıyorsa) toplar.
 
-### <a name="metadata"></a>Meta veri
+### <a name="metadata"></a>Meta Veriler
 Azure geçişi gereci tarafından bulunan meta veriler, makinelerin ve uygulamaların Azure 'a geçiş için hazır olup olmadığını, makine ve uygulamaları doğru boyuta getirmek, planlama maliyetlerini ve uygulama bağımlılıklarını analiz etmenize yardımcı olur. Microsoft bu verileri hiçbir lisans uyumluluğu denetimine kullanmaz.
 
 Bu, gerecin topladığı ve Azure 'a gönderdiği Hyper-V VM meta verilerinin tam listesidir.
@@ -454,7 +454,7 @@ Gereç üzerinde çalışan Azure geçiş aracıları güncelleştirildiğinden,
 ### <a name="turn-off-auto-update"></a>Otomatik güncelleştirmeyi devre dışı bırakma
 
 1. Gereci çalıştıran makinede, kayıt defteri düzenleyicisini açın.
-2. **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance**gidin.
+2. **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance** gidin.
 3. Otomatik güncelleştirmeyi devre dışı bırakmak için, DWORD değeri 0 olan bir kayıt defteri anahtarı **Otomatik güncelleştirme** anahtarı oluşturun.
 
     ![Kayıt defteri anahtarını ayarla](./media/migrate-appliance/registry-key.png)
@@ -470,7 +470,7 @@ Aşağıdaki yöntemlerden birini kullanarak otomatik güncelleştirme 'yi açab
 Kayıt defteri anahtarını silmek için:
 
 1. Gereci çalıştıran makinede, kayıt defteri düzenleyicisini açın.
-2. **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance**gidin.
+2. **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance** gidin.
 3. Daha önce otomatik güncelleştirmeyi devre dışı bırakmak için oluşturulmuş kayıt **defteri anahtarını silin**.
 
 Gereç Configuration Manager açmak için, bulma tamamlandıktan sonra:
@@ -507,7 +507,7 @@ Bileşenlerden herhangi biri için daha eski bir sürüm çalıştırıyorsanız
 
 1. En son gereç hizmeti sürümlerini denetlemek için dosyadaki LatestComponents.js[indirin](https://aka.ms/latestapplianceservices) .
 2.    İndirdikten sonra dosyayı Not defteri 'nde LatestComponents.jsaçın.
-3. Dosyadaki en son hizmet sürümünü ve bunun için karşıdan yükleme bağlantısını bulun. Örneğin:
+3. Dosyadaki en son hizmet sürümünü ve bunun için karşıdan yükleme bağlantısını bulun. Örnek:
 
     "Ad": "ASRMigrationWebApp", "DownloadLink": " https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi ", "Version": "6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
 

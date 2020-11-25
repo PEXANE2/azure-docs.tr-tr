@@ -7,11 +7,11 @@ ms.date: 02/12/2020
 ms.topic: sample
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: cb8cc98a020cb382a6941c1e410eab4543594629
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279007"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009764"
 ---
 # <a name="example-powershell-scripts"></a>Örnek PowerShell betikleri
 
@@ -26,9 +26,9 @@ Azure uzaktan Işleme aşağıdaki iki REST API 'yi sağlar:
 > Ayrıca, [ARRT adlı bir kullanıcı arabirimi tabanlı araç](azure-remote-rendering-asset-tool.md) vardır ve bu hizmetle etkileşim kurmak için, komut dosyalarının kullanılmasına uygun bir alternatiftir. ![ARRT](./media/azure-remote-rendering-asset-tool.png "ARRT ekran görüntüsü")
 
 > [!CAUTION]
-> REST API işlevlerinin çok sık çağrılması sunucunun başarısız olmasına neden olur ve bu da hata döndürür. Bu örnekte http hata kodu kimliği 429 ' dir ("çok fazla istek"). Thumb kuralı olarak, **sonraki çağrılar arasında 5-10 saniyelik**bir gecikme olmalıdır.
+> REST API işlevlerinin çok sık çağrılması sunucunun başarısız olmasına neden olur ve bu da hata döndürür. Bu örnekte http hata kodu kimliği 429 ' dir ("çok fazla istek"). Thumb kuralı olarak, **sonraki çağrılar arasında 5-10 saniyelik** bir gecikme olmalıdır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Örnek betikleri yürütmek için [Azure PowerShell](/powershell/azure/)işlevsel kurulumuna ihtiyacınız vardır.
 
@@ -93,14 +93,14 @@ Dosyaların yanında, `.ps1` doldurmanız gereken bir sorun var `arrconfig.json`
 
 ### <a name="renderingsessionsettings"></a>renderingSessionSettings
 
-**RenderingSession.ps1**çalıştırmak istiyorsanız bu yapının doldurulması gerekir:
+**RenderingSession.ps1** çalıştırmak istiyorsanız bu yapının doldurulması gerekir:
 
 - **VMSize:** Sanal makinenin boyutunu seçer. [*Standart*](../reference/vm-sizes.md) veya [*Premium*](../reference/vm-sizes.md)' u seçin. Artık ihtiyacınız olmadığında işleme oturumlarını kapatın.
 - **Maxleasetime:** VM 'nin kiralanmasını istediğiniz süre. Kira süresi dolarsa kapatılacak. Kira süresi daha sonra genişletilebilir (aşağıya bakın).
 
 ### <a name="assetconversionsettings"></a>assetConversionSettings
 
-**Conversion.ps1**çalıştırmak istiyorsanız bu yapının doldurulması gerekir.
+**Conversion.ps1** çalıştırmak istiyorsanız bu yapının doldurulması gerekir.
 
 Ayrıntılar için bkz. [Azure Storage hesabı hazırlama](../how-tos/conversion/blob-storage.md#prepare-azure-storage-accounts).
 
@@ -109,7 +109,7 @@ Ayrıntılar için bkz. [Azure Storage hesabı hazırlama](../how-tos/conversion
 Bu betik, işleme oturumlarını oluşturmak, sorgulamak ve durdurmak için kullanılır.
 
 > [!IMPORTANT]
-> Üzerinde arrconfig.js*Accountsettings* ve *Renderingsessionsettings* bölümlerinin doldurulduğundan emin olun.
+> Üzerinde arrconfig.js *Accountsettings* ve *Renderingsessionsettings* bölümlerinin doldurulduğundan emin olun.
 
 ### <a name="create-a-rendering-session"></a>İşleme oturumu oluşturma
 
@@ -133,7 +133,7 @@ Yapılandırma dosyasından **bağımsız ayarları geçersiz kılabilirsiniz** 
 .\RenderingSession.ps1 -Region <region> -VmSize <vmsize> -MaxLeaseTime <hh:mm:ss>
 ```
 
-Yalnızca **yoklama olmadan bir oturum başlatmak**için şunu kullanabilirsiniz:
+Yalnızca **yoklama olmadan bir oturum başlatmak** için şunu kullanabilirsiniz:
 
 ```PowerShell
 .\RenderingSession.ps1 -CreateSession
@@ -179,7 +179,7 @@ Bir oturumun özelliklerini almak için şunu çalıştırın:
 Bu betik, giriş modellerini Azure uzaktan Işleme özel çalışma zamanı biçimine dönüştürmek için kullanılır.
 
 > [!IMPORTANT]
-> Üzerinde arrconfig.js*accountsettings* ve *assetconversionsettings* bölümlerinin doldurulduğundan emin olun.
+> Üzerinde arrconfig.js *accountsettings* ve *assetconversionsettings* bölümlerinin doldurulduğundan emin olun.
 
 Betik, depolama hesaplarını hizmeti ile birlikte kullanmak için iki seçeneği gösterir:
 
@@ -225,7 +225,7 @@ Bağlı depolama hesabı kullanmak, paylaşılan erişim Imzaları oluşturmaya 
 .\Conversion.ps1 -ConfigFile D:\arr\myotherconfigFile.json
 ```
 
-Yalnızca **yoklama olmadan model dönüştürmeyi başlatmak**için şunu kullanabilirsiniz:
+Yalnızca **yoklama olmadan model dönüştürmeyi başlatmak** için şunu kullanabilirsiniz:
 
 ```PowerShell
 .\Conversion.ps1 -ConvertAsset
@@ -262,7 +262,7 @@ Yalnızca verilen LocalAssetDirectoryPath öğesinden verileri karşıya yükley
 .\Conversion.ps1 -Upload
 ```
 
-Yalnızca blob depolamaya zaten yüklenmiş bir modelin dönüştürme işlemini başlatın (karşıya yükleme çalıştırılmayın, dönüştürme durumunu yoklamayın) betik bir *Conversionıd*döndürür.
+Yalnızca blob depolamaya zaten yüklenmiş bir modelin dönüştürme işlemini başlatın (karşıya yükleme çalıştırılmayın, dönüştürme durumunu yoklamayın) betik bir *Conversionıd* döndürür.
 
 ```PowerShell
 .\Conversion.ps1 -ConvertAsset

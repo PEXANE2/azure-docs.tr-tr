@@ -12,11 +12,11 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: 511166e156591562b2120b58cc420f3fccd1d8c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84804913"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008947"
 ---
 # <a name="client-side-encryption-with-python"></a>Python ile istemci tarafı şifreleme
 
@@ -54,7 +54,7 @@ Zarf tekniği aracılığıyla şifre çözme aşağıdaki şekilde çalışmakt
 Depolama istemci kitaplığı, Kullanıcı verilerini şifrelemek için [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) kullanır. Özellikle, AES ile [Şifre blok zincirleme (CBC)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) modu. Her bir hizmet biraz farklı çalışır, bu nedenle bunlardan her birini burada ele alınacaktır.
 
 ### <a name="blobs"></a>Bloblar
-İstemci kitaplığı şu anda yalnızca tüm Blobların şifrelenmesini destekliyor. Özellikle, kullanıcılar **Create*** yöntemlerini kullanırken şifreleme desteklenir. İndirmeler için hem tamamlanma hem de Aralık İndirmeleri desteklenir ve hem karşıya yükleme hem de indirme için paralelleştirme kullanılabilir.
+İstemci kitaplığı şu anda yalnızca tüm Blobların şifrelenmesini destekliyor. Özellikle, kullanıcılar **Create** _ yöntemlerini kullanırken şifreleme desteklenir. İndirmeler için hem tamamlanma hem de Aralık İndirmeleri desteklenir ve hem karşıya yükleme hem de indirme için paralelleştirme kullanılabilir.
 
 Şifreleme sırasında, istemci kitaplığı, 16 baytlık rastgele bir başlatma vektörü (IV), 32 baytlık bir rastgele içerik şifreleme anahtarı (CEK) ile birlikte oluşturulur ve bu bilgileri kullanarak blob verilerinin zarf şifrelemesini gerçekleştirir. Sarmalanan CEK ve bazı ek şifreleme meta verileri, hizmet üzerindeki şifreli blob ile birlikte blob meta verileri olarak depolanır.
 
@@ -63,9 +63,9 @@ Depolama istemci kitaplığı, Kullanıcı verilerini şifrelemek için [AES](ht
 > 
 > 
 
-Şifrelenmiş bir Blobun indirilmesi, **Get*** kullanışlı yöntemler kullanılarak tüm Blobun içeriğini almayı içerir. Sarmalanmış CEK, şifresi çözülmüş verileri kullanıcılara döndürmek için sarmalanmış ve IV (Bu durumda blob meta verileri olarak saklanır) ile birlikte kullanılır.
+Şifrelenmiş bir blob 'u indirmek, _*Get* *_ kolaylık yöntemlerini kullanarak tüm Blobun içeriğini almayı içerir. Sarmalanmış CEK, şifresi çözülmüş verileri kullanıcılara döndürmek için sarmalanmış ve IV (Bu durumda blob meta verileri olarak saklanır) ile birlikte kullanılır.
 
-Şifrelenmiş Blobun rastgele bir aralığı indirme (Aralık parametrelerine geçilen bir**Get*** yöntemi), istenen aralığın şifresini başarıyla çözmek için kullanılabilecek daha az miktarda ek veri alabilmek için kullanıcılar tarafından verilen aralığı ayarlamayı içerir.
+Şifreli Blobun rastgele bir aralığı indirme (Aralık parametreleri geçirilen yöntem _*Al* *_ ), istenen aralığın şifresini başarıyla çözmek için kullanılabilecek daha az miktarda ek veri alabilmek için kullanıcılara sunulan aralığı ayarlamayı içerir.
 
 Blok Blobları ve sayfa Blobları yalnızca bu şema kullanılarak şifrelenebilir/çözülür. Şu anda, ekleme bloblarını şifrelemek için destek yoktur.
 
@@ -114,7 +114,7 @@ Toplu işin şifreleme ilkesi kullanılarak toplu işe eklenen varlıkların şi
 > [!IMPORTANT]
 > İstemci tarafı şifrelemeyi kullanırken bu önemli noktalara dikkat edin:
 > 
-> * Şifrelenmiş bir bloba okurken veya yazarken, tüm blob karşıya yükleme komutlarını ve Aralık/tam blob indirme komutlarını kullanın. Put bloğu, put bloğu listesi, sayfa yazma veya sayfa temizleme gibi protokol işlemlerini kullanarak şifrelenmiş bir blob 'a yazma yapmaktan kaçının; Aksi takdirde, şifreli blobu bozuyor ve okunamaz hale getirebilirsiniz.
+> _ Şifrelenen bir bloba okurken veya yazarken, tüm blob karşıya yükleme komutlarını ve Aralık/tam blob indirme komutlarını kullanın. Put bloğu, put bloğu listesi, sayfa yazma veya sayfa temizleme gibi protokol işlemlerini kullanarak şifrelenmiş bir blob 'a yazma yapmaktan kaçının; Aksi takdirde, şifreli blobu bozuyor ve okunamaz hale getirebilirsiniz.
 > * Tablolar için, benzer bir kısıtlama vardır. Şifrelenmiş özellikleri, şifreleme meta verilerini güncelleştirmeden güncelleştirmemeye dikkat edin.
 > * Şifrelenmiş blob üzerinde meta verileri ayarlarsanız, verilerin ayarlanmamasından dolayı, şifre çözme için gereken şifrelemeyle ilgili meta verilerin üzerine yazabilirsiniz. Bu, anlık görüntüler için de geçerlidir; şifrelenmiş bir Blobun anlık görüntüsünü oluştururken meta verileri belirtmekten kaçının. Meta verilerin ayarlanması gerekiyorsa, geçerli şifreleme meta verilerini almak için önce **get_blob_metadata** yöntemini çağırdığınızdan emin olun ve meta veriler ayarlanmakta iken eşzamanlı yazmaları önleyin.
 > * Yalnızca şifrelenmiş verilerle çalışması gereken kullanıcılar için hizmet nesnesinde **require_encryption** bayrağını etkinleştirin. Daha fazla bilgi için aşağıya bakın.
@@ -197,7 +197,7 @@ retrieved_message_list = my_queue_service.get_messages(queue_name)
 ```
 
 ### <a name="table-service-encryption"></a>Tablo hizmeti şifrelemesi
-Bir şifreleme ilkesi oluşturup istek seçeneklerinde ayarlamaya ek olarak, **tableservice**üzerinde bir **encryption_resolver_function** belirtmeli ya da EntityProperty üzerinde Encrypt özniteliğini ayarlamalısınız.
+Bir şifreleme ilkesi oluşturup istek seçeneklerinde ayarlamaya ek olarak, **tableservice** üzerinde bir **encryption_resolver_function** belirtmeli ya da EntityProperty üzerinde Encrypt özniteliğini ayarlamalısınız.
 
 ### <a name="using-the-resolver"></a>Çözümleyici 'yi kullanma
 

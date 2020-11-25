@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: mikhegn
 ms.openlocfilehash: 1db6cea0af229664b07e88463e279b2a64d7e267
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86256059"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008523"
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>Visual Studio 'da Service Fabric uygulamasının yükseltmesini yapılandırma
 Azure Service Fabric için Visual Studio Araçları, yerel veya uzak kümelerdeki yayımlamaya yönelik yükseltme desteği sağlar. Test ve hata ayıklama sırasında uygulamanızı değiştirmek yerine uygulamanızı daha yeni bir sürüme yükseltmek istediğiniz üç senaryo vardır:
@@ -22,7 +22,7 @@ Azure Service Fabric için Visual Studio Araçları, yerel veya uzak kümelerdek
 ## <a name="parameters-needed-to-upgrade"></a>Yükseltmek için gereken parametreler
 İki tür dağıtım arasından seçim yapabilirsiniz: normal veya yükseltme. Düzenli dağıtım, kümedeki önceki dağıtım bilgilerini ve verileri siler, bu da bir yükseltme dağıtımı tarafından korunur. Visual Studio 'da bir Service Fabric uygulamasını yükselttiğinizde, uygulama yükseltme parametreleri ve sistem durumu denetim ilkeleri sağlamanız gerekir. Uygulama yükseltme parametreleri yükseltmeyi denetlemeye yardımcı olur, ancak sistem durumu denetim ilkeleri yükseltmenin başarılı olup olmadığını belirtir. Daha fazla ayrıntı için bkz. [Service Fabric uygulama yükseltme: yükseltme parametreleri](service-fabric-application-upgrade-parameters.md) .
 
-Üç yükseltme modu vardır: Izlenen, Izlenemez *toredauto*ve *Iziztoredmanual*. *Monitored*
+Üç yükseltme modu vardır: Izlenen, Izlenemez *toredauto* ve *Iziztoredmanual*. *Monitored*
 
 * Izlenen bir yükseltme, yükseltme ve uygulama sistem durumu denetimini otomatikleştirir.
 * Tasmesiz yükseltme, yükseltmeyi otomatikleştirir, ancak uygulama sistem durumu denetimini atlar.
@@ -37,7 +37,7 @@ Bir Service Fabric uygulamasını yükseltmek için Visual Studio Service Fabric
 1. Onay kutusunun yanındaki **Ayarlar** düğmesine tıklayın. **Yükseltme parametrelerini düzenle** iletişim kutusu görüntülenir. **Yükseltme parametrelerini düzenle** Iletişim kutusu Izlenen, Izlenmeyen Toredauto ve izlenemez yükseltme modlarını destekler.
 2. Kullanmak istediğiniz yükseltme modunu seçin ve ardından parametre kılavuzunu doldurun.
 
-    Her parametrenin varsayılan değerleri vardır. *Defaultservicetypehealthpolicy* isteğe bağlı parametresi bir karma tablo girişi alır. *Defaultservicetypehealthpolicy*için karma tablo giriş biçimine bir örnek aşağıda verilmiştir:
+    Her parametrenin varsayılan değerleri vardır. *Defaultservicetypehealthpolicy* isteğe bağlı parametresi bir karma tablo girişi alır. *Defaultservicetypehealthpolicy* için karma tablo giriş biçimine bir örnek aşağıda verilmiştir:
 
     ```
     @{ ConsiderWarningAsError = "false"; MaxPercentUnhealthyDeployedApplications = 0; MaxPercentUnhealthyServices = 0; MaxPercentUnhealthyPartitionsPerService = 0; MaxPercentUnhealthyReplicasPerPartition = 0 }

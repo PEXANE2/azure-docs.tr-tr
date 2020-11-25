@@ -8,11 +8,11 @@ ms.date: 09/16/2020
 ms.author: ccompy
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 27c9198558a730d0af49077d6f5baa6db4789416
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503530"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009560"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>Iç Load Balancer App Service Ortamı oluşturma ve kullanma 
 
@@ -123,13 +123,13 @@ Adlı bölge. &lt; asename &gt; . appserviceenvironment.net, genel olarak benzer
 
 ## <a name="publish-with-an-ilb-ase"></a>ILB ASE ile yayımlama
 
-Oluşturulan her uygulama için iki uç nokta vardır. Bir ıLB Ao 'da * &lt; uygulama adı vardır &gt; . &lt; ILB ATıCı etki &gt; alanı* ve * &lt; uygulama adı &gt; . scm. &lt; ILB ATıCı etki &gt; alanı*. 
+Oluşturulan her uygulama için iki uç nokta vardır. Bir ıLB Ao 'da *&lt; uygulama adı vardır &gt; . &lt; ILB ATıCı etki &gt; alanı* ve *&lt; uygulama adı &gt; . scm. &lt; ILB ATıCı etki &gt; alanı*. 
 
 SCM site adı sizi Azure portalı içinde **Gelişmiş portal** olarak adlandırılan Kudu konsoluna götürür. Kudu konsolunu kullanarak ortam değişkenlerini görüntüleyebilir, diski keşfedebilir, bir konsolu kullanabilir ve daha fazlasını yapabilirsiniz. Daha fazla bilgi için bkz. [Azure App Service için Kudu konsolu][Kudu]. 
 
 GitHub ve Azure DevOps gibi İnternet tabanlı CI sistemleri, derleme aracısına İnternet’ten erişilebiliyorsa ve aracı ILB ASE ile aynı ağdaysa ILB ASE ile çalışmaya devam eder. Bu nedenle, Azure DevOps örneğinde derleme aracısı ILB ASE ile aynı sanal ağda (alt ağın farklı olması sorun yaratmaz) oluşturulursa Azure DevOps git’ten kod çekip ILB ASE’ye dağıtabilir. Kendi derleme aracınızı oluşturmak istemiyorsanız çekme modeli kullanan bir CI sistemi (Dropbox gibi) kullanmanız gerekir.
 
-Bir ILB ASE’deki uygulamalar için yayımlama uç noktaları, ILB ASE oluşturulurken kullanılan etki alanını kullanır. Bu etki alanı uygulamanın yayımlama profilinde ve uygulamanın Portal dikey penceresinde görünür (**genel bakış**  >  **temelleri** ve ayrıca **Özellikler**). * &lt; Ao name &gt; . appserviceenvironment.net*etki alanı sonekini ve *MyTest*adlı bir uygulamayı içeren bir ILB aşiri varsa, *MyTest kullanın. &lt; FTP için Ao Name &gt; . appserviceenvironment.net* ve Web dağıtımı için *MyTest.scm.contoso.net* .
+Bir ILB ASE’deki uygulamalar için yayımlama uç noktaları, ILB ASE oluşturulurken kullanılan etki alanını kullanır. Bu etki alanı uygulamanın yayımlama profilinde ve uygulamanın Portal dikey penceresinde görünür (**genel bakış**  >  **temelleri** ve ayrıca **Özellikler**). *&lt; Ao name &gt; . appserviceenvironment.net* etki alanı sonekini ve *MyTest* adlı bir uygulamayı içeren bir ILB aşiri varsa, *MyTest kullanın. &lt; FTP için Ao Name &gt; . appserviceenvironment.net* ve Web dağıtımı için *MyTest.scm.contoso.net* .
 
 ## <a name="configure-an-ilb-ase-with-a-waf-device"></a>Bir ıDB ATıCı 'yi WAF cihazından yapılandırma ##
 

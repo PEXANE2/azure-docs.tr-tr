@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
 ms.openlocfilehash: b76c41787d7a35fb3024fa18c0122bc966243bbc
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514546"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008404"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-security-tmws"></a>Öğretici: Trend mikro Web Güvenliği (TMWS) ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -95,7 +95,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Önceki ekran görüntüsündeki özniteliklerin yanı sıra, TMWS, SAML yanıtında iki daha fazla özniteliğin geri geçirilmesini bekler. Bu öznitelikler aşağıdaki tabloda gösterilmiştir. Öznitelikler önceden doldurulur, ancak gereksinimlerinizi karşılayacak şekilde değiştirebilirsiniz.
     
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | --------------- | --------- |
     | sAMAccountName | User. onpremisessamaccountname |
     | 'Le | User. UserPrincipalName |
@@ -116,7 +116,7 @@ Bu bölümde, Azure portal B. Simon adlı bir test kullanıcısı oluşturacaks�
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** kutusuna girin `B.Simon` .  
-   1. **Kullanıcı adı** kutusuna **_kullanıcıadı_ @ *şirketetkialanı yazın *.* * * * uzantısı. Örneğin, `B.Simon@contoso.com`.
+   1. **Kullanıcı adı** kutusuna **_kullanıcıadı_ @* şirketetkialanı yazın *.* * * * uzantısı. Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster**' i seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
    1. **Oluştur**’u seçin.
 
@@ -144,7 +144,7 @@ Bu bölümde, TMWS 'ye erişim vererek Azure çoklu oturum açma özelliğini ku
 
 1. **Yönet**' in altında **uygulama kayıtları**' yi seçin ve ardından **tüm uygulamalar**' ın altında yeni kurumsal uygulamanızı seçin.
 
-1. **Yönet**altında **Sertifikalar & gizlilikler**' ı seçin.
+1. **Yönet** altında **Sertifikalar & gizlilikler**' ı seçin.
 
 1. **İstemci gizli** dizileri alanında **yeni istemci parolası**' nı seçin.
 
@@ -152,7 +152,7 @@ Bu bölümde, TMWS 'ye erişim vererek Azure çoklu oturum açma özelliğini ku
 
 1. İstemci gizli değerini kaydedin. Daha sonra, bunu TMWS 'ye girersiniz.
 
-1. **Yönet**altında **API izinleri**' ni seçin. 
+1. **Yönet** altında **API izinleri**' ni seçin. 
 
 1. **API izinleri** penceresinde **izin Ekle**' yi seçin.
 
@@ -165,7 +165,7 @@ Bu bölümde, TMWS 'ye erişim vererek Azure çoklu oturum açma özelliğini ku
 
 1. **Izin Ekle**' yi seçin. Ayarlarınızın kaydedildiğini doğrulamak için bir ileti görüntülenir. Yeni izinler, **API izinleri** penceresinde görünür.
 
-1. **Izin verme** alanı ' nda, ** *yönetici hesabınız* için yönetici onayı ver ' i (varsayılan dizin)** seçin ve ardından **Evet**' i seçin. İstenen izinler için yönetici onayı verildiğini doğrulamak üzere bir ileti görüntülenir.
+1. **Izin verme** alanı ' nda, ***yönetici hesabınız* için yönetici onayı ver ' i (varsayılan dizin)** seçin ve ardından **Evet**' i seçin. İstenen izinler için yönetici onayı verildiğini doğrulamak üzere bir ileti görüntülenir.
 
 1. **Genel bakış**'ı seçin. 
 
@@ -206,7 +206,7 @@ Uygulama tarafında TMWS SSO 'yu yapılandırmak için bu adımları izleyin.
 
     e. Azure AD hizmeti 'nin başarıyla bağlanıp bağlanamayacağını denetlemek için **Bağlantıyı Sına** ' yı seçin.
     
-    f. **Kaydet**’i seçin.
+    f. **Kaydet**'i seçin.
  
  > [!NOTE]
  > TMWS 'yi Azure AD ile yapılandırma hakkında daha fazla bilgi için bkz. [tmws 'de Azure AD ayarlarını yapılandırma](https://docs.trendmicro.com/en-us/enterprise/trend-micro-web-security-online-help/administration_001/directory-services/azure-active-directo/configuring-azure-ad.aspx).
@@ -216,7 +216,7 @@ Uygulama tarafında TMWS SSO 'yu yapılandırmak için bu adımları izleyin.
 Azure AD hizmetini yapılandırdıktan ve Kullanıcı kimlik doğrulama yöntemi olarak Azure AD 'yi belirttikten sonra, kurulumunuzu doğrulamak için TMWS ara sunucusunda oturum açabilirsiniz. Azure AD oturum açma Hesabınızı doğruladıktan sonra, internet 'i ziyaret edebilirsiniz.
 
 > [!NOTE]
-> Tmws, Azure AD portalındaki çoklu oturum açmayı test etmeyi desteklemez, **genel bakış**  >  **Çoklu oturum açma**altında  >  Yeni kurumsal uygulamanızın**SAML testinde çoklu oturum açma ayarı**yapın  >  **Test** .
+> Tmws, Azure AD portalındaki çoklu oturum açmayı test etmeyi desteklemez, **genel bakış**  >  **Çoklu oturum açma** altında  >  Yeni kurumsal uygulamanızın **SAML testinde çoklu oturum açma ayarı** yapın  >  **Test** .
 
 1. Tüm tanımlama bilgilerinin tarayıcısını temizleyin ve ardından tarayıcıyı yeniden başlatın. 
 

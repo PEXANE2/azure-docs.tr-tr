@@ -8,11 +8,11 @@ ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
 ms.openlocfilehash: dd0617536147787f436e5817f3f2367a19ba6aa4
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696192"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009288"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Azure genel Load Balancer yükseltme
 [Azure Standart Load Balancer](load-balancer-overview.md) , bölge artıklığı aracılığıyla zengin bir işlev kümesi ve yüksek kullanılabilirlik sağlar. Load Balancer SKU 'SU hakkında daha fazla bilgi için bkz. [karşılaştırma tablosu](./skus.md#skus).
@@ -103,7 +103,7 @@ Aşağıda, yeni oluşturulan Standart genel Load Balancer için arka uç havuzl
    
     1. Temel Load Balancer arka uç havuzuyla eşleşen arka uç havuzunu seçin, aşağıdaki değeri seçin: 
       - **Sanal makine**: açılır ve temel Load Balancer eşleşen arka uç havuzundan VM 'leri seçin.
-    1. **Kaydet**’i seçin.
+    1. **Kaydet**'i seçin.
     >[!NOTE]
     >Ortak IP 'leri olan VM 'Ler için, ilk olarak aynı IP adresinin garantili olmadığı standart IP adresleri oluşturmanız gerekecektir. VM 'Lerin temel IP 'lerden ilişkisini kaldırın ve yeni oluşturulan standart IP adresleriyle ilişkilendirin. Ardından, Standart Load Balancer arka uç havuzuna VM 'Ler eklemek için yönergeleri takip edebilirsiniz. 
 

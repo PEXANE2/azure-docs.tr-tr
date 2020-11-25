@@ -4,11 +4,11 @@ description: Azure Site Recovery hizmetini kullanarak olağanüstü durum kurtar
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.openlocfilehash: 0dcde98e8dcaef12896c18c25429f0ba7b1b27d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84485334"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009730"
 ---
 # <a name="create-and-customize-recovery-plans"></a>Kurtarma planlarını oluşturma ve özelleştirme
 
@@ -35,7 +35,7 @@ Bu makalede, [Azure Site Recovery](site-recovery-overview.md)'de yük devretme i
     - VMM tarafından yönetilen VMware VM 'leri ve Hyper-V VM 'lerini aynı planda ekleyebilirsiniz.
     - VMware VM 'Leri ve fiziksel sunucuları aynı planda olabilir.
 
-4. **Öğe seçin sanal makineler**bölümünde, plana eklemek istediğiniz makineleri (veya çoğaltma grubunu) seçin. Daha sonra, **Tamam**'a tıklayın.
+4. **Öğe seçin sanal makineler** bölümünde, plana eklemek istediğiniz makineleri (veya çoğaltma grubunu) seçin. Daha sonra, **Tamam**'a tıklayın.
     - Makineler, planda varsayılan grup (Grup 1) olarak eklenir. Yük devretmeden sonra, bu gruptaki tüm makineler aynı anda başlatılır.
     - Yalnızca belirttiğiniz kaynak ve hedef konumlarda makineler seçebilirsiniz. 
 5. Planı oluşturmak için **Tamam** ' ı tıklatın.
@@ -77,7 +77,7 @@ Bir komut dosyası veya el ile eylem ekleyerek bir kurtarma planını özelleşt
     1. Tüm yük devretme türleri için el ile eylem eklemek isteyip istemediğinizi belirtin (test, yük devretme, planlı yük devretme (ilgiliyse)). Daha sonra, **Tamam**'a tıklayın.
 4. Bir betik eklemek istiyorsanız, aşağıdakileri yapın:
     1. VMM betiği ekliyorsanız, **VMM betiğine yük devretme**' yı seçin ve **betik yolu** ' nda, paylaşımın göreli yolunu yazın. Örneğin, paylaşma \\ \<VMMServerName> \Msscvmmlibrary\rpscripts dizininde bulunuyorsa, yolu belirtin: \RPScripts\RPScript.PS1.
-    1. Bir Azure Otomasyonu çalıştırma defteri ekliyorsanız, runbook 'un bulunduğu **Azure Otomasyonu hesabını** belirtin ve uygun **Azure runbook betiğini**seçin.
+    1. Bir Azure Otomasyonu çalıştırma defteri ekliyorsanız, runbook 'un bulunduğu **Azure Otomasyonu hesabını** belirtin ve uygun **Azure runbook betiğini** seçin.
 5. Komut dosyasının beklendiği gibi çalıştığından emin olmak için kurtarma planının test yük devretmesini çalıştırın.
 
 ## <a name="watch-a-video"></a>Nasıl yapılacağını görmek için

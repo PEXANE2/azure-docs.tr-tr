@@ -4,17 +4,17 @@ description: SWIFT CSP-cscf V2020 şema örneğinin denetim eşlemesi. Her denet
 ms.date: 08/18/2020
 ms.topic: sample
 ms.openlocfilehash: 5aa4ee556c4ec7348566f45592b5e9fbf00eaf20
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932201"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009407"
 ---
 # <a name="control-mapping-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>SWIFT CSP-cscf V2020 şema örneğinin denetim eşlemesi
 
 Aşağıdaki makalede, Azure şemaları Swift CSP-cscf V2020 şema örneği 'nin Swift CSP-cscf V2020 denetimlerine nasıl eşleştiği açıklanır. Denetimler hakkında daha fazla bilgi için bkz. [SWIFT CSP-CSCF V2020](https://www.swift.com/myswift/customer-security-programme-csp).
 
-Aşağıdaki eşlemeler **SWIFT CSP-CSCF V2020** denetimlerine göre yapılır. Sağ taraftaki gezinmeyi kullanarak doğrudan belirli bir denetim eşlemesine atlayın. Eşlenmiş denetimlerin birçoğu bir [Azure Policy](../../../policy/overview.md) girişimi ile uygulanır. Tüm girişimi gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin. Ardından, önizlemeyi bulun ve seçin: denetim gereksinimleri yerleşik ilke girişimi ' ni ** \[ \] desteklemek için SWIFT CSP-cscf V2020 denetimlerini denetleme ve belirli VM uzantılarını dağıtma** .
+Aşağıdaki eşlemeler **SWIFT CSP-CSCF V2020** denetimlerine göre yapılır. Sağ taraftaki gezinmeyi kullanarak doğrudan belirli bir denetim eşlemesine atlayın. Eşlenmiş denetimlerin birçoğu bir [Azure Policy](../../../policy/overview.md) girişimi ile uygulanır. Tüm girişimi gözden geçirmek için Azure portal **ilkeyi** açın ve **tanımlar** sayfasını seçin. Ardından, önizlemeyi bulun ve seçin: denetim gereksinimleri yerleşik ilke girişimi ' ni **\[ \] desteklemek için SWIFT CSP-cscf V2020 denetimlerini denetleme ve belirli VM uzantılarını dağıtma** .
 
 > [!IMPORTANT]
 > Aşağıdaki her denetim bir veya daha fazla [Azure ilke](../../../policy/overview.md) tanımı ile ilişkilidir. Bu ilkeler, denetimiyle [uyumluluğu değerlendirmenize](../../../policy/how-to/get-compliance-data.md) yardımcı olabilir; Ancak, bir denetim ile bir veya daha fazla ilke arasında genellikle bire bir veya tam eşleşme yoktur. Bu nedenle, Azure Ilkesi ile **uyumlu** , yalnızca ilkelerin kendilerine başvurur; Bu, bir denetimin tüm gereksinimleriyle tamamen uyumlu olduğunuzdan emin değildir. Buna ek olarak, uyumluluk standardı şu anda herhangi bir Azure Ilke tanımı tarafından açıklanmayan denetimler içerir. Bu nedenle, Azure Ilkesinde uyumluluk, genel uyumluluk durumunuzu yalnızca kısmi görünümüdür. Bu uyumluluk şeması örneği için denetimler ve Azure Ilke tanımları arasındaki ilişkilendirmeler zaman içinde değişebilir. Değişiklik geçmişini görüntülemek için [GitHub kayıt geçmişine](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/swift-2020/control-mapping.md)bakın.

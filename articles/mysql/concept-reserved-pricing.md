@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.openlocfilehash: 33c2617a22945ecb11586bc282e7f9f61b6e49ca
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240911"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008557"
 ---
 # <a name="prepay-for-azure-database-for-mysql-compute-resources-with-reserved-capacity"></a>Ayrılmış kapasiteye sahip MySQL için Azure veritabanı işlem kaynakları için ön ödeme
 
@@ -38,7 +38,7 @@ Ayırma boyutu, belirli bir bölgedeki mevcut veya kısa süreli dağıtılan su
 ## <a name="buy-azure-database-for-mysql-reserved-capacity"></a>MySQL için Azure veritabanı ayrılmış kapasitesi satın alın
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
-2. **Tüm hizmetler** > **Rezervasyonlar** ’ı seçin.
+2. **Tüm hizmetler** > **Rezervasyonlar**’ı seçin.
 3. **Ekle** ' yi seçin ve ardından satın alma rezervasyonları bölmesinde MySQL **için Azure veritabanı** ' nı seçerek MySQL veritabanlarınız için yeni bir ayırma satın alabilirsiniz.
 4. Gerekli alanları doldur. ' Yi seçtiğiniz özniteliklerle eşleşen mevcut veya yeni veritabanları, ayrılmış kapasite indirimi elde etmek için nitelendir ' ı seçin. İskontoyu alan MySQL için Azure veritabanı sunucularınızın gerçek sayısı, seçilen kapsama ve miktara bağlıdır.
 
@@ -51,7 +51,7 @@ Aşağıdaki tablo gerekli alanları açıklar.
 | Alan | Açıklama |
 | :------------ | :------- |
 | Abonelik   | MySQL için Azure veritabanı ayrılmış kapasite ayırması için ödeme yapmak üzere kullanılan abonelik. Abonelikteki ödeme yöntemi, MySQL için Azure veritabanı ayrılmış kapasite rezervasyonu için ön maliyetler üzerinden ücretlendirilir. Abonelik türü bir kurumsal anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya kullandıkça öde fiyatlandırması (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P) içeren tek bir anlaşma olmalıdır. Kurumsal abonelik için ücretler kaydın maddi işlem bakiyesinden düşülür ve fazla kullanım olarak ücretlendirilir. Kullandıkça Öde fiyatlandırmasına sahip bireysel bir abonelik için ücretler, abonelik üzerindeki kredi kartına veya fatura ödeme yöntemine faturalandırılır.
-| Kapsam | VCore rezervasyonunun kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir. Şunları seçerseniz: </br></br> **, Sanal** çekirdek ayırma indirimi, faturalandırma bağlamınızın içindeki aboneliklerde çalışan MySQL sunucuları Için Azure veritabanı 'na uygulanır. Kurumsal müşteriler için, paylaşılan kapsam kayıt içindedir ve kayıt dahilindeki tüm abonelikleri içerir. Kullandıkça Öde müşterileri için paylaşılan kapsam, hesap yöneticisi tarafından oluşturulan tüm Kullandıkça Öde abonelikleridir.</br></br> **Tek abonelik** , sanal çekirdek ayırma indirimi Bu abonelikteki MySQL sunucuları Için Azure veritabanı 'na uygulanır. </br></br> **Tek kaynak grubu** , rezervasyon indirimi seçili abonelikteki MySQL sunucuları Için Azure veritabanı ve bu abonelikteki seçili kaynak grubu için geçerlidir.
+| Kapsam | VCore rezervasyonunun kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir. Şunları seçerseniz: </br></br> **, Sanal** çekirdek ayırma indirimi, faturalandırma bağlamınızın içindeki aboneliklerde çalışan MySQL sunucuları Için Azure veritabanı 'na uygulanır. Kurumsal müşteriler için, paylaşılan kapsam kayıt içindedir ve kayıt dahilindeki tüm abonelikleri içerir. Kullandıkça Öde müşterileri için paylaşılan kapsam, hesap yöneticisi tarafından oluşturulan tüm Kullandıkça Öde abonelikleridir.</br></br> **Tek abonelik**, sanal çekirdek ayırma indirimi Bu abonelikteki MySQL sunucuları Için Azure veritabanı 'na uygulanır. </br></br> **Tek kaynak grubu**, rezervasyon indirimi seçili abonelikteki MySQL sunucuları Için Azure veritabanı ve bu abonelikteki seçili kaynak grubu için geçerlidir.
 | Region | MySQL için Azure veritabanı ayrılmış kapasite rezervasyonu kapsamındaki Azure bölgesi.
 | Dağıtım türü | Ayırmasını satın almak istediğiniz MySQL için Azure veritabanı kaynak türü.
 | Performans katmanı | MySQL için Azure veritabanı sunucuları için hizmet katmanı.

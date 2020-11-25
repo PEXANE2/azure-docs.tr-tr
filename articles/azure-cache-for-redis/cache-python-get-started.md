@@ -12,11 +12,11 @@ ms.custom:
 - devx-track-python
 ms.date: 11/05/2019
 ms.openlocfilehash: 79add54478e9cd52ffd3041d5f85bf588929b44f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099445"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008880"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-python"></a>Hızlı başlangıç: Python 'da Redsıs için Azure önbelleğini kullanma
 
@@ -100,8 +100,8 @@ Kaynak grubunu ve Azure örneği için Redis Cache silmek için:
 
 1. [Azure Portal](https://portal.azure.com), **kaynak gruplarını** arayıp seçin.
 1. **Ada göre filtrele** metin kutusunda, önbellek örneğinizi içeren kaynak grubunun adını girin ve arama sonuçlarından bunu seçin. 
-1. Kaynak grubu sayfanızda **kaynak grubunu sil** ' i seçin.
-1. Kaynak grubu adını yazın ve ardından **Sil** ' i seçin.
+1. Kaynak grubu sayfanızda **kaynak grubunu sil**' i seçin.
+1. Kaynak grubu adını yazın ve ardından **Sil**' i seçin.
    
    ![Redsıs için Azure önbelleği için kaynak grubunuzu silme](./media/cache-python-get-started/delete-your-resource-group-for-azure-cache-for-redis.png)
 

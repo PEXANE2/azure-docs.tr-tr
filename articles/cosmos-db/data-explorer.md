@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: dech
 ms.openlocfilehash: 691a2e56230d312416aed3d68bffd361f1d63558
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637124"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008591"
 ---
 # <a name="work-with-data-using-azure-cosmos-explorer"></a>Azure Cosmos gezginini kullanarak verilerle çalışma 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -30,17 +30,17 @@ Azure Cosmos DB Explorer, Azure Cosmos DB depolanan verileri görüntülemenize 
 
 2. **Tüm kaynaklardan** Azure Cosmos DB hesabınıza gidin, anahtarlar ' ı seçin ve **birincil bağlantı dizesini** kopyalayın.  
 
-3. Adresine gidin https://cosmos.azure.com/ , bağlantı dizesini yapıştırın ve **Bağlan** ' ı seçin. Bağlantı dizesini kullanarak, Azure Cosmos DB Gezgini 'ne herhangi bir zaman sınırlaması olmadan erişebilirsiniz.  
+3. Adresine gidin https://cosmos.azure.com/ , bağlantı dizesini yapıştırın ve **Bağlan**' ı seçin. Bağlantı dizesini kullanarak, Azure Cosmos DB Gezgini 'ne herhangi bir zaman sınırlaması olmadan erişebilirsiniz.  
 
    Diğer kullanıcıların Azure Cosmos DB hesabınıza geçici olarak erişmesini sağlamak istiyorsanız, okuma-yazma ve okuma erişimi URL 'Lerini kullanarak bunu yapabilirsiniz. 
 
-4. **Veri Gezgini** dikey penceresini açın, **tam ekran aç** ' ı seçin. Açılır iletişim kutusunda, iki erişim URL 'sini görüntüleyebilirsiniz – **okuma-yazma** ve **okuma**. Bu URL 'Ler Azure Cosmos DB hesabınızı diğer kullanıcılarla geçici olarak paylaşmanızı sağlar. Hesap erişimi, yeni bir erişim URL 'SI veya bağlantı dizesi kullanarak yeniden bağlanabildikten sonra 24 saat sonra sona erer. 
+4. **Veri Gezgini** dikey penceresini açın, **tam ekran aç**' ı seçin. Açılır iletişim kutusunda, iki erişim URL 'sini görüntüleyebilirsiniz – **okuma-yazma** ve **okuma**. Bu URL 'Ler Azure Cosmos DB hesabınızı diğer kullanıcılarla geçici olarak paylaşmanızı sağlar. Hesap erişimi, yeni bir erişim URL 'SI veya bağlantı dizesi kullanarak yeniden bağlanabildikten sonra 24 saat sonra sona erer. 
 
    **Okuma-yazma** : URL 'yi diğer kullanıcılarla Read-Write paylaştığınızda, bu ilgili hesapla ilişkili veritabanlarını, koleksiyonları, sorguları ve diğer kaynakları görüntüleyebilir ve değiştirebilirler.
 
    **Okuma** -salt okuma URL 'sini diğer kullanıcılarla paylaştığınızda, bu ilgili hesapla ilişkili veritabanlarını, koleksiyonları, sorguları ve diğer kaynakları görüntüleyebilirler. Örneğin, bir sorgunun sonuçlarını Azure portal veya Azure Cosmos DB hesabınıza erişimi olmayan takım arkadaşlarınızla paylaşmak istiyorsanız, bu URL ile birlikte sağlayabilirsiniz.
 
-   Hesabı açmak istediğiniz erişim türünü seçin ve **Aç** ' a tıklayın. Gezgin 'i açtıktan sonra, deneyim, Azure portal Veri Gezgini sekmesi ile aynı olur.
+   Hesabı açmak istediğiniz erişim türünü seçin ve **Aç**' a tıklayın. Gezgin 'i açtıktan sonra, deneyim, Azure portal Veri Gezgini sekmesi ile aynı olur.
 
    :::image type="content" source="./media/data-explorer/open-data-explorer-with-access-url.png" alt-text="Azure Cosmos DB Gezginini aç":::
 

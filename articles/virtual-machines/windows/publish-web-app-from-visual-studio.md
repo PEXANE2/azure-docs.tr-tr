@@ -11,17 +11,17 @@ ms.topic: how-to
 ms.date: 11/03/2017
 ms.author: ghogen
 ms.openlocfilehash: bdc03e8c136606ab7768705b0c8dbcc97782966f
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "87088402"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008897"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Visual Studio 'dan bir Azure VM 'de ASP.NET Web uygulaması yayımlama
 
 Bu belgede, Visual Studio 2019 ' de **Microsoft Azure sanal makineler** yayımlama özelliğini kullanarak bir Azure sanal MAKINESINE (VM) bir ASP.NET Web uygulamasının nasıl yayımlanacağı açıklanmaktadır.  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bir ASP.NET projesini bir Azure sanal makinesine yayımlamak için Visual Studio 'yu kullanabilmek üzere VM 'nin doğru şekilde ayarlanması gerekir.
 
 - Makinenin bir ASP.NET Web uygulaması çalıştıracak şekilde yapılandırılması ve WebDeploy 'nin yüklü olması gerekir. Daha fazla bilgi için bkz. [WebDeploy ile ASP.net VM oluşturma](https://github.com/aspnet/Tooling/blob/AspNetVMs/docs/create-asp-net-vm-with-webdeploy.md).
@@ -37,7 +37,7 @@ Aşağıdaki bölümde, mevcut bir ASP.NET Web uygulamasının bir Azure sanal m
 
    ![Yayımla sayfası-sağ ok]
 
-4. **Microsoft Azure sanal makineler** simgesini seçin ve **Yayımla** ' yı seçin.
+4. **Microsoft Azure sanal makineler** simgesini seçin ve **Yayımla**' yı seçin.
 
    ![Yayımlama sayfası-Microsoft Azure sanal makine simgesi]
 
@@ -87,7 +87,7 @@ Web uygulamanızda güncelleştirmeleri yayımlamak için Yayımla sayfasındaki
 
 ### <a name="modify-publish-profile-settings"></a>Yayımlama profili ayarlarını değiştir
 
-Yayımlama profili ayarlarını görüntülemek ve değiştirmek için **ayarlar...** ' ı seçin.  
+Yayımlama profili ayarlarını görüntülemek ve değiştirmek için **ayarlar...**' ı seçin.  
 
 ![Yayımlama sayfası-Ayarlar düğmesi]
 

@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
 ms.openlocfilehash: dc4d1b852b0a498de0834731b2b1cd1225b9748b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107785"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008863"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics ağ geçidini kullanarak internet erişimi olmadan bilgisayarları bağlama
 
@@ -106,17 +106,17 @@ Log Analytics Gateway kurulum dosyasının en son sürümünü Microsoft Indirme
 
 Azure portal Log Analytics ağ geçidini almak için şu adımları izleyin:
 
-1. Hizmetler listesine gidip **Log Analytics**seçin. 
+1. Hizmetler listesine gidip **Log Analytics** seçin. 
 1. Bir çalışma alanı seçin.
-1. Çalışma alanı Dikey penceresindeki **genel**altında **hızlı başlangıç**' yi seçin. 
-1. **Çalışma alanına bağlanacak bir veri kaynağı seçin**altında **bilgisayarlar**' ı seçin.
+1. Çalışma alanı Dikey penceresindeki **genel** altında **hızlı başlangıç**' yi seçin. 
+1. **Çalışma alanına bağlanacak bir veri kaynağı seçin** altında **bilgisayarlar**' ı seçin.
 1. **Doğrudan aracı** dikey penceresinde **Log Analytics ağ geçidini indir**' i seçin.
  
    ![Log Analytics ağ geçidini indirme adımlarının ekran görüntüsü](./media/gateway/download-gateway.png)
 
 veya 
 
-1. Çalışma alanı Dikey penceresinde **Ayarlar**altında **Gelişmiş ayarlar**' ı seçin.
+1. Çalışma alanı Dikey penceresinde **Ayarlar** altında **Gelişmiş ayarlar**' ı seçin.
 1. **Bağlı kaynaklar**  >  **Windows Server** ' a gidin ve **Log Analytics ağ geçidini indir**' i seçin.
 
 ## <a name="install-log-analytics-gateway-using-setup-wizard"></a>Kurulum sihirbazını kullanarak Log Analytics ağ geçidini yükleme
@@ -143,7 +143,7 @@ Kurulum Sihirbazı 'nı kullanarak bir ağ geçidi yüklemek için aşağıdaki 
 1. Microsoft Update etkinleştirilmemişse, Microsoft Update sayfası görüntülenir ve etkinleştirmeyi seçebilirsiniz. Bir seçim yapın ve ardından **İleri**' yi seçin. Aksi halde, bir sonraki adıma devam edin.
 1. **Hedef klasör** sayfasında, C:\Program Files\oms Gateway varsayılan klasörünü bırakın ya da ağ geçidini yüklemek istediğiniz konumu girin. Sonra **İleri**’yi seçin.
 1. **Yüklemeye hazırlanma** sayfasında, **yükler**' i seçin. Kullanıcı hesabı denetimi, yüklemek için izin isterse, **Evet**' i seçin.
-1. Kurulum bittikten sonra **son**' u seçin. Hizmetin çalıştığını doğrulamak için, Services. msc ek bileşenini açın ve **OMS ağ geçidinin** hizmet listesinde göründüğünü ve durumunun **çalıştığını**doğrulayın.
+1. Kurulum bittikten sonra **son**' u seçin. Hizmetin çalıştığını doğrulamak için, Services. msc ek bileşenini açın ve **OMS ağ geçidinin** hizmet listesinde göründüğünü ve durumunun **çalıştığını** doğrulayın.
 
    ![OMS ağ geçidinin çalıştığını gösteren yerel hizmetlerin ekran görüntüsü](./media/gateway/gateway-service.png)
 
@@ -203,10 +203,10 @@ Windows Server 2016 Ağ Yükü Dengeleme kümesini nasıl tasarlayacağınızı 
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 
-Bir Azure Load Balancer tasarlamayı ve dağıtmayı öğrenmek için bkz. Azure Load Balancer nedir [?](../../load-balancer/load-balancer-overview.md). Temel yük dengeleyiciyi dağıtmak için, **arka uç sunucuları oluşturma**bölümünde özetlenen adımları dışlayarak bu [hızlı](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) başlangıçta özetlenen adımları izleyin.   
+Bir Azure Load Balancer tasarlamayı ve dağıtmayı öğrenmek için bkz. Azure Load Balancer nedir [?](../../load-balancer/load-balancer-overview.md). Temel yük dengeleyiciyi dağıtmak için, **arka uç sunucuları oluşturma** bölümünde özetlenen adımları dışlayarak bu [hızlı](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) başlangıçta özetlenen adımları izleyin.   
 
 > [!NOTE]
-> **Temel SKU 'yu**kullanarak Azure Load Balancer yapılandırma, Azure sanal makinelerinin bir kullanılabilirlik kümesine ait olmasını gerektirir. Kullanılabilirlik kümeleri hakkında daha fazla bilgi edinmek için bkz. [Azure 'Da Windows sanal makinelerinin kullanılabilirliğini yönetme](../../virtual-machines/manage-availability.md). Mevcut sanal makineleri bir kullanılabilirlik kümesine eklemek için [Azure Resource Manager VM kullanılabilirlik kümesi ayarla](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)' ya bakın.
+> **Temel SKU 'yu** kullanarak Azure Load Balancer yapılandırma, Azure sanal makinelerinin bir kullanılabilirlik kümesine ait olmasını gerektirir. Kullanılabilirlik kümeleri hakkında daha fazla bilgi edinmek için bkz. [Azure 'Da Windows sanal makinelerinin kullanılabilirliğini yönetme](../../virtual-machines/manage-availability.md). Mevcut sanal makineleri bir kullanılabilirlik kümesine eklemek için [Azure Resource Manager VM kullanılabilirlik kümesi ayarla](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)' ya bakın.
 > 
 
 Yük dengeleyici oluşturulduktan sonra, trafiği bir veya daha fazla ağ geçidi sunucusuna dağıtan bir arka uç havuzunun oluşturulması gerekir. Hızlı başlangıç makalesi bölümünde açıklanan adımları izleyerek [Yük Dengeleyici için kaynak oluşturma](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)bölümüne bakın.  
@@ -252,7 +252,7 @@ Tümleştirmeyi yapılandırmak için, Işletim konsolunu çalıştırdığını
 
 1. Yükseltilmiş bir komut istemi açın:
 
-   a. **Başlat** ' ı seçin ve **cmd**girin.  
+   a. **Başlat** ' ı seçin ve **cmd** girin.  
 
    b. **Komut istemi** ' ne sağ tıklayın ve **yönetici olarak çalıştır**' ı seçin.  
 
@@ -262,7 +262,7 @@ Tümleştirmeyi yapılandırmak için, Işletim konsolunu çalıştırdığını
 
 Log Analytics ile tümleştirmeyi tamamladıktan sonra, çalışırken değişikliği kaldırın `netsh winhttp reset proxy` . Ardından, Işletim konsolunda, Log Analytics ağ geçidi sunucusunu belirtmek için **proxy sunucusunu yapılandır** seçeneğini kullanın. 
 
-1. Operations Manager konsolunda, **Operations Management Suite**altında **bağlantı**' yı seçin ve ardından **proxy sunucusunu yapılandır**' ı seçin.
+1. Operations Manager konsolunda, **Operations Management Suite** altında **bağlantı**' yı seçin ve ardından **proxy sunucusunu yapılandır**' ı seçin.
 
    ![Operations Manager ekran görüntüsü, proxy sunucusunu yapılandırma seçimini gösterir](./media/gateway/scom01.png)
 
@@ -286,7 +286,7 @@ Belirli sunucuları veya grupları Log Analytics ağ geçidi sunucusunu kullanac
 1. Yazma çalışma alanında **kurallar**' ı seçin. 
 1. Operations Manager araç çubuğunda **kapsam** düğmesini seçin. Bu düğme kullanılamıyorsa, **izleme** bölmesinde bir klasör değil bir nesne seçtiğinizden emin olun. **Kapsam yönetim paketi nesneleri** iletişim kutusu, yaygın olarak hedeflenen sınıfların, grupların veya nesnelerin listesini görüntüler. 
 1. **Ara** alanına **sistem sağlığı hizmeti** girin ve listeden seçin. **Tamam**’ı seçin.  
-1. **Danışman proxy ayar kuralını**arayın. 
+1. **Danışman proxy ayar kuralını** arayın. 
 1. Operations Manager araç çubuğunda **geçersiz kılmalar** ' ı seçin ve ardından **sınıfın belirli bir nesnesi Için rule\override** ' ın üzerine gelin: sistem sağlığı hizmeti ve listeden bir nesne seçin.  Veya bu geçersiz kılmayı uygulamak istediğiniz sunucuların sistem sağlığı hizmeti nesnesini içeren özel bir grup oluşturun. Ardından, geçersiz kılmayı özel grubunuza uygulayın.
 1. **Geçersiz kılma özellikleri** iletişim kutusunda, **WebProxyAddress** parametresinin yanındaki **geçersiz kılma** sütununa bir onay işareti ekleyin.  **Geçersiz kılma değeri** alanına Log Analytics ağ geçidi sunucusunun URL 'sini girin. Önekiyle başlamak için dikkatli olun `http://` .  
 
@@ -350,7 +350,7 @@ Ağ Geçidi tarafından günlüğe kaydedilen olayları toplamak için Log Analy
 
 Aşağıdaki tabloda Log Analytics ağ geçidi günlük olaylarının olay kimlikleri ve açıklamaları gösterilmektedir.
 
-| **NUMARASıNı** | **Açıklama** |
+| **ID** | **Açıklama** |
 | --- | --- |
 | 400 |Özel KIMLIĞI olmayan herhangi bir uygulama hatası. |
 | 401 |Yanlış yapılandırma. Örneğin, listenPort = bir tamsayı yerine "metin". |

@@ -4,11 +4,11 @@ description: Uygulama kapsayıcısı görüntülerinin temel görüntüleri ve t
 ms.topic: article
 ms.date: 01/22/2019
 ms.openlocfilehash: 74e5fb81e3ef6f75b5ee2872ee44b99aae096fd8
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93025774"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009832"
 ---
 # <a name="about-base-image-updates-for-acr-tasks"></a>ACR görevleri için temel görüntü güncelleştirmeleri hakkında
 
@@ -52,7 +52,7 @@ Temel görüntünün güncelleştirildiği zaman ve bağımlı görevin tetiklen
 
 ## <a name="additional-considerations"></a>Diğer konular
 
-* **Uygulama görüntüleri Için temel görüntüler** -Şu anda ACR görevi yalnızca uygulama ( *çalışma zamanı* ) görüntüleri için temel görüntü güncelleştirmelerini izler. Çok aşamalı Dockerfiles 'da kullanılan ara ( *buildtime* ) görüntüleri için temel görüntü güncelleştirmelerini izlemez.  
+* **Uygulama görüntüleri Için temel görüntüler** -Şu anda ACR görevi yalnızca uygulama (*çalışma zamanı*) görüntüleri için temel görüntü güncelleştirmelerini izler. Çok aşamalı Dockerfiles 'da kullanılan ara (*buildtime*) görüntüleri için temel görüntü güncelleştirmelerini izlemez.  
 
 * **Varsayılan olarak etkindir** - [az ACR Task Create][az-acr-task-create] komutuyla bir ACR görevi oluşturduğunuzda, varsayılan olarak görev bir temel görüntü güncelleştirmesi *tarafından tetiklenir.* Diğer bir deyişle, `base-image-trigger-enabled` özelliği true olarak ayarlanır. Bir görevde bu davranışı devre dışı bırakmak istiyorsanız, özelliği false olarak güncelleştirin. Örneğin, şu [az ACR Task Update][az-acr-task-update] komutunu çalıştırın:
 

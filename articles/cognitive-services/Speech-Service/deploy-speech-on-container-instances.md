@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: aahi
-ms.openlocfilehash: 5a85086ea8d969dc70f4cd24b25a00765da285eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b77474d63cb47b561f9913ff06be5718aba4152
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89425815"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96009660"
 ---
 # <a name="deploy-the-speech-service-container-to-azure-container-instances"></a>Konuşma hizmeti kapsayıcısını Azure Container Instances dağıtma
 
-Bilişsel Hizmetler [konuşma hizmeti](speech-container-howto.md) kapsayıcısını Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/)dağıtma hakkında bilgi edinin. Bu yordamda, bir Azure konuşma hizmeti kaynağının oluşturulması gösterilmektedir. Ardından, ilişkili kapsayıcı görüntüsünü çekme hakkında tartışın. Son olarak, bir tarayıcıdan ikisini de düzenleme özelliğini vurgulayacağız. Kapsayıcıları kullanmak, geliştiricilerin bu dikkatini, uygulama geliştirmeye odaklanmadan, altyapının bir şekilde yönetilmesini sağlar.
+Bilişsel Hizmetler [konuşma hizmeti](speech-container-howto.md) kapsayıcısını Azure [Container Instances](../../container-instances/index.yml)dağıtma hakkında bilgi edinin. Bu yordamda, bir Azure konuşma hizmeti kaynağının oluşturulması gösterilmektedir. Ardından, ilişkili kapsayıcı görüntüsünü çekme hakkında tartışın. Son olarak, bir tarayıcıdan ikisini de düzenleme özelliğini vurgulayacağız. Kapsayıcıları kullanmak, geliştiricilerin bu dikkatini, uygulama geliştirmeye odaklanmadan, altyapının bir şekilde yönetilmesini sağlar.
 
 [!INCLUDE [Prerequisites](../containers/includes/container-preview-prerequisites.md)]
 

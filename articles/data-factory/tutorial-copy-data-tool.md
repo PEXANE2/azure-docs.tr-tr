@@ -13,11 +13,11 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 11/09/2020
 ms.openlocfilehash: de01a8a8522f93684ed428fd4ef19963b1af2059
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564319"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008353"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Veri Kopyalama aracını kullanarak Azure Blob depolamadan SQL veritabanına veri kopyalama
 
@@ -38,11 +38,11 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 > * Veri Kopyalama aracını kullanarak bir işlem hattı oluşturun.
 > * İşlem hattı ve etkinlik çalıştırmalarını izleme.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* **Azure aboneliği** : Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
-* **Azure depolama hesabı** : BLOB depolama alanını _kaynak_ veri deposu olarak kullanın. Azure depolama hesabınız yoksa [depolama hesabı oluşturma](../storage/common/storage-account-create.md)bölümündeki yönergelere bakın.
-* **Azure SQL veritabanı** : _Havuz_ VERI deposu olarak bir SQL veritabanı kullanın. SQL veritabanınız yoksa, [SQL veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md)bölümündeki yönergelere bakın.
+* **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+* **Azure depolama hesabı**: BLOB depolama alanını _kaynak_ veri deposu olarak kullanın. Azure depolama hesabınız yoksa [depolama hesabı oluşturma](../storage/common/storage-account-create.md)bölümündeki yönergelere bakın.
+* **Azure SQL veritabanı**: _Havuz_ VERI deposu olarak bir SQL veritabanı kullanın. SQL veritabanınız yoksa, [SQL veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md)bölümündeki yönergelere bakın.
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Bir blob ve SQL tablosu oluşturma
 
@@ -93,15 +93,15 @@ Bu adımları gerçekleştirerek BLOB depolama alanınızı ve SQL veritabanın�
 1. Yeni veri fabrikasının oluşturulacağı Azure **aboneliğini** seçin.
 1. **Kaynak Grubu** için aşağıdaki adımlardan birini uygulayın:
 
-    a. **Var olanı kullan** ’ı seçin ve ardından açılır listeden var olan bir kaynak grubu belirleyin.
+    a. **Var olanı kullan**’ı seçin ve ardından açılır listeden var olan bir kaynak grubu belirleyin.
 
-    b. **Yeni oluştur** ’u seçin ve bir kaynak grubunun adını girin.
+    b. **Yeni oluştur**’u seçin ve bir kaynak grubunun adını girin.
     
     Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).
 
-1. **Sürüm** bölümünde **V2** 'yi seçin.
+1. **Sürüm** bölümünde **V2**'yi seçin.
 1. **Konum** bölümünde veri fabrikasının konumunu seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikanız tarafından kullanılan veri depoları (örneğin, Azure Depolama ve SQL Veritabanı) ve işlemler (örneğin, Azure HDInsight) başka konumlarda ve bölgelerde olabilir.
-1. **Oluştur** ’u seçin.
+1. **Oluştur**’u seçin.
 
 1. Oluşturma işlemi tamamlandıktan sonra **Data Factory** giriş sayfası görüntülenir.
 
@@ -113,60 +113,60 @@ Bu adımları gerçekleştirerek BLOB depolama alanınızı ve SQL veritabanın�
 1. **Başlayalım** sayfasında, Veri Kopyalama aracını açmak için **Veri Kopyala** kutucuğunu seçin.
 
     ![Veri Kopyalama aracının kutucuğu](./media/doc-common-process/get-started-page.png)
-1. **Özellikler** sayfasındaki **Görev adı** bölümüne **CopyFromBlobToSqlPipeline** adını girin. Sonra **İleri** ’yi seçin. Data Factory kullanıcı arabirimi, belirtilen görev adına sahip bir işlem hattı oluşturur.
+1. **Özellikler** sayfasındaki **Görev adı** bölümüne **CopyFromBlobToSqlPipeline** adını girin. Sonra **İleri**’yi seçin. Data Factory kullanıcı arabirimi, belirtilen görev adına sahip bir işlem hattı oluşturur.
     ![İşlem hattı oluşturma](./media/tutorial-copy-data-tool/create-pipeline.png)
 
 1. **Kaynak veri deposu** sayfasında aşağıdaki adımları tamamlayın:
 
     a. Bağlantı eklemek için **+ Yeni bağlantı oluştur** ' a tıklayın
 
-    b. Galeriden **Azure Blob depolama** ' yı seçin ve ardından **devam** ' ı seçin.
+    b. Galeriden **Azure Blob depolama** ' yı seçin ve ardından **devam**' ı seçin.
 
-    c. **Yeni bağlı hizmet** sayfasında, Azure aboneliğinizi seçin ve **depolama hesabı adı** listesinden depolama hesabınızı seçin. Bağlantıyı test edin ve **Oluştur** ' u seçin.
+    c. **Yeni bağlı hizmet** sayfasında, Azure aboneliğinizi seçin ve **depolama hesabı adı** listesinden depolama hesabınızı seçin. Bağlantıyı test edin ve **Oluştur**' u seçin.
 
-    d. Kaynak olarak yeni oluşturulan bağlantılı hizmeti seçin ve **İleri** 'ye tıklayın.
+    d. Kaynak olarak yeni oluşturulan bağlantılı hizmeti seçin ve **İleri**'ye tıklayın.
 
     ![Kaynak olarak bağlantılı hizmeti seçin](./media/tutorial-copy-data-tool/select-source-linked-service.png)
 
 1. **Girdi dosyasını veya klasörünü seçin** sayfasında aşağıdaki adımları uygulayın:
 
-    a. **Göz at** 'a tıklayarak **adfv2tutorial/input** klasörüne gidin, **inputEmp.txt** dosyasını seçin ve **Seç** 'e tıklayın.
+    a. **Göz at**'a tıklayarak **adfv2tutorial/input** klasörüne gidin, **inputEmp.txt** dosyasını seçin ve **Seç**'e tıklayın.
 
-    b. Sonraki adıma geçmek için **İleri** 'ye tıklayın.
+    b. Sonraki adıma geçmek için **İleri**'ye tıklayın.
 
-1. **Dosya biçimi ayarları** sayfasında, ilk satır için onay kutusunu *üst bilgi olarak* etkinleştirin. Aracın sütun ve satır sınırlayıcılarını otomatik olarak algıladığına dikkat edin. **İleri** ’yi seçin. Ayrıca, verilerin önizlemesini yapabilir ve bu sayfadaki giriş verilerinin şemasını görüntüleyebilirsiniz.
+1. **Dosya biçimi ayarları** sayfasında, ilk satır için onay kutusunu *üst bilgi olarak* etkinleştirin. Aracın sütun ve satır sınırlayıcılarını otomatik olarak algıladığına dikkat edin. **İleri**’yi seçin. Ayrıca, verilerin önizlemesini yapabilir ve bu sayfadaki giriş verilerinin şemasını görüntüleyebilirsiniz.
 
     ![Dosya biçimi ayarları](./media/tutorial-copy-data-tool/file-format-settings-page.png)
 1. **Hedef veri deposu** sayfasında aşağıdaki adımları tamamlayın:
 
     a. Bağlantı eklemek için **+ Yeni bağlantı oluştur** ' a tıklayın
 
-    b. Galeriden **Azure SQL veritabanı** ' nı seçin ve ardından **devam** ' ı seçin.
+    b. Galeriden **Azure SQL veritabanı** ' nı seçin ve ardından **devam**' ı seçin.
 
-    c. **Yeni bağlı hizmet** sayfasında, açılır listeden sunucu ADıNıZı ve DB adınızı seçin, Kullanıcı adı ve parolayı belirtip **Oluştur** ' u seçin.
+    c. **Yeni bağlı hizmet** sayfasında, açılır listeden sunucu ADıNıZı ve DB adınızı seçin, Kullanıcı adı ve parolayı belirtip **Oluştur**' u seçin.
 
     ![Azure SQL veritabanını yapılandırma](./media/tutorial-copy-data-tool/config-azure-sql-db.png)
 
-    d. Kaynak olarak yeni oluşturulan bağlantılı havuz hizmetini seçin ve **İleri** 'ye tıklayın.
+    d. Kaynak olarak yeni oluşturulan bağlantılı havuz hizmetini seçin ve **İleri**'ye tıklayın.
 
-1. **Tablo eşleme** sayfasında **[dbo].[emp]** tablosunu seçip **İleri** ’yi seçin.
+1. **Tablo eşleme** sayfasında **[dbo].[emp]** tablosunu seçip **İleri**’yi seçin.
 
-1. **Sütun eşleme** sayfasında, giriş dosyasındaki ikinci ve üçüncü **sütunların, urluya tablosunun** **FirstName** ve **LastName** sütunlarına eşlendiğine dikkat edin. Bir hata olmadığından emin olmak için eşlemeyi ayarlayın ve ardından **İleri** ' yi seçin.
+1. **Sütun eşleme** sayfasında, giriş dosyasındaki ikinci ve üçüncü **sütunların, urluya tablosunun** **FirstName** ve **LastName** sütunlarına eşlendiğine dikkat edin. Bir hata olmadığından emin olmak için eşlemeyi ayarlayın ve ardından **İleri**' yi seçin.
 
     ![Sütun eşleme sayfası](./media/tutorial-copy-data-tool/column-mapping.png)
 
-1. **Ayarlar** sayfasında **İleri** ’yi seçin.
+1. **Ayarlar** sayfasında **İleri**’yi seçin.
 
-1. **Özet** sayfasında ayarları gözden geçirin ve **İleri** ’yi seçin.
+1. **Özet** sayfasında ayarları gözden geçirin ve **İleri**’yi seçin.
 
-1. **Dağıtım** sayfasında, işlem hattını (görev) izlemek için **İzleyici** ’yi seçin.
+1. **Dağıtım** sayfasında, işlem hattını (görev) izlemek için **İzleyici**’yi seçin.
 
     ![İşlem hattını izleme](./media/tutorial-copy-data-tool/monitor-pipeline.png)
     
 1. İşlem hattı çalıştırmaları sayfasında, Listeyi yenilemek için **Yenile** ' yi seçin. Etkinlik çalıştırma ayrıntılarını görüntülemek veya işlem hattını yeniden çalıştırmak için işlem **hattı adı** altındaki bağlantıya tıklayın. 
     ![İşlem hattı çalıştırması](./media/tutorial-copy-data-tool/pipeline-run.png)
 
-1. Etkinlik çalıştırmaları sayfasında, kopyalama işlemi hakkında daha fazla bilgi için **etkınlık adı** sütununun altındaki **Ayrıntılar** bağlantısını (eyegözlük simgesi) seçin. İşlem hattı çalıştırmaları görünümüne geri dönmek için, içerik haritası menüsünde **tüm işlem hattı çalıştırmaları** bağlantısını seçin. Görünümü yenilemek için **Yenile** ’yi seçin.
+1. Etkinlik çalıştırmaları sayfasında, kopyalama işlemi hakkında daha fazla bilgi için **etkınlık adı** sütununun altındaki **Ayrıntılar** bağlantısını (eyegözlük simgesi) seçin. İşlem hattı çalıştırmaları görünümüne geri dönmek için, içerik haritası menüsünde **tüm işlem hattı çalıştırmaları** bağlantısını seçin. Görünümü yenilemek için **Yenile**’yi seçin.
 
     ![Etkinlik çalıştırmalarını izleme](./media/tutorial-copy-data-tool/activity-monitoring.png)
 

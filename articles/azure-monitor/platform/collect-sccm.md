@@ -7,16 +7,16 @@ author: bwren
 ms.author: bwren
 ms.date: 08/28/2019
 ms.openlocfilehash: 20d55de7ef0f7b7f49b922409f8cb61874fae0f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448158"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008982"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Configuration Manager Azure Izleyici 'ye bağlama
 Cihaz koleksiyonu verilerini eşitlemek ve Azure Izleyici ve Azure Otomasyonu 'nda bu koleksiyonlara başvurmak için Microsoft uç nokta Configuration Manager ortamınızı Azure Izleyici 'ye bağlayabilirsiniz.  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Izleyici Configuration Manager geçerli dalı, sürüm 1606 ve üstünü destekler.
 
@@ -81,7 +81,7 @@ Configuration Manager hizmet bağlantı noktası site sistemi rolünü barındı
 
     1. Configuration Manager nesne için bir **ad** belirtin.
     2. Hizmeti tanımlamanızı sağlayacak isteğe bağlı bir **Açıklama** belirtin.
-    3. Azure hizmeti **OMS bağlayıcısını**seçin.
+    3. Azure hizmeti **OMS bağlayıcısını** seçin.
 
     >[!NOTE]
     >OMS artık Azure Izleyici 'nin bir özelliği olan Log Analytics olarak adlandırılır.
@@ -98,17 +98,17 @@ Configuration Manager hizmet bağlantı noktası site sistemi rolünü barındı
 
     3. **Uygulama adının** uygulama adını belirtin.
 
-    4. Daha önce oluşturulan oluşturulan Azure AD uygulamasının uygulama KIMLIĞI olan **ISTEMCI kimliği**için belirtin.
+    4. Daha önce oluşturulan oluşturulan Azure AD uygulamasının uygulama KIMLIĞI olan **ISTEMCI kimliği** için belirtin.
 
-    5. Oluşturulan Azure AD uygulamasının Istemci gizli anahtarını **gizli anahtar**için belirtin.
+    5. Oluşturulan Azure AD uygulamasının Istemci gizli anahtarını **gizli anahtar** için belirtin.
 
-    6. **Gizli anahtar süre sonu**için anahtarın süre sonu tarihini belirtin.
+    6. **Gizli anahtar süre sonu** için anahtarın süre sonu tarihini belirtin.
 
-    7. Daha önce oluşturulan oluşturulan Azure AD uygulamasının uygulama KIMLIĞI URI 'si olan **uygulama kimliği URI 'si**için belirtin.
+    7. Daha önce oluşturulan oluşturulan Azure AD uygulamasının uygulama KIMLIĞI URI 'si olan **uygulama kimliği URI 'si** için belirtin.
 
-    8. **Doğrula** ' yı seçin ve sağ tarafta, sonuçların **başarıyla doğrulanması**gerektiğini gösterir!.
+    8. **Doğrula** ' yı seçin ve sağ tarafta, sonuçların **başarıyla doğrulanması** gerektiğini gösterir!.
 
-8. **Yapılandırma** sayfasında, Azure **abonelikleri**, **Azure Kaynak grubu**ve **Operations Management Suite çalışma alanı** alanlarının, Azure AD uygulamasının kaynak grubunda yeterli izinlere sahip olduğunu belirten önceden doldurulduğu bilgileri gözden geçirin. Alanlar boşsa, uygulamanızın gerekli haklara sahip olmadığını gösterir. Toplanacak ve çalışma alanına iletecek cihaz koleksiyonlarını seçin ve ardından **Ekle**' yi seçin.
+8. **Yapılandırma** sayfasında, Azure **abonelikleri**, **Azure Kaynak grubu** ve **Operations Management Suite çalışma alanı** alanlarının, Azure AD uygulamasının kaynak grubunda yeterli izinlere sahip olduğunu belirten önceden doldurulduğu bilgileri gözden geçirin. Alanlar boşsa, uygulamanızın gerekli haklara sahip olmadığını gösterir. Toplanacak ve çalışma alanına iletecek cihaz koleksiyonlarını seçin ve ardından **Ekle**' yi seçin.
 
 9. **Ayarları onaylayın** sayfasında seçenekleri gözden geçirin ve bağlantıyı oluşturmaya ve yapılandırmaya başlamak için **İleri** ' yi seçin.
 
@@ -121,7 +121,7 @@ Configuration Manager Azure Izleyici 'ye bağladıktan sonra, koleksiyonları ek
 Parola veya gizli anahtar süresinin dolması veya kaybolması durumunda Log Analytics bağlantısı özelliklerini el ile güncelleştirmeniz gerekir.
 
 1. Configuration Manager **Yönetim** çalışma alanında **Cloud Services** ' i seçin ve OMS **bağlantısı Özellikler** sayfasını açmak için **OMS Bağlayıcısı** ' nı seçin.
-2. Bu sayfada, **kiracınızı**, **istemci kimliğinizi**, **istemci gizli anahtarı süre sonunu**görüntülemek için **Azure Active Directory** sekmesine tıklayın. Süresi dolmuşsa, **istemci gizli anahtarınızı** **doğrulayın** .
+2. Bu sayfada, **kiracınızı**, **istemci kimliğinizi**, **istemci gizli anahtarı süre sonunu** görüntülemek için **Azure Active Directory** sekmesine tıklayın. Süresi dolmuşsa, **istemci gizli anahtarınızı** **doğrulayın** .
 
 ## <a name="import-collections"></a>Koleksiyonları içeri aktar
 
@@ -129,7 +129,7 @@ Configuration Manager bir Log Analytics bağlantısı ekledikten ve aracıyı Co
 
 Hiyerarşinizden cihaz koleksiyonlarını içeri aktarmaya yönelik ilk yapılandırmayı tamamladıktan sonra, Üyelik güncel tutulması için koleksiyon bilgileri her 3 saatte bir alınır. Bu seçeneği dilediğiniz zaman devre dışı bırakabilirsiniz.
 
-1. Azure portalının sol alt köşesinde bulunan **Tüm hizmetler**’e tıklayın. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını**seçin.
+1. Azure portalının sol alt köşesinde bulunan **Tüm hizmetler**’e tıklayın. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını** seçin.
 2. Log Analytics çalışma alanları listenizde, Configuration Manager kayıtlı çalışma alanını seçin.  
 3. **Gelişmiş ayarlar**’ı seçin.
 4. **Bilgisayar grupları** ' nı seçin ve ardından **SCCM**' yi seçin.  

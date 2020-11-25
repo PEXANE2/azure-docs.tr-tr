@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 161348f7566ff64858d563f34ad8f3f4c7511adf
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459119"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009169"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Öğretici: F5 ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, F5 'i Azure Active Directory (Azure AD) ile tümleştirmeyi ö�
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -122,7 +122,7 @@ F5 'in tümleştirmesini Azure AD 'ye göre yapılandırmak için Galeri 'den y�
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-f5"></a>F5 için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu F5 ile yapılandırın ve test edin. SSO 'nun çalışması için, F5 'teki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu F5 ile yapılandırın ve test edin. SSO 'nun çalışması için, F5 'teki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu F5 ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -174,7 +174,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -211,7 +211,7 @@ Bu bölümde, F5 'e erişim vererek Azure çoklu oturum açma özelliğini kulla
 
 1. Meta veri sertifikasını, kurulum işleminin ilerleyen kısımlarında kullanılacak olan F5 'e aktarmanız gerekir.
 
-1. **System > sertifika yönetimi > trafik sertifikası yönetimi > SSL sertifikası listesi**' ne gidin. Sağ köşeden **Içeri aktar** ' ı seçin. Bir **sertifika adı** belirtin (daha sonra yapılandırmadan başvurulacak). **Sertifika kaynağında**karşıya yükle ' yı seçin SAML çoklu oturum açmayı yapılandırırken Azure 'dan indirilen sertifikayı belirtin. **İçeri Aktar**’a tıklayın.
+1. **System > sertifika yönetimi > trafik sertifikası yönetimi > SSL sertifikası listesi**' ne gidin. Sağ köşeden **Içeri aktar** ' ı seçin. Bir **sertifika adı** belirtin (daha sonra yapılandırmadan başvurulacak). **Sertifika kaynağında** karşıya yükle ' yı seçin SAML çoklu oturum açmayı yapılandırırken Azure 'dan indirilen sertifikayı belirtin. **İçeri Aktar**’a tıklayın.
 
     !["Sertifika adı" vurgulanmış, "karşıya dosya yükleme" ve "Içeri aktar" düğmesi seçili olan "S S L sertifikası/anahtar kaynağı" sayfasını gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure01.png) 
 
@@ -228,22 +228,22 @@ Bu bölümde, F5 'e erişim vererek Azure çoklu oturum açma özelliğini kulla
 
     !["Ileri" düğmesi seçiliyken "Kılavuzlu yapılandırma-S A M L hizmet sağlayıcısı" sayfasını gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure04.png)
 
-1. Bir **yapılandırma adı**girin. **VARLıK kimliğini** (Azure AD uygulama yapılandırmasında yapılandırdığınız gibi) belirtin. **Ana bilgisayar adını**belirtin. Başvuru için bir **Açıklama** ekleyin. Kalan varsayılan girişleri kabul edin ve ardından **& kaydet**' e tıklayın.
+1. Bir **yapılandırma adı** girin. **VARLıK kimliğini** (Azure AD uygulama yapılandırmasında yapılandırdığınız gibi) belirtin. **Ana bilgisayar adını** belirtin. Başvuru için bir **Açıklama** ekleyin. Kalan varsayılan girişleri kabul edin ve ardından **& kaydet**' e tıklayın.
 
     !["Ana bilgisayar adı" ve "Açıklama" metin kutuları vurgulanmış ve "& sonrakini Kaydet" düğmesi seçili olan "hizmet sağlayıcı özellikleri" ni gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure05.png) 
 
-1. Bu örnekte, 443 numaralı bağlantı noktası ile 192.168.30.200 olarak yeni bir sanal sunucu oluşturacağız. **Hedef adreste**sanal sunucu IP adresini belirtin. Istemci **SSL profilini**seçin, yeni oluştur ' u seçin. Daha önce karşıya yüklenen uygulama sertifikasını (Bu örnekteki joker karakter sertifikası) ve ilişkili anahtarı belirtin ve ardından **& Ileri kaydet**' e tıklayın.
+1. Bu örnekte, 443 numaralı bağlantı noktası ile 192.168.30.200 olarak yeni bir sanal sunucu oluşturacağız. **Hedef adreste** sanal sunucu IP adresini belirtin. Istemci **SSL profilini** seçin, yeni oluştur ' u seçin. Daha önce karşıya yüklenen uygulama sertifikasını (Bu örnekteki joker karakter sertifikası) ve ilişkili anahtarı belirtin ve ardından **& Ileri kaydet**' e tıklayın.
 
     >[!NOTE]
     >Bu örnekte, Iç Web sunucusu 80 numaralı bağlantı noktasında çalışıyor ve bunu 443 ile yayımlamak istiyoruz.
 
     !["Hedef adres" metin kutusu vurgulanmış ve "& Ileri Kaydet" düğmesi seçili olan "sanal sunucu özellikleri" sayfasını gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure06.png)
 
-1. **IDP bağlayıcınızı yapılandırmak için yöntem seçin**altında, meta veri ' yi belirtin, Dosya Seç ' e tıklayın ve daha önce Azure AD 'Den Indirilen meta veri xml dosyasını yükleyin SAML ıDP Bağlayıcısı için benzersiz bir **ad** belirtin. Daha önce karşıya yüklenen **meta veri Imzalama sertifikasını** seçin. **İleri & kaydet**' e tıklayın.
+1. **IDP bağlayıcınızı yapılandırmak için yöntem seçin** altında, meta veri ' yi belirtin, Dosya Seç ' e tıklayın ve daha önce Azure AD 'Den Indirilen meta veri xml dosyasını yükleyin SAML ıDP Bağlayıcısı için benzersiz bir **ad** belirtin. Daha önce karşıya yüklenen **meta veri Imzalama sertifikasını** seçin. **İleri & kaydet**' e tıklayın.
 
     !["Ad" metin kutusu vurgulanmış ve "& Ileri Kaydet" düğmesi seçili olan "dış kimlik sağlayıcısı bağlayıcı ayarları" sayfasını gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure07.png)  
 
-1. **Havuz Seç**altında **Yeni oluştur** ' u (alternatif olarak zaten var olan bir havuz seçin) belirtin. Diğer değerin varsayılan olmasına izin verin.    Havuz sunucuları ' nın altında IP **adresi/düğüm adı**altında IP adresini yazın. **Bağlantı noktasını**belirtin. **İleri & kaydet**' e tıklayın.
+1. **Havuz Seç** altında **Yeni oluştur** ' u (alternatif olarak zaten var olan bir havuz seçin) belirtin. Diğer değerin varsayılan olmasına izin verin.    Havuz sunucuları ' nın altında IP **adresi/düğüm adı** altında IP adresini yazın. **Bağlantı noktasını** belirtin. **İleri & kaydet**' e tıklayın.
  
     !["IP adresi/düğüm adı" ve "bağlantı noktası" metin kutuları vurgulanmış ve "& sonrakini Kaydet" düğmesi seçili olan "havuz özellikleri" sayfasını gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure08.png)
 
@@ -251,7 +251,7 @@ Bu bölümde, F5 'e erişim vererek Azure çoklu oturum açma özelliğini kulla
 
     ![Metin kutuları vurgulanmış ve "& Ileri Kaydet" düğmesinin seçili olduğu "tek Sign-On ayarları" gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure09.png)   
 
-1. Bu kılavuzun amaçları doğrultusunda Endpoint denetimlerini atlayacağız.  Ayrıntılar için F5 belgelerine bakın.  Ekranda **kaydet & ileri ' yi**seçin.
+1. Bu kılavuzun amaçları doğrultusunda Endpoint denetimlerini atlayacağız.  Ayrıntılar için F5 belgelerine bakın.  Ekranda **kaydet & ileri ' yi** seçin.
 
     !["Endpoint denetimleri özellikleri" sayfasını ve "& Ileri Kaydet" düğmesinin seçili olduğunu gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure10.png) 
 
@@ -279,7 +279,7 @@ Access Policy Manager 'da (APM), kullanıcıların kimliğini doğrulamak için 
 
 1. Ana sekmede, **> aaa sunucuları > Active Directory erişim ilkesi**' ne tıklayın. Active Directory sunucuları listesi ekranı açılır.
 
-2. **Oluştur**’a tıklayın. Yeni sunucu özellikleri ekranı açılır.
+2. **Oluştur**'a tıklayın. Yeni sunucu özellikleri ekranı açılır.
 
 3. **Ad** alanına, kimlik doğrulama sunucusu için benzersiz bir ad yazın.
 
@@ -291,9 +291,9 @@ Access Policy Manager 'da (APM), kullanıcıların kimliğini doğrulamak için 
 
    * Tek başına işlevselliği için AAA sunucusu kurmak üzere **doğrudan** ' yi seçin.
 
-6. **Doğrudan**öğesini seçtiyseniz, **etki alanı denetleyicisi** alanına bir ad yazın.
+6. **Doğrudan** öğesini seçtiyseniz, **etki alanı denetleyicisi** alanına bir ad yazın.
 
-7. **Havuz**kullan ' ı seçtiyseniz havuzu yapılandırın:
+7. **Havuz** kullan ' ı seçtiyseniz havuzu yapılandırın:
 
    * **Etki alanı denetleyicisi havuzu adı** alanına bir ad yazın.
 

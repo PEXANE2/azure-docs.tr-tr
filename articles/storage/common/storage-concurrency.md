@@ -12,11 +12,11 @@ ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
 ms.openlocfilehash: b83a8bfbc79af344c4d158ee65134034db714e9c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783972"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008914"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Microsoft Azure Depolamada Eşzamanlılığı Yönetme
 
@@ -85,20 +85,20 @@ catch (StorageException ex)
 }
 ```
 
-Azure depolama Ayrıca, **If-Modified-Since** , **If-Modified-Since** , **If-None-Match** ve bu üstbilgilerin birleşimleri gibi koşullu üstbilgiler için destek içerir. Daha fazla bilgi için bkz. [BLOB hizmeti işlemleri Için koşullu üstbilgiler belirtme](/rest/api/storageservices/Specifying-Conditional-Headers-for-Blob-Service-Operations).
+Azure depolama Ayrıca, **If-Modified-Since**, **If-Modified-Since**, **If-None-Match** ve bu üstbilgilerin birleşimleri gibi koşullu üstbilgiler için destek içerir. Daha fazla bilgi için bkz. [BLOB hizmeti işlemleri Için koşullu üstbilgiler belirtme](/rest/api/storageservices/Specifying-Conditional-Headers-for-Blob-Service-Operations).
 
 Aşağıdaki tablo, istekte **IF-Match** gibi koşullu üstbilgileri kabul eden ve yanıtta bir ETag değeri döndüren kapsayıcı işlemlerini özetler.
 
 | İşlem | Kapsayıcı ETag değerini döndürür | Koşullu üstbilgileri kabul eder |
 |:--- |:--- |:--- |
-| Kapsayıcı Oluşturma |Evet |Hayır |
-| Kapsayıcı özelliklerini al |Evet |Hayır |
-| Kapsayıcı meta verilerini al |Evet |Hayır |
-| Kapsayıcı meta verilerini ayarla |Evet |Evet |
-| Kapsayıcı ACL 'sini al |Evet |Hayır |
-| Kapsayıcı ACL 'sini ayarla |Evet |Evet (*) |
-| Kapsayıcıyı Silme |Hayır |Evet |
-| Kira kapsayıcısı |Evet |Evet |
+| Kapsayıcı Oluşturma |Yes |Hayır |
+| Kapsayıcı özelliklerini al |Yes |Hayır |
+| Kapsayıcı meta verilerini al |Yes |Hayır |
+| Kapsayıcı meta verilerini ayarla |Yes |Yes |
+| Kapsayıcı ACL 'sini al |Yes |Hayır |
+| Kapsayıcı ACL 'sini ayarla |Yes |Evet (*) |
+| Kapsayıcıyı Silme |Hayır |Yes |
+| Kira kapsayıcısı |Yes |Yes |
 | Blobları Listele |Hayır |Hayır |
 
 (*) SetContainerACL tarafından tanımlanan izinler önbelleğe alınır ve bu izinlere yönelik güncelleştirmeler, zaman içindeki güncelleştirmelerin tutarlı olması garanti edilmediği için 30 saniye sürer.
@@ -107,22 +107,22 @@ Aşağıdaki tablo, istekte **IF-Match** gibi koşullu üstbilgileri kabul eden 
 
 | İşlem | ETag değerini döndürür | Koşullu üstbilgileri kabul eder |
 |:--- |:--- |:--- |
-| İkili Büyük Nesne Koyma |Evet |Evet |
-| Blob al |Evet |Evet |
-| BLOB özelliklerini Al |Evet |Evet |
-| Blob özelliklerini ayarla |Evet |Evet |
-| Blob meta verilerini al |Evet |Evet |
-| Blob meta verilerini ayarla |Evet |Evet |
-| Kira Blobu (*) |Evet |Evet |
-| İkili Büyük Nesne Anlık Görüntüsünü Alma |Evet |Evet |
-| İkili Büyük Nesneyi Kopyalama |Evet |Evet (kaynak ve hedef blobu için) |
+| İkili Büyük Nesne Koyma |Yes |Yes |
+| Blob al |Yes |Yes |
+| BLOB özelliklerini Al |Yes |Yes |
+| Blob özelliklerini ayarla |Yes |Yes |
+| Blob meta verilerini al |Yes |Yes |
+| Blob meta verilerini ayarla |Yes |Yes |
+| Kira Blobu (*) |Yes |Yes |
+| İkili Büyük Nesne Anlık Görüntüsünü Alma |Yes |Yes |
+| İkili Büyük Nesneyi Kopyalama |Yes |Evet (kaynak ve hedef blobu için) |
 | Kopyalama blobu durdur |Hayır |Hayır |
-| İkili Büyük Nesneyi Silme |Hayır |Evet |
+| İkili Büyük Nesneyi Silme |Hayır |Yes |
 | Yerleştirme bloğu |Hayır |Hayır |
-| Öbek listesini yerleştirme |Evet |Evet |
-| Engelleme listesini al |Evet |Hayır |
-| Yerleştirme sayfası |Evet |Evet |
-| Sayfa aralıklarını al |Evet |Evet |
+| Öbek listesini yerleştirme |Yes |Yes |
+| Engelleme listesini al |Yes |Hayır |
+| Yerleştirme sayfası |Yes |Yes |
+| Sayfa aralıklarını al |Yes |Yes |
 
 (*) Kira blobu blob üzerinde ETag öğesini değiştirmez.
 
@@ -130,7 +130,7 @@ Aşağıdaki tablo, istekte **IF-Match** gibi koşullu üstbilgileri kabul eden 
 
 Bir blobu dışlamalı kullanım için kilitlemek için bir [kira](/rest/api/storageservices/Lease-Blob) elde edin. Kira aldığınızda kira için bir zaman aralığı belirtirsiniz. Zaman aralığı, 15 ile 60 saniyeye veya sonsuz, özel bir kilit için olan değer olarak değişir. Sınırlı bir kirayı genişletmek için yenileyin. İşiniz bittiğinde bir kira yayınlayın. BLOB depolama süreleri dolduğunda sınırlı kiraları otomatik olarak serbest bırakır.
 
-Kiralamalar, farklı eşitleme stratejilerinin desteklenme imkanı sağlar. Stratejiler arasında *özel yazma/paylaşılan okuma* , *dışlamalı yazma/özel okuma* ve *paylaşılan yazma/dışlamalı* okuma sayılabilir. Kira mevcut olduğunda, Azure Storage özel yazma işlemleri uygular (put, set ve DELETE işlemleri), ancak okuma işlemlerine yönelik denetim sağlamak, geliştiricinin tüm istemci uygulamalarının bir kira KIMLIĞI kullandığından ve aynı anda yalnızca bir istemcinin geçerli bir kira KIMLIĞI içerdiğinden emin olmasını gerektirir. Paylaşılan okumaların kira KIMLIĞI sonucunu içermeyen okuma işlemleri.
+Kiralamalar, farklı eşitleme stratejilerinin desteklenme imkanı sağlar. Stratejiler arasında *özel yazma/paylaşılan okuma*, *dışlamalı yazma/özel okuma* ve *paylaşılan yazma/dışlamalı* okuma sayılabilir. Kira mevcut olduğunda, Azure Storage özel yazma işlemleri uygular (put, set ve DELETE işlemleri), ancak okuma işlemlerine yönelik denetim sağlamak, geliştiricinin tüm istemci uygulamalarının bir kira KIMLIĞI kullandığından ve aynı anda yalnızca bir istemcinin geçerli bir kira KIMLIĞI içerdiğinden emin olmasını gerektirir. Paylaşılan okumaların kira KIMLIĞI sonucunu içermeyen okuma işlemleri.
 
 Aşağıdaki C# kod parçacığında bir blob üzerinde 30 saniye boyunca özel kiralama alma, Blobun içeriğini güncelleştirme ve ardından kirayı serbest bırakma örneği gösterilmektedir. Yeni bir kira almaya çalıştığınızda blob üzerinde zaten geçerli bir kira varsa, blob hizmeti "HTTP (409) çakışması" durum sonucunu döndürür. Aşağıdaki kod parçacığı, depolama hizmetindeki blobu güncellemek için bir istek yaptığında kira bilgilerini kapsüllemek için bir **Accesscondition** nesnesi kullanır.  Tam örneği buradan indirebilirsiniz: [Azure Storage kullanarak eşzamanlılık yönetimi](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114).
 
@@ -184,7 +184,7 @@ Aşağıdaki blob işlemleri, Kötümser eşzamanlılık 'yi yönetmek için kir
 
 ### <a name="pessimistic-concurrency-for-containers"></a>Kapsayıcılar için Kötümser eşzamanlılık
 
-Kapsayıcılardaki kiralamalar aynı eşitleme stratejilerinin bloblarda ( *özel yazma/paylaşılan okuma* , *dışlamalı yazma/özel okuma* ve *paylaşılan yazma/özel okuma* ) aynı şekilde desteklendiğinden, ancak Blobların aksine depolama hizmeti yalnızca silme işlemlerinde denetim uygulanmasını sağlar. Etkin bir kiralamaya sahip bir kapsayıcıyı silmek için, istemci, silme isteğiyle birlikte etkin Kiralama KIMLIĞINI içermelidir. Diğer tüm kapsayıcı işlemleri, kira KIMLIĞINI dahil etmeden bir kiralanan kapsayıcıda başarılı olur ve bu durumda paylaşılan işlemler olur. Denetim of Update (put veya set) veya Read işlemleri gerekliyse, geliştiriciler tüm istemcilerin bir kira KIMLIĞI kullandığından ve aynı anda yalnızca bir istemcinin geçerli bir kira KIMLIĞI olduğundan emin olmalıdır.
+Kapsayıcılardaki kiralamalar aynı eşitleme stratejilerinin bloblarda (*özel yazma/paylaşılan okuma*, *dışlamalı yazma/özel okuma* ve *paylaşılan yazma/özel okuma*) aynı şekilde desteklendiğinden, ancak Blobların aksine depolama hizmeti yalnızca silme işlemlerinde denetim uygulanmasını sağlar. Etkin bir kiralamaya sahip bir kapsayıcıyı silmek için, istemci, silme isteğiyle birlikte etkin Kiralama KIMLIĞINI içermelidir. Diğer tüm kapsayıcı işlemleri, kira KIMLIĞINI dahil etmeden bir kiralanan kapsayıcıda başarılı olur ve bu durumda paylaşılan işlemler olur. Denetim of Update (put veya set) veya Read işlemleri gerekliyse, geliştiriciler tüm istemcilerin bir kira KIMLIĞI kullandığından ve aynı anda yalnızca bir istemcinin geçerli bir kira KIMLIĞI olduğundan emin olmalıdır.
 
 Aşağıdaki kapsayıcı işlemleri, Kötümser eşzamanlılık 'yi yönetmek için kiraları kullanabilir:
 
@@ -245,13 +245,13 @@ Aşağıdaki tablo, tablo varlığı işlemlerinin ETag değerlerini nasıl kull
 
 | İşlem | ETag değerini döndürür | If-Match istek üst bilgisi gerektiriyor |
 |:--- |:--- |:--- |
-| Sorgu varlıkları |Evet |Hayır |
-| Varlık Ekle |Evet |Hayır |
-| Varlığı Güncelleştir |Evet |Evet |
-| Birleştirme varlığı |Evet |Evet |
-| Varlığı Sil |Hayır |Evet |
-| Varlık Ekle veya Değiştir |Evet |Hayır |
-| Varlık ekleme veya birleştirme |Evet |Hayır |
+| Sorgu varlıkları |Yes |Hayır |
+| Varlık Ekle |Yes |Hayır |
+| Varlığı Güncelleştir |Yes |Yes |
+| Birleştirme varlığı |Yes |Yes |
+| Varlığı Sil |Hayır |Yes |
+| Varlık Ekle veya Değiştir |Yes |Hayır |
+| Varlık ekleme veya birleştirme |Yes |Hayır |
 
 **Varlık ekleme veya değiştirme** ve **varlık ekleme veya birleştirme** işlemlerinin, tablo hizmetine bir ETag değeri göndermediğinden hiçbir eşzamanlılık *denetimi yapmayın olmadığını* unutmayın.
 

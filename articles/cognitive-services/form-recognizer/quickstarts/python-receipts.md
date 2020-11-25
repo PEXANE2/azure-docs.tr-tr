@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: c658f0a4f700a4588b238f2bb009b263da94e753
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: b897690e08f07f2506aa79c873af03b604f94664
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91759988"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96009594"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-python"></a>Hızlı başlangıç: Python ile REST API form tanıyıcı kullanarak alındı verilerini ayıklama
 
@@ -23,7 +23,7 @@ Bu hızlı başlangıçta, ABD satış girişlerinde ilgili bilgileri ayıklamak
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 - [Python](https://www.python.org/downloads/) yüklendi (örneği yerel olarak çalıştırmak istiyorsanız).
@@ -84,7 +84,7 @@ Bir alındısı analizine başlamak için aşağıdaki Python betiğini kullanar
         quit()
 ```
     
-# <a name="v21-preview1"></a>[v 2.1-Önizleme. 1](#tab/v2-1)    
+# <a name="v21-preview2"></a>[v 2.1-Önizleme. 2](#tab/v2-1)    
 ```python
     ########### Python Form Recognizer Async Receipt #############
 
@@ -95,7 +95,7 @@ Bir alındısı analizine başlamak için aşağıdaki Python betiğini kullanar
     # Endpoint URL
     endpoint = r"<Endpoint>"
     apim_key = "<subscription key>"
-    post_url = endpoint + "/formrecognizer/v2.1-preview.1/prebuilt/receipt/analyze"
+    post_url = endpoint + "/formrecognizer/v2.1-preview.2/prebuilt/receipt/analyze"
     source = r"<path to your receipt>"
     
     headers = {
@@ -143,7 +143,7 @@ https://cognitiveservice/formrecognizer/v2.0/prebuilt/receipt/operations/54f0b07
 ```
 # <a name="v21-preview1"></a>[v 2.1-Önizleme. 1](#tab/v2-1)    
 ```console
-https://cognitiveservice/formrecognizer/v2.1-preview.1/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+https://cognitiveservice/formrecognizer/v2.1-preview.2/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 ---
 

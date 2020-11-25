@@ -11,11 +11,11 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
 ms.openlocfilehash: 3dc6fb64f6e8695d84e292322293998e2f4cb0a3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324787"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009237"
 ---
 # <a name="set-up-a-common-identity-on-a-data-science-virtual-machine"></a>Veri Bilimi Sanal Makinesi ortak bir kimlik ayarlama
 
@@ -37,9 +37,9 @@ Azure AD DS, Azure üzerinde tam olarak yönetilen bir hizmet sağlayarak kimlik
 
    1. [Azure Active Directory Yönetim merkezinde](https://aad.portal.azure.com) , dizin için genel yönetici olan bir hesap kullanarak oturum açın.
     
-   1. **Azure Active Directory** 'yi ve ardından **Kullanıcılar ve gruplar** 'ı seçin.
+   1. **Azure Active Directory**'yi ve ardından **Kullanıcılar ve gruplar**'ı seçin.
     
-   1. **Kullanıcılar ve gruplar** ' da, **tüm kullanıcılar** ' ı seçin ve ardından **Yeni Kullanıcı** ' yı seçin.
+   1. **Kullanıcılar ve gruplar**' da, **tüm kullanıcılar**' ı seçin ve ardından **Yeni Kullanıcı**' yı seçin.
    
         **Kullanıcı** bölmesi açılır:
       
@@ -49,9 +49,9 @@ Azure AD DS, Azure üzerinde tam olarak yönetilen bir hizmet sağlayarak kimlik
     
    1. Bu işlem tamamlandıktan sonra kullanıcıyla paylaşabilmek için oluşturulan kullanıcı parolasını kopyalayın veya bir yere not edin.
     
-   1. İsteğe bağlı olarak kullanıcının **Profil** , **Gruplar** veya **Dizin rolü** bilgilerini doldurun. 
+   1. İsteğe bağlı olarak kullanıcının **Profil**, **Gruplar** veya **Dizin rolü** bilgilerini doldurun. 
     
-   1. **Kullanıcı** altında **Oluştur** ' u seçin.
+   1. **Kullanıcı** altında **Oluştur**' u seçin.
     
    1. Oluşturulan parolayı, oturum açabilmeniz için yeni kullanıcıya güvenli bir şekilde dağıtın.
 

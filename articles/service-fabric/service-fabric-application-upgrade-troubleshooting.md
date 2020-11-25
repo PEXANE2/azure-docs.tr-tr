@@ -4,11 +4,11 @@ description: Bu makalede, bir Service Fabric uygulamasının yükseltilme ve bun
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: d462f2c2482e0fbb4d252967754a9675ed362674
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75377931"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009356"
 ---
 # <a name="troubleshoot-application-upgrades"></a>Uygulama yükseltme ile ilgili sorunları giderme
 
@@ -26,7 +26,7 @@ Bu bilgiler, Service Fabric **FailureAction** 'ın yükseltmeyi geri alıp almam
 
 ### <a name="identify-the-failure-type"></a>Hata türünü tanımla
 
-**Get-ServiceFabricApplicationUpgrade**çıkışında, **failuretimestamp UTC** , Service Fabric tarafından bir yükseltme hatasının ALGıLANDıĞı zaman damgasını (UTC olarak) tanımlar ve **FailureAction** tetiklenir. **FailureReason** , başarısız olan üç olası yüksek düzey nedenden birini tanımlar:
+**Get-ServiceFabricApplicationUpgrade** çıkışında, **failuretimestamp UTC** , Service Fabric tarafından bir yükseltme hatasının ALGıLANDıĞı zaman damgasını (UTC olarak) tanımlar ve **FailureAction** tetiklenir. **FailureReason** , başarısız olan üç olası yüksek düzey nedenden birini tanımlar:
 
 1. UpgradeDomainTimeout-belirli bir yükseltme etki alanının tamamlanması çok uzun sürdüğü ve **Upgradedomaintimeout** süresinin dolmadığını gösterir.
 2. OverallUpgradeTimeout-genel yükseltmenin tamamlanması çok uzun sürdüğü ve **Upgradetimeout** süresinin dolmadığını gösterir.
@@ -74,13 +74,13 @@ ForceRestart                   : False
 UpgradeReplicaSetCheckTimeout  : 00:00:00
 ```
 
-Bu örnekte, yükseltme etki alanı *MYUD1* üzerinde başarısız oldu ve iki bölüm (*744c8d9f-1d26-417e-a60e-cd48f5c098f0* ve *4b43f4d8-b26b-424e-9307-7a7a62e79750*) takıldı. Çalışma zamanı, *Düğüm1* ve *Düğüm4*hedef düğümlerine birincil çoğaltmaları (*waitforprimaryyerleştirmesini*) yerleştiremediği için bölümler takılmıştı.
+Bu örnekte, yükseltme etki alanı *MYUD1* üzerinde başarısız oldu ve iki bölüm (*744c8d9f-1d26-417e-a60e-cd48f5c098f0* ve *4b43f4d8-b26b-424e-9307-7a7a62e79750*) takıldı. Çalışma zamanı, *Düğüm1* ve *Düğüm4* hedef düğümlerine birincil çoğaltmaları (*waitforprimaryyerleştirmesini*) yerleştiremediği için bölümler takılmıştı.
 
-**Get-ServiceFabricNode** komutu, bu iki düğümün yükseltme etki alanı *MYUD1*' de olduğunu doğrulamak için kullanılabilir. *Yükseltilebilir depette* , yükseltme etki alanındaki tüm düğümlerin yükseltme işlemi tamamlandıktan sonra bu güvenlik denetimlerinin meydana geldiğini gösteren *Postupgradesafetycheck*diyor. Tüm bu bilgiler, uygulama kodunun yeni sürümüyle ilgili olası bir sorunu işaret eder. En yaygın sorunlar, birincil kod yollarındaki açık veya yükseltme içindeki hizmet hatalarıdır.
+**Get-ServiceFabricNode** komutu, bu iki düğümün yükseltme etki alanı *MYUD1*' de olduğunu doğrulamak için kullanılabilir. *Yükseltilebilir depette* , yükseltme etki alanındaki tüm düğümlerin yükseltme işlemi tamamlandıktan sonra bu güvenlik denetimlerinin meydana geldiğini gösteren *Postupgradesafetycheck* diyor. Tüm bu bilgiler, uygulama kodunun yeni sürümüyle ilgili olası bir sorunu işaret eder. En yaygın sorunlar, birincil kod yollarındaki açık veya yükseltme içindeki hizmet hatalarıdır.
 
 *Preupgradesafetycheck* 'in *yükselmiş* olması, yükseltme etki alanının gerçekleştirilmeden önce hazırlanmasında sorun olduğunu gösterir. Bu durumda en yaygın sorunlar, birincil kod yollarından yakın veya İndirgemedeki hizmet hatalarıdır.
 
-Geçerli **Upgradestate** , geri alma işlemi başarısız *oldu, bu*nedenle özgün yükseltmenin hata durumunda yükseltmeyi otomatik olarak geri alan bir Rollback **FailureAction**ile gerçekleştirilmiş olması gerekir. Özgün yükseltme el ile bir **FailureAction**ile gerçekleştirilirse, uygulamanın canlı hata ayıklamasına izin vermek için yükseltme askıya alınmış durumda olur.
+Geçerli **Upgradestate** , geri alma işlemi başarısız *oldu, bu* nedenle özgün yükseltmenin hata durumunda yükseltmeyi otomatik olarak geri alan bir Rollback **FailureAction** ile gerçekleştirilmiş olması gerekir. Özgün yükseltme el ile bir **FailureAction** ile gerçekleştirilirse, uygulamanın canlı hata ayıklamasına izin vermek için yükseltme askıya alınmış durumda olur.
 
 Nadir durumlarda, sistem geçerli yükseltme etki alanı için tüm işleri tamamlarsa, genel yükseltmenin tam olarak zaman aşımına uğrayışında **UpgradeDomainProgressAtFailure** alanı boş olabilir. Bu durumda, **upgradetimeout** ve **upgradedomaintimeout** yükseltme parametre değerlerini artırmayı deneyin ve yükseltmeyi yeniden deneyin.
 
@@ -148,7 +148,7 @@ Yükseltme işlemi başlatılırken el ile yapılan bir **FailureAction** belirt
 
 ### <a name="recover-from-a-suspended-upgrade"></a>Askıya alınmış bir yükseltmeden kurtarma
 
-Bir geri alma **FailureAction**ile, yükseltme otomatik olarak başarısız olduğunda geri alındığında gerekli bir kurtarma yoktur. El ile bir **FailureAction**ile birkaç kurtarma seçeneği vardır:
+Bir geri alma **FailureAction** ile, yükseltme otomatik olarak başarısız olduğunda geri alındığında gerekli bir kurtarma yoktur. El ile bir **FailureAction** ile birkaç kurtarma seçeneği vardır:
 
 1.  geri alma tetikleyin
 2. Yükseltmenin geri kalanında el ile devam edin
@@ -156,7 +156,7 @@ Bir geri alma **FailureAction**ile, yükseltme otomatik olarak başarısız oldu
 
 **Start-ServiceFabricApplicationRollback** komutu, uygulamayı geri almaya başlamak için dilediğiniz zaman kullanılabilir. Komut başarılı bir şekilde döndüğünde geri alma isteği sisteme kaydedilir ve kısa süre sonra başlar.
 
-**Sürdürme-ServiceFabricApplicationUpgrade** komutu, tek seferde bir yükseltme etki alanı olan yükseltmenin geri kalanında el ile devam etmek için kullanılabilir. Bu modda, sistem tarafından yalnızca güvenlik denetimleri gerçekleştirilir. Daha fazla durum denetimi yapılmaz. Bu komut yalnızca *Upgradestate* , geçerli yükseltme etki alanının yükseltmeyi bitirdiğini, ancak bir sonraki birinin başlatılmadığını (bekleyen *) göstermediği*durumlarda kullanılabilir.
+**Sürdürme-ServiceFabricApplicationUpgrade** komutu, tek seferde bir yükseltme etki alanı olan yükseltmenin geri kalanında el ile devam etmek için kullanılabilir. Bu modda, sistem tarafından yalnızca güvenlik denetimleri gerçekleştirilir. Daha fazla durum denetimi yapılmaz. Bu komut yalnızca *Upgradestate* , geçerli yükseltme etki alanının yükseltmeyi bitirdiğini, ancak bir sonraki birinin başlatılmadığını (bekleyen *) göstermediği* durumlarda kullanılabilir.
 
 **Güncelleştirme-ServiceFabricApplicationUpgrade** komutu, hem güvenlik hem de durum denetimleri gerçekleştirilmesiyle izlenen yükseltmeyi sürdürmekte kullanılabilir.
 
@@ -204,7 +204,7 @@ Sistem durumu ilkeleri yükseltme isteğine sağlanmazsa, geçerli uygulama sür
 
 ### <a name="incorrect-time-outs-are-specified"></a>Yanlış zaman aşımları belirtildi
 
-Zaman aşımları sürekli olarak ayarlandığında ne olacağını merak etmiş olabilirsiniz. Örneğin, *Upgradedomaintimeout*öğesinden daha az bir *upgradetimeout* olabilir. Yanıt bir hata döndürülür. *Upgradedomaintimeout* , *healthcheckwaitduration* ve *healthcheckretrytimeout*toplamından daha azsa veya *upgradedomaintimeout* , *healthcheckwaitduration* ve *healthcheckstableduration*miktarından küçükse hatalar döndürülür.
+Zaman aşımları sürekli olarak ayarlandığında ne olacağını merak etmiş olabilirsiniz. Örneğin, *Upgradedomaintimeout* öğesinden daha az bir *upgradetimeout* olabilir. Yanıt bir hata döndürülür. *Upgradedomaintimeout* , *healthcheckwaitduration* ve *healthcheckretrytimeout* toplamından daha azsa veya *upgradedomaintimeout* , *healthcheckwaitduration* ve *healthcheckstableduration* miktarından küçükse hatalar döndürülür.
 
 ### <a name="my-upgrades-are-taking-too-long"></a>Yükseltmelerim çok uzun sürüyor
 
@@ -214,9 +214,9 @@ Aşağıda, zaman aşımının yükseltme süreleriyle nasıl etkileşime girece
 
 Yükseltme etki alanına yönelik yükseltmeler *healthcheckwaitduration*  +  *healthcheckstableduration*'dan daha hızlı tamamlanamaz.
 
-Yükseltme hatası *healthcheckwaitduration*  +  *healthcheckretrytimeout*değerinden daha hızlı bir şekilde oluşamaz.
+Yükseltme hatası *healthcheckwaitduration*  +  *healthcheckretrytimeout* değerinden daha hızlı bir şekilde oluşamaz.
 
-Yükseltme etki alanı için yükseltme saati, *Upgradedomaintimeout*ile sınırlıdır.  *Healthcheckretrytimeout* ve *Healthcheckstableduration* her ikisi de sıfır değil ve uygulamanın sistem durumu geri ve ileri geçiş devam ederse, yükseltme son kez *upgradedomaintimeout*tarihinde zaman aşımına uğrar. Geçerli yükseltme etki alanı için yükseltme başladıktan sonra *Upgradedomaintimeout, bir süre sonra zaman aşımına uğramaya* başlar.
+Yükseltme etki alanı için yükseltme saati, *Upgradedomaintimeout* ile sınırlıdır.  *Healthcheckretrytimeout* ve *Healthcheckstableduration* her ikisi de sıfır değil ve uygulamanın sistem durumu geri ve ileri geçiş devam ederse, yükseltme son kez *upgradedomaintimeout* tarihinde zaman aşımına uğrar. Geçerli yükseltme etki alanı için yükseltme başladıktan sonra *Upgradedomaintimeout, bir süre sonra zaman aşımına uğramaya* başlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

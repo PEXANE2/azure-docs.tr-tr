@@ -16,11 +16,11 @@ ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
 ms.custom: devx-track-java, devx-track-csharp
 ms.openlocfilehash: 13b05c17cc621660576913c08a1fdbc389365a53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89003975"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009135"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Baidu kullanarak Azure Notification Hubs ile çalışmaya başlama
 
@@ -30,7 +30,7 @@ Baidu bulut anında iletme, mobil cihazlara anında iletme bildirimleri gönderm
 
 Google Play ve FCM (Firebase Cloud Messaging) Çin'de mevcut değildir ve farklı uygulama mağazaları ile anında iletim hizmetlerinin kullanılması gerekir. Baidu bunlardan biridir ve şu anda Notification Hubs tarafından kullanılmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğretici için aşağıdakiler gereklidir:
 
@@ -486,5 +486,5 @@ Bir test bildirimi göndermek için [Azure portalının] hata ayıklama sekmesin
 <!-- URLs. -->
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Baidu Anında İletme Android SDK’sını]: https://push.baidu.com/sdk/push_client_sdk_for_android
-[Azure portalındaki]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [Baidu portal]: https://www.baidu.com/

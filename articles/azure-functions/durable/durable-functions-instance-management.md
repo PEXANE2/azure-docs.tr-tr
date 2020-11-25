@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 2b99d032b953caecfca2b34d5eadafe94f45f307
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87809383"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009543"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Azure 'da Dayanıklı İşlevler örnekleri yönetme
 
@@ -158,11 +158,11 @@ async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
 
 Ayrıca, [Azure Functions Core Tools](../functions-run-local.md) komutunu kullanarak doğrudan bir örnek başlatabilirsiniz `durable start-new` . Aşağıdaki parametreleri alır:
 
-* ** `function-name` (gerekli)**: başlatılacak işlevin adı.
-* ** `input` (isteğe bağlı)**: işleve satır ıçı veya bir JSON dosyası aracılığıyla giriş. Dosyalar için, dosyasının yolunu içeren bir ön eki ekleyin `@` `@path/to/file.json` .
-* ** `id` (isteğe bağlı)**: Orchestration örneğinin kimliği. Bu parametreyi belirtmezseniz, komut rastgele bir GUID kullanır.
-* ** `connection-string-setting` (isteğe bağlı)**: kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. Varsayılan değer AzureWebJobsStorage ' dir.
-* ** `task-hub-name` (isteğe bağlı)**: kullanılacak dayanıklı işlevler görev hub 'ının adı. Varsayılan değer DurableFunctionsHub ' dır. Bunu, durableTask: HubName kullanarak [host.js](durable-functions-bindings.md#host-json) de ayarlayabilirsiniz.
+* **`function-name` (gerekli)**: başlatılacak işlevin adı.
+* **`input` (isteğe bağlı)**: işleve satır ıçı veya bir JSON dosyası aracılığıyla giriş. Dosyalar için, dosyasının yolunu içeren bir ön eki ekleyin `@` `@path/to/file.json` .
+* **`id` (isteğe bağlı)**: Orchestration örneğinin kimliği. Bu parametreyi belirtmezseniz, komut rastgele bir GUID kullanır.
+* **`connection-string-setting` (isteğe bağlı)**: kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. Varsayılan değer AzureWebJobsStorage ' dir.
+* **`task-hub-name` (isteğe bağlı)**: kullanılacak dayanıklı işlevler görev hub 'ının adı. Varsayılan değer DurableFunctionsHub ' dır. Bunu, durableTask: HubName kullanarak [host.js](durable-functions-bindings.md#host-json) de ayarlayabilirsiniz.
 
 > [!NOTE]
 > Temel araçlar komutları, bunları bir işlev uygulamasının kök dizininden kullandığınızı varsayar. `connection-string-setting`Ve `task-hub-name` parametrelerini açık bir şekilde sağlarsanız, komutları herhangi bir dizinden çalıştırabilirsiniz. Bu komutları çalışan bir işlev uygulama konağı olmadan çalıştırabilmenize karşın, ana bilgisayar çalışmadığı takdirde bazı etkileri gözlemleyemiyorum olabilirsiniz. Örneğin, `start-new` komut bir başlangıç iletisini hedef görev merkezine sıralar, ancak iletiyi işleyemeyen bir işlev uygulama ana bilgisayarı işlemi olmadıkça düzenleme aslında çalışmaz.
@@ -183,7 +183,7 @@ Düzenlemeleri yönetme çabalarınızın bir parçası olarak, büyük olasıl�
 
 * **`showHistory`**: Olarak ayarlanırsa `true` , yanıt yürütme geçmişini içerir.
 * **`showHistoryOutput`**: Olarak ayarlanırsa `true` , yürütme geçmişi etkinlik çıkışları içerir.
-* **`showInput`**: Olarak ayarlanırsa `false` , yanıt işlevin girişini içermez. Varsayılan değer: `true`.
+* **`showInput`**: Olarak ayarlanırsa `false` , yanıt işlevin girişini içermez. `true` varsayılan değerdir.
 
 Yöntemi aşağıdaki özelliklerle bir nesne döndürür:
 
@@ -255,11 +255,11 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 
 Ayrıca, [Azure Functions Core Tools](../functions-run-local.md) komutunu kullanarak bir düzenleme örneğinin durumunu doğrudan almak mümkündür `durable get-runtime-status` . Aşağıdaki parametreleri alır:
 
-* ** `id` (gerekli)**: Orchestration örneğinin kimliği.
-* ** `show-input` (isteğe bağlı)**: olarak ayarlanırsa `true` , yanıt işlevin girdisini içerir. Varsayılan değer: `false`.
-* ** `show-output` (isteğe bağlı)**: olarak ayarlanırsa `true` , yanıt işlevin çıktısını içerir. Varsayılan değer: `false`.
-* ** `connection-string-setting` (isteğe bağlı)**: kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. Varsayılan değer: `AzureWebJobsStorage`.
-* ** `task-hub-name` (isteğe bağlı)**: kullanılacak dayanıklı işlevler görev hub 'ının adı. Varsayılan değer: `DurableFunctionsHub`. Ayrıca, durableTask: HubName kullanılarak [host.jsüzerinde](durable-functions-bindings.md#host-json)de ayarlanabilir.
+* **`id` (gerekli)**: Orchestration örneğinin kimliği.
+* **`show-input` (isteğe bağlı)**: olarak ayarlanırsa `true` , yanıt işlevin girdisini içerir. `false` varsayılan değerdir.
+* **`show-output` (isteğe bağlı)**: olarak ayarlanırsa `true` , yanıt işlevin çıktısını içerir. `false` varsayılan değerdir.
+* **`connection-string-setting` (isteğe bağlı)**: kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. Varsayılan değer: `AzureWebJobsStorage`.
+* **`task-hub-name` (isteğe bağlı)**: kullanılacak dayanıklı işlevler görev hub 'ının adı. Varsayılan değer: `DurableFunctionsHub`. Ayrıca, durableTask: HubName kullanılarak [host.jsüzerinde](durable-functions-bindings.md#host-json)de ayarlanabilir.
 
 Aşağıdaki komut, 0ab8c55a66644d68a3a8b220b12d209c düzenleme örneği KIMLIĞINE sahip bir örnek için durumu (giriş ve çıkış dahil) alır. `func`İşlev uygulamasının kök dizininden komutunu çalıştırdığınız varsayılır:
 
@@ -269,9 +269,9 @@ func durable get-runtime-status --id 0ab8c55a66644d68a3a8b220b12d209c --show-inp
 
 `durable get-history`Bir Orchestration örneğinin geçmişini almak için komutunu kullanabilirsiniz. Aşağıdaki parametreleri alır:
 
-* ** `id` (gerekli)**: Orchestration örneğinin kimliği.
-* ** `connection-string-setting` (isteğe bağlı)**: kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. Varsayılan değer: `AzureWebJobsStorage`.
-* ** `task-hub-name` (isteğe bağlı)**: kullanılacak dayanıklı işlevler görev hub 'ının adı. Varsayılan değer: `DurableFunctionsHub`. Ayrıca, durableTask: HubName kullanılarak host.jsüzerinde de ayarlanabilir.
+* **`id` (gerekli)**: Orchestration örneğinin kimliği.
+* **`connection-string-setting` (isteğe bağlı)**: kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. Varsayılan değer: `AzureWebJobsStorage`.
+* **`task-hub-name` (isteğe bağlı)**: kullanılacak dayanıklı işlevler görev hub 'ının adı. Varsayılan değer: `DurableFunctionsHub`. Ayrıca, durableTask: HubName kullanılarak host.jsüzerinde de ayarlanabilir.
 
 ```bash
 func durable get-history --id 0ab8c55a66644d68a3a8b220b12d209c
@@ -347,10 +347,10 @@ Yapılandırma function.jsiçin bkz. [Başlangıç örnekleri](#javascript-funct
 
 Ayrıca, [Azure Functions Core Tools](../functions-run-local.md) komutu kullanılarak örnekleri doğrudan sorgulamak de mümkündür `durable get-instances` . Aşağıdaki parametreleri alır:
 
-* ** `top` (isteğe bağlı)**: Bu komut sayfalamayı destekler. Bu parametre, istek başına alınan örnek sayısına karşılık gelir. Varsayılan değer 10 ' dur.
-* ** `continuation-token` (isteğe bağlı)**: hangi sayfa veya örneklerin hangi bölüme alındığını belirten bir belirteç. Her `get-instances` yürütme, bir sonraki örnek kümesine belirteç döndürür.
-* ** `connection-string-setting` (isteğe bağlı)**: kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. Varsayılan değer: `AzureWebJobsStorage`.
-* ** `task-hub-name` (isteğe bağlı)**: kullanılacak dayanıklı işlevler görev hub 'ının adı. Varsayılan değer: `DurableFunctionsHub`. Ayrıca, durableTask: HubName kullanılarak [host.jsüzerinde](durable-functions-bindings.md#host-json)de ayarlanabilir.
+* **`top` (isteğe bağlı)**: Bu komut sayfalamayı destekler. Bu parametre, istek başına alınan örnek sayısına karşılık gelir. Varsayılan değer 10 ' dur.
+* **`continuation-token` (isteğe bağlı)**: hangi sayfa veya örneklerin hangi bölüme alındığını belirten bir belirteç. Her `get-instances` yürütme, bir sonraki örnek kümesine belirteç döndürür.
+* **`connection-string-setting` (isteğe bağlı)**: kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. Varsayılan değer: `AzureWebJobsStorage`.
+* **`task-hub-name` (isteğe bağlı)**: kullanılacak dayanıklı işlevler görev hub 'ının adı. Varsayılan değer: `DurableFunctionsHub`. Ayrıca, durableTask: HubName kullanılarak [host.jsüzerinde](durable-functions-bindings.md#host-json)de ayarlanabilir.
 
 ```bash
 func durable get-instances
@@ -453,13 +453,13 @@ async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
 
 Azure Functions Core Tools, `durable get-instances` komutu filtreler ile de kullanabilirsiniz. Belirtilen `top` ,,, ve parametrelerine ek olarak `continuation-token` `connection-string-setting` `task-hub-name` , üç filtre parametresi ( `created-after` , `created-before` ve `runtime-status` ) kullanabilirsiniz.
 
-* ** `created-after` (isteğe bağlı)**: Bu tarih/saat (UTC) sonrasında oluşturulan örnekleri alın. ISO 8601 biçimlendirildi tarih saat kabul edildi.
-* ** `created-before` (isteğe bağlı)**: Bu tarih/saat (UTC) öncesinde oluşturulan örnekleri alın. ISO 8601 biçimlendirildi tarih saat kabul edildi.
-* ** `runtime-status` (isteğe bağlı)**: belirli bir durumdaki örnekleri alın (örneğin, çalışıyor veya tamamlandı). Birden çok (boşlukla ayrılmış) durum sağlayabilir.
-* ** `top` (isteğe bağlı)**: istek başına alınan örnek sayısı. Varsayılan değer 10 ' dur.
-* ** `continuation-token` (isteğe bağlı)**: hangi sayfa veya örneklerin hangi bölüme alındığını belirten bir belirteç. Her `get-instances` yürütme, bir sonraki örnek kümesine belirteç döndürür.
-* ** `connection-string-setting` (isteğe bağlı)**: kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. Varsayılan değer: `AzureWebJobsStorage`.
-* ** `task-hub-name` (isteğe bağlı)**: kullanılacak dayanıklı işlevler görev hub 'ının adı. Varsayılan değer: `DurableFunctionsHub`. Ayrıca, durableTask: HubName kullanılarak [host.jsüzerinde](durable-functions-bindings.md#host-json)de ayarlanabilir.
+* **`created-after` (isteğe bağlı)**: Bu tarih/saat (UTC) sonrasında oluşturulan örnekleri alın. ISO 8601 biçimlendirildi tarih saat kabul edildi.
+* **`created-before` (isteğe bağlı)**: Bu tarih/saat (UTC) öncesinde oluşturulan örnekleri alın. ISO 8601 biçimlendirildi tarih saat kabul edildi.
+* **`runtime-status` (isteğe bağlı)**: belirli bir durumdaki örnekleri alın (örneğin, çalışıyor veya tamamlandı). Birden çok (boşlukla ayrılmış) durum sağlayabilir.
+* **`top` (isteğe bağlı)**: istek başına alınan örnek sayısı. Varsayılan değer 10 ' dur.
+* **`continuation-token` (isteğe bağlı)**: hangi sayfa veya örneklerin hangi bölüme alındığını belirten bir belirteç. Her `get-instances` yürütme, bir sonraki örnek kümesine belirteç döndürür.
+* **`connection-string-setting` (isteğe bağlı)**: kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. Varsayılan değer: `AzureWebJobsStorage`.
+* **`task-hub-name` (isteğe bağlı)**: kullanılacak dayanıklı işlevler görev hub 'ının adı. Varsayılan değer: `DurableFunctionsHub`. Ayrıca, durableTask: HubName kullanılarak [host.jsüzerinde](durable-functions-bindings.md#host-json)de ayarlanabilir.
 
 Herhangi bir filtre ( `created-after` , `created-before` , veya `runtime-status` ) sağlamazsanız, komut `top` çalışma zamanı durumu veya oluşturulma zamanına göre yalnızca örnekleri alır.
 
@@ -528,10 +528,10 @@ Sonlandırılan bir örnek sonunda `Terminated` durumuna geçer. Ancak, bu geçi
 
 Ayrıca, [Azure Functions Core Tools](../functions-run-local.md) komutunu kullanarak bir düzenleme örneğini doğrudan sonlandırabilirsiniz `durable terminate` . Aşağıdaki parametreleri alır:
 
-* ** `id` (gerekli)**: sonlandırılacak düzenleme örneğinin kimliği.
-* ** `reason` (isteğe bağlı)**: sonlandırma nedeni.
-* ** `connection-string-setting` (isteğe bağlı)**: kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. Varsayılan değer: `AzureWebJobsStorage`.
-* ** `task-hub-name` (isteğe bağlı)**: kullanılacak dayanıklı işlevler görev hub 'ının adı. Varsayılan değer: `DurableFunctionsHub`. Ayrıca, durableTask: HubName kullanılarak [host.jsüzerinde](durable-functions-bindings.md#host-json)de ayarlanabilir.
+* **`id` (gerekli)**: sonlandırılacak düzenleme örneğinin kimliği.
+* **`reason` (isteğe bağlı)**: sonlandırma nedeni.
+* **`connection-string-setting` (isteğe bağlı)**: kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. Varsayılan değer: `AzureWebJobsStorage`.
+* **`task-hub-name` (isteğe bağlı)**: kullanılacak dayanıklı işlevler görev hub 'ının adı. Varsayılan değer: `DurableFunctionsHub`. Ayrıca, durableTask: HubName kullanılarak [host.jsüzerinde](durable-functions-bindings.md#host-json)de ayarlanabilir.
 
 Aşağıdaki komut, 0ab8c55a66644d68a3a8b220b12d209c KIMLIKLI bir Orchestration örneğini sonlandırır:
 
@@ -604,11 +604,11 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 
 Ayrıca, [Azure Functions Core Tools](../functions-run-local.md) komutunu kullanarak bir düzenleme örneğine doğrudan bir olay da yükseltebilirsiniz `durable raise-event` . Aşağıdaki parametreleri alır:
 
-* ** `id` (gerekli)**: Orchestration örneğinin kimliği.
+* **`id` (gerekli)**: Orchestration örneğinin kimliği.
 * **`event-name`**: Tetikedilecek etkinliğin adı.
-* ** `event-data` (isteğe bağlı)**: Orchestration örneğine gönderilen veriler. Bu bir JSON dosyasının yolu olabilir veya verileri doğrudan komut satırına sağlayabilirsiniz.
-* ** `connection-string-setting` (isteğe bağlı)**: kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. Varsayılan değer: `AzureWebJobsStorage`.
-* ** `task-hub-name` (isteğe bağlı)**: kullanılacak dayanıklı işlevler görev hub 'ının adı. Varsayılan değer: `DurableFunctionsHub`. Ayrıca, durableTask: HubName kullanılarak [host.jsüzerinde](durable-functions-bindings.md#host-json)de ayarlanabilir.
+* **`event-data` (isteğe bağlı)**: Orchestration örneğine gönderilen veriler. Bu bir JSON dosyasının yolu olabilir veya verileri doğrudan komut satırına sağlayabilirsiniz.
+* **`connection-string-setting` (isteğe bağlı)**: kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. Varsayılan değer: `AzureWebJobsStorage`.
+* **`task-hub-name` (isteğe bağlı)**: kullanılacak dayanıklı işlevler görev hub 'ının adı. Varsayılan değer: `DurableFunctionsHub`. Ayrıca, durableTask: HubName kullanılarak [host.jsüzerinde](durable-functions-bindings.md#host-json)de ayarlanabilir.
 
 ```bash
 func durable raise-event --id 0ab8c55a66644d68a3a8b220b12d209c --event-name MyEvent --event-data @eventdata.json
@@ -860,10 +860,10 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 
 Ayrıca, [Azure Functions Core Tools](../functions-run-local.md) komutunu kullanarak bir düzenleme örneğini doğrudan geri sarın `durable rewind` . Aşağıdaki parametreleri alır:
 
-* ** `id` (gerekli)**: Orchestration örneğinin kimliği.
-* ** `reason` (isteğe bağlı)**: Orchestration örneğini yeniden sargı nedeni.
-* ** `connection-string-setting` (isteğe bağlı)**: kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. Varsayılan değer: `AzureWebJobsStorage`.
-* ** `task-hub-name` (isteğe bağlı)**: kullanılacak dayanıklı işlevler görev hub 'ının adı. Varsayılan olarak, [host.js](durable-functions-bindings.md#host-json) dosyadaki görev hub 'ı adı kullanılır.
+* **`id` (gerekli)**: Orchestration örneğinin kimliği.
+* **`reason` (isteğe bağlı)**: Orchestration örneğini yeniden sargı nedeni.
+* **`connection-string-setting` (isteğe bağlı)**: kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. Varsayılan değer: `AzureWebJobsStorage`.
+* **`task-hub-name` (isteğe bağlı)**: kullanılacak dayanıklı işlevler görev hub 'ının adı. Varsayılan olarak, [host.js](durable-functions-bindings.md#host-json) dosyadaki görev hub 'ı adı kullanılır.
 
 ```bash
 func durable rewind --id 0ab8c55a66644d68a3a8b220b12d209c --reason "Orchestrator failed and needs to be revived."
@@ -997,17 +997,17 @@ async def main(req: func.HttpRequest, starter: str, instance_id: str) -> func.Ht
 ---
 
 > [!NOTE]
-> Temizleme geçmişi işleminin başarılı olması için, hedef örneğin çalışma zamanı durumu **tamamlanmalıdır**, **sonlandırılmış**veya **başarısız**olmalıdır.
+> Temizleme geçmişi işleminin başarılı olması için, hedef örneğin çalışma zamanı durumu **tamamlanmalıdır**, **sonlandırılmış** veya **başarısız** olmalıdır.
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
 [Azure Functions Core Tools](../functions-run-local.md) komutunu kullanarak bir düzenleme örneğinin geçmişini temizleyebilirsiniz `durable purge-history` . Önceki bölümdeki ikinci C# örneğine benzer şekilde, belirtilen bir zaman aralığı boyunca oluşturulan tüm düzenleme örneklerinin geçmişini temizler. Temizlenen örnekleri çalışma zamanı durumuna göre daha fazla filtrelemek için. Komutun çeşitli parametreleri vardır:
 
-* ** `created-after` (isteğe bağlı)**: Bu tarih/saat sonra oluşturulan örneklerin GEÇMIŞINI temizle (UTC). ISO 8601 biçimlendirildi tarih saat kabul edildi.
-* ** `created-before` (isteğe bağlı)**: Bu tarih/saat (UTC) öncesinde oluşturulan örneklerin geçmişini temizle. ISO 8601 biçimlendirildi tarih saat kabul edildi.
-* ** `runtime-status` (isteğe bağlı)**: belirli bir duruma sahip örnek geçmişini (örneğin, çalışıyor veya tamamlandı) temizleyin. Birden çok (boşlukla ayrılmış) durum sağlayabilir.
-* ** `connection-string-setting` (isteğe bağlı)**: kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. Varsayılan değer: `AzureWebJobsStorage`.
-* ** `task-hub-name` (isteğe bağlı)**: kullanılacak dayanıklı işlevler görev hub 'ının adı. Varsayılan olarak, [host.js](durable-functions-bindings.md#host-json) dosyadaki görev hub 'ı adı kullanılır.
+* **`created-after` (isteğe bağlı)**: Bu tarih/saat sonra oluşturulan örneklerin GEÇMIŞINI temizle (UTC). ISO 8601 biçimlendirildi tarih saat kabul edildi.
+* **`created-before` (isteğe bağlı)**: Bu tarih/saat (UTC) öncesinde oluşturulan örneklerin geçmişini temizle. ISO 8601 biçimlendirildi tarih saat kabul edildi.
+* **`runtime-status` (isteğe bağlı)**: belirli bir duruma sahip örnek geçmişini (örneğin, çalışıyor veya tamamlandı) temizleyin. Birden çok (boşlukla ayrılmış) durum sağlayabilir.
+* **`connection-string-setting` (isteğe bağlı)**: kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. Varsayılan değer: `AzureWebJobsStorage`.
+* **`task-hub-name` (isteğe bağlı)**: kullanılacak dayanıklı işlevler görev hub 'ının adı. Varsayılan olarak, [host.js](durable-functions-bindings.md#host-json) dosyadaki görev hub 'ı adı kullanılır.
 
 Aşağıdaki komut 14 Kasım 2018, 7:35 PM (UTC) tarihinden önce oluşturulan tüm başarısız örneklerin geçmişini siler.
 
@@ -1019,8 +1019,8 @@ func durable purge-history --created-before 2018-11-14T19:35:00.0000000Z --runti
 
 [Azure Functions Core Tools](../functions-run-local.md) `durable delete-task-hub` komutunu kullanarak, Azure depolama tabloları, kuyrukları ve Blobları dahil olmak üzere belirli bir görev hub 'ı ile ilişkili tüm depolama yapılarını silebilirsiniz. Komutun iki parametresi vardır:
 
-* ** `connection-string-setting` (isteğe bağlı)**: kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. Varsayılan değer: `AzureWebJobsStorage`.
-* ** `task-hub-name` (isteğe bağlı)**: kullanılacak dayanıklı işlevler görev hub 'ının adı. Varsayılan olarak, [host.js](durable-functions-bindings.md#host-json) dosyadaki görev hub 'ı adı kullanılır.
+* **`connection-string-setting` (isteğe bağlı)**: kullanılacak depolama bağlantı dizesini içeren uygulama ayarının adı. Varsayılan değer: `AzureWebJobsStorage`.
+* **`task-hub-name` (isteğe bağlı)**: kullanılacak dayanıklı işlevler görev hub 'ının adı. Varsayılan olarak, [host.js](durable-functions-bindings.md#host-json) dosyadaki görev hub 'ı adı kullanılır.
 
 Aşağıdaki komut, görev hub 'ı ile ilişkili tüm Azure depolama verilerini siler `UserTest` .
 

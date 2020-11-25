@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
 ms.openlocfilehash: 826e475eb71563b52d687903aeac4ec936e267f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87093009"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009509"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Web Işleri olarak Dayanıklı İşlevler çalıştırma
 
@@ -224,7 +224,7 @@ Sunulan ana değişiklik, .NET Core 'un .NET Framework yerine kullanılması. Bi
     * `Microsoft.Azure.WebJobs.Extensions.Storage`
     * `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`
 
-1. .NET Core yapılandırma çerçevesini kullanarak, dosya * üzerinde birappsettings.js* depolama bağlantı dizesi ve Application Insights izleme anahtarı ayarlayın. Aşağıda bir örnek verilmiştir:
+1. .NET Core yapılandırma çerçevesini kullanarak, dosya *üzerinde birappsettings.js* depolama bağlantı dizesi ve Application Insights izleme anahtarı ayarlayın. Aşağıda bir örnek verilmiştir:
 
     ```json
         {

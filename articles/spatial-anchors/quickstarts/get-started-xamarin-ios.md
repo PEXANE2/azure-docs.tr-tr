@@ -1,19 +1,19 @@
 ---
 title: 'Hızlı başlangıç: Xamarin iOS uygulaması oluşturma'
 description: Bu hızlı başlangıçta, uzamsal bağlayıcıları kullanarak Xamarin ile bir iOS uygulaması oluşturmayı öğreneceksiniz.
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 07/22/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 610112f9374f2ca39a8df4b849aeda4abf965e57
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: b62ca4b02a1bd28d150f233adf1dfb621995e1c4
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097431"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96009747"
 ---
 # <a name="quickstart-create-a-xamarin-ios-app-with-azure-spatial-anchors"></a>Hızlı başlangıç: Azure uzamsal bağlayıcılarla bir Xamarin iOS uygulaması oluşturma
 
@@ -28,7 +28,7 @@ Bu hızlı başlangıçta, [Azure uzamsal bağlayıcıları](../overview.md)kull
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emin olun:
 - MacOS High Sierra (10,13) veya üzeri çalıştıran bir Mac:
@@ -61,11 +61,11 @@ Alanı bulun `SpatialAnchorsAccountDomain` ve `Set me` hesap etki alanı ile de�
 
 İOS cihazında güç açın, oturum açın ve USB kablosu kullanarak bilgisayara bağlayın.
 
-Başlangıç projesini **Samplexamarin. iOS**olarak ayarlayın, **çözüm yapılandırmasını** **Yayınla**değiştirin ve cihaz Seçicisi açılır penceresinde dağıtmak istediğiniz cihazı seçin.
+Başlangıç projesini **Samplexamarin. iOS** olarak ayarlayın, **çözüm yapılandırmasını** **Yayınla** değiştirin ve cihaz Seçicisi açılır penceresinde dağıtmak istediğiniz cihazı seçin.
 
 ![Visual Studio yapılandırması](./media/get-started-xamarin-iOS/visual-studio-macos-configuration.jpg)
 
-**Run**  >  Uygulamanızı dağıtmak ve başlatmak için**hata ayıklama olmadan Başlat** ' ı seçin.
+**Run**  >  Uygulamanızı dağıtmak ve başlatmak için **hata ayıklama olmadan Başlat** ' ı seçin.
 
 Uygulamada, tanıtımı çalıştırmak için **temel** ' yı seçin ve bir tutturucu yerleştirip geri çekmeniz için yönergeleri izleyin.
 

@@ -10,11 +10,11 @@ ms.date: 07/14/2017
 ms.author: cynthn
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 779a09532790ea272d8c95ac28f8c152216efc5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89002972"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008659"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>C# ve Kaynak Yöneticisi şablonu kullanarak bir Azure sanal makinesini dağıtma
 
@@ -48,9 +48,9 @@ NuGet paketleri, bu adımları tamamlaması için gereken kitaplıkları yüklem
 
 Bu adımda, şablona parametre değerleri sağlayan bir şablon dosyası ve bir parametre dosyası oluşturacaksınız. Ayrıca, Azure Resource Manager işlemleri gerçekleştirmek için kullanılan bir yetkilendirme dosyası da oluşturursunuz.
 
-### <a name="create-the-template-file"></a>Şablon dosyası oluşturma
+### <a name="create-the-template-file"></a>Şablon dosyasını oluşturma
 
-1. Çözüm Gezgini ' de, *myDotnetProject*yeni öğe Ekle ' ye sağ tıklayın  >  **Add**  >  **New Item**ve ardından *Visual C# öğelerinde* **metin dosyası** ' nı seçin. Dosyayı *CreateVMTemplate.js*olarak adlandırın ve ardından **Ekle**' ye tıklayın.
+1. Çözüm Gezgini ' de, *myDotnetProject* yeni öğe Ekle ' ye sağ tıklayın  >  **Add**  >  **New Item** ve ardından *Visual C# öğelerinde* **metin dosyası** ' nı seçin. Dosyayı *CreateVMTemplate.js* olarak adlandırın ve ardından **Ekle**' ye tıklayın.
 2. Bu JSON kodunu oluşturduğunuz dosyaya ekleyin:
 
     ```json
@@ -162,7 +162,7 @@ Bu adımda, şablona parametre değerleri sağlayan bir şablon dosyası ve bir 
 
 Şablondaki kaynak parametrelerinin değerlerini belirtmek için değerleri içeren bir parametre dosyası oluşturursunuz.
 
-1. Çözüm Gezgini ' de, *myDotnetProject*yeni öğe Ekle ' ye sağ tıklayın  >  **Add**  >  **New Item**ve ardından *Visual C# öğelerinde* **metin dosyası** ' nı seçin. Dosyayı *Parameters.js*olarak adlandırın ve ardından **Ekle**' ye tıklayın.
+1. Çözüm Gezgini ' de, *myDotnetProject* yeni öğe Ekle ' ye sağ tıklayın  >  **Add**  >  **New Item** ve ardından *Visual C# öğelerinde* **metin dosyası** ' nı seçin. Dosyayı *Parameters.js* olarak adlandırın ve ardından **Ekle**' ye tıklayın.
 2. Bu JSON kodunu oluşturduğunuz dosyaya ekleyin:
 
     ```json
@@ -182,7 +182,7 @@ Bu adımda, şablona parametre değerleri sağlayan bir şablon dosyası ve bir 
 
 Bir şablonu dağıtabilmeniz için önce bir [Active Directory Hizmet sorumlusuna](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)erişiminizin olduğundan emin olun. Hizmet sorumlusu ' ndan Azure Resource Manager kimlik doğrulaması için bir belirteç elde edersiniz. Ayrıca, yetkilendirme dosyasında ihtiyaç duyduğunuz uygulama KIMLIĞI, kimlik doğrulama anahtarı ve kiracı KIMLIĞINI de kaydetmeniz gerekir.
 
-1. Çözüm Gezgini ' de, *myDotnetProject*yeni öğe Ekle ' ye sağ tıklayın  >  **Add**  >  **New Item**ve ardından *Visual C# öğelerinde* **metin dosyası** ' nı seçin. Dosyayı *azureauth. Properties*olarak adlandırın ve **Ekle**' ye tıklayın.
+1. Çözüm Gezgini ' de, *myDotnetProject* yeni öğe Ekle ' ye sağ tıklayın  >  **Add**  >  **New Item** ve ardından *Visual C# öğelerinde* **metin dosyası** ' nı seçin. Dosyayı *azureauth. Properties* olarak adlandırın ve **Ekle**' ye tıklayın.
 2. Şu yetkilendirme özelliklerini ekleyin:
 
     ```
@@ -196,7 +196,7 @@ Bir şablonu dağıtabilmeniz için önce bir [Active Directory Hizmet sorumlusu
     graphURL=https://graph.microsoft.com/
     ```
 
-    Abonelik ** &lt; kimliği &gt; ** , abonelik tanımlayıcıınız, uygulama ** &lt; kimliği &gt; ** Active Directory uygulama tanımlayıcısı, ** &lt; kimlik doğrulama &gt; anahtarı** ve kiracı tanımlayıcısı ile ** &lt; Kiracı kimliği &gt; ** ile değiştirin.
+    Abonelik **&lt; kimliği &gt;** , abonelik tanımlayıcıınız, uygulama **&lt; kimliği &gt;** Active Directory uygulama tanımlayıcısı, **&lt; kimlik doğrulama &gt; anahtarı** ve kiracı tanımlayıcısı ile **&lt; Kiracı kimliği &gt;** ile değiştirin.
 
 3. Azureauth. Properties dosyasını kaydedin.
 4. Windows adlandırılmış AZURE_AUTH_LOCATION içinde, oluşturduğunuz yetkilendirme dosyasının tam yolu ile bir ortam değişkeni ayarlayın, örneğin, aşağıdaki PowerShell komutunu kullanabilirsiniz:

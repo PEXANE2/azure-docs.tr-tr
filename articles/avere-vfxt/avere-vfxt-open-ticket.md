@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: 8159d83624cdd474d91030d5376a3db447beffe1
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342357"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008438"
 ---
 # <a name="get-help-with-your-system"></a>Sisteminizle ilgili yardım alın
 
@@ -37,7 +37,7 @@ Destek biletinin kümenizdeki bir kaynakla etiketlendiğinden emin olmak için a
 
 1. Destek isteğinin ilk sayfasında, sorun türünü seçin ve doğru aboneliğin seçildiğinden emin olun.
 
-   **Hizmet**altında, **tüm hizmetler** ' e tıklayın ve **depolama alanına** bakarak **avere vfxt**' yi seçin.
+   **Hizmet** altında, **tüm hizmetler** ' e tıklayın ve **depolama alanına** bakarak **avere vfxt**' yi seçin.
 
    Kısa bir Özet ekleyin ve sorun türünü seçin.
 

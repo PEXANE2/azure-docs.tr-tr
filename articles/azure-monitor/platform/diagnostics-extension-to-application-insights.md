@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 03/19/2016
 ms.openlocfilehash: 5af0eb20f9766369caa7351719b63b213c394e5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87305814"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008846"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Bulut hizmeti, sanal makine veya Service Fabric tanılama verilerini Application Insights gönderin
 Bulut Hizmetleri, sanal makineler, sanal makine ölçek kümeleri ve Service Fabric tümü, veri toplamak için Azure Tanılama uzantısını kullanır.  Azure tanılama, verileri Azure depolama tablolarına gönderir.  Ancak, Azure Tanılama uzantısı 1,5 veya sonraki bir sürümü kullanarak, verilerin tamamını veya bir alt kümesini diğer konumlara de kanal oluşturarak aktarabilirsiniz.

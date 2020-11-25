@@ -4,16 +4,16 @@ description: Azure 'da Azure Resource Manager kullanarak güvenli bir Service Fa
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.openlocfilehash: fd2c472d24f305e42f1706e5fc49168ccde2a580
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258753"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008676"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Azure Resource Manager kullanarak Service Fabric kümesi oluşturma 
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Azure portalındaki](service-fabric-cluster-creation-via-portal.md)
+> * [Azure Portal](service-fabric-cluster-creation-via-portal.md)
 >
 >
 

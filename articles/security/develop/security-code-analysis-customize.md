@@ -14,11 +14,11 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: 4016e1dd055b45f9cd59a172d0e71ef95fec1c40
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517215"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008693"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>Derleme görevlerini yapılandırma ve özelleştirme
 
@@ -56,8 +56,8 @@ Görev yapılandırmasının ayrıntıları aşağıdaki ekran görüntüsünde 
 
 - Derleme yapılandırmasını hata ayıklama olarak ayarlayın. pdb hata ayıklama dosyaları oluşturulur. Binskım, çıkış ikilileriyle ilgili sorunları kaynak koduna geri eşlemek için bu dosyaları kullanır.
 - Araştırmamak ve kendi Komut satırlarınızı oluşturmak için:
-     - **Tür** listesinde **temel** ' yı seçin.
-     - **İşlev** listesinde, **Çözümle** ' yi seçin.
+     - **Tür** listesinde **temel**' yı seçin.
+     - **İşlev** listesinde, **Çözümle**' yi seçin.
 - **Hedef** bölümünde, bir dosya, dizin veya filtre deseninin bir veya daha fazla belirticilerini girin. Bu tanımlayıcılar çözümlenecek bir veya daha fazla ikiliye çözümlenmelidir:
     - Birden çok belirtilen hedefin noktalı virgülle ayrılması gerekir (;).
     - Belirleyici tek bir dosya olabilir veya joker karakterler içerebilir.
@@ -95,20 +95,20 @@ Görev yapılandırmasının ayrıntıları aşağıdaki ekran görüntüsünde 
 ![Kimlik bilgisi tarayıcısı derleme görevini yapılandırma](./media/security-tools/3-taskdetails.png)
 
 Mevcut seçenekler şunlardır:
-  - **Görünen ad** : Azure DevOps görevinin adı. Varsayılan değer, Çalıştır kimlik bilgisi tarayıcısı
-  - **Araç ana sürümü** : kullanılabilir değerler **credscan v2** , **credscan v1** içerir. Müşterilerin **Credscan v2** sürümünü kullanmasını öneririz.
-  - **Çıktı biçimi** : mevcut değerler **TSV** , **CSV** , **Sarif** ve **PREfast** ' i içerir.
-  - **Araç sürümü** : **en son** ' u seçmenizi öneririz.
-  - **Tarama klasörü** : taranacak depo klasörü.
-  - **Aramacılar dosya türü** : taramak için kullanılan Searchers dosyasını bulmaya yönelik seçenekler.
-  - **Suppressions dosyası** : bir [JSON](https://json.org/) dosyası çıkış günlüğündeki sorunları engelleyebilir. Gizleme senaryoları hakkında daha fazla bilgi için bu makalenin SSS bölümüne bakın.
-  - **Ayrıntılı çıkış** : kendi kendine açıklama.
-  - **Toplu Iş boyutu** : kimlik bilgisi tarayıcısını çalıştırmak için kullanılan eşzamanlı iş parçacıklarının sayısı. Varsayılan değer 20 ' dir. Olası değerler 1 ila 2.147.483.647 arasındadır.
-  - **Eşleşme zaman aşımı** : denetimi bırakmadan önce bir arama eşleşmesi gerçekleştirmeye harcanan saniye cinsinden süre.
-  - **Dosya taraması okuma arabelleği boyutu** : içerik okunurken kullanılan arabelleğin bayt cinsinden boyutu. Varsayılan değer 524.288 ' dir.  
-  - **Dosya taraması okuma bayt üst sınırı** : içerik analizi sırasında bir dosyadan okunan en fazla bayt sayısı. Varsayılan değer 104.857.600 ' dir.
-  - **Denetim seçenekleri**  >  **Bu görevi çalıştır** : görevin ne zaman çalışacağını belirtir. Daha karmaşık koşullar belirtmek için **özel koşullar** ' ı seçin.
-  - **Sürüm** : Azure DevOps içindeki derleme görevi sürümü. Bu seçenek sıklıkla kullanılmaz.
+  - **Görünen ad**: Azure DevOps görevinin adı. Varsayılan değer, Çalıştır kimlik bilgisi tarayıcısı
+  - **Araç ana sürümü**: kullanılabilir değerler **credscan v2**, **credscan v1** içerir. Müşterilerin **Credscan v2** sürümünü kullanmasını öneririz.
+  - **Çıktı biçimi**: mevcut değerler **TSV**, **CSV**, **Sarif** ve **PREfast**' i içerir.
+  - **Araç sürümü**: **en son**' u seçmenizi öneririz.
+  - **Tarama klasörü**: taranacak depo klasörü.
+  - **Aramacılar dosya türü**: taramak için kullanılan Searchers dosyasını bulmaya yönelik seçenekler.
+  - **Suppressions dosyası**: bir [JSON](https://json.org/) dosyası çıkış günlüğündeki sorunları engelleyebilir. Gizleme senaryoları hakkında daha fazla bilgi için bu makalenin SSS bölümüne bakın.
+  - **Ayrıntılı çıkış**: kendi kendine açıklama.
+  - **Toplu Iş boyutu**: kimlik bilgisi tarayıcısını çalıştırmak için kullanılan eşzamanlı iş parçacıklarının sayısı. Varsayılan değer 20 ' dir. Olası değerler 1 ila 2.147.483.647 arasındadır.
+  - **Eşleşme zaman aşımı**: denetimi bırakmadan önce bir arama eşleşmesi gerçekleştirmeye harcanan saniye cinsinden süre.
+  - **Dosya taraması okuma arabelleği boyutu**: içerik okunurken kullanılan arabelleğin bayt cinsinden boyutu. Varsayılan değer 524.288 ' dir.  
+  - **Dosya taraması okuma bayt üst sınırı**: içerik analizi sırasında bir dosyadan okunan en fazla bayt sayısı. Varsayılan değer 104.857.600 ' dir.
+  - **Denetim seçenekleri**  >  **Bu görevi çalıştır**: görevin ne zaman çalışacağını belirtir. Daha karmaşık koşullar belirtmek için **özel koşullar** ' ı seçin.
+  - **Sürüm**: Azure DevOps içindeki derleme görevi sürümü. Bu seçenek sıklıkla kullanılmaz.
 
 Bu görev için YAML yapılandırması hakkında daha fazla bilgi için [kimlik bilgisi tarayıcımız YAML seçenekleri](yaml-configuration.md#credential-scanner-task) ' ne bakın
 
@@ -124,10 +124,10 @@ Görev yapılandırmasının ayrıntıları aşağıdaki listede ve notta göste
 
 Mevcut seçenekler şunlardır:
 
-- **RuleSet** : değerler **SDL gerekir** , **SDL önerilir** veya kendi özel kural kümesidir.
-- **Çözümleyiciler sürümü** : **en son** ' u seçmenizi öneririz.
-- **Derleyici uyarıları gizlemeleri dosyası** : gizlenen bir uyarı kimlikleri listesi içeren bir metin dosyası.
-- **Denetim seçenekleri**  >  **Bu görevi çalıştır** : görevin ne zaman çalışacağını belirtir. Daha karmaşık koşullar belirtmek için **özel koşullar** ' ı seçin.
+- **RuleSet**: değerler **SDL gerekir**, **SDL önerilir** veya kendi özel kural kümesidir.
+- **Çözümleyiciler sürümü**: **en son**' u seçmenizi öneririz.
+- **Derleyici uyarıları gizlemeleri dosyası**: gizlenen bir uyarı kimlikleri listesi içeren bir metin dosyası.
+- **Denetim seçenekleri**  >  **Bu görevi çalıştır**: görevin ne zaman çalışacağını belirtir. Daha karmaşık koşullar belirtmek için **özel koşullar** ' ı seçin.
 
 > [!NOTE]
 >
@@ -164,9 +164,9 @@ Görev yapılandırmasının ayrıntıları aşağıdaki ekran görüntüsünde 
 
 ![Güvenlik analizi günlüklerini Yayımla derleme görevini yapılandırma](./media/security-tools/9-publish-security-analsis-logs600.png)  
 
-- **Yapıt adı** : herhangi bir dize tanımlayıcısı.
-- **Yapıt türü** : seçiminize bağlı olarak, Azure DevOps Server veya yapı aracısının erişebileceği paylaşılan bir dosya için günlükleri yayımlayabilirsiniz.
-- **Araçlar** : belirli araçların günlüklerini korumayı seçebilirsiniz veya tüm günlükleri korumak Için **tüm araçları** seçebilirsiniz.
+- **Yapıt adı**: herhangi bir dize tanımlayıcısı.
+- **Yapıt türü**: seçiminize bağlı olarak, Azure DevOps Server veya yapı aracısının erişebileceği paylaşılan bir dosya için günlükleri yayımlayabilirsiniz.
+- **Araçlar**: belirli araçların günlüklerini korumayı seçebilirsiniz veya tüm günlükleri korumak Için **tüm araçları** seçebilirsiniz.
 
 Bu görev için YAML yapılandırması hakkında daha fazla bilgi için, [Yayımlama güvenlik günlüklerimize BAKıN YAML seçenekleri](yaml-configuration.md#publish-security-analysis-logs-task)
 
@@ -176,10 +176,10 @@ Güvenlik raporu yapılandırmasının ayrıntıları aşağıdaki ekran görün
 
 ![Güvenlik raporu derleme görevini yapılandırma](./media/security-tools/4-createsecurityanalysisreport600.png)
 
-- **Raporlar** : Işlem **hattı konsolu** , **tsv dosyası** ve **HTML dosya** biçimlerinden birini seçin. Seçili her biçim için bir rapor dosyası oluşturulur.
-- **Araçlar** : Derleme tanımınızda algılanan sorunların özetini istediğiniz araçları seçin. Her bir araç seçili olduğunda, yalnızca hataları görüp görmeyeceğinizi veya Özet raporda hem hataları hem de uyarıları görme seçeneğini belirleyebilirsiniz.
-- **Gelişmiş Seçenekler** : seçili araçlardan biri için günlük yoksa, bir uyarı veya hata günlüğü seçebilirsiniz. Bir hata günlüğünde, görev başarısız olur.
-- **Temel Günlükler klasörü** : günlüklerin bulunduğu temel Günlükler klasörünü özelleştirebilirsiniz. Ancak bu seçenek genellikle kullanılmaz.
+- **Raporlar**: Işlem **hattı konsolu**, **tsv dosyası** ve **HTML dosya** biçimlerinden birini seçin. Seçili her biçim için bir rapor dosyası oluşturulur.
+- **Araçlar**: Derleme tanımınızda algılanan sorunların özetini istediğiniz araçları seçin. Her bir araç seçili olduğunda, yalnızca hataları görüp görmeyeceğinizi veya Özet raporda hem hataları hem de uyarıları görme seçeneğini belirleyebilirsiniz.
+- **Gelişmiş Seçenekler**: seçili araçlardan biri için günlük yoksa, bir uyarı veya hata günlüğü seçebilirsiniz. Bir hata günlüğünde, görev başarısız olur.
+- **Temel Günlükler klasörü**: günlüklerin bulunduğu temel Günlükler klasörünü özelleştirebilirsiniz. Ancak bu seçenek genellikle kullanılmaz.
 
 Bu görev için YAML yapılandırması hakkında daha fazla bilgi için [güvenlik raporumuzu ve YAML seçeneklerinizi](yaml-configuration.md#security-report-task) denetleyin
 
@@ -189,9 +189,9 @@ Görev yapılandırmasının ayrıntıları aşağıdaki ekran görüntüsünde 
 
 ![Analiz sonrası derleme görevini yapılandırma](./media/security-tools/a-post-analysis600.png)
 
-- **Araçlar** : oluşturma tanımınızda, derleme kesmeyi koşullu olarak eklemek istediğiniz araçları seçin. Seçilen her bir araç için, yalnızca hatalara veya hata ve uyarılarla ilgili hataları kesmek isteyip istemediğinizi belirlemek için bir seçenek olabilir.
-- **Rapor** : isteğe bağlı olarak, derleme kesmesine neden olan sonuçları yazabilirsiniz. Sonuçlar, Azure DevOps konsol penceresine ve günlük dosyasına yazılır.
-- **Gelişmiş Seçenekler** : seçili araçlardan biri için günlük yoksa, bir uyarı veya hata günlüğü seçebilirsiniz. Bir hata günlüğünde, görev başarısız olur.
+- **Araçlar**: oluşturma tanımınızda, derleme kesmeyi koşullu olarak eklemek istediğiniz araçları seçin. Seçilen her bir araç için, yalnızca hatalara veya hata ve uyarılarla ilgili hataları kesmek isteyip istemediğinizi belirlemek için bir seçenek olabilir.
+- **Rapor**: isteğe bağlı olarak, derleme kesmesine neden olan sonuçları yazabilirsiniz. Sonuçlar, Azure DevOps konsol penceresine ve günlük dosyasına yazılır.
+- **Gelişmiş Seçenekler**: seçili araçlardan biri için günlük yoksa, bir uyarı veya hata günlüğü seçebilirsiniz. Bir hata günlüğünde, görev başarısız olur.
 
 Bu görev için YAML yapılandırması hakkında daha fazla bilgi için, [gönderdiğimiz Analize BAKıN YAML seçenekleri](yaml-configuration.md#post-analysis-task)
 

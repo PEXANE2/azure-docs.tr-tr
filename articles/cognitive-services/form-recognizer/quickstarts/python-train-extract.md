@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 8c4e600e012268337a5e6c63d5b3ce4f532ccec0
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: aaf614846618f3781559ad7f9ce31cb47dd11b63
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970937"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96009577"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Hızlı başlangıç: Python ile REST API kullanarak form tanıyıcı modeli eğitme ve form verilerini ayıklama
 
@@ -23,11 +23,11 @@ Bu hızlı başlangıçta, anahtar-değer çiftlerini ve tabloları ayıklamak �
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 - [Python](https://www.python.org/downloads/) yüklendi (örneği yerel olarak çalıştırmak istiyorsanız).
-- Aynı türde en az beş form kümesi. Bu verileri modeli eğitmek için kullanacaksınız. Formlarınızın farklı dosya türleri olabilir, ancak aynı belge türünde olması gerekir. Bu hızlı başlangıç için [örnek veri kümesi](https://go.microsoft.com/fwlink/?linkid=2090451) ( *sample_data.zip*indir ve Ayıkla) kullanabilirsiniz. Eğitim dosyalarını, standart performanslı katmanlı bir Azure depolama hesabındaki bir BLOB depolama kapsayıcısının köküne yükleyin.
+- Aynı türde en az beş form kümesi. Bu verileri modeli eğitmek için kullanacaksınız. Formlarınızın farklı dosya türleri olabilir, ancak aynı belge türünde olması gerekir. Bu hızlı başlangıç için [örnek veri kümesi](https://go.microsoft.com/fwlink/?linkid=2090451) ( *sample_data.zip* indir ve Ayıkla) kullanabilirsiniz. Eğitim dosyalarını, standart performanslı katmanlı bir Azure depolama hesabındaki bir BLOB depolama kapsayıcısının köküne yükleyin.
 
 > [!NOTE]
 > Bu hızlı başlangıç, URL tarafından erişilen uzak belgeleri kullanır. Bunun yerine yerel dosyaları kullanmak için [başvuru belgelerine](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)bakın.
@@ -50,6 +50,7 @@ Azure Blob kapsayıcısındaki belgelerle bir form tanıyıcı modeli eğitmek i
 1. `<subscription key>`Önceki adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
 1. `<endpoint>`Form tanıyıcı kaynağınız için uç nokta URL 'siyle değiştirin.
 1. `<Blob folder name>`Formlarınızın bulunduğu BLOB depolama alanındaki klasörün yoluyla değiştirin. Formlarınızın kapsayıcının kökü varsa, bu dizeyi boş bırakın.
+1. İsteğe bağlı olarak `<your model name>` , modelinize vermek istediğiniz kolay adla değiştirin.
 
     # <a name="v20"></a>[v2.0](#tab/v2-0)
     ```python
@@ -78,6 +79,7 @@ Azure Blob kapsayıcısındaki belgelerle bir form tanıyıcı modeli eğitmek i
             "prefix": prefix,
             "includeSubFolders": includeSubFolders
         },
+        "modelName":"<your model name>",
         "useLabelFile": useLabelFile
     }
     
@@ -101,7 +103,7 @@ Azure Blob kapsayıcısındaki belgelerle bir form tanıyıcı modeli eğitmek i
     
     # Endpoint URL
     endpoint = r"<endpoint>"
-    post_url = endpoint + r"/formrecognizer/v2.1-preview.1/custom/models"
+    post_url = endpoint + r"/formrecognizer/v2.1-preview.2/custom/models"
     source = r"<SAS URL>"
     prefix = "<Blob folder name>"
     includeSubFolders = False

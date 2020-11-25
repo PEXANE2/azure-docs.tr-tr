@@ -7,11 +7,11 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: e79e5e16b300fd02b9c9124f9677747834f22813
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89443152"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009441"
 ---
 # <a name="how-to-catalog-big-data-in-azure-data-catalog"></a>Azure Veri Kataloğu 'nda büyük verileri katalog halinde kullanma
 
@@ -60,11 +60,11 @@ Bu düzene bir örnek şu olabilir:
 
 Bir analist veya veri bilimcu daha büyük dizin yapılarında bulunan verilerle çalışıyorsa, bu başvuru dosyalarındaki veriler, yalnızca daha büyük veri kümesindeki ad veya KIMLIĞE göre başvuruda bulunulan varlıklara yönelik daha ayrıntılı bilgi sağlamak için kullanılabilir.
 
-Bu düzende, bireysel başvuru verileri dosyalarını **Azure Veri Kataloğu**ile kaydetmek mantıklı olur. Her dosya bir veri kümesini temsil eder ve her biri tek tek açıklanmış ve keşfedilebilir.
+Bu düzende, bireysel başvuru verileri dosyalarını **Azure Veri Kataloğu** ile kaydetmek mantıklı olur. Her dosya bir veri kümesini temsil eder ve her biri tek tek açıklanmış ve keşfedilebilir.
 
 ## <a name="alternate-patterns"></a>Alternatif desenler
 
-Önceki bölümde açıklanan desenler, büyük veri deposunun organize olabilme biçimleridir ancak her uygulama farklıdır. Veri kaynaklarınızın yapılandırılma şeklinden bağımsız olarak, **Azure Veri Kataloğu**ile büyük veri kaynaklarını kaydederken, kuruluşunuzdaki diğer kullanıcılara değer olan veri kümelerini temsil eden dosya ve dizinleri kaydetmeye odaklanın. Tüm dosyaları ve dizinleri kaydetmek, kataloğun üzerinde değişiklik yapmalarını sağlayarak kullanıcıların ihtiyaç duydukları öğeleri bulmasını zorlaştırır.
+Önceki bölümde açıklanan desenler, büyük veri deposunun organize olabilme biçimleridir ancak her uygulama farklıdır. Veri kaynaklarınızın yapılandırılma şeklinden bağımsız olarak, **Azure Veri Kataloğu** ile büyük veri kaynaklarını kaydederken, kuruluşunuzdaki diğer kullanıcılara değer olan veri kümelerini temsil eden dosya ve dizinleri kaydetmeye odaklanın. Tüm dosyaları ve dizinleri kaydetmek, kataloğun üzerinde değişiklik yapmalarını sağlayarak kullanıcıların ihtiyaç duydukları öğeleri bulmasını zorlaştırır.
 
 ## <a name="summary"></a>Özet
 

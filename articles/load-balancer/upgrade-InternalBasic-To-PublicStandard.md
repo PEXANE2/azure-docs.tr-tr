@@ -8,11 +8,11 @@ ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
 ms.openlocfilehash: d1c69f528328d5ff983c7de9d7fad052a7c41285
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696260"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009305"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Azure Iç Load Balancer yükseltme-giden bağlantı gerekli
 [Azure Standart Load Balancer](load-balancer-overview.md) , bölge artıklığı aracılığıyla zengin bir işlev kümesi ve yüksek kullanılabilirlik sağlar. Load Balancer SKU 'SU hakkında daha fazla bilgi için bkz. [karşılaştırma tablosu](./skus.md#skus). Standart dahili Load Balancer giden bağlantı sağlamadığından, bunun yerine standart bir genel Load Balancer oluşturmak için bir çözüm sağlıyoruz.
@@ -104,7 +104,7 @@ Aşağıda, yeni oluşturulan Standart genel Load Balancer için arka uç havuzl
    
     1. Temel Load Balancer arka uç havuzuyla eşleşen arka uç havuzunu seçin, aşağıdaki değeri seçin: 
       - **Sanal makine**: açılır ve temel Load Balancer eşleşen arka uç havuzundan VM 'leri seçin.
-    1. **Kaydet**’i seçin.
+    1. **Kaydet**'i seçin.
     >[!NOTE]
     >Ortak IP 'leri olan VM 'Ler için, ilk olarak aynı IP adresinin garantili olmadığı standart IP adresleri oluşturmanız gerekecektir. VM 'Lerin temel IP 'lerden ilişkisini kaldırın ve yeni oluşturulan standart IP adresleriyle ilişkilendirin. Ardından, Standart Load Balancer arka uç havuzuna VM 'Ler eklemek için yönergeleri takip edebilirsiniz. 
 
