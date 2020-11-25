@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 5f94564c5e769d3cf0e0abbe92a309a1ee2117a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90055087"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003880"
 ---
 # <a name="deploy-the-storsimple-snapshot-manager-mmc-snap-in"></a>StorSimple Snapshot Manager MMC ek bileşenini dağıtma
 
@@ -30,7 +30,7 @@ Bu öğretici, yapılandırma gereksinimlerinin yanı sıra StorSimple Snapshot 
 
 > [!NOTE]
 > * Microsoft Azure StorSimple Sanal dizilerini (StorSimple şirket içi sanal aygıtlar olarak da bilinir) yönetmek için StorSimple Snapshot Manager kullanamazsınız.
-> * StorSimple cihazınıza StorSimple güncelleştirme 2 ' yi yüklemeyi planlıyorsanız, StorSimple **güncelleştirme 2 ' yi yüklemeden önce**storsimple Snapshot Manager 'nin en son sürümünü indirdiğinizden emin olun ve yükleyin. StorSimple Snapshot Manager 'nin en son sürümü, geriye dönük olarak uyumludur ve Microsoft Azure StorSimple yayınlanan tüm sürümleriyle birlikte çalışmaktadır. StorSimple Snapshot Manager 'ın önceki sürümünü kullanıyorsanız, bu sürümü güncelleştirmeniz gerekir (yeni sürümü yüklemeden önce önceki sürümü kaldırmanız gerekmez).
+> * StorSimple cihazınıza StorSimple güncelleştirme 2 ' yi yüklemeyi planlıyorsanız, StorSimple **güncelleştirme 2 ' yi yüklemeden önce** storsimple Snapshot Manager 'nin en son sürümünü indirdiğinizden emin olun ve yükleyin. StorSimple Snapshot Manager 'nin en son sürümü, geriye dönük olarak uyumludur ve Microsoft Azure StorSimple yayınlanan tüm sürümleriyle birlikte çalışmaktadır. StorSimple Snapshot Manager 'ın önceki sürümünü kullanıyorsanız, bu sürümü güncelleştirmeniz gerekir (yeni sürümü yüklemeden önce önceki sürümü kaldırmanız gerekmez).
 
 
 ## <a name="storsimple-snapshot-manager-installation"></a>StorSimple Snapshot Manager yüklemesi
@@ -117,7 +117,7 @@ StorSimple Snapshot Manager StorSimple cihazına bağlamak için aşağıdaki ad
 2. **Kapsam** bölmesinde, **cihazlar** düğümüne sağ tıklayın ve ardından **cihaz yapılandırma**' ya tıklayın. **Cihaz Yapılandır** iletişim kutusu görüntülenir.
    
     ![Cihaz yapılandırma](./media/storsimple-snapshot-manager-deployment/HCS_SSM_config_device.png) 
-3. **Cihaz** liste kutusunda Microsoft Azure StorSimple cihazının veya sanal cihazın IP adresini seçin. **Parola** metin kutusuna, Azure Portal cihaz Için oluşturduğunuz storsimple Snapshot Manager parolasını yazın. **Tamam**'a tıklayın.
+3. **Cihaz** liste kutusunda Microsoft Azure StorSimple cihazının veya sanal cihazın IP adresini seçin. **Parola** metin kutusuna, Azure Portal cihaz Için oluşturduğunuz storsimple Snapshot Manager parolasını yazın. **Tamam** düğmesine tıklayın.
 4. StorSimple Snapshot Manager, tanımladığınız cihazı arar. Cihaz kullanılabiliyorsa, StorSimple Snapshot Manager bir bağlantı ekler. Bağlantının başarıyla eklendiğini doğrulamak için [cihazla olan bağlantıyı doğrulayabilirsiniz](#to-verify-the-connection) .
    
     Cihaz herhangi bir nedenle kullanılamıyorsa, StorSimple Snapshot Manager bir hata mesajı döndürür. **Tamam** ' a tıklayarak hata iletisini kapatın ve ardından **iptal** ' e tıklayarak **bir cihaz Yapılandır** iletişim kutusunu kapatın.
@@ -153,7 +153,7 @@ StorSimple Snapshot Manager kaldırmak için aşağıdaki adımları kullanın.
 #### <a name="to-uninstall-storsimple-snapshot-manager"></a>StorSimple Snapshot Manager kaldırmak için
 1. Ana bilgisayarda, **Denetim Masası**'nı açın, **Programlar**' a ve ardından **Programlar ve Özellikler**' e tıklayın.
 2. Sol bölmede, Kaldır ' ı **veya bir programı Değiştir**' i tıklatın.
-3. **StorSimple Snapshot Manager**öğesine sağ tıklayın ve ardından **Kaldır**' a tıklayın.
+3. **StorSimple Snapshot Manager** öğesine sağ tıklayın ve ardından **Kaldır**' a tıklayın.
 4. Bu, StorSimple Snapshot Manager Kurulum programını başlatır. **Kurulumu Değiştir**' e tıklayın ve ardından **Kaldır**' a tıklayın.
    
    > [!NOTE]
@@ -171,7 +171,7 @@ StorSimple Snapshot Manager veritabanının bir kopyasını oluşturmak ve kayde
    1. Sunucu Yöneticisi'ni başlatın.
    2. Sunucu Yöneticisi panosunda, **Araçlar** menüsünde **Hizmetler**' i seçin.
    3. **Hizmetler** sayfasında, **Microsoft StorSimple yönetim hizmeti**' ni seçin.
-   4. Sağ bölmedeki **Microsoft StorSimple yönetim hizmeti**altında **hizmeti Durdur**' a tıklayın.
+   4. Sağ bölmedeki **Microsoft StorSimple yönetim hizmeti** altında **hizmeti Durdur**' a tıklayın.
       
         ![StorSimple Aygıt Yöneticisi hizmetini durdurun](./media/storsimple-snapshot-manager-deployment/HCS_SSM_stop_service.png)
 2. C:\programdata\microsoft\storsimple\bacatalogdizinine göz atın. 
@@ -186,7 +186,7 @@ StorSimple Snapshot Manager veritabanının bir kopyasını oluşturmak ve kayde
    
    1. Sunucu Yöneticisi panosunda, **Araçlar** menüsünde **Hizmetler**' i seçin.
    2. **Hizmetler** sayfasında, **Microsoft StorSimple yönetim hizmeti**' ni seçin.
-   3. Sağ bölmedeki **Microsoft StorSimple yönetim hizmeti**altında **hizmeti yeniden Başlat**' a tıklayın. 
+   3. Sağ bölmedeki **Microsoft StorSimple yönetim hizmeti** altında **hizmeti yeniden Başlat**' a tıklayın. 
 
 ### <a name="step-3-reinstall-storsimple-snapshot-manager-and-restore-the-database"></a>3. Adım: StorSimple Snapshot Manager yeniden yükleyin ve veritabanını geri yükleyin
 StorSimple Snapshot Manager yeniden yüklemek için [Yeni storsimple Snapshot Manager yükleme](#install-a-new-storsimple-snapshot-manager)bölümündeki adımları izleyin. Ardından, StorSimple Snapshot Manager veritabanını geri yüklemek için aşağıdaki yordamı kullanın.
@@ -197,7 +197,7 @@ StorSimple Snapshot Manager yeniden yüklemek için [Yeni storsimple Snapshot Ma
    1. Sunucu Yöneticisi'ni başlatın.
    2. Sunucu Yöneticisi panosunda, **Araçlar** menüsünde **Hizmetler**' i seçin.
    3. **Hizmetler** sayfasında, **Microsoft StorSimple yönetim hizmeti**' ni seçin.
-   4. Sağ bölmedeki **Microsoft StorSimple yönetim hizmeti**altında **hizmeti Durdur**' a tıklayın.
+   4. Sağ bölmedeki **Microsoft StorSimple yönetim hizmeti** altında **hizmeti Durdur**' a tıklayın.
 2. C:\programdata\microsoft\storsimple\bacatalogdizinine göz atın.
    
    > [!NOTE]
@@ -209,7 +209,7 @@ StorSimple Snapshot Manager yeniden yüklemek için [Yeni storsimple Snapshot Ma
    
    1. Sunucu Yöneticisi panosunda, **Araçlar** menüsünde **Hizmetler**' i seçin.
    2. **Hizmetler** sayfasında, **Microsoft StorSimple yönetim hizmeti**' ni seçin.
-   3. Sağ bölmedeki **Microsoft StorSimple yönetim hizmeti**altında **hizmeti yeniden Başlat**' a tıklayın.
+   3. Sağ bölmedeki **Microsoft StorSimple yönetim hizmeti** altında **hizmeti yeniden Başlat**' a tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * StorSimple Snapshot Manager hakkında daha fazla bilgi edinmek için [storsimple Snapshot Manager nedir?](storsimple-what-is-snapshot-manager.md)bölümüne gidin.

@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
 ms.openlocfilehash: e1a77fc1b40faca0a339c5e1aaceb71dec8de8bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327047"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004645"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Izleyici ortak ölçümleri otomatik ölçeklendirme
 
@@ -52,10 +52,10 @@ Aşağıdaki ölçümler için bir uyarı oluşturabilirsiniz:
 | \Processor(_Total)\% Processor Time |Yüzde |
 | \Processor (_Total) \% ayrıcalıklı süre |Yüzde |
 | \Processor (_Total) \% Kullanıcı saati |Yüzde |
-| \İşlemci bilgileri (_Total) \ işlemci sıklığı |Sayı |
-| \System\Processes |Sayı |
-| \Process (_Total) \ iş parçacığı sayısı |Sayı |
-| \Process (_Total) \Tanıtıcı sayısı |Sayı |
+| \İşlemci bilgileri (_Total) \ işlemci sıklığı |Count |
+| \System\Processes |Count |
+| \Process (_Total) \ iş parçacığı sayısı |Count |
+| \Process (_Total) \Tanıtıcı sayısı |Count |
 | \ \% Kullanılan bellek kaydedilmiş bayt sayısı |Yüzde |
 | \Memory\Available Bytes |Bayt |
 | \ Bellek \ kaydedilmiş baytlar |Bayt |
@@ -71,11 +71,11 @@ Aşağıdaki ölçümler için bir uyarı oluşturabilirsiniz:
 | \Fiziksel disk (_Total) \Disk bayt/sn |BytesPerSecond |
 | \Fiziksel disk (_Total) \Disk okuma bayt/sn |BytesPerSecond |
 | \Fiziksel disk (_Total) \Disk yazma bayt/sn |BytesPerSecond |
-| \Fizikselgb (_Total) \Avg. disk kuyruğu uzunluğu |Sayı |
-| \Fizikselgb (_Total) \Avg. disk okuma sırası uzunluğu |Sayı |
-| \Fizikselgb (_Total) \Avg. disk yazma sırası uzunluğu |Sayı |
+| \Fizikselgb (_Total) \Avg. disk kuyruğu uzunluğu |Count |
+| \Fizikselgb (_Total) \Avg. disk okuma sırası uzunluğu |Count |
+| \Fizikselgb (_Total) \Avg. disk yazma sırası uzunluğu |Count |
 | \LogicalDisk (_Total) \% boş alan |Yüzde |
-| \LogicalDisk (_Total) \ boş megabayt |Sayı |
+| \LogicalDisk (_Total) \ boş megabayt |Count |
 
 ### <a name="guest-os-metrics-linux-vms"></a>Konuk işletim sistemi ölçümleri Linux VM 'Leri
 Azure 'da bir VM oluşturduğunuzda, Tanılamalar, tanılama uzantısı kullanılarak varsayılan olarak etkinleştirilir.
@@ -119,15 +119,15 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \PhysicalDisk\AverageReadTime |Saniye |
 | \ Physicaldisk\averagewritetime |Saniye |
 | \PhysicalDisk\AverageTransferTime |Saniye |
-| \ Physicaldisk\averagediskqueuelength |Sayı |
+| \ Physicaldisk\averagediskqueuelength |Count |
 | \Networkınterface\bytestransmderlenen |Bayt |
 | \NetworkInterface\BytesReceived |Bayt |
-| \Networkınterface\packetstransmderlenen |Sayı |
-| \Networkınterface\packetsalındı |Sayı |
+| \Networkınterface\packetstransmderlenen |Count |
+| \Networkınterface\packetsalındı |Count |
 | \Networkınterface\bytestotal |Bayt |
-| \Networkınterface\totalrxerrors |Sayı |
-| \NetworkInterface\TotalTxErrors |Sayı |
-| \Networkınterface\totalçarpışmalar |Sayı |
+| \Networkınterface\totalrxerrors |Count |
+| \NetworkInterface\TotalTxErrors |Count |
+| \Networkınterface\totalçarpışmalar |Count |
 
 ## <a name="commonly-used-app-service-server-farm-metrics"></a>Yaygın olarak kullanılan App Service (sunucu grubu) ölçümleri
 Ayrıca, http kuyruğu uzunluğu gibi genel Web sunucusu ölçümlerine göre otomatik ölçeklendirme yapabilirsiniz. Ölçüm adı **Httpqueuelength**' dir.  Aşağıdaki bölümde, kullanılabilir sunucu grubu (App Service) ölçümleri listelenmektedir.
@@ -145,15 +145,15 @@ Bu ölçümler ile uyarı verebilir veya ölçeklendirebilirsiniz.
 | --- | --- |
 | Cpuyüzdesi |Yüzde |
 | MemoryPercentage |Yüzde |
-| DiskQueueLength |Sayı |
-| HttpQueueLength |Sayı |
+| DiskQueueLength |Count |
+| HttpQueueLength |Count |
 | BytesReceived |Bayt |
 | BytesSent |Bayt |
 
 ## <a name="commonly-used-storage-metrics"></a>Yaygın olarak kullanılan depolama ölçümleri
 Depolama kuyruğu uzunluğuna göre ölçeklendirebilirsiniz, bu da depolama sırasındaki ileti sayısıdır. Depolama kuyruğu uzunluğu özel bir ölçümdür ve eşik, örnek başına düşen ileti sayısıdır. Örneğin, iki örnek varsa ve eşik 100 olarak ayarlandıysa, sıradaki toplam ileti sayısı 200 olduğunda ölçeklendirme oluşur. Bu, örnek başına 100 ileti, 120 ve 80 veya 200 ya da daha fazlasını ekleyen herhangi bir bileşim olabilir.
 
-**Ayarlar** dikey penceresindeki Azure Portal bu ayarı yapılandırın. VM Ölçek Kümeleri için, Kaynak Yöneticisi şablonundaki otomatik ölçeklendirme ayarını, *MetricName* değerini *yaklaşık temessagecount* olarak KULLANABILIR ve depolama kuyruğunun kimliğini *metricresourceuri*olarak geçirebilirsiniz.
+**Ayarlar** dikey penceresindeki Azure Portal bu ayarı yapılandırın. VM Ölçek Kümeleri için, Kaynak Yöneticisi şablonundaki otomatik ölçeklendirme ayarını, *MetricName* değerini *yaklaşık temessagecount* olarak KULLANABILIR ve depolama kuyruğunun kimliğini *metricresourceuri* olarak geçirebilirsiniz.
 
 Örneğin, klasik bir depolama hesabıyla, metricTrigger otomatik ölçeklendirme ayarı şunları içerir:
 
@@ -174,7 +174,7 @@ Depolama kuyruğu uzunluğuna göre ölçeklendirebilirsiniz, bu da depolama sı
 ## <a name="commonly-used-service-bus-metrics"></a>Yaygın olarak kullanılan Service Bus ölçümleri
 Service Bus sırasındaki ileti sayısı olan Service Bus kuyruğu uzunluğuna göre ölçeklendirebilirsiniz. Service Bus kuyruğu uzunluğu özel bir ölçümdür ve eşik, örnek başına düşen ileti sayısıdır. Örneğin, iki örnek varsa ve eşik 100 olarak ayarlandıysa, sıradaki toplam ileti sayısı 200 olduğunda ölçeklendirme oluşur. Bu, örnek başına 100 ileti, 120 ve 80 veya 200 ya da daha fazlasını ekleyen herhangi bir bileşim olabilir.
 
-VM Ölçek Kümeleri için, Kaynak Yöneticisi şablonundaki otomatik ölçeklendirme ayarını, *MetricName* değerini *yaklaşık temessagecount* olarak KULLANABILIR ve depolama kuyruğunun kimliğini *metricresourceuri*olarak geçirebilirsiniz.
+VM Ölçek Kümeleri için, Kaynak Yöneticisi şablonundaki otomatik ölçeklendirme ayarını, *MetricName* değerini *yaklaşık temessagecount* olarak KULLANABILIR ve depolama kuyruğunun kimliğini *metricresourceuri* olarak geçirebilirsiniz.
 
 ```
 "metricName": "ApproximateMessageCount",

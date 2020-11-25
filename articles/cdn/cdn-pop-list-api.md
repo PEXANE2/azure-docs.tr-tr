@@ -16,11 +16,11 @@ ms.date: 08/22/2019
 ms.author: allensu
 ms.custom: ''
 ms.openlocfilehash: 43b4bcaee447d84efa088e84340ccfc717fe2777
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778319"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005189"
 ---
 # <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>Azure CDN için geçerli POP IP listesini al
 

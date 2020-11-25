@@ -14,11 +14,11 @@ caps.latest.revision: 55
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: 26225442c72fb209bb1ac4cd2bf4777fb39542fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79534380"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005172"
 ---
 # <a name="azure-cloud-services-definition-workerrole-schema"></a>Azure Cloud Services Definition WorkerRole şeması
 Azure çalışan rolü, genelleştirilmiş geliştirme için yararlı olan bir roldür ve bir Web rolü için arka plan işleme gerçekleştirebilir.
@@ -118,7 +118,7 @@ Hizmet tanımı dosyası, bu konunun sonraki bölümlerinde ayrıntılı olarak 
 
 [İşlemlerinin](#Imports)
 
-[İçeri Aktarma](#Import)
+[İçeri Aktar](#Import)
 
 [Çalışma Zamanı](#Runtime)
 
@@ -149,11 +149,11 @@ Hizmet tanımı dosyası, bu konunun sonraki bölümlerinde ayrıntılı olarak 
 
 Aşağıdaki tablo, öğesinin özniteliklerini açıklar `WorkerRole` .
 
-| Öznitelik | Tür | Açıklama |
+| Öznitelik | Tür | Description |
 | --------- | ---- | ----------- |
 |name|string|Gereklidir. Çalışan rolünün adı. Rolün adı benzersiz olmalıdır.|
 |enableNativeCodeExecution|boolean|İsteğe bağlı. Varsayılan değer `true` ; yerel kod yürütme ve tam güven varsayılan olarak etkindir. `false`Çalışan rolü için yerel kod yürütmeyi devre dışı bırakmak üzere bu özniteliği olarak ayarlayın ve bunun yerine Azure kısmi güven kullanın.|
-|VMSize|string|İsteğe bağlı. Bu rol için ayrılan sanal makine boyutunu değiştirmek için bu değeri ayarlayın. Varsayılan değer: `Small`. Olası sanal makine boyutlarının ve özniteliklerinin listesi için bkz. [sanal makine boyutları Cloud Services](cloud-services-sizes-specs.md).|
+|VMSize|string|İsteğe bağlı. Bu rol için ayrılan sanal makine boyutunu değiştirmek için bu değeri ayarlayın. `Small` varsayılan değerdir. Olası sanal makine boyutlarının ve özniteliklerinin listesi için bkz. [sanal makine boyutları Cloud Services](cloud-services-sizes-specs.md).|
 
 ##  <a name="configurationsettings"></a><a name="ConfigurationSettings"></a> ConfigurationSettings
 `ConfigurationSettings`Öğesi, bir çalışan rolü için yapılandırma ayarları koleksiyonunu açıklar. Bu öğe, `Setting` öğesinin üst öğesidir.
@@ -163,7 +163,7 @@ Aşağıdaki tablo, öğesinin özniteliklerini açıklar `WorkerRole` .
 
 Aşağıdaki tablo, öğesinin özniteliklerini açıklar `Setting` .
 
-| Öznitelik | Tür | Açıklama |
+| Öznitelik | Tür | Description |
 | --------- | ---- | ----------- |
 |name|string|Gereklidir. Yapılandırma ayarı için benzersiz bir ad.|
 
@@ -180,7 +180,7 @@ Bir rolün yapılandırma ayarları, hizmet tanım dosyasında belirtilen ve hiz
 
 Aşağıdaki tablo, öğesinin özniteliklerini açıklar `LocalStorage` .
 
-| Öznitelik | Tür | Açıklama |
+| Öznitelik | Tür | Description |
 | --------- | ---- | ----------- |
 |name|string|Gereklidir. Yerel depo için benzersiz bir ad.|
 |cleanOnRoleRecycle|boolean|İsteğe bağlı. Rol yeniden başlatıldığında yerel deponun temizlenmesinin gerekip gerekmediğini gösterir. Varsayılan değer `true` olarak belirlenmiştir.|
@@ -203,14 +203,14 @@ HTTP, HTTPS, UDP ve TCP uç noktalarının birleşimi olan birden fazla uç nokt
 
 Aşağıdaki tablo, öğesinin özniteliklerini açıklar `InputEndpoint` .
 
-| Öznitelik | Tür | Açıklama |
+| Öznitelik | Tür | Description |
 | --------- | ---- | ----------- |
 |name|string|Gereklidir. Dış uç nokta için benzersiz bir ad.|
 |protokol|string|Gereklidir. Dış uç nokta için Aktarım Protokolü. Bir çalışan rolü için olası değerler,, `HTTP` veya ' dir `HTTPS` `UDP` `TCP` .|
 |port|int|Gereklidir. Dış uç nokta için bağlantı noktası. Seçtiğiniz herhangi bir bağlantı noktası numarasını belirtebilirsiniz, ancak hizmette her bir rol için belirtilen bağlantı noktası numaraları benzersiz olmalıdır.<br /><br /> Olası değerler 1 ile 65535 (Azure SDK sürüm 1,7 veya üzeri) arasında değişir.|
 |sertifika|string|Bir HTTPS uç noktası için gereklidir. Bir öğe tarafından tanımlanan sertifikanın adı `Certificate` .|
 |localPort|int|İsteğe bağlı. Uç noktada iç bağlantılar için kullanılan bir bağlantı noktasını belirtir. `localPort`Öznitelik, uç noktasındaki dış bağlantı noktasını bir roldeki iç bağlantı noktasına eşler. Bu, bir rolün dışarıdan açığa çıkarılan bir bağlantı noktasında iç bileşen ile iletişim kurması gereken senaryolarda yararlıdır.<br /><br /> Belirtilmemişse, değeri `localPort` özniteliğiyle aynı olur `port` . `localPort`Çalışma zamanı API 'si kullanılarak keşfedilen ayrılmamış bir bağlantı noktasını otomatik olarak atamak için değerini "*" olarak ayarlayın.<br /><br /> Olası değerler 1 ile 65535 (Azure SDK sürüm 1,7 veya üzeri) arasında değişir.<br /><br /> `localPort`Özniteliği yalnızca Azure SDK 1,3 veya üzeri sürümler kullanılarak kullanılabilir.|
-|ıgnoreroleınstancestatus|boolean|İsteğe bağlı. Bu özniteliğin değeri olarak ayarlandığında `true` , bir hizmetin durumu yok sayılır ve uç nokta yük dengeleyici tarafından kaldırılmaz. Bu değer `true` , bir hizmetin meşgul örneklerinde hata ayıklama için yararlı olarak ayarlanıyor. Varsayılan değer: `false`. **Note:** Bir uç nokta, rol kullanılmaya devam eden bir durumda olsa bile trafiği alabilir.|
+|ıgnoreroleınstancestatus|boolean|İsteğe bağlı. Bu özniteliğin değeri olarak ayarlandığında `true` , bir hizmetin durumu yok sayılır ve uç nokta yük dengeleyici tarafından kaldırılmaz. Bu değer `true` , bir hizmetin meşgul örneklerinde hata ayıklama için yararlı olarak ayarlanıyor. `false` varsayılan değerdir. **Note:** Bir uç nokta, rol kullanılmaya devam eden bir durumda olsa bile trafiği alabilir.|
 |Loadbalanceraraştırması|string|İsteğe bağlı. Giriş uç noktasıyla ilişkili yük dengeleyici araştırmasının adı. Daha fazla bilgi için bkz. [Loadbalanceraraştırma şeması](schema-csdef-loadbalancerprobe.md).|
 
 ##  <a name="internalendpoint"></a><a name="InternalEndpoint"></a> InternalEndpoint
@@ -218,7 +218,7 @@ Aşağıdaki tablo, öğesinin özniteliklerini açıklar `InputEndpoint` .
 
 Aşağıdaki tablo, öğesinin özniteliklerini açıklar `InternalEndpoint` .
 
-| Öznitelik | Tür | Açıklama |
+| Öznitelik | Tür | Description |
 | --------- | ---- | ----------- |
 |name|string|Gereklidir. İç uç nokta için benzersiz bir ad.|
 |protokol|string|Gereklidir. İç uç nokta için Aktarım Protokolü. Olası değerler şunlardır,, `HTTP` `TCP` `UDP` veya `ANY` .<br /><br /> Bir değeri `ANY` herhangi bir protokolün, herhangi bir bağlantı noktasına izin verildiğini belirtir.|
@@ -231,7 +231,7 @@ Aşağıdaki tablo, öğesinin özniteliklerini açıklar `InternalEndpoint` .
 
 Aşağıdaki tablo, öğesinin özniteliklerini açıklar `InstanceInputEndpoint` .
 
-| Öznitelik | Tür | Açıklama |
+| Öznitelik | Tür | Description |
 | --------- | ---- | ----------- |
 |name|string|Gereklidir. Uç nokta için benzersiz bir ad.|
 |localPort|int|Gereklidir. Yük dengeleyiciden iletilen gelen trafiği almak için tüm rol örneklerinin dinleyeceği iç bağlantı noktasını belirtir. Olası değerler 1 ile 65535 (dahil) arasında değişir.|
@@ -249,7 +249,7 @@ Aşağıdaki tablo, öğesinin özniteliklerini açıklar `InstanceInputEndpoint
 
 Aşağıdaki tablo, öğesinin özniteliklerini açıklar `FixedPort` .
 
-| Öznitelik | Tür | Açıklama |
+| Öznitelik | Tür | Description |
 | --------- | ---- | ----------- |
 |port|int|Gereklidir. İç uç nokta için bağlantı noktası. Bu, `FixedPortRange` En düşük ve en fazla aynı bağlantı noktasına ayarlanması ile aynı etkiye sahiptir.<br /><br /> Olası değerler 1 ile 65535 (Azure SDK sürüm 1,7 veya üzeri) arasında değişir.|
 
@@ -263,7 +263,7 @@ Aşağıdaki tablo, öğesinin özniteliklerini açıklar `FixedPort` .
 
 Aşağıdaki tablo, öğesinin özniteliklerini açıklar `FixedPortRange` .
 
-| Öznitelik | Tür | Açıklama |
+| Öznitelik | Tür | Description |
 | --------- | ---- | ----------- |
 |dk|int|Gereklidir. Aralıktaki en küçük bağlantı noktası. Olası değerler 1 ile 65535 (Azure SDK sürüm 1,7 veya üzeri) arasında değişir.|
 |max|string|Gereklidir. Aralıktaki en fazla bağlantı noktası. Olası değerler 1 ile 65535 (Azure SDK sürüm 1,7 veya üzeri) arasında değişir.|
@@ -276,12 +276,12 @@ Aşağıdaki tablo, öğesinin özniteliklerini açıklar `FixedPortRange` .
 
 Aşağıdaki tablo, öğesinin özniteliklerini açıklar `Certificate` .
 
-| Öznitelik | Tür | Açıklama |
+| Öznitelik | Tür | Description |
 | --------- | ---- | ----------- |
 |name|string|Gereklidir. Bir HTTPS öğesiyle ilişkilendirildiğinde bu sertifikaya başvurmak için kullanılan bir ad `InputEndpoint` .|
 |storeLocation|string|Gereklidir. Bu sertifikanın yerel makinede bulunabileceği sertifika deposunun konumu. Olası değerler şunlardır `CurrentUser` `LocalMachine` .|
 |storeName|string|Gereklidir. Bu sertifikanın yerel makinede bulunduğu sertifika deposunun adı. Olası değerler, yerleşik depo adlarını,,, `My` , `Root` ,,,, `CA` `Trust` `Disallowed` `TrustedPeople` `TrustedPublisher` `AuthRoot` `AddressBook` veya herhangi bir özel mağaza adını içerir. Özel bir mağaza adı belirtilmişse mağaza otomatik olarak oluşturulur.|
-|permissionLevel|string|İsteğe bağlı. Rol işlemlerine verilen erişim izinlerini belirtir. Yalnızca yükseltilmiş işlemlerin özel anahtara erişip erişebilmesini istiyorsanız `elevated` izin belirtin. `limitedOrElevated` izin, tüm rol işlemlerinin özel anahtara erişmesine izin verir. Olası değerler: `limitedOrElevated` veya `elevated`. Varsayılan değer: `limitedOrElevated`.|
+|permissionLevel|string|İsteğe bağlı. Rol işlemlerine verilen erişim izinlerini belirtir. Yalnızca yükseltilmiş işlemlerin özel anahtara erişip erişebilmesini istiyorsanız `elevated` izin belirtin. `limitedOrElevated` izin, tüm rol işlemlerinin özel anahtara erişmesine izin verir. Olası değerler: `limitedOrElevated` veya `elevated`. `limitedOrElevated` varsayılan değerdir.|
 
 ##  <a name="imports"></a><a name="Imports"></a> İşlemlerinin
 `Imports`Öğesi, Konuk işletim sistemine bileşenler ekleyen bir çalışan rolü için içeri aktarma modülleri koleksiyonunu açıklar. Bu öğe, `Import` öğesinin üst öğesidir. Bu öğe isteğe bağlıdır ve bir rol yalnızca bir çalışma zamanı bloğuna sahip olabilir.
@@ -295,7 +295,7 @@ Aşağıdaki tablo, öğesinin özniteliklerini açıklar `Certificate` .
 
 Aşağıdaki tablo, öğesinin özniteliklerini açıklar `Import` .
 
-| Öznitelik | Tür | Açıklama |
+| Öznitelik | Tür | Description |
 | --------- | ---- | ----------- |
 |Ladı|string|Gereklidir. İçeri aktarılacak modülün adı. Geçerli içeri aktarma modülleri şunlardır:<br /><br /> -RemoteAccess<br />-RemoteForwarder<br />-Tanılama<br /><br /> RemoteAccess ve RemoteForwarder modülleri, rol örneğinizi Uzak Masaüstü bağlantıları için yapılandırmanıza olanak tanır. Daha fazla bilgi için bkz. [Uzak Masaüstü bağlantısı etkinleştirme](cloud-services-role-enable-remote-desktop-new-portal.md).<br /><br /> Tanılama modülü bir rol örneği için tanılama verileri toplamanıza olanak sağlar|
 
@@ -306,7 +306,7 @@ Aşağıdaki tablo, öğesinin özniteliklerini açıklar `Import` .
 
 Aşağıdaki tablo, öğesinin özniteliklerini açıklar `Runtime` :
 
-| Öznitelik | Tür | Açıklama |
+| Öznitelik | Tür | Description |
 | --------- | ---- | ----------- |
 |executionContext|string|İsteğe bağlı. Rol Işleminin başlatıldığı bağlamı belirtir. Varsayılan bağlam `limited` .<br /><br /> -   `limited` – İşlem, yönetici ayrıcalıkları olmadan başlatılır.<br />-   `elevated` – İşlem, yönetici ayrıcalıklarıyla başlatılır.|
 
@@ -320,7 +320,7 @@ Aşağıdaki tablo, öğesinin özniteliklerini açıklar `Runtime` :
 
 Aşağıdaki tablo, öğesinin özniteliklerini açıklar `Variable` :
 
-| Öznitelik | Tür | Açıklama |
+| Öznitelik | Tür | Description |
 | --------- | ---- | ----------- |
 |name|string|Gereklidir. Ayarlanacak ortam değişkeninin adı.|
 |değer|string|İsteğe bağlı. Ortam değişkeni için ayarlanacak değer. Bir değer özniteliği veya bir öğesi dahil etmeniz gerekir `RoleInstanceValue` .|
@@ -330,7 +330,7 @@ Aşağıdaki tablo, öğesinin özniteliklerini açıklar `Variable` :
 
 Aşağıdaki tablo, öğesinin özniteliklerini açıklar `RoleInstanceValue` .
 
-| Öznitelik | Tür | Açıklama |
+| Öznitelik | Tür | Description |
 | --------- | ---- | ----------- |
 |XPath|string|İsteğe bağlı. Örnek için dağıtım ayarlarının konum yolu. Daha fazla bilgi için bkz. [XPath Ile yapılandırma değişkenleri](cloud-services-role-config-xpath.md).<br /><br /> Bir değer özniteliği veya bir öğesi dahil etmeniz gerekir `RoleInstanceValue` .|
 
@@ -347,9 +347,9 @@ Aşağıdaki tablo, öğesinin özniteliklerini açıklar `RoleInstanceValue` .
 
 Aşağıdaki tablo, öğesinin özniteliklerini açıklar `NetFxEntryPoint` .
 
-| Öznitelik | Tür | Açıklama |
+| Öznitelik | Tür | Description |
 | --------- | ---- | ----------- |
-|assemblyName|string|Gereklidir. Giriş noktasını içeren derlemenin yolu ve dosya adı. Yol, ** \\ %roleroot%\approot** klasörüne göredir (içinde ** \\ %roleroot%\approot** belirtmeyin `commandLine` , kabul edilir). **% Roleroot%** , Azure tarafından tutulan bir ortam değişkenidir ve rolünüz için kök klasör konumunu temsil eder. ** \\ %Roleroot%\approot** klasörü, rolünüzün uygulama klasörünü temsil eder.|
+|assemblyName|string|Gereklidir. Giriş noktasını içeren derlemenin yolu ve dosya adı. Yol, **\\ %roleroot%\approot** klasörüne göredir (içinde **\\ %roleroot%\approot** belirtmeyin `commandLine` , kabul edilir). **% Roleroot%** , Azure tarafından tutulan bir ortam değişkenidir ve rolünüz için kök klasör konumunu temsil eder. **\\ %Roleroot%\approot** klasörü, rolünüzün uygulama klasörünü temsil eder.|
 |targetFrameworkVersion|string|Gereklidir. Derlemenin oluşturulduğu .NET Framework sürümü. Örneğin, `targetFrameworkVersion="v4.0"`.|
 
 ##  <a name="programentrypoint"></a><a name="ProgramEntryPoint"></a> ProgramEntryPoint
@@ -360,7 +360,7 @@ Aşağıdaki tablo, öğesinin özniteliklerini açıklar `NetFxEntryPoint` .
 
 Aşağıdaki tablo, öğesinin özniteliklerini açıklar `ProgramEntryPoint` .
 
-| Öznitelik | Tür | Açıklama |
+| Öznitelik | Tür | Description |
 | --------- | ---- | ----------- |
 |Komut satırı|string|Gereklidir. Yürütülecek programın yolu, dosya adı ve komut satırı bağımsız değişkenleri. Yol, **%roleroot%\approot** klasörüne göredir (komut satırında **%roleroot%\approot** belirtmeyin, kabul edilir). **% Roleroot%** , Azure tarafından tutulan bir ortam değişkenidir ve rolünüz için kök klasör konumunu temsil eder. **%Roleroot%\approot** klasörü, rolünüzün uygulama klasörünü temsil eder.<br /><br /> Program sonlanıyorsa, rol geri dönüştürülür, bu nedenle genellikle programı çalışmaya devam edecek şekilde ayarlayın, ancak sınırlı bir görevi çalıştıran bir program değil.|
 |setReadyOnProcessStart|boolean|Gereklidir. Rol örneğinin komut satırı programının başlatıldığını işaret etmek için bekleyip beklemeyeceğini belirtir. Bu değer şu anda olarak ayarlanmalıdır `true` . Değerini olarak ayarlamak `false` , ileride kullanılmak üzere ayrılmıştır.|
@@ -370,7 +370,7 @@ Aşağıdaki tablo, öğesinin özniteliklerini açıklar `ProgramEntryPoint` .
 
 Aşağıdaki tabloda öğesi özniteliği açıklanmaktadır `Startup` .
 
-| Öznitelik | Tür | Açıklama |
+| Öznitelik | Tür | Description |
 | --------- | ---- | ----------- |
 |Priority|int|Yalnızca dahili kullanım içindir.|
 
@@ -381,7 +381,7 @@ Aşağıdaki tabloda öğesi özniteliği açıklanmaktadır `Startup` .
 
 Aşağıdaki tablo, öğesinin özniteliklerini açıklar `Task` .
 
-| Öznitelik | Tür | Açıklama |
+| Öznitelik | Tür | Description |
 | --------- | ---- | ----------- |
 |Komut satırı|string|Gereklidir. Çalıştırılacak komutları içeren bir komut dosyası (örneğin, CMD dosyası). Başlangıç komutu ve toplu iş dosyalarının ANSI biçiminde kaydedilmesi gerekir. Dosyanın başlangıcında bir bayt düzeni işaretçisi ayarlanan dosya biçimleri düzgün şekilde çalışmaz.|
 |executionContext|string|Betiğin çalıştırıldığı bağlamı belirtir.<br /><br /> -   `limited` [Varsayılan] – işlemi barındıran rolle aynı ayrıcalıklarla çalıştırın.<br />-   `elevated` – Yönetici ayrıcalıklarıyla çalıştırın.|
@@ -399,9 +399,9 @@ Aşağıdaki tablo, öğesinin özniteliklerini açıklar `Task` .
 
 Aşağıdaki tablo, öğesinin özniteliklerini açıklar `Content` .
 
-| Öznitelik | Tür | Açıklama |
+| Öznitelik | Tür | Description |
 | --------- | ---- | ----------- |
-|hedef|string|Gereklidir. Azure sanal makinesinde içeriğin yerleştirildiği konum. Bu konum **%Roleroot%\approot**klasörüne göredir.|
+|hedef|string|Gereklidir. Azure sanal makinesinde içeriğin yerleştirildiği konum. Bu konum **%Roleroot%\approot** klasörüne göredir.|
 
 Bu öğe, öğesinin üst öğesidir `SourceDirectory` .
 
@@ -412,7 +412,7 @@ Bu öğe, öğesinin üst öğesidir `SourceDirectory` .
 
 Aşağıdaki tablo, öğesinin özniteliklerini açıklar `SourceDirectory` .
 
-| Öznitelik | Tür | Açıklama |
+| Öznitelik | Tür | Description |
 | --------- | ---- | ----------- |
 |path|string|Gereklidir. İçerikleri Azure sanal makinesine kopyalanacak olan yerel bir dizinin göreli veya mutlak yolu. Dizin yolundaki ortam değişkenlerinin genişletilmesi desteklenir.|
 

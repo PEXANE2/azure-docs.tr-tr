@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: a70b6bb50b397429af1af41869bbe9ecf7e8bad9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92510906"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004186"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silverback"></a>Öğretici: Silverback ile tümleştirme Azure Active Directory
 
@@ -61,13 +61,13 @@ Silverback tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Silverback**yazın, sonuç panelinden **Silverback** ' yi seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **Silverback** yazın, sonuç panelinden **Silverback** ' yi seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuç listesinde Silverback](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre Silverback ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre Silverback ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Silverback 'deki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açmayı Silverback ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -118,15 +118,15 @@ Azure AD çoklu oturum açmayı Silverback ile yapılandırmak için aşağıdak
 
 1. Farklı bir Web tarayıcısında, Silverback sunucunuzda yönetici olarak oturum açın.
 
-2. **Yönetici**  >  **kimlik doğrulama sağlayıcısına**gidin.
+2. **Yönetici**  >  **kimlik doğrulama sağlayıcısına** gidin.
 
 3. **Kimlik doğrulama sağlayıcısı ayarları** sayfasında, aşağıdaki adımları uygulayın:
 
     ![Yönetici](./media/silverback-tutorial/tutorial_silverback_admin.png)
 
-    a.  **URL 'Den Içeri aktar**seçeneğine tıklayın.
+    a.  **URL 'Den Içeri aktar** seçeneğine tıklayın.
 
-    b.  Kopyalanmış meta veri URL 'sini yapıştırın ve **Tamam 'a**tıklayın.
+    b.  Kopyalanmış meta veri URL 'sini yapıştırın ve **Tamam 'a** tıklayın.
 
     c.  **Tamam** seçeneğini onaylayın, değerler otomatik olarak doldurulur.
 
@@ -158,14 +158,14 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -207,13 +207,13 @@ Azure AD kullanıcılarının Silverback 'de oturum açmasını sağlamak için,
 
     ![Kullanıcı](./media/silverback-tutorial/tutorial_silverback_user.png)
 
-    a. Kullanıcı **adı** metin kutusuna, **Britta**gibi kullanıcının adını girin.
+    a. Kullanıcı **adı** metin kutusuna, **Britta** gibi kullanıcının adını girin.
 
-    b. **Ad** metin kutusuna, ilk Kullanıcı adını **Britta**gibi girin.
+    b. **Ad** metin kutusuna, ilk Kullanıcı adını **Britta** gibi girin.
 
-    c. **Soyadı** metin kutusuna, **Simon**gibi kullanıcı adının soyadını girin.
+    c. **Soyadı** metin kutusuna, **Simon** gibi kullanıcı adının soyadını girin.
 
-    d. **E-posta adresi** metin kutusuna, **Brittasıon \@ contoso.com**gibi kullanıcının e-postasını girin.
+    d. **E-posta adresi** metin kutusuna, **Brittasıon \@ contoso.com** gibi kullanıcının e-postasını girin.
 
     e. **Parola** metin kutusuna parolanızı girin.
 
@@ -222,7 +222,7 @@ Azure AD kullanıcılarının Silverback 'de oturum açmasını sağlamak için,
     örneğin: **Kaydet**’e tıklayın.
 
 > [!NOTE]
-> Her kullanıcıyı el ile oluşturmak istemiyorsanız, **yönetici**kimlik doğrulama sağlayıcısı altındaki **Dinamik Kullanıcı oluşturma** onay kutusunu etkinleştirin  >  **Authentication Provider**.
+> Her kullanıcıyı el ile oluşturmak istemiyorsanız, **yönetici** kimlik doğrulama sağlayıcısı altındaki **Dinamik Kullanıcı oluşturma** onay kutusunu etkinleştirin  >  **Authentication Provider**.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 

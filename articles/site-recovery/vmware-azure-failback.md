@@ -8,11 +8,11 @@ ms.date: 01/15/2019
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: aed015b67aa36e7678b31d7f2f047cb1e77c6a3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84485311"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004203"
 ---
 # <a name="fail-back-vmware-vms-to-on-premises-site"></a>VMware VM 'lerini şirket içi siteye geri dönme
 
@@ -33,11 +33,11 @@ Bu makalede, Azure sanal makinelerinin [Azure Site Recovery](site-recovery-overv
     - Bir VM 'nin yeniden başlatılması için en az bir kurtarma noktası olması gerekir.
     - Bir kurtarma planını yeniden devretmek, plandaki tüm makinelerin en az bir kurtarma noktası olması gerekir.
 2. Kasada **çoğaltılan öğeleri**> VM 'yi seçin. **Planlanmamış yük devretme**> VM 'ye sağ tıklayın.
-3. **Yük devretmeyi onaylayın**bölümünde yük devretme yönünü (Azure 'dan) doğrulayın.
+3. **Yük devretmeyi onaylayın** bölümünde yük devretme yönünü (Azure 'dan) doğrulayın.
 4. Yük devretme için kullanmak istediğiniz kurtarma noktasını seçin.
     - **En son** kurtarma noktasını kullanmanızı öneririz. Uygulamayla tutarlı nokta en son zaman noktası arkasında ve veri kaybına neden olur.
     - **En son** , kilitlenme ile tutarlı bir kurtarma noktasıdır.
-    - **En son**Ile bir VM, en son kullanılabilir zaman noktasına yük devreder. Bir kurtarma planında çoklu VM tutarlılığı için bir çoğaltma grubunuz varsa, gruptaki her VM, zaman içindeki bağımsız en son noktaya yük devreder.
+    - **En son** Ile bir VM, en son kullanılabilir zaman noktasına yük devreder. Bir kurtarma planında çoklu VM tutarlılığı için bir çoğaltma grubunuz varsa, gruptaki her VM, zaman içindeki bağımsız en son noktaya yük devreder.
     - Uygulamayla tutarlı bir kurtarma noktası kullanıyorsanız, her sanal makine kullanılabilir en son noktasına geri dönebilir. Bir kurtarma planında bir çoğaltma grubu varsa, her grup ortak kullanılabilir kurtarma noktasını kurtarır.
 5. Yük devretme başlar. Site Recovery Azure VM 'lerini kapatır.
 6. Yük devretme tamamlandıktan sonra her şeyin beklendiği gibi çalıştığını denetleyin. Azure VM 'lerinin kapatıldığından emin olun. 

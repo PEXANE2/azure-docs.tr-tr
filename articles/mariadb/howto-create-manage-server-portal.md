@@ -7,11 +7,11 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.openlocfilehash: ade70c884a3ef01db45273e4789f34b629473661
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537994"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005036"
 ---
 # <a name="manage-an-azure-database-for-mariadb-server-using-the-azure-portal"></a>Azure portal kullanarak bir MariaDB sunucusu için Azure veritabanı 'nı yönetme
 Bu makalede, MariaDB sunucuları için Azure veritabanınızı nasıl yöneteceğiniz gösterilmektedir. Yönetim görevleri işlem ve depolama ölçeklendirmesi, yönetici parola sıfırlama ve sunucu ayrıntılarını görüntüleme içerir.
@@ -32,7 +32,7 @@ Genel Amaçlı En Iyi duruma getirilmiş ve tam tersi yönde ölçeklendirebilir
 
 1. Azure portal sunucunuzu seçin. **Ayarlar** bölümünde bulunan **fiyatlandırma katmanını** seçin.
 
-2. Ölçeklendirdiğinize göre **genel amaçlı** veya **bellek için iyileştirilmiş** ' u seçin. 
+2. Ölçeklendirdiğinize göre **genel amaçlı** veya **bellek için iyileştirilmiş**' u seçin. 
 
     ![Ekran görüntüsünde, fiyatlandırma katmanının seçildiği Azure portal ve bellek için Iyileştirilmiş bir değer gösterilir.](./media/howto-create-manage-server-portal/change-pricing-tier.png)
 
@@ -73,7 +73,7 @@ Genel Amaçlı En Iyi duruma getirilmiş ve tam tersi yönde ölçeklendirebilir
 ## <a name="update-admin-password"></a>Yönetici parolasını Güncelleştir
 Azure portal kullanarak yönetici rolü parolasını değiştirebilirsiniz.
 
-1. Azure portal sunucunuzu seçin. **Genel bakış** penceresinde **Parolayı Sıfırla** ' yı seçin.
+1. Azure portal sunucunuzu seçin. **Genel bakış** penceresinde **Parolayı Sıfırla**' yı seçin.
 
    ![genel bakış](./media/howto-create-manage-server-portal/overview-reset-password.png)
 
@@ -88,7 +88,7 @@ Azure portal kullanarak yönetici rolü parolasını değiştirebilirsiniz.
 
 Artık gerekmiyorsa, sunucunuzu silebilirsiniz. 
 
-1. Azure portal sunucunuzu seçin. **Genel bakış** penceresinde **Sil** ' i seçin.
+1. Azure portal sunucunuzu seçin. **Genel bakış** penceresinde **Sil**' i seçin.
 
     ![delete](./media/howto-create-manage-server-portal/overview-delete.png)
 
@@ -99,7 +99,7 @@ Artık gerekmiyorsa, sunucunuzu silebilirsiniz.
     > [!NOTE]
     > Sunucu silindiğinde geri alınamaz.
 
-3. **Sil** ’i seçin.
+3. **Sil**’i seçin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

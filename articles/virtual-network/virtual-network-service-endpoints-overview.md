@@ -14,17 +14,17 @@ ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
 ms.openlocfilehash: 7d937542201792c0d1c0be69df9bd1c2b34edea3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89434478"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004951"
 ---
 # <a name="virtual-network-service-endpoints"></a>Sanal Ağ hizmet uç noktaları
 
 Sanal ağ (VNet) hizmeti uç noktası, Azure omurga ağı üzerinden iyileştirilmiş bir yol üzerinden Azure hizmetlerine güvenli ve doğrudan bağlantı sağlar. Uç noktalar kritik Azure hizmeti kaynaklarınızı sanal ağlarınızla sınırlayarak güvenliğini sağlamanıza imkan verir. Hizmet uç noktaları, VNet 'teki özel IP adreslerinin VNet üzerinde genel bir IP adresi gerekmeden bir Azure hizmeti uç noktasına ulaşmasını sağlar.
 
-Bu özellik aşağıdaki Azure hizmetleri ve bölgeleri için kullanılabilir. *Microsoft. \* * Resource parantez içinde. Hizmetiniz için hizmet uç noktalarını yapılandırırken bu kaynağı alt ağ tarafında etkinleştirin:
+Bu özellik aşağıdaki Azure hizmetleri ve bölgeleri için kullanılabilir. *Microsoft. \** Resource parantez içinde. Hizmetiniz için hizmet uç noktalarını yapılandırırken bu kaynağı alt ağ tarafında etkinleştirin:
 
 **Genel kullanıma sunuldu**
 
@@ -77,7 +77,7 @@ Hizmet uç noktaları aşağıdaki avantajları sağlar:
 
   Varsayılan olarak, sanal ağlarla güvenliği sağlanmış Azure hizmet kaynaklarına şirket içi ağlardan ulaşılabilir. Şirket içinden gelen trafiğe izin vermek istiyorsanız şirket içi veya ExpressRoute 'un genel (genellikle NAT) IP adreslerine de izin vermeniz gerekir. Bu IP adreslerini Azure hizmet kaynakları için IP güvenlik duvarı yapılandırması aracılığıyla ekleyebilirsiniz.
 
-  ExpressRoute: şirket içinde genel eşleme veya Microsoft eşlemesi için [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) kullanıyorsanız, kullanmakta olduğunuz NAT IP adreslerini belirlemeniz gerekir. Genel eşleme için her bir ExpressRoute bağlantı hattı, trafik Microsoft Azure ağ omurgasına girdiğinde Azure hizmet trafiğine uygulanan iki NAT IP adresi kullanır. Microsoft eşlemesi için NAT IP adresleri müşteri tarafından sağlanır veya hizmet sağlayıcısı tarafından sağlanır.Hizmet kaynaklarınıza erişime izin vermek için, bu genel IP adreslerine kaynak IP güvenlik duvarı ayarında izin vermeniz gerekir.Ortak eşleme ExpressRoute bağlantı hattı IP adreslerinizi bulmak için Azure portalında [ExpressRoute ile bir destek bileti açın](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). ExpressRoute genel ve Microsoft eşlemesi için NAT hakkında daha fazla bilgi için bkz. [EXPRESSROUTE NAT gereksinimleri](../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering).
+  ExpressRoute: şirket içinde genel eşleme veya Microsoft eşlemesi için [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) kullanıyorsanız, kullanmakta olduğunuz NAT IP adreslerini belirlemeniz gerekir. Genel eşleme için her bir ExpressRoute bağlantı hattı, trafik Microsoft Azure ağ omurgasına girdiğinde Azure hizmet trafiğine uygulanan iki NAT IP adresi kullanır. Microsoft eşlemesi için NAT IP adresleri müşteri tarafından sağlanır veya hizmet sağlayıcısı tarafından sağlanır. Hizmet kaynaklarınıza erişime izin vermek için, bu genel IP adreslerine kaynak IP güvenlik duvarı ayarında izin vermeniz gerekir. Ortak eşleme ExpressRoute bağlantı hattı IP adreslerinizi bulmak için Azure portalında [ExpressRoute ile bir destek bileti açın](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). ExpressRoute genel ve Microsoft eşlemesi için NAT hakkında daha fazla bilgi için bkz. [EXPRESSROUTE NAT gereksinimleri](../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering).
 
 ![Azure hizmetlerini sanal ağlar ile sınırlama](./media/virtual-network-service-endpoints-overview/VNet_Service_Endpoints_Overview.png)
 

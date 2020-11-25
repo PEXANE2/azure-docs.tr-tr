@@ -13,17 +13,17 @@ ms.workload: infrastructure
 ms.date: 02/21/2020
 ms.author: rdhillon
 ms.openlocfilehash: bdf0e87c92a55d0dbb5bbe34334a6de4580cb350
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84708187"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004968"
 ---
 # <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>Azure portal kullanarak hizmet uç noktası ilkesi oluşturma, değiştirme veya silme
 
 Hizmet uç noktası ilkeleri, sanal ağ trafiğini hizmet uç noktaları üzerinden belirli Azure kaynaklarına filtrelemenizi sağlar. Hizmet uç noktası ilkelerine alışkın değilseniz, daha fazla bilgi edinmek için [hizmet uç noktası ilkelerine genel bakış](virtual-network-service-endpoint-policies-overview.md) bölümüne bakın.
 
- Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Hizmet uç noktası ilkesi oluşturma
@@ -56,7 +56,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 4. **Kaynaklar** altında **+ Ekle** ' yi seçin ve **Kaynak Ekle** bölmesinde aşağıdaki bilgileri girin veya seçin
 
    - Hizmet: hizmet uç noktası Ilkeleriyle yalnızca **Microsoft. Storage** kullanılabilir
-   - Kapsam: **tek bir hesap**dışında, **abonelikteki tüm hesaplar** ve **kaynak grubundaki tüm hesaplar** ' ı seçin.
+   - Kapsam: **tek bir hesap** dışında, **abonelikteki tüm hesaplar** ve **kaynak grubundaki tüm hesaplar** ' ı seçin.
    - Abonelik: depolama hesabı aboneliğinizi seçin. İlke ve depolama hesapları farklı aboneliklerde olabilir.
    - Kaynak grubu: kaynak grubunuzu seçin. Kapsam, "kaynak grubundaki tüm hesaplar" veya "tek hesap" olarak ayarlandıysa gereklidir.  
    - Kaynak: seçili abonelik veya kaynak grubu altında Azure depolama kaynağınızı seçin
@@ -66,18 +66,18 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
    - Yukarıdaki adımları gerektiği şekilde tekrarlayarak daha fazla kaynak ekleyin
 
-5. İsteğe bağlı: **etiketlere**aşağıdaki bilgileri girin veya seçin:
+5. İsteğe bağlı: **etiketlere** aşağıdaki bilgileri girin veya seçin:
    
    - Anahtar: ilke için anahtarınızı seçin. Ex: Bölüm     
    - Değer: anahtar için değer çifti girin. Ex: finans
 
-6. **Gözden geçir + oluştur**' u seçin. Bilgileri doğrulayıp **Oluştur**' a tıklayın. Daha fazla düzenleme yapmak için **önceki**seçeneğine tıklayın. 
+6. **Gözden geçir + oluştur**' u seçin. Bilgileri doğrulayıp **Oluştur**' a tıklayın. Daha fazla düzenleme yapmak için **önceki** seçeneğine tıklayın. 
 
    ![Hizmet uç noktası ilkesi son doğrulamaları oluştur](./media/virtual-network-service-endpoint-policies-portal/create-sep-review-create.png)
   
 ## <a name="view-endpoint-policies"></a>Uç nokta ilkelerini görüntüleme 
 
-1. Portaldaki *tüm hizmetler* kutusunda, *hizmet uç noktası ilkeleri*yazmaya başlayın. **Hizmet uç noktası ilkeleri**' ni seçin.
+1. Portaldaki *tüm hizmetler* kutusunda, *hizmet uç noktası ilkeleri* yazmaya başlayın. **Hizmet uç noktası ilkeleri**' ni seçin.
 2. **Abonelikler**' in altında, aşağıdaki resimde gösterildiği gibi aboneliğinizi ve kaynak grubunuzu seçin
 
    ![İlkeyi göster](./media/virtual-network-service-endpoint-policies-portal/sep-view.png)

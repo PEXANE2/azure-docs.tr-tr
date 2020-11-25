@@ -8,11 +8,11 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: d0ac8e0cf187d1a6a329f2c7332c9ec37018d4cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962528"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005240"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>App Service Ortamı v1 'de Web uygulaması oluşturma
 
@@ -28,11 +28,11 @@ Bu öğreticide, bir [App Service ortamı v1](app-service-app-service-environmen
 > 
 > 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu öğreticide bir App Service Ortamı oluşturmuş olduğunuz varsayılmaktadır. Henüz yapmadıysanız, bkz. [App Service ortamı oluşturma](app-service-web-how-to-create-an-app-service-environment.md). 
 
 ## <a name="create-a-web-app"></a>Web uygulaması oluşturma
-1. [Azure portalında](https://portal.azure.com/) **> Web uygulaması Web ve mobil > kaynak oluştur ' a**tıklayın. 
+1. [Azure portalında](https://portal.azure.com/) **> Web uygulaması Web ve mobil > kaynak oluştur ' a** tıklayın. 
    
     ![Azure portal bir Web uygulamasının nerede oluşturulacağını gösteren ekran görüntüsü.][1]
 2. Aboneliğinizi seçin.  
@@ -76,7 +76,7 @@ Aşağıdaki yönergelerde, öğreticinin önceki bölümünde açıklandığı 
     ![Konum seçicide Ao 'yu seçtikten sonra Ao sistem ayrıntılarını gösteren ekran görüntüsü.][3]
 
 ### <a name="selecting-a-worker-pool"></a>Çalışan havuzu seçme
-Normalde Azure App Service ve App Service Ortamı dışında, özel bir fiyat planının seçiminde kullanılabilir 3 işlem boyutu vardır.  Benzer bir şekilde, bir ASE için 3 adede kadar çalışan havuzu tanımlayabilir ve bu çalışan havuzu için kullanılan işlem boyutunu belirtebilirsiniz.  Bu, Ao 'nın kiracılar için, App Service planınız için işlem boyutu olan bir fiyatlandırma planı seçmek yerine, *çalışan havuzu*adı ' nı seçersiniz.  
+Normalde Azure App Service ve App Service Ortamı dışında, özel bir fiyat planının seçiminde kullanılabilir 3 işlem boyutu vardır.  Benzer bir şekilde, bir ASE için 3 adede kadar çalışan havuzu tanımlayabilir ve bu çalışan havuzu için kullanılan işlem boyutunu belirtebilirsiniz.  Bu, Ao 'nın kiracılar için, App Service planınız için işlem boyutu olan bir fiyatlandırma planı seçmek yerine, *çalışan havuzu* adı ' nı seçersiniz.  
 
 Çalışan havuzu seçimi Kullanıcı arabirimi, bu çalışan havuzu için kullanılan işlem boyutunu adın altında gösterir.  Kullanılabilir miktar, bu havuzda kullanılmak üzere kaç işlem örneğinin kullanılabilir olduğunu gösterir.  Toplam Havuz gerçekte bu sayıdan daha fazla örneğe sahip olabilir, ancak bu değer, ne kadar çok kullanımda olduğunu ifade eder.  Daha fazla işlem kaynağı eklemek için App Service Ortamı ayarlamanız gerekiyorsa bkz. [App Service ortamı yapılandırma](app-service-web-configure-an-app-service-environment.md).
 

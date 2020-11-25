@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 10/19/2020
 ms.author: duau
 ms.openlocfilehash: d8262a80fac42f103d571523c75c5064d5d43949
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207351"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003829"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>Öğretici: Traffic Manager kullanarak Web sitesi yanıtını geliştirme
 
@@ -39,7 +39,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 Bu öğreticide Traffic Manager'ın çalışmasını uygulamalı olarak görmek için şu sistemleri dağıtmanız gerekir:
 
 - Farklı Azure bölgelerinde çalışan iki temel Web sitesi örneği- **Doğu ABD** ve **Batı Avrupa**.
-- Traffic Manager bir VM 'yi test etmek için iki test VM 'si **Doğu ABD** ve **Batı Avrupa**ikinci VM. Test VM 'Leri, Traffic Manager en düşük gecikme süresini sağladığından Kullanıcı trafiğinin aynı bölgede çalışan Web sitesine nasıl yönlendirdiğini göstermek için kullanılır.
+- Traffic Manager bir VM 'yi test etmek için iki test VM 'si **Doğu ABD** ve **Batı Avrupa** ikinci VM. Test VM 'Leri, Traffic Manager en düşük gecikme süresini sağladığından Kullanıcı trafiğinin aynı bölgede çalışan Web sitesine nasıl yönlendirdiğini göstermek için kullanılır.
 
 ### <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -59,25 +59,25 @@ Bu bölümde, **Doğu ABD** ve Azure bölgelerine **Batı Avrupa** Iki VM *myIIS
 1. Azure Portal sol üst köşesinde, **kaynak oluştur**  >  **işlem**  >  **Windows Server 2019 Datacenter**' u seçin.
 2. **Sanal makine oluştur**' da, **temel bilgiler** sekmesinde aşağıdaki değerleri yazın veya seçin:
 
-   - **Abonelik**  >  **Kaynak grubu**: **Yeni oluştur** ' u seçin ve **myResourceGroupTM1**yazın.
-   - **Örnek ayrıntıları**  >  **Sanal makine adı**: *myIISVMEastUS*yazın.
-   - **Örnek ayrıntıları**  >  **Bölge**: **Doğu ABD**seçin.
-   - **Yönetici hesabı**  >  **Kullanıcı**adı: tercih etmek için bir Kullanıcı adı girin.
+   - **Abonelik**  >  **Kaynak grubu**: **Yeni oluştur** ' u seçin ve **myResourceGroupTM1** yazın.
+   - **Örnek ayrıntıları**  >  **Sanal makine adı**: *myIISVMEastUS* yazın.
+   - **Örnek ayrıntıları**  >  **Bölge**: **Doğu ABD** seçin.
+   - **Yönetici hesabı**  >  **Kullanıcı** adı: tercih etmek için bir Kullanıcı adı girin.
    - **Yönetici hesabı**  >  **Parola**: seçtiğiniz parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)karşılamalıdır.
-   - **Gelen bağlantı noktası kuralları**  >  **Ortak gelen bağlantı noktaları**: **Seçili bağlantı noktalarına izin ver**öğesini seçin.
+   - **Gelen bağlantı noktası kuralları**  >  **Ortak gelen bağlantı noktaları**: **Seçili bağlantı noktalarına izin ver** öğesini seçin.
    - **Gelen bağlantı noktası kuralları**  >  **Gelen bağlantı noktalarını seçin**: aşağı açılan kutuda **RDP** ve **http** ' yi seçin.
 
-3. **Yönetim** sekmesini seçin veya **Sonraki: diskler**' i ve sonra ileri: **ağ**' ı ve ardından **İleri: yönetim**' i seçin. **İzleme**altında, **önyükleme tanılamayı** **kapalı**olarak ayarlayın.
-4. **Gözden geçir + oluştur**’u seçin.
+3. **Yönetim** sekmesini seçin veya **Sonraki: diskler**' i ve sonra ileri: **ağ**' ı ve ardından **İleri: yönetim**' i seçin. **İzleme** altında, **önyükleme tanılamayı** **kapalı** olarak ayarlayın.
+4. **Gözden geçir ve oluştur**’u seçin.
 5. Ayarları gözden geçirin ve ardından **Oluştur**' a tıklayın.  
-6. **Kaynak grubu** adı *myResourceGroupTM2*, *Batı Avrupa* **konumu** ve diğer tüm ayarların *myIISVMEastUS*ile aynı olan *myIISVMWestEurope*adlı ikinci bir sanal makine oluşturmak için adımları izleyin.
+6. **Kaynak grubu** adı *myResourceGroupTM2*, *Batı Avrupa* **konumu** ve diğer tüm ayarların *myIISVMEastUS* ile aynı olan *myIISVMWestEurope* adlı ikinci bir sanal makine oluşturmak için adımları izleyin.
 7. Sanal makinelerin oluşturulması birkaç dakika sürebilir. Her iki sanal makine de oluşturulmadan kalan adımlara devam etmeyin.
 
    ![VM oluşturma](./media/tutorial-traffic-manager-improve-website-response/createVM.png)
 
 #### <a name="install-iis-and-customize-the-default-web-page"></a>IIS yükleme ve varsayılan web sayfasını özelleştirme
 
-Bu bölümde, *myIISVMEastUS* ve *myIISVMWestEurope*sanal makinelerinden IIS sunucusunu yüklersiniz ve ardından varsayılan Web sitesi sayfasını güncelleştirebilirsiniz. Özelleştirilmiş web sitesi sayfası, web sitesini bir web tarayıcısından ziyaret ettiğinizde bağlandığınız VM'nin adını gösterecek.
+Bu bölümde, *myIISVMEastUS* ve *myIISVMWestEurope* sanal makinelerinden IIS sunucusunu yüklersiniz ve ardından varsayılan Web sitesi sayfasını güncelleştirebilirsiniz. Özelleştirilmiş web sitesi sayfası, web sitesini bir web tarayıcısından ziyaret ettiğinizde bağlandığınız VM'nin adını gösterecek.
 
 1. Sol menüden **Tüm kaynaklar**’ı seçin ve kaynak listesinden, *myResourceGroupTM1* kaynak grubunda bulunan *myIISVMEastUS* öğesine tıklayın.
 2. **Genel Bakış** sayfasında **Bağlan**'a tıklayın ve **Sanal makineye bağlanma** bölümünde **RDP dosyasını indir**'i seçin.
@@ -104,7 +104,7 @@ Bu bölümde, *myIISVMEastUS* ve *myIISVMWestEurope*sanal makinelerinden IIS sun
 
 #### <a name="configure-dns-names-for-the-vms-running-iis"></a>IIS çalıştıran VM'lerin DNS adlarını yapılandırma
 
-Traffic Manager, kullanıcı trafiğini hizmet uç noktalarının DNS adına göre yönlendirir. Bu bölümde, IIS sunucuları- *myIISVMEastUS* ve *myIISVMWestEurope*için DNS adlarını yapılandırırsınız.
+Traffic Manager, kullanıcı trafiğini hizmet uç noktalarının DNS adına göre yönlendirir. Bu bölümde, IIS sunucuları- *myIISVMEastUS* ve *myIISVMWestEurope* için DNS adlarını yapılandırırsınız.
 
 1. Sol menüden **Tüm kaynaklar**’a tıklayın ve kaynak listesinden, *myResourceGroupTM1* kaynak grubunda bulunan *myIISVMEastUS* öğesini seçin.
 2. **Genel bakış** sayfasının **DNS adı** bölümünde **Yapılandır**'ı seçin.
@@ -118,25 +118,25 @@ Bu bölümde, her bir Azure bölgesinde (**Doğu ABD** ve **Batı Avrupa**) bir 
 1. Azure Portal sol üst köşesinde, **kaynak oluştur**  >  **işlem**  >  **Windows Server 2019 Datacenter**' u seçin.
 2. **Sanal makine oluştur**' da, **temel bilgiler** sekmesinde aşağıdaki değerleri yazın veya seçin:
 
-   - **Abonelik**  >  **Kaynak grubu**: **myResourceGroupTM1**seçin.
-   - **Örnek ayrıntıları**  >  **Sanal makine adı**: *myVMEastUS*yazın.
-   - **Örnek ayrıntıları**  >  **Bölge**: **Doğu ABD**seçin.
-   - **Yönetici hesabı**  >  **Kullanıcı**adı: tercih etmek için bir Kullanıcı adı girin.
+   - **Abonelik**  >  **Kaynak grubu**: **myResourceGroupTM1** seçin.
+   - **Örnek ayrıntıları**  >  **Sanal makine adı**: *myVMEastUS* yazın.
+   - **Örnek ayrıntıları**  >  **Bölge**: **Doğu ABD** seçin.
+   - **Yönetici hesabı**  >  **Kullanıcı** adı: tercih etmek için bir Kullanıcı adı girin.
    - **Yönetici hesabı**  >  **Parola**: seçtiğiniz parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)karşılamalıdır.
-   - **Gelen bağlantı noktası kuralları**  >  **Ortak gelen bağlantı noktaları**: **Seçili bağlantı noktalarına izin ver**öğesini seçin.
+   - **Gelen bağlantı noktası kuralları**  >  **Ortak gelen bağlantı noktaları**: **Seçili bağlantı noktalarına izin ver** öğesini seçin.
    - **Gelen bağlantı noktası kuralları**  >  **Gelen bağlantı noktalarını seçin**: açılan kutuda **RDP** ' yi seçin.
 
-3. **Yönetim** sekmesini seçin veya **Sonraki: diskler**' i ve sonra ileri: **ağ**' ı ve ardından **İleri: yönetim**' i seçin. **İzleme**altında, **önyükleme tanılamayı** **kapalı**olarak ayarlayın.
-4. **Gözden geçir + oluştur**’u seçin.
+3. **Yönetim** sekmesini seçin veya **Sonraki: diskler**' i ve sonra ileri: **ağ**' ı ve ardından **İleri: yönetim**' i seçin. **İzleme** altında, **önyükleme tanılamayı** **kapalı** olarak ayarlayın.
+4. **Gözden geçir ve oluştur**’u seçin.
 5. Ayarları gözden geçirin ve ardından **Oluştur**' a tıklayın.  
-6. **Kaynak grubu** adı *myResourceGroupTM2*, *Batı Avrupa* **konumu** ve diğer tüm ayarların *myVMEastUS*ile aynı olan *myVMWestEurope*adlı ikinci bir sanal makine oluşturmak için adımları izleyin.
+6. **Kaynak grubu** adı *myResourceGroupTM2*, *Batı Avrupa* **konumu** ve diğer tüm ayarların *myVMEastUS* ile aynı olan *myVMWestEurope* adlı ikinci bir sanal makine oluşturmak için adımları izleyin.
 7. Sanal makinelerin oluşturulması birkaç dakika sürebilir. Her iki sanal makine de oluşturulmadan kalan adımlara devam etmeyin.
 
 ## <a name="create-a-traffic-manager-profile"></a>Traffic Manager profili oluşturma
 
 En düşük gecikme süresine sahip bir uç noktaya göndererek Kullanıcı trafiğini yönlendiren bir Traffic Manager profili oluşturun.
 
-1. Ekranın sol üst kısmında, **Create a resource**  >  **Networking**  >  **profil**  >  **Oluştur**Traffic Manager kaynak ağı oluştur ' u seçin.
+1. Ekranın sol üst kısmında, **Create a resource**  >  **Networking**  >  **profil**  >  **Oluştur** Traffic Manager kaynak ağı oluştur ' u seçin.
 2. **Traffic Manager profili oluştur** ekranında aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve sonra **Oluştur**'u seçin:
 
     | Ayar                 | Değer                                              |
@@ -144,7 +144,7 @@ En düşük gecikme süresine sahip bir uç noktaya göndererek Kullanıcı traf
     | Ad                   | Bu adın trafficmanager.net bölgesinde benzersiz olması ve Traffic Manager profilinize erişmek için kullanılan trafficmanager.net DNS adı ile sonuçlanması gerekir.                                   |
     | Yönlendirme yöntemi          | **Performans** yönlendirme yöntemini seçin.                                       |
     | Abonelik            | Aboneliğinizi seçin.                          |
-    | Kaynak grubu          | *MyResourceGroupTM1*kaynak grubunu seçin. |
+    | Kaynak grubu          | *MyResourceGroupTM1* kaynak grubunu seçin. |
     | Konum                | **Doğu ABD**’yi seçin. Bu ayar, kaynak grubunun konumunu ifade eder ve genel olarak dağıtılacak Traffic Manager profilini etkilemez.                              |
     |
 
@@ -152,7 +152,7 @@ En düşük gecikme süresine sahip bir uç noktaya göndererek Kullanıcı traf
 
 ## <a name="add-traffic-manager-endpoints"></a>Traffic Manager uç noktalarını ekleme
 
-Kullanıcı *myIISVMEastUS*  &  trafiğini kullanıcıya en yakın uç noktaya yönlendirmek için IIS sunucularını çalıştıran iki VM 'yi ekleyin-myIISVMEastUS*myIISVMWestEurope* .
+Kullanıcı *myIISVMEastUS*  &  trafiğini kullanıcıya en yakın uç noktaya yönlendirmek için IIS sunucularını çalıştıran iki VM 'yi ekleyin-myIISVMEastUS *myIISVMWestEurope* .
 
 1. Portalın arama çubuğunda önceki bölümde oluşturduğunuz Traffic Manager profili adını arayın ve görüntülenen sonuçların arasından bu profili seçin.
 2. **Traffic Manager profili** sayfasının **Ayarlar** bölümünde **Uç noktalar**'a ve ardından **Ekle**'ye tıklayın.
@@ -161,12 +161,12 @@ Kullanıcı *myIISVMEastUS*  &  trafiğini kullanıcıya en yakın uç noktaya y
     | Ayar                 | Değer                                              |
     | ---                     | ---                                                |
     | Tür                    | Azure uç noktası                                   |
-    | Ad           | myEastUSEndpoint                                        |
+    | Name           | myEastUSEndpoint                                        |
     | Hedef kaynak türü           | Genel IP Adresi                          |
     | Hedef kaynak          | Aynı abonelikte genel IP adreslerine sahip kaynakların listesini göstermek için **Genel BIR IP adresi seçin** . **Kaynak** bölümünde *myIISVMEastUS-ip* adlı genel IP adresini seçin. Bu, Doğu ABD bölgesindeki IIS sunucusu VM'sinin IP adresidir.|
     |        |           |
 
-4. *MyIISVMWestEurope*adlı IIS sunucusu VM ile Ilişkili olan *myIISVMWestEurope-IP* genel IP adresi için *myWestEuropeEndpoint* adlı başka bir uç nokta eklemek üzere 2 ve 3. adımları yineleyin.
+4. *MyIISVMWestEurope* adlı IIS sunucusu VM ile Ilişkili olan *myIISVMWestEurope-IP* genel IP adresi için *myWestEuropeEndpoint* adlı başka bir uç nokta eklemek üzere 2 ve 3. adımları yineleyin.
 5. Her iki uç noktanın eklenmesi tamamlandığında, **Çevrimiçi** izleme durumuyla birlikte **Traffic Manager profili** bölümünde gösterilir.
 
     ![Traffic Manager uç noktası ekleme](./media/tutorial-traffic-manager-improve-website-response/traffic-manager-endpoint.png)
@@ -201,11 +201,11 @@ Bu bölümde Traffic Manager'ın nasıl çalıştığını görebilirsiniz.
 3. İndirilen rdp dosyasını açın. İstendiğinde **Bağlan**’ı seçin. Sanal makine oluştururken belirttiğiniz kullanıcı adını ve parolayı girin. Sanal makineyi oluştururken girdiğiniz kimlik bilgilerini belirtmek için **Diğer seçenekler**’i ve sonra **Farklı bir hesap kullan** seçeneğini belirlemeniz gerekebilir.
 4. **Tamam**’ı seçin.
 5. Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Uyarıyı alırsanız, bağlantıya devam etmek için **Evet** ' i veya **devam et**' i seçin.
-1. Web sitesini görüntülemek için *myVMEastUS* adlı VM'de bir web tarayıcısında Traffic Manager profilinizin DNS adını yazın. **Doğu ABD**konumunda bulunan VM bu yana, **Doğu ABD**bulunan en yakın IIS sunucu *myIISVMEastUS* üzerinde barındırılan en yakın Web sitesine yönlendirilir.
+1. Web sitesini görüntülemek için *myVMEastUS* adlı VM'de bir web tarayıcısında Traffic Manager profilinizin DNS adını yazın. **Doğu ABD** konumunda bulunan VM bu yana, **Doğu ABD** bulunan en yakın IIS sunucu *myIISVMEastUS* üzerinde barındırılan en yakın Web sitesine yönlendirilir.
 
    ![Bir Web tarayıcısında "Traffic Manager" profilini gösteren ekran görüntüsü.](./media/tutorial-traffic-manager-improve-website-response/eastus-traffic-manager-test.png)
 
-2. Ardından, 1-5 adımlarını kullanarak **Batı Avrupa** bulunan VM *myVMWestEurope* 'e bağlanın ve bu VM 'nin Traffic Manager profili etki alanı adına gidin. **Batı Avrupa**konumunda bulunan VM bu yana, artık **Batı Avrupa**bulunan IIS sunucusu *myIISVMWestEurope* en yakın barındırılan Web sitesine yönlendirilmiştiniz.
+2. Ardından, 1-5 adımlarını kullanarak **Batı Avrupa** bulunan VM *myVMWestEurope* 'e bağlanın ve bu VM 'nin Traffic Manager profili etki alanı adına gidin. **Batı Avrupa** konumunda bulunan VM bu yana, artık **Batı Avrupa** bulunan IIS sunucusu *myIISVMWestEurope* en yakın barındırılan Web sitesine yönlendirilmiştiniz.
 
    ![Traffic Manager profilini test etme](./media/tutorial-traffic-manager-improve-website-response/westeurope-traffic-manager-test.png)
 

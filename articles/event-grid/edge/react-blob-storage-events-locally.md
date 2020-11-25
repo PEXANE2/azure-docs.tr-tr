@@ -8,11 +8,11 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 230e158a970f8c815b1575403c013e30749124c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87462029"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005070"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>Öğretici: IoT Edge BLOB depolama olaylarına tepki verme (Önizleme)
 Bu makalede, Azure Blob depolama 'yı IoT modülü 'nde dağıtma işlemi gösterilmektedir. Bu, blob oluşturma ve BLOB silme hakkında olay göndermek için Event Grid yayımcı görevi gören Event Grid.  
@@ -45,7 +45,7 @@ IoT Edge bir cihaza modül dağıtmanın birkaç yolu vardır ve bunların hepsi
 
 ### <a name="configure-a-deployment-manifest"></a>Dağıtım bildirimi yapılandırma
 
-Dağıtım bildirimi, hangi modüllerin dağıtılacağını, modüller arasında verilerin nasıl akacağını ve modül TWINS 'in istenen özelliklerini tanımlayan bir JSON belgesidir. Azure portal, JSON belgesini el ile oluşturmak yerine bir dağıtım bildirimi oluşturma konusunda size yol gösteren bir sihirbaza sahiptir.  Üç adım vardır: **modüller ekleme**, **rotalar belirtme**ve **dağıtımı İnceleme**.
+Dağıtım bildirimi, hangi modüllerin dağıtılacağını, modüller arasında verilerin nasıl akacağını ve modül TWINS 'in istenen özelliklerini tanımlayan bir JSON belgesidir. Azure portal, JSON belgesini el ile oluşturmak yerine bir dağıtım bildirimi oluşturma konusunda size yol gösteren bir sihirbaza sahiptir.  Üç adım vardır: **modüller ekleme**, **rotalar belirtme** ve **dağıtımı İnceleme**.
 
 ### <a name="add-modules"></a>Modül ekle
 
@@ -165,13 +165,13 @@ Varsayılan yolları koruyun ve gözden geçirme bölümüne devam etmek için *
 
 1. Dağıtımı gönderdikten sonra IoT Hub 'ınızın IoT Edge sayfasına dönersiniz.
 2. Bilgilerini açmak için dağıtıma hedeflenmiş **IoT Edge cihazı** seçin.
-3. Cihaz ayrıntılarında, eventgridmodule, abone ve azureblobstorageoniotedge modüllerinin hem **dağıtım** hem de **cihaz tarafından raporlanarak**listelendiğini doğrulayın.
+3. Cihaz ayrıntılarında, eventgridmodule, abone ve azureblobstorageoniotedge modüllerinin hem **dağıtım** hem de **cihaz tarafından raporlanarak** listelendiğini doğrulayın.
 
    Modülün cihazda başlatılması ve sonra IoT Hub geri bildirilmesi birkaç dakika sürebilir. Güncelleştirilmiş durumu görmek için sayfayı yenileyin.
 
 ## <a name="publish-blobcreated-and-blobdeleted-events"></a>BlobCreated ve BlobDeleted olaylarını Yayımla
 
-1. Bu modül, **Microsoftstorage**konusunu otomatik olarak oluşturur. Var olduğunu doğrulayın
+1. Bu modül, **Microsoftstorage** konusunu otomatik olarak oluşturur. Var olduğunu doğrulayın
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/MicrosoftStorage?api-version=2019-01-01-preview
     ```
@@ -213,7 +213,7 @@ Varsayılan yolları koruyun ve gözden geçirme bölümüne devam etmek için *
        ```
 
        >[!NOTE]
-       > **EndpointType** özelliği, abonenin bir **Web kancası**olduğunu belirtir.  **EndpointUrl** , abonenin olayları dinlediği URL 'yi belirtir. Bu URL, daha önce dağıttığınız Azure Işlev örneğine karşılık gelir.
+       > **EndpointType** özelliği, abonenin bir **Web kancası** olduğunu belirtir.  **EndpointUrl** , abonenin olayları dinlediği URL 'yi belirtir. Bu URL, daha önce dağıttığınız Azure Işlev örneğine karşılık gelir.
 
     2. Konusu için bir abonelik oluşturmak üzere aşağıdaki komutu çalıştırın. HTTP durum kodunu görtığınızdan emin olun `200 OK` .
 
@@ -324,7 +324,7 @@ Tebrikler! Öğreticiyi tamamladınız. Aşağıdaki bölümler olay özellikler
 
 Desteklenen olay özelliklerinin listesi ve bunların türleri ve açıklamaları aşağıda verilmiştir. 
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
 | subject | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
@@ -337,7 +337,7 @@ Desteklenen olay özelliklerinin listesi ve bunların türleri ve açıklamalar�
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | api | string | Olayı tetikleyen işlem. Aşağıdaki değerlerden biri olabilir: <ul><li>BlobCreated-izin verilen değerler: `PutBlob` ve `PutBlockList`</li><li>BlobDeleted-izin verilen değerler `DeleteBlob` , `DeleteAfterUpload` ve `AutoDelete` . <p>`DeleteAfterUpload`DeleteAfterUpload istenen özelliği true olarak ayarlandığından, blob otomatik olarak silindiğinde olay oluşturulur. </p><p>`AutoDelete` Deleteafutes istenen özellik değerinin geçerliliği aşıldığı için blob otomatik olarak silindiğinde olay oluşturulur.</p></li></ul>|
 | Clientrequestıd 'ye sahip | string | depolama API 'SI işlemi için istemci tarafından sağlanmış bir istek KIMLIĞI. Bu KIMLIK, günlüklerdeki "istemci-istek-kimliği" alanı kullanılarak Azure depolama tanılama günlükleri ile ilişkilendirmek için kullanılabilir ve "x-MS-Client-Request-ID" üst bilgisi kullanılarak istemci isteklerinde sağlanabilirler. Ayrıntılar için bkz. [günlük biçimi](/rest/api/storageservices/storage-analytics-log-format). |
@@ -346,7 +346,7 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 | contentType | string | Blob için belirtilen içerik türü. |
 | contentLength | tamsayı | Blobun bayt cinsinden boyutu. |
 | blobType | string | Blob türü. Geçerli değerler "BlockBlob" ya da "PageBlob". |
-| url | string | Blobun yolu. <br>İstemci bir blob REST API kullanıyorsa, URL bu yapıya sahiptir: * \<storage-account-name\> . blob.Core.Windows.net/ \<container-name\> / \<file-name\> *. <br>İstemci bir Data Lake Storage REST API kullanıyorsa, URL bu yapıya sahiptir: * \<storage-account-name\> . DFS.Core.Windows.net/ \<file-system-name\> / \<file-name\> *. |
+| url | string | Blobun yolu. <br>İstemci bir blob REST API kullanıyorsa, URL bu yapıya sahiptir: *\<storage-account-name\> . blob.Core.Windows.net/ \<container-name\> / \<file-name\>*. <br>İstemci bir Data Lake Storage REST API kullanıyorsa, URL bu yapıya sahiptir: *\<storage-account-name\> . DFS.Core.Windows.net/ \<file-system-name\> / \<file-name\>*. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

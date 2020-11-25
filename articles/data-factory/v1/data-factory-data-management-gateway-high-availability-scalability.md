@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: b8d05293359cff16bb6d8c9a629a1fbf68104365
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896047"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003625"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Veri Yönetimi ağ geçidi-yüksek kullanılabilirlik ve ölçeklenebilirlik (Önizleme)
 > [!NOTE]
@@ -29,7 +29,7 @@ Bu makale, Veri Yönetimi ağ geçidi/tümleştirme ile yüksek kullanılabilirl
 > [!NOTE]
 > Bu makalede, Integration Runtime (önceki Veri Yönetimi ağ geçidi) temel bilgileri hakkında zaten bilgi sahibi olduğunuz varsayılır. Değilseniz, [veri yönetimi ağ geçidi](data-factory-data-management-gateway.md)' ne bakın.
 > 
-> **Bu önizleme özelliği, 2.12. xxxx. x ve üzeri veri yönetimi Gateway sürümünde resmi olarak desteklenir** . Lütfen 2.12. xxxx. x sürümünü kullandığınızdan emin olun. Veri Yönetimi Gateway 'in en son sürümünü [buradan](https://www.microsoft.com/download/details.aspx?id=39717)indirin.
+> **Bu önizleme özelliği, 2.12. xxxx. x ve üzeri veri yönetimi Gateway sürümünde resmi olarak desteklenir**. Lütfen 2.12. xxxx. x sürümünü kullandığınızdan emin olun. Veri Yönetimi Gateway 'in en son sürümünü [buradan](https://www.microsoft.com/download/details.aspx?id=39717)indirin.
 
 ## <a name="overview"></a>Genel Bakış
 Portaldan tek bir mantıksal ağ geçidine sahip birden çok şirket içi makinede yüklü olan veri yönetimi ağ geçitlerini ilişkilendirebilirsiniz. Bu makinelere **düğüm** denir. Bir mantıksal ağ geçidiyle ilişkili en fazla **dört düğümünüz** olabilir. Mantıksal bir ağ geçidi için birden çok düğüme (ağ geçidine sahip şirket içi makineler) sahip olmanın avantajları şunlardır:  
@@ -49,7 +49,7 @@ Aşağıdaki diyagramda Veri Yönetimi ağ geçidinin ölçeklenebilirlik ve kul
 
 **Mantıksal ağ geçidi** , Azure Portal bir veri fabrikasına eklediğiniz ağ geçidindir. Daha önce, bir mantıksal ağ geçidiyle yüklenmiş Veri Yönetimi ağ geçidi ile yalnızca bir şirket içi Windows makinesini ilişkilendirebiliyordunuz. Bu şirket içi ağ geçidi makinesine düğüm denir. Şimdi, mantıksal bir ağ geçidi ile en fazla **dört fiziksel düğüm** ilişkilendirebilirsiniz. Birden çok düğüme sahip bir mantıksal ağ geçidine **çok düğümlü ağ geçidi** denir.  
 
-Tüm bu düğümler **etkindir** . Bunlar, verileri şirket içi ve bulut veri depoları arasında taşımak için veri taşıma işlerini işleyebilir. Düğümlerden biri hem dağıtıcı hem de çalışan işlevi görür. Gruplardaki diğer düğümler çalışan düğümlerdir. Bir **dağıtıcı** düğümü, bulut hizmetinden veri taşıma görevleri/işleri çeker ve bunları çalışan düğümlerine (kendisi dahil) dağıtır. Bir **çalışan** düğümü, verileri şirket içi ve bulut veri depoları arasında taşımak için veri taşıma işlerini yürütür. Tüm düğümler çalışanlardır. Yalnızca bir düğüm hem dağıtım hem de çalışan olabilir.    
+Tüm bu düğümler **etkindir**. Bunlar, verileri şirket içi ve bulut veri depoları arasında taşımak için veri taşıma işlerini işleyebilir. Düğümlerden biri hem dağıtıcı hem de çalışan işlevi görür. Gruplardaki diğer düğümler çalışan düğümlerdir. Bir **dağıtıcı** düğümü, bulut hizmetinden veri taşıma görevleri/işleri çeker ve bunları çalışan düğümlerine (kendisi dahil) dağıtır. Bir **çalışan** düğümü, verileri şirket içi ve bulut veri depoları arasında taşımak için veri taşıma işlerini yürütür. Tüm düğümler çalışanlardır. Yalnızca bir düğüm hem dağıtım hem de çalışan olabilir.    
 
 Genellikle bir düğüm ile başlayabilir ve varolan düğüm (ler) veri taşıma yüküne göre daha fazla düğüm eklemek için **ölçeği ölçeklendirmeniz** gerekebilir. Ayrıca, düğümde çalışmasına izin verilen eşzamanlı iş sayısını artırarak bir ağ geçidi düğümünün veri taşıma özelliğini de **ölçeklendirebilirsiniz** . Bu özellik, tek düğümlü bir ağ geçidiyle (ölçeklenebilirlik ve kullanılabilirlik özelliği etkinleştirilmediği halde) da kullanılabilir. 
 
@@ -80,7 +80,7 @@ Bu bölümde, aşağıdaki iki makale veya bu makalelerdeki kavramlarla ilgili b
     2. [Bu yönergeleri](data-factory-data-management-gateway.md#configuration-manager)izleyerek ağ geçidi için veri yönetimi Configuration Manager başlatın. Ağ geçidi adı, düğüm adı, durum vb. görüntülenir.
 
         ![Ağ Geçidi adını, düğüm adını ve durumunu görebileceğiniz konumu gösteren ekran görüntüsü.](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png)
-4. **El ile kurulum** ' ı seçerseniz:
+4. **El ile kurulum**' ı seçerseniz:
     1. Yükleme paketini Microsoft Indirme Merkezi ' nden indirin, makinenizde ağ geçidini yüklemek için bu paketi çalıştırın.
     2. Ağ geçidini kaydetmek için **Yapılandır** sayfasından **kimlik doğrulama anahtarını** kullanın.
     
@@ -99,14 +99,14 @@ Bu bölümde, aşağıdaki iki makale veya bu makalelerdeki kavramlarla ilgili b
     5. Ağ Geçidi başarıyla yüklendikten sonra Configuration Manager Başlat ' a tıklayın:
     
         ![El ile kurulum-yapılandırma yöneticisini başlatma](media/data-factory-data-management-gateway-high-availability-scalability/manual-setup-launch-configuration-manager.png)   
-    6. bağlantı durumu, **ağ geçidi adı** ve **düğüm adı** ' nı gösteren düğümde (Şirket içi Windows makinesi) veri yönetimi ağ geçidi Configuration Manager görürsünüz.  
+    6. bağlantı durumu, **ağ geçidi adı** ve **düğüm adı**' nı gösteren düğümde (Şirket içi Windows makinesi) veri yönetimi ağ geçidi Configuration Manager görürsünüz.  
 
         ![Veri Yönetimi ağ geçidi-yükleme başarılı](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-installation-success.png)
 
         > [!NOTE]
         > Ağ geçidini bir Azure VM 'de sağlıyorsanız, [bu Azure Resource Manager şablonunu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-mutiple-vms-with-data-management-gateway)kullanabilirsiniz. Bu betik bir mantıksal ağ geçidi oluşturur, Veri Yönetimi Gateway yazılımının yüklü olduğu VM 'Leri ayarlar ve bunları mantıksal ağ geçidine kaydeder. 
 6. Azure portal, **ağ geçidi** sayfasını başlatın: 
-    1. Portalın Data Factory giriş sayfasında, **bağlı hizmetler** ' e tıklayın.
+    1. Portalın Data Factory giriş sayfasında, **bağlı hizmetler**' e tıklayın.
     
         ![Bağlı hizmetler kutucuğunu vurgulayan ekran görüntüsü.](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-home-page.png)
     2. **ağ geçidi** sayfasını görmek için **ağ geçidini** seçin:
@@ -144,7 +144,7 @@ Yüksek kullanılabilirlik ve ölçeklenebilirlik özelliğini kullanmak için v
 
     > [!NOTE]
     > Yükseltme sırasında, ilk düğümün adı makinenin adıdır. 
-3. Şimdi bir düğüm ekleyin. **Ağ geçidi** sayfasında, **düğüm Ekle** ' ye tıklayın.  
+3. Şimdi bir düğüm ekleyin. **Ağ geçidi** sayfasında, **düğüm Ekle**' ye tıklayın.  
 
     ![Veri Yönetimi ağ geçidi-düğüm Ekle menüsü](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-add-node-menu.png)
 
@@ -164,7 +164,7 @@ Tümleştirme çalışma zamanı düğümleri arasındaki iletişimin güvenliğ
 - Her Integration Runtime düğümü, kimlik bilgileri Yöneticisi uygulamasını çalıştıran istemci makineye ve bu sertifikaya güvenmelidir. 
   > [!NOTE]
   > Kimlik bilgisi Yöneticisi uygulaması, kopyalama Sihirbazı/Azure portalından kimlik bilgileri güvenli bir şekilde ayarlanırken kullanılır. Bu, şirket içi/özel veri deposuyla aynı ağ içindeki herhangi bir makineden tetiklenebilir.
-- Joker karakter sertifikaları desteklenir. FQDN adınız **node1.domain.contoso.com** ise, sertifikanın konu adı olarak * *_. domain.contoso.com_* kullanabilirsiniz.
+- Joker karakter sertifikaları desteklenir. FQDN adınız **node1.domain.contoso.com** ise, sertifikanın konu adı olarak **_. domain.contoso.com_* kullanabilirsiniz.
 - Yalnızca konu diğer adlarının son öğesi kullanıldığından ve geçerli kısıtlama nedeniyle diğerleri yok sayılacak olduğundan, SAN sertifikaları önerilmez. Örneğin SAN **node1.domain.contoso.com** ve **node2.DOMAIN.contoso.com** olan bir San sertifikanız varsa, bu sertifikayı yalnızca FQDN 'si **node2.domain.contoso.com** olan makine üzerinde kullanabilirsiniz.
 - , TLS/SSL sertifikaları için Windows Server 2012 R2 tarafından desteklenen anahtar boyutunu destekler.
 - CNG anahtarlarını kullanan sertifika desteklenmiyor.
@@ -181,7 +181,7 @@ Azure portal, her düğümde (CPU, bellek, ağ (gelen/giden) ve ağ geçidi dü�
 
 ![Veri Yönetimi ağ geçidi-birden çok düğüm izleme](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-multi-node-monitoring.png)
 
-Ağ **geçidi** sayfasında **Gelişmiş ayarları** etkinleştirerek **ağ** (ın/out) gibi gelişmiş ölçümleri, **rol & kimlik bilgisi durumunu** ve performans ayarlaması sırasında değiştirilebilen/değiştirilebilen **eşzamanlı işleri** (çalışıyor/limit) görebilirsiniz. Aşağıdaki tabloda **ağ geçidi düğümleri** listesindeki sütunların açıklamaları verilmiştir:  
+Ağ **geçidi** sayfasında **Gelişmiş ayarları** etkinleştirerek **ağ**(ın/out) gibi gelişmiş ölçümleri, **rol & kimlik bilgisi durumunu** ve performans ayarlaması sırasında değiştirilebilen/değiştirilebilen **eşzamanlı işleri** (çalışıyor/limit) görebilirsiniz. Aşağıdaki tabloda **ağ geçidi düğümleri** listesindeki sütunların açıklamaları verilmiştir:  
 
 İzleme özelliği | Açıklama
 :------------------ | :---------- 

@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 10/28/2020
-ms.openlocfilehash: 753d72b31e4f813d0e7abbbd223e050fd3390411
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.date: 11/24/2020
+ms.openlocfilehash: c436d75384c527ba7666cd2e6e780b9d8a93eae2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910772"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003964"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure Data Factory 'de veri akışı etkinliği
 
@@ -37,6 +37,7 @@ Veri akışı etkinliğini, veri akışları eşleme yoluyla dönüştürmek ve 
          "coreCount": 8,
          "computeType": "General"
       },
+      "traceLevel": "Fine",
       "staging": {
           "linkedService": {
               "referenceName": "MyStagingLinkedService",
@@ -56,12 +57,13 @@ Veri akışı etkinliğini, veri akışları eşleme yoluyla dönüştürmek ve 
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-veri akışı | Yürütülen veri akışının başvurusu | DataFlowReference | Evet
-ıntegrationruntime | Veri akışının çalıştığı işlem ortamı. Belirtilmemişse, Otomatik Çözümle Azure tümleştirme çalışma zamanı kullanılacaktır. | IntegrationRuntimeReference | Hayır
-compute. coreCount | Spark kümesinde kullanılan çekirdek sayısı. Yalnızca Azure tümleştirme çalışma zamanı otomatik çözümle kullanılıyorsa belirtilebilir | 8, 16, 32, 48, 80, 144, 272 | Hayır
-compute. computeType | Spark kümesinde kullanılan işlem türü. Yalnızca Azure tümleştirme çalışma zamanı otomatik çözümle kullanılıyorsa belirtilebilir | "Genel", "ComputeOptimized", "Memoryoptimlanmış" | Hayır
+veri akışı | Yürütülen veri akışının başvurusu | DataFlowReference | Yes
+ıntegrationruntime | Veri akışının çalıştığı işlem ortamı. Belirtilmemişse, Otomatik Çözümle Azure tümleştirme çalışma zamanı kullanılacaktır. | IntegrationRuntimeReference | No
+compute. coreCount | Spark kümesinde kullanılan çekirdek sayısı. Yalnızca Azure tümleştirme çalışma zamanı otomatik çözümle kullanılıyorsa belirtilebilir | 8, 16, 32, 48, 80, 144, 272 | No
+compute. computeType | Spark kümesinde kullanılan işlem türü. Yalnızca Azure tümleştirme çalışma zamanı otomatik çözümle kullanılıyorsa belirtilebilir | "Genel", "ComputeOptimized", "Memoryoptimlanmış" | No
 hazırlama. linkedService | Azure SYNAPSE Analytics kaynağı veya havuzu kullanıyorsanız, PolyBase hazırlama için kullanılan depolama hesabını belirtin.<br/><br/>Azure depolama alanı VNet hizmet uç noktası ile yapılandırıldıysa, depolama hesabında "Güvenilen Microsoft hizmeti 'ne izin ver" özelliği etkinleştirilmiş olarak yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir. [Azure depolama Ile VNET hizmet uç noktaları kullanmanın etkileri](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Ayrıca, [Azure Blob](connector-azure-blob-storage.md#managed-identity) için gerekli konfigürasyonları ve [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#managed-identity) de öğrenin.<br/> | LinkedServiceReference | Yalnızca veri akışı bir Azure SYNAPSE analizlerini okuduğunda veya yazıyorsa
 hazırlama. folderPath | Azure SYNAPSE Analytics kaynağı veya havuzu kullanıyorsanız, PolyBase hazırlama için kullanılan BLOB depolama hesabındaki klasör yolu | Dize | Yalnızca veri akışı Azure SYNAPSE Analytics 'i okuduğunda veya yazıyorsa
+traceLevel | Veri akışı etkinlik yürütmesinin günlüğe kaydetme düzeyini ayarlama | İnce, kalın, hiçbiri | No
 
 ![Veri akışı yürütme](media/data-flow/activity-data-flow.png "Veri akışı yürütme")
 
@@ -87,6 +89,12 @@ Veri akışı etkinliği yürütmesinde kullanılacak Integration Runtime seçin
 ### <a name="polybase"></a>PolyBase
 
 Bir havuz veya kaynak olarak Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) kullanıyorsanız, PolyBase Batch yüklemeniz için bir hazırlama konumu seçmeniz gerekir. PolyBase, verileri satır satır olarak yüklemek yerine toplu olarak yüklemeye izin verir. PolyBase, yükleme süresini büyük ölçüde Azure SYNAPSE Analytics 'e düşürür.
+
+## <a name="logging-level"></a>Günlük kaydı düzeyi
+
+Veri akışı etkinliklerinizin her işlem hattı yürütmesinin tüm ayrıntılı telemetri günlüklerini tam olarak günlüğe yazmasına gerek yoksa, isteğe bağlı olarak günlük düzeyini "temel" veya "hiçbiri" olarak ayarlayabilirsiniz. Veri akışlarınızı "ayrıntılı" modda yürütürken (varsayılan), veri dönüşümünüzün her bir bölüm düzeyinde, ADF 'yi tam olarak günlüğe kaydetmek için istek yapabilirsiniz. Bu, pahalı bir işlem olabilir, bu nedenle yalnızca sorun giderme sırasında ayrıntılandırma, genel veri akışınızı ve işlem hattı performansınızı iyileştirecek şekilde etkinleştiriliyor. "Temel" modu yalnızca bir süre Özeti sağlamaları durumunda yalnızca dönüştürme sürelerini günlüğe kaydeder.
+
+![Günlük kaydı düzeyi](media/data-flow/logging.png "Günlüğe kaydetme düzeyini ayarla")
 
 ## <a name="parameterizing-data-flows"></a>Veri akışlarını parametrize etme
 

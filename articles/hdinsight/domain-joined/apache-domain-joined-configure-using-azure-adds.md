@@ -10,11 +10,11 @@ ms.topic: how-to
 ms.custom: seodec18,seoapr2020, contperfq2
 ms.date: 10/30/2020
 ms.openlocfilehash: 4c0d12e4c37476b9ae71962251105ef92aa39120
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94845212"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004288"
 ---
 # <a name="configure-hdinsight-clusters-for-active-directory-integration-with-enterprise-security-package"></a>Kurumsal Güvenlik Paketi ile Active Directory tümleştirme için HDInsight kümelerini yapılandırma
 
@@ -29,7 +29,7 @@ Kurumsal Güvenlik Paketi (ESP), Azure HDInsight için Active Directory tümleş
 > [!NOTE]  
 > ESP, şu küme türleri için HDInsight 3,6 ve 4,0 ' de genel kullanıma sunulmuştur: Apache Spark, Interactive, Hadoop ve HBase. Apache Kafka küme türü için ESP yalnızca en iyi çaba desteğiyle önizlemededir. ESP GA tarihi (1 Ekim 2018) öncesinde oluşturulan ESP kümeleri desteklenmez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir ESP etkin HDInsight kümesi oluşturabilmeniz için birkaç önkoşul vardır:
 

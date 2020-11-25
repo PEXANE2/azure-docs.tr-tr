@@ -9,11 +9,11 @@ ms.custom: devx-track-csharp, mvc
 ms.topic: quickstart
 ms.date: 06/18/2020
 ms.openlocfilehash: 945d4a3d2bba84bf8f5973fd8dec092c66794c11
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077090"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004305"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-net-core"></a>Hızlı başlangıç: .NET Core 'da Redsıs için Azure önbelleğini kullanma
 
@@ -293,13 +293,13 @@ Aksi takdirde, hızlı başlangıç örnek uygulamasını tamamladıysanız ücr
 > Bir kaynak grubunu silme işlemi geri alınamaz ve kaynak grubunun ve içindeki tüm kaynaklar kalıcı olarak silinir. Yanlış kaynak grubunu veya kaynakları yanlışlıkla silmediğinizden emin olun. Bu örneği, tutmak istediğiniz kaynakları içeren mevcut bir kaynak grubunda barındırmak için kaynaklar oluşturduysanız, kaynak grubunu silmek yerine her kaynağı kendi ilgili dikey penceresinden tek tek silebilirsiniz.
 >
 
-[Azure portalında](https://portal.azure.com) oturum açın ve **Kaynak grupları** ’na tıklayın.
+[Azure portalında](https://portal.azure.com) oturum açın ve **Kaynak grupları**’na tıklayın.
 
-**Ada göre filtrele...** metin kutusuna kaynak grubunuzun adını girin. Bu makaledeki yönergelerde *TestResources* adlı bir kaynak grubu kullanılmıştır. Sonuç listesindeki kaynak grubunuzda **...** ve sonra **Kaynak grubunu sil** ’e tıklayın.
+**Ada göre filtrele...** metin kutusuna kaynak grubunuzun adını girin. Bu makaledeki yönergelerde *TestResources* adlı bir kaynak grubu kullanılmıştır. Sonuç listesindeki kaynak grubunuzda **...** ve sonra **Kaynak grubunu sil**’e tıklayın.
 
 ![Sil](./media/cache-dotnet-core-quickstart/cache-delete-resource-group.png)
 
-Kaynak grubunun silinmesini onaylamanız istenir. Onaylamak için kaynak grubunuzun adını yazın ve **Sil** ’e tıklayın.
+Kaynak grubunun silinmesini onaylamanız istenir. Onaylamak için kaynak grubunuzun adını yazın ve **Sil**’e tıklayın.
 
 Birkaç dakika sonra kaynak grubu ve içerdiği kaynakların tümü silinir.
 

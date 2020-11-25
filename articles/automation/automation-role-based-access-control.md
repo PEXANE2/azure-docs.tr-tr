@@ -7,11 +7,11 @@ ms.subservice: shared-capabilities
 ms.date: 07/21/2020
 ms.topic: conceptual
 ms.openlocfilehash: efdb195ad41b036f7f470884b3a441de1db7f7f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91716154"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003710"
 ---
 # <a name="manage-role-permissions-and-security"></a>Rol izinlerini ve güvenliği yönetme
 
@@ -290,7 +290,7 @@ Aşağıdaki bölümde, Otomasyon hesabınızda [Azure Portal](#configure-azure-
 
 3. **Seçim** alanında izinleri vermek istediğiniz kullanıcının adını yazın. Listeden kullanıcıyı seçin ve **Kaydet**' e tıklayın.
 
-   ![Kullanıcı ekleme](media/automation-role-based-access-control/automation-04-add-users.png)
+   ![Kullanıcı ekle](media/automation-role-based-access-control/automation-04-add-users.png)
 
    Şimdi, seçilen rolün atandığı kullanıcılar sayfasına eklenen kullanıcıyı görmeniz gerekir.
 
@@ -421,7 +421,7 @@ New-AzRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Job Opera
 New-AzRoleAssignment -ObjectId $userId -RoleDefinitionName "Automation Runbook Operator" -Scope $rb.ResourceId
 ```
 
-Betik çalıştırıldıktan sonra, kullanıcının Azure portal oturum açmasını ve **tüm kaynakları**seçmesini sağlayabilirsiniz. Listede, Kullanıcı kendisi için bir Otomasyon Runbook Işleci olarak eklenmiş runbook 'u görebilir.
+Betik çalıştırıldıktan sonra, kullanıcının Azure portal oturum açmasını ve **tüm kaynakları** seçmesini sağlayabilirsiniz. Listede, Kullanıcı kendisi için bir Otomasyon Runbook Işleci olarak eklenmiş runbook 'u görebilir.
 
 ![Portalda runbook Azure RBAC](./media/automation-role-based-access-control/runbook-rbac.png)
 

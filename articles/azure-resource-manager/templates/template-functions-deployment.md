@@ -2,13 +2,13 @@
 title: Şablon işlevleri-dağıtım
 description: Dağıtım bilgilerini almak için bir Azure Resource Manager şablonunda kullanılacak işlevleri açıklar.
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: e8240c05cba82d5563c4b327ecbc65a9c358720f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/18/2020
+ms.openlocfilehash: 9d6a1783bcd6d84c181edae84063ed7c0964c3d8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84677823"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96004577"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>ARM şablonları için dağıtım işlevleri
 
@@ -20,6 +20,8 @@ Kaynak Yöneticisi, Azure Resource Manager (ARM) şablonunuzun geçerli dağıt�
 * [değişkenlerinin](#variables)
 
 Kaynaklardan, kaynak gruplarından veya aboneliklerden değerler almak için bkz. [kaynak işlevleri](template-functions-resource.md).
+
+[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 
 ## <a name="deployment"></a>dağıtım
 
@@ -38,22 +40,21 @@ Yerel bir şablon bir kaynak grubuna dağıtıldığında: işlev aşağıdaki b
 
 ```json
 {
-    "name": "",
-    "properties": {
-        "template": {
-            "$schema": "",
-            "contentVersion": "",
-            "parameters": {},
-            "variables": {},
-            "resources": [
-            ],
-            "outputs": {}
-        },
-        "templateHash": "",
-        "parameters": {},
-        "mode": "",
-        "provisioningState": ""
-    }
+  "name": "",
+  "properties": {
+    "template": {
+      "$schema": "",
+      "contentVersion": "",
+      "parameters": {},
+      "variables": {},
+      "resources": [],
+      "outputs": {}
+    },
+    "templateHash": "",
+    "parameters": {},
+    "mode": "",
+    "provisioningState": ""
+  }
 }
 ```
 
@@ -61,24 +62,24 @@ Bir kaynak grubuna uzak şablon dağıtıldığında: işlev aşağıdaki biçim
 
 ```json
 {
-    "name": "",
-    "properties": {
-        "templateLink": {
-            "uri": ""
-        },
-        "template": {
-            "$schema": "",
-            "contentVersion": "",
-            "parameters": {},
-            "variables": {},
-            "resources": [],
-            "outputs": {}
-        },
-        "templateHash": "",
-        "parameters": {},
-        "mode": "",
-        "provisioningState": ""
-    }
+  "name": "",
+  "properties": {
+    "templateLink": {
+      "uri": ""
+    },
+    "template": {
+      "$schema": "",
+      "contentVersion": "",
+      "parameters": {},
+      "variables": {},
+      "resources": [],
+      "outputs": {}
+    },
+    "templateHash": "",
+    "parameters": {},
+    "mode": "",
+    "provisioningState": ""
+  }
 }
 ```
 
@@ -86,20 +87,20 @@ Bir Azure aboneliğine, yönetim grubuna veya kiracıya dağıtırken, dönüş 
 
 ```json
 {
-    "name": "",
-    "location": "",
-    "properties": {
-        "template": {
-            "$schema": "",
-            "contentVersion": "",
-            "resources": [],
-            "outputs": {}
-        },
-        "templateHash": "",
-        "parameters": {},
-        "mode": "",
-        "provisioningState": ""
-    }
+  "name": "",
+  "location": "",
+  "properties": {
+    "template": {
+      "$schema": "",
+      "contentVersion": "",
+      "resources": [],
+      "outputs": {}
+    },
+    "templateHash": "",
+    "parameters": {},
+    "mode": "",
+    "provisioningState": ""
+  }
 }
 ```
 
@@ -107,11 +108,21 @@ Bir Azure aboneliğine, yönetim grubuna veya kiracıya dağıtırken, dönüş 
 
 Üst şablonun URI 'sini temel alan başka bir şablona bağlamak için Deployment () kullanabilirsiniz.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 "variables": {
-    "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"
+  "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+var sharedTemplateUrl = uri(deployment().prperties.templateLink.uri, 'shared-resources.json')
+```
+
+---
 
 Portalın dağıtım geçmişinden bir şablonu yeniden dağıtırsanız, şablon yerel bir dosya olarak dağıtılır. `templateLink`Özellik dağıtım işlevinde döndürülmedi. Şablonunuz `templateLink` başka bir şablona bağlantı oluşturmak için kullanıyorsa, yeniden dağıtmak için portalını kullanmayın. Bunun yerine, şablonu ilk olarak dağıtmak için kullandığınız komutları kullanın.
 
@@ -119,19 +130,29 @@ Portalın dağıtım geçmişinden bir şablonu yeniden dağıtırsanız, şablo
 
 Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deployment.json) dağıtım nesnesini döndürür:
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [],
-    "outputs": {
-        "deploymentOutput": {
-            "value": "[deployment()]",
-            "type" : "object"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [],
+  "outputs": {
+    "deploymentOutput": {
+      "type": "object",
+      "value": "[deployment()]"
     }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+output deploymentOutput object = deployment()
+```
+
+---
 
 Önceki örnekte aşağıdaki nesne döndürülür:
 
@@ -206,19 +227,29 @@ Bu işlev, geçerli Azure ortamı için özellikleri döndürür. Aşağıdaki �
 
 Aşağıdaki örnek şablon, ortam nesnesini döndürür.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [],
-    "outputs": {
-        "environmentOutput": {
-            "value": "[environment()]",
-            "type" : "object"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [],
+  "outputs": {
+    "environmentOutput": {
+      "type": "object",
+      "value": "[environment()]"
     }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+output environmentOutput object = environment()
+```
+
+---
 
 Yukarıdaki örnekte, genel Azure 'a dağıtıldığında aşağıdaki nesne döndürülür:
 
@@ -264,9 +295,9 @@ Bir parametre değeri döndürür. Belirtilen parametre adı, şablonun parametr
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| parameterName |Evet |string |Döndürülecek parametrenin adı. |
+| parameterName |Yes |string |Döndürülecek parametrenin adı. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -276,78 +307,122 @@ Belirtilen parametrenin değeri.
 
 Genellikle, kaynak değerlerini ayarlamak için parametreleri kullanırsınız. Aşağıdaki örnek, Web sitesinin adını dağıtım sırasında geçirilen parametre değerine ayarlar.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 "parameters": {
   "siteName": {
-      "type": "string"
+    "type": "string"
   }
-},
-"resources": [
-   {
-      "apiVersion": "2016-08-01",
-      "name": "[parameters('siteName')]",
-      "type": "Microsoft.Web/Sites",
-      ...
-   }
+}, "resources": [
+  {
+    "type": "Microsoft.Web/Sites",
+    "apiVersion": "2016-08-01",
+    "name": "[parameters('siteName')]",
+    ...
+  }
 ]
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param siteName string
+
+resource mySite 'Microsoft.Web/Sites@2016-08-01' = {
+  name: siteName
+  ...
+}
+```
+
+---
 
 ### <a name="example"></a>Örnek
 
 Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/parameters.json) , Parameters işlevinin Basitleştirilmiş kullanımını gösterir.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "stringParameter": {
-            "type" : "string",
-            "defaultValue": "option 1"
-        },
-        "intParameter": {
-            "type": "int",
-            "defaultValue": 1
-        },
-        "objectParameter": {
-            "type": "object",
-            "defaultValue": {"one": "a", "two": "b"}
-        },
-        "arrayParameter": {
-            "type": "array",
-            "defaultValue": [1, 2, 3]
-        },
-        "crossParameter": {
-            "type": "string",
-            "defaultValue": "[parameters('stringParameter')]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "stringParameter": {
+      "type": "string",
+      "defaultValue": "option 1"
     },
-    "variables": {},
-    "resources": [],
-    "outputs": {
-        "stringOutput": {
-            "value": "[parameters('stringParameter')]",
-            "type" : "string"
-        },
-        "intOutput": {
-            "value": "[parameters('intParameter')]",
-            "type" : "int"
-        },
-        "objectOutput": {
-            "value": "[parameters('objectParameter')]",
-            "type" : "object"
-        },
-        "arrayOutput": {
-            "value": "[parameters('arrayParameter')]",
-            "type" : "array"
-        },
-        "crossOutput": {
-            "value": "[parameters('crossParameter')]",
-            "type" : "string"
-        }
+    "intParameter": {
+      "type": "int",
+      "defaultValue": 1
+    },
+    "objectParameter": {
+      "type": "object",
+      "defaultValue": {
+        "one": "a",
+        "two": "b"
+      }
+    },
+    "arrayParameter": {
+      "type": "array",
+      "defaultValue": [ 1, 2, 3 ]
+    },
+    "crossParameter": {
+      "type": "string",
+      "defaultValue": "[parameters('stringParameter')]"
     }
+  },
+  "variables": {},
+  "resources": [],
+  "outputs": {
+    "stringOutput": {
+      "value": "[parameters('stringParameter')]",
+      "type": "string"
+    },
+    "intOutput": {
+      "value": "[parameters('intParameter')]",
+      "type": "int"
+    },
+    "objectOutput": {
+      "value": "[parameters('objectParameter')]",
+      "type": "object"
+    },
+    "arrayOutput": {
+      "value": "[parameters('arrayParameter')]",
+      "type": "array"
+    },
+    "crossOutput": {
+      "value": "[parameters('crossParameter')]",
+      "type": "string"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param stringParameter string = 'option 1'
+param intParameter int = 1
+param objectParameter object = {
+  'one': 'a'
+  'two': 'b'
+}
+param arrayParameter array = [
+  1
+  2
+  3
+]
+param crossParameter string = stringParameter
+
+output stringOutput string = stringParameter
+output intOutput int = intParameter
+output objectOutput object = objectParameter
+output arrayOutput array = arrayParameter
+output crossOutput string = crossParameter
+```
+
+---
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
@@ -369,7 +444,7 @@ Değişkenin değerini döndürür. Belirtilen değişken adının şablonun de�
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
 | variableName |Evet |Dize |Döndürülecek değişkenin adı. |
 
@@ -381,65 +456,111 @@ Belirtilen değişkenin değeri.
 
 Genellikle, karmaşık değerleri yalnızca bir kez oluşturarak şablonunuzu basitleştirmek için değişkenler kullanırsınız. Aşağıdaki örnek, bir depolama hesabı için benzersiz bir ad oluşturur.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 "variables": {
-    "storageName": "[concat('storage', uniqueString(resourceGroup().id))]"
+  "storageName": "[concat('storage', uniqueString(resourceGroup().id))]"
 },
 "resources": [
-    {
-        "type": "Microsoft.Storage/storageAccounts",
-        "name": "[variables('storageName')]",
-        ...
-    },
-    {
-        "type": "Microsoft.Compute/virtualMachines",
-        "dependsOn": [
-            "[variables('storageName')]"
-        ],
-        ...
-    }
+  {
+    "type": "Microsoft.Storage/storageAccounts",
+    "name": "[variables('storageName')]",
+    ...
+  },
+  {
+    "type": "Microsoft.Compute/virtualMachines",
+    "dependsOn": [
+      "[variables('storageName')]"
+    ],
+    ...
+  }
 ],
+
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+var storageName = concat('storage', uniqueString(resourceGroup().id))
+
+resource myStorage 'Microsoft.Storage/storageAccounts@2019-06-01' = {
+  name: storageName
+  ...
+}
+
+resource myVm 'Microsoft.Compute/virtualMachines@2020-06-01' = {
+  ...
+}
+```
+
+---
 
 ### <a name="example"></a>Örnek
 
 Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/variables.json) farklı değişken değerleri döndürüyor.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {},
-    "variables": {
-        "var1": "myVariable",
-        "var2": [ 1,2,3,4 ],
-        "var3": "[ variables('var1') ]",
-        "var4": {
-            "property1": "value1",
-            "property2": "value2"
-          }
-    },
-    "resources": [],
-    "outputs": {
-        "exampleOutput1": {
-            "value": "[variables('var1')]",
-            "type" : "string"
-        },
-        "exampleOutput2": {
-            "value": "[variables('var2')]",
-            "type" : "array"
-        },
-        "exampleOutput3": {
-            "value": "[variables('var3')]",
-            "type" : "string"
-        },
-        "exampleOutput4": {
-            "value": "[variables('var4')]",
-            "type" : "object"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "variables": {
+    "var1": "myVariable",
+    "var2": [ 1, 2, 3, 4 ],
+    "var3": "[ variables('var1') ]",
+    "var4": {
+      "property1": "value1",
+      "property2": "value2"
     }
+  },
+  "resources": [],
+  "outputs": {
+    "exampleOutput1": {
+      "value": "[variables('var1')]",
+      "type": "string"
+    },
+    "exampleOutput2": {
+      "value": "[variables('var2')]",
+      "type": "array"
+    },
+    "exampleOutput3": {
+      "value": "[variables('var3')]",
+      "type": "string"
+    },
+    "exampleOutput4": {
+      "value": "[variables('var4')]",
+      "type": "object"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+var var1 = 'myVariable'
+var var2 = [
+  1
+  2
+  3
+  4
+]
+var var3 = var1
+var var4 = {
+  'property1': 'value1'
+  'property2': 'value2'
+}
+
+output exampleOutput1 string = var1
+output exampleOutput2 array = var2
+output exampleOutput3 string = var3
+output exampleOutput4 object = var4
+```
+
+---
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 

@@ -5,11 +5,11 @@ ms.date: 03/05/2020
 ms.topic: how-to
 ms.reviewer: brendal
 ms.openlocfilehash: 696f1f2f96034f7a044f6a39182774c02804518f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87003075"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004849"
 ---
 # <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>Azure blok zinciri çalışma ekranı önizleme 'yi kullanma REST API
 
@@ -19,11 +19,11 @@ Azure blok zinciri çalışma ekranı önizlemesi REST API geliştiricilere ve b
 
 Blok zinciri çalışma ekranı API 'Lerine, dağıtımınız için bir uç nokta üzerinden erişilir. Dağıtımınız için API uç nokta URL 'sini almak için:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol taraftaki Gezinti bölmesinde **kaynak grupları**' nı seçin.
 1. Dağıtılmış blok zinciri çalışma ekranı ' nı kaynak grubu adı ' nı seçin.
 1. Listeyi türe göre alfabetik olarak sıralamak için **tür** sütun başlığını seçin.
-1. **App Service**türünde iki kaynak vardır. "-Api" sonekiyle **App Service** *with* türde kaynağı seçin.
+1. **App Service** türünde iki kaynak vardır. "-Api" sonekiyle **App Service** *with* türde kaynağı seçin.
 1. App Service **genel bakışta**, dağıtılan blok zinciri çalışma EKRANıNA yönelik API uç noktası URL 'sini temsil eden **URL** değerini kopyalayın.
 
     ![App Service API uç nokta URL 'SI](media/use-api/app-service-api.png)

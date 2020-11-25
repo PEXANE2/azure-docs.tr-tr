@@ -5,20 +5,20 @@ author: ginamr
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 11/23/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 565b3429f8e8398a93f981969f96984bdac52db0
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: e808f6f56041e6cdc577164140910af8d6c42731
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93334999"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96004407"
 ---
 # <a name="st_within-azure-cosmos-db"></a>ST_WITHIN (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
- Birinci bağımsız değişkende belirtilen GeoJSON nesnesinin (nokta, çokgen veya LineString) ikinci bağımsız değişkende GeoJSON (Işaret, çokgen veya LineString) içinde olup olmadığını gösteren bir Boole ifadesi döndürür.  
+ Birinci bağımsız değişkende belirtilen GeoJSON nesnesinin (Point, Çokgen, MultiPolygon veya LineString), ikinci bağımsız değişkende GeoJSON (Point, Çokgen, MultiPolygon veya LineString) içinde olup olmadığını gösteren bir Boole ifadesi döndürür.  
   
 ## <a name="syntax"></a>Söz dizimi
   

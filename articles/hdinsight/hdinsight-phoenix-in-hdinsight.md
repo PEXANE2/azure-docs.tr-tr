@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: f98021d1e94b3796b2aeb6ba2e883e4e1380b8ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89504341"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004832"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Phoenix
 
@@ -99,7 +99,7 @@ ALTER TABLE my_other_table SET TRANSACTIONAL=true;
 
 *Bölge sunucusu hotspool* , sıralı anahtarlarla HBase 'e sahip kayıtları yazarken meydana gelebilir. Kümenizde birden çok bölge sunucusu olsa da, yazmaların hepsi yalnızca bir tane üzerinde gerçekleşmiş olabilir. Bu yoğunlaşma, yazma iş yükünüzün tüm kullanılabilir bölge sunucularında dağıtılması yerine, yükü işleme sürecinde olan, en az bir sorun oluşturur. Her bölge önceden tanımlanmış en büyük boyuta sahip olduğundan, bir bölge bu boyut sınırına ulaştığında, iki küçük bölgeye ayrılır. Söz konusu olduğunda, bu yeni bölgelerden biri yeni etkin nokta haline gelir.
 
-Bu sorunu azaltmak ve tüm bölge sunucularının eşit olarak kullanılması için daha iyi bir performans, önceden bölünmüş tablolar elde etmek. Phoenix, belirli bir tablonun satır anahtarına saydam bir şekilde sallayan bayt ekleyerek, *sallanan tablolar*sağlar. Tablo, tablonun ilk aşamasında bölge sunucuları arasında eşit yük dağıtımına olanak sağlamak için, salt, anahtar bayt sınırlarına önceden bölünür. Bu yaklaşım, yazma iş yükünü tüm kullanılabilir bölge sunucularında dağıtır, yazma ve okuma performansını geliştirir. Bir tabloyu almak için tablo `SALT_BUCKETS` oluşturulduğunda tablo özelliğini belirtin:
+Bu sorunu azaltmak ve tüm bölge sunucularının eşit olarak kullanılması için daha iyi bir performans, önceden bölünmüş tablolar elde etmek. Phoenix, belirli bir tablonun satır anahtarına saydam bir şekilde sallayan bayt ekleyerek, *sallanan tablolar* sağlar. Tablo, tablonun ilk aşamasında bölge sunucuları arasında eşit yük dağıtımına olanak sağlamak için, salt, anahtar bayt sınırlarına önceden bölünür. Bu yaklaşım, yazma iş yükünü tüm kullanılabilir bölge sunucularında dağıtır, yazma ve okuma performansını geliştirir. Bir tabloyu almak için tablo `SALT_BUCKETS` oluşturulduğunda tablo özelliğini belirtin:
 
 ```sql
 CREATE TABLE Saltedweblogs (

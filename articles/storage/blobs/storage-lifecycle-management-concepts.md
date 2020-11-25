@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: 85577a428f803e31aa33468496d7efca77933835
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 1b568687ffe646a91544c1bb75d26d552a23f49c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579320"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96005291"
 ---
 # <a name="optimize-costs-by-automating-azure-blob-storage-access-tiers"></a>Azure Blob depolama erişim katmanlarını otomatikleştirerek maliyetleri iyileştirin
 
@@ -39,7 +39,7 @@ Yaşam döngüsünün erken aşamaları sırasında, ancak iki hafta sonra zaman
 
 Yaşam döngüsü yönetimi özelliği, Genel Amaçlı v2 (GPv2) hesapları, BLOB depolama hesapları, Premium Blok Blobu depolama hesapları ve Azure Data Lake Storage 2. hesapları için tüm Azure bölgelerinde kullanılabilir. Azure portal, var olan bir Genel Amaçlı (GPv1) hesabını bir GPv2 hesabına yükseltebilirsiniz. Depolama hesapları hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](../common/storage-account-overview.md).
 
-Yaşam döngüsü yönetimi özelliği ücretsizdir. Müşteriler, [BLOB katmanı](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) API çağrıları kümesi için normal işlem maliyeti üzerinden ücretlendirilir. Silme işlemi ücretsizdir. Fiyatlandırma hakkında daha fazla bilgi için bkz. [Blok Blobu fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/blobs/).
+Yaşam döngüsü yönetimi özelliği ücretsizdir. Müşteriler, [BLOB katmanı](/rest/api/storageservices/set-blob-tier) API çağrıları kümesi için normal işlem maliyeti üzerinden ücretlendirilir. Silme işlemi ücretsizdir. Fiyatlandırma hakkında daha fazla bilgi için bkz. [Blok Blobu fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 ## <a name="add-or-remove-a-policy"></a>İlke ekleme veya kaldırma
 
@@ -47,13 +47,13 @@ Aşağıdaki yöntemlerden birini kullanarak bir ilkeyi ekleyebilir, düzenleyeb
 
 * [Azure portalındaki](https://portal.azure.com)
 * [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
-* [REST API'leri](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)
+* [Azure CLI](/cli/azure/install-azure-cli)
+* [REST API'leri](/rest/api/storagerp/managementpolicies)
 
 Bir ilke, tam olarak okunabilir veya yazılabilir. Kısmi güncelleştirmeler desteklenmiyor. 
 
 > [!NOTE]
-> Depolama hesabınız için güvenlik duvarı kurallarını etkinleştirirseniz, yaşam döngüsü yönetimi istekleri engellenebilir. Güvenilen Microsoft Hizmetleri için özel durumlar sağlayarak bu isteklerin engellemesini kaldırabilirsiniz. Daha fazla bilgi için bkz. [güvenlik duvarlarını ve sanal ağları yapılandırma](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)Içindeki özel durumlar bölümü.
+> Depolama hesabınız için güvenlik duvarı kurallarını etkinleştirirseniz, yaşam döngüsü yönetimi istekleri engellenebilir. Güvenilen Microsoft Hizmetleri için özel durumlar sağlayarak bu isteklerin engellemesini kaldırabilirsiniz. Daha fazla bilgi için bkz. [güvenlik duvarlarını ve sanal ağları yapılandırma](../common/storage-network-security.md#exceptions)Içindeki özel durumlar bölümü.
 
 Bu makalede Portal ve PowerShell yöntemlerini kullanarak ilkenin nasıl yönetileceği gösterilmektedir.
 
@@ -74,7 +74,7 @@ Azure portal bir ilke eklemenin iki yolu vardır.
 
 1. **Liste görünümü** sekmesini seçin.
 
-1. **Kural Ekle** ' yi seçin ve kuralları **Ayrıntılar** formunda adlandırın. **Kural kapsamını** , **BLOB türünü** ve **BLOB alt türü** değerlerini de ayarlayabilirsiniz. Aşağıdaki örnek, blob 'ları filtrelemek için kapsamı ayarlar. Bu, **filtre kümesi** sekmesinin eklenmesine neden olur.
+1. **Kural Ekle** ' yi seçin ve kuralları **Ayrıntılar** formunda adlandırın. **Kural kapsamını**, **BLOB türünü** ve **BLOB alt türü** değerlerini de ayarlayabilirsiniz. Aşağıdaki örnek, blob 'ları filtrelemek için kapsamı ayarlar. Bu, **filtre kümesi** sekmesinin eklenmesine neden olur.
 
    :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-details.png" alt-text="Yaşam döngüsü yönetimi Azure portal bir kural ayrıntıları ekleme sayfası":::
 
@@ -137,7 +137,7 @@ Azure portal bir ilke eklemenin iki yolu vardır.
    }
    ```
 
-1. **Kaydet** ’i seçin.
+1. **Kaydet**'i seçin.
 
 1. Bu JSON örneği hakkında daha fazla bilgi için bkz. [ilke](#policy) ve [kurallar](#rules) bölümleri.
 
@@ -318,11 +318,11 @@ Filtreler aşağıdakileri içerir:
 | Filtre adı | Filtre türü | Notlar | Gereklidir |
 |-------------|-------------|-------|-------------|
 | blobTypes   | Önceden tanımlanmış sabit listesi değerleri dizisi. | Geçerli yayın ve destekler `blockBlob` `appendBlob` . İçin yalnızca silme desteklenir `appendBlob` , set Tier desteklenmez. | Yes |
-| prefixMatch | Öneklerin eşleştirileceği dizeler dizisi. Her kural en fazla 10 ön ek tanımlayabilir. Önek dizesinin bir kapsayıcı adıyla başlaması gerekir. Örneğin, bir kural için altındaki tüm Blobları eşleştirmek istiyorsanız, `https://myaccount.blob.core.windows.net/container1/foo/...` prefixMatch olur `container1/foo` . | PrefixMatch tanımlayamazsınız, kural depolama hesabındaki tüm Bloblar için geçerlidir. | Hayır |
-| blobIndexMatch | Blob dizini etiketi anahtarından ve eşleştirilecek değer koşullarından oluşan Sözlük değerleri dizisi. Her kural, en fazla 10 blob Dizin etiketi koşulunu tanımlayabilir. Örneğin, bir kural için altındaki tüm Blobları eşleştirmek istiyorsanız `Project = Contoso` `https://myaccount.blob.core.windows.net/` , blobIndexMatch olur `{"name": "Project","op": "==","value": "Contoso"}` . | BlobIndexMatch tanımlayamazsınız, kural depolama hesabındaki tüm Bloblar için geçerlidir. | Hayır |
+| prefixMatch | Öneklerin eşleştirileceği dizeler dizisi. Her kural en fazla 10 ön ek tanımlayabilir. Önek dizesinin bir kapsayıcı adıyla başlaması gerekir. Örneğin, bir kural için altındaki tüm Blobları eşleştirmek istiyorsanız, `https://myaccount.blob.core.windows.net/container1/foo/...` prefixMatch olur `container1/foo` . | PrefixMatch tanımlayamazsınız, kural depolama hesabındaki tüm Bloblar için geçerlidir. | No |
+| blobIndexMatch | Blob dizini etiketi anahtarından ve eşleştirilecek değer koşullarından oluşan Sözlük değerleri dizisi. Her kural, en fazla 10 blob Dizin etiketi koşulunu tanımlayabilir. Örneğin, bir kural için altındaki tüm Blobları eşleştirmek istiyorsanız `Project = Contoso` `https://myaccount.blob.core.windows.net/` , blobIndexMatch olur `{"name": "Project","op": "==","value": "Contoso"}` . | BlobIndexMatch tanımlayamazsınız, kural depolama hesabındaki tüm Bloblar için geçerlidir. | No |
 
 > [!NOTE]
-> Blob dizini ortak önizlemededir ve **Kanada Orta** , **Kanada Doğu** , **Fransa orta** ve **Fransa Güney** bölgelerinde kullanılabilir. Bu özellik hakkında bilinen sorunlar ve sınırlamalar hakkında daha fazla bilgi edinmek için bkz. [blob dizini (Önizleme) Ile Azure Blob depolama üzerinde verileri yönetme ve bulma](storage-manage-find-blobs.md).
+> Blob dizini ortak önizlemededir ve **Kanada Orta**, **Kanada Doğu**, **Fransa orta** ve **Fransa Güney** bölgelerinde kullanılabilir. Bu özellik hakkında bilinen sorunlar ve sınırlamalar hakkında daha fazla bilgi edinmek için bkz. [blob dizini (Önizleme) Ile Azure Blob depolama üzerinde verileri yönetme ve bulma](storage-manage-find-blobs.md).
 
 ### <a name="rule-actions"></a>Kural eylemleri
 
@@ -450,7 +450,7 @@ Her bir son erişim zamanı güncelleştirmesi başka bir [işlem](https://azure
 Bazı veriler bulutta boş kalır ve şimdiye kadar, kaydedildikten sonra erişiliyorsa nadiren olur. Aşağıdaki yaşam döngüsü ilkesi, verileri alındıktan sonra arşivlemek üzere yapılandırılmıştır. Bu örnek, kapsayıcı içindeki depolama hesabındaki Blobları `archivecontainer` bir arşiv katmanına geçirir. Geçiş, son değiştirilme zamanından sonra blob 0 gün sonra işlem yaparak gerçekleştirilir:
 
 > [!NOTE] 
-> Bloblarınızı doğrudan arşiv katmanının daha verimli olması için yüklemeniz önerilir. [PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob) veya [putblocklist](https://docs.microsoft.com/rest/api/storageservices/put-block-list) için x-MS-Access-Tier üst bilgisini Rest sürüm 2018-11-09 ve daha yeni veya en son BLOB depolama istemci kitaplıklarımızla birlikte kullanabilirsiniz. 
+> Bloblarınızı doğrudan arşiv katmanının daha verimli olması için yüklemeniz önerilir. [PutBlob](/rest/api/storageservices/put-blob) veya [putblocklist](/rest/api/storageservices/put-block-list) için x-MS-Access-Tier üst bilgisini Rest sürüm 2018-11-09 ve daha yeni veya en son BLOB depolama istemci kitaplıklarımızla birlikte kullanabilirsiniz. 
 
 ```json
 {
@@ -592,7 +592,7 @@ Bir blob bir erişim katmanından diğerine taşındığında, son değiştirilm
 
 Yanlışlıkla silinmeden sonra verileri nasıl kurtaracağınızı öğrenin:
 
-- [Azure Depolama blobları için geçici silme](../blobs/storage-blob-soft-delete.md)
+- [Azure Depolama blobları için geçici silme](./soft-delete-blob-overview.md)
 
 Blob diziniyle verileri yönetme ve bulma hakkında bilgi edinin:
 

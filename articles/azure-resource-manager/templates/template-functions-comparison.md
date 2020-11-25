@@ -2,13 +2,13 @@
 title: Şablon işlevleri-karşılaştırma
 description: Değerleri karşılaştırmak için Azure Resource Manager şablonda kullanılacak işlevleri açıklar.
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: 01d66f43cf73dcc9228118db5a9b6149b19ee66d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/18/2020
+ms.openlocfilehash: c5ffcfe7688935da6ea5602cdb2c66a8b86a8d88
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84677840"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96004611"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>ARM şablonları için karşılaştırma işlevleri
 
@@ -21,6 +21,8 @@ Kaynak Yöneticisi, Azure Resource Manager (ARM) şablonlarınıza karşılaşt�
 * [büyüktür](#less)
 * [lessOrEquals](#lessorequals)
 
+[!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
+
 ## <a name="coalesce"></a>Coalesce
 
 `coalesce(arg1, arg2, arg3, ...)`
@@ -29,10 +31,10 @@ Parametrelerden null olmayan ilk değeri döndürür. Boş dizeler, boş diziler
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |int, String, array veya Object |Null için sınanacak ilk değer. |
-| ek bağımsız değişkenler |Hayır |int, String, array veya Object |Null için sınanacak ek değerler. |
+| arg1 |Yes |int, String, array veya Object |Null için sınanacak ilk değer. |
+| ek bağımsız değişkenler |No |int, String, array veya Object |Null için sınanacak ek değerler. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -42,49 +44,76 @@ Bir String, int, array veya Object olabilen, null olmayan ilk parametrelerin de�
 
 Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/coalesce.json) , farklı birleşim kullanımlarından gelen çıktıyı gösterir.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "objectToTest": {
-            "type": "object",
-            "defaultValue": {
-                "null1": null,
-                "null2": null,
-                "string": "default",
-                "int": 1,
-                "object": {"first": "default"},
-                "array": [1]
-            }
-        }
-    },
-    "resources": [
-    ],
-    "outputs": {
-        "stringOutput": {
-            "type": "string",
-            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').string)]"
-        },
-        "intOutput": {
-            "type": "int",
-            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').int)]"
-        },
-        "objectOutput": {
-            "type": "object",
-            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').object)]"
-        },
-        "arrayOutput": {
-            "type": "array",
-            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').array)]"
-        },
-        "emptyOutput": {
-            "type": "bool",
-            "value": "[empty(coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2))]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "objectToTest": {
+      "type": "object",
+      "defaultValue": {
+        "null1": null,
+        "null2": null,
+        "string": "default",
+        "int": 1,
+        "object": { "first": "default" },
+        "array": [ 1 ]
+      }
     }
+  },
+  "resources": [
+  ],
+  "outputs": {
+    "stringOutput": {
+      "type": "string",
+      "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').string)]"
+    },
+    "intOutput": {
+      "type": "int",
+      "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').int)]"
+    },
+    "objectOutput": {
+      "type": "object",
+      "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').object)]"
+    },
+    "arrayOutput": {
+      "type": "array",
+      "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').array)]"
+    },
+    "emptyOutput": {
+      "type": "bool",
+      "value": "[empty(coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2))]"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param objectToTest object = {
+  'null1': null
+  'null2': null
+  'string': 'default'
+  'int': 1
+  'object': {
+    'first': 'default'
+  }
+  'array': [
+    1
+  ]
+}
+
+output stringOutput string = coalesce(objectToTest.null1, objectToTest.null2, objectToTest.string)
+output intOutput int = coalesce(objectToTest.null1, objectToTest.null2, objectToTest.int)
+output objectOutput object = coalesce(objectToTest.null1, objectToTest.null2, objectToTest.object)
+output arrayOutput array = coalesce(objectToTest.null1, objectToTest.null2, objectToTest.array)
+output emptyOutput bool =empty(coalesce(objectToTest.null1, objectToTest.null2))
+```
+
+---
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
@@ -100,14 +129,14 @@ Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
 `equals(arg1, arg2)`
 
-İki değerin birbirlerine eşit olup olmadığını denetler.
+İki değerin birbirlerine eşit olup olmadığını denetler. `equals`Işlev Bıcep içinde desteklenmiyor. `==`Bunun yerine işlecini kullanın.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |int, String, array veya Object |Eşitlik için denetlenecek ilk değer. |
-| arg2 |Evet |int, String, array veya Object |Eşitlik için denetlenecek ikinci değer. |
+| arg1 |Yes |int, String, array veya Object |Eşitlik için denetlenecek ilk değer. |
+| arg2 |Yes |int, String, array veya Object |Eşitlik için denetlenecek ikinci değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -117,85 +146,126 @@ Değerler eşitse **true** değerini döndürür; Aksi takdirde, **false**.
 
 Eşittir işlevi genellikle `condition` bir kaynağın dağıtılıp dağıtılmadığını test etmek için öğesiyle birlikte kullanılır.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "condition": "[equals(parameters('newOrExisting'),'new')]",
-    "type": "Microsoft.Storage/storageAccounts",
-    "name": "[variables('storageAccountName')]",
-    "apiVersion": "2017-06-01",
-    "location": "[resourceGroup().location]",
-    "sku": {
-        "name": "[variables('storageAccountType')]"
-    },
-    "kind": "Storage",
-    "properties": {}
+  "condition": "[equals(parameters('newOrExisting'),'new')]",
+  "type": "Microsoft.Storage/storageAccounts",
+  "name": "[variables('storageAccountName')]",
+  "apiVersion": "2017-06-01",
+  "location": "[resourceGroup().location]",
+  "sku": {
+    "name": "[variables('storageAccountType')]"
+  },
+  "kind": "Storage",
+  "properties": {}
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+> [!NOTE]
+> `Conditions` henüz Bıcep 'de uygulanmadı. [Koşullara](https://github.com/Azure/bicep/issues/186)bakın.
+
+---
 
 ### <a name="example"></a>Örnek
 
 Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/equals.json) , eşitlik için farklı değer türlerini denetler. Tüm varsayılan değerler doğru döndürür.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "firstInt": {
-            "type": "int",
-            "defaultValue": 1
-        },
-        "secondInt": {
-            "type": "int",
-            "defaultValue": 1
-        },
-        "firstString": {
-            "type": "string",
-            "defaultValue": "a"
-        },
-        "secondString": {
-            "type": "string",
-            "defaultValue": "a"
-        },
-        "firstArray": {
-            "type": "array",
-            "defaultValue": ["a", "b"]
-        },
-        "secondArray": {
-            "type": "array",
-            "defaultValue": ["a", "b"]
-        },
-        "firstObject": {
-            "type": "object",
-            "defaultValue": {"a": "b"}
-        },
-        "secondObject": {
-            "type": "object",
-            "defaultValue": {"a": "b"}
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "firstInt": {
+      "type": "int",
+      "defaultValue": 1
     },
-    "resources": [
-    ],
-    "outputs": {
-        "checkInts": {
-            "type": "bool",
-            "value": "[equals(parameters('firstInt'), parameters('secondInt') )]"
-        },
-        "checkStrings": {
-            "type": "bool",
-            "value": "[equals(parameters('firstString'), parameters('secondString'))]"
-        },
-        "checkArrays": {
-            "type": "bool",
-            "value": "[equals(parameters('firstArray'), parameters('secondArray'))]"
-        },
-        "checkObjects": {
-            "type": "bool",
-            "value": "[equals(parameters('firstObject'), parameters('secondObject'))]"
-        }
+    "secondInt": {
+      "type": "int",
+      "defaultValue": 1
+    },
+    "firstString": {
+      "type": "string",
+      "defaultValue": "a"
+    },
+    "secondString": {
+      "type": "string",
+      "defaultValue": "a"
+    },
+    "firstArray": {
+      "type": "array",
+      "defaultValue": [ "a", "b" ]
+    },
+    "secondArray": {
+      "type": "array",
+      "defaultValue": [ "a", "b" ]
+    },
+    "firstObject": {
+      "type": "object",
+      "defaultValue": { "a": "b" }
+    },
+    "secondObject": {
+      "type": "object",
+      "defaultValue": { "a": "b" }
     }
+  },
+  "resources": [
+  ],
+  "outputs": {
+    "checkInts": {
+      "type": "bool",
+      "value": "[equals(parameters('firstInt'), parameters('secondInt') )]"
+    },
+    "checkStrings": {
+      "type": "bool",
+      "value": "[equals(parameters('firstString'), parameters('secondString'))]"
+    },
+    "checkArrays": {
+      "type": "bool",
+      "value": "[equals(parameters('firstArray'), parameters('secondArray'))]"
+    },
+    "checkObjects": {
+      "type": "bool",
+      "value": "[equals(parameters('firstObject'), parameters('secondObject'))]"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param firstInt int = 1
+param secondInt int = 1
+param firstString string = 'a'
+param secondString string = 'a'
+param firstArray array = [
+  'a'
+  'b'
+]
+param secondArray array = [
+  'a'
+  'b'
+]
+param firstObject object = {
+  'a': 'b'
+}
+param secondObject object = {
+  'a': 'b'
+}
+
+output checInts bool = firstInt == secondInt
+output checkStrings bool = firstString == secondString
+output checkArrays bool = firstArray == secondArray
+output checkObjects bool = firstObject == secondObject
+```
+
+---
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
@@ -206,22 +276,32 @@ Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 | Checkarışın | Bool | Doğru |
 | checkObjects | Bool | Doğru |
 
-Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) , **eşittir**ile [değil](template-functions-logical.md#not) .
+Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) , **eşittir** ile [değil](template-functions-logical.md#not) .
+
+# <a name="json"></a>[JSON](#tab/json)
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-    ],
-    "outputs": {
-        "checkNotEquals": {
-            "type": "bool",
-            "value": "[not(equals(1, 2))]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+  ],
+  "outputs": {
+    "checkNotEquals": {
+      "type": "bool",
+      "value": "[not(equals(1, 2))]"
     }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+output checkNotEquals bool = ! (1 == 2)
+```
+
+---
 
 Yukarıdaki örnekteki çıktı:
 
@@ -233,14 +313,14 @@ Yukarıdaki örnekteki çıktı:
 
 `greater(arg1, arg2)`
 
-İlk değerin ikinci değerden büyük olup olmadığını denetler.
+İlk değerin ikinci değerden büyük olup olmadığını denetler. `greater`Işlev Bıcep içinde desteklenmiyor. `>`Bunun yerine işlecini kullanın.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |int veya String |Daha büyük karşılaştırma için ilk değer. |
-| arg2 |Evet |int veya String |Daha büyük karşılaştırma için ikinci değer. |
+| arg1 |Yes |int veya String |Daha büyük karşılaştırma için ilk değer. |
+| arg2 |Yes |int veya String |Daha büyük karşılaştırma için ikinci değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -250,42 +330,58 @@ Yukarıdaki örnekteki çıktı:
 
 Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/greater.json) , bir değerin diğerine göre daha büyük olup olmadığını denetler.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "firstInt": {
-            "type": "int",
-            "defaultValue": 1
-        },
-        "secondInt": {
-            "type": "int",
-            "defaultValue": 2
-        },
-        "firstString": {
-            "type": "string",
-            "defaultValue": "A"
-        },
-        "secondString": {
-            "type": "string",
-            "defaultValue": "a"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "firstInt": {
+      "type": "int",
+      "defaultValue": 1
     },
-    "resources": [
-    ],
-    "outputs": {
-        "checkInts": {
-            "type": "bool",
-            "value": "[greater(parameters('firstInt'), parameters('secondInt') )]"
-        },
-        "checkStrings": {
-            "type": "bool",
-            "value": "[greater(parameters('firstString'), parameters('secondString'))]"
-        }
+    "secondInt": {
+      "type": "int",
+      "defaultValue": 2
+    },
+    "firstString": {
+      "type": "string",
+      "defaultValue": "A"
+    },
+    "secondString": {
+      "type": "string",
+      "defaultValue": "a"
     }
+  },
+  "resources": [
+  ],
+  "outputs": {
+    "checkInts": {
+      "type": "bool",
+      "value": "[greater(parameters('firstInt'), parameters('secondInt') )]"
+    },
+    "checkStrings": {
+      "type": "bool",
+      "value": "[greater(parameters('firstString'), parameters('secondString'))]"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param firstInt int = 1
+param secondInt int = 2
+param firstString string = 'A'
+param secondString string = 'a'
+
+output checkInts bool = firstInt > secondInt
+output checkStrings bool = firstString > secondString
+```
+
+---
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
@@ -298,14 +394,14 @@ Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
 `greaterOrEquals(arg1, arg2)`
 
-İlk değerin ikinci değere eşit veya ondan büyük olup olmadığını denetler.
+İlk değerin ikinci değere eşit veya ondan büyük olup olmadığını denetler. `greaterOrEquals`Işlev Bıcep içinde desteklenmiyor. `>=`Bunun yerine işlecini kullanın.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |int veya String |Daha büyük veya eşit karşılaştırma için ilk değer. |
-| arg2 |Evet |int veya String |Daha büyük veya eşit karşılaştırma için ikinci değer. |
+| arg1 |Yes |int veya String |Daha büyük veya eşit karşılaştırma için ilk değer. |
+| arg2 |Yes |int veya String |Daha büyük veya eşit karşılaştırma için ikinci değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -315,42 +411,58 @@ Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
 Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/greaterorequals.json) , bir değerin diğerine eşit veya ondan büyük olup olmadığını denetler.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "firstInt": {
-            "type": "int",
-            "defaultValue": 1
-        },
-        "secondInt": {
-            "type": "int",
-            "defaultValue": 2
-        },
-        "firstString": {
-            "type": "string",
-            "defaultValue": "A"
-        },
-        "secondString": {
-            "type": "string",
-            "defaultValue": "a"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "firstInt": {
+      "type": "int",
+      "defaultValue": 1
     },
-    "resources": [
-    ],
-    "outputs": {
-        "checkInts": {
-            "type": "bool",
-            "value": "[greaterOrEquals(parameters('firstInt'), parameters('secondInt') )]"
-        },
-        "checkStrings": {
-            "type": "bool",
-            "value": "[greaterOrEquals(parameters('firstString'), parameters('secondString'))]"
-        }
+    "secondInt": {
+      "type": "int",
+      "defaultValue": 2
+    },
+    "firstString": {
+      "type": "string",
+      "defaultValue": "A"
+    },
+    "secondString": {
+      "type": "string",
+      "defaultValue": "a"
     }
+  },
+  "resources": [
+  ],
+  "outputs": {
+    "checkInts": {
+      "type": "bool",
+      "value": "[greaterOrEquals(parameters('firstInt'), parameters('secondInt') )]"
+    },
+    "checkStrings": {
+      "type": "bool",
+      "value": "[greaterOrEquals(parameters('firstString'), parameters('secondString'))]"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param firstInt int = 1
+param secondInt int = 2
+param firstString string = 'A'
+param secondString string = 'a'
+
+output checkInts bool = firstInt >= secondInt
+output checkStrings bool = firstString >= secondString
+```
+
+---
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
@@ -363,14 +475,14 @@ Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
 `less(arg1, arg2)`
 
-İlk değerin ikinci değerden küçük olup olmadığını denetler.
+İlk değerin ikinci değerden küçük olup olmadığını denetler. `less`Işlev Bıcep içinde desteklenmiyor. `<`Bunun yerine işlecini kullanın.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |int veya String |Daha az karşılaştırma için ilk değer. |
-| arg2 |Evet |int veya String |Daha az karşılaştırma için ikinci değer. |
+| arg1 |Yes |int veya String |Daha az karşılaştırma için ilk değer. |
+| arg2 |Yes |int veya String |Daha az karşılaştırma için ikinci değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -380,42 +492,58 @@ Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
 Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/less.json) , bir değerin diğerine göre daha az olup olmadığını denetler.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "firstInt": {
-            "type": "int",
-            "defaultValue": 1
-        },
-        "secondInt": {
-            "type": "int",
-            "defaultValue": 2
-        },
-        "firstString": {
-            "type": "string",
-            "defaultValue": "A"
-        },
-        "secondString": {
-            "type": "string",
-            "defaultValue": "a"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "firstInt": {
+      "type": "int",
+      "defaultValue": 1
     },
-    "resources": [
-    ],
-    "outputs": {
-        "checkInts": {
-            "type": "bool",
-            "value": "[less(parameters('firstInt'), parameters('secondInt') )]"
-        },
-        "checkStrings": {
-            "type": "bool",
-            "value": "[less(parameters('firstString'), parameters('secondString'))]"
-        }
+    "secondInt": {
+      "type": "int",
+      "defaultValue": 2
+    },
+    "firstString": {
+      "type": "string",
+      "defaultValue": "A"
+    },
+    "secondString": {
+      "type": "string",
+      "defaultValue": "a"
     }
+  },
+  "resources": [
+  ],
+  "outputs": {
+    "checkInts": {
+      "type": "bool",
+      "value": "[less(parameters('firstInt'), parameters('secondInt') )]"
+    },
+    "checkStrings": {
+      "type": "bool",
+      "value": "[less(parameters('firstString'), parameters('secondString'))]"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param firstInt int = 1
+param secondInt int = 2
+param firstString string = 'A'
+param secondString string = 'a'
+
+output checkInts bool = firstInt < secondInt
+output checkStrings bool = firstString < secondString
+```
+
+---
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
@@ -428,14 +556,14 @@ Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
 `lessOrEquals(arg1, arg2)`
 
-İlk değerin ikinci değere eşit veya ondan küçük olup olmadığını denetler.
+İlk değerin ikinci değere eşit veya ondan küçük olup olmadığını denetler. `lessOrEquals`Işlev Bıcep içinde desteklenmiyor. `<=`Bunun yerine işlecini kullanın.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Açıklama |
+| Parametre | Gerekli | Tür | Description |
 |:--- |:--- |:--- |:--- |
-| arg1 |Evet |int veya String |Less veya eşittir karşılaştırması için ilk değer. |
-| arg2 |Evet |int veya String |Less veya eşittir karşılaştırması için ikinci değer. |
+| arg1 |Yes |int veya String |Less veya eşittir karşılaştırması için ilk değer. |
+| arg2 |Yes |int veya String |Less veya eşittir karşılaştırması için ikinci değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -445,42 +573,58 @@ Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
 Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/lessorequals.json) , bir değerin diğerine eşit veya ondan küçük olup olmadığını denetler.
 
+# <a name="json"></a>[JSON](#tab/json)
+
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "firstInt": {
-            "type": "int",
-            "defaultValue": 1
-        },
-        "secondInt": {
-            "type": "int",
-            "defaultValue": 2
-        },
-        "firstString": {
-            "type": "string",
-            "defaultValue": "A"
-        },
-        "secondString": {
-            "type": "string",
-            "defaultValue": "a"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "firstInt": {
+      "type": "int",
+      "defaultValue": 1
     },
-    "resources": [
-    ],
-    "outputs": {
-        "checkInts": {
-            "type": "bool",
-            "value": "[lessOrEquals(parameters('firstInt'), parameters('secondInt') )]"
-        },
-        "checkStrings": {
-            "type": "bool",
-            "value": "[lessOrEquals(parameters('firstString'), parameters('secondString'))]"
-        }
+    "secondInt": {
+      "type": "int",
+      "defaultValue": 2
+    },
+    "firstString": {
+      "type": "string",
+      "defaultValue": "A"
+    },
+    "secondString": {
+      "type": "string",
+      "defaultValue": "a"
     }
+  },
+  "resources": [
+  ],
+  "outputs": {
+    "checkInts": {
+      "type": "bool",
+      "value": "[lessOrEquals(parameters('firstInt'), parameters('secondInt') )]"
+    },
+    "checkStrings": {
+      "type": "bool",
+      "value": "[lessOrEquals(parameters('firstString'), parameters('secondString'))]"
+    }
+  }
 }
 ```
+
+# <a name="bicep"></a>[Bicep](#tab/bicep)
+
+```bicep
+param firstInt int = 1
+param secondInt int = 2
+param firstString string = 'A'
+param secondString string = 'a'
+
+output checkInts bool = firstInt <= secondInt
+output checkStrings bool = firstString <= secondString
+```
+
+---
 
 Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 

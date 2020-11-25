@@ -10,11 +10,11 @@ ms.date: 10/10/2019
 ms.subservice: tables
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 71b1f3cfa1df86b417c468d56f67cd7fe8d71d73
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316185"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004713"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>Tablo depolaması için performans ve ölçeklenebilirlik denetim listesi
 
@@ -243,7 +243,7 @@ Bu bölümde, tablo hizmetini sorgulamak için kanıtlanmış uygulamalar açık
 
 Sorgulanacak varlık aralığını belirtmek için birkaç yol vardır. Aşağıdaki listede sorgu kapsamı için her bir seçenek açıklanır.
 
-- **Nokta sorguları:** -nokta sorgusu, alınacak varlığın bölüm anahtarını ve satır anahtarını belirterek tam olarak bir varlık alır. Bu sorgular verimlidir ve bunları mümkün olan yerlerde kullanmanız gerekir.
+- **Nokta sorguları:**-nokta sorgusu, alınacak varlığın bölüm anahtarını ve satır anahtarını belirterek tam olarak bir varlık alır. Bu sorgular verimlidir ve bunları mümkün olan yerlerde kullanmanız gerekir.
 - **Bölüm sorguları:** Bölüm sorgusu, ortak bir bölüm anahtarını paylaşan bir veri kümesini alan bir sorgudur. Genellikle sorgu, bölüm anahtarına ek olarak, bazı varlık özelliklerine ilişkin bir dizi satır anahtarı veya bir değer aralığı belirtir. Bu sorgular nokta sorgularından daha az verimlidir ve gelişigüzel kullanılmalıdır.
 - **Tablo sorguları:** Tablo sorgusu, ortak bir bölüm anahtarını paylaşmayan bir varlık kümesini alan bir sorgudur. Bu sorgular etkili değildir ve mümkünse bunları kullanmaktan kaçının.
 
@@ -275,8 +275,8 @@ Toplu işlemler, Azure depolama 'da varlık grubu işlemleri olarak bilinir. Bir
 
 Mümkün olan her yerde tablo ön **Ekle** işlemlerini kullanın. Her ikisi de geleneksel bir **ekleme** ve **güncelleştirme** işlemlerinden daha verimli olabilecek iki tür **upsert** vardır:  
 
-- **Insertormerge** : varlığın özelliklerinin bir alt kümesini karşıya yüklemek istediğinizde bu işlemi kullanın, ancak varlığın zaten var olup olmadığından emin olun. Varlık varsa, bu çağrı, **upsert** işleme dahil olan özellikleri güncelleştirir ve tüm mevcut özellikleri olduğu gibi bırakır; varlık yoksa, yeni varlığı ekler. Bu, bir sorguda projeksiyon kullanılmasına benzerdir, ancak yalnızca değişen özellikleri karşıya yüklemeniz yeterlidir.
-- **Insertorreplace** : tamamen yeni bir varlık yüklemek istediğinizde bu işlemi kullanın, ancak zaten var olup olmadığını doğrulayın. Yeni yüklenen varlığın tamamen doğru olduğunu bildiğiniz ve eski varlığın üzerine yazmadığı için bu işlemi kullanın. Örneğin, uygulamanın daha önce Kullanıcı için konum verilerini depoladığına bakılmaksızın kullanıcının geçerli konumunu depolayan varlığı güncelleştirmek istersiniz; Yeni konum varlığı tamamlanmıştır ve önceki varlıklardan herhangi bir bilgi almanız gerekmez.
+- **Insertormerge**: varlığın özelliklerinin bir alt kümesini karşıya yüklemek istediğinizde bu işlemi kullanın, ancak varlığın zaten var olup olmadığından emin olun. Varlık varsa, bu çağrı, **upsert** işleme dahil olan özellikleri güncelleştirir ve tüm mevcut özellikleri olduğu gibi bırakır; varlık yoksa, yeni varlığı ekler. Bu, bir sorguda projeksiyon kullanılmasına benzerdir, ancak yalnızca değişen özellikleri karşıya yüklemeniz yeterlidir.
+- **Insertorreplace**: tamamen yeni bir varlık yüklemek istediğinizde bu işlemi kullanın, ancak zaten var olup olmadığını doğrulayın. Yeni yüklenen varlığın tamamen doğru olduğunu bildiğiniz ve eski varlığın üzerine yazmadığı için bu işlemi kullanın. Örneğin, uygulamanın daha önce Kullanıcı için konum verilerini depoladığına bakılmaksızın kullanıcının geçerli konumunu depolayan varlığı güncelleştirmek istersiniz; Yeni konum varlığı tamamlanmıştır ve önceki varlıklardan herhangi bir bilgi almanız gerekmez.
 
 #### <a name="storing-data-series-in-a-single-entity"></a>Veri serisini tek bir varlıkta depolama
 

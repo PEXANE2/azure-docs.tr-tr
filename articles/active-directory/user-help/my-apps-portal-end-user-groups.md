@@ -13,11 +13,11 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: cff1298f12d26b1260213d75701c282e0a82511d
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124161"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004169"
 ---
 # <a name="update-your-groups-info-on-the-my-apps-portal"></a>Uygulamalarım portalınızdaki gruplar bilgilerini güncelleştirme
 
@@ -88,7 +88,7 @@ Yöneticiniz, **gruplar** kutucuğunu görüntüleme izni verdiyse şunları yap
 
     - **Grup ilkesi.** Herkesin gruba katılmasına izin vermek ya da yalnızca grubun sahibinin üye eklemesine izin vermek için seçin.
 
-3. **Oluştur** ’u seçin.
+3. **Oluştur**’u seçin.
 
     Yeni Grup sizinle birlikte oluşturulur ve sahip olduğunuz **gruplar kendi listem** listesinde görünür. Sahip olduğunuz için bu grup, **Listediğim gruplar** listesinde de görünür.
 
@@ -100,7 +100,7 @@ Bir grup oluşturduktan sonra, mevcut bilgilerin hiçbirini güncelleştirmek da
 
     **Ayrıntıları Düzenle** kutusu görünür ve ilk olarak grubu oluştururken eklediğiniz bilgileri güncelleştirebilirsiniz.
 
-2. Tüm değişikliklerinizi yapın ve ardından **Güncelleştir** ' i seçin.
+2. Tüm değişikliklerinizi yapın ve ardından **Güncelleştir**' i seçin.
 
 ## <a name="add-or-remove-a-member"></a>Üye ekleme veya kaldırma
 
@@ -110,7 +110,7 @@ Sahip olduğunuz tüm gruplar için üye ekleyebilir veya kaldırabilirsiniz.
 
     ![+ İşaretiyle vurgulanmış bir grup üyesi ekleyin](media/my-apps-portal/my-apps-portal-add-member-link.png)
 
-2. **Üye Ekle** kutusundan eklemek istediğiniz üyeyi arayın ve ardından **Ekle** ' yi seçin.
+2. **Üye Ekle** kutusundan eklemek istediğiniz üyeyi arayın ve ardından **Ekle**' yi seçin.
 
     ![Eklenecek yeni üyeyle üye kutusu Ekle](media/my-apps-portal/my-apps-portal-add-member-page.png)
 
@@ -124,7 +124,7 @@ Sahip olduğunuz tüm gruplar için üye ekleyebilir veya kaldırabilirsiniz.
 
 Kuruluşunuz buna izin veriyorsa, sona erme tarihini genişleterek bir Office 365 grubunu yenileyebilirsiniz.
 
-1. Yenilemek istediğiniz Office 365 grubunu seçin ve ardından **grubu Yenile** ' yi seçin.
+1. Yenilemek istediğiniz Office 365 grubunu seçin ve ardından **grubu Yenile**' yi seçin.
 
     ![Bir Office 365 grubunu yenileyin ve sona erme tarihini genişleterek](media/my-apps-portal/my-apps-portal-renew-group-link.png)
 
@@ -154,11 +154,11 @@ Kuruluşunuz buna izin veriyorsa, sona erme tarihini genişleterek bir Office 36
 
     ![Grubu Birleştir düğmesi vurgulanmış şekilde grupları birleştir sayfası](media/my-apps-portal/my-apps-portal-join-group-link.png)
 
-2. **Grupları birleştir** sayfasında, birleştirmek istediğiniz grubun adını seçin, ilişkili Grup ayrıntılarını görüntüleyin ve grup kullanılabiliyorsa **grubu Birleştir** ' i seçin.
+2. **Grupları birleştir** sayfasında, birleştirmek istediğiniz grubun adını seçin, ilişkili Grup ayrıntılarını görüntüleyin ve grup kullanılabiliyorsa **grubu Birleştir**' i seçin.
 
-    Grup, üyeliği onaylaması için Grup sahibi gerektiriyorsa, gruba katılması gerekmesinin nedeni için bir iş doğrulaması girmeniz ve sonra **istek** ' ı seçmeniz istenir. Grup onay gerektirmiyorsa, bir üye olarak hemen eklenir ve Grup, **Listediğim gruplar** listesinde görünür.
+    Grup, üyeliği onaylaması için Grup sahibi gerektiriyorsa, gruba katılması gerekmesinin nedeni için bir iş doğrulaması girmeniz ve sonra **istek**' ı seçmeniz istenir. Grup onay gerektirmiyorsa, bir üye olarak hemen eklenir ve Grup, **Listediğim gruplar** listesinde görünür.
 
-3. Bir gruba yanlışlıkla katılırsanız veya bir parçası olması gerekmiyorsa, **grupları birleştir** sayfasından grup adını seçebilir ve sonra **grubu bırak** ' ı seçebilirsiniz.
+3. Bir gruba yanlışlıkla katılırsanız veya bir parçası olması gerekmiyorsa, **grupları birleştir** sayfasından grup adını seçebilir ve sonra **grubu bırak**' ı seçebilirsiniz.
 
     ![Grup bırak düğmesi vurgulanmış şekilde, grupları birleştir sayfası](media/my-apps-portal/my-apps-portal-leave-group-link.png)
 

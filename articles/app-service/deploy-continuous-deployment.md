@@ -7,11 +7,11 @@ ms.date: 03/20/2020
 ms.reviewer: dariac
 ms.custom: seodec18
 ms.openlocfilehash: b7730558e2a660b0cf00a5b6962d1e2275dd472c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90984406"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004372"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Azure App Service için sürekli dağıtım
 
@@ -66,14 +66,14 @@ Yerleşik kudu App Service derleme sunucusunu, GitHub, Bitbucket veya Azure Repo
    
 1. **Yapılandır** sayfasında:
    
-   - GitHub için, aşağı açılan ve sürekli dağıtmak istediğiniz **kuruluş**, **Depo**ve **dalı** seçin.
+   - GitHub için, aşağı açılan ve sürekli dağıtmak istediğiniz **kuruluş**, **Depo** ve **dalı** seçin.
      
      > [!NOTE]
      > Herhangi bir depo görmüyorsanız, GitHub 'da Azure App Service yetkilendirmeniz gerekebilir. GitHub deponuza gidin ve **Ayarlar**  >  **uygulamalar**  >  **yetkili OAuth uygulamalar**' a gidin. **Azure App Service**' yi seçin ve ardından **ver**' i seçin. Kuruluş depolarında, izinleri vermek için kuruluşun sahibi olmanız gerekir.
      
-   - Bitbucket için, sürekli olarak dağıtmak istediğiniz Bitbucket **ekibini**, **deposunu**ve **dalını** seçin.
+   - Bitbucket için, sürekli olarak dağıtmak istediğiniz Bitbucket **ekibini**, **deposunu** ve **dalını** seçin.
      
-   - Azure Repos için, sürekli olarak dağıtmak istediğiniz **Azure DevOps organizasyonu**, **Proje**, **Depo**ve **dalı** seçin.
+   - Azure Repos için, sürekli olarak dağıtmak istediğiniz **Azure DevOps organizasyonu**, **Proje**, **Depo** ve **dalı** seçin.
      
      > [!NOTE]
      > Azure DevOps kuruluşunuz listelenmiyorsa, Azure aboneliğinize bağlı olduğundan emin olun. Daha fazla bilgi için bkz. bir [Azure DevOps Services hesabını bir Web uygulamasına dağıtmak Için ayarlama](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops&preserve-view=true).
@@ -92,7 +92,7 @@ Yerleşik kudu App Service derleme sunucusunu, GitHub, Bitbucket veya Azure Repo
 
 Hesabınız gerekli izinlere sahipse, GitHub 'dan veya Azure Repos sürekli olarak dağıtmak için Azure Pipelines ayarlayabilirsiniz. Azure Pipelines aracılığıyla dağıtma hakkında daha fazla bilgi için bkz. [Azure App Services 'a Web uygulaması dağıtma](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps).
 
-#### <a name="prerequisites"></a>Ön koşullar
+#### <a name="prerequisites"></a>Önkoşullar
 
 Azure Pipelines kullanarak sürekli teslim oluşturmak Azure App Service için, Azure DevOps kuruluşunuzun aşağıdaki izinlere sahip olması gerekir: 
 
@@ -108,26 +108,26 @@ Azure Pipelines kullanarak sürekli teslim oluşturmak Azure App Service için, 
    
 1. Uygulama sayfasında, sol taraftaki menüden **Dağıtım Merkezi** ' ni seçin.
 
-1. **Dağıtım Merkezi** sayfasında, kaynak denetimi sağlayıcısı olarak **GitHub** ' ı seçin ve **devam**' ı seçin. **GitHub**için, yetkili hesabı değiştirmek üzere **hesabı Değiştir** ' i seçebilirsiniz.
+1. **Dağıtım Merkezi** sayfasında, kaynak denetimi sağlayıcısı olarak **GitHub** ' ı seçin ve **devam**' ı seçin. **GitHub** için, yetkili hesabı değiştirmek üzere **hesabı Değiştir** ' i seçebilirsiniz.
 
     :::image type="content" source="media/app-service-continuous-deployment/deployment-center-src-control.png" alt-text="App Service Deployment Center sayfasının ekran görüntüsü.":::
    
 1. **Yapı sağlayıcısı** sayfasında **Azure Pipelines (Önizleme)** öğesini seçin ve ardından **devam**' ı seçin.
 
-    :::image type="content" source="media/app-service-continuous-deployment/select-build-provider.png" alt-text="App Service Deployment Center sayfasının ekran görüntüsü.":::
+    :::image type="content" source="media/app-service-continuous-deployment/select-build-provider.png" alt-text="Azure Pipelines (Önizleme) ile birlikte Dağıtım Merkezi sayfasını gösteren ekran görüntüsü.":::
    
-1. **Yapılandırma** sayfasında, **kod** bölümünde, sürekli olarak dağıtmak istediğiniz **kuruluş**, **Depo**ve **dalı** seçin ve **devam**' ı seçin.
+1. **Yapılandırma** sayfasında, **kod** bölümünde, sürekli olarak dağıtmak istediğiniz **kuruluş**, **Depo** ve **dalı** seçin ve **devam**' ı seçin.
      
      > [!NOTE]
      > Herhangi bir depo görmüyorsanız, GitHub 'da Azure App Service yetkilendirmeniz gerekebilir. GitHub deponuza gidin ve **Ayarlar**  >  **uygulamalar**  >  **yetkili OAuth uygulamalar**' a gidin. **Azure App Service**' yi seçin ve ardından **ver**' i seçin. Kuruluş depolarında, izinleri vermek için kuruluşun sahibi olmanız gerekir.
        
     **Build** bölümünde, Azure Pipelines derleme görevlerini çalıştırmak için kullanması gereken Azure DevOps organizasyonu, proje, dil çerçevesini belirtin ve ardından **devam**' ı seçin.
 
-   :::image type="content" source="media/app-service-continuous-deployment/build-configure.png" alt-text="App Service Deployment Center sayfasının ekran görüntüsü.":::
+   :::image type="content" source="media/app-service-continuous-deployment/build-configure.png" alt-text="Alanlara örnek metin içeren derleme bölümünün ekran görüntüsü.":::
 
 1. Yapı sağlayıcısını yapılandırdıktan sonra, **Özet** sayfasındaki ayarları gözden geçirin ve ardından **son**' u seçin.
 
-   :::image type="content" source="media/app-service-continuous-deployment/summary.png" alt-text="App Service Deployment Center sayfasının ekran görüntüsü.":::
+   :::image type="content" source="media/app-service-continuous-deployment/summary.png" alt-text="Yenileme düğmesi vurgulanmış işlemeler ve dağıtımları gösteren Dağıtım Merkezi sayfasının ekran görüntüsü.":::
    
 1. Seçili depodaki ve daldaki yeni işlemeler artık App Service sürekli olarak dağıtılır. Yürütmeleri ve dağıtımları **Dağıtım Merkezi** sayfasında izleyebilirsiniz.
    
@@ -141,24 +141,24 @@ Azure Pipelines kullanarak sürekli teslim oluşturmak Azure App Service için, 
 
 1. **Dağıtım Merkezi** sayfasında kaynak denetimi sağlayıcısı olarak **Azure Repos** seçin ve **devam**' ı seçin.
 
-    :::image type="content" source="media/app-service-continuous-deployment/deployment-center-src-control.png" alt-text="App Service Deployment Center sayfasının ekran görüntüsü.":::
+    :::image type="content" source="media/app-service-continuous-deployment/deployment-center-src-control.png" alt-text="Sürekli dağıtım (CI/CD) seçimlerini gösteren Dağıtım Merkezi sayfasının ekran görüntüsü.":::
 
 1. **Yapı sağlayıcısı** sayfasında **Azure Pipelines (Önizleme)** öğesini seçin ve ardından **devam**' ı seçin.
 
-    :::image type="content" source="media/app-service-continuous-deployment/azure-pipelines.png" alt-text="App Service Deployment Center sayfasının ekran görüntüsü.":::
+    :::image type="content" source="media/app-service-continuous-deployment/azure-pipelines.png" alt-text="Azure Pipelines (Önizleme) gösteren dağıtım merkezinin ekran görüntüsü.":::
 
-1. **Yapılandırma** sayfasında, **kod** bölümünde, sürekli olarak dağıtmak istediğiniz **kuruluş**, **Depo**ve **dalı** seçin ve **devam**' ı seçin.
+1. **Yapılandırma** sayfasında, **kod** bölümünde, sürekli olarak dağıtmak istediğiniz **kuruluş**, **Depo** ve **dalı** seçin ve **devam**' ı seçin.
 
    > [!NOTE]
    > Mevcut Azure DevOps kuruluşunuz listede yoksa Azure aboneliğinize bağlamanız gerekebilir. Daha fazla bilgi için bkz. [CD yayın işlem hattınızı tanımlama](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps#cd).
 
    **Build** bölümünde, Azure Pipelines derleme görevlerini çalıştırmak için kullanması gereken Azure DevOps organizasyonu, proje, dil çerçevesini belirtin ve ardından **devam**' ı seçin.
 
-   :::image type="content" source="media/app-service-continuous-deployment/build-configure.png" alt-text="App Service Deployment Center sayfasının ekran görüntüsü.":::
+   :::image type="content" source="media/app-service-continuous-deployment/build-configure.png" alt-text="Azure DevOps kuruluşunun ve proje alanlarının örneklerle doldurulmuş olarak gösterildiği Build bölümünün ekran görüntüsü.":::
 
 1. Yapı sağlayıcısını yapılandırdıktan sonra, **Özet** sayfasındaki ayarları gözden geçirin ve ardından **son**' u seçin.  
      
-   :::image type="content" source="media/app-service-continuous-deployment/summary-azure-pipelines.png" alt-text="App Service Deployment Center sayfasının ekran görüntüsü.":::
+   :::image type="content" source="media/app-service-continuous-deployment/summary-azure-pipelines.png" alt-text="Özet sayfasında seçili ayarları gösteren ekran görüntüsü.":::
 
 1. Seçili depodaki ve daldaki yeni işlemeler artık App Service sürekli olarak dağıtılır. Yürütmeleri ve dağıtımları **Dağıtım Merkezi** sayfasında izleyebilirsiniz.
 

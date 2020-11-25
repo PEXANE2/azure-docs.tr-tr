@@ -14,11 +14,11 @@ ms.date: 04/24/2015
 ms.author: gwallace
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 104f969f5e27ef36ad43eb10e19176a4bcfd6648
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021145"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003777"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>Azure 'dan ses ve SMS özellikleri için Twilio kullanma
 Bu kılavuzda, Azure 'da Twilio API hizmetiyle ortak programlama görevlerinin nasıl gerçekleştirileceği gösterilmektedir. Kapsanan senaryolar, telefon araması yapmayı ve kısa mesaj hizmeti (SMS) iletisi göndermeyi içerir. Twilio hakkında daha fazla bilgi edinmek ve uygulamalarınızda sesli ve SMS kullanma hakkında daha fazla bilgi için [sonraki adımlar](#NextSteps) bölümüne bakın.
@@ -39,7 +39,7 @@ Twilio API 'si, uygulamalar için ses ve SMS işlevselliği sağlayan bir Restst
 Twilio API 'sinin önemli yönleri, Twilio Verbs ve Twilio Markup Language (TwiML).
 
 ### <a name="twilio-verbs"></a><a id="Verbs"></a>Twilio fiilleri
-API, Twilio fiillerini kullanır; Örneğin, Twilio, bir çağrıda bir iletiyi sessiz olarak göndermek için ** &lt; söyleyin &gt; ** .
+API, Twilio fiillerini kullanır; Örneğin, Twilio, bir çağrıda bir iletiyi sessiz olarak göndermek için **&lt; söyleyin &gt;** .
 
 Aşağıda, Twilio fiillerinin bir listesi verilmiştir.  [Twilio biçimlendirme dili belgeleri](https://www.twilio.com/docs/api/twiml)aracılığıyla diğer fiiller ve yetenekler hakkında bilgi edinin.
 
@@ -73,7 +73,7 @@ Twilio fiilleri, öznitelikleri ve TwiML hakkında daha fazla bilgi için bkz. [
 ## <a name="create-a-twilio-account"></a><a id="CreateAccount"></a>Twilio hesabı oluşturma
 Bir Twilio hesabı almaya hazırsanız, [TRY Twilio][try_twilio]' de kaydolun. Ücretsiz bir hesapla başlayabilir ve hesabınızı daha sonra yükseltebilirsiniz.
 
-Bir Twilio hesabı için kaydolduğunuzda, bir hesap KIMLIĞI ve bir kimlik doğrulama belirteci alırsınız. Twilio API çağrıları yapmak için her ikisi de gerekecektir. Hesabınıza yetkisiz erişimi engellemek için kimlik doğrulama belirtecinizi güvende tutun. Hesap KIMLIĞINIZ ve kimlik doğrulama belirteciniz, sırasıyla **Hesap SID 'si** ve **kimlik doğrulama belirteci**etiketli alanlarda [Twilio hesabı sayfasında][twilio_account]görüntülenebilir.
+Bir Twilio hesabı için kaydolduğunuzda, bir hesap KIMLIĞI ve bir kimlik doğrulama belirteci alırsınız. Twilio API çağrıları yapmak için her ikisi de gerekecektir. Hesabınıza yetkisiz erişimi engellemek için kimlik doğrulama belirtecinizi güvende tutun. Hesap KIMLIĞINIZ ve kimlik doğrulama belirteciniz, sırasıyla **Hesap SID 'si** ve **kimlik doğrulama belirteci** etiketli alanlarda [Twilio hesabı sayfasında][twilio_account]görüntülenebilir.
 
 ## <a name="create-an-azure-application"></a><a id="create_app"></a>Azure uygulaması oluşturma
 Twilio özellikli bir uygulamayı barındıran bir Azure uygulaması, diğer hiçbir Azure uygulamasından farklı değildir. Twilio .NET kitaplığını ekler ve rolü Twilio .NET kitaplıklarını kullanacak şekilde yapılandırırsınız.
@@ -84,7 +84,7 @@ Twilio, bir dizi .NET yardımcı kitaplığı sağlar ve bu sayede Twilio REST A
 
 Twilio .NET geliştiricileri için beş kitaplık sağlar:
 
-| Kitaplık | Açıklama |
+| Kitaplık | Description |
 | --- | --- |
 | Twilio. API | Kolay bir .NET kitaplığında Twilio REST API sarmalayan çekirdek Twilio kitaplığı. Bu kitaplık .NET, Silverlight ve Windows Phone 7 ' de kullanılabilir. |
 | Twilio. TwiML | TwiML biçimlendirmesi oluşturmak için .NET kolay bir yol sağlar. |
@@ -111,7 +111,7 @@ Microsoft Visual Studio 2010, varsayılan olarak NuGet 'in 1,2 sürümünü yük
 2. **Başvurular**' a sağ tıklayın.
 3. **NuGet Paketlerini Yönet...** öğesine tıklayın.
 4. **Çevrimiçi**' e tıklayın.
-5. Çevrimiçi ara kutusuna *Twilio*yazın.
+5. Çevrimiçi ara kutusuna *Twilio* yazın.
 6. Twilio paketindeki **Install** (Aç) düğmesine tıklayın.
 
 ## <a name="how-to-make-an-outgoing-call"></a><a id="howto_make_call"></a>Nasıl yapılır: giden çağrı yapma

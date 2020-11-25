@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 282b8e1292bf1fe24655691fbbeb876d871bc31e
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 9ef4378602403afccc7c02e4bacb50e851d74f2a
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761354"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96004015"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Hızlı başlangıç: biçim tanıyıcı ile REST API kullanarak alış verilerini ayıklama
 
@@ -22,7 +22,7 @@ Bu hızlı başlangıçta, ABD satış makbuzlarından ilgili bilgileri ayıklam
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 - [kıvrımlı](https://curl.haxx.se/windows/) yüklendi.
@@ -34,32 +34,32 @@ Bu hızlı başlangıcı tamamlayabilmeniz için şunları yapmanız gerekir:
 
 ## <a name="analyze-a-receipt"></a>Okundu bilgisi Analizi
 
-Bir alındısı analizine başlamak için aşağıdaki kıvrımlı komutunu kullanarak **[Çözümleme alındı](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeReceiptAsync)** API 'sini çağırabilirsiniz. Komutu çalıştırmadan önce Şu değişiklikleri yapın:
+Bir alındısı analizine başlamak için aşağıdaki kıvrımlı komutunu kullanarak **[Çözümleme alındı](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeReceiptAsync)** API 'sini çağırabilirsiniz. Komutu çalıştırmadan önce Şu değişiklikleri yapın:
 
 1. `<Endpoint>`Form tanıyıcı aboneliğiniz ile edindiğiniz uç noktayla değiştirin.
 1. `<your receipt URL>`Bir makbuz RESMININ URL adresiyle değiştirin.
 1. `<subscription key>`Önceki adımdan kopyaladığınız abonelik anahtarıyla değiştirin.
 
 ```bash
-curl -i -X POST "https://<Endpoint>/formrecognizer/v2.1-preview.1/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \"<your receipt URL>\"}"
+curl -i -X POST "https://<Endpoint>/formrecognizer/v2.1-preview.2/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \"<your receipt URL>\"}"
 ```
 
 `202 (Success)`Har **Işlem-konum** üst bilgisi içeren bir yanıt alacaksınız. Bu üstbilginin değeri, zaman uyumsuz işlemin durumunu sorgulamak ve sonuçları almak için kullanabileceğiniz bir işlem KIMLIĞI içerir. Aşağıdaki örnekte, sonraki dize `operations/` Işlem kimliğidir.
 
 ```console
-https://cognitiveservice/formrecognizer/v2.1-preview.1/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+https://cognitiveservice/formrecognizer/v2.1-preview.2/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
 ## <a name="get-the-receipt-results"></a>Makbuz sonuçlarını alma
 
-**Çözümleme alındı** API 'sini çağırdıktan sonra, işlemin durumunu ve ayıklanan verileri almak Için **[çözümleme sonucu alma](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/GetAnalyzeReceiptResult)** API 'sini çağırın. Komutu çalıştırmadan önce Şu değişiklikleri yapın:
+**Çözümleme alındı** API 'sini çağırdıktan sonra, işlemin durumunu ve ayıklanan verileri almak Için **[çözümleme sonucu alma](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeReceiptResult)** API 'sini çağırın. Komutu çalıştırmadan önce Şu değişiklikleri yapın:
 
 1. `<Endpoint>`Form tanıyıcı abonelik anahtarınızla edindiğiniz uç noktayla değiştirin. Bunu, form tanıyıcı kaynağına **genel bakış** sekmesinde bulabilirsiniz.
 1. `<operationId>`Önceki adımdaki Işlem kimliğiyle değiştirin.
 1. `<subscription key>` değerini abonelik anahtarınızla değiştirin.
 
 ```bash
-curl -X GET "https://<Endpoint>/formrecognizer/v2.1-preview.1/prebuilt/receipt/analyzeResults/<operationId>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
+curl -X GET "https://<Endpoint>/formrecognizer/v2.1-preview.2/prebuilt/receipt/analyzeResults/<operationId>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
 ```
 
 ### <a name="examine-the-response"></a>Yanıtı inceleme
@@ -402,4 +402,4 @@ Aşağıdaki makbuz görüntüsüne ve buna karşılık gelen JSON çıktısına
 Bu hızlı başlangıçta, bir satış alındısı içeriğini ayıklamak için, biçim tanıyıcı ' i kıvrımlı REST API kullandınız. Sonra, form tanıyıcı API 'sini daha ayrıntılı incelemek için başvuru belgelerine bakın.
 
 > [!div class="nextstepaction"]
-> [REST API başvuru belgeleri](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeReceiptAsync)
+> [REST API başvuru belgeleri](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeReceiptAsync)

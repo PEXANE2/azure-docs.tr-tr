@@ -5,18 +5,18 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 11/14/2019
 ms.author: pafarley
-ms.openlocfilehash: 262774233871a46cf971d95a6cf5d810adf9746a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6a6b0d9740d19270f8daa3608bc125edd0fbec37
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961807"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005104"
 ---
 ## <a name="analyze-forms-for-key-value-pairs-and-tables"></a>Anahtar-değer çiftleri ve tablolar için formları analiz etme
 
 Daha sonra, yeni eğitilen modelinizi kullanarak bir belgeyi analiz edebilir, anahtar-değer çiftlerini ve tabloları kümeden ayıklayın. Yeni bir Python betiğine aşağıdaki kodu çalıştırarak **[analiz formu](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)** API 'sini çağırın. Betiği çalıştırmadan önce Şu değişiklikleri yapın:
 
-1. `<file path>`Formunuzun dosya yoluyla değiştirin (örneğin, C:\temp\file.pdf). Bu, uzak bir dosyanın URL 'SI de olabilir. Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **Test** klasörü altındaki dosyaları kullanabilirsiniz ( *sample_data.zip*indir ve Ayıkla).
+1. `<file path>`Formunuzun dosya yoluyla değiştirin (örneğin, C:\temp\file.pdf). Bu, uzak bir dosyanın URL 'SI de olabilir. Bu hızlı başlangıçta, [örnek veri kümesinin](https://go.microsoft.com/fwlink/?linkid=2090451) **Test** klasörü altındaki dosyaları kullanabilirsiniz ( *sample_data.zip* indir ve Ayıkla).
 1. `<model_id>`Önceki bölümde aldığınız model kimliğiyle değiştirin.
 1. `<endpoint>`Form tanıyıcı abonelik anahtarınızla edindiğiniz uç noktayla değiştirin. Bunu, form tanıyıcı kaynağına **genel bakış** sekmesinde bulabilirsiniz.
 1. `<file type>`Dosya türü ile değiştirin. Desteklenen türler: `application/pdf` , `image/jpeg` , `image/png` , `image/tiff` .
@@ -69,7 +69,7 @@ Daha sonra, yeni eğitilen modelinizi kullanarak bir belgeyi analiz edebilir, an
     endpoint = r"<endpoint>"
     apim_key = "<subsription key>"
     model_id = "<model_id>"
-    post_url = endpoint + "/formrecognizer/v2.1-preview.1/custom/models/%s/analyze" % model_id
+    post_url = endpoint + "/formrecognizer/v2.1-preview.2/custom/models/%s/analyze" % model_id
     source = r"<file path>"
     params = {
         "includeTextDetails": True

@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
 ms.openlocfilehash: 97d7d21374062462248e1b86f2bde2fef2d25331
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87326061"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004917"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>System Center Operations Manager Sistem Durumu Denetimi (Önizleme) çözümü ile ortamınızı iyileştirme
 
@@ -77,19 +77,19 @@ Devam etmeden önce farklı çalıştır hesabının aşağıdaki gereksinimleri
 * Hesapta SQL sysadmin hakları yoksa, Operations Manager veritabanlarının birini veya tümünü barındıran her bir SQL Server örneğindeki hesaba ayrıntılı izinler vermek için [betiği](#sql-script-to-grant-granular-permissions-to-the-run-as-account) yürütün.
 
 1. Operations Manager konsolunda, **Yönetim** Gezinti düğmesini seçin.
-2. **Farklı Çalıştır Yapılandırması**altında **hesaplar**' a tıklayın.
+2. **Farklı Çalıştır Yapılandırması** altında **hesaplar**' a tıklayın.
 3. **Farklı Çalıştır hesabı oluşturma** Sihirbazı 'nda **giriş** sayfasında **İleri**' ye tıklayın.
 4. **Genel Özellikler** sayfasında, **Farklı Çalıştır hesap türü:** listesinde **Windows** ' u seçin.
 5. **Görünen ad** metin kutusuna bir görünen ad yazın ve isteğe bağlı olarak **Açıklama** kutusuna bir açıklama yazın ve ardından **İleri**' ye tıklayın.
 6. **Dağıtım güvenliği** sayfasında **daha güvenli**' i seçin.
-7. **Oluştur**’a tıklayın.  
+7. **Oluştur**'a tıklayın.  
 
 Farklı Çalıştır hesabı oluşturuldığına göre, yönetim grubundaki yönetim sunucularını hedeflemek ve iş akışlarının kimlik bilgileri kullanılarak çalışması için önceden tanımlanmış bir Farklı Çalıştır profiliyle ilişkilendirilmesi gerekir.  
 
 1. **Farklı Çalıştır Yapılandırması**, **hesaplar**, sonuçlar bölmesinde, daha önce oluşturduğunuz hesaba çift tıklayın.
 2. **Dağıtım** sekmesinde, **Seçili bilgisayarlar** kutusu için **Ekle** ' ye tıklayın ve hesabı dağıtılacak yönetim sunucusunu ekleyin.  Değişikliklerinizi kaydetmek için iki kez **Tamam** ' a tıklayın.
-3. **Farklı Çalıştır Yapılandırması**altında **profiller**' e tıklayın.
-4. *SCOM değerlendirme profilini*arayın.
+3. **Farklı Çalıştır Yapılandırması** altında **profiller**' e tıklayın.
+4. *SCOM değerlendirme profilini* arayın.
 5. Profil adı şöyle olmalıdır: *Microsoft System Center Operations Manager sistem durumu denetimi farklı çalıştır profili*.
 6. Sağ tıklayın ve özelliklerini güncelleştirin ve daha önce oluşturduğunuz en son oluşturulan farklı çalıştır hesabını ekleyin.
 
@@ -145,7 +145,7 @@ ALTER ROLE [db_owner] ADD MEMBER [UserName]
 
 ### <a name="configure-the-health-check-rule"></a>Sistem durumu denetimi kuralını yapılandırma
 
-System Center Operations Manager Sistem Durumu Denetimi çözümünün yönetim paketi, *Microsoft System Center Operations Manager Run Health denetim kuralı*adlı bir kural içerir. Bu kural, sistem durumu denetimini çalıştırmaktan sorumludur. Kuralı etkinleştirmek ve sıklığı yapılandırmak için aşağıdaki yordamları kullanın.
+System Center Operations Manager Sistem Durumu Denetimi çözümünün yönetim paketi, *Microsoft System Center Operations Manager Run Health denetim kuralı* adlı bir kural içerir. Bu kural, sistem durumu denetimini çalıştırmaktan sorumludur. Kuralı etkinleştirmek ve sıklığı yapılandırmak için aşağıdaki yordamları kullanın.
 
 Varsayılan olarak, Microsoft System Center Operations Manager çalışan sistem durumu denetim kuralı devre dışıdır. Sistem durumu denetimini çalıştırmak için, kuralı bir yönetim sunucusu üzerinde etkinleştirmeniz gerekir. Aşağıdaki adımları kullanın.
 
@@ -214,7 +214,7 @@ Altyapınız için özetlenen uyumluluk değerlendirmelerini görüntüleyin ve 
 4. **Genel bakış** sayfasında **System Center Operations Manager sistem durumu denetimi** kutucuğuna tıklayın.
 5. **System Center Operations Manager sistem durumu denetimi** sayfasında, odak alanı Dikey penceresinde bulunan Özet bilgilerini gözden geçirin ve ardından bu odak alanı önerilerini görüntülemek için bir tane tıklatın.
 6. Odak alanı sayfalarında, ortamınız için yapılan öncelikli önerileri görüntüleyebilirsiniz. Önerinin neden yapıldığına ilişkin ayrıntıları görüntülemek için **etkilenen nesneler** altında bir öneriye tıklayın.<br><br> ![odak alanı](./media/scom-assessment/log-analytics-scom-healthcheck-dashboard-02.png)<br>
-7. **Önerilen eylemlerde**önerilen düzeltici eylemler gerçekleştirebilirsiniz. Öğe giderildiği zaman, daha sonra değerlendirmeler önerilen eylemlerin alındığını ve uyumluluk puanınız artar. Düzeltilen öğeler **geçirilmiş nesneler**olarak görünür.
+7. **Önerilen eylemlerde** önerilen düzeltici eylemler gerçekleştirebilirsiniz. Öğe giderildiği zaman, daha sonra değerlendirmeler önerilen eylemlerin alındığını ve uyumluluk puanınız artar. Düzeltilen öğeler **geçirilmiş nesneler** olarak görünür.
 
 ## <a name="ignore-recommendations"></a>Önerileri yoksayma
 

@@ -4,11 +4,11 @@ description: Azure açık Thouse özellikleri, birden çok Azure AD kiracısın�
 ms.date: 08/12/2020
 ms.topic: conceptual
 ms.openlocfilehash: 3f452e6810fa6809b5ba1b83b664f8b38d82a895
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88167358"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004254"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>Kurumsal senaryolarda Azure Lighthouse
 
@@ -24,7 +24,7 @@ ms.locfileid: "88167358"
 
 Azure açık Thouse 'ı bir kuruluşta kullanmak için, diğer kiracılarda yönetim işlemlerini gerçekleştiren kullanıcıları hangi kiracının dahil edileceğini belirlemeniz gerekir. Diğer bir deyişle, diğer kiracılar için hangi kiracının yönetim kiracısı olacağını belirlemeniz gerekir.
 
-Örneğin, kuruluşunuzun *kiracı a*'yı çağıracağımız tek bir kiracıya sahip olduğunu varsayalım. Kuruluşunuz daha sonra *B* ve *kiracı*kiracı 'yı alır ve bunları ayrı kiracılar olarak tutmanızı gerektiren iş nedenleriniz vardır.
+Örneğin, kuruluşunuzun *kiracı a*'yı çağıracağımız tek bir kiracıya sahip olduğunu varsayalım. Kuruluşunuz daha sonra *B* ve *kiracı* kiracı 'yı alır ve bunları ayrı kiracılar olarak tutmanızı gerektiren iş nedenleriniz vardır.
 
 Kuruluşunuz, tüm kiracıların tamamında aynı ilke tanımlarını, yedekleme uygulamalarını ve güvenlik süreçlerini kullanmak istiyor. Kiracıda bu görevlerden sorumlu olan kullanıcıları içerdiğinden, kiracı B ve kiracı C içindeki abonelikleri ekleyebilirsiniz, bu da kiracının A içindeki kullanıcıların bu görevleri gerçekleştirmesini sağlar.
 

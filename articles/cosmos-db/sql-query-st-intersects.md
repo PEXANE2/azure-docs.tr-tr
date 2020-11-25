@@ -5,20 +5,20 @@ author: ginamr
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 11/23/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8e440d9e1be8508908336a5e9f90394e310c8562
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 2fca6e94f61ff4d21886bf81a56afa032c8773c1
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93335186"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96004458"
 ---
 # <a name="st_intersects-azure-cosmos-db"></a>ST_INTERSECTS (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
- Birinci bağımsız değişkende belirtilen GeoJSON nesnesinin (nokta, çokgen veya LineString), ikinci bağımsız değişkende GeoJSON (Point, çokgen veya LineString) kesişip kesişmediğini gösteren bir Boole ifadesi döndürür.  
+ Birinci bağımsız değişkende belirtilen GeoJSON nesnesinin (Point, Çokgen, MultiPolygon veya LineString), ikinci bağımsız değişkende GeoJSON (Point, Çokgen, MultiPolygon veya LineString) kesişip kesişmediğini gösteren bir Boole ifadesi döndürür.  
   
 ## <a name="syntax"></a>Söz dizimi
   

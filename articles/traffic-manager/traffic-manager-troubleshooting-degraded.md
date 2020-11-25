@@ -13,19 +13,19 @@ ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: duau
 ms.openlocfilehash: 83dc432a1f88b443d500bf9a977abfed69211156
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401563"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003863"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Azure Traffic Manager’da düşürülmüş durum için sorun giderme
 
-Bu makalede, düzeyi düşürülmüş bir durumu gösteren bir Azure Traffic Manager profilinde nasıl sorun giderileceği açıklanır. Azure Traffic Manager 'in düşürülmüş durumunun giderilmesi için ilk bir adım olarak günlüğe kaydetme etkinleştirilir.  Daha fazla bilgi için [kaynak günlüklerini etkinleştirme](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs) bölümüne bakın. Bu senaryo için cloudapp.net tarafından barındırılan hizmetlerden bazılarını işaret eden bir Traffic Manager profili yapılandırdığınıza dikkat edin. Traffic Manager sistem durumu **düşürülmüş** bir durum görüntülüyorsa, bir veya daha fazla uç noktanın durumu **azaltılabilir**olabilir:
+Bu makalede, düzeyi düşürülmüş bir durumu gösteren bir Azure Traffic Manager profilinde nasıl sorun giderileceği açıklanır. Azure Traffic Manager 'in düşürülmüş durumunun giderilmesi için ilk bir adım olarak günlüğe kaydetme etkinleştirilir.  Daha fazla bilgi için [kaynak günlüklerini etkinleştirme](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs) bölümüne bakın. Bu senaryo için cloudapp.net tarafından barındırılan hizmetlerden bazılarını işaret eden bir Traffic Manager profili yapılandırdığınıza dikkat edin. Traffic Manager sistem durumu **düşürülmüş** bir durum görüntülüyorsa, bir veya daha fazla uç noktanın durumu **azaltılabilir** olabilir:
 
 ![düşürülmüş uç nokta durumu](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
 
-Traffic Manager sistem durumu **etkin olmayan** bir durum görüntülüyorsa, her iki uç noktası da **devre dışı**bırakılabilir:
+Traffic Manager sistem durumu **etkin olmayan** bir durum görüntülüyorsa, her iki uç noktası da **devre dışı** bırakılabilir:
 
 ![Etkin olmayan Traffic Manager durumu](./media/traffic-manager-troubleshooting-degraded/traffic-manager-inactive.png)
 

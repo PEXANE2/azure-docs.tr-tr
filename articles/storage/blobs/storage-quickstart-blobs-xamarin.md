@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 434f112e78938c94d887423316fccea270059b6b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 641117414c855a044d3ed55004b6e6ea15b259ac
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92109026"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96004747"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>Hızlı başlangıç: Xamarin ile Azure Blob depolama istemci kitaplığı V12
 
@@ -21,7 +21,7 @@ Xamarin ile Azure Blob depolama istemci kitaplığı V12 ile çalışmaya başla
 
 Xamarin ile Azure Blob depolama istemci kitaplığı V12 kullanın:
 
-* Bir kapsayıcı oluşturma
+* Kapsayıcı oluşturma
 * Azure Depolama'ya blob yükleme
 * Bir kapsayıcıdaki tüm Blobları listeleme
 * Blob 'u cihazınıza indirin
@@ -36,11 +36,11 @@ Başvuru bağlantıları:
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
-* Azure depolama hesabı- [depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* Visual Studio, [.NET iş yüküne yönelik mobil geliştirme](https://docs.microsoft.com/xamarin/get-started/installation/?pivots=windows) veya [Mac için Visual Studio](https://docs.microsoft.com/visualstudio/mac/installation?view=vsmac-2019)
+* Azure depolama hesabı- [depolama hesabı oluşturma](../common/storage-account-create.md)
+* Visual Studio, [.NET iş yüküne yönelik mobil geliştirme](/xamarin/get-started/installation/?pivots=windows) veya [Mac için Visual Studio](/visualstudio/mac/installation?view=vsmac-2019)
 
 ## <a name="setting-up"></a>Ayarlanıyor
     
@@ -102,7 +102,7 @@ Aşağıdaki diyagramda bu kaynaklar arasındaki ilişki gösterilmektedir.
 Bu örnek kod parçacıkları, Xamarin. Forms uygulamasında .NET için Azure Blob depolama istemci kitaplığı ile aşağıdaki görevlerin nasıl gerçekleştirileceğini gösterir:
 
 * [Sınıf düzeyi değişkenleri oluştur](#create-class-level-variables)
-* [Bir kapsayıcı oluşturma](#create-a-container)
+* [Kapsayıcı oluşturma](#create-a-container)
 * [Blobları bir kapsayıcıya yükleme](#upload-blobs-to-a-container)
 * [Kapsayıcıdaki blobları listeleme](#list-the-blobs-in-a-container)
 * [Blob’ları indirme](#download-blobs)
@@ -125,7 +125,7 @@ BlobContainerClient containerClient;
 BlobClient blobClient;
 ```
 
-### <a name="create-a-container"></a>Bir kapsayıcı oluşturma
+### <a name="create-a-container"></a>Kapsayıcı oluşturma
 
 Yeni kapsayıcı için bir ad belirleyin. Aşağıdaki kod, benzersiz olduğundan emin olmak için kapsayıcı adına bir GUID değeri ekler.
 

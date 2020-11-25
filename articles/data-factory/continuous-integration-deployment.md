@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: b31931af7b8d1442a66333622a23d017ab7fb5a9
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 93aeb088f82cae6dde215792e399997b592a5c14
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658698"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96003982"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory sürekli tümleştirme ve teslim
 
@@ -305,7 +305,7 @@ Parametreleştirme şablonunun nasıl görünebileceğini aşağıda görebilirs
 ```
 Yukarıdaki şablonun nasıl oluşturulduğu ve kaynak türüne göre nasıl bölündüğü hakkında bir açıklama aşağıda verilmiştir.
 
-#### <a name="pipelines"></a>İşlem hatları
+#### <a name="pipelines"></a>Pipelines
     
 * Yoldaki herhangi bir özellik `activities/typeProperties/waitTimeInSeconds` parametrelenir. Bir işlem hattındaki (örneğin, etkinlik) bir kod düzeyi özelliği olan herhangi bir etkinlik, `waitTimeInSeconds` `Wait` varsayılan bir ada sahip bir sayı olarak parametrelendirilir. Ancak Kaynak Yöneticisi şablonunda varsayılan bir değere sahip olmaz. Kaynak Yöneticisi dağıtımı sırasında zorunlu bir giriş olacaktır.
 * Benzer şekilde, adlı bir özellik `headers` (örneğin, bir `Web` etkinlikte) türü `object` (JObject) ile parametrelenir. Kaynak fabrikasının değeriyle aynı değer olan varsayılan bir değere sahiptir.
@@ -636,6 +636,14 @@ Bir üretime fabrika dağıtımı yaptıysanız ve hemen düzeltilmesi gereken b
 Ortamlarınızı nasıl sık düzelceğiniz hakkında ayrıntılı bir video öğreticisinin altındaki videoya bakın. 
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4I7fi]
+
+## <a name="exposure-control-and-feature-flags"></a>Pozlama denetimi ve özellik bayrakları
+
+Bir ekip üzerinde çalışırken, değişiklikleri birleştirebileceğiniz ancak ÜRETIM ve QA gibi yükseltilmiş ortamlarda çalıştırılmalarını istemediğiniz örnekler vardır. ADF ekibi, bu senaryoyu işlemek için [özellik bayraklarını kullanma DevOps kavramını](https://docs.microsoft.com/azure/devops/migrate/phase-features-with-feature-flags?view=azure-devops)önerir. ADF 'de, bu ortam bayraklarını temel alan mantık kümelerini gizlemek için [genel parametreleri](author-global-parameters.md) ve [If koşulu etkinliğini](control-flow-if-condition-activity.md) birleştirebilirsiniz.
+
+Bir özellik bayrağını ayarlamayı öğrenmek için aşağıdaki video öğreticisine bakın:
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4IxdW]
 
 ## <a name="best-practices-for-cicd"></a>CI/CD için en iyi yöntemler
 

@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.openlocfilehash: 05c89c8628b4d4ce10ca4ba12c720b410b72601f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457733"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005155"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asana"></a>Öğretici: Asana ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Asana 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Asana ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -63,13 +63,13 @@ Asana 'un Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden yön
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Asana**yazın, sonuç panelinden **Asana** ' yı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **Asana** yazın, sonuç panelinden **Asana** ' yı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuçlar listesinde Asana](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre Asana ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre Asana ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Asana 'da ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açma 'yı Asana ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -123,7 +123,7 @@ Azure AD çoklu oturum açmayı Asana ile yapılandırmak için aşağıdaki ad�
 
 ### <a name="configure-asana-single-sign-on"></a>Asana tek Sign-On yapılandırma
 
-1. Farklı bir tarayıcı penceresinde, Asana uygulamanızda oturum açın. Asana 'da SSO 'yu yapılandırmak için, ekranın sağ üst köşesindeki çalışma alanı adına tıklayarak çalışma alanı ayarlarına erişin. Ardından ** \<your workspace name\> Ayarlar**' a tıklayın.
+1. Farklı bir tarayıcı penceresinde, Asana uygulamanızda oturum açın. Asana 'da SSO 'yu yapılandırmak için, ekranın sağ üst köşesindeki çalışma alanı adına tıklayarak çalışma alanı ayarlarına erişin. Ardından **\<your workspace name\> Ayarlar**' a tıklayın.
 
     ![Asana SSO ayarları](./media/asana-tutorial/tutorial_asana_09.png)
 
@@ -153,14 +153,14 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 1/4/2019
 ms.custom: devx-track-python
 ms.openlocfilehash: d085f8704850cdbb03e21b15b3cca7c8998b96fb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092951"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004237"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Linux üzerinde ilk Service Fabric kapsayıcı uygulamanızı oluşturma
 > [!div class="op_single_selector"]
@@ -114,7 +114,7 @@ Bilgisayarınızın 4000 numaralı bağlantı noktasını kapsayıcının ortaya
 docker run -d -p 4000:80 --name my-web-site helloworldapp
 ```
 
-*name* , çalışan kapsayıcıya bir ad verir (kapsayıcı kimliği yerine).
+*name*, çalışan kapsayıcıya bir ad verir (kapsayıcı kimliği yerine).
 
 Çalışan kapsayıcıya bağlanın. 4000 numaralı bağlantı noktasında döndürülen IP adresini işaret eden bir Web tarayıcısı açın, örneğin "http: \/ /localhost: 4000". "Hello World!" başlığının tarayıcıda gösterildiğini görürsünüz.
 
