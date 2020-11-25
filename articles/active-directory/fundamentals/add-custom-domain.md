@@ -14,15 +14,15 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 28847ece3c08e93d14d381b35fc93fb16dad95a1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370874"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973907"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Azure Active Directory portalını kullanarak özel etki alanı adınızı ekleme
 
-Her yeni Azure AD kiracısı, bir ilk etki alanı adı olan * \<domainname> . onmicrosoft.com*ile gelir. İlk etki alanı adını değiştiremez veya silemezsiniz, ancak kuruluşunuzun adlarını da ekleyebilirsiniz. Özel etki alanı adları eklemek, kullanıcılarınıza alışkın olduğunuz * \@ contoso.com*gibi kullanıcı adları oluşturmanıza yardımcı olur.
+Her yeni Azure AD kiracısı, bir ilk etki alanı adı olan *\<domainname> . onmicrosoft.com* ile gelir. İlk etki alanı adını değiştiremez veya silemezsiniz, ancak kuruluşunuzun adlarını da ekleyebilirsiniz. Özel etki alanı adları eklemek, kullanıcılarınıza alışkın olduğunuz *\@ contoso.com* gibi kullanıcı adları oluşturmanıza yardımcı olur.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -54,12 +54,12 @@ Dizininizi oluşturduktan sonra, özel etki alanı adınızı ekleyebilirsiniz.
 
     ![Özel etki alanı adları sayfası, gösterilen özel etki alanı Ekle](media/add-custom-domain/add-custom-domain.png)
 
-1. **Özel etki alanı adı**alanına kuruluşunuzun yeni adını girin, bu örnekte, *contoso.com*. **Etki alanı ekle** seçeneğini belirleyin.
+1. **Özel etki alanı adı** alanına kuruluşunuzun yeni adını girin, bu örnekte, *contoso.com*. **Etki alanı ekle** seçeneğini belirleyin.
 
     ![Özel etki alanı adları sayfası, özel etki alanı Ekle sayfası](media/add-custom-domain/add-custom-domain-blade.png)
 
     >[!IMPORTANT]
-    >Bunun düzgün çalışması için *. com*, *.net*veya herhangi bir üst düzey uzantı dahil etmeniz gerekir.
+    >Bunun düzgün çalışması için *. com*, *.net* veya herhangi bir üst düzey uzantı dahil etmeniz gerekir.
 
     Doğrulanmamış etki alanı eklendi. DNS bilgilerinizi gösteren **contoso.com** sayfası görüntülenir. Bu bilgileri kaydedin. Daha sonra DNS 'yi yapılandırmak için bir TXT kaydı oluşturmanız gerekir.
 

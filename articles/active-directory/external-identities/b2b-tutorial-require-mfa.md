@@ -13,11 +13,11 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1f5f7f823d6c5f5860c2e78fe8cacdd1d788c581
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92892704"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95974128"
 ---
 # <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>Öğretici: B2B konuk kullanıcıları için çok faktörlü kimlik doğrulamasını zorlama
 
@@ -47,15 +47,15 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Bu öğreticide senaryoyu tamamlamak için şunlar gereklidir:
 
- - Koşullu erişim ilkesi özelliklerini içeren **Azure AD Premium sürümüne erişim** . MFA 'yı zorlamak için bir Azure AD koşullu erişim ilkesi oluşturmanız gerekir. Ortağın MFA özelliklerine sahip olup olmadığına bakılmaksızın, MFA ilkelerinin kuruluşunuzda her zaman uygulandığını unutmayın. Kuruluşunuz için MFA’yı ayarlarsanız, konuk kullanıcılarınız için yeterli Azure AD Premium lisanslarına sahip olduğunuzdan emin olmanız gerekir. 
- - Konuk kullanıcı olarak kiracı dizininize ekleyebileceğiniz ve oturum açmak için kullanabileceğiniz **geçerli bir harici e-posta hesabı** . Konuk hesabı nasıl oluşturulacağını bilmiyorsanız bkz. [Azure portalda B2B konuk kullanıcısı ekleme](add-users-administrator.md).
+ - Koşullu erişim ilkesi özelliklerini içeren **Azure AD Premium sürümüne erişim**. MFA 'yı zorlamak için bir Azure AD koşullu erişim ilkesi oluşturmanız gerekir. Ortağın MFA özelliklerine sahip olup olmadığına bakılmaksızın, MFA ilkelerinin kuruluşunuzda her zaman uygulandığını unutmayın. Kuruluşunuz için MFA’yı ayarlarsanız, konuk kullanıcılarınız için yeterli Azure AD Premium lisanslarına sahip olduğunuzdan emin olmanız gerekir. 
+ - Konuk kullanıcı olarak kiracı dizininize ekleyebileceğiniz ve oturum açmak için kullanabileceğiniz **geçerli bir harici e-posta hesabı**. Konuk hesabı nasıl oluşturulacağını bilmiyorsanız bkz. [Azure portalda B2B konuk kullanıcısı ekleme](add-users-administrator.md).
 
 ## <a name="create-a-test-guest-user-in-azure-ad"></a>Azure AD’de test konuk kullanıcısı oluşturma
 
 1. [Azure portalda](https://portal.azure.com/) Azure AD yöneticisi olarak oturum açın.
-2. Sol bölmede **Azure Active Directory** ’yi seçin.
-3.  **Yönet** bölümünde **Kullanıcılar** 'ı seçin.
-4.  **Yeni konuk kullanıcı** ’yı seçin.
+2. Sol bölmede **Azure Active Directory**’yi seçin.
+3.  **Yönet** bölümünde **Kullanıcılar**'ı seçin.
+4.  **Yeni konuk kullanıcı**’yı seçin.
 
     ![Yeni Konuk Kullanıcı seçeneğinin nerede seçileceğini gösteren ekran görüntüsü](media/tutorial-mfa/tutorial-mfa-user-3.png)
 
@@ -63,7 +63,7 @@ Bu öğreticide senaryoyu tamamlamak için şunlar gereklidir:
 
     ![Konuk davet iletisinin nereye girileceğini gösteren ekran görüntüsü](media/tutorial-mfa/tutorial-mfa-user-4.png)
 
-6.  Konuk kullanıcıya otomatik olarak daveti göndermek için **Davet Et** ’i seçin. **Kullanıcı başarıyla davet edildi** iletisi görüntülenir. 
+6.  Konuk kullanıcıya otomatik olarak daveti göndermek için **Davet Et**’i seçin. **Kullanıcı başarıyla davet edildi** iletisi görüntülenir. 
 7.  Daveti göndermenizin ardından kullanıcı hesabı otomatik olarak dizine konuk olarak eklenir.
 
 ## <a name="test-the-sign-in-experience-before-mfa-setup"></a>MFA kurulumundan önce oturum açma deneyimini test etme
@@ -73,27 +73,27 @@ Bu öğreticide senaryoyu tamamlamak için şunlar gereklidir:
 
 ## <a name="create-a-conditional-access-policy-that-requires-mfa"></a>MFA gerektiren bir koşullu erişim ilkesi oluşturma
 1.  [Azure Portal](https://portal.azure.com/) Güvenlik Yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
-2.  Azure portal **Azure Active Directory** ' ni seçin. 
-3.  **Azure Active Directory** sayfasında, **güvenlik** bölümünde **koşullu erişim** ' i seçin.
-4.  **Koşullu Erişim** sayfasında, üstteki araç çubuğunda **Yeni ilke** ’yi seçin.
+2.  Azure portalında **Azure Active Directory** seçeneğini belirleyin. 
+3.  **Azure Active Directory** sayfasında, **güvenlik** bölümünde **koşullu erişim**' i seçin.
+4.  **Koşullu Erişim** sayfasında, üstteki araç çubuğunda **Yeni ilke**’yi seçin.
 5.  **Yeni** sayfasında **Ad** metin kutusuna **B2B portal erişimi için MFA’yı gerekli kıl** yazın.
-6.  **Atamalar** bölümünde **Kullanıcılar ve gruplar** ’ı seçin.
+6.  **Atamalar** bölümünde **Kullanıcılar ve gruplar**’ı seçin.
 7.  **Kullanıcılar ve gruplar** sayfasında **Kullanıcı ve grupları seçin** ve sonra **Tüm konuk kullanıcılar (önizleme)** seçeneğini belirleyin.
 
     ![Tüm konuk kullanıcıları seçmeyi gösteren ekran görüntüsü](media/tutorial-mfa/tutorial-mfa-policy-6.png)
-9.  **Bitti** seçeneğini belirleyin.
-10. **Yeni** sayfasında **Atamalar** bölümünde **Bulut uygulamaları** ’nı seçin.
-11. **Bulut uygulamaları** sayfasında **Uygulama seç** ’i ve sonra **Seç** öğesini seçin.
+9.  **Bitti**'yi seçin.
+10. **Yeni** sayfasında **Atamalar** bölümünde **Bulut uygulamaları**’nı seçin.
+11. **Bulut uygulamaları** sayfasında **Uygulama seç**’i ve sonra **Seç** öğesini seçin.
 
     ![Bulut uygulamaları sayfasını ve seçim seçeneğini gösteren ekran görüntüsü](media/tutorial-mfa/tutorial-mfa-policy-10.png)
 
-12. **Seç** sayfasında **Microsoft Azure Management** ’ı ve sonra **Seç** öğesini seçin.
+12. **Seç** sayfasında **Microsoft Azure Management**’ı ve sonra **Seç** öğesini seçin.
 
     ![Microsoft Azure Yönetim seçeneğini vurgulayan ekran görüntüsü.](media/tutorial-mfa/tutorial-mfa-policy-11.png)
 
-13. **Bulut uygulamaları** sayfasında **Bitti** ’yi seçin.
-14. **Yeni** sayfasında **Erişim denetimleri** bölümünde **Erişim İzni Verme** ’yi seçin.
-15. **Erişim İzni Verme** sayfasında **Erişim izni ver** ’i seçin, **Çok faktörlü kimlik doğrulamasını gerekli kıl** onay kutusunu ve sonra **Seç** öğesini seçin.
+13. **Bulut uygulamaları** sayfasında **Bitti**’yi seçin.
+14. **Yeni** sayfasında **Erişim denetimleri** bölümünde **Erişim İzni Verme**’yi seçin.
+15. **Erişim İzni Verme** sayfasında **Erişim izni ver**’i seçin, **Çok faktörlü kimlik doğrulamasını gerekli kıl** onay kutusunu ve sonra **Seç** öğesini seçin.
 
     ![Multi-Factor Authentication gerektir seçeneğini gösteren ekran görüntüsü](media/tutorial-mfa/tutorial-mfa-policy-13.png)
 
@@ -101,24 +101,24 @@ Bu öğreticide senaryoyu tamamlamak için şunlar gereklidir:
 
     ![İlke etkinleştir seçeneğinin açık olarak ayarlandığını gösteren ekran görüntüsü](media/tutorial-mfa/tutorial-mfa-policy-14.png)
 
-17. **Oluştur** ’u seçin.
+17. **Oluştur**’u seçin.
 
 ## <a name="use-the-what-if-option-to-simulate-sign-in"></a>Oturum açmanın benzetimini yapmak için What If seçeneğini kullanma
 
-1.  **Koşullu erişim ilkeleri** sayfasında **What If** ' yi seçin. 
+1.  **Koşullu erişim ilkeleri** sayfasında **What If**' yi seçin. 
 
     ![Koşullu erişim Ilkeleri sayfasında ne durum seçeneğinin seçdiğinin vurgualdığı ekran görüntüsü.](media/tutorial-mfa/tutorial-mfa-whatif-1.png)
 
-2.  **Kullanıcı** ’yı seçin, test konuk kullanıcınızı ve sonra **Seç** öğesini seçin.
+2.  **Kullanıcı**’yı seçin, test konuk kullanıcınızı ve sonra **Seç** öğesini seçin.
 
     ![Konuk Kullanıcı seçili olduğunu gösteren ekran görüntüsü](media/tutorial-mfa/tutorial-mfa-whatif-2.png)
 
-3.  **Bulut uygulamaları** ’nı seçin.
-4.  **Bulut uygulamaları** sayfasında **Uygulama seç** ’i seçin ve sonra **Seç** ’e tıklayın. Uygulamalar listesinde **Microsoft Azure Management** ’ı seçin ve sonra **Seç** ’e tıklayın. 
+3.  **Bulut uygulamaları**’nı seçin.
+4.  **Bulut uygulamaları** sayfasında **Uygulama seç**’i seçin ve sonra **Seç**’e tıklayın. Uygulamalar listesinde **Microsoft Azure Management**’ı seçin ve sonra **Seç**’e tıklayın. 
 
     ![Microsoft Azure Management uygulamasının seçili olduğunu gösteren ekran görüntüsü](media/tutorial-mfa/tutorial-mfa-whatif-3.png)
 
-5.  **Bulut uygulamaları** sayfasında **Bitti** ’yi seçin.
+5.  **Bulut uygulamaları** sayfasında **Bitti**’yi seçin.
 6.  **What If** seçeneğini belirleyin ve yeni ilkenizin **Uygulanacak ilkeler** sekmesinde **Değerlendirme sonuçları** bölümünde görüntülendiğini doğrulayın.
 
     ![Durum seçeneğinin nerede seçileceğini gösteren ekran görüntüsü](media/tutorial-mfa/tutorial-mfa-whatif-4.png)
@@ -134,12 +134,12 @@ Bu öğreticide senaryoyu tamamlamak için şunlar gereklidir:
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 Artık gerekli değilse, test kullanıcısını ve test koşullu erişim ilkesini kaldırın.
 1.  [Azure portalda](https://portal.azure.com/) Azure AD yöneticisi olarak oturum açın.
-2.  Sol bölmede **Azure Active Directory** ’yi seçin.
-3.  **Yönet** bölümünde **Kullanıcılar** 'ı seçin.
+2.  Sol bölmede **Azure Active Directory**’yi seçin.
+3.  **Yönet** bölümünde **Kullanıcılar**'ı seçin.
 4.  Test kullanıcısını seçin ve **Kullanıcıyı sil** seçeneğini belirleyin.
-5.  Sol bölmede **Azure Active Directory** ’yi seçin.
-6.  **Güvenlik** bölümünde **Koşullu Erişim** ’i seçin.
-7.  **İlke Adı** listesinde, test ilkeniz için bağlam menüsünü (…) seçin ve **Sil** seçeneğini belirleyin. Onaylamak için **Evet** ’i seçin.
+5.  Sol bölmede **Azure Active Directory**’yi seçin.
+6.  **Güvenlik** bölümünde **Koşullu Erişim**’i seçin.
+7.  **İlke Adı** listesinde, test ilkeniz için bağlam menüsünü (…) seçin ve **Sil** seçeneğini belirleyin. Onaylamak için **Evet**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu öğreticide, konuk kullanıcıların bulut uygulamalarınızdan birinde oturum açarken MFA kullanmasını gerektiren bir koşullu erişim ilkesi oluşturdunuz. İşbirliği yapmak üzere konuk kullanıcılar ekleme hakkında daha fazla bilgi için bkz. [Azure portalda Azure Active Directory B2B işbirliği kullanıcıları ekleme](add-users-administrator.md).

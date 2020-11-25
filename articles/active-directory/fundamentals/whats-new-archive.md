@@ -14,11 +14,11 @@ ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0ffa0059e78ee193cb12a4838282f7f9fb282edd
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836606"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973703"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory yenilikler için arşiv var mı?
 
@@ -2672,7 +2672,7 @@ Aşağıdaki uygulamalar [onaylanan istemci uygulamaları](../conditional-access
 
 - Microsoft Stream
 
-Daha fazla bilgi için bkz:
+Daha fazla bilgi için bkz.
 
 - [Azure AD uygulama tabanlı koşullu erişim](../conditional-access/app-based-conditional-access.md)
 
@@ -3336,7 +3336,7 @@ Daha fazla bilgi için bkz. [Azure AD B2C: erişim belirteçleri isteme](../../a
 
 SAML tabanlı SSO uygulamalarını yapılandırırken yapılandırma sayfasında tümleştirmeyi test edebilirsiniz. Oturum açma sırasında bir hatayla karşılaşırsanız, testi deneymenizde hata verebilir ve Azure AD, belirli sorunu çözmek için çözüm adımları sağlar.
 
-Daha fazla bilgi için bkz:
+Daha fazla bilgi için bkz.
 
 - [Azure Active Directory uygulama galerisinde bulunmayan uygulamalar için çoklu oturum açmayı yapılandırma](../manage-apps/view-applications-portal.md)
 - [Azure Active Directory içindeki uygulamalarda SAML tabanlı çoklu oturum açma hatalarını ayıklama](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
@@ -3471,7 +3471,7 @@ Bir galeri veya Galeri dışı bir uygulama için bir sertifika sona ermek üzer
 
 Bazı kullanıcılar SAML tabanlı çoklu oturum açma için yapılandırılmış kurumsal uygulamalar için bildirim almadı. Bu sorun çözüldü. Azure AD, 7, 30 ve 60 gün içinde süresi dolan sertifikaların bildirimini gönderir. Bu olayı denetim günlüklerinde görebilirsiniz.
 
-Daha fazla bilgi için bkz:
+Daha fazla bilgi için bkz.
 
 - [Azure Active Directory 'da federe çoklu oturum açma için sertifikaları yönetme](../manage-apps/manage-certificates-for-federated-single-sign-on.md)
 - [Azure Active Directory portalındaki denetim etkinliği raporları](../reports-monitoring/concept-audit-logs.md)
@@ -3500,7 +3500,7 @@ Daha fazla bilgi için bkz. [Azure AD B2B işbirliği nedir?](../external-identi
 
 [Blog gönderimizde](https://cloudblogs.microsoft.com/enterprisemobility/2018/03/15/the-intune-managed-browser-now-supports-azure-ad-sso-and-conditional-access/)bunun hakkında daha fazla bilgi edinin.
 
-Daha fazla bilgi için bkz:
+Daha fazla bilgi için bkz.
 
 - [Uygulama tabanlı koşullu erişim kurulumu](../conditional-access/app-based-conditional-access.md)
 
@@ -3817,7 +3817,7 @@ Aşağıdaki uygulamalar Şubat sonuna kadar eklenecektir:
 
 - Microsoft faturalandırma
 
-Daha fazla bilgi için bkz:
+Daha fazla bilgi için bkz.
 
 - [Onaylanan istemci uygulaması gereksinimi](../conditional-access/concept-conditional-access-conditions.md#client-apps)
 - [Azure AD uygulama tabanlı koşullu erişim](../conditional-access/app-based-conditional-access.md)
@@ -3914,7 +3914,7 @@ Yeni Azure Active Directory Yönetim konsolunun genel kullanıma sunulduğuna ve
 
 Yeni Yönetici konsoluna geçişin bir parçası olarak, Azure AD etkinlik günlüklerini almak için 2 yeni API 'si yaptık. Yeni API 'Ler kümesi, daha zengin denetim ve oturum açma etkinlikleri sağlamaya ek olarak daha zengin filtreleme ve sıralama işlevselliği sağlar. Daha önce güvenlik raporları üzerinden kullanılabilen verilere artık Microsoft Graph kimlik koruması risk algılamaları API 'SI aracılığıyla erişilebilir.
 
-Daha fazla bilgi için bkz:
+Daha fazla bilgi için bkz.
 
 - [Azure Active Directory Reporting API 'SI ile çalışmaya başlama](../reports-monitoring/concept-reporting-api.md)
 
@@ -4075,7 +4075,7 @@ Aşağıdaki uygulamalar [onaylanan istemci uygulamaları](../conditional-access
 - [Microsoft Kaizala](https://www.microsoft.com/garage/profiles/kaizala/)
 - Microsoft StaffHub
 
-Daha fazla bilgi için bkz:
+Daha fazla bilgi için bkz.
 
 - [Onaylanan istemci uygulaması gereksinimi](../conditional-access/concept-conditional-access-conditions.md#client-apps)
 - [Azure AD uygulama tabanlı koşullu erişim](../conditional-access/app-based-conditional-access.md)
@@ -4157,7 +4157,7 @@ Artık macOS 'ı Azure AD koşullu erişim ilkenize cihaz platformu olarak dahil
 - **MacOS cihazlarının, kuruluşunuzun Intune 'da tanımlanan uyumluluk ilkelerine bağlı olduğundan emin olun.** Azure portal Intune 'da, artık macOS cihazları için uyumluluk ilkeleri ayarlayabilirsiniz.
 - **Azure AD 'deki uygulamalara erişimi yalnızca uyumlu macOS cihazlarına kısıtlayın.** Koşullu erişim ilkesi yazma, macOS öğesini ayrı bir cihaz platformu seçeneği olarak içerir. Artık Azure 'da ayarlanan hedeflenen uygulama için macOS 'a özgü koşullu erişim ilkelerini yazabilirsiniz.
 
-Daha fazla bilgi için bkz:
+Daha fazla bilgi için bkz.
 
 - [Intune ile macOS cihazları için cihaz uyumluluğu ilkesi oluşturma](/mem/intune/protect/compliance-policy-create-mac-os)
 - [Azure AD 'de koşullu erişim](../conditional-access/overview.md)
@@ -4204,7 +4204,7 @@ Azure AD Yönetim merkezinde artık şunları yapabilirsiniz:
 - Microsoft Planner
 - Azure Information Protection
 
-Daha fazla bilgi için bkz:
+Daha fazla bilgi için bkz.
 
 - [Onaylanan istemci uygulaması gereksinimi](../conditional-access/concept-conditional-access-conditions.md#client-apps)
 - [Azure AD uygulama tabanlı koşullu erişim](../conditional-access/app-based-conditional-access.md)

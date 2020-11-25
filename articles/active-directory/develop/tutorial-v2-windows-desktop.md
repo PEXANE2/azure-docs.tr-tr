@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b82193fda64f2cf265c879c5cda9141be1b576f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0408d43fe897882fe09f6dd61a22d46349f2978e
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91627899"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95974400"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Öğretici: Windows masaüstü uygulamasından Microsoft Graph API 'sini çağırma
 
-Bu kılavuzda, yerel bir Windows Masaüstü .NET (XAML) uygulamasının Microsoft Graph API 'sini çağırmak için bir erişim belirteci nasıl kullandığı gösterilmektedir. Uygulama, Microsoft Identity platform 'dan erişim belirteçleri gerektiren diğer API 'Lere de erişebilir.
+Bu öğreticide, kullanıcıları oturum açan ve Microsoft Graph API 'sini çağırmak için bir erişim belirteci alan yerel bir Windows Masaüstü .NET (XAML) uygulaması oluşturacaksınız. 
 
 Kılavuzu tamamladığınızda, uygulamanız kişisel hesapları (outlook.com, live.com ve diğerleri dahil) kullanan korumalı bir API 'yi çağırabilecektir. Uygulama Ayrıca, Azure Active Directory kullanan herhangi bir şirketten veya kuruluştan iş ve okul hesapları da kullanacaktır.
 
@@ -57,7 +57,7 @@ MSAL, uygulamanızın ihtiyaç duymaması için, erişim belirteçlerini önbell
 
 Bu kılavuzda aşağıdaki NuGet paketleri kullanılmaktadır:
 
-|Kitaplık|Açıklama|
+|Kitaplık|Description|
 |---|---|
 |[Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft kimlik doğrulama kitaplığı (MSAL.NET)|
 
@@ -74,7 +74,7 @@ Bu kılavuzda oluşturduğunuz uygulama, bir grafiği çağırmak için kullanı
 Uygulamanızı oluşturmak için aşağıdakileri yapın:
 
 1. Visual Studio 'da **Dosya**  >  **Yeni**  >  **Proje**' yi seçin.
-2. **Şablonlar**altında **Visual C#**' yi seçin.
+2. **Şablonlar** altında **Visual C#**' yi seçin.
 3. Kullanmakta olduğunuz Visual Studio sürümünün sürümüne bağlı olarak **WPF uygulaması (.NET Framework)** seçeneğini belirleyin.
 
 ## <a name="add-msal-to-your-project"></a>Projenize MSAL ekleyin
@@ -107,7 +107,7 @@ Uygulamanızı kaydetmek ve uygulama kayıt bilgilerinizi çözümünüze ekleme
 1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
 1. Hesabınız size birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasına gidin.
-1. **Yeni kayıt**seçeneğini belirleyin.
+1. **Yeni kayıt** seçeneğini belirleyin.
    - **Ad** bölümünde, örneğin, uygulamanın kullanıcılarına görüntülenecek anlamlı bir uygulama adı girin `Win-App-calling-MsGraph` .
    - **Desteklenen hesap türleri** bölümünde **Herhangi bir kuruluş dizinindeki hesaplar ve kişisel Microsoft hesapları (ör. Skype, Xbox, Outlook.com)** seçeneğini belirtin.
    - Uygulamayı kaydetmek için **Kaydet**'i seçin.

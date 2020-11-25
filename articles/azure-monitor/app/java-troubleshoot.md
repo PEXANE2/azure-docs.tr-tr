@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.custom: devx-track-java
 ms.openlocfilehash: 8d11eaa76f2133b9fdc66ba4e6bc91e2cc38c51c
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379545"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95972877"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java-sdk"></a>Java SDK için sorun giderme ve soru-cevap Application Insights
 
@@ -89,7 +89,7 @@ XML yöntemini kullanarak, değeri değiştirirken uygulamayı yeniden başlatma
 **Projem hangi Azure kaynağını veri gönderdiğini nasıl değiştirebilirim?**
 
 * [Yeni kaynağın izleme anahtarını alır.][java]
-* Azure Toolkit for Eclipse kullanarak projenize Application Insights eklediyseniz, Web projenize sağ tıklayın, **Azure** ' ı seçin **Application Insights yapılandırın** ve anahtarı değiştirin.
+* Azure Toolkit for Eclipse kullanarak projenize Application Insights eklediyseniz, Web projenize sağ tıklayın, **Azure**' ı seçin **Application Insights yapılandırın** ve anahtarı değiştirin.
 * Izleme anahtarını ortam değişkeni olarak yapılandırdıysanız lütfen ortam değişkeninin değerini yeni Ikey ile güncelleştirin.
 * Aksi takdirde, ApplicationInsights.xml içindeki anahtarı projenizdeki Resources klasöründe güncelleştirin.
 

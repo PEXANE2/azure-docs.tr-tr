@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1d0507f7751305af5e626cbd7dd6e0dfd1a63a74
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89279491"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973057"
 ---
 # <a name="azure-active-directory-pass-through-authentication-upgrade-preview-authentication-agents"></a>Azure Active Directory geçişli kimlik doğrulaması: yükseltme önizlemesi kimlik doğrulama aracıları
 
@@ -41,7 +41,7 @@ Kimlik doğrulama aracılarınızın nereye yüklendiğini denetlemek için şu 
 
 1. [Azure Active Directory Yönetim merkezinde](https://aad.portal.azure.com) kiracınızın genel yönetici kimlik bilgileriyle oturum açın.
 2. Sol gezinti çubuğunda **Azure Active Directory** ' yi seçin.
-3. **Azure AD Connect**seçin. 
+3. **Azure AD Connect** seçin. 
 4. **Doğrudan kimlik doğrulaması**' nı seçin. Bu dikey pencere, kimlik doğrulama aracılarınızın yüklendiği sunucuları listeler.
 
 ![Azure Active Directory Yönetim Merkezi-geçişli kimlik doğrulama dikey penceresi](./media/how-to-connect-pta-upgrade-preview-authentication-agents/pta8.png)
@@ -74,7 +74,7 @@ Kimlik Doğrulama aracısını aynı sunucuda yükseltmeden önce yükseltme Azu
 5. **En son sürümün yüklendiğini doğrulayın**: daha önce gösterildiği gibi, **denetim masası-> programlar-> programlar ve Özellikler** ' e gidin ve "**Microsoft Azure AD Connect Authentication Aracısı**" için bir giriş olduğunu doğrulayın.
 
 >[!NOTE]
->Yukarıdaki adımları tamamladıktan sonra [Azure Active Directory Yönetim merkezinde](https://aad.portal.azure.com) doğrudan kimlik doğrulama dikey penceresini denetledikten sonra sunucu başına Iki kimlik doğrulama aracı girişi görürsünüz. kimlik doğrulama aracısını **etkin** ve diğeri **devre dışı**olarak gösteren bir girdi. Bu _beklenen_bir değer. **Etkin olmayan** giriş birkaç gün sonra otomatik olarak bırakılır.
+>Yukarıdaki adımları tamamladıktan sonra [Azure Active Directory Yönetim merkezinde](https://aad.portal.azure.com) doğrudan kimlik doğrulama dikey penceresini denetledikten sonra sunucu başına Iki kimlik doğrulama aracı girişi görürsünüz. kimlik doğrulama aracısını **etkin** ve diğeri **devre dışı** olarak gösteren bir girdi. Bu _beklenen_ bir değer. **Etkin olmayan** giriş birkaç gün sonra otomatik olarak bırakılır.
 
 ## <a name="upgrading-the-authentication-agent-on-other-servers"></a>Diğer sunuculardaki kimlik doğrulama aracısını yükseltme
 
@@ -83,10 +83,10 @@ Diğer sunuculardaki (Azure AD Connect yüklü değil) kimlik doğrulama aracıl
 1. **Kimlik doğrulama aracısının önizleme sürümünü kaldırın**: [Bu PowerShell betiğini](https://aka.ms/rmpreviewagent) indirip sunucuda yönetici olarak çalıştırın.
 2. **Kimlik doğrulama aracısının en son sürümünü indirin (sürümler 1.5.389.0 veya üzeri)**: [Azure Active Directory Yönetim merkezinde](https://aad.portal.azure.com) kiracınızın genel yönetici kimlik bilgileriyle oturum açın. **Azure Active Directory-> Azure AD Connect-> geçişli kimlik doğrulaması-> indirme Aracısı**' nı seçin. Hizmet koşullarını kabul edin ve en son sürümü indirin.
 3. **Kimlik doğrulama aracısının en son sürümünü yükler**: adım 2 ' de indirilen yürütülebilir dosyayı çalıştırın. İstendiğinde kiracınızın genel yönetici kimlik bilgilerini sağlayın.
-4. **En son sürümün yüklendiğini doğrulayın**: daha önce gösterildiği gibi, **denetim masası-> programlar-> programlar ve Özellikler** ' e gidin ve **Microsoft Azure AD Connect Authentication Aracısı**adlı bir giriş olduğunu doğrulayın.
+4. **En son sürümün yüklendiğini doğrulayın**: daha önce gösterildiği gibi, **denetim masası-> programlar-> programlar ve Özellikler** ' e gidin ve **Microsoft Azure AD Connect Authentication Aracısı** adlı bir giriş olduğunu doğrulayın.
 
 >[!NOTE]
->Yukarıdaki adımları tamamladıktan sonra [Azure Active Directory Yönetim merkezinde](https://aad.portal.azure.com) doğrudan kimlik doğrulama dikey penceresini denetledikten sonra sunucu başına Iki kimlik doğrulama aracı girişi görürsünüz. kimlik doğrulama aracısını **etkin** ve diğeri **devre dışı**olarak gösteren bir girdi. Bu _beklenen_bir değer. **Etkin olmayan** giriş birkaç gün sonra otomatik olarak bırakılır.
+>Yukarıdaki adımları tamamladıktan sonra [Azure Active Directory Yönetim merkezinde](https://aad.portal.azure.com) doğrudan kimlik doğrulama dikey penceresini denetledikten sonra sunucu başına Iki kimlik doğrulama aracı girişi görürsünüz. kimlik doğrulama aracısını **etkin** ve diğeri **devre dışı** olarak gösteren bir girdi. Bu _beklenen_ bir değer. **Etkin olmayan** giriş birkaç gün sonra otomatik olarak bırakılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [**Sorun giderme**](tshoot-connect-pass-through-authentication.md) -özellikle ilgili yaygın sorunları çözmeyi öğrenin.

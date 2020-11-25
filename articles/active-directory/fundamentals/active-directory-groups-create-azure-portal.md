@@ -14,11 +14,11 @@ ms.reviewer: krbain
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3e4533334204a3a1cfd46ff27b04ff0c05350dfc
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371860"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973924"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>Azure Active Directory kullanarak temel Grup oluşturma ve üye ekleme
 Azure Active Directory (Azure AD) portalını kullanarak temel bir grup oluşturabilirsiniz. Bu makalenin amaçları doğrultusunda, kaynak sahibi (yönetici) tarafından tek bir kaynağa temel bir grup eklenir ve bu grup, o kaynağa erişmesi gereken belirli üyeleri (çalışanlar) içerir. Dinamik üyelikler ve kural oluşturma da dahil olmak üzere daha karmaşık senaryolar için bkz. [Azure Active Directory kullanıcı yönetimi belgeleri](../enterprise-users/index.yml).
@@ -53,7 +53,7 @@ Temel bir grup oluşturabilir ve aynı anda üyelerinizi ekleyebilirsiniz. Temel
 
     ![Örnek bilgileriyle doldurulmuş şekilde yeni grup sayfası](media/active-directory-groups-create-azure-portal/new-group-blade.png)
 
-1. Önceden tanımlanmış bir **Grup türü**seçin. Grup türleri hakkında daha fazla bilgi için bkz. [Grup ve Üyelik türleri](#group-types).
+1. Önceden tanımlanmış bir **Grup türü** seçin. Grup türleri hakkında daha fazla bilgi için bkz. [Grup ve Üyelik türleri](#group-types).
 
 1. Bir **Grup adı** oluşturun ve ekleyin. Anımsayacak ve grup için anlamlı bir ad seçin. Adın zaten başka bir grup tarafından kullanımda olup olmadığını belirlemekte bir denetim gerçekleştirilecek. Ad zaten kullanımda ise, yinelenen adlandırmayı önlemek için grubunuzun adını değiştirmeniz istenir.
 

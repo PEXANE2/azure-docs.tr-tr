@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dfbd5e6f190e0600c31aa17e9b1a75f08e213df4
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537671"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973584"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde erişim isteklerini onaylama veya reddetme
 
@@ -53,9 +53,9 @@ E-postanız yoksa, bu adımları izleyerek Onayınızı bekleyen erişim istekle
 
 1. Erişimimde **onaylar** sekmesine gidin.
 
-1. Onaylamak istediğiniz isteğe gidin ve **Ayrıntılar** ' a tıklayın. Karar vermek için hazırsanız **Onayla** veya **Reddet** ' e de tıklayabilirsiniz.
+1. Onaylamak istediğiniz isteğe gidin ve **Ayrıntılar**' a tıklayın. Karar vermek için hazırsanız **Onayla** veya **Reddet** ' e de tıklayabilirsiniz.
 
-1. **İstek ayrıntıları** ' na tıklayın.
+1. **İstek ayrıntıları**' na tıklayın.
 
      ![Erişim Portalı-erişim isteği-tıklama isteği ayrıntıları](./media/entitlement-management-request-approve/requestor-information-request-details.png)
 
@@ -77,7 +77,7 @@ Onay bekleyen bir erişim isteği açtıktan sonra, bir onaylama veya reddetme k
 
     Ayrıntılar arasında kullanıcının adı, kuruluş, erişim başlangıç ve bitiş tarihi, iş gerekçe, isteğin gönderildiği zaman ve isteğin ne zaman dolacağı bulunur.
 
-1. **Onayla** veya **Reddet** ' e tıklayın.
+1. **Onayla** veya **Reddet**' e tıklayın.
 
 1. Gerekirse bir neden girin.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 7d92cbc25411f5cc2d528ccf6ecec4539494d380
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84ae5f6adfe2a02f62b5d4b1e776d8b5ac1d731b
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87533283"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95975365"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Azure Izleyici 'de roller, izinler ve güvenlik
 
@@ -68,9 +68,9 @@ Izleme katılımcısı rolünü atayan kişiler, bir abonelikteki tüm izleme ve
 > 
 
 ## <a name="monitoring-permissions-and-azure-custom-roles"></a>İzinleri ve Azure özel rollerini izleme
-Yukarıdaki yerleşik roller takımınızın tam ihtiyaçlarını karşılamıyorsa, daha ayrıntılı izinlerle [bir Azure özel rolü oluşturabilirsiniz](../../role-based-access-control/custom-roles.md) . Açıklamalarıyla ortak Azure Izleyici RBAC işlemleri aşağıda verilmiştir.
+Yukarıdaki yerleşik roller takımınızın tam ihtiyaçlarını karşılamıyorsa, daha ayrıntılı izinlerle [bir Azure özel rolü oluşturabilirsiniz](../../role-based-access-control/custom-roles.md) . Aşağıda, Azure Izleyici için genel Azure RBAC işlemleri açıklamalarıyla birlikte verilmiştir.
 
-| İşlem | Açıklama |
+| İşlem | Description |
 | --- | --- |
 | Microsoft. Insights/ActionGroups/[okuma, yazma, silme] |Okuma/yazma/silme eylemi grupları. |
 | Microsoft. Insights/ActivityLogAlerts/[okuma, yazma, silme] |Etkinlik günlüğü uyarılarını okuma/yazma/silme. |
@@ -135,7 +135,7 @@ $token = New-AzStorageAccountSASToken -ResourceType Service -Service Blob -Permi
 
 Daha sonra bu depolama hesabından okuması gereken varlığa belirteç verebilir ve bu depolama hesabındaki tüm Blobları listeleyebilir ve okuyabilir.
 
-Alternatif olarak, bu izni RBAC ile denetetmeniz gerekiyorsa, söz konusu depolama hesabında bu varlığa Microsoft. Storage/storageAccounts/ListKeys/Action izinleri verebilirsiniz. Bu, bir depolama hesabına arşivlemek üzere bir tanılama ayarı veya günlük profili ayarlayabilmesi gereken kullanıcılar için gereklidir. Örneğin, yalnızca bir depolama hesabından okuması gereken bir kullanıcı veya uygulama için aşağıdaki Azure özel rolünü oluşturabilirsiniz:
+Alternatif olarak, Azure RBAC ile bu izni denetetmeniz gerekiyorsa, söz konusu depolama hesabında bu varlığa Microsoft. Storage/storageAccounts/ListKeys/Action izinleri verebilirsiniz. Bu, bir depolama hesabına arşivlemek üzere bir tanılama ayarı veya günlük profili ayarlayabilmesi gereken kullanıcılar için gereklidir. Örneğin, yalnızca bir depolama hesabından okuması gereken bir kullanıcı veya uygulama için aşağıdaki Azure özel rolünü oluşturabilirsiniz:
 
 ```powershell
 $role = Get-AzRoleDefinition "Reader"
@@ -159,7 +159,7 @@ New-AzRoleDefinition -Role $role
 Benzer bir model, Olay Hub 'ları ile izlenebilir, ancak önce adanmış bir dinleme yetkilendirme kuralı oluşturmanız gerekir. Yalnızca izlemeyle ilgili olay hub 'larını dinlemek için gereken bir uygulamaya erişim vermek istiyorsanız, aşağıdakileri yapın:
 
 1. Yalnızca dinleme talepleri ile akış izleme verileri için oluşturulan olay hub 'ları üzerinde bir paylaşılan erişim ilkesi oluşturun. Bu, portalda yapılabilir. Örneğin, bunu "monitoringReadOnly" olarak çağırabilirsiniz. Mümkünse, bu anahtarı doğrudan tüketiciye vermek ve sonraki adımı atlamak isteyeceksiniz.
-2. Tüketicinin anahtarı geçici bir şekilde alabilmesi gerekiyorsa, kullanıcıya bu olay hub 'ı için ListKeys eylemini verin. Bu Ayrıca, bir tanılama ayarı veya günlük profilini Olay Hub 'larına akışa ayarlayabilmesi gereken kullanıcılar için de gereklidir. Örneğin, bir RBAC kuralı oluşturabilirsiniz:
+2. Tüketicinin anahtarı geçici bir şekilde alabilmesi gerekiyorsa, kullanıcıya bu olay hub 'ı için ListKeys eylemini verin. Bu Ayrıca, bir tanılama ayarı veya günlük profilini Olay Hub 'larına akışa ayarlayabilmesi gereken kullanıcılar için de gereklidir. Örneğin, bir Azure RBAC kuralı oluşturabilirsiniz:
    
    ```powershell
    $role = Get-AzRoleDefinition "Reader"
@@ -187,6 +187,6 @@ Azure Izleyici, etkinleştirdiğiniz hizmetleri sağlamak için Azure kaynaklar�
 Daha fazla bilgi için bkz. [ağ güvenliği ve Azure depolama](../../storage/common/storage-network-security.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Kaynak Yöneticisi RBAC ve izinler hakkında bilgi edinin](../../role-based-access-control/overview.md)
+* [Kaynak Yöneticisi Azure RBAC ve izinler hakkında bilgi edinin](../../role-based-access-control/overview.md)
 * [Azure 'da izlemeye genel bakış konusunu okuyun](../overview.md)
 

@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d526394ac89e2d29b2002004736e8480bb15b954
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89279270"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95973431"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: cihaz geri yazmayı etkinleştirme
 > [!NOTE]
@@ -97,7 +97,7 @@ Yukarıdaki adımları izlemediğiniz halde cihaz geri yazma onay kutusu etkinle
   * Başlat menüsünde, **eşitleme hizmeti**' ni açın.
   * **Bağlayıcılar** sekmesini açın.
   * Active Directory Domain Services türü ile bağlayıcıyı bulun ve seçin.
-  * **Eylemler**altında **Özellikler**' i seçin.
+  * **Eylemler** altında **Özellikler**' i seçin.
   * **Active Directory ormana Bağlan**' a gidin. Bu ekranda belirtilen etki alanı ve Kullanıcı adının, betiğe sunulan hesapla eşleştiğinden emin olun.
     ![Eşitleme Service Manager bağlayıcı hesabı](./media/how-to-connect-device-writeback/connectoraccount.png)
 

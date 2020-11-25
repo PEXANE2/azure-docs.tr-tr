@@ -13,11 +13,11 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperfq1, identityplatformtop40
 ms.openlocfilehash: 9c8a911bef5fb92f5bf9aa447e9e810a85317208
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92365859"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95974162"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft kimlik platformu uç noktasında izinler ve onay
 
@@ -25,7 +25,7 @@ Microsoft Identity platformu ile tümleştirilen uygulamalar, kullanıcılara ve
 
 ## <a name="scopes-and-permissions"></a>Kapsamlar ve izinler
 
-Microsoft Identity platformu, [OAuth 2,0](active-directory-v2-protocols.md) yetkilendirme protokolünü uygular. OAuth 2,0, bir üçüncü taraf uygulamanın bir kullanıcı adına Web 'de barındırılan kaynaklara erişebileceği bir yöntemdir. Microsoft Identity platformu ile tümleştirilen Web 'de barındırılan herhangi bir kaynağın bir kaynak tanımlayıcısı veya *uygulama kimliği URI 'si*vardır. Örneğin, Microsoft 'un web 'de barındırılan kaynaklarından bazıları şunlardır:
+Microsoft Identity platformu, [OAuth 2,0](active-directory-v2-protocols.md) yetkilendirme protokolünü uygular. OAuth 2,0, bir üçüncü taraf uygulamanın bir kullanıcı adına Web 'de barındırılan kaynaklara erişebileceği bir yöntemdir. Microsoft Identity platformu ile tümleştirilen Web 'de barındırılan herhangi bir kaynağın bir kaynak tanımlayıcısı veya *uygulama kimliği URI 'si* vardır. Örneğin, Microsoft 'un web 'de barındırılan kaynaklarından bazıları şunlardır:
 
 * Microsoft Graph: `https://graph.microsoft.com`
 * Microsoft 365 mail API 'SI: `https://outlook.office.com`
@@ -42,7 +42,7 @@ Aynı değer, Microsoft Identity platformu ile tümleştirilmiş olan tüm üç�
 
 Bu tür izinleri tanımlayarak, kaynak, verileri üzerinde ayrıntılı denetime sahiptir ve API işlevinin sunulma şeklini içerir. Üçüncü taraf bir uygulama, kullanıcıların ve yöneticilerin bu izinleri talep edebilir ve uygulamanın verilere erişebilmeleri veya Kullanıcı adına işlem yapması için isteği onaylaması gerekir. Kaynağın işlevselliğini daha küçük izin kümelerine ayırarak, üçüncü taraf uygulamalar yalnızca kendi işlevlerini gerçekleştirmeleri için gereken belirli izinleri istemek üzere oluşturulabilir. Kullanıcılar ve Yöneticiler, uygulamanın erişebileceği verileri tam olarak bilir ve kötü amaçlı olarak davranmadığından daha emin olabilirler. Geliştiriciler, yalnızca uygulamalarının çalışması için ihtiyaç duydukları izinleri soran en az ayrıcalık kavramını her zaman bilmelidir.
 
-OAuth 2,0 ' de, bu tür izinler *kapsam*olarak adlandırılır. Bunlar da genellikle *izinler*olarak adlandırılır. Bir izin, Microsoft Identity platformunda bir dize değeri olarak temsil edilir. Microsoft Graph örnekle devam edildiğinde, her izin için dize değeri:
+OAuth 2,0 ' de, bu tür izinler *kapsam* olarak adlandırılır. Bunlar da genellikle *izinler* olarak adlandırılır. Bir izin, Microsoft Identity platformunda bir dize değeri olarak temsil edilir. Microsoft Graph örnekle devam edildiğinde, her izin için dize değeri:
 
 * Kullanarak bir kullanıcının takvimini okuma `Calendars.Read`
 * Kullanarak bir kullanıcının takvimine yazma `Calendars.ReadWrite`
@@ -113,7 +113,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 
 `scope`Parametresi, uygulamanın istediği atanan izinlerin boşlukla ayrılmış bir listesidir. Her izin, izin değeri kaynağın tanımlayıcısına eklenerek belirtilir (uygulama KIMLIĞI URI 'SI). İstek örneğinde, uygulamanın kullanıcının takvimini okumak ve Kullanıcı olarak e-posta göndermek için izin gerekir.
 
-Kullanıcı kimlik bilgilerini girdikten sonra, Microsoft Identity platform Endpoint, eşleşen bir *Kullanıcı onayı*kaydı olup olmadığını denetler. Kullanıcı geçmişte istenen izinlerden herhangi birine onay vermezse veya bir yöneticiye tüm kuruluş adına bu izinlere onay verildiyse, Microsoft Identity platform uç noktası kullanıcıdan istenen izinleri vermesini ister.
+Kullanıcı kimlik bilgilerini girdikten sonra, Microsoft Identity platform Endpoint, eşleşen bir *Kullanıcı onayı* kaydı olup olmadığını denetler. Kullanıcı geçmişte istenen izinlerden herhangi birine onay vermezse veya bir yöneticiye tüm kuruluş adına bu izinlere onay verildiyse, Microsoft Identity platform uç noktası kullanıcıdan istenen izinleri vermesini ister.
 
 > [!NOTE]
 >Şu anda, `offline_access` ("erişim vermiş olduğunuz verilere erişimi korur") ve `user.read` ("profilinizi oturum açma ve profilinizi okuma") izinleri, bir uygulamaya ilk onaylamada otomatik olarak eklenir.  Bu izinler genellikle uygun uygulama işlevleri için gereklidir `offline_access` . uygulama, yerel ve Web uygulamaları için kritik olan belirteçleri yenileme, isteğe erişim izni verirken `user.read` `sub` istemcinin veya uygulamanın zaman içinde kullanıcıyı doğru şekilde tanımlamasına ve ilkel Kullanıcı bilgilerine erişmesine izin verir.
@@ -132,7 +132,7 @@ Ayrıca, uygulamalar uygulama Izinleri istemek için yönetici onay uç noktası
 
 ## <a name="admin-restricted-permissions"></a>Yönetici kısıtlı izinler
 
-Microsoft ekosistemindeki bazı yüksek ayrıcalıklı izinler, *Yönetici kısıtlı*olarak ayarlanabilir. Bu tür izinlere örnek olarak şunlar verilebilir:
+Microsoft ekosistemindeki bazı yüksek ayrıcalıklı izinler, *Yönetici kısıtlı* olarak ayarlanabilir. Bu tür izinlere örnek olarak şunlar verilebilir:
 
 * Kullanarak tüm kullanıcıların tam profillerini okuyun `User.Read.All`
 * Kullanarak bir kuruluşun dizinine veri yazma `Directory.ReadWrite.All`
@@ -144,7 +144,7 @@ Uygulamanız kuruluşlar için yönetici tarafından kısıtlanmış kapsamlara 
 
 Uygulama yüksek ayrıcalıklı temsilci izinleri istiyorsa ve bir yönetici bu izinleri yönetici onay uç noktası üzerinden veriyorsa, Kiracıdaki tüm kullanıcılar için izin verilir.
 
-Uygulama uygulama izinleri istiyorsa ve yönetici bu izinleri yönetici onay uç noktası aracılığıyla veriyorsa, bu izin belirli bir kullanıcı adına yapılmaz. Bunun yerine, istemci uygulamasına *doğrudan*izinler verilir. Bu tür izinler yalnızca Daemon Hizmetleri ve arka planda çalışan diğer etkileşimli olmayan uygulamalar tarafından kullanılır.
+Uygulama uygulama izinleri istiyorsa ve yönetici bu izinleri yönetici onay uç noktası aracılığıyla veriyorsa, bu izin belirli bir kullanıcı adına yapılmaz. Bunun yerine, istemci uygulamasına *doğrudan* izinler verilir. Bu tür izinler yalnızca Daemon Hizmetleri ve arka planda çalışan diğer etkileşimli olmayan uygulamalar tarafından kullanılır.
 
 ## <a name="using-the-admin-consent-endpoint"></a>Yönetici onay uç noktasını kullanma
 
@@ -179,7 +179,7 @@ Kullanıcıyı uygulamanıza imzaladığınızda, yöneticinin gerekli izinleri 
 
 ### <a name="request-the-permissions-from-a-directory-admin"></a>Dizin yöneticisinden izinleri isteme
 
-Kuruluşunuzun yöneticisinden izin istemek için hazırsanız, kullanıcıyı Microsoft Identity Platform *Yöneticisi onay uç noktasına*yönlendirebilirsiniz.
+Kuruluşunuzun yöneticisinden izin istemek için hazırsanız, kullanıcıyı Microsoft Identity Platform *Yöneticisi onay uç noktasına* yönlendirebilirsiniz.
 
 ```HTTP
 // Line breaks are for legibility only.
