@@ -9,11 +9,11 @@ ms.service: azure-maps
 services: azure-maps
 manager: philMea
 ms.openlocfilehash: 2c3e46bf386e70cbe35d96728ede896d6bf0dc7d
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895843"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013131"
 ---
 # <a name="drawing-package-requirements"></a>Çizim paketi gereksinimleri
 
@@ -31,7 +31,7 @@ Karşıya yüklenen çizim paketlerini [Azure Maps dönüştürme hizmetini](/re
 
 Kolay başvuru için, bu makaleyi okurken önemli olan bazı hüküm ve tanımlar aşağıda verilmiştir.
 
-| Süre  | Tanım |
+| Terim  | Tanım |
 |:-------|:------------|
 | Katman | Bir AutoCAD DWG katmanı.|
 | Düzey | Bir küme yükseltmesinde bina alanı. Örneğin, bir bina tabanı. |
@@ -50,9 +50,9 @@ DWG dosyalarını, klasörü içinde herhangi bir şekilde düzenleyebilirsiniz,
 
 ## <a name="dwg-files-requirements"></a>DWG dosyaları gereksinimleri
 
-Her tesis düzeyi için tek bir DWG dosyası gereklidir. Düzeyin verileri tek bir DWG dosyasında bulunmalıdır. Tüm dış başvurular ( _xrefs_ ) üst çizime bağlanmalıdır. Ayrıca, her bir DWG dosyası:
+Her tesis düzeyi için tek bir DWG dosyası gereklidir. Düzeyin verileri tek bir DWG dosyasında bulunmalıdır. Tüm dış başvurular (_xrefs_) üst çizime bağlanmalıdır. Ayrıca, her bir DWG dosyası:
 
-* _Dış_ ve _birim_ katmanları tanımlanmalıdır. İsteğe bağlı olarak, aşağıdaki isteğe bağlı katmanları tanımlayabilir: _duvar_ , _kapı_ , _Unitlabel_ , _Zone_ ve _zonelabel_ .
+* _Dış_ ve _birim_ katmanları tanımlanmalıdır. İsteğe bağlı olarak, aşağıdaki isteğe bağlı katmanları tanımlayabilir: _duvar_, _kapı_, _Unitlabel_, _Zone_ ve _zonelabel_.
 * Birden çok düzeyden Özellikler içermemelidir.
 * Birden çok tesisten Özellikler içermemelidir.
 
@@ -188,7 +188,7 @@ Sonraki bölümlerde her bir nesne için gereksinimler ayrıntılandırır.
 
 ### `directoryInfo`
 
-| Özellik  | Tür | Gerekli | Açıklama |
+| Özellik  | Tür | Gerekli | Description |
 |-----------|------|----------|-------------|
 | `name`      | dize | true   |  Oluşturma adı. |
 | `streetAddress`|    string |    yanlış    | Bina adresi. |
@@ -209,7 +209,7 @@ Sonraki bölümlerde her bir nesne için gereksinimler ayrıntılandırır.
 
 `buildingLevels`Nesne, bir bina seviyelerinin JSON dizisini içeriyor.
 
-| Özellik  | Tür | Gerekli | Açıklama |
+| Özellik  | Tür | Gerekli | Description |
 |-----------|------|----------|-------------|
 |`levelName`    |dize    |true |    Açıklayıcı düzey adı. Örneğin: kat 1, giriş, mavi park veya taban.|
 |`ordinal` | tamsayı |    true | Düzeylerin dikey sırasını belirler. Her tesis 0 sıralı bir düzeye sahip olmalıdır. |
@@ -241,7 +241,7 @@ Sonraki bölümlerde her bir nesne için gereksinimler ayrıntılandırır.
 
 `unitProperties`Nesne, birim ÖZELLIKLERININ JSON dizisini içerir.
 
-| Özellik  | Tür | Gerekli | Açıklama |
+| Özellik  | Tür | Gerekli | Description |
 |-----------|------|----------|-------------|
 |`unitName`    |dize    |true    |Bu kayıtla ilişkilendirilecek birimin adı `unitProperty` . Bu kayıt yalnızca katmanlarda eşleşen bir etiket bulunduğunda geçerlidir `unitName` `unitLabel` . |
 |`categoryName`|    string|    yanlış    |Kategori adı. Kategorilerin tüm listesi için [Kategoriler](https://aka.ms/pa-indoor-spacecategories)' e bakın. |

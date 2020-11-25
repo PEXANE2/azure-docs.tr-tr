@@ -9,11 +9,11 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
 ms.openlocfilehash: af1850f77c1d13c761bfc2a143074b5067b349b4
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014061"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013012"
 ---
 # <a name="analysis-services-database-backup-and-restore"></a>Analysis Services veritabanı yedekleme ve geri yükleme
 
@@ -25,7 +25,7 @@ Tablo modeli veritabanlarının Azure Analysis Services yedeklenmesi, şirket i�
 > 
 
 > [!NOTE]
-> Depolama hesabı farklı bir bölgedeyse, **Seçili ağlardan**erişime izin vermek için depolama hesabı güvenlik duvarı ayarlarını yapılandırın. Güvenlik Duvarı **adres aralığı**' nda, Analysis Services sunucusunun bulunduğu bölge için IP adresi aralığını belirtin. Depolama hesabı güvenlik duvarı ayarlarının tüm ağlardan erişime izin verecek şekilde yapılandırılması desteklenir, ancak seçili ağları seçip bir IP adresi aralığı belirtilerek tercih edilir. Daha fazla bilgi için bkz. [ağ BAĞLANTıSı SSS](analysis-services-network-faq.md#backup-and-restore).
+> Depolama hesabı farklı bir bölgedeyse, **Seçili ağlardan** erişime izin vermek için depolama hesabı güvenlik duvarı ayarlarını yapılandırın. Güvenlik Duvarı **adres aralığı**' nda, Analysis Services sunucusunun bulunduğu bölge için IP adresi aralığını belirtin. Depolama hesabı güvenlik duvarı ayarlarının tüm ağlardan erişime izin verecek şekilde yapılandırılması desteklenir, ancak seçili ağları seçip bir IP adresi aralığı belirtilerek tercih edilir. Daha fazla bilgi için bkz. [ağ BAĞLANTıSı SSS](analysis-services-network-faq.md#backup-and-restore).
 
 Yedeklemeler bir. abf uzantısıyla kaydedilir. Bellek içi tablolu modeller için hem model verileri hem de meta veriler depolanır. DirectQuery tablolu modeller için yalnızca model meta verileri depolanır. Yedeklemeler, seçtiğiniz seçeneklere bağlı olarak sıkıştırılabilir ve şifrelenebilir.
 
@@ -95,7 +95,7 @@ Geri yükleme sırasında, yedekleme dosyanız sunucunuz için yapılandırdığ
 
 3. **Veritabanı dosyalarını bul** iletişim kutusunda, geri yüklemek istediğiniz dosyayı seçin.
 
-4. **Veritabanını geri yükle**bölümünde veritabanını seçin.
+4. **Veritabanını geri yükle** bölümünde veritabanını seçin.
 
 5. Seçenekleri belirtin. Güvenlik seçeneklerinin yedeklenirken kullandığınız yedekleme seçenekleriyle eşleşmesi gerekir.
 

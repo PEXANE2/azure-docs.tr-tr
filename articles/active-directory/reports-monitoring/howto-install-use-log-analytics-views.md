@@ -18,11 +18,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 168b41534f6ea6055294cc9e9cec139853904fea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91358908"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013046"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Azure Active Directory için Log Analytics görünümlerini yükleyip kullanın
 
@@ -31,7 +31,7 @@ Azure Active Directory Log Analytics görünümleri, Azure AD kiracınızda Azur
 * Denetim günlükleri: [Denetim günlükleri etkinlik raporu](concept-audit-logs.md) , kiracınızda gerçekleştirilen her görevin geçmişine erişmenizi sağlar.
 * Oturum açma günlükleri: [oturum açma etkinliği raporuyla](concept-sign-ins.md), denetim günlüklerinde bildirilen görevleri kimlerin gerçekleştirdiğini belirleyebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Log Analytics görünümlerini kullanmak için şunlar gerekir:
 
@@ -63,7 +63,7 @@ Log Analytics görünümlerini kullanmak için şunlar gerekir:
 
     ![Sinyal mantığını yapılandırma](./media/howto-install-use-log-analytics-views/configure-signal-logic.png)
 
-5. Uyarı için bir ad ve açıklama girin ve önem derecesini **Uyarı**olarak ayarlayın.
+5. Uyarı için bir ad ve açıklama girin ve önem derecesini **Uyarı** olarak ayarlayın.
 
     ![Kural Oluştur](./media/howto-install-use-log-analytics-views/create-rule.png)
 

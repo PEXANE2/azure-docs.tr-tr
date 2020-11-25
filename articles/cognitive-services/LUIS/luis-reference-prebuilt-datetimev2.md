@@ -10,11 +10,11 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/13/2020
 ms.openlocfilehash: 83522de9c00056a3808b002b3103f45c72553399
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91534191"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013080"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>LUSıS uygulaması için DatetimeV2 önceden oluşturulmuş varlık
 
@@ -669,7 +669,7 @@ Aşağıdaki söylenişi ve bunun kısmen JSON yanıtı aşağıda gösterilmiş
 
 ## <a name="deprecated-prebuilt-datetime"></a>Kullanım dışı önceden oluşturulmuş tarih saat
 
-`datetime`Önceden oluşturulmuş varlık kullanım dışıdır ve **datetimeV2**ile değiştirilmiştir.
+`datetime`Önceden oluşturulmuş varlık kullanım dışıdır ve **datetimeV2** ile değiştirilmiştir.
 
 İle değiştirmek `datetime` için `datetimeV2` aşağıdaki adımları izleyin:
 

@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/15/2018
 ms.openlocfilehash: dff59ac207e6078a264d1350d24c9e6f4a461d78
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108788"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012893"
 ---
 # <a name="smart-groups"></a>Akıllı gruplar
 
@@ -23,7 +23,7 @@ Akıllı grupların ayrıntılarını görüntüleyebilir ve durumu benzer şeki
 
 ## <a name="smart-group-state"></a>Akıllı Grup durumu
 
-Akıllı Grup durumu, uyarı durumuna yönelik benzer bir kavramdır ve bu, çözümleme işlemini akıllı bir grup düzeyinde yönetmenize olanak sağlar. Uyarı durumuna benzer şekilde, bir akıllı grup oluşturulduğunda, bu, **onaylanan** veya **Kapatılan**olarak değiştirilebilen **Yeni** bir durum içerir.
+Akıllı Grup durumu, uyarı durumuna yönelik benzer bir kavramdır ve bu, çözümleme işlemini akıllı bir grup düzeyinde yönetmenize olanak sağlar. Uyarı durumuna benzer şekilde, bir akıllı grup oluşturulduğunda, bu, **onaylanan** veya **Kapatılan** olarak değiştirilebilen **Yeni** bir durum içerir.
 
 Aşağıdaki akıllı grup durumları desteklenir.
 
@@ -31,7 +31,7 @@ Aşağıdaki akıllı grup durumları desteklenir.
 |:---|:---|
 | Yeni | Sorun algılandı ve henüz gözden geçirilmedi. |
 | Onaylandı | Bir yönetici akıllı grubu incelendi ve üzerinde çalışmaya başladı. |
-| Kapalı | Sorun çözüldü. Bir akıllı grup kapatıldıktan sonra, başka bir durumla değiştirerek dosyayı yeniden açabilirsiniz. |
+| Kapatıldı | Sorun çözüldü. Bir akıllı grup kapatıldıktan sonra, başka bir durumla değiştirerek dosyayı yeniden açabilirsiniz. |
 
 [Akıllı grubunuzun durumunu değiştirme hakkında bilgi edinin.](./alerts-managing-alert-states.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
 

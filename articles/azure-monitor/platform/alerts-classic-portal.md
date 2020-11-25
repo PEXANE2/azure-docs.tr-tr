@@ -6,11 +6,11 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.openlocfilehash: 613620ddf4889efb7cf3df95150be97f79724a98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852149"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013114"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Azure Izleyici kullanarak klasik ölçüm uyarılarını oluşturma, görüntüleme ve yönetme
 
@@ -24,7 +24,7 @@ Azure Izleyici 'de klasik ölçüm uyarıları, ölçülerinizin biri eşiğe gi
 
 1. [Portalda](https://portal.azure.com/), izlemek istediğiniz kaynağı bulun ve seçin.
 
-2. **İzleme** bölümünde Uyarılar ' ı **(klasik)** seçin. Metin ve simge farklı kaynaklar için biraz farklılık gösterebilir. Burada **Uyarılar (klasik)** bulamazsanız **uyarı veya** **uyarı kurallarında**bulabilirsiniz.
+2. **İzleme** bölümünde Uyarılar ' ı **(klasik)** seçin. Metin ve simge farklı kaynaklar için biraz farklılık gösterebilir. Burada **Uyarılar (klasik)** bulamazsanız **uyarı veya** **uyarı kurallarında** bulabilirsiniz.
 
     ![İzleme](media/alerts-classic-portal/AlertRulesButton.png)
 
@@ -32,7 +32,7 @@ Azure Izleyici 'de klasik ölçüm uyarıları, ölçülerinizin biri eşiğe gi
 
     ![Uyarı Ekle](media/alerts-classic-portal/AddAlertOnlyParamsPage.png)
 
-4. Uyarı kuralınızı **adlandırın** . Sonra da bildirim e-postalarında görüntülenen bir **Açıklama**seçin.
+4. Uyarı kuralınızı **adlandırın** . Sonra da bildirim e-postalarında görüntülenen bir **Açıklama** seçin.
 
 5. İzlemek istediğiniz **ölçümü** seçin. Ardından, ölçüm için bir **koşul** ve **eşik** değeri seçin. Ayrıca **, uyarı** tetikleyiciden önce ölçüm kuralının karşılanması gereken süreyi seçin. Örneğin, "son 5 dakika Içinde" dönemini kullanırsanız ve uyarınız %80 ' ün üzerinde bir CPU 'YU alıyorsa, uyarı, CPU sürekli olarak 5 dakika boyunca %80 ' den fazla olduğunda tetiklenir. İlk tetikleyici oluştuktan sonra, CPU 5 dakika boyunca %80 altında kaldığında yeniden tetiklenir. CPU Ölçümü ölçümü her dakika olur.
 
