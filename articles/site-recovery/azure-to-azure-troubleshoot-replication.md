@@ -6,11 +6,11 @@ manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
 ms.openlocfilehash: dc14334668b76ee8cbb81e48abfe1eecf17fa138
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86130410"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007367"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Azure VM olağanüstü durum kurtarma 'da çoğaltma sorunlarını giderme
 
@@ -28,14 +28,14 @@ Aşağıdaki bölümlerde nedenler ve çözümler açıklanır.
 
 ## <a name="high-data-change-rate-on-the-source-virtual-machine"></a>Kaynak sanal makinede yüksek veri değişim oranı
 
-Kaynak sanal makinedeki veri değişim oranı desteklenen limitlerden fazlaysa Azure Site Recovery bir olay oluşturur. Sorunun yüksek dalgalanma göre olup olmadığını görmek için **çoğaltılan öğeler**  >  **VM**  >  **olayları-Son 72 saat**öğesine gidin.
-Olay **veri değişikliği oranını desteklenen limitlerin ötesinde**görmeniz gerekir:
+Kaynak sanal makinedeki veri değişim oranı desteklenen limitlerden fazlaysa Azure Site Recovery bir olay oluşturur. Sorunun yüksek dalgalanma göre olup olmadığını görmek için **çoğaltılan öğeler**  >  **VM**  >  **olayları-Son 72 saat** öğesine gidin.
+Olay **veri değişikliği oranını desteklenen limitlerin ötesinde** görmeniz gerekir:
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/data_change_event.png" alt-text="Çok yüksek veri değişim hızını gösteren Azure Site Recovery sayfası.":::
 
 Olayı seçerseniz, tam disk bilgilerini görmeniz gerekir:
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/data_change_event2.png" alt-text="Çok yüksek veri değişim hızını gösteren Azure Site Recovery sayfası.":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/data_change_event2.png" alt-text="Veri değişim oranı olay ayrıntılarını gösteren sayfa.":::
 
 ### <a name="azure-site-recovery-limits"></a>Azure Site Recovery limitleri
 
@@ -54,11 +54,11 @@ Premium P20 veya P30 veya P40 veya P50 disk | 16 KB veya daha büyük |20 MB/sn 
 
 ### <a name="solution"></a>Çözüm
 
-Azure Site Recovery, disk türüne bağlı olarak veri değişikliği ücretleri üzerinde sınırlara sahiptir. Bu sorunun yinelenen veya geçici olup olmadığını görmek için etkilenen sanal makinenin veri değişikliği oranını bulun. Kaynak sanal makineye gidin, **izleme**bölümündeki ölçümleri bulun ve bu ekran görüntüsünde gösterildiği gibi ölçümleri ekleyin:
+Azure Site Recovery, disk türüne bağlı olarak veri değişikliği ücretleri üzerinde sınırlara sahiptir. Bu sorunun yinelenen veya geçici olup olmadığını görmek için etkilenen sanal makinenin veri değişikliği oranını bulun. Kaynak sanal makineye gidin, **izleme** bölümündeki ölçümleri bulun ve bu ekran görüntüsünde gösterildiği gibi ölçümleri ekleyin:
 
-:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/churn.png" alt-text="Çok yüksek veri değişim hızını gösteren Azure Site Recovery sayfası.":::
+:::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/churn.png" alt-text="Veri değişikliği oranını bulmak için üç adımlı süreci gösteren sayfa.":::
 
-1. **Ölçüm Ekle**' yi seçin ve **Işletim sistemi diski yazma bayt/sn** ve **veri diski yazma bayt/sn**ekleyin.
+1. **Ölçüm Ekle**' yi seçin ve **Işletim sistemi diski yazma bayt/sn** ve **veri diski yazma bayt/sn** ekleyin.
 1. Ekran görüntüsünde gösterildiği gibi ani artış izleyin.
 1. İşletim sistemi disklerinde oluşan toplam yazma işlemlerini ve tüm veri disklerini görüntüleyin. Bu ölçümler size disk başına düzeyde bilgi veremeyebilir, ancak toplam veri değişim modelini gösterir.
 
@@ -116,7 +116,7 @@ Daha fazla sorun gidermek için, hata kodunu tam olarak almak için kaynak makin
 
 `C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log`
 
-Hataları bulmak için _, boş dize_ **dizesini bir**metin düzenleyicisinde açın.
+Hataları bulmak için _, boş dize_ **dizesini bir** metin düzenleyicisinde açın.
 
 ```plaintext
 Ex: vacpError:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|
@@ -126,7 +126,7 @@ Yukarıdaki örnekte **2147754994** , bu cümleyi takip eden hatayı belirten ha
 
 #### <a name="vss-writer-is-not-installed---error-2147221164"></a>VSS yazıcısı yüklü değil-hata 2147221164
 
-**Nasıl düzeltilir**: uygulama tutarlılığı etiketi oluşturmak için, Azure Site Recovery bırım gölge KOPYASı HIZMETI (VSS) kullanır. Site Recovery, uygulama tutarlılığı anlık görüntülerini alma işlemi için bir VSS sağlayıcısı yüklüyor. Azure Site Recovery, bu VSS sağlayıcısını bir hizmet olarak yüklüyor. VSS sağlayıcısı yüklü değilse, uygulama tutarlılığı anlık görüntüsü oluşturma işlemi başarısız olur. Bir **hata kimliği 0x80040154 sınıfının kayıtlı değil**olduğunu gösterir. [VSS yazıcı yükleme sorunlarını giderme](vmware-azure-troubleshoot-push-install.md#vss-installation-failures)makalesine bakın.
+**Nasıl düzeltilir**: uygulama tutarlılığı etiketi oluşturmak için, Azure Site Recovery bırım gölge KOPYASı HIZMETI (VSS) kullanır. Site Recovery, uygulama tutarlılığı anlık görüntülerini alma işlemi için bir VSS sağlayıcısı yüklüyor. Azure Site Recovery, bu VSS sağlayıcısını bir hizmet olarak yüklüyor. VSS sağlayıcısı yüklü değilse, uygulama tutarlılığı anlık görüntüsü oluşturma işlemi başarısız olur. Bir **hata kimliği 0x80040154 sınıfının kayıtlı değil** olduğunu gösterir. [VSS yazıcı yükleme sorunlarını giderme](vmware-azure-troubleshoot-push-install.md#vss-installation-failures)makalesine bakın.
 
 #### <a name="vss-writer-is-disabled---error-2147943458"></a>VSS yazıcı devre dışı-hata 2147943458
 
@@ -134,7 +134,7 @@ Yukarıdaki örnekte **2147754994** , bu cümleyi takip eden hatayı belirten ha
 
 VSS devre dışıysa:
 
-- VSS sağlayıcı hizmetinin başlangıç türünün **Otomatik**olarak ayarlandığını doğrulayın.
+- VSS sağlayıcı hizmetinin başlangıç türünün **Otomatik** olarak ayarlandığını doğrulayın.
 - Aşağıdaki hizmetleri yeniden başlatın:
   - VSS hizmeti.
   - VSS sağlayıcısı Azure Site Recovery.
@@ -154,7 +154,7 @@ VSS sağlayıcısı 'nı yeniden yüklemek için aşağıdaki komutları kullan�
 
    `"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
 
-VSS sağlayıcı hizmetinin başlangıç türünün **Otomatik**olarak ayarlandığını doğrulayın.
+VSS sağlayıcı hizmetinin başlangıç türünün **Otomatik** olarak ayarlandığını doğrulayın.
 
 Aşağıdaki hizmetleri yeniden başlatın:
 

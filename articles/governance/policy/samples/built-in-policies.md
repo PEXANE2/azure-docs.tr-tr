@@ -1,21 +1,21 @@
 ---
 title: Yerleşik ilke tanımlarının listesi
 description: Azure Ilkesi için yerleşik ilke tanımlarını listeleyin. Kategoriler arasında Etiketler, mevzuat uyumluluğu, Key Vault, Kubernetes, Konuk yapılandırma ve daha fazlası bulunur.
-ms.date: 10/20/2020
+ms.date: 11/20/2020
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: c1627c05e041b2b4a91f5fb5ad44d79641cb9756
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 66563a4754d706f2c73e90ad3c2e8e0f4fe7d3a0
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92311974"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "96008068"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Ilkesi yerleşik ilke tanımları
 
 Bu sayfa, Azure Ilkesi yerleşik ilke tanımlarının bir dizinidir.
 
-Azure portal içindeki ilke tanımına yapılan her bir yerleşik bağlantı adı. Kaynağı [Azure Policy GitHub](https://github.com/Azure/azure-policy)deposunda görüntülemek için **kaynak** sütunundaki bağlantıyı kullanın. Yerleşik bileşenler, **meta verilerde** **Kategori** özelliğine göre gruplandırılır. Belirli bir **kategoriye**geçmek için sayfanın sağ tarafındaki menüyü kullanın. Aksi takdirde, <kbd>Ctrl</kbd> - tarayıcınızın arama özelliğini kullanmak için CTRL<kbd>F</kbd> kullanın.
+Azure portal içindeki ilke tanımına yapılan her bir yerleşik bağlantı adı. Kaynağı [Azure Policy GitHub](https://github.com/Azure/azure-policy)deposunda görüntülemek için **kaynak** sütunundaki bağlantıyı kullanın. Yerleşik bileşenler, **meta verilerde** **Kategori** özelliğine göre gruplandırılır. Belirli bir **kategoriye** geçmek için sayfanın sağ tarafındaki menüyü kullanın. Aksi takdirde, <kbd>Ctrl</kbd> - tarayıcınızın arama özelliğini kullanmak için CTRL<kbd>F</kbd> kullanın.
 
 ## <a name="api-for-fhir"></a>FHIR için API
 
@@ -44,6 +44,10 @@ Azure portal içindeki ilke tanımına yapılan her bir yerleşik bağlantı ad�
 ## <a name="automation"></a>Otomasyon
 
 [!INCLUDE [azure-policy-reference-policies-automation](../../../../includes/policy/reference/bycat/policies-automation.md)]
+
+## <a name="azure-data-explorer"></a>Azure Veri Gezgini
+
+[!INCLUDE [azure-policy-reference-policies-azure-data-explorer](../../../../includes/policy/reference/bycat/policies-azure-data-explorer.md)]
 
 ## <a name="backup"></a>Backup
 
@@ -133,7 +137,11 @@ Azure portal içindeki ilke tanımına yapılan her bir yerleşik bağlantı ad�
 
 [!INCLUDE [azure-policy-reference-policies-network](../../../../includes/policy/reference/bycat/policies-network.md)]
 
-## <a name="search"></a>Arama
+## <a name="portal"></a>Portal
+
+[!INCLUDE [azure-policy-reference-policies-portal](../../../../includes/policy/reference/bycat/policies-portal.md)]
+
+## <a name="search"></a>Arayın
 
 [!INCLUDE [azure-policy-reference-policies-search](../../../../includes/policy/reference/bycat/policies-search.md)]
 
@@ -164,6 +172,10 @@ Azure portal içindeki ilke tanımına yapılan her bir yerleşik bağlantı ad�
 ## <a name="stream-analytics"></a>Stream Analytics
 
 [!INCLUDE [azure-policy-reference-policies-stream-analytics](../../../../includes/policy/reference/bycat/policies-stream-analytics.md)]
+
+## <a name="synapse"></a>Synapse
+
+[!INCLUDE [azure-policy-reference-policies-synapse](../../../../includes/policy/reference/bycat/policies-synapse.md)]
 
 ## <a name="tags"></a>Etiketler
 

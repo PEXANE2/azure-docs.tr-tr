@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 08/26/2019
 ms.author: allensu
 ms.openlocfilehash: e13164c3ec6049a8ae3954528a02d20e313dd883
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84711468"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008132"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-azure-powershell"></a>Azure PowerShell kullanarak bir Azure sanal ağını başka bir bölgeye taşıma
 
@@ -60,7 +60,7 @@ Sanal ağı dışa aktarmak ve PowerShell 'i kullanarak hedef sanal ağı dağı
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
    ```
 
-1. İndirilen dosya, kaynağın verildiği kaynak grubuyla aynı ada sahiptir. Komutuyla verdiğiniz * \<resource-group-name> . JSON* dosyasını bulun ve ardından düzenleyicide açın:
+1. İndirilen dosya, kaynağın verildiği kaynak grubuyla aynı ada sahiptir. Komutuyla verdiğiniz *\<resource-group-name> . JSON* dosyasını bulun ve ardından düzenleyicide açın:
    
    ```azurepowershell
    notepad <source-resource-group-name>.json
@@ -105,7 +105,7 @@ Sanal ağı dışa aktarmak ve PowerShell 'i kullanarak hedef sanal ağı dağı
     Get-AzLocation | format-table
     ```
 
-1. Seçim Gereksinimlerinize bağlı olarak, * \<resource-group-name> . JSON* dosyasındaki diğer parametreleri de değiştirebilirsiniz:
+1. Seçim Gereksinimlerinize bağlı olarak, *\<resource-group-name> . JSON* dosyasındaki diğer parametreleri de değiştirebilirsiniz:
 
     * **Adres alanı**: dosyayı kaydetmeden önce, **Resources**  >  **AddressSpace** bölümünü değiştirerek ve **addresspredüzeltmelerinin** özelliğini değiştirerek sanal ağın adres alanını değiştirebilirsiniz:
 
@@ -193,7 +193,7 @@ Sanal ağı dışa aktarmak ve PowerShell 'i kullanarak hedef sanal ağı dağı
          ]
         ```
 
-1. * \<resource-group-name> . JSON* dosyasını kaydedin.
+1. *\<resource-group-name> . JSON* dosyasını kaydedin.
 
 1. [Yeni-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0)kullanılarak dağıtılacak hedef sanal ağın hedef bölgede bir kaynak grubu oluşturun:
     
@@ -201,7 +201,7 @@ Sanal ağı dışa aktarmak ve PowerShell 'i kullanarak hedef sanal ağı dağı
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-1. Düzenlenecek * \<resource-group-name> . JSON* dosyasını, önceki adımda oluşturduğunuz kaynak grubuna [New-azresourcegroupdeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)kullanarak dağıtın:
+1. Düzenlenecek *\<resource-group-name> . JSON* dosyasını, önceki adımda oluşturduğunuz kaynak grubuna [New-azresourcegroupdeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0)kullanarak dağıtın:
 
     ```azurepowershell-interactive
 

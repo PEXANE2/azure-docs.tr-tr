@@ -1,56 +1,52 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: functions
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 03/06/2020
+ms.date: 09/30/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: db6f5927e1cbdb3527014ccbb277c7ec20b02600
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef617b9ed6c35d33350b173efe6189b5b79b6ae6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84231518"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008242"
 ---
 1. **Çözüm Gezgini**'nde projeye sağ tıklayın ve **Yayımla**'yı seçin.
 
-1. **Bir yayımlama hedefi seçin**alanında, aşağıdaki tabloda belirtilen yayımlama seçeneklerini kullanın: 
+1. **Hedef** bölümünde **Azure** :::image type="content" source="media/functions-vstools-publish/functions-visual-studio-publish-profile-step-1.png" alt-text="Azure hedefi seç"::: ' i seçin.
 
-    | Seçenek      | Açıklama                                |
-    | ------------ |  -------------------------------------------------- |
-    | **Azure Işlevleri tüketim planı** | Bir [Tüketim planında](../articles/azure-functions/functions-scale.md#consumption-plan)çalışan bir Azure bulut ortamında bir işlev uygulaması oluşturun. Bir tüketim planı kullandığınızda yalnızca işlevler uygulamanızın yürütmeleri için ödeme yaparsınız. Diğer barındırma planları daha yüksek maliyetler doğurur. Tüketim planı dışında bir planda çalıştırırsanız, [işlev uygulamanızın ölçeklendirmesini](../articles/azure-functions/functions-scale.md)yönetmeniz gerekir.| 
-    | **Yeni oluştur** | Azure 'da, ilgili kaynaklarla yeni bir işlev uygulaması oluşturulur. <br/>**Varolanı Seç**' i seçerseniz, mevcut Işlev uygulamasındaki Azure 'daki tüm dosyaların yerel projedeki dosyalarla üzerine yazılır. Bu seçeneği yalnızca, var olan bir işlev uygulamasına güncelleştirmeleri yeniden yayımladığınızda kullanın. |
-    | **Paket dosyasından Çalıştır** | İşlev uygulamanız, [paket Çalıştır](../articles/azure-functions/run-functions-from-deployment-package.md) modu etkin olan [ZIP dağıtımı](../articles/azure-functions/functions-deployment-technologies.md#zip-deploy) kullanılarak dağıtılır. Bu dağıtım, daha iyi performans elde eden işlevlerinizi çalıştırmanın önerilen yoludur. <br/>Bu seçeneği kullanmazsanız, Azure 'da yayımlamadan önce işlev uygulaması projenizin yerel olarak çalışmasını durdurduğunuzdan emin olun. |
+1. **Belirli bir hedefte** **Azure işlev uygulaması (Windows)** öğesini seçin
 
-    :::image type="content" source="media/functions-vstools-publish/functions-visual-studio-publish-profile.png" alt-text="Yayımlama profili oluşturma":::
+    :::image type="content" source="media/functions-vstools-publish/functions-visual-studio-publish-profile-step-2.png" alt-text="Azure İşlev Uygulaması seçin":::
 
-
-1. **Profil Oluştur**'u seçin. Visual Studio 'dan Azure hesabınızda zaten oturum açmadıysanız **oturum aç**' ı seçin. Ayrıca, ücretsiz bir Azure hesabı da oluşturabilirsiniz.
-
-1. **App Service: Yeni oluştur**' da, aşağıdaki tabloda belirtilen değerleri kullanın:
+1. **Işlev örneği**' nde **Yeni bir Azure işlevi oluştur...** öğesini seçin ve ardından aşağıdaki tabloda belirtilen değerleri kullanın:
 
     | Ayar      | Değer  | Açıklama                                |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Ad** | Genel olarak benzersiz bir ad | Yeni işlev uygulamanızı benzersiz şekilde tanımlayan ad. Bu adı kabul edin veya yeni bir ad girin. Geçerli karakterler şunlardır: `a-z` , `0-9` , ve `-` . |
     | **Abonelik** | Aboneliğiniz | Kullanılacak Azure aboneliği. Bu aboneliği kabul edin veya açılan listeden yeni bir tane seçin. |
     | **[Kaynak grubu](../articles/azure-resource-manager/management/overview.md)** | Kaynak grubunuzun adı |  İşlev uygulamanızın oluşturulacağı kaynak grubu. Açılan listeden var olan bir kaynak grubunu seçin veya yeni bir kaynak grubu oluşturmak için **Yeni** ' yi seçin.|
-    | **[Barındırma Planı](../articles/azure-functions/functions-scale.md)** | Barındırma planınızın adı | Sunucusuz bir plan yapılandırmak için **Yeni** ' yi seçin. **Boyut**' un altında **tüketimi** seçtiğinizden emin olun. Projenizi bir [Tüketim planında](../articles/azure-functions/functions-scale.md#consumption-plan)çalışan bir işlev uygulamasında yayımladığınızda yalnızca işlevler uygulamanızın yürütmeleri için ödeme yaparsınız. Diğer barındırma planları daha yüksek maliyetler doğurur. **Tüketim**dışında bir planda çalıştırırsanız, [işlev uygulamanızın ölçeklendirmesini](../articles/azure-functions/functions-scale.md)yönetmeniz gerekir.  |
+    | **[Plan türü](../articles/azure-functions/functions-scale.md)** | Tüketim | Projenizi bir [Tüketim planında](../articles/azure-functions/functions-scale.md#consumption-plan)çalışan bir işlev uygulamasında yayımladığınızda yalnızca işlevler uygulamanızın yürütmeleri için ödeme yaparsınız. Diğer barındırma planları daha yüksek maliyetler doğurur. |
     | **Konum** | App Service 'in konumu | Size yakın bir [bölgede](https://azure.microsoft.com/regions/) veya işlevlerinizin erişebileceği diğer hizmetlerden bir **konum** seçin. |
     | **[Azure Storage](../articles/storage/common/storage-account-create.md)** | Genel amaçlı depolama hesabı | Işlevler çalışma zamanı için bir Azure depolama hesabı gereklidir. Genel amaçlı bir depolama hesabı yapılandırmak için **Yeni** ' yi seçin. [Depolama hesabı gereksinimlerini](../articles/azure-functions/functions-scale.md#storage-account-requirements)karşılayan mevcut bir hesabı da seçebilirsiniz.  |
 
     ![App Service Oluştur iletişim kutusu](./media/functions-vstools-publish/functions-visual-studio-publish.png)
 
-1. Azure 'da bu ayarlarla bir işlev uygulaması ve ilgili kaynakları oluşturmak ve işlev proje kodunuzu dağıtmak için **Oluştur** ' u seçin. 
+1. Azure 'da bir işlev uygulaması ve ilgili kaynakları oluşturmak için **Oluştur** ' u seçin. 
+1. **İşlevler örneğinde**, **paket dosyasından Çalıştır** ' ın işaretli olduğundan emin olun. İşlev uygulamanız, [paket Çalıştır](../articles/azure-functions/run-functions-from-deployment-package.md) modu etkin olan [ZIP dağıtımı](../articles/azure-functions/functions-deployment-technologies.md#zip-deploy) kullanılarak dağıtılır. Bu, daha iyi performans ile sonuçlandığından, işlevler projeniz için önerilen dağıtım yöntemidir. 
 
-1. **Yayımla** ' yı seçin ve dağıtımın tamamlanmasını bekleyin. 
+    :::image type="content" source="media/functions-vstools-publish/functions-visual-studio-publish-profile-step-4.png" alt-text="Profil oluşturmayı tamamlama":::
+
+1. **Son**' u seçin ve Yayımla sayfasında, proje dosyalarınızı Içeren paketi Azure 'daki yeni işlev uygulamanıza dağıtmak için **Yayımla** ' yı seçin. 
 
     Dağıtım tamamlandıktan sonra, Azure 'da işlev uygulamasının kök URL 'SI **Yayımla** sekmesinde gösterilir. 
     
 1.  Yayımla sekmesinde, **Cloud Explorer 'Da Yönet**' i seçin. Bu, Cloud Explorer 'da yeni işlev uygulaması Azure kaynağı ' nı açar. 
     
-    :::image type="content" source="media/functions-vstools-publish/functions-visual-studio-publish-complete.png" alt-text="Yayımlama profili oluşturma":::
+    :::image type="content" source="media/functions-vstools-publish/functions-visual-studio-publish-complete.png" alt-text="Başarı iletisi yayımlama":::
     
     Cloud Explorer, Visual Studio 'Yu kullanarak sitenin içeriğini görüntüleyebilir, işlev uygulamasını başlatıp durdurabilir ve doğrudan Azure 'daki ve Azure portal uygulama kaynaklarına gidebilir. 

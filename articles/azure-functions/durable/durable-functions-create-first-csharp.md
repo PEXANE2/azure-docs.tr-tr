@@ -7,11 +7,11 @@ ms.date: 03/18/2020
 ms.author: azfuncdf
 zone_pivot_groups: code-editors-set-one
 ms.openlocfilehash: d5b6ecc12cee983cee0772da8b6f8f26a3b5a8ae
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890284"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008251"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>C 'de ilk dayanıklı işlevinizi oluşturma\#
 
@@ -49,7 +49,7 @@ Bu bölümde, yerel bir Azure Işlevleri projesi oluşturmak için Visual Studio
 
     ![İşlev projesi oluşturma](media/durable-functions-create-first-csharp/functions-vscode-create-project.png)
 
-1. Projeniz için boş bir klasör konumu seçin ve **Seç** ' i seçin.
+1. Projeniz için boş bir klasör konumu seçin ve **Seç**' i seçin.
 
 1. İstemlerin ardından aşağıdaki bilgileri sağlayın:
 
@@ -76,7 +76,7 @@ Aşağıdaki adımlar, projenizde dayanıklı işlev kodu oluşturmak için bir 
     | Bir işlev adı girin | Merhaba düzenleme | İşlevlerin oluşturulduğu sınıfın adı |
     | Ad alanı belirtin | Company. Function | Oluşturulan sınıfın ad alanı |
 
-1. VS Code bir depolama hesabı seçmenizi isterse **depolama hesabı seç** ' i seçin. İstemlerin ardından, Azure 'da yeni bir depolama hesabı oluşturmak için aşağıdaki bilgileri sağlayın.
+1. VS Code bir depolama hesabı seçmenizi isterse **depolama hesabı seç**' i seçin. İstemlerin ardından, Azure 'da yeni bir depolama hesabı oluşturmak için aşağıdaki bilgileri sağlayın.
 
     | İstem | Değer | Açıklama |
     | ------ | ----- | ----------- |
@@ -90,7 +90,7 @@ Projeye yeni işlevleri içeren bir sınıf eklenir. VS Code Ayrıca depolama he
 
 İçeriği görüntülemek için yeni *HelloOrchestration.cs* dosyasını açın. Bu dayanıklı işlev, aşağıdaki yöntemlerle basit bir işlev zincirleme örneğidir:  
 
-| Yöntem | Ifadelerini | Açıklama |
+| Yöntem | Ifadelerini | Description |
 | -----  | ------------ | ----------- |
 | **`RunOrchestrator`** | `HelloOrchestration` | Dayanıklı düzenleme 'yi yönetir. Bu durumda, düzenleme başlar, bir liste oluşturur ve listeye yapılan üç işlev çağrısının sonucunu ekler.  Üç işlev çağrısı tamamlandığında, listeyi döndürür. |
 | **`SayHello`** | `HelloOrchestration_Hello` | İşlev bir merhaba döndürür. Düzenleyen iş mantığını içeren işlevdir. |
@@ -183,11 +183,11 @@ Azure Işlevleri şablonu, Azure 'da bir işlev uygulamasına yayımlanmakta ola
 
 1. Visual Studio 'da Dosya menüsünden **Yeni**  >  **Proje** ' yi **File** seçin.
 
-1. **Yeni proje oluştur** iletişim kutusunda, arama `functions` yapın, **Azure Işlevleri** şablonunu seçin ve **İleri** ' yi seçin. 
+1. **Yeni proje oluştur** iletişim kutusunda, arama `functions` yapın, **Azure Işlevleri** şablonunu seçin ve **İleri**' yi seçin. 
 
     ![Visual Studio'da işlev oluşturmaya yönelik yeni proje iletişim kutusu](./media/durable-functions-create-first-csharp/functions-vs-new-project.png)
 
-1. Projeniz için bir **Proje adı** yazın ve **Tamam** ' ı seçin. Proje adı C# ad alanı olarak geçerli olmalıdır, bu nedenle alt çizgi, kısa çizgi veya alfasayısal olmayan karakterler kullanmayın.
+1. Projeniz için bir **Proje adı** yazın ve **Tamam**' ı seçin. Proje adı C# ad alanı olarak geçerli olmalıdır, bu nedenle alt çizgi, kısa çizgi veya alfasayısal olmayan karakterler kullanmayın.
 
 1. **Yeni bir Azure Işlevleri uygulaması oluştur** bölümünde, görüntüyü izleyen tabloda belirtilen ayarları kullanın.
 
@@ -209,7 +209,7 @@ Aşağıdaki adımlar, projenizde dayanıklı işlev kodu oluşturmak için bir 
 
     ![Yeni işlev Ekle](./media/durable-functions-create-first-csharp/functions-vs-add-function.png)
 
-1. Ekle menüsünde **Azure işlevinin** seçili olduğunu doğrulayın, C# dosyanız için bir ad yazın ve ardından **Ekle** ' yi seçin.
+1. Ekle menüsünde **Azure işlevinin** seçili olduğunu doğrulayın, C# dosyanız için bir ad yazın ve ardından **Ekle**' yi seçin.
 
 1. **Dayanıklı işlevler Orchestration** şablonunu seçin ve ardından **Tamam** ' ı seçin.
 
@@ -217,7 +217,7 @@ Aşağıdaki adımlar, projenizde dayanıklı işlev kodu oluşturmak için bir 
 
 Uygulamaya yeni bir dayanıklı işlev eklenir.  İçeriğini görüntülemek için yeni. cs dosyasını açın. Bu dayanıklı işlev, aşağıdaki yöntemlerle basit bir işlev zincirleme örneğidir:  
 
-| Yöntem | Ifadelerini | Açıklama |
+| Yöntem | Ifadelerini | Description |
 | -----  | ------------ | ----------- |
 | **`RunOrchestrator`** | `<file-name>` | Dayanıklı düzenleme 'yi yönetir. Bu durumda, düzenleme başlar, bir liste oluşturur ve listeye yapılan üç işlev çağrısının sonucunu ekler.  Üç işlev çağrısı tamamlandığında, listeyi döndürür. |
 | **`SayHello`** | `<file-name>_Hello` | İşlev bir merhaba döndürür. Düzenleyen iş mantığını içeren işlevdir. |

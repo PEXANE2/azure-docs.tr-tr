@@ -7,11 +7,11 @@ ms.date: 11/21/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter , devx-track-azurecli
 ms.openlocfilehash: 00addbe992bc113c67df08f73414107d51b3bce5
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748205"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007401"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Azure dosya tabanlı bir birimi Service Fabric bir kafes uygulamasına bağlama 
 
@@ -19,7 +19,7 @@ Bu makalede, bir Azure dosya tabanlı birimin Service Fabric bir kafes uygulamas
 
 Bir hizmete bir birimi bağlamak için, Service Fabric kafes uygulamanızda bir birim kaynağı oluşturun ve sonra bu birime hizmetinize başvurun.  Birim kaynağını bildirmek ve hizmet kaynağında buna başvurmak, [YAML tabanlı kaynak dosyalarında](#declare-a-volume-resource-and-update-the-service-resource-yaml) ya da [JSON tabanlı dağıtım şablonunda](#declare-a-volume-resource-and-update-the-service-resource-json)yapılabilir. Birimi bağlamadan önce Azure dosyalarında bir Azure depolama hesabı ve bir [dosya paylaşma](../storage/files/storage-how-to-create-file-share.md)oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 > [!NOTE]
 > **WINDOWS RS5 geliştirme makinesinde dağıtım ile Ilgili bilinen sorun:** Azurefile birimlerinin bağlanmasını önleyen RS5 Windows makinelerde PowerShell cmdlet 'i New-SmbGlobalMapping açık hata vardır. AzureFile tabanlı birim yerel geliştirme makinesine bağlandığında karşılaşılan örnek hata aşağıda verilmiştir.
 ```
@@ -77,7 +77,7 @@ az storage account keys list --account-name <storageAccountName> --query "[?keyN
 Bu değerleri [Azure Portal](https://portal.azure.com)de bulabilirsiniz:
 * `<storageAccountName>` - **Depolama hesapları** altında, dosya paylaşımının oluşturulması için kullanılan depolama hesabının adı.
 * `<storageAccountKey>` - **Depolama hesapları** altında depolama hesabınızı seçin ve ardından **erişim anahtarları** ' nı seçin ve **KEY1** altındaki değeri kullanın.
-* `<fileShareName>` -  **Depolama hesapları** altında depolama hesabınızı seçin ve ardından **dosyalar** ' ı seçin. Kullanılacak ad, oluşturduğunuz dosya paylaşımının adıdır.
+* `<fileShareName>` -  **Depolama hesapları** altında depolama hesabınızı seçin ve ardından **dosyalar**' ı seçin. Kullanılacak ad, oluşturduğunuz dosya paylaşımının adıdır.
 
 ## <a name="declare-a-volume-resource-and-update-the-service-resource-json"></a>Bir birim kaynağı bildirme ve hizmet kaynağını güncelleştirme (JSON)
 

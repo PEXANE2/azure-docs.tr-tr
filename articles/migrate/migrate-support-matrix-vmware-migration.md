@@ -4,11 +4,11 @@ description: Azure geçişi 'nde VMware VM geçişi desteği hakkında bilgi edi
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.openlocfilehash: 7a7713021683c394e609a302a1aa6fcb282484e5
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544214"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008302"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware geçişi için destek matrisi
 
@@ -19,8 +19,8 @@ Bu makalede, Azure geçişi ile VMware VM 'Leri geçirmeye yönelik destek ayarl
 
 VMware VM 'lerini birkaç yolla geçirebilirsiniz:
 
-- **Aracısız geçiş kullanma** : VM 'leri bunlara hiçbir şey yüklemeye gerek kalmadan geçirin. Aracısız geçiş için [Azure geçişi](migrate-appliance.md) gereci dağıtırsınız.
-- **Aracı tabanlı geçişi kullanma** : VM 'ye çoğaltma için bir aracı yükler. Aracı tabanlı geçiş için bir [çoğaltma](migrate-replication-appliance.md)gereci dağıtırsınız.
+- **Aracısız geçiş kullanma**: VM 'leri bunlara hiçbir şey yüklemeye gerek kalmadan geçirin. Aracısız geçiş için [Azure geçişi](migrate-appliance.md) gereci dağıtırsınız.
+- **Aracı tabanlı geçişi kullanma**: VM 'ye çoğaltma için bir aracı yükler. Aracı tabanlı geçiş için bir [çoğaltma](migrate-replication-appliance.md)gereci dağıtırsınız.
 
 Kullanmak istediğiniz yöntemi öğrenmek için [Bu makaleyi](server-migrate-overview.md) gözden geçirin.
 
@@ -41,7 +41,7 @@ Tablo, VMware hiper yönetici gereksinimlerini özetler.
 --- | ---
 **VMware vCenter Server** | Sürüm 5,5, 6,0, 6,5, 6,7, 7,0.
 **VMware vSphere ESXI Konağı** | Sürüm 5,5, 6,0, 6,5, 6,7, 7,0.
-**vCenter Server izinleri** | Aracısız geçiş, [geçiş](migrate-appliance.md)gereci kullanır. Gereç vCenter Server içinde bu izinlere ihtiyaç duyuyor:<br/><br/> - **DataStore. göz atma** : anlık görüntü oluşturma ve silme sorunlarını GIDERMEK için VM günlük dosyalarına göz atmaya izin verin.<br/><br/> - **DataStore. FileManagement** : anlık görüntü oluşturma ve silme sorunlarını gidermek için veri deposu tarayıcısında okuma/yazma/silme/yeniden adlandırma işlemlerine izin verin.<br/><br/> - **VirtualMachine.Config. ChangeTracking** : VM disklerinin değişiklik izlemesini etkinleştirme veya devre dışı bırakma olanağı, anlık görüntüler arasında değişen veri bloklarını çekme.<br/><br/> - **VirtualMachine.Config. DiskLease** : VMware vSphere sanal disk geliştirme seti 'ni (VDDK) kullanarak diski okumak için BIR VM 'ye yönelik disk Kiralama işlemlerine izin verin.<br/><br/> - **VirtualMachine. sağlama. DiskAccess** : (özellikle vsphere 6,0 ve üzeri için), VDDK kullanarak disk üzerinde rastgele okuma erişimi IÇIN bir VM 'de disk açmaya izin verir.<br/><br/> - **VirtualMachine. sağlama. DiskRandomRead** : VDDK kullanarak diski okumak IÇIN bir VM 'de disk açmaya izin verin.<br/><br/> - **VirtualMachine. sağlama. DiskRandomAccess** : VDDK kullanarak diski okumak IÇIN bir VM 'de disk açmaya izin verin.<br/><br/> - **VirtualMachine. sağlama. GetVmFiles** : bir VM ile ilişkili dosyalardaki okuma işlemlerine izin verir, günlükleri indirebilir ve hata oluşursa sorun giderin.<br/><br/> - **VirtualMachine. State. \* *_: Çoğaltma IÇIN VM anlık görüntülerinin oluşturulmasına ve yönetimine Izin verin. <br/> <br/> -_* VirtualMachine. etkileşimde. poweroff** : Azure 'a GEÇIŞ sırasında sanal makinenin kapatılmasına izin verin.
+**vCenter Server izinleri** | Aracısız geçiş, [geçiş](migrate-appliance.md)gereci kullanır. Gereç vCenter Server içinde bu izinlere ihtiyaç duyuyor:<br/><br/> - **DataStore. göz atma**: anlık görüntü oluşturma ve silme sorunlarını GIDERMEK için VM günlük dosyalarına göz atmaya izin verin.<br/><br/> - **DataStore. FileManagement**: anlık görüntü oluşturma ve silme sorunlarını gidermek için veri deposu tarayıcısında okuma/yazma/silme/yeniden adlandırma işlemlerine izin verin.<br/><br/> - **VirtualMachine.Config. ChangeTracking**: VM disklerinin değişiklik izlemesini etkinleştirme veya devre dışı bırakma olanağı, anlık görüntüler arasında değişen veri bloklarını çekme.<br/><br/> - **VirtualMachine.Config. DiskLease**: VMware vSphere sanal disk geliştirme seti 'ni (VDDK) kullanarak diski okumak için BIR VM 'ye yönelik disk Kiralama işlemlerine izin verin.<br/><br/> - **VirtualMachine. sağlama. DiskAccess**: (özellikle vsphere 6,0 ve üzeri için), VDDK kullanarak disk üzerinde rastgele okuma erişimi IÇIN bir VM 'de disk açmaya izin verir.<br/><br/> - **VirtualMachine. sağlama. DiskRandomRead**: VDDK kullanarak diski okumak IÇIN bir VM 'de disk açmaya izin verin.<br/><br/> - **VirtualMachine. sağlama. DiskRandomAccess**: VDDK kullanarak diski okumak IÇIN bir VM 'de disk açmaya izin verin.<br/><br/> - **VirtualMachine. sağlama. GetVmFiles**: bir VM ile ilişkili dosyalardaki okuma işlemlerine izin verir, günlükleri indirebilir ve hata oluşursa sorun giderin.<br/><br/> - **VirtualMachine. State. \* *_: Çoğaltma IÇIN VM anlık görüntülerinin oluşturulmasına ve yönetimine Izin verin. <br/> <br/> -_* VirtualMachine. etkileşimde. poweroff**: Azure 'a GEÇIŞ sırasında sanal makinenin kapatılmasına izin verin.
 
 
 
@@ -128,7 +128,7 @@ Tablo, aracı tabanlı geçiş kullanarak geçirmek istediğiniz VMware VM 'Leri
 **NFS** | VM 'Lere birim olarak bağlanmış NFS birimleri çoğaltılmaz.
 **Iscsı hedefleri** | Destekleniyor.
 **Çok yollu GÇ** | Desteklenmez.
-**Depolama vMotion** | Destekleniyor
+**Depolama vMotion** | Desteklenir
 **Ekip oluşturulmuş NIC 'ler** | Desteklenmez.
 **IPv6** | Desteklenmez.
 

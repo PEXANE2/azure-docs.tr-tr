@@ -12,39 +12,13 @@
     - name: Ortamınızı ayarlama
       href: set-up-environment.md
     - name: IoT Hub’a cihaz bağlama
-      items:
-        - name: C
-          href: quickstart-connect-device-c.md
-        - name: Node.js
-          href: quickstart-connect-device-node.md
-        - name: Python
-          href: quickstart-connect-device-python.md
-        - name: C#
-          href: quickstart-connect-device-csharp.md
-        - name: Java
-          href: quickstart-connect-device-java.md
+      href: quickstart-connect-device.md
     - name: Çözümünüzden bir cihazla etkileşim kurma
-      items:
-        - name: Node.js
-          href: quickstart-service-node.md
-        - name: Python
-          href: quickstart-service-python.md
-        - name: C#
-          href: quickstart-service-csharp.md
-        - name: Java
-          href: quickstart-service-java.md
+      href: quickstart-service.md
 - name: Öğreticiler
   items:
-    - name: Çok bileşenli bir cihaza bağlanma (C)
-      href: tutorial-multiple-components-c.md
-    - name: Çok bileşenli bir cihaza bağlanma (C#)
-      href: tutorial-multiple-components-csharp.md
-    - name: Çok bileşenli bir cihaza bağlanma (Java)
-      href: tutorial-multiple-components-java.md
-    - name: Çok bileşenli bir cihaza bağlanma (Node.js)
-      href: tutorial-multiple-components-node.md
-    - name: Çok bileşenli bir cihaza bağlanma (Python)
-      href: tutorial-multiple-components-python.md
+    - name: Çok bileşenli bir cihaza bağlanma
+      href: tutorial-multiple-components.md
     - name: Cihazı bağlamak için MQTT kullanma
       href: tutorial-use-mqtt.md
     - name: MXChip cihazıyla etkileşim kurma (Örnek)
@@ -58,17 +32,7 @@
     - name: Mimari
       href: concepts-architecture.md
     - name: Cihaz geliştirici kılavuzu
-      items:
-        - name: C#
-          href: concepts-developer-guide-device-csharp.md
-        - name: Node.js
-          href: concepts-developer-guide-device-node.md
-        - name: Java
-          href: concepts-developer-guide-device-java.md
-        - name: Python
-          href: concepts-developer-guide-device-python.md
-        - name: C
-          href: concepts-developer-guide-device-c.md
+      href: concepts-developer-guide-device.md
     - name: Hizmet geliştirici kılavuzu
       href: concepts-developer-guide-service.md
     - name: Bileşenler

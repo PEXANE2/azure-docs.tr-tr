@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 580181aaaea975ee07bcec8108297079c5373b92
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320421"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007418"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Ekip veri bilimi Işlemi işlem içinde: SQL Server kullanma
 Bu öğreticide, SQL Server ve genel kullanıma açık bir veri kümesi ( [NYC TAXI gezileri](https://www.andresmh.com/nyctaxitrips/) veri kümesi) kullanarak makine öğrenimi modeli oluşturma ve dağıtma sürecini adım adım ilerleyebilirsiniz. Yordam standart bir veri bilimi iş akışını izler: verileri alma ve araştırma, eğitim kolaylaştırmak ve bir model derlemek ve dağıtmak için mühendislik özellikleri.
@@ -125,7 +125,7 @@ Bir SQL veritabanına büyük miktarlarda veri yükleme/aktarma performansı ve 
     ![Betiği Yürüt][13]
 4. Yeni oluşturulan veritabanlarının bir veri diskinde depolandığından emin olmak için SQL Server varsayılan veritabanı ve günlük klasörlerini doğrulayın ve/veya değiştirin. Veri ambarı yüklemeleri için en iyi duruma getirilmiş SQL Server VM görüntüsü, veri ve günlük disklerle önceden yapılandırılmıştır. VM 'niz bir veri diski içermiyorsa ve VM kurulum işlemi sırasında yeni sanal sabit diskler eklediyseniz, varsayılan klasörleri aşağıdaki gibi değiştirin:
    
-   * Sol panelde SQL Server adına sağ tıklayın ve **Özellikler** ' e tıklayın.
+   * Sol panelde SQL Server adına sağ tıklayın ve **Özellikler**' e tıklayın.
      
        ![SQL Server özellikleri][14]
    * Sol taraftaki **bir sayfa seçin** listesinden **veritabanı ayarları** ' nı seçin.
@@ -151,7 +151,7 @@ Bir SQL veritabanına büyük miktarlarda veri yükleme/aktarma performansı ve 
     Kimlik doğrulama modunu da seçebilirsiniz, varsayılan Windows kimlik doğrulamadır. Çalıştırmak için araç çubuğundaki yeşil oka tıklayın. Betik, her bölümlenmiş tablo için paralel, 12 ' de 24 toplu içeri aktarma işlemi başlatacaktır. Yukarıdaki SQL Server varsayılan veri klasörünü açarak veri alma ilerlemesini izleyebilirsiniz.
 9. PowerShell betiği başlangıç ve bitiş zamanlarını raporlar. Tüm toplu almalar tamamlandığında, bitiş saati raporlanır. Toplu içeri aktarmaların başarılı olduğunu, yani hedef günlük klasöründe bildirilen bir hata olmadığını doğrulamak için hedef günlük klasörünü denetleyin.
 10. Veritabanınız artık, istenen şekilde araştırma, özellik Mühendisliği ve diğer işlemler için hazırdır. Tablolar **toplama \_ Tarih saat** alanına göre bölümlendiğinden, **WHERE** yan tümcesindeki **toplama \_ Tarih saat** koşullarını içeren sorgular, bölüm düzeninden yarar olacaktır.
-11. **SQL Server Management Studio** ' de, sunulan örnek betik **örnek \_ sorguları. SQL** ' i gezin. Örnek sorgulardan herhangi birini çalıştırmak için, sorgu satırlarını vurgulayın, ardından araç çubuğunda **Yürüt** ' e tıklayın.
+11. **SQL Server Management Studio**' de, sunulan örnek betik **örnek \_ sorguları. SQL**' i gezin. Örnek sorgulardan herhangi birini çalıştırmak için, sorgu satırlarını vurgulayın, ardından araç çubuğunda **Yürüt** ' e tıklayın.
 12. NYC TAXI gidiş verileri iki ayrı tabloya yüklenir. JOIN işlemlerini geliştirmek için tabloların dizinlemek kesinlikle önerilir. Örnek betik **\_ bölümlenmiş dizin oluşturma \_ . SQL** bileşik JOIN anahtarında **ıntalon, Hack \_ lisansı ve Pickup \_ Tarih/çekme** değeri üzerinde bölümlenmiş dizinler oluşturur.
 
 ## <a name="data-exploration-and-feature-engineering-in-sql-server"></a><a name="dbexplore"></a>SQL Server 'de veri araştırması ve özellik Mühendisliği
@@ -258,10 +258,10 @@ AND   pickup_longitude != '0' AND dropoff_longitude != '0'
 ```
 
 #### <a name="feature-engineering-in-sql-queries"></a>SQL sorgularında Özellik Mühendisliği
-Etiket oluşturma ve Coğrafya dönüştürme araştırması sorguları, sayım bölümünü kaldırarak Etiketler/özellikler oluşturmak için de kullanılabilir. Ek özellik Mühendisliği SQL örnekleri, [IPython Not defteri 'Ndeki veri araştırma ve özellik Mühendisliği](#ipnb) bölümünde verilmiştir. Özellik oluşturma sorgularını tam veri kümesinde veya doğrudan SQL Server veritabanı örneğinde çalışan SQL sorgularını kullanarak büyük bir alt kümesinde çalıştırmak daha etkilidir. Sorgular **SQL Server Management Studio** , IPython Not defteri 'nde veya veritabanına yerel olarak veya uzaktan erişebilen herhangi bir geliştirme aracında veya ortamda çalıştırılabilir.
+Etiket oluşturma ve Coğrafya dönüştürme araştırması sorguları, sayım bölümünü kaldırarak Etiketler/özellikler oluşturmak için de kullanılabilir. Ek özellik Mühendisliği SQL örnekleri, [IPython Not defteri 'Ndeki veri araştırma ve özellik Mühendisliği](#ipnb) bölümünde verilmiştir. Özellik oluşturma sorgularını tam veri kümesinde veya doğrudan SQL Server veritabanı örneğinde çalışan SQL sorgularını kullanarak büyük bir alt kümesinde çalıştırmak daha etkilidir. Sorgular **SQL Server Management Studio**, IPython Not defteri 'nde veya veritabanına yerel olarak veya uzaktan erişebilen herhangi bir geliştirme aracında veya ortamda çalıştırılabilir.
 
 #### <a name="preparing-data-for-model-building"></a>Model oluşturma için veriler hazırlanıyor
-Aşağıdaki sorgu **nyctaxi \_ seyahat** ve **nyctaxi \_ tarifeli havayolu** tablolarını birleştirir, bir ikili sınıflandırma etiketi olarak **eğimli** , çok sınıflı bir sınıflandırma etiketi **İpucu \_ sınıfı** oluşturur ve tam olarak birleştirilmiş veri kümesinden bir %1 rastgele örnek ayıklar. Bu sorgu, doğrudan Azure 'daki SQL Server veritabanı örneğinden doğrudan veri alımı için [Azure Machine Learning Studio](https://studio.azureml.net) [veri alma][import-data] modülüne doğrudan yapıştırılabilir. Sorgu kayıtları yanlış (0, 0) koordinatlarla dışlar.
+Aşağıdaki sorgu **nyctaxi \_ seyahat** ve **nyctaxi \_ tarifeli havayolu** tablolarını birleştirir, bir ikili sınıflandırma etiketi olarak **eğimli**, çok sınıflı bir sınıflandırma etiketi **İpucu \_ sınıfı** oluşturur ve tam olarak birleştirilmiş veri kümesinden bir %1 rastgele örnek ayıklar. Bu sorgu, doğrudan Azure 'daki SQL Server veritabanı örneğinden doğrudan veri alımı için [Azure Machine Learning Studio](https://studio.azureml.net) [veri alma][import-data] modülüne doğrudan yapıştırılabilir. Sorgu kayıtları yanlış (0, 0) koordinatlarla dışlar.
 
 ```sql
 SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
@@ -437,7 +437,7 @@ plt.scatter(df1['passenger_count'], df1['trip_distance'])
 Bu bölümde, Örneklenmiş ve uygulanan verileri tutacak yeni bir tablo oluşturacağız. Model oluşturma için doğrudan SQL sorgusunun bir örneği, [SQL Server bölümündeki veri araştırma ve özellik Mühendisliği](#dbexplore) bölümünde verilmiştir.
 
 #### <a name="create-a-sample-table-and-populate-with-1-of-the-joined-tables-drop-table-first-if-it-exists"></a>Örnek tablo oluşturun ve birleştirilmiş tabloların %1 ' iyle doldurun. Varsa tabloyu önce bırakın.
-Bu bölümde, **nyctaxi \_ seyahat** ve **nyctaxi \_ tarifeli havayolu** tablolarına katılıyoruz, %1 rastgele bir örnek ayıkladık ve örneklenen verileri yeni bir tablo adında kalıcı olarak **\_ bir \_ yüzde nyctaxi** :
+Bu bölümde, **nyctaxi \_ seyahat** ve **nyctaxi \_ tarifeli havayolu** tablolarına katılıyoruz, %1 rastgele bir örnek ayıkladık ve örneklenen verileri yeni bir tablo adında kalıcı olarak **\_ bir \_ yüzde nyctaxi**:
 
 ```sql
 cursor = conn.cursor()
@@ -653,7 +653,7 @@ Bu alıştırmada, SQL Server verileri zaten araştırmış ve sunduk ve örnek 
 2. **Özellikler** panelinde **veri kaynağı** olarak **Azure SQL veritabanı** ' nı seçin.
 3. Veritabanı **sunucusu adı** ALANıNA veritabanı DNS adını girin. Formatını `tcp:<your_virtual_machine_DNS_name>,1433`
 4. Karşılık gelen alana **veritabanı adını** girin.
-5. **Sunucu Kullanıcı hesabı adı** ' na **SQL Kullanıcı adı** ' nı ve **sunucu Kullanıcı hesabı parolasıyla** **parolayı** girin.
+5. **Sunucu Kullanıcı hesabı adı**' na **SQL Kullanıcı adı** ' nı ve **sunucu Kullanıcı hesabı parolasıyla** **parolayı** girin.
 7. **Veritabanı sorgusu** düzenleme metin alanında, gerekli veritabanı alanlarını (Etiketler gibi hesaplanan alanlar da dahil olmak üzere) çıkaran sorguyu yapıştırın ve verileri istenen örnek boyutuna doğru örnekleyin.
 
 Doğrudan SQL Server veritabanından veri okumayı denemek için ikili sınıflandırmanın bir örneği aşağıdaki şekilde yapılır. Birden çok Lass sınıflandırması ve gerileme sorunları için benzer denemeleri oluşturulabilir.
@@ -661,7 +661,7 @@ Doğrudan SQL Server veritabanından veri okumayı denemek için ikili sınıfla
 ![Azure Machine Learning eğitme][10]
 
 > [!IMPORTANT]
-> Önceki bölümlerde sağlanan modelleme veri ayıklama ve örnekleme sorgusu örneklerinde, **üç modellemeye yönelik tüm Etiketler sorguya dahil** edilmiştir. Modelleme alýþtýrmalarının her birinde önemli (gerekli) bir adım, diğer iki soruna ve diğer **hedef sızıntılara** yönelik gereksiz etiketleri **dışlayamazsınız** . Örneğin, ikili sınıflandırma kullanırken, **eğimli** etiketini kullanın ve alanları **İpucu \_ sınıfı** , **tıp \_ tutarı** ve **Toplam \_ miktarı** hariç tutun. İkincisi, ücretli olduğunu gösterdiğinden bu yana hedef sızıntılardır.
+> Önceki bölümlerde sağlanan modelleme veri ayıklama ve örnekleme sorgusu örneklerinde, **üç modellemeye yönelik tüm Etiketler sorguya dahil** edilmiştir. Modelleme alýþtýrmalarının her birinde önemli (gerekli) bir adım, diğer iki soruna ve diğer **hedef sızıntılara** yönelik gereksiz etiketleri **dışlayamazsınız** . Örneğin, ikili sınıflandırma kullanırken, **eğimli** etiketini kullanın ve alanları **İpucu \_ sınıfı**, **tıp \_ tutarı** ve **Toplam \_ miktarı** hariç tutun. İkincisi, ücretli olduğunu gösterdiğinden bu yana hedef sızıntılardır.
 > 
 > Gereksiz sütunları ve/veya hedef sızıntılarını dışlamak için, [veri kümesi modülünde sütunları seç][select-columns] veya [Veri Düzenle][edit-metadata]' yi kullanabilirsiniz. Daha fazla bilgi için bkz. [veri kümesindeki sütunları seçme][select-columns] ve [meta veri][edit-metadata] başvuru sayfalarını düzenleme.
 > 
