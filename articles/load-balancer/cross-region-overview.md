@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 8b2f8e82cac1d26689659286a5a0f81f06fb68ca
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: f0630599c7c52f11a4cf3153bae38ad2d515b6bc
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695070"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029770"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Bölgeler arası yük dengeleyici (Önizleme)
 
@@ -35,7 +35,7 @@ Azure Standart Load Balancer, coğrafi olarak yedekli HA senaryolarına olanak s
 * Öğrenme eğrisi olmadan [mevcut yük dengeleyici çözümünde derleme](#build-cross-region-solution-on-existing-azure-load-balancer)
 
 > [!IMPORTANT]
-> Bölgeler arası yük dengeleyici Şu anda önizleme aşamasındadır ve genel kullanıma sunulmamaktadır.  Çapraz bölge yük dengeleyici önizlemesine erişmek için, bkz: [crossregionlb@microsoft.com](mailto:crossregionlb@microsoft.com) . </br> </br>
+> Çapraz bölge yük dengeleyici Şu anda Önizleme portalında önizleme aşamasındadır ve gizleniyor. **https://preview.portal.azure.com/?feature.globallb=true** Özelliği görüntülemek ve dağıtmak için oturum açın... </br> </br>
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Bölgeler arası yük dengeleme, bölgesel standart yük dengeleyici olarak yüksek performanslı ve düşük gecikme süreleriyle aynı avantajları sunar. 
@@ -101,7 +101,7 @@ Yüksek oranda kullanılabilir ve çapraz bölge dağıtımı için mevcut yük 
 * Batı ABD
 * West Europe
 * Güneydoğu Asya
-* Central US
+* Orta ABD
 * Kuzey Avrupa
 * Doğu Asya
 
@@ -149,6 +149,6 @@ Bölgeler arası yük dengeleyici, standart yük dengeleyicinin [SLA 'sını](ht
  
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Yük dengeleyici kullanmaya başlamak için bkz. [Genel Standart yük dengeleyici oluşturma](quickstart-load-balancer-standard-public-portal.md) .
+- Bir çapraz bölge yük dengeleyici oluşturmak için [Azure Portal kullanarak bir çapraz bölge yük dengeleyici oluşturun. öğreticiye](tutorial-cross-region-portal.md) bakın.
+- Standart bölgesel yük dengeleyici oluşturmak için bkz. [Genel Standart yük dengeleyici oluşturma](quickstart-load-balancer-standard-public-portal.md) .
 - [Azure Load Balancer](load-balancer-overview.md)hakkında daha fazla bilgi edinin.
-- Yük dengeleyici [SSS](load-balancer-faqs.md)

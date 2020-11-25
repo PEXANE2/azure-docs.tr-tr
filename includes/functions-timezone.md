@@ -1,10 +1,15 @@
 ---
-ms.openlocfilehash: dba7a3cc7a68d360fd6e56511b71ae364f624646
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: ggailey777
+ms.service: azure-functions
+ms.topic: include
+ms.date: 09/20/2020
+ms.author: glenga
+ms.openlocfilehash: 7d1bf8dd2d1c8feab8b051a8edad7d5e570ee11b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569296"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026924"
 ---
 CRON ifadeleriyle kullanılan varsayılan saat dilimi Eşgüdümlü Evrensel Saat (UTC) ' dir. CRON ifadenizi başka bir saat dilimine göre oluşturmak için adlı işlev uygulamanız için bir uygulama ayarı oluşturun `WEBSITE_TIME_ZONE` . 
 
@@ -12,22 +17,16 @@ Bu ayarın değeri, işlev uygulamanızın çalıştırıldığı işletim siste
 
 |İşletim sistemi |Planlama |Değer |
 |-|-|-|
-| **Windows** |Tümü | Değeri, [Microsoft saat dilimi dizininde](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-vista/cc749073(v=ws.10))gösterildiği gibi istenen saat diliminin adı olarak ayarlayın. |
+| **Windows** |Tümü | Değeri, istenen saat diliminin, Windows komutu tarafından verilen her çiftin ikinci satırı tarafından verilen adı olarak ayarlayın `tzutil.exe /L` |
 | **Linux** |Premium<br/>Ayrılmış |Değeri, [TZ veritabanında](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)gösterildiği gibi istenen saat diliminin adı olarak ayarlayın. |
 
 > [!NOTE]
 > `WEBSITE_TIME_ZONE` , Linux tüketim planında Şu anda desteklenmiyor.
 
-Örneğin, *Doğu Standart Saati* (Windows) veya *Amerika/New_York* (Linux) UTC-05:00 ' dir. Zamanlayıcı tetikleyicinizin her gün 10:00 ' de tetiklenmesi için, UTC saat dilimi hesaplarının aşağıdaki NCRONTAB ifadesini kullanın:
-
-```
-"0 0 15 * * *"
-``` 
-
-Ya da işlev uygulamanız için adlı bir uygulama ayarı oluşturun `WEBSITE_TIME_ZONE` , değeri `Eastern Standard Time` (Windows) veya `America/New_York` (Linux) olarak ayarlayın ve ardından aşağıdaki ncrontab ifadesini kullanın: 
+Örneğin, ABD 'deki Doğu saati ( `Eastern Standard Time` (Windows) veya `America/New_York` (Linux)) Şu anda, standart saat boyunca utc-05:00, yaz saatı sırasında utc-04:00 kullanıyor. Her gün saat 10:00 ' de bir Zamanlayıcı tetikleyicisi tetiklenmesi için, işlev uygulamanız için adlı bir uygulama ayarı oluşturun `WEBSITE_TIME_ZONE` , değeri `Eastern Standard Time` (Windows) veya `America/New_York` (Linux) olarak ayarlayın ve ardından aşağıdaki ncrontab ifadesini kullanın: 
 
 ```
 "0 0 10 * * *"
 ``` 
 
-' I kullandığınızda, saat, belirli bir saat dilimlerinde `WEBSITE_TIME_ZONE` yaz tasarrufu süresi gibi zaman değişikliği için ayarlanır. 
+`WEBSITE_TIME_ZONE`Saati kullandığınızda, gün ışığından yararlanma saati ve standart zamanda değişiklikler dahil olmak üzere belirli bir saat dilimindeki zaman değişikliklerine göre ayarlanır.

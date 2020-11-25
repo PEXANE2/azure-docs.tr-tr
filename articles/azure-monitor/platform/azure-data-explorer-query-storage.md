@@ -7,12 +7,12 @@ ms.author: bwren
 ms.reviewer: bwren
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 8710e0cdd6c930338009fb2b7f3bd98fafcfad3e
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.openlocfilehash: 18ece47187e3f83277d7d925ad958d2ede7cb337
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95411572"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030025"
 ---
 # <a name="query-exported-data-from-azure-monitor-using-azure-data-explorer-preview"></a>Azure Veri Gezgini kullanarak Azure Izleyici 'den aktarılmış verileri sorgulama (Önizleme)
 Azure Izleyici 'den bir Azure depolama hesabına veri aktarma, düşük maliyetli bekletme ve günlükleri farklı bölgelere yeniden tahsis etme olanağı sağlar. Log Analytics çalışma alanlarınızdan aktarılmış verileri sorgulamak için Azure Veri Gezgini kullanın. Yapılandırıldıktan sonra, çalışma alanlarınızdan bir Azure depolama hesabına gönderilen desteklenen tablolar Azure Veri Gezgini için bir veri kaynağı olarak kullanılabilir.
@@ -122,7 +122,7 @@ Aşağıdaki görüntüde çıktının bir örneği gösterilir.
 
 >[!TIP]
 >* Tablo ve eşleme oluşturmak için Azure Veri Gezgini istemci aracındaki betiğin çıktısını kopyalayın, yapıştırın ve çalıştırın.
->* Kapsayıcının içindeki tüm verileri kullanmak istiyorsanız, betiği değiştirebilir ve URL 'YI '; ' olarak değiştirebilirsiniz https://your.blob.core.windows.net/containername SecKey '
+>* Kapsayıcının içindeki tüm verileri kullanmak için betiği değiştirip URL 'YI '; olarak değiştirin https://your.blob.core.windows.net/containername . SecKey '
 
 ## <a name="query-the-exported-data-from-azure-data-explorer"></a>Azure Veri Gezgini aktarılmış verileri sorgulama 
 

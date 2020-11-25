@@ -7,12 +7,12 @@ ms.topic: include
 author: mingshen-ms
 ms.author: krsh
 ms.date: 10/20/2020
-ms.openlocfilehash: ecbafe0d3f39b1bd6f7c494695ea17e067f0c79e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 6c7536e38a0d2cf7d4e906947aff645c74e459c0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129307"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027103"
 ---
 ## <a name="generalize-the-image"></a>Görüntüyü genelleştirin
 
@@ -41,13 +41,13 @@ Aşağıdaki işlem bir Linux sanal makinesini genelleştirir ve ayrı bir VM ol
 ### <a name="take-a-snapshot-of-the-vm-disk"></a>VM diskinin anlık görüntüsünü alın
 
 1. [Azure portalında](https://ms.portal.azure.com/) oturum açın.
-2. Sol üst taraftan başlayarak, **kaynak oluştur** ' u seçin, sonra da arama yapın ve **anlık görüntü** ' i seçin.
-3. Anlık görüntü dikey penceresinde  **Oluştur** ' u seçin.
+2. Sol üst taraftan başlayarak, **kaynak oluştur**' u seçin, sonra da arama yapın ve **anlık görüntü**' i seçin.
+3. Anlık görüntü dikey penceresinde  **Oluştur**' u seçin.
 4. Anlık görüntü için bir **ad** girin.
 5. Var olan bir kaynak grubunu seçin veya yeni bir kaynak grubu adı girin.
 6. **Kaynak disk** için, anlık görüntü yapılacak yönetilen diski seçin.
 7. Anlık görüntüyü depolamak için kullanılacak **hesap türünü** seçin. Yüksek performanslı bir SSD üzerinde depolanmış olması gerekmedikçe **Standart HDD** kullanın.
-8. **Oluştur** ’u seçin.
+8. **Oluştur**’u seçin.
 
 #### <a name="extract-the-vhd"></a>VHD 'YI Ayıkla
 
@@ -81,7 +81,7 @@ destinationVHDFileName=myvhdfilename.vhd
 
 az account set --subscription $subscriptionId
 
-sas=$(az snapshot grant-access --resource-group $resourceGroupName --name $ snapshotName --duration-in-seconds $sasExpiryDuration --query [accessSas] -o tsv)
+sas=$(az snapshot grant-access --resource-group $resourceGroupName --name $snapshotName --duration-in-seconds $sasExpiryDuration --query [accessSas] -o tsv)
 
 az storage blob copy start --destination-blob $destinationVHDFileName --destination-container $storageContainerName --account-name $storageAccountName --account-key $storageAccountKey --source-uri $sas
 ```

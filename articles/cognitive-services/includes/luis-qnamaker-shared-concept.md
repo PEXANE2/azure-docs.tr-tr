@@ -1,18 +1,18 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: cognitive-services
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
 ms.custom: include file
 ms.date: 04/16/2020
-ms.openlocfilehash: ac0192da3afa76c3c21056f218f2b249c44d1c36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78b93c05621754ae499e4ae8ca6b66c5bbfaad1b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87133936"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026938"
 ---
 Bilişsel hizmetler, [Language Understanding](../luis/what-is-luis.md) ve [soru-cevap oluşturma](../qnamaker/overview/overview.md)her biri farklı bir amaca sahip iki doğal dil işleme hizmeti sağlar. Her bir hizmetin ne zaman kullanılacağını ve birbirini nasıl zorluk yaptığını anlayın.
 
@@ -71,11 +71,11 @@ Bu üçüncü taraf yanıtını doğrulama için kullanıcıya sunabilirsiniz. K
 
 Sohbet botunuzun hizmetin sağladığından daha fazla bilgiye ihtiyacı varsa, bir karar ağacına devam etmek için her iki hizmeti kullanın ve istemci uygulamasında her iki yanıtı da işleyin.
 
-Her iki hizmet ile birlikte çalışmak üzere bir işlem oluşturmaya yardımcı olmak için bot Framework **[DISPATCH CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** aracını kullanın. Bu araç, BASıS ve Soru-Cevap Oluşturma arasında dağıtım yapan bir amaç uygulaması oluşturur. Lune, Soru-Cevap Oluşturma ve bot çerçevesiyle tümleştirme hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=cs) .
+Her iki hizmet ile birlikte çalışmak üzere bir işlem oluşturmaya yardımcı olmak için bot Framework **[DISPATCH CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** aracını kullanın. Bu araç, BASıS ve Soru-Cevap Oluşturma arasında dağıtım yapan bir amaç uygulaması oluşturur. Lune, Soru-Cevap Oluşturma ve bot çerçevesiyle tümleştirme hakkında [daha fazla bilgi edinin](/azure/bot-service/bot-builder-tutorial-dispatch?tabs=cs&view=azure-bot-service-4.0) .
 
 Bu tür sohbet bot 'ı uygulamak için, bot Oluşturucu örneği **olan NLP 'yi Dispatch**, [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) veya [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)ile birlikte kullanın.
 
-## <a name="best-practices"></a>Önerilen uygulamalar
+## <a name="best-practices"></a>En iyi uygulamalar
 
 Her hizmet için en iyi yöntemleri uygulayın:
 
@@ -88,6 +88,6 @@ Her hizmet için en iyi yöntemleri uygulayın:
 * [Soru-Cevap Oluşturma](../qnamaker/overview/overview.md)
 * [CLı dağıtma](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)
 * [Bot Framework örnekleri](https://github.com/Microsoft/BotBuilder-Samples)
-* [Azure bot hizmeti](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
+* [Azure bot hizmeti](/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
 * [Azure bot öykünücüsü](https://github.com/Microsoft/BotFramework-Emulator)
 * [Bot Framework Web sohbeti](https://github.com/microsoft/BotFramework-WebChat)

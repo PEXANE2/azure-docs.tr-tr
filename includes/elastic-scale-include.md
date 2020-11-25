@@ -4,12 +4,12 @@ ms.service: sql-database
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: sstein
-ms.openlocfilehash: 1462f0dbeb45edeed964c24585b1fbc948f74233
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05971b76c36da51b10bd1434e784c08b4903a0f5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84013252"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027330"
 ---
 ## <a name="additional-resources"></a>Ek kaynaklar
-Henüz elastik veritabanı araçları kullanmıyor musunuz? [Başlarken kılavuzumuza](../articles/azure-sql/database/elastic-scale-get-started.md)göz atın.  Sorularınız için lütfen SQL veritabanı ve özellik istekleri için [Microsoft Q&soru sayfasında](https://docs.microsoft.com/answers/topics/azure-sql-database.html) bize ulaşın, lütfen bunları [SQL veritabanı geri bildirim forumuna](https://feedback.azure.com/forums/217321-sql-database/)ekleyin.
+Henüz elastik veritabanı araçları kullanmıyor musunuz? [Başlarken kılavuzumuza](../articles/azure-sql/database/elastic-scale-get-started.md)göz atın.  Sorularınız için lütfen SQL veritabanı ve özellik istekleri için [Microsoft Q&soru sayfasında](/answers/topics/azure-sql-database.html) bize ulaşın, lütfen bunları [SQL veritabanı geri bildirim forumuna](https://feedback.azure.com/forums/217321-sql-database/)ekleyin.

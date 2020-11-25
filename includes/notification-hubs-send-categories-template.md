@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: notification-hubs
 author: sethmanheim
 ms.service: notification-hubs
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/07/2019
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: 48907713082ebb1008ad963121671b36af7f2731
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bfd5d42d83046c9c5b0bc3a78fabec08da5da646
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74228172"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028040"
 ---
 Bu bölümde, son dakika haberlerini .NET konsol uygulamasından etiketli şablon bildirimleri olarak yollarsınız.
 
@@ -21,7 +21,7 @@ Bu bölümde, son dakika haberlerini .NET konsol uygulamasından etiketli şablo
     1. Menüde **Dosya**  >  **Yeni**  >  **Proje**' yi seçin.
     1. **Yeni proje oluştur**' da, şablonlar listesinde C# için **konsol uygulaması (.NET Framework)** öğesini seçin ve **İleri**' yi seçin.
     1. Uygulama için bir ad girin.
-    1. **Çözüm**için, **çözüme Ekle**' yi seçin ve projeyi oluşturmak için **Oluştur** ' u seçin.
+    1. **Çözüm** için, **çözüme Ekle**' yi seçin ve projeyi oluşturmak için **Oluştur** ' u seçin.
 
 1. **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **Paket Yöneticisi konsolu** ' nu seçin ve ardından konsol penceresinde aşağıdaki komutu çalıştırın:
 
@@ -83,7 +83,7 @@ Bu bölümde, son dakika haberlerini .NET konsol uygulamasından etiketli şablo
 
 <!-- URLs. -->
 [Get started with Notification Hubs]: ../articles/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
-[Notification Hubs REST interface]: https://msdn.microsoft.com/library/windowsazure/dn223264.aspx
-[Add push notifications for Mobile Apps]: ../articles/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md
+[Notification Hubs REST interface]: /previous-versions/azure/reference/dn223264(v=azure.100)
+[Add push notifications for Mobile Apps]: /previous-versions/azure/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push
 [How to use Notification Hubs from Java or PHP]: ../articles/notification-hubs/notification-hubs-java-push-notification-tutorial.md
 [Microsoft. Azure. Notificationhub 'Lar]: http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/

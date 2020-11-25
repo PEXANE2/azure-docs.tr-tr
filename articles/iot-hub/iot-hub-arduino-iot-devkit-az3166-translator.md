@@ -10,11 +10,11 @@ ms.date: 12/19/2018
 ms.author: liydu
 ms.custom: devx-track-csharp
 ms.openlocfilehash: be26c6fe03dac9b9ff9dbff4a2bdce391ec0837e
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147872"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024172"
 ---
 # <a name="use-iot-devkit-az3166-with-azure-functions-and-cognitive-services-to-make-a-language-translator"></a>Azure Işlevleri ve bilişsel hizmetler ile IoT DevKit AZ3166 kullanarak bir dil Çeviricisi oluşturun
 
@@ -30,7 +30,7 @@ Bu öğreticideki adımları tamamlayabilmeniz için önce aşağıdaki görevle
 
 ## <a name="create-azure-cognitive-service"></a>Azure bilişsel hizmeti oluşturma
 
-1. Azure portal, **kaynak oluştur ' a** tıklayın ve **konuşma**için arama yapın. Konuşma Hizmeti oluşturmak için formu doldurun.
+1. Azure portal, **kaynak oluştur ' a** tıklayın ve **konuşma** için arama yapın. Konuşma Hizmeti oluşturmak için formu doldurun.
   ![Konuşma hizmeti](media/iot-hub-arduino-iot-devkit-az3166-translator/speech-service.png)
 
 1. Yeni oluşturduğunuz konuşma hizmetine gidin, **KEY1** for devkit 'e erişimi kopyalamak ve ona erişmek için **anahtarlar** Bölümü ' ne tıklayın.
@@ -84,14 +84,14 @@ Bu öğreticideki adımları tamamlayabilmeniz için önce aşağıdaki görevle
 ## <a name="build-and-upload-device-code"></a>Cihaz kodunu derleme ve karşıya yükleme
 
 1. DevKit 'i **yapılandırma moduna** şu şekilde değiştirin:
-   * Düğme **A**tuşunu basılı tutun.
+   * Düğme **A** tuşunu basılı tutun.
    * Basın ve serbest bırak **sıfırlama** düğmesi.
 
-   Bu ekranda, DevKit KIMLIĞI ve **yapılandırmasını**görürsünüz.
+   Bu ekranda, DevKit KIMLIĞI ve **yapılandırmasını** görürsünüz.
 
    ![DevKit yapılandırma modu](media/iot-hub-arduino-iot-devkit-az3166-translator/devkit-configuration-mode.png)
 
-1. Tıklayın `F1` ve **Azure IoT cihaz çalışma ekranı: cihaz ayarlarını yapılandır... > config cihaz bağlantı dizesini**seçin. **IoT Hub cihaz bağlantı dizesi Seç** ' i seçerek devkit 'e yapılandırın.
+1. Tıklayın `F1` ve **Azure IoT cihaz çalışma ekranı: cihaz ayarlarını yapılandır... > config cihaz bağlantı dizesini** seçin. **IoT Hub cihaz bağlantı dizesi Seç** ' i seçerek devkit 'e yapılandırın.
    ![Bağlantı dizesini Yapılandır](media/iot-hub-arduino-iot-devkit-az3166-translator/configure-connection-string.png)
 
 1. Başarılı bir şekilde tamamlandıktan sonra bildirimi görürsünüz.

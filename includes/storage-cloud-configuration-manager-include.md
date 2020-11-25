@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: cedfd719a5f0aeed6fc2e932d3aa5189b83c9796
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95560182"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028538"
 ---
 [.NET için Microsoft Azure Yapılandırma Yöneticisi Kitaplığı](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/), yapılandırma dosyasından bağlantı dizesini ayrıştırmak için bir sınıf sağlar. [Cloudconfigurationmanager](/previous-versions/azure/reference/mt634650(v=azure.100)) sınıfı yapılandırma ayarlarını ayrıştırır. Masaüstünde, bir mobil cihazda, bir Azure sanal makinesinde veya Azure bulut hizmetinde çalışan istemci uygulamalarına yönelik ayarları ayrıştırır.
 

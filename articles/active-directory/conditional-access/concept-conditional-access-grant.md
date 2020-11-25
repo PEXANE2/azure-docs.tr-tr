@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ef2d233024ab3e9cd086e8285e681dc9f42f3f7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a8915ae349e33390ce5bb687d7c07a21665a0258
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "95904027"
+ms.locfileid: "96029413"
 ---
 # <a name="conditional-access-grant"></a>Koşullu erişim: ver
 
@@ -108,7 +108,7 @@ Bu ayar, aşağıdaki iOS ve Android uygulamaları için geçerlidir:
 - Onaylanan istemci uygulamaları, Intune mobil uygulama yönetimi özelliğini destekler.
 - **Onaylanan istemci uygulaması gereksinimini gerektir** :
    - Yalnızca iOS ve Android for Device platform koşulunu destekler.
-   - Cihazı kaydetmek için bir aracı uygulaması gereklidir. İOS 'ta, aracı uygulaması Microsoft Authenticator ve Android üzerinde Intune Şirket Portalı uygulamasıdır.
+   - Cihazı kaydetmek için bir aracı uygulaması gereklidir. Aracı uygulaması iOS için Microsoft Authenticator veya Android cihazları için Microsoft Authenticator ya da Microsoft şirket portalı olabilir.
 - Koşullu erişim, onaylanan bir istemci uygulamasında Microsoft Edge 'i InPrivate modunda kabul edemez.
 
 Yapılandırma örnekleri için [koşullu erişimle bkz. nasıl yapılır: Cloud App Access için onaylanan istemci uygulamaları gerektirme](app-based-conditional-access.md) .

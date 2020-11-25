@@ -11,29 +11,28 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/29/2020
 ms.author: jeedes
-ms.openlocfilehash: 7f23551fee5331d14cdcf9e31e248cf42022d4c3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d88cbb79b42637721412dd0a35c231782a896721
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92449311"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029906"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-enterprise-cloud---enterprise-account"></a>Öğretici: GitHub Enterprise Cloud-Enterprise hesabıyla çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
 Bu öğreticide, GitHub Enterprise Cloud-Enterprise hesabını Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. GitHub Enterprise Cloud-Enterprise hesabını Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD 'de GitHub Enterprise Cloud-Enterprise hesabına erişimi olan denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla GitHub Enterprise Cloud Enterprise hesabına otomatik olarak oturum açmalarına olanak sağlayın.
-* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
+* Azure AD 'de bir GitHub kurumsal hesabına ve kurumsal hesap içindeki kuruluşlara erişimi olan denetim.
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
 * Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* GitHub Enterprise Cloud-Enterprise hesabı çoklu oturum açma (SSO) etkin aboneliği.
+* [GitHub Enterprise hesabı](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-your-enterprise/about-enterprise-accounts)
+* Kurumsal hesap sahibi olan bir GitHub Kullanıcı hesabı. 
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -57,16 +56,15 @@ GitHub Enterprise Cloud-Enterprise hesabının tümleştirmesini Azure AD ile ya
 
 ## <a name="configure-and-test-azure-ad-sso-for-github-enterprise-cloud---enterprise-account"></a>GitHub Enterprise Cloud-Enterprise hesabı için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu GitHub Enterprise Cloud-Enterprise hesabıyla yapılandırın ve test edin. SSO 'nun çalışması için, GitHub Enterprise Cloud-Enterprise hesabındaki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu GitHub Enterprise Cloud-Enterprise hesabıyla yapılandırın ve test edin. SSO 'nun çalışması için, GitHub Enterprise Cloud-Enterprise hesabındaki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu GitHub Enterprise Cloud-Enterprise hesabıyla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-1. **[GitHub Enterprise Cloud-Enterprise HESABı SSO 'Yu yapılandırma](#configure-github-enterprise-cloud-enterprise-account-sso)** -uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-    1. GitHub Enterprise **[Cloud-Enterprise hesabı test kullanıcısı oluşturma](#create-github-enterprise-cloud-enterprise-account-test-user)** -Kullanıcı Azure AD gösterimine bağlı GitHub Enterprise Cloud-Enterprise hesabında B. Simon 'a sahip olmak için.
-1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+    1. **[Azure AD kullanıcısını ve test kullanıcı hesabınızı GitHub uygulamasına atayın](#assign-the-azure-ad-test-user)** -kullanıcı hesabınızı ve test KULLANıCıSıNı `B.Simon` Azure AD çoklu oturum açma özelliğini kullanacak şekilde etkinleştirin.
+1. **[Kurumsal hesap ve kuruluşları IÇIN SAML 'Yi etkinleştirin ve test](#enable-and-test-saml-for-the-enterprise-account-and-its-organizations)** edin-uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
+    1. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[, başka bir kurumsal hesap sahibi veya kuruluş üyesi HESABıYLA SSO 'Yu test](#test-sso)** edin.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
@@ -89,7 +87,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
      **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://github.com/enterprises/<ENTERPRISE-SLUG>/sso`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, yanıt URL 'SI ve tanımlayıcı ile güncelleştirin. Bu değerleri almak için [GitHub Enterprise Cloud-Enterprise hesabı istemci destek ekibine](mailto:support@github.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > `<ENTERPRISE-SLUG>`GitHub Enterprise hesabınızın gerçek adıyla değiştirin.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -101,7 +99,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
+Bu bölümde, adlı Azure portal bir test kullanıcısı oluşturacaksınız `B.Simon` .
 
 1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
@@ -109,11 +107,13 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
+<a name="assign-the-azure-ad-test-user"></a>
 
-Bu bölümde, GitHub Enterprise Cloud-Enterprise hesabına erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
+### <a name="assign-your-azure-ad-user-and-the-test-user-account-to-the-github-app"></a>Azure AD kullanıcısını ve test kullanıcı hesabınızı GitHub uygulamasına atama
+
+Bu bölümde, `B.Simon` GitHub Enterprise Cloud-Enterprise hesabına erişim vererek kullanıcı hesabınızı Azure çoklu oturum açma özelliğini kullanacak şekilde etkinleştireceksiniz.
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde **GitHub Enterprise Cloud-Enterprise hesabı**' nı seçin.
@@ -125,29 +125,42 @@ Bu bölümde, GitHub Enterprise Cloud-Enterprise hesabına erişim vererek Azure
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ve kullanıcı hesabınızı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-## <a name="configure-github-enterprise-cloud-enterprise-account-sso"></a>GitHub Enterprise Cloud-Enterprise hesabı SSO 'yu yapılandırma
+## <a name="enable-and-test-saml-for-the-enterprise-account-and-its-organizations"></a>Kurumsal hesap ve kuruluşları için SAML 'yi etkinleştirin ve test edin
 
-**GitHub Enterprise Cloud-Enterprise hesabı** tarafında çoklu oturum açmayı yapılandırmak için, indirilen **sertifikayı (Base64)** ve Azure Portal ' den [GitHub Enterprise Cloud-Enterprise hesap destek ekibine](mailto:support@github.com)doğru bir şekilde göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+**GitHub Enterprise Cloud-Enterprise hesap** tarafında çoklu oturum açmayı yapılandırmak Için [Bu GitHub belgelerinde](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-your-enterprise/enforcing-security-settings-in-your-enterprise-account#enabling-saml-single-sign-on-for-organizations-in-your-enterprise-account)listelenen adımları izleyin. 
+1. GitHub.com 'de [Kurumsal hesap sahibi](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-your-enterprise/roles-in-an-enterprise#enterprise-owner)olan bir kullanıcı hesabıyla oturum açın. 
+1. `Login URL`Uygulamadaki alandan değeri Azure Portal kopyalayın ve `Sign on URL` GitHub ENTERPRISE hesabı SAML ayarlarındaki alana yapıştırın. 
+1. `Azure AD Identifier`Uygulamadaki alandan değeri Azure Portal kopyalayın ve `Issuer` GitHub ENTERPRISE hesabı SAML ayarlarındaki alana yapıştırın. 
+1. Azure portal yukarıdaki adımlarda indirdiğiniz **sertifika (base64)** dosyasının içeriğini kopyalayın ve GitHub ENTERPRISE hesabı SAML ayarlarındaki uygun alana yapıştırın. 
+1. Öğesine tıklayın `Test SAML configuration` ve GitHub Enterprise hesabından Azure AD 'ye başarıyla kimlik doğrulayacağınızı doğrulayın.
+1. Test başarılı olduktan sonra ayarları kaydedin. 
+1. GitHub Enterprise hesabından ilk kez SAML aracılığıyla kimlik doğrulamasından geçtikten sonra, GitHub Enterprise hesabında, oturum açmış GitHub Kullanıcı hesabını Azure AD kullanıcı hesabıyla ilişkilendiren bir _bağlı dış kimlik_ oluşturulur.  
+ 
+GitHub Enterprise hesabınız için SAML SSO 'yu etkinleştirdikten sonra, kurumsal hesabınızın sahip olduğu tüm kuruluşlar için SAML SSO varsayılan olarak etkindir. Üye oldukları kuruluşlara erişim kazanmak için SAML SSO kullanarak kimlik doğrulaması yapmak için tüm üyelerin doğrulanması gerekir ve kurumsal bir hesaba erişirken SAML SSO kullanarak kimlik doğrulaması yapmak için kuruluş sahipleri gerekecektir.
 
-### <a name="create-github-enterprise-cloud-enterprise-account-test-user"></a>GitHub Enterprise Cloud-Enterprise hesabı test kullanıcısı oluşturma
+<a name="test-sso"></a>
 
-Bu bölümde, GitHub Enterprise Cloud-Enterprise hesabında B. Simon adlı bir Kullanıcı oluşturulur. GitHub Enterprise Cloud-Enterprise hesabı, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir Kullanıcı GitHub Enterprise Cloud-Enterprise hesabında zaten mevcut değilse, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
+## <a name="test-sso-with-another-enterprise-account-owner-or-organization-member-account"></a>Başka bir kurumsal hesap sahibi veya kuruluş üyesi hesabıyla SSO 'yu test etme
 
-## <a name="test-sso"></a>Test SSO 'SU 
+SAML tümleştirme, GitHub Enterprise hesabı için (Ayrıca Enterprise hesabındaki GitHub kuruluşları için de geçerli olur) ayarlandıktan sonra, Azure AD 'de uygulamaya atanan diğer kurumsal hesap sahipleri GitHub kurumsal hesap URL 'sine () gidebilmelidir `https://github.com/enterprises/<enterprise account>` , SAML aracılığıyla kimlik doğrulaması yapabilir ve GitHub Enterprise hesabı altındaki ilkelere ve ayarlara erişebilir. 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Kuruluş hesabındaki bir kuruluşun sahibi [, bir kullanıcıyı GitHub kuruluşuna katılmaya davet](https://docs.github.com/en/free-pro-team@latest/github/setting-up-and-managing-organizations-and-teams/inviting-users-to-join-your-organization)edebilmelidir. GitHub.com 'de bir kuruluş sahibi hesabıyla oturum açın ve kuruluşa davet etmek için makaledeki adımları izleyin `B.Simon` . Zaten mevcut değilse GitHub Kullanıcı hesabının oluşturulması gerekir `B.Simon` . 
 
-Erişim panelinde GitHub Enterprise Cloud-Enterprise hesabı kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız GitHub Enterprise Cloud Enterprise hesabında otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+Test kullanıcısı hesabı ile kurumsal hesap altında GitHub kuruluş erişimini test etmek için `B.Simon` :
+1. Kuruluş `B.Simon` hesabı altında kuruluş sahibi olarak bir kuruluşa davet edin. 
+1. Azure AD Kullanıcı hesabına bağlamak istediğiniz kullanıcı hesabını kullanarak GitHub.com 'de oturum açın `B.Simon` .
+1. Kullanıcı hesabını kullanarak Azure AD 'de oturum açın `B.Simon` .
+1. GitHub kuruluşuna gidin. Kullanıcıdan SAML aracılığıyla kimlik doğrulaması yapması istenir. Başarılı SAML kimlik doğrulamasından sonra `B.Simon` kuruluş kaynaklarına erişebilmelidir. 
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 - [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
 

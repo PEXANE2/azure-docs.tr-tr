@@ -9,11 +9,11 @@ ms.date: 09/10/2020
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 1b5905046fdde4d5574fd4d39f40dce1bbf11e32
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95557082"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027053"
 ---
 Aşağıdaki tablolarda [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)'a özgü kotalar ve sınırlamalar sağlanmaktadır. Event Hubs fiyatlandırması hakkında daha fazla bilgi için bkz. [Event Hubs fiyatlandırması](https://azure.microsoft.com/pricing/details/event-hubs/).
 
@@ -52,7 +52,7 @@ Azure portal kullanarak adanmış Event Hubs kümesi oluşturma hakkında bu [be
 | Özellik | Standart | Ayrılmış |
 | --- |:---|:---|
 | Bant genişliği | 20 s (40 'e kadar) | 20 cu düzeyinde kapsanır |
-| Ad Alanları |  1 | CU başına 50 |
+| Ad alanları |  1 | CU başına 50 |
 | Event Hubs |  ad alanı başına 10 | ad alanı başına 1000 |
 | Giriş olayları | Milyon olay başına ödeme | Dahil |
 | İleti boyutu | 1.000.000 bayt | 1.000.000 bayt |

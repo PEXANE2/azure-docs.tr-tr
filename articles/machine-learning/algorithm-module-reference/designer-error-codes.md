@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
-ms.date: 04/16/2020
-ms.openlocfilehash: 569cf130b464d97e0ac10904ffd86365b57610a5
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 11/25/2020
+ms.openlocfilehash: af7ac49fd6c1a31a8363c4ba0bf925787613ecc2
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420844"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030416"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>Tasarımcı için özel durumlar ve hata kodları
 
@@ -281,11 +281,18 @@ Model, özelleştirilmiş eğitim modüllerinden herhangi birini kullanarak eği
 
  Bu hata, bir sütun çok sayıda benzersiz değer içerdiğinde oluşur.  Örneğin, bir sütunun kategorik veriler olarak işleneceğini belirtirseniz, ancak sütunda işlemin tamamlanmasına izin vermek için çok sayıda benzersiz değer varsa, bu hatayı görebilirsiniz. Ayrıca, iki girişte benzersiz değer sayısı arasında uyuşmazlık varsa bu hatayı görebilirsiniz.   
 
+Aşağıdaki koşulların **her ikisi de** varsa, benzersiz değerlerin hatası izin verilenden fazla olur:
+
+- Bir sütunun %97 ' inden fazlası benzersiz değerlerdir, bu da neredeyse tüm kategorilerin birbirinden farklı olduğu anlamına gelir.
+- Bir sütunda 1000 ' den fazla benzersiz değer vardır.
+
 **Çözünürlüğüne**
 
 Hatayı oluşturan modülü açın ve giriş olarak kullanılan sütunları tespit edin. Bazı modüller için, veri kümesi girişine sağ tıklayıp, benzersiz değer sayısı ve bunların dağılımı dahil olmak üzere tek tek sütunlarda istatistik almak için **Görselleştir** ' i seçebilirsiniz.
 
 Gruplandırma veya kategorilere ayırma için kullanmayı düşündüğünüz sütunlarda, sütunlardaki benzersiz değerlerin sayısını azaltmak için gerekli adımları uygulayın. Sütunun veri türüne bağlı olarak farklı şekillerde azaltabilirsiniz. 
+
+Genellikle bu senaryoda, hataya vurarak sütun, modelleri eğitme özelliği olarak daha az anlamlı olur. Bu nedenle, bu sütunu **Temizle özelliği** olarak Işaretlemek Için [meta verileri Düzenle](../algorithm-module-reference/edit-metadata.md) ' yi kullanabilir ve model eğitimi sırasında kullanılmaz. 
 <!--
 + For text data, you might be able to use [Preprocess Text](preprocess-text.md) to collapse similar entries. 
 + For numeric data, you can create a smaller number of bins using [Group Data into Bins](group-data-into-bins.md), remove or truncate values using [Clip Values](clip-values.md), or use machine learning methods such as [Principal Component Analysis](principal-component-analysis.md) or [Learning with Counts](data-transformation-learning-with-counts.md) to reduce the dimensionality of the data.  
@@ -1106,8 +1113,8 @@ Makine öğrenimi için Hive sorgularıyla ilgili yardım için aşağıdaki mak
  Sorgunun, doğrudan veritabanı sunucusunda oturum açarak ve sorguyu çalıştırarak Azure ML dışında düzgün çalıştığını doğrulayın.  
 
  Modül özel durumu tarafından bildirilen bir SQL tarafından oluşturulan ileti varsa, bildirilen hataya göre işlem yapın. Örneğin, hata iletileri bazen olası hataya özgü yönergeler içerir:
-+ *Böyle bir sütun veya eksik veritabanı değil* , bir sütun adı yanlış yazmış olabileceğiniz. Sütun adının doğru olduğundan eminseniz, sütun tanımlayıcısını kapsamak için köşeli ayraç veya tırnak işaretleri kullanmayı deneyin.
-+ *Yakınında \<SQL keyword\> SQL Logic Error* , belirtilen anahtar sözcükten önce bir sözdizimi hatası olabileceğini belirtir
++ *Böyle bir sütun veya eksik veritabanı değil*, bir sütun adı yanlış yazmış olabileceğiniz. Sütun adının doğru olduğundan eminseniz, sütun tanımlayıcısını kapsamak için köşeli ayraç veya tırnak işaretleri kullanmayı deneyin.
++ *Yakınında \<SQL keyword\> SQL Logic Error*, belirtilen anahtar sözcükten önce bir sözdizimi hatası olabileceğini belirtir
 
   
 |Özel durum Iletileri|

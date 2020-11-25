@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 11/13/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 59dd1dadc7d037ff253812e4d3e1a1955d98e944
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 4335c1e81ead36d14ee1794fffbdd4cc1ff72a0a
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95809126"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029617"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-net"></a>Azure Service Bus kuyruklarından ileti gönderme ve iletileri alma (.NET)
 Bu öğreticide, **Azure. Messaging. ServiceBus** paketini kullanarak bir Service Bus kuyruğuna ileti göndermek ve ileti almak için bir .NET Core konsol uygulaması oluşturacaksınız. 
@@ -55,8 +55,29 @@ Visual Studio 'Yu başlatın ve C# için yeni bir **konsol uygulaması (.NET Cor
         static string queueName = "<QUEUE NAME>";
     ```
 
-    `<NAMESPACE CONNECTION STRING>`Service Bus ad alanınız için bağlantı dizesiyle değiştirin. Ve öğesini `<QUEUE NAME>` kuyruğun adıyla değiştirin.     
-2. Kuyruğa bir ileti gönderen adlı adlı bir yöntem ekleyin `SendMessageAsync` . 
+    Ad alanı için Bağlantı dizenizi değişken olarak girin `ServiceBusConnectionString` . Sıra adınızı girin.
+
+1. `Main()`Yöntemini aşağıdaki **Async** `Main` yöntemiyle değiştirin. `SendMessagesAsync()`Kuyruğa ileti göndermek için bir sonraki adımda ekleyeceğiniz yöntemi çağırır. 
+
+    ```csharp
+    public static async Task Main(string[] args)
+    {    
+        const int numberOfMessages = 10;
+        queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
+
+        Console.WriteLine("======================================================");
+        Console.WriteLine("Press ENTER key to exit after sending all the messages.");
+        Console.WriteLine("======================================================");
+
+        // Send messages.
+        await SendMessagesAsync(numberOfMessages);
+
+        Console.ReadKey();
+
+        await queueClient.CloseAsync();
+    }
+    ```
+1. Doğrudan yönteminden sonra `Main()` , `SendMessagesAsync()` tarafından belirtilen ileti sayısını gönderme işini yapan aşağıdaki yöntemi ekleyin `numberOfMessagesToSend` (Şu anda 10 ' a ayarlanır):
 
     ```csharp
         static async Task SendMessageAsync()

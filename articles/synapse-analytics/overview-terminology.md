@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 11/18/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 20e635d606676a526fac4c3720931525beb66876
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: c58ee46a608ccdcbb01a082ee278d9e0f8a07f6e
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95790419"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030688"
 ---
 # <a name="azure-synapse-analytics-terminology"></a>Azure SYNAPSE Analytics terminolojisi
 
@@ -41,13 +41,11 @@ Bir çalışma alanı, herhangi bir sayıda **bağlı hizmeti** içerebilir ve b
 
 ## <a name="apache-spark-for-synapse"></a>SYNAPSE için Apache Spark
 
-Spark Analytics 'i kullanmak için SYNAPSE çalışma alanınızda **sunucusuz Apache Spark havuzları** oluşturun ve kullanın.
+Spark Analytics 'i kullanmak için SYNAPSE çalışma alanınızda **sunucusuz Apache Spark havuzları** oluşturun ve kullanın. Spark havuzunu kullanmaya başladığınızda, çalışma alanları bu oturumla ilişkilendirilen kaynakları işlemek için bir **Spark oturumu** oluşturur. 
 
-* **Apache Spark havuzu** -0-to-N Spark sağlanan kaynakları, karşılık gelen veritabanları bir çalışma alanında dağıtılabilir. Spark havuzu otomatik duraklatılabilir, devam ettirilebilir ve ölçeklendirilebilir.  
-* **Spark uygulaması** -bir sürücü işlemi ve bir yürütücü işlemleri kümesinden oluşur. Spark uygulaması sunucusuz Spark havuzunda çalışır.            
-* **Spark oturumu**-Spark uygulamasının birleştirilmiş giriş noktası. Spark 'ın çeşitli işlevleri ve daha az sayıda yapı ile etkileşime geçmek için bir yol sağlar. Bir not defteri çalıştırmak için bir oturumun oluşturulması gerekir. Bir oturum, belirli bir boyuttaki belirli sayıda yürüticiler üzerinde çalışacak şekilde yapılandırılabilir. Bir not defteri oturumunun varsayılan yapılandırması 2 orta ölçekli yürütmeçiler üzerinde çalıştırılır.
-* , Scala, PySpark, C# ve mini SQL destekleyen **Not defteri** -etkileşimli ve reaktif veri bilimi ve mühendislik arabirimi.
-* **Spark iş tanımı** -kodu ve bağımlılıklarını içeren derleme jar ile Spark işi göndermek için arabirim.
+SYNAPSE içinde Spark kullanmanın iki yolu vardır:
+* Veri veri bilimi ve Mühendisliği yapmak için **Spark Not defterleri** Scala, Pyspark, C# ve mini kullanılan SQL
+* Jar dosyalarını kullanarak Batch Spark işlerinin çalıştırılmasına yönelik **Spark iş tanımları** .
 
 Sürüm desteği:
 * Spark 2,4
@@ -56,7 +54,7 @@ Sürüm desteği:
 * Apache Spark 1,0 için .NET
 * Delta Gölü 0,3.  
 
-## <a name="pipelines"></a>İşlem hatları
+## <a name="pipelines"></a>Pipelines
 
 * **Veri tümleştirme** -çeşitli kaynaklar arasında veri alma ve çalışma alanı içinde veya çalışma alanı dışında çalışan etkinlikleri düzenleme özelliğini sağlar.
 * **Veri akışı** -büyük veri dönüştürmesi yapmak için hiçbir kodlamaya gerek olmadan tam bir görsel deneyim sağlar. Tüm iyileştirme ve yürütme işlemleri sunucusuz bir biçimde işlenir.

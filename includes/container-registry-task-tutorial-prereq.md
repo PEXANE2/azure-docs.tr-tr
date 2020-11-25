@@ -4,14 +4,14 @@ ms.service: container-registry
 ms.topic: include
 ms.date: 05/02/2019
 ms.author: danlep
-ms.openlocfilehash: 40cc1856a5e943ca5596e7d11712febadd30e3ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 79e2ca71d6b8178be63c3429edba89cf3bb523e2
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67133698"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030006"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="get-sample-code"></a>Örnek kodu alma
 
@@ -21,13 +21,13 @@ Bu öğreticide, [önceki öğreticide](../articles/container-registry/container
 
 Bu öğreticiyi tamamlamak için Azure aboneliğinizde bir Azure kapsayıcı kayıt defteri olması gerekir. Bir kayıt defterine ihtiyacınız varsa, [önceki öğreticiye](../articles/container-registry/container-registry-tutorial-quick-task.md) veya [Hızlı Başlangıç: Azure CLI kullanarak kapsayıcı kayıt defteri oluşturma](../articles/container-registry/container-registry-get-started-azure-cli.md) bölümüne bakın.
 
-## <a name="create-a-github-personal-access-token"></a>GitHub kişisel erişim belirteci oluşturma
+### <a name="create-a-github-personal-access-token"></a>GitHub kişisel erişim belirteci oluşturma
 
 Bir git deposuna yapılan işlemede bir görevi tetiklemek için ACR görevlerinin depoya erişmek için bir kişisel erişim belirteci (PAT) gerekir. Zaten bir PAT yoksa GitHub 'da bir tane oluşturmak için aşağıdaki adımları izleyin:
 
 1. GitHub üzerinde https://github.com/settings/tokens/new adresindeki PAT oluşturma sayfasında gidin
 1. Belirteç için kısa bir **açıklama** girin; örneğin, "ACR Görevleri Tanıtımı"
-1. ACR 'nin depoya erişmesi için kapsamlar ' ı seçin. Bu öğreticide olduğu gibi **genel depoya erişmek için depo altında**depoyu etkinleştirin **: durum** ve **public_repo**
+1. ACR 'nin depoya erişmesi için kapsamlar ' ı seçin. Bu öğreticide olduğu gibi **genel depoya erişmek için depo altında** depoyu etkinleştirin **: durum** ve **public_repo**
 
    ![GitHub'da Kişisel Erişim Belirteci oluşturma sayfasının ekran görüntüsü][build-task-01-new-token]
 

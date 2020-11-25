@@ -11,18 +11,16 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: f6078ed96106d6a53b55195ee950e2165334221d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c2c2f9d0ad7bfa50f543b57326b9fc8dab0069c6
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "95920081"
+ms.locfileid: "96029311"
 ---
 # <a name="increase-resilience-of-authentication-and-authorization-applications-you-develop"></a>Geliştirdiğiniz kimlik doğrulama ve yetkilendirme uygulamalarının esnekliği artırma
 
 Microsoft Identity modern, belirteç tabanlı kimlik doğrulama ve yetkilendirme kullanır. Bu, bir uygulamanın kullanıcı kimliğini doğrulamak ve uygulamayı korunan API 'Leri çağırmak üzere yetkilendirmek için bir kimlik sağlayıcısından belirteçleri aldığı anlamına gelir.
-
-![Microsoft kimliği çağıran uygulamanın görüntüsü](media/resilience-app-development-overview/app-overview.png)
 
 Belirteç, uygulamanın yeni bir süre önce edinilmeden önce belirli bir süre için geçerlidir. Nadiren, bir belirteç alma çağrısı ağ veya altyapı hatası ya da kimlik doğrulama hizmeti kesintisi gibi bir sorun nedeniyle başarısız olabilir. Bu belgede, bir belirteç alma hatası oluşursa, bir geliştiricinin uygulamalarında esnekliği arttırmak için atabileceğiniz adımları ana hatlarıyla sunuyoruz.
 

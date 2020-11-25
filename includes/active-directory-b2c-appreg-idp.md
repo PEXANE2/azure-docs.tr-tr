@@ -5,41 +5,41 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
-ms.openlocfilehash: bbf1daf3a70e5ca87b4a0027b53aed5fab5691d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 890b19cd8d6f4bc836f6f541a830c1a5feb8458f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84317753"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027908"
 ---
-Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için yeni Birleşik **uygulama kayıtları** deneyimimizi veya eski  **uygulamalarımız (eski)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](https://aka.ms/b2cappregtraining).
+Bir uygulamayı Azure AD B2C kiracınıza kaydetmek için yeni Birleşik **uygulama kayıtları** deneyimimizi veya eski  **uygulamalarımız (eski)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](../articles/active-directory-b2c/app-registrations-training-guide.md).
 
 #### <a name="app-registrations"></a>[Uygulama kayıtları](#tab/app-reg-ga/)
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
-1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
-1. **Uygulama kayıtları**öğesini seçin ve ardından **Yeni kayıt**' ı seçin.
+1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C** seçin.
+1. **Uygulama kayıtları** öğesini seçin ve ardından **Yeni kayıt**' ı seçin.
 1. Uygulama için bir **ad** girin. Örneğin, *testapp1*.
 1. **Herhangi bir kuruluş dizininde veya herhangi bir kimlik sağlayıcısında hesaplar '** ı seçin.
-1. **Yeniden yönlendirme URI 'si**altında **Web**' i seçin ve ardından `https://jwt.ms` URL metin kutusuna girin.
-1. **İzinler**altında, *openıd ve offline_access izinleri Için yönetici izni ver* onay kutusunu seçin.
+1. **Yeniden yönlendirme URI 'si** altında **Web**' i seçin ve ardından `https://jwt.ms` URL metin kutusuna girin.
+1. **İzinler** altında, *openıd ve offline_access izinleri Için yönetici izni ver* onay kutusunu seçin.
 1. **Kaydet**’i seçin.
 
 Uygulama kaydı tamamlandıktan sonra, örtük verme akışını etkinleştirin:
 
-1. **Yönet**altında **kimlik doğrulaması**' nı seçin.
+1. **Yönet** altında **kimlik doğrulaması**' nı seçin.
 1. **Yeni deneyimi deneyin** (gösteriliyorsa) seçeneğini belirleyin.
 1. **Örtük izin**' ın altında, **erişim belirteçleri** ve **Kimlik belirteçleri** onay kutularını seçin.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 #### <a name="applications-legacy"></a>[Uygulamalar (eski)](#tab/applications-legacy/)
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
-1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
+1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C** seçin.
 1. **Uygulamalar**' ı seçin ve ardından **Ekle**' yi seçin.
 1. Uygulama için bir ad girin. Örneğin, *testapp1*.
-1. **Web uygulaması/Web API 'si**için **Evet**' i seçin.
-1. **Yanıt URL 'si**için şunu girin`https://jwt.ms`
+1. **Web uygulaması/Web API 'si** için **Evet**' i seçin.
+1. **Yanıt URL 'si** için şunu girin`https://jwt.ms`
 1. **Oluştur**’u seçin.

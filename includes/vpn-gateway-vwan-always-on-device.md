@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 594ad352d5fd8431ffaf6d681c891c967cf9d32a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34e841a5f17d589c4fbef54a4a8674a99ac6c640
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90606753"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027805"
 ---
 Bir cihaz tünelini başarıyla kurmak için aşağıdaki gereksinimlerin karşılanması gerekir:
 
@@ -22,13 +22,13 @@ Bir cihaz tünelini başarıyla kurmak için aşağıdaki gereksinimlerin karş�
 * Her cihaz için yalnızca bir cihaz tüneli yapılandırılabilir.
 
 1. İstemci sertifikalarını, [noktadan sıteye VPN istemcisi](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md) makalesini kullanarak Windows 10 istemcisine yükler. Sertifikanın yerel makine deposunda olması gerekir.
-1. [Bu yönergeleri](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/vpn-device-tunnel-config#vpn-device-tunnel-configuration)kullanarak bir VPN profili oluşturun ve cihaz TÜNELINI yerel sistem hesabı bağlamında yapılandırın.
+1. [Bu yönergeleri](/windows-server/remote/remote-access/vpn/vpn-device-tunnel-config#vpn-device-tunnel-configuration)kullanarak bir VPN profili oluşturun ve cihaz TÜNELINI yerel sistem hesabı bağlamında yapılandırın.
 
 ### <a name="configuration-example-for-device-tunnel"></a>Cihaz tüneli için yapılandırma örneği
 
 Sanal ağ geçidini yapılandırdıktan ve istemci sertifikasını Windows 10 istemcisindeki yerel makine deposuna yükledikten sonra, bir istemci cihaz tüneli yapılandırmak için aşağıdaki örnekleri kullanın:
 
-1. Aşağıdaki metni kopyalayın ve ***devicecert.ps1***olarak kaydedin.
+1. Aşağıdaki metni kopyalayın ve ***devicecert.ps1** _ olarak kaydedin.
 
    ```
    Param(
@@ -80,7 +80,7 @@ Sanal ağ geçidini yapılandırdıktan ve istemci sertifikasını Windows 10 is
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. Aşağıdaki metni kopyalayın ve **devicecert.ps1**aynı klasöre ***VPNProfile.xml*** olarak kaydedin. Ortamınıza uyması için aşağıdaki metni düzenleyin.
+1. Aşağıdaki metni kopyalayın ve _ * devicecert.ps1 * * ile aynı klasöre _*_VPNProfile.xml_*_ olarak kaydedin. Ortamınıza uyması için aşağıdaki metni düzenleyin.
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers> <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
    * `<Address>192.168.3.5</Address> <= IP of resource in the vnet or the vnet address space`
@@ -115,7 +115,7 @@ Sanal ağ geçidini yapılandırdıktan ve istemci sertifikasını Windows 10 is
    <RegisterDNS>true</RegisterDNS>
    </VPNProfile>
    ```
-1. [Sysinternals](https://docs.microsoft.com/sysinternals/downloads/psexec) 'Dan **PsExec** indirin ve dosyaları **c:\padstools dizinine**ayıklayın.
+1. [Sysinternals](/sysinternals/downloads/psexec) 'Dan **PsExec** indirin ve dosyaları **c:\padstools dizinine** ayıklayın.
 1. Yönetici CMD isteminde şunu çalıştırarak PowerShell 'i başlatın:
 
    ```
@@ -131,7 +131,7 @@ Sanal ağ geçidini yapılandırdıktan ve istemci sertifikasını Windows 10 is
    ```
    
    ![Ekran görüntüsü, devicesert betiği kullanarak Machineccerttest çalıştıran bir PowerShell penceresini gösterir.](./media/vpn-gateway-vwan-always-on-device/machinecerttest.png)
-1. **RASPHONE**çalıştırın.
+1. **RASPHONE** çalıştırın.
 
    ![Ekran görüntüsü RASPHONE seçiliyken Çalıştır iletişim kutusunu gösterir.](./media/vpn-gateway-vwan-always-on-device/rasphone.png)
 1. **Machineccerttest** girişini bulun ve **Bağlan**' a tıklayın.

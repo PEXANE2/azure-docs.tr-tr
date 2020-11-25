@@ -1,19 +1,19 @@
 ---
-title: Ağlar için Azure Izleyici önizlemesi
+title: Ağlar için Azure İzleyici
 description: Hiçbir yapılandırma olmadan dağıtılan tüm ağ kaynakları için sistem durumu ve ölçümlerinin kapsamlı bir görünümünü sağlayan ağlar için Azure Izleyicisine genel bakış.
 ms.subservice: ''
 ms.topic: conceptual
-author: bwren
-ms.author: bwren
-ms.date: 09/24/2020
-ms.openlocfilehash: e2a43c4d0423b286984631fda75e5ff806ae9a57
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+author: KumudD
+ms.author: kumud
+ms.date: 11/25/2020
+ms.openlocfilehash: 52ca879d5a680d0e62cc469e768236eac11f3719
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102770"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030227"
 ---
-# <a name="azure-monitor-for-networks-preview"></a>Ağlar için Azure Izleyici önizlemesi
+# <a name="azure-monitor-for-networks"></a>Ağlar için Azure İzleyici
 Ağlar için Azure Izleyici, tüm dağıtılan ağ kaynakları için herhangi bir yapılandırma gerektirmeden [sistem durumu](../../service-health/resource-health-checks-resource-types.md) ve [ölçümlerinin](../platform/metrics-supported.md) kapsamlı bir görünümünü sağlar. Ayrıca [bağlantı izleyici](../../network-watcher/connection-monitor-preview.md), [ağ güvenlik grupları (NSG 'ler) için akış günlüğü](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)ve [Trafik Analizi](../../network-watcher/traffic-analytics.md)gibi ağ izleme özelliklerine erişim sağlar. Ayrıca, diğer ağ [Tanılama](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) özellikleri sağlar.
 
 Ağ için Azure Izleyici, izlemenin bu temel bileşenleri etrafında yapılandırılır:
@@ -26,14 +26,14 @@ Ağ için Azure Izleyici, izlemenin bu temel bileşenleri etrafında yapılandı
 
 Ağlara yönelik Azure Izleyici **'ye genel bakış** sayfası, kaynak sistem durumu ve uyarılarla birlikte ağ kaynaklarınızın envanterini görselleştirmenin kolay bir yolunu sunar. Dört önemli işlevsel alana bölünmüştür: arama ve filtreleme, kaynak sistem durumu ve ölçümler, uyarılar ve bağımlılık görünümü.
 
-![Genel Bakış sayfasını gösteren ekran görüntüsü.](media/network-insights-overview/overview.png)
+[ ![ Genel bakış sayfasını gösteren ekran görüntüsü](media/network-insights-overview/overview.png)](media/network-insights-overview/overview.png)#lightbox)
 
 ### <a name="search-and-filtering"></a>Arama ve filtreleme
-**Abonelik**, **kaynak grubu**ve **tür**gibi filtreleri kullanarak kaynak sistem durumu ve uyarıları görünümünü özelleştirebilirsiniz.
+**Abonelik**, **kaynak grubu** ve **tür** gibi filtreleri kullanarak kaynak sistem durumu ve uyarıları görünümünü özelleştirebilirsiniz.
 
 Arama kutusunu, kaynakları ve bunlarla ilişkili kaynakları aramak için kullanabilirsiniz. Örneğin, genel bir IP bir uygulama ağ geçidi ile ilişkilendirilir. Genel IP DNS adı araması hem genel IP hem de ilişkili uygulama ağ geçidini döndürür:
 
-![Ağlarla ilgili arama sonuçları için Azure Izleyicisini gösteren ekran görüntüsü.](media/network-insights-overview/search.png)
+[![Ağlarla ilgili arama sonuçları için Azure Izleyicisini gösteren ekran görüntüsü.](media/network-insights-overview/search.png)](media/network-insights-overview/search.png#lightbox)
 
 
 ### <a name="resource-health-and-metrics"></a>Kaynak durumu ve ölçümleri
@@ -57,7 +57,7 @@ Bağımlılık görünümü, bir kaynağın nasıl yapılandırıldığını gö
 
 Application Gateway için bağımlılık görünümü, ön uç IP 'Lerinin dinleyicileri, kuralları ve arka uç havuzunu nasıl bağladığınıza ilişkin basitleştirilmiş bir görünüm sağlar. Bağlantı çizgileri renk kodludur ve arka uç havuzu sistem durumuna göre ek ayrıntılar sağlar. Görünüm aynı zamanda, sanal makine ölçek kümesi ve VM örnekleri gibi ilgili tüm arka uç havuzlarının Application Gateway ölçümlerinin ve ölçümlerinin ayrıntılı bir görünümünü sağlar.
 
-![Ağlar için Azure Izleyici 'de bağımlılık görünümünü gösteren ekran görüntüsü.](media/network-insights-overview/dependency-view.png)
+[![Ağlar için Azure Izleyici 'de bağımlılık görünümünü gösteren ekran görüntüsü.](media/network-insights-overview/dependency-view.png)](media/network-insights-overview/dependency-view.png#lightbox)
 
 Bağımlılık grafiği yapılandırma ayarlarına kolay gezinme sağlar. Diğer bilgilere erişmek için bir arka uç havuzuna sağ tıklayın. Örneğin, arka uç havuzu bir VM ise, bağlantı sorunlarını belirlemek için doğrudan VM öngörülerine ve Azure ağ Izleyicisi bağlantı sorunlarını gidermeye erişebilirsiniz:
 
@@ -73,17 +73,17 @@ Uygulama ağ geçidi, tüm arka uç havuzu kaynakları ve ön uç IP 'Leri için
 
 ## <a name="connectivity"></a><a name="connectivity"></a>Bağlantı
 
-Bağlantı **sekmesi,** seçili abonelik kümesi Için bağlantı Izleyicisi ve [Bağlantı İzleyicisi (Önizleme)](../../network-watcher/connection-monitor-preview.md) ile yapılandırılan tüm testleri görselleştirmenin kolay bir yolunu sağlar.
+Bağlantı **sekmesi,** seçili abonelik kümesi Için [bağlantı Izleyicisi](../../network-watcher/connection-monitor-overview.md) ve Bağlantı İzleyicisi (klasik) aracılığıyla yapılandırılan tüm testleri görselleştirmenin kolay bir yolunu sağlar.
 
 ![Ağlar için Azure Izleyici 'deki bağlantı sekmesini gösteren ekran görüntüsü.](media/network-insights-overview/azure-monitor-for-networks-connectivity-tab.png)
 
 Testler, **kaynak** ve **hedef** kutucuklarına göre gruplandırılır ve her test için ulaşılabilirlik durumunu görüntüler. Erişilebilir ayarlar, başarısız olan denetim (%) temelinde, erişilebilirlik ölçütlerinizle ilgili yapılandırmalara kolay erişim sağlar. ve RTT (MS). Değerleri ayarladıktan sonra, her test güncelleştirmelerinin durumu seçim ölçütlerine göre yapılır.
 
-![Ağlar için Azure Izleyici 'de bağlantı testlerini gösteren ekran görüntüsü.](media/network-insights-overview/azure-monitor-for-networks-connectivity-tests.png)
+[![Ağlar için Azure Izleyici 'de bağlantı testlerini gösteren ekran görüntüsü.](media/network-insights-overview/azure-monitor-for-networks-connectivity-tests.png)](media/network-insights-overview/azure-monitor-for-networks-connectivity-tests.png#lightbox)
 
 Bir ölçüm görünümü açmak için herhangi bir kaynak veya hedef kutucuğu seçebilirsiniz:
 
-![Ağlar için Azure Izleyici 'de bağlantı ölçümlerini gösteren ekran görüntüsü.](media/network-insights-overview/azure-monitor-for-networks-connectivity-metrics.png)
+[![Ağlar için Azure Izleyici 'de bağlantı ölçümlerini gösteren ekran görüntüsü.](media/network-insights-overview/azure-monitor-for-networks-connectivity-metrics.png)](media/network-insights-overview/azure-monitor-for-networks-connectivity-metrics.png#lightbox)
 
 
 Kılavuz görünümündeki herhangi bir öğeyi seçebilirsiniz. Bağlantı Izleyicisi portalı sayfasına gitmek için **ulaşılabilirlik** sütunundaki simgeyi seçin ve tanımlanmış sorunları etkileyen atlama topolojisini ve bağlantısını görüntüleyin. Uyarılara gitmek için **Uyarı** sütunundaki değeri seçin. Seçilen bağlantı izleyicisinin ölçüm sayfasına gitmek için, **başarısız olan yüzde** ve gidiş **-dönüş süresi (MS)** sütunlarındaki grafikleri seçin.
@@ -93,13 +93,13 @@ Sayfanın sağ tarafındaki **Uyarı** kutusu, tüm abonelikler genelinde yap�
 ## <a name="traffic"></a><a name="traffic"></a>Trafik
 **Trafik** sekmesi, [NSG akış günlükleri](../../network-watcher/network-watcher-nsg-flow-logging-overview.md) için yapılandırılmış tüm NSG 'ler ve seçili abonelik kümesi için [Trafik Analizi](../../network-watcher/traffic-analytics.md) konuma göre gruplanmış olarak erişim sağlar. Bu sekmede sunulan arama işlevselliği, Aranan IP adresi için yapılandırılmış NSG 'leri tanımlamanızı sağlar. Ortamınızdaki herhangi bir IP adresini arayabilirsiniz. Döşeli bölgesel görünüm, NSG akış günlükleri ve Trafik Analizi yapılandırma durumuyla birlikte tüm NSG 'leri görüntüler.
 
-![Ağlar için Azure Izleyici 'de trafik sekmesini gösteren ekran görüntüsü.](media/network-insights-overview/azure-monitor-for-networks-traffic-view.png)
+[![Ağlar için Azure Izleyici 'de trafik sekmesini gösteren ekran görüntüsü.](media/network-insights-overview/azure-monitor-for-networks-traffic-view.png)](media/network-insights-overview/azure-monitor-for-networks-traffic-view.png#lightbox)
 
 Herhangi bir bölge kutucuğu seçerseniz, bir ızgara görünümü görüntülenir. Kılavuz, NSG akış günlükleri ve Trafik Analizi, okunması ve yapılandırılması kolay bir görünümde sağlar:  
 
-![Ağlar için Azure Izleyici 'de trafik bölgesi görünümünü gösteren ekran görüntüsü.](media/network-insights-overview/azure-monitor-for-networks-traffic-region-view.png)
+[![Ağlar için Azure Izleyici 'de trafik bölgesi görünümünü gösteren ekran görüntüsü.](media/network-insights-overview/azure-monitor-for-networks-traffic-region-view.png)](media/network-insights-overview/azure-monitor-for-networks-traffic-region-view.png#lightbox)
 
-Kılavuz görünümündeki herhangi bir öğeyi seçebilirsiniz. NSG akış günlüğü ve Trafik Analizi yapılandırmasını düzenlemek için **Flowlog yapılandırma durumu** sütunundaki simgeyi seçin. Seçili NSG için yapılandırılmış trafik uyarılarına gitmek için **Uyarı** sütunundaki değeri seçin. Benzer şekilde, **Trafik Analizi çalışma alanını**seçerek trafik analizi görünümüne gidebilirsiniz.  
+Kılavuz görünümündeki herhangi bir öğeyi seçebilirsiniz. NSG akış günlüğü ve Trafik Analizi yapılandırmasını düzenlemek için **Flowlog yapılandırma durumu** sütunundaki simgeyi seçin. Seçili NSG için yapılandırılmış trafik uyarılarına gitmek için **Uyarı** sütunundaki değeri seçin. Benzer şekilde, **Trafik Analizi çalışma alanını** seçerek trafik analizi görünümüne gidebilirsiniz.  
 
 Sayfanın sağ tarafındaki **Uyarı** kutusu, tüm aboneliklerde tüm trafik analizi çalışma alanı tabanlı uyarıların bir görünümünü sağlar. Ayrıntılı uyarılar sayfasına gitmek için uyarı sayılarını seçin.
 

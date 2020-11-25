@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9020e364a5c8d7a59dad5549e88036dc9edaad7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c30ad26f079e6353dc4763b9ae968c33882d8ab6
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90089675"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029356"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Cihaz kimliği ve Masaüstü Sanallaştırması
 
@@ -48,20 +48,19 @@ VDı ortamınız için Azure AD 'de cihaz kimliklerini yapılandırmadan önce, 
 
 | Cihaz kimliği türü | Kimlik altyapısı | Windows cihazları | VDı platformu sürümü | Desteklenir |
 | --- | --- | --- | --- | --- |
-| Hibrit Azure AD'ye katılmış | Federal<sup>3</sup> | Windows geçerli ve Windows alt düzeyi | Kalıcı | Evet |
+| Hibrit Azure AD'ye katılmış | Federal<sup>3</sup> | Windows geçerli ve Windows alt düzeyi | Kalıcı | Yes |
 |   |   | Windows geçerli | Kalıcı olmayan | Evet<sup>5</sup> |
 |   |   | Windows alt düzey | Kalıcı olmayan | Evet<sup>6</sup> |
-|   | Yönetilen<sup>4</sup> | Windows geçerli ve Windows alt düzeyi | Kalıcı | Evet |
-|   |   | Windows geçerli | Kalıcı olmayan | Hayır |
+|   | Yönetilen<sup>4</sup> | Windows geçerli ve Windows alt düzeyi | Kalıcı | Yes |
+|   |   | Windows geçerli | Kalıcı olmayan | No |
 |   |   | Windows alt düzey | Kalıcı olmayan | Evet<sup>6</sup> |
-| Azure AD'ye katılanlar | Federe | Windows geçerli | Kalıcı | Hayır |
-|   |   |   | Kalıcı olmayan | Hayır |
-|   | Yönetilen | Windows geçerli | Kalıcı | Hayır |
-|   |   |   | Kalıcı olmayan | Hayır |
+| Azure AD'ye katılanlar | Federe | Windows geçerli | Kalıcı | No |
+|   |   |   | Kalıcı olmayan | No |
+|   | Yönetilen | Windows geçerli | Kalıcı | No |
+|   |   |   | Kalıcı olmayan | No |
 | Azure AD kayıtlı | Federasyon/yönetilen | Windows geçerli/Windows alt düzeyi | Kalıcı/kalıcı olmayan | Geçerli değil |
 
-<sup>1</sup> Windows **geçerli** cihaz Windows 10, Windows Server 2016 ve Windows Server 2019 ' i temsil eder.
-
+<sup>1</sup> Windows **geçerli** cihaz Windows 10, Windows Server 2016 V1803 veya üzeri ve Windows Server 2019 ' i temsil eder.
 <sup>2</sup> **Windows alt düzey** cihazlar Windows 7, Windows 8.1, Windows Server 2008 r2, Windows Server 2012 ve Windows Server 2012 R2 'yi temsil eder. Windows 7 ile ilgili destek bilgileri için bkz. [Windows 7 Için destek sonlandırılıyor](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support). Windows Server 2008 R2 ile ilgili destek bilgileri için bkz. [Windows server 2008 Için hazırlanma-destek sonu](https://www.microsoft.com/cloud-platform/windows-server-2008).
 
 <sup>3</sup> bir **Federasyon** kimlik altyapısı ortamı, AD FS veya diğer üçüncü taraf IDP gibi bir kimlik sağlayıcısı olan bir ortamı temsil eder.

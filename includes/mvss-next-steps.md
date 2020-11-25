@@ -4,12 +4,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: include
 ms.date: 04/26/2019
 ms.author: manayar
-ms.openlocfilehash: 633f7f9231e08acdb0e08ee97067d2a469bbdb45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff3434a7d1b5b4643d9aca5fae03ac03fe65b514
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75980190"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028433"
 ---
 [Azure Resource Manager belgelerini](../articles/azure-resource-manager/templates/deploy-powershell.md) izleyerek yukarıdaki şablonu dağıtabilirsiniz.
 
@@ -21,4 +21,4 @@ Bu öğretici serisini [temel ölçek kümesi şablonu makalesinden](../articles
 
 [Bir Linux ölçek kümesini Konuk tabanlı otomatik ölçeklendirme ile dağıtmak](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-guest-based-autoscale-linux.md)için [temel ölçek kümesi şablonunu](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md) nasıl değiştireceğiniz hakkında bilgi alabilirsiniz.
 
-Ölçek kümeleri hakkında daha fazla bilgi için [Ölçek kümesine genel bakış sayfasına](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)bakın.
+Ölçek kümeleri hakkında daha fazla bilgi için [Ölçek kümesine genel bakış sayfasına](../articles/virtual-machine-scale-sets/overview.md)bakın.

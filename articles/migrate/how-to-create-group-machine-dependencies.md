@@ -2,13 +2,13 @@
 title: Azure geçişi sunucu değerlendirmesi 'nde aracı tabanlı bağımlılık analizini ayarlama
 description: Bu makalede, Azure geçişi sunucu değerlendirmesi ' nde aracı tabanlı bağımlılık analizinin nasıl ayarlanacağı açıklanır.
 ms.topic: how-to
-ms.date: 6/09/2020
-ms.openlocfilehash: c5c019ec995f59b61fb96917bed50bd8ba3f61d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/25/2020
+ms.openlocfilehash: 17c6e3e24596727350b11946bdf6896e22d41529
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022386"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028971"
 ---
 # <a name="set-up-dependency-visualization"></a>Bağımlılık görselleştirmesini ayarlama
 
@@ -38,8 +38,8 @@ Bu makalede, Azure geçişi: Sunucu değerlendirmesi ' nde aracısız bağımlı
 
 ## <a name="associate-a-workspace"></a>Çalışma alanını ilişkilendirme
 
-1. Makineleri değerlendirme için bulduktan sonra, **sunucular**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde **Genel Bakış ' a**tıklayın.  
-2. **Azure geçişi: Sunucu değerlendirmesi**' nde, **temel**bileşenler ' e tıklayın.
+1. Makineleri değerlendirme için bulduktan sonra, **sunucular**  >  **Azure geçişi: Sunucu değerlendirmesi**' nde **Genel Bakış ' a** tıklayın.  
+2. **Azure geçişi: Sunucu değerlendirmesi**' nde, **temel** bileşenler ' e tıklayın.
 3. **OMS çalışma alanında** **yapılandırma gerekiyor**' a tıklayın.
 
      ![Log Analytics çalışma alanını Yapılandır](./media/how-to-create-group-machine-dependencies/oms-workspace-select.png)   
@@ -60,9 +60,9 @@ Bu makalede, Azure geçişi: Sunucu değerlendirmesi ' nde aracısız bağımlı
 > System Center Operations Manager 2012 R2 veya üzeri tarafından izlenen makinelerde MMA aracısını yüklemeniz gerekmez. Hizmet Eşlemesi Operations Manager tümleştirilir. Tümleştirme kılavuzunu [izleyin](../azure-monitor/insights/service-map-scom.md#prerequisites) .
 
 1. **Azure geçişi: Sunucu değerlendirmesi**' nde, **bulunan sunucular**' a tıklayın.
-2. Bağımlılık görselleştirmesi ile çözümlemek istediğiniz her makine için, **Bağımlılıklar** sütununda, **Aracı yüklemesi gerektirir öğesine**tıklayın.
+2. Bağımlılık görselleştirmesi ile çözümlemek istediğiniz her makine için, **Bağımlılıklar** sütununda, **Aracı yüklemesi gerektirir öğesine** tıklayın.
 3. **Bağımlılıklar** sayfasında, Windows veya Linux için MMA ve bağımlılık aracısını indirin.
-4. **MMA Aracısını Yapılandır**altında, çalışma alanı kimliğini ve anahtarı kopyalayın. MMA aracısını yüklerken bunlara ihtiyacınız vardır.
+4. **MMA Aracısını Yapılandır** altında, çalışma alanı kimliğini ve anahtarı kopyalayın. MMA aracısını yüklerken bunlara ihtiyacınız vardır.
 
     ![Aracıları yükler](./media/how-to-create-group-machine-dependencies/dependencies-install.png)
 
@@ -83,7 +83,7 @@ Aracıyı bir Windows makinesine yüklemek için:
 
 Aracıyı komut satırından veya Configuration Manager veya [ıntigua](https://www.intigua.com/intigua-for-azure-migration)gibi otomatikleştirilmiş bir yöntem kullanarak yükleyebilirsiniz.
 - MMA aracısını yüklemek için bu yöntemleri kullanma hakkında [daha fazla bilgi edinin](../azure-monitor/platform/log-analytics-agent.md#installation-options) .
-- MMA aracısı bu [betik](https://go.microsoft.com/fwlink/?linkid=2104394) kullanılarak da yüklenebilir.
+- MMA aracısı bu [betik](https://github.com/brianbar-MSFT/Install-MMA) kullanılarak da yüklenebilir.
 - MMA tarafından desteklenen Windows işletim sistemleri hakkında [daha fazla bilgi edinin](../azure-monitor/platform/agents-overview.md#supported-operating-systems) .
 
 ### <a name="install-mma-on-a-linux-machine"></a>Linux makinesine MMA 'yı yükler
@@ -151,9 +151,9 @@ Azure geçişi projesiyle ilişkili Log Analytics çalışma alanındaki Hizmet 
 
 Bağımlılık verileri için aşağıdaki gibi bir sorgu çalıştırın:
 
-1. Aracıları yükledikten sonra portala gidin ve **Genel Bakış ' a**tıklayın.
-2. **Azure geçişi: Sunucu değerlendirmesi**' nde **Genel Bakış ' a**tıklayın. **Temelleri**genişletmek için aşağı oka tıklayın.
-3. **OMS çalışma**alanında, çalışma alanı adına tıklayın.
+1. Aracıları yükledikten sonra portala gidin ve **Genel Bakış ' a** tıklayın.
+2. **Azure geçişi: Sunucu değerlendirmesi**' nde **Genel Bakış ' a** tıklayın. **Temelleri** genişletmek için aşağı oka tıklayın.
+3. **OMS çalışma** alanında, çalışma alanı adına tıklayın.
 3. Log Analytics çalışma alanı sayfasında **genel**> **Günlükler**' e tıklayın.
 4. Sorgunuzu yazın ve **Çalıştır**' a tıklayın.
 

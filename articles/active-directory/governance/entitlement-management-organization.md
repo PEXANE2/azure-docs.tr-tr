@@ -16,12 +16,12 @@ ms.date: 09/28/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96106cc1d9f9040f98c7d9201f05b4cff87af7e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1cdf983dc8fed64c7d283ac216eb803746add95
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449815"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029379"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde bağlı bir kuruluş ekleme
 
@@ -33,10 +33,10 @@ Bağlı bir kuruluş, ile ilişkiniz olan bir dış Azure AD dizini veya etki al
 
 Örneğin, Woodgrove Bank 'ta çalıştığınızı ve iki harici kurum ile işbirliği yapmak istediğinizi varsayalım. Bu iki kuruluş farklı yapılandırmalara sahiptir:
 
-- Grafik tasarımı Enstitüsü, Azure AD 'yi kullanır ve kullanıcıların *graphicdesigninstitute.com*ile biten bir Kullanıcı asıl adı vardır.
-- Contoso henüz Azure AD kullanmıyor. Contoso kullanıcıları, *contoso.com*ile biten bir Kullanıcı asıl adına sahiptir.
+- Grafik tasarımı Enstitüsü, Azure AD 'yi kullanır ve kullanıcıların *graphicdesigninstitute.com* ile biten bir Kullanıcı asıl adı vardır.
+- Contoso henüz Azure AD kullanmıyor. Contoso kullanıcıları, *contoso.com* ile biten bir Kullanıcı asıl adına sahiptir.
 
-Bu durumda, iki bağlı kuruluş yapılandırabilirsiniz. Grafik Tasarım Enstitüsü ve contoso için bir bağlı kuruluş oluşturursunuz. Daha sonra, iki bağlı kuruluş bir ilkeye eklerseniz, her bir kuruluştan, ilkeyle eşleşen bir Kullanıcı asıl adına sahip kullanıcılar erişim paketleri isteyebilir. *Graphicdesigninstitute.com* etki alanına sahip bir Kullanıcı asıl adına sahip kullanıcılar, grafik tasarımı Enstitüsü bağlantılı kuruluşla eşleşir ve istek göndermesine izin verilir. *Contoso.com* etki alanına sahip bir Kullanıcı asıl adına sahip kullanıcılar, contoso bağlantılı kuruluşla eşleştirebilir ve ayrıca paket istemesine izin verilir. Ayrıca, grafik tasarımı Enstitüsü Azure AD 'yi kullandığından, *graphicdesignınstitute. example*gibi, kiracılarına eklenen [doğrulanmış bir etki alanıyla](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) eşleşen bir asıl adı olan tüm kullanıcılar aynı ilkeyi kullanarak erişim paketleri isteyebilecektir.
+Bu durumda, iki bağlı kuruluş yapılandırabilirsiniz. Grafik Tasarım Enstitüsü ve contoso için bir bağlı kuruluş oluşturursunuz. Daha sonra, iki bağlı kuruluş bir ilkeye eklerseniz, her bir kuruluştan, ilkeyle eşleşen bir Kullanıcı asıl adına sahip kullanıcılar erişim paketleri isteyebilir. *Graphicdesigninstitute.com* etki alanına sahip bir Kullanıcı asıl adına sahip kullanıcılar, grafik tasarımı Enstitüsü bağlantılı kuruluşla eşleşir ve istek göndermesine izin verilir. *Contoso.com* etki alanına sahip bir Kullanıcı asıl adına sahip kullanıcılar, contoso bağlantılı kuruluşla eşleştirebilir ve ayrıca paket istemesine izin verilir. Ayrıca, grafik tasarımı Enstitüsü Azure AD 'yi kullandığından, *graphicdesignınstitute. example* gibi, kiracılarına eklenen [doğrulanmış bir etki alanıyla](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) eşleşen bir asıl adı olan tüm kullanıcılar aynı ilkeyi kullanarak erişim paketleri isteyebilecektir.
 
 ![Bağlı kuruluş örneği](./media/entitlement-management-organization/connected-organization-example.png)
 
@@ -148,12 +148,12 @@ Azure AD yetkilendirme yönetiminde bağlı kuruluşlar için şu anda iki farkl
 
 - Önerilen bağlı bir kuruluş, otomatik olarak oluşturulan, ancak bir yöneticisinin kuruluş oluşturup onaylaması olmayan bağlı bir kuruluştur. Bir Kullanıcı yapılandırılmış bağlı bir kuruluşun dışında bir erişim paketine kaydolduğunda, kiracı tarafından ayarlanan hiçbir yönetici olmadığından, otomatik olarak oluşturulan bağlı kuruluşlar **Önerilen** durumda olur. 
     
-    Önerilen bağlı kuruluşlar, yapılandırılmış bağlı kuruluşların seçicileri içinde gösterilmez ve herhangi bir ilke üzerinde "tüm yapılandırılmış bağlı kuruluşlar" ayarının kapsamında değildir. 
+    Önerilen bağlı kuruluşlar, herhangi bir ilke üzerinde "tüm yapılandırılmış bağlı kuruluşlar" ayarının kapsamında değildir ancak yalnızca belirli kuruluşları hedefleyen ilkeler için ilkeler içinde kullanılabilir. 
 
-Yalnızca yapılandırılan bağlı kuruluşların kullanıcıları, yapılandırılan tüm kuruluşların kullanıcıları tarafından kullanılabilen erişim paketleri isteyebilir. Önerilen bağlı kuruluşların kullanıcılarının, bu etki alanı için bağlı bir kuruluş olmadığı ve bu durum yönetici tarafından değiştirilene kadar erişim paketine erişimi olmayan bir deneyimi vardır.
+Yalnızca yapılandırılan bağlı kuruluşların kullanıcıları, yapılandırılan tüm kuruluşların kullanıcıları tarafından kullanılabilen erişim paketleri isteyebilir. Önerilen bağlı kuruluşların kullanıcıları, bu etki alanı için bağlı bir kuruluş olmadığı için bir deneyim yaşar. yalnızca belirli kuruluşlarının kapsamındaki veya herhangi bir kullanıcının kapsamına alınmış erişim paketlerini görebilir ve bunlara izin verebilir.
 
 > [!NOTE]
-> Bu yeni özelliği kullanıma almanın bir parçası olarak, 09/09/20 öncesinde oluşturulan tüm bağlı kuruluşlar **yapılandırılmış**olarak değerlendirilir. Herhangi bir kuruluştan kullanıcıların kaydolmasına izin veren bir erişim paketiniz varsa, hiçbirinin **yapılandırılmış**olarak yanlış kategorilere ayrılmadığından emin olmak için bu tarihten önce oluşturulan bağlı kuruluşların listesini gözden geçirmeniz gerekir.  Yönetici, **durum** özelliğini uygun şekilde güncelleştirebilir. Rehberlik için bkz. [bağlı kuruluşu güncelleştirme](#update-a-connected-organization).
+> Bu yeni özelliği kullanıma almanın bir parçası olarak, 09/09/20 öncesinde oluşturulan tüm bağlı kuruluşlar **yapılandırılmış** olarak değerlendirilir. Herhangi bir kuruluştan kullanıcıların kaydolmasına izin veren bir erişim paketiniz varsa, hiçbirinin **yapılandırılmış** olarak yanlış kategorilere ayrılmadığından emin olmak için bu tarihten önce oluşturulan bağlı kuruluşların listesini gözden geçirmeniz gerekir.  Yönetici, **durum** özelliğini uygun şekilde güncelleştirebilir. Rehberlik için bkz. [bağlı kuruluşu güncelleştirme](#update-a-connected-organization).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ba5bca9b0d5907d9900741d0fe2c319f141f810b
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 520ad8f68e0f995ea05456ebcf6de4c1ba3f9418
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913645"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030314"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Media Services ile Azure Işlevleri geliştirme
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
-Bu makalede, Media Services kullanan Azure Işlevleri oluşturmaya nasıl başlacağınız gösterilmektedir. Bu makalede tanımlanan Azure Işlevi, yeni MP4 dosyaları için **giriş** adlı bir depolama hesabı kapsayıcısını izler. Depolama kapsayıcısına bir dosya bırakıldıktan sonra blob tetikleyicisi işlevi yürütür. Azure işlevlerini gözden geçirmek için bkz. **Azure işlevleri** bölümündeki [genel bakış](../../azure-functions/functions-overview.md) ve diğer konular.
+Bu makalede, Media Services kullanan Azure Işlevleri oluşturmaya nasıl başlacağınız gösterilmektedir. Bu makalede tanımlanan Azure Işlevi, yeni MP4 dosyaları için **giriş** adlı bir depolama hesabı kapsayıcısını izler. Depolama kapsayıcısına bir dosya bırakıldıktan sonra blob tetikleyicisi işlevi yürütür. Azure Işlevlerini gözden geçirmek için bkz. **Azure işlevleri** bölümündeki [genel bakış](../../azure-functions/functions-overview.md) ve diğer konular.
 
 Azure Media Services kullanan mevcut Azure Işlevlerini araştırmak ve dağıtmak istiyorsanız [Media Services Azure işlevleri](https://github.com/Azure-Samples/media-services-dotnet-functions-integration)' ne bakın. Bu depo, doğrudan BLOB depolama, kodlama ve BLOB depolamaya geri içerik yazma ile ilgili içerik akışını göstermek için Media Services kullanan örnekleri içerir. Ayrıca, Web kancaları ve Azure Kuyrukları aracılığıyla iş bildirimlerinin nasıl izleneceği hakkında örnekler de içerir. Ayrıca, [Media Services Azure işlevleri](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) deposundaki örneklere göre işlevlerinizi geliştirebilirsiniz. İşlevleri dağıtmak için **Azure 'A dağıt** düğmesine basın.
 
@@ -49,21 +49,21 @@ Media Services işlevleri geliştirirken, işlevlerinizin tamamında kullanılac
 
 Bu makalede tanımlanan işlevi, uygulama ayarlarınızda aşağıdaki ortam değişkenlerine sahip olduğunuzu varsayar:
 
-**Amsaadtenantdomain** : Azure AD kiracı uç noktası. AMS API 'sine bağlanma hakkında daha fazla bilgi için [Bu](media-services-use-aad-auth-to-access-ams-api.md) makaleye bakın.
+**Amsaadtenantdomain**: Azure AD kiracı uç noktası. AMS API 'sine bağlanma hakkında daha fazla bilgi için [Bu](media-services-use-aad-auth-to-access-ams-api.md) makaleye bakın.
 
-**AMSRESTAPIEndpoint** : REST API uç noktasını temsil eden URI. 
+**AMSRESTAPIEndpoint**: REST API uç noktasını temsil eden URI. 
 
-**Amsclitıd** : Azure AD uygulama istemci kimliği.
+**Amsclitıd**: Azure AD uygulama istemci kimliği.
 
-**Amsclientsecret** : Azure AD uygulama istemci parolası.
+**Amsclientsecret**: Azure AD uygulama istemci parolası.
 
-**Storageconnection** : Media Services hesabıyla ilişkili hesabın depolama bağlantısı. Bu değer, **function.js** File ve **Run. CSX** dosyasında (aşağıda açıklanmıştır) kullanılır.
+**Storageconnection**: Media Services hesabıyla ilişkili hesabın depolama bağlantısı. Bu değer, **function.js** File ve **Run. CSX** dosyasında (aşağıda açıklanmıştır) kullanılır.
 
 ## <a name="create-a-function"></a>İşlev oluşturma
 
 İşlev Uygulamanız dağıtıldıktan sonra, **App Services** Azure işlevleri arasında bulabilirsiniz.
 
-1. İşlev uygulamanızı seçin ve **yeni işlev** ' e tıklayın.
+1. İşlev uygulamanızı seçin ve **yeni işlev**' e tıklayın.
 2. **C#** dilini ve **veri işleme** senaryosunu seçin.
 3. **Blobtrigger** şablonunu seçin. Bu işlev, **giriş** kapsayıcısına bir blob yüklendiğinde tetiklenir. **Giriş** adı, bir sonraki adımda **yolunda** belirtilir.
 
@@ -73,7 +73,7 @@ Bu makalede tanımlanan işlevi, uygulama ayarlarınızda aşağıdaki ortam de�
 
     ![Ekran görüntüsünde, işlevinizin adı iletişim kutusu gösterilir.](./media/media-services-azure-functions/media-services-azure-functions005.png)
 
-4. **Oluştur** 'a tıklayın. 
+4. **Oluştur**'a tıklayın. 
 
 ## <a name="files"></a>Dosyalar
 
@@ -83,7 +83,7 @@ Azure işleviniz, bu bölümde açıklanan kod dosyaları ve diğer dosyalarla i
 
 ### <a name="functionjson"></a>function.json
 
-Dosyadaki function.js, işlev bağlamalarını ve diğer yapılandırma ayarlarını tanımlar. Çalışma zamanı, izlenecek olayları ve işlev yürütmeden verilerin nasıl geçirileceğini ve geri döneceğini öğrenmek için bu dosyayı kullanır. Daha fazla bilgi için bkz. [Azure IŞLEVLERI http ve Web kancası bağlamaları](../../azure-functions/functions-reference.md#function-code).
+Dosyadaki function.js, işlev bağlamalarını ve diğer yapılandırma ayarlarını tanımlar. Çalışma zamanı, izlenecek olayları ve işlev yürütmeden verilerin nasıl geçirileceğini ve geri döneceğini öğrenmek için bu dosyayı kullanır. Daha fazla bilgi için bkz. [Azure İşlevleri HTTP ve web kancası bağlamaları](../../azure-functions/functions-reference.md#function-code).
 
 >[!NOTE]
 >İşlevin yürütülmesini engellemek için **devre dışı** özelliğini **true** olarak ayarlayın. 
@@ -138,7 +138,7 @@ Bu bölümde tanımlanan örnek şunları gösterir
 
 Gerçek yaşam senaryosunda, büyük ihtimalle iş ilerlemesini izlemek ve sonra kodlanmış varlığınızı yayımlamak isteyeceksiniz. Daha fazla bilgi için bkz. [Media Services iş bildirimlerini izlemek Için Azure Web kancalarını kullanma](media-services-dotnet-check-job-progress-with-webhooks.md). Daha fazla örnek için bkz. [Azure işlevleri Media Services](https://github.com/Azure-Samples/media-services-dotnet-functions-integration).  
 
-Mevcut Run. CSX dosyasının içeriğini şu kodla değiştirin: işlevinizi tanımlamayı tamamladıktan sonra **Kaydet ve Çalıştır** ' a tıklayın.
+Mevcut Run. CSX dosyasının içeriğini şu kodla değiştirin: işlevinizi tanımlamayı tamamladıktan sonra **Kaydet ve Çalıştır**' a tıklayın.
 
 ```csharp
 #r "Microsoft.WindowsAzure.Storage"
@@ -336,8 +336,8 @@ public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, s
 İşlevinizi test etmek için, bağlantı dizesinde belirttiğiniz depolama hesabının **giriş** KAPSAYıCıSıNA bir MP4 dosyası yüklemeniz gerekir.  
 
 1. **Storageconnection** ortam değişkeninde belirttiğiniz depolama hesabını seçin.
-2. **Bloblar** ' a tıklayın.
-3. **+ Kapsayıcı** ’ya tıklayın. Kapsayıcı **girişini** adlandırın.
+2. **Bloblar**' a tıklayın.
+3. **+ Kapsayıcı**’ya tıklayın. Kapsayıcı **girişini** adlandırın.
 4. Karşıya **Yükle** ' ye basın ve karşıya yüklemek istediğiniz bir. MP4 dosyasına gidin.
 
 >[!NOTE]

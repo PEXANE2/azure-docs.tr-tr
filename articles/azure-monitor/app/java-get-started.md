@@ -5,19 +5,19 @@ ms.topic: conceptual
 author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
-ms.date: 05/24/2019
-ms.openlocfilehash: 12497d3ac86888ed861e8d5f655f45c8cbe4b6e3
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.date: 11/22/2020
+ms.openlocfilehash: 1a68cea423678dd8582d65b839d57076e84de940
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996162"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029549"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Hızlı başlangıç: Java Web projesinde Application Insights ile çalışmaya başlama
 
 
-> [!IMPORTANT]
-> Java uygulamalarını izlemek için önerilen yaklaşım, kodu değiştirmeden otomatik izleme kullanmaktır. Lütfen [Application Insights Java 3,0 Aracısı](./java-in-process-agent.md)için yönergeleri izleyin.
+> [!CAUTION]
+> 2020 Kasım itibariyle, Java uygulamalarını izlemek için Azure Izleyici Application Insights 3,0 aracısını kullanarak otomatik izleme önerilir. Kullanmaya başlama hakkında daha fazla bilgi için bkz. [Application Insights Java 3,0 Aracısı](./java-in-process-agent.md).
 
 Bu hızlı başlangıçta, isteği işaretlemek, bağımlılıkları izlemek ve performans sayaçlarını toplamak, performans sorunlarını ve özel durumları tanılamak ve uygulamanızdaki kullanıcıların neler yaptığını izlemek için kod yazmak üzere Application Insights SDK 'sını kullanırsınız.
 
@@ -123,7 +123,7 @@ Projenizdeki Resources klasörüne *ApplicationInsights.xml* ekleyin veya projen
 </ApplicationInsights>
 ```
 
-İsteğe bağlı olarak, yapılandırma dosyası uygulamanız tarafından erişilebilen herhangi bir konumda olabilir.  System özelliği `-Dapplicationinsights.configurationDirectory` *ApplicationInsights.xml*içeren dizini belirtir. Örneğin, `E:\myconfigs\appinsights\ApplicationInsights.xml` konumunda bulunan bir yapılandırma dosyası, `-Dapplicationinsights.configurationDirectory="E:\myconfigs\appinsights"` özelliği ile yapılandırılır.
+İsteğe bağlı olarak, yapılandırma dosyası uygulamanız tarafından erişilebilen herhangi bir konumda olabilir.  System özelliği `-Dapplicationinsights.configurationDirectory` *ApplicationInsights.xml* içeren dizini belirtir. Örneğin, `E:\myconfigs\appinsights\ApplicationInsights.xml` konumunda bulunan bir yapılandırma dosyası, `-Dapplicationinsights.configurationDirectory="E:\myconfigs\appinsights"` özelliği ile yapılandırılır.
 
 * İzleme anahtarı telemetrinin her öğesiyle birlikte gönderilir ve Application Insights’ın bunu kaynağınızda görüntülemesini isteyin.
 * HTTP isteği bileşeni isteğe bağlıdır. İstek ve yanıt süreleri hakkında telemetriyi otomatik olarak portala gönderir.

@@ -4,16 +4,16 @@ description: Azure Izleyici ölçüm uyarıları ve olası çözümlerle ilgili 
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 10/05/2020
+ms.date: 11/25/2020
 ms.subservice: alerts
-ms.openlocfilehash: 2e68a780890b8ddf857bf8f52a0ecf9a4c24b36c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 5a57e8b7f3bf2c3e820a3befee0ee69c48a2afa9
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342136"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029885"
 ---
-# <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Izleyici ölçüm uyarılarında sorun giderme sorunları 
+# <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure İzleyici ölçüm uyarılarındaki sorunları giderme 
 
 Bu makalede, Azure Izleyici [ölçüm uyarılarında](alerts-metric-overview.md) sık karşılaşılan sorunlar ve bunların nasıl giderileceği anlatılmaktadır.
 
@@ -44,7 +44,7 @@ Bir ölçüm uyarısının tetiklenmesi gerektiğini ancak Azure portal başlatm
 
 Ölçüm uyarılarınızın tetiklenmemesi, ancak bunu yaptığı düşünüyorsanız, aşağıdaki adımlar sorunu çözmeye yardımcı olabilir.
 
-1. Tetiklenen uyarıyı bulmak için [tetiklenen uyarılar listesini](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/alertsV2) gözden geçirin ve ayrıntılarını görüntülemek için tıklayın. Uyarının tetiklendiği sırada ölçüm grafiğini, **ölçüm değerini**ve **eşik değerini** görmek için **Bu uyarının neden başlatıldığı konusunda** belirtilen bilgileri gözden geçirin.
+1. Tetiklenen uyarıyı bulmak için [tetiklenen uyarılar listesini](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/alertsV2) gözden geçirin ve ayrıntılarını görüntülemek için tıklayın. Uyarının tetiklendiği sırada ölçüm grafiğini, **ölçüm değerini** ve **eşik değerini** görmek için **Bu uyarının neden başlatıldığı konusunda** belirtilen bilgileri gözden geçirin.
 
     > [!NOTE] 
     > Dinamik eşikler koşul türü kullanıyorsanız ve kullanılan eşiklerin doğru olmadığını düşünüyorsanız, lütfen kaş n simgesini kullanarak geri bildirim sağlayın. Bu geri bildirim Machine Learning algoritmik araştırmasını etkiler ve gelecekteki algılamaları artırmaya yardımcı olur.
@@ -142,7 +142,7 @@ Bir Azure kaynağını sildiğinizde o kaynakla ilişkilendirilmiş olan ölçü
 2. Genel bakış bölümünde **gizli türleri göster** onay kutusunu işaretleyin.
 3. **Tür** filtresinde *Microsoft. Insights/metricalerts*' i seçin.
 4. Ayrıntılarını görüntülemek için ilgili uyarı kuralını seçin.
-5. **Ayarlar**altında, **şablonu dışarı aktar**' ı seçin.
+5. **Ayarlar** altında, **şablonu dışarı aktar**' ı seçin.
 
 ## <a name="metric-alert-rules-quota-too-small"></a>Ölçüm uyarı kuralları kotası çok küçük
 
@@ -198,7 +198,7 @@ Tüm parametreleri doğru şekilde geçirdiğinizi doğrulamak için [REST API k
 - Ölçüm uyarılarına yönelik PowerShell cmdlet’leri [Az.Monitor modülünde](/powershell/module/az.monitor/?view=azps-3.6.1) de sunulur
 - Yeni (klasik olmayan) ölçüm uyarıları için ' v2 ' ile biten cmdlet 'leri kullandığınızdan emin olun (örneğin, [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2?view=azps-3.6.1))
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Ölçüm uyarıları için doğru CLı komutlarını kullandığınızdan emin olun:
 
@@ -241,6 +241,8 @@ Tüm parametreleri doğru şekilde geçirdiğinizi doğrulamak için [REST API k
 - Ölçüm uyarısı kural adları şu karakterleri içeremez: * # & +:  < > ? @ % { } \ / 
 - Ölçüm uyarısı kural adları boşluk veya nokta ile bitemez
 
+> [!NOTE] 
+> Uyarı kuralı adı alfabetik veya sayısal olmayan karakterler içeriyorsa (örneğin: boşluklar, noktalama işaretleri veya semboller), bu karakterler belirli istemciler tarafından alındığında URL kodlamalı olabilir.
 
 ## <a name="restrictions-when-using-dimensions-in-a-metric-alert-rule-with-multiple-conditions"></a>Birden çok koşula sahip bir ölçüm uyarı kuralında boyutlar kullanırken kısıtlamalar
 
@@ -250,7 +252,7 @@ Birden çok koşul içeren bir uyarı kuralında boyutları kullanırken aşağ�
 - Her bir koşul içinde yalnızca boyut başına bir değer seçebilirsiniz.
 - "Tüm geçerli ve gelecekteki değerleri Seç" seçeneğini (Select \* ) kullanamazsınız.
 - Farklı koşullarda yapılandırılan ölçümler aynı boyutu destekledikleri zaman, yapılandırılmış bir boyut değerinin tüm bu ölçümler için (ilgili koşullarda) aynı şekilde ayarlanması gerekir.
-Örneğin:
+Örnek:
     - Bir depolama hesabında tanımlanan ölçüm uyarısı kuralını düşünün ve iki koşulu izler:
         * Toplam **işlem** sayısı > 5
         * Ortalama **SuccessE2ELatency** > 250 MS
@@ -259,7 +261,7 @@ Birden çok koşul içeren bir uyarı kuralında boyutları kullanırken aşağ�
 
 ## <a name="setting-the-alert-rules-period-and-frequency"></a>Uyarı kuralının dönemini ve sıklığını ayarlama
 
-Aşağıdaki durumlarda, eklenen zaman serisinin ilk değerlendirmesinin oluşma olasılığını azaltmak için *değerlendirme sıklığından*daha büyük bir *toplama ayrıntı düzeyi (süre)* seçmeyi öneririz:
+Aşağıdaki durumlarda, eklenen zaman serisinin ilk değerlendirmesinin oluşma olasılığını azaltmak için *değerlendirme sıklığından* daha büyük bir *toplama ayrıntı düzeyi (süre)* seçmeyi öneririz:
 -   Birden çok boyutu izleyen ölçüm uyarısı kuralı – yeni bir boyut değer birleşimi eklendiğinde
 -   Birden çok kaynağı izleyen ölçüm uyarısı kuralı: kapsama yeni bir kaynak eklendiğinde
 -   Sürekli olarak (seyrek ölçüm) yayınlanmayan bir ölçüyü izleyen ölçüm uyarısı kuralı: ölçüm, kendisine yayılmadığı 24 saatten daha uzun bir süre sonra yayınlandığında

@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
 ms.openlocfilehash: 8f1d20e9a6a78d99a23fe4b98aeb4f3eb8359da7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "73890950"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024189"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio-code"></a>Uzaktan Izleme çözüm hızlandırıcıyı yerel olarak dağıtma-Visual Studio Code
 
@@ -34,7 +34,7 @@ Yerel dağıtımı tamamlamaya yönelik olarak, yerel geliştirme makinenizde a�
 * [Git](https://git-scm.com/)
 * [.NET Core](https://dotnet.microsoft.com/download)
 * [Docker](https://www.docker.com)
-* [NGINX](https://nginx.org/en/download.html)
+* [Nginx](https://nginx.org/en/download.html)
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [VS Code C# uzantısı](https://code.visualstudio.com/docs/languages/csharp)
 * [Node.js V8](https://nodejs.org/) -bu yazılım, betiklerin Azure kaynakları oluşturmak IÇIN KULLANDıĞı bilgisayar CLI için bir önkoşuldur. Node.js ile v10 arasındaki kullanma
@@ -80,7 +80,7 @@ npm install
 npm start
 ```
 
-Başlangıç tamamlandığında tarayıcınızda **http: \/ /localhost: 3000/Dashboard**sayfası görüntülenir. Bu sayfadaki hatalar beklenmektedir. Uygulamayı hata olmadan görüntülemek için aşağıdaki adımı izleyin.
+Başlangıç tamamlandığında tarayıcınızda **http: \/ /localhost: 3000/Dashboard** sayfası görüntülenir. Bu sayfadaki hatalar beklenmektedir. Uygulamayı hata olmadan görüntülemek için aşağıdaki adımı izleyin.
 
 ### <a name="configure-and-run-nginx"></a>NGıNX 'i yapılandırma ve çalıştırma
 
@@ -89,7 +89,7 @@ Yerel makinenizde çalışan Web uygulamasını ve mikro hizmetleri bağlamak i�
 * **NGINX. conf** dosyasını **webui\scripts\localhost** klasöründen **nginx\conf** install dizinine kopyalayın.
 * **NGINX**'i çalıştırın.
 
-**NGINX**çalıştırma hakkında daha fazla bilgi için bkz. [Windows için NGINX](https://nginx.org/en/docs/windows.html).
+**NGINX** çalıştırma hakkında daha fazla bilgi için bkz. [Windows için NGINX](https://nginx.org/en/docs/windows.html).
 
 ### <a name="connect-to-the-dashboard"></a>Panoya Bağlan
 

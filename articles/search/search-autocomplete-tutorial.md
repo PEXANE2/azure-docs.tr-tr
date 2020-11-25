@@ -7,22 +7,22 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/10/2020
+ms.date: 11/24/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 1bf0a4a86ccc36960f218fabebda5bc82eb29019
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 5b498b8f49f2f0636b010e3c4d86f13ad44ac090
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426179"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029022"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>İstemci uygulamalarına otomatik tamamlama ve öneriler ekleme
 
-Yazarken ara, Kullanıcı tarafından başlatılan sorguların üretkenliğini iyileştirmeye yönelik ortak bir tekniktir. Azure Bilişsel Arama, bu deneyim kısmi girişe dayalı bir terimi veya tümceciği tamamlayan *AutoComplete* aracılığıyla desteklenir ("Micro" ile "Microsoft" arasında tamamlanır). Başka bir form *öneriler* : eşleşen belgelerin kısa bir listesi (ayrıntı sayfasına bağlantı yapabilmeniz IÇIN bir kimliği olan kitap başlıkları döndürülüyor). Hem otomatik tamamlama hem de öneriler dizindeki bir eşleşmeden tahmin edilir. Hizmet, sıfır sonuç döndüren sorgular sunmaz.
+Yazarken ara, Kullanıcı tarafından başlatılan sorguların üretkenliğini iyileştirmeye yönelik ortak bir tekniktir. Azure Bilişsel Arama, bu deneyim kısmi girişe dayalı bir terimi veya tümceciği tamamlayan *AutoComplete* aracılığıyla desteklenir ("Micro" ile "Microsoft" arasında tamamlanır). İkinci bir kullanıcı deneyimi, *öneriler* veya eşleşen belgelerin kısa bir listesidir (Bu kitapta bir ayrıntı sayfasına bağlantı yapabilmeniz IÇIN bir kimliğe sahip kitap başlıkları döndürülüyor). Hem otomatik tamamlama hem de öneriler dizindeki bir eşleşmeden tahmin edilir. Hizmet, sıfır sonuç döndüren sorgular sunmaz.
 
 Bu deneyimleri Azure Bilişsel Arama uygulamak için şunlar gerekir:
 
-+ Arka uçta bir *öneri aracı* .
++ Dizin şemasına gömülü bir *öneri aracı* tanımı.
 + İstekte [otomatik tamamlama](/rest/api/searchservice/autocomplete) veya [öneriler](/rest/api/searchservice/suggestions) API 'si belirten bir *sorgu* .
 + İstemci uygulamanızda arama-yazma etkileşimini işlemek için bir *Kullanıcı arabirimi denetimi* . Bu amaçla mevcut bir JavaScript kitaplığı kullanmanızı öneririz.
 
@@ -179,7 +179,7 @@ Mümülen Tasync işlevi, arama terimi girişine ek olarak, vuruş vurgulamalar�
 
 ## <a name="autocomplete"></a>Otomatik Tamamlama
 
-Şimdiye kadar, arama UX kodu önerilerle ortalandı. Sonraki kod bloğunda, Azure Bilişsel Arama AutoComplete için bir istek geçirerek XDSoft jQuery UI AutoComplete işlevini kullanarak AutoComplete gösterilmektedir. Önerilerle birlikte, bir C# uygulamasında, kullanıcı etkileşimini destekleyen kod **index. cshtml** 'ye gider.
+Şimdiye kadar, arama UX kodu önerilerle ortalandı. Sonraki kod bloğunda, Azure Bilişsel Arama AutoComplete için bir istek geçirerek XDSoft jQuery UI AutoComplete işlevini kullanarak AutoComplete gösterilmektedir. Önerilerle birlikte, bir C# uygulamasında, kullanıcı etkileşimini destekleyen kod **index. cshtml**'ye gider.
 
 ```javascript
 $(function () {

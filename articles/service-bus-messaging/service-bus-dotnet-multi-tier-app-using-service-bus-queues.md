@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 746257195220d26ad5d011a39022a3957e8cb1ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40529df5195a29fbf2ff4887311932c2ffbf471d
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021791"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029904"
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>Azure Service Bus kuyruklarını kullanan çok katmanlı .NET uygulaması
 
@@ -52,7 +52,7 @@ Aşağıdaki bölümlerde, bu mimariyi uygulayan kod ele alınır.
 
 ## <a name="create-a-namespace"></a>Ad alanı oluşturma
 
-İlk adım, bir *ad alanı*oluşturmak ve bu ad alanı Için [paylaşılan ERIŞIM imzası (SAS)](service-bus-sas.md) anahtarı edinmektir. Ad alanı, Service Bus tarafından kullanıma sunulan her uygulama için bir uygulama sınırı sağlar. Bir ad alanı oluşturulduğunda sistem tarafından bir SAS anahtarı oluşturulur. Ad alanı adı ve SAS anahtarı birleşimi ile Service Bus hizmetinin bir uygulamaya erişim kimliğini doğrulayan kimlik bilgisi sağlanır.
+İlk adım, bir *ad alanı* oluşturmak ve bu ad alanı Için [paylaşılan ERIŞIM imzası (SAS)](service-bus-sas.md) anahtarı edinmektir. Ad alanı, Service Bus tarafından kullanıma sunulan her uygulama için bir uygulama sınırı sağlar. Bir ad alanı oluşturulduğunda sistem tarafından bir SAS anahtarı oluşturulur. Ad alanı adı ve SAS anahtarı birleşimi ile Service Bus hizmetinin bir uygulamaya erişim kimliğini doğrulayan kimlik bilgisi sağlanır.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
@@ -63,7 +63,7 @@ Daha sonra, Service Bus kuyruğuna öğe gönderen ve kuyruk hakkındaki durum b
 
 ### <a name="create-the-project"></a>Proje oluşturma
 
-1. Yönetici ayrıcalıklarıyla Visual Studio'yu başlatın: **Visual Studio** programının simgesine sağ tıklayın ve ardından **Yönetici olarak çalıştır**'a tıklayın. Bu makalenin sonraki bölümlerinde ele alınan Azure işlem öykünücüsü, Visual Studio'nun yönetici ayrıcalıklarıyla başlatılmasını gerektirir.
+1. Yönetici ayrıcalıklarıyla Visual Studio'yu başlatın: **Visual Studio** programının simgesine sağ tıklayın ve ardından **Yönetici olarak çalıştır**'a tıklayın. Bu makalenin ilerleyen bölümlerinde ele alınan Azure Işlem öykünücüsü, Visual Studio 'Nun yönetici ayrıcalıklarıyla başlatılmasını gerektirir.
    
    Visual Studio'da, **Dosya** menüsündeki **Yeni** seçeneğine ve ardından **Proje**'ye tıklayın.
 2. **Yüklü Şablonlar**'da **Visual C#** kısmında **Bulut** seçeneğine ve ardından **Azure Bulut Hizmeti**'ne tıklayın. Projeyi **MultiTierApp** olarak adlandırın. Daha sonra, **Tamam**'a tıklayın.

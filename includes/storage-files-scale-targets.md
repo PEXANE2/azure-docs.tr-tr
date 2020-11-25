@@ -2,14 +2,14 @@
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 05/06/2019
+ms.date: 09/16/2020
 ms.author: rogarana
-ms.openlocfilehash: a71762010984928b93c19c7256c2ba4f0fe0f64b
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: e7b7fae094ad15bc1732778b6a4a3259fb4dd3b5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504072"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026777"
 ---
 | Kaynak | Standart dosya paylaşımları\* | Premium dosya paylaşımları |
 |----------|---------------|------------------------------------------|
@@ -27,6 +27,7 @@ ms.locfileid: "94504072"
 | En fazla nesne (Dizin ve dosya) adı uzunluğu | 2.048 karakter | 2.048 karakter |
 | En fazla yol adı bileşeni (\A\B\C\D yolunda her bir bir bileşendir) | 255 karakter | 255 karakter |
 | Sabit bağlantı sınırı (yalnızca NFS) | YOK | 178 |
+| En fazla SMB çok kanallı kanal sayısı | YOK | 4 |
 
 \* Standart dosya paylaşımları için sınırlar Standart dosya paylaşımları için kullanılabilen her üç katmanda geçerlidir: işlem için iyileştirilmiş, sık erişimli ve seyrek.
 

@@ -8,54 +8,55 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 11/23/2019
 ms.author: juliako
-ms.openlocfilehash: 1c3326456fefbbef9228cf26b5821f306cd21601
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1ca7c677e5f1eb55d74cca45e757676674f303c
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80127906"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030579"
 ---
 # <a name="search-for-exact-moments-in-videos-with-video-indexer"></a>Video Indexer videolar halinde tam dakika arama
 
-Bu konuda, videolarda tam dakika aramanızı sağlayan arama seçenekleri gösterilmektedir.
+Bu konu başlığı altında, videolarda tam olarak arama yapmak için Video Indexer Web sitesinin nasıl kullanılacağı gösterilmektedir.
 
 1. [Video Indexer](https://www.videoindexer.ai/) Web sitesine gidin ve oturum açın.
-2. Hesabınızdaki tüm videolar arasında arama yapın.
+1. Arama anahtar sözcüklerini belirtin ve arama, hesabınızın kitaplığındaki tüm videolar arasında gerçekleştirilir. 
 
-    Aşağıdaki örnekte, güvenlik ve SATA hakkında konuşacak tüm videoları aradık.
+    **Filtreler**' i seçerek aramanızı filtreleyebilirsiniz. Aşağıdaki örnekte, yalnızca ekrandaki metin (OCR) olarak görünen "Microsoft" araması yaptık.
 
-    ![Video Indexer video ara](./media/video-indexer-search/video-indexer-search01.png)
+    :::image type="content" source="./media/video-indexer-search/filter.png" alt-text="Filtre, yalnızca metin":::
+1. Sonucu görmek için **Ara** ' ya basın.
 
-3. Videonun özetlenen öngörülerini arayın.
+    :::image type="content" source="./media/video-indexer-search/results.png" alt-text="Video arama sonucu":::
 
-    Daha sonra videoda **oynat** ' ı seçerek bir videoda arama yapabilirsiniz. Ardından, **Ara** sekmesini seçerek videoda tam olarak arama yapabilirsiniz.
+    Sonuçlardan birini seçerseniz, Player sizi videoda tam olarak bir araya getirir.
+1. Videoda **oynat** ' a tıklayarak veya orijinal arama sonuçlarınızdan birini seçerek videonun özetlenen öngörülerini görüntüleyin ve arayın. 
 
-    Aşağıdaki örnekte, seçili videonun içinde "güvenli" araması yaptık.
+    **Öngörüleri** görüntüleyebilir, arayabilir, düzenleyebilirsiniz. Öngörülerden birini seçtiğinizde, Player sizi videoda tam olarak bir araya getirir.  
 
-    ![Video Indexer ile videoda arama](./media/video-indexer-search/video-indexer-search02.png)
+    :::image type="content" source="./media/video-indexer-search/insights.png" alt-text="Videonun öngörülerini görüntüleyin, arayın ve düzenleyin":::
 
-    Sonuçlardan birini seçerseniz, Player sizi videoda tam olarak bir araya getirir. Uygulamanızda Player/Öngörüler görünümü ve eşitlemesini elde edebilirsiniz. Daha fazla bilgi için bkz. [uygulamanıza video Indexer pencere öğeleri ekleme](video-indexer-embed-widgets.md).
+    Videoyu Video Indexer pencere öğeleri aracılığıyla katıştırırsanız, uygulamanızda Player/Öngörüler görünümü ve eşitleme elde edebilirsiniz. Daha fazla bilgi için bkz. [uygulamanıza video Indexer pencere öğeleri ekleme](video-indexer-embed-widgets.md).
+1. **Zaman çizelgesi** sekmesine tıklayarak dökümü görüntüleyebilir, arayabilir ve düzenleyebilirsiniz. 
 
-4. Videonun ayrıntılı dökümünü arayın.
+    :::image type="content" source="./media/video-indexer-search/timeline.png" alt-text="Videonun dökümünü görüntüleyin, arayın ve düzenleyin":::
 
-    Bulduğunuz videoyu temel alarak kendi klibinizi oluşturmak istiyorsanız **Düzenle** düğmesini seçin. Bu sayfa, öngörüleri filtreler olarak görüntüler. Daha fazla bilgi için bkz. [video Indexer öngörülerini görüntüleme ve düzenleme](video-indexer-view-edit.md).
+    Metni düzenlemek için sağ üst köşeden **Düzenle** ' yi seçin ve metni gerektiği gibi değiştirin. 
 
-    Videoda yalnızca ilgilendiğiniz satırları göstermek için tam olarak bir süre araması yapabilirsiniz. Görmek istediğiniz parçaları filtrelemek için yan öngörüleri kullanın. Bitirdiğinizde, klibinizi önizleyebilir ve galerinizin içinde görüntülenen yeni klibi oluşturmak için **Yayımla** ' yı seçebilirsiniz.
+    Ayrıca, sağ üst köşedeki uygun seçeneği belirleyerek dökümü çevirebilir ve indirebilirsiniz. 
 
-    Aşağıdaki örnekte, "Karma Gerçeklik" metni için arama yaptık. Ayrıca, aşağıdaki ekranda gösterildiği gibi ek filtreler de uyguladık.
+## <a name="embed-download-create-projects"></a>Ekleme, indirme, proje oluşturma
 
-    ![Video Indexer tam olarak arama yapın](./media/video-indexer-search/video-indexer-search03.png)
+Videonuzu eklemek **</>Ekle** ' ye tıklayarak videonuzu ekleyebilirsiniz. Ayrıntılar için bkz. [uygulamanıza görsel pencere öğeleri ekleme](video-indexer-embed-widgets.md).
+
+Videonun altında **İndir** ' i tıklatarak, video, döküm hakkında kaynak videosunu, dökümü indirebilirsiniz.
+
+Belirli satırlardan ve kısa bir süre **içinde, düzenleyicide aç**' a tıklayarak bir klip oluşturabilirsiniz. Ardından videoyu düzenleyip projeyi kaydederek. Ayrıntılar için bkz. [videolarınızın derin öngörülerini kullanma](use-editor-create-project.md).
+
+:::image type="content" source="./media/video-indexer-search/embed-download-create-projects.png" alt-text="Videonun projelerini ekleyin, indirin, oluşturun":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Birlikte çalışmak istediğiniz videoda tam olarak bir kez bulduktan sonra videoyu işlemeye devam edebilirsiniz. Daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın:
-
-- [Videolarınızın derin öngörülerini kullanma](use-editor-create-project.md)
-- [Video Indexer REST API'si ile içerik işleme](video-indexer-use-apis.md)
-- [Görsel pencere öğelerini uygulamanıza ekleme](video-indexer-embed-widgets.md)
-
-## <a name="see-also"></a>Ayrıca bkz.
-
-[Video Indexer’a genel bakış](video-indexer-overview.md)
+[Video Indexer REST API'si ile içerik işleme](video-indexer-use-apis.md)

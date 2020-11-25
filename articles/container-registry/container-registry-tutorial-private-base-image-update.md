@@ -2,18 +2,18 @@
 title: Öğretici-özel temel görüntü güncelleştirmesine göre görüntü oluşturmayı Tetikle
 description: Bu öğreticide, başka bir özel Azure Container Registry 'de bir temel görüntü güncelleştirilirken buluttaki kapsayıcı görüntüsü yapılarını otomatik olarak tetiklemek üzere bir Azure Container Registry görevi yapılandırırsınız.
 ms.topic: tutorial
-ms.date: 01/22/2020
+ms.date: 11/20/2020
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 7dda7c54c51c31e750083f302ca558ff7ef548ee
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 50eb89ccfafa27a7dcb0e97f21d14feec0ef9525
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739560"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030467"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-another-private-container-registry"></a>Öğretici: bir temel görüntü başka bir özel kapsayıcı kayıt defterinde güncelleştirildiği zaman kapsayıcı görüntüsü derlemelerini otomatikleştirin 
 
-ACR görevleri, bir kapsayıcının [temel görüntüsü](container-registry-tasks-base-images.md)güncelleştirilirken (örneğin, işletim sistemi veya uygulama çerçevesini temel görüntülerinizden birinde yamanız gibi) otomatik görüntü derlemelerini destekler. 
+[ACR görevleri](container-registry-tasks-overview.md) , bir kapsayıcının [temel görüntüsü](container-registry-tasks-base-images.md)güncelleştirilirken (örneğin, işletim sistemi veya uygulama çerçevesini temel görüntülerinizden birinde yamanız gibi) otomatik görüntü derlemelerini destekler. 
 
 Bu öğreticide, bir kapsayıcının temel görüntüsü başka bir Azure Container Registry 'ye gönderildiğinde buluttaki bir derlemeyi tetikleyen bir ACR görevi oluşturma hakkında bilgi edineceksiniz. Ayrıca, bir temel görüntü [aynı Azure Container Registry](container-registry-tutorial-base-image-update.md)'ye gönderildiğinde görüntü derlemesini tetikleyen bir ACR görevi oluşturma öğreticisini deneyebilirsiniz.
 
@@ -26,15 +26,11 @@ Bu öğreticide:
 > * Tetiklenen görevi görüntüleme
 > * Güncelleştirilmiş uygulama görüntüsünü doğrulama
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Azure CLı 'yı yerel olarak kullanmak istiyorsanız, Azure CLı sürüm **2.0.68** veya sonraki bir sürümün yüklü olması gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. CLI’yı yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI’yı yükleme][azure-cli].
-
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="complete-the-previous-tutorials"></a>Önceki öğreticileri tamamlama
 
-Bu öğreticide, serinin ilk iki öğreticisindeki adımları zaten tamamladığınız ve şu işlemleri yaptığınız varsayılır:
+Bu öğreticide, ortamınızı zaten yapılandırdığınız ve serideki ilk iki öğreticideki adımları tamamladığınız varsayılmaktadır:
 
 * Azure kapsayıcı kayıt defteri oluşturma
 * Örnek deponun çatalını oluşturma
@@ -53,7 +49,7 @@ Daha önce yapmadıysanız, devam etmeden önce aşağıdaki öğreticilerini do
 
 Bu kabuk ortam değişkenlerini ortamınıza uygun değerlerle doldurun. Bu adımın yapılması kesinlikle zorunlu değildir ancak bu öğreticideki çok satırlı Azure CLI komutlarını yürütmeyi biraz daha kolaylaştırır. Bu ortam değişkenlerini doldurmazsanız, her değeri örnek komutlarda göründüğü her yerde el ile değiştirmelisiniz.
 
-```azurecli-interactive
+```azurecli
 BASE_ACR=<base-registry-name>   # The name of your Azure container registry for base images
 ACR_NAME=<registry-name>        # The name of your Azure container registry for application images
 GIT_USER=<github-username>      # Your GitHub user account name
@@ -80,8 +76,8 @@ Bu öğreticide, ACR göreviniz bir Dockerfile dosyasında belirtilen bir uygula
 
 [Az ACR Build][az-acr-build]kullanarak bir ACR görevler *hızlı göreviyle* temel görüntü oluşturarak başlayın. Serinin [ilk öğreticisinde](container-registry-tutorial-quick-task.md) açıklandığı gibi, bu işlem yalnızca görüntüyü oluşturmakla kalmaz, oluşturma başarılı olduysa bunu kapsayıcınızın kayıt defterine de gönderir. Bu örnekte görüntü, temel görüntü kayıt defterine gönderilir.
 
-```azurecli-interactive
-az acr build --registry $BASE_ACR --image baseimages/node:9-alpine --file Dockerfile-base .
+```azurecli
+az acr build --registry $BASE_ACR --image baseimages/node:15-alpine --file Dockerfile-base .
 ```
 
 ## <a name="create-a-task-to-track-the-private-base-image"></a>Özel temel görüntüyü izlemek için bir görev oluşturma
@@ -90,10 +86,10 @@ Daha sonra, bir [yönetilen kimlik](container-registry-tasks-authentication-mana
 
 Bu örnek, sistem tarafından atanan bir kimlik kullanır, ancak belirli senaryolar için Kullanıcı tarafından atanan bir yönetilen kimlik oluşturabilir ve etkinleştirebilirsiniz. Ayrıntılar için bkz. [Azure tarafından yönetilen kimlik kullanarak ACR görevinde çapraz kayıt defteri kimlik doğrulaması](container-registry-tasks-cross-registry-authentication.md).
 
-```azurecli-interactive
+```azurecli
 az acr task create \
     --registry $ACR_NAME \
-    --name taskhelloworld \
+    --name baseexample2 \
     --image helloworld:{{.Run.ID}} \
     --context https://github.com/$GIT_USER/acr-build-helloworld-node.git \
     --file Dockerfile-app \
@@ -102,11 +98,10 @@ az acr task create \
     --assign-identity
 ```
 
-
-Bu görev, [önceki öğreticide](container-registry-tutorial-build-task.md)oluşturulan görevle benzerdir. ACR Görevlerine, işlemeler `--context` tarafından belirtilen depoya gönderildiğinde bir görüntü derlemesi tetiklemesini bildirir. Önceki öğreticide görüntüyü oluşturmak için kullanılan Dockerfile, genel bir temel görüntü ( `FROM node:9-alpine` ), bu görevde Dockerfile, [dockerfile-App][dockerfile-app], temel görüntü kayıt defterinde bir temel görüntü belirtir:
+Bu görev, [önceki öğreticide](container-registry-tutorial-build-task.md)oluşturulan görevle benzerdir. ACR Görevlerine, işlemeler `--context` tarafından belirtilen depoya gönderildiğinde bir görüntü derlemesi tetiklemesini bildirir. Önceki öğreticide görüntüyü oluşturmak için kullanılan Dockerfile, genel bir temel görüntü ( `FROM node:15-alpine` ), bu görevde Dockerfile, [dockerfile-App][dockerfile-app], temel görüntü kayıt defterinde bir temel görüntü belirtir:
 
 ```Dockerfile
-FROM ${REGISTRY_NAME}/baseimages/node:9-alpine
+FROM ${REGISTRY_NAME}/baseimages/node:15-alpine
 ```
 
 Bu yapılandırma, bu öğreticide daha sonra temel görüntüde bir çerçeve düzeltme ekinin benzetimini yapmayı kolaylaştırır.
@@ -115,9 +110,9 @@ Bu yapılandırma, bu öğreticide daha sonra temel görüntüde bir çerçeve d
 
 Temel görüntü kayıt defterinden görüntüleri çekmek için görevin yönetilen kimlik izinlerini vermek üzere, kimliğin hizmet sorumlusu KIMLIĞINI almak için [az ACR görev göster][az-acr-task-show] ' i çalıştırın. Ardından, temel kayıt defterinin kaynak KIMLIĞINI almak için [az ACR Show][az-acr-show] ' ı çalıştırın:
 
-```azurecli-interactive
+```azurecli
 # Get service principal ID of the task
-principalID=$(az acr task show --name taskhelloworld --registry $ACR_NAME --query identity.principalId --output tsv) 
+principalID=$(az acr task show --name baseexample2 --registry $ACR_NAME --query identity.principalId --output tsv) 
 
 # Get resource ID of the base registry
 baseregID=$(az acr show --name $BASE_ACR --query id --output tsv) 
@@ -125,7 +120,7 @@ baseregID=$(az acr show --name $BASE_ACR --query id --output tsv)
  
 Yönetilen kimlik çekme izinlerini kayıt defterine atamak için [az role atama Create][az-role-assignment-create]: ' i çalıştırın.
 
-```azurecli-interactive
+```azurecli
 az role assignment create \
   --assignee $principalID \
   --scope $baseregID --role acrpull 
@@ -135,9 +130,9 @@ az role assignment create \
 
 Göreve kimlik bilgileri eklemek için [az ACR Task Credential Add][az-acr-task-credential-add] ' i çalıştırın. `--use-identity [system]`Görevin sistem tarafından atanan yönetilen kimliğin kimlik bilgilerine erişemeyeceğini belirtmek için parametresini geçirin.
 
-```azurecli-interactive
+```azurecli
 az acr task credential add \
-  --name taskhelloworld \
+  --name baseexample2 \
   --registry $ACR_NAME \
   --login-server $BASE_ACR.azurecr.io \
   --use-identity [system] 
@@ -147,8 +142,8 @@ az acr task credential add \
 
 Görevi el ile tetiklemek ve uygulama görüntüsünü derlemek için [az ACR görev çalıştırmasını][az-acr-task-run] kullanın. Görevin, temel görüntüde uygulama görüntüsünün bağımlılığını izlemesi için bu adım gereklidir.
 
-```azurecli-interactive
-az acr task run --registry $ACR_NAME --name taskhelloworld
+```azurecli
+az acr task run --registry $ACR_NAME --name baseexample2
 ```
 
 Görev tamamlandıktan sonra, aşağıdaki isteğe bağlı adımı tamamlamak istiyorsanız **Run ID** (örneğin, "da6") değerini not alın.
@@ -171,7 +166,7 @@ docker run -d -p 8080:80 --name myapp --rm $ACR_NAME.azurecr.io/helloworld:<run-
 
 Tarayıcınızda `http://localhost:8080` adresine gidin; aşağıdakine benzer biçimde web sayfasında işlenmiş Node.js sürüm numarasını görüyor olmalısınız. Sonraki adımlardan birinde, sürüm dizesine bir "a" ekleyerek sürümü yükseltirsiniz.
 
-![Tarayıcıda işlenen örnek bir uygulamayı gösteren ekran görüntüsü.][base-update-01]
+:::image type="content" source="media/container-registry-tutorial-base-image-update/base-update-01.png" alt-text="Tarayıcıda örnek uygulamanın ekran görüntüsü":::
 
 Kapsayıcıyı durdurmak ve kaldırmak için aşağıdaki komutu çalıştırın:
 
@@ -183,7 +178,7 @@ docker stop myapp
 
 Bu adımda [az acr task list-runs][az-acr-task-list-runs] komutunu kullanarak ACR Görevlerinin kayıt defteriniz için tamamladığı çalıştırmaları listeleyin:
 
-```azurecli-interactive
+```azurecli
 az acr task list-runs --registry $ACR_NAME --output table
 ```
 
@@ -192,14 +187,14 @@ az acr task list-runs --registry $ACR_NAME --output table
 ```console
 $ az acr task list-runs --registry $ACR_NAME --output table
 
-RUN ID    TASK            PLATFORM    STATUS     TRIGGER     STARTED               DURATION
---------  --------------  ----------  ---------  ----------  --------------------  ----------
-da6       taskhelloworld  Linux       Succeeded  Manual      2018-09-17T23:07:22Z  00:00:38
-da5                       Linux       Succeeded  Manual      2018-09-17T23:06:33Z  00:00:31
-da4       taskhelloworld  Linux       Succeeded  Git Commit  2018-09-17T23:03:45Z  00:00:44
-da3       taskhelloworld  Linux       Succeeded  Manual      2018-09-17T22:55:35Z  00:00:35
-da2       taskhelloworld  Linux       Succeeded  Manual      2018-09-17T22:50:59Z  00:00:32
-da1                       Linux       Succeeded  Manual      2018-09-17T22:29:59Z  00:00:57
+UN ID    TASK            PLATFORM    STATUS     TRIGGER       STARTED               DURATION
+--------  --------------  ----------  ---------  ------------  --------------------  ----------
+ca12      baseexample2    linux       Succeeded  Manual        2020-11-21T00:00:56Z  00:00:36
+ca11      baseexample1    linux       Succeeded  Image Update  2020-11-20T23:38:24Z  00:00:34
+ca10      taskhelloworld  linux       Succeeded  Image Update  2020-11-20T23:38:24Z  00:00:24
+cay                       linux       Succeeded  Manual        2020-11-20T23:38:08Z  00:00:22
+cax       baseexample1    linux       Succeeded  Manual        2020-11-20T23:33:12Z  00:00:30
+caw       taskhelloworld  linux       Succeeded  Commit        2020-11-20T23:16:07Z  00:00:29
 ```
 
 ## <a name="update-the-base-image"></a>Temel görüntüyü güncelleştirme
@@ -207,13 +202,13 @@ da1                       Linux       Succeeded  Manual      2018-09-17T22:29:59
 Burada, temel görüntüde bir çerçeve yamasının simülasyonunu yaparsınız. **Dockerfile-base** öğesini düzenleyin ve `NODE_VERSION` içinde tanımlanan sürüm numarasından sonra bir "a" ekleyin:
 
 ```Dockerfile
-ENV NODE_VERSION 9.11.2a
+ENV NODE_VERSION 15.2.1a
 ```
 
 Değiştirilmiş temel görüntüyü derlemek için bir hızlı görev çalıştırın. Çıkıştaki **Run ID** değerini not alın.
 
-```azurecli-interactive
-az acr build --registry $BASE_ACR --image baseimages/node:9-alpine --file Dockerfile-base .
+```azurecli
+az acr build --registry $BASE_ACR --image baseimages/node:15-alpine --file Dockerfile-base .
 ```
 
 Derleme tamamlandıktan ve ACR görevi yeni temel görüntüyü kayıt defterinize gönderdikten sonra, uygulama görüntüsünün derlemesini tetikler. Daha önce oluşturduğunuz görevin uygulama görüntüsü derlemeyi tetiklemesi birkaç dakika sürebilir çünkü yeni derlenen ve gönderilen temel görüntüyü algılaması gerekir.
@@ -222,7 +217,7 @@ Derleme tamamlandıktan ve ACR görevi yeni temel görüntüyü kayıt defterini
 
 Artık temel görüntüyü güncelleştirdiğinize göre, görev çalıştırmalarınızı bir kez daha listeleyip önceki listeyle bunu karşılaştırın. İlk seferinde çıkış farklı görünmüyorsa, yeni görev çalıştırmasının listede yer aldığını görmek için komutu düzenli aralıklarla çalıştırın.
 
-```azurecli-interactive
+```azurecli
 az acr task list-runs --registry $ACR_NAME --output table
 ```
 
@@ -231,19 +226,18 @@ az acr task list-runs --registry $ACR_NAME --output table
 ```console
 $ az acr task list-runs --registry $ACR_NAME --output table
 
-Run ID    TASK            PLATFORM    STATUS     TRIGGER       STARTED               DURATION
+         PLATFORM    STATUS     TRIGGER       STARTED               DURATION
 --------  --------------  ----------  ---------  ------------  --------------------  ----------
-da8       taskhelloworld  Linux       Succeeded  Image Update  2018-09-17T23:11:50Z  00:00:33
-da7                       Linux       Succeeded  Manual        2018-09-17T23:11:27Z  00:00:35
-da6       taskhelloworld  Linux       Succeeded  Manual        2018-09-17T23:07:22Z  00:00:38
-da5                       Linux       Succeeded  Manual        2018-09-17T23:06:33Z  00:00:31
-da4       taskhelloworld  Linux       Succeeded  Git Commit    2018-09-17T23:03:45Z  00:00:44
-da3       taskhelloworld  Linux       Succeeded  Manual        2018-09-17T22:55:35Z  00:00:35
-da2       taskhelloworld  Linux       Succeeded  Manual        2018-09-17T22:50:59Z  00:00:32
-da1                       Linux       Succeeded  Manual        2018-09-17T22:29:59Z  00:00:57
+ca13      baseexample2    linux       Succeeded  Image Update  2020-11-21T00:06:00Z  00:00:43
+ca12      baseexample2    linux       Succeeded  Manual        2020-11-21T00:00:56Z  00:00:36
+ca11      baseexample1    linux       Succeeded  Image Update  2020-11-20T23:38:24Z  00:00:34
+ca10      taskhelloworld  linux       Succeeded  Image Update  2020-11-20T23:38:24Z  00:00:24
+cay                       linux       Succeeded  Manual        2020-11-20T23:38:08Z  00:00:22
+cax       baseexample1    linux       Succeeded  Manual        2020-11-20T23:33:12Z  00:00:30
+caw       taskhelloworld  linux       Succeeded  Commit        2020-11-20T23:16:07Z  00:00:29
 ```
 
-Yeni oluşturulan kapsayıcıyı çalıştırıp güncelleştirilmiş sürüm numarasını görmek için aşağıdaki isteğe bağlı adımı uygulamak isterseniz, Görüntü Güncelleştirmesi ile tetiklenen derlemenin **RUN ID** değerini (önceki çıktıda "da8") not alın.
+Güncelleştirilmiş sürüm numarasını görmek için yeni oluşturulan kapsayıcıyı çalıştırmanın aşağıdaki isteğe bağlı adımını gerçekleştirmek istiyorsanız, görüntü güncelleştirmesi tarafından tetiklenen derleme için **çalıştırma kimliği** değerini (önceki çıktıda, "CA13") göz atın.
 
 ### <a name="optional-run-newly-built-image"></a>İsteğe bağlı: Yeni oluşturulan görüntüyü çalıştırma
 
@@ -255,7 +249,7 @@ docker run -d -p 8081:80 --name updatedapp --rm $ACR_NAME.azurecr.io/helloworld:
 
 Tarayıcınızda http://localhost:8081 adresine gidin; web sayfasında güncelleştirilmiş Node.js sürüm numarasını ("a" ile) görüyor olmalısınız:
 
-![Tarayıcıda oluşturulan örnek uygulamanın ekran görüntüsü][base-update-02]
+:::image type="content" source="media/container-registry-tutorial-base-image-update/base-update-02.png" alt-text="Tarayıcıdaki güncelleştirilmiş örnek uygulamanın ekran görüntüsü":::
 
 **Temel** görüntünüzü yeni sürüm numarasıyla güncelleştirdiğinize ama son oluşturulan **uygulama** görüntüsünde yeni sürümün görüntülendiğine dikkat etmelisiniz. ACR Görevler temel görüntüde yaptığınız değişikliği almış ve uygulama görüntünüzü otomatik olarak yeniden oluşturmuştur.
 
@@ -295,6 +289,3 @@ Bu öğreticide, temel görüntü güncelleştirildiğinde kapsayıcı görünt�
 [az-acr-show]: /cli/azure/acr#az-acr-show
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 
-<!-- IMAGES -->
-[base-update-01]: ./media/container-registry-tutorial-base-image-update/base-update-01.png
-[base-update-02]: ./media/container-registry-tutorial-base-image-update/base-update-02.png

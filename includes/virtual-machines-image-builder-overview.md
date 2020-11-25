@@ -1,24 +1,24 @@
 ---
-author: cynthn
-ms.author: cynthn
+author: ''
+ms.author: danielsollondon
 ms.date: 08/03/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: daberry
-ms.openlocfilehash: a5a201a9f993db2be00645d8d60a11c5be9cdbe0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c028fc1abd77bda1a41857a7a7c77da1ad1b2d2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89304062"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028277"
 ---
 Standartlaştırılmış sanal makine (VM) görüntüleri, kuruluşların buluta geçiş yapmasına ve dağıtımlarda tutarlılık sağlamanıza olanak tanır. Görüntüler genellikle önceden tanımlanmış güvenlik ve yapılandırma ayarlarını ve gerekli yazılımları içerir. Kendi görüntüleme işlem hattınızı ayarlamak için zaman, altyapı ve kurulum gerekir, ancak Azure VM Image Builder sayesinde görüntünüzü açıklayan basit bir yapılandırma sağlamanız, hizmete göndermeniz ve görüntünün oluşturulup dağıtılması sağlanır.
  
-Azure VM görüntü Oluşturucu (Azure görüntü Oluşturucu), bir Windows veya Linux tabanlı Azure Marketi görüntüsü, mevcut özel görüntüler veya Red Hat Enterprise Linux (RHEL) ISO ile başlamanıza ve kendi özelleştirmelerinizi eklemeye başlamanızı sağlar. Görüntü Oluşturucu [HashiCorp Packer](https://packer.io/)üzerinde oluşturulduğundan, mevcut Packer kabuğu sağlayıcısı oluştur betiklerinizi de içeri aktarabilirsiniz. Ayrıca, [Azure Paylaşılan görüntü galerisinde](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)bir yönetilen görüntü veya VHD olarak, görüntülerinizi nerede barındırıyorsanız istediğinizi belirtebilirsiniz.
+Azure VM görüntü Oluşturucu (Azure görüntü Oluşturucu), bir Windows veya Linux tabanlı Azure Marketi görüntüsü, mevcut özel görüntüler veya Red Hat Enterprise Linux (RHEL) ISO ile başlamanıza ve kendi özelleştirmelerinizi eklemeye başlamanızı sağlar. Görüntü Oluşturucu [HashiCorp Packer](https://packer.io/)üzerinde oluşturulduğundan, mevcut Packer kabuğu sağlayıcısı oluştur betiklerinizi de içeri aktarabilirsiniz. Ayrıca, [Azure Paylaşılan görüntü galerisinde](../articles/virtual-machines/windows/shared-image-galleries.md)bir yönetilen görüntü veya VHD olarak, görüntülerinizi nerede barındırıyorsanız istediğinizi belirtebilirsiniz.
 
 > [!IMPORTANT]
 > Azure görüntü Oluşturucu Şu anda genel önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="preview-features"></a>Önizleme özellikleri
 
@@ -59,12 +59,8 @@ RHEL ISOs desteği artık desteklenmiyor.
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
-
-![Azure Image Builder kavramsal çizimi](./media/virtual-machines-image-builder-overview/image-builder.png)
-
 Azure görüntü Oluşturucu, bir Azure Kaynak sağlayıcısı tarafından erişilebilen, tam olarak yönetilen bir Azure hizmetidir. Azure görüntü Oluşturucu işleminin üç ana bölümü vardır: kaynak, özelleştirme ve dağıtma, bunlar bir şablonda temsil edilir. Aşağıdaki diyagramda, bazı özellikleriyle birlikte bileşenler gösterilmektedir. 
  
-
 
 **Image Builder işlemi** 
 
@@ -81,14 +77,14 @@ Azure görüntü Oluşturucu, bir Azure Kaynak sağlayıcısı tarafından eriş
 
 Azure VM Image Builder 'ın görüntüleri yönetilen görüntülere veya paylaşılan bir görüntü galerisine dağıtmasını sağlamak için, görüntüleri okuma ve yazma izinlerine sahip Azure Kullanıcı tarafından atanan bir kimlik oluşturmanız gerekir. Azure depolama 'ya erişiyorsanız, bu durumda özel kapsayıcıları okumak için izinler gerekir.
 
-Başlangıçta kimlik oluşturma hakkında [Azure Kullanıcı tarafından atanan yönetilen kimlik](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli) belgelerini izlemeniz gerekir.
+Başlangıçta kimlik oluşturma hakkında [Azure Kullanıcı tarafından atanan yönetilen kimlik](../articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) belgelerini izlemeniz gerekir.
 
 İzin vermek için gereken kimliğe sahip olduktan sonra, bunu yapmak için bir Azure özel rol tanımı kullanabilir ve ardından Kullanıcı tarafından atanan yönetilen kimliği özel rol tanımını kullanacak şekilde atayabilirsiniz.
 
 İzinler [burada](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibPermissions.md#azure-vm-image-builder-permissions-explained-and-requirements)ayrıntılı olarak açıklanırlar ve örnekler bunun nasıl uygulandığını gösterir.
 
 > [!Note]
-> Daha önce AıB ile, AıB SPN 'yi kullanacaksınız ve görüntü kaynak gruplarına SPN izinleri vermelisiniz. Bu modelden daha sonraki yetenekler için izin vermek üzere taşınıyoruz. 26, 2020 Mayıs 'dan, görüntü Oluşturucu kullanıcı tarafından atanan bir kimliğe sahip olmayan şablonları kabul etmez, var olan şablonların bir [Kullanıcı kimliği](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#identity)ile hizmete yeniden gönderilmesi gerekir. Burada örnek olarak, Kullanıcı tarafından atanan bir kimlik oluşturma ve bunları bir şablona ekleme işlemlerinin nasıl yapılacağı gösterilmektedir. Daha fazla bilgi için lütfen bu [belgede bu belgeleri](https://github.com/danielsollondon/azvmimagebuilder#service-updates-and-latest-release-information) gözden geçirin ve güncelleştirmeleri yayınlar.
+> Daha önce AıB ile, AıB SPN 'yi kullanacaksınız ve görüntü kaynak gruplarına SPN izinleri vermelisiniz. Bu modelden daha sonraki yetenekler için izin vermek üzere taşınıyoruz. 26, 2020 Mayıs 'dan, görüntü Oluşturucu kullanıcı tarafından atanan bir kimliğe sahip olmayan şablonları kabul etmez, var olan şablonların bir [Kullanıcı kimliği](../articles/virtual-machines/linux/image-builder-json.md?bc=%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json#identity)ile hizmete yeniden gönderilmesi gerekir. Burada örnek olarak, Kullanıcı tarafından atanan bir kimlik oluşturma ve bunları bir şablona ekleme işlemlerinin nasıl yapılacağı gösterilmektedir. Daha fazla bilgi için lütfen bu [belgede bu belgeleri](https://github.com/danielsollondon/azvmimagebuilder#service-updates-and-latest-release-information) gözden geçirin ve güncelleştirmeleri yayınlar.
 
 ## <a name="costs"></a>Maliyetler
 Azure Image Builder ile görüntü oluştururken, derlerken ve depolarken bazı işlem, ağ ve depolama maliyetlerine tabi olursunuz. Bu maliyetler, el ile özel görüntüler oluşturma bölümünde tahakkuk eden maliyetlere benzer. Kaynaklar için Azure ücretlerinizi ücretlendirilecektir. 
@@ -105,4 +101,3 @@ Image Builder Şu anda yalnızca yerel olarak Hyper-V oluşturma (Gen1) 1 görü
 ## <a name="next-steps"></a>Sonraki adımlar 
  
 Azure görüntü Oluşturucu 'Yu denemek için [Linux](../articles/virtual-machines/linux/image-builder.md) veya [Windows](../articles/virtual-machines/windows/image-builder.md) görüntülerini oluşturma makalelerine bakın.
- 
