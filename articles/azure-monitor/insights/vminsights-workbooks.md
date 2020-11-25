@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
 ms.openlocfilehash: 43cdb9de111bdea5486e49a56d58d38279b685c7
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996374"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95985552"
 ---
 # <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>VM’ler için Azure İzleyici’de çalışma kitaplarıyla etkileşimli raporlar oluşturma
 
@@ -26,7 +26,7 @@ ms.locfileid: "91996374"
 
 Aşağıdaki tablo, başlamanıza başlamak için VM'ler için Azure İzleyici dahil olan çalışma kitaplarını özetler.
 
-| Çalışma Kitabı | Açıklama | Kapsam |
+| Çalışma Kitabı | Description | Kapsam |
 |----------|-------------|-------|
 | Performans | , Etkinleştirdiğiniz tüm Log Analytics performans sayaçlarından yararlanan tek bir çalışma kitabında En Iyi N liste ve grafik görünümümüzün özelleştirilebilir bir sürümünü sağlar.| Ölçekte |
 | Performans sayaçları | Çok sayıda performans sayacı üzerinde Ilk N grafik görünümü. | Ölçekte |
@@ -46,7 +46,7 @@ Aşağıdaki tablo, başlamanıza başlamak için VM'ler için Azure İzleyici d
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-2. **Sanal makineleri**seçin.
+2. **Sanal makineleri** seçin.
 
 3. Listeden bir VM seçin.
 
@@ -64,7 +64,7 @@ Aşağıdaki tablo, başlamanıza başlamak için VM'ler için Azure İzleyici d
 
 ## <a name="editing-workbook-sections"></a>Çalışma kitabı bölümlerini düzenleme
 
-Çalışma kitaplarında iki mod vardır: **Düzen modu**ve **Okuma modu**. Yeni bir çalışma kitabı ilk kez başlatıldığında, **Düzen modunda**açılır. Bu, başka bir şekilde gizlenen tüm adımlar ve parametreler dahil olmak üzere çalışma kitabının tüm içeriğini gösterir. **Okuma modu** , Basitleştirilmiş bir rapor stili görünümü sunar. Okuma modu, bir rapor oluşturma ile ilgili karmaşıklığın dışında, yalnızca değişiklik için gerektiğinde yalnızca birkaç tıklamayla oluşan bir rapor oluşturmaya yönelik karmaşıklığın ötede olmasını sağlar.
+Çalışma kitaplarında iki mod vardır: **Düzen modu** ve **Okuma modu**. Yeni bir çalışma kitabı ilk kez başlatıldığında, **Düzen modunda** açılır. Bu, başka bir şekilde gizlenen tüm adımlar ve parametreler dahil olmak üzere çalışma kitabının tüm içeriğini gösterir. **Okuma modu** , Basitleştirilmiş bir rapor stili görünümü sunar. Okuma modu, bir rapor oluşturma ile ilgili karmaşıklığın dışında, yalnızca değişiklik için gerektiğinde yalnızca birkaç tıklamayla oluşan bir rapor oluşturmaya yönelik karmaşıklığın ötede olmasını sağlar.
 
 ![Azure Izleyici 'deki sanal makineler çalışma kitabı bölümünün, Düzenle denetimleri vurgulanmış şekilde, yeni bir çalışma kitabını görüntüleme modunda gösteren ekran görüntüsü.](media/vminsights-workbooks/workbook-new-workbook-editor-01.png)
 
@@ -164,7 +164,7 @@ Parametreler doğrusal, bir çalışma kitabının üstünden başlayıp daha so
 
 Metin kutusundaki Kullanıcı türlerinin değeri, kaçış veya tırnak içine alma olmadan doğrudan sorguda yer alır. İhtiyacınız olan değer bir dize ise, sorgunun parametre etrafında tırnak işareti olmalıdır ( **' {Parameter} '** gibi).
 
-Metin parametresi bir metin kutusundaki değerin her yerde kullanılmasına izin verir. Tablo adı, sütun adı, işlev adı, işleç vb. olabilir.  Metin parametre türü, **analiz sorgusundan varsayılan değeri Al**ayarına sahiptir ve bu, çalışma kitabı yazarının bu metin kutusu için varsayılan değeri doldurmak üzere bir sorgu kullanmasına izin verir.
+Metin parametresi bir metin kutusundaki değerin her yerde kullanılmasına izin verir. Tablo adı, sütun adı, işlev adı, işleç vb. olabilir.  Metin parametre türü, **analiz sorgusundan varsayılan değeri Al** ayarına sahiptir ve bu, çalışma kitabı yazarının bu metin kutusu için varsayılan değeri doldurmak üzere bir sorgu kullanmasına izin verir.
 
 Bir günlük sorgusundan varsayılan değeri kullanırken, varsayılan değer olarak yalnızca ilk satırın ilk değeri (satır 0, sütun 0) kullanılır. Bu nedenle, sorgunuzu yalnızca bir satır ve bir sütun döndürecek şekilde sınırlandırmaya önerilir. Sorgu tarafından döndürülen diğer veriler yok sayılır. 
 
@@ -178,7 +178,7 @@ Açılan menü, bir günlük sorgusu veya JSON ile doldurulur. Sorgu bir sütun 
 
 Sütun bir dize türü ise, null/boş dize yanlış olarak değerlendirilir ve diğer tüm değerler doğru olarak değerlendirilir. Tek seçim açılan listeleri için, true değeri olan ilk değer varsayılan seçim olarak kullanılır.  Çoklu seçim açılan listeleri için, true değeri olan tüm değerler varsayılan seçili küme olarak kullanılır. Açılır öğelerdeki öğeler, sorgunun satırları döndürdüğü sırada gösterilir. 
 
-Bağlantılara Genel Bakış raporunda bulunan parametrelere göz atalım. **Yön**seçeneğinin yanındaki Düzenle simgesine tıklayın.
+Bağlantılara Genel Bakış raporunda bulunan parametrelere göz atalım. **Yön** seçeneğinin yanındaki Düzenle simgesine tıklayın.
 
 ![Azure Izleyici 'de rapor parametrelerini ekleme ve düzenlemeyle ilgili bölümün ekran görüntüsü. Yön parametresinin düzenleme simgesi seçilidir.](media/vminsights-workbooks/011-workbook-using-dropdown.png)
 
@@ -226,7 +226,7 @@ Kaynak seçici parametre türü, raporunuzu belirli kaynak türlerine göre kaps
 
 Çalışma kitapları, çalışma kitapları galerisine nasıl eriştiğinize bağlı olarak bir Log Analytics çalışma alanı veya bir sanal makine kaynağı içinde kaydedilir. Çalışma kitabı, size özel olan **Raporlarım** bölümüne veya kaynağa erişimi olan herkesin erişebileceği **paylaşılan raporlar** bölümünde kaydedilebilir. Kaynaktaki tüm çalışma kitaplarını görüntülemek için Eylem çubuğundaki **Aç** düğmesine tıklayın.
 
-Şu anda **Raporlarım**bir çalışma kitabını paylaşmak için:
+Şu anda **Raporlarım** bir çalışma kitabını paylaşmak için:
 
 1. Eylem çubuğunda **Aç** ' a tıklayın
 2. "..." Düğmesine tıklayın. paylaşmak istediğiniz çalışma kitabının yanındaki düğme

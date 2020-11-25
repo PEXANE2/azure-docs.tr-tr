@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2020
 ms.openlocfilehash: 32ad92b333eda8cd429303177dba160f0b58af54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445530"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95985807"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-to-understand-application-components"></a>Uygulama bileşenlerini anlamak için VM'ler için Azure İzleyici Map özelliğini kullanın
 VM'ler için Azure İzleyici, Azure 'da veya ortamınızda çalışan Windows ve Linux sanal makinelerinde (VM 'Ler) bulunan uygulama bileşenlerini görüntüleyebilirsiniz. VM 'Leri iki şekilde gözlemleyebilirsiniz. VM grupları arasında bileşenleri görmek için bir eşlemeyi doğrudan bir VM 'den veya Azure Izleyici 'den görüntüleyin. Bu makale, bu iki görüntüleme yöntemini ve Map özelliğinin nasıl kullanılacağını anlamanıza yardımcı olur. 
