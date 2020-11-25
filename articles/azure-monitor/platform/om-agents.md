@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 07/24/2020
 ms.openlocfilehash: 2a4f24da51b9e9e78c3df3e7d1437a380306e300
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318360"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95975587"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager Azure Izleyici 'ye bağlama
 
@@ -71,16 +71,16 @@ Aşağıdaki bilgiler, Azure Izleyici ile iletişim kurmak için Operations Mana
 
 |Kaynak | Bağlantı noktası numarası| HTTP İncelemesini atlama|  
 |---------|------|-----------------------|  
-|**Aracısı**|||  
-|\*.ods.opinsights.azure.com| 443 |Evet|  
-|\*.oms.opinsights.azure.com| 443|Evet|  
-|\*.blob.core.windows.net| 443|Evet|  
-|\*.azure-automation.net| 443|Evet|  
+|**Aracı**|||  
+|\*.ods.opinsights.azure.com| 443 |Yes|  
+|\*.oms.opinsights.azure.com| 443|Yes|  
+|\*.blob.core.windows.net| 443|Yes|  
+|\*.azure-automation.net| 443|Yes|  
 |**Yönetim sunucusu**|||  
 |\*.service.opinsights.azure.com| 443||  
-|\*.blob.core.windows.net| 443| Evet|  
-|\*.ods.opinsights.azure.com| 443| Evet|  
-|*.azure-automation.net | 443| Evet|  
+|\*.blob.core.windows.net| 443| Yes|  
+|\*.ods.opinsights.azure.com| 443| Yes|  
+|*.azure-automation.net | 443| Yes|  
 |**Konsolu Azure Izleyici 'ye Operations Manager**|||  
 |service.systemcenteradvisor.com| 443||  
 |\*.service.opinsights.azure.com| 443||  
@@ -104,7 +104,7 @@ Operations Manager yönetim grubunuzu Log Analytics çalışma alanlarınızdan 
 Log Analytics çalışma alanı ile Operations Manager yönetim grubunuzun ilk kaydı sırasında, yönetim grubu için proxy yapılandırmasını belirtme seçeneği Işletim konsolunda kullanılamaz.  Bu seçeneğin sağlanması için önce yönetim grubunun hizmete başarıyla kaydedilmiş olması gerekir.  Bu sorunu geçici olarak çözmek için, Işletim konsolunu çalıştıran sistemde Netsh kullanarak sistem proxy yapılandırmasını güncelleştirmeniz gerekir ve yönetim grubundaki tüm yönetim sunucularını yapılandırın.  
 
 1. Yükseltilmiş bir komut istemi açın.
-   a. **Başlat** ' a gidin ve **cmd**yazın.
+   a. **Başlat** ' a gidin ve **cmd** yazın.
    b. **Komut istemi** ' ne sağ tıklayın ve yönetici olarak çalıştır * * seçeneğini belirleyin.
 1. Aşağıdaki komutu girin ve **Enter** tuşuna basın:
 
@@ -163,7 +163,7 @@ Proxy sunucunuz kimlik doğrulaması gerektiriyorsa, yönetim grubunda Azure Izl
 Bağlantı oluşturulduktan ve Azure Izleyici 'de günlük verilerini hangi aracıların toplayacağınızı ve rapor alyacağını yapılandırdıktan sonra, aşağıdaki yapılandırma sırasıyla Yönetim grubunda uygulanır:
 
 * **Microsoft.SystemCenter.Advisor.RunAsAccount.Certificate** Farklı Çalıştır Hesabı oluşturulur. Bu hesap **Microsoft System Center Advisor Farklı Çalıştır Profili Blobu** Farklı Çalıştır profiliyle ilişkilendirilmiştir ve iki sınıfı hedefler: **Koleksiyon Sunucusu** ve **Operations Manager Yönetim Grubu**.
-* İki bağlayıcı oluşturulur.  İlki **Microsoft.SystemCenter. Advisor. DataConnector** olarak adlandırılmıştır ve yönetim grubundaki tüm sınıfların örneklerinden oluşturulan tüm uyarıları Azure izleyici 'ye ileten bir abonelikle otomatik olarak yapılandırılır. İkinci bağlayıcı, Azure Izleyici ve paylaşım verileriyle iletişim sağlanmasından sorumlu olan **danışman Bağlayıcısı**olur.
+* İki bağlayıcı oluşturulur.  İlki **Microsoft.SystemCenter. Advisor. DataConnector** olarak adlandırılmıştır ve yönetim grubundaki tüm sınıfların örneklerinden oluşturulan tüm uyarıları Azure izleyici 'ye ileten bir abonelikle otomatik olarak yapılandırılır. İkinci bağlayıcı, Azure Izleyici ve paylaşım verileriyle iletişim sağlanmasından sorumlu olan **danışman Bağlayıcısı** olur.
 * Yönetim grubunda veri toplamak için seçilmiş olan aracılar ve gruplar **Microsoft System Center Advisor Sunucu İzleme Grubu**'na eklenir.
 
 ## <a name="management-pack-updates"></a>Yönetim paketi güncelleştirmeleri

@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: cdn
 author: SyntaxC4
 ms.service: azure-cdn
@@ -9,14 +9,14 @@ ms.date: 11/15/2019
 ms.author: magattus
 ms.custom: include file
 ms.openlocfilehash: 5c6f79cb7ad0a31eb3461d6d8e54307537f0491e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74284172"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95978051"
 ---
 > [!IMPORTANT]
-> Bu, Verizon ' den yalnızca bir **Premium Azure CDN** , **Microsoft 'tan Azure CDN** kuralları yapılandırmak için lütfen [standart kurallar altyapısını](../articles/cdn/cdn-standard-rules-engine-reference.md)kullanın. Gelişmiş kurallar, **Akamai 'tan Azure CDN**için kullanılamaz. CDN özelliklerinin tam karşılaştırması için bkz. [Azure CDN ürün özellikleri](../articles/cdn/cdn-features.md). 
+> Bu, Verizon ' den yalnızca bir **Premium Azure CDN** , **Microsoft 'tan Azure CDN** kuralları yapılandırmak için lütfen [standart kurallar altyapısını](../articles/cdn/cdn-standard-rules-engine-reference.md)kullanın. Gelişmiş kurallar, **Akamai 'tan Azure CDN** için kullanılamaz. CDN özelliklerinin tam karşılaştırması için bkz. [Azure CDN ürün özellikleri](../articles/cdn/cdn-features.md). 
 > 
 > 
 

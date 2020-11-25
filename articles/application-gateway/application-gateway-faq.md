@@ -9,11 +9,11 @@ ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
 ms.openlocfilehash: 8df24b44d648343c46532eed443717f444bd0058
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397799"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95975658"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway hakkında sık sorulan sorular
 
@@ -69,7 +69,7 @@ Yeniden yönlendirme destekleniyor. Bkz. [Application Gateway yeniden yönlendir
 
 Uç nokta olarak genel bir IP adresi kullanıyorsanız, IP ve DNS bilgilerini genel IP adresi kaynağında bulabilirsiniz. Veya Portal 'da, uygulama ağ geçidinin Genel Bakış sayfasında bulabilirsiniz. İç IP adresleri kullanıyorsanız Genel Bakış sayfasındaki bilgileri bulun.
 
-V2 SKU 'SU için genel IP kaynağını açın ve **yapılandırma** ' yı seçin. DNS ad **etiketi (isteğe bağlı)** alanı DNS adını yapılandırmak için kullanılabilir.
+V2 SKU 'SU için genel IP kaynağını açın ve **yapılandırma**' yı seçin. DNS ad **etiketi (isteğe bağlı)** alanı DNS adını yapılandırmak için kullanılabilir.
 
 ### <a name="what-are-the-settings-for-keep-alive-timeout-and-tcp-idle-timeout"></a>Keep-Alive zaman aşımı ve TCP boşta kalma zaman aşımı ayarları nelerdir?
 
@@ -434,9 +434,9 @@ Hayır, AGIC eklentisi, Microsoft 'un eklentiyi otomatik olarak en son kararlı 
 
 Application Gateway üç günlük sağlar: 
 
-* **Applicationgatewayaccesslog** : erişim günlüğü, Application Gateway ön ucunda gönderilen her isteği içerir. Veriler çağıranın IP 'sini, istenen URL 'yi, yanıt gecikmesini, dönüş kodunu ve gelen ve giden baytları içerir. Her uygulama ağ geçidi için bir kayıt içerir.
-* **ApplicationGatewayPerformanceLog** : performans günlüğü her uygulama ağ geçidi için performans bilgilerini yakalar. Bilgiler bayt cinsinden aktarım hızını, sunulan toplam istek sayısını, başarısız istek sayısını, sağlıklı ve sağlıksız arka uç örnek sayısını içerir.
-* **Applicationgatewayfirewalllog** : WAF ile yapılandırdığınız uygulama ağ geçitleri için, güvenlik duvarı günlüğü, algılama modu ya da önleme modu aracılığıyla günlüğe kaydedilen istekleri içerir.
+* **Applicationgatewayaccesslog**: erişim günlüğü, Application Gateway ön ucunda gönderilen her isteği içerir. Veriler çağıranın IP 'sini, istenen URL 'yi, yanıt gecikmesini, dönüş kodunu ve gelen ve giden baytları içerir. Her uygulama ağ geçidi için bir kayıt içerir.
+* **ApplicationGatewayPerformanceLog**: performans günlüğü her uygulama ağ geçidi için performans bilgilerini yakalar. Bilgiler bayt cinsinden aktarım hızını, sunulan toplam istek sayısını, başarısız istek sayısını, sağlıklı ve sağlıksız arka uç örnek sayısını içerir.
+* **Applicationgatewayfirewalllog**: WAF ile yapılandırdığınız uygulama ağ geçitleri için, güvenlik duvarı günlüğü, algılama modu ya da önleme modu aracılığıyla günlüğe kaydedilen istekleri içerir.
 
 Tüm Günlükler her 60 saniyede toplanır. Daha fazla bilgi için bkz. [Application Gateway Için arka uç sistem durumu, tanılama günlükleri ve ölçümler](application-gateway-diagnostics.md).
 

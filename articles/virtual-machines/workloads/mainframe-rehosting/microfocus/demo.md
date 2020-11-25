@@ -7,11 +7,11 @@ ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: 7fb72b9a7d0d655f99d1e5cf194f7c6f26976a37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86508058"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95976202"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Azure 'da Micro Focus Enterprise Developer 4,0 için Micro Focus CICS BankDemo ayarlama
 
@@ -40,9 +40,9 @@ Kurumsal Geliştirici 4,0 'yi VM 'ye yükledikten sonra, onunla birlikte gelen k
 
 1. Oluşturduğunuz Enterprise Server 4,0 VM 'de oturum açmak için RDP 'yi kullanın.
 
-2. **Başlat** düğmesinin yanındaki **Ara** simgesine tıklayın ve **Windows özellikleri**yazın. Sunucu Yöneticisi rol ve Özellik Ekleme Sihirbazı açılır.
+2. **Başlat** düğmesinin yanındaki **Ara** simgesine tıklayın ve **Windows özellikleri** yazın. Sunucu Yöneticisi rol ve Özellik Ekleme Sihirbazı açılır.
 
-3. **Web sunucusu (IIS) rolünü**seçin ve ardından aşağıdaki seçenekleri kontrol edin:
+3. **Web sunucusu (IIS) rolünü** seçin ve ardından aşağıdaki seçenekleri kontrol edin:
 
     - Web yönetimi araçları
     - IIS 6 Yönetim uyumluluğu (tüm kullanılabilir özellikleri Seç)
@@ -63,12 +63,12 @@ Kurumsal Geliştirici 4,0 'yi VM 'ye yükledikten sonra, onunla birlikte gelen k
 
 5. **Windows Işlem etkinleştirme hizmeti** 'ni ve tüm alt öğelerini seçin.
 
-6. **Özellikler**için **Microsoft .NET Framework 3.5.1**' i denetleyin ve aşağıdaki seçenekleri kontrol edin:
+6. **Özellikler** için **Microsoft .NET Framework 3.5.1**' i denetleyin ve aşağıdaki seçenekleri kontrol edin:
 
     - HTTP etkinleştirmesi Windows Communication Foundation
     - HTTP olmayan etkinleştirme Windows Communication Foundation
 
-7. **Özellikler**için **Microsoft .NET Framework 4,6**' i işaretleyin ve aşağıdaki seçenekleri kontrol edin:
+7. **Özellikler** için **Microsoft .NET Framework 4,6**' i işaretleyin ve aşağıdaki seçenekleri kontrol edin:
 
    - Adlandırılmış kanal etkinleştirmesi
    - TCP Etkinleştirme
@@ -78,15 +78,15 @@ Kurumsal Geliştirici 4,0 'yi VM 'ye yükledikten sonra, onunla birlikte gelen k
 
 8. Tüm seçenekleri belirlediğinizde, yüklemek için **İleri** ' ye tıklayın.
 
-9. Windows Özellikleri ' ne geçtikten sonra **Denetim Masası \> sistem ve güvenlik \> Yönetim Araçları**' na gidin ve **Hizmetler**' i seçin. Aşağı kaydırın ve aşağıdaki hizmetlerin çalıştığından ve **Otomatik**olarak ayarlandığından emin olun:
+9. Windows Özellikleri ' ne geçtikten sonra **Denetim Masası \> sistem ve güvenlik \> Yönetim Araçları**' na gidin ve **Hizmetler**' i seçin. Aşağı kaydırın ve aşağıdaki hizmetlerin çalıştığından ve **Otomatik** olarak ayarlandığından emin olun:
 
     - **NetTcpPortSharing**
     - **Net. pipe dinleyicisi bağdaştırıcısı**
     - **Net. TCP dinleyici bağdaştırıcısı**
 
-10. IIS 'yi yapılandırmak ve desteği sağlamak için, menüden **Micro Focus Enterprise Geliştirici komut istemi (64 bit)** bulun ve **yönetici**olarak çalıştırın.
+10. IIS 'yi yapılandırmak ve desteği sağlamak için, menüden **Micro Focus Enterprise Geliştirici komut istemi (64 bit)** bulun ve **yönetici** olarak çalıştırın.
 
-11. **Ayarla – ı** yazın ve **ENTER**tuşuna basın.
+11. **Ayarla – ı** yazın ve **ENTER** tuşuna basın.
 
 12. Komut dosyası çalıştıktan sonra pencereyi kapatabilirsiniz.
 
@@ -132,7 +132,7 @@ Sorgu hata olmadan çalıştırılmalıdır. Bu tamamlandığında, BankDemo uyg
 
 1. Visual Studio 'Yu açın ve oturum açın.
 
-2. **Dosya** menüsü seçeneği altında **Proje/çözüm aç**' ı seçin, **C: \\ Users \\ ortak \\ belgeler \\ mikro odaklı \\ Kurumsal Geliştirici \\ örnekleri \\ ana bilgisayar \\ CICS \\ DotNet \\ bankdemo ' a**gidin ve **sln** dosyasını seçin.
+2. **Dosya** menüsü seçeneği altında **Proje/çözüm aç**' ı seçin, **C: \\ Users \\ ortak \\ belgeler \\ mikro odaklı \\ Kurumsal Geliştirici \\ örnekleri \\ ana bilgisayar \\ CICS \\ DotNet \\ bankdemo ' a** gidin ve **sln** dosyasını seçin.
 
 3. Nesneleri incelemek için biraz zaman alın. COBOL programları, CBL uzantısıyla birlikte Çözüm Gezgini, CopyBooks (CPY) ve JCL ile birlikte gösterilir.
 
@@ -154,7 +154,7 @@ Sorgu hata olmadan çalıştırılmalıdır. Bu tamamlandığında, BankDemo uyg
 
 1. Yönetici olarak bir Kurumsal Geliştirici komut istemi (64 bit) açın.
 
-2. **% Genel% \\ Documents \\ mikro odak \\ Kurumsal Geliştirici \\ örnekleri \\ ana bilgisayar \\ CICS \\ DotNet \\ bankdemo**öğesine gidin.
+2. **% Genel% \\ Documents \\ mikro odak \\ Kurumsal Geliştirici \\ örnekleri \\ ana bilgisayar \\ CICS \\ DotNet \\ bankdemo** öğesine gidin.
 
 3. Komut isteminde **bankdemodbdeploy** komutunu yürütün ve dağıtılacak veritabanının parametresini ekleyin, örneğin:
 
@@ -173,15 +173,15 @@ Sorgu hata olmadan çalıştırılmalıdır. Bu tamamlandığında, BankDemo uyg
 
 2. MMC ek bileşenini başlatmak için Windows **Başlat** menüsünde, **Micro Focus Enterprise Developer \> Configuration \> Enterprise Server for .net admin**' i seçin. (Windows Server için, **Micro Focus Enterprise Developer for \> .net admin**' i seçin).
 
-3. Sol bölmedeki **bölgeler** kapsayıcısını genişletin ve ardından **CICS**öğesine sağ tıklayın.
+3. Sol bölmedeki **bölgeler** kapsayıcısını genişletin ve ardından **CICS** öğesine sağ tıklayın.
 
-4. (Yerel) veritabanında barındırılan **Bankdemo**adlı yenı bir CICS Region oluşturmak Için **bölge tanımla** ' yı seçin.
+4. (Yerel) veritabanında barındırılan **Bankdemo** adlı yenı bir CICS Region oluşturmak Için **bölge tanımla** ' yı seçin.
 
-5. Veritabanı sunucusu örneğini sağlayın, **İleri**' ye tıklayın ve ardından **bankdemo**bölge adını girin.
+5. Veritabanı sunucusu örneğini sağlayın, **İleri**' ye tıklayın ve ardından **bankdemo** bölge adını girin.
 
      ![Bölge Tanımlama iletişim kutusu](media/07-demo-cics.png)
 
-6. Bölgeler arası veritabanı için bölge tanım dosyasını seçmek için, **C: \\ Users \\ ortak \\ belgeler \\ mikro odaklı \\ Kurumsal Geliştirici \\ örnekleri \\ ana bilgisayar \\ cıcs \\ DotNet \\ bankdemo**bölümünde yer alan ** \_ bankdemo \_db.configbölgesini** bulun.
+6. Bölgeler arası veritabanı için bölge tanım dosyasını seçmek için, **C: \\ Users \\ ortak \\ belgeler \\ mikro odaklı \\ Kurumsal Geliştirici \\ örnekleri \\ ana bilgisayar \\ cıcs \\ DotNet \\ bankdemo** bölümünde yer alan **\_ bankdemo \_db.configbölgesini** bulun.
 
      ![Bölge-bölge adı tanımlama: BANKDEMO](media/08-demo-cics.png)
 
@@ -197,11 +197,11 @@ Sorgu hata olmadan çalıştırılmalıdır. Bu tamamlandığında, BankDemo uyg
 
 4. **XA kaynak tanımları (MachineName \\ SQLExpress)** kapsayıcısının altında örneği seçin ve **Ekle**' ye tıklayın.
 
-5. **VERITABANı XA kaynak tanımı** ' nı seçin ve ardından **ad** ve **bölge**için **bankdemo** yazın.
+5. **VERITABANı XA kaynak tanımı** ' nı seçin ve ardından **ad** ve **bölge** için **bankdemo** yazın.
 
      ![Yeni veritabanı XA kaynak tanımı ekranı](media/09-demo-xa.png)
 
-6. Bağlantı dizesi Sihirbazı 'nı açmak için üç noktaya (**...**) tıklayın. **Sunucu adı**için **(yerel) \\ SQLExpress**yazın. **Oturum açmak**Için **Windows kimlik doğrulaması**' nı seçin. Veritabanı adı için **Bankdemo** yazın
+6. Bağlantı dizesi Sihirbazı 'nı açmak için üç noktaya (**...**) tıklayın. **Sunucu adı** için **(yerel) \\ SQLExpress** yazın. **Oturum açmak** Için **Windows kimlik doğrulaması**' nı seçin. Veritabanı adı için **Bankdemo** yazın
 
      ![Bağlantı dizesi ekranını Düzenle](media/10-demo-string.png)
 
@@ -212,7 +212,7 @@ Sorgu hata olmadan çalıştırılmalıdır. Bu tamamlandığında, BankDemo uyg
 > [!NOTE]
 > İlk adım önemlidir: bölgeyi, az önce oluşturduğunuz XA kaynak tanımını kullanacak şekilde ayarlamanız gerekir.
 
-1. **Bölgeler kapsayıcısının**altındaki **Bandemo CICS bölgesine** gidin ve ardından **Eylemler** bölmesinden **bölge başlangıç dosyasını Düzenle** ' yi seçin. SQL özelliklerine ilerleyin ve **XA kaynak adı**için **bankdemo** girin ya da seçmek için üç noktayı kullanın.
+1. **Bölgeler kapsayıcısının** altındaki **Bandemo CICS bölgesine** gidin ve ardından **Eylemler** bölmesinden **bölge başlangıç dosyasını Düzenle** ' yi seçin. SQL özelliklerine ilerleyin ve **XA kaynak adı** için **bankdemo** girin ya da seçmek için üç noktayı kullanın.
 
 2. Değişikliklerinizi kaydetmek için **Kaydet** simgesine tıklayın.
 
@@ -236,11 +236,11 @@ BankDemo uygulamasına erişen TN3270 oturumları için bir dinleyici oluşturun
 
 4. BANKDEMO için yeni bir bölge oluşturmak için **bölgeler**' e sağ tıklayın ve **bölge Ekle**' yi seçin.
 
-5. **Bankdemo bölgesini**seçin.
+5. **Bankdemo bölgesini** seçin.
 
 6. **Bankdemo bölgesine** sağ tıklayıp **Kanal ekle**' yi seçerek bir TN3270 kanalı ekleyin.
 
-7. **Ad**için **TN3270**girin. **Bağlantı noktası**için **9024**girin. ESDEMO uygulaması 9230 numaralı bağlantı noktasını kullanarak farklı bir bağlantı noktası kullanmanız gerekir.
+7. **Ad** için **TN3270** girin. **Bağlantı noktası** için **9024** girin. ESDEMO uygulaması 9230 numaralı bağlantı noktasını kullanarak farklı bir bağlantı noktası kullanmanız gerekir.
 
 8. Dosyayı kaydetmek için **Kaydet** simgesine tıklayın veya **Dosya** \> **Kaydet**' i seçin.
 
@@ -255,7 +255,7 @@ Yapmanız gereken son şey, 3270 öykünücüsünü Rumba kullanarak bir 3270 ot
 
 1. Windows **Başlat** menüsünde Rumba Desktop ' ı başlatın.
 
-2. **Bağlantılar** menü öğesi altında **TN3270**öğesini seçin.
+2. **Bağlantılar** menü öğesi altında **TN3270** öğesini seçin.
 
 3. **Ekle** ' ye tıklayın ve IP adresi için **127.0.0.1** , Kullanıcı tanımlı bağlantı noktası için **9024** yazın.
 

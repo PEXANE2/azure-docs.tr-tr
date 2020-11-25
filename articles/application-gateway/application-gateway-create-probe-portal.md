@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: victorh
 ms.openlocfilehash: 5d2760415e4f4ef3b181f2fb69802659fec3ef66
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397884"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95975964"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Portalı kullanarak Application Gateway için özel bir araştırma oluşturma
 
@@ -42,7 +42,7 @@ Yoklamalar, Portal üzerinden iki adımlı bir işlemde yapılandırılır. İlk
 
    ![Yeni araştırma ekle][4]
 
-4. **Durum araştırması Ekle** sayfasında, araştırma için gerekli bilgileri doldurun ve tamamlandığında **Tamam** ' ı seçin.
+4. **Durum araştırması Ekle** sayfasında, araştırma için gerekli bilgileri doldurun ve tamamlandığında **Tamam**' ı seçin.
 
    |**Ayar** | **Değer** | **Ayrıntılar**|
    |---|---|---|
@@ -70,7 +70,7 @@ Araştırma özelliklerini girdikten sonra, araştırma yapılandırmasının do
 
    ![Test arka uç durumu][5]
 
-2. Sağlıksız bir arka uç kaynağı varsa, kaynağın sağlıksız durumunun nedenini anlamak için **Ayrıntılar** sütununu kontrol edin. Kaynak yanlış bir araştırma yapılandırması nedeniyle sağlıksız olarak işaretlenmişse, **araştırma bağlantısına geri dön** ' ü seçin ve araştırma yapılandırmasını düzenleyin. Aksi takdirde, arka uç ile ilgili bir sorun nedeniyle kaynak sağlıksız olarak işaretlenmişse, arka uç kaynağıyla ilgili sorunları çözün ve sonra arka ucunu tekrar inceleyerek **araştırma bağlantısına geri dönün** ve **Test** ' i seçin.
+2. Sağlıksız bir arka uç kaynağı varsa, kaynağın sağlıksız durumunun nedenini anlamak için **Ayrıntılar** sütununu kontrol edin. Kaynak yanlış bir araştırma yapılandırması nedeniyle sağlıksız olarak işaretlenmişse, **araştırma bağlantısına geri dön** ' ü seçin ve araştırma yapılandırmasını düzenleyin. Aksi takdirde, arka uç ile ilgili bir sorun nedeniyle kaynak sağlıksız olarak işaretlenmişse, arka uç kaynağıyla ilgili sorunları çözün ve sonra arka ucunu tekrar inceleyerek **araştırma bağlantısına geri dönün** ve **Test**' i seçin.
 
    > [!NOTE]
    > Araştırmayı sağlıklı olmayan arka uç kaynaklarıyla bile kaydetmeyi seçebilirsiniz, ancak önerilmez. Bunun nedeni Application Gateway, istekleri yoklamanın sağlıksız olduğu belirlenen arka uç havuzundan arka uç sunucularına iletmeyecektir. Arka uç havuzunda sağlıklı kaynak olmaması durumunda uygulamanıza erişemeyeceksiniz ve bir HTTP 502 hatası alacaksınız.
@@ -87,13 +87,13 @@ Yoklamalar, Portal üzerinden iki adımlı bir işlemde yapılandırılır. İlk
 
 1. [Azure portalında](https://portal.azure.com) oturum açın. Henüz bir hesabınız yoksa, [bir aylık ücretsiz deneme sürümü](https://azure.microsoft.com/free) için kaydolabilirsiniz
 
-2. Azure Portal Sık Kullanılanlar bölmesinde, **Tüm kaynaklar** ’ı seçin. **Tüm kaynaklar** sayfasında uygulama ağ geçidini seçin. Seçili abonelikte zaten çeşitli kaynaklar varsa, DNS bölgesine kolaylıkla erişmek için Ada göre filtrele... kutusuna partners.contoso.net girebilirsiniz.
+2. Azure Portal Sık Kullanılanlar bölmesinde, **Tüm kaynaklar**’ı seçin. **Tüm kaynaklar** sayfasında uygulama ağ geçidini seçin. Seçili abonelikte zaten çeşitli kaynaklar varsa, DNS bölgesine kolaylıkla erişmek için Ada göre filtrele... kutusuna partners.contoso.net girebilirsiniz.
 
 3. **Yoklamalar** ' ı seçin ve ardından araştırma eklemek için **Ekle** ' yi seçin.
 
    ![Doldurulmuş bilgiler içeren araştırma dikey penceresi ekleme][1]
 
-4. **Sistem durumu araştırması Ekle** dikey penceresinde, araştırma için gerekli bilgileri doldurun ve tamamlandığında **Tamam** ' ı seçin.
+4. **Sistem durumu araştırması Ekle** dikey penceresinde, araştırma için gerekli bilgileri doldurun ve tamamlandığında **Tamam**' ı seçin.
 
    |**Ayar** | **Değer** | **Ayrıntılar**|
    |---|---|---|
