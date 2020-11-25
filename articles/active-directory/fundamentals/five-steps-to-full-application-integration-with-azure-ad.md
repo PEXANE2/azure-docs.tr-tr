@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
-ms.openlocfilehash: 26dd255e6edff7c339ab9766bb71889cf4e2deaa
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 8f184de8953e8e8bfe982d2502ca476fb54a66c9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577652"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95903721"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>Tüm uygulamalarınızı Azure AD ile tümleştirmek için beş adım
 
@@ -46,7 +46,7 @@ Son olarak, şirket içinde Geliştirdiğiniz uygulamaları da tümleştirebilir
 
 Ardından, çalışanların sıklıkla kullandığı uygulamaları bulabilir ve bunları Azure AD ile tümleştirmek için çalışmalarınızın önceliğini belirleyin.
 
-Ağınızdaki gölgeyi bulmak ve yönetmek için Microsoft Cloud App Security&#39;s [Cloud Discovery araçları](/cloud-app-security/tutorial-shadow-it) 'nı kullanarak başlayabilirsiniz &quot; &quot; (yani, BT departmanı tarafından yönetilmeyen uygulamalar). Bulma işlemini basitleştirmek ve genişletmek için [Microsoft Defender Gelişmiş tehdit koruması (ATP) kullanabilirsiniz](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) .
+Ağınızda "gölge" bulmak ve yönetmek için Microsoft Cloud App Security [bulut bulma araçları](/cloud-app-security/tutorial-shadow-it) 'nı kullanarak başlayabilirsiniz (yanı, BT departmanı tarafından yönetilmeyen uygulamalar). Bulma işlemini basitleştirmek ve genişletmek için [Microsoft Defender Gelişmiş tehdit koruması (ATP) kullanabilirsiniz](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) .
 
 Ayrıca, kuruluşunuzdaki tüm AD FS uygulamalarını, bunlarda oturum açan benzersiz kullanıcıların sayısını ve bunları Azure AD ile tümleştirmek için uyumluluk için Azure portal [AD FS uygulama etkinliği raporunu](../manage-apps/migrate-adfs-application-activity.md) kullanabilirsiniz.
 
@@ -66,7 +66,7 @@ Bulma işleminiz sırasında, BT departmanı tarafından izlenmeyen, verileriniz
 - Şirket içi Kullanıcı sağlama ve kimlik doğrulaması gereksinimini ortadan kaldırarak ve aynı hizmet için diğer bulut kimlik sağlayıcılarına ödenen lisanslama ücretleri ile tasarruf edebilirsiniz.
 - Kimlik ve erişim yönetimi sürecinizdeki yönetim yükünü azaltın ve daha az artıklıkları ile sıkı güvenliği etkinleştirin.
 - Çalışanların, gereken tüm uygulamalara, [Uygulamaps portalı](../manage-apps/access-panel-collections.md)aracılığıyla güvenli çoklu oturum açma erişimi almasını sağlar.
-- Uygulama kullanımınızdan aldığı veri miktarını artırarak ve avantajlarının yeni eklenen uygulamalara genişletilmesi için, koşullu erişim gibi Azure AD&#39;s [kimlik koruması](../identity-protection/overview-identity-protection.md) ile ilgili hizmetlerin zekasını artırın.
+- Uygulama kullanımınızdan aldığı veri miktarını artırarak ve avantajlarının yeni eklenen uygulamalara genişletilmesi yoluyla, koşullu erişim gibi Azure AD 'nin [kimlik koruması](../identity-protection/overview-identity-protection.md) ile ilgili yönetim bilgilerini artırın.
 
 İş ve uygulama sahiplerini algılayan ve ilgilendiğiniz bir [poster](https://aka.ms/AppOnePager) ve [sunum](https://aka.ms/AppGuideline) dahil olmak üzere, uygulamaları Azure AD ile tümleştirme iş sürecini yönetmeye yönelik bir kılavuz yayınladık. Bu örnekleri kendi markanızla değiştirebilir ve bu işlemi tamamlamada kullandığınız gibi şirket portalı, bülteninizi veya diğer ortamınız aracılığıyla kuruluşunuzda yayımlayabilirsiniz.
 
@@ -103,10 +103,10 @@ Ayrıca, F5 Big-IP APM veya Zscaler özel erişimi gibi uygulama teslim denetley
 
 Şirketinizde yerleşik olan uygulamalar için, geliştiricileriniz kimlik doğrulama ve yetkilendirme uygulamak üzere [Microsoft Identity platformunu](../develop/index.yml) kullanabilir. [Azure AD 'ye kayıtlı](../develop/quickstart-register-app.md) ve yalnızca portföyünüzdeki diğer uygulamalar gibi yönetilen platformla tümleştirilmiş uygulamalar.
 
-Geliştiriciler platformu hem iç kullanım uygulamaları hem de müşteriye yönelik uygulamalar için kullanabilir ve platformu kullanmayla birlikte gelen başka avantajlar da vardır. Platformun bir parçası olan [Microsoft kimlik doğrulama kitaplıkları (msal)](../develop/msal-overview.md), geliştiricilerin çok faktörlü kimlik doğrulaması gibi modern deneyimleri etkinleştirmesine ve güvenlik anahtarlarının kendi uygulamalarına gerek duymadan uygulamalara erişmesi için güvenlik anahtarlarının kullanılmasına olanak tanır. Ayrıca, Microsoft Identity platformu ile tümleştirilmiş uygulamalar, bir kuruluştaki üretkenlik, kimlik ve güvenlik düzenlerini açıklayan Microsoft 365 verileri sağlayan birleştirilmiş bir API uç noktası [Microsoft Graph](../develop/microsoft-graph-intro.md) erişebilir. Geliştiriciler, kullanıcılarınız için üretkenliği artıran özellikler uygulamak için bu bilgileri kullanabilir. Örneğin, kullanıcının yakın zamanda etkileşimde bulunduğu kişileri tanımlayarak uygulama&#39;s Kullanıcı arabiriminde bu kişiler tarafından kullanıma sunulacak.
+Geliştiriciler platformu hem iç kullanım uygulamaları hem de müşteriye yönelik uygulamalar için kullanabilir ve platformu kullanmayla birlikte gelen başka avantajlar da vardır. Platformun bir parçası olan [Microsoft kimlik doğrulama kitaplıkları (msal)](../develop/msal-overview.md), geliştiricilerin çok faktörlü kimlik doğrulaması gibi modern deneyimleri etkinleştirmesine ve güvenlik anahtarlarının kendi uygulamalarına gerek duymadan uygulamalara erişmesi için güvenlik anahtarlarının kullanılmasına olanak tanır. Ayrıca, Microsoft Identity platformu ile tümleştirilmiş uygulamalar, bir kuruluştaki üretkenlik, kimlik ve güvenlik düzenlerini açıklayan Microsoft 365 verileri sağlayan birleştirilmiş bir API uç noktası [Microsoft Graph](../develop/microsoft-graph-intro.md) erişebilir. Geliştiriciler, kullanıcılarınız için üretkenliği artıran özellikler uygulamak için bu bilgileri kullanabilir. Örneğin, kullanıcının yakın zamanda etkileşimde bulunduğu ve uygulamanın kullanıcı arabiriminde karşılaştığı kişileri tanımlayarak.
 
 Desteklenen dillerde ve platformlarda platforma ve [birçok kod](../develop/sample-v2-code.md) örneğine kapsamlı bir giriş sağlayan bir [video serimiz](https://www.youtube.com/watch?v=zjezqZPPOfc&amp;list=PLLasX02E8BPBxGouWlJV-u-XZWOc2RkiX) vardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Active Directory uygulamalara geçiş kaynakları](../manage-apps/migration-resources.md)
+- [Uygulamaları Azure Active Directory’ye geçirmeye yönelik kaynaklar](../manage-apps/migration-resources.md)

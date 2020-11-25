@@ -5,18 +5,18 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: ddf58219a81e81f40dcc33de1452007cbd782d2b
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: ff52e4c8056d25f2577d077ca0499236a78adc02
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95819491"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95909467"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-java"></a>Hızlı başlangıç: Java ile Service Bus konuları ve abonelikleri kullanma
 Bu hızlı başlangıçta, Azure Service Bus bir konuya ileti göndermek ve ardından aboneliklerden ilgili konuya ileti almak için Java kodu yazın. 
 
 > [!WARNING]
->  Bu hızlı başlangıçta eski Azure-ServiceBus paketleri kullanılmaktadır. En son Azure-mesajlaşma-ServiceBus paketini kullanan bir hızlı başlangıç için bkz. [Azure-mesajlaşma-ServiceBus kullanarak Ileti gönderme ve alma](service-bus-java-how-to-use-topics-subscriptions.md).
+>  Bu hızlı başlangıç, genel kullanıma açık (GA) Azure-ServiceBus paketini kullanır. **Önizleme** aşamasında olan yeni Azure-mesajlaşma-ServiceBus paketini kullanan bir hızlı başlangıç için bkz. [Azure-mesajlaşma-ServiceBus kullanarak ileti gönderme ve alma](service-bus-java-how-to-use-topics-subscriptions.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 

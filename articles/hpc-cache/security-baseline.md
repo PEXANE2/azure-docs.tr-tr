@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: dc695cc36113430cb1820d978ed41f5250cad33e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3e040146673ba16c07856f30b88771d0063713e9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94974896"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95896892"
 ---
 # <a name="azure-security-baseline-for-azure-hpc-cache"></a>Azure HPC önbelleği için Azure Güvenlik temeli
 
@@ -305,7 +305,7 @@ Azure Gelişmiş tehdit koruması (ATP), gelişmiş tehditleri, güvenliği aş�
 
 **Rehberlik**: HPC önbelleği, hangi hesapların içinde bulundukları aboneliklere ve yönetim gruplarına ayrıcalıklı erişim verildiğini kısıtlayarak iş açısından kritik sistemlere erişimi yalıtmak IÇIN Azure RBAC kullanır.
 
-Adanmış yönetim hesaplarının kullanımı etrafında standart işletim yordamları oluşturun. Bir önbellek oluşturmak için HPC Cache, kullanıcıların NIC 'ler oluşturmak üzere abonelikte yeterli ayrıcalıklara sahip olmasını gerektirir. BLOB depolama kullanılıyorsa, HPC önbelleğinin depolamaya erişmesi için RBAC rolleri depolama hesabı katılımcısı ve Depolama Blobu veri katılımcısı gerekir. 
+Adanmış yönetim hesaplarının kullanımı etrafında standart işletim yordamları oluşturun. Bir önbellek oluşturmak için HPC Cache, kullanıcıların NIC 'ler oluşturmak üzere abonelikte yeterli ayrıcalıklara sahip olmasını gerektirir. BLOB depolama kullanılıyorsa, HPC önbelleğinin depolamaya erişmesi için Azure rolleri depolama hesabı katılımcısı ve Depolama Blobu veri katılımcısı gerekir. 
 
 Active Directory Etki Alanı Denetleyicileri (DC 'Ler), güvenlik araçları ve iş açısından kritik sistemlerde yüklü aracılarla sistem yönetimi araçları gibi iş açısından kritik varlıklarınıza yönetici erişimi olan yönetim, kimlik ve güvenlik sistemlerine erişimi de kısıtlatığınızdan emin olun. Bu yönetim ve güvenlik sistemlerinden ödün veren saldırganlar, iş açısından kritik varlıkların güvenliğini tehlikeye atabilir.
 

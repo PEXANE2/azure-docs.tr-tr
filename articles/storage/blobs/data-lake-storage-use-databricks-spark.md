@@ -9,12 +9,12 @@ ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
 ms.custom: devx-track-python
-ms.openlocfilehash: 394e735be5da65ffa75e10200589a4adb4e7cad2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5fce5871b4bd6c3e2353f7df04018e88b86ec4c7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313925"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912527"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>Öğretici: Azure Data Lake Storage 2., Azure Databricks & Spark
 
@@ -35,20 +35,20 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
   [Azure Data Lake Storage 2. için kullanılacak depolama hesabı oluşturma](create-data-lake-storage-account.md)konusuna bakın.
 
-* Kullanıcı hesabınızda, [Depolama Blobu veri katılımcısı rolü](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) atanmış olduğundan emin olun.
+* Kullanıcı hesabınızda, [Depolama Blobu veri katılımcısı rolü](../common/storage-auth-aad-rbac-portal.md) atanmış olduğundan emin olun.
 
-* AzCopy ile v10 arasındaki 'i yükler. Bkz. [AzCopy ile v10 arasındaki ile veri aktarma](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* AzCopy ile v10 arasındaki 'i yükler. Bkz. [AzCopy ile v10 arasındaki ile veri aktarma](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
-* Hizmet sorumlusu oluşturun. Bkz. [nasıl yapılır: Azure AD uygulaması ve kaynaklara erişebilen hizmet sorumlusu oluşturmak için portalı kullanma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+* Hizmet sorumlusu oluşturun. Bkz. [nasıl yapılır: Azure AD uygulaması ve kaynaklara erişebilen hizmet sorumlusu oluşturmak için portalı kullanma](../../active-directory/develop/howto-create-service-principal-portal.md).
 
   Söz konusu makaledeki adımları gerçekleştirirken yapmanız gereken birkaç şey vardır.
 
-  : heavy_check_mark: makalenin [role uygulamayı atama](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) bölümünde bulunan adımlar gerçekleştirilirken, **Depolama Blobu veri katılımcısı** rolünü hizmet sorumlusuna atadığınızdan emin olun.
+  : heavy_check_mark: makalenin [role uygulamayı atama](../../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application) bölümünde bulunan adımlar gerçekleştirilirken, **Depolama Blobu veri katılımcısı** rolünü hizmet sorumlusuna atadığınızdan emin olun.
 
   > [!IMPORTANT]
   > Rolü Data Lake Storage 2. depolama hesabının kapsamına atadığınızdan emin olun. Üst kaynak grubuna veya aboneliğine bir rol atayabilirsiniz, ancak bu rol atamaları depolama hesabına yayana kadar izinlerle ilgili hatalar alırsınız.
 
-  : heavy_check_mark: makalenin [oturum açmak için değerleri Al](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) bölümünde bulunan adımları gerçekleştirirken, Kiracı kimliği, uygulama kimliği ve istemci gizli değerlerini bir metin dosyasına yapıştırın. Bu kadar yakında ihtiyacınız olacak.
+  : heavy_check_mark: makalenin [oturum açmak için değerleri Al](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) bölümünde bulunan adımları gerçekleştirirken, Kiracı kimliği, uygulama kimliği ve istemci gizli değerlerini bir metin dosyasına yapıştırın. Bu kadar yakında ihtiyacınız olacak.
 
 ### <a name="download-the-flight-data"></a>Uçuş verilerini indirme
 
@@ -66,7 +66,7 @@ Bu öğretici, bir ETL işleminin nasıl gerçekleştirileceğini göstermek iç
 
 Bu bölümde, Azure portal kullanarak bir Azure Databricks hizmeti oluşturursunuz.
 
-1. Azure Portal, **kaynak**  >  **Analizi** oluştur  >  **Azure Databricks** ' u seçin.
+1. Azure Portal, **kaynak**  >  **Analizi** oluştur  >  **Azure Databricks**' u seçin.
 
     ![Azure portal databricks](./media/data-lake-storage-use-databricks-spark/azure-databricks-on-portal.png "Azure portal databricks")
 
@@ -77,20 +77,20 @@ Bu bölümde, Azure portal kullanarak bir Azure Databricks hizmeti oluşturursun
     |**Çalışma alanı adı**     | Databricks çalışma alanınız için bir ad sağlayın.  |
     |**Abonelik**     | Açılan listeden Azure aboneliğinizi seçin.        |
     |**Kaynak grubu**     | Yeni bir kaynak grubu oluşturmayı veya mevcut bir kaynak grubunu kullanmayı seçin. Kaynak grubu, bir Azure çözümüne ilişkin kaynakları tutan bir kapsayıcıdır. Daha fazla bilgi için bkz. [Azure Kaynak Grubuna genel bakış](../../azure-resource-manager/management/overview.md). |
-    |**Konum**     | **Batı ABD 2** 'yi seçin. Kullanılabilir diğer bölgeler için bkz. [Bölgeye göre kullanılabilir Azure hizmetleri](https://azure.microsoft.com/regions/services/).       |
-    |**Fiyatlandırma Katmanı**     |  **Standart** ' ı seçin.     |
+    |**Konum**     | **Batı ABD 2**'yi seçin. Kullanılabilir diğer bölgeler için bkz. [Bölgeye göre kullanılabilir Azure hizmetleri](https://azure.microsoft.com/regions/services/).       |
+    |**Fiyatlandırma Katmanı**     |  **Standart**' ı seçin.     |
 
     ![Azure Databricks çalışma alanı oluşturma](./media/data-lake-storage-use-databricks-spark/create-databricks-workspace.png "Azure Databricks hizmeti oluşturma")
 
 3. Hesabın oluşturulması birkaç dakika sürer. İşlem durumunu izlemek için üstteki ilerleme çubuğunu görüntüleyin.
 
-4. **Panoya sabitle** ’yi ve sonra **Oluştur** ’u seçin.
+4. **Panoya sabitle**’yi ve sonra **Oluştur**’u seçin.
 
 ## <a name="create-a-spark-cluster-in-azure-databricks"></a>Azure Databricks’te Spark kümesi oluşturma
 
-1. Azure portal, oluşturduğunuz Databricks hizmetine gidin ve **çalışma alanını Başlat** ' ı seçin.
+1. Azure portal, oluşturduğunuz Databricks hizmetine gidin ve **çalışma alanını Başlat**' ı seçin.
 
-2. Azure Databricks portalına yönlendirilirsiniz. Portaldan **Küme** ’yi seçin.
+2. Azure Databricks portalına yönlendirilirsiniz. Portaldan **Küme**’yi seçin.
 
     ![Azure 'da databricks](./media/data-lake-storage-use-databricks-spark/databricks-on-azure.png "Azure 'da databricks")
 
@@ -104,7 +104,7 @@ Bu bölümde, Azure portal kullanarak bir Azure Databricks hizmeti oluşturursun
      
     - **120 dakika işlem yapılmadığında sonlandır** onay kutusunu seçtiğinizden emin olun. Küme kullanılmazsa kümenin sonlandırılması için biz süre (dakika cinsinden) belirtin.
 
-4. **Küme oluştur** ' u seçin. Küme çalıştırıldıktan sonra, kümeye Not defterleri ekleyebilir ve Spark işleri çalıştırabilirsiniz.
+4. **Küme oluştur**' u seçin. Küme çalıştırıldıktan sonra, kümeye Not defterleri ekleyebilir ve Spark işleri çalıştırabilirsiniz.
 
 ## <a name="ingest-data"></a>Veriyi çekme
 
@@ -136,15 +136,15 @@ Bu bölümde, Azure portal kullanarak bir Azure Databricks hizmeti oluşturursun
 
 Bu bölümde, depolama hesabınızda bir kapsayıcı ve bir klasör oluşturacaksınız.
 
-1. [Azure Portal](https://portal.azure.com), oluşturduğunuz Azure Databricks hizmetine gidin ve **çalışma alanını Başlat** ' ı seçin.
+1. [Azure Portal](https://portal.azure.com), oluşturduğunuz Azure Databricks hizmetine gidin ve **çalışma alanını Başlat**' ı seçin.
 
-2. Sol tarafta **çalışma alanı** ' nı seçin. **Çalışma Alanı** açılır listesinden **Oluştur** > **Not Defteri** ’ni seçin.
+2. Sol tarafta **çalışma alanı**' nı seçin. **Çalışma Alanı** açılır listesinden **Oluştur** > **Not Defteri**’ni seçin.
 
     ![Databricks 'te Not defteri oluşturma](./media/data-lake-storage-use-databricks-spark/databricks-create-notebook.png "Databricks 'te Not defteri oluşturma")
 
 3. **Not Defteri Oluştur** iletişim kutusunda, not defterinizin adını girin. Dil olarak **Python** ' ı seçin ve daha önce oluşturduğunuz Spark kümesini seçin.
 
-4. **Oluştur** ’u seçin.
+4. **Oluştur**’u seçin.
 
 5. Aşağıdaki kod bloğunu kopyalayıp ilk hücreye yapıştırın, ancak henüz bu kodu çalıştırmayın.
 
@@ -273,7 +273,7 @@ print('Airlines that fly to/from Texas: ', out1.show(100, False))
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli olmadığında kaynak grubunu ve tüm ilgili kaynakları silin. Bunu yapmak için depolama hesabına ait kaynak grubunu seçin ve **Sil** ' i seçin.
+Artık gerekli olmadığında kaynak grubunu ve tüm ilgili kaynakları silin. Bunu yapmak için depolama hesabına ait kaynak grubunu seçin ve **Sil**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

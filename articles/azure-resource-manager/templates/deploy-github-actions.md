@@ -4,12 +4,12 @@ description: GitHub eylemleri kullanılarak Azure Resource Manager şablonların
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: adb0b9d9a7da19c45904a5d222573e1880915b12
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 3dcb246956aae274f17cf938ee3d406562b22941
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841691"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95905268"
 ---
 # <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>GitHub eylemlerini kullanarak Azure Resource Manager şablonları dağıtma
 
@@ -17,7 +17,7 @@ ms.locfileid: "94841691"
 
 Kaynak Yöneticisi şablonunu Azure 'a dağıtmayı otomatikleştirmek için [Azure Resource Manager şablonu dağıt eylemini](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template) kullanın. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - GitHub hesabı. Bir hesabınız yoksa [ücretsiz](https://github.com/join)kaydolun.  
@@ -112,7 +112,7 @@ Dosyayı depodaki herhangi bir yere koyabilirsiniz. Sonraki bölümde yer alan i
         steps:
 
           # Checkout code
-        - uses: actions/checkout@master
+        - uses: actions/checkout@main
 
           # Log into Azure
         - uses: azure/login@v1
@@ -152,7 +152,6 @@ Dosyayı depodaki herhangi bir yere koyabilirsiniz. Sonraki bölümde yer alan i
 1. Dağıtımı doğrulamak için menüden **ARM dağıtımını Çalıştır** ' ı seçin.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
-
 Kaynak grubunuz ve deponuz artık gerekmiyorsa, kaynak grubunu ve GitHub deponuzu silerek dağıttığınız kaynakları temizleyin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar

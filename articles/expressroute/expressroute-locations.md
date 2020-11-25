@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/26/2020
 ms.author: duau
-ms.openlocfilehash: 8eb4fd4cf0645248804ca31e310933167ba9a39b
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 30d1fb62b661d898ba06548e5e3a2c7d31b97794
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94987839"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95906492"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute bağlantı iş ortakları ve eşleme konumları
 
@@ -105,7 +105,7 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **du datamena** |Desteklenir |Desteklenir | Dubai2 |
 | **eir** |Desteklenir |Desteklenir |Dublin|
 | **[Epsilon genel Iletişimler](https://www.epsilontel.com/solutions/direct-cloud-connect)** |Desteklenir |Desteklenir |Singapur, Singapur2 |
-| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Desteklenir |Desteklenir |Amsterdam, Atlanta, Berlin, Chicago, Dallas, Dublin, Frankfurt, Geneva, Hong Kong ÖIB, Londra, London2, Los Angeles, Los Angeles2, Melbourne, Miamı, Milan, New York, Osaka, Paris, Sao Paulo, Seattle, Silicon Valley, Singapur, Stockholm, Sidney, Tokyo, Toron, Washington, Zurich |
+| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Desteklenir |Desteklenir |Amsterdam, Atlanta, Berlin, Canberra2, Chicago, Dallas, Dubai2, Dublin, Frankfurt, Geneva, Hong Kong ÖIB, Londra, London2, Los Angeles, Los Angeles2, Melbourne, Miamı, Milan, New York, Osaka, Paris, Sao Paulo, Istanbul, Seoul, Silicon Valley, Singapur, Stockholm, Sidney, Tokyo, Toron, Washington DC, Zurich |
 | **Etisalat UAE** |Desteklenir |Desteklenir |Dubai|
 | **[euNetworks](https://eunetworks.com/services/solutions/cloud-connect/microsoft-azure-expressroute/)** |Desteklenir |Desteklenir |Amsterdam, Amsterdam2, Dublin, Frankfurt, Londra |
 | **FarEasTone** |Desteklenir |Desteklenir |Taipei|

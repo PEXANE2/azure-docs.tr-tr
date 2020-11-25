@@ -9,23 +9,23 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 8ae9f96b42c0eb36a9380589780d141711c7ae4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c99d57ddd86ecff71c35ad6c0f2c2561e279b4b0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88034745"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912816"
 ---
 # <a name="tune-performance-spark-hdinsight--azure-data-lake-storage-gen2"></a>Performansı ayarlama: Spark, HDInsight & Azure Data Lake Storage 2.
 
 Spark üzerinde performans ayarlaması yaparken, kümenizde çalıştırılacak uygulama sayısını göz önünde bulundurmanız gerekir.  Varsayılan olarak, HDI kümenizde 4 uygulamayı eşzamanlı olarak çalıştırabilirsiniz (Note: varsayılan ayar değişikliğe tabidir).  Varsayılan ayarları geçersiz kılabilmeniz ve bu uygulamalar için kümeyi daha fazla kullanabilmek için daha az uygulama kullanmaya karar verebilirsiniz.  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
-* **Azure Data Lake Storage 2. hesabı**. Bir oluşturma hakkında yönergeler için bkz. [hızlı başlangıç: Azure Data Lake Storage 2. depolama hesabı oluşturma](data-lake-storage-quickstart-create-account.md).
-* Data Lake Storage 2. hesabına erişimi olan **Azure HDInsight kümesi** . Bkz. [Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2). Küme için Uzak Masaüstü 'Nü etkinleştirdiğinizden emin olun.
-* **Data Lake Storage 2. Spark kümesi çalıştırılıyor**.  Daha fazla bilgi için bkz. [Data Lake Storage 2. verileri çözümlemek Için HDInsight Spark kümesini kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store)
+* **Azure Data Lake Storage 2. hesabı**. Bir oluşturma hakkında yönergeler için bkz. [hızlı başlangıç: Azure Data Lake Storage 2. depolama hesabı oluşturma](../common/storage-account-create.md).
+* Data Lake Storage 2. hesabına erişimi olan **Azure HDInsight kümesi** . Bkz. [Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md). Küme için Uzak Masaüstü 'Nü etkinleştirdiğinizden emin olun.
+* **Data Lake Storage 2. Spark kümesi çalıştırılıyor**.  Daha fazla bilgi için bkz. [Data Lake Storage 2. verileri çözümlemek Için HDInsight Spark kümesini kullanma](../../hdinsight/spark/apache-spark-use-with-data-lake-store.md)
 * **Data Lake Storage 2. performans ayarlama yönergeleri**.  Genel performans kavramları için bkz. [Data Lake Storage 2. performans ayarlama Kılavuzu](data-lake-storage-performance-tuning-guidance.md) 
 
 ## <a name="parameters"></a>Parametreler
@@ -124,4 +124,3 @@ Yürütücü-çekirdek = 4
 - sayı-yürüticileri = dk (bellek kısıtlaması, CPU kısıtlaması)
 - sayı-yürüticileri = dk (16, 16)
 - sayı-yürüticileri = 16
-

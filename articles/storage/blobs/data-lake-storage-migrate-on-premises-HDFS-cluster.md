@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: a50f85e76f16f1e5ba8823adb1ea1aa02157fcee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e58137dd680ff9a2be2bd657f0969304b526873f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88032569"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913122"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>Şirket içi bir işlem mağazasından Azure Data Box ile Azure depolama 'ya geçiş
 
@@ -27,7 +27,7 @@ Bu makale, bu görevleri tamamlamanıza yardımcı olur:
 > * Cihazı Microsoft 'a geri gönderin.
 > * Dosyalara ve dizinlere erişim izinleri uygulama (yalnızca Data Lake Storage 2.)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Geçişi tamamlayabilmeniz için bu şeylere ihtiyacınız vardır.
 
@@ -37,9 +37,9 @@ Geçişi tamamlayabilmeniz için bu şeylere ihtiyacınız vardır.
 
 * [Azure Data Box bir cihaz](https://azure.microsoft.com/services/storage/databox/).
 
-  * [Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered) veya [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered)sıralayın. 
+  * [Data Box](../../databox/data-box-deploy-ordered.md) veya [Data Box Heavy](../../databox/data-box-heavy-deploy-ordered.md)sıralayın. 
 
-  * [Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up) veya [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-set-up) şirket içi bir ağa bağlayın.
+  * [Data Box](../../databox/data-box-deploy-set-up.md) veya [Data Box Heavy](../../databox/data-box-heavy-deploy-set-up.md) şirket içi bir ağa bağlayın.
 
 Hazırsanız başlayalım.
 
@@ -57,9 +57,9 @@ Blob/nesne depolamanın REST API 'Leri aracılığıyla Data Box cihazınıza ve
 
     !["Bağlan ve Kopyala" sayfası](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connect-rest.png)
 
-2. Erişim depolama hesabı ve verileri karşıya yükle iletişim kutusunda, **BLOB hizmeti uç noktasını** ve **depolama hesabı anahtarını**kopyalayın. Blob hizmeti uç noktasından `https://` ve sondaki eğik çizgiyi atlayın.
+2. Erişim depolama hesabı ve verileri karşıya yükle iletişim kutusunda, **BLOB hizmeti uç noktasını** ve **depolama hesabı anahtarını** kopyalayın. Blob hizmeti uç noktasından `https://` ve sondaki eğik çizgiyi atlayın.
 
-    Bu durumda, uç nokta: `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/` . Kullanacağınız URI 'nin konak bölümü: `mystorageaccount.blob.mydataboxno.microsoftdatabox.com` . Bir örnek için bkz. [HTTP ÜZERINDEN Rest 'e bağlanma](/azure/databox/data-box-deploy-copy-data-via-rest). 
+    Bu durumda, uç nokta: `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/` . Kullanacağınız URI 'nin konak bölümü: `mystorageaccount.blob.mydataboxno.microsoftdatabox.com` . Bir örnek için bkz. [HTTP ÜZERINDEN Rest 'e bağlanma](../../databox/data-box-deploy-copy-data-via-rest.md). 
 
      !["Depolama hesabına erişin ve verileri karşıya yükleyin" iletişim kutusu](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connection-string-http.png)
 
@@ -161,7 +161,7 @@ Blob/nesne depolamanın REST API 'Leri aracılığıyla Data Box cihazınıza ve
 
 Data Box cihazını hazırlamak ve Microsoft 'a göndermek için aşağıdaki adımları izleyin.
 
-1. İlk olarak,  [Data Box veya Data Box Heavy göndermeye hazırlama](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest).
+1. İlk olarak,  [Data Box veya Data Box Heavy göndermeye hazırlama](../../databox/data-box-deploy-copy-data-via-rest.md).
 
 2. Cihaz hazırlama işlemi tamamlandıktan sonra, ürün reçetesi dosyalarını indirin. Bu ürün reçetesini veya bildirim dosyalarını daha sonra Azure 'a yüklenen verileri doğrulamak için kullanacaksınız.
 
@@ -169,9 +169,9 @@ Data Box cihazını hazırlamak ve Microsoft 'a göndermek için aşağıdaki ad
 
 4. UPS ile teslim alma zamanı planlayın.
 
-    * Data Box cihazlar için bkz. [Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up)gönderme.
+    * Data Box cihazlar için bkz. [Data Box](../../databox/data-box-deploy-picked-up.md)gönderme.
 
-    * Data Box Heavy cihazlar için bkz. [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-picked-up)gönderme.
+    * Data Box Heavy cihazlar için bkz. [Data Box Heavy](../../databox/data-box-heavy-deploy-picked-up.md)gönderme.
 
 5. Microsoft cihazınızı aldıktan sonra veri merkezi ağına bağlanır ve veriler cihaz sırasını yerleştirdiğinizde belirttiğiniz depolama hesabına yüklenir. Tüm verilerinizin Azure 'a yüklendiğini, BOM dosyalarına karşı doğrulayın. 
 
@@ -184,11 +184,11 @@ Azure depolama hesabınızda zaten verileriniz var. Artık dosyalara ve dizinler
 
 ### <a name="create-a-service-principal-for-your-azure-data-lake-storage-gen2-account"></a>Azure Data Lake Storage 2. hesabınız için bir hizmet sorumlusu oluşturma
 
-Hizmet sorumlusu oluşturmak için, bkz. [nasıl yapılır: portalı kullanarak kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+Hizmet sorumlusu oluşturmak için, bkz. [nasıl yapılır: portalı kullanarak kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu oluşturma](../../active-directory/develop/howto-create-service-principal-portal.md).
 
-* Makalenin [role uygulamayı atama](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) bölümünde bulunan adımları gerçekleştirirken, **Depolama Blobu veri katılımcısı** rolünü hizmet sorumlusuna atadığınızdan emin olun.
+* Makalenin [role uygulamayı atama](../../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application) bölümünde bulunan adımları gerçekleştirirken, **Depolama Blobu veri katılımcısı** rolünü hizmet sorumlusuna atadığınızdan emin olun.
 
-* Makalenin [oturum açmak için değerleri Al](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) bölümünde bulunan adımları gerçekleştirirken, uygulama kimliğini ve istemci gizli değerlerini bir metin dosyasına kaydedin. Bu kadar yakında ihtiyacınız olacak.
+* Makalenin [oturum açmak için değerleri Al](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) bölümünde bulunan adımları gerçekleştirirken, uygulama kimliğini ve istemci gizli değerlerini bir metin dosyasına kaydedin. Bu kadar yakında ihtiyacınız olacak.
 
 ### <a name="generate-a-list-of-copied-files-with-their-permissions"></a>Bir kopyalanan dosyalar listesini izinleriyle oluşturma
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 29f7e8bbf9a1b8d48940287a4845c2b55804b247
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 18d228af5c162159d52b5583613d4449d1195af2
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015384"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95894244"
 ---
 # <a name="speech-service-release-notes"></a>Konuşma hizmeti sürüm notları
 
@@ -45,8 +45,8 @@ ms.locfileid: "95015384"
 - **JavaScript**: API için destek eklendi `ConversationTranscriber` . Belgeleri [buradan](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-conversation-transcription?pivots=programming-language-javascript)okuyun. 
 - **C++/c #**: yeni `AudioDataStream FromWavFileInput` Yöntem eklendi (okuma için. WAV dosyaları) [burada (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/audiodatastream) ve [burada (C#)](
 https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?view=azure-dotnet).
--  **C++/c #/Java/Python/Objective-C/Swift**: `stopSpeakingAsync()` metin okuma senmetini durdurmak için bir yöntem eklendi. Burada başvuru belgelerini [(C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace), burada ( [C#)](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet), burada ( [Java)](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech?view=azure-java-stable), burada ( [Python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech?view=azure-python)ve [burada (hedef-C/Swift)](https://docs.microsoft.com/objectivec/cognitive-services/speech/)okuyun.
-- **C#, C++, Java**: `FromDialogServiceConnector()` `Connection` sınıfına yönelik bağlantı ve bağlantı kesme olaylarını izlemek için kullanılabilecek bir işlev eklendi `DialogServiceConnector` . Başvuru belgelerini [burada (C#)](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection?view=azure-dotnet), [burada (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/connection)ve [burada (Java)](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.connection?view=azure-java-stable)okuyun.
+-  **C++/c #/Java/Python/Objective-C/Swift**: `stopSpeakingAsync()` metin okuma senmetini durdurmak için bir yöntem eklendi. Burada başvuru belgelerini [(C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace), burada ( [C#)](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet), burada ( [Java)](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech), burada ( [Python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech?view=azure-python)ve [burada (hedef-C/Swift)](https://docs.microsoft.com/objectivec/cognitive-services/speech/)okuyun.
+- **C#, C++, Java**: `FromDialogServiceConnector()` `Connection` sınıfına yönelik bağlantı ve bağlantı kesme olaylarını izlemek için kullanılabilecek bir işlev eklendi `DialogServiceConnector` . Başvuru belgelerini [burada (C#)](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection?view=azure-dotnet), [burada (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/connection)ve [burada (Java)](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.connection)okuyun.
 <!-- - **C++/C#/Java/Python/Objective-C/Swift**: Added support for Pronunciation Assessment, which evaluates speech pronunciation and gives speakers feedback on the accuracy and fluency of spoken audio. Read the documentation [here](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-pronunciation-assessment). -->
 
 **Son değişiklik**

@@ -3,14 +3,14 @@ title: Azure Otomasyonu 'nda Windows karma runbook çalışanı dağıtma
 description: Bu makalede, yerel veri merkezinizdeki veya bulut ortamınızda Windows tabanlı makinelerde runbook 'lar çalıştırmak için kullanabileceğiniz bir karma Runbook Worker dağıtımı açıklanır.
 services: automation
 ms.subservice: process-automation
-ms.date: 11/23/2020
+ms.date: 11/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: cb501b954897beb73ae05bfdc7b5ded2221dc114
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 31bb0fac302a81c2523a2d2855ca1930cb266ac4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95493936"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95906628"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows karma runbook çalışanı dağıtma
 
@@ -50,7 +50,7 @@ Karma Runbook Worker özelliği aşağıdaki işletim sistemlerini destekler:
 
 Bir Windows sistemi ve Kullanıcı karma Runbook Worker için en düşük gereksinimler şunlardır:
 
-* Windows PowerShell 5,1 veya üzeri ([WMF 5,1 indirin](https://www.microsoft.com/download/details.aspx?id=54616))
+* Windows PowerShell 5,1 ([WMF 5,1 indirin](https://www.microsoft.com/download/details.aspx?id=54616)). PowerShell Core desteklenmiyor.
 * .NET Framework 4.6.2 veya sonraki sürümü
 * İki çekirdek
 * 4 GB RAM

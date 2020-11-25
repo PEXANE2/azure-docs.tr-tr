@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 07/02/2020
+ms.date: 11/24/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a779fee89d52442207358cf90c8cf87e7ef221c2
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5ef2d233024ab3e9cd086e8285e681dc9f42f3f7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837660"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95904027"
 ---
 # <a name="conditional-access-grant"></a>Koşullu erişim: ver
 
@@ -70,7 +70,7 @@ Kuruluşlar, koşullu erişim ilkesinin bir parçası olarak cihaz kimliğini ku
 
 Kuruluşlar, onaylanan bir istemci uygulamasından seçili bulut uygulamalarına yönelik bir erişim denemesinin yapılması gerektiğini gerektirebilir. Bu onaylanan istemci uygulamaları, mobil cihaz yönetimi (MDM) çözümünden bağımsız olarak [Intune uygulama koruma ilkelerini](/intune/app-protection-policy) destekler.
 
-Bu izin denetiminden yararlanmak için, koşullu erişim cihazın bir aracı uygulamasının kullanılmasını gerektiren Azure Active Directory kaydedilmesini gerektirir. Aracı uygulaması iOS için Microsoft Authenticator veya Android cihazları için Microsoft Authenticator ya da Microsoft şirket portalı olabilir. Kullanıcı kimlik doğrulamaya çalıştığında cihaza bir aracı uygulaması yüklü değilse, Kullanıcı gerekli Aracı uygulamasını yüklemek için uygun uygulama/yürütme deposuna yönlendirilir.
+Bu izin denetiminden yararlanmak için, koşullu erişim cihazın bir aracı uygulamasının kullanılmasını gerektiren Azure Active Directory kaydedilmesini gerektirir. Aracı uygulaması iOS için Microsoft Authenticator veya Android cihazları için Microsoft Authenticator ya da Microsoft şirket portalı olabilir. Kullanıcı kimlik doğrulamaya çalıştığında cihazda bir aracı uygulaması yüklü değilse, Kullanıcı gerekli Aracı uygulamasını yüklemek için uygun uygulama deposuna yeniden yönlendirilir.
 
 Bu ayar, aşağıdaki iOS ve Android uygulamaları için geçerlidir:
 

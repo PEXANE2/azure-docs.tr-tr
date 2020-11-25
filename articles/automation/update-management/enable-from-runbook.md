@@ -3,14 +3,14 @@ title: Runbook 'tan Azure Otomasyonu Güncelleştirme Yönetimi etkinleştirme
 description: Bu makalede, runbook 'tan Güncelleştirme Yönetimi nasıl etkinleştirileceği açıklanır.
 services: automation
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 11/24/2020
 ms.custom: mvc
-ms.openlocfilehash: ec102015355e3312f5dc15fa526fa543da75e0de
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 5a9f12a823a22bfb48ccb4482d3402464aa77fea
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222979"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95908377"
 ---
 # <a name="enable-update-management-from-a-runbook"></a>Runbook’tan Güncelleştirme Yönetimi’ni etkinleştirme
 
@@ -34,7 +34,7 @@ Bu yöntem iki Runbook kullanır:
     * *Lasolutionsubscriptionıd*: Log Analytics çalışma alanının bulunduğu abonelik kimliği.
     * *Lasolutionworkspace ID*: Otomasyon hesabınıza bağlı Log Analytics çalışma alanının kimliği.
 
-    Bu değişkenler, eklendi sanal makinesinin çalışma alanını yapılandırmak için kullanılır. Bunlar belirtilmemişse, komut dosyası öncelikle aboneliğindeki Güncelleştirme Yönetimi için herhangi bir VM eklendi arar, ardından Otomasyon hesabının bulunduğu abonelik ve ardından Kullanıcı hesabınızın erişimi olan diğer tüm abonelikler gelir. Doğru yapılandırılmamışsa bu durum, makinelerinizin bazı rasgele Log Analytics çalışma alanına eklendi alma sonucu verebilir.
+    Bu değişkenler, eklendi sanal makinesinin çalışma alanını yapılandırmak için kullanılır ve bunları el ile oluşturmanız gerekir. Bunlar belirtilmemişse, komut dosyası öncelikle aboneliğindeki Güncelleştirme Yönetimi için herhangi bir VM eklendi arar, ardından Otomasyon hesabının bulunduğu abonelik ve ardından Kullanıcı hesabınızın erişimi olan diğer tüm abonelikler gelir. Doğru yapılandırılmamışsa bu durum, makinelerinizin bazı rasgele Log Analytics çalışma alanına eklendi alma sonucu verebilir.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -44,7 +44,7 @@ Bu yöntem iki Runbook kullanır:
 
 1. Azure portal **Otomasyon hesapları**' na gidin. **Otomasyon hesapları** sayfasında, listeden hesabınızı seçin.
 
-2. Otomasyon hesabınızda **güncelleştirme yönetimi**altında **güncelleştirme yönetimi** seçin.
+2. Otomasyon hesabınızda **güncelleştirme yönetimi** altında **güncelleştirme yönetimi** seçin.
 
 3. Log Analytics çalışma alanını seçin ve **Etkinleştir**' e tıklayın. Güncelleştirme Yönetimi etkinleştirildiğinde bir başlık gösterilir.
 
@@ -52,9 +52,9 @@ Bu yöntem iki Runbook kullanır:
 
 ## <a name="install-and-update-modules"></a>Modülleri yükleme ve güncelleştirme
 
-En son Azure modüllerine güncelleştirmek ve daha [az. Operationalınsights](/powershell/module/az.operationalinsights) modülünü içeri aktarmak için Runbook ile sanal makinelerinize yönelik güncelleştirme yönetimi başarıyla etkinleştirmeniz gerekir.
+En son Azure modüllerine güncelleştirmek ve sanal makinelerinize runbook 'larınız için Güncelleştirme Yönetimi başarıyla etkinleştirmek üzere [Azurere. Operationalınsights](/powershell/module/azurerm.operationalinsights) modülünü içeri aktarmak gereklidir.
 
-1. Otomasyon hesabınızda, **paylaşılan kaynaklar**altında **modüller** ' i seçin.
+1. Otomasyon hesabınızda, **paylaşılan kaynaklar** altında **modüller** ' i seçin.
 
 2. Azure modüllerini en son sürüme güncelleştirmek için **Azure Modüllerini Güncelleştir** seçeneğini belirleyin.
 
@@ -62,19 +62,19 @@ En son Azure modüllerine güncelleştirmek ve daha [az. Operationalınsights](/
 
     ![Modülleri güncelleştirme](media/enable-from-runbook/update-modules.png)
 
-4. **Paylaşılan kaynaklar**altındaki **modüllere** geri dönün.
+4. **Paylaşılan kaynaklar** altındaki **modüllere** geri dönün.
 
 5. Modül galerisini açmak için **tarayıcı galerisine gidin** ' i seçin.
 
-6. `Az.OperationalInsights`Bu modülü arayıp Otomasyon hesabınızda içeri aktarın.
+6. `AzureRM.OperationalInsights`Bu modülü arayıp Otomasyon hesabınızda içeri aktarın.
 
-    ![OperationalInsights modülünü içeri aktarma](media/enable-from-runbook/import-operational-insights-module.png)
+    ![OperationalInsights modülünü içeri aktarma](media/enable-from-runbook/import-operational-insights-module-azurerm.png)
 
 ## <a name="select-azure-vm-to-manage"></a>Yönetmek için Azure VM 'yi seçin
 
 Güncelleştirme Yönetimi etkinken, güncelleştirmeleri almak için bir Azure VM ekleyebilirsiniz.
 
-1. Otomasyon hesabınızdan **, güncelleştirme yönetimi**bölümünde **güncelleştirme yönetimi** ' ni seçin.
+1. Otomasyon hesabınızdan **, güncelleştirme yönetimi** bölümünde **güncelleştirme yönetimi** ' ni seçin.
 
 2. VM 'nizi eklemek için **Azure VM 'Leri Ekle** ' yi seçin.
 
@@ -87,11 +87,11 @@ Güncelleştirme Yönetimi etkinken, güncelleştirmeleri almak için bir Azure 
 
 ## <a name="import-a-runbook-to-enable-update-management"></a>Güncelleştirme Yönetimi etkinleştirmek için Runbook 'u içeri aktarma
 
-1. Otomasyon hesabınızda, **Işlem Otomasyonu**altında **runbook 'lar** ' ı seçin.
+1. Otomasyon hesabınızda, **Işlem Otomasyonu** altında **runbook 'lar** ' ı seçin.
 
 2. **Galeriye gözat** seçeneğini belirleyin.
 
-3. **Güncelleştirme ve değişiklik izleme**için arama yapın.
+3. **Güncelleştirme ve değişiklik izleme** için arama yapın.
 
 4. Runbook 'u seçin ve **kaynak görüntüleme** sayfasında **içeri aktar** ' a tıklayın.
 
@@ -118,7 +118,7 @@ Bu runbook 'u başlatmak için bir Azure VM için Güncelleştirme Yönetimi etk
    * **SubscriptionID** -etkinleştirilecek yeni sanal makınenın abonelik kimliği. Çalışma alanının aboneliğini kullanmak için bu alanı boş bırakın. Farklı bir abonelik KIMLIĞI kullandığınızda, Otomasyon hesabınızın farklı çalıştır hesabını abonelik için katkıda bulunan olarak ekleyin.
    * **Alreadyonboardedvd** -güncelleştirmeler için zaten etkinleştirilmiş olan sanal makinenin adı.
    * **Alreadyonboardedvmresourcegroup** -VM 'nin ait olduğu kaynak grubunun adı.
-   * **Solutiontype** - **güncelleştirmeleri**girin.
+   * **Solutiontype** - **güncelleştirmeleri** girin.
 
    ![Enable-MultipleSolution runbook parametreleri](media/enable-from-runbook/runbook-parameters.png)
 

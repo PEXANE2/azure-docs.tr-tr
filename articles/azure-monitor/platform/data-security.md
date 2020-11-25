@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/04/2019
-ms.openlocfilehash: ef34dbfd3af326dbf2d82e09a4c5c8c8e4a91a84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/11/2020
+ms.openlocfilehash: 5aa379f6601bc324bd08c53f251b2097141eec69
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87319805"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95911643"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics veri güvenliği
 Bu belge, [Azure Güven Merkezi](https://www.microsoft.com/en-us/trust-center?rtc=1)bilgileri tamamlayacak bir Azure izleyici özelliği olan Log Analytics özgü bilgiler sağlamaya yöneliktir.  
@@ -27,11 +27,17 @@ Log Analytics hizmeti, aşağıdaki yöntemleri kullanarak bulut tabanlı verile
 * Uyumluluk
 * Güvenlik standartları sertifikaları
 
+Ayrıca, Azure Izleyici ve Log Analytics yerleşik olarak bulunan ek güvenlik özelliklerini de kullanabilirsiniz. Bu özellikler daha fazla yönetici yönetimi gerektirir. 
+* Müşteri tarafından yönetilen (güvenlik) anahtarlar
+* Azure özel depolama
+* Özel Bağlantı ağı oluşturma 
+* Azure Kasası tarafından ayarlanan Azure desteği erişim sınırları
+
 [Azure destek seçeneklerinde](https://azure.microsoft.com/support/options/)güvenlik ilkeleriniz dahil olmak üzere, aşağıdaki bilgilerden herhangi biri hakkında sorularınız, öneriler veya sorunlar ile bizimle iletişim kurun.
 
 ## <a name="sending-data-securely-using-tls-12"></a>TLS 1,2 kullanarak güvenli bir şekilde veri gönderme 
 
-Log Analytics yoldaki verilerin güvenliğini sağlamak için, aracıyı en az Aktarım Katmanı Güvenliği (TLS) 1,2 kullanacak şekilde yapılandırmanızı önemle öneririz. TLS/Güvenli Yuva Katmanı (SSL) uygulamasının güvenlik açığı olduğu ve geriye dönük uyumlulukla hala çalışmaya devam eden daha eski sürümleri, bu sürümler **önerilmez**ve sektör bu eski protokoller için destek vermeyi hızla taşır. 
+Log Analytics yoldaki verilerin güvenliğini sağlamak için, aracıyı en az Aktarım Katmanı Güvenliği (TLS) 1,2 kullanacak şekilde yapılandırmanızı önemle öneririz. TLS/Güvenli Yuva Katmanı (SSL) uygulamasının güvenlik açığı olduğu ve geriye dönük uyumlulukla hala çalışmaya devam eden daha eski sürümleri, bu sürümler **önerilmez** ve sektör bu eski protokoller için destek vermeyi hızla taşır. 
 
 [PCI güvenlik standartları Council](https://www.pcisecuritystandards.org/) , TLS/SSL 'nin eski sürümlerini devre dışı bırakmak ve daha güvenli protokollere yükseltmek Için [30 Haziran 2018 ' nin son tarihini](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) ayarladı. Azure eski desteği düşürdüğünde, aracılarınız en az TLS 1,2 üzerinden iletişim kuramıyorsa, Log Analytics veri gönderemeyebilirsiniz. 
 
@@ -71,7 +77,7 @@ Aşağıdaki tabloda veri türü örnekleri gösterilmektedir:
 | Uyarı |Uyarı adı, uyarı açıklaması, BaseManagedEntityId, sorun KIMLIĞI, ısmonitoralert, RuleId, ResolutionState, Priority, önem derecesi, kategori, sahip, ResolvedBy, TimeRaised, TimeAdded, LastModified, LastModifiedBy, LastModifiedExceptRepeatCount, Timeresoliner, TimeResolutionStateLastModified, TimeResolutionStateLastModifiedInDB, RepeatCount |
 | Yapılandırma |CustomerID, bjecttype TID, EntityId, ManagedTypeId, Managedtypepropertyıd, CurrentValue, ChangeDate |
 | Olay |EventID, EventOriginalID, Basemanagedentityınternalıd, RuleId, PublisherId, PublisherName, FullNumber, Number, Category, ChannelLevel, LoggingComputer, EventData, EventParameters, TimeGenerated, TimeAdded <br>**Note:** Windows olay günlüğünde özel alanlarıyla olayları yazdığınızda, Log Analytics toplar. |
-| Meta veri |BaseManagedEntityId, ObjectStatus, OrganizationalUnit, ActiveDirectoryObjectSid, Physicalişlemcilerle, NetworkName, IPAddress, ForestDNSName, NetbiosComputerName, VirtualMachineName, Lastınventorydate, HostServerNameIsVirtualMachine, IP adresi, NetbiosDomainName, Logicalişlemciler, DNSName, DisplayName, DomainDnsName, ActiveDirectorySite, PrincipalName, OffsetInMinuteFromGreenwichTime |
+| Meta Veriler |BaseManagedEntityId, ObjectStatus, OrganizationalUnit, ActiveDirectoryObjectSid, Physicalişlemcilerle, NetworkName, IPAddress, ForestDNSName, NetbiosComputerName, VirtualMachineName, Lastınventorydate, HostServerNameIsVirtualMachine, IP adresi, NetbiosDomainName, Logicalişlemciler, DNSName, DisplayName, DomainDnsName, ActiveDirectorySite, PrincipalName, OffsetInMinuteFromGreenwichTime |
 | Performans |ObjectName, CounterName, Perfmonınstancename, Performancedataıd, performanslı Cesourceınternalıd, SampleValue, Timeörneklenmiş, TimeAdded |
 | Durum |Statechangeeventıd, stateId, NewHealthState, OldHealthState, Context, TimeGenerated, TimeAdded, StateId2, BaseManagedEntityId, Monitorıd, HealthState, LastModified, Lastlıalertgenerated, DatabaseTimeModified |
 
@@ -127,7 +133,7 @@ Azure Log Analytics aşağıdaki gereksinimleri karşılar:
 * Azure hizmeti olarak, Log Analytics kullandığı bileşenler Azure uyumluluk gereksinimlerine bağlı olarak kullanılır. [Microsoft Güven Merkezi uyumluluğuna](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)daha fazla bilgi edinebilirsiniz.
 
 > [!NOTE]
-> Bazı sertifikalarında/belirlediğimizi karşıladığımızı, Log Analytics önceki *operasyonel*içgörüler adı altında listelenir.
+> Bazı sertifikalarında/belirlediğimizi karşıladığımızı, Log Analytics önceki *operasyonel* içgörüler adı altında listelenir.
 >
 >
 
@@ -170,6 +176,15 @@ Veritabanında depolanan toplanan verilerin saklama süresi, seçilen fiyatland�
 
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4. verilere erişmek için Log Analytics kullanın
 Log Analytics çalışma alanınıza erişmek için, daha önce ayarladığınız kuruluş hesabını veya Microsoft hesabı kullanarak Azure portal oturum açın. Portal ve Log Analytics hizmeti arasındaki tüm trafik güvenli bir HTTPS kanalı üzerinden gönderilir. Portalı kullanırken Kullanıcı istemcisinde (Web tarayıcısı) bir oturum KIMLIĞI oluşturulur ve veriler, oturum sonlandırılana kadar yerel önbellekte depolanır. Sonlandırıldığında, önbellek silinir. Kişisel olarak tanımlanabilen bilgiler içermeyen istemci tarafı tanımlama bilgileri otomatik olarak kaldırılmaz. Oturum tanımlama bilgileri HTTPOnly olarak işaretlenir ve güvenli hale getirilir. Önceden belirlenmiş bir boşta kalma süresinden sonra, Azure portal oturumu sonlandırılır.
+
+
+## <a name="additional-security-features"></a>Ek güvenlik özellikleri
+Azure Izleyici/Log Analytics ortamınızı daha da güvenli hale getirmek için bu ek güvenlik özelliklerini kullanabilirsiniz. Bu özellikler daha fazla yönetici yönetimi gerektirir. 
+- [Müşteri tarafından yönetilen (güvenlik) anahtarlar](customer-managed-keys.md) -Log Analytics çalışma alanlarınıza gönderilen verileri şifrelemek için müşteri tarafından yönetilen anahtarları kullanabilirsiniz. Azure Key Vault kullanımını gerektirir. 
+- [Özel/müşteri tarafından yönetilen depolama](private-storage.md) -kişisel şifreli depolama hesabınızı yönetin ve izleme verilerini depolamak için Log Analytics söyleyin 
+- [Özel bağlantı ağı](private-link-security.md) -Azure özel bağlantısı, Azure PaaS hizmetlerini (Azure izleyici dahil) özel uç noktaları kullanarak sanal ağınıza güvenli bir şekilde bağlayabilmeniz için izin verir. 
+- [Azure müşteri kasası](/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-preview) -müşteri kasası Microsoft Azure, müşterilerin müşteri verileri erişim isteklerini gözden geçirmesi ve onaylaması veya reddetmesi için bir arabirim sağlar. Bu arabirim Microsoft mühendisinin destek isteği sırasında müşterinin verilerine erişmesi gerektiğinde kullanılır.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Azure [VM hızlı başlangıç](../learn/quick-collect-azurevm.md)adımlarını izleyerek Azure VM 'leriniz için Log Analytics verileri nasıl toplayacağınızı öğrenin.  

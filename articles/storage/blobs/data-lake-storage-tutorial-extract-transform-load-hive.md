@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: b247a72b5d7db9892c6a2a763b7b71dc5f972d95
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7640b7a6053532360da4c908089aecfe163bd3de
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86045306"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912663"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>Öğretici: Azure HDInsight kullanarak verileri ayıklama, dönüştürme ve yükleme
 
 Bu öğreticide, bir ETL işlemi gerçekleştirirsiniz: verileri ayıklama, dönüştürme ve yükleme. Ham bir CSV veri dosyası alır, Azure HDInsight kümesine içeri aktarabilir, Apache Hive dönüştürürler ve Apache Sqoop ile Azure SQL veritabanı 'na yüklersiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Verileri bir HDInsight kümesine ayıklayın ve karşıya yükleyin.
@@ -28,19 +28,19 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **HDInsight için yapılandırılmış Azure Data Lake Storage 2. depolama hesabı**
 
-    Bkz. [Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2).
+    Bkz. [Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md).
 
 * **HDInsight 'ta Linux tabanlı Hadoop kümesi**
 
-    Bkz. [hızlı başlangıç: Azure HDInsight 'ta Azure Portal kullanarak Apache Hadoop ve Apache Hive ile çalışmaya başlama](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal).
+    Bkz. [hızlı başlangıç: Azure HDInsight 'ta Azure Portal kullanarak Apache Hadoop ve Apache Hive ile çalışmaya başlama](../../hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md).
 
-* **Azure SQL veritabanı**: Azure SQL veritabanını hedef veri deposu olarak kullanırsınız. SQL veritabanında bir veritabanınız yoksa, bkz. [Azure Portal Azure SQL veritabanı 'nda veritabanı oluşturma](../../sql-database/sql-database-get-started.md).
+* **Azure SQL veritabanı**: Azure SQL veritabanını hedef veri deposu olarak kullanırsınız. SQL veritabanında bir veritabanınız yoksa, bkz. [Azure Portal Azure SQL veritabanı 'nda veritabanı oluşturma](../../azure-sql/database/single-database-create-quickstart.md).
 
-* **Azure CLI**: Azure CLI 'yi yüklemediyseniz bkz. [Azure CLI 'yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* **Azure CLI**: Azure CLI 'yi yüklemediyseniz bkz. [Azure CLI 'yı yükleme](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 * **Bir Secure Shell (SSH) istemcisi**: daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'a (Hadoop) bağlanma](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -120,9 +120,9 @@ Bu bölümde, HDInsight kümenize verileri yükleyecek ve ardından bu verileri 
 
 Bu bölümde, bir Apache Hive işini çalıştırmak için Beeline kullanırsınız.
 
-Apache Hive işi kapsamında, verileri. csv dosyasından **gecikmeler**adlı bir Apache Hive tablosuna aktarırsınız.
+Apache Hive işi kapsamında, verileri. csv dosyasından **gecikmeler** adlı bir Apache Hive tablosuna aktarırsınız.
 
-1. HDInsight kümesi için zaten sahip olduğunuz SSH isteminden,     **flightgecikmeleri. HQL**adlı yeni bir dosya oluşturmak ve düzenlemek için aşağıdaki komutu kullanın:
+1. HDInsight kümesi için zaten sahip olduğunuz SSH isteminden,     **flightgecikmeleri. HQL** adlı yeni bir dosya oluşturmak ve düzenlemek için aşağıdaki komutu kullanın:
 
    ```bash
    nano flightdelays.hql
@@ -228,7 +228,7 @@ Bu işlem için SQL veritabanı 'ndan sunucu adına ihtiyacınız vardır. Sunuc
 
 1. [Azure portalına](https://portal.azure.com) gidin.
 
-2. **SQL veritabanlarını**seçin.
+2. **SQL veritabanlarını** seçin.
 
 3. Kullanmayı seçtiğiniz veritabanının adını filtreleyin. Sunucu adı, **Sunucu adı** sütununda listelenir.
 
@@ -280,7 +280,7 @@ Bu işlem için SQL veritabanı 'ndan sunucu adına ihtiyacınız vardır. Sunuc
 
 8. `GO` deyimi girildiğinde önceki deyimler değerlendirilir.
 
-   Sorgu, kümelenmiş dizine sahip olan **gecikmeler**adlı bir tablo oluşturur.
+   Sorgu, kümelenmiş dizine sahip olan **gecikmeler** adlı bir tablo oluşturur.
 
 9. Tablonun oluşturulduğunu doğrulamak için aşağıdaki sorguyu kullanın:
 
@@ -344,4 +344,4 @@ Bu öğreticide kullanılan tüm kaynaklar önceden yüklenir. Temizlik gerekmez
 HDInsight 'ta verilerle çalışmanın daha fazla yolunu öğrenmek için aşağıdaki makaleye bakın:
 
 > [!div class="nextstepaction"]
-> [Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+> [Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

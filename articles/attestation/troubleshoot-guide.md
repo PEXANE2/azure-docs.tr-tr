@@ -1,5 +1,5 @@
 ---
-title: Azure kanıtlama sorun giderme kılavuzu
+title: Azure Doğrulama sorun giderme kılavuzu
 description: Yaygın olarak gözlemlenen sorunlar hakkında sorun giderme kılavuzu
 services: attestation
 author: msmbaldwin
@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 46e3521a54f6bfdfbfb25634a09b8c8e0cfdcac0
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: fe347983e2143c7a4bdf00ca0207356c881c66ac
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93343239"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95891291"
 ---
 # <a name="microsoft-azure-attestation-troubleshooting-guide"></a>Microsoft Azure kanıtlama sorun giderme kılavuzu
 
@@ -64,7 +64,7 @@ PowerShell 'deki rolleri doğrulamak için aşağıdaki adımları çalıştır�
 
 a. PowerShell 'i başlatın ve "Connect-AzAccount" cmdlet 'i aracılığıyla Azure 'da oturum açın
 
-b. RBAC rol atama ayarlarınızı doğrulayın
+b. Azure rolü atama ayarlarınızı doğrulayın
 
 
   ```powershell

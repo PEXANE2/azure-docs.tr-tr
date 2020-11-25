@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 8f4d16931f09f94af81dd4e0f178ce6e0f990881
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 744bcfe196629f76c5505f36ef9c8c224fefe601
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426213"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95909076"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>FHıR için Azure API 'SI hakkında sık sorulan sorular
 
@@ -65,6 +65,10 @@ FHıR için Azure API 'sine nelerin [yayınlanabileceği](https://github.com/mic
 
 FHıR üzerinde akıllı (Substitutable tıbbi uygulamalar ve yeniden kullanılabilir teknoloji), iş ortağı uygulamalarını FHıR sunucularıyla ve elektronik sistem durumu kayıtları ve sistem durumu bilgileri değişimleri gibi diğer sistem durumu BT sistemleriyle tümleştirmeye yönelik bir dizi açık belirtimdir. FHıR uygulaması ile akıllı bir uygulama oluşturarak, uygulamanızın farklı sistemlerdeki bir plethora erişilebilir ve yararlanılabilir sağlayabilirsiniz.
 FHIR için kimlik doğrulaması ve Azure API. AKıLLı hakkında daha fazla bilgi edinmek için bkz. [Smart Health](https://smarthealthit.org/).
+
+### <a name="where-can-i-find-what-version-of-fhir-is-running-on-my-database"></a>Veritabanımda hangi FHıR sürümünün çalıştığını nerede bulabilirim? 
+
+"FhirVersion" özelliği altındaki capability bildiriminde sunulan kesin FHıR sürümünü bulabilirsiniz.
 
 ## <a name="fhir-implementations-and-specifications"></a>FHıR uygulamaları ve belirtimleri
 

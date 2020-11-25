@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/9/2020
-ms.openlocfilehash: d2095919d6f6be482390250fd8d0ee20e9015237
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 1dfe14d96efd37e3dec7faeae1dfff21122958bc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444869"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95894210"
 ---
 # <a name="service-configuration"></a>Hizmet yapılandırması
 
@@ -22,9 +22,9 @@ Soru-Cevap Oluşturma her sürümü farklı bir Azure kaynakları kümesi (Hizme
 
 Soru-Cevap Oluşturma, [Generateanswer API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/runtime/generateanswer)tarafından kullanılan sorgu çalışma zamanını sağlamak için App Service kullanır.
 
-Bu ayarlar, App Service için Azure portal kullanılabilir. **Ayarlar ' ı** ve ardından **yapılandırma** ' yı seçerek ayarlar kullanılabilir.
+Bu ayarlar, App Service için Azure portal kullanılabilir. **Ayarlar ' ı** ve ardından **yapılandırma**' yı seçerek ayarlar kullanılabilir.
 
-Uygulama Ayarları listesinden ayrı bir ayar ayarlayabilir veya **Gelişmiş Düzenle** ' yi seçerek çeşitli ayarları değiştirebilirsiniz.
+Uygulama Ayarları listesinden ayrı bir ayar ayarlayabilir veya **Gelişmiş Düzenle**' yi seçerek çeşitli ayarları değiştirebilirsiniz.
 
 |Kaynak|Ayar|
 |--|--|
@@ -47,7 +47,7 @@ App Service özelleştirmeler, Soru-Cevap Oluşturma yönetilen (Önizleme) içi
 
 Soru-Cevap Oluşturma Hizmeti, aşağıdaki kullanıcıların tek bir Soru-Cevap Oluşturma hizmetinde ve tüm bilgi bankalarında işbirliği yapması için yapılandırma sağlar.
 
-Hizmetinizdeki [ortak çalışanları nasıl ekleyeceğinizi](./how-to/collaborate-knowledge-base.md) öğrenin.
+Hizmetinizdeki [ortak çalışanları nasıl ekleyeceğinizi](./reference-role-based-access-control.md) öğrenin.
 
 ## <a name="change-azure-cognitive-search"></a>Azure Bilişsel Arama 'yi değiştirme
 

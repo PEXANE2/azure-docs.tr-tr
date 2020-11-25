@@ -8,23 +8,23 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 85499839992f872896153e360507d7d1ba7fea38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4db85357ee970d13d6b4fcce195cae66932bed18
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88037210"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912799"
 ---
 # <a name="tune-performance-storm-hdinsight--azure-data-lake-storage-gen2"></a>Performansı ayarlama: fırtınası, HDInsight & Azure Data Lake Storage 2.
 
 Azure fırtınası topolojisinin performansını ayarladığınızda göz önünde bulundurmanız gereken faktörleri anlayın. Örneğin, Spog 'ler ve cıvatalar tarafından gerçekleştirilen işin özelliklerinin anlaşılması önemlidir (çalışmanın g/ç veya bellek yoğun olup olmadığı). Bu makalede, yaygın sorunları giderme dahil olmak üzere bir dizi performans ayarlama Kılavuzu ele alınmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
-* **Azure Data Lake Storage 2. hesabı**. Bir oluşturma hakkında yönergeler için bkz. [hızlı başlangıç: analitik için depolama hesabı oluşturma](data-lake-storage-quickstart-create-account.md).
-* Data Lake Storage 2. hesabına erişimi olan **Azure HDInsight kümesi** . Bkz. [Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2). Küme için Uzak Masaüstü 'Nü etkinleştirdiğinizden emin olun.
-* **Data Lake Storage 2. bir fırtınası kümesi çalıştırılıyor**. Daha fazla bilgi için bkz. [HDInsight 'Ta fırtınası](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview).
+* **Azure Data Lake Storage 2. hesabı**. Bir oluşturma hakkında yönergeler için bkz. [hızlı başlangıç: analitik için depolama hesabı oluşturma](../common/storage-account-create.md).
+* Data Lake Storage 2. hesabına erişimi olan **Azure HDInsight kümesi** . Bkz. [Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md). Küme için Uzak Masaüstü 'Nü etkinleştirdiğinizden emin olun.
+* **Data Lake Storage 2. bir fırtınası kümesi çalıştırılıyor**. Daha fazla bilgi için bkz. [HDInsight 'Ta fırtınası](../../hdinsight/storm/apache-storm-overview.md).
 * **Data Lake Storage 2. performans ayarlama yönergeleri**.  Genel performans kavramları için [Data Lake Storage 2. performans ayarlama Kılavuzu](data-lake-storage-performance-tuning-guidance.md)' na bakın.   
 
 ## <a name="tune-the-parallelism-of-the-topology"></a>Topolojinin paralelliğini ayarlama
@@ -110,10 +110,10 @@ Data Lake Storage 2. tarafından belirtilen bant genişliği sınırlarına ula�
 
 Kısıtlanıyor olup olmadığınızı denetlemek için istemci tarafında hata ayıklama günlüğünü etkinleştirin:
 
-1. **Ambarı**  >  **fırtınası**  >  **yapılandırması**  >  **Gelişmiş fırtınası-çalışan-Log4J**' de ** &lt; kök düzeyi = "info" &gt; ** öğesini ** &lt; root Level = "Debug" &gt; **olarak değiştirin. Yapılandırmanın etkili olması için tüm düğümleri/hizmeti yeniden başlatın.
+1. **Ambarı**  >  **fırtınası**  >  **yapılandırması**  >  **Gelişmiş fırtınası-çalışan-Log4J**' de **&lt; kök düzeyi = "info" &gt;** öğesini **&lt; root Level = "Debug" &gt;** olarak değiştirin. Yapılandırmanın etkili olması için tüm düğümleri/hizmeti yeniden başlatın.
 2. Data Lake Storage 2. azaltma özel durumları için çalışan düğümlerdeki fırtınası topolojisi günlüklerini (/var/log/Storm/Worker-Artifacts/ &lt; topologyıname &gt; / &lt; Port &gt; /Worker.log altında) izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Bu blogda](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/), fırtınası için ek performans ayarlamaya başvurulabilir.
+[Bu blogda](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs), fırtınası için ek performans ayarlamaya başvurulabilir.
 
 Çalıştırmak için ek bir örnek için bkz. [GitHub 'da bu](https://github.com/hdinsight/storm-performance-automation).

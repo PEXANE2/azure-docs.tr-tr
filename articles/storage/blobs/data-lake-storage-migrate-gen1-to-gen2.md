@@ -8,18 +8,18 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: c0b85164042ef8ba0dda5f83dbfe49f585a11f7c
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: aeb2c58504d1f058a3b887e02a7b7406c09db5b6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102651"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913156"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Gen1 'den Gen2 'e geçiş Azure Data Lake Storage
 
 Verilerinizi, iş yüklerinizi ve uygulamalarınızı Data Lake Storage 2. Data Lake Storage 1. geçirebilirsiniz.
 
-Azure Data Lake Storage 2., [Azure Blob depolamada](storage-blobs-introduction.md) oluşturulmuştur ve büyük veri analizlerine adanmış bir dizi özellik sağlar. [Data Lake Storage 2.](https://azure.microsoft.com/services/storage/data-lake-storage/) , [Azure Blob depolamadan](storage-blobs-introduction.md)düşük maliyetli, katmanlı depolama, yüksek kullanılabilirlik/olağanüstü durum kurtarma özellikleriyle ölçeklendirerek, dosya sistemi semantiği, dizin ve dosya düzeyi güvenliği gibi [Azure Data Lake Storage 1.](https://docs.microsoft.com/azure/data-lake-store/index)özelliklerini birleştirir.
+Azure Data Lake Storage 2., [Azure Blob depolamada](storage-blobs-introduction.md) oluşturulmuştur ve büyük veri analizlerine adanmış bir dizi özellik sağlar. [Data Lake Storage 2.](https://azure.microsoft.com/services/storage/data-lake-storage/) , [Azure Blob depolamadan](storage-blobs-introduction.md)düşük maliyetli, katmanlı depolama, yüksek kullanılabilirlik/olağanüstü durum kurtarma özellikleriyle ölçeklendirerek, dosya sistemi semantiği, dizin ve dosya düzeyi güvenliği gibi [Azure Data Lake Storage 1.](../../data-lake-store/index.yml)özelliklerini birleştirir.
 
 > [!NOTE]
 > Daha kolay okunması için bu makalede, Azure Data Lake Storage 1. başvurmak için *Gen1* terimini ve Azure Data Lake Storage 2. başvurmak için *Gen2* terimi kullanılmaktadır.
@@ -47,9 +47,9 @@ Gen2 'e geçiş yapmak için aşağıdaki yaklaşımı öneririz.
 
 3. İşlevsellikten herhangi bir boşlukları değerlendirmek için [bilinen sorunların](data-lake-storage-known-issues.md) bir listesini gözden geçirin.
 
-4. Gen2, [tanılama günlüğü](../common/storage-analytics-logging.md), [erişim katmanları](storage-blob-storage-tiers.md)ve [BLOB depolama yaşam döngüsü yönetim ilkeleri](storage-lifecycle-management-concepts.md)gibi BLOB depolama özelliklerini destekler. Bu özelliklerden herhangi birini kullanarak ilginç değilseniz, [geçerli destek düzeyini](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-supported-blob-storage-features)gözden geçirin.
+4. Gen2, [tanılama günlüğü](../common/storage-analytics-logging.md), [erişim katmanları](storage-blob-storage-tiers.md)ve [BLOB depolama yaşam döngüsü yönetim ilkeleri](storage-lifecycle-management-concepts.md)gibi BLOB depolama özelliklerini destekler. Bu özelliklerden herhangi birini kullanarak ilginç değilseniz, [geçerli destek düzeyini](./data-lake-storage-supported-blob-storage-features.md)gözden geçirin.
 
-5. Gen2 'in çözümlerinizin bağımlı olduğu tüm hizmetleri desteklediğinden emin olmak için [Azure ekosistem desteğinin](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-multi-protocol-access) güncel durumunu gözden geçirin.
+5. Gen2 'in çözümlerinizin bağımlı olduğu tüm hizmetleri desteklediğinden emin olmak için [Azure ekosistem desteğinin](./data-lake-storage-multi-protocol-access.md) güncel durumunu gözden geçirin.
 
 ### <a name="step-2-prepare-to-migrate"></a>2. Adım: geçirmeye hazırlanma
 
@@ -69,13 +69,13 @@ Gen2 'e geçiş yapmak için aşağıdaki yaklaşımı öneririz.
 
 Tercih ettiğiniz kalıbı kullanarak verileri, iş yüklerini ve uygulamaları geçirin. Senaryoları artımlı olarak doğrulamanızı öneririz.
 
-1. [Bir depolama hesabı oluşturun](data-lake-storage-quickstart-create-account.md) ve hiyerarşik ad alanı özelliğini etkinleştirin. 
+1. [Bir depolama hesabı oluşturun](../common/storage-account-create.md) ve hiyerarşik ad alanı özelliğini etkinleştirin. 
 
 2. Verilerinizi geçirin. 
 
-3. Gen2 uç noktanıza işaret etmek için [iş yüklerinizde Hizmetleri](data-lake-storage-integrate-with-azure-services.md) yapılandırın. 
+3. Gen2 uç noktanıza işaret etmek için [iş yüklerinizde Hizmetleri](./data-lake-storage-supported-azure-services.md) yapılandırın. 
    
-4. Uygulamaları Gen2 API 'Lerini kullanacak şekilde güncelleştirin. Bkz. [.net](data-lake-storage-directory-file-acl-dotnet.md), [Java](data-lake-storage-directory-file-acl-java.md), [Python](data-lake-storage-directory-file-acl-python.md), [JavaScript](data-lake-storage-directory-file-acl-javascript.md) ve [rest](https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2)için kılavuzlar. 
+4. Uygulamaları Gen2 API 'Lerini kullanacak şekilde güncelleştirin. Bkz. [.net](data-lake-storage-directory-file-acl-dotnet.md), [Java](data-lake-storage-directory-file-acl-java.md), [Python](data-lake-storage-directory-file-acl-python.md), [JavaScript](data-lake-storage-directory-file-acl-javascript.md) ve [rest](/rest/api/storageservices/data-lake-storage-gen2)için kılavuzlar. 
    
 5. Data Lake Storage 2. [PowerShell cmdlet 'leri](data-lake-storage-directory-file-acl-powershell.md)ve [Azure CLI komutlarını](data-lake-storage-directory-file-acl-cli.md)kullanmak için betikleri güncelleştirin.
    
@@ -97,13 +97,13 @@ Bu tablo, Gen1 'in yeteneklerini Gen2 ile karşılaştırır.
 |---|---|---|
 |Veri organizasyonu|[Hiyerarşik ad alanı](data-lake-storage-namespace.md)<br>Dosya ve klasör desteği|[Hiyerarşik ad alanı](data-lake-storage-namespace.md)<br>Kapsayıcı, dosya ve klasör desteği |
 |Coğrafi yedeklilik| [LRS](../common/storage-redundancy.md#locally-redundant-storage)| [LRS](../common/storage-redundancy.md#locally-redundant-storage), [ZRS](../common/storage-redundancy.md#zone-redundant-storage), [GRS](../common/storage-redundancy.md#geo-redundant-storage), [RA-GRS](../common/storage-redundancy.md#read-access-to-data-in-the-secondary-region) |
-|Kimlik Doğrulaması|[AAD yönetilen kimliği](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Hizmet sorumluları](../../active-directory/develop/app-objects-and-service-principals.md)|[AAD yönetilen kimliği](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Hizmet sorumluları](../../active-directory/develop/app-objects-and-service-principals.md)<br>[Paylaşılan erişim anahtarı](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)|
+|Kimlik Doğrulaması|[AAD yönetilen kimliği](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Hizmet sorumluları](../../active-directory/develop/app-objects-and-service-principals.md)|[AAD yönetilen kimliği](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Hizmet sorumluları](../../active-directory/develop/app-objects-and-service-principals.md)<br>[Paylaşılan erişim anahtarı](/rest/api/storageservices/authorize-with-shared-key)|
 |Yetkilendirme|Yönetim- [Azure RBAC](../../role-based-access-control/overview.md)<br>Veri – [ACL 'ler](data-lake-storage-access-control.md)|Yönetim – [Azure RBAC](../../role-based-access-control/overview.md)<br>Veri  [ACL 'leri](data-lake-storage-access-control.md), [Azure RBAC](../../role-based-access-control/overview.md) |
-|Şifreleme – bekleyen veriler|Sunucu tarafı – [Microsoft tarafından yönetilen](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) veya [müşteri tarafından yönetilen](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) anahtarlarla|Sunucu tarafı – [Microsoft tarafından yönetilen](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) veya [müşteri tarafından yönetilen](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) anahtarlarla|
+|Şifreleme – bekleyen veriler|Sunucu tarafı – [Microsoft tarafından yönetilen](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) veya [müşteri tarafından yönetilen](../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) anahtarlarla|Sunucu tarafı – [Microsoft tarafından yönetilen](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) veya [müşteri tarafından yönetilen](../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) anahtarlarla|
 |VNET desteği|[Sanal Ağ Tümleştirmesi](../../data-lake-store/data-lake-store-network-security.md)|[Hizmet uç noktaları](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json), [Özel uç noktalar](../common/storage-private-endpoints.md)|
 |Geliştirici deneyimi|[Rest](../../data-lake-store/data-lake-store-data-operations-rest-api.md), [.net](../../data-lake-store/data-lake-store-data-operations-net-sdk.md), [Java](../../data-lake-store/data-lake-store-get-started-java-sdk.md), [Python](../../data-lake-store/data-lake-store-data-operations-python.md), [PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md), [Azure CLI](../../data-lake-store/data-lake-store-get-started-cli-2.0.md)|Genel olarak kullanılabilir- [rest](/rest/api/storageservices/data-lake-storage-gen2), [.net](data-lake-storage-directory-file-acl-dotnet.md), [Java](data-lake-storage-directory-file-acl-java.md), [Python](data-lake-storage-directory-file-acl-python.md)<br>Genel Önizleme- [JavaScript](data-lake-storage-directory-file-acl-javascript.md), [POWERSHELL](data-lake-storage-directory-file-acl-powershell.md), [Azure CLI](data-lake-storage-directory-file-acl-cli.md)|
 |Kaynak günlükleri|Klasik Günlükler<br>[Azure Izleyici tümleşik](../../data-lake-store/data-lake-store-diagnostic-logs.md)|[Klasik Günlükler](../common/storage-analytics-logging.md) -genel kullanıma sunuldu<br>Azure izleyici tümleştirmesi – zaman çizelgesi TBD|
-|Ekosistem|[HDInsight (3,6)](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md), [Azure Databricks (3,1 ve üzeri)](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html), [Azure SYNAPSE Analytics](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store), [ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight (3,6, 4,0)](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md), [Azure Databricks (5,1 ve üzeri)](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2), [Azure SYNAPSE Analytics](../../azure-sql/database/vnet-service-endpoint-rule-overview.md), [ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
+|Ekosistem|[HDInsight (3,6)](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md), [Azure Databricks (3,1 ve üzeri)](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html), [Azure SYNAPSE Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md), [ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight (3,6, 4,0)](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md), [Azure Databricks (5,1 ve üzeri)](/azure/databricks/data/data-sources/azure/azure-datalake-gen2), [Azure SYNAPSE Analytics](../../azure-sql/database/vnet-service-endpoint-rule-overview.md), [ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
 
 <a id="migration-patterns"></a>
 
@@ -114,9 +114,9 @@ Bir geçiş kalıbı seçin ve ardından bu kalıbı gerektiği gibi değiştiri
 |||
 |---|---|
 |**Yükselt ve Kaydır**|En basit model. Veri işlem hatlarınız için kapalı kalma süresi uygun değilse idealdir.|
-|**Artımlı kopya**|*Asansör ve kaydırma*gibi, ancak daha az kapalı kalma süresine benzer. Kopyalamanın uzun süredeki büyük miktarlarda veri için idealdir.|
+|**Artımlı kopya**|*Asansör ve kaydırma* gibi, ancak daha az kapalı kalma süresine benzer. Kopyalamanın uzun süredeki büyük miktarlarda veri için idealdir.|
 |**Çift işlem hattı**|Herhangi bir kesinti süresi karşılayamıyorum işlem hatları için idealdir.|
-|**Çift yönlü eşitleme**|*Çift ardışık düzene*benzer, ancak daha karmaşık işlem hatları için uygun olan daha aşamalı bir yaklaşım ile.|
+|**Çift yönlü eşitleme**|*Çift ardışık düzene* benzer, ancak daha karmaşık işlem hatları için uygun olan daha aşamalı bir yaklaşım ile.|
 
 Her bir düzene daha yakından göz atalım.
  
@@ -126,7 +126,7 @@ Bu en basit modeldir.
 
 1. Tüm Gen1 yazma işlemlerini durdur.
 
-2. Verileri Gen1 'ten Gen2 'e taşıyın. [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)öneririz. ACL 'Leri verilerle kopyalayın.
+2. Verileri Gen1 'ten Gen2 'e taşıyın. [Azure Data Factory](../../data-factory/connector-azure-data-lake-storage.md)öneririz. ACL 'Leri verilerle kopyalayın.
 
 3. Gen2 'e giriş işlemlerini ve iş yüklerini işaret edin.
 
@@ -147,7 +147,7 @@ Bu en basit modeldir.
 
 ### <a name="incremental-copy-pattern"></a>Artımlı kopyalama kalıbı
 
-1. Gen1 'den Gen2 'e veri taşımaya başlayın. [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)öneririz. ACL 'Leri verilerle kopyalayın.
+1. Gen1 'den Gen2 'e veri taşımaya başlayın. [Azure Data Factory](../../data-factory/connector-azure-data-lake-storage.md)öneririz. ACL 'Leri verilerle kopyalayın.
 
 2. Yeni verileri artımlı olarak Gen1 'tan kopyalayın.
 
@@ -171,7 +171,7 @@ Bu en basit modeldir.
 
 ### <a name="dual-pipeline-pattern"></a>Çift ardışık düzen düzeni
 
-1. Verileri Gen1 'ten Gen2 'e taşıyın. [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)öneririz. ACL 'Leri verilerle kopyalayın.
+1. Verileri Gen1 'ten Gen2 'e taşıyın. [Azure Data Factory](../../data-factory/connector-azure-data-lake-storage.md)öneririz. ACL 'Leri verilerle kopyalayın.
 
 2. Hem Gen1 hem de Gen2 'e yeni veri alma.
 
@@ -213,6 +213,6 @@ Bu en basit modeldir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bir depolama hesabı için güvenliği ayarlamanın çeşitli bölümleri hakkında bilgi edinin. Bkz. [Azure Storage Güvenlik Kılavuzu](../common/storage-security-guide.md).
+- Bir depolama hesabı için güvenliği ayarlamanın çeşitli bölümleri hakkında bilgi edinin. Bkz. [Azure Storage Güvenlik Kılavuzu](./security-recommendations.md).
 - Data Lake Store performansını iyileştirin. Bkz. [performans için Azure Data Lake Storage 2. iyileştirme](data-lake-storage-performance-tuning-guidance.md)
 - Data Lake Store yönetmek için en iyi uygulamaları gözden geçirin. Bkz. [Azure Data Lake Storage 2. kullanımı Için en iyi uygulamalar](data-lake-storage-best-practices.md)

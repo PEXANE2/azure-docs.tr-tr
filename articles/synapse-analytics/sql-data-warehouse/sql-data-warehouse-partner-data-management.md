@@ -11,19 +11,19 @@ ms.date: 04/17/2018
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e029de19e6bdb635dfc4797367de29dfb87e32ce
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: da6387c55200bad3458705cf570f60ca40db1be0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325401"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95900625"
 ---
 # <a name="azure-synapse-analytics-data-management-partners"></a>Azure SYNAPSE Analytics veri yönetimi iş ortakları
 
 Bu makalede, Microsoft iş ortağı şirketleri, veri yönetimi araçları ve Azure SYNAPSE destekleyen çözümler anlatılmaktadır.
 
 ## <a name="data-management-partners"></a>Veri yönetimi iş ortakları
-| İş Ortağı | Açıklama | Web sitesi/ürün bağlantısı |
+| İş Ortağı | Description | Web sitesi/ürün bağlantısı |
 | ------- | ----------- | -------------------- |
 | ![AGID](./media/sql-data-warehouse-partner-data-management/aginity-logo.png) |**AGID**<br>Agof, Microsoft 'un SYNAPSE platformunun tüm gücünü analistlerin ve mühendislerin ellerine yerleştiren bir analiz geliştirme aracıdır. Zengin ve sezgisel SQL geliştirme ortamı, takım üyelerinin bir düzine sektör önde gelen analiz platformları üzerinden bağlanmasına, çeşitli biçimlerde veri almasına ve sonuçları Iş zekası ve Machine Learning kullanım durumlarında sunmaya yönelik karmaşık iş hesaplamaları oluşturmasına olanak tanır. Uygulamanın tamamı, analiz takımı genelinde işbirliği yapan ve gelişmiş yönetim özellikleri ve ayrıntılı güvenlik, idare bir Breeze hale getiren merkezi bir katalog etrafında oluşturulmuştur. |[Ürün sayfası](https://www.aginity.com/databases/microsoft/)<br> |
 | ![Alation](./media/sql-data-warehouse-partner-data-management/alation-logo.png) |**Alation**<br>Alation 'ın Veri Kataloğu, verimliliği önemli ölçüde artırır, doğruluğu artırır ve Analist için veri odaklı kararı karşılayarak sürücülere yöneliktir. Alation 'ın Veri Kataloğu, kuruluşunuzdaki herkesi verileri bulmak, anlamak ve yönetmek için güçler. |[Ürün sayfası](https://www.alation.com/product/data-catalog/)<br> |
@@ -34,6 +34,7 @@ Bu makalede, Microsoft iş ortağı şirketleri, veri yönetimi araçları ve Az
 | ![Redpoint küresel](./media/sql-data-warehouse-partner-data-management/redpoint-global-logo.png) |**RedPoint Veri Yönetimi**<br>RedPoint Veri Yönetimi, pazarlamacılar 'ın, yapılandırılmış ve yapılandırılmamış veri yönetimi gerçekleştirirken, platformlar arası müşteri katılımına tüm verilerini uygulamasını sağlar. RedPoint ile, yapılandırılmış ve yapılandırılmamış verilerinizin değerini en üst düzeye çıkarabilirsiniz ve bu da günümüzün Omni-Channel müşterisi için gereken hiper kişiselleştirilmiş ve bağlamsal etkileşimleri sunun. Sürükle ve bırak arabirimi veri yönetimi süreçlerini kolay bir şekilde tasarlamayı ve yürütmeyi kolaylaştırır. |[Ürün sayfası](https://www.redpointglobal.com/customer-data-management)<br> [Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/redpoint-global.redpoint-rpdm)<br> |
 | ![Sentry bir](./media/sql-data-warehouse-partner-data-management/sql-sentry-logo.png) |**Sentryone 'ın (DW Sentry)**<br>Akıllı veri taşıma panosu ve olay takvimi sayesinde, her zaman iş yükünüzü nelerin etkilediklerini tam olarak bilirsiniz. Verilerinizi yüklemek, yedeklemek veya geri yüklemek için kullandığınız sorgular ve işleriniz için görünürlük sağlamak üzere tasarlandı, Azure kaynaklarınızdan en iyi şekilde karşılaşmayın. |[Ürün sayfası](https://sentryone.com/platform/azure-sql-dw-performance-monitoring/)<br>[Azure Market](https://sentryone.com/platform/azure-sql-dw-performance-monitoring/)<br> |
 | ![SqlDBM](./media/sql-data-warehouse-partner-data-management/sqldbm-logo.png) |**SqlDBM**<br>SqlDBM, veritabanınızı herhangi bir tarayıcıda geliştirmek için kolay ve kullanışlı bir yöntem sunan bulut tabanlı bir veri modelleme aracıdır. Tüm gerekli veritabanı kurallarını ve veritabanı anahtarları, şemalar, dizinler, sütun kısıtlamaları ve ilişkiler gibi nesneleri dahil ederken. |[Ürün sayfası](http://sqldbm.com/)<br> [Azure Market](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/sqldbm1583438206845.sqldbm-data-modeling-tool?tab=Overview)<br>|
+| ![Taml](./media/sql-data-warehouse-partner-data-management/tamr-logo.png) |**Taml**<br>Büyük bir deyişle kuruluşlar, ana kopyalı verilerle Azure SYNAPSE sağlayabilir ve bu da Azure SYNAPSE 'ın analitik özellikleri 'nden en iyi şekilde yararlanmalarını sağlar. Taml bulut Yerel veri yönetimine yönelik çözümler, veri ve iş sonuçları arasındaki boşluğu köprülemek için sezgisel insan geri bildirim iş akışlarıyla veri birleştirme, temizleme ve kategorilere ayırma işlemlerini yapmak üzere makine öğrenimini kullanır. Taml, Azure SYNAPSE Analytics, Azure Databricks, Azure HDInsight, Azure Veri Kataloğu, Azure Data Lake Storage ve Azure Data Factory dahil olmak üzere Azure 'un veri hizmetleriyle tümleştirilir. Azure 'un esnekliğinden ve ölçeğinden yararlanarak, düşük toplam sahip olma maliyetiyle veri yönetimine izin verir. |[Ürün sayfası](https://www.tamr.com/tamr-partners/microsoft-azure/)<br> [Azure Market](https://azuremarketplace.microsoft.com/marketplace/apps/tamrinc.unify_v_2019?tab=Overview) |
 | ![Teleran](./media/sql-data-warehouse-partner-data-management/teleran-logo.jpg) |**Teleran**<br>Telera 'nın sorgu denetimi, uygunsuz ve kötü biçimli sorguların SYNAPSE ulaşmasını ve işlem kaynaklarını yeniden almasını engeller. Bu, verileri daha verimli bir şekilde etkileşimde bulunmak için analiz kullanıcılarına akıllı iletiler gönderir. Amaç, Azure maliyetlerini gereksiz yere yönlendirmeksizin iyi iş sonuçları sağlamaktır. Teleran Kullanım Analizi, Kullanıcı, uygulama, sorgu ve veri kullanımı etkinliğinin analizini sağlar. Bu, her zaman açık olan öğenin tüm resmine sahip olmasını sağlar. Hizmeti iyileştirebilmenizi, iş üretkenliğini artırmanıza ve SYNAPSE tüketim maliyetlerini iyileştirmenize olanak sağlar. |[Ürün sayfası](https://teleran.com/azure-synapse-optimization-cost-control/)<br>|
 
 ## <a name="next-steps"></a>Sonraki adımlar

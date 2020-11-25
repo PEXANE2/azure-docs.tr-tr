@@ -10,12 +10,12 @@ ms.date: 09/22/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: aed3116976d57df81da399495fd9da3722ba770a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ca09e41e6d5b83f14d2dfee4107135585b7e945a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960686"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95908804"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>Blok Blobları için noktadan noktaya geri yükleme
 
@@ -49,7 +49,7 @@ Tek seferde bir depolama hesabında yalnızca bir geri yükleme işlemi çalış
 
 Zaman içinde geri yükleme, zaman içinde nokta geri yüklemeyi etkinleştirebilmeniz için aşağıdaki Azure depolama özelliklerinin etkinleştirilmesini gerektirir:
 
-- [Geçici silme](soft-delete-overview.md)
+- [Geçici silme](./soft-delete-blob-overview.md)
 - [Akışı değiştirme](storage-blob-change-feed.md)
 - [Blob sürümü oluşturma](versioning-overview.md)
 
@@ -92,5 +92,5 @@ Zaman içinde nokta geri yükleme fiyatlandırması hakkında daha fazla bilgi i
 
 - [Blok Blobu verilerinde bir zaman içinde geri yükleme gerçekleştirin](point-in-time-restore-manage.md)
 - [Azure Blob depolamada akış desteğini değiştirme](storage-blob-change-feed.md)
-- [Bloblar için geçici silmeyi etkinleştirme](soft-delete-enable.md)
+- [Bloblar için geçici silmeyi etkinleştirme](./soft-delete-blob-enable.md)
 - [Blob sürüm oluşturmayı etkinleştirme ve yönetme](versioning-enable.md)

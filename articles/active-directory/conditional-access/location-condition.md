@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 06/15/2020
+ms.date: 11/24/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 08e236d798f700a3c48dd41ba61941bc0037d613
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 888ed2fa24b82c0dda3361df1c63bb802e58f5fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88055386"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95904112"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>Bir koşullu erişim ilkesinde konum koşulunu kullanma 
 
@@ -37,7 +37,7 @@ Ağ konumu, istemcinin Azure Active Directory için sağladığı genel IP adres
 
 ## <a name="named-locations"></a>Adlandırılmış konumlar
 
-Konumlar, **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişim**  >  **adlı konumlarda**Azure Portal belirlenir. Bu adlandırılmış ağ konumları, bir kuruluşun Yönetim Merkezi ağ aralıkları, VPN ağ aralıkları veya engellemek istediğiniz aralıklar gibi konumlar içerebilir. 
+Konumlar, **Azure Active Directory**  >  **güvenlik**  >  **koşullu erişim**  >  **adlı konumlarda** Azure Portal belirlenir. Bu adlandırılmış ağ konumları, bir kuruluşun Yönetim Merkezi ağ aralıkları, VPN ağ aralıkları veya engellemek istediğiniz aralıklar gibi konumlar içerebilir. 
 
 ![Azure portal adlandırılmış konumlar](./media/location-condition/new-named-location.png)
 
@@ -64,13 +64,13 @@ Bu seçenek, örneğin, güvenilir bir ağ konumundan Multi-Factor Authenticatio
 Bazı kuruluşlar, tüm ülkelerin veya bölgelerin IP sınırlarının koşullu erişim ilkeleri için adlandırılmış konumlar olarak tanımlanması tercih edebilir. Bu konumlar, geçerli kullanıcıların, Kuzey Kore gibi bir konumdan hiçbir zaman gelmeyeceğinden gereksiz trafiği engellediği durumlarda bu konumları kullanabilirler. IP adresinin ülkeye olan bu eşlemeleri düzenli aralıklarla güncelleştirilir. 
 
 > [!NOTE]
-> Ülkeler IPv6 adres aralıklarını, yalnızca bilinen IPv4 adresi aralıklarını içermez ve güvenilir olarak işaretlenemez.
+> IPv6 adres aralıkları ülkelere eşlenemez. Yalnızca IPv4 adresleri ülkelere eşlenir.
 
 ![Azure portal yeni bir ülke veya bölge tabanlı konum oluşturma](./media/location-condition/new-named-location-country-region.png)
 
 #### <a name="include-unknown-areas"></a>Bilinmeyen alan ekle
 
-Bazı IP adresleri belirli bir ülkeye veya bölgeye eşlenmedi. Bu IP konumlarını yakalamak için, bir konum tanımlarken **bilinmeyen alanı dahil et** kutusunu işaretleyin. Bu seçenek, bu IP adreslerinin adlandırılmış konuma dahil edilip edilmeyeceğini seçmenizi sağlar. Adlandırılmış konumu kullanan ilke bilinmeyen konumlara uygulanacaksa bu ayarı kullanın.
+Bazı IP adresleri, tüm IPv6 adresleri dahil olmak üzere belirli bir ülkeye veya bölgeye eşlenmedi. Bu IP konumlarını yakalamak için, bir konum tanımlarken **bilinmeyen alanı dahil et** kutusunu işaretleyin. Bu seçenek, bu IP adreslerinin adlandırılmış konuma dahil edilip edilmeyeceğini seçmenizi sağlar. Adlandırılmış konumu kullanan ilke bilinmeyen konumlara uygulanacaksa bu ayarı kullanın.
 
 ### <a name="configure-mfa-trusted-ips"></a>MFA güvenilir IP 'lerini yapılandırma
 
@@ -114,7 +114,7 @@ Yanlış yapılandırmanın değiştirilmesini azaltmaya yardımcı olmak için 
 - **IP aralıkları konumu**
 
 > [!NOTE]
-> Ülkeler IPv6 adres aralıklarını, yalnızca bilinen IPv4 adresi aralıklarını içermez ve güvenilir olarak işaretlenemez.
+> IPv6 adres aralıkları ülkelere eşlenemez. Yalnızca IPv4 adresleri ülkelere eşlenir.
 
 ![Adlandırılmış konumlar önizleme arabirimi](./media/location-condition/named-location-preview.png)
 
@@ -128,7 +128,7 @@ Konum koşulunu yapılandırırken şunları ayırt etme seçeneğiniz vardır:
 
 ### <a name="any-location"></a>Herhangi bir konum
 
-Varsayılan olarak, **herhangi bir konumun** seçilmesi bir ILKENIN tüm IP adreslerine uygulanmasına neden olur, bu da Internet 'teki herhangi bir adres anlamına gelir. Bu ayar, adlandırılmış konum olarak yapılandırdığınız IP adresleriyle sınırlı değildir. **Herhangi bir konum**seçtiğinizde, hala belirli konumları bir ilkeden dışlayabilirsiniz. Örneğin, şirket ağı dışında, kapsamı tüm konumlara ayarlamak için güvenilen konumlar hariç tüm konumlara bir ilke uygulayabilirsiniz.
+Varsayılan olarak, **herhangi bir konumun** seçilmesi bir ILKENIN tüm IP adreslerine uygulanmasına neden olur, bu da Internet 'teki herhangi bir adres anlamına gelir. Bu ayar, adlandırılmış konum olarak yapılandırdığınız IP adresleriyle sınırlı değildir. **Herhangi bir konum** seçtiğinizde, hala belirli konumları bir ilkeden dışlayabilirsiniz. Örneğin, şirket ağı dışında, kapsamı tüm konumlara ayarlamak için güvenilen konumlar hariç tüm konumlara bir ilke uygulayabilirsiniz.
 
 ### <a name="all-trusted-locations"></a>Tüm güvenilen konumlar
 
@@ -157,7 +157,7 @@ Azure AD 'ye kullanan IPv6 trafiğinin çoğu Microsoft Exchange Online 'dan gel
 Bunlar, adlandırılmış konumlarınızın IPv6 aralıklarını yapılandırmanız gerekebilecek en yaygın nedenlerdir. Ayrıca, Azure sanal ağları 'nı kullanıyorsanız bir IPv6 adresinden gelen trafiğe sahip olursunuz. Bir koşullu erişim ilkesi tarafından engellenen VNet trafiği varsa, Azure AD oturum açma günlüğlerinizi kontrol edin. Trafiği tanımladıktan sonra, kullanılan IPv6 adresini alabilir ve ilkenize dışlayabilirsiniz. 
 
 > [!NOTE]
-> Tek bir adres için bir IP CıDR aralığı belirtmek istiyorsanız/32 bit maskesini uygulayın. 2607: fb90: b27a: 6f69: f8d5: dea0: fb39:74A IPv6 adresini söylerseniz ve bu tek adresi bir Aralık olarak dışlamak istediğinizde, 2607: fb90: b27a: 6f69: f8d5: dea0: fb39:74A/32 kullanabilirsiniz.
+> Tek bir adres için bir IP CıDR aralığı belirtmek istiyorsanız/128 bit maskesini uygulayın. 2607: fb90: b27a: 6f69: f8d5: dea0: fb39:74A IPv6 adresini söylerseniz ve bu tek adresi bir Aralık olarak dışlamak istediğinizde, 2607: fb90: b27a: 6f69: f8d5: dea0: fb39:74A/128 kullanın.
 
 ### <a name="identifying-ipv6-traffic-in-the-azure-ad-sign-in-activity-reports"></a>Azure AD oturum açma etkinlik raporlarında IPv6 trafiğini tanımlama
 

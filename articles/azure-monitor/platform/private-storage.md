@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: a487e6989792c63aaf5baf9ddb3875df549561a4
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7cb427c83345a4603c6fe7727c1cc42c1943c456
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92143988"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95908260"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Azure Izleyici 'de müşteri tarafından yönetilen depolama hesaplarını kullanma Log Analytics
 
-Log Analytics, Azure Storage 'ı çeşitli senaryolarda kullanır. Bu kullanım genellikle otomatik olarak yönetilir. Ancak, bazı durumlar, müşteri tarafından yönetilen depolama hesabı olarak da adlandırılan kendi depolama hesabınızı sağlamanızı ve yönetmenizi gerektirir. Bu belge, WAD/LAD günlüklerinin, özel bağlantıya özgü senaryoların ve CMK şifrelemenin alımı için müşteri tarafından yönetilen depolamanın kullanımının ayrıntılarını ayrıntılarıyla ifade edecek. 
+Log Analytics, Azure Storage 'ı çeşitli senaryolarda kullanır. Bu kullanım genellikle otomatik olarak yönetilir. Ancak, bazı durumlar, müşteri tarafından yönetilen depolama hesabı olarak da adlandırılan kendi depolama hesabınızı sağlamanızı ve yönetmenizi gerektirir. Bu belge, WAD/LAD günlüklerinin, özel bağlantıya özgü senaryoların ve müşteri tarafından yönetilen anahtar (CMK) şifrelemenin alımı için müşteri tarafından yönetilen depolamanın kullanımının ayrıntılarını ayrıntılarıyla ifade edecek. 
 
 > [!NOTE]
 > Bu biçimlendirmeye ve içeriğe göre değişiklik olabileceğinden, müşteri tarafından yönetilen depolama 'ya karşıya yükleme Log Analytics içerikler üzerinde bir bağımlılık yapmanızı öneririz.

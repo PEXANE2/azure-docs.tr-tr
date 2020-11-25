@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: d7c5bd2d1918ecebe2d2aabc213de43e7cdb1fef
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 595b3a57594401df6b61db1fcf8ee16be98ef364
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93306976"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95900438"
 ---
 # <a name="tutorial-build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Öğretici: Apache Spark MLlib ve Azure SYNAPSE Analytics ile Machine Learning uygulaması derleme
 
 Bu makalede, Azure açık veri kümesinde basit bir tahmine dayalı analiz yapan bir makine öğrenimi uygulaması oluşturmak için Apache Spark [Mllib](https://spark.apache.org/mllib/) kullanmayı öğreneceksiniz. Spark, yerleşik makine öğrenimi kitaplıklarını sağlar. Bu örnek Lojistik gerileme aracılığıyla *Sınıflandırmayı* kullanır.
 
-MLlib, için uygun olan yardımcı programlar dahil olmak üzere makine öğrenimi görevleri için yararlı olan çok sayıda yardımcı program sağlayan bir temel Spark kitaplığıdır:
+Mini bilgi ve MLlib, için uygun olan yardımcı programlar dahil olmak üzere makine öğrenimi görevleri için yararlı olan çok sayıda yardımcı program sağlayan temel Spark kitaplıklarıdır:
 
 - Sınıflandırma
 - Regresyon
@@ -31,7 +31,7 @@ MLlib, için uygun olan yardımcı programlar dahil olmak üzere makine öğreni
 
 ## <a name="understand-classification-and-logistic-regression"></a>Sınıflandırmayı ve lojistik regresyonunu anlayın
 
-Popüler bir makine öğrenimi görevi *sınıflandırması* , giriş verilerini kategorilere sıralama işlemidir. Bu, sağladığınız giriş verilerine nasıl etiket atanacağını anlamak için bir sınıflandırma algoritmasının *işleridir* . Örneğin, stok bilgilerini girdi olarak kabul eden bir makine öğrenimi algoritmasını düşünebilirsiniz ve stoku iki kategoriye böler: satmanız gereken hisse senetleri ve tutmanız gereken hisse senetleri.
+Popüler bir makine öğrenimi görevi *sınıflandırması*, giriş verilerini kategorilere sıralama işlemidir. Bu, sağladığınız giriş verilerine nasıl etiket atanacağını anlamak için bir sınıflandırma algoritmasının *işleridir* . Örneğin, stok bilgilerini girdi olarak kabul eden bir makine öğrenimi algoritmasını düşünebilirsiniz ve stoku iki kategoriye böler: satmanız gereken hisse senetleri ve tutmanız gereken hisse senetleri.
 
 *Lojistik regresyon* , sınıflandırma için kullanabileceğiniz bir algoritmadır. Spark 'un lojistik regresyon API 'SI, *ikili sınıflandırmada* veya giriş verilerinin iki gruptan birinde sınıflandırılmasına yardımcı olur. Lojistik gerilemeleri hakkında daha fazla bilgi için bkz. [Vikipedi](https://en.wikipedia.org/wiki/Logistic_regression).
 
@@ -46,7 +46,7 @@ Bu örnekte, New York 'dan TAXI Seyahat ipucu verilerinde bazı tahmine dayalı 
 
 Aşağıdaki adımlarda, belirli bir yolculuğa bir tıp içerip içermediğini tahmin etmek için bir model geliştirirsiniz.
 
-## <a name="create-an-apache-spark-mllib-machine-learning-app"></a>Apache Spark MLlib makine öğrenimi uygulaması oluşturma
+## <a name="create-an-apache-spark--machine-learning-model"></a>Apache Spark Machine Learning modeli oluşturma
 
 1. PySpark çekirdeğini kullanarak bir not defteri oluşturun. Yönergeler için bkz. [Not defteri oluşturma](../quickstart-apache-spark-notebook.md#create-a-notebook).
 2. Bu uygulama için gereken türleri içeri aktarın. Aşağıdaki kodu kopyalayıp boş bir hücreye yapıştırın ve sonra **SHIFT + enter** tuşlarına basın ya da kodun solundaki mavi yürütme simgesini kullanarak hücreyi çalıştırın.
@@ -109,44 +109,6 @@ Geçici bir tablo veya görünüm oluşturmak verilere farklı erişim yolları 
 ```Python
 sampled_taxi_df.createOrReplaceTempView("nytaxi")
 ```
-
-## <a name="understand-the-data"></a>Verileri anlayın
-
-Normalde, verileri anlamak için bu noktada *Araştırmacı veri analizi* (Eda) aşamasına geçebilirsiniz. Aşağıdaki kod, verilerin durumu ve kalitesi hakkında ekibinizle ' e yol açabilecek ipuçlarıyla ilgili verilerin üç farklı görselleştirmelerini gösterir.
-
-```python
-# The charting package needs a Pandas dataframe or numpy array do the conversion
-sampled_taxi_pd_df = sampled_taxi_df.toPandas()
-
-# Look at tips by amount count histogram
-ax1 = sampled_taxi_pd_df['tipAmount'].plot(kind='hist', bins=25, facecolor='lightblue')
-ax1.set_title('Tip amount distribution')
-ax1.set_xlabel('Tip Amount ($)')
-ax1.set_ylabel('Counts')
-plt.suptitle('')
-plt.show()
-
-# How many passengers tipped by various amounts
-ax2 = sampled_taxi_pd_df.boxplot(column=['tipAmount'], by=['passengerCount'])
-ax2.set_title('Tip amount by Passenger count')
-ax2.set_xlabel('Passenger count')
-ax2.set_ylabel('Tip Amount ($)')
-plt.suptitle('')
-plt.show()
-
-# Look at the relationship between fare and tip amounts
-ax = sampled_taxi_pd_df.plot(kind='scatter', x= 'fareAmount', y = 'tipAmount', c='blue', alpha = 0.10, s=2.5*(sampled_taxi_pd_df['passengerCount']))
-ax.set_title('Tip amount by Fare amount')
-ax.set_xlabel('Fare Amount ($)')
-ax.set_ylabel('Tip Amount ($)')
-plt.axis([-2, 80, -2, 20])
-plt.suptitle('')
-plt.show()
-```
-
-![Histogram ](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-histogram.png)
- ![ kutusu çizgi çiz ](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-box-whisker.png)
- ![ dağılım çizimi](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-scatter.png)
 
 ## <a name="prepare-the-data"></a>Verileri hazırlama
 
@@ -225,7 +187,7 @@ train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, te
 Artık iki veri çerçevesi olduğuna göre, bir sonraki görev model formülünü oluşturmak ve bunu eğitim veri çerçevesinde çalıştırmak ve ardından test veri çerçevesine karşı doğrulamak olacaktır. Farklı birleşimlerin etkilerini görmek için model formülünün farklı sürümleriyle denemeler yapmanız gerekir.
 
 > [!Note]
-> Modeli kaydetmek için Depolama Blobu verileri katılımcısı Azure rolüne ihtiyacınız olacaktır. Depolama hesabınız altında Access Control (ıAM) bölümüne gidin ve **rol ataması Ekle** ' yi seçin. Depolama Blobu verileri katılımcısı Azure rolünü SQL veritabanı sunucunuza atayın. Yalnızca sahibi ayrıcalığına sahip Üyeler bu adımı gerçekleştirebilir. Çeşitli Azure yerleşik rolleri için bu [kılavuza](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)bakın.
+> Modeli kaydetmek için Depolama Blobu verileri katılımcısı Azure rolüne ihtiyacınız olacaktır. Depolama hesabınız altında Access Control (ıAM) bölümüne gidin ve **rol ataması Ekle**' yi seçin. Depolama Blobu verileri katılımcısı Azure rolünü SQL veritabanı sunucunuza atayın. Yalnızca sahibi ayrıcalığına sahip Üyeler bu adımı gerçekleştirebilir. Çeşitli Azure yerleşik rolleri için bu [kılavuza](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)bakın.
 
 ```python
 ## Create a new LR object for the model
@@ -272,7 +234,7 @@ plt.ylabel('True Positive Rate')
 plt.show()
 ```
 
-![Lojistik regresyon ipucu modeli için ROC eğrisi](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-nyctaxi-roc.png "Lojistik regresyon ipucu modeli için ROC eğrisi")
+![Lojistik regresyon ipucu modeli için ROC eğrisi](./media/apache-spark-machine-learning-mllib-notebook/nyc-taxi-roc.png)
 
 ## <a name="shut-down-the-spark-instance"></a>Spark örneğini kapatma
 

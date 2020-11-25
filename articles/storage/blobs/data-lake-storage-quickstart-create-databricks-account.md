@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/12/2020
 ms.reviewer: jeking
-ms.openlocfilehash: 5bdf1cd510ed0d997e5e59c6492117a4d567c43e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e289bea6b1a23f1622ced62656164d9865303298
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024611"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912833"
 ---
 # <a name="quickstart-analyze-data-with-databricks"></a>Hızlı başlangıç: Databricks ile verileri analiz etme
 
@@ -198,7 +198,7 @@ Bu makalede, Azure Databricks’te bir Spark kümesi oluşturdunuz ve Data Lake 
 Azure Databricks kullanılarak bir ETL işleminin (verileri ayıklama, dönüştürme ve yükleme) nasıl gerçekleştirileceğini öğrenmek için sonraki makaleye ilerleyin.
 
 > [!div class="nextstepaction"]
->[Azure Databricks kullanarak verileri ayıklama, dönüştürme ve yükleme](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md).
+>[Azure Databricks kullanarak verileri ayıklama, dönüştürme ve yükleme](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse).
 
 - Diğer veri kaynaklarından Azure Databricks verileri içeri aktarmayı öğrenmek için bkz. [Spark veri kaynakları](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html).
 

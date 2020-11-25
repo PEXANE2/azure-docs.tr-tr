@@ -12,17 +12,20 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 38be8b97b3255e4e63301e693d2a5f295e8d801b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8881dc3f67ac1c9f699bd2bf7bcf1dbbcd5e9c0c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779977"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95905336"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell ve Azure CLı: Saydam Veri Şifrelemesi Azure Key Vault müşteri tarafından yönetilen anahtarla etkinleştirin
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Bu makalede, Azure SQL veritabanı veya Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) Azure Key Vault Saydam Veri Şifrelemesi (TDE) için bir anahtarın nasıl kullanılacağı açıklanmaktadır. TDE Azure Key Vault tümleştirme-Kendi Anahtarını Getir (BYOK) desteği hakkında daha fazla bilgi edinmek için, [Azure Key Vault 'de müşteri tarafından yönetilen anahtarlarla TDE](transparent-data-encryption-byok-overview.md)sayfasını ziyaret edin.
+
+> [!NOTE] 
+> Azure SQL artık, yönetilen bir HSM 'de TDE koruyucusu olarak depolanan bir RSA anahtarının kullanılmasını desteklemektedir. Bu özellik **genel önizlemede**. Azure Key Vault yönetilen HSM, FIPS 140-2 düzey 3 tarafından doğrulanan HSM 'leri kullanarak bulut uygulamalarınızın şifreleme anahtarlarını korumanıza olanak sağlayan, tam olarak yönetilen, yüksek oranda kullanılabilir, tek kiracılı ve standartlara uygun bir bulut hizmetidir. [Yönetilen HSM](../../key-vault/managed-hsm/index.yml)'ler hakkında daha fazla bilgi edinin.
 
 ## <a name="prerequisites-for-powershell"></a>PowerShell önkoşulları
 
@@ -36,7 +39,8 @@ Bu makalede, Azure SQL veritabanı veya Azure SYNAPSE Analytics (eski adıyla SQ
 - Anahtar, TDE için kullanılacak aşağıdaki özniteliklere sahip olmalıdır:
   - Sona erme tarihi yok
   - Devre dışı değil
-  - Al, *sarmalama tuşu* , *anahtar sarmalama işlemini geri* *alabilir*
+  - Al, *sarmalama tuşu*, *anahtar sarmalama işlemini geri* *alabilir*
+- **(Önizlemede)** Yönetilen bir HSM anahtarı kullanmak için [Azure CLI kullanarak yönetilen BIR HSM oluşturma ve etkinleştirme](../../key-vault/managed-hsm/quick-create-cli.md) yönergelerini izleyin
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -70,6 +74,8 @@ TDE için bir anahtar kullanmadan önce sunucunuza anahtar kasasına erişim izn
    Set-AzKeyVaultAccessPolicy -VaultName <KeyVaultName> `
        -ObjectId $server.Identity.PrincipalId -PermissionsToKeys get, wrapKey, unwrapKey
    ```
+Yönetilen bir HSM 'de sunucunuza izinler eklemek için, ' yönetilen HSM şifre hizmeti şifrelemesi ' yerel RBAC rolünü sunucuya ekleyin. Bu, sunucunun yönetilen HSM 'deki anahtarlar üzerinde al, sarmalama ve sarmalama işlemlerini kaldırma işlemini gerçekleştirmesini sağlayacaktır.
+[Yönetilen HSM 'de sunucu erişimi sağlama yönergeleri](../../key-vault/managed-hsm/role-management.md)
 
 ## <a name="add-the-key-vault-key-to-the-server-and-set-the-tde-protector"></a>Key Vault anahtarını sunucuya ekleme ve TDE koruyucuyu ayarlama
 
@@ -79,10 +85,15 @@ TDE için bir anahtar kullanmadan önce sunucunuza anahtar kasasına erişim izn
 - TDE koruyucunun amaçlanan olarak yapılandırıldığını doğrulamak için [Get-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector) cmdlet 'ini kullanın.
 
 > [!NOTE]
+> **(Önizlemede)** Yönetilen HSM anahtarları için, PowerShell 'in az. SQL 2.11.1 sürümünü kullanın.
+
+> [!NOTE]
 > Anahtar Kasası adı ve anahtar adının birleşik uzunluğu 94 karakteri aşamaz.
 
 > [!TIP]
-> Key Vault örnek bir keyId: https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
+> Key Vault örnek bir keyId:<br/>https://contosokeyvault.vault.azure.net/keys/Key1/1a1a2b2b3c3c4d4d5e5e6f6f7g7g8h8h
+>
+> Yönetilen HSM 'den örnek bir keyId:<br/>https://contosoMHSM.managedhsm.azure.net/keys/myrsakey
 
 ```powershell
 # add the key from Key Vault to the server
@@ -239,7 +250,7 @@ Bir sorun oluşursa, aşağıdakileri denetleyin:
 
 - Yeni anahtar sunucuya eklenemezse veya yeni anahtar TDE koruyucusu olarak güncelleştirilemez, aşağıdakileri denetleyin:
    - Anahtar, bir sona erme tarihi içermemelidir
-   - Anahtar, *Al* , *sarmalama tuşu* ve *sarmalama anahtar* işlemlerini etkin olmalıdır.
+   - Anahtar, *Al*, *sarmalama tuşu* ve *sarmalama anahtar* işlemlerini etkin olmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

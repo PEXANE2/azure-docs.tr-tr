@@ -1,14 +1,14 @@
 ---
 title: Kiracılar arası yönetim deneyimleri
 description: Azure Temsilcili kaynak yönetimi, bir çapraz kiracı yönetim deneyimi sunar.
-ms.date: 11/09/2020
+ms.date: 11/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: dfb92e3f4f02e693ae5e4bba57e5344288c4615a
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 95b9bcf6bb9530afc9f6a23c323b6931e8975ad1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413131"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95905132"
 ---
 # <a name="cross-tenant-management-experiences"></a>Kiracılar arası yönetim deneyimleri
 
@@ -81,6 +81,8 @@ Birçok görev ve hizmet, yönetilen kiracılar genelinde Temsilcili kaynaklar �
 [Azure Kubernetes hizmeti (AKS)](../../aks/index.yml):
 
 - Barındırılan Kubernetes ortamlarını yönetme ve müşteri kiracılarında Kapsayıcılı uygulamaları dağıtma ve yönetme
+- Müşteri kiracılarında kümeleri dağıtma ve yönetme
+-   Müşteri kiracılarında performansı izlemek için kapsayıcılar için Azure Izleyicisini kullanın
 
 [Azure geçişi](../../migrate/index.yml):
 

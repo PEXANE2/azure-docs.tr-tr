@@ -9,12 +9,12 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: artek
-ms.openlocfilehash: 1d720aed44358dd314bc4226adb9ad517139cd18
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2b36dd600efa864913e0087c49bffd556e8330d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836318"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912408"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Data Lake Storage 2. ile
 
@@ -29,7 +29,7 @@ GUCLı hakkında daha fazla bilgi için bkz. [resmi belgeler](https://hadoop.apa
 
 ## <a name="use-the-hdfs-cli-with-an-hdinsight-hadoop-cluster-on-linux"></a>Linux 'ta bir HDInsight Hadoop kümesi ile bir HDInsight Hadoop kümesi kullanma
 
-İlk olarak, [hizmetlere uzaktan erişim](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-information#remote-access-to-services)oluşturun. [SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) 'yi seçerseniz örnek PowerShell kodu aşağıdaki gibi görünür:
+İlk olarak, [hizmetlere uzaktan erişim](../../hdinsight/hdinsight-hadoop-linux-information.md#remote-access-to-services)oluşturun. [SSH](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md) 'yi seçerseniz örnek PowerShell kodu aşağıdaki gibi görünür:
 
 ```powershell
 #Connect to the cluster via SSH.
@@ -44,7 +44,7 @@ Bağlantı dizesi, Azure portal HDInsight kümesi dikey penceresinin "SSH + Clus
 >[!IMPORTANT]
 >HDInsight kümesi faturalandırma bir küme oluşturulduktan sonra başlar ve küme silindiğinde duraklar. Fatura dakikalara eşit olarak dağıtıldığından, kullanılmayan kümelerinizi mutlaka silmelisiniz. Bir kümeyi silmeyi öğrenmek için [konusundaki makalemize](../../hdinsight/hdinsight-delete-cluster.md)bakın. Ancak, Data Lake Storage 2. etkinleştirilmiş bir depolama hesabında depolanan veriler, HDInsight kümesi silindikten sonra bile devam ediyor.
 
-## <a name="create-a-container"></a>Bir kapsayıcı oluşturma
+## <a name="create-a-container"></a>Kapsayıcı oluşturma
 
 `hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/`
 
@@ -120,4 +120,4 @@ Komutların tüm listesini [Apache Hadoop 2.4.1 dosya sistemi kabuğu Kılavuzu]
 
 * [Azure Databricks Azure Data Lake Storage 2. özellikli bir hesap kullanın](./data-lake-storage-quickstart-create-databricks-account.md)
 
-* [Dosya ve dizinlerdeki erişim denetim listeleri hakkında bilgi edinin](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)
+* [Dosya ve dizinlerdeki erişim denetim listeleri hakkında bilgi edinin](./data-lake-storage-access-control.md)

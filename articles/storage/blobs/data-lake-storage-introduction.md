@@ -8,18 +8,18 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 4cf7d6fdc02affc425fd02eba794d573a59d2a45
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 5f2f3cfc5ccbdd6a3d3d3ede5bb39a3f6f548b19
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579377"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913105"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. Nesil'e giriş
 
 Azure Data Lake Storage 2., [Azure Blob depolama](storage-blobs-introduction.md)üzerinde oluşturulmuş, büyük veri analizi için adanmış bir yetenekler kümesidir. 
 
-Data Lake Storage 2., Azure Blob depolama ile [Azure Data Lake Storage 1.](https://docs.microsoft.com/azure/data-lake-store/index) yeteneklerini söyleyecektir. Örneğin, Data Lake Storage 2. dosya sistemi semantiğini, dosya düzeyi güvenliği ve ölçeği sağlar. Bu yetenekler BLOB depolama üzerinde oluşturulduğundan, yüksek kullanılabilirlik/olağanüstü durum kurtarma özellikleri sayesinde düşük maliyetli, katmanlı depolama alanı da alacaksınız.
+Data Lake Storage 2., Azure Blob depolama ile [Azure Data Lake Storage 1.](../../data-lake-store/index.yml) yeteneklerini söyleyecektir. Örneğin, Data Lake Storage 2. dosya sistemi semantiğini, dosya düzeyi güvenliği ve ölçeği sağlar. Bu yetenekler BLOB depolama üzerinde oluşturulduğundan, yüksek kullanılabilirlik/olağanüstü durum kurtarma özellikleri sayesinde düşük maliyetli, katmanlı depolama alanı da alacaksınız.
 
 ## <a name="designed-for-enterprise-big-data-analytics"></a>Kurumsal büyük veri analizi için tasarlandı
 
@@ -39,13 +39,13 @@ Ayrıca, düşük maliyetli [Azure Blob depolama](storage-blobs-introduction.md)
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Data Lake Storage 2. temel özellikleri
 
--   **Hadoop uyumlu erişim** : Data Lake Storage 2., verileri [Hadoop Dağıtılmış dosya sistemi (bir)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html)ile yaptığınız gibi yönetmenizi ve erişmenize olanak tanır. Yeni [ABFS sürücüsü](data-lake-storage-abfs-driver.md) (verilere erişmek için kullanılır) tüm Apache Hadoop ortamlarında kullanılabilir. Bu ortamlar [Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index)*,* [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index)ve [Azure SYNAPSE analizlerini](https://docs.microsoft.com/azure/synapse-analytics)içerir.
+-   **Hadoop uyumlu erişim**: Data Lake Storage 2., verileri [Hadoop Dağıtılmış dosya sistemi (bir)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html)ile yaptığınız gibi yönetmenizi ve erişmenize olanak tanır. Yeni [ABFS sürücüsü](data-lake-storage-abfs-driver.md) (verilere erişmek için kullanılır) tüm Apache Hadoop ortamlarında kullanılabilir. Bu ortamlar [Azure HDInsight](../../hdinsight/index.yml)*,* [Azure Databricks](/azure/databricks/)ve [Azure SYNAPSE analizlerini](/azure/synapse-analytics)içerir.
 
--   **POSIX Izinlerinin bir üst kümesi** : Data Lake Gen2 için güvenlik modeli, Data Lake Storage 2. özgü bazı ayrıntı düzeyi Ile birlikte ACL 'LERI ve POSIX izinlerini destekler. Ayarlar, Depolama Gezgini veya Hive ve Spark gibi çerçeveler aracılığıyla yapılandırılabilir.
+-   **POSIX Izinlerinin bir üst kümesi**: Data Lake Gen2 için güvenlik modeli, Data Lake Storage 2. özgü bazı ayrıntı düzeyi Ile birlikte ACL 'LERI ve POSIX izinlerini destekler. Ayarlar, Depolama Gezgini veya Hive ve Spark gibi çerçeveler aracılığıyla yapılandırılabilir.
 
--   Uygun **maliyetli** : Data Lake Storage 2. düşük maliyetli depolama kapasitesi ve işlemler sunar. [Azure Blob depolama yaşam döngüsü](storage-lifecycle-management-concepts.md) gibi özellikler yaşam döngüsü boyunca veri geçişleri olarak maliyetleri iyileştirir.
+-   Uygun **maliyetli**: Data Lake Storage 2. düşük maliyetli depolama kapasitesi ve işlemler sunar. [Azure Blob depolama yaşam döngüsü](storage-lifecycle-management-concepts.md) gibi özellikler yaşam döngüsü boyunca veri geçişleri olarak maliyetleri iyileştirir.
 
--   **İyileştirilmiş sürücü** : ABFS sürücüsü özellikle büyük veri analizi için [iyileştirilmiştir](data-lake-storage-abfs-driver.md) . Karşılık gelen REST API 'Leri uç noktadan geliyor `dfs.core.windows.net` .
+-   **İyileştirilmiş sürücü**: ABFS sürücüsü özellikle büyük veri analizi için [iyileştirilmiştir](data-lake-storage-abfs-driver.md) . Karşılık gelen REST API 'Leri uç noktadan geliyor `dfs.core.windows.net` .
 
 ### <a name="scalability"></a>Ölçeklenebilirlik
 
@@ -86,5 +86,3 @@ Birçok açık kaynak platformu Data Lake Storage 2. destekler. Tüm liste için
 
 - [Azure Data Lake Storage 2. ile ilgili bilinen sorunlar](data-lake-storage-known-issues.md)
 - [Azure Data Lake Storage çoklu protokol erişimi](data-lake-storage-multi-protocol-access.md)
-
-

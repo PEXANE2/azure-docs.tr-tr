@@ -10,12 +10,12 @@ ms.date: 09/09/2020
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
-ms.openlocfilehash: affddf7367f58107106ae07a07b8baedac73e251
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2eda67e377a3b61e696e732b916d788c00a18eae
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89659565"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95908787"
 ---
 # <a name="query-acceleration-sql-language-reference"></a>Sorgu hızlandırma SQL dil başvurusu
 
@@ -63,7 +63,7 @@ SELECT sys.split(split_size)FROM BlobStorage
 |ILIŞKIN|Zaman içinde bir nokta.                           |
 |BOOLEAN  |True veya false.                             |
 
-CSV biçimli verilerden değerleri okurken tüm değerler dizeler olarak okunurdur.  Dize değerleri, atama ifadeleri kullanılarak diğer türlere dönüştürülebilir.  Değerler, bağlama göre örtük olarak diğer türlere dönüştürülebilir. daha fazla bilgi için bkz. [veri türü önceliği (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql).
+CSV biçimli verilerden değerleri okurken tüm değerler dizeler olarak okunurdur.  Dize değerleri, atama ifadeleri kullanılarak diğer türlere dönüştürülebilir.  Değerler, bağlama göre örtük olarak diğer türlere dönüştürülebilir. daha fazla bilgi için bkz. [veri türü önceliği (Transact-SQL)](/sql/t-sql/data-types/data-type-precedence-transact-sql).
 
 ## <a name="expressions"></a>İfadeler
 
@@ -79,34 +79,34 @@ Aşağıdaki standart SQL işleçleri desteklenir:
 
 |İşleç|Açıklama|
 |--|--|
-|[=](https://docs.microsoft.com/sql/t-sql/language-elements/equals-transact-sql)    |İki ifadenin eşitliğini karşılaştırır (bir karşılaştırma işleci).|
-|[!=](https://docs.microsoft.com/sql/t-sql/language-elements/not-equal-to-transact-sql-exclamation)    |Bir ifadenin başka bir ifadeye (karşılaştırma operatörü) eşit olup olmadığını sınar.|
-|[<>](https://docs.microsoft.com/sql/t-sql/language-elements/not-equal-to-transact-sql-traditional)    |Eşit değildir (bir karşılaştırma operatörü) için iki ifadeyi karşılaştırır.|
-|[<](https://docs.microsoft.com/sql/t-sql/language-elements/less-than-transact-sql)    |Küçüktür (bir karşılaştırma operatörü) için iki ifadeyi karşılaştırır.|
-|[<=](https://docs.microsoft.com/sql/t-sql/language-elements/less-than-or-equal-to-transact-sql)    |Küçüktür veya eşittir (bir karşılaştırma operatörü) için iki ifadeyi karşılaştırır.|
-|[>](https://docs.microsoft.com/sql/t-sql/language-elements/greater-than-transact-sql)    |Büyüktür (bir karşılaştırma operatörü) için iki ifadeyi karşılaştırır. |
-|[>=](https://docs.microsoft.com/sql/t-sql/language-elements/greater-than-or-equal-to-transact-sql)    |İki ifadeyi daha büyük veya eşit (bir karşılaştırma operatörü) için karşılaştırır.|
-|[+](https://docs.microsoft.com/sql/t-sql/language-elements/add-transact-sql)    |İki sayı ekler. Bu ek aritmetik işleç Ayrıca bir tarihe kadar gün cinsinden bir sayı ekleyebilir.|
-|[-](https://docs.microsoft.com/sql/t-sql/language-elements/subtract-transact-sql)    |İki sayıyı çıkartır (aritmetik çıkarma işleci). |
-|[/](https://docs.microsoft.com/sql/t-sql/language-elements/divide-transact-sql)    |Bir sayıyı başka bir sayıya böler (aritmetik bölme işleci).|
-|[*](https://docs.microsoft.com/sql/t-sql/language-elements/multiply-transact-sql)    |İki ifadeyi çarpar (aritmetik çarpma işleci).|
-|[%](https://docs.microsoft.com/sql/t-sql/language-elements/modulo-transact-sql)    |Bir sayının başka bir sayıya bölünen kalanını döndürür.|
-|[AND](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-and-transact-sql)    |İki tamsayı değeri arasında bit düzeyinde mantıksal ve işlem gerçekleştirir.|
-|[OR](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-or-transact-sql)    |Transact-SQL deyimlerindeki ikili ifadelere çevrilmiş olarak belirtilen iki tamsayı değeri arasında bit düzeyinde mantıksal veya işlem gerçekleştirir.|
-|[NOT](https://docs.microsoft.com/sql/t-sql/language-elements/not-transact-sql)    |Boole girişi geçersiz kılar.|
-|[CAST](https://docs.microsoft.com/sql/t-sql/functions/cast-and-convert-transact-sql)    |Bir veri türündeki bir ifadeyi bir diğerine dönüştürür.|
-|[ARALARıNDA](https://docs.microsoft.com/sql/t-sql/language-elements/between-transact-sql)    |Sınanacak aralığı belirtir.|
-|['NDAKI](https://docs.microsoft.com/sql/t-sql/language-elements/in-transact-sql)    |Belirtilen değerin alt sorgu veya listedeki herhangi bir değerle eşleşip eşleşmediğini belirler.|
-|[NULLıF](https://docs.microsoft.com/sql/t-sql/language-elements/nullif-transact-sql)    |Belirtilen iki ifade eşitse null değeri döndürür.|
-|[COALESCE](https://docs.microsoft.com/sql/t-sql/language-elements/coalesce-transact-sql)    |Bağımsız değişkenleri sırayla değerlendirir ve başlangıçta NULL olarak değerlendirilmeyen ilk ifadenin geçerli değerini döndürür.|
+|[=](/sql/t-sql/language-elements/equals-transact-sql)    |İki ifadenin eşitliğini karşılaştırır (bir karşılaştırma işleci).|
+|[!=](/sql/t-sql/language-elements/not-equal-to-transact-sql-exclamation)    |Bir ifadenin başka bir ifadeye (karşılaştırma operatörü) eşit olup olmadığını sınar.|
+|[<>](/sql/t-sql/language-elements/not-equal-to-transact-sql-traditional)    |Eşit değildir (bir karşılaştırma operatörü) için iki ifadeyi karşılaştırır.|
+|[<](/sql/t-sql/language-elements/less-than-transact-sql)    |Küçüktür (bir karşılaştırma operatörü) için iki ifadeyi karşılaştırır.|
+|[<=](/sql/t-sql/language-elements/less-than-or-equal-to-transact-sql)    |Küçüktür veya eşittir (bir karşılaştırma operatörü) için iki ifadeyi karşılaştırır.|
+|[>](/sql/t-sql/language-elements/greater-than-transact-sql)    |Büyüktür (bir karşılaştırma operatörü) için iki ifadeyi karşılaştırır. |
+|[>=](/sql/t-sql/language-elements/greater-than-or-equal-to-transact-sql)    |İki ifadeyi daha büyük veya eşit (bir karşılaştırma operatörü) için karşılaştırır.|
+|[+](/sql/t-sql/language-elements/add-transact-sql)    |İki sayı ekler. Bu ek aritmetik işleç Ayrıca bir tarihe kadar gün cinsinden bir sayı ekleyebilir.|
+|[-](/sql/t-sql/language-elements/subtract-transact-sql)    |İki sayıyı çıkartır (aritmetik çıkarma işleci). |
+|[/](/sql/t-sql/language-elements/divide-transact-sql)    |Bir sayıyı başka bir sayıya böler (aritmetik bölme işleci).|
+|[*](/sql/t-sql/language-elements/multiply-transact-sql)    |İki ifadeyi çarpar (aritmetik çarpma işleci).|
+|[%](/sql/t-sql/language-elements/modulo-transact-sql)    |Bir sayının başka bir sayıya bölünen kalanını döndürür.|
+|[AND](/sql/t-sql/language-elements/bitwise-and-transact-sql)    |İki tamsayı değeri arasında bit düzeyinde mantıksal ve işlem gerçekleştirir.|
+|[OR](/sql/t-sql/language-elements/bitwise-or-transact-sql)    |Transact-SQL deyimlerindeki ikili ifadelere çevrilmiş olarak belirtilen iki tamsayı değeri arasında bit düzeyinde mantıksal veya işlem gerçekleştirir.|
+|[NOT](/sql/t-sql/language-elements/not-transact-sql)    |Boole girişi geçersiz kılar.|
+|[CAST](/sql/t-sql/functions/cast-and-convert-transact-sql)    |Bir veri türündeki bir ifadeyi bir diğerine dönüştürür.|
+|[ARALARıNDA](/sql/t-sql/language-elements/between-transact-sql)    |Sınanacak aralığı belirtir.|
+|['NDAKI](/sql/t-sql/language-elements/in-transact-sql)    |Belirtilen değerin alt sorgu veya listedeki herhangi bir değerle eşleşip eşleşmediğini belirler.|
+|[NULLıF](/sql/t-sql/language-elements/nullif-transact-sql)    |Belirtilen iki ifade eşitse null değeri döndürür.|
+|[COALESCE](/sql/t-sql/language-elements/coalesce-transact-sql)    |Bağımsız değişkenleri sırayla değerlendirir ve başlangıçta NULL olarak değerlendirilmeyen ilk ifadenin geçerli değerini döndürür.|
 
-Bir işlecin sol ve sağ tarafındaki veri türleri farklıysa, otomatik dönüştürme burada belirtilen kurallara göre gerçekleştirilir: [veri türü önceliği (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql).
+Bir işlecin sol ve sağ tarafındaki veri türleri farklıysa, otomatik dönüştürme burada belirtilen kurallara göre gerçekleştirilir: [veri türü önceliği (Transact-SQL)](/sql/t-sql/data-types/data-type-precedence-transact-sql).
 
 Sorgu hızlandırma SQL dili, bu makalede ele alınan veri türlerinin yalnızca çok küçük bir alt kümesini destekler.  Bu makalenin [veri türleri](#data-types) bölümüne bakın.
 
 ### <a name="casts"></a>Podcast
 
-Sorgu hızlandırma SQL dili, şu kurallara göre atama işlecini destekler: [veri türü dönüştürme (veritabanı altyapısı)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-conversion-database-engine).  
+Sorgu hızlandırma SQL dili, şu kurallara göre atama işlecini destekler: [veri türü dönüştürme (veritabanı altyapısı)](/sql/t-sql/data-types/data-type-conversion-database-engine).  
 
 Sorgu hızlandırma SQL dili, bu makalede ele alınan veri türlerinin yalnızca küçük bir alt kümesini destekler.  Bu makalenin [veri türleri](#data-types) bölümüne bakın.
 
@@ -118,12 +118,12 @@ Sorgu hızlandırma SQL dili, aşağıdaki standart SQL dize işlevlerini destek
 |--|--|
 |CHAR_LENGTH    | Dize ifadesinin karakter veri türünde olması halinde, dize ifadesinin karakter cinsinden uzunluğunu döndürür; Aksi takdirde, dize ifadesinin bayt cinsinden uzunluğunu döndürür (en küçük tamsayı, 8 ' den bölünen bit sayısından küçük değildir). (Bu işlev CHARACTER_LENGTH işleviyle aynıdır.)|
 |CHARACTER_LENGTH    |Dize ifadesinin karakter veri türünde olması halinde, dize ifadesinin karakter cinsinden uzunluğunu döndürür; Aksi takdirde, dize ifadesinin bayt cinsinden uzunluğunu döndürür (en küçük tamsayı, 8 ' den bölünen bit sayısından küçük değildir). (Bu işlev CHAR_LENGTH işleviyle aynıdır|
-|[LOWER](https://docs.microsoft.com/sql/t-sql/functions/lower-transact-sql)    |Büyük harfli karakter verilerini küçük harfe dönüştürdükten sonra bir karakter ifadesi döndürür.|
-|[UPPER](https://docs.microsoft.com/sql/t-sql/functions/upper-transact-sql)    |Küçük harfli karakter verisi büyük harfe dönüştürülmüş bir karakter ifadesi döndürür.|
-|[DIZEDEN](https://docs.microsoft.com/sql/t-sql/functions/substring-transact-sql)    |SQL Server bir karakter, ikili, metin veya resim ifadesinin bir parçasını döndürür.|
-|[TRIM](https://docs.microsoft.com/sql/t-sql/functions/trim-transact-sql)    |Bir dizenin başından ve sonundan sonra char karakter (32) veya diğer belirtilen karakterleri kaldırır.|
-|LIDERI    |Açıklama|
-|ARKASıNDA    |Açıklama|
+|[LOWER](/sql/t-sql/functions/lower-transact-sql)    |Büyük harfli karakter verilerini küçük harfe dönüştürdükten sonra bir karakter ifadesi döndürür.|
+|[UPPER](/sql/t-sql/functions/upper-transact-sql)    |Küçük harfli karakter verisi büyük harfe dönüştürülmüş bir karakter ifadesi döndürür.|
+|[DIZEDEN](/sql/t-sql/functions/substring-transact-sql)    |SQL Server bir karakter, ikili, metin veya resim ifadesinin bir parçasını döndürür.|
+|[TRIM](/sql/t-sql/functions/trim-transact-sql)    |Bir dizenin başından ve sonundan sonra char karakter (32) veya diğer belirtilen karakterleri kaldırır.|
+|LIDERI    |Description|
+|ARKASıNDA    |Description|
 
 İşte birkaç örnek:
 
@@ -184,7 +184,7 @@ TO_STRING(CAST('1969-07-20T20:18Z' AS TIMESTAMP),  'MMMM d, y')
 
 Bu tablo, işlevinin çıkış biçimini belirtmek için kullanabileceğiniz dizeleri açıklar ``TO_STRING`` .
 
-|Biçimlendirme dizesi    |Çıktı                               |
+|Biçimlendirme dizesi    |Çıkış                               |
 |-----------------|-------------------------------------|
 |yy               |Yıl 2 basamak biçiminde – 1999 ' 99 ' olarak|
 |y                |4 basamaklı biçimde yıl               |
@@ -194,7 +194,7 @@ Bu tablo, işlevinin çıkış biçimini belirtmek için kullanabileceğiniz diz
 |AAA              |İşlenir. Yılın ayı-JAN            |
 |MMMM             |Tam ay – Mayıs                      |
 |d                |Ayın günü (1-31)                  |
-|Ekle               |Ayın sıfır doldurulmuş günü (01-31)     |
+|dd               |Ayın sıfır doldurulmuş günü (01-31)     |
 |a                |HAR veya PM                             |
 |h                |Günün saati (1-12)                   |
 |hh               |Sıfır saatlik saat od günü (01-12)     |
@@ -250,7 +250,7 @@ SELECT deyimi bir veya daha fazla İzdüşüm ifadesi ya da tek bir toplama ifad
 
 ## <a name="table-descriptors"></a>Tablo tanımlayıcıları
 
-CSV verileri için tablo adı her zaman olur `BlobStorage` .  Örneğin:
+CSV verileri için tablo adı her zaman olur `BlobStorage` .  Örnek:
 
 ```sql
 SELECT * FROM BlobStorage
@@ -302,7 +302,7 @@ SELECT latitude FROM BlobStorage[*].warehouses[*]
 
 Sorgu tüm alanları alır ancak yalnızca Enlem ' i seçer.
 
-Yalnızca `dimensions` JSON nesne değerine erişmek isterseniz, sorgunuzda bu nesneye başvurabilirsiniz ' i kullanabilirsiniz. Örneğin:
+Yalnızca `dimensions` JSON nesne değerine erişmek isterseniz, sorgunuzda bu nesneye başvurabilirsiniz ' i kullanabilirsiniz. Örnek:
 
 ```sql
 SELECT length FROM BlobStorage[*].dimensions
@@ -340,4 +340,3 @@ Her toplu işin içermesini istediğiniz bayt sayısını belirtmek için *split
 
 - [Azure Data Lake Storage sorgu hızlandırma](data-lake-storage-query-acceleration.md)
 - [Azure Data Lake Storage sorgu hızlandırmasını kullanarak verileri filtreleme](data-lake-storage-query-acceleration-how-to.md)
-

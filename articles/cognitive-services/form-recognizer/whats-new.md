@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: ed6d3b927254d44863b7fd0a597528813be791cf
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 10ae9e1356cea954435d15441d74f4f86a804578
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95736620"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95893989"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Form Tanıma'daki yenilikler
 
@@ -40,11 +40,14 @@ Form tanıyıcı hizmeti sürekli olarak güncelleştirilir. Özellik geliştirm
 - **Desteklenen yeni dil: Japonca** -şu yeni diller artık desteklenmektedir: `AnalyzeLayout` ve için `AnalyzeCustomForm` : Japonca ( `ja` ). [Dil desteği](language-support.md)
 - **Metin çizgisi stil göstergesi (el ile/diğer) (yalnızca Latin dilleri)** -form tanıyıcı `appearance` , her metin satırının bir güvenilirlik puanıyla birlikte el ile yazılmış tarzına göre bir nesne sınıflandırılmasına neden olur. Bu özellik yalnızca Latin dilleri için desteklenir.
 - **Kalite geliştirmeleri** -tek basamaklı ayıklama geliştirmeleri dahil ayıklama geliştirmeleri.
-- **Form tanıyıcı örnek etiketleme aracında yeni bir TRY-It-Out özelliği** , önceden oluşturulmuş fatura, giriş ve iş kartı modellerini ve Düzen API 'Sini, tanıyıcı örnek etiketleme aracını kullanarak denemenize olanak tanır. Verilerinizin herhangi bir kod yazmadan ayıklanmasını görün.
+- **Form tanıyıcı örneği ve etiketleme aracında yeni TRY-It-Out özelliği** , önceden oluşturulmuş fatura, giriş ve iş kartı modellerini ve Düzen API 'sini kullanarak, tanıyıcı örnek etiketleme aracı 'nı kullanarak bir kez deneme özelliği. Verilerinizin herhangi bir kod yazmadan ayıklanmasını görün.
 
   > [Form tanıyıcı örnek aracını deneyin](https://fott-preview.azurewebsites.net/)
 
   ![FOTT örneği](./media/ui-preview.jpg)
+  
+- **Geri bildirim döngüsü** -dosyaları örnek etiketleme aracı aracılığıyla analiz edilirken, şimdi de bunu eğitim kümesine ekleyebilir ve gerekirse etiketleri 'leri ve modeli geliştirmek için eğitebilirsiniz.
+- **Otomatik etiket Documets** -otomatik Etiketler projedeki önceki Labeld belgelerini temel alan ek belgeler. 
 
 ## <a name="august-2020"></a>Ağustos 2020
 

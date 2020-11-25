@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 01/30/2020
+ms.date: 11/24/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fba2610b3343744c448e390bc2d713b38da481d
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 25c6ccb4661fde1efb088cd8535bf2759f2057b3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839480"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95902769"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Azure Active Directory (Önizleme) ile Windows 10 cihazlarında passwordless güvenlik anahtarı oturumunu etkinleştirme
 
@@ -134,7 +134,7 @@ Kuruluşlar, **karma Azure AD 'ye katılmış cihazlarda**, Fido güvenlik anaht
 - Bu ilkenin **etkin** olarak ayarlanması, kullanıcıların güvenlik anahtarlarıyla oturum açmasına olanak tanır.
 - Bu ilkenin **devre dışı** veya **yapılandırılmamış** olarak ayarlanması, kullanıcıların güvenlik anahtarlarıyla oturum açmasını engeller.
 
-Bu grup ilkesi ayarı grup ilkesi şablonunun güncelleştirilmiş bir sürümünü gerektirir `credentialprovider.admx` . Bu yeni şablon, Windows Server 'ın bir sonraki sürümüyle ve Windows 10 20 H1 ile kullanılabilir. Bu ayar, Windows 'un bu yeni sürümlerinden birini çalıştıran bir cihazla veya destek konusundaki kılavuzu izleyerek, [Windows 'ta grup ilkesi Yönetim Şablonları Için merkezi mağaza oluşturma ve yönetme](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra)ile yönetilebilir.
+Bu grup ilkesi ayarı grup ilkesi şablonunun güncelleştirilmiş bir sürümünü gerektirir `CredentialProviders.admx` . Bu yeni şablon, Windows Server 'ın bir sonraki sürümüyle ve Windows 10 20 H1 ile kullanılabilir. Bu ayar, Windows 'un bu yeni sürümlerinden birini çalıştıran bir cihazla veya destek konusundaki kılavuzu izleyerek, [Windows 'ta grup ilkesi Yönetim Şablonları Için merkezi mağaza oluşturma ve yönetme](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra)ile yönetilebilir.
 
 ## <a name="sign-in-with-fido2-security-key"></a>FIDO2 güvenlik anahtarıyla oturum açın
 

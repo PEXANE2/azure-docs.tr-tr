@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dddad5692ab2eebb6ef9b427c091be449791d7c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96d1eaff4d1b93ad3bb489f177020c351fe4d13d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91818346"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95904044"
 ---
 # <a name="conditional-access-conditions"></a>Koşullu erişim: koşullar
 
@@ -57,7 +57,7 @@ Azure AD koşullu erişim aşağıdaki cihaz platformlarını destekler:
 
 Konum bir koşul olarak yapılandırılırken, kuruluşlar konumları dahil etmek veya hariç tutmak seçebilirler. Bu adlandırılmış konumlar, genel IPv4 ağ bilgilerini, ülkeyi veya bölgeyi, hatta belirli ülkelere veya bölgelere eşlenmeyen bilinmeyen alanları içerebilir. Yalnızca IP aralıkları güvenilir bir konum olarak işaretlenebilir.
 
-**Herhangi bir konum**dahil edildiğinde, bu seçenek yalnızca adlandırılmış konumlar yapılandırılmamış Internet üzerindeki IP adreslerini içerir. **Herhangi bir konum**seçerken, Yöneticiler **tüm güvenilen** veya **Seçilen konumların**dışlanmasını seçebilirler.
+**Herhangi bir konum** dahil edildiğinde, bu seçenek yalnızca adlandırılmış konumlar yapılandırılmamış Internet üzerindeki IP adreslerini içerir. **Herhangi bir konum** seçerken, Yöneticiler **tüm güvenilen** veya **Seçilen konumların** dışlanmasını seçebilirler.
 
 Örneğin, bazı kuruluşlar, kullanıcıları ağa fiziksel Merkez gibi güvenilir bir konumda bağlıyken çok faktörlü kimlik doğrulaması gerektirmeyebilir. Yöneticiler herhangi bir konum içeren bir ilke oluşturabilir, ancak bu kişilerin Merkez ağları için seçili konumları dışlar.
 
@@ -117,7 +117,7 @@ Bu ayar tüm tarayıcılarla birlikte kullanılabilir. Bununla birlikte, uyumlu 
 | Windows Server 2016 | Internet Explorer |
 | Windows Server 2012 R2 | Internet Explorer |
 | Windows Server 2008 R2 | Internet Explorer |
-| macOS | Chrome, Safari |
+| Mac OS | Chrome, Safari |
 
 > [!NOTE]
 > Edge 85 +, cihazın kimliğini düzgün bir şekilde geçirmek için kullanıcının tarayıcıda oturum açabilmesi gerekir. Aksi takdirde, hesaplar uzantısı olmadan Chrome gibi davranır. Bu oturum açma, karma Azure AD JOIN senaryosunda otomatik olarak gerçekleşmeyebilir. 
@@ -160,12 +160,12 @@ Bu ayar, aşağıdaki mobil uygulamalardan ve Masaüstü istemcilerinden yapıla
 | Microsoft ekipleri Hizmetleri-bu, Microsoft ekiplerini ve tüm Istemci uygulamalarını (Windows Masaüstü, iOS, Android, WP ve Web istemcisi) destekleyen tüm hizmetleri denetler | Microsoft Teams | Windows 10, Windows 8.1, Windows 7, iOS, Android ve macOS |
 | Office 2016 uygulamaları, Office 2013 (modern kimlik doğrulaması ile), [OneDrive eşitleme istemcisi](/onedrive/enable-conditional-access) | SharePoint | Windows 8.1, Windows 7 |
 | Office 2016 uygulamaları, evrensel Office uygulamaları, Office 2013 (modern kimlik doğrulaması ile), [OneDrive eşitleme istemcisi](/onedrive/enable-conditional-access) | SharePoint Online | Windows 10 |
-| Office 2016 (Word, Excel, PowerPoint, yalnızca OneNote). | SharePoint | macOS |
+| Office 2016 (Word, Excel, PowerPoint, yalnızca OneNote). | SharePoint | Mac OS |
 | Office 2019| SharePoint | Windows 10, macOS |
 | Office mobil uygulamaları | SharePoint | Android, iOS |
 | Office Yammer uygulaması | Yammer | Windows 10, iOS, Android |
 | Outlook 2019 | SharePoint | Windows 10, macOS |
-| Outlook 2016 (macOS için Office) | Exchange Online | macOS |
+| Outlook 2016 (macOS için Office) | Exchange Online | Mac OS |
 | Outlook 2016, Outlook 2013 (modern kimlik doğrulaması ile), Skype Kurumsal (modern kimlik doğrulaması ile) | Exchange Online | Windows 8.1, Windows 7 |
 | Outlook mobil uygulaması | Exchange Online | Android, iOS |
 | Power BI uygulaması | Power BI hizmeti | Windows 10, Windows 8.1, Windows 7, Android ve iOS |
@@ -174,27 +174,27 @@ Bu ayar, aşağıdaki mobil uygulamalardan ve Masaüstü istemcilerinden yapıla
 
 ### <a name="exchange-activesync-clients"></a>Exchange ActiveSync istemcileri
 
-- Kuruluşlar kullanıcılara veya gruplara ilke atarken yalnızca Exchange ActiveSync istemcileri seçebilir. Tüm **Kullanıcılar**, tüm **Konuk ve dış kullanıcılar**ya da **Dizin rolleri** , tüm kullanıcıların engellenmesine neden olur.
+- Kuruluşlar kullanıcılara veya gruplara ilke atarken yalnızca Exchange ActiveSync istemcileri seçebilir. Tüm **Kullanıcılar**, tüm **Konuk ve dış kullanıcılar** ya da **Dizin rolleri** , tüm kullanıcıların engellenmesine neden olur.
 - Exchange ActiveSync istemcilerine atanan bir ilke oluştururken, **Exchange Online** , ilkeye atanmış tek bulut uygulaması olmalıdır. 
 - Kuruluşlar, cihaz platformları koşulunu kullanarak bu ilkenin kapsamını belirli platformlara **daraltabilirler** .
 
 İlkeye atanan erişim denetimi **onaylanan istemci uygulaması gerektir**' i kullanıyorsa, Kullanıcı Outlook Mobil istemcisini yüklemek ve kullanmak üzere yönlendirilir. **Multi-Factor Authentication** gerekli olduğunda, temel kimlik doğrulaması çok faktörlü kimlik doğrulamasını desteklemediğinden, etkilenen kullanıcılar engellenir.
 
-Daha fazla bilgi için aşağıdaki makalelere bakın:
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
 - [Koşullu erişimle eski kimlik doğrulamasını engelleyin](block-legacy-authentication.md)
 - [Koşullu erişim ile onaylanan istemci uygulamaları gerektirme](app-based-conditional-access.md)
 
 ### <a name="other-clients"></a>Diğer istemciler
 
-**Diğer istemcileri**seçerek, modern kimlik doğrulaması kullanmayan IMAP, MAPI, pop, SMTP ve eski Office uygulamaları gibi posta protokolleriyle temel kimlik doğrulaması kullanan uygulamaları etkileyen bir koşul belirtebilirsiniz.
+**Diğer istemcileri** seçerek, modern kimlik doğrulaması kullanmayan IMAP, MAPI, pop, SMTP ve eski Office uygulamaları gibi posta protokolleriyle temel kimlik doğrulaması kullanan uygulamaları etkileyen bir koşul belirtebilirsiniz.
 
 ## <a name="device-state-preview"></a>Cihaz durumu (Önizleme)
 
 Cihaz durumu koşulu, karma Azure AD 'ye katılmış ve/veya cihazların bir kuruluşun koşullu erişim ilkelerinden bir Microsoft Intune uyumluluk ilkesiyle uyumlu olarak işaretlenmiş cihazları dışlamak için kullanılabilir.
 
-Örneğin, **cihazın karma Azure AD 'ye katılmış** ve **uyumlu olarak işaretlenmiş** cihaz **durumu** dahil olmak üzere *Microsoft Azure yönetimi* bulut uygulamasına erişen *tüm kullanıcılar* ve *erişim denetimleri*için **bloğu**. 
-   - Bu örnek, karma Azure AD 'ye katılmış ve/veya uyumlu olarak işaretlenmiş cihazlardan Microsoft Azure yönetimine yalnızca erişim sağlayan bir ilke oluşturur.
+Örneğin, **cihazın karma Azure AD 'ye katılmış** ve **uyumlu olarak işaretlenmiş** cihaz **durumu** dahil olmak üzere *Microsoft Azure yönetimi* bulut uygulamasına erişen *tüm kullanıcılar* ve *erişim denetimleri* için **bloğu**. 
+   - Bu örnek, karma Azure AD 'ye katılmış veya uyumlu olarak işaretlenmiş cihazların Microsoft Azure yönetimine yalnızca erişim sağlayan bir ilke oluşturur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

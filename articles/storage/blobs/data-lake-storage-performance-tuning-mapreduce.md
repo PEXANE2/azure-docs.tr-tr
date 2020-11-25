@@ -8,23 +8,23 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: e9d638a7ed17d08b585c71b1dac4a0177f4a2939
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b95d37e1725940799750dbd3c29174d9855390d6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88030529"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912935"
 ---
 # <a name="tune-performance-mapreduce-hdinsight--azure-data-lake-storage-gen2"></a>Performansı ayarlama: MapReduce, HDInsight & Azure Data Lake Storage 2.
 
 Harita azaltma işlerinin performansını ayarladığınızda göz önünde bulundurmanız gereken faktörleri anlayın. Bu makalede, bir dizi performans ayarlama Kılavuzu ele alınmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
-* **Azure Data Lake Storage 2. hesabı**. Bir oluşturma hakkında yönergeler için bkz. [hızlı başlangıç: Azure Data Lake Storage 2. depolama hesabı oluşturma](data-lake-storage-quickstart-create-account.md).
-* Data Lake Storage 2. hesabına erişimi olan **Azure HDInsight kümesi** . Bkz. [Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)
-* **HDInsight üzerinde MapReduce kullanma**.  Daha fazla bilgi için bkz. [HDInsight 'Ta Hadoop 'Ta MapReduce kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce)
+* **Azure Data Lake Storage 2. hesabı**. Bir oluşturma hakkında yönergeler için bkz. [hızlı başlangıç: Azure Data Lake Storage 2. depolama hesabı oluşturma](../common/storage-account-create.md).
+* Data Lake Storage 2. hesabına erişimi olan **Azure HDInsight kümesi** . Bkz. [Azure HDInsight kümeleri ile Azure Data Lake Storage 2. kullanma](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)
+* **HDInsight üzerinde MapReduce kullanma**.  Daha fazla bilgi için bkz. [HDInsight 'Ta Hadoop 'Ta MapReduce kullanma](../../hdinsight/hadoop/hdinsight-use-mapreduce.md)
 * **Data Lake Storage 2. performans ayarlama yönergeleri**.  Genel performans kavramları için bkz. [Data Lake Storage 2. performans ayarlama Kılavuzu](data-lake-storage-performance-tuning-guidance.md)
 
 ## <a name="parameters"></a>Parametreler

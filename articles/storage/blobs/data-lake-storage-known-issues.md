@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/28/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 909d64d3d32e8b9a314f7afb06b9c0121f624cec
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 32f8ab3f7e222108bec4ec81b14c113705370096
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358493"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913071"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. ile ilgili bilinen sorunlar
 
@@ -41,21 +41,21 @@ Blob API 'Leri ve Data Lake Storage 2. API 'Leri aynı verilerde çalışabilir.
 
 Bu bölümde, aynı verilerde çalışacak blob API 'Leri ve Data Lake Storage 2. API 'Leri kullanımıyla ilgili sorunlar ve sınırlamalar açıklanmaktadır.
 
-* Blob API ve Data Lake Storage API 'Leri, bir dosyanın aynı örneğine yazmak için kullanamazsınız. Data Lake Storage 2. API 'Leri kullanarak bir dosyaya yazarsanız, bu dosyanın blokları [Get Block list](https://docs.microsoft.com/rest/api/storageservices/get-block-list) blob API 'sine yapılan çağrılara görünmez. Tek özel durum, sizin kullandığınız zaman üzerine yazılır. API 'YI kullanarak bir dosyanın/Blobun üzerine yazabilirsiniz.
+* Blob API ve Data Lake Storage API 'Leri, bir dosyanın aynı örneğine yazmak için kullanamazsınız. Data Lake Storage 2. API 'Leri kullanarak bir dosyaya yazarsanız, bu dosyanın blokları [Get Block list](/rest/api/storageservices/get-block-list) blob API 'sine yapılan çağrılara görünmez. Tek özel durum, sizin kullandığınız zaman üzerine yazılır. API 'YI kullanarak bir dosyanın/Blobun üzerine yazabilirsiniz.
 
-* Bir sınırlayıcı belirtmeden [Blobları Listele](https://docs.microsoft.com/rest/api/storageservices/list-blobs) işlemini kullandığınızda, sonuçlar hem dizinleri hem de Blobları içerecektir. Bir sınırlayıcı kullanmayı seçerseniz yalnızca eğik çizgi ( `/` ) kullanın. Bu, desteklenen tek sınırlayıcıdır.
+* Bir sınırlayıcı belirtmeden [Blobları Listele](/rest/api/storageservices/list-blobs) işlemini kullandığınızda, sonuçlar hem dizinleri hem de Blobları içerecektir. Bir sınırlayıcı kullanmayı seçerseniz yalnızca eğik çizgi ( `/` ) kullanın. Bu, desteklenen tek sınırlayıcıdır.
 
-* Bir dizini silmek için [blobu silme](https://docs.microsoft.com/rest/api/storageservices/delete-blob) API 'sini kullanırsanız, bu dizin yalnızca boşsa silinir. Bu, blob API 'SI silme dizinlerini yinelemeli olarak kullanamayacağı anlamına gelir.
+* Bir dizini silmek için [blobu silme](/rest/api/storageservices/delete-blob) API 'sini kullanırsanız, bu dizin yalnızca boşsa silinir. Bu, blob API 'SI silme dizinlerini yinelemeli olarak kullanamayacağı anlamına gelir.
 
 Bu blob REST API 'Leri desteklenmez:
 
-* [Blobu Yerleştir (sayfa)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-* [Yerleştirme sayfası](https://docs.microsoft.com/rest/api/storageservices/put-page)
-* [Sayfa aralıklarını al](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
-* [Artımlı kopya blobu](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
-* [URL 'den sayfa koy](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
-* [Ekleme bloğu](https://docs.microsoft.com/rest/api/storageservices/append-block)
-* [URL 'den ekleme bloğu](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
+* [Blobu Yerleştir (sayfa)](/rest/api/storageservices/put-blob)
+* [Yerleştirme sayfası](/rest/api/storageservices/put-page)
+* [Sayfa aralıklarını al](/rest/api/storageservices/get-page-ranges)
+* [Artımlı kopya blobu](/rest/api/storageservices/incremental-copy-blob)
+* [URL 'den sayfa koy](/rest/api/storageservices/put-page-from-url)
+* [Ekleme bloğu](/rest/api/storageservices/append-block)
+* [URL 'den ekleme bloğu](/rest/api/storageservices/append-block-from-url)
 
 
 Yönetilmeyen VM diskleri hiyerarşik bir ad alanına sahip hesaplarda desteklenmez. Bir depolama hesabında hiyerarşik bir ad alanı etkinleştirmek istiyorsanız, yönetilmeyen VM disklerini hiyerarşik ad alanı özelliği etkin olmayan bir depolama hesabına yerleştirin.
@@ -70,7 +70,7 @@ ACL değişikliklerini üst dizinden alt öğelere yinelemeli olarak uygulama ö
 
 ## <a name="azcopy"></a>AzCopy
 
-AzCopy 'in yalnızca en son sürümünü kullanın ([AzCopy ile v10 arasındaki](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). AzCopy v 8.1 gibi önceki AzCopy sürümleri desteklenmez.
+AzCopy 'in yalnızca en son sürümünü kullanın ([AzCopy ile v10 arasındaki](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). AzCopy v 8.1 gibi önceki AzCopy sürümleri desteklenmez.
 
 <a id="storage-explorer"></a>
 
@@ -92,7 +92,7 @@ REST API 'leri kullanan üçüncü taraf uygulamalar, bunları blob API 'Leri ç
 
 ## <a name="access-control-lists-acl-and-anonymous-read-access"></a>Erişim denetim listeleri (ACL) ve anonim okuma erişimi
 
-Bir kapsayıcıya [anonim okuma erişimi](storage-manage-access-to-resources.md) verildiyse, ACL 'lerin bu kapsayıcıya veya o kapsayıcıdaki dosyalara hiçbir etkisi olmaz.
+Bir kapsayıcıya [anonim okuma erişimi](./anonymous-read-access-configure.md) verildiyse, ACL 'lerin bu kapsayıcıya veya o kapsayıcıdaki dosyalara hiçbir etkisi olmaz.
 
 ## <a name="diagnostic-logs"></a>Tanılama günlükleri
 

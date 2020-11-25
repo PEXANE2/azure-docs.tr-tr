@@ -8,12 +8,12 @@ ms.reviewer: jamesbak
 ms.date: 09/09/2020
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: ae92828f08ae4abf9cc28f18872cca27ce747be4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc1d217dba64c36aa219abbd4d2220a494347689
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89657636"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912765"
 ---
 # <a name="azure-data-lake-storage-query-acceleration"></a>Azure Data Lake Storage sorgu hızlandırma
 
@@ -50,7 +50,7 @@ Aşağıdaki diyagramda, tipik bir uygulamanın verileri işlemek için sorgu h�
 
 Sorgu hızlandırma, uygulamanız tarafından aktarılan ve işlenen veri miktarını azaltarak performansı iyileştirir.
 
-Toplanan bir değeri hesaplamak için, uygulamalar genellikle bir dosyadaki **Tüm** verileri alır ve sonra verileri yerel olarak işleyin ve filtreler. Analiz iş yükleri için giriş/çıkış desenlerinin çözümlenmesi, uygulamaların, belirli hesaplamaları gerçekleştirmek üzere okudukları verilerin yalnızca %20 ' sini gerektirdiğini açığa çıkarır. Bu istatistik, [bölüm ayıklama](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-optimize-hive-query#hive-partitioning)gibi teknikler uygulandıktan sonra da geçerlidir. Bu, söz konusu verilerin %80 ' i ağ üzerinden, ayrıştırılarak ve uygulama tarafından filtrelenebilir olması anlamına gelir. Bu model, aslında gereksiz verileri kaldırmak için tasarlanan önemli bir işlem maliyeti doğurur.  
+Toplanan bir değeri hesaplamak için, uygulamalar genellikle bir dosyadaki **Tüm** verileri alır ve sonra verileri yerel olarak işleyin ve filtreler. Analiz iş yükleri için giriş/çıkış desenlerinin çözümlenmesi, uygulamaların, belirli hesaplamaları gerçekleştirmek üzere okudukları verilerin yalnızca %20 ' sini gerektirdiğini açığa çıkarır. Bu istatistik, [bölüm ayıklama](../../hdinsight/hdinsight-hadoop-optimize-hive-query.md#hive-partitioning)gibi teknikler uygulandıktan sonra da geçerlidir. Bu, söz konusu verilerin %80 ' i ağ üzerinden, ayrıştırılarak ve uygulama tarafından filtrelenebilir olması anlamına gelir. Bu model, aslında gereksiz verileri kaldırmak için tasarlanan önemli bir işlem maliyeti doğurur.  
 
 Azure, sektör lideri bir ağı, hem verimlilik hem de gecikme süresi bakımından, bu ağ genelinde sorunsuz bir şekilde aktarmak, uygulama performansı için hala maliyetlidir. Sorgu hızlandırma, depolama isteği sırasında istenmeyen verileri filtreleyerek bu maliyeti ortadan kaldırır.
 
@@ -76,5 +76,3 @@ Faturalama modelinde değişikliğe rağmen sorgu hızlandırmanın fiyatlandır
 
 - [Azure Data Lake Storage sorgu hızlandırmasını kullanarak verileri filtreleme](data-lake-storage-query-acceleration-how-to.md)
 - [Sorgu hızlandırma SQL dil başvurusu](query-acceleration-sql-reference.md)
-
-

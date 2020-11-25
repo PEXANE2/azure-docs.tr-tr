@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 41ad20de6b7a800ff1f97a7ff371c8e0012fed27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78455659d76d259c626745c93770428c25042b2d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88166986"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95908821"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Azure Blob depolamada ağ dosya sistemi (NFS) 3,0 protokol desteği (Önizleme)
 
@@ -58,19 +58,19 @@ Bir istemci ortak veya [özel bir uç nokta](../common/storage-private-endpoints
 
 - Depolama hesabınız için yapılandırdığınız VNet. 
 
-  Bu makalenin amacı doğrultusunda bu sanal ağa *birincil VNET*olarak başvuracağız. Daha fazla bilgi için bkz. [bir sanal ağ üzerinden erişim verme](../common/storage-network-security.md#grant-access-from-a-virtual-network).
+  Bu makalenin amacı doğrultusunda bu sanal ağa *birincil VNET* olarak başvuracağız. Daha fazla bilgi için bkz. [bir sanal ağ üzerinden erişim verme](../common/storage-network-security.md#grant-access-from-a-virtual-network).
 
 - Birincil VNet ile aynı bölgedeki eşlenmiş bir sanal ağ.
 
   Bu eşlenen VNet 'e erişime izin vermek için depolama hesabınızı yapılandırmanız gerekecektir. Daha fazla bilgi için bkz. [bir sanal ağ üzerinden erişim verme](../common/storage-network-security.md#grant-access-from-a-virtual-network).
 
-- [VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) veya [ExpressRoute ağ geçidi](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-portal-resource-manager)kullanarak birincil VNET 'iniz ile bağlantılı bir şirket içi ağ. 
+- [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) veya [ExpressRoute ağ geçidi](../../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)kullanarak birincil VNET 'iniz ile bağlantılı bir şirket içi ağ. 
 
   Daha fazla bilgi edinmek için bkz. Şirket [içi ağlardan erişimi yapılandırma](../common/storage-network-security.md#configuring-access-from-on-premises-networks).
 
 - Eşlenmiş ağa bağlı bir şirket içi ağ.
 
-  Bu işlem, [ağ geçidi](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/vnet-peering#gateway-transit)aktarımlarıyla birlikte [VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) veya [ExpressRoute ağ geçidi](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-portal-resource-manager) kullanılarak yapılabilir. 
+  Bu işlem, [ağ geçidi](/azure/architecture/reference-architectures/hybrid-networking/vnet-peering#gateway-transit)aktarımlarıyla birlikte [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) veya [ExpressRoute ağ geçidi](../../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md) kullanılarak yapılabilir. 
 
 > [!IMPORTANT]
 > Şirket içi bir ağdan bağlanıyorsanız, istemcinizin 111 ve 2048 bağlantı noktaları üzerinden giden iletişime izin verdiğinden emin olun. NFS 3,0 protokolü bu bağlantı noktalarını kullanır.
@@ -114,8 +114,3 @@ Aşağıdaki NFS 3,0 özellikleri henüz Azure Data Lake Storage 2. desteklenmez
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Başlamak için bkz. [ağ dosya sistemi (NFS) 3,0 protokolünü (Önizleme) kullanarak blob depolamayı bağlama](network-file-system-protocol-support-how-to.md).
-
-
-
-
-

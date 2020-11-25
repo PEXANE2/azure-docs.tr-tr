@@ -9,12 +9,12 @@ ms.date: 09/09/2020
 ms.author: normesta
 ms.reviewer: jamsbak
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: b7f566f85ebdb6b481797823cba78aa968747e9f
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b02f5a7c390c5594a7c5692798a0691c8d9a42d0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746426"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912782"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration"></a>Azure Data Lake Storage sorgu hızlandırmasını kullanarak verileri filtreleme
 
@@ -22,11 +22,11 @@ Bu makalede, depolama hesabınızdan verilerin bir alt kümesini almak için sor
 
 Sorgu hızlandırma, uygulama ve analiz çerçevelerinin yalnızca belirli bir işlemi gerçekleştirmek için gereksinim duydukları verileri alarak veri işlemeyi önemli ölçüde iyileştirmesini sağlar. Daha fazla bilgi için bkz. [Azure Data Lake Storage sorgu hızlandırma](data-lake-storage-query-acceleration.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure depolama 'ya erişmek için bir Azure aboneliğine sahip olmanız gerekir. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-- **Genel amaçlı v2** depolama hesabı. bkz. [depolama hesabı oluşturma](../common/storage-quickstart-create-account.md).
+- **Genel amaçlı v2** depolama hesabı. bkz. [depolama hesabı oluşturma](../common/storage-account-create.md).
 
 - SDK 'ya özgü herhangi bir önkoşulları görüntülemek için bir sekme seçin.
 
@@ -92,7 +92,7 @@ Sorgu hızlandırmasını kullanmak için, öncelikle aboneliğinizle birlikte s
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)açın veya Azure CLI 'yı yerel olarak [yüklediyseniz](https://docs.microsoft.com/cli/azure/install-azure-cli) , Windows PowerShell gibi bir komut konsol uygulaması açın.
+1. [Azure Cloud Shell](../../cloud-shell/overview.md)açın veya Azure CLI 'yı yerel olarak [yüklediyseniz](/cli/azure/install-azure-cli) , Windows PowerShell gibi bir komut konsol uygulaması açın.
 
 2. Kimliğiniz birden fazla abonelikle ilişkiliyse, etkin aboneliğinizi depolama hesabının aboneliğine ayarlayın.
 
@@ -328,7 +328,7 @@ Get-QueryCsv $ctx $container $blob "SELECT * FROM BlobStorage WHERE _3 = 'Heming
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-Async yöntemi sorguyu `BlobQuickQueryClient.QueryAsync` sorgu HıZLANDıRMA API 'sine gönderir ve ardından sonuçları bir [Stream](https://docs.microsoft.com/dotnet/api/system.io.stream) nesnesi olarak uygulamaya geri akış sağlar.
+Async yöntemi sorguyu `BlobQuickQueryClient.QueryAsync` sorgu HıZLANDıRMA API 'sine gönderir ve ardından sonuçları bir [Stream](/dotnet/api/system.io.stream) nesnesi olarak uygulamaya geri akış sağlar.
 
 ```cs
 static async Task QueryHemingway(BlockBlobClient blob)

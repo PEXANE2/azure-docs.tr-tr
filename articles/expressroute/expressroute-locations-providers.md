@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: duau
-ms.openlocfilehash: 9b7b88124837e85874f4f29828a3d4146bb29257
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: af8c8716278eaa777f212156679103d6265fd2f1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94987822"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95911201"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute ortakları ve eşleme konumları
 
@@ -85,7 +85,7 @@ Aşağıdaki tabloda bağlantı konumları ve her konum için hizmet sağlayıc�
 | **Berlin** | [NTT GDC](https://www.e-shelter.de/en/location/berlin-1-data-center) | 1 | Almanya Kuzey | 'Yi | Equinx, NTT küresel veri merkezleri EMEA|
 | **Busan** | [LG CNS](https://www.lgcns.com/En/Service/DataCenter) | 2 | Güney Kore - Güney | yok | LG CNS |
 | **Kanberra** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | Orta Avustralya | 10G, 100G | CDC |
-| **Kanberra2** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | Orta Avustralya 2| 10G, 100G | CDC |
+| **Kanberra2** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | Orta Avustralya 2| 10G, 100G | CDC, Equinix |
 | **Cape Town** | [Teraco CT1](https://www.teraco.co.za/data-centre-locations/cape-town/) | 3 | Güney Afrika - Batı | 'Yi | BCX, Internet çözümleri-bulut bağlantısı, sıvı telekomünikasyon, Teraco |
 | **Chennai** | Tata Communications | 2 | Güney Hindistan | 'Yi | Global CloudXchange (GCX), SIFY, Tata Communications |
 | **Chennai2** | Airtel | 2 | Güney Hindistan | 'Yi | Airtel |
@@ -94,7 +94,7 @@ Aşağıdaki tabloda bağlantı konumları ve her konum için hizmet sağlayıc�
 | **Şubesi** | [Equinix DA3](https://www.equinix.com/locations/americas-colocation/united-states-colocation/dallas-data-centers/da3/) | 1 | yok | 10G, 100G | Aryaka Networks,&T Netbonıngıgix, Equinix, Internet2, düzey 3 Communications, Megaport, nörona Networks, Telmex Unınet, Telia taşıyıcısı, Transtelco, Verizon, Zayo|
 | **Denver** | [CoreSite DE1](https://www.coresite.com/data-centers/locations/denver/de1) | 1 | Orta Batı ABD | yok | CoreSite, Megaport, Zayo |
 | **Dubai** | [PCCS](https://www.pacificcontrols.net/cloudservices/index.html) | 3 | BAE Kuzey | yok | Etisalat UAE |
-| **Dubai2** | [du datamena](http://datamena.com/solutions/data-centre) | 3 | BAE Kuzey | yok | DE-CIX, du datamena, Megaport, turuncu, Cumxcom |
+| **Dubai2** | [du datamena](http://datamena.com/solutions/data-centre) | 3 | BAE Kuzey | yok | DE-CIX, du datamena, Equinx, Megaport, turuncu, Cumxcom |
 | **Dublin** | [Equinix DB3](https://www.equinix.com/locations/europe-colocation/ireland-colocation/dublin-data-centers/db3/) | 1 | Kuzey Avrupa | 10G, 100G | CenturyLink Cloud Connect, Colt, EAR, Equinix, GEANT, Eunetçalışmalar, ınterxiyon, Megaport |
 | **Frankfurt** | [Interxiyon FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | Almanya Orta Batı | 10G, 100G | &T Netbono, CenturyLink Cloud Connect, Colt, DE-CIX, Equinix, Eunetçalışma, GEANT, Intercloud, ınterxiyon, Megaport, turuncu, Telia taşıyıcısı, T-Systems |
 | **Cenevre** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 1 | İsviçre Batı | 10G, 100G | Equinix, Megaport |
@@ -130,7 +130,7 @@ Aşağıdaki tabloda bağlantı konumları ve her konum için hizmet sağlayıc�
 | **San Antonio** | [CyrusOne SA1](https://cyrusone.com/locations/texas/san-antonio-texas/) | 1 | Orta Güney ABD | 10G, 100G | CenturyLink Cloud Connect, Megaport |
 | **Sao Paulo** | [Equinix SP2](https://www.equinix.com/locations/americas-colocation/brazil-colocation/sao-paulo-data-centers/sp2/) | 3 | Brezilya Güney | yok | Aryaka Networks, Ascenty Data Centers, British Telecom, Equinix, Level 3 Communications, Neutrona Networks, Orange, Tata Communications, Telefonica, UOLDIVEO |
 | **Seattle** | [Equinix SE2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/seattle-data-centers/se2/) | 1 | Batı ABD 2 | 10G, 100G | Aryaka Networks, Equinx, düzey 3 Communications, Megaport, Telus, Zayo |
-| **Seul** | [KINX Gasan IDC](https://www.kinx.net/?lang=en) | 2 | Güney Kore - Orta | 10G, 100G | KINX, KT, LG CNS, Sejong telekomünikasyon |
+| **Seul** | [KINX Gasan IDC](https://www.kinx.net/?lang=en) | 2 | Güney Kore - Orta | 10G, 100G | KINX, KT, LG CNS, Equinix, Sejong telekomünikasyon |
 | **Silikon Vadisi** | [Equinix SV1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/silicon-valley-data-centers/sv1/) | 1 | Batı ABD | 10G, 100G | Aryaka Networks, AT&T Netbonı, Ingiliz telekomünikasyon, CenturyLink Cloud Connect, Colt, Comcast, Coresite, Equınx, Intercloud, Internet2, x REACH, paket, PacketFabric, Level 3 Communications, Megaport, turuncu, Sprint, Tata Communications, Telia taşıyıcısı, Verizon, Zayo |
 | **Silicon Valley2** | [Coresite SV7](https://www.coresite.com/data-centers/locations/silicon-valley/sv7) | 1 | Batı ABD | 10G, 100G | Colt, Coresite | 
 | **Singapur** | [Equinix SG1](https://www.equinix.com/locations/asia-colocation/singapore-colocation/singapore-data-center/sg1/) | 2 | Güneydoğu Asya | 10G, 100G | Aryaka Networks, AT&T Netbonu, Ingiliz Teleası, Çin Mobile International, Epsilon Global Communications, Equinix, Intercloud, Level 3 Communications, Megaport, NTT Communications, turuncu, SingTel, Tata Communications, Telstra Corporation, Verizon, Vodadfone |

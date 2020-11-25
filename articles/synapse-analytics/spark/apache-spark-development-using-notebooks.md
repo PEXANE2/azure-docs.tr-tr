@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: dcf34d896deafad77d16619f3883ddd103fc55d4
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: c35ee7bcdefa5091d9c887430182638f066cb9fa
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95790799"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95900916"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SYNAPSE Studio (Önizleme) Not defterleri oluşturma, geliştirme ve bakımını yapma
 
@@ -104,7 +104,7 @@ En üstteki komut çubuğundaki açılan listeden yeni eklenen hücreler için b
 
 Bir hücrenin başlangıcında doğru dil Magic komutunu belirterek, bir not defterinde birden çok dil kullanabilirsiniz. Aşağıdaki tabloda, hücre dillerini değiştirmek için Magic komutları listelenmektedir.
 
-|Magic komutu |Dil | Açıklama |  
+|Magic komutu |Dil | Description |  
 |---|------|-----|
 |%% pyspark| Python | Spark bağlamına karşı bir **Python** sorgusu yürütün.  |
 |%% Spark| Scala | Spark bağlamına yönelik bir **Scala** sorgusu yürütün.  |  
@@ -149,10 +149,10 @@ IntelliSense özellikleri farklı diller için farklı ölçü düzeyleridir. De
 
 |Diller| Sözdizimi vurgusu | Söz dizimi hata Işaretleyicisi  | Sözdizimi kodu tamamlama | Değişken kodu tamamlama| Sistem Işlevi kod tamamlama| Kullanıcı Işlevi kod tamamlama| Akıllı Girinti | Kod katlama|
 |--|--|--|--|--|--|--|--|--|
-|PySpark (Python)|Evet|Evet|Evet|Evet|Evet|Evet|Evet|Evet|
-|Spark (Scala)|Evet|Evet|Evet|Evet|-|-|-|Evet|
-|Mini SQL|Evet|Evet|-|-|-|-|-|-|
-|Spark için .NET (C#)|Evet|-|-|-|-|-|-|-|
+|PySpark (Python)|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Spark (Scala)|Yes|Yes|Yes|Yes|-|-|-|Yes|
+|Mini SQL|Yes|Yes|-|-|-|-|-|-|
+|Spark için .NET (C#)|Yes|-|-|-|-|-|-|-|
 
 ### <a name="format-text-cell-with-toolbar-buttons"></a>Araç çubuğu düğmeleriyle metin hücresini Biçimlendir
 
@@ -399,68 +399,6 @@ Birincil depolama hesabındaki verilere doğrudan erişebilirsiniz. Gizli anahta
 
 ![verilerden hücrelere](./media/apache-spark-development-using-notebooks/synapse-data-to-cell.png)
 
-## <a name="visualize-data-in-a-notebook"></a>Not defterindeki verileri görselleştirme
-
-### <a name="produce-rendered-table-view"></a>İşlenmiş tablo görünümü üret
-
-Bir çubuk grafik, çizgi grafik, pasta grafiği, dağılım grafiği ve alan grafiği oluşturma seçeneğiyle tablolu bir sonuç görünümü sağlanır. Verilerinizi kod yazmak zorunda kalmadan görselleştirebilirsiniz. Grafikler, **grafik seçeneklerinde** özelleştirilebilir. 
-
-**%% SQL** Magic komutlarının çıkışı, işlenen tablo görünümünde varsayılan olarak görünür. <code>display(df)</code>İşlenmiş tablo görünümünü oluşturmak Için Spark dataframe, Pandas Dataframe, List veya dayanıklı Dağıtılmış veri kümeleri (RDD) işlevini çağırabilirsiniz.
-
-   [![yerleşik-grafikler](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png#lightbox)
-
-### <a name="visualize-built-in-charts-from-large-scale-dataset"></a>Büyük ölçekli veri kümesinden yerleşik grafikleri görselleştirin 
-
-Varsayılan olarak, <code>display(df)</code> işlev, grafikleri işlemek için verilerin yalnızca ilk 1000 satırını alır. **Tüm sonuçlar üzerinde toplamayı** denetleyin ve **Uygula** düğmesini seçin, grafik oluşturmayı tüm veri kümesinden uygulayacaksınız. Grafik ayarı değiştiğinde bir Spark işi tetiklenecek, hesaplamayı tamamlayıp grafiği işlemeye yönelik bir süre sürer. 
-    [![yerleşik-grafikler-toplama-tümü](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-aggregation-all.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-aggregation-all.png#lightbox)
-
-
-
-### <a name="visualize-data-statistic-information"></a>Veri istatistikleri bilgilerini görselleştirin
-Sütun <code>display(df, summary = True)</code> adı, sütun türü, benzersiz değerler ve her sütun için eksik değerleri içeren belirli bir Spark veri çerçevesinin istatistik özetini denetlemek için öğesini kullanabilirsiniz. Ayrıca, en az değer, Maxhayvan değeri, ortalama değer ve standart sapmayı görmek için belirli bir sütun üzerinde seçim yapabilirsiniz.
-    [![yerleşik-grafikler-Özet ](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-summary.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts-summary.png#lightbox)
-
-### <a name="render-html-or-interactive-libraries"></a>HTML veya etkileşimli kitaplıkları işleme
-
-HTML kodunu, **Displayhtml ()** kullanarak **bokeh** gibi JavaScript, CSS, D3 veya etkileşimli kitaplıklar gibi işleyebilirsiniz.
-
-Aşağıdaki resim **bokeh** kullanarak bir harita üzerinde karakter çizme örneğidir.
-
-   ![bokeh-örnek](./media/apache-spark-development-using-notebooks/synapse-bokeh-image.png)
-   
-
-Yukarıdaki görüntüyü çizmek için aşağıdaki örnek kodu çalıştırın.
-
-```python
-from bokeh.plotting import figure, output_file
-from bokeh.tile_providers import get_provider, Vendors
-from bokeh.embed import file_html
-from bokeh.resources import CDN
-from bokeh.models import ColumnDataSource
-
-tile_provider = get_provider(Vendors.CARTODBPOSITRON)
-
-# range bounds supplied in web mercator coordinates
-p = figure(x_range=(-9000000,-8000000), y_range=(4000000,5000000),
-           x_axis_type="mercator", y_axis_type="mercator")
-p.add_tile(tile_provider)
-
-# plot datapoints on the map
-source = ColumnDataSource(
-    data=dict(x=[ -8800000, -8500000 , -8800000],
-              y=[4200000, 4500000, 4900000])
-)
-
-p.circle(x="x", y="y", size=15, fill_color="blue", fill_alpha=0.8, source=source)
-
-# create an html document that embeds the Bokeh plot
-html = file_html(p, CDN, "my plot1")
-
-# display this html
-displayHTML(html)
-
-```
-
 ## <a name="save-notebooks"></a>Not defterlerini Kaydet
 
 Çalışma alanınızdaki tek bir not defterini veya tüm not defterlerini kaydedebilirsiniz.
@@ -539,11 +477,11 @@ Jupyıter not defterlerine benzer şekilde, Azure SYNAPSE Studio Not defterleri 
 
 1. Bir hücre, yazmanızı isteyen bir metin imleci olmadığında komut modundadır. Bir hücre komut modundayken, Not defterini tek tek hücrelere değil, bir bütün olarak düzenleyebilirsiniz. `ESC`Bir hücrenin düzenleyici alanının dışında seçim yapmak için fare tuşuna basarak veya fareyi kullanarak komut moduna girin.
 
-   ![komut modu](./media/apache-spark-development-using-notebooks/synapse-command-mode2.png)
+   ![komut modu](./media/apache-spark-development-using-notebooks/synapse-command-mode-2.png)
 
 2. Düzenleme modu, düzenleyici alanına yazmanızı isteyen bir metin imlece belirtilir. Bir hücre düzenleme modundayken, hücreye yazabilirsiniz. `Enter`Fareyle sürükleyerek veya bir hücrenin düzenleyici alanında seçim yaparak düzenleme modunu girin.
    
-   ![düzenleme modu](./media/apache-spark-development-using-notebooks/synapse-edit-mode2.png)
+   ![düzenleme modu](./media/apache-spark-development-using-notebooks/synapse-edit-mode-2.png)
 
 ### <a name="shortcut-keys-under-command-mode"></a>Komut modu altında kısayol tuşları
 

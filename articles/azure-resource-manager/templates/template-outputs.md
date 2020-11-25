@@ -2,17 +2,19 @@
 title: Şablonlarda çıkış çıkışları
 description: Azure Resource Manager şablonunda çıkış değerlerinin nasıl tanımlanacağını açıklar.
 ms.topic: conceptual
-ms.date: 02/25/2020
-ms.openlocfilehash: 203bfc66e9515ef14a5fe1315ef5b9ee07075041
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/24/2020
+ms.openlocfilehash: 8f782a78e523ebc55faac98344643982172476fa
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79460033"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95911439"
 ---
 # <a name="outputs-in-azure-resource-manager-template"></a>Azure Resource Manager şablondaki çıktılar
 
 Bu makalede, Azure Resource Manager şablonunuzda çıkış değerlerinin nasıl tanımlanacağı açıklanmaktadır. Dağıtılan kaynaklardan değer döndürihtiyacınız olduğunda çıktıları kullanırsınız.
+
+Her bir çıkış değerinin biçimi, [veri türlerinden](template-syntax.md#data-types)biriyle aynı olmalıdır.
 
 ## <a name="define-output-values"></a>Çıkış değerlerini tanımla
 
@@ -110,7 +112,7 @@ az deployment group show \
 
 Aşağıdaki örneklerde, çıkışları kullanmaya yönelik senaryolar gösterilmektedir.
 
-|Şablon  |Açıklama  |
+|Şablon  |Description  |
 |---------|---------|
 |[Değişkenleri Kopyala](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Karmaşık değişkenler oluşturur ve bu değerleri verir. Hiçbir kaynak dağıtmaz. |
 |[Genel IP adresi](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Genel bir IP adresi oluşturur ve kaynak KIMLIĞINI verir. |

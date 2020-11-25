@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 828b5c34aaccf2a53aa197f921a8ef02d46821ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2350177373bc99907c437d814d8f01193f18f3fd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91280479"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95895732"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>Blok Blobu verilerinde bir zaman içinde geri yükleme gerçekleştirin
 
@@ -29,19 +29,19 @@ Noktadan noktaya geri yükleme hakkında daha fazla bilgi edinmek için bkz. [bl
 
 Zaman içinde nokta geri yüklemeyi etkinleştirmeden ve yapılandırmadan önce, depolama hesabı için önkoşulları etkinleştirin: geçici silme, akış değiştirme ve BLOB sürümü oluşturma. Bu özelliklerin her birini etkinleştirme hakkında daha fazla bilgi için şu makalelere bakın:
 
-- [Bloblar için geçici silmeyi etkinleştirme](soft-delete-enable.md)
+- [Bloblar için geçici silmeyi etkinleştirme](./soft-delete-blob-enable.md)
 - [Değişiklik akışını etkinleştirme ve devre dışı bırakma](storage-blob-change-feed.md#enable-and-disable-the-change-feed)
 - [Blob sürüm oluşturmayı etkinleştirme ve yönetme](versioning-enable.md)
 
 > [!IMPORTANT]
 > Geçici silme, akışı değiştirme ve BLOB sürümü oluşturma özelliğinin etkinleştirilmesi ek ücretler oluşmasına neden olabilir. Daha fazla bilgi için bkz. [Bloblar Için geçici silme](soft-delete-blob-overview.md), [Azure Blob depolamada akış desteğini değiştirme](storage-blob-change-feed.md)ve [BLOB sürümü oluşturma](versioning-overview.md).
 
-# <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Azure portal zaman içinde nokta geri yüklemeyi yapılandırmak için aşağıdaki adımları izleyin:
 
 1. Azure portalda depolama hesabınıza gidin.
-1. **Ayarlar**altında **veri koruma**' yı seçin.
+1. **Ayarlar** altında **veri koruma**' yı seçin.
 1. Belirli bir noktaya geri yüklemeyi **Aç ' ı** seçin. Bu seçeneği belirlediğinizde Bloblar, sürüm oluşturma ve değişiklik akışı için geçici silme de etkinleştirilir.
 1. Zaman içinde bir noktaya geri yükleme için en fazla geri yükleme noktasını gün cinsinden ayarlayın. Bu sayı, blob geçici silme için belirtilen saklama süresinden en az bir gün daha az olmalıdır.
 1. Yaptığınız değişiklikleri kaydedin.
@@ -112,7 +112,7 @@ Yalnızca blok Blobları geri yüklenir. Sayfa Blobları ve ekleme Blobları ger
 
 Depolama hesabındaki tüm kapsayıcıları geri yükleyerek belirli bir zaman noktasında bunları önceki durumlarına getirebilirsiniz.
 
-# <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Depolama hesabındaki tüm kapsayıcıları ve Blobları Azure portal geri yüklemek için şu adımları izleyin:
 
@@ -122,7 +122,7 @@ Depolama hesabındaki tüm kapsayıcıları ve Blobları Azure portal geri yükl
 1. Kutuyu işaretleyerek devam etmek istediğinizi onaylayın.
 1. Geri yükleme işlemini başlatmak için **geri yükle** ' yi seçin.
 
-    :::image type="content" source="media/point-in-time-restore-manage/restore-all-containers-portal.png" alt-text="Azure portal zaman içinde nokta geri yükleme 'nin nasıl yapılandırılacağını gösteren ekran görüntüsü":::
+    :::image type="content" source="media/point-in-time-restore-manage/restore-all-containers-portal.png" alt-text="Tüm kapsayıcıların belirtilen geri yükleme noktasına nasıl geri yükleneceğini gösteren ekran görüntüsü":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -158,7 +158,7 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
 
 Tek bir kapsayıcı içinde veya birden çok kapsayıcı içindeki blob türlerini bir veya daha fazla geri yükleyebilir ve bu Blobları belirli bir noktada önceki durumlarına döndürebilirsiniz.
 
-# <a name="azure-portal"></a>[Azure portalındaki](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Azure portal bir veya daha fazla kapsayıcıda bir blob aralığını geri yüklemek için şu adımları izleyin:
 
@@ -169,31 +169,31 @@ Azure portal bir veya daha fazla kapsayıcıda bir blob aralığını geri yükl
 1. Geri yüklenecek aralıkları belirtin. Blob önekinden kapsayıcı adını belirtmek için bir eğik çizgi (/) kullanın.
 1. Varsayılan olarak, **Seçili kapsayıcıları geri yükle** bölmesi, kapsayıcıdaki tüm Blobları içeren bir aralığı belirtir. Kapsayıcının tamamını geri yüklemek istemiyorsanız bu aralığı silin. Varsayılan Aralık aşağıdaki görüntüde gösterilmiştir.
 
-    :::image type="content" source="media/point-in-time-restore-manage/delete-default-blob-range.png" alt-text="Azure portal zaman içinde nokta geri yükleme 'nin nasıl yapılandırılacağını gösteren ekran görüntüsü":::
+    :::image type="content" source="media/point-in-time-restore-manage/delete-default-blob-range.png" alt-text="Özel Aralık belirtmeden önce silinecek varsayılan blob aralığını gösteren ekran görüntüsü":::
 
 1. Kutuyu işaretleyerek devam etmek istediğinizi onaylayın.
 1. Geri yükleme işlemini başlatmak için **geri yükle** ' yi seçin.
 
 Aşağıdaki görüntüde bir dizi Aralık üzerinde geri yükleme işlemi gösterilmektedir.
 
-:::image type="content" source="media/point-in-time-restore-manage/restore-multiple-container-ranges-portal.png" alt-text="Azure portal zaman içinde nokta geri yükleme 'nin nasıl yapılandırılacağını gösteren ekran görüntüsü":::
+:::image type="content" source="media/point-in-time-restore-manage/restore-multiple-container-ranges-portal.png" alt-text="Bir veya daha fazla kapsayıcıda blob aralıklarının nasıl geri yükleneceğini gösteren ekran görüntüsü":::
 
 Görüntüde gösterilen geri yükleme işlemi aşağıdaki eylemleri gerçekleştirir:
 
 - *Kapsayıcı1*'in tüm içeriğini geri yükler.
-- *Container2*içindeki *blob5* ile lexıgraf Range *blob1* ile Blobları geri yükler. Bu Aralık, *blob1*, *blob11*, *blob100*, *blob2*vb. gibi adlara sahip Blobları geri yükler. Aralığın sonu dışlamalı olduğu için, adları *blob4*ile başlayan Blobları geri yükler, ancak adları *blob5*ile başlayan Blobları geri yüklemez.
-- *Container3* ve *container4*içindeki tüm Blobları geri yükler. Aralığın sonu dışlamalı olduğundan, bu Aralık *container5*geri yüklemez.
+- *Container2* içindeki *blob5* ile lexıgraf Range *blob1* ile Blobları geri yükler. Bu Aralık, *blob1*, *blob11*, *blob100*, *blob2* vb. gibi adlara sahip Blobları geri yükler. Aralığın sonu dışlamalı olduğu için, adları *blob4* ile başlayan Blobları geri yükler, ancak adları *blob5* ile başlayan Blobları geri yüklemez.
+- *Container3* ve *container4* içindeki tüm Blobları geri yükler. Aralığın sonu dışlamalı olduğundan, bu Aralık *container5* geri yüklemez.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Tek bir blob aralığını geri yüklemek için **restore-AzStorageBlobRange** komutunu çağırın ve parametresi için bir lexıgraf kapsayıcı ve BLOB adı belirtin `-BlobRestoreRange` . Örneğin, *kapsayıcı1*adlı tek bir kapsayıcıdaki Blobları geri yüklemek için, *kapsayıcı1* ile başlayan ve *container2*ile biten bir Aralık belirleyebilirsiniz. Başlangıç ve bitiş aralıklarında adlı kapsayıcılar için bir gereksinim yok. Aralığın sonu dışlamalı olduğundan, depolama hesabı *container2*adlı bir kapsayıcı içerse de, yalnızca *kapsayıcı1* adlı kapsayıcı geri yüklenecektir:
+Tek bir blob aralığını geri yüklemek için **restore-AzStorageBlobRange** komutunu çağırın ve parametresi için bir lexıgraf kapsayıcı ve BLOB adı belirtin `-BlobRestoreRange` . Örneğin, *kapsayıcı1* adlı tek bir kapsayıcıdaki Blobları geri yüklemek için, *kapsayıcı1* ile başlayan ve *container2* ile biten bir Aralık belirleyebilirsiniz. Başlangıç ve bitiş aralıklarında adlı kapsayıcılar için bir gereksinim yok. Aralığın sonu dışlamalı olduğundan, depolama hesabı *container2* adlı bir kapsayıcı içerse de, yalnızca *kapsayıcı1* adlı kapsayıcı geri yüklenecektir:
 
 ```powershell
 $range = New-AzStorageBlobRangeToRestore -StartRange container1 `
     -EndRange container2
 ```
 
-Geri yüklenecek bir kapsayıcıdaki Blobların bir alt kümesini belirtmek için, blob öneki düzeninden kapsayıcı adını ayırmak için bir eğik çizgi (/) kullanın. Örneğin, aşağıdaki Aralık, adları *d* ile *f*ile başlayan tek bir kapsayıcıdaki Blobları seçer:
+Geri yüklenecek bir kapsayıcıdaki Blobların bir alt kümesini belirtmek için, blob öneki düzeninden kapsayıcı adını ayırmak için bir eğik çizgi (/) kullanın. Örneğin, aşağıdaki Aralık, adları *d* ile *f* ile başlayan tek bir kapsayıcıdaki Blobları seçer:
 
 ```powershell
 $range = New-AzStorageBlobRangeToRestore -StartRange container1/d `
@@ -248,6 +248,6 @@ Geri yükleme işlemini eşzamanlı olarak çalıştırmak ve tamamlanana kadar 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Blok Blobları için noktadan noktaya geri yükleme](point-in-time-restore-overview.md)
-- [Geçici silme](soft-delete-overview.md)
+- [Geçici silme](./soft-delete-blob-overview.md)
 - [Akışı değiştirme](storage-blob-change-feed.md)
 - [Blob sürümü oluşturma](versioning-overview.md)
