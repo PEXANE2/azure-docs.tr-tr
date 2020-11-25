@@ -9,11 +9,11 @@ ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
 ms.openlocfilehash: 9e60903aaa61cae63d406d459937d33317eee394
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545642"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022260"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Azure HDInsight kullanarak Apache Spark sorunlarını giderme
 
@@ -29,7 +29,7 @@ Spark yapılandırma değerleri, Apache Spark bir uygulama özel durumuyla karş
 
     ![Configs sekmesini seçin](./media/apache-troubleshoot-spark/apache-spark-ambari-config2.png)
 
-1. Yapılandırma listesinde **Custom-spark2-Defaults** ' ı seçin ve genişletin.
+1. Yapılandırma listesinde **Custom-spark2-Defaults**' ı seçin ve genişletin.
 
 1. **spark.executor. Memory** gibi ayarlamanız gereken değer ayarını bulun. Bu durumda, **9728dk** değeri çok yüksektir.
 
@@ -37,19 +37,19 @@ Spark yapılandırma değerleri, Apache Spark bir uygulama özel durumuyla karş
 
 1. Değeri önerilen ayarı olarak ayarlayın. Bu ayar için **2048m** değeri önerilir.
 
-1. Değeri kaydedin ve sonra yapılandırmayı kaydedin. **Kaydet** ’i seçin.
+1. Değeri kaydedin ve sonra yapılandırmayı kaydedin. **Kaydet**'i seçin.
 
     ![Değeri 20 48m olarak değiştir](./media/apache-troubleshoot-spark/apache-spark-ambari-config6a.png)
 
-    Yapılandırma değişiklikleriyle ilgili bir konum yazın ve ardından **Kaydet** ' i seçin.
+    Yapılandırma değişiklikleriyle ilgili bir konum yazın ve ardından **Kaydet**' i seçin.
 
     ![Yaptığınız değişiklikler hakkında bir bilgi girin](./media/apache-troubleshoot-spark/apache-spark-ambari-config6c.png)
 
-    Herhangi bir yapılandırmaya dikkat edilmesi gerekiyorsa size bildirilir. Öğeleri aklınızda ve **yine de devam et** ' i seçin.
+    Herhangi bir yapılandırmaya dikkat edilmesi gerekiyorsa size bildirilir. Öğeleri aklınızda ve **yine de devam et**' i seçin.
 
     ![Yine de devam et 'i seçin](./media/apache-troubleshoot-spark/apache-spark-ambari-config6b.png)
 
-1. Bir yapılandırma her kaydedildiğinde hizmeti yeniden başlatmanız istenir. **Yeniden Başlat** ' ı seçin.
+1. Bir yapılandırma her kaydedildiğinde hizmeti yeniden başlatmanız istenir. **Yeniden Başlat**' ı seçin.
 
     ![Yeniden Başlat 'ı seçin](./media/apache-troubleshoot-spark/apache-spark-ambari-config7a.png)
 
@@ -61,7 +61,7 @@ Spark yapılandırma değerleri, Apache Spark bir uygulama özel durumuyla karş
 
     ![Çalışan işlemlerin gözden geçirilmesi](./media/apache-troubleshoot-spark/apache-spark-ambari-config7c.png)
 
-1. Yapılandırma ekleyebilirsiniz. Yapılandırma listesinde **Custom-spark2-Defaults** ' ı seçin ve ardından **Özellik Ekle** ' yi seçin.
+1. Yapılandırma ekleyebilirsiniz. Yapılandırma listesinde **Custom-spark2-Defaults**' ı seçin ve ardından **Özellik Ekle**' yi seçin.
 
     ![Özellik Ekle ' yi seçin](./media/apache-troubleshoot-spark/apache-spark-ambari-config8.png)
 

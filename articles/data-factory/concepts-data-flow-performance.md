@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 08/12/2020
-ms.openlocfilehash: 055cdf7b6cec12eb8c3e7fde891d155b831a6523
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/24/2020
+ms.openlocfilehash: cc06f12317f5e30721452e07bd4dc5f50dfdb7ec
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637879"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022369"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Veri akışlarını eşleme performansı ve ayarlama Kılavuzu
 
@@ -87,6 +87,12 @@ Verilerinizin önem düzeyini iyi anlamak istiyorsanız anahtar bölümleme iyi 
 > [!TIP]
 > Veri reshuffles bölümlendirme şemasını el ile ayarlama ve Spark iyileştiricinin avantajlarını fark edebilir. En iyi uygulama, gerekmedikçe Bölümlendirmeyi el ile ayarlamanıza gerek kalmaz.
 
+## <a name="logging-level"></a>Günlük kaydı düzeyi
+
+Veri akışı etkinliklerinizin her işlem hattı yürütmesinin tüm ayrıntılı telemetri günlüklerini tam olarak günlüğe yazmasına gerek yoksa, isteğe bağlı olarak günlük düzeyini "temel" veya "hiçbiri" olarak ayarlayabilirsiniz. Veri akışlarınızı "ayrıntılı" modda yürütürken (varsayılan), veri dönüşümünüzün her bir bölüm düzeyinde, ADF 'yi tam olarak günlüğe kaydetmek için istek yapabilirsiniz. Bu, pahalı bir işlem olabilir, bu nedenle yalnızca sorun giderme sırasında ayrıntılandırma, genel veri akışınızı ve işlem hattı performansınızı iyileştirecek şekilde etkinleştiriliyor. "Temel" modu yalnızca bir süre Özeti sağlamaları durumunda yalnızca dönüştürme sürelerini günlüğe kaydeder.
+
+![Günlük kaydı düzeyi](media/data-flow/logging.png "Günlüğe kaydetme düzeyini ayarla")
+
 ## <a name="optimizing-the-azure-integration-runtime"></a><a name="ir"></a> Azure Integration Runtime iyileştirme
 
 Veri akışları, çalışma zamanında Esnetme yapan Spark kümelerinde çalışır. Kullanılan kümenin yapılandırması, etkinliğin tümleştirme çalışma zamanı 'nda (IR) tanımlanmıştır. Tümleştirme çalışma zamanını tanımlarken yapmanız gereken üç performans konusu vardır: küme türü, küme boyutu ve yaşam süresi.
@@ -155,7 +161,7 @@ Azure SQL veritabanı ' kaynak ' bölümlendirme adlı benzersiz bir bölümlend
 
 #### <a name="isolation-level"></a>Yalıtım düzeyi
 
-Azure SQL kaynak sistemi üzerinde okunan yalıtım düzeyinin performansı üzerinde etkisi vardır. ' READ UNCOMMITTED ' seçeneğinin belirlenmesi en hızlı performansı sağlar ve tüm veritabanı kilitlerini önler. SQL yalıtım düzeyleri hakkında daha fazla bilgi için lütfen bkz. [yalıtım düzeylerini anlama](/sql/connect/jdbc/understanding-isolation-levels?view=sql-server-ver15).
+Azure SQL kaynak sistemi üzerinde okunan yalıtım düzeyinin performansı üzerinde etkisi vardır. ' READ UNCOMMITTED ' seçeneğinin belirlenmesi en hızlı performansı sağlar ve tüm veritabanı kilitlerini önler. SQL yalıtım düzeyleri hakkında daha fazla bilgi için lütfen bkz. [yalıtım düzeylerini anlama](https://docs.microsoft.com/sql/connect/jdbc/understanding-isolation-levels).
 
 #### <a name="read-using-query"></a>Sorguyu kullanarak oku
 
@@ -163,7 +169,7 @@ Azure SQL veritabanı 'ndan bir tablo veya SQL sorgusu kullanarak okuma yapabili
 
 ### <a name="azure-synapse-analytics-sources"></a>Azure SYNAPSE Analytics kaynakları
 
-Azure SYNAPSE Analytics kullanılırken, kaynak seçeneklerinde **hazırlama hazırlama** adlı bir ayar bulunur. Bu, ADF 'nin [PolyBase](/sql/relational-databases/polybase/polybase-guide?view=sql-server-ver15)kullanarak SYNAPSE okumasına izin verir ve bu da okuma performansını önemli ölçüde geliştirir. PolyBase 'i etkinleştirmek için veri akışı etkinlik ayarlarında bir Azure Blob depolama alanı veya Azure Data Lake Storage Gen2 hazırlama konumu belirtmeniz gerekir.
+Azure SYNAPSE Analytics kullanılırken, kaynak seçeneklerinde **hazırlama hazırlama** adlı bir ayar bulunur. Bu, ADF 'nin ```Polybase``` , okuma performansını büyük ölçüde artıran SYNAPSE kullanarak okumasına olanak tanır. Etkinleştirme ```Polybase``` , veri akışı etkinlik ayarlarında bir Azure Blob depolama alanı veya Azure Data Lake Storage Gen2 hazırlama konumu belirtmenizi gerektirir.
 
 ![Hazırlamayı etkinleştirme](media/data-flow/enable-staging.png "Hazırlamayı etkinleştirme")
 
@@ -183,6 +189,10 @@ Veri akışları havuza yazarken, tüm özel bölümlendirme yazma işleminden h
 
 Azure SQL veritabanı ile, varsayılan bölümlendirme çoğu durumda çalışmalıdır. Havuzlarınızın SQL veritabanınızın işlemesi için çok fazla bölümü olabileceğinden emin olma olasılığı vardır. Bu sürümünde çalıştırıyorsanız, SQL veritabanı havuzunuzu tarafından outputpartitions sayısını azaltın.
 
+#### <a name="impact-of-error-row-handling-to-performance"></a>Hata satırı işlemenin performansa etkisi
+
+Havuz dönüşümünde hata satırı işlemeyi etkinleştirdiğinizde (hatada devam et "), ADF, uyumlu satırları hedef tablonuza yazmadan önce ek bir adım sürer. Bu ek adımda, bu adım için "%5" aralığında olabilecek küçük bir performans cezası olur ve seçeneği aynı zamanda uyumsuz satırlar olarak bir günlük dosyasına ayarlarsanız ek bir küçük performans isabeti de eklenmiştir.
+
 #### <a name="disabling-indexes-using-a-sql-script"></a>SQL betiği kullanarak dizinleri devre dışı bırakma
 
 SQL veritabanındaki bir yük için dizinlerin devre dışı bırakılması, tabloya yazma performansını önemli ölçüde iyileştirebilir. SQL havuzunuzu yazmadan önce aşağıdaki komutu çalıştırın.
@@ -198,7 +208,7 @@ Bunlar her ikisi de Azure SQL VERITABANı veya SYNAPSE havuzu içindeki SQL önc
 ![Dizinleri devre dışı bırak](media/data-flow/disable-indexes-sql.png "Dizinleri devre dışı bırak")
 
 > [!WARNING]
-> Dizinler devre dışı bırakıldığında, veri akışı bir veritabanının denetimini etkili bir şekilde ele alınır ve sorguların Şu anda başarılı olması düşüktür. Sonuç olarak, bu çakışmayı önlemek için gece ortasında birçok ETL işi tetiklenir. Daha fazla bilgi için [dizinleri devre dışı bırakma kısıtlamaları](/sql/relational-databases/indexes/disable-indexes-and-constraints?view=sql-server-ver15) hakkında bilgi edinin
+> Dizinler devre dışı bırakıldığında, veri akışı bir veritabanının denetimini etkili bir şekilde ele alınır ve sorguların Şu anda başarılı olması düşüktür. Sonuç olarak, bu çakışmayı önlemek için gece ortasında birçok ETL işi tetiklenir. Daha fazla bilgi için [dizinleri devre dışı bırakma kısıtlamaları](https://docs.microsoft.com/sql/relational-databases/indexes/disable-indexes-and-constraints) hakkında bilgi edinin
 
 #### <a name="scaling-up-your-database"></a>Veritabanınızı ölçeklendirme
 
@@ -239,7 +249,6 @@ CosmosDB 'ye yazarken, veri akışı yürütmesi sırasında aktarım hızını 
 **Aktarım hızı:** Belgelerin CosmosDB 'ye daha hızlı yazmasını sağlamak için burada daha yüksek bir üretilen iş ayarı ayarlayın. Yüksek bir verimlilik ayarına göre daha yüksek RU maliyetlerine göz önünde bulundurun.
 
 **Yazma aktarım hızı bütçesi:** Dakikada toplam ru 'dan küçük olan bir değer kullanın. Çok sayıda Spark bölümünün bulunduğu bir veri akışınız varsa, bir bütçe üretilen işinin ayarlanması bu bölümlerde daha fazla bakiyeye izin verir.
-
 
 ## <a name="optimizing-transformations"></a>Dönüşümleri iyileştirme
 
