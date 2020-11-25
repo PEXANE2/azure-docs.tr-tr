@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 51e1fd18b52d7e215ba43be540156199fb41778e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f08a6b3f7abfc79bff6baff2a339053905612535
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67188405"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96025868"
 ---
 #### <a name="to-attach-the-sas-cables"></a>SAS kablolarını eklemek için
 1. Birincil ve EBOD kasaları belirler. İki kasa ilgili arka düzlemleri inceleyerek belirlenebilir. Rehberlik için aşağıdaki resme bakın. 
@@ -22,7 +22,7 @@ ms.locfileid: "67188405"
    |:--- |:--- |
    | 1 |Birincil kutu |
    | 2 |EBOD Kasası |
-2. Birincil ve EBOD kasaları üzerindeki seri numaralarını bulun. Seri numarası etiketi her bir kutunun arkasındaki geri doğru bir şekilde yapılır. Seri numaralarının her iki muhafazada aynı olması gerekir. Seri numaraları eşleşmiyorsa hemen [Microsoft desteği başvurun](../articles/storsimple/storsimple-contact-microsoft-support.md) . Seri numaralarını bulmak için aşağıdaki çizime bakın.
+2. Birincil ve EBOD kasaları üzerindeki seri numaralarını bulun. Seri numarası etiketi her bir kutunun arkasındaki geri doğru bir şekilde yapılır. Seri numaralarının her iki muhafazada aynı olması gerekir. Seri numaraları eşleşmiyorsa hemen [Microsoft desteği başvurun](../articles/storsimple/storsimple-8000-contact-microsoft-support.md) . Seri numaralarını bulmak için aşağıdaki çizime bakın.
    
     ![Kutunun seri numarasını gösteren arka görünümü](./media/storsimple-sas-cable-8600/HCSRearviewofenclosureindicatinglocationofserialnumbersticker.png)
    
@@ -41,7 +41,7 @@ ms.locfileid: "67188405"
       
       **SAS kablolama**
       
-      | Etiketle | Açıklama |
+      | Etiketle | Description |
       |:--- |:--- |
       | A |Birincil kutu |
       | B |EBOD Kasası |
@@ -51,4 +51,3 @@ ms.locfileid: "67188405"
       | 4 |EBOD denetleyicisi 1 |
       | 5, 6 |Birincil muhafaza üzerindeki SAS bağlantı noktaları (EBOD etiketli) |
       | 7, 8 |EBOD muhafazasında SAS bağlantı noktaları (bağlantı noktası A) |
-

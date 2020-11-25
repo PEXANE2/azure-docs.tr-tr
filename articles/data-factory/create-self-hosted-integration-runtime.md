@@ -10,13 +10,13 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
-ms.date: 06/09/2020
-ms.openlocfilehash: 80c837e640ef0d1739c329fb463e173e6c40be31
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.date: 11/25/2020
+ms.openlocfilehash: 22155083a71a9cbf615293a4f86a179aaefce2a9
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331728"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96023371"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma ve yapılandırma
 
@@ -60,16 +60,16 @@ Azure Data Factory Kullanıcı arabirimini kullanarak şirket içinde barındır
 
    ![Giriş sayfası Yönet düğmesi](media/doc-common-process/get-started-page-manage-button.png)
 
-1. Sol bölmedeki **tümleştirme çalışma zamanları** ' nı seçin ve ardından **+ Yeni** ' yi seçin.
+1. Sol bölmedeki **tümleştirme çalışma zamanları** ' nı seçin ve ardından **+ Yeni**' yi seçin.
 
    ![Tümleştirme çalışma zamanı oluşturma](media/doc-common-process/manage-new-integration-runtime.png)
 
-1. **Tümleştirme çalışma zamanı kurulumu** sayfasında, **Azure, şirket içinde barındırılan** ' ı seçin ve ardından **devam** ' ı seçin. 
+1. **Tümleştirme çalışma zamanı kurulumu** sayfasında, **Azure, şirket içinde barındırılan**' ı seçin ve ardından **devam**' ı seçin. 
 
-1. Aşağıdaki sayfada, bir Self-Hosted IR oluşturmak için şirket içinde **barındırılan** ' i seçin ve ardından **devam** ' ı seçin.
+1. Aşağıdaki sayfada, bir Self-Hosted IR oluşturmak için şirket içinde **barındırılan** ' i seçin ve ardından **devam**' ı seçin.
    ![Kendini barındıran IR oluşturma](media/create-self-hosted-integration-runtime/new-selfhosted-integration-runtime.png)
 
-1. IR 'niz için bir ad girin ve **Oluştur** ' u seçin.
+1. IR 'niz için bir ad girin ve **Oluştur**' u seçin.
 
 1. **Tümleştirme çalışma zamanı kurulumu** sayfasında, **1. seçenek** ' in altındaki bağlantıyı seçerek hızlı kurulumu bilgisayarınızda açın. Veya el ile ayarlamak için **2. seçenek** bölümündeki adımları izleyin. Aşağıdaki yönergeler el ile kuruluma dayalıdır:
 
@@ -79,11 +79,11 @@ Azure Data Factory Kullanıcı arabirimini kullanarak şirket içinde barındır
 
     1. Şirket içinde barındırılan tümleştirme çalışma zamanını yerel Windows makinesine indirin. Yükleyiciyi çalıştırın.
 
-    1. **Kayıt Integration Runtime (Şirket içinde barındırılan)** sayfasında, daha önce kaydettiğiniz anahtarı yapıştırın ve **Kaydet** ' i seçin.
+    1. **Kayıt Integration Runtime (Şirket içinde barındırılan)** sayfasında, daha önce kaydettiğiniz anahtarı yapıştırın ve **Kaydet**' i seçin.
     
        ![Tümleştirme çalışma zamanını kaydetme](media/create-self-hosted-integration-runtime/register-integration-runtime.png)
 
-    1. **Yeni Integration Runtime (Şirket içinde barındırılan) düğümü** sayfasında **son** ' u seçin.
+    1. **Yeni Integration Runtime (Şirket içinde barındırılan) düğümü** sayfasında **son**' u seçin.
 
 1. Şirket içinde barındırılan tümleştirme çalışma zamanı başarıyla kaydedildikten sonra aşağıdaki pencereyi görürsünüz:
 
@@ -150,7 +150,7 @@ Uygulamanın parametrelerinin ve özelliklerinin ayrıntıları şunlardır:
 - Bir Azure sanal ağı içindeki veri tümleştirmesini desteklemek için şirket içinde barındırılan bir tümleştirme çalışma zamanı kullanın.
 - Azure ExpressRoute kullandığınızda bile, veri kaynağınızı bir güvenlik duvarının arkasındaki şirket içi veri kaynağı olarak değerlendirin. Hizmeti veri kaynağına bağlamak için şirket içinde barındırılan tümleştirme çalışma zamanını kullanın.
 - Veri deposu bir Azure hizmet olarak altyapı (IaaS) sanal makinesi üzerinde bulutta olsa bile, şirket içinde barındırılan tümleştirme çalışma zamanını kullanın.
-- Görevler, FIPS uyumlu şifreleme etkin olan bir Windows Server 'a yüklediğiniz şirket içinde barındırılan tümleştirme çalışma zamanında başarısız olabilir. Bu sorunu geçici olarak çözmek için iki seçeneğiniz vardır: kimlik bilgilerini/gizli değerleri bir Azure Key Vault depolayın veya sunucuda FIPS uyumlu şifrelemeyi devre dışı bırakın. FIPS uyumlu şifrelemeyi devre dışı bırakmak için, aşağıdaki kayıt defteri alt anahtarının değerini 1 (etkin) iken 0 (devre dışı) olarak değiştirin: `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled` .
+- Görevler, FIPS uyumlu şifreleme etkin olan bir Windows Server 'a yüklediğiniz şirket içinde barındırılan tümleştirme çalışma zamanında başarısız olabilir. Bu sorunu geçici olarak çözmek için iki seçeneğiniz vardır: kimlik bilgilerini/gizli değerleri bir Azure Key Vault depolayın veya sunucuda FIPS uyumlu şifrelemeyi devre dışı bırakın. FIPS uyumlu şifrelemeyi devre dışı bırakmak için, aşağıdaki kayıt defteri alt anahtarının değerini 1 (etkin) iken 0 (devre dışı) olarak değiştirin: `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled` . Kendi şirket içinde [barındırılan tümleştirme çalışma ZAMANıNı SSIS tümleştirme çalışma zamanı için bir proxy olarak](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)kullanıyorsanız, FIPS uyumlu şifreleme etkinleştirilebilir ve verileri şirket Içinden Azure Blob depolamaya hazırlama alanı olarak taşırken kullanılacaktır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -185,12 +185,12 @@ Uygulamanın parametrelerinin ve özelliklerinin ayrıntıları şunlardır:
 ## <a name="install-and-register-a-self-hosted-ir-from-microsoft-download-center"></a>Microsoft Indirme merkezi 'nden şirket içinde barındırılan bir IR yükleme ve kaydetme
 
 1. [Microsoft tümleştirme çalışma zamanı indirme sayfasına](https://www.microsoft.com/download/details.aspx?id=39717)gidin.
-1. **İndir** ' i seçin, 64 bit sürümünü seçin ve **İleri** ' yi seçin. 32 bit sürümü desteklenmiyor.
+1. **İndir**' i seçin, 64 bit sürümünü seçin ve **İleri**' yi seçin. 32 bit sürümü desteklenmiyor.
 1. Yönetilen kimlik dosyasını doğrudan çalıştırın veya sabit sürücünüze kaydedin ve çalıştırın.
-1. **Hoş geldiniz** penceresinde bir dil seçin ve **İleri** ' yi seçin.
+1. **Hoş geldiniz** penceresinde bir dil seçin ve **İleri**' yi seçin.
 1. Microsoft yazılımı lisans koşulları 'nı kabul edin ve **İleri ' yi** seçin.
-1. Şirket içinde barındırılan tümleştirme çalışma zamanını yüklemek için **klasör** ' ü seçin ve **İleri** ' yi seçin.
-1. **Yüklemeye hazırlanma** sayfasında, **yükler** ' i seçin.
+1. Şirket içinde barındırılan tümleştirme çalışma zamanını yüklemek için **klasör** ' ü seçin ve **İleri**' yi seçin.
+1. **Yüklemeye hazırlanma** sayfasında, **yükler**' i seçin.
 1. Yüklemeyi tamamlamaya **son** ' u seçin.
 1. PowerShell kullanarak kimlik doğrulama anahtarını alın. Kimlik doğrulama anahtarını almaya yönelik bir PowerShell örneği aşağıda verilmiştir:
 
@@ -204,7 +204,7 @@ Uygulamanın parametrelerinin ve özelliklerinin ayrıntıları şunlardır:
 
     1. İsteğe bağlı olarak, anahtar metnini görmek için **kimlik doğrulama anahtarını göster** ' i seçin.
 
-    1. **Kaydet** ’i seçin.
+    1. **Kaydet**’i seçin.
 
 ## <a name="high-availability-and-scalability"></a>Yüksek kullanılabilirlik ve ölçeklenebilirlik
 
@@ -219,7 +219,7 @@ Uygulamanın parametrelerinin ve özelliklerinin ayrıntıları şunlardır:
 > Her bir düğümü ilişkilendirmek için şirket içinde barındırılan yeni bir tümleştirme çalışma zamanı oluşturmanız gerekmez. Şirket içinde barındırılan tümleştirme çalışma zamanını başka bir makineye yükleyebilir ve aynı kimlik doğrulama anahtarını kullanarak kaydedebilirsiniz.
 
 > [!NOTE]
-> Yüksek kullanılabilirlik ve ölçeklenebilirlik için başka bir düğüm eklemeden önce, ilk düğümde **Intranete uzaktan erişim** seçeneğinin etkinleştirildiğinden emin olun. Bunu yapmak için **Microsoft Integration Runtime Configuration Manager**  >  **ayarları**  >  **intranete uzaktan erişim** ' i seçin.
+> Yüksek kullanılabilirlik ve ölçeklenebilirlik için başka bir düğüm eklemeden önce, ilk düğümde **Intranete uzaktan erişim** seçeneğinin etkinleştirildiğinden emin olun. Bunu yapmak için **Microsoft Integration Runtime Configuration Manager**  >  **ayarları**  >  **intranete uzaktan erişim**' i seçin.
 
 ### <a name="scale-considerations"></a>Ölçek konuları
 
@@ -264,8 +264,8 @@ Bu özelliğin bir giriş ve tanıtım durumunu görmek için aşağıdaki 12 da
 
 ### <a name="terminology"></a>Terminoloji
 
-- **PAYLAŞıLAN IR** : fiziksel bir altyapı üzerinde çalışan, özgün bir şirket IÇINDE barındırılan IR.  
-- **Bağlı IR** : başka BIR paylaşılan IR 'ye başvuran bir IR. Bağlı IR mantıksal bir IR ve diğer bir paylaşılan şirket içinde barındırılan IR altyapısını kullanır.
+- **PAYLAŞıLAN IR**: fiziksel bir altyapı üzerinde çalışan, özgün bir şirket IÇINDE barındırılan IR.  
+- **Bağlı IR**: başka BIR paylaşılan IR 'ye başvuran bir IR. Bağlı IR mantıksal bir IR ve diğer bir paylaşılan şirket içinde barındırılan IR altyapısını kullanır.
 
 ### <a name="methods-to-share-a-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanını paylaşma yöntemleri
 
@@ -351,9 +351,9 @@ Yapılandırıldığında, şirket içinde barındırılan tümleştirme çalı�
 
 Üç yapılandırma seçeneği vardır:
 
-- **Proxy kullanma** : şirket içinde barındırılan tümleştirme çalışma zamanı, bulut hizmetlerine bağlanmak için hiçbir proxy 'yi açık olarak kullanmaz.
-- **Sistem proxy 'Si kullan** : şirket içinde barındırılan tümleştirme çalışma zamanı, diahost.exe.config ve diawp.exe.config yapılandırılan proxy ayarını kullanır. Bu dosyalar hiçbir proxy yapılandırması belirtmeyecekse, şirket içinde barındırılan tümleştirme çalışma zamanı, bir ara sunucuya geçmeden doğrudan bulut hizmetine bağlanır.
-- **Özel proxy kullan** : diahost.exe.config ve diawp.exe.config yapılandırmaların kullanılması yerine, şirket içinde barındırılan tümleştirme çalışma zamanı IÇIN kullanılacak http proxy ayarını yapılandırın. **Adres** ve **bağlantı noktası** değerleri gereklidir. Proxy 'nin kimlik doğrulama ayarına bağlı olarak, **Kullanıcı adı** ve **parola** değerleri isteğe bağlıdır. Tüm ayarlar, şirket içinde barındırılan tümleştirme çalışma zamanı üzerinde Windows DPAPI ile şifrelenir ve makinede yerel olarak depolanır.
+- **Proxy kullanma**: şirket içinde barındırılan tümleştirme çalışma zamanı, bulut hizmetlerine bağlanmak için hiçbir proxy 'yi açık olarak kullanmaz.
+- **Sistem proxy 'Si kullan**: şirket içinde barındırılan tümleştirme çalışma zamanı, diahost.exe.config ve diawp.exe.config yapılandırılan proxy ayarını kullanır. Bu dosyalar hiçbir proxy yapılandırması belirtmeyecekse, şirket içinde barındırılan tümleştirme çalışma zamanı, bir ara sunucuya geçmeden doğrudan bulut hizmetine bağlanır.
+- **Özel proxy kullan**: diahost.exe.config ve diawp.exe.config yapılandırmaların kullanılması yerine, şirket içinde barındırılan tümleştirme çalışma zamanı IÇIN kullanılacak http proxy ayarını yapılandırın. **Adres** ve **bağlantı noktası** değerleri gereklidir. Proxy 'nin kimlik doğrulama ayarına bağlı olarak, **Kullanıcı adı** ve **parola** değerleri isteğe bağlıdır. Tüm ayarlar, şirket içinde barındırılan tümleştirme çalışma zamanı üzerinde Windows DPAPI ile şifrelenir ve makinede yerel olarak depolanır.
 
 Tümleştirme çalışma zamanı konak hizmeti, güncelleştirilmiş proxy ayarlarını kaydettikten sonra otomatik olarak yeniden başlatılır.
 
@@ -362,7 +362,7 @@ Tümleştirme çalışma zamanı konak hizmeti, güncelleştirilmiş proxy ayarl
 1. **Microsoft Integration Runtime Configuration Manager** açın.
 1. **Ayarlar** sekmesini seçin.
 1. **Http proxy** altında bağlantıyı **Değiştir** ' i seçerek **http proxy 'yi ayarla** iletişim kutusunu açın.
-1. **İleri** ’yi seçin. Ardından, proxy ayarını kaydetme izninizin olduğunu soran bir uyarı görürsünüz ve Integration Runtime ana bilgisayar hizmetini yeniden başlatın.
+1. **İleri**’yi seçin. Ardından, proxy ayarını kaydetme izninizin olduğunu soran bir uyarı görürsünüz ve Integration Runtime ana bilgisayar hizmetini yeniden başlatın.
 
 HTTP proxy 'sini görüntülemek ve güncelleştirmek için Configuration Manager aracını kullanabilirsiniz.
 
@@ -402,7 +402,7 @@ HTTP proxy için **sistem proxy 'Si kullan** seçeneğini belirlerseniz, şirket
     ```
 1. Yapılandırma dosyasını özgün konumuna kaydedin. Ardından, değişiklikleri sağlayan şirket içinde barındırılan tümleştirme çalışma zamanı ana bilgisayarı hizmetini yeniden başlatın.
 
-   Hizmeti yeniden başlatmak için Denetim Masası 'ndan hizmetler uygulamasını kullanın. Ya da Integration Runtime Configuration Manager, **hizmeti Durdur** düğmesini seçin ve ardından **Hizmeti Başlat** ' ı seçin.
+   Hizmeti yeniden başlatmak için Denetim Masası 'ndan hizmetler uygulamasını kullanın. Ya da Integration Runtime Configuration Manager, **hizmeti Durdur** düğmesini seçin ve ardından **Hizmeti Başlat**' ı seçin.
 
    Hizmet başlatılmazsa, büyük olasılıkla düzenlediğiniz uygulama yapılandırma dosyasında yanlış XML etiketi söz dizimi eklemiş olursunuz.
 

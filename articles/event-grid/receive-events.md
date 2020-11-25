@@ -2,14 +2,14 @@
 title: Azure Event Grid bir HTTP uç noktasına olay alma
 description: Bir HTTP uç noktasının nasıl doğrulanacağını, sonra Azure Event Grid olayların nasıl alınacağını ve seri durumdan kaldırılacağını açıklar
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 11/19/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 42cf237f0c2fbe091307625fde70613ab9173b0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75c80fb85d39298f1130537971bc700897c039d0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326482"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96023744"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>HTTP uç noktasına olayları alma
 
@@ -18,7 +18,7 @@ Bu makalede bir olay aboneliğinden olayları almak ve sonra olayları almak ve 
 > [!NOTE]
 > Event Grid ile bir Azure Işlevi tetiklendiğinde [Event Grid tetikleyicisi](../azure-functions/functions-bindings-event-grid.md) kullanmanız **önemle** önerilir. Burada genel Web kancası tetikleyicisi kullanımı gösterim amaçlıdır ' dir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 HTTP ile tetiklenen bir işlev içeren bir işlev uygulamasına ihtiyacınız vardır.
 
@@ -140,9 +140,11 @@ module.exports = function (context, req) {
 }]
 ```
 
-Çalıştır ' a tıkladığınızda, çıktının 200 OK ve gövdesinde olması gerekir `{"ValidationResponse":"512d38b6-c7b8-40c8-89fe-f46f9e9622b6"}` :
+Çalıştır ' a tıkladığınızda, çıktının 200 OK ve gövdesinde olması gerekir `{"validationResponse":"512d38b6-c7b8-40c8-89fe-f46f9e9622b6"}` :
 
-![doğrulama yanıtı](./media/receive-events/validation-response.png)
+:::image type="content" source="./media/receive-events/validation-request.png" alt-text="Doğrulama isteği":::
+
+:::image type="content" source="./media/receive-events/validation-output.png" alt-text="Doğrulama çıktısı":::
 
 ## <a name="handle-blob-storage-events"></a>Blob Depolama olaylarını işle
 
@@ -394,6 +396,8 @@ Son olarak, işlevinizin artık özel olay türünü işleyebileceğini test edi
 ```
 
 Ayrıca [, portaldan kıvrımlı ile özel bir olay göndererek](./custom-event-quickstart-portal.md) veya [Postman](https://www.getpostman.com/)gıbı bir uç noktaya nakledebileceğiniz herhangi bir hizmeti ya da uygulamayı kullanarak [özel bir konuya](./post-to-custom-topic.md) gönderim yaparak bu işlevselliği canlı olarak test edebilirsiniz. Işlev URL 'SI olarak ayarlanan uç nokta ile bir özel konu ve olay aboneliği oluşturun.
+
+[!INCLUDE [event-grid-message-headers](../../includes/event-grid-message-headers.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

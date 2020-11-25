@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
 ms.openlocfilehash: 1a90bc6636dcb3aa81f09b0489850c1a95b3256d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535255"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022760"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight için NSG hizmet etiketleri
 
@@ -26,9 +26,9 @@ Belirli bir bölgeyi kullanmak isterseniz ve hizmet etiketi henüz bu sayfada be
 
 Ağ güvenlik gruplarında hizmet etiketleri kullanmak için iki seçeneğiniz vardır:
 
-- **Tek bir Global HDInsight hizmet etiketi kullan** : Bu seçenek, Sanal ağınızı HDInsight hizmetinin tüm bölgelerde kümeleri izlemek için KULLANDıĞı tüm IP adreslerine açar. Bu seçenek en basit yöntemdir, ancak kısıtlayıcı güvenlik gereksinimleriniz varsa uygun olmayabilir.
+- **Tek bir Global HDInsight hizmet etiketi kullan**: Bu seçenek, Sanal ağınızı HDInsight hizmetinin tüm bölgelerde kümeleri izlemek için KULLANDıĞı tüm IP adreslerine açar. Bu seçenek en basit yöntemdir, ancak kısıtlayıcı güvenlik gereksinimleriniz varsa uygun olmayabilir.
 
-- **Birden çok bölgesel hizmet etiketi kullan** : Bu seçenek, Sanal ağınızı yalnızca HDInsight 'ın o belirli bölgede kullandığı IP adreslerine açar. Ancak, birden çok bölge kullanıyorsanız, sanal ağınıza birden çok hizmet etiketi eklemeniz gerekir.
+- **Birden çok bölgesel hizmet etiketi kullan**: Bu seçenek, Sanal ağınızı yalnızca HDInsight 'ın o belirli bölgede kullandığı IP adreslerine açar. Ancak, birden çok bölge kullanıyorsanız, sanal ağınıza birden çok hizmet etiketi eklemeniz gerekir.
 
 ## <a name="use-a-single-global-hdinsight-service-tag"></a>Tek bir Global HDInsight hizmet etiketi kullanın
 
@@ -36,11 +36,11 @@ HDInsight kümeniz ile hizmet etiketleri kullanmaya başlamanın en kolay yolu, 
 
 1. [Azure Portal](https://portal.azure.com/)ağ güvenlik grubunuzu seçin.
 
-1. **Ayarlar** altında **gelen güvenlik kuralları** ' nı seçin ve **+ Ekle** ' yi seçin.
+1. **Ayarlar** altında **gelen güvenlik kuralları**' nı seçin ve **+ Ekle**' yi seçin.
 
-1. **Kaynak** açılan listesinden **hizmet etiketi** ' ni seçin.
+1. **Kaynak** açılan listesinden **hizmet etiketi**' ni seçin.
 
-1. **Kaynak hizmet etiketi** açılan listesinden **HDInsight** ' ı seçin.
+1. **Kaynak hizmet etiketi** açılan listesinden **HDInsight**' ı seçin.
 
     ![Azure portal bir hizmet etiketi ekleyin](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
 
@@ -59,7 +59,7 @@ Kümeniz bu tabloda listelenen bir bölgede bulunuyorsa, NSG 'nize yalnızca tek
 | Ülke | Bölge | Hizmet etiketi |
 | ---- | ---- | ---- |
 | Avustralya | Doğu Avustralya | HDInsight. AustraliaEast |
-| &nbsp; | Güneydoğu Avustralya | HDInsight. AustraliaSoutheast |
+| &nbsp; | Avustralya Güneydoğu | HDInsight. AustraliaSoutheast |
 | &nbsp; | Orta Avustralya | HDInsight. AustraliaCentral |
 | Çin | Çin Doğu 2 | HDInsight. ChinaEast2 |
 | &nbsp; | Çin Kuzey 2 | HDInsight. ChinaNorth2 |
@@ -99,7 +99,7 @@ Kümeniz aşağıdaki tablodaki bölgelerden birinde oluşturulduysa, hizmet eti
 | Ülke | Bölge | Hizmet etiketi |
 | ---- | ---- | ---- |
 | Birleşik Devletler | Doğu ABD 2 | HDInsight. EastUS2 |
-| &nbsp; | Central US | HDInsight. merkezde ABD |
+| &nbsp; | Orta ABD | HDInsight. merkezde ABD |
 | &nbsp; | Kuzey Orta ABD | 'Tan. Kuzeydoğu ABD |
 | &nbsp; | Orta Güney ABD | HDInsight. Güneydoğu ABD |
 | &nbsp; | Doğu ABD | HDInsight. EastUS |

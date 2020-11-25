@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 11/15/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive, devx-track-python
 ms.openlocfilehash: 0179fd10e75af0ced55b4bb41f9525dc26b3efe5
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540389"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023083"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>HDInsight 'ta Apache Hive ve Apache Pig ile Python Kullanıcı tanımlı Işlevleri (UDF) kullanma
 
@@ -27,8 +27,8 @@ HDInsight Ayrıca, Java 'da yazılmış bir Python uygulama olan Jyıthon ' u de
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* **HDInsight üzerinde bir Hadoop kümesi** . Bkz. [Linux 'Ta HDInsight kullanmaya başlama](apache-hadoop-linux-tutorial-get-started.md).
-* **Bir SSH istemcisi** . Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* **HDInsight üzerinde bir Hadoop kümesi**. Bkz. [Linux 'Ta HDInsight kullanmaya başlama](apache-hadoop-linux-tutorial-get-started.md).
+* **Bir SSH istemcisi**. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight'a (Apache Hadoop) bağlanma](../hdinsight-hadoop-linux-use-ssh-unix.md).
 * Kümelerinizin birincil depolama alanı için [URI şeması](../hdinsight-hadoop-linux-information.md#URI-and-scheme) . Bu `wasb://` , `abfs://` Azure Data Lake Storage 1. için Azure Data Lake Storage 2. veya adl://Için Azure Storage 'a yöneliktir. Azure depolama için güvenli aktarım etkinleştirilirse, URI wasbs://olur.  Ayrıca bkz. [Güvenli aktarım](../../storage/common/storage-require-secure-transfer.md).
 * **Depolama yapılandırmasında olası değişiklik.**  Depolama hesabı türü kullanılıyorsa [depolama yapılandırması](#storage-configuration) bölümüne bakın `BlobStorage` .
 * İsteğe bağlı.  PowerShell 'i kullanmayı planlıyorsanız [az Module](/powershell/azure/new-azureps-module-az) yüklü olmalıdır.
@@ -300,8 +300,8 @@ Python betiği, Pig öğesinden bir UDF aracılığıyla kullanılabilir `GENERA
 
 Python yorumlayıcı 'yı belirtmek için `register` Python betiğine başvururken kullanın. Aşağıdaki örnekler betikleri Pig ile kaydeder `myfuncs` :
 
-* **Jython kullanmak için** : `register '/path/to/pigudf.py' using jython as myfuncs;`
-* **C Python kullanmak için** : `register '/path/to/pigudf.py' using streaming_python as myfuncs;`
+* **Jython kullanmak için**: `register '/path/to/pigudf.py' using jython as myfuncs;`
+* **C Python kullanmak için**: `register '/path/to/pigudf.py' using streaming_python as myfuncs;`
 
 > [!IMPORTANT]  
 > Jyıthon kullanırken pig_jython dosyanın yolu bir yerel yol veya bir WASBS://yolu olabilir. Ancak, C Python kullanırken, Pig işini göndermek için kullandığınız düğümün yerel dosya sistemindeki bir dosyaya başvurmanız gerekir.
@@ -343,7 +343,7 @@ def create_structure(input):
 
 Giriş için tutarlı bir şema olmadığından, Pig Latin örneğinde, `LINE` Giriş bir CharArray olarak tanımlanır. Python betiği, verileri çıkış için tutarlı bir şemaya dönüştürür.
 
-1. `@outputSchema`İfade, Pig 'e döndürülen verilerin biçimini tanımlar. Bu durumda, Pig veri türü olan bir **veri torbudur** . Paket, hepsi CharArray (dizeler) olan aşağıdaki alanları içerir:
+1. `@outputSchema`İfade, Pig 'e döndürülen verilerin biçimini tanımlar. Bu durumda, Pig veri türü olan bir **veri torbudur**. Paket, hepsi CharArray (dizeler) olan aşağıdaki alanları içerir:
 
    * Tarih-günlük girişinin oluşturulduğu tarih
    * zaman-günlük girişinin oluşturulduğu saat
@@ -423,7 +423,7 @@ Aşağıdaki komutlarda, `sshuser` farklı ise gerçek kullanıcı adıyla deği
     #from pig_util import outputSchema
     ```
 
-    Bu satır, Python betiğini Jyıthon yerine C Python ile çalışacak şekilde değiştirir. Değişiklik yapıldıktan sonra, düzenleyiciden çıkmak için **CTRL + X** tuşlarını kullanın. **Y** ' yi seçin ve ardından değişiklikleri kaydetmek için **girin** .
+    Bu satır, Python betiğini Jyıthon yerine C Python ile çalışacak şekilde değiştirir. Değişiklik yapıldıktan sonra, düzenleyiciden çıkmak için **CTRL + X** tuşlarını kullanın. **Y**' yi seçin ve ardından değişiklikleri kaydetmek için **girin** .
 
 6. `pig`Kabuğu yeniden başlatmak için komutunu kullanın. `grunt>`İstemde olduktan sonra, C Python yorumlayıcı kullanarak Python betiğini çalıştırmak için aşağıdakileri kullanın.
 

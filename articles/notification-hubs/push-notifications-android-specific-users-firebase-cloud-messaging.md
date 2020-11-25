@@ -18,11 +18,11 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/11/2019
 ms.openlocfilehash: 870842074bb4a0012a48115586a8ad571275d470
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91281040"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022420"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-android-apps-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak belirli Android uygulamalarına anında iletme bildirimleri gönderme
 
@@ -485,7 +485,7 @@ Sonraki adım öğreticide oluşturulan Android uygulamasını güncelleştirmed
 
 1. Android Studio kullanarak bir cihazda veya öykünücüde uygulamayı çalıştırın.
 2. Android uygulamasında bir kullanıcı adı ve parola girin. Her ikisi de aynı dize değerine sahip olmalı ve boşluk veya özel karakterler içermemelidir.
-3. Android uygulamasında **oturum aç**' a tıklayın. **Oturum açmış ve kayıtlı**olduğunu bildiren bir ileti için bekleyin. **Bildirim Gönder** düğmesini etkinleştirir.
+3. Android uygulamasında **oturum aç**' a tıklayın. **Oturum açmış ve kayıtlı** olduğunu bildiren bir ileti için bekleyin. **Bildirim Gönder** düğmesini etkinleştirir.
 
     ![Kullanıcıların uygulamasına oturum açtıktan sonra hangi Notification Hubs bildirim yaptığını gösteren öykünücü ekran görüntüsü.][A2]
 4. Uygulamayı çalıştırdığınız ve bir kullanıcı kaydettiğiniz tüm platformları etkinleştirmek için iki durumlu düğmelere tıklayın.

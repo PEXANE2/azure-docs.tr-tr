@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.custom: devx-track-js
 ms.openlocfilehash: 75693c57a8d120aad53a15d03ae4054bac8262af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269310"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023066"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Azure Logic Apps'ten Azure işlevlerini çağırma
 
@@ -65,7 +65,7 @@ Logic Apps tasarımcısında işlev parametreleriyle çalışırken daha zengin 
 
       !["Platform özellikleri" > "CORS" > işlev uygulamanızı seçin](./media/logic-apps-azure-functions/function-platform-features-cors.png)
 
-   1. **CORS**altında, yıldız işareti ( **`*`** ) joker karakterini ekleyin, ancak listedeki diğer tüm kaynakları kaldırın ve **Kaydet**' i seçin.
+   1. **CORS** altında, yıldız işareti ( **`*`** ) joker karakterini ekleyin, ancak listedeki diğer tüm kaynakları kaldırın ve **Kaydet**' i seçin.
 
       !["CORS * joker karakterini" * "olarak ayarlayın](./media/logic-apps-azure-functions/function-platform-features-cors-origins.png)
 
@@ -128,11 +128,11 @@ Ancak, herhangi bir Azure işlevi oluşturabilmeniz için önce işlevleriniz i�
 
    1. **Kod** kutusunda, işleviniz çalıştıktan sonra mantıksal uygulamanıza döndürülmesini istediğiniz yanıt ve yük dahil olmak üzere, kodunuzu işlev şablonuna ekleyin. İşiniz bittiğinde **Oluştur**'u seçin.
 
-   Örneğin:
+   Örnek:
 
    ![İşlevinizi tanımlayın](./media/logic-apps-azure-functions/add-code-function-definition.png)
 
-   Şablonun kodunda, * `context` nesnesi* mantıksal uygulamanızın daha sonraki bir adımda **İstek gövdesi** alanı üzerinden gönderdiği iletiyi ifade eder. `context`İşlevinizin içindeki özelliklerine erişmek için şu sözdizimini kullanın:
+   Şablonun kodunda, *`context` nesnesi* mantıksal uygulamanızın daha sonraki bir adımda **İstek gövdesi** alanı üzerinden gönderdiği iletiyi ifade eder. `context`İşlevinizin içindeki özelliklerine erişmek için şu sözdizimini kullanın:
 
    `context.body.<property-name>`
 
@@ -167,7 +167,7 @@ Mantıksal uygulamalarınızdan mevcut Azure işlevlerini çağırmak için, man
 
 1. İşlevi eklemek istediğiniz adım altında **yeni adım**' ı seçin.
 
-1. **Eylem seçin**altında, arama kutusuna filtreniz olarak "Azure işlevleri" yazın. Eylemler listesinden **bir Azure Işlevi seçin** eylemi seçin.
+1. **Eylem seçin** altında, arama kutusuna filtreniz olarak "Azure işlevleri" yazın. Eylemler listesinden **bir Azure Işlevi seçin** eylemi seçin.
 
    !["Azure işlevleri" ni bulun](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
@@ -195,7 +195,7 @@ Mantıksal uygulamalarınızdan mevcut Azure işlevlerini çağırmak için, man
 
 ## <a name="call-logic-apps-from-azure-functions"></a>Azure işlevlerinden Logic Apps 'i çağırma
 
-Bir Azure işlevinin içinden bir mantıksal uygulama tetiklemek istediğinizde, mantıksal uygulamanın çağrılabilir bir uç nokta sağlayan bir tetikleyiciyle başlaması gerekir. Örneğin, mantıksal uygulamayı **http**, **Istek**, **Azure Kuyrukları**veya **Event Grid** tetikleyicisiyle başlatabilirsiniz. İşlevinizin içinde, tetikleyicinin URL 'sine bir HTTP POST isteği gönderin ve bu mantıksal uygulamanın işlemesini istediğiniz yükü ekleyin. Daha fazla bilgi için bkz. [çağrı, tetikleyici veya iç içe mantıksal uygulamalar](../logic-apps/logic-apps-http-endpoint.md).
+Bir Azure işlevinin içinden bir mantıksal uygulama tetiklemek istediğinizde, mantıksal uygulamanın çağrılabilir bir uç nokta sağlayan bir tetikleyiciyle başlaması gerekir. Örneğin, mantıksal uygulamayı **http**, **Istek**, **Azure Kuyrukları** veya **Event Grid** tetikleyicisiyle başlatabilirsiniz. İşlevinizin içinde, tetikleyicinin URL 'sine bir HTTP POST isteği gönderin ve bu mantıksal uygulamanın işlemesini istediğiniz yükü ekleyin. Daha fazla bilgi için bkz. [çağrı, tetikleyici veya iç içe mantıksal uygulamalar](../logic-apps/logic-apps-http-endpoint.md).
 
 <a name="enable-authentication-functions"></a>
 
@@ -222,7 +222,7 @@ Mantıksal uygulamanızın yönetilen kimliğini Azure işlevinizde kullanmak i�
 
 1. [Azure Portal](https://portal.azure.com), işlev uygulamanızı bulun ve seçin. Bu adımlar örnek işlev uygulaması olarak "FabrikamFunctionApp" kullanır.
 
-1. İşlev uygulaması bölmesinde **platform özellikleri**' ni seçin. **Geliştirme araçları**altında **Gelişmiş araçlar (kudu)** öğesini seçin.
+1. İşlev uygulaması bölmesinde **platform özellikleri**' ni seçin. **Geliştirme araçları** altında **Gelişmiş araçlar (kudu)** öğesini seçin.
 
    ![Kudu için gelişmiş araçları aç](./media/logic-apps-azure-functions/open-advanced-tools-kudu.png)
 
@@ -254,7 +254,7 @@ Bu göreve başlamadan önce, daha sonra kullanmak üzere bu değerleri bulup ye
 
   * Bu nesne KIMLIĞINI oluşturmak için [mantıksal uygulamanızın sistem tarafından atanan kimliğini etkinleştirin](../logic-apps/create-managed-service-identity.md#azure-portal-system-logic-app).
 
-  * Aksi takdirde, bu nesne KIMLIĞINI bulmak için mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın. Mantıksal uygulama menünüzde **Ayarlar**altında, **kimlik**  >  **sistemi atandı**' ı seçin.
+  * Aksi takdirde, bu nesne KIMLIĞINI bulmak için mantıksal uygulama tasarımcısında mantıksal uygulamanızı açın. Mantıksal uygulama menünüzde **Ayarlar** altında, **kimlik**  >  **sistemi atandı**' ı seçin.
 
 * Azure Active Directory (Azure AD) kiracınız için dizin KIMLIĞI
 
@@ -264,7 +264,7 @@ Bu göreve başlamadan önce, daha sonra kullanmak üzere bu değerleri bulup ye
 
   1. Azure AD kiracınızı bulun ve seçin. Bu adımlar örnek kiracı olarak "Fabrikam" kullanır.
 
-  1. Kiracının menüsünde, **Yönet**altında **Özellikler**' i seçin.
+  1. Kiracının menüsünde, **Yönet** altında **Özellikler**' i seçin.
 
   1. Örneğin, kiracınızın Dizin KIMLIĞINI kopyalayın ve daha sonra kullanmak üzere bu KIMLIĞI kaydedin.
 
@@ -283,17 +283,17 @@ Artık işlev uygulamanız için Azure AD kimlik doğrulamasını ayarlamaya haz
 
 1. [Azure Portal](https://portal.azure.com), işlev uygulamanızı bulun ve seçin.
 
-1. İşlev uygulaması bölmesinde **platform özellikleri**' ni seçin. **Ağ**altında **kimlik doğrulama/yetkilendirme**' yi seçin.
+1. İşlev uygulaması bölmesinde **platform özellikleri**' ni seçin. **Ağ** altında **kimlik doğrulama/yetkilendirme**' yi seçin.
 
    ![Kimlik doğrulama ve yetkilendirme ayarlarını görüntüleme](./media/logic-apps-azure-functions/view-authentication-authorization-settings.png)
 
-1. **App Service kimlik doğrulaması** ayarını **Açık**olarak değiştirin. **İsteğin kimliği doğrulanmamış olduğunda gerçekleştirilecek eylem** listesinden **Azure Active Directory oturum aç**' ı seçin. **Kimlik doğrulama sağlayıcıları**altında **Azure Active Directory**' yi seçin.
+1. **App Service kimlik doğrulaması** ayarını **Açık** olarak değiştirin. **İsteğin kimliği doğrulanmamış olduğunda gerçekleştirilecek eylem** listesinden **Azure Active Directory oturum aç**' ı seçin. **Kimlik doğrulama sağlayıcıları** altında **Azure Active Directory**' yi seçin.
 
    ![Azure AD ile kimlik doğrulamayı etkinleştirme](./media/logic-apps-azure-functions/turn-on-authentication-azure-active-directory.png)
 
 1. **Azure Active Directory ayarları** bölmesinde, şu adımları izleyin:
 
-   1. **Yönetim modunu** **Gelişmiş**olarak ayarlayın.
+   1. **Yönetim modunu** **Gelişmiş** olarak ayarlayın.
 
    1. **ISTEMCI kimliği** özelliğine, mantıksal uygulamanızın sistem tarafından atanan KIMLIĞININ nesne kimliğini girin.
 

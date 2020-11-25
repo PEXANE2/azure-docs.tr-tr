@@ -4,11 +4,11 @@ description: Bu hızlı başlangıçta, Azure portal aracılığıyla yapıtlar 
 ms.date: 08/27/2020
 ms.topic: quickstart
 ms.openlocfilehash: bb9aeb4d4b96227f7bf7296854c56df4058fbe69
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89648651"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022539"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Hızlı başlangıç: portalda bir şema tanımlama ve atama
 
@@ -32,7 +32,7 @@ Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumd
 
 1. Yerleşik planlar listesinin en üstündeki karttan **boş şema ile Başlat** ' ı seçin.
 
-1. **Myblueprint**gibi bir **Blueprint adı** sağlayın. (En fazla 48 harf ve sayı kullanın, ancak boşluk veya özel karakter kullanmayın). **Blueprint açıklamasını** şimdilik boş bırakın.
+1. **Myblueprint** gibi bir **Blueprint adı** sağlayın. (En fazla 48 harf ve sayı kullanın, ancak boşluk veya özel karakter kullanmayın). **Blueprint açıklamasını** şimdilik boş bırakın.
 
 1. **Tanım konumu** kutusunda, sağdaki üç noktayı seçin, şemayı kaydetmek istediğiniz [yönetim grubunu](../management-groups/overview.md) veya aboneliği seçin ve **Seç**' i seçin.
 
@@ -40,15 +40,15 @@ Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumd
 
 1. Abonelik düzeyinde bir rol ataması ekleyin:
 
-   1. **Abonelik**altında **+ yapıt Ekle** satırını seçin. Tarayıcının sağ tarafında **yapıt Ekle** penceresi açılır.
+   1. **Abonelik** altında **+ yapıt Ekle** satırını seçin. Tarayıcının sağ tarafında **yapıt Ekle** penceresi açılır.
 
-   1. **Yapıt türü**için **rol ataması** seçin.
+   1. **Yapıt türü** için **rol ataması** seçin.
 
-   1. **Rol**altında **katkıda bulunan**' ı seçin. Bir dinamik parametreyi belirten onay kutusuyla **Kullanıcı, uygulama veya Grup Ekle** kutusunu bırakın.
+   1. **Rol** altında **katkıda bulunan**' ı seçin. Bir dinamik parametreyi belirten onay kutusuyla **Kullanıcı, uygulama veya Grup Ekle** kutusunu bırakın.
 
    1. Bu yapıtı şemasını Blueprint öğesine eklemek için **Ekle** ' yi seçin.
 
-   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment.png" alt-text="Şeması tanımları sayfasındaki ' Blueprint oluştur ' düğmesinin ekran görüntüsü." border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment.png" alt-text="Bir şema tanımına ekleme için rol atama yapıt seçeneklerinin ekran görüntüsü." border="false":::
 
    > [!NOTE]
    > Çoğu yapıt, parametreleri destekler. Şema oluşturma sırasında bir değer atanan bir parametre _statik bir parametredir_. Parametre, şema atama sırasında atanırsa _dinamik bir parametredir_. Daha fazla bilgi için bkz. [Şema parametreleri](./concepts/parameters.md).
@@ -57,25 +57,25 @@ Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumd
 
    1. Rol atama yapıtı altında **+ yapıt Ekle** satırını seçin.
 
-   1. **Yapıt türü**için **ilke atamasını** seçin.
+   1. **Yapıt türü** için **ilke atamasını** seçin.
 
-   1. **Türü** **yerleşik**olarak değiştirin. **Ara**alanına **Tag**yazın.
+   1. **Türü** **yerleşik** olarak değiştirin. **Ara** alanına **Tag** yazın.
 
    1. Filtreleme işleminin gerçekleşmesi için odak **aramanın** dışına geçin. **Kaynak grupları için etiketi ve varsayılan değerini Ekle '** yi seçin.
 
    1. Bu yapıtı şemasını Blueprint öğesine eklemek için **Ekle** ' yi seçin.
 
-1. İlke atama **ekleme etiketinin satırını ve kaynak grupları için varsayılan değerini**seçin.
+1. İlke atama **ekleme etiketinin satırını ve kaynak grupları için varsayılan değerini** seçin.
 
 1. Şema tanımı kapsamında yapıta parametreleri sağlayacak pencere açılır ve atama sırasında parametre ayarlamak (dinamik parametreler) yerine bu şemaya göre tüm atamalar için parametreleri ayarlamaya (statik parametreler) olanak tanır. Bu örnek, şema atama sırasında dinamik parametreleri kullanır, bu nedenle varsayılan değerleri bırakın ve **iptal**' i seçin.
 
 1. Abonelik düzeyinde bir kaynak grubu ekleyin:
 
-   1. **Abonelik**altında **+ yapıt Ekle** satırını seçin.
+   1. **Abonelik** altında **+ yapıt Ekle** satırını seçin.
 
-   1. **Yapıt türü**için **kaynak grubu** seçin.
+   1. **Yapıt türü** için **kaynak grubu** seçin.
 
-   1. **Yapıt görünen adı**, **kaynak grubu adı**ve **konum** kutularını boş bırakın, ancak her bir parametre özelliği için onay kutusunun işaretli olduğundan emin olun.
+   1. **Yapıt görünen adı**, **kaynak grubu adı** ve **konum** kutularını boş bırakın, ancak her bir parametre özelliği için onay kutusunun işaretli olduğundan emin olun.
 
    1. Bu yapıtı şemasını Blueprint öğesine eklemek için **Ekle** ' yi seçin.
 
@@ -83,7 +83,7 @@ Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumd
 
    1. **ResourceGroup** girişinde **+ yapıt Ekle** satırını seçin.
 
-   1. **Yapıt türü**için **Azure Resource Manager şablonu** seçin, **yapıt görünen adını** **storageaccount**olarak ayarlayın ve **açıklamayı** boş bırakın.
+   1. **Yapıt türü** için **Azure Resource Manager şablonu** seçin, **yapıt görünen adını** **storageaccount** olarak ayarlayın ve **açıklamayı** boş bırakın.
 
    1. Düzenleyici kutusundaki **şablon** sekmesinde, aşağıdaki ARM şablonunu yapıştırın. Şablonu yapıştırdıktan sonra **Parametreler** sekmesini seçin ve **storageaccounttype** ve **Location** şablon parametrelerinin algılandığını unutmayın. Her bir parametre otomatik olarak algılanır ve doldurulmuştur, ancak dinamik parametre olarak yapılandırıldı.
 
@@ -139,15 +139,15 @@ Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumd
       }
       ```
 
-   1. **Storageaccounttype** onay kutusunu temizleyin ve açılan listenin yalnızca, **allowedValues**altındaki ARM şablonuna eklenen değerleri içerdiğini unutmayın. Bir dinamik parametreye geri ayarlamak için kutuyu seçin.
+   1. **Storageaccounttype** onay kutusunu temizleyin ve açılan listenin yalnızca, **allowedValues** altındaki ARM şablonuna eklenen değerleri içerdiğini unutmayın. Bir dinamik parametreye geri ayarlamak için kutuyu seçin.
 
    1. Bu yapıtı şemasını Blueprint öğesine eklemek için **Ekle** ' yi seçin.
 
-   :::image type="content" source="./media/create-blueprint-portal/add-resource-manager-template.png" alt-text="Şeması tanımları sayfasındaki ' Blueprint oluştur ' düğmesinin ekran görüntüsü." border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/add-resource-manager-template.png" alt-text="Bir şema tanımına eklemek için Kaynak Yöneticisi şablonu yapıt seçeneklerinin ekran görüntüsü." border="false":::
 
-1. Tamamladığınız şema aşağıdakine benzer olmalıdır. Her yapının **Parameters** sütununda doldurulmuş ** _x_ -Out _y_ parametresi** olduğuna dikkat edin. Dinamik parametreler şemanın her atamasında ayarlanır.
+1. Tamamladığınız şema aşağıdakine benzer olmalıdır. Her yapının **Parameters** sütununda doldurulmuş **_x_ -Out _y_ parametresi** olduğuna dikkat edin. Dinamik parametreler şemanın her atamasında ayarlanır.
 
-   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint.png" alt-text="Şeması tanımları sayfasındaki ' Blueprint oluştur ' düğmesinin ekran görüntüsü." border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint.png" alt-text="Her yapıt türüyle tamamlanmış bir şema tanımının ekran görüntüsü." border="false":::
 
 1. Tüm planlı yapıtlar eklenmiş olduğuna göre, sayfanın en altındaki **Taslağı kaydet** ' i seçin.
 
@@ -167,19 +167,19 @@ Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumd
 
    1. Yalnızca **ResourceGroup** girişinin altında bulunan **+ yapıt Ekle** satırını seçin.
 
-   1. **Yapıt türü**için **rol ataması** seçin.
+   1. **Yapıt türü** için **rol ataması** seçin.
 
-   1. **Rol**altında, **sahip**' i seçin ve **Kullanıcı, uygulama veya Grup Ekle** kutusunda onay kutusunun işaretini kaldırın.
+   1. **Rol** altında, **sahip**' i seçin ve **Kullanıcı, uygulama veya Grup Ekle** kutusunda onay kutusunun işaretini kaldırın.
 
    1. Eklenecek bir Kullanıcı, uygulama veya grup bulun ve seçin. Yapıt, bu şemanın tüm atamalarında aynı statik parametreyi kullanır.
 
    1. Bu yapıtı şemasını Blueprint öğesine eklemek için **Ekle** ' yi seçin.
 
-   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment-2.png" alt-text="Şeması tanımları sayfasındaki ' Blueprint oluştur ' düğmesinin ekran görüntüsü." border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment-2.png" alt-text="Şema tanımına eklemek için ikinci rol atama yapıt seçeneklerinin ekran görüntüsü." border="false":::
 
-1. Tamamladığınız şema aşağıdakine benzer olmalıdır. Yeni eklenen rol atamasında 1 ' den fazla **parametre doldurulduğuna**dikkat edin. Bu, bir statik parametre olduğu anlamına gelir.
+1. Tamamladığınız şema aşağıdakine benzer olmalıdır. Yeni eklenen rol atamasında 1 ' den fazla **parametre doldurulduğuna** dikkat edin. Bu, bir statik parametre olduğu anlamına gelir.
 
-   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint-2.png" alt-text="Şeması tanımları sayfasındaki ' Blueprint oluştur ' düğmesinin ekran görüntüsü." border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint-2.png" alt-text="İkinci tamamlanmış şema tanımının ek rol atama yapıtı ile ekran görüntüsü." border="false":::
 
 1. Taslağı Şimdi güncelleştirilmiş olarak **Kaydet** ' i seçin.
 
@@ -192,7 +192,7 @@ Yayımlama, BLUEPRINT 'in bir aboneliğe atanmasını sağlar.
 
 1. Planlar listesinde, daha önce oluşturduğunuz birine sağ tıklayın ve şema **Yayımla**' yı seçin.
 
-1. Açılan bölmede, **v1**gibi en fazla 20 karakter uzunluğunda bir **Sürüm** (harfler, rakamlar ve kısa çizgiler) sağlayın. İsteğe bağlı olarak, **ilk yayımlama**gibi **değişiklik notlarına**metin girin.
+1. Açılan bölmede, **v1** gibi en fazla 20 karakter uzunluğunda bir **Sürüm** (harfler, rakamlar ve kısa çizgiler) sağlayın. İsteğe bağlı olarak, **ilk yayımlama** gibi **değişiklik notlarına** metin girin.
 
 1. Sayfanın alt kısmındaki **Yayımla** ' yı seçin.
 
@@ -218,7 +218,7 @@ Yayımlama, BLUEPRINT 'in bir aboneliğe atanmasını sağlar.
 
    1. Sayfanın alt kısmında **Oluştur** ' u seçin.
 
-      :::image type="content" source="./media/create-blueprint-portal/assignment-create-subscription.png" alt-text="Şeması tanımları sayfasındaki ' Blueprint oluştur ' düğmesinin ekran görüntüsü." border="false":::
+      :::image type="content" source="./media/create-blueprint-portal/assignment-create-subscription.png" alt-text="Abonelik oluştur penceresinin ve yeni abonelik seçeneklerinin ekran görüntüsü." border="false":::
 
       > [!IMPORTANT]
       > Yeni Abonelik **Oluştur**' u seçtikten hemen sonra oluşturulur.
@@ -226,7 +226,7 @@ Yayımlama, BLUEPRINT 'in bir aboneliğe atanmasını sağlar.
    > [!NOTE]
    > Seçtiğiniz her abonelik için bir atama oluşturulur. Seçili aboneliklerin geri kalanı üzerinde değişiklik yapmaya gerek kalmadan, tek bir abonelik atamasında daha sonra değişiklikler yapabilirsiniz.
 
-1. **Atama adı**için, bu atama için benzersiz bir ad sağlayın.
+1. **Atama adı** için, bu atama için benzersiz bir ad sağlayın.
 
 1. **Konum**' da, içinde oluşturulacak yönetilen kimlik ve abonelik dağıtım nesnesi için bir bölge seçin. Azure Blueprint bu yönetilen kimliği kullanarak tüm yapıtları atanmış şemaya dağıtır. Daha fazla bilgi için bkz. [Azure kaynakları Için Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md).
 
@@ -234,21 +234,21 @@ Yayımlama, BLUEPRINT 'in bir aboneliğe atanmasını sağlar.
 
 1. **Atamayı Kilitle** seçeneği için varsayılan **Kilitleme** ayarını değiştirmeyin. Daha fazla bilgi için bkz. [kaynak kilitlemeyi planlar](./concepts/resource-locking.md).
 
-   :::image type="content" source="./media/create-blueprint-portal/assignment-locking-mi.png" alt-text="Şeması tanımları sayfasındaki ' Blueprint oluştur ' düğmesinin ekran görüntüsü." border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/assignment-locking-mi.png" alt-text="Şema ataması için kilitleme atamasının ve yönetilen kimlik seçeneklerinin ekran görüntüsü." border="false":::
 
-1. **Yönetilen kimlik**altında, varsayılan olarak **atanmış sistem**' i bırakın.
+1. **Yönetilen kimlik** altında, varsayılan olarak **atanmış sistem**' i bırakın.
 
 1. Abonelik düzeyinde rol ataması **[Kullanıcı grubu veya uygulama adı]:Katkıda bulunan** için bir kullanıcı, uygulama veya grup arayıp seçin.
 
 1. Abonelik düzeyi ilke ataması için, **etiket adı** ' nı **costcenter** olarak ayarlayın ve bu **değeri** **contoso.**
 
-1. **ResourceGroup**için, açılan listeden bir **storageaccount** **adı** ve **Doğu ABD 2** bir **konum** sağlayın.
+1. **ResourceGroup** için, açılan listeden bir **storageaccount** **adı** ve **Doğu ABD 2** bir **konum** sağlayın.
 
    > [!NOTE]
    > Şema tanımı sırasında kaynak grubu altına eklediğiniz her bir yapıt için, bu yapıt, ile dağıtacağınız kaynak grubu veya nesne ile hizalanacak şekilde girintilenir.
    > Parametre alma veya atama sırasında tanımlanacak hiçbir parametresi olmayan yapıtlar yalnızca bağlamsal bilgiler için listelenir.
 
-1. ARM şablonu **Storageaccount**sayfasında **storageaccounttype** parametresi için **Standard_GRS** öğesini seçin.
+1. ARM şablonu **Storageaccount** sayfasında **storageaccounttype** parametresi için **Standard_GRS** öğesini seçin.
 
 1. Sayfanın altındaki bilgi kutusunu okuyun ve ardından **ata**' yı seçin.
 
@@ -265,7 +265,7 @@ Bir şema bir veya daha fazla aboneliğe atandığında iki şey gerçekleşir:
 
 1. Planlar listesinde, daha önce atadığınız birine sağ tıklayın ve **atama ayrıntılarını görüntüle**' yi seçin.
 
-   :::image type="content" source="./media/create-blueprint-portal/view-assignment-details.png" alt-text="Şeması tanımları sayfasındaki ' Blueprint oluştur ' düğmesinin ekran görüntüsü." border="false":::
+   :::image type="content" source="./media/create-blueprint-portal/view-assignment-details.png" alt-text="' Atama ayrıntılarını görüntüle ' seçeneği belirlenmiş olan şema atama bağlam menüsünün ekran görüntüsü." border="false":::
 
 1. **Blueprint atama** sayfasında, tüm yapıtların başarıyla dağıtıldığını ve dağıtım sırasında hata olmadığını doğrulayın. Hata oluştuysa, nelerin yanlış olduğunu belirlemek için bkz. [sorun giderme şemaları](./troubleshoot/general.md) .
 

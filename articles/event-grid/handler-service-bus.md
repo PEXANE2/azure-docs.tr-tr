@@ -3,12 +3,12 @@ title: Service Bus kuyrukları ve konuları Azure Event Grid olaylar için olay 
 description: Azure Event Grid olaylar için Service Bus kuyrukları ve konuları olay işleyicileri olarak nasıl kullanabileceğinizi açıklar.
 ms.topic: conceptual
 ms.date: 09/03/2020
-ms.openlocfilehash: ab219f0dc6009dc01d5915995fc04094e72a88cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b18009f8fb31f1a5f057c7395781f63f182847f
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629514"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "96024223"
 ---
 # <a name="service-bus-queues-and-topics-as-event-handlers-for-azure-event-grid-events"></a>Service Bus kuyrukları ve konuları Azure Event Grid olaylar için olay işleyicileri olarak
 Olay işleyicisi, olayın gönderildiği yerdir. İşleyici, olayı işlemek için başka bir eylem gerçekleştirir. Çeşitli Azure Hizmetleri, olayları işleyecek şekilde otomatik olarak yapılandırılır ve bunlardan biridir **Azure Service Bus** . 
@@ -50,18 +50,8 @@ az eventgrid event-subscription create \
     --endpoint /subscriptions/{SubID}/resourceGroups/TestRG/providers/Microsoft.ServiceBus/namespaces/ns1/topics/topic1
 ```
 
-## <a name="message-properties"></a>İleti özellikleri
-Event Grid olaylar için olay işleyicisi olarak bir **Service Bus konusu veya kuyruğu** kullanırsanız, bunlar ileti üst bilgilerinde aldığınız özelliklerdir: 
+[!INCLUDE [event-grid-message-headers](../../includes/event-grid-message-headers.md)]
 
-| Özellik adı | Açıklama |
-| ------------- | ----------- | 
-| AEG-abonelik-adı | Olay aboneliğinin adı. |
-| AEG-Delivery-Count | <p>Olay için yapılan deneme sayısı.</p> <p>Örnek: "1"</p> |
-| AEG-Event-Type | <p>Etkinliğin türü.</p><p> Örnek: "Microsoft. Storage. blobCreated"</p> | 
-| AEG-Metadata-Version | <p>Etkinliğin meta veri sürümü.</p> <p>Örnek: "1".</p><p> **Event Grid olay şeması**için, bu özellik meta veri sürümünü ve **bulut olay şeması**için, **Belirtim sürümünü**temsil eder. </p>|
-| AEG-veri sürümü | <p>Etkinliğin veri sürümü.</p><p>Örnek: "1".</p><p>**Event Grid olay şeması**için, bu özellik veri sürümünü ve **bulut olay şeması**için, uygulanmaz.</p> |
-
-## <a name="message-headers"></a>İleti üstbilgileri
 Bir Service Bus kuyruğuna veya konusuna aracılı bir ileti olarak bir olay gönderirken `messageid` aracılı iletinin bir iç SISTEM kimliği olması gerekir.
 
 İleti için iç sistem KIMLIĞI, olay yeniden teslim sırasında korunur, böylece, Service Bus varlığında **yinelenen saptamayı** etkinleştirerek yinelenen teslimleri önleyebilirsiniz. Service Bus varlığındaki yinelenen algılamanın süresinin, etkinliğin yaşam süresi (TTL) veya en fazla yeniden deneme süresi (hangisi daha uzun) olması için etkinleştirmenizi öneririz.

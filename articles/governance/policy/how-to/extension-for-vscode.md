@@ -4,11 +4,11 @@ description: Visual Studio Code için Azure Ilke uzantısı 'nı kullanarak Azur
 ms.date: 10/20/2020
 ms.topic: how-to
 ms.openlocfilehash: 233c9158c30d6c373dd6147090894dc83b83da3d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317626"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022437"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Visual Studio Code için Azure Ilke uzantısı 'nı kullanın
 
@@ -21,7 +21,7 @@ Visual Studio Code için Azure Ilke uzantısı, Visual Studio Code tarafından d
 > [!NOTE]
 > Visual Studio Code için Azure Ilke uzantısında görüntülenen ilkelerde yerel olarak yapılan değişiklikler Azure ile eşitlenmez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlamak için aşağıdaki öğeler gereklidir:
 
@@ -46,7 +46,7 @@ Bu makaledeki adımları tamamlamak için aşağıdaki öğeler gereklidir:
 
 Ulusal bir bulut kullanıcısı için, önce Azure ortamını ayarlamak üzere aşağıdaki adımları izleyin:
 
-1. **File\preferences\settings**öğesini seçin.
+1. **File\preferences\settings** öğesini seçin.
 
 1. Şu dizeyi arayın: _Azure: Cloud_
 
@@ -64,13 +64,13 @@ Kaynakları ve arama diğer adlarını değerlendirmek için Azure hesabınıza 
 
      Azure Ilke uzantısı ' **nda Azure 'Da oturum aç**' ı seçin.
 
-     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png" alt-text="Visual Studio Code için ulus Azure bulutu oturum açma seçeneğinin ekran görüntüsü." border="false":::
+     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png" alt-text="Visual Studio Code ekran görüntüsü ve Azure Ilke uzantısı simgesi." border="false":::
 
    - Komut paleti
 
      Menü çubuğundan **Görünüm**  >  **komut paleti**' ne gidin ve **Azure: oturum aç**' ı girin.
 
-     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="Visual Studio Code için ulus Azure bulutu oturum açma seçeneğinin ekran görüntüsü." border="false":::
+     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="Komut paletinden Visual Studio Code için Azure bulutu oturum açma seçeneklerinin ekran görüntüsü." border="false":::
 
 1. Azure 'da oturum açmak için oturum açma yönergelerini izleyin. Bağlandıktan sonra, Azure hesabınızın adı Visual Studio Code penceresinin altındaki durum çubuğunda gösterilir.
 
@@ -86,7 +86,7 @@ Kaynakları ve arama diğer adlarını değerlendirmek için Azure hesabınıza 
 
    - Pencere altbilgisi
 
-     Ekranın alt kısmındaki pencere altbilgisinde, Azure ile eşleşen segmenti seçin **: \<your account\> **.
+     Ekranın alt kısmındaki pencere altbilgisinde, Azure ile eşleşen segmenti seçin **: \<your account\>**.
 
 1. Abonelik adına göre hızlı bir şekilde bulmak için filtre kutusunu kullanın. Ardından, Azure Ilke uzantısı tarafından gösterilen abonelikleri ayarlamak için her bir aboneliğin denetimini denetleyin veya kaldırın. Görüntülenecek abonelikleri ekleme veya kaldırma bittiğinde **Tamam**' ı seçin.
 
@@ -96,10 +96,10 @@ Azure Ilke uzantısı kaynak sağlayıcısına göre seçilen aboneliklerdeki ka
 
 - **Kaynak sağlayıcıları**
   - Kaynaklara ve ilke diğer adlarına sahip ilgili alt kaynaklara sahip kayıtlı her kaynak sağlayıcısı
-- **Kaynak grupları**
+- **Kaynak Grupları**
   - Kaynak grubuna göre tüm kaynaklar
 
-Varsayılan olarak, uzantı ' kaynak sağlayıcısı ' bölümünü, ilke diğer adlarına sahip mevcut kaynak ve kaynaklarla filtreler. **Settings**  >  **Extensions**  >  Tüm kaynak sağlayıcılarını filtrelemeden görmek için ayarlar uzantıları**Azure ilkesi** ' nde bu davranışı değiştirin.
+Varsayılan olarak, uzantı ' kaynak sağlayıcısı ' bölümünü, ilke diğer adlarına sahip mevcut kaynak ve kaynaklarla filtreler. **Settings**  >  **Extensions**  >  Tüm kaynak sağlayıcılarını filtrelemeden görmek için ayarlar uzantıları **Azure ilkesi** ' nde bu davranışı değiştirin.
 
 Tek bir abonelikte yüzlerce veya binlerce kaynağa sahip müşteriler, kaynaklarını bulmaya yönelik aranabilir bir yol gerektirebilir. Azure Ilke uzantısı, aşağıdaki adımlarla belirli bir kaynağı aramanızı mümkün kılar:
 
@@ -125,7 +125,7 @@ Bir kaynak seçildiğinde, arama arabiriminden veya TreeView 'da seçilerek, Azu
 
 Bir kaynak açıldıktan sonra, Kaynak Yöneticisi özellik adı veya değerinin üzerine gelindiğinde, varsa Azure Ilkesi diğer adı görüntülenir. Bu örnekte, kaynak bir `Microsoft.Compute/virtualMachines` kaynak türüdür ve **Properties. Storageprofile. ImageReference. teklifin** özelliği üzerine düştir. Vurgulama, eşleşen diğer adları gösterir.
 
-:::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Visual Studio Code için ulus Azure bulutu oturum açma seçeneğinin ekran görüntüsü." border="false":::
+:::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Visual Studio Code için Azure Ilke uzantısının, diğer ad adlarını görüntüleyecek bir özelliği bir ekran görüntüsü." border="false":::
 
 > [!NOTE]
 > VS Code uzantısı yalnızca Kaynak Yöneticisi modu özelliklerini gösterir ve herhangi bir [kaynak sağlayıcısı modu](../concepts/definition-structure.md#mode) özelliği görüntülemez.

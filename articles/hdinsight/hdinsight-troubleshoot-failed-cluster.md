@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: 4fea7719d0aa375aad3d2795d240006222b6486c
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535102"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022709"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>HDInsight kümesinde yavaş veya başarısız olan bir işin sorunlarını giderme
 
@@ -115,7 +115,7 @@ Aşağıdaki bölümlerde, her bir düğümün sistem durumunun ve toplam kümen
 
 ### <a name="check-your-webhcat-service"></a>WebHCat hizmetinizi denetleyin
 
-Apache Hive, Apache Pig veya Apache Sqoop işleri için bir yaygın senaryo, [Webhcat](hdinsight-hadoop-templeton-webhcat-debug-errors.md) (veya *tempkaton* ) hizmeti ile başarısız oluyor. WebHCat, Hive, Pig, Scoop ve MapReduce gibi uzak iş yürütmesi için bir REST arabirimidir. WebHCat, iş gönderme isteklerini Apache Hadoop YARN uygulamalarına çevirir ve YARN uygulama durumundan türetilmiş bir durum döndürür.  Aşağıdaki bölümlerde ortak WebHCat HTTP durum kodları açıklanır.
+Apache Hive, Apache Pig veya Apache Sqoop işleri için bir yaygın senaryo, [Webhcat](hdinsight-hadoop-templeton-webhcat-debug-errors.md) (veya *tempkaton*) hizmeti ile başarısız oluyor. WebHCat, Hive, Pig, Scoop ve MapReduce gibi uzak iş yürütmesi için bir REST arabirimidir. WebHCat, iş gönderme isteklerini Apache Hadoop YARN uygulamalarına çevirir ve YARN uygulama durumundan türetilmiş bir durum döndürür.  Aşağıdaki bölümlerde ortak WebHCat HTTP durum kodları açıklanır.
 
 #### <a name="badgateway-502-status-code"></a>BadGateway (502 durum kodu)
 
@@ -206,7 +206,7 @@ Bu sorunları tanılamak için:
 
 ## <a name="step-4-review-the-environment-stack-and-versions"></a>4. Adım: ortam yığınını ve sürümlerini gözden geçirme
 
-Ambarı Kullanıcı arabirimi **yığını ve sürümü** sayfası, Küme Hizmetleri Yapılandırması ve hizmet sürümü geçmişi hakkında bilgi sağlar.  Hatalı Hadoop hizmeti kitaplık sürümleri, küme hatasının nedeni olabilir.  Ambarı Kullanıcı arabiriminde, **yönetici** menüsünü ve ardından  **yığınlar ve sürümler** ' i seçin.  Hizmet sürümü bilgilerini görmek için sayfada **sürümler** sekmesini seçin:
+Ambarı Kullanıcı arabirimi **yığını ve sürümü** sayfası, Küme Hizmetleri Yapılandırması ve hizmet sürümü geçmişi hakkında bilgi sağlar.  Hatalı Hadoop hizmeti kitaplık sürümleri, küme hatasının nedeni olabilir.  Ambarı Kullanıcı arabiriminde, **yönetici** menüsünü ve ardından  **yığınlar ve sürümler**' i seçin.  Hizmet sürümü bilgilerini görmek için sayfada **sürümler** sekmesini seçin:
 
 ![Apache ambarı yığını ve sürümleri](./media/hdinsight-troubleshoot-failed-cluster/ambari-stack-versions.png)
 

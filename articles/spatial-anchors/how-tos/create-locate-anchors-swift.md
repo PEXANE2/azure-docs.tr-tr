@@ -1,19 +1,19 @@
 ---
 title: Swift 'ta bağlantıları oluşturma & bulma
 description: Swift 'ta Azure uzamsal bağlayıcılarını kullanarak bağlantıları oluşturma ve bulma hakkında ayrıntılı açıklama.
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: rgarcia
-ms.date: 02/24/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 79d369ffc78fbacd0c66b7fdfffd9ac5b0cb1fd5
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 5cff1368380980d3bf73de6a7399f8c53b62bed6
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097482"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96024121"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-swift"></a>Swift 'ta Azure uzamsal bağlayıcıları kullanarak Tutturucular oluşturma ve bulma
 
@@ -32,7 +32,7 @@ Azure uzamsal bağlantıları, dünyanın farklı cihazları arasında bağlant�
 - Bunları buluta yükleyin.
 - Bulut uzamsal bağlayıcılarını bulun ve silin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu kılavuzu gerçekleştirmek için şunları yaptığınızdan emin olun:
 

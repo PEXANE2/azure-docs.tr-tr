@@ -1,19 +1,19 @@
 ---
 title: C++ ' da bağlantıları oluşturun & bulun/NDK
 description: C++ ' da Azure uzamsal bağlayıcılarını kullanarak bağlantıları oluşturma ve bulma hakkında ayrıntılı açıklama.
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: rgarcia
-ms.date: 02/24/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 445528b7d4f8d0b50270dfd775f6453252396f4c
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 8c25b337447a0b5d2eab777cd2c9df69efeed0bb
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097550"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96022522"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-cndk"></a>C++ ' da Azure uzamsal bağlayıcılarını kullanarak bağlayıcıları oluşturma ve bulma/N/NDK
 
@@ -32,7 +32,7 @@ Azure uzamsal bağlantıları, dünyanın farklı cihazları arasında bağlant�
 - Bunları buluta yükleyin.
 - Bulut uzamsal bağlayıcılarını bulun ve silin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu kılavuzu gerçekleştirmek için şunları yaptığınızdan emin olun:
 

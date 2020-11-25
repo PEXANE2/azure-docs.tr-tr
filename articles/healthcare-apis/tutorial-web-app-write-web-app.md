@@ -10,11 +10,11 @@ ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
 ms.openlocfilehash: bb9c206a17a11f0cf710ac4ee3ac7ccae0fa9eb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87848035"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023304"
 ---
 # <a name="write-azure-web-application-to-read-fhir-data"></a>FHıR verilerini okumak için Azure Web uygulaması yazma
 Artık FHıR sunucunuza bağlanabildiğinizi ve veri GÖNDERIYOR olduğunuza göre, FHıR verilerini okuyacak bir Web uygulaması yazmaya hazırsınız. Öğreticinin bu son adımında, Web uygulamasına yazma ve erişme konusunda adım adım göstereceğiz.
@@ -24,7 +24,7 @@ Azure 'da **kaynak oluştur** ' u seçin ve **Web uygulaması**' nı seçin. Web
 
 ![Web uygulaması oluştur](media/tutorial-web-app/create-web-app.png)
 
-Web uygulaması kullanılabilir olduğunda **kaynağa gidin**. Sağdaki geliştirme araçları altında **App Service Düzenleyicisi (Önizleme)** öğesini seçin ve ardından **Git**' i seçin. Git ' i seçtiğinizde App Service Düzenleyicisi açılır. *Keşfet* ' in altındaki gri alanına sağ tıklayın ve **index.html**adlı yeni bir dosya oluşturun.
+Web uygulaması kullanılabilir olduğunda **kaynağa gidin**. Sağdaki geliştirme araçları altında **App Service Düzenleyicisi (Önizleme)** öğesini seçin ve ardından **Git**' i seçin. Git ' i seçtiğinizde App Service Düzenleyicisi açılır. *Keşfet* ' in altındaki gri alanına sağ tıklayın ve **index.html** adlı yeni bir dosya oluşturun.
 
 Aşağıda **index.html**'ye giriş yapabilirsiniz. Aşağıdaki öğeleri güncelleştirmeniz gerekecektir:
 * **ClientID** -ISTEMCI uygulama Kimliğinizle güncelleştirin. Bu KIMLIK, belirtecinizi alırken çekilecek KIMLIK ile aynı olacak

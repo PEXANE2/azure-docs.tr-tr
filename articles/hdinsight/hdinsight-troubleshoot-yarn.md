@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: b8dc63030c6791779ad90500747e4e2f5c4ffeef
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288987"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022675"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Azure HDInsight kullanarak Apache Hadoop YARN sorunlarını giderme
 
@@ -24,7 +24,7 @@ Apache ambarı 'nda Apache Hadoop YARN yükleriyle çalışırken en üstteki so
 
 Yeni bir YARN kuyruğu oluşturmak için aşağıdaki adımları kullanın ve ardından Tüm kuyruklar arasında kapasite ayırmayı dengeleyin.
 
-Bu örnekte, iki mevcut kuyruk ( **varsayılan** ve **thriftsvr** ) her ikisi de %50 kapasitesinden %25 kapasiteye (Spark) %50 kapasiteye sahip olacak şekilde değiştirilmiştir.
+Bu örnekte, iki mevcut kuyruk (**varsayılan** ve **thriftsvr**) her ikisi de %50 kapasitesinden %25 kapasiteye (Spark) %50 kapasiteye sahip olacak şekilde değiştirilmiştir.
 
 | Kuyruk | Kapasite | Maksimum kapasite |
 | --- | --- | --- |
@@ -32,7 +32,7 @@ Bu örnekte, iki mevcut kuyruk ( **varsayılan** ve **thriftsvr** ) her ikisi de
 | thrftsvr | 25% | 50% |
 | spark | 50% | 50% |
 
-1. **Ambarı görünümleri** simgesini seçin ve ardından Kılavuz stilini seçin. Sonra, **Yarn kuyruğu Yöneticisi** ' ni seçin.
+1. **Ambarı görünümleri** simgesini seçin ve ardından Kılavuz stilini seçin. Sonra, **Yarn kuyruğu Yöneticisi**' ni seçin.
 
     ![Apache ambarı panosu YARN Kuyruk Yöneticisi](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
 2. **Varsayılan** kuyruğu seçin.
@@ -41,7 +41,7 @@ Bu örnekte, iki mevcut kuyruk ( **varsayılan** ve **thriftsvr** ) her ikisi de
 3. **Varsayılan** sıra için **kapasiteyi** %50 ' dan %25 ' e değiştirin. **Thriftsvr** kuyruğu için **kapasiteyi** %25 olarak değiştirin.
 
     ![Varsayılan ve thriftsvr kuyrukları için kapasiteyi %25 olarak değiştirin](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
-4. Yeni bir kuyruk oluşturmak için **kuyruk Ekle** ' yi seçin.
+4. Yeni bir kuyruk oluşturmak için **kuyruk Ekle**' yi seçin.
 
     ![Apache ambarı YARN Pano ekleme kuyruğu](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
 

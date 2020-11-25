@@ -7,16 +7,16 @@ ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 17a6a07d117557cdee23634bd211a14cf90d49e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85508988"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023780"
 ---
 # <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>StorSimple cihazınızın yedek pil modülünü değiştirme
 
 ## <a name="overview"></a>Genel Bakış
-Microsoft Azure StorSimple cihazınızdaki birincil muhafaza gücü ve soğutma modülü (PCM), ek bir pil paketine sahiptir. Bu paket, birincil kasada AC gücü kaybı olursa StorSimple cihazının verileri kaydedebilmesi için güç sağlar. Bu pil paketi *Yedekleme Pil modülü*olarak adlandırılır. Yedekleme pili modülü yalnızca StorSimple cihazınızdaki birincil kasa için mevcuttur (EBOD Kasası bir yedekleme pil modülü içermez).
+Microsoft Azure StorSimple cihazınızdaki birincil muhafaza gücü ve soğutma modülü (PCM), ek bir pil paketine sahiptir. Bu paket, birincil kasada AC gücü kaybı olursa StorSimple cihazının verileri kaydedebilmesi için güç sağlar. Bu pil paketi *Yedekleme Pil modülü* olarak adlandırılır. Yedekleme pili modülü yalnızca StorSimple cihazınızdaki birincil kasa için mevcuttur (EBOD Kasası bir yedekleme pil modülü içermez).
 
 Bu öğreticide, aşağıdaki işlemlerin nasıl yapılacağı açıklanmaktadır:
 
@@ -32,7 +32,7 @@ Bu öğreticide, aşağıdaki işlemlerin nasıl yapılacağı açıklanmaktadı
 StorSimple cihazınız için yedekleme pil modülü, alan tarafından değiştirilebilen bir birimdir. PCM 'e yüklenmeden önce, pil modülünün özgün paketinizde depolanması gerekir. Yedekleme pilini kaldırmak için aşağıdaki adımları gerçekleştirin.
 
 #### <a name="to-remove-the-backup-battery-module"></a>Yedekleme Pil modülünü kaldırmak için
-1. Azure portal, StorSimple Aygıt Yöneticisi hizmeti dikey pencerenize gidin. **Cihazlar** ' a gidin ve cihaz listesinden cihazınızı seçin. **Monitor**  >  **Donanım durumunu**izlemek için gidin. **Paylaşılan bileşenler**altında pilin durumuna bakın.
+1. Azure portal, StorSimple Aygıt Yöneticisi hizmeti dikey pencerenize gidin. **Cihazlar** ' a gidin ve cihaz listesinden cihazınızı seçin. **Monitor**  >  **Donanım durumunu** izlemek için gidin. **Paylaşılan bileşenler** altında pilin durumuna bakın.
 2. Pilin başarısız olduğu PCM 'yi belirler. Şekil 1 ' de StorSimple cihazının geri gösterilmektedir.
    
     ![Cihaz birincil kutu modüllerinin geri düzlemi](./media/storsimple-battery-replacement/IC740994.png)
@@ -76,12 +76,12 @@ Değiştirme pili modülünü, StorSimple cihazınızın birincil kasasında PCM
 1. Yedekleme Pil modülünü PCM 'de doğru yöne yerleştirin.
 2. Bağlayıcıyı oturmak için, pil modülünün tüm yolunu azaltın.
 3. [StorSimple cihazınızda güç ve soğutma modülünü değiştirme](storsimple-8000-power-cooling-module-replacement.md)konusundaki yönergeleri izleyerek birincil MUHAFAZADAKI PCM 'yi değiştirin.
-4. Değiştirme tamamlandıktan sonra cihazınıza gidin ve **Monitor**  >  Azure Portal**Donanım durumunu** İzle ' ye gidin. Yüklemenin başarılı olduğundan emin olmak için pilin durumunu doğrulayın. Yeşil bir durum, pilin sağlıklı olduğunu gösterir.
+4. Değiştirme tamamlandıktan sonra cihazınıza gidin ve **Monitor**  >  Azure Portal **Donanım durumunu** İzle ' ye gidin. Yüklemenin başarılı olduğundan emin olmak için pilin durumunu doğrulayın. Yeşil bir durum, pilin sağlıklı olduğunu gösterir.
 
 ## <a name="maintain-the-backup-battery-module"></a>Yedekleme Pil modülünü koruyun
 StorSimple cihazınızda, yedekleme pil modülü güç kaybı olayı sırasında denetleyiciye güç sağlar. StorSimple cihazının, denetimli bir şekilde kapatmadan önce kritik verileri kaydetmesine izin verir. PCMs 'de tamamen ücretlendirilen iki pille, sistem art arda iki kayıp olayını işleyebilir.
 
-Azure portal, **izleyici** dikey penceresindeki **donanım sistem durumu** , pilin arızalı mi yoksa yaşam süresi mi yaklaşdığını gösterir. Pil durumu, **paylaşılan bileşenler**altında **PCM 0** veya **PCM 1 ' de pille** bir şekilde gösterilir. Bu dikey pencere, son kullanım süresi boyunca **düşürülmüş** bir durum gösterir ve kullanım ömrü boyunca **başarısız** olur.
+Azure portal, **izleyici** dikey penceresindeki **donanım sistem durumu** , pilin arızalı mi yoksa yaşam süresi mi yaklaşdığını gösterir. Pil durumu, **paylaşılan bileşenler** altında **PCM 0** veya **PCM 1 ' de pille** bir şekilde gösterilir. Bu dikey pencere, son kullanım süresi boyunca **düşürülmüş** bir durum gösterir ve kullanım ömrü boyunca **başarısız** olur.
 
 > [!NOTE]
 > Yalnızca ücretlendirililmesi gerektiğinde, pilin **başarısız** olduğunu raporlayabilir.

@@ -7,11 +7,11 @@ author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: 650fb7f0877a98ef53ed3868550f9c084ecb5885
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84710210"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023559"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>Yük devretme sırasında IP adreslerini koruma
 
@@ -46,7 +46,7 @@ Yük devretmeden önce bu mimari aşağıda verilmiştir.
             - **Alt ağ 2**: 10.1.2.0/24
             - **Alt ağ 3**: 10.1.3.0/24
     - İkincil (hedef) bölge Azure Güneydoğu Asya
-        - Güneydoğu Asya 'nın, **kaynak VNET**ile özdeş bir kurtarma VNET (**Kurtarma VNET**) vardır.
+        - Güneydoğu Asya 'nın, **kaynak VNET** ile özdeş bir kurtarma VNET (**Kurtarma VNET**) vardır.
         - Güneydoğu Asya 'da 10.2.0.0/16 adres alanı ile ek bir VNet (**Azure VNET**) vardır.
         - **Azure VNET** , adres alanı 10.2.4.0/24 olan bir alt ağ (**alt ağ 4**) içerir.
         - SQL Server her zaman açık, etki alanı denetleyicisi vb. için çoğaltma düğümleri **alt ağ 4**' te bulunur.
@@ -60,7 +60,7 @@ Yük devretmeden önce bu mimari aşağıda verilmiştir.
 
 Kaynak bölgesel bir kesinti oluşursa, A şirketi tüm kaynaklarını hedef bölgeye devreder.
 
-- Yük devretme işleminden önce hedef IP adresleriyle zaten mevcut olan Şirket A, yük devretmeyi düzenleyebilir ve **Kurtarma VNET** Ile **Azure VNET**arasında yük devretmeden sonra otomatik olarak bağlantı kurabilir. Bu, aşağıdaki diyagramda gösterilmiştir.
+- Yük devretme işleminden önce hedef IP adresleriyle zaten mevcut olan Şirket A, yük devretmeyi düzenleyebilir ve **Kurtarma VNET** Ile **Azure VNET** arasında yük devretmeden sonra otomatik olarak bağlantı kurabilir. Bu, aşağıdaki diyagramda gösterilmiştir.
 - Uygulama gereksinimlerine bağlı olarak, hedef bölgedeki iki sanal ağ (**Kurtarma VNET** ve **Azure VNET**) arasındaki bağlantılar, (ara adım olarak) veya yük devretmeden önce oluşturulabilir.
   - Şirket, bağlantıların ne zaman kurulacağıdır belirtmek için [Kurtarma planlarını](site-recovery-create-recovery-plans.md) kullanabilir.
   - VNet eşlemesi veya siteden siteye VPN kullanan sanal ağlar arasında bağlantı kuramazlar.
@@ -89,7 +89,7 @@ Yük devretmeden önce, mimari aşağıdaki gibidir:
     - **App2** VM 'Ler VNet **kaynak VNET 2**: 10.2.0.0/16 konumunda bulunur.
     - **Kaynak VNET 1** ' in iki alt ağı vardır.
     - **Kaynak VNET 2** ' nin iki alt ağı vardır.
-- İkincil (hedef) bölge Azure Güneydoğu Asya-Güneydoğu Asya, **kaynak VNET 1** ve **kaynak VNET 2**ile aynı olan bir kurtarma sanal ağlarına (**Kurtarma VNET 1** ve **Kurtarma VNET 2**) sahiptir.
+- İkincil (hedef) bölge Azure Güneydoğu Asya-Güneydoğu Asya, **kaynak VNET 1** ve **kaynak VNET 2** ile aynı olan bir kurtarma sanal ağlarına (**Kurtarma VNET 1** ve **Kurtarma VNET 2**) sahiptir.
         - **Kurtarma VNET 1** ve **Kurtarma VNET 2** her birinde, **kaynak VNET 1** ' deki alt ağlarla eşleşen Iki alt ağ bulunur ve **kaynak VNET 2** -Güneydoğu Asya, adres alanı 10.3.0.0/16 olan ek bir VNET 'e (**Azure VNET**) sahiptir.
         - **Azure VNET** , adres alanı 10.3.4.0/24 olan bir alt ağ (**alt ağ 4**) içerir.
         -SQL Server her zaman açık, etki alanı denetleyicisi vb. için çoğaltma düğümleri **alt ağ 4**' te bulunur.
@@ -109,8 +109,8 @@ Yük devretmeden önce, mimari aşağıdaki gibidir:
 Tek bir uygulamayı etkileyen bir kesinti veya sorun durumunda (örneğimizde * * kaynak VNet 2 ' de), Şirket A, etkilenen uygulamayı aşağıdaki şekilde kurtarabilir:
 
 
-- Kaynak **VNet1** ve **kaynak VNet2**arasında ve **kaynak VNET2** ile **Azure VNET** arasında VPN bağlantılarının bağlantısını kesin.
-- **Kaynak VNet1** ve **Kurtarma VNet2**arasında ve **Kurtarma VNET2** ile **Azure VNET**arasında VPN bağlantıları oluşturun.
+- Kaynak **VNet1** ve **kaynak VNet2** arasında ve **kaynak VNET2** ile **Azure VNET** arasında VPN bağlantılarının bağlantısını kesin.
+- **Kaynak VNet1** ve **Kurtarma VNet2** arasında ve **Kurtarma VNET2** ile **Azure VNET** arasında VPN bağlantıları oluşturun.
 - **Kaynak VNet2** 'de **Kurtarma VNet2**'ye yük devretme yükünü devreder.
 
 ![Azure Uygulama yük devretmesi kaynakları](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-isolated-application-after-failover2.png)
@@ -134,7 +134,7 @@ Ağ mimarisinin yük devretmeden önce nasıl göründüğü aşağıda verilmi�
     - **Alt ağ 2**: 10.1.2.0/24
     - **Alt ağ 3**: 10.1.3.0/24, adres alanı 10.1.0.0/16 olan bir Azure sanal ağını kullanma. Bu sanal ağ, **kaynak VNET** olarak adlandırılmış
       - İkincil (hedef) bölge Azure Güneydoğu Asya:
-  - Güneydoğu Asya 'nın, **kaynak VNET**ile özdeş bir kurtarma VNET (**Kurtarma VNET**) vardır.
+  - Güneydoğu Asya 'nın, **kaynak VNET** ile özdeş bir kurtarma VNET (**Kurtarma VNET**) vardır.
 - Doğu Asya sanal makineler, Azure ExpressRoute veya siteden siteye VPN ile şirket içi veri merkezine bağlanır.
 - RTO 'ı azaltmak için Şirket B, yük devretmeden önce Azure Güneydoğu Asya 'daki kurtarma VNet 'teki ağ geçitlerini sağlar.
 - Şirket B, çoğaltılan VM 'Ler için hedef IP adreslerini atar/doğrular. Hedef IP adresi, her VM için kaynak IP adresi ile aynıdır.
@@ -147,7 +147,7 @@ Ağ mimarisinin yük devretmeden önce nasıl göründüğü aşağıda verilmi�
 
 Kaynak bölgesel bir kesinti oluşursa, B şirketi tüm kaynaklarını hedef bölgeye devreder.
 
-- Yük devretme işleminden önce hedef IP adresleri zaten mevcut olduğunda, B şirketi yük devretmeyi düzenleyebilir ve **Kurtarma VNET** Ile **Azure VNET**arasında yük devretmeden sonra otomatik olarak bağlantı kurabilir.
+- Yük devretme işleminden önce hedef IP adresleri zaten mevcut olduğunda, B şirketi yük devretmeyi düzenleyebilir ve **Kurtarma VNET** Ile **Azure VNET** arasında yük devretmeden sonra otomatik olarak bağlantı kurabilir.
 - Uygulama gereksinimlerine bağlı olarak, hedef bölgedeki iki sanal ağ (**Kurtarma VNET** ve **Azure VNET**) arasındaki bağlantılar, (ara adım olarak) veya yük devretmeden önce oluşturulabilir. Şirket, bağlantıların ne zaman kurulacağıdır belirtmek için [Kurtarma planlarını](site-recovery-create-recovery-plans.md) kullanabilir.
 - Azure Güneydoğu Asya ve şirket içi veri merkezi arasında bağlantı kurulmadan önce Azure Doğu Asya ile şirket içi veri merkezi arasındaki özgün bağlantının bağlantısı kesilmelidir.
 - Şirket içi yönlendirme, hedef bölgeye işaret etmek üzere yeniden yapılandırılır ve ağ geçitleri yük devretmeye gönderilir.

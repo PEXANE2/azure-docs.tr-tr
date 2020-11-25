@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/17/2020
-ms.openlocfilehash: d45f5d5d1d61372ed959334519aa865c22d70748
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: fa048473f0f285b793dad88c7defdb6189ca1ccd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832543"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023015"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Eşleme veri akışında havuz dönüştürme
 
@@ -107,6 +107,10 @@ Varsayılan olarak, veriler belirleyici olmayan bir sırada birden çok havuza y
 ## <a name="error-row-handling"></a>Hata satırı işleme
 
 Veritabanlarına yazarken, hedef tarafından ayarlanan kısıtlamalar nedeniyle belirli veri satırları başarısız olabilir. Varsayılan olarak, bir veri akışı çalıştırması aldığı ilk hatada başarısız olur. Belirli bağlayıcılarda, tek tek satırlarda bile veri akışının tamamlanmasını sağlayan **hata durumunda devam** etmeyi tercih edebilirsiniz. Şu anda bu özellik yalnızca Azure SQL veritabanı 'nda kullanılabilir. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'nda hata satırı işleme](connector-azure-sql-database.md#error-row-handling).
+
+Aşağıda, havuz dönüşümünüze veritabanı hata satırı işlemenin otomatik olarak nasıl kullanılacağı hakkında bir video öğreticisi verilmiştir.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4IWne]
 
 ## <a name="data-preview-in-sink"></a>Havuzda veri önizleme
 

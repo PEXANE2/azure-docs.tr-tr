@@ -16,16 +16,16 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
 ms.openlocfilehash: b3a9fee09d1eac6fb4d716af83c348cb2c21f7a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67870905"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023797"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>PHP 'den SendGrid e-posta hizmetini kullanma
 
 Bu kılavuzda, Azure 'da SendGrid e-posta hizmetiyle ortak programlama görevlerinin nasıl gerçekleştirileceği gösterilmektedir. Örnekler PHP 'de yazılmıştır.
-Kapsanan senaryolar, **e-posta**oluşturma, **e-posta gönderme**ve **Ek ekleme**içerir. SendGrid ve e-posta gönderme hakkında daha fazla bilgi için [sonraki adımlar](#next-steps) bölümüne bakın.
+Kapsanan senaryolar, **e-posta** oluşturma, **e-posta gönderme** ve **Ek ekleme** içerir. SendGrid ve e-posta gönderme hakkında daha fazla bilgi için [sonraki adımlar](#next-steps) bölümüne bakın.
 
 ## <a name="what-is-the-sendgrid-email-service"></a>SendGrid e-posta hizmeti nedir?
 SendGrid, özel tümleştirmeyi kolaylaştıran esnek API 'lerle birlikte güvenilir [işlem e-posta teslimi], ölçeklenebilirlik ve gerçek zamanlı çözümlemeler sağlayan [bulut tabanlı bir e-posta hizmetidir] . Ortak SendGrid kullanım senaryoları şunları içerir:
@@ -53,7 +53,7 @@ SMTP veya SendGrid tarafından belirtilen Web API 'sini kullanarak e-posta gönd
 
 ### <a name="smtp-api"></a>SMTP APı 'SI
 
-SendGrid SMTP API 'sini kullanarak e-posta göndermek için, PHP uygulamalarından e-posta göndermek için bileşen tabanlı bir kitaplık olan *Swift Göndericisini*kullanın. [Swift posta kitaplığı](https://swiftmailer.symfony.com/) v 5.3.0 'ı Indirebilirsiniz (Swift Göndericisini yüklemek Için [besteci] kullanın). Kitaplığı ile e-posta göndermek,, `Swift\_SmtpTransport` `Swift\_Mailer` , ve sınıflarının örneklerini oluşturmayı `Swift\_Message` , uygun özellikleri ayarlamayı ve yöntemini çağırmayı içerir `Swift\_Mailer::send` .
+SendGrid SMTP API 'sini kullanarak e-posta göndermek için, PHP uygulamalarından e-posta göndermek için bileşen tabanlı bir kitaplık olan *Swift Göndericisini* kullanın. [Swift posta kitaplığı](https://swiftmailer.symfony.com/) v 5.3.0 'ı Indirebilirsiniz (Swift Göndericisini yüklemek Için [besteci] kullanın). Kitaplığı ile e-posta göndermek,, `Swift\_SmtpTransport` `Swift\_Mailer` , ve sınıflarının örneklerini oluşturmayı `Swift\_Message` , uygun özellikleri ayarlamayı ve yöntemini çağırmayı içerir `Swift\_Mailer::send` .
 
 ```php
 <?php
@@ -299,7 +299,7 @@ Web API 'sini kullanarak ek göndermek, Web API 'sini kullanarak e-posta gönder
 
 ## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>Nasıl yapılır: altbilgileri, Izlemeyi ve analizlerini etkinleştirmek için filtreleri kullanma
 
-SendGrid, *filtrelerin*kullanımı aracılığıyla ek e-posta işlevselliği sağlar. Bunlar, tıklama izleme, Google Analytics, abonelik izleme gibi belirli işlevleri etkinleştirmek için bir e-posta iletisine eklenebilen ayarlardır.
+SendGrid, *filtrelerin* kullanımı aracılığıyla ek e-posta işlevselliği sağlar. Bunlar, tıklama izleme, Google Analytics, abonelik izleme gibi belirli işlevleri etkinleştirmek için bir e-posta iletisine eklenebilen ayarlardır.
 
 Filtreler, filtreler özelliği kullanılarak bir iletiye uygulanabilir. Her filtre filtreye özgü ayarları içeren bir karmayla belirtilir. Aşağıdaki örnek, alt bilgi filtresini sağlar ve e-posta iletisinin altına eklenecek bir kısa mesaj belirtir. Bu örnekte, [SendGrid-php kitaplığı]kullanacağız.
 

@@ -6,11 +6,11 @@ ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: reference
 ms.openlocfilehash: 8313243bf680ea1a1d63f2719b647149a04935a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88893111"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024053"
 ---
 # <a name="material-mapping-for-model-formats"></a>Model biçimleri için malzeme eşleme
 
@@ -20,7 +20,7 @@ Bu makalede, malzemeleri kaynak varlıklardan çalışma zamanı malzemelerine d
 
 ## <a name="gltf"></a>glTF
 
-GlTF 2,0 belirtimindeki neredeyse her şey, *EmissiveFactor* ve *EmissiveTexture*hariç Azure uzaktan işlemede desteklenir.
+GlTF 2,0 belirtimindeki neredeyse her şey, *EmissiveFactor* ve *EmissiveTexture* hariç Azure uzaktan işlemede desteklenir.
 
 Aşağıdaki tabloda eşleme gösterilmektedir:
 
@@ -47,7 +47,7 @@ GlTF içindeki her `texCoord` dokuda Azure uzaktan işleme malzemelerde destekle
 
 ### <a name="embedded-textures"></a>Gömülü dokular
 
-* \* . Bin* veya * \* . GLB* dosyalarına gömülü dokular desteklenir.
+*\* . Bin* veya *\* . GLB* dosyalarına gömülü dokular desteklenir.
 
 ### <a name="supported-gltf-extension"></a>Desteklenen glTF uzantısı
 
@@ -62,14 +62,14 @@ Ayrıca, temel özellik kümesine ek olarak Azure uzaktan Işleme aşağıdaki g
 FBX biçimi kapalı-kaynak ve FBX malzemeleri genel olarak PBR malzemeleri ile uyumlu değildir. FBX, çok sayıda benzersiz parametre ve özelliklere sahip yüzeylerin karmaşık bir açıklamasını kullanır ve **bunların hepsi Azure uzaktan işleme işlem hattı tarafından kullanılmaz**.
 
 > [!IMPORTANT]
-> Azure uzaktan Işleme modeli dönüştürme işlem hattı yalnızca **FBX 2011 ve üstünü**destekler.
+> Azure uzaktan Işleme modeli dönüştürme işlem hattı yalnızca **FBX 2011 ve üstünü** destekler.
 
 FBX biçimi malzemeler için bir koruyucu yaklaşım tanımlar, resmi FBX belirtiminde yalnızca iki tür vardır:
 
 * *Lambert* -daha önce yalnızca bir süre için kullanılmaz, ancak dönüştürme zamanında Phong 'e dönüştürme işlemi hala desteklenmektedir.
 * *Phong* -neredeyse tüm malzemeler ve çoğu içerik aracı bu türü kullanır.
 
-Phong modeli daha doğru ve FBX malzemeleri için *tek* model olarak kullanılır. Bu işlem, *FBX malzemesi*olarak adlandırılır.
+Phong modeli daha doğru ve FBX malzemeleri için *tek* model olarak kullanılır. Bu işlem, *FBX malzemesi* olarak adlandırılır.
 
 > Maya, bir malzemenin PBR ve Stingray türleri için özel özellikler tanımlayarak FBX için iki özel uzantı kullanır. Bu ayrıntılar FBX belirtimine dahil değildir, bu nedenle şu anda Azure uzaktan oluşturma tarafından desteklenmez.
 

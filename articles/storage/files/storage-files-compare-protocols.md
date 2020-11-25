@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 961ba457136d20fbb63ae3315fe8143cffb56be2
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: c4cbbc437b633232ea65dd202b7531a1a5ac2c58
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629317"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "96022606"
 ---
 # <a name="azure-file-share-protocols"></a>Azure dosya paylaşma protokolleri
 
@@ -21,12 +21,12 @@ Azure dosyaları, Azure dosya paylaşımlarınızı bağlamaya ve bağlamaya yö
 
 ## <a name="differences-at-a-glance"></a>Bir bakışta farklılıklar
 
-|Öne çıkan özelliği  |NFS (Önizleme)  |SMB  |
+|Özellik  |NFS (Önizleme)  |SMB  |
 |---------|---------|---------|
 |Erişim protokolleri     |NFS 4,1         |SMB 2,1, SMB 3,0         |
 |Desteklenen işletim sistemi     |Linux çekirdek sürümü 4.3 +         |Windows 2008 R2 +, Linux çekirdek sürümü 4.11 +         |
 |[Kullanılabilir katmanlar](storage-files-planning.md#storage-tiers)     |Premium depolama         |Premium Depolama, işlem için iyileştirilmiş, sık erişimli ve seyrek erişimli         |
-|[Yedeklilik](storage-files-planning.md#redundancy)     |LRS         |LRS, ZRS, GRS         |
+|[Yedeklilik](storage-files-planning.md#redundancy)     |LRS, ZRS         |LRS, ZRS, GRS         |
 |Kimlik Doğrulaması     |Yalnızca ana bilgisayar tabanlı kimlik doğrulaması        |Kimlik tabanlı kimlik doğrulaması, Kullanıcı tabanlı kimlik doğrulaması         |
 |İzinler     |UNIX stili izinler         |NTFS stili izinleri         |
 |Dosya sistemi semantiği     |POSIX uyumlu         |POSIX uyumlu değil         |

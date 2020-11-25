@@ -8,11 +8,11 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2019
 ms.openlocfilehash: c57a3920dac3e18e248109fafdf61fdfa871c54d
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123719"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023406"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure Stream Analytics 'de anomali algılama
 
@@ -116,7 +116,7 @@ Bu modellerin performansı, geçmiş boyutuna, pencere süresine, olay yüküne 
 
 * **Geçmiş boyutu** -bu modeller **Geçmiş boyutuyla** linerken gerçekleştirir. Geçmiş boyutu arttıkça, modeller yeni bir olayı puan etmek için daha uzun sürer. Bunun nedeni, modellerin yeni olayı geçmiş arabelleğindeki geçmiş olayların her biriyle karşılaştırmaktır.
 * **Pencere süresi** - **pencere süresi** , geçmiş boyutuyla belirtilen sayıda olayı almak için geçen süreyi yansıtmalıdır. Pencerede bu çok sayıda olay olmadan, Azure Stream Analytics eksik değerleri bir değere sahip olur. Bu nedenle, CPU tüketimi geçmiş boyutunun bir işlevidir.
-* **Olay yükü** -daha fazla **olay yükü** , model tarafından gerçekleştirilen ve CPU tüketimini etkileyen daha fazla çalışma. İş mantığı daha fazla giriş bölümü kullanmanın mantıklı olduğunu varsayarak, iş bu kadar paralel olarak genişletilebilir hale gelir.
+* **Olay yükü** -daha fazla **olay yükü**, model tarafından gerçekleştirilen ve CPU tüketimini etkileyen daha fazla çalışma. İş mantığı daha fazla giriş bölümü kullanmanın mantıklı olduğunu varsayarak, iş bu kadar paralel olarak genişletilebilir hale gelir.
 * **İşlev düzeyi bölümleme**  -  **İşlev düzeyi bölümlendirme** ```PARTITION BY``` , anomali algılama işlevi çağrısı içinde kullanılarak yapılır. Aynı anda birden çok modelde durum tutulması gerektiğinden, bu tür bölümleme bir ek yük ekler. İşlev düzeyi bölümleme, cihaz düzeyi bölümlendirme gibi senaryolarda kullanılır.
 
 ### <a name="relationship"></a>İlişki

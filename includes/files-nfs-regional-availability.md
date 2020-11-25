@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: storage
 author: roygara
 ms.service: storage
@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7776f8ec0c97ade936f03805d0a1f9ef4a6360c7
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: bb4a43fe120991c64bf678047251a1f0f845137a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91936162"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022607"
 ---
-- Doğu ABD
+- Doğu ABD (LRS ve ZRS)
 - Doğu ABD 2
 - Batı ABD 2
 - West Europe

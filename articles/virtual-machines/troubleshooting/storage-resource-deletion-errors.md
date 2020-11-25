@@ -12,11 +12,11 @@ ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 8d727bc8bdc8f015504baa57f9596b3bacac9712
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91651642"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022879"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>Depolama kaynağı silme hatalarını giderme
 
@@ -48,8 +48,8 @@ Bu adımlar tamamlandıktan sonra depolama hesabını, kapsayıcıyı veya blobu
 
     ![Depolama hesabı Blobları ile portalın ekran görüntüsü ve sağ tıklama > "meta verileri Düzenle" vurgulanmış](./media/troubleshoot-vhds/utd-edit-metadata-sm.png)
 
-4. Blob meta verileri bölmesinde **MicrosoftAzureCompute_VMName**için değeri denetleyin ve kaydedin. Bu değer, VHD 'nin eklendiği VM 'nin adıdır. (Bu alan yoksa **önemli** bölümüne bakın)
-5. Blob meta verileri bölmesinde **MicrosoftAzureCompute_DiskType**değerini denetleyin ve kaydedin. Bu değer, eklenen diskin işletim sistemi mi yoksa veri diski mi olduğunu tanımlar (Bu alan yoksa **önemli** bölümüne bakın). 
+4. Blob meta verileri bölmesinde **MicrosoftAzureCompute_VMName** için değeri denetleyin ve kaydedin. Bu değer, VHD 'nin eklendiği VM 'nin adıdır. (Bu alan yoksa **önemli** bölümüne bakın)
+5. Blob meta verileri bölmesinde **MicrosoftAzureCompute_DiskType** değerini denetleyin ve kaydedin. Bu değer, eklenen diskin işletim sistemi mi yoksa veri diski mi olduğunu tanımlar (Bu alan yoksa **önemli** bölümüne bakın). 
 
      ![Depolama "blob meta verileri" bölmesi açık olan portalın ekran görüntüsü](./media/troubleshoot-vhds/utd-blob-metadata-sm.png)
 
@@ -65,13 +65,13 @@ Bu adımlar tamamlandıktan sonra depolama hesabını, kapsayıcıyı veya blobu
 
     ![Depolama hesabı Blobları ve "kiralanan" vurgulanmış "kira durumu" ile portalın ekran görüntüsü](./media/troubleshoot-vhds/utd-disks-sm.png)
 
-4. **OSDisk** ile VM 'Leri ve **veri diski**ayır 'ı silmek için [Adım 2](#step-2-delete-vm-to-detach-os-disk) ve [3. adım](#step-3-detach-data-disk-from-the-vm) 'ı izleyin. 
+4. **OSDisk** ile VM 'Leri ve **veri diski** ayır 'ı silmek için [Adım 2](#step-2-delete-vm-to-detach-os-disk) ve [3. adım](#step-3-detach-data-disk-from-the-vm) 'ı izleyin. 
 
 ### <a name="scenario-3-deleting-storage-account---identify-all-blobs-within-storage-account-that-are-attached-to-vms"></a>Senaryo 3: depolama hesabını silme-VM 'lere bağlı depolama hesabı içindeki tüm blob 'ları tanımla
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Merkez menüsünde **Tüm kaynaklar**'ı seçin. Depolama hesabına gidin, **BLOB hizmeti** altında **Bloblar**' ı seçin.
 3. **Kapsayıcılar** bölmesinde, **kira durumunun** **kiraladığı** tüm kapsayıcıları tanımlayabilir ve **kiralanan** her kapsayıcı için [Senaryo 2](#scenario-2-deleting-a-container---identify-all-blobs-within-container-that-are-attached-to-vms) ' yi izleyin.
-4. **OSDisk** ile VM 'Leri ve **veri diski**ayır 'ı silmek için [Adım 2](#step-2-delete-vm-to-detach-os-disk) ve [3. adım](#step-3-detach-data-disk-from-the-vm) 'ı izleyin. 
+4. **OSDisk** ile VM 'Leri ve **veri diski** ayır 'ı silmek için [Adım 2](#step-2-delete-vm-to-detach-os-disk) ve [3. adım](#step-3-detach-data-disk-from-the-vm) 'ı izleyin. 
 
 ## <a name="step-2-delete-vm-to-detach-os-disk"></a>2. Adım: işletim sistemi diskini ayırmak için VM 'yi silme
 VHD bir işletim sistemi diskiyorsa, eklenen VHD 'nin silinebilmesi için önce VM 'yi silmeniz gerekir. Bu adımlar tamamlandıktan sonra aynı VM 'ye bağlı veri diskleri için başka bir eylem gerekli olmaz:
@@ -81,7 +81,7 @@ VHD bir işletim sistemi diskiyorsa, eklenen VHD 'nin silinebilmesi için önce 
 3. VHD 'nin bağlı olduğu VM 'yi seçin.
 4. Sanal makineyi etkin bir şekilde kullanan hiçbir şeyin olmadığından ve artık sanal makineye ihtiyacınız olmadığından emin olun.
 5. **Sanal makine ayrıntıları** bölmesinin üst kısmında **Sil**' i seçin ve ardından onaylamak için **Evet** ' i tıklatın.
-6. VM silinmeli, ancak VHD korunabilir. Ancak, VHD 'nin artık bir VM 'ye bağlı olmaması veya üzerinde bir kiralama olması gerekir. Kira yayımlanamadığında birkaç dakika sürebilir. Kiralamanın serbest bırakıldığını doğrulamak için blob konumuna gidin ve **BLOB özellikleri** bölmesinde **kira durumunun** **kullanılabilir**olması gerekir.
+6. VM silinmeli, ancak VHD korunabilir. Ancak, VHD 'nin artık bir VM 'ye bağlı olmaması veya üzerinde bir kiralama olması gerekir. Kira yayımlanamadığında birkaç dakika sürebilir. Kiralamanın serbest bırakıldığını doğrulamak için blob konumuna gidin ve **BLOB özellikleri** bölmesinde **kira durumunun** **kullanılabilir** olması gerekir.
 
 ## <a name="step-3-detach-data-disk-from-the-vm"></a>3. Adım: veri diskini VM 'den ayırma
 VHD bir veri diskise, kirayı kaldırmak için VHD 'yi VM 'den ayırın:
@@ -97,7 +97,7 @@ VHD bir veri diskise, kirayı kaldırmak için VHD 'yi VM 'den ayırın:
 
      ![Depolama "blob meta verileri" bölmesi açık olan portalın ekran görüntüsü ve silinecek veri diskinin ayır simgesini vurgular.](./media/troubleshoot-vhds/utd-vm-disks-edit.png)
 
-9. **Kaydet**’i seçin. Disk artık VM 'den ayrılır ve VHD artık kiralanır. Kira yayımlanamadığında birkaç dakika sürebilir. Kiralamanın verildiğini doğrulamak için blob konumuna gidin ve **BLOB özellikleri** bölmesinde, **kira durumu** değeri **kilidinin açık** veya **kullanılabilir**olmalıdır.
+9. **Kaydet**'i seçin. Disk artık VM 'den ayrılır ve VHD artık kiralanır. Kira yayımlanamadığında birkaç dakika sürebilir. Kiralamanın verildiğini doğrulamak için blob konumuna gidin ve **BLOB özellikleri** bölmesinde, **kira durumu** değeri **kilidinin açık** veya **kullanılabilir** olmalıdır.
 
 [Storage deletion errors in Resource Manager deployment]: #storage-delete-errors-in-rm
 

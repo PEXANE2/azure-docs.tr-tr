@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
 ms.openlocfilehash: b6cc89cb082cd0ed32abd88e3a6683c60a27ba90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742188"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023049"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>StorSimple Sanal dizininizin bir yedeklemesinden kopyalayın
 
@@ -33,16 +33,16 @@ Bu makalede, Microsoft Azure StorSimple Sanal dizininizdeki paylaşımlarınız�
 
 #### <a name="to-clone-a-share"></a>Bir paylaşımın klonlamak için
 
-1. **Cihazlar** dikey penceresine gidin. Cihazınızı seçin ve tıklayın ve ardından **Paylaşımlar**' a tıklayın. Kopyalamak istediğiniz paylaşmayı seçin, bağlam menüsünü çağırmak için paylaşıma sağ tıklayın. **Kopyala**' yı seçin.
+1. **Cihazlar** dikey penceresine gidin. Cihazınızı seçin ve tıklayın ve ardından **Paylaşımlar**' a tıklayın. Kopyalamak istediğiniz paylaşmayı seçin, bağlam menüsünü çağırmak için paylaşıma sağ tıklayın. **Kopyala**'yı seçin.
    
    ![Bir yedeklemeyi Kopyala](./media/storsimple-virtual-array-clone/cloneshare1.png)
 2. **Kopyala** dikey penceresinde **Yedekle > öğesini seçin** ve ardından aşağıdakileri yapın: 
    
-   a.    Bu cihazdaki bir yedeklemeyi zaman aralığına göre filtreleyin. Son **7 gün**, **son 30 gün**ve **geçmiş yıl**arasından seçim yapabilirsiniz.
+   a.    Bu cihazdaki bir yedeklemeyi zaman aralığına göre filtreleyin. Son **7 gün**, **son 30 gün** ve **geçmiş yıl** arasından seçim yapabilirsiniz.
    
    b.    Filtrelenmiş yedeklemeler listesinde, kopyalamak için bir yedekleme seçin.
    
-   c.    **Tamam**'a tıklayın.
+   c.    **Tamam** düğmesine tıklayın.
    
    ![Yedek kopyalama 2](./media/storsimple-virtual-array-clone/cloneshare3.png)
 3. **Kopyala** dikey penceresinde **hedef ayarlar** ' a tıklayın ve ardından aşağıdakileri yapın:
@@ -57,7 +57,7 @@ Bu makalede, Microsoft Azure StorSimple Sanal dizininizdeki paylaşımlarınız�
    
    e.    Bu paylaşıma yönelik yöneticileri atayın. Kopyalama işlemi tamamlandıktan sonra, dosya Gezgini ile paylaşma özelliklerini değiştirebileceksiniz.
    
-   f.    **Tamam**'a tıklayın.
+   f.    **Tamam** düğmesine tıklayın.
    
    ![Bir yedeklemeyi Kopyala 3](./media/storsimple-virtual-array-clone/cloneshare6.png)
 
@@ -73,27 +73,27 @@ Bir yedekten kopyalamak için, Azure portal, bir paylaşımın kopyalanırken ol
 
 #### <a name="to-clone-a-volume"></a>Bir birimi kopyalamak için
 
-1. **Cihazlar** dikey penceresine gidin. Cihazınızı seçip tıklatın ve ardından **birimler**' e tıklayın. Kopyalamak istediğiniz birimi seçin, bağlam menüsünü çağırmak için birime sağ tıklayın. **Kopyala**' yı seçin.
+1. **Cihazlar** dikey penceresine gidin. Cihazınızı seçip tıklatın ve ardından **birimler**' e tıklayın. Kopyalamak istediğiniz birimi seçin, bağlam menüsünü çağırmak için birime sağ tıklayın. **Kopyala**'yı seçin.
    
    ![Bir birimi kopyalama](./media/storsimple-virtual-array-clone/clonevolume1.png)
 2. **Kopyala** dikey penceresinde **Yedekle** ' ye tıklayın ve ardından aşağıdakileri yapın: 
    
-   a.    Bu cihazdaki bir yedeklemeyi zaman aralığına göre filtreleyin. Son **7 gün**, **son 30 gün**ve **geçmiş yıl**arasından seçim yapabilirsiniz. 
+   a.    Bu cihazdaki bir yedeklemeyi zaman aralığına göre filtreleyin. Son **7 gün**, **son 30 gün** ve **geçmiş yıl** arasından seçim yapabilirsiniz. 
    
    b.    Filtrelenmiş yedeklemeler listesinde, kopyalamak için bir yedekleme seçin.
    
-   c.    **Tamam**'a tıklayın.
+   c.    **Tamam** düğmesine tıklayın.
    
    ![Birim kopyalama 2](./media/storsimple-virtual-array-clone/clonevolume3.png)
 3. **Kopyala** dikey penceresinde, **hedef birim ayarları** ' na tıklayın ve ardından aşağıdakileri yapın::
    
    a. Cihaz adı otomatik olarak doldurulur.
    
-   b. **Kopyalanan birim**için bir birim adı girin. Birim adı 3 ile 127 karakter içermelidir.
+   b. **Kopyalanan birim** için bir birim adı girin. Birim adı 3 ile 127 karakter içermelidir.
    
    c. Birim türü otomatik olarak özgün birime ayarlanır. Katmanlı bir birim katmanlı olarak klonlanır ve yerel olarak sabitlenmiş bir birim yerel olarak sabitlenmiştir.
    
-   d. **Bağlı konaklar**için **Seç**' e tıklayın.
+   d. **Bağlı konaklar** için **Seç**' e tıklayın.
    
    ![Birim kopyalama 3](./media/storsimple-virtual-array-clone/clonevolume4.png)
 4. **Bağlı konaklar** dikey penceresinde, var olan bir ACR arasından seçim yapın veya yeni bir ACR ekleyin. Yeni bir ACR eklemek için bir ACR adı ve ana bilgisayar ıQN 'si sağlamanız gerekir. **Seç**’e tıklayın.
@@ -106,7 +106,7 @@ Bir yedekten kopyalamak için, Azure portal, bir paylaşımın kopyalanırken ol
    
    ![Birim kopyalama 6](./media/storsimple-virtual-array-clone/clonevolume8.png)
 7. Birim listesinde birim çevrimiçi göründüğünde, birim kullanılabilir. Iscsı Başlatıcısı ana bilgisayarında, Iscsı Başlatıcısı Özellikler penceresinde hedeflerin listesini yenileyin. Kopyalanan birim adını içeren yeni bir hedef, durum sütunu altında ' etkin değil ' olarak görünmelidir.
-8. Hedefi seçin ve **Bağlan**' a tıklayın. Başlatıcı hedefe bağlandıktan sonra, durumun **bağlı**olarak değiştirilmesi gerekir.
+8. Hedefi seçin ve **Bağlan**' a tıklayın. Başlatıcı hedefe bağlandıktan sonra, durumun **bağlı** olarak değiştirilmesi gerekir.
 9. **Disk yönetimi** penceresinde, takılan birimler aşağıdaki çizimde gösterildiği gibi görünür. Bulunan birime sağ tıklayın (disk adına tıklayın) ve ardından **Çevrimiçi**’ne tıklayın.
 
 > [!IMPORTANT]

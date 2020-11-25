@@ -14,11 +14,11 @@ ms.date: 06/15/2018
 ms.author: delhan
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 85acd8e26ca10730638332047a37d281358d205f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86526563"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022896"
 ---
 # <a name="troubleshoot-deployment-issues-with-restarting-or-resizing-an-existing-windows-vm-in-azure"></a>Azure'daki bir Windows VM'yi yeniden başlatma veya yeniden boyutlandırmayla ilgili sorunları giderme
 Durdurulmuş bir Azure sanal makinesini (VM) başlatmaya veya mevcut bir Azure VM 'yi yeniden boyutlandırmaya çalıştığınızda, karşılaştığınız ortak hata bir ayırma hatasıdır. Bu hata, küme veya bölgenin kullanılabilir kaynakları yoksa veya istenen VM boyutunu destekleyemezse oluşur.
@@ -41,7 +41,7 @@ Durdurulan VM 'yi başlatma isteği, bulut hizmetini barındıran orijinal küme
 ### <a name="resolution"></a>Çözüm
 * Kullanılabilirlik kümesindeki tüm VM 'Leri durdurun ve ardından her VM 'yi yeniden başlatın.
   
-  1. Kaynak **grupları**' na tıklayın  >  *your resource group*  >  **Resources**  >  *kullanılabilirlik kümesi*sanal  >  **makinelerinizi**  >  *sanal makinenizin*  >  **durulacağı**kaynak grubu
+  1. Kaynak **grupları**' na tıklayın  >  *your resource group*  >  **Resources**  >  *kullanılabilirlik kümesi* sanal  >  **makinelerinizi**  >  *sanal makinenizin*  >  **durulacağı** kaynak grubu
   2. Tüm VM 'Ler durduktan sonra, durdurulan sanal makinelerin her birini seçin ve Başlat ' a tıklayın.
 * Yeniden başlatma isteğini daha sonra yeniden deneyin.
 
@@ -57,7 +57,7 @@ VM 'yi yeniden boyutlandırma isteği, bulut hizmetini barındıran orijinal kü
   
   1. Kullanılabilirlik kümesindeki tüm VM 'Leri durdurun.
      
-     * Kaynak **grupları**' na tıklayın  >  *your resource group*  >  **Resources**  >  *kullanılabilirlik kümesi*sanal  >  **makinelerinizi**  >  *sanal makinenizin*  >  **durulacağı**kaynak grubu
+     * Kaynak **grupları**' na tıklayın  >  *your resource group*  >  **Resources**  >  *kullanılabilirlik kümesi* sanal  >  **makinelerinizi**  >  *sanal makinenizin*  >  **durulacağı** kaynak grubu
   2. Tüm VM 'Ler durduktan sonra, istenen VM 'yi daha büyük bir boyuta göre yeniden boyutlandırın.
   3. Yeniden boyutlandırılmış VM 'yi seçin ve **Başlat**' a tıklayın ve ardından durdurulan her bir VM 'yi başlatın.
 

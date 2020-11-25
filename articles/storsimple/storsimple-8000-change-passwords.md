@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 038084ba9ae43e14bc2eb42bf258912be27d062c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86527872"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023763"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-change-your-storsimple-passwords"></a>StorSimple parolalarınızı değiştirmek için StorSimple Aygıt Yöneticisi hizmetini kullanın
 
@@ -27,7 +27,7 @@ ms.locfileid: "86527872"
 Azure portal **cihaz ayarları** seçeneği, storsimple Aygıt Yöneticisi hizmeti tarafından yönetilen bir StorSimple cihazında yeniden yapılandırabilmeniz için tüm cihaz parametrelerini içerir. Bu öğreticide cihaz yöneticinize veya StorSimple Snapshot Manager parolanızı değiştirmek için **cihaz ayarları** altında **güvenlik** seçeneğini nasıl kullanabileceğiniz açıklanmaktadır.
 
 ## <a name="change-the-device-administrator-password"></a>Cihaz yöneticisi parolasını değiştirme
-StorSimple cihazına erişmek için Windows PowerShell arabirimini kullandığınızda, bir cihaz yöneticisi parolası girmeniz gerekir. İlk StorSimple cihazı bir hizmetle kaydedildiğinde, bu arabirimin varsayılan parolası *Parola1*olur. Verilerinizin güvenliği için kayıt işleminin sonunda bu parolayı değiştirmeniz gerekir. Bu parolayı değiştirmeden kayıt işleminden çıkabilirsiniz. Daha fazla bilgi için bkz. [3. Adım: cihazı StorSimple için Windows PowerShell aracılığıyla yapılandırma ve kaydetme](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple).
+StorSimple cihazına erişmek için Windows PowerShell arabirimini kullandığınızda, bir cihaz yöneticisi parolası girmeniz gerekir. İlk StorSimple cihazı bir hizmetle kaydedildiğinde, bu arabirimin varsayılan parolası *Parola1* olur. Verilerinizin güvenliği için kayıt işleminin sonunda bu parolayı değiştirmeniz gerekir. Bu parolayı değiştirmeden kayıt işleminden çıkabilirsiniz. Daha fazla bilgi için bkz. [3. Adım: cihazı StorSimple için Windows PowerShell aracılığıyla yapılandırma ve kaydetme](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple).
 
 Kayıt sırasında Windows PowerShell arabirimi aracılığıyla ilk olarak ayarlanan parola, Azure portal aracılığıyla daha sonra değiştirilebilir. Cihaz Yöneticisi parolasını değiştirmek için aşağıdaki adımları gerçekleştirin.
 

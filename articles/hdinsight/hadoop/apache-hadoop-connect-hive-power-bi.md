@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
 ms.openlocfilehash: e66329b93ebd7d90258ab4670b77ca849a28189b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548005"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024070"
 ---
 # <a name="visualize-apache-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Azure HDInsight’ta ODBC kullanarak Microsoft Power BI ile Apache Hive verilerini görselleştirme
 
@@ -52,21 +52,21 @@ Bkz. [HIVE ODBC veri kaynağı oluşturma](apache-hadoop-connect-excel-hive-odbc
 
 1. **Veri al** iletişim kutusundan soldan **diğer** ' i seçin, sağ taraftaki **ODBC** ' i seçin ve ardından alt kısımdaki **Bağlan** ' ı seçin.
 
-1. **ODBC** iletişim kutusundan, açılan listeden son bölümde oluşturduğunuz veri kaynağı adını seçin. Ardından **Tamam** ’ı seçin.
+1. **ODBC** iletişim kutusundan, açılan listeden son bölümde oluşturduğunuz veri kaynağı adını seçin. Ardından **Tamam**’ı seçin.
 
-1. İlk kullanım için bir **ODBC sürücüsü** iletişim kutusu açılır. Sol menüden **varsayılan veya özel** ' i seçin. Ardından, **Gezgin** 'i açmak için **Bağlan** ' ı seçin.
+1. İlk kullanım için bir **ODBC sürücüsü** iletişim kutusu açılır. Sol menüden **varsayılan veya özel** ' i seçin. Ardından, **Gezgin**'i açmak için **Bağlan** ' ı seçin.
 
-1. **Gezgin** Iletişim kutusunda **ODBC > HIVE >** ' ı genişletin, **hivesampletable** ' ı seçin ve ardından **Yükle** ' yi seçin.
+1. **Gezgin** Iletişim kutusunda **ODBC > HIVE >**' ı genişletin, **hivesampletable**' ı seçin ve ardından **Yükle**' yi seçin.
 
 ## <a name="visualize-data"></a>Verileri görselleştirme
 
 Son yordamdan devam edin.
 
-1. Görsel Öğeler bölmesinde **eşle** ' yi seçin, bir dünya simgesi.
+1. Görsel Öğeler bölmesinde **eşle**' yi seçin, bir dünya simgesi.
 
     ![HDInsight Power BI raporu özelleştirir](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-customize.png)
 
-1. **Alanlar** bölmesinde, **ülke** ve **devicemake** ' ı seçin. Haritada çizili verileri görebilirsiniz.
+1. **Alanlar** bölmesinde, **ülke** ve **devicemake**' ı seçin. Haritada çizili verileri görebilirsiniz.
 
 1. Haritayı genişletin.
 

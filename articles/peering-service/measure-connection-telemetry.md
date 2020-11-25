@@ -9,11 +9,11 @@ ms.date: 05/18/2020
 ms.author: derekol
 Customer intent: Customer wants to measure their connection telemetry per prefix to Microsoft services with Azure Peering Service.
 ms.openlocfilehash: abbe69ebbaed56ed416f85fafa7b77a1740fabe7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84872692"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022505"
 ---
 # <a name="tutorial-measure-peering-service-connection-telemetry"></a>Öğretici: ölçüm eşleme hizmeti bağlantı telemetrisi
 
@@ -28,7 +28,7 @@ Eşleme hizmeti bağlantı telemetrisini ölçmek için Azure portal bir eşleme
 
 Belirli bir eşleme hizmeti bağlantısı için bir gecikme raporu görüntülemek için, aşağıdaki adımları izleyin.
 
-1. Sol bölmedeki **tüm kaynaklar** ' ı seçin ve eşleme hizmeti bağlantısı ' nı seçin. Ardından **ön ekler**altında **Aç** ' ı seçin. 
+1. Sol bölmedeki **tüm kaynaklar** ' ı seçin ve eşleme hizmeti bağlantısı ' nı seçin. Ardından **ön ekler** altında **Aç** ' ı seçin. 
 
    ![Eşleme hizmeti bağlantısını seçin](./media/peering-service-measure/peering-service-measure-menu.png)
 
@@ -36,7 +36,7 @@ Belirli bir eşleme hizmeti bağlantısı için bir gecikme raporu görüntülem
 
       ![Gecikme rapor sayfası](./media/peering-service-measure/peering-service-latency-report.png)
 
-3. Varsayılan olarak, rapor bu sayfada görüntülenen her saat için güncelleştirilir. Farklı zaman çizelgeleriyle ilgili raporu görüntülemek için, **verileri son olarak göster**seçeneğinden uygun seçeneği belirleyin. 
+3. Varsayılan olarak, rapor bu sayfada görüntülenen her saat için güncelleştirilir. Farklı zaman çizelgeleriyle ilgili raporu görüntülemek için, **verileri son olarak göster** seçeneğinden uygun seçeneği belirleyin. 
 
 4. Belirli bir önek için olayları görüntülemek için, önek adını seçin ve sol bölmedeki **önek olayları** ' nı seçin. Yakalanan olaylar görüntülenir.
 

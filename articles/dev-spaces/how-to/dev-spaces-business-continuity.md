@@ -9,11 +9,11 @@ description: Azure Dev Spaces ve Azure Kubernetes hizmetlerini kullanarak iş s�
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
 manager: gwallace
 ms.openlocfilehash: 824eb1e65e7da5736080e47509aa163a868d8ec9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973147"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023338"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Azure Dev Spaces 'de iş sürekliliği ve olağanüstü durum kurtarma
 
@@ -39,7 +39,7 @@ az aks use-dev-spaces -g <resource group name> -n <cluster name>
 
 ## <a name="deploy-your-teams-baseline-to-each-cluster"></a>Takımınızın temelini her kümeye dağıtma
 
-Geliştirme alanları ile çalışırken, genellikle tüm uygulamayı Kubernetes kümenizdeki bir üst dev alanına dağıtırsınız. Varsayılan olarak, `default` alan kullanılır. İlk dağıtım, tüm hizmetlerin yanı sıra bu hizmetlerin bağımlı olduğu dış kaynakları ve örneğin veritabanları ya da kuyrukları içerir. Bu, *taban çizgisi*olarak bilinir. Üst dev alanında bir taban çizgisi ayarladıktan sonra, alt dev alanları içinde tek tek Hizmetleri yineleyebilir ve hata ayıklaması yapabilirsiniz.
+Geliştirme alanları ile çalışırken, genellikle tüm uygulamayı Kubernetes kümenizdeki bir üst dev alanına dağıtırsınız. Varsayılan olarak, `default` alan kullanılır. İlk dağıtım, tüm hizmetlerin yanı sıra bu hizmetlerin bağımlı olduğu dış kaynakları ve örneğin veritabanları ya da kuyrukları içerir. Bu, *taban çizgisi* olarak bilinir. Üst dev alanında bir taban çizgisi ayarladıktan sonra, alt dev alanları içinde tek tek Hizmetleri yineleyebilir ve hata ayıklaması yapabilirsiniz.
 
 Ana hat hizmet kümesinin en son sürümlerini birden çok bölgedeki kümelere dağıtmanız gerekir. Taban çizgisi hizmetlerinizin bu şekilde güncelleştirilmesi, bir Azure bölgesi arızası varsa geliştirme alanlarını kullanmaya devam edebilmenizi sağlar. Örneğin, taban çizgisini bir CI/CD işlem hattı aracılığıyla dağıtırsanız, işlem hattını farklı bölgelerde birden çok kümeye dağıtılacak şekilde değiştirin.
 
@@ -84,7 +84,7 @@ Doğru kümeyi ve boşluğu seçtikten sonra, geliştirme alanlarında hizmeti �
 
 Hizmetinizi ortak bir DNS adı kullanacak şekilde yapılandırdıysanız, bir yedekleme kümesinde çalıştırırsanız hizmetin farklı bir URL 'SI olur. Ortak DNS adları her zaman biçimindedir `<space name>.s.<root space name>.<service name>.<cluster GUID>.<region>.azds.io` . Farklı bir kümeye geçerseniz, küme GUID 'SI ve muhtemelen bölge değişir.
 
-Geliştirme alanları her zaman, çalışırken hizmetin doğru URL 'sini `azds up` veya **Azure dev Spaces**altında Visual Studio 'daki çıkış penceresinde gösterir.
+Geliştirme alanları her zaman, çalışırken hizmetin doğru URL 'sini `azds up` veya **Azure dev Spaces** altında Visual Studio 'daki çıkış penceresinde gösterir.
 
 Ayrıca, komutunu çalıştırarak URL 'YI bulabilirsiniz `azds list-uris` :
 ```

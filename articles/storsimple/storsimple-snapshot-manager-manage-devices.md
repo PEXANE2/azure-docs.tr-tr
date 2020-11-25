@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: dbb7e835d110bcb6cb81fd5425a2aafbb578e692
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90054859"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022981"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>StorSimple cihazlarını bağlamak ve yönetmek için StorSimple Snapshot Manager kullanma
 ## <a name="overview"></a>Genel Bakış
@@ -83,7 +83,7 @@ StorSimple cihazını eklemek veya değiştirmek için aşağıdaki yordamı kul
    
     ![StorSimple cihazını yapılandırma](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_config_device.png) 
 3. **Cihaz** açılan kutusunda, cihazın veya sanal cihazın IP adresini seçin. 
-4. **Parola** metin kutusuna, klasik Azure portalında cihaz Için oluşturduğunuz storsimple Snapshot Manager parolasını yazın. **Tamam**'a tıklayın. StorSimple Snapshot Manager, tanımladığınız cihazı arar. 
+4. **Parola** metin kutusuna, klasik Azure portalında cihaz Için oluşturduğunuz storsimple Snapshot Manager parolasını yazın. **Tamam** düğmesine tıklayın. StorSimple Snapshot Manager, tanımladığınız cihazı arar. 
    
    * Cihaz kullanılabiliyorsa, StorSimple Snapshot Manager bir bağlantı ekler.
    * Cihaz herhangi bir nedenle kullanılamıyorsa, StorSimple Snapshot Manager bir hata mesajı döndürür. **Tamam** ' a tıklayarak hata iletisini kapatın ve ardından **iptal** ' e tıklayarak **bir cihaz Yapılandır** iletişim kutusunu kapatın.
@@ -96,12 +96,12 @@ StorSimple cihazını bağlamak ve ilişkili yedekleri olan mevcut birim gruplar
    
    * Cihaz herhangi bir nedenle kullanılamıyorsa, StorSimple Snapshot Manager bir hata mesajı döndürür. 
    
-   * Cihaz kullanılabiliyorsa, StorSimple Snapshot Manager bir bağlantı ekler. Cihazı seçtiğinizde, **sonuçlar** bölmesinde görünür ve durum alanı cihazın **kullanılabilir**olduğunu gösterir. StorSimple Snapshot Manager, birim gruplarının ilişkili yedeklemeleri olması şartıyla, cihaz için yapılandırılmış tüm birim gruplarını içeri aktarır. Yedekleme ilkeleri içeri aktarılmaz. İlişkili yedeklemeleri olmayan birim grupları içeri aktarılmaz.
+   * Cihaz kullanılabiliyorsa, StorSimple Snapshot Manager bir bağlantı ekler. Cihazı seçtiğinizde, **sonuçlar** bölmesinde görünür ve durum alanı cihazın **kullanılabilir** olduğunu gösterir. StorSimple Snapshot Manager, birim gruplarının ilişkili yedeklemeleri olması şartıyla, cihaz için yapılandırılmış tüm birim gruplarını içeri aktarır. Yedekleme ilkeleri içeri aktarılmaz. İlişkili yedeklemeleri olmayan birim grupları içeri aktarılmaz.
 2. StorSimple Snapshot Manager başlatmak için masaüstü simgesine tıklayın.
 3. **Kapsam** bölmesinde en üst düğüme sağ tıklayın ve ardından **Içeri aktarmalar görüntüsünü aç**' a tıklayın.
    
     ![Içeri aktarmalar görünümünü değiştirmeyi Seç](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_Toggle_Imports_Display.png) 
-4. İçeri **aktarmalar görüntüsünü değiştirme** iletişim kutusu görünür ve içeri aktarılan birim gruplarının ve yedeklemelerin durumunu gösterir. **Tamam**'a tıklayın.
+4. İçeri **aktarmalar görüntüsünü değiştirme** iletişim kutusu görünür ve içeri aktarılan birim gruplarının ve yedeklemelerin durumunu gösterir. **Tamam** düğmesine tıklayın.
 
 Birim grupları ve yedeklemeler başarıyla alındıktan sonra, bunları yönetmek için StorSimple Snapshot Manager kullanabilirsiniz, böylece, oluşturduğunuz ve StorSimple Snapshot Manager ile yapılandırdığınız yedeklemeleri yönetebilirsiniz. 
 
@@ -193,7 +193,7 @@ Bir StorSimple cihazı başarısız olursa ve bekleme (yük devretme) cihazında
    1. Sunucu Yöneticisi'ni başlatın.
    2. Sunucu Yöneticisi panosunda, **Araçlar** menüsünde **Hizmetler**' i seçin.
    3. **Hizmetler** penceresinde **Microsoft StorSimple yönetim hizmeti**' ni seçin.
-   4. Sağ bölmedeki **Microsoft StorSimple yönetim hizmeti**altında **hizmeti Durdur**' a tıklayın.
+   4. Sağ bölmedeki **Microsoft StorSimple yönetim hizmeti** altında **hizmeti Durdur**' a tıklayın.
 2. Eski cihazla ilgili yapılandırma bilgilerini Kaldır:
    
    1. Dosya Gezgini 'nde C:\programdata\microsoft\storsimple\bacatalogdizinine göz atın.
@@ -202,11 +202,11 @@ Bir StorSimple cihazı başarısız olursa ve bekleme (yük devretme) cihazında
    
    1. Sunucu Yöneticisi panosunda, **Araçlar** menüsünde **Hizmetler**' i seçin.
    2. **Hizmetler** penceresinde **Microsoft StorSimple yönetim hizmeti**' ni seçin.
-   3. Sağ bölmedeki **Microsoft StorSimple yönetim hizmeti**altında **hizmeti yeniden Başlat**' a tıklayın.
+   3. Sağ bölmedeki **Microsoft StorSimple yönetim hizmeti** altında **hizmeti yeniden Başlat**' a tıklayın.
 4. StorSimple Snapshot Manager başlatın.
 5. Yeni StorSimple cihazını yapılandırmak için adım 2: StorSimple cihazını [dağıtım storsimple Snapshot Manager](storsimple-snapshot-manager-deployment.md)içindeki adımları izleyin.
 6. **Kapsam** bölmesinde en üst düzey düğüme sağ tıklayın (örnekteki storsimple Snapshot Manager) ve ardından **Içeri aktarmalar görünümünü aç**' a tıklayın. 
-7. İçeri aktarılan birim grupları ve yedeklemeler StorSimple Snapshot Manager görünür olduğunda bir ileti görüntülenir. **Tamam**'a tıklayın.
+7. İçeri aktarılan birim grupları ve yedeklemeler StorSimple Snapshot Manager görünür olduğunda bir ileti görüntülenir. **Tamam** düğmesine tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * StorSimple [çözümünüzü yönetmek Için storsimple Snapshot Manager](storsimple-snapshot-manager-admin.md)nasıl kullanacağınızı öğrenin.

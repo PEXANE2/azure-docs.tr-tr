@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: d979a68f4e3aa0071fb7654647610af1fbf95e90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86078825"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023985"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Azure SQL veritabanı 'na veri okumak ve yazmak için HDInsight Spark kümesi kullanma
 
@@ -36,7 +36,7 @@ Azure SQL veritabanı ile Azure HDInsight 'ta bir Apache Spark kümesini bağlam
 Spark kümesiyle ilişkili bir Jupyter Notebook oluşturarak başlayın. Bu makalede kullanılan kod parçacıklarını çalıştırmak için bu not defterini kullanırsınız.
 
 1. [Azure Portal](https://portal.azure.com/), kümenizi açın.
-1. Sağ taraftaki **küme panoları** altında **Jupyter Not defteri** ' ni seçin.  **Küme panoları**görmüyorsanız, sol menüden **genel bakış** ' ı seçin. İstenirse, küme için yönetici kimlik bilgilerini girin.
+1. Sağ taraftaki **küme panoları** altında **Jupyter Not defteri** ' ni seçin.  **Küme panoları** görmüyorsanız, sol menüden **genel bakış** ' ı seçin. İstenirse, küme için yönetici kimlik bilgilerini girin.
 
     ![Apache Spark Jupyter Not defteri](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Spark üzerinde Jupyter Not defteri")
 
@@ -192,7 +192,7 @@ Bu bölümde, önceki bölümde oluşturduğunuz içine veri akışı yaptık `h
     TRUNCATE TABLE [dbo].[hvactable]
     ```
 
-1. HDInsight Spark kümesinde yeni bir Jupyter Not defteri oluşturun. Bir kod hücresinde aşağıdaki kod parçacığını yapıştırın ve ardından **SHIFT + enter**tuşlarına basın:
+1. HDInsight Spark kümesinde yeni bir Jupyter Not defteri oluşturun. Bir kod hücresinde aşağıdaki kod parçacığını yapıştırın ve ardından **SHIFT + enter** tuşlarına basın:
 
     ```scala
     import org.apache.spark.sql._
@@ -210,7 +210,7 @@ Bu bölümde, önceki bölümde oluşturduğunuz içine veri akışı yaptık `h
     readStreamDf.printSchema
     ```
 
-1. Çıktıda **HVAC.csv**şeması gösterilmektedir. `hvactable`Aynı şemaya da sahiptir. Çıktı, tablodaki sütunları listeler.
+1. Çıktıda **HVAC.csv** şeması gösterilmektedir. `hvactable`Aynı şemaya da sahiptir. Çıktı, tablodaki sütunları listeler.
 
     ![' HDInsight Apache Spark şeması tablosu '](./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png "Tablo şeması")
 

@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 03/15/2020
 ms.author: cavoeg
 ms.openlocfilehash: cabacd5204f4a9ac5c17c7bd66924482b5bf688a
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339297"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023474"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak FHıR için Azure API dağıtma
 
@@ -37,13 +37,13 @@ Arama kutusuna "FHIR" yazarak FHıR için Azure API 'sini bulabilirsiniz:
 
 FHıR hesabı için yeni bir Azure API 'SI oluşturmak için **Oluştur** ' u seçin:
 
-:::image type="content" source="media/quickstart-paas-portal/portal-create-healthcare-apis.png" alt-text="Sağlık API 'Leri arama":::
+:::image type="content" source="media/quickstart-paas-portal/portal-create-healthcare-apis.png" alt-text="FHıR hesabı için Azure API oluşturma":::
 
 ## <a name="enter-account-details"></a>Hesap ayrıntılarını girin
 
 Var olan bir kaynak grubunu seçin veya yeni bir tane oluşturun, hesap için bir ad seçin ve son olarak **gözden geçir + oluştur**' a tıklayın:
 
-:::image type="content" source="media/quickstart-paas-portal/portal-new-healthcareapi-details.png" alt-text="Sağlık API 'Leri arama":::
+:::image type="content" source="media/quickstart-paas-portal/portal-new-healthcareapi-details.png" alt-text="Yeni sağlık API 'si ayrıntıları":::
 
 Oluşturma ve bekleme API 'SI dağıtımını onaylayın.
 
@@ -51,7 +51,7 @@ Oluşturma ve bekleme API 'SI dağıtımını onaylayın.
 
 Ileri ' ye de tıklayabilirsiniz: kimlik doğrulama ayarlarını görüntülemek için **ek ayarlar** . FHıR için Azure API 'sinin varsayılan yapılandırması, [veri düzlemi rolleri atamak Için Azure RBAC kullanmaktır](configure-azure-rbac.md). Bu modda yapılandırıldığında, FHıR hizmeti için "Authority", aboneliğin Azure Active Directory kiracısına ayarlanır:
 
-:::image type="content" source="media/rbac/confirm-azure-rbac-mode-create.png" alt-text="Sağlık API 'Leri arama":::
+:::image type="content" source="media/rbac/confirm-azure-rbac-mode-create.png" alt-text="Varsayılan kimlik doğrulama ayarları":::
 
 Bu durumda rol atamalarını yapılandırmak için Azure RBAC kullandığımızdan, izin verilen nesne kimliklerinin girilmesi için kutunun gri olduğunu unutmayın.
 

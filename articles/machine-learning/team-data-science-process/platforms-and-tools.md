@@ -11,11 +11,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d3f6a48815519499ddc39dcc12cafe0fe95e70e0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320241"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023814"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Veri bilimi projeleri için platformlar ve araçlar
 
@@ -138,11 +138,11 @@ Git komutlarını çalıştırmak için Linux (CentOS) makineleri kullanıyorsan
 
 1. SSH *-RSA* dahil tüm SSH anahtarını kopyalayın. 
 1. Azure DevOps Services oturum açın. 
-1. Sayfanın sağ üst köşesindeki **\> adınızı<** tıklayın ve **güvenlik** ' e tıklayın. 
+1. Sayfanın sağ üst köşesindeki **\> adınızı<** tıklayın ve **güvenlik**' e tıklayın. 
     
    ![Adınızın ardından Güvenlik ' e tıklayın.](./media/platforms-and-tools/resources-2-user-setting.png)
 
-1. **SSH ortak anahtarlar** ' a tıklayın ve **+ Ekle** ' ye tıklayın. 
+1. **SSH ortak anahtarlar**' a tıklayın ve **+ Ekle**' ye tıklayın. 
 
    ![SSH ortak anahtarlar ' a ve ardından + Ekle ' ye tıklayın.](./media/platforms-and-tools/resources-3-add-ssh.png)
 

@@ -9,11 +9,11 @@ ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
 ms.openlocfilehash: 2ed5cbc8c855d2f81986964c93009d75ed28fb8e
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95556541"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96025470"
 ---
 **Veri toplama birimi ve bekletme** 
 
@@ -33,7 +33,7 @@ ms.locfileid: "95556541"
 | Ücretsiz katmanı  | 10 | Bu sınır arttırılamıyor. |
 | Diğer tüm katmanlar | Sınır yok | Bir kaynak grubu içindeki kaynak sayısıyla ve abonelik başına kaynak grubu sayısına göre sınırlandırılırsınız. |
 
-**Azure portalı**
+**Azure Portal**
 
 | Kategori | Sınır | Yorumlar |
 |:---|:---|:---|

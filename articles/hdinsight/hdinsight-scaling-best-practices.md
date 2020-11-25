@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
 ms.openlocfilehash: 22ce91a81964ed52830fc19dbbbd52e7f170b0d4
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535408"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022777"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight kümelerini ölçeklendirme
 
@@ -130,7 +130,7 @@ Bekleyen ve çalışan işlerin bir listesini görmek için, aşağıdaki adıml
 1. [Azure Portal](https://portal.azure.com/), kümenizi seçin.  Küme yeni bir portal sayfasında açılır.
 2. Ana görünümden, **küme panoları**  >  **ambarı giriş** sayfasına gidin. Küme kimlik bilgilerinizi girin.
 3. Ambarı kullanıcı arabiriminden, sol taraftaki menüdeki hizmetler listesinden **Yarn** ' yi seçin.  
-4. YARN sayfasında **hızlı bağlantılar** ' ı seçin ve etkin baş düğümün üzerine gelin ve **Kaynak Yöneticisi Kullanıcı arabirimi** ' ni seçin.
+4. YARN sayfasında **hızlı bağlantılar** ' ı seçin ve etkin baş düğümün üzerine gelin ve **Kaynak Yöneticisi Kullanıcı arabirimi**' ni seçin.
 
     ![Apache ambarı hızlı bağlantılar Kaynak Yöneticisi Kullanıcı arabirimi](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
 
@@ -146,7 +146,7 @@ Kaynak Yöneticisi Kullanıcı arabirimine doğrudan erişim sağlayabilirsiniz 
 yarn application -kill <application_id>
 ```
 
-Örneğin:
+Örnek:
 
 ```bash
 yarn application -kill "application_1499348398273_0003"

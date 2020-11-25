@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 805ab0e78f0679ce483af3a73203b41132be2a59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90054781"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022964"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>Toplu grupları oluşturmak ve yönetmek için StorSimple Snapshot Manager kullanma
 ## <a name="overview"></a>Genel Bakış
@@ -53,7 +53,7 @@ Bu eylemlerin tümü, **Eylemler** bölmesinde de kullanılabilir.
 | Ad |**Ad** sütunu, birim grubunun adını içerir. |
 | Uygulama |**Uygulamalar** sütununda, Windows konakta yüklü olan ve ÇALıŞMAKTA olan VSS yazıcılarının sayısı gösterilir. |
 | Seçili |**Seçili** sütun, birim grubunda bulunan birim sayısını gösterir. Sıfır (0), birim grubundaki birimlerle hiçbir uygulamanın ilişkilendirilmediğini belirtir. |
-| Alındıysa |**Içeri aktarılan** sütun, içeri aktarılan birim sayısını gösterir. **True**olarak ayarlandığında, bu sütun bir birim grubunun Azure Portal içeri aktarıldığını ve storsimple Snapshot Manager içinde oluşturulmadığını gösterir. |
+| Alındıysa |**Içeri aktarılan** sütun, içeri aktarılan birim sayısını gösterir. **True** olarak ayarlandığında, bu sütun bir birim grubunun Azure Portal içeri aktarıldığını ve storsimple Snapshot Manager içinde oluşturulmadığını gösterir. |
 
 > [!NOTE]
 > StorSimple Snapshot Manager birim grupları ayrıca Azure portal **yedekleme ilkeleri** sekmesinde görüntülenir.
@@ -107,7 +107,7 @@ Bir birim grubunu düzenlemek için aşağıdaki yordamı kullanın.
 #### <a name="to-edit-a-volume-group"></a>Bir birim grubunu düzenlemek için
 1. StorSimple Snapshot Manager başlatmak için masaüstü simgesine tıklayın.
 2. **Kapsam** bölmesinde, **Birim grupları** düğümünü genişletin, bir birim grubu adına sağ tıklayın ve ardından **Düzenle**' ye tıklayın.
-3. * * Birim grubu oluştur * * iletişim kutusu görüntülenir. **Ad**, **uygulama**ve **birim** girdilerini değiştirebilirsiniz.
+3. * * Birim grubu oluştur * * iletişim kutusu görüntülenir. **Ad**, **uygulama** ve **birim** girdilerini değiştirebilirsiniz.
 4. Değişikliklerinizi kaydetmek için **Tamam**’a tıklayın.
 
 ## <a name="delete-a-volume-group"></a>Birim grubunu silme

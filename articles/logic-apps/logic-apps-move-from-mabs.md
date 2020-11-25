@@ -9,11 +9,11 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
 ms.openlocfilehash: 6c07ab4b18c017bd29723d2640129b8e67374e3c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87837389"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023661"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>BizTalk Services uygulamalarınızı ve çözümlerinizi Azure Logic Apps geçirin
 
@@ -93,7 +93,7 @@ BizTalk Services, gelen iletileri veya verileri hangi uç noktaya veya bağlayı
 
 ![Yönlendirme Filtresi seçeneğini gösteren ekran görüntüsü.](media/logic-apps-move-from-mabs/route-filter.png)
 
-BizTalk Services ' de, yalnızca iki seçenek varsa, bir *koşul* kullanmak BizTalk Services yönlendirme filtrelerini dönüştürmenin en iyi yoludur. İkiden fazla varsa, **anahtar**kullanın.
+BizTalk Services ' de, yalnızca iki seçenek varsa, bir *koşul* kullanmak BizTalk Services yönlendirme filtrelerini dönüştürmenin en iyi yoludur. İkiden fazla varsa, **anahtar** kullanın.
 
 Logic Apps, [koşullu deyimler](../logic-apps/logic-apps-control-flow-conditional-statement.md) ve [Switch deyimleriyle](../logic-apps/logic-apps-control-flow-switch-statement.md)gelişmiş mantık özellikleri ve Gelişmiş denetim akışı ve yönlendirme sağlar.
 

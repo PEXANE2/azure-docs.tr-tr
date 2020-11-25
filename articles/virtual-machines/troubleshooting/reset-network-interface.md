@@ -13,11 +13,11 @@ ms.topic: troubleshooting
 ms.date: 11/16/2018
 ms.author: genli
 ms.openlocfilehash: 6c4e507df0f112934979d4e59778b667743cf623
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87005965"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022913"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Azure Windows VM'de ağ arabirimini sıfırlama 
 
@@ -40,7 +40,7 @@ Bu makalede, sonrasında Microsoft Azure Windows sanal makinesine (VM) bağlanam
     
 4.  **IP yapılandırması**' nı seçin.
 5.  IP 'yi seçin. 
-6.  **Özel IP ataması** **statik**değilse, **statik**olarak değiştirin.
+6.  **Özel IP ataması** **statik** değilse, **statik** olarak değiştirin.
 7.  **IP adresini** alt ağda kullanılabilir olan başka bir IP adresiyle değiştirin.
 8. Sanal makine, yeni NIC 'yi sisteme başlatacak şekilde yeniden başlatılacak.
 9.  Makinenize RDP 'yi deneyin. Başarılı olursa, isterseniz özel IP adresini özgün olacak şekilde değiştirebilirsiniz. Aksi takdirde, bunu koruyabilirsiniz. 
@@ -81,10 +81,10 @@ Ağ arabirimini sıfırlamak için şu adımları izleyin:
 1.  [Azure portalına]( https://ms.portal.azure.com) gidin.
 2.  **Sanal makineler (klasik)** öğesini seçin.
 3.  Etkilenen sanal makineyi seçin.
-4.  **IP adreslerini**seçin.
-5.  **Özel IP ataması** **statik**değilse, **statik**olarak değiştirin.
+4.  **IP adreslerini** seçin.
+5.  **Özel IP ataması** **statik** değilse, **statik** olarak değiştirin.
 6.  **IP adresini** alt ağda kullanılabilir olan başka bir IP adresiyle değiştirin.
-7.  **Kaydet**’i seçin.
+7.  **Kaydet**'i seçin.
 8.  Sanal makine, yeni NIC 'yi sisteme başlatacak şekilde yeniden başlatılacak.
 9.  Makinenize RDP 'yi deneyin. Başarılı olursa, özel IP adresini özgün durumuna geri döndürmeyi seçebilirsiniz.  
 
@@ -118,7 +118,7 @@ Makineye Uzak Masaüstü 'nü etkinleştirdikten sonra olası sorundan kaçınma
 
 1.  Cihaz Yöneticisi'ni açın.
 2.  **Görünüm**  >  **gizli cihazları göster**' i seçin.
-3.  **Ağ bağdaştırıcılarını**seçin. 
+3.  **Ağ bağdaştırıcılarını** seçin. 
 4.  "Microsoft Hyper-V ağ bağdaştırıcısı" olarak adlandırılan bağdaştırıcıları denetleyin.
 5.  Gri kullanılamayan bir bağdaştırıcı görebilirsiniz. Bağdaştırıcıyı sağ tıklatın ve ardından Kaldır ' ı seçin.
 

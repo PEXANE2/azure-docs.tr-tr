@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: alkohli
 ms.openlocfilehash: f59d1e297ba4d7607d7abd07a78da4784f55d20f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792914"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023236"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>Bant genişliği düşük veya orta olduğunda küçük veri kümeleri için veri aktarımı
  
@@ -23,23 +23,23 @@ Tüm kullanılabilir veri aktarımı seçeneklerine genel bir bakış için bkz.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Küçük veri kümeleri, GBs 'nin bazı bir TBs sırasındaki veri boyutlarına başvurur. Düşük-orta ağ bant genişliği 45 Mbps (veri merkezinde T3 bağlantısı) ile 1 Gbps arasında bir bağlantı gerektirir.
+Küçük veri kümeleri, boyutu GB ile ölçülen ve en fazla birkaç TB'a ulaşan verileri ifade eder. Düşük ila orta ağ bant genişliği, 45 Mb/sn (veri merkezindeki T3 bağlantısı) ile 1 Gb/sn arasındaki hızları ifade eder.
 
 - Yalnızca birkaç dosyayı aktarıyorsanız ve veri aktarımını otomatikleştirmeniz gerekmiyorsa, araçları bir grafik arabirimiyle değerlendirin.
-- Sistem yönetimi konusunda deneyimli değilseniz komut satırı veya programlı/komut dosyası araçları ' nı düşünün.
+- Sistem yönetimi konusunda bilginiz varsa komut satırı veya program/betik aracılığıyla kullanılan araçları tercih edebilirsiniz.
 
-## <a name="recommended-options"></a>Önerilen Seçenekler
+## <a name="recommended-options"></a>Önerilen seçenekler
 
 Bu senaryoda önerilen seçenekler şunlardır:
 
 - Azure Depolama Gezgini ve Azure portal Azure depolama gibi **grafik arabirim araçları** . Bu, verilerinizi görüntülemenin ve birkaç dosyayı hızlı bir şekilde aktarmanın kolay bir yolunu sağlar.
 
-    - **Azure Depolama Gezgini** -bu platformlar arası araç, Azure depolama hesaplarınızın içeriğini yönetmenizi sağlar. Blob, dosya, kuyruk, tablo ve Azure Cosmos DB varlıklarını karşıya yüklemenize, indirmelerine ve yönetmenize olanak sağlar. Blob 'ları ve klasörleri yönetmek için blob depolamayla birlikte kullanın, ayrıca yerel dosya sisteminiz ile BLOB depolama alanı arasında veya depolama hesapları arasında Blobları karşıya yükleyin ve indirin.
-    - **Azure Portal** -Azure Portal Azure depolama, dosyaları keşfetmeye ve yeni dosyaları tek seferde karşıya yüklemeye yönelik Web tabanlı bir arabirim sağlar. Bu, dosyalarınızı hızlı bir şekilde araştırmak için herhangi bir araç veya sorun komutu yüklemek istemiyorsanız ya da yalnızca yeni bir tane karşıya yüklemek istemiyorsanız iyi bir seçenektir.
+    - **Azure Depolama Gezgini** -bu platformlar arası araç, Azure depolama hesaplarınızın içeriğini yönetmenizi sağlar. Blob, dosya, kuyruk, tablo ve Azure Cosmos DB varlığı gibi nesneleri karşıya yükleyebilir, indirebilir ve yönetebilirsiniz. Blob depolama alanıyla birlikte kullanarak blobları ve klasörleri yönetebilir, yerel dosya sisteminizle Blob depolama alanı veya farklı depolama hesapları arasında blobları karşıya yükleme ve indirme işlemlerini gerçekleştirebilirsiniz.
+    - **Azure Portal** -Azure Portal Azure depolama, dosyaları keşfetmeye ve yeni dosyaları tek seferde karşıya yüklemeye yönelik Web tabanlı bir arabirim sağlar. Herhangi bir araç yüklemeden veya komut kullanmadan dosyalarınıza hızlıca göz atmak veya birkaç tane dosyayı karşıya yüklemek için iyi bir seçenektir.
 
 - AzCopy/PowerShell/Azure CLı ve Azure depolama REST API 'Leri gibi **komut dosyası/programlama araçları** .
 
-    - **AzCopy** -bu komut satırı aracını, En Iyi performansla Azure Blob 'Larına, dosyalarına ve tablo depolamasına verileri kolayca kopyalamak için kullanın. AzCopy eşzamanlılık ve paralellik destekler ve kesintiye uğradığında kopyalama işlemlerini sürdürülemez.
+    - **AzCopy** -bu komut satırı aracını, En Iyi performansla Azure Blob 'Larına, dosyalarına ve tablo depolamasına verileri kolayca kopyalamak için kullanın. AzCopy eşzamanlılık ve paralellik desteğine ek olarak kesintiye uğrayan kopyalama işlemlerini sürdürme olanağı sunar.
     - **Azure PowerShell** -sistem yönetimi sayesinde kullanıcılara rahat bir şekilde veri aktarmak Için Azure PowerShell Azure Storage modülünü kullanın.
     - **Azure CLI** -bu platformlar arası aracı kullanarak Azure hizmetlerini yönetin ve verileri Azure depolama 'ya yükleyin.
     - **Azure depolama REST API 'leri/SDK 'lar** – bir uygulama oluştururken, uygulamayı Azure Storage REST API 'Leri/SDK 'larda geliştirebilir ve birden çok dilde sunulan Azure istemci kitaplıklarını kullanabilirsiniz.
@@ -47,17 +47,17 @@ Bu senaryoda önerilen seçenekler şunlardır:
 
 ## <a name="comparison-of-key-capabilities"></a>Anahtar özellikleri karşılaştırması
 
-Aşağıdaki tabloda, önemli özelliklerde farklılıklar özetlenmektedir.
+Aşağıdaki tabloda, temel özellikler arasındaki farklar özetlenmiştir.
 
 | Özellik | Azure Depolama Gezgini | Azure portal | AzCopy<br>Azure PowerShell<br>Azure CLI | Azure depolama REST API 'Leri veya SDK 'Ları |
 |---------|------------------------|--------------|-----------------------------------------|---------------------------------|
 | Kullanılabilirlik | İndirme ve yükleme <br>Tek başına aracı | Azure portal web tabanlı araştırma araçları | Komut satırı aracı |.NET, Java, Python, JavaScript, C++, Go, Ruby ve PHP 'de programlanabilir arabirimler |
-| Grafik arabirim | Evet | Evet | Hayır | Hayır |
+| Grafik arabirim | Yes | Yes | Hayır | Hayır |
 | Desteklenen platformlar | Windows, Mac, Linux | Web tabanlı |Windows, Mac, Linux |Tüm platformlar |
 | İzin verilen BLOB depolama işlemleri<br>Bloblar ve klasörler için | Karşıya Yükleme<br>İndir<br>Yönetme | Karşıya Yükleme<br>İndir<br>Yönetme |Karşıya Yükleme<br>İndir<br>Yönetme | Evet, özelleştirilebilir |
-| Data Lake Gen1 Storage izin verildi<br>dosyalar ve klasörler için işlemler | Karşıya Yükleme<br>İndir<br>Yönetme | Hayır |Karşıya Yükleme<br>İndir<br>Yönetme                   | Hayır |
+| Data Lake Gen1 Storage izin verildi<br>dosyalar ve klasörler için işlemler | Karşıya Yükleme<br>İndir<br>Yönetme | No |Karşıya Yükleme<br>İndir<br>Yönetme                   | No |
 | İzin verilen dosya depolama işlemleri<br>dosyalar ve dizinler için | Karşıya Yükleme<br>İndir<br>Yönetme | Karşıya Yükleme<br>İndir<br>Yönetme   |Karşıya Yükleme<br>İndir<br>Yönetme | Evet, özelleştirilebilir |
-| İzin verilen tablo depolama işlemleri<br>tablolar için |Yönetme | Hayır |AzCopy v7 'ta tablo desteği |Evet, özelleştirilebilir|
+| İzin verilen tablo depolama işlemleri<br>tablolar için |Yönetme | No |AzCopy v7 'ta tablo desteği |Evet, özelleştirilebilir|
 | İzin verilen kuyruk depolaması | Yönetme | Hayır  |Hayır | Evet, özelleştirilebilir|
 
 

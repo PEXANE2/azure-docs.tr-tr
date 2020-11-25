@@ -1,19 +1,19 @@
 ---
 title: 'Hızlı başlangıç: Xamarin Android uygulaması oluşturma'
 description: Bu hızlı başlangıçta, uzamsal bağlayıcıları kullanarak Xamarin ile bir Android uygulaması oluşturmayı öğreneceksiniz.
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 07/22/2019
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: ab414b877bd2d098c6e340267ff579fb58aec9d9
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 1626dfa739df6b7cf971aa570f14d36ac6c532e7
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097329"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96022624"
 ---
 # <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>Hızlı başlangıç: Azure uzamsal bağlayıcılarla bir Xamarin Android uygulaması oluşturma
 
@@ -28,7 +28,7 @@ Bu hızlı başlangıçta, [Azure uzamsal bağlayıcıları](../overview.md)kull
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emin olun:
 - Bir Windows veya macOS bilgisayarı:
@@ -69,19 +69,19 @@ Alanı bulun `SpatialAnchorsAccountDomain` ve `Set me` hesap etki alanı ile de�
 
 Android cihazda güç açın, oturum açın ve USB kablosu kullanarak bilgisayara bağlayın.
 
-Başlangıç projesini **Samplexamarin. Android**olarak ayarlayın, **çözüm yapılandırmasını** **Yayınla**değiştirin ve cihaz Seçicisi açılır penceresinde dağıtmak istediğiniz cihazı seçin.
+Başlangıç projesini **Samplexamarin. Android** olarak ayarlayın, **çözüm yapılandırmasını** **Yayınla** değiştirin ve cihaz Seçicisi açılır penceresinde dağıtmak istediğiniz cihazı seçin.
 
 # <a name="windows"></a>[Windows](#tab/deploy-windows)
 
 ![Windows 'da projeyi ve cihazı seçmek için menüyü gösteren ekran görüntüsü.](./media/get-started-xamarin-android/visual-studio-windows-configuration.png)
 
-**Debug**  >  Uygulamanızı dağıtmak ve başlatmak için hata**ayıklamayı Başlat** ' ı seçin.
+**Debug**  >  Uygulamanızı dağıtmak ve başlatmak için hata **ayıklamayı Başlat** ' ı seçin.
 
 # <a name="macos"></a>[macOS](#tab/deploy-macos)
 
 ![Visual Studio yapılandırması](./media/get-started-xamarin-android/visual-studio-macos-configuration.jpg)
 
-**Run**  >  Uygulamanızı dağıtmak ve başlatmak için**hata ayıklama olmadan Başlat** ' ı seçin.
+**Run**  >  Uygulamanızı dağıtmak ve başlatmak için **hata ayıklama olmadan Başlat** ' ı seçin.
 
 ---
 

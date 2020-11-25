@@ -5,11 +5,11 @@ ms.topic: article
 ms.date: 10/28/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9162b8578fe4f48cc3740b38d9d84ffaa2f260de
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927796"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023610"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>Service Bus işlem işlemeye genel bakış
 
@@ -27,8 +27,8 @@ Service Bus, bir hareketin kapsamı içindeki işlemlerin (kuyruk, konu başlı�
 
 Bir işlem kapsamı içinde gerçekleştirilebilecek işlemler aşağıdaki gibidir:
 
-* **[Queueclient](/dotnet/api/microsoft.azure.servicebus.queueclient), [iletileyici](/dotnet/api/microsoft.azure.servicebus.core.messagesender), [topicclient](/dotnet/api/microsoft.azure.servicebus.topicclient)** : `Send` , `SendAsync` , `SendBatch` ,`SendBatchAsync`
-* **[Brokeredmessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)** : `Complete` , `CompleteAsync` , `Abandon` , `AbandonAsync` , `Deadletter` , `DeadletterAsync` , `Defer` , `DeferAsync` , `RenewLock` , `RenewLockAsync` 
+* **[Queueclient](/dotnet/api/microsoft.azure.servicebus.queueclient), [iletileyici](/dotnet/api/microsoft.azure.servicebus.core.messagesender), [topicclient](/dotnet/api/microsoft.azure.servicebus.topicclient)**: `Send` , `SendAsync` , `SendBatch` ,`SendBatchAsync`
+* **[Brokeredmessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)**: `Complete` , `CompleteAsync` , `Abandon` , `AbandonAsync` , `Deadletter` , `DeadletterAsync` , `Defer` , `DeferAsync` , `RenewLock` , `RenewLockAsync` 
 
 Uygulamanın [ReceiveMode. PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) modunu kullanarak, bazı alma döngülerine veya bir [OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage) geri çağırması ile veya yalnızca iletiyi işlemeye yönelik bir işlem kapsamını açtığından emin olduğu varsayıldığından alma işlemleri dahil değildir.
 
@@ -42,7 +42,7 @@ Aktarım sırasının veya konusunun kendisi gönderenin giriş iletilerinin kay
 
 ### <a name="see-it-in-code"></a>Kodda gör
 
-Bu tür aktarımları ayarlamak için, Aktarım kuyruğu aracılığıyla hedef kuyruğu hedefleyen bir ileti gönderici oluşturursunuz. Aynı sıradan iletiler çeken bir alıcıya da sahipsiniz. Örneğin:
+Bu tür aktarımları ayarlamak için, Aktarım kuyruğu aracılığıyla hedef kuyruğu hedefleyen bir ileti gönderici oluşturursunuz. Aynı sıradan iletiler çeken bir alıcıya da sahipsiniz. Örnek:
 
 ```csharp
 var connection = new ServiceBusConnection(connectionString);

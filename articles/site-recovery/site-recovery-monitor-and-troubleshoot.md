@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: raynew
 ms.openlocfilehash: d441284b265ab11dd5ece42ec3737e455d662435
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545812"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023576"
 ---
 # <a name="monitor-site-recovery"></a>Site Recovery’yi izleme
 
@@ -38,13 +38,13 @@ Başlamadan önce [yaygın izleme sorularını](monitoring-common-questions.md) 
 
     ![Panoda ayrıntıya gidebileceğiniz alanı gösteren ekran görüntüsü.](./media/site-recovery-monitor-and-troubleshoot/site-recovery-overview-page.png).
 
-3. **Çoğaltılan öğelerde** , kasadaki tüm sunucuları görmek Için **Tümünü görüntüle** ' ye tıklayın.
+3. **Çoğaltılan öğelerde**, kasadaki tüm sunucuları görmek Için **Tümünü görüntüle** ' ye tıklayın.
 4. Ayrıntıya gitmek için her bölümün durum ayrıntılarına tıklayın.
-5. **Altyapı görünümü** ' nde, çoğaltmakta olduğunuz makine türüne göre izleme bilgilerini sıralayın.
+5. **Altyapı görünümü**' nde, çoğaltmakta olduğunuz makine türüne göre izleme bilgilerini sıralayın.
 
 ## <a name="monitor-replicated-items"></a>Çoğaltılan öğeleri izleme
 
-**Çoğaltılan öğelerde** , kasadaki çoğaltmanın etkin olduğu tüm makinelerin sistem durumunu izleyin.
+**Çoğaltılan öğelerde**, kasadaki çoğaltmanın etkin olduğu tüm makinelerin sistem durumunu izleyin.
 
 **Durum** | **Ayrıntılar**
 --- | ---
@@ -68,7 +68,7 @@ Uygulanamaz | Yük devretme testi için şu anda uygun olmayan makineler. Örne�
 
 ## <a name="monitor-configuration-issues"></a>Yapılandırma sorunlarını izleme
 
-**Yapılandırma sorunları** ' nda, başarıyla yük devretme yeteneğinizi etkileyebilecek tüm sorunları izleyin.
+**Yapılandırma sorunları**' nda, başarıyla yük devretme yeteneğinizi etkileyebilecek tüm sorunları izleyin.
 
 - Yapılandırma sorunları (yazılım güncelleştirme kullanılabilirliği hariç), varsayılan olarak her 12 saatte bir çalışan düzenli Doğrulayıcı işlemi tarafından algılanır. **Yapılandırma sorunları** bölüm başlığının yanındaki Yenile simgesine tıklayarak Doğrulayıcı işlemini hemen çalışacak şekilde zorlayabilirsiniz.
 - Daha fazla ayrıntı edinmek için bağlantılara tıklayın. Belirli makineleri etkileyen sorunlar için **hedef konfigürasyonlar** sütununda **ilgilenilmesi gerekiyor** ' a tıklayın. Ayrıntılar düzeltme önerilerini içerir.
@@ -83,7 +83,7 @@ Yazılım güncelleştirmeleri | Yeni yazılım güncelleştirmelerinin kullanı
 
 ## <a name="monitor-errors"></a>Hataları izle
 
-**Hata Özeti** ' nde, kasadaki sunucuların çoğaltılmasını etkileyebilecek Şu anda etkin olan hata belirtilerini izleyin ve etkilenen makinelerin sayısını izleyin.
+**Hata Özeti**' nde, kasadaki sunucuların çoğaltılmasını etkileyebilecek Şu anda etkin olan hata belirtilerini izleyin ve etkilenen makinelerin sayısını izleyin.
 
 - Şirket içi altyapı bileşenlerini etkileyen hatalar, bölümünün başlangıcıdır. Örneğin, şirket içi yapılandırma sunucusu veya Hyper-V konağı Azure Site Recovery sağlayıcısından bir sinyal alınmıyor.
 - Ardından, çoğaltılan sunucuları etkileyen çoğaltma hatası belirtileri gösterilir.
@@ -93,7 +93,7 @@ Yazılım güncelleştirmeleri | Yeni yazılım güncelleştirmelerinin kullanı
 
 ## <a name="monitor-the-infrastructure"></a>Altyapıyı izleyin.
 
-**Altyapı görünümü** ' nde, çoğaltmada yer alan altyapı bileşenlerini ve sunucular ile Azure hizmetleri arasındaki bağlantı durumunu izleyin.
+**Altyapı görünümü**' nde, çoğaltmada yer alan altyapı bileşenlerini ve sunucular ile Azure hizmetleri arasındaki bağlantı durumunu izleyin.
 
 - Yeşil bir çizgi bağlantının sağlıklı olduğunu gösterir.
 - Çakışan hata simgesiyle kırmızı bir çizgi, bağlantıyı etkileyen bir veya daha fazla hata belirtiinin varlığını gösterir.
@@ -109,25 +109,25 @@ Yazılım güncelleştirmeleri | Yeni yazılım güncelleştirmelerinin kullanı
 
     **Senaryo** | **Durum**  | **Görünüm kullanılabilir mi?**
     --- |--- | ---
-    **Şirket içi siteler arasında çoğaltma** | Tüm eyaletler | Hayır 
-    **Azure bölgeleri arasında Azure VM çoğaltma**  | Çoğaltma etkin/ilk çoğaltma devam ediyor | Evet
-    **Azure bölgeleri arasında Azure VM çoğaltma** | Yük devredildi/başarısız oldu | Hayır   
-    **Azure’a VMware çoğaltma** | Çoğaltma etkin/ilk çoğaltma devam ediyor | Evet     
-    **Azure’a VMware çoğaltma** | Yük devredildi/başarısız oldu | Hayır      
-    **Azure'a Hyper-V çoğaltması** | Yük devredildi/başarısız oldu | Hayır
+    **Şirket içi siteler arasında çoğaltma** | Tüm eyaletler | No 
+    **Azure bölgeleri arasında Azure VM çoğaltma**  | Çoğaltma etkin/ilk çoğaltma devam ediyor | Yes
+    **Azure bölgeleri arasında Azure VM çoğaltma** | Yük devredildi/başarısız oldu | No   
+    **Azure’a VMware çoğaltma** | Çoğaltma etkin/ilk çoğaltma devam ediyor | Yes     
+    **Azure’a VMware çoğaltma** | Yük devredildi/başarısız oldu | No      
+    **Azure'a Hyper-V çoğaltması** | Yük devredildi/başarısız oldu | No
 
-- Tek bir çoğaltma makinesine ait altyapı görünümünü görmek için kasa menüsünde **çoğaltılan öğeler** ' e tıklayın ve bir sunucu seçin.  
+- Tek bir çoğaltma makinesine ait altyapı görünümünü görmek için kasa menüsünde **çoğaltılan öğeler**' e tıklayın ve bir sunucu seçin.  
 
 
 
 
 ## <a name="monitor-recovery-plans"></a>Kurtarma planlarını izleme
 
-**Kurtarma planları** ' nda, plan sayısını izleyin, yeni planlar oluşturun ve var olanları değiştirin.  
+**Kurtarma planları**' nda, plan sayısını izleyin, yeni planlar oluşturun ve var olanları değiştirin.  
 
 ## <a name="monitor-jobs"></a>İşleri izleme
 
-**İşler** ' de Site Recovery işlemlerinin durumunu izleyin.
+**İşler**' de Site Recovery işlemlerinin durumunu izleyin.
 
 - Azure Site Recovery çoğu işlem zaman uyumsuz olarak yürütülemekte ve işlemin ilerlemesini izlemek için kullanılan bir izleme işi. 
 - İş nesnesi, işlemin durumunu ve ilerlemesini izlemek için ihtiyacınız olan tüm bilgileri içerir. 
@@ -138,14 +138,14 @@ Yazılım güncelleştirmeleri | Yeni yazılım güncelleştirmelerinin kullanı
 2. Son 24 saat içindeki tüm işleri görmek için **Tümünü görüntüle** ' ye tıklayın.
 
     > [!NOTE]
-    > İş bilgilerine Ayrıca, **Site Recovery işleri** > kasa menüsünden erişebilirsiniz. 
+    > İş bilgilerine Ayrıca, **Site Recovery işleri**> kasa menüsünden erişebilirsiniz. 
 
 2. **Site Recovery işleri** listesinde, işlerin bir listesi görüntülenir. Üstteki menüde, belirli bir iş için hata ayrıntılarını alabilir, belirli ölçütlere göre işler listesini filtreleyebilir ve seçilen iş ayrıntılarını Excel 'e aktarabilirsiniz.
 3. Bir işe tıklayarak gidebilirsiniz. 
 
 ## <a name="monitor-virtual-machines"></a>Sanal makineleri izleme
 
-**Çoğaltılan öğeler** ' de, çoğaltılan makinelerin bir listesini alın. 
+**Çoğaltılan öğeler**' de, çoğaltılan makinelerin bir listesini alın. 
     ![Çoğaltılan öğe listesi görünümünü Site Recovery](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-list-view.png)
 
 2. Bilgileri görüntüleyebilir ve filtreleyebilirsiniz. Üstteki Eylem menüsünde, yük devretme testi çalıştırma veya belirli hataları görüntüleme dahil olmak üzere belirli bir makine için eylemler gerçekleştirebilirsiniz.
@@ -153,13 +153,13 @@ Yazılım güncelleştirmeleri | Yeni yazılım güncelleştirmelerinin kullanı
 4. Çoğaltma durumu veya belirli bir çoğaltma ilkesi gibi belirli parametrelere göre bilgileri görüntülemek için **Filtrele** ' ye tıklayın.
 5. Test yük devretmesi veya onunla ilişkili belirli hata ayrıntılarını görüntülemek için bir makineye sağ tıklayın.
 6. Daha ayrıntılı bilgi edinmek için bir makineye tıklayın. Ayrıntılar şunları içerir:
-   - **Çoğaltma bilgileri** : makinenin geçerli durumu ve durumu.
+   - **Çoğaltma bilgileri**: makinenin geçerli durumu ve durumu.
    - **RPO** (kurtarma noktası hedefi): sanal makine IÇIN geçerli RPO ve RPO 'nun en son hesaplanacağı zaman.
-   - **Kurtarma noktaları** : makine için en son kullanılabilir kurtarma noktaları.
-   - **Yük devretme hazırlığı** : makine için yük devretme testi çalıştırma, makinede çalışan aracı sürümü (Mobility hizmetini çalıştıran makineler için) ve herhangi bir yapılandırma sorunu olduğunu gösterir.
-   - **Hatalar** : Şu anda makinede gözlemlendiği çoğaltma hatası belirtileri ve olası nedenler/eylemler listesi.
-   - **Olaylar** : makineyi etkileyen son olayların kronolojik bir listesi. Hata ayrıntıları şu anda observable hata belirtilerini gösterir. olaylar, makineyi etkileyen sorunların geçmiş bir kaydıdır.
-   - **Altyapı görünümü** : makineler Azure 'a çoğaltılırken senaryo için altyapının durumunu gösterir.
+   - **Kurtarma noktaları**: makine için en son kullanılabilir kurtarma noktaları.
+   - **Yük devretme hazırlığı**: makine için yük devretme testi çalıştırma, makinede çalışan aracı sürümü (Mobility hizmetini çalıştıran makineler için) ve herhangi bir yapılandırma sorunu olduğunu gösterir.
+   - **Hatalar**: Şu anda makinede gözlemlendiği çoğaltma hatası belirtileri ve olası nedenler/eylemler listesi.
+   - **Olaylar**: makineyi etkileyen son olayların kronolojik bir listesi. Hata ayrıntıları şu anda observable hata belirtilerini gösterir. olaylar, makineyi etkileyen sorunların geçmiş bir kaydıdır.
+   - **Altyapı görünümü**: makineler Azure 'a çoğaltılırken senaryo için altyapının durumunu gösterir.
 
      ![Site Recovery çoğaltılan öğe ayrıntıları/genel bakış](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-details.png)
 
@@ -173,8 +173,8 @@ Bu kritik olaylar için e-posta bildirimleri almak üzere abone olabilirsiniz:
 
 Aşağıdaki şekilde abone olabilirsiniz:
 
-Kasa > **izleme** bölümünde **Site Recovery olaylar** ' a tıklayın.
-1. **E-posta bildirimleri** 'ne tıklayın.
+Kasa > **izleme** bölümünde **Site Recovery olaylar**' a tıklayın.
+1. **E-posta bildirimleri**'ne tıklayın.
 1. **E-posta bildiriminde** bildirimleri açın ve kime gönderileceğini belirtin. Tüm abonelik yöneticilerine gönderilen bildirimler ve isteğe bağlı olarak belirli e-posta adresleri gönderebilirsiniz.
 
     ![E-posta bildirimleri](./media/site-recovery-monitor-and-troubleshoot/email.png)
