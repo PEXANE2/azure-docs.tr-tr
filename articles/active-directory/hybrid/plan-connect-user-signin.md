@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3365a58a0c667ca55b74a5120cdd7a78ad0abc79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91299919"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997792"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect Kullanıcı oturum açma seçenekleri
 Azure Active Directory (Azure AD) Connect, kullanıcılarınızın aynı parolaları kullanarak hem bulutta hem de şirket içi kaynaklarda oturum açmalarına olanak tanır. Bu makalede, Azure AD 'de oturum açmak için kullanmak istediğiniz kimliği seçmenize yardımcı olmak üzere her bir kimlik modeli için temel kavramlar açıklanır.
@@ -60,7 +60,7 @@ Ayrıca, şirket ağındaki etki alanına katılmış makinelerde bulunan kullan
 
 Daha fazla bilgi için bkz. [Parola karması eşitleme](how-to-connect-password-hash-synchronization.md) makalesi.
 
-### <a name="pass-through-authentication"></a>Doğrudan kimlik doğrulama
+### <a name="pass-through-authentication"></a>Doğrudan kimlik doğrulaması
 Geçişli kimlik doğrulaması ile kullanıcının parolası, şirket içi Active Directory denetleyicisine göre onaylanır. Parolanın herhangi bir biçimde Azure AD 'de mevcut olması gerekmez. Bu, oturum açma saati kısıtlamaları gibi şirket içi ilkelerin, bulut hizmetlerinde kimlik doğrulaması sırasında değerlendirilmesini sağlar.
 
 Geçişli kimlik doğrulaması, şirket içi ortamda Windows Server 2012 R2 etki alanına katılmış bir makinede basit bir aracı kullanır. Bu aracı parola doğrulama isteklerini dinler. Herhangi bir gelen bağlantı noktasının Internet 'e açık olmasını gerektirmez.
@@ -69,7 +69,7 @@ Ayrıca, şirket ağındaki etki alanına katılmış makinelerde bulunan kullan
 ![Doğrudan kimlik doğrulama](./media/plan-connect-user-signin/pta.png)
 
 Daha fazla bilgi için bkz.
-- [Doğrudan kimlik doğrulama](how-to-connect-pta.md)
+- [Doğrudan kimlik doğrulaması](how-to-connect-pta.md)
 - [Çoklu oturum açma](how-to-connect-sso.md)
 
 ### <a name="federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2"></a>Windows Server 2012 R2 'de AD FS yeni veya var olan bir grubu kullanan federasyon
@@ -164,7 +164,7 @@ Aşağıdaki bilgiler için, UPN 'nin bir parçası olarak şirket içi dizinde 
 ###### <a name="ad-fs-federation"></a>AD FS Federasyonu
 Azure AD 'de default. onmicrosoft.com etki alanı veya Azure AD 'de doğrulanmamış bir özel etki alanı ile bir Federasyon oluşturamazsınız. Azure AD Connect sihirbazını çalıştırırken, ile bir federasyon oluşturmak için doğrulanmamış bir etki alanını seçerseniz, Azure AD Connect DNS 'nizin etki alanı için barındırıldığı gerekli kayıtları ister. Daha fazla bilgi için bkz. [Federasyon için seçili Azure AD etki alanını doğrulama](how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation).
 
-**AD FS ile**Kullanıcı oturum açma seçeneğini belirlediyseniz, Azure AD 'de bir Federasyon oluşturmaya devam etmek için özel bir etki alanına sahip olmanız gerekir. Tartışmamız için bu, Azure AD dizininde özel bir etki alanı contoso.com eklenmiş olması gerektiği anlamına gelir.
+**AD FS ile** Kullanıcı oturum açma seçeneğini belirlediyseniz, Azure AD 'de bir Federasyon oluşturmaya devam etmek için özel bir etki alanına sahip olmanız gerekir. Tartışmamız için bu, Azure AD dizininde özel bir etki alanı contoso.com eklenmiş olması gerektiği anlamına gelir.
 
 | Durum | Kullanıcı Azure oturum açma deneyiminde etki |
 |:---:|:--- |

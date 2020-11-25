@@ -14,11 +14,11 @@ ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f47ae9b087615a77f6bd4d3f14f1b0052037cba6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89321982"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996772"
 ---
 # <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>Azure Active Directory kullanarak kuruluşunuzun gizlilik bilgilerini ekleyin
 Bu makalede, bir kiracı yöneticisinin Azure portal aracılığıyla bir kuruluşun Azure Active Directory (Azure AD) kiracısına gizlilikle ilgili bilgileri nasıl ekleyebileceği açıklanmaktadır.
@@ -49,11 +49,11 @@ Kuruluşunuzun gizlilik bilgilerini Azure AD 'nin **Özellikler** alanına ekler
     - **Gizlilik bildirimi URL 'SI.** Kuruluşunuzun hem iç hem de dış konuğun veri gizliliğini nasıl işlediğini açıklayan, kuruluşunuzun belgesinin bağlantısını yazın.
 
         >[!Important]
-        >Kendi gizlilik bildirimimizi veya gizlilik kişinizi eklemezseniz, dış konularınız, gözden **geçirme izinleri** kutusunda bir metin görür, bu da ** < _kuruluş adınızın_> gözden geçirmeniz için kendi koşullarına bağlantı sağlamamıştır**. Örneğin, bir Konuk Kullanıcı B2B işbirliği aracılığıyla kuruluşa erişim daveti aldıklarında bu iletiyi görür.
+        >Kendi gizlilik bildirimimizi veya gizlilik kişinizi eklemezseniz, dış konularınız, gözden **geçirme izinleri** kutusunda bir metin görür, bu da **< _kuruluş adınızın_> gözden geçirmeniz için kendi koşullarına bağlantı sağlamamıştır**. Örneğin, bir Konuk Kullanıcı B2B işbirliği aracılığıyla kuruluşa erişim daveti aldıklarında bu iletiyi görür.
 
         ![B2B Işbirliği Inceleme Izinleri kutusu ileti](media/active-directory-properties-area/active-directory-no-privacy-statement-or-contact.png)
 
-4. **Kaydet**’i seçin.
+4. **Kaydet**'i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Azure Active Directory B2B işbirliği daveti kullanım](../external-identities/redemption-experience.md)

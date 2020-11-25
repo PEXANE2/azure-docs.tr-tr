@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 01/19/2018
 ms.openlocfilehash: adc29916c6b674531d7b0e8fcdd4e151b4a17bde
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677569"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997265"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log Analytics Uyarı Yönetimi çözümü
 
@@ -19,7 +19,7 @@ ms.locfileid: "92677569"
 
 Uyarı Yönetimi çözümü, Log Analytics Deponuzdaki tüm uyarıları çözümlemenize yardımcı olur.  Bu uyarılar, [Log Analytics tarafından oluşturulan](./alerts-overview.md) veya [Nagios ya da Zabbix 'ten içeri aktarılan](../learn/quick-collect-linux-computer.md)kaynaklar dahil olmak üzere çeşitli kaynaklardan gelmiş olabilir. Çözüm Ayrıca, [bağlı System Center Operations Manager yönetim gruplarından](./om-agents.md)gelen uyarıları içeri aktarır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Çözüm, Log Analytics deposundaki kayıtlarla birlikte **çalışarak, bu** kayıtları toplamak için hangi yapılandırmanın gerekli olduğunu yapmanız gerekir.
 
 - Log Analytics uyarılar için, doğrudan depoda uyarı kayıtları oluşturmak üzere [Uyarı kuralları oluşturun](./alerts-overview.md) .
@@ -40,11 +40,11 @@ System Center Operations Manager yönetim grubunuz Log Analytics çalışma alan
 ### <a name="agents"></a>Aracılar
 Aşağıdaki tabloda bu çözüm tarafından desteklenen bağlı kaynaklar açıklanmaktadır.
 
-| Bağlı Kaynak | Destek | Açıklama |
+| Bağlı Kaynak | Destek | Description |
 |:--- |:--- |:--- |
-| [Windows aracıları](agent-windows.md) | Hayır |Doğrudan Windows aracıları uyarı oluşturmaz.  Log Analytics uyarılar, Windows aracılarından toplanan olaylar ve performans verilerinden oluşturulabilir. |
-| [Linux aracıları](../learn/quick-collect-linux-computer.md) | Hayır |Doğrudan Linux aracıları uyarı oluşturmaz.  Log Analytics uyarılar, Linux aracılarından toplanan olaylar ve performans verilerinden oluşturulabilir.  Nagios ve Zabbix uyarıları, Linux Aracısı gerektiren sunuculardan toplanır. |
-| [System Center Operations Manager yönetim grubu](./om-agents.md) |Evet |Operations Manager aracılarında oluşturulan uyarılar yönetim grubuna teslim edilir ve sonra Log Analytics iletilir.<br><br>Operations Manager aracılarından Log Analytics doğrudan bir bağlantı gerekli değildir. Uyarı verileri yönetim grubundan Log Analytics deposuna iletilir. |
+| [Windows aracıları](agent-windows.md) | No |Doğrudan Windows aracıları uyarı oluşturmaz.  Log Analytics uyarılar, Windows aracılarından toplanan olaylar ve performans verilerinden oluşturulabilir. |
+| [Linux aracıları](../learn/quick-collect-linux-computer.md) | No |Doğrudan Linux aracıları uyarı oluşturmaz.  Log Analytics uyarılar, Linux aracılarından toplanan olaylar ve performans verilerinden oluşturulabilir.  Nagios ve Zabbix uyarıları, Linux Aracısı gerektiren sunuculardan toplanır. |
+| [System Center Operations Manager yönetim grubu](./om-agents.md) |Yes |Operations Manager aracılarında oluşturulan uyarılar yönetim grubuna teslim edilir ve sonra Log Analytics iletilir.<br><br>Operations Manager aracılarından Log Analytics doğrudan bir bağlantı gerekli değildir. Uyarı verileri yönetim grubundan Log Analytics deposuna iletilir. |
 
 
 ### <a name="collection-frequency"></a>Toplama sıklığı
@@ -101,7 +101,7 @@ Uyarı Yönetimi çözümü, bir **Uyarı** türü ile tüm kayıtları analiz e
 ## <a name="sample-log-searches"></a>Örnek günlük aramaları
 Aşağıdaki tabloda, bu çözüm tarafından toplanan uyarı kayıtları için örnek günlük aramaları sunulmaktadır: 
 
-| Sorgu | Açıklama |
+| Sorgu | Description |
 |:---|:---|
 | Uyarı &#124; WHERE dir = = "OpsManager" ve Alertönem derecesi = = "Error" ve TimeRaised > önce (24h) |Son 24 saatte oluşturulan kritik uyarılar |
 | Uyarı &#124;, Alertönem derecesi = = "Warning" ve TimeRaised > önce (24 h) |Son 24 saat boyunca oluşan uyarı uyarıları |

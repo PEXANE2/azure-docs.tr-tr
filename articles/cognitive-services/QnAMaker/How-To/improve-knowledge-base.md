@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: dcf912f431d578a6e678801d3dc8f4e11484ea78
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678370"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997027"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Bilgi Bankası 'nda önerilen etkin öğrenme sorularını kabul edin
 
@@ -26,11 +26,11 @@ Etkin öğrenme, öneriyi onayladıktan sonra bilgi bankasını veya Arama Hizme
 
 ## <a name="view-suggested-questions"></a>Önerilen soruları görüntüleyin
 
-1. Önerilen soruları görmek için Bilgi Bankası **Düzenle** sayfasında, **seçenekleri görüntüle** ' yi seçin ve ardından **etkin öğrenme önerilerini göster** ' i seçin.
+1. Önerilen soruları görmek için Bilgi Bankası **Düzenle** sayfasında, **seçenekleri görüntüle**' yi seçin ve ardından **etkin öğrenme önerilerini göster**' i seçin.
 
     [![Portalın düzenleme bölümünde, etkin öğrenmesinin yeni soru alternatiflerini görmek için önerileri göster ' i seçin.](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 
-1. Yalnızca önerilere **göre filtrele** ' yi seçerek önerileri göstermek için bilgi bankasını soru ve yanıt çiftleri ile filtreleyin.
+1. Yalnızca önerilere **göre filtrele**' yi seçerek önerileri göstermek için bilgi bankasını soru ve yanıt çiftleri ile filtreleyin.
 
     [![Önerilere göre filtrele ' ye tıklayarak yalnızca etkin öğrenme 'nın önerilen soru alternatiflerini görüntüleyin.](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
 

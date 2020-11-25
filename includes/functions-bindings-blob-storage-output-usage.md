@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: functions
 author: craigshoemaker
 manager: gwallace
@@ -10,11 +10,11 @@ ms.date: 08/02/2019
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: 0c0ab0e62a5d951f0bc0e237f44cf55c5b8e16cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77202105"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998897"
 ---
 Blob 'ları yazmak için aşağıdaki türlere bağlayabilirsiniz:
 
@@ -30,9 +30,9 @@ Blob 'ları yazmak için aşağıdaki türlere bağlayabilirsiniz:
 * `CloudPageBlob`<sup>iki</sup>
 * `CloudAppendBlob`<sup>iki</sup>
 
-<sup>1</sup> `direction` , C# sınıf kitaplığındaki veya * üzerindefunction.js* içinde "ın" bağlamasını gerektirir `FileAccess.Read` . Ancak, çalışma zamanının blob 'ları kapsayıcıya yükleme gibi yazma işlemleri için sağladığı kapsayıcı nesnesini kullanabilirsiniz.
+<sup>1</sup> `direction` , C# sınıf kitaplığındaki veya *üzerindefunction.js* içinde "ın" bağlamasını gerektirir `FileAccess.Read` . Ancak, çalışma zamanının blob 'ları kapsayıcıya yükleme gibi yazma işlemleri için sağladığı kapsayıcı nesnesini kullanabilirsiniz.
 
-<sup>2</sup> `direction` , bir C# sınıf kitaplığındaki veya * üzerindefunction.js* "Inout" bağlamasını gerektirir `FileAccess.ReadWrite` .
+<sup>2</sup> `direction` , bir C# sınıf kitaplığındaki veya *üzerindefunction.js* "Inout" bağlamasını gerektirir `FileAccess.ReadWrite` .
 
 Depolama SDK türlerinden birini bağlamaya çalışırsanız ve bir hata iletisi alırsanız, [doğru depolama SDK sürümüne](../articles/azure-functions/functions-bindings-storage-blob.md#azure-storage-sdk-version-in-functions-1x)başvurunuz olduğundan emin olun.
 

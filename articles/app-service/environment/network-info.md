@@ -8,11 +8,11 @@ ms.date: 07/27/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 91b6134e7c809a8af75aa1cf23523e352e0a1a0e
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150239"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997350"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Ortamında ağ konusunda dikkat edilmesi gerekenler #
 
@@ -25,7 +25,7 @@ ms.locfileid: "92150239"
 
 Tüm ASE, dış ve ıLB 'ler, gelen yönetim trafiği için kullanılan genel bir VIP ve ASE 'den internet 'e çağrılar yaparken kimden adresidir. İnternet 'e gidecek bir ASE 'den yapılan çağrılar, VNet 'i ASE için atanan VIP aracılığıyla bırakır. Bu VIP 'nin genel IP 'si, Ao 'dan internet 'e gidecek tüm çağrılar için kaynak IP 'dir. ASE 'deki uygulamalar, sanal ağınızdaki veya bir VPN genelindeki kaynaklara çağrılar yapıyorsa kaynak IP, ASE 'niz tarafından kullanılan alt ağdaki IP 'lerden biridir. ASE, VNet içinde olduğundan, ek bir yapılandırma gerektirmeden VNet içindeki kaynaklara da erişebilir. VNet şirket içi ağınıza bağlıysa, ASE 'deki uygulamalar da ek yapılandırma olmadan kaynaklara erişebilir.
 
-![Dış Ao][1] 
+![Dış Ao][1] 
 
 Bir dış Ao 'niz varsa, genel VIP de Ao uygulamalarınızın şu şekilde çözümli uç noktasıdır:
 
@@ -98,7 +98,7 @@ Giden bağımlılıklar, [giden trafik App Service ortamı kilitlemeyi](./firewa
 
 VNet, müşteri tarafından tanımlanan bir DNS sunucusu ile yapılandırıldıysa, kiracı iş yükleri onu kullanır. ATıCı, yönetim amacıyla Azure DNS kullanır. VNet, müşterinin seçtiği bir DNS sunucusu ile yapılandırıldıysa, DNS sunucusuna ASE 'yi içeren alt ağdan erişilebilir olması gerekir.
 
-Web uygulamanızdan DNS çözümlemesini test etmek için, *nameresolver*konsol komutunu kullanabilirsiniz. Uygulamanız için SCM sitenizdeki hata ayıklama penceresine gidin veya portalda uygulamaya gidin ve konsol ' ı seçin. Kabuk isteminde, arama yapmak istediğiniz DNS adıyla birlikte *nameresolver* komutunu verebilirsiniz. Geri alacağınız sonuç, uygulamanızın aynı aramayı yaparken elde edilmesine benzer. Nslookup kullanırsanız, bunun yerine Azure DNS kullanarak bir arama yapılır.
+Web uygulamanızdan DNS çözümlemesini test etmek için, *nameresolver* konsol komutunu kullanabilirsiniz. Uygulamanız için SCM sitenizdeki hata ayıklama penceresine gidin veya portalda uygulamaya gidin ve konsol ' ı seçin. Kabuk isteminde, arama yapmak istediğiniz DNS adıyla birlikte *nameresolver* komutunu verebilirsiniz. Geri alacağınız sonuç, uygulamanızın aynı aramayı yaparken elde edilmesine benzer. Nslookup kullanırsanız, bunun yerine Azure DNS kullanarak bir arama yapılır.
 
 ASE 'nizin bulunduğu VNet 'in DNS ayarını değiştirirseniz ASE 'nizi yeniden başlatmanız gerekir. ASE 'nizi yeniden başlatmayı önlemek için, ASE 'nizi oluşturmadan önce sanal ağınız için DNS ayarlarınızı yapılandırmanız önemle tavsiye edilir.  
 
@@ -106,19 +106,19 @@ ASE 'nizin bulunduğu VNet 'in DNS ayarını değiştirirseniz ASE 'nizi yeniden
 
 ## <a name="portal-dependencies"></a>Portal bağımlılıkları ##
 
-Ao işlevsel bağımlılıklara ek olarak, Portal deneyimiyle ilgili birkaç ek öğe vardır. Azure portal bazı yetenekler, _SCM sitesine_doğrudan erişime bağlıdır. Azure App Service içindeki her uygulama için iki URL bulunur. İlk URL, uygulamanıza erişdir. İkinci URL, _kudu konsolu_olarak da adlandırılan SCM sitesine erişilir. SCM sitesini kullanan özellikler şunlardır:
+Ao işlevsel bağımlılıklara ek olarak, Portal deneyimiyle ilgili birkaç ek öğe vardır. Azure portal bazı yetenekler, _SCM sitesine_ doğrudan erişime bağlıdır. Azure App Service içindeki her uygulama için iki URL bulunur. İlk URL, uygulamanıza erişdir. İkinci URL, _kudu konsolu_ olarak da adlandırılan SCM sitesine erişilir. SCM sitesini kullanan özellikler şunlardır:
 
 -   Web işleri
 -   İşlevler
 -   Günlük akışı
 -   Kudu
--   Uzantılar
+-   Uzantıları
 -   İşlem Gezgini
 -   Konsol
 
 ILB ASE kullandığınızda, SCM sitesinin VNet dışından erişilebilir olmaması gerekir. Bazı yetenekler, uygulamanın SCM sitesine erişmesi gerektiğinden uygulama portalından çalışmayacaktır. Portalı kullanmak yerine doğrudan SCM sitesine bağlanabilirsiniz. 
 
-ILB Ao, *contoso.appserviceenvironment.net* etki alanı adıdır ve uygulamanızın adı *TestApp*ise, uygulamaya *TestApp.contoso.appserviceenvironment.net*adresinden ulaşılırsa. *TestApp.scm.contoso.appserviceenvironment.net*adresinde yer alan SCM sitesine ulaşıldı.
+ILB Ao, *contoso.appserviceenvironment.net* etki alanı adıdır ve uygulamanızın adı *TestApp* ise, uygulamaya *TestApp.contoso.appserviceenvironment.net* adresinden ulaşılırsa. *TestApp.scm.contoso.appserviceenvironment.net* adresinde yer alan SCM sitesine ulaşıldı.
 
 ## <a name="ase-ip-addresses"></a>ATıCı IP adresleri ##
 
@@ -148,7 +148,7 @@ Bir uygulamanın kendi IP tabanlı SSL adresi varsa, ATıCı bu IP adresiyle eş
 
 Ao 'da Ao 'nun kendisini barındırmak için kullanılan VM 'lere erişiminiz yok. Bunlar, Microsoft tarafından yönetilen bir abonelikte yer alırlar. Ao 'daki uygulamalara erişimi kısıtlamak istiyorsanız Ao alt ağında NSG 'leri ayarlayın. Bunu yaparken, AKEN bağımlılıklarıyla dikkatli bir dikkat edin. Herhangi bir bağımlılığı engellerseniz ATıCı çalışmayı durduruyor.
 
-NSG 'ler Azure portal veya PowerShell aracılığıyla yapılandırılabilir. Buradaki bilgiler Azure portal gösterir. Portaldaki NSG 'leri, **ağ**altında en üst düzey kaynak olarak oluşturup yönetirsiniz.
+NSG 'ler Azure portal veya PowerShell aracılığıyla yapılandırılabilir. Buradaki bilgiler Azure portal gösterir. Portaldaki NSG 'leri, **ağ** altında en üst düzey kaynak olarak oluşturup yönetirsiniz.
 
 Bir NSG 'de bir Alto işlevi için gerekli girişler trafiğe izin versin:
 
@@ -157,7 +157,7 @@ Bir NSG 'de bir Alto işlevi için gerekli girişler trafiğe izin versin:
 * 16001 numaralı bağlantı noktasındaki yük dengeleyiciden TCP
 * Ao alt ağından tüm bağlantı noktalarında as alt ağına
 
-**Outbound**
+**Giden**
 * 53 numaralı bağlantı noktasındaki tüm IP 'lere UDP
 * 123 numaralı bağlantı noktasındaki tüm IP 'lere UDP
 * 80, 443 bağlantı noktasındaki tüm IP 'lere TCP
@@ -180,9 +180,9 @@ Gelen ve giden gereksinimler hesaba alındığı zaman, NSG 'ler Bu örnekte gö
 
 ![Gelen güvenlik kuralları][4]
 
-Varsayılan bir kural, VNet 'teki IP 'Lerin ASE alt ağıyla iletişim kurmasını sağlar. Diğer bir varsayılan kural, genel VIP olarak da bilinen yük dengeleyicinin Ao ile iletişim kurmasını sağlar. Varsayılan kuralları görmek için **Ekle** simgesinin yanındaki **varsayılan kurallar** ' ı seçin. Varsayılan kuralların önüne başka her şeyi Reddet kuralını yerleştirirseniz, VIP ve Ao arasındaki trafiği engelleyebilirsiniz. VNet 'in içinden gelen trafiği engellemek için, gelen trafiğe izin vermek üzere kendi kuralınızı ekleyin. **Herhangi** bir ve bir bağlantı noktası aralığının hedefi olan AzureLoadBalancer değerine eşit bir kaynak kullanın **\*** . NSG kuralı Ao alt ağına uygulandığından, hedefte özel olması gerekmez.
+Varsayılan bir kural, VNet 'teki IP 'Lerin ASE alt ağıyla iletişim kurmasını sağlar. Diğer bir varsayılan kural, genel VIP olarak da bilinen yük dengeleyicinin Ao ile iletişim kurmasını sağlar. Varsayılan kuralları görmek için **Ekle** simgesinin yanındaki **varsayılan kurallar** ' ı seçin. Varsayılan kuralların önüne başka her şeyi Reddet kuralını yerleştirirseniz, VIP ve Ao arasındaki trafiği engelleyebilirsiniz. VNet 'in içinden gelen trafiği engellemek için, gelen trafiğe izin vermek üzere kendi kuralınızı ekleyin. * _ Bağlantı noktası **aralığı ve bir hedefi olan AzureLoadBalancer** değerine eşit bir kaynak kullanın *\** . NSG kuralı Ao alt ağına uygulandığından, hedefte özel olması gerekmez.
 
-Uygulamanıza bir IP adresi atadıysanız, bağlantı noktalarının açık kalmasını sağlayın. Bağlantı noktalarını görmek için **App Service ortamı**  >  **IP adresleri**' ni seçin.  
+Uygulamanıza bir IP adresi atadıysanız, bağlantı noktalarının açık kalmasını sağlayın. Bağlantı noktalarını görmek için _ *App Service ortamı** > **IP adresleri**' ni seçin.  
 
 Aşağıdaki giden kurallarında gösterilen tüm öğeler, son öğe hariç olmak üzere gereklidir. Bunlar, bu makalenin önceki kısımlarında belirtilen Ao bağımlılıklarına ağ erişimi sağlar. Bunlardan herhangi birini engellerseniz ATıCı çalışmayı durduruyor. Listedeki son öğe, ASE 'nizin sanal ağınızdaki diğer kaynaklarla iletişim kurmasını sağlar.
 
@@ -203,7 +203,7 @@ Aynı rotaları el ile oluşturmak için aşağıdaki adımları izleyin:
 
 3. Yol tablosu Kullanıcı arabiriminizden, **rotalar**  >  **Ekle**' yi seçin.
 
-4. **Sonraki atlama türünü** **Internet** olarak ve **Adres ön ekini** **0.0.0.0/0**olarak ayarlayın. **Kaydet**’i seçin.
+4. **Sonraki atlama türünü** **Internet** olarak ve **Adres ön ekini** **0.0.0.0/0** olarak ayarlayın. **Kaydet**'i seçin.
 
     Ardından aşağıdakine benzer bir şey görürsünüz:
 

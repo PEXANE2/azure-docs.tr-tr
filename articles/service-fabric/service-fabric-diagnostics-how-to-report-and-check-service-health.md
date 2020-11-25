@@ -7,11 +7,11 @@ ms.date: 02/25/2019
 ms.author: srrengar
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 59c8202b03bf1be2be5a68b75a1d7c7404b2213d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020210"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998252"
 ---
 # <a name="report-and-check-service-health"></a>Hizmet durumunu raporlama ve denetleme
 Hizmetleriniz sorunlarla karşılaştığında, olayları ve kesintilere yanıt verme ve bunları çözme imkanını sorunları hızlı bir şekilde algılamanıza bağlıdır. Hizmet kodunuzda Azure Service Fabric Health Manager sorunlarını ve başarısızlıklarını raporlayabilir, sistem durumunu denetlemek için Service Fabric sağladığı standart sistem durumu izleme araçlarını kullanabilirsiniz.
@@ -26,7 +26,7 @@ Hizmetten sistem durumunu bildirebilmeniz için üç yol vardır:
 
 Bu makalede, hizmet kodundan sistem durumunu raporlayan bir örnek adım adım açıklanmaktadır. Örnek ayrıca, Service Fabric tarafından belirtilen araçların sistem durumunu denetlemek için nasıl kullanılabileceğini gösterir. Bu makale, Service Fabric sistem durumu izleme yeteneklerine hızlı bir giriş yapmak için tasarlanmıştır. Daha ayrıntılı bilgi için, bu makalenin sonundaki bağlantıyla başlayan sistem durumu hakkında ayrıntılı makalelerin serisini okuyabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Aşağıdakilerin yüklü olması gerekir:
 
 * Visual Studio 2015 veya Visual Studio 2019

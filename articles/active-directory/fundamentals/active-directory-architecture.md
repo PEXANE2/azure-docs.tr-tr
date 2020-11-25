@@ -14,11 +14,11 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 476cf8013f5dc8b5d54efb573cf305d81fc690b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89319160"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996731"
 ---
 # <a name="what-is-the-azure-active-directory-architecture"></a>Azure Active Directory mimarisi nedir?
 
@@ -39,7 +39,7 @@ Bu makalede aşağıdaki mimari öğeler ele alınmaktadır:
 
 ### <a name="service-architecture-design"></a>Hizmet mimarisi tasarımı
 
-Erişilebilir ve kullanılabilir, veri açısından zengin bir sistem oluşturmanın en yaygın yolu, bağımsız yapı taşları veya ölçek birimleri kullanmaktır. Azure AD veri katmanı için ölçek birimlerine *bölüm*adı verilir.
+Erişilebilir ve kullanılabilir, veri açısından zengin bir sistem oluşturmanın en yaygın yolu, bağımsız yapı taşları veya ölçek birimleri kullanmaktır. Azure AD veri katmanı için ölçek birimlerine *bölüm* adı verilir.
 
 Veri katmanında, okuma-yazma özelliği sağlayan çok sayıda ön uç hizmeti bulunur. Aşağıdaki diyagramda tek dizin bölümünün bileşenlerinin coğrafi olarak dağıtılan veri merkezlerinde nasıl teslim edileceği gösterilmektedir.
 
@@ -53,7 +53,7 @@ Azure AD mimarisinin bileşenleri, birincil çoğaltma ve ikincil çoğaltma ö�
 
 #### <a name="secondary-replicas"></a>İkincil çoğaltmalar
 
-Tüm Dizin *okumaları* , farklı coğrafi bölgelerde fiziksel olarak bulunan veri merkezlerinde olan *İkincil çoğaltmalara*göre hizmet verilir. Veriler zaman uyumsuz olarak kopyalandığı için çok sayıda ikincil çoğaltma vardır. Kimlik doğrulama istekleri gibi dizin okuma, müşterilere yakın olan veri merkezlerinden alınır. İkincil çoğaltmalar, okuma ölçeklenebilirliğinden sorumludur.
+Tüm Dizin *okumaları* , farklı coğrafi bölgelerde fiziksel olarak bulunan veri merkezlerinde olan *İkincil çoğaltmalara* göre hizmet verilir. Veriler zaman uyumsuz olarak kopyalandığı için çok sayıda ikincil çoğaltma vardır. Kimlik doğrulama istekleri gibi dizin okuma, müşterilere yakın olan veri merkezlerinden alınır. İkincil çoğaltmalar, okuma ölçeklenebilirliğinden sorumludur.
 
 ### <a name="scalability"></a>Ölçeklenebilirlik
 
@@ -91,8 +91,8 @@ Azure AD çoğaltmaları, dünyanın dört bir yanında bulunan veri merkezlerin
 Azure AD, aşağıdaki özelliklerle veri merkezleri arasında çalışır:
 
 * Kimlik doğrulama, grafik ve diğer AD Hizmetleri Ağ Geçidi hizmetinin arkasında bulunur. Gateway bu hizmetlerin yük dengelemesini yönetir. İşlem durumu araştırmaları kullanılarak sağlıksız bir sunucu algılanırsa otomatik olarak yük devreder. Ağ Geçidi, bu sistem durumu araştırmalarını temel alarak trafiği sağlıklı veri merkezlerine dinamik olarak yönlendirir.
-* *Okumalar*için, dizinde ikincil çoğaltmalar ve karşılık gelen ön uç Hizmetleri, birden çok veri merkezinde çalışan etkin-etkin bir yapılandırmada bulunur. Tüm veri merkezinde hata olması durumunda, trafik otomatik olarak farklı bir veri merkezine yönlendirilir.
- * *Yazma işlemleri*için dizin, planlı (yeni birincil, eski birincil ile eşitlenir) veya acil durum yük devretme yordamlarına göre veri merkezleri genelinde birincil (ana) çoğaltmayı devreder. Veri dayanıklılığı, en az iki veri merkezine yapılan herhangi bir yürütmeyi çoğaltarak elde edilir.
+* *Okumalar* için, dizinde ikincil çoğaltmalar ve karşılık gelen ön uç Hizmetleri, birden çok veri merkezinde çalışan etkin-etkin bir yapılandırmada bulunur. Tüm veri merkezinde hata olması durumunda, trafik otomatik olarak farklı bir veri merkezine yönlendirilir.
+ * *Yazma işlemleri* için dizin, planlı (yeni birincil, eski birincil ile eşitlenir) veya acil durum yük devretme yordamlarına göre veri merkezleri genelinde birincil (ana) çoğaltmayı devreder. Veri dayanıklılığı, en az iki veri merkezine yapılan herhangi bir yürütmeyi çoğaltarak elde edilir.
 
 #### <a name="data-consistency"></a>Veri tutarlılığı
 

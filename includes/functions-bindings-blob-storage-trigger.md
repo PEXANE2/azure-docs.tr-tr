@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: functions
 author: craigshoemaker
 manager: gwallace
@@ -10,11 +10,11 @@ ms.date: 08/02/2019
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: 4a879c4041fe317955a07eda9dd8a3ef9f542275
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87056044"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998863"
 ---
 Tetikleme blobu için aşağıdaki parametre türlerini kullanabilirsiniz:
 
@@ -27,7 +27,7 @@ Tetikleme blobu için aşağıdaki parametre türlerini kullanabilirsiniz:
 * `CloudPageBlob`<sup>1</sup>
 * `CloudAppendBlob`<sup>1</sup>
 
-<sup>1</sup> `direction` , bir C# sınıf kitaplığındaki veya * üzerindefunction.js* "Inout" bağlamasını gerektirir `FileAccess.ReadWrite` .
+<sup>1</sup> `direction` , bir C# sınıf kitaplığındaki veya *üzerindefunction.js* "Inout" bağlamasını gerektirir `FileAccess.ReadWrite` .
 
 Depolama SDK türlerinden birini bağlamaya çalışırsanız ve bir hata iletisi alırsanız, [doğru depolama SDK sürümüne](../articles/azure-functions/functions-bindings-storage-blob.md#azure-storage-sdk-version-in-functions-1x)başvurunuz olduğundan emin olun.
 

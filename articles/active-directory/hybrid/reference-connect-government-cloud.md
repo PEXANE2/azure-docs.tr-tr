@@ -12,11 +12,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 219893859d05eb419bc862484a9083abf8c26db7
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409306"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997724"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Azure Kamu Bulutu için karma kimlik konuları
 
@@ -88,7 +88,7 @@ Mozilla Firefox, Kerberos kimlik doğrulamasını otomatik olarak kullanmaz. Aş
 
 1. Firefox 'u çalıştırın ve adres çubuğuna **about: config** yazın   . Görebileceğiniz tüm bildirimleri kapatın.
 1.  **Network. Negotiate-Auth. Trusted-uris**   tercihini arayın. Bu tercih, Kerberos kimlik doğrulaması için Firefox tarafından güvenilen siteleri listeler.
-1. Tercih adına sağ tıklayın ve ardından **Değiştir** ' i seçin.
+1. Tercih adına sağ tıklayın ve ardından **Değiştir**' i seçin.
 1. `https://autologon.microsoft.us`Kutuya yazın.
 1.  **Tamam**   ' ı seçin ve ardından tarayıcıyı yeniden açın.
 

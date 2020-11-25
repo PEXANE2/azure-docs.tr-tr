@@ -8,11 +8,11 @@ ms.date: 06/15/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: 1053eb9772650dce040570bda04addf93df49178
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743547"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998073"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure-app-service"></a>Öğretici: Azure App Service bir PHP ve MySQL uygulaması derleme
 
@@ -42,7 +42,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -428,7 +428,7 @@ Cloud Shell, komutunu kullanarak sanal uygulama yolunu ayarlayın [`az resource 
 az resource update --name web --resource-group myResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<app_name> --set properties.virtualApplications[0].physicalPath="site\wwwroot\public" --api-version 2015-06-01
 ```
 
-Varsayılan olarak, Azure App Service kök sanal uygulama yolunu ( _/_ ) dağıtılan uygulama dosyalarının kök dizinine ( _sites\wwwroot_ ) yönlendirir.
+Varsayılan olarak, Azure App Service kök sanal uygulama yolunu ( _/_ ) dağıtılan uygulama dosyalarının kök dizinine (_sites\wwwroot_) yönlendirir.
 
 ::: zone-end
 
@@ -498,7 +498,7 @@ remote: Running deployment command...
 
 `http://<app-name>.azurewebsites.net` listesine göz atın ve listeye birkaç görev ekleyin.
 
-:::image type="content" source="./media/tutorial-php-mysql-app/php-mysql-in-azure.png" alt-text="Görev Listesi başlıklı bir PHP uygulaması örneğini ekran görüntüsü.":::
+:::image type="content" source="./media/tutorial-php-mysql-app/php-mysql-in-azure.png" alt-text="Eklenen yeni görevleri gösteren Görev Listesi adlı Azure uygulaması örneği ekran görüntüsü.":::
 
 Tebrikler, Azure App Service'te veri temelli bir PHP uygulaması çalıştırıyorsunuz.
 
@@ -550,7 +550,7 @@ Yerel terminal penceresinde, Laravel veritabanı geçişlerini çalıştırarak 
 php artisan migrate
 ```
 
-[Laravel adlandırma kuralına](https://laravel.com/docs/5.4/eloquent#defining-models) göre `Task` modeli (bkz. _app/Task.php_ ) varsayılan olarak `tasks` tablosu ile eşlenir.
+[Laravel adlandırma kuralına](https://laravel.com/docs/5.4/eloquent#defining-models) göre `Task` modeli (bkz. _app/Task.php_) varsayılan olarak `tasks` tablosu ile eşlenir.
 
 ### <a name="update-application-logic"></a>Uygulama mantığını güncelleştirme
 
@@ -679,7 +679,7 @@ Günlük akışını dilediğiniz zaman durdurmak için `Ctrl`+`C` yazın.
 
 Oluşturduğunuz uygulamayı yönetmek için [Azure Portal](https://portal.azure.com) gidin.
 
-Sol menüden **uygulama hizmetleri** ' ne ve ardından Azure uygulamanızın adına tıklayın.
+Sol menüden **uygulama hizmetleri**' ne ve ardından Azure uygulamanızın adına tıklayın.
 
 ![Azure uygulamasına portal gezintisi](./media/tutorial-php-mysql-app/access-portal.png)
 

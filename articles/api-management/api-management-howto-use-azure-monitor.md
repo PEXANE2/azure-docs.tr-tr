@@ -9,17 +9,17 @@ ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: apimpm
 ms.openlocfilehash: 2317e61111c3ad328e8f112e7d9567f3f5d47990
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379456"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997061"
 ---
 # <a name="tutorial-monitor-published-apis"></a>Öğretici: yayımlanan API 'Leri Izleme
 
 Azure Izleyici ile Azure API Management hizmetinizden gelen ölçümleri veya günlükleri görselleştirin, sorgulayabilir, yönlendirebilir, arşivleyebilir ve bunlar üzerinde işlem yapabilirsiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * API'nizin ölçümlerini görüntüleme 
@@ -27,7 +27,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Etkinlik günlüklerini görüntüleme
 > * Kaynak günlüklerini etkinleştirme ve görüntüleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + [Azure API Management terminolojisini](api-management-terminology.md) öğrenin.
 + Şu hızlı başlangıcı tamamlayın: [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
@@ -56,7 +56,7 @@ API Management [ölçümleri](../azure-monitor/platform/data-platform-metrics.md
 
 1. Açılan listeden ilgilendiğiniz ölçümleri seçin. Örneğin, **istekler**. 
 1. Grafikte, API çağrılarının toplam sayısı gösterilmektedir.
-1. Grafik, **istek** ölçümünün boyutları kullanılarak filtrelenebilir. Örneğin, **Filtre Ekle** ' yi seçin, **arka uç yanıt kodu kategorisini** seçin, değer olarak 500 girin. Artık grafik, API arka ucunda başarısız olan isteklerin sayısını gösterir.   
+1. Grafik, **istek** ölçümünün boyutları kullanılarak filtrelenebilir. Örneğin, **Filtre Ekle**' yi seçin, **arka uç yanıt kodu kategorisini** seçin, değer olarak 500 girin. Artık grafik, API arka ucunda başarısız olan isteklerin sayısını gösterir.   
 
 ## <a name="set-up-an-alert-rule"></a>Uyarı kuralı ayarlama 
 
@@ -73,14 +73,14 @@ Bir istek ölçüsüne göre örnek bir uyarı kuralı yapılandırmak için:
 
     :::image type="content" source="media/api-management-howto-use-azure-monitor/alert-menu-item.png" alt-text="Izleme menüsünde uyarı seçeneğinin ekran görüntüsü":::
 
-1. **+ Yeni uyarı kuralı** ’nı seçin.
+1. **+ Yeni uyarı kuralı**'nı seçin.
 1. **Uyarı kuralı oluştur** penceresinde koşul ' ı **seçin**.
 1. **Sinyal mantığını Yapılandır** penceresinde:
-    1. **Sinyal türü** ' nde **ölçümler** ' i seçin.
-    1. **Sinyal adı** ' nda **istekler** ' i seçin.
-    1. **Boyutlara göre Böl** ' de **Boyut adı** ' nda **ağ geçidi yanıt kodu kategorisi** ' ni seçin.
-    1. **Boyut değerleri** ' nde, yetkisiz veya geçersiz istekler gibi istemci hataları için **4xx** ' i seçin.
-    1. **Uyarı mantığı** ' nda, uyarının tetiklenme sonrasında bir eşik belirtin ve **bitti** ' yi seçin.
+    1. **Sinyal türü**' nde **ölçümler**' i seçin.
+    1. **Sinyal adı**' nda **istekler**' i seçin.
+    1. **Boyutlara göre Böl**' de **Boyut adı**' nda **ağ geçidi yanıt kodu kategorisi**' ni seçin.
+    1. **Boyut değerleri**' nde, yetkisiz veya geçersiz istekler gibi istemci hataları için **4xx**' i seçin.
+    1. **Uyarı mantığı**' nda, uyarının tetiklenme sonrasında bir eşik belirtin ve **bitti**' yi seçin.
 
     :::image type="content" source="media/api-management-howto-use-azure-monitor/threshold.png" alt-text="Sinyal mantığı pencerelerini yapılandırma ekran görüntüsü":::
 
@@ -89,7 +89,7 @@ Bir istek ölçüsüne göre örnek bir uyarı kuralı yapılandırmak için:
     :::image type="content" source="media/api-management-howto-use-azure-monitor/action-details.png" alt-text="Yeni eylem grubu için bildirimlerin ekran görüntüsü":::
 
 1. Uyarı kuralının adını ve açıklamasını girip önem derecesini seçin. 
-1. **Uyarı kuralı oluşturma** ’yı seçin.
+1. **Uyarı kuralı oluşturma**’yı seçin.
 1. Şimdi, bir API anahtarı olmadan konferans API 'sini çağırarak uyarı kuralını test edin. Örnek:
 
     ```bash
@@ -117,7 +117,7 @@ Etkinlik günlüğünü görüntülemek için:
 
 1. [Azure portal](https://portal.azure.com)API Management örneğinize gidin.
 
-1. **Etkinlik günlüğü** ' nü seçin.
+1. **Etkinlik günlüğü**' nü seçin.
 
     :::image type="content" source="media/api-management-howto-use-azure-monitor/api-management-activity-logs-blade.png" alt-text="Izleme menüsündeki etkinlik günlüğü öğesinin ekran görüntüsü":::
 1. İstenen filtreleme kapsamını seçin ve ardından **uygulayın**.
@@ -129,11 +129,11 @@ Kaynak günlükleri, denetim ve sorun giderme amacıyla önemli işlemler ve hat
 Kaynak günlüklerini yapılandırmak için:
 
 1. [Azure portal](https://portal.azure.com)API Management örneğinize gidin.
-2. **Tanılama ayarları** ' nı seçin.
+2. **Tanılama ayarları**' nı seçin.
 
     :::image type="content" source="media/api-management-howto-use-azure-monitor/api-management-diagnostic-logs-blade.png" alt-text="Izleme menüsündeki Tanılama ayarları öğesinin ekran görüntüsü":::
 
-1. **+ Tanılama ayarı Ekle** ' yi seçin.
+1. **+ Tanılama ayarı Ekle**' yi seçin.
 1. Toplamak istediğiniz günlükleri veya ölçümleri seçin.
 
    Kaynak günlüklerini, ölçümlerle birlikte bir depolama hesabına arşivleyebilirsiniz, bunları bir olay hub 'ına bağlayabilir veya bir Log Analytics çalışma alanına gönderebilirsiniz. 

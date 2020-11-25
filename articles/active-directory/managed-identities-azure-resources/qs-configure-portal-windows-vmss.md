@@ -16,11 +16,11 @@ ms.date: 02/20/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 43b986b6bb25dff1227247b1d249ce565553877a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91329142"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997418"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>Azure portal kullanarak bir sanal makine ölçek kümesindeki Azure kaynakları için Yönetilen kimlikler yapılandırma
 
@@ -57,7 +57,7 @@ Başlangıçta sağlanan bir sanal makine ölçek kümesinde sistem tarafından 
 
 2. İstenen sanal makine ölçek kümesine gidin.
 
-3. **Sistem atandı**altında **durum**' un altında **, seçin ve** ardından **Kaydet**' e tıklayın:
+3. **Sistem atandı** altında **durum**' un altında **, seçin ve** ardından **Kaydet**' e tıklayın:
 
    ![Ekran görüntüsü "sistem atandı" seçiliyken "kimlik (Önizleme)" sayfasını, "açık" durumunu ve "Kaydet" düğmesinin vurgulanmasını gösterir.](./media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png) 
 
@@ -86,7 +86,7 @@ Bu bölümde, Azure portal kullanarak bir sanal makine ölçek kümesinden Kulla
 ### <a name="assign-a-user-assigned-managed-identity-to-an-existing-virtual-machine-scale-set"></a>Mevcut bir sanal makine ölçek kümesine Kullanıcı tarafından atanan bir yönetilen kimlik atama
 
 1. Sanal makine ölçek kümesini içeren Azure aboneliğiyle ilişkili bir hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
-2. İstenen sanal makine ölçek kümesine gidin ve **kimlik**, **Kullanıcı atandı** ve ardından ** \+ Ekle**' ye tıklayın.
+2. İstenen sanal makine ölçek kümesine gidin ve **kimlik**, **Kullanıcı atandı** ve ardından **\+ Ekle**' ye tıklayın.
 
    !["Kullanıcı atandı" seçiliyken ve "Ekle" düğmesinin vurgulandığı "kimlik" sayfasını gösteren ekran görüntüsü.](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vmss-screenshot1.png)
 

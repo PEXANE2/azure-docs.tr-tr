@@ -16,11 +16,11 @@ ms.date: 11/10/2018
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e35366e35fc127057020906ac6d3dfb0f207ab72
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91331344"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997435"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-vm-using-the-azure-portal"></a>Azure portal kullanarak bir VM 'de Azure kaynakları için Yönetilen kimlikler yapılandırma
 
@@ -43,7 +43,7 @@ Bu bölümde, Azure portal kullanarak VM için sistem tarafından atanan yöneti
 
 Oluşturma sırasında bir VM 'de sistem tarafından atanan yönetilen kimliği etkinleştirmek için hesabınızın [sanal makine katılımcısı](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) rolü ataması gerekir.  Ek Azure AD dizin rolü ataması gerekli değildir.
 
-- **Kimlik** bölümündeki **Yönetim** sekmesinde, **yönetilen hizmet kimliğini** **Açık**olarak değiştirin.  
+- **Kimlik** bölümündeki **Yönetim** sekmesinde, **yönetilen hizmet kimliğini** **Açık** olarak değiştirin.  
 
 ![VM oluşturma sırasında sistem tarafından atanan kimliği etkinleştirme](./media/msi-qs-configure-portal-windows-vm/enable-system-assigned-identity-vm-creation.png)
 
@@ -61,7 +61,7 @@ Başlangıçta sağlanan bir VM 'de sistem tarafından atanan yönetilen kimliğ
 
 2. İstediğiniz sanal makineye gidin ve **kimlik**' i seçin.
 
-3. **Sistem atandı**altında **durum**' un altında **, seçin ve** ardından **Kaydet**' e tıklayın:
+3. **Sistem atandı** altında **durum**' un altında **, seçin ve** ardından **Kaydet**' e tıklayın:
 
    !["Sistem atanmış" durumunun "açık" olarak ayarlandığı "kimlik (Önizleme)" sayfasını gösteren ekran görüntüsü.](./media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade.png)  
 
@@ -97,7 +97,7 @@ Bir VM 'ye Kullanıcı tarafından atanan bir kimlik atamak için hesabınızın
 Bir VM 'ye Kullanıcı tarafından atanan bir kimlik atamak için hesabınızın [sanal makine katılımcısı](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) ve [yönetilen kimlik işleci](../../role-based-access-control/built-in-roles.md#managed-identity-operator) rol atamalarına ihtiyacı vardır. Ek Azure AD dizin rolü ataması gerekli değildir.
 
 1. VM 'yi içeren Azure aboneliğiyle ilişkili bir hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
-2. İstediğiniz sanal makineye gidin ve **kimlik**, **Kullanıcı atandı** ve ardından ** \+ Ekle**' ye tıklayın.
+2. İstediğiniz sanal makineye gidin ve **kimlik**, **Kullanıcı atandı** ve ardından **\+ Ekle**' ye tıklayın.
 
    !["Kullanıcı atandı" seçiliyken ve "Ekle" düğmesinin vurgulandığı "kimlik" sayfasını gösteren ekran görüntüsü.](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vm-screenshot1.png)
 

@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.openlocfilehash: fbc75df0b22ba452b8c91dfcb21ca13aaed557a3
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242407"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998575"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>Portal kullanarak MySQL için Azure veritabanı için özel bağlantı oluşturma ve yönetme
 
@@ -23,7 +23,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 > Özel bağlantı özelliği yalnızca Genel Amaçlı veya bellek için Iyileştirilmiş fiyatlandırma katmanlarında MySQL için Azure veritabanı sunucuları için kullanılabilir. Veritabanı sunucusunun bu fiyatlandırma katmanlarından birinde olduğundan emin olun.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="create-an-azure-vm"></a>Azure VM oluşturma
 
@@ -32,24 +32,24 @@ Bu bölümde, özel bağlantı kaynağına (Azure 'da bir MySQL sunucusu) erişm
 ### <a name="create-the-virtual-network"></a>Sanal ağı oluşturma
 Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi barındırmak için bir sanal ağ ve alt ağ oluşturacaksınız.
 
-1. Ekranın sol üst kısmında **kaynak oluştur**  >  **ağ**  >  **sanal ağ** ' ı seçin.
-2. **Sanal ağ oluştur** ' da bu bilgileri girin veya seçin:
+1. Ekranın sol üst kısmında **kaynak oluştur**  >  **ağ**  >  **sanal ağ**' ı seçin.
+2. **Sanal ağ oluştur**' da bu bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
     | Ad | *MyVirtualNetwork* girin. |
     | Adres alanı | *10.1.0.0/16* girin. |
     | Abonelik | Aboneliğinizi seçin.|
-    | Kaynak grubu | **Yeni oluştur** ' u seçin, *myresourcegroup* yazın ve ardından **Tamam** ' ı seçin. |
-    | Konum | **Batı Avrupa** 'yı seçin.|
+    | Kaynak grubu | **Yeni oluştur**' u seçin, *myresourcegroup* yazın ve ardından **Tamam**' ı seçin. |
+    | Konum | **Batı Avrupa**'yı seçin.|
     | Alt ağ adı | *Mysubnet* yazın. |
     | Alt Ağ - Adres aralığı | *10.1.0.0/24* girin. |
     |||
-3. Rest 'i varsayılan olarak bırakın ve **Oluştur** ' u seçin.
+3. Rest 'i varsayılan olarak bırakın ve **Oluştur**' u seçin.
 
 ### <a name="create-virtual-machine"></a>Sanal makine oluştur
 
-1. Azure Portal ekranın sol üst tarafında **kaynak oluştur**  >  **işlem**  >  **sanal makinesi** ' ni seçin.
+1. Azure Portal ekranın sol üst tarafında **kaynak oluştur**  >  **işlem**  >  **sanal makinesi**' ni seçin.
 
 2. **Sanal makine oluşturma-temel bilgiler** bölümünde, bu bilgileri girin veya seçin:
 
@@ -59,11 +59,11 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
     | Abonelik | Aboneliğinizi seçin. |
     | Kaynak grubu | **myResourceGroup** öğesini seçin. Bu, önceki bölümde oluşturdunuz.  |
     | **ÖRNEK AYRıNTıLARı** |  |
-    | Sanal makine adı | *Myvm* ' i girin. |
-    | Region | **Batı Avrupa** 'yı seçin. |
+    | Sanal makine adı | *Myvm*' i girin. |
+    | Region | **Batı Avrupa**'yı seçin. |
     | Kullanılabilirlik seçenekleri | Varsayılan **altyapı yedekliliği gerekli değildir**. |
     | Görüntü | **Windows Server 2019 Datacenter** öğesini seçin. |
-    | Boyut | Varsayılan **Standart DS1 v2** ' i bırakın. |
+    | Boyut | Varsayılan **Standart DS1 v2**' i bırakın. |
     | **YÖNETİCİ HESABI** |  |
     | Kullanıcı adı | Seçmekten bir Kullanıcı adı girin. |
     | Parola | Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)karşılamalıdır.|
@@ -83,23 +83,23 @@ Bu bölümde, özel bağlantı kaynağına erişmek için kullanılan VM 'yi bar
     | Ayar | Değer |
     | ------- | ----- |
     | Sanal ağ | Varsayılan **MyVirtualNetwork** bırakın.  |
-    | Adres alanı | Varsayılan **10.1.0.0/24** ' i bırakın.|
+    | Adres alanı | Varsayılan **10.1.0.0/24**' i bırakın.|
     | Alt ağ | Varsayılan **Mysubnet (10.1.0.0/24)** olarak bırakın.|
-    | Genel IP | Varsayılan **(yeni) myVm-ip** ' i bırakın. |
-    | Genel gelen bağlantı noktaları | **Seçili bağlantı noktalarına Izin ver** ' i seçin. |
-    | Gelen bağlantı noktalarını seçin | **Http** ve **RDP** ' yi seçin.|
+    | Genel IP | Varsayılan **(yeni) myVm-ip**' i bırakın. |
+    | Genel gelen bağlantı noktaları | **Seçili bağlantı noktalarına Izin ver**' i seçin. |
+    | Gelen bağlantı noktalarını seçin | **Http** ve **RDP**' yi seçin.|
     |||
 
 
-1. **Gözden geçir ve oluştur** ’u seçin. Azure’ın yapılandırmanızı doğrulayacağı **Gözden geçir ve oluştur** sayfasına yönlendirilirsiniz.
+1. **Gözden geçir ve oluştur**’u seçin. Azure’ın yapılandırmanızı doğrulayacağı **Gözden geçir ve oluştur** sayfasına yönlendirilirsiniz.
 
-1. **Doğrulama başarılı** iletisini gördüğünüzde **Oluştur** ’u seçin.
+1. **Doğrulama başarılı** iletisini gördüğünüzde **Oluştur**’u seçin.
 
 ## <a name="create-an-azure-database-for-mysql"></a>MySQL için Azure Veritabanı oluşturma
 
 Bu bölümde, Azure 'da MySQL için Azure veritabanı sunucusu oluşturacaksınız. 
 
-1. Azure Portal ekranın sol üst tarafında, **kaynak oluştur**  >  **veritabanları**  >  **MySQL için Azure veritabanı** ' nı seçin.
+1. Azure Portal ekranın sol üst tarafında, **kaynak oluştur**  >  **veritabanları**  >  **MySQL için Azure veritabanı**' nı seçin.
 
 1. **MySQL Için Azure veritabanı** 'nda şu bilgileri sağlayın:
 
@@ -117,9 +117,9 @@ Bu bölümde, Azure 'da MySQL için Azure veritabanı sunucusu oluşturacaksın�
     | İşlem + depolama| İş yüküne göre sunucu için gereken fiyatlandırma katmanını seçin. |
     |||
  
-7. **Tamam** ’ı seçin. 
-8. **Gözden geçir ve oluştur** ’u seçin. Azure’ın yapılandırmanızı doğrulayacağı **Gözden geçir ve oluştur** sayfasına yönlendirilirsiniz. 
-9. Doğrulama başarılı iletisini gördüğünüzde **Oluştur** ' u seçin. 
+7. **Tamam**’ı seçin. 
+8. **Gözden geçir ve oluştur**’u seçin. Azure’ın yapılandırmanızı doğrulayacağı **Gözden geçir ve oluştur** sayfasına yönlendirilirsiniz. 
+9. Doğrulama başarılı iletisini gördüğünüzde **Oluştur**' u seçin. 
 10. Doğrulama başarılı iletisini gördüğünüzde oluştur ' u seçin. 
 
 > [!NOTE]
@@ -130,9 +130,9 @@ Bu bölümde, Azure 'da MySQL için Azure veritabanı sunucusu oluşturacaksın�
 
 Bu bölümde bir MySQL sunucusu oluşturacak ve kendisine özel bir uç nokta ekleyeceksiniz. 
 
-1. Azure Portal ekranın sol üst tarafında, **kaynak oluştur**  >  **ağ**  >  **özel bağlantısı** ' nı seçin.
+1. Azure Portal ekranın sol üst tarafında, **kaynak oluştur**  >  **ağ**  >  **özel bağlantısı**' nı seçin.
 
-2. **Özel bağlantı merkezi 'Ne genel bakış** ' da, **bir hizmete özel bağlantı oluşturma** seçeneğinde, **Başlat** ' ı seçin.
+2. **Özel bağlantı merkezi 'Ne genel bakış**' da, **bir hizmete özel bağlantı oluşturma** seçeneğinde, **Başlat**' ı seçin.
 
     :::image type="content" source="media/concepts-data-access-and-security-private-link/privatelink-overview.png" alt-text="Özel bağlantıya genel bakış":::
 
@@ -145,22 +145,22 @@ Bu bölümde bir MySQL sunucusu oluşturacak ve kendisine özel bir uç nokta ek
     | Kaynak grubu | **myResourceGroup** öğesini seçin. Bu, önceki bölümde oluşturdunuz.|
     | **Örnek ayrıntıları** |  |
     | Name | *myPrivateEndpoint* değerini girin. Bu ad alındıysanız, benzersiz bir ad oluşturun. |
-    |Region|**Batı Avrupa** 'yı seçin.|
+    |Region|**Batı Avrupa**'yı seçin.|
     |||
 
-5. **Sonraki: kaynak** ' ı seçin.
+5. **Sonraki: kaynak**' ı seçin.
 6. **Özel uç nokta oluştur-kaynak** bölümünde bu bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
     |Bağlantı yöntemi  | Dizinimde bir Azure kaynağına bağlan ' ı seçin.|
     | Abonelik| Aboneliğinizi seçin. |
-    | Kaynak türü | **Microsoft. Dbformyısql/sunucuları** ' nı seçin. |
+    | Kaynak türü | **Microsoft. Dbformyısql/sunucuları**' nı seçin. |
     | Kaynak |*Sunucum* seçin|
     |Hedef alt kaynak |*MySQLServer* seçin|
     |||
 7. Ileri 'yi seçin **: yapılandırma**.
-8. **Özel uç nokta oluşturma-yapılandırma** ' da bu bilgileri girin veya seçin:
+8. **Özel uç nokta oluşturma-yapılandırma**' da bu bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
@@ -168,15 +168,15 @@ Bu bölümde bir MySQL sunucusu oluşturacak ve kendisine özel bir uç nokta ek
     | Sanal ağ| *MyVirtualNetwork* öğesini seçin. |
     | Alt ağ | *Mysubnet* öğesini seçin. |
     |**ÖZEL DNS TÜMLEŞTİRMESİ**||
-    |Özel DNS bölgesi ile tümleştirme |**Evet** ’i seçin. |
+    |Özel DNS bölgesi ile tümleştirme |**Evet**’i seçin. |
     |Özel DNS Bölgesi |Seç *(yeni) Privatelink. MySQL. Database. Azure. com* |
     |||
 
     > [!Note] 
     > Hizmetiniz için önceden tanımlanmış özel DNS bölgesini kullanın veya tercih ettiğiniz DNS bölge adını sağlayın. Ayrıntılar için [Azure HIZMETLERI DNS bölge yapılandırması](../private-link/private-endpoint-dns.md) ' na bakın.
 
-1. **Gözden geçir ve oluştur** ’u seçin. Azure’ın yapılandırmanızı doğrulayacağı **Gözden geçir ve oluştur** sayfasına yönlendirilirsiniz. 
-2. **Doğrulama başarılı** iletisini gördüğünüzde **Oluştur** ’u seçin. 
+1. **Gözden geçir ve oluştur**’u seçin. Azure’ın yapılandırmanızı doğrulayacağı **Gözden geçir ve oluştur** sayfasına yönlendirilirsiniz. 
+2. **Doğrulama başarılı** iletisini gördüğünüzde **Oluştur**’u seçin. 
 
     :::image type="content" source="media/concepts-data-access-and-security-private-link/show-mysql-private-link.png" alt-text="Özel bağlantı oluşturuldu":::
 
@@ -186,26 +186,26 @@ Bu bölümde bir MySQL sunucusu oluşturacak ve kendisine özel bir uç nokta ek
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Uzak Masaüstü (RDP) kullanarak sanal makineye bağlanma
 
 
-**Myvm** 'yi oluşturduktan sonra Internet 'ten şu şekilde bağlanın: 
+**Myvm**'yi oluşturduktan sonra Internet 'ten şu şekilde bağlanın: 
 
 1. Portalın arama çubuğuna *myVm* değerini girin.
 
 1. **Bağlan** düğmesini seçin. **Bağlan** düğmesini seçtikten sonra **sanal makineye bağlan** açılır.
 
-1. **RDP Dosyasını İndir** ’i seçin. Azure bir Uzak Masaüstü Protokolü ( *. rdp* ) dosyası oluşturur ve bilgisayarınıza indirir.
+1. **RDP Dosyasını İndir**’i seçin. Azure bir Uzak Masaüstü Protokolü (*. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
 
 1. *İndirilen. rdp* dosyasını açın.
 
-    1. İstendiğinde **Bağlan** ’ı seçin.
+    1. İstendiğinde **Bağlan**’ı seçin.
 
     1. VM oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
 
         > [!NOTE]
-        > **More choices**  >  VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için **farklı bir hesap kullan** ' ı seçmeniz gerekebilir.
+        > **More choices**  >  VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için **farklı bir hesap kullan**' ı seçmeniz gerekebilir.
 
-1. **Tamam** ’ı seçin.
+1. **Tamam**’ı seçin.
 
-1. Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Bir sertifika uyarısı alırsanız **Evet** ’i veya **Devam** ’ı seçin.
+1. Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Bir sertifika uyarısı alırsanız **Evet**’i veya **Devam**’ı seçin.
 
 1. VM masaüstü seçildikten sonra, bunu yerel masaüstünüze geri dönmek için simge durumuna küçültün.
 
@@ -226,7 +226,7 @@ Bu bölümde bir MySQL sunucusu oluşturacak ve kendisine özel bir uç nokta ek
 
 3. Kullanılabilir herhangi bir istemciyi kullanarak MySQL sunucusu için özel bağlantı bağlantısını test edin. Aşağıdaki örnekte, işlemi yapmak için [MySQL çalışma ekranı](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) kullandım.
 
-4. **Yeni bağlantı** ' da bu bilgileri girin veya seçin:
+4. **Yeni bağlantı**' da bu bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
@@ -234,7 +234,7 @@ Bu bölümde bir MySQL sunucusu oluşturacak ve kendisine özel bir uç nokta ek
     | Sunucu adı| *Myserver.Privatelink.MySQL.Database.Azure.com* seçin |
     | Kullanıcı adı | username@servernameMySQL sunucusu oluşturma sırasında belirtilen kullanıcı adını girin. |
     |Parola |MySQL sunucusu oluşturma sırasında bir parola girin. |
-    |SSL|**Gerekli** ' yi seçin.|
+    |SSL|**Gerekli**' yi seçin.|
     ||
 
 5. Bağlan'ı seçin.
@@ -249,8 +249,8 @@ Bu bölümde bir MySQL sunucusu oluşturacak ve kendisine özel bir uç nokta ek
 Özel uç nokta, MySQL Server ve VM 'yi kullanarak işiniz bittiğinde, kaynak grubunu ve içerdiği tüm kaynakları silin:
 
 1. Portalın üst kısmındaki **arama** kutusuna *myresourcegroup* yazın ve arama sonuçlarından *myresourcegroup* öğesini seçin.
-2. **Kaynak grubunu sil** 'i seçin.
-3. **Kaynak grubu adını yazın** ve **Sil** ' i seçmek için myresourcegroup girin.
+2. **Kaynak grubunu sil**'i seçin.
+3. **Kaynak grubu adını yazın** ve **Sil**' i seçmek için myresourcegroup girin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

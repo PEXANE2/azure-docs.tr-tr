@@ -14,11 +14,11 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: de529a8ffb0c72854904717c71dbc322c919f1a8
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370823"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996704"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Azure Active Directory kullanarak Kullanıcı ekleme veya silme
 
@@ -44,7 +44,7 @@ Yeni bir kullanıcı eklemek için şu adımları izleyin:
 
    - **Kullanıcı adı**. Gereklidir. Yeni kullanıcının Kullanıcı adı. Örneğin, `mary@contoso.com`.
 
-     Kullanıcı adının etki alanı bölümü, ilk varsayılan etki alanı adı, * \<yourdomainname> . onmicrosoft.com*veya *contoso.com*gibi özel bir etki alanı adı kullanmalıdır. Özel etki alanı adı oluşturma hakkında daha fazla bilgi için, [Azure Active Directory portalını kullanarak özel etki alanı adınızı ekleme](add-custom-domain.md)bölümüne bakın.
+     Kullanıcı adının etki alanı bölümü, ilk varsayılan etki alanı adı, *\<yourdomainname> . onmicrosoft.com* veya *contoso.com* gibi özel bir etki alanı adı kullanmalıdır. Özel etki alanı adı oluşturma hakkında daha fazla bilgi için, [Azure Active Directory portalını kullanarak özel etki alanı adınızı ekleme](add-custom-domain.md)bölümüne bakın.
 
    - **Gruplar**. İsteğe bağlı olarak, kullanıcıyı bir veya daha fazla var olan gruba ekleyebilirsiniz. Kullanıcıyı daha sonra gruplara da ekleyebilirsiniz. Gruplara kullanıcı ekleme hakkında daha fazla bilgi için bkz. [temel Grup oluşturma ve Azure Active Directory kullanarak üye ekleme](active-directory-groups-create-azure-portal.md).
 

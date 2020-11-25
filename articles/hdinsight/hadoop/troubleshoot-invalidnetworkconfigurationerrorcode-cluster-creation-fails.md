@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
 ms.openlocfilehash: 0eb9afc179f1dd2559f0db7b212f6b3a1da15824
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790925"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998762"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>Azure HDInsight 'ta küme oluşturma işlemi ınvalidnetworkconfigurationerrorcode ile başarısız oluyor
 
@@ -66,7 +66,7 @@ Azure Storage ve SQL 'in sabit IP adresleri yok, bu nedenle bu hizmetlere erişi
 
     Azure portal gidin ve kümenin dağıtıldığı alt ağla ilişkili yol tablosunu tanımla. Alt ağ için yol tablosunu bulduktan sonra, içindeki **rotalar** bölümünü inceleyin.
 
-    Tanımlı yollar varsa, kümenin dağıtıldığı bölgenin IP adresleri için yolların bulunduğundan emin olun ve her bir rotanın **Nexthoptype** 'ı **Internet** 'dir. Belirtilen makalede belgelenen her bir gerekli IP adresi için bir rota tanımlanmış olmalıdır.
+    Tanımlı yollar varsa, kümenin dağıtıldığı bölgenin IP adresleri için yolların bulunduğundan emin olun ve her bir rotanın **Nexthoptype** 'ı **Internet**'dir. Belirtilen makalede belgelenen her bir gerekli IP adresi için bir rota tanımlanmış olmalıdır.
 
 ## <a name="failed-to-establish-an-outbound-connection-from-the-cluster-for-the-communication-with-the-hdinsight-resource-provider-please-ensure-that-outbound-connectivity-is-allowed"></a>"HDInsight kaynak sağlayıcısıyla iletişim için kümeden giden bir bağlantı kurulamadı. Lütfen giden bağlantıya izin verildiğinden emin olun. "
 
@@ -108,7 +108,7 @@ ErrorDescription: Virtual Network configuration is not compatible with HDInsight
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Şu kodu yürütün:
+1. Aşağıdaki komutu yürütün:
 
     ```bash
     cat /etc/resolv.conf | grep nameserver*

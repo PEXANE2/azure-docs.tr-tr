@@ -14,11 +14,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 60f23efa4f46849e1fe8b0ebe05cdd83ec16f49e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294827"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997690"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory sorunsuz tek Sign-On sorunlarını giderme
 
@@ -28,7 +28,7 @@ Bu makale Azure Active Directory (Azure AD) sorunsuz tek Sign-On (sorunsuz SSO) 
 
 - Birkaç durumda, sorunsuz SSO 'nun etkinleştirilmesi 30 dakikaya kadar sürebilir.
 - Kiracınızda sorunsuz SSO 'yu devre dışı bırakıp yeniden etkinleştirirseniz, kullanıcılar önbelleğe alınmış Kerberos biletleri, genellikle 10 saat için geçerli olan ve süresi dolana kadar çoklu oturum açma deneyimini almaz.
-- Sorunsuz SSO başarılı olursa Kullanıcı Oturumumu **açık tut**seçeneğini belirleme fırsatına sahip değildir. Bu davranış nedeniyle, [SharePoint ve OneDrive eşleme senaryoları](https://support.microsoft.com/help/2616712/how-to-configure-and-to-troubleshoot-mapped-network-drives-that-connec) çalışmaz.
+- Sorunsuz SSO başarılı olursa Kullanıcı Oturumumu **açık tut** seçeneğini belirleme fırsatına sahip değildir. Bu davranış nedeniyle, [SharePoint ve OneDrive eşleme senaryoları](https://support.microsoft.com/help/2616712/how-to-configure-and-to-troubleshoot-mapped-network-drives-that-connec) çalışmaz.
 - 16.0.8730. xxxx ve üzeri sürümleriyle birlikte Microsoft 365 Win32 istemcileri (Outlook, Word, Excel ve diğerleri) etkileşimli olmayan bir akış kullanılarak desteklenir. Diğer sürümler desteklenmez; Bu sürümlerde, kullanıcılar, oturum açmak için Kullanıcı adlarını girer, ancak parolalarını girmeyecektir. OneDrive için, [OneDrive sessiz yapılandırma özelliğini](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) bir sessiz oturum açma deneyimi için etkinleştirmeniz gerekir.
 - Sorunsuz SSO, Firefox 'ta özel göz atma modunda çalışmaz.
 - Gelişmiş Korumalı Mod açıkken sorunsuz SSO Internet Explorer 'da çalışmaz.
@@ -55,7 +55,7 @@ Kiracınızda ilişkili bir Azure AD Premium lisansı varsa, [Azure Active Direc
 
 ![Azure Active Directory Yönetim Merkezi: oturum açma işlemleri raporu](./media/tshoot-connect-sso/sso9.png)
 
-**Azure Active Directory**  >  [Azure Active Directory Yönetim merkezinde](https://aad.portal.azure.com/)Azure Active Directory**oturum açma** işlemleri yapın ve ardından belirli bir kullanıcının oturum açma etkinliğini seçin. **Oturum açma hata kodu** alanını bulun. Aşağıdaki tabloyu kullanarak bu alanın değerini bir hata nedeni ve çözümüyle eşleyin:
+**Azure Active Directory**  >  [Azure Active Directory Yönetim merkezinde](https://aad.portal.azure.com/)Azure Active Directory **oturum açma** işlemleri yapın ve ardından belirli bir kullanıcının oturum açma etkinliğini seçin. **Oturum açma hata kodu** alanını bulun. Aşağıdaki tabloyu kullanarak bu alanın değerini bir hata nedeni ve çözümüyle eşleyin:
 
 |Oturum açma hata kodu|Oturum açma hatası nedeni|Çözüm
 | --- | --- | ---
@@ -86,7 +86,7 @@ Sorunsuz SSO sorunlarını gidermek için aşağıdaki denetim listesini kullan�
 - Komut isteminden komutunu kullanarak cihazdaki mevcut Kerberos biletlerini listeleyin `klist` . Bilgisayar hesabı için verilen anahtarların mevcut olduğundan emin olun `AZUREADSSOACC` . Kullanıcıların Kerberos biletleri genellikle 10 saat için geçerlidir. Active Directory farklı ayarlara sahip olabilirsiniz.
 - Kiracınızda sorunsuz SSO 'yu devre dışı bırakırsanız ve yeniden etkinleştirdiyseniz, kullanıcılar önbelleğe alınmış Kerberos biletleri zaman aşımına erene kadar çoklu oturum açma deneyimini almaz.
 - Komutunu kullanarak cihazdaki mevcut Kerberos biletlerini temizleyin `klist purge` ve yeniden deneyin.
-- JavaScript ile ilgili sorunlar olup olmadığını anlamak için tarayıcının konsol günlüklerini gözden geçirin ( **Geliştirici Araçları**altında).
+- JavaScript ile ilgili sorunlar olup olmadığını anlamak için tarayıcının konsol günlüklerini gözden geçirin ( **Geliştirici Araçları** altında).
 - [Etki alanı denetleyicisi günlüklerini](#domain-controller-logs)gözden geçirin.
 
 ### <a name="domain-controller-logs"></a>Etki alanı denetleyicisi günlükleri

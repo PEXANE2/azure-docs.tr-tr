@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 0df9e4722136dafe94d1bfc84a7767e1e0144d69
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458311"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997231"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-m-files"></a>Öğretici: d-dosyalarla Azure Active Directory tümleştirme
 
@@ -30,7 +30,7 @@ P dosyalarını Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini e-dosyalarla birlikte yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -61,13 +61,13 @@ E-dosyaların Azure AD ile tümleştirilmesini yapılandırmak için Galeriden, 
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna, **a-Files**yazın, sonuç panelinden **d-Files** ' ı seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
+4. Arama kutusuna, **a-Files** yazın, sonuç panelinden **d-Files** ' ı seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
      ![D-sonuçlar listesindeki dosyalar](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre, a-Files ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre, a-Files ile yapılandırıp test edersiniz.
 Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ve a-Files içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açma 'yı e-dosyalarla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -141,17 +141,17 @@ Azure AD çoklu oturum açmayı, e-dosyalarla birlikte yapılandırmak için aş
 
     Sunucu bölümünün altında, aşağıdaki gibi değerleri:  
 
-    a. **Ad**için yazın `<tenant-name>.cloudvault.m-files.com` . 
+    a. **Ad** için yazın `<tenant-name>.cloudvault.m-files.com` . 
  
-    b. **Bağlantı noktası numarası**için **4466**yazın. 
+    b. **Bağlantı noktası numarası** için **4466** yazın. 
 
-    c. **Protokol**için **https**' yi seçin. 
+    c. **Protokol** için **https**' yi seçin. 
 
     d. **Kimlik doğrulama** alanında, **belirli Windows kullanıcısı**' nı seçin. Ardından, sizden bir imzalama sayfası istenir. Azure AD kimlik bilgilerinizi ekleyin. 
 
-    e. **Sunucu üzerindeki kasa**için, sunucuda ilgili kasayı seçin.
+    e. **Sunucu üzerindeki kasa** için, sunucuda ilgili kasayı seçin.
  
-    f. **Tamam**’a tıklayın.
+    f. **Tamam** düğmesine tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
@@ -169,14 +169,14 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

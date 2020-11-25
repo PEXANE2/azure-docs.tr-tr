@@ -1,19 +1,19 @@
 ---
 title: 'Öğretici: oturumlar ve cihazlar arasında bağlantıları paylaşma'
 description: Bu öğreticide, bir arka uç hizmetiyle Unity 'de Android/iOS cihazları arasında Azure uzamsal bağlayıcı tanımlayıcıları paylaşmayı öğreneceksiniz.
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: rgarcia
-ms.date: 07/31/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: b29873e161b64c52abbfdf3f2611714f6b012361
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 3048eb1ca7f9312a43bc1ab5885bf19d4c2e7931
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097295"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95998505"
 ---
 # <a name="tutorial-share-spatial-anchors-across-sessions-and-devices"></a>Öğretici: oturumlarda ve cihazlarda uzamsal bağlayıcıları paylaşma
 
@@ -66,7 +66,7 @@ Hizmeti Visual Studio Code dağıtmadan önce bir kaynak grubu ve bir App Servic
 
 **Kaynak Grubu**’nun yanındaki **Yeni** öğesini seçin.
 
-Kaynak grubunu **Myresourcegroup**olarak adlandırın ve ardından **Tamam**' ı seçin.
+Kaynak grubunu **Myresourcegroup** olarak adlandırın ve ardından **Tamam**' ı seçin.
 
 ### <a name="create-an-app-service-plan"></a>App Service planı oluşturma
 

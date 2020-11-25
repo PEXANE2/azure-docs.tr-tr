@@ -13,11 +13,11 @@ ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7fc688ca0981024e5e08c9fb20ecb6704efbd7f2
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658783"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997503"
 ---
 # <a name="configure-the-admin-consent-workflow-preview"></a>Yönetici onayı iş akışını yapılandırma (Önizleme)
 
@@ -49,7 +49,7 @@ Yönetici onayı iş akışını etkinleştirmek ve gözden geçirenler ' i seç
    * **Seçili kullanıcılar, istek süre sonu anımsatıcıları alır**. İstek sona ermek üzereyken gözden geçirenlere anımsatıcı e-posta bildirimlerini etkinleştirin veya devre dışı bırakın.  
    * **Onay isteğinin süresi (gün)**. İsteklerin ne kadar süreyle geçerli kalacağını belirtin.
 
-7. **Kaydet**’i seçin. Özelliğin etkin hale gelmesi bir saate kadar sürebilir.
+7. **Kaydet**'i seçin. Özelliğin etkin hale gelmesi bir saate kadar sürebilir.
 
 > [!NOTE]
 > **Yönetici onay istekleri gözden geçirenler listesini seçerek** bu iş akışı için gözden geçirenler ekleyebilir veya kaldırabilirsiniz. Bu özelliğin geçerli sınırlaması, gözden geçirenlerin gözden geçiren olarak belirlenirken yapılan istekleri gözden geçirebilme özelliğini gerçekleştirebileceğini unutmayın.

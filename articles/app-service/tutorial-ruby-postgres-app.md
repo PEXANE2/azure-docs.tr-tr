@@ -6,11 +6,11 @@ ms.topic: tutorial
 ms.date: 06/18/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
 ms.openlocfilehash: 7d6c0d13e440beb9a934adba3908cc9a08f396f1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747143"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997966"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Linux üzerinde Azure App Service Ruby ve Postgres uygulaması oluşturma
 
@@ -30,7 +30,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -125,7 +125,7 @@ Bu bölümde, PostgreSQL için Azure veritabanı sunucusu ve veritabanı oluştu
 az extension add --name db-up
 ```
 
-[`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up)Aşağıdaki örnekte gösterildiği gibi, komutuyla Azure 'Da Postgres veritabanını oluşturun. *\<postgresql-name>* *Benzersiz* bir adla değiştirin (sunucu uç noktası *https:// \<postgresql-name> . Postgres.Database.Azure.com* ). *\<admin-username>* Ve için *\<admin-password>* , bu Postgres sunucusu için bir yönetici kullanıcı oluşturmak üzere kimlik bilgilerini belirtin.
+[`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up)Aşağıdaki örnekte gösterildiği gibi, komutuyla Azure 'Da Postgres veritabanını oluşturun. *\<postgresql-name>* *Benzersiz* bir adla değiştirin (sunucu uç noktası *https:// \<postgresql-name> . Postgres.Database.Azure.com*). *\<admin-username>* Ve için *\<admin-password>* , bu Postgres sunucusu için bir yönetici kullanıcı oluşturmak üzere kimlik bilgilerini belirtin.
 
 <!-- Issue: without --location -->
 ```azurecli
@@ -316,7 +316,7 @@ remote: Running deployment command...
 
 `http://<app-name>.azurewebsites.net` listesine göz atın ve listeye birkaç görev ekleyin.
 
-:::image type="content" source="./media/tutorial-ruby-postgres-app/ruby-postgres-in-azure.png" alt-text="Ruby on rayın ekran görüntüsü görevler başlıklı uygulama örneği.":::
+:::image type="content" source="./media/tutorial-ruby-postgres-app/ruby-postgres-in-azure.png" alt-text="Listeye eklenen görevleri gösteren görevler adlı Azure uygulaması örneği ekran görüntüsü.":::
 
 Tebrikler, Azure App Service'te veri temelli bir Ruby on Rails uygulaması çalıştırıyorsunuz.
 
@@ -439,7 +439,7 @@ Herhangi bir görevi eklediyseniz veritabanında tutulur. Veri şemasında yapı
 
 Oluşturduğunuz uygulamayı yönetmek için [Azure Portal](https://portal.azure.com) gidin.
 
-Sol menüden **uygulama hizmetleri** ' ne ve ardından Azure uygulamanızın adına tıklayın.
+Sol menüden **uygulama hizmetleri**' ne ve ardından Azure uygulamanızın adına tıklayın.
 
 ![Azure uygulamasına portal gezintisi](./media/tutorial-php-mysql-app/access-portal.png)
 

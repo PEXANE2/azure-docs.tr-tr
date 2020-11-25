@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7ca5361d8500ecd4ea22a577d0a4dc7ced606eab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89275911"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997656"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect: LocalDB 10 GB sınırından kurtarma
 Azure AD Connect’e kimlik verilerini depolamak için bir SQL Server veritabanı gerekiyor. Azure AD Connect ile yüklenen varsayılan SQL Server 2012 Express LocalDB’yi kullanabileceğiniz gibi, kendi tam SQL’nizi de kullanabilirsiniz. SQL Server Express 10 GB boyut sınırını uygular. LocalDB’yi kullanırken bu sınıra ulaşıldığında, Azure AD Connect Eşitleme Hizmeti artık düzgün başlatılamaz veya eşitleme yapamaz. Bu makalede kurtarma adımları sağlanmaktadır.
@@ -47,7 +47,7 @@ Bu bölümde, Azure AD Connect eşitleme hizmeti 'nin işlemi sürdürmesini sa�
 
 2. **Service Control Manager**'a gidin.
 
-3. **Microsoft Azure AD eşitleme**durumunu denetleyin.
+3. **Microsoft Azure AD eşitleme** durumunu denetleyin.
 
 
 4. Çalışıyorsa, hizmeti durdurmayın veya yeniden başlatmayın. Atla [veritabanı adımını daraltın](#shrink-the-database) ve [çalışma geçmişi verilerini sil](#delete-run-history-data) adımına gidin.
@@ -85,7 +85,7 @@ Varsayılan olarak, Azure AD Connect en fazla yedi gün, çalışma geçmişi ve
 
 2. **İşlemler** sekmesine gidin.
 
-3. **Eylemler**altında **çalıştırmaları temizle**... seçeneğini belirleyin.
+3. **Eylemler** altında **çalıştırmaları temizle**... seçeneğini belirleyin.
 
 4. **Tümünü Temizle** veya **... \<date> seçeneğini yapmadan önce çalıştırmaları** Temizle seçeneğini belirleyebilirsiniz. İki günden eski olan çalıştırma geçmişi verilerini temizleyerek başlatmanız önerilir. DB boyutu sorunuyla çalışmaya devam ederseniz, **Tüm çalıştırmaları temizle** seçeneğini belirleyin.
 

@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 544aa1a4a859a9c328eb1d36e72d0f9f9ddb55b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ad45d5f0e313c06619fa9c998515e434de957ea
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327910"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997571"
 ---
 # <a name="redirect-hard-coded-links-for-apps-published-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu yayımlanan uygulamalar için sabit kodlanmış bağlantıları yeniden yönlendirme
 
@@ -47,14 +47,14 @@ Bu üç özellik, kullanıcılarınızın nerede olduğuna bakılmaksızın bağ
 > [!NOTE]
 > Son seçenek yalnızca, her nedenden dolayı, uygulamaları için aynı iç ve dış URL 'Lere sahip olan özel etki alanlarını kullanmıyorum kiracılar içindir. Bu özelliği etkinleştirmeden önce, bkz. [Azure AD uygulama ara sunucusu özel etki alanları](application-proxy-configure-custom-domain.md) sizin için çalışmayabilir. 
 > 
-> Ya da bağlantı çevirisi ile yapılandırmanız gereken uygulama SharePoint ise, bağlantıları eşleştirmeye yönelik başka bir yaklaşım için bkz. [sharepoint 2013 için alternatif erişim eşlemelerini yapılandırma](https://technet.microsoft.com/library/cc263208.aspx) . 
+> Ya da bağlantı çevirisi ile yapılandırmanız gereken uygulama SharePoint ise, bağlantıları eşleştirmeye yönelik başka bir yaklaşım için bkz. [sharepoint 2013 için alternatif erişim eşlemelerini yapılandırma](/SharePoint/administration/configure-alternate-access-mappings) . 
 
  
 ### <a name="option-1-microsoft-edge-integration"></a>Seçenek 1: Microsoft Edge tümleştirmesi 
 
 Uygulamanızı ve içeriğinizi daha fazla korumak için Microsoft Edge 'i kullanabilirsiniz. Bu çözümü kullanmak için, kullanıcıların Microsoft Edge aracılığıyla uygulamaya erişmesi gerekir/önerilir. Uygulama proxy 'Si ile yayınlanan tüm iç URL 'Ler, Edge tarafından tanınır ve karşılık gelen dış URL 'ye yönlendirilir. Bu, tüm sabit kodlanmış iç URL 'Lerin çalışmasını sağlar ve bir kullanıcı tarayıcıya gider ve doğrudan iç URL 'yi yazdığında, kullanıcı uzakta olsa bile çalışır.  
 
-Bu seçeneği yapılandırma hakkında daha fazla bilgi için, lütfen [iOS ve Android Için Edge kullanarak Web erişimini yönetme Microsoft Intune](https://docs.microsoft.com/mem/intune/apps/manage-microsoft-edge) belgelerine bakın.  
+Bu seçeneği yapılandırma hakkında daha fazla bilgi için, lütfen [iOS ve Android Için Edge kullanarak Web erişimini yönetme Microsoft Intune](/mem/intune/apps/manage-microsoft-edge) belgelerine bakın.  
 
 ### <a name="option-2-myapps-browser-extension"></a>Seçenek 2: Uygps tarayıcı uzantısı 
 
@@ -62,7 +62,7 @@ Uygps tarayıcı uzantısıyla, uygulama proxy 'Si ile yayınlanan tüm iç URL 
 
 Bu özelliği kullanmak için kullanıcının uzantıyı indirmesi ve oturum açması gerekir. Yöneticiler veya kullanıcılar için başka yapılandırma gerekmez. 
 
-Bu seçeneği yapılandırma hakkında daha fazla bilgi edinmek için lütfen [Uygps tarayıcı uzantısı](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access#download-and-install-the-my-apps-secure-sign-in-extension) belgelerine bakın.
+Bu seçeneği yapılandırma hakkında daha fazla bilgi edinmek için lütfen [Uygps tarayıcı uzantısı](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension) belgelerine bakın.
 
 ### <a name="option-3-link-translation-setting"></a>Seçenek 3: bağlantı çevirisi ayarı 
 
@@ -137,8 +137,8 @@ Bu iki senaryonun birini desteklemeniz gerekiyorsa, bağlantı çevirisi yerine 
 Bağlantı çevirisi ile çalışmaya başlamak, bir düğmeye tıklanması kadar kolaydır:
 
 1. [Azure Portal](https://portal.azure.com)’da yönetici olarak oturum açın.
-2. **Azure Active Directory**  >  **Kurumsal uygulamalar**  >  **tüm uygulamalar** ' a gidin > > **uygulama proxy 'sini**yönetmek istediğiniz uygulamayı seçin.
-3. **Uygulama gövdesindeki URL 'Leri** **Evet**olarak çevir seçeneğini açın.
+2. **Azure Active Directory**  >  **Kurumsal uygulamalar**  >  **tüm uygulamalar** ' a gidin > > **uygulama proxy 'sini** yönetmek istediğiniz uygulamayı seçin.
+3. **Uygulama gövdesindeki URL 'Leri** **Evet** olarak çevir seçeneğini açın.
 
    ![Uygulama gövdesinde URL 'Leri çevirmek için Evet ' i seçin](./media/application-proxy-configure-hard-coded-link-translation/select_yes.png)
 4. Değişikliklerinizi uygulamak için **Kaydet**’i seçin.
@@ -152,4 +152,4 @@ Bu özelliği tüm uygulamalarınız için çalışır hale getirmenize yardımc
 ## <a name="next-steps"></a>Sonraki adımlar
 Aynı iç ve dış URL 'ye sahip olmak için [Azure AD uygulama ara sunucusu ile özel etki alanları kullanın](application-proxy-configure-custom-domain.md)
 
-[SharePoint 2013 için alternatif erişim eşlemelerini yapılandırma](https://technet.microsoft.com/library/cc263208.aspx)
+[SharePoint 2013 için alternatif erişim eşlemelerini yapılandırma](/SharePoint/administration/configure-alternate-access-mappings)

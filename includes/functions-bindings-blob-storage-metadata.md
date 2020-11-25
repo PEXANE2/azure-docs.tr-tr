@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: functions
 author: craigshoemaker
 manager: gwallace
@@ -9,20 +9,20 @@ ms.topic: include
 ms.date: 08/02/2019
 ms.author: cshoe
 ms.custom: include file
-ms.openlocfilehash: 3788fdb954917f28f64a0dfe035bed4ded0932d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4e6d5fb41769544b7be0f689447364988d0380d
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "69642142"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95998862"
 ---
-Blob tetikleyicisi çeşitli meta veri özellikleri sağlar. Bu özellikler, diğer bağlamalardaki veya kodunuzda parametre olarak bağlama ifadelerinin bir parçası olarak kullanılabilir. Bu değerler [Cloudblob](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblob?view=azure-dotnet) türüyle aynı semantiğe sahiptir.
+Blob tetikleyicisi çeşitli meta veri özellikleri sağlar. Bu özellikler, diğer bağlamalardaki veya kodunuzda parametre olarak bağlama ifadelerinin bir parçası olarak kullanılabilir. Bu değerler [Cloudblob](/dotnet/api/microsoft.azure.storage.blob.cloudblob?view=azure-dotnet) türüyle aynı semantiğe sahiptir.
 
-|Özellik  |Tür  |Açıklama  |
+|Özellik  |Tür  |Description  |
 |---------|---------|---------|
 |`BlobTrigger`|`string`|Tetikleme blobunun yolu.|
 |`Uri`|`System.Uri`|Birincil konumun blob URI 'SI.|
-|`Properties` |[BlobProperties](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobproperties)|Blobun sistem özellikleri. |
+|`Properties` |[BlobProperties](/dotnet/api/microsoft.azure.storage.blob.blobproperties)|Blobun sistem özellikleri. |
 |`Metadata` |`IDictionary<string,string>`|Blob için Kullanıcı tanımlı meta veriler.|
 
 Örneğin, aşağıdaki C# betiği ve JavaScript örnekleri, kapsayıcısı da dahil olmak üzere tetikleme blobu yolunu günlüğe kaydeder:

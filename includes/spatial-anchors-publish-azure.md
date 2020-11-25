@@ -1,15 +1,15 @@
 ---
-author: ramonarguelles
+author: msftradford
 ms.service: spatial-anchors
 ms.topic: include
-ms.date: 1/30/2019
-ms.author: rgarcia
-ms.openlocfilehash: 0e6f68daf22659b880827ad027268d9757c60063
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.date: 11/20/2020
+ms.author: parkerra
+ms.openlocfilehash: 80685dee7907b81832c94044d1feb8fcf2e41bde
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971434"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95998504"
 ---
 ### <a name="open-the-publish-wizard"></a>Yayımlama sihirbazını açın
 
@@ -17,11 +17,11 @@ ms.locfileid: "91971434"
 
 Yayımla Sihirbazı başlatılır. 
 
-**App Service**  >  **Oluştur App Service** bölmesini açmak için App Service**Yayımla** ' yı seçin.
+**App Service**  >  **Oluştur App Service** bölmesini açmak için App Service **Yayımla** ' yı seçin.
 
 ### <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-Azure Portal’da oturum açın.
+Azure portalında oturum açın.
 
 **App Service oluştur** bölmesinde **Hesap Ekle**' yi seçin ve ardından Azure aboneliğinizde oturum açın. Zaten oturum açtıysanız, açılan listeden istediğiniz hesabı seçin.
 
@@ -35,7 +35,7 @@ Azure Portal’da oturum açın.
 
 **Kaynak Grubu**’nun yanındaki **Yeni** öğesini seçin.
 
-Kaynak grubunu **Myresourcegroup**olarak adlandırın ve ardından **Tamam**' ı seçin.
+Kaynak grubunu **Myresourcegroup** olarak adlandırın ve ardından **Tamam**' ı seçin.
 
 ### <a name="create-an-app-service-plan"></a>App Service planı oluşturma
 
@@ -55,7 +55,7 @@ Kaynak grubunu **Myresourcegroup**olarak adlandırın ve ardından **Tamam**' ı
 
 ### <a name="create-and-publish-the-web-app"></a>Web uygulaması oluşturma ve yayımlama
 
-**Uygulama adı**alanına benzersiz bir uygulama adı girin. Geçerli karakterler şunlardır-z, 0-9 ve tireler (-) veya otomatik olarak oluşturulan benzersiz adı kabul eder. Web uygulamasının URL'si `https://<app_name>.azurewebsites.net` şeklindedir; burada `<app_name>`, uygulamanızın adıdır.
+**Uygulama adı** alanına benzersiz bir uygulama adı girin. Geçerli karakterler şunlardır-z, 0-9 ve tireler (-) veya otomatik olarak oluşturulan benzersiz adı kabul eder. Web uygulamasının URL'si `https://<app_name>.azurewebsites.net` şeklindedir; burada `<app_name>`, uygulamanızın adıdır.
 
 Azure kaynaklarını oluşturmaya başlamak için **Oluştur**’u seçin.
 

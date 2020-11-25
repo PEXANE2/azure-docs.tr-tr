@@ -4,11 +4,11 @@ description: ReliableConcurrentQueue, paralel sıraya ve sıralara izin veren y�
 ms.topic: conceptual
 ms.date: 5/1/2017
 ms.openlocfilehash: 423ef3d1898176d7c25c596ad186a9c000108aa4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86257444"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997129"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Azure Service Fabric ReliableConcurrentQueue 'a giriş
 Güvenilir eşzamanlı sıra, sıraya alma ve sıradan çıkarma işlemleri için yüksek eşzamanlılık özelliklerine sahip zaman uyumsuz, işlemsel ve çoğaltılan bir sıradır. [Güvenilir sıra](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1) tarafından sağlanan katı FIFO sıralamasını inceleyerek yüksek aktarım hızı ve düşük gecikme süresi sunmak üzere tasarlanmıştır ve bunun yerine en iyi çaba sıralaması sağlar.
@@ -33,7 +33,7 @@ ReliableConcurrentQueue için bir örnek kullanım örneği, [Ileti sırası](ht
 * Sıra, kuyruktaki öğelerin düşük saklama süresine sahip olmasını bekler. Diğer bir deyişle, öğeler uzun süredir kuyrukta kalmayabilir.
 * Sıra, kesin FıFO sıralaması garantisi vermez.
 * Sıra kendi yazma işlemlerini okumaz. Bir öğe bir işlem içinde sıraya alınmışsa, aynı işlem içindeki bir kuyruktan atılamaz.
-* Dekuyruklar birbirinden yalıtılmaz. Öğe *a* Işlem *txna*öğesinde sıraya alınmışsa, yani *txna* yürütülmese de, öğe *a* , eşzamanlı bir işlem *txnb*olarak görünür olmaz.  *Txna* durdurulduğunda, *bir* , hemen *txnb* olarak görünür hale gelir.
+* Dekuyruklar birbirinden yalıtılmaz. Öğe *a* Işlem *txna* öğesinde sıraya alınmışsa, yani *txna* yürütülmese de, öğe *a* , eşzamanlı bir işlem *txnb* olarak görünür olmaz.  *Txna* durdurulduğunda, *bir* , hemen *txnb* olarak görünür hale gelir.
 * *Trtypeınfo ' zaman uyumsuz* davranışı, bir *Trydequeueasync* kullanılarak uygulanabilir ve sonra işlem iptal edilebilir. Bu davranışa bir örnek, programlama desenleri bölümünde bulunabilir.
 * Sayı işlemsel değil. Kuyruktaki öğe sayısının bir fikrini almak için kullanılabilir, ancak bir noktayı temsil eder ve üzerinde güvenlenemez.
 * İşlem etkin durumdayken, sistem üzerinde performans etkisi olabilecek uzun süreli işlemlere engel olmak için, kuyruğa alınmış öğeler üzerinde pahalı işlemler gerçekleştirilmemelidir.
@@ -140,7 +140,7 @@ using (var txn = this.StateManager.CreateTransaction())
 
 Görevlerin başarıyla tamamlandığını, görevlerin paralel olarak çalıştığını ve sırayı değiştiren başka bir eşzamanlı işlem olmadığını varsayın. Kuyruktaki öğelerin sıralaması hakkında çıkarımı yapılmayacak olduğundan, *dequeue1* ve *dequeue2* listeleri her biri herhangi bir sırada iki öğe içerir.
 
-Aynı öğe her iki listede *de görünmez.* Bu nedenle, dequeue1 *10*, *30*ise, dequeue2 *20*, *40*olur.
+Aynı öğe her iki listede *de görünmez.* Bu nedenle, dequeue1 *10*, *30* ise, dequeue2 *20*, *40* olur.
 
 - *Durum 3: Işlem Iptali Ile sıralamayı sıradan çıkarma*
 
@@ -164,7 +164,7 @@ using (var txn = this.StateManager.CreateTransaction())
 > 
 > 20, 10
 
-Aynı işlem, işlemin başarıyla *tamamlanmadığı*tüm durumlarda geçerlidir.
+Aynı işlem, işlemin başarıyla *tamamlanmadığı* tüm durumlarda geçerlidir.
 
 ## <a name="programming-patterns"></a>Programlama desenleri
 Bu bölümde, ReliableConcurrentQueue kullanımı yararlı olabilecek birkaç programlama desenlerine bakmamıza izin verin.

@@ -1,25 +1,25 @@
 ---
 title: 'Öğretici: yeni bir Android uygulaması oluşturma'
 description: Bu öğreticide, Azure uzamsal bağlayıcılarını kullanarak yeni bir Android uygulaması oluşturmayı öğreneceksiniz.
-author: ramonarguelles
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: rgarcia
-ms.date: 06/22/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3ef24e29e5dde90aa829c46d789256e6e5f3233b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af0d01a20728d2332d4a8d71819f73baf68a65a4
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85296211"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95998404"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>Öğretici: Azure uzamsal bağlayıcıları kullanarak yeni bir Android uygulaması oluşturmaya yönelik adım adım yönergeler
 
 Bu öğreticide, Azure uzamsal bağlayıcılarla en yeni işlevleri tümleştiren yeni bir Android uygulamasının nasıl oluşturulacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
 
@@ -28,9 +28,9 @@ Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
 
 ## <a name="getting-started"></a>Başlarken
 
-Android Studio başlatın. **Android Studio hoş geldiniz** penceresinde **Yeni bir Android Studio projesi Başlat ' a**tıklayın. Ya da zaten açık bir projeniz varsa **Dosya** -> **Yeni proje**' yi seçin.
+Android Studio başlatın. **Android Studio hoş geldiniz** penceresinde **Yeni bir Android Studio projesi Başlat ' a** tıklayın. Ya da zaten açık bir projeniz varsa **Dosya** -> **Yeni proje**' yi seçin.
 
-**Yeni proje oluştur** penceresinde, **telefon ve tablet** bölümünde **boş etkinlik**' i seçin ve **İleri**' ye tıklayın. Daha sonra, **En düşük API düzeyi**altında, `API 26: Android 8.0 (Oreo)` öğesini seçin ve **dilin** olarak ayarlandığından emin olun `Java` . Proje adını & konumunu ve paket adını değiştirmek isteyebilirsiniz. Diğer seçenekleri oldukları gibi bırakın. **Finish (Son)** düğmesine tıklayın. **Bileşen yükleyicisi** çalışmaya çalışacaktır. İşiniz bittiğinde **son**' a tıklayın. Bazı işlemeden sonra, Android Studio IDE 'yi açar.
+**Yeni proje oluştur** penceresinde, **telefon ve tablet** bölümünde **boş etkinlik**' i seçin ve **İleri**' ye tıklayın. Daha sonra, **En düşük API düzeyi** altında, `API 26: Android 8.0 (Oreo)` öğesini seçin ve **dilin** olarak ayarlandığından emin olun `Java` . Proje adını & konumunu ve paket adını değiştirmek isteyebilirsiniz. Diğer seçenekleri oldukları gibi bırakın. **Finish (Son)** düğmesine tıklayın. **Bileşen yükleyicisi** çalışmaya çalışacaktır. İşiniz bittiğinde **son**' a tıklayın. Bazı işlemeden sonra, Android Studio IDE 'yi açar.
 
 ## <a name="trying-it-out"></a>Deneniyor
 
@@ -134,7 +134,7 @@ dependencies {
 }
 ```
 
-`app\java\<PackageName>` -> **Yeni** -> **Java sınıfı**' na sağ tıklayın. **Adı** _MyFirstApp_ve **üst sınıftan** _Android. app. Application_olarak ayarlayın. Diğer seçenekleri oldukları gibi bırakın. **Tamam**'a tıklayın. Çağrılan bir dosya `MyFirstApp.java` oluşturulacaktır. Aşağıdaki içeri aktarmayı ekleyin:
+`app\java\<PackageName>` -> **Yeni** -> **Java sınıfı**' na sağ tıklayın. **Adı** _MyFirstApp_ ve **üst sınıftan** _Android. app. Application_ olarak ayarlayın. Diğer seçenekleri oldukları gibi bırakın. **Tamam** düğmesine tıklayın. Çağrılan bir dosya `MyFirstApp.java` oluşturulacaktır. Aşağıdaki içeri aktarmayı ekleyin:
 
 ```java
 import com.microsoft.CloudServices;
@@ -227,6 +227,6 @@ Ardından, aşağıdaki kodu yönteminizin içine ekleyelim `handleTap()` . Bu k
 
 [!code-java[MainActivity](../../../includes/spatial-anchors-new-android-app-finished.md?name=initializeSession&highlight=34-53)]
 
-Hepsi bu! Tüm senaryoyu sona erdirmek için uygulamanızı en son bir kez yeniden [dağıtın](#trying-it-out) . Cihazınızın etrafında ilerleyin ve siyah kürenin yer aldığı yere yerleştirin. Ardından, Sphere sarıya dönüşene kadar cihazınızı kamera çerçevelerini yakalamaya devam edin. Yerel çıpası karşıya yüklenecek ve Sphere 'niz mavi kullanacaktır. Son olarak, daha sonra ekranınızı bir kez daha dokunduktan sonra yerel çıpası kaldırıldıktan sonra bulut karşılığına yönelik sorgu yapacağız. Bulut uzamsal bağlantı noktası bulunana kadar cihazınızı etrafında taşımaya devam edin. Yeşil Sphere 'ın doğru konumda görünmesi gerekir ve tüm senaryoyu yeniden tekrarlayabilirsiniz &.
+İşte bu kadar! Tüm senaryoyu sona erdirmek için uygulamanızı en son bir kez yeniden [dağıtın](#trying-it-out) . Cihazınızın etrafında ilerleyin ve siyah kürenin yer aldığı yere yerleştirin. Ardından, Sphere sarıya dönüşene kadar cihazınızı kamera çerçevelerini yakalamaya devam edin. Yerel çıpası karşıya yüklenecek ve Sphere 'niz mavi kullanacaktır. Son olarak, daha sonra ekranınızı bir kez daha dokunduktan sonra yerel çıpası kaldırıldıktan sonra bulut karşılığına yönelik sorgu yapacağız. Bulut uzamsal bağlantı noktası bulunana kadar cihazınızı etrafında taşımaya devam edin. Yeşil Sphere 'ın doğru konumda görünmesi gerekir ve tüm senaryoyu yeniden tekrarlayabilirsiniz &.
 
 [!INCLUDE [Share Anchors Sample Prerequisites](../../../includes/spatial-anchors-new-android-app-finished.md)]

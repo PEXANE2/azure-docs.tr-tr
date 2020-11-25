@@ -9,12 +9,12 @@ ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 5e6289fb4e3b5bb695b79589d544d0ae475f9774
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: dcc6f3bca80cb5860679327226d3e034c3e9b14a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314663"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95996874"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>Özel bir etki alanını Azure Blob depolama uç noktasıyla eşleme
 
@@ -79,11 +79,11 @@ Ana bilgisayar adınızı göstermek için bir CNAME kaydı oluşturun. CNAME ka
 
 1. Etki alanı Kaydedicinizin Web sitesinde oturum açın ve sonra DNS ayarlarını yönetme sayfasına gidin.
 
-   Sayfayı, **etki alanı adı**, **DNS**ya da **ad sunucusu yönetimi**adlı bir bölümde bulabilirsiniz.
+   Sayfayı, **etki alanı adı**, **DNS** ya da **ad sunucusu yönetimi** adlı bir bölümde bulabilirsiniz.
 
 2. CNAME kayıtlarını yönetme bölümünü bulun. 
 
-   Gelişmiş ayarlar sayfasına gitmeniz ve **CNAME**, **diğer ad**veya alt **etki alanlarını**aramanız gerekebilir.
+   Gelişmiş ayarlar sayfasına gitmeniz ve **CNAME**, **diğer ad** veya alt **etki alanlarını** aramanız gerekebilir.
 
 3. CNAME kaydı oluşturun. Bu kaydın bir parçası olarak, aşağıdaki öğeleri sağlayın: 
 
@@ -97,7 +97,7 @@ Ana bilgisayar adınızı göstermek için bir CNAME kaydı oluşturun. CNAME ka
 
 1. [Azure Portal](https://portal.azure.com)depolama hesabınıza gidin.
 
-2. Menü bölmesinde, **BLOB hizmeti**altında **özel etki alanı**' nı seçin.  
+2. Menü bölmesinde, **BLOB hizmeti** altında **özel etki alanı**' nı seçin.  
 
    ![Özel etki alanı seçeneği](./media/storage-custom-domain-name/custom-domain-button.png "Özel etki alanı")
 
@@ -105,7 +105,7 @@ Ana bilgisayar adınızı göstermek için bir CNAME kaydı oluşturun. CNAME ka
 
 3. **Etki alanı adı** metin kutusuna, alt etki alanı dahil olmak üzere özel etki alanınızın adını girin  
    
-   Örneğin, etki alanınız *contoso.com* ve alt etki alanı diğer adınız *www*ise, girin `www.contoso.com` . Alt etki alanı *fotoğraflarınız*ise, girin `photos.contoso.com` .
+   Örneğin, etki alanınız *contoso.com* ve alt etki alanı diğer adınız *www* ise, girin `www.contoso.com` . Alt etki alanı *fotoğraflarınız* ise, girin `photos.contoso.com` .
 
 4. Özel etki alanını kaydetmek için **Kaydet** düğmesini seçin.
 
@@ -163,11 +163,11 @@ Ana bilgisayar adınızı göstermek için geçici bir CNAME kaydı oluşturun. 
 
 1. Etki alanı Kaydedicinizin Web sitesinde oturum açın ve sonra DNS ayarlarını yönetme sayfasına gidin.
 
-   Sayfayı, **etki alanı adı**, **DNS**ya da **ad sunucusu yönetimi**adlı bir bölümde bulabilirsiniz.
+   Sayfayı, **etki alanı adı**, **DNS** ya da **ad sunucusu yönetimi** adlı bir bölümde bulabilirsiniz.
 
 2. CNAME kayıtlarını yönetme bölümünü bulun. 
 
-   Gelişmiş ayarlar sayfasına gitmeniz ve **CNAME**, **diğer ad**veya alt **etki alanlarını**aramanız gerekebilir.
+   Gelişmiş ayarlar sayfasına gitmeniz ve **CNAME**, **diğer ad** veya alt **etki alanlarını** aramanız gerekebilir.
 
 3. CNAME kaydı oluşturun. Bu kaydın bir parçası olarak, aşağıdaki öğeleri sağlayın: 
 
@@ -189,7 +189,7 @@ Ana bilgisayar adınızı göstermek için geçici bir CNAME kaydı oluşturun. 
 
 1. [Azure Portal](https://portal.azure.com)depolama hesabınıza gidin.
 
-2. Menü bölmesinde, **BLOB hizmeti**altında **özel etki alanı**' nı seçin.  
+2. Menü bölmesinde, **BLOB hizmeti** altında **özel etki alanı**' nı seçin.  
 
    ![Özel etki alanı seçeneği](./media/storage-custom-domain-name/custom-domain-button.png "Özel etki alanı")
 
@@ -197,7 +197,7 @@ Ana bilgisayar adınızı göstermek için geçici bir CNAME kaydı oluşturun. 
 
 3. **Etki alanı adı** metin kutusuna, alt etki alanı dahil olmak üzere özel etki alanınızın adını girin  
    
-   Örneğin, etki alanınız *contoso.com* ve alt etki alanı diğer adınız *www*ise, girin `www.contoso.com` . Alt etki alanı *fotoğraflarınız*ise, girin `photos.contoso.com` .
+   Örneğin, etki alanınız *contoso.com* ve alt etki alanı diğer adınız *www* ise, girin `www.contoso.com` . Alt etki alanı *fotoğraflarınız* ise, girin `photos.contoso.com` .
 
 4. **Dolaylı CNAME doğrulaması kullan** onay kutusunu seçin.
 
@@ -211,11 +211,11 @@ Ana bilgisayar adınızı göstermek için geçici bir CNAME kaydı oluşturun.
 
 1. Etki alanı Kaydedicinizin Web sitesinde oturum açın ve sonra DNS ayarlarını yönetme sayfasına gidin.
 
-   Sayfayı, **etki alanı adı**, **DNS**ya da **ad sunucusu yönetimi**adlı bir bölümde bulabilirsiniz.
+   Sayfayı, **etki alanı adı**, **DNS** ya da **ad sunucusu yönetimi** adlı bir bölümde bulabilirsiniz.
 
 2. CNAME kayıtlarını yönetme bölümünü bulun. 
 
-   Gelişmiş ayarlar sayfasına gitmeniz ve **CNAME**, **diğer ad**veya alt **etki alanlarını**aramanız gerekebilir.
+   Gelişmiş ayarlar sayfasına gitmeniz ve **CNAME**, **diğer ad** veya alt **etki alanlarını** aramanız gerekebilir.
 
 3. CNAME kaydı oluşturun. Bu kaydın bir parçası olarak, aşağıdaki öğeleri sağlayın: 
 
@@ -239,7 +239,7 @@ Ana bilgisayar adınızı göstermek için geçici bir CNAME kaydı oluşturun.
 
 1. [Azure Portal](https://portal.azure.com)depolama hesabınıza gidin.
 
-2. Menü bölmesinde, **BLOB hizmeti**altında **özel etki alanı**' nı seçin.  
+2. Menü bölmesinde, **BLOB hizmeti** altında **özel etki alanı**' nı seçin.  
    **Özel etki alanı** bölmesi açılır.
 
 3. Özel etki alanı adınızı içeren metin kutusunun içeriğini temizleyin.
@@ -250,7 +250,7 @@ Ana bilgisayar adınızı göstermek için geçici bir CNAME kaydı oluşturun.
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Özel bir etki alanı kaydını kaldırmak için [az Storage Account Update](https://docs.microsoft.com/cli/azure/storage/account) CLI komutunu kullanın ve sonra `""` bağımsız değişken değeri için boş bir dize () belirtin `--custom-domain` .
+Özel bir etki alanı kaydını kaldırmak için [az Storage Account Update](/cli/azure/storage/account) CLI komutunu kullanın ve sonra `""` bağımsız değişken değeri için boş bir dize () belirtin `--custom-domain` .
 
 * Komut biçimi:
 
@@ -320,11 +320,11 @@ Kullanıcıların HTTPS kullanarak blob veya Web içeriğinize erişmesine gerek
 
 4. Seçim Aşağıdaki kılavuzu gözden geçirin:
 
-   * [Azure CDN Ile paylaşılan erişim imzası (SAS) belirteçleri](https://docs.microsoft.com/azure/cdn/cdn-storage-custom-domain-https#shared-access-signatures).
+   * [Azure CDN Ile paylaşılan erişim imzası (SAS) belirteçleri](../../cdn/cdn-storage-custom-domain-https.md#shared-access-signatures).
 
-   * [Azure CDN Ile http-to-https yönlendirmesi](https://docs.microsoft.com/azure/cdn/cdn-storage-custom-domain-https#http-to-https-redirection).
+   * [Azure CDN Ile http-to-https yönlendirmesi](../../cdn/cdn-storage-custom-domain-https.md#http-to-https-redirection).
 
-   * [Azure CDN Ile BLOB depolama kullanılırken fiyatlandırma ve faturalandırma](https://docs.microsoft.com/azure/cdn/cdn-storage-custom-domain-https#http-to-https-redirection).
+   * [Azure CDN Ile BLOB depolama kullanılırken fiyatlandırma ve faturalandırma](../../cdn/cdn-storage-custom-domain-https.md#http-to-https-redirection).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

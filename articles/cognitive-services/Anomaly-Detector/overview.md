@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 09/22/2020
+ms.date: 11/23/2020
 ms.author: mbullwin
 keywords: anomali algılama, makine öğrenimi, algoritmalar
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 9b540f2e04ae8533a00f79d05e220d99964d9a34
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 1a13b962a000e6e3b2143dc23f94b63c122bd963
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016612"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95999118"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Anomali Algılayıcısı API'si nedir?
 
@@ -85,6 +85,10 @@ Microsoft 'un geliştirdiği SR-CNN algoritmaları hakkında daha fazla bilgi ed
 
 
 > [!VIDEO https://www.youtube.com/embed/ERTaAnwCarM]
+
+## <a name="deploy-on-premises-using-docker-containers"></a>Docker kapsayıcılarını kullanarak şirket içinde dağıtma
+
+Şirket içinde API özelliklerini dağıtmak için [anomali algılayıcı kapsayıcılarını kullanın](anomaly-detector-container-howto.md) . Docker kapsayıcıları, uyumluluk, güvenlik veya diğer işletimsel nedenlerle hizmeti verilerinize yaklaştırmayı sağlar.
 
 ## <a name="join-the-anomaly-detector-community"></a>Anomali Algılayıcısı topluluğuna katılın
 

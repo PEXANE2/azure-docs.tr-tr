@@ -9,11 +9,11 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 10/28/2020
 ms.openlocfilehash: db94a82112f2670facd4d89178f11653c5316c36
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93331786"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998949"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Python kullanma-tek sunucu
 
@@ -23,7 +23,7 @@ Bu hızlı başlangıçta, PostgreSQL için Azure veritabanı 'nda veritabanına
 > PostgreSQL ile bir Docgo uygulaması oluşturmak istiyorsanız öğreticiyi kullanıma alın ve [PostgreSQL öğreticisi ile bir docgo Web uygulaması dağıtın](../app-service/tutorial-python-postgresql-app.md) .
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu hızlı başlangıç için şunlar gerekir:
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free).
@@ -45,7 +45,7 @@ Bu hızlı başlangıç için şunlar gerekir:
 PostgreSQL için Azure veritabanı veritabanına bağlanmak için tam sunucu adı ve oturum açma kimlik bilgileri gerekir. Bu bilgileri Azure portal alabilirsiniz.
 
 1. [Azure Portal](https://portal.azure.com/), PostgreSQL Için Azure veritabanı sunucu adı ' nı arayıp seçin.
-1. Sunucunun **genel bakış** sayfasında, tam **sunucu adı** ve **Yönetici Kullanıcı adı** ' nı kopyalayın. Tam **sunucu adı** her zaman *\<my-server-name> . Postgres.Database.Azure.com* olur ve **Yönetici Kullanıcı adı** her zaman formundadır *\<my-admin-username>@\<my-server-name>* .
+1. Sunucunun **genel bakış** sayfasında, tam **sunucu adı** ve **Yönetici Kullanıcı adı**' nı kopyalayın. Tam **sunucu adı** her zaman *\<my-server-name> . Postgres.Database.Azure.com* olur ve **Yönetici Kullanıcı adı** her zaman formundadır *\<my-admin-username>@\<my-server-name>* .
 
    Yönetici parolanızla de ihtiyacınız vardır. Unutursanız, bu sayfadan sıfırlayabilirsiniz.
 

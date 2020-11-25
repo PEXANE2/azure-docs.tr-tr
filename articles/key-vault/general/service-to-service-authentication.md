@@ -9,11 +9,11 @@ ms.date: 09/04/2020
 ms.topic: how-to
 ms.service: key-vault
 ms.openlocfilehash: ac3ee108fc63441b2a9381b9e7624631bdca4e5b
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289823"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998115"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>.NET kullanarak Azure Key Vault için hizmetten hizmete kimlik doğrulaması
 
@@ -65,7 +65,7 @@ Yerel geliştirme için iki birincil kimlik doğrulama senaryosu vardır: [Azure
 
 Yerel makineler, Azure kaynakları için yönetilen kimlikleri desteklemez. Sonuç olarak, kitaplık, `Microsoft.Azure.Services.AppAuthentication` Geliştirici kimlik bilgilerinizi yerel geliştirme ortamınızda çalıştırmak için kullanır. Çözüm Azure 'a dağıtıldığında, kitaplık bir OAuth 2,0 istemci kimlik bilgisi verme akışına geçiş yapmak için yönetilen bir kimlik kullanır. Bu yaklaşım, endişelenmeden aynı kodu yerel olarak ve uzaktan sınaymanız anlamına gelir.
 
-Yerel geliştirme için, `AzureServiceTokenProvider` **Visual Studio** , **Azure komut satırı arabirimi** (CLI) veya **Azure AD Tümleşik kimlik doğrulaması** kullanarak belirteçleri getirir. Her seçenek sırayla denenir ve kitaplık başarılı olan ilk seçeneği kullanır. Hiçbir seçenek çalışmadıysanız, `AzureServiceTokenProviderException` ayrıntılı bilgilerle bir özel durum oluşturulur.
+Yerel geliştirme için, `AzureServiceTokenProvider` **Visual Studio**, **Azure komut satırı arabirimi** (CLI) veya **Azure AD Tümleşik kimlik doğrulaması** kullanarak belirteçleri getirir. Her seçenek sırayla denenir ve kitaplık başarılı olan ilk seçeneği kullanır. Hiçbir seçenek çalışmadıysanız, `AzureServiceTokenProviderException` ayrıntılı bilgilerle bir özel durum oluşturulur.
 
 #### <a name="authenticating-with-visual-studio"></a>Visual Studio ile kimlik doğrulama
 
@@ -73,11 +73,11 @@ Visual Studio kullanarak kimlik doğrulaması yapmak için:
 
 1. Visual Studio 'da oturum açın ve **Tools** &nbsp; > &nbsp; **seçenekleri** açmak için Araçlar **seçeneklerini** kullanın.
 
-1. **Azure hizmeti kimlik doğrulaması** ' nı seçin, yerel geliştirme için bir hesap seçin ve **Tamam** ' ı seçin.
+1. **Azure hizmeti kimlik doğrulaması**' nı seçin, yerel geliştirme için bir hesap seçin ve **Tamam**' ı seçin.
 
 Belirteç sağlayıcı dosyasını içeren hatalar gibi Visual Studio 'Yu kullanarak sorunlarla karşılaşırsanız, önceki adımları dikkatle gözden geçirin.
 
-Geliştirici belirtecinizi yeniden kimlik doğrulaması yapmanız gerekebilir. Bunu yapmak için **Araçlar** &nbsp; > &nbsp; **Seçenekler** ' i seçin ve ardından **Azure &nbsp; hizmeti &nbsp; kimlik doğrulaması** ' nı seçin. Seçili hesap altında bir **yeniden kimlik doğrulaması** bağlantısı arayın. Kimlik doğrulamak için seçin.
+Geliştirici belirtecinizi yeniden kimlik doğrulaması yapmanız gerekebilir. Bunu yapmak için **Araçlar** &nbsp; > &nbsp; **Seçenekler**' i seçin ve ardından **Azure &nbsp; hizmeti &nbsp; kimlik doğrulaması**' nı seçin. Seçili hesap altında bir **yeniden kimlik doğrulaması** bağlantısı arayın. Kimlik doğrulamak için seçin.
 
 #### <a name="authenticating-with-azure-cli"></a>Azure CLı ile kimlik doğrulama
 
@@ -85,7 +85,7 @@ Azure CLı 'yı yerel geliştirme için kullanmak için [Azure CLI v 2.0.12](/cl
 
 Azure CLı 'yi kullanmak için:
 
-1. Windows görev çubuğunda Azure CLı araması yapın **Microsoft Azure komut istemi** ' ni açın.
+1. Windows görev çubuğunda Azure CLı araması yapın **Microsoft Azure komut istemi**' ni açın.
 
 1. Azure portal oturum açın: Azure 'da oturum açmak için *az oturum* açın.
 
@@ -167,7 +167,7 @@ Uygulamanızı çalıştırmak için hizmet sorumlusu kullanmanın üç birincil
           CertificateStoreLocation={CertificateStore}
     ```
 
-    *{AppID}* , *{tenantıd}* ve *{parmak izi}* değerlerini adım 1 ' de oluşturulan değerlerle değiştirin. Dağıtım planınıza bağlı olarak, *{certificatestore}* öğesini *LocalMachine* ' veya *CurrentUser* ile değiştirin.
+    *{AppID}*, *{tenantıd}* ve *{parmak izi}* değerlerini adım 1 ' de oluşturulan değerlerle değiştirin. Dağıtım planınıza bağlı olarak, *{certificatestore}* öğesini *LocalMachine*' veya *CurrentUser* ile değiştirin.
 
 1. Uygulamayı çalıştırın.
 
@@ -185,7 +185,7 @@ Uygulamanızı çalıştırmak için hizmet sorumlusu kullanmanın üç birincil
     RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}
     ```
 
-    _{AppID}_ , _{tenantıd}_ ve _{ClientSecret}_ değerlerini 1. adımda oluşturulan değerlerle değiştirin.
+    _{AppID}_, _{tenantıd}_ ve _{ClientSecret}_ değerlerini 1. adımda oluşturulan değerlerle değiştirin.
 
 1. Uygulamayı çalıştırın.
 
@@ -262,7 +262,7 @@ Varsayılan olarak, `AzureServiceTokenProvider` bir belirteci almak için aşağ
 
 #### <a name="azure-cli-is-not-installed-youre-not-logged-in-or-you-dont-have-the-latest-version"></a>Azure CLı yüklü değil, oturum açmamışsınız veya en son sürüme sahip değilsiniz
 
-Azure CLı 'nın sizin için bir belirteç gösterdiğini görmek için *az Account Get-Access-Token* ' i çalıştırın. **Böyle bir program bulunmazsa** , [Azure CLI 'nın en son sürümünü](/cli/azure/install-azure-cli?view=azure-cli-latest)yükler. Oturum açmanız istenebilir.
+Azure CLı 'nın sizin için bir belirteç gösterdiğini görmek için *az Account Get-Access-Token* ' i çalıştırın. **Böyle bir program bulunmazsa**, [Azure CLI 'nın en son sürümünü](/cli/azure/install-azure-cli?view=azure-cli-latest)yükler. Oturum açmanız istenebilir.
 
 #### <a name="azureservicetokenprovider-cant-find-the-path-for-azure-cli"></a>AzureServiceTokenProvider Azure CLı yolunu bulamıyor
 

@@ -13,11 +13,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1257c783ffeae68bf338b21a5d2f6bba72ea25b3
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836436"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997775"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Azure Active Directory için Federasyondan geçişli kimlik doğrulamaya geçiş
 
@@ -419,7 +419,7 @@ Tüm kullanıcıların ve istemcilerin Azure AD aracılığıyla başarıyla kim
 
 Başka amaçlar için AD FS kullanmıyorsanız (diğer bir deyişle, diğer bağlı olan taraf güvenleri için), bu noktada AD FS yetkisini almak güvenlidir.
 
-### <a name="rollback"></a>Etkin
+### <a name="rollback"></a>Geri alma
 
 Büyük bir sorun keşfettiğiniz ve bunu hızlı çözümleyemezse, çözümü federasyona geri almayı seçebilirsiniz.
 

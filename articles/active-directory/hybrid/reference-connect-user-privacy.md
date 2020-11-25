@@ -16,11 +16,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8f1d1bf35d03f0f7c4d11e4cc7e9b6f98f38d8ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89279576"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997707"
 ---
 # <a name="user-privacy-and-azure-ad-connect"></a>Kullanıcı gizliliği ve Azure AD Connect 
 
@@ -67,7 +67,7 @@ If ($File.ToUpper() -ne "$env:programdata\aadconnect\PERSISTEDSTATE.XML".toupper
 ### <a name="schedule-this-script-to-run-every-48-hours"></a>Bu betiği her 48 saatte bir çalışacak şekilde zamanlayın
 Komut dosyasını her 48 saatte bir çalışacak şekilde zamanlamak için aşağıdaki adımları kullanın.
 
-1.  Betiği **&#46;ps1**uzantılı bir dosyaya kaydedin, ardından Denetim Masası 'nı açın ve **sistemler ve güvenlik**' e tıklayın.
+1.  Betiği **&#46;ps1** uzantılı bir dosyaya kaydedin, ardından Denetim Masası 'nı açın ve **sistemler ve güvenlik**' e tıklayın.
     ![Sistem](./media/reference-connect-user-privacy/gdpr2.png)
 
 2.  Yönetimsel Araçlar başlığı altında, **görevleri zamanla**' ya tıklayın.

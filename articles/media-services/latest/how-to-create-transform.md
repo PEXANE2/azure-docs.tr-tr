@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 11/18/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5ffab4eaf63844057a3872730f91634cb2df5669
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 4784bb8a396a30e9002c789c7aad382640f04a5c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94918218"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "95996923"
 ---
 # <a name="create-a-transform"></a>Dönüşüm oluşturma
 
@@ -28,7 +28,7 @@ ms.locfileid: "94918218"
 
 Bu makaledeki Azure CLI betiği, dönüşüm oluşturmayı gösterir. Dönüşümler video veya ses dosyalarınızın işlenmesine yönelik görevlerden oluşan basit bir iş akışı tanımlar (genellikle "tarif" olarak adlandırılır). Zaten istenen ada ve “tarife” sahip bir Dönüşümün olup olmadığını mutlaka kontrol etmelisiniz. Böyle bir tarif varsa bunu yeniden kullanmalısınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Media Services hesabı oluşturun](./create-account-howto.md).
 
@@ -47,7 +47,7 @@ Bu makaledeki Azure CLI betiği, dönüşüm oluşturmayı gösterir. Dönüşü
 
 ## <a name="rest"></a>[REST](#tab/rest/)
 
-[!INCLUDE [task general transform creation](./includes/task-create-transform-rest.md)]
+[!INCLUDE [task general transform creation](./includes/task-create-basic-audio-rest.md)]
 
 ---
 

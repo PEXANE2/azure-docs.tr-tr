@@ -8,20 +8,20 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 105978daeb93a2e5646222ff10055ba20a1dc481
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 7174f7dd53387de9a569a5ddcadc08c32692c749
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172897"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997112"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Azure Blob depolamada akış desteğini değiştirme
 
-Değişiklik akışı amacı, bloblarda oluşan tüm değişikliklerin işlem günlüklerini ve Depolama hesabınızdaki blob meta verilerini sağlamaktır. Değişiklik akışı, bu değişikliklerin **sıralı**, **garantili**, **dayanıklı**, **sabit**ve **salt** yazılır günlüklerini sağlar. İstemci uygulamaları, akış veya toplu işlem modunda bu günlükleri dilediğiniz zaman okuyabilir. Değişiklik akışı, BLOB depolama hesabınızda gerçekleşen değişiklik olaylarını düşük bir maliyetle işleyen etkili ve ölçeklenebilir çözümler oluşturmanıza olanak sağlar.
+Değişiklik akışı amacı, bloblarda oluşan tüm değişikliklerin işlem günlüklerini ve Depolama hesabınızdaki blob meta verilerini sağlamaktır. Değişiklik akışı, bu değişikliklerin **sıralı**, **garantili**, **dayanıklı**, **sabit** ve **salt** yazılır günlüklerini sağlar. İstemci uygulamaları, akış veya toplu işlem modunda bu günlükleri dilediğiniz zaman okuyabilir. Değişiklik akışı, BLOB depolama hesabınızda gerçekleşen değişiklik olaylarını düşük bir maliyetle işleyen etkili ve ölçeklenebilir çözümler oluşturmanıza olanak sağlar.
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
-Değişiklik akışı, standart [BLOB fiyatlandırma](https://azure.microsoft.com/pricing/details/storage/blobs/) maliyetinde Depolama hesabınızdaki özel bir kapsayıcıda [BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) olarak depolanır. Gereksinimlerinize göre bu dosyaların bekletme süresini denetleyebilirsiniz (geçerli yayının [koşullarına](#conditions) bakın). Değişiklik olayları, [Apache avro](https://avro.apache.org/docs/1.8.2/spec.html) biçim belirtiminde kayıt olarak değişiklik akışına eklenir: satır içi şema ile zengin veri yapıları sağlayan kompakt, hızlı, ikili bir biçimdir. Bu biçim, Hadoop ekosisteminde, Stream Analytics ve Azure Data Factory yaygın olarak kullanılır.
+Değişiklik akışı, standart [BLOB fiyatlandırma](https://azure.microsoft.com/pricing/details/storage/blobs/) maliyetinde Depolama hesabınızdaki özel bir kapsayıcıda [BLOB](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) olarak depolanır. Gereksinimlerinize göre bu dosyaların bekletme süresini denetleyebilirsiniz (geçerli yayının [koşullarına](#conditions) bakın). Değişiklik olayları, [Apache avro](https://avro.apache.org/docs/1.8.2/spec.html) biçim belirtiminde kayıt olarak değişiklik akışına eklenir: satır içi şema ile zengin veri yapıları sağlayan kompakt, hızlı, ikili bir biçimdir. Bu biçim, Hadoop ekosisteminde, Stream Analytics ve Azure Data Factory yaygın olarak kullanılır.
 
 Bu günlükleri zaman uyumsuz, artımlı veya tam olarak işleyebilirsiniz. Herhangi bir sayıda istemci uygulaması değişiklik akışını paralel olarak ve kendi hızda okuyabilir. [Apache detaya gitme](https://drill.apache.org/docs/querying-avro-files/) veya [Apache Spark](https://spark.apache.org/docs/latest/sql-data-sources-avro.html) gibi analitik uygulamalar, günlükleri doğrudan avro dosyaları olarak tüketebilir, bu da bunları yüksek bant genişliğine sahip ve özel bir uygulama yazmak zorunda kalmadan düşük maliyetli bir şekilde işlemenizi sağlar.
 
@@ -62,9 +62,9 @@ Azure portal kullanarak depolama hesabınızda değişiklik akışını etkinle�
 
 1. [Azure Portal](https://portal.azure.com/)depolama hesabınızı seçin.
 
-2. **BLOB hizmeti**altındaki **veri koruma** seçeneğine gidin.
+2. **BLOB hizmeti** altındaki **veri koruma** seçeneğine gidin.
 
-3. **BLOB değişiklik akışı**altında **etkin** ' e tıklayın.
+3. **BLOB değişiklik akışı** altında **etkin** ' e tıklayın.
 
 4. **Veri koruma** ayarlarınızı onaylamak için **Kaydet** düğmesini seçin.
 
@@ -105,7 +105,7 @@ Azure portal aracılığıyla mevcut depolama hesabınızda değişiklik akış�
 
 1. Azure portal **kaynak oluştur**' u seçin.
 
-2. **Market 'Te ara**' te, **şablon dağıtımı**yazın ve ardından **ENTER**tuşuna basın.
+2. **Market 'Te ara**' te, **şablon dağıtımı** yazın ve ardından **ENTER** tuşuna basın.
 
 3. **[Özel bir şablon dağıt](https://portal.azure.com/#create/Microsoft.Template)**' ı seçin ve ardından **düzenleyicide kendi şablonunuzu oluştur**' u seçin.
 
@@ -206,7 +206,7 @@ Segment bildirim dosyası ( `meta.json` ), özelliğindeki bu segmentin değişi
 
 Değişiklik akışı dosyaları bir dizi değişiklik olay kaydını içerir. Her değişiklik olay kaydı, tek bir Blobun bir değişikliğe karşılık gelir. Kayıtlar serileştirilir ve [Apache avro](https://avro.apache.org/docs/1.8.2/spec.html) biçim belirtimi kullanılarak dosyaya yazılır. Kayıtlar avro dosya biçimi belirtimi kullanılarak okunabilir. Bu biçimdeki dosyaları işlemek için kullanabileceğiniz çeşitli kitaplıklar vardır.
 
-Değişiklik akışı dosyaları, `$blobchangefeed/log/` sanal dizinde [ekleme Blobları](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)olarak depolanır. Her yolun altındaki ilk değişiklik akışı dosyası `00000` dosya adında olacaktır (örneğin `00000.avro` ). Bu yola eklenen her bir sonraki günlük dosyasının adı 1 ile artacaktır (örneğin: `00001.avro` ).
+Değişiklik akışı dosyaları, `$blobchangefeed/log/` sanal dizinde [ekleme Blobları](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)olarak depolanır. Her yolun altındaki ilk değişiklik akışı dosyası `00000` dosya adında olacaktır (örneğin `00000.avro` ). Bu yola eklenen her bir sonraki günlük dosyasının adı 1 ile artacaktır (örneğin: `00001.avro` ).
 
 Aşağıdaki olay türleri değişiklik akışı kayıtlarında yakalanır:
 - BlobCreated
@@ -243,7 +243,7 @@ Değişiklik akışı dosyasından JSON 'a dönüştürülmüş değişiklik ola
 }
 ```
 
-Her bir özelliğin açıklaması için bkz. [BLOB depolama için Azure Event Grid olay şeması](https://docs.microsoft.com/azure/event-grid/event-schema-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#event-properties). BlobPropertiesUpdated ve BlobSnapshotCreated olayları şu anda akışı değiştirebilir ve BLOB depolama olayları için henüz desteklenmemiştir.
+Her bir özelliğin açıklaması için bkz. [BLOB depolama için Azure Event Grid olay şeması](../../event-grid/event-schema-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#event-properties). BlobPropertiesUpdated ve BlobSnapshotCreated olayları şu anda akışı değiştirebilir ve BLOB depolama olayları için henüz desteklenmemiştir.
 
 > [!NOTE]
 > Bir kesim için değişiklik akışı dosyaları bir segment oluşturulduktan sonra hemen görünmez. Gecikme süresi, değişikliğin birkaç dakika içinde olan değişiklik akışında bulunan normal Yayımlanma zaman aralığı içindedir.
@@ -256,7 +256,7 @@ Her bir özelliğin açıklaması için bkz. [BLOB depolama için Azure Event Gr
 
 - Değişiklik olay kayıtları, değişikliğin birkaç dakikalık bir sırası içine eklenir. İstemci uygulamaları, akış erişimi veya toplu olarak herhangi bir zamanda eklendiği için kayıtları tüketmek üzere seçim yapabilir.
 
-- Değişiklik olay kayıtları, **BLOB başına**değişiklik sırasına göre sıralanır. Blob 'larda değişiklik sırası, Azure Blob depolamada tanımsızdır. Önceki kesimdeki tüm değişiklikler sonraki kesimlerdeki değişikliklerden önceye ait.
+- Değişiklik olay kayıtları, **BLOB başına** değişiklik sırasına göre sıralanır. Blob 'larda değişiklik sırası, Azure Blob depolamada tanımsızdır. Önceki kesimdeki tüm değişiklikler sonraki kesimlerdeki değişikliklerden önceye ait.
 
 - Değişiklik olay kayıtları, [Apache avro 1.8.2](https://avro.apache.org/docs/1.8.2/spec.html) biçim belirtimi kullanılarak günlük dosyasına serileştirilir.
 

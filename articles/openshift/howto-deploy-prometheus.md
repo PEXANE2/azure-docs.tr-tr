@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 06/17/2019
 keywords: Prometheus, Aro, OpenShift, ölçümler, Red Hat
 ms.openlocfilehash: 42ed8c90b35eba57fdc3db1f0ed93d44cf9a5e41
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92218621"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996857"
 ---
 # <a name="deploy-a-standalone-prometheus-instance-in-an-azure-red-hat-openshift-cluster"></a>Azure Red Hat OpenShift kümesine tek başına Prometheus örneği dağıtma
 
@@ -36,9 +36,9 @@ Bazı Prometheus yapılandırma dosyalarını yerel olarak hazırlarsınız. Dep
 
 ## <a name="sign-in-to-the-cluster-by-using-the-oc-tool"></a>OC aracını kullanarak kümede oturum açma
 
-1. Bir Web tarayıcısı açın ve ardından kümenizin web konsoluna gidin ( https://openshift .* Rastgele kimlik*. *Region*. azmosa.io).
+1. Bir Web tarayıcısı açın ve ardından kümenizin web konsoluna gidin ( https://openshift .*Rastgele kimlik*. *Region*. azmosa.io).
 2. Azure kimlik bilgilerinizle oturum açın.
-3. Sağ üst köşedeki Kullanıcı adınızı seçin ve ardından **oturumu Kopyala komutunu**seçin.
+3. Sağ üst köşedeki Kullanıcı adınızı seçin ve ardından **oturumu Kopyala komutunu** seçin.
 4. Kullanıcı adınızı kullanacağınız terminale yapıştırın.
 
 > [!NOTE]
@@ -188,7 +188,7 @@ oc process -f prometheus-sdrole.yml | oc apply -f - -n prometheus-project
 
 ## <a name="optional-deploy-example-application"></a>İsteğe bağlı: örnek uygulama dağıtma
 
-Her şey çalışıyor ancak ölçüm kaynağı yok. Prometheus URL 'sine gidin ( https://prom-prometheus-project.apps .* Rastgele kimlik*. *Region*. azmosa.io/). Aşağıdaki komutu kullanarak bulabilirsiniz:
+Her şey çalışıyor ancak ölçüm kaynağı yok. Prometheus URL 'sine gidin ( https://prom-prometheus-project.apps .*Rastgele kimlik*. *Region*. azmosa.io/). Aşağıdaki komutu kullanarak bulabilirsiniz:
 
 ```
 oc get route prom -n prometheus-project

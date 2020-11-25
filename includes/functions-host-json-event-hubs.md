@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: 8f3a58d3a7470867ab23249bbd645289e010ad89
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92223169"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997331"
 ---
 ### <a name="functions-2x-and-higher"></a>İşlevler 2.x ve üzeri
 
@@ -28,7 +28,7 @@ ms.locfileid: "92223169"
 }  
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------|
 |maxBatchSize|10|Alma döngüsü başına alınan en yüksek olay sayısı.|
 |prefetchCount|300|Temel tarafından kullanılan varsayılan önceden getirme sayısı `EventProcessorHost` . İzin verilen en düşük değer 10 ' dur.|
@@ -49,7 +49,7 @@ ms.locfileid: "92223169"
 }
 ```
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------| 
 |maxBatchSize|64|Alma döngüsü başına alınan en yüksek olay sayısı.|
 |prefetchCount|yok|Temel tarafından kullanılacak varsayılan ön getirme `EventProcessorHost` .| 

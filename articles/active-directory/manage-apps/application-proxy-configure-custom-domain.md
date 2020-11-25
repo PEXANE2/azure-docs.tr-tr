@@ -12,13 +12,13 @@ ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.openlocfilehash: bef120e754c84798b2d1b48f4f00fbb8f5fb3c1d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656386"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997622"
 ---
-# <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu özel etki alanlarını yapılandırma
+# <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu ile özel etki alanlarını yapılandırma
 
 Azure Active Directory Uygulama Ara Sunucusu aracılığıyla bir uygulama yayımladığınızda kullanıcılarınız için bir dış URL oluşturursunuz. Bu URL varsayılan etki alanını alır *yourtenant.msappproxy.net*. Örneğin, kiracınızda *contoso* *adlı bir* uygulama yayımlarsanız, dış URL *https: \/ /Expenses-contoso.msappproxy.net* olur. *Msappproxy.net* yerine kendi etki alanı adınızı kullanmak istiyorsanız, uygulamanız için özel bir etki alanı yapılandırabilirsiniz. 
 
@@ -82,7 +82,7 @@ Uygulamanızı özel bir etki alanı ile uygulama proxy 'Si aracılığıyla yay
    
 4. **Dış URL** alanında, listeyi aşağı açılır ve kullanmak istediğiniz özel etki alanını seçin.
    
-5. **Ekle**'yi seçin.
+5. **Ekle**’yi seçin.
    
    ![Özel etki alanı seç](./media/application-proxy-configure-custom-domain/application-proxy.png)
    

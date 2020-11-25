@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 2401786a82b6a3e5bf6c6a893a8e7cd3656f3402
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340439"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996975"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Verilerinizi Azure Cosmos DB ve görselleştirmek için Qlik Sense bağlama
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -36,7 +36,7 @@ Bu makalede, ODBC bağlayıcısını kullanarak Cosmos DB SQL API 'sine bağlanm
 
 Bu makalede, ODBC bağlayıcısını kullanarak Cosmos DB SQL API 'sine bağlanma ayrıntıları açıklanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki yönergeleri uygulamadan önce, aşağıdaki kaynakların size hazırlantığınızdan emin olun:
 
@@ -54,15 +54,15 @@ Bu makaledeki yönergeleri uygulamadan önce, aşağıdaki kaynakların size haz
 
 ## <a name="connect-qlik-sense-to-cosmos-db"></a>Qlik Sense Cosmos DB bağlama
 
-1. Qlik Sense açın ve **Yeni uygulama oluştur** ' u seçin. Uygulamanız için bir ad girin ve **Oluştur** ' u seçin.
+1. Qlik Sense açın ve **Yeni uygulama oluştur**' u seçin. Uygulamanız için bir ad girin ve **Oluştur**' u seçin.
 
    :::image type="content" source="./media/visualize-qlik-sense/create-new-qlik-sense-app.png" alt-text="Yeni bir Qlik Sense uygulaması oluşturma":::
 
-2. Yeni uygulama başarıyla oluşturulduktan sonra, **uygulamayı aç** ' ı seçin ve **dosyalardan ve diğer kaynaklardan veri Ekle** ' yi seçin. 
+2. Yeni uygulama başarıyla oluşturulduktan sonra, **uygulamayı aç** ' ı seçin ve **dosyalardan ve diğer kaynaklardan veri Ekle**' yi seçin. 
 
 3. Veri kaynaklarından **ODBC** ' yi seçerek yeni bağlantı Kurulumu penceresini açın. 
 
-4. **Kullanıcı DSN** ' ye geçin ve daha önce oluşturduğunuz ODBC bağlantısını seçin. Bağlantı için bir ad girin ve **Oluştur** ' u seçin. 
+4. **Kullanıcı DSN** ' ye geçin ve daha önce oluşturduğunuz ODBC bağlantısını seçin. Bağlantı için bir ad girin ve **Oluştur**' u seçin. 
 
    :::image type="content" source="./media/visualize-qlik-sense/create-new-connection.png" alt-text="Yeni bağlantı oluştur":::
 

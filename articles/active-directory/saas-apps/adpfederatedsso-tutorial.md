@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 08/26/2019
 ms.author: jeedes
 ms.openlocfilehash: cf6973242e81cef53625a3b1eda4f2d92e1d5ffd
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92308795"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998643"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adp"></a>Öğretici: ADP ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, ADP 'yi Azure Active Directory (Azure AD) ile tümleştirmeyi �
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -57,7 +57,7 @@ ADP 'yi Azure AD 'ye tümleştirmeyi yapılandırmak için, Galeriden ADP 'yi y�
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-adp"></a>ADP için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu ADP ile yapılandırın ve test edin. SSO 'nun çalışması için, ADP 'de bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu ADP ile yapılandırın ve test edin. SSO 'nun çalışması için, ADP 'de bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu ADP ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -76,13 +76,13 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Çoklu oturum açma özellikleri](./media/adpfederatedsso-tutorial/tutorial_adp_prop.png)
 
-    a. **Kullanıcıların oturum açma** alanı değerini **Evet**olarak ayarlayın.
+    a. **Kullanıcıların oturum açma** alanı değerini **Evet** olarak ayarlayın.
 
-    b. **Kullanıcı erişim URL 'sini** kopyalayın ve bunu Öğreticinin ilerleyen kısımlarında açıklanan **oturum açma URL 'sini yapılandırın bölümüne**yapıştırmanız gerekir.
+    b. **Kullanıcı erişim URL 'sini** kopyalayın ve bunu Öğreticinin ilerleyen kısımlarında açıklanan **oturum açma URL 'sini yapılandırın bölümüne** yapıştırmanız gerekir.
 
-    c. **Kullanıcı Ataması gerekli** alan değerini **Evet**olarak ayarlayın.
+    c. **Kullanıcı Ataması gerekli** alan değerini **Evet** olarak ayarlayın.
 
-    d. **Kullanıcılar Için görünür** alan değerini **Hayır**olarak ayarlayın.
+    d. **Kullanıcılar Için görünür** alan değerini **Hayır** olarak ayarlayın.
 
 1. [Azure Portal](https://portal.azure.com/), **ADP** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
@@ -112,7 +112,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -155,15 +155,15 @@ ADP temsilcinizden onay alındıktan sonra, ADP hizmetinizi yapılandırın ve b
 
     ![Çoklu oturum açma bağlantılı özellikleri](./media/adpfederatedsso-tutorial/tutorial_adp_linkedproperties.png)
 
-    a.  **Kullanıcıların oturum açma** alanı değerini **Evet**olarak ayarlayın.
+    a.  **Kullanıcıların oturum açma** alanı değerini **Evet** olarak ayarlayın.
 
-    b.  **Kullanıcı Ataması gerekli** alan değerini **Evet**olarak ayarlayın.
+    b.  **Kullanıcı Ataması gerekli** alan değerini **Evet** olarak ayarlayın.
 
-    c.  **Kullanıcılar Için görünür** alan değerini **Evet**olarak ayarlayın.
+    c.  **Kullanıcılar Için görünür** alan değerini **Evet** olarak ayarlayın.
 
 1. [Azure Portal](https://portal.azure.com/), **ADP** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 
-1. **Çoklu oturum açma yöntemi seç** iletişim kutusunda, **bağlı**olarak **mod** ' u seçin. Uygulamanızı **ADP**'e bağlamak için.
+1. **Çoklu oturum açma yöntemi seç** iletişim kutusunda, **bağlı** olarak **mod** ' u seçin. Uygulamanızı **ADP**'e bağlamak için.
 
     ![Çoklu oturum açma bağlı](./media/adpfederatedsso-tutorial/tutorial_adp_linked.png)
 
@@ -171,9 +171,9 @@ ADP temsilcinizden onay alındıktan sonra, ADP hizmetinizi yapılandırın ve b
 
     ![Çoklu oturum açma Prop](./media/adpfederatedsso-tutorial/tutorial_adp_linkedsignon.png)
 
-    a. Yukarıdaki **Özellikler sekmesinden** kopyaladığınız **Kullanıcı erişim URL 'sini**yapıştırın (ana ADP uygulamasından).
+    a. Yukarıdaki **Özellikler sekmesinden** kopyaladığınız **Kullanıcı erişim URL 'sini** yapıştırın (ana ADP uygulamasından).
                                                              
-    b. Farklı **geçiş durumu URL 'lerini**destekleyen 5 uygulama aşağıda verilmiştir. Belirli bir uygulama için uygun **geçiş durumu URL 'si** değerini **Kullanıcı erişim URL**'sine el ile eklemeniz gerekir.
+    b. Farklı **geçiş durumu URL 'lerini** destekleyen 5 uygulama aşağıda verilmiştir. Belirli bir uygulama için uygun **geçiş durumu URL 'si** değerini **Kullanıcı erişim URL**'sine el ile eklemeniz gerekir.
     
     * **ADP iş gücü artık**
         

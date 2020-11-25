@@ -15,16 +15,16 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 3c26a84e32a17cba83b5ca895f146e561072fa62
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90054968"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998201"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-backup-jobs"></a>Yedekleme işlerini görüntülemek ve yönetmek için StorSimple Snapshot Manager kullanma
 
 ## <a name="overview"></a>Genel Bakış
-**Kapsam** bölmesindeki **Işler** düğümü, **Zamanlanmış**, **son 24 saati**ve etkileşimli olarak veya yapılandırılmış bir ilke ile **başlatılan yedekleme görevlerini** gösterir. 
+**Kapsam** bölmesindeki **Işler** düğümü, **Zamanlanmış**, **son 24 saati** ve etkileşimli olarak veya yapılandırılmış bir ilke ile **başlatılan yedekleme görevlerini** gösterir. 
 
 Bu öğreticide, zamanlanan, en son ve çalışmakta olan yedekleme işleri hakkındaki bilgileri göstermek için **işler** düğümünü nasıl kullanabileceğiniz açıklanmaktadır. (İşlerin listesi ve ilgili bilgiler **sonuçlar** bölmesinde görünür.) Ayrıca, listelenen bir işe sağ tıklayıp kullanılabilir eylemleri listeleyen bir bağlam menüsü görebilirsiniz.
 

@@ -7,12 +7,12 @@ ms.date: 11/20/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: 378c21a6904acad16847bb32955e4bc091e587df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fc1b2638c2ab17c4cd58ca8d4508d2e6d244cfa
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84465499"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95996838"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>İOS 'dan blob depolamayı kullanma
 
@@ -85,7 +85,7 @@ Ardından, aşağıdaki işlemleri gerçekleştirerek Framework dosyasını uygu
 Swift kullanıyorsanız, bir köprü oluşturma üst bilgisi oluşturmalı ve içeri aktarmanız gerekir \<AZSClient/AZSClient.h> :
 
 1. Üst bilgi dosyası oluşturun `Bridging-Header.h` ve yukarıdaki içeri aktarma ifadesini ekleyin.
-2. *Derleme ayarları* sekmesine gidin ve *Amaç-C köprü oluşturma üst bilgisi*için arama yapın.
+2. *Derleme ayarları* sekmesine gidin ve *Amaç-C köprü oluşturma üst bilgisi* için arama yapın.
 3. *Hedef-C köprüleme üst bilgisine* çift tıklayın ve yolu üst bilgi dosyanıza ekleyin:`ProjectName/Bridging-Header.h`
 4. Köprü üstbilgisinin Xcode tarafından çekildiğini doğrulamak için projeyi derleyin (⌘ + B).
 5. Kitaplığı doğrudan herhangi bir Swift dosyasında kullanmaya başlayın, içeri aktarma deyimlerine gerek yoktur.
@@ -97,9 +97,9 @@ Swift kullanıyorsanız, bir köprü oluşturma üst bilgisi oluşturmalı ve i�
 > [!NOTE]
 > Hizmette bir istek gerçekleştiren tüm yöntemler zaman uyumsuz işlemlerdir. Kod örneklerinde, bu yöntemlerin bir tamamlama işleyicisine sahip olduğunu göreceksiniz. Tamamlama işleyicisinin içindeki kod, istek tamamlandıktan **sonra** çalışır. İstek yapıldığında tamamlama işleyiciden sonraki kod **çalışır.**
 
-## <a name="create-a-container"></a>Bir kapsayıcı oluşturma
+## <a name="create-a-container"></a>Kapsayıcı oluşturma
 
-Azure Storage 'daki her blob bir kapsayıcıda yer almalıdır. Aşağıdaki örnek, henüz yoksa depolama hesabınızda *newcontainer*adlı bir kapsayıcının nasıl oluşturulacağını gösterir. Kapsayıcınız için bir ad seçerken yukarıda belirtilen adlandırma kurallarından en az birini seçin.
+Azure Storage 'daki her blob bir kapsayıcıda yer almalıdır. Aşağıdaki örnek, henüz yoksa depolama hesabınızda *newcontainer* adlı bir kapsayıcının nasıl oluşturulacağını gösterir. Kapsayıcınız için bir ad seçerken yukarıda belirtilen adlandırma kurallarından en az birini seçin.
 
 ```objc
 -(void)createContainer{
@@ -208,7 +208,7 @@ Aşağıdaki örnek, bir NSString 'ten bir blok blobunun nasıl yükleneceğini 
 }
 ```
 
-[Microsoft Azure Depolama Gezgini](https://storageexplorer.com) bakarak ve *containerpublic*kapsayıcısının blob, *sampleblob*' u içerdiğini doğrulamak için bu işe yarar. Bu örnekte, bir ortak kapsayıcı kullandık, bu uygulamanın Bloblar URI 'sine giderek çalıştığını da doğrulayabilirsiniz.
+[Microsoft Azure Depolama Gezgini](https://storageexplorer.com) bakarak ve *containerpublic* kapsayıcısının blob, *sampleblob*' u içerdiğini doğrulamak için bu işe yarar. Bu örnekte, bir ortak kapsayıcı kullandık, bu uygulamanın Bloblar URI 'sine giderek çalıştığını da doğrulayabilirsiniz.
 
 ```http
 https://nameofyourstorageaccount.blob.core.windows.net/containerpublic/sampleblob
@@ -222,7 +222,7 @@ Aşağıdaki örnek, bir kapsayıcıdaki tüm Blobların nasıl ekleneceğini g�
 
 - **Continuationtoken** -devamlılık belirteci, listeleme işleminin başlayacağı yeri temsil eder. Hiçbir belirteç sağlanmazsa, Blobların başlangıçtan itibaren listelendirilecektir. Herhangi bir sayıda blob, sıfırdan büyük bir küme en fazla olacak şekilde listelenebilir. Bu yöntem sıfır sonuçları döndürse bile, bu `results.continuationToken` işlem Nil değilse, hizmette listelenmeyen daha fazla BLOB olabilir.
 - **ön ek** -blob listesi için kullanılacak ön eki belirtebilirsiniz. Yalnızca bu önek ile başlayan Bloblar listelenecektir.
-- **Useyataybloblisteleme** - [kapsayıcı ve bloblara başvurma](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) bölümünde belirtildiği gibi, blob hizmeti düz bir depolama düzeni olsa da, Bloblar yol bilgileriyle adlandırarak bir sanal hiyerarşi oluşturabilirsiniz. Ancak, düz olmayan listeleme Şu anda desteklenmiyor. Bu özellik yakında kullanıma sunulacak. Şimdilik, bu değer **Yes**olmalıdır.
+- **Useyataybloblisteleme** - [kapsayıcı ve bloblara başvurma](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) bölümünde belirtildiği gibi, blob hizmeti düz bir depolama düzeni olsa da, Bloblar yol bilgileriyle adlandırarak bir sanal hiyerarşi oluşturabilirsiniz. Ancak, düz olmayan listeleme Şu anda desteklenmiyor. Bu özellik yakında kullanıma sunulacak. Şimdilik, bu değer **Yes** olmalıdır.
 - **Bloblistingdetails** -Blobları listelenirken hangi öğelerin ekleneceğini belirtebilirsiniz
   - _Azsbloblistingdetailsnone_: yalnızca işlenen Blobları listeleyin ve BLOB meta verilerini döndürmez.
   - _Azsbloblistingdetailssnapsnapshots_: işlenen Blobları ve BLOB anlık görüntülerini listeleyin.
@@ -391,8 +391,8 @@ Artık iOS 'dan blob Storage 'ı nasıl kullanacağınızı öğrendiğinize gö
 
 - [İOS için Azure depolama Istemci kitaplığı](https://github.com/azure/azure-storage-ios)
 - [Azure depolama iOS başvuru belgeleri](https://azure.github.io/azure-storage-ios/)
-- [Azure Storage Hizmetleri REST API’si](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-- [Azure Depolama Ekibi Blogu](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)
+- [Azure Storage Hizmetleri REST API’si](/rest/api/storageservices/)
+- [Azure Depolama Ekibi Blogu](/archive/blogs/windowsazurestorage/)
 
-Bu kitaplıkla ilgili sorularınız varsa [Microsoft Q&soru sayfası](https://docs.microsoft.com/answers/topics/azure-blob-storage.html) veya [Stack Overflow](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files)gönderebilirsiniz.
+Bu kitaplıkla ilgili sorularınız varsa [Microsoft Q&soru sayfası](/answers/topics/azure-blob-storage.html) veya [Stack Overflow](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files)gönderebilirsiniz.
 Azure depolama için özellik önerileriniz varsa lütfen [Azure Storage geri bildirimlerine](https://feedback.azure.com/forums/217298-storage/)gönderin.

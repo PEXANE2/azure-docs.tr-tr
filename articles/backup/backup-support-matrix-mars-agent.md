@@ -4,11 +4,11 @@ description: Bu makalede, Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı �
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.openlocfilehash: 26a47c2648d1307d2e7da2b25455f3f036cbf32d
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363247"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997248"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı ile yedekleme için destek matrisi
 
@@ -46,7 +46,7 @@ Verileri yedeklemek için MARS Aracısı 'nı kullandığınızda, aracı verile
 Boyut |  Önbellek klasöründeki boş alan, yedekleme verilerinizin genel boyutunun en az 5 ila yüzde 10 olması gerekir.
 Konum | Önbellek klasörünün yedeklenmekte olan makinede yerel olarak depolanması ve çevrimiçi olması gerekir. Önbellek klasörü bir ağ paylaşımında, çıkarılabilir medyada veya çevrimdışı bir birimde olmalıdır.
 Klasör | Önbellek klasörü, yinelenenleri kaldırılmış bir birimde veya sıkıştırılmış, bu seyrek olan veya bir yeniden ayrıştırma noktası olan bir klasörde şifrelenmemelidir.
-Konum değişiklikleri | Yedekleme altyapısını ( `net stop bengine` ) durdurup önbellek klasörünü yeni bir sürücüye kopyalayarak önbellek konumunu değiştirebilirsiniz. (Yeni sürücüde yeterli alan olduğundan emin olun.) Ardından, **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** ( **config/Scratchlocation** ve **config/CloudBackupProvider/scratchlocation** ) altındaki iki kayıt defteri girişini yeni konuma güncelleştirin ve altyapıyı yeniden başlatın.
+Konum değişiklikleri | Yedekleme altyapısını ( `net stop bengine` ) durdurup önbellek klasörünü yeni bir sürücüye kopyalayarak önbellek konumunu değiştirebilirsiniz. (Yeni sürücüde yeterli alan olduğundan emin olun.) Ardından, **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** (**config/Scratchlocation** ve **config/CloudBackupProvider/scratchlocation**) altındaki iki kayıt defteri girişini yeni konuma güncelleştirin ve altyapıyı yeniden başlatın.
 
 ## <a name="networking-and-access-support"></a>Ağ ve erişim desteği
 
@@ -67,11 +67,11 @@ Bu IP adresleri:
 
 Yukarıda listelenen tüm URL ve IP adreslerine erişim, bağlantı noktası 443 ' de HTTPS protokolünü kullanır.
 
-MARS Aracısı 'nı kullanarak Azure VM 'lerinden dosya ve klasörleri yedeklerken, Azure sanal ağının de erişime izin verecek şekilde yapılandırılması gerekir. Ağ güvenlik grupları (NSG) kullanıyorsanız, Azure Backup giden erişime izin vermek için *AzureBackup* Service etiketini kullanın. Azure Backup etiketine ek olarak, Azure AD ( *AzureActiveDirectory* ) ve Azure depolama ( *depolama* ) için benzer [NSG kuralları](../virtual-network/network-security-groups-overview.md#service-tags) oluşturarak kimlik doğrulama ve veri aktarımı için de bağlantıya izin vermeniz gerekir. Aşağıdaki adımlar Azure Backup etiketi için bir kural oluşturma işlemini anlatmaktadır:
+MARS Aracısı 'nı kullanarak Azure VM 'lerinden dosya ve klasörleri yedeklerken, Azure sanal ağının de erişime izin verecek şekilde yapılandırılması gerekir. Ağ güvenlik grupları (NSG) kullanıyorsanız, Azure Backup giden erişime izin vermek için *AzureBackup* Service etiketini kullanın. Azure Backup etiketine ek olarak, Azure AD (*AzureActiveDirectory*) ve Azure depolama (*depolama*) için benzer [NSG kuralları](../virtual-network/network-security-groups-overview.md#service-tags) oluşturarak kimlik doğrulama ve veri aktarımı için de bağlantıya izin vermeniz gerekir. Aşağıdaki adımlar Azure Backup etiketi için bir kural oluşturma işlemini anlatmaktadır:
 
-1. **Tüm hizmetler** ' de **ağ güvenlik grupları** ' na gidin ve ağ güvenlik grubunu seçin.
+1. **Tüm hizmetler**' de **ağ güvenlik grupları** ' na gidin ve ağ güvenlik grubunu seçin.
 2. **Ayarlar** altında **giden güvenlik kuralları** ' nı seçin.
-3. **Ekle** ’yi seçin. [Güvenlik kuralı ayarları](../virtual-network/manage-network-security-group.md#security-rule-settings)' nda açıklandığı gibi yeni bir kural oluşturmak için gereken tüm ayrıntıları girin. Seçenek **hedefinin** *hizmet etiketi* olarak ayarlandığından ve **hedef hizmet etiketinin** *AzureBackup* olarak ayarlandığından emin olun.
+3. **Ekle**’yi seçin. [Güvenlik kuralı ayarları](../virtual-network/manage-network-security-group.md#security-rule-settings)' nda açıklandığı gibi yeni bir kural oluşturmak için gereken tüm ayrıntıları girin. Seçenek **hedefinin** *hizmet etiketi* olarak ayarlandığından ve **hedef hizmet etiketinin** *AzureBackup* olarak ayarlandığından emin olun.
 4. Yeni oluşturulan giden güvenlik kuralını kaydetmek için **Ekle** ' yi seçin.
 
 Benzer şekilde, Azure depolama ve Azure AD için NSG giden güvenlik kuralları oluşturabilirsiniz. Hizmet etiketleri hakkında daha fazla bilgi için [Bu makaleye](../virtual-network/service-tags-overview.md)bakın.

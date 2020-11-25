@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 6eced120a05ddaca8d8cf426fd2a977891b3e36b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515939"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997146"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>Öğretici: küçük geliştirmelerle Azure Active Directory tümleştirme
 
@@ -61,13 +61,13 @@ Küçük geliştirmelerin Azure AD ile tümleştirilmesini yapılandırmak için
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **küçük iyileştirmeler**yazın, sonuç panelinden **küçük geliştirmeler** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **küçük iyileştirmeler** yazın, sonuç panelinden **küçük geliştirmeler** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuçlar listesinde küçük geliştirmeler](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına dayalı küçük geliştirmelerle yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına dayalı küçük geliştirmelerle yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve küçük geliştirmelerle ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açma 'yı küçük geliştirmelerle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -138,7 +138,7 @@ Azure AD çoklu oturum açmayı küçük geliştirmelerle yapılandırmak için 
 
     ![Ekran görüntüsü, tanımlanan değerleri girebileceğiniz S S O kurulum sayfasını gösterir.](./media/smallimprovements-tutorial/tutorial_smallimprovements_08.png)  
 
-    a. **Http uç noktası** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+    a. **Http uç noktası** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
     b. İndirilen sertifikanızı Not defteri 'nde açın, içeriği kopyalayın ve ardından **x509 sertifikası** metin kutusuna yapıştırın. 
 
@@ -164,14 +164,14 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alan türü**brittasimon@yourcompanydomain.extension**  
+    b. **Kullanıcı adı** alan türü **brittasimon@yourcompanydomain.extension**  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -221,9 +221,9 @@ Azure AD kullanıcılarının küçük geliştirmelere oturum açmasını sağla
 
     ![Ekran görüntüsü, tanımlanan değerleri girebileceğiniz Kullanıcı Ekle iletişim kutusunu gösterir.](./media/smallimprovements-tutorial/tutorial_smallimprovements_12.png)
 
-    a. Kullanıcının **ilk adını** **Britta**gibi girin.
+    a. Kullanıcının **ilk adını** **Britta** gibi girin.
 
-    b. **Simon**gibi Kullanıcı **adının soyadını** girin.
+    b. **Simon** gibi Kullanıcı **adının soyadını** girin.
 
     c. Kullanıcının **e-postasını** girin **brittasimon@contoso.com** .
 
