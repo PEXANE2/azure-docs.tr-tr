@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/03/2016
 ms.author: cephalin
 ms.openlocfilehash: 2f490a5b12484a91e963d068810b292d7761521a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89484315"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95986557"
 ---
 > [!NOTE]
 > Azure App Service için özel bir DNS adı yapılandırmak üzere Azure DNS kullanabilirsiniz. Daha fazla bilgi için bkz. [Bir Azure hizmeti için özel etki alanı ayarları sağlamak üzere Azure DNS'yi kullanma](../articles/dns/dns-custom-domain.md#app-service-web-apps).
@@ -20,7 +20,7 @@ ms.locfileid: "89484315"
 
 1. DNS kayıtlarını yönetme sayfasını bulun. Her etki alanı sağlayıcısının kendi DNS kayıtları arabirimi vardır, bu nedenle sağlayıcının belgelerine başvurun. Sitede **Domain Name**, **DNS** veya **Name Server Management** etiketli alanları bulun.
 
-   Genellikle, hesap bilgilerinizi görüntüleyerek ve **etki alanlarım**gibi bir bağlantı arayarak DNS kayıtları sayfasını bulabilirsiniz. Bu sayfaya gidin ve **bölge dosyası**, **DNS kayıtları**veya **Gelişmiş yapılandırma**gibi bir bağlantı adlı bağlantıyı arayın.
+   Genellikle, hesap bilgilerinizi görüntüleyerek ve **etki alanlarım** gibi bir bağlantı arayarak DNS kayıtları sayfasını bulabilirsiniz. Bu sayfaya gidin ve **bölge dosyası**, **DNS kayıtları** veya **Gelişmiş yapılandırma** gibi bir bağlantı adlı bağlantıyı arayın.
 
    DNS kayıtları sayfasının bir örneğini aşağıdaki ekran görüntüsünde görebilirsiniz:
 
