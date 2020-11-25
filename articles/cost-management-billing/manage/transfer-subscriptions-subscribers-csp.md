@@ -6,14 +6,14 @@ ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/22/2020
+ms.date: 11/17/2020
 ms.author: banders
-ms.openlocfilehash: 69d6544485e356741634749dd91ba6485cfbb31c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7cbb628f6af286141fb1c7b330117ded33142c4f
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460691"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94744256"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Azure aboneliklerini aboneler ile CSP'ler arasında aktarma
 
@@ -25,7 +25,7 @@ Aboneliği aktardıktan sonra mevcut rezervasyonlarınız uygulanmaya devam etme
 
 ## <a name="transfer-ea-subscriptions-to-a-csp-partner"></a>CSP iş ortağına EA aboneliklerinin aktarılması
 
-[Azure Uzman Yönetilen Hizmetler Sağlayıcısı (MSP)](https://partner.microsoft.com/membership/azure-expert-msp) sertifikalı CSP doğrudan faturalandırma iş ortakları, Doğrudan Kurumsal Anlaşma (EA) sahibi olan müşterilerinin Azure aboneliklerinin aktarılması isteğinde bulunabilirler. Abonelik aktarma işlemleri yalnızca kabul edilen bir Microsoft Müşteri Sözleşmesi'ne (MCA) sahip olan ve bir Azure planı satın almış olan müşteriler tarafından gerçekleştirilebilir.
+[Azure Uzman Yönetilen Hizmetler Sağlayıcısı (MSP)](https://partner.microsoft.com/membership/azure-expert-msp) sertifikalı CSP doğrudan faturalandırma iş ortakları, Doğrudan Kurumsal Anlaşma (EA) sahibi olan müşterilerinin Azure aboneliklerinin aktarılması isteğinde bulunabilirler. Abonelik aktarma işlemleri yalnızca kabul edilen bir Microsoft Müşteri Sözleşmesi'ne (MCA) sahip olan ve CSP Programı kapsamında bir Azure planı satın almış olan müşteriler tarafından gerçekleştirilebilir.
 
 İstek onaylandıktan sonra CSP, müşterilerine birleştirilmiş fatura sunabilir. CSP'lerin abonelikleri aktarması hakkında daha fazla bilgi için bkz. [MPA hesabınız için Azure aboneliklerinin fatura sahipliğini alma](mpa-request-ownership.md).
 

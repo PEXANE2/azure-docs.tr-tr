@@ -3,18 +3,18 @@ title: İş ortakları için Azure Maliyet Yönetimi’ni kullanmaya başlama
 description: Bu makalede iş ortaklarının Azure Maliyet Yönetimi özelliklerini nasıl kullanacağı ve müşterileri için Maliyet Yönetimi'ni nasıl etkinleştirebilecekleri anlatılmaktadır.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/04/2020
+ms.date: 11/16/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 0076c70f64ec5cea8b92cb2b9ed27de05406316d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: d2b90db18a31fff4190be4f84625ad52fcaae578
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91827581"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657321"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>İş ortakları için Azure Maliyet Yönetimi’ni kullanmaya başlama
 
@@ -126,7 +126,7 @@ Sağlayıcının genel yöneticileri ve yönetici temsilcileri, aboneliğe ve ka
 
 İlkeyi görüntülemek ve güncelleştirmek için **yönetici temsilcisi** grubunun üyesi olmalısınız. Müşterilerin Azure kullanım ücretlerini görüntülemelerine olanak tanıyan ilkeyi etkinleştirmek için aşağıdaki bilgileri kullanın.
 
-Azure portalında iş ortağı kiracısında oturum açıp **Maliyet Yönetimi + Faturalandırma**'yı seçin. Faturalama Kapsamı alanında uygun faturalama kapsamını seçin ve sonra **Müşteriler**'i seçin. Müşteri listesi, ödeme hesabıyla ilişkilendirilir.
+Azure portalda *iş ortağı kiracısında* oturum açın ve **Maliyet Yönetimi + Faturalama**'yı seçin. Faturalama Kapsamı alanında uygun faturalama kapsamını seçin ve sonra **Müşteriler**'i seçin. Müşteri listesi, ödeme hesabıyla ilişkilendirilir. *Yanlışlıkla müşterinin kiracısında oturum açarsanız **Müşteriler** listesini görmezsiniz.*
 
 Müşteri listesinde maliyetleri görüntülemesine izin vermek istediğiniz müşteriyi seçin.
 
@@ -188,7 +188,7 @@ Aşağıdaki veri alanları, kullanım ayrıntıları dosyalarında ve Maliyet Y
 | costCenter | Abonelikle ilişkili maliyet merkezi. | Yok |
 | billingPeriodStartDate | Faturada gösterilen fatura dönemi başlangıç tarihi. | Yok |
 | billingPeriodEndDate | Faturada gösterilen fatura dönemi bitiş tarihi. | Yok |
-| servicePeriodStartDate | Hizmet kullanımından ücret tahsilatı yapıldığı ücretlendirme döneminin başlangıç tarihi. Azure hizmetlerine ait fiyatlar, ücretlendirme dönemine göre belirlenir. | İş Ortağı Merkezi'nde ChargeStartDate. Bir önceki faturalama döneminde tahsil edilmemiş görünmeyen kullanım verilerinin tarihlerinin belirtildiği durumlar dışında faturalama dönemi başlangıç tarihi. Saat her zaman günün başlangıcıdır (00:00). |
+| servicePeriodStartDate | Hizmet kullanımından ücret tahsilatı yapıldığı ücretlendirme döneminin başlangıç tarihi. Azure hizmetlerine ait fiyatlar, ücretlendirme dönemine göre belirlenir. | İş Ortağı Merkezi'nde ChargeStartDate.  Bir önceki faturalama döneminde tahsil edilmemiş görünmeyen kullanım verilerinin tarihlerinin belirtildiği durumlar dışında faturalama dönemi başlangıç tarihi. Saat her zaman günün başlangıcıdır (00:00). |
 | servicePeriodEndDate | Hizmet kullanımından ücret tahsilatı yapıldığı dönemin bitiş tarihi. Azure hizmetlerine ait fiyatlar, ücretlendirme dönemine göre belirlenir. | Yok |
 | date | Azure tüketim verileri için kullanımın ücretlendirildiği tarihi gösterir. Ayrılmış örnek için satın alma tarihini gösterir. Market ve destek gibi yinelenen ve tek seferlik ücretler için satın alma tarihini gösterir. | Yok |
 | productID | Tüketim veya satın alma sonucunda ücret tahakkuk etmiş olan ürünün tanımlayıcısı. Bu, İş Ortağı Merkezi'nde gösterilen productID ve SKuID değerlerinin kısaltmasıdır. | Ürünün kimliği. |

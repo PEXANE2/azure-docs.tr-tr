@@ -7,12 +7,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 006c995217ced91690798ae68f04e3b6c3148228
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 27594ff4d7673038e9de38c5969a615be60aeadf
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131964"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844702"
 ---
 # <a name="create-an-additional-azure-subscription"></a>Ek Azure aboneliği oluşturma
 
@@ -73,7 +73,11 @@ Abonelik oluşturmak için aşağıdaki izinlere sahip olmanız gerekir:
 
 ## <a name="create-an-additional-azure-subscription-programmatically"></a>Program aracılığıyla ek Azure aboneliği oluşturma
 
-Ayrıca program aracılığıyla ek abonelikler de oluşturabilirsiniz. Daha fazla bilgi için bkz. [Program aracılığıyla Azure abonelikleri oluşturma](programmatically-create-subscription.md).
+Ayrıca program aracılığıyla ek abonelikler de oluşturabilirsiniz. Daha fazla bilgi için bkz:
+
+- [En son API ile program aracılığıyla EA abonelikleri oluşturma](programmatically-create-subscription-enterprise-agreement.md)
+- [En son API ile program aracılığıyla MCA abonelikleri oluşturma](programmatically-create-subscription-microsoft-customer-agreement.md)
+- [En son API ile program aracılığıyla MPA abonelikleri oluşturma](Programmatically-create-subscription-microsoft-customer-agreement.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

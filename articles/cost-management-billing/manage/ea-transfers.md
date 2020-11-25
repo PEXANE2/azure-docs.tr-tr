@@ -6,15 +6,15 @@ ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 10/05/2020
+ms.date: 11/11/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: 3222c934998febe79c36121ca816f949b78d374e
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: dc725839d018c281dc784f5f83b256e62d70884d
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411567"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94635424"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure Kurumsal aktarımlar
 
@@ -96,11 +96,11 @@ Hesap veya kayıt aktarımı esnasında kesinti süresi yoktur. Gerekli tüm bil
 
 ## <a name="transfer-an-enterprise-subscription-to-a-pay-as-you-go-subscription"></a>Kurumsal aboneliği Kullandıkça Öde aboneliğine aktarma
 
-Bir Kurumsal aboneliği Kullandıkça Öde fiyatlarına sahip bir aboneliğe aktarmak için Azure Enterprise Portal'da yeni bir destek isteği oluşturmanız gerekir. Destek isteği oluşturmak için **Yardım ve Destek** alanındaki **+ Yeni destek isteği** 'ni seçin.
+Bir Kurumsal aboneliği Kullandıkça Öde fiyatlarına sahip bir aboneliğe aktarmak için Azure Enterprise Portal'da yeni bir destek isteği oluşturmanız gerekir. Destek isteği oluşturmak için **Yardım ve Destek** alanındaki **+ Yeni destek isteği**'ni seçin.
 
-## <a name="change-account-owner"></a>Hesap sahibini değiştirme
+## <a name="change-azure-subscription-or-account-ownership"></a>Azure aboneliğini veya hesap sahipliğini değiştirme
 
-Azure EA portalı, abonelikleri bir hesap sahibinden diğerine aktarabilir. Daha fazla bilgi için bkz. [Hesap sahibini değiştirme](ea-portal-administration.md#change-account-owner).
+Azure EA portalı, abonelikleri bir hesap sahibinden diğerine aktarabilir. Daha fazla bilgi için bkz. [Azure aboneliğini veya hesap sahipliğini değiştirme](ea-portal-administration.md#change-azure-subscription-or-account-ownership).
 
 ## <a name="subscription-transfer-effects"></a>Abonelik aktarımının etkileri
 
@@ -108,9 +108,9 @@ Bir Azure aboneliği aynı Azure Active Directory kiracısındaki bir hesaba akt
 
 Aboneliğe RBAC erişimi olan kullanıcıları görüntülemek için:
 
-1. Azure portalında **Abonelikler** ’i açın.
+1. Azure portalında **Abonelikler**’i açın.
 2. Görüntülemek istediğiniz aboneliği seçin ve ardından **Erişim denetimi (IAM)** seçeneğini belirleyin.
-3. **Rol atamaları** ’nı seçin. Rol atamaları sayfasında, aboneliğe RBAC erişimi olan tüm kullanıcılar listelenir.
+3. **Rol atamaları**’nı seçin. Rol atamaları sayfasında, aboneliğe RBAC erişimi olan tüm kullanıcılar listelenir.
 
 Abonelik farklı bir Azure AD kiracısındaki bir hesaba aktarılırsa, abonelikteki kaynakları yönetmek için [RBAC](../../role-based-access-control/overview.md) iznine sahip olan tüm kullanıcılar, gruplar ve hizmet sorumluları _erişimi_ kaybeder. RBAC erişimi mevcut olmasa da aboneliğe aşağıdaki güvenlik mekanizmaları aracılığıyla erişilebilir:
 
@@ -121,9 +121,9 @@ Abonelik farklı bir Azure AD kiracısındaki bir hesaba aktarılırsa, abonelik
 Alıcının Azure kaynaklarına erişimi kısıtlaması gerekiyorsa, hizmetle ilişkili tüm gizli dizileri güncelleştirmeyi düşünmelidir. Çoğu kaynak aşağıdaki adımlar kullanılarak güncelleştirilebilir:
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
-2. Merkez menüsünde **Tüm kaynaklar** 'ı seçin.
+2. Merkez menüsünde **Tüm kaynaklar**'ı seçin.
 3. Kaynağı seçin.
-4. Kaynak sayfasında, mevcut gizli dizileri görüntülemek ve güncelleştirmek için **Ayarlar** ’ı seçin.
+4. Kaynak sayfasında, mevcut gizli dizileri görüntülemek ve güncelleştirmek için **Ayarlar**’ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

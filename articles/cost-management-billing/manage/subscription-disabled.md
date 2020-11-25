@@ -8,14 +8,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 11/17/2020
 ms.author: banders
-ms.openlocfilehash: 550be6c10402398b62af307281660b93981a0df3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cad3082981bcfc699bc230badf44e2ffc2e1bed3
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91308971"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94744434"
 ---
 # <a name="reactivate-a-disabled-azure-subscription"></a>Devre dışı bırakılmış bir Azure aboneliğini yeniden etkinleştirme
 
@@ -54,6 +54,10 @@ Hesap Yöneticisiyseniz ve kullandıkça öde fiyatlarına tabi bir bireysel abo
     ![Sağ bölmedeki yeniden etkinleştir bağlantılarını gösteren ekran görüntüsü](./media/subscription-disabled/reactivate-sub.png)
 
 Diğer abonelik türleri için [destek ekibiyle iletişime geçerek](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) aboneliğinizin yeniden etkinleştirilmesini sağlayın.
+
+## <a name="after-reactivation"></a>Yeniden etkinleştirme sonrasında
+
+Aboneliğiniz yeniden etkinleştirildikten sonra kaynakların oluşturulmasında ve yönetilmesinde gecikme olabilir. Gecikme 30 dakikayı aşarsa yardım için lütfen [Azure Faturalama Desteği](https://go.microsoft.com/fwlink/?linkid=2083458)’ne başvurun. Azure kaynaklarının çoğu otomatik olarak serbest bırakılır ve hiçbir eylem gerektirmez. Bununla birlikte Azure hizmet kaynaklarınızı denetlemenizi ve otomatik olarak serbest bırakılmamış olanları yeniden başlatmanızı öneririz.
 
 ## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 

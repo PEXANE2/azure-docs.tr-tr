@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 07/21/2020
+ms.date: 11/03/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 638ab84658c36536966ef990570684a047521ee6
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 0aace1041eba771a26bed4c85361ea2551c71ba6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88257441"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659429"
 ---
 ::: zone target="docs"
 
@@ -66,18 +66,18 @@ Cihazı ABD veya Kanada’da iade ediyorsanız aşağıdaki adımları uygulayı
     - İzleme numarası bildirilmezse, teslim alma esnasında UPS’ye ek ücret ödemeniz gerekir.
     - Teslim alma zamanlama yerine Data Box Disk’inizi en yakın teslim etme yerine bırakabilirsiniz.
 
-### <a name="europe"></a>[Avrupa](#tab/in-europe)
 
-Cihazı Avrupa’da iade ediyorsanız aşağıdaki adımları uygulayın.
+### <a name="europe-or-uk"></a>[Avrupa veya Birleşik Krallık](#tab/in-europe-or-uk)
+
+Cihazı Avrupa’da veya Birleşik Krallık’ta iade ediyorsanız aşağıdaki adımları uygulayın.
 
 1. Kutuya yapıştırılmış şeffaf plastik kılıftaki iade gönderim etiketini kullanın. Etiket zarar gördüyse veya kayıpsa:
     - **Genel Bakış > Sevkiyat Etiketini İndir**’e gidip bir iade sevkiyat etiketi indirin.
     - Etiketi cihaza iliştirin.
 
-2. Sevkiyat kutusunu mühürleyin ve iade sevkiyat etiketinin görünür olduğundan emin olun.
-3. Cihazı Avrupa'da DHL ile iade ediyorsanız, DHL'in web sitesini ziyaret edip bir havayolu fatura numarası belirterek toplama isteğinde bulunun.
-4. Ülkenin/bölgenin DHL Ekspres web sitesine gidin ve **Kurye Çağırma Rezervasyonu > eİade Sevkiyatı**'nı seçin.
-5. Konşimento numarasını belirtin ve toplama ayarlaması yapmak için **Toplama Zamanlama**'ya tıklayın.
+2. Gönderim kutusunu mühürleyin ve iade gönderim etiketinin görünür olduğundan emin olun.
+3. Ülkenin/bölgenin DHL Express web sitesine gidin ve **Schedule a Pickup** (Teslim Alma Zamanla) öğesini seçin. **Do you need a shipping label** (Gönderim etiketi gerekiyor mu?) alanında **No** > **I have a DHL Waybill Number** (Hayır, DHL Konşimento Numaram var) öğesini seçin.
+4. Konşimento numarasını belirtin ve teslim alma ayarlaması yapmak için **Schedule Pickup** (Teslim Alma Zamanla) öğesine tıklayın.
 
 ### <a name="australia"></a>[Avustralya](#tab/in-australia)
 

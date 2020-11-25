@@ -7,15 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/26/2020
+ms.date: 11/16/2020
 ms.author: banders
 ms.custom: contentperfq2
-ms.openlocfilehash: df95305d1b014579ca6294a9015ac7879d8ce0b3
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 9311a22575c328e0412398f6b63af84c35ac3c32
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670435"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94652918"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Azure abonelikleriniz için fatura ile ödeme
 
@@ -32,17 +32,17 @@ Faturayla ödemeye geçmeniz, faturanızı fatura tarihini izleyen 30 gün için
 
     ![Yardım ve destek için arama yapın, Microsoft Azure portalı](./media/pay-by-invoice/search-for-help-and-support.png)
 
-2. **Yeni destek isteği** ’ni seçin.
+2. **Yeni destek isteği**’ni seçin.
 
     ![Yeni destek isteği bağlantısı, Yardım ve destek ekranı, Microsoft Azure portalı](./media/pay-by-invoice/help-and-support.png)
 
-2. **Sorun türü** olarak **Faturalama** ’yı seçin. *Sorun türü* , destek isteği kategorisidir. Sırayla, fatura ile ödeme yapmak istediğiniz aboneliği, bir destek planını ve **İleri** ’yi seçin.
+2. **Sorun türü** olarak **Faturalama**’yı seçin. *Sorun türü*, destek isteği kategorisidir. Sırayla, fatura ile ödeme yapmak istediğiniz aboneliği, bir destek planını ve **İleri**’yi seçin.
 
-3. **Sorun Türü** olarak **Ödeme** ’yi seçin. *Sorun türü* , destek isteği alt kategorisidir.
+3. **Sorun Türü** olarak **Ödeme**’yi seçin. *Sorun türü*, destek isteği alt kategorisidir.
 
-4. **Sorun alt türü** olarak **Fatura ile Ödemeye Geçiş Yapma** ’yı seçin.
+4. **Sorun alt türü** olarak **Fatura ile Ödemeye Geçiş Yapma**’yı seçin.
 
-5. **Ayrıntılar** kutusuna aşağıdaki bilgileri girin ve sonra **İleri** ‘yi seçin.
+5. **Ayrıntılar** kutusuna aşağıdaki bilgileri girin ve sonra **İleri**‘yi seçin.
 
      Yeni veya mevcut müşteri:<br>
      Varsa geçerli ödeme yöntemi:<br>
@@ -67,12 +67,12 @@ Faturayla ödemeye geçmeniz, faturanızı fatura tarihini izleyen 30 gün için
      (Yeni kota) İstenen çekirdek sayısı:<br>
      Belirli bölge ve Abonelik serisi:<br>
 
-    - **Şirket adı** ve **Şirket adresi** , Azure hesabı için sağladığınız bilgilerle aynı olmalıdır. Bilgileri görüntülemek veya güncelleştirmek için bkz. [Azure hesap profili bilgilerinizi değiştirme](change-azure-account-profile.md).
+    - **Şirket adı** ve **Şirket adresi**, Azure hesabı için sağladığınız bilgilerle aynı olmalıdır. Bilgileri görüntülemek veya güncelleştirmek için bkz. [Azure hesap profili bilgilerinizi değiştirme](change-azure-account-profile.md).
     - Kredi limitinin onaylanabilmesi için önce Azure portalında faturalama iletişim bilgilerinizi ekleyin. İletişim ayrıntıları, şirketin Borç Hesapları veya Finans bölümü ile ilişkili olmalıdır.
 
 6. İletişim bilgilerinizi ve tercih edilen iletişim yöntemini seçip **Oluştur** seçeneğini belirleyin.
 
-İhtiyaç duyduğunuz kredi tutarı nedeniyle bir kredi denetimi çalıştırmamız gerekirse size bir kredi denetimi uygulaması göndeririz.
+İhtiyaç duyduğunuz kredi tutarı nedeniyle bir kredi denetimi çalıştırmamız gerekirse size bir kredi denetimi uygulaması göndeririz. Sizden şirketinizin denetimden geçmiş finansal tablolarını sağlamanızı isteyebiliriz. Finansal bilgi sağlanmazsa veya sağlanan bilgiler gereken kredi limitini destekleyecek kadar güçlü değilse kredi denetimi isteğinizi onaylamak için teminat depozitosu veya teminat akreditifi sağlamanızı isteyebiliriz.
 
 ## <a name="switch-to-invoice-pay-checkwire-transfer"></a>Fatura ödemesine (çek/havale) geçiş yapma
 
@@ -82,14 +82,14 @@ Microsoft Online Services Program hesabınız varsa, Azure aboneliğinizi çek/h
 
 ### <a name="switch-azure-subscription-to-checkwire-transfer"></a>Azure aboneliğini çek/havale yoluyla ödemeye geçirme
 
-Azure aboneliğinizi fatura ödemesine (çek/havale) geçirmek için aşağıdaki adımları izleyin. *Fatura ödemesine (çek/havale) geçiş yaptıktan sonra kredi kartına geri dönemezsiniz* .
+Azure aboneliğinizi fatura ödemesine (çek/havale) geçirmek için aşağıdaki adımları izleyin. *Fatura ödemesine (çek/havale) geçiş yaptıktan sonra kredi kartına geri dönemezsiniz*.
 
-1. Hesap Yöneticisi olarak oturum açmak için Azure portalına gidin. **Maliyet Yönetimi + Faturalama** ’yı arayıp bunu seçin.
+1. Hesap Yöneticisi olarak oturum açmak için Azure portalına gidin. **Maliyet Yönetimi + Faturalama**’yı arayıp bunu seçin.
 
     ![Ekran görüntüsü Azure portalda Maliyet Yönetimi ve Faturalama aramasını gösterir.](./media/pay-by-invoice/search.png)
 
 1. Faturalı ödemeye geçirmek istediğiniz aboneliği seçin.
-1. **Ödeme yöntemleri** 'ni seçin.
+1. **Ödeme yöntemleri**'ni seçin.
 1. Komut çubuğunda **Fatura ile ödeme** düğmesini seçin.
 
     ![Fatura ile ödeme düğmesi, Ödeme yöntemleri, Microsoft Azure portalı](./media/pay-by-invoice/pay-by-invoice.png)
@@ -98,7 +98,7 @@ Azure aboneliğinizi fatura ödemesine (çek/havale) geçirmek için aşağıdak
 
 Faturalama profilini çek/havale yoluyla ödemeye geçirmek için aşağıdaki adımları izleyin. Yalnızca Azure’a kaydolan kişi bir faturalama profilinin varsayılan ödeme yöntemini değiştirebilir.
 
-1. Ödeme bilgilerinizi görüntülemek için Azure portalı görünümüne gidin. **Maliyet Yönetimi + Faturalama** ’yı arayıp bunu seçin.
+1. Ödeme bilgilerinizi görüntülemek için Azure portalı görünümüne gidin. **Maliyet Yönetimi + Faturalama**’yı arayıp bunu seçin.
 1. Menüden **Faturalama profilleri** seçeneğini belirleyin.
 
     ![Faturalama profilleri menü öğesi, Maliyet Yönetimi ve Faturalama, Microsoft Azure portalı](./media/pay-by-invoice/billing-profile.png)
