@@ -11,11 +11,11 @@ ms.date: 10/26/2020
 ms.author: banders
 ms.custom: contentperfq2
 ms.openlocfilehash: c4a9a981017becd0d9343d9c287a4fe9341d7c43
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678137"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006158"
 ---
 # <a name="tutorial-review-your-individual-azure-subscription-bill"></a>Öğretici: Bireysel Azure aboneliği faturanızı inceleme
 
@@ -49,19 +49,19 @@ Azure'a abone olmanızın üzerinden en az 30 gün geçmiş olmalıdır. Azure s
 
 Kullanım verilerini ve maliyetleri karşılaştırmanın ilk adımı, faturanızı ve kullanım dosyalarınızı indirmektir. Ayrıntılı kullanım CSV dosyası faturalama dönemine ve günlük kullanıma göre ücretlerinizi gösterir. Vergi konusunda bilgi içermez. Dosyaları indirmek için hesap yöneticisi olmanız veya Sahip rolüne sahip olmanız gerekir.
 
-Azure portalında arama kutusuna *abonelikler* yazın ve **Abonelikler** 'e tıklayın.
+Azure portalında arama kutusuna *abonelikler* yazın ve **Abonelikler**'e tıklayın.
 
 [![Aboneliklere gitme](./media/review-individual-bill/navigate-subscriptions.png)](./media/review-individual-bill/navigate-subscriptions.png#lightbox)
 
 Abonelikler listesinde aboneliğe tıklayın.
 
-**Faturalama** 'nın altında **Faturalar** 'a tıklayın.
+**Faturalama**'nın altında **Faturalar**'a tıklayın.
 
 Faturalar listesinde indirmek istediğiniz faturayı bulun ve indir simgesine tıklayın. Eski faturaları görüntülemek için zaman aralığı değerini değiştirmeniz gerekebilir. Kullanım ayrıntıları dosyasının ve faturanın oluşturulması birkaç dakika sürebilir.
 
 ![Faturalama dönemini, indirme seçeneğini ve her faturalama dönemi için toplam ücretleri gösteren ekran görüntüsü](./media/review-individual-bill/download-invoice.png)
 
-Kullanımı + Ücretleri İndir penceresinde **CSV dosyasını indir** 'e ve **Faturayı indir** 'e tıklayın.
+Kullanımı + Ücretleri İndir penceresinde **CSV dosyasını indir**'e ve **Faturayı indir**'e tıklayın.
 
 ![Faturayı indir'i ve kullanım sayfasını gösteren ekran görüntüsü](./media/review-individual-bill/usageandinvoice.png)
 
@@ -110,7 +110,7 @@ CSV kullanım bilgileri dosyanıza *MeterName* filtresi uygulayarak faturanızda
 
 ## <a name="compare-billed-charges-and-usage-in-cost-analysis"></a>Faturaya yansıtılan ücretleri ve maliyet analizindeki kullanımı karşılaştırma
 
-Azure portalındaki maliyet analizi de ücretlerinizi doğrulamanıza yardımcı olabilir. Faturaya yansıtılan kullanım ve ücretlerle ilgili genel bakış için Azure portalındaki Abonelikler sayfasından aboneliğinizi seçin. Ardından **Maliyet analizi** 'ne ve daha sonra görünüm listesinde **Fatura ayrıntıları** 'na tıklayın.
+Azure portalındaki maliyet analizi de ücretlerinizi doğrulamanıza yardımcı olabilir. Faturaya yansıtılan kullanım ve ücretlerle ilgili genel bakış için Azure portalındaki Abonelikler sayfasından aboneliğinizi seçin. Ardından **Maliyet analizi**'ne ve daha sonra görünüm listesinde **Fatura ayrıntıları**'na tıklayın.
 
 ![Fatura ayrıntıları seçimini gösteren örnek](./media/review-individual-bill/cost-analysis-select-invoice-details.png)
 
