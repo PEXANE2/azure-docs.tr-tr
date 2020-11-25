@@ -125,12 +125,12 @@
       items:
         - name: Azure Kapsayıcısı teklifi planlama
           href: marketplace-containers.md
+        - name: Teknik varlıkları hazırlama
+          href: create-azure-container-technical-assets.md
         - name: Azure Kapsayıcısı teklifi oluşturma ve yayımlama
           items:
-            - name: Teknik varlıkları hazırlama
-              href: partner-center-portal/create-azure-container-technical-assets.md
             - name: Azure Kapsayıcısı teklifi oluşturma
-              href: partner-center-portal/create-azure-container-offer.md
+              href: create-azure-container-offer.md
     - name: Azure sanal makine teklifleri
       items:
         - name: VM teklifi planlama

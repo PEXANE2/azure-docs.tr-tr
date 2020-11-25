@@ -24,9 +24,6 @@
     - name: Azure Market’teki Yönetilen Hizmet teklifleri
       displayName: 'azure marketplace, marketplace, managed service, private, plan'
       href: ./concepts/managed-services-offers.md
-    - name: Önerilen güvenlik uygulamaları
-      displayName: 'mfa, authentication, secure, group'
-      href: ./concepts/recommended-security-practices.md
     - name: Bulut Çözüm Sağlayıcısı programı hakkında önemli noktalar
       displayName: 'csp, aobo, partner'
       href: ./concepts/cloud-solution-provider.md
@@ -38,6 +35,9 @@
       href: ./concepts/managed-applications.md
     - name: Güvenlik
       items:
+        - name: Önerilen güvenlik uygulamaları
+          displayName: 'mfa, authentication, secure, group'
+          href: ./concepts/recommended-security-practices.md
         - name: Güvenlik temeli
           href: security-baseline.md
 - name: Nasıl yapılır kılavuzları
@@ -88,7 +88,7 @@
           href: ./how-to/view-service-provider-activity.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/managedservices
     - name: Azure PowerShell
       href: /powershell/module/az.managedservices#managed_services

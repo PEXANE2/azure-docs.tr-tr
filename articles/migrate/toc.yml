@@ -208,6 +208,10 @@
       items:
         - name: Aracısız VMware geçişindeki çoğaltma sorunlarını giderme
           href: troubleshoot-changed-block-tracking-replication.md
+- name: Başvuru
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/az.migrate/
 - name: Kaynaklar
   items:
     - name: Bulut Benimseme Çerçevesi kapsamında geçiş

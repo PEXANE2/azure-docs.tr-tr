@@ -278,8 +278,6 @@
       items:
         - name: Genel sorular
           href: faq-general.md
-        - name: Faturalama soruları
-          href: faq-billing.md
         - name: İzinlerle ilgili sorular
           href: faq-permissions.md
         - name: Veri toplama ve aracı ile ilgili sorular

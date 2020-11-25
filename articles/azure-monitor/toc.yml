@@ -251,6 +251,8 @@
               href: /azure/data-explorer/kusto/query/samples?&pivots=azuremonitor
             - name: Standart sütunlar
               href: platform/log-standard-columns.md
+            - name: Sorguları denetleme
+              href: log-query/query-audit.md
             - name: Sorguları iyileştirme
               href: log-query/query-optimization.md
             - name: İşlevler

@@ -35,6 +35,8 @@
           href: claim-sets.md
     - name: İş akışı
       href: workflow.md
+    - name: Denetim günlüklerini görüntüleme
+      href: audit-logs.md
 - name: Başvurular
   items:
     - name: SSS
