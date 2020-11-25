@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 11/10/2020
 ms.author: normesta
-ms.openlocfilehash: 3ddcbe57112251a428e11d6c164cdb1224553f98
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 65d1ef76ffae113a4b526eec75301abbfea751e7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959212"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017721"
 ---
 # <a name="access-control-model-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. 'de erişim denetimi modeli
 
@@ -33,17 +33,17 @@ Bu makale, Azure RBAC ve ACL 'Lere odaklanılır ve depolama hesabı kaynakları
 
 ## <a name="role-based-access-control-azure-rbac"></a>Rol tabanlı erişim denetimi (Azure RBAC)
 
-Azure RBAC, [güvenlik sorumlularına](https://docs.microsoft.com/azure/role-based-access-control/overview#security-principal)izin kümelerini uygulamak için rol atamaları kullanır. Güvenlik sorumlusu, Azure Active Directory (AD) ' de tanımlanan bir Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimliği temsil eden bir nesnedir. Bir izin kümesi, bir depolama hesabındaki **Tüm** verilere veya bir kapsayıcıdaki **Tüm** verilere okuma veya yazma erişimi gibi bir güvenlik sorumlusuna "kaba bir" erişim düzeyi verebilir. 
+Azure RBAC, [güvenlik sorumlularına](../../role-based-access-control/overview.md#security-principal)izin kümelerini uygulamak için rol atamaları kullanır. Güvenlik sorumlusu, Azure Active Directory (AD) ' de tanımlanan bir Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimliği temsil eden bir nesnedir. Bir izin kümesi, bir depolama hesabındaki **Tüm** verilere veya bir kapsayıcıdaki **Tüm** verilere okuma veya yazma erişimi gibi bir güvenlik sorumlusuna "kaba bir" erişim düzeyi verebilir. 
 
 Aşağıdaki roller, bir güvenlik sorumlusunun bir depolama hesabındaki verilere erişmesine izin verir. 
 
 |Rol|Açıklama|
 |--|--|
-| [Depolama Blob Verileri Sahibi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) | BLOB depolama kapsayıcıları ve verilerine tam erişim. Bu erişim, güvenlik sorumlusunun sahibi bir öğe ayarlamaya ve tüm öğelerin ACL 'Lerini değiştirmesine izin verir. |
-| [Depolama Blob Verileri Katkıda Bulunanı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) | BLOB depolama kapsayıcıları ve Blobları için okuma, yazma ve silme erişimi. Bu erişim, güvenlik sorumlusunun bir öğenin sahipliğini ayarlamaya izin vermez, ancak güvenlik sorumlusu tarafından sahip olunan öğelerin ACL 'sini değiştirebilir. |
-| [Depolama Blob Verileri Okuyucusu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) | BLOB depolama kapsayıcıları ve bloblarını okuyun ve listeleyin. |
+| [Depolama Blob Verileri Sahibi](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) | BLOB depolama kapsayıcıları ve verilerine tam erişim. Bu erişim, güvenlik sorumlusunun sahibi bir öğe ayarlamaya ve tüm öğelerin ACL 'Lerini değiştirmesine izin verir. |
+| [Depolama Blob Verileri Katkıda Bulunanı](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) | BLOB depolama kapsayıcıları ve Blobları için okuma, yazma ve silme erişimi. Bu erişim, güvenlik sorumlusunun bir öğenin sahipliğini ayarlamaya izin vermez, ancak güvenlik sorumlusu tarafından sahip olunan öğelerin ACL 'sini değiştirebilir. |
+| [Depolama Blob Verileri Okuyucusu](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader) | BLOB depolama kapsayıcıları ve bloblarını okuyun ve listeleyin. |
 
-[Sahip](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner), [katkıda bulunan](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor), [okuyucu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)ve [depolama hesabı katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) gibi roller, bir güvenlik sorumlusunun bir depolama hesabını yönetmesine izin verir, ancak bu hesap içindeki verilere erişim sağlamaz. Ancak, bu roller ( **okuyucu** hariç), verilere erişmek için çeşitli istemci araçlarında kullanılabilecek depolama anahtarlarına erişim elde edebilir.
+[Sahip](../../role-based-access-control/built-in-roles.md#owner), [katkıda bulunan](../../role-based-access-control/built-in-roles.md#contributor), [okuyucu](../../role-based-access-control/built-in-roles.md#reader)ve [depolama hesabı katılımcısı](../../role-based-access-control/built-in-roles.md#storage-account-contributor) gibi roller, bir güvenlik sorumlusunun bir depolama hesabını yönetmesine izin verir, ancak bu hesap içindeki verilere erişim sağlamaz. Ancak, bu roller ( **okuyucu** hariç), verilere erişmek için çeşitli istemci araçlarında kullanılabilecek depolama anahtarlarına erişim elde edebilir.
 
 ## <a name="access-control-lists-acls"></a>Erişim denetim listeleri (ACL’ler)
 
@@ -73,7 +73,7 @@ Aşağıdaki diyagramda, üç yaygın işlem için izin akışı gösterilmekted
 
 Aşağıdaki tabloda, bir güvenlik sorumlusunun **işlem** sütununda listelenen işlemleri gerçekleştirebilmesi için Azure ROLLERINI ve ACL girdilerini nasıl birleştirebileceğiniz gösterilmektedir. Bu tablo, kurgusal bir dizin hiyerarşisinin her düzeyini temsil eden bir sütun gösterir. Kapsayıcının kök dizini () için bir sütun `/` , **Oregon** adlı bir alt dizin, **İstanbul** adlı MARI dizininin bir alt dizini ve **Data.txt** adlı Portland dizinindeki bir metin dosyası. Bu sütunlarda görünen, izin vermek için gereken ACL girişinin [kısa biçimli](data-lake-storage-access-control.md#short-forms-for-permissions) temsilleridir. İşlemi gerçekleştirmek **için BIR ACL** girişi gerekmiyorsa yok (_uygulanamaz_) sütununda görüntülenir.
 
-|    İşlem             | Atanmış RBAC rolü               |    /        | 'Daki     | Portland | Data.txt |             
+|    İşlem             | Atanan Azure rolü               |    /        | 'Daki     | Portland | Data.txt |             
 |--------------------------|----------------------------------|-------------|-------------|-----------|----------|
 | Data.txt oku            |   Depolama Blob Verileri Sahibi        | Yok      | Yok      | Yok       | Yok    |  
 |                          |   Depolama Blob Verileri Katkıda Bulunanı  | Yok      | Yok      | Yok       | Yok    |
@@ -106,7 +106,7 @@ Aşağıdaki tabloda, bir güvenlik sorumlusunun **işlem** sütununda listelene
 
 
 > [!NOTE] 
-> Azure Depolama Gezgini bir kapsayıcının içeriğini görüntülemek için güvenlik sorumlularının [Azure ad kullanarak Depolama Gezgini oturum açması](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows#add-a-resource-via-azure-ad)gerekir ve (en azından) bir kapsayıcının kök klasörüne () okuma erişimi (R--) vardır `\` . Bu izin düzeyi, kök klasörün içeriğini listeleme özelliği sunar. Kök klasörün içeriğinin görünür olmasını istemiyorsanız, bunları [okuyucu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) rolüne atayabilirsiniz. Bu rolle, bu rol, bir hesaptaki kapsayıcıları listeleyebilir, ancak kapsayıcı içerikleriyle kalmaz. Daha sonra ACL 'Leri kullanarak belirli dizinlere ve dosyalara erişim izni verebilirsiniz.   
+> Azure Depolama Gezgini bir kapsayıcının içeriğini görüntülemek için güvenlik sorumlularının [Azure ad kullanarak Depolama Gezgini oturum açması](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#add-a-resource-via-azure-ad)gerekir ve (en azından) bir kapsayıcının kök klasörüne () okuma erişimi (R--) vardır `\` . Bu izin düzeyi, kök klasörün içeriğini listeleme özelliği sunar. Kök klasörün içeriğinin görünür olmasını istemiyorsanız, bunları [okuyucu](../../role-based-access-control/built-in-roles.md#reader) rolüne atayabilirsiniz. Bu rolle, bu rol, bir hesaptaki kapsayıcıları listeleyebilir, ancak kapsayıcı içerikleriyle kalmaz. Daha sonra ACL 'Leri kullanarak belirli dizinlere ve dosyalara erişim izni verebilirsiniz.   
 
 ## <a name="security-groups"></a>Güvenlik grupları
 
@@ -120,7 +120,7 @@ Grupları kullanarak, abonelik başına maksimum rol ataması sayısını ve dos
 
 ## <a name="shared-key-and-shared-access-signature-sas-authorization"></a>Paylaşılan anahtar ve paylaşılan erişim Imzası (SAS) yetkilendirmesi
 
-Azure Data Lake Storage 2. Ayrıca, kimlik doğrulaması için [paylaşılan anahtar](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key) ve [SAS](https://docs.microsoft.com/azure/storage/common/storage-sas-overview?toc=/azure/storage/blobs/toc.json) yöntemlerini destekler. Bu kimlik doğrulama yöntemlerinin bir özelliği, çağıran ile hiçbir kimliğin ilişkilendirilmediği ve bu nedenle güvenlik sorumlusu izin tabanlı yetkilendirmenin gerçekleştirilemesinden oluşur.
+Azure Data Lake Storage 2. Ayrıca, kimlik doğrulaması için [paylaşılan anahtar](/rest/api/storageservices/authorize-with-shared-key) ve [SAS](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) yöntemlerini destekler. Bu kimlik doğrulama yöntemlerinin bir özelliği, çağıran ile hiçbir kimliğin ilişkilendirilmediği ve bu nedenle güvenlik sorumlusu izin tabanlı yetkilendirmenin gerçekleştirilemesinden oluşur.
 
 Paylaşılan anahtar söz konusu olduğunda, çağıran, veriler dahil olmak üzere tüm kaynaklardaki tüm işlemlere tam erişim, sahibi ayarlama ve ACL 'Leri değiştirme gibi ' Süper Kullanıcı ' erişimini etkili bir şekilde alır.
 
@@ -129,4 +129,3 @@ SAS belirteçleri, belirtecin bir parçası olarak izin verilen izinleri içerir
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Erişim denetim listeleri hakkında daha fazla bilgi için  [Azure Data Lake Storage 2. Içindeki erişim denetim listeleri (ACL 'ler)](data-lake-storage-access-control.md)konusuna bakın.
-

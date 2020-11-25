@@ -13,11 +13,11 @@ ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 49a0e48977393aeab7ff93b79e28acc55a87b51a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87504628"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016191"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Linux VM 'de MongoDB 'yi yüklemek ve yapılandırmak
 
@@ -125,7 +125,7 @@ Bu ortamı oluşturmak için [az Login](/cli/azure/reference-index)kullanarak bi
 az group create --name myResourceGroup --location eastus
 ```
 
-Daha sonra, MongoDB şablonunu [az Group Deployment Create](/cli/azure/group/deployment)komutuyla dağıtın. İstendiğinde, *Newstorageaccountname*, *dnsnameforpublicıp*ve Yönetici Kullanıcı adı ve parolası için kendi benzersiz değerlerinizi girin:
+Daha sonra, MongoDB şablonunu [az Group Deployment Create](/cli/azure/group/deployment)komutuyla dağıtın. İstendiğinde, *Newstorageaccountname*, *dnsnameforpublicıp* ve Yönetici Kullanıcı adı ve parolası için kendi benzersiz değerlerinizi girin:
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
@@ -176,7 +176,7 @@ Bu ortamı oluşturmak için [az Login](/cli/azure/reference-index)kullanarak bi
 az group create --name myResourceGroup --location eastus
 ```
 
-Daha sonra, MongoDB şablonunu [az Group Deployment Create](/cli/azure/group/deployment)komutuyla dağıtın. *Mongoadminusername*, *sizeofdatadiskingb*ve *confignodevmsize*gibi gerektiğinde kendi kaynak adlarınızı ve boyutlarınızı tanımlayın:
+Daha sonra, MongoDB şablonunu [az Group Deployment Create](/cli/azure/group/deployment)komutuyla dağıtın. *Mongoadminusername*, *sizeofdatadiskingb* ve *confignodevmsize* gibi gerektiğinde kendi kaynak adlarınızı ve boyutlarınızı tanımlayın:
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \

@@ -16,11 +16,11 @@ ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
 ms.openlocfilehash: 67b635f09cb9407279e89b5f7b8526dab3c08946
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87068518"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017619"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Azure VM 'Leri için TCP/IP performans ayarı
 
@@ -60,7 +60,7 @@ Parçalanma negatif bir işlem olarak görülebilir, ancak internet üzerinden f
 
 Genel anlamda, MTU 'YU artırarak daha verimli bir ağ oluşturabilirsiniz. Aktarılan her paketin, özgün pakete eklenen üst bilgi bilgileri vardır. Parçalama daha fazla paket oluşturduğunda, daha fazla başlık yükü vardır ve bu da ağın daha az etkili olmasını sağlar.
 
-Aşağıda bir örnek verilmiştir. Ethernet üst bilgi boyutu, çerçeve tutarlılığı sağlamak için 14 bayt ve 4 baytlık bir çerçeve denetim sırasıdır. 1 2.000 baytlık paket gönderilirse, ağa 18 baytlık Ethernet ek yükü eklenir. Paket, 1.500 baytlık bir pakette ve 500 baytlık bir pakette parçalanmışsa, her pakette 18 baytlık Ethernet üstbilgisi ve toplam 36 bayt vardır.
+Bir örneği aşağıda verilmiştir. Ethernet üst bilgi boyutu, çerçeve tutarlılığı sağlamak için 14 bayt ve 4 baytlık bir çerçeve denetim sırasıdır. 1 2.000 baytlık paket gönderilirse, ağa 18 baytlık Ethernet ek yükü eklenir. Paket, 1.500 baytlık bir pakette ve 500 baytlık bir pakette parçalanmışsa, her pakette 18 baytlık Ethernet üstbilgisi ve toplam 36 bayt vardır.
 
 MTU değerinin artırılması daha verimli bir ağ oluşturmayacağınızı unutmayın. Bir uygulama yalnızca 500 baytlık paketler gönderirse, MTU 'nun 1.500 bayt veya 9.000 bayt olmasına bakılmaksızın aynı üstbilgi ek yükü mevcut olacaktır. Ağ, yalnızca MTU 'dan etkilenen daha büyük paket boyutları kullanıyorsa daha etkili olur.
 
@@ -111,7 +111,7 @@ Kaynak ve hedefin muzları 'nın, bu değeri belirleyecek tek etken olmadığın
 
 Bu anlaşılırsa, ancak kullanılabilecek gerçek bir, bu durum söz konusu olabilir. Bunun nedeni, kaynak ve hedef arasındaki yoldaki diğer ağ cihazlarının kaynak ve hedefe göre daha düşük bir MTU değeri olabilir. Bu durumda, MTU değeri paketten daha küçük olan cihaz paketi düşürülecektir. Cihaz, MTU değerini içeren bir ıCMP parçalanması (tür 3, kod 4) iletisini geri gönderir. Bu ıCMP iletisi kaynak konağın yol MTU 'sunu uygun şekilde azaltmasına olanak tanır. İşlem yol MTU Keşfi (PMTUD) olarak adlandırılır.
 
-PMTUD işlemi verimsiz bir işlemdir ve ağ performansını etkiler. Bir ağ yolunun MTU değerini aşan paketler gönderildiğinde, paketlerin daha düşük bir en düşük düzeyde yeniden gönderilmesi gerekir. Gönderen ıCMP parçalanma gerekli iletisini almazsa, yoldaki bir ağ güvenlik duvarı (genellikle *Pmtud kara*olarak adlandırılır) nedeniyle, gönderici, bu kaynağı bir veya sürekli olarak yeniden aktarım yapması gerektiğini bilmez. Azure VM MTU 'YU arttırmayı önermiyoruz.
+PMTUD işlemi verimsiz bir işlemdir ve ağ performansını etkiler. Bir ağ yolunun MTU değerini aşan paketler gönderildiğinde, paketlerin daha düşük bir en düşük düzeyde yeniden gönderilmesi gerekir. Gönderen ıCMP parçalanma gerekli iletisini almazsa, yoldaki bir ağ güvenlik duvarı (genellikle *Pmtud kara* olarak adlandırılır) nedeniyle, gönderici, bu kaynağı bir veya sürekli olarak yeniden aktarım yapması gerektiğini bilmez. Azure VM MTU 'YU arttırmayı önermiyoruz.
 
 #### <a name="vpn-and-mtu"></a>VPN ve MTU
 
@@ -287,7 +287,7 @@ Hızlandırılmış ağ, gecikme süresi, aktarım hızı ve CPU kullanımı dah
 
 Azure sanal makinelerinde en az bir ağ arabirimi eklenmiş olmalıdır. Birkaç tane olabilir. Bir sanal makineye ayrılan bant genişliği, makineye bağlı tüm ağ arabirimleri genelinde giden tüm trafiğin toplamıdır. Diğer bir deyişle, makineye kaç ağ arabirimi iliştirildiğine bakılmaksızın bant genişliği sanal makine bazında ayrılır.
 
-Beklenen giden aktarım hızı ve her VM boyutu tarafından desteklenen ağ arabirimlerinin sayısı, [Azure 'Daki Windows sanal makinelerinin boyutları](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)bölümünde ayrıntılıdır. En yüksek aktarım hızını görmek için, **genel amaçlı**gibi bir tür seçin ve elde edilen sayfada boyut serisiyle ilgili bölümü bulun (örneğin, "dv2-Series"). Her seri için, "en büyük NIC/beklenen ağ bant genişliği (MB/sn)" başlıklı son sütunda ağ belirtimleri sağlayan bir tablo vardır.
+Beklenen giden aktarım hızı ve her VM boyutu tarafından desteklenen ağ arabirimlerinin sayısı, [Azure 'Daki Windows sanal makinelerinin boyutları](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)bölümünde ayrıntılıdır. En yüksek aktarım hızını görmek için, **genel amaçlı** gibi bir tür seçin ve elde edilen sayfada boyut serisiyle ilgili bölümü bulun (örneğin, "dv2-Series"). Her seri için, "en büyük NIC/beklenen ağ bant genişliği (MB/sn)" başlıklı son sütunda ağ belirtimleri sağlayan bir tablo vardır.
 
 Aktarım hızı sınırı, sanal makine için geçerlidir. Aktarım hızı şu faktörlerden etkilenmez:
 

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
 ms.openlocfilehash: dffa059b18e159d04b5e3bb8555dabf801ede692
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85511795"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017126"
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>StorSimple 8000 serisi cihazınız için yük devretme ve olağanüstü durum kurtarma
 
@@ -34,7 +34,7 @@ StorSimple, cihaz yük devretme özelliğini bir olağanüstü durum durumunda b
 
 ## <a name="disaster-recovery-dr-and-device-failover"></a>Olağanüstü durum kurtarma (DR) ve cihaz yük devretmesi
 
-Olağanüstü durum kurtarma (DR) senaryosunda, birincil cihaz çalışmayı durduruyor. StorSimple birincil cihazı _kaynak_ olarak kullanır ve ilişkili bulut verilerini başka bir _hedef cihaza taşıtir_ . Bu işlem, *Yük devretme*olarak adlandırılır. Aşağıdaki grafikte yük devretme süreci gösterilmektedir.
+Olağanüstü durum kurtarma (DR) senaryosunda, birincil cihaz çalışmayı durduruyor. StorSimple birincil cihazı _kaynak_ olarak kullanır ve ilişkili bulut verilerini başka bir _hedef cihaza taşıtir_ . Bu işlem, *Yük devretme* olarak adlandırılır. Aşağıdaki grafikte yük devretme süreci gösterilmektedir.
 
 ![Cihaz yük devretmesinde ne olur?](./media/storsimple-8000-device-failover-disaster-recovery/failover-dr-flow.png)
 
@@ -48,7 +48,7 @@ Bir DR 'yi takip eden en son bulut yedeklemesi, verileri hedef cihaza geri yükl
 
 StorSimple 8000 serisinde yedekleme ilkeleri yedeklemelerle ilişkilendirilir. Aynı birim için birden çok yedekleme ilkesi varsa, StorSimple, en fazla birim sayısı ile yedekleme ilkesini seçer. StorSimple daha sonra hedef Cihazdaki verileri geri yüklemek için seçili yedekleme ilkesindeki en son yedeği kullanır.
 
-*Defaultpol* ve *custompol*olmak üzere iki yedekleme ilkesi olduğunu varsayalım:
+*Defaultpol* ve *custompol* olmak üzere iki yedekleme ilkesi olduğunu varsayalım:
 
 * *Defaultpol*: bir birim, *Vol1*, 10:30 pm itibariyle günlük olarak çalışır.
 * *Custompol*: dört birim, *Vol1*, *VOL2*, *Vol3*, *VOL4*, 10:00 ile başlayarak günlük olarak çalışır.

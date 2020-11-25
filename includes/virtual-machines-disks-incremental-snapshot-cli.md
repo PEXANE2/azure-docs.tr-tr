@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: cbd6f821326c86983ceb3ae5b90969e522c187fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bdeef537556db94338ed50fcfa6e9d88431f25a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82204502"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96016274"
 ---
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](virtual-machines-disks-incremental-snapshots-description.md)]
 
@@ -29,9 +29,9 @@ Windows 'da aşağıdaki komut, mevcut yüklemenizi en son sürüme yükler veya
 ```PowerShell
 Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'
 ```
-Linux 'ta CLı yüklemesi, işletim sistemi sürümüne bağlı olarak değişir.  Bkz. belirli Linux sürümünüz için [Azure CLI 'Yı yüklemeyin](https://docs.microsoft.com/cli/azure/install-azure-cli) .
+Linux 'ta CLı yüklemesi, işletim sistemi sürümüne bağlı olarak değişir.  Bkz. belirli Linux sürümünüz için [Azure CLI 'Yı yüklemeyin](/cli/azure/install-azure-cli) .
 
-Artımlı bir anlık görüntü oluşturmak için, parametresiyle [az Snapshot Create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create) kullanın `--incremental` .
+Artımlı bir anlık görüntü oluşturmak için, parametresiyle [az Snapshot Create](/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create) kullanın `--incremental` .
 
 Aşağıdaki örnek, artımlı bir anlık görüntü oluşturur,,,, `<yourDesiredSnapShotNameHere>` `<yourResourceGroupNameHere>` `<exampleDiskName>` ve `<exampleLocation>` değerlerini kendi değerlerinizle değiştirin, ardından örneği çalıştırın:
 

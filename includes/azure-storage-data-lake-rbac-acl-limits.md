@@ -6,14 +6,14 @@ ms.topic: include
 ms.date: 09/29/2020
 ms.author: normesta
 ms.custom: include file
-ms.openlocfilehash: 8b793a28c31df185555b9a548df52e4beeccf305
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 97b47b48a183951002d04cd58b08d5e2b9051eda
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131641"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017703"
 ---
 | Mechanism | Kapsam |Sınırlar | Desteklenen izin düzeyi |
 |---|---|---|---|
-| RBAC | Depolama hesapları, kapsayıcılar. <br>Abonelikte veya kaynak grubu düzeyinde çapraz kaynak RBAC rol atamaları. | bir abonelikte 2000 RBAC rol ataması | RBAC rolleri (yerleşik veya özel) |
+| Azure RBAC | Depolama hesapları, kapsayıcılar. <br>Abonelikte veya kaynak grubu düzeyinde Azure rolü atamaları çapraz kaynağı. | abonelik içindeki 2000 Azure rol atamaları | Azure rolleri (yerleşik veya özel) |
 | TEMEDI| Dizin, dosya |dosya başına ve Dizin başına 32 ACL girişi (etkin 28 ACL girişi). Erişim ve varsayılan ACL 'Lerin her biri kendi 32 ACL girdisi sınırına sahiptir. |ACL izni|

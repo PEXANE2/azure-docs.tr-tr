@@ -15,11 +15,11 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 167c666c536ee33531fd069dbd1edb530331a9f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91302198"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016972"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Öğretici: Azure Notification Hubs kullanarak belirli kullanıcılara anında iletme bildirimleri gönderme
 
@@ -36,9 +36,9 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 > * WebAPI arka ucundan bildirim gönderme
 > * Yeni WebAPI arka ucunu yayımlama
 > * İOS uygulamanızı değiştirme
-> * Uygulamayı test etme
+> * Uygulamayı test edin
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide, Bildirim Hub 'ınızı [Azure Notification Hubs kullanarak iOS uygulamalarına anında iletme bildirimleri gönderme](ios-sdk-get-started.md)konusunda açıklandığı gibi oluşturduğunuzu ve yapılandırdığınızı varsaymaktadır. Bu öğretici Ayrıca [güvenli gönderim (iOS)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) öğreticisinin önkoşuludur.
 Arka uç hizmetiniz olarak Mobile Apps kullanmak istiyorsanız, [Push Ile çalışmaya başlama Mobile Apps](/previous-versions/azure/app-service-mobile/app-service-mobile-ios-get-started-push)bakın.
@@ -57,12 +57,12 @@ Arka uç hizmetiniz olarak Mobile Apps kullanmak istiyorsanız, [Push Ile çalı
     ![Xcode Interface Builder 'da görsel taslağı Düzenle][1]
 
    * **Kullanıcı adı**: yer tutucu metnine sahip bir UITextField, gönder sonuçlarının hemen altındaki *Kullanıcı adı*' nı girin ve sol ve sağ kenar boşluklarına ve bu sonuçları gönder etiketinin altına göre kısıtlanmıştır.
-   * **Parola**: yer tutucu metin Içeren bir UITextField, Kullanıcı adı metin alanının hemen altındaki *parolayı girin*ve sol ve sağ kenar boşluklarıyla ve Kullanıcı adı metin alanının altına sınırlanır. *Dönüş anahtarı*altında, öznitelik denetçisinde **güvenli metin girişi** seçeneğini işaretleyin.
+   * **Parola**: yer tutucu metin Içeren bir UITextField, Kullanıcı adı metin alanının hemen altındaki *parolayı girin* ve sol ve sağ kenar boşluklarıyla ve Kullanıcı adı metin alanının altına sınırlanır. *Dönüş anahtarı* altında, öznitelik denetçisinde **güvenli metin girişi** seçeneğini işaretleyin.
    * **Oturum aç**: parola metin alanının hemen altındaki etiketli bir uıbutton ve *Denetim-Içerik* altındaki öznitelikler denetçisinde **etkin** seçeneğinin işaretini kaldırın
    * **WNS**: Bu, hub 'da ayarlandıysa bildirim Windows bildirim hizmeti gönderilmesini etkinleştirmek için etiketleyip geçiş yapın. Bkz. [Windows](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) Başlangıç Öğreticisi.
    * **GCM**: hub 'da ayarlandıysa Google Cloud Messaging bildirimin gönderilmesini sağlamak için etiket ve geçiş yapın. Bkz. [Android Başlarken](notification-hubs-android-push-notification-google-gcm-get-started.md) öğreticisi.
    * **APNs**: bildirimin Apple platform bildirim hizmetine gönderilmesini sağlamak için etiket ve anahtar.
-   * **Alıcı Kullanıcı adı:** yalnızca GCM etiketinin hemen altında yer tutucu metin, *alıcı Kullanıcı adı etiketi*olan bir uitextfield ve sol ve sağ kenar boşluklarıyla ve GCM etiketinin altında kısıtlanmış.
+   * **Alıcı Kullanıcı adı:** yalnızca GCM etiketinin hemen altında yer tutucu metin, *alıcı Kullanıcı adı etiketi* olan bir uitextfield ve sol ve sağ kenar boşluklarıyla ve GCM etiketinin altında kısıtlanmış.
 
      [Azure Notification Hubs öğreticisi kullanılarak iOS uygulamalarına anında iletme bildirimleri gönderme](ios-sdk-get-started.md) hakkında bazı bileşenler eklenmiştir.
 
@@ -476,14 +476,14 @@ Arka uç hizmetiniz olarak Mobile Apps kullanmak istiyorsanız, [Push Ile çalı
     }
     ```
 
-## <a name="test-the-application"></a>Uygulamayı test etme
+## <a name="test-the-application"></a>Uygulamayı test edin
 
 1. XCode 'da uygulamayı fiziksel bir iOS cihazında çalıştırın (anında iletme bildirimleri Benzetici içinde çalışmaz).
 2. İOS uygulama kullanıcı arabiriminde, hem Kullanıcı adı hem de parola için aynı değeri girin. Sonra **oturum aç**' a tıklayın.
 
     ![iOS test uygulaması][2]
 
-3. Kayıt başarısını bildiren bir açılır pencere görmeniz gerekir. **Tamam**'a tıklayın.
+3. Kayıt başarısını bildiren bir açılır pencere görmeniz gerekir. **Tamam** düğmesine tıklayın.
 
     ![iOS test bildirimi görüntülendi][3]
 

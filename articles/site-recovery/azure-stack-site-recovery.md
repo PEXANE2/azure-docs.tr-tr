@@ -4,11 +4,11 @@ description: Azure Site Recovery hizmetiyle Azure Stack VM 'Ler için Azure 'da 
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.openlocfilehash: 36e11bfe5354644f9ef6603ffe20cb2e86074323
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370534"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016922"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Azure Stack VM'lerini Azure'a çoğaltma
 
@@ -56,7 +56,7 @@ Bu adımlar tamamlandığında, Azure 'da ve gerektiğinde tam yük devretme ça
 7. Çoğaltılan makineler, çoğaltma yönetimi için yapılandırma sunucusu (bağlantı noktası HTTPS 443 gelen) ile iletişim kurar. Makineler, çoğaltma verilerini işlem sunucusuna gönderir (bağlantı noktası HTTPS 9443 gelen-değiştirilebilir).
 8. Trafik İnternet üzerinden Azure depolama genel uç noktalarına çoğaltılır. Alternatif olarak, Azure ExpressRoute genel eşliğini kullanabilirsiniz. Trafiğin siteden siteye bir VPN aracılığıyla şirket içi bir siteden Azure’a çoğaltılması desteklenmez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu senaryoyu ayarlamanız için gerekenler aşağıda verilmiştir.
 
@@ -101,7 +101,7 @@ VM 'Lerin tabloda özetlenen işletim sistemlerinden birini çalıştırdığın
         - Değeri 1 olarak ayarlayın.
         - Bunu yapmak için komut isteminde şunu yazın: **reg ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System/V LocalAccountTokenFilterPolicy/t REG_DWORD/d 1**.
 - Çoğaltmak istediğiniz VM 'deki Windows güvenlik duvarında dosya ve yazıcı paylaşımına ve WMI 'ye izin verin.
-    - Bunu yapmak için, **WF. msc** ' yi çalıştırarak Windows Güvenlik Duvarı konsolunu açın. **Gelen kuralları**  >  **Yeni kural**' a sağ tıklayın. **Önceden tanımlanmış**' i seçin ve listeden **dosya ve yazıcı paylaşımı** ' nı seçin. Sihirbazı tamamladıktan sonra bağlantı > **sona ermesini**sağlamak için seçin.
+    - Bunu yapmak için, **WF. msc** ' yi çalıştırarak Windows Güvenlik Duvarı konsolunu açın. **Gelen kuralları**  >  **Yeni kural**' a sağ tıklayın. **Önceden tanımlanmış**' i seçin ve listeden **dosya ve yazıcı paylaşımı** ' nı seçin. Sihirbazı tamamladıktan sonra bağlantı > **sona ermesini** sağlamak için seçin.
     - Etki alanı bilgisayarları için, bunu yapmak için bir GPO kullanabilirsiniz.
 
 
@@ -116,7 +116,7 @@ VM 'Lerin tabloda özetlenen işletim sistemlerinden birini çalıştırdığın
 - Secure Shell’in (SSH) etkin olduğundan ve bağlantı noktası 22’de çalıştırıldığından emin olun.
 - SFTP alt sistemi ve parola ile kimlik doğrulamasını sshd_config dosyasında etkinleştirin:
     1. Bunu yapmak için kök olarak oturum açın.
-    2. /Etc/ssh/sshd_config dosyasında, **Passwordaduthentication**ile başlayan satırı bulun. Satırı açıklama durumundan çıkarın ve değerini **yes** (evet) olarak değiştirin.
+    2. /Etc/ssh/sshd_config dosyasında, **Passwordaduthentication** ile başlayan satırı bulun. Satırı açıklama durumundan çıkarın ve değerini **yes** (evet) olarak değiştirin.
     3. **Subsystem** ile başlayan satırı bulun ve açıklama durumundan çıkarın.
 
         ![Linux Mobility hizmeti](./media/azure-stack-site-recovery/linux-mobility.png)
@@ -137,10 +137,10 @@ VM 'Lerin tabloda özetlenen işletim sistemlerinden birini çalıştırdığın
 
 ## <a name="step-2-create-a-vault-and-select-a-replication-goal"></a>2. Adım: kasa oluşturma ve çoğaltma hedefi seçme
 
-1. Azure Portal **kaynak**  >  **yönetimi araçları**  >  **yedeklemesi ve Site Recovery**oluştur ' u seçin.
+1. Azure Portal **kaynak**  >  **yönetimi araçları**  >  **yedeklemesi ve Site Recovery** oluştur ' u seçin.
 2. **Ad** alanına kasayı tanımlamak için kolay bir ad girin.
-3. **Kaynak grubu**' nda, bir kaynak grubu oluşturun veya seçin. **ContosoRG**kullandık.
-4. **Konum**alanına Azure bölgesini girin. **Batı Avrupa** kullanacağız.
+3. **Kaynak grubu**' nda, bir kaynak grubu oluşturun veya seçin. **ContosoRG** kullandık.
+4. **Konum** alanına Azure bölgesini girin. **Batı Avrupa** kullanacağız.
 5. Panodan kasaya hızlıca erişmek için **panoya sabitle**  >  **Oluştur**' u seçin.
 
    ![Yeni kasa oluştur](./media/azure-stack-site-recovery/new-vault-settings.png)
@@ -149,11 +149,11 @@ VM 'Lerin tabloda özetlenen işletim sistemlerinden birini çalıştırdığın
 
 ### <a name="select-a-replication-goal"></a>Çoğaltma hedefi seçme
 
-1. **Kurtarma Hizmetleri** kasalarında bir kasa adı belirtin >. **Contosovmkasasını**kullanıyoruz.
+1. **Kurtarma Hizmetleri** kasalarında bir kasa adı belirtin >. **Contosovmkasasını** kullanıyoruz.
 2. **Başlarken** bölümünde Site Recovery’yi seçin. Daha sonra **Altyapıyı Hazırlama**’yı seçin.
-3. Makinelerinizin bulunduğu **koruma hedefi**bölümünde  >  **Where are your machines located** **Şirket içi**' ı seçin.
+3. Makinelerinizin bulunduğu **koruma hedefi** bölümünde  >  **Where are your machines located** **Şirket içi**' ı seçin.
 4. **Makinelerinizi nereye çoğaltmak istiyorsunuz** bölümünde **Azure’a** seçeneğini belirleyin.
-5. **Makinelerinizde sanallaştırılmış**, **sanallaştırılmış değil**' i seçin. Ardından **Tamam**'ı seçin.
+5. **Makinelerinizde sanallaştırılmış**, **sanallaştırılmış değil**' i seçin. Ardından **Tamam**’ı seçin.
 
     ![Koruma hedefi](./media/azure-stack-site-recovery/protection-goal.png)
 
@@ -201,12 +201,12 @@ Hedef kaynaklarını seçin ve doğrulayın.
 
 ### <a name="create-a-replication-policy"></a>Çoğaltma ilkesi oluşturma
 
-1. **Altyapı**  >  **çoğaltma ayarlarını**hazırla ' ya tıklayın.
+1. **Altyapı**  >  **çoğaltma ayarlarını** hazırla ' ya tıklayın.
 2. **Çoğaltma ilkesi oluştur** bölümünde bir ilke adı belirtin.
 3. **RPO eşiği** bölümünde kurtarma noktası hedefi (RPO) sınırını belirtin.
     - Çoğaltılan veriler için kurtarma noktaları, zaman kümesine uygun olarak oluşturulur.
     - Bu ayar, sürekli olan çoğaltmayı etkilemez. Yalnızca bir kurtarma noktası oluşturulmadan eşik sınırına ulaşılırsa bir uyarı yayınlar.
-4. **Kurtarma noktası bekletme**bölümünde, her kurtarma noktasının ne kadar süreyle tutulacağını belirtin. Çoğaltılan VM 'Ler belirtilen zaman penceresinde herhangi bir noktaya kurtarılabilir.
+4. **Kurtarma noktası bekletme** bölümünde, her kurtarma noktasının ne kadar süreyle tutulacağını belirtin. Çoğaltılan VM 'Ler belirtilen zaman penceresinde herhangi bir noktaya kurtarılabilir.
 5. Uygulamayla **tutarlı anlık görüntü sıklığı**' nda, uygulamayla tutarlı anlık görüntülerin ne sıklıkla oluşturulacağını belirtin.
 
     - Uygulamayla tutarlı bir anlık görüntü, VM içindeki uygulama verilerinin zaman içinde bir noktadaki anlık görüntüsüdür.
@@ -228,7 +228,7 @@ Hemen bu adımı atlayabilirsiniz. **Dağıtım planlama** açılan listesinde E
 2. **Kaynak** bölümünde yapılandırma sunucusunu seçin.
 3. **Makine türü**' nde **fiziksel makineler**' i seçin.
 4. İşlem sunucusunu (yapılandırma sunucusu) seçin. Daha sonra, **Tamam**'a tıklayın.
-5. **Hedef**bölümünde, yük devretmeden sonra VM 'leri oluşturmak istediğiniz aboneliği ve kaynak grubunu seçin. Yük devredilen VM 'Ler için kullanmak istediğiniz dağıtım modelini seçin.
+5. **Hedef** bölümünde, yük devretmeden sonra VM 'leri oluşturmak istediğiniz aboneliği ve kaynak grubunu seçin. Yük devredilen VM 'Ler için kullanmak istediğiniz dağıtım modelini seçin.
 6. Çoğaltılan verileri depolamak istediğiniz Azure Depolama hesabını seçin.
 7. Yük devretme işleminden sonra oluşturulan Azure VM’lerin bağlandığı Azure ağını ve alt ağını seçin.
 8. Koruma için seçtiğiniz tüm makinelere ağ ayarını uygulamak için **Seçili makineler için şimdi yapılandırı** seçin. Her makine için ayrı ayrı Azure ağı seçmek istiyorsanız, **daha sonra Yapılandır** ' ı seçin.
@@ -237,8 +237,8 @@ Hemen bu adımı atlayabilirsiniz. **Dağıtım planlama** açılan listesinde E
     - Makinenin iç IP adresini kullanın.
     - Genel IP adresini belirtirseniz, çoğaltma beklendiği gibi çalışmayabilir.
 
-10. **Özellikler**  >  **Özellikleri Yapılandır**bölümünde, işlem sunucusunun, Mobility hizmetini makinede otomatik olarak yüklemek için kullanacağı hesabı seçin.
-11. Çoğaltma **ayarları**  >  **çoğaltma ayarlarını yapılandır**bölümünde doğru çoğaltma ilkesinin seçili olup olmadığını denetleyin.
+10. **Özellikler**  >  **Özellikleri Yapılandır** bölümünde, işlem sunucusunun, Mobility hizmetini makinede otomatik olarak yüklemek için kullanacağı hesabı seçin.
+11. Çoğaltma **ayarları**  >  **çoğaltma ayarlarını yapılandır** bölümünde doğru çoğaltma ilkesinin seçili olup olmadığını denetleyin.
 12. **Çoğaltmayı Etkinleştir**’e tıklayın.
 13. **Enable Protection** **Ayarlar**  >  **işleri**  >  **Site Recovery işler**' de korumayı etkinleştirme işinin ilerlemesini izleyin. **Korumayı Sonlandır** işi çalıştırıldıktan sonra makine yük devretmeye hazırız.
 
@@ -247,7 +247,7 @@ Hemen bu adımı atlayabilirsiniz. **Dağıtım planlama** açılan listesinde E
 >
 > Değişikliklerin geçerli olması ve portalda görüntülenmesi 15 dakika veya daha uzun sürebilir.
 >
-> Eklediğiniz VM 'leri izlemek için **yapılandırma sunucularındaki**  >  **son iletişim adresindeki**VM 'ler için son keşfedilen zamanı kontrol edin. Zamanlanan bulma işlemini beklemeden VM’leri eklemek için yapılandırma sunucusunu vurgulayın (seçmeyin) ve **Yenile**’yi seçin.
+> Eklediğiniz VM 'leri izlemek için **yapılandırma sunucularındaki**  >  **son iletişim adresindeki** VM 'ler için son keşfedilen zamanı kontrol edin. Zamanlanan bulma işlemini beklemeden VM’leri eklemek için yapılandırma sunucusunu vurgulayın (seçmeyin) ve **Yenile**’yi seçin.
 
 
 ## <a name="step-6-run-a-disaster-recovery-drill"></a>6. Adım: olağanüstü durum kurtarma ayrıntısı çalıştırma
@@ -260,7 +260,7 @@ Yük devretme testi çalıştırmadan önce makine özelliklerini doğrulayın v
 
 1. **Korunan Öğeler**’de **Çoğaltılan Öğeler** > VM seçeneğine tıklayın.
 2. **Çoğaltılan öğe** bölmesinde VM bilgileri ile sistem durumunun bir özeti ve kullanılabilen son kurtarma noktaları yer alır. Daha fazla ayrıntı görüntülemek için **Özellikler**’e tıklayın.
-3. **İşlem ve ağ**bölümünde, ayarları gerektiği gibi değiştirin.
+3. **İşlem ve ağ** bölümünde, ayarları gerektiği gibi değiştirin.
 
     - Azure VM adını, kaynak grubunu, hedef boyutunu, [kullanılabilirlik kümesini](../virtual-machines/windows/tutorial-availability-sets.md)ve yönetilen disk ayarlarını değiştirebilirsiniz.
     - Ayrıca, ağ ayarlarını görüntüleyebilir ve değiştirebilirsiniz. Bunlar, yük devretmeden sonra Azure VM 'nin katıldığı ağ/alt ağı ve VM 'ye atanacak IP adresini içerir.
@@ -284,9 +284,9 @@ Bir VM için yük devretme testini aşağıdaki şekilde çalıştırın:
 
 1. **Ayarlar**  >  **çoğaltılan öğeler**' de VM > **+ Yük devretme testi**' ne tıklayın.
 2. Bu izlenecek yol için, **en son işlenen** kurtarma noktasını kullanmayı seçeceğiz.
-3. **Yük devretme testi**bölümünde, hedef Azure ağını seçin.
+3. **Yük devretme testi** bölümünde, hedef Azure ağını seçin.
 4. Yük devretmeyi başlatmak için **Tamam**'a tıklayın.
-5. Özelliklerini açmak için VM 'ye tıklayarak ilerlemeyi izleyin. Ya da, *kasa adı*ayarları **Test Failover**  >  **Settings**  >  **işler**  > **Site Recovery işler**' de yük devretme testi işi ' ne tıklayın.
+5. Özelliklerini açmak için VM 'ye tıklayarak ilerlemeyi izleyin. Ya da, *kasa adı* ayarları **Test Failover**  >  **Settings**  >  **işler**  > **Site Recovery işler**' de yük devretme testi işi ' ne tıklayın.
 6. Yük devretme bittikten sonra, çoğaltma Azure VM, Azure portalı > **Sanal Makineler** bölümünde görünür. VM 'nin uygun boyutta olduğundan, doğru ağa bağlı olduğundan ve çalıştığından emin olun.
 7. Şimdi Azure’da çoğaltılan sanal makineye bağlanabiliyor olmanız gerekir. [Daha fazla bilgi edinin](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
 8. Yük devretme testi sırasında oluşturulan Azure sanal makinelerini silmek için, VM’de **Yük devretme testini temizle**’ye tıklayın. **Notlar**' da, test yük devretmesi ile ilgili tüm gözlemlerinizi kaydedin.
@@ -300,9 +300,9 @@ Yük devretmeyi çalıştırmadan önce, yük devretmeden sonra Azure 'da makine
 Ardından yük devretmeyi aşağıdaki gibi çalıştırın:
 
 
-1. **Ayarlar**  >  **çoğaltılan öğeler**bölümünde, **Yük devretme**> makineye tıklayın.
+1. **Ayarlar**  >  **çoğaltılan öğeler** bölümünde, **Yük devretme**> makineye tıklayın.
 2. Kullanmak istediğiniz kurtarma noktasını seçin.
-3. **Yük devretme testi**bölümünde, hedef Azure ağını seçin.
+3. **Yük devretme testi** bölümünde, hedef Azure ağını seçin.
 4. **Yük devretmeyi başlatmadan önce makineyi kapatın** seçeneğini belirleyin. Bu ayar ile, Site Recovery yük devretmeyi başlatmadan önce kaynak makineyi kapatmaya çalışır. Ancak, yük devretme, kapatılma başarısız olsa bile devam eder.
 5. Yük devretmeyi başlatmak için **Tamam**'a tıklayın. **İşler** sayfasında yük devretme ilerlemesini izleyebilirsiniz.
 6. Yük devretme bittikten sonra, çoğaltma Azure VM, Azure portalı > **Sanal Makineler** bölümünde görünür. Yük devretmeden sonra bağlanmayı hazırladıysanız, VM 'nin uygun boyutta olduğundan, doğru ağa bağlı olduğundan ve çalıştığından emin olun.

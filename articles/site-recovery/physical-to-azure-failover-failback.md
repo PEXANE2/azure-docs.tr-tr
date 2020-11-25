@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 12/17/2019
 ms.author: raynew
 ms.openlocfilehash: 2994f68e4159c7c4aa7d82bef7a5891deb5055a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87292823"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017432"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Yük devretme ve geri dönme fiziksel sunucuları Azure 'a çoğaltma
 
@@ -80,7 +80,7 @@ Azure 'a yük devrettikten sonra, Azure VM 'lerini şirket içi siteye çoğalta
 6. Yeniden çalışma öncesinde vCenter Server bağlı olduğundan emin olun. Aksi takdirde, disklerin bağlantısının kesilmesi ve sanal makineye geri eklenmesi başarısız olur.
 7. Bir vCenter sunucusu, geri dönecek VM 'Leri yönetirse, gerekli izinlere sahip olduğunuzdan emin olun. Salt okuma Kullanıcı vCenter bulmayı ve sanal makineleri koruyorsa, koruma başarılı olur ve yük devretme işlemi gerçekleştirilir. Bununla birlikte, yeniden koruma sırasında, veri depoları keşfedilmeden ve yeniden koruma sırasında listelenmediği için yük devretme başarısız olur. Bu sorunu çözmek için vCenter kimlik bilgilerini [uygun bir hesap/izinlerle](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery)güncelleştirebilir ve ardından işi yeniden deneyebilirsiniz. 
 8. Sanal makinelerinizi oluşturmak için bir şablon kullandıysanız, her VM 'nin diskler için kendi UUID 'sine sahip olduğundan emin olun. Aynı şablondan oluşturulduğundan, şirket içi VM UUID 'SI ana hedef sunucunun UUID 'SI ile çakışıyor, yeniden koruma başarısız olur. Farklı bir şablondan dağıtın.
-9. Alternatif bir vCenter Server geri yüklüyorsanız, yeni vCenter Server ve ana hedef sunucunun bulunduğundan emin olun. Genellikle veri depoları erişilemez veya **yeniden koruma**bölümünde görünmez.
+9. Alternatif bir vCenter Server geri yüklüyorsanız, yeni vCenter Server ve ana hedef sunucunun bulunduğundan emin olun. Genellikle veri depoları erişilemez veya **yeniden koruma** bölümünde görünmez.
 10. Geri gerçekleştiremeyecek aşağıdaki senaryoları doğrulayın:
     - ESXi 5,5 Free Edition ya da vSphere 6 hiper yönetici ücretsiz sürümü kullanıyorsanız. Farklı bir sürüme yükseltin.
     - Windows Server 2008 R2 SP1 fiziksel sunucunuz varsa.

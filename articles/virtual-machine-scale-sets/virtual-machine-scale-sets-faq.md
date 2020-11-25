@@ -10,11 +10,11 @@ ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: 8170cfcbbf200c6ba5030aff5716f46b537d8c97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87080480"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016718"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure sanal makine ölçek kümeleri hakkında SSS
 
@@ -60,7 +60,7 @@ Evet, ölçek kümesi [uzantı sıralamasını](virtual-machine-scale-sets-exten
 
 ### <a name="do-scale-sets-work-with-azure-availability-sets"></a>Ölçek kümeleri Azure kullanılabilirlik kümeleri ile birlikte çalışır mı?
 
-Bölgesel (zikzak olmayan) ölçek kümesi, beş hata etki alanı ve beş güncelleştirme etki alanı ile örtük bir kullanılabilirlik kümesi görevi gören *yerleştirme gruplarını*kullanır. 100 ' den fazla VM 'nin ölçek kümesi birden çok yerleştirme grubuna yayılamaz. Yerleştirme grupları hakkında daha fazla bilgi için bkz. [Büyük sanal makine ölçek kümeleri ile çalışma](virtual-machine-scale-sets-placement-groups.md). Bir sanal makine kullanılabilirlik kümesi, sanal makine ölçek kümesiyle aynı sanal ağda bulunabilir. Genellikle bir kullanılabilirlik kümesinde benzersiz yapılandırma gerektiren denetim düğümünü sanal makinelere, veri düğümlerini ise ölçek kümesine yerleştirmek, yaygın bir yapılandırmadır.
+Bölgesel (zikzak olmayan) ölçek kümesi, beş hata etki alanı ve beş güncelleştirme etki alanı ile örtük bir kullanılabilirlik kümesi görevi gören *yerleştirme gruplarını* kullanır. 100 ' den fazla VM 'nin ölçek kümesi birden çok yerleştirme grubuna yayılamaz. Yerleştirme grupları hakkında daha fazla bilgi için bkz. [Büyük sanal makine ölçek kümeleri ile çalışma](virtual-machine-scale-sets-placement-groups.md). Bir sanal makine kullanılabilirlik kümesi, sanal makine ölçek kümesiyle aynı sanal ağda bulunabilir. Genellikle bir kullanılabilirlik kümesinde benzersiz yapılandırma gerektiren denetim düğümünü sanal makinelere, veri düğümlerini ise ölçek kümesine yerleştirmek, yaygın bir yapılandırmadır.
 
 ### <a name="do-scale-sets-work-with-azure-availability-zones"></a>Ölçek Kümeleri Azure kullanılabilirlik bölgeleriyle birlikte çalışıyor mu?
 
@@ -224,9 +224,9 @@ Linux VM oluştururken düz metin olarak SSH ortak anahtarlarını sağlayabilir
 }
 ```
 
-linuxConfiguration öğe adı | Gerekli | Tür | Açıklama
+linuxConfiguration öğe adı | Gerekli | Tür | Description
 --- | --- | --- | ---
-SSH | Hayır | Koleksiyon | Linux işletim sistemi için SSH anahtarı yapılandırmasını belirtir
+SSH | No | Koleksiyon | Linux işletim sistemi için SSH anahtarı yapılandırmasını belirtir
 path | Evet | Dize | SSH anahtarlarının veya sertifikasının bulunması gereken Linux dosya yolunu belirtir
 keyData | Evet | Dize | Base64 ile kodlanmış SSH ortak anahtarını belirtir
 
@@ -264,7 +264,7 @@ Yanlış bir kaynak Kasası KIMLIĞI, ancak geçerli bir Anahtar Kasası URL 'SI
 
 ### <a name="if-i-add-secrets-to-an-existing-virtual-machine-scale-set-are-the-secrets-injected-into-existing-vms-or-only-into-new-ones"></a>Var olan bir sanal makine ölçek kümesine gizli dizileri eksem, var olan VM 'Lere eklenen gizlilikler mı yoksa yalnızca yenilerini mi var?
 
-Sertifikalar tüm sanal makinelerinize, hatta önceden mevcut olanlara eklenir. Sanal makine ölçek kümesi upgradePolicy özelliği **el ile**olarak AYARLANDıYSA, VM 'de el ile güncelleştirme GERÇEKLEŞTIRDIĞINIZDE sertifika VM 'ye eklenir.
+Sertifikalar tüm sanal makinelerinize, hatta önceden mevcut olanlara eklenir. Sanal makine ölçek kümesi upgradePolicy özelliği **el ile** olarak AYARLANDıYSA, VM 'de el ile güncelleştirme GERÇEKLEŞTIRDIĞINIZDE sertifika VM 'ye eklenir.
 
 ### <a name="where-do-i-put-certificates-for-linux-vms"></a>Linux VM 'Leri için sertifika yerleştiririm?
 
@@ -368,13 +368,13 @@ Azure Izleyici günlükleri ile tümleşen bir sanal makine ölçek kümesi şab
 
 ### <a name="how-do-i-add-an-extension-to-all-vms-in-my-virtual-machine-scale-set"></a>Nasıl yaparım? sanal makine ölçek kümesindeki tüm VM 'lere uzantı eklemek mi istiyorsunuz?
 
-Güncelleştirme ilkesi **Otomatik**olarak ayarlandıysa, şablonu yeni uzantı özellikleriyle yeniden dağıtmak tüm VM 'leri günceller.
+Güncelleştirme ilkesi **Otomatik** olarak ayarlandıysa, şablonu yeni uzantı özellikleriyle yeniden dağıtmak tüm VM 'leri günceller.
 
-Güncelleştirme ilkesi **el ile**olarak ayarlandıysa, önce uzantıyı güncelleştirin ve ardından sanal makinelerinizdeki tüm örnekleri el ile güncelleştirin.
+Güncelleştirme ilkesi **el ile** olarak ayarlandıysa, önce uzantıyı güncelleştirin ve ardından sanal makinelerinizdeki tüm örnekleri el ile güncelleştirin.
 
 ### <a name="if-the-extensions-associated-with-an-existing-virtual-machine-scale-set-are-updated-are-existing-vms-affected"></a>Var olan bir sanal makine ölçek kümesiyle ilişkili uzantılar güncelleştirilirse, var olan VM 'Ler etkilenir mi?
 
-Sanal makine ölçek kümesi modelindeki uzantı tanımı güncellendiyse ve upgradePolicy özelliği **Otomatik**olarak ayarlandıysa, VM 'leri güncelleştirir. UpgradePolicy özelliği **el ile**olarak ayarlandıysa, uzantılar modelle eşleşmiyor olarak işaretlenir.
+Sanal makine ölçek kümesi modelindeki uzantı tanımı güncellendiyse ve upgradePolicy özelliği **Otomatik** olarak ayarlandıysa, VM 'leri güncelleştirir. UpgradePolicy özelliği **el ile** olarak ayarlandıysa, uzantılar modelle eşleşmiyor olarak işaretlenir.
 
 ### <a name="are-extensions-run-again-when-an-existing-machine-is-service-healed-or-reimaged"></a>Mevcut bir makine Service-cenled veya yeniden görüntüsü olduğunda uzantılar yeniden çalıştırılır mi?
 
@@ -652,7 +652,7 @@ az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.Ente
 Gerekli çalışma alanı kimliği ve workspaceKey ' nin Azure portal Log Analytics çalışma alanında bulabilirsiniz. Genel Bakış sayfasında, ayarlar kutucuğuna tıklayın. Üstteki bağlı kaynaklar sekmesine tıklayın.
 
 > [!NOTE]
-> Ölçek kümesi _Upgradepolicy_ , manuel olarak ayarlandıysa, uzantıyı üzerinde yükseltme çağırarak küme Içindeki tüm VM 'lere uygulamanız gerekir. CLı içinde bu, _az VMSS Update-Instances_olacaktır.
+> Ölçek kümesi _Upgradepolicy_ , manuel olarak ayarlandıysa, uzantıyı üzerinde yükseltme çağırarak küme Içindeki tüm VM 'lere uygulamanız gerekir. CLı içinde bu, _az VMSS Update-Instances_ olacaktır.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -660,7 +660,7 @@ Gerekli çalışma alanı kimliği ve workspaceKey ' nin Azure portal Log Analyt
 
 ### <a name="how-do-i-turn-on-boot-diagnostics"></a>Önyükleme tanılaması Nasıl yaparım? açılsın mı?
 
-Önyükleme tanılamayı açmak için, önce bir depolama hesabı oluşturun. Ardından, bu JSON bloğunu sanal makine ölçek kümesi **Virtualmachineprofile**öğesine yerleştirin ve sanal makine ölçek kümesini güncelleştirin:
+Önyükleme tanılamayı açmak için, önce bir depolama hesabı oluşturun. Ardından, bu JSON bloğunu sanal makine ölçek kümesi **Virtualmachineprofile** öğesine yerleştirin ve sanal makine ölçek kümesini güncelleştirin:
 
 ```json
 "diagnosticsProfile": {
@@ -694,9 +694,9 @@ Hayır, bir sanal makine ölçek kümesindeki farklı VM 'lere farklı uzantı b
 
 ### <a name="why-are-there-gaps-between-my-virtual-machine-scale-set-vm-machine-names-and-vm-ids-for-example-0-1-3"></a>Sanal makine ölçek kümesi VM makine adları ve VM kimlikleri arasında neden boşluklar var? Örneğin: 0, 1, 3...
 
-Sanal makine ölçek kümesi **fazla sağlama** özelliği varsayılan değer olan **true**değerine ayarlandığından, sanal makine ölçek kümesi VM makine adları ve VM kimlikleri arasında boşluklar vardır. Aşırı sağlama değeri **true**olarak ayarlandıysa, istenenden daha fazla sanal makine oluşturulur. Daha sonra ek VM 'Ler silinir. Bu durumda, büyük bir dağıtım güvenilirliği elde edersiniz, ancak ardışık adlandırma ve bitişik ağ adresi çevirisi (NAT) kuralları masrafına sahip olursunuz.
+Sanal makine ölçek kümesi **fazla sağlama** özelliği varsayılan değer olan **true** değerine ayarlandığından, sanal makine ölçek kümesi VM makine adları ve VM kimlikleri arasında boşluklar vardır. Aşırı sağlama değeri **true** olarak ayarlandıysa, istenenden daha fazla sanal makine oluşturulur. Daha sonra ek VM 'Ler silinir. Bu durumda, büyük bir dağıtım güvenilirliği elde edersiniz, ancak ardışık adlandırma ve bitişik ağ adresi çevirisi (NAT) kuralları masrafına sahip olursunuz.
 
-Bu özelliği **false**olarak ayarlayabilirsiniz. Küçük sanal makine ölçek kümeleri için bu, dağıtım güvenilirliğini önemli ölçüde etkilemez.
+Bu özelliği **false** olarak ayarlayabilirsiniz. Küçük sanal makine ölçek kümeleri için bu, dağıtım güvenilirliğini önemli ölçüde etkilemez.
 
 ### <a name="what-is-the-difference-between-deleting-a-vm-in-a-virtual-machine-scale-set-and-deallocating-the-vm-when-should-i-choose-one-over-the-other"></a>Sanal makine ölçek kümesindeki bir VM 'yi silme ve VM 'nin ayırmayı kaldırma arasındaki fark nedir? Ne zaman birini seçmem gerekir?
 

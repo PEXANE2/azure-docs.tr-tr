@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 03117b9f0c3cbaea22f36703f689264549b851e8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 485b23d9b7ebac4f7d183239d035fbd53b09f4ee
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959144"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017702"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. 'de erişim denetim listeleri (ACL 'Ler)
 
@@ -23,7 +23,7 @@ Azure Data Lake Storage 2. hem Azure rol tabanlı erişim denetimi (Azure RBAC) 
 
 ## <a name="about-acls"></a>ACL 'Ler hakkında
 
-[Güvenlik sorumlusunu](https://docs.microsoft.com/azure/role-based-access-control/overview#security-principal) , dosyalar ve dizinler için bir erişim düzeyiyle ilişkilendirebilirsiniz. Bu ilişkilendirmeler bir *erişim denetim listesi (ACL)* içinde yakalanır. Depolama hesabınızdaki her dosya ve dizinin bir erişim denetim listesi vardır. Bir güvenlik sorumlusu bir dosya veya dizin üzerinde bir işlem gerçekleştirmeye çalıştığında, bir ACL denetimi, güvenlik sorumlusunun (Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik) işlemi gerçekleştirmek için doğru izin düzeyine sahip olup olmadığını belirler.
+[Güvenlik sorumlusunu](../../role-based-access-control/overview.md#security-principal) , dosyalar ve dizinler için bir erişim düzeyiyle ilişkilendirebilirsiniz. Bu ilişkilendirmeler bir *erişim denetim listesi (ACL)* içinde yakalanır. Depolama hesabınızdaki her dosya ve dizinin bir erişim denetim listesi vardır. Bir güvenlik sorumlusu bir dosya veya dizin üzerinde bir işlem gerçekleştirmeye çalıştığında, bir ACL denetimi, güvenlik sorumlusunun (Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik) işlemi gerçekleştirmek için doğru izin düzeyine sahip olup olmadığını belirler.
 
 > [!NOTE]
 > ACL 'Ler yalnızca aynı Kiracıdaki güvenlik sorumluları için geçerlidir ve paylaşılan anahtar veya paylaşılan erişim imzası (SAS) belirteci kimlik doğrulaması kullanan kullanıcılar için de geçerlidir. Bunun nedeni, çağıran ile ilişkili bir kimlik olmadığından ve bu nedenle güvenlik sorumlusu izin tabanlı yetkilendirmenin gerçekleştirilemediği için.  
@@ -39,8 +39,8 @@ Dosya ve dizin düzeyindeki izinleri ayarlamak için aşağıdaki makalelerden b
 |Java|[Azure Data Lake Storage 2. içinde dizinleri, dosyaları ve ACL 'Leri yönetmek için Java kullanın](data-lake-storage-directory-file-acl-java.md#manage-access-control-lists-acls)|
 |Python|[Azure Data Lake Storage 2. dizinleri, dosyaları ve ACL 'Leri yönetmek için Python kullanma](data-lake-storage-directory-file-acl-python.md#manage-access-control-lists-acls)|
 |PowerShell|[PowerShell kullanarak Azure Data Lake Storage 2. dizinleri, dosyaları ve ACL 'Leri yönetme](data-lake-storage-directory-file-acl-powershell.md#manage-access-control-lists-acls)|
-|Azure CLI|[Azure CLı kullanarak Azure Data Lake Storage 2. dizinleri, dosyaları ve ACL 'Leri yönetme](data-lake-storage-directory-file-acl-cli.md#manage-access-control-lists-acls)|
-|REST API |[Yol-Güncelleştir](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/update)|
+|Azure CLI’si|[Azure CLı kullanarak Azure Data Lake Storage 2. dizinleri, dosyaları ve ACL 'Leri yönetme](data-lake-storage-directory-file-acl-cli.md#manage-access-control-lists-acls)|
+|REST API |[Yol-Güncelleştir](/rest/api/storageservices/datalakestoragegen2/path/update)|
 
 > [!IMPORTANT]
 > Güvenlik sorumlusu bir *hizmet* sorumlusu ise, ilgili uygulama KAYDıNıN nesne kimliğini değil, hizmet sorumlusunun nesne kimliğini kullanmak önemlidir. Hizmet sorumlusunun nesne KIMLIĞINI almak için Azure CLı 'yı açın ve ardından şu komutu kullanın: `az ad sp show --id <Your App ID> --query objectId` . `<Your App ID>`yer tutucusunu, uygulama kaydlarınızın uygulama kimliğiyle değiştirdiğinizden emin olun.
@@ -92,7 +92,8 @@ Aşağıdaki tabloda, bir güvenlik sorumlusunun **işlem** sütununda listelene
 
 Bu tablo, kurgusal bir dizin hiyerarşisinin her düzeyini temsil eden bir sütun gösterir. Kapsayıcının kök dizini () için bir sütun `\` , **Oregon** adlı bir alt dizin, **İstanbul** adlı MARI dizininin bir alt dizini ve **Data.txt** adlı Portland dizinindeki bir metin dosyası. 
 
-> [! IMPORANT] Bu tablo, hiçbir Azure rol ataması olmadan **yalnızca** ACL 'leri kullandığınızı varsayar. Azure RBAC 'i ACL 'lerle birlikte birleştiren benzer bir tablo görmek için bkz. [izin tablosu: Azure RBAC ve ACL 'Yi birleştirme](data-lake-storage-access-control-model.md#permissions-table-combining-azure-rbac-and-acl).
+> [!IMPORTANT]
+> Bu tablo, hiçbir Azure rol ataması olmadan **yalnızca** ACL 'leri kullandığınızı varsayar. Azure RBAC 'i ACL 'lerle birlikte birleştiren benzer bir tablo görmek için bkz. [izin tablosu: Azure RBAC ve ACL 'Yi birleştirme](data-lake-storage-access-control-model.md#permissions-table-combining-azure-rbac-and-acl).
 
 |    İşlem             |    /    | 'Daki | Portland | Data.txt     |
 |--------------------------|---------|----------|-----------|--------------|
@@ -330,7 +331,7 @@ Hizmet sorumlusu için doğru OID 'ye sahip olduğunuzda, OID 'yi eklemek ve OID
 
 Hayır. Kapsayıcıda ACL yok. Ancak, kapsayıcının kök dizininin ACL 'sini ayarlayabilirsiniz. Her kapsayıcının bir kök dizini vardır ve kapsayıcı ile aynı adı paylaşır. Örneğin, kapsayıcı adlandırılmışsa `my-container` kök dizin olarak adlandırılır `myContainer/` . 
 
-Azure depolama REST API, [set CONTAINER ACL](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)adlı bir işlem içeriyor, ancak bu Işlem kapsayıcının ACL 'sini veya bir kapsayıcının kök dizinini ayarlamak için kullanılamaz. Bunun yerine, bir kapsayıcıdaki Blobların [herkese açık](anonymous-read-access-configure.md)bir şekilde erişilebildiğini göstermek için bu işlem kullanılır. 
+Azure depolama REST API, [set CONTAINER ACL](/rest/api/storageservices/set-container-acl)adlı bir işlem içeriyor, ancak bu Işlem kapsayıcının ACL 'sini veya bir kapsayıcının kök dizinini ayarlamak için kullanılamaz. Bunun yerine, bir kapsayıcıdaki Blobların [herkese açık](anonymous-read-access-configure.md)bir şekilde erişilebildiğini göstermek için bu işlem kullanılır. 
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>POSIX erişim denetimi modeli hakkında daha fazla bilgiyi nereden bulabilirim?
 

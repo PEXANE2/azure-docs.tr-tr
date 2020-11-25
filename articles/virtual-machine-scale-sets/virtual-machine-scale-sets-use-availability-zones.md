@@ -10,11 +10,11 @@ ms.date: 08/08/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli
 ms.openlocfilehash: c5ddd5846be91e9fc99a251d6ad45ade8bde2937
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745845"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016667"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Kullanılabilirlik Alanları kullanan bir sanal makine ölçek kümesi oluşturma
 
@@ -29,21 +29,21 @@ Bir bölge (ZGen olmayan) ölçek kümesini API sürüm *2017-12-01* itibariyle 
 
 Maksimum yayılmaları ile, ölçek kümesi sanal makinelerinizi her bölge içinde mümkün olduğunca çok hata etki alanı arasında yayar. Bu yayma, bölge başına beş veya daha fazla hata etki alanı üzerinde olabilir. Statik sabit yayılmaları ile, ölçek kümesi sanal makinelerinizi bölge başına tam olarak beş hata etki alanına yayar. Ölçek kümesi, ayırma isteğini karşılamak için bölge başına beş ayrı hata etki alanı bulamazsa, istek başarısız olur.
 
-Bu yaklaşım çoğu durumda en iyi yayılmasını sağladığından, **çoğu iş yükü için en fazla yayılmaya karşı dağıtım yapmanızı öneririz** . Çoğaltmalarının ayrı donanım yalıtımı birimlerine yayılması gerekiyorsa, Kullanılabilirlik Alanları arasında yayılmasını ve her bölgede en fazla yayılmasını öneririz.
+Bu yaklaşım çoğu durumda en iyi yayılmasını sağladığından, **çoğu iş yükü için en fazla yayılmaya karşı dağıtım yapmanızı öneririz**. Çoğaltmalarının ayrı donanım yalıtımı birimlerine yayılması gerekiyorsa, Kullanılabilirlik Alanları arasında yayılmasını ve her bölgede en fazla yayılmasını öneririz.
 
 > [!NOTE]
 > Maksimum yayılmaya sahip olarak, sanal makinelerin kaç hata etki alanından yayıldığına bakılmaksızın yalnızca bir hata etki alanını ölçek kümesi VM örneği görünümünde ve örnek meta verilerinde görürsünüz. Her bölge içindeki yayma örtük bir şekilde yapılır.
 
 ### <a name="placement-groups"></a>Yerleştirme grupları
 
-Bir ölçek kümesi dağıttığınızda, kullanılabilirlik alanı başına tek bir [yerleştirme grubu](./virtual-machine-scale-sets-placement-groups.md) veya bölge başına birden çok dağıtım seçeneği de vardır. Bölgesel (ZGen olmayan) ölçek kümeleri için, tercih edilen bölgede tek bir yerleştirme grubu olması veya bölgede birden fazla olması gerekir. Çoğu iş yükü için, daha fazla ölçeğe izin veren birden çok yerleştirme grubu önerilir. API sürüm *2017-12-01* ' de, ölçek kümeleri varsayılan olarak tek bölge ve çapraz bölge ölçek kümeleri için birden çok yerleştirme grubuna ayarlanır, ancak bölgesel (ZGen olmayan) ölçek kümeleri için varsayılan olarak tek bir yerleştirme grubu vardır.
+Bir ölçek kümesi dağıttığınızda, kullanılabilirlik alanı başına tek bir [yerleştirme grubu](./virtual-machine-scale-sets-placement-groups.md) veya bölge başına birden çok dağıtım seçeneği de vardır. Bölgesel (ZGen olmayan) ölçek kümeleri için, tercih edilen bölgede tek bir yerleştirme grubu olması veya bölgede birden fazla olması gerekir. Çoğu iş yükü için, daha fazla ölçeğe izin veren birden çok yerleştirme grubu önerilir. API sürüm *2017-12-01*' de, ölçek kümeleri varsayılan olarak tek bölge ve çapraz bölge ölçek kümeleri için birden çok yerleştirme grubuna ayarlanır, ancak bölgesel (ZGen olmayan) ölçek kümeleri için varsayılan olarak tek bir yerleştirme grubu vardır.
 
 > [!NOTE]
 > Maksimum yayma kullanırsanız, birden çok yerleştirme grubu kullanmanız gerekir.
 
 ### <a name="zone-balancing"></a>Bölge Dengeleme
 
-Son olarak, birden çok bölgede dağıtılan ölçek kümelerinde, "en iyi efor bölge bakiyesi" veya "katı bölge bakiyesi" seçme seçeneğiniz de vardır. Ölçek kümesi için her bölgede aynı VM 'Ler veya +-1 VM varsa, ölçek kümesi "dengeli" olarak değerlendirilir \\ . Örneğin:
+Son olarak, birden çok bölgede dağıtılan ölçek kümelerinde, "en iyi efor bölge bakiyesi" veya "katı bölge bakiyesi" seçme seçeneğiniz de vardır. Ölçek kümesi için her bölgede aynı VM 'Ler veya +-1 VM varsa, ölçek kümesi "dengeli" olarak değerlendirilir \\ . Örnek:
 
 - Bölge 1 ' de 2 VM, bölge 2 ' deki 3 VM ve bölge 3 ' te 3 VM içeren bir ölçek kümesi dengeli kabul edilir. Farklı bir VM sayısı olan tek bir bölge vardır ve bu yalnızca diğer bölgelerden yalnızca 1 küçüktür. 
 - Bölge 1 ' de 1 VM, bölge 2 ' deki 3 VM ve bölge 3 ' te 3 VM içeren bir ölçek kümesi dengesiz olarak değerlendirilir. Bölge 1 2 ve 3 bölge 2 ' den daha az VM 'ye sahiptir.
@@ -52,7 +52,7 @@ Son olarak, birden çok bölgede dağıtılan ölçek kümelerinde, "en iyi efor
 
 En iyi efor bölge bakiyesiyle, ölçek kümesi dengeyi sürdürirken ölçeği ölçeklendirmeye ve dışarı yüklemeye çalışır. Ancak, bazı nedenlerle bu mümkün değilse (örneğin, bir bölge kapalıysa, ölçek kümesi bu bölgede yeni bir sanal makine oluşturamaz), ölçek kümesi geçici dengesizliğine başarıyla ölçeklenebilmesini sağlar. Sonraki genişleme denemelerinde ölçek kümesi, ölçek kümesinin dengelenmesi için daha fazla VM gerektiren bölgelere VM 'Ler ekler. Benzer şekilde, sonraki ölçeğe karşı, ölçek kümesi, ölçek kümesinin dengelenmesi için daha az VM gerektiren bölgelerdeki VM 'Leri kaldırır. "Katı bölge bakiyesi" sayesinde, ölçek kümesi, ölçeği, büyük/dışarı dengelemeye neden olur.
 
-En iyi efor bölge bakiyesini kullanmak için, bölge *bakiyesini* *yanlış* olarak ayarlayın. Bu ayar API sürüm *2017-12-01* ' de varsayılandır. Katı bölge bakiyesini kullanmak için, *bölge bakiyesini* *doğru* olarak ayarlayın.
+En iyi efor bölge bakiyesini kullanmak için, bölge *bakiyesini* *yanlış* olarak ayarlayın. Bu ayar API sürüm *2017-12-01*' de varsayılandır. Katı bölge bakiyesini kullanmak için, *bölge bakiyesini* *doğru* olarak ayarlayın.
 
 ## <a name="single-zone-and-zone-redundant-scale-sets"></a>Tek bölge ve bölgesel olarak yedekli ölçek kümeleri
 
@@ -63,11 +63,11 @@ Tek bir bölgede bir ölçek kümesi oluşturduğunuzda, bu sanal makine örnekl
 Kullanılabilirlik Alanları kullanmak için, ölçek kümesinin [desteklenen bir Azure bölgesinde](../availability-zones/az-region.md)oluşturulması gerekir. Aşağıdaki yöntemlerden biriyle Kullanılabilirlik Alanları kullanan bir ölçek kümesi oluşturabilirsiniz:
 
 - [Azure Portal](#use-the-azure-portal)
-- Azure CLI
+- Azure CLI’si
 - [Azure PowerShell](#use-azure-powershell)
 - [Azure Resource Manager şablonları](#use-azure-resource-manager-templates)
 
-## <a name="use-the-azure-portal"></a>Azure portalını kullanma
+## <a name="use-the-azure-portal"></a>Azure portalı kullanma
 
 Bir kullanılabilirlik alanı kullanan bir ölçek kümesi oluşturma işlemi Başlarken [makalesinde](quick-create-portal.md)ayrıntılı olarak aynıdır. Desteklenen bir Azure bölgesi seçtiğinizde, aşağıdaki örnekte gösterildiği gibi bir veya daha fazla kullanılabilir bölgede ölçek kümesi oluşturabilirsiniz:
 
@@ -75,11 +75,11 @@ Bir kullanılabilirlik alanı kullanan bir ölçek kümesi oluşturma işlemi Ba
 
 Azure yük dengeleyici ve genel IP adresi gibi ölçek kümesi ve destekleyici kaynaklar, belirttiğiniz tek bölgede oluşturulur.
 
-## <a name="use-the-azure-cli"></a>Azure CLI'yi kullanma
+## <a name="use-the-azure-cli"></a>Azure CLI kullanma
 
 Bir kullanılabilirlik alanı kullanan bir ölçek kümesi oluşturma işlemi Başlarken [makalesinde](quick-create-cli.md)ayrıntılı olarak aynıdır. Kullanılabilirlik Alanları kullanmak için, ölçek kümesini desteklenen bir Azure bölgesinde oluşturmanız gerekir.
 
-`--zones`Parametresini [az VMSS Create](/cli/azure/vmss) komutuna ekleyin ve hangi bölgenin kullanılacağını (bölge *1* , *2* veya *3* ) belirtin. Aşağıdaki örnek, bölge *1* ' de *myScaleSet* adlı tek bölgeli bir ölçek kümesi oluşturur:
+`--zones`Parametresini [az VMSS Create](/cli/azure/vmss) komutuna ekleyin ve hangi bölgenin kullanılacağını (bölge *1*, *2* veya *3*) belirtin. Aşağıdaki örnek, bölge *1*' de *myScaleSet* adlı tek bölgeli bir ölçek kümesi oluşturur:
 
 ```azurecli
 az vmss create \
@@ -113,11 +113,11 @@ az vmss create \
 
 Belirttiğiniz bölgelerde ölçek kümesi kaynaklarının ve VM 'Lerin tümünün oluşturulması ve yapılandırılması birkaç dakika sürer. Bölgesel olarak yedekli ölçek kümesi ve ağ kaynaklarının tam bir örneği için, bkz. [Bu örnek CLI betiği](https://github.com/Azure/azure-docs-cli-python-samples/blob/master/virtual-machine-scale-sets/create-zone-redundant-scale-set/create-zone-redundant-scale-set.sh)
 
-## <a name="use-azure-powershell"></a>Azure PowerShell'i kullanma
+## <a name="use-azure-powershell"></a>Azure PowerShell kullanma
 
-Kullanılabilirlik Alanları kullanmak için, ölçek kümesini desteklenen bir Azure bölgesinde oluşturmanız gerekir. `-Zone` [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) komutuna parametresini ekleyin ve hangi bölgenin kullanılacağını (bölge *1* , *2* veya *3* ) belirtin.
+Kullanılabilirlik Alanları kullanmak için, ölçek kümesini desteklenen bir Azure bölgesinde oluşturmanız gerekir. `-Zone` [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) komutuna parametresini ekleyin ve hangi bölgenin kullanılacağını (bölge *1*, *2* veya *3*) belirtin.
 
-Aşağıdaki örnek, *Doğu ABD 2* bölge *1* ' de *myScaleSet* adlı tek bölgeli ölçek kümesi oluşturur. Sanal ağ, genel IP adresi ve yük dengeleyici için Azure ağ kaynakları otomatik olarak oluşturulur. İstendiğinde, ölçek kümesindeki sanal makine örnekleri için kendi istediğiniz yönetici kimlik bilgilerini sağlayın:
+Aşağıdaki örnek, *Doğu ABD 2* bölge *1*' de *myScaleSet* adlı tek bölgeli ölçek kümesi oluşturur. Sanal ağ, genel IP adresi ve yük dengeleyici için Azure ağ kaynakları otomatik olarak oluşturulur. İstendiğinde, ölçek kümesindeki sanal makine örnekleri için kendi istediğiniz yönetici kimlik bilgilerini sağlayın:
 
 ```powershell
 New-AzVmss `
@@ -151,9 +151,9 @@ New-AzVmss `
 
 ## <a name="use-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarını kullanma
 
-Kullanılabilirlik alanı kullanan bir ölçek kümesi oluşturma işlemi, [Linux](quick-create-template-linux.md) veya [Windows](quick-create-template-windows.md)için Başlarken makalesinde ayrıntılı olarak aynıdır. Kullanılabilirlik Alanları kullanmak için, ölçek kümesini desteklenen bir Azure bölgesinde oluşturmanız gerekir. `zones`Şablonunuzda *Microsoft. COMPUTE/virtualMachineScaleSets* kaynak türüne özelliği ekleyin ve hangi bölgenin kullanılacağını (bölge *1* , *2* veya *3* ) belirtin.
+Kullanılabilirlik alanı kullanan bir ölçek kümesi oluşturma işlemi, [Linux](quick-create-template-linux.md) veya [Windows](quick-create-template-windows.md)için Başlarken makalesinde ayrıntılı olarak aynıdır. Kullanılabilirlik Alanları kullanmak için, ölçek kümesini desteklenen bir Azure bölgesinde oluşturmanız gerekir. `zones`Şablonunuzda *Microsoft. COMPUTE/virtualMachineScaleSets* kaynak türüne özelliği ekleyin ve hangi bölgenin kullanılacağını (bölge *1*, *2* veya *3*) belirtin.
 
-Aşağıdaki örnek, *Doğu ABD 2* bölge *1* ' de *myScaleSet* adlı bir Linux tek bölge ölçek kümesi oluşturur:
+Aşağıdaki örnek, *Doğu ABD 2* bölge *1*' de *myScaleSet* adlı bir Linux tek bölge ölçek kümesi oluşturur:
 
 ```json
 {

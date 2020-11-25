@@ -8,11 +8,11 @@ ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: bbb959b6b1d71c81f7b920b3962f693716041e16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89181757"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016242"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Azure CLı ile Linux VM 'de sanal sabit diskler genişletme
 
@@ -28,7 +28,7 @@ Bu makalede, Azure 'da en az bir veri diski eklenmiş ve hazırlanmış bir VM m
 
 Aşağıdaki örneklerde, *Myresourcegroup* ve *myvm* gibi örnek parametre adlarını kendi değerlerinizle değiştirin.
 
-1. Sanal sabit disklerdeki işlemler, çalıştıran VM ile gerçekleştirilemez. [Az VM serbest bırakma](/cli/azure/vm#az-vm-deallocate)ile sanal makineyi serbest bırakın. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *MYVM* adlı VM 'yi kaldırır:
+1. Sanal sabit disklerdeki işlemler, çalıştıran VM ile gerçekleştirilemez. [Az VM serbest bırakma](/cli/azure/vm#az-vm-deallocate)ile sanal makineyi serbest bırakın. Aşağıdaki örnek, *Myresourcegroup* adlı kaynak grubunda *MYVM* adlı VM 'yi kaldırır:
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
@@ -37,7 +37,7 @@ Aşağıdaki örneklerde, *Myresourcegroup* ve *myvm* gibi örnek parametre adla
     > [!NOTE]
     > Sanal sabit diski genişletmek için VM 'nin serbest bırakılmış olması gerekir. VM 'nin ile durdurulması, `az vm stop` işlem kaynaklarını serbest bırakmaz. İşlem kaynaklarını serbest bırakmak için kullanın `az vm deallocate` .
 
-1. [Az disk List](/cli/azure/disk#az-disk-list)komutuyla bir kaynak grubundaki yönetilen disklerin listesini görüntüleyin. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubundaki yönetilen disklerin listesini görüntüler:
+1. [Az disk List](/cli/azure/disk#az-disk-list)komutuyla bir kaynak grubundaki yönetilen disklerin listesini görüntüleyin. Aşağıdaki örnek, *Myresourcegroup* adlı kaynak grubundaki yönetilen disklerin listesini görüntüler:
 
     ```azurecli
     az disk list \
@@ -58,7 +58,7 @@ Aşağıdaki örneklerde, *Myresourcegroup* ve *myvm* gibi örnek parametre adla
     > [!NOTE]
     > Yönetilen bir diski genişlettiğinizde, güncelleştirilmiş boyut, en yakın yönetilen disk boyutuna yuvarlanır. Kullanılabilir yönetilen disk boyutları ve katmanlarının bir tablosu için bkz. [Azure yönetilen disklere genel bakış-fiyatlandırma ve faturalandırma](../managed-disks-overview.md).
 
-1. [Az VM start](/cli/azure/vm#az-vm-start)ile sanal makineyi başlatın. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *MYVM* adlı sanal makineyi başlatır:
+1. [Az VM start](/cli/azure/vm#az-vm-start)ile sanal makineyi başlatın. Aşağıdaki örnek, *Myresourcegroup* adlı kaynak grubunda *MYVM* adlı sanal makineyi başlatır:
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
@@ -105,7 +105,7 @@ Genişletilmiş bir disk kullanmak için temeldeki bölümü ve dosya sistemini 
         1      0.00B  107GB  107GB  ext4
     ```
 
-    c. Bölümü ile genişletin `resizepart` . Bölüm numarasını, *1*ve yeni bölüm için bir boyut girin:
+    c. Bölümü ile genişletin `resizepart` . Bölüm numarasını, *1* ve yeni bölüm için bir boyut girin:
 
     ```bash
     (parted) resizepart

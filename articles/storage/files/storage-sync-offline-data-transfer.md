@@ -8,11 +8,11 @@ ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 94abb33d39765a19306a013576d43fb2602d1c37
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630235"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017636"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync-with-azure-databox"></a>Azure DataBox ile verileri Azure Dosya Eşitleme’ye toplu olarak geçirme
 Toplu verileri Azure Dosya Eşitleme iki şekilde taşıyabilirsiniz:
@@ -51,10 +51,10 @@ Azure Dosya Eşitleme Azure Data Box gibi toplu geçiş araçlarıyla uyumlu ola
 
 | Adım | Ayrıntı |
 |---|---------------------------------------------------------------------------------------|
-| ![1. Adım](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [Data Box sıralayın](../../databox/data-box-deploy-ordered.md). Data Box ailesi, gereksinimlerinizi karşılayacak [çeşitli ürünler](https://azure.microsoft.com/services/storage/databox/data) sunmaktadır. Data Box aldığınızda, Data Box: *\\<\> \<StorageAccountName_AzFile\> \<ShareName\> deviceıpaddres* ' deki bu UNC yoluna [verilerinizi kopyalamak için belgelerini](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box) izleyin. Burada, *PaylaşımAdı* hazırlama paylaşımının adıdır. Data Box Azure 'a geri gönderin. |
+| ![1. Adım](media/storage-sync-files-offline-data-transfer/bullet_1.png) | [Data Box sıralayın](../../databox/data-box-deploy-ordered.md). Data Box ailesi, gereksinimlerinizi karşılayacak [çeşitli ürünler](https://azure.microsoft.com/services/storage/databox/data) sunmaktadır. Data Box aldığınızda, Data Box: *\\<\> \<StorageAccountName_AzFile\> \<ShareName\> deviceıpaddres*' deki bu UNC yoluna [verilerinizi kopyalamak için belgelerini](../../databox/data-box-deploy-copy-data.md#copy-data-to-data-box) izleyin. Burada, *PaylaşımAdı* hazırlama paylaşımının adıdır. Data Box Azure 'a geri gönderin. |
 | ![2. Adım](media/storage-sync-files-offline-data-transfer/bullet_2.png) | Dosyalarınız, geçici hazırlama paylaşımları olarak seçtiğiniz Azure dosya paylaşımlarında gösterilene kadar bekleyin. *Bu paylaşımlara eşitlemeyi etkinleştirmeyin.* |
 | ![3. Adım](media/storage-sync-files-offline-data-transfer/bullet_3.png) | <ul><li>Sizin için Data Box oluşturulan her dosya paylaşımında yeni bir boş paylaşma oluşturun. Bu yeni paylaşımın Data Box paylaşımıyla aynı depolama hesabında olması gerekir. [Yeni bir Azure dosya paylaşımının oluşturulması](storage-how-to-create-file-share.md).</li><li>Depolama eşitleme hizmetinde [bir eşitleme grubu oluşturun](storage-sync-files-deployment-guide.md#create-a-sync-group-and-a-cloud-endpoint) . Boş paylaşıma bulut uç noktası olarak başvur. Her Data Box dosya paylaşımında bu adımı yineleyin. [Azure dosya eşitleme ayarlayın](storage-sync-files-deployment-guide.md).</li></ul> |
-| ![4. Adım](media/storage-sync-files-offline-data-transfer/bullet_4.png) | [Canlı sunucu dizininizi sunucu uç noktası olarak ekleyin](storage-sync-files-deployment-guide.md#create-a-server-endpoint). İşleminde, dosyaları Azure 'a taşımış ve hazırlama paylaşımlarına başvurulacağını belirtin. Gerektiğinde bulut katmanlamayı etkinleştirebilir veya devre dışı bırakabilirsiniz. Canlı sunucunuzda bir sunucu uç noktası oluştururken, hazırlama paylaşımında başvuru yapın. **Sunucu uç noktası Ekle** dikey penceresinde, **çevrimdışı veri aktarımı** altında, **etkin** ' i seçin ve ardından bulut uç noktasıyla aynı depolama hesabında olması gereken hazırlama payını seçin. Burada, kullanılabilir paylaşımların listesi depolama hesabı ve henüz eşitlenmeyen paylaşımlar tarafından filtrelenmiştir. Bu tablonun altındaki ekran görüntüsü, Azure portal sunucu uç noktası oluşturma sırasında veri kutusu paylaşımının nasıl başvurulacağını gösterir. |
+| ![4. Adım](media/storage-sync-files-offline-data-transfer/bullet_4.png) | [Canlı sunucu dizininizi sunucu uç noktası olarak ekleyin](storage-sync-files-deployment-guide.md#create-a-server-endpoint). İşleminde, dosyaları Azure 'a taşımış ve hazırlama paylaşımlarına başvurulacağını belirtin. Gerektiğinde bulut katmanlamayı etkinleştirebilir veya devre dışı bırakabilirsiniz. Canlı sunucunuzda bir sunucu uç noktası oluştururken, hazırlama paylaşımında başvuru yapın. **Sunucu uç noktası Ekle** dikey penceresinde, **çevrimdışı veri aktarımı** altında, **etkin**' i seçin ve ardından bulut uç noktasıyla aynı depolama hesabında olması gereken hazırlama payını seçin. Burada, kullanılabilir paylaşımların listesi depolama hesabı ve henüz eşitlenmeyen paylaşımlar tarafından filtrelenmiştir. Bu tablonun altındaki ekran görüntüsü, Azure portal sunucu uç noktası oluşturma sırasında veri kutusu paylaşımının nasıl başvurulacağını gösterir. |
 | ![5. Adım](media/storage-sync-files-offline-data-transfer/bullet_5.png) | Önceki adımda sunucu uç noktasını ekledikten sonra veriler otomatik olarak doğru kaynaktan akar. [Paylaşma bölümünün eşitlenmesi](#syncing-the-share) , verilerin veri kutusu paylaşımından ya da Windows Server 'dan ne zaman akacağını açıklar |
 | |
 
@@ -75,13 +75,13 @@ Azure Dosya Eşitleme, kullandığınız toplu geçiş aracı başlangıçta ACL
 Eşitlemeyi etkinleştirdiğinizde, sunucunun içeriği ad alanının şeklini saptayabilir. Data Box anlık görüntü ve geçiş bittikten sonra dosyalar yerel sunucudan silinirse, bu dosyalar canlı, eşitleniyor ad alanına taşınamaz. Bunlar, hazırlama paylaşımında kalır, ancak kopyalanmaz. Eşitleme, ad alanını canlı sunucuya göre sakladığı için bu gereklidir. Data Box *anlık görüntüsü* , verimli dosya kopyalama için yalnızca bir aşamadır. Canlı ad alanı şekli için yetkili değildir.
 
 ## <a name="cleaning-up-after-bulk-migration"></a>Toplu geçişten sonra Temizleme 
-Sunucu, ad alanının ilk eşitlemesini tamamladıkça, Data Box toplu geçiş dosyaları hazırlama dosya payını kullanır. Azure portal içindeki **sunucu uç noktası özellikleri** dikey penceresinde, **çevrimdışı veri aktarımı** bölümünde durum ' dan **devam** ' dan **tamamlandı** ' ya değişir. 
+Sunucu, ad alanının ilk eşitlemesini tamamladıkça, Data Box toplu geçiş dosyaları hazırlama dosya payını kullanır. Azure portal içindeki **sunucu uç noktası özellikleri** dikey penceresinde, **çevrimdışı veri aktarımı** bölümünde durum ' dan **devam** ' dan **tamamlandı**' ya değişir. 
 
 ![Çevrimdışı veri aktarımı için durum ve devre dışı bırakma denetimlerinin bulunduğu sunucu uç noktası özellikleri dikey penceresinin ekran görüntüsü](media/storage-sync-files-offline-data-transfer/data-box-integration-3-444.png)
 
 Artık, maliyetleri kaydetmek için hazırlama paylaşımının temizleyebilmeniz gerekir:
 
-1. **Sunucu uç noktası özellikleri** dikey penceresinde, durum **tamamlandığında** **çevrimdışı veri aktarımını devre dışı bırak** ' ı seçin.
+1. **Sunucu uç noktası özellikleri** dikey penceresinde, durum **tamamlandığında** **çevrimdışı veri aktarımını devre dışı bırak**' ı seçin.
 2. Maliyet tasarrufu sağlamak için hazırlama payını silmeyi göz önünde bulundurun. Hazırlama paylaşımında büyük olasılıkla dosya ve klasör ACL 'Leri yoktur, bu nedenle faydalı olma olasılığı düşüktür. Yedekleme noktası açısından, [eşitleme Azure dosya paylaşımının gerçek bir anlık görüntüsünü](storage-snapshots-files.md)oluşturun. Bir zamanlamaya göre [anlık görüntü almak için Azure Backup ayarlayabilirsiniz]( ../../backup/backup-afs.md) .
 
 Çevrimdışı veri aktarımı modunu yalnızca durum **tamamlandığında** veya bir yanlış yapılandırma nedeniyle iptal etmek istediğinizde devre dışı bırakın. Dağıtım sırasında modu devre dışı bırakırsanız, hazırlama paylaşımınız hala kullanılabilir olsa bile dosyalar sunucudan karşıya yüklenmeye başlayacaktır.

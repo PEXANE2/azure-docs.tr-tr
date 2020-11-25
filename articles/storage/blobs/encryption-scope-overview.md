@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 6fb3c9b6dbbab036ddb00edd7e1d5980bb425ebe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 881a7fc915ab986577599b85f8412fa8107f7902
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326125"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017398"
 ---
 # <a name="encryption-scopes-for-blob-storage-preview"></a>BLOB depolama için şifreleme kapsamları (Önizleme)
 
@@ -52,8 +52,8 @@ Bir şifreleme kapsamı devre dışı bırakıldığında, artık bu için fatur
 
 Şifreleme kapsamınız müşteri tarafından yönetilen anahtarlarla korunuyorsa, şifreleme kapsamını devre dışı bırakmak için anahtar kasasında ilişkili anahtarı da silebilirsiniz. Müşteri tarafından yönetilen anahtarların, anahtar kasasındaki geçici silme ve Temizleme koruması ile korunduğunu ve silinen bir anahtarın bu özellikler tarafından tanımlanan davranışa tabi olduğunu aklınızda bulundurun. Daha fazla bilgi için Azure Key Vault belgelerinde aşağıdaki konulardan birine bakın:
 
-- [PowerShell ile geçici silmeyi kullanma](../../key-vault/general/soft-delete-powershell.md)
-- [CLı ile geçici silmeyi kullanma](../../key-vault/general/soft-delete-cli.md)
+- [PowerShell ile geçici silmeyi kullanma](../../key-vault/general/key-vault-recovery.md)
+- [CLı ile geçici silmeyi kullanma](../../key-vault/general/key-vault-recovery.md)
 
 > [!NOTE]
 > Bir şifreleme kapsamının silinmesi mümkün değildir.

@@ -7,11 +7,11 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: 6a429c09b6f8082c95e29bcea62d27ec4fb46fd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86523392"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017313"
 ---
 # <a name="how-to-secure-access-to-data-catalog-and-data-assets"></a>Veri kataloğuna ve veri varlıklarına erişimi güvenli hale getirme
 
@@ -40,7 +40,7 @@ Bir kullanıcıya veya gruba bir veri kataloğu erişimi sağlamak ve izinleri a
 
 5. Metin kutusunun dışında **ENTER** veya **Tab** tuşuna basın. 
 
-6. Tüm izinlerin (**ek açıklama**, **kayıt**ve **alma**) bu kullanıcılara veya gruplara varsayılan olarak atandığını onaylayın. Diğer bir deyişle, Kullanıcı veya grup veri varlıklarını [kaydedebilir]( data-catalog-how-to-register.md), [veri varlıklarına açıklama]( data-catalog-how-to-annotate.md)ekleyebilir ve [veri varlıklarının sahipliğini alabilir]( data-catalog-how-to-manage.md). 
+6. Tüm izinlerin (**ek açıklama**, **kayıt** ve **alma**) bu kullanıcılara veya gruplara varsayılan olarak atandığını onaylayın. Diğer bir deyişle, Kullanıcı veya grup veri varlıklarını [kaydedebilir]( data-catalog-how-to-register.md), [veri varlıklarına açıklama]( data-catalog-how-to-annotate.md)ekleyebilir ve [veri varlıklarının sahipliğini alabilir]( data-catalog-how-to-manage.md). 
 
    ![Azure Veri Kataloğu kullanıcıları-varsayılan izinler](media/data-catalog-how-to-secure-catalog/data-catalog-default-permissions.png)
 

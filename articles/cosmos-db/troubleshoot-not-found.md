@@ -8,12 +8,12 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 782abee06c5ab0f985e8bd90dbbecae18b1dfe02
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 2df401f7871d631ba317fb670783cad086b9a351
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442336"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "96017568"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-not-found-exceptions"></a>Azure Cosmos DB bulunamadı özel durumları tanılama ve sorun giderme
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -25,6 +25,11 @@ Bir uygulamanın kod 404 beklediği ve senaryoyu doğru işlediği birçok geçe
 
 ## <a name="a-not-found-exception-was-returned-for-an-item-that-should-exist-or-does-exist"></a>Var olan veya mevcut olması gereken bir öğe için bulunamadı özel durumu döndürüldü
 Bir durum kodu 404, öğenin var olması veya mevcut olması durumunda döndürülmesinin olası nedenleri aşağıda verilmiştir.
+
+### <a name="the-read-session-is-not-available-for-the-input-session-token"></a>Giriş oturumu belirteci için okuma oturumu kullanılamıyor
+
+#### <a name="solution"></a>Çözüm:
+1. Geçerli SDK 'nizi mevcut en son sürüme güncelleştirin. Bu özel hatanın en yaygın nedenleri en yeni SDK sürümlerinde düzeltildi.
 
 ### <a name="race-condition"></a>Yarış durumu
 Birden çok SDK istemci örneği vardır ve yazma işleminden önce okuma gerçekleşti.

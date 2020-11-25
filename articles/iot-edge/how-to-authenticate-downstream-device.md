@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: f2dd7cac8370c261f24f5587e801bd621fbdb0f0
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151386"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017007"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Azure IoT Hub’da bir aşağı akış cihazının kimliğini doğrulama
 
@@ -142,15 +142,15 @@ Bu bölüm, [Azure IoT Hub 'ınızda X. 509.440 güvenliğini ayarlama](../iot-h
 
    X. 509.952 sertifikaları oluşturmak için bir sertifika yetkiliniz yoksa, IoT Edge tanıtım sertifikası betiklerini kullanarak [aşağı akış cihaz sertifikaları oluşturabilirsiniz](how-to-create-test-certificates.md#create-downstream-device-certificates). CA imzalı sertifikalar oluşturma adımlarını izleyin. Ağ Geçidi cihazınız için sertifikaları oluşturan aynı kök CA sertifikasını kullanın.
 
-2. *Azure IoT Hub 'ınızda x. 509.952 güvenliğini ayarlama*konusunun [IoT Hub 'ınıza x. 509.952 CA sertifikalarını kaydetme](../iot-hub/iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub) bölümündeki yönergeleri izleyin. Bu bölümde, aşağıdaki adımları gerçekleştirirsiniz:
+2. *Azure IoT Hub 'ınızda x. 509.952 güvenliğini ayarlama* konusunun [IoT Hub 'ınıza x. 509.952 CA sertifikalarını kaydetme](../iot-hub/iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub) bölümündeki yönergeleri izleyin. Bu bölümde, aşağıdaki adımları gerçekleştirirsiniz:
 
-   1. Kök CA sertifikasını karşıya yükleyin. Tanıtım sertifikalarını kullanıyorsanız kök CA ** \<path> /certs/Azure-iot-test-only.root.ca.cert.pem**olur.
+   1. Kök CA sertifikasını karşıya yükleyin. Tanıtım sertifikalarını kullanıyorsanız kök CA **\<path> /certs/Azure-iot-test-only.root.ca.cert.pem** olur.
 
    2. Bu kök CA sertifikasına sahip olduğunuzu doğrulayın.
 
-3. *Azure IoT Hub 'ınızda x. 509.440 güvenliği ayarlama*konusunun [IoT Hub 'ınız için x. 509.952 cihazı oluşturma](../iot-hub/iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub) bölümündeki yönergeleri izleyin. Bu bölümde, aşağıdaki adımları gerçekleştirirsiniz:
+3. *Azure IoT Hub 'ınızda x. 509.440 güvenliği ayarlama* konusunun [IoT Hub 'ınız için x. 509.952 cihazı oluşturma](../iot-hub/iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub) bölümündeki yönergeleri izleyin. Bu bölümde, aşağıdaki adımları gerçekleştirirsiniz:
 
-   1. Yeni bir cihaz ekleyin. **CIHAZ kimliği**için küçük harfli bir ad girin ve **X. 509.440 CA imzalı**kimlik doğrulama türünü seçin.
+   1. Yeni bir cihaz ekleyin. **CIHAZ kimliği** için küçük harfli bir ad girin ve **X. 509.440 CA imzalı** kimlik doğrulama türünü seçin.
 
    2. Bir üst cihaz ayarlayın. **Bir üst cihaz ayarla** ' yı seçin ve IoT Hub bağlantısını sağlayacak IoT Edge ağ geçidi cihazını seçin.
 

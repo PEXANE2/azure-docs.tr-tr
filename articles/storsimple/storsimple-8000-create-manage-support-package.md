@@ -7,11 +7,11 @@ ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 4a847b273472ecc9d2aaa3993ec9d88aa46f2e7f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91973878"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017177"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>StorSimple 8000 serisi için destek paketi oluşturma ve yönetme
 
@@ -71,7 +71,7 @@ Export-HcsSupportPackage cmdlet 'i ile aşağıdaki parametreleri kullanabilirsi
 | `-Credential` |İsteğe Bağlı |Ağ paylaşılan klasörü için erişim kimlik bilgilerini sağlamak üzere kullanın. |
 | `-Force` |İsteğe Bağlı |Şifreleme parolası onay adımını atlamak için kullanın. |
 | `-PackageTag` |İsteğe Bağlı |Destek paketinin yerleştirildiği *yol* altında bir dizin belirtmek için kullanın. Varsayılan değer [Cihaz adı]-[geçerli tarih ve Saat: yyyy-aa-gg-HH-mm-ss] şeklindedir. |
-| `-Scope` |İsteğe Bağlı |Her iki denetleyici için bir destek paketi oluşturmak üzere **küme** olarak belirtin (varsayılan). Yalnızca geçerli denetleyici için bir paket oluşturmak istiyorsanız, **denetleyiciyi**belirtin. |
+| `-Scope` |İsteğe Bağlı |Her iki denetleyici için bir destek paketi oluşturmak üzere **küme** olarak belirtin (varsayılan). Yalnızca geçerli denetleyici için bir paket oluşturmak istiyorsanız, **denetleyiciyi** belirtin. |
 
 ## <a name="edit-a-support-package"></a>Destek paketini düzenleme
 

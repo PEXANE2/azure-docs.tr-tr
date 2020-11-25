@@ -11,11 +11,11 @@ ms.date: 10/14/2019
 ms.author: haroldw
 ms.custom: devx-track-ansible, devx-track-azurecli
 ms.openlocfilehash: dd967ad08b628f9073edfe548033f7e97845d047
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735113"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016072"
 ---
 # <a name="post-deployment-tasks"></a>Dağıtım sonrası görevler
 
@@ -70,11 +70,11 @@ Sonraki bir adım için komuttan döndürülen AppID özelliğini bir yere göz 
 
 Azure portalında:
 
-1. **Azure Active Directory**  >  **uygulama kaydı** ' nı seçin.
+1. **Azure Active Directory**  >  **uygulama kaydı**' nı seçin.
 2. Uygulama kaydınızı arayın (örneğin, OCPAzureAD).
 3. Sonuçlarda uygulama kaydı ' na tıklayın.
-4. **Ayarlar** altında **gerekli izinler** ' i seçin.
-5. **Gerekli izinler** altında **Ekle** ' yi seçin.
+4. **Ayarlar** altında **gerekli izinler**' i seçin.
+5. **Gerekli izinler** altında **Ekle**' yi seçin.
 
    ![Uygulama kaydı](media/openshift-post-deployment/app-registration.png)
 
@@ -82,11 +82,11 @@ Azure portalında:
 
    ![Uygulama kaydı API 'SI seçme](media/openshift-post-deployment/app-registration-select-api.png)
 
-7. 2. Adım: Izinleri seçin sayfasında oturum aç ' ı seçin ve **temsilci izinleri** altında **Kullanıcı profilini okuyun** ve ardından **Seç** ' e tıklayın.
+7. 2. Adım: Izinleri seçin sayfasında oturum aç ' ı seçin ve **temsilci izinleri** altında **Kullanıcı profilini okuyun** ve ardından **Seç**' e tıklayın.
 
    ![Uygulama kaydı erişimi](media/openshift-post-deployment/app-registration-access.png)
 
-8. **Bitti** seçeneğini belirleyin.
+8. **Bitti**'yi seçin.
 
 ### <a name="configure-openshift-for-azure-ad-authentication"></a>Azure AD kimlik doğrulaması için OpenShift yapılandırma
 

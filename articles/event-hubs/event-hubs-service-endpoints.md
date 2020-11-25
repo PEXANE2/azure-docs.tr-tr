@@ -4,11 +4,11 @@ description: Bu makalede bir sanal ağa Microsoft. EventHub hizmet uç noktası 
 ms.topic: article
 ms.date: 07/29/2020
 ms.openlocfilehash: 029338e3835d03b1a66ff6629e872c84113b0ff2
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427216"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015595"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-virtual-networks"></a>Belirli sanal ağlardan Azure Event Hubs ad alanlarına erişime izin ver 
 
@@ -55,7 +55,7 @@ Bu bölümde, bir sanal ağ hizmeti uç noktası eklemek için Azure portal nas�
 
     ![Güvenlik Duvarı-tüm ağlar seçeneği seçildi](./media/event-hubs-firewall/firewall-all-networks-selected.png)
 1. Belirli ağlara erişimi kısıtlamak için, henüz seçili değilse sayfanın en üstündeki **Seçili ağlar** seçeneğini belirleyin.
-2. Sayfanın **sanal ağ** bölümünde **+ var olan sanal ağı ekle** _ ' yi seçin. Yeni bir VNet oluşturmak istiyorsanız _ *+ Yeni sanal ağ oluştur* ' u seçin. 
+2. Sayfanın **sanal ağ** bölümünde **+ var olan sanal ağı ekle** _ ' yi seçin. Yeni bir VNet oluşturmak istiyorsanız _ *+ Yeni sanal ağ oluştur*' u seçin. 
 
     ![var olan sanal ağı ekle](./media/event-hubs-tutorial-vnet-and-firewalls/add-vnet-menu.png)
 3. Sanal ağlar listesinden sanal ağı seçin ve ardından **alt ağı** seçin. Sanal ağı listeye eklemeden önce hizmet uç noktasını etkinleştirmeniz gerekir. Hizmet uç noktası etkinleştirilmemişse, Portal bunu etkinleştirmenizi ister.

@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 03/14/2019
 ms.author: alkohli
 ms.openlocfilehash: 36ed87a75d590a8647e5347b3e90e6f5159dc6b5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961842"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016854"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>StorSimple uyarılarını görüntülemek ve yönetmek için StorSimple Aygıt Yöneticisi hizmetini kullanın
 
@@ -60,9 +60,9 @@ Bir cihaz için e-posta bildirimini etkinleştirdikten sonra, bildirim listesini
    
    1. **E-posta bildirimi gönder** alanında **Evet**' i seçin.
    2. **E-posta hizmeti yöneticileri** alanında, hizmet yöneticisinin ve tüm ortak yöneticilerin uyarı bildirimlerini almasını sağlamak için **Evet** ' i seçin.
-   3. **Diğer e-posta alıcıları** alanına, uyarı bildirimlerini alması gereken diğer tüm alıcıların e-posta adreslerini girin. Adları *birisi \@ Somewhere.com*biçiminde girin. E-posta adreslerini ayırmak için noktalı virgül kullanın. Cihaz başına en fazla 20 e-posta adresi yapılandırabilirsiniz. 
+   3. **Diğer e-posta alıcıları** alanına, uyarı bildirimlerini alması gereken diğer tüm alıcıların e-posta adreslerini girin. Adları *birisi \@ Somewhere.com* biçiminde girin. E-posta adreslerini ayırmak için noktalı virgül kullanın. Cihaz başına en fazla 20 e-posta adresi yapılandırabilirsiniz. 
       
-3. Sınama e-postası bildirimi göndermek için **Test e-postası gönder ' e**tıklayın. StorSimple Aygıt Yöneticisi hizmeti, test bildirimini ileten durum iletilerini görüntüler.
+3. Sınama e-postası bildirimi göndermek için **Test e-postası gönder ' e** tıklayın. StorSimple Aygıt Yöneticisi hizmeti, test bildirimini ileten durum iletilerini görüntüler.
 
     ![Uyarı ayarları](./media/storsimple-8000-manage-alerts/configure-alerts-email3.png)
 

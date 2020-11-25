@@ -1,5 +1,5 @@
 ---
-title: dosya dahil etme
+title: include dosyası
 description: Arka uç ASP .NET WebAPI projesi oluşturma kodunu içeren dosyayı ekleyin.
 services: notification-hubs
 author: spelluru
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 3db9811322d27ab287fa568eeeffcb5f4d57bdf7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f490b6f25112ed8a10bbd865070bd07ea3ee84f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86530190"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016973"
 ---
 ## <a name="create-the-webapi-project"></a>WebAPI projesi oluşturma
 
@@ -63,7 +63,7 @@ Aşağıdaki eylemleri yaparak yeni bir ASP.NET WebAPI arka ucu oluşturun:
 
 ## <a name="authenticate-clients-to-the-webapi-backend"></a>WebAPI arka ucunda istemcilerin kimliğini doğrulama
 
-Bu bölümde, yeni arka uç için **AuthenticationTestHandler** adlı yeni bir ileti işleyicisi oluşturacaksınız. Bu sınıf [DelegatingHandler](https://msdn.microsoft.com/library/system.net.http.delegatinghandler.aspx)’dan türetilip bir ileti işleyicisi olarak eklenir, böylece arka uca gelen tüm istekleri işleyebilir.
+Bu bölümde, yeni arka uç için **AuthenticationTestHandler** adlı yeni bir ileti işleyicisi oluşturacaksınız. Bu sınıf [DelegatingHandler](/previous-versions/visualstudio/hh193679(v=vs.118))’dan türetilip bir ileti işleyicisi olarak eklenir, böylece arka uca gelen tüm istekleri işleyebilir.
 
 1. Çözüm Gezgini'nde **AppBackend** projesine sağ tıklayın, **Ekle**'yi ve ardından **Sınıf**'ı seçin.
 2. Yeni **AuthenticationTestHandler.cs** sınıfını adlandırıp **Ekle**’yi seçerek sınıfı oluşturun. Bu sınıf, kolaylık için *Temel Kimlik Doğrulaması* kullanarak kullanıcıların kimliklerini doğrular. Uygulamanız herhangi bir kimlik doğrulama şemasını kullanabilir.
@@ -88,7 +88,7 @@ Bu bölümde, yeni arka uç için **AuthenticationTestHandler** adlı yeni bir i
 
    Aksi takdirde istek reddedilir. Bu kimlik doğrulama işlemi, geçerli bir kimlik doğrulama ve yetkilendirme yaklaşımı değildir. Yalnızca bu öğreticiye yönelik basit bir örnektir.
 
-   İstek iletisi `AuthenticationTestHandler` tarafından kimlik doğrulaması yapılır ve yetkilendirilirse, temel kimlik doğrulaması kullanıcısı [HttpContext](https://msdn.microsoft.com/library/system.web.httpcontext.current.aspx) üzerindeki geçerli isteğe eklenir. HttpContext içindeki kullanıcı bilgileri, bildirim kaydı isteğine bir [etiket](https://msdn.microsoft.com/library/azure/dn530749.aspx) eklemek amacıyla daha sonra başka bir denetleyici (RegisterController) tarafından kullanılır.
+   İstek iletisi `AuthenticationTestHandler` tarafından kimlik doğrulaması yapılır ve yetkilendirilirse, temel kimlik doğrulaması kullanıcısı [HttpContext](/dotnet/api/system.web.httpcontext.current) üzerindeki geçerli isteğe eklenir. HttpContext içindeki kullanıcı bilgileri, bildirim kaydı isteğine bir [etiket](/previous-versions/azure/azure-services/dn530749(v=azure.100)) eklemek amacıyla daha sonra başka bir denetleyici (RegisterController) tarafından kullanılır.
 
     ```csharp
     public class AuthenticationTestHandler : DelegatingHandler
@@ -333,7 +333,7 @@ Bu bölümde, istemci cihazlarına bildirim göndermeleri için bir yol sunan ye
 
     Bu kod, Platform Bildirim Hizmeti (PNS) `pns` parametresini temel alan bir bildirim türü gönderir. `to_tag` değeri, iletideki *kullanıcı adı* etiketini ayarlamak için kullanılır. Bu etiket, etkin bir bildirim hub'ı kaydının kullanıcı etiketi ile eşleşmelidir. Bildirim iletisi, POST isteğinin gövdesinden çekilir ve hedef PNS biçimlendirilir.
 
-    Desteklenen cihazlarınızın bildirimleri almak için kullandığı PNS’e bağlı olarak, bildirimler çeşitli biçimler tarafından desteklenmektedir. Örneğin, Windows cihazlarında başka bir PNS tarafından doğrudan desteklenmeyen bir [WNS ile bildirim](https://msdn.microsoft.com/library/windows/apps/br230849.aspx) kullanabilirsiniz. Böyle bir durumda arka ucunuzun, desteklemeyi planladığınız cihazların PNS’si için bildirimi desteklenen bir bildirim biçimine dönüştürmesi gerekir. Daha sonra [NotificationHubClient sınıfında](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.notificationhubclient_methods.aspx) uygun gönderme API’sini kullanın.
+    Desteklenen cihazlarınızın bildirimleri almak için kullandığı PNS’e bağlı olarak, bildirimler çeşitli biçimler tarafından desteklenmektedir. Örneğin, Windows cihazlarında başka bir PNS tarafından doğrudan desteklenmeyen bir [WNS ile bildirim](/uwp/schemas/tiles/toastschema/schema-root) kullanabilirsiniz. Böyle bir durumda arka ucunuzun, desteklemeyi planladığınız cihazların PNS’si için bildirimi desteklenen bir bildirim biçimine dönüştürmesi gerekir. Daha sonra [NotificationHubClient sınıfında](/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient) uygun gönderme API’sini kullanın.
 
     ```csharp
     public async Task<HttpResponseMessage> Post(string pns, [FromBody]string message, string to_tag)

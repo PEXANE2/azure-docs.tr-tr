@@ -9,11 +9,11 @@ ms.date: 06/25/2020
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 405cb107711845a6699e09bc09a1d2d9f3005cd6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87499985"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016055"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Hızlı başlangıç: Azure portalında Linux sanal makinesi oluşturma
 
@@ -28,25 +28,25 @@ Henüz yapmadıysanız [Azure Portal](https://portal.azure.com) oturum açın.
 ## <a name="create-virtual-machine"></a>Sanal makine oluşturma
 
 1. Aramada **sanal makineler** yazın.
-1. **Hizmetler**altında **sanal makineler**' i seçin.
+1. **Hizmetler** altında **sanal makineler**' i seçin.
 1. **Sanal makineler** sayfasında **Ekle**' yi seçin. **Sanal makine oluştur** sayfası açılır.
 1. **Temel Bilgiler** sekmesinde, **Proje ayrıntıları** altında, doğru aboneliğin seçildiğinden emin olun, ardından **Yeni oluştur** kaynak grubunu seçin. Ad. * için *Myresourcegroup* yazın. 
 
     ![Azure aboneliğini ve sanal makinenin kaynak grubunu nerede seçdiğinin gösterildiği proje ayrıntıları bölümünün ekran görüntüsü](./media/quick-create-portal/project-details.png)
 
-1. **Örnek ayrıntıları**' nın altında, **sanal makine adı**için *myvm* yazın, **bölgeniz**Için *Doğu ABD* seçin ve **görüntünüz**için *Ubuntu 18,04 LTS* ' yi seçin. Diğer varsayılan değerleri bırakın.
+1. **Örnek ayrıntıları**' nın altında, **sanal makine adı** için *myvm* yazın, **bölgeniz** Için *Doğu ABD* seçin ve **görüntünüz** için *Ubuntu 18,04 LTS* ' yi seçin. Diğer varsayılan değerleri bırakın.
 
     ![Sanal makine için bir ad verdiğiniz örnek ayrıntıları bölümünün ekran görüntüsü ve kendi bölgesini, görüntüsünü ve boyutunu seçebilirsiniz](./media/quick-create-portal/instance-details.png)
 
-1. **Yönetici hesabı**altında **SSH ortak anahtarı**' nı seçin.
+1. **Yönetici hesabı** altında **SSH ortak anahtarı**' nı seçin.
 
-1. **Kullanıcı adı** *azureuser*yazın.
+1. **Kullanıcı adı** *azureuser* yazın.
 
-1. **SSH ortak anahtar kaynağı**için varsayılan değer **Oluştur yeni anahtar çiftini**bırakın ve **anahtar çifti adı**için *MyKey* yazın.
+1. **SSH ortak anahtar kaynağı** için varsayılan değer **Oluştur yeni anahtar çiftini** bırakın ve **anahtar çifti adı** için *MyKey* yazın.
 
     ![Bir kimlik doğrulama türü seçip yönetici kimlik bilgilerini sağlayan yönetici hesabı bölümünün ekran görüntüsü](./media/quick-create-portal/administrator-account.png)
 
-1. **Gelen bağlantı noktası kuralları**  >  **Genel gelen bağlantı noktaları**altında **Seçili bağlantı noktalarına izin ver** ' i seçin ve ardından açılan listeden **SSH (22)** ve **http (80)** seçeneğini belirleyin. 
+1. **Gelen bağlantı noktası kuralları**  >  **Genel gelen bağlantı noktaları** altında **Seçili bağlantı noktalarına izin ver** ' i seçin ve ardından açılan listeden **SSH (22)** ve **http (80)** seçeneğini belirleyin. 
 
     ![Gelen bağlantılara izin verilen bağlantı noktalarını seçtiğiniz gelen bağlantı noktası kuralları bölümünün ekran görüntüsü](./media/quick-create-portal/inbound-port-rules.png)
 
@@ -54,7 +54,7 @@ Henüz yapmadıysanız [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. **Sanal makine oluştur** sayfasında oluşturmak üzere olduğunuz VM'nin ayrıntılarını görüntüleyebilirsiniz. Hazır olduğunuzda **Oluştur**'u seçin.
 
-1. **Yeni anahtar çifti oluştur** penceresi açıldığında, **özel anahtarı indir ve kaynak oluştur**' u seçin. Anahtar dosyanız, **MyKey. pem**olarak indirilecek. Dosyanın nerede indirildiğini öğrendiğinizden emin olun `.pem` , bir sonraki adımda bu dosyanın yolunu kullanmanız gerekecektir.
+1. **Yeni anahtar çifti oluştur** penceresi açıldığında, **özel anahtarı indir ve kaynak oluştur**' u seçin. Anahtar dosyanız, **MyKey. pem** olarak indirilecek. Dosyanın nerede indirildiğini öğrendiğinizden emin olun `.pem` , bir sonraki adımda bu dosyanın yolunu kullanmanız gerekecektir.
 
 1. Dağıtım bittiğinde **Kaynağa Git**' i seçin.
 

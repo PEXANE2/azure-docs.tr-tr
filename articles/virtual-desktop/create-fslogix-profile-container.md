@@ -7,11 +7,11 @@ ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 6a9f2c62d8e7f17f6ea8377982c79fef3dfbb97c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88002825"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016837"
 ---
 # <a name="create-a-profile-container-with-azure-netapp-files-and-ad-ds"></a>Azure NetApp Files ve AD DS bir profil kapsayıcısı oluşturun
 
@@ -31,7 +31,7 @@ Bu kılavuzdaki yönergeler özellikle Windows sanal masaüstü kullanıcıları
 >[!NOTE]
 >Azure 'daki farklı FSLogix profili kapsayıcı depolama seçenekleri hakkında daha fazla bilgi arıyorsanız, bkz. [FSLogix profil kapsayıcıları Için depolama seçenekleri](store-fslogix-profile.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir konak havuzu için bir FSLogix profil kapsayıcısı oluşturabilmeniz için öncelikle şunları yapmanız gerekir:
 
@@ -75,10 +75,10 @@ Başlamak için bir Azure NetApp Files hesabı ayarlamanız gerekir.
 8. **Ekle** düğmesini seçin.
 9. **Yeni NetApp hesabı** sekmesi açıldığında, aşağıdaki değerleri girin:
 
-    - **Ad**Için NetApp hesap adınızı girin.
-    - **Abonelik**için, açılan menüden 4. adımda ayarladığınız depolama hesabı için aboneliği seçin.
-    - **Kaynak grubu**için, açılan menüden var olan bir kaynak grubunu seçin ya da **Yeni oluştur**' u seçerek yeni bir tane oluşturun.
-    - **Konum**için, açılan menüden NetApp hesabınız için bölge seçin. Bu bölge, oturum ana bilgisayar VM 'leriniz ile aynı bölgede olmalıdır.
+    - **Ad** Için NetApp hesap adınızı girin.
+    - **Abonelik** için, açılan menüden 4. adımda ayarladığınız depolama hesabı için aboneliği seçin.
+    - **Kaynak grubu** için, açılan menüden var olan bir kaynak grubunu seçin ya da **Yeni oluştur**' u seçerek yeni bir tane oluşturun.
+    - **Konum** için, açılan menüden NetApp hesabınız için bölge seçin. Bu bölge, oturum ana bilgisayar VM 'leriniz ile aynı bölgede olmalıdır.
 
    >[!NOTE]
    >Azure NetApp Files Şu anda bölgeler arasında bir birimin bağlanmasını desteklememektedir.
@@ -94,8 +94,8 @@ Sonra yeni bir kapasite havuzu oluşturun:
 3. **Havuz Ekle**' yi seçin.
 4. **Yeni kapasite havuzu** sekmesi açıldığında, aşağıdaki değerleri girin:
 
-    - **Ad**için yeni kapasite havuzu için bir ad girin.
-    - **Hizmet düzeyi**için, açılan menüden istediğiniz değeri seçin. Çoğu ortam için **Premium** önerilir.
+    - **Ad** için yeni kapasite havuzu için bir ad girin.
+    - **Hizmet düzeyi** için, açılan menüden istediğiniz değeri seçin. Çoğu ortam için **Premium** önerilir.
        >[!NOTE]
        >Premium ayarı, 256 MBps olan Premium hizmet düzeyi için kullanılabilir en düşük aktarım hızını sağlar. Üretim ortamı için bu aktarım hızını ayarlamanız gerekebilir. Son verimlilik, [üretilen iş sınırları](../azure-netapp-files/azure-netapp-files-service-levels.md)' nda açıklanan ilişkiye dayanır.
     - **Boyut (TiB)** için, gereksinimlerinize en uygun kapasite havuzu boyutunu girin. En küçük boyut 4 TiB 'dir.
@@ -113,11 +113,11 @@ Bundan sonra bir Active Directory bağlantısına katılmanız gerekir.
 
 2. Bir bağlantıya katmak için **joın Active Directory** sayfasına aşağıdaki değerleri girin:
 
-    - **BIRINCIL DNS**için, ortamınızda etki alanı adını ÇÖZEBILECEK DNS sunucusunun IP adresini girin.
-    - **Etki alanı**için tam etki alanı adını (FQDN) girin.
-    - **SMB sunucusu (bilgisayar hesabı) ön eki**için, bilgisayar hesap adına eklemek istediğiniz dizeyi girin.
-    - **Kullanıcı adı**için, etki alanına katılmayı gerçekleştirme izinlerine sahip hesabın adını girin.
-    - **Parola**için hesabın parolasını girin.
+    - **BIRINCIL DNS** için, ortamınızda etki alanı adını ÇÖZEBILECEK DNS sunucusunun IP adresini girin.
+    - **Etki alanı** için tam etki alanı adını (FQDN) girin.
+    - **SMB sunucusu (bilgisayar hesabı) ön eki** için, bilgisayar hesap adına eklemek istediğiniz dizeyi girin.
+    - **Kullanıcı adı** için, etki alanına katılmayı gerçekleştirme izinlerine sahip hesabın adını girin.
+    - **Parola** için hesabın parolasını girin.
 
 ## <a name="create-a-new-volume"></a>Yeni birim oluştur
 
@@ -127,13 +127,13 @@ Ardından, yeni bir birim oluşturmanız gerekir.
 
 2. **Birim oluştur** sekmesi açıldığında, aşağıdaki değerleri girin:
 
-    - **Birim adı**için yeni birim için bir ad girin.
-    - **Kapasite havuzu**için, açılan menüden yeni oluşturduğunuz kapasite havuzunu seçin.
+    - **Birim adı** için yeni birim için bir ad girin.
+    - **Kapasite havuzu** için, açılan menüden yeni oluşturduğunuz kapasite havuzunu seçin.
     - **Kota (GiB)** için ortamınıza uygun birim boyutunu girin.
-    - **Sanal ağ**için, açılan menüden etki alanı denetleyicisiyle bağlantısı olan var olan bir sanal ağı seçin.
-    - **Alt ağ**altında **Yeni oluştur**' u seçin. Bu alt ağın Azure NetApp Files için temsilci olarak olacağını aklınızda bulundurun.
+    - **Sanal ağ** için, açılan menüden etki alanı denetleyicisiyle bağlantısı olan var olan bir sanal ağı seçin.
+    - **Alt ağ** altında **Yeni oluştur**' u seçin. Bu alt ağın Azure NetApp Files için temsilci olarak olacağını aklınızda bulundurun.
 
-3.  **Sonraki: \> \> ** protokol ' i seçerek protokol sekmesini açın ve birim erişim parametrelerinizi yapılandırın.
+3.  **Sonraki: \> \>** protokol ' i seçerek protokol sekmesini açın ve birim erişim parametrelerinizi yapılandırın.
 
 ## <a name="configure-volume-access-parameters"></a>Birim erişim parametrelerini yapılandırma
 
@@ -160,23 +160,23 @@ Bu bölüm, bir [dosya paylaşımının kullanıldığı bir konak havuzu için 
 
 2. İndirilen dosyayı sıkıştırmayı açın.
 
-3. Dosyasında **x64**  >  **sürümleri** ' ne gidin ve **FSLogixAppsSetup.exe**çalıştırın. Yükleme menüsü açılır.
+3. Dosyasında **x64**  >  **sürümleri** ' ne gidin ve **FSLogixAppsSetup.exe** çalıştırın. Yükleme menüsü açılır.
 
 4.  Ürün anahtarınız varsa, ürün anahtarı metin kutusuna girin.
 
-5. **Lisans hüküm ve koşullarını kabul**ediyorum seçeneğinin yanındaki onay kutusunu işaretleyin.
+5. **Lisans hüküm ve koşullarını kabul** ediyorum seçeneğinin yanındaki onay kutusunu işaretleyin.
 
-6. **Yükle**'yi seçin.
+6. **Yükle**’yi seçin.
 
 7. Aracının yüklendiğini doğrulamak için **C: \\ Program Files \\ fslogix \\ uygulamalarına** gidin.
 
 8. Başlat menüsünde, **Regedit** komutunu yönetici olarak çalıştırın.
 
-9. **Bilgisayar \\ HKEY_LOCAL_MACHINE \\ yazılım \\ fslogix**sayfasına gidin.
+9. **Bilgisayar \\ HKEY_LOCAL_MACHINE \\ yazılım \\ fslogix** sayfasına gidin.
 
-10. **Profiller**adlı bir anahtar oluşturun.
+10. **Profiller** adlı bir anahtar oluşturun.
 
-11.  **1**veri değerine ayarlanmış **REG_DWORD** türü ile **etkin** adlı bir değer oluşturun.
+11.  **1** veri değerine ayarlanmış **REG_DWORD** türü ile **etkin** adlı bir değer oluşturun.
 
 12. **Vhdlocations** adlı bir değeri **çok** dizeli bir türle oluşturun ve veri değerini Azure NetApp Files paylaşımının URI 'si olarak ayarlayın.
 
@@ -218,7 +218,7 @@ Bu bölüm, bir [dosya paylaşımının kullanıldığı bir konak havuzu için 
 
 3. Kullanıcı oturumunu kurduktan sonra, Azure portal bir yönetici hesabıyla oturum açın.
 
-4. **Azure NetApp Files**açın, Azure NetApp Files hesabınızı seçin ve ardından **birimler**' i seçin. Birimler menüsü açıldıktan sonra karşılık gelen birimi seçin.
+4. **Azure NetApp Files** açın, Azure NetApp Files hesabınızı seçin ve ardından **birimler**' i seçin. Birimler menüsü açıldıktan sonra karşılık gelen birimi seçin.
 
    > [!div class="mx-imgBorder"]
    > ![Daha önce birimler düğmesi seçili Azure portal daha önce ayarladığınız NetApp hesabının ekran görüntüsü.](media/netapp-account.png)

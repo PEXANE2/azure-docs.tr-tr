@@ -17,11 +17,11 @@ ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 565f98126cea8cc03874bb4f83ecdc2c65f8d5fb
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966063"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016463"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows için sanal makine uzantıları ve özellikleri
 
@@ -43,7 +43,7 @@ Birçok farklı Azure VM uzantısı, her biri belirli bir kullanım durumu ile k
 
 İşleme özgü uzantılara ek olarak, hem Windows hem de Linux sanal makineleri için özel bir betik uzantısı vardır. Windows için özel Betik uzantısı, bir VM 'de herhangi bir PowerShell betiğinin çalıştırılmasını sağlar. Özel betikler, yerel Azure araçlarının sağlayabildiklerinin ötesinde yapılandırılması gereken Azure dağıtımlarını tasarlamak için yararlıdır. Daha fazla bilgi için bkz. [WINDOWS VM özel Betik uzantısı](custom-script-windows.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 SANAL makinede uzantıyı işlemek için Azure Windows aracısının yüklü olması gerekir. Bazı ayrı uzantılar, kaynaklara veya bağımlılıklara erişim gibi önkoşullara sahiptir.
 
@@ -264,7 +264,7 @@ Aracılar ve uzantılar aynı güncelleştirme mekanizmasını paylaşır. Bazı
 Bir güncelleştirme kullanılabilir olduğunda, yalnızca Uzantılardaki bir değişiklik olduğunda VM 'de ve diğer VM modeli değiştikçe şu şekilde değişir:
 
 - Veri diskleri
-- Uzantılar
+- Uzantıları
 - Önyükleme tanılaması kapsayıcısı
 - Konuk işletim sistemi gizli dizileri
 - VM boyutu

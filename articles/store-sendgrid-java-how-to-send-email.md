@@ -17,14 +17,14 @@ ms.author: erikre
 ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
 ms.custom: devx-track-java
 ms.openlocfilehash: 9ff006b74b6202b02a2767aee4d853b1206ce60d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87304489"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015460"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>Java 'dan SendGrid kullanarak e-posta gönderme
-Bu kılavuzda, Azure 'da SendGrid e-posta hizmetiyle ortak programlama görevlerinin nasıl gerçekleştirileceği gösterilmektedir. Örnekler Java dilinde yazılmıştır. Kapsanan senaryolar, **e-posta**oluşturma **, e-posta gönderme**, **ekleri ekleme**, **filtreleri kullanma**ve **Özellikleri güncelleştirme**içerir. SendGrid ve e-posta gönderme hakkında daha fazla bilgi için [sonraki adımlar](#next-steps) bölümüne bakın.
+Bu kılavuzda, Azure 'da SendGrid e-posta hizmetiyle ortak programlama görevlerinin nasıl gerçekleştirileceği gösterilmektedir. Örnekler Java dilinde yazılmıştır. Kapsanan senaryolar, **e-posta** oluşturma **, e-posta gönderme**, **ekleri ekleme**, **filtreleri kullanma** ve **Özellikleri güncelleştirme** içerir. SendGrid ve e-posta gönderme hakkında daha fazla bilgi için [sonraki adımlar](#next-steps) bölümüne bakın.
 
 ## <a name="what-is-the-sendgrid-email-service"></a>SendGrid e-posta hizmeti nedir?
 SendGrid, özel tümleştirmeyi kolaylaştıran esnek API 'lerle birlikte güvenilir [işlem e-posta teslimi], ölçeklenebilirlik ve gerçek zamanlı çözümlemeler sağlayan [bulut tabanlı bir e-posta hizmetidir] . Ortak SendGrid kullanım senaryoları şunları içerir:
@@ -143,7 +143,7 @@ multipart.addBodyPart(attachmentPart);
 ```
 
 ## <a name="how-to-use-filters-to-enable-footers-tracking-and-analytics"></a>Nasıl yapılır: altbilgileri, izlemeyi ve analizlerini etkinleştirmek için filtreleri kullanma
-SendGrid, *filtrelerin*kullanımı aracılığıyla ek e-posta işlevselliği sağlar. Bunlar, tıklama izleme, Google Analytics, abonelik izleme gibi belirli işlevleri etkinleştirmek için bir e-posta iletisine eklenebilen ayarlardır. Filtrelerin tam listesi için bkz. [filtre ayarları][Filter Settings].
+SendGrid, *filtrelerin* kullanımı aracılığıyla ek e-posta işlevselliği sağlar. Bunlar, tıklama izleme, Google Analytics, abonelik izleme gibi belirli işlevleri etkinleştirmek için bir e-posta iletisine eklenebilen ayarlardır. Filtrelerin tam listesi için bkz. [filtre ayarları][Filter Settings].
 
 * Aşağıda, gönderilen e-postanın altında görüntülenen HTML metni ile sonuçlanan bir altbilgi filtresinin nasıl ekleneceği gösterilmektedir.
 
@@ -176,7 +176,7 @@ SendGrid, *filtrelerin*kullanımı aracılığıyla ek e-posta işlevselliği sa
     ```
 
 ## <a name="how-to-update-email-properties"></a>Nasıl yapılır: e-posta özelliklerini güncelleştirme
-**Set özelliği** kullanılarak bazı e-posta özelliklerinin üzerine yazılabilir veya **Ekle özelliği**kullanılarak eklenmiş olabilir.
+**Set özelliği** kullanılarak bazı e-posta özelliklerinin üzerine yazılabilir veya **Ekle özelliği** kullanılarak eklenmiş olabilir.
 
 Örneğin, **ReplyTo** adreslerini belirtmek için aşağıdakileri kullanın:
 

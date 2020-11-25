@@ -9,11 +9,11 @@ ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file, devx-track-azurecli
 ms.openlocfilehash: 3fe622d2ff4f6f8aff546452db0f475cfd44eb1b
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95563021"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015391"
 ---
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -23,7 +23,7 @@ Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mant�
 
 [Az Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create) Azure CLI komutunu, [New-azresourcegroup](/powershell/module/az.resources/new-azresourcegroup) Azure PowerShell komutunu veya [Azure Portal](https://portal.azure.com)kullanarak bir kaynak grubu oluşturun.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 ```azurecli-interactive
 az group create --name "myResourceGroup" --location eastus
@@ -44,7 +44,7 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 
 Her Key Vault benzersiz bir adı olmalıdır. -Unique-keykasa-adı> <aşağıdaki örneklerde anahtar kasanızın adıyla değiştirin.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Azure CLı kullanarak bir Anahtar Kasası oluştururken, "--Enabled-for-disk-Encryption" bayrağını ekleyin.
 
@@ -73,7 +73,7 @@ Azure platformunun, birimleri önyüklemek ve şifrelerini çözmek için sanal 
 
 Anahtar kasanızı, oluşturma sırasında (önceki adımda gösterildiği gibi) disk şifrelemesi, dağıtım veya şablon dağıtımı için etkinleştirmezseniz, Gelişmiş erişim ilkelerini güncelleştirmeniz gerekir.  
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Anahtar Kasası için disk şifrelemeyi etkinleştirmek üzere [az keykasatıon Update](/cli/azure/keyvault#az-keyvault-update) kullanın. 
 
@@ -143,7 +143,7 @@ Azure disk şifrelemesi, Anahtar Kasası gizli dizileri ve KEK URL 'Lerinin bir 
   * Kabul edilebilir Anahtar Kasası URL 'SI: *https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
   * Kabul edilmeyen Anahtar Kasası URL 'SI: *https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Yeni bir KEK oluşturmak ve bunu Anahtar Kasanızda depolamak için Azure CLı [az keykasa Key Create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) komutunu kullanın.
 

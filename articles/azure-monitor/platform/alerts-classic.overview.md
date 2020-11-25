@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 05/19/2018
 ms.subservice: alerts
 ms.openlocfilehash: c7dfbd60b7a668b849c3150bb16e40285c345634
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87844125"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015358"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Microsoft Azure'daki klasik uyarılar nedir?
 
@@ -38,7 +38,7 @@ Yeni uyarılar kullanıcı deneyimi, klasik uyarılar deneyimine göre aşağıd
 Daha yeni ölçüm uyarıları klasik ölçüm uyarıları üzerinde aşağıdaki avantajlara sahiptir:
 - **İyileştirilmiş gecikme**: daha yeni ölçüm uyarıları, her dakika daha sık çalıştırılabilir. Daha eski ölçüm uyarıları her zaman 5 dakikalık bir sıklıkta çalışır. Daha yeni uyarılar, sorun oluşma süresinden bildirim veya eyleme (3 ila 5 dakika) karşı daha küçük gecikmeyi artırır. Daha eski uyarılar, türe bağlı olarak 5 ila 15 dakika sürer.  Günlük uyarıları genellikle günlüklerin alınması için gereken süre nedeniyle 10 ila 15 dakikalık gecikme olur, ancak daha yeni işleme yöntemleri bu süreyi azaltmaktadır. 
 - **Çok boyutlu ölçümler Için destek**: ölçüm hakkında ilgi çekici bir segmenti izlemenize olanak tanıyan boyut ölçümlerini uyarabilir.
-- **Ölçüm koşulları üzerinde daha fazla denetim: daha**zengin uyarı kuralları tanımlayabilirsiniz. Yeni uyarılar, ölçümlerin maksimum, minimum, ortalama ve toplam değerlerini izlemeyi destekler.
+- **Ölçüm koşulları üzerinde daha fazla denetim: daha** zengin uyarı kuralları tanımlayabilirsiniz. Yeni uyarılar, ölçümlerin maksimum, minimum, ortalama ve toplam değerlerini izlemeyi destekler.
 - **Birden çok ölçüm Için Birleşik izleme**: birden çok ölçümü (Şu anda en fazla iki ölçüm) tek bir kuralla izleyebilirsiniz. Her iki ölçüm de belirli bir süre boyunca ilgili eşiklerini ihlal ederseniz bir uyarı tetiklenir.
 - **Daha iyi bildirim sistemi**: tüm yeni uyarılar, birden fazla uyarı içinde yeniden kullanılabilen bildirimler ve eylemler grupları adlı [eylem gruplarını](./action-groups.md)kullanır.  Klasik ölçüm uyarıları ve daha eski Log Analytics Uyarıları eylem gruplarını kullanmaz. 
 - **Günlüklerden alınan ölçümler** (Genel Önizleme): Log Analytics olan günlük verileri artık ayıklanıp Azure izleyici ölçümlerine dönüştürülüp diğer ölçümler gibi uyarı verebilir. Klasik uyarılara özgü terminoloji için bkz. [Uyarılar (klasik)]() . 
@@ -68,7 +68,7 @@ Azure, klasik uyarıları ve bunların işlevlerini anlatmak için aşağıdaki 
 ## <a name="how-do-i-receive-a-notification-from-an-azure-monitor-classic-alert"></a>Nasıl yaparım? Azure Monitor klasik uyarısından bildirim almak mı istiyorsunuz?
 Geçmişte, farklı hizmetlerden gelen Azure uyarıları kendi yerleşik bildirim yöntemlerini kullandı. 
 
-Azure Izleyici, *eylem grupları*adlı yeniden kullanılabilir bir bildirim gruplandırması oluşturdu. Eylem grupları bir bildirim için bir alıcı kümesi belirtir. Eylem grubuna başvuran bir uyarının etkinleştirildiği her zaman, tüm alıcılar bu bildirimi alır. Eylem grupları birçok uyarı nesnesi arasında alıcı gruplandırmasını (örneğin, çağrı mühendisi listeniz) yeniden kullanmanıza olanak tanır. Eylem grupları, e-posta adreslerine, SMS numaralarına ve bir dizi diğer eyleme ek olarak bir Web kancası URL 'sine göndererek bildirimi destekler.  Daha fazla bilgi için bkz. [eylem grupları](./action-groups.md). 
+Azure Izleyici, *eylem grupları* adlı yeniden kullanılabilir bir bildirim gruplandırması oluşturdu. Eylem grupları bir bildirim için bir alıcı kümesi belirtir. Eylem grubuna başvuran bir uyarının etkinleştirildiği her zaman, tüm alıcılar bu bildirimi alır. Eylem grupları birçok uyarı nesnesi arasında alıcı gruplandırmasını (örneğin, çağrı mühendisi listeniz) yeniden kullanmanıza olanak tanır. Eylem grupları, e-posta adreslerine, SMS numaralarına ve bir dizi diğer eyleme ek olarak bir Web kancası URL 'sine göndererek bildirimi destekler.  Daha fazla bilgi için bkz. [eylem grupları](./action-groups.md). 
 
 Eski klasik etkinlik günlüğü uyarıları eylem gruplarını kullanır.
 

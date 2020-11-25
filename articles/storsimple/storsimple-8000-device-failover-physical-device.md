@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 67d6fb1f3cc359288ed942d915e186542a62b0fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803951"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017143"
 ---
 # <a name="fail-over-to-a-storsimple-8000-series-physical-device"></a>StorSimple 8000 serisi fiziksel cihazına yük devretme
 
@@ -32,7 +32,7 @@ Cihaz yük devretmesi ve bir olağanüstü durumdan kurtarmak için nasıl kulla
 StorSimple fiziksel cihazını bir StorSimple Cloud Appliance yük devretmek için, [StorSimple Cloud Appliance yük devretme](storsimple-8000-device-failover-cloud-appliance.md)sayfasına gidin. Fiziksel bir cihazın üzerine yük devretmek için [aynı StorSimple fiziksel cihazına yük devretmek](storsimple-8000-device-failover-same-device.md)üzere gidin.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Cihaz yük devretmesi ile ilgili dikkat edilmesi gereken noktaları gözden geçirdiğinizden emin olun. Daha fazla bilgi için [cihaz yük devretmesi Için sık karşılaşılan hususlar](storsimple-8000-device-failover-disaster-recovery.md)bölümüne bakın.
 
@@ -54,14 +54,14 @@ Cihazınızı bir hedef fiziksel cihaza geri yüklemek için aşağıdaki adıml
     
 7. Yük **devretme** dikey penceresinde aşağıdaki adımları uygulayın:
    
-   1. **Kaynak**seçeneğine tıklayın. Bulut anlık görüntüleriyle ilişkili birimlere sahip birim kapsayıcıları görüntülenir. Yalnızca görüntülenen kapsayıcılar yük devretme için uygun değildir. Birim kapsayıcıları listesinde, yük devretmek istediğiniz birim kapsayıcılarını seçin. **Yalnızca ilişkili bulut anlık görüntüleri ve çevrimdışı birimlere sahip birim kapsayıcıları görüntülenir.**
+   1. **Kaynak** seçeneğine tıklayın. Bulut anlık görüntüleriyle ilişkili birimlere sahip birim kapsayıcıları görüntülenir. Yalnızca görüntülenen kapsayıcılar yük devretme için uygun değildir. Birim kapsayıcıları listesinde, yük devretmek istediğiniz birim kapsayıcılarını seçin. **Yalnızca ilişkili bulut anlık görüntüleri ve çevrimdışı birimlere sahip birim kapsayıcıları görüntülenir.**
 
        ![Kaynak seçme](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev5.png)
    2. **Hedef**' e tıklayın. Önceki adımda seçilen birim kapsayıcıları için, kullanılabilir cihazların açılan listesinden bir hedef cihaz seçin. Yalnızca kaynak birim kapsayıcılarını barındırmak için yeterli kapasiteye sahip cihazlar listede görüntülenir.
 
         ![Hedef seçin](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev6.png)
 
-   3. Son olarak, **Özet**altındaki tüm yük devretme ayarlarını gözden geçirin. Ayarları inceledikten sonra, seçili birim kapsayıcılarındaki birimlerin çevrimdışı olduğunu belirten onay kutusunu seçin. **Tamam**'a tıklayın.
+   3. Son olarak, **Özet** altındaki tüm yük devretme ayarlarını gözden geçirin. Ayarları inceledikten sonra, seçili birim kapsayıcılarındaki birimlerin çevrimdışı olduğunu belirten onay kutusunu seçin. **Tamam** düğmesine tıklayın.
 
        ![Yük devretme ayarlarını gözden geçirme](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev8.png)
   

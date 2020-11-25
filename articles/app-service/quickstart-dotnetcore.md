@@ -3,33 +3,32 @@ title: 'Hızlı başlangıç: C# ASP.NET Core uygulaması oluşturma'
 description: İlk ASP.NET Core uygulamanızı dağıtarak Azure App Service Web uygulamaları çalıştırmayı öğrenin.
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
-ms.date: 09/24/2020
+ms.date: 11/23/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperfq1
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: aa8eb945ba77e1a4ac5215acf3bdbc12cac0c4c9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bf7d911c6f9d90e400e589828c093877875e7d97
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91661134"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96015698"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Hızlı başlangıç: Azure 'da ASP.NET Core Web uygulaması oluşturma
 
 ::: zone pivot="platform-windows"  
 
-Bu hızlı başlangıçta, [Azure App Service](overview.md)için ilk ASP.NET Core Web uygulamanızı nasıl oluşturacağınızı ve dağıtacağınızı öğreneceksiniz. 
+Bu hızlı başlangıçta, [Azure App Service](overview.md)için ilk ASP.NET Core Web uygulamanızı nasıl oluşturacağınızı ve dağıtacağınızı öğreneceksiniz. App Service .NET 5,0 uygulamalarını destekler.
 
 İşiniz bittiğinde, bir App Service barındırma planından ve dağıtılan bir Web uygulamasına sahip bir App Service içeren bir Azure Kaynak grubunuz olacaktır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/dotnet/).
-- Bu hızlı başlangıçta Windows üzerinde App Service bir uygulama dağıtılır. _Linux_üzerinde App Service dağıtım yapmak için, bkz. [App Service bir .NET Core Web uygulaması oluşturma](./quickstart-dotnetcore.md).
 - **ASP.net ve Web geliştirme** iş yüküyle <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> ' i yükledikten sonra.
 
   Visual Studio 2019 zaten yüklüyse:
 
-  - **Help**  >  **Güncelleştirmeler için yardım denetimi**' ni seçerek en son güncelleştirmeleri Visual Studio 'ya yükler.
+  - **Help**  >  **Güncelleştirmeler için yardım denetimi**' ni seçerek en son güncelleştirmeleri Visual Studio 'ya yükler. En son güncelleştirmeler .NET 5,0 SDK 'sını içerir.
   - **Araçlar**  >  **Al araçlar ve Özellikler '** i seçerek iş yükünü ekleyin.
 
 
@@ -37,21 +36,45 @@ Bu hızlı başlangıçta, [Azure App Service](overview.md)için ilk ASP.NET Cor
 
 Aşağıdaki adımları izleyerek Visual Studio 'da bir ASP.NET Core Web uygulaması oluşturun:
 
+# <a name="net-core-31"></a>[.NET Core 3,1](#tab/netcore31)
+
 1. Visual Studio 'Yu açın ve **Yeni proje oluştur**' u seçin.
 
 1. **Yeni proje oluştur**' da, **ASP.NET Core Web uygulaması** ' nı seçin ve **C#** ' ın bu seçime Ilişkin dillerde listelendiğini onaylayın, ardından **İleri**' yi seçin.
 
-1. **Yeni projenizi yapılandırın**bölümünde, Web uygulaması projenizi *Myfirstazurewebapp*olarak adlandırın ve **Oluştur**' u seçin.
+1. **Yeni projenizi yapılandırın** bölümünde, Web uygulaması projenizi *Myfirstazurewebapp* olarak adlandırın ve **Oluştur**' u seçin.
 
    ![Web uygulaması projenizi yapılandırma](./media/quickstart-dotnetcore/configure-web-app-project.png)
 
-1. Azure 'a herhangi bir türde ASP.NET Core Web uygulaması dağıtabilirsiniz, ancak bu hızlı başlangıç için **Web uygulaması** şablonunu seçin. **Kimlik doğrulamasının** **kimlik doğrulaması yok**olarak ayarlandığından ve başka bir seçeneğin seçilolmadığından emin olun. Ardından **Oluştur**’u seçin.
+1. Azure 'a herhangi bir türde ASP.NET Core Web uygulaması dağıtabilirsiniz, ancak bu hızlı başlangıç için **Web uygulaması** şablonunu seçin. **Kimlik doğrulamasının** **kimlik doğrulaması yok** olarak ayarlandığından ve başka bir seçeneğin seçilolmadığından emin olun. Ardından **Oluştur**’u seçin.
 
    ![Yeni bir ASP.NET Core Web uygulaması oluşturma](./media/quickstart-dotnetcore/create-aspnet-core-web-app.png) 
    
-1. **Debug**  >  Web uygulamanızı yerel olarak çalıştırmak için Visual Studio menüsünden hata ayıklama**olmadan Başlat** ' ı seçin.
+1. **Debug**  >  Web uygulamanızı yerel olarak çalıştırmak için Visual Studio menüsünden hata ayıklama **olmadan Başlat** ' ı seçin.
 
    ![Yerel olarak çalışan Web uygulaması](./media/quickstart-dotnetcore/web-app-running-locally.png)
+
+# <a name="net-50"></a>[.NET 5,0](#tab/net50)
+
+1. Visual Studio 'Yu açın ve **Yeni proje oluştur**' u seçin.
+
+1. **Yeni proje oluştur**' da, **ASP.NET Core Web uygulaması** ' nı seçin ve **C#** ' ın bu seçime Ilişkin dillerde listelendiğini onaylayın, ardından **İleri**' yi seçin.
+
+1. **Yeni projenizi yapılandırın** bölümünde, Web uygulaması projenizi *Myfirstazurewebapp* olarak adlandırın ve **Oluştur**' u seçin.
+
+   ![Web uygulaması projenizi yapılandırma](./media/quickstart-dotnetcore/configure-web-app-project.png)
+
+1. Bir .NET 5,0 uygulaması için, açılan menüde **ASP.NET Core 5,0** ' i seçin.
+
+1. Azure 'a herhangi bir türde ASP.NET Core Web uygulaması dağıtabilirsiniz, ancak bu hızlı başlangıç için, **ASP.NET Core Web uygulaması** şablonunu seçin. **Kimlik doğrulamasının** **kimlik doğrulaması yok** olarak ayarlandığından ve başka bir seçeneğin seçilolmadığından emin olun. Ardından **Oluştur**’u seçin.
+
+   ![Yeni bir ASP.NET Core Web uygulaması oluşturma](./media/quickstart-dotnetcore/create-aspnet-core-web-app-5.png) 
+   
+1. **Debug**  >  Web uygulamanızı yerel olarak çalıştırmak için Visual Studio menüsünden hata ayıklama **olmadan Başlat** ' ı seçin.
+
+   ![Yerel olarak çalışan Web uygulaması](./media/quickstart-dotnetcore/web-app-running-locally.png)
+
+---
 
 ## <a name="publish-your-web-app"></a>Web uygulamanızı yayımlama
 
@@ -64,23 +87,27 @@ App Service ayarlamanın bir parçası olarak şunları oluşturursunuz:
 
 App Service oluşturup Web uygulamanızı yayımlamak için aşağıdaki adımları izleyin:
 
-1. **Çözüm Gezgini**, **Myfirstazurewebapp** projesine sağ tıklayın ve **Yayımla**' yı seçin. Daha önce Visual Studio 'dan Azure hesabınızda oturum açmadıysanız, **Hesap Ekle** veya **oturum aç**' ı seçin. Ayrıca, ücretsiz bir Azure hesabı da oluşturabilirsiniz.
+1. **Çözüm Gezgini**, **Myfirstazurewebapp** projesine sağ tıklayın ve **Yayımla**' yı seçin. 
 
-1. **Bir yayımlama hedefi seç** iletişim kutusunda **App Service**' i seçin, **Yeni oluştur**' u seçin ve ardından **Profil oluştur**' u seçin.
+1. **Yayımla**' da **Azure** ' ı seçin ve **İleri**' ye tıklayın.
 
-   ![Yayımlama hedefi seçme](./media/quickstart-dotnetcore/pick-publish-target-vs2019.png)
+1. Seçenekleriniz, Azure 'da oturum açmış olup olmadığınız ve bir Azure hesabına bağlı bir Visual Studio hesabınız olup olmadığına bağlıdır. Azure aboneliğinizde oturum açmak için **Hesap Ekle** veya **oturum aç** seçeneklerinden birini belirleyin. Zaten oturum açtıysanız istediğiniz hesabı seçin.
 
-1. **App Service: Yeni oluştur** iletişim kutusunda varsayılan adı kabul ederek ya da yeni bir ad girerek uygulamanız için genel olarak benzersiz bir **ad** sağlayın. Geçerli karakterler: `a-z` , `A-Z` , `0-9` , ve `-` . Bu **ad** , Web uygulamanızın URL ön eki olarak biçiminde kullanılır `http://<app_name>.azurewebsites.net` .
+   ![Azure'da oturum açma](./media/quickstart-dotnetcore/sign-in-azure-vs2019.png)
 
-1. **Abonelik**için, listelenen aboneliği kabul edin veya açılan listeden yeni bir tane seçin.
+1. **App Service örneklerinin** sağında, ' ye tıklayın **+** .
 
-1. **Kaynak grubu**' nda **Yeni**' yi seçin. **Yeni kaynak grubu adı**alanına *Myresourcegroup* yazın ve **Tamam**' ı seçin. 
+   ![Yeni App Service uygulaması](./media/quickstart-dotnetcore/publish-new-app-service.png)
 
-1. **Barındırma planı**için **Yeni**' yi seçin. 
+1. **Abonelik** için, listelenen aboneliği kabul edin veya açılan listeden yeni bir tane seçin.
+
+1. **Kaynak grubu** için **Yeni**' yi seçin. **Yeni kaynak grubu adı** alanına *Myresourcegroup* yazın ve **Tamam**' ı seçin. 
+
+1. **Barındırma planı** için **Yeni**' yi seçin. 
 
 1. **Barındırma planı: Yeni oluştur** iletişim kutusunda, aşağıdaki tabloda belirtilen değerleri girin:
 
-   | Ayar  | Önerilen Değer | Açıklama |
+   | Ayar  | Önerilen Değer | Description |
    | -------- | --------------- | ----------- |
    | **Barındırma Planı**  | *myFirstAzureWebAppPlan* | App Service planının adı. |
    | **Konum**      | *West Europe* | Web uygulamasının barındırıldığı veri merkezi. |
@@ -88,17 +115,17 @@ App Service oluşturup Web uygulamanızı yayımlamak için aşağıdaki adımla
    
    ![Yeni barındırma planı oluştur](./media/quickstart-dotnetcore/create-new-hosting-plan-vs2019.png)
 
-1. **Application Insights** , *none*olarak ayarlı bırakın.
+1. **Ad** alanına,,, ve yalnızca geçerli karakterleri içeren benzersiz bir uygulama adı girin `a-z` `A-Z` `0-9` `-` . Otomatik olarak oluşturulan benzersiz adı kabul edebilirsiniz. Web uygulamasının URL'si `http://<app-name>.azurewebsites.net` şeklindedir; burada `<app-name>`, uygulamanızın adıdır.
 
-1. **App Service: Yeni oluştur** iletişim kutusunda, Azure kaynaklarını oluşturmaya başlamak için **Oluştur** ' u seçin.
+2. Azure kaynaklarını oluşturmak için **Oluştur** ' u seçin.
 
-   ![Yeni App Service oluştur](./media/quickstart-dotnetcore/create-new-app-service-vs2019.png)
+   ![Uygulama kaynakları oluşturma](./media/quickstart-dotnetcore/web-app-name-vs2019.png)
 
-1. Sihirbaz tamamlandıktan sonra **Yayımla**' yı seçin.
+   Sihirbaz tamamlandıktan sonra Azure kaynakları sizin için oluşturulur ve yayımlamaya hazırlarsınız.
 
-   ![Web uygulamasını Azure 'da yayımlama](./media/quickstart-dotnetcore/publish-web-app-vs2019.png)
+3. Sihirbazı kapatmak için **son** ' u seçin.
 
-   Visual Studio ASP.NET Core Web uygulamanızı Azure 'da yayımlar ve uygulamayı varsayılan tarayıcınızda başlatır. 
+1. **Yayımla** sayfasında **Yayımla**' ya tıklayın. Visual Studio uygulamayı oluşturur, paketler ve Azure 'da yayımlar ve ardından uygulamayı varsayılan tarayıcıda başlatır.
 
    ![Azure 'da çalışan yayımlanmış ASP.NET Web uygulaması](./media/quickstart-dotnetcore/web-app-running-live.png)
 
@@ -108,7 +135,7 @@ App Service oluşturup Web uygulamanızı yayımlamak için aşağıdaki adımla
 
 Web uygulamanızı güncelleştirmek ve yeniden dağıtmak için aşağıdaki adımları izleyin:
 
-1. **Çözüm Gezgini**' de, projeniz altında, **Sayfalar**  >  **Index. cshtml**dosyasını açın.
+1. **Çözüm Gezgini**' de, projeniz altında, **Sayfalar**  >  **Index. cshtml** dosyasını açın.
 
 1. Tüm `<div>` etiketi aşağıdaki kodla değiştirin:
 
@@ -123,11 +150,11 @@ Web uygulamanızı güncelleştirmek ve yeniden dağıtmak için aşağıdaki ad
 
 1. **Yayımla** Özeti sayfasında **Yayımla**' yı seçin.
 
-   ![Web uygulamasında güncelleştirme yayımlama](./media/quickstart-dotnetcore/publish-update-to-web-app-vs2019.png)
+   <!-- ![Publish update to web app](./media/quickstart-dotnetcore/publish-update-to-web-app-vs2019.png) -->
 
-Yayımlama tamamlandığında Visual Studio, web uygulamasının URL’si ile bir tarayıcı başlatır.
+    Yayımlama tamamlandığında Visual Studio, web uygulamasının URL’si ile bir tarayıcı başlatır.
 
-![Azure 'da çalışan güncelleştirilmiş ASP.NET Web uygulaması](./media/quickstart-dotnetcore/updated-web-app-running-live.png)
+    ![Azure 'da çalışan güncelleştirilmiş ASP.NET Web uygulaması](./media/quickstart-dotnetcore/updated-web-app-running-live.png)
 
 ## <a name="manage-the-azure-app"></a>Azure uygulamasını yönetme
 
@@ -168,12 +195,23 @@ Mac, Windows veya Linux makinesi kullanarak bu makaledeki adımları izleyebilir
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="set-up-your-initial-environment"></a>İlk ortamınızı ayarlama
+
+# <a name="net-core-31"></a>[.NET Core 3,1](#tab/netcore31)
 
 Bu hızlı başlangıcı tamamlamak için:
 
-* <a href="https://git-scm.com/" target="_blank">Git'i yükleyin</a>
-* <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">En son .NET Core 3,1 SDK 'sını yükler</a>
+* <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">En son .NET Core 3,1 SDK 'Sını yükler</a>.
+* <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI’nin son sürümünü yükleyin</a>.
+
+# <a name="net-50"></a>[.NET 5,0](#tab/net50)
+
+Bu hızlı başlangıcı tamamlamak için:
+
+* <a href="https://dotnet.microsoft.com/download/dotnet/5.0" target="_blank">En son .net 5,0 SDK 'Sını yükler</a>.
+* <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI’nin son sürümünü yükleyin</a>.
+
+---
 
 [Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
 
@@ -196,8 +234,6 @@ dotnet new web
 
 Azure'a dağıttığınızda nasıl görüneceğini görmek için uygulamayı yerel olarak çalıştırın. 
 
-NuGet paketlerini geri yükleyip uygulamayı çalıştırın.
-
 ```bash
 dotnet run
 ```
@@ -208,76 +244,56 @@ Sayfada gösterilen örnek uygulamada **Hello World** iletisini görebilirsiniz.
 
 ![Tarayıcı ile test etme](media/quickstart-dotnetcore/dotnet-browse-local.png)
 
-Terminal pencerenizde **Ctrl+C** tuşlarına basarak web sunucusundan çıkın. .NET Core projesi için bir Git deposu başlatın.
+[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
 
-```bash
-git init
-git add .
-git commit -m "first commit"
+## <a name="sign-into-azure"></a>Azure oturumu açma
+Terminal pencerenizde aşağıdaki komutla Azure 'da oturum açın:
+
+```azurecli
+az login
 ```
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
+## <a name="deploy-the-app"></a>Uygulamayı dağıtma
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+Şu komutu kullanarak kodu yerel klasörünüzde (*hellodotnetcore*) dağıtın `az webapp up` :
 
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
-
-[!INCLUDE [Configure deployment user](../../includes/configure-deployment-user.md)]
-
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
-
-[!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-linux.md)]
-
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
-
-[!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan-linux.md)]
-
-[Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
-
-## <a name="create-a-web-app"></a>Web uygulaması oluşturma
-
-[!INCLUDE [Create web app](../../includes/app-service-web-create-web-app-dotnetcore-linux-no-h.md)]
-
-Yeni oluşturduğunuz uygulamanıza gidin. _ &lt; App-name>_ değerini uygulamanızın adıyla değiştirin.
-
-```bash
-https://<app-name>.azurewebsites.net
+```azurecli
+az webapp up --sku F1 --name <app-name> --os-type linux
 ```
 
-Yeni uygulamanızın şöyle görünmesi gerekir:
+- `az`Komut tanınmazsa, [Ilk ortamınızı ayarlama](#set-up-your-initial-environment)bölümünde AÇıKLANDıĞı gibi Azure CLI 'nin yüklü olduğundan emin olun.
+- `<app-name>`Tüm Azure genelinde benzersiz olan bir adla değiştirin (*geçerli karakterler `a-z` , `0-9` ve `-`*). İyi bir model, şirketinizin adının ve uygulama tanımlayıcısının bir birleşimini kullanmaktır.
+- `--sku F1`Bağımsız değişkeni, ücretsiz fiyatlandırma katmanında Web uygulaması oluşturur. Saatlik maliyet içeren daha hızlı bir Premium katmanı kullanmak için bu bağımsız değişkeni atlayın.
+- İsteğe bağlı olarak `--location <location-name>` `<location-name>` , kullanılabilir bir Azure bölgesi olan bağımsız değişkeni ekleyebilirsiniz. Komutunu çalıştırarak, Azure hesabınız için izin verilen bölgelerin bir listesini alabilirsiniz [`az account list-locations`](/cli/azure/appservice#az-appservice-list-locations) .
 
-![Boş uygulama sayfası](media/quickstart-dotnetcore/dotnet-browse-created.png)
+Komutun tamamlanması birkaç dakika sürebilir. Çalıştırılırken, kaynak grubu oluşturma, App Service planı ve barındırma uygulaması, günlüğü yapılandırma ve ardından ZIP dağıtımı gerçekleştirme hakkında iletiler sağlar. Daha sonra, "uygulamayı &lt; &gt; Azure 'da uygulamanın URL 'si olan http://app-name. azurewebsites.net konumunda başlatabilirsiniz.
 
-[!INCLUDE [Push to Azure](../../includes/app-service-web-git-push-to-azure.md)] 
+# <a name="net-core-31"></a>[.NET Core 3,1](#tab/netcore31)
 
-<pre>
-Enumerating objects: 5, done.
-Counting objects: 100% (5/5), done.
-Compressing objects: 100% (3/3), done.
-Writing objects: 100% (3/3), 285 bytes | 95.00 KiB/s, done.
-Total 3 (delta 2), reused 0 (delta 0), pack-reused 0
-remote: Deploy Async
-remote: Updating branch 'master'.
-remote: Updating submodules.
-remote: Preparing deployment for commit id 'd6b54472f7'.
-remote: Repository path is /home/site/repository
-remote: Running oryx build...
-remote: Build orchestrated by Microsoft Oryx, https://github.com/Microsoft/Oryx
-remote: You can report issues at https://github.com/Microsoft/Oryx/issues
-remote:
-remote: Oryx Version      : 0.2.20200114.13, Commit: 204922f30f8e8d41f5241b8c218425ef89106d1d, ReleaseTagName: 20200114.13
-remote: Build Operation ID: |imoMY2y77/s=.40ca2a87_
-remote: Repository Commit : d6b54472f7e8e9fd885ffafaa64522e74cf370e1
-.
-.
-.
-remote: Deployment successful.
-remote: Deployment Logs : 'https://&lt;app-name&gt;.scm.azurewebsites.net/newui/jsonviewer?view_url=/api/deployments/d6b54472f7e8e9fd885ffafaa64522e74cf370e1/log'
-To https://&lt;app-name&gt;.scm.azurewebsites.net:443/&lt;app-name&gt;.git
-   d87e6ca..d6b5447  master -> master
-</pre>
+![Az WebApp up komutunun örnek çıktısı](./media/quickstart-dotnetcore/az-webapp-up-output-3.1.png)
+
+# <a name="net-50"></a>[.NET 5,0](#tab/net50)
+
+<!-- Deploy the code in your local folder (*hellodotnetcore*) using the `az webapp up` command:
+
+```azurecli
+az webapp up --sku B1 --name <app-name> --os-type linux
+```
+
+- If the `az` command isn't recognized, be sure you have the Azure CLI installed as described in [Set up your initial environment](#set-up-your-initial-environment).
+- Replace `<app-name>` with a name that's unique across all of Azure (*valid characters are `a-z`, `0-9`, and `-`*). A good pattern is to use a combination of your company name and an app identifier.
+- The `--sku B1` argument creates the web app in the Basic pricing tier, which incurs an hourly cost. Omit this argument to use a faster premium tier, which costs more.
+- You can optionally include the argument `--location <location-name>` where `<location-name>` is an available Azure region. You can retrieve a list of allowable regions for your Azure account by running the [`az account list-locations`](/cli/azure/appservice#az-appservice-list-locations) command.
+
+The command may take a few minutes to complete. While running, it provides messages about creating the resource group, the App Service plan and hosting app, configuring logging, then performing ZIP deployment. It then gives the message, "You can launch the app at http://&lt;app-name&gt;.azurewebsites.net", which is the app's URL on Azure. -->
+
+![Az WebApp up komutunun örnek çıktısı](./media/quickstart-dotnetcore/az-webapp-up-output-5.0.png)
+
+---
 
 [Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/DotNetAppServiceLinuxQuickStart)
+
+[!include [az webapp up command note](../../includes/app-service-web-az-webapp-up-note.md)]
 
 ## <a name="browse-to-the-app"></a>Uygulamaya göz atma
 
@@ -303,12 +319,13 @@ Yerel dizinde, _Startup.cs_ dosyasını açın. `context.Response.WriteAsync` y�
 await context.Response.WriteAsync("Hello Azure!");
 ```
 
-Değişikliklerinizi Git’e işleyin ve ardından kod değişikliklerini Azure’a gönderin.
+Değişikliklerinizi kaydettikten sonra `az webapp up` komutu tekrar kullanarak uygulamayı yeniden dağıtın:
 
-```bash
-git commit -am "updated output"
-git push azure master
+```azurecli
+az webapp up
 ```
+
+Bu komut, uygulama adı, kaynak grubu ve App Service planı dahil olmak üzere *. Azure/config* dosyasında yerel olarak önbelleğe alınan değerleri kullanır.
 
 Dağıtım tamamlandıktan sonra **Uygulamaya göz at** adımında açılan tarayıcı penceresine dönüp yenile öğesine dokunun.
 
@@ -322,11 +339,11 @@ Oluşturduğunuz uygulamayı yönetmek için <a href="https://portal.azure.com" 
 
 Sol menüden **uygulama hizmetleri**' ne ve ardından Azure uygulamanızın adına tıklayın.
 
-:::image type="content" source="./media/quickstart-dotnetcore/portal-app-service-list.png" alt-text="Örnek bir Web uygulaması seçili olan App Services sayfasının ekran görüntüsü.":::
+:::image type="content" source="./media/quickstart-dotnetcore/portal-app-service-list-up.png" alt-text="Uygulama Hizmetleri sayfasının seçili örnek bir Azure uygulaması gösteren ekran görüntüsü.":::
 
 Uygulamanızın genel bakış sayfasını görürsünüz. Buradan göz atma, durdurma, başlatma, yeniden başlatma ve silme gibi temel yönetim görevlerini gerçekleştirebilirsiniz. 
 
-![Azure portalında App Service sayfası](media/quickstart-dotnetcore/portal-app-overview.png)
+![Azure portalında App Service sayfası](media/quickstart-dotnetcore/portal-app-overview-up.png)
 
 Soldaki menü, uygulamanızı yapılandırmak için farklı sayfalar sağlar. 
 

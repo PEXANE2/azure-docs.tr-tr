@@ -17,11 +17,11 @@ ms.topic: article
 ms.date: 05/10/2018
 ms.author: akjosh
 ms.openlocfilehash: e46f7f3d51d2841a2287c86f9e8dddd7460b1a5d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951494"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016446"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>Azure CLı ile VMAccess uzantısını kullanarak Linux VM 'lerinde yönetim kullanıcılarını, SSH 'yi yönetme ve diskleri denetleme veya onarma
 ## <a name="overview"></a>Genel Bakış
@@ -32,7 +32,7 @@ Bu makalede, Azure VMAccess uzantısını kullanarak bir diski denetleme veya on
 > [!NOTE]
 > AAD oturum açma uzantısını yükledikten sonra sanal makinenizin parolasını sıfırlamak için VMAccess uzantısını kullanırsanız, makinenizde AAD oturum açmayı yeniden etkinleştirmek için AAD oturum açma uzantısını yeniden çalıştırmanız gerekir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 ### <a name="operating-system"></a>İşletim sistemi
 
 VM erişimi uzantısı şu Linux dağıtımlarına karşı çalıştırılabilir:

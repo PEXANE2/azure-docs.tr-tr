@@ -10,11 +10,11 @@ ms.date: 05/18/2018
 ms.reviewer: avverma
 ms.custom: avverma, devx-track-azurecli
 ms.openlocfilehash: 68f311a949d6c7663c5602c444d1b7b9af09dcad
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517504"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016735"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>Öğretici: Azure CLI ile sanal makine ölçek kümesini otomatik olarak ölçeklendirme
 
@@ -55,7 +55,7 @@ az vmss create \
 
 ## <a name="define-an-autoscale-profile"></a>Otomatik ölçeklendirme profilini tanımlama
 
-Bir ölçek kümesinde otomatik ölçeklendirmeyi etkinleştirmek için ilk olarak bir otomatik ölçeklendirme profili tanımlamanız gerekir. Bu profil varsayılan, en düşük ve en yüksek ölçek kümesi kapasitesini tanımlar. Bu sınırlar, sanal makine örneklerini sürekli olarak oluşturmadığından maliyeti denetlemenizi sağlar ve ölçek genişletme olayında kalan minimum örnek sayısı ile kabul edilebilir performansı dengelemenize olanak tanır. [az monitor autoscale create](/cli/azure/monitor/autoscale#az-monitor-autoscale-create) komutu ile bir otomatik ölçeklendirme profili oluşturun. Aşağıdaki örnek, varsayılan ve en düşük, *2* VM örneğinin kapasitesini ve en fazla *10* ' u ayarlar:
+Bir ölçek kümesinde otomatik ölçeklendirmeyi etkinleştirmek için ilk olarak bir otomatik ölçeklendirme profili tanımlamanız gerekir. Bu profil varsayılan, en düşük ve en yüksek ölçek kümesi kapasitesini tanımlar. Bu sınırlar, sanal makine örneklerini sürekli olarak oluşturmadığından maliyeti denetlemenizi sağlar ve ölçek genişletme olayında kalan minimum örnek sayısı ile kabul edilebilir performansı dengelemenize olanak tanır. [az monitor autoscale create](/cli/azure/monitor/autoscale#az-monitor-autoscale-create) komutu ile bir otomatik ölçeklendirme profili oluşturun. Aşağıdaki örnek, varsayılan ve en düşük, *2* VM örneğinin kapasitesini ve en fazla *10*' u ayarlar:
 
 ```azurecli-interactive
 az monitor autoscale create \
@@ -131,7 +131,7 @@ sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-**stress** , *stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* benzeri bir çıktı gösterdiğinde, isteme geri dönmek için *Enter* tuşuna basın.
+**stress**, *stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* benzeri bir çıktı gösterdiğinde, isteme geri dönmek için *Enter* tuşuna basın.
 
 **stress** yardımcı programının CPU yükü oluşturduğunu onaylamak için, **top** yardımcı programını kullanarak etkin sistem yükünü inceleyin:
 
@@ -159,7 +159,7 @@ sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-Tekrar **stress** , *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* benzeri bir çıktı gösterdiğinde, isteme geri dönmek için *Enter* tuşuna basın.
+Tekrar **stress**, *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* benzeri bir çıktı gösterdiğinde, isteme geri dönmek için *Enter* tuşuna basın.
 
 İkinci sanal makine örneğiyle bağlantınızı kapatın. **stress** yardımcı programı, sanal makine örneğinde çalışmaya devam eder.
 

@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
 ms.openlocfilehash: 17ea965758150adb72d8e8f9fee9937bd5387a48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87371932"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016327"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Azure 'da IBM DB2 pureScale dağıtma
 
@@ -111,7 +111,7 @@ GitHub deposu, DB2 pureScale yüklemesi için otomatikleştirilmiş bir komut do
 
 - Kurulum betikleri, gerçek adların kolayca bulunabilmesi için Iscsı disklerinin diğer adlarını kullanır.
 
-- D0 üzerinde kurulum betiği çalıştırıldığında, **/dev/DM- \* ** Values, D1, cf0 ve CF1 üzerinde farklı olabilir. Değerlerin farkı, DB2 pureScale kurulumunu etkilemez.
+- D0 üzerinde kurulum betiği çalıştırıldığında, **/dev/DM- \*** Values, D1, cf0 ve CF1 üzerinde farklı olabilir. Değerlerin farkı, DB2 pureScale kurulumunu etkilemez.
 
 ## <a name="troubleshooting-and-known-issues"></a>Sorun çözümü ve bilinen sorunlar
 

@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-machines-linux
 author: cynthn
 ms.service: virtual-machines-linux
@@ -9,11 +9,11 @@ ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 86f687bd4fd8be93efbf77c883c723046c2c96d8
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91997936"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016144"
 ---
 ## <a name="supported-distributions-and-drivers"></a>Desteklenen dağıtımlar ve sürücüler
 
@@ -33,7 +33,7 @@ Azure tarafından yeniden dağıtılan KıLAVUZ sürücüleri, NC, NCv2, NCv3, N
 
 | Dağıtım | Sürücü |
 | --- | -- |
-|Ubuntu 18,04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>7,6 Red Hat Enterprise Linux 7,8, 8,0, 8,1<br/><br/>CentOS tabanlı 7,6, 7,7, 8,0, 8 (1911)<br/><br/>SUSE Linux Enterprise Server 12 SP2 | NVıDıA GRID 11,1, sürücü dalı [R450](https://go.microsoft.com/fwlink/?linkid=874272)(. exe)|
+|Ubuntu 18.04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>7,6 Red Hat Enterprise Linux 7,8, 8,0, 8,1<br/><br/>CentOS tabanlı 7,6, 7,7, 8,0, 8 (1911)<br/><br/>SUSE Linux Enterprise Server 12 SP2 | NVıDıA GRID 11,1, sürücü dalı [R450](https://go.microsoft.com/fwlink/?linkid=874272)(. exe)|
 
 > [!WARNING] 
 > Red Hat ürünlerine üçüncü taraf yazılım yüklenmesi Red Hat destek koşullarını etkileyebilir. Bkz. [Red Hat Bilgi Bankası makalesi](https://access.redhat.com/articles/1067).

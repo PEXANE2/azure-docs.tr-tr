@@ -5,11 +5,11 @@ ms.date: 11/20/2019
 ms.topic: conceptual
 ms.reviewer: mmercuri
 ms.openlocfilehash: dae63e16356e825d3be31380df1648749e59d8bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86538386"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015511"
 ---
 # <a name="smart-contract-integration-patterns"></a>Akıllı anlaşma tümleştirme desenleri
 
@@ -75,7 +75,7 @@ Bu senaryoda, bir akıllı sözleşmede, örneğin bir durum değişikliği veya
 
 Bu senaryoya örnek olarak, bir işlem gerçekleştiğinde bir tüketici uyarı verebilir ve bilgileri bir SQL VERITABANıNA veya Common Data Service kaydetme gibi işlemler gerçekleştirebilir. Bu senaryo, SQL DB 'nin *kapalı zincirini* doldurmak için aşağıdaki şekilde kullanılan modeldir.
 
-Başka bir deyişle, bir anlaşma bir *Outofuyum*içine geçtiğinde, bir akıllı anlaşma belirli bir duruma geçiş yaptığında olur. Bu durum değişikliği gerçekleştiğinde, bir uyarının bir yöneticinin cep telefonuna gönderilmesini tetikleyemeyebilir.
+Başka bir deyişle, bir anlaşma bir *Outofuyum* içine geçtiğinde, bir akıllı anlaşma belirli bir duruma geçiş yaptığında olur. Bu durum değişikliği gerçekleştiğinde, bir uyarının bir yöneticinin cep telefonuna gönderilmesini tetikleyemeyebilir.
 
 ![Tek yönlü olay teslimi](./media/integration-patterns/one-way-event-delivery.png)
 
@@ -192,7 +192,7 @@ Azure platformunda cihazlarla tümleştirme, genellikle IoT Hub ile yapılır. I
 -   Dönüştürülmüş ileti, artık standart biçimde, Azure blok zinciri çalışma ekranı için Service Bus gönderilir.
 -   Azure blok zinciri çalışma ekranı, Service Bus olaylara abone olur ve iletiyi alır.
 -   Azure blok zinciri çalışma ekranı, dış sistemden belirli bir sözleşmeye veri gönderen bir genel muhasebeye çağrı başlatır.
--   İletinin alınması sırasında, sözleşme verileri değerlendirir ve bu değerlendirmenin sonucuna göre durumu değiştirebilir (örneğin, yüksek bir sıcaklık için durumu *uyumsuz*olarak değiştirin).
+-   İletinin alınması sırasında, sözleşme verileri değerlendirir ve bu değerlendirmenin sonucuna göre durumu değiştirebilir (örneğin, yüksek bir sıcaklık için durumu *uyumsuz* olarak değiştirin).
 
 ## <a name="data-integration"></a>Veri tümleştirmesi
 

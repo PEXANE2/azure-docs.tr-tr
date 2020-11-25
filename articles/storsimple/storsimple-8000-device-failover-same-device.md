@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/23/2017
 ms.author: alkohli
 ms.openlocfilehash: 17c116194aa52a82246bcee9114824e8a918ebbd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88184338"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017109"
 ---
 # <a name="fail-over-your-storsimple-physical-device-to-same-device"></a>StorSimple fiziksel cihazınızı aynı cihaza devreder
 
@@ -32,7 +32,7 @@ Cihaz yük devretmesi ve bir olağanüstü durumdan kurtarmak için nasıl kulla
 Fiziksel bir cihazı başka bir fiziksel cihaza devretmek için [aynı StorSimple fiziksel cihazına yük devretmek](storsimple-8000-device-failover-physical-device.md)üzere gidin. StorSimple fiziksel cihazını bir StorSimple Cloud Appliance yük devretmek için, [StorSimple Cloud Appliance yük devretme](storsimple-8000-device-failover-cloud-appliance.md)sayfasına gidin.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Cihaz yük devretmesi ile ilgili dikkat edilmesi gereken noktaları gözden geçirdiğinizden emin olun. Daha fazla bilgi için [cihaz yük devretmesi Için sık karşılaşılan hususlar](storsimple-8000-device-failover-disaster-recovery.md)bölümüne bakın.
 
@@ -43,14 +43,14 @@ Aynı cihaza yük devri yapmanız gerekiyorsa aşağıdaki adımları gerçekle�
 
 1. Cihazınızdaki tüm birimlerin bulut anlık görüntülerini alın. Daha fazla bilgi için bkz. [yedek oluşturmak Için StorSimple Aygıt Yöneticisi hizmetini kullanma](storsimple-8000-manage-backup-policies-u2.md).
 2. Cihazınızı fabrika ayarlarına sıfırlayın. [StorSimple cihazını fabrika varsayılan ayarlarına sıfırlama](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings)konusundaki ayrıntılı yönergeleri izleyin.
-3. StorSimple Aygıt Yöneticisi hizmetine gidin ve ardından **cihazlar**' ı seçin. **Cihazlar** dikey penceresinde eski cihaz **çevrimdışı**olarak gösterilmelidir.
+3. StorSimple Aygıt Yöneticisi hizmetine gidin ve ardından **cihazlar**' ı seçin. **Cihazlar** dikey penceresinde eski cihaz **çevrimdışı** olarak gösterilmelidir.
 
     ![Kaynak cihaz çevrimdışı](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev2.png)
 
-4. Cihazınızı yapılandırın ve StorSimple Aygıt Yöneticisi hizmetinize yeniden kaydedin. Yeni kaydedilen cihaz, **ayarlanmaya hazırlık**olarak gösterilmelidir. Yeni cihaz için cihaz adı eski cihazla aynıdır, ancak cihazın fabrika varsayılanına sıfırlandığını ve yeniden kaydedildiğini göstermek için bir sayıyla birlikte eklenir.
+4. Cihazınızı yapılandırın ve StorSimple Aygıt Yöneticisi hizmetinize yeniden kaydedin. Yeni kaydedilen cihaz, **ayarlanmaya hazırlık** olarak gösterilmelidir. Yeni cihaz için cihaz adı eski cihazla aynıdır, ancak cihazın fabrika varsayılanına sıfırlandığını ve yeniden kaydedildiğini göstermek için bir sayıyla birlikte eklenir.
 
     ![Yeni kayıtlı cihaz ayarlamaya hazırlanıyor](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev3.png)
-5. Yeni cihaz için, cihaz kurulumunu doldurun. Daha fazla bilgi için 4. [Adım: en düşük cihaz kurulumunu tamamlayın](storsimple-8000-deployment-walkthrough-u2.md#step-4-complete-minimum-device-setup)bölümüne gidin. **Cihazlar** dikey penceresinde, cihazın durumu **çevrimiçi**olarak değişir.
+5. Yeni cihaz için, cihaz kurulumunu doldurun. Daha fazla bilgi için 4. [Adım: en düşük cihaz kurulumunu tamamlayın](storsimple-8000-deployment-walkthrough-u2.md#step-4-complete-minimum-device-setup)bölümüne gidin. **Cihazlar** dikey penceresinde, cihazın durumu **çevrimiçi** olarak değişir.
 
    > [!IMPORTANT]
    > **Önce en düşük yapılandırmayı tamamladıktan sonra, DR başarısız olabilir.**

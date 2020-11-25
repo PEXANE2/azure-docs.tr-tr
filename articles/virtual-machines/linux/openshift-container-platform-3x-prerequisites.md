@@ -10,11 +10,11 @@ ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
 ms.openlocfilehash: 68bd748e890659e4b79d76e4ccab038f251a937a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87368192"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016038"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>Azure 'da OpenShift kapsayıcı platformu 3,11 dağıtmaya yönelik genel Önkoşullar
 
@@ -98,9 +98,9 @@ Openshıft, bir Kullanıcı adı ve parola veya hizmet sorumlusu kullanarak Azur
 
 [Az ad SP Create-for-RBAC](/cli/azure/ad/sp) ile bir hizmet sorumlusu oluşturun ve OpenShift 'in ihtiyaç duyacağı kimlik bilgilerini çıktı.
 
-Aşağıdaki örnek bir hizmet sorumlusu oluşturur ve bu gruba, *openkaydırıcı Trg*adlı bir kaynak grubuna katkıda bulunan izinleri atar.
+Aşağıdaki örnek bir hizmet sorumlusu oluşturur ve bu gruba, *openkaydırıcı Trg* adlı bir kaynak grubuna katkıda bulunan izinleri atar.
 
-İlk olarak, *openkaydırıcı Trg*adlı kaynak grubunu oluşturun:
+İlk olarak, *openkaydırıcı Trg* adlı kaynak grubunu oluşturun:
 
 ```azurecli
 az group create -l eastus -n openshiftrg
@@ -138,7 +138,7 @@ Hizmet sorumluları hakkında daha fazla bilgi için bkz. [Azure CLI Ile Azure h
 
 ## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>Yalnızca Kaynak Yöneticisi şablona uygulanabilir Önkoşullar
 
-SSH özel anahtarı (**Sshprivatekey**), Azure AD İstemci parolası (**Aadclientsecret**), OpenShift yönetici parolası (**OpenshiftPassword**) ve Red Hat abonelik Yöneticisi parolası ya da etkinleştirme anahtarı (**rhsmPasswordOrActivationKey**) için gizli dizi oluşturulması gerekir.  Ayrıca, özel TLS/SSL sertifikaları kullanılıyorsa, altı ek parolaların oluşturulması gerekir- **routingcafile**, **routingsertifikadosyası**, **routingkeyfile**, **mastercafile**, **mastersertifikadosyası**ve **masterkeyfile**.  Bu parametreler daha ayrıntılı olarak açıklanacaktır.
+SSH özel anahtarı (**Sshprivatekey**), Azure AD İstemci parolası (**Aadclientsecret**), OpenShift yönetici parolası (**OpenshiftPassword**) ve Red Hat abonelik Yöneticisi parolası ya da etkinleştirme anahtarı (**rhsmPasswordOrActivationKey**) için gizli dizi oluşturulması gerekir.  Ayrıca, özel TLS/SSL sertifikaları kullanılıyorsa, altı ek parolaların oluşturulması gerekir- **routingcafile**, **routingsertifikadosyası**, **routingkeyfile**, **mastercafile**, **mastersertifikadosyası** ve **masterkeyfile**.  Bu parametreler daha ayrıntılı olarak açıklanacaktır.
 
 Şablon, belirli gizli adlara başvurur, böylece yukarıda listelenen kalın adları kullanmanız **gerekir** (büyük/küçük harfe duyarlı).
 

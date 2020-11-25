@@ -15,18 +15,18 @@ ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: b-juche
 ms.openlocfilehash: 7eac6a40476cffe875a03de49c9c9311ffbf4d39
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016051"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017075"
 ---
 # <a name="service-levels-for-azure-netapp-files"></a>Azure NetApp Files için hizmet düzeyleri
 Hizmet düzeyleri, bir kapasite havuzunun özniteliğidir. Hizmet düzeyleri, birime atanan kota temelinde kapasite havuzundaki bir birim için izin verilen en yüksek aktarım hızına göre tanımlanır ve farklılaştırılır.
 
 ## <a name="supported-service-levels"></a>Desteklenen hizmet düzeyleri
 
-Azure NetApp Files üç hizmet düzeyini destekler: *Ultra*, *Premium*ve *Standart*. 
+Azure NetApp Files üç hizmet düzeyini destekler: *Ultra*, *Premium* ve *Standart*. 
 
 * <a name="Ultra"></a>Ultra depolama
 

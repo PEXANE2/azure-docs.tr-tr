@@ -8,11 +8,11 @@ ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
 ms.openlocfilehash: 0806c6e0ed89c2c0f4712ec985599810119fcf89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86999029"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015528"
 ---
 # <a name="monitoring-scheduled-events"></a>İzleme Zamanlanan Olaylar
 
@@ -109,8 +109,8 @@ Herhangi bir noktada, ve anahtarlarını kullanarak zamanlanan olay hizmetini du
 
     ![Bir VM 'ye veri kaynağı olarak bağlanma](./media/notifications/connect-to-data-source.png)
 
-1. **Mycollectorvm**öğesini arayın ve seçin. 
-1. **Mycollectorvm**için yeni sayfada **Bağlan**' ı seçin.
+1. **Mycollectorvm** öğesini arayın ve seçin. 
+1. **Mycollectorvm** için yeni sayfada **Bağlan**' ı seçin.
 
 Bu işlem, sanal makinenize [Microsoft Monitoring Agent](../extensions/oms-windows.md) 'ı yükler. SANAL makinenizin çalışma alanına bağlanması ve uzantıyı yüklemesi birkaç dakika sürer. 
 
@@ -122,7 +122,7 @@ Bu işlem, sanal makinenize [Microsoft Monitoring Agent](../extensions/oms-windo
 
     ![Gelişmiş ayarları seçin](./media/notifications/advanced.png)
 
-1. **Hata**, **Uyarı**ve **bilgi** seçili bırakın ve sonra ayarları kaydetmek için **Kaydet** ' i seçin.
+1. **Hata**, **Uyarı** ve **bilgi** seçili bırakın ve sonra ayarları kaydetmek için **Kaydet** ' i seçin.
 
 
 > [!NOTE]
@@ -150,22 +150,22 @@ Olaylar Log Analytics gönderildikten sonra, zamanlama olaylarını aramak için
     | project-away RenderedDescription,ReqJson
     ```
 
-1. **Kaydet**' i seçin ve ardından ad Için *Logquery* yazın, **sorgu** türü olarak bırakın, **Kategori**olarak *vmlogs* yazın ve ardından **Kaydet**' i seçin. 
+1. **Kaydet**' i seçin ve ardından ad Için *Logquery* yazın, **sorgu** türü olarak bırakın, **Kategori** olarak *vmlogs* yazın ve ardından **Kaydet**' i seçin. 
 
     ![Sorguyu Kaydet](./media/notifications/save-query.png)
 
 1. **Yeni uyarı kuralı**'nı seçin. 
-1. **Kural oluştur** sayfasında `collectorworkspace` **kaynak**olarak bırakın.
-1. **Koşul**' ın altında, *müşteri günlüğü <login undefined> aramasının her seferinde *girişi seçin. **Sinyal mantığını Yapılandır** sayfası açılır.
-1. **Eşik değeri**altında *0* girin ve **bitti**' yi seçin.
-1. **Eylemler**altında **eylem grubu oluştur**' u seçin. **Eylem grubu Ekle** sayfası açılır.
-1. **Eylem grubu adı**' nda, *Myactiongroup*yazın.
-1. **Kısa ad**alanına **Myactiongroup**yazın.
+1. **Kural oluştur** sayfasında `collectorworkspace` **kaynak** olarak bırakın.
+1. **Koşul**' ın altında, *müşteri günlüğü <login undefined> aramasının her seferinde* girişi seçin. **Sinyal mantığını Yapılandır** sayfası açılır.
+1. **Eşik değeri** altında *0* girin ve **bitti**' yi seçin.
+1. **Eylemler** altında **eylem grubu oluştur**' u seçin. **Eylem grubu Ekle** sayfası açılır.
+1. **Eylem grubu adı**' nda, *Myactiongroup* yazın.
+1. **Kısa ad** alanına **Myactiongroup** yazın.
 1. **Kaynak grubu**' nda **myResourceGroupAvailability**' yi seçin.
 1. Eylemler ' in altında, **eylem adı** tür **e-** postası ' na ve ardından **e-posta/SMS/Push/ses** **E-posta/SMS/Push/ses** sayfası açılır.
-1. **E-posta**seçeneğini belirleyin, e-posta adresinizi yazın ve **Tamam**' ı seçin.
+1. **E-posta** seçeneğini belirleyin, e-posta adresinizi yazın ve **Tamam**' ı seçin.
 1. **Eylem grubu Ekle** sayfasında **Tamam**' ı seçin. 
-1. **Kural oluştur** sayfasında, **Uyarı ayrıntıları**' nın altında, **Uyarı kuralı adı**Için *Myalert* yazın ve **Açıklama**için *e-posta uyarısı kuralı* yazın.
+1. **Kural oluştur** sayfasında, **Uyarı ayrıntıları**' nın altında, **Uyarı kuralı adı** Için *Myalert* yazın ve **Açıklama** için *e-posta uyarısı kuralı* yazın.
 1. İşiniz bittiğinde **Uyarı kuralı oluştur**' u seçin.
 1. Kullanılabilirlik kümesindeki VM 'lerden birini yeniden başlatın. Birkaç dakika içinde, uyarının tetiklendiği bir e-posta almalısınız.
 

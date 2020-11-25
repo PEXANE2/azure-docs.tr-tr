@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 97209dca7d30de037dbd21f5cc145b2941060e70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85512974"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015409"
 ---
 # <a name="use-storsimple-monitoring-indicators-to-manage-your-device"></a>Cihazınızı yönetmek için StorSimple izleme göstergelerini kullanın
 
@@ -36,7 +36,7 @@ Bir modülün durumunu göstermek için kullanılan üç LED durumu vardır: ye�
 Bu makalenin geri kalanında çeşitli izleme göstergesi LED 'Leri, StorSimple cihazındaki konumları, LED durumlarına bağlı olarak cihaz durumu ve ilişkili duyulabilir alarmlar açıklanmaktadır.
 
 ## <a name="front-panel-indicator-leds"></a>Ön panel göstergesi LED 'Leri
-*İşlemler paneli* veya *Ops paneli*olarak da bilinen ön panel, sistemdeki tüm modüllerin toplam durumunu görüntüler. Ön panel, StorSimple birincil ve EBOD kasası ile aynıdır ve aşağıda gösterilmiştir.  
+*İşlemler paneli* veya *Ops paneli* olarak da bilinen ön panel, sistemdeki tüm modüllerin toplam durumunu görüntüler. Ön panel, StorSimple birincil ve EBOD kasası ile aynıdır ve aşağıda gösterilmiştir.  
 
    ![Cihaz ön paneli][1]
 
@@ -55,13 +55,13 @@ Cihaz veya EBOD Kasası için ön panelde bulunan LED 'ler tarafından belirtile
 
 | Sistem gücü | Modül hatası | Mantıksal hata | Alarm | Durum |
 | --- | --- | --- | --- | --- |
-| Red-, |KAPALI |KAPALI |Yok |AC güç kaybı, yedekleme gücüyle çalışma veya AC gücü açık ve denetleyici modülleri kaldırılmıştır. |
-| Yeşil |AÇIK |AÇIK |Yok |Ops panel güç açma (5 s) test durumu |
-| Yeşil |KAPALI |KAPALI |Yok |Power On, tüm işlevler iyi |
-| Yeşil |AÇIK |Yok |PCM hata LED 'Leri, fan hata LED 'Leri |Herhangi bir PCM hatası, fan hatası, sıcaklığın üzerinde veya altında |
-| Yeşil |AÇIK |Yok |G/ç Modülü LED 'Leri |Herhangi bir denetleyici modülü hatası |
+| Red-, |KAPALI |KAPALI |YOK |AC güç kaybı, yedekleme gücüyle çalışma veya AC gücü açık ve denetleyici modülleri kaldırılmıştır. |
+| Yeşil |AÇIK |AÇIK |YOK |Ops panel güç açma (5 s) test durumu |
+| Yeşil |KAPALI |KAPALI |YOK |Power On, tüm işlevler iyi |
+| Yeşil |AÇIK |YOK |PCM hata LED 'Leri, fan hata LED 'Leri |Herhangi bir PCM hatası, fan hatası, sıcaklığın üzerinde veya altında |
+| Yeşil |AÇIK |YOK |G/ç Modülü LED 'Leri |Herhangi bir denetleyici modülü hatası |
 | Yeşil |AÇIK |Yok |Yok |Kasa mantığı hatası |
-| Yeşil |In |Yok |Modül durumu denetleyici modülünde ışığı. PCM hata LED 'Leri, fan hata LED 'Leri |Bilinmeyen denetleyici modülü türü yüklendi, ı2C veri yolu hatası, denetleyici modülü önemli ürün verileri (VPD) yapılandırma hatası |
+| Yeşil |In |YOK |Modül durumu denetleyici modülünde ışığı. PCM hata LED 'Leri, fan hata LED 'Leri |Bilinmeyen denetleyici modülü türü yüklendi, ı2C veri yolu hatası, denetleyici modülü önemli ürün verileri (VPD) yapılandırma hatası |
 
 ## <a name="power-cooling-module-pcm-indicator-leds"></a>Güç soğutma modülü (PCM) göstergesi LED 'Leri
 Güç soğutma modülü (PCM) göstergesi LED 'Leri, her bir PCM modülündeki birincil kutunun arkasında veya EBOD Kasası bulunabilir. Bu konuda, StorSimple cihazınızın durumunu izlemek için aşağıdaki LED 'ler nasıl kullanılacağı ele alınmaktadır.  
@@ -91,7 +91,7 @@ PCM 'nin durumu,, LED panelinde belirtilir. Cihaz PCM LED paneli altı LED 'e sa
 | AC gücü yok (e-kasa) |KAPALI |KAPALI |KAPALI |KAPALI |
 | AC gücü yok (yalnızca bu PCM) |KAPALI |AÇIK |KAPALI |AÇIK |
 | AC mevcut PCM-Tamam |AÇIK |KAPALI |KAPALI |KAPALI |
-| PCM başarısız (fan başarısız) |KAPALI |KAPALI |AÇIK |Yok |
+| PCM başarısız (fan başarısız) |KAPALI |KAPALI |AÇIK |YOK |
 | PCM hatası (amp üzerinde, voltaj üzeri, güncel) |KAPALI |AÇIK |AÇIK |AÇIK |
 | PCM (tolerans dışı fan) |AÇIK |KAPALI |KAPALI |AÇIK |
 | Bekleme modu |Yanıp sönen |KAPALI |KAPALI |KAPALI |
@@ -136,7 +136,7 @@ Aşağıdaki çizim, birincil denetleyicideki LED 'Leri tanımlamanızı sağlar
 Denetleyici modülünün doğru şekilde çalışıp çalışmadığını anlamak için aşağıdaki tabloyu kullanın.  
 
 ### <a name="controller-indicator-leds"></a>Denetleyici göstergesi LED 'Leri
-| GELIŞTIRMESINE | Açıklama |
+| GELIŞTIRMESINE | Description |
 | --- | --- |
 | KIMLIK ışığı (mavi) |Modülün tanımlanmakta olduğunu gösterir. Mavi ışığı çalışan bir denetleyicide yanıp sönüğünde, denetleyici etkin denetleyici ve diğeri de bekleme denetleyicisidir. Daha fazla bilgi için bkz. [cihazınızdaki etkin denetleyiciyi tanımla](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device). |
 | Hata ışığı (bir hata) |Denetleyicideki bir hatayı gösterir. |
@@ -219,7 +219,7 @@ Ops panelinde susma düğmesine basarak duyulabilir Alarmın sesini kapatabilirs
 Aşağıdaki tabloda çeşitli alarm koşulları açıklanmaktadır.
 
 ### <a name="alarm-conditions"></a>Uyarı koşulları
-| Durum | Önem Derecesi | Alarm | Ops paneli LED 'i |
+| Durum | Önem derecesi | Alarm | Ops paneli LED 'i |
 | --- | --- | --- | --- |
 | PCM uyarısı – tek bir PCM 'den DC gücü kaybı |Hata – artıklık kaybı yok |S1 |Modül hatası |
 | PCM uyarısı – tek bir PCM 'den DC gücü kaybı |Hata – artıklık kaybı |S1 |Modül hatası |

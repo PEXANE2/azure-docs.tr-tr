@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
 ms.openlocfilehash: ff612b7c052ead5658ea4bbfafd7aace51ba3c02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86132492"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017449"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Fiziksel sunucu olağanüstü durum kurtarma için yapılandırma sunucusunu yönetme
 
@@ -108,7 +108,7 @@ Yükleme dosyasını aşağıdaki gibi çalıştırın:
 
 ### <a name="parameters"></a>Parametreler
 
-|Parametre Adı| Tür | Açıklama| Değerler|
+|Parametre Adı| Tür | Description| Değerler|
 |-|-|-|-|
 | /ServerMode|Gerekli|Hem yapılandırma hem de işlem sunucusunun mu yoksa yalnızca işlem sunucusunun mu yükleneceğini belirtir|CS<br>PS|
 |/InstallLocation|Gerekli|Bileşenlerin yüklendiği klasör| Bilgisayardaki herhangi bir klasör|
@@ -217,7 +217,7 @@ Yapılandırma sunucusu makinesi için proxy ayarlarını aşağıdaki gibi değ
 
 ## <a name="upgrade-a-configuration-server"></a>Yapılandırma sunucusunu yükseltme
 
-Yapılandırma sunucusunu güncelleştirmek için güncelleştirme paketleri çalıştırırsınız. Güncelleştirmeler, en fazla N 4 sürüm için uygulanabilir. Örneğin:
+Yapılandırma sunucusunu güncelleştirmek için güncelleştirme paketleri çalıştırırsınız. Güncelleştirmeler, en fazla N 4 sürüm için uygulanabilir. Örnek:
 
 - 9,7, 9,8, 9,9 veya 9,10 çalıştırıyorsanız, doğrudan 9,11 'e yükseltebilirsiniz.
 - 9,6 veya önceki bir sürümünü çalıştırıyorsanız ve 9,11 sürümüne yükseltmek istiyorsanız, önce sürüm 9,7 ' ye yükseltmeniz gerekir. 9,11 öncesi.

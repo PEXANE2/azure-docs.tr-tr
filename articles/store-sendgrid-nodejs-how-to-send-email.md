@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 01/05/2016
 ms.author: erikre
 ms.openlocfilehash: f2d653441598a47986913d525057672eed24b435
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "60931726"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015441"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>Node.js 'den SendGrid kullanarak e-posta gönderme
 
-Bu kılavuzda, Azure 'da SendGrid e-posta hizmetiyle ortak programlama görevlerinin nasıl gerçekleştirileceği gösterilmektedir. Örnekler Node.js API kullanılarak yazılır. Kapsanan senaryolar, **e-posta**oluşturma **, e-posta gönderme**, **ekleri ekleme**, **filtreleri kullanma**ve **Özellikleri güncelleştirme**içerir. SendGrid ve e-posta gönderme hakkında daha fazla bilgi için [sonraki adımlar](#next-steps) bölümüne bakın.
+Bu kılavuzda, Azure 'da SendGrid e-posta hizmetiyle ortak programlama görevlerinin nasıl gerçekleştirileceği gösterilmektedir. Örnekler Node.js API kullanılarak yazılır. Kapsanan senaryolar, **e-posta** oluşturma **, e-posta gönderme**, **ekleri ekleme**, **filtreleri kullanma** ve **Özellikleri güncelleştirme** içerir. SendGrid ve e-posta gönderme hakkında daha fazla bilgi için [sonraki adımlar](#next-steps) bölümüne bakın.
 
 ## <a name="what-is-the-sendgrid-email-service"></a>SendGrid e-posta hizmeti nedir?
 
@@ -72,7 +72,7 @@ var email = new sendgrid.Email({
 });
 ```
 
-Ayrıca, HTML özelliğini ayarlayarak, destekleyen istemciler için bir HTML iletisi de belirtebilirsiniz. Örneğin:
+Ayrıca, HTML özelliğini ayarlayarak, destekleyen istemciler için bir HTML iletisi de belirtebilirsiniz. Örnek:
 
 ```javascript
 html: This is a sample <b>HTML<b> email message.
@@ -96,7 +96,7 @@ sendgrid.send(email, function(err, json){
 ```
 
 > [!NOTE]
-> Yukarıdaki örneklerde e-posta nesnesi ve geri arama işlevinde geçen örnekler gösterilmektedir, ancak e-posta özelliklerini doğrudan belirterek gönder işlevini doğrudan çağırabilirsiniz. Örneğin:  
+> Yukarıdaki örneklerde e-posta nesnesi ve geri arama işlevinde geçen örnekler gösterilmektedir, ancak e-posta özelliklerini doğrudan belirterek gönder işlevini doğrudan çağırabilirsiniz. Örnek:  
 > 
 > ```javascript
 > sendgrid.send({
@@ -188,7 +188,7 @@ sendgrid.send(email);
 
 ## <a name="how-to-update-email-properties"></a>Nasıl yapılır: e-posta özelliklerini güncelleştirme
 
-Bazı e-posta özelliklerinin, **SetProperty** kullanılarak veya **AddProperty**kullanılarak eklenmiş olarak üzerine yazılabilir. Örneğin, kullanarak daha fazla alıcı ekleyebilirsiniz
+Bazı e-posta özelliklerinin, **SetProperty** kullanılarak veya **AddProperty** kullanılarak eklenmiş olarak üzerine yazılabilir. Örneğin, kullanarak daha fazla alıcı ekleyebilirsiniz
 
 ```javascript
 email.addTo('jeff@contoso.com');

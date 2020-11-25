@@ -6,11 +6,11 @@ ms.topic: quickstart
 ms.date: 08/01/2020
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: 152a000939f74b1852073742e501ac66246389a5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88961465"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015901"
 ---
 # <a name="create-a-php-web-app-in-azure-app-service"></a>Azure App Service bir PHP Web uygulaması oluşturma
 
@@ -116,7 +116,7 @@ Git dağıtımı etkinken boş bir yeni Web uygulaması oluşturdunuz.
 > Git uzak URL’si `deploymentLocalGitUrl` özelliği içinde `https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git` biçiminde gösterilir. Bu URL’ye daha sonra ihtiyacınız olacağı için URL’yi kaydedin.
 >
 
-Yeni oluşturduğunuz web uygulamasına göz atın. _ &lt; App-name>_ , önceki adımda oluşturulan benzersiz uygulama adınızla değiştirin.
+Yeni oluşturduğunuz web uygulamasına göz atın. _&lt; App-name>_ , önceki adımda oluşturulan benzersiz uygulama adınızla değiştirin.
 
 ```bash
 http://<app-name>.azurewebsites.net
@@ -196,7 +196,7 @@ Dağıtım tamamlandıktan sonra **Uygulamaya göz atma** adımında açılan ta
 
     ![Azure uygulamasına portal gezintisi](./media/quickstart-php/php-docs-hello-world-app-service-list.png)
 
-    Web uygulamanızın **genel bakış** sayfası görüntülenir. Burada, **Gözden**geçirme, **durdurma**, **yeniden başlatma**ve **silme**gibi temel yönetim görevlerini gerçekleştirebilirsiniz.
+    Web uygulamanızın **genel bakış** sayfası görüntülenir. Burada, **Gözden** geçirme, **durdurma**, **yeniden başlatma** ve **silme** gibi temel yönetim görevlerini gerçekleştirebilirsiniz.
 
     ![Azure portalında App Service sayfası](media/quickstart-php/php-docs-hello-world-app-service-detail.png)
 

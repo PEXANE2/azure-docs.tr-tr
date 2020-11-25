@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 5427077a4b07917c8852d0a63c815195e776b9de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085200"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017041"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Azure HDInsight 'ta Apache Spark kümesi için kaynakları yönetme
 
@@ -34,7 +34,7 @@ Spark geçmiş sunucusu, tamamlanan ve Spark uygulamalarının çalıştırıld�
     ![YARN Kullanıcı arabirimini Başlat](./media/apache-spark-resource-manager/azure-portal-dashboard-yarn.png)
 
    > [!TIP]  
-   > Alternatif olarak, Ayrıca, ambarı kullanıcı arabiriminden YARN Kullanıcı arabirimini de başlatabilirsiniz. Ambarı kullanıcı arabiriminden, **Yarn**  >  **hızlı bağlantılar**  >  **etkin**  >  **Kaynak Yöneticisi Kullanıcı arabirimine**gidin.
+   > Alternatif olarak, Ayrıca, ambarı kullanıcı arabiriminden YARN Kullanıcı arabirimini de başlatabilirsiniz. Ambarı kullanıcı arabiriminden, **Yarn**  >  **hızlı bağlantılar**  >  **etkin**  >  **Kaynak Yöneticisi Kullanıcı arabirimine** gidin.
 
 ## <a name="optimize-clusters-for-spark-applications"></a>Spark uygulamaları için kümeleri iyileştirme
 
@@ -44,7 +44,7 @@ Uygulama gereksinimlerine bağlı olarak Spark yapılandırması için kullanıl
 
 ### <a name="change-the-parameters-using-ambari-ui"></a>Ambarı Kullanıcı arabirimini kullanarak parametreleri değiştirme
 
-1. Ambarı kullanıcı arabiriminden **Spark2**  >  **configs**  >  **Custom Spark2-Defaults**adresine gidin.
+1. Ambarı kullanıcı arabiriminden **Spark2**  >  **configs**  >  **Custom Spark2-Defaults** adresine gidin.
 
     ![Ambarı özel kullanarak parametreleri ayarlama](./media/apache-spark-resource-manager/ambari-ui-spark2-configs.png "Ambarı özel kullanarak parametreleri ayarlama")
 
@@ -103,7 +103,7 @@ Spark Thrift sunucusu Spark dinamik yürütücü ayırmayı kullanır ve bu nede
 
 Spark Thrift sunucu sürücüsü belleği, baş düğümün Toplam RAM boyutu 14 GB 'den büyük olduğundan, baş düğüm RAM boyutunun %25 ' i olarak yapılandırılır. Aşağıdaki ekran görüntüsünde gösterildiği gibi, sürücü belleği yapılandırmasını değiştirmek için, ambarı Kullanıcı arabirimini kullanabilirsiniz:
 
-Ambarı kullanıcı arabiriminden **Spark2**  >  **configs**  >  **Advanced Spark2-env**dizinine gidin. Sonra **spark_thrift_cmd_opts**için değeri sağlayın.
+Ambarı kullanıcı arabiriminden **Spark2**  >  **configs**  >  **Advanced Spark2-env** dizinine gidin. Sonra **spark_thrift_cmd_opts** için değeri sağlayın.
 
 ## <a name="reclaim-spark-cluster-resources"></a>Spark küme kaynaklarını geri kazanma
 
@@ -138,7 +138,7 @@ Makalenin başlangıcında gösterildiği gibi Yarn Kullanıcı arabirimini baş
 
 ## <a name="kill-running-applications"></a>Çalışan uygulamaları Sonlandır
 
-1. Yarn Kullanıcı arabiriminde sol panelinden **çalışıyor**' u seçin. Çalışan uygulamalar listesinden, sonlandırılacak uygulamayı belirleyin ve **kimliği**seçin.
+1. Yarn Kullanıcı arabiriminde sol panelinden **çalışıyor**' u seçin. Çalışan uygulamalar listesinden, sonlandırılacak uygulamayı belirleyin ve **kimliği** seçin.
 
     ![KILL APP1](./media/apache-spark-resource-manager/apache-ambari-kill-app1.png "KILL APP1")
 

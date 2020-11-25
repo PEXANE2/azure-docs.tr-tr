@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 9210c54305427c82d5666d68573fd3af41e8cef7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e77b58f7741af42f00b2a1831157405b12fa24ff
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90972200"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017415"
 ---
 # <a name="create-and-manage-encryption-scopes-preview"></a>Şifreleme kapsamları oluşturma ve yönetme (Önizleme)
 
@@ -39,7 +39,7 @@ Azure portal bir şifreleme kapsamı oluşturmak için aşağıdaki adımları i
 1. **Şifreleme kapsamları** sekmesini seçin.
 1. Yeni bir şifreleme kapsamı eklemek için **Ekle** düğmesine tıklayın.
 1. **Şifreleme kapsamı** oluştur bölmesinde, yeni kapsam için bir ad girin.
-1. **Microsoft tarafından yönetilen anahtarlar** veya **müşteri tarafından yönetilen anahtarlar**için şifreleme türünü seçin.
+1. **Microsoft tarafından yönetilen anahtarlar** veya **müşteri tarafından yönetilen anahtarlar** için şifreleme türünü seçin.
     - **Microsoft tarafından yönetilen anahtarlar**' ı seçtiyseniz, şifreleme kapsamını oluşturmak için **Oluştur** ' a tıklayın.
     - **Müşteri tarafından yönetilen anahtarlar**' ı seçtiyseniz, aşağıdaki görüntüde gösterildiği gibi, bu şifreleme kapsamı için kullanılacak bir Anahtar Kasası veya yönetilen HSM, anahtar ve anahtar sürümü belirtin.
 
@@ -179,7 +179,7 @@ Azure depolama şifrelemesini bir anahtar kasasındaki müşteri tarafından yö
 
 Azure portal bir depolama hesabının şifreleme kapsamlarını görüntülemek için, depolama hesabı için **şifreleme kapsamları** ayarına gidin. Bu bölmeden, bir şifreleme kapsamını etkinleştirebilir veya devre dışı bırakabilir ya da bir şifreleme kapsamının anahtarını değiştirebilirsiniz.
 
-:::image type="content" source="media/encryption-scope-manage/list-encryption-scopes-portal.png" alt-text="Azure portal 'de şifreleme kapsamı oluşturmayı gösteren ekran görüntüsü":::
+:::image type="content" source="media/encryption-scope-manage/list-encryption-scopes-portal.png" alt-text="Azure portal 'de şifreleme kapsamları listesini gösteren ekran görüntüsü":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -221,9 +221,9 @@ Azure portal varsayılan şifreleme kapsamıyla bir kapsayıcı oluşturmak içi
 1. Depolama hesabınızdaki kapsayıcı listesine gidin ve yeni bir kapsayıcı oluşturmak için **Ekle** düğmesini seçin.
 1. **Yeni kapsayıcı** bölmesinde **Gelişmiş** ayarlar ' ı genişletin.
 1. **Şifreleme kapsamı** açılır penceresinde kapsayıcının varsayılan şifreleme kapsamını seçin.
-1. Kapsayıcıdaki tüm Blobların varsayılan şifreleme kapsamını kullanmasını gerektirmek için, **Bu şifreleme kapsamını kapsayıcıdaki tüm Bloblar Için kullanmak**üzere onay kutusunu seçin. Bu onay kutusu işaretliyse, kapsayıcıdaki tek bir blob varsayılan şifreleme kapsamını geçersiz kılamaz.
+1. Kapsayıcıdaki tüm Blobların varsayılan şifreleme kapsamını kullanmasını gerektirmek için, **Bu şifreleme kapsamını kapsayıcıdaki tüm Bloblar Için kullanmak** üzere onay kutusunu seçin. Bu onay kutusu işaretliyse, kapsayıcıdaki tek bir blob varsayılan şifreleme kapsamını geçersiz kılamaz.
 
-    :::image type="content" source="media/encryption-scope-manage/create-container-default-encryption-scope.png" alt-text="Azure portal 'de şifreleme kapsamı oluşturmayı gösteren ekran görüntüsü":::
+    :::image type="content" source="media/encryption-scope-manage/create-container-default-encryption-scope.png" alt-text="Varsayılan şifreleme kapsamıyla kapsayıcıyı gösteren ekran görüntüsü":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -247,7 +247,7 @@ New-AzRmStorageContainer -ResourceGroupName $rgName `
 
 Azure CLı ile varsayılan şifreleme kapsamıyla bir kapsayıcı oluşturmak için, parametresinin kapsamını belirterek [az Storage Container Create](/cli/azure/storage/container#az-storage-container-create) komutunu çağırın `--default-encryption-scope` . Bir kapsayıcıdaki tüm Blobları kapsayıcının varsayılan kapsamını kullanacak şekilde zorlamak için `--prevent-encryption-scope-override` parametresini olarak ayarlayın `true` .
 
-Aşağıdaki örnek, kapsayıcıyı oluşturma işlemini yetkilendirmek için Azure AD hesabınızı kullanır. Hesap erişim anahtarını da kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure CLI ile blob veya kuyruk verilerine erişim yetkisi verme](../common/authorize-data-operations-cli.md).
+Aşağıdaki örnek, kapsayıcıyı oluşturma işlemini yetkilendirmek için Azure AD hesabınızı kullanır. Hesap erişim anahtarını da kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure CLI ile blob veya kuyruk verilerine erişim yetkisi verme](./authorize-data-operations-cli.md).
 
 ```azurecli-interactive
 az storage container create \
@@ -275,9 +275,9 @@ Azure portal belirtilen bir şifreleme kapsamına sahip bir blobu karşıya yük
 1. **Karşıya yükle** düğmesini seçin ve karşıya yüklenecek blobu bulun.
 1. **Karşıya yükleme blobu** bölmesinde **Gelişmiş** ayarlar ' ı genişletin.
 1. **Şifreleme kapsamı** açılan bölümünü bulun. Varsayılan olarak, blob belirtilmişse kapsayıcı için varsayılan şifreleme kapsamıyla oluşturulur. Kapsayıcı, Blobların varsayılan şifreleme kapsamını kullanmasını gerektiriyorsa, bu bölüm devre dışıdır.
-1. Karşıya yüklediğiniz blob için farklı bir kapsam belirtmek üzere, **var olan bir kapsam**Seç ' i seçin ve ardından açılan listeden istediğiniz kapsamı seçin.
+1. Karşıya yüklediğiniz blob için farklı bir kapsam belirtmek üzere, **var olan bir kapsam** Seç ' i seçin ve ardından açılan listeden istediğiniz kapsamı seçin.
 
-    :::image type="content" source="media/encryption-scope-manage/upload-blob-encryption-scope.png" alt-text="Azure portal 'de şifreleme kapsamı oluşturmayı gösteren ekran görüntüsü":::
+    :::image type="content" source="media/encryption-scope-manage/upload-blob-encryption-scope.png" alt-text="Bir blob 'u şifreleme kapsamıyla karşıya yüklemeyi gösteren ekran görüntüsü":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
