@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 07d32faf2416de554c84a5a26520bcdf0398f406
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d9d443f0109757c0ab528a7f3ee7076c1293a8bb
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "67188108"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018194"
 ---
-Azure şu anda iki dağıtım modeliyle çalışır: Resource Manager ve klasik. İki model birbiriyle tam olarak uyumlu değildir. Başlamadan önce hangi modelle çalışmak istediğinizi bilmeniz gerekir. Dağıtım modelleri hakkında bilgi için bkz. [Dağıtım modellerini anlama](../articles/resource-manager-deployment-model.md). Azure'da yeniyseniz, Resource Manager dağıtım modeli kullanmanız önerilir.
+Azure şu anda iki dağıtım modeliyle çalışır: Resource Manager ve klasik. İki model birbiriyle tam olarak uyumlu değildir. Başlamadan önce hangi modelle çalışmak istediğinizi bilmeniz gerekir. Dağıtım modelleri hakkında bilgi için bkz. [Dağıtım modellerini anlama](../articles/azure-resource-manager/management/deployment-models.md). Azure'da yeniyseniz, Resource Manager dağıtım modeli kullanmanız önerilir.

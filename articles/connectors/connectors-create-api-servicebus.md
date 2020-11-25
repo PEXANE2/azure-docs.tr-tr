@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/22/2020
 tags: connectors
 ms.openlocfilehash: b6276ff940d8b156a671cb5386ce53ede30dd879
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426648"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019727"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Azure Logic Apps ve Azure Service Bus kullanarak bulutta ileti alışverişi yapın
 
@@ -29,7 +29,7 @@ Service Bus yanıt alan Tetikleyicileri kullanabilir ve çıktıyı mantıksal u
 
 [!INCLUDE [Warning about creating infinite loops](../../includes/connectors-infinite-loops.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir Azure hesabı ve aboneliği Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
@@ -47,7 +47,7 @@ Mantıksal uygulamanızın Service Bus ad alanına erişim izinleri olduğunu do
 
 1. [Azure Portal](https://portal.azure.com)Azure hesabınızla oturum açın.
 
-1. Service Bus *ad alanına*gidin. Ad alanı sayfasında, **Ayarlar**' ın altında, **paylaşılan erişim ilkeleri**' ni seçin. **Talepler**altında, bu ad alanı Için izinleri **yönetme** izinlerine sahip olup olmadığınızı kontrol edin.
+1. Service Bus *ad alanına* gidin. Ad alanı sayfasında, **Ayarlar**' ın altında, **paylaşılan erişim ilkeleri**' ni seçin. **Talepler** altında, bu ad alanı Için izinleri **yönetme** izinlerine sahip olup olmadığınızı kontrol edin.
 
    ![Service Bus ad alanı için izinleri yönetme](./media/connectors-create-api-azure-service-bus/azure-service-bus-namespace.png)
 
@@ -123,7 +123,7 @@ Mantıksal uygulamanızın Service Bus ad alanına erişim izinleri olduğunu do
 
    Ya da adımlar arasında bir eylem eklemek için, işaretçinizi Bu adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve **Eylem Ekle**' yi seçin.
 
-1. **Eylem seçin**altında, arama kutusuna girin `azure service bus` . Görüntülenen Eylemler listesinden istediğiniz eylemi seçin. 
+1. **Eylem seçin** altında, arama kutusuna girin `azure service bus` . Görüntülenen Eylemler listesinden istediğiniz eylemi seçin. 
 
    Bu örnek için **Ileti gönder** eylemini seçin.
 

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
 ms.openlocfilehash: f597e58c70d6ac9daff753f5c0a54199c2383c42
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746160"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019523"
 ---
 # <a name="manage-your-function-app"></a>İşlev uygulamanızı yönetme 
 
@@ -29,11 +29,11 @@ Bu makalede, işlev uygulamalarınızın nasıl yapılandırılacağı ve yönet
 
 1. Başlamak için [Azure Portal] gidin ve Azure hesabınızda oturum açın. Portalın üst kısmındaki arama çubuğunda, işlev uygulamanızın adını girin ve listeden seçin. 
 
-2. Sol bölmedeki **Ayarlar** ' ın altında **yapılandırma** ' yı seçin.
+2. Sol bölmedeki **Ayarlar** ' ın altında **yapılandırma**' yı seçin.
 
     :::image type="content" source="./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png" alt-text="Azure portal işlev uygulamasına genel bakış":::
 
-Özel bakış sayfasından, özellikle **[uygulama ayarları](#settings)** ve **[platform özellikleri](#platform-features)** ' nde, işlev uygulamanızı yönetmek için ihtiyacınız olan her şeye gidebilirsiniz.
+Özel bakış sayfasından, özellikle **[uygulama ayarları](#settings)** ve **[platform özellikleri](#platform-features)**' nde, işlev uygulamanızı yönetmek için ihtiyacınız olan her şeye gidebilirsiniz.
 
 ## <a name="application-settings"></a><a name="settings"></a>Uygulama ayarları
 
@@ -45,7 +45,7 @@ Portalda bir ayar eklemek için **Yeni uygulama ayarı** ' nı seçin ve yeni an
 
 ![Azure portal işlev uygulaması ayarları.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 [`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-list)Komut, aşağıdaki örnekte olduğu gibi var olan uygulama ayarlarını döndürür:
 

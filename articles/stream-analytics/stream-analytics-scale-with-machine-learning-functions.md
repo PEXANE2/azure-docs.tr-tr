@@ -8,11 +8,11 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/16/2020
 ms.openlocfilehash: feeb709f67a0e75f5980ec0520b95feb7edd5960
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124416"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018826"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Stream Analytics işinizi Azure Machine Learning Studio (klasik) işlevlerle ölçeklendirin
 
@@ -52,7 +52,7 @@ Saniyede 200.000 olay işlemek için, Stream Analytics işi 12 ' ye kadar olan 4
 
 ![Studio (klasik) Işlevleri ile Stream Analytics ölçeklendirme iki iş örneği](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-00.png "Studio (klasik) Işlevleri ile Stream Analytics ölçeklendirme iki iş örneği")
 
-Genel olarak, toplu iş boyutu için * *_b_* _, toplu Iş boyutu b 'de Web hizmeti gecikmesi için _*_L_*_ , _*_N_*_ SUs ile bir Stream Analytics işinin aktarım hızı:
+Genel olarak, toplu iş boyutu için **_b_* _, toplu Iş boyutu b 'de Web hizmeti gecikmesi için _*_L_*_ , _*_N_*_ SUs ile bir Stream Analytics işinin aktarım hızı:
 
 ![Studio (klasik) Işlevleri formülüyle Stream Analytics ölçeklendirme](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-02.png "Studio (klasik) Işlevleri formülüyle Stream Analytics ölçeklendirme")
 
@@ -63,7 +63,7 @@ Bu ayar hakkında daha fazla bilgi için, [Machine Learning Studio (klasik) Web 
 ## <a name="example--sentiment-analysis"></a>Örnek: Yaklaşım Analizi
 Aşağıdaki örnek, [Stream Analytics Machine Learning Studio (klasik) tümleştirme öğreticisinde](stream-analytics-machine-learning-integration-tutorial.md)açıklandığı gibi, yaklaşım Analizi Studio (klasik) işleviyle bir Stream Analytics işi içerir.
 
-Sorgu, aşağıdaki örnekte gösterildiği gibi _ *yaklaşım* * işlevi tarafından izlenen, basit bir tam bölümlenmiş sorgudur:
+Sorgu, aşağıdaki örnekte gösterildiği gibi _ *yaklaşım** işlevi tarafından izlenen, basit bir tam bölümlenmiş sorgudur:
 
 ```SQL
     WITH subquery AS (
@@ -99,7 +99,7 @@ Her toplu iş boyutu için aşağıdaki gecikme ölçümlerini kullanarak ölçe
 | 300 MS | 10.000-olay toplu işleri |
 | 500 ms | 25.000-olay toplu işleri |
 
-1. İlk seçenek (daha fazla SUs **sağlamama** ) kullanılıyor. Toplu iş boyutu **25.000** olarak artırılabilir. Toplu iş boyutunu bu şekilde artırmak, işin 1.000.000 olaylarını Studio (klasik) Web hizmeti ile 20 eşzamanlı bağlantıyla işleme (çağrı başına 500 ms gecikme süresi ile) sağlar. Bu nedenle, işle (klasik) Web hizmeti isteklerine yönelik yaklaşım işlevi istekleri nedeniyle Stream Analytics işinin ek gecikmesi **200 MS** 'den **500 MS** 'ye artırılabilir. Ancak, Studio (klasik) Web Hizmetleri bir isteğin yük boyutunun 4 MB veya daha küçük olmasını gerektirdiğinden ve 100 saniyelik işlemden sonra Web hizmeti isteklerinin zaman aşımına uğramasıyla, toplu **iş boyutu sonsuz bir şekilde** artmıştır.
+1. İlk seçenek (daha fazla SUs **sağlamama** ) kullanılıyor. Toplu iş boyutu **25.000** olarak artırılabilir. Toplu iş boyutunu bu şekilde artırmak, işin 1.000.000 olaylarını Studio (klasik) Web hizmeti ile 20 eşzamanlı bağlantıyla işleme (çağrı başına 500 ms gecikme süresi ile) sağlar. Bu nedenle, işle (klasik) Web hizmeti isteklerine yönelik yaklaşım işlevi istekleri nedeniyle Stream Analytics işinin ek gecikmesi **200 MS** 'den **500 MS**'ye artırılabilir. Ancak, Studio (klasik) Web Hizmetleri bir isteğin yük boyutunun 4 MB veya daha küçük olmasını gerektirdiğinden ve 100 saniyelik işlemden sonra Web hizmeti isteklerinin zaman aşımına uğramasıyla, toplu **iş boyutu sonsuz bir şekilde** artmıştır.
 1. İkinci seçenek olarak, toplu iş boyutu 1000 ' de kalır, 200-MS Web hizmeti gecikme süresiyle, Web hizmetine yönelik her 20 eş zamanlı bağlantı, dakikada * 20 * 5 olay = 100.000 ' i 1000 işleyebilir. Bu nedenle, saniye başına 1.000.000 olay işlemek için, işin 60 SUs olması gerekir. İlk seçenekle karşılaştırıldığında Stream Analytics iş daha fazla Web hizmeti toplu istek oluşturacak ve bu da daha yüksek maliyetli bir maliyet oluşturuyor.
 
 Aşağıda, farklı SUs ve Batch boyutları (saniye başına olay sayısı) için Stream Analytics işi verimlilik için bir tablo verilmiştir.
@@ -120,17 +120,17 @@ Aşağıda, farklı SUs ve Batch boyutları (saniye başına olay sayısı) içi
 Normalde, Studio (klasik) işlevleri için belirlediğimiz toplu iş boyutu, her bir Stream Analytics işi "pull" tarafından döndürülen olay sayısına göre bölünemez. Bu gerçekleştiğinde, Studio (klasik) Web hizmeti "kısmi" toplu işlerle çağırılır. Kısmi toplu işlerin kullanılması, olayları çekme işleminden çekmeye kadar birleştirme sırasında ek iş gecikmesi yükünü ortadan kaldırır.
 
 ## <a name="new-function-related-monitoring-metrics"></a>İşlevle ilgili yeni izleme ölçümleri
-Stream Analytics işinin Izleyici alanında, işlevle ilgili üç ek ölçüm eklenmiştir. Bunlar, aşağıdaki grafikte gösterildiği gibi **Işlev isteklerdir** , **Işlev OLAYLARı** ve **başarısız işlev isteklerdir** .
+Stream Analytics işinin Izleyici alanında, işlevle ilgili üç ek ölçüm eklenmiştir. Bunlar, aşağıdaki grafikte gösterildiği gibi **Işlev isteklerdir**, **Işlev OLAYLARı** ve **başarısız işlev isteklerdir**.
 
 ![Studio (klasik) Işlevleri ölçümleriyle Stream Analytics ölçeklendirme](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-01.png "Studio (klasik) Işlevleri ölçümleriyle Stream Analytics ölçeklendirme")
 
 , Aşağıdaki gibi tanımlanır:
 
-**Işlev istekleri** : işlev isteklerinin sayısı.
+**Işlev istekleri**: işlev isteklerinin sayısı.
 
-**Işlev olayları** : işlev isteklerindeki olay sayısı.
+**Işlev olayları**: işlev isteklerindeki olay sayısı.
 
-**Başarısız Işlev istekleri** : başarısız işlev isteklerinin sayısı.
+**Başarısız Işlev istekleri**: başarısız işlev isteklerinin sayısı.
 
 ## <a name="key-takeaways"></a>Anahtar koymalar
 

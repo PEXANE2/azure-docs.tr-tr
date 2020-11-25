@@ -15,11 +15,11 @@ ms.topic: how-to
 ms.date: 06/11/2018
 ms.author: allensu
 ms.openlocfilehash: 1521d08ef9d431bbe8b3fd3a578297d440ed56b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84887207"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018588"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---standard-tier"></a>Sorgu dizeleri ile denetim Azure CDN önbelleğe alma davranışı-Standart katman
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "84887207"
 Azure Content Delivery Network (CDN) ile, bir sorgu dizesi içeren bir Web isteği için dosyaların nasıl önbelleğe alınacağını kontrol edebilirsiniz. Sorgu dizesi olan bir Web isteğinde, sorgu dizesi, isteğin bir soru işareti (?) sonrasında gerçekleşen bölümüdür. Sorgu dizesi bir veya daha fazla anahtar-değer çifti içerebilir; burada alan adı ve değeri bir eşittir işareti (=) ile ayrılmıştır. Her anahtar-değer çifti bir ve işareti (&) ile ayrılır. Örneğin, http: \/ /www.contoso.com/content.mov?field1=value1&alan2 = değer2. Bir isteğin sorgu dizesinde birden fazla anahtar-değer çifti varsa, bunların sırası önemli değildir. 
 
 > [!IMPORTANT]
-> Azure CDN Standart ve Premium ürünleri aynı sorgu dizesi önbelleğe alma işlevselliğine sahiptir, ancak kullanıcı arabirimi farklıdır. Bu makalede Azure CDN, **Microsoft 'tan Azure CDN Standard**, Akamai 'ten **Standart** ve **Verizon 'den Azure CDN**standart için arabirim açıklanmaktadır. **Verizon ' den Azure CDN Premium**ile sorgu dizesi önbelleği için bkz. [sorgu dizeleri ile denetim Azure CDN önbelleğe alma davranışı-Premium katman](cdn-query-string-premium.md).
+> Azure CDN Standart ve Premium ürünleri aynı sorgu dizesi önbelleğe alma işlevselliğine sahiptir, ancak kullanıcı arabirimi farklıdır. Bu makalede Azure CDN, **Microsoft 'tan Azure CDN Standard**, Akamai 'ten **Standart** ve **Verizon 'den Azure CDN** standart için arabirim açıklanmaktadır. **Verizon ' den Azure CDN Premium** ile sorgu dizesi önbelleği için bkz. [sorgu dizeleri ile denetim Azure CDN önbelleğe alma davranışı-Premium katman](cdn-query-string-premium.md).
 
 Üç sorgu dizesi modu kullanılabilir:
 

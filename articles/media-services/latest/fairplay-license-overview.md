@@ -15,11 +15,11 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 09068064f24594ef35a8a1bf64213b48d83873ca
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89296872"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018741"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay lisansı gereksinimleri ve yapılandırması
 
@@ -69,7 +69,7 @@ Media Services kullanırken, HLS içeriğinizi **Apple Fairplay** ile şifreleme
 
 ## <a name="fairplay-and-player-apps"></a>FairPlay ve oynatıcı uygulamaları
 
-İçeriğiniz **Apple Fairplay**ile şifrelendiğinde, tek tek video ve ses örnekleri **AES-128 CBC** modu kullanılarak şifrelenir. **Fairplay streaming** (fps), IOS ve Apple TV 'de yerel destek ile cihaz işletim sistemleriyle tümleşiktir. OS X üzerinde Safari, şifreli Medya Uzantıları (EME) arabirimi desteğini kullanarak FPS 'yi sunar.
+İçeriğiniz **Apple Fairplay** ile şifrelendiğinde, tek tek video ve ses örnekleri **AES-128 CBC** modu kullanılarak şifrelenir. **Fairplay streaming** (fps), IOS ve Apple TV 'de yerel destek ile cihaz işletim sistemleriyle tümleşiktir. OS X üzerinde Safari, şifreli Medya Uzantıları (EME) arabirimi desteğini kullanarak FPS 'yi sunar.
 
 Azure Media Player ayrıca FairPlay oynatmayı destekler. Daha fazla bilgi için bkz. [Azure Media Player belgeleri](https://amp.azure.net/libs/amp/latest/docs/index.html).
 

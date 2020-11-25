@@ -7,11 +7,11 @@ ms.date: 09/17/2018
 ms.author: masnider
 ms.custom: sfrev
 ms.openlocfilehash: 7b2f1a170a792e0b4d069258264407c121dab3ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260233"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018843"
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric terimlere genel bakış
 
@@ -21,7 +21,7 @@ Azure Service Fabric; ölçeklenebilir ve güvenilir mikro hizmetleri paketlemey
 
 **Küme**: mikro hizmetlerinizin dağıtıldığı ve yönetildiği, ağa bağlı bir sanal veya fiziksel makine kümesi.  Kümeler binlerce makine içerecek şekilde ölçeklendirilebilir.
 
-**Düğüm**: bir kümenin parçası olan makıne veya VM, *düğüm*olarak adlandırılır. Her düğüme bir düğüm adı (dize) atanır. Düğümlerin yerleştirme özellikleri gibi özellikleri vardır. Her makine veya VM, `FabricHost.exe` önyükleme sonrasında çalışmaya başlayan ve ardından iki yürütülebilir dosya Başlatan bir otomatik başlatma Windows hizmetine sahiptir: `Fabric.exe` ve `FabricGateway.exe` . Bu iki yürütülebilir dosya düğümü yapar. Test senaryoları için birden fazla ve birden çok örneğini çalıştırarak tek bir makinede veya VM 'de birden çok düğümü barındırabilirsiniz `Fabric.exe` `FabricGateway.exe` .
+**Düğüm**: bir kümenin parçası olan makıne veya VM, *düğüm* olarak adlandırılır. Her düğüme bir düğüm adı (dize) atanır. Düğümlerin yerleştirme özellikleri gibi özellikleri vardır. Her makine veya VM, `FabricHost.exe` önyükleme sonrasında çalışmaya başlayan ve ardından iki yürütülebilir dosya Başlatan bir otomatik başlatma Windows hizmetine sahiptir: `Fabric.exe` ve `FabricGateway.exe` . Bu iki yürütülebilir dosya düğümü yapar. Test senaryoları için birden fazla ve birden çok örneğini çalıştırarak tek bir makinede veya VM 'de birden çok düğümü barındırabilirsiniz `Fabric.exe` `FabricGateway.exe` .
 
 ## <a name="application-and-service-concepts"></a>Uygulama ve hizmet kavramları
 
@@ -82,7 +82,7 @@ Yeniden **yapılandırma** , bir hizmetin çoğaltma kümesindeki herhangi bir d
 **Kod paketi**: hizmet türünün yürütülebilir dosyalarını, genellikle exe/dll dosyalarını içeren bir disk dizini. Kod paketi dizinindeki dosyalara hizmet türünün dosyası tarafından başvurulur `ServiceManifest.xml` . Adlandırılmış bir hizmet oluşturduğunuzda, kod paketi, adlandırılmış hizmeti çalıştırmak için seçilen düğüme veya düğümlere kopyalanır. Ardından kod çalışmaya başlar. İki tür kod paketi yürütülebilir dosya vardır:
 
 * **Konuk yürütülebilir dosyaları**: olarak çalışan yürütülebilir dosyalar, ana bilgisayar işletim sistemidir (Windows veya Linux). Bu yürütülebilir dosyalar, hiçbir Service Fabric çalışma zamanı dosyasına bağlantı vermez veya referans vermez, bu nedenle hiçbir Service Fabric programlama modeli kullanmaz. Bu yürütülebilir dosyalar, uç nokta keşfi için adlandırma hizmeti gibi bazı Service Fabric özelliklerini kullanamaz. Konuk yürütülebilir dosyaları her hizmet örneğine özgü yük ölçümlerini bildirebilirler.
-* **Hizmet ana bilgisayarı yürütülebilir**dosyaları: Service Fabric çalışma zamanı dosyalarına bağlanarak Service Fabric programlama modellerini kullanan yürütülebilir dosyalar Service Fabric özellikleri etkinleştirir. Örneğin, adlandırılmış bir hizmet örneği uç noktaları Service Fabric Adlandırma Hizmeti kaydedebilir ve ayrıca yük ölçümlerini rapor edebilir.
+* **Hizmet ana bilgisayarı yürütülebilir** dosyaları: Service Fabric çalışma zamanı dosyalarına bağlanarak Service Fabric programlama modellerini kullanan yürütülebilir dosyalar Service Fabric özellikleri etkinleştirir. Örneğin, adlandırılmış bir hizmet örneği uç noktaları Service Fabric Adlandırma Hizmeti kaydedebilir ve ayrıca yük ölçümlerini rapor edebilir.
 
 **Veri paketi**: hizmet türünün statik, Salt okunabilir veri dosyalarını, genellikle fotoğraf, ses ve video dosyalarını içeren bir disk dizini. Veri paketi dizinindeki dosyalara hizmet türünün dosyası tarafından başvurulur `ServiceManifest.xml` . Adlandırılmış bir hizmet oluşturduğunuzda, veri paketi, adlandırılmış hizmeti çalıştırmak için seçilen düğüme veya düğümlere kopyalanır. Kod çalışmaya başlar ve artık veri dosyalarına erişebilir.
 

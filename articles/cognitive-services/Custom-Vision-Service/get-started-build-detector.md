@@ -13,11 +13,11 @@ ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: görüntü tanıma, görüntü tanıma uygulaması, Özel Vizyon
 ms.openlocfilehash: ab747ad5e7b9362e9c587741198a0191c032b124
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91596890"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018399"
 ---
 # <a name="quickstart-build-an-object-detector-with-the-custom-vision-website"></a>Hızlı başlangıç: Özel Görüntü İşleme Web sitesiyle bir nesne algılayıcısı oluşturma
 
@@ -49,7 +49,7 @@ Web tarayıcınızda [özel görüntü işleme Web sayfasına](https://customvis
    > [!NOTE]
    > Kullanılabilir kaynak grubu yoksa, lütfen [Azure Portal](https://portal.azure.com/)oturum açmak için kullandığınız hesapla [customvision.ai](https://customvision.ai) oturum açtığınızdan emin olun. Ayrıca, lütfen Özel Görüntü İşleme kaynaklarınızın bulunduğu Azure portal dizin olarak Özel Görüntü İşleme Web sitesinde aynı "Dizin" i seçtiğinizi onaylayın. Her iki sitede, ekranın sağ üst köşesindeki açılan hesap menüsünden dizininizi seçebilirsiniz. 
 
-1. __Proje türleri__altında __nesne algılamayı__ seçin.
+1. __Proje türleri__ altında __nesne algılamayı__ seçin.
 
 1. Sonra, kullanılabilir etki alanlarından birini seçin. Her etki alanı, aşağıdaki tabloda açıklandığı gibi belirli görüntü türleri için algılayıcısının en iyi duruma getirir. İsterseniz, etki alanını daha sonra değiştirebileceksiniz.
 

@@ -15,11 +15,11 @@ ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: allensu
 ms.openlocfilehash: e90086be18e344e3061b9e683780f4427b3c15a1
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148981"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018639"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>Azure CDN uç noktasını Temizleme
 ## <a name="overview"></a>Genel Bakış
@@ -34,7 +34,7 @@ Kullanıcılarınızın her zaman varlıklarınızın en son kopyasını elde et
 
 Bu öğreticide, bir uç noktanın tüm kenar düğümlerinden varlıkları Temizleme işlemi adım adım gösterilmektedir.
 
-## <a name="walkthrough"></a>İzlenecek yol
+## <a name="walkthrough"></a>Kılavuz
 1. [Azure portalında](https://portal.azure.com), temizlemek istediğiniz uç NOKTAYı içeren CDN profiline gidin.
 2. CDN profili dikey penceresinde, temizle düğmesine tıklayın.
    
@@ -69,7 +69,7 @@ Bu öğreticide, bir uç noktanın tüm kenar düğümlerinden varlıkları Temi
     ![Temizle düğmesi](./media/cdn-purge-endpoint/cdn-purge-button.png)
 
 > [!IMPORTANT]
-> Temizleme isteklerinin, **Microsoft 'tan Azure CDN**, yaklaşık 2 dakika **Azure CDN** (Standart ve Premium) ve **Akamai 'den Azure CDN**yaklaşık 10 saniye içinde işlenmesi yaklaşık 10 dakika sürer.  Azure CDN, profil düzeyinde belirli bir zamanda 100 eşzamanlı temizleme isteği sınırı vardır. 
+> Temizleme isteklerinin, **Microsoft 'tan Azure CDN**, yaklaşık 2 dakika **Azure CDN** (Standart ve Premium) ve **Akamai 'den Azure CDN** yaklaşık 10 saniye içinde işlenmesi yaklaşık 10 dakika sürer.  Azure CDN, profil düzeyinde belirli bir zamanda 100 eşzamanlı temizleme isteği sınırı vardır. 
 > 
 > 
 

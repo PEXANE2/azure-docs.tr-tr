@@ -8,11 +8,11 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 2f585dd80219afac7c67eebabd72cb41dce0b673
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874517"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018707"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>Mevcut bir Application Gateway kullanarak bir Application Gateway Ingcontroller (AGıC) yüklemesi
 
@@ -27,7 +27,7 @@ AGIC, Kubernetes giriş [kaynaklarını izler](https://kubernetes.io/docs/concep
 - [Held kullanarak giriş denetleyicisini yükler](#install-ingress-controller-as-a-helm-chart)
 - [Çoklu küme/paylaşılan Application Gateway](#multi-cluster--shared-application-gateway): bir ortamda (Application Gateway bir veya daha fazla aks kümesi ve/veya diğer Azure bileşenleri arasında paylaşıldığında) agic 'yi yükler.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu belgede aşağıdaki araçların ve altyapının yüklü olduğu varsayılır:
 - [Gelişmiş ağ](../aks/configure-azure-cni.md) özellikli [aks](https://azure.microsoft.com/services/kubernetes-service/) 'lar
 - [Application Gateway v2](./tutorial-autoscale-ps.md) 'yi aks ile aynı sanal ağda

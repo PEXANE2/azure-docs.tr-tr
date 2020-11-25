@@ -15,11 +15,11 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: f7edf790e526329dd285d03a31137a26220e52ee
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778940"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018656"
 ---
 # <a name="using-azure-cdn-with-cors"></a>CORS ile Azure CDN kullanma
 ## <a name="what-is-cors"></a>CORS nedir?
@@ -36,7 +36,7 @@ CORS (Çıkış Noktaları Arası Kaynak Paylaşımı), bir etki alanında çal�
 
 2. Sunucu, aşağıdakilerden biriyle yanıt verebilir:
 
-   * Yanıtında bir **erişim-denetim-Izin verme-kaynak** üst bilgisi, hangi kaynak siteye izin verildiğini belirtir. Örneğin:
+   * Yanıtında bir **erişim-denetim-Izin verme-kaynak** üst bilgisi, hangi kaynak siteye izin verildiğini belirtir. Örnek:
 
      `Access-Control-Allow-Origin: https://www.contoso.com`
 
@@ -72,7 +72,7 @@ Microsoft 'tan Azure CDN Standard 'da, istekteki **kaynak** üst bilgisini denet
 > **Erişim-denetimi-Izin verme yöntemleri** gibi ek yanıt üstbilgilerini değiştirmek için kuralınıza ek eylemler ekleyebilirsiniz.
 > 
 
-**Akamai ' dan Azure CDN Standart** , joker karakter kaynağını kullanmadan birden fazla kaynağa izin veren tek mekanizma [sorgu dizesi önbelleğe almayı](cdn-query-string.md)kullanmaktır. CDN uç noktası için sorgu dizesi ayarını etkinleştirin ve ardından izin verilen her etki alanından gelen istekler için benzersiz bir sorgu dizesi kullanın. Bunun yapılması, benzersiz bir sorgu dizesi için CDN önbelleğine ayrı bir nesne olarak neden olur. Ancak bu yaklaşım ideal değildir, ancak CDN 'de önbelleğe alınan aynı dosyanın birden çok kopyasının oluşmasına neden olur.  
+**Akamai ' dan Azure CDN Standart**, joker karakter kaynağını kullanmadan birden fazla kaynağa izin veren tek mekanizma [sorgu dizesi önbelleğe almayı](cdn-query-string.md)kullanmaktır. CDN uç noktası için sorgu dizesi ayarını etkinleştirin ve ardından izin verilen her etki alanından gelen istekler için benzersiz bir sorgu dizesi kullanın. Bunun yapılması, benzersiz bir sorgu dizesi için CDN önbelleğine ayrı bir nesne olarak neden olur. Ancak bu yaklaşım ideal değildir, ancak CDN 'de önbelleğe alınan aynı dosyanın birden çok kopyasının oluşmasına neden olur.  
 
 ### <a name="azure-cdn-premium-from-verizon"></a>Verizon 'ten Premium Azure CDN
 Verizon Premium kuralları altyapısını kullanarak, istekteki **kaynak** üst bilgisini denetlemek için [bir kural oluşturmanız](./cdn-verizon-premium-rules-engine.md) gerekir.  Geçerli bir başlangıç noktası ise, kuralınız **erişim-Control-Allow-Origin** üst bilgisini istekte verilen kaynağa ayarlar.  **Kaynak** üstbilgisinde belirtilen kaynağa izin verilmiyorsa, kuralınız, tarayıcının isteği reddetmesine neden olacak şekilde **erişim-denetim-izin-Origin** üst bilgisini atmalıdır. 

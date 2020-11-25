@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Bkz. Azure dijital TWINS verileri için uç noktaları ve olay yollarını ayarlama ve yönetme.
 author: alexkarcher-msft
 ms.author: alkarche
-ms.date: 10/12/2020
+ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0b8bd9006482daf7c9218f0f3dbb16d2e08359bf
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: b836038aa2f8f60e25c51d1d5674d22497b3ce44
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533761"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "96018978"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Azure dijital TWINS 'te uç noktaları ve yolları yönetme (API 'Ler ve CLı)
 
@@ -24,7 +24,7 @@ Bu makalede, [olay yolları API 'leri](/rest/api/digital-twins/dataplane/eventro
 
 Alternatif olarak, [Azure Portal](https://portal.azure.com)uç noktalarını ve yolları da yönetebilirsiniz. Bunun yerine portalı kullanan Bu makalenin bir sürümü için bkz. [*nasıl yapılır: uç noktaları ve yolları yönetme (portal)*](how-to-manage-routes-portal.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir **Azure hesabınızın** olması gerekir ( [buradan](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)birini ücretsiz olarak ayarlayabilirsiniz)
 * Azure aboneliğinizde bir **Azure dijital TWINS örneği** gerekir. Zaten bir örneğiniz yoksa, [*nasıl yapılır: örnek ve kimlik doğrulaması ayarlama*](how-to-set-up-instance-cli.md)bölümündeki adımları kullanarak bir tane oluşturabilirsiniz. Bu makalede daha sonra kullanmak için kurulum 'un aşağıdaki değerlerini kullanın:
@@ -71,8 +71,8 @@ az dt endpoint create eventgrid --endpoint-name <Event-Grid-endpoint-name> --eve
 Event Hubs veya Service Bus uç noktaları oluşturma işlemi yukarıda gösterilen Event Grid işlemine benzerdir.
 
 İlk olarak, uç nokta olarak kullanacağınız kaynaklarınızı oluşturun. Gerekli olan özellikler şunlardır:
-* Service Bus: _Service Bus ad alanı_ , _Service Bus konu_ , _Yetkilendirme kuralı_
-* Event Hubs: _Event Hubs ad alanı_ , _Olay Hub_ 'ı, _Yetkilendirme kuralı_
+* Service Bus: _Service Bus ad alanı_, _Service Bus konu_, _Yetkilendirme kuralı_
+* Event Hubs: _Event Hubs ad alanı_, _Olay Hub_'ı, _Yetkilendirme kuralı_
 
 Ardından, Azure dijital TWINS 'de uç noktaları oluşturmak için aşağıdaki komutları kullanın: 
 
@@ -156,10 +156,10 @@ Azure dijital TWINS 'den bir uç noktaya gerçek veri göndermek için bir **ola
 
 Bu bölümdeki örnekler [.net (C#) SDK 'sını](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)kullanır.
 
-**Önkoşul** : bir yol oluşturmak için geçiş yapabilmeniz için önce Bu makalenin önceki kısımlarında açıklandığı gibi uç noktalar oluşturmanız gerekir. Uç noktalarınız kurulum tamamlandıktan sonra bir olay rotası oluşturmaya devam edebilirsiniz.
+**Önkoşul**: bir yol oluşturmak için geçiş yapabilmeniz için önce Bu makalenin önceki kısımlarında açıklandığı gibi uç noktalar oluşturmanız gerekir. Uç noktalarınız kurulum tamamlandıktan sonra bir olay rotası oluşturmaya devam edebilirsiniz.
 
->[!NOTE]
->Son noktalarınızı dağıttıysanız, yeni bir olay yolu için kullanmayı denemeden **önce** bunların dağıtımını tamamladığınızı doğrulayın. Uç noktalar kullanılamadığından yönlendirme dağıtımı başarısız olursa birkaç dakika bekleyip yeniden deneyin.
+> [!NOTE]
+> Son noktalarınızı dağıttıysanız, yeni bir olay yolu için kullanmayı denemeden **önce** bunların dağıtımını tamamladığınızı doğrulayın. Uç noktalar kullanılamadığından yönlendirme dağıtımı başarısız olursa birkaç dakika bekleyip yeniden deneyin.
 >
 > Bu akışı komut dosyası olarak belirlerseniz, uç nokta hizmeti 'nin yönlendirme kurulumuna geçmeden önce dağıtımı tamamlaması için 2-3 dakika boyunca bir süre oluşturarak bu işlemi hesaba eklemek isteyebilirsiniz.
 
@@ -229,7 +229,7 @@ Bitiş noktaları, filtrelemeden Azure dijital TWINS 'ten çeşitli olaylar alı
 
 Olay yolıza bir uç nokta için **filtre** ekleyerek gönderilmekte olan olayları kısıtlayabilirsiniz.
 
-Bir filtre eklemek için, aşağıdaki gövdeyi kullanarak *https://{YourHost}/Eventrotalar/myNewRoute? api-Version = 2020-10-31* ' e bir PUT isteği kullanabilirsiniz:
+Bir filtre eklemek için, aşağıdaki gövdeyi kullanarak *https://{-Azure-Digital-Twins-hostname}/eventRoutes/{Event-Route-Name}. api-Version = 2020-10-31* IÇIN bir PUT isteği kullanabilirsiniz:
 
 ```json  
 {
@@ -237,7 +237,6 @@ Bir filtre eklemek için, aşağıdaki gövdeyi kullanarak *https://{YourHost}/E
     "filter": "<filter-text>"
 }
 ``` 
-
 Desteklenen yol filtreleri aşağıda verilmiştir. Yukarıdaki istek gövdesinde yer tutucuyu değiştirmek için *filtre metin şeması* sütunundaki ayrıntıyı kullanın `<filter-text>` .
 
 [!INCLUDE [digital-twins-route-filters](../../includes/digital-twins-route-filters.md)]

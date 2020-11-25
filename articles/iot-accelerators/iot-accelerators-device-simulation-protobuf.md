@@ -10,11 +10,11 @@ ms.custom: mvc, amqp, devx-track-csharp
 ms.date: 11/06/2018
 ms.author: dobett
 ms.openlocfilehash: 12aa18c966745b450b3c9aa55e87e576b0c3f99b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075969"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018537"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Protokol arabellekleri kullanarak telemetri serileştirme
 
@@ -68,7 +68,7 @@ Dosya **üzerinde. vscode/launch.js** açın ve Cosmos DB Bağlantı dizenizi **
 > [!NOTE]
 > Mikro hizmeti makinenizde yerel olarak çalıştırdığınızda yine de Azure 'da bir Cosmos DB örneğinin düzgün şekilde çalışmasını gerektirir.
 
-Depolama bağdaştırıcısı mikro hizmetini yerel olarak çalıştırmak için hata ayıklama ** \> başlatma hata ayıkla**' ya tıklayın.
+Depolama bağdaştırıcısı mikro hizmetini yerel olarak çalıştırmak için hata ayıklama **\> başlatma hata ayıkla**' ya tıklayın.
 
 Visual Studio Code **Terminal** penceresinde, çalışan mikro hizmetin Web hizmeti sistem durumu denetimi URL 'si de dahil olmak üzere bir çıktı gösterilmektedir: <http://127.0.0.1:9022/v1/status> . Bu adrese gittiğinizde, durumun "Tamam: canlı ve iyi" olması gerekir.
 
@@ -217,7 +217,7 @@ Dahil etmek istediğiniz her dosya için **services\services.csproj** dosyasına
 </None>
 ```
 
-Mikro hizmeti yerel olarak çalıştırmak için hata ayıklama ** \> başlatma hata ayıkla**' ya tıklayın.
+Mikro hizmeti yerel olarak çalıştırmak için hata ayıklama **\> başlatma hata ayıkla**' ya tıklayın.
 
 Visual Studio Code **Terminal** penceresinde, çalışan mikro hizmetten alınan çıkış gösterilmektedir.
 
@@ -227,7 +227,7 @@ Sonraki adımları tamamladıktan sonra cihaz benzetimi mikro hizmetini bu Visua
 
 Bu bölümde, IoT Hub 'ınıza bağlı cihazlardan gönderilen telemetrinin görüntüleneceği bir olay izleyicisi ayarlamak için Azure CLı 'yi kullanırsınız.
 
-Aşağıdaki betik, IoT Hub 'ınızın adının **cihaz benzetimi-test**olduğunu varsayar.
+Aşağıdaki betik, IoT Hub 'ınızın adının **cihaz benzetimi-test** olduğunu varsayar.
 
 ```azurecli-interactive
 # Install the IoT extension if it's not already installed

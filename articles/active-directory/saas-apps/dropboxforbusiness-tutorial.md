@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: jeedes
 ms.openlocfilehash: bf86656ff670df19162867d597a869d762a012e8
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454581"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019353"
 ---
 # <a name="tutorial-integrate-dropbox-business-with-azure-active-directory"></a>Öğretici: Dropbox Işletmelerini Azure Active Directory ile tümleştirme
 
@@ -28,7 +28,7 @@ Bu öğreticide Dropbox Işletmelerini Azure Active Directory (Azure AD) ile tü
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -58,7 +58,7 @@ Dropbox Business 'ın Azure AD ile tümleştirilmesini yapılandırmak için, Ga
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**Britta Simon**adlı bir test kullanıcısı kullanarak Dropbox Business Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile Dropbox Işlerinde ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**Britta Simon** adlı bir test kullanıcısı kullanarak Dropbox Business Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile Dropbox Işlerinde ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
 Azure AD SSO 'yu Dropbox Işletmeyle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -113,7 +113,7 @@ Bu bölümde, Britta Simon adlı Azure portal bir test kullanıcısı oluşturac
    1. **Ad** alanına `Britta Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `BrittaSimon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -135,7 +135,7 @@ Bu bölümde, Dropbox uygulamasına erişim izni vererek Azure çoklu oturum aç
 
 ## <a name="configure-dropbox-business-sso"></a>Dropbox Iş SSO 'SU yapılandırma
 
-1. Dropbox Business içindeki yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemek**üzere **uygulamalarımı güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+1. Dropbox Business içindeki yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemek** üzere **uygulamalarımı güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
     ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
 
@@ -167,7 +167,7 @@ Bu bölümde, Dropbox uygulamasına erişim izni vererek Azure çoklu oturum aç
 
     !["Çoklu oturum açma" yapılandırma ayarlarını gösteren ekran görüntüsü.](./media/dropboxforbusiness-tutorial/configure5.png "Çoklu oturum açmayı yapılandırma")
 
-    a. **Çoklu oturum açma**için açılan listeden bir seçenek olarak **gerekli** ' ı seçin.
+    a. **Çoklu oturum açma** için açılan listeden bir seçenek olarak **gerekli** ' ı seçin.
 
     b. **Oturum açma URL 'Si Ekle** ' ye tıklayın ve **kimlik sağlayıcısı oturum açma URL 'si** metin kutusuna, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın ve **bitti**' yi seçin.
 

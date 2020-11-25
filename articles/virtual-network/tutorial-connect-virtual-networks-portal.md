@@ -14,15 +14,15 @@ ms.date: 01/22/2020
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: e95441aab6c8ce7de37ba5f6b08d5f7d54e13347
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77201307"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017925"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak sanal ağ eşlemesi ile sanal ağları bağlama
 
-Sanal ağ eşlemesi ile sanal ağları birbirine bağlayabilirsiniz. Bu sanal ağlar aynı bölgede veya farklı bölgelerde (Genel Sanal Ağ Eşleme olarak da bilinir) olabilir. Sanal ağlar eşlendikten sonra, kaynaklar aynı sanal ağ üzerindeymiş gibi, aynı gecikme süresi ve bant genişliği ile her iki sanal ağdaki kaynaklar birbiriyle iletişim kurabilir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Sanal ağ eşlemesi ile sanal ağları birbirine bağlayabilirsiniz. Bu sanal ağlar aynı bölgede veya farklı bölgelerde (Genel Sanal Ağ Eşleme olarak da bilinir) olabilir. Sanal ağlar eşlendikten sonra, kaynaklar aynı sanal ağ üzerindeymiş gibi, aynı gecikme süresi ve bant genişliği ile her iki sanal ağdaki kaynaklar birbiriyle iletişim kurabilir. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * İki sanal ağ oluşturma
@@ -48,26 +48,26 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
     |---|---|
     |Abonelik| Aboneliğinizi seçin.|
     |Kaynak grubu| **Yeni oluştur**’u seçin ve *myResourceGroup* değerini girin.|
-    |Bölge| **Doğu ABD**’yi seçin.|
-    |Adı|myVirtualNetwork1|
+    |Region| **Doğu ABD**’yi seçin.|
+    |Name|myVirtualNetwork1|
 
-4. **IP adresleri** sekmesinde **Adres alanı** alanı için 10.0.0.0/16 girin. Aşağıdaki **alt ağ ekle** düğmesine tıklayın ve alt ağ **adı** Için *Subnet1* ve IP **adresi aralığı**için 10.0.0.0/24 girin.
+4. **IP adresleri** sekmesinde **Adres alanı** alanı için 10.0.0.0/16 girin. Aşağıdaki **alt ağ ekle** düğmesine tıklayın ve alt ağ **adı** Için *Subnet1* ve IP **adresi aralığı** için 10.0.0.0/24 girin.
 5. **Gözden geçir + oluştur** ' u ve ardından **Oluştur**' u seçin.
    
 5. Aşağıdaki değişikliklerle birlikte 1-5 arası adımları tekrar tamamlayın:
 
     |Ayar|Değer|
     |---|---|
-    |Adı|myVirtualNetwork2|
+    |Ad|myVirtualNetwork2|
     |Adres alanı|10.1.0.0/16|
-    |Kaynak grubu| **Mevcut olanı kullan** ' ı seçin ve ardından **myresourcegroup**öğesini seçin.|
+    |Kaynak grubu| **Mevcut olanı kullan** ' ı seçin ve ardından **myresourcegroup** öğesini seçin.|
     |Alt ağ adı | Subnet2|
     |Alt Ağ Adresi aralığı|10.1.0.0/24|
 
 ## <a name="peer-virtual-networks"></a>Sanal ağları eşleme
 
 1. Azure portalının üst kısmındaki Arama kutusuna *MyVirtualNetwork1* yazmaya başlayın. Arama sonuçlarında **myVirtualNetwork1** görüntülendiğinde bunu seçin.
-2. Ayarlar **altında, eşlemeler**' **Settings**i seçin ve ardından aşağıdaki resimde gösterildiği gibi **Ekle**' yi seçin:
+2. Ayarlar **altında, eşlemeler**' **Settings** i seçin ve ardından aşağıdaki resimde gösterildiği gibi **Ekle**' yi seçin:
 
     ![Eşleme oluşturma](./media/tutorial-connect-virtual-networks-portal/create-peering.png)
 
@@ -82,7 +82,7 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
     ![Eşleme ayarları](./media/tutorial-connect-virtual-networks-portal/peering-settings-bidirectional.png)
 
-    Aşağıdaki resimde gösterildiği gibi, **eşleme durumu** *bağlı*olur:
+    Aşağıdaki resimde gösterildiği gibi, **eşleme durumu** *bağlı* olur:
 
     ![Eşleme durumu](./media/tutorial-connect-virtual-networks-portal/peering-status-connected.png)
 
@@ -100,14 +100,14 @@ Sonraki bir adımda aralarında iletişim kurabilmeniz için her sanal ağ üzer
 
     |Ayar|Değer|
     |---|---|
-    |Kaynak grubu| **Mevcut olanı kullan** ' ı seçin ve ardından **myresourcegroup**öğesini seçin.|
-    |Adı|myVm1|
+    |Kaynak grubu| **Mevcut olanı kullan** ' ı seçin ve ardından **myresourcegroup** öğesini seçin.|
+    |Name|myVm1|
     |Konum| **Doğu ABD**’yi seçin.|
     |Kullanıcı adı| Seçtiğiniz bir kullanıcı adını girin.|
     |Parola| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)karşılamalıdır.|
    
 4. **Boyut** seçeneği IÇIN bir VM boyutu seçin.
-5. **Ağ**altında için aşağıdaki değerleri seçin:
+5. **Ağ** altında için aşağıdaki değerleri seçin:
 
     |Ayar|Değer|
     |---|---|
@@ -124,7 +124,7 @@ Aşağıdaki değişikliklerle birlikte 1.-6. adımları tekrar tamamlayın:
 
 |Ayar|Değer|
 |---|---|
-|Adı | myVm2|
+|Ad | myVm2|
 |Sanal ağ | myVirtualNetwork2|
 
 Sanal makinelerin oluşturulması birkaç dakika sürebilir. Her iki sanal makine de oluşturulmadan kalan adımlara devam etmeyin.

@@ -6,11 +6,11 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 02/09/2018
 ms.openlocfilehash: e7da5454581e0e414dc832d4fcec50277f3b7f40
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221256"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019064"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>Visual Studio Code için Azure Data Lake Araçları’nı kullanma
 
@@ -20,7 +20,7 @@ Bu makalede, U-SQL betiklerini oluşturmak, test etmek ve çalıştırmak için 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-VS Code için Azure Data Lake araçları, Windows, Linux ve macOS 'u destekler.U-SQL yerel çalıştırma ve yerel hata ayıklama yalnızca Windows 'da çalışır.
+VS Code için Azure Data Lake araçları, Windows, Linux ve macOS 'u destekler. U-SQL yerel çalıştırma ve yerel hata ayıklama yalnızca Windows 'da çalışır.
 
 - [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx)
 
@@ -55,7 +55,7 @@ U-SQL ile çalışmak için, bir U-SQL dosyası ya da bir klasör açmanız gere
 
 ### <a name="to-open-the-sample-script"></a>Örnek betiği açmak için
 
-Komut paletini açın (Ctrl + Shift + P) ve **adl: açık örnek betiği**girin. Bu örnek, bu örneğin başka bir örneğini açar. Ayrıca, bu örnekte bir betiği düzenleyebilir, yapılandırabilir ve gönderebilirsiniz.
+Komut paletini açın (Ctrl + Shift + P) ve **adl: açık örnek betiği** girin. Bu örnek, bu örneğin başka bir örneğini açar. Ayrıca, bu örnekte bir betiği düzenleyebilir, yapılandırabilir ve gönderebilirsiniz.
 
 ### <a name="to-open-a-folder-for-your-u-sql-project"></a>U-SQL projenizin klasörünü açmak için
 
@@ -65,18 +65,18 @@ Komut paletini açın (Ctrl + Shift + P) ve **adl: açık örnek betiği**girin.
 4. Aşağıdaki kodu başlıksız-1 dosyasına girin:
 
    ```usql
-   @departments  =
-       SELECT * FROM
-           (VALUES
-               (31,    "Sales"),
-               (33,    "Engineering"),
-               (34,    "Clerical"),
-               (35,    "Marketing")
-           ) AS
-                 D( DepID, DepName );
+   @departments  =
+       SELECT * FROM
+           (VALUES
+               (31,    "Sales"),
+               (33,    "Engineering"),
+               (34,    "Clerical"),
+               (35,    "Marketing")
+           ) AS
+                 D( DepID, DepName );
    ```
 
-   @departments      Outputters.Csv () kullanarak "/output/departments.csv" öğesine çıkış yapın
+   @departmentsOutputters.Csv () kullanarak "/output/departments.csv" ÖĞESINE çıkış yapın
 
     Betik,/Output klasörüne eklenen bazı verilerle bir departments.csv dosyası oluşturur.
 
@@ -85,12 +85,12 @@ Komut paletini açın (Ctrl + Shift + P) ve **adl: açık örnek betiği**girin.
 ### <a name="to-compile-a-u-sql-script"></a>U-SQL betiğini derlemek için
 
 1. Komut paletini açmak için CTRL + SHIFT + P ' yi seçin.
-2. **Adl: derleme betiği**girin. Derleme sonuçları **Çıkış** penceresinde görüntülenir. Ayrıca bir betik dosyasına sağ tıklayıp **adl: betiği derle** ' yi seçerek U-SQL işini derleyebilirsiniz. Derleme sonucu **çıktı** bölmesinde görünür.
+2. **Adl: derleme betiği** girin. Derleme sonuçları **Çıkış** penceresinde görüntülenir. Ayrıca bir betik dosyasına sağ tıklayıp **adl: betiği derle** ' yi seçerek U-SQL işini derleyebilirsiniz. Derleme sonucu **çıktı** bölmesinde görünür.
 
 ### <a name="to-submit-a-u-sql-script"></a>U-SQL betiği göndermek için
 
 1. Komut paletini açmak için CTRL + SHIFT + P ' yi seçin.
-2. **Adl: gönderme işini**girin. Ayrıca bir betik dosyasına sağ tıklayıp **adl: Işi gönder**' i seçebilirsiniz.
+2. **Adl: gönderme işini** girin. Ayrıca bir betik dosyasına sağ tıklayıp **adl: Işi gönder**' i seçebilirsiniz.
 
 Bir U-SQL işi gönderdikten sonra, gönderim günlükleri VS Code **Çıkış** penceresinde görüntülenir. İş görünümü sağ bölmede görüntülenir. Gönderim başarılı olursa, iş URL 'SI de görüntülenir. Gerçek zamanlı iş durumunu izlemek için iş URL 'sini bir Web tarayıcısında açabilirsiniz.
 
@@ -155,7 +155,7 @@ Derlemeyi **adl: Register Assembly** veya **adl: Register Assembly (Gelişmiş)*
 ### <a name="to-register-through-the-adl-register-assembly-command"></a>ADL: Register Assembly komutunu kullanarak kaydolmak için
 
 1. Komut paletini açmak için CTRL + SHIFT + P ' yi seçin.
-2. **Adl: Register derlemesini**girin.
+2. **Adl: Register derlemesini** girin.
 3. Yerel derleme yolunu belirtin.
 4. Bir Data Lake Analytics hesabı seçin.
 5. Bir veritabanı seçin.
@@ -180,7 +180,7 @@ Portal bir tarayıcıda açılır ve derleme kayıt işlemini görüntüler.
 
 **Adl: yazmaç derlemesi (Gelişmiş)** komutunu tetiklemenin bir diğer yolu, dosya Gezgini 'nde. dll dosyasına sağ tıklamanız.
 
-Aşağıdaki U-SQL kodu, bir derlemenin nasıl çağrılacağını gösterir. Örnekte, derleme adı *Test*olur.
+Aşağıdaki U-SQL kodu, bir derlemenin nasıl çağrılacağını gösterir. Örnekte, derleme adı *Test* olur.
 
 ```usql
 REFERENCE ASSEMBLY [test];
@@ -231,7 +231,7 @@ Data Lake Analytics 'de U-SQL betiklerini derlemek ve çalıştırmak için önc
 
 1. Komut paletini açmak için CTRL + SHIFT + P ' yi seçin.
 
-2. **Adl: Login**girin. Oturum açma bilgileri sağ alt tarafta görüntülenir.
+2. **Adl: Login** girin. Oturum açma bilgileri sağ alt tarafta görüntülenir.
 
    ![Login komutunu girme](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extension-login.png)
 
@@ -248,7 +248,7 @@ Data Lake Analytics 'de U-SQL betiklerini derlemek ve çalıştırmak için önc
 > - Data Lake araçlar, oturumunuzu otomatik olarak bir sonraki sefer kapatır.
 > - Hesabınızda iki faktör etkinse, PIN kullanmak yerine telefon kimlik doğrulaması kullanmanızı öneririz.
 
-Oturumu kapatmak için **adl: logout**komutunu girin.
+Oturumu kapatmak için **adl: logout** komutunu girin.
 
 ### <a name="to-connect-to-azure-from-the-explorer"></a>Azure 'a gezgin 'e bağlanmak için
 
@@ -264,7 +264,7 @@ Gezgin oturumunuzu açamazsınız. Oturumu kapatmak için, bkz. [bir komut kulla
 
 ### <a name="to-create-an-extraction-script-by-using-a-command"></a>Bir komut kullanarak ayıklama betiği oluşturmak için
 
-1. Komut paletini açmak için CTRL + SHIFT + P ' yi seçin ve **adl: ayıklama betiği oluştur**yazın.
+1. Komut paletini açmak için CTRL + SHIFT + P ' yi seçin ve **adl: ayıklama betiği oluştur** yazın.
 2. Bir Azure depolama dosyası için tam yolu belirtin ve Enter tuşunu seçin.
 3. Bir hesap seçin.
 4. Bir. txt dosyası için, dosyayı ayıklamak üzere bir sınırlayıcı seçin.
@@ -288,11 +288,11 @@ Hesapları listelemek, meta verilere erişmek ve analiz işlerini görüntüleme
 ### <a name="to-list-the-azure-data-lake-analytics-accounts-under-your-azure-subscription"></a>Azure aboneliğinizin altındaki Azure Data Lake Analytics hesaplarını listelemek için
 
 1. Komut paletini açmak için CTRL + SHIFT + P ' yi seçin.
-2. **Adl: List hesaplarını**girin. Hesaplar **Çıkış** bölmesinde görünür.
+2. **Adl: List hesaplarını** girin. Hesaplar **Çıkış** bölmesinde görünür.
 
 ### <a name="to-access-azure-data-lake-analytics-metadata"></a>Azure Data Lake Analytics meta verilerine erişmek için
 
-1. CTRL + SHIFT + P ' yi seçin ve ardından **adl: List tablolarını**girin.
+1. CTRL + SHIFT + P ' yi seçin ve ardından **adl: List tablolarını** girin.
 2. Data Lake Analytics hesaplarından birini seçin.
 3. Data Lake Analytics veritabanlarından birini seçin.
 4. Şemalardan birini seçin. Tablo listesini görebilirsiniz.
@@ -404,17 +404,17 @@ Karşıya yükleme ve indirme durumu durum çubuğunda görüntülenir. Durum ç
 
 ## <a name="integrate-with-azure-data-lake-analytics-from-the-explorer"></a>Gezgin Azure Data Lake Analytics ile tümleştirme
 
-Oturum açtıktan sonra Azure hesabınız için tüm abonelikler, **Azure Data Lake**altında sol bölmede listelenir.
+Oturum açtıktan sonra Azure hesabınız için tüm abonelikler, **Azure Data Lake** altında sol bölmede listelenir.
 
 ![Data Lake Gezgini](./media/data-lake-analytics-data-lake-tools-for-vscode/datalake-explorer.png)
 
 ### <a name="data-lake-analytics-metadata-navigation"></a>Data Lake Analytics meta veri gezintisi
 
-Azure aboneliğinizi genişletin. **U-SQL veritabanları** düğümü altında, u-SQL veritabanınıza göz atabilir ve **şemalar**, **kimlik bilgileri**, **derlemeler**, **Tablolar**ve **Dizin**gibi klasörleri görüntüleyebilirsiniz.
+Azure aboneliğinizi genişletin. **U-SQL veritabanları** düğümü altında, u-SQL veritabanınıza göz atabilir ve **şemalar**, **kimlik bilgileri**, **derlemeler**, **Tablolar** ve **Dizin** gibi klasörleri görüntüleyebilirsiniz.
 
 ### <a name="data-lake-analytics-metadata-entity-management"></a>Data Lake Analytics meta veri varlık yönetimi
 
-**U-SQL veritabanlarını**genişletin. Karşılık gelen düğüme sağ tıklayıp ardından kısayol menüsünde **oluşturulacak betiği** seçerek bir veritabanı, şema, tablo, tablo türü, dizin veya istatistik oluşturabilirsiniz. Açılan komut dosyası sayfasında, komut dosyasını gereksinimlerinize göre düzenleyin. Ardından, sağ tıklayıp **adl: gönder işini**seçerek işi gönderebilirsiniz.
+**U-SQL veritabanlarını** genişletin. Karşılık gelen düğüme sağ tıklayıp ardından kısayol menüsünde **oluşturulacak betiği** seçerek bir veritabanı, şema, tablo, tablo türü, dizin veya istatistik oluşturabilirsiniz. Açılan komut dosyası sayfasında, komut dosyasını gereksinimlerinize göre düzenleyin. Ardından, sağ tıklayıp **adl: gönder işini** seçerek işi gönderebilirsiniz.
 
 Öğeyi oluşturmayı tamamladıktan sonra, düğümüne sağ tıklayın ve ardından öğeyi göstermek için **Yenile** ' yi seçin. Öğeyi sağ tıklayıp **Sil**' i seçerek de silebilirsiniz.
 
@@ -430,13 +430,13 @@ Azure aboneliğinizi genişletin. **U-SQL veritabanları** düğümü altında, 
 
 ## <a name="integrate-with-azure-data-lake-store-from-the-explorer"></a>Gezgin Azure Data Lake Store ile tümleştirme
 
-**Data Lake Store**gidin:
+**Data Lake Store** gidin:
 
-- Klasör düğümüne sağ tıklayıp **Yenile**, **Sil**, **karşıya yükle**, **klasörü karşıya yükle**, **göreli yolu Kopyala**ve kısayol menüsünde **tam yolu Kopyala** komutlarını kullanabilirsiniz.
+- Klasör düğümüne sağ tıklayıp **Yenile**, **Sil**, **karşıya yükle**, **klasörü karşıya yükle**, **göreli yolu Kopyala** ve kısayol menüsünde **tam yolu Kopyala** komutlarını kullanabilirsiniz.
 
    ![Data Lake Gezgininde klasör düğümü için kısayol menü komutları](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-account-folder-menu.png)
 
-- Dosya düğümüne sağ tıklayıp **Önizleme**, **indirme**, **silme**, **ayıklama betiği oluşturma** (yalnızca CSV, TSV ve txt dosyaları için kullanılabilir), **göreli yolu Kopyala**ve kısayol menüsünde **tam yolu Kopyala** komutlarını kullanabilirsiniz.
+- Dosya düğümüne sağ tıklayıp **Önizleme**, **indirme**, **silme**, **ayıklama betiği oluşturma** (yalnızca CSV, TSV ve txt dosyaları için kullanılabilir), **göreli yolu Kopyala** ve kısayol menüsünde **tam yolu Kopyala** komutlarını kullanabilirsiniz.
 
    ![Data Lake Gezgininde bir dosya düğümü için kısayol menü komutları](./media/data-lake-analytics-data-lake-tools-for-vscode/storage-account-extract.png)
 
@@ -444,7 +444,7 @@ Azure aboneliğinizi genişletin. **U-SQL veritabanları** düğümü altında, 
 
 Blob depolamaya gidin:
 
-- Blob kapsayıcı düğümüne sağ tıklayıp ardından **Yenile**, **BLOB kapsayıcısını Sil**ve BLOB komutlarını kısayol menüsünde **Yükle** komutlarını kullanabilirsiniz.
+- Blob kapsayıcı düğümüne sağ tıklayıp ardından **Yenile**, **BLOB kapsayıcısını Sil** ve BLOB komutlarını kısayol menüsünde **Yükle** komutlarını kullanabilirsiniz.
 
    ![BLOB depolama alanındaki bir blob kapsayıcı düğümü için kısayol menü komutları](./media/data-lake-analytics-data-lake-tools-for-vscode/blob-storage-blob-container-node.png)
 
@@ -452,7 +452,7 @@ Blob depolamaya gidin:
 
    ![BLOB depolama altındaki klasör düğümü için kısayol menü komutları](./media/data-lake-analytics-data-lake-tools-for-vscode/blob-storage-folder-node.png)
 
-- Dosya düğümüne sağ tıklayıp **Önizleme/düzenleme**, **indirme**, **silme**, **ayıklama betiği oluşturma** (yalnızca CSV, TSV ve txt dosyaları için kullanılabilir), **göreli yolu Kopyala**ve kısayol menüsünde **tam yolu Kopyala** komutlarını kullanabilirsiniz.
+- Dosya düğümüne sağ tıklayıp **Önizleme/düzenleme**, **indirme**, **silme**, **ayıklama betiği oluşturma** (yalnızca CSV, TSV ve txt dosyaları için kullanılabilir), **göreli yolu Kopyala** ve kısayol menüsünde **tam yolu Kopyala** komutlarını kullanabilirsiniz.
 
     ![BLOB depolama alanındaki bir dosya düğümü için kısayol menü komutları](./media/data-lake-analytics-data-lake-tools-for-vscode/create-extract-script-from-context-menu-2.png)
 

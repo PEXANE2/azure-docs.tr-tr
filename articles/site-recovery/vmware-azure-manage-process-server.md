@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: ramamill
 ms.openlocfilehash: a547a874c42d06d8453b154847561d8b5f0dabb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361406"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019216"
 ---
 # <a name="manage-process-servers"></a>İşlem sunucularını yönetme
 
@@ -37,7 +37,7 @@ Bir işlem sunucusunu şirket içinde dağıtırken veya yeniden çalışma içi
 
 VM 'Leri aşağıdaki gibi iki işlem sunucusu arasında taşıyarak yükü dengeleyin:
 
-1. Kasada, **yönet** **Site Recovery altyapı**' ı tıklatın. **VMware & fiziksel makineleri için**altında **yapılandırma sunucuları**' na tıklayın.
+1. Kasada, **yönet** **Site Recovery altyapı**' ı tıklatın. **VMware & fiziksel makineleri için** altında **yapılandırma sunucuları**' na tıklayın.
 2. İşlem sunucularının kaydedildiği yapılandırma sunucusuna tıklayın.
 3. Yük Dengeleme trafiğini açmak istediğiniz işlem sunucusuna tıklayın.
 
@@ -48,7 +48,7 @@ VM 'Leri aşağıdaki gibi iki işlem sunucusu arasında taşıyarak yükü deng
     ![Ekran görüntüsü, seçilen hedef işlem sunucusunu Seç seçiliyken Yük Dengeleme bölmesini gösterir.](media/vmware-azure-manage-process-server/LoadPS.PNG)
 
 2. **Makine seç**' e tıklayın ve geçerli sunucudan hedef işlem sunucusuna taşımak istediğiniz makineleri seçin. Ortalama veri değişikliği ayrıntıları, her bir sanal makine için görüntülenir. Daha sonra, **Tamam**'a tıklayın. 
-3. Kasada, **Monitoring**  >  **Site Recovery işleri**izleme altında işin ilerlemesini izleyin.
+3. Kasada, **Monitoring**  >  **Site Recovery işleri** izleme altında işin ilerlemesini izleyin.
 
 Değişikliklerin portalda yansıtılması 15 dakika sürer. Daha hızlı bir etki için [yapılandırma sunucusunu yenileyin](vmware-azure-manage-configuration-server.md#refresh-configuration-server).
 
@@ -56,20 +56,20 @@ Değişikliklerin portalda yansıtılması 15 dakika sürer. Daha hızlı bir et
 
 İşlem sunucusu tarafından işlenen iş yükünün tamamını, aşağıdaki gibi farklı bir işlem sunucusuna taşıyın:
 
-1. Kasada, **yönet** **Site Recovery altyapı**' ı tıklatın. **VMware & fiziksel makineleri için**altında **yapılandırma sunucuları**' na tıklayın.
+1. Kasada, **yönet** **Site Recovery altyapı**' ı tıklatın. **VMware & fiziksel makineleri için** altında **yapılandırma sunucuları**' na tıklayın.
 2. İşlem sunucularının kaydedildiği yapılandırma sunucusuna tıklayın.
 3. İş yükünü değiştirmek istediğiniz işlem sunucusuna tıklayın.
 4. **Anahtar**' a tıklayın, iş yükünü taşımak istediğiniz hedef işlem sunucusunu seçin. Ardından **Tamam 'a** tıklayın
 
     ![Ekran görüntüsü, hedef işlem sunucusunu Seç bölmesini gösterir.](media/vmware-azure-manage-process-server/Switch.PNG)
 
-5. Kasada, **Monitoring**  >  **Site Recovery işleri**izleme altında işin ilerlemesini izleyin.
+5. Kasada, **Monitoring**  >  **Site Recovery işleri** izleme altında işin ilerlemesini izleyin.
 
 Değişikliklerin portalda yansıtılması 15 dakika sürer. Daha hızlı bir etki için [yapılandırma sunucusunu yenileyin](vmware-azure-manage-configuration-server.md#refresh-configuration-server).
 
 ## <a name="register-a-master-target-server"></a>Ana hedef sunucuyu kaydetme
 
-Ana hedef sunucu, yapılandırma sunucusunda ve genişleme işlem sunucularında bulunur. Yapılandırma sunucusu ile kayıtlı olmalıdır. Bu kayıtta bir hata olması durumunda, korunan öğelerin sistem durumunu etkileyebilir. Ana hedef sunucuyu yapılandırma sunucusuna kaydetmek için, kaydın gerekli olduğu belirli yapılandırma sunucusu/genişleme işlem sunucusunda oturum açın. **%ProgramData%\asr\agent**klasörüne gidin ve yönetici komut isteminde aşağıdaki komutu çalıştırın.
+Ana hedef sunucu, yapılandırma sunucusunda ve genişleme işlem sunucularında bulunur. Yapılandırma sunucusu ile kayıtlı olmalıdır. Bu kayıtta bir hata olması durumunda, korunan öğelerin sistem durumunu etkileyebilir. Ana hedef sunucuyu yapılandırma sunucusuna kaydetmek için, kaydın gerekli olduğu belirli yapılandırma sunucusu/genişleme işlem sunucusunda oturum açın. **%ProgramData%\asr\agent** klasörüne gidin ve yönetici komut isteminde aşağıdaki komutu çalıştırın.
 
    ```
    cmd
@@ -91,7 +91,7 @@ Ana hedef sunucu, yapılandırma sunucusunda ve genişleme işlem sunucularında
 Ayarları kaydettikten sonra şunları yapın:
 
 1. İşlem sunucusunda bir yönetici komut istemi açın.
-2. **%ProgramData%\asr\agent**klasörüne göz atın ve şu komutu çalıştırın:
+2. **%ProgramData%\asr\agent** klasörüne göz atın ve şu komutu çalıştırın:
 
     ```
     cdpcli.exe --registermt
@@ -111,7 +111,7 @@ Ayarları kaydettikten sonra şunları yapın:
    net stop obengine
    net start obengine
    ```
-2. **%ProgramData%\asr\agent**klasörüne göz atın ve şu komutu çalıştırın:
+2. **%ProgramData%\asr\agent** klasörüne göz atın ve şu komutu çalıştırın:
    ```
    cmd
    cdpcli.exe --registermt

@@ -13,11 +13,11 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 7f07f08cd320d94495403b0f5ae65d60d8dc93b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84195990"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019693"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Veri Yönetimi ağ geçidi ile şirket içi kaynaklar ve bulut arasında veri taşıma
 > [!NOTE]
@@ -50,10 +50,10 @@ Bu yönergeyi başlamadan önce, aşağıdaki önkoşullara sahip olmanız gerek
 * **SQL Server**. Bu öğreticide bir SQL Server veritabanını **kaynak** veri deposu olarak kullanırsınız.
 
 ## <a name="create-data-factory"></a>Veri fabrikası oluşturma
-Bu adımda, **ADFTutorialOnPremDF**adlı bir Azure Data Factory örneği oluşturmak için Azure Portal kullanırsınız.
+Bu adımda, **ADFTutorialOnPremDF** adlı bir Azure Data Factory örneği oluşturmak için Azure Portal kullanırsınız.
 
 1. [Azure Portal](https://portal.azure.com)oturum açın.
-2. **Kaynak oluştur ' a**tıklayın, **Intelligence + Analytics**' e tıklayın ve **Data Factory**' ye tıklayın.
+2. **Kaynak oluştur ' a** tıklayın, **Intelligence + Analytics**' e tıklayın ve **Data Factory**' ye tıklayın.
 
    ![Yeni->DataFactory](./media/data-factory-move-data-between-onprem-and-cloud/NewDataFactoryMenu.png)  
 3. **Yeni Veri Fabrikası** sayfasında ad için **ADFTutorialOnPremDF** girin.
@@ -67,7 +67,7 @@ Bu adımda, **ADFTutorialOnPremDF**adlı bir Azure Data Factory örneği oluştu
    >
    >
 4. Data factory’yi oluşturmak istediğiniz **Azure aboneliği**’ni seçin.
-5. Mevcut bir **kaynak grubu** seçin ya da bir kaynak grubu oluşturun. Öğretici için: **ADFTutorialResourceGroup**adlı bir kaynak grubu oluşturun.
+5. Mevcut bir **kaynak grubu** seçin ya da bir kaynak grubu oluşturun. Öğretici için: **ADFTutorialResourceGroup** adlı bir kaynak grubu oluşturun.
 6. **Yeni Veri Fabrikası** sayfasında **Oluştur** ' a tıklayın.
 
    > [!IMPORTANT]
@@ -85,7 +85,7 @@ Bu adımda, **ADFTutorialOnPremDF**adlı bir Azure Data Factory örneği oluştu
 2. Data Factory düzenleyicisinde,... öğesine tıklayın **. Araç çubuğundan daha fazla bilgi** ve ardından **Yeni veri ağ geçidi**' ne tıklayın. Alternatif olarak, ağaç görünümünde **veri ağ geçitleri** ' ne sağ tıklayıp **Yeni veri ağ geçidi**' ne tıklayabilirsiniz.
 
    ![Araç çubuğundaki yeni veri ağ geçidi](./media/data-factory-move-data-between-onprem-and-cloud/NewDataGateway.png)
-3. **Oluştur** sayfasında, **ad**Için **adftutorialgateway** girin ve **Tamam**' a tıklayın.     
+3. **Oluştur** sayfasında, **ad** Için **adftutorialgateway** girin ve **Tamam**' a tıklayın.     
 
     ![Ağ Geçidi sayfası oluştur](./media/data-factory-move-data-between-onprem-and-cloud/OnPremCreateGatewayBlade.png)
 
@@ -98,7 +98,7 @@ Bu adımda, **ADFTutorialOnPremDF**adlı bir Azure Data Factory örneği oluştu
    >
    > Chrome kullanıyorsanız [Chrome Web deposuna](https://chrome.google.com/webstore/)gidin, "ClickOnce" anahtar sözcüğü ile arama yapın, ClickOnce uzantılarından birini seçin ve yükleyebilirsiniz.
    >
-   > Firefox için aynısını yapın (eklenti yüklemesi). Araç çubuğunda **menüyü aç** düğmesine (sağ üst köşedeki**üç yatay çizgi** ) tıklayın, **Eklentiler**' e tıklayın, "ClickOnce" anahtar sözcüğü ile arama yapın, ClickOnce uzantılarından birini seçin ve yüklemeyi yapın.    
+   > Firefox için aynısını yapın (eklenti yüklemesi). Araç çubuğunda **menüyü aç** düğmesine (sağ üst köşedeki **üç yatay çizgi** ) tıklayın, **Eklentiler**' e tıklayın, "ClickOnce" anahtar sözcüğü ile arama yapın, ClickOnce uzantılarından birini seçin ve yüklemeyi yapın.    
    >
    >
 
@@ -120,14 +120,14 @@ Bu adımda, **ADFTutorialOnPremDF**adlı bir Azure Data Factory örneği oluştu
 6. Bilgisayarınızda **veri yönetimi Gateway Configuration Manager** uygulamasını başlatın. **Ara** penceresinde, bu yardımcı programa erişmek Için **veri yönetimi ağ geçidi** yazın. Yürütülebilir **ConfigManager.exe** şu klasörde de bulabilirsiniz: **C:\Program Files\Microsoft veri yönetimi Gateway\2.0\Shared**
 
     ![Ağ Geçidi Configuration Manager](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDMGConfigurationManager.png)
-7. İleti görtığınızdan emin olun `adftutorialgateway is connected to the cloud service` . Alttaki durum çubuğu, bir **yeşil onay işaretiyle**birlikte **bulut hizmetine bağlı** görüntüler.
+7. İleti görtığınızdan emin olun `adftutorialgateway is connected to the cloud service` . Alttaki durum çubuğu, bir **yeşil onay işaretiyle** birlikte **bulut hizmetine bağlı** görüntüler.
 
     **Giriş** sekmesinde, aşağıdaki işlemleri de yapabilirsiniz:
 
    * Kayıt düğmesini kullanarak Azure portal bir anahtara sahip bir ağ geçidi **kaydedin** .
    * Ağ Geçidi makinenizde çalışan Veri Yönetimi ağ geçidi konak hizmetini **durdurun** .
    * **Güncelleştirmeleri** günün belirli bir saatinde yüklenecek şekilde zamanlayın.
-   * Ağ geçidinin **en son**ne zaman güncelleştirildiğini görüntüleyin.
+   * Ağ geçidinin **en son** ne zaman güncelleştirildiğini görüntüleyin.
    * Ağ geçidinin bir güncelleştirmesinin yüklenebileceği süreyi belirtin.
 8. **Ayarlar** sekmesine geçin. **Sertifika** bölümünde belirtilen sertifika, portalda belirttiğiniz şirket içi veri deposunun kimlik bilgilerini şifrelemek/şifrelerini çözmek için kullanılır. seçim Bunun yerine kendi sertifikanızı kullanmak için **Değiştir** ' e tıklayın. Varsayılan olarak, ağ geçidi Data Factory hizmeti tarafından otomatik olarak oluşturulan sertifikayı kullanır.
 
@@ -160,11 +160,11 @@ Bu adımda, iki bağlı hizmet oluşturacaksınız: **AzureStorageLinkedService*
    ![Yeni SQL Server bağlantılı hizmet](./media/data-factory-move-data-between-onprem-and-cloud/NewSQLServer.png)
 2. Sağdaki **JSON düzenleyicisinde** aşağıdaki adımları uygulayın:
 
-   1. **GatewayName**için **adftutorialgateway**belirtin.    
-   2. **ConnectionString**öğesinde aşağıdaki adımları uygulayın:    
+   1. **GatewayName** için **adftutorialgateway** belirtin.    
+   2. **ConnectionString** öğesinde aşağıdaki adımları uygulayın:    
 
-      1. **ServerName**için, SQL Server veritabanını barındıran sunucunun adını girin.
-      2. **DatabaseName**için veritabanının adını girin.
+      1. **ServerName** için, SQL Server veritabanını barındıran sunucunun adını girin.
+      2. **DatabaseName** için veritabanının adını girin.
       3. Araç çubuğunda **şifreleme** düğmesine tıklayın. Kimlik bilgileri Yöneticisi uygulamasını görürsünüz.
 
          ![Kimlik bilgileri Yöneticisi uygulaması](./media/data-factory-move-data-between-onprem-and-cloud/credentials-manager-application.png)
@@ -178,9 +178,9 @@ Bu adımda, iki bağlı hizmet oluşturacaksınız: **AzureStorageLinkedService*
 
 #### <a name="add-a-linked-service-for-an-azure-storage-account"></a>Azure depolama hesabı için bağlı hizmet ekleme
 1. **Data Factory düzenleyicisinde**, komut çubuğunda **Yeni veri deposu** ' na tıklayın ve **Azure depolama**' ya tıklayın.
-2. **Hesap adı**için Azure depolama hesabınızın adını girin.
-3. **Hesap anahtarı**için Azure depolama hesabınızın anahtarını girin.
-4. **AzureStorageLinkedService**dağıtmak için **Dağıt** ' a tıklayın.
+2. **Hesap adı** için Azure depolama hesabınızın adını girin.
+3. **Hesap anahtarı** için Azure depolama hesabınızın anahtarını girin.
+4. **AzureStorageLinkedService** dağıtmak için **Dağıt** ' a tıklayın.
 
 ## <a name="create-datasets"></a>Veri kümeleri oluşturma
 Bu adımda, kopyalama işlemi için girdi ve çıktı verilerini temsil eden girdi ve çıktı veri kümeleri oluşturursunuz (Şirket içi SQL Server veritabanı = > Azure blob depolama). Veri kümeleri oluşturmadan önce aşağıdaki adımları uygulayın (listeden sonra ayrıntılı adımlar verilir):
@@ -239,10 +239,10 @@ Bu adımda, kopyalama işlemi için girdi ve çıktı verilerini temsil eden gir
     ```     
    Aşağıdaki noktalara dikkat edin:
 
-   * **tür** **sqlservertable**olarak ayarlandı.
+   * **tür** **sqlservertable** olarak ayarlandı.
    * **TableName** , **bir.**
    * **Linkedservicename** , **sqlserverlinkedservice** olarak ayarlanır (Bu bağlı hizmeti bu kılavuzda daha önce oluşturdunuz.).
-   * Azure Data Factory başka bir işlem hattı tarafından oluşturulmayan bir giriş veri kümesi için, **External** **değerini true**olarak ayarlamanız gerekir. Giriş verilerinin Azure Data Factory hizmetine harici olarak oluşturulduğunu gösterir. İsteğe bağlı olarak, **ilke** bölümündeki **externaldata** öğesini kullanarak herhangi bir dış veri ilkesi belirtebilirsiniz.    
+   * Azure Data Factory başka bir işlem hattı tarafından oluşturulmayan bir giriş veri kümesi için, **External** **değerini true** olarak ayarlamanız gerekir. Giriş verilerinin Azure Data Factory hizmetine harici olarak oluşturulduğunu gösterir. İsteğe bağlı olarak, **ilke** bölümündeki **externaldata** öğesini kullanarak herhangi bir dış veri ilkesi belirtebilirsiniz.    
 
    JSON özellikleri hakkında ayrıntılı bilgi için bkz. [SQL Server veri taşıma/kimden](data-factory-sqlserver-connector.md) .
 3. Veri kümesini dağıtmak için komut çubuğunda **Dağıt** ' a tıklayın.  
@@ -274,12 +274,12 @@ Bu adımda, kopyalama işlemi için girdi ve çıktı verilerini temsil eden gir
     ```   
    Aşağıdaki noktalara dikkat edin:
 
-   * **tür** **AzureBlob**olarak ayarlanır.
+   * **tür** **AzureBlob** olarak ayarlanır.
    * **Linkedservicename** **AzureStorageLinkedService** olarak ayarlanır (Bu bağlı hizmeti 2. adımda oluşturdunuz).
    * **FolderPath** , **adföğreticisi/outfromonpremdf** olarak ayarlanır; burada outfromonpremdf, adföğreticisi kapsayıcısında klasörüdür. Henüz yoksa **adföğreticisi** kapsayıcısını oluşturun.
-   * **Kullanılabilirlik** **saatlik** olarak ayarlanır (**Sıklık** **saat** ve **Aralık** **1**olarak ayarlanır).  Data Factory **hizmeti, Azure SQL veritabanındaki, her** saat bir çıktı veri dilimi oluşturur.
+   * **Kullanılabilirlik** **saatlik** olarak ayarlanır (**Sıklık** **saat** ve **Aralık** **1** olarak ayarlanır).  Data Factory **hizmeti, Azure SQL veritabanındaki, her** saat bir çıktı veri dilimi oluşturur.
 
-   Bir **çıkış tablosu**Için bir **dosya adı** belirtmezseniz, **FolderPath** 'teki oluşturulan dosyalar aşağıdaki biçimde adlandırılır: `Data.<Guid>.txt` (örneğin:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.).
+   Bir **çıkış tablosu** Için bir **dosya adı** belirtmezseniz, **FolderPath** 'teki oluşturulan dosyalar aşağıdaki biçimde adlandırılır: `Data.<Guid>.txt` (örneğin:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.).
 
    **folderPath** ve **fileName** öğelerini dinamik olarak **SliceStart** zamanı temelinde ayarlamak için partitionedBy özelliğini kullanın. Aşağıdaki örnekte, folderPath SliceStart’taki (işlemdeki dilimin başlangıç zamanı) Yıl, Ay ve Gün öğelerini, fileName ise SliceStart’taki Saat öğesini kullanır. Örneğin, dilim 2014-10-20T08:00:00 için oluşturulduysa, folderName wikidatagateway/wikisampledataout/2014/10/20, fileName de 08.csv olarak ayarlanır.
 
@@ -302,7 +302,7 @@ Bu adımda, kopyalama işlemi için girdi ve çıktı verilerini temsil eden gir
 ## <a name="create-pipeline"></a>İşlem hattı oluşturma
 Bu adımda, Input ve **Outputblobtable** olarak **Emponpremsqltable** adlı bir **kopyalama etkinliği** ile bir işlem **hattı** oluşturacaksınız.
 
-1. Data Factory düzenleyicide, **... öğesine tıklayın. Daha fazla bilgi**Için **Yeni işlem hattı**' na tıklayın.
+1. Data Factory düzenleyicide, **... öğesine tıklayın. Daha fazla bilgi** Için **Yeni işlem hattı**' na tıklayın.
 2. Sağ bölmedeki JSON öğesini aşağıdaki metinle değiştirin:    
 
     ```JSON   
@@ -356,9 +356,9 @@ Bu adımda, Input ve **Outputblobtable** olarak **Emponpremsqltable** adlı bir 
 
    Aşağıdaki noktalara dikkat edin:
 
-   * Etkinlikler bölümünde, yalnızca **türü** **Kopyala**olarak ayarlanan etkinlik vardır.
-   * Etkinliğin **girişi** **Emponpremsqltable** olarak, etkinliğin **çıktısı** ise **outputblobtable**olarak ayarlanır.
-   * **Typeproperties** bölümünde, **kaynak türü** olarak **SQLSource** belirtilir ve **blobsink** **Havuz türü**olarak belirtilir.
+   * Etkinlikler bölümünde, yalnızca **türü** **Kopyala** olarak ayarlanan etkinlik vardır.
+   * Etkinliğin **girişi** **Emponpremsqltable** olarak, etkinliğin **çıktısı** ise **outputblobtable** olarak ayarlanır.
+   * **Typeproperties** bölümünde, **kaynak türü** olarak **SQLSource** belirtilir ve **blobsink** **Havuz türü** olarak belirtilir.
    * `select * from emp` **SQLSource**'un **sqlreaderquery** özelliği için SQL sorgusu belirtildi.
 
    Başlangıç ve bitiş tarih saatleri [ISO biçiminde](https://en.wikipedia.org/wiki/ISO_8601) olmalıdır. Örneğin: 2014-10-14T16:32:41Z. **End** zamanı isteğe bağlıdır; ancak bu öğreticide bunu kullanacağız.
@@ -369,7 +369,7 @@ Bu adımda, Input ve **Outputblobtable** olarak **Emponpremsqltable** adlı bir 
 
    Örnekte, her veri dilimi saatlik oluşturulduğundan 24 veri dilimi vardır.        
 3. Veri kümesini dağıtmak için komut çubuğunda **Dağıt** ' a tıklayın (tablo dikdörtgen bir veri kümesidir). İşlem hattının, işlem **hatları** düğümü altında ağaç görünümünde görüntülendiğini doğrulayın.  
-4. Şimdi, **ADFTutorialOnPremDF**için sayfanın **Data Factory** sayfasına geri dönmek Için sayfayı kapatmak üzere **X** simgesini iki kez tıklatın.
+4. Şimdi, **ADFTutorialOnPremDF** için sayfanın **Data Factory** sayfasına geri dönmek Için sayfayı kapatmak üzere **X** simgesini iki kez tıklatın.
 
 **Tebrikler!** Başarılı bir şekilde Azure Data Factory, bağlı hizmetler, veri kümeleri ve işlem hattı oluşturdunuz ve işlem hattını zamanladınız.
 
@@ -386,7 +386,7 @@ Bu adımda, Input ve **Outputblobtable** olarak **Emponpremsqltable** adlı bir 
 ## <a name="monitor-pipeline"></a>İşlem hattını izleme
 Bu adımda, Azure data factory’de neler olduğunu izlemek için Azure Portal kullanacaksınız. Veri kümelerini ve işlem hatlarını izlemek için de PowerShell cmdlet'lerini kullanabilirsiniz. İzleme hakkındaki ayrıntılar için bkz. işlem [hatlarını izleme ve yönetme](data-factory-monitor-manage-pipelines.md).
 
-1. Diyagramda **Emponpremsqltable öğesine**çift tıklayın.  
+1. Diyagramda **Emponpremsqltable öğesine** çift tıklayın.  
 
     ![EmpOnPremSQLTable dilimleri](./media/data-factory-move-data-between-onprem-and-cloud/OnPremSQLTableSlicesBlade.png)
 2. Ardışık düzen süresi (başlangıç saati bitiş saati) geçmişte olduğundan tüm veri dilimlerinin **kullanılabilir durumda olduğundan emin olun.** Ayrıca, verileri SQL Server veritabanına yerleştirdiğinize ve bu da her zaman bir süredir. Alttaki **sorun dilimleri** bölümünde hiçbir dilim gösterilmeyeceğini onaylayın. Tüm dilimleri görüntülemek için, dilimler listesinin en altında bulunan **daha fazlasını gör** ' e tıklayın.
@@ -398,13 +398,13 @@ Bu adımda, Azure data factory’de neler olduğunu izlemek için Azure Portal k
     ![Veri dilimi dikey penceresi](./media/data-factory-move-data-between-onprem-and-cloud/DataSlice.png)
 
     Dilim **Hazır** durumunda değilse, Hazır olmayan ve geçerli dilimin yürütülmesini engelleyen yukarı akış dilimlerini **Hazır olmayan yukarı akış dilimleri** listesinde görebilirsiniz.
-5. **Etkinliğin çalışma ayrıntılarını**görmek için alttaki listeden **etkinlik çalıştırmasına** tıklayın.
+5. **Etkinliğin çalışma ayrıntılarını** görmek için alttaki listeden **etkinlik çalıştırmasına** tıklayın.
 
    ![Etkinlik çalıştırma ayrıntıları sayfası](./media/data-factory-move-data-between-onprem-and-cloud/ActivityRunDetailsBlade.png)
 
    Aktarım hızı, süre ve verileri aktarmak için kullanılan ağ geçidi gibi bilgileri görürsünüz.
 6. Tüm sayfaları kapatmak için **X** simgesini tıklatın
-7. **ADFTutorialOnPremDF**için giriş sayfasına dönün.
+7. **ADFTutorialOnPremDF** için giriş sayfasına dönün.
 8. seçim İşlem **hatları**' na tıklayın, **ADFTutorialOnPremDF**' a tıklayın ve giriş tablolarında (**tüketilen**) veya çıkış veri kümelerinde (**üretilmiş**) detaya gidin.
 9. Her saat için bir blob/dosyanın oluşturulduğunu doğrulamak üzere [Microsoft Depolama Gezgini](https://storageexplorer.com/) gibi araçları kullanın.
 

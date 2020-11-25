@@ -1,9 +1,9 @@
 ---
 title: Öğretici-genel bir Node.js istemci uygulamasını Azure IoT Central bağlama | Microsoft Docs
-description: Bu öğreticide, bir cihaz geliştiricisi olarak, Node.js istemci uygulaması çalıştıran bir cihaza Azure IoT Central uygulamanıza nasıl bağlanacağı gösterilmektedir. Cihaz yetenek modeli içeri aktararak ve bağlı bir cihazla etkileşime girebilen görünümler ekleyerek bir cihaz şablonu oluşturursunuz
+description: Bu öğreticide, bir cihaz geliştiricisi olarak, Node.js istemci uygulaması çalıştıran bir cihaza Azure IoT Central uygulamanıza nasıl bağlanacağı gösterilmektedir. Bir işlecin bağlı bir cihazla etkileşime girmesine izin veren görünümler ekleyerek otomatik olarak oluşturulan cihaz şablonunu değiştirirsiniz.
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/07/2020
+ms.date: 11/03/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
@@ -11,330 +11,282 @@ ms.custom:
 - mqtt
 - device-developer
 - devx-track-js
-ms.openlocfilehash: 87284b88076cbd205a5d8ae388fe0b37c35cf6f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6175be702f0824ad2cd2b146e96641037407ca0b
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328556"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "96018809"
 ---
-# <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-nodejs"></a>Öğretici: Azure IoT Central uygulamanıza istemci uygulaması oluşturma ve bağlama (Node.js)
+# <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-nodejs"></a>Öğretici: İstemci uygulamasını oluşturma ve Azure IoT Central uygulamanıza bağlama (Node.js)
 
 [!INCLUDE [iot-central-selector-tutorial-connect](../../../includes/iot-central-selector-tutorial-connect.md)]
 
 *Bu makale, çözüm oluşturucular ve cihaz geliştiricileri için geçerlidir.*
 
-Bu öğreticide, bir cihaz geliştiricisi olarak, Node.js istemci uygulamasını Azure IoT Central uygulamanıza nasıl bağlayabilmeniz gösterilmektedir. Node.js uygulaması bir ortam algılayıcısı cihazının davranışını taklit eder. IoT Central bir _cihaz şablonu_ oluşturmak için örnek bir _cihaz yetenek modeli_ kullanın. Bir işlecin bir cihazla etkileşime geçmesini sağlamak için cihaz şablonuna görünümler eklersiniz.
+Bu öğreticide, bir cihaz geliştiricisi olarak, Node.js istemci uygulamasını Azure IoT Central uygulamanıza nasıl bağlayabilmeniz gösterilmektedir. Node.js uygulaması, bir termostat cihazının davranışının benzetimini yapar. Uygulama IoT Central bağlandığı zaman, termostat cihaz modelinin model KIMLIĞINI gönderir. IoT Central, cihaz modelini almak ve sizin için bir cihaz şablonu oluşturmak üzere model KIMLIĞINI kullanır. Bir işlecin bir cihazla etkileşime geçmesini sağlamak için cihaz şablonuna özelleştirmeler ve görünümler eklersiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Cihaz şablonu oluşturmak için bir cihaz yetenek modeli içeri aktarın.
-> * Varsayılan ve özel görünümleri bir cihaz şablonuna ekleyin.
-> * Bir cihaz şablonu yayımlayın ve IoT Central uygulamanıza gerçek bir cihaz ekleyin.
 > * Node.js cihaz kodu oluşturup çalıştırın ve IoT Central uygulamanıza bağlanın.
 > * Cihazdan gönderilen sanal Telemetriyi görüntüleyin.
+> * Özel görünümleri bir cihaz şablonuna ekleyin.
+> * Cihaz şablonunu yayımlayın.
 > * Cihaz özelliklerini yönetmek için bir görünüm kullanın.
-> * Cihazı denetlemek için zaman uyumlu ve zaman uyumsuz komutları çağırın.
+> * Cihazı denetlemek için bir komut çağırın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için şunlar gereklidir:
 
-* **Özel uygulama** şablonu kullanılarak oluşturulan bir Azure IoT Central uygulaması. Daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](quick-deploy-iot-central.md). Uygulamanın 07/14/2020 veya sonrasında oluşturulmuş olması gerekir.
-* [Node.js](https://nodejs.org/) Version 10.0.0 veya üzeri yüklü bir geliştirme makinesi. `node --version`Sürümünüzü denetlemek için komut satırında çalıştırabilirsiniz. Bu öğreticideki yönergeler, Windows komut isteminde **node** komutunu çalıştırmakta olduğunuzu varsayar. Ancak, diğer birçok işletim sisteminde Node.js kullanabilirsiniz.
+* **Özel uygulama** şablonu kullanılarak oluşturulan bir Azure IoT Central uygulaması. Daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](quick-deploy-iot-central.md). Uygulamanın 14 Temmuz 2020 tarihinde veya sonrasında oluşturulmuş olması gerekir.
+* [Node.js](https://nodejs.org/) sürüm 6 veya üzeri yüklü bir geliştirme makinesi. `node --version`Sürümünüzü denetlemek için komut satırında çalıştırabilirsiniz. Bu öğreticideki yönergeler, Windows komut isteminde **node** komutunu çalıştırmakta olduğunuzu varsayar. Ancak, diğer birçok işletim sisteminde Node.js kullanabilirsiniz.
+* Örnek kodu içeren Node.jsGitHub deposu [için Microsoft Azure ıOT SDK 'sının ](https://github.com/Azure/azure-iot-sdk-node) yerel bir kopyası. Deponun bir kopyasını indirmek için bu bağlantıyı kullanın: ZIP 'i [indirin](https://github.com/Azure/azure-iot-sdk-node/archive/master.zip). Sonra dosyayı yerel makinenizde uygun bir konuma ayıklayın.
 
-[!INCLUDE [iot-central-add-environmental-sensor](../../../includes/iot-central-add-environmental-sensor.md)]
+## <a name="review-the-code"></a>Kodu gözden geçirin
 
-### <a name="create-a-nodejs-application"></a>Node.js uygulaması oluşturma
+Daha önce indirdiğiniz Node.js Microsoft Azure IoT SDK kopyasında, *Azure-IoT-SDK-node/Device/Samples/PNP/simple_thermostat.js* dosyasını bir metin düzenleyicisinde açın.
 
-Aşağıdaki adımlarda, uygulamaya eklediğiniz gerçek cihaza bağlanan bir Node.js istemci uygulamasının nasıl oluşturulacağı gösterilmektedir. Bu Node.js uygulama, gerçek bir cihazın davranışının benzetimini yapar.
+IoT Central bağlanmak için örneği çalıştırdığınızda, cihazı kaydetmek ve bir bağlantı dizesi oluşturmak için cihaz sağlama hizmeti 'ni (DPS) kullanır. Örnek, gereken DPS bağlantı bilgilerini komut satırı ortamından alır.
 
-1. Komut satırı ortamınızda, `environmental-sensor` daha önce oluşturduğunuz klasöre gidin.
+`main`Yöntemi:
 
-1. Node.js projenizi başlatmak ve gerekli bağımlılıkları yüklemek için aşağıdaki komutları çalıştırın: çalıştırdığınızda tüm varsayılan seçenekleri kabul edin `npm init` :
+* Bir `client` nesne oluşturur ve `dtmi:com:example:Thermostat;1` bağlantıyı açmadan önce model kimliğini ayarlar.
+* Bir komut işleyicisi oluşturur.
+* Her 10 saniyede bir sıcaklık telemetrisi göndermek için bir döngü başlatır.
+* `maxTempSinceLastReboot`Özelliği IoT Central 'e gönderir. IoT Central, `serialNumber` cihaz modelinin parçası olmadığından özelliği yoksayar.
+* Yazılabilir Özellikler işleyicisi oluşturur.
 
-    ```cmd/sh
-    npm init
-    npm install azure-iot-device azure-iot-device-mqtt azure-iot-provisioning-device-mqtt azure-iot-security-symmetric-key --save
-    ```
+```javascript
+async function main() {
 
-1. Klasöründe **environmentalSensor.js** adlı bir dosya oluşturun `environmental-sensor` .
+  // ...
 
-1. `require` **environmentalSensor.js** dosyasının başlangıcına aşağıdaki deyimlerini ekleyin:
+  // fromConnectionString must specify a transport, coming from any transport package.
+  const client = Client.fromConnectionString(deviceConnectionString, Protocol);
 
-    ```javascript
-    "use strict";
+  let resultTwin;
+  try {
+    // Add the modelId here
+    await client.setOptions(modelIdObject);
+    await client.open();
 
-    // Use the Azure IoT device SDK for devices that connect to Azure IoT Central.
-    var iotHubTransport = require('azure-iot-device-mqtt').Mqtt;
-    var Client = require('azure-iot-device').Client;
-    var Message = require('azure-iot-device').Message;
-    var ProvisioningTransport = require('azure-iot-provisioning-device-mqtt').Mqtt;
-    var SymmetricKeySecurityClient = require('azure-iot-security-symmetric-key').SymmetricKeySecurityClient;
-    var ProvisioningDeviceClient = require('azure-iot-provisioning-device').ProvisioningDeviceClient;
-    ```
+    client.onDeviceMethod(commandMaxMinReport, commandHandler);
 
-1. Aşağıdaki değişken bildirimlerini dosyaya ekleyin:
+    // Send Telemetry every 10 secs
+    let index = 0;
+    intervalToken = setInterval(() => {
+      sendTelemetry(client, index).catch((err) => console.log('error', err.toString()));
+      index += 1;
+    }, telemetrySendInterval);
 
-    ```javascript
-    var provisioningHost = 'global.azure-devices-provisioning.net';
-    var idScope = '{your Scope ID}';
-    var registrationId = '{your Device ID}';
-    var symmetricKey = '{your Primary Key}';
-    var provisioningSecurityClient = new SymmetricKeySecurityClient(registrationId, symmetricKey);
-    var provisioningClient = ProvisioningDeviceClient.create(provisioningHost, idScope, new ProvisioningTransport(), provisioningSecurityClient);
-    var hubClient;
+    // attach a standard input exit listener
+    attachExitHandler(client);
 
-    var targetTemperature = 0;
-    var ledOn = true;
-    ```
-
-    Yer tutucuları `{your Scope ID}` , `{your Device ID}` , ve `{your Primary Key}` daha önce bir notcuı yaptığınız değerlerle güncelleştirin. Bu örnekte, `targetTemperature` sıfırdan başlatın, cihazdaki geçerli okumayı veya cihazdan ikizi bir değeri kullanabilirsiniz.
-
-1. Azure IoT Central uygulamanıza sanal telemetri göndermek için, dosyaya aşağıdaki işlevi ekleyin:
-
-    ```javascript
-    // Send simulated device telemetry.
-    function sendTelemetry() {
-      var temp = targetTemperature + (Math.random() * 15);
-      var humid = 70 + (Math.random() * 10);
-      var data = JSON.stringify({
-        temp: temp,
-        humid: humid,
-        });
-      var message = new Message(data);
-      hubClient.sendEvent(message, (err, res) => console.log(`Sent message: ${message.getData()}` +
-        (err ? `; error: ${err.toString()}` : '') +
-        (res ? `; status: ${res.constructor.name}` : '')));
-    }
-    ```
-
-    Telemetri öğelerinin (ve) adları, `temp` `humid` cihaz şablonunda kullanılan adlarla aynı olmalıdır.
-
-1. Azure IoT Central uygulamanıza cihaz ikizi özellikleri göndermek için, dosyanıza aşağıdaki işlevi ekleyin:
-
-    ```javascript
-    // Send device twin reported properties.
-    function sendDeviceProperties(twin, properties) {
-      twin.properties.reported.update(properties, (err) => console.log(`Sent device properties: ${JSON.stringify(properties)}; ` +
-        (err ? `error: ${err.toString()}` : `status: success`)));
-    }
-    ```
-
-    IoT Central cihaz ve IoT Central uygulama arasındaki özellik değerlerini senkronize etmek için cihaz ikizlerini kullanır. Cihaz özelliği değerleri cihaz ikizi bildirilen özelliklerini kullanır. Yazılabilir Özellikler hem cihaz ikizi bildirilen hem de istenen özellikleri kullanır.
-
-1. Cihazınızın yanıt verdiği yazılabilir özellikleri tanımlamak ve işlemek için aşağıdaki kodu ekleyin. [Yazılabilir Özellik güncelleştirmesine](concepts-telemetry-properties-commands.md#writeable-property-types) yanıt olarak cihazın gönderdiği ileti, `av` ve `ac` alanlarını içermelidir. `ad`Alan isteğe bağlıdır:
-
-    ```javascript
-    // Add any writeable properties your device supports,
-    // mapped to a function that's called when the writeable property
-    // is updated in the IoT Central application.
-    var writeableProperties = {
-      'name': (newValue, callback) => {
-          setTimeout(() => {
-            callback(newValue, 'completed', 200);
-          }, 1000);
-      },
-      'brightness': (newValue, callback) => {
-        setTimeout(() => {
-            callback(newValue, 'completed', 200);
-        }, 5000);
-      }
-    };
-
-    // Handle writeable property updates that come from IoT Central via the device twin.
-    function handleWriteablePropertyUpdates(twin) {
-      twin.on('properties.desired', function (desiredChange) {
-        for (let setting in desiredChange) {
-          if (writeableProperties[setting]) {
-            console.log(`Received setting: ${setting}: ${desiredChange[setting]}`);
-            writeableProperties[setting](desiredChange[setting], (newValue, status, code) => {
-              var patch = {
-                [setting]: {
-                  value: newValue,
-                  ad: status,
-                  ac: code,
-                  av: desiredChange.$version
-                }
-              }
-              sendDeviceProperties(twin, patch);
-            });
-          }
-        }
+    // Deal with twin
+    try {
+      resultTwin = await client.getTwin();
+      const patchRoot = createReportPropPatch({ serialNumber: deviceSerialNum });
+      const patchThermostat = createReportPropPatch({
+        maxTempSinceLastReboot: deviceTemperatureSensor.getMaxTemperatureValue()
       });
+
+      // the below things can only happen once the twin is there
+      updateComponentReportedProperties(resultTwin, patchRoot);
+      updateComponentReportedProperties(resultTwin, patchThermostat);
+
+      // Setup the handler for desired properties
+      desiredPropertyPatchHandler(resultTwin);
+
+    } catch (err) {
+      console.error('could not retrieve twin or report twin properties\n' + err.toString());
     }
-    ```
-
-    İşleci IoT Central uygulamasında yazılabilir bir özellik ayarladığında, uygulama, değeri cihaza göndermek için bir Device ikizi istenen özelliğini kullanır. Cihaz daha sonra bir Device ikizi bildirilen özelliği kullanarak yanıt verir. IoT Central bildirilen özellik değerini aldığında, özellik görünümünü **eşitlenmiş**durumuyla güncelleştirir.
-
-    Özelliklerin (ve) adları, `name` `brightness` cihaz şablonunda kullanılan adlarla eşleşmelidir.
-
-1. IoT Central uygulamasından gönderilen komutları işlemek için aşağıdaki kodu ekleyin:
-
-    ```javascript
-    // Setup command handlers
-    function setupCommandHandlers(twin) {
-
-      // Handle synchronous LED blink command with request and response payload.
-      function onBlink(request, response) {
-        console.log('Received synchronous call to blink');
-        var responsePayload = {
-          status: 'Blinking LED every ' + request.payload  + ' seconds'
-        }
-        response.send(200, responsePayload, (err) => {
-          if (err) {
-            console.error('Unable to send method response: ' + err.toString());
-          } else {
-            console.log('Blinking LED every ' + request.payload  + ' seconds');
-          }
-        });
-      }
-
-      // Handle synchronous LED turn on command
-      function turnOn(request, response) {
-        console.log('Received synchronous call to turn on LED');
-        if(!ledOn){
-          console.log('Turning on the LED');
-          ledOn = true;
-        }
-        response.send(200, (err) => {
-          if (err) {
-            console.error('Unable to send method response: ' + err.toString());
-          }
-        });
-      }
-
-      // Handle synchronous LED turn off command
-      function turnOff(request, response) {
-        console.log('Received synchronous call to turn off LED');
-        if(ledOn){
-          console.log('Turning off the LED');
-          ledOn = false;
-        }
-        response.send(200, (err) => {
-          if (err) {
-            console.error('Unable to send method response: ' + err.toString());
-          }
-        });
-      }
-
-      // Handle asynchronous sensor diagnostics command with response payload.
-      function diagnostics(request, response) {
-        console.log('Starting asynchronous diagnostics run...');
-        response.send(202, (err) => {
-          if (err) {
-            console.error('Unable to send method response: ' + err.toString());
-          } else {
-            var repetitions = 3;
-            var intervalID = setInterval(() => {
-              console.log('Generating diagnostics...');
-              if (--repetitions === 0) {
-                clearInterval(intervalID);
-                var properties = {
-                  rundiagnostics: {
-                    value: 'Diagnostics run complete at ' + new Date().toLocaleString()
-                  }
-                };
-                sendDeviceProperties(twin, properties);
-              }
-            }, 2000);
-          }
-        });
-      }
-
-      hubClient.onDeviceMethod('blink', onBlink);
-      hubClient.onDeviceMethod('turnon', turnOn);
-      hubClient.onDeviceMethod('turnoff', turnOff);
-      hubClient.onDeviceMethod('rundiagnostics', diagnostics);
-    }
-    ```
-
-    Komutların ( `blink` , `turnon` , ve) adları, `turnoff` `rundiagnostics` cihaz şablonunda kullanılan adlarla aynı olmalıdır.
-
-    Şu anda IoT Central, cihaz yetenek modelinde tanımlanan yanıt şemasını kullanmıyor. Zaman uyumlu bir komut için, yanıt yükü geçerli bir JSON olabilir. Zaman uyumsuz bir komut için, cihazın hemen bir 202 yanıtı döndürmesi ve sonra iş tamamlandığında bildirilen özellik güncelleştirmesi gelmelidir. Bildirilen özellik güncelleştirmesinin biçimi:
-
-    ```json
-    {
-      [command name] : {
-        value: 'response message'
-      }
-    }
-    ```
-
-    Bir işleç, yanıt yükünü komut geçmişinde görüntüleyebilir.
-
-1. Azure IoT Central bağlantısını tamamlamak ve istemci kodundaki işlevleri bağlamak için aşağıdaki kodu ekleyin:
-
-    ```javascript
-    // Handle device connection to Azure IoT Central.
-    var connectCallback = (err) => {
-      if (err) {
-        console.log(`Device could not connect to Azure IoT Central: ${err.toString()}`);
-      } else {
-        console.log('Device successfully connected to Azure IoT Central');
-
-        // Send telemetry to Azure IoT Central every 1 second.
-        setInterval(sendTelemetry, 1000);
-
-        // Get device twin from Azure IoT Central.
-        hubClient.getTwin((err, twin) => {
-          if (err) {
-            console.log(`Error getting device twin: ${err.toString()}`);
-          } else {
-            // Send device properties once on device start up.
-            var properties = {
-              state: 'true',
-              processorArchitecture: 'ARM',
-              swVersion: '1.0.0'
-            };
-            sendDeviceProperties(twin, properties);
-
-            handleWriteablePropertyUpdates(twin);
-
-            setupCommandHandlers(twin);
-          }
-        });
-      }
-    };
-
-    // Start the device (register and connect to Azure IoT Central).
-    provisioningClient.register((err, result) => {
-      if (err) {
-        console.log('Error registering device: ' + err);
-      } else {
-        console.log('Registration succeeded');
-        console.log('Assigned hub=' + result.assignedHub);
-        console.log('DeviceId=' + result.deviceId);
-        var connectionString = 'HostName=' + result.assignedHub + ';DeviceId=' + result.deviceId + ';SharedAccessKey=' + symmetricKey;
-        hubClient = Client.fromConnectionString(connectionString, iotHubTransport);
-
-        hubClient.open(connectCallback);
-      }
-    });
-    ```
-
-## <a name="run-your-nodejs-application"></a>Node.js uygulamanızı çalıştırın
-
-Cihaz istemci uygulamasını başlatmak için komut satırı ortamınızda aşağıdaki komutu çalıştırın:
-
-```cmd/sh
-node environmentalSensor.js
+  } catch (err) {
+    console.error('could not connect Plug and Play client or could not attach interval function for telemetry\n' + err.toString());
+  }
+}
 ```
 
-Cihazın Azure IoT Central uygulamanıza bağlandığını görebilir ve telemetri göndermeye başlar:
+`provisionDevice`İşlevi, cihazın IoT Central kaydetmek ve bağlanmak IÇIN DPS nasıl kullandığını gösterir. Yük, model KIMLIĞINI içerir:
 
-![İstemci uygulamasını çalıştırma](media/tutorial-connect-device-nodejs/run-application.png)
+```javascript
+async function provisionDevice(payload) {
+  var provSecurityClient = new SymmetricKeySecurityClient(registrationId, symmetricKey);
+  var provisioningClient = ProvisioningDeviceClient.create(provisioningHost, idScope, new ProvProtocol(), provSecurityClient);
 
-[!INCLUDE [iot-central-monitor-environmental-sensor](../../../includes/iot-central-monitor-environmental-sensor.md)]
+  if (!!(payload)) {
+    provisioningClient.setProvisioningPayload(payload);
+  }
+
+  try {
+    let result = await provisioningClient.register();
+    deviceConnectionString = 'HostName=' + result.assignedHub + ';DeviceId=' + result.deviceId + ';SharedAccessKey=' + symmetricKey;
+  } catch (err) {
+    console.error("error registering device: " + err.toString());
+  }
+}
+```
+
+`sendTelemetry`İşlevi, cihazın sıcaklık telemetrisini IoT Central nasıl göndereceğini gösterir. `getCurrentTemperatureObject`Yöntemi şuna benzer bir nesne döndürür `{ temperature: 45.6 }` :
+
+```javascript
+async function sendTelemetry(deviceClient, index) {
+  console.log('Sending telemetry message %d...', index);
+  const msg = new Message(
+    JSON.stringify(
+      deviceTemperatureSensor.updateSensor().getCurrentTemperatureObject()
+    )
+  );
+  msg.contentType = 'application/json';
+  msg.contentEncoding = 'utf-8';
+  await deviceClient.sendEvent(msg);
+}
+```
+
+`main`Yöntemi, özelliği IoT Central göndermek için aşağıdaki iki yöntemi kullanır `maxTempSinceLastReboot` . `main`Yöntemi `createReportPropPatch` Şuna benzer bir nesne ile çağırır `{maxTempSinceLastReboot: 80.9}` :
+
+```javascript
+const createReportPropPatch = (propertiesToReport) => {
+  let patch;
+  patch = { };
+  patch = propertiesToReport;
+  return patch;
+};
+
+const updateComponentReportedProperties = (deviceTwin, patch) => {
+  deviceTwin.properties.reported.update(patch, function (err) {
+    if (err) throw err;
+    console.log('Properties have been reported for component');
+  });
+};
+```
+
+`main`Yöntemi, IoT Central _hedef sıcaklık_ yazılabilir özelliğindeki güncelleştirmeleri işlemek için aşağıdaki iki yöntemi kullanır. `propertyUpdateHandle`Sürüm ve durum kodu ile nasıl yanıt oluşturulduğuna dikkat edin:
+
+```javascript
+const desiredPropertyPatchHandler = (deviceTwin) => {
+  deviceTwin.on('properties.desired', (delta) => {
+    const versionProperty = delta.$version;
+
+    Object.entries(delta).forEach(([propertyName, propertyValue]) => {
+      if (propertyName !== '$version') {
+        propertyUpdateHandler(deviceTwin, propertyName, null, propertyValue, versionProperty);
+      }
+    });
+  });
+};
+
+const propertyUpdateHandler = (deviceTwin, propertyName, reportedValue, desiredValue, version) => {
+  console.log('Received an update for property: ' + propertyName + ' with value: ' + JSON.stringify(desiredValue));
+  const patch = createReportPropPatch(
+    { [propertyName]:
+      {
+        'value': desiredValue,
+        'ac': 200,
+        'ad': 'Successfully executed patch for ' + propertyName,
+        'av': version
+      }
+    });
+  updateComponentReportedProperties(deviceTwin, patch);
+  console.log('updated the property');
+};
+```
+
+`main`Yöntemi, komuta yapılan çağrıları işlemek için aşağıdaki iki yöntemi kullanır `getMaxMinReport` . `getMaxMinReportObject`Yöntemi, raporu JSON nesnesi olarak oluşturur:
+
+```javascript
+const commandHandler = async (request, response) => {
+  switch (request.methodName) {
+  case commandMaxMinReport: {
+    console.log('MaxMinReport ' + request.payload);
+    await sendCommandResponse(request, response, 200, deviceTemperatureSensor.getMaxMinReportObject());
+    break;
+  }
+  default:
+    await sendCommandResponse(request, response, 404, 'unknown method');
+    break;
+  }
+};
+
+const sendCommandResponse = async (request, response, status, payload) => {
+  try {
+    await response.send(status, payload);
+    console.log('Response to method \'' + request.methodName +
+              '\' sent successfully.' );
+  } catch (err) {
+    console.error('An error ocurred when sending a method response:\n' +
+              err.toString());
+  }
+};
+```
+
+## <a name="get-connection-information"></a>Bağlantı bilgilerini alma
+
+[!INCLUDE [iot-central-connection-configuration](../../../includes/iot-central-connection-configuration.md)]
+
+## <a name="run-the-code"></a>Kodu çalıştırma
+
+Örnek uygulamayı çalıştırmak için bir komut satırı ortamı açın ve *simple_thermostat.js* örnek dosyasını içeren *Azure-IoT-SDK-node/Device/Samples/PNP* klasörüne gidin.
+
+[!INCLUDE [iot-central-connection-environment](../../../includes/iot-central-connection-environment.md)]
+
+Gerekli paketleri yükler:
+
+```cmd/sh
+npm install
+```
+
+Örneği çalıştırın:
+
+```cmd/sh
+node simple_thermostat.js
+```
+
+Aşağıdaki çıktı, IoT Central kaydetme ve bağlanma için cihazı gösterir. Örnek daha sonra `maxTempSinceLastReboot` özelliği telemetri göndermeye başlamadan önce gönderir:
+
+```cmd/sh
+registration succeeded
+assigned hub=iotc-.......azure-devices.net
+deviceId=sample-device-01
+payload=undefined
+Connecting using connection string HostName=iotc-........azure-devices.net;DeviceId=sample-device-01;SharedAccessKey=Ci....=
+Enabling the commands on the client
+Please enter q or Q to exit sample.
+The following properties will be updated for root interface:
+{ maxTempSinceLastReboot: 55.20309427428496 }
+Properties have been reported for component
+Sending telemetry message 0...
+Sending telemetry message 1...
+Sending telemetry message 2...
+Sending telemetry message 3...
+```
+
+[!INCLUDE [iot-central-monitor-thermostat](../../../includes/iot-central-monitor-thermostat.md)]
 
 Aygıtın komutlara ve özellik güncelleştirmelerine nasıl yanıt verdiğini görebilirsiniz:
 
-![İstemci uygulamasını gözlemleyin](media/tutorial-connect-device-nodejs/run-application-2.png)
+```cmd/sh
+MaxMinReport 2020-10-15T12:00:00.000Z
+Response to method 'getMaxMinReport' sent successfully.
+
+...
+
+Received an update for property: targetTemperature with value: {"value":86.3}
+The following properties will be updated for root interface:
+{
+  targetTemperature: {
+    value: { value: 86.3 },
+    ac: 200,
+    ad: 'Successfully executed patch for targetTemperature',
+    av: 2
+  }
+}
+```
 
 ## <a name="view-raw-data"></a>Ham verileri görüntüleme
 
-[!INCLUDE [iot-central-monitor-environmental-sensor-raw-data](../../../includes/iot-central-monitor-environmental-sensor-raw-data.md)]
+[!INCLUDE [iot-central-monitor-thermostat-raw-data](../../../includes/iot-central-monitor-thermostat-raw-data.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -347,3 +299,4 @@ Bir cihaz geliştiricisi olarak, Node.js kullanarak bir cihazın nasıl oluştur
 
 * Cihaz kodunuzu uygularken cihaz şablonlarının rolü hakkında daha fazla bilgi edinmek için cihaz [şablonu nedir?](./concepts-device-templates.md) makalesini okuyun.
 * Cihazların IoT Central nasıl kaydedileceği ve cihaz bağlantılarının güvenliğini IoT Central sağlama hakkında daha fazla bilgi edinmek için [Azure IoT Central 'ye](./concepts-get-connected.md) bağlanın.
+* IoT Central ile cihaz alışverişi yapılan veriler hakkında daha fazla bilgi edinmek için [telemetri, özellik ve komut yüklerini](concepts-telemetry-properties-commands.md) okuyun.

@@ -6,11 +6,11 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.openlocfilehash: ffbaa2e40d5924ba61e548398e63295cf7dba2b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91303735"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019744"
 ---
 # <a name="label-machine-learning-entity-in-an-example-utterance"></a>Örnek bir örnekte makine öğrenimi varlığı etiketleme
 
@@ -39,7 +39,7 @@ Amaç ayrıntısı sayfasında iki etiketleme tekniği desteklenir.
 
 [Şemanızı varlıklar ile planladıktan](luis-how-plan-your-app.md)sonra etiketleme sırasında **varlık paletini** görünür tutun. **Varlık paleti** , hangi varlıkların ayıklanacağını hatırlatır.
 
-**Varlık paletine**erişmek için, **@** örnek araç listesinin yukarıdaki bağlam araç çubuğundan sembolünü seçin.
+**Varlık paletine** erişmek için, **@** örnek araç listesinin yukarıdaki bağlam araç çubuğundan sembolünü seçin.
 
 > [!div class="mx-imgBorder"]
 > ![Amaç ayrıntıları sayfasındaki varlık paleti ekran görüntüsü.](media/label-utterances/entity-palette-from-tool-bar.png)
@@ -66,7 +66,7 @@ Varlık paletinin alt bölümü, şu anda seçili varlığa özellikler eklemeni
 
 ## <a name="labeling-entity-roles"></a>Varlık rollerini etiketleme
 
-Varlık rolleri, **varlık paleti**kullanılarak etiketlenir.
+Varlık rolleri, **varlık paleti** kullanılarak etiketlenir.
 
 1. Amaç ayrıntısı sayfasında bağlam araç çubuğundan **varlık paleti** ' ni seçin.
 1. Varlık paleti açıldıktan sonra varlık listesinden varlığı seçin.
@@ -93,7 +93,7 @@ Etiketledikten sonra, örnek bir şekilde gözden geçirin ve seçilen varlık i
 
 ## <a name="confirm-predicted-entity"></a>Tahmin edilen varlığı Onayla
 
-Metnin yayılması etrafında noktalı çizgili bir kutu varsa, metnin tahmin _edildiğini ancak henüz etiketlenmediğini_belirtir. Tahmine bir etiketi açmak için, söylenişi satırını seçin, sonra bağlamsal araç çubuğundan **varlıkları Onayla** ' yı seçin.
+Metnin yayılması etrafında noktalı çizgili bir kutu varsa, metnin tahmin _edildiğini ancak henüz etiketlenmediğini_ belirtir. Tahmine bir etiketi açmak için, söylenişi satırını seçin, sonra bağlamsal araç çubuğundan **varlıkları Onayla** ' yı seçin.
 
 ## <a name="relabeling-over-existing-entities"></a>Mevcut varlıkları ele alınıyor
 

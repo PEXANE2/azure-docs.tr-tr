@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
 ms.openlocfilehash: 0842efe304faa9a0d94fbf71075f1bc16ff34014
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217567"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018214"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak günlük uyarıları oluşturma, görüntüleme ve yönetme
 
@@ -34,7 +34,7 @@ Ayrıca, [ayrı bir makalede](alerts-log-create-templates.md)açıklanan Azure R
 Uyarılar için sorgular yazmaya başlama adımları burada verilmiştir:
 
 1. Uyarı vermek istediğiniz kaynağa gidin.
-1. **İzleyici**altında **Günlükler**' i seçin.
+1. **İzleyici** altında **Günlükler**' i seçin.
 1. Soruna işaret edebilecek günlük verilerini sorgulayın. [Kendi sorgunuzu yazmaya](../log-query/get-started-portal.md)ne bulabileceğinizi veya başladığınızı anlamak için [Uyarı sorgusu örnekleri konusunu](../log-query/saved-queries.md) kullanabilirsiniz. [İyileştirilmiş uyarı sorguları oluşturmayı öğrenin](alerts-log-query.md).
 1. Uyarı oluşturma akışını başlatmak için ' + yeni uyarı kuralı ' düğmesine basın.
 
@@ -77,11 +77,11 @@ Uyarılar için sorgular yazmaya başlama adımları burada verilmiştir:
 
 1. İleri, önizleme verilerine bağlı olarak [ **işleci**, **eşik değeri**](alerts-unified-log.md#threshold-and-operator)ve [**sıklığı**](alerts-unified-log.md#frequency)ayarlar.
 
-1. Ayrıca, isteğe bağlı olarak, **Toplam veya ardışık ihlaller**kullanarak [bir uyarının tetiklenmesi için ihlallerin sayısını](alerts-unified-log.md#number-of-violations-to-trigger-alert) ayarlayabilirsiniz.
+1. Ayrıca, isteğe bağlı olarak, **Toplam veya ardışık ihlaller** kullanarak [bir uyarının tetiklenmesi için ihlallerin sayısını](alerts-unified-log.md#number-of-violations-to-trigger-alert) ayarlayabilirsiniz.
 
-1. **Bitti** seçeneğini belirleyin. 
+1. **Bitti**'yi seçin. 
 
-1. **Uyarı kuralı adını**, **açıklamasını**tanımlayın ve uyarı **önem derecesini**seçin. Bu ayrıntılar tüm uyarı eylemlerinde kullanılır. Ayrıca, oluşturma **sırasında kuralı etkinleştir**' i seçerek, oluşturma sırasında uyarı kuralını etkinleştirememenizi de seçebilirsiniz.
+1. **Uyarı kuralı adını**, **açıklamasını** tanımlayın ve uyarı **önem derecesini** seçin. Bu ayrıntılar tüm uyarı eylemlerinde kullanılır. Ayrıca, oluşturma **sırasında kuralı etkinleştir**' i seçerek, oluşturma sırasında uyarı kuralını etkinleştirememenizi de seçebilirsiniz.
 
 1. Bir uyarı tetiklendikten sonra kural eylemlerini bir süre gizlemek istiyorsanız, [**uyarıları bastır**](alerts-unified-log.md#state-and-resolving-alerts) seçeneğini kullanın. Kural çalışmaya devam eder ve uyarı oluşturur, ancak gürültü engellemek için Eylemler tetiklenmeyecektir. Sessiz eylem değeri, uyarı sıklığından daha büyük olmalıdır.
 
@@ -126,7 +126,7 @@ Uyarılar için sorgular yazmaya başlama adımları burada verilmiştir:
 
     ![Kural Oluştur](media/alerts-log/AlertsPreviewAdd.png)
 
-1. **Kaynak Seç** düğmesine basın. *Abonelik*, *kaynak türü*seçerek ve bir kaynak seçerek filtre uygulayın. Kaynağın kullanılabilir günlüklere sahip olduğundan emin olun.
+1. **Kaynak Seç** düğmesine basın. *Abonelik*, *kaynak türü* seçerek ve bir kaynak seçerek filtre uygulayın. Kaynağın kullanılabilir günlüklere sahip olduğundan emin olun.
 
    ![Kaynak seçin](media/alerts-log/Alert-SelectResourceLog.png)
 
@@ -164,7 +164,7 @@ Uyarılar için sorgular yazmaya başlama adımları burada verilmiştir:
 
         ![Önizleme grafiği](media/alerts-log/preview-chart.png)
 
-    1. Ardından, önizleme verilerine göre **Uyarı mantığını**ayarlayın; [ **İşleç**, **eşik değeri**](alerts-unified-log.md#threshold-and-operator)ve [**Sıklık**](alerts-unified-log.md#frequency).
+    1. Ardından, önizleme verilerine göre **Uyarı mantığını** ayarlayın; [ **İşleç**, **eşik değeri**](alerts-unified-log.md#threshold-and-operator)ve [**Sıklık**](alerts-unified-log.md#frequency).
 
         ![Eşik ve uyarı mantığı içeren Önizleme grafiği](media/alerts-log/chart-and-alert-logic.png)
 
@@ -176,7 +176,7 @@ Uyarılar için sorgular yazmaya başlama adımları burada verilmiştir:
 
     ![Eylemler sekmesi](media/alerts-log/actions-tab.png)
 
-1. **Ayrıntılar** sekmesinde, **Uyarı kuralı ayrıntılarını**ve **proje ayrıntılarını**tanımlayın. İsteğe bağlı olarak, **Şimdi çalıştırmayı başlatma**veya uyarı kuralı başladıktan sonra bir süre Için [**Eylemler sesini kapatma**](alerts-unified-log.md#state-and-resolving-alerts) seçeneğini belirleyebilirsiniz.
+1. **Ayrıntılar** sekmesinde, **Uyarı kuralı ayrıntılarını** ve **proje ayrıntılarını** tanımlayın. İsteğe bağlı olarak, **Şimdi çalıştırmayı başlatma** veya uyarı kuralı başladıktan sonra bir süre Için [**Eylemler sesini kapatma**](alerts-unified-log.md#state-and-resolving-alerts) seçeneğini belirleyebilirsiniz.
 
     > [!NOTE]
     > Günlük uyarı kuralları şu anda durum bilgisiz değildir ve bir uyarı her oluşturulduğunda bir uyarı oluşmadığında bir eylem harekete geçirilir.

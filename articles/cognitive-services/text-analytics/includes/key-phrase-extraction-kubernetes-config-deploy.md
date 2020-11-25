@@ -11,11 +11,11 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 27c78566877f27e80ae5ae27c5250f228c7ae676
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91779620"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017908"
 ---
 ### <a name="deploy-the-key-phrase-extraction-container-to-an-aks-cluster"></a>Anahtar İfade Ayıklama kapsayıcısını bir AKS kümesine dağıtma
 
@@ -49,7 +49,7 @@ ms.locfileid: "91779620"
     code .
     ```
 
-1. Metin Düzenleyicisi içinde *keyphrase. YAML*adlı yeni bir dosya oluşturun ve içine aşağıdaki YAML 'yi yapıştırın. `billing/value`Ve `apikey/value` bilgilerinizi kendi bilgileriniz ile değiştirdiğinizden emin olun.
+1. Metin Düzenleyicisi içinde *keyphrase. YAML* adlı yeni bir dosya oluşturun ve içine aşağıdaki YAML 'yi yapıştırın. `billing/value`Ve `apikey/value` bilgilerinizi kendi bilgileriniz ile değiştirdiğinizden emin olun.
 
     ```yaml
     apiVersion: apps/v1beta1

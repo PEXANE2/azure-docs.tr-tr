@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 5306439184561e8dec8303a7b149f51d6c2f6e08
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75551871"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018911"
 ---
 # <a name="availability-of-service-fabric-services"></a>Service Fabric hizmetlerinin kullanılabilirliği
 Bu makalede, Azure Service Fabric 'nin bir hizmetin kullanılabilirliğini nasıl koruduğu konusunda genel bir bakış sunulmaktadır.
@@ -23,13 +23,13 @@ Durum bilgisi olmayan bir hizmet oluşturmak için tanımlama gerekir `InstanceC
 Durum bilgisi olmayan adlandırılmış hizmetin bir örneği başarısız olursa, kümedeki uygun bir düğümde yeni bir örnek oluşturulur. Örneğin, durum bilgisi olmayan bir hizmet örneği Düğüm1 üzerinde başarısız olabilir ve Düğüm5 üzerinde yeniden oluşturulabilir.
 
 ## <a name="availability-of-service-fabric-stateful-services"></a>Service Fabric durum bilgisi olan hizmetlerin kullanılabilirliği
-Durum bilgisi olan bir hizmetin kendisiyle ilişkilendirilmiş bir durumu vardır. Service Fabric, durum bilgisi olan bir hizmet bir çoğaltmalar kümesi olarak modellenir. Her çoğaltma, hizmetin kodunun çalışan bir örneğidir. Çoğaltma Ayrıca bu hizmetin durumunun bir kopyasına sahiptir. Okuma ve yazma işlemleri, *birincil*olarak adlandırılan tek bir çoğaltmada gerçekleştirilir. Yazma işlemlerinden gelen değişiklikler, *Etkin ikincil*adı verilen ve uygulanan çoğaltma kümesindeki diğer yinelemelere *çoğaltılır* . 
+Durum bilgisi olan bir hizmetin kendisiyle ilişkilendirilmiş bir durumu vardır. Service Fabric, durum bilgisi olan bir hizmet bir çoğaltmalar kümesi olarak modellenir. Her çoğaltma, hizmetin kodunun çalışan bir örneğidir. Çoğaltma Ayrıca bu hizmetin durumunun bir kopyasına sahiptir. Okuma ve yazma işlemleri, *birincil* olarak adlandırılan tek bir çoğaltmada gerçekleştirilir. Yazma işlemlerinden gelen değişiklikler, *Etkin ikincil* adı verilen ve uygulanan çoğaltma kümesindeki diğer yinelemelere *çoğaltılır* . 
 
 Yalnızca bir birincil çoğaltma olabilir, ancak birden çok etkin Ikincil çoğaltma olabilir. Etkin Ikincil çoğaltmaların sayısı yapılandırılabilir ve daha yüksek sayıda çoğaltma daha fazla sayıda eşzamanlı yazılım ve donanım hatasını kabul edebilir.
 
-Birincil çoğaltma kapalıysa Service Fabric etkin Ikincil çoğaltmalardan birini yeni birincil çoğaltma yapar. Bu etkin Ikincil çoğaltma, *çoğaltma*aracılığıyla durumun güncelleştirilmiş sürümüne zaten sahip ve daha fazla okuma/yazma işlemi işlemeye devam edebilir. Bu işlem yeniden *yapılandırma olarak bilinir ve yeniden* [yapılandırma](service-fabric-concepts-reconfiguration.md) makalesinde daha ayrıntılı olarak açıklanmıştır.
+Birincil çoğaltma kapalıysa Service Fabric etkin Ikincil çoğaltmalardan birini yeni birincil çoğaltma yapar. Bu etkin Ikincil çoğaltma, *çoğaltma* aracılığıyla durumun güncelleştirilmiş sürümüne zaten sahip ve daha fazla okuma/yazma işlemi işlemeye devam edebilir. Bu işlem yeniden *yapılandırma olarak bilinir ve yeniden* [yapılandırma](service-fabric-concepts-reconfiguration.md) makalesinde daha ayrıntılı olarak açıklanmıştır.
 
-Bir çoğaltma kavramı birincil ya da etkin bir Ikincil değer olan *çoğaltma rolü*olarak bilinir. Bu çoğaltmalar [çoğaltmalar ve örnekler](service-fabric-concepts-replica-lifecycle.md) makalesinde daha ayrıntılı olarak açıklanmıştır. 
+Bir çoğaltma kavramı birincil ya da etkin bir Ikincil değer olan *çoğaltma rolü* olarak bilinir. Bu çoğaltmalar [çoğaltmalar ve örnekler](service-fabric-concepts-replica-lifecycle.md) makalesinde daha ayrıntılı olarak açıklanmıştır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Service Fabric kavramları hakkında daha fazla bilgi için aşağıdaki makalelere bakın:

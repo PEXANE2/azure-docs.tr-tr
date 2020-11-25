@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.openlocfilehash: ad3dbd8cdc6fff7eca8c24bb6e5258022d52cb9b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959467"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018503"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>Azure 'da TmaxSoft OpenFrame 'i yükle
 
@@ -97,7 +97,7 @@ Windows için tutulma: TmaxSoft tarafından desteklenen bir geliştirme platform
 
 <!-- markdownlint-enable MD033 -->
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Tüm gerekli yazılımları birleştirmek ve tüm el ile gerçekleştirilen işlemlerin tamamını gerçekleştirmek için birkaç gün harcamayı planlayın.
 

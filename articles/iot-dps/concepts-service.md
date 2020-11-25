@@ -9,19 +9,19 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotga
 ms.openlocfilehash: b9fc37c6589cdd0bc6a5cdce7b7ebebe2c6e9a85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531619"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019455"
 ---
 # <a name="iot-hub-device-provisioning-service-dps-terminology"></a>IoT Hub cihaz sağlama hizmeti (DPS) terminolojisi
 
 IoT Hub cihaz sağlama hizmeti, belirli bir IoT Hub 'ına sıfır Touch cihaz sağlamayı yapılandırmak için kullandığınız IoT Hub yardımcı hizmettir. Cihaz sağlama hizmeti [ile milyonlarca cihazı](about-iot-dps.md#provisioning-process) güvenli ve ölçeklenebilir bir şekilde sağlayabilirsiniz.
 
-Cihaz sağlama iki bölümden oluşan bir işlemdir. İlk bölüm, cihazı *kaydederek* cihaz ile IoT çözümü arasında ilk bağlantıyı kurmaya yönelik olur. İkinci bölüm, çözümün belirli gereksinimlerine bağlı olarak uygun *yapılandırmayı* cihaza uyguluyor. Her iki adım tamamlandıktan sonra cihaz tam olarak *sağlanmış*demektir. Cihaz Sağlama Hizmeti, bu adımların ikisini de otomatikleştirerek cihaz için sorunsuz bir sağlama deneyimi sağlar.
+Cihaz sağlama iki bölümden oluşan bir işlemdir. İlk bölüm, cihazı *kaydederek* cihaz ile IoT çözümü arasında ilk bağlantıyı kurmaya yönelik olur. İkinci bölüm, çözümün belirli gereksinimlerine bağlı olarak uygun *yapılandırmayı* cihaza uyguluyor. Her iki adım tamamlandıktan sonra cihaz tam olarak *sağlanmış* demektir. Cihaz Sağlama Hizmeti, bu adımların ikisini de otomatikleştirerek cihaz için sorunsuz bir sağlama deneyimi sağlar.
 
-Bu makale, *hizmetin*yönetilmesi için en uygun sağlama kavramlarıyla ilgili genel bir bakış sunar. Bu makale, bir cihazı dağıtıma hazırlamak için [bulut kurulumu adımından](about-iot-dps.md#cloud-setup-step) sorumlu olan personbuna uygundur.
+Bu makale, *hizmetin* yönetilmesi için en uygun sağlama kavramlarıyla ilgili genel bir bakış sunar. Bu makale, bir cihazı dağıtıma hazırlamak için [bulut kurulumu adımından](about-iot-dps.md#cloud-setup-step) sorumlu olan personbuna uygundur.
 
 ## <a name="service-operations-endpoint"></a>Hizmet işlemleri uç noktası
 
@@ -123,6 +123,6 @@ Cihaz KIMLIĞI, IoT Hub göründüğü şekliyle KIMLIĞIDIR. İstenen cihaz KIM
 
 
 
-## <a name="operations"></a>İşlemler
+## <a name="operations"></a>Operations
 
 İşlemler, cihaz sağlama hizmetinin fatura birimidir. Tek bir işlem, hizmete yönelik bir yönergenin başarıyla tamamlanmasıyla aynıdır. İşlemler cihaz kayıtları ve yeniden kayıtlar içerir; işlemler, kayıt listesi girişleri ekleme ve kayıt listesi girişlerini güncelleştirme gibi hizmet tarafı değişiklikleri de içerir.

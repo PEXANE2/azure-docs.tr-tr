@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/13/2019
 ms.author: allensu
 ms.openlocfilehash: aa2f00a732a3978524fc017481285859c9535387
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779178"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018690"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Azure CDN faturalamasını anlama
 
@@ -48,7 +48,7 @@ Azure CDN faturalandırma bölgesi, son kullanıcıya içerik teslim eden kaynak
 Örneğin, Meksika 'da bulunan bir Kullanıcı bir istek yayınlar ve bu istek eşleme veya trafik koşullarına bağlı olarak Birleşik Devletler POP 'ta bulunan bir sunucu tarafından hizmet verilirken, faturalandırma Bölgesi Birleşik Devletler olur.
 
 ## <a name="what-is-a-billable-azure-cdn-transaction"></a>Faturalandırılabilir Azure CDN işlem nedir?
-CDN 'de sonlanan herhangi bir HTTP (S) isteği, tüm yanıt türlerini içeren faturalandırılabilir bir olaydır: başarılı, hata veya diğer. Ancak farklı yanıtlar farklı trafik miktarları oluşturabilir. Örneğin, *304 değiştirilmedi* ve diğer üst bilgi yanıtları küçük bir başlık yanıtı olduklarından az trafik oluşturur; benzer şekilde, hata yanıtları (örneğin, *404 bulunamadı* ) faturalanabilir ancak küçük bir yanıt yükü nedeniyle küçük bir ücret doğurur.
+CDN 'de sonlanan herhangi bir HTTP (S) isteği, tüm yanıt türlerini içeren faturalandırılabilir bir olaydır: başarılı, hata veya diğer. Ancak farklı yanıtlar farklı trafik miktarları oluşturabilir. Örneğin, *304 değiştirilmedi* ve diğer üst bilgi yanıtları küçük bir başlık yanıtı olduklarından az trafik oluşturur; benzer şekilde, hata yanıtları (örneğin, *404 bulunamadı*) faturalanabilir ancak küçük bir yanıt yükü nedeniyle küçük bir ücret doğurur.
 
 ## <a name="what-other-azure-costs-are-associated-with-azure-cdn-use"></a>Azure CDN kullanımı ile ilgili diğer Azure maliyetleri nelerdir?
 Azure CDN kullanmak, nesneleriniz için kaynak olarak kullanılan hizmetler üzerinde bazı kullanım ücretleri de doğurur. Bu maliyetler genellikle genel CDN kullanım maliyetinin küçük bir bölümünü alır.
@@ -90,7 +90,7 @@ Bir CDN POP 'un önbelleğini doldurması gereken her seferinde, önbelleğe al�
 ## <a name="which-origin-services-are-eligible-for-free-data-transfer-with-azure-cdn-from-microsoft"></a>Microsoft 'tan gelen Azure CDN ücretsiz veri aktarımı için hangi kaynak hizmetleri uygun? 
 CDN başlangıç noktası olarak aşağıdaki Azure hizmetlerinden birini kullanırsanız, kaynaktan CDN pop 'Lara veri aktarımından ücretlendirilmeyecektir. 
 
-- Azure Depolama
+- Azure Storage
 - Azure Media Services
 - Azure Sanal Makineler
 - Sanal Ağ

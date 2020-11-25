@@ -7,18 +7,18 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: 3674c316e34b1e54ed8282ac7d2c228a2b774c06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081228"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019030"
 ---
 # <a name="how-to-document-data-sources-in-azure-data-catalog"></a>Azure Veri Kataloğu 'nda veri kaynaklarını belgeleme
 
 ## <a name="introduction"></a>Giriş
-**Microsoft Azure Veri Kataloğu** , kurumsal veri kaynakları için bir kayıt sistemi ve bulma sistemi olarak hizmet veren tam olarak yönetilen bir bulut hizmetidir. Diğer bir deyişle, **Azure Veri Kataloğu** , kullanıcıların veri kaynaklarını bulmasına, *anlamasına*ve kullanmasına yardımcı olur ve kuruluşların mevcut verilerinden daha fazla değer almasını sağlar.
+**Microsoft Azure Veri Kataloğu** , kurumsal veri kaynakları için bir kayıt sistemi ve bulma sistemi olarak hizmet veren tam olarak yönetilen bir bulut hizmetidir. Diğer bir deyişle, **Azure Veri Kataloğu** , kullanıcıların veri kaynaklarını bulmasına, *anlamasına* ve kullanmasına yardımcı olur ve kuruluşların mevcut verilerinden daha fazla değer almasını sağlar.
 
-Bir veri kaynağı **Azure Veri Kataloğu 'na**kaydedildiğinde, meta verileri hizmet tarafından kopyalanıp dizinlenir, ancak hikaye burada sonlanmaz. **Azure Veri Kataloğu** , kullanıcıların veri kaynağı için kullanımı ve yaygın senaryoları betimleyen, kendi kendine ait tüm belgeleri sağlamasına de olanak tanır.
+Bir veri kaynağı **Azure Veri Kataloğu 'na** kaydedildiğinde, meta verileri hizmet tarafından kopyalanıp dizinlenir, ancak hikaye burada sonlanmaz. **Azure Veri Kataloğu** , kullanıcıların veri kaynağı için kullanımı ve yaygın senaryoları betimleyen, kendi kendine ait tüm belgeleri sağlamasına de olanak tanır.
 
 [Veri kaynaklarına açıklama ekleme](data-catalog-how-to-annotate.md)bölümünde, veri kaynağını bilen uzmanların etiketlere ve açıklamaya açıklama ekleyebileceğinizi öğrenirsiniz. **Azure Veri Kataloğu** portalı, kullanıcıların veri varlıklarını ve kapsayıcıları tam olarak belgeedebilmesi için zengin bir metin Düzenleyicisi içerir. Düzenleyici, başlıklar, metin biçimlendirme, madde işaretli listeler, numaralandırılmış listeler ve tablolar gibi paragraf biçimlendirme içerir.
 

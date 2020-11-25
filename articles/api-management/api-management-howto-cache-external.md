@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: apimpm
 ms.openlocfilehash: 6288a10e111e42629abf5e09b84a6a7791dcfe95
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095943"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018231"
 ---
 # <a name="use-an-external-redis-compatible-cache-in-azure-api-management"></a>Azure API Management dış Redsıs uyumlu bir önbellek kullanın
 
@@ -74,7 +74,7 @@ Azure API Management 'de Redsıs için dış Azure önbelleği eklemek üzere a�
 3. **+ Ekle** düğmesine tıklayın.
 4. **Önbellek örneği** açılan alanında önbelleğinizi seçin.
 5. **Varsayılan** ' ı seçin veya istediğiniz bölgeyi açılan **menüden kullan** alanından belirtin.
-6. **Kaydet** ’e tıklayın.
+6. **Kaydet**’e tıklayın.
 
 ### <a name="add-an-azure-cache-for-redis-hosted-outside-of-the-current-azure-subscription-or-azure-in-general"></a>Geçerli Azure aboneliğinin veya genel olarak Azure 'un dışında barındırılan Red, için Azure önbelleği ekleme
 
@@ -84,7 +84,7 @@ Azure API Management 'de Redsıs için dış Azure önbelleği eklemek üzere a�
 4. **Önbellek örneği** açılan alanında **özel** ' i seçin.
 5. **Varsayılan** ' ı seçin veya istediğiniz bölgeyi açılan **menüden kullan** alanından belirtin.
 6. **Bağlantı dizesi** alanında redsıs bağlantı dizesi Için Azure önbelleğinizi sağlayın.
-7. **Kaydet** ’e tıklayın.
+7. **Kaydet**’e tıklayın.
 
 ### <a name="add-a-redis-cache-to-a-self-hosted-gateway"></a>Kendi kendine barındırılan bir ağ geçidine Redsıs önbelleği ekleme
 
@@ -94,7 +94,7 @@ Azure API Management 'de Redsıs için dış Azure önbelleği eklemek üzere a�
 4. **Önbellek örneği** açılan alanında **özel** ' i seçin.
 5. İstenen şirket içinde barındırılan ağ geçidi konumunu veya **varsayılan** , açılan **listeden kullan** alanından belirtin.
 6. **Bağlantı dizesi** alanında redsıs Cache Bağlantı dizenizi belirtin.
-7. **Kaydet** ’e tıklayın.
+7. **Kaydet**’e tıklayın.
 
 ## <a name="use-the-external-cache"></a>Dış önbelleği kullanma
 

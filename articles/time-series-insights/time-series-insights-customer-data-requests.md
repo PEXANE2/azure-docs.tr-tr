@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.date: 10/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5565dd43689d0420fbb9b73f088f24a38a2d54db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5ecbabe4a5c3458c77d145fbce1281550470e00
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91665914"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96019081"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Müşteri verileri isteme özelliklerinin özeti
 
@@ -34,7 +34,7 @@ Bir kiracı yöneticisi Azure portal kullanarak müşteri verilerini silebilir.
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-Ancak, Portal üzerinden müşteri verilerini silmeden önce, kullanıcının erişim ilkelerini Azure portal içindeki Time Series Insights ortamından kaldırmanız gerekir. Daha fazla bilgi için [Azure Portal kullanarak Time Series Insights ortamına veri erişimi verme](time-series-insights-data-access.md)konusunu okuyun.
+Ancak, Portal üzerinden müşteri verilerini silmeden önce, kullanıcının erişim ilkelerini Azure portal içindeki Time Series Insights ortamından kaldırmanız gerekir. Daha fazla bilgi için [Azure Portal kullanarak Time Series Insights ortamına veri erişimi verme](./concepts-access-policies.md)konusunu okuyun.
 
 Ayrıca, REST API kullanarak erişim ilkelerinde silme işlemleri gerçekleştirebilirsiniz. Daha fazla bilgi için [erişim ilkelerini okuma-silme](/rest/api/time-series-insights/management(gen1/gen2)/accesspolicies/delete).
 
@@ -46,7 +46,7 @@ Benzer şekilde, verileri silmenin yanı sıra, bir kiracı yöneticisi Azure po
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-Kiracı yöneticisiyseniz, veri erişim ilkelerini Azure portal Time Series Insights ortamı içinde görüntüleyebilirsiniz. Daha fazla bilgi için [Azure Portal kullanarak Time Series Insights ortamına veri erişimi verme](time-series-insights-data-access.md)konusunu okuyun.
+Kiracı yöneticisiyseniz, veri erişim ilkelerini Azure portal Time Series Insights ortamı içinde görüntüleyebilirsiniz. Daha fazla bilgi için [Azure Portal kullanarak Time Series Insights ortamına veri erişimi verme](./concepts-access-policies.md)konusunu okuyun.
 
 Ayrıca, girilen REST API "ortama göre listele" işlemi kullanılarak erişim ilkelerinde dışarı aktarma işlemleri gerçekleştirmek mümkündür. Daha fazla bilgi için bkz. [erişim ilkeleri-ortama göre liste](/rest/api/time-series-insights/management(gen1/gen2)/accesspolicies/listbyenvironment).
 
@@ -68,7 +68,7 @@ Daha fazla bilgi için [Time Series Insights ' de bekletme yapılandırma](time-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Time Series Insights ortamınıza veri erişimi verme](./time-series-insights-data-access.md)hakkında daha fazla bilgi edinin.
+* [Azure Time Series Insights ortamınıza veri erişimi verme](./concepts-access-policies.md)hakkında daha fazla bilgi edinin.
 
 * [Azure Time Series Insights Gezginini](time-series-insights-explorer.md)görüntüleyin.
 

@@ -8,11 +8,11 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 07/03/2018
 ms.openlocfilehash: 5f9410cc91174420662bb5efc67c8904b5d5e647
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219692"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018996"
 ---
 # <a name="run-u-sql-scripts-on-your-local-machine"></a>Yerel makinenizde U-SQL betiklerini çalıştırma
 
@@ -54,7 +54,7 @@ Visual Studio için Azure Data Lake Araçları yerleşik bir yerel çalıştırm
  
 ## <a name="local-runs-with-a-local-machine-account"></a>Yerel makine hesabıyla yerel çalıştırmalar
 
-**Yerel makine** hesabı, yerel depolama hesabı olarak tek bir yerel veri kök klasörü olan paylaşılan bir yerel işlem hesabıdır. Varsayılan olarak, veri kök klasörü **C:\Users \<username> \Appdata\local\usqldataroot**konumunda bulunur. Ayrıca **Araçlar**  >  **Data Lake**  >  **Seçenekler ve ayarlar**aracılığıyla da yapılandırılabilir.
+**Yerel makine** hesabı, yerel depolama hesabı olarak tek bir yerel veri kök klasörü olan paylaşılan bir yerel işlem hesabıdır. Varsayılan olarak, veri kök klasörü **C:\Users \<username> \Appdata\local\usqldataroot** konumunda bulunur. Ayrıca **Araçlar**  >  **Data Lake**  >  **Seçenekler ve ayarlar** aracılığıyla da yapılandırılabilir.
 
 ![Yerel veri kök klasörü yapılandırma](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-configure-local-data-root.png)
   
@@ -92,8 +92,8 @@ Bir **yerel makine** hesabı, kullanıcıların yerel makinelerinde bir Azure Da
 |Fark açısı|Yerel makine|Yerel-proje|
 |----------------|---------------|---------------|
 |Yerel erişim|Tüm projeler tarafından erişilebilir.|Yalnızca ilgili proje bu hesaba erişebilir.|
-|Yerel veri kök klasörü|Kalıcı bir yerel klasör. **Araçlar**  >  **Data Lake**  >  **Seçenekler ve ayarlar**aracılığıyla yapılandırılır.|U-SQL projesi çalışma dizini altında her yerel çalıştırma için oluşturulan geçici bir klasör. Yeniden oluşturma veya yeniden çalıştırma gerçekleştiğinde klasör temizlenir.|
-|U-SQL betiği için giriş verileri|Kalıcı yerel veri kök klasörü altındaki göreli yol.|**U-SQL proje özelliği**  >  **test veri kaynağı**aracılığıyla ayarlayın. Tüm dosyalar ve alt klasörler, yerel çalıştırmadan önce geçici veri kök klasörüne kopyalanır.|
+|Yerel veri kök klasörü|Kalıcı bir yerel klasör. **Araçlar**  >  **Data Lake**  >  **Seçenekler ve ayarlar** aracılığıyla yapılandırılır.|U-SQL projesi çalışma dizini altında her yerel çalıştırma için oluşturulan geçici bir klasör. Yeniden oluşturma veya yeniden çalıştırma gerçekleştiğinde klasör temizlenir.|
+|U-SQL betiği için giriş verileri|Kalıcı yerel veri kök klasörü altındaki göreli yol.|**U-SQL proje özelliği**  >  **test veri kaynağı** aracılığıyla ayarlayın. Tüm dosyalar ve alt klasörler, yerel çalıştırmadan önce geçici veri kök klasörüne kopyalanır.|
 |U-SQL betiği için çıkış verileri|Kalıcı yerel veri kök klasörü altındaki göreli yol.|Geçici veri kök klasörüne çıktı. Yeniden oluşturma veya yeniden çalıştırma gerçekleştiğinde sonuçlar temizlenir.|
 |Başvurulan veritabanı dağıtımı|Başvurulan veritabanları, **yerel makine** hesabında çalışırken otomatik olarak dağıtılmaz. Bu, bir Azure Data Lake Analytics hesabına gönderim için de aynıdır.|Başvurulan veritabanları yerel bir çalıştırmadan önce **Yerel-proje** hesabına otomatik olarak dağıtılır. Yeniden derleme veya yeniden çalıştırma gerçekleştiğinde tüm veritabanı ortamları temizlenir ve yeniden dağıtılır.|
 
