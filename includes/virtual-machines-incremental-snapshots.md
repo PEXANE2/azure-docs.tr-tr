@@ -9,11 +9,11 @@ ms.date: 09/15/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: a662598efdca05769c7da9fbeecdf692dccdacb5
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95558763"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026092"
 ---
 ## <a name="overview"></a>Genel Bakış
 Azure depolama, Blobların anlık görüntülerini alma özelliğini sağlar. Anlık görüntüler blob durumunu zaman içinde yakalar. Bu makalede, anlık görüntüleri kullanarak sanal makine disklerinin yedeklerini koruyabilmeniz için bir senaryo açıklanır. Azure Backup ve kurtarma hizmeti 'ni kullanmayı ve sanal makine diskleriniz için özel bir yedekleme stratejisi oluşturmayı tercih ettiğinizde bu yöntemi kullanabilirsiniz. İş veya görev açısından kritik iş yüklerini çalıştıran sanal makineler için [Azure Backup](../articles/backup/backup-azure-vms-introduction.md) , yedekleme stratejisinin bir parçası olarak kullanılması önerilir.  

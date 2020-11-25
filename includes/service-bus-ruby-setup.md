@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: spelluru
 ms.openlocfilehash: 5c2959a1bf6225c164f8538c3c437e464d834b96
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95555961"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026100"
 ---
 ## <a name="create-a-ruby-application"></a>Ruby uygulaması oluşturma
 Yönergeler için bkz. [Azure 'Da Ruby uygulaması oluşturma](/previous-versions/azure/virtual-machines/linux/classic/ruby-rails-web-app).
