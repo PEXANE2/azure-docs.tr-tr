@@ -9,11 +9,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
 ms.openlocfilehash: a9a90fbb2eedd6db2873d4ac2a5fea94c05c7eed
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844753"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005665"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Bekleyen veriler için Azure HDInsight çift şifrelemesi
 
@@ -111,7 +111,7 @@ HDInsight yalnızca Azure Key Vault destekler. Kendi anahtar kasanıza sahipseni
 
 1. **Ekle**’yi seçin.
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
     ![Azure Key Vault erişim ilkesini Kaydet](./media/disk-encryption/add-key-vault-access-policy-save.png)
 

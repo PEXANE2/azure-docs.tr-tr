@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/14/2020
 ms.openlocfilehash: 66a17b61fef652160dc6d4a02bf330adbf0c7362
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425688"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006840"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure Data Factory 'de arama etkinliği
 
@@ -85,7 +85,7 @@ Arama sonucu, `output` etkinlik çalıştırma sonucunun bölümünde döndürü
     }
     ```
 
-* **, `firstRowOnly` Olarak `false` ayarlandığında **, çıkış biçimi aşağıdaki kodda gösterildiği gibidir. Bir `count` alan, kaç kaydın döndürüleceğini gösterir. Ayrıntılı değerler sabit bir dizi altında görüntülenir `value` . Böyle bir durumda, arama etkinliğinin ardından bir [foreach etkinliği](control-flow-for-each-activity.md)gelir. `value`Dizisini ForEach etkinlik `items` alanına geçirin `@activity('MyLookupActivity').output.value` . Dizideki öğelere erişmek için `value` şu sözdizimini kullanın: `@{activity('lookupActivity').output.value[zero based index].propertyname}` . `@{activity('lookupActivity').output.value[0].schema}` bunun bir örneğidir.
+* **, `firstRowOnly` Olarak `false` ayarlandığında**, çıkış biçimi aşağıdaki kodda gösterildiği gibidir. Bir `count` alan, kaç kaydın döndürüleceğini gösterir. Ayrıntılı değerler sabit bir dizi altında görüntülenir `value` . Böyle bir durumda, arama etkinliğinin ardından bir [foreach etkinliği](control-flow-for-each-activity.md)gelir. `value`Dizisini ForEach etkinlik `items` alanına geçirin `@activity('MyLookupActivity').output.value` . Dizideki öğelere erişmek için `value` şu sözdizimini kullanın: `@{activity('lookupActivity').output.value[zero based index].propertyname}` . `@{activity('lookupActivity').output.value[0].schema}` bunun bir örneğidir.
 
     ```json
     {
@@ -114,7 +114,7 @@ Bu örnek yalnızca ilk satır için arama gösterir. Tüm satırları aramak ve
 
 ### <a name="pipeline"></a>İşlem Hattı
 
-- Arama etkinliği, Azure Blob depolama alanındaki bir konuma başvuran **Lookupdataset**öğesini kullanacak şekilde yapılandırılmıştır. Arama etkinliği, SQL tablosunun adını bu konumdaki bir JSON dosyasından okur. 
+- Arama etkinliği, Azure Blob depolama alanındaki bir konuma başvuran **Lookupdataset** öğesini kullanacak şekilde yapılandırılmıştır. Arama etkinliği, SQL tablosunun adını bu konumdaki bir JSON dosyasından okur. 
 - Kopyalama etkinliği, SQL tablosunun adı olan arama etkinliğinin çıkışını kullanır. **SourceDataset** 'teki **TableName** özelliği, arama etkinliğinin çıktısını kullanacak şekilde yapılandırılmıştır. Kopyalama etkinliği, verileri SQL tablosundan Azure Blob depolama alanındaki bir konuma kopyalar. Konum **Sinkdataset** özelliği tarafından belirtilir. 
 
 ```json

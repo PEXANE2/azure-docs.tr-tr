@@ -9,11 +9,11 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: b0df55e59bd519a816c4022f2434edfcd4460780
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570760"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006532"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps'te B2B kurumsal tümleştirme için EDIFACT iletilerini gönderme ve alma
 
@@ -45,11 +45,11 @@ Azure Logic Apps için EDIOLGU iletilerini değiş tokuş etmeden önce, bir EDI
    > [!TIP]
    > **Tüm hizmetler** görünmezse, önce menüyü genişletmeniz gerekebilir. Daraltılan menünün en üstünde **metin etiketlerini göster**' i seçin.
 
-3. **Tümleştirme hesapları**altında, sözleşmeyi oluşturmak istediğiniz tümleştirme hesabını seçin.
+3. **Tümleştirme hesapları** altında, sözleşmeyi oluşturmak istediğiniz tümleştirme hesabını seçin.
 
    ![Anlaşmanın oluşturulacağı tümleştirme hesabını seçin](./media/logic-apps-enterprise-integration-edifact/edifact-1-4.png)
 
-4. **Anlaşmaları**seçin. Anlaşma kutucuğuna sahipseniz, önce kutucuğu ekleyin.   
+4. **Anlaşmaları** seçin. Anlaşma kutucuğuna sahipseniz, önce kutucuğu ekleyin.   
 
    !["Anlaşmalar" kutucuğunu seçin](./media/logic-apps-enterprise-integration-edifact/edifact-1-5.png)
 
@@ -57,7 +57,7 @@ Azure Logic Apps için EDIOLGU iletilerini değiş tokuş etmeden önce, bir EDI
 
    !["Ekle" yi seçin](./media/logic-apps-enterprise-integration-edifact/edifact-agreement-2.png)
 
-6. **Ekle**' nin altına sözleşmeniz Için bir **ad** girin. **Anlaşma türü**Için **ediolgu**' ı seçin. Sözleşmeniz için **konak ortağını**, **ana bilgisayar kimliğini**, **Konuk iş ortağını**ve **Konuk kimliğini** seçin.
+6. **Ekle**' nin altına sözleşmeniz Için bir **ad** girin. **Anlaşma türü** Için **ediolgu**' ı seçin. Sözleşmeniz için **konak ortağını**, **ana bilgisayar kimliğini**, **Konuk iş ortağını** ve **Konuk kimliğini** seçin.
 
    ![Anlaşma ayrıntılarını sağlama](./media/logic-apps-enterprise-integration-edifact/edifact-1.png)
 
@@ -170,7 +170,7 @@ Artık sözleşmeniz, seçili ayarlarınıza uygun olan giden iletileri işlemey
 
 | Özellik | Açıklama |
 | --- | --- |
-| UNB 1.2 (söz dizimi sürümü) |**1** ile **4**arasında bir değer seçin. |
+| UNB 1.2 (söz dizimi sürümü) |**1** ile **4** arasında bir değer seçin. |
 | UNB 2.3 (gönderici ters yönlendirme adresi) |En az bir karakter ve en fazla 14 karakter içeren alfasayısal bir değer girin. |
 | UNB 3.3 (alıcı ters yönlendirme adresi) |En az bir karakter ve en fazla 14 karakter içeren alfasayısal bir değer girin. |
 | UNB 6.1 (alıcı başvuru parolası) |En az bir ve en fazla 14 karakter uzunluğunda alfasayısal bir değer girin. |
@@ -202,7 +202,7 @@ Artık sözleşmeniz, seçili ayarlarınıza uygun olan giden iletileri işlemey
 | UNB10 (Iletişim Sözleşmesi) |En az bir karakter ve en fazla 40 karakter içeren alfasayısal bir değer girin. |
 | UNB11 (test göstergesi) |Oluşturulan değişim verilerinin test verileri olduğunu göstermek için bu onay kutusunu seçin |
 | UNA segmenti Uygula (hizmet dizesi önerisi) |Değişim gönderilmesi için bir UNA segmenti oluşturmak üzere bu onay kutusunu seçin. |
-| UNG segmentlerini Uygula (Işlev grubu üst bilgisi) |Konuk iş ortağına gönderilen iletilerde işlevsel Grup üstbilgisinde gruplandırma kesimleri oluşturmak için bu onay kutusunu seçin. Aşağıdaki değerler, UNG segmentlerini oluşturmak için kullanılır: <p>**UNG1**için en az bir karakter ve en fazla altı karakter içeren bir alfasayısal değer girin. <p>**Ung 2.1**için, en az bir karakter ve en fazla 35 karakter içeren alfasayısal bir değer girin. <p>**Ung 2.2**için en fazla dört karakter içeren bir alfasayısal değer girin. <p>**Ung 3.1**için, en az bir karakter ve en fazla 35 karakter içeren alfasayısal bir değer girin. <p>**Ung 3.2**için en fazla dört karakter uzunluğunda bir alfasayısal değer girin. <p>**UNG6**için en az bir alfasayısal değer ve en fazla üç karakter girin. <p>**Ung 7.1**için, en az bir karakter ve en fazla üç karakter içeren alfasayısal bir değer girin. <p>**Ung 7.2**için, en az bir karakter ve en fazla üç karakter içeren alfasayısal bir değer girin. <p>**Ung 7.3**için, en az 1 karakter ve en fazla 6 karakter uzunluğunda bir alfasayısal değer girin. <p>**UNG8**için, en az bir karakter ve en fazla 14 karakter içeren alfasayısal bir değer girin. |
+| UNG segmentlerini Uygula (Işlev grubu üst bilgisi) |Konuk iş ortağına gönderilen iletilerde işlevsel Grup üstbilgisinde gruplandırma kesimleri oluşturmak için bu onay kutusunu seçin. Aşağıdaki değerler, UNG segmentlerini oluşturmak için kullanılır: <p>**UNG1** için en az bir karakter ve en fazla altı karakter içeren bir alfasayısal değer girin. <p>**Ung 2.1** için, en az bir karakter ve en fazla 35 karakter içeren alfasayısal bir değer girin. <p>**Ung 2.2** için en fazla dört karakter içeren bir alfasayısal değer girin. <p>**Ung 3.1** için, en az bir karakter ve en fazla 35 karakter içeren alfasayısal bir değer girin. <p>**Ung 3.2** için en fazla dört karakter uzunluğunda bir alfasayısal değer girin. <p>**UNG6** için en az bir alfasayısal değer ve en fazla üç karakter girin. <p>**Ung 7.1** için, en az bir karakter ve en fazla üç karakter içeren alfasayısal bir değer girin. <p>**Ung 7.2** için, en az bir karakter ve en fazla üç karakter içeren alfasayısal bir değer girin. <p>**Ung 7.3** için, en az 1 karakter ve en fazla 6 karakter uzunluğunda bir alfasayısal değer girin. <p>**UNG8** için, en az bir karakter ve en fazla 14 karakter içeren alfasayısal bir değer girin. |
 
 ### <a name="character-sets-and-separators"></a>Karakter kümeleri ve ayırıcılar
 

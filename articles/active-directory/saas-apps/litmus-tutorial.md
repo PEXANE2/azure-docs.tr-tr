@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 04/06/2020
 ms.author: jeedes
 ms.openlocfilehash: 23db3457458d34852f164649137c2b20cf99238b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458461"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006022"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-litmus"></a>Öğretici: Litmus ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Litmus 'i Azure Active Directory (Azure AD) ile tümleştirmeyi
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -56,7 +56,7 @@ Litmus tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden Lit
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-litmus"></a>Litmus için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Litmus ile yapılandırın ve test edin. SSO 'nun çalışması için, Litmus içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Litmus ile yapılandırın ve test edin. SSO 'nun çalışması için, Litmus içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Litmus ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -103,7 +103,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -139,7 +139,7 @@ Bu bölümde, Litmus 'e erişim vererek Azure çoklu oturum açma özelliğini k
 
     b. Sağlayıcı için **genel** ' i seçin.
 
-    c. **Kimlik sağlayıcısı adının**adını girin. for ex. `Azure AD`
+    c. **Kimlik sağlayıcısı adının** adını girin. for ex. `Azure AD`
 
 1. Aşağıdaki adımları gerçekleştirin:
 
@@ -169,7 +169,7 @@ Bu bölümde, Litmus 'e erişim vererek Azure çoklu oturum açma özelliğini k
 
     a. **E-posta** metin kutusuna **B. Simon \@ contoso.com** gibi kullanıcının e-posta adresini girin
 
-    b. **Ilk ad** metin kutusuna **B**gibi kullanıcının adını girin.
+    b. **Ilk ad** metin kutusuna **B** gibi kullanıcının adını girin.
 
     c. Soyadı metin kutusunda, **Simon** **adlı** kullanıcının soyadını girin.
 

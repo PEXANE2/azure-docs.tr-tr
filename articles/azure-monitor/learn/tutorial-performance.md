@@ -8,11 +8,11 @@ ms.author: lagayhar
 ms.date: 06/15/2020
 ms.custom: mvc
 ms.openlocfilehash: df7cfff7d5bf1b89f88105f79c072d1d7e731b31
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592575"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005495"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Azure Application Insights ile performans sorunlarını bulma ve tanılama
 
@@ -25,7 +25,7 @@ Azure Application Insights, uygulamanızdan çalışma ve performans analizine y
 > * Sorgu dilini kullanarak sayfa görüntülemelerinin ayrıntılarını analiz etme
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -41,8 +41,8 @@ Bu öğreticiyi tamamlamak için:
 ## <a name="identify-slow-server-operations"></a>Yavaş sunucu işlemlerini belirleme
 Application Insights, uygulamanızdaki farklı işlemlerin performans ayrıntılarını toplar. Süresi en uzun olan işlemleri belirleyerek olası sorunları veya sürmekte olan geliştirme sürecinizin en iyi hedefini tanılayabilir ve uygulamanın genel performansını geliştirebilirsiniz.
 
-1. **Application Insights** ’ı ve sonra aboneliğinizi seçin.  
-1. **Performans** panelini açmak için **Araştır** menüsü altından **Performans** ’ı seçin veya **Sunucu Yanıt Süresi** grafiğine tıklayın.
+1. **Application Insights**’ı ve sonra aboneliğinizi seçin.  
+1. **Performans** panelini açmak için **Araştır** menüsü altından **Performans**’ı seçin veya **Sunucu Yanıt Süresi** grafiğine tıklayın.
 
     ![Performans](media/tutorial-performance/1-overview.png)
 
@@ -61,13 +61,13 @@ Application Insights, uygulamanızdaki farklı işlemlerin performans ayrıntıl
     ![İşlem uçtan uca ayrıntıları](media/tutorial-performance/4-end-to-end.png)
     
 
-6.  [**Profil Oluşturucu**](../app/profiler-overview.md) , işlem için çalıştırılan gerçek kodu ve her adım için gereken süreyi göstererek kod düzeyi tanılamalarla daha fazla yararlanmanıza yardımcı olur. Profil oluşturucu belirli aralıklarla çalıştığından, bazı işlemlerin izlemesi olmayabilir.  Zamanla daha fazla işlemin izlemesi olmalıdır.  İşlem için profil oluşturucuyu başlatmak için **Profiler izlemeleri** ’ne tıklayın.
+6.  [**Profil Oluşturucu**](../app/profiler-overview.md) , işlem için çalıştırılan gerçek kodu ve her adım için gereken süreyi göstererek kod düzeyi tanılamalarla daha fazla yararlanmanıza yardımcı olur. Profil oluşturucu belirli aralıklarla çalıştığından, bazı işlemlerin izlemesi olmayabilir.  Zamanla daha fazla işlemin izlemesi olmalıdır.  İşlem için profil oluşturucuyu başlatmak için **Profiler izlemeleri**’ne tıklayın.
 5.  İzlemede her işleme yönelik olaylar tek tek gösterildiğinden, genel işlem süresinin kök nedenini tanılayabilirsiniz.  Üstteki en uzun süreye sahip örneklerden birine tıklayın.
 6.  İşlemin toplam süresine en çok katkıda bulunan olayların belirli yolunu vurgulamak için **etkin yol** ' e tıklayın.  Bu örnekte, en yavaş çağrının *FabrikamFiberAzureStorage.GetStorageTableData* metodundan geldiğini görebilirsiniz. En çok zaman alan bölüm *CloudTable.CreateIfNotExist* metodudur. İşlev her çağrıldığında bu kod satırı yürütülürse gereksiz ağ çağrısı ve CPU kaynağı tüketilir. Kodunuzu düzeltmenin en iyi yolu, bu satırı yalnızca bir kere yürütülen bir başlangıç yöntemine eklemektir.
 
     ![Profil oluşturucu ayrıntıları](media/tutorial-performance/5-hot-path.png)
 
-7.  Ekranın üstündeki **Performans İpucu** , sürenin uzun olmasının beklemekten kaynaklandığı değerlendirmesini destekliyor.  Farklı olay türlerinin yorumlanmasına yönelik belgeler için **bekliyor** bağlantısına tıklayın.
+7.  Ekranın üstündeki **Performans İpucu**, sürenin uzun olmasının beklemekten kaynaklandığı değerlendirmesini destekliyor.  Farklı olay türlerinin yorumlanmasına yönelik belgeler için **bekliyor** bağlantısına tıklayın.
 
     ![Performans ipucu](media/tutorial-performance/6-perf-tip.png)
 

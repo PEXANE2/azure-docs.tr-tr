@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 06/24/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 55059f4edea19a1e559ea1ad99d9e7e60756cc96
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1e289d094bba8d4336b83a7970e281247e9f4131
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87836386"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007315"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Azure Blob depolamaya giriş
 
@@ -36,7 +36,7 @@ Aşağıdaki diyagramda bu kaynaklar arasındaki ilişki gösterilmektedir.
 
 Depolama hesabı, Azure 'da verileriniz için benzersiz bir ad alanı sağlar. Azure Storage 'da depoladığınız her nesnenin benzersiz hesap adınızı içeren bir adresi vardır. Hesap adı ve Azure Storage blob uç noktası birleşimi, Depolama hesabınızdaki nesneler için temel adresi oluşturur.
 
-Örneğin, depolama hesabınız *mystorageaccount*olarak adlandırılmışsa, blob depolaması için varsayılan uç nokta şu şekilde olur:
+Örneğin, depolama hesabınız *mystorageaccount* olarak adlandırılmışsa, blob depolaması için varsayılan uç nokta şu şekilde olur:
 
 ```
 http://mystorageaccount.blob.core.windows.net
@@ -74,5 +74,5 @@ Mevcut verilerin blob depolamaya geçirilmesi için bir dizi çözüm vardır:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Depolama hesabı oluşturma](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [Depolama hesabı oluşturma](../common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 - [BLOB depolama için ölçeklenebilirlik ve performans hedefleri](scalability-targets.md)

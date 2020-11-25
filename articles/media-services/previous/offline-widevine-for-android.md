@@ -16,11 +16,11 @@ ms.date: 04/16/2019
 ms.author: willzhan
 ms.reviewer: dwgeo
 ms.openlocfilehash: 4b3b2b8c39b5b2552b5ce9f508bacd1ea86b2638
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269599"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006379"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Android için çevrimdışı Widevine akışı
 
@@ -131,7 +131,7 @@ Geliştiriciler, bir uygulamanın geliştirilmesi sırasında [Exoplayer gelişt
 
 ### <a name="working-with-older-android-devices"></a>Eski Android cihazlarla çalışma
 
-Bazı eski Android cihazlarda, aşağıdaki **policy_overrides** özellikleri için değerler ayarlamanız gerekir ( [Widevine lisans şablonunda](media-services-widevine-license-template-overview.md)tanımlanmıştır: **rental_duration_seconds**, **playback_duration_seconds**ve **license_duration_seconds**. Alternatif olarak, sonsuz/sınırsız süre anlamına gelen sıfır olarak ayarlayabilirsiniz.  
+Bazı eski Android cihazlarda, aşağıdaki **policy_overrides** özellikleri için değerler ayarlamanız gerekir ( [Widevine lisans şablonunda](media-services-widevine-license-template-overview.md)tanımlanmıştır: **rental_duration_seconds**, **playback_duration_seconds** ve **license_duration_seconds**. Alternatif olarak, sonsuz/sınırsız süre anlamına gelen sıfır olarak ayarlayabilirsiniz.  
 
 Bir tamsayı taşma hatasını önlemek için değerlerin ayarlanması gerekir. Sorun hakkında daha fazla açıklama için bkz https://github.com/google/ExoPlayer/issues/3150 . ve https://github.com/google/ExoPlayer/issues/3112 . <br/>Değerleri açıkça ayarlamazsanız,  **PlaybackDurationRemaining** ve **LicenseDurationRemaining** için çok büyük değerler atanır (örneğin, 64 bit tam sayı için en büyük pozitif değer olan 9223372036854775807). Sonuç olarak, Widevine lisansının geçerliliği zaman aşımına uğradı, bu nedenle şifre çözme gerçekleşmeyecektir. 
 

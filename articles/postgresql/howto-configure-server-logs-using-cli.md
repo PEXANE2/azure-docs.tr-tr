@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 5/6/2019
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 71dac0b6ea2202e712280607a73e860ae68bdb73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91704880"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005597"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Azure CLı kullanarak sunucu günlüklerini yapılandırma ve erişme
 PostgreSQL sunucusu hata günlüklerini komut satırı arabirimi (Azure CLı) kullanarak indirebilirsiniz. Ancak, işlem günlüklerine erişim desteklenmez. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 - [PostgreSQL için Azure veritabanı sunucusu](quickstart-create-server-database-azure-cli.md)
 - [Azure CLI](/cli/azure/install-azure-cli) komut satırı yardımcı programı veya Azure Cloud Shell tarayıcıda
@@ -26,7 +26,7 @@ Bu nasıl yapılır kılavuzunda ilerlemek için şunlar gerekir:
 ## <a name="configure-logging"></a>Günlüğe kaydetmeyi yapılandırma
 Sunucuyu sorgu günlüklerine ve hata günlüklerine erişecek şekilde yapılandırabilirsiniz. Hata günlükleri otomatik vakum, bağlantı ve denetim noktası bilgilerine sahip olabilir.
 1. Günlüğe kaydetmeyi açın.
-2. Sorgu günlüğünü etkinleştirmek için **log \_ ifadesini** ve **günlük \_ Min \_ Duration \_ ifadesini**güncelleştirin.
+2. Sorgu günlüğünü etkinleştirmek için **log \_ ifadesini** ve **günlük \_ Min \_ Duration \_ ifadesini** güncelleştirin.
 3. Güncelleştirme bekletme süresi.
 
 Daha fazla bilgi için bkz. [sunucu yapılandırma parametrelerini özelleştirme](howto-configure-server-parameters-using-cli.md).
@@ -34,7 +34,7 @@ Daha fazla bilgi için bkz. [sunucu yapılandırma parametrelerini özelleştirm
 ## <a name="list-logs"></a>Günlükleri Listele
 Sunucunuzun kullanılabilir günlük dosyalarını listelemek için [az Postgres Server-Logs List](/cli/azure/postgres/server-logs) komutunu çalıştırın.
 
-Sunucu **mydemoserver.Postgres.Database.Azure.com** için günlük dosyalarını **myresourcegroup**kaynak grubu altında listeleyebilirsiniz. Ardından günlük dosyaları listesini **günlük \_ dosyaları \_list.txt**adlı bir metin dosyasına yönlendirin.
+Sunucu **mydemoserver.Postgres.Database.Azure.com** için günlük dosyalarını **myresourcegroup** kaynak grubu altında listeleyebilirsiniz. Ardından günlük dosyaları listesini **günlük \_ dosyaları \_list.txt** adlı bir metin dosyasına yönlendirin.
 ```azurecli-interactive
 az postgres server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```

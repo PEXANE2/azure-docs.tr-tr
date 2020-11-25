@@ -7,11 +7,11 @@ ms.date: 11/03/2017
 ms.author: bharatn
 ms.custom: devx-track-csharp
 ms.openlocfilehash: fd8e6dd712801de49971c1ef27cea664d73a4cb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89012781"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005920"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric ters proxy
 Azure 'da yerleşik olarak bulunan ters proxy Service Fabric, bir Service Fabric kümesinde çalışan mikro hizmetlerin HTTP uç noktalarına sahip diğer hizmetleri bulmasına ve iletişim kurmasına yardımcı olur.
@@ -33,7 +33,7 @@ Ters proxy, istemci hizmetlerinin diğer hizmetlere istek göndermek için kulla
 ![İç iletişim][1]
 
 > [!NOTE]
-> **Desteklenen platformlar**
+> **Desteklenen Platformlar**
 >
 > Service Fabric ters proxy Şu anda aşağıdaki platformları desteklemektedir
 > * *Windows kümesi*: Windows 8 ve üzeri ya da windows Server 2012 ve üzeri
@@ -69,10 +69,10 @@ http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?
 * **http (s):** Ters proxy, HTTP veya HTTPS trafiğini kabul edecek şekilde yapılandırılabilir. HTTPS iletimi için, HTTPS 'yi dinlemek üzere ters ara sunucu kurulumuna sahip olduğunuzda [ters ara sunucu ile güvenli bir hizmete bağlanma](service-fabric-reverseproxy-configure-secure-communication.md) bölümüne bakın.
 * **Küme tam etki alanı adı (FQDN) | Iç IP:** Dış istemciler için ters proxy 'yi, mycluster.eastus.cloudapp.azure.com gibi küme etki alanı üzerinden erişilebilmeleri için yapılandırabilirsiniz. Varsayılan olarak, ters proxy her düğümde çalışır. İç trafik için, ters ara sunucuya, localhost veya 10.0.0.1 gibi herhangi bir iç düğüm IP 'si üzerinden ulaşılanmış olabilir.
 * **Bağlantı noktası:** Bu, ters proxy için belirtilen 19081 gibi bağlantı noktasıdır.
-* **ServiceInstanceName:** Bu, "Fabric:/" olmadan ulaşmaya çalıştığınız dağıtılan hizmet örneğinin tam adıdır Şemadaki. Örneğin, *dokunun:/MyApp/hizmetim/* Service 'e ulaşmak için *MyApp/hizmetim*kullanırsınız.
+* **ServiceInstanceName:** Bu, "Fabric:/" olmadan ulaşmaya çalıştığınız dağıtılan hizmet örneğinin tam adıdır Şemadaki. Örneğin, *dokunun:/MyApp/hizmetim/* Service 'e ulaşmak için *MyApp/hizmetim* kullanırsınız.
 
     Hizmet örneği adı büyük/küçük harfe duyarlıdır. URL 'deki hizmet örneği adı için farklı bir büyük harf kullanılması, isteklerin 404 (bulunamadı) ile başarısız olmasına neden olur.
-* **Sonek yolu:** Bu, bağlanmak istediğiniz hizmetin *uygı/değer/ekleme/3*gıbı asıl URL yoludur.
+* **Sonek yolu:** Bu, bağlanmak istediğiniz hizmetin *uygı/değer/ekleme/3* gıbı asıl URL yoludur.
 * **Partitionkey:** Bölümlenmiş bir hizmet için bu, ulaşmak istediğiniz bölümün hesaplanan bölüm anahtarıdır. Bunun bölüm KIMLIĞI GUID *'si olmadığına* unutmayın. Bu parametre, Singleton bölüm düzenini kullanan hizmetler için gerekli değildir.
 * **Partitionkind:** Bu, hizmet bölümü şemadır. Bu, ' Int64Range ' veya ' adlandırılmış ' olabilir. Bu parametre, Singleton bölüm düzenini kullanan hizmetler için gerekli değildir.
 * **Listenername** Hizmetten gelen uç noktalar {"endpoints": {"Listener1": "Endpoint1", "Listener2": "Endpoint2"...}} biçimindedir. Hizmet birden çok uç nokta kullanıma sunarsa, bu, istemci isteğinin iletilmesi gereken uç noktayı tanımlar. Bu, hizmetin yalnızca bir dinleyicisi varsa atlanabilir.

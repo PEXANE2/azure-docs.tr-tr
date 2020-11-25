@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
 ms.openlocfilehash: 8694c403b14234a70b0a67f9f4defb7817ba3ae3
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372217"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005393"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure geliştiricileri için başlangıç kılavuzu
 
@@ -118,7 +118,7 @@ Azure, uygulama barındırmakla birlikte, işlevselliği geliştirebilecek hizme
 
   > **Ne zaman kullanılır:** Uygulamanız, MongoDB veritabanları da dahil olmak üzere belge, tablo veya grafik veritabanlarına ihtiyaç duyduğunda, çok iyi tanımlanmış tutarlılık modelleriyle.
   >
-  > **Kullanmaya**başlayın: [Azure Cosmos DB bir Web uygulaması oluşturun](../../cosmos-db/create-sql-api-dotnet.md). MongoDB geliştiriciyseniz, bkz. [Azure Cosmos DB MongoDB Web uygulaması oluşturma](../../cosmos-db/create-mongodb-dotnet.md).
+  > **Kullanmaya** başlayın: [Azure Cosmos DB bir Web uygulaması oluşturun](../../cosmos-db/create-sql-api-dotnet.md). MongoDB geliştiriciyseniz, bkz. [Azure Cosmos DB MongoDB Web uygulaması oluşturma](../../cosmos-db/create-mongodb-dotnet.md).
 
 - **Azure depolama**: Bloblar, kuyruklar, dosyalar ve diğer ilişkisel olmayan veri türleri için dayanıklı, yüksek oranda kullanılabilir depolama sağlar. Depolama, sanal makineler için depolama temeli sağlar.
 
@@ -146,7 +146,7 @@ Azure, uygulamalarınızda kapsayıcıları kullanmanın birkaç yolunu sağlar.
 
   > **Ne zaman kullanılır**: ek zamanlama ve yönetim araçları sağlayan ve bir Docker sısınma kümesi dağıttığınızda üretime hazırlamış, ölçeklenebilir ortamlar oluşturmanız gerektiğinde.
   >
-  > **Kullanmaya**başlayın: [Kubernetes hizmet kümesi dağıtın](../../aks/tutorial-kubernetes-deploy-cluster.md).
+  > **Kullanmaya** başlayın: [Kubernetes hizmet kümesi dağıtın](../../aks/tutorial-kubernetes-deploy-cluster.md).
 
 - **Docker makinesi**: Docker-Machine komutlarını kullanarak sanal konaklara bir Docker altyapısı yüklemenize ve yönetmenize olanak sağlar.
 
@@ -166,13 +166,13 @@ Yalnızca uygulamalarınızı kimin kullandığını ve ayrıca Kaynaklarınıza
 
   > **Ne zaman kullanılır**: bir SSO deneyimi sağlamak Istediğinizde, Graph tabanlı verilerle çalışın veya etki alanı tabanlı kullanıcıların kimliğini doğrulayın.
   >
-  > **Kullanmaya**başlayın: daha fazla bilgi edinmek için [Geliştirici Kılavuzu Azure Active Directory](../../active-directory/develop/v2-overview.md)bakın.
+  > **Kullanmaya** başlayın: daha fazla bilgi edinmek için [Geliştirici Kılavuzu Azure Active Directory](../../active-directory/develop/v2-overview.md)bakın.
 
 - **App Service kimlik doğrulaması**: uygulamanızı barındırmak için App Service ' i seçtiğinizde Facebook, Google, Microsoft ve Twitter gibi sosyal kimlik sağlayıcılarının yanı sıra Azure AD için de yerleşik kimlik doğrulama desteği alırsınız.
 
   > **Ne zaman kullanılır**: Azure AD, sosyal kimlik sağlayıcıları veya her ikisini de kullanarak App Service bir uygulamada kimlik doğrulamasını etkinleştirmek istediğinizde.
   >
-  > **Kullanmaya**başlayın: App Service kimlik doğrulaması hakkında daha fazla bilgi için, bkz. [Azure App Service kimlik doğrulama ve yetkilendirme](../../app-service/overview-authentication-authorization.md).
+  > **Kullanmaya** başlayın: App Service kimlik doğrulaması hakkında daha fazla bilgi için, bkz. [Azure App Service kimlik doğrulama ve yetkilendirme](../../app-service/overview-authentication-authorization.md).
 
 Azure 'da en iyi güvenlik uygulamaları hakkında daha fazla bilgi edinmek için bkz. [Azure Güvenlik en iyi uygulamaları ve desenleri](../../security/fundamentals/best-practices-and-patterns.md).
 
@@ -186,7 +186,7 @@ Uygulamanızı Azure 'da çalışır duruma getirmeniz, performansı izlemeniz, 
 
 -   **Azure izleyici**: Azure altyapınız ve kaynaklarla oluşturduğunuz ölçümleri ve günlükleri görselleştirmenize, sorgulamanızı, yönlendirmenize, arşivlemenize ve bunlarla işlem yapmanıza yardımcı olan bir hizmettir. İzleyici, Azure kaynaklarını izlemeye yönelik tek bir kaynaktır ve Azure portal gördüğünüz veri görünümlerini sağlar.
 
-    >**Kullanmaya**başlayın: [Azure izleyici 'yi](../../azure-monitor/overview.md)kullanmaya başlayın.
+    >**Kullanmaya** başlayın: [Azure izleyici 'yi](../../azure-monitor/overview.md)kullanmaya başlayın.
 
 ### <a name="devops-integration"></a>DevOps tümleştirmesi
 
@@ -269,7 +269,7 @@ Bu dağıtımları, JSON biçimli bir belge olan Azure Resource Manager şablonu
 
 > **Ne zaman kullanılır**: uygulamanız IÇIN, REST API 'Leri, Azure clı ve Azure PowerShell kullanarak programlı bir şekilde yönetebileceğiniz şablon tabanlı bir dağıtım istediğinizde Kaynak Yöneticisi şablonları kullanın.
 >
-> **Kullanmaya**başlayın: şablonları kullanmaya başlamak için bkz. [Azure Resource Manager şablonları yazma](../../azure-resource-manager/templates/template-syntax.md).
+> **Kullanmaya** başlayın: şablonları kullanmaya başlamak için bkz. [Azure Resource Manager şablonları yazma](../../azure-resource-manager/templates/template-syntax.md).
 
 ## <a name="understanding-accounts-subscriptions-and-billing"></a>Hesapları, abonelikleri ve faturalamayı anlama
 
@@ -281,7 +281,7 @@ Bir Azure aboneliği oluşturmak veya bunlarla çalışmak için bir Azure hesab
 
 Her Azure aboneliği bir Azure AD örneğiyle güven ilişkisine sahiptir. Bu; Azure aboneliğinin kullanıcılar, hizmetler ve cihazlar için kimlik doğrulaması yapmak üzere bu dizine güvendiği anlamına gelir. Birden çok abonelik aynı dizine güvenebilir ancak bir abonelik yalnızca bir dizine güvenir. Daha fazla bilgi edinmek için bkz. [Azure aboneliklerinin Azure Active Directory ile ilişkilendirilmesi](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
-Ayrıca, *Kullanıcılar*olarak da bilinen tek Azure hesap kimliklerini tanımlamak IÇIN Azure AD 'de *grupları* tanımlayabilirsiniz. Kullanıcı gruplarının oluşturulması, rol tabanlı erişim denetimi (RBAC) kullanarak bir abonelikteki kaynaklara erişimi yönetmenin iyi bir yoludur. Grup oluşturma hakkında bilgi edinmek için bkz. [Azure Active Directory Preview 'da Grup oluşturma](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md). Ayrıca, [PowerShell kullanarak](../../active-directory/enterprise-users/groups-settings-v2-cmdlets.md)gruplar oluşturabilir ve yönetebilirsiniz.
+Ayrıca, *Kullanıcılar* olarak da bilinen tek Azure hesap kimliklerini tanımlamak IÇIN Azure AD 'de *grupları* tanımlayabilirsiniz. Kullanıcı gruplarının oluşturulması, rol tabanlı erişim denetimi (RBAC) kullanarak bir abonelikteki kaynaklara erişimi yönetmenin iyi bir yoludur. Grup oluşturma hakkında bilgi edinmek için bkz. [Azure Active Directory Preview 'da Grup oluşturma](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md). Ayrıca, [PowerShell kullanarak](../../active-directory/enterprise-users/groups-settings-v2-cmdlets.md)gruplar oluşturabilir ve yönetebilirsiniz.
 
 ### <a name="manage-your-subscriptions"></a>Aboneliklerinizi yönetme
 
@@ -301,7 +301,7 @@ Azure kaynaklarına erişime izin verildiğinde, kullanıcılara belirli bir gö
 
   > **Ne zaman kullanılır**: kullanıcılar ve gruplar için ayrıntılı erişim yönetimine ihtiyacınız olduğunda veya bir kullanıcıya abonelik sahibi yapmanız gerektiğinde.
   >
-  > **Kullanmaya**başlayın: daha fazla bilgi edinmek için bkz. [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md).
+  > **Kullanmaya** başlayın: daha fazla bilgi edinmek için bkz. [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md).
 
 - **Hizmet sorumlusu nesneleri**: Kullanıcı sorumluları ve gruplarına erişim sağlamaya birlikte, hizmet sorumlusu için de aynı erişimi verebilirsiniz.
 
@@ -313,13 +313,13 @@ Azure Resource Manager, tek tek kaynaklara özel Etiketler atamanıza olanak tan
 
 * Portalda
 * Azure Resource Manager şablonunda
-* REST API’yi kullanma
+* REST API’sini kullanma
 * Azure CLI'yı kullanma
-* PowerShell’i kullanma
+* PowerShell'i kullanma
 
 Her kaynağa birden çok etiket atayabilirsiniz. Daha fazla bilgi edinmek için bkz. [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](../../azure-resource-manager/management/tag-resources.md).
 
-### <a name="billing"></a>Faturalama
+### <a name="billing"></a>Faturalandırma
 
 Şirket içi bilgi işlemden bulutta barındırılan hizmetlere geçiş yaparken, hizmet kullanımını ve ilgili maliyetleri izlemek ve tahmin etmek önemli kaygılardır. Aylık olarak hangi yeni kaynakların çalışacağını tahmin etmek önemlidir. Ayrıca, geçerli harcama temelinde faturalandırmanın belirli bir aya nasıl göründüğünü de proje yapabilirsiniz.
 
@@ -327,7 +327,7 @@ Her kaynağa birden çok etiket atayabilirsiniz. Daha fazla bilgi edinmek için 
 
 Azure, Azure aboneliklerine yönelik kaynak tüketimine ve meta veri bilgilerine erişim veren bir Faturalandırma REST API 'si sağlar. Bu Faturalama API'leri, Azure maliyetlerini daha iyi tahmin etme ve yönetme olanağı sunar. Harcamayı saatlik artışlarla izleyip analiz edebilir ve harcama uyarıları oluşturabilirsiniz. Ayrıca, geçerli kullanım eğilimlerini temelinde gelecekteki faturalandırmayı da tahmin edebilirsiniz.
 
->**Kullanmaya**başlayın: faturalama API'leri hakkında daha fazla bilgi edinmek için bkz. [Azure Faturalandırma kullanımı ve RateCard API 'lerine genel bakış](../../cost-management-billing/manage/usage-rate-card-overview.md).
+>**Kullanmaya** başlayın: faturalama API'leri hakkında daha fazla bilgi edinmek için bkz. [Azure Faturalandırma kullanımı ve RateCard API 'lerine genel bakış](../../cost-management-billing/manage/usage-rate-card-overview.md).
 
 #### <a name="predict-future-costs"></a>Gelecekteki maliyetleri tahmin etme
 

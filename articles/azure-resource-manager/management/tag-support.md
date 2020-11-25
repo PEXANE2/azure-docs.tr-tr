@@ -4,11 +4,11 @@ description: Hangi Azure kaynak türlerinin etiketleri desteklediğini gösterir
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.openlocfilehash: fb81ed303cf27add3a033021f017c03f4b9e9750
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427777"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005733"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure kaynakları için etiket desteği
 Bu makalede, bir kaynak türünün [etiketleri](tag-resources.md)destekleyip desteklemediğini açıklanmaktadır. Etiketi **destekleyen** sütun, kaynak türünün etiket için bir özelliğe sahip olup olmadığını gösterir. **Maliyet raporundaki etiket** etiketli sütun, kaynak türünün etiketi maliyet raporuna geçirip geçirmediğini belirtir. [Maliyet yönetimi maliyet analizi](../../cost-management-billing/costs/group-filter.md) ve [Azure Faturalandırma faturasında ve günlük kullanım verilerinde](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)maliyeti etiketlere göre görüntüleyebilirsiniz.
@@ -847,7 +847,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Rezervlik Işlemleri | Hayır | Hayır |
 > | Etiketler | Hayır | Hayır |
 > | Kira | Hayır | Hayır |
-> | Koşullar | Hayır | Hayır |
+> | Terimler | Hayır | Hayır |
 > | UsageDetails | Hayır | Hayır |
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft. Containerınstance

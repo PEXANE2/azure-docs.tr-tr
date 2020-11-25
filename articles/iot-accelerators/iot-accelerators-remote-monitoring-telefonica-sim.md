@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 05/15/2018
 ms.topic: conceptual
 ms.openlocfilehash: 21d84bea808ba5832b81d415001a3fc25a7e1630
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91323966"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006772"
 ---
 # <a name="integrate-sim-data-in-the-remote-monitoring-solution"></a>Uzaktan Izleme çözümünde SIM verilerini tümleştirme
 
@@ -21,7 +21,7 @@ IoT cihazları genellikle buluta, her yerden veri akışları gönderebileceği 
 
 Uzaktan Izleme, Telefónica IoT bağlantısı ile kullanıma hazır tümleştirme sağlar ve IoT bağlantı platformunu kullanan müşterilerin cihaz SIMs bağlantı verilerini çözümlerle eşitlemesine izin verir. Bu çözüm, GitHub [deposu](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)aracılığıyla diğer IoT bağlantı sağlayıcılarını destekleyecek şekilde genişletilebilir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 * Telefónica IoT SIM verilerini uzaktan Izleme çözümüyle tümleştirme
 * Gerçek zamanlı telemetri verilerini görüntüleme
@@ -29,13 +29,13 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="telefnica-iot-integration-setup"></a>Telefónica IoT tümleştirme kurulumu
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Bu ek uzaktan Izleme özelliği şu anda önizlemededir. Bağlantı verilerinizi Azure uzaktan Izleme çözümüne eşitlemek için aşağıdaki adımları izleyin:
 
-1. [Telefónica's sitesinde](https://iot.telefonica.com/contact)bir istek doldur, iletişim verileriniz dahil olmak üzere **Azure uzaktan izleme**seçeneğini belirleyin.
+1. [Telefónica's sitesinde](https://iot.telefonica.com/contact)bir istek doldur, iletişim verileriniz dahil olmak üzere **Azure uzaktan izleme** seçeneğini belirleyin.
 2. Telefónica, hesabınızı etkinleştirir.
-3. Henüz bir Telefónica istemcisi değilseniz ve bu veya diğer IoT bağlantısı bulutu 'na yönelik hizmetler 'in tadını çıkarmak istiyorsanız, [Telefónica's sitesini](https://iot.telefonica.com/) ziyaret edin ve **bağlantı**seçeneğini belirleyin.
+3. Henüz bir Telefónica istemcisi değilseniz ve bu veya diğer IoT bağlantısı bulutu 'na yönelik hizmetler 'in tadını çıkarmak istiyorsanız, [Telefónica's sitesini](https://iot.telefonica.com/) ziyaret edin ve **bağlantı** seçeneğini belirleyin.
 
 ### <a name="telefnica-sim-setup"></a>Telefónica SIM kurulumu
 Telefónica SIM & Azure Ikizi cihaz KIMLIĞI ilişkilendirmesi Telefónica IoT SIM "alias" özelliğine dayalıdır. 

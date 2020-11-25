@@ -10,11 +10,11 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 07/20/2020
 ms.openlocfilehash: d50f577a7170982be004cc8957114f79675fbc6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87078619"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006107"
 ---
 # <a name="manage-logic-apps-in-the-azure-portal"></a>Azure portal Logic Apps 'i yönetme
 
@@ -34,7 +34,7 @@ Mantıksal uygulamanızı bulup açmak için şu adımları izleyin:
 
 1. Azure hesabınızla [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Azure Arama çubuğunda yazın `logic apps` ve **Logic Apps**seçin.
+1. Azure Arama çubuğunda yazın `logic apps` ve **Logic Apps** seçin.
 
    ![Arama çubuğunda Logic Apps arandığı ve seçildiği Azure portal menüsünün ekran görüntüsü.](./media/manage-logic-apps-with-azure-portal/find-select-logic-apps.png)
 
@@ -194,7 +194,7 @@ Mantıksal uygulamalarınızın sürüm denetimi için Azure portal kullanabilir
 
 1. Azure portal, yönetmek istediğiniz [mantıksal uygulamayı bulun](#find-logic-app).
 
-1. Mantıksal uygulamanızın menüsünde, **geliştirme araçları**altında **sürümler**' i seçin.
+1. Mantıksal uygulamanızın menüsünde, **geliştirme araçları** altında **sürümler**' i seçin.
 
    ![Azure portal 'de mantıksal uygulamanın, geliştirme araçları altındaki sürümler sayfasının ekran görüntüsü.](./media/manage-logic-apps-with-azure-portal/logic-apps-menu-versions.png)
 
@@ -214,7 +214,7 @@ Mantıksal uygulamalarınızın sürüm denetimi için Azure portal kullanabilir
 
    ![Önceki bir sürümü yükseltmek için düğme gösteren mantıksal uygulamanın sürüm geçmişi ekran görüntüsü.](./media/manage-logic-apps-with-azure-portal/promote-button.png)
 
-1. Açılan **Logic Apps tasarımcı** sayfasında, yükseltmekte olduğunuz sürümü gerektiği gibi düzenleyin. **Tasarımcı** ve **kod görünümü** modları arasında geçiş yapabilirsiniz. **Parametreleri**, **şablonları**ve **bağlayıcıları**da güncelleştirebilirsiniz.
+1. Açılan **Logic Apps tasarımcı** sayfasında, yükseltmekte olduğunuz sürümü gerektiği gibi düzenleyin. **Tasarımcı** ve **kod görünümü** modları arasında geçiş yapabilirsiniz. **Parametreleri**, **şablonları** ve **bağlayıcıları** da güncelleştirebilirsiniz.
 
    ![Bir mantıksal uygulamanın önceki bir sürümünü yükseltmek için düğme gösteren Logic Apps Tasarımcısı ekran görüntüsü.](./media/manage-logic-apps-with-azure-portal/promote-page.png)
 

@@ -11,11 +11,11 @@ ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: b7faec5023abe37802d8b08980f216934d70a6ac
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784363"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005563"
 ---
 # <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
@@ -76,7 +76,7 @@ Yok.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-[Azure Portal](https://portal.azure.com)’ında oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -98,7 +98,7 @@ az login
 
 # <a name="template"></a>[Şablon](#tab/template)
 
-Yok
+YOK
 
 ---
 
@@ -199,7 +199,7 @@ Farklı bir çoğaltma seçeneği ile genel amaçlı v2 depolama hesabı oluştu
 
 # <a name="template"></a>[Şablon](#tab/template)
 
-Bir depolama hesabı oluşturmak üzere bir Kaynak Yöneticisi şablonu dağıtmak için Azure PowerShell veya Azure CLı kullanabilirsiniz. Bu nasıl yapılır makalesinde kullanılan şablon [Azure Resource Manager hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Betikleri çalıştırmak için **dene** ' yi seçerek Azure Cloud Shell açın. Betiği yapıştırmak için, kabuğa sağ tıklayın ve ardından **Yapıştır** ' ı seçin.
+Bir depolama hesabı oluşturmak üzere bir Kaynak Yöneticisi şablonu dağıtmak için Azure PowerShell veya Azure CLı kullanabilirsiniz. Bu nasıl yapılır makalesinde kullanılan şablon [Azure Resource Manager hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Betikleri çalıştırmak için **dene** ' yi seçerek Azure Cloud Shell açın. Betiği yapıştırmak için, kabuğa sağ tıklayın ve ardından **Yapıştır**' ı seçin.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -236,7 +236,7 @@ Bir depolama hesabını silmek, hesaptaki tüm veriler de dahil olmak üzere tü
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. [Azure Portal](https://portal.azure.com)depolama hesabına gidin.
-1. **Sil** 'e tıklayın.
+1. **Sil**'e tıklayın.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 11/29/2019
 ms.openlocfilehash: d110f4ee0248b6ea069c6033dd69840eec1a18f3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741611"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007163"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight 'ta özel Apache Hadoop uygulamaları yüklemeyi
 
@@ -21,7 +21,7 @@ Bu makalede, Azure HDInsight 'a Azure portal yayımlanmayan bir [Apache Hadoop](
 
 An HDInsight uygulama, kullanıcıların bir HDInsight kümesine yükleyebir uygulamadır.  Bu uygulamalar Microsoft veya bağımsız yazılım satıcıları (ISV) tarafından ya da sizin tarafınızdan geliştirilebilir.  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 HDInsight uygulamalarını mevcut bir HDInsight kümesine yüklemek istiyorsanız bir HDInsight kümesine sahip olmanız gerekir. Küme oluşturmak için bkz. [Küme oluşturma](hadoop/apache-hadoop-linux-tutorial-get-started.md). HDInsight uygulamalarını ayrıca bir HDInsight kümesi oluştururken yükleyebilirsiniz.
 
@@ -51,7 +51,7 @@ Bu uygulamayı (Hue) dağıtmak için gerekli dosyalar:
 
 1. **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum** onay kutusunu seçin.
 
-1. **Satın al** 'ı seçin.
+1. **Satın al**'ı seçin.
 
 Yükleme durumunu portal panosuna sabitlenmiş kutucuktan ve portal bildiriminden görebilirsiniz (portalın üst kısmındaki zil simgesine tıklayın).  Uygulamanın yüklenmesi yaklaşık 10 dakika sürer.
 
@@ -77,13 +77,13 @@ Uygulama yüklemesini doğrulamak için Azure portalında uygulama durumunu dene
 
 ### <a name="azure-portal"></a>Azure portal
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Uygulamayı yüklediğiniz kümeyi seçin.
-1. **Ayarlar** menüsünde, **uygulamalar** ' ı seçin.
+1. **Ayarlar** menüsünde, **uygulamalar**' ı seçin.
 1. Özellikleri görüntülemek için listeden **ton** ' ı seçin.  
 1. Web sitesini doğrulamak için Web sayfası bağlantısını seçin.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 `CLUSTERNAME`Ve `RESOURCEGROUP` değerlerini ilgili değerlerle değiştirin ve ardından aşağıdaki komutları girin:
 
@@ -125,13 +125,13 @@ Uygulama yüklemesi başarısız olursa, üç konumdan hata iletilerini ve hata 
 
 ### <a name="azure-portal"></a>Azure portal
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Uygulamayı yüklediğiniz kümeyi seçin.
-1. **Ayarlar** menüsünde, **uygulamalar** ' ı seçin.
-1. Kaldırmak istediğiniz uygulamaya sağ tıklayın ve ardından **Sil** ' i seçin.
-1. Onaylamak için **Evet** ’i seçin.
+1. **Ayarlar** menüsünde, **uygulamalar**' ı seçin.
+1. Kaldırmak istediğiniz uygulamaya sağ tıklayın ve ardından **Sil**' i seçin.
+1. Onaylamak için **Evet**’i seçin.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 `NAME`, `CLUSTERNAME` Ve `RESOURCEGROUP` değerlerini ilgili değerlerle değiştirin ve aşağıdaki komutu girin:
 

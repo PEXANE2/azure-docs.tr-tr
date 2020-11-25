@@ -4,11 +4,11 @@ description: Sütunlarla çalışma, kullanılan etiketleri listeleme ve normal 
 ms.date: 10/14/2020
 ms.topic: sample
 ms.openlocfilehash: dff4b06cc5cf4385820c7f6251efaae792d9c22d
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057153"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005410"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Gelişmiş kaynak grafiği sorgu örnekleri
 
@@ -174,7 +174,7 @@ Search-AzGraph -Query "Resources | project tags | summarize buildschema(tags)"
 
 ## <a name="virtual-machines-matched-by-regex"></a><a name="vm-regex"></a>Normal ifade tarafından eşleştirilen sanal makineler
 
-Bu sorgu, [normal ifadeyle](/dotnet/standard/base-types/regular-expression-language-quick-reference) (_regex_ olarak bilinir) eşleşen sanal makineleri arar. **Eşleşen Regex \@ ** , eşleşecek olan Regex tanımlamanızı sağlar, yani `^Contoso(.*)[0-9]+$` .
+Bu sorgu, [normal ifadeyle](/dotnet/standard/base-types/regular-expression-language-quick-reference) (_regex_ olarak bilinir) eşleşen sanal makineleri arar. **Eşleşen Regex \@** , eşleşecek olan Regex tanımlamanızı sağlar, yani `^Contoso(.*)[0-9]+$` .
 Bu normal ifade tanımı şöyle açıklanmıştır:
 
 - `^` - Eşleşme dizenin başında başlamalıdır.
@@ -219,7 +219,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.compute/virtualmachi
 
 ## <a name="list-cosmos-db-with-specific-write-locations"></a><a name="mvexpand-cosmosdb"></a>Belirli yazma konumlarına sahip Cosmos DB listeleyin
 
-Aşağıdaki sorgu Cosmos DB kaynakları kısıtlar, `mv-expand` **Properties. writelocations**özellik paketini genişletmek için kullanır, ardından projeye özel alanlar ve sonuçları ' Doğu ABD ' veya ' Batı ABD ' ile eşleşen **Properties. Writelocations. locationname** değerleriyle daha da kısıtlar.
+Aşağıdaki sorgu Cosmos DB kaynakları kısıtlar, `mv-expand` **Properties. writelocations** özellik paketini genişletmek için kullanır, ardından projeye özel alanlar ve sonuçları ' Doğu ABD ' veya ' Batı ABD ' ile eşleşen **Properties. Writelocations. locationname** değerleriyle daha da kısıtlar.
 
 ```kusto
 Resources
@@ -255,7 +255,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.documentdb/databasea
 
 ## <a name="key-vaults-with-subscription-name"></a><a name="join"></a>Abonelik adına sahip anahtar kasaları
 
-Aşağıdaki sorgu, türü ile bir karmaşık kullanımı `join` _soltouter_olarak göstermektedir. **kind** Sorgu, birleştirilmiş tabloyu abonelik kaynakları ile sınırlandırır ve `project` yalnızca özgün alan _SubscriptionID_ ve _ad_ alanı, _SubName_olarak yeniden adlandırılır. Alan, `join` _kaynaklar_bölümünde zaten mevcut olduğundan, yeniden adlandırma, _name1_ olarak eklenmesini önler. Özgün tablo ile filtrelenmiştir `where` ve aşağıdakiler `project` her iki tablodan sütunları içerir. Sorgu sonucu, türü, anahtar kasasının adını ve içindeki aboneliğin adını görüntüleyen tüm anahtar kasaları.
+Aşağıdaki sorgu, türü ile bir karmaşık kullanımı `join` _soltouter_ olarak göstermektedir. **kind** Sorgu, birleştirilmiş tabloyu abonelik kaynakları ile sınırlandırır ve `project` yalnızca özgün alan _SubscriptionID_ ve _ad_ alanı, _SubName_ olarak yeniden adlandırılır. Alan, `join` _kaynaklar_ bölümünde zaten mevcut olduğundan, yeniden adlandırma, _name1_ olarak eklenmesini önler. Özgün tablo ile filtrelenmiştir `where` ve aşağıdakiler `project` her iki tablodan sütunları içerir. Sorgu sonucu, türü, anahtar kasasının adını ve içindeki aboneliğin adını görüntüleyen tüm anahtar kasaları.
 
 ```kusto
 Resources
@@ -378,7 +378,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.compute/virtualmachi
 ## <a name="list-all-extensions-installed-on-a-virtual-machine"></a><a name="join-vmextension"></a>Bir sanal makinede yüklü olan tüm uzantıları listeleme
 
 İlk olarak, bu sorgu `extend` kimliği büyük harfle () almak için sanal makineler kaynak türünde kullanır `toupper()` , işletim sistemi adını ve türünü alır ve sanal makine boyutunu alır.
-Kaynak KIMLIĞININ büyük harfle alınması, başka bir özelliğe katılmayı hazırlamak için iyi bir yoldur. Daha sonra sorgu, `join` UZANTı kimliğini bir üst sınır ile eşleştirerek sanal makine uzantılarını almak için **tür** ile _soltouter_ olarak kullanılır `substring` . KIMLIğIN "/Extensions/" öğesinden önceki bölümü, \<ExtensionName\> sanal MAKINELER kimliğiyle aynı biçimde değil, için bu özelliği kullanırız `join` . `summarize` , `make_list` _kimliği_, _osname_, _OSType_ve _VMSize_ 'in tek bir dizi özelliğinde aynı olduğu her bir uzantının adını birleştirmek için sanal makine uzantısının adında ile birlikte kullanılır. Son olarak, `order by` daha düşük olan _Osed osname_ , **ASC**ile yapılır. Varsayılan olarak, `order by` azalan şekilde belirlenir.
+Kaynak KIMLIĞININ büyük harfle alınması, başka bir özelliğe katılmayı hazırlamak için iyi bir yoldur. Daha sonra sorgu, `join` UZANTı kimliğini bir üst sınır ile eşleştirerek sanal makine uzantılarını almak için **tür** ile _soltouter_ olarak kullanılır `substring` . KIMLIğIN "/Extensions/" öğesinden önceki bölümü, \<ExtensionName\> sanal MAKINELER kimliğiyle aynı biçimde değil, için bu özelliği kullanırız `join` . `summarize` , `make_list` _kimliği_, _osname_, _OSType_ ve _VMSize_ 'in tek bir dizi özelliğinde aynı olduğu her bir uzantının adını birleştirmek için sanal makine uzantısının adında ile birlikte kullanılır. Son olarak, `order by` daha düşük olan _Osed osname_ , **ASC** ile yapılır. Varsayılan olarak, `order by` azalan şekilde belirlenir.
 
 ```kusto
 Resources
@@ -578,7 +578,7 @@ Abonelik adını almaya alternatif olarak, `join` işlecini kullanmaktır ve **r
 
 > [!NOTE]
 > Sorgu döndürülen özellikleri belirtmek için **Proje** kullanmıyorsa, **Subscriptiondisplayname** ve **tenantdisplayname** , sonuçlara otomatik olarak eklenir.
-> Sorgu **projeyi**kullanıyorsa, _DisplayName_ alanlarının her biri **projeye** açık bir şekilde eklenmelidir veya **Include** parametresi kullanılsa bile sonuçlarda döndürülmezler. **Include** parametresi [tablolarla](../concepts/query-language.md#resource-graph-tables)birlikte çalışmıyor.
+> Sorgu **projeyi** kullanıyorsa, _DisplayName_ alanlarının her biri **projeye** açık bir şekilde eklenmelidir veya **Include** parametresi kullanılsa bile sonuçlarda döndürülmezler. **Include** parametresi [tablolarla](../concepts/query-language.md#resource-graph-tables)birlikte çalışmıyor.
 
 ---
 
@@ -625,7 +625,7 @@ Search-AzGraph -Query "GuestConfigurationResources | extend vmid = split(propert
 
 ## <a name="query-details-of-guest-configuration-assignment-reports"></a><a name="query-gcreports"></a>Konuk yapılandırma atama raporlarının sorgu ayrıntıları
 
-[Konuk yapılandırması atama nedeni](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration) ayrıntılarından rapor görüntüle. Aşağıdaki örnekte, sorgu Yalnızca Konuk atama adının olduğu sonuçları döndürür `installed_application_linux` ve çıktı, `Python` **Python**adını içeren bir paketin yüklendiği tüm Linux makinelerini listelemek için dizeyi içerir. Belirli bir atamaya ait tüm makinelerin uyumluluğunu sorgulamak için ikinci `where` yan tümceyi kaldırın.
+[Konuk yapılandırması atama nedeni](../../policy/how-to/determine-non-compliance.md#compliance-details-for-guest-configuration) ayrıntılarından rapor görüntüle. Aşağıdaki örnekte, sorgu Yalnızca Konuk atama adının olduğu sonuçları döndürür `installed_application_linux` ve çıktı, `Python` **Python** adını içeren bir paketin yüklendiği tüm Linux makinelerini listelemek için dizeyi içerir. Belirli bir atamaya ait tüm makinelerin uyumluluğunu sorgulamak için ikinci `where` yan tümceyi kaldırın.
 
 ```kusto
 GuestConfigurationResources

@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 263a67fd8fba2c336d1ed4d91475386a8ae175dd
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359026"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005801"
 ---
 # <a name="tutorial-configure-dynamic-signal-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için dinamik sinyal yapılandırma
 
@@ -41,11 +41,11 @@ Azure AD ile otomatik Kullanıcı sağlama için dinamik sinyal yapılandırmada
 
 **Azure AD uygulama galerisinden dinamik sinyal eklemek için aşağıdaki adımları uygulayın:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** ' i seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -80,11 +80,11 @@ Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alarak d
 
 ### <a name="to-configure-automatic-user-provisioning-for-dynamic-signal-in-azure-ad"></a>Azure AD 'de dinamik sinyal için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **dinamik sinyal** ' ı seçin.
+2. Uygulamalar listesinde, **dinamik sinyal**' ı seçin.
 
     ![Uygulamalar listesindeki dinamik sinyal bağlantısı](common/all-applications.png)
 
@@ -92,17 +92,17 @@ Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alarak d
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
 5. **Yönetici kimlik bilgileri** bölümünde, adım 6 ' da açıklandığı gibi, dinamik sinyaliniz hesabının **kiracı URL 'Sini** ve **gizli belirtecini** girin.
 
-6. Dinamik sinyal Yönetici Konsolu 'nda **yönetim > gelişmiş > API** 'sine gidin.
+6. Dinamik sinyal Yönetici Konsolu 'nda **yönetim > gelişmiş > API**'sine gidin.
 
     :::image type="content" source="./media/dynamic-signal-provisioning-tutorial/secret-token-1.png" alt-text="Dinamik sinyal yönetici konsolunun ekran görüntüsü. Gelişmiş, Yönetici menüsünde vurgulanır. Gelişmiş Menü, vurguladığım bir P ile de görünür." border="false":::
 
-    **SCIM API URL 'Sini** **kiracı URL** 'sine kopyalayın. Bir **taşıyıcı belirteci** oluşturmak Için **Yeni belirteç oluştur** ' a tıklayın ve değeri **gizli belirtece** kopyalayın.
+    **SCIM API URL 'Sini** **kiracı URL**'sine kopyalayın. Bir **taşıyıcı belirteci** oluşturmak Için **Yeni belirteç oluştur** ' a tıklayın ve değeri **gizli belirtece** kopyalayın.
 
     :::image type="content" source="./media/dynamic-signal-provisioning-tutorial/secret-token-2.png" alt-text="Belirteçler sayfasının ekran görüntüsü, S C M A P I U R i m, yeni belirteç oluştur ve daha sonra taşıyıcı belirteci kutusunda yer tutucu." border="false":::
 
@@ -110,13 +110,13 @@ Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alarak d
 
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-8. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder** ' i işaretleyin.
+8. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-9. **Kaydet** ’e tıklayın.
+9. **Kaydet**’e tıklayın.
 
-10. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları dinamik sinyal ile eşitler** ' ı seçin.
+10. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları dinamik sinyal ile eşitler**' ı seçin.
 
     ![Dinamik sinyal Kullanıcı eşlemeleri](media/dynamic-signal-provisioning-tutorial/user-mappings.png)
 
@@ -134,7 +134,7 @@ Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alarak d
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-15. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

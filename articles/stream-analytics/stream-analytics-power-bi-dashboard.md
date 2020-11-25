@@ -8,11 +8,11 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/16/2020
 ms.openlocfilehash: 4e3f31442c5fa645e27a640d8facf86aed20aa75
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842490"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006704"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics ve Power BI: veri akışı verileri için gerçek zamanlı analiz panosu
 
@@ -23,7 +23,7 @@ Bu makale Stream Analytics [gerçek zamanlı sahtekarlık algılama](stream-anal
 Bu senaryoyu gösteren [bir video](https://www.youtube.com/watch?v=SGUpT-a99MA)  izleyebilirsiniz.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce şunlara sahip olduğunuzdan emin olun:
 

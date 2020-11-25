@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 57cd9b55f529bde3f6bcb0a25a95c70333f6d8dd
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130961"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005784"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-log-a-support-request-for-the-storsimple-virtual-array"></a>StorSimple Aygıt Yöneticisi hizmetini kullanarak StorSimple Sanal dizisi için bir Destek isteği günlüğe kaydedin
 
@@ -33,15 +33,15 @@ StorSimple Aygıt Yöneticisi, hizmet Özeti dikey penceresinde **Yeni bir deste
 
 #### <a name="to-log-a-new-request"></a>Yeni bir isteği günlüğe kaydetmek için
 
-1. StorSimple Cihaz Yöneticisi hizmetinize gidin. Hizmet Özeti dikey penceresinde, **destek + sorun giderme** Bölümü ' ne gidin ve ardından **Yeni destek isteği** ' ne tıklayın.
+1. StorSimple Cihaz Yöneticisi hizmetinize gidin. Hizmet Özeti dikey penceresinde, **destek + sorun giderme** Bölümü ' ne gidin ve ardından **Yeni destek isteği**' ne tıklayın.
    
     ![Ekran görüntüsü yeni bir destek isteği için temel bilgiler bölmesini gösterir.](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket1.png)
 
 2. **Temel bilgiler** dikey penceresinde aşağıdakileri yapın:
 
-    1. **Sorun türü** açılan listesinden **Teknik** ' i seçin. 
+    1. **Sorun türü** açılan listesinden **Teknik**' i seçin. 
     
-    2. Geçerli **abonelik** , **hizmet** türü ve **kaynak** (StorSimple aygıt yöneticisi hizmeti) otomatik olarak seçilir. 
+    2. Geçerli **abonelik**, **hizmet** türü ve **kaynak** (StorSimple aygıt yöneticisi hizmeti) otomatik olarak seçilir. 
 
     3. Hizmetinize kayıtlı sorun yaşayan bir veya daha fazla cihaz belirtin.
 
@@ -51,7 +51,7 @@ StorSimple Aygıt Yöneticisi, hizmet Özeti dikey penceresinde **Yeni bir deste
    
     ![Ekran görüntüsü, destek isteğinizin sorun türünü, kategorisini ve ayrıntılarını girebileceğiniz sorun bölmesini gösterir.](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket2.png)
 
-4. **Adım 3** ' te iletişim bilgilerinizi sağlayın. Microsoft Desteği, bu bilgileri daha fazla bilgi, tanı ve çözüm için size ulaşmak üzere kullanacaktır.
+4. **Adım 3**' te iletişim bilgilerinizi sağlayın. Microsoft Desteği, bu bilgileri daha fazla bilgi, tanı ve çözüm için size ulaşmak üzere kullanacaktır.
    
     ![Ekran görüntüsü Iletişim bilgileri bölmesini gösterir.](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket3.png)
 
@@ -61,7 +61,7 @@ Bir destek bileti oluşturduktan sonra portal üzerinden bu biletin yaşam döng
 
 #### <a name="to-manage-your-support-requests"></a>Destek isteklerinizi yönetmek için
 
-Yardım ve destek sayfasına ulaşmak için, **> yardım ve destek** ' e gidin.
+Yardım ve destek sayfasına ulaşmak için, **> yardım ve destek**' e gidin.
 
 ![Destek isteklerini yönetme](./media/storsimple-virtual-array-log-support-ticket/manage-support-tickets.png)
 

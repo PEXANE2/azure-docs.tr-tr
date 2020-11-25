@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: mikhegn
 ms.openlocfilehash: 4e96a732cffd70b0a5c24e7ebafe214297a72720
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75644639"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006056"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Service Fabric 'de yapılandırma dosyalarını Parametreleştirme
 
@@ -20,7 +20,7 @@ Bu makalede, Service Fabric bir yapılandırma dosyasının nasıl parametreleş
 
 Bu örnekte, uygulama dağıtımınızdaki parametreleri kullanarak bir yapılandırma değerini geçersiz kılarsınız.
 
-1. * \<MyService>\PackageRoot\Config\Settings.xml* dosyasını hizmet projenizde açın.
+1. *\<MyService>\PackageRoot\Config\Settings.xml* dosyasını hizmet projenizde açın.
 1. Aşağıdaki XML 'i ekleyerek bir yapılandırma parametresi adı ve değeri (örneğin, önbellek boyutu 25 ' e eşit) ayarlayın:
 
    ```xml
@@ -30,7 +30,7 @@ Bu örnekte, uygulama dağıtımınızdaki parametreleri kullanarak bir yapılan
    ```
 
 1. Dosyayı kaydedin ve kapatın.
-1. * \<MyApplication>\ApplicationPackageRoot\ApplicationManifest.xml* dosyasını açın.
+1. *\<MyApplication>\ApplicationPackageRoot\ApplicationManifest.xml* dosyasını açın.
 1. ApplicationManifest.xml dosyasında, öğesinde bir parametre ve varsayılan değer bildirin `Parameters` .  Parametre adının hizmetin adını içermesi önerilir (örneğin, "hizmetim").
 
    ```xml

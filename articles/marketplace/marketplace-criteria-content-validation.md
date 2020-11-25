@@ -8,11 +8,11 @@ author: trkeya
 ms.author: trkeya
 ms.date: 09/04/2020
 ms.openlocfilehash: 3b2fc1ea37b09f6e4813d2a3c2333bc6d744293d
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491503"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006515"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Azure Marketi listeleme yönergeleri
 
@@ -40,7 +40,7 @@ Bu makalede, Azure Marketi 'nde yeni teklifleri ve hizmetleri listeleme gereksin
 
 | Hayır. | Listeleme öğesi | Temel gereksinim | En iyi gereksinim | 
 |:--- |:--- |:--- |:--- |
-|  | Liste durumu (listeleme seçeneği) | Bağlantı, müşteri tarafından LED 'e yönelik bir *deneme* deneyimine yol açmalıdır. | Diğer liste seçenekleri de (örneğin, *Şimdi satın al* ) kullanılabilir. | 
+|  | Liste durumu (listeleme seçeneği) | Bağlantı, müşteri tarafından LED 'e yönelik bir *deneme* deneyimine yol açmalıdır. | Diğer liste seçenekleri de (örneğin, *Şimdi satın al*) kullanılabilir. | 
 |||
 
 ## <a name="saas-application-requirements"></a>SaaS uygulama gereksinimleri
@@ -48,8 +48,8 @@ Bu makalede, Azure Marketi 'nde yeni teklifleri ve hizmetleri listeleme gereksin
 | Hayır. | Listeleme öğesi | Temel gereksinim | En iyi gereksinim | 
 |:--- |:--- |:--- |:--- |
 | 1 | Teklif başlığı |<ul><li>Yalnızca küçük harf, alfasayısal karakter, kısa çizgi veya alt çizgi içermelidir. Başlık yayımlandıktan sonra değiştirilemez.</li><li>Çözüm sunumunu açıklar.</li><li>İş ortağının Web sitesinde çevrimiçi çözüm promosyonu ile eşleşir. | Anahtar arama sözcüklerini içerir. |
-| 2 | Teknik bilgiler: yapılandırma |<ul><li>Hizmet olarak yazılım (SaaS) uygulamaları için yalnızca uygulamanızı listelemek mı yoksa müşterilerin uygulamanızı Azure üzerinden satın almasını mı istediğinizi seçin.</li><li>Teklifinizin Alım düğmenizde istediğiniz metni seçin: *ücretsiz* , *ücretsiz deneme* veya *benimle iletişim kurun*.</li><li>Açılır pencerede, uygulamanız teknolojiden yararlanıyorsa yalnızca geçerli bir ürün seçin: Cortana Intelligence, Power BI çözüm şablonları veya güç uygulamaları. |  |
-| 3 | Sınama sürücüsü | *Evet* veya *Hayır* 'ı seçin | Müşteri, sonraki adımların ne olduğunu kolay bir şekilde anlayabilir: <ol><li>Denemeyi deneyin.</li><li>Hemen satın alın.</li><li>POC, değerlendirme veya Brit için düzenlemek amacıyla e-posta veya telefon numarası ile iletişim kurun.</li></ol> |
+| 2 | Teknik bilgiler: yapılandırma |<ul><li>Hizmet olarak yazılım (SaaS) uygulamaları için yalnızca uygulamanızı listelemek mı yoksa müşterilerin uygulamanızı Azure üzerinden satın almasını mı istediğinizi seçin.</li><li>Teklifinizin Alım düğmenizde istediğiniz metni seçin: *ücretsiz*, *ücretsiz deneme* veya *benimle iletişim kurun*.</li><li>Açılır pencerede, uygulamanız teknolojiden yararlanıyorsa yalnızca geçerli bir ürün seçin: Cortana Intelligence, Power BI çözüm şablonları veya güç uygulamaları. |  |
+| 3 | Sınama sürücüsü | *Evet* veya *Hayır*'ı seçin | Müşteri, sonraki adımların ne olduğunu kolay bir şekilde anlayabilir: <ol><li>Denemeyi deneyin.</li><li>Hemen satın alın.</li><li>POC, değerlendirme veya Brit için düzenlemek amacıyla e-posta veya telefon numarası ile iletişim kurun.</li></ol> |
 | 4 | Çevrimiçi mağaza ayrıntıları: teklif Özeti | Uygulamanızın arama sayfasında görünür ve en fazla 100 karakter vardır. | |
 | 5 | Çevrimiçi mağaza ayrıntıları: Industries | Sektörler (maks. 2): uygulamanızın en iyi hizalandığı ve için geçerli olduğu endüstrileri seçin. | |
 | 6 | Teklif açıklaması | <ul><li>,,,, \<p> \<em> \<ul> \<li> \<ol> Ve üst bilgi etiketleri dahil basit HTML 'ye izin verilir. En çok, 3000 karakter.</li><li>2-3 paragraf içerir.</li><li>Çözüm sunumu, bir bakışta kolayca anlaşılır.</li><li>Açıklama kapsamlıdır ve hedef kitleyi, Kullanıcı türü ve neden değerli (değer teklifi) yakalar.</li><li>, Anlaşılması kolay olan kısa cümleler olan paragraf anlatım biçimindedir. | <ul><li>Hedef sektör ana hatlarıyla özetlenmiştir (ilgiliyse).</li><li>Her paragraf başlığının, önemli avantajları vurgulamak için, uygun olduğunda ve madde işaretleri kullanan içeriği özetleyerek tek bir cümle veya ifade içeren iyi stil biçimlendirme. Amaç, okuyucunun sunumu kolay görünüm biçiminde bir bakışta anlaması için ve paragrafları okumak zorunda değildir.</li><li>Her paragraf arasında boşluk vardır. Bir araba broşürü gibi okur. Yani, bu kapsamlı bir öneme sahiptir ve sunumu teknik bir jargolmadan yalnızca açıklar. | 

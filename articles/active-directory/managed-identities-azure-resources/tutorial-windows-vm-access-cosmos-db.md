@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/29/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b571b2b8e0d334a02631e3f443ec54398117ee9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cd1fb7f33c56aefe76bc55181ae92ca3d149754
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532678"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006991"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Öğretici: Azure Cosmos DB hizmetine erişmek için Windows VM sistem tarafından atanan yönetilen kimliği kullanma
 
@@ -59,7 +59,7 @@ Henüz Cosmos DB hesabınız yoksa, bir hesap oluşturun. Bu adımı atlayabilir
 3. Cosmos DB hesabı için daha sonra kullanacağınız bir **Kimlik** girin.  
 4. **API** olarak "SQL" ayarlanmalıdır. Bu öğreticide açıklanan yaklaşım varolan diğer API türleriyle kullanılabilir, ama bu öğreticideki adımlar SQL API'ye yöneliktir.
 5. **Abonelik** ve **Kaynak Grubu** değerlerinin, önceki adımda VM'nizi oluştururken belirttiklerinizle eşleştiğinden emin olun.  Cosmos DB'nin kullanılabileceği **Konum**'u seçin.
-6. **Oluştur**’a tıklayın.
+6. **Oluştur**'a tıklayın.
 
 ### <a name="create-a-collection"></a>Koleksiyon oluşturma 
 
@@ -82,7 +82,7 @@ New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Read
 ```
 
 >[!NOTE]
-> Bir işlemi gerçekleştiremeyebilirsiniz doğru izinlere sahip olmayabilirsiniz. Anahtarlara yazma erişimi istiyorsanız DocumentDB hesabı katılımcısı gibi bir RBAC rolü kullanmanız veya özel bir rol oluşturmanız gerekir. Daha fazla bilgi için [Azure Cosmos DB Içindeki rol tabanlı erişim denetimini](../../cosmos-db/role-based-access-control.md) gözden geçirin
+> Bir işlemi gerçekleştiremeyebilirsiniz doğru izinlere sahip olmayabilirsiniz. Anahtarlara yazma erişimi istiyorsanız, DocumentDB hesabı katılımcısı gibi bir Azure rolü kullanmanız veya özel bir rol oluşturmanız gerekir. Daha fazla bilgi için [Azure Cosmos DB Azure rol tabanlı erişim denetimini](../../cosmos-db/role-based-access-control.md) inceleyin
 
 ## <a name="access-data"></a>Verilere erişme
 

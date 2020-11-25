@@ -7,15 +7,15 @@ ms.topic: article
 ms.date: 07/28/2020
 ms.author: zarhoads
 ms.openlocfilehash: 0ca2d7ccc863e2208db1212ef3d3f10fa709d069
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87407124"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006653"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>Hızlı başlangıç: Held ile Azure Kubernetes hizmeti (AKS) üzerinde geliştirme
 
-[Helk][helm] , Kubernetes uygulamalarının yaşam döngüsünü yüklemenize ve yönetmenize yardımcı olan bir açık kaynaklı paketleme aracıdır. *Apt* ve *yum*gibi Linux paket yöneticilerine benzer şekilde, Helm, önceden yapılandırılmış Kubernetes kaynakları paketleri olan Kubernetes grafiklerini yönetmek için kullanılır.
+[Helk][helm] , Kubernetes uygulamalarının yaşam döngüsünü yüklemenize ve yönetmenize yardımcı olan bir açık kaynaklı paketleme aracıdır. *Apt* ve *yum* gibi Linux paket yöneticilerine benzer şekilde, Helm, önceden yapılandırılmış Kubernetes kaynakları paketleri olan Kubernetes grafiklerini yönetmek için kullanılır.
 
 Bu makalede, AKS üzerinde bir uygulamayı paketlemek ve çalıştırmak için helk 'ın nasıl kullanılacağı gösterilmektedir. Held kullanarak mevcut bir uygulamayı yükleme hakkında daha fazla bilgi için bkz. [AKS 'de Held ile mevcut uygulamaları yükleme][helm-existing].
 
@@ -33,7 +33,7 @@ az group create --name MyResourceGroup --location eastus
 az acr create --resource-group MyResourceGroup --name MyHelmACR --sku Basic
 ```
 
-Çıktı aşağıdaki örneğe benzerdir. Daha sonraki bir adımda kullanılabileceğinizden, ACR 'niz için *Loginserver* değerini bir yere göz önünde koyun. Aşağıdaki örnekte, *Myhelmacr.azurecr.io* *Myhelmacr*için *loginserver* ' dır.
+Çıktı aşağıdaki örneğe benzerdir. Daha sonraki bir adımda kullanılabileceğinizden, ACR 'niz için *Loginserver* değerini bir yere göz önünde koyun. Aşağıdaki örnekte, *Myhelmacr.azurecr.io* *Myhelmacr* için *loginserver* ' dır.
 
 ```console
 {
@@ -57,7 +57,7 @@ az acr create --resource-group MyResourceGroup --name MyHelmACR --sku Basic
 }
 ```
 
-## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service kümesini oluşturma
+## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service kümesi oluşturma
 
 AKS kümesi oluşturma. Aşağıdaki komut, MyAKS adlı bir AKS kümesi oluşturur ve MyHelmACR öğesini ekler.
 
@@ -77,7 +77,7 @@ Azure Cloud Shell'i kullanıyorsanız `kubectl` zaten yüklüdür. [az aks insta
 az aks install-cli
 ```
 
-`kubectl` istemcisini Kubernetes kümenize bağlanacak şekilde yapılandırmak için [az aks get-credentials][] komutunu kullanın. Aşağıdaki örnek, *Myresourcegroup*Içinde *myaks* adlı aks kümesi için kimlik bilgilerini alır:
+`kubectl` istemcisini Kubernetes kümenize bağlanacak şekilde yapılandırmak için [az aks get-credentials][] komutunu kullanın. Aşağıdaki örnek, *Myresourcegroup* Içinde *myaks* adlı aks kümesi için kimlik bilgilerini alır:
 
 ```azurecli
 az aks get-credentials --resource-group MyResourceGroup --name MyAKS
@@ -129,12 +129,12 @@ Komutunu kullanarak Held grafiğinizi oluşturun `helm create` .
 helm create webfrontend
 ```
 
-*Web ön ucu/values. YAML*için aşağıdaki güncelleştirmeleri yapın. *Myhelmacr.azurecr.io*gibi önceki bir adımda not ettiğiniz kayıt defterinizin loginserver 'ı yerine koyun:
+*Web ön ucu/values. YAML* için aşağıdaki güncelleştirmeleri yapın. *Myhelmacr.azurecr.io* gibi önceki bir adımda not ettiğiniz kayıt defterinizin loginserver 'ı yerine koyun:
 
 * Değiştir `image.repository``<loginServer>/webfrontend`
 * Değiştir `service.type``LoadBalancer`
 
-Örneğin:
+Örnek:
 
 ```yml
 # Default values for webfrontend.

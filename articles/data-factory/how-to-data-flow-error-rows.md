@@ -6,20 +6,28 @@ author: kromerm
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/20/2020
+ms.date: 11/22/2020
 ms.author: makromer
-ms.openlocfilehash: 3f8ac2d1434019548b01d8468015a543d89d0fba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49d11dfe3d42d99c610fae9fa64079a5fd87501f
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85254421"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96006805"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>Data Factory eşleme veri akışlarında SQL kesme hatası satırlarını işle
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Veri akışlarını eşleme kullanılırken Data Factory ortak bir senaryo, dönüştürülmüş verilerinizi Azure SQL veritabanı 'ndaki bir veritabanına yazmaktır. Bu senaryoda, karşı engellemeniz gereken yaygın bir hata koşulunun olası sütun kesilmesi olabilir. Bir hedef dize sütununa sığmayan sütunların günlüğe kaydedilmesini sağlamak için bu adımları izleyin ve veri akışınız bu senaryolarda devam etmesine izin verir.
+Veri akışlarını eşleme kullanılırken Data Factory ortak bir senaryo, dönüştürülmüş verilerinizi Azure SQL veritabanı 'ndaki bir veritabanına yazmaktır. Bu senaryoda, karşı engellemeniz gereken yaygın bir hata koşulunun olası sütun kesilmesi olabilir.
+
+ADF veri akışlarında veritabanı havuzlarınıza veri yazarken hataları düzgün bir şekilde işlemek için iki birincil yöntem vardır:
+
+* Veritabanı verilerini işlerken havuz [hata satırı işlemesini](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#error-row-handling) "hata durumunda devam et" olarak ayarlayın. Bu, veri akışınız için özel mantık gerektirmeyen otomatik bir catch-all yöntemidir.
+* Alternatif olarak, bir hedef dize sütununa sığmayan sütunların günlüğe kaydedilmesini sağlamak için aşağıdaki adımları izleyin, böylece veri akışınız devam edebilir.
+
+> [!NOTE]
+> Kendi hata işleme mantığınızı yazma yönteminin aksine, otomatik hata satırı işlemesini etkinleştirirken, bir yandan oluşan küçük bir performans cezası olur ve bu, ADF tarafından oluşan ve tuzak hataları için 2 aşamalı bir işlem gerçekleştirmeye yönelik ek bir adımdır.
 
 ## <a name="scenario"></a>Senaryo
 
@@ -49,6 +57,10 @@ Bu video, veri akışınızda hata satırı işleme mantığını ayarlamaya ili
 4. Tamamlanan veri akışı aşağıda gösterilmiştir. Artık SQL kesme hatalarından kaçınmak ve bu girdileri bir günlük dosyasına yerleştirmek için hata satırlarını böyoruz. Bu arada, başarılı satırlar hedef veritabanımızı yazmaya devam edebilir.
 
     ![veri akışını Tamam](media/data-flow/error2.png)
+
+5. Havuz dönüşümünde hata satırı işleme seçeneğini belirleyip "çıkış hata satırları" ' nı ayarlarsanız, ADF sürücü tarafından bildirilen hata iletileriyle birlikte, otomatik olarak satır verilerinizin CSV dosyası çıktısını oluşturur. Bu mantığı, bu alternatif seçenekle veri akışınıza el ile eklemeniz gerekmez. Bu seçenekle, ADF 'nin hataları yakalamak ve günlüğe kaydetmek için 2 aşamalı bir yöntem uygulayabilmesi için bu seçenekle oluşan küçük bir performans cezası olacaktır.
+
+    ![hata satırlarıyla veri akışını tamamsay](media/data-flow/error-row-3.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -4,11 +4,11 @@ description: Azure Container Instances kapsayıcılarında, CPU ve bellek gibi i
 ms.topic: article
 ms.date: 04/24/2019
 ms.openlocfilehash: b10c370b599233d00b2b4a65268f6c61a11cbd5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90526706"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007265"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>Azure Container Instances’taki kapsayıcı kaynaklarını izleme
 
@@ -27,7 +27,7 @@ Azure Izleyici ölçümleri Şu anda yalnızca Linux kapsayıcıları için kull
 
 Azure Izleyici [Azure Container Instances için aşağıdaki ölçümleri][supported-metrics]sağlar. Bu ölçümler bir kapsayıcı grubu ve bağımsız kapsayıcılar için kullanılabilir. Varsayılan olarak ölçümler, ortalamalar olarak toplanır.
 
-* **CPU kullanımı** - **miliçekirdekte**ölçülür. Bir milincil bir CPU çekirdekli 1/1000 ' dir, bu nedenle 500 miliçekirdekler 0,5 CPU Core kullanımını temsil eder.
+* **CPU kullanımı** - **miliçekirdekte** ölçülür. Bir milincil bir CPU çekirdekli 1/1000 ' dir, bu nedenle 500 miliçekirdekler 0,5 CPU Core kullanımını temsil eder.
 
 * **Bellek kullanımı** (bayt).
 
@@ -41,7 +41,7 @@ Kapsayıcı grubu oluşturulduğunda, Azure portalda Azure İzleyici verileri sa
 
 Birden çok kapsayıcı içeren bir kapsayıcı grubunda, ölçümleri kapsayıcıya göre sunmak için bir [Boyut][monitor-dimension] kullanın. Tek bir kapsayıcının ölçümlerinin yer aldığı bir grafik oluşturmak için aşağıdaki adımları izleyin:
 
-1. **Genel bakış** sayfasında, **CPU**gibi ölçüm grafiklerinden birini seçin. 
+1. **Genel bakış** sayfasında, **CPU** gibi ölçüm grafiklerinden birini seçin. 
 1. **Bölmeyi Uygula** düğmesini seçin ve **kapsayıcı adı**' nı seçin.
 
 ![Ekran yakalama seçili ve kapsayıcı adı Uygula seçili olan bir kapsayıcı örneği için ölçümleri gösterir.][dimension]

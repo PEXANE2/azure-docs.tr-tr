@@ -7,17 +7,17 @@ ms.topic: tutorial
 ms.date: 04/28/2020
 ms.custom: devx-track-csharp, mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019, seodec18
 ms.openlocfilehash: 9481b6d2740d27b8c3d1309e205edda6017868fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88213696"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005767"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Öğretici: Azure App Service’te CORS ile RESTful API barındırma
 
 [Azure App Service](overview.md), yüksek oranda ölçeklenebilen, kendi kendine düzeltme eki uygulayan bir web barındırma hizmeti sunar. Buna ek olarak, App Service'de RESTful API'ler için yerleşik [Çıkış Noktaları Arası Kaynak Paylaşımı (CORS)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing) desteği vardır. Bu öğreticide CORS desteğiyle ASP.NET Core API uygulamasının App Service'e nasıl dağıtılacağı gösterilir. Komut satırı araçlarını kullanarak uygulamayı yapılandırır ve Git kullanarak dağıtırsınız. 
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure CLI kullanarak App Service kaynaklarını oluşturma
@@ -28,7 +28,7 @@ Bu öğreticideki adımları MacOS, Linux ve Windows üzerinde izleyebilirsiniz.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -160,7 +160,7 @@ Tarayıcı uygulaması (`http://localhost:5000`) ile uzak kaynak (`http://<app_n
 
 ### <a name="enable-cors"></a>CORS'yi etkinleştirme 
 
-Cloud Shell, komutunu kullanarak istemci URL 'nizin CORS 'yi etkinleştirin [`az webapp cors add`](/cli/azure/webapp/cors#az-webapp-cors-add) . _ &lt; App-name>_ yer tutucusunu değiştirin.
+Cloud Shell, komutunu kullanarak istemci URL 'nizin CORS 'yi etkinleştirin [`az webapp cors add`](/cli/azure/webapp/cors#az-webapp-cors-add) . _&lt; App-name>_ yer tutucusunu değiştirin.
 
 ```azurecli-interactive
 az webapp cors add --resource-group myResourceGroup --name <app-name> --allowed-origins 'http://localhost:5000'

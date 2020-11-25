@@ -8,11 +8,11 @@ ms.topic: how-to
 ms.date: 11/18/2020
 ms.author: alzam
 ms.openlocfilehash: 1f10799ab32b6cb26a8b3b5b343f65b960d71357
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94889108"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007010"
 ---
 # <a name="set-up-alerts-on-resource-log-events-from-vpn-gateway"></a>VPN Gateway kaynak günlüğü olayları üzerinde uyarı ayarlama
 
@@ -20,7 +20,7 @@ Bu makale Azure Izleyici Log Analytics kullanarak Azure VPN Gateway kaynak günl
 
 Aşağıdaki kaynak günlükleri Azure 'da kullanılabilir:
 
-|***Ad** _ | _*_Açıklama_*_ |
+|***Ad** _ | _*_Description_*_ |
 |---        | ---               |
 |GatewayDiagnosticLog | Ağ Geçidi yapılandırma olayları, birincil değişiklikler ve bakım olayları için kaynak günlüklerini içerir |
 |Tüneldiagnosticlog | Tünel durumu değişikliği olaylarını içerir. Tünel bağlantısı/bağlantı kesme olayları, uygunsa durum değişikliği için özetlenen bir nedene sahiptir |
@@ -35,7 +35,7 @@ Aşağıdaki örnek adımlarda, siteden siteye VPN tünelini içeren bir bağlan
 
 1. Azure portal, **tüm hizmetler** altında _ *Log Analytics** araması yapın ve **Log Analytics çalışma alanları**' nı seçin.
 
-   ![Log Analytics çalışma alanlarına gitmek için seçimler](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert0.png "Oluşturma")
+   ![Log Analytics çalışma alanlarına gitmek için seçimler](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert0.png "Oluştur")
 
 2. **Log Analytics** sayfasında **Oluştur** ' u seçin.
 

@@ -4,11 +4,11 @@ description: Bu Azure Ilke deseninin Count işlecinin bir ilke tanımında nası
 ms.date: 10/14/2020
 ms.topic: sample
 ms.openlocfilehash: 1339dff7f8bc92a8e38ec5635690cc2069dd8df4
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076411"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005427"
 ---
 # <a name="azure-policy-pattern-the-count-operator"></a>Azure Ilke stili: Count işleci
 
@@ -22,10 +22,10 @@ Bu ilke tanımı, gelen Uzak Masaüstü Protokolü (RDP) trafiğine izin verecek
 
 ### <a name="explanation"></a>Açıklama
 
-**Count** işlecinin temel bileşenleri _alan_, _nerede_ve durumdur. Her biri aşağıdaki kod parçacığında vurgulanır.
+**Count** işlecinin temel bileşenleri _alan_, _nerede_ ve durumdur. Her biri aşağıdaki kod parçacığında vurgulanır.
 
-- _alan_ , üyelerini değerlendirmek için kullanılacak [diğer ad](../concepts/definition-structure.md#aliases) sayısını belirtir. Burada ağ güvenlik grubunun ** \[ \* \] SecurityRules** diğer ad _dizisine_ bakıyoruz.
-- , hangi _dizi_ üyelerinin ölçütlere uygun olduğunu tanımlamak için ilke _dilini kullanır._ Bu örnekte, **allof** Logical operator diğer ad _dizisi_ özelliklerinin üç farklı koşul değerlendirmesini gruplandırır: _Direction_, _Access_ve _destinationPortRange_.
+- _alan_ , üyelerini değerlendirmek için kullanılacak [diğer ad](../concepts/definition-structure.md#aliases) sayısını belirtir. Burada ağ güvenlik grubunun **\[ \* \] SecurityRules** diğer ad _dizisine_ bakıyoruz.
+- , hangi _dizi_ üyelerinin ölçütlere uygun olduğunu tanımlamak için ilke _dilini kullanır._ Bu örnekte, **allof** Logical operator diğer ad _dizisi_ özelliklerinin üç farklı koşul değerlendirmesini gruplandırır: _Direction_, _Access_ ve _destinationPortRange_.
 - Bu örnekteki sayı koşulu **daha büyüktür**. Diğer ad _dizisinin_ bir veya daha fazla üyesi _WHERE_ yan tümcesiyle eşleştiğinde Count değeri true olarak değerlendirilir.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-count-operator.json" range="12-32" highlight="3,4,20":::

@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: b8b6383c7808fd6c298d7776fc10572631bc6ddc
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359570"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006226"
 ---
 # <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Zscaler 'ı yapılandırma
 
@@ -43,11 +43,11 @@ Zscaler 'ı Azure AD ile otomatik Kullanıcı sağlaması için yapılandırmada
 
 Market 'ten Zscaler eklemek için aşağıdaki adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com)sol taraftaki gezinti bölmesinde **Azure Active Directory** ' i seçin.
+1. [Azure Portal](https://portal.azure.com)sol taraftaki gezinti bölmesinde **Azure Active Directory**' i seçin.
 
     ![Azure Active Directory simgesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -55,7 +55,7 @@ Market 'ten Zscaler eklemek için aşağıdaki adımları izleyin.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Zscaler One** girin ve sonuç panelinden **Zscaler** ' ı seçin. Uygulamayı eklemek için **Ekle** ' yi seçin.
+4. Arama kutusuna **Zscaler One** girin ve sonuç panelinden **Zscaler** ' ı seçin. Uygulamayı eklemek için **Ekle**' yi seçin.
 
     ![Sonuç listesinde Zscaler](common/search-new-app.png)
 
@@ -80,7 +80,7 @@ Bu bölüm, Azure AD sağlama hizmetini yapılandırma adımlarında size rehber
 
 ### <a name="configure-automatic-user-provisioning-for-zscaler-one-in-azure-ad"></a>Azure AD 'de Zscaler için otomatik Kullanıcı sağlamayı yapılandırma
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. **Kurumsal uygulamalar**  >  **tüm uygulamalar**  >  **Zscaler** ' ı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Kurumsal uygulamalar**  >  **tüm uygulamalar**  >  **Zscaler**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -92,13 +92,13 @@ Bu bölüm, Azure AD sağlama hizmetini yapılandırma adımlarında size rehber
 
     ![Zscaler bir sağlama](./media/zscaler-one-provisioning-tutorial/provisioning-tab.png)
 
-4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Zscaler bir sağlama modu](./media/zscaler-one-provisioning-tutorial/provisioning-credentials.png)
 
 5. **Yönetici kimlik bilgileri** bölümü altında, **kiracı URL 'si** ve gizli dizi **belirteci** kutularını, 6. adımda anlatıldığı gibi Zscaler hesabınız için ayarlarla birlikte girin.
 
-6. Kiracı URL 'sini ve gizli anahtarı almak için, **Administration**  >  tek bir Portal Kullanıcı arabirimindeki Yönetim **kimlik doğrulaması ayarları** ' na gidin. **Kimlik doğrulama türü** altında **SAML** ' yi seçin.
+6. Kiracı URL 'sini ve gizli anahtarı almak için, **Administration**  >  tek bir Portal Kullanıcı arabirimindeki Yönetim **kimlik doğrulaması ayarları** ' na gidin. **Kimlik doğrulama türü** altında **SAML**' yi seçin.
 
     ![Zscaler bir kimlik doğrulama ayarları](./media/zscaler-one-provisioning-tutorial/secret-token-1.png)
 
@@ -116,21 +116,21 @@ Bu bölüm, Azure AD sağlama hizmetini yapılandırma adımlarında size rehber
 
     ![Zscaler bir bildirim e-postası](./media/zscaler-one-provisioning-tutorial/notification.png)
 
-9. **Kaydet** ’i seçin.
+9. **Kaydet**'i seçin.
 
-10. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Zscaler ile eşitler** ' ı seçin.
+10. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Zscaler ile eşitler**' ı seçin.
 
     ![Zscaler bir Kullanıcı eşitlemesi](./media/zscaler-one-provisioning-tutorial/user-mappings.png)
 
-11. **Öznitelik eşlemeleri** bölümünde Azure AD 'Den Zscaler 'a eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, bir güncelleştirme Işlemleri Için Zscaler içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri kaydetmek için **Kaydet** ' i seçin.
+11. **Öznitelik eşlemeleri** bölümünde Azure AD 'Den Zscaler 'a eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, bir güncelleştirme Işlemleri Için Zscaler içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri kaydetmek için **Kaydet**' i seçin.
 
     ![Zscaler eşleşen bir kullanıcı özniteliği](./media/zscaler-one-provisioning-tutorial/user-attribute-mappings.png)
 
-12. **Eşlemeler** bölümünde **Azure Active Directory gruplarını Zscaler ile eşitler** ' ı seçin.
+12. **Eşlemeler** bölümünde **Azure Active Directory gruplarını Zscaler ile eşitler**' ı seçin.
 
     ![Zscaler bir grup eşitleme](./media/zscaler-one-provisioning-tutorial/group-mappings.png)
 
-13. **Öznitelik eşlemeleri** bölümünde Azure AD 'Den Zscaler 'a eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, tek bir güncelleştirme Işlemleri Için Zscaler içindeki grupları eşleştirmek için kullanılır. Değişiklikleri kaydetmek için **Kaydet** ' i seçin.
+13. **Öznitelik eşlemeleri** bölümünde Azure AD 'Den Zscaler 'a eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, tek bir güncelleştirme Işlemleri Için Zscaler içindeki grupları eşleştirmek için kullanılır. Değişiklikleri kaydetmek için **Kaydet**' i seçin.
 
     ![Zscaler bir eşleşen Grup özniteliği](./media/zscaler-one-provisioning-tutorial/group-attribute-mappings.png)
 
@@ -144,7 +144,7 @@ Bu bölüm, Azure AD sağlama hizmetini yapılandırma adımlarında size rehber
 
     ![Zscaler bir kapsam](./media/zscaler-one-provisioning-tutorial/scoping.png)
 
-17. Sağlamaya hazırsanız **Kaydet** ' i seçin.
+17. Sağlamaya hazırsanız **Kaydet**' i seçin.
 
     ![Zscaler One kaydetme](./media/zscaler-one-provisioning-tutorial/save-provisioning.png)
 

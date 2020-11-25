@@ -4,11 +4,11 @@ description: 'Hızlı başlangıç: BLOB depolama hesabı oluşturmak ve olaylar
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.openlocfilehash: 46cd88558334239a1a9971c63b8b2608def3c4d3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87421612"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005699"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Hızlı başlangıç: Blob Depolama olaylarını Azure portal web uç noktasına yönlendirme
 
@@ -34,7 +34,7 @@ Azure Event Grid, bulut için bir olay oluşturma hizmetidir. Bu makalede Azure 
    
 1. **Depolama hesabı oluştur** sayfasında, aşağıdaki adımları uygulayın:
     1. Azure aboneliğinizi seçin. 
-    2. **Kaynak grubu**için yeni bir kaynak grubu oluşturun veya var olan bir kaynak grubunu seçin. 
+    2. **Kaynak grubu** için yeni bir kaynak grubu oluşturun veya var olan bir kaynak grubunu seçin. 
     3. Depolama hesabınızın adını girin. 
     4. **Gözden geçir ve oluştur**’u seçin. 
 
@@ -52,10 +52,10 @@ Blob depolamasındaki olaylara abone olmadan önce olay iletisi için uç noktay
 
    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to Deploy to Aquent." /></a>
 2. **Özel dağıtım** sayfasında, aşağıdaki adımları uygulayın: 
-    1. **Kaynak grubu**için, depolama hesabı oluştururken oluşturduğunuz kaynak grubunu seçin. Kaynak grubunu silerek öğreticiye tamamladıktan sonra temizlemeniz daha kolay olacaktır.  
-    2. **Site adı**için, Web uygulaması için bir ad girin.
-    3. **Barındırma planı adı**için, Web uygulamasını barındırmak üzere kullanılacak App Service planı için bir ad girin.
-    4. **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum**onay kutusunu seçin. 
+    1. **Kaynak grubu** için, depolama hesabı oluştururken oluşturduğunuz kaynak grubunu seçin. Kaynak grubunu silerek öğreticiye tamamladıktan sonra temizlemeniz daha kolay olacaktır.  
+    2. **Site adı** için, Web uygulaması için bir ad girin.
+    3. **Barındırma planı adı** için, Web uygulamasını barındırmak üzere kullanılacak App Service planı için bir ad girin.
+    4. **Yukarıda belirtilen hüküm ve koşulları kabul ediyorum** onay kutusunu seçin. 
     5. **Satın al**'ı seçin. 
 
        ![Dağıtım parametreleri](./media/blob-event-quickstart-portal/template-deploy-parameters.png)
@@ -86,13 +86,13 @@ Event Grid’e hangi olayları izlemek istediğinizi ve olayların nereye gönde
    ![Web kancasını seçme](./media/blob-event-quickstart-portal/select-web-hook.png)
 3. **Olay aboneliği oluştur** sayfasında, aşağıdaki adımları uygulayın: 
     1. Olay aboneliği için bir **ad** girin.
-    2. **Sistem konusu**için bir **ad** girin. Sistem konuları hakkında bilgi edinmek için bkz. [sistem konularına genel bakış](system-topics.md).
+    2. **Sistem konusu** için bir **ad** girin. Sistem konuları hakkında bilgi edinmek için bkz. [sistem konularına genel bakış](system-topics.md).
 
        ![Olay aboneliği ve sistem konusunun adlarını girin](./media/blob-event-quickstart-portal/event-subscription-name-system-topic.png)
-    2. **Uç nokta türü**Için **Web kancası** seçin. 
+    2. **Uç nokta türü** Için **Web kancası** seçin. 
 
        ![Web kancası uç noktası türünü seçin](./media/blob-event-quickstart-portal/select-web-hook-end-point-type.png)
-4. **Uç**nokta için **bir uç nokta seç**' e tıklayın ve Web uygulamanızın URL 'sini gırın ve `api/updates` giriş sayfası URL 'sine ekleyin (örneğin: `https://spegridsite.azurewebsites.net/api/updates` ) ve ardından **Seçimi Onayla**' yı seçin.
+4. **Uç** nokta için **bir uç nokta seç**' e tıklayın ve Web uygulamanızın URL 'sini gırın ve `api/updates` giriş sayfası URL 'sine ekleyin (örneğin: `https://spegridsite.azurewebsites.net/api/updates` ) ve ardından **Seçimi Onayla**' yı seçin.
 
    ![Uç nokta seçimini Onayla](./media/blob-event-quickstart-portal/confirm-endpoint-selection.png)
 5. Şimdi olay **aboneliği oluştur** sayfasında, olay aboneliğini oluşturmak için **Oluştur** ' u seçin. 

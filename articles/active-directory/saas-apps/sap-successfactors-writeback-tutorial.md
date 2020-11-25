@@ -11,11 +11,11 @@ ms.workload: identity
 ms.date: 10/14/2020
 ms.author: chmutali
 ms.openlocfilehash: d39e00a80ab167936a749c73867b4343e6ed9d76
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358822"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006447"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>Öğretici: Azure AD 'den SAP 'ye geri yazma özelliği yapılandırma başarılı
 Bu öğreticinin amacı, Azure AD 'den SAP 'nin başarıyla, çalışan Merkezi ' ne kadar geri yazma adımlarını gösterir. 
@@ -57,11 +57,11 @@ Başarılı bir şekilde OData API 'Leri çağırmak için kullanılacak olan ba
 ### <a name="create-an-api-permissions-role"></a>API izinleri rolü oluşturma
 
 1. Yönetim merkezine erişimi olan bir kullanıcı hesabıyla SAP 'de başarılı bir şekilde oturum açın.
-1. *Izin Rollerini Yönet* ' i arayın ve ardından arama sonuçlarından **izin Rollerini Yönet** ' i seçin.
+1. *Izin Rollerini Yönet*' i arayın ve ardından arama sonuçlarından **izin Rollerini Yönet** ' i seçin.
 
    ![Izin rollerini yönetme](./media/sap-successfactors-inbound-provisioning/manage-permission-roles.png)
 
-1. Izin rolü listesinden **Yeni oluştur** ' a tıklayın.
+1. Izin rolü listesinden **Yeni oluştur**' a tıklayın.
 
    > [!div class="mx-imgBorder"]
    > ![Yeni Izin rolü oluştur](./media/sap-successfactors-inbound-provisioning/create-new-permission-role-1.png)
@@ -71,26 +71,26 @@ Başarılı bir şekilde OData API 'Leri çağırmak için kullanılacak olan ba
    > [!div class="mx-imgBorder"]
    > ![İzin rolü ayrıntısı](./media/sap-successfactors-inbound-provisioning/permission-role-detail.png)
 
-1. Izin ayarları altında **izin...** öğesine tıklayın, ardından izin listesini aşağı kaydırın ve **tümleştirme araçlarını Yönet** ' e tıklayın. **Yöneticinin, temel kimlik doğrulaması aracılığıyla OData API 'Sine erişmesine Izin ver** kutusunu işaretleyin.
+1. Izin ayarları altında **izin...** öğesine tıklayın, ardından izin listesini aşağı kaydırın ve **tümleştirme araçlarını Yönet**' e tıklayın. **Yöneticinin, temel kimlik doğrulaması aracılığıyla OData API 'Sine erişmesine Izin ver** kutusunu işaretleyin.
 
    > [!div class="mx-imgBorder"]
    > ![Tümleştirme araçlarını Yönet](./media/sap-successfactors-inbound-provisioning/manage-integration-tools.png)
 
-1. Aynı kutuda aşağı kaydırın ve **çalışan yönetim API 'si** ' ni seçin. ODATA API kullanarak okumak ve ODATA API kullanarak düzenlemek için aşağıda gösterildiği gibi izinler ekleyin. Başarılı bir şekilde geri yazma senaryosunda aynı hesabı kullanmayı planlıyorsanız Düzenle seçeneğini belirleyin. 
+1. Aynı kutuda aşağı kaydırın ve **çalışan yönetim API 'si**' ni seçin. ODATA API kullanarak okumak ve ODATA API kullanarak düzenlemek için aşağıda gösterildiği gibi izinler ekleyin. Başarılı bir şekilde geri yazma senaryosunda aynı hesabı kullanmayı planlıyorsanız Düzenle seçeneğini belirleyin. 
 
    > [!div class="mx-imgBorder"]
    > ![Okuma yazma izinleri](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
 
-1. **Bitti** ' ye tıklayın. **Değişiklikleri Kaydet** ’e tıklayın.
+1. **Bitti**' ye tıklayın. **Değişiklikleri Kaydet**’e tıklayın.
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>API kullanıcısı için bir Izin grubu oluşturma
 
-1. Başarılı etmenleri yönetici merkezinde, *Izin gruplarını yönet* ' i arayın ve ardından arama sonuçlarından **izin gruplarını yönet** ' i seçin.
+1. Başarılı etmenleri yönetici merkezinde, *Izin gruplarını yönet*' i arayın ve ardından arama sonuçlarından **izin gruplarını yönet** ' i seçin.
 
    > [!div class="mx-imgBorder"]
    > ![İzin gruplarını yönet](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
 
-1. Izin gruplarını yönet penceresinde **Yeni oluştur** ' a tıklayın.
+1. Izin gruplarını yönet penceresinde **Yeni oluştur**' a tıklayın.
 
    > [!div class="mx-imgBorder"]
    > ![Yeni Grup Ekle](./media/sap-successfactors-inbound-provisioning/create-new-group.png)
@@ -109,8 +109,8 @@ Başarılı bir şekilde OData API 'Leri çağırmak için kullanılacak olan ba
 
 ### <a name="grant-permission-role-to-the-permission-group"></a>İzin grubuna izin rolü verme
 
-1. Başarılı bir şekilde Yönetim Merkezi 'nde, *Izin Rollerini Yönet* ' i arayın ve ardından arama sonuçlarından **izin Rollerini Yönet** ' i seçin.
-1. **Izin rolü listesinden** , API kullanım izinleri için oluşturduğunuz rolü seçin.
+1. Başarılı bir şekilde Yönetim Merkezi 'nde, *Izin Rollerini Yönet*' i arayın ve ardından arama sonuçlarından **izin Rollerini Yönet** ' i seçin.
+1. **Izin rolü listesinden**, API kullanım izinleri için oluşturduğunuz rolü seçin.
 1. **Bu rolü Izin ver altında... öğesine** tıklayın **.**
 1. Açılan menüden **Izin grubu...** ' yi seçin ve ardından **Seç...** öğesine tıklayarak yukarıda oluşturulan grubu aramak ve seçmek için gruplar penceresini açın. 
 
@@ -121,7 +121,7 @@ Başarılı bir şekilde OData API 'Leri çağırmak için kullanılacak olan ba
    > [!div class="mx-imgBorder"]
    > ![İzin rolü ve Grup Ayrıntısı](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
 
-1. **Değişiklikleri Kaydet** ’e tıklayın.
+1. **Değişiklikleri Kaydet**’e tıklayın.
 
 ## <a name="preparing-for-successfactors-writeback"></a>Başarılı faktörlerin geri yazması için hazırlanıyor
 
@@ -134,7 +134,7 @@ Başarılı bir şekilde yeniden yazma sağlama uygulaması, çalışan merkezi 
 
 SAP başarılı faktörlerinde, bir *seçim listesi* , kullanıcının seçim yapabileceği yapılandırılabilir bir seçenek kümesidir. Farklı türde e-posta ve telefon numarası (örn. iş, kişisel, diğer), bir seçim listesi kullanılarak temsil edilir. Bu adımda, e-posta ve telefon numarası değerlerini depolamak için başarılı, kiracınızda yapılandırılmış seçim listelerini tanımlayacağız. 
  
-1. Başarılı bir yönetim merkezinde *Yönet iş yapılandırması* ' nı arayın. 
+1. Başarılı bir yönetim merkezinde *Yönet iş yapılandırması*' nı arayın. 
 
    > [!div class="mx-imgBorder"]
    > ![İş yapılandırmasını yönetme](./media/sap-successfactors-inbound-provisioning/manage-business-config.png)
@@ -144,7 +144,7 @@ SAP başarılı faktörlerinde, bir *seçim listesi* , kullanıcının seçim ya
    > [!div class="mx-imgBorder"]
    > ![E-posta bilgilerini al](./media/sap-successfactors-inbound-provisioning/get-email-info.png)
 
-1. **E-posta türü** ayrıntılar sayfasında, bu alanla ilişkili seçim listesinin adını aklınızda yazın. Varsayılan olarak, **ecEmailType** ' dir. Ancak kiracınızda farklı olabilir. 
+1. **E-posta türü** ayrıntılar sayfasında, bu alanla ilişkili seçim listesinin adını aklınızda yazın. Varsayılan olarak, **ecEmailType**' dir. Ancak kiracınızda farklı olabilir. 
 
    > [!div class="mx-imgBorder"]
    > ![E-posta seçim listesini tanımla](./media/sap-successfactors-inbound-provisioning/identify-email-picklist.png)
@@ -233,9 +233,9 @@ Bu bölüm için adımları sağlar
 
 2. Sol gezinti çubuğunda **Azure Active Directory** ' yi seçin.
 
-3. **Kuruluş uygulamaları** ' nı ve ardından **tüm uygulamalar** ' ı seçin.
+3. **Kuruluş uygulamaları**' nı ve ardından **tüm uygulamalar**' ı seçin.
 
-4. **Uygulama Ekle** ' yi seçin ve **Tüm** kategorisini seçin.
+4. **Uygulama Ekle**' yi seçin ve **Tüm** kategorisini seçin.
 
 5. Başarılı bir şekilde **geri yazma** araması yapın ve bu uygulamayı Galeriden ekleyin.
 
@@ -265,7 +265,7 @@ Bu bölüm için adımları sağlar
 
 Bu bölümde, Kullanıcı verilerinin başarıyla Active Directory olarak nasıl akacağını yapılandıracaksınız.
 
-1. **Eşlemeler** altındaki sağlama sekmesinde **Kullanıcılar Azure Active Directory sağla** ' ya tıklayın.
+1. **Eşlemeler** altındaki sağlama sekmesinde **Kullanıcılar Azure Active Directory sağla**' ya tıklayın.
 
 1. **Kaynak nesne kapsamı** alanında, öznitelik tabanlı filtrelerin bir kümesini tanımlayarak, Azure AD 'deki hangi Kullanıcı kümelerinin geri yazma için değerlendirilmelidir ' ı seçebilirsiniz. Varsayılan kapsam, "Azure AD 'deki tüm kullanıcılar" dır. 
    > [!TIP]
@@ -281,8 +281,8 @@ Bu bölümde, Kullanıcı verilerinin başarıyla Active Directory olarak nasıl
    | 2 | posta | e-posta | E-posta öznitelik kaynağını eşleyin. Test amacıyla, userPrincipalName öğesini e-posta ile eşleyebilirsiniz. |
    | 3 | 8448 | emailType | Bu sabit değer, iş e-postalarla ilişkili olan başarılı etken KIMLIK değeridir. Bu değeri, başarılı etmenler ortamınızla eşleşecek şekilde güncelleştirin. Bu değeri ayarlama adımları için [emailType için sabit değer alma](#retrieve-constant-value-for-emailtype) bölümüne bakın. |
    | 4 | true | Emailisprımary | Bu özniteliği, iş e-postasını başarılı faktörlerdeki birincil olarak ayarlamak için kullanın. İş e-postası birincil değilse, bu bayrağı false olarak ayarlayın. |
-   | 5 | userPrincipalName | [custom01 – custom15] | **Yeni eşleme Ekle** 'yi kullanarak, isteğe bağlı olarak, başarılı bir şekilde userPrincipalName veya herhangi BIR Azure AD özniteliğini, başarılı bir Kullanıcı nesnesinde bulunan özel bir özniteliğe yazabilirsiniz.  |
-   | 6 | Şirket içi-samAccountName | username | **Yeni eşleme Ekle** 'yi kullanarak, isteğe bağlı olarak, şirket içi sAMAccountName öğesini başarılı bir Kullanıcı adı özniteliğine eşleyebilirsiniz. |
+   | 5 | userPrincipalName | [custom01 – custom15] | **Yeni eşleme Ekle**'yi kullanarak, isteğe bağlı olarak, başarılı bir şekilde userPrincipalName veya herhangi BIR Azure AD özniteliğini, başarılı bir Kullanıcı nesnesinde bulunan özel bir özniteliğe yazabilirsiniz.  |
+   | 6 | Şirket içi-samAccountName | username | **Yeni eşleme Ekle**'yi kullanarak, isteğe bağlı olarak, şirket içi sAMAccountName öğesini başarılı bir Kullanıcı adı özniteliğine eşleyebilirsiniz. |
    | 7 | SSO | loginMethod | Kiracı, [kısmı SSO](https://apps.support.sap.com/sap/support/knowledge/en/2320766)için ayarlandıysa, daha sonra yeni eşleme Ekle ' yi kullanarak, isteğe bağlı olarak loginmethod 'U "SSO" veya "PWD" sabit değerine ayarlayabilirsiniz. |
    | 8 | telephoneNumber 'dır | businessPhoneNumber | *TelephoneNumber* 'ı Azure AD 'den başarılı bir şekilde iş/iş telefonu numarasına akıtmak için bu eşlemeyi kullanın. |
    | 9 | 10605 | businessPhoneType | Bu sabit değer, iş telefonuyla ilişkili olan başarılı etken KIMLIK değeridir. Bu değeri, başarılı etmenler ortamınızla eşleşecek şekilde güncelleştirin. Bu değeri ayarlama adımları için [phoneType için sabit değer alma](#retrieve-constant-value-for-phonetype) bölümüne bakın. |
@@ -297,18 +297,18 @@ Bu bölümde, Kullanıcı verilerinin başarıyla Active Directory olarak nasıl
     >![Geri yazma özniteliği eşleme](./media/sap-successfactors-inbound-provisioning/writeback-attribute-mapping.png)
 
 1. Eşlemeleri kaydetmek için **Kaydet** ' e tıklayın. Bundan sonra, JSON yolu API ifadelerini, başarılı bir şekilde, başarılı etmenler örneğinizdeki phoneType kodlarını kullanacak şekilde güncelleştireceğiz. 
-1. **Gelişmiş seçenekleri göster** ’i seçin. 
+1. **Gelişmiş seçenekleri göster**’i seçin. 
 
     >[!div class="mx-imgBorder"]
     >![Gelişmiş seçenekleri göster](./media/sap-successfactors-inbound-provisioning/show-advanced-options.png)
 
-1. **Başarılı etmenler için öznitelik listesini düzenle** ' ye tıklayın. 
+1. **Başarılı etmenler için öznitelik listesini düzenle**' ye tıklayın. 
 
    > [!NOTE] 
    > **Başarılı etmenleri için öznitelik listesini düzenle** seçeneği Azure Portal görünmüyorsa, *https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true* sayfaya erişmek için URL 'yi kullanın. 
 
 1. Bu görünümdeki **API ifadesi** sütunu, bağlayıcı tarafından kullanılan JSON yolu ifadelerini görüntüler. 
-1. İş telefonu ve cep telefonunun JSON yol ifadelerini, ortamınıza karşılık gelen KIMLIK değerini ( *Businessphonetype* ve *cellphonetype* ) kullanacak şekilde güncelleştirin. 
+1. İş telefonu ve cep telefonunun JSON yol ifadelerini, ortamınıza karşılık gelen KIMLIK değerini (*Businessphonetype* ve *cellphonetype*) kullanacak şekilde güncelleştirin. 
 
     >[!div class="mx-imgBorder"]
     >![Telefon JSON yolu değişikliği](./media/sap-successfactors-inbound-provisioning/phone-json-path-change.png)
@@ -325,8 +325,8 @@ Uygulama yapılandırmalarının sağlanması başarılı bir şekilde tamamland
 1. **Sağlama** sekmesinde, **sağlama durumunu** **Açık** olarak ayarlayın.
 
 1. **Kapsam** seçin. Aşağıdaki seçeneklerden birini seçebilirsiniz: 
-   * **Tüm kullanıcıları ve grupları Eşitle** : Azure AD 'den başarılı etkenlere, **eşleme**  ->  **kaynak nesne kapsamı** altında tanımlanan kapsam kurallarına tabi olan tüm kullanıcıların yeniden eşlenmiş özniteliklerini yazmayı planlıyorsanız bu seçeneği belirleyin. 
-   * **Yalnızca atanmış kullanıcıları ve grupları Eşitle** : yalnızca **uygulama**  ->  **Manage**  ->  **kullanıcıları ve grupları** Yönet menü seçeneğinde bu uygulamaya atadığınız kullanıcıların geri eşlenmiş özniteliklerini yazmayı planlıyorsanız bu seçeneği belirleyin. Bu kullanıcılar ayrıca, **eşlemeler**  ->  **kaynak nesne kapsamı** altında tanımlanan kapsam kurallarına tabidir.
+   * **Tüm kullanıcıları ve grupları Eşitle**: Azure AD 'den başarılı etkenlere, **eşleme**  ->  **kaynak nesne kapsamı** altında tanımlanan kapsam kurallarına tabi olan tüm kullanıcıların yeniden eşlenmiş özniteliklerini yazmayı planlıyorsanız bu seçeneği belirleyin. 
+   * **Yalnızca atanmış kullanıcıları ve grupları Eşitle**: yalnızca **uygulama**  ->  **Manage**  ->  **kullanıcıları ve grupları** Yönet menü seçeneğinde bu uygulamaya atadığınız kullanıcıların geri eşlenmiş özniteliklerini yazmayı planlıyorsanız bu seçeneği belirleyin. Bu kullanıcılar ayrıca, **eşlemeler**  ->  **kaynak nesne kapsamı** altında tanımlanan kapsam kurallarına tabidir.
 
    > [!div class="mx-imgBorder"]
    > ![Geri yazma kapsamını Seç](./media/sap-successfactors-inbound-provisioning/select-writeback-scope.png)
@@ -334,7 +334,7 @@ Uygulama yapılandırmalarının sağlanması başarılı bir şekilde tamamland
    > [!NOTE]
    > Başarılı bir şekilde geri yazma sağlama uygulaması "Grup atamasını" desteklemez. Yalnızca "Kullanıcı Ataması" desteklenir. 
 
-1. **Kaydet** ’e tıklayın.
+1. **Kaydet**’e tıklayın.
 
 1. Bu işlem ilk eşitlemeyi başlatacak ve bu, Azure AD kiracısında kaç Kullanıcı olduğuna ve işlem için tanımlanan kapsama bağlı olarak birkaç saat sürebilir. İlerleme çubuğunu, eşitleme döngüsünün ilerlemesini izlemek için kontrol edebilirsiniz. 
 

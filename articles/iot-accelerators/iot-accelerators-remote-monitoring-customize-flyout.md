@@ -10,11 +10,11 @@ ms.date: 10/05/2018
 ms.topic: conceptual
 ms.custom: devx-track-js
 ms.openlocfilehash: afd8c5b01b9f36606bf6bd43fbed747ca83ba320
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318424"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006124"
 ---
 # <a name="add-a-custom-flyout-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Uzaktan Izleme çözümü Hızlandırıcısı Web Kullanıcı arabirimine özel bir açılır pencere ekleyin
 
@@ -25,7 +25,7 @@ Bu makalede, uzaktan Izleme çözümü Hızlandırıcısı Web Kullanıcı arabi
 
 Bu makaledeki örnek açılır pencere, kılavuza, [Uzaktan izleme çözümü Hızlandırıcısı Web UI](iot-accelerators-remote-monitoring-customize-grid.md) ile ilgili nasıl ekleneceğini gösteren özel kılavuz ekleme kılavuzunu içeren sayfada görüntülenir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzundaki adımları tamamlayabilmeniz için, yerel geliştirme makinenizde aşağıdaki yazılımların yüklü olması gerekir:
 
@@ -62,7 +62,7 @@ Src/ **Walkthrough/Components/Pages/Pagewithaçılır/Flyout** klasörünü **sr
 
 ' **İ/bileşenleri/sayfaları/örnek/basicPage.js** açılır menüyü eklemek için değiştirin.
 
-**Bileşenler/paylaşılan** içeri aktarmaları Için **btn** ekleyin ve **svgs** ve **ExampleFlyoutContainer**için içeri aktarmaları ekleyin:
+**Bileşenler/paylaşılan** içeri aktarmaları Için **btn** ekleyin ve **svgs** ve **ExampleFlyoutContainer** için içeri aktarmaları ekleyin:
 
 ```js
 import {

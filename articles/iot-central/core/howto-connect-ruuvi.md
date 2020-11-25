@@ -11,11 +11,11 @@ ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
 ms.openlocfilehash: 7cf0d31895eaeaa41c23f9f07664b27bed1d3126
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90016767"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006396"
 ---
 # <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>Azure IoT Central uygulamanıza bir RuuviTag algılayıcısı bağlama
 
@@ -31,7 +31,7 @@ RuuviTag, BLE üzerinden iletişim kurar (Bluetooth düşük enerji) ve Azure Io
 
 Bir Rigado basamaklı 500 ağ geçidi cihazı kurmak istiyorsanız lütfen [buradaki yönergeleri](./howto-connect-rigado-cascade-500.md) izleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 RuuviTag sensörlerinden bağlantı kurmak için aşağıdaki kaynaklara ihtiyacınız vardır:
 
@@ -45,10 +45,10 @@ Azure IoT Central uygulama örneğinize bir RuuviTag algılayıcısı eklemek i�
 
 Bir RuuviTag cihaz şablonu eklemek için:
 
-1. Sol bölmedeki ***cihaz şablonları*** sekmesine gidin ve **+ Yeni**: ![ yeni cihaz şablonu oluştur ](./media/howto-connect-ruuvi/devicetemplate-new.png) sayfası, ***özel şablon oluşturma*** veya ***önceden yapılandırılmış bir cihaz şablonu kullanma*** seçeneği sunar.
+1. Sol bölmedeki ***cihaz şablonları** _ sekmesine gidin, _* + Yeni * *: ![ yeni cihaz şablonu oluştur ](./media/howto-connect-ruuvi/devicetemplate-new.png) sayfasında, **_özel şablon oluşturma_*_ veya _*_önceden yapılandırılmış bir cihaz şablonu kullanma_*_ seçeneği sunulur.
 1. Aşağıda gösterildiği gibi önceden yapılandırılmış cihaz şablonları listesinden RuuviTag cihaz şablonunu seçin:  ![ RuuviTag cihaz şablonunu seçin](./media/howto-connect-ruuvi/devicetemplate-preconfigured.png)
-1. Sonraki adıma devam etmek için Ileri 'yi seçin ***: Özelleştir*** .
-1. Bir sonraki ekranda, C500 cihaz şablonunu IoT Central uygulamanıza eklemek için ***Oluştur*** ' u seçin.
+1. Sonraki adıma devam etmek için Ileri 'yi seçin _*_: Özelleştir_*_ .
+1. Bir sonraki ekranda, C500 cihaz şablonunu IoT Central uygulamanıza eklemek için _*_Oluştur_*_ ' u seçin.
 
 ## <a name="connect-a-ruuvitag-sensor"></a>RuuviTag algılayıcısı bağlama
 
@@ -68,9 +68,9 @@ Fiziksel bir RuuviTag cihazınız yoksa, Azure IoT Central uygulamanızda test i
 
 Benzetimli RuuviTag oluşturmak için:
 
-1. **Cihaz > RuuviTag**' ı seçin.
+1. _ * Cihaz > RuuviTag * * öğesini seçin.
 1. **+ Yeni** seçeneğini belirleyin.
-1. Benzersiz bir **CIHAZ kimliği** ve kolay bir **Cihaz adı**belirtin.  
+1. Benzersiz bir **CIHAZ kimliği** ve kolay bir **Cihaz adı** belirtin.  
 1. **Benzetimli** ayarı etkinleştirin.
 1. **Oluştur**’u seçin.  
 

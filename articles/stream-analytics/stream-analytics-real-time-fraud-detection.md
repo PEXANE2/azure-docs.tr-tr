@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 03/24/2020
 ms.custom: seodec18
 ms.openlocfilehash: ba216e41672e1d19e552b3f82a2ea65da7d3a435
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124586"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007095"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure Stream Analytics kullanmaya başlayın: gerçek zamanlı sahtekarlık algılama
 
@@ -41,7 +41,7 @@ Başlamadan önce şunlara sahip olduğunuzdan emin olun:
 * Microsoft Indirme merkezi 'nden indirilebilen, çağrı olayı Oluşturucu uygulaması [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip). Bu paketi bilgisayarınızdaki bir klasöre ayıklayın. Kaynak kodunu görmek ve uygulamayı bir hata ayıklayıcıda çalıştırmak istiyorsanız, uygulama kaynak kodunu [GitHub](https://aka.ms/azure-stream-analytics-telcogenerator)' dan edinebilirsiniz. 
 
     >[!NOTE]
-    >Windows, indirilen. zip dosyasını engelleyebilirler. Bu dosyayı açmak için dosyaya sağ tıklayın ve **Özellikler** ' i seçin. "Bu dosya başka bir bilgisayardan geldi ve bu bilgisayarın korunmasına yardımcı olmak için engelleniyor olabilir" iletisi görürseniz, **Engellemeyi kaldır** seçeneğini belirleyip **Uygula** ' ya tıklayın.
+    >Windows, indirilen. zip dosyasını engelleyebilirler. Bu dosyayı açmak için dosyaya sağ tıklayın ve **Özellikler**' i seçin. "Bu dosya başka bir bilgisayardan geldi ve bu bilgisayarın korunmasına yardımcı olmak için engelleniyor olabilir" iletisi görürseniz, **Engellemeyi kaldır** seçeneğini belirleyip **Uygula**' ya tıklayın.
 
 Akış Analizi işinin sonuçlarını incelemek istiyorsanız, bir Azure Blob depolama kapsayıcısının içeriğini görüntülemek için de bir araç gerekir. Visual Studio kullanıyorsanız, Visual Studio veya [Visual Studio Cloud Explorer](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer) [için Azure Araçları](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage) 'nı kullanabilirsiniz. Alternatif olarak, [Azure Depolama Gezgini](https://storageexplorer.com/) veya [ceruyalın](https://www.cerebrata.com/products/cerulean/features/azure-storage)gibi tek başına araçları da yükleyebilirsiniz. 
 
@@ -67,13 +67,13 @@ Bu yordamda, önce bir olay hub 'ı ad alanı oluşturun ve ardından bu ad alan
 
 4. **Ad alanı oluştur** bölmesinde, gibi bir ad alanı adı girin `<yourname>-eh-ns-demo` . Ad alanı için herhangi bir ad kullanabilirsiniz, ancak ad bir URL için geçerli olmalıdır ve Azure genelinde benzersiz olmalıdır. 
     
-5. Bir abonelik seçin ve bir kaynak grubu oluşturun veya seçin, ardından **Oluştur** ' a tıklayın.
+5. Bir abonelik seçin ve bir kaynak grubu oluşturun veya seçin, ardından **Oluştur**' a tıklayın.
 
     <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-namespace-new-portal.png" alt="Create event hub namespace in Azure portal" width="300px"/>
 
 6. Ad alanı dağıtımı bitirdiğinde, Azure kaynakları listenizde Olay Hub 'ı ad alanını bulun. 
 
-7. Yeni ad alanı ' na tıklayın ve ad alanı bölmesinde **Olay Hub** ' ı tıklatın.
+7. Yeni ad alanı ' na tıklayın ve ad alanı bölmesinde **Olay Hub**' ı tıklatın.
 
    ![Yeni bir olay hub 'ı oluşturmak için Olay Hub 'ı Ekle düğmesi](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-button-new-portal.png)    
  
@@ -81,7 +81,7 @@ Bu yordamda, önce bir olay hub 'ı ad alanı oluşturun ve ardından bu ad alan
 
     <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
     
-9. **Oluştur** 'a tıklayın.
+9. **Oluştur**'a tıklayın.
 
 ### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>Olay hub’ına erişim verme ve bir bağlantı dizesi alma
 
@@ -89,16 +89,16 @@ Bir işlemin bir olay hub 'ına veri gönderebilmesi için, Olay Hub 'ının uyg
 
 1. Olay ad alanı bölmesinde **Event Hubs** ' a ve ardından yeni Olay Hub 'ınızın adına tıklayın.
 
-2. Olay Hub 'ı bölmesinde, **paylaşılan erişim ilkeleri** ' ne ve ardından **+ &nbsp; Ekle** ' ye tıklayın.
+2. Olay Hub 'ı bölmesinde, **paylaşılan erişim ilkeleri** ' ne ve ardından **+ &nbsp; Ekle**' ye tıklayın.
 
     > [!NOTE]
     > Olay Hub 'ı ad alanı değil, Olay Hub 'ı ile çalıştığınızdan emin olun.
 
-3. `asa-policy-manage-demo`Ve **talep** için adlı bir Ilke ekleyin, **Yönet** ' i seçin.
+3. `asa-policy-manage-demo`Ve **talep** için adlı bir Ilke ekleyin, **Yönet**' i seçin.
 
     <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="Create shared access policy for Stream Analytics" width="300px"/>
  
-4. **Oluştur** 'a tıklayın.
+4. **Oluştur**'a tıklayın.
 
 5. İlke dağıtıldıktan sonra, paylaşılan erişim ilkeleri listesinde buna tıklayın.
 
@@ -186,7 +186,7 @@ Artık çağrı olaylarınızın bulunduğu bir akışa sahip olduğunuza göre 
 
     <br/><img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-job-new-portal.png" alt="Create Stream Analytics job in portal" width="300px"/>
 
-3. **Oluştur** 'a tıklayın.
+3. **Oluştur**'a tıklayın.
 
     İş oluşturulur ve Portal iş ayrıntılarını görüntüler. Henüz hiçbir şey çalışmıyor; ancak başlamadan önce işi yapılandırmanız gerekir.
 
@@ -211,7 +211,7 @@ Artık çağrı olaylarınızın bulunduğu bir akışa sahip olduğunuza göre 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png" alt="Create Stream Analytics input in portal" width="300px"/>
 
 
-4. **Oluştur** 'a tıklayın.
+4. **Oluştur**'a tıklayın.
 
 ## <a name="create-queries-to-transform-real-time-data"></a>Gerçek zamanlı verileri dönüştürmek için sorgular oluşturma
 
@@ -230,12 +230,12 @@ TelcoGenerator uygulaması, Olay Hub 'ına çağrı kayıtları gönderiyor ve S
 1. TelcoGenerator uygulamasının çalıştığından ve çağrı kayıtları üretgeldiğinden emin olun.
 2. Portalda Akış Analizi işi bölmesine dönün. (Bölmeyi kapattıysanız `asa_frauddetection_job_demo` **tüm kaynaklar** bölmesinde arama yapın.)
 3. **Sorgu** kutusuna tıklayın. Azure, iş için yapılandırılmış girişleri ve çıkışları listeler ve giriş akışını çıkışa gönderilirken dönüştürmenizi sağlayan bir sorgu oluşturmanızı sağlar.
-4. **Sorgu** bölmesinde, girişin yanındaki noktalara tıklayın `CallStream` ve sonra **girişten örnek veriler** ' i seçin.
+4. **Sorgu** bölmesinde, girişin yanındaki noktalara tıklayın `CallStream` ve sonra **girişten örnek veriler**' i seçin.
 
    ![Akış Analizi işi girişi için örnek verileri kullanmak üzere menü seçenekleri "girişten gelen örnek veriler" seçilir](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sample-data-from-input.png)
 
 
-5. **Dakikaları** 3 olarak ayarlayın ve ardından **Tamam** ' a tıklayın. 
+5. **Dakikaları** 3 olarak ayarlayın ve ardından **Tamam**' a tıklayın. 
     
    ![3 dakikalık seçili giriş akışını örnekleme seçenekleri](./media/stream-analytics-real-time-fraud-detection/stream-analytics-input-create-sample-data.png)
 
@@ -263,7 +263,7 @@ Her olayı arşivlemek istiyorsanız, olay yükünde tüm alanları okumak için
 
     Bu sorguda, `CallStream` girişi oluşturduğunuzda belirttiğiniz diğer addır. Farklı bir diğer ad kullandıysanız bunun yerine bu adı kullanın.
 
-2. **Test** ' e tıklayın.
+2. **Test**' e tıklayın.
 
     Stream Analytics işi sorguyu örnek verilere karşı çalıştırır ve çıktıyı pencerenin alt kısmında görüntüler. Sonuçlar, Olay Hub 'ının ve akış analizi işinin doğru şekilde yapılandırıldığını gösterir. (Belirtildiği gibi, daha sonra sorgunun veri yazabilmesi için bir çıkış havuzu oluşturacaksınız.)
 
@@ -367,7 +367,7 @@ Mevcut bir BLOB depolama hesabınız varsa bunu kullanabilirsiniz. Bu öğretici
 
 3. **Iş topolojisi** bölümünde **Çıkış** kutusuna tıklayın.
 
-4. **Çıktılar** bölmesinde, **Ekle** ' ye tıklayın ve **BLOB depolama** ' yı seçin. Ardından, yeni çıkış sayfasını aşağıdaki bilgilerle doldurun:
+4. **Çıktılar** bölmesinde, **Ekle** ' ye tıklayın ve **BLOB depolama**' yı seçin. Ardından, yeni çıkış sayfasını aşağıdaki bilgilerle doldurun:
 
    |**Ayar**  |**Önerilen değer**  |**Açıklama**  |
    |---------|---------|---------|
@@ -379,7 +379,7 @@ Mevcut bir BLOB depolama hesabınız varsa bunu kullanabilirsiniz. Bu öğretici
     <br/>
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-output-blob-storage-new-console.png" alt="Create blob output for Stream Analytics job" width="300px"/>
     
-5. **Kaydet** ’e tıklayın. 
+5. **Kaydet**’e tıklayın. 
 
 
 ## <a name="start-the-streaming-analytics-job"></a>Akış Analizi işini başlatma
@@ -388,7 +388,7 @@ Mevcut bir BLOB depolama hesabınız varsa bunu kullanabilirsiniz. Bu öğretici
 
 1. TelcoGenerator uygulamasının çalıştığından emin olun.
 
-2. İş bölmesinde **Başlat** ' a tıklayın. **Işi Başlat** bölmesinde iş çıkışı başlangıç zamanı için **Şimdi** ' yi seçin. 
+2. İş bölmesinde **Başlat**' a tıklayın. **Işi Başlat** bölmesinde iş çıkışı başlangıç zamanı için **Şimdi**' yi seçin. 
 
    ![Stream Analytics işini Başlat](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-start.png)
 

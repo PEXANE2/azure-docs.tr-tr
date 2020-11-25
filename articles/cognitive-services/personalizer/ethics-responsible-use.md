@@ -9,11 +9,11 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.openlocfilehash: 602da28f0c235fb0e797a493bc1160631c042a9d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87132730"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005988"
 ---
 # <a name="guidelines-for-responsible-implementation-of-personalizer"></a>Kişiselleştirici sorumlu uygulamasına ilişkin yönergeler
 
@@ -48,7 +48,7 @@ Kişiselleştirici uygulama, kullanıcılarınız ve işletmeniz için harika bi
 
 İçeriği ve kullanıcı arabirimlerini kişiselleştirmek için öğrenmiş bir hizmet kullanmak faydalıdır. Bu, kişiselleştirmenin gerçek dünyada negatif yan etkileri oluşturmasının, kullanıcılar içerik kişiselleştirmenin farkında olup olmadığı da dahil olmak üzere, yanlış bir şekilde uygulanabilir.
 
-Negatif yan etkileri veya "ödül", bir hızlı bir şekilde daha fazla basitleştirilmesi gereken çok sayıda uzun süreli karmaşık faktörlere bağlı olduğunda, bu durum, bir yandan elde edilen birçok karmaşık etkene bağlı olan kişiselleştirici kullanımı örnekleri. Bu, "SONUÇSAL" seçimler veya bir zarar riski içeren seçimler olarak değerlendirilir. Örneğin:
+Negatif yan etkileri veya "ödül", bir hızlı bir şekilde daha fazla basitleştirilmesi gereken çok sayıda uzun süreli karmaşık faktörlere bağlı olduğunda, bu durum, bir yandan elde edilen birçok karmaşık etkene bağlı olan kişiselleştirici kullanımı örnekleri. Bu, "SONUÇSAL" seçimler veya bir zarar riski içeren seçimler olarak değerlendirilir. Örnek:
 
 
 * **Finans**: kredi, mali ve sigorta ürünlerinin tekliflerini kişiselleştirmek, risk faktörleri kişilerin bilgi sahibi olmadığı, bu bilgileri edinemediğini veya itiraz etmediğini öğrenmez.
@@ -128,7 +128,7 @@ Aşağıda AI 'nin sorumlu uygulamalarına ilişkin tasarımın alanları verilm
 * Kişiselleştirici tarafından sonuçları yeniden oluşturmak için kullanılan modeller, öğrenme ilkeleri ve diğer veriler gibi arşiv bilgileri ve varlıklar.
 
 ### <a name="transparency"></a>Şeffaflık
-*AI sistemleri*anlaşılabilir olmalıdır. Kişiselleştirici ile:
+*AI sistemleri* anlaşılabilir olmalıdır. Kişiselleştirici ile:
 
 * *Kullanıcılara içeriğin nasıl kişiselleştirilme hakkında bilgi verin.* Örneğin, kullanıcılarınıza `Why These Suggestions?` Kullanıcı ve eylemlerin, kişiselleştirici sonuçlarında bir rol oynadığı en iyi özellikleri gösteren bir düğme gösterebilirsiniz.
 * Kullanım koşullarınızın, deneyimi kişiselleştirmek için kullanıcılar ve davranışları hakkında bilgi kullanacağınızı söylediğinizden emin olun.
@@ -161,7 +161,7 @@ Aşağıda AI 'nin sorumlu uygulamalarına ilişkin tasarımın alanları verilm
 Bazı durumlarda, bunlar yasal olarak gerekli olabilir. Yeniden eğitim modellerindeki avantajları, silinen verilerin izlemelerini içermediğinden düzenli aralıklarla değerlendirin.
 
 ### <a name="inclusiveness"></a>Kapsayıcılık
-*Çok çeşitli insan ihtiyaçlarını ve deneyimlerini ele*edin.
+*Çok çeşitli insan ihtiyaçlarını ve deneyimlerini ele* edin.
 * *Erişilebilirlik etkin arabirimler için kişiselleştirilmiş deneyimler sağlar.* Etkileşimlerde efor, taşıma ve gereksiz tekrarların miktarını azaltmak için iyi kişiselleştirmeden gelen verimlilik, özellikle Engelli kişiler için yararlı olabilir.
 * *Uygulama davranışını bağlam olarak ayarlayın*. Bir sohbet bot içindeki amaçlar arasında belirsizliği ortadan kaldırmak için kişiselleştirici kullanabilirsiniz; Örneğin, doğru yorum bağlamsal olabilir ve bir boyut tümüne uygun olmayabilir.
 

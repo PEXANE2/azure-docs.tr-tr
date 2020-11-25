@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 05/14/2018
 ms.author: hrasheed
 ms.openlocfilehash: ca84cb6cdd6b47976eadbc5298701a46fe677426
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547835"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007146"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Azure Marketi 'nde HDInsight uygulaması yayımlama
 Bir Azure HDInsight uygulamasını Linux tabanlı HDInsight kümesine yükleyebilirsiniz. Bu makalede, Azure Marketi 'nde bir HDInsight uygulaması yayımlamayı öğrenin. Azure Marketi 'nde yayımlama hakkında genel bilgi için bkz. [Azure Marketi 'nde teklif yayımlama](../marketplace/overview.md).
@@ -87,14 +87,14 @@ HDInsight uygulamanızı yüklemek için gereken tüm dosyaları içeren bir. zi
 HDInsight uygulaması yayımlamak için:
 
 1. [Azure yayımlaması](https://publish.windowsazure.com/)' nda oturum açın.
-2. Sol taraftaki menüden **Çözüm şablonları** ' nı seçin.
-3. Bir başlık girin ve ardından **yeni çözüm şablonu oluştur** ' u seçin.
-4. Kuruluşunuzda henüz kaydolmadıysanız **Geliştirme Merkezi hesabı oluştur ' u seçin ve Azure programına katın** .  Daha fazla bilgi için bkz. [Microsoft Geliştirici hesabı oluşturma](../marketplace/overview.md).
-5. Başlamak **için bazı topolojiler tanımla** ' yı seçin. Bir çözüm şablonu, tüm Topolojilerine bir "üst" öğesidir. Tek bir teklifte veya çözüm şablonunda birden fazla topoloji tanımlayabilirsiniz. Bir teklif hazırlama için gönderildiğinde, tüm topolojilerle gönderilir. 
+2. Sol taraftaki menüden **Çözüm şablonları**' nı seçin.
+3. Bir başlık girin ve ardından **yeni çözüm şablonu oluştur**' u seçin.
+4. Kuruluşunuzda henüz kaydolmadıysanız **Geliştirme Merkezi hesabı oluştur ' u seçin ve Azure programına katın**.  Daha fazla bilgi için bkz. [Microsoft Geliştirici hesabı oluşturma](../marketplace/overview.md).
+5. Başlamak **için bazı topolojiler tanımla**' yı seçin. Bir çözüm şablonu, tüm Topolojilerine bir "üst" öğesidir. Tek bir teklifte veya çözüm şablonunda birden fazla topoloji tanımlayabilirsiniz. Bir teklif hazırlama için gönderildiğinde, tüm topolojilerle gönderilir. 
 6. Bir topoloji adı girin ve ardından öğesini seçin **+** .
 7. Yeni bir sürüm girin ve ardından öğesini seçin **+** .
 8. Uygulamayı paketlediğiniz sırada oluşturduğunuz. zip dosyasını karşıya yükleyin.  
-9. **Sertifika iste** ' yi seçin. Microsoft sertifika ekibi, dosyaları inceler ve topolojiyi sertifikalandırın.
+9. **Sertifika iste**' yi seçin. Microsoft sertifika ekibi, dosyaları inceler ve topolojiyi sertifikalandırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Kendi kümelerinizde [HDInsight uygulamaları yüklemeyi](hdinsight-apps-install-applications.md) öğrenin.

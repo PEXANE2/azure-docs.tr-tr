@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 5d61c0f5f26bc46b9c4a5bc4a793df1e10710004
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130876"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006738"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Azure Blob depolamadan Hive tabloları oluşturma ve veri yükleme
 
@@ -147,12 +147,12 @@ STORED AS TEXTFILE LOCATION '<storage location>' TBLPROPERTIES("skip.header.line
 
 Aşağıda, eklenti ve diğer yapılandırma için gereken alanların açıklamaları verilmiştir:
 
-* **\<database name\>** : oluşturmak istediğiniz veritabanının adı. Yalnızca varsayılan veritabanını kullanmak istiyorsanız, " *veritabanı oluştur...* " sorgusu atlanabilir.
-* **\<table name\>** : belirtilen veritabanı içinde oluşturmak istediğiniz tablonun adı. Varsayılan veritabanını kullanmak istiyorsanız, tabloya doğrudan tarafından başvurulabilir *\<table name\>* \<database name\> .
-* **\<field separator\>** : veri dosyasında Hive tablosuna yüklenecek alanları sınırlandıran ayırıcı.
-* **\<line separator\>** : veri dosyasındaki satırları sınırlandıran ayırıcı.
-* **\<storage location\>** : Hive tablolarının verilerini kaydetmek için Azure depolama konumu. *Konum \<storage location\>* belirtmezseniz, veritabanı ve tablolar varsayılan olarak Hive kümesinin varsayılan kapsayıcısında *Hive/Warehouse/* Directory içinde depolanır. Depolama konumunu belirtmek istiyorsanız, depolama konumunun veritabanı ve tablolar için varsayılan kapsayıcı içinde olması gerekir. Bu konum, kümenin varsayılan kapsayıcısına göre *' wasb:/// \<directory 1> /'* veya *' wasb:/// \<directory 1> / \<directory 2> /'* biçiminde bir konum olarak adlandırılmalıdır. Sorgu yürütüldükten sonra, ilişkili dizinler varsayılan kapsayıcı içinde oluşturulur.
-* **TBLPROPERTIES ("Skip. Header. Line. Count" = "1")** : veri dosyasında bir başlık satırı varsa, bu özelliği *Create Table* sorgusunun **sonuna** eklemeniz gerekir. Aksi takdirde, başlık satırı tabloya bir kayıt olarak yüklenir. Veri dosyasında bir başlık satırı yoksa, bu yapılandırma sorguda atlanabilir.
+* **\<database name\>**: oluşturmak istediğiniz veritabanının adı. Yalnızca varsayılan veritabanını kullanmak istiyorsanız, "*veritabanı oluştur...*" sorgusu atlanabilir.
+* **\<table name\>**: belirtilen veritabanı içinde oluşturmak istediğiniz tablonun adı. Varsayılan veritabanını kullanmak istiyorsanız, tabloya doğrudan tarafından başvurulabilir *\<table name\>* \<database name\> .
+* **\<field separator\>**: veri dosyasında Hive tablosuna yüklenecek alanları sınırlandıran ayırıcı.
+* **\<line separator\>**: veri dosyasındaki satırları sınırlandıran ayırıcı.
+* **\<storage location\>**: Hive tablolarının verilerini kaydetmek için Azure depolama konumu. *Konum \<storage location\>* belirtmezseniz, veritabanı ve tablolar varsayılan olarak Hive kümesinin varsayılan kapsayıcısında *Hive/Warehouse/* Directory içinde depolanır. Depolama konumunu belirtmek istiyorsanız, depolama konumunun veritabanı ve tablolar için varsayılan kapsayıcı içinde olması gerekir. Bu konum, kümenin varsayılan kapsayıcısına göre *' wasb:/// \<directory 1> /'* veya *' wasb:/// \<directory 1> / \<directory 2> /'* biçiminde bir konum olarak adlandırılmalıdır. Sorgu yürütüldükten sonra, ilişkili dizinler varsayılan kapsayıcı içinde oluşturulur.
+* **TBLPROPERTIES ("Skip. Header. Line. Count" = "1")**: veri dosyasında bir başlık satırı varsa, bu özelliği *Create Table* sorgusunun **sonuna** eklemeniz gerekir. Aksi takdirde, başlık satırı tabloya bir kayıt olarak yüklenir. Veri dosyasında bir başlık satırı yoksa, bu yapılandırma sorguda atlanabilir.
 
 ## <a name="load-data-to-hive-tables"></a><a name="load-data"></a>Hive tablolarına veri yükleme
 Verileri bir Hive tablosuna yükleyen Hive sorgusu aşağıda verilmiştir.
@@ -161,7 +161,7 @@ Verileri bir Hive tablosuna yükleyen Hive sorgusu aşağıda verilmiştir.
 LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 ```
 
-* **\<path to blob data\>** : Hive tablosuna yüklenecek blob dosyası HDInsight Hadoop kümesinin varsayılan kapsayıcıda ise, *\<path to blob data\>* *' wasb:// \<directory in this container> / \<blob file name> '* biçiminde olmalıdır. Blob dosyası, HDInsight Hadoop kümesinin ek bir kapsayıcısında de olabilir. Bu durumda, *\<path to blob data\>* *' wasb:// \<container name> @ \<storage account name> . blob.Core.Windows.net/ \<blob file name> '* biçiminde olmalıdır.
+* **\<path to blob data\>**: Hive tablosuna yüklenecek blob dosyası HDInsight Hadoop kümesinin varsayılan kapsayıcıda ise, *\<path to blob data\>* *' wasb:// \<directory in this container> / \<blob file name> '* biçiminde olmalıdır. Blob dosyası, HDInsight Hadoop kümesinin ek bir kapsayıcısında de olabilir. Bu durumda, *\<path to blob data\>* *' wasb:// \<container name> @ \<storage account name> . blob.Core.Windows.net/ \<blob file name> '* biçiminde olmalıdır.
 
   > [!NOTE]
   > Hive tablosuna yüklenecek blob verileri, Hadoop kümesi için depolama hesabının varsayılan veya ek kapsayıcısında olmalıdır. Aksi halde, veri *yükleme* sorgusu, verilere erişemediği konusunda şikayetçi olur.
@@ -249,7 +249,7 @@ INSERT OVERWRITE TABLE <database name>.<ORC table name> PARTITION (<partition va
     WHERE <partition variable>=<partition value>;
 ```
 
-*\<external text file table name\>* Tüm veriler öğesine eklendikten sonra aşağıdaki sorgu kullanılırken öğesini bırakmak güvenlidir *\<database name\> . \<ORC table name\>* :
+*\<external text file table name\>* Tüm veriler öğesine eklendikten sonra aşağıdaki sorgu kullanılırken öğesini bırakmak güvenlidir *\<database name\> . \<ORC table name\>*:
 
 ```hiveql
     DROP TABLE IF EXISTS <database name>.<external textfile table name>;

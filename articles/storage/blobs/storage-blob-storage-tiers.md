@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 771b48c36a409654a1d1586590811c81e5c2340a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 87106cce018a2b2663de2a9abbb43b31ab58c125
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93086763"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96007333"
 ---
 # <a name="access-tiers-for-azure-blob-storage---hot-cool-and-archive"></a>Azure Blob depolama için erişim katmanları-sık erişimli, seyrek erişimli ve arşiv
 
@@ -55,7 +55,7 @@ Seyrek erişim katmanı, sık erişim katmanına kıyasla daha düşük depolama
 
 - Kısa süreli yedekleme ve olağanüstü durum kurtarma veri kümeleri.
 - Artık sık görüntülenmeyen ancak erişildiğinde hemen kullanılabilir olması beklenen eski medya içeriği.
-- Gelecekte işlenmek üzere daha fazla veri toplanırken uygun maliyetli olarak depolanması gereken büyük veri kümeleri. ( *Örneğin* , bilimsel verilerin uzun süreli depolanması, üretim tesisinden alınan ham telemetri verileri)
+- Gelecekte işlenmek üzere daha fazla veri toplanırken uygun maliyetli olarak depolanması gereken büyük veri kümeleri. (*Örneğin*, bilimsel verilerin uzun süreli depolanması, üretim tesisinden alınan ham telemetri verileri)
 
 ## <a name="archive-access-tier"></a>Arşiv erişim katmanı
 
@@ -112,7 +112,7 @@ Bir blob bir çarpıtma katmanına taşındığında (Arşiv->seyrek erişimli, 
 
 Seyrek Erişimli katmana taşınan herhangi bir blob (yalnızca GPv2 hesapları), sık erişimli 30 günlük bir erken silme süresine tabidir. Arşiv katmanına taşınan herhangi bir blob, arşiv erken silme dönemi olan 180 gün ile tabidir. Bu ücret eşit olarak bölünür. Örneğin, bir blob arşive taşınır ve 45 gün sonra sık erişimli katmana taşınırsa veya taşınmışsa, bu Blobun arşiv 'de depolanması için bir erken silme ücreti, 135 (180 eksi 45) güne denk ücretlendirilirsiniz.
 
-Bir erişim katmanı değişikliği yoksa, **son değiştirilme** olan blob özelliğini kullanarak erken silme işlemini hesaplayabilirsiniz. Aksi takdirde, erişim katmanının en son seyrek erişimli veya arşiv olarak değiştirildiği zaman, blob özelliğini görüntüleyerek kullanabilirsiniz: **erişim katmanı değiştirme zamanı** . Blob özellikleri hakkında daha fazla bilgi için bkz. [BLOB özelliklerini al](https://docs.microsoft.com/rest/api/storageservices/get-blob-properties).
+Bir erişim katmanı değişikliği yoksa, **son değiştirilme** olan blob özelliğini kullanarak erken silme işlemini hesaplayabilirsiniz. Aksi takdirde, erişim katmanının en son seyrek erişimli veya arşiv olarak değiştirildiği zaman, blob özelliğini görüntüleyerek kullanabilirsiniz: **erişim katmanı değiştirme zamanı**. Blob özellikleri hakkında daha fazla bilgi için bkz. [BLOB özelliklerini al](/rest/api/storageservices/get-blob-properties).
 
 ## <a name="comparing-block-blob-storage-options"></a>Blok Blobu depolama seçeneklerini karşılaştırma
 
@@ -121,7 +121,7 @@ Aşağıdaki tabloda, Premium performans bloğu blob depolaması ve sık erişim
 |                                           | **Premium performans**   | **Etkin katman** | **Cool katmanı**       | **Arşiv katmanı**  |
 | ----------------------------------------- | ------------------------- | ------------ | ------------------- | ----------------- |
 | **Kullanılabilirlik**                          | %99,9                     | %99,9        | %99                 | Çevrimdışı           |
-| **Kullanılabilirlik** <br> **(RA-GRS okumaları)**  | Yok                       | %99,99       | %99,9               | Çevrimdışı           |
+| **Kullanılabilirlik** <br> **(RA-GRS okumaları)**  | YOK                       | %99,99       | %99,9               | Çevrimdışı           |
 | **Kullanım ücretleri**                         | Daha yüksek depolama maliyetleri, daha düşük erişim ve işlem maliyeti | Daha yüksek depolama maliyetleri, daha düşük erişim ve işlem maliyetleri | Daha düşük depolama maliyetleri, daha yüksek erişim ve işlem maliyetleri | En düşük depolama maliyetleri, en yüksek erişim ve işlem maliyetleri |
 | **En düşük nesne boyutu**                   | Yok                       | Yok          | Yok                 | Yok               |
 | **En az depolama süresi**              | Yok                       | Yok          | 30 gün<sup>1</sup> | 180 gün
@@ -150,7 +150,7 @@ Bu bölümde, aşağıdaki senaryolar Azure portal ve PowerShell kullanılarak g
 
 1. Depolama hesabınızı seçin.
 
-1. **Ayarlar** ' da, hesap yapılandırmasını görüntülemek ve değiştirmek için **yapılandırma** ' yı seçin.
+1. **Ayarlar**' da, hesap yapılandırmasını görüntülemek ve değiştirmek için **yapılandırma** ' yı seçin.
 
 1. Gereksinimleriniz için doğru erişim katmanını seçin: **erişim katmanını** seyrek **erişimli veya** **sık** erişimli olarak ayarlayın.
 
@@ -180,7 +180,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 
 1. Kapsayıcınızı seçin ve ardından blobu seçin.
 
-1. **BLOB özellikleri** ' nde **Katmanı Değiştir** ' i seçin.
+1. **BLOB özellikleri**' nde **Katmanı Değiştir**' i seçin.
 
 1. **Sık** **erişimli, seyrek** erişimli veya **Arşiv** erişim katmanını seçin. Blobun Şu anda arşivde varsa ve çevrimiçi bir katmana yeniden dönmek istiyorsanız, **Standart** veya **yüksek** bir yeniden doldurma önceliği de seçebilirsiniz.
 
@@ -213,12 +213,12 @@ $blob.ICloudBlob.SetStandardBlobTier("Archive")
 
 Tüm depolama hesapları, Blok Blobu depolama için her Blobun katmanını temel alan bir fiyatlandırma modeli kullanır. Aşağıdaki faturalandırma konularını göz önünde bulundurun:
 
-- **Depolama maliyetleri** : Depolanan veri miktarına ek olarak, veri depolamanın maliyeti erişim katmanına bağlı olarak değişir. Katmanın erişim sıklığı düştükçe gigabayt başına ücret de azalır.
-- **Veri erişimi maliyetleri** : Katmanın erişimi sıklığı düştükçe veri erişimi ücretleri artar. Seyrek erişimli ve arşiv erişim katmanındaki veriler için, okuma için gigabayt başına veri erişim ücreti üzerinden ücretlendirilirsiniz.
-- **İşlem maliyetleri** : katman daha soğuk aldığından, artan tüm katmanların işlem başına ücreti vardır.
-- **Coğrafi Çoğaltma veri aktarımı maliyetleri** : Bu ücret, GRS ve RA-GRS dahil olmak üzere yalnızca coğrafi çoğaltma yapılandırılmış hesaplara uygulanır. Coğrafi çoğaltma veri aktarımı gigabayt başına ücret doğurur.
-- **Giden veri aktarımı maliyetleri** : Giden veri aktarımları (bir Azure bölgesinin dışına aktarılan veriler), genel amaçlı depolama hesapları ile tutarlı şekilde gigabayt başına esaslı olarak bant genişliği kullanımı için fatura doğurur.
-- **Erişim katmanını değiştirme** : hesap erişim katmanını değiştirmek, açık bir katman kümesi olmayan hesapta depolanan, _erişim katmanı çıkarılan_ blob 'ların katman değişikliği ücretlerine neden olur. Tek bir Blobun erişim katmanını değiştirme hakkında daha fazla bilgi için bkz. [BLOB düzeyi katmanlama faturalandırma](#blob-level-tiering-billing).
+- **Depolama maliyetleri**: Depolanan veri miktarına ek olarak, veri depolamanın maliyeti erişim katmanına bağlı olarak değişir. Katmanın erişim sıklığı düştükçe gigabayt başına ücret de azalır.
+- **Veri erişimi maliyetleri**: Katmanın erişimi sıklığı düştükçe veri erişimi ücretleri artar. Seyrek erişimli ve arşiv erişim katmanındaki veriler için, okuma için gigabayt başına veri erişim ücreti üzerinden ücretlendirilirsiniz.
+- **İşlem maliyetleri**: katman daha soğuk aldığından, artan tüm katmanların işlem başına ücreti vardır.
+- **Coğrafi Çoğaltma veri aktarımı maliyetleri**: Bu ücret, GRS ve RA-GRS dahil olmak üzere yalnızca coğrafi çoğaltma yapılandırılmış hesaplara uygulanır. Coğrafi çoğaltma veri aktarımı gigabayt başına ücret doğurur.
+- **Giden veri aktarımı maliyetleri**: Giden veri aktarımları (bir Azure bölgesinin dışına aktarılan veriler), genel amaçlı depolama hesapları ile tutarlı şekilde gigabayt başına esaslı olarak bant genişliği kullanımı için fatura doğurur.
+- **Erişim katmanını değiştirme**: hesap erişim katmanını değiştirmek, açık bir katman kümesi olmayan hesapta depolanan, _erişim katmanı çıkarılan_ blob 'ların katman değişikliği ücretlerine neden olur. Tek bir Blobun erişim katmanını değiştirme hakkında daha fazla bilgi için bkz. [BLOB düzeyi katmanlama faturalandırma](#blob-level-tiering-billing).
 
     Sürüm oluşturma etkinken bir blob için erişim katmanını değiştirme veya Blobun anlık görüntüler varsa, ek ücretler elde edebilir. Blob sürüm oluşturma etkinken nasıl faturalandırılacaksınız ve bir Blobun katmanını açıkça değiştirdiğiniz hakkında daha fazla bilgi için, blob sürümü oluşturma belgelerindeki [fiyatlandırma ve faturalandırma](versioning-overview.md#pricing-and-billing) bölümüne bakın. Blob 'un anlık görüntülere sahip olduğu ve Blobun katmanını açıkça değiştirdiğiniz zaman faturalandırılma hakkında daha fazla bilgi için bkz. blob anlık görüntüleri belgelerindeki [fiyatlandırma ve faturalandırma](snapshots-overview.md#pricing-and-billing) .
 
@@ -239,7 +239,7 @@ Evet. Hesap düzeyinde ayarlanan **erişim katmanı** özniteliği, bu hesaptaki
 
 **Blob veya GPv2 depolama hesabımın varsayılan erişim katmanını değiştirebilir miyim?**
 
-Evet, depolama hesabındaki **erişim katmanı** özniteliğini ayarlayarak varsayılan hesap katmanını değiştirebilirsiniz. Hesap katmanını değiştirmek, hesapta depolanan ve açık katman kümesi olmayan tüm nesneler için geçerlidir (örneğin, **sık erişimli (çıkarılabilen)** veya seyrek erişimli **(çıkartılan)** ). Hesap katmanını, yalnızca GPv2 hesaplarında ayarlanmış bir katman olmadan tüm Bloblar için sık erişimli ve seyrek erişimli bir yazma işlemi (10.000 başına), BLOB depolama ve GPv2 hesaplarındaki tüm Bloblar için hem okuma işlemleri (10.000 başına) hem de veri alma (GB başına) ücretleri olarak değiştirme.
+Evet, depolama hesabındaki **erişim katmanı** özniteliğini ayarlayarak varsayılan hesap katmanını değiştirebilirsiniz. Hesap katmanını değiştirmek, hesapta depolanan ve açık katman kümesi olmayan tüm nesneler için geçerlidir (örneğin, **sık erişimli (çıkarılabilen)** veya seyrek erişimli **(çıkartılan)**). Hesap katmanını, yalnızca GPv2 hesaplarında ayarlanmış bir katman olmadan tüm Bloblar için sık erişimli ve seyrek erişimli bir yazma işlemi (10.000 başına), BLOB depolama ve GPv2 hesaplarındaki tüm Bloblar için hem okuma işlemleri (10.000 başına) hem de veri alma (GB başına) ücretleri olarak değiştirme.
 
 **Varsayılan hesap erişim katmanımı arşiv olarak ayarlayabilir miyim?**
 
@@ -291,6 +291,6 @@ GPv2 ve BLOB depolama hesaplarında sık erişimli, seyrek erişimli ve arşivi 
 - [Azure Blob depolama yaşam döngüsünü yönetme](storage-lifecycle-management-concepts.md)
 - [Blob verilerini arşiv katmanından yeniden doldurma hakkında bilgi edinin](storage-blob-rehydration.md)
 - [Premium performansının uygulamanıza avantajına sahip olup olmadığını belirleme](storage-blob-performance-tiers.md)
-- [Azure Depolama ölçümlerini etkinleştirerek geçerli depolama hesaplarınızın kullanımını değerlendirme](../common/storage-enable-and-view-metrics.md)
+- [Azure Depolama ölçümlerini etkinleştirerek geçerli depolama hesaplarınızın kullanımını değerlendirme](./monitor-blob-storage.md)
 - [BLOB depolama ve GPv2 hesaplarında bölgeye göre sık erişimli, seyrek erişimli ve arşiv fiyatlandırmasını denetleme](https://azure.microsoft.com/pricing/details/storage/)
 - [Veri aktarımı fiyatlandırmasını denetleme](https://azure.microsoft.com/pricing/details/data-transfers/)

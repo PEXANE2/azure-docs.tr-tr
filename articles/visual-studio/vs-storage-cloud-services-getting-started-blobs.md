@@ -13,24 +13,24 @@ ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 670aef4f6f866788ef7a1a4502de242e765f5cc6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89e0d6873ebfd8f8396c36185730c57a66af0dd9
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89017660"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96007060"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Azure Blob Depolama ve Visual Studio’ya bağlı hizmetleri kullanmaya başlama (bulut hizmeti projeleri)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>Genel Bakış
-Bu makalede, Visual Studio Cloud Services projesindeki Visual Studio **bağlı hizmetler Ekle** iletişim kutusunu kullanarak bir Azure depolama hesabı oluşturduktan veya başvurduktan sonra Azure Blob Storage 'ı kullanmaya nasıl başlacağınız açıklanır. Blob kapsayıcılarının nasıl erişebileceğini ve oluşturulacağını ve Blobları karşıya yükleme, listeleme ve indirme gibi genel görevlerin nasıl gerçekleştirileceğini göstereceğiz. Örnekler C dilinde yazılır \# ve [.net Için Microsoft Azure depolama istemci kitaplığı](https://msdn.microsoft.com/library/azure/dn261237.aspx)' nı kullanır.
+Bu makalede, Visual Studio Cloud Services projesindeki Visual Studio **bağlı hizmetler Ekle** iletişim kutusunu kullanarak bir Azure depolama hesabı oluşturduktan veya başvurduktan sonra Azure Blob Storage 'ı kullanmaya nasıl başlacağınız açıklanır. Blob kapsayıcılarının nasıl erişebileceğini ve oluşturulacağını ve Blobları karşıya yükleme, listeleme ve indirme gibi genel görevlerin nasıl gerçekleştirileceğini göstereceğiz. Örnekler C dilinde yazılır \# ve [.net Için Microsoft Azure depolama istemci kitaplığı](/previous-versions/azure/dn261237(v=azure.100))' nı kullanır.
 
 Azure Blob depolama, dünyanın her yerinden HTTP veya HTTPS aracılığıyla erişilebilen büyük miktarda yapılandırılmamış veriyi depolamaya yönelik bir hizmettir. Tek bir blob herhangi bir boyutta olabilir. Blob 'lar görüntüler, ses ve video dosyaları, ham veriler ve belge dosyaları gibi şeyler olabilir.
 
 Klasörlerde canlı olan dosyalar gibi, depolama Blobları kapsayıcılar içinde de vardır. Depolama oluşturduktan sonra, depolamada bir veya daha fazla kapsayıcı oluşturursunuz. Örneğin, "Scrapbook" adlı bir depolama alanında, resimleri depolamak için "resimler" adlı depolamada ve ses dosyalarını depolamak için "ses" olarak adlandırılan bir kapsayıcı oluşturabilirsiniz. Kapsayıcıları oluşturduktan sonra ayrı BLOB dosyalarını bunlara yükleyebilirsiniz.
 
-* Blob 'ları programlı olarak işleme hakkında daha fazla bilgi için bkz. [.NET kullanarak Azure Blob depolamayı kullanmaya başlama](../storage/blobs/storage-dotnet-how-to-use-blobs.md).
+* Blob 'ları programlı olarak işleme hakkında daha fazla bilgi için bkz. [.NET kullanarak Azure Blob depolamayı kullanmaya başlama](../storage/blobs/storage-quickstart-blobs-dotnet.md).
 * Azure depolama hakkında genel bilgi için bkz. [depolama belgeleri](https://azure.microsoft.com/documentation/services/storage/).
 * Azure Cloud Services hakkında genel bilgi için bkz. [Cloud Services belgeleri](https://azure.microsoft.com/documentation/services/cloud-services/).
 * ASP.NET uygulamalarını programlama hakkında daha fazla bilgi için bkz. [ASP.net](https://www.asp.net).
@@ -73,7 +73,7 @@ Bulut hizmeti projelerindeki bloblara programlı bir şekilde erişmek için, za
 
 ## <a name="create-a-container-in-code"></a>Kodda kapsayıcı oluşturma
 > [!NOTE]
-> ASP.NET ' deki Azure depolama 'ya çağrılar gerçekleştiren bazı API 'Ler zaman uyumsuzdur. Daha fazla bilgi için bkz. [Async ve await Ile zaman uyumsuz programlama](https://msdn.microsoft.com/library/hh191443.aspx) . Aşağıdaki örnekteki kod, zaman uyumsuz programlama yöntemlerini kullandığınızı varsayar.
+> ASP.NET ' deki Azure depolama 'ya çağrılar gerçekleştiren bazı API 'Ler zaman uyumsuzdur. Daha fazla bilgi için bkz. [Async ve await Ile zaman uyumsuz programlama](/previous-versions/hh191443(v=vs.140)) . Aşağıdaki örnekteki kod, zaman uyumsuz programlama yöntemlerini kullandığınızı varsayar.
 > 
 > 
 
@@ -114,7 +114,7 @@ using (var fileStream = System.IO.File.OpenRead(@"path\myfile"))
 ```
 
 ## <a name="list-the-blobs-in-a-container"></a>Kapsayıcıdaki blobları listeleme
-Blob’ları bir kapsayıcıda listelemek için ilk olarak bir kapsayıcı başvurusu edinin. Ardından içindeki blobları ve/veya dizinleri almak için kapsayıcının **ListBlobs** yöntemini kullanabilirsiniz. Döndürülen bir **ıblobitem**için zengin özellik ve Yöntem kümesine erişmek için, bunu bir **Cloudblockblob**, **Cloudpageblob**veya **cloudblobdirectory** nesnesine atamalısınız. Tür bilinmiyorsa, hangisine yayınlayacağınızı belirlemek için bir tür denetimi kullanabilirsiniz. Aşağıdaki kod, **resimler** kapsayıcısındaki her nesnenin URI’sinin nasıl alınacağını ve çıkacağını gösterir:
+Blob’ları bir kapsayıcıda listelemek için ilk olarak bir kapsayıcı başvurusu edinin. Ardından içindeki blobları ve/veya dizinleri almak için kapsayıcının **ListBlobs** yöntemini kullanabilirsiniz. Döndürülen bir **ıblobitem** için zengin özellik ve Yöntem kümesine erişmek için, bunu bir **Cloudblockblob**, **Cloudpageblob** veya **cloudblobdirectory** nesnesine atamalısınız. Tür bilinmiyorsa, hangisine yayınlayacağınızı belirlemek için bir tür denetimi kullanabilirsiniz. Aşağıdaki kod, **resimler** kapsayıcısındaki her nesnenin URI’sinin nasıl alınacağını ve çıkacağını gösterir:
 
 ```csharp
 // Loop over items within the container and output the length and URI.
@@ -165,7 +165,7 @@ Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/
 ```
 
 
-İsteğe bağlı olarak **ListBlobs** yönteminin **UseFlatBlobListing** parametresini **true** olarak ayarlayabilirsiniz. Bu, dizinden bağımsız olarak her Blobun bir **Cloudblockblob**olarak döndürüldüğünden oluşur. **Listblob**'ların çağrısı aşağıda verilmiştir:
+İsteğe bağlı olarak **ListBlobs** yönteminin **UseFlatBlobListing** parametresini **true** olarak ayarlayabilirsiniz. Bu, dizinden bağımsız olarak her Blobun bir **Cloudblockblob** olarak döndürüldüğünden oluşur. **Listblob**'ların çağrısı aşağıda verilmiştir:
 
 ```csharp
 // Loop over items within the container and output the length and URI.
@@ -188,7 +188,7 @@ Block blob of length 399751: https://<accountname>.blob.core.windows.net/photos/
 Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/photo1.jpg
 ```
 
-Daha fazla bilgi için bkz. [Cloudblobcontainer. Listbloblar](https://msdn.microsoft.com/library/azure/dd135734.aspx).
+Daha fazla bilgi için bkz. [Cloudblobcontainer. Listbloblar](/rest/api/storageservices/List-Blobs).
 
 ## <a name="download-blobs"></a>Blob’ları indirme
 Blob’ları indirmek için ilk olarak bir blob başvurusu alın ve ardından **DownloadToStream** yöntemini çağırın. Aşağıdaki örnek, blob içeriklerini bir akış nesnesine aktarmak ve ardından yerel bir dosyaya kalıcı olarak almak için **DownloadToStream** yöntemini kullanır:
@@ -270,4 +270,3 @@ async public static Task ListBlobsSegmentedInFlatListing(CloudBlobContainer cont
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [!INCLUDE [vs-storage-dotnet-blobs-next-steps](../../includes/vs-storage-dotnet-blobs-next-steps.md)]
-

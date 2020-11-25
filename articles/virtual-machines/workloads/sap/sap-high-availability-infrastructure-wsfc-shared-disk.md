@@ -18,11 +18,11 @@ ms.date: 10/16/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 205a290d2483a032ed6b5579dbedd555f9f6d02f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94958651"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005529"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>SAP Ass/SCS için bir Windows Yük devretme kümesi ve paylaşılan disk kullanarak SAP HA için Azure altyapısını hazırlama
 
@@ -175,7 +175,7 @@ Sunulan yapılandırma, SAP iş yükleri için en iyi ağ gecikme süresine ula�
 > Azure yakınlık yerleştirme grupları, Azure Paylaşılan disk kullanımı için önkoşuldur.
  
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Yüklemeye başlamadan önce şu makaleyi gözden geçirin:
 

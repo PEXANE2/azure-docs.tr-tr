@@ -5,11 +5,11 @@ services: container-service
 ms.topic: article
 ms.date: 04/08/2020
 ms.openlocfilehash: 39c2fe177d0a6d913d7bf2b2baf44af3c69c0868
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900088"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006942"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ile bir küme için birden çok düğüm havuzu oluşturma ve yönetme
 
@@ -161,7 +161,7 @@ Bu örnekte iki düğüm havuzu olduğundan, bir düğüm havuzunu yükseltmek i
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
-*Mynodepool* 'yi yükseltelim. Aşağıdaki örnekte gösterildiği gibi, düğüm havuzunu yükseltmek için [az aks nodepool Upgrade][az-aks-nodepool-upgrade] komutunu kullanın:
+*Mynodepool*'yi yükseltelim. Aşağıdaki örnekte gösterildiği gibi, düğüm havuzunu yükseltmek için [az aks nodepool Upgrade][az-aks-nodepool-upgrade] komutunu kullanın:
 
 ```azurecli-interactive
 az aks nodepool upgrade \
@@ -214,7 +214,7 @@ En iyi uygulama olarak, bir AKS kümesindeki tüm düğüm havuzlarını aynı K
 ## <a name="upgrade-a-cluster-control-plane-with-multiple-node-pools"></a>Birden çok düğümlü havuzlarla küme denetim düzlemi 'ni yükseltme
 
 > [!NOTE]
-> Kubernetes, standart [anlamsal sürüm](https://semver.org/) oluşturma düzenini kullanır. Sürüm numarası *x. y. z* olarak ifade edilir; burada *x* ana sürümdür, *y* ise ikincil sürümdür ve *z* , yama sürümüdür. Örneğin, sürüm *1.12.6* ' de, 1 ana sürümdür, 12 ise ikincil sürümdür ve 6 Düzeltme Eki sürümüdür. Denetim düzlemi ve ilk düğüm havuzunun Kubernetes sürümü küme oluşturma sırasında ayarlanır. Tüm ek düğüm havuzlarının, kümeye eklendiğinde Kubernetes sürümü ayarlanmış olmalıdır. Kubernetes sürümleri, düğüm havuzlarının yanı sıra düğüm havuzu ile denetim düzlemi arasında farklılık gösterebilir.
+> Kubernetes, standart [anlamsal sürüm](https://semver.org/) oluşturma düzenini kullanır. Sürüm numarası *x. y. z* olarak ifade edilir; burada *x* ana sürümdür, *y* ise ikincil sürümdür ve *z* , yama sürümüdür. Örneğin, sürüm *1.12.6*' de, 1 ana sürümdür, 12 ise ikincil sürümdür ve 6 Düzeltme Eki sürümüdür. Denetim düzlemi ve ilk düğüm havuzunun Kubernetes sürümü küme oluşturma sırasında ayarlanır. Tüm ek düğüm havuzlarının, kümeye eklendiğinde Kubernetes sürümü ayarlanmış olmalıdır. Kubernetes sürümleri, düğüm havuzlarının yanı sıra düğüm havuzu ile denetim düzlemi arasında farklılık gösterebilir.
 
 AKS kümesi, Kubernetes sürümleriyle ilişkili iki küme kaynak nesnesine sahiptir.
 
@@ -577,7 +577,7 @@ az aks nodepool add \
 ```
 
 > [!NOTE]
-> Ayrıca, `--tags` [az aks nodepool Update][az-aks-nodepool-update] komutunu kullanırken ve küme oluşturma sırasında parametresini de kullanabilirsiniz. Küme oluşturma sırasında parametresi, `--tags` kümeyle oluşturulan ilk düğüm havuzuna etiketi uygular. Tüm etiket adları, [Azure kaynaklarınızı düzenlemek Için kullanılan etiketlerle][tag-limitation]ilgili sınırlamalara uymalıdır. Bir düğüm havuzunu parametresiyle güncelleştirmek, `--tags` var olan tüm etiket değerlerini güncelleştirir ve yeni Etiketler ekler. Örneğin, düğüm havuzunuzun *Bölüm = It* ve *costcenter = 9999* etiketleri varsa ve bunu *Team = dev* ve *costcenter = 111* ile GÜNCELLEŞTIRDIYSENIZ, Etiketler için nodepool, *Bölüm = It* , *costcenter = 111* ve *Team = dev* olur.
+> Ayrıca, `--tags` [az aks nodepool Update][az-aks-nodepool-update] komutunu kullanırken ve küme oluşturma sırasında parametresini de kullanabilirsiniz. Küme oluşturma sırasında parametresi, `--tags` kümeyle oluşturulan ilk düğüm havuzuna etiketi uygular. Tüm etiket adları, [Azure kaynaklarınızı düzenlemek Için kullanılan etiketlerle][tag-limitation]ilgili sınırlamalara uymalıdır. Bir düğüm havuzunu parametresiyle güncelleştirmek, `--tags` var olan tüm etiket değerlerini güncelleştirir ve yeni Etiketler ekler. Örneğin, düğüm havuzunuzun *Bölüm = It* ve *costcenter = 9999* etiketleri varsa ve bunu *Team = dev* ve *costcenter = 111* ile GÜNCELLEŞTIRDIYSENIZ, Etiketler için nodepool, *Bölüm = It*, *costcenter = 111* ve *Team = dev* olur.
 
 [Az aks nodepool List][az-aks-nodepool-list] komutundan aşağıdaki örnek çıktı, *tagnodepool* belirtilen *etikete* sahip düğümleri *oluşturuyor* olduğunu gösterir:
 

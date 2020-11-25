@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 08/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: e8f027ccc577df79e561fca7194c20b6cc7ef2c6
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94356816"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005512"
 ---
 # <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Elium yapılandırma
 
@@ -55,7 +55,7 @@ Azure AD ile otomatik Kullanıcı sağlama için Elium 'u yapılandırmadan önc
 
     ![Elium 'da ayarlar menü öğesi](media/Elium-provisioning-tutorial/setting.png)
 
-1. Sol alt köşede, **Gelişmiş** ' ın altında **güvenlik** ' i seçin.
+1. Sol alt köşede, **Gelişmiş**' ın altında **güvenlik**' i seçin.
 
     ![Elium 'da güvenlik bağlantısı](media/Elium-provisioning-tutorial/security.png)
 
@@ -67,11 +67,11 @@ Azure AD ile otomatik Kullanıcı sağlama için Elium 'u yapılandırmadan önc
 
 Azure AD ile otomatik Kullanıcı sağlaması için Elium 'u yapılandırmak için Azure AD Uygulama Galerisi 'nden yönetilen hizmet olarak yazılım (SaaS) uygulamaları listenize da Elium eklemeniz gerekir. Şu adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com)sol gezinti panelinde **Azure Active Directory** ' i seçin.
+1. [Azure Portal](https://portal.azure.com)sol gezinti panelinde **Azure Active Directory**' i seçin.
 
     ![Azure Active Directory menü öğesi](common/select-azuread.png)
 
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
+1. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
      ![Azure AD kurumsal uygulamaları dikey penceresi](common/enterprise-applications.png)
 
@@ -92,11 +92,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve grup at
 
 Azure AD 'de Elium için otomatik Kullanıcı sağlamayı yapılandırmak üzere aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com)oturum açın, **Kurumsal uygulamalar** ' ı seçin ve ardından **tüm uygulamalar** ' ı seçin.
+1. [Azure Portal](https://portal.azure.com)oturum açın, **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 
     ![Azure AD kurumsal uygulamaları dikey penceresi](common/enterprise-applications.png)
 
-1. Uygulamalar listesinde, **Elium** ' u seçin.
+1. Uygulamalar listesinde, **Elium**' u seçin.
 
     ![Kurumsal uygulamalar dikey penceresinde uygulamalar listesi](common/all-applications.png)
 
@@ -104,7 +104,7 @@ Azure AD 'de Elium için otomatik Kullanıcı sağlamayı yapılandırmak üzere
 
     ![Kurumsal uygulamalar dikey penceresinde sağlama sekmesi](common/provisioning.png)
 
-1. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+1. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Sağlama modu için otomatik ayar](common/provisioning-automatic.png)
 
@@ -116,9 +116,9 @@ Azure AD 'de Elium için otomatik Kullanıcı sağlamayı yapılandırmak üzere
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-1. **Kaydet** ’e tıklayın.
+1. **Kaydet**’e tıklayın.
 
-1. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları uyumum olarak eşitler** ' ı seçin.
+1. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları uyumum olarak eşitler**' ı seçin.
 
     ![Azure AD kullanıcılarını eşleme ile uyumlu hale getirmek için bağlantıyı eşitler](media/Elium-provisioning-tutorial/usermapping.png)
 
@@ -136,7 +136,7 @@ Azure AD 'de Elium için otomatik Kullanıcı sağlamayı yapılandırmak üzere
 
     ![Sağlama kapsamı liste kutusu](common/provisioning-scope.png)
 
-1. Sağlamaya hazırsanız **Kaydet** ' i seçin.
+1. Sağlamaya hazırsanız **Kaydet**' i seçin.
 
     ![Sağlama yapılandırması için Kaydet düğmesi](common/provisioning-configuration-save.png)
 

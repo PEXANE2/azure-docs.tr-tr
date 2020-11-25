@@ -16,11 +16,11 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 244fdbf7cb723fe85e0987d176a13242f0bff064
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94956832"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005937"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>StorSimple Sanal dizisi dağıtma-Azure portal aracılığıyla dosya sunucusu olarak ayarlama
 ![Bir sanal diziyi dağıtmak için gereken adımları gösteren diyagram. Üçüncü adımın ilk bölümü dosya sunucusu olarak ayarlanır ve vurgulanır.](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
