@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: jeedes
 ms.openlocfilehash: 456348f5492af44274a37a6400fb8d95e9bd55a4
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516038"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015154"
 ---
 # <a name="tutorial-integrate-mvision-cloud-azure-ad-sso-configuration-with-azure-active-directory"></a>Öğretici: MVISION bulutu Azure AD SSO yapılandırmasını Azure Active Directory ile tümleştirin
 
@@ -56,7 +56,7 @@ MVISION bulutu Azure AD SSO yapılandırmasının Azure AD 'ye tümleştirilmesi
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**Britta Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'YU MVision bulutu Azure AD SSO yapılandırmasıyla yapılandırın ve test edin. SSO 'nun çalışması için, MVISION bulutu Azure AD SSO yapılandırmasındaki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**Britta Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'YU MVision bulutu Azure AD SSO yapılandırmasıyla yapılandırın ve test edin. SSO 'nun çalışması için, MVISION bulutu Azure AD SSO yapılandırmasındaki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu MVISION bulutu Azure AD SSO yapılandırmasıyla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -118,14 +118,14 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alan türü**brittasimon@yourcompanydomain.extension**  
+    b. **Kullanıcı adı** alan türü **brittasimon@yourcompanydomain.extension**  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

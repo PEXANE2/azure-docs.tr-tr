@@ -16,11 +16,11 @@ ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
 ms.openlocfilehash: 12ab5a9598cc0222f5a3e64985be2e2ea9e7e2fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85564295"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014865"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>StorSimple 8000 serisi cihazındaki bir donanım bileşenini değiştirme
 
@@ -69,11 +69,11 @@ Cihazınızdaki ana donanım bileşenleri aşağıdaki tablolarda özetlenmekted
 
 | Bileşenler | # Var | Eklenti modülü | Değiştirme yordamı |
 |:--- |:--- |:--- |:--- |
-| Kasa |1 |Hayır |[StorSimple cihazınızda kasayı değiştirme](storsimple-8000-chassis-replacement.md) |
-| Birincil denetleyiciler |2 |Evet |[StorSimple cihazınızda bir denetleyici modülünü değiştirme](storsimple-8000-controller-replacement.md) |
-| 764W güç ve soğutma modülleri (PCMs) |2 |Evet |[StorSimple cihazınızın güç ve soğutma modülünü değiştirme](storsimple-8000-power-cooling-module-replacement.md) |
-| Yedekleme pili |2 |Evet |[StorSimple cihazınızın yedek pil modülünü değiştirme](storsimple-8000-battery-replacement.md) |
-| Disk sürücüleri |12 |Evet |[StorSimple cihazınızda bir disk sürücüsünü değiştirme](storsimple-8000-disk-drive-replacement.md) |
+| Kasa |1 |No |[StorSimple cihazınızda kasayı değiştirme](storsimple-8000-chassis-replacement.md) |
+| Birincil denetleyiciler |2 |Yes |[StorSimple cihazınızda bir denetleyici modülünü değiştirme](storsimple-8000-controller-replacement.md) |
+| 764W güç ve soğutma modülleri (PCMs) |2 |Yes |[StorSimple cihazınızın güç ve soğutma modülünü değiştirme](storsimple-8000-power-cooling-module-replacement.md) |
+| Yedekleme pili |2 |Yes |[StorSimple cihazınızın yedek pil modülünü değiştirme](storsimple-8000-battery-replacement.md) |
+| Disk sürücüleri |12 |Yes |[StorSimple cihazınızda bir disk sürücüsünü değiştirme](storsimple-8000-disk-drive-replacement.md) |
 
 **Tablo 1** Birincil kasada donanım bileşenleri
 
@@ -81,10 +81,10 @@ Birincil kutu ve EBOD Kasası, g/ç modülleriyle farklılık gösterir. Ayrıca
 
 | Bileşenler | # Var | Eklenti modülü | Değiştirme yordamı |
 |:--- |:--- |:--- |:--- |
-| Kasa |1 |Hayır |[StorSimple cihazınızda kasayı değiştirme](storsimple-8000-chassis-replacement.md) |
-| EBOD denetleyicileri |2 |Evet |[StorSimple cihazınızda bir EBOD denetleyicisini değiştirme](storsimple-8000-ebod-controller-replacement.md) |
-| 580W güç ve soğutma modülleri (PCMs) |2 |Evet |[StorSimple cihazınızın güç ve soğutma modülünü değiştirme](storsimple-8000-power-cooling-module-replacement.md) |
-| Disk sürücüleri |12 |Evet |[StorSimple cihazınızda bir disk sürücüsünü değiştirme](storsimple-8000-disk-drive-replacement.md) |
+| Kasa |1 |No |[StorSimple cihazınızda kasayı değiştirme](storsimple-8000-chassis-replacement.md) |
+| EBOD denetleyicileri |2 |Yes |[StorSimple cihazınızda bir EBOD denetleyicisini değiştirme](storsimple-8000-ebod-controller-replacement.md) |
+| 580W güç ve soğutma modülleri (PCMs) |2 |Yes |[StorSimple cihazınızın güç ve soğutma modülünü değiştirme](storsimple-8000-power-cooling-module-replacement.md) |
+| Disk sürücüleri |12 |Yes |[StorSimple cihazınızda bir disk sürücüsünü değiştirme](storsimple-8000-disk-drive-replacement.md) |
 
 **Tablo 2** EBOD muhafazasında donanım bileşenleri
 
@@ -94,7 +94,7 @@ Cihazdaki eklenti modülleri aşağıdaki ön ve arka diyagramlarda vurgulanır.
 
 **Şekil 1** Cihazın önü
 
-| Etiketle | Açıklama |
+| Etiketle | Description |
 |:--- |:--- |
 | 0 - 11 |Disk sürücüleri (Toplam 12) |
 

@@ -9,11 +9,11 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/29/2020
 ms.openlocfilehash: 61f3f2af61bc24f76d061de672a3eaacd54f7f0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87066128"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015205"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps B2B kurumsal tümleştirme için Exchange x12 iletileri
 
@@ -64,9 +64,9 @@ Anlaşma özelliklerini ayarladıktan sonra, bu sözleşmenin bu anlaşma aracı
 | Özellik | Açıklama |
 |----------|-------------|
 | **ISA1 (yetkilendirme niteleyicisi)** | Kullanmak istediğiniz yetkilendirme niteleyicisi değeri. Varsayılan değer 00 ' dır ve **Yetkilendirme bilgisi yok**. <p>**Note**: diğer değerleri seçerseniz, **ISA2** özelliği için bir değer belirtin. |
-| **ISA2** | **ISA1** özelliği 00 olmadığında kullanılacak yetkilendirme bilgileri değeri ( **Yetkilendirme bilgisi**yok). Bu özellik değeri en az bir alfasayısal karakter ve en fazla 10 olmalıdır. |
+| **ISA2** | **ISA1** özelliği 00 olmadığında kullanılacak yetkilendirme bilgileri değeri ( **Yetkilendirme bilgisi** yok). Bu özellik değeri en az bir alfasayısal karakter ve en fazla 10 olmalıdır. |
 | **ISA3 (güvenlik niteleyicisi)** | Kullanmak istediğiniz güvenlik niteleyicisi değeri. Varsayılan değer 00 ' dır. **güvenlik bilgisi yok**. <p>**Note**: diğer değerleri seçerseniz, **ISA4** özelliği için bir değer belirtin. |
-| **ISA4** | **ISA3** özelliği 00 olmadığında kullanılacak güvenlik bilgileri değeri, bir **güvenlik bilgisi**yok. Bu özellik değeri en az bir alfasayısal karakter ve en fazla 10 olmalıdır. |
+| **ISA4** | **ISA3** özelliği 00 olmadığında kullanılacak güvenlik bilgileri değeri, bir **güvenlik bilgisi** yok. Bu özellik değeri en az bir alfasayısal karakter ve en fazla 10 olmalıdır. |
 |||
 
 <a name="inbound-acknowledgement"></a>
@@ -127,7 +127,7 @@ Bu bölüm için, [tümleştirme hesabınızdan](./logic-apps-enterprise-integra
 
 ![Gelen iletiler için doğrulamalar](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-validations.png)
 
-**Varsayılan** satır, EDI ileti türü için kullanılan doğrulama kurallarını gösterir. Farklı kurallar tanımlamak istiyorsanız, kuralın **doğru**olarak ayarlandığını istediğiniz her bir kutuyu seçin. Her satırı tamamladıktan sonra yeni boş bir satır otomatik olarak görüntülenir.
+**Varsayılan** satır, EDI ileti türü için kullanılan doğrulama kurallarını gösterir. Farklı kurallar tanımlamak istiyorsanız, kuralın **doğru** olarak ayarlandığını istediğiniz her bir kutuyu seçin. Her satırı tamamladıktan sonra yeni boş bir satır otomatik olarak görüntülenir.
 
 | Özellik | Açıklama |
 |----------|-------------|
@@ -187,9 +187,9 @@ Anlaşma özelliklerini ayarladıktan sonra, bu sözleşmenin bu sözleşme arac
 | Özellik | Açıklama |
 |----------|-------------|
 | **ISA1 (yetkilendirme niteleyicisi)** | Kullanmak istediğiniz yetkilendirme niteleyicisi değeri. Varsayılan değer 00 ' dır ve **Yetkilendirme bilgisi yok**. <p>**Note**: diğer değerleri seçerseniz, **ISA2** özelliği için bir değer belirtin. |
-| **ISA2** | **ISA1** özelliği 00 olmadığında kullanılacak yetkilendirme bilgileri değeri ( **Yetkilendirme bilgisi**yok). Bu özellik değeri en az bir alfasayısal karakter ve en fazla 10 olmalıdır. |
+| **ISA2** | **ISA1** özelliği 00 olmadığında kullanılacak yetkilendirme bilgileri değeri ( **Yetkilendirme bilgisi** yok). Bu özellik değeri en az bir alfasayısal karakter ve en fazla 10 olmalıdır. |
 | **ISA3 (güvenlik niteleyicisi)** | Kullanmak istediğiniz güvenlik niteleyicisi değeri. Varsayılan değer 00 ' dır. **güvenlik bilgisi yok**. <p>**Note**: diğer değerleri seçerseniz, **ISA4** özelliği için bir değer belirtin. |
-| **ISA4** | **ISA3** özelliği 00 olmadığında kullanılacak güvenlik bilgileri değeri, bir **güvenlik bilgisi**yok. Bu özellik değeri en az bir alfasayısal karakter ve en fazla 10 olmalıdır. |
+| **ISA4** | **ISA3** özelliği 00 olmadığında kullanılacak güvenlik bilgileri değeri, bir **güvenlik bilgisi** yok. Bu özellik değeri en az bir alfasayısal karakter ve en fazla 10 olmalıdır. |
 |||
 
 <a name="outbound-acknowledgement"></a>
@@ -247,7 +247,7 @@ Bu bölüm için, her değişim için [tümleştirme hesabınızdan](./logic-app
 | **GS2** | İsteğe bağlı, uygulamayı göndereni belirtin. |
 | **GS3** | İsteğe bağlı, uygulama alıcıyı belirtin. |
 | **GS4** | İsteğe bağlı, **Ccyymmdd** veya **YGG**' yi seçin. |
-| **GS5** | İsteğe bağlı, **ssmm**, **HHMMSS**veya **HHMMSSdd**' yi seçin. |
+| **GS5** | İsteğe bağlı, **ssmm**, **HHMMSS** veya **HHMMSSdd**' yi seçin. |
 | **GS7** | İsteğe bağlı, sorumlu ajanı için bir değer seçin. |
 | **GS8** | İsteğe bağlı, şema belgesi sürümünü belirtin. |
 |||
@@ -278,7 +278,7 @@ Bu bölüm için, her değişim için [tümleştirme hesabınızdan](./logic-app
 
 | Özellik | Açıklama |
 |----------|-------------|
-| **Kullanılacak karakter kümesi** | **Temel**, **genişletilmiş**ya da **UTF8**olan x12 karakter kümesi. |
+| **Kullanılacak karakter kümesi** | **Temel**, **genişletilmiş** ya da **UTF8** olan x12 karakter kümesi. |
 | **Şema** | Kullanmak istediğiniz şema. Şemayı seçtikten sonra, aşağıdaki ayırıcı açıklamalara göre kullanmak istediğiniz karakter kümesini seçin. |
 | **Giriş türü** | Karakter kümesi için giriş türü |
 | **Bileşen ayırıcısı** | Bileşik veri öğelerini ayıran tek bir karakter |
@@ -294,7 +294,7 @@ Bu bölüm için, her değişim için [tümleştirme hesabınızdan](./logic-app
 
 ![Giden iletiler için doğrulama özellikleri](./media/logic-apps-enterprise-integration-x12/x12-send-settings-validation.png) 
 
-**Varsayılan** satır, EDI ileti türü için kullanılan doğrulama kurallarını gösterir. Farklı kurallar tanımlamak istiyorsanız, kuralın **doğru**olarak ayarlandığını istediğiniz her bir kutuyu seçin. Her satırı tamamladıktan sonra yeni boş bir satır otomatik olarak görüntülenir.
+**Varsayılan** satır, EDI ileti türü için kullanılan doğrulama kurallarını gösterir. Farklı kurallar tanımlamak istiyorsanız, kuralın **doğru** olarak ayarlandığını istediğiniz her bir kutuyu seçin. Her satırı tamamladıktan sonra yeni boş bir satır otomatik olarak görüntülenir.
 
 | Özellik | Açıklama |
 |----------|-------------|
@@ -316,7 +316,7 @@ HIPAA şemaları ve 277 ya da 837 ileti türleriyle çalışırken birkaç ek ad
 
 Bu tablo, etkilenen ileti türlerini, tüm türevlerini ve bu ileti türleriyle eşlenen belge sürüm numaralarını listeler:
 
-| İleti türü veya varyantı |  Açıklama | Belge sürüm numarası (GS8) |
+| İleti türü veya varyantı |  Description | Belge sürüm numarası (GS8) |
 |-------------------------|--------------|-------------------------------|
 | 277 | Sağlık bilgileri bilgi durumu bildirimi | 005010X212 |
 | 837_I | Sağlık hizmetleri talep kurum | 004010X096A1 <br>005010X223A1 <br>005010X223A2 |

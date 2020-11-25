@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 07/31/2020
 ms.author: jeedes
 ms.openlocfilehash: b89ae74a1f4ead568a5454c9494d4a82b0eeea3e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521348"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015188"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect-or-cloudlink-platform"></a>Öğretici: Mitel Micyüksek Connect veya CloudLink platformuyla Azure Active Directory tümleştirme
 
@@ -166,7 +166,7 @@ Bu bölümde, Azure portal Britta Simon adlı bir test kullanıcısı oluşturac
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    1. **Ad** alanına **Brittasıon**yazın.
+    1. **Ad** alanına **Brittasıon** yazın.
   
     1. **Kullanıcı adı** alanına brittasimon@ yazın \<yourcompanydomain\> . \<extension\>  Örneğin, BrittaSimon@contoso.com.
 
@@ -249,7 +249,7 @@ CloudLink platformunu Azure AD için çoklu oturum açma ile yapılandırmak iç
 
     1. **Tümleştirmeler** bölümünde **+ Yeni Ekle**' yi seçin. Bir açılır ekran, **tümleştirmeler** panelini görüntüler.
 
-    1. 3. **taraf** sekmesini seçin. Desteklenen üçüncü taraf uygulamaların listesi görüntülenir. **Azure AD çoklu oturum açma**Ile ilişkili **Ekle** düğmesini seçin ve **bitti**' yi seçin.
+    1. 3. **taraf** sekmesini seçin. Desteklenen üçüncü taraf uygulamaların listesi görüntülenir. **Azure AD çoklu oturum açma** Ile ilişkili **Ekle** düğmesini seçin ve **bitti**' yi seçin.
 
        ![Ekran görüntüsü, Azure 'da D çoklu oturum açma ekleyebileceğiniz tümleştirme sayfasını gösterir.](./media/mitel-connect-tutorial/mitel-cloudlink-integrations.png)
 
@@ -284,7 +284,7 @@ CloudLink platformunu Azure AD için çoklu oturum açma ile yapılandırmak iç
 
 7. **Temel SAML yapılandırması** Iletişim kutusunda **Kaydet** ' i seçin.
 
-8. Azure portal SAML **tabanlı oturum açma** sayfasındaki **SAML Imzalama sertifikası** bölümünde **imzalama sertifikasını**indirmek Için **sertifika (base64)** yanındaki **İndir** ' i seçin. Sertifikayı bilgisayarınıza kaydedin.
+8. Azure portal SAML **tabanlı oturum açma** sayfasındaki **SAML Imzalama sertifikası** bölümünde **imzalama sertifikasını** indirmek Için **sertifika (base64)** yanındaki **İndir** ' i seçin. Sertifikayı bilgisayarınıza kaydedin.
   
     ![Ekran görüntüsü, bir Base64 sertifikası indirebileceğiniz SAML Imzalama sertifikası bölümünü gösterir.](./media/mitel-connect-tutorial/mitel-cloudlink-save-certificate.png)
 
@@ -321,7 +321,7 @@ Bu bölümde, Azure portal Britta Simon adlı bir test kullanıcısı oluşturac
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    1. **Ad** alanına **Brittasıon**yazın.
+    1. **Ad** alanına **Brittasıon** yazın.
   
     1. **Kullanıcı adı** alanına brittasimon@ yazın \<yourcompanydomain\> . \<extension\>  Örneğin, BrittaSimon@contoso.com.
 

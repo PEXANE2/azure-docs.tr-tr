@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 8/25/2017
 ms.author: alkohli
 ms.openlocfilehash: a5a7a31c174271f963bb005f10b8376a59133d36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85513128"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014882"
 ---
 # <a name="replace-a-disk-drive-on-your-storsimple-8000-series-device"></a>StorSimple 8000 serisi cihazınızın disk sürücüsünü değiştirme
 
@@ -73,7 +73,7 @@ StorSimple cihazınız, RAID 10 benzeri bir depolama alanları yapılandırması
 Sistem çalışırken sürücüler kaldırılabilir ve değiştirilebilir.
 
 #### <a name="to-remove-a-drive"></a>Bir sürücüyü kaldırmak için
-1. Başarısız diski belirlemek için Azure portal, **donanım sağlığı > cihaz ayarlarınıza**gidin. Bir disk birincil kasada ve/veya bir EBOD muhafazasında (8600 modeli kullanıyorsanız) başarısız olabileceğinden, **paylaşılan bileşenler** altındaki disklerin durumuna ve **ebod paylaşılan bileşenleri**' ne bakın. İki kasada de başarısız olan bir disk, kırmızı bir durumla gösterilir.
+1. Başarısız diski belirlemek için Azure portal, **donanım sağlığı > cihaz ayarlarınıza** gidin. Bir disk birincil kasada ve/veya bir EBOD muhafazasında (8600 modeli kullanıyorsanız) başarısız olabileceğinden, **paylaşılan bileşenler** altındaki disklerin durumuna ve **ebod paylaşılan bileşenleri**' ne bakın. İki kasada de başarısız olan bir disk, kırmızı bir durumla gösterilir.
 2. Birincil kutunun önünde veya EBOD Kasası ' nın önündeki sürücüleri bulun. 
 3. Diskin kilidi açıksa, sonraki adıma geçin. Disk kilitliyse, daha fazla kaldırma [kilidi](#disengage-the-antitamper-lock)ile olan yordamı izleyerek bu yordamın kilidini açın.
 4. Sürücü taşıyıcısı modülünde Siyah mandal ' a basın ve sürücü taşıyıcısı tutamağını kasanın önüne ve dışına çekin.
@@ -103,7 +103,7 @@ StorSimple cihazınızda bir sürücü başarısız olduktan sonra dosyayı kald
     **Şekil 6**  Sürücü taşıyıcısı kasaya kaydırma
 3. Sürücü taşıyıcısı takıldığında sürücü taşıyıcısı, sürücü taşıyıcı tanıtıcısı kilitli bir konuma yaslanana kadar, sürücü taşıyıcısı gövdeye göndermeye devam ederken sürücü taşıyıcısı tanıtıcısını kapatın.
 4. Kilitleme vidalı 'yı saatin tersi yönde kapatarak, taşıyıcı tutamacının yerine getirmek için Microsoft tarafından sunulan kilit anahtarını kullanın.
-5. Değiştirme işleminin başarılı olduğunu ve sürücünün çalışır durumda olduğunu doğrulayın. Azure Portal erişin ve **cihaz ayarları**  >  **donanım sistem durumu**' na gidin. **Paylaşılan bileşenler** veya **ebod paylaşılan bileşenleri**altında sürücü durumu yeşil olmalıdır ve iyi durumda olduğunu gösterir.
+5. Değiştirme işleminin başarılı olduğunu ve sürücünün çalışır durumda olduğunu doğrulayın. Azure Portal erişin ve **cihaz ayarları**  >  **donanım sistem durumu**' na gidin. **Paylaşılan bileşenler** veya **ebod paylaşılan bileşenleri** altında sürücü durumu yeşil olmalıdır ve iyi durumda olduğunu gösterir.
 
    
    > [!NOTE]

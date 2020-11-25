@@ -11,11 +11,11 @@ ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
 ms.openlocfilehash: 0000e7690ab92f469a7417e82cb375c524e0b343
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90016852"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014771"
 ---
 # <a name="connect-a-rigado-cascade-500-gateway-device-to-your-azure-iot-central-application"></a>Bir Rigado basamaklı 500 ağ geçidi cihazını Azure IoT Central uygulamanıza bağlama
 
@@ -29,7 +29,7 @@ Basamaklı 500 IoT Ağ Geçidi, kendi basamaklı hizmet olarak Edge çözümün�
 
 Cascade 500, çözüm oluşturucularımızın cihazı uçtan uca çözümlere kolayca açmasına olanak tanımak için Azure IoT Tak ve Kullan (Önizleme) için önceden sertifikalandırilmiştir. Basamaklı ağ geçidi, ağ geçidi cihazına yakınlık halinde olan çeşitli durum izleme sensörlerinden kablosuz olarak bağlanmanıza olanak sağlar. Bu sensörler, ağ geçidi cihazı aracılığıyla IoT Central eklendi olabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu nasıl yapılır kılavuzunda ilerlemek için aşağıdaki kaynaklara ihtiyacınız vardır:
 
 * Bir Rigado Cascade 500 cihazı. Daha fazla bilgi için lütfen [Rigado](https://www.rigado.com/)adresini ziyaret edin.
@@ -41,15 +41,15 @@ Basamaklı 500 ağ geçidi cihazını Azure IoT Central uygulama örneğinize ek
 
 Basamaklı 500 cihaz şablonu eklemek için: 
 
-1. Sol bölmedeki ***cihaz şablonları*** sekmesine gidin ve **+ Yeni**: ![ yeni cihaz şablonu oluştur ' u seçin.](./media/howto-connect-rigado-cascade-500/device-template-new.png)
-1. Sayfa size ***özel şablon oluşturma*** veya ***önceden yapılandırılmış bir cihaz şablonu kullanma*** seçeneği sunar
+1. Sol bölmedeki ***cihaz şablonları** _ sekmesine gidin, _ * + yeni * *: ![ yeni cihaz şablonu oluştur ' u seçin.](./media/howto-connect-rigado-cascade-500/device-template-new.png)
+1. Sayfa size **_özel şablon oluşturma_* _ veya _*_önceden yapılandırılmış bir cihaz şablonu kullanma_*_ seçeneği sunar
 1. Önceden yapılandırılmış cihaz şablonları listesinden aşağıda gösterildiği gibi C500 cihaz şablonunu seçin: ![ C500 cihaz şablonu seçin](./media/howto-connect-rigado-cascade-500/device-template-preconfigured.png)
-1. Sonraki adıma devam etmek için Ileri 'yi seçin ***: Özelleştir*** . 
-1. Bir sonraki ekranda, C500 cihaz şablonunu IoT Central uygulamanıza eklemek için ***Oluştur*** ' u seçin.
+1. Sonraki adıma devam etmek için Ileri 'yi seçin _*_: Özelleştir_*_ . 
+1. Bir sonraki ekranda, C500 cihaz şablonunu IoT Central uygulamanıza eklemek için _*_Oluştur_*_ ' u seçin.
 
 ## <a name="retrieve-application-connection-details"></a>Uygulama bağlantısı ayrıntılarını al
 
-Cascade 500 cihazını bağlamak için artık Azure IoT Central uygulamanızın **kapsam kimliğini** ve **birincil anahtarını** almanız gerekir. 
+Cascade 500 cihazını bağlamak için artık Azure IoT Central uygulamanız için _ *scope ID** ve **birincil anahtarını** almanız gerekir. 
 
 1. Sol bölmedeki **Yönetim**  ' e gidin ve **cihaz bağlantısı**' na tıklayın. 
 2. IoT Central uygulamanızın **kapsam kimliğini** bir yere getirin.

@@ -4,11 +4,11 @@ description: Azure Event Grid Media Services olaylar için belirtilen özellikle
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: c1c5953cae7364131eefcec97d3375404c85e963
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86105940"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015222"
 ---
 # <a name="azure-media-services-as-an-event-grid-source"></a>Event Grid kaynak olarak Azure Media Services
 
@@ -38,7 +38,7 @@ Aşağıdaki [şema örneklerine](#event-schema-examples) bakın.
 
 Bir iş birden çok iş çıkışı içerebilir (dönüşümü birden çok iş çıkışına sahip olacak şekilde yapılandırdıysanız) Bireysel iş çıkışının ayrıntılarını izlemek isterseniz, iş çıkışı değişiklik olayını dinleyin.
 
-Her bir **Iş** **joverput**öğesinden daha yüksek bir düzeyde olacak, bu nedenle iş çıkışı olayları ilgili bir işin içinde harekete geçirilir. 
+Her bir **Iş** **joverput** öğesinden daha yüksek bir düzeyde olacak, bu nedenle iş çıkışı olayları ilgili bir işin içinde harekete geçirilir. 
 
 İçindeki hata iletileri, `JobFinished` `JobCanceled` `JobError` her bir iş çıkışı için toplanan sonuçları çıktı – bunların hepsi bittiğinde. Ancak, her görev tamamlandığında iş çıkış olayları ateşlenir. Örneğin, bir kodlama çıktılarınız varsa ve ardından bir video analizi çıkışı varsa, son JobFinished olayının toplanan verilerle tetiklamadan önce iş çıkış olayları olarak iki olay tetikleyerek bir işlem elde edersiniz.
 
@@ -124,7 +124,7 @@ Aşağıdaki örnek, **Jobstatechange** olayının şemasını göstermektedir:
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | previousState | string | Olaydan önceki işin durumu. |
 | state | string | Bu olayda bildirim yapılacak işin yeni durumu. Örneğin, "zamanlandı: iş başlamaya hazırlanıyor" veya "tamamlandı: iş tamamlandı".|
@@ -194,7 +194,7 @@ Her son Iş durumu değişikliği için (örneğin, JobFinished, Jobiptal, Jobha
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | çıkışı | Dizi | Iş çıkışlarını alır.|
 
@@ -310,7 +310,7 @@ Aşağıdaki örnekte, **Liveeventconnectionreddedildi** olayının şeması gö
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | Streamıd | string | Akışın veya bağlantının tanımlayıcısı. Kodlayıcı veya müşteri, bu KIMLIĞI alma URL 'sine eklemekten sorumludur. |  
 | ingestUrl | string | Canlı olay tarafından sunulan alma URL 'SI. |  
@@ -346,7 +346,7 @@ Aşağıdaki örnekte, **Liveeventencoderconnected** olayının şeması göster
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | Streamıd | string | Akışın veya bağlantının tanımlayıcısı. Kodlayıcı veya müşteri, bu KIMLIĞI alma URL 'SI içinde sağlamaktan sorumludur. |
 | ingestUrl | string | Canlı olay tarafından sunulan alma URL 'SI. |
@@ -380,7 +380,7 @@ Aşağıdaki örnek **Liveeventencoderconnected** olayının şemasını göster
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | Streamıd | string | Akışın veya bağlantının tanımlayıcısı. Kodlayıcı veya müşteri, bu KIMLIĞI alma URL 'sine eklemekten sorumludur. |  
 | ingestUrl | string | Canlı olay tarafından sunulan alma URL 'SI. |  
@@ -392,7 +392,7 @@ Hata sonuç kodlarını [canlı olay hata kodlarında](../media-services/latest/
 
 Düzgün olmayan bağlantıyı kesme sonuç kodları şunlardır:
 
-| Sonuç kodu | Açıklama |
+| Sonuç kodu | Description |
 | ----------- | ----------- |
 | S_OK | Kodlayıcının bağlantısı başarıyla kesildi. |
 | MPE_CLIENT_TERMINATED_SESSION | Kodlayıcı bağlantısı kesildi (RTMP). |
@@ -430,7 +430,7 @@ Aşağıdaki örnek, **Liveeventincomingdatachunkbırakılan** olayının şemas
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | trackType | string | İzlemenin türü (ses/video). |
 | trackName | string | İzlemenin adı. |
@@ -470,7 +470,7 @@ Aşağıdaki örnekte, **Liveeventincomingstreamreceived** olayının şeması g
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | trackType | string | İzlemenin türü (ses/video). |
 | trackName | string | İzlemenin adı (kodlayıcı tarafından sağlandığı veya RTMP durumunda sunucu *TrackType_Bitrate* biçimde oluşturulur). |
@@ -509,7 +509,7 @@ Aşağıdaki örnekte, **Liveeventincomingstreamsoutofsync** olayının şeması
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | minLastTimestamp | string | Tüm parçalar arasındaki en az son zaman damgası (ses veya video). |
 | typeOfTrackWithMinLastTimestamp | string | En az son zaman damgasıyla izleme (ses veya video) türü. |
@@ -545,7 +545,7 @@ Aşağıdaki örnekte, **Liveeventincomingvideostreamsoutofsync** olayının şe
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | firstTimestamp | string | Video türünde parçalar/kalite seviyelerinin biri için zaman damgası alındı. |
 | firstDuration | string | İlk zaman damgasıyla veri öbeğinin süresi. |
@@ -587,7 +587,7 @@ Aşağıdaki örnek, **Liveeventingestheartma** olayının şemasını gösterme
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | trackType | string | İzlemenin türü (ses/video). |
 | trackName | string | İzlemenin adı (kodlayıcı tarafından sağlandığı veya RTMP durumunda sunucu *TrackType_Bitrate* biçimde oluşturulur). |
@@ -631,7 +631,7 @@ Aşağıdaki örnek, **Liveeventtrackdiscontinuityalgılanan** olayının şemas
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | trackType | string | İzlemenin türü (ses/video). |
 | trackName | string | İzlemenin adı (kodlayıcı tarafından sağlandığı veya RTMP durumunda sunucu *TrackType_Bitrate* biçimde oluşturulur). |
@@ -645,7 +645,7 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 
 Bir olay aşağıdaki en üst düzey verilere sahiptir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | konu başlığı | string | EventGrid konusu. Bu özelliğin Media Services hesabının kaynak KIMLIĞI vardır. |
 | Konu | string | Media Services hesabının altındaki Media Services kanalının kaynak yolu. Konunun ve konunun bitiştirerek iş için kaynak KIMLIĞI verilmektedir. |

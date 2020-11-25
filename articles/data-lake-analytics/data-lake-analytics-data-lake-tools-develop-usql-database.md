@@ -8,11 +8,11 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 07/03/2018
 ms.openlocfilehash: 706457a602e20dd37e64e5f389948b351ac8ebcf
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219250"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015256"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>U-SQL veritabanı projesi kullanarak Azure Data Lake için bir U-SQL veritabanı geliştirin
 
@@ -24,7 +24,7 @@ U-SQL veritabanı projesi, Visual Studio 'da, geliştiricilerin U-SQL veritabanl
 
 ## <a name="create-a-u-sql-database-project"></a>U-SQL veritabanı projesi oluşturma
 
-Visual Studio için Azure Data Lake Araçları sürüm 2.3.3000.0 sonra U-SQL veritabanı projesi adlı yeni bir proje şablonu ekledi. U-SQL projesi oluşturmak için **dosya > yeni > proje**' yi seçin. U-SQL veritabanı projesi **Azure Data Lake > u-SQL düğümü**altında bulunabilir.
+Visual Studio için Azure Data Lake Araçları sürüm 2.3.3000.0 sonra U-SQL veritabanı projesi adlı yeni bir proje şablonu ekledi. U-SQL projesi oluşturmak için **dosya > yeni > proje**' yi seçin. U-SQL veritabanı projesi **Azure Data Lake > u-SQL düğümü** altında bulunabilir.
 
 ![Visual Studio için Data Lake araçları--U-SQL veritabanı projesi oluşturma](./media/data-lake-analytics-data-lake-tools-develop-usql-database/data-lake-tools-create-usql-database-project-creation.png)
 
@@ -82,7 +82,7 @@ Visual Studio 'da bir U-SQL veritabanı projesi veya. ustodbpack paketi aracıl�
 
 #### <a name="deploy-through-a-u-sql-database-deployment-package"></a>U-SQL veritabanı dağıtım paketi aracılığıyla dağıtma
 
-1. **Sunucu Gezgini**açın. Sonra veritabanını dağıtmak istediğiniz **Azure Data Lake Analytics hesabını** genişletin.
+1. **Sunucu Gezgini** açın. Sonra veritabanını dağıtmak istediğiniz **Azure Data Lake Analytics hesabını** genişletin.
 
 1. **U-SQL veritabanları**' na sağ tıklayın ve ardından **veritabanını dağıt**' ı seçin.
 

@@ -8,11 +8,11 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 08/30/2019
 ms.openlocfilehash: 7310c67ef20a4134d4f613ea969c96802958bf62
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219216"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015239"
 ---
 # <a name="test-your-azure-data-lake-analytics-code"></a>Azure Data Lake Analytics kodunuzu test etme
 
@@ -34,7 +34,7 @@ Visual Studio için Azure Data Lake Araçları, U-SQL betik test çalışmaları
 
 ### <a name="manage-the-test-data-source"></a>Test veri kaynağını yönetme
 
-U-SQL betiklerini test ettiğinizde, test giriş dosyaları gerekir. Test verilerini yönetmek için, **Çözüm Gezgini**' de, U-SQL projesine sağ tıklayın ve **Özellikler**' i seçin. **Test veri kaynağına**bir kaynak girebilirsiniz.
+U-SQL betiklerini test ettiğinizde, test giriş dosyaları gerekir. Test verilerini yönetmek için, **Çözüm Gezgini**' de, U-SQL projesine sağ tıklayın ve **Özellikler**' i seçin. **Test veri kaynağına** bir kaynak girebilirsiniz.
 
 ![Visual Studio için Data Lake araçları--proje testi veri kaynağını yapılandırma](./media/data-lake-analytics-cicd-test/data-lake-tools-configure-project-test-data-source.png)
 
@@ -62,7 +62,7 @@ C# Kullanıcı tanımlı operatörlerinizi (UDOs) test etmek için C# birim test
 
 **IRowset** nesnesi oluşturmanın iki yolu vardır:
 
-- **IRowset**oluşturmak için bir dosyadaki verileri yükleme:
+- **IRowset** oluşturmak için bir dosyadaki verileri yükleme:
 
     ```csharp
     //Schema: "a:int, b:int"
@@ -78,7 +78,7 @@ C# Kullanıcı tanımlı operatörlerinizi (UDOs) test etmek için C# birim test
     IRowset rowset = UnitTestHelper.GetRowsetFromFile(@"processor.txt", schema, output.AsReadOnly(), discardAdditionalColumns: true, rowDelimiter: null, columnSeparator: '\t');
     ```
 
-- **IRowset**oluşturmak için bir veri koleksiyonundaki verileri kullanın:
+- **IRowset** oluşturmak için bir veri koleksiyonundaki verileri kullanın:
 
     ```csharp
     //Schema: "a:int, b:int"

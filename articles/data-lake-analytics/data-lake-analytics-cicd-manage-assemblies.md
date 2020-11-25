@@ -7,11 +7,11 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 10/30/2018
 ms.openlocfilehash: e88616f45c69d33234aa35333e0d82ad8cc59bb6
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219369"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015290"
 ---
 # <a name="best-practices-for-managing-u-sql-assemblies-in-a-cicd-pipeline"></a>CI/CD ardışık düzeninde U-SQL derlemelerini yönetmeye yönelik en iyi yöntemler
 
@@ -31,13 +31,13 @@ Bir U-SQL veritabanı projesi, bir sınıf kitaplığına (U-SQL uygulaması Iç
 
 Projeler oluşturmak ve başvurular eklemek için bu adımları izleyin.
 
-1. **Dosya**  >  **Yeni**proje ' ye tıklayarak bir sınıf kitaplığı (U-SQL uygulaması için) projesi oluşturun  >  **Project**. Proje **Azure Data Lake > U-SQL** düğümü altındadır.
+1. **Dosya**  >  **Yeni** proje ' ye tıklayarak bir sınıf kitaplığı (U-SQL uygulaması için) projesi oluşturun  >  **Project**. Proje **Azure Data Lake > U-SQL** düğümü altındadır.
 
    ![Visual Studio için Data Lake araçları--C# sınıf kitaplığı projesi oluşturma](./media/data-lake-analytics-cicd-manage-assemblies/create-c-sharp-class-library-project.png)
 
 1. Kullanıcı tanımlı C# kodunuzu sınıf kitaplığı (U-SQL uygulaması Için) projesine ekleyin.
 
-1. **Dosya**  >  **Yeni**proje ' ye tıklayarak bir U-SQL projesi oluşturun  >  **Project**. Proje **Azure Data Lake**  >  **U-SQL** düğümü altındadır.
+1. **Dosya**  >  **Yeni** proje ' ye tıklayarak bir U-SQL projesi oluşturun  >  **Project**. Proje **Azure Data Lake**  >  **U-SQL** düğümü altındadır.
 
    ![Visual Studio için Data Lake araçları--U-SQL veritabanı projesi oluşturma](media/data-lake-analytics-cicd-manage-assemblies/create-u-sql-database-project.png)
 
@@ -55,9 +55,9 @@ Projeler oluşturmak ve başvurular eklemek için bu adımları izleyin.
 
    ![Visual Studio için Data Lake araçları--derlemeden derleme oluştur](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-create-assembly-from-reference.png)
 
-1. Varsa, **yönetilen bağımlılıklar** ve **ek dosyalar**ekleyin. Ek dosyalar eklediğinizde, araç, derlemeleri yerel makinenizde ve derleme makinesinde daha sonra bulamediğinden emin olmak için göreli yolu kullanır.
+1. Varsa, **yönetilen bağımlılıklar** ve **ek dosyalar** ekleyin. Ek dosyalar eklediğinizde, araç, derlemeleri yerel makinenizde ve derleme makinesinde daha sonra bulamediğinden emin olmak için göreli yolu kullanır.
 
-En alttaki düzenleyici penceresinde ** \@ _DeployTempDirectory** , Aracı yapı çıkış klasörüne işaret eden önceden tanımlanmış bir değişkendir. Yapı çıktı klasörü altında, her derlemenin derleme adıyla adlı bir alt klasörü vardır. Tüm dll 'Ler ve ek dosyalar bu alt klasörde bulunur.
+En alttaki düzenleyici penceresinde **\@ _DeployTempDirectory** , Aracı yapı çıkış klasörüne işaret eden önceden tanımlanmış bir değişkendir. Yapı çıktı klasörü altında, her derlemenin derleme adıyla adlı bir alt klasörü vardır. Tüm dll 'Ler ve ek dosyalar bu alt klasörde bulunur.
 
 ## <a name="build-a-u-sql-database-project"></a>U-SQL veritabanı projesi oluşturma
 

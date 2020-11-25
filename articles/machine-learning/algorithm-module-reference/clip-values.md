@@ -10,11 +10,11 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
 ms.openlocfilehash: 99fb41542dff28997438881abad71da11e927a78
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898808"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014899"
 ---
 # <a name="clip-values"></a>Değerleri Kırpma
 
@@ -32,11 +32,11 @@ Modül, seçime dahil ettiğiniz **Tüm** sütunlara aynı ölçütleri ve deği
 
 Bazı sütunlara kırpma yöntemleri veya farklı ölçütler uygulamanız gerekiyorsa, her bir benzer sütun kümesi için **klip değerlerinin** yeni bir örneğini kullanmanız gerekir.
 
-1.  Ardışık düzene **Clip Values** modülünü ekleyin ve değiştirmek istediğiniz veri kümesine bağlayın. Bu modülü, **veri dönüştürme**altında, **ölçek ve azalt** kategorisinde bulabilirsiniz. 
+1.  Ardışık düzene **Clip Values** modülünü ekleyin ve değiştirmek istediğiniz veri kümesine bağlayın. Bu modülü, **veri dönüştürme** altında, **ölçek ve azalt** kategorisinde bulabilirsiniz. 
   
 1.  Sütun **listesinde**, **kırpma değerlerinin** uygulanacağı sütunları seçmek için sütun seçiciyi kullanın.  
   
-1.  **Eşik kümesi**için, açılan listeden aşağıdaki seçeneklerden birini seçin. Bu seçenekler, kabul edilebilir değerler ve kırpılmakta olması gereken değerler için üst ve alt sınırları nasıl ayarlayabileceğiniz belirlenir.  
+1.  **Eşik kümesi** için, açılan listeden aşağıdaki seçeneklerden birini seçin. Bu seçenekler, kabul edilebilir değerler ve kırpılmakta olması gereken değerler için üst ve alt sınırları nasıl ayarlayabileceğiniz belirlenir.  
   
     - **Clienppeaks**: değerleri en üste kadar kırpdığınızda, yalnızca bir üst sınır belirtirsiniz. Bu sınır değerinden büyük değerler değiştirilmiştir.
   
@@ -52,11 +52,11 @@ Bazı sütunlara kırpma yöntemleri veya farklı ölçütler uygulamanız gerek
 
     Her eşik türü için **sabit** veya **yüzdebirlik**' i seçin.
 
-1. **Sabit**' i seçerseniz, metin kutusuna en büyük veya en küçük değeri yazın. Örneğin, 999 değerini bir yer tutucu değeri olarak kullandığınızı varsayalım. Üst eşik için **sabit** ' i seçebilir ve **üst eşik için sabit değer**olarak 999 yazabilirsiniz.
+1. **Sabit**' i seçerseniz, metin kutusuna en büyük veya en küçük değeri yazın. Örneğin, 999 değerini bir yer tutucu değeri olarak kullandığınızı varsayalım. Üst eşik için **sabit** ' i seçebilir ve **üst eşik için sabit değer** olarak 999 yazabilirsiniz.
   
-1. **Yüzdebirlik**değerini seçerseniz, sütun değerlerini bir yüzdebirlik aralığıyla sınırlandırın. 
+1. **Yüzdebirlik** değerini seçerseniz, sütun değerlerini bir yüzdebirlik aralığıyla sınırlandırın. 
 
-    Örneğin, yalnızca 10-80 yüzdebirlik aralığındaki değerleri tutmak istediğinizi varsayalım ve diğerlerinin yerini alır. **Yüzdelik**değer ' i seçin ve ardından, **daha düşük eşiğin yüzde birlik değeri**için 10 yazın ve **üst eşiğe yönelik yüzdebirlik değeri**için 80 yazın. 
+    Örneğin, yalnızca 10-80 yüzdebirlik aralığındaki değerleri tutmak istediğinizi varsayalım ve diğerlerinin yerini alır. **Yüzdelik** değer ' i seçin ve ardından, **daha düşük eşiğin yüzde birlik değeri** için 10 yazın ve **üst eşiğe yönelik yüzdebirlik değeri** için 80 yazın. 
 
     Yüzdebirlik aralıklarının nasıl kullanılacağına ilişkin bazı örnekler için [yüzdebirlik değeri](#examples-for-clipping-using-percentiles) adresindeki bölümüne bakın.  
   
@@ -86,7 +86,7 @@ Bazı sütunlara kırpma yöntemleri veya farklı ölçütler uygulamanız gerek
   
 1.  İşlem hattını gönderme.  
   
-    **Clip Values** modülüne sağ tıklayın ve **modülü seçip sağ** paneldeki **çıktılar** sekmesine geçin, değerleri gözden geçirmek ve kırpma işleminin beklentilerinizi karşıladığından emin olmak için **bağlantı noktası çıktılarında**histogram simgesine tıklayın.  
+    **Clip Values** modülüne sağ tıklayın ve **modülü seçip sağ** paneldeki **çıktılar** sekmesine geçin, değerleri gözden geçirmek ve kırpma işleminin beklentilerinizi karşıladığından emin olmak için **bağlantı noktası çıktılarında** histogram simgesine tıklayın.  
  
 ### <a name="examples-for-clipping-using-percentiles"></a>Yüzdebirlik değeri kullanarak kırpma örnekleri
 
@@ -96,17 +96,17 @@ Yüzdebirlik değeri tarafından nasıl kırpılmasının çalıştığını anl
   
 - Yüzdebirlik değerini alt eşik olarak kullanıyorsanız, 10 yüzdelik değerde, veri kümesindeki tüm değerlerin yüzde 10 ' u bu değerden küçük olmalıdır.  
   
-1.  **Eşik kümesi**Için **Clippeaksandsubpeaks**' i seçin.  
+1.  **Eşik kümesi** Için **Clippeaksandsubpeaks**' i seçin.  
   
-1.  **Üst eşik**için **yüzdebirlik**' ü seçin ve **yüzdebirlik numarası**için 90 yazın.  
+1.  **Üst eşik** için **yüzdebirlik**' ü seçin ve **yüzdebirlik numarası** için 90 yazın.  
   
-1.  **Büyük alternatif değeri**Için **eksik değer**' i seçin.  
+1.  **Büyük alternatif değeri** Için **eksik değer**' i seçin.  
   
-1.  **Daha düşük eşik**Için, **yüzdebirlik**' ü seçin ve **yüzdebirlik numarası**için 10 yazın.  
+1.  **Daha düşük eşik** Için, **yüzdebirlik**' ü seçin ve **yüzdebirlik numarası** için 10 yazın.  
   
-1.  **Daha düşük yedek değer**Için **eksik değer**' i seçin.  
+1.  **Daha düşük yedek değer** Için **eksik değer**' i seçin.  
   
-1.  **Üzerine yazma bayrağı**seçeneğinin işaretini kaldırın ve **gösterge sütunu Ekle**seçeneğini belirleyin.  
+1.  **Üzerine yazma bayrağı** seçeneğinin işaretini kaldırın ve **gösterge sütunu Ekle** seçeneğini belirleyin.  
   
 Şimdi de aynı işlem hattını, üst yüzdebirlik eşiği olarak 60 ve alt yüzdebirlik eşiği olarak 30 ' u kullanarak deneyin ve eşik değerini değiştirme değeri olarak kullanın. Aşağıdaki tabloda bu iki sonuç karşılaştırılmaktadır:  
   

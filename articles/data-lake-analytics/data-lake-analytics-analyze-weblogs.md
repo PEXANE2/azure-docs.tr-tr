@@ -6,11 +6,11 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 12/05/2016
 ms.openlocfilehash: d2764e5e3994eb7b80a8e7cf62fb7f437323c97e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219403"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015307"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>Azure Data Lake Analytics'i kullanarak Web sitesi günlüklerini çözümleme
 Özellikle de Web sitesini ziyaret etmeye çalıştıklarında hangi başvuranları hatalara çalıştığını bulmada Data Lake Analytics kullanarak Web sitesi günlüklerini çözümlemeyi öğrenin.
@@ -40,7 +40,7 @@ Herhangi bir U-SQL betiğini oluşturup test etmeden önce, önce Azure 'a bağl
 
 ### <a name="to-browse-your-data-lake-analytics-accounts"></a>Data Lake Analytics hesaplarınıza gözatmaya yönelik
 
-1. Visual Studio 'da, **CTRL + ALT + S**tuşlarına basarak **Sunucu Gezgini** açın.
+1. Visual Studio 'da, **CTRL + ALT + S** tuşlarına basarak **Sunucu Gezgini** açın.
 2. **Sunucu Gezgini**'nden, **Azure** seçeneğini ve ardından **Data Lake Analytics** seçeneğini genişletin. Varsa Data Lake Analytics hesaplarınızın listesini görürsünüz. Studio 'dan Data Lake Analytics Hesapları oluşturamazsınız. Hesap oluşturmak için bkz. [Azure Portal'ı kullanarak Azure Data Lake Analytics ile çalışmaya başlama](data-lake-analytics-get-started-portal.md) veya [Azure PowerShell'i kullanarak Azure Data Lake Analytics ile çalışmaya başlama](data-lake-analytics-get-started-powershell.md).
 
 ## <a name="develop-u-sql-application"></a>U-SQL uygulaması geliştirme
@@ -50,13 +50,13 @@ Uygulamaya Kullanıcı tanımlı operatörler ekleme ekleyebilirsiniz.  Daha faz
 
 ### <a name="to-create-and-submit-a-data-lake-analytics-job"></a>Data Lake Analytics işi oluşturma ve gönderme
 
-1. **> yeni > projesi dosyasına**tıklayın.
+1. **> yeni > projesi dosyasına** tıklayın.
 
 2. U-SQL Projesi türünü seçin.
 
    ![yeni U-SQL Visual Studio projesi](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-new-project.png)
 
-3. **Tamam**'a tıklayın. Visual Studio, Script. usql dosyası ile bir çözüm oluşturur.
+3. **Tamam** düğmesine tıklayın. Visual Studio, Script. usql dosyası ile bir çözüm oluşturur.
 
 4. Script. usql dosyasına aşağıdaki betiği girin:
 
@@ -169,13 +169,13 @@ Uygulamaya Kullanıcı tanımlı operatörler ekleme ekleyebilirsiniz.  Daha faz
 
     ![Data Lake Analytics Web günlüklerini Web sitesi günlüklerini çözümleme](./media/data-lake-analytics-analyze-weblogs/data-lake-analytics-analyze-weblogs-job-completed.png)
 
-11. Şimdi **Script1. usql**için 7-10 adımlarını yineleyin.
+11. Şimdi **Script1. usql** için 7-10 adımlarını yineleyin.
 
 ### <a name="to-see-the-job-output"></a>İş çıktısını görmek için
 
 1. **Sunucu Gezgini**'nden, **Azure** seçeneğini, **Data Lake Analytics** seçeneğini, Data Lake Analytics hesabınızı ve **Depolama Hesapları** seçeneğini genişletin, varsayılan Data Lake Store hesabına sağ tıklayın ve ardından **Explorer**'a tıklayın.
 2. Klasörü açmak için **örnekler** ' e çift tıklayın ve ardından **Çıkış**' a çift tıklayın.
-3. **Başarılı olmayan yanıtlar. log dosyasına**çift tıklayın.
+3. **Başarılı olmayan yanıtlar. log dosyasına** çift tıklayın.
 4. Ayrıca, doğrudan çıkışa gitmek için işin grafik görünümündeki çıkış dosyasına çift tıklayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar

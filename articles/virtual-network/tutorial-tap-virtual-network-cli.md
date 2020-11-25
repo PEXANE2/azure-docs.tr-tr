@@ -17,11 +17,11 @@ ms.date: 03/18/2018
 ms.author: kaanan
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 8e3a56e4a6eb1fb6eb633021178ef78f8ac7287d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87488848"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014797"
 ---
 # <a name="work-with-a-virtual-network-tap-using-the-azure-cli"></a>Azure CLı kullanarak bir sanal ağ ile çalışma
 
@@ -53,7 +53,7 @@ Sanal ağ TAP kaynağı oluşturmadan önce [önkoşulları](virtual-network-tap
 
 4. Sanal ağ ' a yönelik hedef, toplayıcı veya Analiz Aracı için ağ sanal gereci 'nda bulunan ağ arabirimidir.
 
-   - Ağ sanal gerecinin ağ arabiriminin IP yapılandırmasını sonraki bir adımda kullanılan bir değişkene alın. KIMLIK, dokunma trafiğini toplayacak olan bitiş noktasıdır. Aşağıdaki örnek, *Myresourcegroup*adlı bir kaynak grubunda *mynetworkınterface*adlı bir ağ arabirimi IÇIN *ipconfig1* IP yapılandırmasının kimliğini alır:
+   - Ağ sanal gerecinin ağ arabiriminin IP yapılandırmasını sonraki bir adımda kullanılan bir değişkene alın. KIMLIK, dokunma trafiğini toplayacak olan bitiş noktasıdır. Aşağıdaki örnek, *Myresourcegroup* adlı bir kaynak grubunda *mynetworkınterface* adlı bir ağ arabirimi IÇIN *ipconfig1* IP yapılandırmasının kimliğini alır:
 
       ```azurecli-interactive
        IpConfigId=$(az network nic ip-config show \
@@ -77,7 +77,7 @@ Sanal ağ TAP kaynağı oluşturmadan önce [önkoşulları](virtual-network-tap
 
 5. Sanal ağın hedefi bir Azure iç yük dengeleyiciye ise:
   
-   - Azure iç yük dengeleyicinin ön uç IP yapılandırmasını sonraki bir adımda kullanılan bir değişkene alın. KIMLIK, dokunma trafiğini toplayacak olan bitiş noktasıdır. Aşağıdaki örnek, *Myresourcegroup*adlı bir kaynak grubunda *myınternalloadbalancer*adlı bir yük dengeleyici IÇIN *FRONTENDIPCONFIG1* ön uç IP yapılandırmasının kimliğini alır:
+   - Azure iç yük dengeleyicinin ön uç IP yapılandırmasını sonraki bir adımda kullanılan bir değişkene alın. KIMLIK, dokunma trafiğini toplayacak olan bitiş noktasıdır. Aşağıdaki örnek, *Myresourcegroup* adlı bir kaynak grubunda *myınternalloadbalancer* adlı bir yük dengeleyici IÇIN *FRONTENDIPCONFIG1* ön uç IP yapılandırmasının kimliğini alır:
 
       ```azurecli-interactive
       FrontendIpConfigId=$(az network lb frontend-ip show \
@@ -109,7 +109,7 @@ Sanal ağ TAP kaynağı oluşturmadan önce [önkoşulları](virtual-network-tap
 
 ## <a name="add-a-tap-configuration-to-a-network-interface"></a>Bir ağ arabirimine bir dokunma yapılandırması ekleme
 
-1. Mevcut bir sanal ağın KIMLIĞINI alın kaynak ' a dokunun. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *mytap* ADLı bir sanal ağ tap 'ı alır:
+1. Mevcut bir sanal ağın KIMLIĞINI alın kaynak ' a dokunun. Aşağıdaki örnek, *Myresourcegroup* adlı kaynak grubunda *mytap* ADLı bir sanal ağ tap 'ı alır:
 
    ```azurecli-interactive
    tapId=$(az network vnet tap show \
@@ -119,7 +119,7 @@ Sanal ağ TAP kaynağı oluşturmadan önce [önkoşulları](virtual-network-tap
    --out tsv)
    ```
 
-2. İzlenen sanal makinenin ağ arabiriminde bir dokunma yapılandırması oluşturun. Aşağıdaki örnek, *Mynetworkınterface*adlı bir ağ arabirimi IÇIN bir dokunma yapılandırması oluşturur:
+2. İzlenen sanal makinenin ağ arabiriminde bir dokunma yapılandırması oluşturun. Aşağıdaki örnek, *Mynetworkınterface* adlı bir ağ arabirimi IÇIN bir dokunma yapılandırması oluşturur:
 
    ```azurecli-interactive
    az network nic vtap-config create \

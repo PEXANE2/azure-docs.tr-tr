@@ -8,11 +8,11 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 09/14/2018
 ms.openlocfilehash: 95b638b85e0746d2995488f2a28a5fb2512b1063
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219335"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015273"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics için CI/CD işlem hattı ayarlama  
 
@@ -79,13 +79,13 @@ Bağımsız değişkenler tanımı ve değerleri aşağıdaki gibidir:
 - **Ussqlsdkpath = \<U-SQL Nuget package> \build\runtime**. Bu parametre, U-SQL dil hizmeti için NuGet paketinin yükleme yolunu ifade eder.
 - **Ussqltargettype = Merge veya SyntaxCheck**:
 
-  - **Birleştirme**. Birleştirme modu arka plan kod dosyalarını derler. Örnekler **. cs**, **. Kopyala**ve **. r** dosyalarıdır. Bu, sonuç Kullanıcı tanımlı kod kitaplığını U-SQL betiğine göre satır içine alabilir. Örnek olarak DLL ikili, Python veya R kodudur.
+  - **Birleştirme**. Birleştirme modu arka plan kod dosyalarını derler. Örnekler **. cs**, **. Kopyala** ve **. r** dosyalarıdır. Bu, sonuç Kullanıcı tanımlı kod kitaplığını U-SQL betiğine göre satır içine alabilir. Örnek olarak DLL ikili, Python veya R kodudur.
 
   - **SyntaxCheck**. SyntaxCheck modu, ilk olarak arka plan kod dosyalarını U-SQL betiğine birleştirir. Ardından, kodunuzu doğrulamak için U-SQL betiğini derler.
 
-- **Dataroot = \<DataRoot path> **. DataRoot yalnızca SyntaxCheck modu için gereklidir. SyntaxCheck modu ile betiği oluşturduğunda MSBuild, betikteki veritabanı nesnelerine başvuruları denetler. Oluşturmadan önce, derleme makinesinin DataRoot klasöründeki U-SQL veritabanından başvurulan nesneleri içeren, eşleşen bir yerel ortam ayarlayın. Ayrıca, bu veritabanı bağımlılıklarını [U-SQL veritabanı projesine başvurarak](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project)yönetebilirsiniz. MSBuild, dosyaları değil yalnızca veritabanı nesnesi başvurularını denetler.
+- **Dataroot = \<DataRoot path>**. DataRoot yalnızca SyntaxCheck modu için gereklidir. SyntaxCheck modu ile betiği oluşturduğunda MSBuild, betikteki veritabanı nesnelerine başvuruları denetler. Oluşturmadan önce, derleme makinesinin DataRoot klasöründeki U-SQL veritabanından başvurulan nesneleri içeren, eşleşen bir yerel ortam ayarlayın. Ayrıca, bu veritabanı bağımlılıklarını [U-SQL veritabanı projesine başvurarak](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project)yönetebilirsiniz. MSBuild, dosyaları değil yalnızca veritabanı nesnesi başvurularını denetler.
 
-- **Enabledeployment = true** veya **false**. EnableDeployment, derleme işlemi sırasında başvurulan U-SQL veritabanlarını dağıtmaya izin verilip verilmediğini gösterir. Bir U-SQL veritabanı projesine başvuruda bulunmak ve U-SQL betiğinizdeki veritabanı nesnelerini kullanacaksanız, bu parametreyi **true**olarak ayarlayın.
+- **Enabledeployment = true** veya **false**. EnableDeployment, derleme işlemi sırasında başvurulan U-SQL veritabanlarını dağıtmaya izin verilip verilmediğini gösterir. Bir U-SQL veritabanı projesine başvuruda bulunmak ve U-SQL betiğinizdeki veritabanı nesnelerini kullanacaksanız, bu parametreyi **true** olarak ayarlayın.
 
 ### <a name="continuous-integration-through-azure-pipelines"></a>Azure Pipelines aracılığıyla sürekli tümleştirme
 
@@ -126,7 +126,7 @@ Derleme ve test süreci aracılığıyla kodu doğruladıktan sonra, Azure Power
 
 ### <a name="submit-u-sql-jobs-through-azure-pipelines"></a>U-SQL işlerini Azure Pipelines aracılığıyla gönderme
 
-U-SQL projesinin derleme çıktısı **Usguprojectname. ustopack**adlı bir zip dosyasıdır. ZIP dosyası, projedeki tüm U-SQL betiklerini içerir. U-SQL işlerini doğrudan Azure Pipelines göndermek için aşağıdaki örnek PowerShell betiği ile işlem hatlarında [Azure PowerShell görevini](/azure/devops/pipelines/tasks/deploy/azure-powershell) kullanabilirsiniz.
+U-SQL projesinin derleme çıktısı **Usguprojectname. ustopack** adlı bir zip dosyasıdır. ZIP dosyası, projedeki tüm U-SQL betiklerini içerir. U-SQL işlerini doğrudan Azure Pipelines göndermek için aşağıdaki örnek PowerShell betiği ile işlem hatlarında [Azure PowerShell görevini](/azure/devops/pipelines/tasks/deploy/azure-powershell) kullanabilirsiniz.
 
 ```powershell
 <#
@@ -360,7 +360,7 @@ Tablo değerli işlevler ve saklı yordamlar için test çalışmalarını doğr
 
 ## <a name="deploy-u-sql-database-through-azure-pipelines"></a>U-SQL veritabanını Azure Pipelines aracılığıyla dağıtma
 
-`PackageDeploymentTool.exe` U-SQL veritabanı dağıtım paketleri dağıtmaya yardımcı olan programlama ve komut satırı arabirimlerini sağlar **. ustabdbpack**. SDK, **derleme/çalışma zamanı/PackageDeploymentTool.exe**konumunda bulunan [U-SQL SDK NuGet paketine](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)dahildir. Kullanarak `PackageDeploymentTool.exe` u-SQL veritabanlarını hem Azure Data Lake Analytics hem de yerel hesaplara dağıtabilirsiniz.
+`PackageDeploymentTool.exe` U-SQL veritabanı dağıtım paketleri dağıtmaya yardımcı olan programlama ve komut satırı arabirimlerini sağlar **. ustabdbpack**. SDK, **derleme/çalışma zamanı/PackageDeploymentTool.exe** konumunda bulunan [U-SQL SDK NuGet paketine](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)dahildir. Kullanarak `PackageDeploymentTool.exe` u-SQL veritabanlarını hem Azure Data Lake Analytics hem de yerel hesaplara dağıtabilirsiniz.
 
 > [!NOTE]
 >

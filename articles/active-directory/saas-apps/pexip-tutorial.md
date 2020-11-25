@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 3b26b7d95f4a6d01d81a2916403ab3a630370fc8
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520843"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014780"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pexip"></a>Öğretici: Pexıp ile tümleştirme Azure Active Directory
 
@@ -61,13 +61,13 @@ Pexıp tümleştirmesini Azure AD ile yapılandırmak için, Galeriden Pexıp 'y
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **pexıp**yazın, sonuç panelinden **pexıp** ' yi seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **pexıp** yazın, sonuç panelinden **pexıp** ' yi seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuçlar listesinde pexıp](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Pexıp ile Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre yapılandırıp test edersiniz.
+Bu bölümde, Pexıp ile Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre yapılandırıp test edersiniz.
 Çoklu oturum açma için, Pexıp 'de bir Azure AD kullanıcısı ve ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açma 'yı Pexıp ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -137,14 +137,14 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -154,7 +154,7 @@ Bu bölümde, Pexıp 'ye erişim izni vererek Azure çoklu oturum açma özelli�
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Pexıp**öğesini seçin.
+2. Uygulamalar listesinde **Pexıp** öğesini seçin.
 
     ![Uygulamalar listesindeki Pexıp bağlantısı](common/all-applications.png)
 
