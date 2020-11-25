@@ -6,11 +6,11 @@ ms.topic: include
 ms.date: 02/12/2020
 ms.author: mimart
 ms.openlocfilehash: d43b879057001d62ea72bd2e011ad52957d47470
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78189046"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95990913"
 ---
 ## <a name="sample-templates"></a>Örnek şablonlar
 UI özelleştirmesi için örnek şablonları buradan bulabilirsiniz:
@@ -27,7 +27,7 @@ Bu proje aşağıdaki şablonları içerir:
 
 1. Yerel makinenizde depoyu kopyalayın. Bir şablon klasörü `/ocean_blue` veya seçin `/slate_gray` .
 1. Şablon klasörü ve klasörü altındaki tüm dosyaları `/assets` , önceki bölümlerde açıklandığı gibi BLOB depolama alanına yükleyin.
-1. Ardından, her `\*.html` bir dosyayı veya kökündeki her birini açın `/ocean_blue` `/slate_gray` , göreli URL 'lerin tüm örneklerini adım 2 ' de karşıya yüklediğiniz CSS, resim ve yazı tipi dosyalarının URL 'leriyle değiştirin. Örneğin:
+1. Ardından, her `\*.html` bir dosyayı veya kökündeki her birini açın `/ocean_blue` `/slate_gray` , göreli URL 'lerin tüm örneklerini adım 2 ' de karşıya yüklediğiniz CSS, resim ve yazı tipi dosyalarının URL 'leriyle değiştirin. Örnek:
     ```html
     <link href="./css/assets.css" rel="stylesheet" type="text/css" />
     ```
