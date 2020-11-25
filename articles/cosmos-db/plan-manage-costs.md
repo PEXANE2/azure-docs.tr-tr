@@ -7,12 +7,12 @@ ms.custom: subject-cost-optimization
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/19/2020
-ms.openlocfilehash: a73d155d20d09573ad5e1b2597678291aea4c92b
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: c7db48a1df61472de8676192f267493232139b6e
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980601"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030824"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>Azure Cosmos DB maliyetlerini planlayın ve yönetin
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -21,7 +21,7 @@ Bu makalede, Azure Cosmos DB maliyetlerini nasıl planlayabileceğinizi ve yöne
 
 Azure Cosmos DB kaynaklarını kullanmaya başladıktan sonra, bütçe ayarlamak ve maliyetleri izlemek için maliyet yönetimi özelliklerini kullanın. Ayrıca Tahmini maliyetleri gözden geçirebilir ve hareket etmek isteyebileceğiniz yerleri belirlemek için harcama eğilimlerini belirleyebilirsiniz. Azure Cosmos DB maliyetleri, Azure faturanızda bulunan Aylık maliyetlerin yalnızca bir parçasıdır. Bu makalede Azure Cosmos DB maliyetlerinin nasıl planlanacağı ve yönetileceği açıklanmakta olsa da, üçüncü taraf hizmetler de dahil olmak üzere Azure aboneliğinizde kullanılan tüm Azure hizmetleri ve kaynakları için faturalandırılırsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="provisioned-throughput-or-serverless"></a>Sağlanan aktarım hızı veya sunucusuz
 
@@ -52,7 +52,7 @@ Azure Cosmos DB sunucusuz modda kullanmayı planlıyorsanız, aylık olarak kaç
 | Sorgu yürütme | 10 RU | [Dizin oluşturmanın](index-overview.md) tam avantajlarından yararlanan ve 100 sonucu veya daha az döndüren bir sorgu için Ortalama maliyet |
 
 > [!IMPORTANT] 
-> Yukarıdaki tablodaki notlara dikkat edin. Operasyonlarınızın gerçek maliyetlerinin daha doğru bir şekilde tahmin etmek için [Azure Cosmos öykünücüsünü](local-emulator.md) kullanabilir ve [OPERASYONLARıNıZıN tam ru maliyetini ölçebilirsiniz](find-request-unit-charge.md). Azure Cosmos öykünücüsü sunucusuz 'yi desteklemediğinden, veritabanı işlemleri için standart RU ücreti rapor edebilir ve bu tahmin için kullanılabilir.
+> Yukarıdaki tablodaki notlara dikkat edin. Operasyonlarınızın gerçek maliyetlerinin daha doğru bir şekilde tahmin etmek için [Azure Cosmos DB öykünücüsünü](local-emulator.md) kullanabilir ve [OPERASYONLARıNıZıN tam ru maliyetini ölçebilirsiniz](find-request-unit-charge.md). Azure Cosmos DB öykünücüsü sunucusuz 'yi desteklemediğinden, veritabanı işlemleri için standart RU ücreti rapor edebilir ve bu tahmin için kullanılabilir.
 
 Bir ay boyunca tükettiğiniz toplam Istek birimi ve GB depolama alanı sayısını hesapladıktan sonra, aşağıdaki formül maliyet tahmininizi döndürür: **([istek birimi sayısı]/1.000.000 * $0,25) + ([GB depolama] * $0,25)**.
 

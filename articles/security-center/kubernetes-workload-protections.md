@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: ed9c3c86336a7b0a2fe989cbe9bd0dd825c5575b
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 08bcb74fd50be0eeb7a73c0743db2c4f3a57be32
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372640"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030858"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Kubernetes iş yüklerinizi koruma
 
@@ -47,23 +47,32 @@ Güvenlik Merkezi, Azure Defender 'ı etkinleştirirseniz daha fazla kapsayıcı
 
 Azure Güvenlik Merkezi, **Kubernetes Için Azure ilke eklentisini** yüklediğinizde kullanabileceğiniz bir öneriler paketi içerir.
 
-1. Önerileri yapılandırmak için öncelikle eklentiyi yüklemeniz gerekir:
+### <a name="step-1-deploy-the-add-on"></a>1. Adım: eklentiyi dağıtma
 
-    1. Öneriler sayfasından, **Kubernetes Için Azure ilke eklentisi adlı öneriyi aramak, kümelerinizde yüklü ve etkinleştirilmiş olmalıdır**.
+Önerileri yapılandırmak için,  **Kubernetes Için Azure İlkesi eklentisi**' ni yükler. 
+
+- Bu eklentiyi, [uzantıların otomatik sağlanmasını etkinleştir](security-center-enable-data-collection.md#enable-auto-provisioning-of-extensions)bölümünde açıklandığı gibi otomatik olarak dağıtabilirsiniz. Eklenti için otomatik sağlama "açık" olarak ayarlandığında, uzantı tüm mevcut ve gelecekteki kümelerde (eklenti yükleme gereksinimlerini karşılayan) varsayılan olarak etkinleştirilir.
+
+- Eklentiyi el ile dağıtmak için:
+
+    1. Öneriler sayfasından, "**Kubernetes Için Azure ilke eklentisi 'nin kümelerinizde yüklü ve etkinleştirilmiş olması gerekir**" önerisi için arama yapın. 
 
         :::image type="content" source="./media/defender-for-kubernetes-usage/recommendation-to-install-policy-add-on-for-kubernetes.png" alt-text="Öneri * * Kubernetes için Azure Ilke eklentisi 'nin kümelerinizde yüklü ve etkin olması gerekir * *":::
 
         > [!TIP]
         > Öneri beş farklı güvenlik denetimine dahildir ve bu, bir sonraki adımda nerede seçim yapmanız gerektiğini fark etmez.
 
-    1. Güvenlik denetimlerinden herhangi birinden, üzerinde eklentiyi yükleyebileceğiniz kaynakları görmek için öneriyi seçin ve **Düzelt** ' i seçin. 
+    1. Güvenlik denetimlerinden herhangi birinden, üzerinde eklentiyi yükleyebileceğiniz kaynakları görmek için öneriyi seçin.
+    1. İlgili kümeyi seçin ve **düzeltin**.
 
         :::image type="content" source="./media/defender-for-kubernetes-usage/recommendation-to-install-policy-add-on-for-kubernetes-details.png" alt-text="* * Kubernetes için Azure Ilke eklentisi için öneri ayrıntıları sayfası, kümelerinizde yüklü ve etkin olmalıdır * *":::
+
+### <a name="step-2-view-and-configure-the-bundle-of-13-recommendations"></a>2. Adım: 13 öneri paketini görüntüleyin ve yapılandırın
 
 1. Eklenti yüklemesi tamamlandıktan yaklaşık 30 dakika sonra, Güvenlik Merkezi, aşağıdaki öneriler için kümelerin sistem durumunu gösterir, her biri ilgili güvenlik denetiminde gösterildiği gibi:
 
     > [!TIP]
-    > Bazı önerilerin, bunları etkili bir şekilde kullanmak için Azure Ilkesi aracılığıyla özelleştirilmesi gereken parametreleri vardır. Örneğin, öneri kapsayıcı görüntülerinin avantajlarından yararlanmak için **yalnızca güvenilen kayıt defterlerinden dağıtılmalıdır** , güvenilen kayıt defterleri tanımlamanız gerekir.
+    > Bazı önerilerin, bunları etkili bir şekilde kullanmak için Azure Ilkesi aracılığıyla özelleştirilmesi gereken parametreleri vardır. Örneğin, öneri kapsayıcı görüntülerinin avantajlarından yararlanmak için **yalnızca güvenilen kayıt defterlerinden dağıtılmalıdır**, güvenilen kayıt defterleri tanımlamanız gerekir.
     > 
     > Yapılandırma gerektiren öneriler için gerekli parametreleri girmezseniz, iş yükleriniz sağlıksız olarak gösterilir.
 
@@ -82,28 +91,29 @@ Azure Güvenlik Merkezi, **Kubernetes Için Azure ilke eklentisini** yüklediği
     | Konak ağ ve bağlantı noktalarının kullanımı sınırlandırılmalıdır                     | Yetkisiz ağ erişimini kısıtla     | **Evet**                |
     | Kapsayıcılar AppArmor profilinin geçersiz kılınması veya devre dışı bırakılması kısıtlanıyor | Güvenlik yapılandırmalarını düzeltme        | **Evet**                |
     | Kapsayıcı görüntüleri yalnızca güvenilen kayıt defterlerinden dağıtılmalıdır            | Güvenlik açıklarını düzeltin                | **Evet**                |
+    |||
 
 
 1. Parametrelere sahip önerilerin özelleştirilmelidir, parametreleri ayarlayın:
 
-    1. Güvenlik Merkezi menüsünde **güvenlik ilkesi** ' ni seçin.
+    1. Güvenlik Merkezi menüsünde **güvenlik ilkesi**' ni seçin.
     1. Uygun aboneliği seçin.
-    1. **Güvenlik Merkezi varsayılan ilkesi** bölümünde, **geçerli ilkeyi görüntüle** ' yi seçin.
+    1. **Güvenlik Merkezi varsayılan ilkesi** bölümünde, **geçerli ilkeyi görüntüle**' yi seçin.
     1. "ASC default" öğesini seçin.
     1. **Parametreler** sekmesini açın ve değerleri gerektiği gibi değiştirin.
-    1. **Gözden geçir + kaydet** ' i seçin.
-    1. **Kaydet** ’i seçin.
+    1. **Gözden geçir + kaydet**' i seçin.
+    1. **Kaydet**'i seçin.
 
 
 1. Önerilerden herhangi birini zorlamak için, 
 
-    1. Öneri ayrıntıları sayfasını açın ve **Reddet** ' i seçin:
+    1. Öneri ayrıntıları sayfasını açın ve **Reddet**' i seçin:
 
         :::image type="content" source="./media/defender-for-kubernetes-usage/enforce-workload-protection-example.png" alt-text="Azure Ilke parametresi için reddetme seçeneği":::
 
         Bu işlem, kapsamı ayarladığınız bölmeyi açar. 
 
-    1. Kapsamı ayarladığınızda, **Reddet olarak değiştir** ' i seçin.
+    1. Kapsamı ayarladığınızda, **Reddet olarak değiştir**' i seçin.
 
 1. Kümelerinize hangi önerilerin uygulanacağını görmek için:
 
@@ -111,7 +121,7 @@ Azure Güvenlik Merkezi, **Kubernetes Için Azure ilke eklentisini** yüklediği
 
     1. Araştırılması için bir küme seçin ve kullanılabilir önerileri gözden geçirin. 
 
-1. İş yükü koruma kümesinden bir öneri görüntülenirken, küme ile birlikte listelenen etkilenen düğüm sayısını ("Kubernetes bileşenleri") görürsünüz. Belirli FID 'lerin bir listesi için kümeyi seçin ve ardından **eylem al** ' ı seçin.
+1. İş yükü koruma kümesinden bir öneri görüntülenirken, küme ile birlikte listelenen etkilenen düğüm sayısını ("Kubernetes bileşenleri") görürsünüz. Belirli FID 'lerin bir listesi için kümeyi seçin ve ardından **eylem al**' ı seçin.
 
     :::image type="content" source="./media/defender-for-kubernetes-usage/view-affected-pods-for-recommendation.gif" alt-text="Etkilenen Pod 'leri K8s önerisi için görüntüleme"::: 
 

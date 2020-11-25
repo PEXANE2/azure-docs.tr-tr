@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 6b57428aeba702dc8cf06ec4ae7984854a94ac7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7265195f9614928a2150a56a780ea7b36bc2e266
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449177"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030875"
 ---
-# <a name="container-security-in-security-center"></a>Güvenlik Merkezi 'nde kapsayıcı güvenliği
+# <a name="container-security-in-security-center"></a>Güvenlik Merkezi’nde kapsayıcı güvenliği
 
 Azure Güvenlik Merkezi, kapsayıcılarınızın güvenliğini sağlamaya yönelik Azure Native çözümüdür.
 
@@ -78,11 +78,11 @@ Bu özellik için görünebilen ilgili güvenlik merkezi önerilerinin ayrıntı
 
 ###  <a name="workload-protection-best-practices-using-kubernetes-admission-control"></a>İş yükü koruma en iyi-Kubernetes giriş denetimi kullanan uygulamalar
 
-**Kubernetes Için Azure ilke eklentisi '** ni, Kubernetes kapsayıcılarınızın iş yüklerini korumaya yönelik öneriler grubunu almak için yükler.
+Kubernetes kapsayıcılarınızın iş yüklerini korumaya yönelik bir dizi öneri için,  **Kubernetes Için Azure İlkesi eklentisi**' ni yükler. Ayrıca, [uzantıların otomatik sağlamasını etkinleştir](security-center-enable-data-collection.md#enable-auto-provisioning-of-extensions)bölümünde açıklandığı gibi bu eklentiyi otomatik olarak dağıtabilirsiniz. Eklenti için otomatik sağlama "açık" olarak ayarlandığında, uzantı tüm mevcut ve gelecekteki kümelerde (eklenti yükleme gereksinimlerini karşılayan) varsayılan olarak etkinleştirilir.
 
 [Bu Azure Ilkesinde Kubernetes sayfasında](../governance/policy/concepts/policy-for-kubernetes.md)açıklandığı gibi, eklenti açık kaynak [Gatekeeper v3](https://github.com/open-policy-agent/gatekeeper)   giriş denetleyicisi Web kancasını [Açık ilke aracısına](https://www.openpolicyagent.org/)genişletir. Kubernetes giriş denetleyicileri, kümelerinizin nasıl kullanıldığını zorlayan eklentilerdir. Eklenti, Kubernetes giriş denetimine bir Web kancası olarak kaydedilir ve kümelerinizde yerleşik olarak öngörülebilir ve korumalar üzerinde merkezi ve tutarlı bir şekilde uygulanmasını sağlar. 
 
-Eklentiyi AKS kümenize yüklediğinizde, Kubernetes API sunucusuna gönderilen her istek, kümede kalıcı hale gelmeden önce önceden tanımlanmış en iyi uygulamalar kümesine göre izlenir. Daha sonra, en iyi uygulamaları zorlamak ve gelecekteki iş yükleri için bunları **zorunlu kılmak** üzere yapılandırabilirsiniz. 
+AKS kümenizdeki eklenti sayesinde, Kubernetes API sunucusuna gönderilen her istek, kümede kalıcı hale gelmeden önce önceden tanımlanmış en iyi uygulamalar kümesine göre izlenir. Daha sonra, en iyi uygulamaları zorlamak ve gelecekteki iş yükleri için bunları **zorunlu kılmak** üzere yapılandırabilirsiniz. 
 
 Örneğin, ayrıcalıklı kapsayıcıların oluşturulmaması ve ileride yapılacak istekleri engellenemeyeceksiniz.
 
@@ -100,4 +100,4 @@ Eklentiyi AKS kümenize yüklediğinizde, Kubernetes API sunucusuna gönderilen 
 Bu genel bakışta, Azure Güvenlik Merkezi 'nde kapsayıcı güvenliğinin temel öğeleri hakkında bilgi edindiniz. İlgili malzemeler için bkz:
 
 - [Kubernetes için Azure Defender 'a giriş](defender-for-kubernetes-introduction.md)
-- [Kapsayıcı kayıt defterleri için Azure Defender 'a giriş](defender-for-container-registries-introduction.md)
+- [Kapsayıcı kayıt defterleri için Azure Defender’a giriş](defender-for-container-registries-introduction.md)

@@ -7,17 +7,17 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/17/2020
 ms.custom: contperfq1
-ms.openlocfilehash: cb6d1cb684f4c2e3f563d5690c804d64c97ff70c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 67abcea1b5d7657ffcd342d4cddb9a96bdd8c63a
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096746"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030892"
 ---
 # <a name="command-line-and-powershell-reference-for-azure-cosmos-db-emulator"></a>Azure Cosmos DB öykünücü için komut satırı ve PowerShell Başvurusu
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos öykünücüsü, Azure Cosmos DB hizmetine yerel geliştirme amaçlarıyla taklit eden bir yerel ortam sağlar. [Öykünücüyü](local-emulator.md)yükledikten sonra, öykünücü komut satırı ve PowerShell komutlarıyla kontrol edebilirsiniz. Bu makalede, öykünücü başlatmak ve durdurmak, seçenekleri yapılandırmak ve diğer işlemleri gerçekleştirmek için komut satırı ve PowerShell komutlarının nasıl kullanılacağı açıklanır. Yükleme konumundan komutları çalıştırmanız gerekir.
+Azure Cosmos DB öykünücüsü, yerel geliştirme amaçlarıyla Azure Cosmos DB hizmetine öykünen yerel bir ortam sağlar. [Öykünücüyü](local-emulator.md)yükledikten sonra, öykünücü komut satırı ve PowerShell komutlarıyla kontrol edebilirsiniz. Bu makalede, öykünücü başlatmak ve durdurmak, seçenekleri yapılandırmak ve diğer işlemleri gerçekleştirmek için komut satırı ve PowerShell komutlarının nasıl kullanılacağı açıklanır. Yükleme konumundan komutları çalıştırmanız gerekir.
 
 ##  <a name="manage-the-emulator-with-command-line-syntax"></a><a id="command-line"></a>Öykünücü komut satırı sözdizimiyle yönetme
 
@@ -29,10 +29,10 @@ Seçenek listesini görüntülemek için komut satırına `Microsoft.Azure.Cosmo
 
 |**Seçenek** | **Açıklama** | **Komut**| **Arguments**|
 |---|---|---|---|
-|[Bağımsız değişken yok] | Azure Cosmos öykünücüsünü varsayılan ayarlarla başlatır. |Microsoft.Azure.Cosmos.Emulator.exe| |
+|[Bağımsız değişken yok] | Varsayılan ayarlarla Azure Cosmos DB Öykünücüsünü başlatır. |Microsoft.Azure.Cosmos.Emulator.exe| |
 |[Yardım] |Desteklenen komut satırı bağımsız değişkenleri listesini görüntüler.|Microsoft.Azure.Cosmos.Emulator.exe/? | |
-| GetStatus |Azure Cosmos öykünücüsünün durumunu alır. Durum, çıkış kodu tarafından belirtilir: 1 = Başlatılıyor, 2 = Çalıştırılıyor, 3 = Durduruldu. Negatif çıkış kodu, bir hata oluştuğunu gösterir. Başka bir çıktı üretilmez. | Microsoft.Azure.Cosmos.Emulator.exe/GetStatus| |
-| Kapat| Azure Cosmos öykünücüsünü kapatır.| Microsoft.Azure.Cosmos.Emulator.exe/Shutdown | |
+| GetStatus |Azure Cosmos DB Öykünücüsü’nün durumunu alır. Durum, çıkış kodu tarafından belirtilir: 1 = Başlatılıyor, 2 = Çalıştırılıyor, 3 = Durduruldu. Negatif çıkış kodu, bir hata oluştuğunu gösterir. Başka bir çıktı üretilmez. | Microsoft.Azure.Cosmos.Emulator.exe/GetStatus| |
+| Kapat| Azure Cosmos DB Öykünücüsü’nü kapatır.| Microsoft.Azure.Cosmos.Emulator.exe/Shutdown | |
 |DataPath | Veri dosyalarının depolanacağı yolu belirtir. Varsayılan değer%LocalAppdata%\CosmosDBEmulator. | Microsoft.Azure.Cosmos.Emulator.exe/DataPath =\<datapath\> | \<datapath\>: Erişilebilir bir yol |
 |Bağlantı noktası | Öykünücü için kullanılacak bağlantı noktası numarasını belirtir. Varsayılan değer 8081 ' dir. |Microsoft.Azure.Cosmos.Emulator.exe/Port =\<port\> | \<port\>: Tek bağlantı noktası numarası |
 | ComputePort | Compute Interop Gateway hizmeti için kullanılacak bağlantı noktası numarası belirtildi. Ağ geçidinin HTTP uç nokta araştırması bağlantı noktası ComputePort + 79 olarak hesaplanır. Bu nedenle, ComputePort ve ComputePort + 79 açık ve kullanılabilir olmalıdır. Varsayılan değer 8900 ' dir. | Microsoft.Azure.Cosmos.Emulator.exe/ComputePort =\<computeport\> | \<computeport\>: Tek bağlantı noktası numarası |
@@ -127,26 +127,26 @@ Cmdlet, öykünücüyü kaldırmadan önce öykünücünün tamamen durdurulduğ
 
 ## <a name="change-the-number-of-default-containers"></a><a id="set-partitioncount"></a>Varsayılan kapsayıcıların sayısını değiştirme
 
-Varsayılan olarak, en fazla 25 sabit boyut kapsayıcısı (yalnızca Azure Cosmos DB SDK 'Ları kullanılarak desteklenir) veya Azure Cosmos öykünücüsünü kullanarak 5 sınırsız kapsayıcı oluşturabilirsiniz. **PartitionCount** değerini değiştirerek, en fazla 250 sabit boyut kapsayıcısı veya 50 sınırsız kapsayıcı oluşturabilir ya da iki değerin herhangi bir bileşimini (sınırsız kapsayıcı = 5 sabit boyut kapsayıcısı) 250 aşamaz. Ancak, öykünücü 200 ' den fazla sabit boyutlu kapsayıcıyla çalışacak şekilde ayarlanmalıdır. Disk GÇ işlemlerine eklediği ek yük nedeniyle, uç nokta API 'Leri kullanılırken öngörülemeyen zaman aşımları ile sonuçlanır.
+Varsayılan olarak, en fazla 25 sabit boyut kapsayıcısı (yalnızca Azure Cosmos DB SDK 'Ları kullanılarak desteklenir) veya Azure Cosmos DB öykünücüsünü kullanarak 5 sınırsız kapsayıcı oluşturabilirsiniz. **PartitionCount** değerini değiştirerek, en fazla 250 sabit boyut kapsayıcısı veya 50 sınırsız kapsayıcı oluşturabilir ya da iki değerin herhangi bir bileşimini (sınırsız kapsayıcı = 5 sabit boyut kapsayıcısı) 250 aşamaz. Ancak, öykünücü 200 ' den fazla sabit boyutlu kapsayıcıyla çalışacak şekilde ayarlanmalıdır. Disk GÇ işlemlerine eklediği ek yük nedeniyle, uç nokta API 'Leri kullanılırken öngörülemeyen zaman aşımları ile sonuçlanır.
 
 Geçerli bölüm sayısı aşıldıktan sonra bir kapsayıcı oluşturmaya çalışırsanız, öykünücü aşağıdaki iletiyle bir ServiceUnavailable özel durumu atar.
 
 > Ne yazık ki şu anda bu bölgede yüksek taleple karşılaşıyoruz ve isteğinizi Şu anda gerçekleştiremiyor. Daha fazla ve daha fazla kapasiteyi çevrimiçi hale getirmek için sürekli olarak çalıştık ve yeniden denemeniz önerilir.
 > Etkinlik kimliği: 12345678-1234-1234-1234-123456789ABC
 
-Azure Cosmos öykünücüsünde bulunan kapsayıcıların sayısını değiştirmek için aşağıdaki adımları çalıştırın:
+Azure Cosmos DB öykünücüsünde bulunan kapsayıcıların sayısını değiştirmek için aşağıdaki adımları çalıştırın:
 
-1. Sistem tepsisindeki **Azure Cosmos DB öykünücü** simgesine sağ tıklayıp ardından **verileri Sıfırla...** öğesine tıklayarak tüm yerel Azure Cosmos öykünücü verilerini silin.
+1. Sistem tepsisindeki **Azure Cosmos DB Öykünücüsü** simgesine sağ tıklayıp **Verileri Sıfırla…** seçeneğine tıklayarak tüm yerel Azure Cosmos DB Öykünücüsü verilerini silin.
 
 1. Bu klasördeki tüm öykünücü verilerini silin `%LOCALAPPDATA%\CosmosDBEmulator` .
 
-1. Sistem tepsisindeki **Azure Cosmos DB Öykünücüsü** simgesine sağ tıklayıp **Çıkış** ’a tıklayarak tüm açık örneklerden çıkın. Tüm örneklerin çıkması bir dakika sürebilir.
+1. Sistem tepsisindeki **Azure Cosmos DB Öykünücüsü** simgesine sağ tıklayıp **Çıkış**’a tıklayarak tüm açık örneklerden çıkın. Tüm örneklerin çıkması bir dakika sürebilir.
 
-1. [Azure Cosmos öykünücüsünün](https://aka.ms/cosmosdb-emulator)en son sürümünü yükler.
+1. [Azure Cosmos DB Öykünücüsü](https://aka.ms/cosmosdb-emulator)’nün en son sürümünü yükleyin.
 
 1. 250 veya daha düşük bir değer ayarlayarak PartitionCount bayrağı ile öykünücüyü başlatın. Örneğin: `C:\Program Files\Azure Cosmos DB Emulator> Microsoft.Azure.Cosmos.Emulator.exe /PartitionCount=100`.
  
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Java, Python ve Node.js uygulamalarıyla kullanılmak üzere Azure Cosmos öykünücü sertifikalarını dışarı aktarma](local-emulator-export-ssl-certificates.md)
+* [Java, Python ve Node.js uygulamalarıyla kullanmak üzere Azure Cosmos DB öykünücü sertifikalarını dışarı aktarın](local-emulator-export-ssl-certificates.md)
 * [Öykünücü ile ilgili sorunları ayıklama](troubleshoot-local-emulator.md)

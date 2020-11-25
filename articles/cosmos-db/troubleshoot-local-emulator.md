@@ -1,29 +1,29 @@
 ---
-title: Azure Cosmos öykünücüsü 'nü kullanırken karşılaşılan sorunları giderme
-description: Azure Cosmos öykünücüsü 'nü kullanırken hizmet kullanılamıyor, sertifika, şifreleme ve sürüm oluşturma sorunlarını troubleshot nasıl yapacağınızı öğrenin.
+title: Azure Cosmos DB öykünücüsü 'nü kullanırken sorun giderme
+description: Azure Cosmos DB öykünücüsü kullanırken hizmet kullanılamıyor, sertifika, şifreleme ve sürüm oluşturma sorunlarını troubleshot nasıl kullanacağınızı öğrenin.
 ms.service: cosmos-db
 ms.topic: troubleshooting
 author: markjbrown
 ms.author: mjbrown
 ms.date: 09/17/2020
 ms.custom: contperfq1
-ms.openlocfilehash: cf174d45f33c50ce93b45b19c6030cf42cb20983
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 83559cc2ab1ca9597cca405333061e53b6f56aa9
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93081459"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030756"
 ---
-# <a name="troubleshoot-issues-when-using-the-azure-cosmos-emulator"></a>Azure Cosmos öykünücüsü 'nü kullanırken karşılaşılan sorunları giderme
+# <a name="troubleshoot-issues-when-using-the-azure-cosmos-db-emulator"></a>Azure Cosmos DB öykünücüsü 'nü kullanırken sorun giderme
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos öykünücüsü, Azure Cosmos DB hizmetini geliştirme amacıyla taklit eden bir yerel ortam sağlar. Azure Cosmos öykünücüsü 'nü yüklerken veya kullanırken karşılaştığınız sorunları gidermeye yardımcı olması için bu makaledeki ipuçlarını kullanın. 
+Azure Cosmos DB Öykünücüsü, geliştirme amaçlı olarak Azure Cosmos DB hizmetine öykünen yerel bir ortam sağlar. Azure Cosmos DB öykünücüsünü yüklerken veya kullanırken karşılaştığınız sorunları gidermeye yardımcı olması için bu makaledeki ipuçlarını kullanın. 
 
-Öykünücünün yeni bir sürümünü yüklediyseniz ve hatalarla karşılaşıyorsanız, verilerinizi sıfırladığınızdan emin olun. Sistem tepsisinde Azure Cosmos öykünücü simgesine sağ tıklayıp verileri Sıfırla... öğesine tıklayarak verilerinizi sıfırlayabilirsiniz. Bu, hataları gidermezse, varsa öykünücü ve öykünücü sürümlerini kaldırabilir, *C:\Program files\Azure Cosmos DB öykünücü* dizinini kaldırabilir ve öykünücüyü yeniden yükleyebilirsiniz. Yönergeler için bkz. [Yerel öykünücüden kaldırma](local-emulator.md#uninstall). Alternatif olarak, verilerin sıfırlanması işe yaramazsa, konum ' a gidin `%LOCALAPPDATA%\CosmosDBEmulator` ve klasörü silin.
+Öykünücünün yeni bir sürümünü yüklediyseniz ve hatalarla karşılaşıyorsanız, verilerinizi sıfırladığınızdan emin olun. Sistem tepsisinde Azure Cosmos DB öykünücü simgesine sağ tıklayıp verileri Sıfırla... ' ya tıklayarak verilerinizi sıfırlayabilirsiniz. Bu, hataları gidermezse, varsa öykünücü ve öykünücü sürümlerini kaldırabilir, *C:\Program files\Azure Cosmos DB öykünücü* dizinini kaldırabilir ve öykünücüyü yeniden yükleyebilirsiniz. Yönergeler için bkz. [Yerel öykünücüden kaldırma](local-emulator.md#uninstall). Alternatif olarak, verilerin sıfırlanması işe yaramazsa, konum ' a gidin `%LOCALAPPDATA%\CosmosDBEmulator` ve klasörü silin.
 
 ## <a name="troubleshoot-corrupted-windows-performance-counters"></a>Bozuk Windows performans sayaçlarıyla ilgili sorunları giderme
 
-* Azure Cosmos öykünücüsü kilitlenirse, döküm dosyalarını klasöründen toplayın, `%LOCALAPPDATA%\CrashDumps` sıkıştırın ve [Azure Portal](https://portal.azure.com)bir destek bileti açın.
+* Azure Cosmos DB öykünücü kilitlenirse, döküm dosyalarını klasöründen toplayın, `%LOCALAPPDATA%\CrashDumps` onları sıkıştırarak ve [Azure Portal](https://portal.azure.com)bir destek bileti açın.
 
 * İçinde kilitlenmeler yaşarsanız `Microsoft.Azure.Cosmos.ComputeServiceStartupEntryPoint.exe` , bu durum performans sayaçlarının bozulmuş durumda olduğu bir belirti olabilir. Genellikle bir yönetici komut isteminden aşağıdaki komutu çalıştırmak sorunu düzeltir:
 
@@ -37,9 +37,9 @@ Azure Cosmos öykünücüsü, Azure Cosmos DB hizmetini geliştirme amacıyla ta
 
 * **Hizmet Kullanılamıyor** iletisi alırsanız öykünücü, ağ yığınını başlatamıyor olabilir. Pulse secure istemcisinin veya Juniper networks istemcisinin yüklü olup olmadığını denetleyin; bunların ağ filtresi sürücüleri soruna yol açıyor olabilir. Genellikle üçüncü taraf ağ filtresi sürücüleri kaldırıldığında sorun düzeltilir. Alternatif olarak, öykünücü ağ iletişimini normal Winsock 'a geçecek olan/Disablerıo ile öykünücüyü başlatın. 
 
-* " **Yasak" ile karşılaşırsanız "ileti": "istek, Aktarım Protokolü veya şifre içinde yasaklanmış bir şifrelemeyle yapılıyor. Hesap SSL/TLS izin verilen en düşük protokol ayarı... "** bağlantı sorunları, bu durum işletim sisteminde genel değişikliklerden kaynaklanabilir (örneğin, Insider Preview Build 20170) veya varsayılan olarak TLS 1,3 ' i etkinleştiren tarayıcı ayarları olabilir. **Microsoft.Azure.Documents.DocumentClientException: istek, Aktarım Protokolü veya şifre 'nda yasaklanmış bir şifrelemeyle yapılmakta olduğundan, Cosmos öykünücüsüne karşı bir istek yürütmek IÇIN SDK kullanılırken benzer bir hata oluşabilir. Hesap SSL/TLS izin verilen en düşük protokol ayarını denetleyin** . Bu durum bu kez beklenen bir durumdur çünkü Cosmos öykünücüsü yalnızca TLS 1.2 protokolünü kabul eder ve bununla çalışır. Önerilen geçici çözüm, ayarların ve varsayılan olarak TLS 1,2 olarak değiştirilmesini sağlar; Örneğin, IIS Yöneticisi 'nde "siteler" e gidin-"varsayılan Web siteleri" > ve bağlantı noktası 8081 için "Site bağlamaları" ' nı bulun ve TLS 1,3 ' yi devre dışı bırakmak için düzenleyin. Buna benzer bir işlem Web tarayıcısında “Ayarlar” seçenekleriyle de yapılabilir.
+* " **Yasak" ile karşılaşırsanız "ileti": "istek, Aktarım Protokolü veya şifre içinde yasaklanmış bir şifrelemeyle yapılıyor. Hesap SSL/TLS izin verilen en düşük protokol ayarı... "** bağlantı sorunları, bu durum işletim sisteminde genel değişikliklerden kaynaklanabilir (örneğin, Insider Preview Build 20170) veya varsayılan olarak TLS 1,3 ' i etkinleştiren tarayıcı ayarları olabilir. **Microsoft.Azure.Documents.DocumentClientException: istek, Aktarım Protokolü veya şifre 'nda yasaklanmış bir şifrelemeyle yapılmakta olduğundan, Cosmos öykünücüsüne karşı bir istek yürütmek IÇIN SDK kullanılırken benzer bir hata oluşabilir. Hesap SSL/TLS izin verilen en düşük protokol ayarını denetleyin**. Bu durum bu kez beklenen bir durumdur çünkü Cosmos öykünücüsü yalnızca TLS 1.2 protokolünü kabul eder ve bununla çalışır. Önerilen geçici çözüm, ayarların ve varsayılan olarak TLS 1,2 olarak değiştirilmesini sağlar; Örneğin, IIS Yöneticisi 'nde "siteler" e gidin-"varsayılan Web siteleri" > ve bağlantı noktası 8081 için "Site bağlamaları" ' nı bulun ve TLS 1,3 ' yi devre dışı bırakmak için düzenleyin. Buna benzer bir işlem Web tarayıcısında “Ayarlar” seçenekleriyle de yapılabilir.
 
-* Öykünücü çalışırken bilgisayarınız uyku moduna geçer veya herhangi bir işletim sistemi güncelleştirmesi çalıştırırsa, bir **Service is currently unavailable** (Hizmet şu anda kullanılamıyor) iletisi alabilirsiniz. Windows bildirim tepsisinde görüntülenen simgeye sağ tıklayıp **verileri Sıfırla** ' yı seçerek öykünücü verilerini sıfırlayın.
+* Öykünücü çalışırken bilgisayarınız uyku moduna geçer veya herhangi bir işletim sistemi güncelleştirmesi çalıştırırsa, bir **Service is currently unavailable** (Hizmet şu anda kullanılamıyor) iletisi alabilirsiniz. Windows bildirim tepsisinde görüntülenen simgeye sağ tıklayıp **verileri Sıfırla**' yı seçerek öykünücü verilerini sıfırlayın.
 
 ## <a name="collect-trace-files"></a><a id="trace-files"></a>İzleme dosyalarını toplama
 
@@ -51,7 +51,7 @@ Hata ayıklama izlemelerini toplamak için bir yönetici komut isteminden aşağ
    cd /d "%ProgramFiles%\Azure Cosmos DB Emulator"
    ```
 
-1. Öykünücüyü kapatın ve programın kapatıldığından emin olmak için sistem tepsisini izleyin. Tamamlanması birkaç dakika sürebilir. Azure Cosmos öykünücü Kullanıcı arabiriminde **Çıkış** ' ı da seçebilirsiniz.
+1. Öykünücüyü kapatın ve programın kapatıldığından emin olmak için sistem tepsisini izleyin. Tamamlanması birkaç dakika sürebilir. Azure Cosmos DB öykünücü Kullanıcı arabiriminde de **Çıkış** ' ı seçebilirsiniz.
 
    ```bash
    Microsoft.Azure.Cosmos.Emulator.exe /shutdown
@@ -85,5 +85,5 @@ Hata ayıklama izlemelerini toplamak için bir yönetici komut isteminden aşağ
 
 Bu makalede, yerel öykünücü ile ilgili sorunların nasıl ayıklanalınacağını öğrendiniz. Şimdi bir sonraki makaleye devam edebilirsiniz:
 
-* [Java, Python ve Node.js uygulamalarıyla kullanılmak üzere Azure Cosmos öykünücü sertifikalarını dışarı aktarma](local-emulator-export-ssl-certificates.md)
+* [Java, Python ve Node.js uygulamalarıyla kullanmak üzere Azure Cosmos DB öykünücü sertifikalarını dışarı aktarın](local-emulator-export-ssl-certificates.md)
 * [Öykünücüyü denetlemek için komut satırı parametrelerini ve PowerShell komutlarını kullanma](emulator-command-line-parameters.md)

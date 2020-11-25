@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 11/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 6699178e514f4d25666305f3251e8eaf9d28e6dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6d6c830eec8e711e700733a90611c353b68439d
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417449"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030807"
 ---
 # <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>Azure Data Factory kullanarak Concur verilerini kopyalama (Önizleme)
 
@@ -36,8 +36,6 @@ Bu Concur Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
 Concur kaynağından desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak/havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
-Azure Data Factory, bağlantıyı etkinleştirmek için yerleşik bir sürücü sağlar, bu nedenle bu bağlayıcıyı kullanarak herhangi bir sürücüyü el ile yüklemeniz gerekmez.
-
 > [!NOTE]
 > İş ortağı hesabı şu anda desteklenmiyor.
 
@@ -53,15 +51,54 @@ Concur bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği: **Concur** olarak ayarlanmalıdır | Evet |
-| clientId | Concur uygulama yönetimi tarafından sağlanan uygulama client_id.  | Evet |
-| username | Concur Service 'e erişmek için kullandığınız Kullanıcı adı.  | Evet |
-| password | Kullanıcı adı alanında belirttiğiniz kullanıcı adına karşılık gelen parola. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet |
-| useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
-| Usehostdoğrulaması | Sunucu sertifikasında, TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşecek şekilde, ana bilgisayar adının istenip istenmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
-| Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | Hayır |
+| tür | Type özelliği: **Concur** olarak ayarlanmalıdır | Yes |
+| connectionProperties | Concur 'e nasıl bağlanılacağını tanımlayan bir özellik grubu. | Yes |
+| **_Altında `connectionProperties` :_* _ | | |
+| authenticationType | İzin verilen değerler `OAuth_2.0_Bearer` ve `OAuth_2.0` (eski). OAuth 2,0 kimlik doğrulama seçeneği, Şubat 2017 ' den beri kullanım dışı olan eski Concur API 'siyle birlikte kullanılabilir. | Yes |
+| konak | Concur sunucusunun uç noktası, `implementation.concursolutions.com` ör.  | Yes |
+| baseUrl | Concur 'in yetkilendirme URL 'sinin temel URL 'SI. | `OAuth_2.0_Bearer`Kimlik doğrulaması için Evet |
+| clientId | Concur uygulama yönetimi tarafından sağlanan uygulama istemci KIMLIĞI.  | Yes |
+| clientSecret | İstemci KIMLIĞINE karşılık gelen istemci parolası. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | `OAuth_2.0_Bearer`Kimlik doğrulaması için Evet |
+| username | Concur Service 'e erişmek için kullandığınız Kullanıcı adı. | Yes |
+| password | Kullanıcı adı alanında belirttiğiniz kullanıcı adına karşılık gelen parola. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
+| useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | No |
+| Usehostdoğrulaması | Sunucu sertifikasında, TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşecek şekilde, ana bilgisayar adının istenip istenmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | No |
+| Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | No |
 
-**Örnek:**
+_ *Örnek:**
+
+```json
+{ 
+    "name": "ConcurLinkedService", 
+    "properties": {
+        "type": "Concur",
+        "typeProperties": {
+            "connectionProperties": {
+                "host":"<host e.g. implementation.concursolutions.com>",
+                "baseUrl": "<base URL for authorization e.g. us-impl.api.concursolutions.com>",
+                "authenticationType": "OAuth_2.0_Bearer",
+                "clientId": "<client id>",
+                "clientSecret": {
+                    "type": "SecureString",
+                    "value": "<client secret>"
+                },
+                "username": "fakeUserName",
+                "password": {
+                    "type": "SecureString",
+                    "value": "<password>"
+                },
+                "useEncryptedEndpoints": true,
+                "useHostVerification": true,
+                "usePeerVerification": true
+            }
+        }
+    }
+} 
+```
+
+**Örnek (eski):**
+
+Aşağıda, `connectionProperties` kimlik doğrulaması olmadan ve kullanarak eski bir bağlı hizmet modeli verilmiştir `OAuth_2.0` .
 
 ```json
 {
@@ -84,11 +121,11 @@ Concur bağlı hizmeti için aşağıdaki özellikler desteklenir:
 
 Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm, Concur veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
-Concur 'den veri kopyalamak için, veri kümesinin Type özelliğini **Concurobject**olarak ayarlayın. Bu veri kümesi türünde ek türe özgü özellik yok. Aşağıdaki özellikler desteklenir:
+Concur 'den veri kopyalamak için, veri kümesinin Type özelliğini **Concurobject** olarak ayarlayın. Bu veri kümesi türünde ek türe özgü özellik yok. Aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | DataSet 'in Type özelliği: **Concurobject** olarak ayarlanmalıdır | Evet |
+| tür | DataSet 'in Type özelliği: **Concurobject** olarak ayarlanmalıdır | Yes |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
 
@@ -115,11 +152,11 @@ Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi iç
 
 ### <a name="concursource-as-source"></a>Kaynak olarak ConcurSource
 
-Concur 'den veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **Concursource**olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
+Concur 'den veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **Concursource** olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği: **Concursource** olarak ayarlanmalıdır | Evet |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **Concursource** olarak ayarlanmalıdır | Yes |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM Opportunities where Id = xxx "`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
 **Örnek:**

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: thvankra
-ms.openlocfilehash: 3436a0edf69efc71d3528bffaefd613668426fad
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1368a3174af08f557b6d08f298fba015601d568c
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995837"
+ms.locfileid: "96030841"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>Azure Cosmos DB Cassandra API hakkında sık sorulan sorular
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -176,7 +176,7 @@ Hayır. Cassandra API, Apache Cassandra 'ya benzer bir şekilde davranan [İkinc
 
 ### <a name="can-i-use-the-new-cassandra-api-sdk-locally-with-the-emulator"></a>Yeni Cassandra API SDK 'sını öykünücü ile yerel olarak kullanabilir miyim?
 
-Evet, bu desteklenir. Bunun nasıl etkinleştirileceği hakkındaki ayrıntıları, [yerel geliştirme ve test Için Azure Cosmos öykünücüsü](local-emulator.md#cassandra-api) ' nü kullanma makalesinde bulabilirsiniz.
+Evet, bu desteklenir. Bunun nasıl etkinleştirileceği hakkındaki ayrıntıları, [yerel geliştirme ve test için Azure Cosmos DB öykünücüsünü kullanma](local-emulator.md#cassandra-api) makalesinde bulabilirsiniz.
 
 
 ### <a name="how-can-i-migrate-data-from-apache-cassandra-clusters-to-azure-cosmos-db"></a>Apache Cassandra kümelerinden verileri Azure Cosmos DB 'a nasıl geçirebilirim?

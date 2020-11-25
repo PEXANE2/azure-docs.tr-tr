@@ -7,18 +7,24 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/19/2020
+ms.date: 11/24/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 81bcfdf5e63d49280fb798773559310cbd912a26
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4390291eb96c11b8fb7fdb48eb92abaf802b80c0
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013590"
+ms.locfileid: "96030790"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Sorgu için otomatik tamamlamayı ve önerilen sonuçları etkinleştirmek üzere bir öneri aracı oluşturun
 
-Azure Bilişsel Arama, "yazarken arama" özelliği, bir [arama dizinine](search-what-is-an-index.md)eklenen bir **öneri aracı** yapısı aracılığıyla etkinleştirilir. Bir öneri aracı iki deneyimi destekler: *otomatik tamamlama*, bir dönem sorgusunun tamamına yönelik kısmi bir girişi tamamlar ve davet eden *öneriler* ile belirli bir eşleştirmeye kadar tıklamıştır. AutoComplete bir sorgu oluşturur. Öneriler, eşleşen bir belge oluşturur.
+Azure Bilişsel Arama 'de, "sizin yazarken arama" bir *öneri aracı* aracılığıyla etkinleştirilir. Bir öneri aracı, alanlar koleksiyonundan oluşan bir iç veri yapısıdır. Alanlar, kısmi şartlarda eşleşmeleri desteklemek için önek dizileri oluşturarak ek simgeleştirme özelliğine sahiptir.
+
+Örneğin, bir öneri aracı bir şehir alanı içeriyorsa, "Seattle" terimi için "Sea", "koltuk", "Seatt" ve "seattl" sonuç ön eki birleşimleri oluşturulur. Ön ekler, bir öneri aracı Fields koleksiyonunda belirtilen her alan için bir tane ters dizinler halinde depolanır.
+
+## <a name="typeahead-experiences-in-cognitive-search"></a>Bilişsel Arama 'de typeahead deneyimleri
+
+Bir öneri aracı iki deneyimi destekler: *otomatik tamamlama*, bir dönem sorgusunun tamamına yönelik kısmi bir girişi tamamlar ve davet eden *öneriler* ile belirli bir eşleştirmeye kadar tıklamıştır. AutoComplete bir sorgu oluşturur. Öneriler, eşleşen bir belge oluşturur.
 
 [C# ' de ilk uygulamanızı oluşturma bölümündeki](tutorial-csharp-type-ahead-and-suggestions.md) aşağıdaki ekran görüntüsünde her ikisi de gösterilmektedir. Otomatik tamamlama anticipates olası bir dönem, "tw" ile "ın" ile tamamlanıyor. Otel adı gibi bir alan, dizinden eşleşen bir otel arama belgesini temsil ettiğinde, öneriler mini arama sonuçlardır. Öneriler için, açıklayıcı bilgiler sağlayan herhangi bir alanı yüzeysel yapabilirsiniz.
 
@@ -31,10 +37,6 @@ Bu özellikleri ayrı olarak veya birlikte kullanabilirsiniz. Bu davranışları
 + [Aşağıda listelenen API](#how-to-use-a-suggester)'lerden birini kullanarak bir öneri Isteği veya AutoComplete isteği biçiminde öneri aracı etkin bir sorgu çağırın.
 
 İsteğe bağlı arama türü, dize alanları için alan temelinde desteklenir. Ekran görüntüsünde gösterilenle benzer bir deneyim istiyorsanız, aynı arama çözümü içinde her iki typeahead davranışını da uygulayabilirsiniz. Her iki istek de, bir Kullanıcı en az üç karakter girişi dizesi sağladıktan sonra, belirli dizin ve yanıtların *belge* koleksiyonunu hedefler.
-
-## <a name="what-is-a-suggester"></a>Öneri aracı nedir?
-
-Bir öneri aracı, kısmi sorgularda eşleşme için ön ekleri depolayarak, arama türü davranışlarını destekleyen bir iç veri yapısıdır. Belirteçlerin gösterildiği gibi, ön ekler, bir öneri aracı Fields koleksiyonunda belirtilen her bir alan için bir tane olmak üzere ters dizinler halinde depolanır.
 
 ## <a name="how-to-create-a-suggester"></a>Öneri aracı oluşturma
 
