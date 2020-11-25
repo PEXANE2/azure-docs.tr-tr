@@ -12,11 +12,11 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.openlocfilehash: e73126cfc54294a7b9d54ff62c406d5e686ac470
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186782"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95982727"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS Integration Runtime'ı sanal ağa bağlama
 
@@ -272,7 +272,7 @@ Giden trafiğe izin vermek için güvenlik duvarı gerecinin, NSG giden kurallar
 Azure-SSIS IR giden trafiği inceleme yeteneğine ihtiyacınız yoksa, tüm trafiği bir sonraki **atlama türüne zorlamak** için yalnızca Yönlendirme uygulayabilirsiniz:
 
 -   Bir Azure ExpressRoute senaryosunda, Azure-SSIS IR barındıran alt ağda **Internet** olarak bir sonraki atlama türü ile bir 0.0.0.0/0 yolu uygulayabilirsiniz. 
--   Bir NVA senaryosunda, sonraki atlama türünden Azure-SSIS IR barındıran alt ağda geçerli olan 0.0.0.0/0 yolunu, **Internet** 'e **Sanal Gereç** olarak değiştirebilirsiniz.
+-   Bir NVA senaryosunda, sonraki atlama türünden Azure-SSIS IR barındıran alt ağda geçerli olan 0.0.0.0/0 yolunu, **Internet**'e **Sanal Gereç** olarak değiştirebilirsiniz.
 
 ![Rota Ekle](media/join-azure-ssis-integration-runtime-virtual-network/add-route-for-vnet.png)
 
@@ -338,25 +338,25 @@ Bir Azure-SSIS IR katılmayı denemeden önce Azure Resource Manager sanal ağı
 
 1. Microsoft Edge veya Google Chrome 'ı başlatın. Şu anda yalnızca bu Web tarayıcıları Data Factory Kullanıcı arabirimini destekler. 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 
-1. **Diğer hizmetler** ' i seçin. **Sanal ağları** filtreleyin ve seçin. 
+1. **Diğer hizmetler**' i seçin. **Sanal ağları** filtreleyin ve seçin. 
 
 1. İçin filtre uygulayın ve listedeki Sanal ağınızı seçin. 
 
-1. **Sanal ağ** sayfasında **Özellikler** ' i seçin. 
+1. **Sanal ağ** sayfasında **Özellikler**' i seçin. 
 
 1. Sanal ağ için kaynak KIMLIĞINI panoya kopyalamak üzere **kaynak kimliği** için Kopyala düğmesini seçin. KODU OneNote 'taki panodan veya bir dosyada kaydedin. 
 
-1. Sol taraftaki menüde **alt ağlar** ' ı seçin. Kullanılabilir adreslerin sayısının Azure-SSIS IR düğümlerden büyük olduğundan emin olun. 
+1. Sol taraftaki menüde **alt ağlar**' ı seçin. Kullanılabilir adreslerin sayısının Azure-SSIS IR düğümlerden büyük olduğundan emin olun. 
 
 1. Azure Batch sağlayıcısının sanal ağa sahip Azure aboneliğine kayıtlı olduğunu doğrulayın. Veya Azure Batch sağlayıcıyı kaydedin. Aboneliğinizde zaten bir Azure Batch hesabınız varsa, aboneliğiniz Azure Batch için kaydedilir. (Data Factory portalında Azure-SSIS IR oluşturursanız, Azure Batch sağlayıcı sizin için otomatik olarak kaydedilir.) 
 
-   1. Azure portal, sol taraftaki menüden **abonelikler** ' i seçin. 
+   1. Azure portal, sol taraftaki menüden **abonelikler**' i seçin. 
 
    1. Aboneliğinizi seçin. 
 
-   1. Sol tarafta **kaynak sağlayıcıları** ' nı seçin ve **Microsoft.Batch** 'in kayıtlı bir sağlayıcı olduğunu onaylayın. 
+   1. Sol tarafta **kaynak sağlayıcıları**' nı seçin ve **Microsoft.Batch** 'in kayıtlı bir sağlayıcı olduğunu onaylayın. 
 
    !["Kayıtlı" durumunun onayı](media/join-azure-ssis-integration-runtime-virtual-network/batch-registered-confirmation.png)
 
@@ -368,19 +368,19 @@ Bir Azure-SSIS IR katılmayı denemeden önce, klasik sanal ağı yapılandırma
 
 1. Microsoft Edge veya Google Chrome 'ı başlatın. Şu anda yalnızca bu Web tarayıcıları Data Factory Kullanıcı arabirimini destekler. 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 
-1. **Diğer hizmetler** ' i seçin. **Sanal ağlar (klasik)** için filtre uygulayın ve seçin. 
+1. **Diğer hizmetler**' i seçin. **Sanal ağlar (klasik)** için filtre uygulayın ve seçin. 
 
 1. İçin filtre uygulayın ve listedeki Sanal ağınızı seçin. 
 
-1. **Sanal ağ (klasik)** sayfasında **Özellikler** ' i seçin. 
+1. **Sanal ağ (klasik)** sayfasında **Özellikler**' i seçin. 
 
    ![Klasik sanal ağ kaynağı KIMLIĞI](media/join-azure-ssis-integration-runtime-virtual-network/classic-vnet-resource-id.png)
 
 1. Klasik ağın kaynak KIMLIĞINI panoya kopyalamak için **kaynak kimliği** için Kopyala düğmesini seçin. KODU OneNote 'taki panodan veya bir dosyada kaydedin. 
 
-1. Sol taraftaki menüde **alt ağlar** ' ı seçin. Kullanılabilir adreslerin sayısının Azure-SSIS IR düğümlerden büyük olduğundan emin olun. 
+1. Sol taraftaki menüde **alt ağlar**' ı seçin. Kullanılabilir adreslerin sayısının Azure-SSIS IR düğümlerden büyük olduğundan emin olun. 
 
    ![Sanal ağdaki kullanılabilir adreslerin sayısı](media/join-azure-ssis-integration-runtime-virtual-network/number-of-available-addresses.png)
 
@@ -390,9 +390,9 @@ Bir Azure-SSIS IR katılmayı denemeden önce, klasik sanal ağı yapılandırma
 
        !["Erişim denetimi" ve "Ekle" düğmeleri](media/join-azure-ssis-integration-runtime-virtual-network/access-control-add.png)
 
-   1. **Rol ataması ekle** ’yi seçin.
+   1. **Rol ataması ekle**’yi seçin.
 
-   1. Rol **ataması Ekle** sayfasında, **rol** Için, **Klasik sanal makine katılımcısı** ' nı seçin. **Seç** kutusunda, **ddbf3205-c6bd-46AE-8127-60eb93363864** yapıştırın ve sonra arama sonuçları listesinden **Microsoft Azure Batch** ' yi seçin. 
+   1. Rol **ataması Ekle** sayfasında, **rol** Için, **Klasik sanal makine katılımcısı**' nı seçin. **Seç** kutusunda, **ddbf3205-c6bd-46AE-8127-60eb93363864** yapıştırın ve sonra arama sonuçları listesinden **Microsoft Azure Batch** ' yi seçin. 
 
        !["Rol ataması ekleme" sayfasında sonuçları ara](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-to-vm-contributor.png)
 
@@ -406,11 +406,11 @@ Bir Azure-SSIS IR katılmayı denemeden önce, klasik sanal ağı yapılandırma
 
 1. Azure Batch sağlayıcısının sanal ağa sahip Azure aboneliğine kayıtlı olduğunu doğrulayın. Veya Azure Batch sağlayıcıyı kaydedin. Aboneliğinizde zaten bir Azure Batch hesabınız varsa, aboneliğiniz Azure Batch için kaydedilir. (Data Factory portalında Azure-SSIS IR oluşturursanız, Azure Batch sağlayıcı sizin için otomatik olarak kaydedilir.) 
 
-   1. Azure portal, sol taraftaki menüden **abonelikler** ' i seçin. 
+   1. Azure portal, sol taraftaki menüden **abonelikler**' i seçin. 
 
    1. Aboneliğinizi seçin. 
 
-   1. Sol tarafta **kaynak sağlayıcıları** ' nı seçin ve **Microsoft.Batch** 'in kayıtlı bir sağlayıcı olduğunu onaylayın. 
+   1. Sol tarafta **kaynak sağlayıcıları**' nı seçin ve **Microsoft.Batch** 'in kayıtlı bir sağlayıcı olduğunu onaylayın. 
 
    !["Kayıtlı" durumunun onayı](media/join-azure-ssis-integration-runtime-virtual-network/batch-registered-confirmation.png)
 
@@ -422,7 +422,7 @@ Azure Resource Manager Sanal ağınızı veya klasik Sanal ağınızı yapıland
 
 1. Microsoft Edge veya Google Chrome 'ı başlatın. Şu anda yalnızca bu Web tarayıcıları Data Factory Kullanıcı arabirimini destekler. 
 
-1. [Azure Portal](https://portal.azure.com), sol taraftaki menüden **veri fabrikaları** ' nı seçin. Menüde **veri fabrikaları** görmüyorsanız, **diğer hizmetler** ' i seçin ve ardından **zekası + analiz** bölümünde **veri fabrikaları** ' nı seçin. 
+1. [Azure Portal](https://portal.azure.com), sol taraftaki menüden **veri fabrikaları**' nı seçin. Menüde **veri fabrikaları** görmüyorsanız, **diğer hizmetler**' i seçin ve ardından **zekası + analiz** bölümünde **veri fabrikaları**' nı seçin. 
 
    ![Veri fabrikaları listesi](media/join-azure-ssis-integration-runtime-virtual-network/data-factories-list.png)
 
@@ -430,7 +430,7 @@ Azure Resource Manager Sanal ağınızı veya klasik Sanal ağınızı yapıland
 
    ![Data factory giriş sayfası](media/join-azure-ssis-integration-runtime-virtual-network/data-factory-home-page.png)
 
-1. Data Factory Kullanıcı arabiriminde, **Düzenle** sekmesine geçin, **Bağlantılar** ' ı seçin ve **tümleştirme çalışma zamanları** sekmesine geçin. 
+1. Data Factory Kullanıcı arabiriminde, **Düzenle** sekmesine geçin, **Bağlantılar**' ı seçin ve **tümleştirme çalışma zamanları** sekmesine geçin. 
 
    !["Tümleştirme çalışma zamanları" sekmesi](media/join-azure-ssis-integration-runtime-virtual-network/integration-runtimes-tab.png)
 
@@ -466,11 +466,11 @@ Azure Resource Manager Sanal ağınızı veya klasik Sanal ağınızı yapıland
       
       1. **İkinci statik genel IP adresi** için Azure-SSIS IR [gereksinimlerini karşılayan](#publicIP) ikinci statik genel IP adresini seçin. Herhangi bir hesabınız yoksa, yeni bağlantı **Oluştur** ' a tıklayarak Azure Portal STATIK genel IP adresleri oluşturun ve ardından buradan Yenile düğmesine tıklayın, böylece bunları seçebilirsiniz.
 
-   1. **VNET doğrulaması** ' nı seçin. Doğrulama başarılı olursa **devam** ' ı seçin. 
+   1. **VNET doğrulaması**' nı seçin. Doğrulama başarılı olursa **devam**' ı seçin. 
 
    ![Bir sanal ağda gelişmiş ayarlar](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-vnet.png)
 
-1. **Özet** bölümünde, Azure-SSIS IR için tüm ayarları gözden geçirin. Ardından **Güncelleştir** ' i seçin.
+1. **Özet** bölümünde, Azure-SSIS IR için tüm ayarları gözden geçirin. Ardından **Güncelleştir**' i seçin.
 
 1. Azure-SSIS IR **Eylemler** sütunundaki **başlat** düğmesini seçerek Azure-SSIS IR başlatın. Bir sanal ağa katılan Azure-SSIS IR başlatmak için 20 ila 30 dakika sürer. 
 

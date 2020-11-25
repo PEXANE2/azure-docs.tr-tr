@@ -10,11 +10,11 @@ ms.topic: troubleshooting
 ms.date: 11/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: fc08adb2f71c49fad3c8574e9cfd5315f13d7f44
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92532773"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95982271"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Azure HDInsight 'ı kullanarak Apache Storm sorunlarını giderme
 
@@ -27,8 +27,8 @@ Bir tarayıcıdan fırtınası Kullanıcı arabirimine erişmek için iki seçen
 ### <a name="apache-ambari-ui"></a>Apache ambarı Kullanıcı arabirimi
 
 1. Ambarı panosuna gidin.
-2. Hizmetler listesinde, **fırtınası** ' yi seçin.
-3. **Hızlı bağlantılar** menüsünde, **fırtınası Kullanıcı arabirimi** ' ni seçin.
+2. Hizmetler listesinde, **fırtınası**' yi seçin.
+3. **Hızlı bağlantılar** menüsünde, **fırtınası Kullanıcı arabirimi**' ni seçin.
 
 ### <a name="direct-link"></a>Doğrudan bağlantı
 
