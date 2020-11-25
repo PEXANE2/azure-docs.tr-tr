@@ -11,11 +11,11 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.openlocfilehash: 664c4289cbfa1f6ce2fce9f9f83b0240bd2d592c
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912880"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002009"
 ---
 # <a name="moderate-text-from-the-api-console"></a>API konsolundan orta metin
 
@@ -46,11 +46,11 @@ Metin içeriğini küfür için taramak ve özel ve paylaşılan listelerle kar�
 Metin ekranınızda kullanmak istediğiniz sorgu parametrelerini seçin. Bu örnek için **dil** için varsayılan değeri kullanın. Ayrıca işlem, yürütmenin bir parçası olarak olası dili otomatik olarak algılayacağından boş bırakabilirsiniz.
 
 > [!NOTE]
-> **Dil** parametresi için, `eng` makine yardımlı **Sınıflandırma** yanıtını (Önizleme özelliği) görmek üzere boş bırakın veya boş bırakın. **Bu özellik yalnızca İngilizce 'yi destekler** .
+> **Dil** parametresi için, `eng` makine yardımlı **Sınıflandırma** yanıtını (Önizleme özelliği) görmek üzere boş bırakın veya boş bırakın. **Bu özellik yalnızca İngilizce 'yi destekler**.
 >
 > **Küfür terimleri** algılama için, bu makalede listelenen desteklenen dillerin [ISO 639-3 kodunu](http://www-01.sil.org/iso639-3/codes.asp) kullanın veya boş bırakın.
 
-**Otomatik Düzelt** , **PII** ve **sınıflandır (Önizleme)** için **doğru** öğesini seçin. **ListId** alanını boş bırakın.
+**Otomatik Düzelt**, **PII** ve **sınıflandır (Önizleme)** için **doğru** öğesini seçin. **ListId** alanını boş bırakın.
 
   ![Metin-ekran konsolu sorgu parametreleri](images/text-api-console-inputs.PNG)
 

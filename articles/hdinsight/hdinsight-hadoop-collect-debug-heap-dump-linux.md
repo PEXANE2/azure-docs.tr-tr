@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
 ms.openlocfilehash: 1ef52d74f7ae6e7e0d8c58e3b1972a0a1227c6b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85962212"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001941"
 ---
 # <a name="enable-heap-dumps-for-apache-hadoop-services-on-linux-based-hdinsight"></a>Linux tabanlı HDInsight 'ta Apache Hadoop Hizmetleri için yığın dökümlerini etkinleştirme
 
@@ -37,9 +37,9 @@ Ayrıca eşleme için yığın dökümlerini etkinleştirebilir ve HDInsight tar
 
 Yığın dökümleri, bir hizmet başlatıldığında JVM 'ye seçenekleri (bazen opts veya parametreler olarak bilinir) geçirerek etkinleştirilir. Çoğu [Apache Hadoop](https://hadoop.apache.org/) hizmet için, bu seçenekleri geçirmek üzere hizmeti başlatmak için kullanılan kabuk betiğini değiştirebilirsiniz.
 
-Her betikte, JVM 'ye geçirilen seçenekleri içeren ** \* \_ opts**'ler için bir dışarı aktarma işlemi vardır. Örneğin, **Hadoop-env.sh** betiğinde, ile başlayan çizgi, `export HADOOP_NAMENODE_OPTS=` süs Code hizmeti için seçenekleri içerir.
+Her betikte, JVM 'ye geçirilen seçenekleri içeren **\* \_ opts**'ler için bir dışarı aktarma işlemi vardır. Örneğin, **Hadoop-env.sh** betiğinde, ile başlayan çizgi, `export HADOOP_NAMENODE_OPTS=` süs Code hizmeti için seçenekleri içerir.
 
-Bu işlemler MapReduce hizmetinin alt işlemi olduğundan, eşleme ve azaltma işlemleri biraz farklıdır. Her eşleme veya azaltma işlemi bir alt kapsayıcıda çalışır ve JVM seçeneklerini içeren iki giriş vardır. Her ikisi de **mapred-site.xml**dahil:
+Bu işlemler MapReduce hizmetinin alt işlemi olduğundan, eşleme ve azaltma işlemleri biraz farklıdır. Her eşleme veya azaltma işlemi bir alt kapsayıcıda çalışır ve JVM seçeneklerini içeren iki giriş vardır. Her ikisi de **mapred-site.xml** dahil:
 
 * **MapReduce. admin. Map. child. Java. opts**
 * **MapReduce. admin. küçültme. child. Java. opts**
@@ -68,7 +68,7 @@ Döküm dosyasının varsayılan konumu geçerli çalışma dizinidir. Dosyanın
 
 ### <a name="scripts"></a>Betikler
 
-Bir **OutOfMemoryError** gerçekleştiğinde de bir komut dosyası tetikleyebilirsiniz. Örneğin, hatanın oluştuğunu bilmeniz için bir bildirim tetikleniyor. Bir __OutOfMemoryError__üzerinde bir betik tetiklemek için aşağıdaki seçeneği kullanın:
+Bir **OutOfMemoryError** gerçekleştiğinde de bir komut dosyası tetikleyebilirsiniz. Örneğin, hatanın oluştuğunu bilmeniz için bir bildirim tetikleniyor. Bir __OutOfMemoryError__ üzerinde bir betik tetiklemek için aşağıdaki seçeneği kullanın:
 
 `-XX:OnOutOfMemoryError=/path/to/script`
 
@@ -91,12 +91,12 @@ Bir hizmetin yapılandırmasını değiştirmek için aşağıdaki adımları ku
 
     ![Apache ambarı yapılandırması filtrelenmiş listesi](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdinsight-filter-list.png)
 
-4. Yığın dökümlerini etkinleştirmek istediğiniz hizmet için ** \* \_ opts** girişini bulun ve etkinleştirmek istediğiniz seçenekleri ekleyin. Aşağıdaki görüntüde, `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` **HADOOP \_ süs Yot \_ opts** girdisine ekledik:
+4. Yığın dökümlerini etkinleştirmek istediğiniz hizmet için **\* \_ opts** girişini bulun ve etkinleştirmek istediğiniz seçenekleri ekleyin. Aşağıdaki görüntüde, `-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/` **HADOOP \_ süs Yot \_ opts** girdisine ekledik:
 
     ![Apache ambarı Hadoop-süs Yot-opts](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hadoop-namenode-opts.png)
 
    > [!NOTE]  
-   > Eşleme için yığın dökümlerini etkinleştirirken veya alt işlemi azalttığında **MapReduce. admin. Map. child. Java. opts** ve **MapReduce. admin. küçültme. child. Java. opts**adlı alanları arayın.
+   > Eşleme için yığın dökümlerini etkinleştirirken veya alt işlemi azalttığında **MapReduce. admin. Map. child. Java. opts** ve **MapReduce. admin. küçültme. child. Java. opts** adlı alanları arayın.
 
     Değişiklikleri kaydetmek için **Kaydet** düğmesini kullanın. Değişiklikleri açıklayan kısa bir nota girebilirsiniz.
 
@@ -104,7 +104,7 @@ Bir hizmetin yapılandırmasını değiştirmek için aşağıdaki adımları ku
 
     ![yeniden başlatma gerekli simgesi ve yeniden Başlat düğmesi](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/restart-required-icon.png)
 
-6. Yeniden başlatma gerektiren her hizmeti seçin ve **bakım modunu açmak**Için **hizmet eylemleri** düğmesini kullanın. Bakım modu, yeniden başlattığınızda uyarıların hizmetten oluşturulmasını engeller.
+6. Yeniden başlatma gerektiren her hizmeti seçin ve **bakım modunu açmak** Için **hizmet eylemleri** düğmesini kullanın. Bakım modu, yeniden başlattığınızda uyarıların hizmetten oluşturulmasını engeller.
 
     ![HDI bakım modu menüsünü aç](./media/hdinsight-hadoop-collect-debug-heap-dump-linux/hdi-maintenance-mode.png)
 
@@ -115,4 +115,4 @@ Bir hizmetin yapılandırmasını değiştirmek için aşağıdaki adımları ku
    > [!NOTE]  
    > **Yeniden başlatma** düğmesi girişleri, diğer hizmetler için farklı olabilir.
 
-8. Hizmetler yeniden başlatıldıktan sonra **bakım modunu**kapatmak Için **hizmet eylemleri** düğmesini kullanın. Bu ambarı, hizmet uyarılarını izlemeyi sürdürür.
+8. Hizmetler yeniden başlatıldıktan sonra **bakım modunu** kapatmak Için **hizmet eylemleri** düğmesini kullanın. Bu ambarı, hizmet uyarılarını izlemeyi sürdürür.

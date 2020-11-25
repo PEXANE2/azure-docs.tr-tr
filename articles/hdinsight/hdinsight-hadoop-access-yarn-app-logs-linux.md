@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: 726cf362e62f0ef914dfaea090a08c224bd5d8d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82192510"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001958"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Linux tabanlı HDInsight 'ta YARN uygulama günlüklerine erişim Apache Hadoop
 
@@ -21,9 +21,9 @@ Azure HDInsight 'ta bir Apache Hadoop kümesindeki [Apache Hadoop YARN](https://
 
 ## <a name="what-is-apache-yarn"></a>Apache YARN nedir?
 
-YARN, kaynak yönetimini uygulama zamanlama/izlemeye ayırarak birden çok programlama modelini (Apache Hadoop MapReduce) destekler. YARN *`ResourceManager`* , küresel (RM), çalışan-düğüm *nodeyöneticileri* (NMS) ve uygulama başına *applicationmaster* (AMS) kullanır. Uygulama başına, uygulamanızı RM ile çalıştırmaya yönelik kaynaklar (CPU, bellek, disk, ağ) tarafından anlaşma yapılır. RM, *kapsayıcılar*olarak verilen bu kaynakları vermek Için NMS ile birlikte çalışmaktadır. Bu, kendisine atanan kapsayıcıların, RM tarafından ilerlemesini izlemekten sorumludur. Uygulama, uygulamanın yapısına bağlı olarak çok sayıda kapsayıcı gerektirebilir.
+YARN, kaynak yönetimini uygulama zamanlama/izlemeye ayırarak birden çok programlama modelini (Apache Hadoop MapReduce) destekler. YARN *`ResourceManager`* , küresel (RM), çalışan-düğüm *nodeyöneticileri* (NMS) ve uygulama başına *applicationmaster* (AMS) kullanır. Uygulama başına, uygulamanızı RM ile çalıştırmaya yönelik kaynaklar (CPU, bellek, disk, ağ) tarafından anlaşma yapılır. RM, *kapsayıcılar* olarak verilen bu kaynakları vermek Için NMS ile birlikte çalışmaktadır. Bu, kendisine atanan kapsayıcıların, RM tarafından ilerlemesini izlemekten sorumludur. Uygulama, uygulamanın yapısına bağlı olarak çok sayıda kapsayıcı gerektirebilir.
 
-Her uygulama birden çok *uygulama denemesinden*oluşabilir. Bir uygulama başarısız olursa, yeni bir deneme olarak yeniden denenebilir. Her deneme bir kapsayıcıda çalışır. Bir kapsayıcı, bir YARN uygulaması tarafından gerçekleştirilen temel çalışma birimi için bağlam sağlar. Kapsayıcının bağlamı içinde gerçekleştirilen tüm işler, kapsayıcının verildiği tek çalışan düğümünde yapılır. Bkz. [Hadoop: Yarn uygulamaları yazma](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html)veya daha fazla başvuru için [Yarn Apache Hadoop](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) .
+Her uygulama birden çok *uygulama denemesinden* oluşabilir. Bir uygulama başarısız olursa, yeni bir deneme olarak yeniden denenebilir. Her deneme bir kapsayıcıda çalışır. Bir kapsayıcı, bir YARN uygulaması tarafından gerçekleştirilen temel çalışma birimi için bağlam sağlar. Kapsayıcının bağlamı içinde gerçekleştirilen tüm işler, kapsayıcının verildiği tek çalışan düğümünde yapılır. Bkz. [Hadoop: Yarn uygulamaları yazma](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html)veya daha fazla başvuru için [Yarn Apache Hadoop](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) .
 
 Daha fazla işleme verimini desteklemek üzere kümenizi ölçeklendirmek için, birkaç farklı dil kullanarak [Otomatik ölçeklendirmeyi](hdinsight-autoscale-clusters.md) veya [kümelerinizi el ile ölçeklendirdirebilirsiniz](hdinsight-scaling-best-practices.md#utilities-to-scale-clusters).
 
@@ -58,7 +58,7 @@ Toplanan Günlükler, bir TFile dosyasında yazıldığı gibi doğrudan okunama
 
 1. Bir Web tarayıcısından, `https://CLUSTERNAME.azurehdinsight.net` , `CLUSTERNAME` Kümenizin adı olan ' a gidin.
 
-1. Ambarı kullanıcı arabiriminden **MapReduce2**  >  **configs**  >  **Gelişmiş**  >  **özel mapred-site**bölümüne gidin.
+1. Ambarı kullanıcı arabiriminden **MapReduce2**  >  **configs**  >  **Gelişmiş**  >  **özel mapred-site** bölümüne gidin.
 
 1. Aşağıdaki özellik kümelerinden *birini* ekleyin:
 

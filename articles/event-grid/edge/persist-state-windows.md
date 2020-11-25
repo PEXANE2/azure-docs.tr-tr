@@ -8,11 +8,11 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: f38e23a3af1e2c81ee012a4f3c268cbff3fc1bee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86171474"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002826"
 ---
 # <a name="persist-state-in-windows"></a>Windows 'da durumu kalıcı yap
 
@@ -69,12 +69,12 @@ Bu makalede, Windows dağıtımlarında kalıcılığı olan Event Grid modülü
    ```
 1. **Bağlama noktası** tarafından işaret edilen değere **Kullanıcı** grubunu aşağıdaki gibi ekleyin:
     1. Dosya gezginini başlatın.
-    1. **Bağlama noktası**tarafından işaret edilen klasöre gidin.
+    1. **Bağlama noktası** tarafından işaret edilen klasöre gidin.
     1. Sağ tıklayın ve ardından **Özellikler**' i seçin.
     1. **Güvenlik**’i seçin.
     1. Grup veya Kullanıcı adları altında **Düzenle**' yi seçin.
     1. **Ekle**' yi seçin, `Users` **adları denetle**' yi seçin ve **Tamam**' ı seçin.
-    1. *Kullanıcılar Için izinler*altında **Değiştir**' i seçin ve **Tamam**' ı seçin.
+    1. *Kullanıcılar Için izinler* altında **Değiştir**' i seçin ve **Tamam**' ı seçin.
 1. Bu birimi bağlamak ve Azure portal Event Grid modülünü yeniden dağıtmak için **bağlamalar** kullanın
 
    Örneğin,
@@ -110,7 +110,7 @@ Bu makalede, Windows dağıtımlarında kalıcılığı olan Event Grid modülü
     ```
 
    >[!IMPORTANT]
-   >Bağlama değerinin ikinci kısmını değiştirmeyin. Modüldeki belirli bir konuma işaret eder. Windows üzerinde Event Grid modülü için, **C: \\ App \\ metadatadb**olmalıdır.
+   >Bağlama değerinin ikinci kısmını değiştirmeyin. Modüldeki belirli bir konuma işaret eder. Windows üzerinde Event Grid modülü için, **C: \\ App \\ metadatadb** olmalıdır.
 
 
     Örneğin,
@@ -174,7 +174,7 @@ Bir birim bağlamak yerine, ana bilgisayar sisteminde bir dizin oluşturabilir v
     ```
 
     >[!IMPORTANT]
-    >Bağlama değerinin ikinci kısmını değiştirmeyin. Modüldeki belirli bir konuma işaret eder. Windows üzerinde Event Grid modülü için, **C: \\ App \\ metadatadb**olmalıdır.
+    >Bağlama değerinin ikinci kısmını değiştirmeyin. Modüldeki belirli bir konuma işaret eder. Windows üzerinde Event Grid modülü için, **C: \\ App \\ metadatadb** olmalıdır.
 
     Örneğin,
 

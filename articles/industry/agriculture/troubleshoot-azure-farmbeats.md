@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: dd0ed78c56e4d656a2ecee6395d831ed093e85b5
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677359"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001618"
 ---
 # <a name="troubleshoot-azure-farmbeats"></a>Azure FarmBeats sorunlarını giderme
 
@@ -48,13 +48,13 @@ Aşağıdaki ayrıntılarla bizimle iletişim kurun:
 
     2. Sol taraftaki **Ayarlar** bölümünde **dağıtımlar** ' ı seçin.
 
-    3. **Başarısız** ' ı gösteren her dağıtım için, ayrıntıları seçin ve dağıtım ayrıntılarını indirin. Bu dosyayı e-postaya ekleyin.
+    3. **Başarısız**' ı gösteren her dağıtım için, ayrıntıları seçin ve dağıtım ayrıntılarını indirin. Bu dosyayı e-postaya ekleyin.
 
 ## <a name="sensor-telemetry"></a>Algılayıcı telemetrisi
 
 ### <a name="cant-view-telemetry-data"></a>Telemetri verileri görüntülenemiyor
 
-**Belirti** : cihazlar veya algılayıcılar dağıtılır ve cihaz iş ortağınızla birlikte farmtilerini bağladınız, ancak bu verileri farmsts 'de alamıyor veya görüntüleyemezsiniz.
+**Belirti**: cihazlar veya algılayıcılar dağıtılır ve cihaz iş ortağınızla birlikte farmtilerini bağladınız, ancak bu verileri farmsts 'de alamıyor veya görüntüleyemezsiniz.
 
 **Düzeltici eylem**
 
@@ -69,7 +69,7 @@ Günlüklerin nasıl indirileceği anlamak için ["günlükleri El Ile topla"](#
 
 ### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>Sensörlerden geçmiş/akış verileri alındıktan sonra telemetri verileri görüntülenemiyor
 
-**Belirti** : cihazlar veya algılayıcılar dağıtılır ve bu cihaz/sensörler ve EventHub üzerinde telemetri/algılayıcılar oluşturdunuz, ancak bu verileri, farmınts üzerinde telemetri verilerini alamıyor veya görüntüleyemezsiniz.
+**Belirti**: cihazlar veya algılayıcılar dağıtılır ve bu cihaz/sensörler ve EventHub üzerinde telemetri/algılayıcılar oluşturdunuz, ancak bu verileri, farmınts üzerinde telemetri verilerini alamıyor veya görüntüleyemezsiniz.
 
 **Düzeltici eylem**
 
@@ -105,19 +105,19 @@ Günlüklerin nasıl indirileceği anlamak için ["günlükleri El Ile topla"](#
 **Düzeltici eylem**
 
 1. Datahub Swagger ' de Iş ortağı API 'sine gidin.
-2. **Al**  >  **deneyin**  >  **Çalıştır** ' ı seçin.
+2. **Al**  >  **deneyin**  >  **Çalıştır**' ı seçin.
 
 > [!NOTE]
 > İlgilendiğiniz algılayıcı ortağının iş ortağı KIMLIĞI.
 
-3. Iş ortağı API 'sine dönün ve **Al/ \<ID> Al** ' ı seçin.
-4. 3. adımdaki iş ortağı KIMLIĞINI belirtip **Yürüt** ' ü seçin.
+3. Iş ortağı API 'sine dönün ve **Al/ \<ID> Al**' ı seçin.
+4. 3. adımdaki iş ortağı KIMLIĞINI belirtip **Yürüt**' ü seçin.
 
    API yanıtının Event Hubs bağlantı dizesi olmalıdır.
 
 ### <a name="device-appears-offline"></a>Cihaz çevrimdışı görünüyor
 
-**Belirtiler** : cihazlar yüklenir ve Farmtts 'yi cihaz iş ortağınızla bağladınız. Cihazlar çevrimiçi ve telemetri verileri gönderiyor, ancak çevrimdışı görünüyor.
+**Belirtiler**: cihazlar yüklenir ve Farmtts 'yi cihaz iş ortağınızla bağladınız. Cihazlar çevrimiçi ve telemetri verileri gönderiyor, ancak çevrimdışı görünüyor.
 
 **Düzeltici eylem** Raporlama aralığı bu cihaz için yapılandırılmadı. Raporlama aralığını ayarlamak için cihaz üreticinize başvurun. 
 
@@ -125,9 +125,9 @@ Günlüklerin nasıl indirileceği anlamak için ["günlükleri El Ile topla"](#
 
 Bir cihazı silerken, aşağıdaki genel hata senaryolarından biriyle karşılaşabilirsiniz:  
 
-**İleti** : "cihaz sensörlerle başvuruluyor: cihazla ilişkili bir veya daha fazla algılayıcı var. Algılayıcıları silip cihazı silin. "  
+**İleti**: "cihaz sensörlerle başvuruluyor: cihazla ilişkili bir veya daha fazla algılayıcı var. Algılayıcıları silip cihazı silin. "  
 
-**Anlamı** : cihaz, grupta dağıtılan birden çok sensörle ilişkilendirilir.
+**Anlamı**: cihaz, grupta dağıtılan birden çok sensörle ilişkilendirilir.
 
 **Düzeltici eylem**  
 
@@ -135,9 +135,9 @@ Bir cihazı silerken, aşağıdaki genel hata senaryolarından biriyle karşıla
 2. Algılayıcıları farklı bir cihazla ilişkilendirmek istiyorsanız, cihaz iş ortağınızdan aynı olduğunu sorun.  
 3. Bir çağrı kullanarak cihazı silin `DELETE API` ve zorla parametresini *doğru* olarak ayarlayın.  
 
-**İleti** : "cihaz cihazlarda parentdeviceıd olarak başvuruluyor: alt cihazlar olarak bu cihazla ilişkili bir veya daha fazla cihaz var. Bunları silin ve sonra bu cihazı silin. "  
+**İleti**: "cihaz cihazlarda parentdeviceıd olarak başvuruluyor: alt cihazlar olarak bu cihazla ilişkili bir veya daha fazla cihaz var. Bunları silin ve sonra bu cihazı silin. "  
 
-**Anlamı** : cihazınız ile ilişkili başka cihazlar vardır.  
+**Anlamı**: cihazınız ile ilişkili başka cihazlar vardır.  
 
 **Düzeltici eylem**
 
@@ -152,7 +152,7 @@ Bir cihazı silerken, aşağıdaki genel hata senaryolarından biriyle karşıla
 
 ### <a name="farmbeats-internal-error"></a>Farmtts iç hatası
 
-**İleti** : "diğer ayrıntılar için sorun giderme kılavuzu ' na bakın.
+**İleti**: "diğer ayrıntılar için sorun giderme kılavuzu ' na bakın.
 
 **Düzeltici eylem** Bu sorun, veri ardışık düzeninde geçici bir hatadan kaynaklanabilir. İşi tekrar oluşturun. Hata devam ederse, hata iletisi/günlükleri ile bizimle iletişim kurun.
 
@@ -160,15 +160,15 @@ Bir cihazı silerken, aşağıdaki genel hata senaryolarından biriyle karşıla
 
 ### <a name="access-control"></a>Erişim denetimi
 
-**Sorun** : bir rol ataması eklerken bir hata alıyorsunuz.
+**Sorun**: bir rol ataması eklerken bir hata alıyorsunuz.
 
-**İleti** : "eşleşen kullanıcı bulunamadı."
+**İleti**: "eşleşen kullanıcı bulunamadı."
 
 **Düzeltici eylem** Rol ataması eklemeye çalıştığınız e-posta KIMLIĞINI denetleyin. E-posta KIMLIĞI, Active Directory bu kullanıcı için kayıtlı olan KIMLIğIN tam eşleşmesi olmalıdır. Hata devam ederse, hata iletisi/günlükleri ile bizimle iletişim kurun.
 
 ### <a name="unable-to-log-in-to-accelerator"></a>Hızlandırıcıda oturum açılamıyor
 
-**İleti** : "hata: hizmeti çağırma yetkiniz yok. Yetkilendirme için yöneticiye başvurun. "
+**İleti**: "hata: hizmeti çağırma yetkiniz yok. Yetkilendirme için yöneticiye başvurun. "
 
 **Düzeltici eylem** Yöneticinin Farmtts dağıtımına erişim yetkisini vermesini isteyin. Bu işlem, Roleatama API 'lerinin bir SONRASı veya hızlandırıcı 'daki **Ayarlar** bölmesinde Access Control aracılığıyla yapılabilir.  
 
@@ -178,13 +178,13 @@ Zaten erişim verdiyseniz ve bu hataya sahipseniz, sayfayı yenileyerek yeniden 
 
 ### <a name="accelerator-issues"></a>Hızlandırıcı sorunları  
 
-**Sorun** : belirlenemeyen bir neden Hızlandırıcı hatası aldınız.
+**Sorun**: belirlenemeyen bir neden Hızlandırıcı hatası aldınız.
 
-**İleti** : "hata: bilinmeyen bir hata oluştu."
+**İleti**: "hata: bilinmeyen bir hata oluştu."
 
 **Düzeltici eylem** Bu hata, sayfayı çok uzun süre boşta bıraktığınızda oluşur. Sayfayı yenileyin. Hata devam ederse, hata iletisi/günlükleri ile bizimle iletişim kurun.
 
-**Sorun** : FarmBeatsDeployment 'ı yükselttikten sonra bile, farmtts Hızlandırıcısı en son sürümü gösterilmiyor.
+**Sorun**: FarmBeatsDeployment 'ı yükselttikten sonra bile, farmtts Hızlandırıcısı en son sürümü gösterilmiyor.
 
 **Düzeltici eylem** Bu hata, tarayıcıda hizmet çalışanı kalıcılığı nedeniyle oluşur. Şunları yapın:
 
@@ -195,9 +195,9 @@ Zaten erişim verdiyseniz ve bu hataya sahipseniz, sayfayı yenileyerek yeniden 
 
 ### <a name="wrong-username-or-password"></a>Yanlış Kullanıcı adı veya parola
 
-**İş hatası iletisi** : "Bu kaynağa erişmek için tam kimlik doğrulaması gerekiyor."
+**İş hatası iletisi**: "Bu kaynağa erişmek için tam kimlik doğrulaması gerekiyor."
 
-**Düzeltici eylem** : aşağıdakilerden birini yapın:
+**Düzeltici eylem**: aşağıdakilerden birini yapın:
 
 - Aşağıdaki adımları kullanarak Farmttları doğru Kullanıcı adı/parolayla güncelleştirin ve işi yeniden deneyin.
 
@@ -217,7 +217,7 @@ Zaten erişim verdiyseniz ve bu hataya sahipseniz, sayfayı yenileyerek yeniden 
     4. Ayarlar altında erişim Ilkeleri ' ni seçin
     5. **Erişim Ilkesi Ekle** ' yi seçin
     6. Şablondan yapılandırma için **gizli dizi yönetimini** kullanın ve kendinizi sorumluyla ekleyin
-    7. **Ekle** ' yi seçin ve ardından **erişim ilkeleri** sayfasında **Kaydet** ' i seçin.
+    7. **Ekle**' yi seçin ve ardından **erişim ilkeleri** sayfasında **Kaydet** ' i seçin.
     8. **Ayarlar** altındaki **gizli** dizileri seçin
     9. **Sentinel-Password** seçeneğini belirleyin
     10. Değerin yeni bir sürümünü oluşturun ve etkinleştirin.
@@ -226,9 +226,9 @@ Zaten erişim verdiyseniz ve bu hataya sahipseniz, sayfayı yenileyerek yeniden 
 
 ### <a name="sentinel-hub-wrongurlor-site-not-accessible"></a>Sentinel Hub: yanlış URL veya site erişilebilir değil
 
-**İş hatası iletisi** : "bir sorun oluştu. Erişmeye çalıştığınız sayfa (geçici olarak) kullanılamıyor. "
+**İş hatası iletisi**: "bir sorun oluştu. Erişmeye çalıştığınız sayfa (geçici olarak) kullanılamıyor. "
 
-**Düzeltici eylem** :
+**Düzeltici eylem**:
 
 1. Web sitesinin erişilebilir olup olmadığını görmek için tarayıcınızda [Sentinel](https://scihub.copernicus.eu/dhus/) 'i açın.
 2. Web sitesi erişilebilir değilse, herhangi bir güvenlik duvarının, şirket ağının veya diğer engelleyici yazılımların Web sitesine erişimi engelleyip engellemediğini denetleyin ve sonra Sentinel URL 'sine izin vermek için gerekli adımları uygulayın. 
@@ -236,9 +236,9 @@ Zaten erişim verdiyseniz ve bu hataya sahipseniz, sayfayı yenileyerek yeniden 
 
 ### <a name="sentinel-server-down-for-maintenance"></a>Sentinel sunucu: bakım için aşağı
 
-**İş hatası iletisi** : "Copernicus açık erişim merkezi yakında yeniden sunulacaktır! Ne yazık ki bu sırada bazı bakımda bakım yapıyoruz. Kısa süre içinde yeniden çevrimiçi olacak! " 
+**İş hatası iletisi**: "Copernicus açık erişim merkezi yakında yeniden sunulacaktır! Ne yazık ki bu sırada bazı bakımda bakım yapıyoruz. Kısa süre içinde yeniden çevrimiçi olacak! " 
 
-**Düzeltici eylem** :
+**Düzeltici eylem**:
 
 Bu sorun, Sentinel sunucusunda herhangi bir bakım etkinliği yapıldığında meydana gelebilir.
 
@@ -250,20 +250,20 @@ Bu sorun, Sentinel sunucusunda herhangi bir bakım etkinliği yapıldığında m
 
 ### <a name="sentinel-maximum-number-of-connections-reached"></a>Sentinel: en fazla bağlantı sayısına ulaşıldı
 
-**İş hatası iletisi** : "' ' kullanıcısı tarafından en fazla iki eş zamanlı akış elde edilir \<username> ."
+**İş hatası iletisi**: "' ' kullanıcısı tarafından en fazla iki eş zamanlı akış elde edilir \<username> ."
 
-**Anlamı** : en fazla bağlantı sayısına ulaşıldığından bir iş başarısız olursa, birden fazla Işte aynı Sentinel hesabı kullanılıyor.
+**Anlamı**: en fazla bağlantı sayısına ulaşıldığından bir iş başarısız olursa, birden fazla Işte aynı Sentinel hesabı kullanılıyor.
 
-**Düzeltici eylem** : aşağıdakilerden birini deneyin:
+**Düzeltici eylem**: aşağıdakilerden birini deneyin:
 
 * Başarısız işi yeniden çalıştırmadan önce diğer işlerin bitmesini bekleyin.
 * Yeni bir Sentinel hesabı oluşturun ve sonra, Farmcts 'de Sentinel Kullanıcı adı ve parolasını güncelleştirin.
 
 ### <a name="sentinel-server-refused-connection"></a>Sentinel sunucu: bağlantı reddedildi
 
-**İş hatası iletisi** : "sunucu bağlantıyı reddetti: http://172.30.175.69:8983/solr/dhus ."
+**İş hatası iletisi**: "sunucu bağlantıyı reddetti: http://172.30.175.69:8983/solr/dhus ."
 
-**Düzeltici eylem** : Bu sorun, Sentinel sunucusunda herhangi bir bakım etkinliği yapıldığında meydana gelebilir.
+**Düzeltici eylem**: Bu sorun, Sentinel sunucusunda herhangi bir bakım etkinliği yapıldığında meydana gelebilir.
 
 1. Bakım gerçekleştirildiğinden herhangi bir iş veya işlem hattı başarısız olursa, işi bir süre sonra yeniden gönderin.
 
@@ -273,9 +273,9 @@ Bu sorun, Sentinel sunucusunda herhangi bir bakım etkinliği yapıldığında m
 
 ### <a name="soil-moisture-map-has-white-areas"></a>SOIL Moisture haritasında beyaz alan vardır
 
-**Sorun** : **SOIL Moisture eşlemesi** oluşturuldu, ancak haritada çoğunlukla beyaz alan vardır.
+**Sorun**: **SOIL Moisture eşlemesi** oluşturuldu, ancak haritada çoğunlukla beyaz alan vardır.
 
-**Düzeltici eylem** : Bu sorun, eşlemenin istendiği süre için üretilen uydu dizinlerinizin 0,3 ' den küçük olan ndvı değerleri varsa meydana gelebilir. Daha fazla bilgi için [Sentinel adresinden teknik kılavuzu](https://earth.esa.int/web/sentinel/technical-guides/sentinel-2-msi/level-2a/algorithm)ziyaret edin.
+**Düzeltici eylem**: Bu sorun, eşlemenin istendiği süre için üretilen uydu dizinlerinizin 0,3 ' den küçük olan ndvı değerleri varsa meydana gelebilir. Daha fazla bilgi için [Sentinel adresinden teknik kılavuzu](https://earth.esa.int/web/sentinel/technical-guides/sentinel-2-msi/level-2a/algorithm)ziyaret edin.
 
 1. İşi farklı bir tarih aralığı için yeniden çalıştırın ve uydu dizininizdeki NDVı değerlerinin 0,3 'den fazla olup olmadığını denetleyin.
 
@@ -285,39 +285,39 @@ Bu sorun, Sentinel sunucusunda herhangi bir bakım etkinliği yapıldığında m
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-in-datahub"></a>Veri hub 'ında Azure Data Factory iş günlüklerini veya App Service günlüklerini toplayın
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. **Arama** kutusunda, Farmrets Datahub kaynak grubunu arayın.
-3. **Kaynak grubu** panosunda, *datahublogs \** depolama hesabı ' nı arayın. Örneğin, *datahublogsmvxmq* .  
+3. **Kaynak grubu** panosunda, *datahublogs \** depolama hesabı ' nı arayın. Örneğin, *datahublogsmvxmq*.  
 4. **Ad** sütununda **, depolama hesabı panosunu görüntülemek** için depolama hesabını seçin.
 5. **Açık Azure Depolama Gezgini** uygulamasını görüntülemek için **datahubblogları \* *_ bölmesinde, Explorer 'da _ aç ' ı seçin*** .
-6. Sol bölmede, **BLOB kapsayıcıları** ' nı seçin ve ardından Azure Data Factory günlükleri için **iş günlükleri** ' ni veya App Service Günlükler için **appınsights günlüklerini** seçin.
+6. Sol bölmede, **BLOB kapsayıcıları**' nı seçin ve ardından Azure Data Factory günlükleri için **iş günlükleri** ' ni veya App Service Günlükler için **appınsights günlüklerini** seçin.
 7. **Yükle** ' yi seçin ve günlükleri makinenizde yerel bir klasöre indirin.
 
     ![İndirilen günlük dosyalarını gösteren ekran görüntüsü.](./media/troubleshoot-azure-farmbeats/collecting-logs-manually-1.png)
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-for-accelerator"></a>Hızlandırıcı için Azure Data Factory iş günlüklerini veya App Service günlüklerini toplayın
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. **Arama** kutusunda, Farmtempts Hızlandırıcı kaynak grubunu arayın.
-3. **Kaynak grubu** panosunda, *depolama \** depolama hesabı ' nı arayın. Örneğin, *storagedop4k \** .
+3. **Kaynak grubu** panosunda, *depolama \** depolama hesabı ' nı arayın. Örneğin, *storagedop4k \**.
 4. **Depolama hesabı** panosunu görüntülemek için **ad** sütunundaki depolama hesabını seçin.
 5. **Depolama _ bölmesinde, Azure Depolama Gezgini uygulamasını açmak Için \* Explorer 'da *_ aç ' ı seçin*** .
-6. Sol bölmede, **BLOB kapsayıcıları** ' nı seçin ve ardından Azure Data Factory günlükleri için **iş günlükleri** ' ni veya App Service Günlükler için **appınsights günlüklerini** seçin.
+6. Sol bölmede, **BLOB kapsayıcıları**' nı seçin ve ardından Azure Data Factory günlükleri için **iş günlükleri** ' ni veya App Service Günlükler için **appınsights günlüklerini** seçin.
 7. **Yükle** ' yi seçin ve günlükleri makinenizde yerel bir klasöre indirin.
 
 ## <a name="high-cpu-usage"></a>Yüksek CPU kullanımı
 
-**Hata** : **yüksek CPU kullanımı uyarısına** başvuran bir e-posta uyarısı alırsınız.
+**Hata**: **yüksek CPU kullanımı uyarısına** başvuran bir e-posta uyarısı alırsınız.
 
-**Düzeltici eylem** :
+**Düzeltici eylem**:
 
 1. Farmrets Datahub kaynak grubuna gidin.
-2. **App Service** 'i seçin.  
+2. **App Service**'i seçin.  
 3. Ölçek [App Service fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/app-service/windows/)gidin ve uygun bir fiyatlandırma katmanını seçin.
 
 ## <a name="weather-data-job-failures"></a>Hava durumu verileri işi sorunları
 
-**Hata** : Hava durumu verilerini almak için işleri çalıştıralım, ancak iş başarısız
+**Hata**: Hava durumu verilerini almak için işleri çalıştıralım, ancak iş başarısız
 
 ### <a name="collect-logs-to-troubleshoot-weather-data-job-failures"></a>Hava durumu verileri iş hatalarında sorun gidermek için günlükleri toplayın
 
@@ -329,24 +329,24 @@ Bu sorun, Sentinel sunucusunda herhangi bir bakım etkinliği yapıldığında m
 
 :::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-1.png" alt-text="SKU: Datahub etiketini vurgulayan ekran görüntüsü.":::
 
-3. Veri fabrikasının Genel Bakış sayfasında **Yazar ve izleyici** ' ye tıklayın. Tarayıcınızda yeni bir sekme açılır. **Monitöre** tıklayın
+3. Veri fabrikasının Genel Bakış sayfasında **Yazar ve izleyici**' ye tıklayın. Tarayıcınızda yeni bir sekme açılır. **Monitöre** tıklayın
 
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="SKU: Datahub etiketini vurgulayan ekran görüntüsü.":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-2.png" alt-text="Izleyici menü seçeneğini vurgulayan ekran görüntüsü.":::
 
 4. Hava durumu işi yürütmesinin parçası olan işlem hattı çalıştırmalarının bir listesini görürsünüz. Günlüklerini toplamak istediğiniz Işe tıklayın
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-3.png" alt-text="SKU: Datahub etiketini vurgulayan ekran görüntüsü.":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-3.png" alt-text="İşlem hattı çalıştırmaları menü seçeneğini ve seçili işi vurgulayan ekran görüntüsü.":::
 
 5. İşlem hattı Genel Bakış sayfasında, etkinlik çalıştırmalarının listesini görürsünüz. Günlükleri toplamak istediğiniz etkinliklerin çalıştırma kimliklerini bir yere unutmayın
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-4.png" alt-text="SKU: Datahub etiketini vurgulayan ekran görüntüsü.":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-4.png" alt-text="Etkinlik çalıştırmalarının listesini gösteren ekran görüntüsü.":::
 
 6. Azure portal ' de Farmrekts kaynak grubunuza dönün ve **datahublogs-xxxx** adlı depolama hesabına tıklayın
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-5.png" alt-text="SKU: Datahub etiketini vurgulayan ekran görüntüsü.":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-5.png" alt-text="Datahublogs-XXXX adlı depolama hesabını vurgulayan ekran görüntüsü.":::
 
-7. **Kapsayıcılar**  ->  **adfjobs** ' a tıklayın. Arama kutusuna, yukarıdaki 5. adımda not ettiğiniz iş çalıştırma KIMLIĞINI girin.
+7. **Kapsayıcılar**  ->  **adfjobs**' a tıklayın. Arama kutusuna, yukarıdaki 5. adımda not ettiğiniz iş çalıştırma KIMLIĞINI girin.
  
-:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-6.png" alt-text="SKU: Datahub etiketini vurgulayan ekran görüntüsü.":::
+:::image type="content" source="./media/troubleshoot-Azure-farmbeats/weather-log-6.png" alt-text="Proje Farmtları":::
 
 8. Arama sonucu, işle ilgili günlüklere sahip olan klasörü içerir. Sorunu gidermek için günlükleri indirin ve yardım almak üzere gönderin farmbeatssupport@microsoft.com .

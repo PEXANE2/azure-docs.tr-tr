@@ -4,11 +4,11 @@ description: Bu makalede, Azure Backup için eski ve yeni tanılama olaylarını
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.openlocfilehash: 3d10053bae5148f33dba6d1207a81bdb16c37577
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89182607"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002894"
 ---
 # <a name="use-diagnostics-settings-for-recovery-services-vaults"></a>Kurtarma Hizmetleri kasaları için tanılama ayarlarını kullanın
 
@@ -44,8 +44,8 @@ Kasa tanılama verilerinizi Log Analytics göndermek için:
 1. Kasanıza gidin ve **Tanılama ayarları**' nı seçin. **+ Tanılama ayarı Ekle**' yi seçin.
 1. Tanılama ayarına bir ad verin.
 1. **Log Analytics gönder** onay kutusunu seçin ve bir Log Analytics çalışma alanı seçin.
-1. Geçiş sırasında **kaynak** ' ı seçin ve aşağıdaki altı olayı seçin: **Coreazurebackup**, **AddonAzureBackupJobs**, **AddonAzureBackupAlerts**, **AddonAzureBackupPolicy**, **AddonAzureBackupStorage**ve **AddonAzureBackupProtectedInstance**.
-1. **Kaydet**’i seçin.
+1. Geçiş sırasında **kaynak** ' ı seçin ve aşağıdaki altı olayı seçin: **Coreazurebackup**, **AddonAzureBackupJobs**, **AddonAzureBackupAlerts**, **AddonAzureBackupPolicy**, **AddonAzureBackupStorage** ve **AddonAzureBackupProtectedInstance**.
+1. **Kaydet**'i seçin.
 
    ![Kaynağa özgü mod](./media/backup-azure-diagnostics-events/resource-specific-blade.png)
 
@@ -58,7 +58,7 @@ Veriler Log Analytics çalışma alanına akar, bu olayların her biri için ayr
 
 Geleneksel olarak, bir kasaya yönelik yedeklemeyle ilgili tüm Tanılama verileri AzureBackupReport adlı tek bir olayda yer alır. Burada açıklanan altı olay, AzureBackupReport ' de yer alan tüm verilerin bir ayrıştırma bölümünde verilmiştir.
 
-Şu anda, kullanıcıların bu olay üzerinde var olan özel sorgulara sahip olduğu durumlarda geriye dönük uyumluluk için AzureBackupReport olayını desteklemeye devam ediyoruz. Özel günlük uyarıları ve özel görselleştirmeler örnekleri aşağıda verilmiştir. * [Yeni olaylara](#diagnostics-events-available-for-azure-backup-users) mümkün olduğunca erken geçiş yapmanızı öneririz*. Yeni olaylar:
+Şu anda, kullanıcıların bu olay üzerinde var olan özel sorgulara sahip olduğu durumlarda geriye dönük uyumluluk için AzureBackupReport olayını desteklemeye devam ediyoruz. Özel günlük uyarıları ve özel görselleştirmeler örnekleri aşağıda verilmiştir. *[Yeni olaylara](#diagnostics-events-available-for-azure-backup-users) mümkün olduğunca erken geçiş yapmanızı öneririz*. Yeni olaylar:
 
 * Günlük sorgularında verilerin daha kolay çalışmasını sağlayın.
 * Şemaların ve yapısının daha iyi keşfedilmesini sağlayın.
@@ -102,7 +102,7 @@ Geleneksel olarak, bir kasaya yönelik yedeklemeyle ilgili tüm Tanılama verile
 
 2. Belirtilen kapsamdaki tüm kasalara yönelik yeni bir tanılama ayarı eklemek için Azure Backup [yerleşik Azure ilke tanımlarını](./azure-policy-configure-diagnostics.md) kullanın. Bu ilke, bir tanılama ayarı olmayan ya da yalnızca eski bir tanılama ayarına sahip olmayan kasalara yeni bir tanılama ayarı ekler. Bu ilke, bir kerede bir abonelik veya kaynak grubuna atanabilir. İlkenin atandığı her abonelik için sahip erişiminizin olması gerekir.
 
-Yeni tablolardaki verileri kullanmak üzere özel sorgularınızın tümünü geçirene kadar, AzureBackupReport ve altı yeni olay için ayrı Tanılama ayarları olmasını tercih edebilirsiniz. Aşağıdaki görüntüde iki tanılama ayarı olan bir kasaya ait bir örnek gösterilmektedir. **Setting1**adlı ilk ayar, bir AzureBackupReport olayının verilerini Azure tanılama modundaki bir Log Analytics çalışma alanına gönderir. **Setting2**adlı ikinci ayar, altı yeni Azure Backup olayının verilerini kaynağa özgü moddaki bir Log Analytics çalışma alanına gönderir.
+Yeni tablolardaki verileri kullanmak üzere özel sorgularınızın tümünü geçirene kadar, AzureBackupReport ve altı yeni olay için ayrı Tanılama ayarları olmasını tercih edebilirsiniz. Aşağıdaki görüntüde iki tanılama ayarı olan bir kasaya ait bir örnek gösterilmektedir. **Setting1** adlı ilk ayar, bir AzureBackupReport olayının verilerini Azure tanılama modundaki bir Log Analytics çalışma alanına gönderir. **Setting2** adlı ikinci ayar, altı yeni Azure Backup olayının verilerini kaynağa özgü moddaki bir Log Analytics çalışma alanına gönderir.
 
 ![İki ayar](./media/backup-azure-diagnostics-events/two-settings-example.png)
 
@@ -114,7 +114,7 @@ Yeni tablolardaki verileri kullanmak üzere özel sorgularınızın tümünü ge
 
 ## <a name="send-azure-site-recovery-events-to-log-analytics"></a>Azure Site Recovery olaylarını Log Analytics gönder
 
-Azure Backup ve Azure Site Recovery olaylar aynı kurtarma hizmetleri kasasından gönderilir. Azure Site Recovery Şu anda kaynağa özgü tablolar için kullanılamaz. Log Analytics Azure Site Recovery olaylarını göndermek isteyen kullanıcılar, görüntüde gösterildiği gibi *yalnızca*Azure tanılama modunu kullanmaya yönlendirilir. *Azure Site Recovery olaylar için kaynağa özgü modu seçmek, gerekli verilerin Log Analytics çalışma alanına gönderilmesini engeller*.
+Azure Backup ve Azure Site Recovery olaylar aynı kurtarma hizmetleri kasasından gönderilir. Azure Site Recovery Şu anda kaynağa özgü tablolar için kullanılamaz. Log Analytics Azure Site Recovery olaylarını göndermek isteyen kullanıcılar, görüntüde gösterildiği gibi *yalnızca* Azure tanılama modunu kullanmaya yönlendirilir. *Azure Site Recovery olaylar için kaynağa özgü modu seçmek, gerekli verilerin Log Analytics çalışma alanına gönderilmesini engeller*.
 
 ![Site Recovery olaylar](./media/backup-azure-diagnostics-events/site-recovery-settings.png)
 
@@ -124,7 +124,7 @@ Azure Backup ve Azure Site Recovery olaylar aynı kurtarma hizmetleri kasasında
 * Önerdiğimiz gibi yeni tablolara da eklemek istiyorsanız, **Yeni** bir tanılama ayarı oluşturun, **kaynağa özel**' i seçin ve altı yeni olayı seçin.
 * Şu anda Log Analytics Azure Site Recovery olaylar *gönderiyorsanız, bu* olaylar için kaynağa özgü modu seçme. Aksi takdirde, bu olaylara yönelik veriler Log Analytics çalışma alanınıza akamaz. Bunun yerine, ek bir tanılama ayarı oluşturun, **Azure tanılama**' yı seçin ve ilgili Azure Site Recovery olaylarını seçin.
 
-Aşağıdaki görüntüde, bir kasa için üç tanılama ayarı olan bir kullanıcıya ait bir örnek gösterilmektedir. **Setting1**adlı ilk ayar, bir AzureBackupReport olayından verileri Azure tanılama modundaki bir Log Analytics çalışma alanına gönderir. **Setting2**adlı ikinci ayar, altı yeni Azure Backup olaydan kaynağa özgü modda Log Analytics çalışma alanına veri gönderir. **Setting3**adlı üçüncü ayar, Azure Site Recovery olaylarından verileri Azure tanılama modundaki bir Log Analytics çalışma alanına gönderir.
+Aşağıdaki görüntüde, bir kasa için üç tanılama ayarı olan bir kullanıcıya ait bir örnek gösterilmektedir. **Setting1** adlı ilk ayar, bir AzureBackupReport olayından verileri Azure tanılama modundaki bir Log Analytics çalışma alanına gönderir. **Setting2** adlı ikinci ayar, altı yeni Azure Backup olaydan kaynağa özgü modda Log Analytics çalışma alanına veri gönderir. **Setting3** adlı üçüncü ayar, Azure Site Recovery olaylarından verileri Azure tanılama modundaki bir Log Analytics çalışma alanına gönderir.
 
 ![Üç ayar](./media/backup-azure-diagnostics-events/three-settings-example.png)
 

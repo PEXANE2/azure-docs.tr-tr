@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp, mvc
 ms.date: 06/18/2020
 ms.openlocfilehash: 762fdf0aab0077cfbf8beceeb432dc85695e4176
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077073"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002485"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-net-framework"></a>Hızlı başlangıç: .NET Framework Redsıs için Azure önbelleğini kullanma
 
@@ -30,7 +30,7 @@ Bu hızlı başlangıçta, Azure 'daki herhangi bir uygulamadan erişilebilen g�
 
 [!INCLUDE [redis-cache-access-keys](../../includes/redis-cache-access-keys.md)]
 
-Bilgisayarınızda *CacheSecrets.config* adlı bir dosya oluşturun ve örnek uygulamanızın kaynak kodu ile denetlenmeyecek bir konuma yerleştirin. Bu hızlı başlangıç için *CacheSecrets.config* dosyası şu konumda bulunur: *C:\AppSecrets\CacheSecrets.config* .
+Bilgisayarınızda *CacheSecrets.config* adlı bir dosya oluşturun ve örnek uygulamanızın kaynak kodu ile denetlenmeyecek bir konuma yerleştirin. Bu hızlı başlangıç için *CacheSecrets.config* dosyası şu konumda bulunur: *C:\AppSecrets\CacheSecrets.config*.
 
 *CacheSecrets.config* dosyasını düzenleyin ve aşağıdaki içerikleri ekleyin:
 
@@ -47,7 +47,7 @@ Bilgisayarınızda *CacheSecrets.config* adlı bir dosya oluşturun ve örnek uy
 
 ## <a name="create-a-console-app"></a>Konsol uygulaması oluşturma
 
-Visual Studio 'da **Dosya**  >  **Yeni**  >  **Proje** ' ye tıklayın.
+Visual Studio 'da **Dosya**  >  **Yeni**  >  **Proje**' ye tıklayın.
 
 Uygulamanızı yapılandırmak için **konsol uygulaması (.NET Framework)** ve **İleri** ' yi seçin. Yeni bir konsol uygulaması oluşturmak için bir **Proje adı** yazın ve **Oluştur** ' a tıklayın.
 
@@ -81,7 +81,7 @@ Visual Studio’da, *App.config* dosyanızı açın ve *CacheSecrets.config* dos
 </configuration>
 ```
 
-Çözüm Gezgini’nde, **Başvurular** ’a sağ tıklayın ve **Başvuru ekle** ’ye tıklayın. **System.Configuration** bütünleştirilmiş koduna bir başvuru ekleyin.
+Çözüm Gezgini’nde, **Başvurular**’a sağ tıklayın ve **Başvuru ekle**’ye tıklayın. **System.Configuration** bütünleştirilmiş koduna bir başvuru ekleyin.
 
 Aşağıdaki `using` deyimlerini *Program.cs* dosyasına ekleyin:
 
@@ -173,7 +173,7 @@ Redsıs için Azure önbelleğinde, Redsıs için bir Azure önbelleğindeki ver
 
 Redis, Redis dizeleri kadar veri depolar, ancak bu dizeler önbellekte .NET nesneleri depolarken kullanılabilecek seri hale getirilmiş ikili veriler dahil, birçok veri türünü içerebilir.
 
-Konsol uygulamasını derleyip çalıştırmak için **Ctrl+F5** 'e basın.
+Konsol uygulamasını derleyip çalıştırmak için **Ctrl+F5**'e basın.
 
 Aşağıdaki örnekte, `Message` anahtarının Azure portalındaki Redis Konsolu kullanılarak ayarlanan, önceden önbelleğe alınmış bir değer içerdiğini görebilirsiniz. Uygulama, önbelleğe alınan bu değeri güncelleştirdi. Ayrıca uygulama, `PING` ve `CLIENT LIST` komutlarını da yürüttü.
 
@@ -247,13 +247,13 @@ Aksi takdirde, hızlı başlangıç örnek uygulamasını tamamladıysanız ücr
 > Bir kaynak grubunu silme işlemi geri alınamaz ve kaynak grubunun ve içindeki tüm kaynaklar kalıcı olarak silinir. Yanlış kaynak grubunu veya kaynakları yanlışlıkla silmediğinizden emin olun. Bu örneği, tutmak istediğiniz kaynakları içeren mevcut bir kaynak grubunda barındırmak için kaynaklar oluşturduysanız, kaynak grubunu silmek yerine her kaynağı kendi ilgili dikey penceresinden tek tek silebilirsiniz.
 >
 
-[Azure portalında](https://portal.azure.com) oturum açın ve **Kaynak grupları** ’na tıklayın.
+[Azure portalında](https://portal.azure.com) oturum açın ve **Kaynak grupları**’na tıklayın.
 
-**Ada göre filtrele...** metin kutusuna kaynak grubunuzun adını girin. Bu makaledeki yönergelerde *TestResources* adlı bir kaynak grubu kullanılmıştır. Sonuç listesindeki kaynak grubunuzda **...** ve sonra **Kaynak grubunu sil** ’e tıklayın.
+**Ada göre filtrele...** metin kutusuna kaynak grubunuzun adını girin. Bu makaledeki yönergelerde *TestResources* adlı bir kaynak grubu kullanılmıştır. Sonuç listesindeki kaynak grubunuzda **...** ve sonra **Kaynak grubunu sil**’e tıklayın.
 
 ![Sil](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-delete-resource-group.png)
 
-Kaynak grubunun silinmesini onaylamanız istenir. Onaylamak için kaynak grubunuzun adını yazın ve **Sil** ’e tıklayın.
+Kaynak grubunun silinmesini onaylamanız istenir. Onaylamak için kaynak grubunuzun adını yazın ve **Sil**’e tıklayın.
 
 Birkaç dakika sonra kaynak grubu ve içerdiği kaynakların tümü silinir.
 

@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.custom: seodec18
 ms.openlocfilehash: 949e408544e25cb55622cf2a1b1d2dddb92350a6
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150160"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001516"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure App Service işletim sistemi işlevselliği
 Bu makalede, [Azure App Service](./overview.md)üzerinde çalışan tüm Windows uygulamaları için kullanılabilen ortak temel işletim sistemi işlevleri açıklanmaktadır. Bu işlevsellik dosya, ağ ve kayıt defteri erişimini ve tanılama günlüklerini ve olaylarını içerir. 
@@ -65,7 +65,7 @@ Uygulama dağıtımını ve bakımını basit hale getiren App Service benzersiz
 
 App Service içinde, her bir veri merkezinde oluşturulmuş bir dizi UNC paylaşımı vardır. Her bir veri merkezindeki tüm müşteriler için Kullanıcı içeriğinin yüzdesi her bir UNC paylaşımında ayrılır. Ayrıca, tek bir müşterinin aboneliğine ait tüm dosya içeriği her zaman aynı UNC paylaşımında yer alır. 
 
-Azure hizmetlerinin çalışma biçimi nedeniyle, bir UNC paylaşımının barındırmasından sorumlu olan belirli bir sanal makine zaman içinde değişmeyecektir. UNC paylaşımlarının, Azure işlemlerinin normal kursu sırasında yukarı ve aşağı getirilebileceği şekilde farklı sanal makineler tarafından bağlanacağı garanti edilir. Bu nedenle, uygulamalar asla bir UNC dosya yolundaki makine bilgilerinin zaman içinde kararlı kalacağından önce sabit kodlanmış varsayımlar yapmamalıdır. Bunun yerine, App Service tarafından sağlanan uygun *sahte* mutlak yol, **D:\home\site** kullanmalıdır. Bu sahte mutlak yol, tek bir uygulamaya başvurmak için taşınabilir, uygulama ve kullanıcıya belirsiz bir yöntem sağlar. **D:\home\site**kullanarak, bir tane, her aktarım için yeni bir mutlak yol yapılandırmak zorunda kalmadan, paylaşılan dosyaları uygulamadan uygulamaya aktarabilir.
+Azure hizmetlerinin çalışma biçimi nedeniyle, bir UNC paylaşımının barındırmasından sorumlu olan belirli bir sanal makine zaman içinde değişmeyecektir. UNC paylaşımlarının, Azure işlemlerinin normal kursu sırasında yukarı ve aşağı getirilebileceği şekilde farklı sanal makineler tarafından bağlanacağı garanti edilir. Bu nedenle, uygulamalar asla bir UNC dosya yolundaki makine bilgilerinin zaman içinde kararlı kalacağından önce sabit kodlanmış varsayımlar yapmamalıdır. Bunun yerine, App Service tarafından sağlanan uygun *sahte* mutlak yol, **D:\home\site** kullanmalıdır. Bu sahte mutlak yol, tek bir uygulamaya başvurmak için taşınabilir, uygulama ve kullanıcıya belirsiz bir yöntem sağlar. **D:\home\site** kullanarak, bir tane, her aktarım için yeni bir mutlak yol yapılandırmak zorunda kalmadan, paylaşılan dosyaları uygulamadan uygulamaya aktarabilir.
 
 <a id="TypesOfFileAccess"></a>
 

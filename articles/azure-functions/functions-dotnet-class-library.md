@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
 ms.openlocfilehash: 3c363d13933e6554a6eefbeaf02d87dc6b382628
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578782"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002417"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Işlevleri C# Geliştirici Başvurusu
 
@@ -19,7 +19,7 @@ Bu makale, .NET sınıf kitaplıklarında C# kullanarak Azure Işlevleri gelişt
 
 Bir C# geliştiricisi olarak, aşağıdaki makalelerden biriyle de ilgileniyor olabilirsiniz:
 
-| Kullanmaya başlama | Kavramlar| Kılavuzlu öğrenme/örnekler |
+| Başlarken | Kavramlar| Kılavuzlu öğrenme/örnekler |
 | -- | -- | -- | 
 | <ul><li>[Visual Studio’yu kullanma](functions-create-your-first-function-visual-studio.md)</li><li>[Visual Studio Code’u kullanma](create-first-function-vs-code-csharp.md)</li><li>[Komut satırı araçlarını kullanma](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[Barındırma seçenekleri](functions-scale.md)</li><li>[Performans &nbsp; konuları](functions-best-practices.md)</li><li>[Visual Studio geliştirme](functions-develop-vs.md)</li><li>[Bağımlılık ekleme](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[Sunucusuz uygulamalar oluşturma](/learn/paths/create-serverless-applications/)</li><li>[C# örnekleri](/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
 
@@ -312,7 +312,7 @@ public static class CancellationTokenExample
 }
 ```
 
-## <a name="logging"></a>Günlüğe Kaydetme
+## <a name="logging"></a>Günlüğe kaydetme
 
 İşlev kodunuzda, Application Insights izleme olarak görünen günlüklere çıkış yazabilirsiniz. Günlüklere yazmak için önerilen yol, genellikle adlı [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger)türünde bir parametre içerir `log` . `TraceWriter`Aynı zamanda Application Insights yazan, ancak yapısal günlüğü desteklemeyen işlevler çalışma zamanının sürüm 1. x. `Console.Write`Bu veriler Application Insights tarafından yakalandığından günlüklerinizi yazmak için kullanmayın. 
 

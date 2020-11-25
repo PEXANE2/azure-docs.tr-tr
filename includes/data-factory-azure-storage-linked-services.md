@@ -5,19 +5,19 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 37917e0ed663675677f1d0452b5796120ca2694e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75469342"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001768"
 ---
 ### <a name="azure-storage-linked-service"></a>Azure Storage Bağlı Hizmeti
-**Azure depolama bağlı hizmeti** , veri fabrikasını Azure depolama 'ya genel erişimle sağlayan **hesap anahtarını**kullanarak bir Azure Depolama hesabını Azure veri fabrikasına bağlayabilmeniz için izin verir. Aşağıdaki tabloda, Azure Storage bağlı hizmetine özgü JSON öğelerine ilişkin açıklama verilmiştir.
+**Azure depolama bağlı hizmeti** , veri fabrikasını Azure depolama 'ya genel erişimle sağlayan **hesap anahtarını** kullanarak bir Azure Depolama hesabını Azure veri fabrikasına bağlayabilmeniz için izin verir. Aşağıdaki tabloda, Azure Storage bağlı hizmetine özgü JSON öğelerine ilişkin açıklama verilmiştir.
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür |Type özelliği: **Azurestorage** olarak ayarlanmalıdır |Evet |
-| Dizisi |ConnectionString özelliği için Azure depolama 'ya bağlanmak için gereken bilgileri belirtin. |Evet |
+| tür |Type özelliği: **Azurestorage** olarak ayarlanmalıdır |Yes |
+| Dizisi |ConnectionString özelliği için Azure depolama 'ya bağlanmak için gereken bilgileri belirtin. |Yes |
 
 Depolama hesabı erişim anahtarlarını alma hakkında daha fazla bilgi için bkz. [depolama hesabı erişim anahtarlarını yönetme](../articles/storage/common/storage-account-keys-manage.md).
 
@@ -49,8 +49,8 @@ Azure Storage SAS bağlı hizmeti, bir Azure Depolama hesabını, paylaşılan e
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür |Type özelliği: **Azurestorampasas** olarak ayarlanmalıdır |Evet |
-| sasUri |Blob, kapsayıcı veya tablo gibi Azure depolama kaynakları için paylaşılan erişim Imzası URI 'SI belirtin.  |Evet |
+| tür |Type özelliği: **Azurestorampasas** olarak ayarlanmalıdır |Yes |
+| sasUri |Blob, kapsayıcı veya tablo gibi Azure depolama kaynakları için paylaşılan erişim Imzası URI 'SI belirtin.  |Yes |
 
 **Örnek:**
 
@@ -66,7 +66,7 @@ Azure Storage SAS bağlı hizmeti, bir Azure Depolama hesabını, paylaşılan e
 }
 ```
 
-**SAS URI 'si**oluştururken şunları göz önünde bulundurarak:  
+**SAS URI 'si** oluştururken şunları göz önünde bulundurarak:  
 
 * Veri fabrikanızdaki bağlantılı hizmetin (okuma, yazma, okuma/yazma) nasıl kullanıldığını temel alarak nesneler üzerinde uygun okuma/yazma **izinleri** ayarlayın.
 * **Süre sonu süresini** uygun şekilde ayarlayın. Azure Storage nesnelerine erişimin, işlem hattının etkin döneminde sona ermediğinden emin olun.

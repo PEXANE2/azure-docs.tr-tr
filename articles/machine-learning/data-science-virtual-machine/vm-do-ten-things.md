@@ -11,11 +11,11 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: 766da55f2589e2a8eb09e0f1b1c9a0a5027c8c3c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320944"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002774"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>Windows Veri Bilimi Sanal Makinesi ile veri bilimi
 
@@ -75,13 +75,13 @@ R için, başlangıç menüsünde veya masaüstünde bulunan RStudio gibi bir ID
 
 Python için, Visual Studio için Python Araçları (PTV) uzantısının önceden yüklenmiş olduğu Visual Studio Community Edition gibi bir IDE kullanabilirsiniz. Varsayılan olarak, PTV 'lerde yalnızca Python 3,6, kök Conda ortamı yapılandırılır. Anaconda Python 2,7 ' i etkinleştirmek için aşağıdaki adımları uygulayın:
 
-1. **Araçlar**  >  **Python araçları**  >  **Python ortamları** ' na giderek ve ardından Visual Studio Community Edition 'da **+ özel** ' i seçerek her bir sürüm için özel ortamlar oluşturun.
+1. **Araçlar**  >  **Python araçları**  >  **Python ortamları**' na giderek ve ardından Visual Studio Community Edition 'da **+ özel** ' i seçerek her bir sürüm için özel ortamlar oluşturun.
 1. Anaconda Python 2,7 için bir açıklama verin ve ortam ön eki yolunu **c:\anaconda\envs\python2** olarak ayarlayın.
 1. Ortamı kaydetmek için **Otomatik Algıla**  >  **Uygula** ' yı seçin.
 
 Python ortamları oluşturma hakkında daha fazla bilgi için bkz. [PTV belgeleri](/visualstudio/python/) .
 
-Şimdi yeni bir Python projesi oluşturmak için hazırsınız. **Dosya**  >  **Yeni**  >  **Proje**  >  **Python** ' a gidin ve oluşturmakta olduğunuz Python uygulamasının türünü seçin. Python **ortamları** ' na sağ tıklayıp **Python ortamlarını Ekle/Kaldır** ' ı seçerek, geçerli projenin Python ortamını istenen sürüme (Python 2,7 veya 3,6) ayarlayabilirsiniz. [Ürün belgelerinde](/visualstudio/python/)PTV ile çalışma hakkında daha fazla bilgi edinebilirsiniz.
+Şimdi yeni bir Python projesi oluşturmak için hazırsınız. **Dosya**  >  **Yeni**  >  **Proje**  >  **Python** ' a gidin ve oluşturmakta olduğunuz Python uygulamasının türünü seçin. Python **ortamları** ' na sağ tıklayıp **Python ortamlarını Ekle/Kaldır**' ı seçerek, geçerli projenin Python ortamını istenen sürüme (Python 2,7 veya 3,6) ayarlayabilirsiniz. [Ürün belgelerinde](/visualstudio/python/)PTV ile çalışma hakkında daha fazla bilgi edinebilirsiniz.
 
 
 
@@ -197,7 +197,7 @@ Bir Azure blobuna kopyalamak için AzCopy komutunu çalıştırdıktan sonra, do
 Ayrıca, Azure Depolama Gezgini kullanarak sanal makinenizde yerel dosyadaki verileri karşıya yükleyebilirsiniz:
 
 * Bir kapsayıcıya veri yüklemek için hedef kapsayıcıyı seçin ve **karşıya yükle** düğmesini seçin. ![ Azure Depolama Gezgini 'de karşıya yükle düğmesinin ekran görüntüsü](./media/vm-do-ten-things/storage-accounts.png)
-* **Dosyalar** kutusunun sağ tarafındaki üç nokta ( **...** ) simgesini seçin, dosya sisteminden karşıya yüklenecek bir veya birden çok dosya seçin ve karşıya yükleme Işlemini başlatmak için **karşıya yükle** ' yi seçin. ![ Dosyaları karşıya yükle iletişim kutusunun ekran görüntüsü](./media/vm-do-ten-things/upload-files-to-blob.png)
+* **Dosyalar** kutusunun sağ tarafındaki üç nokta (**...**) simgesini seçin, dosya sisteminden karşıya yüklenecek bir veya birden çok dosya seçin ve karşıya yükleme Işlemini başlatmak için **karşıya yükle** ' yi seçin. ![ Dosyaları karşıya yükle iletişim kutusunun ekran görüntüsü](./media/vm-do-ten-things/upload-files-to-blob.png)
 
 #### <a name="read-data-from-an-azure-blob-python-odbc"></a>Azure blobundan verileri okuma: Python ODBC
 
@@ -274,7 +274,7 @@ Verileri içeri aktardıktan sonra Jupyter ' a gidip *Documentdbsample* adlı No
 ## <a name="use-power-bi-reports-and-dashboards"></a>Power BI raporlarını ve panoları kullanma 
 Verilerle ilgili görsel Öngörüler elde etmek için Power BI Desktop önceki Azure Cosmos DB örneğinde bulunan Volcano JSON dosyasını görselleştirebilirsiniz. Ayrıntılı adımlar [Power BI makalesinde](../../cosmos-db/powerbi-visualize.md)bulunabilir. Üst düzey adımlar şunlardır:
 
-1. Power BI Desktop'ı açın ve **Veri Al** 'ı seçin. URL 'YI şöyle belirtin: `https://cahandson.blob.core.windows.net/samples/volcano.json` .
+1. Power BI Desktop'ı açın ve **Veri Al**'ı seçin. URL 'YI şöyle belirtin: `https://cahandson.blob.core.windows.net/samples/volcano.json` .
 2. Liste olarak içeri aktarılmış JSON kayıtlarını görmeniz gerekir. Power BI onunla birlikte çalışabilmek için listeyi bir tabloya dönüştürün.
 4. Genişlet (ok) simgesini seçerek sütunları genişletin.
 5. Konumun bir **kayıt** alanı olduğuna dikkat edin. Kaydı genişletin ve yalnızca koordinatları seçin. **Koordinat** bir liste sütunudur.

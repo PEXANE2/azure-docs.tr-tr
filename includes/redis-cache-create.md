@@ -8,21 +8,21 @@ ms.topic: include
 ms.date: 10/06/2020
 ms.author: cauribeg
 ms.custom: include file
-ms.openlocfilehash: 07a80fcd1ec62b051a660bdac696f89e3b7c42b7
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: da36cb5c5d2db20b89f80d381f48632c7528c193
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93354123"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002484"
 ---
-1. Önbellek oluşturmak için [Azure Portal](https://portal.azure.com) oturum açın ve **kaynak oluştur** ' u seçin.
+1. Önbellek oluşturmak için [Azure Portal](https://portal.azure.com) oturum açın ve **kaynak oluştur**' u seçin.
 
-    :::image type="content" source="media/redis-cache-create/create-resource.png" alt-text="Redsıs için Azure önbelleği ' ni seçin.":::
+    :::image type="content" source="media/redis-cache-create/create-resource.png" alt-text="Bir kaynak oluştur, sol gezinti bölmesinde vurgulanır.":::
 
    
-1. **Yeni** sayfada **veritabanları** ' nı seçin ve ardından **redsıs için Azure önbelleği** ' ni seçin.
+1. **Yeni** sayfada **veritabanları** ' nı seçin ve ardından **redsıs için Azure önbelleği**' ni seçin.
 
-    :::image type="content" source="media/redis-cache-create/select-cache.png" alt-text="Redsıs için Azure önbelleği ' ni seçin.":::
+    :::image type="content" source="media/redis-cache-create/select-cache.png" alt-text="Yeni, veritabanları vurgulanır ve redin için Azure önbelleği vurgulanır.":::
    
 1. **Yeni Redis Cache** sayfasında, yeni önbelleğiniz için ayarları yapılandırın.
    
@@ -50,8 +50,8 @@ ms.locfileid: "93354123"
 
 1. İsteğe bağlı olarak, **Etiketler** sekmesinde, kaynağı sınıflandırmak istiyorsanız ad ve değeri girin. 
 
-1. **Gözden geçir + oluştur** ’u seçin. Azure 'un yapılandırmanızı doğruladığı, gözden geçir + Oluştur sekmesine götürülürsünüz.
+1. **Gözden geçir ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, gözden geçir + Oluştur sekmesine götürülürsünüz.
 
-1. Yeşil doğrulama başarılı iletisi göründüğünde **Oluştur** ' u seçin.
+1. Yeşil doğrulama başarılı iletisi göründüğünde **Oluştur**' u seçin.
 
 Önbelleğin oluşturulması biraz zaman alır. Redsıs **genel bakış** sayfasında ilerlemeyi izleyebilirsiniz. **Durum** **çalışıyor** olarak görüntülendiğinde, önbellek kullanıma hazırdır. 

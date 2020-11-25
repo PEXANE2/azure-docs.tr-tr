@@ -6,11 +6,11 @@ ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 2e9af5dcc00d8cadd0528d56ee73bc6aeba149d7
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747735"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002043"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Öğretici: Azure Kubernetes Hizmeti’nde (AKS) Kubernetes’i yükseltme
 
@@ -37,7 +37,7 @@ Bir kümeyi yükseltmeden önce, [az aks get-upgrades][] komutunu kullanarak han
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Aşağıdaki örnekte, geçerli sürüm *1.15.11* ' dir ve kullanılabilir sürümler *yükseltmeler* altında gösterilir.
+Aşağıdaki örnekte, geçerli sürüm *1.15.11*' dir ve kullanılabilir sürümler *yükseltmeler* altında gösterilir.
 
 ```json
 {
@@ -80,7 +80,7 @@ az aks upgrade \
 ```
 
 > [!NOTE]
-> Aynı anda yalnızca bir ikincil sürüm yükseltmesi yapabilirsiniz. Örneğin, *1.14. x* ' den *1.15. x* ' e yükseltebilirsiniz, ancak *1.14. x* ' ten doğrudan *1.16. x* ' e yükseltemezsiniz. *1.14. x* ' den *1.16. x* ' e yükseltmek için, ilk olarak *1.14. x* ' ten *1.15. x* ' e yükseltin, sonra *1.15. x* ' den *1.16.* x ' e yükseltme gerçekleştirin
+> Aynı anda yalnızca bir ikincil sürüm yükseltmesi yapabilirsiniz. Örneğin, *1.14. x* ' den *1.15. x*' e yükseltebilirsiniz, ancak *1.14. x* ' ten doğrudan *1.16. x* ' e yükseltemezsiniz. *1.14. x* ' den *1.16. x*' e yükseltmek için, ilk olarak *1.14. x* ' ten *1.15. x*' e yükseltin, sonra *1.15. x* ' den *1.16.* x ' e yükseltme gerçekleştirin
 
 Aşağıdaki sıkıştırılmış örnek çıktı, *1.16.8* sürümüne yükseltmenin sonucunu gösterir. *Kubernetesversion* 'ın artık *1.16.8* rapordığına dikkat edin:
 

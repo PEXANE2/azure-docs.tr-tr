@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 2/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 453258bb5768a2faa8f4e42cce86d02125283026
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86259200"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002179"
 ---
 # <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Linux Azure Tanılama kullanarak olay toplama ve toplama
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ Günlükleri karşıya yükleme ve toplamanın bir yolu, Azure depolama 'ya gün
 ## <a name="log-and-event-sources"></a>Günlük ve olay kaynakları
 
 ### <a name="service-fabric-platform-events"></a>Service Fabric platform olayları
-Service Fabric, işletimsel olaylar veya çalışma zamanı olayları dahil olmak üzere [Lttng](https://lttng.org)aracılığıyla kullanıma hazır birkaç günlüğü yayar. Bu Günlükler, kümenin Kaynak Yöneticisi şablonunun belirttiği konumda depolanır. Depolama hesabı ayrıntılarını almak veya ayarlamak için **AzureTableWinFabETWQueryable** etiketini arayın ve **storeconnectionstring**öğesine bakın.
+Service Fabric, işletimsel olaylar veya çalışma zamanı olayları dahil olmak üzere [Lttng](https://lttng.org)aracılığıyla kullanıma hazır birkaç günlüğü yayar. Bu Günlükler, kümenin Kaynak Yöneticisi şablonunun belirttiği konumda depolanır. Depolama hesabı ayrıntılarını almak veya ayarlamak için **AzureTableWinFabETWQueryable** etiketini arayın ve **storeconnectionstring** öğesine bakın.
 
 ### <a name="application-events"></a>Uygulama olayları
  Yazılımlarınızdan yararlanarak sizin tarafınızdan belirtilen şekilde, uygulamalarınızın ve hizmetlerinizin kodundan yayılan olaylar. Metin tabanlı günlük dosyaları yazan herhangi bir günlük çözümünü kullanabilirsiniz; Örneğin, LTTng. Daha fazla bilgi için, uygulamanızı izlemeye yönelik LTTng belgelerine bakın.
@@ -36,7 +36,7 @@ Service Fabric, işletimsel olaylar veya çalışma zamanı olayları dahil olma
 ## <a name="deploy-the-diagnostics-extension"></a>Tanılama uzantısını dağıtma
 Günlükleri toplamanın ilk adımı, Service Fabric kümesindeki her bir sanal makineye tanılama uzantısını dağıtmaktır. Tanılama uzantısı her bir VM 'de günlükleri toplar ve bunları belirttiğiniz depolama hesabına yükler. 
 
-Tanılama uzantısını küme oluşturmanın bir parçası olarak kümedeki VM 'lere dağıtmak için, **tanılamayı** **Açık**olarak ayarlayın. Kümeyi oluşturduktan sonra, portalı kullanarak bu ayarı değiştiremezsiniz, bu nedenle Kaynak Yöneticisi şablonunda uygun değişiklikleri yapmanız gerekir.
+Tanılama uzantısını küme oluşturmanın bir parçası olarak kümedeki VM 'lere dağıtmak için, **tanılamayı** **Açık** olarak ayarlayın. Kümeyi oluşturduktan sonra, portalı kullanarak bu ayarı değiştiremezsiniz, bu nedenle Kaynak Yöneticisi şablonunda uygun değişiklikleri yapmanız gerekir.
 
 Bu, LAD aracısını belirtilen günlük dosyalarını izleyecek şekilde yapılandırır. Dosyaya yeni bir satır eklendiğinde, belirttiğiniz depolama alanına (tablo) gönderilen bir Syslog girişi oluşturur.
 

@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 48078ed06e36a33b10ee2d761a249159d14c6220
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e2d74519b9adf9a74e5af180a3da28918a9a8dab
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444512"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96001890"
 ---
 # <a name="blob-versioning"></a>Blob sürümü oluşturma
 
@@ -128,7 +128,7 @@ Aşağıdaki diyagramda, sürüm oluşturma işlemi devre dışı bırakıldıkt
 
 ## <a name="blob-versioning-and-soft-delete"></a>Blob sürümü oluşturma ve geçici silme
 
-Blob sürümü oluşturma ve BLOB geçici silme, size en uygun veri koruması sağlamak için birlikte çalışır. Geçici silmeyi etkinleştirdiğinizde, Azure depolama 'nın geçici olarak silinen bir blobu ne kadar süreyle koruyacağını belirtirsiniz. Geçici olarak silinen blob sürümü sistemde kalır ve geçici silme Bekletme dönemi içinde silinebilir. Blob geçici silme hakkında daha fazla bilgi için bkz. [Azure depolama Blobları Için geçici silme](storage-blob-soft-delete.md).
+Blob sürümü oluşturma ve BLOB geçici silme, size en uygun veri koruması sağlamak için birlikte çalışır. Geçici silmeyi etkinleştirdiğinizde, Azure depolama 'nın geçici olarak silinen bir blobu ne kadar süreyle koruyacağını belirtirsiniz. Geçici olarak silinen blob sürümü sistemde kalır ve geçici silme Bekletme dönemi içinde silinebilir. Blob geçici silme hakkında daha fazla bilgi için bkz. [Azure depolama Blobları Için geçici silme](./soft-delete-blob-overview.md).
 
 ### <a name="deleting-a-blob-or-version"></a>Blob veya sürümü silme
 
@@ -187,7 +187,7 @@ Blob sürümü oluşturma, verilerinizi yanlışlıkla veya kötü amaçlı olar
 
 Aşağıdaki tabloda, hangi Azure RBAC eylemlerinin bir blob veya blob sürümünü silmenin desteklediği gösterilmektedir.
 
-| Açıklama | Blob hizmeti işlemi | Azure RBAC verileri eylemi gerekiyor | Azure yerleşik rol desteği |
+| Description | Blob hizmeti işlemi | Azure RBAC verileri eylemi gerekiyor | Azure yerleşik rol desteği |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
 | Blobun geçerli sürümü siliniyor | İkili Büyük Nesneyi Silme | **Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/Sil** | Depolama Blob Verileri Katkıda Bulunanı |
 | Bir sürümü silme | İkili Büyük Nesneyi Silme | **Microsoft. Storage/storageAccounts/blobServices/kapsayıcılar/Bloblar/deleteBlobVersion/Action** | Depolama Blob Verileri Sahibi |
@@ -297,4 +297,4 @@ Aşağıdaki tabloda, sürüm oluşturma 'nın etkin veya devre dışı olmasın
 
 - [Blob sürüm oluşturmayı etkinleştirme ve yönetme](versioning-enable.md)
 - [Blob 'un anlık görüntüsünü oluşturma](/rest/api/storageservices/creating-a-snapshot-of-a-blob)
-- [Azure depolama Blobları için geçici silme](storage-blob-soft-delete.md)
+- [Azure depolama Blobları için geçici silme](./soft-delete-blob-overview.md)

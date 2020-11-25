@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: aahi
 keywords: Şirket içi, Docker, kapsayıcı
-ms.openlocfilehash: c65a81d9daed85b5bf056d24949e36ec227c19c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 778fe388ae3db68d836384299a8a1c7c06e31f41
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460994"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96001821"
 ---
 # <a name="install-and-run-docker-containers-for-luis"></a>LUSıS için Docker Kapsayıcıları yükleyip çalıştırın
 
@@ -33,15 +33,15 @@ Aşağıdaki videoda Bu kapsayıcının kullanımı gösterilmektedir.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Lusıs kapsayıcısını çalıştırmak için aşağıdaki önkoşullara göz önünde bulunur:
 
 |Gerekli|Amaç|
 |--|--|
-|Docker altyapısı| Bir [ana bilgisayarda](#the-host-computer)Docker altyapısının yüklü olması gerekir. Docker, [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) ve [Linux](https://docs.docker.com/engine/installation/#supported-platforms) üzerinde Docker ortamını yapılandıran paketler sağlar. Docker ve kapsayıcı temel bilgileri ile ilgili giriş yapmak için [Docker’a genel bakış](https://docs.docker.com/engine/docker-overview/) bölümüne bakın.<br><br> Kapsayıcıların Azure 'a bağlanıp faturalandırma verilerini göndermesini sağlamak için Docker yapılandırılmalıdır. <br><br> **Windows 'da**Docker 'ın de Linux kapsayıcılarını destekleyecek şekilde yapılandırılması gerekir.<br><br>|
+|Docker altyapısı| Bir [ana bilgisayarda](#the-host-computer)Docker altyapısının yüklü olması gerekir. Docker, [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) ve [Linux](https://docs.docker.com/engine/installation/#supported-platforms) üzerinde Docker ortamını yapılandıran paketler sağlar. Docker ve kapsayıcı temel bilgileri ile ilgili giriş yapmak için [Docker’a genel bakış](https://docs.docker.com/engine/docker-overview/) bölümüne bakın.<br><br> Kapsayıcıların Azure 'a bağlanıp faturalandırma verilerini göndermesini sağlamak için Docker yapılandırılmalıdır. <br><br> **Windows 'da** Docker 'ın de Linux kapsayıcılarını destekleyecek şekilde yapılandırılması gerekir.<br><br>|
 |Docker ile benzerlik | Kayıt defterleri, depolar, kapsayıcılar ve kapsayıcı görüntüleri gibi Docker kavramlarının yanı sıra temel komutlar hakkında bilgi sahibi olmanız gerekir `docker` .|
-|Azure `Cognitive Services` Resource ve lusıs [paketlenmiş uygulama](luis-how-to-start-new-app.md) dosyası |Kapsayıcısını kullanabilmeniz için şunları yapmanız gerekir:<br><br>* Bilişsel _Hizmetler_ Azure kaynağı ve ilgili faturalandırma anahtarı faturalandırma uç noktası URI 'si. Her iki değer de kaynak için genel bakış ve anahtarlar sayfalarında bulunur ve kapsayıcıyı başlatmak için gereklidir. <br>* İlişkili uygulama KIMLIĞIYLE kapsayıcıya bağlı giriş olarak paketlenmiş eğitilen veya yayımlanmış bir uygulama. Paketlenmiş dosyayı LUıS portalından veya yazma API 'Lerinden alabilirsiniz. [Yazma API 'lerinden](#authoring-apis-for-package-file)LUIS paketlenmiş uygulama alıyorsanız, _yazma anahtarınıza_de ihtiyacınız olacaktır.<br><br>Bu gereksinimler komut satırı bağımsız değişkenlerini aşağıdaki değişkenlere iletmek için kullanılır:<br><br>**{AUTHORING_KEY}**: Bu anahtar, paketteki lusıs hizmetinden paketlenmiş uygulamayı almak ve sorgu günlüklerini buluta geri yüklemek için kullanılır. Biçim `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` .<br><br>**{APP_ID}**: Bu kimlik, uygulamayı seçmek için kullanılır. Biçim `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` .<br><br>**{API_KEY}**: Bu anahtar kapsayıcıyı başlatmak için kullanılır. Uç nokta anahtarını iki yerde bulabilirsiniz. Birincisi, bilişsel _Hizmetler_ kaynağının anahtar listesi içindeki Azure Portal. Uç nokta anahtarı, anahtarlar ve uç nokta ayarları sayfasındaki LUO portalında da kullanılabilir. Başlangıç anahtarını kullanmayın.<br><br>**{ENDPOINT_URI}**: Genel Bakış sayfasında belirtilen bitiş noktası.<br><br>[Yazma anahtarı ve uç nokta anahtarının](luis-limits.md#key-limits) farklı amaçları vardır. Bunları birbirlerinin yerine kullanmayın. |
+|Azure `Cognitive Services` Resource ve lusıs [paketlenmiş uygulama](luis-how-to-start-new-app.md) dosyası |Kapsayıcısını kullanabilmeniz için şunları yapmanız gerekir:<br><br>* Bilişsel _Hizmetler_ Azure kaynağı ve ilgili faturalandırma anahtarı faturalandırma uç noktası URI 'si. Her iki değer de kaynak için genel bakış ve anahtarlar sayfalarında bulunur ve kapsayıcıyı başlatmak için gereklidir. <br>* İlişkili uygulama KIMLIĞIYLE kapsayıcıya bağlı giriş olarak paketlenmiş eğitilen veya yayımlanmış bir uygulama. Paketlenmiş dosyayı LUıS portalından veya yazma API 'Lerinden alabilirsiniz. [Yazma API 'lerinden](#authoring-apis-for-package-file)LUIS paketlenmiş uygulama alıyorsanız, _yazma anahtarınıza_ de ihtiyacınız olacaktır.<br><br>Bu gereksinimler komut satırı bağımsız değişkenlerini aşağıdaki değişkenlere iletmek için kullanılır:<br><br>**{AUTHORING_KEY}**: Bu anahtar, paketteki lusıs hizmetinden paketlenmiş uygulamayı almak ve sorgu günlüklerini buluta geri yüklemek için kullanılır. Biçim `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` .<br><br>**{APP_ID}**: Bu kimlik, uygulamayı seçmek için kullanılır. Biçim `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` .<br><br>**{API_KEY}**: Bu anahtar kapsayıcıyı başlatmak için kullanılır. Uç nokta anahtarını iki yerde bulabilirsiniz. Birincisi, bilişsel _Hizmetler_ kaynağının anahtar listesi içindeki Azure Portal. Uç nokta anahtarı, anahtarlar ve uç nokta ayarları sayfasındaki LUO portalında da kullanılabilir. Başlangıç anahtarını kullanmayın.<br><br>**{ENDPOINT_URI}**: Genel Bakış sayfasında belirtilen bitiş noktası.<br><br>[Yazma anahtarı ve uç nokta anahtarının](luis-limits.md#key-limits) farklı amaçları vardır. Bunları birbirlerinin yerine kullanmayın. |
 
 [!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -108,7 +108,7 @@ Paket dosyasını bir dizine yerleştirin ve Docker kapsayıcısını çalışt�
 
 ### <a name="package-types"></a>Paket türleri
 
-Giriş bağlama dizini, uygulamanın **Üretim**, **hazırlama**ve **Sürümlenmiş** modellerini eşzamanlı olarak içerebilir. Tüm paketler bağlanır.
+Giriş bağlama dizini, uygulamanın **Üretim**, **hazırlama** ve **Sürümlenmiş** modellerini eşzamanlı olarak içerebilir. Tüm paketler bağlanır.
 
 |Paket türü|Sorgu uç noktası API 'SI|Sorgu kullanılabilirliği|Paket dosya adı biçimi|
 |--|--|--|--|
@@ -141,7 +141,7 @@ Yayınlanan uygulamanın paketine, **uygulamalar** listesi sayfasından ulaşıl
 1. Listedeki uygulama adının solundaki onay kutusunu seçin.
 1. Listenin üzerindeki bağlam araç çubuğundan **dışarı aktarma** öğesini seçin.
 1. **Kapsayıcı (GZIP) Için dışarı aktar**' ı seçin.
-1. **Üretim yuvası** veya **hazırlama yuvası**ortamını seçin.
+1. **Üretim yuvası** veya **hazırlama yuvası** ortamını seçin.
 1. Paket tarayıcıdan indirilir.
 
 ![Uygulama sayfasının dışarı aktarma menüsünden, kapsayıcı için yayımlanmış paketi dışarı aktarma](./media/luis-container-how-to/export-published-package-for-container.png)
@@ -224,10 +224,10 @@ ApiKey={API_KEY}
 Şu komut:
 
 * LUSıS kapsayıcı görüntüsünden bir kapsayıcı çalıştırır
-* Kapsayıcı konağında bulunan *c:\ınput*konumundaki giriş BAĞLAMASıNDAN Luo uygulamasını yükler
+* Kapsayıcı konağında bulunan *c:\ınput* konumundaki giriş BAĞLAMASıNDAN Luo uygulamasını yükler
 * İki CPU çekirdeği ve 4 gigabayt (GB) bellek ayırır
 * TCP bağlantı noktası 5000 ' i kullanıma sunar ve kapsayıcı için bir sözde TTY ayırır
-* Kapsayıcı ana bilgisayarında bulunan *c:\Output*konumundaki çıkış bağlamasındaki KAPSAYıCıYı ve Lua günlüklerini kaydeder
+* Kapsayıcı ana bilgisayarında bulunan *c:\Output* konumundaki çıkış bağlamasındaki KAPSAYıCıYı ve Lua günlüklerini kaydeder
 * Kapsayıcıyı çıktıktan sonra otomatik olarak kaldırır. Kapsayıcı görüntüsü hala ana bilgisayarda kullanılabilir.
 
 Komuta [examples](luis-container-configuration.md#example-docker-run-commands) daha fazla örnek `docker run` kullanılabilir.
@@ -276,12 +276,12 @@ Sorgu parametreleri, sorgu yanıtında nasıl ve neyin döndürüleceğini yapı
 |Sorgu parametresi|Tür|Amaç|
 |--|--|--|
 |`q`|string|Kullanıcının utterliği.|
-|`timezoneOffset`|number|Timezonekayması, önceden oluşturulmuş varlık datetimeV2 tarafından kullanılan [saat dilimini değiştirmenize](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) izin verir.|
+|`timezoneOffset`|sayı|Timezonekayması, önceden oluşturulmuş varlık datetimeV2 tarafından kullanılan [saat dilimini değiştirmenize](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) izin verir.|
 |`verbose`|boolean|Doğru olarak ayarlandığında tüm hedefleri ve puanlarını döndürür. Varsayılan değer, yalnızca en üst amacı döndüren false ' dır.|
 |`staging`|boolean|True olarak ayarlanırsa, hazırlama ortamı sonuçlarından sorgu döndürür. |
 |`log`|boolean|Daha sonra [etkin öğrenme](luis-how-to-review-endpoint-utterances.md)için kullanılabilen sorguları günlüğe kaydeder. Varsayılan değer doğru değeridir.|
 
-***
+**_
 
 ### <a name="query-the-luis-app"></a>LUSıS uygulamasını sorgulama
 
@@ -299,7 +299,7 @@ curl -G \
 "http://localhost:5000/luis/v3.0/apps/{APP_ID}/slots/production/predict"
 ```
 
-**Hazırlama** ortamına sorgu yapmak için, `production` rotada şunu ile değiştirin `staging` :
+_ *Hazırlama** ortamına sorgu yapmak için, `production` rotada şunu ile değiştirin `staging` :
 
 `http://localhost:5000/luis/v3.0/apps/{APP_ID}/slots/staging/predict`
 
@@ -335,7 +335,7 @@ curl -X GET \
 ```
 Sürüm adı en fazla 10 karakterden oluşur ve yalnızca bir URL 'de izin verilen karakterleri içerir.
 
-***
+**_
 
 ## <a name="import-the-endpoint-logs-for-active-learning"></a>Etkin öğrenme için uç nokta günlüklerini içeri aktarma
 
@@ -346,11 +346,11 @@ Aşağıdaki konum kapsayıcının günlük dosyaları için iç içe dizin yap�
 /output/luis/{INSTANCE_ID}/
 ```
 
-LUU portalından, uygulamanızı seçin ve ardından bu günlükleri karşıya yüklemek için **uç nokta günlüklerini Içeri aktar** ' ı seçin.
+LUU portalından, uygulamanızı seçin ve ardından _ *uç nokta günlüklerini al*' ı seçerek bu günlükleri karşıya yükleyin.
 
 ![Etkin öğrenme için kapsayıcının günlük dosyalarını içeri aktar](./media/luis-container-how-to/upload-endpoint-log-files.png)
 
-Günlük karşıya yüklendikten sonra, LUı portalındaki uç nokta utslerini [gözden geçirin](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-review-endpoint-utterances) .
+Günlük karşıya yüklendikten sonra, LUı portalındaki uç nokta utslerini [gözden geçirin](./luis-concept-review-endpoint-utterances.md) .
 
 <!--  ## Validate container is running -->
 
@@ -358,7 +358,7 @@ Günlük karşıya yüklendikten sonra, LUı portalındaki uç nokta utslerini [
 
 ## <a name="stop-the-container"></a>Kapsayıcıyı durdurma
 
-Kapsayıcıyı kapatmak için kapsayıcının çalıştığı komut satırı ortamında **CTRL + C**tuşlarına basın.
+Kapsayıcıyı kapatmak için kapsayıcının çalıştığı komut satırı ortamında **CTRL + C** tuşlarına basın.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 

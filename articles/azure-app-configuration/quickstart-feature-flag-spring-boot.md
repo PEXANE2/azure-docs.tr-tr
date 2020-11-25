@@ -8,11 +8,11 @@ ms.date: 04/18/2020
 ms.author: lcozzens
 ms.custom: devx-track-java
 ms.openlocfilehash: 64ccc9c91d9ead567035b1f7f35e0a0088b6200b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124195"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001499"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Hızlı başlangıç: Spring Boot uygulamasına özellik bayrakları ekleme
 
@@ -50,7 +50,7 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialr](https://start.
    * Uygulamanız için **Grup** ve **Yapıt** adlarını belirtin.  Bu makalede `com.example` ve kullanılmaktadır `demo` .
    * **Yay Web** bağımlılığını ekleyin.
 
-1. Önceki seçenekleri belirttikten sonra **proje oluştur** ' u seçin. İstendiğinde, projeyi yerel bilgisayarınıza indirin.
+1. Önceki seçenekleri belirttikten sonra **proje oluştur**' u seçin. İstendiğinde, projeyi yerel bilgisayarınıza indirin.
 
 ## <a name="add-feature-management"></a>Özellik Yönetimi Ekle
 
@@ -288,7 +288,7 @@ Yeni bir Spring Boot projesi oluşturmak için [Spring ınitialr](https://start.
 
     ![Ekran görüntüsünde, bir hoş geldiniz iletisi içeren tarayıcı penceresi gösterilir.](./media/quickstarts/spring-boot-feature-flag-local-before.png)
 
-1. Uygulama yapılandırma portalında, **Özellik Yöneticisi** ' ni seçin ve **Beta** anahtarının durumunu **Açık** olarak değiştirin:
+1. Uygulama yapılandırma portalında, **Özellik Yöneticisi**' ni seçin ve **Beta** anahtarının durumunu **Açık** olarak değiştirin:
 
     | Anahtar | Durum |
     |---|---|

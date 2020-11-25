@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: ramamill
 ms.openlocfilehash: 327e995a8fe2f66903548fba054804768d2538ab
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534303"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001582"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>Fiziksel sunucuların Azure'a olağanüstü durum kurtarması gerçekleştirmesi için yapılandırma sunucusunu ayarlama
 
@@ -39,7 +39,7 @@ Aşağıdaki tabloda bir yapılandırma sunucusu için en düşük donanım, yaz
 2. Kasanın **kaynak** menüsünde **, başlangıç**  >  **Site Recovery**  >  **1. Adım: altyapı**  >  **koruma hedefini** hazırlama ' ya tıklayın.
 
     ![Koruma hedefinin nerede seçdiğinin gösterildiği ekran görüntüsü.](./media/physical-azure-set-up-source/choose-goals.png)
-3. **Koruma hedefi** ' nde, **Azure 'a** ve **sanallaştırılmamış/diğer** ' i seçin ve ardından **Tamam** ' a tıklayın.
+3. **Koruma hedefi**' nde, **Azure 'a** ve **sanallaştırılmamış/diğer**' i seçin ve ardından **Tamam**' a tıklayın.
 
     ![Hedefleri seçme](./media/physical-azure-set-up-source/physical-protection-goal.png)
 
@@ -48,7 +48,7 @@ Aşağıdaki tabloda bir yapılandırma sunucusu için en düşük donanım, yaz
 1. **Kaynağı hazırla** bölümünde, bir yapılandırma sunucunuz yoksa, bir tane eklemek Için **+ yapılandırma sunucusu** ' na tıklayın.
 
    ![Yapılandırma sunucusunun nasıl seçdiğinin gösterildiği ekran görüntüsü.](./media/physical-azure-set-up-source/plus-config-srv.png)
-2. **Sunucu Ekle** dikey penceresinde, **sunucu türü** ' nde **Configuration Server** ' ın göründüğünden emin olun.
+2. **Sunucu Ekle** dikey penceresinde, **sunucu türü**' nde **Configuration Server** ' ın göründüğünden emin olun.
 4. Site Recovery Birleşik kurulum yükleme dosyasını indirin.
 5. Kasa kayıt anahtarını indirin. Birleşik kurulumu çalıştırdığınızda kayıt anahtarı gereklidir. Anahtar, oluşturulduktan sonra beş gün boyunca geçerlidir.
 

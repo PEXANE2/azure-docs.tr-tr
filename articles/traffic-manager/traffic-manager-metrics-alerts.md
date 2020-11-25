@@ -11,11 +11,11 @@ ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: duau
 ms.openlocfilehash: 997e2e97161e6db7cdca04c1b79f5149a2e4c409
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89392859"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003540"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>Traffic Manager ölçümleri ve uyarıları
 
@@ -46,7 +46,7 @@ Profildeki uç noktaların sistem durumunu anlamak için [Bu ölçümü](../azur
  - uç nokta varsa **1** kullanın.
  - uç nokta kapalıysa **0** kullanın.
 
-Bu ölçüm, tüm ölçümlerin durumunu temsil eden bir toplam değer olarak gösterilebilir (Şekil 3) veya belirli uç noktaların durumunu göstermek için bölünebilir (Şekil 4 ' e bakın). İlki, toplama düzeyi **AVG**olarak seçilirse, bu ölçümün değeri tüm uç noktaların durumunun aritmetik ortasıdır. Örneğin, bir profilde iki uç nokta varsa ve yalnızca bir tane sağlıklı ise, Şekil 3 ' te gösterildiği gibi bu ölçümün değeri **0,50** olur. 
+Bu ölçüm, tüm ölçümlerin durumunu temsil eden bir toplam değer olarak gösterilebilir (Şekil 3) veya belirli uç noktaların durumunu göstermek için bölünebilir (Şekil 4 ' e bakın). İlki, toplama düzeyi **AVG** olarak seçilirse, bu ölçümün değeri tüm uç noktaların durumunun aritmetik ortasıdır. Örneğin, bir profilde iki uç nokta varsa ve yalnızca bir tane sağlıklı ise, Şekil 3 ' te gösterildiği gibi bu ölçümün değeri **0,50** olur. 
 
 
 ![Traffic Manager ölçümleri-uç nokta durumunun bileşik görünümü](./media/traffic-manager-metrics-alerts/traffic-manager-metrics-endpoint-status-composite-view.png)

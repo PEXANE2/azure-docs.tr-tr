@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 03/16/2020
+ms.date: 11/23/2020
 ms.author: tisande
-ms.openlocfilehash: 7c988f379e94bf2f69854c90d45af42fe2a7ec4f
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: f04590e78b5f1ea9d5e00c9f3d42c2fc32bebc5f
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93332789"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96001788"
 ---
 # <a name="aggregate-functions-in-azure-cosmos-db"></a>Azure Cosmos DB içindeki toplama işlevleri
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -20,6 +20,8 @@ ms.locfileid: "93332789"
 Toplama işlevleri, yan tümcesindeki bir değer kümesi üzerinde bir hesaplama gerçekleştirir `SELECT` ve tek bir değer döndürür. Örneğin, aşağıdaki sorgu, kapsayıcı içindeki öğelerin sayısını döndürür `Families` :
 
 ## <a name="examples"></a>Örnekler
+
+Kullanırken, gibi `COUNT()` geçerli bir skaler ifadeyi ( `1` giriş olarak) kullanabilirsiniz.
 
 ```sql
     SELECT COUNT(1)

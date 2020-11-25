@@ -12,11 +12,11 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 96e679c0b284cc649dbde3fba1b640f4e09df05e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85201659"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001856"
 ---
 # <a name="quickstart-fivetran-with-data-warehouse"></a>Hızlı başlangıç: Fivetle veri ambarı ile çalıştırıldı 
 
@@ -82,5 +82,5 @@ Fivetran hesabınızdan veri ambarınıza bağlanmak için, veri ambarınıza er
 * Ana bilgisayar (sunucunuzun adı).
 * Bağ.
 * Veritabanınızı.
-* Kullanıcı (Kullanıcı adı, *SERVER_NAME* Azure ana bilgisayar URI 'sinin bir parçası olduğu için **fivetran \@ _SERVER_NAME_ ** olmalıdır: ** _sunucu \_ adı_. Database.Windows.net**).
+* Kullanıcı (Kullanıcı adı, *SERVER_NAME* Azure ana bilgisayar URI 'sinin bir parçası olduğu için **fivetran \@ _SERVER_NAME_** olmalıdır: **_sunucu \_ adı_. Database.Windows.net**).
 * Parolayı.

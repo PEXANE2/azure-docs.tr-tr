@@ -13,11 +13,11 @@ ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: eeeb122d240d8c3eae4ebe1650f67cf0e4b9dac6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80992054"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001652"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Azure Data Factory kullanarak bir FTP sunucusundan veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -44,7 +44,7 @@ Farklı araçları veya API 'Leri kullanarak bir FTP kaynağından veri taşıya
 
 İşlem hattı oluşturmanın en kolay yolu **Data Factory kopyalama Sihirbazı**' nı kullanmaktır. Hızlı bir yol için bkz. [öğretici: kopyalama sihirbazını kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
 
-İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **PowerShell**, **Azure Resource Manager şablonu**, **.NET API** ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirin:
 
@@ -64,16 +64,16 @@ Aşağıdaki tabloda, bir FTP bağlantılı hizmetine özgü JSON öğeleri aç�
 
 | Özellik | Açıklama | Gerekli | Varsayılan |
 | --- | --- | --- | --- |
-| tür |Bunu FtpServer olarak ayarlayın. |Evet |&nbsp; |
-| konak |FTP sunucusunun adını veya IP adresini belirtin. |Evet |&nbsp; |
-| authenticationType |Kimlik doğrulama türünü belirtin. |Evet |Temel, anonim |
-| username |FTP sunucusuna erişimi olan kullanıcıyı belirtin. |Hayır |&nbsp; |
-| password |Kullanıcının parolasını belirtin (Kullanıcı adı). |Hayır |&nbsp; |
-| encryptedCredential |FTP sunucusuna erişmek için şifrelenmiş kimlik bilgisini belirtin. |Hayır |&nbsp; |
-| gatewayName |Şirket içi FTP sunucusuna bağlanmak için Veri Yönetimi ağ geçidinde ağ geçidinin adını belirtin. |Hayır |&nbsp; |
-| port |FTP sunucusunun dinlediği bağlantı noktasını belirtin. |Hayır |21 |
-| enableSsl |Bir SSL/TLS kanalı üzerinden FTP kullanılıp kullanılmayacağını belirtin. |Hayır |true |
-| enableServerCertificateValidation |SSL/TLS kanalı üzerinden FTP kullanırken sunucu TLS/SSL sertifika doğrulamasının etkinleştirilip etkinleştirilmeyeceğini belirtin. |Hayır |true |
+| tür |Bunu FtpServer olarak ayarlayın. |Yes |&nbsp; |
+| konak |FTP sunucusunun adını veya IP adresini belirtin. |Yes |&nbsp; |
+| authenticationType |Kimlik doğrulama türünü belirtin. |Yes |Temel, anonim |
+| username |FTP sunucusuna erişimi olan kullanıcıyı belirtin. |No |&nbsp; |
+| password |Kullanıcının parolasını belirtin (Kullanıcı adı). |No |&nbsp; |
+| encryptedCredential |FTP sunucusuna erişmek için şifrelenmiş kimlik bilgisini belirtin. |No |&nbsp; |
+| gatewayName |Şirket içi FTP sunucusuna bağlanmak için Veri Yönetimi ağ geçidinde ağ geçidinin adını belirtin. |No |&nbsp; |
+| port |FTP sunucusunun dinlediği bağlantı noktasını belirtin. |No |21 |
+| enableSsl |Bir SSL/TLS kanalı üzerinden FTP kullanılıp kullanılmayacağını belirtin. |No |true |
+| enableServerCertificateValidation |SSL/TLS kanalı üzerinden FTP kullanırken sunucu TLS/SSL sertifika doğrulamasının etkinleştirilip etkinleştirilmeyeceğini belirtin. |No |true |
 
 >[!NOTE]
 >FTP Bağlayıcısı, şifreleme veya açık SSL/TLS şifrelemesi olmadan FTP sunucusuna erişmeyi destekler; örtük SSL/TLS şifrelemesini desteklemez.
@@ -154,13 +154,13 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| folderPath |Klasöre alt yol. Dizedeki özel karakterler için ' \ ' kaçış karakterini kullanın. Örnekler için bkz. örnek bağlantılı hizmet ve veri kümesi tanımları.<br/><br/>Bu özelliği, dilim başlangıç ve bitiş tarih zamanları temelinde klasör yollarına sahip olmak için **Partitionby** ile birleştirebilirsiniz. |Evet |
-| fileName |Tablonun klasördeki belirli bir dosyaya başvurmasını istiyorsanız, **FolderPath** içindeki dosyanın adını belirtin. Bu özellik için herhangi bir değer belirtmezseniz tablo, klasördeki tüm dosyaları gösterir.<br/><br/>Bir çıkış veri kümesi için **dosya adı** belirtilmediğinde, oluşturulan dosyanın adı şu biçimdedir: <br/><br/>`Data.<Guid>.txt` (Örnek: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Hayır |
-| fileFilter |Tüm dosyalar yerine **FolderPath**içindeki dosyaların bir alt kümesini seçmek için kullanılacak bir filtre belirtin.<br/><br/>İzin verilen değerler: `*` (birden çok karakter) ve `?` (tek karakter).<br/><br/>Örnek 1: `"fileFilter": "*.log"`<br/>Örnek 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> **FileFilter** , bir giriş FileShare veri kümesi için geçerlidir. Bu özellik Hadoop Dağıtılmış Dosya Sistemi (bir) ile desteklenmiyor. |Hayır |
-| partitionedBy |Zaman serisi verileri için dinamik bir **FolderPath** ve **filename** belirtmek için kullanılır. Örneğin, her saat veri için parametreli bir **FolderPath** belirtebilirsiniz. |Hayır |
-| biçim | Şu biçim türleri desteklenir: **TextFormat**, **jsonformat**, **avroformat**, **orcformat**, **parquetformat**. Biçim ' in altındaki **Type** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için bkz. [metin biçimi](data-factory-supported-file-and-compression-formats.md#text-format), [JSON biçimi](data-factory-supported-file-and-compression-formats.md#json-format), [avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [orc biçimi](data-factory-supported-file-and-compression-formats.md#orc-format)ve [Parquet biçim](data-factory-supported-file-and-compression-formats.md#parquet-format) bölümleri. <br><br> Dosyaları dosya tabanlı mağazalar (ikili kopya) arasında olduğu gibi kopyalamak istiyorsanız, hem giriş hem de çıkış veri kümesi tanımlarının biçim bölümünü atlayın. |Hayır |
-| sıkıştırma | Verilerin türünü ve sıkıştırma düzeyini belirtin. Desteklenen türler **gzip**, **söndür**, **bzip2**ve **zipsöndür**ve desteklenen düzeyler **en iyi** ve **en hızlardır**. Daha fazla bilgi için bkz. [Azure Data Factory dosya ve sıkıştırma biçimleri](data-factory-supported-file-and-compression-formats.md#compression-support). |Hayır |
-| useBinaryTransfer |İkili aktarım modunun kullanılıp kullanılmayacağını belirtin. Değerler ikili mod için (varsayılan değerdir), ASCII için false 'dur. Bu özellik, yalnızca ilişkili bağlı hizmet türü: FtpServer türünde olduğunda kullanılabilir. |Hayır |
+| folderPath |Klasöre alt yol. Dizedeki özel karakterler için ' \ ' kaçış karakterini kullanın. Örnekler için bkz. örnek bağlantılı hizmet ve veri kümesi tanımları.<br/><br/>Bu özelliği, dilim başlangıç ve bitiş tarih zamanları temelinde klasör yollarına sahip olmak için **Partitionby** ile birleştirebilirsiniz. |Yes |
+| fileName |Tablonun klasördeki belirli bir dosyaya başvurmasını istiyorsanız, **FolderPath** içindeki dosyanın adını belirtin. Bu özellik için herhangi bir değer belirtmezseniz tablo, klasördeki tüm dosyaları gösterir.<br/><br/>Bir çıkış veri kümesi için **dosya adı** belirtilmediğinde, oluşturulan dosyanın adı şu biçimdedir: <br/><br/>`Data.<Guid>.txt` (Örnek: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |No |
+| fileFilter |Tüm dosyalar yerine **FolderPath** içindeki dosyaların bir alt kümesini seçmek için kullanılacak bir filtre belirtin.<br/><br/>İzin verilen değerler: `*` (birden çok karakter) ve `?` (tek karakter).<br/><br/>Örnek 1: `"fileFilter": "*.log"`<br/>Örnek 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> **FileFilter** , bir giriş FileShare veri kümesi için geçerlidir. Bu özellik Hadoop Dağıtılmış Dosya Sistemi (bir) ile desteklenmiyor. |No |
+| partitionedBy |Zaman serisi verileri için dinamik bir **FolderPath** ve **filename** belirtmek için kullanılır. Örneğin, her saat veri için parametreli bir **FolderPath** belirtebilirsiniz. |No |
+| biçim | Şu biçim türleri desteklenir: **TextFormat**, **jsonformat**, **avroformat**, **orcformat**, **parquetformat**. Biçim ' in altındaki **Type** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için bkz. [metin biçimi](data-factory-supported-file-and-compression-formats.md#text-format), [JSON biçimi](data-factory-supported-file-and-compression-formats.md#json-format), [avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [orc biçimi](data-factory-supported-file-and-compression-formats.md#orc-format)ve [Parquet biçim](data-factory-supported-file-and-compression-formats.md#parquet-format) bölümleri. <br><br> Dosyaları dosya tabanlı mağazalar (ikili kopya) arasında olduğu gibi kopyalamak istiyorsanız, hem giriş hem de çıkış veri kümesi tanımlarının biçim bölümünü atlayın. |No |
+| sıkıştırma | Verilerin türünü ve sıkıştırma düzeyini belirtin. Desteklenen türler **gzip**, **söndür**, **bzip2** ve **zipsöndür** ve desteklenen düzeyler **en iyi** ve **en hızlardır**. Daha fazla bilgi için bkz. [Azure Data Factory dosya ve sıkıştırma biçimleri](data-factory-supported-file-and-compression-formats.md#compression-support). |No |
+| useBinaryTransfer |İkili aktarım modunun kullanılıp kullanılmayacağını belirtin. Değerler ikili mod için (varsayılan değerdir), ASCII için false 'dur. Bu özellik, yalnızca ilişkili bağlı hizmet türü: FtpServer türünde olduğunda kullanılabilir. |No |
 
 > [!NOTE]
 > **filename** ve **FileFilter** aynı anda kullanılamaz.
@@ -201,11 +201,11 @@ Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi iç
 
 Etkinliğin **Typeproperties** bölümünde bulunan özellikler, diğer yandan her etkinlik türüyle farklılık gösterir. Kopyalama etkinliği için tür özellikleri, kaynak ve havuz türlerine göre değişir.
 
-Kopyalama etkinliğinde, kaynak **Filesystemsource**türünde olduğunda aşağıdaki özellik **typeproperties** bölümünde mevcuttur:
+Kopyalama etkinliğinde, kaynak **Filesystemsource** türünde olduğunda aşağıdaki özellik **typeproperties** bölümünde mevcuttur:
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| öz |Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. |True, false (varsayılan) |Hayır |
+| öz |Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. |True, false (varsayılan) |No |
 
 ## <a name="json-example-copy-data-from-ftp-server-to-azure-blob"></a>JSON örneği: FTP sunucusundan Azure Blob 'a veri kopyalama
 Bu örnek, bir FTP sunucusundan Azure Blob depolamaya nasıl veri kopyalanacağını gösterir. Ancak, veriler, Data Factory içindeki kopyalama etkinliği kullanılarak [desteklenen veri depoları ve biçimlerinde](data-factory-data-movement-activities.md#supported-data-stores-and-formats)belirtilen herhangi bir havuza doğrudan kopyalanabilir.
@@ -346,7 +346,7 @@ Veriler her saat yeni bir bloba yazılır (sıklık: saat, Aralık: 1). Blob 'un
 
 ### <a name="a-copy-activity-in-a-pipeline-with-file-system-source-and-blob-sink"></a>Dosya sistemi kaynağına ve BLOB havuzuna sahip bir işlem hattındaki kopyalama etkinliği
 
-İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. Ardışık düzen JSON tanımında **kaynak** türü **filesystemsource**olarak ayarlanır ve **Havuz** türü **blobsink**olarak ayarlanır.
+İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. Ardışık düzen JSON tanımında **kaynak** türü **filesystemsource** olarak ayarlanır ve **Havuz** türü **blobsink** olarak ayarlanır.
 
 ```JSON
 {

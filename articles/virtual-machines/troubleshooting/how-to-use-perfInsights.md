@@ -14,11 +14,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: f49ae5139dc92ec1448e5dea05be8c8c216ef91e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361356"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002672"
 ---
 # <a name="how-to-use-perfinsights-in-azure"></a>Azure 'da Perfinsıghts kullanma
 
@@ -103,30 +103,30 @@ Windows VM, diskler veya depolama havuzları yapılandırması, performans saya�
 
 | Toplanan veriler | Hızlı performans analizi | Karşılaştırmalı | Performans Analizi | Azure dosyaları Analizi | Gelişmiş performans analizi |
 |----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|
-| Olay günlüklerinden bilgi       | Evet                        | Evet                                | Evet                      | Evet                  | Evet                  |
-| Sistem bilgileri                | Evet                        | Evet                                | Evet                      | Evet                  | Evet                  |
-| Birim eşleme                        | Evet                        | Evet                                | Evet                      | Evet                  | Evet                  |
-| Disk eşleme                          | Evet                        | Evet                                | Evet                      | Evet                  | Evet                  |
-| Çalışan görevler                     | Evet                        | Evet                                | Evet                      | Evet                  | Evet                  |
-| Depolama güvenilirlik sayaçları      | Evet                        | Evet                                | Evet                      | Evet                  | Evet                  |
-| Depolama bilgileri               | Evet                        | Evet                                | Evet                      | Evet                  | Evet                  |
-| Fsutil çıkışı                     | Evet                        | Evet                                | Evet                      | Evet                  | Evet                  |
-| Filtre sürücüsü bilgileri                | Evet                        | Evet                                | Evet                      | Evet                  | Evet                  |
-| Netstat çıkışı                    | Evet                        | Evet                                | Evet                      | Evet                  | Evet                  |
-| Ağ yapılandırması             | Evet                        | Evet                                | Evet                      | Evet                  | Evet                  |
-| Güvenlik duvarı yapılandırması            | Evet                        | Evet                                | Evet                      | Evet                  | Evet                  |
-| SQL Server yapılandırması          | Evet                        | Evet                                | Evet                      | Evet                  | Evet                  |
-| Performans Tanılama izlemeleri *  | Evet                        | Evet                                | Evet                      | Evet                  | Evet                  |
-| Performans sayacı izleme * *      |                            |                                    | Evet                      |                      | Evet                  |
-| SMB sayacı izleme * *              |                            |                                    |                          | Evet                  |                      |
-| SQL Server sayacı izleme * *       |                            |                                    | Evet                      |                      | Evet                  |
-| XPerf izleme                       |                            |                                    |                          |                      | Evet                  |
-| StorPort izleme                    |                            |                                    |                          |                      | Evet                  |
-| Ağ izleme                     |                            |                                    |                          | Evet                  | Evet                  |
-| DiskSpd kıyaslama izlemesi * * *       |                            | Evet                                |                          |                      |                      |
+| Olay günlüklerinden bilgi       | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Sistem bilgileri                | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Birim eşleme                        | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Disk eşleme                          | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Çalışan görevler                     | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Depolama güvenilirlik sayaçları      | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Depolama bilgileri               | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Fsutil çıkışı                     | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Filtre sürücüsü bilgileri                | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Netstat çıkışı                    | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Ağ yapılandırması             | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Güvenlik duvarı yapılandırması            | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| SQL Server yapılandırması          | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Performans Tanılama izlemeleri *  | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Performans sayacı izleme * *      |                            |                                    | Yes                      |                      | Yes                  |
+| SMB sayacı izleme * *              |                            |                                    |                          | Yes                  |                      |
+| SQL Server sayacı izleme * *       |                            |                                    | Yes                      |                      | Yes                  |
+| XPerf izleme                       |                            |                                    |                          |                      | Yes                  |
+| StorPort izleme                    |                            |                                    |                          |                      | Yes                  |
+| Ağ izleme                     |                            |                                    |                          | Yes                  | Yes                  |
+| DiskSpd kıyaslama izlemesi * * _       |                            | Yes                                |                          |                      |                      |
 |       |                            |                         |                                                   |                      |                      |
 
-### <a name="performance-diagnostics-trace-"></a>Performans Tanılama izlemesi (*)
+### <a name="performance-diagnostics-trace-_"></a>Performans Tanılama izlemesi (_)
 
 Verilerin toplanması ve sürekli performans sorunlarını tanılamak için arka planda kural tabanlı bir altyapı çalıştırır. Şu kurallar Şu anda destekleniyor:
 
@@ -154,7 +154,7 @@ Aşağıdaki performans sayaçlarını toplar:
 #### <a name="for-azure-files"></a>Azure dosyaları için
 \SMB Istemci paylaşımları
 
-### <a name="diskspd-benchmark-trace-"></a>DiskSpd kıyaslama izlemesi (* * *)
+### <a name="diskspd-benchmark-trace-_"></a>DiskSpd kıyaslama izlemesi (* * _)
 DiskSpd g/ç iş yükü testleri (işletim sistemi diski [yazma] ve havuz sürücüleri [okuma/yazma])
 
 ## <a name="run-the-perfinsights-tool-on-your-vm"></a>VM 'niz üzerinde Perfinsıghts aracını çalıştırın
@@ -165,8 +165,7 @@ DiskSpd g/ç iş yükü testleri (işletim sistemi diski [yazma] ve havuz sürü
 
 -  Bu aracın, performans sorunu olan VM 'de çalıştırılması gerekir. 
 
--  Aşağıdaki işletim sistemleri desteklenmektedir:
-   * Windows Server 2019
+-  Aşağıdaki işletim sistemleri desteklenir: _ Windows Server 2019
    * Windows Server 2016
    * Windows Server 2012 R2
    * Windows Server 2012
@@ -283,7 +282,7 @@ Birim perspektifinde (birim eşlemesi), tablolar her mantıksal birimin altında
 
 ### <a name="sql-tab"></a>SQL sekmesi
 
-Hedef VM SQL Server örnekleri barındırıyorsa, **SQL**adlı raporda ek bir sekme görürsünüz:
+Hedef VM SQL Server örnekleri barındırıyorsa, **SQL** adlı raporda ek bir sekme görürsünüz:
 
 ![SQL sekmesinin ekran görüntüsü](media/how-to-use-perfInsights/pi-sql-tab.png)
 

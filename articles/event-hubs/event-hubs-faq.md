@@ -3,12 +3,12 @@ title: Sık sorulan sorular-Azure Event Hubs | Microsoft Docs
 description: Bu makalede, Azure Event Hubs ve yanıtları hakkında sık sorulan soruların (SSS) bir listesi sunulmaktadır.
 ms.topic: article
 ms.date: 10/27/2020
-ms.openlocfilehash: 41b010315adaf5a0eca2939b1d42fe4d7c159628
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: c756d0bccd9b2ad303bd97d3bfb7aed8b0b82b09
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843052"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96002808"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs sık sorulan sorular
 
@@ -58,83 +58,7 @@ Event Hubs kaynaklarınızın durumunu [Azure izleyici](../azure-monitor/overvie
 ### <a name="where-does-azure-event-hubs-store-customer-data"></a><a name="in-region-data-residency"></a>Azure Event Hubs müşteri verilerini nerede depolar?
 Azure Event Hubs, müşteri verilerini depolar. Bu veriler, tek bir bölgede Event Hubs tarafından otomatik olarak depolanır. bu nedenle, bu hizmet [Güven Merkezi](https://azuredatacentermap.azurewebsites.net/)'nde belirtilenler dahil olmak üzere bölge verileri 'nin gereksinimlerini otomatik olarak karşılar.
 
-### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Güvenlik duvarında hangi bağlantı noktalarını açmalıyım? 
-Olayları göndermek ve almak için Azure Event Hubs ile aşağıdaki protokolleri kullanabilirsiniz:
-
-- Gelişmiş İleti Sıraya Alma Protokolü 1,0 (AMQP)
-- TLS ile Köprü Metni Aktarım Protokolü 1,1 (HTTPS)
-- Apache Kafka
-
-Azure Event Hubs ile iletişim kurmak için bu protokolleri kullanmak üzere açmanız gereken giden bağlantı noktaları için aşağıdaki tabloya bakın. 
-
-| Protokol | Bağlantı noktaları | Ayrıntılar | 
-| -------- | ----- | ------- | 
-| AMQP | 5671 ve 5672 | Bkz. [AMQP protokol Kılavuzu](../service-bus-messaging/service-bus-amqp-protocol-guide.md) | 
-| HTTPS | 443 | Bu bağlantı noktası HTTP/REST API ve AMQP-Over-WebSockets için kullanılır. |
-| Kafka | 9093 | Bkz. [Kafka uygulamalardan Event Hubs kullanma](event-hubs-for-kafka-ecosystem-overview.md)
-
-İstemci SDK 'Ları tarafından gerçekleştirilen çeşitli yönetim işlemleri ve Azure Active Directory (kullanıldığında) ' dan belirteçleri alma HTTPS üzerinden çalıştırıldığında, giden iletişim için HTTPS bağlantı noktası 5671 bağlantı noktası üzerinden de gereklidir. 
-
-Resmi Azure SDK 'Ları genellikle Event Hubs olayları göndermek ve almak için AMQP protokolünü kullanır. AMQP-Over-WebSockets protokol seçeneği, HTTP API gibi bağlantı noktası TCP 443 üzerinden çalışır, ancak başka bir şekilde düz AMQP ile aynı şekilde çalışır. Bu seçenek, ek el sıkışma gidiş dönüşleri ve HTTPS bağlantı noktasını paylaşmak için zorunluluğunu getirir kadar çok daha fazla ek yük nedeniyle ilk bağlantı gecikmesini daha yüksektir. Bu mod seçilirse, TCP bağlantı noktası 443 iletişim için yeterlidir. Aşağıdaki seçenekler, düz AMQP veya AMQP WebSockets modunun seçilmesine izin verir:
-
-| Dil | Seçenek   |
-| -------- | ----- |
-| .NET     | [Eventhubstransporttype. AmqpTcp](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype?view=azure-dotnet&preserve-view=true) veya [Eventhubstransporttype. AmqpWebSockets](/dotnet/api/azure.messaging.eventhubs.eventhubstransporttype?view=azure-dotnet&preserve-view=true) Ile [Eventhubconnectionoptions. TransportType](/dotnet/api/azure.messaging.eventhubs.eventhubconnectionoptions.transporttype?view=azure-dotnet&preserve-view=true) özelliği |
-| Java     | [com. Microsoft. Azure. eventhubs. EventProcessorClientBuilder. TransportType](/java/api/com.azure.messaging.eventhubs.eventprocessorclientbuilder.transporttype?view=azure-java-stable&preserve-view=true) , [Amqptransporttype. amqp](/java/api/com.azure.core.amqp.amqptransporttype?view=azure-java-stable&preserve-view=true) veya [AmqpTransportType.AMQP_WEB_SOCKETS](/java/api/com.azure.core.amqp.amqptransporttype?view=azure-java-stable&preserve-view=true) |
-| Node  | [Eventhubconsumerclientoptions](/javascript/api/@azure/event-hubs/eventhubconsumerclientoptions?view=azure-node-latest&preserve-view=true) bir `webSocketOptions` özelliğe sahip. |
-| Python | [TransportType. AMQP](/python/api/azure-eventhub/azure.eventhub.transporttype?view=azure-python) veya [TransportType. AmqpOverWebSocket](/python/api/azure-eventhub/azure.eventhub.transporttype?view=azure-python&preserve-view=true) ile [EventHubConsumerClient.transport_type](/python/api/azure-eventhub/azure.eventhub.eventhubconsumerclient?view=azure-python&preserve-view=true) |
-
-
-
-### <a name="what-ip-addresses-do-i-need-to-allow"></a>Hangi IP adreslerine izin vermem gerekir?
-Bağlantılarınızın izin verilen listesine eklenecek doğru IP adreslerini bulmak için şu adımları izleyin:
-
-1. Komut isteminden aşağıdaki komutu çalıştırın: 
-
-    ```
-    nslookup <YourNamespaceName>.servicebus.windows.net
-    ```
-2. ' De döndürülen IP adresini aklınızda edin `Non-authoritative answer` . 
-
-Ad alanınız için **bölge yedekliliği** kullanırsanız, birkaç ek adım yapmanız gerekir: 
-
-1. İlk olarak, ad alanında Nslookup ' ı çalıştırırsınız.
-
-    ```
-    nslookup <yournamespace>.servicebus.windows.net
-    ```
-2. **Yetkili olmayan yanıt** bölümündeki adı aşağıdaki biçimlerden birinde olan bir yere göz önünde edin: 
-
-    ```
-    <name>-s1.cloudapp.net
-    <name>-s2.cloudapp.net
-    <name>-s3.cloudapp.net
-    ```
-3. Her biri için S1, S2 ve S3 sonekleri ile her biri için Nslookup ' ı çalıştırarak üç kullanılabilirlik alanında çalışan üç örnek için IP adreslerini alın. 
-
-    > [!NOTE]
-    > Komut tarafından döndürülen IP adresi `nslookup` statik BIR IP adresi değil. Ancak, temeldeki dağıtım silinene veya farklı bir kümeye taşınana kadar sabit kalır.
-
-### <a name="where-can-i-find-client-ip-sending-or-receiving-messages-to-my-namespace"></a>Ad alanım 'a ileti gönderen veya iletiyi alan istemci IP 'yi nerede bulabilirim?
-İlk olarak, ad alanında [IP filtrelemeyi](event-hubs-ip-filtering.md) etkinleştirin. 
-
-Ardından [tanılama günlüklerini etkinleştirme](event-hubs-diagnostic-logs.md#enable-diagnostic-logs)' deki yönergeleri izleyerek [Event Hubs sanal ağ bağlantı olayları](event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema) için tanılama günlüklerini etkinleştirin. Bağlantının reddedildiği IP adresini görürsünüz.
-
-```json
-{
-    "SubscriptionId": "0000000-0000-0000-0000-000000000000",
-    "NamespaceName": "namespace-name",
-    "IPAddress": "1.2.3.4",
-    "Action": "Deny Connection",
-    "Reason": "IPAddress doesn't belong to a subnet with Service Endpoint enabled.",
-    "Count": "65",
-    "ResourceId": "/subscriptions/0000000-0000-0000-0000-000000000000/resourcegroups/testrg/providers/microsoft.eventhub/namespaces/namespace-name",
-    "Category": "EventHubVNetConnectionEvent"
-}
-```
-
-> [!IMPORTANT]
-> Sanal ağ günlükleri yalnızca ad alanı **belırlı IP adreslerinden** (IP filtre kuralları) erişime izin veriyorsa oluşturulur. Bu özellikleri kullanarak ad alanınızı erişimi kısıtlamak ve yine de Event Hubs ad alanına bağlanan istemcilerin IP adreslerini izlemek için sanal ağ günlükleri almak istiyorsanız, aşağıdaki geçici çözümü kullanabilirsiniz: IP filtrelemeyi etkinleştirebilir ve toplam adreslenebilir IPv4 aralığını (1.0.0.0/1-255.0.0.0/1) ekleyebilirsiniz. Event Hubs IPv6 adres aralıklarını desteklemez. 
+[!INCLUDE [event-hubs-connectivity](../../includes/event-hubs-connectivity.md)]
 
 ## <a name="apache-kafka-integration"></a>Apache Kafka tümleştirme
 
@@ -318,7 +242,7 @@ Bu kodu Azure Stack hub 'da çalıştırırsanız, belirli bir depolama API sür
 
 Kodunuzda belirli bir depolama API sürümünün nasıl hedeflenecek hakkında bir örnek için GitHub 'da aşağıdaki örneklere bakın: 
 
-- [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs)
+- [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/)
 - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java)
 - Python- [zaman uyumlu](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py), [zaman uyumsuz](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py)
 - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) ve [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts)

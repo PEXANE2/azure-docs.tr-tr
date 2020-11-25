@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.openlocfilehash: ef04bf9f6d9ca6ff5089d2826c05a5acfb759b04
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460504"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001669"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>Öğretici: IdeaScale ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ IdeaScale 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini IdeaScale ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -61,13 +61,13 @@ IdeaScale 'in Azure AD ile tümleştirilmesini yapılandırmak için Galeri 'den
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **IdeaScale**yazın, sonuç panelinden **IdeaScale** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **IdeaScale** yazın, sonuç panelinden **IdeaScale** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuçlar listesinde IdeaScale](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre IdeaScale Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına göre IdeaScale Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve IdeaScale içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açma 'yı IdeaScale ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -135,11 +135,11 @@ Azure AD çoklu oturum açmayı IdeaScale ile yapılandırmak için aşağıdaki
 
     ![Topluluk ayarları](./media/ideascale-tutorial/ic790847.png "Topluluk ayarları")
 
-3. **Güvenlik \> tek**oturum açma ayarları ' na gidin.
+3. **Güvenlik \> tek** oturum açma ayarları ' na gidin.
 
     ![Ekran görüntüsü, Güvenlik menüsünden tek oturum açma ayarlarının seçili olduğunu gösterir.](./media/ideascale-tutorial/ic790848.png "Tek oturum açma ayarları")
 
-4. **Tek oturum açma türü**olarak **SAML 2,0**' i seçin.
+4. **Tek oturum açma türü** olarak **SAML 2,0**' i seçin.
 
     ![Çoklu oturum açma türü](./media/ideascale-tutorial/ic790849.png "Çoklu oturum açma türü")
 
@@ -171,14 +171,14 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -218,7 +218,7 @@ Azure AD kullanıcılarının IdeaScale 'de oturum açmasını sağlamak için, 
 
     ![Topluluk ayarları](./media/ideascale-tutorial/ic790847.png "Topluluk ayarları")
 
-3. **Temel ayarlar \> üye yönetimine**gidin.
+3. **Temel ayarlar \> üye yönetimine** gidin.
 
 4. **Üye Ekle**' ye tıklayın.
 

@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 50a1656fcb92d9777d4a9476ef2a4c1fd2f2efc6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329491"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002757"
 ---
 # <a name="full-text-search-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de tam metin araması
 
@@ -69,7 +69,7 @@ Bu istek için arama motoru şunları yapar:
 2. Sorguyu yürütür. Bu örnekte, arama sorgusu tümcecik ve terimlerden oluşur: `"Spacious, air-condition* +\"Ocean view\""` (kullanıcılar genellikle noktalama işareti girmez, ancak örnek eklemek, çözümleyiciler onu nasıl işleyeceğinizi anlamamızı sağlar). Bu sorgu için arama altyapısı, `searchFields` "okyanus görünümü" ni içeren belgeler için ' de belirtilen Açıklama ve başlık alanlarını ve ek olarak "spacemi" ya da "AIR-Condition" önekiyle başlayan koşulları tarar. `searchMode`Parametresi, bir terimin açıkça gerekli olmadığı durumlarda (varsayılan) veya tümü için herhangi bir dönem (varsayılan) veya hepsi ile eşleştirmek için kullanılır `+` .
 3. Elde edilen otel kümesini, belirli bir Coğrafya konumuna yakınlığa göre sıralar ve ardından çağıran uygulamaya geri döner. 
 
-Bu makalenin çoğu, *arama sorgusunun*işlenmesiyle ilgilidir: `"Spacious, air-condition* +\"Ocean view\""` . Filtreleme ve sıralama kapsam dışında. Daha fazla bilgi için bkz. [Arama API başvurusu belgeleri](/rest/api/searchservice/search-documents).
+Bu makalenin çoğu, *arama sorgusunun* işlenmesiyle ilgilidir: `"Spacious, air-condition* +\"Ocean view\""` . Filtreleme ve sıralama kapsam dışında. Daha fazla bilgi için bkz. [Arama API başvurusu belgeleri](/rest/api/searchservice/search-documents).
 
 <a name="stage1"></a>
 ## <a name="stage-1-query-parsing"></a>1. Aşama: sorgu ayrıştırma 
@@ -251,7 +251,7 @@ Bu, arama ve dizin oluşturma işlemlerinde aynı Çözümleyicileri kullanmak i
 
 Örneğimize dönerek, **başlık** alanı için ters dizin şöyle görünür:
 
-| Süre | Belge listesi |
+| Terim | Belge listesi |
 |------|---------------|
 | atman | 1 |
 | unun | 2 |
@@ -265,7 +265,7 @@ Başlık alanında, yalnızca *otel* iki belgede görünür: 1, 3.
 
 **Açıklama** alanı için dizin aşağıdaki gibidir:
 
-| Süre | Belge listesi |
+| Terim | Belge listesi |
 |------|---------------|
 | te | 3
 | ve | 4
@@ -315,7 +315,7 @@ Tüm sorgu için, söz konusu sorgu için, eşleşen belgeler 1, 2, 3 ' dir.
 
 ## <a name="stage-4-scoring"></a>4. Aşama: Puanlama  
 
-Bir arama sonuç kümesindeki her belgeye bir ilgi puanı atanır. İlgi puanının işlevi, arama sorgusuna göre ifade edilen bir Kullanıcı sorusuna en iyi şekilde yanıt veren belgelerin daha yüksek bir şekilde derecelendirmesi. Puan, eşleşen koşulların istatistiksel özelliklerine göre hesaplanır. Puanlama formülünün temel tarafında [tf/ıDF (terim sıklığı-ters belge sıklığı)](https://en.wikipedia.org/wiki/Tf%E2%80%93idf). Nadir ve yaygın terimleri içeren sorgularda, TF/ıDF nadir terimi içeren sonuçları yükseltir. Örneğin, *Başkan*sorgusu ile eşleşen belgelerden, tüm vikipli makalelerdeki bir kuramsal dizinde, *Başkan* ile eşleşen belgeler *,* ile eşleşen belgelerden daha ilgili olarak değerlendirilir.
+Bir arama sonuç kümesindeki her belgeye bir ilgi puanı atanır. İlgi puanının işlevi, arama sorgusuna göre ifade edilen bir Kullanıcı sorusuna en iyi şekilde yanıt veren belgelerin daha yüksek bir şekilde derecelendirmesi. Puan, eşleşen koşulların istatistiksel özelliklerine göre hesaplanır. Puanlama formülünün temel tarafında [tf/ıDF (terim sıklığı-ters belge sıklığı)](https://en.wikipedia.org/wiki/Tf%E2%80%93idf). Nadir ve yaygın terimleri içeren sorgularda, TF/ıDF nadir terimi içeren sonuçları yükseltir. Örneğin, *Başkan* sorgusu ile eşleşen belgelerden, tüm vikipli makalelerdeki bir kuramsal dizinde, *Başkan* ile eşleşen belgeler *,* ile eşleşen belgelerden daha ilgili olarak değerlendirilir.
 
 
 ### <a name="scoring-example"></a>Puanlama örneği
@@ -351,7 +351,7 @@ search=Spacious, air-condition* +"Ocean view"
 }
 ```
 
-Belge 1, sorgu en iyi şekilde eşleştiğinden, hem *terimi hem de gerekli* tümcecik *görünümü* Açıklama alanında gerçekleştiğinden sorgu en iyi şekilde eşleşti. Sonraki iki belge yalnızca tümcecik *okyanus görünümüyle*eşleşir. Belge 2 ve 3 ' ün ilgi puanı, sorguyla aynı şekilde eşleştirildiği halde farklı olduğunu ortaya çıkarmış olabilir. Bunun nedeni, Puanlama formülünün yalnızca TF/ıDF 'den daha fazla bileşene sahip olmasından kaynaklanır. Bu durumda, açıklama daha kısa olduğundan belge 3 ' te biraz daha yüksek bir puan atandı. Alan uzunluğu ve diğer faktörlerin ilgi Puanını nasıl etkileyebileceğini anlamak için [Lucene 'In pratik Puanlama formülü](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/search/similarities/TFIDFSimilarity.html) hakkında bilgi edinin.
+Belge 1, sorgu en iyi şekilde eşleştiğinden, hem *terimi hem de gerekli* tümcecik *görünümü* Açıklama alanında gerçekleştiğinden sorgu en iyi şekilde eşleşti. Sonraki iki belge yalnızca tümcecik *okyanus görünümüyle* eşleşir. Belge 2 ve 3 ' ün ilgi puanı, sorguyla aynı şekilde eşleştirildiği halde farklı olduğunu ortaya çıkarmış olabilir. Bunun nedeni, Puanlama formülünün yalnızca TF/ıDF 'den daha fazla bileşene sahip olmasından kaynaklanır. Bu durumda, açıklama daha kısa olduğundan belge 3 ' te biraz daha yüksek bir puan atandı. Alan uzunluğu ve diğer faktörlerin ilgi Puanını nasıl etkileyebileceğini anlamak için [Lucene 'In pratik Puanlama formülü](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/search/similarities/TFIDFSimilarity.html) hakkında bilgi edinin.
 
 Bazı sorgu türleri (joker karakter, ön ek, Regex) her zaman genel belge puanına bir sabit puanı katkıda bulunur. Bu, sorgu genişletmesi aracılığıyla bulunan eşleşmelerin sonuçlara dahil edilmesini sağlar, ancak derecelendirmeyi etkilemeksizin. 
 
@@ -362,7 +362,7 @@ Bunun ne kadar önemli olduğunu gösteren bir örnek. Önek aramaları dahil ol
 Azure Bilişsel Arama ilgi puanlarını ayarlamaya yönelik iki yol vardır:
 
 1. **Puanlama profilleri** , bir dizi kurala göre dereceli sonuçlar listesindeki belgeleri yükseltir. Örneğimizde, başlık alanında, açıklama alanında eşleşen belgelerden daha alakalı olan belgeleri kabul eteceğiz. Ayrıca, dizinimizin her otel için bir fiyat alanı varsa, belgeleri daha düşük fiyatla yükseltebiliriz. [Arama dizinine Puanlama profilleri ekleme](/rest/api/searchservice/add-scoring-profiles-to-a-search-index) hakkında daha fazla bilgi edinin.
-2. **Terim arttırma** (yalnızca tam Lucene sorgu sözdiziminde kullanılabilir) `^` , sorgu ağacının herhangi bir bölümüne uygulanabilen bir artırma işleci sağlar. Örneğimizde, *Hava durumu ön koşulunu*aramak yerine \* bir tane, *Uçak koşulunun* veya ön koşulun tam terimini arayabilir, ancak tam terimle eşleşen belgeler, sorgu teriminin yükselmesine uygulanarak daha yüksek bir şekilde derecelendirilir: * Air-condition ^ 2 | | Hava durumu * *. [Terim artırma](/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost)hakkında daha fazla bilgi edinin.
+2. **Terim arttırma** (yalnızca tam Lucene sorgu sözdiziminde kullanılabilir) `^` , sorgu ağacının herhangi bir bölümüne uygulanabilen bir artırma işleci sağlar. Örneğimizde, *Hava durumu ön koşulunu* aramak yerine \* bir tane, *Uçak koşulunun* veya ön koşulun tam terimini arayabilir, ancak tam terimle eşleşen belgeler, sorgu teriminin yükselmesine uygulanarak daha yüksek bir şekilde derecelendirilir: * Air-condition ^ 2 | | Hava durumu * *. [Terim artırma](/rest/api/searchservice/lucene-query-syntax-in-azure-search#bkmk_termboost)hakkında daha fazla bilgi edinin.
 
 
 ### <a name="scoring-in-a-distributed-index"></a>Dağıtılmış dizindeki Puanlama

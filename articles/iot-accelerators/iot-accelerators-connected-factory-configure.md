@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: e015c6761b920ef37af2bbfd67ced5fc3218d532
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91290696"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002247"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>Bağlı fabrika çözüm Hızlandırıcısını yapılandırma
 
@@ -88,7 +88,7 @@ Aşağıdaki kod parçacığında yapılandırma dosyasının bir ana hattı gö
 }
 ```
 
-,, Ve öğesinin ortak özellikleri  `<global_configuration>` `<factory_configuration>` `<production_line_configuration>` `<station_configuration>` şunlardır:
+,, Ve öğesinin ortak özellikleri `<global_configuration>` `<factory_configuration>` `<production_line_configuration>` `<station_configuration>` şunlardır:
 
 * **Ad** (tür dizesi)
 
@@ -239,7 +239,7 @@ Aşağıdaki kod parçacığında yapılandırma dosyasının bir ana hattı gö
 
 * **ConstValue** (çift tür)
 
-  **Opcode** **const**ise, bu özellik düğümün değeridir.
+  **Opcode** **const** ise, bu özellik düğümün değeridir.
 
 * **Minimum** (tür Double)
 
@@ -265,7 +265,7 @@ Yapılandırma dosyasında kullanılan tüm özellikler, kullanıldıkları ayar
 
 ### <a name="visual-appearance"></a>Görsel görünüm
 
-Bu kategorideki Özellikler bağlı fabrika panosunun görsel görünümünü tanımlar. Örneklere şunlar dahildir:
+Bu kategorideki Özellikler bağlı fabrika panosunun görsel görünümünü tanımlar. Örnekler arasında şunlar yer almaktadır:
 
 * Ad
 * Açıklama
@@ -304,11 +304,11 @@ Son değeri görselleştirme veya zaman serisi Insight sorguları oluşturma gib
 
 * **OpcUri**
 
-  Telemetrinin geldiği OPC UA sunucusunu tanımlar (genel olarak benzersiz). Alınan iletilerde, bu özellik **ApplicationUri**olarak gönderilir.
+  Telemetrinin geldiği OPC UA sunucusunu tanımlar (genel olarak benzersiz). Alınan iletilerde, bu özellik **ApplicationUri** olarak gönderilir.
 
 * **NodeId**
 
-  OPC UA sunucusunda düğüm değerini tanımlar. Özelliğin biçimi OPC UA belirtiminde belirtilen şekilde olmalıdır. Alınan iletilerde, bu özellik **NodeId**olarak gönderilir.
+  OPC UA sunucusunda düğüm değerini tanımlar. Özelliğin biçimi OPC UA belirtiminde belirtilen şekilde olmalıdır. Alınan iletilerde, bu özellik **NodeId** olarak gönderilir.
 
 Telemetri verilerinin bağlı fabrikaya nasıl yapılacağı hakkında daha fazla bilgi için bkz. [OPC yayımcısı nedir?](overview-opc-publisher.md) .
 

@@ -16,11 +16,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 91f15e32866cca008553286f7585247909d9a4ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87009875"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002689"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Azure'daki Windows VM’lerine uzak masaüstü bağlantısı sorunlarında ayrıntılı sorun giderme adımları
 Bu makalede, Windows tabanlı Azure sanal makineleri için karmaşık uzak masaüstü hatalarını tanılamak ve gidermek için ayrıntılı sorun giderme adımları sağlanmaktadır.
@@ -38,7 +38,7 @@ Aşağıdaki bileşenler bir RDP bağlantısına dahil değildir:
 
 ![Uzak Masaüstü (RDP) bağlantısıyla ilgili bileşenleri gösteren diyagram.](./media/detailed-troubleshoot-rdp/tshootrdp_0.png)
 
-Devam etmeden önce, sanal makineye yönelik son başarılı uzak masaüstü bağlantısından bu yana nelerin değiştiğini gözden geçirmek için yardımcı olabilir. Örneğin:
+Devam etmeden önce, sanal makineye yönelik son başarılı uzak masaüstü bağlantısından bu yana nelerin değiştiğini gözden geçirmek için yardımcı olabilir. Örnek:
 
 * VM 'nin genel IP adresi veya VM 'yi (sanal IP adresi [VIP](https://en.wikipedia.org/wiki/Virtual_IP_address)de denir) içeren bulut hizmeti değişmiştir. DNS istemci önbelleğiniz hala DNS adı için kaydedilmiş *ESKI IP adresine* sahıp olduğundan RDP hatası olabilir. DNS istemci önbelleğinizi boşaltıp VM 'yi yeniden bağlamayı deneyin. Ya da yeni VIP ile doğrudan bağlanmayı deneyin.
 * Azure portal tarafından oluşturulan bağlantıyı kullanmak yerine uzak masaüstü bağlantılarınızı yönetmek için üçüncü taraf bir uygulama kullanıyorsunuz. Uygulama yapılandırmasının, uzak masaüstü trafiği için doğru TCP bağlantı noktasını içerdiğini doğrulayın. Bu bağlantı noktasını [Azure Portal](https://portal.azure.com)klasik bir sanal makine IÇIN, VM 'nin ayarlarını > uç noktalarına tıklayarak kontrol edebilirsiniz.

@@ -6,11 +6,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: ef74c4b799c3a24636f88a8e704bf726104b034f
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674329"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001601"
 ---
 # <a name="sensor-partner-integration"></a>Algılayıcı iş ortağı tümleştirmesi
 
@@ -126,19 +126,19 @@ JSON, rastgele veri yapılarının basit bir metin gösterimini sağlayan, dilde
 
 Farmrets veri hub 'ı cihaz iş ortaklarının cihaz veya algılayıcı meta verilerini oluşturmalarına ve yönetmesine olanak tanıyan aşağıdaki API 'Lere sahiptir.
 
-- /**Devicemodel** : devicemodel cihaz, ağ geçidi veya düğüm olan üretici ve cihaz türü gibi cihazın meta verilerine karşılık gelir.
-- /**Cihaz** : cihaz, grupta bulunan bir fiziksel cihaza karşılık gelir.
-- /**Sensormodel** : sensormodel: üretici, analog veya dijital olan algılayıcı türü ve çevresel sıcaklık ve basınç gibi algılayıcı ölçüsü gibi algılayıcı meta verilerine karşılık gelir.
-- /**Algılayıcı** : algılayıcı, değerleri kaydeden bir fiziksel sensöre karşılık gelir. Bir algılayıcı genellikle cihaz KIMLIĞI olan bir cihaza bağlanır.
+- /**Devicemodel**: devicemodel cihaz, ağ geçidi veya düğüm olan üretici ve cihaz türü gibi cihazın meta verilerine karşılık gelir.
+- /**Cihaz**: cihaz, grupta bulunan bir fiziksel cihaza karşılık gelir.
+- /**Sensormodel**: sensormodel: üretici, analog veya dijital olan algılayıcı türü ve çevresel sıcaklık ve basınç gibi algılayıcı ölçüsü gibi algılayıcı meta verilerine karşılık gelir.
+- /**Algılayıcı**: algılayıcı, değerleri kaydeden bir fiziksel sensöre karşılık gelir. Bir algılayıcı genellikle cihaz KIMLIĞI olan bir cihaza bağlanır.
 
-  DeviceModel | Açıklama |
+  DeviceModel | Description |
   --- | ---
   Tür (düğüm, ağ geçidi)  | Cihaz düğümü veya ağ geçidi türü |
   Üretici  | Üreticinin adı |
   ProductCode  | Cihaz ürün kodu veya model adı veya numarası. Örneğin, EnviroMonitor # 6800. |
   Bağlantı noktaları  | Bağlantı noktası adı ve türü, dijital veya analog.  |
-  Ad  | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı. |
-  Açıklama  | Modelin anlamlı bir açıklamasını sağlayın. |
+  Name  | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı. |
+  Description  | Modelin anlamlı bir açıklamasını sağlayın. |
   Özellikler  | Üreticiden ek özellikler. |
   **Cihaz** | **Açıklama** |
   Devicemodelıd  |İlişkili cihaz modelinin KIMLIĞI. |
@@ -146,8 +146,8 @@ Farmrets veri hub 'ı cihaz iş ortaklarının cihaz veya algılayıcı meta ver
   Reportingınterval |Saniye cinsinden raporlama aralığı. |
   Konum    |Cihaz Latitude (-90 ile + 90), Boylam (-180-180) ve yükseltme (ölçü cinsinden). |
   Parentdeviceıd | Bu cihazın bağlı olduğu üst cihazın KIMLIĞI. Örneğin, bir düğüm bir ağ geçidine bağlıysa, düğümde ağ geçidi olarak Parentdeviceıd vardır. |
-  Ad  | Kaynağı tanımlamak için ad. Cihaz iş ortaklarının cihaz adı ile tutarlı bir adı cihaz iş ortağı tarafında gönderebilmesi gerekir. Cihaz adı cihaz iş ortağı tarafında Kullanıcı tanımlı ise, aynı kullanıcı tanımlı ad, Farmınts 'e yayılmalıdır.  |
-  Açıklama  | Anlamlı bir açıklama sağlayın.  |
+  Name  | Kaynağı tanımlamak için ad. Cihaz iş ortaklarının cihaz adı ile tutarlı bir adı cihaz iş ortağı tarafında gönderebilmesi gerekir. Cihaz adı cihaz iş ortağı tarafında Kullanıcı tanımlı ise, aynı kullanıcı tanımlı ad, Farmınts 'e yayılmalıdır.  |
+  Description  | Anlamlı bir açıklama sağlayın.  |
   Özellikler  |Üreticiden ek özellikler.  |
   **SensorModel** | **Açıklama** |
   Tür (analog, dijital)  |Analog veya dijital sensörden bahsedin.|
@@ -160,8 +160,8 @@ Farmrets veri hub 'ı cihaz iş ortaklarının cihaz veya algılayıcı meta ver
   Sensorölçüleri > AggregationType  | Hiçbiri, ortalama, maksimum, en az veya Standartsapması.
   Sensorölçüleri > derinliği  | Algılayıcının santimetre cinsinden derinliği. Örneğin, zemin altındaki nemi 10 cm ölçümü.
   Sensorölçüleri > açıklaması  | Ölçümün anlamlı bir açıklamasını sağlayın.
-  Ad  | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı.
-  Açıklama  | Modelin anlamlı bir açıklamasını sağlayın.
+  Name  | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı.
+  Description  | Modelin anlamlı bir açıklamasını sağlayın.
   Özellikler  | Üreticiden ek özellikler.
   **Algılayıcısı**  | **Açıklama** |
   Donanım kimliği  | Üretici tarafından ayarlanan algılayıcı için benzersiz KIMLIK.
@@ -169,8 +169,8 @@ Farmrets veri hub 'ı cihaz iş ortaklarının cihaz veya algılayıcı meta ver
   Konum  | Enlem (-90 ile + 90), Boylam (-180-180) ve yükseltme (ölçü cinsinden).
   Bağlantı noktası > adı  |Algılayıcıdan cihazda bağlı olduğu bağlantı noktasının adı ve türü. Bu, cihaz modelinde tanımlananla aynı ada sahip olmalıdır.
   DeviceId  | Algılayıcıın bağlı olduğu cihazın KIMLIĞI.
-  Ad  | Kaynağı tanımlamak için ad. Örneğin, algılayıcı adı veya ürün adı ve model numarası ya da ürün kodu.
-  Açıklama  | Anlamlı bir açıklama sağlayın.
+  Name  | Kaynağı tanımlamak için ad. Örneğin, algılayıcı adı veya ürün adı ve model numarası ya da ürün kodu.
+  Description  | Anlamlı bir açıklama sağlayın.
   Özellikler  | Üreticiden ek özellikler.
 
  Nesnelerin ve özelliklerinin her biri hakkında bilgi için bkz. [Swagger](https://aka.ms/FarmBeatsDatahubSwagger).

@@ -10,11 +10,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.openlocfilehash: 93d741d22ac03c132954a48731451f891042d7b4
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371197"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003080"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory’de işlem hatları ve etkinlikler
 
@@ -106,7 +106,7 @@ JSON biçiminde işlem hattı şöyle tanımlanır:
 }
 ```
 
-Etiket | Description | Tür | Gerekli
+Etiket | Açıklama | Tür | Gerekli
 --- | ----------- | ---- | --------
 name | İşlem hattının adı. İşlem hattının gerçekleştirdiği eylemi temsil eden bir ad belirtin. <br/><ul><li>En fazla karakter sayısı: 140</li><li>Bir harf, sayı veya alt çizgi () ile başlamalıdır \_</li><li>Şu karakterlere izin verilmez: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", " \" </li></ul> | Dize | Yes
 açıklama | İşlem hattının ne için kullanıldığını açıklayan metni belirtin. | Dize | No
@@ -224,7 +224,7 @@ Farklı bağımlılık koşulları şunlardır: Başarılı, Başarısız, Atlan
 - Etkinlik B, Etkinlik A’ya **başarılı** koşuluyla bağımlıdır: Etkinlik B yalnızca Etkinlik A’nın son durumu başarılı ise çalışır
 - Etkinlik B, Etkinlik A’ya **başarısız** koşuluyla bağımlıdır: Etkinlik B yalnızca Etkinlik A’nın son durumu başarısız ise çalışır
 - Etkinlik B, Etkinlik A’ya **tamamlandı** koşuluyla bağımlıdır: Etkinlik B yalnızca Etkinlik A’nın son durumu başarılı veya başarısız ise çalışır
-- Etkinliğin A 'da **Atlanan**etkinliğin bir bağımlılık koşulu vardır: etkinlik a 'nın son durumu atlandı ise, etkinlik b çalışır. Atlandı koşulu, her bir etkinliğin yalnızca önceki etkinlik başarılı olursa çalıştığı Etkinlik X -> Etkinlik Y -> Etkinlik Z senaryosunda gerçekleşir. Etkinlik X başarısız olursa, etkinlik Y, hiçbir zaman yürütülmediği için "atlandı" durumuna sahiptir. Benzer şekilde, etkinlik Z, "atlandı" durumuna da sahiptir.
+- Etkinliğin A 'da **Atlanan** etkinliğin bir bağımlılık koşulu vardır: etkinlik a 'nın son durumu atlandı ise, etkinlik b çalışır. Atlandı koşulu, her bir etkinliğin yalnızca önceki etkinlik başarılı olursa çalıştığı Etkinlik X -> Etkinlik Y -> Etkinlik Z senaryosunda gerçekleşir. Etkinlik X başarısız olursa, etkinlik Y, hiçbir zaman yürütülmediği için "atlandı" durumuna sahiptir. Benzer şekilde, etkinlik Z, "atlandı" durumuna da sahiptir.
 
 #### <a name="example-activity-2-depends-on-the-activity-1-succeeding"></a>Örnek: Etkinlik 2, Etkinlik 1’in başarılı olmasına bağlıdır
 
@@ -358,7 +358,7 @@ Aşağıdaki örnek işlem hattında, **etkinlikler** bölümünde **HDInsightHi
 Aşağıdaki noktalara dikkat edin:
 
 - Etkinlikler bölümünde **türü****HDInsightHive** olarak ayarlanmış yalnızca bir etkinlik vardır.
-- **Partitionweblogs. HQL**Hive betik dosyası Azure depolama hesabında (scriptlinkedservice tarafından belirtilen AzureStorageLinkedService adıyla) ve kapsayıcısındaki betik klasöründe depolanır `adfgetstarted` .
+- **Partitionweblogs. HQL** Hive betik dosyası Azure depolama hesabında (scriptlinkedservice tarafından belirtilen AzureStorageLinkedService adıyla) ve kapsayıcısındaki betik klasöründe depolanır `adfgetstarted` .
 - `defines` bölümü, hive betiğine Hive yapılandırma değerleri olarak (örn `{hiveconf:inputtable}`, `${hiveconf:partitionedtable}`) geçirilen çalışma zamanı ayarlarını belirtmek için kullanılır.
 
 **TypeProperties** bölümü her bir dönüştürme etkinliği için farklıdır. Bir dönüştürme etkinliği için desteklenen tür özellikleri hakkında bilgi edinmek için [Veri dönüştürme etkinlikleri](#data-transformation-activities) içindeki dönüştürme etkinliklerine tıklayın.

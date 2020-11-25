@@ -7,11 +7,11 @@ ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: c17d3c7cd2cf6fe5bca725cf94344b2d2cb50bf2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88271150"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001533"
 ---
 # <a name="configure-storage"></a>Depolama alanını yapılandırma
 
@@ -47,9 +47,9 @@ Bir NAS Core fili eklemek için aşağıdaki adımları izleyin:
 
 1. Avere denetim masasından üstteki **Ayarlar** sekmesine tıklayın.
 
-1. **Core Filer**  >  Sol taraftaki çekirdek**filleri Yönet** ' e tıklayın.
+1. **Core Filer**  >  Sol taraftaki çekirdek **filleri Yönet** ' e tıklayın.
 
-1. **Oluştur**’a tıklayın.
+1. **Oluştur**'a tıklayın.
 
    ![Oluştur düğmesinin üzerinde bir imlece yeni çekirdek dosyalayıcı ekleme sayfasının ekran görüntüsü](media/avere-vfxt-add-core-filer-start.png)
 
@@ -115,11 +115,11 @@ Kümeyi oluşturduktan sonra blob depolaması eklemek için aşağıdaki adımla
 
    ![+ Container düğmesine ve bir açılan sayfada oluşturulan yeni bir kapsayıcıya sahip depolama Blobları sayfası](media/avere-vfxt-new-blob.png)
 
-1. **Ayarlar**altında **erişim anahtarları** ' na tıklayarak Azure depolama hesabı anahtarını alın. Belirtilen anahtarlardan birini kopyalayın.
+1. **Ayarlar** altında **erişim anahtarları** ' na tıklayarak Azure depolama hesabı anahtarını alın. Belirtilen anahtarlardan birini kopyalayın.
 
    ![Anahtarı kopyalamak için Azure portal GUI](media/avere-vfxt-copy-storage-key.png)
 
-1. Kümeniz için avere denetim masasını açın. **Ayarlar**' a tıklayın, **Cluster**ardından  >  sol gezinti bölmesinde küme**bulutu kimlik bilgileri** ' ni açın. Bulut kimlik bilgileri sayfasında **kimlik bilgisi ekle**' ye tıklayın.
+1. Kümeniz için avere denetim masasını açın. **Ayarlar**' a tıklayın, **Cluster** ardından  >  sol gezinti bölmesinde küme **bulutu kimlik bilgileri** ' ni açın. Bulut kimlik bilgileri sayfasında **kimlik bilgisi ekle**' ye tıklayın.
 
    ![Bulut kimlik bilgileri yapılandırma sayfasında kimlik bilgisi Ekle düğmesine tıklayın](media/avere-vfxt-new-credential-button.png)
 
@@ -152,8 +152,8 @@ Kümeyi oluşturduktan sonra blob depolaması eklemek için aşağıdaki adımla
    * **Sertifika doğrulamasını** **devre dışı** olarak değiştirme
    * **Sıkıştırma modunu** **yok** olarak değiştirme
    * **İleri**’ye tıklayın.
-   * Dördüncü sayfada, **demet adı** ' nda kapsayıcının adını *storage_account_name* / *container_name*olarak girin.
-   * İsteğe bağlı olarak, **şifreleme türünü** **hiçbiri**olarak ayarlayın.  Azure depolama, varsayılan olarak şifrelenir.
+   * Dördüncü sayfada, **demet adı** ' nda kapsayıcının adını *storage_account_name* / *container_name* olarak girin.
+   * İsteğe bağlı olarak, **şifreleme türünü** **hiçbiri** olarak ayarlayın.  Azure depolama, varsayılan olarak şifrelenir.
    * **Filigran Ekle**' ye tıklayın.
 
    Daha ayrıntılı bilgi için, avere kümesi yapılandırma kılavuzu 'na [Yeni bir bulut çekirdeği ekleme](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html>) bölümünü okuyun.

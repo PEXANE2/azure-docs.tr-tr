@@ -16,11 +16,11 @@ ms.date: 08/26/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7ad91c916a6134f2507e74df6e87478421a00f43
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977434"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003013"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Azure portal kullanarak Kullanıcı tarafından atanan yönetilen kimlik için rol oluşturma, listeleme, silme veya atama
 
@@ -28,9 +28,9 @@ Azure kaynakları için Yönetilen kimlikler, Azure Active Directory yönetilen 
 
 Bu makalede, Azure portal kullanarak Kullanıcı tarafından atanan yönetilen kimlik için rol oluşturma, listeleme, silme veya atamayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-- Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. ** [Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#managed-identity-types)gözden geçirdiğinizden emin**olun.
+- Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. **[Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#managed-identity-types)gözden geçirdiğinizden emin** olun.
 - Henüz bir Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimlik oluşturma
@@ -38,7 +38,7 @@ Bu makalede, Azure portal kullanarak Kullanıcı tarafından atanan yönetilen k
 Kullanıcı tarafından atanan yönetilen kimlik oluşturmak için hesabınıza [yönetilen kimlik katılımcısı](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) rol ataması gerekir.
 
 1. Kullanıcı tarafından atanan yönetilen kimliği oluşturmak için Azure aboneliğiyle ilişkili bir hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
-2. Arama kutusuna *Yönetilen kimlikler*yazın ve **Hizmetler**' ın altında, **Yönetilen kimlikler**' e tıklayın.
+2. Arama kutusuna *Yönetilen kimlikler* yazın ve **Hizmetler**' ın altında, **Yönetilen kimlikler**' e tıklayın.
 3. **Ekle** ' ye tıklayın ve **Kullanıcı tarafından atanan yönetilen kimlik oluştur** altında aşağıdaki alanlara değerleri girin:
     - **Abonelik**: Kullanıcı tarafından atanan yönetilen kimliği oluşturmak için aboneliği seçin.
     - **Kaynak grubu**: Kullanıcı tarafından atanan yönetilen kimliği oluşturmak için bir kaynak grubu seçin veya yeni bir kaynak grubu oluşturmak Için **Yeni oluştur** ' a tıklayın.
@@ -53,7 +53,7 @@ Kullanıcı tarafından atanan yönetilen kimlik oluşturmak için hesabınıza 
 Kullanıcı tarafından atanan yönetilen kimliği listelemek/okumak için hesabınızın [yönetilen kimlik işleci](../../role-based-access-control/built-in-roles.md#managed-identity-operator) veya [yönetilen kimlik katılımcısı](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) rolü ataması gerekir.
 
 1. Kullanıcı tarafından atanan yönetilen kimlikleri listelemek için Azure aboneliğiyle ilişkili bir hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
-2. Arama kutusuna *Yönetilen kimlikler*yazın ve hizmetler ' in altında, **Yönetilen kimlikler**' e tıklayın.
+2. Arama kutusuna *Yönetilen kimlikler* yazın ve hizmetler ' in altında, **Yönetilen kimlikler**' e tıklayın.
 3. Aboneliğiniz için Kullanıcı tarafından atanan yönetilen kimliklerin bir listesi döndürülür.  Kullanıcı tarafından atanan yönetilen kimliğin ayrıntılarını görmek için adına tıklayın.
 
 ![Kullanıcı tarafından atanan yönetilen kimliği listeleme](./media/how-to-manage-ua-identity-portal/list-user-assigned-managed-identity-portal.png)
@@ -75,7 +75,7 @@ Kullanıcı tarafından atanan bir kimlik silindiğinde, atandığı VM veya kay
 Kullanıcı tarafından atanan yönetilen kimliğe bir rol atamak için hesabınızın [Kullanıcı erişimi yönetici](../../role-based-access-control/built-in-roles.md#user-access-administrator) rolü ataması gerekir.
 
 1. Kullanıcı tarafından atanan yönetilen kimlikleri listelemek için Azure aboneliğiyle ilişkili bir hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
-2. Arama kutusuna *Yönetilen kimlikler*yazın ve hizmetler ' in altında, **Yönetilen kimlikler**' e tıklayın.
+2. Arama kutusuna *Yönetilen kimlikler* yazın ve hizmetler ' in altında, **Yönetilen kimlikler**' e tıklayın.
 3. Aboneliğiniz için Kullanıcı tarafından atanan yönetilen kimliklerin bir listesi döndürülür.  Rol atamak istediğiniz kullanıcı tarafından atanan yönetilen kimliği seçin.
 4. **Erişim denetimi (IAM)** öğesini seçin ve ardından **rol ataması Ekle**' yi seçin.
 

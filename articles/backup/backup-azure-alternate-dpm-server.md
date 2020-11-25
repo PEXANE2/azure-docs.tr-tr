@@ -4,11 +4,11 @@ description: Bu kasaya kayıtlı tüm Azure Backup Sunucusu kurtarma hizmetleri 
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.openlocfilehash: 0cce45fbaaedad4cfcee0cda768aae2fa294312b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378075"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002979"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Azure Backup Sunucusu’ndan veri kurtarma
 
@@ -37,7 +37,7 @@ Azure Backup Sunucusu verileri kurtarmak için:
 3. Dış Azure Backup Sunucusu korunan üretim sunucularının kullanılabilir listesine giderek uygun veri kaynağını seçin.
 
     ![Dış DPM sunucusuna gözatamıyorum](./media/backup-azure-alternate-dpm-server/browse-external-dpm.png)
-4. **Kurtarma noktaları** açılan listesinden **ayı ve yılı** seçin, kurtarma noktasının oluşturulduğu zamana ait gerekli **Kurtarma tarihini** seçin ve **Kurtarma saatini**seçin.
+4. **Kurtarma noktaları** açılan listesinden **ayı ve yılı** seçin, kurtarma noktasının oluşturulduğu zamana ait gerekli **Kurtarma tarihini** seçin ve **Kurtarma saatini** seçin.
 
     Dosya ve klasörlerin listesi, alt bölmede görünür ve bu, herhangi bir konuma gözatılabilir ve kurtarılabilir.
 
@@ -45,19 +45,19 @@ Azure Backup Sunucusu verileri kurtarmak için:
 5. Uygun öğeye sağ tıklayın ve **kurtar**' ı seçin.
 
     ![Dış DPM kurtarma](./media/backup-azure-alternate-dpm-server/recover.png)
-6. **Kurtarma seçimini**gözden geçirin. Kurtarılan yedekleme kopyasının verilerinin ve saatinin yanı sıra yedekleme kopyasının oluşturulduğu kaynağı doğrulayın. Seçim yanlışsa kurtarma sekmesine geri dönmek için **iptal** ' i seçerek uygun kurtarma noktasını seçin. Seçim doğruysa, **İleri**' yi seçin.
+6. **Kurtarma seçimini** gözden geçirin. Kurtarılan yedekleme kopyasının verilerinin ve saatinin yanı sıra yedekleme kopyasının oluşturulduğu kaynağı doğrulayın. Seçim yanlışsa kurtarma sekmesine geri dönmek için **iptal** ' i seçerek uygun kurtarma noktasını seçin. Seçim doğruysa, **İleri**' yi seçin.
 
     ![Dış DPM Kurtarma Özeti](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-summary.png)
 7. **Alternatif bir konuma kurtar**' ı seçin. Kurtarma için doğru konuma **gidin** .
 
     ![Dış DPM kurtarma alternatif konumu](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-alternate-location.png)
-8. Kopyalama, **atlama**veya **üzerine yazma** **oluşturma**ile ilgili seçeneği belirleyin.
+8. Kopyalama, **atlama** veya **üzerine yazma** **oluşturma** ile ilgili seçeneği belirleyin.
 
    * **Kopya oluştur** -bir ad çakışması varsa dosyanın bir kopyasını oluşturur.
    * **Atla** -bir ad çakışması varsa, özgün dosyayı atan dosyayı kurtarmaz.
    * **Üzerine yaz** -bir ad çakışması varsa, dosyanın varolan kopyasının üzerine yazar.
 
-     **Güvenliği geri yüklemek**için uygun seçeneği belirleyin. Verilerin kurtarıldığı hedef bilgisayarın güvenlik ayarlarını veya kurtarma noktasının oluşturulduğu sırada ürün için geçerli olan güvenlik ayarlarını uygulayabilirsiniz.
+     **Güvenliği geri yüklemek** için uygun seçeneği belirleyin. Verilerin kurtarıldığı hedef bilgisayarın güvenlik ayarlarını veya kurtarma noktasının oluşturulduğu sırada ürün için geçerli olan güvenlik ayarlarını uygulayabilirsiniz.
 
      Kurtarma başarıyla tamamlandıktan sonra bir **bildirimin** gönderilip gönderilmeyeceğini belirler.
 

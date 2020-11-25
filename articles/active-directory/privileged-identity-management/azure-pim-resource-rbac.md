@@ -15,11 +15,11 @@ ms.author: curtand
 ms.reviewer: shaunliu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 45144f64789a19390984c3f9f6a660e3c3300215
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84743159"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002502"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure Kaynak rolleri için etkinlik ve denetim geçmişini görüntüleme
 
@@ -32,13 +32,13 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PıM) ile kuru
 
 Belirli bir kullanıcının çeşitli kaynaklarda hangi işlemleri yaptığını görmek için, belirli bir etkinleştirme süresiyle ilişkili Azure Kaynak etkinliğini görüntüleyebilirsiniz.
 
-1. **Azure AD Privileged Identity Management**açın.
+1. **Azure AD Privileged Identity Management** açın.
 
 1. **Azure kaynakları**' nı seçin.
 
 1. Etkinlik ve etkinleştirmeleri görüntülemek istediğiniz kaynağı seçin.
 
-1. **Rolleri** veya **üyeleri**seçin.
+1. **Rolleri** veya **üyeleri** seçin.
 
 1. Bir kullanıcı seçin.
 
@@ -54,7 +54,7 @@ Belirli bir kullanıcının çeşitli kaynaklarda hangi işlemleri yaptığını
 
 Denetçilerin rol atamalarının tamamen bir listesini sağlamanız gereken bir uyumluluk gereksinimine sahip olabilirsiniz. Privileged Identity Management, tüm alt kaynaklar için rol atamaları içeren belirli bir kaynaktaki rol atamalarını sorgulamanızı sağlar. Daha önce, yöneticilerin bir abonelik için rol atamalarının tamamen bir listesini alması ve her belirli kaynak için rol atamalarını dışarı aktarmaları gerekiyordu. Privileged Identity Management kullanarak, tüm kaynak grupları ve kaynakları için rol atamaları dahil olmak üzere bir abonelikte tüm etkin ve uygun rol atamalarını sorgulayabilirsiniz.
 
-1. **Azure AD Privileged Identity Management**açın.
+1. **Azure AD Privileged Identity Management** açın.
 
 1. **Azure kaynakları**' nı seçin.
 
@@ -74,7 +74,7 @@ Denetçilerin rol atamalarının tamamen bir listesini sağlamanız gereken bir 
 
 Kaynak denetimi size bir kaynak için tüm rol etkinliklerinin görünümünü sağlar.
 
-1. **Azure AD Privileged Identity Management**açın.
+1. **Azure AD Privileged Identity Management** açın.
 
 1. **Azure kaynakları**' nı seçin.
 
@@ -86,7 +86,7 @@ Kaynak denetimi size bir kaynak için tüm rol etkinliklerinin görünümünü s
 
     [![Filtrelerle kaynak denetim listesi](media/azure-pim-resource-rbac/rbac-resource-audit.png "Filtrelerle kaynak denetim listesi")](media/azure-pim-resource-rbac/rbac-resource-audit.png)
 
-1. **Denetim türü**için Etkinleştir ' i **(atanan + etkin)** seçin.
+1. **Denetim türü** için Etkinleştir ' i **(atanan + etkin)** seçin.
 
     [![Etkinleştirme denetim türüne](media/azure-pim-resource-rbac/rbac-audit-activity.png "Etkinleştir tarafından filtrelenen kaynak denetim listesi")](media/azure-pim-resource-rbac/rbac-audit-activity.png) ![ göre filtrelenen kaynak denetim listesi Etkinleştirme denetim türüne göre filtrelenen kaynak denetim listesi](media/azure-pim-resource-rbac/rbac-audit-activity.png)
 
@@ -98,13 +98,13 @@ Kaynak denetimi size bir kaynak için tüm rol etkinliklerinin görünümünü s
 
 My Audit, kişisel rol etkinliğinizi görüntülemenize olanak sağlar.
 
-1. **Azure AD Privileged Identity Management**açın.
+1. **Azure AD Privileged Identity Management** açın.
 
 1. **Azure kaynakları**' nı seçin.
 
 1. Denetim geçmişini görüntülemek istediğiniz kaynağı seçin.
 
-1. **Denetmi**seçin.
+1. **Denetmi** seçin.
 
 1. Geçmişi önceden tanımlanmış bir tarih veya özel Aralık kullanarak filtreleyin.
 

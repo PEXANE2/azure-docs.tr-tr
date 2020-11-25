@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
 ms.openlocfilehash: 390443874ea63a8661ef8baea627015fcf679719
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167925"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002706"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Azure seri konsoluna erişim olmadığında ve disk düzeni LVM kullanıyorsa (mantıksal birim Yöneticisi) bir Linux sanal makinesi sorunlarını giderme
 
@@ -29,7 +29,7 @@ Bu sorun giderme kılavuzu, bir Linux VM 'nin önyüklendiği senaryolarda, SSH 
 
 Etkilenen VM 'nin anlık görüntüsünü alın. 
 
-Anlık görüntü, bir **Kurtarma** VM 'sine eklenecektir. **Anlık görüntü**almak için [buradaki](../linux/snapshot-copy-managed-disk.md#use-azure-portal) yönergeleri izleyin.
+Anlık görüntü, bir **Kurtarma** VM 'sine eklenecektir. **Anlık görüntü** almak için [buradaki](../linux/snapshot-copy-managed-disk.md#use-azure-portal) yönergeleri izleyin.
 
 ## <a name="create-a-rescue-vm"></a>Kurtarma VM 'si oluşturma
 Genellikle aynı veya benzer Işletim sistemi sürümünün bir kurtarma VM 'si önerilir. Etkilenen VM 'nin aynı **bölgesini** ve **kaynak grubunu** kullan
@@ -65,9 +65,9 @@ Anlık görüntü diskinin ekli olduğunu doğrulamak ve kullanılabilir tüm ci
 
 ![Fdisk](./media/chroot-logical-volume-manager/fdisk-output-sdc.png)
 
-, **\*** Bir önyükleme bölümünü belirtir, her iki bölüm de takılmalıdır.
+* *\** _ Bir önyükleme bölümünü gösterir, her iki bölüm de takılmalıdır.
 
-Etkilenen VM 'nin LVM 'lerini görmek için **lsblk** komutunu çalıştırın
+Etkilenen VM 'nin LVM 'lerini görmek için _ *lsblk** komutunu çalıştırın
 
 `lsblk`
 

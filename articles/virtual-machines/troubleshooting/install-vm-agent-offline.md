@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 07/06/2020
 ms.author: genli
 ms.openlocfilehash: 456aa225fa8eed47ca794c54e61b77a30c93fa9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85983241"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002621"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>Azure sanal makine aracısını çevrimdışı modda yükler 
 
@@ -53,7 +53,7 @@ VM aracısını çevrimdışı modda yüklemek için aşağıdaki adımları kul
 
     ![Hive yükleme](./media/install-vm-agent-offline/load-hive.png)
 
-5.  Eklediğiniz işletim sistemi diskinde \windows\system32\config\SYSTEM klasörüne gidin. Hive adı için **brokensystem**girin. Yeni kayıt defteri kovanı **HKEY_LOCAL_MACHINE** anahtarı altında görüntülenir.
+5.  Eklediğiniz işletim sistemi diskinde \windows\system32\config\SYSTEM klasörüne gidin. Hive adı için **brokensystem** girin. Yeni kayıt defteri kovanı **HKEY_LOCAL_MACHINE** anahtarı altında görüntülenir.
 
 6.  Eklediğiniz işletim sistemi diskinde \windows\system32\config\SOFTWARE klasörüne gidin. Hive yazılımının adı için **Brokensoftware**' i girin.
 

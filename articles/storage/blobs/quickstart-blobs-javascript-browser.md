@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: eebfa61632bc49d5df35c17ba2d2faca0382001c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 998d49e91d38a1f2fdc2503165ee99635e153027
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91336148"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001907"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -26,7 +26,7 @@ Ek kaynaklar:
 * [API başvuru belgeleri](/javascript/api/@azure/storage-blob)
 * [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)
 * [Paket (NPM)](https://www.npmjs.com/package/@azure/storage-blob)
-* [Örnekler](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+* [Örnekler](../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -66,7 +66,7 @@ Bu bölümde, bir projeyi, JavaScript için Azure Blob depolama istemci kitaplı
 
 ### <a name="create-a-cors-rule"></a>CORS kuralı oluşturma
 
-Web uygulamanızın istemciden blob depolamaya erişebilmesi için, hesabınızı, [çıkış noktaları arası kaynak paylaşımı](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)veya CORS 'yi etkinleştirecek şekilde yapılandırmanız gerekir.
+Web uygulamanızın istemciden blob depolamaya erişebilmesi için, hesabınızı, [çıkış noktaları arası kaynak paylaşımı](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)veya CORS 'yi etkinleştirecek şekilde yapılandırmanız gerekir.
 
 Azure portal depolama hesabınızı seçin. Yeni bir CORS kuralı tanımlamak için **Ayarlar** bölümüne gidin ve **CORS**' yi seçin. Bu hızlı başlangıçta bir açık CORS kuralı oluşturacaksınız:
 
@@ -76,10 +76,10 @@ Aşağıdaki tabloda her bir CORS ayarı açıklanmakta ve kuralı tanımlamak i
 
 |Ayar  |Değer  | Açıklama |
 |---------|---------|---------|
-| **IZIN VERILEN ÇıKıŞ NOKTALARı** | **\*** | Kabul edilebilir çıkış noktaları olarak etki alanları kümesinin virgülle ayrılmış bir listesini kabul eder. Değerin `*` olarak ayarlanması, depolama hesabına tüm etki alanlarının erişmesine izin verir. |
-| **IZIN VERILEN YÖNTEMLER** | **Silme**, **Get**, **Head**, **birleştirme**, **gönderi**, **Seçenekler**ve **yerleştirme** | Depolama hesabına göre yürütülmesine izin verilen HTTP fiillerini listeler. Bu hızlı başlangıçta tüm kullanılabilir seçenekleri işaretleyin. |
-| **IZIN VERILEN ÜST BILGILER** | **\*** | Depolama hesabı tarafından izin verilen istek üst bilgilerinin (ön ekli üst bilgiler dahil) listesini tanımlar. Değerin `*` olarak ayarlanması tüm üst bilgilere erişim izni verir. |
-| **GÖSTERILEN ÜSTBILGILER** | **\*** | Hesaba göre izin verilen yanıt üst bilgilerini listeler. Değerin `*` olarak ayarlanması hesabın herhangi bir üst bilgiyi göndermesine izin verir. |
+| **IZIN VERILEN ÇıKıŞ NOKTALARı** | **\** _ | Kabul edilebilir çıkış noktaları olarak etki alanları kümesinin virgülle ayrılmış bir listesini kabul eder. Değerin `_` olarak ayarlanması, depolama hesabına tüm etki alanlarının erişmesine izin verir. |
+| **IZIN VERILEN YÖNTEMLER** | **Silme**, **Get**, **Head**, **birleştirme**, **gönderi**, **Seçenekler** ve **yerleştirme** | Depolama hesabına göre yürütülmesine izin verilen HTTP fiillerini listeler. Bu hızlı başlangıçta tüm kullanılabilir seçenekleri işaretleyin. |
+| **IZIN VERILEN ÜST BILGILER** | **\** _ | Depolama hesabı tarafından izin verilen istek üst bilgilerinin (ön ekli üst bilgiler dahil) listesini tanımlar. Değerin `_` olarak ayarlanması tüm üst bilgilere erişim izni verir. |
+| **GÖSTERILEN ÜSTBILGILER** | **\** _ | Hesaba göre izin verilen yanıt üst bilgilerini listeler. Değerin `_` olarak ayarlanması hesabın herhangi bir üst bilgiyi göndermesine izin verir. |
 | **MAKSIMUM YAŞ** | **86400** | Tarayıcının ön kontrol SEÇENEKLERI isteğini saniye cinsinden önbelleğe aldığı en uzun süre. *86400* değeri, önbelleğin bir tam gün boyunca kalmasına izin verir. |
 
 Alanları bu tablodaki değerlerle doldurduktan sonra **Kaydet** düğmesine tıklayın.
@@ -126,7 +126,7 @@ Terminal penceresinde aşağıdaki komutu çalıştırarak paket ' i yükler `np
 npm install -g parcel-bundler
 ```
 
-Visual Studio Code, dosya * üzerindepackage.js* açın ve `browserlist` ve girdileri arasına bir ekleyin `license` `dependencies` . Bu `browserlist` , popüler üç tarayıcının en son sürümünü hedefler. Dosyadaki tam *package.js* şu şekilde görünmelidir:
+Visual Studio Code, dosya *üzerindepackage.js* açın ve `browserlist` ve girdileri arasına bir ekleyin `license` `dependencies` . Bu `browserlist` , popüler üç tarayıcının en son sürümünü hedefler. Dosyadaki tam *package.js* şu şekilde görünmelidir:
 
 :::code language="json" source="~/azure-storage-snippets/blobs/quickstarts/JavaScript/V12/azure-blobs-js-browser/package.json" highlight="12-16":::
 
@@ -237,7 +237,7 @@ Kodu Visual Studio Code hata ayıklayıcı içinde çalıştırmak için, taray�
 Visual Studio Code hata ayıklayıcı uzantısını ayarlamak için:
 
 1. **Çalıştır > yapılandırma Ekle** ' yi seçin
-2. Daha önce [Önkoşullar](#prerequisites) bölümünde yüklediğiniz uzantıya bağlı olarak **Edge**, **Chrome**veya **Firefox**' u seçin.
+2. Daha önce [Önkoşullar](#prerequisites) bölümünde yüklediğiniz uzantıya bağlı olarak **Edge**, **Chrome** veya **Firefox**' u seçin.
 
 Yeni bir yapılandırma eklemek dosyada *launch.js* oluşturur ve düzenleyicide açar. Dosyadaki *launch.js* , `url` değeri aşağıda gösterildiği gibi olacak şekilde değiştirin `http://localhost:1234/index.html` :
 
@@ -274,21 +274,21 @@ Visual Studio Code hata ayıklayıcı eklenmiş bir tarayıcıda *index.html* 'y
 
 #### <a name="step-2---upload-a-blob-to-the-container"></a>2. adım-bir blobu kapsayıcıya yükleme
 
-1. Yerel bilgisayarınızda, *test.txt*gibi bir test dosyası oluşturun ve kaydedin.
+1. Yerel bilgisayarınızda, *test.txt* gibi bir test dosyası oluşturun ve kaydedin.
 2. Web uygulamasında, **Seç ve dosyaları karşıya yükle**' ye tıklayın.
 3. Test dosyanıza gidin ve **Aç**' ı seçin. Durum, dosyanın karşıya yüklendiğini ve dosya listesinin alındığını gösterir.
 4. Azure portal, daha önce oluşturduğunuz yeni kapsayıcının adını seçin. Test dosyasının göründüğünü doğrulayın.
 
 #### <a name="step-3---delete-the-blob"></a>3. adım-blobu silme
 
-1. Web uygulamasında, **dosyalar**altında, test dosyasını seçin.
+1. Web uygulamasında, **dosyalar** altında, test dosyasını seçin.
 2. **Seçili dosyaları sil**' i seçin. Durum, dosyanın silindiğini ve kapsayıcının dosya içermediğini belirtir.
-3. Azure portal **Yenile**' yi seçin. **BLOB bulunamadığını**doğrulayın.
+3. Azure portal **Yenile**' yi seçin. **BLOB bulunamadığını** doğrulayın.
 
 #### <a name="step-4---delete-the-container"></a>4. adım-kapsayıcıyı silme
 
 1. Web uygulamasında **kapsayıcıyı sil**' i seçin. Durum, kapsayıcının silindiğini gösterir.
-2. Azure portal, ** \<account-name\> | Kapsayıcılar** bağlantısı portalı bölmesinin sol üst kısmında.
+2. Azure portal, **\<account-name\> | Kapsayıcılar** bağlantısı portalı bölmesinin sol üst kısmında.
 3. **Yenile**' yi seçin. Yeni kapsayıcı kaybolur.
 4. Web uygulamasını kapatın.
 

@@ -13,11 +13,11 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: a77a4808390f816bc3a6646520f4b542bee89d4c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89438543"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001771"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Blob depolama alanına veya buradan veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -40,12 +40,12 @@ Desteklenen herhangi bir kaynak veri deposundan verileri Azure Blob depolama ala
 
 [!INCLUDE [data-factory-supported-sink](../../../includes/data-factory-supported-sinks.md)]
 
-Aşağıdaki veri depolarındaki verileri **Azure Blob depolama alanına**kopyalayabilirsiniz:
+Aşağıdaki veri depolarındaki verileri **Azure Blob depolama alanına** kopyalayabilirsiniz:
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
 > [!IMPORTANT]
-> Kopyalama etkinliği, genel amaçlı Azure depolama hesaplarından ve sık/seyrek erişimli blob depolamadaki verilerin kopyalanmasını destekler. Etkinlik, **blok, ekleme veya sayfa Bloblarından okumayı**destekler, ancak **yalnızca blok bloblarına yazmayı**destekler. Azure Premium Storage, sayfa Blobları tarafından desteklenen bir havuz olarak desteklenmez.
+> Kopyalama etkinliği, genel amaçlı Azure depolama hesaplarından ve sık/seyrek erişimli blob depolamadaki verilerin kopyalanmasını destekler. Etkinlik, **blok, ekleme veya sayfa Bloblarından okumayı** destekler, ancak **yalnızca blok bloblarına yazmayı** destekler. Azure Premium Storage, sayfa Blobları tarafından desteklenen bir havuz olarak desteklenmez.
 >
 > Veri başarıyla hedefe kopyalandıktan sonra kopyalama etkinliği kaynaktaki verileri silmez. Başarılı bir kopyadan sonra kaynak verileri silmeniz gerekiyorsa, verileri silmek ve işlem hattındaki etkinliği kullanmak için [özel bir etkinlik](data-factory-use-custom-activities.md) oluşturun. Bir örnek için [GitHub 'da blob veya klasör silme örneğine](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/DeleteBlobFileFolderCustomActivity)bakın.
 
@@ -54,11 +54,11 @@ Farklı araçlar/API 'Ler kullanarak bir Azure Blob depolama alanına/kaynağın
 
 İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Bu makalede, verileri bir Azure Blob depolama konumundan başka bir Azure Blob depolama konumuna kopyalamak için bir işlem hattı oluşturmaya yönelik bir [yönerge](#walkthrough-use-copy-wizard-to-copy-data-tofrom-blob-storage) bulunur. Azure Blob depolama alanından Azure SQL veritabanına veri kopyalamak için bir işlem hattı oluşturmaya yönelik bir öğretici için bkz. [öğretici: kopyalama sihirbazını kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md).
 
-İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API**ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API** ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
-1. Bir **Veri Fabrikası**oluşturun. Bir veri fabrikası bir veya daha fazla işlem hattı içerebilir.
+1. Bir **Veri Fabrikası** oluşturun. Bir veri fabrikası bir veya daha fazla işlem hattı içerebilir.
 2. Giriş ve çıkış veri depolarını veri fabrikanıza bağlamak için **bağlı hizmetler** oluşturun. Örneğin, bir Azure Blob depolama alanından Azure SQL veritabanına veri kopyalıyorsanız, Azure depolama hesabınızı ve Azure SQL veritabanınızı veri fabrikanıza bağlamak için iki bağlı hizmet oluşturursunuz. Azure Blob depolamaya özgü bağlantılı hizmet özellikleri için bkz. [bağlı hizmet özellikleri](#linked-service-properties) bölümü.
 2. Kopyalama işlemi için girdi ve çıktı verilerini temsil edecek **veri kümeleri** oluşturun. Son adımda bahsedilen örnekte, blob kapsayıcısını ve girdi verilerini içeren klasörü belirtmek için bir veri kümesi oluşturursunuz. Ve, blob depolamadan kopyalanmış verileri tutan Azure SQL veritabanı 'nda SQL tablosunu belirtmek için başka bir veri kümesi oluşturursunuz. Azure Blob depolamaya özgü veri kümesi özellikleri için bkz. [veri kümesi özellikleri](#dataset-properties) bölümü.
 3. Bir veri kümesini girdi olarak ve bir veri kümesini çıkış olarak alan kopyalama etkinliği ile bir işlem **hattı** oluşturun. Daha önce bahsedilen örnekte, BlobSource değerini kaynak ve SqlSink olarak kopyalama etkinliği için havuz olarak kullanacaksınız. Benzer şekilde, Azure SQL veritabanından Azure Blob depolama alanına kopyalama yapıyorsanız, kopyalama etkinliğinde SqlSource ve BlobSink kullanın. Azure Blob depolamaya özgü kopyalama etkinliği özellikleri için bkz. [kopyalama etkinliği özellikleri](#copy-activity-properties) bölümü. Bir veri deposunu kaynak veya havuz olarak kullanma hakkında ayrıntılı bilgi için, veri deponuzdaki önceki bölümde yer alan bağlantıya tıklayın.
@@ -73,7 +73,7 @@ Azure depolama alanını bir Azure Data Factory 'ye bağlamak için kullanabilec
 [!INCLUDE [data-factory-azure-storage-linked-services](../../../includes/data-factory-azure-storage-linked-services.md)]
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
-Bir Azure Blob depolamada giriş veya çıkış verilerini temsil edecek bir veri kümesi belirtmek için, veri kümesinin Type özelliğini: **AzureBlob**olarak ayarlayın. Veri kümesinin **Linkedservicename** özelliğini Azure Storage veya Azure Storage SAS bağlı hizmeti adı olarak ayarlayın.  Veri kümesinin tür özellikleri **BLOB kapsayıcısını** ve BLOB depolama alanındaki **klasörü** belirtir.
+Bir Azure Blob depolamada giriş veya çıkış verilerini temsil edecek bir veri kümesi belirtmek için, veri kümesinin Type özelliğini: **AzureBlob** olarak ayarlayın. Veri kümesinin **Linkedservicename** özelliğini Azure Storage veya Azure Storage SAS bağlı hizmeti adı olarak ayarlayın.  Veri kümesinin tür özellikleri **BLOB kapsayıcısını** ve BLOB depolama alanındaki **klasörü** belirtir.
 
 Veri kümelerini tanımlamaya yönelik özellikler & JSON bölümlerinin tam listesi için bkz. [veri kümeleri oluşturma](data-factory-create-datasets.md) makalesi. Bir veri kümesinin yapısı, kullanılabilirliği ve İlkesi gibi bölümler, tüm veri kümesi türleri (Azure SQL, Azure blob, Azure tablosu vb.) için benzerdir.
 
@@ -83,11 +83,11 @@ Data Factory, Azure blob: Int16, Int32, Int64, Single, Double, Decimal, Byte [],
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| folderPath |BLOB depolama alanındaki kapsayıcının ve klasörün yolu. Örnek: myblobcontainer\myblobfolder\ |Evet |
-| fileName |Blobun adı. Dosya adı isteğe bağlıdır ve büyük/küçük harfe duyarlıdır.<br/><br/>Bir dosya adı belirtirseniz, etkinlik (kopyalama dahil) belirli bir Blobun üzerinde kullanılır.<br/><br/>Dosya adı belirtilmediğinde, Copy, giriş veri kümesi için folderPath içindeki tüm Blobları içerir.<br/><br/>Bir çıkış veri kümesi için **dosya adı** belirtilmediğinde ve etkinlik havuzunda **preservehierarchy** belirtilmemişse, oluşturulan dosyanın adı şu biçimde olacaktır: `Data.<Guid>.txt` (örneğin:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Hayır |
-| partitionedBy |partitionedBy, isteğe bağlı bir özelliktir. Bu uygulamayı, zaman serisi verileri için dinamik bir folderPath ve filename belirtmek üzere kullanabilirsiniz. Örneğin, folderPath her saat veri için parametreleştirilebilirler. Ayrıntılar ve örnekler için [partitionedBy özelliğini kullanma bölümüne](#using-partitionedby-property) bakın. |Hayır |
-| biçim | Şu biçim türleri desteklenir: **TextFormat**, **jsonformat**, **avroformat**, **orcformat**, **parquetformat**. Biçim ' in altındaki **Type** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için bkz. [metin biçimi](data-factory-supported-file-and-compression-formats.md#text-format), [JSON biçimi](data-factory-supported-file-and-compression-formats.md#json-format), [avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [orc biçimi](data-factory-supported-file-and-compression-formats.md#orc-format)ve [Parquet biçim](data-factory-supported-file-and-compression-formats.md#parquet-format) bölümleri. <br><br> Dosyaları dosya tabanlı mağazalar (ikili kopya) arasında **olduğu gibi kopyalamak** istiyorsanız, hem giriş hem de çıkış veri kümesi tanımlarının biçim bölümünü atlayın. |Hayır |
-| sıkıştırma | Verilerin türünü ve sıkıştırma düzeyini belirtin. Desteklenen türler şunlardır: **gzip**, **söndür**, **bzip2**ve **zipsöndür**. Desteklenen düzeyler şunlardır: **en iyi** ve **en hızlı**. Daha fazla bilgi için bkz. [Azure Data Factory dosya ve sıkıştırma biçimleri](data-factory-supported-file-and-compression-formats.md#compression-support). |Hayır |
+| folderPath |BLOB depolama alanındaki kapsayıcının ve klasörün yolu. Örnek: myblobcontainer\myblobfolder\ |Yes |
+| fileName |Blobun adı. Dosya adı isteğe bağlıdır ve büyük/küçük harfe duyarlıdır.<br/><br/>Bir dosya adı belirtirseniz, etkinlik (kopyalama dahil) belirli bir Blobun üzerinde kullanılır.<br/><br/>Dosya adı belirtilmediğinde, Copy, giriş veri kümesi için folderPath içindeki tüm Blobları içerir.<br/><br/>Bir çıkış veri kümesi için **dosya adı** belirtilmediğinde ve etkinlik havuzunda **preservehierarchy** belirtilmemişse, oluşturulan dosyanın adı şu biçimde olacaktır: `Data.<Guid>.txt` (örneğin:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |No |
+| partitionedBy |partitionedBy, isteğe bağlı bir özelliktir. Bu uygulamayı, zaman serisi verileri için dinamik bir folderPath ve filename belirtmek üzere kullanabilirsiniz. Örneğin, folderPath her saat veri için parametreleştirilebilirler. Ayrıntılar ve örnekler için [partitionedBy özelliğini kullanma bölümüne](#using-partitionedby-property) bakın. |No |
+| biçim | Şu biçim türleri desteklenir: **TextFormat**, **jsonformat**, **avroformat**, **orcformat**, **parquetformat**. Biçim ' in altındaki **Type** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için bkz. [metin biçimi](data-factory-supported-file-and-compression-formats.md#text-format), [JSON biçimi](data-factory-supported-file-and-compression-formats.md#json-format), [avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [orc biçimi](data-factory-supported-file-and-compression-formats.md#orc-format)ve [Parquet biçim](data-factory-supported-file-and-compression-formats.md#parquet-format) bölümleri. <br><br> Dosyaları dosya tabanlı mağazalar (ikili kopya) arasında **olduğu gibi kopyalamak** istiyorsanız, hem giriş hem de çıkış veri kümesi tanımlarının biçim bölümünü atlayın. |No |
+| sıkıştırma | Verilerin türünü ve sıkıştırma düzeyini belirtin. Desteklenen türler şunlardır: **gzip**, **söndür**, **bzip2** ve **zipsöndür**. Desteklenen düzeyler şunlardır: **en iyi** ve **en hızlı**. Daha fazla bilgi için bkz. [Azure Data Factory dosya ve sıkıştırma biçimleri](data-factory-supported-file-and-compression-formats.md#compression-support). |No |
 
 ### <a name="using-partitionedby-property"></a>PartitionedBy özelliğini kullanma
 Önceki bölümde belirtildiği gibi, **Partitionedby** özelliği, [Data Factory işlevleri ve sistem değişkenleri](data-factory-functions-variables.md)ile zaman serisi verileri için dinamik bir FolderPath ve filename belirtebilirsiniz.
@@ -123,19 +123,19 @@ Bu örnekte, {Slice}, belirtilen (YYYYMMDDHH) biçimindeki Data Factory sistem d
 Bu örnekte, monthestart 'ın Year, month, Day ve Time, folderPath ve fileName özellikleri tarafından kullanılan ayrı değişkenlere ayıklanır.
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
-Etkinlikleri tanımlamaya yönelik bölüm & özelliklerinin tam listesi için, işlem [hatları oluşturma](data-factory-create-pipelines.md) makalesine bakın. Ad, açıklama, giriş ve çıkış veri kümeleri ve ilkeler gibi özellikler, tüm etkinlik türleri için kullanılabilir. Ancak, etkinliğin **typeproperties** bölümünde kullanılabilen özellikler her etkinlik türüyle farklılık gösterir. Kopyalama etkinliği için, kaynak ve havuz türlerine göre farklılık gösterir. Verileri bir Azure Blob depolamadan taşıyorsanız, kopyalama etkinliğinde kaynak türünü **Blobsource**olarak ayarlarsınız. Benzer şekilde, verileri bir Azure Blob depolama alanına taşıyorsanız, kopyalama etkinliğindeki havuz türünü **Blobsink**olarak ayarlarsınız. Bu bölüm, BlobSource ve BlobSink tarafından desteklenen özelliklerin bir listesini sağlar.
+Etkinlikleri tanımlamaya yönelik bölüm & özelliklerinin tam listesi için, işlem [hatları oluşturma](data-factory-create-pipelines.md) makalesine bakın. Ad, açıklama, giriş ve çıkış veri kümeleri ve ilkeler gibi özellikler, tüm etkinlik türleri için kullanılabilir. Ancak, etkinliğin **typeproperties** bölümünde kullanılabilen özellikler her etkinlik türüyle farklılık gösterir. Kopyalama etkinliği için, kaynak ve havuz türlerine göre farklılık gösterir. Verileri bir Azure Blob depolamadan taşıyorsanız, kopyalama etkinliğinde kaynak türünü **Blobsource** olarak ayarlarsınız. Benzer şekilde, verileri bir Azure Blob depolama alanına taşıyorsanız, kopyalama etkinliğindeki havuz türünü **Blobsink** olarak ayarlarsınız. Bu bölüm, BlobSource ve BlobSink tarafından desteklenen özelliklerin bir listesini sağlar.
 
 **Blobsource** , **typeproperties** bölümünde aşağıdaki özellikleri destekler:
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| öz |Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. |True (varsayılan değer), yanlış |Hayır |
+| öz |Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. |True (varsayılan değer), yanlış |No |
 
 **Blobsink** , aşağıdaki özellikleri **typeproperties** bölümünü destekler:
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| copyBehavior |Kaynak BlobSource veya FileSystem olduğunda kopyalama davranışını tanımlar. |<b>Preservehierarchy</b>: Hedef klasördeki dosya hiyerarşisini korur. Kaynak dosyanın kaynak klasöre göreli yolu hedef dosyanın hedef klasöre göreli yolu ile aynıdır.<br/><br/><b>DÜZEDEN hiyerarşi</b>: kaynak klasördeki tüm dosyalar hedef klasörün ilk düzeyindedir. Hedef dosyaların otomatik olarak üretilen adı var. <br/><br/><b>Mergefiles</b>: kaynak klasördeki tüm dosyaları tek bir dosya ile birleştirir. Dosya/BLOB adı belirtilmişse, birleştirilmiş dosya adı belirtilen ad olur; Aksi takdirde, otomatik olarak oluşturulan dosya adı olacaktır. |Hayır |
+| copyBehavior |Kaynak BlobSource veya FileSystem olduğunda kopyalama davranışını tanımlar. |<b>Preservehierarchy</b>: Hedef klasördeki dosya hiyerarşisini korur. Kaynak dosyanın kaynak klasöre göreli yolu hedef dosyanın hedef klasöre göreli yolu ile aynıdır.<br/><br/><b>DÜZEDEN hiyerarşi</b>: kaynak klasördeki tüm dosyalar hedef klasörün ilk düzeyindedir. Hedef dosyaların otomatik olarak üretilen adı var. <br/><br/><b>Mergefiles</b>: kaynak klasördeki tüm dosyaları tek bir dosya ile birleştirir. Dosya/BLOB adı belirtilmişse, birleştirilmiş dosya adı belirtilen ad olur; Aksi takdirde, otomatik olarak oluşturulan dosya adı olacaktır. |No |
 
 **Blobsource** Ayrıca geriye dönük uyumluluk için bu iki özelliği destekler.
 
@@ -173,7 +173,7 @@ Bu bölümde, özyinelemeli ve copyBehavior değerlerinin farklı birleşimleri 
 ## <a name="walkthrough-use-copy-wizard-to-copy-data-tofrom-blob-storage"></a>İzlenecek yol: blob depolamadan veri kopyalamak için kopyalama Sihirbazı 'nı kullanma
 Azure Blob depolama alanı 'na/konumundan hızlı bir şekilde veri kopyalama bölümüne bakalım. Bu kılavuzda, hem kaynak hem de hedef veri deposu türü: Azure Blob depolama. Bu izlenecek işlem hattı, verileri bir klasörden aynı blob kapsayıcısındaki başka bir klasöre kopyalar. Bu izlenecek yol, blob depolamayı kaynak veya havuz olarak kullanırken ayarları veya özellikleri göstermek kasıtlı olarak basittir.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 1. Henüz bir tane yoksa, genel amaçlı bir **Azure depolama hesabı** oluşturun. Blob depolamayı bu kılavuzda hem **kaynak** hem de **hedef** veri deposu olarak kullanırsınız. bir Azure depolama hesabınız yoksa, oluşturma adımları için [depolama hesabı oluşturma](../../storage/common/storage-account-create.md) makalesine bakın.
 2. Depolama hesabında **adfblobconnector** adlı bir blob kapsayıcısı oluşturun.
 4. **Adfblobconnector** kapsayıcısında **Input** adlı bir klasör oluşturun.
@@ -187,12 +187,12 @@ Azure Blob depolama alanı 'na/konumundan hızlı bir şekilde veri kopyalama b�
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Sol üst köşedeki **kaynak oluştur ' a** tıklayın, **Intelligence + Analytics**' e tıklayın ve **Data Factory**' ye tıklayın.
 3. **Yeni Data Factory** bölmesinde:  
-    1. **Ad**Için **Adfblobconnectordf** girin. Azure veri fabrikasının adı genel olarak benzersiz olmalıdır. Şu hatayı alırsanız: `*Data factory name “ADFBlobConnectorDF” is not available` veri fabrikasının adını değiştirin (örneğin, yournameADFBlobConnectorDF) ve yeniden oluşturmayı deneyin. Data Factory yapıtlarının adlandırma kuralları için [Data Factory - Adlandırma Kuralları](data-factory-naming-rules.md) konusuna bakın.
-    2. Azure **aboneliğinizi**seçin.
+    1. **Ad** Için **Adfblobconnectordf** girin. Azure veri fabrikasının adı genel olarak benzersiz olmalıdır. Şu hatayı alırsanız: `*Data factory name “ADFBlobConnectorDF” is not available` veri fabrikasının adını değiştirin (örneğin, yournameADFBlobConnectorDF) ve yeniden oluşturmayı deneyin. Data Factory yapıtlarının adlandırma kuralları için [Data Factory - Adlandırma Kuralları](data-factory-naming-rules.md) konusuna bakın.
+    2. Azure **aboneliğinizi** seçin.
     3. Kaynak grubu için mevcut bir kaynak grubunu seçmek için **Varolanı kullan** ' ı seçin (veya) kaynak grubu için bir ad girmek üzere **Yeni oluştur** ' u seçin.
     4. Veri fabrikası için bir **konum** seçin.
     5. Dikey pencerenin alt kısmındaki **Panoya sabitle** onay kutusunu seçin.
-    6. **Oluştur**’a tıklayın.
+    6. **Oluştur**'a tıklayın.
 3. Oluşturma işlemi tamamlandıktan sonra, aşağıdaki görüntüde gösterildiği gibi **Data Factory** dikey penceresini görürsünüz:  ![ Data Factory giriş sayfası](./media/data-factory-azure-blob-connector/data-factory-home-page.png)
 
 ### <a name="copy-wizard"></a>Kopyalama Sihirbazı
@@ -201,40 +201,40 @@ Azure Blob depolama alanı 'na/konumundan hızlı bir şekilde veri kopyalama b�
     > [!NOTE]
     > Web tarayıcısının "yetkilendiriliyor..." konumunda takılı olduğunu görürseniz, **üçüncü taraf tanımlama bilgilerini ve site verilerini engellemeyi** devre dışı bırakın/işaretini kaldırın ve **login.microsoftonline.com** için bir özel durum oluşturun ve ardından Sihirbazı yeniden başlatmayı deneyin.
 2. **Özellikler** sayfasında:
-    1. **Görev adı**Için **copypipeline** girin. Görev adı, veri fabrikanızdaki işlem hattının adıdır.
+    1. **Görev adı** Için **copypipeline** girin. Görev adı, veri fabrikanızdaki işlem hattının adıdır.
     2. Görev için bir **Açıklama** girin (isteğe bağlı).
-    3. **Görev temposunda veya görev zamanlaması**için **zamanlamaya göre Çalıştır** seçeneğini saklayın. Bu görevi bir zamanlamaya göre tekrar tekrar çalıştırmak yerine yalnızca bir kez çalıştırmak istiyorsanız, **Şimdi Çalıştır**' ı seçin. **Şimdi Çalıştır** seçeneğini belirlerseniz, bir [kerelik işlem hattı](data-factory-create-pipelines.md#onetime-pipeline) oluşturulur.
-    4. **Yinelenen model**ayarlarını tutun. Bu görev, bir sonraki adımda belirttiğiniz başlangıç ve bitiş zamanları arasında günlük olarak çalışır.
-    5. **Başlangıç tarihi saatini** **04/21/2017**olarak değiştirin.
-    6. **Bitiş tarih saatini** **04/25/2017**olarak değiştirin. Takvime göz atmak yerine tarihi yazmak isteyebilirsiniz.
+    3. **Görev temposunda veya görev zamanlaması** için **zamanlamaya göre Çalıştır** seçeneğini saklayın. Bu görevi bir zamanlamaya göre tekrar tekrar çalıştırmak yerine yalnızca bir kez çalıştırmak istiyorsanız, **Şimdi Çalıştır**' ı seçin. **Şimdi Çalıştır** seçeneğini belirlerseniz, bir [kerelik işlem hattı](data-factory-create-pipelines.md#onetime-pipeline) oluşturulur.
+    4. **Yinelenen model** ayarlarını tutun. Bu görev, bir sonraki adımda belirttiğiniz başlangıç ve bitiş zamanları arasında günlük olarak çalışır.
+    5. **Başlangıç tarihi saatini** **04/21/2017** olarak değiştirin.
+    6. **Bitiş tarih saatini** **04/25/2017** olarak değiştirin. Takvime göz atmak yerine tarihi yazmak isteyebilirsiniz.
     8. **İleri**’ye tıklayın.
         ![Kopyalama Aracı - Özellikler sayfası](./media/data-factory-azure-blob-connector/copy-tool-properties-page.png)
 3. **Kaynak veri deposu** sayfasında **Azure Blob Storage** kutucuğuna tıklayın. Kopyalama görevine yönelik kaynak veri deposunu belirtmek için bu sayfayı kullanın. Yeni bir veri deposu belirtmek için mevcut bir veri deposu bağlı hizmetini kullanabilirsiniz (veya) yeni bir veri deposu belirtebilirsiniz. Mevcut bir bağlı hizmeti kullanmak için **mevcut bağlı hizmetlerden** seçim yapın ve doğru bağlı hizmeti seçin.
     ![Kopyalama Aracı - Kaynak veri deposu sayfası](./media/data-factory-azure-blob-connector/copy-tool-source-data-store-page.png)
 4. **Azure Blob depolama hesabı belirtin** sayfasında:
-    1. **Bağlantı adı**için otomatik olarak oluşturulan adı koruyun. Bağlantı adı, şu türde bağlı hizmetin adıdır: Azure Storage.
+    1. **Bağlantı adı** için otomatik olarak oluşturulan adı koruyun. Bağlantı adı, şu türde bağlı hizmetin adıdır: Azure Storage.
     2. **Hesap seçme yöntemi** için **Azure aboneliklerinden** seçeneğinin belirlendiğini onaylayın.
     3. Azure aboneliğiniz ' ı seçin veya **Tüm** **Azure abonelikleri**' ni seçin.
-    4. Seçili abonelikte bulunan Azure depolama hesapları listesinden bir **Azure depolama hesabı** seçin. Ayrıca, **hesap seçme yöntemi**için **el ile gir** seçeneğini belirleyerek depolama hesabı ayarlarını el ile girmeyi de tercih edebilirsiniz.
+    4. Seçili abonelikte bulunan Azure depolama hesapları listesinden bir **Azure depolama hesabı** seçin. Ayrıca, **hesap seçme yöntemi** için **el ile gir** seçeneğini belirleyerek depolama hesabı ayarlarını el ile girmeyi de tercih edebilirsiniz.
     5. **İleri**’ye tıklayın.  
         ![Kopyalama Aracı - Azure Blob depolama hesabı belirtin](./media/data-factory-azure-blob-connector/copy-tool-specify-azure-blob-storage-account.png)
 5. **Girdi dosyası veya klasörü seçin** sayfasında:
-    1. **Adfblobcontainer**öğesine çift tıklayın.
+    1. **Adfblobcontainer** öğesine çift tıklayın.
     2. **Giriş**' i seçin ve **Seç**' e tıklayın. Bu izlenecek yolda giriş klasörünü seçersiniz. Bunun yerine klasördeki emp.txt dosyasını da seçebilirsiniz.
         ![Kopyalama aracı-girdi dosyasını veya klasörünü seçin 1](./media/data-factory-azure-blob-connector/copy-tool-choose-input-file-or-folder.png)
 6. **Girdi dosyasını veya klasörünü seçin** sayfasında:
-    1. **Dosya veya klasörün** **adfblobconnector/Input**olarak ayarlandığını onaylayın. Dosyalar alt klasörlerdir (örneğin, 2017/04/01, 2017/04/02 vb.), dosya veya klasör için adfblobconnector/Input/{year}/{month}/{Day} girin. Metin kutusunu basılı bıraktığınızda, yıl (yyyy), ay (MM) ve gün (gg) için biçim seçmek üzere üç açılan liste görürsünüz.
-    2. **Kopya dosyasını yinelemeli**olarak ayarlamayın. Hedefe kopyalanan dosyalar için klasörler arasında yinelemeli geçiş yapmak için bu seçeneği belirleyin.
+    1. **Dosya veya klasörün** **adfblobconnector/Input** olarak ayarlandığını onaylayın. Dosyalar alt klasörlerdir (örneğin, 2017/04/01, 2017/04/02 vb.), dosya veya klasör için adfblobconnector/Input/{year}/{month}/{Day} girin. Metin kutusunu basılı bıraktığınızda, yıl (yyyy), ay (MM) ve gün (gg) için biçim seçmek üzere üç açılan liste görürsünüz.
+    2. **Kopya dosyasını yinelemeli** olarak ayarlamayın. Hedefe kopyalanan dosyalar için klasörler arasında yinelemeli geçiş yapmak için bu seçeneği belirleyin.
     3. **İkili kopya** seçeneğini kullanmayın. Kaynak dosyanın hedefe ikili bir kopyasını gerçekleştirmek için bu seçeneği belirleyin. Sonraki sayfalarda daha fazla seçenek görebilmeniz için bu izlenecek yol için seçim yapın.
-    4. **Sıkıştırma türünün** **none**olarak ayarlandığını doğrulayın. Kaynak dosyalarınız desteklenen biçimlerden birinde sıkıştırılmışsa Bu seçenek için bir değer seçin.
+    4. **Sıkıştırma türünün** **none** olarak ayarlandığını doğrulayın. Kaynak dosyalarınız desteklenen biçimlerden birinde sıkıştırılmışsa Bu seçenek için bir değer seçin.
     5. **İleri**’ye tıklayın.
     ![Kopyalama aracı-giriş dosyasını veya klasörünü seçme 2](./media/data-factory-azure-blob-connector/chose-input-file-folder.png)
 7. **Dosya biçimi ayarları** sayfasında sınırlayıcıları ve sihirbaz tarafından dosya ayrıştırılarak otomatik olarak algılanan düzeni görürsünüz.
     1. Aşağıdaki seçenekleri onaylayın:  
-        a. **Dosya biçimi** **metin biçimine**ayarlanır. Desteklenen tüm biçimleri aşağı açılan listede görebilirsiniz. Örneğin: JSON, avro, ORC, Parquet.
+        a. **Dosya biçimi** **metin biçimine** ayarlanır. Desteklenen tüm biçimleri aşağı açılan listede görebilirsiniz. Örneğin: JSON, avro, ORC, Parquet.
        b. **Sütun sınırlayıcısı** olarak ayarlanır `Comma (,)` . Aşağı açılan listede Data Factory tarafından desteklenen diğer sütun sınırlayıcılarını görebilirsiniz. Ayrıca, özel bir sınırlayıcı de belirtebilirsiniz.
        c. **Satır sınırlayıcısı** olarak ayarlanır `Carriage Return + Line feed (\r\n)` . Data Factory tarafından desteklenen diğer satır sınırlayıcılarını aşağı açılan listede görebilirsiniz. Ayrıca, özel bir sınırlayıcı de belirtebilirsiniz.
-       d. **Atlama satırı sayısı** **0**olarak ayarlanır. Dosyanın en üstünde birkaç satır atlanmasını istiyorsanız, numarayı buraya girin.
+       d. **Atlama satırı sayısı** **0** olarak ayarlanır. Dosyanın en üstünde birkaç satır atlanmasını istiyorsanız, numarayı buraya girin.
        e. **İlk veri satırı sütun adlarını içerir** olarak ayarlanamaz. Kaynak dosyalar ilk satırda sütun adları içeriyorsa, bu seçeneği seçin.
        f. **Boş sütun değerini null olarak değerlendir** seçeneği ayarlandı.
     2. Gelişmiş seçenekleri görmek için Gelişmiş **Ayarlar** ' ı genişletin.
@@ -247,21 +247,21 @@ Azure Blob depolama alanı 'na/konumundan hızlı bir şekilde veri kopyalama b�
 9. **Azure Blob depolama hesabı belirtin** sayfasında:  
     1. **Bağlantı adı** alanı için **AzureStorageLinkedService** girin.
     2. **Hesap seçme yöntemi** için **Azure aboneliklerinden** seçeneğinin belirlendiğini onaylayın.
-    3. Azure **aboneliğinizi**seçin.
+    3. Azure **aboneliğinizi** seçin.
     4. Azure depolama hesabınızı seçin.
     5. **İleri**’ye tıklayın.
 10. **Çıktı dosyasını veya klasörünü seçin** sayfasında:  
-    1. **klasör yolunu** **adfblobconnector/output/{year}/{month}/{Day}** olarak belirtin. **Sekme**girin.
-    1. **Yıl**için **yyyy**' ı seçin.
-    1. **Ay**Için, **mm**olarak ayarlandığını onaylayın.
-    1. **Gün**için, **dd**olarak ayarlandığını onaylayın.
-    1. **Sıkıştırma türünün** **none**olarak ayarlandığını doğrulayın.
-    1. **Kopyalama davranışının** **Dosyaları Birleştir**olarak ayarlandığını doğrulayın. Aynı ada sahip çıkış dosyası zaten varsa, yeni içerik sonundaki aynı dosyaya eklenir.
+    1. **klasör yolunu** **adfblobconnector/output/{year}/{month}/{Day}** olarak belirtin. **Sekme** girin.
+    1. **Yıl** için **yyyy**' ı seçin.
+    1. **Ay** Için, **mm** olarak ayarlandığını onaylayın.
+    1. **Gün** için, **dd** olarak ayarlandığını onaylayın.
+    1. **Sıkıştırma türünün** **none** olarak ayarlandığını doğrulayın.
+    1. **Kopyalama davranışının** **Dosyaları Birleştir** olarak ayarlandığını doğrulayın. Aynı ada sahip çıkış dosyası zaten varsa, yeni içerik sonundaki aynı dosyaya eklenir.
     1. **İleri**’ye tıklayın.
        ![Kopyalama aracı-çıkış dosyası veya klasörü seçin](media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png)
 11. **Dosya biçimi ayarları** sayfasında, ayarları gözden geçirin ve **İleri**' ye tıklayın. Buradaki ek seçeneklerden biri, çıkış dosyasına bir üst bilgi eklemektir. Bu seçeneği belirlerseniz, kaynağın şemasından sütunların adlarıyla bir başlık satırı eklenir. Kaynak için şemayı görüntülerken varsayılan sütun adlarını yeniden adlandırabilirsiniz. Örneğin, ilk sütunu Ilk adı ve ikinci sütunu soyadı olacak şekilde değiştirebilirsiniz. Ardından, çıkış dosyası bu adlara sahip bir üstbilgiyle birlikte sütun adı olarak oluşturulur.
     ![Hedef için kopyalama aracı-dosya biçimi ayarları](media/data-factory-azure-blob-connector/file-format-destination.png)
-12. **Performans ayarları** sayfasında, **bulut birimlerinin** ve **paralel kopyaların** **Auto**olarak ayarlandığını doğrulayın ve ileri ' ye tıklayın. Bu ayarlar hakkında daha fazla bilgi için bkz. [kopyalama etkinliği performansı ve ayarlama Kılavuzu](data-factory-copy-activity-performance.md#parallel-copy).
+12. **Performans ayarları** sayfasında, **bulut birimlerinin** ve **paralel kopyaların** **Auto** olarak ayarlandığını doğrulayın ve ileri ' ye tıklayın. Bu ayarlar hakkında daha fazla bilgi için bkz. [kopyalama etkinliği performansı ve ayarlama Kılavuzu](data-factory-copy-activity-performance.md#parallel-copy).
     ![Kopyalama aracı-performans ayarları](media/data-factory-azure-blob-connector/copy-performance-settings.png)
 14. **Özet** sayfasında tüm ayarları gözden geçirin (görev özellikleri, kaynak ve hedef ayarları ve kopyalama ayarları) ve **İleri**' ye tıklayın.
     ![Kopyalama aracı-Özet sayfası](media/data-factory-azure-blob-connector/copy-tool-summary-page.png)
@@ -303,7 +303,7 @@ Data Factory 'de aşağıdaki Data Factory varlıkları görmeniz gerekir:
 Aşağıdaki bölümlerde bu varlıklar hakkında daha fazla bilgi sağlanmaktadır.
 
 #### <a name="linked-services"></a>Bağlı hizmetler
-İki bağlı hizmet görmeniz gerekir. Biri kaynak ve diğeri için bir tane. Bu kılavuzda, her iki tanım de adlar hariç aynı şekilde görünür. Bağlı hizmetin **türü** **azurestorage**olarak ayarlanır. Bağlı hizmet tanımının en önemli özelliği, çalışma zamanında Azure depolama hesabınıza bağlanmak için Data Factory tarafından kullanılan **ConnectionString**'dir. Tanımda hubName özelliğini yoksayın.
+İki bağlı hizmet görmeniz gerekir. Biri kaynak ve diğeri için bir tane. Bu kılavuzda, her iki tanım de adlar hariç aynı şekilde görünür. Bağlı hizmetin **türü** **azurestorage** olarak ayarlanır. Bağlı hizmet tanımının en önemli özelliği, çalışma zamanında Azure depolama hesabınıza bağlanmak için Data Factory tarafından kullanılan **ConnectionString**'dir. Tanımda hubName özelliğini yoksayın.
 
 ##### <a name="source-blob-storage-linked-service"></a>Kaynak BLOB depolama bağlı hizmeti
 ```json
@@ -407,7 +407,7 @@ Azure blob veri kümesi tarafından desteklenen özellikler hakkında daha fazla
 ```
 
 #### <a name="pipeline"></a>İşlem Hattı
-İşlem hattının tek bir etkinliği vardır. Etkinliğin **türü** **kopya**olarak ayarlanır. Etkinliğin tür özelliklerinde, biri kaynak ve diğeri havuz için olmak üzere iki bölüm vardır. Etkinlik bir blob depolamadan veri kopyalarken, kaynak türü **Blobsource** olarak ayarlanır. BLOB depolama alanına veri kopyalarken, havuz türü **Blobsink** olarak ayarlanır. Kopyalama etkinliği, giriş ve OutputDataset-z4y olarak ınputdataset-z4y alır.
+İşlem hattının tek bir etkinliği vardır. Etkinliğin **türü** **kopya** olarak ayarlanır. Etkinliğin tür özelliklerinde, biri kaynak ve diğeri havuz için olmak üzere iki bölüm vardır. Etkinlik bir blob depolamadan veri kopyalarken, kaynak türü **Blobsource** olarak ayarlanır. BLOB depolama alanına veri kopyalarken, havuz türü **Blobsink** olarak ayarlanır. Kopyalama etkinliği, giriş ve OutputDataset-z4y olarak ınputdataset-z4y alır.
 
 BlobSource ve BlobSink tarafından desteklenen özellikler hakkında daha fazla bilgi için bkz. [kopyalama etkinliği özellikleri](#copy-activity-properties) bölümü.
 
@@ -568,7 +568,7 @@ Veriler her saat yeni bir bloba alınır (sıklık: saat, Aralık: 1). Blob içi
 ```
 **Blob kaynağı ve SQL havuzu içeren bir işlem hattındaki kopyalama etkinliği:**
 
-İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. İşlem hattı JSON tanımında **kaynak** türü **blobsource** olarak ayarlanır ve **Havuz** türü **sqlsink**olarak ayarlanır.
+İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. İşlem hattı JSON tanımında **kaynak** türü **blobsource** olarak ayarlanır ve **Havuz** türü **sqlsink** olarak ayarlanır.
 
 ```json
 {
@@ -721,7 +721,7 @@ Veriler her saat yeni bir bloba yazılır (sıklık: saat, Aralık: 1). Blob 'un
 
 **SQL kaynağı ve BLOB havuzu içeren bir işlem hattındaki kopyalama etkinliği:**
 
-İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. İşlem hattı JSON tanımında **kaynak** türü **SQLSource** olarak ayarlanır ve **Havuz** türü **blobsink**olarak ayarlanır. **Sqlreaderquery** özelliği IÇIN belirtilen SQL sorgusu, kopyalamanın Son saatteki verilerini seçer.
+İşlem hattı, giriş ve çıkış veri kümelerini kullanmak üzere yapılandırılmış bir kopyalama etkinliği içerir ve her saat çalışacak şekilde zamanlanır. İşlem hattı JSON tanımında **kaynak** türü **SQLSource** olarak ayarlanır ve **Havuz** türü **blobsink** olarak ayarlanır. **Sqlreaderquery** özelliği IÇIN belirtilen SQL sorgusu, kopyalamanın Son saatteki verilerini seçer.
 
 ```json
 {

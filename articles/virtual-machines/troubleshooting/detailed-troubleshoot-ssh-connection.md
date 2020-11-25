@@ -16,11 +16,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: c117f9697299b94a54d9184093e65c56822b8bd2
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975680"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002638"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Azure'da Linux VM'ye bağlanmayla ilgili ayrıntılı SSH sorun giderme adımları
 SSH istemcisinin VM 'deki SSH hizmetine erişememesinin pek çok nedeni olabilir. Daha [Genel SSH sorun giderme adımlarına](troubleshoot-ssh-connection.md)uyuldıysanız, bağlantı sorununu gidermeye devam etmeniz gerekir. Bu makale, SSH bağlantısının başarısız olduğunu ve nasıl çözümleneceğini belirlemede ayrıntılı sorun giderme adımları boyunca size rehberlik eder.
@@ -35,7 +35,7 @@ Aşağıdaki adımlar, hatanın kaynağını yalıtmanıza ve çözümlerin veya
 1. Portalda VM 'nin durumunu denetleyin.
    [Azure Portal](https://portal.azure.com) **sanal makineler**  >  *VM adı*' nı seçin.
 
-   VM 'nin durum bölmesinde **çalışıyor**gösterilmesi gerekir. İşlem, depolama ve ağ kaynaklarına yönelik son etkinlikleri göstermek için aşağı kaydırın.
+   VM 'nin durum bölmesinde **çalışıyor** gösterilmesi gerekir. İşlem, depolama ve ağ kaynaklarına yönelik son etkinlikleri göstermek için aşağı kaydırın.
 
 2. Uç noktaları, IP adresleri, ağ güvenlik grupları ve diğer ayarları incelemek için **ayarları** seçin.
 
