@@ -11,15 +11,15 @@ ms.workload: identity
 ms.date: 03/19/2020
 ms.author: kenwith
 ms.openlocfilehash: e34656d6ce515cabe955c101f7b52ac0f2ade8db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88235834"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994817"
 ---
 # <a name="how-to-export-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>Nasıl yapılır: sağlama yapılandırmasını dışarı aktarma ve bilinen iyi bir duruma geri alma
 
-Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
+Bu makalede şunları yapmayı öğreneceksiniz:
 
 - Azure portal sağlama yapılandırmanızı dışarı ve içeri aktarma
 - Microsoft Graph API 'sini kullanarak sağlama yapılandırmanızı dışarı ve içeri aktarma
@@ -32,7 +32,7 @@ Yapılandırmanızı dışarı aktarmak için:
 
 1. [Azure Portal](https://portal.azure.com/)sol gezinti panelinde **Azure Active Directory**' i seçin.
 1. **Azure Active Directory** bölmesinde **Kurumsal uygulamalar** ' ı seçin ve uygulamanızı seçin.
-1. Sol gezinti bölmesinde **sağlama**' yı seçin. Sağlama yapılandırma sayfasında, **öznitelik eşlemeleri**' ne tıklayın, ardından **Gelişmiş seçenekleri gösterin**ve son olarak **şemanızı gözden geçirin**. Bu işlem sizi şema düzenleyicisine götürür.
+1. Sol gezinti bölmesinde **sağlama**' yı seçin. Sağlama yapılandırma sayfasında, **öznitelik eşlemeleri**' ne tıklayın, ardından **Gelişmiş seçenekleri gösterin** ve son olarak **şemanızı gözden geçirin**. Bu işlem sizi şema düzenleyicisine götürür.
 1. Şemayı indirmek için sayfanın en üstündeki komut çubuğunda İndir ' e tıklayın.
 
 ### <a name="disaster-recovery---roll-back-to-a-known-good-state"></a>Olağanüstü durum kurtarma-bilinen iyi bir duruma geri alma
@@ -97,7 +97,7 @@ Microsoft Graph Gezgini 'nde, aşağıdaki PUT sorgusunu, [Serviceprincipalıd] 
 
 "Istek gövdesi" sekmesinde, JSON Şema dosyasının içeriğini kopyalayın.
 
-   [![İstek gövdesi](./media/export-import-provisioning-configuration/wd_export_04.png)](./media/export-import-provisioning-configuration/wd_export_04.png#lightbox)
+   [![İstek Gövdesi](./media/export-import-provisioning-configuration/wd_export_04.png)](./media/export-import-provisioning-configuration/wd_export_04.png#lightbox)
 
 "Istek üstbilgileri" sekmesinde, Içerik türü üst bilgi özniteliğini "Application/JSON" değeriyle ekleyin
 

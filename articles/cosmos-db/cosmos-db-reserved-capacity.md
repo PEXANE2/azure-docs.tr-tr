@@ -8,11 +8,11 @@ ms.date: 02/18/2020
 ms.author: tisande
 ms.reviewer: sngun
 ms.openlocfilehash: 27725b1a3dd6059010ce67977c39891a012c037e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097643"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995803"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Azure Cosmos DB'de ayrılmış kapasiteyle maliyeti iyileştirme
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -37,9 +37,9 @@ Saatlik kullanım örüntüsünün temelinde satın alma önerilerini hesapladı
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.  
 
-2. **Tüm hizmetler**  >  **ayırmaları**  >  **Ekle** ' yi seçin.
+2. **Tüm hizmetler**  >  **ayırmaları**  >  **Ekle**' yi seçin.
 
-3. **Satın alma rezervasyonları** bölmesinde **Azure Cosmos DB** ' yi seçin.
+3. **Satın alma rezervasyonları** bölmesinde **Azure Cosmos DB**' yi seçin.
 
 4. Önerilen rezervasyonları görüntülemek için **Önerilen** sekmeyi seçin:
 
@@ -61,17 +61,17 @@ Bir 30.000 RU/sn ayırması satın alma önerisi 3 yıllık rezervasyonlar aras�
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.  
 
-2. **Tüm hizmetler**  >  **ayırmaları**  >  **Ekle** ' yi seçin.  
+2. **Tüm hizmetler**  >  **ayırmaları**  >  **Ekle**' yi seçin.  
 
 3. **Satın alma rezervasyonları** bölmesinden yeni bir ayırma satın almak için **Azure Cosmos DB** seçin.  
 
 4. Gerekli alanları aşağıdaki tabloda açıklandığı gibi girin:
 
-   :::image type="content" source="./media/cosmos-db-reserved-capacity/fill-reserved-capacity-form.png" alt-text="Ayrılmış kapasite önerileri":::
+   :::image type="content" source="./media/cosmos-db-reserved-capacity/fill-reserved-capacity-form.png" alt-text="Ayrılmış kapasite formunu doldur":::
 
    |Alan  |Açıklama  |
    |---------|---------|
-   |Kapsam   |   Ayırma ile ilişkili fatura avantajını kaç tane aboneliğin kullanabileceğinizi denetleyen seçenektir. Ayrıca, rezervasyonun belirli aboneliklere nasıl uygulanacağını de denetler. <br/><br/>  **Paylaşılan** ' i seçerseniz, rezervasyon indirimi faturalandırma bağlamınızın içindeki herhangi bir abonelikte çalışan Azure Cosmos DB örneklerine uygulanır. Faturalandırma bağlamı, Azure 'a kaydolmanızı temel alır. Kurumsal müşteriler için, paylaşılan kapsam kayıt içindedir ve kayıt dahilindeki tüm abonelikleri içerir. Kullandıkça Öde müşterileri için, paylaşılan kapsam, hesap yöneticisi tarafından oluşturulan Kullandıkça Öde tarifesine sahip bireysel aboneliklerdir.  <br/><br/>  **Tek abonelik** ' ı seçerseniz, rezervasyon indirimi seçili abonelikteki Azure Cosmos DB örneklerine uygulanır. <br/><br/> **Tek kaynak grubu** ' nu seçerseniz, rezervasyon indirimi seçili abonelikteki Azure Cosmos DB örneklerine ve bu abonelikte seçilen kaynak grubuna uygulanır. <br/><br/> Ayrılan kapasiteyi satın aldıktan sonra rezervasyon kapsamını değiştirebilirsiniz.  |
+   |Kapsam   |   Ayırma ile ilişkili fatura avantajını kaç tane aboneliğin kullanabileceğinizi denetleyen seçenektir. Ayrıca, rezervasyonun belirli aboneliklere nasıl uygulanacağını de denetler. <br/><br/>  **Paylaşılan**' i seçerseniz, rezervasyon indirimi faturalandırma bağlamınızın içindeki herhangi bir abonelikte çalışan Azure Cosmos DB örneklerine uygulanır. Faturalandırma bağlamı, Azure 'a kaydolmanızı temel alır. Kurumsal müşteriler için, paylaşılan kapsam kayıt içindedir ve kayıt dahilindeki tüm abonelikleri içerir. Kullandıkça Öde müşterileri için, paylaşılan kapsam, hesap yöneticisi tarafından oluşturulan Kullandıkça Öde tarifesine sahip bireysel aboneliklerdir.  <br/><br/>  **Tek abonelik**' ı seçerseniz, rezervasyon indirimi seçili abonelikteki Azure Cosmos DB örneklerine uygulanır. <br/><br/> **Tek kaynak grubu**' nu seçerseniz, rezervasyon indirimi seçili abonelikteki Azure Cosmos DB örneklerine ve bu abonelikte seçilen kaynak grubuna uygulanır. <br/><br/> Ayrılan kapasiteyi satın aldıktan sonra rezervasyon kapsamını değiştirebilirsiniz.  |
    |Abonelik  |   Azure Cosmos DB ayrılmış kapasite için ödeme yapmak üzere kullanılan abonelik. Seçili abonelikteki ödeme yöntemi, maliyetleri borçlandırmak üzere kullanılır. Abonelik aşağıdaki türlerden biri olmalıdır: <br/><br/>  Kurumsal Anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P): kurumsal bir abonelik Için ücretler, kayıt parasal taahhüt bakiyesinden düşülür veya fazla kullanım olarak ücretlendirilir. <br/><br/> Kullandıkça Öde tarifesine sahip tek tek abonelik (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P): Kullandıkça Öde tarifesine sahip bireysel bir abonelik Için ücretler, abonelik üzerindeki kredi kartına veya fatura ödeme yöntemine faturalandırılır.    |
    | Kaynak Grubu | Ayrılmış kapasite iskontosunun uygulandığı kaynak grubu. |
    |Terim  |   Bir yıl veya üç yıl.   |
@@ -83,9 +83,9 @@ Bir 30.000 RU/sn ayırması satın alma önerisi 3 yıllık rezervasyonlar aras�
 
 6. **Satın alma rezervasyonları** bölmesinde, rezervasyonun iskontosunu ve fiyatını gözden geçirin. Bu rezervasyon fiyatı, tüm bölgelerde sağlanan aktarım hızına sahip Azure Cosmos DB kaynakları için geçerlidir.  
 
-   :::image type="content" source="./media/cosmos-db-reserved-capacity/reserved-capacity-summary.png" alt-text="Ayrılmış kapasite önerileri":::
+   :::image type="content" source="./media/cosmos-db-reserved-capacity/reserved-capacity-summary.png" alt-text="Ayrılmış kapasite Özeti":::
 
-7. **Gözden geçir + satın al** ' ı seçin ve **Şimdi satın alın** . Satın alma işlemi başarılı olduğunda aşağıdaki sayfayı görürsünüz:
+7. **Gözden geçir + satın al** ' ı seçin ve **Şimdi satın alın**. Satın alma işlemi başarılı olduğunda aşağıdaki sayfayı görürsünüz:
 
 Bir ayırma satın aldıktan sonra, rezervasyon koşullarına uyan mevcut Azure Cosmos DB kaynaklarına hemen uygulanır. Mevcut Azure Cosmos DB kaynağınız yoksa, rezervasyon koşullarına uyan yeni bir Cosmos DB örneği dağıttığınızda rezervasyon uygulanır. Her iki durumda da rezervasyon dönemi, başarılı bir satın alma işleminden hemen sonra başlar.
 

@@ -10,11 +10,11 @@ services: iot-central
 ms.custom: mvc
 manager: peterpr
 ms.openlocfilehash: f95df6fb74071dc16814f11fb48521f984c89778
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94988060"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995531"
 ---
 # <a name="tutorial---define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Öğretici-Azure IoT Central uygulamanızda yeni bir IoT Ağ Geçidi cihaz türü tanımlama
 
@@ -94,7 +94,7 @@ Daha sonra, aşağı akış cihaz şablonlarının şablonlarına ilişkiler ekl
 
 1. **+ Ilişki Ekle** ' yi seçin. Görünen ad olarak **sahiplik algılayıcısı** ' nı girin ve hedef olarak **RS40 sahiplik algılayıcısı** ' nı seçin.
 
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ![İlişkileri gösteren akıllı derleme ağ geçidi cihaz şablonu](./media/tutorial-define-gateway-device-type/relationships.png)
 
@@ -113,7 +113,7 @@ Bir ağ geçidi cihaz şablonu, bulut özellikleri içerebilir. Bulut özellikle
     | Son Hizmet Tarihi | Yok          | Tarih   |
     | Müşteri Adı     | Yok          | Dize |
 
-2. **Kaydet**’i seçin.
+2. **Kaydet**'i seçin.
 
 ### <a name="create-views"></a>Görünümler oluşturma
 

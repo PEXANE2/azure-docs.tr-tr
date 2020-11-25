@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5e55526e0a63a0c603e2b62ccb3ac0efed911cff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91295235"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996636"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect Eşitleme: Varsayılan yapılandırmayı anlama
 Bu makalede, kullanıma hazır yapılandırma kuralları açıklanmaktadır. Kuralları ve bu kuralların yapılandırmayı nasıl etkilediğini belgelemektedir. Ayrıca, Azure AD Connect eşitleme 'nin varsayılan yapılandırması boyunca size yol gösterir. Amaç, okuyucunun bildirim temelli sağlama adlı yapılandırma modelinin gerçek dünyada bir örnekte nasıl çalıştığını anlamaktır. Bu makalede, Yükleme Sihirbazı 'nı kullanarak Azure AD Connect eşitleme 'yi zaten yüklemiş ve yapılandırdığınız varsayılmaktadır.
@@ -96,7 +96,7 @@ Bir grup nesnesinin eşitlenmesi için aşağıdakileri karşılaması gerekir:
   * Eşitleme ilk kez başlatılmadan daha fazla üyeye sahipse, Grup eşitlenmez.
   * Üye sayısı başlangıçta oluşturulduğunda büyürken, üyelik sayısı 50.000 ' den daha az olana kadar, 50.000 üyeye ulaştığında eşitleme işlemini sonlandırır.
   * Note: 50.000 üyelik sayısı da Azure AD tarafından zorlanır. Bu kuralı değiştirseniz veya kaldırsanız bile grupları daha fazla üye ile eşitleyemezsiniz.
-* Grup bir **dağıtım grubu**ise, ayrıca posta etkin olmalıdır. Bu kural için [kişi hazır iletişim kuralları](#contact-out-of-box-rules) bölümüne bakın.
+* Grup bir **dağıtım grubu** ise, ayrıca posta etkin olmalıdır. Bu kural için [kişi hazır iletişim kuralları](#contact-out-of-box-rules) bölümüne bakın.
 
 Aşağıdaki Grup nesneleri Azure AD **ile eşitlenmez:**
 
@@ -138,9 +138,9 @@ SRE bir kaynak seti aracıdır ve Azure AD Connect eşitleme ile yüklenir. Baş
 Bu bölmede, yapılandırmanız için oluşturulan tüm eşitleme kurallarını görürsünüz. Tablodaki her satır bir eşitleme kuralıdır. Kural türlerinin sol tarafında, iki farklı tür listelenir: gelen ve giden. Gelen ve giden, meta veri deposu görünümünden oluşur. Bu genel bakışta genellikle gelen kurallara odaklanırsınız. Eşitleme kurallarının gerçek listesi AD 'de algılanan şemaya bağlıdır. Yukarıdaki resimde, hesap ormanı (fabrikamonline.com) Exchange ve Lync gibi herhangi bir hizmete sahip değildir ve bu hizmetler için hiçbir eşitleme kuralı oluşturulmaz. Bununla birlikte, kaynak ormanında (res.fabrikamonline.com), bu hizmetler için eşitleme kuralları ' nı bulabilirsiniz. Kuralların içeriği, algılanan sürüme bağlı olarak farklılık açmış. Örneğin, Exchange 2013 ile bir dağıtımda, Exchange 2010/2007 ' den daha fazla öznitelik akışı yapılandırılabilir.
 
 ### <a name="synchronization-rule"></a>Eşitleme kuralı
-Eşitleme kuralı, bir koşul karşılandığında bir dizi öznitelik içeren bir yapılandırma nesnesidir. Ayrıca, bir bağlayıcı alanındaki bir nesnenin, meta veri deposundaki bir nesneyle ilgili olduğunu, **JOIN** veya **Match**olarak bilinir. Eşitleme kuralları, birbirleriyle ilişkilerini gösteren bir öncelik değeri sağlar. Daha düşük bir sayısal değere sahip bir eşitleme kuralının önceliği daha yüksektir ve bir öznitelik akışı çakışmasında, daha yüksek öncelikli çakışma çözümü kazanır.
+Eşitleme kuralı, bir koşul karşılandığında bir dizi öznitelik içeren bir yapılandırma nesnesidir. Ayrıca, bir bağlayıcı alanındaki bir nesnenin, meta veri deposundaki bir nesneyle ilgili olduğunu, **JOIN** veya **Match** olarak bilinir. Eşitleme kuralları, birbirleriyle ilişkilerini gösteren bir öncelik değeri sağlar. Daha düşük bir sayısal değere sahip bir eşitleme kuralının önceliği daha yüksektir ve bir öznitelik akışı çakışmasında, daha yüksek öncelikli çakışma çözümü kazanır.
 
-Örnek olarak, **ad – Kullanıcı AccountEnabled Içindeki**eşitleme kuralına bakın. Bu satırı SRE 'de işaretleyin ve **Düzenle**' yi seçin.
+Örnek olarak, **ad – Kullanıcı AccountEnabled Içindeki** eşitleme kuralına bakın. Bu satırı SRE 'de işaretleyin ve **Düzenle**' yi seçin.
 
 Bu kural hazır olmayan bir kural olduğundan, kuralı açtığınızda bir uyarı alırsınız. Hazır olmayan kurallara herhangi bir [değişiklik](how-to-connect-sync-best-practices-changing-default-configuration.md)yapmamalıdır, bu nedenle, amaclarınızın ne olduğunu sordunuz. Bu durumda, yalnızca kuralı görüntülemek istersiniz. **Hayır**'ı seçin.
 
@@ -148,7 +148,7 @@ Bu kural hazır olmayan bir kural olduğundan, kuralı açtığınızda bir uyar
 
 Eşitleme kuralında dört yapılandırma bölümü vardır: Açıklama, kapsam filtresi, JOIN kuralları ve dönüşümler.
 
-#### <a name="description"></a>Açıklama
+#### <a name="description"></a>Description
 İlk bölüm, ad ve açıklama gibi temel bilgileri sağlar.
 
 ![Eşitleme kuralı Düzenleyicisi 'ndeki Açıklama sekmesi](./media/concept-azure-ad-connect-sync-default-configuration/syncruledescription.png)
@@ -162,18 +162,18 @@ Kapsam Filtresi bölümü, bir eşitleme kuralının ne zaman uygulanacağını 
 
 !["Gelen eşitleme kuralını Düzenle" penceresinin "kapsam filtresi" bölümünü gösteren ekran görüntüsü.](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
 
-Kapsam filtresi, iç içe olabilecek gruplara ve yan tümcelerde sahiptir. Bir eşitleme kuralının uygulanması için bir grup içindeki tüm yan tümceleri karşılamalıdır. Birden çok grup tanımlandığında kuralın uygulanabilmesi için en az bir grup karşılanması gerekir. Diğer bir deyişle, bir mantıksal veya gruplar arasında değerlendirilir ve bir grup içinde değerlendirilir. Bu yapılandırmaya bir örnek, **AAD-Group JOIN 'e**giden eşitleme kuralında bulunabilir. Örneğin, güvenlik grupları ( `securityEnabled EQUAL True` ) ve diğeri dağıtım grupları () için bir tane olmak üzere birkaç eşitleme filtresi grubu vardır `securityEnabled EQUAL False` .
+Kapsam filtresi, iç içe olabilecek gruplara ve yan tümcelerde sahiptir. Bir eşitleme kuralının uygulanması için bir grup içindeki tüm yan tümceleri karşılamalıdır. Birden çok grup tanımlandığında kuralın uygulanabilmesi için en az bir grup karşılanması gerekir. Diğer bir deyişle, bir mantıksal veya gruplar arasında değerlendirilir ve bir grup içinde değerlendirilir. Bu yapılandırmaya bir örnek, **AAD-Group JOIN 'e** giden eşitleme kuralında bulunabilir. Örneğin, güvenlik grupları ( `securityEnabled EQUAL True` ) ve diğeri dağıtım grupları () için bir tane olmak üzere birkaç eşitleme filtresi grubu vardır `securityEnabled EQUAL False` .
 
 ![Eşitleme kuralı düzenleyicisinde kapsam sekmesi](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilterout.png)
 
 Bu kural, Azure AD 'ye hangi grupların sağlanması gerektiğini tanımlamak için kullanılır. Dağıtım grupları, Azure AD ile eşitlenecek posta özelliğinin etkin olması gerekir, ancak güvenlik grupları için bir e-posta gerekli değildir.
 
 #### <a name="join-rules"></a>Ekleme kuralları
-Üçüncü bölüm, bağlayıcı alanındaki nesnelerin meta veri deposundaki nesnelerle ilişkilerini yapılandırmak için kullanılır. Daha önce bakmış olduğunuz kural, JOIN kuralları için herhangi bir yapılandırmaya sahip değildir, bu nedenle **ad – Kullanıcı birleşiminden**göz atacağız.
+Üçüncü bölüm, bağlayıcı alanındaki nesnelerin meta veri deposundaki nesnelerle ilişkilerini yapılandırmak için kullanılır. Daha önce bakmış olduğunuz kural, JOIN kuralları için herhangi bir yapılandırmaya sahip değildir, bu nedenle **ad – Kullanıcı birleşiminden** göz atacağız.
 
 ![Eşitleme kuralı Düzenleyicisi 'nde kuralları Birleştir sekmesi](./media/concept-azure-ad-connect-sync-default-configuration/syncrulejoinrules.png)
 
-JOIN kuralının içeriği, Yükleme sihirbazında seçilen eşleşen seçeneğe bağlıdır. Bir gelen kuralı için değerlendirme, kaynak bağlayıcı alanındaki bir nesneyle başlar ve JOIN kurallarındaki her grup sırayla değerlendirilir. Bir kaynak nesne, JOIN kurallarından birini kullanarak metadizesinde tam olarak bir nesneyle eşleşecek şekilde değerlendiriliyorsa, nesneler birleştirilir. Tüm kurallar değerlendiriliyorsa ve eşleşme yoksa, açıklama sayfasındaki bağlantı türü kullanılır. Bu yapılandırma **sağlama**olarak ayarlandıysa, hedef içinde yeni bir nesne oluşturulur, bu, JOIN ölçütündeki en az bir öznitelik varsa (bir değere sahiptir). Meta veri deposuna yeni bir nesne sağlamak için, meta veri deposuna bir nesne **Proje** olarak da bilinir.
+JOIN kuralının içeriği, Yükleme sihirbazında seçilen eşleşen seçeneğe bağlıdır. Bir gelen kuralı için değerlendirme, kaynak bağlayıcı alanındaki bir nesneyle başlar ve JOIN kurallarındaki her grup sırayla değerlendirilir. Bir kaynak nesne, JOIN kurallarından birini kullanarak metadizesinde tam olarak bir nesneyle eşleşecek şekilde değerlendiriliyorsa, nesneler birleştirilir. Tüm kurallar değerlendiriliyorsa ve eşleşme yoksa, açıklama sayfasındaki bağlantı türü kullanılır. Bu yapılandırma **sağlama** olarak ayarlandıysa, hedef içinde yeni bir nesne oluşturulur, bu, JOIN ölçütündeki en az bir öznitelik varsa (bir değere sahiptir). Meta veri deposuna yeni bir nesne sağlamak için, meta veri deposuna bir nesne **Proje** olarak da bilinir.
 
 JOIN kuralları yalnızca bir kez değerlendirilir. Bir bağlayıcı alanı nesnesi ve bir meta veri deposu nesnesi katıldığında, eşitleme kuralının kapsamı hala karşılanmadığı sürece bu nesneler birleştirilmiş olarak kalır.
 
@@ -190,7 +190,7 @@ Bu yapılandırmayı bağlama göre Account-Resource bir orman dağıtımında, 
 
 Bir dönüştürme farklı türlere sahip olabilir: sabit, doğrudan ve Ifade.
 
-* Sabit bir akış her zaman sürekli kodlanmış bir değer akar. Yukarıdaki durumda, her zaman **Accountenabled**adlı meta veri deposu özniteliğinde **true** değerini ayarlar.
+* Sabit bir akış her zaman sürekli kodlanmış bir değer akar. Yukarıdaki durumda, her zaman **Accountenabled** adlı meta veri deposu özniteliğinde **true** değerini ayarlar.
 * Doğrudan akış, kaynak içindeki özniteliğin değerini her zaman olduğu gibi hedef özniteliğe akar.
 * Üçüncü akış türü Ifadedir ve daha gelişmiş yapılandırmalara izin verir.
 
@@ -211,7 +211,7 @@ NULL
 Öznitelik akışları için ifade dili hakkında daha fazla bilgi için bkz. [bildirim temelli sağlama Ifadelerini anlama](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) .
 
 ### <a name="precedence"></a>Önceliği
-Artık bazı bireysel eşitleme kurallarına baktınız, ancak kurallar yapılandırmada birlikte çalışıyor. Bazı durumlarda, bir öznitelik değeri birden çok eşitleme kurallarından aynı hedef özniteliğe katkıda bulunur. Bu durumda, hangi özniteliğin WINS 'e yönelik olduğunu belirleyen öznitelik önceliği kullanılır. Örnek olarak, Sourcetutturucu özniteliğine bakın. Bu öznitelik, Azure AD 'de oturum açabilmeniz için önemli bir özniteliktir. Bu öznitelik için bir öznitelik akışını **ad – Kullanıcı AccountEnabled** ve **from ad – Kullanıcı ortak**olan iki farklı eşitleme kuralına göre bulabilirsiniz. Eşitleme kuralı önceliği nedeniyle, meta veri deposu nesnesine katılmış birkaç nesne olduğunda, Sourcetutturucu özniteliği, önce etkin bir hesapla ormandan katkıda bulunur. Etkin hesap yoksa, eşitleme altyapısı **ad – Kullanıcı ortak olan ' daki**catch-all eşitleme kuralını kullanır. Bu yapılandırma, devre dışı bırakılan hesaplar için de bir Sourcetutturucu olduğundan emin olur.
+Artık bazı bireysel eşitleme kurallarına baktınız, ancak kurallar yapılandırmada birlikte çalışıyor. Bazı durumlarda, bir öznitelik değeri birden çok eşitleme kurallarından aynı hedef özniteliğe katkıda bulunur. Bu durumda, hangi özniteliğin WINS 'e yönelik olduğunu belirleyen öznitelik önceliği kullanılır. Örnek olarak, Sourcetutturucu özniteliğine bakın. Bu öznitelik, Azure AD 'de oturum açabilmeniz için önemli bir özniteliktir. Bu öznitelik için bir öznitelik akışını **ad – Kullanıcı AccountEnabled** ve **from ad – Kullanıcı ortak** olan iki farklı eşitleme kuralına göre bulabilirsiniz. Eşitleme kuralı önceliği nedeniyle, meta veri deposu nesnesine katılmış birkaç nesne olduğunda, Sourcetutturucu özniteliği, önce etkin bir hesapla ormandan katkıda bulunur. Etkin hesap yoksa, eşitleme altyapısı **ad – Kullanıcı ortak olan ' daki** catch-all eşitleme kuralını kullanır. Bu yapılandırma, devre dışı bırakılan hesaplar için de bir Sourcetutturucu olduğundan emin olur.
 
 ![Gelen eşitleme kuralları](./media/concept-azure-ad-connect-sync-default-configuration/syncrulesinbound.png)
 
@@ -220,7 +220,7 @@ Eşitleme kuralları için öncelik, Yükleme Sihirbazı tarafından gruplar hal
 ### <a name="putting-it-all-together"></a>Hepsini bir araya getirme
 Artık yapılandırmanın farklı eşitleme kurallarıyla nasıl çalıştığını anlayabilmek için eşitleme kuralları hakkında yeterli bilgi veriyoruz. Meta veri deposuna katkıda bulunulan bir kullanıcıya ve özniteliklere bakarsanız, kurallar aşağıdaki sırayla uygulanır:
 
-| Adı | Yorum |
+| Name | Yorum |
 |:--- |:--- |
 | AD 'den içinde – kullanıcı katılımı |Bağlayıcı alanı nesnelerini metaverse ile birleştirme kuralı. |
 | AD 'den-kullanıcıhesabı etkin |Azure AD 'de oturum açma ve Microsoft 365 için gereken öznitelikler. Etkin hesaptan bu özniteliklerin olmasını istiyoruz. |

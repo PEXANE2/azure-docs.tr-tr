@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 10/29/2020
 ms.author: aahi
 ms.openlocfilehash: cedcf8a3fcd656c4af0ca7493c598791d35d20d9
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130570"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996143"
 ---
 # <a name="use-docker-compose-to-deploy-multiple-containers"></a>Docker Compose kullanarak birden çok kapsayıcı dağıtma
 
@@ -39,7 +39,7 @@ Bu yordam, yüklenmesi ve yerel olarak çalıştırılması gereken çeşitli ar
 
 ## <a name="docker-compose-file"></a>Docker Compose dosyası
 
-YAML dosyası, dağıtılacak tüm hizmetleri tanımlar. Bu hizmetler, `DockerFile` ya da mevcut bir kapsayıcı görüntüsünü kullanır. Bu durumda, iki önizleme görüntüsü kullanacağız. Aşağıdaki YAML dosyasını kopyalayıp yapıştırın ve *Docker-Compose. YAML* olarak kaydedin. Dosyada uygun **apikey** , **faturalandırma** ve **dosyasında değiştirilecek endpointUri** değerlerini sağlayın.
+YAML dosyası, dağıtılacak tüm hizmetleri tanımlar. Bu hizmetler, `DockerFile` ya da mevcut bir kapsayıcı görüntüsünü kullanır. Bu durumda, iki önizleme görüntüsü kullanacağız. Aşağıdaki YAML dosyasını kopyalayıp yapıştırın ve *Docker-Compose. YAML* olarak kaydedin. Dosyada uygun **apikey**, **faturalandırma** ve **dosyasında değiştirilecek endpointUri** değerlerini sağlayın.
 
 ```yaml
 version: '3.7'

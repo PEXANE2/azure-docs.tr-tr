@@ -15,11 +15,11 @@ ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: f49af1488a0c044639a72fc2ea52ba0a47727a24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89433679"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996160"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>CDN dosya sıkıştırma sorunlarını giderme
 Bu makale, [CDN dosya sıkıştırması](cdn-improve-performance.md)ile ilgili sorunları gidermenize yardımcı olur.
@@ -30,7 +30,7 @@ Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [
 Uç noktanız için sıkıştırma etkin, ancak dosyalar sıkıştırılmamış olarak döndürülüyor.
 
 > [!TIP]
-> Dosyalarınızın sıkıştırılmış döndürülüp döndürülmediğini denetlemek için [Fiddler](https://www.telerik.com/fiddler) veya tarayıcınızın [Geliştirici Araçları](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)gibi bir araç kullanmanız gerekir.  Önbelleğe alınmış CDN içeriğinizdeki geri döndürülen HTTP yanıt üstbilgilerini denetleyin.  `Content-Encoding` **Gzip**, **bzip2**veya **söndür**değeri ile adlandırılmış bir üst bilgi varsa, içeriğiniz sıkıştırılır.
+> Dosyalarınızın sıkıştırılmış döndürülüp döndürülmediğini denetlemek için [Fiddler](https://www.telerik.com/fiddler) veya tarayıcınızın [Geliştirici Araçları](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)gibi bir araç kullanmanız gerekir.  Önbelleğe alınmış CDN içeriğinizdeki geri döndürülen HTTP yanıt üstbilgilerini denetleyin.  `Content-Encoding` **Gzip**, **bzip2** veya **söndür** değeri ile adlandırılmış bir üst bilgi varsa, içeriğiniz sıkıştırılır.
 > 
 > ![Content-Encoding üst bilgisi](./media/cdn-troubleshoot-compression/cdn-content-header.png)
 > 
@@ -54,7 +54,7 @@ Aşağıdakiler de dahil olmak üzere birkaç olası nedeni vardır:
 İlk olarak, istek üzerinde hızlı bir göz atın.  Gerçekleştirilen istekleri görüntülemek için tarayıcınızın [geliştirici araçlarını](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) kullanabilirsiniz.
 
 * İsteğin noktanıza değil, uç nokta URL 'nize gönderildiğini doğrulayın `<endpointname>.azureedge.net` .
-* İsteğin bir **Accept-Encoding** üst bilgisi içerdiğini ve bu üstbilginin değeri **gzip**, **söndür**veya **bzip2**içerdiğini doğrulayın.
+* İsteğin bir **Accept-Encoding** üst bilgisi içerdiğini ve bu üstbilginin değeri **gzip**, **söndür** veya **bzip2** içerdiğini doğrulayın.
 
 > [!NOTE]
 > **Akamai profillerindeki Azure CDN** yalnızca **gzip** kodlamasını destekler.
@@ -65,7 +65,7 @@ Aşağıdakiler de dahil olmak üzere birkaç olası nedeni vardır:
 
 ### <a name="verify-compression-settings-standard-cdn-profiles"></a>Sıkıştırma ayarlarını doğrulama (Standart CDN profilleri)
 > [!NOTE]
-> Bu adım, yalnızca CDN profiliniz **Microsoft 'tan Azure CDN Standart**, **Verizon 'ten standart Azure CDN**veya **Akamai profilinden Azure CDN Standart** olduğunda geçerlidir. 
+> Bu adım, yalnızca CDN profiliniz **Microsoft 'tan Azure CDN Standart**, **Verizon 'ten standart Azure CDN** veya **Akamai profilinden Azure CDN Standart** olduğunda geçerlidir. 
 > 
 > 
 
@@ -99,7 +99,7 @@ Aşağıdakiler de dahil olmak üzere birkaç olası nedeni vardır:
 Tarayıcınızın geliştirici araçlarını kullanarak, dosyanın istenen bölgede önbelleğe alındığından emin olmak için yanıt üst bilgilerini denetleyin.
 
 * **Sunucu** yanıt üst bilgisini denetleyin.  Üst bilgi, aşağıdaki örnekte görüldüğü gibi, biçim **platformuna (pop/sunucu kimliği)** sahip olmalıdır.
-* **X-Cache** yanıt üst bilgisini denetleyin.  Üst bilgi **isabet**okuması gerekir.  
+* **X-Cache** yanıt üst bilgisini denetleyin.  Üst bilgi **isabet** okuması gerekir.  
 
 ![CDN yanıt üstbilgileri](./media/cdn-troubleshoot-compression/cdn-response-headers.png)
 

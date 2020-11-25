@@ -7,11 +7,11 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: d9acd322c454002613e21e8591c3e83aeec2d51e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979378"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995361"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Application Insights Profiler etkinleştirme veya görüntüleme sorunlarını giderme
 
@@ -94,7 +94,7 @@ Profil oluşturucuyu yapılandırırken, Web uygulamasının ayarlarına güncel
 
 1. **Web uygulaması denetim** bölmesinde **Ayarlar**' ı açın.
 
-1. **.NET Framework sürümünü** **v 4.6**olarak ayarlayın.
+1. **.NET Framework sürümünü** **v 4.6** olarak ayarlayın.
 
 1. **Her zaman** **Açık olarak ayarlayın.**
 1. Bu uygulama ayarlarını oluşturun:
@@ -107,7 +107,7 @@ Profil oluşturucuyu yapılandırırken, Web uygulamasının ayarlarına güncel
 
 ### <a name="too-many-active-profiling-sessions"></a>Çok fazla etkin profil oluşturma oturumu
 
-Şu anda, profil oluşturucuyu aynı hizmet planında çalışan en fazla dört Azure Web uygulaması ve dağıtım yuvası üzerinde etkinleştirebilirsiniz. Tek bir App Service planında çalışan dörtten fazla Web uygulamanız varsa, Profiler bir *Microsoft. ServiceProfiler. Exceptions. TooManyETWSessionException*oluşturabilir. Profil Oluşturucu her Web uygulaması için ayrı ayrı çalışır ve her bir uygulama için bir Windows için olay Izleme (ETW) oturumu başlatmaya çalışır. Ancak, sınırlı sayıda ETW oturumu tek seferde etkin olabilir. Profiler WebJob çok sayıda etkin profil oluşturma oturumu bildirirse, bazı Web uygulamalarını farklı bir hizmet planına taşıyın.
+Şu anda, profil oluşturucuyu aynı hizmet planında çalışan en fazla dört Azure Web uygulaması ve dağıtım yuvası üzerinde etkinleştirebilirsiniz. Tek bir App Service planında çalışan dörtten fazla Web uygulamanız varsa, Profiler bir *Microsoft. ServiceProfiler. Exceptions. TooManyETWSessionException* oluşturabilir. Profil Oluşturucu her Web uygulaması için ayrı ayrı çalışır ve her bir uygulama için bir Windows için olay Izleme (ETW) oturumu başlatmaya çalışır. Ancak, sınırlı sayıda ETW oturumu tek seferde etkin olabilir. Profiler WebJob çok sayıda etkin profil oluşturma oturumu bildirirse, bazı Web uygulamalarını farklı bir hizmet planına taşıyın.
 
 ### <a name="deployment-error-directory-not-empty-dhomesitewwwrootapp_datajobs"></a>Dağıtım hatası: Dizin boş değil: \\ ana \\ site \\ Wwwroot \\ App_Data \\ işleri '
 
@@ -125,7 +125,7 @@ Bu parametreler Application Insights Profiler tarafından kullanılan klasörü 
 
 ### <a name="how-do-i-determine-whether-application-insights-profiler-is-running"></a>Application Insights Profiler çalışıp çalışmadığını Nasıl yaparım? mi?
 
-Profiler, Web uygulamasında sürekli bir WebJob olarak çalışır. Web uygulaması kaynağını [Azure Portal](https://portal.azure.com)açabilirsiniz. **WebJobs** bölmesinde **Applicationınsightsprofiler**durumunu kontrol edin. Çalışmıyorsa, daha fazla bilgi almak için **günlükleri** açın.
+Profiler, Web uygulamasında sürekli bir WebJob olarak çalışır. Web uygulaması kaynağını [Azure Portal](https://portal.azure.com)açabilirsiniz. **WebJobs** bölmesinde **Applicationınsightsprofiler** durumunu kontrol edin. Çalışmıyorsa, daha fazla bilgi almak için **günlükleri** açın.
 
 ## <a name="troubleshoot-vms-and-cloud-services"></a>VM 'Ler ve Cloud Services sorunlarını giderme
 
@@ -168,7 +168,7 @@ Azure Tanılama yapılandırmak için kullanılan ayarları denetlemek için:
 
 1. Profil oluşturucu komut satırındaki Ikey 'in doğru olduğundan emin olun. 
 
-1. Dosyadaki önceki *config.js* bulunan yolu kullanarak, **bootstrapn. log**adlı Profil Oluşturucu günlük dosyasını kontrol edin. Profil oluşturucunun kullandığı ayarları gösteren hata ayıklama bilgilerini görüntüler. Ayrıca, profil oluşturucunun durum ve hata iletilerini görüntüler.  
+1. Dosyadaki önceki *config.js* bulunan yolu kullanarak, **bootstrapn. log** adlı Profil Oluşturucu günlük dosyasını kontrol edin. Profil oluşturucunun kullandığı ayarları gösteren hata ayıklama bilgilerini görüntüler. Ayrıca, profil oluşturucunun durum ve hata iletilerini görüntüler.  
 
     VM 'Ler için dosya genellikle şu şekildedir:
     ```

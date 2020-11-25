@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: duau
 ms.openlocfilehash: 46d71a38b79f449084f7353527f2dfb05d5b92a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401036"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994919"
 ---
 # <a name="configure-the-performance-traffic-routing-method"></a>Performans trafiği yönlendirme yöntemini yapılandırma
 
@@ -29,14 +29,14 @@ Performans trafiği yönlendirme yöntemi, trafiği uç noktaya yönlendirmenizi
 2. Portalın arama çubuğunda **Traffic Manager profillerini** arayın ve ardından yönlendirme yöntemini yapılandırmak istediğiniz profil adına tıklayın.
 3. **Traffic Manager profili** dikey penceresinde, yapılandırmanıza dahil etmek istediğiniz bulut hizmetlerinin ve Web sitelerinin mevcut olduğunu doğrulayın.
 4. **Ayarlar** bölümünde **yapılandırma**' ya tıklayın ve **yapılandırma** dikey penceresinde aşağıdaki gibi tamamlanır:
-    1. **Trafik yönlendirme yöntemi ayarları**Için, **yönlendirme yöntemi** için **performans**' ı seçin.
+    1. **Trafik yönlendirme yöntemi ayarları** Için, **yönlendirme yöntemi** için **performans**' ı seçin.
     2. Bu profildeki tüm uç noktaları için aynı **uç nokta izleyici ayarlarını** aşağıdaki şekilde ayarlayın:
-        1. Uygun **Protokolü**seçin ve **bağlantı noktası** numarasını belirtin. 
+        1. Uygun **Protokolü** seçin ve **bağlantı noktası** numarasını belirtin. 
         2. **Yol** için eğik çizgi yazın */* . Uç noktaları izlemek için bir yol ve dosya adı belirtmeniz gerekir. Eğik çizgi "/", göreli yol için geçerli bir giriştir ve dosyanın kök dizinde (varsayılan) olduğunu gösterir.
         3. Sayfanın üst kısmında **Kaydet**' e tıklayın.
 5.  Yapılandırmanızda yaptığınız değişiklikleri aşağıdaki gibi test edin:
     1.  Portalın arama çubuğunda Traffic Manager profili adını arayın ve görüntülenen sonuçlarda Traffic Manager profiline tıklayın.
-    2.  **Traffic Manager** profili dikey penceresinde **Genel Bakış ' a**tıklayın.
+    2.  **Traffic Manager** profili dikey penceresinde **Genel Bakış ' a** tıklayın.
     3.  **Traffic Manager profili** dikey penceresi, yeni oluşturduğunuz TRAFFIC Manager profilinizin DNS adını görüntüler. Bu, yönlendirme türü tarafından belirlendiği şekilde doğru uç noktaya yönlendirilmek için herhangi bir istemci tarafından (örneğin, bir Web tarayıcısı kullanılarak gezinilirken) kullanılabilir. Bu durumda tüm istekler, istemcinin ağındaki en düşük gecikme süresine sahip uç noktaya yönlendirilir.
 6. Traffic Manager profiliniz çalışmaya başladıktan sonra, yetkili DNS sunucunuzdaki DNS kaydını düzenleyerek şirket etki alanı adınızı Traffic Manager etki alanı adına getirin.
 

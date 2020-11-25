@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/12/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 014c9759756a1da922a5141f064991827d593208
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: a0b7330485d3152a588d43added7d9feaa5c2a14
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630269"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "95994510"
 ---
 # <a name="upload-and-index-your-videos"></a>Videolarınızı karşıya yükleme ve dizinleme  
 
@@ -74,27 +74,7 @@ Bu parametre, video ile ilişkilendirilecek bir kimlik belirtmenize olanak sağl
 
 #### <a name="callbackurl"></a>callbackUrl
 
-Aşağıdaki olaylar hakkında müşteriyi bilgilendirmek için kullanılan bir URL (POST isteği kullanılarak):
-
-- Dizin oluşturma durum değişikliği: 
-    - Özellikler:    
-    
-        |Ad|Açıklama|
-        |---|---|
-        |kimlik|Video KIMLIĞI|
-        |state|Video durumu|  
-    - Örnek: https: \/ /test.com/notifyme?projectName=MyProject&ID = 1234abcd&State = işlendi
-- Videoda tanımlanan kişi:
-  - Özellikler
-    
-      |Ad|Açıklama|
-      |---|---|
-      |kimlik| Video KIMLIĞI|
-      |FaceID|Video dizininde görünen yüz KIMLIĞI|
-      |Knownpersonıd|Bir yüz modeli içinde benzersiz olan kişi KIMLIĞI|
-      |kişi adı|Kişinin adı|
-        
-    - Örnek: https: \/ /test.com/notifyme?projectName=MyProject&ID = 1234abcd&çok yönlü kimliği = 12&Knownpersonıd = CCA84350-89B7-4262-861C-3CAC796542A5&personName = Inigo_Montoya 
+[!INCLUDE [callback url](./includes/callback-url.md)]
 
 ##### <a name="other-considerations"></a>Diğer önemli noktalar
 
@@ -118,7 +98,7 @@ Fiyat, seçilen dizinleme seçeneğine bağlıdır.
 
 #### <a name="priority"></a>Priority
 
-Videoların önceliklerine göre Video Indexer dizini oluşturulur. Dizin önceliğini belirtmek için **Priority** parametresini kullanın. Şu değerler geçerlidir: **düşük** , **normal** (varsayılan) ve **yüksek**.
+Videoların önceliklerine göre Video Indexer dizini oluşturulur. Dizin önceliğini belirtmek için **Priority** parametresini kullanın. Şu değerler geçerlidir: **düşük**, **normal** (varsayılan) ve **yüksek**.
 
 **Priority** parametresi yalnızca ücretli hesaplar için desteklenir.
 
@@ -337,7 +317,7 @@ public class AccountContractSlim
 
 Upload işlemi aşağıdaki tabloda listelenen durum kodlarını döndürebilir.
 
-|Durum kodu|ErrorType (yanıt gövdesinde)|Açıklama|
+|Durum kodu|ErrorType (yanıt gövdesinde)|Description|
 |---|---|---|
 |409|VIDEO_INDEXING_IN_PROGRESS|Bu video zaten aynı hesapta işleniyor.|
 |400|VIDEO_ALREADY_FAILED|Bu videonun işlenmesi 2 saatten daha kısa bir süre önce aynı hesapta başarısız oldu. API istemcilerin videoyu yeniden yüklemek için en az 2 saat beklemesi gerekir.|

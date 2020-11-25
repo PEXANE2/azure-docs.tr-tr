@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: duau
 ms.openlocfilehash: 85e088dda767a6f6c80ac0a9f6eed84e8802e5ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89401053"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994936"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Traffic Manager çoklu değer yönlendirme yöntemini yapılandırma
 
@@ -32,20 +32,20 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 Traffic Manager profili için bir kaynak grubu oluşturun.
 1. Azure portal sol bölmesinde **kaynak grupları**' nı seçin.
 2. **Kaynak grupları**' nda, sayfanın üst kısmında **Ekle**' yi seçin.
-3. **Kaynak grubu adı**alanına bir ad *myResourceGroupTM1*yazın. **Kaynak grubu konumu**için **Doğu ABD**' yi seçin ve ardından **Tamam**' ı seçin.
+3. **Kaynak grubu adı** alanına bir ad *myResourceGroupTM1* yazın. **Kaynak grubu konumu** için **Doğu ABD**' yi seçin ve ardından **Tamam**' ı seçin.
 
 ## <a name="create-a-traffic-manager-profile"></a>Traffic Manager profili oluşturma
 En düşük gecikme süresine sahip bir uç noktaya göndererek Kullanıcı trafiğini yönlendiren bir Traffic Manager profili oluşturun.
 
-1. Ekranın sol üst kısmında, **Create a resource**  >  **Networking**  >  **profil**  >  **Oluştur**Traffic Manager kaynak ağı oluştur ' u seçin.
+1. Ekranın sol üst kısmında, **Create a resource**  >  **Networking**  >  **profil**  >  **Oluştur** Traffic Manager kaynak ağı oluştur ' u seçin.
 2. **Traffic Manager profili oluştur**' da, aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve **Oluştur**' u seçin:
     
     | Ayar                 | Değer                                              |
     | ---                     | ---                                                |
-    | Adı                   | Bu adın trafficmanager.net bölgesinde benzersiz olması ve Traffic Manager profilinize erişmek için kullanılan trafficmanager.net DNS adı ile sonuçlanması gerekir.                                   |
+    | Ad                   | Bu adın trafficmanager.net bölgesinde benzersiz olması ve Traffic Manager profilinize erişmek için kullanılan trafficmanager.net DNS adı ile sonuçlanması gerekir.                                   |
     | Yönlendirme yöntemi          | **Çoklu değer** yönlendirme yöntemini seçin.                                       |
     | Abonelik            | Aboneliğinizi seçin.                          |
-    | Kaynak grubu          | *MyResourceGroupTM1*öğesini seçin. |
+    | Kaynak grubu          | *MyResourceGroupTM1* öğesini seçin. |
     | Konum                | Bu ayar, kaynak grubunun konumunu ifade eder ve genel olarak dağıtılacak Traffic Manager profilini etkilemez.                              |
    |        |           | 
   
@@ -62,11 +62,11 @@ En düşük gecikme süresine sahip bir uç noktaya göndererek Kullanıcı traf
     | Ayar                 | Değer                                              |
     | ---                     | ---                                                |
     | Tür                    | Dış uç nokta                                   |
-    | Adı           | myEndpoint1                                        |
+    | Name           | myEndpoint1                                        |
     | Tam etki alanı adı (FQDN) veya IP           | Bu Traffic Manager profiline eklemek istediğiniz uç noktanın genel IP adresini yazın                         |
     |        |           |
 
-4. **Tam etki alanı adı (FQDN) veya IP**için *myEndpoint2*adlı başka bir uç nokta eklemek üzere 2 ve 3. adımları yineleyin, ıkıncı uç noktanın genel IP adresini girin.
+4. **Tam etki alanı adı (FQDN) veya IP** için *myEndpoint2* adlı başka bir uç nokta eklemek üzere 2 ve 3. adımları yineleyin, ıkıncı uç noktanın genel IP adresini girin.
 5. Her iki uç noktanın eklenmesi tamamlandığında, **Çevrimiçi** izleme durumuyla birlikte **Traffic Manager profili** bölümünde gösterilir.
 
    ![Traffic Manager uç noktası ekleme](./media/traffic-manager-multivalue-routing-method/add-endpoint.png)

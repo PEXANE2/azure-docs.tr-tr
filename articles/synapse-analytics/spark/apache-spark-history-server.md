@@ -10,17 +10,17 @@ ms.date: 10/15/2020
 ms.author: euang
 ms.reviewer: euang
 ms.openlocfilehash: 94c30cad1e09a01686a9042a6271a152d0f433fd
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738551"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995395"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Apache Spark uygulamalarda hata ayıklamak ve tanılamak için genişletilmiş Apache Spark geçmiş sunucusunu kullanma
 
 Bu makale, hata ayıklama ve tanılama uygulamalarının çalıştırılması için genişletilmiş Apache Spark geçmişi sunucusunun nasıl kullanılacağına ilişkin yönergeler sağlar.
 
-Uzantı bir veri sekmesi, grafik sekmesi ve Tanılama sekmesi içerir. Spark işinin giriş ve çıkış verilerini denetlemek için **veri** sekmesini kullanın. **Grafik** sekmesi, iş grafiğinin veri akışını ve yeniden oynamanın size ait olduğunu gösterir. **Tanılama** sekmesi, **veri eğme** , **zaman eğriltme** ve **yürütücü kullanım analizinin analizini** gösterir.
+Uzantı bir veri sekmesi, grafik sekmesi ve Tanılama sekmesi içerir. Spark işinin giriş ve çıkış verilerini denetlemek için **veri** sekmesini kullanın. **Grafik** sekmesi, iş grafiğinin veri akışını ve yeniden oynamanın size ait olduğunu gösterir. **Tanılama** sekmesi, **veri eğme**, **zaman eğriltme** ve **yürütücü kullanım analizinin analizini** gösterir.
 
 ## <a name="access-the-apache-spark-history-server"></a>Apache Spark geçmiş sunucusuna erişin
 
@@ -30,7 +30,7 @@ Apache Spark geçmiş sunucusu, tamamlanan ve Spark uygulamalarının çalışt�
 
 1. [Azure SYNAPSE Analytics](https://web.azuresynapse.net/)'i açın.
 
-2. **İzleme** ' yi ve ardından **Apache Spark uygulamalar** ' ı seçin.
+2. **İzleme**' yi ve ardından **Apache Spark uygulamalar**' ı seçin.
 
     ![İzleme ' yi ve Spark uygulaması ' nı seçin.](./media/apache-spark-history-server/click-monitor-spark-application.png)
 
@@ -38,13 +38,13 @@ Apache Spark geçmiş sunucusu, tamamlanan ve Spark uygulamalarının çalışt�
 
     ![Günlük sorgusu penceresini açın.](./media/apache-spark-history-server/open-application-window.png)
 
-4. **Spark geçmiş sunucusu** ' nu seçin, ardından Spark geçmiş sunucusu Web Kullanıcı arabirimi görünür.
+4. **Spark geçmiş sunucusu**' nu seçin, ardından Spark geçmiş sunucusu Web Kullanıcı arabirimi görünür.
 
     ![Spark geçmiş sunucusunu açın.](./media/apache-spark-history-server/open-spark-history-server.png)
 
 ### <a name="open-the-spark-history-server-web-ui-from-data-node"></a>Veri düğümünden Spark geçmiş sunucusu Web Kullanıcı arabirimini açın
 
-1. Azure SYNAPSE Studio Not defterinizden, iş yürütme çıkış hücresinden veya Not defteri belgesinin altındaki durum panelinden **Spark geçmiş sunucusu** ' nu seçin. **Oturum ayrıntıları** ’nı seçin.
+1. Azure SYNAPSE Studio Not defterinizden, iş yürütme çıkış hücresinden veya Not defteri belgesinin altındaki durum panelinden **Spark geçmiş sunucusu** ' nu seçin. **Oturum ayrıntıları**’nı seçin.
 
    ![Spark geçmiş sunucusu 1 ' i Başlat](./media/apache-spark-history-server/launch-history-server2.png "Spark geçmiş sunucusunu Başlat")
 
@@ -56,15 +56,15 @@ Apache Spark geçmiş sunucusu, tamamlanan ve Spark uygulamalarının çalışt�
 
 Görüntülemek istediğiniz iş için Iş KIMLIĞINI seçin. Ardından, veri görünümünü almak için araç menüsündeki **veriler** ' i seçin. Bu bölümde, veri sekmesinde çeşitli görevlerin nasıl yapılacağı gösterilmektedir.
 
-* Sekmeleri ayrı olarak seçerek **girişleri** , **çıkışları** ve **tablo işlemlerini** kontrol edin.
+* Sekmeleri ayrı olarak seçerek **girişleri**, **çıkışları** ve **tablo işlemlerini** kontrol edin.
 
     ![Spark uygulama sekmeleri için veriler](./media/apache-spark-history-server/apache-spark-data-tabs.png)
 
-* **Kopyala** ' yı seçerek tüm satırları kopyalayın.
+* **Kopyala**' yı seçerek tüm satırları kopyalayın.
 
     ![Spark uygulaması kopyalama verileri](./media/apache-spark-history-server/apache-spark-data-copy.png)
 
-* **CSV** 'yi seçerek tüm verileri CSV dosyası olarak kaydedin.
+* **CSV**'yi seçerek tüm verileri CSV dosyası olarak kaydedin.
 
     ![Spark uygulaması kaydetme verileri](./media/apache-spark-history-server/apache-spark-data-save.png)
 
@@ -118,9 +118,9 @@ Graph düğümü, ısı haritasını göstergesinde gösterilen renkleri görün
 
 ### <a name="playback"></a>Kayıttan yürütme
 
-İşi kayıttan yürütmek için **kayıttan yürütme** ' yi seçin. Durdurmak için dilediğiniz zaman **Durdur** seçeneğini belirleyebilirsiniz. Görev renkleri kayıttan yürütülürken farklı durumlar gösterir:
+İşi kayıttan yürütmek için **kayıttan yürütme**' yi seçin. Durdurmak için dilediğiniz zaman **Durdur** seçeneğini belirleyebilirsiniz. Görev renkleri kayıttan yürütülürken farklı durumlar gösterir:
 
-|Color|Anlamı|
+|Renk|Anlamı|
 |-|-|
 |Yeşil|Başarılı: iş başarıyla tamamlandı.|
 |Orange|Yeniden denendi: başarısız olan ancak işin nihai sonucunu etkilemeyen görev örnekleri. Bu görevler daha sonra başarılı olabilecek örnekleri tekrarlamıştır veya yeniden dener.|
@@ -157,7 +157,7 @@ Başarısız görevler olduğunda araç ipucunu görmek için Graph düğümünd
 
 İş grafiği sekmesinde, aşamaların bir araç ipucu vardır ve aşağıdaki koşullara uyan görevler varsa küçük bir simge gösterilir:
 
-|Koşul|Açıklama|
+|Koşul|Description|
 |-|-|
 |Veri eğriltme|veri okuma boyutu > bu aşama içindeki tüm görevlerin ortalama veri okuma boyutu * 2 ve veri okuma boyutu > 10 MB|
 |Zaman eğriltme|yürütme süresi > bu aşama içindeki tüm görevlerin ortalama yürütme süresi * 2 ve yürütme süresi > 2 dakika|
@@ -190,9 +190,9 @@ Sorunları **bize geri bildirim** gönderin ' i seçerek geri bildirimde bulunun
 
 ## <a name="explore-the-diagnosis-tab-in-apache-spark-history-server"></a>Apache Spark geçmiş sunucusunda tanılama sekmesini keşfet
 
-Tanılama sekmesine erişmek için bir iş KIMLIĞI seçin. Ardından araç menüsünde **Tanılama** ' yı seçerek iş tanılama görünümünü alın. Tanılama sekmesi **veri eğriltme** , **zaman eğriltme** ve **yürütücü kullanım analizini** içerir.
+Tanılama sekmesine erişmek için bir iş KIMLIĞI seçin. Ardından araç menüsünde **Tanılama** ' yı seçerek iş tanılama görünümünü alın. Tanılama sekmesi **veri eğriltme**, **zaman eğriltme** ve **yürütücü kullanım analizini** içerir.
 
-Sırasıyla sekmeleri seçerek **veri eğriltme** , **zaman eğriltme** ve **yürütücü kullanım analizlerini** denetleyin.
+Sırasıyla sekmeleri seçerek **veri eğriltme**, **zaman eğriltme** ve **yürütücü kullanım analizlerini** denetleyin.
 
 ![Mini UI tanılama veri eğriltme sekmesi yeniden](./media/apache-spark-history-server/sparkui-diagnosis-tabs.png)
 
@@ -224,7 +224,7 @@ Sırasıyla sekmeleri seçerek **veri eğriltme** , **zaman eğriltme** ve **yü
 
 Yürütücü kullanım grafiği Spark iş yürütücişinin ayırmasını ve çalışma durumunu görselleştirir.  
 
-1. **Yürütücü Kullanım Analizi** ' ni seçin, sonra da Yürütücü kullanımı hakkında dört tür eğrileri, **ayrılmış Yürüticileri** , **yürüticileri** , **Boşta** çalışma ve **en fazla yürütücü örneklerini** içeren drafted. Ayrılmış yürüticileri için, her "yürütücü eklendi" veya "yürütücü kaldırıldı" olayı ayrılan yürütmeleri arttırır veya düşürür. Daha fazla karşılaştırma için "Işler" sekmesinde "olay zaman çizelgesini" kontrol edebilirsiniz.
+1. **Yürütücü Kullanım Analizi**' ni seçin, sonra da Yürütücü kullanımı hakkında dört tür eğrileri, **ayrılmış Yürüticileri**, **yürüticileri**, **Boşta** çalışma ve **en fazla yürütücü örneklerini** içeren drafted. Ayrılmış yürüticileri için, her "yürütücü eklendi" veya "yürütücü kaldırıldı" olayı ayrılan yürütmeleri arttırır veya düşürür. Daha fazla karşılaştırma için "Işler" sekmesinde "olay zaman çizelgesini" kontrol edebilirsiniz.
 
    ![Mini UI tanılama yürüticileri sekmesi](./media/apache-spark-history-server/sparkui-diagnosis-executors.png)
 

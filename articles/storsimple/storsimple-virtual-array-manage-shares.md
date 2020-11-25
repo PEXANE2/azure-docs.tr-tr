@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
 ms.openlocfilehash: 340b910319cabe3379bdb1bad1c09bc71c17f072
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85507543"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994953"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-shares-on-the-storsimple-virtual-array"></a>StorSimple Sanal Dizisinde paylaşımları yönetmek için StorSimple Device Manager hizmetini kullanma
 
@@ -40,7 +40,7 @@ StorSimple paylaşımları şu olabilir:
 
 Her bir paylaşma türü için sağlanan maksimum kapasite için aşağıdaki tabloya bakın.
 
-| **Sınır tanımlayıcı** | **Sınırlı** |
+| **Sınır tanımlayıcı** | **Sınır** |
 | --- | --- |
 | Katmanlı paylaşımın en küçük boyutu |500 GB |
 | Katmanlı paylaşımın en büyük boyutu |20 TB |
@@ -57,7 +57,7 @@ Bir paylaşımdan bir dizi öznitelik oluşur:
 
 * **Paylaşma adı** : benzersiz olması gereken açıklayıcı bir ad ve paylaşımın tanımlanmasına yardımcı olur.
 * **Durum** – çevrimiçi veya çevrimdışı olabilir. Bir Share çevrimdışıyken, paylaşımın kullanıcıları erişemez.
-* **Tür** : paylaşımın **katmanlı** (varsayılan) veya **yerel olarak sabitlenmiş**olduğunu gösterir.
+* **Tür** : paylaşımın **katmanlı** (varsayılan) veya **yerel olarak sabitlenmiş** olduğunu gösterir.
 * **Kapasite** : paylaşımda depolanabilecek toplam veri miktarına kıyasla kullanılan veri miktarını belirtir.
 * **Açıklama** : paylaşımın tanımlanmasına yardımcı olan isteğe bağlı ayar.
 * **İzinler** -Windows Explorer aracılığıyla yönetilebilen PAYLAŞıMA yönelik NTFS izinleri.

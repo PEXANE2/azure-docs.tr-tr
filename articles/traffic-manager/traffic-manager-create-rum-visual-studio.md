@@ -13,11 +13,11 @@ ms.date: 03/16/2018
 ms.author: duau
 ms.custom: devx-track-js
 ms.openlocfilehash: c49672ad38ac8cf80214d03870b5876d741e76ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259875"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994885"
 ---
 # <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>Visual Studio Mobile Center ile Traffic Manager Gerçek Kullanıcı Ölçümleri gönderme
 
@@ -35,7 +35,7 @@ Gerçek Kullanıcı Ölçümleri yapılandırmak için bir anahtar edinmeniz ve 
 Aşağıdaki yordamı kullanarak Azure portal kullanarak RUM anahtarını elde etmek için:
 1. Bir tarayıcıdan Azure portalında oturum açın. Henüz bir hesabınız yoksa, bir aylık ücretsiz denemeye kaydolabilirsiniz.
 2. Portalın arama çubuğunda, değiştirmek istediğiniz Traffic Manager profili adını arayın ve ardından gösterilen sonuçlardaki Traffic Manager profiline tıklayın.
-3. Traffic Manager profili sayfasında, **Ayarlar**altında **gerçek Kullanıcı ölçümleri** ' a tıklayın.
+3. Traffic Manager profili sayfasında, **Ayarlar** altında **gerçek Kullanıcı ölçümleri** ' a tıklayın.
 4. Yeni bir RUM anahtarı oluşturmak için **anahtar oluştur** ' a tıklayın.
         
    ![Gerçek Kullanıcı Ölçümleri anahtar oluştur](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)

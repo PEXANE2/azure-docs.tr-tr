@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: 1a9dc47888110836239c59f6a7542f71f753dd3a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: dbac832165c57e14e737372e12c4f4b2f3039c0d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89568192"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995275"
 ---
 # <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>Hızlı başlangıç: Python V12 SDK ile Blobları yönetme
 
@@ -24,7 +24,7 @@ Ek kaynaklar:
 * [API başvuru belgeleri](/python/api/azure-storage-blob)
 * [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob)
 * [Paket (Python paket dizini)](https://pypi.org/project/azure-storage-blob/)
-* [Örnekler](https://docs.microsoft.com/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+* [Örnekler](../common/storage-samples-python.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -40,7 +40,7 @@ Bu bölümde, bir projeyi Python için Azure Blob Storage istemci kitaplığı V
 
 ### <a name="create-the-project"></a>Proje oluşturma
 
-*BLOB-QuickStart-V12*adlı bir Python uygulaması oluşturun.
+*BLOB-QuickStart-V12* adlı bir Python uygulaması oluşturun.
 
 1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), proje için yeni bir dizin oluşturun.
 
@@ -54,7 +54,7 @@ Bu bölümde, bir projeyi Python için Azure Blob Storage istemci kitaplığı V
     cd blob-quickstart-v12
     ```
 
-1. *BLOB-QuickStart-V12* dizininde, *veri*adlı başka bir dizin oluşturun. Blob veri dosyalarının oluşturulup depolanacağı yerdir.
+1. *BLOB-QuickStart-V12* dizininde, *veri* adlı başka bir dizin oluşturun. Blob veri dosyalarının oluşturulup depolanacağı yerdir.
 
     ```console
     mkdir data
@@ -119,7 +119,7 @@ Aşağıdaki diyagramda bu kaynaklar arasındaki ilişki gösterilmektedir.
 Bu örnek kod parçacıkları, Python için Azure Blob depolama istemci kitaplığı ile aşağıdakilerin nasıl gerçekleştirileceğini göstermektedir:
 
 * [Bağlantı dizesini alma](#get-the-connection-string)
-* [Bir kapsayıcı oluşturma](#create-a-container)
+* [Kapsayıcı oluşturma](#create-a-container)
 * [Blobları bir kapsayıcıya yükleme](#upload-blobs-to-a-container)
 * [Kapsayıcıdaki blobları listeleme](#list-the-blobs-in-a-container)
 * [Blob’ları indirme](#download-blobs)
@@ -141,7 +141,7 @@ Bu kodu bloğunun içine ekleyin `try` :
 connect_str = os.getenv('AZURE_STORAGE_CONNECTION_STRING')
 ```
 
-### <a name="create-a-container"></a>Bir kapsayıcı oluşturma
+### <a name="create-a-container"></a>Kapsayıcı oluşturma
 
 Yeni kapsayıcı için bir ad belirleyin. Aşağıdaki kod, benzersiz olduğundan emin olmak için kapsayıcı adına bir UUID değeri ekler.
 

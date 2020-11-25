@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 02/14/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 3417bf0bd4ae1e0aa670f9fbfcc1fbbfeb372972
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8fba8aa577bcb3b5ef44d57c388a1f1de7494782
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77471571"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995633"
 ---
-Erişim vermeden önce kullanıcılardan ikinci bir kimlik doğrulama faktörü istenmesini istiyorsanız, Azure Multi-Factor Authentication (MFA) yapılandırabilirsiniz. MFA 'yı her kullanıcı için ayrı ayrı yapılandırabilir veya [koşullu erişim](../articles/active-directory/conditional-access/overview.md)aracılığıyla MFA özelliğinden yararlanabilirsiniz.
+Erişim vermeden önce kullanıcılardan ikinci bir kimlik doğrulama faktörü istenmesini istiyorsanız, Azure AD Multi-Factor Authentication (MFA) yapılandırabilirsiniz. MFA 'yı her kullanıcı için ayrı ayrı yapılandırabilir veya [koşullu erişim](../articles/active-directory/conditional-access/overview.md)aracılığıyla MFA özelliğinden yararlanabilirsiniz.
 
 * Kullanıcı başına MFA, ek ücret ödemeden etkinleştirilebilir. Kullanıcı başına MFA etkinleştirilirken, kullanıcıdan Azure AD kiracısına bağlı tüm uygulamalarda ikinci faktör kimlik doğrulaması istenir. Adımlar için bkz. [1. Seçenekler](#peruser) .
 * Koşullu erişim, ikinci bir faktörün nasıl yükseltilmesi gerektiği konusunda daha ayrıntılı denetim sağlar. MFA 'nın yalnızca VPN 'e atanmasına ve Azure AD kiracısına bağlı diğer uygulamaları dışlayacak şekilde izin verebilir. Adımlar için bkz. [2](#conditional) .

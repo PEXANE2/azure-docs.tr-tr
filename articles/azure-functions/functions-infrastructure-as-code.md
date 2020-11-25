@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 2403e3a4bfe7824659a9c34c407e55e6c56e6046
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107734"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994664"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Işlevlerinde işlev uygulamanız için kaynak dağıtımını otomatikleştirme
 
@@ -77,7 +77,7 @@ Bu özellikler `appSettings` nesnedeki koleksiyonda belirtilir `siteConfig` :
 
 ### <a name="application-insights"></a>Application Insights
 
-İşlev uygulamalarınızı izlemek için Application Insights önerilir. Application Insights kaynak, **Microsoft. Insights/Components** ve Kind **Web**türü ile tanımlanmıştır:
+İşlev uygulamalarınızı izlemek için Application Insights önerilir. Application Insights kaynak, **Microsoft. Insights/Components** ve Kind **Web** türü ile tanımlanmıştır:
 
 ```json
         {
@@ -116,7 +116,7 @@ Barındırma planının tanımı değişir ve aşağıdakilerden biri olabilir:
 
 ### <a name="function-app"></a>İşlev uygulaması
 
-İşlev uygulaması kaynağı, **Microsoft. Web/Sites** ve Kind **functionapp**türünde bir kaynak kullanılarak tanımlanır:
+İşlev uygulaması kaynağı, **Microsoft. Web/Sites** ve Kind **functionapp** türünde bir kaynak kullanılarak tanımlanır:
 
 ```json
 {
@@ -577,7 +577,7 @@ Linux uygulamaları altında bir özelliği de içermelidir `linuxFxVersion` `si
 Bir işlev uygulamasının, dağıtımınızda kullanabileceğiniz uygulama ayarları ve kaynak denetimi seçenekleri dahil birçok alt kaynağı vardır. Ayrıca **sourcecontrols** alt kaynağını kaldırmayı ve bunun yerine farklı bir [dağıtım seçeneğini](functions-continuous-deployment.md) kullanmanızı da tercih edebilirsiniz.
 
 > [!IMPORTANT]
-> Azure Resource Manager kullanarak uygulamanızı başarıyla dağıtmak için, kaynakların Azure 'da nasıl dağıtıldığını anlamak önemlidir. Aşağıdaki örnekte, üst düzey konfigürasyonlar **SiteConfig**kullanılarak uygulanır. Işlevlerin çalışma zamanına ve dağıtım altyapısına bilgi ilettikleri için, bu yapılandırmaların üst düzeyde ayarlanması önemlidir. Alt **sourcecontrols/Web** kaynağı uygulanmadan önce en üst düzey bilgiler gereklidir. Bu ayarları alt düzey **config/appSettings** kaynağında yapılandırmak mümkün olsa da, bazı durumlarda işlev uygulamanızın **config/appSettings** uygulanmadan *önce* dağıtılması gerekir. Örneğin, [Logic Apps](../logic-apps/index.yml)işlevleri kullanırken, işlevleriniz başka bir kaynağın bağımlılığı olan bir bağımlılıktır.
+> Azure Resource Manager kullanarak uygulamanızı başarıyla dağıtmak için, kaynakların Azure 'da nasıl dağıtıldığını anlamak önemlidir. Aşağıdaki örnekte, üst düzey konfigürasyonlar **SiteConfig** kullanılarak uygulanır. Işlevlerin çalışma zamanına ve dağıtım altyapısına bilgi ilettikleri için, bu yapılandırmaların üst düzeyde ayarlanması önemlidir. Alt **sourcecontrols/Web** kaynağı uygulanmadan önce en üst düzey bilgiler gereklidir. Bu ayarları alt düzey **config/appSettings** kaynağında yapılandırmak mümkün olsa da, bazı durumlarda işlev uygulamanızın **config/appSettings** uygulanmadan *önce* dağıtılması gerekir. Örneğin, [Logic Apps](../logic-apps/index.yml)işlevleri kullanırken, işlevleriniz başka bir kaynağın bağımlılığı olan bir bağımlılıktır.
 
 ```json
 {
@@ -649,7 +649,7 @@ Bir işlev uygulamasının, dağıtımınızda kullanabileceğiniz uygulama ayar
 
 * [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 * [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)
-* [Azure portalı](../azure-resource-manager/templates/deploy-portal.md)
+* [Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
 * [REST API](../azure-resource-manager/templates/deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>Azure'a Dağıt düğmesi

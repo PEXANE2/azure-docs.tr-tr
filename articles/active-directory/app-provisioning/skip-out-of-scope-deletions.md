@@ -12,18 +12,18 @@ ms.date: 12/10/2019
 ms.author: kenwith
 ms.reviewer: celested
 ms.openlocfilehash: f459a804b4c375eea17cbc22ded2f41f808c1b82
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041180"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995378"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>Kapsam dışına çıkan Kullanıcı hesaplarını silmeyi atlayın
 
 Varsayılan olarak, Azure AD sağlama altyapısı, kapsam dışına çıkan kullanıcıları geçici olarak siler veya devre dışı bırakır. Ancak, Workday gibi AD kullanıcısı gelen sağlama ile ilgili bazı senaryolar için bu davranış beklenmeyebilir ve bu varsayılan davranışı geçersiz kılmak isteyebilirsiniz.  
 
-Bu makalede, kapsam dışına çıkan hesapların işlenmesini denetleyen " **Skipoutofscopesilmeleri** _" bayrağını ayarlamak IÇIN Microsoft Graph apı ve Microsoft Graph API Explorer 'ın nasıl kullanılacağı açıklanır. _ IF * **Skipoutofscopesilmeleri** _ değeri 0 (false) olarak ayarlandıysa, kapsam dışına çıkan hesaplar hedefte devre dışı bırakılır.
-_ IF * **Skipoutofscopesilmeleri** _, 1 (true) olarak ayarlandıysa, kapsam dışına çıkan hesaplar hedefte devre dışı olmayacaktır. Bu bayrak _Provisioning App * düzeyinde ayarlanır ve Graph API kullanılarak yapılandırılabilir. 
+Bu makalede, kapsam dışına çıkan hesapların işlenmesini denetleyen "**Skipoutofscopesilmeleri** _" bayrağını ayarlamak IÇIN Microsoft Graph apı ve Microsoft Graph API Explorer 'ın nasıl kullanılacağı açıklanır. _ IF ***Skipoutofscopesilmeleri** _ değeri 0 (false) olarak ayarlandıysa, kapsam dışına çıkan hesaplar hedefte devre dışı bırakılır.
+_ IF ***Skipoutofscopesilmeleri** _, 1 (true) olarak ayarlandıysa, kapsam dışına çıkan hesaplar hedefte devre dışı olmayacaktır. Bu bayrak _Provisioning App * düzeyinde ayarlanır ve Graph API kullanılarak yapılandırılabilir. 
 
 Bu yapılandırma *Kullanıcı sağlama uygulamasını Active Directory Için Workday* ile yaygın olarak kullanıldığından, Workday uygulamasının ekran görüntülerini içerir. Ancak, yapılandırma ServiceNow, Salesforce ve Dropbox gibi *diğer uygulamalarla* de kullanılabilir.
 
@@ -68,9 +68,9 @@ Eşlemeye eklenecek JSON bloğu aşağıda verilmiştir.
 
 ## <a name="step-4-update-the-secrets-endpoint-with-the-skipoutofscopedeletions-flag"></a>4. Adım: Skipoutofscopesilmeleri bayrağıyla gizli dizileri bitiş noktasını güncelleştirme
 
-Grafik Gezgini 'nde, gizli dizi uç noktasını * *_Skipoutofscopesilmeleri_* _ bayrağıyla güncelleştirmek için aşağıdaki komutu çalıştırın. 
+Grafik Gezgini 'nde, gizli dizi uç noktasını **_Skipoutofscopesilmeleri_* _ bayrağıyla güncelleştirmek için aşağıdaki komutu çalıştırın. 
 
-Aşağıdaki URL 'de, [Serviceprincipalıd] öğesini [Adım 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id)' den ayıklanan _ *serviceprincipalıd* * ile değiştirin. 
+Aşağıdaki URL 'de, [Serviceprincipalıd] öğesini [Adım 1](#step-1-retrieve-your-provisioning-app-service-principal-id-object-id)' den ayıklanan _ *serviceprincipalıd** ile değiştirin. 
 
 ```http
    PUT https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/secrets

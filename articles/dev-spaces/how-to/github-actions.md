@@ -8,11 +8,11 @@ keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcıl
 manager: gwallace
 ms.custom: devx-track-js, devx-track-azurecli
 ms.openlocfilehash: 9bed61861c80f141270e50b644b32ae42fbe8e77
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748135"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995582"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub eylemleri & Azure Kubernetes hizmeti (Önizleme)
 
@@ -53,7 +53,7 @@ Sonraki bir adımda kullanıldığından, çıkışta *Loginserver* değerini ka
 
 ## <a name="create-a-service-principal-for-authentication"></a>Kimlik doğrulaması için bir hizmet sorumlusu oluşturma
 
-Hizmet sorumlusu oluşturmak için [az ad SP Create-for-RBAC][az-ad-sp-create-for-rbac] kullanın. Örneğin:
+Hizmet sorumlusu oluşturmak için [az ad SP Create-for-RBAC][az-ad-sp-create-for-rbac] kullanın. Örnek:
 
 ```azurecli
 az ad sp create-for-rbac --sdk-auth --skip-assignment
@@ -88,17 +88,17 @@ az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 > [!IMPORTANT]
 > Deponuz için GitHub eylemlerinin etkinleştirilmiş olması gerekir. Deponuzdaki GitHub eylemlerini etkinleştirmek için GitHub 'daki deponuza gidin, eylemler sekmesine tıklayın ve bu depo için eylemleri etkinleştirmeyi seçin.
 
-Ele geçirilen deponuza gidin ve *Ayarlar* ' a tıklayın. Sol kenar çubuğundaki *sırlar* ' a tıklayın. Yeni gizli dizi *Ekle* ' ye tıklayarak aşağıdaki her bir parolayı ekleyin:
+Ele geçirilen deponuza gidin ve *Ayarlar*' a tıklayın. Sol kenar çubuğundaki *sırlar* ' a tıklayın. Yeni gizli dizi *Ekle* ' ye tıklayarak aşağıdaki her bir parolayı ekleyin:
 
-1. *AZURE_CREDENTIALS* : hizmet sorumlusu oluşturma işleminden tümüyle çıkış.
-1. *RESOURCE_GROUP* : Bu örnekte *MYRESOURCEGROUP* olan aks kümeniz için kaynak grubu.
-1. *CLUSTER_NAME* : Bu örnekte *MYAKS* olan aks Kümenizin adı.
-1. *CONTAINER_REGISTRY* : ACR Için *loginserver* .
-1. *Ana bilgisayar* : *<MASTER_SPACE>. <APP_NAME>. <HOST_SUFFIX* >olan geliştirme alanınız için ana bilgisayar. Bu örnekte, *dev.bikesharingweb.fedcab0987.EUS.azds.io* .
-1. *IMAGE_PULL_SECRET* : kullanmak istediğiniz gizli dizi adı, örneğin *demo-gizli* .
-1. *MASTER_SPACE* : Bu örnekte *dev* olan üst geliştirme alanının adı.
-1. *REGISTRY_USERNAME* : hizmet sorumlusu oluşturma IŞLEMINDEN gelen JSON çıktısından *ClientID* .
-1. *REGISTRY_PASSWORD* : hizmet sorumlusu oluşturma IŞLEMINDEN gelen JSON çıktısından *ClientSecret* .
+1. *AZURE_CREDENTIALS*: hizmet sorumlusu oluşturma işleminden tümüyle çıkış.
+1. *RESOURCE_GROUP*: Bu örnekte *MYRESOURCEGROUP* olan aks kümeniz için kaynak grubu.
+1. *CLUSTER_NAME*: Bu örnekte *MYAKS* olan aks Kümenizin adı.
+1. *CONTAINER_REGISTRY*: ACR Için *loginserver* .
+1. *Ana bilgisayar*: *<MASTER_SPACE>. <APP_NAME>. <HOST_SUFFIX*>olan geliştirme alanınız için ana bilgisayar. Bu örnekte, *dev.bikesharingweb.fedcab0987.EUS.azds.io*.
+1. *IMAGE_PULL_SECRET*: kullanmak istediğiniz gizli dizi adı, örneğin *demo-gizli*.
+1. *MASTER_SPACE*: Bu örnekte *dev* olan üst geliştirme alanının adı.
+1. *REGISTRY_USERNAME*: hizmet sorumlusu oluşturma IŞLEMINDEN gelen JSON çıktısından *ClientID* .
+1. *REGISTRY_PASSWORD*: hizmet sorumlusu oluşturma IŞLEMINDEN gelen JSON çıktısından *ClientSecret* .
 
 > [!NOTE]
 > Tüm bu gizlilikler GitHub eylemi tarafından kullanılır ve [. GitHub/iş akışları/bisiklet. yıml][github-action-yaml]içinde yapılandırılır.
@@ -107,8 +107,8 @@ Ele geçirilen deponuza gidin ve *Ayarlar* ' a tıklayın. Sol kenar çubuğunda
 
 Ayrıca, çekme yaptığınız değişikliklerin bir en alt alanda çalışmasını istiyorsanız, *MASTER_SPACE* ve *konak* sırları güncelleştirin. Örneğin, uygulamanız geliştirme */azureuser1* bir alt alan *dev 'da çalışıyorsa* , çekme isteği *dev/azureuser1* alt alanında çalışır:
 
-* *MASTER_SPACE* , üst alan olarak istediğiniz alt alana güncelleştirin, bu örnekte *azureuser1* .
-* *Ana bilgisayarı* *<GRANDPARENT_SPACE>. <APP_NAME>. <* HOST_SUFFIX>, bu örnekte *dev.bikesharingweb.fedcab0987.EUS.azds.io* .
+* *MASTER_SPACE* , üst alan olarak istediğiniz alt alana güncelleştirin, bu örnekte *azureuser1*.
+* *Ana bilgisayarı* *<GRANDPARENT_SPACE>. <APP_NAME>. <* HOST_SUFFIX>, bu örnekte *dev.bikesharingweb.fedcab0987.EUS.azds.io*.
 
 ## <a name="create-a-new-branch-for-code-changes"></a>Kod değişiklikleri için yeni dal oluştur
 

@@ -5,11 +5,11 @@ ms.date: 02/19/2020
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: 2ac93f5aba722eea78267a512999a5581a887b99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77474200"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996485"
 ---
 Kapsayıcıya yönelik sorgular, için kullanılan Azure kaynağının fiyatlandırma katmanında faturalandırılır `ApiKey` .
 
@@ -27,4 +27,4 @@ Aşağıdaki seçeneklerden üçü de geçerli değerlerle sağlandığında <a 
 |--------|-------------|
 | `ApiKey` | Fatura bilgilerini izlemek için kullanılan bilişsel hizmetler kaynağının API anahtarı.<br/>Bu seçeneğin değeri, içinde belirtilen sağlanan kaynak için bir API anahtarı olarak ayarlanmalıdır `Billing` . |
 | `Billing` | Fatura bilgilerini izlemek için kullanılan bilişsel hizmetler kaynağının uç noktası.<br/>Bu seçeneğin değeri, sağlanan bir Azure kaynağının uç nokta URI 'sine ayarlanmalıdır.|
-| `Eula` | Kapsayıcının lisansını kabul ettiğinizi gösterir.<br/>Bu seçeneğin değeri **kabul**edilecek şekilde ayarlanmalıdır. |
+| `Eula` | Kapsayıcının lisansını kabul ettiğinizi gösterir.<br/>Bu seçeneğin değeri **kabul** edilecek şekilde ayarlanmalıdır. |

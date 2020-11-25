@@ -1,25 +1,25 @@
 ---
 title: 'Öğretici: yeni bir HoloLens Unity uygulaması oluşturma'
 description: Bu öğreticide, Azure uzamsal bağlayıcıları kullanarak yeni bir HoloLens Unity uygulaması oluşturmayı öğreneceksiniz.
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 08/17/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e94ced70ad17286612328884d03d4d1253b7818b
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: ee0bf9b4ce009f37dd1931d4ed030defa24e7d38
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096547"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95996278"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>Öğretici: Azure uzamsal bağlayıcıları kullanarak yeni bir HoloLens Unity uygulaması oluşturmaya yönelik adım adım yönergeler
 
 Bu öğreticide, Azure uzamsal bağlayıcılarla yeni bir HoloLens Unity uygulamasının nasıl oluşturulacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
 
@@ -31,9 +31,9 @@ Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
 
 İlk olarak proje ve Unity sahümüzü ayarlayacağız:
 1. Unity 'yi başlatın.
-2. **Yeni**’yi seçin.
+2. **Yeni**'yi seçin.
 4. **3B** 'in seçili olduğundan emin olun.
-5. Projenizi adlandırın ve bir kaydetme **konumu**girin.
+5. Projenizi adlandırın ve bir kaydetme **konumu** girin.
 6. **Create project** (Proje oluştur) öğesini seçin.
 7. Boş varsayılan sahneyi kullanarak yeni bir dosyaya kaydedin: **Dosya**  >  **farklı kaydet**.
 8. Yeni sahneyi **Main** olarak adlandırın ve **Kaydet** düğmesine basın.
@@ -43,12 +43,12 @@ Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
 Şimdi geliştirme için Windows holographic SDK 'sını hedefmize yardımcı olan bazı Unity proje ayarlarını ayarlayacağız.
 
 İlk olarak, uygulamamız için kalite ayarlarını ayarlayalım.
-1. **Edit**  >  **Proje ayarlarını**Düzenle  >  **kalitesini** seçin
+1. **Edit**  >  **Proje ayarlarını** Düzenle  >  **kalitesini** seçin
 2. **Windows Mağazası** logosunun altındaki sütunda, **varsayılan** satırdaki oka tıklayın ve **çok düşük**' ı seçin. **Windows Mağazası** sütununda ve **çok düşük** satırdaki kutu yeşil olduğunda ayarın doğru uygulandığını bilirsiniz.
 
 Unity uygulamamızı 2B görünüm yerine bir tam ekran görünümüyle yapılandırmamız gerekir. Windows 10 SDK 'Yı hedefleyen Unity üzerinde sanal gerçeklik desteğini etkinleştirerek bir derinlikli görünüm oluşturabiliyoruz.
-1. **Edit**  >  **Proje ayarları**  >  **oynatıcıyı**Düzenle ' ye gidin.
-2. **Oynatıcı ayarları**Için **Inspector panelinde** **Windows** simgesini seçin.
+1. **Edit**  >  **Proje ayarları**  >  **oynatıcıyı** Düzenle ' ye gidin.
+2. **Oynatıcı ayarları** Için **Inspector panelinde** **Windows** simgesini seçin.
 3. **XR ayarları** grubunu genişletin.
 4. **Oluşturma** bölümünde, yeni bir **sanal gerçeklik SDK** listesi eklemek için **sanal gerçeklik destekleniyor** onay kutusunu işaretleyin.
 5. **Windows Mixed Reality** 'nin listede göründüğünü doğrulayın. Aksi takdirde, **+** listenin altındaki düğmeyi seçin ve **Windows Mixed Reality**' yi seçin.
@@ -58,38 +58,38 @@ Unity uygulamamızı 2B görünüm yerine bir tam ekran görünümüyle yapılan
 
 **Komut dosyası arka uç yapılandırmasını doğrula**
 1. **Edit**  >  **Proje ayarları**  >  **oyuncusunu** Düzenle ' ye gidin (hala **Player 'ın** önceki adımdan açık olması gerekebilir).
-2. **Oynatıcı ayarları**Için **Inspector panelinde** **Windows Mağazası** simgesini seçin.
-3. **Diğer ayarlar** yapılandırması bölümünde, **komut dosyası arka** ucunun **IL2CPP**olarak ayarlandığından emin olun.
+2. **Oynatıcı ayarları** Için **Inspector panelinde** **Windows Mağazası** simgesini seçin.
+3. **Diğer ayarlar** yapılandırması bölümünde, **komut dosyası arka** ucunun **IL2CPP** olarak ayarlandığından emin olun.
 
 **Özellikleri ayarla**
 1. **Edit**  >  **Proje ayarları**  >  **oyuncusunu** Düzenle ' ye gidin (hala **Player 'ın** önceki adımdan açık olması gerekebilir).
-2. **Oynatıcı ayarları**Için **Inspector panelinde** **Windows Mağazası** simgesini seçin.
+2. **Oynatıcı ayarları** Için **Inspector panelinde** **Windows Mağazası** simgesini seçin.
 3. **Yayımlama ayarları** yapılandırması bölümünde, **ınternetclientserver** ve **spatialperception**' yı denetleyin.
 
 **Ana sanal kamerayı ayarlama**
 1. **Hiyerarşi panelinde**, **ana kamera**' ı seçin.
-2. **Denetçisinde**, dönüştürme konumunu **0, 0, 0**olarak ayarlayın.
-3. **Clear Flags** özelliğini bulun ve açılan menüyü **ufuk kutusundan** **düz renk**olarak değiştirin.
+2. **Denetçisinde**, dönüştürme konumunu **0, 0, 0** olarak ayarlayın.
+3. **Clear Flags** özelliğini bulun ve açılan menüyü **ufuk kutusundan** **düz renk** olarak değiştirin.
 4. Bir renk seçici açmak için **arka plan** alanına tıklayın.
-5. **R, G, B ve A** 'yı **0**olarak ayarlayın.
-6. **Bileşen Ekle** ' yi seçin ve **uzamsal eşleme Collider**eklemek için arama yapın.
+5. **R, G, B ve A** 'yı **0** olarak ayarlayın.
+6. **Bileşen Ekle** ' yi seçin ve **uzamsal eşleme Collider** eklemek için arama yapın.
 
 **Betiğimizi oluşturun**
-1. **Proje** bölmesinde, **varlıklar** klasörü altında yeni bir klasör, **komut dosyaları**oluşturun.
-2. Klasöre sağ tıklayın ve ardından >, **C# betiği** **Oluştur **' u seçin. Başlık **AzureSpatialAnchorsScript**.
-3. **Oyun nesnesi**  ->  **Oluştur boş**öğesine gidin.
-4. Bunu seçin ve **Inspector** 'Da **Gameobject** Iken **mixedrealitycloud**olarak yeniden adlandırın. **Bileşen Ekle** ' yi seçin ve **AzureSpatialAnchorsScript**ekleyin ve ekleyin.
+1. **Proje** bölmesinde, **varlıklar** klasörü altında yeni bir klasör, **komut dosyaları** oluşturun.
+2. Klasöre sağ tıklayın ve ardından >, **C# betiği** **Oluştur**' u seçin. Başlık **AzureSpatialAnchorsScript**.
+3. **Oyun nesnesi**  ->  **Oluştur boş** öğesine gidin.
+4. Bunu seçin ve **Inspector** 'Da **Gameobject** Iken **mixedrealitycloud** olarak yeniden adlandırın. **Bileşen Ekle** ' yi seçin ve **AzureSpatialAnchorsScript** ekleyin ve ekleyin.
 
 **Sphere prefab oluşturma**
-1. **Gameobject**  ->  **3B nesne**  ->  **Sphere**öğesine gidin.
-2. **Denetçisinde**, ölçeğini **0,25, 0,25, 0,25**olarak ayarlayın.
+1. **Gameobject**  ->  **3B nesne**  ->  **Sphere** öğesine gidin.
+2. **Denetçisinde**, ölçeğini **0,25, 0,25, 0,25** olarak ayarlayın.
 3. **Hiyerarşi** bölmesinde **Sphere** nesnesini bulun. Üzerine tıklayın ve **Proje** bölmesindeki **varlıklar** klasörüne sürükleyin.
 4. **Hiyerarşi** bölmesinde oluşturduğunuz orijinal küreyi sağ tıklayıp **silin** .
 
 Artık **Proje** bölmesinizdeki bir Sphere prefab sahibi olmanız gerekir.
 
 ## <a name="trying-it-out"></a>Deneniyor
-Her şeyin çalıştığını test etmek için, uygulamanızı **Unity** 'de derleyin ve **Visual Studio**'dan dağıtın. [ **Mr temel kuralları 100: Unity kursu ile çalışmaya** ](/windows/mixed-reality/holograms-100#chapter-6---build-and-deploy-to-device-from-visual-studio) başlama başlıklı Bölüm 6 ' yı izleyin. Unity başlangıç ekranı ' nı ve ardından temiz bir ekran görmeniz gerekir.
+Her şeyin çalıştığını test etmek için, uygulamanızı **Unity** 'de derleyin ve **Visual Studio**'dan dağıtın. [ **Mr temel kuralları 100: Unity kursu ile çalışmaya**](/windows/mixed-reality/holograms-100#chapter-6---build-and-deploy-to-device-from-visual-studio) başlama başlıklı Bölüm 6 ' yı izleyin. Unity başlangıç ekranı ' nı ve ardından temiz bir ekran görmeniz gerekir.
 
 ## <a name="place-an-object-in-the-real-world"></a>Gerçek dünyaya bir nesne yerleştirme
 Uygulamanızı kullanarak bir nesne oluşturalım &. [Uygulamamızı dağıttığımızda](#trying-it-out)oluşturduğumuz Visual Studio çözümünü açın.
@@ -164,7 +164,7 @@ Bu yöntem Unity sürümleriyle uyumludur 2019.1 +.
 > [!WARNING]
 > Azure uzamsal Tutturucuların SDK 'sının Unity varlık paketi dağıtımı SDK sürümü 2.5.0 sonrasında kullanımdan kalkacaktır.
 
-Azure uzamsal bağlayıcı SDK 'sını indirelim. [Azure uzamsal bağlantıları GitHub yayınları sayfasına](https://github.com/Azure/azure-spatial-anchors-samples/releases)gidin. **Varlıklar**altında **AzureSpatialAnchors. unitypackage**' ı indirin. Unity 'de **varlıklar**' a gidin, paket özel paketini **içeri aktar**  >  **..**. seçeneğini belirleyin. Pakete gidin ve **Aç**' ı seçin.
+Azure uzamsal bağlayıcı SDK 'sını indirelim. [Azure uzamsal bağlantıları GitHub yayınları sayfasına](https://github.com/Azure/azure-spatial-anchors-samples/releases)gidin. **Varlıklar** altında **AzureSpatialAnchors. unitypackage**' ı indirin. Unity 'de **varlıklar**' a gidin, paket özel paketini **içeri aktar**  >  **..**. seçeneğini belirleyin. Pakete gidin ve **Aç**' ı seçin.
 
 Açılan yeni **Unity paketi Içeri aktar** penceresinde, **eklentilerin** seçimini kaldırın ve sağ alt köşedeki **içeri aktar** ' ı seçin.
 

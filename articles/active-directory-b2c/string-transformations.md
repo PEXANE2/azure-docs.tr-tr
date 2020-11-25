@@ -12,11 +12,11 @@ ms.date: 11/03/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 4e74c33a18baff3e1cb39328ce265f16975ef1b5
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322150"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994851"
 ---
 # <a name="string-claims-transformations"></a>Dize talep dönüştürmeleri
 
@@ -80,10 +80,10 @@ Otomatik olarak onaylanan teknik profil, doğrulama **oturum açma-etkileşimsiz
 ### <a name="example"></a>Örnek
 
 - Giriş talepleri:
-  - **inputClaim1** : someone@contoso.com
-  - **inputClaim2** : someone@outlook.com
+  - **inputClaim1**: someone@contoso.com
+  - **inputClaim2**: someone@outlook.com
 - Giriş parametreleri:
-  - **StringComparison** : OrdinalIgnoreCase
+  - **StringComparison**: OrdinalIgnoreCase
 - Sonuç: hata oluştu
 
 ## <a name="changecase"></a>Değişiklik durumu
@@ -115,11 +115,11 @@ Herhangi bir dize ClaimType 'ı küçük veya büyük harfle değiştirmek için
 ### <a name="example"></a>Örnek
 
 - Giriş talepleri:
-  - **e-posta** : SomeOne@contoso.com
+  - **e-posta**: SomeOne@contoso.com
 - Giriş parametreleri:
-    - **Tocase** : daha düşük
+    - **Tocase**: daha düşük
 - Çıkış talepleri:
-  - **e-posta** : someone@contoso.com
+  - **e-posta**: someone@contoso.com
 
 ## <a name="createstringclaim"></a>CreateStringClaim
 
@@ -146,9 +146,9 @@ Bir dize ClaimType değeri ayarlamak için bu talep dönüşümünü kullanın.
 ### <a name="example"></a>Örnek
 
 - Giriş parametresi:
-    - **değer** : contoso hizmet koşulları...
+    - **değer**: contoso hizmet koşulları...
 - Çıkış talepleri:
-    - **Createdclaim** : TOS ClaimType "contoso hizmet koşulları..." içerir deeri.
+    - **Createdclaim**: TOS ClaimType "contoso hizmet koşulları..." içerir deeri.
 
 ## <a name="compareclaims"></a>CompareClaims
 
@@ -183,13 +183,13 @@ Bir talebin başka bir talebe eşit olup olmadığını denetlemek için bu tale
 ### <a name="example"></a>Örnek
 
 - Giriş talepleri:
-  - **inputClaim1** : someone@contoso.com
-  - **inputClaim2** : someone@outlook.com
+  - **inputClaim1**: someone@contoso.com
+  - **inputClaim2**: someone@outlook.com
 - Giriş parametreleri:
-    - **işleç** : eşit değil
-    - **IgnoreCase** : true
+    - **işleç**: eşit değil
+    - **IgnoreCase**: true
 - Çıkış talepleri:
-    - **Outputclaim** : true
+    - **Outputclaim**: true
 
 ## <a name="compareclaimtovalue"></a>CompareClaimToValue
 
@@ -223,13 +223,13 @@ Bu talep dönüşümünü, bir talebin belirttiğiniz değere eşit olup olmadı
 
 ### <a name="example"></a>Örnek
 - Giriş talepleri:
-    - **inputClaim1** : v1
+    - **inputClaim1**: v1
 - Giriş parametreleri:
-    - **CompareTo** : v1
-    - **işleç** : eşittir
-    - **IgnoreCase** : true
+    - **CompareTo**: v1
+    - **işleç**: eşittir
+    - **IgnoreCase**: true
 - Çıkış talepleri:
-    - **Outputclaim** : true
+    - **Outputclaim**: true
 
 ## <a name="createrandomstring"></a>CreateRandomString
 
@@ -259,9 +259,9 @@ Aşağıdaki örnek, genel benzersiz bir KIMLIK üretir. Bu talep dönüştürme
 ### <a name="example"></a>Örnek
 
 - Giriş parametreleri:
-    - **Randomgeneratortype** : GUID
+    - **Randomgeneratortype**: GUID
 - Çıkış talepleri:
-    - **Outputclaim** : bc8bedd2-aaa3-411E-bdee-2f1810b73dfc
+    - **Outputclaim**: bc8bedd2-aaa3-411E-bdee-2f1810b73dfc
 
 Aşağıdaki örnek 0 ile 1000 arasında bir tamsayı rastgele değeri üretir. Değer, {Random Value} OTP_ olarak biçimlendirilir.
 
@@ -282,12 +282,12 @@ Aşağıdaki örnek 0 ile 1000 arasında bir tamsayı rastgele değeri üretir. 
 ### <a name="example"></a>Örnek
 
 - Giriş parametreleri:
-    - **Randomgeneratortype** : tamsayı
-    - **Maximumnumber** : 1000
-    - **StringFormat** : OTP_{0}
-    - **Base64** : yanlış
+    - **Randomgeneratortype**: tamsayı
+    - **Maximumnumber**: 1000
+    - **StringFormat**: OTP_{0}
+    - **Base64**: yanlış
 - Çıkış talepleri:
-    - **Outputclaim** : OTP_853
+    - **Outputclaim**: OTP_853
 
 
 ## <a name="formatstringclaim"></a>FormatStringClaim
@@ -319,11 +319,11 @@ Herhangi bir dizeyi tek bir parametreyle biçimlendirmek için bu talep dönüş
 ### <a name="example"></a>Örnek
 
 - Giriş talepleri:
-    - **ınputclaim** : 5164db16-3eee-4629-bfda-dcc3326790e9
+    - **ınputclaim**: 5164db16-3eee-4629-bfda-dcc3326790e9
 - Giriş parametreleri:
-    - **StringFormat** : cpim_ {0} @ {RelyingPartyTenantId}
+    - **StringFormat**: cpim_ {0} @ {RelyingPartyTenantId}
 - Çıkış talepleri:
-  - **Outputclaim** : cpim_5164db16-3eee-4629-bfda-dcc3326790e9@b2cdemo.onmicrosoft.com
+  - **Outputclaim**: cpim_5164db16-3eee-4629-bfda-dcc3326790e9@b2cdemo.onmicrosoft.com
 
 ## <a name="formatstringmultipleclaims"></a>Formatstringmultipleclaim
 
@@ -356,12 +356,12 @@ Belirtilen biçim dizesine göre iki talebi biçimlendirin. Bu dönüşüm C# y�
 ### <a name="example"></a>Örnek
 
 - Giriş talepleri:
-    - **inputClaim1** : ali
-    - **inputClaim2** : Fernando
+    - **inputClaim1**: ali
+    - **inputClaim2**: Fernando
 - Giriş parametreleri:
-    - **StringFormat** : {0}{1}
+    - **StringFormat**: {0}{1}
 - Çıkış talepleri:
-    - **Outputclaim** : ali Fernando
+    - **Outputclaim**: ali Fernando
 
 ## <a name="getlocalizedstringstransformation"></a>Getlocalizedstringstranssize
 
@@ -427,10 +427,10 @@ Talep dönüştürmesi, email_subject değeri ile *ilgili* talep türü değerin
 ### <a name="example"></a>Örnek
 
 - Çıkış talepleri:
-  - **Konu** : contoso hesabı e-posta doğrulama kodu
-  - **ileti** : hesabınız doğrulanırken teşekkürler!
-  - **Codebir giriş** : kodunuz
-  - **imza** : saygılarımla
+  - **Konu**: contoso hesabı e-posta doğrulama kodu
+  - **ileti**: hesabınız doğrulanırken teşekkürler!
+  - **Codebir giriş**: kodunuz
+  - **imza**: saygılarımla
 
 
 ## <a name="getmappedvaluefromlocalizedcollection"></a>GetMappedValueFromLocalizedCollection
@@ -472,9 +472,9 @@ Talep dönüştürmesi öğenin metnini arar ve değerini döndürür. Kısıtla
 ### <a name="example"></a>Örnek
 
 - Giriş talepleri:
-    - **Mapfromclaım** : B2C_V1_90001
+    - **Mapfromclaım**: B2C_V1_90001
 - Çıkış talepleri:
-    - **restrictionValueClaim** : küçük olduğunuz için oturum açılamıyor.
+    - **restrictionValueClaim**: küçük olduğunuz için oturum açılamıyor.
 
 ## <a name="lookupvalue"></a>LookupValue
 
@@ -509,14 +509,14 @@ Aşağıdaki örnek, InputParameters koleksiyonlarından birinde etki alanı ad�
 ### <a name="example"></a>Örnek
 
 - Giriş talepleri:
-    - **ınputparameterıd** : test.com
+    - **ınputparameterıd**: test.com
 - Giriş parametreleri:
-    - **contoso.com** : 13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
-    - **Microsoft.com** : 0213308f-17cb-4398-b97e-01dav7bd4804e
-    - **test.com** : c7026f88-4299-4cdb-965d-3f166464b8a9
-    - **Erroronfailedlookup** : false
+    - **contoso.com**: 13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
+    - **Microsoft.com**: 0213308f-17cb-4398-b97e-01dav7bd4804e
+    - **test.com**: c7026f88-4299-4cdb-965d-3f166464b8a9
+    - **Erroronfailedlookup**: false
 - Çıkış talepleri:
-    - **Outputclaim** : c7026f88-4299-4cdb-965d-3f166464b8a9
+    - **Outputclaim**: c7026f88-4299-4cdb-965d-3f166464b8a9
 
 `errorOnFailedLookup`Giriş parametresi olarak ayarlandığında `true` , **lookupvalue** talep dönüştürmesi her zaman [otomatik olarak onaylanan bir teknik profil](self-asserted-technical-profile.md)veya bir [displayconrtol](display-controls.md)tarafından çağrılan bir [doğrulama teknik profilinden](validation-technical-profile.md) yürütülür. `LookupNotFound`Kendiliğinden onaylanan bir teknik profilin meta verileri, kullanıcıya sunulan hata iletisini denetler.
 
@@ -544,12 +544,12 @@ Aşağıdaki örnek, InputParameters koleksiyonlarından birinde etki alanı ad�
 ### <a name="example"></a>Örnek
 
 - Giriş talepleri:
-    - **ınputparameterıd** : Live.com
+    - **ınputparameterıd**: Live.com
 - Giriş parametreleri:
-    - **contoso.com** : 13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
-    - **Microsoft.com** : 0213308f-17cb-4398-b97e-01dav7bd4804e
-    - **test.com** : c7026f88-4299-4cdb-965d-3f166464b8a9
-    - **Erroronfailedlookup** : true
+    - **contoso.com**: 13c15f79-8fb1-4e29-a6c9-be0d36ff19f1
+    - **Microsoft.com**: 0213308f-17cb-4398-b97e-01dav7bd4804e
+    - **test.com**: c7026f88-4299-4cdb-965d-3f166464b8a9
+    - **Erroronfailedlookup**: true
 - Hata:
     - Giriş parametresi kimlikleri listesinde giriş talep değeri için eşleşme bulunamadı ve errorOnFailedLookup doğru.
 
@@ -573,9 +573,9 @@ Bu talep dönüşümünü, oturum tanımlama bilgisinin daha küçük olması i�
 ```
 
 - Giriş talepleri:
-    - **Outputclaim** : contoso uygulamasına hoş geldiniz. Bu Web sitesine gözatıp kullanmaya devam ederseniz, kabul etmiş ve aşağıdaki hüküm ve koşullara göre bağlanmaları gerekir...
+    - **Outputclaim**: contoso uygulamasına hoş geldiniz. Bu Web sitesine gözatıp kullanmaya devam ederseniz, kabul etmiş ve aşağıdaki hüküm ve koşullara göre bağlanmaları gerekir...
 - Çıkış talepleri:
-    - **Outputclaim** : null
+    - **Outputclaim**: null
 
 ## <a name="parsedomain"></a>ParseDomain
 
@@ -602,9 +602,9 @@ Kullanıcının @ simgesinden sonra etki alanı adını ayrıştırmak için bu 
 ### <a name="example"></a>Örnek
 
 - Giriş talepleri:
-  - **Emaadresi** : joe@outlook.com
+  - **Emaadresi**: joe@outlook.com
 - Çıkış talepleri:
-    - **etki alanı** : Outlook.com
+    - **etki alanı**: Outlook.com
 
 ## <a name="setclaimsifregexmatch"></a>Setclaimsıfregexmatch
 
@@ -641,13 +641,13 @@ Telefon numarası normal ifade düzenine göre, girilen telefon numarasının ge
 ```
 
 - Giriş talepleri:
-    - **claimToMatch** : "64854114520"
+    - **claimToMatch**: "64854114520"
 - Giriş parametreleri:
-    - **eşleşme** : "^ [0-9] {4,16} $"
-    - **Outputclaimifeşleşti** : "ısphone"
+    - **eşleşme**: "^ [0-9] {4,16} $"
+    - **Outputclaimifeşleşti**: "ısphone"
 - Çıkış talepleri:
-    - **Outputclaim** : "ısphone"
-    - **regexCompareResultClaim** : true
+    - **Outputclaim**: "ısphone"
+    - **regexCompareResultClaim**: true
 
 ### <a name="example-2"></a>Örnek 2
 
@@ -672,15 +672,15 @@ Belirtilen e-posta adresinin geçerli olup olmadığını denetler ve e-posta di
 ```
 
 - Giriş talepleri:
-    - **claimToMatch** : " emily@contoso.com "
+    - **claimToMatch**: " emily@contoso.com "
 - Giriş parametreleri:
-    - **eşleşme** : `(?&lt;mailAlias&gt;.*)@(.*)$`
-    - **Outputclaimifeşleşti** : "IMail"
-    - **Extractgroups** : true
+    - **eşleşme**: `(?&lt;mailAlias&gt;.*)@(.*)$`
+    - **Outputclaimifeşleşti**: "IMail"
+    - **Extractgroups**: true
 - Çıkış talepleri:
-    - **Outputclaim** : "isemail"
-    - **regexCompareResultClaim** : true
-    - **Mailalias** : em
+    - **Outputclaim**: "isemail"
+    - **regexCompareResultClaim**: true
+    - **Mailalias**: em
     
 ## <a name="setclaimsifstringsareequal"></a>Setclaimsıfstringsareeşittir
 
@@ -720,16 +720,16 @@ Bu talep dönüşümünü, bir talebin belirttiğiniz değere eşit olup olmadı
 ### <a name="example"></a>Örnek
 
 - Giriş talepleri:
-    - **ınputclaim** : v1
+    - **ınputclaim**: v1
 - Giriş parametreleri:
-    - **eşleşme** : v1
-    - **StringComparison** : OrdinalIgnoreCase
-    - **Stringmatchmsg** : B2C_V1_90005
-    - **Stringmatchmsgcode** : TOS v2 'ye yükseltildi
+    - **eşleşme**: v1
+    - **StringComparison**: OrdinalIgnoreCase
+    - **Stringmatchmsg**: B2C_V1_90005
+    - **Stringmatchmsgcode**: TOS v2 'ye yükseltildi
 - Çıkış talepleri:
-    - **outputClaim1** : B2C_V1_90005
-    - **outputClaim2** : TOS v2 'ye yükseltilir
-    - **stringCompareResultClaim** : true
+    - **outputClaim1**: B2C_V1_90005
+    - **outputClaim2**: TOS v2 'ye yükseltilir
+    - **stringCompareResultClaim**: true
 
 ## <a name="setclaimsifstringsmatch"></a>Setclaimsıfstringsmatch
 
@@ -766,14 +766,14 @@ Bir dize talebi ve `matchTo` giriş parametresinin eşit olduğunu denetler ve g
 ### <a name="example"></a>Örnek
 
 - Giriş talepleri:
-    - **claimToMatch** : küçük
+    - **claimToMatch**: küçük
 - Giriş parametreleri:
-    - **eşleşme** : küçük
-    - **StringComparison** : OrdinalIgnoreCase
-    - **Outputclaimifeşleşti** : B2C_V1_90001
+    - **eşleşme**: küçük
+    - **StringComparison**: OrdinalIgnoreCase
+    - **Outputclaimifeşleşti**: B2C_V1_90001
 - Çıkış talepleri:
-    - **isMinorResponseCode** : B2C_V1_90001
-    - **ısminor** : doğru
+    - **isMinorResponseCode**: B2C_V1_90001
+    - **ısminor**: doğru
 
 
 ## <a name="stringcontains"></a>StringContains
@@ -783,7 +783,7 @@ Belirtilen bir alt dizenin giriş talebi içinde oluşup oluşmadığını belir
 | Öğe | Dönüştürme Tionclaimtype | Veri Türü | Notlar |
 | ---- | ----------------------- | --------- | ----- |
 | Inputclaim | ınputclaim | string | Arama yapılacak talep türü. |
-|InputParameter|contains|string|Aranacak değer.|
+|InputParameter|şunu içerir|string|Aranacak değer.|
 |InputParameter|ignoreCase|string|Bu karşılaştırmanın karşılaştırılan dizenin durumunu yoksayıp saymayacağını belirtir.|
 | OutputClaim | outputClaim | string | Bu Claimstransbir şekilde üretilen ClaimType çağırılır. Giriş talebi içinde alt dize gerçekleşirse Boole göstergesi. |
 
@@ -807,12 +807,12 @@ Bir dize talep türünün bir alt dize içerip içermesinin olup olmadığını 
 ### <a name="example"></a>Örnek
 
 - Giriş talepleri:
-    - **ınputclaim** : "Yönetici, onaylayan, düzenleyici"
+    - **ınputclaim**: "Yönetici, onaylayan, düzenleyici"
 - Giriş parametreleri:
-    - **şunu içerir** : "Yönetici"
-    - **IgnoreCase** : true
+    - **şunu içerir**: "Yönetici"
+    - **IgnoreCase**: true
 - Çıkış talepleri:
-    - **Outputclaim** : true
+    - **Outputclaim**: true
 
 ## <a name="stringsubstring"></a>StringSubstring
 
@@ -845,12 +845,12 @@ Bir dize talep türünün parçalarını, belirtilen konumdaki karakterden başl
 ### <a name="example"></a>Örnek
 
 - Giriş talepleri:
-    - **ınputclaim** : "+ 1644114520"
+    - **ınputclaim**: "+ 1644114520"
 - Giriş parametreleri:
-    - **startIndex** : 0
-    - **uzunluk** : 2
+    - **startIndex**: 0
+    - **uzunluk**: 2
 - Çıkış talepleri:
-    - **Outputclaim** : "+ 1"
+    - **Outputclaim**: "+ 1"
 
 ## <a name="stringreplace"></a>StringReplace
 
@@ -883,12 +883,12 @@ Belirtilen değer için bir talep türü dizesi arar ve geçerli dizedeki belirt
 ### <a name="example"></a>Örnek
 
 - Giriş talepleri:
-    - **ınputclaim** : "+ 164-411-452-054"
+    - **ınputclaim**: "+ 164-411-452-054"
 - Giriş parametreleri:
-    - **OldValue** : "-"
-    - **NewValue** : ""
+    - **OldValue**: "-"
+    - **NewValue**: ""
 - Çıkış talepleri:
-    - **Outputclaim** : "+ 164411452054"
+    - **Outputclaim**: "+ 164411452054"
 
 ## <a name="stringjoin"></a>Stringjoın
 
@@ -919,11 +919,11 @@ Aşağıdaki örnek, bir Kullanıcı rolleri dize koleksiyonunu alır ve bunu bi
 ### <a name="example"></a>Örnek
 
 - Giriş talepleri:
-  - **ınputclaim** : ["admin", "author", "Reader"]
+  - **ınputclaim**: ["admin", "author", "Reader"]
 - Giriş parametreleri:
-  - **sınırlayıcı** : ","
+  - **sınırlayıcı**: ","
 - Çıkış talepleri:
-  - **Outputclaim** : "Yönetici, yazar, okuyucu"
+  - **Outputclaim**: "Yönetici, yazar, okuyucu"
 
 
 ## <a name="stringsplit"></a>StringSplit
@@ -955,11 +955,11 @@ Aşağıdaki örnek, Kullanıcı rollerinin virgül sınırlayıcısı dizesini 
 ### <a name="example"></a>Örnek
 
 - Giriş talepleri:
-  - **ınputclaim** : "Yönetici, yazar, okuyucu"
+  - **ınputclaim**: "Yönetici, yazar, okuyucu"
 - Giriş parametreleri:
-  - **sınırlayıcı** : ","
+  - **sınırlayıcı**: ","
 - Çıkış talepleri:
-  - **Outputclaim** : ["admin", "author", "Reader"]
+  - **Outputclaim**: ["admin", "author", "Reader"]
 
 ## <a name="string-claim-transformations-expressions"></a>Dize talep dönüştürmeleri ifadeleri
 Azure AD B2C özel ilkelerindeki talep dönüştürmeleri ifadeleri, kiracı KIMLIĞI ve teknik profil KIMLIĞIYLE ilgili bağlam bilgilerini sağlar.

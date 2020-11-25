@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 73fa82c3f162b546517ce40ef1447c002351d5b4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839548"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994477"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-ad-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Azure için ağ Ilkesi sunucusu uzantısını kullanarak VPN altyapınızı Azure AD MFA ile tümleştirme
 
@@ -72,7 +72,7 @@ Azure için NPS Uzantısı NPS ile tümleştirildiğinde, başarılı bir kimlik
 7. Bağlantı girişiminden hem kimlik doğrulaması hem de yetkilendirildikten sonra, uzantının yüklendiği NPS, VPN sunucusuna (RADIUS istemcisi) bir RADIUS *erişim-kabul* iletisi gönderir.
 8. Kullanıcıya VPN sunucusundaki sanal bağlantı noktasına erişim verilir ve şifreli bir VPN tüneli oluşturur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu bölümde, MFA 'yı VPN ile tümleştirebilmeniz için tamamlanması gereken önkoşulların ayrıntıları yer almalıdır. Başlamadan önce, aşağıdaki önkoşulların yerine gelmelidir:
 

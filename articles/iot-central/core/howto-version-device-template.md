@@ -9,11 +9,11 @@ ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
 ms.openlocfilehash: 93545c63013c95e3db498b079061da3d9b189efd
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94986475"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995769"
 ---
 # <a name="create-a-new-device-template-version"></a>Yeni bir cihaz şablonu sürümü oluştur
 
@@ -68,7 +68,7 @@ Cihaz olanaklarınızın belirli öğeleri, cihaz şablonu ve arabirimlerinizin 
 1. Özelleştirmek istediğiniz cihaz şablonunu seçin.
 1. **Özelleştir** sekmesini seçin.
 1. Cihaz modelinizde tanımlanan tüm yetenekler burada listelenmiştir. Cihaz şablonunuzu sürüm gerekmeden bu alanları düzenleyebilir, kaydedebilir ve kullanabilirsiniz. Salt okunurdur düzenlemek istediğiniz alanlar varsa, bunları değiştirmek için cihaz şablonunuzu sürümüne uygulamanız gerekir. Düzenlemek istediğiniz bir alanı seçin ve yeni değerleri girin.
-1. **Kaydet**’i seçin. Artık bu değerler, ilk olarak cihaz şablonunuzda kaydedilen ve uygulama genelinde kullanılan her şeyi geçersiz kılar.
+1. **Kaydet**'i seçin. Artık bu değerler, ilk olarak cihaz şablonunuzda kaydedilen ve uygulama genelinde kullanılan her şeyi geçersiz kılar.
 
 ## <a name="version-a-device-template"></a>Bir cihaz şablonu sürümü
 

@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 12/26/2018
 ms.custom: devx-track-python
 ms.openlocfilehash: 58f22a335f4c619a6348e9e127e60f5a79f658b2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099666"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994579"
 ---
 # <a name="quickstart-build-a-python-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Hızlı başlangıç: Azure Cosmos DB MongoDB için API 'sini kullanarak bir Python uygulaması oluşturma
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -114,7 +114,7 @@ Kodu canlı bir Azure Cosmos DB hesabına göre test etmek istiyorsanız, bir he
 
 Canlı Azure Cosmos DB hesabıyla kodu test etmek için bağlantı dizesi bilgilerinizi alın. Ardından uygulamaya kopyalayın.
 
-1. Azure portal Azure Cosmos DB hesabınızda, sol gezinti **bağlantı dizesi** ' ni seçin ve ardından **okuma-yazma anahtarları** ' nı seçin. Kullanıcı adını, bağlantı dizesini ve parolayı kopyalamak için ekranın sağ tarafındaki kopyalama düğmelerini kullanacaksınız. 
+1. Azure portal Azure Cosmos DB hesabınızda, sol gezinti **bağlantı dizesi**' ni seçin ve ardından **okuma-yazma anahtarları**' nı seçin. Kullanıcı adını, bağlantı dizesini ve parolayı kopyalamak için ekranın sağ tarafındaki kopyalama düğmelerini kullanacaksınız. 
 
 2. Kök dizinde *app.py* dosyasını açın.
 

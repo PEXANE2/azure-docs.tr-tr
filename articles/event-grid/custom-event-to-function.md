@@ -4,11 +4,11 @@ description: 'Hızlı başlangıç: bir konu yayımlamak ve bu olaya abone olmak
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.openlocfilehash: aea52bcaa94d6f288e86e44e1a0f294796d8e4a3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91324453"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996363"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>Hızlı başlangıç: Event Grid ile özel olayları Azure Işlevine yönlendirme
 
@@ -20,13 +20,13 @@ Azure Event Grid, bulut için bir olay oluşturma hizmetidir. Azure Işlevleri d
 Özel konuya abone olmadan önce, olayları işlemek için bir işlev oluşturun. 
 
 1. [İşlev uygulaması oluşturma](../azure-functions/functions-create-first-azure-function.md#create-a-function-app)yönergelerini kullanarak bir işlev uygulaması oluşturun.
-2. **Event Grid tetikleyicisini**kullanarak bir işlev oluşturun. Bu tetikleyiciyi ilk kez kullanıyorsanız, uzantıyı yüklemek için ' Install ' düğmesine tıklamanız gerekebilir.
+2. **Event Grid tetikleyicisini** kullanarak bir işlev oluşturun. Bu tetikleyiciyi ilk kez kullanıyorsanız, uzantıyı yüklemek için ' Install ' düğmesine tıklamanız gerekebilir.
     1. **İşlev uygulaması** sayfasında, Sol menüdeki **işlevler** ' i seçin, şablonlarda **Event Grid** arayın ve ardından **Azure Event Grid tetikleyicisi**' ni seçin. 
 
         :::image type="content" source="./media/custom-event-to-function/function-event-grid-trigger.png" alt-text="Event Grid tetikleyicisi seçin":::
 3. **Yeni işlev** sayfasında, işlev için bir ad girin ve **işlev oluştur**' u seçin.
 
-    :::image type="content" source="./media/custom-event-to-function/new-function-page.png" alt-text="Event Grid tetikleyicisi seçin":::
+    :::image type="content" source="./media/custom-event-to-function/new-function-page.png" alt-text="Yeni Işlev sayfası":::
 4. İşlevin varolan kodunu görmek ve güncelleştirmek için **kod + test** sayfasını kullanın. 
 
 [!INCLUDE [event-grid-register-provider-portal.md](../../includes/event-grid-register-provider-portal.md)]
@@ -36,7 +36,7 @@ Azure Event Grid, bulut için bir olay oluşturma hizmetidir. Azure Işlevleri d
 Event grid konusu, olaylarınızı göndereceğiniz kullanıcı tanımlı bir uç nokta sağlar. 
 
 1. [Azure Portal](https://portal.azure.com/)oturum açın.
-2. Sol gezinti menüsünde **tüm hizmetler** ' i seçin, **Event Grid**arayın ve **Event Grid konuları**' nı seçin. 
+2. Sol gezinti menüsünde **tüm hizmetler** ' i seçin, **Event Grid** arayın ve **Event Grid konuları**' nı seçin. 
 
     ![Event Grid konuları seçin](./media/custom-event-to-function/select-event-grid-topics.png)
 3. **Event Grid konuları** sayfasında, araç çubuğunda **+ Ekle** ' yi seçin. 
@@ -46,7 +46,7 @@ Event grid konusu, olaylarınızı göndereceğiniz kullanıcı tanımlı bir u�
 4. **Konu oluştur** sayfasında, aşağıdaki adımları izleyin:
 
     1. Özel konu için benzersiz bir **ad** sağlayın. Konu adı bir DNS girdisi ile temsil edildiğinden konu adı benzersiz olmalıdır. Görüntüde gösterilen adı kullanmayın. Bunun yerine, kendi adınızı oluşturun; 3-50 karakter arasında olmalıdır ve yalnızca a-z, A-Z, 0-9 ve "-" değerlerini içermelidir.
-    2. Azure **aboneliğinizi**seçin.
+    2. Azure **aboneliğinizi** seçin.
     3. Önceki adımlardan aynı kaynak grubunu seçin.
     4. Olay Kılavuzu konusu için bir **konum** seçin.
     5. **Olay şeması** alanı için varsayılan değer **Event Grid şemayı** tut. 
@@ -76,19 +76,19 @@ Event Grid’e hangi olayları izlemek istediğinizi ve olayların nereye gönde
 
 2. **Olay aboneliği oluştur** sayfasında, aşağıdaki adımları izleyin:
     1. Olay aboneliği için bir **ad** girin.
-    3. **Uç nokta türü**Için **Azure işlevi** ' ni seçin. 
-    4. **Uç nokta seç ' i**seçin. 
+    3. **Uç nokta türü** Için **Azure işlevi** ' ni seçin. 
+    4. **Uç nokta seç ' i** seçin. 
 
        ![Olay abonelik değerlerini sağlama](./media/custom-event-to-function/provide-subscription-values.png)
 
     5. İşlev uç noktası için İşlev Uygulaması Azure aboneliğini ve kaynak grubunu seçin ve ardından daha önce oluşturduğunuz İşlev Uygulaması ve işlevi seçin. **Seçimi Onayla**'yı seçin.
 
        ![Uç nokta URL'si sağlama](./media/custom-event-to-function/provide-endpoint.png)
-    6. Bu adım isteğe bağlıdır, ancak üretim senaryolarında önerilir. **Olay aboneliği oluştur** sayfasında, **Gelişmiş Özellikler** sekmesine geçin ve **toplu iş başına en fazla olay** ve **tercih edilen toplu iş boyutu için değerleri kilobayt cinsinden**ayarlayın. 
+    6. Bu adım isteğe bağlıdır, ancak üretim senaryolarında önerilir. **Olay aboneliği oluştur** sayfasında, **Gelişmiş Özellikler** sekmesine geçin ve **toplu iş başına en fazla olay** ve **tercih edilen toplu iş boyutu için değerleri kilobayt cinsinden** ayarlayın. 
     
-        Toplu işleme size yüksek işlem hacmi verebilir. **Toplu iş başına en fazla olay**için, bir aboneliğin bir toplu işe dahil olacağı maksimum olay sayısını ayarlayın. Tercih edilen toplu iş boyutu, cihazının saniyede bayt cinsinden toplu iş boyutu için tercih edilen üst sınırı ayarlar, ancak tek bir olay bu eşikten büyükse aşılacak.
+        Toplu işleme size yüksek işlem hacmi verebilir. **Toplu iş başına en fazla olay** için, bir aboneliğin bir toplu işe dahil olacağı maksimum olay sayısını ayarlayın. Tercih edilen toplu iş boyutu, cihazının saniyede bayt cinsinden toplu iş boyutu için tercih edilen üst sınırı ayarlar, ancak tek bir olay bu eşikten büyükse aşılacak.
     
-        :::image type="content" source="./media/custom-event-to-function/enable-batching.png" alt-text="Event Grid tetikleyicisi seçin":::
+        :::image type="content" source="./media/custom-event-to-function/enable-batching.png" alt-text="Toplu işlemeyi etkinleştir":::
     6. **Olay aboneliği oluştur** sayfasında **Oluştur**' u seçin.
 
 ## <a name="send-an-event-to-your-topic"></a>Konunuza olay gönderme
@@ -98,7 +98,7 @@ Event Grid’e hangi olayları izlemek istediğinizi ve olayların nereye gönde
 Birinci örnekte, Azure CLI kullanılmaktadır. Özel konunun URL’si ve anahtarı ile örnek olay verilerini alır. `<topic name>` yerine özel konunuzun adını yazın. Örnek olay verileri oluşturulur. JSON’un `data` öğesi, olayınızın yüküdür. Bu alana doğru oluşturulmuş herhangi bir JSON gelebilir. Ayrıca, gelişmiş yönlendirme ve filtreleme için konu alanını da kullanabilirsiniz. CURL, HTTP istekleri gönderen bir yardımcı programdır.
 
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 1. Azure portal **Cloud Shell**' ni seçin. Cloud Shell penceresinin sol üst köşesindeki **Bash** ' i seçin. 
 
     ![Cloud Shell-Bash](./media/custom-event-quickstart-portal/cloud-shell-bash.png)
@@ -112,7 +112,7 @@ Birinci örnekte, Azure CLI kullanılmaktadır. Özel konunun URL’si ve anahta
     ```azurecli
     key=$(az eventgrid topic key list --name <topic name> -g <resource group name> --query "key1" --output tsv)
     ```
-3. Aşağıdaki ifadeyi olay tanımıyla kopyalayın ve **ENTER**tuşuna basın. 
+3. Aşağıdaki ifadeyi olay tanımıyla kopyalayın ve **ENTER** tuşuna basın. 
 
     ```json
     event='[ {"id": "'"$RANDOM"'", "eventType": "recordInserted", "subject": "myapp/vehicles/motorcycles", "eventTime": "'`date +%Y-%m-%dT%H:%M:%S%z`'", "data":{ "make": "Ducati", "model": "Monster"},"dataVersion": "1.0"} ]'

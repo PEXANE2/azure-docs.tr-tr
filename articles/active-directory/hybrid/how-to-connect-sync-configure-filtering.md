@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 595cf2c1dbc105634d33b426c67e5123b9751e6e
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457971"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996551"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect Eşitleme: Filtrelemeyi yapılandırma
 Filtreleme kullanarak, şirket içi dizininizden Azure Active Directory (Azure AD) içinde hangi nesnelerin göründüğünü denetleyebilirsiniz. Varsayılan yapılandırma, yapılandırılan ormanlardaki tüm etki alanlarındaki tüm nesneleri alır. Genel olarak, önerilen yapılandırmadır. Exchange Online ve Skype Kurumsal gibi Microsoft 365 iş yüklerini kullanan kullanıcılar, e-posta gönderebilmeleri ve herkes arayabilmesi için tüm genel adres listesinden faydalanır. Varsayılan yapılandırmayla, Exchange veya Lync 'in şirket içi uygulamasıyla aynı deneyim yaşar.
@@ -69,7 +69,7 @@ Her 30 dakikada bir eşitleme döngüsünü tetikleyen yerleşik zamanlayıcıy�
 Her üç saatte bir eşitleme döngüsünü tetikleyen zamanlanmış görevi devre dışı bırakmak için şu adımları izleyin:
 
 1. **Başlangıç** menüsünden **Görev Zamanlayıcı** başlatın.
-2. Doğrudan **Görev Zamanlayıcı Kitaplığı**altında, **Azure AD eşitleme Zamanlayıcı**adlı görevi bulun, sağ tıklayın ve **devre dışı bırak**' ı seçin.  
+2. Doğrudan **Görev Zamanlayıcı Kitaplığı** altında, **Azure AD eşitleme Zamanlayıcı** adlı görevi bulun, sağ tıklayın ve **devre dışı bırak**' ı seçin.  
    ![Görev Zamanlayıcı](./media/how-to-connect-sync-configure-filtering/taskscheduler.png)  
 3. Artık yapılandırma değişiklikleri yapabilir ve eşitleme altyapısını **Synchronization Service Manager** konsolundan el ile çalıştırabilirsiniz.
 
@@ -109,9 +109,9 @@ Etki alanı filtresini ayarlamak için aşağıdaki adımları uygulayın:
 
 1. Azure AD Connect çalıştıran sunucuda, **Adsyncadmins** güvenlik grubunun üyesi olan bir hesap kullanarak oturum açın.
 2. **Başlangıç** menüsünden **eşitleme hizmetini** başlatın.
-3. **Bağlayıcılar**' ı seçin ve **Bağlayıcılar** listesinden **Active Directory Domain Services**türü ile bağlayıcıyı seçin. **Eylemler**' de **Özellikler**' i seçin.  
+3. **Bağlayıcılar**' ı seçin ve **Bağlayıcılar** listesinden **Active Directory Domain Services** türü ile bağlayıcıyı seçin. **Eylemler**' de **Özellikler**' i seçin.  
    ![Bağlayıcı Özellikleri](./media/how-to-connect-sync-configure-filtering/connectorproperties.png)  
-4. **Dizin bölümlerini Yapılandır**öğesine tıklayın.
+4. **Dizin bölümlerini Yapılandır** öğesine tıklayın.
 5. **Dizin bölümlerini Seç** listesinde, gerektiğinde etki alanlarını seçin ve seçimini kaldırın. Yalnızca eşitlenmesini istediğiniz bölümlerin seçildiğini doğrulayın.  
    !["Özellikler" penceresindeki dizin bölümlerini gösteren ekran görüntüsü.](./media/how-to-connect-sync-configure-filtering/connectorpartitions.png)  
    Şirket içi Active Directory altyapınızı değiştirdiyseniz ve etki alanlarını ormandan eklediyseniz veya kaldırdıysanız, güncelleştirilmiş bir liste almak için **Yenile** düğmesine tıklayın. Yenileme yaptığınızda kimlik bilgileriniz istenir. Windows Server Active Directory için okuma erişimi olan tüm kimlik bilgilerini sağlayın. İletişim kutusunda önceden doldurulmuş Kullanıcı olması gerekmez.  
@@ -155,7 +155,7 @@ Etki alanı filtrenizi güncelleştirdiyseniz, çalıştırma profillerini de g�
         ![Bağlayıcı çalıştırma profilleri 4](./media/how-to-connect-sync-configure-filtering/runprofilesdeletestep.png)  
     3. Değişiklerinizi doğrulayın. Eşitlenmesini istediğiniz her etki alanı, her çalıştırma profilinde bir adım olarak listelenmelidir.
 4. **Çalıştırma profillerini Yapılandır** iletişim kutusunu kapatmak için **Tamam**' ı tıklatın.
-5.  Yapılandırmayı gerçekleştirmek için bir **tam içeri aktarma** ve bir **Delta eşitleme**çalıştırmanız gerekir. Bölüm uygulama ' yı okumaya devam edin [ve değişiklikleri doğrulayın](#apply-and-verify-changes).
+5.  Yapılandırmayı gerçekleştirmek için bir **tam içeri aktarma** ve bir **Delta eşitleme** çalıştırmanız gerekir. Bölüm uygulama ' yı okumaya devam edin [ve değişiklikleri doğrulayın](#apply-and-verify-changes).
 
 ## <a name="organizational-unitbased-filtering"></a>Kuruluş birimi tabanlı filtreleme
 OU tabanlı filtrelemeyi değiştirmenin tercih edilen yolu, Yükleme Sihirbazı 'nı çalıştırıp [etki alanı ve OU filtrelemesini](how-to-connect-install-custom.md#domain-and-ou-filtering)değiştirirken olur. Yükleme Sihirbazı, bu konuda belgelenen tüm görevleri otomatikleştirir.
@@ -166,7 +166,7 @@ Kuruluş birimi tabanlı filtreleme yapılandırmak için aşağıdaki adımlar�
 
 1. Azure AD Connect çalıştıran sunucuda, **Adsyncadmins** güvenlik grubunun üyesi olan bir hesap kullanarak oturum açın.
 2. **Başlangıç** menüsünden **eşitleme hizmetini** başlatın.
-3. **Bağlayıcılar**' ı seçin ve **Bağlayıcılar** listesinden **Active Directory Domain Services**türü ile bağlayıcıyı seçin. **Eylemler**' de **Özellikler**' i seçin.  
+3. **Bağlayıcılar**' ı seçin ve **Bağlayıcılar** listesinden **Active Directory Domain Services** türü ile bağlayıcıyı seçin. **Eylemler**' de **Özellikler**' i seçin.  
    ![Bağlayıcı Özellikleri](./media/how-to-connect-sync-configure-filtering/connectorproperties.png)  
 4. **Dizin bölümlerini Yapılandır**' a tıklayın, yapılandırmak istediğiniz etki alanını seçin ve ardından **kapsayıcılar**' a tıklayın.
 5. İstendiğinde, şirket içi Active Directory okuma erişimi olan tüm kimlik bilgilerini sağlayın. İletişim kutusunda önceden doldurulmuş Kullanıcı olması gerekmez.
@@ -179,7 +179,7 @@ Kuruluş birimi tabanlı filtreleme yapılandırmak için aşağıdaki adımlar�
    * Grup tabanlı filtreleme kullanıyorsanız, grubun bulunduğu OU 'nun dahil olması gerekir.
    * Filtreleme yapılandırması tamamlandıktan sonra eklenen yeni OU 'Ların eşitlenip eşitlenmemesini veya eşitlenmemesini yapılandırabileceğinizi unutmayın. Ayrıntılar için sonraki bölüme bakın.
 7. İşiniz bittiğinde, **Tamam**' a tıklayarak **Özellikler** iletişim kutusunu kapatın.
-8. Yapılandırmayı gerçekleştirmek için bir **tam içeri aktarma** ve bir **Delta eşitleme**çalıştırmanız gerekir. Bölüm uygulama ' yı okumaya devam edin [ve değişiklikleri doğrulayın](#apply-and-verify-changes).
+8. Yapılandırmayı gerçekleştirmek için bir **tam içeri aktarma** ve bir **Delta eşitleme** çalıştırmanız gerekir. Bölüm uygulama ' yı okumaya devam edin [ve değişiklikleri doğrulayın](#apply-and-verify-changes).
 
 ### <a name="synchronize-new-ous"></a>Yeni OU 'Ları eşitler
 Filtrelemeden sonra oluşturulan yeni OU 'Lar varsayılan olarak eşitlenir. Bu durum seçili bir onay kutusuyla belirtilir. Ayrıca bazı alt OU 'Ların seçimini kaldırabilirsiniz. Bu davranışı almak için, mavi onay işaretiyle beyaz olana kadar kutuya tıklayın (varsayılan durumu). Ardından, eşitlenmesini istemediğiniz tüm alt OU 'Ların seçimini kaldırın.
@@ -205,14 +205,14 @@ Bu yapılandırmayla, ManagedObjects altında oluşturulan yeni bir OU eşitlenm
 Bu adımların çalışması için Kasım 2015 ([1.0.9125](reference-connect-version-history.md)) veya sonraki bir derlemeyi kullandığınızdan emin olun.
 
 > [!IMPORTANT]
->Microsoft, **Azure AD Connect**tarafından oluşturulan varsayılan kuralları değiştirmemesini önerir. Kuralı değiştirmek istiyorsanız klonlayın ve özgün kuralı devre dışı bırakın. Kopyalanmış kuralda herhangi bir değişiklik yapın. Lütfen bunu yaparak (özgün kuralı devre dışı bırakarak), bu kural aracılığıyla etkinleştirilen tüm hata düzeltmeleri veya özellikleri kaçırılacaksınız.
+>Microsoft, **Azure AD Connect** tarafından oluşturulan varsayılan kuralları değiştirmemesini önerir. Kuralı değiştirmek istiyorsanız klonlayın ve özgün kuralı devre dışı bırakın. Kopyalanmış kuralda herhangi bir değişiklik yapın. Lütfen bunu yaparak (özgün kuralı devre dışı bırakarak), bu kural aracılığıyla etkinleştirilen tüm hata düzeltmeleri veya özellikleri kaçırılacaksınız.
 
 Öznitelik tabanlı filtreleme, nesneleri filtrelemek için en esnek yoldur. Bir nesne Azure AD ile eşitlendiğinde neredeyse her yönüyle denetlemek için [bildirim temelli sağlama](concept-azure-ad-connect-sync-declarative-provisioning.md) gücünden yararlanabilirsiniz.
 
 Active Directory meta veri deposuna [gelen](#inbound-filtering) filtreleme ve meta veri deposundaki [giden](#outbound-filtering) filtreleme işlemlerini Azure AD 'ye uygulayabilirsiniz. Bakım en kolay olduğu için gelen filtrelemeleri uygulamanızı öneririz. Yalnızca değerlendirme gerçekleşmeden önce birden fazla ormandan nesne katılması gerekiyorsa giden filtrelemeyi kullanmanız gerekir.
 
 ### <a name="inbound-filtering"></a>Gelen filtreleme
-Gelen filtreleme varsayılan yapılandırmayı kullanır, burada Azure AD 'ye giden nesnelerde Cloudfıltered meta veri deposu özniteliği, eşitlenecek bir değer olarak ayarlanmamış olmalıdır. Bu özniteliğin değeri **true**olarak ayarlandıysa, nesne eşitlenmez. Tasarıma göre **false**olarak ayarlanmamalıdır. Diğer kuralların bir değer katkıda bulunma yeteneğine sahip olduğundan emin olmak için, bu özniteliğin yalnızca **true** veya **null** (yok) değerlerinin olması gerekir.
+Gelen filtreleme varsayılan yapılandırmayı kullanır, burada Azure AD 'ye giden nesnelerde Cloudfıltered meta veri deposu özniteliği, eşitlenecek bir değer olarak ayarlanmamış olmalıdır. Bu özniteliğin değeri **true** olarak ayarlandıysa, nesne eşitlenmez. Tasarıma göre **false** olarak ayarlanmamalıdır. Diğer kuralların bir değer katkıda bulunma yeteneğine sahip olduğundan emin olmak için, bu özniteliğin yalnızca **true** veya **null** (yok) değerlerinin olması gerekir.
 
 Gelen filtrelemede, hangi nesnelerin eşitleneceğini veya eşitleneceğini öğrenmek için **kapsam** gücünü kullanırsınız. Bu, kendi kuruluşunuzun gereksinimlerini karşılayacak şekilde ayarlamalar yaparsınız. Kapsam modülünde bir eşitleme kuralının kapsam içinde olduğu zaman saptanıp bir **grubu** ve **yan tümcesi** vardır. Bir grup bir veya daha fazla yan tümce içerir. Birden çok yan tümce arasında mantıksal bir "ve", birden çok grup arasında mantıksal bir "veya" vardır.
 
@@ -225,45 +225,45 @@ Aşağıdaki örneklerde ve adımlarda, Kullanıcı nesnesini bir örnek olarak 
 Aşağıdaki örneklerde, öncelik değeri 50 ile başlar. Bu, kullanılmayan herhangi bir sayı olabilir, ancak 100 ' den düşük olmalıdır.
 
 #### <a name="negative-filtering-do-not-sync-these"></a>Negatif filtreleme: "bunları eşitleme"
-Aşağıdaki örnekte, **extensionAttribute15** ' nin **NoSync**değerine sahip olduğu tüm kullanıcıları filtreleyerek (eşitlememez) filtreleyebilirsiniz.
+Aşağıdaki örnekte, **extensionAttribute15** ' nin **NoSync** değerine sahip olduğu tüm kullanıcıları filtreleyerek (eşitlememez) filtreleyebilirsiniz.
 
 1. Azure AD Connect çalıştıran sunucuda, **Adsyncadmins** güvenlik grubunun üyesi olan bir hesap kullanarak oturum açın.
 2. **Başlangıç** menüsünden **eşitleme kuralları düzenleyicisini** başlatın.
 3. **Gelen** ' ın seçili olduğundan emin olun ve **Yeni kural ekle**' ye tıklayın.
-4. Kurala "*ad – Kullanıcı DoNotSyncFilter*" gibi açıklayıcı bir ad verin. Doğru ormanı seçin, **CS nesne türü**olarak **Kullanıcı** ' yı seçin ve **MV nesne türü**olarak **kişi** ' yi seçin. **Bağlantı türü**' nde, **Birleştir**' i seçin. **Öncelik**alanına, şu anda başka bir eşitleme kuralı tarafından kullanılmayan bir değer yazın (örneğin, 50) ve ardından **İleri**' ye tıklayın.  
+4. Kurala "*ad – Kullanıcı DoNotSyncFilter*" gibi açıklayıcı bir ad verin. Doğru ormanı seçin, **CS nesne türü** olarak **Kullanıcı** ' yı seçin ve **MV nesne türü** olarak **kişi** ' yi seçin. **Bağlantı türü**' nde, **Birleştir**' i seçin. **Öncelik** alanına, şu anda başka bir eşitleme kuralı tarafından kullanılmayan bir değer yazın (örneğin, 50) ve ardından **İleri**' ye tıklayın.  
    ![Gelen 1 açıklaması](./media/how-to-connect-sync-configure-filtering/inbound1.png)  
-5. **Kapsam filtresi**bölümünde **Grup Ekle**' ye tıklayın ve **yan tümce Ekle**' ye tıklayın. **Özniteliğinde**, **ExtensionAttribute15**öğesini seçin. **Işlecin** **eşit**olarak ayarlandığından emin olun ve **değer** kutusuna **NoSync** değerini yazın. **İleri**’ye tıklayın.  
+5. **Kapsam filtresi** bölümünde **Grup Ekle**' ye tıklayın ve **yan tümce Ekle**' ye tıklayın. **Özniteliğinde**, **ExtensionAttribute15** öğesini seçin. **Işlecin** **eşit** olarak ayarlandığından emin olun ve **değer** kutusuna **NoSync** değerini yazın. **İleri**’ye tıklayın.  
    ![Gelen 2 kapsamı](./media/how-to-connect-sync-configure-filtering/inbound2.png)  
 6. **JOIN** kurallarını boş bırakın ve **İleri**' ye tıklayın.
-7. **Dönüşüm Ekle**' ye tıklayın, **akış türünü** **sabit**olarak seçin ve **hedef öznitelik**olarak **cloudfıltered** ' i seçin. **Kaynak** metin kutusuna **true**yazın. Kuralı kaydetmek için **Ekle** ' ye tıklayın.  
+7. **Dönüşüm Ekle**' ye tıklayın, **akış türünü** **sabit** olarak seçin ve **hedef öznitelik** olarak **cloudfıltered** ' i seçin. **Kaynak** metin kutusuna **true** yazın. Kuralı kaydetmek için **Ekle** ' ye tıklayın.  
    ![Gelen 3 dönüşümü](./media/how-to-connect-sync-configure-filtering/inbound3.png)
-8. Yapılandırmayı gerçekleştirmek için **tam eşitleme**çalıştırmanız gerekir. Bölüm uygulama ' yı okumaya devam edin [ve değişiklikleri doğrulayın](#apply-and-verify-changes).
+8. Yapılandırmayı gerçekleştirmek için **tam eşitleme** çalıştırmanız gerekir. Bölüm uygulama ' yı okumaya devam edin [ve değişiklikleri doğrulayın](#apply-and-verify-changes).
 
 #### <a name="positive-filtering-only-sync-these"></a>Pozitif filtreleme: "yalnızca bunları Eşitle"
-Ayrıca, konferans odaları gibi daha belirgin olmayan nesneleri göz önünde bulundurmanız gerektiğinden, pozitif filtrelemeyi ifade etmek daha zor olabilir. Ayrıca, **ad-Kullanıcı birleşimden**gelen kutudan çıkar kuralında varsayılan filtreyi geçersiz kılacağız. Özel filtrenizi oluştururken, kritik sistem nesneleri, çoğaltma çakışma nesneleri, özel posta kutuları ve Azure AD Connect için hizmet hesaplarını eklediğinizden emin olun.
+Ayrıca, konferans odaları gibi daha belirgin olmayan nesneleri göz önünde bulundurmanız gerektiğinden, pozitif filtrelemeyi ifade etmek daha zor olabilir. Ayrıca, **ad-Kullanıcı birleşimden** gelen kutudan çıkar kuralında varsayılan filtreyi geçersiz kılacağız. Özel filtrenizi oluştururken, kritik sistem nesneleri, çoğaltma çakışma nesneleri, özel posta kutuları ve Azure AD Connect için hizmet hesaplarını eklediğinizden emin olun.
 
 Pozitif filtreleme seçeneği iki eşitleme kuralı gerektirir. Eşitlenmesi gereken nesnelerin doğru kapsamına sahip bir kurala (veya birkaç) sahip olmanız gerekir. Ayrıca, henüz eşitlenmesi gereken bir nesne olarak tanımlanmayan tüm nesneleri filtreleyen ikinci bir catch-all eşitleme kuralına ihtiyacınız vardır.
 
-Aşağıdaki örnekte, yalnızca bölüm özniteliğinin **Sales**değerine sahip olduğu kullanıcı nesnelerini eşitlemelisiniz.
+Aşağıdaki örnekte, yalnızca bölüm özniteliğinin **Sales** değerine sahip olduğu kullanıcı nesnelerini eşitlemelisiniz.
 
 1. Azure AD Connect çalıştıran sunucuda, **Adsyncadmins** güvenlik grubunun üyesi olan bir hesap kullanarak oturum açın.
 2. **Başlangıç** menüsünden **eşitleme kuralları düzenleyicisini** başlatın.
 3. **Gelen** ' ın seçili olduğundan emin olun ve **Yeni kural ekle**' ye tıklayın.
-4. Kurala "*ad – Kullanıcı satışları eşitlemesi*" gibi açıklayıcı bir ad verin. Doğru ormanı seçin, **CS nesne türü**olarak **Kullanıcı** ' yı seçin ve **MV nesne türü**olarak **kişi** ' yi seçin. **Bağlantı türü**' nde, **Birleştir**' i seçin. **Öncelik**alanına, şu anda başka bir eşitleme kuralı tarafından kullanılmayan bir değer yazın (örneğin, 51) ve ardından **İleri**' ye tıklayın.  
+4. Kurala "*ad – Kullanıcı satışları eşitlemesi*" gibi açıklayıcı bir ad verin. Doğru ormanı seçin, **CS nesne türü** olarak **Kullanıcı** ' yı seçin ve **MV nesne türü** olarak **kişi** ' yi seçin. **Bağlantı türü**' nde, **Birleştir**' i seçin. **Öncelik** alanına, şu anda başka bir eşitleme kuralı tarafından kullanılmayan bir değer yazın (örneğin, 51) ve ardından **İleri**' ye tıklayın.  
    ![Gelen 4 açıklaması](./media/how-to-connect-sync-configure-filtering/inbound4.png)  
-5. **Kapsam filtresi**bölümünde **Grup Ekle**' ye tıklayın ve **yan tümce Ekle**' ye tıklayın. **Öznitelikte** **Departman**' ı seçin. Işlecin **eşit**olarak ayarlandığından emin olun ve **değer** kutusuna **Sales** değerini yazın. **İleri**’ye tıklayın.  
+5. **Kapsam filtresi** bölümünde **Grup Ekle**' ye tıklayın ve **yan tümce Ekle**' ye tıklayın. **Öznitelikte** **Departman**' ı seçin. Işlecin **eşit** olarak ayarlandığından emin olun ve **değer** kutusuna **Sales** değerini yazın. **İleri**’ye tıklayın.  
    ![Gelen 5 kapsam](./media/how-to-connect-sync-configure-filtering/inbound5.png)  
 6. **JOIN** kurallarını boş bırakın ve **İleri**' ye tıklayın.
-7. **Dönüştürme Ekle**' ye tıklayın, **FlowType**olarak **sabit** ' i seçin ve **hedef öznitelik**olarak **filtrelenmiş cloudselect** öğesini seçin. **Kaynak** kutusuna **false**yazın. Kuralı kaydetmek için **Ekle** ' ye tıklayın.  
+7. **Dönüştürme Ekle**' ye tıklayın, **FlowType** olarak **sabit** ' i seçin ve **hedef öznitelik** olarak **filtrelenmiş cloudselect** öğesini seçin. **Kaynak** kutusuna **false** yazın. Kuralı kaydetmek için **Ekle** ' ye tıklayın.  
    ![Gelen 6 dönüşümü](./media/how-to-connect-sync-configure-filtering/inbound6.png)  
-   Bu, Cloudfiltrelenmiş öğesini **yanlış**olarak ayarlamış olduğunuz özel bir durumdur.
-8. Şimdi catch-all eşitleme kuralını oluşturacağız. Kurala "*ad – Kullanıcı catch-all Filter*" gibi açıklayıcı bir ad verin. Doğru ormanı seçin, **CS nesne türü**olarak **Kullanıcı** ' yı seçin ve **MV nesne türü**olarak **kişi** ' yi seçin. **Bağlantı türü**' nde, **Birleştir**' i seçin. **Öncelik**' ın, şu anda başka bir eşitleme kuralı tarafından kullanılmayan bir değer yazın (örneğin, 99). Önceki eşitleme kuralına göre daha yüksek (düşük öncelik) bir öncelik değeri seçtiniz. Ancak daha sonra ek departmanları eşitlemeye başlamak istediğinizde daha fazla filtreleme eşitleme kuralı ekleyebilmeniz için bazı odalar da bıraktınız. **İleri**’ye tıklayın.  
+   Bu, Cloudfiltrelenmiş öğesini **yanlış** olarak ayarlamış olduğunuz özel bir durumdur.
+8. Şimdi catch-all eşitleme kuralını oluşturacağız. Kurala "*ad – Kullanıcı catch-all Filter*" gibi açıklayıcı bir ad verin. Doğru ormanı seçin, **CS nesne türü** olarak **Kullanıcı** ' yı seçin ve **MV nesne türü** olarak **kişi** ' yi seçin. **Bağlantı türü**' nde, **Birleştir**' i seçin. **Öncelik**' ın, şu anda başka bir eşitleme kuralı tarafından kullanılmayan bir değer yazın (örneğin, 99). Önceki eşitleme kuralına göre daha yüksek (düşük öncelik) bir öncelik değeri seçtiniz. Ancak daha sonra ek departmanları eşitlemeye başlamak istediğinizde daha fazla filtreleme eşitleme kuralı ekleyebilmeniz için bazı odalar da bıraktınız. **İleri**’ye tıklayın.  
    ![Gelen 7 açıklaması](./media/how-to-connect-sync-configure-filtering/inbound7.png)  
 9. **Kapsam filtresini** boş bırakın ve **İleri**' ye tıklayın. Boş bir filtre kuralın tüm nesnelere uygulanacağını gösterir.
 10. **JOIN** kurallarını boş bırakın ve **İleri**' ye tıklayın.
-11. **Dönüştürme Ekle**' ye tıklayın, **FlowType**olarak **sabit** ' i seçin ve **hedef öznitelik**olarak **cloudfıltered** ' i seçin. **Kaynak** kutusuna **doğru**yazın. Kuralı kaydetmek için **Ekle** ' ye tıklayın.  
+11. **Dönüştürme Ekle**' ye tıklayın, **FlowType** olarak **sabit** ' i seçin ve **hedef öznitelik** olarak **cloudfıltered** ' i seçin. **Kaynak** kutusuna **doğru** yazın. Kuralı kaydetmek için **Ekle** ' ye tıklayın.  
     ![Gelen 3 dönüşümü](./media/how-to-connect-sync-configure-filtering/inbound3.png)  
-12. Yapılandırmayı gerçekleştirmek için **tam eşitleme**çalıştırmanız gerekir. Bölüm uygulama ' yı okumaya devam edin [ve değişiklikleri doğrulayın](#apply-and-verify-changes).
+12. Yapılandırmayı gerçekleştirmek için **tam eşitleme** çalıştırmanız gerekir. Bölüm uygulama ' yı okumaya devam edin [ve değişiklikleri doğrulayın](#apply-and-verify-changes).
 
 Gerekirse, eşitlemeye daha fazla nesne dahil ettiğiniz ilk tür için daha fazla kural oluşturabilirsiniz.
 
@@ -274,20 +274,20 @@ Bu örnekte, yalnızca hem e-postası hem de userPrincipalName 'i olan kullanıc
 
 1. Azure AD Connect çalıştıran sunucuda, **Adsyncadmins** güvenlik grubunun üyesi olan bir hesap kullanarak oturum açın.
 2. **Başlangıç** menüsünden **eşitleme kuralları düzenleyicisini** başlatın.
-3. **Kurallar türü**altında **giden**' e tıklayın.
-4. Kullandığınız bağlantı sürümüne bağlı olarak, **Azure AD 'ye giden Kullanıcı katılımı** veya **giden Azure AD-User JOIN soainad**adlı kuralı bulun ve **Düzenle**' ye tıklayın.
+3. **Kurallar türü** altında **giden**' e tıklayın.
+4. Kullandığınız bağlantı sürümüne bağlı olarak, **Azure AD 'ye giden Kullanıcı katılımı** veya **giden Azure AD-User JOIN soainad** adlı kuralı bulun ve **Düzenle**' ye tıklayın.
 5. Açılır pencerede, kuralın bir kopyasını oluşturmak için **Evet** yanıtını verin.
 6. **Açıklama** sayfasında, **önceliği** 50 gibi kullanılmayan bir değerle değiştirin.
-7. Sol taraftaki **gezinmede kapsam filtresi** ' ne tıklayın ve ardından **yan tümce Ekle**' ye tıklayın. **Öznitelikte**, **posta**' yı seçin. **İşleç**Içinde, **EndsWith**öğesini seçin. **Değer**alanına ** \@ contoso.com**yazın ve ardından **yan tümce Ekle**' ye tıklayın. **Özniteliğinde** **userPrincipalName**' i seçin. **İşleç**Içinde, **EndsWith**öğesini seçin. **Değer**alanına ** \@ contoso.com**yazın.
+7. Sol taraftaki **gezinmede kapsam filtresi** ' ne tıklayın ve ardından **yan tümce Ekle**' ye tıklayın. **Öznitelikte**, **posta**' yı seçin. **İşleç** Içinde, **EndsWith** öğesini seçin. **Değer** alanına **\@ contoso.com** yazın ve ardından **yan tümce Ekle**' ye tıklayın. **Özniteliğinde** **userPrincipalName**' i seçin. **İşleç** Içinde, **EndsWith** öğesini seçin. **Değer** alanına **\@ contoso.com** yazın.
 8. **Kaydet**’e tıklayın.
-9. Yapılandırmayı gerçekleştirmek için **tam eşitleme**çalıştırmanız gerekir. Bölüm uygulama ' yı okumaya devam edin [ve değişiklikleri doğrulayın](#apply-and-verify-changes).
+9. Yapılandırmayı gerçekleştirmek için **tam eşitleme** çalıştırmanız gerekir. Bölüm uygulama ' yı okumaya devam edin [ve değişiklikleri doğrulayın](#apply-and-verify-changes).
 
 ## <a name="apply-and-verify-changes"></a>Değişiklikleri Uygula ve Doğrula
 Yapılandırma değişikliklerinizi yaptıktan sonra, bunları sistemde zaten mevcut olan nesnelere uygulamanız gerekir. Ayrıca, şu anda eşitleme altyapısında olmayan nesnelerin işlenmesi (ve eşitleme altyapısının içeriğini doğrulamak için kaynak sistemi yeniden okuması gerekir) olabilir.
 
-**Etki alanı** veya **kuruluş birimi** filtrelemeyi kullanarak yapılandırmayı değiştirdiyseniz, **tam Içeri aktarma**yapmanız ve ardından **Delta eşitlemesi**yapmanız gerekir.
+**Etki alanı** veya **kuruluş birimi** filtrelemeyi kullanarak yapılandırmayı değiştirdiyseniz, **tam Içeri aktarma** yapmanız ve ardından **Delta eşitlemesi** yapmanız gerekir.
 
-Yapılandırmayı **öznitelik** filtrelemesini kullanarak değiştirdiyseniz, **tam eşitleme**yapmanız gerekir.
+Yapılandırmayı **öznitelik** filtrelemesini kullanarak değiştirdiyseniz, **tam eşitleme** yapmanız gerekir.
 
 Aşağıdaki adımları uygulayın:
 
@@ -299,9 +299,9 @@ Aşağıdaki adımları uygulayın:
 Eşitlemeden sonra tüm değişiklikler verilmek üzere hazırlanır. Azure AD 'de değişiklikleri gerçekten yapmadan önce, tüm bu değişikliklerin doğru olduğunu doğrulamak istiyorsunuz.
 
 1. Bir komut istemi başlatın ve adresine gidin `%ProgramFiles%\Microsoft Azure AD Sync\bin` .
-2. Şu komutu çalıştırın: `csexport "Name of Connector" %temp%\export.xml /f:x`.  
+2. `csexport "Name of Connector" %temp%\export.xml /f:x` öğesini çalıştırın.  
    Bağlayıcının adı, eşitleme hizmetidir. Azure AD için "contoso.com – Azure AD" benzeri bir ada sahiptir.
-3. Şu komutu çalıştırın: `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv`.
+3. `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` öğesini çalıştırın.
 4. Artık% TEMP% adlı, Microsoft Excel 'de incelenebilir export.csv adlı bir dosyanız var. Bu dosya, verilmek üzere olan tüm değişiklikleri içerir.
 5. Veri veya yapılandırmada gerekli değişiklikleri yapın ve dışarı aktarılacak değişiklikler beklediğiniz şeydir, bu adımları yeniden çalıştırın (Içeri aktar, eşitlendiğinde ve Doğrula).
 
@@ -314,7 +314,7 @@ Memnun kaldığınızda, değişiklikleri Azure AD 'ye aktarın.
 Şimdi Scheduler 'ı yeniden etkinleştirmeniz zaman alabilir.
 
 1. **Başlangıç** menüsünden **Görev Zamanlayıcı** başlatın.
-2. Doğrudan **Görev Zamanlayıcı Kitaplığı**altında, **Azure AD eşitleme Zamanlayıcı**adlı görevi bulun, sağ tıklayın ve **Etkinleştir**' i seçin.
+2. Doğrudan **Görev Zamanlayıcı Kitaplığı** altında, **Azure AD eşitleme Zamanlayıcı** adlı görevi bulun, sağ tıklayın ve **Etkinleştir**' i seçin.
 
 ## <a name="group-based-filtering"></a>Grup tabanlı filtreleme
 [Özel yükleme](how-to-connect-install-custom.md#sync-filtering-based-on-groups)kullanarak Azure AD Connect ilk kez yüklediğinizde grup tabanlı filtreleme yapılandırabilirsiniz. Yalnızca küçük bir nesne kümesinin eşitlenmesini istediğiniz bir pilot dağıtıma yöneliktir. Grup tabanlı filtrelemeyi devre dışı bıraktığınızda, yeniden etkinleştirilemez. Özel bir yapılandırmada grup tabanlı filtreleme kullanılması *desteklenmez* . Bu özelliği yalnızca Yükleme Sihirbazı kullanılarak yapılandırmak desteklenir. Pilot hesabınızı tamamladıktan sonra, bu konudaki diğer filtreleme seçeneklerinden birini kullanın. Grup tabanlı filtreleme ile birlikte OU tabanlı filtreleme kullanılırken, grubun ve üyelerinin bulunduğu OU 'lar dahil olmalıdır.

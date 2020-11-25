@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/31/2020
 ms.openlocfilehash: 1f83f13564a64a0d9d8a5e0144ca95af6a769d6c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76905022"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995055"
 ---
 # <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>Azure Logic Apps’te iş akışı hatalarını giderme ve tanılama
 
@@ -27,7 +27,7 @@ Her mantıksal uygulama çalıştırması bir tetikleyici deneyimiyle başlar, b
 
    ![Tetikleyici durumunu ve geçmişini görüntüle](./media/logic-apps-diagnosing-failures/logic-app-trigger-history.png)
 
-1. Beklendiği gibi göründüğünü onaylamak için tetikleyicinin girdilerini denetleyin. **Girişler bağlantısı**altında, **giriş** bölmesini gösteren bağlantıyı seçin.
+1. Beklendiği gibi göründüğünü onaylamak için tetikleyicinin girdilerini denetleyin. **Girişler bağlantısı** altında, **giriş** bölmesini gösteren bağlantıyı seçin.
 
    Tetikleyici girişleri, tetikleyicinin beklediği ve iş akışını başlatması gereken verileri içerir. Bu girişleri gözden geçirmek, tetikleyici girişlerinin doğru olup olmadığını ve koşulun karşılanıp karşılanmadığını belirlemenize yardımcı olabilir.
 
@@ -35,7 +35,7 @@ Her mantıksal uygulama çalıştırması bir tetikleyici deneyimiyle başlar, b
 
    ![Hata için tetikleyici girişlerini gözden geçirin](./media/logic-apps-diagnosing-failures/review-trigger-inputs-for-errors.png)
 
-1. Varsa, bekledikleri gibi göründüğünü onaylamak için Tetikleyiciler çıkışları olup olmadığını kontrol edin. **Çıkışlar bağlantısı**altında, **çıktılar** bölmesini gösteren bağlantıyı seçin.
+1. Varsa, bekledikleri gibi göründüğünü onaylamak için Tetikleyiciler çıkışları olup olmadığını kontrol edin. **Çıkışlar bağlantısı** altında, **çıktılar** bölmesini gösteren bağlantıyı seçin.
 
    Tetikleyici çıkışları, tetikleyicinin iş akışınızda sonraki adıma geçirdiği verileri içerir. Bu çıktıları gözden geçirmek, iş akışınızın sonraki adımına doğru veya beklenen değerlerin geçirilip geçirilmediğini belirlemenize yardımcı olabilir:
 
@@ -60,13 +60,13 @@ Tetikleyici bir öğe veya olay için her tetiklendiğinde, Logic Apps altyapıs
 
 1. Beklenen şekilde görünüp görünmediğini onaylamak için başarısız olan adımın girdilerini denetleyin.
 
-1. Belirli bir çalıştırmada her adımın ayrıntılarını gözden geçirin. Çalışma **geçmişi**altında, incelemek istediğiniz çalıştırmayı seçin.
+1. Belirli bir çalıştırmada her adımın ayrıntılarını gözden geçirin. Çalışma **geçmişi** altında, incelemek istediğiniz çalıştırmayı seçin.
 
    ![Çalıştırma geçmişini gözden geçirme](./media/logic-apps-diagnosing-failures/logic-app-runs-history.png)
 
    ![Bir mantıksal uygulama çalıştırmasının ayrıntılarını görüntüleme](./media/logic-apps-diagnosing-failures/logic-app-run-details.png)
 
-1. Belirli bir adımla ilgili girişleri, çıkışları ve hata iletilerini incelemek için, şeklin genişleyeceği ve ayrıntıları gösterdiği şekilde bu adımı seçin. Örneğin:
+1. Belirli bir adımla ilgili girişleri, çıkışları ve hata iletilerini incelemek için, şeklin genişleyeceği ve ayrıntıları gösterdiği şekilde bu adımı seçin. Örnek:
 
    ![Adım ayrıntıları görüntüleme](./media/logic-apps-diagnosing-failures/logic-app-run-details-expanded.png)
 

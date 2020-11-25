@@ -18,11 +18,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5aa8f675e3fd36fbebfecf42db0f02b0f0f00115
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319746"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995990"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory portalındaki denetim etkinliği raporları 
 
@@ -117,7 +117,7 @@ Denetim verilerini aşağıdaki alanlarda filtreleyebilirsiniz:
 - Tümü
 - AdministrativeUnit
 - ApplicationManagement
-- Kimlik doğrulaması
+- Kimlik Doğrulaması
 - Yetkilendirme
 - İletişim
 - Cihaz
@@ -207,7 +207,7 @@ Uygulama tabanlı denetim raporları ile aşağıdakiler gibi soruların yanıtl
 * Uygulamaların adları değiştirildi mi?
 * Belirli bir uygulama için kim onay verdi?
 
-Uygulamalarınızla ilgili denetim verilerini gözden geçirmek istiyorsanız, **Kurumsal uygulamalar** dikey penceresinin **etkinlik** bölümündeki **Denetim günlükleri** altında filtrelenmiş bir görünüm bulabilirsiniz. Bu giriş noktasında, **uygulama türü**olarak önceden seçilmiş **Kurumsal uygulamalar** vardır.
+Uygulamalarınızla ilgili denetim verilerini gözden geçirmek istiyorsanız, **Kurumsal uygulamalar** dikey penceresinin **etkinlik** bölümündeki **Denetim günlükleri** altında filtrelenmiş bir görünüm bulabilirsiniz. Bu giriş noktasında, **uygulama türü** olarak önceden seçilmiş **Kurumsal uygulamalar** vardır.
 
 ![Kurumsal uygulamalar](./media/concept-audit-logs/enterpriseapplications.png "Kurumsal uygulamalar")
 

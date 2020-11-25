@@ -10,11 +10,11 @@ ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: 14c71d5888aefc11485c03935c5d8c7ff7d17045
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090565"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995888"
 ---
 # <a name="quickstart-connect-to-azure-synapse-link-for-azure-cosmos-db"></a>Hızlı başlangıç: Azure Cosmos DB için Azure SYNAPSE bağlantısına bağlanma
 
@@ -33,7 +33,7 @@ Büyük ölçekli analizleri, işletimsel performansınızı etkilemeden Azure C
 
 ## <a name="navigate-to-synapse-studio"></a>SYNAPSE Studio 'ya gidin
 
-SYNAPSE çalışma alanınızdan **SYNAPSE Studio 'Yu Başlat**' ı seçin. SYNAPSE Studio giriş sayfasında, **veri nesne Gezgini**size götürür.
+SYNAPSE çalışma alanınızdan **SYNAPSE Studio 'Yu Başlat**' ı seçin. SYNAPSE Studio giriş sayfasında, **veri nesne Gezgini** size götürür.
 
 ## <a name="connect-an-azure-cosmos-db-database-to-a-synapse-workspace"></a>Bir Azure Cosmos DB veritabanını bir Synapse çalışma alanına bağlama
 
@@ -41,16 +41,16 @@ Azure Cosmos DB bir veritabanını bağlama, bağlı hizmet olarak yapılır. Co
 
 Veri Nesne Gezgini, aşağıdaki adımları uygulayarak bir Azure Cosmos DB veritabanını doğrudan bağlayabilirsiniz:
 
-1. ***+*** Verilerin yakınında simge Seç
-2. **Dış verilere bağlan** ' ı seçin
+1. *_+_* Verilerin yakınında * _ simgesini seçin
+2. *Dış verilere _ Bağlan* seçeneğini belirleyin*
 3. Bağlanmak istediğiniz API 'yi seçin: SQL veya MongoDB
-4. ***Devam***'ı seçin
+4. **_Devam_* _ ' i seçin
 5. Bağlı hizmeti adlandırın. Ad Nesne Gezgini görüntülenir ve veritabanı ve kapsayıcılara bağlanmak için SYNAPSE çalışma zamanları tarafından kullanılır. Kolay bir ad kullanmanızı öneririz.
-6. **Cosmos DB hesap adı** ve **veritabanı adını** seçin
-7. Seçim Hiçbir bölge belirtilmemişse, SYNAPSE çalışma zamanı işlemleri, analitik deponun etkinleştirildiği en yakın bölgeye yönlendirilir. Ancak, kullanıcılarınızın analitik depoya Cosmos DB erişmesini istediğiniz bölgeyi el ile ayarlayabilirsiniz. **Ek bağlantı özellikleri** ' ni ve ardından **Yeni**' yi seçin. **Özellik adı**altında, ***preferredregion*** yazın ve **değeri** Istediğiniz bölgeye ayarlayın (örnek: WestUS2, sözcükler ve sayılar arasında boşluk yoktur)
-8. ***Oluştur***’u seçin
+6. _ *Cosmos DB hesap adı** ve **veritabanı adını** seçin
+7. Seçim Hiçbir bölge belirtilmemişse, SYNAPSE çalışma zamanı işlemleri, analitik deponun etkinleştirildiği en yakın bölgeye yönlendirilir. Ancak, kullanıcılarınızın analitik depoya Cosmos DB erişmesini istediğiniz bölgeyi el ile ayarlayabilirsiniz. **Ek bağlantı özellikleri** ' ni ve ardından **Yeni**' yi seçin. **Özellik adı** altında, **_preferredregion_*_ yazın ve _* değerini** istediğiniz bölgeye ayarlayın (örnek: WestUS2, sözcükler ve sayılar arasında boşluk yoktur)
+8. **_Oluştur_* _ seçeneğini belirleyin
 
-Azure Cosmos DB veritabanları Azure Cosmos DB bölümünde **bağlantılı** sekmenin altında görünür. Bir HTAP 'ın etkin Azure Cosmos DB kapsayıcısını yalnızca OLTP kapsayıcısından aşağıdaki simgelerle ayırt edebilirsiniz:
+Azure Cosmos DB veritabanları, Azure Cosmos DB bölümünde _ *Linked** sekmesi altında görünür. Bir HTAP 'ın etkin Azure Cosmos DB kapsayıcısını yalnızca OLTP kapsayıcısından aşağıdaki simgelerle ayırt edebilirsiniz:
 
 **SYNAPSE kapsayıcısı**:
 

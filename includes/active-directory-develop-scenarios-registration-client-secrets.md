@@ -1,5 +1,5 @@
 ---
-title: dosya dahil etme
+title: include dosyası
 description: Gizli istemci senaryosu giriş sayfaları için dosya ekleme (Daemon, Web uygulaması, Web API)
 services: active-directory
 documentationcenter: dev-center-name
@@ -13,11 +13,11 @@ ms.workload: identity
 ms.date: 08/14/2020
 ms.author: jmprieur
 ms.openlocfilehash: 42102f38959911388cefcc141d949e59f24a2c31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89436485"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996024"
 ---
 ## <a name="add-a-client-secret-or-certificate"></a>İstemci parolası veya sertifikası ekleme
 

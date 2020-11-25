@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.subservice: alerts
 ms.openlocfilehash: f76d28018fdf55314593dabc44ef1e9a1dab9494
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91403135"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995106"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Azure Izleyici uyarıları ile karmaşık eylemleri tetikleme
 
@@ -37,13 +37,13 @@ Mantıksal uygulamanın farklı bir eylem gerçekleştirmesini istiyorsanız iş
 
 1.  Azure portal, sol üst köşedeki **kaynak oluştur** ' u seçin.
 
-2.  **Mantıksal uygulama**araması yapın ve seçin ve ardından **Oluştur**' u seçin.
+2.  **Mantıksal uygulama** araması yapın ve seçin ve ardından **Oluştur**' u seçin.
 
-3.  Mantıksal uygulamanıza bir **ad**verin, bir **kaynak grubu**seçin ve bu şekilde devam edin.
+3.  Mantıksal uygulamanıza bir **ad** verin, bir **kaynak grubu** seçin ve bu şekilde devam edin.
 
     ![Mantıksal uygulama oluşturma](media/action-groups-logic-app/create-logic-app-dialog.png "Mantıksal uygulama oluşturma")
 
-4.  Mantıksal uygulamayı oluşturmak için **Oluştur** ' u seçin. Açılan ileti, mantıksal uygulamanın oluşturulduğunu gösterir. **Logic Apps tasarımcısını**açmak Için **kaynağı Başlat** ' ı seçin.
+4.  Mantıksal uygulamayı oluşturmak için **Oluştur** ' u seçin. Açılan ileti, mantıksal uygulamanın oluşturulduğunu gösterir. **Logic Apps tasarımcısını** açmak Için **kaynağı Başlat** ' ı seçin.
 
 5.  Tetikleyiciyi seçin: **BIR http isteği alındığında**.
 
@@ -96,7 +96,7 @@ Mantıksal uygulamanın farklı bir eylem gerçekleştirmesini istiyorsanız iş
         }
     ```
 
-9. **Logic App Designer** , mantıksal uygulamaya gönderilen isteğin **Content-Type** üst bilgisini **Application/JSON**olarak ayarlaması gerektiğini hatırlatmak için bir açılır pencere görüntüler. Açılır pencereyi kapatın. Azure Izleyici uyarısı üstbilgiyi ayarlar.
+9. **Logic App Designer** , mantıksal uygulamaya gönderilen isteğin **Content-Type** üst bilgisini **Application/JSON** olarak ayarlaması gerektiğini hatırlatmak için bir açılır pencere görüntüler. Açılır pencereyi kapatın. Azure Izleyici uyarısı üstbilgiyi ayarlar.
 
     ![Content-Type üst bilgisini ayarlama](media/action-groups-logic-app/content-type-header.png "Content-Type üst bilgisini ayarlama")
 
@@ -122,11 +122,11 @@ Mantıksal uygulamanın farklı bir eylem gerçekleştirmesini istiyorsanız iş
     Ardından, öğesini arayın ve \<fields\> aynı ada sahip dinamik içerik etiketleri ile değiştirin.
 
     > [!NOTE]
-    > **Durum**olarak adlandırılan iki dinamik alan vardır. Bu alanların her ikisini de iletiye ekleyin. **ActivityLog** Özellik paketinde bulunan alanını kullanın ve diğer alanı silin. Aşağıdaki ekran görüntüsünde gösterildiği gibi, tam alan başvurusunu görmek için imlecinizi **durum** alanının üzerine getirin:
+    > **Durum** olarak adlandırılan iki dinamik alan vardır. Bu alanların her ikisini de iletiye ekleyin. **ActivityLog** Özellik paketinde bulunan alanını kullanın ve diğer alanı silin. Aşağıdaki ekran görüntüsünde gösterildiği gibi, tam alan başvurusunu görmek için imlecinizi **durum** alanının üzerine getirin:
 
     ![Microsoft ekipleri eylemi: ileti gönderin](media/action-groups-logic-app/teams-action-post-message.png "Microsoft ekipleri eylemi: ileti gönderin")
 
-14. **Logic Apps tasarımcısının**en üstünde, mantıksal uygulamanızı kaydetmek için **Kaydet** ' i seçin.
+14. **Logic Apps tasarımcısının** en üstünde, mantıksal uygulamanızı kaydetmek için **Kaydet** ' i seçin.
 
 15. Mevcut eylem grubunuzu açın ve mantıksal uygulamaya başvurmak için bir eylem ekleyin. Mevcut bir eylem grubunuz yoksa, bir tane oluşturmak için [Azure Portal eylem grupları oluşturma ve yönetme](./action-groups.md) bölümüne bakın. Değişikliklerinizi kaydetmeyi unutmayın.
 

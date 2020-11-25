@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
 ms.openlocfilehash: eb20bf4164cb2153f6786dbec04f79453554fa25
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91999736"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995871"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 'da Office 365 yönetim çözümü (Önizleme)
 
@@ -41,7 +41,7 @@ ms.locfileid: "91999736"
 > ### <a name="q-will-the-tables-and-schemas-be-changed"></a>S: tablolar ve şemalar değiştirilsin mi?
 > **Officeactivity** tablo adı ve şeması, geçerli çözümle aynı kalacaktır. Azure AD verilerine başvuran sorguları hariç tutarak yeni çözümde aynı sorguları kullanmaya devam edebilirsiniz.
 > 
-> Yeni [Azure AD raporlama ve izleme çözümü](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md) günlükleri, **Officeactivity**yerine [signınlogs](../../active-directory/reports-monitoring/concept-sign-ins.md) ve [auditlogs](../../active-directory/reports-monitoring/concept-audit-logs.md) tablolarına alınacaktır. Daha fazla bilgi için bkz. Azure Sentinel ve Azure Izleyici kullanıcıları için de uygun olan [Azure AD günlüklerini çözümleme](../../active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics.md).
+> Yeni [Azure AD raporlama ve izleme çözümü](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md) günlükleri, **Officeactivity** yerine [signınlogs](../../active-directory/reports-monitoring/concept-sign-ins.md) ve [auditlogs](../../active-directory/reports-monitoring/concept-audit-logs.md) tablolarına alınacaktır. Daha fazla bilgi için bkz. Azure Sentinel ve Azure Izleyici kullanıcıları için de uygun olan [Azure AD günlüklerini çözümleme](../../active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics.md).
 > 
 > Aşağıda, **Officeetkinlikten** **signınlogs**'a sorguları dönüştürme örnekleri verilmiştir:
 > 
@@ -121,11 +121,11 @@ Office 365 yönetimi çözümü, Azure Izleyici 'de Office 365 ortamınızı izl
 - Kuruluşunuzun Office 365 etkinlik verilerinin en üstünde bulunan [günlük sorgularını](../log-query/log-query-overview.md) kullanarak işlem sorunlarını giderme işlemi gerçekleştirin.
 
 
-## <a name="uninstall"></a>Kaldır
+## <a name="uninstall"></a>Kaldırma
 
 [Yönetim çözümünü kaldırma](solutions.md#remove-a-monitoring-solution)' daki Işlemi kullanarak Office 365 Yönetim çözümünü kaldırabilirsiniz. Bu, Office 365 ' den toplanan verileri de Azure Izleyici 'ye durdurmayacak. Office 365 aboneliğinizi kaldırmak ve veri toplamayı durdurmak için aşağıdaki yordamı izleyin.
 
-1. Aşağıdaki betiği *office365_unsubscribe.ps1*olarak kaydedin.
+1. Aşağıdaki betiği *office365_unsubscribe.ps1* olarak kaydedin.
 
     ```powershell
     param (
@@ -255,7 +255,7 @@ Pano aşağıdaki tabloda gösterilen sütunları içerir. Her sütunda, belirti
 
 ## <a name="azure-monitor-log-records"></a>Azure Izleyici günlük kayıtları
 
-Office 365 çözümü tarafından Azure Izleyici 'de Log Analytics çalışma alanında oluşturulan tüm kayıtlar bir **tür** **officeetkinliğine**sahiptir.  **Officeworkload** özelliği, kaydın hangi Office 365 hizmetini (Exchange, AzureActiveDirectory, SharePoint veya OneDrive) başvurduğunu belirler.  **RecordType** özelliği işlem türünü belirtir.  Özellikler her işlem türü için farklılık gösterir ve aşağıdaki tablolarda gösterilir.
+Office 365 çözümü tarafından Azure Izleyici 'de Log Analytics çalışma alanında oluşturulan tüm kayıtlar bir **tür** **officeetkinliğine** sahiptir.  **Officeworkload** özelliği, kaydın hangi Office 365 hizmetini (Exchange, AzureActiveDirectory, SharePoint veya OneDrive) başvurduğunu belirler.  **RecordType** özelliği işlem türünü belirtir.  Özellikler her işlem türü için farklılık gösterir ve aşağıdaki tablolarda gösterilir.
 
 ### <a name="common-properties"></a>Ortak özellikler
 
@@ -462,7 +462,7 @@ Bu kayıtlar, SharePoint 'teki dosya işlemlerine yanıt olarak oluşturulur.
 
 Aşağıdaki tabloda, bu çözüm tarafından toplanan güncelleştirme kayıtlarına yönelik örnek günlük sorguları verilmiştir.
 
-| Sorgu | Açıklama |
+| Sorgu | Description |
 | --- | --- |
 |Office 365 aboneliğinizdeki tüm işlemlerin sayısı |OfficeActivity &#124; Işleme göre Count () özetleme |
 |SharePoint sitelerinin kullanımı|OfficeActivity &#124; burada OfficeWorkload = ~ "SharePoint" &#124; Count () değerini \||

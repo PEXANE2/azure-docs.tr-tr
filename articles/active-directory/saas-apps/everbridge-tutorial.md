@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 732362ef7099e93697320d8e47180c1207e8cb32
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92453867"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995905"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>Öğretici: her yaprak Köprüsü ile Azure Active Directory tümleştirme
 
@@ -29,7 +29,7 @@ Her bir Azure AD ile bir yaprak Köprüsü tümleştirdiğinizde şunları yapab
 Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini her bir yaprak Köprüle yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -60,7 +60,7 @@ Azure Marketi 'nden bir yaprak Köprüsü eklemek için aşağıdaki adımları 
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna, **yaprak Köprüsü**girin. Sonuç panelinden her bir **yaprak Köprüsü** seçin ve **Ekle**' yi seçin.
+4. Arama kutusuna, **yaprak Köprüsü** girin. Sonuç panelinden her bir **yaprak Köprüsü** seçin ve **Ekle**' yi seçin.
 
      ![Sonuçlar listesinde yaprak Köprüsü](common/search-new-app.png)
 
@@ -100,7 +100,7 @@ Azure AD çoklu oturum açma 'yı tek köprü ile yapılandırmak için aşağı
     >[!NOTE]
     >Uygulamayı Yönetici portalı olarak *veya* hem Azure Portal hem de tek tek köprü portalında üye portalı olarak yapılandırın.
 
-4. **Yaprak Köprüsü** uygulamasını her bir **yaprak Köprüsü Yönetici portalı**olarak YAPıLANDıRMAK Için, **temel SAML yapılandırması** bölümünde şu adımları izleyin:
+4. **Yaprak Köprüsü** uygulamasını her bir **yaprak Köprüsü Yönetici portalı** olarak YAPıLANDıRMAK Için, **temel SAML yapılandırması** bölümünde şu adımları izleyin:
 
     ![Yaprak Köprüsü etki alanı ve URL çoklu oturum açma bilgileri](common/idp-intiated.png)
 
@@ -111,7 +111,7 @@ Azure AD çoklu oturum açma 'yı tek köprü ile yapılandırmak için aşağı
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'SI değerleriyle güncelleştirin. Bu değerleri almak için, [yaprak Köprüsü destek ekibine](mailto:support@everbridge.com)başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
-5. **Yaprak** Köprüsü uygulamasını her **yaprak Köprüsü üye portalı**olarak YAPıLANDıRMAK Için, **temel SAML yapılandırması** bölümünde şu adımları izleyin:
+5. **Yaprak** Köprüsü uygulamasını her **yaprak Köprüsü üye portalı** olarak YAPıLANDıRMAK Için, **temel SAML yapılandırması** bölümünde şu adımları izleyin:
 
   * Uygulamayı ıDP tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları izleyin:
 
@@ -148,7 +148,7 @@ Her bir **yaprak ÜZERINDE SSO** 'Yu bir **yaprak Köprüsü Yöneticisi Portal*
  
 1. Farklı bir Web tarayıcısı penceresinde, bir yönetici olarak yaprak olarak oturum açın.
 
-1. Üstteki menüde **Ayarlar** sekmesini seçin. **Güvenlik**bölümünde **Çoklu oturum açma**seçeneğini belirleyin.
+1. Üstteki menüde **Ayarlar** sekmesini seçin. **Güvenlik** bölümünde **Çoklu oturum açma** seçeneğini belirleyin.
    
      ![Çoklu oturum açmayı yapılandırma](./media/everbridge-tutorial/tutorial_everbridge_002.png)
    
@@ -158,17 +158,17 @@ Her bir **yaprak ÜZERINDE SSO** 'Yu bir **yaprak Köprüsü Yöneticisi Portal*
    
      c. Azure portal indirdiğiniz meta veri dosyasını karşıya yüklemek için **Dosya Seç** ' i seçin.
    
-     d. **SAML kimlik konumu**Için, **Konu ifadesinin NameIdentifier öğesinde kimlik**' i seçin.
+     d. **SAML kimlik konumu** Için, **Konu ifadesinin NameIdentifier öğesinde kimlik**' i seçin.
    
      e. **Kimlik sağlayıcısı oturum açma URL 'si** kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
    
-     f. **Hizmet sağlayıcı tarafından başlatılan Istek bağlama**Için **http yeniden yönlendirme**' yi seçin.
+     f. **Hizmet sağlayıcı tarafından başlatılan Istek bağlama** Için **http yeniden yönlendirme**' yi seçin.
 
-     örneğin: **Kaydet**’i seçin.
+     örneğin: **Kaydet**'i seçin.
 
 ### <a name="configure-everbridge-as-everbridge-member-portal-single-sign-on"></a>Her bir yaprak Köprüsü üye portalı çoklu oturum açma olarak yapılandırma
 
-Her **bir yaprak Köprüsü** **üye portalı**olarak tek tek oturum açma 'yı yapılandırmak Için, INDIRILEN **Federasyon meta verileri XML** 'i tek [köprü desteği ekibine](mailto:support@everbridge.com)gönderin. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+Her **bir yaprak Köprüsü** **üye portalı** olarak tek tek oturum açma 'yı yapılandırmak Için, INDIRILEN **Federasyon meta verileri XML** 'i tek [köprü desteği ekibine](mailto:support@everbridge.com)gönderin. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
@@ -186,7 +186,7 @@ Azure portal test kullanıcısını, için bu adımları izleyin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** kutusuna **Brittasıon**yazın.
+    a. **Ad** kutusuna **Brittasıon** yazın.
   
     b. **Kullanıcı adı** kutusuna `brittasimon@yourcompanydomain.extension` girin. BrittaSimon@contoso.com bunun bir örneğidir.
 

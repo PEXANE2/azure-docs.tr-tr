@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 396344ba90aa3850d7d23dc40d6df95f6d1f6c3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89279542"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996585"
 ---
 # <a name="user-privacy-and-azure-active-directory-pass-through-authentication"></a>Kullanıcı Gizliliği ve Azure Active Directory Doğrudan Kimlik Doğrulaması
 
@@ -67,7 +67,7 @@ Betiği, "ile bir dosyaya kaydedin. PS1 "uzantısı. Bu betiği gerektiği gibi 
 
 ### <a name="delete-authentication-agent-event-logs"></a>Kimlik doğrulama Aracısı olay günlüklerini sil
 
-Bu ürün, **Windows olay günlükleri**de oluşturabilir. Daha fazla bilgi edinmek için lütfen [Bu makaleyi](/windows/win32/wes/windows-event-log)okuyun.
+Bu ürün, **Windows olay günlükleri** de oluşturabilir. Daha fazla bilgi edinmek için lütfen [Bu makaleyi](/windows/win32/wes/windows-event-log)okuyun.
 
 Doğrudan kimlik doğrulama aracısıyla ilgili günlükleri görüntülemek için, sunucuda **Olay Görüntüleyicisi** uygulamayı açın ve **uygulama ve hizmet Logs\microsoft\azureadconnect\authenticationt\0\ yönetici**' nin altına bakın.
 

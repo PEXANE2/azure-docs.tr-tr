@@ -4,22 +4,22 @@ description: Şemayı atarken kaynakları korumak için Azure şemaları 'ndaki 
 ms.date: 10/05/2020
 ms.topic: conceptual
 ms.openlocfilehash: 01f69cbfebe203407287392c2433181396b541b2
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096003"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996109"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Azure şemaları 'nda kaynak kilitlemeyi anlama
 
-Ölçekteki tutarlı ortamların oluşturulması, bu tutarlılığı sürdürmek için bir mekanizma varsa gerçek anlamda değerlidir. Bu makalede, Azure şemaları 'nda kaynak kilitleme 'nin nasıl çalıştığı açıklanmaktadır. Kaynak kilitleme ve _reddetme atamalarından_oluşan bir örnek görmek için bkz. [yeni kaynakları koruma](../tutorials/protect-new-resources.md) öğreticisi.
+Ölçekteki tutarlı ortamların oluşturulması, bu tutarlılığı sürdürmek için bir mekanizma varsa gerçek anlamda değerlidir. Bu makalede, Azure şemaları 'nda kaynak kilitleme 'nin nasıl çalıştığı açıklanmaktadır. Kaynak kilitleme ve _reddetme atamalarından_ oluşan bir örnek görmek için bkz. [yeni kaynakları koruma](../tutorials/protect-new-resources.md) öğreticisi.
 
 > [!NOTE]
 > Azure şemaları tarafından dağıtılan kaynak kilitleri yalnızca şema atama tarafından dağıtılan kaynaklara uygulanır. Zaten var olan kaynak gruplarında olanlar gibi mevcut kaynaklar bunlara kilit eklenmez.
 
 ## <a name="locking-modes-and-states"></a>Kilitleme modları ve durumlar
 
-Kilitleme modu, şema ataması için geçerlidir ve üç seçeneğe sahiptir: **kilitleme**, **salt okuma**veya **silme**. Kilitleme modu, bir şema ataması sırasında yapıt dağıtımı sırasında yapılandırılır. Şema ataması güncelleştirilerek farklı bir kilitleme modu ayarlanabilir.
+Kilitleme modu, şema ataması için geçerlidir ve üç seçeneğe sahiptir: **kilitleme**, **salt okuma** veya **silme**. Kilitleme modu, bir şema ataması sırasında yapıt dağıtımı sırasında yapılandırılır. Şema ataması güncelleştirilerek farklı bir kilitleme modu ayarlanabilir.
 Ancak, kilitleme modları Azure şemaları dışında değiştirilemez.
 
 Şema atamasında yapıtlar tarafından oluşturulan kaynakların dört durumu vardır: **kilitli değil**, **salt okunurdur**, **düzenleme/silme yapılamaz** **veya silinemez**. Her yapıt türü **kilitli değil** durumunda olabilir. Aşağıdaki tablo bir kaynağın durumunu belirlemede kullanılabilir:
@@ -109,7 +109,7 @@ Her modun [reddetme atama özellikleri](../../../role-based-access-control/deny-
 
 |Mod |İzinler. eylemler |Permissions. NotActions |Sorumlular [i]. Türüyle |Excludesorumlularını [i]. Numarasını | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
-|Salt Okunur |**\*** |**\*/Read**<br />**Microsoft. Authorization/kilitleri/silme**<br />**Microsoft. Network/virtualNetwork/alt ağlar/JOIN/Action** |SystemDefined (herkes) |**Excludedsorumlularını** içinde şema atama ve Kullanıcı tanımlı |Kaynak grubu- _true_; Kaynak- _yanlış_ |
+|Salt Okunur |**\** _ |_ *\* **<br />** /Microsoft. Authorization/kilitleri oku/Sil/ **<br />** Microsoft. Network/virtualNetwork/alt ağları/JOIN/Action** |SystemDefined (herkes) |**Excludedsorumlularını** içinde şema atama ve Kullanıcı tanımlı |Kaynak grubu- _true_; Kaynak- _yanlış_ |
 |Silme |**\*/Delete** | **Microsoft. Authorization/kilitleri/silme**<br />**Microsoft. Network/virtualNetwork/alt ağlar/JOIN/Action** |SystemDefined (herkes) |**Excludedsorumlularını** içinde şema atama ve Kullanıcı tanımlı |Kaynak grubu- _true_; Kaynak- _yanlış_ |
 
 > [!IMPORTANT]
@@ -117,7 +117,7 @@ Her modun [reddetme atama özellikleri](../../../role-based-access-control/deny-
 
 ## <a name="exclude-a-principal-from-a-deny-assignment"></a>Bir sorumluyu reddetme atamasından dışlama
 
-Bazı tasarım veya güvenlik senaryolarında, şema atamasının oluşturduğu [reddetme atamasından](../../../role-based-access-control/deny-assignments.md) bir sorumluyu dışlamak gerekebilir. Bu adım, [atamayı oluştururken](/rest/api/blueprints/assignments/createorupdate) **kilitler** özelliğindeki **excludedsorumlularını** dizisine en fazla beş değer eklenerek REST API yapılır. Aşağıdaki atama tanımı, **Excludedsorumlularını**içeren bir istek gövdesi örneğidir:
+Bazı tasarım veya güvenlik senaryolarında, şema atamasının oluşturduğu [reddetme atamasından](../../../role-based-access-control/deny-assignments.md) bir sorumluyu dışlamak gerekebilir. Bu adım, [atamayı oluştururken](/rest/api/blueprints/assignments/createorupdate) **kilitler** özelliğindeki **excludedsorumlularını** dizisine en fazla beş değer eklenerek REST API yapılır. Aşağıdaki atama tanımı, **Excludedsorumlularını** içeren bir istek gövdesi örneğidir:
 
 ```json
 {

@@ -17,11 +17,11 @@ ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 726507fa6ea0651b23d46424bda669a2d8ad41e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979917"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996653"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde bir erişim paketine erişim isteme
 
@@ -51,7 +51,7 @@ Access Portal 'da erişim paketini bulduktan sonra bir istek gönderebilirsiniz.
 
 **Önkoşul rolü:** Sahibinin
 
-1. Listede erişim paketini bulun.  Gerekirse, arama dizesi yazarak ve ardından **ad**, **Katalog**veya **kaynaklar** filtresini seçerek arama yapabilirsiniz.
+1. Listede erişim paketini bulun.  Gerekirse, arama dizesi yazarak ve ardından **ad**, **Katalog** veya **kaynaklar** filtresini seçerek arama yapabilirsiniz.
 
     ![Erişim Portalı-kaynak arama](./media/entitlement-management-request-access/my-access-resource-search.png)
 

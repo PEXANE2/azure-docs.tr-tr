@@ -10,11 +10,11 @@ ms.author: matjazl
 author: matjazl
 ms.date: 04/02/2019
 ms.openlocfilehash: 2e13a9fc32964781dda07e5534e5cab79868ddf0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87846985"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995548"
 ---
 # <a name="tutorial-azure-active-directory-smart-on-fhir-proxy"></a>Öğretici: FHıR proxy üzerinde akıllı Azure Active Directory
 
@@ -24,7 +24,7 @@ Kimlik doğrulaması OAuth2 tabanlıdır. Ancak FHıR üzerinde akıllı, Azure 
 
 Bu öğreticide, FHıR için Azure API 'SI ile FHıR uygulamalarında akıllı etkinleştirme için proxy 'nin nasıl kullanılacağı açıklanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - FHıR için Azure API örneği
 - [.NET Core 2.2](https://dotnet.microsoft.com/download/dotnet-core/2.2)
@@ -126,7 +126,7 @@ FHıR uygulama başlatıcısı üzerinde akıllı başlattıktan sonra, `https:/
 
 ![FHıR uygulama başlatıcısı üzerinde akıllı](media/tutorial-smart-on-fhir/smart-on-fhir-app-launcher.png)
 
-**Hasta**, **karşılaştığı**veya **uygulayıcı** bilgilerini girdiğinizde, **başlatma bağlamının** güncelleştirildiğini fark edersiniz. FHıR için Azure API 'yi kullanırken, başlatma bağlamı yalnızca hasta, uygulayıcı ve daha fazlası hakkında bilgi içeren bir JSON belgesidir. Bu başlatma bağlamı Base64 olarak kodlanır ve sorgu parametresi olarak SMART on FHıR uygulamasına geçirilir `launch` . FHıR belirtimine göre, bu değişken, FHıR uygulamasında akıllı olarak anlaşılmaz ve kimlik sağlayıcısına geçirilir. 
+**Hasta**, **karşılaştığı** veya **uygulayıcı** bilgilerini girdiğinizde, **başlatma bağlamının** güncelleştirildiğini fark edersiniz. FHıR için Azure API 'yi kullanırken, başlatma bağlamı yalnızca hasta, uygulayıcı ve daha fazlası hakkında bilgi içeren bir JSON belgesidir. Bu başlatma bağlamı Base64 olarak kodlanır ve sorgu parametresi olarak SMART on FHıR uygulamasına geçirilir `launch` . FHıR belirtimine göre, bu değişken, FHıR uygulamasında akıllı olarak anlaşılmaz ve kimlik sağlayıcısına geçirilir. 
 
 FHıR proxy üzerinde akıllı bu bilgileri, belirteç yanıtındaki alanları doldurmak için kullanır. FHıR uygulamasında akıllı uygulama, bu alanları, hangi hasta için veri isteğinde olduğunu ve ekrandaki uygulamayı nasıl işlediğini denetlemek *için kullanabilir.* FHıR proxy üzerinde akıllı, aşağıdaki alanları destekler:
 

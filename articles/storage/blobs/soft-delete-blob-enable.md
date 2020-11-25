@@ -10,12 +10,12 @@ ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 07e306c6c428a0e3a3f64a29a2574cb0378bb81f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a74860b7adf4dade5aedc71a4960595cbe55eaf0
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230238"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95995310"
 ---
 # <a name="enable-and-manage-soft-delete-for-blobs"></a>Blob 'lar için geçici silmeyi etkinleştirme ve yönetme
 
@@ -32,9 +32,9 @@ Kapsayıcılar için geçici silme özelliğini etkinleştirmeyi öğrenmek içi
 Azure portal kullanarak Depolama hesabınızdaki Bloblar için geçici silme özelliğini etkinleştirin:
 
 1. [Azure portalında](https://portal.azure.com/) depolama hesabınıza gidin.
-1. **BLOB hizmeti**altında **veri koruma** seçeneğini bulun.
-1. **BLOB geçici silme** özelliğini *etkin*olarak ayarlayın.
-1. **Bekletme ilkeleri**altında, geçici olarak silinen Blobların Azure depolama tarafından nasıl korunacağını belirtin.
+1. **BLOB hizmeti** altında **veri koruma** seçeneğini bulun.
+1. **BLOB geçici silme** özelliğini *etkin* olarak ayarlayın.
+1. **Bekletme ilkeleri** altında, geçici olarak silinen Blobların Azure depolama tarafından nasıl korunacağını belirtin.
 1. Yaptığınız değişiklikleri kaydedin.
 
 ![Veri koruma blobu hizmeti 'nin seçili olduğu Azure portalının ekran görüntüsü.](media/soft-delete-blob-enable/storage-blob-soft-delete-portal-configuration.png)
@@ -55,7 +55,7 @@ Geçici olarak silinen bir blob veya anlık görüntüye tıkladığınızda, ye
 
 ![Geçici olarak silinen bir nesnenin ayrıntılarının ekran görüntüsü.](media/soft-delete-blob-enable/storage-blob-soft-delete-portal-properties.png)
 
-Bir Blobun silinmesinin, ilişkili tüm anlık görüntüleri de silmeyi unutmayın. Etkin bir blob için geçici olarak silinen anlık görüntüleri geri almak için bloba tıklayın ve **tüm anlık görüntüleri geri al**seçeneğini belirleyin.
+Bir Blobun silinmesinin, ilişkili tüm anlık görüntüleri de silmeyi unutmayın. Etkin bir blob için geçici olarak silinen anlık görüntüleri geri almak için bloba tıklayın ve **tüm anlık görüntüleri geri al** seçeneğini belirleyin.
 
 ![Geçici olarak silinen bir Blobun ayrıntılarının ekran görüntüsü.](media/soft-delete-blob-enable/storage-blob-soft-delete-portal-undelete-all-snapshots.png)
 
@@ -82,7 +82,7 @@ $MatchingAccounts | $account = Get-AzStorageAccount -ResourceGroupName myresourc
    Get-AzStorageServiceProperty -ServiceType Blob -Context $account.Context | Select-Object -ExpandProperty DeleteRetentionPolicy
 ```
 
-Yanlışlıkla silinen Blobları kurtarmak için, bu bloblarda **silmeyi geri al blobu** çağırın. **Geri alma blobu**çağırma, hem etkin hem de geçici olarak silinen bloblarda, ilişkili tüm yazılımla silinen anlık görüntüleri etkin olarak geri yükleyeceğini unutmayın. Aşağıdaki örnek, bir kapsayıcıdaki tüm geçici silinen ve etkin bloblarda **geri alma blobu** çağırır:
+Yanlışlıkla silinen Blobları kurtarmak için, bu bloblarda **silmeyi geri al blobu** çağırın. **Geri alma blobu** çağırma, hem etkin hem de geçici olarak silinen bloblarda, ilişkili tüm yazılımla silinen anlık görüntüleri etkin olarak geri yükleyeceğini unutmayın. Aşağıdaki örnek, bir kapsayıcıdaki tüm geçici silinen ve etkin bloblarda **geri alma blobu** çağırır:
 
 ```powershell
 # Create a context by specifying storage account name and key
@@ -164,7 +164,7 @@ serviceProperties.DeleteRetentionPolicy.RetentionDays = RetentionDays;
 blobClient.SetServiceProperties(serviceProperties);
 ```
 
-Yanlışlıkla silinen Blobları kurtarmak için, bu bloblarda **silmeyi geri al blobu** çağırın. **Geri alma blobu**çağırma, hem etkin hem de geçici olarak silinen bloblarda, ilişkili tüm yazılımla silinen anlık görüntüleri etkin olarak geri yükleyeceğini unutmayın. Aşağıdaki örnek, bir kapsayıcıda geçici olarak silinen ve etkin bloblarda **geri alma blobu** çağırır:
+Yanlışlıkla silinen Blobları kurtarmak için, bu bloblarda **silmeyi geri al blobu** çağırın. **Geri alma blobu** çağırma, hem etkin hem de geçici olarak silinen bloblarda, ilişkili tüm yazılımla silinen anlık görüntüleri etkin olarak geri yükleyeceğini unutmayın. Aşağıdaki örnek, bir kapsayıcıda geçici olarak silinen ve etkin bloblarda **geri alma blobu** çağırır:
 
 ```csharp
 // Recover all blobs in a container
@@ -194,5 +194,5 @@ blockBlob.StartCopy(copySource);
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [BLOB depolama için geçici silme](soft-delete-overview.md)
+- [BLOB depolama için geçici silme](./soft-delete-blob-overview.md)
 - [Blob sürümü oluşturma](versioning-overview.md)

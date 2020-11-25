@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: 52fad84c9ed145b4acec73ffad1fa470acf94532
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076955"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994596"
 ---
 # <a name="sizes-for-cloud-services"></a>Cloud Services için Boyutlar
 Bu konuda, bulut hizmeti rol örnekleri (Web rolleri ve çalışan rolleri) için kullanılabilen Boyutlar ve seçenekler açıklanmaktadır. Ayrıca, bu kaynakları kullanmayı planlarken göz önünde bulundurmanız gereken dağıtım konuları da sunar. Her boyutun, [hizmet tanımı dosyanıza](cloud-services-model-and-package.md#csdef)YERLEŞTIRDIĞINIZ bir kimliği vardır. Her boyutun fiyatları [Cloud Services fiyatlandırma](https://azure.microsoft.com/pricing/details/cloud-services/) sayfasında kullanılabilir.
@@ -58,12 +58,12 @@ Azure Işlem birimi (ACU) kavramını, Azure SKU 'Larında işlem (CPU) performa
 | [A5-7](#a-series) |100 |
 | [A8-A11](#a-series) |225* |
 | [Bir v2](#av2-series) |100 |
-| [TID](#d-series) |160 |
+| [D](#d-series) |160 |
 | [D v2](#dv2-series) |160-190 * |
 | [D v3](#dv3-series) |160-190 * |
 | [E v3](#ev3-series) |160-190 * |
-| [Acil](#g-series) |180-240* |
-| [Olsun](#h-series) |290-300* |
+| [G](#g-series) |180-240* |
+| [H](#h-series) |290-300* |
 
 * işaretli ACU'lar, CPU frekansını artırmak ve performans artışı sağlamak için Intel® Turbo Boost teknolojisinden faydalanır. Performans artışının oranı VM boyutuna, iş yüküne ve aynı ana bilgisayarda çalışan iş yüklerine göre değişiklik gösterebilir.
 

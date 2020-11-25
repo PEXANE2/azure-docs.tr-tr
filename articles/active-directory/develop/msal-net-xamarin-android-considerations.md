@@ -14,11 +14,11 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 320d48535c4792a4d610888c6a7030568ccf16bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89459853"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995191"
 ---
 # <a name="configuration-requirements-and-troubleshooting-tips-for-xamarin-android-with-msalnet"></a>MSAL.NET ile Xamarin Android için yapılandırma gereksinimleri ve sorun giderme ipuçları
 
@@ -95,7 +95,7 @@ protected override void OnActivityResult(int requestCode,
 
 Değer için Azure portal kaydettiğiniz paket adını değiştirin `android:host=` . Değer için Azure portal kaydettiğiniz anahtar karmasını değiştirin `android:path=` . İmza karması URL kodlamalı *olmamalıdır.* İmza karmalarınızın başlangıcında önde gelen eğik çizgi ( `/` ) göründüğünden emin olun.
 
-Alternatif olarak, *AndroidManifest.xml*el ile düzenlemeniz yerine [etkinlik kodda oluşturun](/xamarin/android/platform/android-manifest#the-basics) . Etkinliği kodda oluşturmak için önce özniteliğini ve özniteliğini içeren bir sınıf oluşturun `Activity` `IntentFilter` .
+Alternatif olarak, *AndroidManifest.xml* el ile düzenlemeniz yerine [etkinlik kodda oluşturun](/xamarin/android/platform/android-manifest#the-basics) . Etkinliği kodda oluşturmak için önce özniteliğini ve özniteliğini içeren bir sınıf oluşturun `Activity` `IntentFilter` .
 
 XML dosyasının değerlerini temsil eden bir sınıf örneği aşağıda verilmiştir:
 
@@ -112,7 +112,7 @@ XML dosyasının değerlerini temsil eden bir sınıf örneği aşağıda verilm
 
 ### <a name="xamarinforms-43x-manifest"></a>Xamarin. Forms 4.3. x bildirimi
 
-Xamarin. Forms 4.3. x,AndroidManifest.xmlözniteliği olarak ayarlayan kodu oluşturur `package` `com.companyname.{appName}` . * * `DataScheme`Olarak kullanıyorsanız `msal{client_id}` , değeri ad alanı değeriyle eşleşecek şekilde değiştirmek isteyebilirsiniz `MainActivity.cs` .
+Xamarin. Forms 4.3. x,AndroidManifest.xmlözniteliği olarak ayarlayan kodu oluşturur `package` `com.companyname.{appName}` . ** `DataScheme`Olarak kullanıyorsanız `msal{client_id}` , değeri ad alanı değeriyle eşleşecek şekilde değiştirmek isteyebilirsiniz `MainActivity.cs` .
 
 ## <a name="use-the-embedded-web-view-optional"></a>Katıştırılmış Web görünümünü kullanın (isteğe bağlı)
 
@@ -140,12 +140,12 @@ Daha fazla bilgi için bkz. MSAL.NET ve [Xamarin Android sistem tarayıcı konul
 - Xamarin. Android. support. v4 'nin en son sürümde olduğunu doğrulayın.
 - Tüm Xamarin. Android. support paketlerinin en son sürümü hedef aldığından emin olun.
 - Uygulamayı temizleyin veya yeniden derleyin.
-- Visual Studio 'da, en fazla paralel proje derlemesi sayısını **1**olarak ayarlamayı deneyin. Bunu yapmak için, **Seçenekler**  >  **Projeler ve çözümler**  >  **derleme ve**  >  **en fazla paralel proje derlemesi sayısını**Çalıştır ' ı seçin.
+- Visual Studio 'da, en fazla paralel proje derlemesi sayısını **1** olarak ayarlamayı deneyin. Bunu yapmak için, **Seçenekler**  >  **Projeler ve çözümler**  >  **derleme ve**  >  **en fazla paralel proje derlemesi sayısını** Çalıştır ' ı seçin.
 - Komut satırından derleme yapıyorsanız ve komutunuz kullanıyorsa `/m` , bu öğeyi komuttan kaldırmayı deneyin.
 
 ### <a name="error-the-name-authenticationcontinuationhelper-doesnt-exist-in-the-current-context"></a>Hata: AuthenticationContinuationHelper adı geçerli bağlamda yok
 
-Bir hata `AuthenticationContinuationHelper` geçerli bağlamda mevcut olmadığını gösteriyorsa, Visual Studio * \* Android. csproj* dosyasını yanlış bir şekilde güncelleştirmiş olabilir. Bazen öğedeki dosya yolu, `<HintPath>` yerine yanlış bir şekilde içerir `netstandard13` `monoandroid90` .
+Bir hata `AuthenticationContinuationHelper` geçerli bağlamda mevcut olmadığını gösteriyorsa, Visual Studio *\* Android. csproj* dosyasını yanlış bir şekilde güncelleştirmiş olabilir. Bazen öğedeki dosya yolu, `<HintPath>` yerine yanlış bir şekilde içerir `netstandard13` `monoandroid90` .
 
 Bu örnek, doğru bir dosya yolu içerir:
 
@@ -160,7 +160,7 @@ Bu örnek, doğru bir dosya yolu içerir:
 
 Daha fazla bilgi için [Microsoft Identity platform kullanan bir Xamarin mobil uygulaması](https://github.com/azure-samples/active-directory-xamarin-native-v2#android-specific-considerations)örneğine bakın. Aşağıdaki tabloda README dosyasındaki ilgili bilgiler özetlenmektedir.
 
-| Örnek | Platform | Açıklama |
+| Örnek | Platform | Description |
 | ------ | -------- | ----------- |
 |[https://github.com/Azure-Samples/active-directory-xamarin-native-v2](https://github.com/azure-samples/active-directory-xamarin-native-v2) | Xamarin. iOS, Android, UWP | Azure AD 2,0 uç noktası aracılığıyla Microsoft kişisel hesaplarının ve Azure AD kimlik doğrulaması için MSAL kullanmayı gösteren basit bir Xamarin. Forms uygulaması. Uygulama ayrıca Microsoft Graph nasıl erişebileceğini ve elde edilen belirtecin nasıl gösterileceğini gösterir. <br>![Kimlik doğrulama akışı diyagramı](media/msal-net-xamarin-android-considerations/topology.png) |
 

@@ -11,11 +11,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ceffc928a0cf8313723ff6193d9a6a63f8465f90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91266318"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994783"
 ---
 # <a name="tutorial-basic-active-directory-environment"></a>Öğretici: temel Active Directory ortamı
 

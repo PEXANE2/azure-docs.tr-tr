@@ -7,11 +7,11 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 11/12/2020
 ms.openlocfilehash: 19c9ec39d85bfc56b118498aba62c3752d6d771c
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616935"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996330"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Tümleştirme hizmeti ortamlarını (sesleri) kullanarak Azure Logic Apps Azure sanal ağ kaynaklarına erişim
 
@@ -117,7 +117,7 @@ ISE 'yi oluşturduğunuzda, iç veya dış erişim uç noktaları kullanmayı te
 > [!IMPORTANT]
 > Erişim uç noktasını yalnızca ıSE oluşturma sırasında seçebilir ve bu seçeneği daha sonra değiştiremezsiniz.
 
-* **İç** : özel uç noktalar, ortamınızdaki Logic Apps çağrılarına izin verir ve Logic Apps 'in çalışma geçmişinden gelen giriş ve çıkışları *yalnızca sanal ağınızın* içinden görüntüleyebilir ve bunlara erişebilirsiniz.
+* **İç**: özel uç noktalar, ortamınızdaki Logic Apps çağrılarına izin verir ve Logic Apps 'in çalışma geçmişinden gelen giriş ve çıkışları *yalnızca sanal ağınızın* içinden görüntüleyebilir ve bunlara erişebilirsiniz.
 
   > [!IMPORTANT]
   > Bu Web kancası tabanlı Tetikleyicileri kullanmanız gerekiyorsa, ıSE 'yi oluşturduğunuzda iç uç noktalar *değil* dış uç noktaları kullanın:
@@ -134,9 +134,9 @@ ISE 'yi oluşturduğunuzda, iç veya dış erişim uç noktaları kullanmayı te
   >
   > Örneğin, istemci bilgisayarınız ıSE 'nin sanal ağı içinde veya eşleme veya sanal özel ağ aracılığıyla ıSE 'nin sanal ağına bağlı bir sanal ağ içinde bulunabilir. 
 
-* **Dış** : genel uç noktaları, *sanal ağınızın dışından* Logic Apps 'in çalışma geçmişinden gelen giriş ve çıkışları görüntüleyebileceğiniz ve erişebileceğiniz, ortamınızda Logic Apps çağrılarına izin verir. Ağ güvenlik grupları (NSG 'ler) kullanıyorsanız, çalıştırma geçmişinin giriş ve çıkışlarına erişime izin vermek için gelen kurallarla ayarlandıklarından emin olun. Daha fazla bilgi için bkz. [Ise için erişimi etkinleştirme](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access).
+* **Dış**: genel uç noktaları, *sanal ağınızın dışından* Logic Apps 'in çalışma geçmişinden gelen giriş ve çıkışları görüntüleyebileceğiniz ve erişebileceğiniz, ortamınızda Logic Apps çağrılarına izin verir. Ağ güvenlik grupları (NSG 'ler) kullanıyorsanız, çalıştırma geçmişinin giriş ve çıkışlarına erişime izin vermek için gelen kurallarla ayarlandıklarından emin olun. Daha fazla bilgi için bkz. [Ise için erişimi etkinleştirme](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access).
 
-ISE 'nizin iç veya dış erişim uç noktası kullanıp kullanmadığını belirlemek için, ıSE menüsünde, **Ayarlar** ' ın altında **Özellikler** ' i seçin ve **erişim uç noktası** özelliğini bulun:
+ISE 'nizin iç veya dış erişim uç noktası kullanıp kullanmadığını belirlemek için, ıSE menüsünde, **Ayarlar**' ın altında **Özellikler**' i seçin ve **erişim uç noktası** özelliğini bulun:
 
 ![ISE erişim uç noktası bul](./media/connect-virtual-network-vnet-isolated-environment-overview/find-ise-access-endpoint.png)
 

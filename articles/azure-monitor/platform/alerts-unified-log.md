@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
 ms.openlocfilehash: 8081c60833c3c02d55ae66ca695ba106dba01450
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294147"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995089"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Izleyici 'de günlük uyarıları
 
@@ -25,7 +25,7 @@ Günlük uyarıları, [Azure uyarıları](./alerts-overview.md)'nda desteklenen 
 > [!NOTE]
 > Şu anda API sürümü `2020-05-01-preview` ve kaynak merkezli günlük uyarıları için ek ücret alınmaz.  Önizlemede olan özellikler için fiyatlandırma, gelecekte duyurulacak ve faturalandırma başlamadan önce bir bildirim sunulacaktır. Bildirim döneminden sonra yeni API sürümü ve kaynak merkezli günlük uyarılarını kullanmaya devam etmeyi tercih etmeniz gerekir, ilgili ücret üzerinden faturalandırılırsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Günlük uyarıları Log Analytics verilerde sorgu çalıştırır. İlk olarak, [günlük verilerini toplamaya](resource-logs.md) başlamanız ve günlük verilerini sorun için sorgulamanızı gerekir. [Kendi sorgunuzu yazmaya](../log-query/get-started-portal.md)ne bulabileceğinizi veya başladığınızı anlamak için Log Analytics [Uyarı sorgu örnekleri konusunu](../log-query/saved-queries.md) kullanabilirsiniz.
 
@@ -58,7 +58,7 @@ Kuralı değerlendirmek için kullanılan [Log Analytics](../log-query/get-start
 
 #### <a name="query-time-range"></a>Sorgu zaman aralığı
 
-Zaman aralığı, kural koşulu tanımında ayarlanır. Çalışma alanlarında ve Application Insights, **Dönem**olarak adlandırılır. Diğer tüm kaynak türlerinde, **geçersiz kılma sorgu zaman aralığı**olarak adlandırılır.
+Zaman aralığı, kural koşulu tanımında ayarlanır. Çalışma alanlarında ve Application Insights, **Dönem** olarak adlandırılır. Diğer tüm kaynak türlerinde, **geçersiz kılma sorgu zaman aralığı** olarak adlandırılır.
 
 Log Analytics 'te olduğu gibi, zaman aralığı sorgu verilerini belirtilen aralığa göre sınırlandırır. Sorguda kullanım **dışı komut kullanılsa** bile, zaman aralığı uygulanır.
 
@@ -102,7 +102,7 @@ Ardından, 500 hata kodu ile biten istekler için uyarı kuralları izleyicileri
 
 ### <a name="aggregation-type"></a>Toplama türü
 
-Birden çok kayıt üzerinde gerçekleştirilen ve bunları tek bir sayısal değere toplayan hesaplama. Örneğin:
+Birden çok kayıt üzerinde gerçekleştirilen ve bunları tek bir sayısal değere toplayan hesaplama. Örnek:
 - **Sayı** sorgudaki kayıt sayısını döndürür
 - **Average** , tanımlanan ölçü sütun [**toplama ayrıntı**](#aggregation-granularity) düzeyinin ortalamasını döndürür.
 
@@ -110,9 +110,9 @@ Birden çok kayıt üzerinde gerçekleştirilen ve bunları tek bir sayısal de�
 
 ### <a name="aggregation-granularity"></a>Toplama ayrıntı düzeyi
 
-Birden çok kaydı tek bir sayısal değere toplamak için kullanılan aralığı belirler. Örneğin, **5 dakika**belirlediyseniz, kayıtlar belirtilen **toplama türü** kullanılarak 5 dakikalık aralıklarla gruplandırılır.
+Birden çok kaydı tek bir sayısal değere toplamak için kullanılan aralığı belirler. Örneğin, **5 dakika** belirlediyseniz, kayıtlar belirtilen **toplama türü** kullanılarak 5 dakikalık aralıklarla gruplandırılır.
 
-Çalışma alanlarında ve Application Insights, yalnızca **ölçüm ölçümü** ölçü türünde desteklenir. Sorgu sonucu, sorgu sonuçlarında aralığı ayarlayan [bin ()](/azure/kusto/query/binfunction) içermelidir. Diğer tüm kaynak türlerinde, bu ayarı denetleyen alana **toplama ayrıntı düzeyi**denir.
+Çalışma alanlarında ve Application Insights, yalnızca **ölçüm ölçümü** ölçü türünde desteklenir. Sorgu sonucu, sorgu sonuçlarında aralığı ayarlayan [bin ()](/azure/kusto/query/binfunction) içermelidir. Diğer tüm kaynak türlerinde, bu ayarı denetleyen alana **toplama ayrıntı düzeyi** denir.
 
 > [!NOTE]
 > As [bin ()](/azure/kusto/query/binfunction) , düzensiz zaman aralıklarına yol açabilir. Uyarı hizmeti, [bin ()](/azure/kusto/query/binfunction) işlevini otomatik olarak [bin_at ()](/azure/kusto/query/binatfunction) işlevine, çalışma zamanında, sabit bir nokta ile sonuçları sağlamak üzere dönüştürür.
@@ -121,7 +121,7 @@ Birden çok kaydı tek bir sayısal değere toplamak için kullanılan aralığ�
 
 Uyarıları sayı veya dize sütunlarına göre, benzersiz kombinasyonlara gruplandırarak ayrı uyarılarda ayırın. Ölçekte (abonelik veya kaynak grubu kapsamı) kaynak merkezli uyarılar oluştururken Azure Kaynak KIMLIĞI sütununa göre ayırabilirsiniz. Azure Kaynak KIMLIĞI sütununu bölmek, uyarının hedefini belirtilen kaynakla değiştirecek.
 
-Çalışma alanlarında ve Application Insights, yalnızca **ölçüm ölçümü** ölçü türünde desteklenir. Alanı **toplama**olarak adlandırılır. Üç sütun ile sınırlıdır. Sorgudaki sütunlara göre üçten fazla grup bulunması beklenmeyen sonuçlara yol açabilir. Diğer tüm kaynak türlerinde, koşulun **boyutlara göre Böl** bölümüne (altı bölme ile sınırlıdır) göre yapılandırılmıştır.
+Çalışma alanlarında ve Application Insights, yalnızca **ölçüm ölçümü** ölçü türünde desteklenir. Alanı **toplama** olarak adlandırılır. Üç sütun ile sınırlıdır. Sorgudaki sütunlara göre üçten fazla grup bulunması beklenmeyen sonuçlara yol açabilir. Diğer tüm kaynak türlerinde, koşulun **boyutlara göre Böl** bölümüne (altı bölme ile sınırlıdır) göre yapılandırılmıştır.
 
 #### <a name="example-of-splitting-by-alert-dimensions"></a>Uyarı boyutlarına göre bölme örneği
 
@@ -162,7 +162,7 @@ Sonuçları çalıştırmak ve yürütmek üzere sorgu tanımladıktan sonra, uy
 
 Sorgu sonuçları, eşik ve işleçle karşılaştırılan bir sayıya dönüştürülür.
 
-### <a name="frequency"></a>Frequency
+### <a name="frequency"></a>Sıklık
 
 Sorgunun çalıştırıldığı Aralık. 5 dakikadan bir güne ayarlanabilir. Günlük kayıtlarını kaçırmamak için [sorgu zaman aralığından](#query-time-range) daha küçük veya bu değere eşit olmalıdır.
 
@@ -178,11 +178,11 @@ Uyarı değerlendirme süresini ve bir uyarının tetiklenmesi için gereken ba�
 
 Günlük uyarıları durum bilgisiz. Daha önce tetiklense bile, koşulun her karşılanışında, uyarılar tetiklenir. Tetiklenen uyarılar çözümlenmiyor. [Uyarıyı kapalı olarak işaretleyebilirsiniz](alerts-managing-alert-states.md). Ayrıca, bir uyarı kuralı tetiklendikten sonra bir süre tetiklemesini engellemek için eylemleri kapatabilirsiniz.
 
-Çalışma alanlarında ve Application Insights, **uyarıları bastır**olarak adlandırılır. Diğer tüm kaynak türlerinde, bu, **sessiz eylemler**olarak adlandırılır. 
+Çalışma alanlarında ve Application Insights, **uyarıları bastır** olarak adlandırılır. Diğer tüm kaynak türlerinde, bu, **sessiz eylemler** olarak adlandırılır. 
 
 Bu uyarı değerlendirmesi örneğine bakın:
 
-| Süre    | Günlük koşulu değerlendirmesi | Sonuç 
+| Saat    | Günlük koşulu değerlendirmesi | Sonuç 
 | ------- | ----------| ----------| ------- 
 | 00:05 | FALSE | Uyarı tetikleyemedi. Hiçbir eylem çağrılmadı.
 | 00:10 | TRUE  | Uyarı ateşlenir ve eylem grupları çağırılır. Yeni uyarı durumu ETKIN.

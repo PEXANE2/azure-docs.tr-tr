@@ -18,18 +18,18 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e4dcc7ed6076c3bac723d709f50f1b3ab2ce8f58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319937"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996568"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>ADSync hizmet hesabı parolasını değiştirme
 ADSync hizmet hesabı parolasını değiştirirseniz, şifreleme anahtarını terk edinceye ve ADSync hizmet hesabı parolasını yeniden başlatana kadar eşitleme hizmeti düzgün şekilde başlayamaz. 
 
 Azure AD Connect, Eşitleme Hizmetleri 'nin bir parçası olarak, AD DS bağlayıcı hesabının ve ADSync hizmet hesabının parolalarını depolamak için bir şifreleme anahtarı kullanır.  Bu hesaplar, veritabanında depolanmadan önce şifrelenir. 
 
-Kullanılan şifreleme anahtarı [Windows veri koruması (DPAPI)](/previous-versions/ms995355(v=msdn.10))kullanılarak güvenli hale getirilir. DPAPI, **ADSync hizmet hesabını**kullanarak şifreleme anahtarını korur. 
+Kullanılan şifreleme anahtarı [Windows veri koruması (DPAPI)](/previous-versions/ms995355(v=msdn.10))kullanılarak güvenli hale getirilir. DPAPI, **ADSync hizmet hesabını** kullanarak şifreleme anahtarını korur. 
 
 Hizmet hesabı parolasını değiştirmeniz gerekiyorsa, bunu gerçekleştirmek için [ADSync hizmet hesabı şifreleme anahtarını bırakma](#abandoning-the-adsync-service-account-encryption-key) konusundaki yordamları kullanabilirsiniz.  Bu yordamlar Ayrıca, herhangi bir nedenden dolayı şifreleme anahtarını iptal etmeniz gerekiyorsa de kullanılmalıdır.
 
@@ -97,7 +97,7 @@ Veritabanında depolanan mevcut parolaların artık şifresi çözülemediğinde
 </br>![Eşitleme Service Manager](./media/how-to-connect-sync-change-serviceacct-pass/startmenu.png)  
 2. **Bağlayıcılar** sekmesine gidin.
 3. Şirket içi AD 'nize karşılık gelen **ad bağlayıcısını** seçin. Birden fazla AD bağlayıcınız varsa, her biri için aşağıdaki adımları yineleyin.
-4. **Eylemler**altında **Özellikler**' i seçin.
+4. **Eylemler** altında **Özellikler**' i seçin.
 5. Açılır iletişim kutusunda **Active Directory ormana Bağlan**' ı seçin:
 6. **Parola** metin kutusuna AD DS hesabının parolasını girin. Parolasını bilmediğinizde, bu adımı gerçekleştirmeden önce bilinen bir değere ayarlamanız gerekir.
 7. Yeni parolayı kaydetmek ve açılır iletişim kutusunu kapatmak için **Tamam** ' ı tıklatın.

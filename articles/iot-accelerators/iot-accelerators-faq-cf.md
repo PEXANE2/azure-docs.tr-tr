@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: e6acea560c3a02420b15aff84475ab58e642116c
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078264"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995973"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Bağlı fabrika çözümü Hızlandırıcısı için sık sorulan sorular
 
@@ -76,13 +76,13 @@ Simülasyon VM 'de oturum açmak yalnızca çözümünüzü depodaki PowerShell 
 1. Hangi kapsayıcıların etkin olduğunu denetlemek için şunu çalıştırın: `docker ps` .
 1. Tüm simülasyon kapsayıcılarını durdurmak için şunu çalıştırın: `./stopsimulation` .
 1. Tüm simülasyon kapsayıcılarını başlatmak için:
-    * **IOTHUB_CONNECTIONSTRING**adıyla bir Shell değişkenini dışarı aktarın. Dosyadaki **ıothubownerconnectionstring** ayarının değerini kullanın `<name of your deployment>.config.user` . Örnek:
+    * **IOTHUB_CONNECTIONSTRING** adıyla bir Shell değişkenini dışarı aktarın. Dosyadaki **ıothubownerconnectionstring** ayarının değerini kullanın `<name of your deployment>.config.user` . Örnek:
 
         ```sh
         export IOTHUB_CONNECTIONSTRING="HostName={yourdeployment}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={your key}"
         ```
 
-    * `./startsimulation` komutunu çalıştırın.
+    * `./startsimulation` öğesini çalıştırın.
 
 ### <a name="how-do-i-update-the-simulation-in-the-vm"></a>VM 'deki benzetimi güncelleştirmek Nasıl yaparım? mı?
 
@@ -146,7 +146,7 @@ Dağıtım işlemi, [www.azureiotsolutions.com](https://www.azureiotsolutions.co
 
 `build.ps1`Bağlı fabrika GitHub deposunda betiği kullanarak dağıtırken, `$env:MapApiQueryKey` Yapı penceresindeki ortam değişkenini [Azure haritalar hesabınızın anahtarına](../azure-maps/how-to-manage-account-keys.md)ayarlayın. Etkileşimli harita daha sonra otomatik olarak etkinleştirilir.
 
-Ayrıca, dağıtımdan sonra çözüm hızlandırıcısına bir Azure haritalar hesap anahtarı ekleyebilirsiniz. Azure portal gidin ve bağlı fabrika dağıtımınızdaki App Service kaynağına erişin. Bölüm **uygulama ayarlarını**bulduğunuz **uygulama ayarları**' na gidin. **MapApiQueryKey** 'ı [Azure haritalar hesabınızın anahtarına](../azure-maps/how-to-manage-account-keys.md)ayarlayın. Ayarları kaydedin ve **genel bakış** ' a gidin ve App Service yeniden başlatın.
+Ayrıca, dağıtımdan sonra çözüm hızlandırıcısına bir Azure haritalar hesap anahtarı ekleyebilirsiniz. Azure portal gidin ve bağlı fabrika dağıtımınızdaki App Service kaynağına erişin. Bölüm **uygulama ayarlarını** bulduğunuz **uygulama ayarları**' na gidin. **MapApiQueryKey** 'ı [Azure haritalar hesabınızın anahtarına](../azure-maps/how-to-manage-account-keys.md)ayarlayın. Ayarları kaydedin ve **genel bakış** ' a gidin ve App Service yeniden başlatın.
 
 ### <a name="how-do-i-create-an-azure-maps-account"></a>Nasıl yaparım? Azure Maps hesabı mı oluşturulsun?
 

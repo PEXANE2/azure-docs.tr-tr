@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
 ms.openlocfilehash: 05295efec3d7651c3a77dd5ad6e2c72b57a6c5a3
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146765"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994732"
 ---
 # <a name="import-an-openapi-specification"></a>OpenAPI belirtimini içeri aktarma
 
@@ -39,11 +39,11 @@ Bu makalede şunları öğreneceksiniz:
 ## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>Arka uç API'sini içeri aktarma ve yayımlama
 
 1. Azure portal API Management hizmetinize gidin ve menüden **API 'leri** seçin.
-2. **Yeni API ekle** listesinden **OpenAPI belirtimi** ’ni seçin.
+2. **Yeni API ekle** listesinden **OpenAPI belirtimi**’ni seçin.
 
     ![Openapı belirtimi](./media/import-api-from-oas/oas-api.png)
 3. API ayarlarını girin. Oluşturma sırasında değerleri ayarlayabilir veya daha sonra **Ayarlar** sekmesine giderek yapılandırabilirsiniz. Ayarlar, [Ilk API 'Nizi Içeri aktarma ve yayımlama](import-and-publish.md#import-and-publish-a-backend-api) öğreticisinde açıklanmıştır.
-4. **Oluştur** ’u seçin.
+4. **Oluştur**’u seçin.
 
 > [!NOTE]
 > API içeri aktarma sınırlamaları, [başka bir makalede](api-management-api-import-restrictions.md)belgelenmiştir.

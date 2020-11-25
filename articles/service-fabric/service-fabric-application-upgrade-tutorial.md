@@ -4,11 +4,11 @@ description: Bu makalede bir Service Fabric uygulaması dağıtma, kodu değişt
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: acde2f4e51bee29d2eefb0d5fbb54fbe421a41f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82195876"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996245"
 ---
 # <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>Visual Studio kullanarak uygulama yükseltme öğreticisini Service Fabric
 > [!div class="op_single_selector"]
@@ -19,14 +19,14 @@ ms.locfileid: "82195876"
 
 <br/>
 
-Azure Service Fabric, yalnızca değiştirilen hizmetlerin yükseltildiğini ve yükseltme işlemi boyunca uygulama durumunun izlendiğini sağlayarak bulut uygulamalarını yükseltme sürecini basitleştirir. Ayrıca, sorunlarla karşılaşıldığında otomatik olarak uygulamayı önceki sürüme geri alır. Uygulamanın kapalı kalma süresi olmadan yükseltilemediğinden, uygulama yükseltmelerinin Service Fabric *sıfır kapalı kalma süresi*vardır. Bu öğreticide, Visual Studio 'dan bir sıralı yükseltmenin nasıl tamamlanacağı ele alınmaktadır.
+Azure Service Fabric, yalnızca değiştirilen hizmetlerin yükseltildiğini ve yükseltme işlemi boyunca uygulama durumunun izlendiğini sağlayarak bulut uygulamalarını yükseltme sürecini basitleştirir. Ayrıca, sorunlarla karşılaşıldığında otomatik olarak uygulamayı önceki sürüme geri alır. Uygulamanın kapalı kalma süresi olmadan yükseltilemediğinden, uygulama yükseltmelerinin Service Fabric *sıfır kapalı kalma süresi* vardır. Bu öğreticide, Visual Studio 'dan bir sıralı yükseltmenin nasıl tamamlanacağı ele alınmaktadır.
 
 ## <a name="step-1-build-and-publish-the-visual-objects-sample"></a>1. Adım: görsel nesneler örneğini derleme ve yayımlama
 İlk olarak, GitHub 'dan [görsel nesneler](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Actors/VisualObjects) uygulamasını indirin. Ardından uygulama projesine sağ tıklayıp, **Visualobjects**' i sağ tıklayıp Service Fabric menü öğesinde **Yayımla** komutunu seçerek uygulamayı derleyin ve yayımlayın.
 
 ![Service Fabric uygulaması için bağlam menüsü][image1]
 
-**Yayımla** seçeneğinin belirlenmesi bir açılan pencere getirir ve **hedef profilini** **PublishProfiles\Local.xml**olarak ayarlayabilirsiniz. **Yayımla**' ya tıklamadan önce pencere aşağıdaki gibi görünmelidir.
+**Yayımla** seçeneğinin belirlenmesi bir açılan pencere getirir ve **hedef profilini** **PublishProfiles\Local.xml** olarak ayarlayabilirsiniz. **Yayımla**' ya tıklamadan önce pencere aşağıdaki gibi görünmelidir.
 
 ![Service Fabric uygulaması yayımlama][image2]
 

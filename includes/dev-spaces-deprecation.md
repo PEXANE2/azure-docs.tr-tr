@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: a8c0dee3a27fe1fe47b50cad1242fb59866261c0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135568"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995581"
 ---
 > [!IMPORTANT]
-> Azure Dev Spaces kullanımdan kaldırılıyor ve 31 Ekim 2023 tarihinde çalışmayı durduracaktır. [Kubernetes 'e](../articles/dev-spaces/migrate-to-bridge-to-kubernetes.md)geçiş yapmayı düşünün.
+> Azure Dev Spaces kullanımdan kaldırılıyor ve 31 Ekim 2023'ten itibaren çalışmayacak. [Kubernetes 'e](../articles/dev-spaces/migrate-to-bridge-to-kubernetes.md)geçiş yapmayı düşünün.

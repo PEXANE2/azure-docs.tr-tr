@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
 ms.openlocfilehash: 9b190b5847c7412344e2bb09fd4000985816219b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86085744"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995599"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Azure HDInsight 'ta Apache Storm topolojileri dağıtma ve yönetme
 
@@ -21,9 +21,9 @@ Bu belgede, HDInsight kümelerinde fırtınası üzerinde çalışan [Apache Sto
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* HDInsight üzerinde bir Apache Storm kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) ve **küme türü**için **fırtınası** seçme.
+* HDInsight üzerinde bir Apache Storm kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) ve **küme türü** için **fırtınası** seçme.
 
-* Seçim Secure Shell (SSH) ve güvenli kopya (SCP) ile benzerlik. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Seçim Secure Shell (SSH) ve güvenli kopya (SCP) ile benzerlik. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight'a (Apache Hadoop) bağlanma](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 * Seçim Visual Studio, Azure SDK 2.5.1 veya daha yeni bir sürümü ve Visual Studio için Data Lake araçları. Daha fazla bilgi için bkz. [Visual Studio Data Lake araçları & Apache Hadoop](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
@@ -44,7 +44,7 @@ Visual Studio için Data Lake araçlarını kullanarak, fırtınası kümenize C
 
 1. **Yeni proje oluştur** penceresinde arama kutusunu seçin ve girin `Storm` . Sonra sonuç listesinden **fırtınası örneği** ' ni seçin ve **İleri**' yi seçin.
 
-1. Yeni projeyi **yapılandırın** penceresinde, bir **Proje adı**girin ve ' a gidin veya yeni projenin kaydedileceği **konumu** oluşturun. Ardından **Oluştur**’u seçin.
+1. Yeni projeyi **yapılandırın** penceresinde, bir **Proje adı** girin ve ' a gidin veya yeni projenin kaydedileceği **konumu** oluşturun. Ardından **Oluştur**’u seçin.
 
     ![Yeni proje pencerenizi, Visual Studio 'yu yapılandırın](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png)
 
@@ -89,7 +89,7 @@ Visual Studio kullanarak bir topoloji gönderdiğinizde, **fırtınası topoloji
 ![İzleyici topolojisi, fırtınası topolojileri Görünüm penceresi, Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/visual-studio-monitor.png)
 
 > [!NOTE]  
-> Ayrıca, **Sunucu Gezgini**karşı **fırtınası topolojilerini** görüntüleyebilirsiniz. **Azure**  >  **HDInsight**' ı genişletin, HDInsight kümesinde bir fırtınası ' a sağ tıklayın ve ardından **fırtınası topolojilerini görüntüle**' yi seçin.
+> Ayrıca, **Sunucu Gezgini** karşı **fırtınası topolojilerini** görüntüleyebilirsiniz. **Azure**  >  **HDInsight**' ı genişletin, HDInsight kümesinde bir fırtınası ' a sağ tıklayın ve ardından **fırtınası topolojilerini görüntüle**' yi seçin.
 
 Bu bileşenler hakkındaki bilgileri görüntülemek için spomalar veya cıvatları şeklini seçin. Seçilen öğe için bileşen bilgileri içeren bir araç ipucu görüntülenir.
 
@@ -172,7 +172,7 @@ Fırtınası Kullanıcı arabirimi, çalışan topolojilerle çalışmaya yönel
 
 Fırtınası Kullanıcı arabiriminin ana sayfası aşağıdaki bilgileri sağlar:
 
-| Section | Açıklama |
+| Section | Description |
 | --- | --- |
 | Küme özeti| Fırtınası kümesiyle ilgili temel bilgiler. |
 | Nimbus Özeti | Temel Nimbus bilgilerinin listesi. |
@@ -188,7 +188,7 @@ Fırtınası Kullanıcı arabirimi ana sayfası bu Web sayfasına benzer şekild
 
 **Topoloji Özeti** bölümünden bir bağlantı seçmek topolojiyle ilgili aşağıdaki bilgileri görüntüler:
 
-| Section | Açıklama |
+| Section | Description |
 | --- | --- |
 | Topoloji Özeti | Topolojiyle ilgili temel bilgiler. |
 | Topoloji eylemleri| Topoloji için yapabileceğiniz yönetim eylemleri. Kullanılabilir eylemler, bu bölümün ilerleyen kısımlarında açıklanmıştır. |
@@ -205,7 +205,7 @@ Fırtınası topolojisi Özet sayfası, bu Web sayfasına benzer şekilde görü
 
 **Topoloji eylemleri** bölümünde, bir eylem yapmak için aşağıdaki düğmeleri seçebilirsiniz:
 
-| Düğme | Açıklama |
+| Düğme | Description |
 | --- | --- |
 | Etkinleştir | Devre dışı bırakılan bir topoloji işlemeyi sürdürür. |
 | Devre dışı bırak | Çalışan bir topolojiyi duraklatır. |
@@ -219,14 +219,14 @@ Fırtınası topolojisi Özet sayfası, bu Web sayfasına benzer şekilde görü
 
 **Spout** veya **cıvatalar** bölümlerinden bir biriktirmede seçim yapmak seçili öğeyle ilgili aşağıdaki bilgileri görüntüler:
 
-| Section | Açıklama |
+| Section | Description |
 | --- | --- |
 | Bileşen Özeti | Spout veya cıvam hakkındaki temel bilgiler. |
 | Bileşen eylemleri | **Hata Ayıkla ve** **Hata Ayıkla** düğmeleri. |
 | Spout istatistikleri veya cıvatlar istatistikleri | Spout veya cıvata ilişkin istatistikler. Bu bölümdeki bir girdinin zaman çerçevesini ayarlamak için **pencere** sütununda bağlantısını seçin. |
 | (Yalnızca cıvata)<br/>Giriş İstatistikleri *(zaman dilimi)* | Sürgüsü tarafından tüketilen giriş akışları hakkında bilgi. |
 | Çıkış istatistikleri *(zaman dilimi)* | Spout veya cıvata yayılan akışlar hakkında bilgiler. |
-| Profil oluşturma ve hata ayıklama | Bu sayfadaki bileşenlerin profilini oluşturma ve hata ayıklama için denetimler. **Durum/zaman aşımı (dakika)** değerini ayarlayabilir ve **jstack**için düğmeler, **çalışan**ve **yığın**' ı seçebilirsiniz. |
+| Profil oluşturma ve hata ayıklama | Bu sayfadaki bileşenlerin profilini oluşturma ve hata ayıklama için denetimler. **Durum/zaman aşımı (dakika)** değerini ayarlayabilir ve **jstack** için düğmeler, **çalışan** ve **yığın**' ı seçebilirsiniz. |
 | Yürüticileri *(zaman dilimi)* | Spout veya cıvatanın örnekleri hakkında bilgi. Bu örnek için üretilen tanılama bilgilerinin günlüğünü görüntülemek için, belirli bir yürütücü için **bağlantı noktası** girişini seçin. Ayrıca, **konak** sütunundaki bağlantısını seçerek belirli bir yürütücü ile ilişkili çalışan kaynaklarını da görebilirsiniz. |
 | Hatalar | Spout veya cıvata ilgili tüm hata bilgileri. |
 
@@ -249,7 +249,7 @@ Linux tabanlı HDInsight kümelerinde REST API için temel URI, `https://HEADNOD
 
 Küme baş düğümü için tam etki alanı adını (FQDN) çeşitli yollarla bulabilirsiniz:
 
-| FQDN bulma yöntemi | Açıklama |
+| FQDN bulma yöntemi | Description |
 | --- | --- |
 | SSH oturumu | `headnode -f`Kümeden BIR SSH oturumunda komutunu kullanın. |
 | Ambarı web | Ambarı küme Web sayfasında ( `https://CLUSTERNAME.azurehdinsight.net` ), sayfanın üst kısmından **Hizmetler** ' i seçin ve ardından **fırtınası**' yi seçin. **Özet** sekmesinden, **fırtınası Kullanıcı arabirimi sunucusu**' nu seçin. Fırtınası Kullanıcı arabirimini barındıran düğümün FQDN 'SI ve REST API sayfanın en üstünde görüntülenir. |
@@ -257,7 +257,7 @@ Küme baş düğümü için tam etki alanı adını (FQDN) çeşitli yollarla bu
 
 ### <a name="authentication"></a>Kimlik Doğrulaması
 
-REST API istekleri *temel kimlik doğrulaması*kullanmalıdır, bu nedenle HDInsight kümesi için yönetici adını ve parolasını kullanmanız gerekir.
+REST API istekleri *temel kimlik doğrulaması* kullanmalıdır, bu nedenle HDInsight kümesi için yönetici adını ve parolasını kullanmanız gerekir.
 
 > [!NOTE]  
 > Temel kimlik doğrulaması şifresiz metin kullanılarak gönderildiğinden, kümeyle iletişimleri güvenli hale getirmek için *her zaman* HTTPS kullanmanız gerekir.

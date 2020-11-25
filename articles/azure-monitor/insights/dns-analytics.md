@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
 ms.openlocfilehash: 947b509468857b98b868881bdd48adf67a5d60db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86499010"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994647"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>DNS Analizi Preview çözümüyle DNS altyapınız hakkında Öngörüler toplayın
 
@@ -35,10 +35,10 @@ Aşağıdaki tabloda, bu çözüm tarafından desteklenen bağlı kaynaklar aç�
 
 | **Bağlı kaynak** | **Destek** | **Açıklama** |
 | --- | --- | --- |
-| [Windows aracıları](../platform/agent-windows.md) | Evet | Bu çözüm, Windows aracılarından DNS bilgilerini toplar. |
-| [Linux aracıları](../learn/quick-collect-linux-computer.md) | Hayır | Çözüm, doğrudan Linux aracılarından DNS bilgileri toplamaz. |
-| [System Center Operations Manager yönetim grubu](../platform/om-agents.md) | Evet | Çözüm, bağlı bir Operations Manager yönetim grubundaki aracılardan DNS bilgilerini toplar. Operations Manager aracısından Azure Izleyici 'ye doğrudan bağlantı gerekli değildir. Veriler, yönetim grubundan Log Analytics çalışma alanına iletilir. |
-| [Azure depolama hesabı](../platform/resource-logs.md#send-to-log-analytics-workspace) | Hayır | Azure depolama, çözüm tarafından kullanılmıyor. |
+| [Windows aracıları](../platform/agent-windows.md) | Yes | Bu çözüm, Windows aracılarından DNS bilgilerini toplar. |
+| [Linux aracıları](../learn/quick-collect-linux-computer.md) | No | Çözüm, doğrudan Linux aracılarından DNS bilgileri toplamaz. |
+| [System Center Operations Manager yönetim grubu](../platform/om-agents.md) | Yes | Çözüm, bağlı bir Operations Manager yönetim grubundaki aracılardan DNS bilgilerini toplar. Operations Manager aracısından Azure Izleyici 'ye doğrudan bağlantı gerekli değildir. Veriler, yönetim grubundan Log Analytics çalışma alanına iletilir. |
+| [Azure depolama hesabı](../platform/resource-logs.md#send-to-log-analytics-workspace) | No | Azure depolama, çözüm tarafından kullanılmıyor. |
 
 ### <a name="data-collection-details"></a>Veri toplama ayrıntıları
 
@@ -89,7 +89,7 @@ DNS kutucuğu, verilerin toplandığı DNS sunucusu sayısını içerir. Ayrıca
 
 ### <a name="solution-dashboard"></a>Çözüm panosu
 
-Çözüm panosu, çözümün çeşitli özelliklerine ilişkin özetlenen bilgileri gösterir. Ayrıca, adli analiz ve Tanılama için ayrıntılı görünüme bağlantılar da içerir. Veriler, son yedi gün için varsayılan olarak gösterilir. Tarih ve saat aralığını, aşağıdaki görüntüde gösterildiği gibi **Tarih-Saat seçim denetimini**kullanarak değiştirebilirsiniz:
+Çözüm panosu, çözümün çeşitli özelliklerine ilişkin özetlenen bilgileri gösterir. Ayrıca, adli analiz ve Tanılama için ayrıntılı görünüme bağlantılar da içerir. Veriler, son yedi gün için varsayılan olarak gösterilir. Tarih ve saat aralığını, aşağıdaki görüntüde gösterildiği gibi **Tarih-Saat seçim denetimini** kullanarak değiştirebilirsiniz:
 
 ![Zaman seçim denetimi](./media/dns-analytics/dns-time.png)
 

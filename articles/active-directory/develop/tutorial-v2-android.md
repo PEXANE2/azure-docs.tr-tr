@@ -13,18 +13,20 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: cbfaf52a7c5bb5e44b85513d8e2c2ec5f1cea356
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 08ee000d8f801559fcf572b8ab489161fd090b77
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101992"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95996211"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-application"></a>Öğretici: kullanıcılarda oturum açın ve Android uygulamasından Microsoft Graph API 'sini çağırın
 
-Bu öğreticide Android için Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanarak Android uygulamanızı Microsoft Identity platformu ile tümleştirmeyi öğreneceksiniz. Bir kullanıcının oturumunu açma ve oturumu kapatma, erişim belirteci alma ve Microsoft Graph API 'sine istek yapma hakkında bilgi edineceksiniz.
+Bu öğreticide, kullanıcıları oturum açmak ve Microsoft Graph API 'sini çağırmak için bir erişim belirteci almak amacıyla Microsoft Identity platformu ile tümleştirilen bir Android uygulaması oluşturacaksınız.
 
 Bu öğreticiyi tamamladığınızda, uygulamanız kişisel Microsoft hesaplarının (outlook.com, live.com ve diğerleri dahil) oturum açma işlemlerinin yanı sıra Azure Active Directory kullanan herhangi bir şirketten veya kuruluştan iş veya okul hesabı kabul eder.
+
+Bu öğreticide: 
 
 > [!div class="checklist"]
 > * *Android Studio* bir Android uygulaması projesi oluşturma
@@ -33,7 +35,7 @@ Bu öğreticiyi tamamladığınızda, uygulamanız kişisel Microsoft hesapları
 > * Microsoft Graph API 'sini çağırmak için kod ekleme
 > * Uygulamayı test etme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Android Studio 3.5 +
 
@@ -62,10 +64,10 @@ MSAL, belirteçleri otomatik olarak yenileyecek, cihazdaki diğer uygulamalar ar
 Henüz bir Android uygulamanız yoksa, yeni bir proje ayarlamak için aşağıdaki adımları izleyin.
 
 1. Android Studio açın ve **Yeni bir Android Studio projesi Başlat**' ı seçin.
-2. **Temel etkinlik** ' i seçin ve **İleri ' yi**seçin.
+2. **Temel etkinlik** ' i seçin ve **İleri ' yi** seçin.
 3. Uygulamanızı adlandırın.
 4. Paket adını kaydedin. Daha sonra Azure portal buraya girersiniz.
-5. **Kotlin** dilini **Java**ile değiştirin.
+5. **Kotlin** dilini **Java** ile değiştirin.
 6. **En düşük API düzeyini** **api 19** veya üzeri olarak ayarlayın ve **son**' a tıklayın.
 7. Proje görünümünde, açılan listeden **Proje** ' yi seçerek kaynak ve kaynak olmayan proje dosyalarını görüntüleyin, **App/Build. Gradle** dosyasını açın ve `targetSdkVersion` olarak ayarlayın `28` .
 
@@ -76,7 +78,7 @@ Henüz bir Android uygulamanız yoksa, yeni bir proje ayarlamak için aşağıda
 1. [Azure portalına](https://aka.ms/MobileAppReg) gidin.
 2. [Uygulama kayıtları dikey penceresini](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) açın ve **+ Yeni kayıt**' ye tıklayın.
 3. Uygulamanız için bir **ad** girin ve yeniden yönlendirme URI **'sini ayarlamadan** **Kaydet**' e tıklayın.
-4. Görüntülenen bölmenin **Yönet** bölümünde **kimlik doğrulama**  >  **+ Platform**  >  **Android**Ekle ' yi seçin. (Bu bölümü görmek için dikey pencerenin üst kısmındaki "yeni deneyime geç" seçeneğini seçmeniz gerekebilir.
+4. Görüntülenen bölmenin **Yönet** bölümünde **kimlik doğrulama**  >  **+ Platform**  >  **Android** Ekle ' yi seçin. (Bu bölümü görmek için dikey pencerenin üst kısmındaki "yeni deneyime geç" seçeneğini seçmeniz gerekebilir.
 5. Projenizin paket adını girin. Kodu indirdiyseniz, bu değer olur `com.azuresamples.msalandroidapp` .
 6. **Android uygulamanızı yapılandırma** sayfanızın **imza karması** bölümünde, **bir geliştirme imza karması oluşturma** ' ya tıklayın. ve platformunuz için kullanmak üzere KeyTool komutunu kopyalayın.
 
@@ -88,9 +90,9 @@ Henüz bir Android uygulamanız yoksa, yeni bir proje ayarlamak için aşağıda
 
 ### <a name="configure-your-application"></a>Uygulamanızı yapılandırma
 
-1. Android Studio projesi bölmesinde **app\src\mainres dizinine**gidin.
+1. Android Studio projesi bölmesinde **app\src\mainres dizinine** gidin.
 2. **Kay** ' a sağ tıklayın ve **Yeni**  >  **Dizin**' i seçin. `raw`Yeni dizin adı olarak girin ve **Tamam**' a tıklayın.
-3. **App**  >  **src**  >  **ana**  >  **res**  >  **RAW**bölümünde, adlı yeni bir JSON dosyası oluşturun `auth_config_single_account.json` ve daha önce kaydettiğiniz msal yapılandırmasını yapıştırın.
+3. **App**  >  **src**  >  **ana**  >  **res**  >  **RAW** bölümünde, adlı yeni bir JSON dosyası oluşturun `auth_config_single_account.json` ve daha önce kaydettiğiniz msal yapılandırmasını yapıştırın.
 
     Yeniden yönlendirme URI 'sinin altında şunu yapıştırın:
     ```json
@@ -163,7 +165,7 @@ Henüz bir Android uygulamanız yoksa, yeni bir proje ayarlamak için aşağıda
 
 ### <a name="required-imports"></a>Gerekli İçeri Aktarmalar
 
-Aşağıdakini **App**  >  **src**Main Java com ' un en üstüne ekleyin  >  **main** >  **java**  >  **. örnek (yourapp)**  >  **MainActivity. Java**
+Aşağıdakini **App**  >  **src** Main Java com ' un en üstüne ekleyin  >  **main** >  **java**  >  **. örnek (yourapp)**  >  **MainActivity. Java**
 
 ```java
 import android.os.Bundle;

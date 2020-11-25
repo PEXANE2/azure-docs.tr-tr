@@ -13,11 +13,11 @@ ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
 ms.openlocfilehash: c26cbf55c1e3883605d4c65659511af20cf02c7f
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836776"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996687"
 ---
 # <a name="what-are-security-defaults"></a>Güvenlik Varsayılanları nelerdir?
 
@@ -98,7 +98,7 @@ Kiracınızda güvenlik Varsayılanları etkinleştirildikten sonra, eski bir pr
 
 Kuruluşlar, aşağıdakiler dahil olmak üzere Azure Resource Manager API 'SI aracılığıyla yönetilen çeşitli Azure hizmetleri kullanır:
 
-- Azure portalı 
+- Azure portal 
 - Azure PowerShell 
 - Azure CLI
 
@@ -159,7 +159,7 @@ Dizininizde güvenlik varsayılanlarını etkinleştirmek için:
 1.  **Azure Active Directory**   >  **özelliklere** gidin.
 1. **Güvenlik varsayılanlarını Yönet**' i seçin.
 1. **Güvenlik varsayılanlarını etkinleştir** ayarını **Evet** olarak ayarlayın.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ## <a name="disabling-security-defaults"></a>Güvenlik varsayılanlarını devre dışı bırakma
 
@@ -173,7 +173,7 @@ Dizininizde güvenlik varsayılanlarını devre dışı bırakmak için:
 1.  **Azure Active Directory**   >  **özelliklere** gidin.
 1. **Güvenlik varsayılanlarını Yönet**' i seçin.
 1. **Güvenlik varsayılanlarını etkinleştir** ' i ayarla **Hayır** olarak ayarlayın.
-1. **Kaydet**’i seçin.
+1. **Kaydet**'i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

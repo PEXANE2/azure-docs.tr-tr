@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 06/04/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 87337cf22bdb388c5873a2811bb9913c3e7f4d4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89019785"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994970"
 ---
 # <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>Active Directory kimliklerini kullanarak Azure Bilişsel Arama sonuçlarını kırpmasına yönelik güvenlik filtreleri
 
@@ -31,7 +31,7 @@ Bu makale aşağıdaki görevleri kapsar:
 > [!NOTE]
 > Bu makaledeki örnek kod parçacıkları C# dilinde yazılmıştır. Tam kaynak kodunu [GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started)'da bulabilirsiniz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Bilişsel Arama dizininizin, belgeye okuma erişimi olan grup kimliklerinin listesini depolamak için bir [güvenlik alanı](search-security-trimming-for-azure-search.md) olmalıdır. Bu kullanım örneği, güvenli kılınabilir bir öğe (örneğin, bir okul uygulaması) ve bu öğeye kimlerin erişimi olduğunu belirten bir güvenlik alanı (Admissions personeli) arasında bire bir yazışma olduğunu varsayar.
 
@@ -43,7 +43,7 @@ Uygulamanız Ayrıca, aşağıdaki yordamda açıklandığı gibi AAD ile kayıt
 
 Bu adım, Kullanıcı ve grup hesaplarının oturum açma işlemlerini kabul etmek amacıyla uygulamanızı AAD ile tümleştirir. Kuruluşunuzda bir AAD yöneticisi değilseniz, aşağıdaki adımları gerçekleştirmek için [Yeni bir kiracı oluşturmanız](../active-directory/develop/quickstart-create-new-tenant.md) gerekebilir.
 
-1. [**Uygulama kayıt portalı**](https://apps.dev.microsoft.com)  >   **yakınsanmış**uygulama uygulama Ekle ' ye gidin  >  **Add an app**.
+1. [**Uygulama kayıt portalı**](https://apps.dev.microsoft.com)  >   **yakınsanmış** uygulama uygulama Ekle ' ye gidin  >  **Add an app**.
 2. Uygulamanız için bir ad girin ve ardından **Oluştur**' a tıklayın. 
 3. Uygulamalarım sayfasında yeni kayıtlı uygulamanızı seçin.
 4. Uygulama kaydı sayfasında > **platformlar**  >  **platformu Ekle**' yi seçin. **Web API**
