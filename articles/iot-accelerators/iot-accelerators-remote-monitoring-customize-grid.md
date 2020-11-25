@@ -10,11 +10,11 @@ ms.date: 10/04/2018
 ms.topic: conceptual
 ms.custom: devx-track-js
 ms.openlocfilehash: 7fc878e0c9e099b201264c1c3981c603668214d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318390"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017772"
 ---
 # <a name="add-a-custom-grid-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Uzaktan Izleme çözümü Hızlandırıcısı Web Kullanıcı arabirimine özel kılavuz ekleme
 
@@ -25,7 +25,7 @@ Bu makalede, uzaktan Izleme çözümü Hızlandırıcısı Web Kullanıcı arabi
 
 Bu makaledeki örnek kılavuz, hizmetin [Uzaktan izleme çözümü Hızlandırıcısı Web UI nasıl yapılır makalesine özel bir hizmet eklemesini](iot-accelerators-remote-monitoring-customize-service.md) sağlayan hizmetten alınan verileri gösterir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzundaki adımları tamamlayabilmeniz için, yerel geliştirme makinenizde aşağıdaki yazılımların yüklü olması gerekir:
 
@@ -193,7 +193,7 @@ Kullanıcının kılavuzda satırları seçmesini sağlamak için iki seçenek v
 
 Bir kullanıcının aynı anda birden çok satır üzerinde işlem yapması gerekiyorsa, satırlarda onay kutularını kullanın:
 
-1. Kılavuza sunulan **Columndefs** öğesine bir **checkboxcolumn** ekleyerek satırların sabit seçimini etkinleştirin. **Checkboxcolumn** , **/src/Components/Shared/pcsGrid/pcsGrid.js**tanımlanmıştır:
+1. Kılavuza sunulan **Columndefs** öğesine bir **checkboxcolumn** ekleyerek satırların sabit seçimini etkinleştirin. **Checkboxcolumn** , **/src/Components/Shared/pcsGrid/pcsGrid.js** tanımlanmıştır:
 
     ```js
     this.columnDefs = [
@@ -246,9 +246,9 @@ Bir kullanıcının aynı anda birden çok satır üzerinde işlem yapması gere
 
 ### <a name="soft-select-rows"></a>Yumuşak-seçme satırları
 
-Kullanıcının yalnızca tek bir satırda işlem yapması gerekiyorsa, **Columndefs**içindeki bir veya daha fazla sütun için bir geçici seçme bağlantısı yapılandırın.
+Kullanıcının yalnızca tek bir satırda işlem yapması gerekiyorsa, **Columndefs** içindeki bir veya daha fazla sütun için bir geçici seçme bağlantısı yapılandırın.
 
-1. **exampleGridConfig.js**, bir **Columndef**Için **Cellrendererframework** olarak **softselectlinkrenderer** ekleyin.
+1. **exampleGridConfig.js**, bir **Columndef** Için **Cellrendererframework** olarak **softselectlinkrenderer** ekleyin.
 
     ```js
     export const exampleColumnDefs = {

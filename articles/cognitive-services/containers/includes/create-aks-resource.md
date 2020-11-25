@@ -10,11 +10,11 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: e7f5b6f3685a94b5497784360f8f12b22fb95012
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87298722"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017885"
 ---
 ## <a name="create-an-azure-kubernetes-service-cluster-resource"></a>Azure Kubernetes hizmet kümesi kaynağı oluşturma
 
@@ -27,7 +27,7 @@ ms.locfileid: "87298722"
     |Abonelik|Uygun bir abonelik seçin.|
     |Kaynak grubu|Kullanılabilir kaynak grubunu seçin.|
     |Kubernetes küme adı|Bir ad girin (küçük harf).|
-    |Bölge|Yakındaki bir konumu seçin.|
+    |Region|Yakındaki bir konumu seçin.|
     |Kubernetes sürümü|Herhangi bir değer **(varsayılan)** olarak işaretlenir.|
     |DNS adı ön eki|Otomatik olarak oluşturulur, ancak geçersiz kılabilirsiniz.|
     |Düğüm boyutu|Standart DS2 v2:<br>`2 vCPUs`, `7 GB`|
@@ -39,10 +39,10 @@ ms.locfileid: "87298722"
 
     |Ayar|Değer|
     |--|--|
-    |HTTP uygulaması yönlendirme|Hayır|
+    |HTTP uygulaması yönlendirme|No|
     |Ağ yapılandırması|Temel|
 
-1. **Tümleştirmeler** sekmesinde, **kapsayıcı izlemenin** **etkin**olarak ayarlandığından emin olun ve **Log Analytics çalışma alanını** varsayılan değer olarak bırakın.
+1. **Tümleştirmeler** sekmesinde, **kapsayıcı izlemenin** **etkin** olarak ayarlandığından emin olun ve **Log Analytics çalışma alanını** varsayılan değer olarak bırakın.
 1. **Etiketler** sekmesinde, ad/değer çiftlerini şimdilik boş bırakın.
 1. **Gözden geçir ve Oluştur '** u seçin.
 1. Doğrulama geçtikten sonra **Oluştur**' u seçin.
