@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
 ms.openlocfilehash: d564b96807574dd7a275d6959aea085ad16e9e2e
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565951"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013420"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Hızlı Başlangıç: .NET SDK’sını kullanarak veri fabrikası ve işlem hattı oluşturma
 
@@ -48,7 +48,7 @@ Bu makaledeki izlenecek yol, Visual Studio 2019 kullanır. Visual Studio 2013, 2
 *Nasıl yapılır: Azure AD uygulaması ve kaynaklara erişebilen hizmet sorumlusu oluşturmak için portalı kullanma* bölümündeki bölümden, bu görevleri yapmak için yönergeleri izleyin:
 
 1. [Azure Active Directory uygulama oluşturma](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal)bölümünde, bu öğreticide oluşturmakta olduğunuz .NET uygulamasını temsil eden bir uygulama oluşturun. Oturum açma URL'si için, makalede gösterildiği gibi bir işlevsiz URL sağlayabilirsiniz (`https://contoso.org/exampleapp`).
-2. [Oturum açmak için değerleri Al](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)' da, **uygulama KIMLIĞI** ve **Kiracı kimliği** ' ni alın ve bu öğreticide daha sonra kullanacağınız bu değerleri unutmayın. 
+2. [Oturum açmak için değerleri Al](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)' da, **uygulama KIMLIĞI** ve **Kiracı kimliği**' ni alın ve bu öğreticide daha sonra kullanacağınız bu değerleri unutmayın. 
 3. [Sertifikalar ve gizlilikler](../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)' da, **kimlik doğrulama anahtarını** alın ve bu öğreticide daha sonra kullanacağınız bu değeri unutmayın.
 4. Uygulamayı [bir role ata](../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application)bölümünde, uygulamanın abonelikte veri fabrikaları oluşturabilmesi için uygulamayı abonelik düzeyinde **katkıda** bulunan rolüne atayın.
 
@@ -59,11 +59,11 @@ Ardından, Visual Studio 'da bir C# .NET konsol uygulaması oluşturun:
 1. **Visual Studio 'yu** başlatın.
 2. Başlangıç penceresinde **Yeni proje**  >  **konsol uygulaması (.NET Framework)** oluştur ' u seçin. .NET sürüm 4.5.2 veya üzeri gereklidir.
 3. **Proje adı** alanına **ADFv2QuickStart** girin.
-4. Projeyi oluşturmak için **Oluştur** 'u seçin.
+4. Projeyi oluşturmak için **Oluştur**'u seçin.
 
 ## <a name="install-nuget-packages"></a>NuGet paketlerini yükleme
 
-1. **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **Paket Yöneticisi konsolu** ' nu seçin.
+1. **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **Paket Yöneticisi konsolu**' nu seçin.
 2. **Paket Yöneticisi konsolu** bölmesinde, paketleri yüklemek için aşağıdaki komutları çalıştırın. Daha fazla bilgi için bkz. [Microsoft. Azure. Management. DataFactory NuGet paketi](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/).
 
     ```powershell
@@ -87,7 +87,7 @@ Ardından, Visual Studio 'da bir C# .NET konsol uygulaması oluşturun:
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     ```
 
-2. Aşağıdaki kodu, değişkenleri ayarlayan **Main** yöntemine ekleyin. Yer tutucuları kendi değerlerinizle değiştirin. Data Factory'nin kullanılabileceği Azure bölgelerinin bir listesi için bir sonraki sayfada ilgilendiğiniz bölgeleri seçin ve **Analytics** 'i genişleterek **Data Factory** : [Products available by region](https://azure.microsoft.com/global-infrastructure/services/) (Bölgeye göre kullanılabilir durumdaki ürünler) bölümünü bulun. Data Factory tarafından kullanılan veri depoları (Azure depolama, Azure SQL veritabanı ve daha fazlası) ve işlemler (HDInsight ve diğerleri), diğer bölgelerde olabilir.
+2. Aşağıdaki kodu, değişkenleri ayarlayan **Main** yöntemine ekleyin. Yer tutucuları kendi değerlerinizle değiştirin. Data Factory'nin kullanılabileceği Azure bölgelerinin bir listesi için bir sonraki sayfada ilgilendiğiniz bölgeleri seçin ve **Analytics**'i genişleterek **Data Factory**: [Products available by region](https://azure.microsoft.com/global-infrastructure/services/) (Bölgeye göre kullanılabilir durumdaki ürünler) bölümünü bulun. Data Factory tarafından kullanılan veri depoları (Azure depolama, Azure SQL veritabanı ve daha fazlası) ve işlemler (HDInsight ve diğerleri), diğer bölgelerde olabilir.
 
    ```csharp
    // Set variables
@@ -433,7 +433,7 @@ Press any key to exit...
 İşlem hattı, çıkış klasörünü **adföğreticisi** blob kapsayıcısında otomatik olarak oluşturur. Daha sonra, **emp.txt** dosyasını giriş klasöründen çıkış klasörüne kopyalar. 
 
 1. Azure portal, yukarıdaki [BLOB kapsayıcısı için bir giriş klasörü ve dosya ekleme](#add-an-input-folder-and-file-for-the-blob-container) bölümünde durduğunuza **adföğretici** kapsayıcı sayfasında, çıkış klasörünü görmek için **Yenile** ' yi seçin. 
-2. Klasör listesinde **Çıkış** ' ı seçin.
+2. Klasör listesinde **Çıkış**' ı seçin.
 3. **emp.txt** dosyasının output klasörüne kopyalandığını onaylayın. 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

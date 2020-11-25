@@ -8,11 +8,11 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
 ms.openlocfilehash: bff930153dc8941fbfe561edf963d5b1c1e7811f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708025"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014627"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı ile ilgili bağlantı sorunlarını giderme-tek sunucu
 
@@ -48,8 +48,8 @@ Uygulama, PostgreSQL için Azure veritabanı 'na kalıcı olarak bağlanamazsa, 
 
 * Sunucu güvenlik duvarı yapılandırması: PostgreSQL için Azure veritabanı sunucu güvenlik duvarının, proxy sunucuları ve ağ geçitleri dahil olmak üzere istemcinizden gelen bağlantılara izin verecek şekilde yapılandırıldığından emin olun.
 * İstemci güvenlik duvarı yapılandırması: istemcinizdeki güvenlik duvarı, veritabanı sunucunuza yönelik bağlantılara izin vermelidir. Bazı güvenlik duvarlarındaki PostgreSQL gibi uygulama adlarının yanı sıra, izin verilmeyen sunucunun IP adreslerine ve bağlantı noktalarına izin verilmesi gerekir.
-* Kullanıcı hatası: bağlantı dizesindeki sunucu adı veya Kullanıcı adında eksik * \@ ServerName* son eki gibi yanlış bağlantı parametreleri olabilir.
-* Hata _sunucusunun IPv6 bağlantılarına izin verecek şekilde yapılandırılmadığını_görürseniz, temel katmanın VNET hizmet uç noktalarını desteklemediğini unutmayın. Temel sunucuya bağlanmaya çalışan alt ağdan Microsoft. SQL uç noktasını kaldırmanız gerekir.
+* Kullanıcı hatası: bağlantı dizesindeki sunucu adı veya Kullanıcı adında eksik *\@ ServerName* son eki gibi yanlış bağlantı parametreleri olabilir.
+* Hata _sunucusunun IPv6 bağlantılarına izin verecek şekilde yapılandırılmadığını_ görürseniz, temel katmanın VNET hizmet uç noktalarını desteklemediğini unutmayın. Temel sunucuya bağlanmaya çalışan alt ağdan Microsoft. SQL uç noktasını kaldırmanız gerekir.
 * _SSL desteği hatada derlenmediği zaman "* * *"_ bağlantı hatasını görürseniz, PostgreSQL istemciniz SSL 'yi desteklemez demektir. Büyük olasılıkla, istemci tarafı libpq "--with-OpenSSL" bayrağıyla derlenmedi. Lütfen SSL desteği olan bir PostgreSQL istemcisiyle bağlanmayı deneyin. 
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Kalıcı bağlantı sorunlarını giderme adımları

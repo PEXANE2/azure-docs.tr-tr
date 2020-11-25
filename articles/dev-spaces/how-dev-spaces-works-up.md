@@ -6,11 +6,11 @@ ms.topic: conceptual
 description: Kodunuzu Azure Kubernetes hizmetinde Azure Dev Spaces ile çalıştırma işlemlerini açıklar
 keywords: azds. YAML, Azure Dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar
 ms.openlocfilehash: 1cace325f9415d46210636e5c04cc2d75589cc11
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975476"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014440"
 ---
 # <a name="how-running-your-code-with-azure-dev-spaces-works"></a>Kodunuzu Azure Dev Spaces çalışır şekilde çalıştırma
 
@@ -64,13 +64,13 @@ Bir hizmet çalışırken, proje kaynak dosyalarından herhangi biri değiştiğ
 
 HTML, CSS ve cshtml dosyaları gibi statik varlıklar olan bazı proje dosyaları, hiçbir şeyi yeniden başlatmadan doğrudan uygulamanın kapsayıcısında güncelleştirilemeyebilir. Statik bir varlık değişirse, yeni dosya dev alanıyla eşitlenir ve ardından çalışan kapsayıcı tarafından kullanılır.
 
-Kaynak kodu veya uygulama yapılandırma dosyaları gibi dosyalardaki değişiklikler, uygulamanın çalışan kapsayıcı içindeki işlemi yeniden başlatılarak uygulanabilir. Bu dosyalar eşitlendikten sonra, *devhostagent* işlemi kullanılarak çalışan kapsayıcı içinde uygulamanın işlemi yeniden başlatılır. Başlangıçta uygulamanın kapsayıcısını oluştururken denetleyici, uygulama için başlatma komutunun yerine *devhostagent*adlı farklı bir işlem koyar. Uygulamanın gerçek işlemi daha sonra *devhostagent*altında bir alt işlem olarak çalıştırılır ve çıkışı *devhostagent*'ın çıkışı kullanılarak gönderilir. *Devhostagent* Işlemi de dev alanlarının bir parçasıdır ve çalışan kapsayıcıda geliştirme alanları adına komutları yürütebilir. Yeniden başlatma işlemi gerçekleştirirken *devhostagent*:
+Kaynak kodu veya uygulama yapılandırma dosyaları gibi dosyalardaki değişiklikler, uygulamanın çalışan kapsayıcı içindeki işlemi yeniden başlatılarak uygulanabilir. Bu dosyalar eşitlendikten sonra, *devhostagent* işlemi kullanılarak çalışan kapsayıcı içinde uygulamanın işlemi yeniden başlatılır. Başlangıçta uygulamanın kapsayıcısını oluştururken denetleyici, uygulama için başlatma komutunun yerine *devhostagent* adlı farklı bir işlem koyar. Uygulamanın gerçek işlemi daha sonra *devhostagent* altında bir alt işlem olarak çalıştırılır ve çıkışı *devhostagent*'ın çıkışı kullanılarak gönderilir. *Devhostagent* Işlemi de dev alanlarının bir parçasıdır ve çalışan kapsayıcıda geliştirme alanları adına komutları yürütebilir. Yeniden başlatma işlemi gerçekleştirirken *devhostagent*:
 
 * Uygulamayla ilişkili geçerli işlem veya işlemleri durdur
 * Uygulamayı yeniden oluşturur
 * Uygulamayla ilişkili işlem veya işlemleri yeniden başlatır
 
-*Devhostagent* 'ın önceki adımları yürütme yöntemi [' de `azds.yaml` yapılandırılır ][azds-yaml-section].
+*Devhostagent* 'ın önceki adımları yürütme yöntemi [' de `azds.yaml` yapılandırılır][azds-yaml-section].
 
 Dockerfiles, csproj dosyaları veya hele grafiğinin herhangi bir bölümü gibi proje dosyalarına yapılan güncelleştirmeler, uygulamanın kapsayıcısının yeniden oluşturulmasını ve dağıtılmasını gerektirir. Bu dosyalardan biri dev alanı ile eşitlendiğinde, denetleyici [HELI Upgrade][helm-upgrade] komutunu çalıştırır ve uygulamanın kapsayıcısı yeniden oluşturulur ve yeniden dağıtılır.
 
@@ -128,15 +128,15 @@ Hele grafiklerini yüklerken Azure Dev Spaces Helu grafiğindeki değerleri geç
 
 *Install. Values* özelliğini kullanarak, Held grafiğinde değiştirilmesini istediğiniz değerleri tanımlayan bir veya daha fazla dosyayı listeleyebilirsiniz. Örneğin, uygulamanızı bir geliştirme alanında çalıştırırken bir ana bilgisayar adı veya veritabanı yapılandırması isterseniz, bu geçersiz kılma işlevini kullanabilirsiniz. Ayrıca *, bir de* ekleyebilirsiniz. dosya adlarından sonuna kadar isteğe bağlı olarak ayarlayın.
 
-*Install. set* özelliği, hele grafiğinde değiştirilmesini istediğiniz bir veya daha fazla değeri yapılandırmanıza olanak tanır. *Install. set* içinde yapılandırılan tüm değerler, *Install. Values*içinde listelenen dosyalarda yapılandırılan değerleri geçersiz kılar. *Install. set* altındaki özellikler, Held grafiğindeki değerlere bağımlıdır ve oluşturulan Held grafiğine bağlı olarak farklı olabilir.
+*Install. set* özelliği, hele grafiğinde değiştirilmesini istediğiniz bir veya daha fazla değeri yapılandırmanıza olanak tanır. *Install. set* içinde yapılandırılan tüm değerler, *Install. Values* içinde listelenen dosyalarda yapılandırılan değerleri geçersiz kılar. *Install. set* altındaki özellikler, Held grafiğindeki değerlere bağımlıdır ve oluşturulan Held grafiğine bağlı olarak farklı olabilir.
 
 Yukarıdaki örnekte, *Install. set. replicaCount* özelliği denetleyiciye geliştirme alanınızda uygulamanızın kaç örnek çalıştırılacağını söyler. Senaryonuza bağlı olarak, bu değeri artırabilirsiniz, ancak uygulamanızın Pod öğesine bir hata ayıklayıcı ekleme etkisi olur. Daha fazla bilgi için bkz. [sorun giderme makalesi][troubleshooting].
 
-Oluşturulan HELI grafiğinde kapsayıcı görüntüsü *{{olarak ayarlanır. Values. Image. Repository}}: {{. Values. Image. Tag}}*. `azds.yaml`Dosya, *install. set. Image. Tag* özelliğini varsayılan olarak *$ (Tag)* olarak tanımlar; bu, {{için değer olarak kullanılır *. Values. Image. Tag}}*. *Install. set. Image. Tag* özelliğini bu şekilde ayarlayarak, uygulamanızın kapsayıcı görüntüsünün Azure dev Spaces çalıştırılırken farklı bir şekilde etiketlenmesine izin verir. Bu özel durumda, görüntü şöyle etiketlenebilir * \<value from image.repository> : $ (etiket)*. Geliştirme alanları tanıması ve AKS kümesindeki kapsayıcıyı bulmak için, *$ (Tag)* değişkenini   *Install. set. image. Tag* değeri olarak kullanmanız gerekir.
+Oluşturulan HELI grafiğinde kapsayıcı görüntüsü *{{olarak ayarlanır. Values. Image. Repository}}: {{. Values. Image. Tag}}*. `azds.yaml`Dosya, *install. set. Image. Tag* özelliğini varsayılan olarak *$ (Tag)* olarak tanımlar; bu, {{için değer olarak kullanılır *. Values. Image. Tag}}*. *Install. set. Image. Tag* özelliğini bu şekilde ayarlayarak, uygulamanızın kapsayıcı görüntüsünün Azure dev Spaces çalıştırılırken farklı bir şekilde etiketlenmesine izin verir. Bu özel durumda, görüntü şöyle etiketlenebilir *\<value from image.repository> : $ (etiket)*. Geliştirme alanları tanıması ve AKS kümesindeki kapsayıcıyı bulmak için, *$ (Tag)* değişkenini   *Install. set. image. Tag* değeri olarak kullanmanız gerekir.
 
-Yukarıdaki örnekte `azds.yaml` *Install. set. ınress. Konakları*tanımlanmaktadır. *Install. set. ingress. hosts* özelliği, genel uç noktalar için bir ana bilgisayar adı biçimi tanımlar. Bu özellik ayrıca, denetleyici tarafından belirtilen değerler olan *$ (Spaceprefix)*, *$ (rootspaceprefix)* ve *$ (hostsuffix*) kullanır.
+Yukarıdaki örnekte `azds.yaml` *Install. set. ınress. Konakları* tanımlanmaktadır. *Install. set. ingress. hosts* özelliği, genel uç noktalar için bir ana bilgisayar adı biçimi tanımlar. Bu özellik ayrıca, denetleyici tarafından belirtilen değerler olan *$ (Spaceprefix)*, *$ (rootspaceprefix)* ve *$ (hostsuffix*) kullanır.
 
-*$ (Spaceprefix)* , *spacename. s*biçimini alan alt dev alanının adıdır. *$ (Rootspaceprefix)* , üst alanın adıdır. Örneğin, *azureuser* *varsayılan*bir alt alandır, *$ (rootspaceprefix)* değeri *varsayılandır* ve *$ (spaceprefix)* değeri *azureuser. s*' dir. Boşluk bir alt boşluk değilse, *$ (Spaceprefix)* boştur. Örneğin, *varsayılan* alanın üst alanı yoksa, *$ (rootspaceprefix)* değeri *varsayılandır* ve *$ (spaceprefix)* değeri boştur. *$ (Hostsuffix)* , aks kümenizde çalışan Azure dev Spaces giriş denetleyicisine işaret eden bir DNS son ekidir. Bu DNS son eki, örneğin bir joker karakter DNS girdisine karşılık gelir * \* . Azure Dev Spaces denetleyicisi AKS kümenize eklendiğinde oluşturulan RANDOM_VALUE. EUS. azds. IO*.
+*$ (Spaceprefix)* , *spacename. s* biçimini alan alt dev alanının adıdır. *$ (Rootspaceprefix)* , üst alanın adıdır. Örneğin, *azureuser* *varsayılan* bir alt alandır, *$ (rootspaceprefix)* değeri *varsayılandır* ve *$ (spaceprefix)* değeri *azureuser. s*' dir. Boşluk bir alt boşluk değilse, *$ (Spaceprefix)* boştur. Örneğin, *varsayılan* alanın üst alanı yoksa, *$ (rootspaceprefix)* değeri *varsayılandır* ve *$ (spaceprefix)* değeri boştur. *$ (Hostsuffix)* , aks kümenizde çalışan Azure dev Spaces giriş denetleyicisine işaret eden bir DNS son ekidir. Bu DNS son eki, örneğin bir joker karakter DNS girdisine karşılık gelir *\* . Azure Dev Spaces denetleyicisi AKS kümenize eklendiğinde oluşturulan RANDOM_VALUE. EUS. azds. IO*.
 
 Yukarıdaki `azds.yaml` dosyada *Install. set. ınress. konaklarına* , uygulamanızın ana bilgisayar adını değiştirme de güncelleştirebilirsiniz. Örneğin, uygulamanızın ana bilgisayar adını *$ (Spaceprefix) $ (rootSpacePrefix) webön uç $ (hostSuffix* ) $ ( *rootspaceönek) Web $ (hostsuffix*) ile $ (hostsuffix) olarak basitleştirecek şekilde basitleştirmek istiyorsanız.
 

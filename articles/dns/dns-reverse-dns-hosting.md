@@ -8,11 +8,11 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
 ms.openlocfilehash: 6a0aebc727233cdd838f3e1bf8eeb5cd247b9836
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489685"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014032"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>Azure DNS 'de ters DNS arama bölgeleri barındırma
 
@@ -66,7 +66,7 @@ New-AzDnsZone -Name 2.0.192.in-addr.arpa -ResourceGroupName MyResourceGroup
 azure network dns zone create MyResourceGroup 2.0.192.in-addr.arpa
 ```
 
-#### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure CLI’si
 
 ```azurecli
 az network dns zone create -g MyResourceGroup -n 2.0.192.in-addr.arpa
@@ -97,7 +97,7 @@ New-AzDnsZone -Name 0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2.ip6.arpa -ResourceGroupName 
 azure network dns zone create MyResourceGroup 0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2.ip6.arpa
 ```
 
-#### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure CLI’si
 
 ```azurecli
 az network dns zone create -g MyResourceGroup -n 0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2.ip6.arpa
@@ -122,8 +122,8 @@ Aşağıdaki örnek, Azure DNS bir ters DNS bölgesinde bir PTR kaydı oluşturm
 1. Bir PTR kaydı için kayıt kümesinin adının ters sırada IPv4 adresinin geri kalanı olması gerekir. 
 
    Bu örnekte, ilk üç sekizli zaten bölge adının (. 2.0.192) bir parçası olarak doldurulmuştur. Bu nedenle, **ad** kutusunda yalnızca son sekizli sağlanır. Örneğin, IP adresi 192.0.2.15 olan bir kaynak için kayıt kümesine **15** adını yazabilirsiniz.  
-1. **Tür**için **PTR**' yi seçin.  
-1. **Etki alanı adı**IÇIN, IP 'yi kullanan kaynağın tam etki alanı adını (FQDN) girin.
+1. **Tür** için **PTR**' yi seçin.  
+1. **Etki alanı adı** IÇIN, IP 'yi kullanan kaynağın tam etki alanı adını (FQDN) girin.
 1. DNS kaydını oluşturmak için bölmenin altındaki **Tamam ' ı** seçin.
 
    !["Kayıt kümesi Ekle" bölmesi, kutular doldurulmuş](./media/dns-reverse-dns-hosting/figure5.png)
@@ -141,7 +141,7 @@ New-AzDnsRecordSet -Name 15 -RecordType PTR -ZoneName 2.0.192.in-addr.arpa -Reso
 azure network dns record-set add-record MyResourceGroup 2.0.192.in-addr.arpa 15 PTR --ptrdname dc1.contoso.com  
 ```
 
-#### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure CLI’si
 
 ```azurecli
 az network dns record-set ptr add-record -g MyResourceGroup -z 2.0.192.in-addr.arpa -n 15 --ptrdname dc1.contoso.com
@@ -158,8 +158,8 @@ Aşağıdaki örnek, yeni PTR kaydı oluşturma sürecinde size yol gösterir. D
 2. Bir PTR kaydı için kayıt kümesinin adının ters sırada IPv6 adresinin geri kalanı olması gerekir. Sıfır sıkıştırma içermemelidir. 
 
    Bu örnekte, IPv6 'nın ilk 64 biti zaten bölge adının bir parçası olarak doldurulmuştur (0.0.0.0. c. d. b. a. 8. b. d. 0.1.0.0.2. ip6. arpa). Bu nedenle, **ad** kutusunda yalnızca son 64 bitleri sağlanır. IP adresinin son 64 bitleri, her bir onaltılık sayı arasında sınırlayıcı olarak bir noktayla birlikte ters sırada girilir. Örneğin, IP adresi 2001:0db8: abdc: 0000: f524:10bc: 1af9:405e olan bir kaynak için kayıt ayarlamış **e. 5.0.4.9. f. a. 1. c. b. 0.1.4.2.5. f** adını yazabilirsiniz.  
-3. **Tür**için **PTR**' yi seçin.  
-4. **Etki alanı adı**için IP 'yi kullanan kaynağın FQDN 'sini girin.
+3. **Tür** için **PTR**' yi seçin.  
+4. **Etki alanı adı** için IP 'yi kullanan kaynağın FQDN 'sini girin.
 5. DNS kaydını oluşturmak için bölmenin altındaki **Tamam ' ı** seçin.
 
 ![Tür alanındaki değere işaret eden bir ok ile içeren "kayıt kümesi Ekle" bölmesini gösteren ekran görüntüsü.](./media/dns-reverse-dns-hosting/figure7.png)
@@ -178,7 +178,7 @@ New-AzDnsRecordSet -Name "e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f" -RecordType PTR -Zone
 azure network dns record-set add-record MyResourceGroup 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f PTR --ptrdname dc2.contoso.com 
 ```
  
-#### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure CLI’si
 
 ```azurecli
 az network dns record-set ptr add-record -g MyResourceGroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -n e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f --ptrdname dc2.contoso.com
@@ -208,7 +208,7 @@ Get-AzDnsRecordSet -ZoneName 2.0.192.in-addr.arpa -ResourceGroupName MyResourceG
 azure network dns record-set list MyResourceGroup 2.0.192.in-addr.arpa
 ```
 
-#### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure CLI’si
 
 ```azurecli
 az network dns record-set list -g MyResourceGroup -z 2.0.192.in-addr.arpa
@@ -234,7 +234,7 @@ Get-AzDnsRecordSet -ZoneName 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -ResourceG
 azure network dns record-set list MyResourceGroup 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa
 ```
 
-#### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure CLI’si
 
 ```azurecli
 az network dns record-set list -g MyResourceGroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa

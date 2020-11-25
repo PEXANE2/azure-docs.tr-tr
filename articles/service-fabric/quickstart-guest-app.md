@@ -5,17 +5,17 @@ ms.topic: conceptual
 ms.date: 12/06/2017
 ms.custom: devx-track-js
 ms.openlocfilehash: dfd1fe9db54925bc17a53a7686fa34d5ea53cd5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614113"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013607"
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Node.js uygulamasını Azure Service Fabric'te barındırma
 
 Bu hızlı başlangıç, mevcut uygulamayı (bu örnekte Node.js) Azure üzerinde çalışan bir Service Fabric kümesine dağıtmanıza yardımcı olur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce [geliştirme ortamınızı ayarladığınızdan](service-fabric-get-started.md) emin olun. Service Fabric SDK ve Visual Studio 2019 veya 2015 ' nin yüklenmesini içerir.
 
@@ -47,7 +47,7 @@ Hizmeti **MyGuestService** olarak adlandırın ve sağdaki seçenekleri aşağı
 | Kod Paketi Klasörü       | _&lt;Node.js uygulamanızın bulunduğu klasör&gt;_ |
 | Kod Paketi Davranışı     | Klasör içeriğini projeye kopyala |
 | Program                   | node.exe |
-| Bağımsız değişkenler                 | server.js |
+| Arguments                 | server.js |
 | Çalışma Klasörü            | CodePackage |
 
 **Tamam**'a basın.
@@ -86,7 +86,7 @@ Projedeki **ServiceManifest.xml** dosyasını açın. Bildirimin en altında, `<
   </Resources>
 ```
 
-## <a name="deploy-to-azure"></a>Azure’a dağıtma
+## <a name="deploy-to-azure"></a>Azure’a dağıtın
 
 **F5** tuşuna basın ve projeyi çalıştırırsanız, bu, yerel kümeye dağıtılır. Ama biz bunun yerine Azure'a dağıtalım.
 
@@ -98,13 +98,13 @@ Projeye sağ tıklayın ve Azure yayımlama iletişim kutusunu açan **Yayımla.
 
 Daha önce yapmadıysanız, dağıtımın yapılacağı Azure hesabını seçin. Henüz hesabınız yoksa, [bir hesap için kaydolun][create-account].
 
-**Bağlantı Uç Noktası**'nın altında, dağıtımın yapılacağı Service Fabric kümesini seçin. Bir tane yoksa, Azure portal web tarayıcısı penceresini açan ** &lt; Yeni küme oluştur. &gt; ..** öğesini seçin. Daha fazla bilgi için bkz. [Portalda küme oluşturma](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal). 
+**Bağlantı Uç Noktası**'nın altında, dağıtımın yapılacağı Service Fabric kümesini seçin. Bir tane yoksa, Azure portal web tarayıcısı penceresini açan **&lt; Yeni küme oluştur. &gt; ..** öğesini seçin. Daha fazla bilgi için bkz. [Portalda küme oluşturma](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal). 
 
 Service Fabric kümesini oluştururken, **Özel uç noktalar** ayarını **80** olarak belirleyin.
 
 ![Uç noktayla Service Fabric düğüm türü yapılandırması][custom-endpoint]
 
-Yeni Service Fabric kümesi oluşturma işleminin tamamlanması biraz zaman alır. Oluşturulduktan sonra Yayımla iletişim kutusuna dönün ve ** &lt; Yenile &gt; **' yi seçin. Yeni küme, açılan kutuna listelenir; yeni kümeyi seçin.
+Yeni Service Fabric kümesi oluşturma işleminin tamamlanması biraz zaman alır. Oluşturulduktan sonra Yayımla iletişim kutusuna dönün ve **&lt; Yenile &gt;**' yi seçin. Yeni küme, açılan kutuna listelenir; yeni kümeyi seçin.
 
 **Yayımla**'ya basın ve dağıtımın bitmesini bekleyin.
 

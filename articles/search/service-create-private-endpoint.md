@@ -9,11 +9,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/19/2020
 ms.openlocfilehash: 043020abd44bc1f8e671cf386149d6a818136de9
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94700163"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014372"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Azure Bilişsel Arama güvenli bağlantısı için özel uç nokta oluşturma
 
@@ -46,7 +46,7 @@ Bu bölümde, arama hizmetinizin özel uç noktasına erişmek için kullanılac
     | ------- | ----- |
     | Abonelik | Aboneliğinizi seçin|
     | Kaynak grubu | **Yeni oluştur**' u seçin, *Myresourcegroup* yazın ve **Tamam** ' ı seçin. |
-    | Ad | *MyVirtualNetwork* girin |
+    | Name | *MyVirtualNetwork* girin |
     | Region | İstediğiniz bölgeyi seçin |
     |||
 

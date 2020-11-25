@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 7b586edd7adce8bcea61419005a3ce8cfc814fb3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86254954"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013573"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Azure Active Directory B2C'yi kullanarak Azure API Management'ta geliştirici hesaplarını yetkilendirme
 
@@ -38,9 +38,9 @@ Azure Active Directory B2C, tüketiciye yönelik Web ve mobil uygulamalar için 
    > [!NOTE]
    > Henüz bir API Management hizmet örneği oluşturmadıysanız, [Azure ile çalışmaya başlama API Management öğreticisinde][Get started with Azure API Management] [API Management hizmet örneği oluşturma][Create an API Management service instance] bölümüne bakın.
 
-1. **Kimlikler**altında. Üstteki **+ Ekle** ' ye tıklayın.
+1. **Kimlikler** altında. Üstteki **+ Ekle** ' ye tıklayın.
 
-   Sağ tarafta **kimlik sağlayıcı ekle** bölmesi görünür. **Azure Active Directory B2C**seçin.
+   Sağ tarafta **kimlik sağlayıcı ekle** bölmesi görünür. **Azure Active Directory B2C** seçin.
     
    ![Kimlik sağlayıcısı olarak AAD B2C ekleme][api-management-howto-add-b2c-identity-provider]
 
@@ -56,11 +56,11 @@ Azure Active Directory B2C, tüketiciye yönelik Web ve mobil uygulamalar için 
 
    ![Yeni bir uygulama kaydet 2][api-management-howto-aad-b2c-add-button]
 
-1. **Yeni uygulama** dikey penceresinde uygulama için bir ad girin. **Web uygulaması/Web API 'si**altında **Evet** ' i seçin ve **örtük akışa izin ver**altında **Evet** ' i seçin Ardından adım 3 ' te kopyalanmış **yeniden YÖNLENDIRME URL** 'sini **yanıt URL 'si** metin kutusuna yapıştırın.
+1. **Yeni uygulama** dikey penceresinde uygulama için bir ad girin. **Web uygulaması/Web API 'si** altında **Evet** ' i seçin ve **örtük akışa izin ver** altında **Evet** ' i seçin Ardından adım 3 ' te kopyalanmış **yeniden YÖNLENDIRME URL** 'sini **yanıt URL 'si** metin kutusuna yapıştırın.
 
    ![Yeni bir uygulama kaydetme 3][api-management-howto-aad-b2c-app-details]
 
-1. Yeni geliştirici portalını kullanıyorsanız (eski geliştirici portalını değil), **verilen adı**, **Soyadı**ve **kullanıcının nesne kimliğini** uygulama taleplerine ekleyin.
+1. Yeni geliştirici portalını kullanıyorsanız (eski geliştirici portalını değil), **verilen adı**, **Soyadı** ve **kullanıcının nesne kimliğini** uygulama taleplerine ekleyin.
 
     ![Uygulama talepleri](./media/api-management-howto-aad-b2c/api-management-application-claims.png)
 
@@ -74,17 +74,17 @@ Azure Active Directory B2C, tüketiciye yönelik Web ve mobil uygulamalar için 
 
 1. API Management **kimlik sağlayıcısı ekle** bölmesine dönün ve kimliği **istemci kimliği** metin kutusuna yapıştırın.
     
-1.  B2C uygulaması kaydına geri dönün, **anahtarlar** düğmesine tıklayın ve ardından **anahtar oluştur**' a tıklayın. Yapılandırmayı kaydetmek ve **uygulama anahtarını**göstermek için **Kaydet** ' e tıklayın. Anahtarı panoya kopyalayın.
+1.  B2C uygulaması kaydına geri dönün, **anahtarlar** düğmesine tıklayın ve ardından **anahtar oluştur**' a tıklayın. Yapılandırmayı kaydetmek ve **uygulama anahtarını** göstermek için **Kaydet** ' e tıklayın. Anahtarı panoya kopyalayın.
 
     ![Uygulama anahtarı 1][api-management-howto-aad-b2c-app-key]
 
 1.  API Management **kimlik sağlayıcısı ekle** bölmesine dönün ve anahtarı **istemci gizli** metin kutusuna yapıştırın.
     
-1.  **Oturum açma kiracısında**Azure Active Directory B2C kiracının etki alanı adını belirtin.
+1.  **Oturum açma kiracısında** Azure Active Directory B2C kiracının etki alanı adını belirtin.
 
-1.  **Yetkili** alanı, kullanılacak Azure AD B2C oturum açma URL 'sini denetlemenize olanak tanır. Değeri **<your_b2c_tenant_name>. b2clogin.com**olarak ayarlayın.
+1.  **Yetkili** alanı, kullanılacak Azure AD B2C oturum açma URL 'sini denetlemenize olanak tanır. Değeri **<your_b2c_tenant_name>. b2clogin.com** olarak ayarlayın.
 
-1. B2C kiracı ilkelerindeki **kaydolma ilkesini** ve **oturum açma ilkesini** belirtin. İsteğe bağlı olarak, **Profil Düzenle ilke** ve **parola sıfırlama ilkesini**de sağlayabilirsiniz.
+1. B2C kiracı ilkelerindeki **kaydolma ilkesini** ve **oturum açma ilkesini** belirtin. İsteğe bağlı olarak, **Profil Düzenle ilke** ve **parola sıfırlama ilkesini** de sağlayabilirsiniz.
 
 1. İstenen yapılandırmayı belirledikten sonra **Kaydet**' e tıklayın.
 
@@ -109,7 +109,7 @@ Yeni bir Kullanıcı AAD B2C her oturum açtığında yeni bir hesap otomatik ol
 
    ![Geliştirici portalı 1][api-management-howto-aad-b2c-dev-portal]
 
-2. **Azure Active Directory B2C**kaydolmak için seçin.
+2. **Azure Active Directory B2C** kaydolmak için seçin.
 
    ![Geliştirici portalı 2][api-management-howto-aad-b2c-dev-portal-b2c-button]
 

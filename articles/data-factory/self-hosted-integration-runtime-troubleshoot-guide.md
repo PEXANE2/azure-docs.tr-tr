@@ -2,17 +2,17 @@
 title: Azure Data Factory içinde şirket içinde barındırılan tümleştirme çalışma zamanı sorunlarını giderme
 description: Azure Data Factory ' de şirket içinde barındırılan tümleştirme çalışma zamanı sorunlarını giderme hakkında bilgi edinin.
 services: data-factory
-author: nabhishek
+author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 11/17/2020
 ms.author: lle
-ms.openlocfilehash: e3a517497a480995b8ce63d36d0427e3bfadfe43
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 93c35828444ec93a974769ed3a2f1981c0ec4368
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844145"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96013469"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı sorunlarını giderme
 
@@ -320,7 +320,7 @@ Hata, *UnauthorizedAccessException*' dan sonra gösteriyorsa, aşağıdaki yöne
         1. Temizle geçerli şirket içinde barındırılan IR 'yi kaldırın.
         1. Şirket içinde barındırılan IR bitlerini yükler.
         1. Hizmet hesabını değiştirmek için aşağıdaki yönergeleri izleyin: 
-            1. Selfhosted IR yükleme klasörüne gidin, klasöre geçin: *Microsoft Integration Runtime\4.0\Shared*.
+            1. Şirket içinde barındırılan IR yükleme klasörüne gidin, klasöre geçin: *Microsoft Integration Runtime\4.0\Shared*.
             1. Yükseltilmiş ayrıcalık kullanarak bir komut satırı başlatın. *\<user>* Ve *\<password>* kendi Kullanıcı adınızı ve parolanızı değiştirin ve ardından aşağıdaki komutu çalıştırın:
                        
                 ```
@@ -731,7 +731,7 @@ Bu sorunun iki olası nedeni:
 - ADF hizmeti sunucu sertifikasının kök CA 'sı, SHıR 'nin yüklü olduğu makinede güvenilir değil. 
 - Ortamınızda proxy kullanıyorsunuz ve ADF hizmetinin sunucu sertifikası ara sunucu tarafından değiştirilirken, değiştirilmiş sunucu sertifikasına, SHıR 'nin yüklendiği makine tarafından güvenilmez.
 
-#### <a name="solution"></a>Çözüm
+#### <a name="resolution"></a>Çözüm
 
 - 1. nedenden dolayı, ADF sunucu sertifikasının ve Sertifika zincirinin, SHıR 'nin yüklü olduğu makine tarafından güvenilir olduğundan emin olun.
 - 2. nedenden dolayı, SHıR makinesindeki değiştirilmiş kök CA 'ya güvenin veya proxy 'yi ADF sunucu sertifikasını değiştirmek üzere yapılandırın.
@@ -744,6 +744,7 @@ DigiCert tarafından imzalanmış yeni bir SSL sertifikası kullanıma sunuyoruz
   ![DigiCert genel kök G2](media/self-hosted-integration-runtime-troubleshoot-guide/trusted-root-ca-check.png)
 
 Aksi takdirde, [buradan](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt )indirin. 
+
 
 ## <a name="self-hosted-ir-sharing"></a>Şirket içinde barındırılan IR paylaşımı
 

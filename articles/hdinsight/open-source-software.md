@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: fe9ccc50d6196997863fbf228fbb76913a0d0330
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534388"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013879"
 ---
 # <a name="open-source-software-support-in-azure-hdinsight"></a>Azure HDInsight 'ta açık kaynaklı yazılım desteği
 
@@ -48,7 +48,7 @@ Kümenin bir kullanıcısı olarak, kuruluşunuzda bulunan veya sizin tarafını
 
 HDInsight hizmeti özel bileşenleri kullanmak için çeşitli yollar sağlar. Aynı destek düzeyi, bir bileşenin küme üzerinde nasıl kullanıldığını veya yüklendiğine bakılmaksızın geçerlidir. Aşağıdaki tabloda, HDInsight kümelerinde özel bileşenlerin kullanıldığı en yaygın yollar açıklanmaktadır:
 
-|Kullanım |Açıklama |
+|Kullanım |Description |
 |---|---|
 |İş gönderme|Hadoop veya özel bileşenleri çalıştıran veya kullanan diğer iş türleri de kümeye gönderilebilir.|
 |Küme özelleştirmesi|Küme oluşturma sırasında, küme düğümlerinde yüklü ek ayarları ve özel bileşenleri belirtebilirsiniz.|

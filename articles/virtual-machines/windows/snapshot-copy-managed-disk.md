@@ -10,11 +10,11 @@ ms.date: 10/08/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: c0fddca70ca09f0a3abb3c84672e20a42551ecd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89322322"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014321"
 ---
 # <a name="create-a-snapshot-using-the-portal-or-powershell"></a>Portal veya PowerShell kullanarak anlık görüntü oluşturma
 
@@ -22,16 +22,16 @@ Anlık görüntü, bir sanal sabit sürücünün (VHD) tam, salt okunurdur bir k
 
 Yeni bir VM oluşturmak için anlık görüntüyü kullanacaksanız, devam eden işlemlerin tümünü temizlemek için anlık görüntüyü almadan önce VM 'yi düzgün bir şekilde kapatmanız önerilir.
 
-## <a name="use-the-azure-portal"></a>Azure portalını kullanma 
+## <a name="use-the-azure-portal"></a>Azure portalı kullanma 
 
 Anlık görüntü oluşturmak için aşağıdaki adımları izleyin: 
 1.  [Azure Portal](https://portal.azure.com) **kaynak oluştur**' u seçin.
-2. **Anlık görüntü**arayın ve seçin.
+2. **Anlık görüntü** arayın ve seçin.
 3. **Anlık görüntü** penceresinde **Oluştur**' u seçin. **Anlık görüntü oluştur** penceresi görüntülenir.
 4. Anlık görüntü için bir **ad** girin.
 5. Mevcut bir kaynak grubunu seçin veya yeni bir [kaynak grubu](../../azure-resource-manager/management/overview.md#resource-groups) adı girin. 
 6. Azure veri merkezi **Konumu** seçin.  
-7. **Kaynak disk**için, anlık görüntü yapılacak yönetilen diski seçin.
+7. **Kaynak disk** için, anlık görüntü yapılacak yönetilen diski seçin.
 8. Anlık görüntüyü depolamak için kullanılacak **hesap türünü** seçin. Anlık görüntünün yüksek performanslı bir diskte depolanması gerekmiyorsa **Standard_HDD**' yi seçin.
 9. **Oluştur**’u seçin.
 

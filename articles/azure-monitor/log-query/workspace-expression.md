@@ -7,22 +7,22 @@ author: bwren
 ms.author: bwren
 ms.date: 09/10/2018
 ms.openlocfilehash: 255888acf5da6149b6a964b23ed038b99715481c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75364960"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014049"
 ---
 # <a name="workspace-expression-in-azure-monitor-log-query"></a>Azure Izleyici günlük sorgusunda Workspace () ifadesi
 
 Bu `workspace` ifade, bir Azure izleyici sorgusunda aynı kaynak grubundaki belirli bir çalışma alanından, başka bir kaynak grubunda veya başka bir abonelikte veri almak için kullanılır. Bu, günlük verilerini bir Application Insights sorgusuna eklemek ve günlük sorgusunda birden çok çalışma alanındaki verileri sorgulamak için yararlıdır.
 
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 `workspace(`*Tanımlayıcısını*`)`
 
-## <a name="arguments"></a>Bağımsız değişkenler
+## <a name="arguments"></a>Arguments
 
 - *Tanımlayıcı*: aşağıdaki tablodaki biçimlerden birini kullanarak çalışma alanını tanımlar.
 

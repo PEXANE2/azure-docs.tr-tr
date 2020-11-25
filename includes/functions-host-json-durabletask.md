@@ -7,14 +7,14 @@ ms.topic: include
 ms.date: 03/14/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 24dc2cad8d299d150adddc03de5e9006fc831fc6
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 6a862a051d0040ac99746d81f10ae63d5af7545f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061667"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013741"
 ---
-[Dayanıklı işlevler](../articles/azure-functions/durable-functions-overview.md)için yapılandırma ayarları.
+[Dayanıklı işlevler](../articles/azure-functions/durable/durable-functions-overview.md)için yapılandırma ayarları.
 
 > [!NOTE]
 > Tüm Dayanıklı İşlevler ana sürümleri Azure Işlevleri çalışma zamanının tüm sürümlerinde desteklenir. Ancak, yapılandırmadaki host.jsşeması, Azure Işlevleri çalışma zamanının sürümüne ve kullandığınız Dayanıklı İşlevler uzantı sürümüne bağlı olarak biraz farklıdır. Aşağıdaki örnekler, 2,0 ve 3,0 Azure Işlevleri ile kullanım içindir. Her iki örnekte de, Azure Işlevleri 1,0 kullanıyorsanız, kullanılabilir ayarlar aynıdır, ancak host.js"durableTask" bölümü, "Uzantılar" altında bir alan yerine yapılandırma üzerindeki host.jsköküne gitmelidir.
@@ -97,11 +97,11 @@ ms.locfileid: "93061667"
 }
 ```
 
-Görev hub 'ı adları bir harfle başlamalı ve yalnızca harf ve sayılardan oluşmalıdır. Belirtilmemişse, bir işlev uygulaması için varsayılan görev hub 'ı adı **Durablefunctionshub** olur. Daha fazla bilgi için bkz. [görev hub 'ları](../articles/azure-functions/durable-functions-task-hubs.md).
+Görev hub 'ı adları bir harfle başlamalı ve yalnızca harf ve sayılardan oluşmalıdır. Belirtilmemişse, bir işlev uygulaması için varsayılan görev hub 'ı adı **Durablefunctionshub** olur. Daha fazla bilgi için bkz. [görev hub 'ları](../articles/azure-functions/durable/durable-functions-task-hubs.md).
 
-|Özellik  |Varsayılan | Açıklama |
+|Özellik  |Varsayılan | Description |
 |---------|---------|---------|
-|hubName|DurableFunctionsHub|Diğer [görev hub 'ı](../articles/azure-functions/durable-functions-task-hubs.md) adları, aynı depolama arka ucunu kullanıyor olsalar dahi, birden çok dayanıklı işlevler uygulamayı birbirinden yalıtmak için kullanılabilir.|
+|hubName|DurableFunctionsHub|Diğer [görev hub 'ı](../articles/azure-functions/durable/durable-functions-task-hubs.md) adları, aynı depolama arka ucunu kullanıyor olsalar dahi, birden çok dayanıklı işlevler uygulamayı birbirinden yalıtmak için kullanılabilir.|
 |controlQueueBatchSize|32|Denetim sırasından tek seferde çekilecek ileti sayısı.|
 |controlQueueBufferThreshold|256|Aynı anda bellekte ara belleğe alınmış olan denetim sırası iletilerinin sayısı, bu noktada dağıtıcı herhangi bir ek ileti kuyruğa almadan önce bekleyeceği süre.|
 |partitionCount |4|Denetim kuyruğu için bölüm sayısı. 1 ile 16 arasında pozitif bir tamsayı olabilir.|
@@ -124,4 +124,4 @@ Görev hub 'ı adları bir harfle başlamalı ve yalnızca harf ve sayılardan o
 |useLegacyPartitionManagement|true|Olarak ayarlandığında `false` , ölçekleme sırasında yinelenen işlev yürütme olasılığını azaltan bir bölüm yönetimi algoritması kullanır.  V 2.3.0 'dan başlayarak kullanılabilir. Varsayılan değer `false` gelecek bir sürümde olarak değiştirilir.|
 |useGracefulShutdown|yanlış|Önizle İşlem sırasında işlev yürütmelerinin başarısız olmasına neden olan konak kapanmalarının olasılığını azaltmak için düzgün bir şekilde kapatmayı etkinleştirin.|
 
-Bu ayarların birçoğu performansı iyileştirmek için kullanılır. Daha fazla bilgi için bkz. [performans ve ölçek](../articles/azure-functions/durable-functions-perf-and-scale.md).
+Bu ayarların birçoğu performansı iyileştirmek için kullanılır. Daha fazla bilgi için bkz. [performans ve ölçek](../articles/azure-functions/durable/durable-functions-perf-and-scale.md).

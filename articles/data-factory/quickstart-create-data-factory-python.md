@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 01/22/2018
 ms.custom: seo-python-october2019, devx-track-python
 ms.openlocfilehash: e511b8b5505f1fa8713d81d0ce959df32ef28503
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89439121"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013335"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Hızlı Başlangıç: Python kullanarak veri fabrikası ve işlem hattı oluşturma
 
@@ -44,7 +44,7 @@ Azure Data Factory, veri taşıma ve veri dönüştürmeyi düzenlemek ve otomat
 
 * [Azure Depolama Gezgini](https://storageexplorer.com/) (isteğe bağlı).
 
-* [Azure Active Directory bir uygulama](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal). Sonraki adımlarda kullanmak için aşağıdaki değerleri unutmayın: **uygulama kimliği**, **kimlik doğrulama anahtarı**ve **Kiracı kimliği**. Aynı makaledeki yönergeleri uygulayarak uygulamayı **katkıda bulunan** rolüne atayın.
+* [Azure Active Directory bir uygulama](../active-directory/develop/howto-create-service-principal-portal.md#register-an-application-with-azure-ad-and-create-a-service-principal). Sonraki adımlarda kullanmak için aşağıdaki değerleri unutmayın: **uygulama kimliği**, **kimlik doğrulama anahtarı** ve **Kiracı kimliği**. Aynı makaledeki yönergeleri uygulayarak uygulamayı **katkıda bulunan** rolüne atayın.
 
 ## <a name="create-and-upload-an-input-file"></a>Giriş dosyası oluşturma ve yükleme
 
@@ -58,7 +58,7 @@ Azure Data Factory, veri taşıma ve veri dönüştürmeyi düzenlemek ve otomat
 
 ## <a name="install-the-python-package"></a>Python paketi yükleme
 
-1. Yönetici ayrıcalıklarıyla bir terminal veya komut istemi açın. 
+1. Yönetici ayrıcalıklarıyla bir terminal veya komut istemi açın. 
 2. İlk olarak, Azure yönetim kaynakları için Python paketini yükleyin:
 
     ```python

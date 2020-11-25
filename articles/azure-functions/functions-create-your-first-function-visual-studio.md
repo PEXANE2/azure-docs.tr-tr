@@ -3,14 +3,14 @@ title: "Hızlı başlangıç: Visual Studio 'Yu kullanarak Azure 'da ilk işlevi
 description: Bu hızlı başlangıçta, Visual Studio kullanarak bir HTTP tetikleyici Azure Işlevi oluşturmayı ve yayımlamayı öğreneceksiniz.
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
-ms.date: 03/06/2020
+ms.date: 09/30/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: d7cfcd02c5e6c9ff57241288bd79efb45d4ac7ab
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c9ddd6e74e25d8de415e24038e99da9d21dab867
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88213979"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "96014489"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>Hızlı başlangıç: Visual Studio 'Yu kullanarak Azure 'da ilk işlevinizi oluşturma
 
@@ -74,13 +74,13 @@ Projenizi yayımlayabilmeniz için önce Azure aboneliğinizde bir işlev uygula
 
 2. Bu URL 'ye gidin ve aşağıdaki örnekte olduğu gibi işlev tarafından döndürülen uzaktan GET isteğine tarayıcıda bir yanıt görürsünüz:
 
-    :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png" alt-text="İşlev uygulaması çalışıyor":::
+    :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png" alt-text="Tarayıcıda işlev yanıtı":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bu koleksiyondaki diğer hızlı başlangıçlar, bu hızlı başlangıcı temel alır. Sonraki hızlı başlangıçlarla, öğreticilerle veya bu hızlı başlangıçta oluşturduğunuz hizmetlerden herhangi biriyle çalışmayı planlıyorsanız, kaynakları temizlemeyin.
 
-Azure’da *Kaynaklar*; işlev uygulamalarını, işlevleri, depolama hesaplarını ve benzeri öğeleri ifade eder. Bunlar *kaynak grupları*halinde gruplandırılır ve grubu silerek bir gruptaki her şeyi silebilirsiniz. 
+Azure’da *Kaynaklar*; işlev uygulamalarını, işlevleri, depolama hesaplarını ve benzeri öğeleri ifade eder. Bunlar *kaynak grupları* halinde gruplandırılır ve grubu silerek bir gruptaki her şeyi silebilirsiniz. 
 
 Bu hızlı başlangıçları tamamlamak için kaynaklar oluşturdunuz. [Hesap durumunuza](https://azure.microsoft.com/account/) ve [hizmet fiyatlandırmanıza](https://azure.microsoft.com/pricing/) bağlı olarak size bu kaynakların ücretleri yansıtılabilir. Kaynaklara artık ihtiyacınız yoksa, şunları yaparak silebilirsiniz:
 
@@ -88,7 +88,7 @@ Bu hızlı başlangıçları tamamlamak için kaynaklar oluşturdunuz. [Hesap du
 
 1. İşlev uygulaması sayfasında **genel bakış** sekmesini seçin ve **kaynak grubu**' nun altındaki bağlantıyı seçin.
 
-   :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-app-delete-resource-group.png" alt-text="İşlev uygulaması çalışıyor":::
+   :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-app-delete-resource-group.png" alt-text="İşlev uygulaması sayfasından silinecek kaynak grubunu seçin":::
 
 2. **Kaynak grubu** sayfasında, dahil edilen kaynakların listesini gözden geçirin ve silmek istedikleriniz olduklarından emin olun.
  

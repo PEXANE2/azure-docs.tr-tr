@@ -12,11 +12,11 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 7cabae837656611813d44017ce2e1112f06066ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89669615"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013301"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge çözümünüzü üretime dağıtmaya hazırlanma
 
@@ -108,7 +108,7 @@ Sınırlı bellek bulunan kısıtlı cihazları dağıtıyorsanız, IoT Edge hub
 
 IoT Edge hub, varsayılan olarak performans için en iyi duruma getirilmiştir, bu nedenle büyük miktarda bellek ayırmaya çalışır. Bu yapılandırma, Raspberry PI gibi daha küçük cihazlarda kararlılık sorunlarına neden olabilir. Sınırlı kaynaklarla cihaz dağıtıyorsanız, IoT Edge hub 'ında **Optimizeforperformance** ortam değişkenini **false** olarak ayarlamak isteyebilirsiniz.
 
-**Optimizeforperformance** **değeri true**olarak ayarlandığında MQTT protokol kafası, daha iyi performansa sahip olan ancak daha fazla bellek ayıran PooledByteBufferAllocator kullanır. Ayırıcı, 32 bitlik işletim sistemlerinde veya düşük bellekli cihazlarda iyi çalışmaz. Ayrıca, performans için optimize edildiğinde, RocksDb yerel depolama sağlayıcısı olarak rolü için daha fazla bellek ayırır.
+**Optimizeforperformance** **değeri true** olarak ayarlandığında MQTT protokol kafası, daha iyi performansa sahip olan ancak daha fazla bellek ayıran PooledByteBufferAllocator kullanır. Ayırıcı, 32 bitlik işletim sistemlerinde veya düşük bellekli cihazlarda iyi çalışmaz. Ayrıca, performans için optimize edildiğinde, RocksDb yerel depolama sağlayıcısı olarak rolü için daha fazla bellek ayırır.
 
 Daha fazla bilgi için bkz. daha [küçük cihazlarda kararlılık sorunları](troubleshoot-common-errors.md#stability-issues-on-smaller-devices).
 
@@ -132,7 +132,7 @@ TimeToLiveSecs parametresinin varsayılan değeri 7200 saniyedir ve bu iki saatt
 
 ### <a name="do-not-use-debug-versions-of-module-images"></a>Modül görüntülerinin hata ayıklama sürümlerini kullanmayın
 
-Test senaryolarından üretim senaryolarına geçiş yaparken, hata ayıklama yapılandırmalarının dağıtım bildirimlerini kaldırmayı unutmayın. Dağıtım bildirimlerinde modül görüntülerinin hiçbirinin ** \. hata ayıklama** sonekine sahip olup olmadığını denetleyin. Hata ayıklama için modüllerde bağlantı noktalarını açığa çıkarmak için oluşturma seçenekleri eklediyseniz, bu oluşturma seçeneklerini de kaldırın.
+Test senaryolarından üretim senaryolarına geçiş yaparken, hata ayıklama yapılandırmalarının dağıtım bildirimlerini kaldırmayı unutmayın. Dağıtım bildirimlerinde modül görüntülerinin hiçbirinin **\. hata ayıklama** sonekine sahip olup olmadığını denetleyin. Hata ayıklama için modüllerde bağlantı noktalarını açığa çıkarmak için oluşturma seçenekleri eklediyseniz, bu oluşturma seçeneklerini de kaldırın.
 
 ## <a name="container-management"></a>Kapsayıcı yönetimi
 
@@ -285,7 +285,7 @@ Değişikliklerin etkili olması için kapsayıcı altyapısının yeniden başl
 
 #### <a name="option-adjust-log-settings-for-each-container-module"></a>Seçenek: her kapsayıcı modülü için günlük ayarlarını ayarla
 
-Bu şekilde, her modülün **createOptions** ' de yapabilirsiniz. Örneğin:
+Bu şekilde, her modülün **createOptions** ' de yapabilirsiniz. Örnek:
 
 ```yml
 "createOptions": {

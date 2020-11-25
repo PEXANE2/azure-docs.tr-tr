@@ -7,11 +7,11 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.openlocfilehash: 1c2f0a2c54be7adbc7b8babd596f18e08c67a024
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91269565"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014423"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Akışları Power Automate'ten dışarı aktarma ve Azure Logic Apps’e dağıtma
 
@@ -48,7 +48,7 @@ Daha fazla bilgi için bkz. [Azure Logic Apps büyütme](https://flow.microsoft.
 
    !["Şablon dağıtımı" bul ve Seç](./media/export-from-microsoft-flow-logic-app-template/select-template-deployment.png)
 
-1. **Özel dağıtım**altında, **düzenleyicide kendi şablonunuzu oluştur**' u seçin.
+1. **Özel dağıtım** altında, **düzenleyicide kendi şablonunuzu oluştur**' u seçin.
 
    !["Kendi şablonunuzu düzenleyicide oluşturun" seçeneğini belirleyin](./media/export-from-microsoft-flow-logic-app-template/build-template-in-editor.png)
 
@@ -76,7 +76,7 @@ Daha fazla bilgi için bkz. [Azure Logic Apps büyütme](https://flow.microsoft.
       | <*bağlantı adı*> | Mantıksal uygulamanın yeniden kullanabilmesi için önceden oluşturulmuş herhangi bir bağlantı için bir veya daha fazla ad <p><p>**Note**: Bu mantıksal uygulama ilk kez ise, tüm bağlantılar yeni olarak oluşturulur, böylece varsayılan adları kabul edebilirsiniz. Aksi takdirde, daha önce oluşturulan bağlantıların adlarını belirtebilirsiniz. Bu, birden çok Logic Apps genelinde kullanabileceğiniz bir ad olabilir. |
       |||
 
-      Örneğin:
+      Örnek:
 
       ![Şablon için giriş parametrelerini belirtin](./media/export-from-microsoft-flow-logic-app-template/template-input-parameters.png)
 
@@ -120,7 +120,7 @@ Mantıksal uygulamalar oluşturmaya yönelik [önkoşullara](../logic-apps/quick
 
    ![Azure kaynak grubu projesi oluşturma](./media/export-from-microsoft-flow-logic-app-template/create-azure-resource-group-project.png)
 
-1. Çözüm oluşturulduktan sonra, Çözüm Gezgini dosya zaten açık değilse dosya ** üzerindeLogicApp.js** açın.
+1. Çözüm oluşturulduktan sonra, Çözüm Gezgini dosya zaten açık değilse dosya **üzerindeLogicApp.js** açın.
 
 1. İçeriği, dışarıya aktarılmış şablondan kopyalayın ve dosyadaki **LogicApp.js** içeriğin üzerine yazın.
 
@@ -156,7 +156,7 @@ Mantıksal uygulamalar oluşturmaya yönelik [önkoşullara](../logic-apps/quick
 
    ![Dağıtım parametrelerini Düzenle](./media/export-from-microsoft-flow-logic-app-template/edit-parameters-deployment.png)
 
-   Dağıtım başladığında uygulamanızın dağıtım durumu Visual Studio **Çıktı** penceresinde görünür. Durum görünmezse **Çıktıyı göster** listesini açıp Azure kaynak grubunuzu seçin. Örneğin:
+   Dağıtım başladığında uygulamanızın dağıtım durumu Visual Studio **Çıktı** penceresinde görünür. Durum görünmezse **Çıktıyı göster** listesini açıp Azure kaynak grubunuzu seçin. Örnek:
 
    ![Çıktı penceresi](./media/export-from-microsoft-flow-logic-app-template/output-window.png)
 

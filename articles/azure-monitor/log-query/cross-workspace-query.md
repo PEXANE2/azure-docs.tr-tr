@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 05/01/2020
 ms.openlocfilehash: 8eb163c95fb1426ebae8956d50f6d8f6aec6fd7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612091"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013658"
 ---
 # <a name="perform-log-query-in-azure-monitor-that-span-across-workspaces-and-apps"></a>Azure Izleyici 'de çalışma alanları ve uygulamalar arasında yayılan günlük sorgusu gerçekleştirme
 
@@ -36,11 +36,11 @@ Birden çok çalışma alanında ve uygulamalarda depolanan verileri sorgulamak 
 Sorgunuzdaki başka bir çalışma alanına başvurmak için, [*çalışma alanı*](./workspace-expression.md) tanımlayıcısını kullanın ve Application Insights bir uygulama için [*uygulama*](./app-expression.md) tanımlayıcısı ' nı kullanın.  
 
 ### <a name="identifying-workspace-resources"></a>Çalışma alanı kaynaklarını tanımlama
-Aşağıdaki örnekler, *ContosoRetail-It*adlı bir çalışma alanındaki Update tablosundan güncelleştirme tablosundan özetlenen günlük sayısını döndürmek için Log Analytics çalışma alanları genelinde sorguları gösterir. 
+Aşağıdaki örnekler, *ContosoRetail-It* adlı bir çalışma alanındaki Update tablosundan güncelleştirme tablosundan özetlenen günlük sayısını döndürmek için Log Analytics çalışma alanları genelinde sorguları gösterir. 
 
 Bir çalışma alanının tanımlanması çeşitli yollarla gerçekleştirilebilir:
 
-* Kaynak adı-çalışma alanının, bazen *bileşen adı*olarak adlandırılan okunabilir bir adıdır. 
+* Kaynak adı-çalışma alanının, bazen *bileşen adı* olarak adlandırılan okunabilir bir adıdır. 
 
     `workspace("contosoretail-it").Update | count`
 
@@ -58,7 +58,7 @@ Bir çalışma alanının tanımlanması çeşitli yollarla gerçekleştirilebil
 
 * Azure Kaynak KIMLIĞI: çalışma alanının Azure tarafından tanımlanan benzersiz kimliği. Kaynak adı belirsiz olduğunda kaynak KIMLIĞI kullanılır.  Çalışma alanları için şu biçim: */Subscriptions/SubscriptionID/ResourceGroups/resourcegroup/Providers/Microsoft. Operationalınsights/çalışma alanları/componentName*.  
 
-    Örneğin:
+    Örnek:
     ``` 
     workspace("/subscriptions/e427519-5645-8x4e-1v67-3b84b59a1985/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail-it").Update | count
     ```
@@ -68,7 +68,7 @@ Aşağıdaki örneklerde, Application Insights 'de *fabrikamapp* adlı bir uygul
 
 Application Insights ' de bir uygulamanın tanımlanması, *uygulama (tanımlayıcı)* ifadesiyle gerçekleştirilebilir.  *Tanımlayıcı* bağımsız değişkeni, aşağıdakilerden birini kullanarak uygulamayı belirtir:
 
-* Kaynak adı-uygulamanın, bazen *bileşen adı*olarak da adlandırılan, okunabilir bir adıdır.  
+* Kaynak adı-uygulamanın, bazen *bileşen adı* olarak da adlandırılan, okunabilir bir adıdır.  
 
     `app("fabrikamapp")`
 
@@ -89,7 +89,7 @@ Application Insights ' de bir uygulamanın tanımlanması, *uygulama (tanımlay�
 
 * Azure Kaynak KIMLIĞI-uygulamanın Azure tarafından tanımlanan benzersiz kimliği. Kaynak adı belirsiz olduğunda kaynak KIMLIĞI kullanılır. Biçim: */Subscriptions/SubscriptionID/ResourceGroups/resourcegroup/Providers/Microsoft. Operationalınsights/bileşenler/componentName*.  
 
-    Örneğin:
+    Örnek:
     ```
     app("/subscriptions/b459b4f6-912x-46d5-9cb1-b43069212ab4/resourcegroups/Fabrikam/providers/microsoft.insights/components/fabrikamapp").requests | count
     ```
@@ -109,7 +109,7 @@ union Update, workspace("contosoretail-it").Update, workspace("b459b4u5-912x-46d
 ## <a name="using-cross-resource-query-for-multiple-resources"></a>Birden çok kaynak için çapraz kaynak sorgusu kullanma
 Çoklu Log Analytics çalışma alanları ve Application Insights kaynaklarından verileri ilişkilendirmek için çapraz kaynak sorguları kullanırken, sorgu karmaşık ve bakım açısından zor hale gelebilir. Sorgu mantığını sorgu yapısını kolaylaştıran sorgu kaynaklarının kapsamından ayırmak için [Azure izleyici günlük sorgularının işlevlerinden](functions.md) yararlanabilirsiniz. Aşağıdaki örnek, birden çok Application Insights kaynağını nasıl izleyebileceğinizi ve uygulama adına göre başarısız isteklerin sayısını görselleştirmenizi gösterir. 
 
-Aşağıdaki gibi Application Insights kaynak kapsamına başvuran bir sorgu oluşturun. `withsource= SourceApp`Komut, günlüğü gönderen uygulama adını atayan bir sütun ekler. Sorguyu, _Applicationsscoping_diğer adı ile birlikte bir [işlev olarak kaydedin](functions.md#create-a-function) .
+Aşağıdaki gibi Application Insights kaynak kapsamına başvuran bir sorgu oluşturun. `withsource= SourceApp`Komut, günlüğü gönderen uygulama adını atayan bir sütun ekler. Sorguyu, _Applicationsscoping_ diğer adı ile birlikte bir [işlev olarak kaydedin](functions.md#create-a-function) .
 
 ```Kusto
 // crossResource function that scopes my Application Insights resources

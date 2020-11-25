@@ -11,11 +11,11 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.openlocfilehash: 087679c49c3cc025268e6f895757ae5f5c47c917
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309123"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014219"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Azure veri bilimi sanal makinelerinde makine öğrenimi ve veri bilimi araçları
 Azure veri bilimi sanal makineleri (DSVMs), Python, R ve Julia gibi popüler dillerde makine öğrenimi için zengin bir araç ve kitaplık kümesine sahiptir.
@@ -89,7 +89,7 @@ Dsvms üzerinde, `scikit-learn` dsvms Için Anaconda Python dağıtımının par
 | Nedir o?   |  Veri araştırma görevleri için makine öğrenimi algoritmalarının koleksiyonu. Algoritmalar doğrudan bir veri kümesine uygulanabilir ya da kendi Java kodınızdan çağrılabilir. WEKA, veri ön işleme, sınıflandırma, gerileme, kümeleme, ilişkilendirme kuralları ve görselleştirme için araçlar içerir. |
 | Desteklenen sürümler     | Windows, Linux     |
 | Tipik kullanımlar      | Genel makine öğrenme aracı     |
-| Nasıl kullanılır veya çalıştırılır      | Windows 'ta, **Başlat** menüsünde WEKA araması yapın. Linux 'ta X2Go ile oturum açın ve ardından **uygulamalar**  >  **geliştirme**  >  **WEKA** ' ya gidin. |
+| Nasıl kullanılır veya çalıştırılır      | Windows 'ta, **Başlat** menüsünde WEKA araması yapın. Linux 'ta X2Go ile oturum açın ve ardından **uygulamalar**  >  **geliştirme**  >  **WEKA**' ya gidin. |
 | Örneklere bağlantı      | [WEKA örnekleri](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
 | İlgili araçlar      |LightGBM, Rattle, XGBoost   |
 

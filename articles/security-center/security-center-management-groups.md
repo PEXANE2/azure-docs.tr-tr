@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
 ms.openlocfilehash: 7252a6ccd77212f75f5db54e5f3fcad7aa2df50a
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339739"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013811"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Azure Güvenlik Merkezi için kiracı genelinde görünürlük elde edin
 Bu makalede, Azure Active Directory kiracınızla bağlantılı tüm Azure aboneliklerine güvenlik ilkeleri uygulayarak kuruluşunuzun güvenlik duruşunu nasıl yöneteceğiniz açıklanmaktadır.
@@ -40,7 +40,7 @@ Abonelikleri yönetim gruplarında düzenleyebilir ve idare ilkelerinizi yöneti
 
  
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-2. **Tüm hizmetler**  >  **Yönetim gruplarını**seçin.
+2. **Tüm hizmetler**  >  **Yönetim gruplarını** seçin.
 3. Ana sayfada **yeni yönetim grubu** ' nu seçin. 
 
     ![Ana grup](./media/security-center-management-groups/main.png) 
@@ -54,7 +54,7 @@ Abonelikleri yönetim gruplarında düzenleyebilir ve idare ilkelerinizi yöneti
 ### <a name="view-management-groups-in-the-azure-portal"></a>Azure portal Yönetim gruplarını görüntüleme
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Yönetim gruplarını görüntülemek için Azure ana menüsünde **tüm hizmetler** ' i seçin.
-3. **Genel**altında **Yönetim grupları**' yi seçin.
+3. **Genel** altında **Yönetim grupları**' yi seçin.
 
     ![Yönetim grubu oluşturma](./media/security-center-management-groups/all-services.png)
 
@@ -72,7 +72,7 @@ Azure Active Directory kiracı yöneticisinin Azure aboneliklerine doğrudan eri
 
    ![Azure AD özellikleri-ekran görüntüsü](./media/security-center-management-groups/aad-properties.png)
 
-3. **Azure kaynakları Için erişim yönetimi**altında, anahtarı **Evet**olarak ayarlayın.
+3. **Azure kaynakları Için erişim yönetimi** altında, anahtarı **Evet** olarak ayarlayın.
 
    ![Azure kaynakları için erişim yönetimi-ekran görüntüsü](./media/security-center-management-groups/aad-properties-global-admin-setting.png)
 
@@ -84,7 +84,7 @@ Azure Active Directory kiracı yöneticisinin Azure aboneliklerine doğrudan eri
 
     - Bu ayar genel bir özellik değildir ve yalnızca şu anda oturum açmış olan kullanıcı için geçerlidir.
 
-5. Yükseltilmiş erişimle yapmanız gereken görevleri gerçekleştirin. İşiniz bittiğinde, anahtarı tekrar **Hayır**olarak ayarlayın.
+5. Yükseltilmiş erişimle yapmanız gereken görevleri gerçekleştirin. İşiniz bittiğinde, anahtarı tekrar **Hayır** olarak ayarlayın.
 
 
 ### <a name="assign-azure-roles-to-users"></a>Kullanıcılara Azure rolleri atama
@@ -146,7 +146,7 @@ Erişimi yükselttikten sonra Azure AD kiracınız kapsamındaki tüm abonelikle
     ![Abonelik seçici ekran görüntüsü](./media/security-center-management-groups/subscription-selector.png)
 
 1. Azure ana menüsünde **tüm hizmetler** ' i seçin ve ardından **Güvenlik Merkezi**' ni seçin.
-2. **Genel bakışta**bir abonelik kapsamı grafiği vardır.
+2. **Genel bakışta** bir abonelik kapsamı grafiği vardır.
 
     ![Abonelik kapsamı grafik ekran görüntüsü](./media/security-center-management-groups/security-center-subscription-coverage.png)
 
@@ -161,7 +161,7 @@ Kullanıcılara Azure rolleri atandıktan sonra, kiracı yöneticisinin kendisin
 
 2. Gezinti listesinde **Azure Active Directory** ' a ve ardından **Özellikler**' e tıklayın.
 
-3. **Azure kaynakları Için erişim yönetimi**altında, anahtarı **Hayır**olarak ayarlayın.
+3. **Azure kaynakları Için erişim yönetimi** altında, anahtarı **Hayır** olarak ayarlayın.
 
 4. Ayarınızı kaydetmek için **Kaydet** ' e tıklayın.
 
@@ -170,7 +170,7 @@ Kullanıcılara Azure rolleri atandıktan sonra, kiracı yöneticisinin kendisin
 ## <a name="adding-subscriptions-to-a-management-group"></a>Bir yönetim grubuna abonelikler ekleme
 Oluşturduğunuz yönetim grubuna abonelikler ekleyebilirsiniz. Bu adımlar, kiracı genelinde görünürlük ve genel ilke ve erişim yönetimi kazanmak için zorunlu değildir.
 
-1. **Yönetim grupları**altında, aboneliğinizi eklemek için bir yönetim grubu seçin.
+1. **Yönetim grupları** altında, aboneliğinizi eklemek için bir yönetim grubu seçin.
 
     ![Abonelik eklenecek bir yönetim grubu seçin](./media/security-center-management-groups/management-group-subscriptions.png)
 

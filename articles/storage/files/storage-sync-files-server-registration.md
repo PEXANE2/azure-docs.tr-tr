@@ -8,11 +8,11 @@ ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 194b0f2ff94197fe11c189e97dbc65c9d0367932
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630592"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013930"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Kayıtlı sunucuları Azure Dosya Eşitleme yönetme
 Azure Dosya Eşitleme aracısı şirket içi dosya sunucularının sağladığı esneklik, performans ve uyumluluk özelliklerinden vazgeçmeden kuruluşunuzun dosya paylaşımlarını Azure Dosyaları'nda toplamanızı sağlar. Bunu, Windows sunucularınızı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürerek yapar. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilir ve dünya çapında istediğiniz sayıda önbellek oluşturabilirsiniz.
@@ -22,7 +22,7 @@ Aşağıdaki makalede, bir sunucunun depolama eşitleme hizmeti ile nasıl kayde
 ## <a name="registerunregister-a-server-with-storage-sync-service"></a>Depolama eşitleme hizmeti ile bir sunucuyu kaydetme/kaydını kaldırma
 Bir sunucuyu Azure Dosya Eşitleme kaydetme, Windows Server ile Azure arasında bir güven ilişkisi kurar. Bu ilişki daha sonra sunucuda *sunucu uç noktaları* oluşturmak için kullanılabilir. Bu, bir Azure dosya paylaşımıyla ( *bulut uç noktası* olarak da bilinir) eşitlenmesi gereken belirli klasörleri temsil eder. 
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 Bir sunucuyu depolama eşitleme hizmeti ile kaydetmek için öncelikle sunucunuzu gerekli önkoşullara hazırlamanız gerekir:
 
 * Sunucunuz Windows Server 'ın desteklenen bir sürümünü çalıştırıyor olmalıdır. Daha fazla bilgi için bkz. [sistem gereksinimleri ve birlikte çalışabilirlik Azure dosya eşitleme](storage-sync-files-planning.md#windows-file-server-considerations).

@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 11/04/2020
 ms.author: memildin
 ms.openlocfilehash: 0a487f778693e87e680033edd0d80c55d1a85f66
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348636"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013794"
 ---
 # <a name="sql-information-protection-policy-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde SQL Information Protection ilkesi
  
@@ -55,7 +55,7 @@ Bunların her biri aşağıdaki ilgili sekmede gösterilmiştir.
 
 ### <a name="access-the-policy-from-security-centers-pricing-and-settings-page"></a>İlkeye Güvenlik Merkezi 'nin fiyatlandırma ve Ayarlar sayfasından erişin <a name="sqlip-tenant"></a>
 
-Güvenlik Merkezi 'nin **fiyatlandırma ve ayarlar** sayfasından **SQL Information Protection** ' ı seçin.
+Güvenlik Merkezi 'nin **fiyatlandırma ve ayarlar** sayfasından **SQL Information Protection**' ı seçin.
 
 > [!NOTE]
 > Bu seçenek yalnızca kiracı düzeyinde izinlere sahip kullanıcılar için görüntülenir. 
@@ -76,7 +76,7 @@ Veritabanınızın veri bulma ve sınıflandırma sayfasını görüntülemek i�
 
 1. Öneri ayrıntıları sayfasında, **sağlıklı** veya **sağlıksız** sekmelerinden bir veritabanı seçin.
 
-1. **Veri bulma & sınıflandırma** sayfası açılır. **Yapılandır** 'ı seçin.
+1. **Veri bulma & sınıflandırma** sayfası açılır. **Yapılandır**'ı seçin.
 
     :::image type="content" source="./media/security-center-info-protection-policy/access-policy-from-security-center-recommendation.png" alt-text="Azure Güvenlik Merkezi 'nde ilgili öneriden SQL Information Protection ilkesini açma":::
 
@@ -103,11 +103,11 @@ Veritabanınızın veri bulma ve sınıflandırma sayfasını görüntülemek i�
 
 Bilgi türlerini yönetmek ve özelleştirmek için:
 
-1. **Bilgi türlerini Yönet** ' i seçin.
+1. **Bilgi türlerini Yönet**' i seçin.
 
     :::image type="content" source="./media/security-center-info-protection-policy/manage-types.png" alt-text="Bilgi koruma ilkenize yönelik bilgi türlerini yönetme":::
 
-1. Yeni bir tür eklemek için **bilgi türü oluştur** ' u seçin. Bilgi türü için bir ad, açıklama ve arama deseninin dizelerini yapılandırabilirsiniz. Arama desenli dizeler, isteğe bağlı olarak joker karakterlerle ('% ' karakterini kullanarak) anahtar sözcükleri kullanabilir ve bu da otomatik bulma altyapısının, veritabanınızdaki gizli verileri, sütunların meta verilerine göre belirlemek için kullanır.
+1. Yeni bir tür eklemek için **bilgi türü oluştur**' u seçin. Bilgi türü için bir ad, açıklama ve arama deseninin dizelerini yapılandırabilirsiniz. Arama desenli dizeler, isteğe bağlı olarak joker karakterlerle ('% ' karakterini kullanarak) anahtar sözcükleri kullanabilir ve bu da otomatik bulma altyapısının, veritabanınızdaki gizli verileri, sütunların meta verilerine göre belirlemek için kullanır.
  
     :::image type="content" source="./media/security-center-info-protection-policy/configure-new-type.png" alt-text="Bilgi koruma ilkeniz için yeni bir bilgi türü yapılandırma":::
 

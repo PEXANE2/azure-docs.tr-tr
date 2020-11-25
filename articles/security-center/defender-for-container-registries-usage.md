@@ -7,14 +7,14 @@ ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 2471a19cf795d969644cb92e23b7a2926f2ee1a9
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: a5d66e43485ec66b6297ef11ed382e8fb82b7cb3
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372617"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96014591"
 ---
-# <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>Azure Defender 'ı kapsayıcı kayıt defterleri için kullanarak görüntülerinizi güvenlik açıklarına karşı tarayın
+# <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>Güvenlik açıkları için görüntülerinizi taramak üzere kapsayıcı kayıt defterleri için Azure Defender kullanma
 
 Bu sayfada, yerleşik güvenlik açığı tarayıcısının Azure Resource Manager tabanlı Azure Container Registry depolanan kapsayıcı görüntülerini taramak için nasıl kullanılacağı açıklanmaktadır.
 
@@ -22,17 +22,7 @@ Bu sayfada, yerleşik güvenlik açığı tarayıcısının Azure Resource Manag
 
 Tarayıcı güvenlik merkezi 'ne güvenlik açıkları bildirdiğinde Güvenlik Merkezi, bulguları ve ilgili bilgileri öneriler olarak sunar. Ayrıca, bulgular düzeltme adımları, ilgili cileri, CVSS puanları ve daha fazlası gibi ilgili bilgileri içerir. Bir veya daha fazla abonelik veya belirli bir kayıt defteri için tanımlanan güvenlik açıklarını görüntüleyebilirsiniz.
 
-## <a name="availability"></a>Kullanılabilirlik
-
-|Görünüş|Ayrıntılar|
-|----|:----|
-|Yayın durumu:|Genel olarak kullanılabilir (GA)|
-|Fiyat|**Kapsayıcı kayıt defterleri Için Azure Defender** , [fiyatlandırma sayfasında](security-center-pricing.md) gösterildiği gibi faturalandırılır|
-|Desteklenen kayıt defterleri ve görüntüler:|ACR kayıt defterlerine Linux görüntüleri, Shell erişimiyle genel İnternet 'ten erişilebilir|
-|Desteklenmeyen kayıt defterleri ve görüntüler:|Windows görüntüleri<br>' Özel ' kayıt defterleri<br>Erişime sahip kayıt defterleri, güvenlik duvarı, hizmet uç noktası veya Azure özel bağlantı gibi özel uç noktalar ile sınırlıdır<br>[Docker karalama](https://hub.docker.com/_/scratch/) görüntüleri gibi süper minimuz görüntüler veya yalnızca bir uygulama ve çalışma zamanı bağımlılıklarını bir paket yöneticisi, kabuk veya işletim sistemi olmadan Içeren "Distrodaha az" görüntüler|
-|Gerekli roller ve izinler:|**Güvenlik okuyucu** ve [Azure Container Registry okuyucu rolü](../container-registry/container-registry-roles.md)|
-|Larının|![Evet ](./media/icons/yes-icon.png) ticari bulutlar<br>![Evet ](./media/icons/yes-icon.png) US gov-Şu anda yalnızca anında iletme özelliği destekleniyor. [Resimlerin ne zaman tarandığı](defender-for-container-registries-introduction.md#when-are-images-scanned) hakkında daha fazla bilgi edinin?<br>![](./media/icons/no-icon.png)Çin gov, diğer gov yok|
-|||
+[!INCLUDE [Defender for container registries availability info](../../includes/security-center-availability-defender-for-container-registries.md)]
 
 
 ## <a name="identify-vulnerabilities-in-images-in-azure-container-registries"></a>Azure Container Registry 'deki görüntülerde güvenlik açıklarını tanımla 
@@ -142,10 +132,10 @@ Aşağıdaki ölçütlerden herhangi birini kullanabilirsiniz:
 
 Bir kural oluşturmak için:
 
-1. **Azure Container Registry görüntülerde güvenlik açıklarına** yönelik öneriler ayrıntısı sayfasında, **kuralı devre dışı bırak** ' ı seçin.
+1. **Azure Container Registry görüntülerde güvenlik açıklarına** yönelik öneriler ayrıntısı sayfasında, **kuralı devre dışı bırak**' ı seçin.
 1. İlgili kapsamı seçin.
 1. Ölçütlerinizi tanımlayın.
-1. **Kural Uygula** ' yı seçin.
+1. **Kural Uygula**' yı seçin.
 
     :::image type="content" source="./media/defender-for-container-registries-usage/new-disable-rule-for-registry-finding.png" alt-text="Kayıt defterindeki VA bulguları için devre dışı bırakma kuralı oluşturma":::
 

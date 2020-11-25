@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: b44186d783a249192a8c13ee97063034ee319df7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88036768"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013148"
 ---
 # <a name="consumption-model"></a>Tüketim modeli
 
 Yönlendirme hizmeti, araç açısından özel tüketim modelinin ayrıntılı açıklaması için bir parametre kümesi sağlar.
-**VehicleEngineType**değerine bağlı olarak, Iki ana tüketim modeli desteklenir: _combustion_ ve _elektrik_. Aynı istekteki farklı modellere ait olan parametreleri belirtmek yanlış. Ayrıca, tüketim modeli parametreleri aşağıdaki **Seyahatmodu** değerleriyle birlikte kullanılamaz: _Bisiklet_ ve _ayaklı bir_.
+**VehicleEngineType** değerine bağlı olarak, Iki ana tüketim modeli desteklenir: _combustion_ ve _elektrik_. Aynı istekteki farklı modellere ait olan parametreleri belirtmek yanlış. Ayrıca, tüketim modeli parametreleri aşağıdaki **Seyahatmodu** değerleriyle birlikte kullanılamaz: _Bisiklet_ ve _ayaklı bir_.
 
 ## <a name="parameter-constraints-for-consumption-model"></a>Tüketim modeli için parametre kısıtlamaları
 
@@ -29,7 +29,7 @@ Her iki tüketim modelinde de parametre belirtirken bazı bağımlılıklar vard
 * **İvationverimlilik** ve **yavaşlatma ationverimlilik** belirtilmişse, değerlerinin çarpımı 1 ' den büyük olmamalı (kalıcı hareketi engellemek için).
 * **uphillEfficiency** ve **downhillEfficiency** her zaman çift olarak belirtilmelidir (yani veya None).
 * **UphillEfficiency** ve **downhillEfficiency** belirtilirse, değerlerinin çarpımı 1 ' den büyük olmamalı (kalıcı hareketi engellemek için).
-* \* __Verimlilik__ parametreleri Kullanıcı tarafından belirtilmişse, **vehicleWeight** de belirtilmelidir. **VehicleEngineType** , _combustion_olduğunda, **fuelenercaydensityınmjoulesperlitre** de belirtilmelidir.
+* \* __Verimlilik__ parametreleri Kullanıcı tarafından belirtilmişse, **vehicleWeight** de belirtilmelidir. **VehicleEngineType** , _combustion_ olduğunda, **fuelenercaydensityınmjoulesperlitre** de belirtilmelidir.
 * **Maxchargeınkwh** ve **Currentchargeınkwh** her zaman çift olarak belirtilmelidir (yani veya None).
 
 > [!NOTE]
@@ -37,7 +37,7 @@ Her iki tüketim modelinde de parametre belirtirken bazı bağımlılıklar vard
 
 ## <a name="combustion-consumption-model"></a>Combustion tüketim modeli
 
-**VehicleEngineType** , _combustion_olarak ayarlandığında, combustion tüketim modeli kullanılır.
+**VehicleEngineType** , _combustion_ olarak ayarlandığında, combustion tüketim modeli kullanılır.
 Bu modele ait parametrelerin listesi aşağıda verilmiştir. Ayrıntılı açıklama için parametreler bölümüne bakın.
 
 * constantSpeedConsumptionInLitersPerHundredkm
@@ -52,7 +52,7 @@ Bu modele ait parametrelerin listesi aşağıda verilmiştir. Ayrıntılı açı
 
 ## <a name="electric-consumption-model"></a>Elektrik tüketim modeli
 
-Elektrik tüketim modeli, **vehicleEngineType** _elektrik_olarak ayarlandığında kullanılır.
+Elektrik tüketim modeli, **vehicleEngineType** _elektrik_ olarak ayarlandığında kullanılır.
 Bu modele ait parametrelerin listesi aşağıda verilmiştir. Ayrıntılı açıklama için parametreler bölümüne bakın.
 
 * constantSpeedConsumptionInkWhPerHundredkm

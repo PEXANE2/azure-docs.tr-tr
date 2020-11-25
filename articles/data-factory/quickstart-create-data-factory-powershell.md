@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 04/10/2020
 ms.author: jingwang
 ms.openlocfilehash: a7fcb4be47e0e1e62c190a9b089243a178df8e7a
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562058"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013372"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Hızlı başlangıç: PowerShell kullanarak Azure Data Factory oluşturma
 
@@ -43,7 +43,7 @@ Bu hızlı başlangıç, PowerShell kullanarak Azure Data Factory oluşturma iş
 
 #### <a name="log-in-to-powershell"></a>PowerShell’de oturum açın
 
-1. Makinenizde **PowerShell** 'i başlatın. Bu hızlı başlangıcın sonuna kadar PowerShell’i açık tutun. Kapatıp yeniden açarsanız, bu komutları yeniden çalıştırmanız gerekir.
+1. Makinenizde **PowerShell**'i başlatın. Bu hızlı başlangıcın sonuna kadar PowerShell’i açık tutun. Kapatıp yeniden açarsanız, bu komutları yeniden çalıştırmanız gerekir.
 
 2. Aşağıdaki komutu çalıştırın ve Azure Portal'da oturum açmak için kullandığınız aynı Azure kullanıcı adını ve parolasını girin:
 
@@ -57,7 +57,7 @@ Bu hızlı başlangıç, PowerShell kullanarak Azure Data Factory oluşturma iş
     Get-AzSubscription
     ```
 
-4. Hesabınızla ilişkili birden çok aboneliğiniz varsa, birlikte çalışmak istediğiniz aboneliği seçmek için aşağıdaki komutu çalıştırın. **SubscriptionId** ’yi Azure aboneliğinizin kimliği ile değiştirin:
+4. Hesabınızla ilişkili birden çok aboneliğiniz varsa, birlikte çalışmak istediğiniz aboneliği seçmek için aşağıdaki komutu çalıştırın. **SubscriptionId**’yi Azure aboneliğinizin kimliği ile değiştirin:
 
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"
@@ -107,7 +107,7 @@ Aşağıdaki noktalara dikkat edin:
 
 * Data Factory örnekleri oluşturmak için, Azure'da oturum açarken kullandığınız kullanıcı hesabı **katkıda bulunan** veya **sahip** rollerinin üyesi ya da bir Azure aboneliğinin **yöneticisi** olmalıdır.
 
-* Data Factory'nin kullanılabileceği Azure bölgelerinin bir listesi için bir sonraki sayfada ilgilendiğiniz bölgeleri seçin ve **Analytics** 'i genişleterek **Data Factory** : [Products available by region](https://azure.microsoft.com/global-infrastructure/services/) (Bölgeye göre kullanılabilir durumdaki ürünler) bölümünü bulun. Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
+* Data Factory'nin kullanılabileceği Azure bölgelerinin bir listesi için bir sonraki sayfada ilgilendiğiniz bölgeleri seçin ve **Analytics**'i genişleterek **Data Factory**: [Products available by region](https://azure.microsoft.com/global-infrastructure/services/) (Bölgeye göre kullanılabilir durumdaki ürünler) bölümünü bulun. Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
 
 
 ## <a name="create-a-linked-service"></a>Bağlı hizmet oluşturma
@@ -115,7 +115,7 @@ Aşağıdaki noktalara dikkat edin:
 Veri depolarınızı ve işlem hizmetlerinizi veri fabrikasına bağlamak için veri fabrikasında bağlı hizmetler oluşturun. Bu hızlı başlangıçta hem kaynak hem de havuz deposu olarak kullanılan bir Azure Depolama bağlı hizmeti oluşturursunuz. Bağlı hizmetler, Data Factory hizmetinin bunlara bağlanmak için çalışma zamanında kullandığı bağlantı bilgilerini içerir.
 
 >[!TIP]
->Bu hızlı başlangıçta, *hesap anahtarını* veri deponuzu kimlik doğrulama türü olarak kullanacaksınız, ancak desteklenen diğer kimlik doğrulama yöntemlerini seçebilirsiniz: *SAS URI 'Si* , *hizmet sorumlusu* ve gerekirse *yönetilen kimlik* . Ayrıntılar için [Bu makaledeki](./connector-azure-blob-storage.md#linked-service-properties) ilgili bölümlere bakın.
+>Bu hızlı başlangıçta, *hesap anahtarını* veri deponuzu kimlik doğrulama türü olarak kullanacaksınız, ancak desteklenen diğer kimlik doğrulama yöntemlerini seçebilirsiniz: *SAS URI 'Si*,*hizmet sorumlusu* ve gerekirse *yönetilen kimlik* . Ayrıntılar için [Bu makaledeki](./connector-azure-blob-storage.md#linked-service-properties) ilgili bölümlere bakın.
 >Veri depolarının gizli dizilerini güvenli bir şekilde depolamak için bir Azure Key Vault kullanılması da önerilir. Ayrıntılı çizimler için [Bu makaleye](./store-credentials-in-key-vault.md) bakın.
 
 1. **C:\ADFv2QuickStartPSH** klasöründe aşağıdaki içeriğe sahip **AzureStorageLinkedService.json** adlı bir JSON dosyası oluşturun: (Henüz yoksa ADFv2QuickStartPSH adlı bir klasör oluşturun.).
@@ -136,9 +136,9 @@ Veri depolarınızı ve işlem hizmetlerinizi veri fabrikasına bağlamak için 
     }
     ```
 
-    Not Defteri’ni kullanıyorsanız, **Farklı kaydet** iletişim kutusunda **Farklı kaydetme türü** için **Tüm dosyalar** ’ı seçin. Aksi takdirde, dosyaya `.txt` uzantısını ekleyebilir. Örneğin, `AzureStorageLinkedService.json.txt`. Dosyayı Not Defteri’nde açmadan önce Dosya Gezgini’nde oluşturduysanız, **Bilinen dosya türleri için uzantıları gizle** seçeneği varsayılan olarak ayarlandığı için `.txt` uzantısını görmeyebilirsiniz. Sonraki adıma geçmeden önce `.txt` uzantısını kaldırın.
+    Not Defteri’ni kullanıyorsanız, **Farklı kaydet** iletişim kutusunda **Farklı kaydetme türü** için **Tüm dosyalar**’ı seçin. Aksi takdirde, dosyaya `.txt` uzantısını ekleyebilir. Örneğin, `AzureStorageLinkedService.json.txt`. Dosyayı Not Defteri’nde açmadan önce Dosya Gezgini’nde oluşturduysanız, **Bilinen dosya türleri için uzantıları gizle** seçeneği varsayılan olarak ayarlandığı için `.txt` uzantısını görmeyebilirsiniz. Sonraki adıma geçmeden önce `.txt` uzantısını kaldırın.
 
-2. **PowerShell** ’de **ADFv2QuickStartPSH** klasörüne geçin.
+2. **PowerShell**’de **ADFv2QuickStartPSH** klasörüne geçin.
 
     ```powershell
     Set-Location 'C:\ADFv2QuickStartPSH'
@@ -164,8 +164,8 @@ Veri depolarınızı ve işlem hizmetlerinizi veri fabrikasına bağlamak için 
 ## <a name="create-datasets"></a>Veri kümeleri oluşturma
 
 Bu yordamda iki veri kümesi oluşturursunuz: **InputDataset** ve **OutputDataset**. Bu veri kümeleri **binary** türündedir. Bunlar, önceki bölümde oluşturduğunuz Azure Depolama bağlı hizmetine başvurur.
-Giriş veri kümesi, giriş klasöründeki kaynak verileri temsil eder. Giriş veri kümesi tanımında, kaynak verileri içeren blob kapsayıcısını ( **adftutorial** ), klasörü ( **input** ) ve dosyayı ( **emp.txt** ) belirtirsiniz.
-Çıkış veri kümesi hedefe kopyalanan verileri temsil eder. Çıkış veri kümesi tanımında, verilerin kopyalandığı blob kapsayıcısını ( **adftutorial** ), klasörü ( **output** ) ve dosyayı belirtirsiniz. 
+Giriş veri kümesi, giriş klasöründeki kaynak verileri temsil eder. Giriş veri kümesi tanımında, kaynak verileri içeren blob kapsayıcısını (**adftutorial**), klasörü (**input**) ve dosyayı (**emp.txt**) belirtirsiniz.
+Çıkış veri kümesi hedefe kopyalanan verileri temsil eder. Çıkış veri kümesi tanımında, verilerin kopyalandığı blob kapsayıcısını (**adftutorial**), klasörü (**output**) ve dosyayı belirtirsiniz. 
 1. **C:\ADFv2QuickStartPSH** klasöründe aşağıdaki içeriğe sahip **InputDataset.js** adlı bir JSON dosyası oluşturun:
 
     ```json
@@ -231,7 +231,7 @@ Giriş veri kümesi, giriş klasöründeki kaynak verileri temsil eder. Giriş v
     }
     ```
 
-4. **Outdataset** 'i oluşturmak için **set-AzDataFactoryV2Dataset** cmdlet 'ini çalıştırın.
+4. **Outdataset**'i oluşturmak için **set-AzDataFactoryV2Dataset** cmdlet 'ini çalıştırın.
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $DataFactory.DataFactoryName `
@@ -306,7 +306,7 @@ Bu yordamda, giriş ve çıkış veri kümelerini kullanan bir kopyalama etkinli
     }
     ```
 
-2. İşlem hattını oluşturmak için: **Adfv2QuickStartPipeline** , **set-AzDataFactoryV2Pipeline** cmdlet 'ini çalıştırın.
+2. İşlem hattını oluşturmak için: **Adfv2QuickStartPipeline**, **set-AzDataFactoryV2Pipeline** cmdlet 'ini çalıştırın.
 
     ```powershell
     $DFPipeLine = Set-AzDataFactoryV2Pipeline `

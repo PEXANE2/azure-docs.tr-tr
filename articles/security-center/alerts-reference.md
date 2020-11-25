@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/01/2020
+ms.date: 11/22/2020
 ms.author: memildin
-ms.openlocfilehash: 3cc64d2721f73da36fdc4fce009cccb5fdfd6b6b
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 6d001e638b00cace1dd81d9631f498a911ca19a4
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372702"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96014610"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Güvenlik uyarıları - başvuru kılavuzu
 
@@ -160,6 +160,9 @@ Bu sayfanın en altında, bu uyarıların amaçlarını kategorilere ayırmak i�
 |**Xorg güvenlik açığından yararlanma [birden çok kez görüldü]**|% {Riskli konak} üzerindeki konak verilerinin analizi, şüpheli bağımsız değişkenlerle xorg 'ın kullanıcısını algıladı. Saldırganlar, bu tekniği ayrıcalık yükseltme denemelerinde kullanabilir. Bu davranış şu makinelerde bugün [x] kez görüldü: [makine adları]|-|Orta|
 |**Sunulan Docker Daemon algılandı**|Makine günlükleri, Docker Daemon 'nizin (dockerd) bir TCP yuvası sunduğunu gösterir. Varsayılan olarak, Docker yapılandırması, bir TCP yuvası etkinleştirildiğinde şifreleme veya kimlik doğrulama kullanmaz. Bu, ilgili bağlantı noktasına erişebilen herkes tarafından Docker Daemon 'a tam erişim sağlar.|-|Orta|
 |**SSH deneme yanılma saldırısı başarısız oldu**|Şu saldırganlar tarafından başarısız olan deneme yanılma saldırıları algılandı:% {saldırganlar}. Saldırganlar konağa şu kullanıcı adlarıyla erişmeye çalışıyor:% {Ana bilgisayar denemelerinde oturum açma denemesi sırasında kullanılan hesaplar}.|-|Orta|
+| **Dosya daha az saldırı davranışı algılandı**<br>(AppServices_FilelessAttackBehaviorDetection)| Aşağıda belirtilen işlemin belleği, genellikle dosya daha az saldırı tarafından kullanılan davranışları içerir.<br>Belirli davranışlar şunlardır: {gözlemlenen davranışların listesi}                                                                                                                                                                                                                                                                                                                             | Yürütme                             | Orta   |
+| **Dosya Less saldırı tekniği algılandı**<br>(VM_FilelessAttackTechnique. Linux)| Aşağıda belirtilen işlemin belleği, bir dosya daha az saldırı tekniğinin kanıtını içerir. Dosya daha az saldırı, saldırganlar tarafından, güvenlik yazılımı tarafından algılama sırasında kod yürütmek için kullanılır.<br>Belirli davranışlar şunlardır: {gözlemlenen davranışların listesi}                                                                                                                                                                                                                            | Yürütme                             | Yüksek     |
+| **Dosya Less saldırı araç seti algılandı**<br>(VM_FilelessAttackToolkit. Linux)| Aşağıda belirtilen işlemin belleği bir dosya Less saldırı araç seti içeriyor: {ToolKitName}. Dosya daha az saldırı araç takımları genellikle dosya sisteminde mevcut değildir ve geleneksel virüsten koruma yazılımı tarafından algılamayı zorlaştırır.<br>Belirli davranışlar şunlardır: {gözlemlenen davranışların listesi}                                                                                                                                                                                    | Savunma, yürütme             | Yüksek     |
 |**Gizli dosya yürütme algılandı**|Konak verilerinin çözümlenmesi, gizli bir dosyanın% {User Name} tarafından yürütüldüğünü belirtir. Bu etkinlik meşru etkinlik ya da güvenliği aşılmış bir ana bilgisayar göstergesi olabilir.|-|Bilgilendirici|
 |**DDOS araç seti ile ilişkili göstergeler algılandı [birden çok kez görüldü]**|% {Riskli konak} üzerinde konak verilerinin çözümlenmesi, DDoS saldırıları başlatma yeteneğine sahip kötü amaçlı yazılım ile ilişkili bir araç setinin parçası olan dosya adları tespit etti, bağlantı noktaları ve hizmetler açma ve virüslü sistem üzerinde tam denetim alma. Bu da yasal etkinlik olabilir. Bu davranış şu makinelerde bugün [x] kez görüldü: [makine adları]|-|Orta|
 |**DDOS araç seti ile ilişkili göstergeler algılandı**|% {Riskli konak} üzerinde konak verilerinin çözümlenmesi, DDoS saldırıları başlatma yeteneğine sahip kötü amaçlı yazılım ile ilişkili bir araç setinin parçası olan dosya adları tespit etti, bağlantı noktaları ve hizmetler açma ve virüslü sistem üzerinde tam denetim alma. Bu da yasal etkinlik olabilir.|-|Orta|

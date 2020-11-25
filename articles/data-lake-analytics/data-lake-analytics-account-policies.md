@@ -6,11 +6,11 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 04/30/2018
 ms.openlocfilehash: ba69098f32e131714a15923aef64c3f6ba17e18f
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219505"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013318"
 ---
 # <a name="manage-azure-data-lake-analytics-using-account-policies"></a>Hesap Ilkelerini kullanarak Azure Data Lake Analytics yönetme
 
@@ -26,7 +26,7 @@ Data Lake Analytics hesabınız için AU sayısını değiştirmek için:
 
 1. Azure portal Data Lake Analytics hesabınıza gidin.
 2. **Sınırlar ve ilkeler**' e tıklayın.
-3. **Maksimum**au altında, bir değer seçmek için kaydırıcıyı taşıyın veya metin kutusuna değeri girin.
+3. **Maksimum** au altında, bir değer seçmek için kaydırıcıyı taşıyın veya metin kutusuna değeri girin.
 4. **Kaydet**’e tıklayın.
 
    > [!NOTE]
@@ -40,7 +40,7 @@ Aynı anda çalışabilecek işlerin sayısını değiştirmek için:
 
 1. Azure portal Data Lake Analytics hesabınıza gidin.
 2. **Sınırlar ve ilkeler**' e tıklayın.
-3. **En fazla çalışan Iş sayısı**altında, kaydırıcıyı bir değer seçmek için taşıyın veya metin kutusuna değeri girin.
+3. **En fazla çalışan Iş sayısı** altında, kaydırıcıyı bir değer seçmek için taşıyın veya metin kutusuna değeri girin.
 4. **Kaydet**’e tıklayın.
 
    > [!NOTE]
@@ -54,7 +54,7 @@ Kullanıcılarınız U-SQL işleri çalıştırdıklarında, Data Lake Analytics
 
 1. Azure portal Data Lake Analytics hesabınıza gidin.
 2. **Sınırlar ve ilkeler**' e tıklayın.
-3. **Iş sorgularını**bekletmek için, kaydırıcıyı hareket ettirmek için bir değer seçin veya metin kutusuna değeri girin.  
+3. **Iş sorgularını** bekletmek için, kaydırıcıyı hareket ettirmek için bir değer seçin veya metin kutusuna değeri girin.  
 4. **Kaydet**’e tıklayın.
 
 ## <a name="job-level-policies"></a>İş düzeyi ilkeleri
@@ -78,7 +78,7 @@ Her hesapta ayarlanmış bir varsayılan ilke vardır. Varsayılan ilke, hesabı
 
 2. **Sınırlar ve ilkeler**' e tıklayın.
 
-3. **Iş gönderme sınırları**altında, **ilke Ekle** düğmesine tıklayın. Ardından, aşağıdaki ayarları seçin veya girin:
+3. **Iş gönderme sınırları** altında, **ilke Ekle** düğmesine tıklayın. Ardından, aşağıdaki ayarları seçin veya girin:
 
    1. **Işlem Ilkesi adı**: ilkenin amacını hatırlatmak için bir ilke adı girin.
 
@@ -90,7 +90,7 @@ Her hesapta ayarlanmış bir varsayılan ilke vardır. Varsayılan ilke, hesabı
 
 4. **Tamam**’a tıklayın.
 
-5. Yeni ilke, **varsayılan** Ilke tablosunda **iş gönderme sınırları**altında listelenir.
+5. Yeni ilke, **varsayılan** Ilke tablosunda **iş gönderme sınırları** altında listelenir.
 
 ## <a name="delete-or-edit-an-existing-policy"></a>Var olan bir ilkeyi silme veya düzenleme
 

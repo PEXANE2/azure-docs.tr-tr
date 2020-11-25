@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 899bc3fdc94b8232acd3edf3e0cbab3c481ff8f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081857"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013742"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Dayanıklı İşlevler bağlamaları (Azure Işlevleri)
 
@@ -128,7 +128,7 @@ Etkinlik tetikleyicisi, [etkinlik işlevleri](durable-functions-types-features-o
 
 Visual Studio kullanıyorsanız, etkinlik tetikleyicisi `ActivityTriggerAttribute` .net özniteliği kullanılarak yapılandırılır.
 
-Geliştirme için VS Code veya Azure portal kullanıyorsanız, etkinlik tetikleyicisi `bindings` * üzerindefunction.js*dizisinde aşağıdaki JSON nesnesi tarafından tanımlanır:
+Geliştirme için VS Code veya Azure portal kullanıyorsanız, etkinlik tetikleyicisi `bindings` *üzerindefunction.js* dizisinde aşağıdaki JSON nesnesi tarafından tanımlanır:
 
 ```json
 {
@@ -249,7 +249,7 @@ Orchestration istemci bağlaması, Orchestrator işlevleriyle etkileşime geçen
 
 Visual Studio kullanıyorsanız, `OrchestrationClientAttribute` Dayanıklı İşlevler 1,0 için .net özniteliğini kullanarak Orchestration istemcisine bağlanabilirsiniz. Dayanıklı İşlevler 2,0 ' den başlayarak, .net özniteliğini kullanarak Orchestration istemcisine bağlanabilirsiniz `DurableClientAttribute` .
 
-Geliştirme için betik dilleri (örneğin, *. CSX* veya *. js* dosyaları) kullanıyorsanız, düzenleme tetikleyicisi `bindings` * üzerindefunction.js*dizisinde aşağıdaki JSON nesnesi tarafından tanımlanır:
+Geliştirme için betik dilleri (örneğin, *. CSX* veya *. js* dosyaları) kullanıyorsanız, düzenleme tetikleyicisi `bindings` *üzerindefunction.js* dizisinde aşağıdaki JSON nesnesi tarafından tanımlanır:
 
 ```json
 {
@@ -511,7 +511,7 @@ Visual Studio kullanıyorsanız, .net özniteliğini kullanarak Entity Client 'a
 > [!NOTE]
 > `[DurableClientAttribute]` [Orchestration istemcisine](#orchestration-client)bağlamak için de kullanılabilir.
 
-Geliştirme için betik dilleri (örneğin, *. CSX* veya *. js* dosyaları) kullanıyorsanız, varlık tetikleyicisi, `bindings` * üzerindefunction.js*dizisinde aşağıdaki JSON nesnesi tarafından tanımlanır:
+Geliştirme için betik dilleri (örneğin, *. CSX* veya *. js* dosyaları) kullanıyorsanız, varlık tetikleyicisi, `bindings` *üzerindefunction.js* dizisinde aşağıdaki JSON nesnesi tarafından tanımlanır:
 
 ```json
 {
@@ -533,9 +533,9 @@ Geliştirme için betik dilleri (örneğin, *. CSX* veya *. js* dosyaları) kull
 
 .NET işlevlerinde, genellikle `IDurableEntityClient` , dayanıklı varlıkların desteklediği tüm Istemci API 'lerine tam erişim sağlayan öğesine bağlayabilirsiniz. Ayrıca `IDurableOrchestrationClient` , her iki varlık ve düzenleme için Istemci API 'lerine erişim sağlayan arabirimine de bağlanabilirsiniz. İstemci nesnesindeki API 'Ler şunları içerir:
 
-* **Readentitystateasync \<T> **: bir varlığın durumunu okur. Hedef varlığın mevcut olup olmadığını ve Öyleyse durumunun ne olduğunu belirten bir yanıt döndürür.
+* **Readentitystateasync \<T>**: bir varlığın durumunu okur. Hedef varlığın mevcut olup olmadığını ve Öyleyse durumunun ne olduğunu belirten bir yanıt döndürür.
 * **Tiflentityasync**: bir varlığa tek yönlü bir ileti gönderir ve kuyruğa alınıp alınmasını bekler.
-* **Listentitiesasync**: birden çok varlığın durumu için sorgular. Varlıklar, *ad* ve *son işlem zamanına*göre sorgulanabilir.
+* **Listentitiesasync**: birden çok varlığın durumu için sorgular. Varlıklar, *ad* ve *son işlem zamanına* göre sorgulanabilir.
 
 Bir sinyal göndermeden önce hedef varlık oluşturmanız gerekmez; varlık durumu, sinyali işleyen varlık işlevinin içinden oluşturulabilir.
 

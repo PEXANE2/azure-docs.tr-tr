@@ -11,11 +11,11 @@ ms.topic: how-to
 ms.date: 11/11/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 9c522d870a25b3df34ab6a0cf1c1e944a6462685
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93284484"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013998"
 ---
 # <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>Anahtar Kasası gizliliklerin durum değişiklikleriyle ilgili e-posta almak için Logic Apps kullanın
 
@@ -53,35 +53,35 @@ Azure Event Grid aboneliği oluşturmak için aşağıdaki adımları izleyin:
     ![Logic App Designer-olay işleyicisi](../media/eventgrid-logicappdesigner2.png)
 
 1. **+ Yeni adım** ' ı seçin Bu işlem bir eylem seçmek üzere bir pencere açar.
-1. **E-posta** 'yı arayın. E-posta sağlayıcınıza uygun bağlayıcıyı bulun ve seçin. Bu öğreticide **Office 365 Outlook** kullanılır. Diğer e-posta sağlayıcılarının adımları da bunlara benzer.
+1. **E-posta**'yı arayın. E-posta sağlayıcınıza uygun bağlayıcıyı bulun ve seçin. Bu öğreticide **Office 365 Outlook** kullanılır. Diğer e-posta sağlayıcılarının adımları da bunlara benzer.
 1. **E-posta gönder (v2)** eylemini seçin.
 
    ![Mantıksal uygulama Tasarımcısı-e-posta gönder](../media/eventgrid-logicappdesigner3.png)
 
 1. E-posta şablonunuzu oluşturun:
     - **Şunları yapmak için:** Bildirim e-postalarını alacak e-posta adresini girin. Bu öğreticide, test için erişebileceğiniz bir e-posta hesabı kullanın.
-    - **Konu** ve **Gövde** : E-postanızın metnini yazın. Olay verilerine göre dinamik içerik eklemek için seçici aracından JSON özelliklerini seçin. Kullanarak olayın verilerini alabilirsiniz `@{triggerBody()?['Data']}` .
+    - **Konu** ve **Gövde**: E-postanızın metnini yazın. Olay verilerine göre dinamik içerik eklemek için seçici aracından JSON özelliklerini seçin. Kullanarak olayın verilerini alabilirsiniz `@{triggerBody()?['Data']}` .
 
     E-posta şablonunuz, bu örneğe benzeyebilir.
 
     ![Mantıksal uygulama Tasarımcısı-e-posta gövdesi](../media/eventgrid-logicappdesigner4.png)
 
-8. **Farklı kaydet** ' e tıklayın.
-9. Yeni mantıksal uygulama için bir **ad** girin ve **Oluştur** ' a tıklayın.
+8. **Farklı kaydet**' e tıklayın.
+9. Yeni mantıksal uygulama için bir **ad** girin ve **Oluştur**' a tıklayın.
     
     ![Mantıksal uygulama Tasarımcısı-oluştur](../media/eventgrid-logicappdesigner5.png)
 
 ## <a name="test-and-verify"></a>Test ve doğrulama
 
-1.  Azure portal anahtar kasanıza gidin ve **olay abonelikleri > olaylar** ' ı seçin.  Yeni bir aboneliğin oluşturulduğunu doğrulama
+1.  Azure portal anahtar kasanıza gidin ve **olay abonelikleri > olaylar**' ı seçin.  Yeni bir aboneliğin oluşturulduğunu doğrulama
     
     ![Mantıksal uygulama Tasarımcısı-test ve doğrulama](../media/eventgrid-logicapps-kvnewsubs.png)
 
-1.  Anahtar kasanıza gidin, **gizlilikler** ' ı seçin ve **+ Oluştur/al** ' ı seçin. Sınama amacıyla yeni bir gizli dizi oluşturun anahtarı adlandırın ve varsayılan ayarlarında kalan parametreleri saklayın.
+1.  Anahtar kasanıza gidin, **gizlilikler**' ı seçin ve **+ Oluştur/al**' ı seçin. Sınama amacıyla yeni bir gizli dizi oluşturun anahtarı adlandırın ve varsayılan ayarlarında kalan parametreleri saklayın.
 
     ![Key Vault-gizli dizi oluştur](../media/eventgrid-logicapps-kv-create-secret.png)
 
-1. Gizli dizi **Oluştur** ekranında herhangi bir ad ve herhangi bir değer girip **Oluştur** ' u seçin.
+1. Gizli dizi **Oluştur** ekranında herhangi bir ad ve herhangi bir değer girip **Oluştur**' u seçin.
 
 Gizli dizi oluşturulduğunda, yapılandırılan adreslerde bir e-posta alınır.
 

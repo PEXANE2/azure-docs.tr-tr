@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: apimpm
 ms.openlocfilehash: 44de30438d59252a431bf37ac6919a9bc186c8ed
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315728"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013559"
 ---
 > [!NOTE]
 > Bu belge içeriği kullanım dışı olan geliştirici portalı ile ilgilidir. Bu hizmeti, her zamanki gibi kullanmaya devam edebilirsiniz, bu, tüm API Management hizmetlerinden kaldırılacak olan 2023 Ekim 'de devre dışı kalır. Kullanımdan kaldırılan Portal yalnızca kritik güvenlik güncelleştirmelerini alacaktır. Daha ayrıntılı bilgi için aşağıdaki makalelere bakın:

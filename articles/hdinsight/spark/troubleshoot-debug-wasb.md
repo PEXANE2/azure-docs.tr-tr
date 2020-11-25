@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/18/2020
 ms.openlocfilehash: 85e974d51f49bbb6742683ed253c077bb3ff69de
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545557"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014661"
 ---
 # <a name="debug-wasb-file-operations-in-azure-hdinsight"></a>Azure HDInsight 'ta işlem hatalarını ayıklama dosyası işlemleri
 
@@ -28,13 +28,13 @@ Azure depolama ile ilgili olan işlemleri hangi işlemlerin başlatıldığını
 
 1. Bir Web tarayıcısından, ' a gidin `https://CLUSTERNAME.azurehdinsight.net/#/main/services/SPARK2/configs` , burada `CLUSTERNAME` Spark kümenizin adıdır.
 
-1. **Gelişmiş spark2-Log4J-Özellikler** ' e gidin.
+1. **Gelişmiş spark2-Log4J-Özellikler**' e gidin.
 
     1. Öğesini `log4j.appender.console.Threshold=INFO` olarak değiştirin `log4j.appender.console.Threshold=DEBUG` .
 
     1. Ekleyin `log4j.logger.org.apache.hadoop.fs.azure.NativeAzureFileSystem=DEBUG` .
 
-1. **Gelişmiş livy2-Log4J-Özellikler** ' e gidin.
+1. **Gelişmiş livy2-Log4J-Özellikler**' e gidin.
 
     Ekleyin `log4j.logger.org.apache.hadoop.fs.azure.NativeAzureFileSystem=DEBUG` .
 

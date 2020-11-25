@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/01/2018
 ms.openlocfilehash: 9163071237041d7c8510a644c573e3763434bb0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87060673"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014406"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>Azure Logic Apps'te mantıksal uygulama iş akışı tanımları için JSON kodu oluşturma, düzenleme ve uzatma
 
@@ -28,7 +28,7 @@ Logic Apps 'e yeni başladıysanız, [ilk mantıksal uygulamanızı oluşturma](
 
 ## <a name="edit-json---azure-portal"></a>JSON-Azure portal Düzenle
 
-1. <a href="https://portal.azure.com" target="_blank">Azure Portal</a>’ında oturum açın.
+1. <a href="https://portal.azure.com" target="_blank">Azure portalında</a> oturum açın.
 
 2. Sol menüden **tüm hizmetler**' i seçin.
 Arama kutusunda, "Logic Apps" i bulun ve ardından sonuçlardan mantıksal uygulamanızı seçin.
@@ -46,7 +46,7 @@ Visual Studio 'da doğrudan Azure portal veya Visual Studio 'dan Azure Resource 
 
 1. Mantıksal uygulamanızı içeren Visual Studio çözümünü veya [Azure Kaynak grubu](../azure-resource-manager/management/overview.md) projesini açın.
 
-2. Mantıksal uygulamanızın tanımını bulun ve açın, varsayılan olarak, **LogicApp.js**adlı [Kaynak Yöneticisi şablonunda](../azure-resource-manager/templates/overview.md)görünür.
+2. Mantıksal uygulamanızın tanımını bulun ve açın, varsayılan olarak, **LogicApp.js** adlı [Kaynak Yöneticisi şablonunda](../azure-resource-manager/templates/overview.md)görünür.
 Bu şablonu, farklı ortamlara dağıtım için kullanabilir ve özelleştirebilirsiniz.
 
 3. Mantıksal uygulama tanımınız ve şablonunuz için kısayol menüsünü açın.
@@ -67,7 +67,7 @@ Bu şablonu, farklı ortamlara dağıtım için kullanabilir ve özelleştirebil
 
 Dağıtım yaşam döngüsü genellikle geliştirme, test, hazırlama ve üretim için farklı ortamlara sahiptir. Mantıksal uygulama genelinde yeniden kullanmak istediğiniz değerlere sahip olduğunuzda veya dağıtım gereksinimlerinize göre değişiklik yaparken, mantıksal uygulama dağıtımını otomatikleştirebilmeniz için iş akışı tanımınız için bir [Azure Resource Manager şablonu](../azure-resource-manager/management/overview.md) oluşturabilirsiniz.
 
-Bunun yerine bu değerleri *parametreleştirmek*veya parametreleri tanımlamak ve kullanmak için bu genel adımları izleyin. Daha sonra bu değerleri şablonunuza geçiren ayrı bir parametre dosyasında değerleri sağlayabilirsiniz. Bu şekilde, mantıksal uygulamanızı güncelleştirip yeniden dağıtmanıza gerek kalmadan bu değerleri daha kolay bir şekilde değiştirebilirsiniz. Tam Ayrıntılar için bkz. [genel bakış: Azure Resource Manager şablonlarıyla Logic Apps için dağıtımı otomatikleştirin](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md).
+Bunun yerine bu değerleri *parametreleştirmek* veya parametreleri tanımlamak ve kullanmak için bu genel adımları izleyin. Daha sonra bu değerleri şablonunuza geçiren ayrı bir parametre dosyasında değerleri sağlayabilirsiniz. Bu şekilde, mantıksal uygulamanızı güncelleştirip yeniden dağıtmanıza gerek kalmadan bu değerleri daha kolay bir şekilde değiştirebilirsiniz. Tam Ayrıntılar için bkz. [genel bakış: Azure Resource Manager şablonlarıyla Logic Apps için dağıtımı otomatikleştirin](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md).
 
 1. Şablonunuzda, sırasıyla dağıtım ve çalışma zamanında kullanılacak değerleri kabul etmek için şablon parametreleri ve iş akışı Tanım parametrelerini tanımlayın.
 
@@ -221,7 +221,7 @@ Bir özelliğin değerini temel alan farklı sonuçlar almak için, her özellik
 
 ## <a name="get-data-with-date-functions"></a>Tarih işlevleri ile veri al
 
-*Tetikleyicileri*yerel olarak desteklemeyen bir veri kaynağından veri almak Için, tarih işlevlerini kullanarak saat ve tarihlerle çalışma yapabilirsiniz.
+*Tetikleyicileri* yerel olarak desteklemeyen bir veri kaynağından veri almak Için, tarih işlevlerini kullanarak saat ve tarihlerle çalışma yapabilirsiniz.
 Örneğin, bu ifade, bu iş akışı adımlarının ne kadar süre sürdüğünü, içten dışarıya çalışmayı bulur:
 
 ``` json

@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
 ms.openlocfilehash: 390a8a49e9a47ee5e6845d85fe4fe02f514708e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362206"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013624"
 ---
 # <a name="how-does-hyper-v-replication-work"></a>Hyper-V çoğaltma nasıl çalışır?
 
@@ -72,7 +72,7 @@ Her Hyper-V konağında Azure 'a veri yüklemek için kullanılan bant genişli�
 1. Hyper-V konağında veya küme düğümünde oturum açın.
 2. Windows Azure Backup MMC ek bileşenini açmak için **C:\Program Files\Microsoft Azure Kurtarma Hizmetleri ' ni T\bin\wabadmin.msc**' yi çalıştırın.
 3. Ek bileşende **Özellikleri Değiştir**' i seçin.
-4. **Daraltma**bölümünde, **yedekleme işlemleri için internet bant genişliği kullanımını azaltmayı etkinleştir**' i seçin. Çalışma ve çalışılmayan saatlerin sınırlarını ayarlayın. Geçerli aralıklar 512 kbps ile 1.023 Mbps arasındadır.
+4. **Daraltma** bölümünde, **yedekleme işlemleri için internet bant genişliği kullanımını azaltmayı etkinleştir**' i seçin. Çalışma ve çalışılmayan saatlerin sınırlarını ayarlayın. Geçerli aralıklar 512 kbps ile 1.023 Mbps arasındadır.
 I
 
 ### <a name="influence-upload-efficiency"></a>Karşıya yükleme verimliliğini etkiler

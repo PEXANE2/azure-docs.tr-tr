@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: mbaldwin
 ms.openlocfilehash: 018570019b306dced76760fefa4441ee7d86ad2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88189831"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013964"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure Key Vault .NET 2,0-sürüm notları ve geçiş kılavuzu
-Aşağıdaki bilgiler C# ve .NET için Azure Key Vault kitaplığının 2,0 sürümüne geçirmeye yardımcı olur.  Önceki sürümler için yazılan uygulamaların, en son sürümü destekleyecek şekilde güncelleştirilmesi gerekir.  Bu değişiklikler, **Key Vault sertifikaları**gibi yeni ve geliştirilmiş özellikleri tam olarak desteklemek için gereklidir.
+Aşağıdaki bilgiler C# ve .NET için Azure Key Vault kitaplığının 2,0 sürümüne geçirmeye yardımcı olur.  Önceki sürümler için yazılan uygulamaların, en son sürümü destekleyecek şekilde güncelleştirilmesi gerekir.  Bu değişiklikler, **Key Vault sertifikaları** gibi yeni ve geliştirilmiş özellikleri tam olarak desteklemek için gereklidir.
 
 ## <a name="key-vault-certificates"></a>Key Vault sertifikaları
 
@@ -36,9 +36,9 @@ Key Vault sertifikaları x509 sertifikalarını yönetir ve aşağıdaki davran�
 * **.NET Framework 4.5.2** , Azure Key Vault .net kitaplığının 2,0 sürümü tarafından desteklenir
 * **.NET Standard 1,4** , Azure Key Vault .net kitaplığının 2,0 sürümü tarafından destekleniyor
 
-## <a name="namespaces"></a>Ad Alanları
+## <a name="namespaces"></a>Ad alanları
 
-* **Modeller** için ad alanı **Microsoft. Azure. Keykasasından** **Microsoft. Azure. keykasa. modellerle**değiştirilmiştir.
+* **Modeller** için ad alanı **Microsoft. Azure. Keykasasından** **Microsoft. Azure. keykasa. modellerle** değiştirilmiştir.
 * **Microsoft. Azure. Keykasası. Internal** ad alanı bırakılır.
 * Aşağıdaki Azure SDK bağımlılıkları ad alanları 
 
@@ -49,18 +49,18 @@ Key Vault sertifikaları x509 sertifikalarını yönetir ve aşağıdaki davran�
 
 * *Gizli anahtar* , *secretdemeti* olarak değiştirildi
 * *Sözlük* *IDictionary* olarak değiştirildi
-* *List \<T> , String [],* *IList \<T> * olarak değiştirildi
+* *List \<T> , String [],* *IList \<T>* olarak değiştirildi
 * *Nextlist* , *NextPageLink* olarak değiştirildi
 
 ## <a name="return-types"></a>Dönüş türleri
 
-* **Keylist** ve **Secrelıst** artık *Listkeysresponsemessage* yerine *Ipage \<T> * döndürüyor
-* Oluşturulan **Backupkeyasync** artık *değer* (yedek blob) içeren *backupkeyresult*öğesini döndürüyor. Daha önce, yöntemi sarmalanmış ve yalnızca değeri döndürdü.
+* **Keylist** ve **Secrelıst** artık *Listkeysresponsemessage* yerine *Ipage \<T>* döndürüyor
+* Oluşturulan **Backupkeyasync** artık *değer* (yedek blob) içeren *backupkeyresult* öğesini döndürüyor. Daha önce, yöntemi sarmalanmış ve yalnızca değeri döndürdü.
 
-## <a name="exceptions"></a>Özel Durumlar
+## <a name="exceptions"></a>Özel durumlar
 
 * *Keyvaultclientexception* değeri *Keyvaulterrorexception* olarak değiştirildi
-* Hizmet hatası özel durumdan değiştirildi *. * *Özel durum hatası. Body. Error. Message*.
+* Hizmet hatası özel durumdan değiştirildi *.* *Özel durum hatası. Body. Error. Message*.
 * **[Jsonextensiondata]** hata iletisinden daha fazla bilgi kaldırıldı.
 
 ## <a name="constructors"></a>Oluşturucular
@@ -91,7 +91,7 @@ Bir istemci bir Key Vault bağımlılığını işlediğinde, aşağıdaki paket
 ## <a name="class-changes"></a>Sınıf değişiklikleri
 
 * **Unixepoch** sınıfı kaldırılmıştır.
-* **Base64UrlConverter** sınıfı **Base64UrlJsonConverter**olarak yeniden adlandırıldı.
+* **Base64UrlConverter** sınıfı **Base64UrlJsonConverter** olarak yeniden adlandırıldı.
 
 ## <a name="other-changes"></a>Diğer değişiklikler
 
@@ -99,7 +99,7 @@ Bir istemci bir Key Vault bağımlılığını işlediğinde, aşağıdaki paket
 
 ## <a name="microsoftazuremanagementkeyvault-nuget"></a>Microsoft. Azure. Management. Keykasa NuGet
 
-* Bir *kasa*döndüren işlemler için, dönüş türü bir **kasa** özelliği içeren bir sınıftır. Dönüş türü artık *kasa*.
+* Bir *kasa* döndüren işlemler için, dönüş türü bir **kasa** özelliği içeren bir sınıftır. Dönüş türü artık *kasa*.
 * *Permissionstokeys* ve *permissionstogizlilikler* artık *Izinlerdir. anahtarlar* ve *izinler. gizlilikler*
 * Belirli dönüş türleri değişiklikleri denetim düzlemi için de geçerlidir.
 

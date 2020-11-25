@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 596de459b888bb9973aca1c7d72f2f9e24c966eb
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445141"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013981"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault Geliştirici Kılavuzu
 
@@ -56,11 +56,11 @@ Key Vault, Azure AD kimlik doğrulamasını kullanarak erişim izni vermesini ge
 Azure 'a dağıtılan uygulamalar için yönetilen kimlik kullanılması önerilir. Yönetilen kimliği desteklemeyen veya şirket içinde dağıtılan uygulamalar için Azure hizmetlerini kullanıyorsanız, [sertifikaya sahip hizmet sorumlusu](../../active-directory/develop/howto-create-service-principal-portal.md) olası bir alternatiftir. Bu senaryoda, sertifika Key Vault depolanmalıdır ve genellikle döndürülmelidir. Gizli hizmet sorumlusu, geliştirme ve test ortamları için ve yerel olarak veya Cloud Shell Kullanıcı sorumlusu kullanılarak kullanılması önerilir.
 
 Ortam başına önerilen güvenlik sorumluları:
-- **Üretim ortamı** :
+- **Üretim ortamı**:
   - Bir sertifikayla yönetilen kimlik veya hizmet sorumlusu
-- **Test ve geliştirme ortamları** :
+- **Test ve geliştirme ortamları**:
   - Yönetilen kimlik, sertifika veya gizli hizmet sorumlusu olan hizmet sorumlusu
-- **Yerel geliştirme** :
+- **Yerel geliştirme**:
   - Gizli anahtar içeren Kullanıcı sorumlusu veya hizmet sorumlusu
 
 Yukarıdaki kimlik doğrulama senaryoları, **Azure Identity istemci kitaplığı** tarafından desteklenir ve Key Vault SDK 'lar ile tümleşiktir. Azure kimlik kitaplığı, kodunuzu değiştirmeden farklı ortamlar ve platformlar arasında kullanılabilir. Azure Identity Ayrıca Azure CLı, Visual Studio, Visual Studio Code ve diğer kişilerle Azure User 'a oturum açmış olan kimlik doğrulama belirtecini otomatik olarak alır. 

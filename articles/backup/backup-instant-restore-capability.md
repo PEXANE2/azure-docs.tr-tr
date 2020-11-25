@@ -4,18 +4,18 @@ description: VM yedekleme yığını, Kaynak Yöneticisi dağıtım modeli için
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 95de22d8493181f098e480afc4f319c44c633e42
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 147fadc92429157ed2f9ba3eb68297a3e1d08d24
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173922"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96014457"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Azure Backup Instant Restore özelliğiyle gelişmiş yedekleme ve geri yükleme performansı alın
 
 > [!NOTE]
 > Kullanıcılardan gelen geri bildirimlere bağlı olarak, Azure Stack işlevlerle karışıklık azaltmak için **VM yedekleme yığını v2** 'Yi **anında geri yükleme** olarak yeniden adlandırdık.
-> Tüm Azure Backup kullanıcılar artık **anında geri yüklemeye**yükseltildi.
+> Tüm Azure Backup kullanıcılar artık **anında geri yüklemeye** yükseltildi.
 
 Anında geri yükleme için yeni model aşağıdaki özellik geliştirmelerini sağlar:
 
@@ -117,3 +117,8 @@ Kurtarma noktasının bir anlık görüntüsü varsa ve en son kurtarma noktası
 ### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>Anlık geri yükleme işlevselliğine ihtiyacım yok. Devre dışı bırakılabilir mi?
 
 Anlık geri yükleme özelliği herkes için etkin ve devre dışı bırakılamaz. Anlık görüntü bekletmesini en az bir güne azaltabilirsiniz.
+
+### <a name="is-it-safe-to-restart-the-vm-during-the-transfer-process-which-can-take-many-hours-will-restarting-the-vm-interrupt-or-slow-down-the-transfer"></a>Aktarım işlemi sırasında VM 'yi yeniden başlatmak güvenli mi (birkaç saat sürebilir)? VM kesmesi yeniden başlatılıyor veya aktarma yavaşlıyor mu?
+
+Güvenli bir şekilde Evet ve veri aktarımı hızında kesinlikle hiçbir etkisi yoktur.
+

@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: data-factory
 author: linda33wj
 ms.author: jingwang
@@ -9,11 +9,11 @@ ms.topic: include
 ms.custom: include file
 ms.date: 06/27/2019
 ms.openlocfilehash: a979cd0a4c2ee6466edebadf61e8a98b8f17c9f3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86544428"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013386"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -63,7 +63,7 @@ Bu bölümde, Azure Blob depolama alanında **adftutorial** adlı bir blob kapsa
 
 #### <a name="add-an-input-folder-and-file-for-the-blob-container"></a>Blob kapsayıcısı için bir giriş klasörü ve dosyası ekleyin
 
-Bu bölümde, oluşturduğunuz kapsayıcıda **giriş** adlı bir klasör oluşturur ve ardından giriş klasörüne örnek bir dosya yüklersiniz. Başlamadan önce, **Not defteri**gibi bir metin düzenleyicisini açın ve aşağıdaki içeriğe sahip **emp.txt** adlı bir dosya oluşturun:
+Bu bölümde, oluşturduğunuz kapsayıcıda **giriş** adlı bir klasör oluşturur ve ardından giriş klasörüne örnek bir dosya yüklersiniz. Başlamadan önce, **Not defteri** gibi bir metin düzenleyicisini açın ve aşağıdaki içeriğe sahip **emp.txt** adlı bir dosya oluşturun:
 
 ```emp.txt
 John, Doe
