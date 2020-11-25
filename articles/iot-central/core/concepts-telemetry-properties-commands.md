@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 24fbe347aeb0b47ffd1ba694f761d909ff2950f8
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 5b1bbce68be19c2dbb08f7d69611b719b450a370
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94989556"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96121757"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Telemetri, özellik ve komut yükleri
 
@@ -36,7 +36,7 @@ Her örnek, cihazın IoT Central uygulamayla nasıl etkileşime gireceğini gös
 
 Cihaz modelini tanımlayan JSON dosyası [Digital Ikizi tanım dili (DTDL) v2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)kullanır.
 
-Kullanımda olan bu yüklerden bazılarını gösteren örnek cihaz kodu için bkz. [azure IoT Central uygulamanıza istemci uygulaması oluşturma ve bağlama (Node.js)](tutorial-connect-device-nodejs.md) ve [bir Istemci uygulamasını oluşturup Azure IoT Central uygulamanız (Python)](tutorial-connect-device-python.md) öğreticilerimize bağlama.
+Kullanımda olan bu yüklerin bazılarını gösteren örnek cihaz kodu için bkz. [Azure IoT Central uygulama öğreticisine istemci uygulaması oluşturma ve bağlama](tutorial-connect-device.md) öğreticisine bakın.
 
 ## <a name="view-raw-data"></a>Ham verileri görüntüleme
 
@@ -717,7 +717,7 @@ IoT Central cihazdan yazılabilir Özellik güncelleştirmelerine yanıt bekliyo
 
 `ac` , aşağıdaki tablodaki değerleri kullanan sayısal bir alandır:
 
-| Değer | Etiketle | Description |
+| Değer | Etiketle | Açıklama |
 | ----- | ----- | ----------- |
 | `'ac': 200` | Tamamlandı | Özellik değiştirme işlemi başarıyla tamamlandı. |
 | `'ac': 202`  veya `'ac': 201` | Beklemede | Özellik değiştirme işlemi bekliyor veya devam ediyor |

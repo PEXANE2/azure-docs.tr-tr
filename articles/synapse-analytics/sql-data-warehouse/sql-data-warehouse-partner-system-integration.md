@@ -9,19 +9,19 @@ ms.subservice: ''
 ms.date: 11/24/2020
 ms.author: procha
 ms.reviewer: jrasnick
-ms.openlocfilehash: 94872d3765a992fd025f30feaab95248ce6831ec
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 19941963b5200b3ffdb9f2360301d30fe9df4823
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "95920154"
+ms.locfileid: "96121843"
 ---
 # <a name="azure-synapse-analytics-system-integration-partners"></a>Azure SYNAPSE Analytics sistem tümleştirme iş ortakları
 
 Bu makalede, Azure SYNAPSE ile çözümler derleme Microsoft Sistem tümleştirme ortağı şirketler açıklanır.
 
-## <a name="our-public-preview-launch-partners"></a>Genel Önizleme başlatma iş ortaklarımız
-| İş Ortağı | Description | Web sitesi/ürün bağlantısı |
+## <a name="system-integration-partners"></a>Sistem tümleştirme iş ortakları
+| İş Ortağı | Açıklama | Web sitesi/ürün bağlantısı |
 | ------- | ----------- | -------------------- |
 | ![Accenture](./media/sql-data-warehouse-partner-public-preview/accenture-logo.png) |**Accenture**<br>Avanada tarafından desteklenen Accenture Microsoft Business Group, 45000 + adanmış profesyonellerinin bir araya getirilmesi, kuruluşların dijital kesintide Misyonumuz etmesine yardımcı olur.|[İş ortağı sayfası](https://www.accenture.com/us-en/services/microsoft-index)<br>|
 | ![Adamı](./media/sql-data-warehouse-partner-public-preview/adatis-logo.png) |**Adamı**<br>Adamı, veri stratejisinden ve geliştiriciliğe 'dan dünya sınıfına gönderim ve yönetilen hizmetlere kadar gelişmiş veri analizlerini özelleştirecek hizmetler sunar. |[İş ortağı sayfası](https://adatis.co.uk/)<br> |

@@ -7,12 +7,12 @@ ms.date: 11/06/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: aeb1e5ee00bd52ebb4bd93dec2f4a1eacb002fb9
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 992fb4422974dad7a48e5fea953ac4530bb52d5c
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94986560"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122603"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>Azure IoT Central çözümünde özellikleri kullanma
 
@@ -35,7 +35,7 @@ Aşağıdaki tabloda bir özellik yeteneği için yapılandırma ayarları göst
 | Alan           | Açıklama                                                                                                                                                                                                                        |
 |-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Görünen ad    | Panolar ve formlarda kullanılan özellik değeri için görünen ad.                                                                                                                                                              |
-| Name            | Özelliğin adı. Azure IoT Central, görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. Bu alan alfasayısal olmalıdır.                                                 |
+| Adı            | Özelliğin adı. Azure IoT Central, görünen adından Bu alan için bir değer oluşturur, ancak gerekirse kendi değerini seçebilirsiniz. Bu alan alfasayısal olmalıdır.                                                 |
 | Yetenek türü | Özelliði.                                                                                                                                                                                                                          |
 | Anlam türü   | Özelliğin sıcaklık, durum veya olay gibi anlam türü. Anlamsal tür seçimi aşağıdaki alanlardan hangisinin kullanılabildiğini belirler.                                                                       |
 | Şema          | Double, String veya Vector gibi özellik veri türü. Kullanılabilir seçimler anlamsal tür tarafından belirlenir. Şema, olay ve durum anlam türleri için kullanılamaz.                                               |
@@ -45,7 +45,7 @@ Aşağıdaki tabloda bir özellik yeteneği için yapılandırma ayarları göst
 | Birim            | **Mph**, **%** veya **&deg; C** gibi özellik değeri için bir birim.                                                                                                                                                              |
 | Görüntüleme birimi    | Panolar ve formlarda kullanılacak bir görüntüleme birimi.                                                                                                                                                                                    |
 | Yorum         | Özellik yeteneği hakkında herhangi bir açıklama.                                                                                                                                                                                        |
-| Description     | Özellik yeteneğinin açıklaması.                                                                                                                                                                                          |
+| Açıklama     | Özellik yeteneğinin açıklaması.                                                                                                                                                                                          |
 
 Özellikler, burada gösterildiği gibi bir cihaz şablonundaki bir arabirim içinde de tanımlanabilir:
 
@@ -160,11 +160,7 @@ hubClient.getTwin((err, twin) => {
 });
 ```
 
-Bu makale basitlik için Node.js kullanır. Cihaz uygulaması örnekleri hakkında tüm bilgiler için aşağıdaki öğreticilere bakın:
-
-* [Bir istemci uygulamasını oluşturma ve Azure IoT Central uygulamanıza bağlama (Node.js)](tutorial-connect-device-nodejs.md)
-* [Bir istemci uygulamasını oluşturma ve Azure IoT Central uygulamanıza bağlama (Python)](tutorial-connect-device-python.md)
-* [Bir istemci uygulamasını oluşturma ve Azure IoT Central uygulamanıza bağlama (Java)](tutorial-connect-device-java.md)
+Bu makale basitlik için Node.js kullanır. Cihaz uygulama örnekleri hakkında daha fazla bilgi için bkz. [Azure IoT Central uygulama öğreticisine bir istemci uygulaması oluşturma ve bu uygulamayı bağlama](tutorial-connect-device.md) öğreticisine bakın.
 
 Azure IoT Central uygulamasındaki aşağıdaki görünüm, görebileceğiniz özellikleri gösterir. Görünüm, **cihaz modeli** özelliğini otomatik olarak bir _salt okuma cihaz özelliği_ yapar.
 
@@ -214,7 +210,7 @@ Yanıt iletisi `ac` ve `av` alanlarını içermelidir. `ad` alanı isteğe bağl
 * `av` cihaza gönderilen sürüm numarasıdır.
 * `ad` , bir seçenek dize açıklamasıdır.
 
-| Değer | Etiketle | Description |
+| Değer | Etiketle | Açıklama |
 | ----- | ----- | ----------- |
 | `'ac': 200` | Tamamlandı | Özellik değiştirme işlemi başarıyla tamamlandı. |
 | `'ac': 202` veya `'ac': 201` | Beklemede | Özellik değiştirme işlemi bekliyor veya devam ediyor. |
@@ -236,4 +232,4 @@ Aşağıdaki görünümde yazılabilir özellikler gösterilmektedir. Değeri gi
 Azure IoT Central uygulamanızda özelliklerin nasıl kullanılacağını öğrendiğinize göre, bkz.:
 
 * [Yükü](concepts-telemetry-properties-commands.md)
-* [Bir istemci uygulamasını oluşturma ve Azure IoT Central uygulamanıza bağlama (Node.js)](tutorial-connect-device-nodejs.md)
+* [Bir istemci uygulamasını oluşturma ve Azure IoT Central uygulamanıza bağlama](tutorial-connect-device.md)

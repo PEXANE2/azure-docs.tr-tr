@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: 82818c8db326889079948cd2b32b2ed0be6ab50d
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: e33f48c9496ffa3cca9d8b1aa71d524be9a311bb
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94990763"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122247"
 ---
 # <a name="iot-central-device-development-overview"></a>IoT Central cihaz geliştirmeye genel bakış
 
@@ -135,7 +135,7 @@ Cihazınızın davranışını uygulamak için [Azure IoT cihaz SDK](#languages-
 
 Cihaz şablonlarının rolü hakkında daha fazla bilgi için bkz. [cihaz şablonları nelerdir?](./concepts-device-templates.md).
 
-Örnek kod için, bkz. [Node.js istemci uygulaması oluşturma ve bağlama](./tutorial-connect-device-nodejs.md) veya [Python istemci uygulaması oluşturma ve bağlama](./tutorial-connect-device-python.md).
+Örnek kod için bkz. [istemci uygulaması oluşturma ve bağlama](./tutorial-connect-device.md).
 
 ### <a name="languages-and-sdks"></a>Diller ve SDK 'lar
 
@@ -143,6 +143,6 @@ Desteklenen diller ve SDK 'lar hakkında daha fazla bilgi için bkz. [Azure IoT 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir cihaz geliştiricisiyseniz ve bazı kodlara gitmek istiyorsanız, önerilen sonraki adım, [bir istemci uygulamasını oluşturmak ve Azure IoT Central uygulamanıza bağlamak](./tutorial-connect-device-nodejs.md)için kullanılır.
+Bir cihaz geliştiricisiyseniz ve bazı kodlara gitmek istiyorsanız, önerilen sonraki adım, [bir istemci uygulamasını oluşturmak ve Azure IoT Central uygulamanıza bağlamak](./tutorial-connect-device.md)için kullanılır.
 
 IoT Central kullanma hakkında daha fazla bilgi edinmek istiyorsanız, önerilen sonraki adımlar, [Azure IoT Central uygulaması oluşturma](./quick-deploy-iot-central.md)ile başlayarak hızlı başlangıç adımlarını denemenize olanak sağlar.

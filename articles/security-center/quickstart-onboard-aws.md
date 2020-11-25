@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 3a2de9b167fcbe9dc603d33fd816e70d5c3705e5
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 7aa65cb8e37ce48a59c276fdf2631f75397d3236
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372787"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122505"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>AWS hesaplarınızı Azure Güvenlik Merkezi 'ne bağlama
 
@@ -42,7 +42,7 @@ Aşağıdaki ekran görüntüsünde, güvenlik merkezi 'nin genel bakış panosu
 |Yayın durumu:|Önizleme<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Fiyat|[Sunucular Için Azure Defender](defender-for-servers-introduction.md) gerekir|
 |Gerekli roller ve izinler:|İlgili Azure aboneliğinde **sahip** veya **katkıda** bulunan|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 
@@ -70,18 +70,18 @@ Güvenlik Merkezi 'nin AWS 'de kimlik doğrulamasına izin vermek için iki yol 
 - **Güvenlik Merkezi Için AWS kullanıcısı** -IAM etkin değilse daha az güvenli bir seçenek
 
 #### <a name="create-an-iam-role-for-security-center"></a>Güvenlik Merkezi için bir ıAM rolü oluşturma
-1. Amazon Web Services konsolınızdan **güvenlik, kimlik & uyumluluk** altında **IAM** ' i seçin.
+1. Amazon Web Services konsolınızdan **güvenlik, kimlik & uyumluluk** altında **IAM**' i seçin.
     :::image type="content" source="./media/quickstart-onboard-aws/aws-identity-and-compliance.png" alt-text="AWS hizmetleri":::
 
-1. **Roller** ' i ve **rol oluştur** ' u seçin.
+1. **Roller** ' i ve **rol oluştur**' u seçin.
 1. **Başka BIR AWS hesabı** seçin.
 1. Şu ayrıntıları girin:
 
-    - **Hesap kimliği** -Güvenlik Merkezi 'ndeki AWS Bağlayıcısı sayfasında gösterildiği gibi MICROSOFT hesap kimliğini ( **158177204117** ) girin.
+    - **Hesap kimliği** -Güvenlik Merkezi 'ndeki AWS Bağlayıcısı sayfasında gösterildiği gibi MICROSOFT hesap kimliğini (**158177204117**) girin.
     - **Dış kimlik gerektir** -seçilmelidir
     - **Dış kimlik** -Güvenlik Merkezi 'ndeki AWS Bağlayıcısı sayfasında gösterildiği gıbı abonelik kimliğini girin 
 
-1. **İleri** ’yi seçin.
+1. **İleri**’yi seçin.
 1. **İzin Ilkeleri Ekle** bölümünde aşağıdaki ilkeleri seçin:
 
     - Securityauıdıt
@@ -89,14 +89,14 @@ Güvenlik Merkezi 'nin AWS 'de kimlik doğrulamasına izin vermek için iki yol 
     - AWSSecurityHubReadOnlyAccess
 
 1. İsteğe bağlı olarak etiketler ekleyin. Kullanıcıya Etiketler eklemek bağlantıyı etkilemez.
-1. **İleri** ’yi seçin.
+1. **İleri**’yi seçin.
 
 1. Roller listesinde, oluşturduğunuz rolü seçin
 
 1. Amazon kaynak adını (ARN) daha sonra kaydedin. 
 
 #### <a name="create-an-aws-user-for-security-center"></a>Güvenlik Merkezi için AWS kullanıcısı oluşturma 
-1. **Kullanıcılar** sekmesini açın ve **Kullanıcı Ekle** ' yi seçin.
+1. **Kullanıcılar** sekmesini açın ve **Kullanıcı Ekle**' yi seçin.
 1. **Ayrıntılar** adımında, Güvenlik Merkezi için bir Kullanıcı adı girin ve AWS erişim türü için **programlı erişim** ' i seçtiğinizden emin olun. 
 1. **Sonraki izinleri** seçin.
 1. **Mevcut ilkeleri doğrudan Ekle** ' yi seçin ve aşağıdaki ilkeleri uygulayın:
@@ -104,10 +104,10 @@ Güvenlik Merkezi 'nin AWS 'de kimlik doğrulamasına izin vermek için iki yol 
     - AmazonSSMAutomationRole
     - AWSSecurityHubReadOnlyAccess
     
-1. **Sonraki: Etiketler** ' i seçin. İsteğe bağlı olarak etiketler ekleyin. Kullanıcıya Etiketler eklemek bağlantıyı etkilemez.
-1. **Gözden geçir** ' i seçin.
+1. **Sonraki: Etiketler**' i seçin. İsteğe bağlı olarak etiketler ekleyin. Kullanıcıya Etiketler eklemek bağlantıyı etkilemez.
+1. **Gözden geçir**' i seçin.
 1. Otomatik olarak oluşturulan **erişim anahtarı kimliğini** ve **gizli anahtar** CSV dosyasını daha sonra için kaydedin.
-1. Özeti gözden geçirin ve **Kullanıcı oluştur** ' a tıklayın.
+1. Özeti gözden geçirin ve **Kullanıcı oluştur**' a tıklayın.
 
 
 ### <a name="step-3-configure-the-ssm-agent"></a>3. Adım SSI aracısını yapılandırma
@@ -128,8 +128,8 @@ AWS sistem yöneticisi, AWS kaynaklarınızın tamamında görevleri otomatikle�
 
 ### <a name="step-5-connect-aws-to-security-center"></a>5. Adım. AWS 'yi güvenlik merkezine bağlama
 
-1. Güvenlik Merkezi 'nin menüsünden **çoklu bulut bağlayıcıları** ' nı seçin.
-1. **AWS hesabı ekle** ' yi seçin.
+1. Güvenlik Merkezi 'nin menüsünden **çoklu bulut bağlayıcıları**' nı seçin.
+1. **AWS hesabı ekle**' yi seçin.
     :::image type="content" source="./media/quickstart-onboard-aws/add-aws-account.png" alt-text="Güvenlik Merkezi 'nin çoklu bulut bağlayıcıları sayfasına AWS hesabı Ekle düğmesi":::
 1. **AWS kimlik doğrulama** sekmesindeki seçenekleri yapılandırın:
     1. Bağlayıcı için bir **görünen ad** girin.
@@ -141,7 +141,7 @@ AWS sistem yöneticisi, AWS kaynaklarınızın tamamında görevleri otomatikle�
             VEYA
 
         - **Kimlik bilgileri** ' ni seçin **ve erişim anahtarı** ve **gizli anahtarı** [Güvenlik Merkezi için AWS kullanıcısı oluşturma](#create-an-aws-user-for-security-center)' ya kaydettiğiniz. csv dosyasından yapıştırın.
-1. **İleri** ’yi seçin.
+1. **İleri**’yi seçin.
 1. **Azure Arc yapılandırma** sekmesindeki seçenekleri yapılandırın:
 
     Güvenlik Merkezi, bağlı AWS hesabındaki EC2 örneklerini bulur ve bunları Azure yaya eklemek için SSD kullanır. 
@@ -152,7 +152,7 @@ AWS sistem yöneticisi, AWS kaynaklarınızın tamamında görevleri otomatikle�
     1. Bulunan AWS EC2s 'nin seçili abonelikte eklendi olacağı **kaynak grubunu** ve **Azure bölgesini** seçin.
     1. Burada açıklandığı gibi, Azure Arc için **hizmet sorumlusu kimliği** ve **hizmet sorumlusu istemci gizli anahtarı** ' nı, [ölçekte ekleme için bir hizmet sorumlusu oluşturun](../azure-arc/servers/onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)
     1. Makine bir ara sunucu üzerinden İnternet 'e bağlanıyorsa, proxy sunucusu IP adresini veya makinenin proxy sunucusuyla iletişim kurmak için kullandığı ad ve bağlantı noktası numarasını belirtin. Değeri şu biçimde girin ```http://<proxyURL>:<proxyport>```
-    1. **Gözden geçir + oluştur** ’u seçin.
+    1. **Gözden geçir ve oluştur**’u seçin.
 
         Özet bilgilerini gözden geçirin
 

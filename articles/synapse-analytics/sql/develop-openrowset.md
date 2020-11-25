@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2458b5f3f0c0091bb6ec24e62a1d5614e4e1ecd8
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 90a5afb19c9ba5061b9304c739914262bcdbee15
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888598"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122715"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) kullanarak OPENROWSET kullanma
 
@@ -147,7 +147,7 @@ Aşağıdaki örnekte, unstructured_data_path = ise `https://mystorageaccount.df
 
 WıTH yan tümcesi, dosyalardan okumak istediğiniz sütunları belirtmenize olanak tanır.
 
-- CSV veri dosyaları için tüm sütunları okumak üzere sütun adlarını ve bunların veri türlerini belirtin. Sütunların bir alt kümesini isterseniz, kaynak veri dosyalarından sütunları sıralı olarak seçmek için sıralı numaraları kullanın. Sütunlar sıra atamağına göre bağlanacaktır. 
+- CSV veri dosyaları için tüm sütunları okumak üzere sütun adlarını ve bunların veri türlerini belirtin. Sütunların bir alt kümesini isterseniz, kaynak veri dosyalarından sütunları sıralı olarak seçmek için sıralı numaraları kullanın. Sütunlar sıra atamağına göre bağlanacaktır. HEADER_ROW = TRUE kullanılırsa, sütun bağlama sıra konumu yerine sütun adı tarafından yapılır.
     > [!TIP]
     > CSV dosyaları için yan tümcesini de atlayabilirsiniz. Veri türleri, dosya içeriğinden otomatik olarak algılanır. HEADER_ROW bağımsız değişkenini kullanarak, sütun adlarının üst bilgi satırından okunacaktır. Ayrıntılar için [Otomatik şema bulmayı](#automatic-schema-discovery)denetleyin.
     
@@ -231,7 +231,7 @@ CSV Ayrıştırıcısı sürüm 2,0 özellikleri:
 
 HEADER_ROW = {TRUE | YANLÝÞ
 
-CSV dosyasının üst bilgi satırını içerip içermediğini belirtir. Varsayılan değer FALSE 'dur. PARSER_VERSION = ' 2.0 ' içinde desteklenir. TRUE ise, ilk satırdan FIRSTROW bağımsız değişkenine göre sütun adları okunacaktır.
+CSV dosyasının üst bilgi satırını içerip içermediğini belirtir. Varsayılan değer FALSE 'dur. PARSER_VERSION = ' 2.0 ' içinde desteklenir. TRUE ise, ilk satırdan FIRSTROW bağımsız değişkenine göre sütun adları okunacaktır. TRUE ve Schema Ile kullanılarak belirtilirse, sütun adlarının bağlanması sıra konumlarına değil sütun adı tarafından yapılır.
 
 DATAFILETYPE = {' Char ' | ' widechar '}
 
@@ -281,7 +281,7 @@ Parquet dosyaları her sütun için tür açıklamalarını içerir. Aşağıdak
 | INT32 |INT (8, false) |tinyint |
 | INT32 |INT (16, false) |int |
 | INT32 |INT (32, false) |bigint |
-| INT32 |DATE |tarih |
+| INT32 |DATE |date |
 | INT32 |KATEGORI |decimal |
 | INT32 |SAAT (MILIMETRE)|time |
 | INT64 |INT (64, true) |bigint |

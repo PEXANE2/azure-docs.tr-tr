@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 09/15/2020
 ms.author: memildin
-ms.openlocfilehash: 0b80db15e4fafd5e5c63a4194039fbeca21d429b
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: d03416f390abb8656ac1aed81419864443122ce6
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900398"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122424"
 ---
 # <a name="additional-threat-protections-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde ek tehdit korumaları
 Azure Güvenlik Merkezi, yerleşik [Azure Defender korumalarının](azure-defender.md)yanı sıra aşağıdaki tehdit koruması yeteneklerini de sunmaktadır.
@@ -29,7 +29,7 @@ Azure Güvenlik Merkezi, yerleşik [Azure Defender korumalarının](azure-defend
 ## <a name="threat-protection-for-azure-network-layer"></a>Azure ağ katmanı için tehdit koruması <a name="network-layer"></a>
 Güvenlik Merkezi ağ katmanı analizi, Azure çekirdek yönlendiricileri tarafından toplanan paket üstbilgileri olan örnek [ıpdüzeltme verilerini](https://en.wikipedia.org/wiki/IP_Flow_Information_Export)temel alır. Güvenlik Merkezi, bu veri akışına bağlı olarak kötü amaçlı trafik etkinliklerini belirlemek ve işaretlemek için makine öğrenimi modellerini kullanır. Ayrıca, Güvenlik Merkezi, IP adreslerini zenginleştirmek için Microsoft Threat Intelligence veritabanını kullanır.
 
-Bazı ağ yapılandırmalarında, güvenlik merkezi 'nin şüpheli ağ etkinliğinde Uyarı oluşturması kısıtlanabilir. Güvenlik Merkezi 'nin ağ uyarıları oluşturması için şunları doğrulayın:
+Bazı ağ yapılandırmalarında, güvenlik merkezi 'nin şüpheli ağ etkinliğinde uyarı üretmesini kısıtlıyor. Güvenlik Merkezi 'nin ağ uyarıları oluşturması için şunları doğrulayın:
 - Sanal makineniz genel bir IP adresine sahiptir (veya genel IP adresine sahip bir yük dengeleyicide bulunur).
 - Sanal makinenizin ağ çıkış trafiği bir dış KIMLIK çözümü tarafından engellenmiyor.
 
@@ -47,10 +47,10 @@ Azure Resource Manager (Önizleme) uyarılarının listesi için, [Uyarı tablos
 >[!NOTE]
 > Yukarıdaki analizler Microsoft Cloud App Security tarafından desteklenmektedir. Bu analizlerden yararlanmak için bir Cloud App Security lisansını etkinleştirmeniz gerekir. Cloud App Security lisansınız varsa, bu uyarılar varsayılan olarak etkinleştirilir. Uyarıları devre dışı bırakmak için:
 >
-> 1. Güvenlik Merkezi 'nin menüsünde **fiyatlandırma & ayarları** ' nı seçin.
+> 1. Güvenlik Merkezi 'nin menüsünde **fiyatlandırma & ayarları**' nı seçin.
 > 1. Değiştirmek istediğiniz aboneliği seçin.
 > 1. **Tehdit algılamayı** seçin.
-> 1. **Verilerinize erişmek için Microsoft Cloud App Security Izin ver** ' i temizleyin ve **Kaydet** ' i seçin.
+> 1. **Verilerinize erişmek için Microsoft Cloud App Security Izin ver**' i temizleyin ve **Kaydet**' i seçin.
 
 
 >[!NOTE]
@@ -58,14 +58,14 @@ Azure Resource Manager (Önizleme) uyarılarının listesi için, [Uyarı tablos
 
 1. Aracıyı yüklemekte olduğunuz çalışma alanını ayarlayın. Çalışma alanının, güvenlik merkezi 'nde kullandığınız abonelikte olduğundan ve çalışma alanında okuma/yazma izinlerine sahip olduğunuzdan emin olun.
 
-1. **Azure Defender** 'ı etkinleştirin ve **Kaydet** ' i seçin.
+1. **Azure Defender**'ı etkinleştirin ve **Kaydet**' i seçin.
 
 
 ## <a name="threat-protection-for-azure-cosmos-db-preview"></a>Azure Cosmos DB için tehdit koruması (Önizleme)<a name="cosmos-db"></a>
 
 Azure Cosmos DB uyarıları, Azure Cosmos DB hesaplarına erişmek veya bu hesaplara yararlanmaya yönelik olağan dışı ve potansiyel olarak zararlı denemelere göre oluşturulur.
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 * [Azure Cosmos DB için Gelişmiş tehdit koruması (Önizleme)](../cosmos-db/cosmos-db-advanced-threat-protection.md)
 * [Azure Cosmos DB için tehdit koruması uyarıları listesi (Önizleme)](alerts-reference.md#alerts-azurecosmos)

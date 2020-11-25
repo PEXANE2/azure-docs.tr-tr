@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 347d5ac9de164f2e96340df71fd3b1b908e607c1
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: b7780a0ef70a89a88070d5883cc840319a67fa3d
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372753"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122358"
 ---
 # <a name="exempt-a-resource-from-recommendations-and-secure-score"></a>Kaynağı önerilerden ve güvenlik puanından muaf tutma
 
@@ -33,7 +33,7 @@ Kaynak geçerli değil olarak listelenecektir ve bu nedenle seçtiğiniz gerekç
 |Yayın durumu:|Önizleme<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Fiyat|Bu, Azure Defender müşterileri için ek ücret ödemeden sunulan bir Premium Azure ilke özelliğidir. Diğer kullanıcılar için ücretler gelecekte uygulanabilir.|
 |Gerekli roller ve izinler:|Muafiyet oluşturmak için **abonelik sahibi** veya **ilke katılımcısı**<br>Bir kural oluşturmak için Azure Ilkesinde ilkeleri düzenleme izinlerinizin olması gerekir.<br>Azure [Ilkesinde Azure RBAC izinleri](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy)hakkında daha fazla bilgi edinin.|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 
@@ -50,7 +50,7 @@ Kaynak geçerli değil olarak listelenecektir ve bu nedenle seçtiğiniz gerekç
 1. Ölçütlerinizi girin ve bu kaynağın neden dışlandığı için bir ölçüt seçin:
     - **Azaltıldığında** , bu sorun, önerilenden farklı bir araç veya işlem tarafından işlendiği için kaynakla ilgili değildir
     - **Feragat aldığınız** -bu kaynak için risk kabul ediliyor
-1. **Kaydet** ’i seçin.
+1. **Kaydet**’i seçin.
 1. Bir süre sonra (24 saate kadar sürebilir):
     - Kaynak, güvenli puanınızı etkilemez.
     - Kaynak, öneri Ayrıntıları sayfasının **geçerli değil** sekmesinde listelenir

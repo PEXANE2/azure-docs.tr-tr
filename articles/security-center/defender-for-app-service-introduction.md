@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 2ac4f41a36a2a18a65816be5ea74e88d0b364294
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: bb0e073d5ccf73434d05c801b9a8727c1d19fa47
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789072"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122232"
 ---
 # <a name="introduction-to-azure-defender-for-app-service"></a>App Service için Azure Defender 'a giriş
 
@@ -68,4 +68,4 @@ Bu makalede, App Service için Azure Defender hakkında bilgi edindiniz.
 - Azure App Service uyarılarının listesi için, [Uyarı tablosuna](alerts-reference.md#alerts-azureappserv)bakın.
 - App Service planları hakkında daha fazla bilgi için bkz. [App Service planları](https://azure.microsoft.com/pricing/details/app-service/plans/).
 - > [!div class="nextstepaction"]
-    > [Azure Defender 'ı etkinleştir](security-center-pricing.md)
+    > [Azure Defender’ı etkinleştirme](security-center-pricing.md)

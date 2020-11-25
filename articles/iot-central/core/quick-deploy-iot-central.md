@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: afe3e9812271f4b8e049fb2a53efd45fe746e514
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 313826e9e3fb5fd34d42dd735cf66259773084f7
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992820"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122338"
 ---
 # <a name="quickstart---create-an-azure-iot-central-application"></a>Hızlı başlangıç-Azure IoT Central uygulaması oluşturma
 
@@ -68,4 +68,4 @@ Bu hızlı başlangıçta bir IoT Central uygulaması oluşturdunuz. IoT Central
 
 Bir cihaz geliştiricisiyseniz ve bazı kodları incelemek istiyorsanız, önerilen sonraki adım şunları yapmanız gerekir:
 > [!div class="nextstepaction"]
-> [Bir istemci uygulamasını oluşturma ve Azure IoT Central uygulamanıza bağlama](./tutorial-connect-device-nodejs.md)
+> [Bir istemci uygulamasını oluşturma ve Azure IoT Central uygulamanıza bağlama](./tutorial-connect-device.md)
