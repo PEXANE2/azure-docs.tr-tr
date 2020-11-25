@@ -1,19 +1,19 @@
 ---
-title: dosya dahil etme
+title: include dosyası
 titleSuffix: Azure
-description: dosya dahil etme
+description: include dosyası
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: ee071f2cf6e31d46ccd483935f137f16bcacf337
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 607cb824a50da3778ebe34f184abc0dc97c15961
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86544948"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026470"
 ---
 Cmdlet 'leri çalıştırmak için, ücretsiz bir etkileşimli kabuk olan Azure Cloud Shell kullanabilirsiniz. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. Kodu kopyalamak için **Kopyala** ' yı seçin ve Cloud Shell yapıştırın. Ardından, çalıştırmak için **ENTER** ' u seçin. Cloud Shell başlamanın birkaç yolu vardır:
 
@@ -27,6 +27,6 @@ Cmdlet 'leri çalıştırmak için, ücretsiz bir etkileşimli kabuk olan Azure 
 
 Azure Cloud Shell kullanmak istemiyorsanız PowerShell 'i yerel olarak yükleyebilirsiniz. PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz, Azure Resource Manager PowerShell cmdlet 'lerinin en son sürümünü yüklediğinizden emin olun. PowerShell cmdlet 'leri sıklıkla güncelleştirilir. En son özellik işlevlerini almak için genellikle PowerShell cmdlet 'lerinizi güncelleştirmeniz gerekir. Bunu yapmazsanız sorunlarla karşılaşabilirsiniz.
 
-Yerel olarak çalıştırdığınız PowerShell sürümünü bulmak için **' Get-Module-ListAvailable az '** cmdlet 'ini kullanın. Güncelleştirmek için, bkz. [Azure PowerShell modülünü yüklemek](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps). Daha fazla bilgi için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](https://docs.microsoft.com/powershell/azure/azurerm/overview).
+Yerel olarak çalıştırdığınız PowerShell sürümünü bulmak için **' Get-Module-ListAvailable az '** cmdlet 'ini kullanın. Güncelleştirmek için, bkz. [Azure PowerShell modülünü yüklemek](/powershell/azure/azurerm/install-azurerm-ps). Daha fazla bilgi için bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/azurerm/overview).
 
-MacOS üzerinde PowerShell kullanıyorsanız, [macOS 'Ta PowerShell yükleme](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-macos?view=powershell-6) bölümündeki adımları izleyin.
+MacOS üzerinde PowerShell kullanıyorsanız, [macOS 'Ta PowerShell yükleme](/powershell/scripting/install/installing-powershell-core-on-macos?view=powershell-6) bölümündeki adımları izleyin.

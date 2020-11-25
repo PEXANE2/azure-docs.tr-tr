@@ -7,11 +7,11 @@ ms.date: 10/14/2020
 ms.author: olayemio
 ms.custom: include file
 ms.openlocfilehash: 29cbb2f6a7f0faf91852e520f15b779b3fe229c8
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95560611"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026225"
 ---
 Paylaşılan görüntü Galerisi, yansımalarınızın etrafında yapı ve kuruluş oluşturmanıza yardımcı olan bir hizmettir. Paylaşılan görüntü galerileri şunları sağlar:
 
@@ -145,8 +145,8 @@ Paylaşılan görüntü Galerisi, görüntü tanımı ve görüntü sürümü t�
 
 | Kullanıcıyla paylaşıldı     | Paylaşılan Görüntü Galerisi | Görüntü Tanımı | Görüntü sürümü |
 |----------------------|----------------------|--------------|----------------------|
-| Paylaşılan Görüntü Galerisi | Evet                  | Evet          | Evet                  |
-| Görüntü Tanımı     | Hayır                   | Evet          | Evet                  |
+| Paylaşılan Görüntü Galerisi | Yes                  | Yes          | Yes                  |
+| Görüntü Tanımı     | Hayır                   | Yes          | Yes                  |
 
 En iyi deneyim için Galeri düzeyinde paylaşım yapmanızı öneririz. Ayrı görüntü sürümlerinin paylaşılmasını önermiyoruz. RBAC hakkında daha fazla bilgi için bkz. [RBAC kullanarak Azure kaynaklarına erişimi yönetme](../articles/role-based-access-control/role-assignments-portal.md).
 

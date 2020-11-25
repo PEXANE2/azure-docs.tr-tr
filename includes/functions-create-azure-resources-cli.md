@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 10/18/2020
 ms.author: glenga
-ms.openlocfilehash: c26ef5b857d7295b533079a70959f0f1ef1e8206
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 29a31948c5bfc9b5fd3a31f39144d186dbfe4885
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93425195"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026473"
 ---
 ## <a name="create-supporting-azure-resources-for-your-function"></a>İşleviniz için destekleyici Azure kaynakları oluşturma
 
@@ -55,7 +55,7 @@ Bu öğeleri oluşturmak için aşağıdaki komutları kullanın. Hem Azure CLı
     New-AzResourceGroup -Name AzureFunctionsQuickstart-rg -Location westeurope
     ```
 
-    [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) komutu bir kaynak grubu oluşturur. Genellikle kaynak grubunuzu ve kaynaklarınızı size yakın bir bölgede, [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) cmdlet 'inden döndürülen kullanılabilir bir bölgeyi kullanarak oluşturursunuz.
+    [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) komutu bir kaynak grubu oluşturur. Genellikle kaynak grubunuzu ve kaynaklarınızı size yakın bir bölgede, [Get-AzLocation](/powershell/module/az.resources/get-azlocation) cmdlet 'inden döndürülen kullanılabilir bir bölgeyi kullanarak oluşturursunuz.
 
     ---
 
@@ -80,6 +80,3 @@ Bu öğeleri oluşturmak için aşağıdaki komutları kullanın. Hem Azure CLı
     ---
 
     Önceki örnekte, `<STORAGE_NAME>` Azure depolama 'da size uygun ve benzersiz olan bir adla değiştirin. Adlar yalnızca üç ile 24 karakter arasında ve küçük harflerden oluşmalıdır. `Standard_LRS`[işlevleri tarafından desteklenen](../articles/azure-functions/storage-considerations.md#storage-account-requirements), genel amaçlı bir hesabı belirtir.
-    
-
-

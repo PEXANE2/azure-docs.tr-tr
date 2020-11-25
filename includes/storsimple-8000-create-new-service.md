@@ -4,22 +4,22 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: d47cf21e25c89c20a8baa31a80b867b74ada93df
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 746198f87e23cd7aca2a3177c23974917cb4b12a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360687"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026353"
 ---
 #### <a name="to-create-a-new-service"></a>Yeni hizmet oluşturmak için
 
 1. [Azure portalda](https://portal.azure.com/) oturum açmak için Microsoft hesabınızın kimlik bilgilerini kullanın.
 
-2. Azure portalında **Kaynak oluştur** seçeneğine tıklayın ve markette **Tümünü gör** ’e tıklayın.
+2. Azure portalında **Kaynak oluştur** seçeneğine tıklayın ve markette **Tümünü gör**’e tıklayın.
 
     ![StorSimple Cihaz Yöneticisi oluşturma](./media/storsimple-8000-create-new-service/createssdevman1.png)
 
-    _StorSimple Fiziksel_ ifadesini aratın. **StorSimple Fiziksel Cihaz Serisi** ‘ni seçip tıklayın ve **Oluştur** ’a tıklayın. Alternatif olarak, Azure portal **+** ve ardından **depolama** altında **StorSimple fiziksel cihaz Serisi** ' ne tıklayın.
+    _StorSimple Fiziksel_ ifadesini aratın. **StorSimple Fiziksel Cihaz Serisi**‘ni seçip tıklayın ve **Oluştur**’a tıklayın. Alternatif olarak, Azure portal **+** ve ardından **depolama** altında **StorSimple fiziksel cihaz Serisi**' ne tıklayın.
 
     ![StorSimple Aygıt Yöneticisi 2 oluşturma](./media/storsimple-8000-create-new-service/createssdevman11.png)
 
@@ -29,18 +29,18 @@ ms.locfileid: "93360687"
 
    2. Açılan listeden bir **Abonelik** seçin. Abonelik fatura hesabınıza bağlıdır. Bu alan bir aboneliğiniz olmadığı sürece yoktur.
 
-   3. **Kaynak Grubu** için **Mevcut grubu kullanın** veya **Yeni grup oluşturun**. Daha fazla bilgi edinmek için bkz. [Azure kaynak grupları](/azure/azure-resource-manager/management/manage-resource-groups-portal).
+   3. **Kaynak Grubu** için **Mevcut grubu kullanın** veya **Yeni grup oluşturun**. Daha fazla bilgi edinmek için bkz. [Azure kaynak grupları](../articles/azure-resource-manager/management/manage-resource-groups-portal.md).
 
    4. Hizmetiniz için bir **Konum** sağlayın. Genel olarak, cihazınızı dağıtmak istediğiniz coğrafi bölgeye yakın bir konum seçmek istersiniz. Aşağıdaki konuları da hesaba katmak isteyebilirsiniz:
 
       * Azure’da, StorSimple cihazınızla dağıtmak istediğiniz var olan iş yükleriniz varsa o veri merkezini kullanmanız gerekir.
       * StorSimple Cihaz Yöneticisi hizmeti ve Azure Storage iki ayrı konumda olabilir. Böyle bir durumda, StorSimple Cihaz Yöneticisi ve Azure Storage hesabını ayrı ayrı oluşturmanız gerekir. Azure Depolama hesabı oluşturmak için Azure portalındaki Azure Depolama hizmetine gidin ve [Azure Depolama hesabı oluşturma](../articles/storage/common/storage-account-create.md) konusundaki adımları uygulayın. Bu hesabı oluşturduktan sonra, [Hizmet için yeni bir depolama hesabı yapılandırma](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#configure-a-new-storage-account-for-the-service) konusundaki adımları uygulayarak bunu StorSimple Cihaz Yöneticisi hizmetine ekleyin.
 
-   5. Otomatik olarak hizmeti olan bir depolama hesabı oluşturmak için **Yeni depolama hesabı oluştur** ’u seçin. Bu depolama hesabı için bir ad belirtin. Verilerinizin farklı bir konumda olması gerekiyorsa bu kutunun işaretini kaldırın.
+   5. Otomatik olarak hizmeti olan bir depolama hesabı oluşturmak için **Yeni depolama hesabı oluştur**’u seçin. Bu depolama hesabı için bir ad belirtin. Verilerinizin farklı bir konumda olması gerekiyorsa bu kutunun işaretini kaldırın.
 
    6. Panonuzda bu hizmetin hızlı bağlantısının olmasını istiyorsanız **Panoya sabitle** seçeneğini işaretleyin.
 
-   7. StorSimple Cihaz Yöneticisi’ni oluşturmak için **Oluştur** ’a tıklayın.
+   7. StorSimple Cihaz Yöneticisi’ni oluşturmak için **Oluştur**’a tıklayın.
 
        ![StorSimple Aygıt Yöneticisi oluşturun 3](./media/storsimple-8000-create-new-service/createssdevman2.png)
 

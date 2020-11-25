@@ -5,35 +5,39 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 4b04558077f6b59d0fef613308a6ab96680d7ff8
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 6f80d41001d11c52a00454ea2a593f3f1fce32db
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92471027"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026337"
 ---
 ## <a name="download-and-install"></a>İndirme ve yükleme
 
 #### <a name="windows-install"></a>[Windows yüklemesi](#tab/windowsinstall)
 
-> [!NOTE]
-> Windows 'ta, platformunuz için [Visual Studio 2019 Için yeniden dağıtılabilir Microsoft Visual C++](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) gerekir. Bunu ilk kez yüklemek için Windows 'u yeniden başlatmanız gerekebilir.
-
 Windows 'a konuşma CLı 'Yı yüklemek için aşağıdaki adımları izleyin:
 
-1. Konuşma CLı [ZIP arşivini](https://aka.ms/speech/spx-zips.zip)indirip ayıklayın.
-2. `spx-zips`İndirmenin ayıklanacağı kök dizine gidin ve ihtiyacınız olan alt dizini ayıklayın ( `spx-net471` .NET Framework 4,7 için veya `spx-netcore-win-x64` x64 CPU üzerinde .NET Core 3,0 için).
+1. Windows 'ta, platformunuz için [Visual Studio 2019 Için yeniden dağıtılabilir Microsoft Visual C++](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) gerekir. Bunu ilk kez yüklemek için yeniden başlatma gerekebilir.
+2. Konuşma CLı [ZIP arşivini](https://aka.ms/speech/spx-zips.zip)indirip ayıklayın.
+3. Ayıkladığınız dizine gidin `spx-zips` . Bu klasör çeşitli platformlarda konuşma CLı için program dosyalarını içerir. 
+4. Platformunuzun dosyalarını ( `spx-net471` `spx-netcore-win-x64` BIR x64 CPU üzerinde .NET Framework 4,7 veya .net Core 3,0 için) ayıklayın. Bu dizinden çalıştıracağınızı aklınızda bulundurun `spx` .
 
-Komut isteminde dizini bu konum olarak değiştirin ve ardından yazarak `spx` konuşma CLI için yardımı görüntüleyin.
+### <a name="run-the-speech-cli"></a>Konuşma CLı 'sını çalıştırma
 
-> [!NOTE]
-> Windows 'da, konuşma CLı yalnızca yerel bilgisayardaki komut isteminde kullanılabilen yazı tiplerini gösterebilir.
-> [Windows Terminal](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701) , konuşma CLI tarafından etkileşimli olarak üretilen tüm yazı tiplerini destekler.
-> Bir dosyaya çıkış yaparsanız, Not defteri veya Microsoft Edge gibi bir Web tarayıcısı gibi bir metin Düzenleyicisi de tüm yazı tiplerini gösterebilir.
+1. Komut istemi veya PowerShell ' i açın, ardından konuşma CLı 'yı ayıkladığınız dizine gidin.  
+2. `spx`Konuşma CLI için yardım komutlarını görmek için yazın.
 
 > [!NOTE]
 > PowerShell, bir komut ararken yerel dizini denetlemez. PowerShell 'de Dizin ' i konum olarak değiştirin `spx` ve girerek aracı çağırın `.\spx` .
 > Bu dizini yolunuza eklerseniz, PowerShell ve Windows komut istemi, `spx` ön eki dahil etmeden herhangi bir dizinden bulacaktır `.\` .
+
+### <a name="font-limitations"></a>Yazı tipi sınırlamaları
+
+Windows 'da, konuşma CLı yalnızca yerel bilgisayardaki komut isteminde kullanılabilen yazı tiplerini gösterebilir.
+[Windows Terminal](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701) , konuşma CLI tarafından etkileşimli olarak üretilen tüm yazı tiplerini destekler.
+
+Bir dosyaya çıkış yaparsanız, Not defteri veya Microsoft Edge gibi bir Web tarayıcısı gibi bir metin Düzenleyicisi de tüm yazı tiplerini gösterebilir.
 
 #### <a name="linux-install"></a>[Linux yüklemesi](#tab/linuxinstall)
 
