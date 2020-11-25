@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 10/15/2020
 ms.author: cherylmc
 ms.openlocfilehash: 325f39b695d80c14ed7097d071380b937458546c
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150448"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021495"
 ---
 # <a name="quickstart-connect-to-a-vm-securely-through-a-browser-via-private-ip-address"></a>Hızlı başlangıç: özel IP adresi aracılığıyla bir tarayıcı aracılığıyla güvenli bir şekilde VM 'ye bağlanma
 
@@ -47,7 +47,7 @@ Bu yapılandırmayı oluştururken aşağıdaki örnek değerleri kullanabilir v
 | --- | --- |
 | Sanal makine| TestVM |
 | Kaynak grubu | TestRG |
-| Bölge | Doğu ABD |
+| Region | Doğu ABD |
 | Sanal ağ | TestVNet1 |
 | Adres alanı | 10.0.0.0/16 |
 | Alt ağlar | Ön uç: 10.0.0.0/24 |
@@ -75,29 +75,29 @@ Bir savunma konağını yapılandırmanın birkaç farklı yolu vardır. Aşağ�
 1. Açılan menüden, savunma ' **yı seçin.**
 1. **Testvm 'de | Bağlan sayfasında**, **kullan**' ı seçin.
 
-   :::image type="content" source="./media/quickstart-host-portal/select-bastion.png" alt-text="sanal makine ayarları" border="false":::
+   :::image type="content" source="./media/quickstart-host-portal/select-bastion.png" alt-text="Savunma seçin" border="false":::
 
 1. Savunma sayfasında **,** aşağıdaki ayarlar alanlarını doldurun:
 
    * **Ad**: savunma konağını adlandırın.
-   * **Alt ağ**: Bu, savunma kaynağının dağıtılacağı sanal ağ adres alanıdır. Alt ağın **AzureBastionSubnet**adıyla oluşturulması gerekir. En az/27 veya daha büyük (/27,/26,/25 vb.) bir alt ağ kullanın.
+   * **Alt ağ**: Bu, savunma kaynağının dağıtılacağı sanal ağ adres alanıdır. Alt ağın **AzureBastionSubnet** adıyla oluşturulması gerekir. En az/27 veya daha büyük (/27,/26,/25 vb.) bir alt ağ kullanın.
    * **Alt ağ yapılandırmasını Yönet**' i seçin.
 1. **Alt ağlar** sayfasında, **+ alt ağ**' ı seçin.
 
-   :::image type="content" source="./media/quickstart-host-portal/subnet.png" alt-text="sanal makine ayarları":::
+   :::image type="content" source="./media/quickstart-host-portal/subnet.png" alt-text="+ Alt ağ":::
     
-1. **Alt ağ ekle** sayfasında, **ad**için **AzureBastionSubnet**yazın.
+1. **Alt ağ ekle** sayfasında, **ad** için **AzureBastionSubnet** yazın.
    * Alt ağ adres aralığı için, sanal ağ adres alanınızda bulunan bir alt ağ adresi seçin.
    * Diğer ayarları ayarlamamayın. Alt ağ değişikliklerini kabul etmek ve kaydetmek için **Tamam ' ı** seçin.
 
-   :::image type="content" source="./media/quickstart-host-portal/add-subnet.png" alt-text="sanal makine ayarları":::
+   :::image type="content" source="./media/quickstart-host-portal/add-subnet.png" alt-text="Alt ağ ekleme":::
 1. Savunma **sayfasına dönmek** için tarayıcınızda geri düğmesine tıklayın ve değerleri belirtmeye devam edin.
-   * **Genel IP adresi**: **Yeni oluştur**olarak bırakın.
+   * **Genel IP adresi**: **Yeni oluştur** olarak bırakın.
    * **Genel IP adresi adı**: genel IP adresi kaynağının adı.
    * **Atama**: varsayılan değer static ' tir. Azure savunma için dinamik bir atama kullanamazsınız.
    * **Kaynak grubu**: VM ile aynı kaynak grubu.
 
-   :::image type="content" source="./media/quickstart-host-portal/validate.png" alt-text="sanal makine ayarları":::
+   :::image type="content" source="./media/quickstart-host-portal/validate.png" alt-text="Savunma konağını oluşturma":::
 1. Savunma konağını oluşturmak için **Oluştur** ' u seçin. Azure ayarlarınızı doğrular ve ardından Konağı oluşturur. Ana bilgisayar ve kaynakları, oluşturulması ve dağıtılması yaklaşık 5 dakika sürer.
 
 ## <a name="connect"></a><a name="connect"></a>Bağlan
@@ -106,10 +106,10 @@ Sanal ağa bağlantı dağıtıldıktan sonra ekran bağlan sayfasına dönüş�
 
 1. Sanal makineniz için Kullanıcı adını ve parolayı yazın. Ardından **Bağlan**' ı seçin.
 
-   :::image type="content" source="./media/quickstart-host-portal/connect-vm.png" alt-text="sanal makine ayarları":::
+   :::image type="content" source="./media/quickstart-host-portal/connect-vm.png" alt-text="Ekran görüntüsü Azure savunma kullanarak bağlan iletişim kutusunu gösterir.":::
 1. Bu sanal makineyle RDP bağlantısı, 443 numaralı bağlantı noktasını ve savunma hizmetini kullanarak doğrudan Azure portal (HTML5 üzerinden) açılır.
 
-   :::image type="content" source="./media/quickstart-host-portal/connected.png" alt-text="sanal makine ayarları":::
+   :::image type="content" source="./media/quickstart-host-portal/connected.png" alt-text="RDP bağlantısı":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

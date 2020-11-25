@@ -9,11 +9,11 @@ ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
 ms.openlocfilehash: eb96537f67c61fb31759da020068f784d0e89993
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323409"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020203"
 ---
 # <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Azure Izleyici 'de kullanımı ve tahmini maliyetleri izleme
 
@@ -65,7 +65,7 @@ Bu, şöyle bir görünüme neden olur:
 
 ![Azure maliyet yönetimi ekran görüntüsü](./media/usage-estimated-costs/010.png)
 
-Buradan, "kaynağa göre maliyet" görünümünde daha ayrıntılı bilgi edinmek için bu birikmiş maliyet özetinden ayrıntıya gidebilirsiniz. Geçerli fiyatlandırma katmanlarında Azure günlük verileri, Log Analytics veya Application Insights kaynaklanıp aynı ölçüm kümesi üzerinden ücretlendirilir. Log Analytics veya Application Insights kullanımınızdan maliyetleri ayırmak için, **kaynak türüne**bir filtre ekleyebilirsiniz. Tüm Application Insights maliyetlerini görmek için kaynak türünü "Microsoft. Insights/bileşenler" olarak filtreleyin ve Log Analytics maliyetleri için kaynak türünü "Microsoft. operationalınsights/çalışma alanları" olarak filtreleyin. 
+Buradan, "kaynağa göre maliyet" görünümünde daha ayrıntılı bilgi edinmek için bu birikmiş maliyet özetinden ayrıntıya gidebilirsiniz. Geçerli fiyatlandırma katmanlarında Azure günlük verileri, Log Analytics veya Application Insights kaynaklanıp aynı ölçüm kümesi üzerinden ücretlendirilir. Log Analytics veya Application Insights kullanımınızdan maliyetleri ayırmak için, **kaynak türüne** bir filtre ekleyebilirsiniz. Tüm Application Insights maliyetlerini görmek için kaynak türünü "Microsoft. Insights/bileşenler" olarak filtreleyin ve Log Analytics maliyetleri için kaynak türünü "Microsoft. operationalınsights/çalışma alanları" olarak filtreleyin. 
 
 [Kullanımınız Azure Portal kullanımınıza indirerek](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal)kullanımınıza daha fazla ayrıntı bulabilirsiniz. İndirilen elektronik tabloda günde Azure kaynağı başına kullanımı görebilirsiniz. Bu Excel elektronik tablosunda, Application Insights kaynaklarınızdan kullanım, "Application Insights" ve "Log Analytics" göstermek için "ölçüm kategorisi" sütununda filtrelenebilir ve sonra "Microsoft. Insights/bileşenleri içerir" olan "örnek KIMLIĞI" sütununa bir filtre eklenerek bulunabilir.  Application Insights kullanımı, tüm Azure Izleyici bileşenleri için tek bir günlük arka ucu olduğundan, Log Analytics ölçüm kategorisiyle ölçü üzerinden raporlanır.  Yalnızca eski fiyatlandırma katmanlarında Application Insights kaynaklar ve çok adımlı Web testleri, Application Insights ölçüm kategorisiyle raporlanır.  Kullanım "tüketilen miktar" sütununda gösterilir ve her girdinin birimi "ölçü birimi" sütununda gösterilir.  [Microsoft Azure faturanızı anlamanıza](../../cost-management-billing/understand/review-individual-bill.md) yardımcı olmak için daha fazla ayrıntı sağlanır. 
 

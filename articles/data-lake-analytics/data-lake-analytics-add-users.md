@@ -6,11 +6,11 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 05/24/2018
 ms.openlocfilehash: c04b1bbd62e156aeb8d3a0ebb244cfbc753dec52
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219386"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020832"
 ---
 # <a name="adding-a-user-in-the-azure-portal"></a>Azure portalında kullanıcı ekleme
 
@@ -20,7 +20,7 @@ ms.locfileid: "92219386"
 3. **Kullanıcı Seç** adımında, eklemek istediğiniz kullanıcıyı bulun. **Seç**’e tıklayın.
 4. **Rol Seç** adımı **Data Lake Analytics geliştirici**' yi seçin. Bu rol, U-SQL işlerini göndermek/izlemek/yönetmek için gereken en düşük izin kümesini içerir. Grup, Azure hizmetlerini yönetmeye yönelik değilse, bu role atayın.
 5. **Katalog Izinlerini seçin** adımında, kullanıcının erişmesi gereken diğer veritabanlarını seçin. "Ana" adlı varsayılan statik veritabanına okuma ve yazma erişimi, işleri göndermek için gereklidir. Bitirdiğinizde, **Tamam**’a tıklayın.
-6. **Seçili Izinleri ata** adlı son adımda, sihirbazın yapabileceği değişiklikleri gözden geçirin. **Tamam**'a tıklayın.
+6. **Seçili Izinleri ata** adlı son adımda, sihirbazın yapabileceği değişiklikleri gözden geçirin. **Tamam** düğmesine tıklayın.
 
 
 ## <a name="configure-acls-for-data-folders"></a>Veri klasörleri için ACL 'Leri yapılandırma
@@ -34,7 +34,7 @@ Giriş verilerini ve çıkış verilerini içeren klasörlerde gerektiğinde "R-
 4.  Bu grubu atamak için bir Azure rolü seçin.
 5.  Okuyucu rolüne ata. Bu rol, ADLSGen1 içinde depolanan verileri taramak/yönetmek için gereken en düşük izin kümesine sahiptir. Grup, Azure hizmetlerini yönetmeye yönelik değilse, bu role atayın.
 6.  Grubun adını yazın.
-7.  **Tamam**'a tıklayın.
+7.  **Tamam** düğmesine tıklayın.
 
 ## <a name="adding-a-user-using-powershell"></a>PowerShell kullanarak Kullanıcı ekleme
 

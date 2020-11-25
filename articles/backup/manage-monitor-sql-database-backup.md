@@ -4,11 +4,11 @@ description: Bu makalede, bir Azure VM üzerinde çalışan SQL Server veritaban
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: b0df22002521c8148cac1200e79aeb0ae5a60546
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89146530"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021512"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Yedeklenmiş SQL Server veritabanlarını yönetme ve izleme
 
@@ -61,7 +61,7 @@ Bir veritabanının korumasını durdurmak için:
 
 1. Kasa panosunda **yedekleme öğeleri**' ni seçin.
 
-2. **Yedekleme yönetimi türü**altında **Azure VM 'de SQL**' i seçin.
+2. **Yedekleme yönetimi türü** altında **Azure VM 'de SQL**' i seçin.
 
     ![Azure VM 'de SQL seçin](./media/backup-azure-sql-database/sql-restore-backup-items.png)
 
@@ -142,11 +142,11 @@ Etkilenen tüm öğelerin ilke sürümünü tek tıklamayla çözebilirsiniz:
 
 Korumayı devre dışı bıraktıktan sonra ancak kasayı silmeden önce bir SQL Server örneğinin kaydını kaldırın:
 
-1. Kasa panosunda, **Yönet**altında, **Yedekleme altyapısı**' nı seçin.  
+1. Kasa panosunda, **Yönet** altında, **Yedekleme altyapısı**' nı seçin.  
 
    ![Yedekleme altyapısını seçin](./media/backup-azure-sql-database/backup-infrastructure-button.png)
 
-2. **Yönetim sunucuları**altında **korumalı sunucular**' ı seçin.
+2. **Yönetim sunucuları** altında **korumalı sunucular**' ı seçin.
 
    ![Korumalı sunucuları seçin](./media/backup-azure-sql-database/protected-servers.png)
 
@@ -154,7 +154,7 @@ Korumayı devre dışı bıraktıktan sonra ancak kasayı silmeden önce bir SQL
 
 4. Korumalı sunucuya sağ tıklayın ve **kayıt kaldır**' ı seçin.
 
-   ![Sil ' i seçin](./media/backup-azure-sql-database/delete-protected-server.jpg)
+   ![Sil’i seçin](./media/backup-azure-sql-database/delete-protected-server.jpg)
 
 ## <a name="re-register-extension-on-the-sql-server-vm"></a>SQL Server VM uzantıyı yeniden Kaydet
 

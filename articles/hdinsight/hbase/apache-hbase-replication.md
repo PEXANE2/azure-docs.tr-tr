@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.openlocfilehash: 8fc5ba2280b5ad68a40f4992adc170408e80e5a6
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540372"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021801"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Azure sanal ağlarında Apache HBase küme çoğaltmasını ayarlama
 
@@ -105,7 +105,7 @@ Son bölümde, şablon iki sanal ağın her birinde bir Ubuntu sanal makinesi ol
 Bağlama 'yı yüklemek için, iki DNS sanal makinenin genel IP adresini bulmak için yon gerekir.
 
 1. [Azure portalını](https://portal.azure.com) açın.
-2. Kaynak grupları ' nı seçerek DNS sanal makinesini açın **> [kaynak grubu adı] > [vnet1DNS]** .  Kaynak grubu adı, son yordamda oluşturduğunuz bir addır. Varsayılan DNS sanal makine adları *vnet1DNS* ve *vnet2NDS* ' dir.
+2. Kaynak grupları ' nı seçerek DNS sanal makinesini açın **> [kaynak grubu adı] > [vnet1DNS]**.  Kaynak grubu adı, son yordamda oluşturduğunuz bir addır. Varsayılan DNS sanal makine adları *vnet1DNS* ve *vnet2NDS*' dir.
 3. **Özellikler** ' i seçerek sanal ağın Özellikler sayfasını açın.
 4. **Genel IP adresini** yazın ve ayrıca **özel IP adresini** doğrulayın.  Özel IP adresi, vnet2DNS için vnet1DNS ve **10.2.0.4** için **10.1.0.4** olacaktır.  
 5. Aşağıdaki adımlarda, her iki sanal ağın DNS sunucularını varsayılan (Azure tarafından sağlanmış) DNS sunucularını kullanarak, paketleri yüklemek için paket ve giden erişime izin verecek şekilde değiştirin.
@@ -170,7 +170,7 @@ Bağlama yüklemek için aşağıdaki yordamı kullanın:
     sudo nano /etc/bind/named.conf.options
     ```
 
-    Dosyayı kaydetmek için __CTRL + X__ , __Y__ kullanın ve ardından __girin__ .
+    Dosyayı kaydetmek için __CTRL + X__, __Y__ kullanın ve ardından __girin__.
 
 4. SSH oturumunda aşağıdaki komutu kullanın:
 
@@ -207,7 +207,7 @@ Bağlama yüklemek için aşağıdaki yordamı kullanın:
     sudo nano /etc/bind/named.conf.local
     ```
 
-    Dosyayı kaydetmek için __CTRL + X__ , __Y__ kullanın ve ardından __girin__ .
+    Dosyayı kaydetmek için __CTRL + X__, __Y__ kullanın ve ardından __girin__.
 
 6. Bağlamayı başlatmak için aşağıdaki komutu kullanın:
 
@@ -244,11 +244,11 @@ Bağlama yüklemek için aşağıdaki yordamı kullanın:
 
 Sanal ağı, Azure özyinelemeli çözümleyici yerine özel DNS sunucusu kullanacak şekilde yapılandırmak için aşağıdaki adımları kullanın:
 
-1. [Azure Portal](https://portal.azure.com)sanal ağı seçin ve __DNS sunucuları__ ' nı seçin.
+1. [Azure Portal](https://portal.azure.com)sanal ağı seçin ve __DNS sunucuları__' nı seçin.
 
-2. __Özel__ ' i seçin ve özel DNS sunucusunun __iç IP adresini__ girin. Son olarak __Kaydet__ ' i seçin.
+2. __Özel__' i seçin ve özel DNS sunucusunun __iç IP adresini__ girin. Son olarak __Kaydet__' i seçin.
 
-6. Vnet1 ' de DNS sunucusu sanal makinesini açın ve **Yeniden Başlat** ' a tıklayın.  DNS yapılandırmasının etkili olması için sanal ağdaki tüm sanal makineleri yeniden başlatmanız gerekir.
+6. Vnet1 ' de DNS sunucusu sanal makinesini açın ve **Yeniden Başlat**' a tıklayın.  DNS yapılandırmasının etkili olması için sanal ağdaki tüm sanal makineleri yeniden başlatmanız gerekir.
 7. Vnet2 için özel DNS sunucusunu yapılandırma adımlarını yineleyin.
 
 DNS yapılandırmasını test etmek için SSH kullanarak iki DNS sanal makinesine bağlanabilir ve diğer sanal ağın DNS sunucusuna ana bilgisayar adını kullanarak ping gönderebilirsiniz. İşe yaramazsa, DNS durumunu denetlemek için aşağıdaki komutu kullanın:
@@ -261,13 +261,13 @@ sudo service bind9 status
 
 Aşağıdaki yapılandırmaya sahip iki sanal ağın her birinde bir [Apache HBase](https://hbase.apache.org/) kümesi oluşturun:
 
-- **Kaynak grubu adı** : sanal ağları oluşturduğunuz kaynak grubu adını kullanın.
-- **Küme türü** : HBase
-- **Sürüm** : HBase 1.1.2 (hdı 3,6)
-- **Konum** : sanal ağla aynı konumu kullanın.  Varsayılan olarak, vnet1 *Batı ABD* ve vnet2 *Doğu ABD* .
-- **Depolama** : küme için yeni bir depolama hesabı oluşturun.
+- **Kaynak grubu adı**: sanal ağları oluşturduğunuz kaynak grubu adını kullanın.
+- **Küme türü**: HBase
+- **Sürüm**: HBase 1.1.2 (hdı 3,6)
+- **Konum**: sanal ağla aynı konumu kullanın.  Varsayılan olarak, vnet1 *Batı ABD* ve vnet2 *Doğu ABD*.
+- **Depolama**: küme için yeni bir depolama hesabı oluşturun.
 - **Sanal ağ** (portaldaki gelişmiş ayarlardan): son yordamda oluşturduğunuz vnet1 seçin.
-- **Alt ağ** : şablonda kullanılan varsayılan ad **subnet1** ' dir.
+- **Alt ağ**: şablonda kullanılan varsayılan ad **subnet1**' dir.
 
 Ortamın doğru yapılandırıldığından emin olmak için, iki küme arasında headnode 'un FQDN 'sine ping atabilmelisiniz.
 
@@ -289,14 +289,14 @@ Aşağıdaki adımlarda Azure portal betik eylemi betiğinin nasıl çağrılaca
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Kaynak HBase kümesini açın.
-3. Küme menüsünde **betik eylemleri** ' ni seçin.
-4. Sayfanın üst kısmında **Yeni Gönder** ' i seçin.
+3. Küme menüsünde **betik eylemleri**' ni seçin.
+4. Sayfanın üst kısmında **Yeni Gönder**' i seçin.
 5. Aşağıdaki bilgileri seçin veya girin:
 
-   1. **Ad** : **çoğaltmayı etkinleştir** ' i girin.
-   2. **Bash betik URL 'si** : girin **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh** .
-   3. **Head** : bunun seçili olduğundan emin olun. Diğer düğüm türlerini temizleyin.
-   4. **Parametreler** : Aşağıdaki örnek parametreler, tüm mevcut tablolar için çoğaltmayı etkinleştirir ve sonra kaynak kümeden tüm verileri hedef kümeye kopyalar:
+   1. **Ad**: **çoğaltmayı etkinleştir**' i girin.
+   2. **Bash betik URL 'si**: girin **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh** .
+   3. **Head**: bunun seçili olduğundan emin olun. Diğer düğüm türlerini temizleyin.
+   4. **Parametreler**: Aşağıdaki örnek parametreler, tüm mevcut tablolar için çoğaltmayı etkinleştirir ve sonra kaynak kümeden tüm verileri hedef kümeye kopyalar:
 
     `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata`
     
@@ -305,7 +305,7 @@ Aşağıdaki adımlarda Azure portal betik eylemi betiğinin nasıl çağrılaca
       >
       > Bu izlenecek yol, hn1 etkin bir yayın düğümü olarak kabul edilir. Etkin baş düğümünü belirlemek için lütfen kümenizi denetleyin.
 
-6. **Oluştur** ’u seçin. Özellikle **-CopyData** bağımsız değişkenini kullandığınızda betiğin çalıştırılması biraz zaman alabilir.
+6. **Oluştur**’u seçin. Özellikle **-CopyData** bağımsız değişkenini kullandığınızda betiğin çalıştırılması biraz zaman alabilir.
 
 Gerekli bağımsız değişkenler:
 
@@ -320,8 +320,8 @@ Gerekli bağımsız değişkenler:
 
 |Ad|Açıklama|
 |----|-----------|
-|-su,--src-ambarı-Kullanıcı | Kaynak HBase kümesindeki ambarı için yönetici kullanıcı adını belirtir. Varsayılan değer **admin** ' dir. |
-|-du,--DST-ambarı-Kullanıcı | Hedef HBase kümesindeki ambarı için yönetici kullanıcı adını belirtir. Varsayılan değer **admin** ' dir. |
+|-su,--src-ambarı-Kullanıcı | Kaynak HBase kümesindeki ambarı için yönetici kullanıcı adını belirtir. Varsayılan değer **admin**' dir. |
+|-du,--DST-ambarı-Kullanıcı | Hedef HBase kümesindeki ambarı için yönetici kullanıcı adını belirtir. Varsayılan değer **admin**' dir. |
 |-t,--Table-List | Çoğaltılacak tabloları belirtir. Örneğin:--Table-List = "Table1; Table2; TABLE3". Tablo belirtmezseniz, var olan tüm HBase tabloları çoğaltılır.|
 |-ı,--makine | Betik eyleminin çalıştığı baş düğümü belirtir. Değer, etkin baş düğümü temel alınarak seçilmelidir. HDInsight portalından veya Azure PowerShell betik eylemi olarak $0 betiğini çalıştırırken bu seçeneği kullanın.|
 |-CP,-CopyData | Çoğaltmanın etkinleştirildiği tablolardaki mevcut verilerin geçişine izin vermez. |
@@ -336,19 +336,19 @@ Betik eylemi başarıyla dağıtıldıktan sonra, hedef HBase kümesine bağlanm
 
 Aşağıdaki listede bazı genel kullanım durumları ve bunların parametre ayarları gösterilmektedir:
 
-- **İki küme arasındaki tüm tablolarda çoğaltmayı etkinleştirin** . Bu senaryo, tablolardaki mevcut verilerin kopyalanmasını veya geçirilmesini gerektirmez ve Phoenix tabloları kullanmaz. Aşağıdaki parametreleri kullanın:
+- **İki küme arasındaki tüm tablolarda çoğaltmayı etkinleştirin**. Bu senaryo, tablolardaki mevcut verilerin kopyalanmasını veya geçirilmesini gerektirmez ve Phoenix tabloları kullanmaz. Aşağıdaki parametreleri kullanın:
 
   `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password>`
 
-- **Belirli tablolarda çoğaltmayı etkinleştirin** . Table1, Table2 ve TABLE3 üzerinde çoğaltmayı etkinleştirmek için aşağıdaki parametreleri kullanın:
+- **Belirli tablolarda çoğaltmayı etkinleştirin**. Table1, Table2 ve TABLE3 üzerinde çoğaltmayı etkinleştirmek için aşağıdaki parametreleri kullanın:
 
   `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3"`
 
-- **Belirli tablolarda çoğaltmayı etkinleştirin ve var olan verileri kopyalayın** . Table1, Table2 ve TABLE3 üzerinde çoğaltmayı etkinleştirmek için aşağıdaki parametreleri kullanın:
+- **Belirli tablolarda çoğaltmayı etkinleştirin ve var olan verileri kopyalayın**. Table1, Table2 ve TABLE3 üzerinde çoğaltmayı etkinleştirmek için aşağıdaki parametreleri kullanın:
 
   `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -copydata`
 
-- **Tüm tablolarda çoğaltmayı etkinleştirin ve Phoenix meta verilerini kaynaktan hedefe çoğaltın** . Phoenix meta veri çoğaltması kusursuz değil. Dikkatli olun. Aşağıdaki parametreleri kullanın:
+- **Tüm tablolarda çoğaltmayı etkinleştirin ve Phoenix meta verilerini kaynaktan hedefe çoğaltın**. Phoenix meta veri çoğaltması kusursuz değil. Dikkatli olun. Aşağıdaki parametreleri kullanın:
 
   `-m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -replicate-phoenix-meta`
 
@@ -368,7 +368,7 @@ Betik eylemini çağırmak için [çoğaltmayı etkinleştirme](#enable-replicat
 
 ### <a name="scenarios"></a>Senaryolar
 
-- **Belirli tabloları (test1, test2 ve test3) Şu anda düzenlenen tüm satırlar Için Kopyala (geçerli zaman damgası)** :
+- **Belirli tabloları (test1, test2 ve test3) Şu anda düzenlenen tüm satırlar Için Kopyala (geçerli zaman damgası)**:
 
   `-m hn1 -t "test1::;test2::;test3::" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow`
 
@@ -376,7 +376,7 @@ Betik eylemini çağırmak için [çoğaltmayı etkinleştirme](#enable-replicat
 
   `-m hn1 -t "test1::;test2::;test3::" --replication-peer="zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow`
 
-- **Belirli bir zaman aralığına sahip belirli tabloları Kopyala** :
+- **Belirli bir zaman aralığına sahip belirli tabloları Kopyala**:
 
   `-m hn1 -t "table1:0:452256397;table2:14141444:452256397" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure"`
 
@@ -390,7 +390,7 @@ Betik eylemini çağırmak için [çoğaltmayı etkinleştirme](#enable-replicat
 
 ### <a name="scenarios"></a>Senaryolar
 
-- **Tüm tablolardaki çoğaltmayı devre dışı bırak** :
+- **Tüm tablolardaki çoğaltmayı devre dışı bırak**:
 
   `-m hn1 -s <source hbase cluster name> -sp Mypassword\!789 -all`
 
@@ -398,7 +398,7 @@ Betik eylemini çağırmak için [çoğaltmayı etkinleştirme](#enable-replicat
 
   `--src-cluster=<source hbase cluster name> --dst-cluster=<destination hbase cluster name> --src-ambari-user=<source cluster Ambari user name> --src-ambari-password=<source cluster Ambari password>`
 
-- **Belirtilen tablolarda çoğaltmayı devre dışı bırak (Table1, Table2 ve TABLE3)** :
+- **Belirtilen tablolarda çoğaltmayı devre dışı bırak (Table1, Table2 ve TABLE3)**:
 
   `-m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> -t "table1;table2;table3"`
 

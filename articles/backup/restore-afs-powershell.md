@@ -4,11 +4,11 @@ description: Bu makalede, Azure Backup hizmetini ve PowerShell 'i kullanarak Azu
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: 60c9848e12de80bcafe4553a9e8f3e27e8876d41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88826506"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021393"
 ---
 # <a name="restore-azure-files-with-powershell"></a>Azure dosyalarını PowerShell ile geri yükleme
 
@@ -68,7 +68,7 @@ Seçili kurtarma noktasına geri yüklemek için [restore-Azrecoveryservicesback
 * **Targetstorageaccountname**: yedeklenen içeriğin geri yüklendiği depolama hesabı. Hedef depolama hesabı kasayla aynı konumda olmalıdır.
 * **Targetfilesharename**: yedeklenen içeriğin geri yüklendiği hedef depolama hesabı içindeki dosya paylaşımları.
 * **TargetFolder**: verilerin geri yüklendiği dosya paylaşımının altındaki klasör. Yedeklenen içerik bir kök klasöre geri yüklenirse, hedef klasör değerlerini boş bir dize olarak verin.
-* **ResolveConflict**: geri yüklenen verilerle bir çakışma varsa yönerge. **Overwrite** veya **Skip**kabul eder.
+* **ResolveConflict**: geri yüklenen verilerle bir çakışma varsa yönerge. **Overwrite** veya **Skip** kabul eder.
 
 Cmdlet 'ini parametrelerle aşağıdaki gibi çalıştırın:
 
@@ -92,8 +92,8 @@ Seçili kurtarma noktasına geri yüklemek için [restore-Azrecoveryservicesback
 * **Targetfilesharename**: yedeklenen içeriğin geri yüklendiği hedef depolama hesabı içindeki dosya paylaşımları.
 * **TargetFolder**: verilerin geri yüklendiği dosya paylaşımının altındaki klasör. Yedeklenen içerik bir kök klasöre geri yüklenirse, hedef klasör değerlerini boş bir dize olarak verin.
 * **SourceFilePath**: dosya paylaşımında, bir dize olarak geri yüklenecek dosyanın mutlak yolu. Bu yol, **Get-AzStorageFile** PowerShell cmdlet 'inde kullanılan yoldur.
-* **Sourcefiletype**: bir dizin veya dosya seçili olup olmadığı. **Dizini** veya **dosyayı**kabul eder.
-* **ResolveConflict**: geri yüklenen verilerle bir çakışma varsa yönerge. **Overwrite** veya **Skip**kabul eder.
+* **Sourcefiletype**: bir dizin veya dosya seçili olup olmadığı. **Dizini** veya **dosyayı** kabul eder.
+* **ResolveConflict**: geri yüklenen verilerle bir çakışma varsa yönerge. **Overwrite** veya **Skip** kabul eder.
 
 Ek parametreler (SourceFilePath ve SourceFileType) yalnızca geri yüklemek istediğiniz tek dosya ile ilgilidir.
 

@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/30/2020
 ms.openlocfilehash: af9f0f65e01a786d478fac0adde6174b8f03b2fd
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537909"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019914"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>İçeri ve dışarı aktarma kullanarak MySQL veritabanınızı geçirme
 [!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
@@ -74,26 +74,26 @@ MySQL çalışma ekranına verileri dışarı ve içeri aktarmanın iki yolu var
 
 Tablo verilerine yönelik sihirbazlar CSV ve JSON dosyalarını kullanarak içeri ve dışarı aktarma işlemlerini destekler. Ayırıcılar, sütun seçimi ve kodlama seçimi gibi çeşitli yapılandırma seçeneklerini içerirler. Her Sihirbazı yerel veya uzaktan bağlanan MySQL sunucularında gerçekleştirebilirsiniz. İçeri aktarma eylemi tablo, sütun ve tür eşlemeyi içerir.
 
-Bu sihirbazlara, bir tabloya sağ tıklayarak nesne tarayıcısının bağlam menüsünden erişebilirsiniz. Ardından **Tablo verileri dışarı aktarma Sihirbazı** veya **tablo verilerini içeri aktarma Sihirbazı** ' nı seçin.
+Bu sihirbazlara, bir tabloya sağ tıklayarak nesne tarayıcısının bağlam menüsünden erişebilirsiniz. Ardından **Tablo verileri dışarı aktarma Sihirbazı** veya **tablo verilerini içeri aktarma Sihirbazı**' nı seçin.
 
 #### <a name="table-data-export-wizard"></a>Tablo verilerini dışarı aktarma Sihirbazı
 Aşağıdaki örnek, tabloyu bir CSV dosyasına dışarı aktarır:
 1. Aktarılacak veritabanının tablosuna sağ tıklayın.
-2. **Tablo verilerini dışarı aktarma Sihirbazı** ' nı seçin. Aktarılacak sütunları, satır sapmasını (varsa) ve sayıyı (varsa) seçin.
-3. **Dışarı aktarma için veri Seç** sayfasında **İleri** ' ye tıklayın. Dosya yolu, CSV veya JSON dosya türünü seçin. Ayrıca satır ayırıcı, kapsayan dizeler yöntemi ve alan ayırıcısı ' nı da seçin.
-4. **Çıkış dosyası konumunu seçin** sayfasında **İleri** ' ye tıklayın.
-5. **Verileri dışarı aktar** sayfasında **İleri** ' ye tıklayın.
+2. **Tablo verilerini dışarı aktarma Sihirbazı**' nı seçin. Aktarılacak sütunları, satır sapmasını (varsa) ve sayıyı (varsa) seçin.
+3. **Dışarı aktarma için veri Seç** sayfasında **İleri**' ye tıklayın. Dosya yolu, CSV veya JSON dosya türünü seçin. Ayrıca satır ayırıcı, kapsayan dizeler yöntemi ve alan ayırıcısı ' nı da seçin.
+4. **Çıkış dosyası konumunu seçin** sayfasında **İleri**' ye tıklayın.
+5. **Verileri dışarı aktar** sayfasında **İleri**' ye tıklayın.
 
 #### <a name="table-data-import-wizard"></a>Tablo verileri Içeri aktarma Sihirbazı
 Aşağıdaki örnek, tabloyu bir CSV dosyasından içe aktarır:
 1. İçeri aktarılacak veritabanının tablosuna sağ tıklayın.
-2. İçeri aktarılacak CSV dosyasına gidin ve seçin ve ardından **İleri** ' ye tıklayın.
-3. Hedef tabloyu seçin (yeni veya var olan) ve **içeri aktarmadan önce tabloyu kes** onay kutusunu seçin veya temizleyin. **İleri** ’ye tıklayın.
-4. Kodlama ve içeri aktarılacak sütunları seçin ve ardından **İleri** ' ye tıklayın.
-5. **Verileri Içeri aktar** sayfasında, **İleri** ' ye tıklayın. Sihirbaz verileri buna göre içe aktarır.
+2. İçeri aktarılacak CSV dosyasına gidin ve seçin ve ardından **İleri**' ye tıklayın.
+3. Hedef tabloyu seçin (yeni veya var olan) ve **içeri aktarmadan önce tabloyu kes** onay kutusunu seçin veya temizleyin. **İleri**’ye tıklayın.
+4. Kodlama ve içeri aktarılacak sütunları seçin ve ardından **İleri**' ye tıklayın.
+5. **Verileri Içeri aktar** sayfasında, **İleri**' ye tıklayın. Sihirbaz verileri buna göre içe aktarır.
 
 ### <a name="sql-data-export-and-import-wizards-from-the-navigator-pane"></a>Gezgin bölmesinden SQL verileri dışarı aktarma ve içeri aktarma sihirbazları
-MySQL çalışma sunucusundan oluşturulan veya mysqldump komutundan oluşturulan SQL 'i içeri veya dışarı aktarmak için bir sihirbaz kullanın. Bu sihirbazlara **Gezgin** bölmesinden veya ana menüden **sunucu** ' yı seçerek erişin. Ardından **veri dışarı aktarma** veya **veri içeri aktarma** ' yı seçin.
+MySQL çalışma sunucusundan oluşturulan veya mysqldump komutundan oluşturulan SQL 'i içeri veya dışarı aktarmak için bir sihirbaz kullanın. Bu sihirbazlara **Gezgin** bölmesinden veya ana menüden **sunucu** ' yı seçerek erişin. Ardından **veri dışarı aktarma** veya **veri içeri aktarma**' yı seçin.
 
 #### <a name="data-export"></a>Verileri Dışarı Aktarma
 :::image type="content" source="./media/concepts-migrate-import-export/p2.png" alt-text="MySQL pencere verileri Gezgin bölmesini kullanarak dışarı aktarma":::

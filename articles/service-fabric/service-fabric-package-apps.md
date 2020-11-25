@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 2/23/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 11a3fdd5dbaef53af321342952f786ed8119689c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89012407"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021070"
 ---
 # <a name="package-an-application"></a>Uygulamaları paketleme
 
@@ -40,16 +40,16 @@ D:\TEMP\MYAPPLICATIONTYPE
             init.dat
 ```
 
-Klasörler, karşılık gelen her öğenin **ad** öznitelikleriyle eşleşecek şekilde adlandırılır. Örneğin, hizmet bildirimi **Mycodea** ve **mycodeb**adlarıyla iki kod paketi içeriyorsa, aynı ada sahip iki klasör her kod paketi için gereken ikili dosyaları içerir.
+Klasörler, karşılık gelen her öğenin **ad** öznitelikleriyle eşleşecek şekilde adlandırılır. Örneğin, hizmet bildirimi **Mycodea** ve **mycodeb** adlarıyla iki kod paketi içeriyorsa, aynı ada sahip iki klasör her kod paketi için gereken ikili dosyaları içerir.
 
 ## <a name="use-setupentrypoint"></a>SetupEntryPoint kullanma
 
-**Setupentrypoint** kullanmanın tipik senaryoları, hizmet başlamadan önce bir yürütülebilir dosya çalıştırmanız veya yükseltilmiş ayrıcalıklarla bir işlem gerçekleştirmeniz gerekir. Örneğin:
+**Setupentrypoint** kullanmanın tipik senaryoları, hizmet başlamadan önce bir yürütülebilir dosya çalıştırmanız veya yükseltilmiş ayrıcalıklarla bir işlem gerçekleştirmeniz gerekir. Örnek:
 
 * Hizmet yürütülebilir dosyasının ihtiyaç duyacağı ortam değişkenlerini ayarlama ve başlatma. Yalnızca Service Fabric programlama modelleriyle yazılmış yürütülebilir dosyalar ile sınırlı değildir. Örneğin npm.exe, bir node.js uygulamasının dağıtımı için yapılandırılmış bazı ortam değişkenlerine ihtiyaç duyuyor.
 * Güvenlik sertifikaları yükleyerek erişim denetimini ayarlama.
 
-**Setupentrypoint**yapılandırma hakkında daha fazla bilgi için bkz [. bir hizmet kurulumu giriş noktası için ilkeyi yapılandırma](service-fabric-application-runas-security.md)
+**Setupentrypoint** yapılandırma hakkında daha fazla bilgi için bkz [. bir hizmet kurulumu giriş noktası için ilkeyi yapılandırma](service-fabric-application-runas-security.md)
 
 <a id="Package-App"></a>
 

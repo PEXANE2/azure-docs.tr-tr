@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: ad26fe0d869a2e892a419b1732727c3ff1d1e9a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9356cbb6eb210d6745d90e8ad001917e73592cd3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88870723"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96022004"
 ---
 # <a name="about-the-speech-sdk"></a>Konuşma SDK'sı hakkında
 
@@ -29,7 +29,7 @@ Konuşma SDK 'Sı, konuşma hizmetinden pek çok özelliği kullanıma sunar, an
 
 ### <a name="speech-to-text"></a>Konuşmayı metne dönüştürme
 
-[Konuşmadan metne](speech-to-text.md) ( *konuşma tanıma*olarak da bilinir), uygulamalarınızın, araçlarınızın veya cihazlarınızın tüketebileceği veya görüntüleyeceği metinlere ses akışları. Kullanıcı amaçlarını [Language Understanding (lusıs)](../luis/index.yml) ile birlikte kullanarak konuşma ve ses komutları üzerinde Kullanıcı hedefleri türetebilirsiniz. Konuşma girişini tek bir çağrıda farklı bir dile çevirmek için [konuşma çevirisini](speech-translation.md) kullanın. Daha fazla bilgi için bkz. [konuşmayı metne yönelik temel bilgiler](speech-to-text-basics.md).
+[Konuşmadan metne](speech-to-text.md) ( *konuşma tanıma* olarak da bilinir), uygulamalarınızın, araçlarınızın veya cihazlarınızın tüketebileceği veya görüntüleyeceği metinlere ses akışları. Kullanıcı amaçlarını [Language Understanding (lusıs)](../luis/index.yml) ile birlikte kullanarak konuşma ve ses komutları üzerinde Kullanıcı hedefleri türetebilirsiniz. Konuşma girişini tek bir çağrıda farklı bir dile çevirmek için [konuşma çevirisini](speech-translation.md) kullanın. Daha fazla bilgi için bkz. [konuşmayı metne yönelik temel bilgiler](./get-started-speech-to-text.md).
 
 **Konuşma tanıma (SR), tümcecik listesi, amaç, çeviri ve şirket içi kapsayıcılar** aşağıdaki platformlarda kullanılabilir:
 
@@ -44,7 +44,7 @@ Konuşma SDK 'Sı, konuşma hizmetinden pek çok özelliği kullanıma sunar, an
 
 ### <a name="text-to-speech"></a>Metin okuma
 
-[Metinden konuşmaya](text-to-speech.md) ( *konuşma sentezi*olarak da bilinir), metni insan benzeri birleştirilmiş konuşmaya dönüştürür. Giriş metni dize sabit değerleri ya da [konuşma Sensıs Işaretleme dili (SSML)](speech-synthesis-markup.md)kullanıyor. Standart veya sinir sesleri hakkında daha fazla bilgi için bkz. [metin okuma dili ve ses desteği](language-support.md#text-to-speech).
+[Metinden konuşmaya](text-to-speech.md) ( *konuşma sentezi* olarak da bilinir), metni insan benzeri birleştirilmiş konuşmaya dönüştürür. Giriş metni dize sabit değerleri ya da [konuşma Sensıs Işaretleme dili (SSML)](speech-synthesis-markup.md)kullanıyor. Standart veya sinir sesleri hakkında daha fazla bilgi için bkz. [metin okuma dili ve ses desteği](language-support.md#text-to-speech).
 
 **Metinden konuşmaya (TTS)** aşağıdaki platformlarda kullanılabilir:
 
@@ -68,7 +68,7 @@ Konuşma SDK 'sını kullanan [sesli yardımcılar](voice-assistants.md) , geli�
 
 #### <a name="keyword-spotting"></a>Anahtar sözcük biriktirme
 
-[Anahtar sözcük biriktirme](speech-devices-sdk-create-kws.md) listesi kavramı konuşma SDK 'sında desteklenir. Anahtar sözcük biriktirme listesi, konuşma içinde bir anahtar sözcük tanımlama ve anahtar sözcüğü işitme işlemi sırasında bir eylem tarafından yapılır. Örneğin, "Hey Cortana" Cortana yardımcısını etkinleştirir.
+[Anahtar sözcük biriktirme](./custom-keyword-basics.md) listesi kavramı konuşma SDK 'sında desteklenir. Anahtar sözcük biriktirme listesi, konuşma içinde bir anahtar sözcük tanımlama ve anahtar sözcüğü işitme işlemi sırasında bir eylem tarafından yapılır. Örneğin, "Hey Cortana" Cortana yardımcısını etkinleştirir.
 
 **Anahtar sözcük biriktirme (KWS)** aşağıdaki platformlarda kullanılabilir:
 
@@ -180,4 +180,4 @@ Benzersiz bir ortamda tanıma ve bulma için konuşmayı metne dönüştürme i�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Ücretsiz bir Azure hesabı oluşturma](https://azure.microsoft.com/free/cognitive-services/)
-* [Bkz. C 'de konuşmayı tanıma #](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
+* [Bkz. C 'de konuşmayı tanıma #](./get-started-speech-to-text.md?pivots=programming-language-csharp&tabs=dotnet)

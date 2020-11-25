@@ -3,12 +3,12 @@ title: Azure Service Bus AMQP 1,0 'ye Genel Bakış
 description: Azure Service Bus bir açık standart protokol olan Gelişmiş İleti Sıraya Alma Protokolü (AMQP) nasıl destekleyeceğinizi öğrenin.
 ms.topic: article
 ms.date: 11/20/2020
-ms.openlocfilehash: a643869d7d89b287e899b1eab89c5b9ec11856e5
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.openlocfilehash: 85943344fd8f20cf3a73af5d637b65676584f93f
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95396816"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96022192"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>Service Bus 'da AMQP 1,0 desteği
 Azure Service Bus bulut hizmeti, [Gelişmiş Ileti sıraya alma Protokolü (AMQP) 1,0](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html) ' i birincil iletişim yöntemi olarak kullanır. Microsoft, sektördeki iş ortaklarıyla, hem müşteriler hem de rekabet eden mesajlaşma aracılarında, [Oasin AMQP Technical komite](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp)' de geliştirilen yeni uzantılarla, AMQP 'yi geçmiş yılda geliştirme ve geliştirme olanağı elde etti. AMQP 1,0, bir ISO ve ıEC Standard ([ıso 19464:20149](https://www.iso.org/standard/64955.html)). 
@@ -70,20 +70,11 @@ Azure SDK aracılığıyla kullanılabilen tüm desteklenen Service Bus istemci 
 - [JavaScript ve TypeScript için Azure Service Bus modülleri](https://docs.microsoft.com/javascript/api/overview/azure/service-bus?view=azure-node-latest&preserve-view=true)
 - [Python için Azure Service Bus kitaplıkları](https://docs.microsoft.com/python/api/overview/azure/servicebus?view=azure-python&preserve-view=true)
 
+[!INCLUDE [service-bus-websockets-options](../../includes/service-bus-websockets-options.md)]
+
 Ayrıca, herhangi bir AMQP 1,0 uyumlu protokol yığınından Service Bus kullanabilirsiniz:
 
-| Dil | Kitaplık |
-| --- | --- |
-| Java | [Apache Qpid proton-J](https://qpid.apache.org/proton/index.html) |
-| C/C++ |[Azure uAMQP C](https://github.com/azure/azure-uamqp-c/), [Apache Qpid proton-C](https://qpid.apache.org/proton/index.html) |
-| Python |[Python Için Azure uAMQP](https://github.com/azure/azure-uamqp-python/), [Apache Qpid proton Python](https://qpid.apache.org/releases/qpid-proton-0.32.0/proton/python/docs/overview.html) |
-| PHP | [PHP için Azure uAMQP](https://github.com/vsouz4/azure-uamqp-php/) |
-| Ruby | [Apache Qpid proton Ruby](https://github.com/apache/qpid-proton/tree/master/ruby) |
-| Başlayın | [Azure go AMQP](https://github.com/Azure/go-amqp), [Apache Qpıd proton go](https://github.com/apache/qpid-proton/tree/master/go/examples)
-| C#/F #/VB | [AMQP .net Lite](https://github.com/Azure/amqpnetlite), [Apache NMS AMQP](https://github.com/apache/activemq-nms-amqp)|
-| JavaScript/Node | [Rhea](https://github.com/grs/rhea) |
-
-**Şekil 2: AMQP 1,0 istemci kitaplıklarının tablosu**
+[!INCLUDE [messaging-oss-amqp-stacks.md](../../includes/messaging-oss-amqp-stacks.md)]
 
 ## <a name="summary"></a>Özet
 * AMQP 1,0, platformlar arası karma uygulamalar oluşturmak için kullanabileceğiniz açık ve güvenilir bir mesajlaşma protokolüdür. AMQP 1,0, bir OASSıS standardıdır.

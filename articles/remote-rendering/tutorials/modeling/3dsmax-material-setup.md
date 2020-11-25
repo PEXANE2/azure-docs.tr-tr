@@ -6,11 +6,11 @@ ms.author: flborn
 ms.date: 06/16/2020
 ms.topic: tutorial
 ms.openlocfilehash: 12407d6344c69c747230e9db6fa4d53b4520dc82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331820"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020288"
 ---
 # <a name="tutorial-set-up-physically-based-rendering-materials-in-3ds-max"></a>Öğretici: 3ds Max ile fiziksel tabanlı işleme malzemeleri ayarlama
 
@@ -31,7 +31,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 Bu öğreticideki örnek sahnenin bir dizi Çokgen kutusu nesnesi vardır. Bunlar, Wood, metal, boyanmış metal, plastik ve lastik gibi farklı malzemelere atanır. Genel anlamda, her malzeme aşağıdaki dokuların tamamını veya çoğunu içerir:
 
-* Malzemenin renk eşlemi olan **Albedo**ve ayrıca **dağıtma** ve **basecolor**olarak da adlandırılır.
+* Malzemenin renk eşlemi olan **Albedo** ve ayrıca **dağıtma** ve **basecolor** olarak da adlandırılır.
 * **Metalness**, bir malzemenin metalik olup olmadığını ve hangi parçaların metalik olduğunu belirler. 
 * Bir yüzeyin ne kadar kaba olduğunu veya düzgün çalıştığını belirleyen **Kablık**.
 Ayrıca, bir yüzeydeki keskinlik ve önemli noktalara ilişkin netlik veya bulanıklaştırmalar da etkiler.
@@ -102,7 +102,7 @@ Aşağıdaki ekran görüntüsünde gösterildiği gibi, modele bir Unwrap UVW d
 
 Sonraki adım ikinci bir UV eşleme kanalı oluşturmaktır.
 
-1. Açık ise UV düzenleyiciyi kapatın. **Uıvs 'Yi Düzenle** menüsünün **Kanal** bölümünde kanal numarasını **2**olarak değiştirin. Harita kanalı 2, AO haritaları için beklenen kanaldır. 
+1. Açık ise UV düzenleyiciyi kapatın. **Uıvs 'Yi Düzenle** menüsünün **Kanal** bölümünde kanal numarasını **2** olarak değiştirin. Harita kanalı 2, AO haritaları için beklenen kanaldır. 
 
 1. **Kanal değişikliği uyarısı** iletişim kutusunda, Kanal 1 ' deki mevcut UVS 'yi yeni kanal 2 ' ye **taşıyabilir** veya yeni bir UV geri sarmayı oluşturacak mevcut UVS 'yi **iptal** edebilirsiniz. Yalnızca **eşleme** kanalı 1 ' den UVS 'den farklı olan Ao eşlemesi için yenı bir UV geri sarması oluşturmayı planlıyorsanız bırak ' ı seçin. (Örneğin, Kanal 1 ' de döşeme dokuları kullanmak istiyorsanız) Bu öğreticide, yeni UV kanalını düzenlemediğimiz için kanal 2 ' ye ait UVs kanalını taşıyacağız.
 
@@ -117,7 +117,7 @@ Daha önce belirtildiği gibi, 3ds Max fiziksel malzemesindeki AO haritaları i�
 
 1. Fiziksel malzemenin **genel haritalar** listesinde, **kabalılığını dağıtma** ve Ao eşlemenizi yükleme ' nin yanındaki **eşleme** yuvası ' nı seçin.
 
-1. AO dokuları özelliklerinde, eşleme kanalı varsayılan olarak **1** ' e ayarlanır. Bu değeri **2**olarak değiştirin. Bu eylem, AO eşlemenizi eklemek için gereken adımları tamamlar.
+1. AO dokuları özelliklerinde, eşleme kanalı varsayılan olarak **1** ' e ayarlanır. Bu değeri **2** olarak değiştirin. Bu eylem, AO eşlemenizi eklemek için gereken adımları tamamlar.
 
    >[!IMPORTANT]
    >Bu önemli bir adımdır, özellikle Kanal 2 ' deki UVs 'niz Kanal 1 ' de farklı ise, yanlış kanal seçilmişse AO doğru şekilde eşlenmeyeceği için önemli bir adımdır.
@@ -132,7 +132,7 @@ Daha önce belirtildiği gibi, 3ds Max fiziksel malzemesindeki AO haritaları i�
 
 1. **Normal kabartma** değiştiricide, **normal**' ın yanında **eşleme yok** ' u seçin. Normal eşlemenizi bulun ve yükleyin.
 
-1. Yöntemin **tanjant**olarak ayarlandığından emin olun. (Varsayılan olarak, olmalıdır.) Gerekirse, **yeşil çevir (Y)** seçeneğini değiştirin.
+1. Yöntemin **tanjant** olarak ayarlandığından emin olun. (Varsayılan olarak, olmalıdır.) Gerekirse, **yeşil çevir (Y)** seçeneğini değiştirin.
 
    ![Normal kabartma seçimini gösteren ekran görüntüsü. ](media/3dsmax/normal-bump.jpg)
     ![ Normal haritanın yüklenmesini gösteren ekran görüntüsü.](media/3dsmax/load-normal-map.jpg)
@@ -167,7 +167,7 @@ Dışa aktarma işlemine geçmeden önce göz önünde bulundurmanız gereken bi
 
 1. Bunların yanında, **tam yol** sütununda dokularınızın konumunun, büyük olasılıkla yerel makinenizde bulunduğu konumun yolunu görürsünüz.
 
-1. Son olarak, **durum**adlı bir sütun görürsünüz. Bu sütun, belirli bir dokunun sahneye yüklenip uygulanmadığını gösterir. Dokuyu şu terimlerden biriyle işaretler: **Tamam**, **bulundu**veya **dosya eksik**. İlk iki, dosyanın bulunduğunu ve yüklendiğini gösterir. En son açıkça, izleyici dosyanın yerini belirleyemediği anlamına gelir.
+1. Son olarak, **durum** adlı bir sütun görürsünüz. Bu sütun, belirli bir dokunun sahneye yüklenip uygulanmadığını gösterir. Dokuyu şu terimlerden biriyle işaretler: **Tamam**, **bulundu** veya **dosya eksik**. İlk iki, dosyanın bulunduğunu ve yüklendiğini gösterir. En son açıkça, izleyici dosyanın yerini belirleyemediği anlamına gelir.
  
    ![Varlık Izleme penceresini gösteren ekran görüntüsü.](media/3dsmax/texture-paths.jpg)
 
@@ -196,7 +196,7 @@ Doku yollarını göreli olarak yaptığımız için, FBX dışa aktarmaya geçi
 >
 >Turbodüzgünleştir ya da açık alt div gibi değiştiriciler kullandıysanız dışarı aktarma sırasında sorunlara neden olabileceğinden dışarı aktarma işleminden önce bunları daraltmak iyi bir fikir olabilir. Sahnelerinizi daralmadan önce kaydettiğinizden emin olun. 
 
-1. Sahnede dışarı aktarmak istediğiniz varlıkları seçin. Ana araç çubuğunda **Dosya**  >  **dışarı**aktarma  >  **Seçili**öğesine gidin.
+1. Sahnede dışarı aktarmak istediğiniz varlıkları seçin. Ana araç çubuğunda **Dosya**  >  **dışarı** aktarma  >  **Seçili** öğesine gidin.
 
 1. **Dışarı aktarılacak dosyayı seçin** iletişim kutusunda bir çıkış dosyası adı yazın veya seçin. **Farklı kaydet türü** listesinde **Autodesk (*. fbx)** öğesini seçin. Bu eylem, FBX dışa aktarma penceresini açar.
 
@@ -236,4 +236,4 @@ Genel olarak, bu tür bir malzeme, ışığın gerçek hayattai temel alınarak 
 Artık bir sahnedeki nesneler için gelişmiş aydınlatma ile malzemeleri ayarlamayı öğrenirsiniz. Ayrıca, nesnelerin Azure uzaktan Işleme tarafından desteklenen FBX biçimine nasıl verileceğini de bilirsiniz. Sonraki adım, FBX dosyasını dönüştürmektir ve Azure uzaktan Işlemede görselleştirilecek.
 
 >[!div class="nextstepaction"]
->[Hızlı başlangıç: bir modeli işleme için dönüştürme](../../quickstarts\convert-model.md)
+>[Hızlı başlangıç: Modeli işlenmek üzere dönüştürme](../../quickstarts\convert-model.md)

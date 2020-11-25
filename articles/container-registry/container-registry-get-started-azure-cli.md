@@ -4,12 +4,12 @@ description: Azure CLI ile hızlıca özel bir Docker kapsayıcısı kayıt deft
 ms.topic: quickstart
 ms.date: 06/12/2020
 ms.custom: seodec18, H1Hack27Feb2017, mvc, devx-track-azurecli
-ms.openlocfilehash: f4e69616d30c6a7b853c5cc854adee147ebde206
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 226e50aec8f7c76a1b4c81d1a07d57583059ef0e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87486553"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020084"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak özel kapsayıcı kayıt defteri oluşturma
 
@@ -69,10 +69,16 @@ Kayıt defteri oluşturulduğunda çıkış aşağıdakilere benzer:
 
 ## <a name="log-in-to-registry"></a>Kayıt defterinde oturum açma
 
-Kapsayıcı görüntülerini göndermeden ve çekmeden önce, kayıt defterinde oturum açmalısınız. Bunu yapmak için [az acr login][az-acr-login] komutunu kullanın.
+Kapsayıcı görüntülerini göndermeden ve çekmeden önce, kayıt defterinde oturum açmalısınız. Bunu yapmak için [az acr login][az-acr-login] komutunu kullanın. Azure CLı ile oturum açarken yalnızca kayıt defteri adını belirtin. Gibi bir etki alanı soneki içeren oturum açma sunucusu adını kullanmayın `azurecr.io` . 
 
 ```azurecli
 az acr login --name <registry-name>
+```
+
+Örnek:
+
+```azurecli
+az acr login --name mycontainerregistry
 ```
 
 Bu komut tamamlandığında `Login Succeeded` iletisi döndürülür.

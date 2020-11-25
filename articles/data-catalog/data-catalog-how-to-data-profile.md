@@ -7,17 +7,17 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: b27ff631ce13d70d15a6fd2b6dd5ad5bccaf5450
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89442080"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021920"
 ---
 # <a name="how-to-data-profile-data-sources-in-azure-data-catalog"></a>Azure Veri Kataloğu 'nda veri profili veri kaynakları
 
 ## <a name="introduction"></a>Giriş
 
-**Microsoft Azure Veri Kataloğu** , kurumsal veri kaynakları için bir kayıt sistemi ve bulma sistemi olarak hizmet veren tam olarak yönetilen bir bulut hizmetidir. Diğer bir deyişle, **Azure Veri Kataloğu** , kullanıcıların veri kaynaklarını bulmasına, anlamasına ve kullanmasına yardımcı olur ve kuruluşların mevcut verilerinden daha fazla değer almasını sağlar. Bir veri kaynağı **Azure Veri Kataloğu 'na**kaydedildiğinde, meta verileri hizmet tarafından kopyalanıp dizinlenir, ancak hikaye burada sonlanmaz.
+**Microsoft Azure Veri Kataloğu** , kurumsal veri kaynakları için bir kayıt sistemi ve bulma sistemi olarak hizmet veren tam olarak yönetilen bir bulut hizmetidir. Diğer bir deyişle, **Azure Veri Kataloğu** , kullanıcıların veri kaynaklarını bulmasına, anlamasına ve kullanmasına yardımcı olur ve kuruluşların mevcut verilerinden daha fazla değer almasını sağlar. Bir veri kaynağı **Azure Veri Kataloğu 'na** kaydedildiğinde, meta verileri hizmet tarafından kopyalanıp dizinlenir, ancak hikaye burada sonlanmaz.
 
 **Azure Veri Kataloğu** 'Nun **veri profili oluşturma** özelliği, kataloğunuzdaki desteklenen veri kaynaklarından verileri inceler ve bu verilerle ilgili istatistikleri ve bilgileri toplar. Veri varlıklarınızın profilini eklemek kolaydır. Bir veri varlığını kaydettiğinizde veri kaynağı kayıt aracında **veri profilini dahil et** ' i seçin.
 

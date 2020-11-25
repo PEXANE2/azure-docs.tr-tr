@@ -15,11 +15,11 @@ ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
 ms.openlocfilehash: ed5768e89482d32bb140e9ba7064de2d20809892
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148723"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020730"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>Azure CDN ile büyük dosya indirme iyileştirmesi
 
@@ -110,7 +110,7 @@ Büyük dosya iyileştirmesi, genel Web tesliminden farklı varsayılan önbelle
 | Önbelleğe Alma  | Genel Web | Büyük dosya iyileştirmesi 
 --- | --- | --- 
 Önbelleğe alma: pozitif <br> HTTP 200, 203, 300, <br> 301, 302 ve 410 | 7 gün |1 gün  
-Önbelleğe alma: negatif <br> HTTP 204, 305, 404, <br> ve 405 | Hiçbiri | 1 saniye 
+Önbelleğe alma: negatif <br> HTTP 204, 305, 404, <br> ve 405 | Yok | 1 saniye 
 
 ### <a name="deal-with-origin-failure"></a>Kaynak hatasıyla uğraşın
 

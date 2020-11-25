@@ -15,11 +15,11 @@ ms.date: 06/12/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 43718f8ebc851f27035f2999bfb4ff3ec12ca5b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84887719"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021971"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>Azure CDN uç noktası oluşturma
 Bu makalede, mevcut bir CDN profilinde [Azure Content Delivery Network (CDN)](cdn-overview.md) uç noktası oluşturmaya yönelik tüm ayarlar açıklanmaktadır. Bir profil ve uç nokta oluşturduktan sonra müşterilerinize içerik sunmaya başlayabilirsiniz. Bir profil ve uç nokta oluşturmaya yönelik hızlı başlangıç için bkz. [hızlı başlangıç: Azure CDN profili ve uç noktası oluşturma](cdn-create-new-endpoint.md).
@@ -36,7 +36,7 @@ Azure hesabınızla [Azure portalında](https://portal.azure.com) oturum açın.
    
     CDN profili bölmesi görünür.
 
-2. **Uç nokta**seçin.
+2. **Uç nokta** seçin.
    
     ![CDN Select Endpoint](./media/cdn-create-endpoint-how-to/cdn-select-endpoint.png)
    
@@ -46,15 +46,15 @@ Azure hesabınızla [Azure portalında](https://portal.azure.com) oturum açın.
 
 3. **Ad** için, yeni CDN uç noktasına yönelik benzersiz bir ad girin. Bu ad, etki alanındaki önbelleğe alınmış kaynaklarınıza erişmek için kullanılır. _\<endpointname>_ azureedge.net.
 
-4. **Kaynak türü**için aşağıdaki kaynak türlerinden birini seçin: 
+4. **Kaynak türü** için aşağıdaki kaynak türlerinden birini seçin: 
    - Azure depolama için **depolama**
    - Azure Cloud Services için **bulut hizmeti**
    - Azure Web Apps **Web uygulaması**
    - Genel olarak erişilebilen diğer tüm kaynak Web sunucuları için **özel başlangıç** (Azure 'da veya başka bir yerde barındırılan)
 
-5. **Kaynak ana bilgisayar adı**için, kaynak sunucu etki alanınızı seçin veya girin. Açılan listede, 4. adımda belirttiğiniz türdeki tüm kullanılabilir kaynak sunucuları listelenir. Kaynak türü olarak **özel kaynak** ' ı seçtiyseniz, özel kaynak sunucunuzun etki alanını girin.
+5. **Kaynak ana bilgisayar adı** için, kaynak sunucu etki alanınızı seçin veya girin. Açılan listede, 4. adımda belirttiğiniz türdeki tüm kullanılabilir kaynak sunucuları listelenir. Kaynak türü olarak **özel kaynak** ' ı seçtiyseniz, özel kaynak sunucunuzun etki alanını girin.
     
-6. **Kaynak yolu**için, önbelleğe almak istediğiniz kaynakların yolunu girin. 5. adımda belirttiğiniz etki alanındaki herhangi bir kaynağın önbelleğe alınmasına izin vermek için bu ayarı boş bırakın.
+6. **Kaynak yolu** için, önbelleğe almak istediğiniz kaynakların yolunu girin. 5. adımda belirttiğiniz etki alanındaki herhangi bir kaynağın önbelleğe alınmasına izin vermek için bu ayarı boş bırakın.
     
 7. **Kaynak ana bilgisayar üst bilgisi** için, Azure CDN'nin her bir istekle göndermesini istediğiniz ana bilgisayar üst bilgisini girin veya varsayılan değeri bırakın.
    
@@ -62,7 +62,7 @@ Azure hesabınızla [Azure portalında](https://portal.azure.com) oturum açın.
    > Azure Storage ve Web Apps gibi bazı kaynak türleri, ana bilgisayar üst bilgisinin kaynağın etki alanı ile eşleşmesini gerektirir. Etki alanından farklı ana bilgisayar üst bilgisi gerektiren bir kaynağa sahip değilseniz varsayılan değeri bırakmanız gerekir.
    > 
     
-8. **Protokol** ve **kaynak bağlantı noktası**için, kaynak sunucudaki kaynaklarınıza erişmek üzere kullanılacak protokolleri ve bağlantı noktalarını belirtin. En az bir protokol (HTTP veya HTTPS) seçilmelidir. HTTPS içeriğine erişmek için CDN tarafından belirtilen etki alanını ( _\<endpointname>_ . azureedge.net) kullanın. 
+8. **Protokol** ve **kaynak bağlantı noktası** için, kaynak sunucudaki kaynaklarınıza erişmek üzere kullanılacak protokolleri ve bağlantı noktalarını belirtin. En az bir protokol (HTTP veya HTTPS) seçilmelidir. HTTPS içeriğine erişmek için CDN tarafından belirtilen etki alanını ( _\<endpointname>_ . azureedge.net) kullanın. 
    
    > [!NOTE]
    > **Kaynak bağlantı noktası** değeri, yalnızca uç noktanın kaynak sunucudan bilgi almak için kullandığı bağlantı noktasını belirler. Uç noktanın kendisi, **Kaynak bağlantı noktası** değerinden bağımsız olarak, yalnızca varsayılan HTTP ve HTTPS bağlantı noktalarındaki (80 ve 443) uç istemciler tarafından kullanılabilir.  
@@ -71,7 +71,7 @@ Azure hesabınızla [Azure portalında](https://portal.azure.com) oturum açın.
    > 
    > Azure CDN özel etki alanları için HTTPS desteği **Akamai ürünlerden Azure CDN** desteklenmez. Daha fazla bilgi için bkz. [Azure CDN özel etki alanı üzerinde HTTPS'yi yapılandırma](cdn-custom-ssl.md).
     
-9. **Için iyileştirilmiş**için, uç noktanın teslim etmesini istediğiniz senaryoya ve içerik türüne en iyi eşleşen bir iyileştirme türü seçin. Daha fazla bilgi için bkz. [içerik teslimi türü için Azure CDN iyileştirme](cdn-optimization-overview.md).
+9. **Için iyileştirilmiş** için, uç noktanın teslim etmesini istediğiniz senaryoya ve içerik türüne en iyi eşleşen bir iyileştirme türü seçin. Daha fazla bilgi için bkz. [içerik teslimi türü için Azure CDN iyileştirme](cdn-optimization-overview.md).
 
     Aşağıdaki en iyi duruma getirme türü ayarları, profil türüne göre desteklenir:
     - **Microsoft profillerinden Azure CDN Standart** :

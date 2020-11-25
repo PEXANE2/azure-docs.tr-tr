@@ -9,11 +9,11 @@ ms.date: 09/15/2016
 ms.author: hermannd
 ms.reviewer: cynthn
 ms.openlocfilehash: 6492e770479042a5a1b4da6f61917832adad4873
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959297"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021427"
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>Azure 'da SAP S/4HANA veya siyah beyaz/4HANA dağıtma
 Bu makalede SAP Cloud gereç kitaplığı (SAP CAL) 3,0 kullanılarak Azure 'da S/4HANA 'nın nasıl dağıtılacağı açıklanır. Siyah beyaz/4HANA gibi diğer SAP HANA tabanlı çözümleri dağıtmak için aynı adımları izleyin.

@@ -7,11 +7,11 @@ ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
 ms.openlocfilehash: 48a732e3935d78bdbf8b81fe989b59be1fbe2203
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422816"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020441"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Azure 'da bir işlev oluşturmak ve yayımlamak için Java ve Gradle kullanma
 
@@ -20,7 +20,7 @@ Bu makalede, Gradle komut satırı aracıyla Azure Işlevleri 'nde bir Java işl
 > [!NOTE]
 > Gradle, tercih edilmemiş geliştirme aracınız değilse [Maven](./create-first-function-cli-java.md), [IntelliJ fikrini](/azure/developer/java/toolkit-for-intellij/quickstart-functions) ve [vs Code](./create-first-function-vs-code-java.md)kullanarak Java geliştiricileri için benzer öğreticilerimize göz atın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Java kullanarak işlev uygulamaları geliştirebilmeniz için şunlar yüklü olmalıdır:
 
@@ -126,7 +126,7 @@ Bu, Build. Gradle dosyasındaki değerlere bağlı olarak aşağıdaki kaynaklar
 
 + Kaynak grubu. Sağladığınız _resourceGroup_ ile adlandırılmış.
 + Depolama hesabı. Işlevleri için gereklidir. Ad, depolama hesabı adı gereksinimlerine göre rastgele oluşturulur.
-+ Planı App Service. Belirtilen _Appregion_ 'da işlev uygulamanız için barındırılan sunucusuz tüketim planı. Ad rastgele oluşturulur.
++ Planı App Service. Belirtilen _Appregion_'da işlev uygulamanız için barındırılan sunucusuz tüketim planı. Ad rastgele oluşturulur.
 + İşlev uygulaması. İşlev uygulaması, işlevleriniz için dağıtım ve yürütme birimidir. Ad, rastgele oluşturulmuş bir sayıyla eklenmiş olan _uygulamadır_. 
 
 Dağıtım ayrıca proje dosyalarını paketleyip, paket Çalıştır modu etkin olan [ZIP dağıtımını](functions-deployment-technologies.md#zip-deploy)kullanarak yeni işlev uygulamasına dağıtır.
@@ -142,11 +142,11 @@ Dağıtım ayrıca proje dosyalarını paketleyip, paket Çalıştır modu etkin
 
 1. [Azure Portal]gidin, oturum açın, sayfanın üst kısmında **arama** yapmak için işlev uygulamanızın _appname_ öğesini yazın ve ENTER tuşuna basın.
  
-1. İşlev uygulamanızda **işlevler** ' i seçin, işlevinizi seçin ve sonra sağ üst köşedeki **Işlev Url 'sini al</>** ' a tıklayın. 
+1. İşlev uygulamanızda **işlevler**' i seçin, işlevinizi seçin ve sonra sağ üst köşedeki **Işlev Url 'sini al</>** ' a tıklayın. 
 
     :::image type="content" source="./media/functions-create-first-java-gradle/get-function-url-portal.png" alt-text="Azure portalından işlev URL’sini kopyalama":::
 
-1. **Varsayılan (işlev anahtarı)** öğesini seçin ve **Kopyala** ' yı seçin. 
+1. **Varsayılan (işlev anahtarı)** öğesini seçin ve **Kopyala**' yı seçin. 
 
 Şimdi, işlevinizi erişmek için kopyalanmış URL 'YI kullanabilirsiniz.
 

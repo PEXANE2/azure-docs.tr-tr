@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 12/10/2019
 ms.openlocfilehash: 3ce104e9340c3e93d64b68dcab6f5bd6d2f62493
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748736"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020645"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Azure REST API kullanarak Apache Hadoop kümeleri oluşturma
 
@@ -248,7 +248,7 @@ Bu örnek, bu belgedeki adımlarda kullanılır. **Parameters** bölümündeki �
    az ad sp create --id <App ID> --query 'objectId'
    ```
 
-     Bu komuttan döndürülen değer, __nesne kimliğidir__ . Bu değeri kaydedin.
+     Bu komuttan döndürülen değer, __nesne kimliğidir__. Bu değeri kaydedin.
 
 4. **Nesne kimliği** değerini kullanarak hizmet sorumlusuna **sahip** rolünü atayın. Daha önce edindiğiniz **ABONELIK kimliğini** kullanın.
 

@@ -6,11 +6,11 @@ services: container-service
 ms.topic: article
 ms.date: 09/21/2020
 ms.openlocfilehash: ad51bfdf8c494e763921de880926b839cdb7be62
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900751"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021648"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes hizmetinde (AKS) Azure diskleriyle kalıcı bir birimi dinamik olarak oluşturma ve kullanma
 
@@ -176,7 +176,7 @@ $ az disk list --query '[].id | [?contains(@,`pvc-faf0f176-8b8d-11e8-923b-deb28c
 /subscriptions/<guid>/resourceGroups/MC_MYRESOURCEGROUP_MYAKSCLUSTER_EASTUS/providers/MicrosoftCompute/disks/kubernetes-dynamic-pvc-faf0f176-8b8d-11e8-923b-deb28c58d242
 ```
 
-[Az Snapshot Create][az-snapshot-create]komutuyla bir anlık görüntü diski oluşturmak IÇIN disk kimliğini kullanın. Aşağıdaki örnek, AKS kümesiyle aynı kaynak grubunda *Pvcsnapshot* adlı bir anlık görüntü oluşturur ( *MC_myResourceGroup_myAKSCluster_eastus* ). AKS kümesinin erişimi olmayan kaynak gruplarında anlık görüntü ve geri yükleme diskleri oluşturursanız, izin sorunlarıyla karşılaşabilirsiniz.
+[Az Snapshot Create][az-snapshot-create]komutuyla bir anlık görüntü diski oluşturmak IÇIN disk kimliğini kullanın. Aşağıdaki örnek, AKS kümesiyle aynı kaynak grubunda *Pvcsnapshot* adlı bir anlık görüntü oluşturur (*MC_myResourceGroup_myAKSCluster_eastus*). AKS kümesinin erişimi olmayan kaynak gruplarında anlık görüntü ve geri yükleme diskleri oluşturursanız, izin sorunlarıyla karşılaşabilirsiniz.
 
 ```azurecli-interactive
 $ az snapshot create \
@@ -201,7 +201,7 @@ Geri yüklenen diski Pod ile birlikte kullanmak için, bildirimdeki diskin KIMLI
 az disk show --resource-group MC_myResourceGroup_myAKSCluster_eastus --name pvcRestored --query id -o tsv
 ```
 
-Adlı bir pod bildirimi oluşturun `azure-restored.yaml` ve önceki adımda elde edilen DISK URI 'sini belirtin. Aşağıdaki örnek, */mnt/Azure* ' da bir birim olarak bağlanmış geri yüklenen disk ile temel bir NGINX web sunucusu oluşturur:
+Adlı bir pod bildirimi oluşturun `azure-restored.yaml` ve önceki adımda elde edilen DISK URI 'sini belirtin. Aşağıdaki örnek, */mnt/Azure*' da bir birim olarak bağlanmış geri yüklenen disk ile temel bir NGINX web sunucusu oluşturur:
 
 ```yaml
 kind: Pod

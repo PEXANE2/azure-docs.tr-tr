@@ -11,11 +11,11 @@ ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
 ms.openlocfilehash: a62943c1a808424ded1a5e46ed115cda332bf7d5
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358738"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020764"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning"></a>Öğretici: Azure AD Kullanıcı sağlaması için SAP başarılı faktörleri yapılandırma
 Bu öğreticinin amacı, başarılı bir şekilde, başarılı bir şekilde e-posta adresi geri yazma işlemi sayesinde, başarılı bir şekilde çalışan verileri Azure Active Directory, çalışan verileri sağlamak için gerçekleştirmeniz gereken adımları gösterir. 
@@ -92,28 +92,28 @@ Başarılı bir şekilde OData API 'Leri çağırmak için kullanılacak olan ba
 ### <a name="create-an-api-permissions-role"></a>API izinleri rolü oluşturma
 
 * Yönetim merkezine erişimi olan bir kullanıcı hesabıyla SAP 'de başarılı bir şekilde oturum açın.
-* *Izin Rollerini Yönet* ' i arayın ve ardından arama sonuçlarından **izin Rollerini Yönet** ' i seçin.
+* *Izin Rollerini Yönet*' i arayın ve ardından arama sonuçlarından **izin Rollerini Yönet** ' i seçin.
   ![Izin rollerini yönetme](./media/sap-successfactors-inbound-provisioning/manage-permission-roles.png)
-* Izin rolü listesinden **Yeni oluştur** ' a tıklayın.
+* Izin rolü listesinden **Yeni oluştur**' a tıklayın.
   > [!div class="mx-imgBorder"]
   > ![Yeni Izin rolü oluştur](./media/sap-successfactors-inbound-provisioning/create-new-permission-role-1.png)
 * Yeni izin rolü için bir **rol adı** ve **Açıklama** ekleyin. Ad ve açıklama rolün API kullanım izinleri olduğunu göstermelidir.
   > [!div class="mx-imgBorder"]
   > ![İzin rolü ayrıntısı](./media/sap-successfactors-inbound-provisioning/permission-role-detail.png)
-* Izin ayarları altında **izin...** öğesine tıklayın, ardından izin listesini aşağı kaydırın ve **tümleştirme araçlarını Yönet** ' e tıklayın. **Yöneticinin, temel kimlik doğrulaması aracılığıyla OData API 'Sine erişmesine Izin ver** kutusunu işaretleyin.
+* Izin ayarları altında **izin...** öğesine tıklayın, ardından izin listesini aşağı kaydırın ve **tümleştirme araçlarını Yönet**' e tıklayın. **Yöneticinin, temel kimlik doğrulaması aracılığıyla OData API 'Sine erişmesine Izin ver** kutusunu işaretleyin.
   > [!div class="mx-imgBorder"]
   > ![Tümleştirme araçlarını Yönet](./media/sap-successfactors-inbound-provisioning/manage-integration-tools.png)
-* Aynı kutuda aşağı kaydırın ve **çalışan yönetim API 'si** ' ni seçin. ODATA API kullanarak okumak ve ODATA API kullanarak düzenlemek için aşağıda gösterildiği gibi izinler ekleyin. Başarılı bir şekilde geri yazma senaryosunda aynı hesabı kullanmayı planlıyorsanız Düzenle seçeneğini belirleyin. 
+* Aynı kutuda aşağı kaydırın ve **çalışan yönetim API 'si**' ni seçin. ODATA API kullanarak okumak ve ODATA API kullanarak düzenlemek için aşağıda gösterildiği gibi izinler ekleyin. Başarılı bir şekilde geri yazma senaryosunda aynı hesabı kullanmayı planlıyorsanız Düzenle seçeneğini belirleyin. 
   > [!div class="mx-imgBorder"]
   > ![Okuma yazma izinleri](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
-* **Bitti** ' ye tıklayın. **Değişiklikleri Kaydet** ’e tıklayın.
+* **Bitti**' ye tıklayın. **Değişiklikleri Kaydet**’e tıklayın.
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>API kullanıcısı için bir Izin grubu oluşturma
 
-* Başarılı etmenleri yönetici merkezinde, *Izin gruplarını yönet* ' i arayın ve ardından arama sonuçlarından **izin gruplarını yönet** ' i seçin.
+* Başarılı etmenleri yönetici merkezinde, *Izin gruplarını yönet*' i arayın ve ardından arama sonuçlarından **izin gruplarını yönet** ' i seçin.
   > [!div class="mx-imgBorder"]
   > ![İzin gruplarını yönet](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
-* Izin gruplarını yönet penceresinde **Yeni oluştur** ' a tıklayın.
+* Izin gruplarını yönet penceresinde **Yeni oluştur**' a tıklayın.
   > [!div class="mx-imgBorder"]
   > ![Yeni Grup Ekle](./media/sap-successfactors-inbound-provisioning/create-new-group.png)
 * Yeni grup için bir grup adı ekleyin. Grup adı, grubun API kullanıcıları için olduğunu göstermelidir.
@@ -126,8 +126,8 @@ Başarılı bir şekilde OData API 'Leri çağırmak için kullanılacak olan ba
 
 ### <a name="grant-permission-role-to-the-permission-group"></a>İzin grubuna izin rolü verme
 
-* Başarılı bir şekilde Yönetim Merkezi 'nde, *Izin Rollerini Yönet* ' i arayın ve ardından arama sonuçlarından **izin Rollerini Yönet** ' i seçin.
-* **Izin rolü listesinden** , API kullanım izinleri için oluşturduğunuz rolü seçin.
+* Başarılı bir şekilde Yönetim Merkezi 'nde, *Izin Rollerini Yönet*' i arayın ve ardından arama sonuçlarından **izin Rollerini Yönet** ' i seçin.
+* **Izin rolü listesinden**, API kullanım izinleri için oluşturduğunuz rolü seçin.
 * **Bu rolü Izin ver altında... öğesine** tıklayın **.**
 * Açılan menüden **Izin grubu...** ' yi seçin ve ardından **Seç...** öğesine tıklayarak yukarıda oluşturulan grubu aramak ve seçmek için gruplar penceresini açın. 
   > [!div class="mx-imgBorder"]
@@ -135,7 +135,7 @@ Başarılı bir şekilde OData API 'Leri çağırmak için kullanılacak olan ba
 * İzin grubuna verme Izni rolünü gözden geçirin. 
   > [!div class="mx-imgBorder"]
   > ![İzin rolü ve Grup Ayrıntısı](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
-* **Değişiklikleri Kaydet** ’e tıklayın.
+* **Değişiklikleri Kaydet**’e tıklayın.
 
 ## <a name="configuring-user-provisioning-from-successfactors-to-azure-ad"></a>Kullanıcı hazırlama işlemini başarılı etmenlerden Azure AD 'ye yapılandırma
 
@@ -153,9 +153,9 @@ Bu bölümde, Azure AD 'ye başarılı bir şekilde Kullanıcı hesabı sağlama
 
 2. Sol gezinti çubuğunda **Azure Active Directory** ' yi seçin.
 
-3. **Kuruluş uygulamaları** ' nı ve ardından **tüm uygulamalar** ' ı seçin.
+3. **Kuruluş uygulamaları**' nı ve ardından **tüm uygulamalar**' ı seçin.
 
-4. **Uygulama Ekle** ' yi seçin ve **Tüm** kategorisini seçin.
+4. **Uygulama Ekle**' yi seçin ve **Tüm** kategorisini seçin.
 
 5. **Kullanıcı sağlamayı Azure Active Directory Için başarılı faktörleri** arayın ve bu uygulamayı Galeriden ekleyin.
 
@@ -185,7 +185,7 @@ Bu bölümde, Azure AD 'ye başarılı bir şekilde Kullanıcı hesabı sağlama
 
 Bu bölümde, Kullanıcı verilerinin başarıyla Active Directory olarak nasıl akacağını yapılandıracaksınız.
 
-1. **Eşlemeler** altındaki sağlama sekmesinde, **Azure Active Directory Için başarılı etmenleri eşitler** ' a tıklayın.
+1. **Eşlemeler** altındaki sağlama sekmesinde, **Azure Active Directory Için başarılı etmenleri eşitler**' a tıklayın.
 
 1. **Kaynak nesne kapsamı** alanında, bir öznitelik tabanlı filtre kümesi tanımlayarak, başarılı bir şekilde hangi Kullanıcı KÜMELERININ Azure AD 'ye sağlanması için kapsamda olması gerektiğini seçebilirsiniz. Varsayılan kapsam, "tüm kullanıcılar başarılı faktörlerdeki" dir. Örnek filtreler:
 
@@ -257,7 +257,7 @@ Uygulama yapılandırmalarının sağlanması başarılı bir şekilde tamamland
 
 1. **Sağlama** sekmesinde, **sağlama durumunu** **Açık** olarak ayarlayın.
 
-2. **Kaydet** ’e tıklayın.
+2. **Kaydet**’e tıklayın.
 
 3. Bu işlem ilk eşitlemeyi başlatacak ve bu da, başarılı bir sayıda kullanıcının başarılı olan kiracı kiracısında olmasına bağlı olarak birkaç saat sürebilir. İlerleme çubuğunu, eşitleme döngüsünün ilerlemesini izlemek için kontrol edebilirsiniz. 
 

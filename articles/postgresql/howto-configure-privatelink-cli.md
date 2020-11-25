@@ -8,11 +8,11 @@ ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: b8aaebdd37f835201ef549e3f97e0c0b657e4fe9
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636223"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020135"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>For PostgreSQL için Azure veritabanı-CLı kullanarak tek sunucu için özel bağlantı oluşturma ve yönetme
 
@@ -138,20 +138,20 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
 
 1. **Bağlan** düğmesini seçin. **Bağlan** düğmesini seçtikten sonra **sanal makineye bağlan** açılır.
 
-1. **RDP Dosyasını İndir** ’i seçin. Azure bir Uzak Masaüstü Protokolü ( *. rdp* ) dosyası oluşturur ve bilgisayarınıza indirir.
+1. **RDP Dosyasını İndir**’i seçin. Azure bir Uzak Masaüstü Protokolü (*. rdp*) dosyası oluşturur ve bilgisayarınıza indirir.
 
 1. *İndirilen. rdp* dosyasını açın.
 
-    1. İstendiğinde **Bağlan** ’ı seçin.
+    1. İstendiğinde **Bağlan**’ı seçin.
 
     1. VM oluştururken belirttiğiniz kullanıcı adını ve parolayı girin.
 
         > [!NOTE]
-        > **More choices**  >  VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için **farklı bir hesap kullan** ' ı seçmeniz gerekebilir.
+        > **More choices**  >  VM oluştururken girdiğiniz kimlik bilgilerini belirtmek için **farklı bir hesap kullan**' ı seçmeniz gerekebilir.
 
-1. **Tamam** ’ı seçin.
+1. **Tamam**’ı seçin.
 
-1. Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Bir sertifika uyarısı alırsanız **Evet** ’i veya **Devam** ’ı seçin.
+1. Oturum açma işlemi sırasında bir sertifika uyarısı alabilirsiniz. Bir sertifika uyarısı alırsanız **Evet**’i veya **Devam**’ı seçin.
 
 1. VM masaüstü seçildikten sonra, bunu yerel masaüstünüze geri dönmek için simge durumuna küçültün.  
 
@@ -173,15 +173,15 @@ Aşağıdaki gibi, internet *'ten gelen VM VM* 'sine bağlanın:
 
 3. Kullanılabilir herhangi bir istemciyi kullanarak PostgreSQL sunucusu için özel bağlantı bağlantısını test edin. Aşağıdaki örnek, işlemi yapmak için [Azure Data Studio 'yu](/sql/azure-data-studio/download?view=sql-server-ver15&preserve-view=true) kullanır.
 
-4. **Yeni bağlantı** ' da bu bilgileri girin veya seçin:
+4. **Yeni bağlantı**' da bu bilgileri girin veya seçin:
 
    | Ayar | Değer |
    | ------- | ----- |
-   | Sunucu türü| **PostgreSQL** ' i seçin.|
+   | Sunucu türü| **PostgreSQL**' i seçin.|
    | Sunucu adı| *Mydemopostgresserver.Privatelink.Postgres.Database.Azure.com* seçin |
    | Kullanıcı adı | username@servernamePostgreSQL sunucusu oluşturma sırasında belirtilen kullanıcı adını girin. |
    |Parola |PostgreSQL sunucusu oluşturma sırasında bir parola girin. |
-   |SSL|**Gerekli** ' yi seçin.|
+   |SSL|**Gerekli**' yi seçin.|
    ||
 
 5. Bağlan'ı seçin.

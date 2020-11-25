@@ -8,11 +8,11 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: c4e5dedf2075a2e13cc91c5eed2c0f03ba498b97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88962562"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021529"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>App Service Ortamı ile Iç Load Balancer kullanma
 
@@ -58,12 +58,12 @@ ILB ATıCı oluşturmak, normal olarak bir AO oluşturmaktan daha farklı değil
 
 Sanal ağ bölmesinde, bir dış VIP veya Iç VIP arasında seçim yapmanızı sağlayan bir VNet yapılandırma seçeneği vardır. Varsayılan seçenek Dış’tır. Dış olarak ayarlandıysa Ao 'niz internet 'e erişilebilir bir VIP kullanır. İç’i seçerseniz ASE’niz sanal ağınızın içindeki bir IP adresinde bulunan ILB ile yapılandırılır. 
 
-Dahili ' ı seçtikten sonra Ao verilerinize daha fazla IP adresi ekleyebilme kaldırılır ve bunun yerine Ao 'nun alt etki alanını sağlamanız gerekir. Bir dış VIP ile Ao 'da, Ao 'nun adı bu Ao 'da oluşturulan uygulamalar için alt etki alanında kullanılır. Ao 'niz ***contosotest*** olarak adlandırılmışsa ve uygulamanızın adı ***MyTest***ise, alt etki alanı ***contosotest.p.azurewebsites.net*** biçimindedir ve bu uygulamanın URL 'si ***MyTest.contosotest.p.azurewebsites.net***olur. VIP türünü Iç olarak ayarlarsanız Ao adınız Ao 'nun alt etki alanında kullanılmaz. Alt etki alanını açık olarak belirtirsiniz. Alt etki alanı ***contoso.Corp.net*** ise ve bu, ***timeretaşıma***adlı bir uygulama yaptıysanız, bu uygulamanın URL 'si ***timereporting.contoso.Corp.net***olur.
+Dahili ' ı seçtikten sonra Ao verilerinize daha fazla IP adresi ekleyebilme kaldırılır ve bunun yerine Ao 'nun alt etki alanını sağlamanız gerekir. Bir dış VIP ile Ao 'da, Ao 'nun adı bu Ao 'da oluşturulan uygulamalar için alt etki alanında kullanılır. Ao 'niz "*_contosotest_* _" olarak adlandırılmışsa ve bu Ao 'nun adı _*_MyTest_*_ olarak adlandırılmışsa, alt etki alanı _*_contosotest.p.azurewebsites.net_*_ biçimindedir ve uygulamanın URL 'si _*_MyTest.contosotest.p.azurewebsites.net_*_ olur. VIP türünü Iç olarak ayarlarsanız Ao adınız Ao 'nun alt etki alanında kullanılmaz. Alt etki alanını açık olarak belirtirsiniz. Alt etki alanı _*_contoso.Corp.net_*_ ise ve bu, _*_timeretaşıma_*_ adlı bir uygulama yaptıysanız, bu uygulamanın URL 'si _*_timereporting.contoso.Corp.net_*_ olur.
 
 ## <a name="apps-in-an-ilb-ase"></a>ILB Ao 'da uygulamalar
 ILB Ao 'da bir uygulama oluşturmak, genellikle bir uygulama oluşturmak için de aynıdır. 
 
-1. Azure portal, **kaynak oluştur-> Web ve mobil-> Web** veya **Mobil** ya da **API uygulaması**seçin.
+1. Azure portal _ *kaynak oluştur-> Web ve mobil-> Web** veya **Mobil** ya da **API uygulaması**' nı seçin.
 2. Uygulamanın adını girin.
 3. Aboneliğinizi seçin.
 4. Kaynak grubunu seçin veya oluşturun.
@@ -77,7 +77,7 @@ Uygulama adı altında, alt etki alanı adı Ao 'nizin alt etki alanını yansı
 ## <a name="post-ilb-ase-creation-validation"></a>ILB as oluşturma doğrulama doğrulaması
 Bir ILB ASE, ILB olmayan ASE’den biraz farklıdır. Zaten belirtildiği gibi, kendi DNS 'nizi yönetmeniz ve HTTPS bağlantıları için kendi sertifikanızı sağlamanız gerekir. 
 
-Ao 'nizi oluşturduktan sonra, alt etki alanının belirttiğiniz alt etki alanını gösterdiğini ve **ayar** menüsünde **ILB sertifikası**adlı yeni bir öğe olduğunu fark edeceksiniz. ASE, HTTPS sınamasını kolaylaştıran kendinden imzalı bir sertifika ile oluşturulur. Portal, HTTPS için kendi sertifikanızı sağlamanız gerektiğini söyler, ancak bunun yerine alt etki alanınızın bulunduğu bir sertifikaya sahip olmanız önerilir. 
+Ao 'nizi oluşturduktan sonra, alt etki alanının belirttiğiniz alt etki alanını gösterdiğini ve **ayar** menüsünde **ILB sertifikası** adlı yeni bir öğe olduğunu fark edeceksiniz. ASE, HTTPS sınamasını kolaylaştıran kendinden imzalı bir sertifika ile oluşturulur. Portal, HTTPS için kendi sertifikanızı sağlamanız gerektiğini söyler, ancak bunun yerine alt etki alanınızın bulunduğu bir sertifikaya sahip olmanız önerilir. 
 
 ![ATıCı 'nizi oluştururken belirttiğiniz alt etki alanını gösterir.][3]
 
@@ -87,7 +87,7 @@ Yalnızca bir sertifika oluşturmaya çalışıyorsanız ve sertifika oluşturma
 
 Akışı kendi sertifikalarınız ile denemek ve ASE 'nize hem HTTP hem de HTTPS erişimini test etmek istiyorsanız:
 
-1. **Ao-> Settings-> ıLB sertifikaları**oluşturulduktan sonra Ao Kullanıcı arabirimine gidin.
+1. **Ao-> Settings-> ıLB sertifikaları** oluşturulduktan sonra Ao Kullanıcı arabirimine gidin.
 2. Sertifika pfx dosyası seçerek ıLB sertifikasını ayarlayın ve parola sağlayın. Bu adımın işlenmesi biraz zaman alır ve bir ölçeklendirme işleminin sürmekte olduğu ileti görünür.
 3. AIN (**Ao-> özellikleri-> sanal IP adresi**) IÇIN ILB adresini alın.
 4. Oluşturulduktan sonra Ao 'da bir Web uygulaması oluşturun. 
@@ -106,7 +106,7 @@ ILB Ao, uygulamalarınız için ağ yalıtımına izin vermez. Uygulamalar eriş
 
 Erişimi daha fazla kısıtlamak için NSG 'leri kullanmak istiyorsanız, ASE 'nin çalışması için gereken iletişimi kesmediğinizden emin olmanız gerekir. HTTP/HTTPS erişimi yalnızca ASE tarafından kullanılan ıLB aracılığıyla olsa da, ASE, sanal ağın dışındaki kaynaklara bağlı olmaya devam eder. Ağ erişiminin hala gerekli olduğunu görmek için bkz. [ExpressRoute ile App Service ortamları için][ExpressRoute] [bir App Service ortamı gelen trafiği denetleme][ControlInbound] ve ağ yapılandırması ayrıntıları. 
 
-NSG 'lerinizi yapılandırmak için, Azure tarafından ATıCı 'nizi yönetmek üzere kullanılan IP adresini bilmeniz gerekir. Bu IP adresi Ayrıca, internet istekleri yapıyorsa Ao 'ınızdan giden IP adresidir. ASE 'nizin giden IP adresi, ASE 'nizin ömrü boyunca statik kalır. ATıCı 'nizi silip yeniden oluşturursanız, yeni bir IP adresi alırsınız. IP adresini bulmak için **Ayarlar-> Özellikler** ' e gidin ve **giden IP adresini**bulun. 
+NSG 'lerinizi yapılandırmak için, Azure tarafından ATıCı 'nizi yönetmek üzere kullanılan IP adresini bilmeniz gerekir. Bu IP adresi Ayrıca, internet istekleri yapıyorsa Ao 'ınızdan giden IP adresidir. ASE 'nizin giden IP adresi, ASE 'nizin ömrü boyunca statik kalır. ATıCı 'nizi silip yeniden oluşturursanız, yeni bir IP adresi alırsınız. IP adresini bulmak için **Ayarlar-> Özellikler** ' e gidin ve **giden IP adresini** bulun. 
 
 ![AŞIRIN giden IP adresini nerede bulabileceğinizi gösterir.][5]
 

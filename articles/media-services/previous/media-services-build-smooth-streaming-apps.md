@@ -16,11 +16,11 @@ ms.date: 03/14/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9b616b03698e83d256a7b81e4548edbf21dba058
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89264649"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021138"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>Kesintisiz Akış Windows Mağazası uygulaması oluşturma
 
@@ -35,7 +35,7 @@ Bu öğretici dört ders içerir:
 3. Kesintisiz Akış akışları seçin
 4. Kesintisiz Akış Izleri seçin
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 > [!NOTE]
 > Windows Mağazası projeleri sürüm 8,1 ve önceki sürümleri Visual Studio 2017 ' de desteklenmez.  Daha fazla bilgi için bkz. [Visual Studio 2017 Platform Desteği ve Uyumluluk](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs).
 
@@ -73,16 +73,16 @@ Windows Mağazası uygulaması geliştirme hakkında daha fazla bilgi için bkz.
     | --- | --- |
     | Şablon grubu |Yüklü/şablonlar/Visual C#/Windows Mağazası |
     | Şablon |Boş uygulama (XAML) |
-    | Adı |SSPlayer |
+    | Name |SSPlayer |
     | Konum |C:\SSTutorials |
     | Çözüm Adı |SSPlayer |
     | Çözüm için dizin oluştur |seçildiğinde |
 
-1. **Tamam**'a tıklayın.
+1. **Tamam** düğmesine tıklayın.
 
 ### <a name="to-add-a-reference-to-the-smooth-streaming-client-sdk"></a>Kesintisiz Akış Istemci SDK 'sına bir başvuru eklemek için
 
-1. Çözüm Gezgini, **Ssplayer**öğesine sağ tıklayın ve ardından **Başvuru Ekle**' ye tıklayın.
+1. Çözüm Gezgini, **Ssplayer** öğesine sağ tıklayın ve ardından **Başvuru Ekle**' ye tıklayın.
 1. Aşağıdaki değerleri yazın veya seçin:
 
     | Name | Değer |
@@ -90,14 +90,14 @@ Windows Mağazası uygulaması geliştirme hakkında daha fazla bilgi için bkz.
     | Başvuru grubu |Pencereler/uzantılar |
     | Başvuru |Windows 8 ve Microsoft Visual C++ çalışma zamanı paketi için Microsoft Kesintisiz Akış Istemci SDK 'sını seçin |
 
-1. **Tamam**'a tıklayın. 
+1. **Tamam** düğmesine tıklayın. 
 
 Başvuruları ekledikten sonra, hedeflenen platformu (x64 veya x86) seçmeniz gerekir. başvuruları eklemek herhangi bir CPU platformu yapılandırması için çalışmaz.  Çözüm Gezgini 'nde, bu eklenen başvurular için sarı bir uyarı işareti görürsünüz.
 
 ### <a name="to-design-the-player-user-interface"></a>Oynatıcı Kullanıcı arabirimini tasarlamak için
 
 1. Çözüm Gezgini ' den, **MainPage. xaml** ' ye çift tıklayarak Tasarım görünümünde açın.
-2. ** &lt; Grid &gt; ** ve ** &lt; /Grid &gt; ** etiketlerini xaml dosyasında bulun ve aşağıdaki kodu iki etiket arasına yapıştırın:
+2. **&lt; Grid &gt;** ve **&lt; /Grid &gt;** etiketlerini xaml dosyasında bulun ve aşağıdaki kodu iki etiket arasına yapıştırın:
 
    ```xml
          <Grid.RowDefinitions>
@@ -152,7 +152,7 @@ Bu XAML dosyasında, bazı olay işleyicileri denetimlerle ilişkilendirilir.  B
 
 ### <a name="to-modify-the-code-behind-file"></a>Arka plan kodu dosyasını değiştirmek için
 
-1. Çözüm Gezgini, **MainPage. xaml**öğesine sağ tıklayın ve ardından **kodu görüntüle**' ye tıklayın.
+1. Çözüm Gezgini, **MainPage. xaml** öğesine sağ tıklayın ve ardından **kodu görüntüle**' ye tıklayın.
 2. Dosyasının en üstüne aşağıdaki using ifadesini ekleyin:
 
     ```csharp
@@ -253,7 +253,7 @@ Bu ders aşağıdaki yordamları içerir:
 
 ### <a name="to-register-the-smooth-streaming-byte-stream-handler-and-pass-the-propertyset"></a>Kesintisiz Akış Byte-Stream işleyicisini kaydetmek ve PropertySet 'i geçirmek için
 
-1. Çözüm Gezgini, **MainPage. xaml**öğesine sağ tıklayın ve ardından **kodu görüntüle**' ye tıklayın.
+1. Çözüm Gezgini, **MainPage. xaml** öğesine sağ tıklayın ve ardından **kodu görüntüle**' ye tıklayın.
 2. Dosyanın başlangıcında, aşağıdaki using ifadesini ekleyin:
 
    ```csharp
@@ -298,7 +298,7 @@ Bu ders aşağıdaki yordamları içerir:
 
 ### <a name="to-add-the-adaptive-source-manager-level-event-handler"></a>Uyarlamalı Kaynak Yöneticisi düzeyi olay işleyicisini eklemek için
 
-1. Çözüm Gezgini, **MainPage. xaml**öğesine sağ tıklayın ve ardından **kodu görüntüle**' ye tıklayın.
+1. Çözüm Gezgini, **MainPage. xaml** öğesine sağ tıklayın ve ardından **kodu görüntüle**' ye tıklayın.
 2. **MainPage** sınıfının içinde aşağıdaki veri üyesini ekleyin:
 
    ```csharp
@@ -326,7 +326,7 @@ Bu ders aşağıdaki yordamları içerir:
 
 ### <a name="to-add-adaptive-source-level-event-handlers"></a>Uyarlamalı kaynak düzeyi olay işleyicileri eklemek için
 
-1. Çözüm Gezgini, **MainPage. xaml**öğesine sağ tıklayın ve ardından **kodu görüntüle**' ye tıklayın.
+1. Çözüm Gezgini, **MainPage. xaml** öğesine sağ tıklayın ve ardından **kodu görüntüle**' ye tıklayın.
 2. **MainPage** sınıfının içinde aşağıdaki veri üyesini ekleyin:
 
    ```csharp
@@ -377,7 +377,7 @@ Aynı olaylar, uyarlamalı Kaynak Yöneticisi düzeyinde de mevcuttur ve bu, uyg
 
 ### <a name="to-add-media-element-event-handlers"></a>Medya öğesi olay işleyicileri eklemek için
 
-1. Çözüm Gezgini, **MainPage. xaml**öğesine sağ tıklayın ve ardından **kodu görüntüle**' ye tıklayın.
+1. Çözüm Gezgini, **MainPage. xaml** öğesine sağ tıklayın ve ardından **kodu görüntüle**' ye tıklayın.
 2. **MainPage** sınıfının sonunda aşağıdaki olay işleyicilerini ekleyin:
 
    ```csharp
@@ -413,7 +413,7 @@ Aynı olaylar, uyarlamalı Kaynak Yöneticisi düzeyinde de mevcuttur ve bu, uyg
 
 ### <a name="to-add-slider-bar-related-code"></a>Kaydırıcı çubukla ilgili kodu eklemek için
 
-1. Çözüm Gezgini, **MainPage. xaml**öğesine sağ tıklayın ve ardından **kodu görüntüle**' ye tıklayın.
+1. Çözüm Gezgini, **MainPage. xaml** öğesine sağ tıklayın ve ardından **kodu görüntüle**' ye tıklayın.
 2. Dosyanın başlangıcında, aşağıdaki using ifadesini ekleyin:
 
    ```csharp
@@ -519,7 +519,7 @@ Aynı olaylar, uyarlamalı Kaynak Yöneticisi düzeyinde de mevcuttur ve bu, uyg
    ```
 
    > [!NOTE]
-   > CoreDispatcher, UI olmayan Iş parçacığından kullanıcı arabirimi iş parçacığında değişiklik yapmak için kullanılır. Bir dağıtıcı iş parçacığı üzerinde performans sorunu olması durumunda, geliştirici, güncelleştirmek istedikleri Kullanıcı arabirimi öğesi tarafından sunulan Dispatcher 'ı kullanmayı seçebilir.  Örneğin:
+   > CoreDispatcher, UI olmayan Iş parçacığından kullanıcı arabirimi iş parçacığında değişiklik yapmak için kullanılır. Bir dağıtıcı iş parçacığı üzerinde performans sorunu olması durumunda, geliştirici, güncelleştirmek istedikleri Kullanıcı arabirimi öğesi tarafından sunulan Dispatcher 'ı kullanmayı seçebilir.  Örnek:
 
    ```csharp
          await sliderProgress.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () => { TimeSpan 
@@ -563,7 +563,7 @@ Kesintisiz Akış, görüntüleyiciler tarafından seçilebilen birden çok dil 
 
 ### <a name="to-modify-the-xaml-file"></a>XAML dosyasını değiştirmek için
 
-1. Çözüm Gezgini, **MainPage. xaml**öğesine sağ tıklayın ve ardından **tasarımcıyı görüntüle**' ye tıklayın.
+1. Çözüm Gezgini, **MainPage. xaml** öğesine sağ tıklayın ve ardından **tasarımcıyı görüntüle**' ye tıklayın.
 2. &lt;Grid. RowDefinitions &gt; ' ı bulun ve RowDefinitions gibi görünen satır tanımlarını değiştirin:
 
    ```xml
@@ -606,7 +606,7 @@ Kesintisiz Akış, görüntüleyiciler tarafından seçilebilen birden çok dil 
 
 ### <a name="to-modify-the-code-behind-file"></a>Arka plan kodu dosyasını değiştirmek için
 
-1. Çözüm Gezgini, **MainPage. xaml**öğesine sağ tıklayın ve ardından **kodu görüntüle**' ye tıklayın.
+1. Çözüm Gezgini, **MainPage. xaml** öğesine sağ tıklayın ve ardından **kodu görüntüle**' ye tıklayın.
 2. SSPlayer ad alanı içinde yeni bir sınıf ekleyin:
 
    ```csharp
@@ -841,8 +841,8 @@ Kesintisiz Akış sunusu, farklı kalite düzeyleri (bit hızları) ve çözün�
 
 ### <a name="to-modify-the-xaml-file"></a>XAML dosyasını değiştirmek için
 
-1. Çözüm Gezgini, **MainPage. xaml**öğesine sağ tıklayın ve ardından **tasarımcıyı görüntüle**' ye tıklayın.
-2. &lt; &gt; **Gridstreadikbitrateselection**adlı Grid etiketini bulun, etiketin sonuna aşağıdaki kodu ekleyin:
+1. Çözüm Gezgini, **MainPage. xaml** öğesine sağ tıklayın ve ardından **tasarımcıyı görüntüle**' ye tıklayın.
+2. &lt; &gt; **Gridstreadikbitrateselection** adlı Grid etiketini bulun, etiketin sonuna aşağıdaki kodu ekleyin:
    ```xml
          <StackPanel Name="spBitRateSelection" Grid.Row="1" Grid.Column="1">
          <StackPanel Orientation="Horizontal">
@@ -863,7 +863,7 @@ Kesintisiz Akış sunusu, farklı kalite düzeyleri (bit hızları) ve çözün�
 
 ### <a name="to-modify-the-code-behind-file"></a>Arka plan kodu dosyasını değiştirmek için
 
-1. Çözüm Gezgini, **MainPage. xaml**öğesine sağ tıklayın ve ardından **kodu görüntüle**' ye tıklayın.
+1. Çözüm Gezgini, **MainPage. xaml** öğesine sağ tıklayın ve ardından **kodu görüntüle**' ye tıklayın.
 2. SSPlayer ad alanı içinde yeni bir sınıf ekleyin:
    ```csharp
         #region class Track

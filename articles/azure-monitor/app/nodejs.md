@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 982adf6c6d7cd825d185802321ce30a04bd2f216
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91323303"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020900"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Application Insights ile Node.js hizmetlerinizi ve uygulamalarınızı izleme
 
@@ -25,7 +25,7 @@ TelemetryClient API'sini kullanarak uygulamanızın ve sisteminizin ek özellikl
 
 Bir uygulama veya hizmet için izlemeyi ayarlamak üzere aşağıdaki görevleri tamamlayın.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, bir Azure aboneliğine sahip olduğunuzdan emin olun veya [ücretsiz olarak yeni bir tane edinin][azure-free-offer]. Kuruluşunuzun bir Azure aboneliğini zaten varsa, yöneticiniz [bu yönergeleri][add-aad-user] izleyerek sizi aboneliğe ekleyebilir.
 
@@ -41,7 +41,7 @@ Başlamadan önce, bir Azure aboneliğine sahip olduğunuzdan emin olun veya [ü
 
 Veri toplayabilmesi için SDK'yı uygulamanıza ekleyin.
 
-1. Yeni oluşturulan kaynağından kaynağınızın izleme anahtarını ( *Ikey*olarak da bilinir) kopyalayın. Application Insights, verileri Azure kaynağınızla eşlemek için ikey değerini kullanır. SDK'nın ikey değerini kullanabilmesi için ikey değerini bir ortam değişkeninde veya kodunuzda belirtmeniz gerekir.  
+1. Yeni oluşturulan kaynağından kaynağınızın izleme anahtarını ( *Ikey* olarak da bilinir) kopyalayın. Application Insights, verileri Azure kaynağınızla eşlemek için ikey değerini kullanır. SDK'nın ikey değerini kullanabilmesi için ikey değerini bir ortam değişkeninde veya kodunuzda belirtmeniz gerekir.  
 
    ![İzleme anahtarını kopyalama](./media/nodejs/instrumentation-key-001.png)
 
@@ -334,7 +334,7 @@ server.on("listening", () => {
 
 ### <a name="preprocess-data-with-telemetry-processors"></a>Telemetri işlemcileriyle verileri önceden işleme
 
-Toplanan verileri, *telemetri işlemcileri*kullanılarak bekletme için gönderilmeden önce işleyebilir ve filtreleyebilirsiniz. Telemetri işlemcisi, telemetri öğesi buluta gönderilmeden önce eklendikleri sırada birer birer çağırılır.
+Toplanan verileri, *telemetri işlemcileri* kullanılarak bekletme için gönderilmeden önce işleyebilir ve filtreleyebilirsiniz. Telemetri işlemcisi, telemetri öğesi buluta gönderilmeden önce eklendikleri sırada birer birer çağırılır.
 
 ```javascript
 public addTelemetryProcessor(telemetryProcessor: (envelope: Contracts.Envelope, context: { http.RequestOptions, http.ClientRequest, http.ClientResponse, correlationContext }) => boolean)
@@ -374,7 +374,7 @@ appInsights.defaultClient.addTelemetryProcessor(removeStackTraces);
 
 Birden çok Application Insights kaynağı oluşturabilir ve bunların her birine, ilgili izleme anahtarlarını ("Ikey") kullanarak farklı veriler gönderebilirsiniz.
 
- Örneğin:
+ Örnek:
 
 ```javascript
 let appInsights = require("applicationinsights");

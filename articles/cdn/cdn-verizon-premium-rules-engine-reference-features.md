@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 06/02/2020
 ms.author: allensu
 ms.openlocfilehash: 0ea4f167b992ccfbc4156ac06c8f636d2ef4a355
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84343209"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020424"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Verizon Premium kural altyapısı özelliklerinden Azure CDN
 
@@ -27,7 +27,7 @@ Kullanılabilir özellik türleri şunlardır:
 * [Erişim](#access)
 * [Önbelleğe Alma](#caching)
 * [Yorum](#comment)
-* [Üst bilgiler](#headers)
+* [Üst Bilgiler](#headers)
 * [Günlükler](#logs)
 * [İyileştirme](#optimize)
 * [Tıdır](#origin)
@@ -59,7 +59,7 @@ Bu özellikler, içeriğin ne zaman ve nasıl önbelleğe alınacağını özell
 | [Bant genişliği azaltma](https://docs.vdms.com/cdn/Content/HRE/F/Bandwidth-Throttling.htm) | Edge sunucularımız tarafından sağlanmış olan yanıtın bant genişliğini kısıtlar. |
 | [Atlama önbelleği](https://docs.vdms.com/cdn/Content/HRE/F/Bypass-Cache.htm) | İsteğin önbelleğe alma teknolojimizden yararlanıp yararlanamayacağını belirler. |
 | [Cache-Control üst bilgisi Işleme](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Control-Header-Treatment.htm) |  Dış Max-Age özelliği etkinken uç sunucuya Cache-Control üst bilgileri oluşturmayı denetler. |
-| [Cache-Key sorgu dizesi](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Key-Query-String.htm) | **Cache-Key*** ' ın bir istekle ilişkili sorgu dizesi parametrelerini içerip içermediğini veya hariç tutmayacağını belirler. <br> _* Bir varlığı, önbelleğe alma amacına göre benzersiz bir şekilde tanımlayan göreli bir yol.  Uç sunucularımız, önbelleğe alınmış içerik denetlenirken bu göreli yolu kullanır.  Varsayılan olarak, önbellek anahtarı sorgu dizesi parametreleri içermez._ |
+| [Cache-Key sorgu dizesi](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Key-Query-String.htm) | **Cache-Key** _ ' ın bir istekle ilişkili sorgu dizesi parametrelerini içerip içermediğini veya hariç tutmasını belirler. <br> Bir varlığı, önbelleğe alma amacına göre benzersiz bir şekilde tanımlayan göreli bir yol.  Uç sunucularımız, önbelleğe alınmış içerik denetlenirken bu göreli yolu kullanır.  Varsayılan olarak, bir önbellek anahtarı sorgu dizesi içermez parameters._ |
 | [Cache-Key yeniden yazma](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Key-Rewrite.htm) | Bir istekle ilişkili önbellek anahtarını yeniden yazar. |
 | [Önbellek dolgusunu tamamla](https://docs.vdms.com/cdn/Content/HRE/F/Complete-Cache-Fill.htm) | Bir uç sunucusunda bir istek kısmi önbellek isabetsizliği ile sonuçlanırsa ne olacağını belirler. |
 | [Dosya türlerini sıkıştır](https://docs.vdms.com/cdn/Content/HRE/F/Compress-File-Types.htm) | Sunucuda Sıkıştırılacak dosya biçimlerini tanımlar. | 
@@ -88,7 +88,7 @@ Açıklama özelliği, bir notun bir kural içine eklenmesine izin verir.
 
 **[En üste geri dön](#top)**
 
-### <a name="headers"></a><a name="headers"></a>Üst bilgiler
+### <a name="headers"></a><a name="headers"></a>Üst Bilgiler
 
 Bu özellikler, istek veya yanıta üstbilgiler eklemek, değiştirmek veya silmek için tasarlanmıştır.
 
@@ -161,7 +161,7 @@ Bu özellikler, bir isteğin farklı bir URL 'ye yönlendirilmesini veya yeniden
 
 **[En üste geri dön](#top)**
 
-### <a name="web-application-firewall"></a><a name="waf"></a>Web uygulaması güvenlik duvarı
+### <a name="web-application-firewall"></a><a name="waf"></a>Web Uygulaması Güvenlik Duvarı
 
 [Web uygulaması güvenlik duvarı](https://docs.vdms.com/cdn/Content/HRE/F/Web_Application_Firewall.htm) özelliği, bir Isteğin Web uygulaması güvenlik duvarı tarafından görüntülenip görüntülenmeyeceğini belirler.
 

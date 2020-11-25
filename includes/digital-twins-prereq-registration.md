@@ -6,11 +6,11 @@ ms.topic: include
 ms.date: 10/29/2020
 ms.author: baanders
 ms.openlocfilehash: 0dd97e109ee907e8eec2d31c7d469e8fb1e70e7b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124849"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020321"
 ---
 Bu makalede kullanılan tüm kaynakların kimliğini doğrulamak için bir [Azure Active Directory (Azure AD)](../articles/active-directory/fundamentals/active-directory-whatis.md) **uygulama kaydı** ayarlamanız gerekir. Bunu ayarlamak için [*nasıl yapılır: uygulama kaydı oluşturma*](../articles/digital-twins/how-to-create-app-registration.md) ' daki yönergeleri izleyin. 
 

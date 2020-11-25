@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 30c0a02c2cbc11002f8e0bf0295dab91de5d0365
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323670"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020594"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Hive sorguları kullanarak Hadoop kümesindeki veriler için özellikler oluşturma
 Bu belgede, Hive sorguları kullanılarak bir Azure HDInsight Hadoop kümesinde depolanan veriler için nasıl özellik oluşturulacağı gösterilmektedir. Bu Hive sorguları, için sunulan komut dosyalarını, yerleşik Hive User-Defined Işlevlerini (UDF) kullanır.
@@ -124,7 +124,7 @@ from <databasename>.<tablename>;
 ### <a name="calculate-distances-between-sets-of-gps-coordinates"></a><a name="hive-gpsdistance"></a>GPS koordinatları kümeleri arasında uzaklıkları hesaplama
 Bu bölümde verilen sorgu, NYC TAXI seyahat verilerine doğrudan uygulanabilir. Bu sorgunun amacı, özellikler oluşturmak için Hive içinde gömülü matematik işlevinin nasıl uygulanacağını gösterir.
 
-Bu sorguda kullanılan alanlar, toplama *\_ boylam* , *toplama, \_ Enlem* , alt *\_ boylam* ve *açılan \_ Enlem* adlı toplama ve bırakma konumlarından oluşan GPS koordinatlarıdır. Toplama ve bırakma koordinatları arasındaki doğrudan mesafeyi hesaplayan sorgular şunlardır:
+Bu sorguda kullanılan alanlar, toplama *\_ boylam*, *toplama, \_ Enlem*, alt *\_ boylam* ve *açılan \_ Enlem* adlı toplama ve bırakma konumlarından oluşan GPS koordinatlarıdır. Toplama ve bırakma koordinatları arasındaki doğrudan mesafeyi hesaplayan sorgular şunlardır:
 
 ```hiveql
 set R=3959;
@@ -153,7 +153,7 @@ Hive Embedded UDF 'Leri listesini <a href="https://cwiki.apache.org/confluence/d
 ## <a name="advanced-topics-tune-hive-parameters-to-improve-query-speed"></a><a name="tuning"></a> Gelişmiş Konular: sorgu hızını artırmak için Hive parametrelerini ayarlayın
 Hive kümesinin varsayılan parametre ayarları Hive sorguları ve sorguların işlediği veriler için uygun olmayabilir. Bu bölümde, kullanıcıların Hive sorgularının performansını geliştirmek için ayarlayabileceği bazı parametreler açıklanmaktadır. Kullanıcıların, veri işleme sorgularından önce parametre ayarlama sorgularını eklemesi gerekir.
 
-1. **Java yığın alanı** : büyük veri kümelerine katılmayı veya uzun kayıtları işlemeyi içeren sorgular için, **yığın alanı tükeniyor** ortak hatalardan biridir. *MapReduce. Map. Java. opts* ve *MapReduce. Task. IO. Sort. MB* parametreleri istenen değerlere ayarlanarak bu hata kaçınılabilir. Aşağıda bir örnek verilmiştir:
+1. **Java yığın alanı**: büyük veri kümelerine katılmayı veya uzun kayıtları işlemeyi içeren sorgular için, **yığın alanı tükeniyor** ortak hatalardan biridir. *MapReduce. Map. Java. opts* ve *MapReduce. Task. IO. Sort. MB* parametreleri istenen değerlere ayarlanarak bu hata kaçınılabilir. Aşağıda bir örnek verilmiştir:
    
     ```hiveql
     set mapreduce.map.java.opts=-Xmx4096m;
@@ -162,20 +162,20 @@ Hive kümesinin varsayılan parametre ayarları Hive sorguları ve sorguların i
 
     Bu parametre, Java yığın alanına 4 GB bellek ayırır ve ayrıca sıralama, daha fazla bellek ayırarak daha verimli hale gelir. Yığın alanıyla ilgili herhangi bir iş hatası hatası varsa, Bu ayırmalarla çalmak iyi bir fikirdir.
 
-1. **DFS blok boyutu** : Bu parametre, dosya sisteminin depoladığı en küçük veri birimini ayarlar. Örnek olarak, DFS blok boyutu 128 MB ise, boyut ve 128 MB 'tan küçük olan tüm veriler tek bir blokta depolanır. 128 MB 'tan büyük verilere fazladan bloklar atanır. 
+1. **DFS blok boyutu**: Bu parametre, dosya sisteminin depoladığı en küçük veri birimini ayarlar. Örnek olarak, DFS blok boyutu 128 MB ise, boyut ve 128 MB 'tan küçük olan tüm veriler tek bir blokta depolanır. 128 MB 'tan büyük verilere fazladan bloklar atanır. 
 2. Küçük bir blok boyutu seçmek Hadoop 'ta büyük kafa başları oluşmasına neden olur. bu yana ad düğümü, dosyayla ilgili ilgili bloğu bulmak için birçok daha fazla isteği işlemek zorunda KALIDIR. Gigabayt (veya daha büyük) verilerle ilgilenirken önerilen bir ayar şunlardır:
 
     ```hiveql
     set dfs.block.size=128m;
     ```
 
-2. **Hive 'de birleştirme Işlemini En Iyi duruma getirme** : harita/küçültme çerçevesindeki birleştirme işlemleri tipik olarak azaltma aşamasında gerçekleşirken, bazen de büyük bir kazanç, eşleme aşamasında ("mapjoın" olarak da bilinir) zamanlama ile zaman ayırarak elde edilebilir. Bu seçeneği ayarlayın:
+2. **Hive 'de birleştirme Işlemini En Iyi duruma getirme**: harita/küçültme çerçevesindeki birleştirme işlemleri tipik olarak azaltma aşamasında gerçekleşirken, bazen de büyük bir kazanç, eşleme aşamasında ("mapjoın" olarak da bilinir) zamanlama ile zaman ayırarak elde edilebilir. Bu seçeneği ayarlayın:
    
     ```hiveql
     set hive.auto.convert.join=true;
     ```
 
-3. **Hive 'e Mapvı sayısını belirtme** : Hadoop, kullanıcının azaltıcının sayısını ayarlamasına izin veriyorsa, mapvana sayısı genellikle kullanıcı tarafından ayarlanmamalıdır. Bu sayı üzerinde bir ölçüde denetim kullanılmasına izin veren bir eli, her harita görevinin boyutu tarafından belirlendiği şekilde *mapred. min. Split. size* ve *mapred. Max. Split. size* Hadoop değişkenlerini seçmektedir:
+3. **Hive 'e Mapvı sayısını belirtme**: Hadoop, kullanıcının azaltıcının sayısını ayarlamasına izin veriyorsa, mapvana sayısı genellikle kullanıcı tarafından ayarlanmamalıdır. Bu sayı üzerinde bir ölçüde denetim kullanılmasına izin veren bir eli, her harita görevinin boyutu tarafından belirlendiği şekilde *mapred. min. Split. size* ve *mapred. Max. Split. size* Hadoop değişkenlerini seçmektedir:
    
     ```hiveql
     num_maps = max(mapred.min.split.size, min(mapred.max.split.size, dfs.block.size))

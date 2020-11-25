@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: iot-accelerators
 author: avneet723
 ms.service: iot-accelerators
@@ -9,11 +9,11 @@ ms.date: 01/17/2019
 ms.author: avneet723
 ms.custom: include file
 ms.openlocfilehash: 1f567b3d083853f9bb342bfad462e8545caa6480
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67188804"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020271"
 ---
 ## <a name="download-the-source-code"></a>Kaynak kodunu indirin
 
@@ -62,7 +62,7 @@ Gerekli Azure kaynaklarını henüz oluşturmadıysanız, şu adımları izleyin
      Betik Ayrıca yerel makinenize önek **bilgisayarları** olan bir ortam değişkenleri kümesi de ekler. Bu ortam değişkenleri, uzaktan Izlemenin Azure Key Vault bir kaynaktan okuyabilmesini sağlayacak ayrıntıları sağlar. Bu Key Vault kaynak, uzaktan Izlemenin yapılandırma değerlerini okuacaktır.
 
      > [!TIP]
-     > Betik tamamlandığında, ortam değişkenlerini ** \<your home folder\> \\ . PCs \\ \<solution name\> . env**adlı bir dosyaya de kaydeder. Bunları, gelecekteki Çözüm Hızlandırıcısı dağıtımları için kullanabilirsiniz. Yerel makinenizde ayarlanan tüm ortam değişkenlerinin, **Docker-Compose**çalıştırdığınızda **Hizmetler \\ betiklerinin \\ yerel \\ . env** dosyasında değerlerini geçersiz kıldığını unutmayın.
+     > Betik tamamlandığında, ortam değişkenlerini **\<your home folder\> \\ . PCs \\ \<solution name\> . env** adlı bir dosyaya de kaydeder. Bunları, gelecekteki Çözüm Hızlandırıcısı dağıtımları için kullanabilirsiniz. Yerel makinenizde ayarlanan tüm ortam değişkenlerinin, **Docker-Compose** çalıştırdığınızda **Hizmetler \\ betiklerinin \\ yerel \\ . env** dosyasında değerlerini geçersiz kıldığını unutmayın.
 
 1. Komut satırı ortamınızdan çıkın.
 
@@ -74,6 +74,6 @@ Aşağıdaki için ortam değişkenlerini ayarlayın:
 * **PCS_AAD_APPID** -AAD uygulama kimliği
 * **PCS_AAD_APPSECRET** -AAD uygulama gizli anahtarı
 
-Yapılandırma değerleri bu Azure Key Vault kaynağından okunacaktır. Bu ortam değişkenleri, dağıtımdan ** \<your home folder\> \\ . PCs \\ \<solution name\> . env** dosyasına kaydedilebilir. Yerel makinenizde ayarlanan ortam değişkenlerinin, **Docker-Compose**çalıştırdığınızda **Hizmetler \\ KomutDosyaları \\ yerel \\ . env** dosyasındaki değerleri geçersiz kıldığını unutmayın.
+Yapılandırma değerleri bu Azure Key Vault kaynağından okunacaktır. Bu ortam değişkenleri, dağıtımdan **\<your home folder\> \\ . PCs \\ \<solution name\> . env** dosyasına kaydedilebilir. Yerel makinenizde ayarlanan ortam değişkenlerinin, **Docker-Compose** çalıştırdığınızda **Hizmetler \\ KomutDosyaları \\ yerel \\ . env** dosyasındaki değerleri geçersiz kıldığını unutmayın.
 
 Mikro hizmet tarafından gereken bazı yapılandırmalar ilk dağıtımda oluşturulmuş bir **Key Vault** örneğine depolanır. Anahtar kasasındaki karşılık gelen değişkenler gerektiği şekilde değiştirilmelidir.

@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 06/18/2020
 ms.author: jeedes
 ms.openlocfilehash: fe8acfd1bfd14f339a0109cab215b8a9ab65256f
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92893957"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021563"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-segment"></a>Öğretici: kesimle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -50,8 +50,8 @@ Segmentin Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden, yö
 
 1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama** ' yı seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **segment** yazın.
 1. Sonuçlar panelinden **segment** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
@@ -73,8 +73,8 @@ Azure AD SSO 'yu kesimle yapılandırmak ve test etmek için aşağıdaki yapı 
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **segment** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma** ' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML** ' yi seçin.
+1. [Azure Portal](https://portal.azure.com/), **segment** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
@@ -104,25 +104,25 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portal sol bölmeden **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur** 'a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, segmente erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portal **Kurumsal uygulamalar** ' ı seçin ve ardından **tüm uygulamalar** ' ı seçin.
-1. Uygulamalar listesinde **segment** ' i seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar** ' ı seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde **segment**' i seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle** ' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
@@ -134,11 +134,11 @@ Bu bölümde, segmente erişim izni vererek Azure çoklu oturum açma özelliği
 
 1. Yeni bir Web tarayıcısı penceresinde, segmentinizdeki şirket sitenizde yönetici olarak oturum açın.
 
-1. **Ayarlar simgesine** tıklayın ve **kimlik doğrulaması** ' na gidin ve **Bağlantılar** ' a tıklayın.
+1. **Ayarlar simgesine** tıklayın ve **kimlik doğrulaması** ' na gidin ve **Bağlantılar**' a tıklayın.
 
     !["Ayarlar" simgesinin seçili olduğunu gösteren ekran görüntüsü ve "kimlik doğrulama" menüsünden "bağlantılar" seçilidir.](./media/segment-tutorial/segment1.PNG)
 
-1. **Yeni bağlantı ekle** ' ye tıklayın.
+1. **Yeni bağlantı ekle**' ye tıklayın.
 
     !["Yeni bağlantı ekle" düğmesinin seçili olduğu "bağlantılar" bölümünü gösteren ekran görüntüsü.](./media/segment-tutorial/segment2.PNG)
 
@@ -154,7 +154,7 @@ Bu bölümde, segmente erişim izni vererek Azure çoklu oturum açma özelliği
 
     b. * * * * Hedef kitle URL 'SI * * * * değerini kopyalayın ve Azure portal **temel SAML yapılandırması** Iletişim KUTUSUNDAKI **tanımlayıcı URL** kutusuna yapıştırın.
 
-    c. **İleri** ' ye tıklayın.
+    c. **İleri**' ye tıklayın.
 
     ![Segment yapılandırması](./media/segment-tutorial/segment5.PNG)
 

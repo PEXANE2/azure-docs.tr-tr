@@ -5,11 +5,11 @@ ms.date: 09/05/2019
 ms.topic: conceptual
 ms.reviewer: brendal
 ms.openlocfilehash: 1fff70ef2eeb1dc27d33769fd48fe5923f56717b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87049175"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021614"
 ---
 # <a name="azure-blockchain-workbench-architecture"></a>Azure Blockchain Workbench mimarisi
 
@@ -78,7 +78,7 @@ Depolama TÜKETİCİSİNDE Service Bus iletileri alır ve verileri ekli bir depo
 
 ## <a name="transaction-builder-and-signer"></a>İşlem Oluşturucu ve imzalayan
 
-Gelen ileti aracısıdır bir iletinin blok zincirine yazılması gerekiyorsa, bu, DLT tüketicisi tarafından işlenir. DLT tüketicisi, istenen bir işlemin yürütülmesi için meta verileri içeren iletiyi alan ve sonra *işlem Oluşturucu ve imzalayanın*bilgilerini gönderen bir hizmettir. *İşlem Oluşturucu ve imzalayan* , verileri ve istenen blok zinciri hedefini temel alan bir blok zinciri işlemini ayrıştırır. Bağlandıktan sonra işlem imzalanır. Özel anahtarlar Azure Key Vault depolanır.
+Gelen ileti aracısıdır bir iletinin blok zincirine yazılması gerekiyorsa, bu, DLT tüketicisi tarafından işlenir. DLT tüketicisi, istenen bir işlemin yürütülmesi için meta verileri içeren iletiyi alan ve sonra *işlem Oluşturucu ve imzalayanın* bilgilerini gönderen bir hizmettir. *İşlem Oluşturucu ve imzalayan* , verileri ve istenen blok zinciri hedefini temel alan bir blok zinciri işlemini ayrıştırır. Bağlandıktan sonra işlem imzalanır. Özel anahtarlar Azure Key Vault depolanır.
 
  Blok zinciri çalışma ekranı Key Vault uygun özel anahtarı alır ve işlemi Key Vault dışında imzalar. İmzalandıktan sonra işlem, işlem yönlendiricilerine ve defterlere gönderilir.
 

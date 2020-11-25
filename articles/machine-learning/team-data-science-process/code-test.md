@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
 ms.openlocfilehash: bcebc568db4a0d2b4b287045ba0a67c88d9b8c92
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312692"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020611"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Team Data Science Işlemi ve Azure DevOps Services Azure 'da veri bilimi kodu testi
 Bu makale, bir veri bilimi iş akışındaki kodu test etmek için ön yönergeleri sağlar. Bu tür testler, veri bilimcilerinin, kodunuzun kalitesini ve beklenen sonucunu denetlemek için sistematik ve verimli bir yol sunar. Kod testinin nasıl yapılacağını göstermek için daha önce yayımladığımız [UCI yetişkin gelir veri kümesini kullanan](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) bir ekip veri bilimi IŞLEMI (TDSP) projesi kullanıyoruz. 
@@ -100,7 +100,7 @@ Derleme Aracısı ve Azure DevOps kullanarak kod testini ve otomatikleştirilmi�
     
     ![Bir sınıftaki testlerin listesi ile Python dosyası](./media/code-test/create_file_test1_class.PNG)
 
-1. Bu testler, sınıfınızın adından sonra **CodeTEST. testCase** 'i yerleştirirseniz otomatik olarak bulunabilir. Sağ bölmedeki test Gezgini ' ni açın ve **Tümünü Çalıştır** ' ı seçin. Tüm testler sırayla çalışır ve testin başarılı olup olmadığını bildirir.
+1. Bu testler, sınıfınızın adından sonra **CodeTEST. testCase** 'i yerleştirirseniz otomatik olarak bulunabilir. Sağ bölmedeki test Gezgini ' ni açın ve **Tümünü Çalıştır**' ı seçin. Tüm testler sırayla çalışır ve testin başarılı olup olmadığını bildirir.
 
     ![Testleri çalıştırma](./media/code-test/run_tests.PNG)
 
@@ -112,7 +112,7 @@ Derleme Aracısı ve Azure DevOps kullanarak kod testini ve otomatikleştirilmi�
 
 1. Azure DevOps 'da otomatik derleme ve test ayarlama:
 
-    a. Proje deposunda, **Oluştur ve Yayınla** ' yı seçin ve ardından yeni bir yapı işlemi oluşturmak Için **+ Yeni** ' yi seçin.
+    a. Proje deposunda, **Oluştur ve Yayınla**' yı seçin ve ardından yeni bir yapı işlemi oluşturmak Için **+ Yeni** ' yi seçin.
 
     ![Yeni derleme işlemi başlatma seçimleri](./media/code-test/create_new_build.PNG)
 
@@ -120,7 +120,7 @@ Derleme Aracısı ve Azure DevOps kullanarak kod testini ve otomatikleştirilmi�
     
     ![Kaynak, ad, depo ve dal bilgileri](./media/code-test/fill_in_build_info.PNG)
 
-    c. Bir şablon seçin. Python proje şablonu olmadığından, **boş işlem** ' i seçerek başlayın. 
+    c. Bir şablon seçin. Python proje şablonu olmadığından, **boş işlem**' i seçerek başlayın. 
 
     ![Şablonların listesi ve "boş işlem" düğmesi](./media/code-test/start_empty_process_template.PNG)
 

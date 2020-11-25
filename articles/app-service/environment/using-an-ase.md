@@ -8,11 +8,11 @@ ms.date: 5/10/2020
 ms.author: ccompy
 ms.custom: seodec18, devx-track-azurecli
 ms.openlocfilehash: 86d0569d95df18924ed47682b75d7491c71d4483
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833563"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021036"
 ---
 # <a name="use-an-app-service-environment"></a>App Service Ortamını kullanma
 
@@ -165,7 +165,7 @@ Bir ILB ASE’deki uygulamalar için yayımlama uç noktaları, ILB ASE oluştur
 
 ATıCı, Ao 'daki tüm uygulamalar için 1 TB depolama alanına sahiptir. Yalıtılmış fiyatlandırma SKU 'sunda bir App Service planı 250 GB 'lik bir sınıra sahiptir. Bir Ao 'da, App Service plan başına 1 TB sınırına kadar 250 GB depolama alanı eklenir. Yalnızca dörtten fazla App Service planınıza sahip olabilirsiniz ancak 1 TB sınırının ötesinde daha fazla depolama alanı eklenmez.
 
-## <a name="logging"></a>Günlüğe Kaydetme
+## <a name="logging"></a>Günlüğe kaydetme
 
 Aşirinizi Azure depolama, Azure Event Hubs veya Log Analytics ile ilgili günlükleri göndermek için Azure Izleyici ile tümleştirebilirsiniz. Bu öğeler bugün günlüğe kaydedilir:
 

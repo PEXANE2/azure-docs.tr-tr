@@ -8,11 +8,11 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.openlocfilehash: 38f649fbff9ea2c1182adb613b9302768708a4c4
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490959"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019880"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Akış Birimlerini anlama ve ayarlama
 
@@ -27,7 +27,7 @@ Düşük gecikme süreli akış işlemeyi başarabilmek için, Azure Stream Anal
 
 2. Kaynak listesinde, ölçeklendirmek istediğiniz Stream Analytics işini bulun ve sonra açın. 
 
-3. İş sayfasında, **Yapılandır** başlığı altında, **Ölçek** ' i seçin. İş oluşturulurken varsayılan SUs sayısı 3 ' dir.
+3. İş sayfasında, **Yapılandır** başlığı altında, **Ölçek**' i seçin. İş oluşturulurken varsayılan SUs sayısı 3 ' dir.
 
     ![Azure portal Stream Analytics iş yapılandırması][img.stream.analytics.preview.portal.settings.scale]
     

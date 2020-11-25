@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
-ms.openlocfilehash: e377f910e1c1ddda864ea312b40fe3608c166376
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1da43d0ef208d61ced6c8ca8dbc7603e0ef51155
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541399"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96021580"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUSıS için dil ve bölge desteği
 
@@ -28,7 +28,7 @@ Sohbet botu gibi çok dilli bir LUSıS istemci uygulamasına ihtiyacınız varsa
 
 LUBU, aşağıdaki dillerdeki söyliği anlamıştır:
 
-| Dil |Yerel Ayar  |  Önceden oluşturulmuş etki alanı | Önceden oluşturulmuş varlık | Tümcecik listesi önerileri | **[Metin Analizi](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(Yaklaşım ve<br>Lerimi|
+| Dil |Yerel Ayar  |  Önceden oluşturulmuş etki alanı | Önceden oluşturulmuş varlık | Tümcecik listesi önerileri | **[Metin Analizi](../text-analytics/language-support.md)<br>(Yaklaşım ve<br>Lerimi|
 |--|--|:--:|:--:|:--:|:--:|
 | İngilizce (ABD) |`en-US` | ✔ | ✔  |✔|✔|
 | Arapça (Önizleme-modern Standart Arapça) |`ar-AR`|-|-|-|-|
@@ -69,7 +69,7 @@ Dil desteği, [önceden oluşturulmuş varlıklar](luis-reference-prebuilt-entit
 Konuşma dikte modu dilleri için bkz. konuşma tarafından [desteklenen diller](../speech-service/speech-to-text.md) .
 
 ### <a name="bing-spell-check-supported-languages"></a>Desteklenen Bing Yazım Denetimi diller
-Desteklenen dillerin ve durumun bir listesi için [desteklenen Bing yazım denetimi diller](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages) bölümüne bakın.
+Desteklenen dillerin ve durumun bir listesi için [desteklenen Bing yazım denetimi diller](../bing-spell-check/language-support.md) bölümüne bakın.
 
 ## <a name="rare-or-foreign-words-in-an-application"></a>Bir uygulamadaki nadir veya yabancı sözcükler
 Kültür içinde `en-us` , Lu, Slang dahil olmak üzere çoğu İngilizce sözcüğü ayırt edebilir. `zh-cn`Kültürde, Lu, en çok Çince karakteri ayırt etmek için öğrenir. İçinde nadir bir kelime `en-us` veya içinde bir karakter kullanırsanız `zh-cn` ve lubunun sözcüğü veya karakteri ayırt edemediği görürseniz, bu sözcüğü veya karakteri bir [tümcecik listesi özelliğine](luis-how-to-add-features.md)ekleyebilirsiniz. Örneğin, uygulamanın kültürünün dışındaki kelimeler (yani, yabancı sözcükler) bir tümcecik listesi özelliğine eklenmelidir.

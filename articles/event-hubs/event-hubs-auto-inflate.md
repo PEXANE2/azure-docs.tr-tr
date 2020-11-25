@@ -4,11 +4,11 @@ description: Bir ad alanı üzerinde otomatik şişimine, üretilen iş birimler
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 1be564472011622b71b3066495748dfdbe6cc791
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86537250"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020815"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Azure Event Hubs üretilen iş birimlerini otomatik olarak ölçeklendirme
 Azure Event Hubs, yüksek düzeyde ölçeklenebilir bir veri akışı platformudur. Bu nedenle, Event Hubs kullanım genellikle hizmeti kullanmaya başladıktan sonra artar. Bu tür kullanımlar, önceden tanımlanmış [üretilen iş birimlerinin](event-hubs-scalability.md#throughput-units) Event Hubs ölçeklendirilmesini ve daha büyük aktarım hızlarını işlemesini gerektirir. Event Hubs **Otomatik Şişir** özelliği, kullanım ihtiyaçlarını karşılamak için üretilen iş birimi sayısını artırarak otomatik olarak ölçeklendirilir. Üretilen iş birimlerinin artırılması, azaltma senaryolarına engel olur; bu:
@@ -40,7 +40,7 @@ Aşağıdaki yöntemlerden birini kullanarak standart bir katman Event Hubs ad a
 
 
 #### <a name="enable-at-the-time-of-creation"></a>Oluşturma sırasında etkinleştirin 
-**Event Hubs ad alanı oluştururken**otomatik Şişir özelliğini etkinleştirebilirsiniz:
+**Event Hubs ad alanı oluştururken** otomatik Şişir özelliğini etkinleştirebilirsiniz:
  
 ![Olay Hub 'ı oluşturma sırasında otomatik Şişir 'yi etkinleştir](./media/event-hubs-auto-inflate/event-hubs-auto-inflate1.png)
 
@@ -49,7 +49,7 @@ Bu seçenek etkinken, üretilen iş birimleriniz ile küçük bir başlangıç y
 #### <a name="enable-auto-inflate-for-an-existing-event-hub"></a>Mevcut bir olay hub 'ı için otomatik şişimine izin et
 Ayrıca, otomatik Şişir özelliğini etkinleştirebilir ve ayarlarını aşağıdaki yönergeleri kullanarak değiştirebilirsiniz: 
  
-1. **Event Hubs ad alanı** sayfasında, **Otomatik Şişir üretilen Iş birimleri**altında **devre dışı** öğesini seçin.  
+1. **Event Hubs ad alanı** sayfasında, **Otomatik Şişir üretilen Iş birimleri** altında **devre dışı** öğesini seçin.  
 
     ![Event Hubs ad alanı sayfasında üretilen iş birimlerini seçin](./media/event-hubs-auto-inflate/select-throughput-units.png)
 2. **Ölçek ayarları** sayfasında, **Etkinleştir** onay kutusunu seçin (otomatik ölçeklendirme özelliği etkinleştirilmemişse).
@@ -64,7 +64,7 @@ Ayrıca, otomatik Şişir özelliğini etkinleştirebilir ve ayarlarını aşağ
 
 ### <a name="enable-auto-inflate-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak otomatik Şişir etkinleştir
 
-Bir Azure Resource Manager şablonu dağıtımı sırasında otomatik olarak Şişir sağlayabilirsiniz. Örneğin, `isAutoInflateEnabled` özelliğini **true** olarak ayarlayın ve `maximumThroughputUnits` 10 olarak ayarlayın. Örneğin:
+Bir Azure Resource Manager şablonu dağıtımı sırasında otomatik olarak Şişir sağlayabilirsiniz. Örneğin, `isAutoInflateEnabled` özelliğini **true** olarak ayarlayın ve `maximumThroughputUnits` 10 olarak ayarlayın. Örnek:
 
 ```json
 "resources": [

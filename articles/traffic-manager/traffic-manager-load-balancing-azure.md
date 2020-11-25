@@ -13,11 +13,11 @@ ms.workload: na
 ms.date: 10/27/2016
 ms.author: duau
 ms.openlocfilehash: 431eaff9da95063648d3e80acb54be9cc5c25bc5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89393078"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021699"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Azure’daki yük dengeleme hizmetlerini kullanma
 
@@ -65,7 +65,7 @@ Aşağıdaki diyagramda bu senaryonun mimarisi gösterilmektedir:
 
 ### <a name="step-1-create-a-traffic-manager-profile"></a>1. Adım: Traffic Manager profili oluşturma
 
-1. Azure Portal, **kaynak**  >  **ağı**oluştur  >  **Traffic Manager profil**  >  **Oluştur**' a tıklayın.
+1. Azure Portal, **kaynak**  >  **ağı** oluştur  >  **Traffic Manager profil**  >  **Oluştur**' a tıklayın.
 2. Aşağıdaki temel bilgileri girin:
 
    * **Ad**: Traffic Manager PROFILINIZE bir DNS ön eki adı verin.
@@ -80,7 +80,7 @@ Aşağıdaki diyagramda bu senaryonun mimarisi gösterilmektedir:
 
 ### <a name="step-2-create-the-application-gateways"></a>2. Adım: uygulama ağ geçitlerini oluşturma
 
-1. Azure Portal, sol bölmedeki **kaynak**  >  **ağı**oluştur  >  **Application Gateway**' a tıklayın.
+1. Azure Portal, sol bölmedeki **kaynak**  >  **ağı** oluştur  >  **Application Gateway**' a tıklayın.
 2. Uygulama ağ geçidi hakkında aşağıdaki temel bilgileri girin:
 
    * **Ad**: uygulama ağ geçidinin adı.
@@ -88,10 +88,10 @@ Aşağıdaki diyagramda bu senaryonun mimarisi gösterilmektedir:
    * **Örnek sayısı**: 2 ile 10 arasında bir değer olan örnek sayısı.
    * **Kaynak grubu**: Application Gateway 'i tutan kaynak grubu. Mevcut bir kaynak grubu veya yeni bir kaynak olabilir.
    * **Konum**: kaynak grubuyla aynı konum olan uygulama ağ geçidinin bölgesi. Sanal ağ ve genel IP ağ geçidiyle aynı konumda olması gerektiğinden konum önemlidir.
-3. **Tamam**'a tıklayın.
-4. Uygulama ağ geçidi için sanal ağ, alt ağ, ön uç IP ve dinleyici yapılandırmasını tanımlayın. Bu senaryoda, ön uç IP adresi **genel**hale gelir ve bu, daha sonra Traffic Manager profiline bir uç nokta olarak eklenmesine izin verir.
+3. **Tamam** düğmesine tıklayın.
+4. Uygulama ağ geçidi için sanal ağ, alt ağ, ön uç IP ve dinleyici yapılandırmasını tanımlayın. Bu senaryoda, ön uç IP adresi **genel** hale gelir ve bu, daha sonra Traffic Manager profiline bir uç nokta olarak eklenmesine izin verir.
 5. Dinleyiciyi aşağıdaki seçeneklerden biriyle yapılandırın:
-    * HTTP kullanıyorsanız, yapılandırılacak bir şey yoktur. **Tamam**'a tıklayın.
+    * HTTP kullanıyorsanız, yapılandırılacak bir şey yoktur. **Tamam** düğmesine tıklayın.
     * HTTPS kullanıyorsanız, daha fazla yapılandırma gerekir. Adım 9 ' dan başlayarak [uygulama ağ geçidi oluşturma](../application-gateway/application-gateway-create-gateway-portal.md)bölümüne bakın. Yapılandırmayı tamamladığınızda **Tamam**' a tıklayın.
 
 #### <a name="configure-url-routing-for-application-gateways"></a>Uygulama ağ geçitleri için URL yönlendirmeyi yapılandırma
@@ -101,7 +101,7 @@ Bir arka uç havuzu seçtiğinizde, yol tabanlı bir kuralla yapılandırılmı�
 ![Application Gateway Web katmanı diyagramı](./media/traffic-manager-load-balancing-azure/web-tier-diagram.png)
 
 1. Kaynak grubunuzda, önceki bölümde oluşturduğunuz uygulama ağ geçidinin örneğine gidin.
-2. **Ayarlar**altında, **arka uç havuzları**' nı seçin ve ardından Web katmanı arka uç havuzlarıyla ilişkilendirmek istediğiniz VM 'leri eklemek için **Ekle** ' yi seçin.
+2. **Ayarlar** altında, **arka uç havuzları**' nı seçin ve ardından Web katmanı arka uç havuzlarıyla ilişkilendirmek istediğiniz VM 'leri eklemek için **Ekle** ' yi seçin.
 3. Arka uç havuzunun adını ve havuzda bulunan makinelerin tüm IP adreslerini girin. Bu senaryoda, sanal makinelerin iki arka uç sunucu havuzunu bağlanıyoruz.
 
    !["Arka uç Havuzu Ekle" Application Gateway](./media/traffic-manager-load-balancing-azure/s2-appgw-add-bepool.png)
@@ -135,7 +135,7 @@ Bir arka uç havuzu seçtiğinizde, yol tabanlı bir kuralla yapılandırılmı�
 
 Bu senaryoda Traffic Manager, farklı bölgelerde bulunan uygulama ağ geçitlerine (önceki adımlarda yapılandırıldığı gibi) bağlıdır. Artık uygulama ağ geçitleri yapılandırıldıktan sonra, bir sonraki adım bunları Traffic Manager profilinize bağlayayöneliktir.
 
-1. Traffic Manager profilinizi açın. Bunu yapmak için, kaynak grubunuza bakın veya **tüm kaynaklardaki**Traffic Manager profilinin adını arayın.
+1. Traffic Manager profilinizi açın. Bunu yapmak için, kaynak grubunuza bakın veya **tüm kaynaklardaki** Traffic Manager profilinin adını arayın.
 2. Sol bölmede **uç noktalar**' ı seçin ve sonra bir uç nokta eklemek için **Ekle** ' ye tıklayın.
 
    ![Traffic Manager uç noktaları "Ekle" düğmesi](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint.png)
@@ -144,7 +144,7 @@ Bu senaryoda Traffic Manager, farklı bölgelerde bulunan uygulama ağ geçitler
 
    * **Tür**: yük dengelemeye yönelik uç nokta türünü seçin. Bu senaryoda, daha önce yapılandırılmış uygulama ağ geçidi örneklerine bağlandığımız için **Azure uç noktası** ' nı seçin.
    * **Ad**: uç noktanın adını girin.
-   * **Hedef kaynak türü**: **genel IP adresi** ' ni seçin ve ardından **hedef kaynak**altında, daha önce yapılandırılan uygulama ağ geçidinin genel IP 'sini seçin.
+   * **Hedef kaynak türü**: **genel IP adresi** ' ni seçin ve ardından **hedef kaynak** altında, daha önce yapılandırılan uygulama ağ geçidinin genel IP 'sini seçin.
 
    !["Uç nokta Ekle" Traffic Manager](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint-blade.png)
 
@@ -158,18 +158,18 @@ Yüksek kullanılabilirlik veritabanı kümeniz SQL Server AlwaysOn kullanıyors
 
 İç yük dengeleyiciyi yapılandırma hakkında daha fazla bilgi için, [Azure Portal iç yük dengeleyici oluşturma](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)bölümüne bakın.
 
-1. Azure Portal, sol bölmedeki **kaynak**  >  **ağ**  >  **yükü dengeleyici**oluştur ' a tıklayın.
+1. Azure Portal, sol bölmedeki **kaynak**  >  **ağ**  >  **yükü dengeleyici** oluştur ' a tıklayın.
 2. Yük dengeleyiciniz için bir ad seçin.
-3. **Türü** **iç**olarak ayarlayın ve yük dengeleyicinin içinde bulunacağı uygun sanal ağı ve alt ağı seçin.
-4. **IP adresi ataması**altında **dinamik** veya **statik**' ı seçin.
-5. **Kaynak grubu**altında yük dengeleyici için kaynak grubunu seçin.
+3. **Türü** **iç** olarak ayarlayın ve yük dengeleyicinin içinde bulunacağı uygun sanal ağı ve alt ağı seçin.
+4. **IP adresi ataması** altında **dinamik** veya **statik**' ı seçin.
+5. **Kaynak grubu** altında yük dengeleyici için kaynak grubunu seçin.
 6. **Konum**' un altında, yük dengeleyici için uygun bölgeyi seçin.
 7. Yük dengeleyiciyi oluşturmak için **Oluştur** ' a tıklayın.
 
 #### <a name="connect-a-back-end-database-tier-to-the-load-balancer"></a>Arka uç veritabanı katmanını yük dengeleyiciye bağlama
 
 1. Kaynak grubunuzda, önceki adımlarda oluşturulan yük dengeleyiciyi bulun.
-2. **Ayarlar**altında arka uç **havuzları**' na tıklayın ve ardından **Ekle** ' ye tıklayarak bir arka uç havuzu ekleyin.
+2. **Ayarlar** altında arka uç **havuzları**' na tıklayın ve ardından **Ekle** ' ye tıklayarak bir arka uç havuzu ekleyin.
 
    !["Arka uç Havuzu Ekle" Load Balancer](./media/traffic-manager-load-balancing-azure/s4-ilb-add-bepool.png)
 
@@ -178,32 +178,32 @@ Yüksek kullanılabilirlik veritabanı kümeniz SQL Server AlwaysOn kullanıyors
 
 #### <a name="configure-a-probe"></a>Araştırma yapılandırma
 
-1. Yük dengeleyicinizdeki **Ayarlar**altında, **yoklamalar**' ı seçin ve ardından **Ekle** ' ye tıklayarak bir araştırma ekleyin.
+1. Yük dengeleyicinizdeki **Ayarlar** altında, **yoklamalar**' ı seçin ve ardından **Ekle** ' ye tıklayarak bir araştırma ekleyin.
 
    !["Araştırma ekle" Load Balancer](./media/traffic-manager-load-balancing-azure/s4-ilb-add-probe.png)
 
 2. Araştırmanın adını girin.
 3. Araştırmanın **protokolünü** seçin. Bir veritabanı için, HTTP araştırması yerine bir TCP araştırmasını isteyebilirsiniz. Yük dengeleyici araştırmaları hakkında daha fazla bilgi edinmek için [yük dengeleyici araştırmalarını anlama](../load-balancer/load-balancer-custom-probe-overview.md)bölümüne bakın.
 4. Araştırmayla ilgili olarak kullanılacak veritabanınızın **bağlantı noktasını** girin.
-5. **Aralık**altında, uygulamanın ne sıklıkta araştırılıp araştıralınacağını belirtin.
-6. **Sağlıksız eşik**altında, arka uç VM 'sinin sağlıksız olarak kabul edilmesi için gerçekleşmesi gereken sürekli araştırma hatası sayısını belirtin.
+5. **Aralık** altında, uygulamanın ne sıklıkta araştırılıp araştıralınacağını belirtin.
+6. **Sağlıksız eşik** altında, arka uç VM 'sinin sağlıksız olarak kabul edilmesi için gerçekleşmesi gereken sürekli araştırma hatası sayısını belirtin.
 7. Araştırmayı oluşturmak için **Tamam** ' ı tıklatın.
 
 #### <a name="configure-the-load-balancing-rules"></a>Yük Dengeleme kurallarını yapılandırma
 
 1. Yük dengeleyicinizin **ayarları** bölümünde **Yük Dengeleme kuralları**' nı seçin ve ardından **Ekle** ' ye tıklayarak bir kural oluşturun.
 2. Yük Dengeleme kuralı için bir **ad** girin.
-3. Yük dengeleyici, **protokol**ve **bağlantı NOKTASıNıN** **ön uç IP adresini** seçin.
-4. **Arka uç bağlantı noktası**altında arka uç havuzunda kullanılacak bağlantı noktasını belirtin.
+3. Yük dengeleyici, **protokol** ve **bağlantı NOKTASıNıN** **ön uç IP adresini** seçin.
+4. **Arka uç bağlantı noktası** altında arka uç havuzunda kullanılacak bağlantı noktasını belirtin.
 5. Kuralı uygulamak için önceki adımlarda oluşturulan **arka uç havuzunu** ve **araştırmayı** seçin.
-6. **Oturum kalıcılığı**altında, oturumların nasıl kalıcı olmasını istediğinizi seçin.
-7. **Boşta kalma zaman aşımları**altında, boşta kalma zaman aşımından önceki dakika sayısını belirtin.
-8. **Kayan IP**altında **devre dışı** ya da **etkin**' i seçin.
+6. **Oturum kalıcılığı** altında, oturumların nasıl kalıcı olmasını istediğinizi seçin.
+7. **Boşta kalma zaman aşımları** altında, boşta kalma zaman aşımından önceki dakika sayısını belirtin.
+8. **Kayan IP** altında **devre dışı** ya da **etkin**' i seçin.
 9. Kuralı oluşturmak için **Tamam**'a tıklayın.
 
 ### <a name="step-5-connect-web-tier-vms-to-the-load-balancer"></a>5. Adım: Web katmanı VM 'lerini yük dengeleyiciye bağlama
 
-Artık, herhangi bir veritabanı bağlantısı için Web katmanı sanal makinelerinizdeki çalışan uygulamalarda IP adresini ve yük dengeleyici ön uç bağlantı noktasını yapılandıracağız. Bu yapılandırma, bu VM 'lerde çalışan uygulamalara özeldir. Hedef IP adresini ve bağlantı noktasını yapılandırmak için uygulama belgelerine bakın. Ön ucun IP adresini bulmak için, Azure portal, **yük dengeleyici ayarlarındaki**ön uç IP havuzuna gidin.
+Artık, herhangi bir veritabanı bağlantısı için Web katmanı sanal makinelerinizdeki çalışan uygulamalarda IP adresini ve yük dengeleyici ön uç bağlantı noktasını yapılandıracağız. Bu yapılandırma, bu VM 'lerde çalışan uygulamalara özeldir. Hedef IP adresini ve bağlantı noktasını yapılandırmak için uygulama belgelerine bakın. Ön ucun IP adresini bulmak için, Azure portal, **yük dengeleyici ayarlarındaki** ön uç IP havuzuna gidin.
 
 !["Ön uç IP havuzu" gezinti bölmesi Load Balancer](./media/traffic-manager-load-balancing-azure/s5-ilb-frontend-ippool.png)
 

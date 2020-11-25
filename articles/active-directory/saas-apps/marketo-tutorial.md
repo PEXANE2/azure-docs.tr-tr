@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 10/04/2020
 ms.author: jeedes
 ms.openlocfilehash: fc98201ac97409edd9be8522532728d7bb9b15af
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927320"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021410"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-marketo"></a>Öğretici: Marketo ile tümleştirme Azure Active Directory
 
@@ -46,8 +46,8 @@ Marketo 'nın Azure AD 'ye tümleştirilmesini yapılandırmak için, galerisind
 
 1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama** ' yı seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Marketo** yazın.
 1. Sonuçlar panelinden **Marketo** ' yı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
@@ -69,8 +69,8 @@ Azure AD çoklu oturum açmayı Marketo ile yapılandırmak ve test etmek için 
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. Azure portal, **Marketo** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma** ' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML** ' yi seçin.
+1. Azure portal, **Marketo** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
@@ -98,22 +98,22 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portal sol bölmeden **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur** 'a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, Marketo 'ya erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portal **Kurumsal uygulamalar** ' ı seçin ve ardından **tüm uygulamalar** ' ı seçin.
-1. Uygulamalar listesinde, **Marketo** ' yı seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar** ' ı seçin.
-1. **Kullanıcı Ekle** ' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, **Marketo**' yı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
@@ -128,7 +128,7 @@ Bu bölümde, Marketo 'ya erişim vererek Azure çoklu oturum açma özelliğini
    
     ![Tek Sign-On1 yapılandırma](./media/marketo-tutorial/tutorial_marketo_06.png) 
    
-    c. Tümleştirme menüsüne gidin ve daha fazla **bağlantı** ' ya tıklayın.
+    c. Tümleştirme menüsüne gidin ve daha fazla **bağlantı**' ya tıklayın.
    
     ![Tek Sign-On2 yapılandırma](./media/marketo-tutorial/tutorial_marketo_11.png)
    
@@ -144,7 +144,7 @@ Bu bölümde, Marketo 'ya erişim vererek Azure çoklu oturum açma özelliğini
    
     ![Tek Sign-On4 yapılandırma](./media/marketo-tutorial/tutorial_marketo_06.png) 
    
-    c. Tümleştirme menüsüne gidin ve **Çoklu oturum aç** ' a tıklayın.
+    c. Tümleştirme menüsüne gidin ve **Çoklu oturum aç**' a tıklayın.
    
     ![Tek Sign-On5 yapılandırma](./media/marketo-tutorial/tutorial_marketo_07.png) 
    
@@ -185,7 +185,7 @@ Bu bölümde, Marketo 'ya erişim vererek Azure çoklu oturum açma özelliğini
    
     ![Tek Sign-On9 yapılandırma](./media/marketo-tutorial/tutorial_marketo_06.png) 
    
-    c. **Güvenlik** menüsüne gidin ve **oturum açma ayarları** ' na tıklayın.
+    c. **Güvenlik** menüsüne gidin ve **oturum açma ayarları**' na tıklayın.
    
     ![Tek Sign-On10 yapılandırma](./media/marketo-tutorial/tutorial_marketo_13.png)
    

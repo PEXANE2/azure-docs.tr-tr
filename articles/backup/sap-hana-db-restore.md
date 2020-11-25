@@ -4,11 +4,11 @@ description: Bu makalede, Azure sanal makinelerinde çalışan SAP HANA veritaba
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.openlocfilehash: c502b7741acd343baefe5e2bf8b95cfc02e46688
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986106"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021682"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>Azure VM 'lerinde SAP HANA veritabanlarını geri yükleme
 
@@ -24,7 +24,7 @@ Azure Backup, Azure VM 'lerinde çalışan SAP HANA veritabanlarını şu şekil
 
 * Belirli bir kurtarma noktasına geri yüklemek için belirli bir tam veya değişiklik yedeklemesine geri yükleme yapın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir veritabanını geri yüklemeden önce aşağıdakilere göz önüne alın:
 
@@ -38,7 +38,7 @@ Bir veritabanını geri yüklemeden önce aşağıdakilere göz önüne alın:
 
   1. Hedef SAP HANA örneğinin kaydedildiği kasayı açın.
 
-  1. Kasa panosunda, **Başlarken**altında **Yedekle**' yi seçin.
+  1. Kasa panosunda, **Başlarken** altında **Yedekle**' yi seçin.
 
       ![Kasa panosunda yedekleme](media/sap-hana-db-restore/getting-started-backup.png)
 
@@ -46,7 +46,7 @@ Bir veritabanını geri yüklemeden önce aşağıdakilere göz önüne alın:
 
       ![Azure VM 'de SAP HANA seçin](media/sap-hana-db-restore/sap-hana-backup.png)
 
-  1. **VM 'lerde veritabanlarını bul**altında, **Ayrıntıları görüntüle**' yi seçin.
+  1. **VM 'lerde veritabanlarını bul** altında, **Ayrıntıları görüntüle**' yi seçin.
 
       ![Ayrıntıları görüntüle](media/sap-hana-db-restore/view-details.png)
 
@@ -68,7 +68,7 @@ Geri yüklemek için aşağıdaki izinlere sahip olmanız gerekir:
 
 1. Geri yüklenecek SAP HANA veritabanının kaydedildiği kasayı açın
 
-1. Kasa panosunda, **korumalı öğeler**altında, **yedekleme öğeleri** ' ni seçin.
+1. Kasa panosunda, **korumalı öğeler** altında, **yedekleme öğeleri** ' ni seçin.
 
     ![Yedekleme öğeleri](media/sap-hana-db-restore/backup-items.png)
 
@@ -90,7 +90,7 @@ Geri yüklemek için aşağıdaki izinlere sahip olmanız gerekir:
 
 1. **Veritabanını geri yükle** ' yi seçin
 
-1. **Yapılandırma geri yükleme**altında, verilerin nereye (veya nasıl) geri yükleneceğini belirtin:
+1. **Yapılandırma geri yükleme** altında, verilerin nereye (veya nasıl) geri yükleneceğini belirtin:
 
     * **Alternatif konum**: veritabanını alternatif bir konuma geri yükleyin ve özgün kaynak veritabanını koruyun.
 
@@ -116,7 +116,7 @@ Geri yüklemek için aşağıdaki izinlere sahip olmanız gerekir:
 
     ![Yapılandırma geri yükleme-son ekran](media/sap-hana-db-restore/restore-configuration-last.png)
 
-1. [Belirli bir noktaya geri yüklemek](#restore-to-a-specific-point-in-time)için **geri yükleme noktası seç**bölümünde Günlükler ' i **(zaman içindeki nokta)** seçin. Veya [belirli bir kurtarma noktasına geri yüklemek](#restore-to-a-specific-recovery-point)için **tam & türev** öğesini seçin.
+1. [Belirli bir noktaya geri yüklemek](#restore-to-a-specific-point-in-time)için **geri yükleme noktası seç** bölümünde Günlükler ' i **(zaman içindeki nokta)** seçin. Veya [belirli bir kurtarma noktasına geri yüklemek](#restore-to-a-specific-recovery-point)için **tam & türev** öğesini seçin.
 
 ### <a name="restore-and-overwrite"></a>Geri yükleme ve üzerine yazma
 
@@ -124,13 +124,13 @@ Geri yüklemek için aşağıdaki izinlere sahip olmanız gerekir:
 
     ![Veritabanının Üzerine Yazma](media/sap-hana-db-restore/overwrite-db.png)
 
-1. [Belirli bir noktaya geri yüklemek](#restore-to-a-specific-point-in-time)için **geri yükleme noktası seç**bölümünde Günlükler ' i **(zaman içindeki nokta)** seçin. Veya [belirli bir kurtarma noktasına geri yüklemek](#restore-to-a-specific-recovery-point)için **tam & türev** öğesini seçin.
+1. [Belirli bir noktaya geri yüklemek](#restore-to-a-specific-point-in-time)için **geri yükleme noktası seç** bölümünde Günlükler ' i **(zaman içindeki nokta)** seçin. Veya [belirli bir kurtarma noktasına geri yüklemek](#restore-to-a-specific-recovery-point)için **tam & türev** öğesini seçin.
 
 ### <a name="restore-as-files"></a>Dosya olarak geri yükleme
 
 Yedekleme verilerini bir veritabanı yerine dosya olarak geri yüklemek için **dosya olarak geri yükle**' yi seçin. Dosyalar belirtilen bir yola alındıktan sonra, bu dosyaları bir veritabanı olarak geri yüklemek istediğiniz herhangi bir SAP HANA makineye alabilirsiniz. Bu dosyaları herhangi bir makineye taşıyabildiğiniz için artık verileri abonelikler ve bölgeler arasında geri yükleyebilirsiniz.
 
-1. Geri yükleme **yapılandırma** menüsünde, **konum ve nasıl geri yükleme**altında **dosya olarak geri yükle**' yi seçin.
+1. Geri yükleme **yapılandırma** menüsünde, **konum ve nasıl geri yükleme** altında **dosya olarak geri yükle**' yi seçin.
 1. Yedekleme dosyalarını geri yüklemek istediğiniz **konak** /Hana sunucu adını seçin.
 1. **Sunucudaki hedef yolda**, adım 2 ' de seçilen sunucudaki klasör yolunu girin. Bu, hizmetin tüm gerekli yedekleme dosyalarının dökümünü alacak konumudur.
 

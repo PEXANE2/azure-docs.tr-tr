@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: timlt
 ms.openlocfilehash: f9c7a2df83e9d630ce2b4635a830fb941180c758
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965009"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021852"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 serisi: karma bulut depolama çözümü
 
@@ -39,7 +39,7 @@ StorSimple veri koruma özellikleri, depolama yönetimine ek olarak isteğe bağ
 ## <a name="why-use-storsimple"></a>StorSimple neden kullanılmalıdır?
 Aşağıdaki tabloda Microsoft Azure StorSimple sağladığı bazı önemli avantajlar açıklanmaktadır.
 
-| Öne çıkan özelliği | Avantaj |
+| Özellik | Avantaj |
 | --- | --- |
 | Saydam tümleştirme |, Veri depolama olanaklarını ayrıntılı bir şekilde bağlamak için Iscsı protokolünü kullanır. Bu, bulutta depolanan verilerin veri merkezinde veya uzak sunucularda tek bir konumda depolanması gibi göründüğünden emin olmanızı sağlar. |
 | Azaltılan depolama maliyetleri |Mevcut taleplerini karşılamak için yeterli yerel veya bulut depolama alanını ayırır ve bulut depolamayı yalnızca gerekli olduğunda genişletir. Aynı verilerin (yinelenenleri kaldırma) yedekli sürümlerini kaldırarak ve sıkıştırma kullanarak, depolama gereksinimlerini ve harcamayı daha da azaltır. |

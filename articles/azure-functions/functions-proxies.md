@@ -4,11 +4,11 @@ description: Azure İşlev Proxy'leri kullanmaya genel bakış
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.openlocfilehash: 3e08b9cf633162cc7015f47774b043cf58c115a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87385883"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020407"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Azure İşlev Proxy'leri çalışın
 
@@ -26,9 +26,9 @@ Bu bölümde, Işlevler portalında bir ara sunucu oluşturma konusu gösterilme
 1. [Azure Portal]açın ve ardından işlev uygulamanıza gidin.
 2. Sol bölmede **yeni ara sunucu**' yı seçin.
 3. Ara sunucunuz için bir ad sağlayın.
-4. **Yönlendirme şablonunu** ve **http yöntemlerini**belirterek bu işlev uygulamasında gösterilen uç noktayı yapılandırın. Bu parametreler, [http tetikleyicilerinin]kurallarına göre davranır.
+4. **Yönlendirme şablonunu** ve **http yöntemlerini** belirterek bu işlev uygulamasında gösterilen uç noktayı yapılandırın. Bu parametreler, [http tetikleyicilerinin]kurallarına göre davranır.
 5. **Arka uç URL 'sini** başka bir uç noktaya ayarlayın. Bu uç nokta, başka bir işlev uygulamasındaki bir işlev veya başka bir API olabilir. Değerin statik olması gerekmez ve [özgün istemci isteğinden] [uygulama ayarlarına] ve parametrelerine başvurabilir.
-6. **Oluştur**’a tıklayın.
+6. **Oluştur**'a tıklayın.
 
 Proxy 'niz artık işlev uygulamanızda yeni bir uç nokta olarak var. Bir istemci perspektifinden, Azure Işlevlerinde bir HttpTrigger ile eşdeğerdir. Proxy URL 'sini kopyalayıp en sevdiğiniz HTTP istemcisiyle test ederek yeni proxy 'nizi deneyebilirsiniz.
 
@@ -215,7 +215,7 @@ RequestOverrides nesnesi, istemciye geri geçirilmiş yanıtta yapılan değişi
 * **Response. StatusCode**: ISTEMCIYE döndürülecek http durum kodu.
 * **Response. statusReason**: ISTEMCIYE döndürülecek http neden tümceciği.
 * **Response. Body**: istemciye döndürülecek gövdenin dize temsili.
-* **Response. Headers. \<HeaderName\> **: istemciye yanıt olarak ayarlanabilir bir üst bilgi. *\<HeaderName\>* Ayarlamak istediğiniz üstbilginin adıyla değiştirin. Boş bir dize sağlarsanız, üst bilgi yanıta eklenmez.
+* **Response. Headers. \<HeaderName\>**: istemciye yanıt olarak ayarlanabilir bir üst bilgi. *\<HeaderName\>* Ayarlamak istediğiniz üstbilginin adıyla değiştirin. Boş bir dize sağlarsanız, üst bilgi yanıta eklenmez.
 
 Değerler uygulama ayarlarına, özgün istemci isteğinden parametrelere ve arka uç yanıtından parametrelere başvurabilir.
 
@@ -241,7 +241,7 @@ Değerler uygulama ayarlarına, özgün istemci isteğinden parametrelere ve ark
 > [!NOTE] 
 > Bu örnekte, yanıt gövdesi doğrudan ayarlanır, bu nedenle hiçbir `backendUri` özellik gerekmez. Örnek, sahte işlem API 'leri için Azure işlev proxy'leri nasıl kullanabileceğinizi gösterir.
 
-[Azure portalındaki]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 [HTTP Tetikleyicileri]: ./functions-bindings-http-webhook.md
 [Modify the back-end request]: #modify-backend-request
 [Modify the response]: #modify-response

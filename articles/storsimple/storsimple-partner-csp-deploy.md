@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: dc0cf718ee51e23fb749bdf57d5344977de009d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88182230"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021869"
 ---
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>Bulut çözümü sağlayıcısı programı için StorSimple Sanal dizisi dağıtma
 
@@ -29,7 +29,7 @@ StorSimple Sanal dizisi, müşterileri için bulut çözümü sağlayıcısı (C
 
 Bu makalede, CSP iş ortağının mevcut bir müşteriye bir müşteri veya yeni abonelik ekleme ve ardından CSP 'de StorSimple Sanal dizisi dağıtmak üzere bir hizmet oluşturma işlemlerinin nasıl yapılacağı açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdakileri doğrulayın:
 
@@ -64,11 +64,11 @@ Bir müşteri eklerseniz, otomatik olarak bir abonelik oluşturulur. Bir müşte
 
     ![Müşteriyi arayın](./media/storsimple-partner-csp-deploy/image6.png)  
 
-7. Sol bölmede **hizmet yönetimi**' ni seçin. Sağ bölmede, **Hizmetleri Yönet**altında, müşteriniz Için bir Azure Yöneticisi olarak oturum açmak üzere **Microsoft Azure yönetim portalı** ' ye tıklayın.
+7. Sol bölmede **hizmet yönetimi**' ni seçin. Sağ bölmede, **Hizmetleri Yönet** altında, müşteriniz Için bir Azure Yöneticisi olarak oturum açmak üzere **Microsoft Azure yönetim portalı** ' ye tıklayın.
 
     ![Azure portalında oturum açın](./media/storsimple-partner-csp-deploy/image9.png)
 
-8. StorSimple Aygıt Yöneticisi oluşturmak için **+ Yeni** ' ye tıklayıp **StorSimple sanal cihaz serisini**arayın veya bu seriyi bulun. Daha fazla bilgi için, [StorSimple aygıt yöneticisi hizmeti dağıtma](storsimple-virtual-array-manage-service.md)konusuna gidin.
+8. StorSimple Aygıt Yöneticisi oluşturmak için **+ Yeni** ' ye tıklayıp **StorSimple sanal cihaz serisini** arayın veya bu seriyi bulun. Daha fazla bilgi için, [StorSimple aygıt yöneticisi hizmeti dağıtma](storsimple-virtual-array-manage-service.md)konusuna gidin.
 
     ![StorSimple Aygıt Yöneticisi hizmeti oluşturma](./media/storsimple-partner-csp-deploy/image8.png)
 
@@ -93,11 +93,11 @@ Bazı örneklerde, mevcut bir müşteriniz olabilir ve bir abonelik eklemeniz ge
 
     ![Müşteriyi arayın](./media/storsimple-partner-csp-deploy/image6.png)  
 
-7. Sol bölmede **hizmet yönetimi**' ni seçin. Sağ bölmede, **Hizmetleri Yönet**altında, müşteriniz Için bir Azure Yöneticisi olarak oturum açmak üzere **Microsoft Azure yönetim portalı** ' ye tıklayın.
+7. Sol bölmede **hizmet yönetimi**' ni seçin. Sağ bölmede, **Hizmetleri Yönet** altında, müşteriniz Için bir Azure Yöneticisi olarak oturum açmak üzere **Microsoft Azure yönetim portalı** ' ye tıklayın.
 
     ![Azure portalında oturum açın](./media/storsimple-partner-csp-deploy/image9.png)
 
-8. StorSimple Aygıt Yöneticisi oluşturmak için **+ Yeni** ' ye tıklayıp **StorSimple sanal cihaz serisini**arayın veya bu seriyi bulun. Daha fazla bilgi için, [StorSimple aygıt yöneticisi hizmeti dağıtma](storsimple-virtual-array-manage-service.md)konusuna gidin.
+8. StorSimple Aygıt Yöneticisi oluşturmak için **+ Yeni** ' ye tıklayıp **StorSimple sanal cihaz serisini** arayın veya bu seriyi bulun. Daha fazla bilgi için, [StorSimple aygıt yöneticisi hizmeti dağıtma](storsimple-virtual-array-manage-service.md)konusuna gidin.
 
     ![StorSimple Aygıt Yöneticisi hizmeti oluşturma](./media/storsimple-partner-csp-deploy/image8.png)
 

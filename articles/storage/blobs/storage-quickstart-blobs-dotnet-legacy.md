@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 434093df3465e363d95fb79342d1854b99583d08
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: effb193e54be7331c9dc2874a4a34ef55442ed30
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091432"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96021750"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>Hızlı başlangıç: .NET için Azure Blob depolama istemci kitaplığı v11
 
@@ -24,7 +24,7 @@ ms.locfileid: "92091432"
 
 .NET için Azure Blob depolama istemci kitaplığı 'nı kullanarak şunları yapın:
 
-* Bir kapsayıcı oluşturma
+* Kapsayıcı oluşturma
 * Bir kapsayıcıda izinleri ayarlama
 * Azure depolama 'da blob oluşturma
 * Blobu yerel bilgisayarınıza indirme
@@ -33,7 +33,7 @@ ms.locfileid: "92091432"
 
 Ek kaynaklar:
 
-* [API başvuru belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/storage)
+* [API başvuru belgeleri](/dotnet/api/overview/azure/storage)
 * [Kitaplık kaynak kodu](https://github.com/Azure/azure-storage-net/tree/master/Blob)
 * [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
 * [Örnekler](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
@@ -43,7 +43,7 @@ Ek kaynaklar:
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
-* Azure depolama hesabı- [depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Azure depolama hesabı- [depolama hesabı oluşturma](../common/storage-account-create.md)
 * İşletim sisteminiz için geçerli [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) . Çalışma zamanını değil, SDK 'Yı aldığınızdan emin olun.
 
 ## <a name="setting-up"></a>Ayarlanıyor
@@ -54,7 +54,7 @@ Bu bölümde, bir projeyi .NET için Azure Blob depolama istemci kitaplığıyla
 
 İlk olarak, blob adlı bir .NET Core uygulaması oluşturun *-hızlı başlangıç*.
 
-1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` *BLOB-QuickStart*adlı yeni bir konsol uygulaması oluşturmak için komutunu kullanın. Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: *program.cs*.
+1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` *BLOB-QuickStart* adlı yeni bir konsol uygulaması oluşturmak için komutunu kullanın. Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: *program.cs*.
 
    ```console
    dotnet new console -n blob-quickstart
@@ -196,7 +196,7 @@ Aşağıdaki diyagramda bu kaynaklar arasındaki ilişki gösterilmektedir.
 Bu örnek kod parçacıkları, .NET için Azure Blob depolama istemci kitaplığı ile aşağıdakilerin nasıl gerçekleştirileceğini göstermektedir:
 
    * [İstemcinin kimliğini doğrulama](#authenticate-the-client)
-   * [Bir kapsayıcı oluşturma](#create-a-container)
+   * [Kapsayıcı oluşturma](#create-a-container)
    * [Bir kapsayıcıda izinleri ayarlama](#set-permissions-on-a-container)
    * [Blobları bir kapsayıcıya yükleme](#upload-blobs-to-a-container)
    * [Kapsayıcıdaki blobları listeleme](#list-the-blobs-in-a-container)
@@ -241,14 +241,14 @@ else
 > [!NOTE]
 > Bu makaledeki işlemlerin geri kalanını gerçekleştirmek için `// ADD OTHER OPERATIONS HERE` Yukarıdaki kodda yer alarak aşağıdaki bölümlerde bulunan kod parçacıkları ile değiştirin.
 
-### <a name="create-a-container"></a>Bir kapsayıcı oluşturma
+### <a name="create-a-container"></a>Kapsayıcı oluşturma
 
 Kapsayıcıyı oluşturmak için öncelikle [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient) nesnesinin depolama hesabınızdaki Blob depolama alanına işaret eden bir örneğini oluşturun. Ardından, [CloudBlobContainer](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer) nesnesinin bir örneğini ve sonra kapsayıcıyı oluşturun.
 
 Bu durumda, kod kapsayıcıyı oluşturmak için [Createasync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createasync) yöntemini çağırır. Kapsayıcı adının benzersiz olduğundan emin olmak için kapsayıcı adına bir GUID değeri eklenir. Bir üretim ortamında, yalnızca henüz yoksa bir kapsayıcı oluşturmak için [Createifnotexistsasync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexistsasync) yönteminin kullanılması tercih edilir.
 
 > [!IMPORTANT]
-> Kapsayıcı adlarının küçük harfle yazılması gerekir. Kapsayıcıları ve blobları adlandırma hakkında daha fazla bilgi için bkz. [Kapsayıcıları, Blobları ve Meta Verileri Adlandırma ve Bunlara Başvurma](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
+> Kapsayıcı adlarının küçük harfle yazılması gerekir. Kapsayıcıları ve blobları adlandırma hakkında daha fazla bilgi için bkz. [Kapsayıcıları, Blobları ve Meta Verileri Adlandırma ve Bunlara Başvurma](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
 ```csharp
 // Create the CloudBlobClient that represents the 

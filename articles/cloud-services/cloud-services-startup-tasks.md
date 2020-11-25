@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: f2417389de98f9998c189e7cbbbcdae77fbb8840
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075068"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020713"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Bulut hizmeti için başlangıç görevlerini yapılandırma ve çalıştırma
 Bir rol başlamadan önce işlemleri gerçekleştirmek için başlangıç görevleri kullanabilirsiniz. Gerçekleştirmek isteyebileceğiniz işlemler, bir bileşeni yüklemeyi, COM bileşenlerini kaydetmeyi, kayıt defteri anahtarlarını ayarlamayı veya uzun süre çalışan bir işlemi başlatmayı içerir.
@@ -31,7 +31,7 @@ Başlangıç göreviniz, bilgileri ve hataları **Temp** ortam değişkeni taraf
 
 Başlangıç görevleri, yeniden başlatmalar arasında birçok defa da yürütülebilir. Örneğin, her rol döngüsünde başlangıç görevi çalıştırılır ve rol döngüleri her zaman yeniden başlatma içermeyebilir. Başlangıç görevleri, sorunsuz bir şekilde birkaç kez çalışmasına izin verecek şekilde yazılmalıdır.
 
-Başlatma işleminin tamamlanabilmesi için başlangıç görevlerinin bir **ERRORLEVEL** (veya çıkış kodu) ile bitmesi gerekir. Başlangıç görevi sıfır olmayan bir **ERRORLEVEL**ile bitiyorsa, rol başlatılmaz.
+Başlatma işleminin tamamlanabilmesi için başlangıç görevlerinin bir **ERRORLEVEL** (veya çıkış kodu) ile bitmesi gerekir. Başlangıç görevi sıfır olmayan bir **ERRORLEVEL** ile bitiyorsa, rol başlatılmaz.
 
 ## <a name="role-startup-order"></a>Rol başlangıç sırası
 Aşağıda, Azure 'daki rol başlatma yordamı listelenmektedir:
@@ -54,7 +54,7 @@ Aşağıda, Azure 'daki rol başlatma yordamı listelenmektedir:
 ## <a name="example-of-a-startup-task"></a>Başlangıç görevi örneği
 Başlangıç görevleri, **görev** öğesinde [ServiceDefinition. csdef] dosyasında tanımlanır. **CommandLine** özniteliği, başlangıç toplu işlem dosyası veya konsol komutunun adını ve parametrelerini belirtir, **ExecutionContext** özniteliği başlangıç görevinin ayrıcalık düzeyini belirtir ve **TaskType** özniteliği, görevin nasıl yürütüleceğini belirtir.
 
-Bu örnekte, başlangıç görevi için **Myversionnumber adlı**bir ortam değişkeni oluşturulur ve "**1.0.0.0**" değerine ayarlanır.
+Bu örnekte, başlangıç görevi için **Myversionnumber adlı** bir ortam değişkeni oluşturulur ve "**1.0.0.0**" değerine ayarlanır.
 
 **ServiceDefinition. csdef**:
 
@@ -76,7 +76,7 @@ EXIT /B 0
 ```
 
 > [!NOTE]
-> Visual Studio 'da, başlangıç toplu iş dosyanızın Azure 'da projenize doğru şekilde dağıtıldığından emin olmak için başlangıç toplu iş dosyanız için **Çıkış Dizinine Kopyala** özelliği **her zaman Kopyala** olarak ayarlanmalıdır. (Web rolleri için**AppRoot \\ bin** **ve çalışan rolleri için AppRoot** ).
+> Visual Studio 'da, başlangıç toplu iş dosyanızın Azure 'da projenize doğru şekilde dağıtıldığından emin olmak için başlangıç toplu iş dosyanız için **Çıkış Dizinine Kopyala** özelliği **her zaman Kopyala** olarak ayarlanmalıdır. (Web rolleri için **AppRoot \\ bin** **ve çalışan rolleri için AppRoot** ).
 > 
 > 
 
@@ -108,7 +108,7 @@ Aşağıdaki, [ServiceDefinition. csdef] dosyasındaki **görev** öğesinin öz
   Görevler, [ServiceDefinition. csdef] dosyasında belirtilen sırada birer birer zaman uyumlu olarak yürütülür. Bir **basit** başlangıç görevi sıfır **ERRORLEVEL** ile sona erdiğinde, bir sonraki **basit** başlangıç görevi yürütülür. Yürütülecek daha **basit** başlangıç görevi yoksa, rol kendisi başlatılır.   
   
   > [!NOTE]
-  > **Basit** görev sıfır olmayan bir **ERRORLEVEL**ile bitiyorsa, örnek engellenir. Sonraki **basit** başlangıç görevleri ve rol kendisi başlatılmaz.
+  > **Basit** görev sıfır olmayan bir **ERRORLEVEL** ile bitiyorsa, örnek engellenir. Sonraki **basit** başlangıç görevleri ve rol kendisi başlatılmaz.
   > 
   > 
   
@@ -156,7 +156,7 @@ Bulut hizmetinizi [paketleyin](cloud-services-model-and-package.md) .
 [ServiceDefinition. csdef]: cloud-services-model-and-package.md#csdef
 [Görev]: /previous-versions/azure/reference/gg557552(v=azure.100)#Task
 [Başlangıç]: /previous-versions/azure/reference/gg557552(v=azure.100)#Startup
-[Çalışma zamanı]: /previous-versions/azure/reference/gg557552(v=azure.100)#Runtime
+[Çalışma Zamanı]: /previous-versions/azure/reference/gg557552(v=azure.100)#Runtime
 [Ortam]: /previous-versions/azure/reference/gg557552(v=azure.100)#Environment
 [Değişken]: /previous-versions/azure/reference/gg557552(v=azure.100)#Variable
 [Roleınstancevalue]: /previous-versions/azure/reference/gg557552(v=azure.100)#RoleInstanceValue

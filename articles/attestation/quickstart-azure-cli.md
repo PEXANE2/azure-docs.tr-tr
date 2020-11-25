@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: quickstart
 ms.date: 11/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e5ffcd56be1ce7427697cd3a75bd7c4232cc3b8a
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: dee9e7596c0a30301d9e0453ef22a6dfe9541522
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94667623"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96020951"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile Azure kanıtlama ayarlama
 
@@ -53,7 +53,7 @@ Kanıtlama ayarlamak için Azure CLı kullanarak Azure kanıtlama ile çalışma
 
 ## <a name="create-and-manage-an-attestation-provider"></a>Kanıtlama sağlayıcısı oluşturma ve yönetme
 
-Bir kanıtlama sağlayıcısı oluşturmak ve yönetmek için bu yordamı izleyin.
+Kanıtlama sağlayıcısı oluşturmak ve yönetmek için kullanabileceğiniz komutlar şunlardır:
 
 1. Bir kanıtlama sağlayıcısı oluşturmak için [az kanıtlama Create](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_create) komutunu çalıştırın:
 

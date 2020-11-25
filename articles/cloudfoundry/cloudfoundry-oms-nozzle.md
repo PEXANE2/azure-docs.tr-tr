@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
 ms.openlocfilehash: fde0afcd37cd464b0b87e5ccd257d4a7a684eeb0
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040772"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021597"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Cloud Foundry sistem izleme için Azure Log Analytics başlık dağıtma
 
@@ -59,13 +59,13 @@ Log Analytics çalışma alanını el ile veya bir şablon kullanarak oluşturab
 #### <a name="to-create-the-workspace-manually"></a>Çalışma alanını el ile oluşturmak için:
 
 1. Azure portal Azure Marketi ' nde Hizmetler listesinde arama yapın ve sonra Log Analytics çalışma alanları ' nı seçin.
-2. **Oluştur** ' u seçin ve sonra aşağıdaki öğeler için Seçenekler ' i seçin:
+2. **Oluştur**' u seçin ve sonra aşağıdaki öğeler için Seçenekler ' i seçin:
 
-   * **Log Analytics çalışma alanı** : çalışma alanınız için bir ad yazın.
-   * **Abonelik** : birden çok aboneliğiniz varsa, CF dağıtımınızla aynı olanı seçin.
-   * **Kaynak grubu** : yeni bir kaynak grubu oluşturabilir veya bunu CF dağıtımınızla aynı şekilde kullanabilirsiniz.
-   * **Konum** : konumu girin.
-   * **Fiyatlandırma katmanı** : tamamlanacak **Tamam ' ı** seçin.
+   * **Log Analytics çalışma alanı**: çalışma alanınız için bir ad yazın.
+   * **Abonelik**: birden çok aboneliğiniz varsa, CF dağıtımınızla aynı olanı seçin.
+   * **Kaynak grubu**: yeni bir kaynak grubu oluşturabilir veya bunu CF dağıtımınızla aynı şekilde kullanabilirsiniz.
+   * **Konum**: konumu girin.
+   * **Fiyatlandırma katmanı**: tamamlanacak **Tamam ' ı** seçin.
 
 Daha fazla bilgi için bkz. [Azure izleyici günlüklerini kullanmaya başlama](../azure-monitor/overview.md).
 
@@ -76,13 +76,13 @@ Daha fazla bilgi için bkz. [Azure izleyici günlüklerini kullanmaya başlama](
 1. Arama penceresinde "Cloud Foundry" yazın, "çözümü Cloud Foundry Izleme" öğesini seçin.
 1. Cloud Foundry izleme çözümü şablonu ön sayfası yüklendi, şablon dikey penceresini başlatmak için "Oluştur" düğmesine tıklayın.
 1. Gerekli parametreleri girin:
-    * **Abonelik** : Log Analytics çalışma alanı için genellikle Cloud Foundry dağıtımıyla aynı bir Azure aboneliği seçin.
-    * **Kaynak grubu** : Log Analytics çalışma alanı için var olan bir kaynak grubunu seçin veya yeni bir tane oluşturun.
-    * **Kaynak grubu konumu** : kaynak grubunun konumunu seçin.
-    * **OMS_Workspace_Name** : bir çalışma alanı adı girin, çalışma alanı yoksa şablon yeni bir tane oluşturur.
-    * **OMS_Workspace_Region** : çalışma alanının konumunu seçin.
-    * **OMS_Workspace_Pricing_Tier** : Log Analytics çalışma alanı SKU 'su seçin. Başvuru için [fiyatlandırma Kılavuzu](https://azure.microsoft.com/pricing/details/log-analytics/) ' na bakın.
-    * **Yasal koşullar** : yasal koşullar ' a tıklayın ve sonra yasal terimi kabul etmek Için "Oluştur" a tıklayın.
+    * **Abonelik**: Log Analytics çalışma alanı için genellikle Cloud Foundry dağıtımıyla aynı bir Azure aboneliği seçin.
+    * **Kaynak grubu**: Log Analytics çalışma alanı için var olan bir kaynak grubunu seçin veya yeni bir tane oluşturun.
+    * **Kaynak grubu konumu**: kaynak grubunun konumunu seçin.
+    * **OMS_Workspace_Name**: bir çalışma alanı adı girin, çalışma alanı yoksa şablon yeni bir tane oluşturur.
+    * **OMS_Workspace_Region**: çalışma alanının konumunu seçin.
+    * **OMS_Workspace_Pricing_Tier**: Log Analytics çalışma alanı SKU 'su seçin. Başvuru için [fiyatlandırma Kılavuzu](https://azure.microsoft.com/pricing/details/log-analytics/) ' na bakın.
+    * **Yasal koşullar**: yasal koşullar ' a tıklayın ve sonra yasal terimi kabul etmek Için "Oluştur" a tıklayın.
 1. Tüm parametreler belirtildikten sonra, şablonu dağıtmak için "Oluştur" düğmesine tıklayın. Dağıtım tamamlandığında, durum bildirim sekmesinde görünür.
 
 
@@ -183,7 +183,7 @@ Log Analytics çalışma alanını el ile oluşturduysanız, görünümleri ve u
 
 ### <a name="1-import-the-oms-view"></a>1. OMS görünümünü içeri aktarma
 
-OMS portalından **Görünüm tasarımcı**  >  **içeri aktarma**  >  **gözatmaya** gidin ve omsview dosyalarından birini seçin. Örneğin *Cloud Foundry. omsview* ' i seçin ve görünümü kaydedin. Artık **genel bakış** sayfasında bir kutucuk görüntülenir. Görselleştirilen ölçümleri görmek için seçin.
+OMS portalından **Görünüm tasarımcı**  >  **içeri aktarma**  >  **gözatmaya** gidin ve omsview dosyalarından birini seçin. Örneğin *Cloud Foundry. omsview*' i seçin ve görünümü kaydedin. Artık **genel bakış** sayfasında bir kutucuk görüntülenir. Görselleştirilen ölçümleri görmek için seçin.
 
 Bu görünümleri özelleştirebilir veya **Görünüm Tasarımcısı** aracılığıyla yeni görünümler oluşturabilirsiniz.
 

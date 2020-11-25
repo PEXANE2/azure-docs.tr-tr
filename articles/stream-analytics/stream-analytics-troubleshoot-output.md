@@ -9,11 +9,11 @@ ms.topic: troubleshooting
 ms.date: 10/05/2020
 ms.custom: seodec18
 ms.openlocfilehash: 6942fd68625fd8eac18ea899330fd99f31f771f7
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346120"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019846"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure Stream Analytics çıkışları sorunlarını giderme
 
@@ -67,7 +67,7 @@ Bir işin normal işlemi sırasında, çıktıda daha uzun ve daha uzun gecikme 
 * Yukarı akış kaynağının kısıtlanıp kısıtlanmayacağı
 * Sorgudaki işleme mantığının işlem yoğunluğu olup olmadığı
 
-Çıkış ayrıntılarını görmek için Azure portal akış işini seçin ve sonra **iş diyagramı** ' nı seçin. Her giriş için, bölüm başına bir kapsam olay ölçümü vardır. Ölçüm artmaya devam ederse, sistem kaynaklarının kısıtlandığı bir göstergedir. Artış, büyük olasılıkla çıkış havuzu azaltma veya yüksek CPU kullanımı nedeniyle olabilir. Daha fazla bilgi için, bkz. [iş diyagramını kullanarak veri odaklı hata ayıklama](stream-analytics-job-diagram-with-metrics.md).
+Çıkış ayrıntılarını görmek için Azure portal akış işini seçin ve sonra **iş diyagramı**' nı seçin. Her giriş için, bölüm başına bir kapsam olay ölçümü vardır. Ölçüm artmaya devam ederse, sistem kaynaklarının kısıtlandığı bir göstergedir. Artış, büyük olasılıkla çıkış havuzu azaltma veya yüksek CPU kullanımı nedeniyle olabilir. Daha fazla bilgi için, bkz. [iş diyagramını kullanarak veri odaklı hata ayıklama](stream-analytics-job-diagram-with-metrics.md).
 
 ## <a name="key-violation-warning-with-azure-sql-database-output"></a>Azure SQL veritabanı çıkışıyla anahtar ihlali uyarısı
 

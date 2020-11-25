@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
-ms.openlocfilehash: 833ec0f706786ebb86a54fb3c5b13d9c6e5c6062
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: c6405e2fcddef9ae3228ede76dfa57f7542164c8
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616238"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96020186"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Öğretici: Görsel durumları raporlamak için IoT cihazındaki Özel Görüntü İşleme kullanma
 
@@ -47,16 +47,16 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 IoT görsel uyarıları uygulaması sürekli bir döngüde çalışarak dört farklı durum arasında uygun şekilde geçiş yapar:
 
-* **Model yok** : işlem dışı durum. Uygulama bir saniyede sürekli uykuya geçecek ve kamerayı denetlecektir.
-* **Eğitim görüntülerini yakalama** : Bu durumda, uygulama bir resim yakalar ve hedef özel görüntü işleme projesine bir eğitim görüntüsü olarak yükler. Uygulama daha sonra 500 MS için uyku moduna geçer ve görüntünün hedef sayısını ayarla yakalanana kadar işlemi yineler. Ardından Özel Görüntü İşleme modelin eğitimini tetikler.
-* **Eğitilen model bekleniyor** : Bu durumda uygulama, hedef projenin eğitilen bir yineleme içerip içermediğini denetlemek için her sanıye özel görüntü işleme API 'sini çağırır. Bir tane bulduğunda, karşılık gelen ONNX modelini yerel bir dosyaya indirir ve **Puanlama** durumuna geçirir.
-* **Puanlama** : Bu durumda, uygulama, kameradan yerel onnx modeline karşı tek bir çerçeveyi değerlendirmek IÇIN Windows ml 'yi kullanır. Ortaya çıkan görüntü sınıflandırması ekranda görüntülenir ve IoT Hub ileti olarak gönderilir. Daha sonra uygulama, yeni bir görüntü Puanlama yapmadan önce bir saniye boyunca uyku moduna geçer.
+* **Model yok**: işlem dışı durum. Uygulama bir saniyede sürekli uykuya geçecek ve kamerayı denetlecektir.
+* **Eğitim görüntülerini yakalama**: Bu durumda, uygulama bir resim yakalar ve hedef özel görüntü işleme projesine bir eğitim görüntüsü olarak yükler. Uygulama daha sonra 500 MS için uyku moduna geçer ve görüntünün hedef sayısını ayarla yakalanana kadar işlemi yineler. Ardından Özel Görüntü İşleme modelin eğitimini tetikler.
+* **Eğitilen model bekleniyor**: Bu durumda uygulama, hedef projenin eğitilen bir yineleme içerip içermediğini denetlemek için her sanıye özel görüntü işleme API 'sini çağırır. Bir tane bulduğunda, karşılık gelen ONNX modelini yerel bir dosyaya indirir ve **Puanlama** durumuna geçirir.
+* **Puanlama**: Bu durumda, uygulama, kameradan yerel onnx modeline karşı tek bir çerçeveyi değerlendirmek IÇIN Windows ml 'yi kullanır. Ortaya çıkan görüntü sınıflandırması ekranda görüntülenir ve IoT Hub ileti olarak gönderilir. Daha sonra uygulama, yeni bir görüntü Puanlama yapmadan önce bir saniye boyunca uyku moduna geçer.
 
 ## <a name="examine-the-code-structure"></a>Kod yapısını İnceleme
 
 Aşağıdaki dosyalar uygulamanın ana işlevlerini işler.
 
-| Dosya | Açıklama |
+| Dosya | Description |
 |-------------|-------------|
 | [MainPage. xaml](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/MainPage.xaml) | Bu dosya XAML Kullanıcı arabirimini tanımlar. Web Kamerası denetimini barındırır ve durum güncelleştirmeleri için kullanılan etiketleri içerir.|
 | [MainPage.xaml.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/MainPage.xaml.cs) | Bu kod, XAML kullanıcı arabirimi 'nin davranışını denetler. Durum makine işleme kodunu içerir.|
@@ -108,7 +108,7 @@ Bu işlemi kendi senaryoınızla yinelemek için:
 1. Artık uygulamanın karşıya yüklediği tüm eğitim görüntülerini içermelidir hedef projenizi bulun.
 1. Tanımlamak istediğiniz her görsel durum için uygun görüntüleri seçin ve etiketi el ile uygulayın.
     * Örneğin, hedefiniz bir boş oda ve içindeki kişilerle bir oda arasında ayrım yapmak ise, kişilerle birlikte beş veya daha fazla görüntüyü yeni bir sınıf, **kişi** ve kişiler olmadan beş veya daha fazla görüntü etiketlemesini öneririz. **Negative** Bu, modelin iki durum arasında ayrım yapmanıza yardımcı olur.
-    * Başka bir örnek olarak, amacınız bir rafı ne kadar yaklaşmayı düşünüyorsanız, **Emptyrafı** , **Partiallyfullrafı** ve **fullrafı** gibi etiketleri kullanabilirsiniz.
+    * Başka bir örnek olarak, amacınız bir rafı ne kadar yaklaşmayı düşünüyorsanız, **Emptyrafı**, **Partiallyfullrafı** ve **fullrafı** gibi etiketleri kullanabilirsiniz.
 1. İşiniz bittiğinde **eğitme** düğmesini seçin.
 1. Eğitim tamamlandıktan sonra uygulama, eğitilen bir yinelemenin kullanılabildiğini algılar. Eğitilen modeli ONNX 'e aktarma ve cihaza indirme işlemi başlatılır.
 

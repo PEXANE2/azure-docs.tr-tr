@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: e6eb0be4d9946907dc5bb2f22b27530a27a37aec
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321255"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021461"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Azure Data Lake ile ölçeklenebilir veri bilimi: uçtan uca bir anlatım
 Bu izlenecek yol, bir ipucunun bir tarifeli havayolu tarafından ödenip ödenmediğini tahmin etmek üzere NYC TAXI seyahat ve tarifeli havayolu veri kümesinin bir örneği üzerinde veri keşif ve ikili sınıflandırma görevlerini yapmak için Azure Data Lake nasıl kullanacağınızı gösterir. [Ekip veri bilimi sürecinin](./index.yml), uçtan uca, veri alımı ile model eğitimi arasında ve ardından modeli yayımlayan bir Web hizmetinin dağıtımına ilişkin adımlarda size yol gösterir.
@@ -143,7 +143,7 @@ Bu bölümde gösterilen veri işleme görevleri, verileri kullanıma almak, kal
 
 U-SQL betikleri burada açıklanmış ve ayrı bir dosyada sunulmaktadır. Tam **U-SQL betiklerini** [GitHub](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/AzureDataLakeWalkthrough)'dan indirebilirsiniz.
 
-U-SQL ' i çalıştırmak için, Visual Studio 'yu açın, **Dosya--> New--> projesi** ' ne tıklayın, **U-SQL projesi** ' ni seçin ve bir klasöre kaydedin.
+U-SQL ' i çalıştırmak için, Visual Studio 'yu açın, **Dosya--> New--> projesi**' ne tıklayın, **U-SQL projesi**' ni seçin ve bir klasöre kaydedin.
 
 ![8](./media/data-lake-walkthrough/8-create-USQL-project.PNG)
 
@@ -461,7 +461,7 @@ USING Outputters.Csv();
 ```
 
 ### <a name="run-u-sql-jobs"></a><a name="run"></a>U-SQL işlerini Çalıştır
-U-SQL betiklerini düzenledikten sonra, Azure Data Lake Analytics hesabınızı kullanarak bunları sunucuya gönderebilirsiniz. **Data Lake** , **işi gönder** ' e tıklayın, **analiz hesabınızı** seçin, **paralellik** ' i seçin ve **Gönder** düğmesine tıklayın.
+U-SQL betiklerini düzenledikten sonra, Azure Data Lake Analytics hesabınızı kullanarak bunları sunucuya gönderebilirsiniz. **Data Lake**, **işi gönder**' e tıklayın, **analiz hesabınızı** seçin, **paralellik**' i seçin ve **Gönder** düğmesine tıklayın.
 
  ![12](./media/data-lake-walkthrough/12-submit-USQL.PNG)
 
@@ -618,7 +618,7 @@ Burada, bir seyahati eğimli olup olmadığını tahmin etmek için bir ikili s�
 ### <a name="build-web-service-api-and-consume-it-in-python"></a>Web hizmeti API 'SI oluşturun ve Python 'da kullanın
 Derlendikten sonra makine öğrenimi modelini kullanıma almak istiyorsunuz. İkili lojistik modeli örnek olarak burada kullanılır. Yerel makinenizde scikit-öğren sürümünün 0.15.1 olduğundan emin olun (Azure Machine Learning Studio zaten en azından bu sürümde).
 
-* Azure Machine Learning Studio (klasik) ayarlarından çalışma alanı kimlik bilgilerinizi bulun. Azure Machine Learning Studio, **Ayarlar**  -->  **ad**  -->  **Yetkilendirme belirteçleri** ' ne tıklayın.
+* Azure Machine Learning Studio (klasik) ayarlarından çalışma alanı kimlik bilgilerinizi bulun. Azure Machine Learning Studio, **Ayarlar**  -->  **ad**  -->  **Yetkilendirme belirteçleri**' ne tıklayın.
 
     ![c3](./media/data-lake-walkthrough/c3-workspace-id.PNG)
 
@@ -671,7 +671,7 @@ Azure Machine Learning Studio (klasik), doğrudan Azure Data Lake Storage verile
  ![18](./media/data-lake-walkthrough/18-create_HDI_cluster.PNG)
 
 ### <a name="create-hive-table-in-hdinsight"></a>HDInsight 'ta Hive tablosu oluşturma
-Şimdi, önceki adımda Azure Data Lake Storage depolanan verileri kullanarak HDInsight kümesinde Azure Machine Learning Studio (klasik) olarak kullanılacak Hive tabloları oluşturursunuz. Oluşturulan HDInsight kümesine gidin. **Ayarlar**  -->  **Özellikler**  -->  **kümesi AAD Identity**  -->  **ADLS Access** ' e tıklayın, Azure Data Lake Storage hesabınızın, okuma, yazma ve yürütme haklarıyla birlikte listesine eklendiğinden emin olun.
+Şimdi, önceki adımda Azure Data Lake Storage depolanan verileri kullanarak HDInsight kümesinde Azure Machine Learning Studio (klasik) olarak kullanılacak Hive tabloları oluşturursunuz. Oluşturulan HDInsight kümesine gidin. **Ayarlar**  -->  **Özellikler**  -->  **kümesi AAD Identity**  -->  **ADLS Access**' e tıklayın, Azure Data Lake Storage hesabınızın, okuma, yazma ve yürütme haklarıyla birlikte listesine eklendiğinden emin olun.
 
  ![19](./media/data-lake-walkthrough/19-HDI-cluster-add-ADLS.PNG)
 

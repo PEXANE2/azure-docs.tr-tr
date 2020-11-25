@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.author: tamram
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c9797024315a8fdc744d08863a42fba0b0b16420
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: fa502f5ca95b1726da7f00f987b35be362ae865a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660347"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021767"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile Bloblar oluşturma, indirme ve listeleme
 
@@ -35,7 +35,7 @@ Azure CLI, Azure kaynaklarını yönetmek için Azure tarafından sunulan komut 
 
 Azure CLı 'dan Azure AD kimlik bilgileriyle veya depolama hesabı erişim anahtarını kullanarak blob depolamaya erişim yetkisi verebilirsiniz. Azure AD kimlik bilgilerinin kullanılması önerilir. Bu makalede, Azure AD kullanarak BLOB depolama işlemlerini yetkilendirme işlemi gösterilmektedir.
 
-Blob depolamaya yönelik veri işlemlerine yönelik Azure CLı komutları `--auth-mode` , belirli bir işlemin yetkilendirmesini belirtmenize olanak sağlayan parametresini destekler. `--auth-mode`Parametresini `login` Azure AD kimlik bilgileriyle yetkilendirmek için olarak ayarlayın. Daha fazla bilgi için bkz. [Azure CLI ile blob veya kuyruk verilerine erişim yetkisi verme](../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Blob depolamaya yönelik veri işlemlerine yönelik Azure CLı komutları `--auth-mode` , belirli bir işlemin yetkilendirmesini belirtmenize olanak sağlayan parametresini destekler. `--auth-mode`Parametresini `login` Azure AD kimlik bilgileriyle yetkilendirmek için olarak ayarlayın. Daha fazla bilgi için bkz. [Azure CLI ile blob veya kuyruk verilerine erişim yetkisi verme](./authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 Yalnızca BLOB depolama veri işlemleri parametreyi destekler `--auth-mode` . Kaynak grubu veya depolama hesabı oluşturma gibi yönetim işlemleri, yetkilendirme için otomatik olarak Azure AD kimlik bilgilerini kullanır.
 
@@ -89,7 +89,7 @@ az storage container create \
 > [!IMPORTANT]
 > Azure rolü atamalarının yayılması birkaç dakika sürebilir.
 
-Ayrıca, kapsayıcıyı oluşturmak için işlemi yetkilendirmek üzere depolama hesabı anahtarını da kullanabilirsiniz. Veri işlemlerini Azure CLı ile yetkilendirme hakkında daha fazla bilgi için bkz. [Azure CLI ile blob veya kuyruk verilerine erişim yetkisi verme](../common/authorize-data-operations-cli.md?toc=/azure/storage/blobs/toc.json).
+Ayrıca, kapsayıcıyı oluşturmak için işlemi yetkilendirmek üzere depolama hesabı anahtarını da kullanabilirsiniz. Veri işlemlerini Azure CLı ile yetkilendirme hakkında daha fazla bilgi için bkz. [Azure CLI ile blob veya kuyruk verilerine erişim yetkisi verme](./authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ## <a name="upload-a-blob"></a>Blobu karşıya yükleme
 
@@ -169,4 +169,4 @@ az group delete \
 Bu hızlı başlangıçta, dosyaları yerel bir dosya sistemi ile Azure Blob depolama alanındaki bir kapsayıcı arasında aktarmayı öğrendiniz. Azure CLı kullanarak blob depolamayla çalışma hakkında daha fazla bilgi edinmek için, BLOB depolama için Azure CLı örnekleri ' ni gezin.
 
 > [!div class="nextstepaction"]
-> [BLOB depolama için Azure CLı örnekleri](/azure/storage/blobs/storage-samples-blobs-cli?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+> [BLOB depolama için Azure CLı örnekleri](./storage-samples-blobs-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

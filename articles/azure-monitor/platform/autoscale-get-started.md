@@ -5,11 +5,11 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
 ms.openlocfilehash: 543ecc80abeb9a437a895224de6ade679698c4d7
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565645"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020917"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure 'da otomatik ölçeklendirme ile çalışmaya başlama
 Bu makalede, Microsoft Azure portal kaynağınız için otomatik ölçeklendirme ayarlarınızı nasıl ayarlayabileceğinizi açıklar.
@@ -32,22 +32,22 @@ Belirli bir kaynak grubundaki kaynakları, belirli kaynak türlerini veya belirl
 
 Her kaynak için geçerli örnek sayısını ve otomatik ölçeklendirme durumunu bulacaksınız. Otomatik ölçeklendirme durumu şu olabilir:
 
-- **Yapılandırılmadı** : Bu kaynak Için otomatik ölçeklendirmeyi henüz etkinleştirmediyseniz.
-- **Etkin** : Bu kaynak Için otomatik ölçeklendirmeyi etkinleştirdiniz.
-- **Devre dışı** : Bu kaynak Için otomatik ölçeklendirmeyi devre dışı bırakmış olabilirsiniz.
+- **Yapılandırılmadı**: Bu kaynak Için otomatik ölçeklendirmeyi henüz etkinleştirmediyseniz.
+- **Etkin**: Bu kaynak Için otomatik ölçeklendirmeyi etkinleştirdiniz.
+- **Devre dışı**: Bu kaynak Için otomatik ölçeklendirmeyi devre dışı bırakmış olabilirsiniz.
 
 ## <a name="create-your-first-autoscale-setting"></a>İlk otomatik ölçeklendirme ayarınızı oluşturma
 
 Şimdi ilk otomatik ölçeklendirme ayarınızı oluşturmak için basit bir adım adım izlenecek yol ile başlayalım.
 
 1. Azure Izleyici 'de **Otomatik ölçeklendirme** dikey penceresini açın ve ölçeklendirmek istediğiniz kaynağı seçin. (Aşağıdaki adımlarda bir Web uygulamasıyla ilişkili bir App Service planı kullanılır. [İlk ASP.NET Web uygulamanızı, 5 dakikada Azure 'da oluşturabilirsiniz.][4])
-1. Geçerli örnek sayısının 1 olduğunu unutmayın. **Otomatik ölçeklendirmeyi etkinleştir** ' e tıklayın.
+1. Geçerli örnek sayısının 1 olduğunu unutmayın. **Otomatik ölçeklendirmeyi etkinleştir**' e tıklayın.
   ![Yeni Web uygulaması için ölçek ayarı][5]
-1. Ölçek ayarı için bir ad girin ve ardından **Kural Ekle** ' ye tıklayın. Sağ tarafta bağlam bölmesi olarak açan ölçek kuralı seçeneklerine dikkat edin. Bu, varsayılan olarak, kaynağın CPU yüzdesi yüzde 70 ' ü aşarsa, örnek sayınız 1 ' i ölçeklendirmeye yönelik seçeneği ayarlar. Varsayılan değerlerinde bırakın ve **Ekle** ' ye tıklayın.
+1. Ölçek ayarı için bir ad girin ve ardından **Kural Ekle**' ye tıklayın. Sağ tarafta bağlam bölmesi olarak açan ölçek kuralı seçeneklerine dikkat edin. Bu, varsayılan olarak, kaynağın CPU yüzdesi yüzde 70 ' ü aşarsa, örnek sayınız 1 ' i ölçeklendirmeye yönelik seçeneği ayarlar. Varsayılan değerlerinde bırakın ve **Ekle**' ye tıklayın.
   ![Web uygulaması için ölçek ayarı oluşturma][6]
 1. Şimdi ilk ölçek kuralınızı oluşturdunuz. UX en iyi uygulamaları önerdiğine ve "kuralda en az bir ölçeğe sahip olmanız önerilir." Bunun için:
 
-    a. **Kural ekle** 'ye tıklayın.
+    a. **Kural ekle**'ye tıklayın.
 
     b. **İşleci** **küçüktür olarak ayarlayın**.
 
@@ -57,7 +57,7 @@ Her kaynak için geçerli örnek sayısını ve otomatik ölçeklendirme durumun
 
    Artık CPU kullanımına göre ölçeklendirilmesi/ölçeklendirmeye yönelik bir ölçek ayarınız olmalıdır.
    ![CPU 'ya göre ölçeklendirin][8]
-1. **Kaydet** ’e tıklayın.
+1. **Kaydet**’e tıklayın.
 
 Tebrikler! Artık, Web uygulamanızı CPU kullanımına göre otomatik olarak ölçeklendirmek için ilk ölçek ayarınızı başarıyla oluşturdunuz.
 
@@ -68,7 +68,7 @@ Tebrikler! Artık, Web uygulamanızı CPU kullanımına göre otomatik olarak ö
 ### <a name="scale-based-on-a-schedule"></a>Zamanlamaya göre ölçeklendirin
 CPU 'ya göre Ölçeklendirmeye ek olarak, ölçeklendirmenizi haftanın belirli günlerinde farklı şekilde ayarlayabilirsiniz.
 
-1. **Ölçek koşulu Ekle** ' ye tıklayın.
+1. **Ölçek koşulu Ekle**' ye tıklayın.
 1. Ölçek modunu ve kuralları ayarlamak, varsayılan koşulla aynıdır.
 1. Zamanlama için **belirli günleri Yinele** ' yi seçin.
 1. Ölçek koşulunun uygulanması gereken günleri ve başlangıç/bitiş saatini seçin.
@@ -77,7 +77,7 @@ CPU 'ya göre Ölçeklendirmeye ek olarak, ölçeklendirmenizi haftanın belirli
 ### <a name="scale-differently-on-specific-dates"></a>Belirli tarihlerde farklı ölçeklendirin
 CPU 'ya göre Ölçeklendirmeye ek olarak, ölçeklendirmenizi belirli tarihler için farklı şekilde ayarlayabilirsiniz.
 
-1. **Ölçek koşulu Ekle** ' ye tıklayın.
+1. **Ölçek koşulu Ekle**' ye tıklayın.
 1. Ölçek modunu ve kuralları ayarlamak, varsayılan koşulla aynıdır.
 1. Zamanlama için **Başlangıç/bitiş tarihlerini belirt** ' i seçin.
 1. Ölçek koşulunun uygulanması gereken başlangıç/bitiş tarihlerini ve başlangıç/bitiş saatini seçin.
@@ -111,11 +111,11 @@ Artık ölçeklendirmek istediğiniz örneklerin sayısını el ile ayarlayabili
 
 ![El ile ölçek ayarla][14]
 
-**Otomatik ölçeklendirmeyi etkinleştir** ' i ve sonra **Kaydet** ' e tıklayarak her zaman otomatik ölçeklendirmeyi geri dönebilirsiniz.
+**Otomatik ölçeklendirmeyi etkinleştir** ' i ve sonra **Kaydet**' e tıklayarak her zaman otomatik ölçeklendirmeyi geri dönebilirsiniz.
 
 ## <a name="route-traffic-to-healthy-instances-app-service"></a>Trafiği sağlıklı örneklere yönlendir (App Service)
 
-Birden çok örneğe ölçeklendirilen zaman, App Service yalnızca sağlıklı örneklere trafik yönlendirmek için örneklerinizi üzerinde sistem durumu denetimleri gerçekleştirebilir. Bunu yapmak için, portalı App Service açın ve ardından **izleme** altında **sistem durumu denetimi** ' ni seçin. **Etkinleştir** ' i seçin ve uygulamanızda, veya gibi GEÇERLI bir URL yolu sağlayın `/health` `/api/health` . **Kaydet** ’e tıklayın.
+Birden çok örneğe ölçeklendirilen zaman, App Service yalnızca sağlıklı örneklere trafik yönlendirmek için örneklerinizi üzerinde sistem durumu denetimleri gerçekleştirebilir. Bunu yapmak için, portalı App Service açın ve ardından **izleme** altında **sistem durumu denetimi** ' ni seçin. **Etkinleştir** ' i seçin ve uygulamanızda, veya gibi GEÇERLI bir URL yolu sağlayın `/health` `/api/health` . **Kaydet**’e tıklayın.
 
 Özelliği ARM şablonlarıyla etkinleştirmek için, `healthcheckpath` `Microsoft.Web/sites` kaynağın özelliğini sitenizdeki sistem durumu denetim yolu olarak ayarlayın, örneğin: `"/api/health/"` . Özelliği devre dışı bırakmak için, özelliğini boş dizeye geri ayarlayın `""` .
 

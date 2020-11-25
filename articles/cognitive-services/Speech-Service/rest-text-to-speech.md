@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: c7c43e02e6bdf75c9551ccdbb9dd8f75bf37a806
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77a8321ba8bac0ecaf577bce6c3c05d10508128e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91534990"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96020173"
 ---
 # <a name="text-to-speech-rest-api"></a>Metin okuma REST API'si
 
@@ -34,7 +34,7 @@ Bu API 'yi kullanmadan önce şunları anlayın:
 * Metin okuma REST API bir yetkilendirme üst bilgisi gerektirir. Bu, hizmete erişmek için bir belirteç değişimini doldurmanız gerektiği anlamına gelir. Daha fazla bilgi için bkz. [Kimlik doğrulaması](#authentication).
 
 > [!TIP]
-> Kamu Bulutu (FairFax) uç noktaları için Azure Kamu [belgelerini](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure) inceleyin.
+> Kamu Bulutu (FairFax) uç noktaları için Azure Kamu [belgelerini](../../azure-government/compare-azure-government-global-azure.md) inceleyin.
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
@@ -44,12 +44,12 @@ Bu API 'yi kullanmadan önce şunları anlayın:
 
 ### <a name="regions-and-endpoints"></a>Bölgeler ve uç noktalar
 
-| Bölge | Uç Noktası |
+| Region | Uç Nokta |
 |--------|----------|
 | Doğu Avustralya | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Brezilya Güney | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Orta Kanada | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Central US | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Orta ABD | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Doğu Asya | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Doğu ABD | `https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Doğu ABD 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -70,7 +70,7 @@ Bu API 'yi kullanmadan önce şunları anlayın:
 
 Bu tabloda, metinden konuşmaya istekleri için gerekli ve isteğe bağlı üstbilgiler listelenmektedir.
 
-| Üst bilgi | Açıklama | Gerekli/Isteğe bağlı |
+| Üst bilgi | Description | Gerekli/Isteğe bağlı |
 |--------|-------------|---------------------|
 | `Authorization` | Bir yetkilendirme belirteci öncesinde kelimedir `Bearer` . Daha fazla bilgi için bkz. [Kimlik doğrulaması](#authentication). | Gerekli |
 
@@ -170,7 +170,7 @@ Bu bölgeler REST API kullanarak metinden konuşmaya için desteklenir. Abonelik
 
 Bu tabloda, metinden konuşmaya istekleri için gerekli ve isteğe bağlı üstbilgiler listelenmektedir.
 
-| Üst bilgi | Açıklama | Gerekli/Isteğe bağlı |
+| Üst bilgi | Description | Gerekli/Isteğe bağlı |
 |--------|-------------|---------------------|
 | `Authorization` | Bir yetkilendirme belirteci öncesinde kelimedir `Bearer` . Daha fazla bilgi için bkz. [Kimlik doğrulaması](#authentication). | Gerekli |
 | `Content-Type` | Belirtilen metin için içerik türünü belirtir. Kabul edilen değer: `application/ssml+xml` . | Gerekli |
@@ -222,9 +222,9 @@ Authorization: Bearer [Base64 access_token]
 
 Dile özgü örnekler için hızlı başlangıçlarımıza bakın:
 
-* [.NET Core, C #](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore)
-* [Python](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-python)
-* [Node.js](quickstart-nodejs-text-to-speech.md)
+* [.NET Core, C #](./get-started-text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore)
+* [Python](./get-started-text-to-speech.md?pivots=programming-language-python)
+* [Node.js](./get-started-text-to-speech.md)
 
 ### <a name="http-status-codes"></a>HTTP durum kodu
 
@@ -245,5 +245,5 @@ HTTP durumu ise `200 OK` , yanıt gövdesi istenen biçimde bir ses dosyası iç
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Ücretsiz bir Azure hesabı oluşturma](https://azure.microsoft.com/free/cognitive-services/)
-- [Uzun biçimli ses için zaman uyumsuz sensıs](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
+- [Uzun biçimli ses için zaman uyumsuz sensıs](./long-audio-api.md)
 - [Özel Ses’i kullanmaya başlama](how-to-custom-voice.md)

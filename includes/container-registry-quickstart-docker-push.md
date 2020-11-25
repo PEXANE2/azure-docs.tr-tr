@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: container-registry
 author: dlepow
 ms.service: container-registry
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/04/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 16c1dec9e52be98e5b4e0103a583bdc219bc2417
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6a16106495e584c9acbc02d380242df665f35ce5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88031820"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020031"
 ---
 ## <a name="push-image-to-registry"></a>Kayıt defterine görüntü gönderme
 
@@ -23,7 +23,7 @@ Azure Container kayıt defterine görüntü gönderebilmeniz için önce bir gö
 docker pull hello-world
 ```
 
-Bir görüntüyü Kayıt defterinize gönderebilmeniz için önce kayıt defteri oturum açma sunucunuzun tam adı ile etiketlemelisiniz. Oturum açma sunucusu adı * \<registry-name\> . azurecr.io* biçimindedir (tümü küçük harf), örneğin, *mycontainerregistry.azurecr.io*.
+Bir görüntüyü Kayıt defterinize gönderebilmeniz için önce kayıt defteri oturum açma sunucunuzun tam adı ile etiketlemelisiniz. Oturum açma sunucusu adı *\<registry-name\> . azurecr.io* biçimindedir (tümü küçük harf olmalıdır), örneğin, *mycontainerregistry.azurecr.io*.
 
 Görüntüyü [docker tag][docker-tag] komutunu kullanarak etiketleyin. `<login-server>` değerini, ACR örneğinizin sunucu adıyla değiştirin.
 

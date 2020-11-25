@@ -5,11 +5,11 @@ ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e37cb6a0679ee2e249de4ed8fa31c40d5082ea4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324136"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020152"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Event Grid özel konular için kendi olağanüstü durum kurtarmayı oluşturun
 Olağanüstü durum kurtarma, uygulama işlevselliğinin önemli bir kaybından kurtarılmasına odaklanır. Bu öğretici, Event Grid hizmeti belirli bir bölgede sağlıksız hale gelirse, olay mimarinizi kurtarmak üzere nasıl ayarlayabileceğinizi size yol gösterecektir.
@@ -43,7 +43,7 @@ Daha sonra ihtiyacınız olacak şekilde bu URL 'YI aklınızda olduğunuzdan em
 
 İlk olarak iki Event Grid konu başlığı oluşturun. Bu konular, birincil ve ikincil gibi davranır. Varsayılan olarak, olaylarınız birincil konusundan akacaktır. Birincil bölgede bir hizmet kesintisi varsa, ikincilinizi alır.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
 
 1. Ana Azure menüsünün sol üst köşesinden **tüm hizmetler** > **Event Grid** ara ' yı seçin > **Event Grid konular**' ı seçin.
 
@@ -58,7 +58,7 @@ Daha sonra ihtiyacınız olacak şekilde bu URL 'YI aklınızda olduğunuzdan em
 
      ![Event Grid konu birincil oluşturma iletişim kutusu](./media/custom-disaster-recovery/create-primary-topic.png)
 
-1. Konu oluşturulduktan sonra, bu sayfaya gidin ve **Konu uç noktasını**kopyalayın. URI 'ye daha sonra ihtiyacınız olacak.
+1. Konu oluşturulduktan sonra, bu sayfaya gidin ve **Konu uç noktasını** kopyalayın. URI 'ye daha sonra ihtiyacınız olacak.
 
     ![Event Grid birincil konu başlığı](./media/custom-disaster-recovery/get-primary-topic-endpoint.png)
 

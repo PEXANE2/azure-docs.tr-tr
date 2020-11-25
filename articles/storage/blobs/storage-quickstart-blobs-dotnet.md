@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fa37db7a5c63f7a5e8a84d98afbb81e007904974
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8cb8c193e09e841a8401cbb0a6ac78ce87afa01c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89001442"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021716"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Hızlı Başlangıç: .NET için Azure Blob depolama istemci kitaplığı v12
 
@@ -21,7 +21,7 @@ ms.locfileid: "89001442"
 
 .NET için Azure Blob depolama istemci kitaplığı V12 ' nı kullanarak şunları yapın:
 
-* Bir kapsayıcı oluşturma
+* Kapsayıcı oluşturma
 * Azure Depolama'ya blob yükleme
 * Bir kapsayıcıdaki tüm Blobları listeleme
 * Blobu yerel bilgisayarınıza indirme
@@ -32,14 +32,14 @@ Ek kaynaklar:
 * [API başvuru belgeleri](/dotnet/api/azure.storage.blobs)
 * [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)
 * [Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)
-* [Örnekler](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+* [Örnekler](../common/storage-samples-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
-* Azure depolama hesabı- [depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Azure depolama hesabı- [depolama hesabı oluşturma](../common/storage-account-create.md)
 * İşletim sisteminiz için geçerli [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core) . Çalışma zamanını değil, SDK 'Yı aldığınızdan emin olun.
 
 ## <a name="setting-up"></a>Ayarlanıyor
@@ -48,9 +48,9 @@ Bu bölümde, bir projeyi .NET için Azure Blob depolama istemci kitaplığı V1
 
 ### <a name="create-the-project"></a>Proje oluşturma
 
-*BlobQuickstartV12*adlı bir .NET Core uygulaması oluşturun.
+*BlobQuickstartV12* adlı bir .NET Core uygulaması oluşturun.
 
-1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` *BlobQuickstartV12*adlı yeni bir konsol uygulaması oluşturmak için komutunu kullanın. Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: *program.cs*.
+1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` *BlobQuickstartV12* adlı yeni bir konsol uygulaması oluşturmak için komutunu kullanın. Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: *program.cs*.
 
    ```console
    dotnet new console -n BlobQuickstartV12
@@ -62,7 +62,7 @@ Bu bölümde, bir projeyi .NET için Azure Blob depolama istemci kitaplığı V1
    cd BlobQuickstartV12
    ```
 
-1. *BlobQuickstartV12* dizininde, *veri*adlı başka bir dizin oluşturun. Blob veri dosyalarının oluşturulup depolanacağı yerdir.
+1. *BlobQuickstartV12* dizininde, *veri* adlı başka bir dizin oluşturun. Blob veri dosyalarının oluşturulup depolanacağı yerdir.
 
     ```console
     mkdir data
@@ -131,7 +131,7 @@ Aşağıdaki diyagramda bu kaynaklar arasındaki ilişki gösterilmektedir.
 Bu örnek kod parçacıkları, .NET için Azure Blob depolama istemci kitaplığı ile aşağıdakilerin nasıl gerçekleştirileceğini göstermektedir:
 
 * [Bağlantı dizesini alma](#get-the-connection-string)
-* [Bir kapsayıcı oluşturma](#create-a-container)
+* [Kapsayıcı oluşturma](#create-a-container)
 * [Blobları bir kapsayıcıya yükleme](#upload-blobs-to-a-container)
 * [Kapsayıcıdaki blobları listeleme](#list-the-blobs-in-a-container)
 * [Blob’ları indirme](#download-blobs)
@@ -155,7 +155,7 @@ Console.WriteLine("Azure Blob storage v12 - .NET quickstart sample\n");
 string connectionString = Environment.GetEnvironmentVariable("AZURE_STORAGE_CONNECTION_STRING");
 ```
 
-### <a name="create-a-container"></a>Bir kapsayıcı oluşturma
+### <a name="create-a-container"></a>Kapsayıcı oluşturma
 
 Yeni kapsayıcı için bir ad belirleyin. Aşağıdaki kod, benzersiz olduğundan emin olmak için kapsayıcı adına bir GUID değeri ekler.
 
