@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 6e183a1e8cac8eec2806a35603c40a44aadac502
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eea7fb073cdf99ee1f4257f6824375a6502a4fad
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84193500"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913632"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Büyük veri gereksinimleri için Azure Data Lake Storage 2. kullanma
 
@@ -27,7 +27,7 @@ Büyük veri işlemede dört ana aşama vardır:
 
 Bu makalede, her bir işleme aşamasına yönelik seçenekler ve araçlar vurgulanmaktadır.
 
-Azure Data Lake Storage 2. ile kullanabileceğiniz Azure hizmetlerinin kapsamlı bir listesi için bkz. [Azure hizmetleriyle Azure Data Lake Storage tümleştirme](data-lake-storage-integrate-with-azure-services.md)
+Azure Data Lake Storage 2. ile kullanabileceğiniz Azure hizmetlerinin kapsamlı bir listesi için bkz. [Azure hizmetleriyle Azure Data Lake Storage tümleştirme](./data-lake-storage-supported-azure-services.md)
 
 ## <a name="ingest-the-data-into-data-lake-storage-gen2"></a>Verileri Data Lake Storage 2. içine alma
 
@@ -54,8 +54,8 @@ Bu, uygulamalar, cihazlar, algılayıcılar vb. gibi çeşitli kaynaklarla oluş
 
 |Araç | Rehber |
 |---|--|
-|Azure Stream Analytics|[Hızlı başlangıç: Azure portalını kullanarak Stream Analytics işi oluşturma](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal) <br> [Azure Data Lake Gen2 çıkış](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-outputs#blob-storage-and-azure-data-lake-gen2)|
-|Azure HDInsight fırtınası | [HDInsight 'ta Apache Storm Apache Hadoop rsunucudan yaz](https://docs.microsoft.com/azure/hdinsight/storm/apache-storm-write-data-lake-store) |
+|Azure Stream Analytics|[Hızlı başlangıç: Azure portalını kullanarak Stream Analytics işi oluşturma](../../stream-analytics/stream-analytics-quick-create-portal.md) <br> [Azure Data Lake Gen2 çıkış](../../stream-analytics/stream-analytics-define-outputs.md)|
+|Azure HDInsight fırtınası | [HDInsight 'ta Apache Storm Apache Hadoop rsunucudan yaz](../../hdinsight/storm/apache-storm-write-data-lake-store.md) |
 
 ### <a name="relational-data"></a>İlişkisel veriler
 
@@ -65,7 +65,7 @@ Bu, uygulamalar, cihazlar, algılayıcılar vb. gibi çeşitli kaynaklarla oluş
 
 |Araç | Rehber |
 |---|--|
-|Azure Data Factory | [Azure Data Factory’de Kopyalama Etkinliği](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
+|Azure Data Factory | [Azure Data Factory’de Kopyalama Etkinliği](../../data-factory/copy-activity-overview.md) |
 
 ### <a name="web-server-log-data-upload-using-custom-applications"></a>Web sunucusu günlük verileri (özel uygulamalar kullanarak karşıya yükle)
 
@@ -75,8 +75,8 @@ Aşağıda, Web sunucusu günlük verilerini almak için kullanabileceğiniz ara
 
 |Araç | Rehber |
 |---|--|
-|Azure Data Factory | [Azure Data Factory’de Kopyalama Etkinliği](https://docs.microsoft.com/azure/data-factory/copy-activity-overview)  |
-|Azure CLI|[Azure CLI](data-lake-storage-directory-file-acl-cli.md)|
+|Azure Data Factory | [Azure Data Factory’de Kopyalama Etkinliği](../../data-factory/copy-activity-overview.md)  |
+|Azure CLI’si|[Azure CLI](data-lake-storage-directory-file-acl-cli.md)|
 |Azure PowerShell|[Azure PowerShell](data-lake-storage-directory-file-acl-powershell.md)|
 
 Web sunucusu günlük verilerini karşıya yüklemek ve aynı zamanda diğer veri türlerini (örn. sosyal yaklaşım verileri) karşıya yüklemek için, kendi özel betiklerinizi/uygulamalarınızı yazmak iyi bir yaklaşımdır. bu sayede, verileri karşıya yükleme bileşeninizin büyük veri uygulamanızın bir parçası olarak yüklenmesine yönelik esneklik sağlanır. Bazı durumlarda bu kod bir komut dosyası veya basit komut satırı yardımcı programı biçiminde olabilir. Diğer durumlarda kod, büyük veri işlemeyi bir iş uygulaması veya çözümüyle bütünleştirmek için kullanılabilir.
@@ -89,9 +89,9 @@ HDInsight kümeleriyle ilişkili verileri almak için kullanabileceğiniz araçl
 
 |Araç | Rehber |
 |---|--|
-|Apache DistCp | [Azure depolama Blobları ve Azure Data Lake Storage 2. arasında veri kopyalamak için DistCp kullanma](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |
-|AzCopy aracı | [AzCopy ile veri aktarma](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10) |
-|Azure Data Factory | [Azure Data Factory kullanarak Azure Data Lake Storage 2. veri kopyalama](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2) |
+|Apache DistCp | [Azure depolama Blobları ve Azure Data Lake Storage 2. arasında veri kopyalamak için DistCp kullanma](./data-lake-storage-use-distcp.md) |
+|AzCopy aracı | [AzCopy ile veri aktarma](../common/storage-use-azcopy-v10.md) |
+|Azure Data Factory | [Azure Data Factory kullanarak Azure Data Lake Storage 2. veri kopyalama](../../data-factory/load-azure-data-lake-storage-gen2.md) |
 
 ### <a name="data-stored-in-on-premises-or-iaas-hadoop-clusters"></a>Şirket içinde veya IaaS Hadoop kümelerinde depolanan veriler
 
@@ -118,12 +118,12 @@ Data Lake Storage 2. depolanan veriler üzerinde veri analizi işlerini çalış
 
 |Araç | Rehber |
 |---|--|
-|Azure HDInsight | [Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) |
-|Azure Databricks | [Azure Data Lake Storage 2. Nesil](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)<br><br>[Hızlı başlangıç: Azure Databricks kullanarak Azure Data Lake Storage 2. verileri çözümleme](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br><br>[Öğretici: Azure Databricks kullanarak verileri ayıklama, dönüştürme ve yükleme](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure HDInsight | [Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) |
+|Azure Databricks | [Azure Data Lake Storage 2. Nesil](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)<br><br>[Hızlı başlangıç: Azure Databricks kullanarak Azure Data Lake Storage 2. verileri çözümleme](./data-lake-storage-quickstart-create-databricks-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br><br>[Öğretici: Azure Databricks kullanarak verileri ayıklama, dönüştürme ve yükleme](/azure/databricks/scenarios/databricks-extract-load-sql-data-warehouse?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 
 ## <a name="visualize-the-data"></a>Verileri görselleştirme
 
-Data Lake Storage 2. depolanan verilerin görsel sunumlarını oluşturmak için Power BI bağlayıcısını kullanın. Bkz. [Power BI kullanarak Azure Data Lake Storage 2. verileri çözümleme](https://docs.microsoft.com/power-query/connectors/datalakestorage).
+Data Lake Storage 2. depolanan verilerin görsel sunumlarını oluşturmak için Power BI bağlayıcısını kullanın. Bkz. [Power BI kullanarak Azure Data Lake Storage 2. verileri çözümleme](/power-query/connectors/datalakestorage).
 
 ## <a name="download-the-data"></a>Verileri indirme
 
@@ -139,7 +139,7 @@ Data Lake Storage 2. verileri indirmek için kullanabileceğiniz araçların lis
 
 |Araç | Rehber |
 |---|--|
-|Azure Data Factory | [Azure Data Factory’de Kopyalama Etkinliği](https://docs.microsoft.com/azure/data-factory/copy-activity-overview) |
-|Apache DistCp | [Azure depolama Blobları ve Azure Data Lake Storage 2. arasında veri kopyalamak için DistCp kullanma](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-use-distcp) |
+|Azure Data Factory | [Azure Data Factory’de Kopyalama Etkinliği](../../data-factory/copy-activity-overview.md) |
+|Apache DistCp | [Azure depolama Blobları ve Azure Data Lake Storage 2. arasında veri kopyalamak için DistCp kullanma](./data-lake-storage-use-distcp.md) |
 |Azure Depolama Gezgini|[Azure Data Lake Storage 2. Nesil’de dizinleri, dosyaları ve ACL’leri yönetmek için Azure Depolama Gezgini’ni kullanma](data-lake-storage-explorer.md)|
 |AzCopy aracı|[AzCopy ve BLOB Storage ile veri aktarma](../common/storage-use-azcopy-blobs.md)|

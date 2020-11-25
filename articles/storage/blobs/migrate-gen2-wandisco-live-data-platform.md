@@ -9,12 +9,12 @@ ms.date: 11/06/2020
 ms.service: storage
 ms.custom: references_regions
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 9da6ea7abf57ffecc900a6dbef065a8c6b123e61
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: db95f22a17c3776d84f12249693fb23b3d2d94e6
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94811063"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95914448"
 ---
 # <a name="meet-demanding-migration-requirements-with-wandisco-livedata-platform-for-azure-preview"></a>Azure için WANdisco LiveData platform ile yoğun geçiş gereksinimlerini karşılayın (Önizleme)
 
@@ -30,7 +30,7 @@ Platform iki hizmetten oluşur: [Azure Için LiveData Migrator](https://www.wand
 
 Her iki hizmeti de Azure portal ve Azure CLı 'yi kullanarak yönetebilir ve her ikisi de aynı tarifeli, Kullandıkça Öde faturalandırma modelini diğer tüm Azure hizmetleri olarak takip edebilir. Azure için LiveData platform tüketimi aynı aylık Azure faturanızda görünür ve kullanımınızı izlemek ve izlemek için tutarlı ve uygun bir yol sağlar.
 
-[Statik bilgileri Azure Data Box kopyalayarak](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster)veya [Distcp](https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html)gibi Hadoop araçlarını kullanarak verileri _çevrimdışına_ geçirmeden farklı olarak, Azure için WANdisco LiveData ile _çevrimiçi_ geçiş sırasında iş sistemlerinizin tam işlemlerini koruyabilirsiniz. Büyük veri ortamlarınızı, verilerini Azure 'a taşırken bile çalışmaya devam edin.
+[Statik bilgileri Azure Data Box kopyalayarak](./data-lake-storage-migrate-on-premises-hdfs-cluster.md)veya [Distcp](https://hadoop.apache.org/docs/current/hadoop-distcp/DistCp.html)gibi Hadoop araçlarını kullanarak verileri _çevrimdışına_ geçirmeden farklı olarak, Azure için WANdisco LiveData ile _çevrimiçi_ geçiş sırasında iş sistemlerinizin tam işlemlerini koruyabilirsiniz. Büyük veri ortamlarınızı, verilerini Azure 'a taşırken bile çalışmaya devam edin.
 
 ## <a name="key-features-of-wandisco-livedata-platform-for-azure"></a>Azure için WANdisco LiveData platformunun temel özellikleri
 

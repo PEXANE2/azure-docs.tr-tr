@@ -2,19 +2,21 @@
 title: Şablonlarda değişkenler
 description: Azure Resource Manager şablonunda değişkenlerin nasıl tanımlanacağını açıklar.
 ms.topic: conceptual
-ms.date: 09/05/2019
-ms.openlocfilehash: cf135959d30702ea58b7a1d4fdd82625a39245d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/24/2020
+ms.openlocfilehash: 7758451747503cb8c42566dc081a91f84bafa375
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75483823"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95916012"
 ---
 # <a name="variables-in-azure-resource-manager-template"></a>Azure Resource Manager şablonundaki değişkenler
 
 Bu makalede Azure Resource Manager şablonunuzda değişkenlerin nasıl tanımlanacağı ve kullanılacağı açıklanmaktadır. Şablonunuzu basitleştirmek için değişkenler kullanırsınız. Şablonunuz genelinde karmaşık ifadeler yinelemek yerine, karmaşık ifadeyi içeren bir değişken tanımlarsınız. Daha sonra, bu değişkene şablonunuz için gereken şekilde başvurmanız gerekir.
 
 Kaynak Yöneticisi, dağıtım işlemlerini başlatmadan önce değişkenleri çözer. Değişken şablonun herhangi bir yerinde kullanıldığında Resource Manager bu değişkenin yerine çözümlenen değeri koyar.
+
+Her değişkenin biçimi, [veri türlerinden](template-syntax.md#data-types)biri ile aynı olmalıdır.
 
 ## <a name="define-variable"></a>Değişken tanımla
 
@@ -85,7 +87,7 @@ Belirtilen ortamın ayarlarını almak için değişkeni ve parametresini birlik
 
 Aşağıdaki örneklerde, değişkenlerini kullanma senaryoları gösterilmektedir.
 
-|Şablon  |Açıklama  |
+|Şablon  |Description  |
 |---------|---------|
 | [değişken tanımları](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | Farklı değişken türlerini gösterir. Şablon hiçbir kaynak dağıtmaz. Değişken değerleri oluşturur ve bu değerleri döndürür. |
 | [Yapılandırma değişkeni](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | Yapılandırma değerlerini tanımlayan bir değişkenin kullanımını gösterir. Şablon hiçbir kaynak dağıtmaz. Değişken değerleri oluşturur ve bu değerleri döndürür. |

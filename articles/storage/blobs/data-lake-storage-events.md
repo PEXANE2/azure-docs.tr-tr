@@ -9,12 +9,12 @@ ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 791b50f1458ba7ee127d45ee374b5589ade588e0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 738ed3b819a62760408341184daca8a8ba555029
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308197"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913683"
 ---
 # <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>Öğretici: bir Databricks Delta tablosunu güncelleştirmek için Data Lake Capture modelini uygulama
 
@@ -35,20 +35,20 @@ Bu çözümü, Azure Databricks çalışma alanıyla başlayarak ters sırada ol
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-* Hiyerarşik ad alanı (Azure Data Lake Storage 2.) olan bir depolama hesabı oluşturun. Bu öğretici adlı bir depolama hesabı kullanır `contosoorders` . Kullanıcı hesabınızda, [Depolama Blobu veri katılımcısı rolü](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) atanmış olduğundan emin olun.
+* Hiyerarşik ad alanı (Azure Data Lake Storage 2.) olan bir depolama hesabı oluşturun. Bu öğretici adlı bir depolama hesabı kullanır `contosoorders` . Kullanıcı hesabınızda, [Depolama Blobu veri katılımcısı rolü](../common/storage-auth-aad-rbac-portal.md) atanmış olduğundan emin olun.
 
    [Azure Data Lake Storage 2. için kullanılacak depolama hesabı oluşturma](create-data-lake-storage-account.md)konusuna bakın.
 
-* Hizmet sorumlusu oluşturun. Bkz. [nasıl yapılır: Azure AD uygulaması ve kaynaklara erişebilen hizmet sorumlusu oluşturmak için portalı kullanma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+* Hizmet sorumlusu oluşturun. Bkz. [nasıl yapılır: Azure AD uygulaması ve kaynaklara erişebilen hizmet sorumlusu oluşturmak için portalı kullanma](../../active-directory/develop/howto-create-service-principal-portal.md).
 
   Söz konusu makaledeki adımları gerçekleştirirken yapmanız gereken birkaç şey vardır.
 
-  : heavy_check_mark: makalenin [role uygulamayı atama](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application) bölümünde bulunan adımlar gerçekleştirilirken, **Depolama Blobu veri katılımcısı** rolünü hizmet sorumlusuna atadığınızdan emin olun.
+  : heavy_check_mark: makalenin [role uygulamayı atama](../../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application) bölümünde bulunan adımlar gerçekleştirilirken, **Depolama Blobu veri katılımcısı** rolünü hizmet sorumlusuna atadığınızdan emin olun.
 
   > [!IMPORTANT]
   > Rolü Data Lake Storage 2. depolama hesabının kapsamına atadığınızdan emin olun. Üst kaynak grubuna veya aboneliğine bir rol atayabilirsiniz, ancak bu rol atamaları depolama hesabına yayana kadar izinlerle ilgili hatalar alırsınız.
 
-  : heavy_check_mark: makalenin [oturum açmak için değerleri Al](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) bölümünde bulunan adımları gerçekleştirirken, Kiracı kimliği, uygulama kimliği ve parola değerlerini bir metin dosyasına yapıştırın. Bu değerlere daha sonra ihtiyacınız olacak.
+  : heavy_check_mark: makalenin [oturum açmak için değerleri Al](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) bölümünde bulunan adımları gerçekleştirirken, Kiracı kimliği, uygulama kimliği ve parola değerlerini bir metin dosyasına yapıştırın. Bu değerlere daha sonra ihtiyacınız olacak.
 
 ## <a name="create-a-sales-order"></a>Satış siparişi oluşturma
 
@@ -87,7 +87,7 @@ Bu bölümde, şu görevleri gerçekleştirirsiniz:
 
 Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı oluşturursunuz.
 
-1. Azure Portal, **kaynak**  >  **Analizi** oluştur  >  **Azure Databricks** ' u seçin.
+1. Azure Portal, **kaynak**  >  **Analizi** oluştur  >  **Azure Databricks**' u seçin.
 
     ![Azure portal databricks](./media/data-lake-storage-quickstart-create-databricks-account/azure-databricks-on-portal.png "Azure portal databricks")
 
@@ -99,9 +99,9 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
 
 ### <a name="create-a-spark-cluster-in-databricks"></a>Databricks’te Spark kümesi oluşturma
 
-1. [Azure Portal](https://portal.azure.com), oluşturduğunuz Azure Databricks çalışma alanına gidin ve sonra **çalışma alanını Başlat** ' ı seçin.
+1. [Azure Portal](https://portal.azure.com), oluşturduğunuz Azure Databricks çalışma alanına gidin ve sonra **çalışma alanını Başlat**' ı seçin.
 
-2. Azure Databricks portalına yönlendirilirsiniz. Portaldan **Yeni**  >  **küme** ' yi seçin.
+2. Azure Databricks portalına yönlendirilirsiniz. Portaldan **Yeni**  >  **küme**' yi seçin.
 
     ![Azure 'da databricks](./media/data-lake-storage-events/databricks-on-azure.png "Azure 'da databricks")
 
@@ -114,13 +114,13 @@ Bu bölümde Azure portalını kullanarak bir Azure Databricks çalışma alanı
     * Küme için bir ad girin.
     * **120 dakika işlem yapılmadığında sonlandır** onay kutusunu seçtiğinizden emin olun. Küme kullanılmazsa kümenin sonlandırılması için biz süre (dakika cinsinden) belirtin.
 
-4. **Küme oluştur** ' u seçin. Küme çalışmaya başladıktan sonra kümeye not defterleri ekleyebilir ve Spark işleri çalıştırabilirsiniz.
+4. **Küme oluştur**' u seçin. Küme çalışmaya başladıktan sonra kümeye not defterleri ekleyebilir ve Spark işleri çalıştırabilirsiniz.
 
 Küme oluşturma hakkında daha fazla bilgi için bkz. [Azure Databricks üzerinde Spark kümesi oluşturma](https://docs.azuredatabricks.net/user-guide/clusters/create.html).
 
 ### <a name="create-a-notebook"></a>Not defteri oluşturma
 
-1. Sol bölmede **Çalışma Alanı** ’nı seçin. **Çalışma Alanı** açılır listesinden **Oluştur** > **Not Defteri** ’ni seçin.
+1. Sol bölmede **Çalışma Alanı**’nı seçin. **Çalışma Alanı** açılır listesinden **Oluştur** > **Not Defteri**’ni seçin.
 
     ![Databricks 'te Not defteri oluşturma](./media/data-lake-storage-quickstart-create-databricks-account/databricks-create-notebook.png "Databricks 'te Not defteri oluşturma")
 
@@ -128,7 +128,7 @@ Küme oluşturma hakkında daha fazla bilgi için bkz. [Azure Databricks üzerin
 
     ![Not Defteri Oluştur iletişim kutusunu ve dil olarak Python 'un nerede seçdiğinin gösterildiği ekran görüntüsü.](./media/data-lake-storage-events/new-databricks-notebook.png "Databricks 'te Not defteri oluşturma")
 
-    **Oluştur** ’u seçin.
+    **Oluştur**’u seçin.
 
 ### <a name="create-and-populate-a-databricks-delta-table"></a>Databricks Delta tablosu oluşturma ve doldurma
 
@@ -238,19 +238,19 @@ Küme oluşturma hakkında daha fazla bilgi için bkz. [Azure Databricks üzerin
 
 Daha önce oluşturduğunuz Not defterini çalıştıran bir Iş oluşturun. Daha sonra, bir olay ortaya çıktığında bu işi çalıştıran bir Azure Işlevi oluşturacaksınız.
 
-1. **İşler** ' e tıklayın.
+1. **İşler**' e tıklayın.
 
-2. **İşler** sayfasında, **iş oluştur** ' a tıklayın.
+2. **İşler** sayfasında, **iş oluştur**' a tıklayın.
 
 3. İşe bir ad verin ve ardından `upsert-order-data` çalışma kitabını seçin.
 
-   ![İş oluşturma](./media/data-lake-storage-events/create-spark-job.png "İş oluşturma")
+   ![Bir iş oluşturma](./media/data-lake-storage-events/create-spark-job.png "Bir iş oluşturma")
 
 ## <a name="create-an-azure-function"></a>Azure İşlevi oluşturma
 
 Işi çalıştıran bir Azure Işlevi oluşturun.
 
-1. Databricks çalışma alanının üst köşesinde kişiler simgesini ve ardından **Kullanıcı ayarları** ' nı seçin.
+1. Databricks çalışma alanının üst köşesinde kişiler simgesini ve ardından **Kullanıcı ayarları**' nı seçin.
 
    ![Hesabı yönetme](./media/data-lake-storage-events/generate-token.png "Kullanıcı ayarları")
 
@@ -258,7 +258,7 @@ Işi çalıştıran bir Azure Işlevi oluşturun.
 
    Belirteci güvenli bir yere kopyalamadığınızdan emin olun. Azure Işlevinizde bu belirtecin, Işi çalıştırabilmesi için Databricks ile kimlik doğrulaması yapması gerekir.
   
-3. Azure portal sol üst köşesinde bulunan **kaynak oluştur** düğmesini seçin ve ardından **işlem > işlev uygulaması** ' yı seçin.
+3. Azure portal sol üst köşesinde bulunan **kaynak oluştur** düğmesini seçin ve ardından **işlem > işlev uygulaması**' yı seçin.
 
    ![Azure işlevi oluşturma](./media/data-lake-storage-events/function-app-create-flow.png "Azure işlevi oluşturma")
 
@@ -266,7 +266,7 @@ Işi çalıştıran bir Azure Işlevi oluşturun.
 
    ![İşlev uygulamasını yapılandırma](./media/data-lake-storage-events/new-function-app.png "İşlev uygulamasını yapılandırma")
 
-5. İşlev Uygulaması **genel bakış** sayfasında **yapılandırma** ' ya tıklayın.
+5. İşlev Uygulaması **genel bakış** sayfasında **yapılandırma**' ya tıklayın.
 
    ![Yapılandırılan özellikler altındaki yapılandırma seçeneğini vurgulayan ekran görüntüsü.](./media/data-lake-storage-events/configure-function-app.png "İşlev uygulamasını yapılandırma")
 
@@ -409,7 +409,7 @@ Bu bölümde, depolama hesabına dosyalar yüklendiğinde Azure Işlevini çağ�
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli olmadığında kaynak grubunu ve tüm ilgili kaynakları silin. Bunu yapmak için depolama hesabına ait kaynak grubunu seçin ve **Sil** ' i seçin.
+Artık gerekli olmadığında kaynak grubunu ve tüm ilgili kaynakları silin. Bunu yapmak için depolama hesabına ait kaynak grubunu seçin ve **Sil**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -6,20 +6,23 @@ author: euangMS
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.date: 10/16/2020
-ms.author: euang
+ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 6f777b605c5050b7fa4b3b9e3671f3638ad67372
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 8d478b35b702e02f303358972526c091ceb3657e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016267"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95917134"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te Apache Spark için kitaplıkları yönetme
 
 Kitaplıklar, programlarınıza veya projelerinize dahil etmek isteyebileceğiniz yeniden kullanılabilir kod sağlar. Üçüncü tarafa veya yerel olarak oluşturulmuş bir kodu uygulamalarınız için kullanılabilir hale getirmek için, bir kitaplığı sunucusuz Apache Spark Havuzlarınızdan (Önizleme) birine yükleyebilirsiniz. Spark havuzu için bir kitaplık yüklendikten sonra, aynı havuzu kullanan tüm oturumlarda kullanılabilir. 
 
+## <a name="before-you-begin"></a>Başlamadan önce
+- Kitaplıkları yüklemek ve güncelleştirmek için, Azure SYNAPSE Analytics çalışma alanına bağlı birincil Gen2 depolama hesabında **Depolama Blobu veri katılımcısı** veya **Depolama Blobu veri sahibi** izinlerine sahip olmanız gerekir.
+  
 ## <a name="default-installation"></a>Varsayılan yükleme
 Azure SYNAPSE Analytics 'teki Apache Spark, tam bir anacondas yüklemesi ve ek kitaplıklar içerir. Tam kitaplıklar listesi, [Apache Spark sürüm desteği](apache-spark-version-support.md)' nde bulunabilir. 
 
@@ -35,6 +38,7 @@ Spark uygulamanız için kullanmak istediğiniz kitaplıkları tanımladıktan s
 > - Yüklemekte olduğunuz Paket büyükse veya yüklemesi uzun sürüyorsa, bu, Spark örneği başlangıç süresini etkiler.
 > - GCC gibi yüklemede, derleme zamanında derleyici desteği gerektiren paketler desteklenmez.
 > - Paketler düşürülemez, yalnızca eklenebilir veya yükseltilebilir.
+> - Kitaplıkları yüklemek için, SYNAPSE çalışma alanına bağlı birincil Gen2 depolama hesabında Depolama Blobu veri katılımcısı veya Depolama Blobu veri sahibi izinlerinizin olması gerekir.
 
 ### <a name="requirements-format"></a>Gereksinimler biçimi
 

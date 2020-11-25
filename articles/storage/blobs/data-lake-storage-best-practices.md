@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: e008bad2043d8cd633f0849aefc62c4ed7a7e89d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0efcdfd1b14479edf84dc1892e7e1d9afabd5a81
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86104886"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913564"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. kullanmak için en iyi uygulamalar
 
@@ -21,7 +21,7 @@ Bu makalede, Azure Data Lake Storage 2. ile çalışmaya yönelik en iyi yöntem
 
 ## <a name="security-considerations"></a>Güvenlik konuları
 
-Azure Data Lake Storage 2., Azure Active Directory (Azure AD) kullanıcıları, grupları ve hizmet sorumluları için POSIX erişim denetimleri sunmaktadır. Bu erişim denetimleri var olan dosyalara ve dizinlere ayarlanabilir. Erişim denetimleri, yeni dosyalara veya dizinlere otomatik olarak uygulanabilecek varsayılan izinleri oluşturmak için de kullanılabilir. Data Lake Storage 2. ACL 'Ler hakkında daha fazla ayrıntı [Azure Data Lake Storage 2. Içindeki erişim denetiminde](storage-data-lake-storage-access-control.md)bulunmaktadır.
+Azure Data Lake Storage 2., Azure Active Directory (Azure AD) kullanıcıları, grupları ve hizmet sorumluları için POSIX erişim denetimleri sunmaktadır. Bu erişim denetimleri var olan dosyalara ve dizinlere ayarlanabilir. Erişim denetimleri, yeni dosyalara veya dizinlere otomatik olarak uygulanabilecek varsayılan izinleri oluşturmak için de kullanılabilir. Data Lake Storage 2. ACL 'Ler hakkında daha fazla ayrıntı [Azure Data Lake Storage 2. Içindeki erişim denetiminde](./data-lake-storage-access-control.md)bulunmaktadır.
 
 ### <a name="use-security-groups-versus-individual-users"></a>Bireysel kullanıcılara karşı güvenlik gruplarını kullanın
 
@@ -31,7 +31,7 @@ Bir güvenlik grubuna izinler atandıktan sonra, gruptan kullanıcı ekleme veya
 
 ### <a name="security-for-groups"></a>Gruplar için güvenlik
 
-Siz veya kullanıcılarınızın hiyerarşik ad alanı etkinleştirilmiş bir depolama hesabındaki verilere erişmesi gerektiğinde, Azure Active Directory güvenlik grupları kullanmak en iyisidir. İle başlamak için önerilen bazı gruplar, kapsayıcının köküne yönelik olarak **Readonlyusers**, **Writeaccessusers**ve **fullaccessusers** olabilir ve hatta anahtar alt dizinlerindekiler için ayrı ayrı olabilir. Daha sonra eklenebilen ancak henüz tanımlanmayan başka bir Kullanıcı grubu varsa, belirli klasörlere erişimi olan kukla güvenlik grupları oluşturmayı düşünebilirsiniz. Güvenlik grubunun kullanılması, binlerce dosyaya yeni izinler atarken uzun işlem süresini önlemenize olanak sağlar.
+Siz veya kullanıcılarınızın hiyerarşik ad alanı etkinleştirilmiş bir depolama hesabındaki verilere erişmesi gerektiğinde, Azure Active Directory güvenlik grupları kullanmak en iyisidir. İle başlamak için önerilen bazı gruplar, kapsayıcının köküne yönelik olarak **Readonlyusers**, **Writeaccessusers** ve **fullaccessusers** olabilir ve hatta anahtar alt dizinlerindekiler için ayrı ayrı olabilir. Daha sonra eklenebilen ancak henüz tanımlanmayan başka bir Kullanıcı grubu varsa, belirli klasörlere erişimi olan kukla güvenlik grupları oluşturmayı düşünebilirsiniz. Güvenlik grubunun kullanılması, binlerce dosyaya yeni izinler atarken uzun işlem süresini önlemenize olanak sağlar.
 
 ### <a name="security-for-service-principals"></a>Hizmet sorumluları için güvenlik
 
@@ -39,9 +39,9 @@ Azure Active Directory hizmet sorumluları, genellikle Data Lake Storage 2. veri
 
 ### <a name="enable-the-data-lake-storage-gen2-firewall-with-azure-service-access"></a>Azure hizmet erişimi ile Data Lake Storage 2. güvenlik duvarını etkinleştirme
 
-Data Lake Storage 2., bir güvenlik duvarını açma ve yalnızca Azure hizmetlerine erişimi sınırlandırma seçeneğini destekler, bu da dış saldırıların vektörünü sınırlamak için önerilir. Güvenlik **duvarı,**  >  Azure hizmetleri seçeneklerine erişime izin veren güvenlik duvarı 'nı**Etkinleştir (açık)** aracılığıyla Azure Portal bir depolama hesabında etkinleştirilebilir  >  **Allow access to Azure services** .
+Data Lake Storage 2., bir güvenlik duvarını açma ve yalnızca Azure hizmetlerine erişimi sınırlandırma seçeneğini destekler, bu da dış saldırıların vektörünü sınırlamak için önerilir. Güvenlik **duvarı,**  >  Azure hizmetleri seçeneklerine erişime izin veren güvenlik duvarı 'nı **Etkinleştir (açık)** aracılığıyla Azure Portal bir depolama hesabında etkinleştirilebilir  >  **Allow access to Azure services** .
 
-Depolama hesabınıza Azure Databricks erişmek için, Azure Databricks sanal ağınıza dağıtın ve ardından bu sanal ağı güvenlik duvarınızdan ekleyin. Bkz. [Azure Storage güvenlik duvarlarını ve sanal ağları yapılandırma](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+Depolama hesabınıza Azure Databricks erişmek için, Azure Databricks sanal ağınıza dağıtın ve ardından bu sanal ağı güvenlik duvarınızdan ekleyin. Bkz. [Azure Storage güvenlik duvarlarını ve sanal ağları yapılandırma](../common/storage-network-security.md).
 
 ## <a name="resiliency-considerations"></a>Dayanıklılık konuları
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 214cdbd5ad30ad096cb6c9d1442936eefb2b2054
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: e46bb87788de27916860720284087643db7153dc
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674875"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913411"
 ---
 # <a name="use-azure-storage-explorer-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. Nesil’de dizinleri, dosyaları ve ACL’leri yönetmek için Azure Depolama Gezgini’ni kullanma
 
@@ -23,7 +23,7 @@ Bu makalede, hiyerarşik ad alanı (HNS) etkin olan depolama hesaplarında Dizin
 
 > [!div class="checklist"]
 > * Azure aboneliği. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
-> * Hiyerarşik ad alanı (HNS) etkin olan bir depolama hesabı. Bir tane oluşturmak için [Bu](data-lake-storage-quickstart-create-account.md) yönergeleri izleyin.
+> * Hiyerarşik ad alanı (HNS) etkin olan bir depolama hesabı. Bir tane oluşturmak için [Bu](../common/storage-account-create.md) yönergeleri izleyin.
 > * Yerel bilgisayarınızda yüklü Azure Depolama Gezgini. Windows, Macintosh veya Linux işletim sisteminde Azure Depolama Gezgini’ni yüklemek için bkz. [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/).
 
 ## <a name="sign-in-to-storage-explorer"></a>Depolama Gezgini oturum açın
@@ -36,7 +36,7 @@ Depolama Gezgini’ni ilk kez başlattığınızda **Microsoft Azure Depolama Ge
 |Bağlantı dizesi veya paylaşılan erişim imzası URI'si kullanma | SAS belirteci veya paylaşılan bağlantı dizesiyle doğrudan bir kapsayıcıya veya depolama hesabına erişmek için kullanılabilir. |
 |Depolama hesabı adını ve anahtarını kullanma| Azure depolama alanına bağlanmak için depolama hesabı adını ve anahtarını kullanın.|
 
-**Azure hesabı ekle** ' yi seçin ve **oturum aç** ' a tıklayın... Azure hesabınızda oturum açmak için ekrandaki istemleri izleyin.
+**Azure hesabı ekle** ' yi seçin ve **oturum aç**' a tıklayın... Azure hesabınızda oturum açmak için ekrandaki istemleri izleyin.
 
 ![Microsoft Azure Depolama Gezgini gösteren ekran görüntüsü ve Azure hesabı ekle seçeneğini ve oturum aç düğmesini vurgular.](media/storage-quickstart-blobs-storage-explorer/connect.png)
 
@@ -46,7 +46,7 @@ Bağlantı kurulduğunda Azure Depolama Gezgini yüklenir ve **Gezgin** sekmesi 
 
 ## <a name="create-a-container"></a>Kapsayıcı oluşturma
 
-Kapsayıcı dizinleri ve dosyaları barındırır. Bir tane oluşturmak için, devam adımında oluşturduğunuz depolama hesabını genişletin. **Blob Kapsayıcıları** 'nı ve ardından **Blob Kapsayıcısı Oluştur** 'u seçin. Kapsayıcının adını girin. Adlandırma kapsayıcılarındaki kuralların ve kısıtlamaların listesi için [kapsayıcı oluşturma](storage-quickstart-blobs-dotnet.md#create-a-container) bölümüne bakın. Tamamlandığında, kapsayıcıyı oluşturmak için **ENTER** tuşuna basın. Kapsayıcı başarıyla oluşturulduktan sonra, seçili depolama hesabı için **BLOB kapsayıcıları** klasörü altında görüntülenir.
+Kapsayıcı dizinleri ve dosyaları barındırır. Bir tane oluşturmak için, devam adımında oluşturduğunuz depolama hesabını genişletin. **Blob Kapsayıcıları**'nı ve ardından **Blob Kapsayıcısı Oluştur**'u seçin. Kapsayıcının adını girin. Adlandırma kapsayıcılarındaki kuralların ve kısıtlamaların listesi için [kapsayıcı oluşturma](storage-quickstart-blobs-dotnet.md#create-a-container) bölümüne bakın. Tamamlandığında, kapsayıcıyı oluşturmak için **ENTER** tuşuna basın. Kapsayıcı başarıyla oluşturulduktan sonra, seçili depolama hesabı için **BLOB kapsayıcıları** klasörü altında görüntülenir.
 
 ![Microsoft Azure Depolama Gezgini-kapsayıcı oluşturma](media/data-lake-storage-explorer/creating-a-filesystem.png)
 
@@ -64,7 +64,7 @@ Yüklenecek dosyaları veya klasörü seçin.
 
 ![Microsoft Azure Depolama Gezgini - blob yükleme](media/data-lake-storage-explorer/upload-file.png)
 
-**Tamam** 'ı seçtiğinizde dosyalar yüklenmek üzere kuyruğa alınır ve tüm dosyalar yüklenir. Yükleme işlemi tamamlandığında sonuçlar **Etkinlikler** penceresinde gösterilir.
+**Tamam**'ı seçtiğinizde dosyalar yüklenmek üzere kuyruğa alınır ve tüm dosyalar yüklenir. Yükleme işlemi tamamlandığında sonuçlar **Etkinlikler** penceresinde gösterilir.
 
 ## <a name="view-blobs-in-a-directory"></a>Blob 'ları bir dizinde görüntüleme
 
@@ -78,7 +78,7 @@ Yüklenecek dosyaları veya klasörü seçin.
 
 ## <a name="managing-access"></a>Erişimi yönetme
 
-Kapsayıcının kökündeki izinleri ayarlayabilirsiniz. Bunu yapmak için, tek yapmanız gereken haklara sahip Azure Depolama Gezgini oturum açmanız gerekir (bağlantı dizesi ile aksine). Kapsayıcıya sağ tıklayın ve Izinleri **Yönet iletişim kutusunu** getirerek **izinleri yönet** ' i seçin.
+Kapsayıcının kökündeki izinleri ayarlayabilirsiniz. Bunu yapmak için, tek yapmanız gereken haklara sahip Azure Depolama Gezgini oturum açmanız gerekir (bağlantı dizesi ile aksine). Kapsayıcıya sağ tıklayın ve Izinleri **Yönet iletişim kutusunu** getirerek **izinleri yönet**' i seçin.
 
 ![Microsoft Azure Depolama Gezgini-dizin erişimini yönetme](media/storage-quickstart-blobs-storage-Explorer/manageperms.png)
 
@@ -86,7 +86,7 @@ Kapsayıcının kökündeki izinleri ayarlayabilirsiniz. Bunu yapmak için, tek 
 
 Erişim denetim listesine yeni bir kullanıcı veya grup eklemek için **Kullanıcı veya Grup Ekle** alanını seçin.
 
-Listeye eklemek istediğiniz karşılık gelen Azure Active Directory (AAD) girişini girin ve **Ekle** ' yi seçin.
+Listeye eklemek istediğiniz karşılık gelen Azure Active Directory (AAD) girişini girin ve **Ekle**' yi seçin.
 
 Kullanıcı veya grup artık **Kullanıcılar ve gruplar:** alanında görünür ve bu da izinlerini yönetmeye başlamanızı sağlar.
 
@@ -95,11 +95,11 @@ Kullanıcı veya grup artık **Kullanıcılar ve gruplar:** alanında görünür
 
 Atayabileceğiniz iki izin kategorisi vardır: erişim ACL 'Leri ve varsayılan ACL 'Ler.
 
-* **Erişim** : ACL denetim erişimi bir nesneye erişin. Dosya ve dizinlerin her ikisi de erişim ACL 'Lerine sahiptir.
+* **Erişim**: ACL denetim erişimi bir nesneye erişin. Dosya ve dizinlerin her ikisi de erişim ACL 'Lerine sahiptir.
 
-* **Varsayılan** : Bu dizin altında oluşturulan tüm alt öğeler Için erişim ACL 'lerini belirleyen bir dizinle ilişkili ACL 'lerin bir şablonu. Dosyaların varsayılan ACL 'Leri yok.
+* **Varsayılan**: Bu dizin altında oluşturulan tüm alt öğeler Için erişim ACL 'lerini belirleyen bir dizinle ilişkili ACL 'lerin bir şablonu. Dosyaların varsayılan ACL 'Leri yok.
 
-Bu kategorilerin her ikisinde de, dosyalara veya dizinlere atayabileceğiniz üç izin vardır: **okuma** , **yazma** ve **yürütme** .
+Bu kategorilerin her ikisinde de, dosyalara veya dizinlere atayabileceğiniz üç izin vardır: **okuma**, **yazma** ve **yürütme**.
 
 >[!NOTE]
 > Burada seçimler yapıldığında, dizin içindeki mevcut olan herhangi bir öğe için izinler ayarlanmamaktadır. Dosya zaten varsa, her bir öğeye gitmeniz ve izinleri el ile ayarlamanız gerekir.
@@ -111,4 +111,4 @@ Tek tek dizinlerde ve tek tek dosyalar üzerinde izinleri yönetebilir, bu da si
 Data Lake Storage 2. erişim denetim listelerine öğrenin.
 
 > [!div class="nextstepaction"]
-> [Azure Data Lake Storage 2. Nesil'de Erişim Denetimi](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)
+> [Azure Data Lake Storage 2. Nesil'de Erişim Denetimi](./data-lake-storage-access-control.md)

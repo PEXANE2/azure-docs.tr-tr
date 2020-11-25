@@ -10,12 +10,12 @@ ms.date: 10/09/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 3d843440adc61b315616a05f223c5a13ebe271ed
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 01a5c696a41b9361c35e7af90f68088acea2944b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930841"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913785"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>Kapsayıcılara ve bloblara anonim genel okuma erişimini engelleyin
 
@@ -42,9 +42,9 @@ Anonim istekleri izleyen bir ölçüm oluşturmak için aşağıdaki adımları 
 1. Azure portalda depolama hesabınıza gidin. **İzleme** bölümünde **ölçümler**' i seçin.
 1. **Ölçüm ekle** seçeneğini belirleyin. **Ölçüm** iletişim kutusunda aşağıdaki değerleri belirtin:
     1. Kapsam alanını depolama hesabının adı olarak ayarlayın.
-    1. **Ölçüm ad alanını** *BLOB*olarak ayarlayın. Bu ölçüm, istekleri yalnızca blob depolamaya göre rapor eder.
-    1. **Ölçüm** alanını *işlemler*olarak ayarlayın.
-    1. **Toplama** alanını *Sum*olarak ayarlayın.
+    1. **Ölçüm ad alanını** *BLOB* olarak ayarlayın. Bu ölçüm, istekleri yalnızca blob depolamaya göre rapor eder.
+    1. **Ölçüm** alanını *işlemler* olarak ayarlayın.
+    1. **Toplama** alanını *Sum* olarak ayarlayın.
 
     Yeni ölçüm, belirli bir zaman aralığı boyunca blob depolamaya göre işlem sayısı toplamını görüntüler. Ortaya çıkan ölçüm, aşağıdaki görüntüde gösterildiği gibi görünür:
 
@@ -52,14 +52,14 @@ Anonim istekleri izleyen bir ölçüm oluşturmak için aşağıdaki adımları 
 
 1. Ardından, anonim istekler için ölçüm üzerinde bir filtre oluşturmak üzere **Filtre Ekle** düğmesini seçin.
 1. **Filtre** iletişim kutusunda aşağıdaki değerleri belirtin:
-    1. **Özellik** değerini *kimlik doğrulama*olarak ayarlayın.
+    1. **Özellik** değerini *kimlik doğrulama* olarak ayarlayın.
     1. **İşleç** alanını eşittir işareti (=) olarak ayarlayın.
-    1. **Values** alanını *anonim*olarak ayarlayın.
+    1. **Values** alanını *anonim* olarak ayarlayın.
 1. Sağ üst köşede, ölçümü görüntülemek istediğiniz zaman aralığını seçin. Ayrıca, isteklerin toplanmasının ne kadar ayrıntılı olduğunu, 1 dakikadan 1 aya kadar bir yerde aralıklar belirterek belirtebilirsiniz.
 
 Ölçümü yapılandırdıktan sonra, anonim istekler grafikte görünmeye başlar. Aşağıdaki görüntüde, son otuz dakika içinde toplanan anonim istekler gösterilmektedir.
 
-:::image type="content" source="media/anonymous-read-access-prevent/metric-anonymous-blob-requests.png" alt-text="Blob işlemlerini toplamak için ölçümün nasıl yapılandırılacağını gösteren ekran görüntüsü":::
+:::image type="content" source="media/anonymous-read-access-prevent/metric-anonymous-blob-requests.png" alt-text="Blob depolamaya yönelik toplanmış Anonim istekleri gösteren ekran görüntüsü":::
 
 Ayrıca, depolama hesabınızda belirli sayıda anonim istek yapıldığında size bildirimde bulunan bir uyarı kuralı yapılandırabilirsiniz. Daha fazla bilgi için bkz. [Azure izleyici kullanarak ölçüm uyarıları oluşturma, görüntüleme ve yönetme](../../azure-monitor/platform/alerts-metric.md).
 
@@ -67,9 +67,9 @@ Ayrıca, depolama hesabınızda belirli sayıda anonim istek yapıldığında si
 
 Azure depolama günlükleri, bir isteğin nasıl yetkilendirildiği de dahil olmak üzere depolama hesabında yapılan isteklerle ilgili ayrıntıları yakalar. Hangi kapsayıcıların adsız istek aldığını öğrenmek için günlükleri çözümleyebilirsiniz.
 
-Anonim istekleri değerlendirmek amacıyla Azure depolama hesabınıza yönelik istekleri günlüğe kaydetmek için Azure Izleyici 'de (Önizleme) Azure depolama günlüğü 'nü kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Storage 'ı izleme](../common/monitor-storage.md).
+Anonim istekleri değerlendirmek amacıyla Azure depolama hesabınıza yönelik istekleri günlüğe kaydetmek için Azure Izleyici 'de (Önizleme) Azure depolama günlüğü 'nü kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Storage 'ı izleme](./monitor-blob-storage.md).
 
-Azure Izleyici 'de Azure depolama günlüğü, günlük verilerini çözümlemek için günlük sorgularının kullanılmasını destekler. Günlükleri sorgulamak için bir Azure Log Analytics çalışma alanı kullanabilirsiniz. Günlük sorguları hakkında daha fazla bilgi edinmek için bkz. [öğretici: Log Analytics sorguları kullanmaya başlama](../../azure-monitor/log-query/get-started-portal.md).
+Azure Izleyici 'de Azure depolama günlüğü, günlük verilerini çözümlemek için günlük sorgularının kullanılmasını destekler. Günlükleri sorgulamak için bir Azure Log Analytics çalışma alanı kullanabilirsiniz. Günlük sorguları hakkında daha fazla bilgi edinmek için bkz. [öğretici: Log Analytics sorguları kullanmaya başlama](../../azure-monitor/log-query/log-analytics-tutorial.md).
 
 > [!NOTE]
 > Azure Izleyici 'de Azure depolama günlüğü önizlemesi yalnızca Azure genel bulutunda desteklenir. Kamu bulutları Azure Izleyici ile Azure depolama için günlüğe kaydetmeyi desteklemez.
@@ -83,16 +83,16 @@ Azure depolama verilerini Azure Izleyici ile günlüğe kaydetmek ve Azure Log A
 1. Azure portalda depolama hesabınıza gidin.
 1. Izleme bölümünde **Tanılama ayarları (Önizleme)** öğesini seçin.
 1. Blob depolamada yapılan istekleri günlüğe kaydetmek için **BLOB** ' u seçin.
-1. **Tanılama ayarı Ekle**' yi seçin.
+1. **Tanılama ayarı ekle**’yi seçin.
 1. Tanılama ayarı için bir ad girin.
 1. **Kategori ayrıntıları**' nın altında, **günlük** bölümünde günlüğe kaydedilecek istek türlerini seçin. Tüm anonim istekler okuma istekleri olacak, bu nedenle Anonim istekleri yakalamak için **Storageread** öğesini seçin.
-1. **Hedef ayrıntıları**altında **Log Analytics gönder**' i seçin. Aşağıdaki görüntüde gösterildiği gibi aboneliğinizi ve daha önce oluşturduğunuz Log Analytics çalışma alanını seçin.
+1. **Hedef ayrıntıları** altında **Log Analytics gönder**' i seçin. Aşağıdaki görüntüde gösterildiği gibi aboneliğinizi ve daha önce oluşturduğunuz Log Analytics çalışma alanını seçin.
 
-    :::image type="content" source="media/anonymous-read-access-prevent/create-diagnostic-setting-logs.png" alt-text="Blob işlemlerini toplamak için ölçümün nasıl yapılandırılacağını gösteren ekran görüntüsü":::
+    :::image type="content" source="media/anonymous-read-access-prevent/create-diagnostic-setting-logs.png" alt-text="İstekleri günlüğe kaydetmek için bir tanılama ayarı oluşturmayı gösteren ekran görüntüsü":::
 
 Tanılama ayarını oluşturduktan sonra depolama hesabına yönelik istekler daha sonra bu ayara göre günlüğe kaydedilir. Daha fazla bilgi için bkz. [Azure 'da kaynak günlüklerini ve ölçümleri toplamak için tanılama ayarı oluşturma](../../azure-monitor/platform/diagnostic-settings.md).
 
-Azure Izleyici 'de Azure depolama günlüklerinde bulunan alanların bir başvurusu için bkz. [kaynak günlükleri (Önizleme)](../common/monitor-storage-reference.md#resource-logs-preview).
+Azure Izleyici 'de Azure depolama günlüklerinde bulunan alanların bir başvurusu için bkz. [kaynak günlükleri (Önizleme)](./monitor-blob-storage-reference.md#resource-logs-preview).
 
 #### <a name="query-logs-for-anonymous-requests"></a>Anonim istekler için sorgu günlükleri
 
@@ -164,7 +164,7 @@ New-AzStorageContainer -Name $containerName -Permission Blob -Context $ctx
 
 ### <a name="check-the-public-access-setting-for-multiple-accounts"></a>Birden çok hesap için genel erişim ayarını denetleyin
 
-En iyi performansa sahip bir dizi depolama hesabı genelinde genel erişim ayarını denetlemek için Azure portal Azure Kaynak Grafiği Gezginini kullanabilirsiniz. Kaynak Grafiği Gezginini kullanma hakkında daha fazla bilgi edinmek için bkz. [hızlı başlangıç: Azure Kaynak Grafiği gezginini kullanarak Ilk kaynak grafik sorgunuzu çalıştırma](/azure/governance/resource-graph/first-query-portal).
+En iyi performansa sahip bir dizi depolama hesabı genelinde genel erişim ayarını denetlemek için Azure portal Azure Kaynak Grafiği Gezginini kullanabilirsiniz. Kaynak Grafiği Gezginini kullanma hakkında daha fazla bilgi edinmek için bkz. [hızlı başlangıç: Azure Kaynak Grafiği gezginini kullanarak Ilk kaynak grafik sorgunuzu çalıştırma](../../governance/resource-graph/first-query-portal.md).
 
 Kaynak Graph Explorer 'da aşağıdaki sorguyu çalıştırmak, depolama hesaplarının bir listesini döndürür ve her bir hesap için ortak erişim ayarını görüntüler:
 
@@ -190,7 +190,7 @@ Azure portal bir depolama hesabı için genel erişim ayarı için denetim etkis
 1. **İlke tanımı Ekle** ' yi seçerek yeni bir ilke tanımı oluşturun.
 1. **Tanım konumu** alanı için, denetim ilkesi kaynağının nerede olduğunu belirtmek üzere **daha fazla** düğmesini seçin.
 1. İlke için bir ad belirtin. İsteğe bağlı olarak bir açıklama ve kategori belirtebilirsiniz.
-1. **İlke kuralı**altında, **policyrule** bölümüne aşağıdaki ilke tanımını ekleyin.
+1. **İlke kuralı** altında, **policyrule** bölümüne aşağıdaki ilke tanımını ekleyin.
 
     ```json
     {
@@ -228,7 +228,7 @@ Sonra, ilkeyi bir kaynağa atayın. İlke kapsamı bu kaynağa ve altındaki kay
 1. **Kapsam** alanı için, ilke atamasının kapsamını seçin.
 1. **İlke tanımı** alanı Için, **daha fazla** düğmesini seçin ve ardından listeden önceki bölümde tanımladığınız ilkeyi seçin.
 1. İlke ataması için bir ad girin. Açıklama isteğe bağlıdır.
-1. **İlke zorlamasının** *etkin*olarak ayarlanmış kalsın. Bu ayarın denetim ilkesi üzerinde hiçbir etkisi yoktur.
+1. **İlke zorlamasının** *etkin* olarak ayarlanmış kalsın. Bu ayarın denetim ilkesi üzerinde hiçbir etkisi yoktur.
 1. Atamayı oluşturmak için **gözden geçir + oluştur** ' u seçin.
 
 ### <a name="view-compliance-report"></a>Uyumluluk raporunu görüntüle
@@ -244,7 +244,7 @@ Uyumluluk raporunu Azure portal görüntülemek için aşağıdaki adımları iz
 1. Önceki adımda oluşturduğunuz ilke atamasının adı için sonuçları filtreleyin. Rapor, ilkeyle ilgili olarak kaç kaynağın uyumsuz olduğunu gösterir.
 1. Uyumluluğa sahip olmayan depolama hesaplarının bir listesi de dahil olmak üzere ek ayrıntılar için raporda ayrıntıya gidebilirsiniz.
 
-    :::image type="content" source="media/anonymous-read-access-prevent/compliance-report-policy-portal.png" alt-text="Blob işlemlerini toplamak için ölçümün nasıl yapılandırılacağını gösteren ekran görüntüsü":::
+    :::image type="content" source="media/anonymous-read-access-prevent/compliance-report-policy-portal.png" alt-text="Blob genel erişimi için denetim ilkesi uyumluluk raporunu gösteren ekran görüntüsü":::
 
 ## <a name="use-azure-policy-to-enforce-authorized-access"></a>Yetkili erişimi zorlamak için Azure Ilkesini kullanma
 
@@ -280,7 +280,7 @@ Anonim isteklere izin veren bir genel erişim ayarı için reddetme etkisi olan 
 
 Aşağıdaki görüntüde, reddetme etkisi olan bir ilke ortak erişime izin verilmediğinde genel erişime izin veren (yeni bir hesap için varsayılan) bir depolama hesabı oluşturmaya çalıştığınızda oluşan hata gösterilmektedir.
 
-:::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="Blob işlemlerini toplamak için ölçümün nasıl yapılandırılacağını gösteren ekran görüntüsü":::
+:::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="İlke ihlalinden bir depolama hesabı oluşturulurken oluşan hatayı gösteren ekran görüntüsü":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

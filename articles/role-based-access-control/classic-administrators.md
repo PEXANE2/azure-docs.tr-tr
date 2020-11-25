@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/22/2020
+ms.date: 11/24/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d61d49fdd90f1f916141ca636e2c2a4dbe0b9bcd
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 935c0bf76e298ab1e2e4d25fab8685ac4ce617db
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657760"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95916227"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure klasik abonelik yöneticileri
 
@@ -99,25 +99,25 @@ Konuk kullanıcının bu görevleri gerçekleştirebilmesi gerekiyorsa, Konuk ku
 
 Yalnızca hesap yöneticisi bir abonelik için hizmet yöneticisini değiştirebilir. Varsayılan olarak, bir Azure aboneliğine kaydolduğunuzda, hizmet yöneticisi hesap yöneticisiyle aynı olur. Hesap Yöneticisi rolüne sahip kullanıcının Azure portal erişimi yok. Hizmet Yöneticisi rolüne sahip kullanıcının Azure portal tam erişimi vardır. Hesap Yöneticisi ve hizmet yöneticisi aynı kullanıcı ise ve hizmet yöneticisini farklı bir kullanıcıyla değiştirirseniz, hesap yöneticisi Azure portal erişimi kaybeder. Ancak hesap yöneticisi her zaman hesap merkezini kullanarak hizmet yöneticisini kendilerine geri değiştirebilir.
 
-**Hesap Merkezi**'Nde hizmet yöneticisini değiştirmek için bu adımları izleyin.
-
-### <a name="account-center"></a>Hesap Merkezi
+Azure portal hizmet yöneticisini değiştirmek için aşağıdaki adımları izleyin.
 
 1. [Hizmet yöneticisini değiştirme sınırlamalarını](#limitations-for-changing-the-service-administrator)denetleyerek senaryonuzun desteklendiğinden emin olun.
 
-1. Hesap [Merkezi](https://account.windowsazure.com/subscriptions) 'Nde hesap yöneticisi olarak oturum açın.
+1. [Azure portalında](https://portal.azure.com) Hesap Yöneticisi olarak oturum açın.
 
-1. Bir aboneliğe tıklayın.
+1. [Abonelikler](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)'i açın ve bir abonelik seçin.
 
-1. Sağ tarafta **abonelik ayrıntılarını Düzenle**' ye tıklayın.
+1. Sol gezinti bölmesinde **Özellikler**' e tıklayın.
 
-    ![Hesap Merkezi 'nde abonelik Düzenle düğmesini gösteren ekran görüntüsü](./media/classic-administrators/editsub.png)
+1. **Hizmet Yöneticisi**' ne tıklayın.
 
-1. **HIZMET Yöneticisi** kutusuna yeni hizmet yöneticisinin e-posta adresini girin.
+    ![Azure portal abonelik özelliklerini gösteren ekran görüntüsü](./media/classic-administrators/service-admin.png)
 
-    ![Hizmet Yöneticisi e-postasını değiştirme kutusunu gösteren ekran görüntüsü](./media/classic-administrators/change-service-admin.png)
+1. **Hizmet yöneticisini Düzenle** sayfasında, yeni hizmet yöneticisinin e-posta adresini girin.
 
-1. Değişikliği kaydetmek için onay işaretine tıklayın.
+    ![Hizmet yöneticisini Düzenle sayfasını gösteren ekran görüntüsü](./media/classic-administrators/service-admin-edit.png)
+
+1. Değişikliği kaydetmek için **Tamam** 'a tıklayın.
 
 ### <a name="limitations-for-changing-the-service-administrator"></a>Hizmet yöneticisini değiştirme sınırlamaları
 
@@ -138,11 +138,11 @@ Hesap Yöneticisi, başlangıçta Azure aboneliğine kaydolan ve aboneliğin fat
 
 Hesap yöneticisini görüntülemek için aşağıdaki adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. [Abonelikler](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)'i açın ve bir abonelik seçin.
 
-1. **Özellikler**'e tıklayın.
+1. Sol gezinti bölmesinde **Özellikler**' e tıklayın.
 
     Aboneliğin Hesap Yöneticisi, **Hesap** Yöneticisi kutusunda görüntülenir.
 

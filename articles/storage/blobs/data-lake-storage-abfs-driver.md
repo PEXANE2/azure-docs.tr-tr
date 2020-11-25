@@ -8,12 +8,12 @@ ms.reviewer: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: e9c56f59d6dd64002632a5f74e9f39c51293caab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13228ec762db195d0c460e84871b75323f6b98e5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836369"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913717"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Azure blob dosya sistemi sürücüsü (ABFS): Hadoop için adanmış bir Azure depolama sürücüsü
 
@@ -25,7 +25,7 @@ Windows Azure Depolama Blobu sürücüsü veya [Lıbb sürücüsü](https://hado
 
 ## <a name="the-azure-blob-file-system-driver"></a>Azure blob dosya sistemi sürücüsü
 
-[Azure Data Lake Storage Rest arabirimi](https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2) , Azure Blob depolama üzerinden dosya sistemi semantiğini destekleyecek şekilde tasarlanmıştır. Hadoop FileSystem aynı semantiğini desteklemek için de tasarlandığına göre, sürücüde karmaşık bir eşleme gereksinimi yoktur. Bu nedenle, Azure blob dosya sistemi sürücüsü (veya ABFS) REST API için bir boyutundaydı istemci Shim idir.
+[Azure Data Lake Storage Rest arabirimi](/rest/api/storageservices/data-lake-storage-gen2) , Azure Blob depolama üzerinden dosya sistemi semantiğini destekleyecek şekilde tasarlanmıştır. Hadoop FileSystem aynı semantiğini desteklemek için de tasarlandığına göre, sürücüde karmaşık bir eşleme gereksinimi yoktur. Bu nedenle, Azure blob dosya sistemi sürücüsü (veya ABFS) REST API için bir boyutundaydı istemci Shim idir.
 
 Ancak, sürücünün hala gerçekleştirmesi gereken bazı işlevler vardır:
 
