@@ -1,6 +1,6 @@
 ---
-title: Öğretici-.NET 'te Azure WebApp ile Azure Key Vault kullanma | Microsoft Docs
-description: Bu öğreticide, anahtar kasanızdan bir gizli dizi okumak için bir ASP.NET Core uygulamasındaki Azure WebApp 'yi yapılandıracaksınız.
+title: Öğretici-.NET ' te Azure Web App ile Azure Key Vault kullanma
+description: Bu öğreticide, anahtar kasaınızdan gizli dizi okumak için bir ASP.NET Core uygulamasında bir Azure Web uygulaması yapılandıracaksınız.
 services: key-vault
 author: msmbaldwin
 manager: rajvijan
@@ -10,63 +10,63 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 4ed999e282aa9bcd80b000f3db2ecf9a8386a489
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: f0121a264c3fcf4cba1de72a1b9b81c1af66e82a
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95537960"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96297109"
 ---
-# <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>Öğretici: bir Azure Web uygulamasına .NET ile Key Vault bağlamak için yönetilen bir kimlik kullanma
+# <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-in-net"></a>Öğretici: .NET 'teki bir Azure Web uygulamasına Key Vault bağlamak için yönetilen bir kimlik kullanın
 
-[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/overview) , kimlik bilgilerini ve diğer gizli dizileri güvenli bir şekilde depolamanıza olanak tanır, ancak kodunuzun bunları almak için Key Vault kimlik doğrulaması gerekir. Azure [kaynaklarına genel bakış Için Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md) , Azure hIzmetlerIne Azure AD 'de otomatik olarak yönetilen bir kimlik vererek bu sorunu çözmeye yardımcı olur. Kodunuzda kimlik bilgilerini görüntülemesi gerekmeden Key Vault dahil olmak üzere Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmak için bu kimliği kullanabilirsiniz.
+[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/overview) , artırılmış güvenlik ile kimlik bilgilerini ve diğer gizli dizileri depolamanın bir yolunu sağlar. Ancak kodunuzun bunları alabilmesi için Key Vault kimlik doğrulaması gerekir. [Azure kaynakları Için Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md) , azure hizmetlerine Azure Active Directory (Azure AD) içinde otomatik olarak yönetilen bir kimlik vererek bu sorunu çözmeye yardımcı olur. Kodunuzda kimlik bilgilerini görüntülemesi gerekmeden Key Vault dahil olmak üzere Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmak için bu kimliği kullanabilirsiniz.
 
-Bu öğretici, bir Azure Web uygulamasının kimliğini Azure Key Vault kimlik doğrulaması için yönetilen bir kimlik kullanır. Adımlarda, .NET ve [Azure CLI](/cli/azure/get-started-with-azure-cli) [için Azure Key Vault v4 istemci kitaplığı](/dotnet/api/overview/azure/key-vault) kullanılsa da, tercih ettiğiniz geliştirme dilini, Azure PowerShell ve/veya Azure Portal kullanırken aynı temel ilkeler de geçerlidir.
+Bu öğreticide, Azure Anahtar Kasası ile bir Azure Web uygulamasının kimliğini doğrulamak için yönetilen bir kimlik kullanacaksınız. .NET ve [Azure CLI](/cli/azure/get-started-with-azure-cli) [için Azure Key Vault sürüm 4 istemci kitaplığı](/dotnet/api/overview/azure/key-vault) 'nı kullanacaksınız. Tercih ettiğiniz geliştirme dilini, Azure PowerShell ve/veya Azure portal kullandığınızda aynı temel ilkeler geçerlidir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu hızlı başlangıcı tamamlamak için:
+Bu hızlı başlangıcı tamamlamak için aşağıdakilere ihtiyacınız vardır:
 
-* Bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [.NET Core 3,1 SDK veya üzeri](https://dotnet.microsoft.com/download/dotnet-core/3.1).
-* [Git 'ı yükler](https://www.git-scm.com/downloads).
-* [Azure CLI](/cli/azure/install-azure-cli) veya [Azure PowerShell](/powershell/azure/)
-* [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/overview). [Azure Portal](quick-create-portal.md), [Azure CLI](quick-create-cli.md)veya [Azure PowerShell](quick-create-powershell.md)kullanarak Anahtar Kasası oluşturabilirsiniz.
-* [Gizli](https://docs.microsoft.com/azure/key-vault/secrets/about-secrets)dizi Key Vault. [Azure Portal](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal), [POWERSHELL](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-powershell)veya [Azure CLI](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-cli) kullanarak gizli dizi oluşturabilirsiniz
+* Azure aboneliği. [Ücretsiz bir tane oluşturun.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* [.NET Core 3,1 SDK (veya üzeri)](https://dotnet.microsoft.com/download/dotnet-core/3.1).
+* [Git](https://www.git-scm.com/downloads) yüklemesi.
+* [Azure CLI](/cli/azure/install-azure-cli) veya [Azure PowerShell](/powershell/azure/).
+* [Azure Key Vault.](https://docs.microsoft.com/azure/key-vault/general/overview) [Azure Portal](quick-create-portal.md), [Azure CLI](quick-create-cli.md)veya [Azure PowerShell](quick-create-powershell.md)kullanarak bir Anahtar Kasası oluşturabilirsiniz.
+* [Gizli](https://docs.microsoft.com/azure/key-vault/secrets/about-secrets)dizi Key Vault. [Azure Portal](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal), [POWERSHELL](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-powershell)veya [Azure CLI](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-cli)kullanarak bir gizli dizi oluşturabilirsiniz.
 
-## <a name="create-a-net-core-app-and-deploy-it-to-azure"></a>.NET Core uygulaması oluşturma ve Azure 'a dağıtma
-Bu adımda, yerel .NET Core projesini ayarlarsınız.
+## <a name="create-a-net-core-app"></a>.NET Core uygulaması oluşturma
+Bu adımda, yerel .NET Core projesini ayarlayacaksınız.
 
-Makinenizde bir terminal penceresinde, `akvwebapp` adlı bir dizin oluşturup geçerli dizin olarak değiştirin.
+Makinenizde bir Terminal penceresinde adlı bir dizin oluşturun `akvwebapp` ve geçerli dizin yapın:
 
 ```bash
 mkdir akvwebapp
 cd akvwebapp
 ```
 
-Şimdi [DotNet yeni Web](/dotnet/core/tools/dotnet-new) komutuyla yeni bir .NET Core uygulaması oluşturun:
+[DotNet New Web](/dotnet/core/tools/dotnet-new) komutunu kullanarak bir .NET Core uygulaması oluşturun:
 
 ```bash
 dotnet new web
 ```
 
-Azure'a dağıttığınızda nasıl görüneceğini görmek için uygulamayı yerel olarak çalıştırın. 
+Uygulamayı Azure 'a dağıtırken nasıl bakacağınızı öğrenmek için uygulamayı yerel olarak çalıştırın:
 
 ```bash
 dotnet run
 ```
 
-Bir web tarayıcısı açın ve `http://localhost:5000` konumundaki uygulamaya gidin.
+Bir Web tarayıcısında, konumundaki uygulamaya gidin `http://localhost:5000` .
 
-Sayfada görünen örnek uygulamadaki **Merhaba Dünya** iletisini görürsünüz.
+Uygulamanızdan "Merhaba Dünya!" sayfada görünen örnek uygulamadaki ileti.
 
-## <a name="deploy-app-to-azure"></a>Uygulamayı Azure’da dağıtma
+## <a name="deploy-the-app-to-azure"></a>Uygulamayı Azure’da dağıtma
 
-Bu adımda, .NET Core uygulamanızı yerel Git kullanarak App Service olarak dağıtırsınız. Uygulamaları oluşturma ve dağıtma hakkında daha fazla bilgi için bkz. [Azure 'da ASP.NET Core Web uygulaması oluşturma](https://docs.microsoft.com/azure/app-service/quickstart-dotnetcore)
+Bu adımda, .NET Core uygulamanızı yerel Git kullanarak Azure App Service dağıtacaksınız. Uygulamaları oluşturma ve dağıtma hakkında daha fazla bilgi için bkz. [Azure 'da ASP.NET Core Web uygulaması oluşturma](https://docs.microsoft.com/azure/app-service/quickstart-dotnetcore).
 
-### <a name="configure-local-git-deployment"></a>Yerel git dağıtımını yapılandırma
+### <a name="configure-the-local-git-deployment"></a>Yerel git dağıtımını yapılandırma
 
-Terminal pencerenizde **Ctrl+C** tuşlarına basarak web sunucusundan çıkın.  .NET Core projesi için bir Git deposu başlatın.
+Terminal penceresinde, **CTRL + C** ' yi seçerek Web sunucusunu kapatın.  .NET Core projesi için bir git deposu başlatın:
 
 ```bash
 git init
@@ -74,24 +74,24 @@ git add .
 git commit -m "first commit"
 ```
 
-FTP ve yerel git, bir *dağıtım kullanıcısı* kullanarak bir Azure Web uygulamasına dağıtabilir. Dağıtım kullanıcısını yapılandırdıktan sonra tüm Azure dağıtımlarınız için kullanabilirsiniz. Hesap düzeyinde dağıtım Kullanıcı adınız ve parolanız, Azure aboneliği kimlik bilgilerinizden farklı. 
+Bir Azure Web uygulamasını bir *dağıtım kullanıcısı* kullanarak DAĞıTMAK için FTP ve yerel git ' i kullanabilirsiniz. Dağıtım kullanıcısını yapılandırdıktan sonra tüm Azure dağıtımlarınız için kullanabilirsiniz. Hesap düzeyinde dağıtım Kullanıcı adınız ve parolanız, Azure aboneliği kimlik bilgilerinizden farklı. 
 
 Dağıtım kullanıcısını yapılandırmak için [az WebApp Deployment User set](/cli/azure/webapp/deployment/user?#az-webapp-deployment-user-set) komutunu çalıştırın. Bu yönergelere uygun bir Kullanıcı adı ve parola seçin: 
 
-- Kullanıcı adı Azure içinde benzersiz olmalıdır ve yerel git gönderimleri için ' @ ' sembolünü içermemelidir. 
-- Parola en az sekiz karakter uzunluğunda olmalıdır ve şu üç öğeden ikisi vardır: harfler, rakamlar ve semboller. 
+- Kullanıcı adı Azure içinde benzersiz olmalıdır. Yerel git gönderimleri için, at işareti simgesine (@) sahip olamaz. 
+- Parola en az sekiz karakter uzunluğunda olmalı ve şu üç öğeden ikisini içermelidir: harfler, rakamlar ve semboller. 
 
 ```azurecli-interactive
 az webapp deployment user set --user-name "<username>" --password "<password>"
 ```
 
-JSON çıktısı parolayı olarak gösterir `null` . `'Conflict'. Details: 409` hatası alırsanız kullanıcı adını değiştirin. `'Bad Request'. Details: 400` hatası alırsanız daha güçlü bir parola kullanın. 
+JSON çıktısı parolayı olarak gösterir `null` . Bir `'Conflict'. Details: 409` hata alırsanız, Kullanıcı adını değiştirin. `'Bad Request'. Details: 400` hatası alırsanız daha güçlü bir parola kullanın. 
 
-Web uygulamalarınızı dağıtmak için kullanmak üzere Kullanıcı adınızı ve parolanızı kaydedin.
+Kullanıcı adınızı ve parolanızı, Web uygulamalarınızı dağıtmak için kullanabilmek üzere kaydedin.
 
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. [Az Group Create](/cli/azure/group?#az-group-create) komutuyla hem anahtar kasasını hem de Web uygulamanızı barındırmak için bir kaynak grubu oluşturun:
+Kaynak grubu, Azure kaynaklarını dağıttığınız ve yönettiğiniz mantıksal bir kapsayıcıdır. [Az Group Create](/cli/azure/group?#az-group-create) komutunu kullanarak hem anahtar kasanızı hem de Web uygulamanızı içerecek bir kaynak grubu oluşturun:
 
 ```azurecli-interactive
 az group create --name "myResourceGroup" -l "EastUS"
@@ -99,13 +99,13 @@ az group create --name "myResourceGroup" -l "EastUS"
 
 ### <a name="create-an-app-service-plan"></a>App Service planı oluşturma
 
-Azure CLı [az appservice plan Create](/cli/azure/appservice/plan) komutuyla bir [App Service planı](https://docs.microsoft.com/azure/app-service/overview-hosting-plans) oluşturun. Aşağıdaki örnekte `myAppServicePlan` , **ücretsiz** fiyatlandırma katmanında adlı bir App Service planı oluşturulur:
+Azure CLı [az appservice plan Create](/cli/azure/appservice/plan) komutunu kullanarak bir [App Service planı](https://docs.microsoft.com/azure/app-service/overview-hosting-plans) oluşturun. Aşağıdaki örnek `myAppServicePlan` , fiyatlandırma katmanında adlı bir App Service planı oluşturur `FREE` :
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE
 ```
 
-App Service planı oluşturulduğunda Azure CLI, aşağıdaki örneğe benzer bilgiler gösterir:
+App Service planı oluşturulduğunda Azure CLı, burada gördüklerinize benzer bilgiler görüntüler:
 
 <pre>
 { 
@@ -125,21 +125,21 @@ App Service planı oluşturulduğunda Azure CLI, aşağıdaki örneğe benzer bi
 } 
 </pre>
 
-App Service plan yönetimi hakkında daha fazla bilgi için bkz. [Azure 'da App Service planını yönetme](https://docs.microsoft.com/azure/app-service/app-service-plan-manage)
+Daha fazla bilgi için bkz. [Azure'da App Service planı yönetme](https://docs.microsoft.com/azure/app-service/app-service-plan-manage).
 
 ### <a name="create-a-web-app"></a>Web uygulaması oluşturma
 
 App Service planında bir [Azure Web uygulaması](../../app-service/overview.md) oluşturun `myAppServicePlan` . 
 
 > [!Important]
-> Key Vault benzer şekilde, bir Azure Web uygulaması benzersiz bir ada sahip olmalıdır. \<your-webapp-name\>Aşağıdaki örnekleri Web uygulamanızın adıyla değiştirin.
+> Bir anahtar kasası gibi, bir Azure Web uygulamasının benzersiz bir adı olmalıdır. `<your-webapp-name>`Aşağıdaki örneklerde Web uygulamanızın adıyla değiştirin.
 
 
 ```azurecli-interactive
 az webapp create --resource-group "myResourceGroup" --plan "myAppServicePlan" --name "<your-webapp-name>" --deployment-local-git
 ```
 
-Web uygulaması oluşturulduğunda Azure CLI aşağıda yer alan çıktıdaki gibi bilgiler gösterir:
+Web uygulaması oluşturulduğunda Azure CLı, burada gördüklerinize benzer bir çıktı gösterir:
 
 <pre>
 Local git is configured with url of 'https://&lt;username&gt;@&lt;your-webapp-name&gt;.scm.azurewebsites.net/&lt;ayour-webapp-name&gt;.git'
@@ -159,31 +159,31 @@ Local git is configured with url of 'https://&lt;username&gt;@&lt;your-webapp-na
 </pre>
 
 
-Git uzak URL’si `deploymentLocalGitUrl` özelliği içinde `https://<username>@<your-webapp-name>.scm.azurewebsites.net/<your-webapp-name>.git` biçiminde gösterilir. Bu URL 'yi daha sonra gerekli olduğu gibi kaydedin.
+Git Remote 'in URL 'SI, `deploymentLocalGitUrl` özelliğinde, biçiminde gösterilir `https://<username>@<your-webapp-name>.scm.azurewebsites.net/<your-webapp-name>.git` . Bu URL 'YI kaydedin. Buna daha sonra ihtiyacınız olacak.
 
-Yeni oluşturduğunuz uygulamanıza gidin. _&lt; -WebApp-Name>_ , uygulamanızın adıyla değiştirin.
+Aşağıdaki komutu kullanarak yeni uygulamanıza gidin. `<your-webapp-name>`Uygulamanızın adıyla değiştirin.
 
 ```bash
 https://<your-webapp-name>.azurewebsites.net
 ```
 
-Yeni oluşturulan bir Azure Web uygulaması için varsayılan Web sayfasını görürsünüz.
+Yeni bir Azure Web uygulaması için varsayılan Web sayfasını görürsünüz.
 
 ### <a name="deploy-your-local-app"></a>Yerel uygulamanızı dağıtma
 
-Yerel Terminal penceresine geri döndüğünüzde, yerel git deponuza bir Azure uzak eklentisi ekleyerek, *\<deploymentLocalGitUrl-from-create-step>* [Web uygulaması oluşturma](#create-a-web-app) adımından kaydettiğiniz git uzak URL 'si ile değiştirin.
+Yerel terminal penceresine dönüp yerel Git deponuza bir Azure uzak deposu ekleyin. Aşağıdaki komutta, ' yi, `<deploymentLocalGitUrl-from-create-step>` [Web uygulaması oluşturma](#create-a-web-app) bölümünde kaydettiğiniz GIT uzak öğesinin URL 'siyle değiştirin.
 
 ```bash
 git remote add azure <deploymentLocalGitUrl-from-create-step>
 ```
 
-Aşağıdaki komutla uygulamanızı dağıtmak için Azure uzak deposuna gönderin. Git kimlik bilgileri Yöneticisi kimlik bilgilerini sizden isterse, [Yerel git dağıtımını yapılandırma](#configure-local-git-deployment) adımını kullanarak oluşturduğunuz kimlik bilgilerini kullanın.
+Uygulamanızı dağıtmak için Azure uzak uygulamasına göndermek üzere aşağıdaki komutu kullanın. Git kimlik bilgileri Yöneticisi kimlik bilgilerini sizden isterse, [Yerel git dağıtımını yapılandırma](#configure-the-local-git-deployment) bölümünde oluşturduğunuz kimlik bilgilerini kullanın.
 
 ```bash
 git push azure master
 ```
 
-Bu komutun çalıştırılması birkaç dakika sürebilir. Çalıştırıldığında, aşağıdaki örneğe benzer bilgiler görüntüler:
+Bu komutun çalıştırılması birkaç dakika sürebilir. Çalışma sırasında, burada gördüklerinize benzer bilgiler görüntüler:
 <pre>
 Enumerating objects: 5, done.
 Counting objects: 100% (5/5), done.
@@ -211,29 +211,29 @@ To https://&lt;your-webapp-name&gt;.scm.azurewebsites.net:443/&lt;your-webapp-na
    d87e6ca..d6b5447  master -> master
 </pre>
 
-Web tarayıcınızı kullanarak dağıtılan uygulamayı inceleyin veya yenileyin.
+Web tarayıcınızı kullanarak dağıtılan uygulamayı (veya yenilemeyi) (veya yenilemeyin) gidin:
 
 ```bash
 http://<your-webapp-name>.azurewebsites.net
 ```
 
-"Merhaba Dünya!" görüntülenir ziyaret edildiğinde daha önce gördüğünüz ileti `http://localhost:5000` .
+Uygulamanızdan "Merhaba Dünya!" daha önce ziyaret ettiğinizde gördüğünüz ileti `http://localhost:5000` .
  
-## <a name="configure-web-app-to-connect-to-key-vault"></a>Web uygulamasını Key Vault bağlanacak şekilde yapılandırma
+## <a name="configure-the-web-app-to-connect-to-key-vault"></a>Web uygulamasını Key Vault bağlanacak şekilde yapılandırma
 
-Bu bölümde, Anahtar Kasası 'na Web erişimini yapılandıracaksınız ve anahtar kasasından gizli dizi almak için uygulama kodunu güncelleirsiniz.
+Bu bölümde, Key Vault bir gizli dizi almak için Key Vault ve uygulama kodunuzu güncelleştirmek üzere Web erişimini yapılandıracaksınız.
 
 ### <a name="create-and-assign-a-managed-identity"></a>Yönetilen kimlik oluşturma ve atama
 
-Bu öğreticide uygulama kimlik bilgilerini otomatik olarak yöneten anahtar kasasında kimlik doğrulaması yapmak için uygulama [tarafından yönetilen kimliği](../../active-directory/managed-identities-azure-resources/overview.md) kullanacağız.
+Bu öğreticide, Key Vault kimlik doğrulaması için [yönetilen kimlik](../../active-directory/managed-identities-azure-resources/overview.md) kullanacağız. Yönetilen kimlik, uygulama kimlik bilgilerini otomatik olarak yönetir.
 
-Azure CLı 'de, bu uygulamanın kimliğini oluşturmak için [az WebApp-Identity Assign](/cli/azure/webapp/identity?#az-webapp-identity-assign) komutunu çalıştırın:
+Azure CLı 'da, uygulamanın kimliğini oluşturmak için [az WebApp-Identity Assign](/cli/azure/webapp/identity?#az-webapp-identity-assign) komutunu çalıştırın:
 
 ```azurecli-interactive
 az webapp identity assign --name "<your-webapp-name>" --resource-group "myResourceGroup"
 ```
 
-İşlem bu JSON kod parçacığını döndürür:
+Komut bu JSON kod parçacığını döndürür:
 
 ```json
 {
@@ -243,7 +243,7 @@ az webapp identity assign --name "<your-webapp-name>" --resource-group "myResour
 }
 ```
 
-Web uygulamanıza, Anahtar Kasanızda **Get** ve **Listeleme** işlemlerine Izin vermek için, PRINCIPALıD 'yi Azure CLI [az keykasası Set-Policy](/cli/azure/keyvault?#az-keyvault-set-policy) komutuna geçirin:
+Web uygulamanıza, anahtar kasanıza yönelik **Get** ve **Listeleme** işlemlerine Izin vermek için, `principalId` Azure CLI [az keykasası Set-Policy](/cli/azure/keyvault?#az-keyvault-set-policy) komutunu geçirin:
 
 ```azurecli-interactive
 az keyvault set-policy --name "<your-keyvault-name>" --object-id "<principalId>" --secret-permissions get list
@@ -266,7 +266,7 @@ dotnet add package Azure.Security.KeyVault.Secrets
 
 Startup.cs dosyasını, akvwebapp projenizde bulun ve açın. 
 
-Bu iki satırı üstbilgiye ekleyin:
+Bu satırları üstbilgiye ekleyin:
 
 ```csharp
 using Azure.Identity;
@@ -274,7 +274,7 @@ using Azure.Security.KeyVault.Secrets;
 using Azure.Core;
 ```
 
-Çağrıdan önce bu satırları ekleyin `app.UseEndpoints` , URI 'yi anahtar kasasının yansıtacak şekilde güncelleyerek `vaultUri` . Aşağıdaki kod, kimlik doğrulaması için uygulama tarafından yönetilen kimliğin belirtecini kullanan Anahtar Kasası kimlik doğrulaması için  [' DefaultAzureCredential () '](/dotnet/api/azure.identity.defaultazurecredential) kullanıyor. Anahtar Kasası kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Geliştirici Kılavuzu](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code). Ayrıca, Anahtar Kasası kısıtlanmadan yeniden denemeler için üstel geri alma özelliği de kullanılıyor. Anahtar Kasası işlem limitleri hakkında daha fazla bilgi için [Azure Key Vault azaltma kılavuzunu](https://docs.microsoft.com/azure/key-vault/general/overview-throttling) okuyun
+Çağrıdan önce aşağıdaki satırları ekleyin `app.UseEndpoints` , URI 'yi anahtar kasasının yansıtacak şekilde güncelleyerek `vaultUri` . Bu kod, kimlik doğrulaması için yönetilen kimliğin bir belirtecini kullanan Key Vault kimlik doğrulaması yapmak için  [DefaultAzureCredential ()](/dotnet/api/azure.identity.defaultazurecredential) kullanır. Key Vault kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Geliştirici Kılavuzu](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code). Kod, Key Vault kısıtlanmakta olması durumunda yeniden denemeler için üstel geri alma kullanır. Key Vault işlem limitleri hakkında daha fazla bilgi için bkz. [Azure Key Vault azaltma Kılavuzu](https://docs.microsoft.com/azure/key-vault/general/overview-throttling).
 
 ```csharp
 SecretClientOptions options = new SecretClientOptions()
@@ -294,17 +294,17 @@ KeyVaultSecret secret = client.GetSecret("<mySecret>");
 string secretValue = secret.Value;
 ```
 
-Okunacak satırı güncelleştirin `await context.Response.WriteAsync("Hello World!");` :
+Satırı aşağıdaki `await context.Response.WriteAsync("Hello World!");` satıra benzeymek üzere güncelleştirin:
 
 ```csharp
 await context.Response.WriteAsync(secretValue);
 ```
 
-Sonraki adıma geçmeden önce yaptığınız değişiklikleri kaydetmek için bazı değişiklikler yapın.
+Sonraki adıma geçmeden önce değişikliklerinizi kaydettiğinizden emin olun.
 
 #### <a name="redeploy-your-web-app"></a>Web uygulamanızı yeniden dağıtma
 
-Kodunuzu güncelleştirdikten sonra, aşağıdaki git komutlarıyla Azure 'a yeniden dağıtabilirsiniz:
+Artık kodunuzu güncelleştirmiş olduğunuza göre, şu git komutlarını kullanarak Azure 'a yeniden dağıtabilirsiniz:
 
 ```bash
 git add .
@@ -312,20 +312,20 @@ git commit -m "Updated web app to access my key vault"
 git push azure master
 ```
 
-### <a name="visit-your-completed-web-app"></a>Tamamlanmış Web uygulamanızı ziyaret edin
+## <a name="go-to-your-completed-web-app"></a>Tamamlanmış Web uygulamanıza gidin
 
 ```bash
 http://<your-webapp-name>.azurewebsites.net
 ```
 
-**Merhaba Dünya** gördüğünüz, artık gizli dizi değerinin görüntülendiğini görmeniz gerekir: **başarılı!**
+"Merhaba Dünya!" öğesini gördüğünüzü nereden önce gizli anahtar değerinin görüntülendiğini görmeniz gerekir: "başarılı!"
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [.NET 'te sanal makineye dağıtılan uygulamalarla Azure Key Vault kullanma](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-virtual-machine)
+- [.NET 'teki bir sanal makineye dağıtılan uygulamalarla Azure Key Vault kullanma](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-virtual-machine)
 - [Azure kaynakları için Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md) hakkında daha fazla bilgi edinin
 - [App Service için Yönetilen kimlikler](../../app-service/overview-managed-identity.md?tabs=dotnet) hakkında daha fazla bilgi edinin
-- [Geliştirici Kılavuzu](https://docs.microsoft.com/azure/key-vault/general/developers-guide)
+- [Geliştirici kılavuzunu](https://docs.microsoft.com/azure/key-vault/general/developers-guide) görüntüleme
 - [Anahtar kasasına güvenli erişim](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault)
 
 

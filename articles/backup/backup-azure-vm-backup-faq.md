@@ -4,12 +4,12 @@ description: Bu makalede, Azure VM 'Leri Azure Backup hizmetiyle yedekleme hakk�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 74e2facfd9fd6073acc1f939c3d2ba922e3ac931
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: e6e14209a8df7160d103cb036d38c9fee29b34dd
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92925586"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296072"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Sık sorulan sorular-Azure VM 'lerini yedekleme
 
@@ -87,11 +87,11 @@ Evet, Azure Backup [Standart SSD yönetilen diskleri](https://docs.microsoft.com
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>Yazma Hızlandırıcısı (WA) özellikli bir diskle VM 'yi yedekleyebiliriz?
 
-Anlık görüntüler, WA özellikli diskte alınamaz. Ancak Azure Backup hizmeti, WA özellikli diski yedekten hariç tutabilir.
+Anlık görüntüler, yalnızca WA etkin olan ve işletim sistemi diskleri olmayan veri disklerinde alınabilir. Bu nedenle, yalnızca WA etkin olan veri diskleri korunabilir.
 
 ### <a name="i-have-a-vm-with-write-accelerator-wa-disks-and-sap-hana-installed-how-do-i-back-up"></a>Yazma Hızlandırıcısı (WA) diskleri olan ve SAP HANA yüklü bir VM kullanıyorum. Nasıl yaparım? yedekleme yapılsın mı?
 
-Azure Backup, WA özellikli diski yedekleyebilir, ancak bunu yedekten hariç tutabilir. Ancak, WA özellikli disk hakkında bilgi yedeklenmediği için yedekleme veritabanı tutarlılığı sağlamaz. İşletim sistemi diski yedeklemesini ve WA etkin olmayan disklerin yedeklemesini istiyorsanız bu yapılandırmayla diskleri yedekleyebilirsiniz.
+Azure Backup, WA özellikli veri diskini yedekleyebilir. Ancak, yedekleme veritabanı tutarlılığı sağlamaz.
 
 Azure Backup, 15 dakikalık bir RPO 'ya sahip SAP HANA veritabanları için bir akış yedekleme çözümü sağlar. SAP HANA yerel API 'Lerinden yararlanan yerel bir yedekleme desteği sağlamak için SAP tarafından karşılıklı olarak sertifikalanmış. [Azure VM 'lerinde SAP HANA veritabanlarını yedekleme hakkında](./sap-hana-db-about.md)daha fazla bilgi edinin.
 
@@ -185,7 +185,7 @@ VM, değiştirilen veya yeni ilkedeki zamanlama ve bekletme ayarları kullanıla
 
    1. Sanal makinenizin konumunu bulun.
    2. Şu adlandırma düzenine sahip bir kaynak grubu bulun: `AzureBackupRG_<location of your VM>_1` . Örneğin, *AzureBackupRG_westus2_1*
-   3. Azure portal, **gizli türleri göster** ' i işaretleyin.
+   3. Azure portal, **gizli türleri göster**' i işaretleyin.
    4. Adlandırma düzenine sahip **Microsoft. COMPUTE/restorePointCollections** türünde kaynağı bulun `AzureBackup_<name of your VM that you're trying to move>_###########` .
    5. Bu kaynağı silin. Bu işlem, kasadaki yedeklenen verileri değil yalnızca anlık kurtarma noktalarını siler.
    6. Silme işlemi tamamlandıktan sonra, sanal makinenizi taşıyabilirsiniz.

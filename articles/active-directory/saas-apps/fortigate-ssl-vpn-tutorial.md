@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/11/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acb08d5430f13ad9a339b2cdd072fce9c196d05f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 021550598452516d45ae67c1139c2f891629a875
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92451495"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296582"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortigate-ssl-vpn"></a>Öğretici: FortiGate SSL VPN ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -92,7 +92,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
     d. **Oturum kapatma URL 'si** kutusuna, modele bir URL girin `https://<FQDN>/remote/saml/logout` .
 
     > [!NOTE]
-    > Bu değerler yalnızca desenlerdir. Gerçek **oturum açma URL 'sini**, **TANıMLAYıCıYı**, **yanıt URL**'sini ve oturum **kapatma URL**'sini kullanmanız gerekir. Gerçek değerleri almak için [Fortigate SSL VPN istemci desteği ekibine](mailto:tac_amer@fortinet.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler yalnızca desenlerdir. Gerçek **oturum açma URL 'sini**, **TANıMLAYıCıYı**, **yanıt URL**'sini ve oturum **kapatma URL**'sini kullanmanız gerekir. Rehberlik için [Fortinet desteğiyle](https://support.fortinet.com) iletişim kurun. Ayrıca, Azure portal Fortinet belgelerinde ve **temel SAML yapılandırması** bölümünde gösterilen örnek desenlere de bakabilirsiniz.
 
 1. FortiGate SSL VPN uygulaması, belirli bir biçimde SAML onayları bekler, bu da yapılandırmaya özel öznitelik eşlemeleri eklemenizi gerektirir. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
@@ -100,7 +100,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
 
 1. FortiGate SSL VPN için gereken iki ek talep aşağıdaki tabloda gösterilmiştir. Bu taleplerin adları, Bu öğreticinin **FortiGate komut satırı yapılandırma** bölümünde kullanılan adlarla eşleşmelidir. 
 
-   | Name |  Kaynak özniteliği|
+   | Adı |  Kaynak özniteliği|
    | ------------ | --------- |
    | username | User. UserPrincipalName |
    | group | Kullanıcı. gruplar |
@@ -109,13 +109,13 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
    
    1. **Kullanıcı öznitelikleri & talepler**' ın yanındaki **Düzenle**' yi seçin.
    1. **Yeni talep Ekle**' yi seçin.
-   1. **Ad**için **Kullanıcı adı**girin.
-   1. **Kaynak özniteliği**için **User. UserPrincipalName**' i seçin.
+   1. **Ad** için **Kullanıcı adı** girin.
+   1. **Kaynak özniteliği** için **User. UserPrincipalName**' i seçin.
    1. **Kaydet**’i seçin.
    1. **Grup talebi ekle**' yi seçin.
    1. **Tüm uygulamalar**’ı seçin.
    1. **Grup talebinin adını Özelleştir** onay kutusu.
-   1. **Ad**için **Grup**girin.
+   1. **Ad** için **Grup** girin.
    1. **Kaydet**’i seçin.   
 
 1. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, sertifikayı Indirip bilgisayarınıza kaydetmek için **sertifika (base64)** yanındaki **indirme** bağlantısını seçin:
@@ -133,7 +133,7 @@ Bu bölümde, Azure portal B. Simon adlı bir test kullanıcısı oluşturacaks�
 1. Azure portal sol bölmesinde **Azure Active Directory**' ı seçin. **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları uygulayın:
-   1. **Ad** kutusuna **B. Simon**girin.  
+   1. **Ad** kutusuna **B. Simon** girin.  
    1. **Kullanıcı adı** kutusuna \<username> @ \<companydomain> .. yazın. \<extension> Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster**' i seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
    1. **Oluştur**’u seçin.
@@ -164,14 +164,14 @@ Bu bölümde, test kullanıcısı için Azure Active Directory bir güvenlik gru
 1. Ekranın üst kısmındaki **Yeni Grup** ' u seçin.
 1. **Yeni Grup** özelliklerinde şu adımları uygulayın:
    1. **Grup türü** listesinde **güvenlik**' i seçin.
-   1. **Grup adı** kutusuna **Fortigateaccess**yazın.
-   1. **Grup açıklaması** kutusunda, **FORTIGATE VPN erişimi vermek için Grup**girin.
+   1. **Grup adı** kutusuna **Fortigateaccess** yazın.
+   1. **Grup açıklaması** kutusunda, **FORTIGATE VPN erişimi vermek için Grup** girin.
    1. **Azure AD rolleri grup (Önizleme) ayarlarına atanabilir** , **Hayır**' ı seçin.
    1. **Üyelik türü** kutusunda, **atandı**' ı seçin.
-   1. **Üyeler**altında, **Seçili üye yok**' u seçin.
+   1. **Üyeler** altında, **Seçili üye yok**' u seçin.
    1. **Kullanıcılar ve gruplar** iletişim kutusunda, **Kullanıcılar** listesinden **B. Simon** öğesini seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
    1. **Oluştur**’u seçin.
-1. Azure Active Directory **gruplar** bölümüne geri döndüğünüzde, **Fortigate erişim** grubunu bulun ve **nesne kimliğini**aklınızda olun. Daha sonra ihtiyacınız olacak.
+1. Azure Active Directory **gruplar** bölümüne geri döndüğünüzde, **Fortigate erişim** grubunu bulun ve **nesne kimliğini** aklınızda olun. Daha sonra ihtiyacınız olacak.
 
 ### <a name="configure-fortigate-ssl-vpn-sso"></a>FortiGate SSL VPN SSO 'yu yapılandırma
 
@@ -181,11 +181,11 @@ Kiracınızdaki FortiGate uygulamasının SAML yapılandırmasını tamamladıkt
 
 1. FortiGate gerecinizin yönetim portalında oturum açın.
 1. Sol bölmede **sistem**' i seçin.
-1. **Sistem**altında **Sertifikalar**' ı seçin.
+1. **Sistem** altında **Sertifikalar**' ı seçin.
 1. Uzak **sertifikayı içeri aktar**' ı seçin  >  **Remote Certificate**.
 1. Azure kiracısındaki FortiGate uygulama dağıtımından indirilen sertifikaya gidin, seçin ve ardından **Tamam**' ı seçin.
 
-Sertifika karşıya yüklendikten sonra, **sistem**  >  **sertifikaları**  >  **uzak sertifikası**altında adını göz önünde atın. Varsayılan olarak, REMOTE_Cert_*n*olarak adlandırılır; burada *n* bir tamsayı değeridir.
+Sertifika karşıya yüklendikten sonra, **sistem**  >  **sertifikaları**  >  **uzak sertifikası** altında adını göz önünde atın. Varsayılan olarak, REMOTE_Cert_ *n* olarak adlandırılır; burada *n* bir tamsayı değeridir.
 
 #### <a name="complete-fortigate-command-line-configuration"></a>FortiGate komut satırı yapılandırmasını tamamlanma
 
@@ -199,7 +199,7 @@ Bu adımları tamamlayabilmeniz için, daha önce kaydettiğiniz değerlere ihti
 - Azure oturum açma URL 'SI
 - Azure AD tanımlayıcısı
 - Azure oturum kapatma URL 'SI
-- Base64 SAML sertifikası adı (REMOTE_Cert_*N*)
+- Base64 SAML sertifikası adı (REMOTE_Cert_ *N*)
 
 1. FortiGate gerecinizde bir SSH oturumu oluşturun ve bir FortiGate yönetici hesabıyla oturum açın.
 1. Şu komutları çalıştırın:

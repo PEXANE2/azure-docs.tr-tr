@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/16/2019
-ms.openlocfilehash: b85e72ae6698cd9fa018c940e158bfcf25279ed5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/26/2020
+ms.openlocfilehash: 11e0d3336f085ccae9a7fb83ed050d69a15ce42b
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81410473"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296514"
 ---
 # <a name="copy-data-to-and-from-azure-database-for-postgresql-by-using-azure-data-factory"></a>Azure Data Factory kullanarak PostgreSQL için Azure veritabanı 'na veri kopyalama
 
@@ -49,7 +49,7 @@ PostgreSQL için Azure veritabanı bağlı hizmeti için aşağıdaki özellikle
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği: **AzurePostgreSql**olarak ayarlanmalıdır. | Evet |
+| tür | Type özelliği: **AzurePostgreSql** olarak ayarlanmalıdır. | Evet |
 | Dizisi | PostgreSQL için Azure veritabanı 'na bağlanmak üzere bir ODBC bağlantı dizesi.<br/>Ayrıca, Azure Key Vault bir parola yerleştirebilir ve `password` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha fazla ayrıntı için aşağıdaki örneklere bakın ve [kimlik bilgilerini Azure Key Vault](store-credentials-in-key-vault.md) . | Evet |
 | connectVia | Bu özellik, veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanını](concepts-integration-runtime.md) temsil eder. Azure Integration Runtime veya şirket içinde barındırılan Integration Runtime (veri depolduğunuz özel ağda yer alıyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. |Hayır |
 
@@ -76,7 +76,7 @@ Tipik bir bağlantı dizesi `Server=<server>.postgres.database.azure.com;Databas
 
 **Örnek**:
 
-***Parolayı Azure Key Vault içinde depola***
+**_Parolayı Azure Key Vault _ ' de sakla_*
 
 ```json
 {
@@ -85,13 +85,13 @@ Tipik bir bağlantı dizesi `Server=<server>.postgres.database.azure.com;Databas
         "type": "AzurePostgreSql",
         "typeProperties": {
             "connectionString": "Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;",
-            "password": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "password": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         }
     }
@@ -102,7 +102,7 @@ Tipik bir bağlantı dizesi `Server=<server>.postgres.database.azure.com;Databas
 
 Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [Azure Data Factory veri kümeleri](concepts-datasets-linked-services.md). Bu bölüm, veri kümelerinde PostgreSQL için Azure veritabanı 'nın desteklediği özelliklerin bir listesini sağlar.
 
-PostgreSQL için Azure veritabanı 'ndan veri kopyalamak için veri kümesinin Type özelliğini **AzurePostgreSqlTable**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
+PostgreSQL için Azure veritabanı 'ndan veri kopyalamak için, veri kümesinin Type özelliğini _ * AzurePostgreSqlTable * * olarak ayarlayın. Aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
@@ -131,12 +131,12 @@ Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi iç
 
 ### <a name="azure-database-for-postgresql-as-source"></a>Kaynak olarak PostgreSql için Azure veritabanı
 
-PostgreSQL için Azure veritabanı 'ndan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **AzurePostgreSqlSource**olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
+PostgreSQL için Azure veritabanı 'ndan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **AzurePostgreSqlSource** olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | tür | Kopyalama etkinliği kaynağının Type özelliği **AzurePostgreSqlSource** olarak ayarlanmalıdır | Evet |
-| sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örnek: `"SELECT * FROM MyTable"` | Hayır (veri kümesindeki tableName özelliği belirtilmişse) |
+| sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `SELECT * FROM mytable` veya `SELECT * FROM "MyTable"` . Not PostgreSQL öğesinde, tırnak işareti yoksa, varlık adının büyük/küçük harf duyarlı olduğunu kabul ediyor. | Hayır (veri kümesindeki tableName özelliği belirtilmişse) |
 
 **Örnek**:
 
@@ -160,7 +160,7 @@ PostgreSQL için Azure veritabanı 'ndan veri kopyalamak için kopyalama etkinli
         "typeProperties": {
             "source": {
                 "type": "AzurePostgreSqlSource",
-                "query": "<custom query e.g. SELECT * FROM MyTable>"
+                "query": "<custom query e.g. SELECT * FROM mytable>"
             },
             "sink": {
                 "type": "<sink type>"
@@ -176,7 +176,7 @@ PostgreSQL için Azure veritabanı 'na veri kopyalamak için, etkinlik **havuzun
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği havuzunun Type özelliği **AzurePostgreSQLSink**olarak ayarlanmalıdır. | Evet |
+| tür | Kopyalama etkinliği havuzunun Type özelliği **AzurePostgreSQLSink** olarak ayarlanmalıdır. | Evet |
 | Ön Copyscrıpt | Her çalıştırmada PostgreSQL için Azure veritabanı 'na veri yazmadan önce, kopyalama etkinliğinin yürütülmesi için bir SQL sorgusu belirtin. Bu özelliği, önceden yüklenmiş verileri temizlemek için kullanabilirsiniz. | Hayır |
 | writeBatchSize | Arabellek boyutu writeBatchSize ulaştığında, PostgreSQL için Azure veritabanı tablosuna veri ekler.<br>İzin verilen değer, satır sayısını temsil eden bir tamsayıdır. | Hayır (varsayılan değer 10.000) |
 | writeBatchTimeout | Toplu ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi.<br>İzin verilen değerler TimeSpan dizeleridir. Örnek olarak 00:30:00 (30 dakika). | Hayır (varsayılan değer 00:00:30) |

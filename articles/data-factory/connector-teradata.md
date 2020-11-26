@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 11/26/2020
 ms.author: jingwang
-ms.openlocfilehash: 182e04625f829304168bfdefe000bb8797646c75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a48ac86e8f9814adef9be2360b2446335d368447
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87926901"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296565"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Teradata Vanndan veri kopyalama
 
@@ -41,7 +41,7 @@ Teradata Vana 'dan verileri desteklenen herhangi bir havuz veri deposuna kopyala
 Özellikle, bu Teradata Bağlayıcısı şunları destekler:
 
 - Teradata **sürüm 14,10, 15,0, 15,10, 16,0, 16,10 ve 16,20**.
-- **Temel** veya **Windows** kimlik doğrulamasını kullanarak verileri kopyalama.
+- **Temel**, **Windows** veya **LDAP** kimlik doğrulaması kullanarak verileri kopyalama.
 - Teradata kaynağından paralel kopyalama. Ayrıntılar için [Teradata 'Dan paralel kopyalama](#parallel-copy-from-teradata) bölümüne bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
@@ -62,7 +62,7 @@ Teradata bağlı hizmeti aşağıdaki özellikleri destekler:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği **Teradata**olarak ayarlanmalıdır. | Evet |
+| tür | Type özelliği **Teradata** olarak ayarlanmalıdır. | Evet |
 | Dizisi | Teradata örneğine bağlanmak için gereken bilgileri belirtir. Aşağıdaki örneklere bakın.<br/>Ayrıca Azure Key Vault bir parola yerleştirebilir ve `password` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için [Azure Key Vault 'de mağaza kimlik bilgilerini](store-credentials-in-key-vault.md) inceleyin. | Evet |
 | username | Teradata 'a bağlanmak için bir Kullanıcı adı belirtin. Windows kimlik doğrulaması kullanırken geçerlidir. | Hayır |
 | password | Kullanıcı adı için belirttiğiniz kullanıcı hesabı için bir parola belirtin. Ayrıca, [Azure Key Vault depolanan bir gizli dizi başvurusunu](store-credentials-in-key-vault.md)da seçebilirsiniz. <br>Windows kimlik doğrulaması kullandığınızda veya temel kimlik doğrulaması için Key Vault bir parolaya başvurulduğunda geçerlidir. | Hayır |
@@ -72,9 +72,10 @@ Büyük/küçük harf olarak bağlantı dizesinde ayarlayabileceğiniz daha fazl
 
 | Özellik | Açıklama | Varsayılan değer |
 |:--- |:--- |:--- |
-| UseDataEncryption | Teradata veritabanıyla iletişimin tümünün şifrelenip şifrelenmeyeceğini belirtir. İzin verilen değerler 0 veya 1 ' dir.<br><br/>- **0 (devre dışı, varsayılan)**: yalnızca kimlik doğrulama bilgilerini şifreler.<br/>- **1 (etkin)**: sürücü ve veritabanı arasında geçirilen tüm verileri şifreler. | Hayır |
-| CharacterSet | Oturum için kullanılacak karakter kümesi. Ör., `CharacterSet=UTF16` .<br><br/>Bu değer, Kullanıcı tanımlı bir karakter kümesi veya aşağıdaki önceden tanımlanmış karakter kümelerinden biri olabilir: <br/>-ASCII<br/>-UTF8<br/>-UTF16<br/>-LATIN1252_0A<br/>-LATIN9_0A<br/>-LATIN1_0A<br/>-Shift-JıS (Windows, DOS uyumlu, KANJISJIS_0S)<br/>-EUC (UNIX ile uyumlu, KANJIEC_0U)<br/>-IBM ana bilgisayar (KANJIEBCDIC5035_0I)<br/>-KANJI932_1S0<br/>-BIG5 (TCHBIG5_1R0)<br/>-GB (SCHGB2312_1T0)<br/>-SCHINESE936_6R0<br/>-TCHINESE950_8R0<br/>-Networkkorece (HANGULKSC5601_2R4)<br/>-HANGUL949_7R0<br/>-ARABIC1256_6A0<br/>-CYRILLIC1251_2A0<br/>-HEBREW1255_5A0<br/>-LATIN1250_1A0<br/>-LATIN1254_7A0<br/>-LATIN1258_8A0<br/>-THAI874_4A0 | Varsayılan değer `ASCII` olarak belirlenmiştir. |
-| MaxRespSize |SQL istekleri için en büyük yanıt arabelleği boyutu (kilobayt (KBs) cinsinden). Ör., `MaxRespSize=‭10485760‬` .<br/><br/>Teradata veritabanı sürüm 16,00 veya üzeri için en büyük değer 7361536 ' dir. Önceki sürümleri kullanan bağlantılarda en büyük değer 1048576 ' dir. | Varsayılan değer `65536` olarak belirlenmiştir. |
+| UseDataEncryption | Teradata veritabanıyla iletişimin tümünün şifrelenip şifrelenmeyeceğini belirtir. İzin verilen değerler 0 veya 1 ' dir.<br><br/>- **0 (devre dışı, varsayılan)**: yalnızca kimlik doğrulama bilgilerini şifreler.<br/>- **1 (etkin)**: sürücü ve veritabanı arasında geçirilen tüm verileri şifreler. | `0` |
+| CharacterSet | Oturum için kullanılacak karakter kümesi. Ör., `CharacterSet=UTF16` .<br><br/>Bu değer, Kullanıcı tanımlı bir karakter kümesi veya aşağıdaki önceden tanımlanmış karakter kümelerinden biri olabilir: <br/>-ASCII<br/>-UTF8<br/>-UTF16<br/>-LATIN1252_0A<br/>-LATIN9_0A<br/>-LATIN1_0A<br/>-Shift-JıS (Windows, DOS uyumlu, KANJISJIS_0S)<br/>-EUC (UNIX ile uyumlu, KANJIEC_0U)<br/>-IBM ana bilgisayar (KANJIEBCDIC5035_0I)<br/>-KANJI932_1S0<br/>-BIG5 (TCHBIG5_1R0)<br/>-GB (SCHGB2312_1T0)<br/>-SCHINESE936_6R0<br/>-TCHINESE950_8R0<br/>-Networkkorece (HANGULKSC5601_2R4)<br/>-HANGUL949_7R0<br/>-ARABIC1256_6A0<br/>-CYRILLIC1251_2A0<br/>-HEBREW1255_5A0<br/>-LATIN1250_1A0<br/>-LATIN1254_7A0<br/>-LATIN1258_8A0<br/>-THAI874_4A0 | `ASCII` |
+| MaxRespSize |SQL istekleri için en büyük yanıt arabelleği boyutu (kilobayt (KBs) cinsinden). Ör., `MaxRespSize=‭10485760‬` .<br/><br/>Teradata veritabanı sürüm 16,00 veya üzeri için en büyük değer 7361536 ' dir. Önceki sürümleri kullanan bağlantılarda en büyük değer 1048576 ' dir. | `65536` |
+| MechanismName | Bağlantının kimliğini doğrulamak üzere LDAP protokolünü kullanmak için, belirtin `MechanismName=LDAP` . | Yok |
 
 **Temel kimlik doğrulaması kullanan örnek**
 
@@ -105,6 +106,24 @@ Büyük/küçük harf olarak bağlantı dizesinde ayarlayabileceğiniz daha fazl
             "connectionString": "DBCName=<server>",
             "username": "<username>",
             "password": "<password>"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**LDAP kimlik doğrulaması kullanan örnek**
+
+```json
+{
+    "name": "TeradataLinkedService",
+    "properties": {
+        "type": "Teradata",
+        "typeProperties": {
+            "connectionString": "DBCName=<server>;MechanismName=LDAP;Uid=<username>;Pwd=<password>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -152,7 +171,7 @@ Teradata 'tan veri kopyalamak için aşağıdaki özellikler desteklenir:
 |:--- |:--- |:--- |
 | tür | Veri kümesinin Type özelliği olarak ayarlanmalıdır `TeradataTable` . | Evet |
 | database | Teradata örneğinin adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
-| tablo | Teradata örneğindeki tablonun adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
+| table | Teradata örneğindeki tablonun adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
 **Örnek:**
 
@@ -329,7 +348,7 @@ Teradata 'tan veri kopyaladığınızda aşağıdaki eşlemeler geçerlidir. Kop
 | Süre (zaman damgası) |Desteklenmez. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
 | Süre (saat dilimiyle zaman damgası) |Desteklenmez. Kaynak sorgusunda açık tür dönüştürme uygulayın. |
 | Small |Int16 |
-| Süre |TimeSpan |
+| Saat |TimeSpan |
 | Saat dilimiyle saat |TimeSpan |
 | Zaman damgası |DateTime |
 | Saat dilimi Ile zaman damgası |DateTime |

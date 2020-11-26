@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 76f4f9ddaa1e4aec9409e96a0088ec51b8c2645e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 86de3e1199b00dff4e03f3b4292f86e6c19ea491
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097473"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296548"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Azure Cosmos DB’de sağlanan işlem hızını iyileştirme
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -31,7 +31,7 @@ Veritabanlarında veya kapsayıcılarda verim sağlayabilirsiniz. Her strateji, 
 
 Aşağıda, sağlanan bir verimlilik stratejisine karar vermek için bazı yönergeler verilmiştir:
 
-Şu **durumlarda bir Azure Cosmos veritabanında (bir kapsayıcı kümesi içeren) üretilen iş sağlamayı düşünün** :
+Şu **durumlarda bir Azure Cosmos veritabanında (bir kapsayıcı kümesi içeren) üretilen iş sağlamayı düşünün**:
 
 1. Birkaç düzine Azure Cosmos Kapsayıcınız var ve bunların bazıları veya tümünde üretilen işi paylaşmak istiyorsunuz. 
 
@@ -137,7 +137,7 @@ Sağlanan aktarım hızı için faturalandırılırsınız, sağlanan aktarım h
 
 Yeni bir iş yükünün sağlanan verimini öğrenmek için aşağıdaki adımları kullanabilirsiniz: 
 
-1. Kapasite planlayıcısını kullanarak ilk ve kaba bir değerlendirme gerçekleştirin ve Azure portal Azure Cosmos Explorer yardımıyla tahminlerinizi ayarlayın. 
+1. Kapasite planlayıcısını kullanarak ilk ve kaba bir değerlendirme gerçekleştirin ve Azure portal Azure Cosmos DB gezgin 'in yardımıyla tahminlerinizi ayarlayın. 
 
 2. Kapsayıcıları beklenenden daha yüksek aktarım hızı ile oluşturmanız ve ardından gerektikçe ölçeklendirilmesi önerilir. 
 

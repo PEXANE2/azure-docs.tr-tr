@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 372ff1dc53f15a1338cad933fec64746b6736f40
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5645a2e0449a1929421f9444bf645f08ad0525e9
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368103"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296820"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Güvenlik Merkezi 'nin tümleşik EDR çözümü ile uç noktalarınızı koruyun: uç nokta için Microsoft Defender
 
@@ -31,9 +31,9 @@ Uç nokta için Microsoft Defender, bütünsel, bulut tarafından sunulan bir u�
 - Yönetilen arama hizmetleri
 
 > [!TIP]
-> Başlangıçta **Windows Defender ATP**olarak başlatılan bu uç nokta algılama ve yanıt (EDR) ürünü, **Microsoft Defender ATP**olarak 2019 ' de yeniden adlandırıldı.
+> Başlangıçta **Windows Defender ATP** olarak başlatılan bu uç nokta algılama ve yanıt (EDR) ürünü, **Microsoft Defender ATP** olarak 2019 ' de yeniden adlandırıldı.
 >
-> Ignite 2020, [Microsoft Defender XDR paketini](https://www.microsoft.com/security/business/threat-protection) başlattık ve bu EDR bileşeni **uç nokta için Microsoft Defender**olarak yeniden adlandırıldı.
+> Ignite 2020, [Microsoft Defender XDR paketini](https://www.microsoft.com/security/business/threat-protection) başlattık ve bu EDR bileşeni **uç nokta için Microsoft Defender** olarak yeniden adlandırıldı.
 
 
 ## <a name="availability"></a>Kullanılabilirlik
@@ -42,10 +42,10 @@ Uç nokta için Microsoft Defender, bütünsel, bulut tarafından sunulan bir u�
 |---------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Yayın durumu:                  | Genel olarak kullanılabilir (GA)                                                                                                                                                                                                                                                                                      |
 | Fiyat                        | [Sunucular Için Azure Defender](security-center-pricing.md) gerekir                                                                                                                                                                                                                                             |
-| Desteklenen platformlar:            | ![Yes](./media/icons/yes-icon.png) Windows çalıştıran Azure makineleri<br>![Yes](./media/icons/yes-icon.png) Windows çalıştıran Azure Arc makineleri|
+| Desteklenen platformlar:            | ![Evet](./media/icons/yes-icon.png) Windows çalıştıran Azure makineleri<br>![Evet](./media/icons/yes-icon.png) Windows çalıştıran Azure Arc makineleri|
 | Desteklenen Windows sürümleri:  | Uç nokta için Defender, Windows 10 1703 (ve üzeri) ve Windows Server 2019 ' de yerleşik olarak bulunur.<br>Güvenlik Merkezi, Windows Server 2016, 2012 R2 ve 2008 R2 SP1 'de algılamayı destekler.<br>Bu tümleştirme kullanılarak sunucu uç noktası izleme Office 365 GCC müşterileri için devre dışı bırakıldı. |
-| Gerekli roller ve izinler: | Tümleştirmeyi etkinleştirmek/devre dışı bırakmak için: **Güvenlik Yöneticisi** veya **sahibi**<br>Güvenlik Merkezi 'nde MDADTP uyarılarını görüntülemek için: **güvenlik okuyucu**, **okuyucu**, **kaynak grubu katılımcısı**, **kaynak grubu sahibi**, **Güvenlik Yöneticisi**, **abonelik sahibi**veya **abonelik katılımcısı**                         |
-| Larının                         | ![Yes](./media/icons/yes-icon.png) Ticari bulutlar.<br>![No](./media/icons/no-icon.png) Küresel Azure bulutlarında iş yüklerini çalıştıran GCC müşterileri<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Çin gov, diğer gov                                                        |
+| Gerekli roller ve izinler: | Tümleştirmeyi etkinleştirmek/devre dışı bırakmak için: **Güvenlik Yöneticisi** veya **sahibi**<br>Güvenlik Merkezi 'nde MDADTP uyarılarını görüntülemek için: **güvenlik okuyucu**, **okuyucu**, **kaynak grubu katılımcısı**, **kaynak grubu sahibi**, **Güvenlik Yöneticisi**, **abonelik sahibi** veya **abonelik katılımcısı**                         |
+| Larının                         | ![Evet](./media/icons/yes-icon.png) Ticari bulutlar.<br>![Hayır](./media/icons/no-icon.png) Küresel Azure bulutlarında iş yüklerini çalıştıran GCC müşterileri<br>![Evet](./media/icons/yes-icon.png) US Gov<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
 
 
@@ -61,7 +61,7 @@ Uç nokta için Microsoft Defender şunları sağlar:
 
 Defender for Endpoint for Security Center ile tümleştirerek aşağıdaki ek yetenekler de avantajdan yararlanabilirsiniz:
 
-- **Otomatik ekleme**. Güvenlik Merkezi, Güvenlik Merkezi tarafından izlenen tüm Windows sunucuları için Microsoft Defender for Endpoint sensöri otomatik olarak (Windows Server 2019 çalıştırmadıkları takdirde) otomatik olarak etkinleştirilir.
+- **Otomatik ekleme**. Güvenlik Merkezi, Güvenlik Merkezi tarafından izlenen tüm Windows Server 'lar için Endpoint algılayıcı için Microsoft Defender 'ı otomatik olarak sunar. Yerel betik, grup ilkesi nesnesi (GPO) veya [Microsoft uç nokta Configuration Manager](https://docs.microsoft.com/mem/configmgr/) (eskı adıyla SCCM) aracılığıyla eklendi olması gereken Windows Server 2019 ' i çalıştıranlar hariç.
 
 - **Tek bir cam bölmesi**. Güvenlik Merkezi Konsolu, uç nokta uyarıları için Microsoft Defender 'ı görüntüler. Daha fazla araştırmak için, uyarı işlem ağacı ve olay grafiği gibi ek bilgileri görebileceğiniz uç noktanın kendi portal sayfaları için Microsoft Defender 'ı kullanın. Ayrıca, altı aya kadar geçmiş bir dönem için her davranışı gösteren ayrıntılı bir makine zaman çizelgesi görebilirsiniz.
 
@@ -76,7 +76,7 @@ Konumu yapılandırdıktan sonra değiştiremezsiniz. Verilerinizi başka bir ko
 
 ## <a name="enabling-the-microsoft-defender-for-endpoint-integration"></a>Endpoint Integration için Microsoft Defender 'ı etkinleştirme
 
-1. **Sunucular Için Azure Defender 'ı**etkinleştirin. Bkz. [Azure Güvenlik Merkezi fiyatlandırması](security-center-pricing.md#enable-azure-defender).
+1. **Sunucular Için Azure Defender 'ı** etkinleştirin. Bkz. [Azure Güvenlik Merkezi fiyatlandırması](security-center-pricing.md#enable-azure-defender).
 
     > [!NOTE]
     > Azure Arc etkin makinelerinizi korumak için [hızlı başlangıç: Azure Arc etkin sunucularıyla karma makineyi bağlama](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)' daki yönergeleri kullanın.
@@ -84,10 +84,10 @@ Konumu yapılandırdıktan sonra değiştiremezsiniz. Verilerinizi başka bir ko
 1. Sunucularınızdaki uç noktalar için Microsoft Defender 'ı zaten lisanslandırdıysanız ve dağıttıysanız, yerleşik [Windows sunucularında](/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints#offboard-windows-servers)açıklanan yordamı kullanarak kaldırın.
 1. Güvenlik Merkezi 'nin menüsünde **fiyatlandırma & ayarları**' nı seçin.
 1. Değiştirmek istediğiniz aboneliği seçin.
-1. **Tehdit algılamayı**seçin.
+1. **Tehdit algılamayı** seçin.
 1. **Endpoint Için Microsoft Defender 'ın verilerinize erişmesine Izin ver**' i seçin ve **Kaydet**' i seçin.
 
-    :::image type="content" source="./media/security-center-wdatp/enable-integration-with-edr.png" alt-text="Uç noktanın kendi güvenlik merkezi için Microsoft Defender":::
+    :::image type="content" source="./media/security-center-wdatp/enable-integration-with-edr.png" alt-text="Azure Güvenlik Merkezi ile Microsoft 'un EDR çözümü, uç nokta için Microsoft Defender arasındaki tümleştirmeyi etkinleştirin":::
 
     Azure Güvenlik Merkezi, uç nokta için sunucularınızı otomatik olarak Microsoft Defender 'a eklenecektir. Ekleme, 24 saate kadar sürebilir.
 
@@ -112,10 +112,10 @@ Uç nokta sınama uyarısı için bir zararsız Microsoft Defender oluşturmak i
     ```powershell
     powershell.exe -NoExit -ExecutionPolicy Bypass -WindowStyle Hidden (New-Object System.Net.WebClient).DownloadFile('http://127.0.0.1/1.exe', 'C:\\test-MDATP-test\\invoice.exe'); Start-Process 'C:\\test-MDATP-test\\invoice.exe'
     ```
-    :::image type="content" source="./media/security-center-wdatp/generate-edr-alert.png" alt-text="Uç noktanın kendi güvenlik merkezi için Microsoft Defender":::
+    :::image type="content" source="./media/security-center-wdatp/generate-edr-alert.png" alt-text="Bir test uyarısı oluşturmak için komutuyla birlikte bir komut istemi penceresi.":::
 
 1. Komut başarılı olursa, Azure Güvenlik Merkezi panosunda ve Endpoint Portal için Microsoft Defender 'da yeni bir uyarı görürsünüz. Bu uyarının görünmesi birkaç dakika sürebilir.
-1. Güvenlik Merkezi 'nde uyarıyı gözden geçirmek için **güvenlik uyarıları**  >  **şüpheli PowerShell komut satırı**bölümüne gidin.
+1. Güvenlik Merkezi 'nde uyarıyı gözden geçirmek için **güvenlik uyarıları**  >  **şüpheli PowerShell komut satırı** bölümüne gidin.
 1. Araştırma penceresinde, uç nokta portalı için Microsoft Defender 'a gitmek üzere bağlantıyı seçin.
 
 
@@ -123,7 +123,7 @@ Uç nokta sınama uyarısı için bir zararsız Microsoft Defender oluşturmak i
 
 ### <a name="what-are-the-licensing-requirements-for-microsoft-defender-for-endpoint"></a>Uç nokta için Microsoft Defender lisans gereksinimleri nelerdir?
 
-Uç nokta için Defender, **sunucular Için Azure Defender**ile ek bir ücret ödemeden dahil edilmiştir. Alternatif olarak, 50 makineler veya daha fazlası için ayrı olarak satın alınabilir.
+Uç nokta için Defender, **sunucular Için Azure Defender** ile ek bir ücret ödemeden dahil edilmiştir. Alternatif olarak, 50 makineler veya daha fazlası için ayrı olarak satın alınabilir.
 
 
 ### <a name="how-do-i-switch-from-a-third-party-edr-tool"></a>Üçüncü taraf bir EDR aracından geçiş Nasıl yaparım? misiniz?

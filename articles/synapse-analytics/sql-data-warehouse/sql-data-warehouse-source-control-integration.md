@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 766837cacb4ef2acf874c2872b347b6d35633faa
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 862fa839c56746042c072ae3100832fb2b78451a
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701006"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296938"
 ---
 # <a name="source-control-integration-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu için kaynak denetimi tümleştirmesi
 
@@ -38,11 +38,13 @@ Bu öğreticide, SQL Server Veri Araçları (SSDT) veritabanı projenizi kaynak 
    ![Bağlantıları Yönet](./media/sql-data-warehouse-source-control-integration/2-manage-connections.png "Bağlantıları Yönet")
 
 3. **Bağlantıları Yönet**' i seçip **projeye bağlanın**.
- ![Connect1](./media/sql-data-warehouse-source-control-integration/3-connect-project.png "Bağlan")
+ 
+    ![Connect1](./media/sql-data-warehouse-source-control-integration/3-connect-project.png "Bağlan")
 
 
 4. Birinci adımda oluşturduğunuz projeyi bulun, **Bağlan**' ı seçin.
-![Connect2](./media/sql-data-warehouse-source-control-integration/3.5-connect.png "Bağlan")
+ 
+    ![Connect2](./media/sql-data-warehouse-source-control-integration/3.5-connect.png "Bağlan")
 
 
 3. Azure DevOps deponuzu projenizden yerel makinenize kopyalayın.
@@ -85,7 +87,7 @@ Visual Studio kullanarak projeleri bağlama hakkında daha fazla bilgi için [Ta
 
    ![Doğrula](./media/sql-data-warehouse-source-control-integration/10-verify-column-change-pushed.png "Değişiklikleri doğrulama")
 
-4. (**Isteğe bağlı**) Azure depo deponuzdaki nesne tanımlarının ve yerel deponun veri Ambarınızı yansıttığından emin olmak için, SSDT kullanarak hedef veri ambarınızdaki değişiklikleri güncelleştirin.
+4. (**Isteğe bağlı**) Azure depo deponuzdaki nesne tanımlarının ve yerel deponun adanmış SQL havuzunuzu yansıttığından emin olmak için, şema karşılaştırması kullanın ve hedef adanmış SQL havuzunuzdaki değişiklikleri SSDT kullanarak güncelleştirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

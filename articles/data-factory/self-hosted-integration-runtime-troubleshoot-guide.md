@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 11/17/2020
 ms.author: lle
-ms.openlocfilehash: 93c35828444ec93a974769ed3a2f1981c0ec4368
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 8195c4d072acce5345fa9752f97713aed22d962f
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96013469"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296963"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı sorunlarını giderme
 
@@ -167,7 +167,7 @@ SSL/TLS el sıkışmasıyla ilgili olayları işlerken, sertifika zinciri doğru
 
 `Could not load file or assembly 'XXXXXXXXXXXXXXXX, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified. Activity ID: 92693b45-b4bf-4fc8-89da-2d3dc56f27c3`
  
-Örnek: 
+Örneğin: 
 
 `Could not load file or assembly 'System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=XXXXXXXXX' or one of its dependencies. The system cannot find the file specified. Activity ID: 92693b45-b4bf-4fc8-89da-2d3dc56f27c3`
 
@@ -458,6 +458,22 @@ Dönüştürmeden önce ve sonra:
 ![Sertifika değişikliğinden önce](media/self-hosted-integration-runtime-troubleshoot-guide/before-certificate-change.png)
 
 ![Sertifika değişikliğinden sonra](media/self-hosted-integration-runtime-troubleshoot-guide/after-certificate-change.png)
+
+### <a name="self-hosted-integration-runtime-version-5x"></a>Şirket içinde barındırılan Integration Runtime sürüm 5. x
+Şirket içinde barındırılan tümleştirme çalışma zamanının 5. x sürümüne yükseltme için, **.NET Framework Runtime 4.7.2** veya üzeri Azure Data Factory bir sürüm gerekir. İndirme sayfasında, en yeni 4. x sürümü ve en yeni iki 5. x sürümü için karşıdan yükleme bağlantıları bulunur. 
+
+
+ADF v2 müşterileri için:
+- Otomatik güncelleştirme açık ise ve .NET Framework çalışma zamanını 4.7.2 veya üzeri bir sürüme yükseltmişseniz, şirket içinde barındırılan tümleştirme çalışma zamanı otomatik olarak en yeni 5. x sürümüne yükseltilir.
+- Otomatik güncelleştirme açık ise ve .NET Framework çalışma zamanını 4.7.2 veya üstüne yükseltmişseniz, şirket içinde barındırılan tümleştirme çalışma zamanı en yeni 5. x sürümüne otomatik olarak yükseltilmeyecektir. Şirket içinde barındırılan tümleştirme çalışma zamanı geçerli 4. x sürümünde kalır. Portal ve şirket içinde barındırılan tümleştirme çalışma zamanı istemcisinde .NET Framework çalışma zamanı yükseltmesi için bir uyarı görebilirsiniz.
+- Otomatik Güncelleştirme kapalıysa ve .NET Framework çalışma zamanını 4.7.2 veya üzeri olarak yükselttiyseniz, en yeni 5. x 'i el ile indirebilir ve makinenize yükleyebilirsiniz.
+- Otomatik Güncelleştirme kapalıysa ve .NET Framework çalışma zamanını 4.7.2 veya üstüne yükseltmişseniz. SHıR 5. x 'i el ile yüklemeye ve anahtarı kaydetmeye çalıştığınızda önce .NET Framework çalışma zamanını yükseltmeniz gerekir.
+
+
+ADF v1 müşterileri için:
+- Şirket içinde barındırılan tümleştirme çalışma zamanı 5. X, ADF v1 'yi desteklemez.
+- Şirket içinde barındırılan tümleştirme çalışma zamanı, otomatik olarak 4. x sürümüne yükseltilir. Ve 4. x öğesinin son sürümü sona ermeyecektir. 
+- Şirket içinde barındırılan tümleştirme çalışma zamanı 5. x 'i el ile yüklemeye çalışırsanız ve anahtarı kaydettiğinizde, şirket içinde barındırılan tümleştirme çalışma zamanı 5. x v1 'yi desteklemez.
 
 
 ## <a name="self-hosted-ir-connectivity-issues"></a>Şirket içinde barındırılan IR bağlantı sorunları
@@ -757,6 +773,7 @@ Aksi takdirde, [buradan](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt )i
 #### <a name="cause"></a>Nedeni
 
 Şirket içinde barındırılan IR, çapraz kiracılar paylaştırılamaz.
+
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

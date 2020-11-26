@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: a5cb5831090987f1b620593843ddba817d8e68d4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 111b2b5b660133c20afdb3c56e1c3e3ed607398c
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188131"
+ms.locfileid: "96297072"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Azure SYNAPSE Studio 'da kaynak denetimi
 
@@ -30,17 +30,17 @@ Kaynak denetim yeteneği sağlamak için, SYNAPSE Studio, çalışma alanınız�
 
 ## <a name="configure-git-repository-in-synapse-studio"></a>SYNAPSE Studio 'da Git deposunu yapılandırma 
 
-SYNAPSE Studio 'Yu başlattıktan sonra, çalışma alanındaki Git deposunu yapılandırabilirsiniz. Bir Synapse Studio çalışma alanı, tek seferde yalnızca bir git deposu ile ilişkilendirilebilir. 
+SYNAPSE Studio 'Yu başlattıktan sonra, çalışma alanınızda bir git deposu yapılandırabilirsiniz. Bir Synapse Studio çalışma alanı tek seferde yalnızca bir git deposuyla ilişkilendirilebilir. 
 
-### <a name="configuration-method-1-authoring-canvas"></a>Yapılandırma yöntemi 1: yazma tuvali
+### <a name="configuration-method-1-global-bar"></a>Yapılandırma yöntemi 1: genel çubuk
 
-SYNAPSE Studio yazma tuvalinde, **SYNAPSE Live** açılır menüsünü ve ardından **kod deposunu ayarla**' yı seçin.
+SYNAPSE Studio genel çubuğunda **SYNAPSE Live** açılır menüsünü ve ardından **kod deposunu ayarla**' yı seçin.
 
 ![Kod deposu ayarlarını yazma işleminden yapılandırma](media/configure-repo-1.png)
 
 ### <a name="configuration-method-2-manage-hub"></a>Yapılandırma yöntemi 2: hub 'ı yönetme
 
-SYNAPSE Studio yönetim merkezine gidin. **Kaynak denetimi** bölümünde **Git yapılandırması** ' nı seçin. Bağlı depo yoksa, **Yapılandır**' a tıklayın.
+SYNAPSE Studio 'nun yönetim merkezine gidin. **Kaynak denetimi** bölümünde **Git yapılandırması** ' nı seçin. Bağlı depo yoksa, **Yapılandır**' a tıklayın.
 
 ![Kod deposu ayarlarını yönetim hub 'ından yapılandırma](media/configure-repo-2.png)
 
@@ -51,7 +51,7 @@ SYNAPSE Studio yönetim merkezine gidin. **Kaynak denetimi** bölümünde **Git 
 
 ## <a name="connect-with-azure-devops-git"></a>Azure DevOps git ile bağlantı 
 
-Kaynak denetimi, işbirliği, sürüm oluşturma vb. için bir Synapse çalışma alanını Azure DevOps deposu ile ilişkilendirebilirsiniz. Azure DevOps deponuz yoksa, önce depo kaynaklarınızı oluşturmak için [Bu yönergeleri](/azure/devops/organizations/accounts/create-organization-msa-or-work-student) izleyin.
+Kaynak denetimi, işbirliği, sürüm oluşturma vb. için bir Synapse çalışma alanını Azure DevOps deposu ile ilişkilendirebilirsiniz. Azure DevOps deponuz yoksa, depo kaynaklarınızı oluşturmak için [Bu yönergeleri](/azure/devops/organizations/accounts/create-organization-msa-or-work-student) izleyin.
 
 ### <a name="azure-devops-git-repository-settings"></a>Azure DevOps git deposu ayarları
 
@@ -94,7 +94,7 @@ Git tümleştirmesi için kişisel Microsoft hesabı kullanmak istiyorsanız, ki
 
 Bu yapılandırma adımlarında sonra, SYNAPSE Studio 'da git tümleştirmesini ayarlarken kişisel deponuz kullanılabilir.
 
-Kuruluşunuzun Active Directory Azure Repos bağlama hakkında daha fazla bilgi için bkz. [Azure DevOps kuruluşunuzu Azure Active Directory 'e bağlama](/azure/devops/organizations/accounts/connect-organization-to-azure-ad).
+Kuruluşunuzun Active Directory Azure Repos bağlama hakkında daha fazla bilgi için bkz. [kuruluşunuzu Azure Active Directory 'e bağlama](/azure/devops/organizations/accounts/connect-organization-to-azure-ad).
 
 ## <a name="connect-with-github"></a>GitHub ile bağlanma 
 

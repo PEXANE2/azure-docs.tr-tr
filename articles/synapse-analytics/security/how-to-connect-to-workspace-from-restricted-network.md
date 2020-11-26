@@ -8,18 +8,18 @@ ms.subservice: security
 ms.date: 10/25/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: 55ec8be176dc7274a3b9a1feca53726d57eeb422
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2e96cbf0c1464e27b0a384e8a813118056103b91
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024474"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296717"
 ---
 # <a name="connect-to-workspace-resources-from-a-restricted-network"></a>Kısıtlanmış bir ağdan çalışma alanı kaynaklarına bağlanma
 
 Kuruluşunuzun kısıtlanmış ağını yöneten bir BT Yöneticisi olduğunuzu varsayalım. Bu kısıtlı ağ içindeki bir iş istasyonu ile Azure SYNAPSE Analytics Studio arasındaki ağ bağlantısını etkinleştirmek istiyorsunuz. Bu makalede nasıl yapılacağı gösterilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 * **Azure SYNAPSE Analytics çalışma alanı**: Azure SYNAPSE Analytics 'ten bir tane oluşturabilirsiniz. 4. adımda çalışma alanı adının olması gerekir.
@@ -46,14 +46,11 @@ Daha fazla bilgi için bkz. [hizmet etiketlerine genel bakış](/azure/virtual-n
 
 Sonra, Azure portal özel bağlantı hub 'ları oluşturun. Portalda bunu bulmak için *Azure SYNAPSE Analytics (özel bağlantı hub 'ları)* araması yapın ve ardından bu bilgileri oluşturmak için gerekli bilgileri girin. 
 
-> [!Note]
-> **Bölge** değerinin, Azure SYNAPSE Analytics çalışma alanınızın bulunduğu bir değerle aynı olduğundan emin olun.
-
 ![SYNAPSE özel bağlantı hub 'ı oluşturma ekranının ekran görüntüsü.](./media/how-to-connect-to-workspace-from-restricted-network/private-links.png)
 
-## <a name="step-3-create-a-private-endpoint-for-your-gateway"></a>3. Adım: ağ geçidiniz için özel bir uç nokta oluşturma
+## <a name="step-3-create-a-private-endpoint-for-your-synapse-studio"></a>3. Adım: SYNAPSE Studio için özel bir uç nokta oluşturma
 
-Azure SYNAPSE Analytics Studio Gateway 'e erişmek için Azure portal özel bir uç nokta oluşturmanız gerekir. Portalda bunu bulmak için *özel bağlantı* aratın. **Özel bağlantı merkezinde** **Özel uç nokta oluştur**' u seçin ve ardından oluşturmak için gerekli bilgileri girin. 
+Azure SYNAPSE Analytics Studio 'ya erişmek için Azure portal özel bir uç nokta oluşturmanız gerekir. Portalda bunu bulmak için *özel bağlantı* aratın. **Özel bağlantı merkezinde** **Özel uç nokta oluştur**' u seçin ve ardından oluşturmak için gerekli bilgileri girin. 
 
 > [!Note]
 > **Bölge** değerinin, Azure SYNAPSE Analytics çalışma alanınızın bulunduğu bir değerle aynı olduğundan emin olun.
@@ -118,6 +115,43 @@ Not defterinizin belirli bir depolama hesabı altındaki bağlı depolama kaynak
 Bu uç noktayı oluşturduktan sonra, onay durumu **bekleyen** durumunu gösterir. Azure portal bu depolama hesabının **Özel uç nokta bağlantıları** sekmesinde Bu depolama hesabının sahibinden onay isteyin. Onaylandıktan sonra, Not defteriniz bu depolama hesabı altındaki bağlı depolama kaynaklarına erişebilir.
 
 Şimdi, All kümesi. Azure SYNAPSE Analytics Studio çalışma alanı kaynağınızın erişimine erişebilirsiniz.
+
+## <a name="appendix-dns-registration-for-private-endpoint"></a>Ek: özel uç nokta için DNS kaydı
+
+Özel uç nokta oluşturma sırasında aşağıda ekran görüntüsü olarak "özel DNS bölgesi ile tümleştirin" etkinleştirilmemişse, Özel uç noktalarınızın her biri için "**özel DNS bölgesi**" oluşturmanız gerekir.
+![SYNAPSE özel DNS bölgesi 1 oluşturma ekranının ekran görüntüsü.](./media/how-to-connect-to-workspace-from-restricted-network/pdns-zone-1.png)
+
+Portalda **özel DNS bölgeyi** bulmak için *özel DNS bölgeyi* arayın. **Özel DNS bölgesinde**, gerekli bilgileri oluşturmak için aşağıdaki bilgileri girin.
+
+* **Ad** için, özel DNS bölgesine özel bir uç nokta için adanmış adı aşağıdaki gibi girin:
+  * **`privatelink.azuresynapse.net`** , Azure SYNAPSE Analytics Studio Gateway 'e erişmenin özel uç noktasıdır. Adım 3 ' te bu tür özel uç nokta oluşturma bölümüne bakın.
+  * **`privatelink.sql.azuresynapse.net`** , SQL havuzunda ve yerleşik havuzda SQL sorgu yürütmesinin bu tür özel uç noktasıdır. 4. adımda uç nokta oluşturma bölümüne bakın.
+  * **`privatelink.dev.azuresynapse.net`** , Azure SYNAPSE Analytics Studio çalışma alanları içindeki diğer her şeye erişmek için bu tür özel uç nokta içindir. 4. adımda bu tür özel uç nokta oluşturma bölümüne bakın.
+  * **`privatelink.dfs.core.windows.net`** , çalışma alanına bağlı Azure Data Lake Storage 2. erişmek için özel uç nokta içindir. 5. adımda bu tür özel uç nokta oluşturma bölümüne bakın.
+  * **`privatelink.blob.core.windows.net`** , çalışma alanına bağlı Azure Blob depolama alanına erişmek için özel uç nokta içindir. 5. adımda bu tür özel uç nokta oluşturma bölümüne bakın.
+
+![SYNAPSE özel DNS bölge 2 oluştur ekran görüntüsü.](./media/how-to-connect-to-workspace-from-restricted-network/pdns-zone-2.png)
+
+**Özel DNS bölge** oluşturulduktan sonra, oluşturulan özel DNS bölgesini girin ve sanal ağınıza bağlantıyı eklemek için **sanal ağ bağlantılarını** seçin. 
+
+![SYNAPSE özel DNS bölgesi oluşturma 3 ekran görüntüsü.](./media/how-to-connect-to-workspace-from-restricted-network/pdns-zone-3.png)
+
+Zorunlu alanları aşağıda gösterildiği gibi girin:
+* **Bağlantı adı** için bağlantı adı ' nı girin.
+* **Sanal ağ** için Sanal ağınızı seçin.
+
+![SYNAPSE özel DNS bölgesi oluşturma 4 ekran görüntüsü.](./media/how-to-connect-to-workspace-from-restricted-network/pdns-zone-4.png)
+
+Sanal ağ bağlantısı eklendikten sonra, daha önce oluşturduğunuz **özel DNS BÖLGESINE** DNS kayıt kümesini eklemeniz gerekir.
+
+* **Ad** için, farklı özel uç nokta için ayrılmış ad dizelerini girin: 
+  * **Web** , Azure SYNAPSE Analytics Studio 'ya erişmenin özel uç noktasıdır.
+  * "***Yourçalışmadüzeyi * * _" SQL havuzunda SQL sorgu yürütmesinin özel uç noktası ve ayrıca Azure SYNAPSE Analytics Studio çalışma alanları içindeki diğer her şeye erişim için özel uç nokta için kullanılır. _ "*** yourçalışmadüzeyi *-OnDemand * *", yerleşik havuzda SQL sorgu yürütmesinin özel uç noktasıdır.
+* **Tür** **için yalnızca DNS** kayıt türü ' nü seçin. 
+* **IP adresi** için, her özel uç noktanın KARŞıLıK gelen IP adresini girin. **Ağ ARABIRIMINDEKI** IP adresini özel uç noktanıza genel bakış ' dan edinebilirsiniz.
+
+![SYNAPSE özel DNS bölgesi 5 oluşturma ekranının ekran görüntüsü.](./media/how-to-connect-to-workspace-from-restricted-network/pdns-zone-5.png)
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

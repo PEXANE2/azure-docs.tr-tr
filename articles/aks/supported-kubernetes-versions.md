@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 649f02097a18a141d186434a91539563c64e72ba
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: ecea9dcd28aede92ef255bf002b9195ded43c68b
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042132"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296123"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti’nde (AKS) desteklenen Kubernetes sürümleri
 
@@ -106,6 +106,9 @@ Sürümünüzü yüklemek veya güncelleştirmek için `kubectl` ' i çalıştı
 Kubernetes 'in yeni **İkincil** sürümleri için
 1. AKS, yeni sürüm sürümünün planlı tarihi ile bir ön duyuru yayımlar ve ilgili eski sürüm, kaldırma işleminden önce en az 30 gün önce, [aks sürüm notlarını](https://aka.ms/aks/releasenotes) kullanımdan kaldırır.
 2. AKS, AKS ve Portal erişimi olan tüm kullanıcılar için kullanılabilir bir [hizmet durumu bildirimi](../service-health/service-health-overview.md) yayımlar ve abonelik yöneticilerine planlanan sürüm kaldırma tarihleriyle bir e-posta gönderir.
+````
+To find out who is your subscription administrators or to change it, please refer to [manage Azure subscriptions](https://docs.microsoft.com/azure/cost-management-billing/manage/add-change-subscription-administrator#assign-a-subscription-administrator).
+````
 3. Kullanıcıların, destek almaya devam etmek için desteklenen bir ikincil sürüm sürümüne yükseltilmesi için sürüm kaldırma işleminden **30 gün** daha vardır.
 
 Kubernetes 'in yeni **Düzeltme Eki** sürümleri için
@@ -121,7 +124,7 @@ Hatanın veya güvenlik sorununun önem derecesine bağlı olarak belirli düzel
 
 ## <a name="azure-portal-and-cli-versions"></a>Azure portal ve CLı sürümleri
 
-Portal 'da veya Azure CLı ile bir AKS kümesi dağıttığınızda, küme, N-1 alt sürümüne ve en son düzeltme ekine varsayılan olarak ayarlanır. Örneğin, AKS, *1.17. a* , *1.17. b* , *1.16. c* , *1.16. d* , *1.15. e* ve *1.15. f* ' i destekliyorsa, seçilen varsayılan sürüm *1.16. c* ' dir.
+Portal 'da veya Azure CLı ile bir AKS kümesi dağıttığınızda, küme, N-1 alt sürümüne ve en son düzeltme ekine varsayılan olarak ayarlanır. Örneğin, AKS, *1.17. a*, *1.17. b*, *1.16. c*, *1.16. d*, *1.15. e* ve *1.15. f*' i destekliyorsa, seçilen varsayılan sürüm *1.16. c*' dir.
 
 Aboneliğiniz ve bölgeniz için şu anda hangi sürümlerin kullanılabildiğini öğrenmek için [az aks get-versions][az-aks-get-versions] komutunu kullanın. Aşağıdaki örnek *EastUS* bölgesi Için kullanılabilir Kubernetes sürümlerini listeler:
 
@@ -179,7 +182,7 @@ Denetim düzlemi tüm düğüm havuzlarındaki sürümlerin bir penceresi içind
 
 Desteklenen bir AKS kümesini yükselttiğinizde, Kubernetes ikincil sürümleri atlanamaz. Örneğin, *1.12. x*  ->  *1.13. x* veya *1.13. x*  ->  *1.14. x* arasındaki yükseltmelere izin verilir, ancak *1.12. x*  ->  *1.14. x* değildir.
 
-Yükseltmek için, *1.12. x*  ->  *1.14. x* sürümünden önce *1.12. x*  ->  *1.13. x* sürümünden yükseltme yapın ve ardından *1.13. x*  ->  *1.14. x* 'den yükseltme yapın.
+Yükseltmek için, *1.12. x*  ->  *1.14. x* sürümünden önce *1.12. x*  ->  *1.13. x* sürümünden yükseltme yapın ve ardından *1.13. x*  ->  *1.14. x*'den yükseltme yapın.
 
 Birden çok sürüm atlanması yalnızca desteklenmeyen bir sürümden desteklenen bir sürüme yükseltilirken yapılabilir. Örneğin, desteklenmeyen bir *1,10. x* sürümünden yükseltme > desteklenen bir *1.15. x* tamamlanabilir.
 

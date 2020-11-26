@@ -3,12 +3,12 @@ title: Azure VM 'lerinde SAP HANA veritabanı yedeklemesi hakkında
 description: Bu makalede, Azure sanal makinelerinde çalışan SAP HANA veritabanlarını yedekleme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: e30510817401fd8db23dc9f1d62fab495fac7ab2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efb9c3f786e429df404e261f053a9c9a9b032e11
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022318"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296463"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>Azure VM 'lerinde SAP HANA veritabanı yedeklemesi hakkında
 
@@ -51,7 +51,7 @@ Günümüzde destekdiğimiz yedekleme ve geri yükleme senaryolarını görünt�
 
 * **Hana için Azure Backup eklentisi** tüm yedekleme zamanlamalarını ve ilke ayrıntılarını saklar. Zamanlanan yedeklemeleri tetikler ve Backınt API 'Leri aracılığıyla **Hana yedekleme altyapısıyla** iletişim kurar.
 * **Hana yedekleme altyapısı** , yedeklenecek verilerle birlikte bir backınt akışı döndürür.
-* Tam veya fark olan tüm zamanlanmış yedeklemeler ve isteğe bağlı yedeklemeler (Azure portal tetiklenir), **Hana için Azure Backup eklentisi**tarafından başlatılır. Ancak, günlük yedeklemeleri **Hana yedekleme altyapısının** kendisi tarafından yönetilir ve tetiklenir.
+* Tam veya fark olan tüm zamanlanmış yedeklemeler ve isteğe bağlı yedeklemeler (Azure portal tetiklenir), **Hana için Azure Backup eklentisi** tarafından başlatılır. Ancak, günlük yedeklemeleri **Hana yedekleme altyapısının** kendisi tarafından yönetilir ve tetiklenir.
 * SAP HANA için Azure Backup, bir BackInt sertifikalı çözüm olması, temel diske veya VM türlerine bağlı değildir. Yedekleme, HANA tarafından oluşturulan akışlar tarafından gerçekleştirilir.
 
 ## <a name="using-azure-vm-backup-with-azure-sap-hana-backup"></a>Azure SAP HANA yedekleme ile Azure VM yedeklemesi kullanma
@@ -60,15 +60,12 @@ Azure 'da veritabanı düzeyinde yedekleme ve kurtarma sağlayan SAP HANA yedekl
 
 [Backınt sertifikalı Azure SAP HANA yedekleme çözümü](#backup-architecture) veritabanı yedekleme ve kurtarma için kullanılabilir.
 
-[Azure VM yedeklemesi](backup-azure-vms-introduction.md) , işletim sistemini ve diğer veritabanı olmayan diskleri yedeklemek için kullanılabilir. VM yedeklemesi her gün bir kez alınır ve tüm diskleri ( **yazma hızlandırıcısı (WA) diskleri** ve **Ultra diskler**dışında) yedekler. Veritabanı Azure SAP HANA yedekleme çözümü kullanılarak yedeklendiğinden, [Seçmeli disk yedekleme ve Azure VM 'leri için geri yükleme](selective-disk-backup-restore.md) özelliğini kullanarak yalnızca işletim sistemi ve veritabanı olmayan disklerin dosya ile tutarlı bir yedeklemesini gerçekleştirebilirsiniz.
-
->[!NOTE]
-> Azure VM yedekleme ile post öncesi betikleri kullanılması, veritabanının veri birimlerinin uygulamayla tutarlı yedeklemelere izin verir. Ancak, günlük alanı WA disklerinde bulunuyorsa, bu disklerin anlık görüntüsünü almak günlük alanı tutarlılığını garanti edemeyebilir. HANA, bu tam neden için günlük yedeklemeleri oluşturmanın açık bir yoludur. SAP HANA aynı şekilde etkinleştirin ve Azure SAP HANA yedekleme kullanılarak yedeklenebilir.
+[Azure VM yedeklemesi](backup-azure-vms-introduction.md) , işletim sistemini ve diğer veritabanı olmayan diskleri yedeklemek için kullanılabilir. VM yedeklemesi her gün bir kez alınır ve tüm diskleri ( **yazma hızlandırıcısı (WA) işletim sistemi diskleri** ve **Ultra diskler** dışında) yedekler. Veritabanı Azure SAP HANA yedekleme çözümü kullanılarak yedeklendiğinden, [Seçmeli disk yedekleme ve Azure VM 'leri için geri yükleme](selective-disk-backup-restore.md) özelliğini kullanarak yalnızca işletim sistemi ve veritabanı olmayan disklerin dosya ile tutarlı bir yedeklemesini gerçekleştirebilirsiniz.
 
 SAP HANA çalıştıran bir VM 'yi geri yüklemek için şu adımları izleyin:
 
 * [Azure VM yedeğinden yeni BIR VM](backup-azure-arm-restore-vms.md) 'yi en son kurtarma noktasından geri yükleyin. Veya yeni bir boş VM oluşturun ve diskleri en son kurtarma noktasından bağlayın.
-* WA diskleri yedeklenmeden bu yana geri yüklenmez. Boş WA diskleri ve günlük alanı oluşturun.
+* WA diskleri dışlanmazsa, geri yüklenmez. Bu durumda boş WA diskleri ve günlük alanı oluşturun.
 * Diğer tüm yapılandırmaların (IP, sistem adı, vb.) ayarlanabilmesi için VM, Azure Backup 'ten DB verisi alacak şekilde ayarlanır.
 * Şimdi VERITABANıNı [Azure SAP HANA DB YEDEĞINDEN](sap-hana-db-restore.md#restore-to-a-point-in-time-or-to-a-recovery-point) sanal makineye istediğiniz zaman noktasına geri yükleyin.
 

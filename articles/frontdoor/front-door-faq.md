@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: 18e32a0387119d235294d1126d869186ae28d2b2
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: abc4529d6076496b34859eec2b931a8dcbd1ce93
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488988"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296599"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure ön kapısı hakkında sık sorulan sorular
 
@@ -24,7 +24,7 @@ Bu makalede, Azure ön kapı özellikleri ve işlevselliği hakkında sık sorul
 
 1. Bu makalenin açıklamalar bölümü.
 2. [Azure ön kapı UserVoice](https://feedback.azure.com/forums/217313-networking?category_id=345025).
-3. **Microsoft desteği:** Yeni bir destek isteği oluşturmak için, Azure portal **Yardım** sekmesinde **Yardım + Destek** düğmesini seçin ve ardından **Yeni destek isteği** ' ni seçin.
+3. **Microsoft desteği:** Yeni bir destek isteği oluşturmak için, Azure portal **Yardım** sekmesinde **Yardım + Destek** düğmesini seçin ve ardından **Yeni destek isteği**' ni seçin.
 
 ## <a name="general"></a>Genel
 
@@ -97,7 +97,7 @@ Uygulamanızı yalnızca belirli ön kapıdan gelen trafiği kabul edecek şekil
     > [!WARNING]
     > Ön kapısının arka uç IP alanı daha sonra değişebilir, ancak [Azure IP aralıkları ve hizmet etiketleri](https://www.microsoft.com/download/details.aspx?id=56519)ile tümleştirilebilmemiz için bu işlem yapılmadan önce bu şekilde daha önce de olur. Herhangi bir değişiklik veya güncelleştirme için [Azure IP aralıklarına ve hizmet etiketlerine](https://www.microsoft.com/download/details.aspx?id=56519) abone olmanızı öneririz.
 
--    API sürümü veya üzeri ile ön kapıda bir GET işlemi gerçekleştirin `2020-01-01` . API çağrısında `frontdoorID` alan ara. ' **X-Azure-FDıD** ' gelen başlığına, ön kapıdan arka ucunuza, alanın değerine göre değer ile gönderilen filtre uygulayın `frontdoorID` . Ayrıca, `Front Door ID` ön kapı portalı sayfasından genel bakış bölümünde değeri de bulabilirsiniz. 
+-    API sürümü veya üzeri ile ön kapıda bir GET işlemi gerçekleştirin `2020-01-01` . API çağrısında `frontdoorID` alan ara. '**X-Azure-FDıD**' gelen başlığına, ön kapıdan arka ucunuza, alanın değerine göre değer ile gönderilen filtre uygulayın `frontdoorID` . Ayrıca, `Front Door ID` ön kapı portalı sayfasından genel bakış bölümünde değeri de bulabilirsiniz. 
 
 - Trafiği, ortaya çıkan ' X-Azure-FDıD ' üst bilgi değerine göre kısıtlamak için arka uç Web sunucunuza kural filtrelemesi uygulayın.
 
@@ -235,22 +235,22 @@ Evet, OCSP zımbalama, ön kapıya göre varsayılan olarak desteklenir ve herha
 
 ### <a name="does-azure-front-door-also-support-re-encryption-of-traffic-to-the-backend"></a>Azure ön kapısının arka uca trafiği yeniden şifrelemeyi de destekliyor mu?
 
-Evet, Azure ön kapısı TLS/SSL yük boşaltma 'yı destekler ve arka uca trafiği yeniden şifreler. Aslında, arka uca bağlantıların ortak IP 'si üzerinden gerçekleşmesi nedeniyle, ön Kapıınızı iletme protokolü olarak HTTPS kullanacak şekilde yapılandırmanız önerilir.
+Evet, Azure ön kapısı TLS/SSL yük boşaltma 'yı destekler ve arka uca trafiği yeniden şifreler. Aslında, arka uca bağlantıları genel IP 'si üzerinden gerçekleştiğinden, ön kapıyı iletme protokolü olarak HTTPS kullanacak şekilde yapılandırmanız önerilir.
 
 ### <a name="does-front-door-support-self-signed-certificates-on-the-backend-for-https-connection"></a>Ön kapı, HTTPS bağlantısı için arka uçta otomatik olarak imzalanan sertifikaları destekliyor mu?
 
 Hayır, kendinden imzalı sertifikalar ön kapıda desteklenmez ve kısıtlama her ikisi için de geçerlidir:
 
-1. **Backends** : trafiği, önbelleğe alma etkin olan yönlendirme KURALLARı için HTTPS veya https sistem durumu araştırmaları olarak iletirken veya önbellekten çıkış kaynağı olarak doldurarak otomatik olarak imzalanan sertifikalar kullanamazsınız.
-2. **Ön uç** : özel etkı alanında https 'yi etkinleştirmek için kendı özel TLS/SSL sertifikanızı kullanırken otomatik olarak imzalanan sertifikalar kullanamazsınız.
+1. **Backends**: trafiği, önbelleğe alma etkin olan yönlendirme KURALLARı için HTTPS veya https sistem durumu araştırmaları olarak iletirken veya önbellekten çıkış kaynağı olarak doldurarak otomatik olarak imzalanan sertifikalar kullanamazsınız.
+2. **Ön uç**: özel etkı alanında https 'yi etkinleştirmek için kendı özel TLS/SSL sertifikanızı kullanırken otomatik olarak imzalanan sertifikalar kullanamazsınız.
 
 ### <a name="why-is-https-traffic-to-my-backend-failing"></a>Arka ucumun HTTPS trafiği neden başarısız oluyor?
 
 Arka ucunuza, sistem durumu araştırmalarının veya isteklerin iletilmesi için başarılı HTTPS bağlantıları sağlamak için, HTTPS trafiğinin başarısız olmasının iki nedeni olabilir:
 
-1. **Sertifika konu adı uyumsuzluğu** : ön kapı, HTTPS bağlantıları için arka uç ana bilgisayar adı ile eşleşen GEÇERLI bir CA 'dan sertifika sunuyor. Örnek olarak, arka uç ana bilgisayar adı olarak ayarlanmışsa `myapp-centralus.contosonews.net` ve TLS el sıkışması sırasında arka ucunuzun temsil `myapp-centralus.contosonews.net` etmediği sertifika, ilgili ada sahip değilse `*myapp-centralus*.contosonews.net` , ön kapı bağlantıyı reddeder ve bir hatayla sonuçlanır. 
-    1. **Çözüm** : bir uyumluluk açısından önerilmemekle karşı, ön kapılarınız için sertifika konu adı denetimini devre dışı bırakarak bu hatayı geçici olarak yapabilirsiniz. Bu, Azure portal ayarları altında ve API 'deki BackendPoolsSettings altında bulunur.
-2. **GEÇERSIZ CA 'Dan arka uç barındırma sertifikası** : yalnızca [geçerli CA](./front-door-troubleshoot-allowed-ca.md) 'Lardan sertifikalar, ön kapılı arka uçta kullanılabilir. İç CA 'Ların veya otomatik olarak imzalanan sertifikaların sertifikalara izin verilmez.
+1. **Sertifika konu adı uyumsuzluğu**: ön kapı, HTTPS bağlantıları için arka uç ana bilgisayar adı ile eşleşen GEÇERLI bir CA 'dan sertifika sunuyor. Örnek olarak, arka uç ana bilgisayar adı olarak ayarlanmışsa `myapp-centralus.contosonews.net` ve TLS el sıkışması sırasında arka ucunuzun temsil `myapp-centralus.contosonews.net` etmediği sertifika, ilgili ada sahip değilse `*myapp-centralus*.contosonews.net` , ön kapı bağlantıyı reddeder ve bir hatayla sonuçlanır. 
+    1. **Çözüm**: bir uyumluluk açısından önerilmemekle karşı, ön kapılarınız için sertifika konu adı denetimini devre dışı bırakarak bu hatayı geçici olarak yapabilirsiniz. Bu, Azure portal ayarları altında ve API 'deki BackendPoolsSettings altında bulunur.
+2. **GEÇERSIZ CA 'Dan arka uç barındırma sertifikası**: yalnızca [geçerli CA](./front-door-troubleshoot-allowed-ca.md) 'Lardan sertifikalar, ön kapılı arka uçta kullanılabilir. İç CA 'Ların veya otomatik olarak imzalanan sertifikaların sertifikalara izin verilmez.
 
 ### <a name="can-i-use-clientmutual-authentication-with-azure-front-door"></a>Azure ön kapılı istemci/karşılıklı kimlik doğrulaması kullanabilir miyim?
 

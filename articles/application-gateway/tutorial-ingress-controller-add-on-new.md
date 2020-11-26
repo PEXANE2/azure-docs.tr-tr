@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 43aadee627c7dc12a37a8f3895ba4dfed472808c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 627d5b15a861c3d564cb4db33b366d3227092d37
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182912"
+ms.locfileid: "96296276"
 ---
 # <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>Öğretici: yeni bir Application Gateway örneğiyle yeni bir AKS kümesi için giriş denetleyicisi eklentisini (Önizleme) etkinleştirme
 
@@ -34,7 +34,10 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
- - Bu öğretici, Azure CLı 'nin sürüm 2.0.4 veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
+ - Bu öğretici, Azure CLı 'nin sürüm 2.0.4 veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür. Azure CLı kullanıyorsanız, henüz yoksa aşağıdaki komutu kullanarak önizleme uzantısını CLı 'ye yüklemelisiniz:
+    ```azurecli-interactive
+    az extension add --name aks-preview
+    ```
 
  - Aşağıdaki örnekte gösterildiği gibi [az Feature Register](/cli/azure/feature#az-feature-register) komutunu kullanarak *aks-IngressApplicationGatewayAddon* Feature bayrağını kaydedin. Eklenti hala önizleme aşamasında olduğunda bu işlemi abonelik başına yalnızca bir kez yapmanız gerekir.
     ```azurecli-interactive

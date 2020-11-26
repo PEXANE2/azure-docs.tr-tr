@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: ab13d53e54317bac15b9e1b0067cbd29f72eb3c1
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: c56f1ab546327aaf281ff3616fa489728f3885a6
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319023"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96297092"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>Öğretici: Agiloft ile tümleştirme Azure Active Directory
 
@@ -62,13 +62,13 @@ Agiloft 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden A
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **agiloft**yazın, sonuç panelinden **agiloft** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **agiloft** yazın, sonuç panelinden **agiloft** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuç listesinde agiloft](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına bağlı olarak Agıloft Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına bağlı olarak Agıloft Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Agiloft içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 Agiloft ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -105,14 +105,12 @@ Agiloft ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdaki a
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
     ```http
-    https://<subdomain>.saas.enterprisewizard.com/project/<KB_NAME>
-    https://<subdomain>.agiloft.com/project/<KB_NAME>
+    https://<subdomain>.agiloft.com/<KB_NAME>
     ```
 
     b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
 
     ```http
-    https://<subdomain>.saas.enterprisewizard.com:443/gui2/spsamlsso?project=<KB_NAME>
     https://<subdomain>.agiloft.com:443/gui2/spsamlsso?project=<KB_NAME>
     ```
 
@@ -123,7 +121,6 @@ Agiloft ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdaki a
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
 
     ```http
-    https://<subdomain>.saas.enterprisewizard.com/gui2/samlssologin.jsp?project=<KB_NAME>
     https://<subdomain>.agiloft.com/gui2/samlssologin.jsp?project=<KB_NAME>
     ```
 
@@ -152,7 +149,7 @@ Agiloft ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdaki a
 
     ![Erişim bölümünü vurgulayan ekran görüntüsü.](./media/agiloft-tutorial/setup1.png)
 
-3. **SAML 2,0 çoklu oturum açmayı Yapılandır**düğmesine tıklayın.
+3. **SAML 2,0 çoklu oturum açmayı Yapılandır** düğmesine tıklayın.
 
     ![SAML 2,0 tek Sign-On yapılandırma düğmesini vurgulayan ekran görüntüsü.](./media/agiloft-tutorial/setup2.png)
 
@@ -160,11 +157,11 @@ Agiloft ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıdaki a
 
     ![Agiloft yapılandırması](./media/agiloft-tutorial/setup4.png)
 
-    a. **IDP varlık kimliği/veren** metin kutusunda, Azure Portal kopyaladığınız **Azure AD tanımlayıcısının**değerini yapıştırın.
+    a. **IDP varlık kimliği/veren** metin kutusunda, Azure Portal kopyaladığınız **Azure AD tanımlayıcısının** değerini yapıştırın.
 
-    b. **IDP oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+    b. **IDP oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
-    c. **IDP oturum kapatma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **Logout URL 'si**değerini yapıştırın.
+    c. **IDP oturum kapatma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **Logout URL 'si** değerini yapıştırın.
 
     d. Azure portal 'den indirilen Not defteri 'nde **Base-64 kodlu sertifikanızı** açın, bu içeriği panonuza kopyalayın ve **IDP tarafından sunulan X. 509.952 sertifika içerikleri** metin kutusuna yapıştırın.
 
@@ -186,14 +183,14 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

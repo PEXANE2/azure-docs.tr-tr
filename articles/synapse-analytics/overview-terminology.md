@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 11/18/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8fd7562d1f8e38c79f739fdd2db7031e772874bc
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 0e637a09a5305e314a32b1cac34b2da669eec614
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122625"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296208"
 ---
 # <a name="azure-synapse-analytics-terminology"></a>Azure SYNAPSE Analytics terminolojisi
 
@@ -47,13 +47,13 @@ SYNAPSE içinde Spark kullanmanın iki yolu vardır:
 * Veri veri bilimi ve Mühendisliği yapmak için **Spark Not defterleri** Scala, Pyspark, C# ve mini kullanılan SQL
 * Jar dosyalarını kullanarak Batch Spark işlerinin çalıştırılmasına yönelik **Spark iş tanımları** .
 
-## <a name="pipelines"></a>Pipelines
+## <a name="pipelines"></a>İşlem hatları
 
 İşlem hatları Azure SYNAPSE 'in veri tümleştirmesi sağladığı, verileri hizmetler arasında taşımanızı ve etkinlikleri düzenlemenizi sağlar.
 
-* **Veri akışları** , SYNAPSE Spark 'ı içeren veri dönüştürme işlemi için codine olmayan bir deneyim sunar.
-* İşlem **hattı** -bir görevi birlikte gerçekleştiren etkinliklerin mantıksal gruplandırması.
-* **Etkinlik** -verileri kopyalama, bir not defteri veya bir SQL betiği çalıştırma gibi verilerde gerçekleştirilecek eylemleri tanımlar.
+* İşlem **hattı** , bir görevi birlikte gerçekleştiren etkinliklerin mantıksal gruplandırmasıdır.
+* **Etkinlikler** , verileri kopyalama, bir not defteri veya bir SQL betiği çalıştırma gibi veriler üzerinde gerçekleştirilecek eylemleri bir işlem hattı içinde tanımlar.
+* **Veri akışları** , SYNAPSE Spark kullanan bir veri dönüştürmesi gerçekleştirmek için kod içermeyen bir deneyim sunan belirli bir etkinlik türüdür.
 * **Trigger** -bir işlem hattı yürütür. El ile veya otomatik olarak çalıştırılabilir (zamanlama, pencere veya olay tabanlı)
 * **Tümleştirme veri kümesi** -bir etkinlikte giriş ve çıkış olarak kullanılacak verileri işaret eden veya başvuruda bulunan verilerin adlandırılmış görünümü. Bu, bağlı bir hizmete aittir.
 
