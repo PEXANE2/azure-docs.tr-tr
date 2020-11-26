@@ -90,6 +90,10 @@
                   href: ../data-factory/concepts-data-flow-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Bakım zamanlaması
           href: ./sql-data-warehouse/maintenance-scheduling.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Kaynak denetimi
+          href: ./cicd/source-control.md
+        - name: Sürekli tümleştirme ve teslim
+          href: ./cicd/continuous-integration-deployment.md
         - name: Güvenlik
           items:
             - name: Güvenlik temeli
@@ -1068,7 +1072,5 @@
           href: ./sql-data-warehouse/sql-data-warehouse-partner-machine-learning-ai.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Sistem tümleştirme
           href: ./sql-data-warehouse/sql-data-warehouse-partner-system-integration.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-        - name: Genel Önizleme iş ortakları
-          href: ./sql-data-warehouse/sql-data-warehouse-partner-launch.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Üçüncü taraf uygulamalarla uyumluluk sorunları
           href: ./sql-data-warehouse/sql-data-warehouse-partner-compatibility-issues.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
