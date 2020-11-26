@@ -8,22 +8,22 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 33d837f63fca2062ec930fcf0d64ee01ea822c99
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: d36cf2344891bb70ab5499e77699b111429a936b
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94989539"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96121836"
 ---
 # <a name="how-to-connect-devices-with-x509-certificates-using-nodejs-device-sdk-for-iot-central-application"></a>IoT Central uygulama için Node.js cihaz SDK 'sını kullanarak X. 509.440 sertifikalarıyla cihazları bağlama
 
-IoT Central, bir cihaz ve uygulamanız arasındaki iletişimin güvenliğini sağlamak için hem paylaşılan erişim imzalarını (SAS) hem de X. 509.440 sertifikalarını destekler. [Azure IoT Central uygulama öğreticisine bir istemci uygulaması oluşturma ve bağlama](./tutorial-connect-device-nodejs.md) ÖĞRETICISINE SAS kullanır. Bu makalede, kod örneğini X. 509.440 kullanacak şekilde nasıl değiştireceğiniz hakkında bilgi edineceksiniz.  X. 509.440 sertifikaları üretim ortamlarında önerilir. Daha fazla bilgi için bkz. [Azure IoT Central 'ye bağlanma](./concepts-get-connected.md).
+IoT Central, bir cihaz ve uygulamanız arasındaki iletişimin güvenliğini sağlamak için hem paylaşılan erişim imzalarını (SAS) hem de X. 509.440 sertifikalarını destekler. [Azure IoT Central uygulama öğreticisine bir istemci uygulaması oluşturma ve bağlama](./tutorial-connect-device.md) ÖĞRETICISINE SAS kullanır. Bu makalede, kod örneğini X. 509.440 kullanacak şekilde nasıl değiştireceğiniz hakkında bilgi edineceksiniz.  X. 509.440 sertifikaları üretim ortamlarında önerilir. Daha fazla bilgi için bkz. [Azure IoT Central 'ye bağlanma](./concepts-get-connected.md).
 
 Bu makalede, genellikle üretim ortamında kullanılan X. 509.440- [Group](how-to-connect-devices-x509.md#use-a-group-enrollment) kayıtlarını kullanmanın iki yolu ve [bireysel](how-to-connect-devices-x509.md#use-an-individual-enrollment) kayıtlar test için yararlıdır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- [Bir istemci uygulamasını oluşturma ve Azure IoT Central uygulamanızın (Node.js)](./tutorial-connect-device-nodejs.md) öğreticisine bağlama işleminin tamamlanması.
+- [Bir istemci uygulamasını oluşturma ve Azure IoT Central uygulamanızın (JavaScript)](./tutorial-connect-device.md) öğreticisine bağlama işleminin tamamlanması.
 - [Git](https://git-scm.com/download/).
 - [OpenSSL](https://www.openssl.org/)indirin ve yükleyin. Windows kullanıyorsanız, [SourceForge üzerindeki OpenSSL sayfasından](https://sourceforge.net/projects/openssl/)ikili dosyaları kullanabilirsiniz.
 
@@ -97,7 +97,7 @@ Kayıt grubunu kaydettikten sonra, KIMLIK kapsamını bir yere getirin.
 
 ## <a name="run-sample-device-code"></a>Örnek cihaz kodunu Çalıştır
 
-1. **SampleDevice01_key. pek** ve **sampleDevice01_cert. pea** dosyalarını, **simple_thermostat.js** uygulamasını içeren _Azure-IoT-SDK-node/Device/Samples/PNP_ klasörüne kopyalayın. Bu uygulamayı, [cihaz bağlama (Node.js) öğreticisini](./tutorial-connect-device-nodejs.md)tamamladıktan sonra kullandınız.
+1. **SampleDevice01_key. pek** ve **sampleDevice01_cert. pea** dosyalarını, **simple_thermostat.js** uygulamasını içeren _Azure-IoT-SDK-node/Device/Samples/PNP_ klasörüne kopyalayın. Bu uygulamayı [cihaz bağlama (JavaScript) öğreticisini](./tutorial-connect-device.md)tamamladığınızda kullandınız.
 
 1. **simple_thermostat.js** uygulamasını içeren _Azure-IoT-SDK-node/Device/Samples/PNP_ klasörüne gidin ve X. 509.440 paketini yüklemek için aşağıdaki komutu çalıştırın:
 
@@ -149,7 +149,7 @@ Kayıt grubunu kaydettikten sonra, KIMLIK kapsamını bir yere getirin.
     ```
 
     > [!TIP]
-    > [İstemci uygulamasını oluşturma ve Azure IoT Central uygulamanızın öğreticisine bağlama öğreticinizi tamamladıktan sonra](./tutorial-connect-device-nodejs.md) diğer gerekli ortam değişkenlerini ayarlarsınız.
+    > [İstemci uygulamasını oluşturma ve Azure IoT Central uygulamanızın öğreticisine bağlama öğreticinizi tamamladıktan sonra](./tutorial-connect-device.md) diğer gerekli ortam değişkenlerini ayarlarsınız.
 
 1. Betiği yürütün ve cihazın başarıyla sağlandığını doğrulayın:
 
@@ -197,7 +197,7 @@ Cihaz artık X. 509.440 sertifikası ile sağlanıyor.
 
 ## <a name="run-a-sample-individual-enrollment-device"></a>Örnek bir bireysel kayıt cihazı çalıştırma
 
-1. _Mytestselfcertprimary_key. pek_ ve _mytestselfcertprimary_cert. pea_ dosyalarını, **simple_thermostat.js** uygulamasını içeren _Azure-IoT-SDK-node/Device/Samples/PNP_ klasörüne kopyalayın. Bu uygulamayı, [cihaz bağlama (Node.js) öğreticisini](./tutorial-connect-device-nodejs.md)tamamladıktan sonra kullandınız.
+1. _Mytestselfcertprimary_key. pek_ ve _mytestselfcertprimary_cert. pea_ dosyalarını, **simple_thermostat.js** uygulamasını içeren _Azure-IoT-SDK-node/Device/Samples/PNP_ klasörüne kopyalayın. Bu uygulamayı [cihaz bağlama (JavaScript) öğreticisini](./tutorial-connect-device.md)tamamladığınızda kullandınız.
 
 1. İçinde kullandığınız ortam değişkenlerini aşağıdaki gibi değiştirin:
 

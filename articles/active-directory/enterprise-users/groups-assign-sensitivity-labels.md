@@ -13,16 +13,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08abd6938990f5300639a56fb487d910bf8000b3
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: f8680c1d24fe3c1ed840def40c1c3abdd2fdaf24
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95488870"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96121778"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Azure Active Directory Microsoft 365 gruplara duyarlılık etiketleri atama
 
-Azure Active Directory (Azure AD), [Microsoft 365 Uyumluluk Merkezi](https://sip.protection.office.com/homepage) tarafından yayımlanan duyarlılık etiketlerini Microsoft 365 gruplarına uygulamayı destekler. Duyarlılık etiketleri Outlook, Microsoft ekipleri ve SharePoint gibi hizmetler arasında grup için geçerlidir. Bu özellik şu anda genel GA 'dir. Microsoft 365 Apps desteği hakkında daha fazla bilgi için bkz. [duyarlık etiketleri için Microsoft 365 desteği](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels).
+Azure Active Directory (Azure AD), [Microsoft 365 Uyumluluk Merkezi](https://sip.protection.office.com/homepage) tarafından yayımlanan duyarlılık etiketlerini Microsoft 365 gruplarına uygulamayı destekler. Duyarlılık etiketleri Outlook, Microsoft ekipleri ve SharePoint gibi hizmetler arasında grup için geçerlidir. Microsoft 365 Apps desteği hakkında daha fazla bilgi için bkz. [duyarlık etiketleri için Microsoft 365 desteği](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels).
 
 > [!IMPORTANT]
 > Bu özelliği yapılandırmak için, Azure AD kuruluşunuzda en az bir etkin Azure Active Directory Premium P1 Lisansı olmalıdır.
@@ -135,7 +135,7 @@ Etiketler, mevcut bir gruba etiket atama ile aynı adımları kullanarak herhang
 1. **Grupları** seçin.
 1. **Tüm gruplar** sayfasında, etiketlemek istediğiniz grubu seçin.
 1. Seçili grubun sayfasında, **Özellikler** ' i seçin ve listeden yeni bir duyarlılık etiketi seçin.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ### <a name="group-setting-changes-to-published-labels-are-not-updated-on-the-groups"></a>Yayınlanmış etiketlere yapılan grup ayarı değişiklikleri gruplar üzerinde güncelleştirilmiyor
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2019
 ms.author: yelevin
-ms.openlocfilehash: 223f3e45f25e3aed3ed6fa15e5b9ea04b17f6c59
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 205cc6eea5d1ac3be2d0e266621067dc8e20d2f9
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023917"
+ms.locfileid: "96121739"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>Tehdit zekası sağlayıcılarından veri bağlama
 
@@ -56,10 +56,15 @@ Sonraki bölümde listelenen tümleşik tehdit bilgileri platformu (tıp) ürün
 
     Bilgi için bkz. [Threatconnect tümleştirmeleri](https://threatconnect.com/integrations/) ve sayfada Microsoft Graph güvenlik API 'sine bakın.
 
+- [EclecticIQ platformu](https://www.eclecticiq.com/solutions)
+
+- [ThreatQ Threat Intelligence platformu](https://www.threatq.com/)
+
+    Bilgi ve kılavuzlu yönergeler için bkz. [ThreatQ tümleştirmesi Için Microsoft Sentinel Bağlayıcısı](https://appsource.microsoft.com/product/web-apps/threatquotientinc1595345895602.microsoft-sentinel-connector-threatq?src=health&tab=Overview).
 
 ## <a name="connect-azure-sentinel-to-your-threat-intelligence-platform"></a>Azure Sentinel 'i tehdit bilgileri platformunuza bağlama
 
-### <a name="prerequisites"></a>Önkoşullar  
+### <a name="prerequisites"></a>Ön koşullar  
 
 - Tıp ürününüzün veya güvenlik yöneticisi 'nin Microsoft Graph güvenlik Tiındicators API 'SI ile doğrudan tümleştirme kullanan özel uygulamanıza izin vermek için genel yönetici veya güvenlik yöneticisinin Azure AD rolü.
 
@@ -89,7 +94,7 @@ Sonraki bölümde listelenen tümleşik tehdit bilgileri platformu (tıp) ürün
 
 ## <a name="connect-azure-sentinel-to-taxii-servers"></a>Azure Sentinel 'i TAXıı sunucularına bağlama
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 - Tehdit göstergelerini depolamak için Azure Sentinel çalışma alanına yönelik okuma ve yazma izinleri.
 
