@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 4a66db34adb4eb751abc741964b740b3b6f48c69
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 857659cdd97666dba585c1ec22c750e29bf28879
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073742"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169180"
 ---
 # <a name="troubleshoot-publisher-verification"></a>Yayımcı doğrulaması ile ilgili sorunları giderme
 Bu işlemi tamamlayamadıysanız veya [yayımcı doğrulaması](publisher-verification-overview.md)ile ilgili beklenmeyen davranışlarla karşılaşıyorsanız, hata alıyorsanız veya beklenmeyen davranışı görüyorsanız aşağıdakileri yaparak başlatmanız gerekir: 
@@ -51,8 +51,8 @@ Bu işlemi tamamlayamadıysanız veya [yayımcı doğrulaması](publisher-verifi
     1. [İş ortağı profilinize](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile) gidin ve şunları doğrulayın: 
         - MPN KIMLIĞI doğru. 
         - Bir hata veya "bekleyen eylemler" görüntülenir ve yasal iş profili ve Iş ortağı bilgileri altındaki doğrulama durumu "yetkili" veya "başarılı" deyin.
-    1. [MPN Kiracı Yönetimi sayfasına](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement) gidin ve uygulamanın kaydolmasını ve ' den bir kullanıcı hesabı ile imzalarınızın ilişkili kiracılar listesinde olduğunu doğrulayın. Ek bir kiracı eklemeniz gerekiyorsa [buradaki](https://docs.microsoft.com/partner-center/multi-tenant-account)yönergeleri izleyin. Lütfen eklediğiniz herhangi bir kiracının genel yöneticilerinin Iş Ortağı Merkezi hesabınızda genel yönetici ayrıcalıklarına sahip olacağını unutmayın.
-    1. [MPN Kullanıcı yönetimi sayfasına](https://partner.microsoft.com/pcv/users) gidin ve oturum açmak için kullandığınız kullanıcının genel yönetici, MPN Yöneticisi veya hesaplar Yöneticisi olduğunu onaylayın. Iş Ortağı Merkezi 'nde bir role Kullanıcı eklemeniz gerekiyorsa [buradaki](https://docs.microsoft.com/partner-center/create-user-accounts-and-set-permissions)yönergeleri izleyin.
+    1. [MPN Kiracı Yönetimi sayfasına](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement) gidin ve uygulamanın kaydolmasını ve ' den bir kullanıcı hesabı ile imzalarınızın ilişkili kiracılar listesinde olduğunu doğrulayın. Ek bir kiracı eklemeniz gerekiyorsa [buradaki](/partner-center/multi-tenant-account)yönergeleri izleyin. Lütfen eklediğiniz herhangi bir kiracının genel yöneticilerinin Iş Ortağı Merkezi hesabınızda genel yönetici ayrıcalıklarına sahip olacağını unutmayın.
+    1. [MPN Kullanıcı yönetimi sayfasına](https://partner.microsoft.com/pcv/users) gidin ve oturum açmak için kullandığınız kullanıcının genel yönetici, MPN Yöneticisi veya hesaplar Yöneticisi olduğunu onaylayın. Iş Ortağı Merkezi 'nde bir role Kullanıcı eklemeniz gerekiyorsa [buradaki](/partner-center/create-user-accounts-and-set-permissions)yönergeleri izleyin.
 
 - **Azure AD portalında oturum açarken hiçbir uygulamanın kayıtlı olmadığını görmüyorum. Kaydol?** 
     Uygulama kayıtlarınız, bu kiracıda farklı bir kullanıcı hesabı, kişisel/tüketici hesabı veya farklı bir kiracıda oluşturulmuş olabilir. Uygulama kayıtlarınızın oluşturulduğu kiracıda doğru hesapla oturum açtığınızdan emin olun.

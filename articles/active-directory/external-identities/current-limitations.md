@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2d7c1c0245649fdb7eed1033a953b8cc3933626
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e4f960819aa208dcc8d3e476fc45a766452b612c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442125"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168959"
 ---
 # <a name="limitations-of-azure-ad-b2b-collaboration"></a>Azure AD B2B işbirliğinin sınırlamaları
 Azure Active Directory (Azure AD) B2B işbirliği Şu anda bu makalede açıklanan sınırlamalara tabidir.
@@ -28,7 +28,7 @@ Azure AD B2B ile, çok faktörlü kimlik doğrulamasını kaynak kuruluşta (kur
 B2B işbirliği akışlarında, kullanıcıları dizine ekler ve davet satın alma, uygulama ataması vb. sırasında bunları dinamik olarak güncelleştirir. Güncelleştirmeler ve yazma işlemleri normalde tek bir dizin örneğinde gerçekleşir ve tüm örneklerde çoğaltılmalıdır. Tüm örnekler güncelleştirildikten sonra çoğaltma tamamlanır. Bazen nesne bir örnekte yazıldığında veya güncelleştirilirse ve bu nesneyi almak için yapılan çağrı başka bir örneğe ise çoğaltma gecikmeleri oluşabilir. Bu durumda, yenileyin veya yardım için yeniden deneyin. API 'imizi kullanarak bir uygulama yazıyorsanız, bu sorunu giderebilmeniz için bazı geri denemelerle yeniden denemeler yapmak iyi bir savunma yöntemidir.
 
 ## <a name="azure-ad-directories"></a>Azure AD dizinleri
-Azure AD B2B, Azure AD hizmeti dizin sınırlarına tabidir. Bir kullanıcının oluşturabileceğiniz dizin sayısı ve bir kullanıcının veya Konuk kullanıcının ait olduğu dizin sayısı hakkında daha fazla bilgi için bkz. [Azure AD hizmet limitleri ve kısıtlamaları](../users-groups-roles/directory-service-limits-restrictions.md).
+Azure AD B2B, Azure AD hizmeti dizin sınırlarına tabidir. Bir kullanıcının oluşturabileceğiniz dizin sayısı ve bir kullanıcının veya Konuk kullanıcının ait olduğu dizin sayısı hakkında daha fazla bilgi için bkz. [Azure AD hizmet limitleri ve kısıtlamaları](../enterprise-users/directory-service-limits-restrictions.md).
 
 ## <a name="national-clouds"></a>Ulusal bulutlar
 [Ulusal bulutlar](../develop/authentication-national-cloud.md) , Azure 'un fiziksel olarak yalıtılmış örnekleridir. B2B işbirliği Ulusal bulut sınırları genelinde desteklenmez. Örneğin, Azure kiracınız genel, genel bulutda ise, hesabı ulusal bir bulutta olan bir kullanıcıyı davet edebilirsiniz. Kullanıcıyla işbirliği yapmak için, başka bir e-posta adresi isteyin veya dizininizdeki kullanıcılar için bir üye kullanıcı hesabı oluşturun.
@@ -39,7 +39,7 @@ Azure ABD kamu bulutu dahilinde B2B işbirliği, hem Azure ABD devlet bulutu dah
 ### <a name="how-can-i-tell-if-b2b-collaboration-is-available-in-my-azure-us-government-tenant"></a>B2B işbirliğinin Azure ABD kamu kiracısında kullanılabilir olup olmadığını nasıl anlayabilirim?
 Azure ABD kamu bulutu kiracınızın B2B işbirliğini destekleyip desteklemediğini öğrenmek için aşağıdakileri yapın:
 
-1. Bir tarayıcıda aşağıdaki URL 'ye giderek, * &lt; TenantName &gt; *için kiracı adınızı değiştirin:
+1. Bir tarayıcıda aşağıdaki URL 'ye giderek, *&lt; TenantName &gt;* için kiracı adınızı değiştirin:
 
    `https://login.microsoftonline.com/<tenantname>/v2.0/.well-known/openid-configuration`
 

@@ -4,12 +4,12 @@ description: Azure Işlevlerine kod dağıtabilmeniz için farklı yollar edinin
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 3988f30d0e6429a8cac450711d4033e4b2603d46
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 7a75408008a90a2c40553b1f6c5c196775a48e61
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900173"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168109"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Işlevlerinde dağıtım teknolojileri
 
@@ -86,7 +86,7 @@ Linux üzerinde uzak derlemeyi etkinleştirmek için aşağıdaki [uygulama ayar
 * `ENABLE_ORYX_BUILD=true`
 * `SCM_DO_BUILD_DURING_DEPLOYMENT=true`
 
-Varsayılan olarak, Visual Studio Code için hem [Azure Functions Core Tools](functions-run-local.md) hem de [Azure Işlevleri uzantısı](functions-create-first-function-vs-code.md#publish-the-project-to-azure) , Linux 'a dağıtım yaparken uzak derlemeler gerçekleştirir. Bu nedenle, her iki araç da Azure 'da sizin için otomatik olarak bu ayarları oluşturur.
+Varsayılan olarak, Visual Studio Code için hem [Azure Functions Core Tools](functions-run-local.md) hem de [Azure Işlevleri uzantısı](./create-first-function-vs-code-csharp.md#publish-the-project-to-azure) , Linux 'a dağıtım yaparken uzak derlemeler gerçekleştirir. Bu nedenle, her iki araç da Azure 'da sizin için otomatik olarak bu ayarları oluşturur.
 
 Uygulamalar Linux üzerinde uzaktan oluşturulduğunda, [dağıtım paketinden çalıştırılırlar](run-functions-from-deployment-package.md).
 
@@ -128,7 +128,7 @@ Aşağıdaki dağıtım yöntemleri Azure Işlevleri 'nde kullanılabilir.
 
 >__Nasıl kullanılır:__ Premium veya adanmış planda bir Linux işlev uygulaması oluşturun ve hangi kapsayıcı görüntüsünün çalıştırılacağını belirtin. Bunu iki şekilde yapabilirsiniz:
 >
->* Azure portal bir Azure App Service planında bir Linux işlev uygulaması oluşturun. **Yayımla** Için **Docker görüntüsü** ' nü seçin ve kapsayıcıyı yapılandırın. Resmin barındırıldığı konumu girin.
+>* Azure portal bir Azure App Service planında bir Linux işlev uygulaması oluşturun. **Yayımla** Için **Docker görüntüsü**' nü seçin ve kapsayıcıyı yapılandırın. Resmin barındırıldığı konumu girin.
 >* Azure CLı kullanarak App Service planında bir Linux işlev uygulaması oluşturun. Nasıl yapılacağını öğrenmek için bkz. [özel bir görüntü kullanarak Linux üzerinde Işlev oluşturma](functions-create-function-linux-custom-image.md#create-supporting-azure-resources-for-your-function).
 >
 >Özel bir kapsayıcı kullanarak mevcut bir uygulamaya dağıtmak için, [Azure Functions Core Tools](functions-run-local.md)bölümünde [`func deploy`](functions-run-local.md#publish) komutunu kullanın.
@@ -185,7 +185,7 @@ Portal tabanlı düzenleyicide, işlev uygulamanızda olan dosyaları doğrudan 
 
 >__Ne zaman kullanılır:__ Portal, Azure Işlevleri 'ni kullanmaya başlamak için iyi bir yoldur. Daha yoğun bir geliştirme çalışması için aşağıdaki istemci araçlarından birini kullanmanızı öneririz:
 >
->* [Visual Studio Code](functions-create-first-function-vs-code.md)
+>* [Visual Studio Code](./create-first-function-vs-code-csharp.md)
 >* [Azure Functions Core Tools (komut satırı)](functions-run-local.md)
 >* [Visual Studio](functions-create-your-first-function-visual-studio.md)
 

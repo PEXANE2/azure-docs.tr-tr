@@ -16,12 +16,12 @@ ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96485dabd8cfb2ea9e3fb907940fccb05b5baee3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab425d0232310bd80d41c4028229c9da324a2bc9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89659345"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168245"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations--next-steps"></a>Azure Active Directory karma kimlik tasarımı konuları-sonraki adımlar
 Artık gereksinimlerinizi tanımlamayı ve mobil cihaz yönetimi çözümünüz için tüm seçenekleri incelemeyi tamamladığınıza göre, sonraki adımlara geçip kendiniz ve kuruluşunuz için destekleyici altyapının dağıtımını yapmaya hazırsınız demektir.
@@ -31,7 +31,7 @@ Mobil cihaz yönetimi çözümünüzü hayata geçirirken, kavramların ve yorda
 
 * [Microsoft System Center](/previous-versions/system-center/developer/cc817313(v=msdn.10)) ÇÖZÜMLERI, BT çalışanlarınızın yönetilebilir sistemler ve işlemleri otomatikleştirebilmesi için altyapınız, ilkeleriniz, süreçleriniz ve en iyi uygulamalar hakkında bilgi almanıza ve toplaetmenize yardımcı olabilir.
 * [Microsoft Intune](/mem/intune/), bilgisayarlarınızı ve mobil cihazlarınızı yönetmenizin yanı sıra şirketinizin verilerini güvenlik altına almanıza da yardımcı olan, bulut tabanlı bir cihaz yönetimi hizmetidir.
-* [Microsoft 365 Için MDM](https://technet.microsoft.com/library/ms.o365.cc.devicepolicy.aspx) , mobil cihazları Microsoft 365 kuruluşunuza bağlıyken yönetmenizi ve güvenliğini sağlamanıza olanak tanır. Cihaz güvenlik ilkeleri ve erişim kuralları ayarlamak ve kaybolması veya çalınması durumunda mobil cihazları temizlemek için Microsoft 365 MDM 'yi kullanabilirsiniz.
+* [Microsoft 365 Için MDM](/microsoft-365/admin/basic-mobility-security/overview) , mobil cihazları Microsoft 365 kuruluşunuza bağlıyken yönetmenizi ve güvenliğini sağlamanıza olanak tanır. Cihaz güvenlik ilkeleri ve erişim kuralları ayarlamak ve kaybolması veya çalınması durumunda mobil cihazları temizlemek için Microsoft 365 MDM 'yi kullanabilirsiniz.
 
 ## <a name="hybrid-identity-resources"></a>Karma kimlik kaynakları
 Aşağıdaki kaynakların izlenmesi genellikle mobil cihaz yönetimi çözümlerinde en son haberleri ve güncelleştirmeleri sağlar:

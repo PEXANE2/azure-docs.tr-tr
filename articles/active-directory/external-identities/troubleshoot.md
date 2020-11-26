@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 646bd2b6a8e22698e6fbcb44d2442e921c7850a5
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e7a77c110c12fd6b42e8defbe43a40579b9c6588
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441517"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168772"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>B2B işbirliği Azure Active Directory sorunlarını giderme
 
@@ -93,15 +93,15 @@ Konuk hesabına sahip olan bir Kullanıcı oturum açıp şu hata iletisini alı
 
 Kullanıcının bir Azure Kullanıcı hesabı vardır ve terk edilmiş ya da yönetilmeyen bir viral kiracısı vardır. Ayrıca, kiracıda genel veya Şirket Yöneticisi yoktur.
 
-Bu sorunu çözmek için, bırakılan kiracıyı devralmalısınız. [Azure Active Directory yönetilmeyen bir dizinden yönetici olarak alma](../users-groups-roles/domains-admin-takeover.md)bölümüne bakın. Ayrıca, ad alanını kontrol ettiğiniz doğrudan kanıt sağlamak için söz konusu etki alanı sonekine yönelik İnternet 'e yönelik DNS 'e erişmeniz gerekir. Kiracı yönetilen bir duruma dönmeden sonra, kullanıcılar ve doğrulanmış etki alanı adının kuruluş için en iyi seçenek olup olmadığını müşteriyle birlikte tartışın.
+Bu sorunu çözmek için, bırakılan kiracıyı devralmalısınız. [Azure Active Directory yönetilmeyen bir dizinden yönetici olarak alma](../enterprise-users/domains-admin-takeover.md)bölümüne bakın. Ayrıca, ad alanını kontrol ettiğiniz doğrudan kanıt sağlamak için söz konusu etki alanı sonekine yönelik İnternet 'e yönelik DNS 'e erişmeniz gerekir. Kiracı yönetilen bir duruma dönmeden sonra, kullanıcılar ve doğrulanmış etki alanı adının kuruluş için en iyi seçenek olup olmadığını müşteriyle birlikte tartışın.
 
 ## <a name="a-guest-user-with-a-just-in-time-or-viral-tenant-is-unable-to-reset-their-password"></a>Tam zamanında veya "viral" kiracısına sahip bir Konuk Kullanıcı parolasını sıfırlayamaz
 
-Kimlik kiracısı tam zamanında (JıT) veya viral kiracınız (yani ayrı, yönetilmeyen bir Azure kiracısı) ise, yalnızca Konuk Kullanıcı parolasını sıfırlayabilir. Bazen bir kuruluş, çalışanlar hizmetlere kaydolmak için iş e-posta adreslerini kullandıklarında oluşturulan [viral kiracılarının yönetimini ele geçirebilir](../users-groups-roles/domains-admin-takeover.md) . Kuruluş bir viral kiracısı gerçekleştirdikten sonra, yalnızca o kuruluştaki bir yönetici kullanıcı parolasını sıfırlayabilir veya SSPR 'yi etkinleştirebilir. Gerekirse, kuruluş olarak, Konuk Kullanıcı hesabını dizininizden kaldırabilir ve bir daveti yeniden gönderebilirsiniz.
+Kimlik kiracısı tam zamanında (JıT) veya viral kiracınız (yani ayrı, yönetilmeyen bir Azure kiracısı) ise, yalnızca Konuk Kullanıcı parolasını sıfırlayabilir. Bazen bir kuruluş, çalışanlar hizmetlere kaydolmak için iş e-posta adreslerini kullandıklarında oluşturulan [viral kiracılarının yönetimini ele geçirebilir](../enterprise-users/domains-admin-takeover.md) . Kuruluş bir viral kiracısı gerçekleştirdikten sonra, yalnızca o kuruluştaki bir yönetici kullanıcı parolasını sıfırlayabilir veya SSPR 'yi etkinleştirebilir. Gerekirse, kuruluş olarak, Konuk Kullanıcı hesabını dizininizden kaldırabilir ve bir daveti yeniden gönderebilirsiniz.
 
 ## <a name="a-guest-user-is-unable-to-use-the-azuread-powershell-v1-module"></a>Konuk Kullanıcı AzureAD PowerShell v1 modülünü kullanamıyor
 
-18 Kasım 2019 itibariyle, dizininizde bulunan Konuk kullanıcılar ( **UserType** özelliğinin **Konuk**olduğu Kullanıcı hesapları olarak tanımlanır), azuread PowerShell v1 modülünü kullanmak için engellenir. İleri giderek, bir kullanıcının üye Kullanıcı ( **UserType** eşittir **üyesi**) olması veya azuread PowerShell V2 modülünü kullanması gerekir.
+18 Kasım 2019 itibariyle, dizininizde bulunan Konuk kullanıcılar ( **UserType** özelliğinin **Konuk** olduğu Kullanıcı hesapları olarak tanımlanır), azuread PowerShell v1 modülünü kullanmak için engellenir. İleri giderek, bir kullanıcının üye Kullanıcı ( **UserType** eşittir **üyesi**) olması veya azuread PowerShell V2 modülünü kullanması gerekir.
 
 ## <a name="in-an-azure-us-government-tenant-i-cant-invite-a-b2b-collaboration-guest-user"></a>Bir Azure ABD kamu kiracısında bir B2B işbirliği Konuk kullanıcısını davet edemiyorum
 

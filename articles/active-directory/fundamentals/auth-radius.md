@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ec8062eb864c877b0f3659ca2dd8f103e935071
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 97c524e1f4c05787f1dd61dea5a463e8fa83511a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836793"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168636"
 ---
 # <a name="radius-authentication-with-azure-active-directory"></a>Azure Active Directory ile RADIUS kimlik doğrulaması
 
@@ -59,13 +59,12 @@ Windows NPS sunucusu bir kullanıcının kimlik bilgilerini Active Directory do�
 
 ## <a name="implement-radius-with-azure-ad"></a>Azure AD ile RADIUS uygulama 
 
-* [NPS kullanarak Azure AD Multi-Factor Authentication olanakları sağlama](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-nps-extension) 
+* [NPS kullanarak Azure AD Multi-Factor Authentication olanakları sağlama](../authentication/howto-mfa-nps-extension.md) 
 
-* [Azure AD Multi-Factor Authentication NPS uzantısını yapılandırma](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-nps-extension-advanced) 
+* [Azure AD Multi-Factor Authentication NPS uzantısını yapılandırma](../authentication/howto-mfa-nps-extension-advanced.md) 
 
-* [NPS uzantısını kullanarak Azure AD Multi-Factor Authentication ile VPN](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-nps-extension-vpn) 
+* [NPS uzantısını kullanarak Azure AD Multi-Factor Authentication ile VPN](../authentication/howto-mfa-nps-extension-vpn.md) 
 
   
 ‎ 
 
- 

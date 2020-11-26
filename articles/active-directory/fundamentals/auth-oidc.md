@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f38da0dd2dc2adc8049e2b307c861651a55ed700
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 0e5bf7e51de38d42e64f6737e687c5946a464160
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576997"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168670"
 ---
 # <a name="openid-connect-authentication-with-azure-active-directory"></a>Azure Active Directory ile OpenID Connect kimlik doğrulaması
 
@@ -38,24 +38,23 @@ Kullanıcı onayı ve Web oturumu açma için bir gereksinim vardır.
 
 ## <a name="components-of-system"></a>Sistem bileşenleri
 
-* **Kullanıcı** : uygulamadan bir hizmet ister.
+* **Kullanıcı**: uygulamadan bir hizmet ister.
 
-* **Güvenilen aracı** : kullanıcının etkileşime girdiği bileşen. Bu güvenilen aracı genellikle bir web tarayıcısıdır.
+* **Güvenilen aracı**: kullanıcının etkileşime girdiği bileşen. Bu güvenilen aracı genellikle bir web tarayıcısıdır.
 
-* **Uygulama** : uygulama veya kaynak sunucu, kaynak veya verilerin bulunduğu yerdir. Güvenli aracıyı güvenli bir şekilde doğrulamak ve yetkilendirmek için kimlik sağlayıcısına güvenir. 
+* **Uygulama**: uygulama veya kaynak sunucu, kaynak veya verilerin bulunduğu yerdir. Güvenli aracıyı güvenli bir şekilde doğrulamak ve yetkilendirmek için kimlik sağlayıcısına güvenir. 
 
-* **Azure AD** : kimlik sağlayıcısı olarak da bilinen OIDC sağlayıcısı, kullanıcının bilgileri, erişimleri ve bir akıştaki taraflar arasındaki güven ilişkilerini güvenli bir şekilde yönetir. Kullanıcı kimliğinin kimliğini doğrular, kaynaklara erişim izni verir ve erişimi iptal eder ve sorun belirteçleri. 
+* **Azure AD**: kimlik sağlayıcısı olarak da bilinen OIDC sağlayıcısı, kullanıcının bilgileri, erişimleri ve bir akıştaki taraflar arasındaki güven ilişkilerini güvenli bir şekilde yönetir. Kullanıcı kimliğinin kimliğini doğrular, kaynaklara erişim izni verir ve erişimi iptal eder ve sorun belirteçleri. 
 
 ## <a name="implement-oidc-with-azure-ad"></a>Azure AD ile OıDC uygulama
 
-* [Uygulamaları Azure AD ile tümleştirme](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) 
+* [Uygulamaları Azure AD ile tümleştirme](../saas-apps/tutorial-list.md) 
 
-* [Microsoft Identity platformunda OAuth 2,0 ve OpenID Connect protokolleri](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols) 
+* [Microsoft Identity platformunda OAuth 2,0 ve OpenID Connect protokolleri](../develop/active-directory-v2-protocols.md) 
 
-* [Microsoft Identity platform ve OpenID Connect Protokolü](https://docs.microsoft.com/azure/active-directory/develop/v2-protocols-oidc) 
+* [Microsoft Identity platform ve OpenID Connect Protokolü](../develop/v2-protocols-oidc.md) 
 
-* [Azure Active Directory B2C 'de OpenID Connect ile Web oturumu açma](https://docs.microsoft.com/azure/active-directory-b2c/openid-connect) 
+* [Azure Active Directory B2C 'de OpenID Connect ile Web oturumu açma](../../active-directory-b2c/openid-connect.md) 
 
-* [OpenID Connect ve Azure AD kullanarak uygulamanızın güvenliğini sağlama](https://docs.microsoft.com/learn/modules/secure-app-with-oidc-and-azure-ad/) 
+* [OpenID Connect ve Azure AD kullanarak uygulamanızın güvenliğini sağlama](/learn/modules/secure-app-with-oidc-and-azure-ad/) 
 
- 

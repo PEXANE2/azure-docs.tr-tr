@@ -13,12 +13,12 @@ ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea8905051d06e4f8787d80abf5cc33dbc21692e0
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 30d268b116b35ede5741179c3f60da909c792ba8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95488445"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168982"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD 'de grup tabanlı lisanslama için PowerShell ve Graph örnekleri
 
@@ -661,9 +661,9 @@ aadbe4da-c4b5-4d84-800a-9400f31d7371 User has no direct license to remove. Skipp
 Gruplar aracılığıyla lisans yönetimi için özellik kümesi hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
 * [Azure Active Directory 'de grup tabanlı lisanslama nedir?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
-* [Azure Active Directory'de gruba lisans atama](../users-groups-roles/licensing-groups-assign.md)
+* [Azure Active Directory'de gruba lisans atama](./licensing-groups-assign.md)
 * [Azure Active Directory'de grubun lisans sorunlarını tanımlama ve çözme](licensing-groups-resolve-problems.md)
 * [Azure Active Directory'de tek tek lisanslı kullanıcıları grup tabanlı lisanslamaya geçirme](licensing-groups-migrate-users.md)
 * [Azure Active Directory 'de grup tabanlı lisanslama kullanarak kullanıcıları ürün lisansları arasında geçirme](licensing-groups-change-licenses.md)
-* [Azure Active Directory grup tabanlı lisanslamayla ilgili ek senaryolar](../users-groups-roles/licensing-group-advanced.md)
+* [Azure Active Directory grup tabanlı lisanslamayla ilgili ek senaryolar](./licensing-group-advanced.md)
 * [Azure Active Directory 'de grup tabanlı lisanslama için PowerShell örnekleri](licensing-ps-examples.md)

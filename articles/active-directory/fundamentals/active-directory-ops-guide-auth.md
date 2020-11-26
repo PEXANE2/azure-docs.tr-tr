@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: baa0aa01c94c4deb35db8a59f7b4f81224ae1fd3
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5f529e6148463ae384791985659378cb9d0a5046
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836997"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168874"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory kimlik doğrulaması yönetim işlemleri başvuru kılavuzu
 
@@ -160,7 +160,7 @@ Tüm kuruluş için standartlaştırılmış bir çoklu oturum açma mekanizmas�
 > [!NOTE]
 > Kuruluşunuzda yönetilmeyen uygulamaları bulmak için bir mekanizmanız yoksa, [Microsoft Cloud App Security](https://www.microsoft.com/enterprise-mobility-security/cloud-app-security)gibi bir bulut erişim güvenlik Aracısı çözümü (casb) kullanarak bir bulma işlemi uygulamanızı öneririz.
 
-Son olarak, Azure AD uygulama galeriniz varsa ve Azure AD ile SSO 'yu destekleyen uygulamalar kullanıyorsanız, [uygulamayı uygulama galerisinde listelemeyi](../azuread-dev/howto-app-gallery-listing.md)öneririz.
+Son olarak, Azure AD uygulama galeriniz varsa ve Azure AD ile SSO 'yu destekleyen uygulamalar kullanıyorsanız, [uygulamayı uygulama galerisinde listelemeyi](../develop/v2-howto-app-gallery-listing.md)öneririz.
 
 #### <a name="single-sign-on-recommended-reading"></a>Okumanız için çoklu oturum açma önerilir
 
@@ -255,7 +255,7 @@ Koşullu erişim, kuruluşunuzun güvenlik duruşunu iyileştirmek için gereken
 
 #### <a name="conditional-access-recommended-reading"></a>Koşullu erişimin okunması önerilir
 
-- [Azure Active Directory 'de koşullu erişim için en iyi yöntemler](../conditional-access/best-practices.md)
+- [Azure Active Directory 'de koşullu erişim için en iyi yöntemler](../conditional-access/overview.md)
 - [Kimlik ve cihaz erişim yapılandırmaları](/microsoft-365/enterprise/microsoft-365-policies-configurations)
 - [Azure Active Directory Koşullu erişim ayarları başvurusu](../conditional-access/concept-conditional-access-conditions.md)
 - [Sık kullanılan Koşullu Erişim İlkeleri](../conditional-access/concept-conditional-access-policy-common.md)
@@ -309,7 +309,7 @@ Aşağıda, Microsoft bulut hizmetleri için Scrutinize isteyebileceğiniz izinl
 | | Mail. Read. Shared |
 | | Mail. ReadWrite |
 
-- Uygulamalar, oturum açmış kullanıcının tam kullanıcı kimliğine bürünme izni verdi. Örnek:
+- Uygulamalar, oturum açmış kullanıcının tam kullanıcı kimliğine bürünme izni verdi. Örneğin:
 
 |Kaynak | İzin |
 | :- | :- |

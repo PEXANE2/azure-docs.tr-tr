@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb54410fb314376b68d7297a3452f0990762343d
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 69e87fc919893a544f5d0b1b615a110f25486e57
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577167"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168755"
 ---
 # <a name="header-based-authentication-with-azure-active-directory"></a>Azure Active Directory ile üst bilgi tabanlı kimlik doğrulaması
 
@@ -34,22 +34,22 @@ Uzak kullanıcıların, üst bilgi tabanlı kimlik doğrulaması gerektiren şir
 
 ## <a name="components-of-system"></a>Sistem bileşenleri
 
-* **Kullanıcı** : uygulama proxy 'si tarafından sunulan eski uygulamalara erişir.
+* **Kullanıcı**: uygulama proxy 'si tarafından sunulan eski uygulamalara erişir.
 
-* **Web tarayıcısı** : kullanıcının uygulamanın dış URL 'sine erişmek için etkileşimde bulunduğu bileşen.
+* **Web tarayıcısı**: kullanıcının uygulamanın dış URL 'sine erişmek için etkileşimde bulunduğu bileşen.
 
-* **Azure AD** : kullanıcının kimliğini doğrular. 
+* **Azure AD**: kullanıcının kimliğini doğrular. 
 
-* **Uygulama proxy hizmeti** : kullanıcıdan şirket içi uygulamaya istek göndermek için ters proxy işlevi görür. Azure AD 'de bulunur ve tüm koşullu erişim ilkelerini de uygulayabilir.
+* **Uygulama proxy hizmeti**: kullanıcıdan şirket içi uygulamaya istek göndermek için ters proxy işlevi görür. Azure AD 'de bulunur ve tüm koşullu erişim ilkelerini de uygulayabilir.
 
-* **Uygulama proxy Bağlayıcısı** : uygulamalara bağlantı sağlamak için Windows Server 'da şirket içinde yüklü. Yalnızca giden bağlantıları kullanır. Azure AD 'nin yanıtını döndürür.
+* **Uygulama proxy Bağlayıcısı**: uygulamalara bağlantı sağlamak için Windows Server 'da şirket içinde yüklü. Yalnızca giden bağlantıları kullanır. Azure AD 'nin yanıtını döndürür.
 
-* **Eski uygulamalar** : uygulama proxy 'sinden Kullanıcı istekleri alan uygulamalar. Eski uygulama, bir oturum ayarlamak ve bir yanıt döndürmek için gerekli HTTP üstbilgilerini alır. 
+* **Eski uygulamalar**: uygulama proxy 'sinden Kullanıcı istekleri alan uygulamalar. Eski uygulama, bir oturum ayarlamak ve bir yanıt döndürmek için gerekli HTTP üstbilgilerini alır. 
 
 ## <a name="implement-header-based-authentication-with-azure-ad"></a>Azure AD ile üst bilgi tabanlı kimlik doğrulaması uygulama
 
-* [Azure AD 'de uygulama proxy 'Si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application)  
+* [Azure AD 'de uygulama proxy 'Si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme](../manage-apps/application-proxy-add-on-premises-application.md)  
 
-* [Uygulama Ara Sunucusu ve PingAccess ile çoklu oturum açmak için üst bilgi tabanlı kimlik doğrulaması](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-ping-access) 
+* [Uygulama Ara Sunucusu ve PingAccess ile çoklu oturum açmak için üst bilgi tabanlı kimlik doğrulaması](../manage-apps/application-proxy-configure-single-sign-on-with-headers.md) 
 
-* [Uygulama teslim denetleyicileri ve ağlarla eski uygulamaları güvenli hale getirme](https://docs.microsoft.com/azure/active-directory/manage-apps/secure-hybrid-access)
+* [Uygulama teslim denetleyicileri ve ağlarla eski uygulamaları güvenli hale getirme](../manage-apps/secure-hybrid-access.md)

@@ -13,12 +13,12 @@ ms.date: 07/22/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: db25e0a9ebe01a45c594fe214efcdd3551cf6c14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7fe48cf28ab3004087e2b022d7a9eca69a1e58e2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91449365"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169639"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Azure Active Directory'deki uygulama ve hizmet sorumlusu nesneleri
 
@@ -72,7 +72,7 @@ Uygulamanın kullanıldığı her kiracıda bir hizmet sorumlusu oluşturulmalı
 
 ## <a name="example"></a>Örnek
 
-Aşağıdaki diyagramda, bir uygulamanın uygulama nesnesi ile karşılık gelen hizmet sorumlusu nesneleri arasındaki ilişki, **HR uygulaması**adlı örnek bir çok kiracılı uygulama bağlamında gösterilmektedir. Bu örnek senaryoda üç Azure AD kiracının olması vardır:
+Aşağıdaki diyagramda, bir uygulamanın uygulama nesnesi ile karşılık gelen hizmet sorumlusu nesneleri arasındaki ilişki, **HR uygulaması** adlı örnek bir çok kiracılı uygulama bağlamında gösterilmektedir. Bu örnek senaryoda üç Azure AD kiracının olması vardır:
 
 - **Adatum** -şirket tarafından **İK uygulamasını** geliştiren kiracı
 - **Contoso** - **İK uygulamasının** bir tüketicisi olan contoso organizasyonu tarafından kullanılan kiracı

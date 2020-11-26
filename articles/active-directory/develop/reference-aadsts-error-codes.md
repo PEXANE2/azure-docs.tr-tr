@@ -12,12 +12,12 @@ ms.date: 11/09/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 59ed397f3bd54a324f8fa375a3ea870860c31142
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: fa6fc11441811589967ddd7728501b521f9f9155
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410938"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169282"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD Kimlik Doğrulaması ve yetkilendirme hata kodları
 
@@ -315,7 +315,7 @@ Hata kodları ve mesajlar değiştirilebilir.  En güncel bilgiler için, [https
 | AADSTS700022 | Invalidmultipleresourcesscope-giriş parametresi kapsamı için girilen değer, birden fazla kaynak içerdiğinden geçerli değil. |
 | AADSTS700023 | Invalidresourcelessscope-girilen parametre kapsamı için girilen değer, erişim belirteci isteğinde geçerli değildir. |
 | AADSTS7000215 | Geçersiz istemci parolası belirtildi. Geliştirici hatası-uygulama, gerekli veya doğru kimlik doğrulama parametreleri olmadan oturum açmaya çalışıyor.|
-| AADSTS7000222 | Invalidclientsecretexpiredkeyssaðlanan-belirtilen istemci gizli anahtarı anahtarlarının geçerliliği dolmuştur. Uygulamanız için yeni anahtarlar oluşturmak üzere Azure portal ziyaret edin veya ek güvenlik için sertifika kimlik bilgilerini kullanmayı düşünün: [https://aka.ms/certCreds](https://aka.ms/certCreds) |
+| AADSTS7000222 | Invalidclientsecretexpiredkeyssaðlanan-belirtilen istemci gizli anahtarı anahtarlarının geçerliliği dolmuştur. Uygulamanız için yeni anahtarlar oluşturmak üzere Azure portal ziyaret edin veya ek güvenlik için sertifika kimlik bilgilerini kullanmayı düşünün: [https://aka.ms/certCreds](./active-directory-certificate-credentials.md) |
 | AADSTS700005 | Invalidgrantredeemagaınstyanlışlıkla Gtenant tarafından sağlanmış yetkilendirme kodu, diğer kiracılarda kullanılmak üzere tasarlanmıştır, bu nedenle reddedilir. OAuth2 yetkilendirme kodu, (/Common veya/{tenant-ID} için uygun olan) için alınan aynı kiracıya göre kullanılmalıdır |
 | AADSTS1000000 | UserNotBoundError-bağlama API 'SI, Azure AD kullanıcısının, henüz gerçekleşmemiş bir dış ıDP ile kimlik doğrulaması yapmasını gerektirir. |
 | AADSTS1000002 | BindCompleteInterruptError-bağlama başarıyla tamamlandı, ancak kullanıcının bilgilendirilmesi gerekiyor. |

@@ -11,14 +11,14 @@ ms.date: 10/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cbca2d00d10b6595b8a1d13251dd88c65667541
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: df199afd85c788299334087321c3edac8482698d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135384"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168517"
 ---
-# <a name="what-is-inter-directory-provisioning"></a>Dizin içi sağlama nedir?
+# <a name="what-is-inter-directory-provisioning"></a>Dizinler arası sağlama nedir?
 
 Dizin, öğeleri ve ağ kaynaklarını bulmak, yönetmek, yönetmek ve düzenlemek için kullanılan paylaşılan bir bilgi altyapısıdır.  Dizin Hizmetleri kullanan uygulama örnekleri Microsoft Active Directory ve Azure AD ' dir.  Kimlikler Yardım dizin sistemleri, kimin ne erişebileceği ve belirli kaynakları kullanmasına izin verilen gibi belirleyici hale getirir.
 
@@ -35,7 +35,7 @@ Azure AD, dizin içi sağlama işlemini gerçekleştirmeye yönelik üç yöntem
 
 - [Azure AD Connect bulut sağlama](../cloud-provisioning/what-is-cloud-provisioning.md) -karma kimlik hedeflerinizi karşılamak ve başarmak için tasarlanan yeni bir Microsoft Aracısı.  Active Directory ile Azure AD arasında bir hafif Dizin sağlama deneyimi sağlar.
 
-- [Microsoft Identity Manager](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016) -Microsoft 'un Şirket içi kimlik ve erişim yönetimi çözümü, kuruluşunuzdaki kullanıcıları, kimlik bilgilerini, ilkeleri ve erişimi yönetmenize yardımcı olur. Ayrıca, MıM Active Directory, Azure AD ve diğer dizinlere yönelik karma kimlik ortamları elde etmek için Gelişmiş dizin içi sağlama sağlar.
+- [Microsoft Identity Manager](/microsoft-identity-manager/microsoft-identity-manager-2016) -Microsoft 'un Şirket içi kimlik ve erişim yönetimi çözümü, kuruluşunuzdaki kullanıcıları, kimlik bilgilerini, ilkeleri ve erişimi yönetmenize yardımcı olur. Ayrıca, MıM Active Directory, Azure AD ve diğer dizinlere yönelik karma kimlik ortamları elde etmek için Gelişmiş dizin içi sağlama sağlar.
 
 ### <a name="key-benefits"></a>Önemli avantajlar
 
@@ -45,7 +45,7 @@ Dizin içi sağlamanın bu özelliği, aşağıdaki önemli iş avantajlarını 
 - [Geçişli kimlik doğrulaması](../hybrid/how-to-connect-pta.md) -kullanıcıların şirket içinde ve bulutta aynı parolayı kullanmasına izin veren bir oturum açma yöntemi, ancak Federasyon ortamında ek altyapı gerektirmez.
 - [Federasyon tümleştirme](../hybrid/how-to-connect-fed-whatis.md) -şirket içi AD FS altyapısını kullanarak karma ortam yapılandırmak için kullanılabilir. Ayrıca sertifika yenileme ve ek AD FS sunucu dağıtımları gibi AD FS yönetim özellikleri de sağlar.
 - [Eşitleme](../hybrid/how-to-connect-sync-whatis.md) -Kullanıcı, Grup ve diğer nesneleri oluşturmaktan sorumludur.  Ayrıca, şirket içi kullanıcılarınız ve gruplarınız için kimlik bilgilerinin bulutla aynı olduğundan emin olun.  Bu eşitleme, parola karmaları da içerir.
-- [Sistem durumu izleme](../hybrid/whatis-hybrid-identity-health.md) -bu etkinliği görüntülemek için güçlü izleme sağlayabilir ve Azure Portal merkezi bir konum sağlayabilir. 
+- [Sistem durumu izleme](../hybrid/whatis-azure-ad-connect.md) -bu etkinliği görüntülemek için güçlü izleme sağlayabilir ve Azure Portal merkezi bir konum sağlayabilir. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar 

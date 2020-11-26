@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ab14413de1f999747e5b3fb58b505e0a9258a55
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7cd2aa5e9ff8cbaeead69f11d2e3de7f760b53ec
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441224"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168653"
 ---
 # <a name="saml-authentication-with-azure-active-directory"></a>Azure Active Directory ile SAML kimlik doğrulaması
 
@@ -53,8 +53,8 @@ SAML adreslerinin en önemli kullanım çalışmalarından biri, özellikle de g
 
 ## <a name="implement-saml-authentication-with-azure-ad"></a>Azure AD ile SAML kimlik doğrulaması uygulama
 
-* [Azure Active Directory kullanarak SaaS uygulamalarını tümleştirmek için öğreticiler](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) 
+* [Azure Active Directory kullanarak SaaS uygulamalarını tümleştirmek için öğreticiler](../saas-apps/tutorial-list.md) 
 
-* [Galeri olmayan uygulamalar için SAML tabanlı çoklu oturum açmayı yapılandırma](https://docs.microsoft.com/azure/active-directory/manage-apps/add-non-gallery-app) 
+* [Galeri olmayan uygulamalar için SAML tabanlı çoklu oturum açmayı yapılandırma](../manage-apps/add-application-portal.md) 
 
-* [Azure AD, SAML protokolünü nasıl kullanır?](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-protocol-reference)
+* [Azure AD, SAML protokolünü nasıl kullanır?](../develop/active-directory-saml-protocol-reference.md)

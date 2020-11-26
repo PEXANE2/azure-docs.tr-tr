@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: ryanwi
 ms.reviewer: jeedes
-ms.openlocfilehash: 37f305a7564382b9c6c5a031340d81a22cfedbf2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0df811f4e8b5d6a95868dfebe192e96fbfa80ed9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88120720"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169265"
 ---
 # <a name="add-a-multitenant-application-to-the-azure-ad-application-gallery"></a>Çok kiracılı bir uygulamayı Azure AD uygulama galerisine ekleme
 
@@ -29,9 +29,9 @@ Azure Active Directory (Azure AD), bulut tabanlı bir kimlik hizmetidir. [Azure 
 ## <a name="if-your-application-supports-saml-or-openidconnect"></a>Uygulamanız SAML veya Openıdconnect destekliyorsa
 Azure AD uygulama galerisinde listelenmesini istediğiniz bir çok kiracılı uygulamanız varsa, öncelikle uygulamanızın aşağıdaki çoklu oturum açma teknolojisinden birini desteklediğinden emin olmanız gerekir:
 
-- **OpenID Connect**: uygulamanızın listelenmesini sağlamak IÇIN Azure AD 'de çok kiracılı uygulamayı oluşturun ve uygulamanız IÇIN [Azure AD onay çerçevesini](./consent-framework.md) uygulayın. Herhangi bir müşterinin uygulamaya onay sağlayabilmesi için oturum açma isteğini ortak bir uç noktaya gönderin. Bir kullanıcının erişim belirtecini, kiracı KIMLIĞINE ve Kullanıcı belirtecine göre belirteçte alınan UPN 'yi kontrol edebilirsiniz. Uygulamanızı [Azure Active Directory Uygulama galerisinde listeleme](../azuread-dev/howto-app-gallery-listing.md)bölümünde özetlenen işlemi kullanarak gönderebilirsiniz.
+- **OpenID Connect**: uygulamanızın listelenmesini sağlamak IÇIN Azure AD 'de çok kiracılı uygulamayı oluşturun ve uygulamanız IÇIN [Azure AD onay çerçevesini](./consent-framework.md) uygulayın. Herhangi bir müşterinin uygulamaya onay sağlayabilmesi için oturum açma isteğini ortak bir uç noktaya gönderin. Bir kullanıcının erişim belirtecini, kiracı KIMLIĞINE ve Kullanıcı belirtecine göre belirteçte alınan UPN 'yi kontrol edebilirsiniz. Uygulamanızı [Azure Active Directory Uygulama galerisinde listeleme](./v2-howto-app-gallery-listing.md)bölümünde özetlenen işlemi kullanarak gönderebilirsiniz.
 
-- **SAML**: uygulamanız SAML 2,0 ' yi destekliyorsa, uygulama galeride listelenebilir. [Azure Active Directory Uygulama galerisinde uygulamanızı listeleme](../azuread-dev/howto-app-gallery-listing.md)içindeki yönergeleri izleyin.
+- **SAML**: uygulamanız SAML 2,0 ' yi destekliyorsa, uygulama galeride listelenebilir. [Azure Active Directory Uygulama galerisinde uygulamanızı listeleme](./v2-howto-app-gallery-listing.md)içindeki yönergeleri izleyin.
 
 ## <a name="if-your-application-does-not-support-saml-or-openidconnect"></a>Uygulamanız SAML veya Openıdconnect 'i desteklemiyorsa
 SAML veya Openıdconnect desteği olmayan uygulamalar, parola çoklu oturum açma teknolojisi aracılığıyla uygulama galerisiyle de tümleştirilebilirler.
@@ -40,11 +40,11 @@ Parola oluşturma olarak da bilinen parola çoklu oturum açma, Kimlik Federasyo
 
 Uygulamanızı bu teknolojiyle listelemek istiyorsanız:
 1. [Parola çoklu oturum açmayı](../manage-apps/what-is-single-sign-on.md)YAPıLANDıRMAK için HTML oturum açma sayfasına sahip bir Web uygulaması oluşturun. 
-2. [Azure Active Directory Uygulama galerisinde uygulamanızı listeleme](../azuread-dev/howto-app-gallery-listing.md)konusunda açıklandığı gibi isteği gönderir.
+2. [Azure Active Directory Uygulama galerisinde uygulamanızı listeleme](./v2-howto-app-gallery-listing.md)konusunda açıklandığı gibi isteği gönderir.
 
 ## <a name="escalations"></a>Yükseltmeleri
 
 Tüm yürüyen değişiklikler için [Azure AD SSO tümleştirmesi ekibine](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) e-posta gönderin ve mümkün olan en kısa sürede size geri başlayacağız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Uygulamanızı Azure Active Directory Uygulama galerisinde nasıl listeleyeceğinizi](../azuread-dev/howto-app-gallery-listing.md)öğrenin.
+[Uygulamanızı Azure Active Directory Uygulama galerisinde nasıl listeleyeceğinizi](./v2-howto-app-gallery-listing.md)öğrenin.

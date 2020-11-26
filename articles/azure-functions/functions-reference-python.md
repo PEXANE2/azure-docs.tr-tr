@@ -4,12 +4,12 @@ description: Python ile işlev geliştirmeyi anlama
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 7d97405a0b75129ddb0da581955728b393bf49ca
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 8254abda68949e6884143316d4b29b07ade129dc
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539082"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96167854"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Işlevleri Python Geliştirici Kılavuzu
 
@@ -19,7 +19,7 @@ Python geliştiricisi olarak, aşağıdaki makalelerden biriyle de ilgileniyor o
 
 | Başlarken | Kavramlar| Senaryolar/örnekler |
 | -- | -- | -- | 
-| <ul><li>[Visual Studio Code kullanarak Python işlevi](./functions-create-first-function-vs-code.md?pivots=programming-language-python)</li><li>[Terminal/komut istemiyle Python işlevi](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python)</li></ul> | <ul><li>[Geliştirici kılavuzu](functions-reference.md)</li><li>[Barındırma seçenekleri](functions-scale.md)</li><li>[Performans &nbsp; konuları](functions-best-practices.md)</li></ul> | <ul><li>[PyTorch ile görüntü sınıflandırması](machine-learning-pytorch.md)</li><li>[Azure Otomasyonu örneği](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[TensorFlow ile Machine Learning](functions-machine-learning-tensorflow.md)</li><li>[Python örneklerine gözatamıyorum](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
+| <ul><li>[Visual Studio Code kullanarak Python işlevi](./create-first-function-vs-code-csharp.md?pivots=programming-language-python)</li><li>[Terminal/komut istemiyle Python işlevi](./create-first-function-cli-csharp.md?pivots=programming-language-python)</li></ul> | <ul><li>[Geliştirici kılavuzu](functions-reference.md)</li><li>[Barındırma seçenekleri](functions-scale.md)</li><li>[Performans &nbsp; konuları](functions-best-practices.md)</li></ul> | <ul><li>[PyTorch ile görüntü sınıflandırması](machine-learning-pytorch.md)</li><li>[Azure Otomasyonu örneği](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[TensorFlow ile Machine Learning](functions-machine-learning-tensorflow.md)</li><li>[Python örneklerine gözatamıyorum](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
 
 ## <a name="programming-model"></a>Programlama modeli
 
@@ -93,22 +93,22 @@ Python Işlevleri projesi için önerilen klasör yapısı aşağıdaki örneğe
 ```
 Ana proje klasörü (<project_root>) aşağıdaki dosyaları içerebilir:
 
-* *local.settings.json* : yerel olarak çalışırken uygulama ayarlarını ve bağlantı dizelerini depolamak için kullanılır. Bu dosya Azure 'da yayınlanmıyor. Daha fazla bilgi için bkz. [Local. Settings. File](functions-run-local.md#local-settings-file).
-* *requirements.txt* : Azure 'a yayımlarken sistem tarafından yüklenen Python paketlerinin listesini içerir.
-* *host.js* :: bir işlev uygulamasındaki tüm işlevleri etkileyen genel yapılandırma seçeneklerini içerir. Bu dosya Azure 'da yayımlanır. Yerel olarak çalışırken tüm seçenekler desteklenmez. Daha fazla bilgi için bkz. [host.json](functions-host-json.md).
-* *. vscode/* : (isteğe bağlı) mağaza vscode yapılandırmasını içerir. Daha fazla bilgi için bkz. [vscode Setting](https://code.visualstudio.com/docs/getstarted/settings).
-* *. venv/* : (isteğe bağlı) yerel geliştirme tarafından kullanılan bir Python sanal ortamı içerir.
-* *Dockerfile* : (isteğe bağlı) projenizi [özel kapsayıcıda](functions-create-function-linux-custom-image.md)yayımlarken kullanılır.
-* *testler/* : (isteğe bağlı) işlev uygulamanızın test çalışmalarını içerir.
-* *. funcignore* : (isteğe bağlı) Azure 'da yayımlanmaması gereken dosyaları bildirir. Genellikle, bu dosya `.vscode/` Düzenleyici ayarınızı yoksaymak, `.venv/` Yerel Python sanal ortamını yoksaymak, `tests/` test çalışmalarını yoksaymak ve `local.settings.json` yerel uygulama ayarlarının yayımlanmasını engellemek için içerir.
+* *local.settings.json*: yerel olarak çalışırken uygulama ayarlarını ve bağlantı dizelerini depolamak için kullanılır. Bu dosya Azure 'da yayınlanmıyor. Daha fazla bilgi için bkz. [Local. Settings. File](functions-run-local.md#local-settings-file).
+* *requirements.txt*: Azure 'a yayımlarken sistem tarafından yüklenen Python paketlerinin listesini içerir.
+* *host.js*:: bir işlev uygulamasındaki tüm işlevleri etkileyen genel yapılandırma seçeneklerini içerir. Bu dosya Azure 'da yayımlanır. Yerel olarak çalışırken tüm seçenekler desteklenmez. Daha fazla bilgi için bkz. [host.json](functions-host-json.md).
+* *. vscode/*: (isteğe bağlı) mağaza vscode yapılandırmasını içerir. Daha fazla bilgi için bkz. [vscode Setting](https://code.visualstudio.com/docs/getstarted/settings).
+* *. venv/*: (isteğe bağlı) yerel geliştirme tarafından kullanılan bir Python sanal ortamı içerir.
+* *Dockerfile*: (isteğe bağlı) projenizi [özel kapsayıcıda](functions-create-function-linux-custom-image.md)yayımlarken kullanılır.
+* *testler/*: (isteğe bağlı) işlev uygulamanızın test çalışmalarını içerir.
+* *. funcignore*: (isteğe bağlı) Azure 'da yayımlanmaması gereken dosyaları bildirir. Genellikle, bu dosya `.vscode/` Düzenleyici ayarınızı yoksaymak, `.venv/` Yerel Python sanal ortamını yoksaymak, `tests/` test çalışmalarını yoksaymak ve `local.settings.json` yerel uygulama ayarlarının yayımlanmasını engellemek için içerir.
 
 Her işlevin kendi kod dosyası ve bağlama yapılandırma dosyası (function.js) vardır.
 
-Projenizi Azure 'da bir işlev uygulamasına dağıttığınızda, ana proje ( *<project_root>* ) klasörünün tüm içeriğinin, pakete dahil olması gerekir, ancak `host.json` paketin kökünde olması gerekir. Bu örnekte, testlerinizi diğer işlevlerle birlikte bir klasörde tutmanızı öneririz `tests/` . Daha fazla bilgi için bkz. [birim testi](#unit-testing).
+Projenizi Azure 'da bir işlev uygulamasına dağıttığınızda, ana proje (*<project_root>*) klasörünün tüm içeriğinin, pakete dahil olması gerekir, ancak `host.json` paketin kökünde olması gerekir. Bu örnekte, testlerinizi diğer işlevlerle birlikte bir klasörde tutmanızı öneririz `tests/` . Daha fazla bilgi için bkz. [birim testi](#unit-testing).
 
 ## <a name="import-behavior"></a>İçeri aktarma davranışı
 
-Mutlak ve göreli başvuruları kullanarak, işlev kodunuzda modüller içeri aktarabilirsiniz. Yukarıda gösterilen klasör yapısına bağlı olarak, aşağıdaki içeri aktarmalar<işlev dosyası içinden çalışır *project_root> \_ Silk \_ Function \\ _ \_ init \_ \_ . Kopyala* :
+Mutlak ve göreli başvuruları kullanarak, işlev kodunuzda modüller içeri aktarabilirsiniz. Yukarıda gösterilen klasör yapısına bağlı olarak, aşağıdaki içeri aktarmalar<işlev dosyası içinden çalışır *project_root> \_ Silk \_ Function \\ _ \_ init \_ \_ . Kopyala*:
 
 ```python
 from shared_code import my_first_helper_function #(absolute)
@@ -236,7 +236,7 @@ def main(req: func.HttpRequest,
     return message
 ```
 
-## <a name="logging"></a>Günlüğe Kaydetme
+## <a name="logging"></a>Günlüğe kaydetme
 
 Azure Işlevleri çalışma zamanı günlükçüsü erişimi, işlev uygulamanızda bir kök işleyici aracılığıyla kullanılabilir [`logging`](https://docs.python.org/3/library/logging.html#module-logging) . Bu günlükçü Application Insights bağlıdır ve işlev yürütmesi sırasında uyarıları ve hataları işaretetmenize olanak tanır.
 
@@ -385,7 +385,7 @@ FUNCTIONS_WORKER_PROCESS_COUNT, uygulamanızın talebi karşılamak üzere ölç
 
 Yürütme sırasında bir işlevin çağırma bağlamını almak için, [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) bağımsız değişkenini imzasına ekleyin.
 
-Örnek:
+Örneğin:
 
 ```python
 import azure.functions
@@ -491,7 +491,7 @@ func azure functionapp publish <APP_NAME>
 
 `<APP_NAME>`Azure 'daki işlev uygulamanızın adıyla değiştirmeyi unutmayın.
 
-[Visual Studio Code Için Azure Işlevleri uzantısı](functions-create-first-function-vs-code.md#publish-the-project-to-azure) Ayrıca uzak bir derlemeyi varsayılan olarak ister.
+[Visual Studio Code Için Azure Işlevleri uzantısı](./create-first-function-vs-code-csharp.md#publish-the-project-to-azure) Ayrıca uzak bir derlemeyi varsayılan olarak ister.
 
 ### <a name="local-build"></a>Yerel derleme
 
@@ -565,7 +565,7 @@ Python 'da yazılan işlevler, standart test çerçeveleri kullanılarak diğer 
 }
 ```
 
-Şimdi, *my_second_function* ve *shared_code. My _second_helper_function* ' ı uygulayabiliriz.
+Şimdi, *my_second_function* ve *shared_code. My _second_helper_function*' ı uygulayabiliriz.
 
 ```python
 # <project_root>/my_second_function/__init__.py

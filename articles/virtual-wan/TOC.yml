@@ -67,6 +67,10 @@
           href: virtual-wan-ipsec.md
         - name: Birden çok ISP bağlantısı - Azure yol seçimi
           href: path-selection-multiple-links.md
+    - name: Güvenlik
+      items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
     - name: Fiyatlandırma kavramları
       href: pricing-concepts.md
     - name: Sanal merkezde NVA hakkında

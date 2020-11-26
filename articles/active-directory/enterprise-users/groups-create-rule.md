@@ -13,17 +13,17 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a1f970a97616fbc38a2f5d274998596992d4a45
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 343486286d45538b949de03604811bb2371701c1
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522082"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169027"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Azure Active Directory içinde dinamik grup oluşturma veya güncelleştirme
 
 Azure Active Directory (Azure AD) ' de, Kullanıcı veya cihaz özelliklerine göre grup üyeliğini Belirleme kurallarını kullanabilirsiniz. Bu makalede, Azure portal bir dinamik grup için nasıl bir kural ayarlanacağı açıklanır.
-Dinamik üyelik güvenlik grupları veya Microsoft 365 grupları için desteklenir. Bir grup üyeliği kuralı uygulandığında, Kullanıcı ve cihaz öznitelikleri üyelik kuralıyla eşleşmeler için değerlendirilir. Bir kullanıcı veya cihaz için bir öznitelik değiştiğinde, kuruluştaki tüm dinamik grup kuralları üyelik değişiklikleri için işlenir. Kullanıcılar ve cihazlar bir grubun koşullarını karşılıyorsa eklenir veya kaldırılır. Güvenlik grupları, cihazlar veya kullanıcılar için kullanılabilir, ancak Microsoft 365 Gruplar yalnızca Kullanıcı grupları olabilir. Dinamik grupları kullanmak için Azure AD Premium P1 lisansı gerekir. Daha fazla ayrıntı için bkz. [gruplar Için dinamik üyelik kuralları](https://docs.microsoft.com/azure/active-directory/enterprise-users/groups-dynamic-membership) . 
+Dinamik üyelik güvenlik grupları veya Microsoft 365 grupları için desteklenir. Bir grup üyeliği kuralı uygulandığında, Kullanıcı ve cihaz öznitelikleri üyelik kuralıyla eşleşmeler için değerlendirilir. Bir kullanıcı veya cihaz için bir öznitelik değiştiğinde, kuruluştaki tüm dinamik grup kuralları üyelik değişiklikleri için işlenir. Kullanıcılar ve cihazlar bir grubun koşullarını karşılıyorsa eklenir veya kaldırılır. Güvenlik grupları, cihazlar veya kullanıcılar için kullanılabilir, ancak Microsoft 365 Gruplar yalnızca Kullanıcı grupları olabilir. Dinamik grupları kullanmak için Azure AD Premium P1 lisansı gerekir. Daha fazla ayrıntı için bkz. [gruplar Için dinamik üyelik kuralları](./groups-dynamic-membership.md) . 
 
 ## <a name="rule-builder-in-the-azure-portal"></a>Azure portal kural Oluşturucu
 

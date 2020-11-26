@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71726724e7c018f34b1175f323d0c8e55b604931
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b763cea18cec42eed2aac3318fc1510de7a017b1
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95973652"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168423"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory yenilikler nelerdir?
 
@@ -65,7 +65,7 @@ SCıM [sağlama hizmeti](../app-provisioning/user-provisioning.md) tarafından g
 Bir tarih tamamlandığında güncelleştirme sağlayacağız. Bu kullanımdan kaldırma, 2020 takvim yılı için planlanmıyor. 
 
 > [!NOTE]
-> Bu, sağlama hizmeti tarafından yayılan eşitleme olaylarının dışında denetim günlüklerinde olayları etkilemez. Bir uygulama oluşturma, koşullu erişim ilkesi, dizindeki bir Kullanıcı vb. gibi olaylar, denetim günlüklerinde yayınlanmeye devam edecektir. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/app-provisioning/context/app-provisioning-context).
+> Bu, sağlama hizmeti tarafından yayılan eşitleme olaylarının dışında denetim günlüklerinde olayları etkilemez. Bir uygulama oluşturma, koşullu erişim ilkesi, dizindeki bir Kullanıcı vb. gibi olaylar, denetim günlüklerinde yayınlanmeye devam edecektir. [Daha fazla bilgi edinin](../reports-monitoring/concept-provisioning-logs.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context).
  
 
 ---
@@ -102,7 +102,7 @@ Tüm istemci-sunucu ve tarayıcı-sunucu birleşimleri, Azure, Office 365 ve Mic
 
 Etkilenen ortamlar:
 - Azure US Gov
-- [Office 365 GCC High & DoD](https://docs.microsoft.com/microsoft-365/compliance/tls-1-2-in-office-365-gcc?view=o365-worldwide)
+- [Office 365 GCC High & DoD](/microsoft-365/compliance/tls-1-2-in-office-365-gcc?view=o365-worldwide)
  
 ---
 
@@ -177,7 +177,7 @@ Tümleştirme Yardımcısı (Önizleme) deneyimi artık Azure AD B2C Uygulama ka
 
 Artık Azure portal her bir Azure AD rolünün şablon KIMLIĞINI görüntüleyebilirsiniz. Azure AD 'de seçili rolün  **açıklamasını** seçin. 
 
-Müşterilerin, görünen ad yerine, PowerShell betiklerinde ve kodunda rol şablonu kimliklerini kullanması önerilir. Rol şablonu KIMLIĞI [Directoryroles](https://docs.microsoft.com/graph/api/resources/directoryrole?view=graph-rest-1.0) ve [roledefinition](https://docs.microsoft.com/graph/api/resources/unifiedroledefinition?view=graph-rest-beta) nesnelerinde kullanılmak üzere desteklenir. Rol şablonu kimlikleri hakkında daha fazla bilgi için bkz. [rol şablonu kimlikleri](../roles/permissions-reference.md#role-template-ids).
+Müşterilerin, görünen ad yerine, PowerShell betiklerinde ve kodunda rol şablonu kimliklerini kullanması önerilir. Rol şablonu KIMLIĞI [Directoryroles](/graph/api/resources/directoryrole?view=graph-rest-1.0) ve [roledefinition](/graph/api/resources/unifiedroledefinition?view=graph-rest-beta) nesnelerinde kullanılmak üzere desteklenir. Rol şablonu kimlikleri hakkında daha fazla bilgi için bkz. [rol şablonu kimlikleri](../roles/permissions-reference.md#role-template-ids).
 
 ---
 
@@ -233,7 +233,7 @@ Kimlik korumasının risk tabanlı koşullu erişim ve risk algılama özellikle
  
 2020 Ekim 'de, federasyon desteğiyle App Gallery 'de aşağıdaki 27 yeni uygulamayı ekledik:
 
-[Sentry](../saas-apps/sentry-tutorial.md), [bıfrelebee-üretkenlik süper uygulaması](https://app.yellowmessenger.com/user/login), [ABBYY FlexiCapture bulutu](../saas-apps/abbyy-flexicapture-cloud-tutorial.md), [Eabesteci](../saas-apps/eacomposer-tutorial.md), [Genesys bulut tümleştirmesi, Azure için](https://apps.mypurecloud.com/msteams-integration/) [bölge teknolojileri portalı](https://portail.zonetechnologie.com/signin), [Beautiful.ai](../saas-apps/beautiful.ai-tutorial.md), [datawiza Access Broker](https://console.datawiza.com/), [zokri](https://app.zokri.com/), [checkkanıt](../saas-apps/checkproof-tutorial.md), [Ecochallenge.org](https://events.ecochallenge.org/users/login), [ATIO](http://atspoke.com/login), [randevu anımsatıcısı](https://app.appointmentreminder.co.nz/account/login), [Cloud. Market](https://cloud.market/), [seyahatperk](../saas-apps/travelperk-tutorial.md), rebera, [orgvıtitesi SSO [Greetly](https://app.greetly.com/) /SaaS-Apps/orgvitality-SSO-tutorial.MD), [Web Cargo hava](../saas-apps/web-cargo-air-tutorial.md), [döngü Flow CRM](../saas-apps/loop-flow-crm-tutorial.md), [starakılda](../saas-apps/starmind-tutorial.md), [workstem](https://hrm.workstem.com/login), [Perakende Zipline](../saas-apps/retail-zipline-tutorial.md), [hoxhunt](../saas-apps/hoxhunt-tutorial.md), [mevisio](../saas-apps/mevisio-tutorial.md), [Samsara](../saas-apps/samsara-tutorial.md), [Nimbus](../saas-apps/nimbus-tutorial.md), [Pulse Secure sanal Traffic Manager](https://docs.microsoft.com/azure/active-directory/saas-apps/pulse-secure-virtual-traffic-manager-tutorial)
+[Sentry](../saas-apps/sentry-tutorial.md), [bıfrelebee-üretkenlik süper uygulaması](https://app.yellowmessenger.com/user/login), [ABBYY FlexiCapture bulutu](../saas-apps/abbyy-flexicapture-cloud-tutorial.md), [Eabesteci](../saas-apps/eacomposer-tutorial.md), [Genesys bulut tümleştirmesi, Azure için](https://apps.mypurecloud.com/msteams-integration/) [bölge teknolojileri portalı](https://portail.zonetechnologie.com/signin), [Beautiful.ai](../saas-apps/beautiful.ai-tutorial.md), [datawiza Access Broker](https://console.datawiza.com/), [zokri](https://app.zokri.com/), [checkkanıt](../saas-apps/checkproof-tutorial.md), [Ecochallenge.org](https://events.ecochallenge.org/users/login), [ATIO](http://atspoke.com/login), [randevu anımsatıcısı](https://app.appointmentreminder.co.nz/account/login), [Cloud. Market](https://cloud.market/), [seyahatperk](../saas-apps/travelperk-tutorial.md), rebera, [orgvıtitesi SSO [Greetly](https://app.greetly.com/) /SaaS-Apps/orgvitality-SSO-tutorial.MD), [Web Cargo hava](../saas-apps/web-cargo-air-tutorial.md), [döngü Flow CRM](../saas-apps/loop-flow-crm-tutorial.md), [starakılda](../saas-apps/starmind-tutorial.md), [workstem](https://hrm.workstem.com/login), [Perakende Zipline](../saas-apps/retail-zipline-tutorial.md), [hoxhunt](../saas-apps/hoxhunt-tutorial.md), [mevisio](../saas-apps/mevisio-tutorial.md), [Samsara](../saas-apps/samsara-tutorial.md), [Nimbus](../saas-apps/nimbus-tutorial.md), [Pulse Secure sanal Traffic Manager](../saas-apps/pulse-secure-virtual-traffic-manager-tutorial.md)
 
 Ayrıca, tüm uygulamaların belgelerini buradan bulabilirsiniz. https://aka.ms/AppsTutorial
 
@@ -780,7 +780,7 @@ Azure AD Uygulama Ara Sunucusu artık Uzak Masaüstü Hizmetleri (RDS) Web Istem
  
 Basitleştirilmiş Kullanıcı akış deneyimi, önizleme özellikleriyle Özellik eşliği sağlar ve tüm yeni özelliklerin ana adresidir. Kullanıcılar aynı kullanıcı akışındaki yeni özellikleri etkinleştirerek, her yeni özellik sürümüyle birden çok sürüm oluşturma gereksinimini azaltır. Son olarak, yeni, Kullanıcı dostu UX, Kullanıcı akışlarının seçimini ve oluşturulmasını basitleştirir. Şimdi [bir Kullanıcı akışı oluşturarak](../../active-directory-b2c/tutorial-create-user-flows.md)deneyin. 
 
-Kullanıcılar akışları hakkında daha fazla bilgi için, [Azure Active Directory B2C Içindeki Kullanıcı akışı sürümleri](../../active-directory-b2c/user-flow-versions.md#:~:text=    User flow  ,account. Usi ...  1 more rows )bölümüne bakın.
+Kullanıcılar akışları hakkında daha fazla bilgi için, [Azure Active Directory B2C Içindeki Kullanıcı akışı sürümleri](../../active-directory-b2c/user-flow-versions.md)bölümüne bakın.
 
 ---
 

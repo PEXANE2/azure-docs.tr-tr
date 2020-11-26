@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 0b54a8227594a81c17dcaaaaa6c599d70217c498
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d899fe7f84a8708bb8ee32cc008567b272a885c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90705869"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169384"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>Ulusal bir bulut ortamında MSAL kullanma
 
@@ -49,7 +49,7 @@ Karar verdikten sonra, uygulama kaydınızı gerçekleştirdiğiniz özel bir no
 
 ### <a name="get-an-azure-government-subscription"></a>Azure Kamu aboneliği edinme
 
-Azure Kamu aboneliği almak için bkz. [Azure Kamu 'da aboneliğinizi yönetme ve ile bağlanma](../../azure-government/documentation-government-manage-subscriptions.md).
+Azure Kamu aboneliği almak için bkz. [Azure Kamu 'da aboneliğinizi yönetme ve ile bağlanma](../../azure-government/compare-azure-government-global-azure.md).
 
 Azure Kamu aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/global-infrastructure/government/request/) oluşturun.
 
@@ -70,14 +70,14 @@ Bağımsız bulutları için MSAL.js uygulamanızı etkinleştirmek için:
 
 ### <a name="step-1-register-your-application"></a>1. Adım: Uygulamanızı kaydetme
 
-1. [Azure portalında](https://portal.azure.us/) oturum açın.
+1. [Azure Portal](https://portal.azure.us/) oturum açın.
 
    Diğer ulusal bulutlar için Azure portal uç noktaları bulmak için bkz. [uygulama kayıt uç noktaları](authentication-national-cloud.md#app-registration-endpoints).
 
 1. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst köşede hesabınızı seçin ve Portal oturumunuzu istenen Azure AD kiracısı olarak ayarlayın.
 1. Geliştiriciler için Microsoft Identity platformunda [uygulama kayıtları](https://aka.ms/ra/ff) sayfasına gidin.
 1. **Uygulamayı kaydet** sayfası görüntülendiğinde, uygulamanız için ad girin.
-1. **Desteklenen hesap türleri**altında, **herhangi bir kuruluş dizininde hesaplar**' ı seçin.
+1. **Desteklenen hesap türleri** altında, **herhangi bir kuruluş dizininde hesaplar**' ı seçin.
 1. **Yeniden yönlendirme URI 'si** bölümünde **Web** platformu ' nu seçin ve değeri Web sunucunuza göre uygulamanın URL 'si olarak ayarlayın. Visual Studio ve Node 'da yeniden yönlendirme URL 'sini ayarlama ve alma hakkında yönergeler için sonraki bölümlere bakın.
 1. **Kaydet**’i seçin.
 1. Uygulamaya **genel bakış** sayfasında, **uygulama (istemci) kimliği** değerini aklınızda edin.
@@ -124,8 +124,8 @@ Bu kodda:
 
 - `Enter_the_Application_Id_here` , kaydettiğiniz uygulamanın **uygulama (istemci) kimlik** değeridir.
 - `Enter_the_Tenant_Info_Here` Aşağıdaki seçeneklerden birine ayarlanır:
-    - Uygulamanız **bu kuruluş dizinindeki hesapları**destekliyorsa, bu DEĞERI Kiracı kimliği veya kiracı adı (örneğin, contoso.Microsoft.com) ile değiştirin.
-    - Uygulamanız **herhangi bir kuruluş dizinindeki hesapları**destekliyorsa, bu değeri ile değiştirin `organizations` .
+    - Uygulamanız **bu kuruluş dizinindeki hesapları** destekliyorsa, bu DEĞERI Kiracı kimliği veya kiracı adı (örneğin, contoso.Microsoft.com) ile değiştirin.
+    - Uygulamanız **herhangi bir kuruluş dizinindeki hesapları** destekliyorsa, bu değeri ile değiştirin `organizations` .
 
     Tüm ulusal bulutların kimlik doğrulama uç noktalarını bulmak için bkz. [Azure AD kimlik doğrulama uç noktaları](./authentication-national-cloud.md#azure-ad-authentication-endpoints).
 

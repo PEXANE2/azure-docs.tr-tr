@@ -54,6 +54,7 @@
     - name: Video Indexer çıkışını inceleme
       href: video-indexer-output-json-v2.md
     - name: Videoların içinde belirli anları bulma
+      displayName: search
       href: video-indexer-search.md
     - name: 'Sahneleri, çekimleri, ana kareleri algılama'
       href: scenes-shots-keyframes.md

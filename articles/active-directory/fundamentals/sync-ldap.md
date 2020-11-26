@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e617d7ccc14e65c18eb86877b1c7fb1aeef74cd0
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 1f34e734b315c7c05ce77f5e168a452fc1c1c547
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578901"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168687"
 ---
 # <a name="ldap-synchronization-with-azure-active-directory"></a>Azure Active Directory ile LDAP eşitlemesi
 
@@ -34,31 +34,30 @@ Azure Active Directory (Azure AD), LDAP eşitlemesini Azure AD Connect ile deği
 
 ## <a name="components-of-system"></a>Sistem bileşenleri
 
-* **Kullanıcı** : kullanıcıları ve parolaları SıRALAMAK için LDAP v3 dizinini kullanan bir uygulamaya erişir.
+* **Kullanıcı**: kullanıcıları ve parolaları SıRALAMAK için LDAP v3 dizinini kullanan bir uygulamaya erişir.
 
-* **Web tarayıcısı** : kullanıcının uygulamanın dış URL 'sine erişmesi için etkileşimde bulunduğu bileşen
+* **Web tarayıcısı**: kullanıcının uygulamanın dış URL 'sine erişmesi için etkileşimde bulunduğu bileşen
 
-* **Web uygulaması** : LDAP v3 dizinlerinde bağımlılıklara sahip uygulama.
+* **Web uygulaması**: LDAP v3 dizinlerinde bağımlılıklara sahip uygulama.
 
-* **Azure AD** : Azure ad, Azure AD Connect aracılığıyla kuruluşun ŞIRKET içi LDAP dizinlerindeki kimlik bilgilerini (kullanıcılar, gruplar, parolalar) eşitler. 
+* **Azure AD**: Azure ad, Azure AD Connect aracılığıyla kuruluşun ŞIRKET içi LDAP dizinlerindeki kimlik bilgilerini (kullanıcılar, gruplar, parolalar) eşitler. 
 
-* **Azure AD Connect** : şirket kimliği altyapılarına Microsoft Azure AD bağlanmak için bir araçtır. Sihirbaz ve kılavuzlu deneyimler, bağlantı için gereken önkoşulları ve bileşenleri dağıtmaya ve yapılandırmaya yardımcı olur. 
+* **Azure AD Connect**: şirket kimliği altyapılarına Microsoft Azure AD bağlanmak için bir araçtır. Sihirbaz ve kılavuzlu deneyimler, bağlantı için gereken önkoşulları ve bileşenleri dağıtmaya ve yapılandırmaya yardımcı olur. 
 
-* **Özel bağlayıcı** : genel bir LDAP bağlayıcısı, Azure AD Connect eşitleme HIZMETINI bir LDAP v3 sunucusuyla tümleştirmenize olanak sağlar. Azure AD Connect üzerinde bulunur.
+* **Özel bağlayıcı**: genel bir LDAP bağlayıcısı, Azure AD Connect eşitleme HIZMETINI bir LDAP v3 sunucusuyla tümleştirmenize olanak sağlar. Azure AD Connect üzerinde bulunur.
 
-* **Active Directory** : Active Directory, çoğu Windows Server işletim sisteminde yer alan bir dizin hizmetidir. Active Directory Dizin Hizmetleri çalıştıran sunuculara etki alanı denetleyicileri denir ve Windows etki alanındaki tüm Kullanıcı ve bilgisayarların kimliklerini doğrular ve yetkilendirirler.
+* **Active Directory**: Active Directory, çoğu Windows Server işletim sisteminde yer alan bir dizin hizmetidir. Active Directory Dizin Hizmetleri çalıştıran sunuculara etki alanı denetleyicileri denir ve Windows etki alanındaki tüm Kullanıcı ve bilgisayarların kimliklerini doğrular ve yetkilendirirler.
 
-* **LDAP v3 sunucusu** : Dizin Hizmetleri kimlik doğrulaması için kullanılan, şirket kullanıcılarını ve parolaları depolayan LDAP protokolü ile uyumlu dizin.
+* **LDAP v3 sunucusu**: Dizin Hizmetleri kimlik doğrulaması için kullanılan, şirket kullanıcılarını ve parolaları depolayan LDAP protokolü ile uyumlu dizin.
 
 ## <a name="implement-ldap-synchronization-with-azure-ad"></a>Azure AD ile LDAP eşitlemesini uygulama
 
-* [Karma kimlik dizini tümleştirme araçları](https://docs.microsoft.com/azure/active-directory/hybrid/plan-hybrid-identity-design-considerations-tools-comparison) 
+* [Karma kimlik dizini tümleştirme araçları](../hybrid/plan-hybrid-identity-design-considerations-tools-comparison.md) 
 
-* [Azure AD Connect yükleme yol haritası](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-roadmap) 
+* [Azure AD Connect yükleme yol haritası](../hybrid/how-to-connect-install-roadmap.md) 
 
-* [Genel bakış ve LDAP Bağlayıcısı oluşturma](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap) 
+* [Genel bakış ve LDAP Bağlayıcısı oluşturma](/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap) 
 
    > [!NOTE]
    > LDAP bağlayıcıları, Forefront Identity Manager ve/veya Microsoft Identity Manager için bazı benzerlik gerektiren gelişmiş bir yapılandırmadır. Üretimde kullanılıyorsa, bu yapılandırmayla ilgili soruların [Premier destek](https://support.microsoft.com/premier) veya Microsoft iş ortağı ağı ilerlemelidir.
 
- 

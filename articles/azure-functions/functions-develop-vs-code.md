@@ -4,12 +4,12 @@ description: Visual Studio Code için Azure Işlevleri uzantısını kullanarak 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
-ms.openlocfilehash: c851f5284b87f224932b027fd10ce720327639c2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 573177615ff898326eb29649a7f766b5df34b587
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010528"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168465"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Visual Studio Code kullanarak Azure İşlevleri geliştirme
 
@@ -34,12 +34,12 @@ Uzantı, sürüm 2. x ile başlayan Azure Işlevleri çalışma zamanı tarafın
 
 Bu makalede, örnekler şu anda yalnızca JavaScript (Node.js) ve C# sınıf kitaplığı işlevleri için kullanılabilir.  
 
-Bu makalede, işlevleri geliştirmek ve Azure 'da yayımlamak için Azure Işlevleri uzantısının nasıl kullanılacağına ilişkin ayrıntılar sağlanmaktadır. Bu makaleyi okuduktan sonra, [Visual Studio Code kullanarak ilk işlevinizi oluşturmanız](functions-create-first-function-vs-code.md)gerekir.
+Bu makalede, işlevleri geliştirmek ve Azure 'da yayımlamak için Azure Işlevleri uzantısının nasıl kullanılacağına ilişkin ayrıntılar sağlanmaktadır. Bu makaleyi okuduktan sonra, [Visual Studio Code kullanarak ilk işlevinizi oluşturmanız](./create-first-function-vs-code-csharp.md)gerekir.
 
 > [!IMPORTANT]
 > Tek bir işlev uygulaması için yerel geliştirme ve Portal geliştirmeyi karışmayın. Yerel bir projeden bir işlev uygulamasına yayımladığınızda, dağıtım işlemi portalda geliştirdiğiniz işlevlerin üzerine yazar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Visual Studio Code için [Azure işlevleri uzantısı][Azure işlevleri uzantısını]yükleyip çalıştırmadan önce, şu gereksinimleri karşılamanız gerekir:
 
@@ -93,7 +93,7 @@ Proje şablonu seçtiğiniz dilde bir proje oluşturur ve gerekli bağımlılık
 
 Dilinize bağlı olarak, bu diğer dosyalar oluşturulur:
 
-# <a name="c"></a>[,\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 * İşlevi uygulayan [HttpExample.cs sınıf kitaplığı dosyası](functions-dotnet-class-library.md#functions-class-library-project) .
 
@@ -125,7 +125,7 @@ Bu noktada, [dosyanızdaki function.jsdeğiştirerek](#add-input-and-output-bind
 
 HTTP ve Zamanlayıcı Tetikleyicileri dışında, bağlamalar uzantı paketlerinde uygulanır. Gereken Tetikleyiciler ve bağlamalar için uzantı paketlerini yüklemeniz gerekir. Bağlama Uzantıları yükleme işlemi projenizin diline bağlıdır.
 
-# <a name="c"></a>[,\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 Projenizde ihtiyaç duyduğunuz uzantı paketlerini yüklemek için, Terminal penceresinde [DotNet paket Ekle](/dotnet/core/tools/dotnet-add-package) komutunu çalıştırın. Aşağıdaki komut blob, kuyruk ve tablo depolaması için bağlamaları uygulayan Azure Storage uzantısını yüklüyor.
 
@@ -145,7 +145,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 Bu eylemin sonuçları projenizin diline bağlıdır:
 
-# <a name="c"></a>[,\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 Projenize yeni bir C# sınıf kitaplığı (. cs) dosyası eklenir.
 
@@ -161,7 +161,7 @@ Giriş ve çıkış bağlamaları ekleyerek işlevinizi genişletebilirsiniz. Ba
 
 Aşağıdaki örneklerde `outqueue` , depolama hesabının bağlantı dizesinin `MyStorageConnection` local.settings.jsüzerindeki uygulama ayarında ayarlandığı adlı bir depolama kuyruğuna bağlanır.
 
-# <a name="c"></a>[,\#](#tab/csharp)
+# <a name="c"></a>[C\#](#tab/csharp)
 
 Yöntem tanımına aşağıdaki parametreyi eklemek için işlev yöntemini güncelleştirin `Run` :
 
@@ -233,7 +233,7 @@ Visual Studio Code yayımladığınızda, [ZIP dağıtım](functions-deployment-
 
 ### <a name="quick-function-app-create"></a>Hızlı işlev uygulaması oluşturma
 
-**Azure 'da yeni işlev uygulaması oluştur**' u seçtiğinizde, uzantı, işlev uygulamanız tarafından gerek duyulan Azure kaynakları için otomatik olarak değerler üretir. Bu değerler, seçtiğiniz işlev uygulaması adına göre yapılır. Projenizi Azure 'da yeni bir işlev uygulamasına yayımlamak için varsayılanlar kullanmanın bir örneği için [Visual Studio Code hızlı başlangıç makalesi](functions-create-first-function-vs-code.md#publish-the-project-to-azure)' ne bakın.
+**Azure 'da yeni işlev uygulaması oluştur**' u seçtiğinizde, uzantı, işlev uygulamanız tarafından gerek duyulan Azure kaynakları için otomatik olarak değerler üretir. Bu değerler, seçtiğiniz işlev uygulaması adına göre yapılır. Projenizi Azure 'da yeni bir işlev uygulamasına yayımlamak için varsayılanlar kullanmanın bir örneği için [Visual Studio Code hızlı başlangıç makalesi](./create-first-function-vs-code-csharp.md#publish-the-project-to-azure)' ne bakın.
 
 Oluşturulan kaynaklar için açık adlar sağlamak istiyorsanız, gelişmiş oluşturma yolunu seçmeniz gerekir.
 
@@ -408,7 +408,7 @@ Bu adımları tamamladıktan sonra, temel alınan temel araçlara yapılan çağ
 
 Azure Işlevleri uzantısı, Azure 'daki işlev uygulamalarınızla etkileşim kurmak için alanında yararlı bir grafik arabirimi sağlar. Aynı işlevsellik, komut paletinde (F1) komutlar olarak da kullanılabilir. Bu Azure Işlevleri komutları kullanılabilir:
 
-|Azure Işlevleri komutu  | Description  |
+|Azure Işlevleri komutu  | Açıklama  |
 |---------|---------|
 |**Yeni ayarlar Ekle**  |  Azure 'da yeni bir uygulama ayarı oluşturur. Daha fazla bilgi için bkz. [uygulama ayarlarını yayımlama](#publish-application-settings). Ayrıca, [Bu ayarı yerel ayarlarınıza indirmeniz](#download-settings-from-azure)gerekebilir. |
 | **Dağıtım kaynağını Yapılandır** | İşlev uygulamanızı Azure 'da yerel bir git deposuna bağlar. Daha fazla bilgi için bkz. [Azure işlevleri Için sürekli dağıtım](functions-continuous-deployment.md). |

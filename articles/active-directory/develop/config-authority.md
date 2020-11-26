@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 4810de772e44be22ee5bd4a9fb6ef0ef756e62f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8a176fff0da932d0fafd40b9ab895b635acc5f6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77085215"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169452"
 ---
 # <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>Nasıl yapılır: iOS ve macOS için MSAL 'ı farklı kimlik sağlayıcıları kullanacak şekilde yapılandırma
 
@@ -29,7 +29,7 @@ Bu makalede, iOS ve MacOS için Microsoft kimlik doğrulama kitaplığı uygulam
 `MSALPublicClientApplication``https://login.microsoftonline.com/common`, en çok Azure Active Directory (AAD) senaryosu için uygun olan varsayılan bir yetkili URL 'si ile yapılandırılır. Ulusal bulutlar gibi gelişmiş senaryolar uygulamadıysanız veya B2C ile çalışmadığınız takdirde, bunu değiştirmeniz gerekmez.
 
 > [!NOTE]
-> Kimlik sağlayıcısı (ADFS) olarak Active Directory Federasyon Hizmetleri (AD FS) modern kimlik doğrulaması desteklenmez (Ayrıntılar için bkz. [geliştiriciler Için ADFS](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios) ). ADFS, Federasyon aracılığıyla desteklenir.
+> Kimlik sağlayıcısı (ADFS) olarak Active Directory Federasyon Hizmetleri (AD FS) modern kimlik doğrulaması desteklenmez (Ayrıntılar için bkz. [geliştiriciler Için ADFS](/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios) ). ADFS, Federasyon aracılığıyla desteklenir.
 
 ## <a name="change-the-default-authority"></a>Varsayılan yetkiyi değiştirme
 

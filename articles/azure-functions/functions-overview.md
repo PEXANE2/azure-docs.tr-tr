@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/20/2020
 ms.author: cshoe
 ms.custom: contperfq2
-ms.openlocfilehash: 6713c0d45a8b5363122c726d1d31e5c479ba8fff
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 514f2e9a82a50f95f9c054c6a54e7b5af3c0af15
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95504636"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96167786"
 ---
 # <a name="introduction-to-azure-functions"></a>Azure İşlevleri’ne Giriş
 
@@ -38,7 +38,7 @@ Aşağıdakiler yaygın bir, _ancak Hayır anlamına gelir_, Azure işlevleri i�
 | --- | --- |
 | **Web API'si oluşturun** | [Http tetikleyicisini](./functions-bindings-http-webhook.md) kullanarak Web uygulamalarınız için bir uç nokta uygulama |
 | **Dosya yüklemelerini işle** | [BLOB depolamada](./functions-bindings-storage-blob.md) bir dosya karşıya yüklendiğinde veya değiştirildiğinde kodu Çalıştır |
-| **Sunucusuz iş akışı oluşturma** | [Dayanıklı işlevler](./durable-functions-overview.md) kullanarak bir dizi işlevin birlikte zinciri oluşturma |
+| **Sunucusuz iş akışı oluşturma** | [Dayanıklı işlevler](./durable/durable-functions-overview.md) kullanarak bir dizi işlevin birlikte zinciri oluşturma |
 | **Veritabanı değişikliklerine yanıt verme** | [Cosmos DB](./functions-bindings-cosmosdb-v2.md) bir belge oluşturulduğunda veya güncelleştirilirken özel mantık Çalıştır |
 | **Zamanlanmış görevleri Çalıştır** | Kodu [belirlenen saatlerde](./functions-bindings-timer.md) yürütme |
 | **Güvenilir ileti sırası sistemleri oluşturma** | [Kuyruk depolama](./functions-bindings-storage-queue.md), [Service Bus](./functions-bindings-service-bus.md)veya [Event Hubs](./functions-bindings-event-hubs.md) kullanarak ileti kuyruklarını işleme |

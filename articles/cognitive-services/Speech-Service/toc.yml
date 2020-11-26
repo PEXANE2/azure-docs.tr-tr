@@ -37,6 +37,8 @@
           href: how-to-automatic-language-detection.md
         - name: Toplu transkripsiyon API’sini kullanma
           href: batch-transcription.md
+        - name: Söylenişi değerlendirme
+          href: how-to-pronunciation-assessment.md
     - name: Öğreticiler
       items:
         - name: Kiracı modelleriyle doğruluğu geliştirme

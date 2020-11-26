@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 6b8a9cbfd3e7057f0d85d5f4e19fea3aa4fbe90b
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 79fe821e2da494ab8c9e4cb407e2c2b025f75568
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980227"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169112"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>Öğretici: Kullanıcı oturum açma ve kimlik doğrulama kod akışı kullanarak JavaScript tek sayfalı uygulama (SPA) Microsoft Graph API 'sini çağırma
 
@@ -351,7 +351,7 @@ const graphConfig = {
 
 - `Enter_the_Graph_Endpoint_Here` , uygulamanın iletişim kurması gereken Microsoft Graph API örneğidir.
   - **Genel** Microsoft Graph API uç noktası için bu dizenin her iki örneğini ile değiştirin `https://graph.microsoft.com` .
-  - **Ulusal** bulut dağıtımlarındaki uç noktalar için Microsoft Graph belgelerindeki [Ulusal bulut dağıtımları](https://docs.microsoft.com/graph/deployments) bölümüne bakın.
+  - **Ulusal** bulut dağıtımlarındaki uç noktalar için Microsoft Graph belgelerindeki [Ulusal bulut dağıtımları](/graph/deployments) bölümüne bakın.
 
 `graphMeEndpoint` `graphMailEndpoint` Genel uç noktasını kullanıyorsanız, *graphConfig.js* ve değerleri aşağıdakine benzer olmalıdır:
 
@@ -558,7 +558,7 @@ Bu öğreticide oluşturduğunuz SPA, `acquireTokenSilent` `acquireTokenPopup` K
 
 #### <a name="get-a-user-token-interactively"></a>Etkileşimli olarak kullanıcı belirteci alma
 
-İlk oturum açma işleminden sonra uygulamanız, kullanıcılardan korumalı bir kaynağa erişmesi gereken her seferinde (bir belirteç istemek için) kimlik doğrulaması yapmasını istemez. Bu tür yeniden kimlik doğrulama isteklerini engellemek için çağrısı yapın `acquireTokenSilent` . Ancak, kullanıcıların Microsoft Identity platform uç noktasıyla etkileşime geçmesini zorunlu hale getirmeniz gerekebilecek bazı durumlar vardır. Örnek:
+İlk oturum açma işleminden sonra uygulamanız, kullanıcılardan korumalı bir kaynağa erişmesi gereken her seferinde (bir belirteç istemek için) kimlik doğrulaması yapmasını istemez. Bu tür yeniden kimlik doğrulama isteklerini engellemek için çağrısı yapın `acquireTokenSilent` . Ancak, kullanıcıların Microsoft Identity platform uç noktasıyla etkileşime geçmesini zorunlu hale getirmeniz gerekebilecek bazı durumlar vardır. Örneğin:
 
 - Parolanın süresi sona erdiği için kullanıcıların kimlik bilgilerini yeniden girmesi gerekir.
 - Uygulamanız bir kaynağa erişim istiyor ve kullanıcının izni gerekiyor.

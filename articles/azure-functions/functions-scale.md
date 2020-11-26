@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 88e9d16a205df16a2be63e67f45cdbcf9144b30f
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f41354630f4885a30bd5c036495b216a2cc05599
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108465"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96167803"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure İşlevleri’ni ölçeklendirme ve barındırma
 
@@ -97,7 +97,7 @@ Her zaman etkinleştirilmiş olsa bile, tek tek işlevlerde yürütme zaman aş�
 
 ## <a name="determine-the-hosting-plan-of-an-existing-application"></a>Mevcut bir uygulamanın barındırma planını belirleme
 
-İşlev uygulamanız tarafından kullanılan barındırma planını öğrenmek için, [Azure Portal](https://portal.azure.com)işlev uygulaması Için **genel bakış** sekmesinde **App Service plan** bölümüne bakın. Fiyatlandırma katmanını görmek için **App Service planının**adını seçin ve ardından sol bölmedeki **Özellikler** ' i seçin.
+İşlev uygulamanız tarafından kullanılan barındırma planını öğrenmek için, [Azure Portal](https://portal.azure.com)işlev uygulaması Için **genel bakış** sekmesinde **App Service plan** bölümüne bakın. Fiyatlandırma katmanını görmek için **App Service planının** adını seçin ve ardından sol bölmedeki **Özellikler** ' i seçin.
 
 ![Portalda ölçeklendirme planını görüntüleme](./media/functions-scale/function-app-overview-portal.png)
 
@@ -144,7 +144,7 @@ Azure Işlevleri için ölçek birimi, işlev uygulamasıdır. İşlev uygulamas
 
 ### <a name="cold-start"></a>Soğuk başlangıç
 
-İşlev uygulamanız birkaç dakika boyunca boşta kaldıktan sonra, Platform, uygulamanızın çalıştırıldığı örneklerin sayısını sıfıra ölçeklendirebilir. Sonraki istek, sıfırdan diğerine ölçeklendirmeye yönelik ek gecikme süresine sahiptir. Bu gecikme süresi _soğuk başlangıç_olarak adlandırılır. İşlev uygulamanız tarafından yüklenmesi gereken bağımlılıkların sayısı, soğuk başlangıç süresini etkileyebilir. Soğuk başlatma, yanıt döndürmesi gereken HTTP Tetikleyicileri gibi zaman uyumlu işlemler için bir sorundur. Soğuk başlıyorsa işlevlerinizi etkilese, her zaman etkin olan bir Premium planda veya adanmış bir planda çalışmayı düşünün.   
+İşlev uygulamanız birkaç dakika boyunca boşta kaldıktan sonra, Platform, uygulamanızın çalıştırıldığı örneklerin sayısını sıfıra ölçeklendirebilir. Sonraki istek, sıfırdan diğerine ölçeklendirmeye yönelik ek gecikme süresine sahiptir. Bu gecikme süresi _soğuk başlangıç_ olarak adlandırılır. İşlev uygulamanız tarafından yüklenmesi gereken bağımlılıkların sayısı, soğuk başlangıç süresini etkileyebilir. Soğuk başlatma, yanıt döndürmesi gereken HTTP Tetikleyicileri gibi zaman uyumlu işlemler için bir sorundur. Soğuk başlıyorsa işlevlerinizi etkilese, her zaman etkin olan bir Premium planda veya adanmış bir planda çalışmayı düşünün.   
 
 ### <a name="understanding-scaling-behaviors"></a>Ölçeklendirme davranışlarını anlama
 
@@ -257,6 +257,6 @@ Aşağıdaki karşılaştırma tablosu, Azure Işlevleri uygulama barındırma p
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-+ [Hızlı başlangıç: Visual Studio Code kullanarak bir Azure Işlevleri projesi oluşturma](functions-create-first-function-vs-code.md)
++ [Hızlı başlangıç: Visual Studio Code kullanarak bir Azure Işlevleri projesi oluşturma](./create-first-function-vs-code-csharp.md)
 + [Azure Işlevlerinde dağıtım teknolojileri](functions-deployment-technologies.md) 
 + [Azure İşlevleri geliştirici kılavuzu](functions-reference.md)

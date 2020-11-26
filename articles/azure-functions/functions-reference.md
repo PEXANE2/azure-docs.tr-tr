@@ -4,12 +4,12 @@ description: Tüm programlama dillerinde ve bağlamalarda Azure 'da işlevleri g
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: 9a3c0643f4fc965ff64106758320aeb445aaf9ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54bfd770fba9a1766396d66c0c263111c233c9c2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85921740"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96167888"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure İşlevleri geliştirici kılavuzu
 Azure Işlevlerinde belirli işlevler, kullandığınız dil veya bağlama ne olursa olsun, birkaç temel teknik kavram ve bileşeni paylaşır. Belirli bir dile veya bağlamaya özgü öğrenme ayrıntılarına geçmeden önce, tüm bunlar için geçerli olan bu genel bakışı okuduğunuzdan emin olun.
@@ -61,7 +61,7 @@ Yukarıdaki, bir Işlev uygulaması için varsayılan (ve önerilen) klasör yap
 > Bir paketi el ile dağıtıyorsanız, _host.js_ dosya ve işlev klasörlerinde doğrudan klasöre dağıttığınızdan emin olun `wwwroot` . `wwwroot`Dağıtımlarınıza klasörü eklemeyin. Aksi takdirde, klasörler ile biter `wwwroot\wwwroot` .
 
 #### <a name="use-local-tools-and-publishing"></a>Yerel araçları ve yayımlamayı kullanma
-İşlev uygulamaları [Visual Studio](./functions-develop-vs.md), [Visual Studio Code](functions-create-first-function-vs-code.md), [ıntellij](./functions-create-maven-intellij.md), [tutulma](./functions-create-maven-eclipse.md)ve [Azure Functions Core Tools](./functions-develop-local.md)gibi çeşitli araçlar kullanılarak yazılabilir ve yayımlanabilir. Daha fazla bilgi için bkz. [Azure işlevlerini yerel olarak kod ve test](./functions-develop-local.md)etme.
+İşlev uygulamaları [Visual Studio](./functions-develop-vs.md), [Visual Studio Code](./create-first-function-vs-code-csharp.md), [ıntellij](./functions-create-maven-intellij.md), [tutulma](./functions-create-maven-eclipse.md)ve [Azure Functions Core Tools](./functions-develop-local.md)gibi çeşitli araçlar kullanılarak yazılabilir ve yayımlanabilir. Daha fazla bilgi için bkz. [Azure işlevlerini yerel olarak kod ve test](./functions-develop-local.md)etme.
 
 <!--NOTE: I've removed documentation on FTP, because it does not sync triggers on the consumption plan --glenga -->
 

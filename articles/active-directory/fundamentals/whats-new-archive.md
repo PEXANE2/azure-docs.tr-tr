@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ffa0059e78ee193cb12a4838282f7f9fb282edd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a55fdf781de80834bf5463fb9bec3730e6e39a76
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95973703"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168704"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory yenilikler için arşiv var mı?
 
@@ -131,7 +131,7 @@ Yeni [ilke ayrıntıları dikey](../conditional-access/troubleshoot-conditional-
 
 Bol [Ropool Apps](https://www.sincropool.com/), [smartdb](https://hibiki.dreamarts.co.jp/smartdb/trial/), [float](../saas-apps/float-tutorial.md), [LMS365](https://lms.365.systems/), [IWT tedarik Suite](../saas-apps/iwt-procurement-suite-tutorial.md), [lunnı](https://lunni.fi/), [easysso, jira](../saas-apps/easysso-for-jira-tutorial.md), [sanal eğitim akademik My](https://vta.c3p.ca/app/en/openid?authenticate_with=microsoft), [Meraki panosu](../saas-apps/meraki-dashboard-tutorial.md), [Microsoft 365 taşıyıcısı](https://app.mover.io/login), [Konuşmacı](https://speakerengage.com/login.php)katılım, [his](../saas-apps/honestly-tutorial.md), [önemli](../saas-apps/ally-tutorial.md), [DutyFlow](https://app.dutyflow.nl/), [Alertmedia](../saas-apps/alertmedia-tutorial.md), [gr8 kişileri](../saas-apps/gr8-people-tutorial.md), [pendo](../saas-apps/pendo-tutorial.md), [üst](../saas-apps/highground-tutorial.md)düzey, [uyum](../saas-apps/harmony-tutorial.md), [timetabling çözümleri](../saas-apps/timetabling-solutions-tutorial.md), [Synchronet tıklama](../saas-apps/synchronet-click-tutorial.md), [Empower](https://www.made-in-office.com/en/), [ktes değişiklik bulutu](../saas-apps/fortes-change-cloud-tutorial.md), [Litmus](../saas-apps/litmus-tutorial.md), [grouptalk](https://recorder.grouptalk.com/), [mintify](../saas-apps/frontify-tutorial.md), [MongoDB Cloud](../saas-apps/mongodb-cloud-tutorial.md), [tickitlms öğreni](../saas-apps/tickitlms-learn-tutorial.md), [Coco](https://hexaware.com/partnerships-and-alliances/digital-transformation-using-microsoft-azure/), [Nitro üretkenlik Suite](../saas-apps/nitro-productivity-suite-tutorial.md) , [Trend Micro Web Security (tmws)](https://review.docs.microsoft.com/azure/active-directory/saas-apps/trend-micro-tutorial)
 
-Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../azuread-dev/howto-app-gallery-listing.md)listeleme bölümüne bakın.
+Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../develop/v2-howto-app-gallery-listing.md)listeleme bölümüne bakın.
 
 ---
 
@@ -215,7 +215,7 @@ Yönetim birimlerini kullanarak bir merkezi yönetici şunları sağlayabilir:
 - Yönetici izinlerine sahip bir rolü yalnızca Azure AD kullanıcıları üzerinde bir yönetim biriminde atama
 - Yönetim birimlerini Kullanıcı ve gruplarla gerektiği şekilde doldurma
 
-Daha fazla bilgi için bkz. [Azure Active Directory (Önizleme) Içinde yönetim birimleri yönetimi](../users-groups-roles/directory-administrative-units.md).
+Daha fazla bilgi için bkz. [Azure Active Directory (Önizleme) Içinde yönetim birimleri yönetimi](../roles/administrative-units.md).
 
 ---
 
@@ -286,7 +286,7 @@ Daha fazla bilgi için aşağıdakileri gözden geçirin:
 
 **Ürün yeteneği:**
 
-Personeliniz, personel üyelerinin Azure AD hesaplarına erişebildiğinden emin olmak için mağaza yöneticisi gibi Firstline yöneticileri sağlar. Kuruluşlar, merkezi bir yardım masasına güvenmek yerine, parolaları sıfırlama veya telefon numaralarını değiştirme gibi genel görevleri bir Firstline Manager 'a devredebilir. Personeli sayesinde, hesaplarına erişemesiz bir Kullanıcı, yardım masası veya BT personeli gerekmeden yalnızca birkaç tıklamayla erişim elde edebilir. Daha fazla bilgi için bkz. [kullanıcılarımızla kullanıcılarınızı yönetme (Önizleme)](../users-groups-roles/my-staff-configure.md) ve [Kullanıcılarım Ile Kullanıcı yönetimi temsilcisi seçme (Önizleme)](../user-help/my-staff-team-manager.md).
+Personeliniz, personel üyelerinin Azure AD hesaplarına erişebildiğinden emin olmak için mağaza yöneticisi gibi Firstline yöneticileri sağlar. Kuruluşlar, merkezi bir yardım masasına güvenmek yerine, parolaları sıfırlama veya telefon numaralarını değiştirme gibi genel görevleri bir Firstline Manager 'a devredebilir. Personeli sayesinde, hesaplarına erişemesiz bir Kullanıcı, yardım masası veya BT personeli gerekmeden yalnızca birkaç tıklamayla erişim elde edebilir. Daha fazla bilgi için bkz. [kullanıcılarımızla kullanıcılarınızı yönetme (Önizleme)](../roles/my-staff-configure.md) ve [Kullanıcılarım Ile Kullanıcı yönetimi temsilcisi seçme (Önizleme)](../user-help/my-staff-team-manager.md).
 
 ---
 
@@ -451,7 +451,7 @@ Kullanıcıları dizine davet etmek için Azure AD B2B işbirliği daveti hizmet
 
 [Cisco AnyConnect](../saas-apps/cisco-anyconnect.md), [Zoho One Çin](../saas-apps/zoho-one-china-tutorial.md), [PlusPlus](https://test.plusplus.app/auth/login/azuread-outlook/), [Profit.co SAML App](../saas-apps/profitco-saml-app-tutorial.md), [IPoint Service Provider](../saas-apps/ipoint-service-provider-tutorial.md), [Contexxt.ai Sphere](https://contexxt-sphere.com/login), [ınkıs tarafından Wıkıx](../saas-apps/wisdom-by-invictus-tutorial.md), [Mercek Parlaması, açılan dijital imza](https://spark-dev.pixelnebula.com/login), [LOGZ.IO-Cloud Observability for mühendisler](../saas-apps/logzio-cloud-observability-for-engineers-tutorial.md), [SpectrumU](../saas-apps/spectrumu-tutorial.md), [Bizzcontact](https://bizzcontact.app/), [elqano SSO](../saas-apps/elqano-sso-tutorial.md), [Pazar Signshare](http://www.signshare.com/), [crossknowledge Learning Suite](../saas-apps/crossknowledge-learning-suite-tutorial.md), [NetVision Compas](../saas-apps/netvision-compas-tutorial.md), [fcm hub](../saas-apps/fcm-hub-tutorial.md), [Rib A/S byggeweb Mobile](https://apps.apple.com/us/app/docia/id529058757), [golmürekkepler](../saas-apps/golinks-tutorial.md), [Dataköpek](../saas-apps/datadog-tutorial.md), [Zscaler B2B Kullanıcı Portalı](../saas-apps/zscaler-b2b-user-portal-tutorial.md), [yükseltme,](../saas-apps/lift-tutorial.md) [Planview Enterprise One](../saas-apps/planview-enterprise-one-tutorial.md), [WatchTeams](https://www.devfinition.com/), [Aster](https://demo.asterapp.io/login), [yetenekler iş akışı](../saas-apps/skills-workflow-tutorial.md), [düğüm öngörüleri](https://admin.nodeinsight.com/AADLogin.aspx) [IP platformu](../saas-apps/ip-platform-tutorial.md), [Invision](../saas-apps/invision-tutorial.md), [Pipedrive](../saas-apps/pipedrive-tutorial.md), gösterim [Atölyesi](https://app.showcaseworkshop.com/), [melight Integration platformu](../saas-apps/greenlight-integration-platform-tutorial.md), [doğa Light uyumlu erişim yönetimi](../saas-apps/greenlight-compliant-access-management-tutorial.md), [grok Learning](../saas-apps/grok-learning-tutorial.md), [Mıradore çevrimiçi](https://login.online.miradore.com/), [Khoros Hizmetleri](../saas-apps/khoros-care-tutorial.md), [askyourteam](../saas-apps/askyourteam-tutorial.md), [TruNarrative](../saas-apps/trunarrative-tutorial.md), [smartwaiver](https://www.smartwaiver.com/m/user/sw_login.php?wms_login), [BizAgi Studio for Digital Process Automation](../saas-apps/bizagi-studio-for-digital-process-automation-tutorial.md), [yalıtılmış Tex](https://www.insuite.jp/), [Sybo](https://www.systexsoftware.com.tw/), [britive](../saas-apps/britive-tutorial.md), [WhosOffice](../saas-apps/whosoffice-tutorial.md), [E-Days](../saas-apps/e-days-tutorial.md), [kollesel Sdn](https://portal.kollective.app/login), [Witivio](https://app.witivio.com/), [playtı](https://my.playvox.com/login), [Korn Fraz 360](../saas-apps/korn-ferry-360-tutorial.md), [kampüs Café](../saas-apps/campus-cafe-tutorial.md), [catch noktası](../saas-apps/catchpoint-tutorial.md), [Code42](../saas-apps/code42-tutorial.md)
 
-Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../azuread-dev/howto-app-gallery-listing.md)listeleme bölümüne bakın.
+Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../develop/v2-howto-app-gallery-listing.md)listeleme bölümüne bakın.
 
 ---
 
@@ -602,7 +602,7 @@ Azure AD Domain Services müşterilerin, örnekleri için performans düzeylerin
 [Iamıp patent platformu](../saas-apps/iamip-patent-platform-tutorial.md), [deneyim bulutu](../saas-apps/experience-cloud-tutorial.md), [Azure için ns1 SSO](../saas-apps/ns1-sso-azure-tutorial.md), [Barkcuda e-posta güvenlik hizmeti](https://ess.barracudanetworks.com/sso/azure), [aba raporlaması](https://myaba.co.uk/client-access/signin/auth/msad), [Çapraz çevrimiçi portal](../saas-apps/in-case-of-crisis-online-portal-tutorial.md), [Bic bulut tasarımı](../saas-apps/bic-cloud-design-tutorial.md), [Splashtop](../saas-apps/splashtop-tutorial.md) [Azure ad veri Bağlayıcısı için beekeeto](../saas-apps/beekeeper-azure-ad-data-connector-tutorial.md) [Verkada Command](../saas-apps/verkada-command-tutorial.md) [Yeni relik (sınırlı sürüm)](../saas-apps/new-relic-limited-release-tutorial.md), [thulium](https://admin.thulium.com/login/instance), [bilet Yöneticisi](../saas-apps/ticketmanager-tutorial.md), [Syxsense](../saas-apps/syxsense-tutorial.md) [takımlar için şablon Seçicisi](https://links.officeatwork.com/templatechooser-download-teams), [beesy](https://www.beesy.me/index.php/site/login), [sağlık desteği sistemi](../saas-apps/health-support-system-tutorial.md), [mural](https://app.mural.co/signup), [Hive](../saas-apps/hive-tutorial.md), [LavaDo](https://appsource.microsoft.com/product/web-apps/lavaloon.lavado_standard?tab=Overview), [Wakelet](https://wakelet.com/login), [firmex VDR](../saas-apps/firmex-vdr-tutorial.md), [öğretmenler ve okullar için ThingLink](https://www.thinglink.com/), [Coda](../saas-apps/coda-tutorial.md), beklenen [podapp](https://nearpod.com/signup/?oc=Microsoft&utm_campaign=Microsoft&utm_medium=site&utm_source=product), [Wedo](../saas-apps/wedo-tutorial.md), [Korn Ferry Assessments](https://www.kornferry.com/solutions/kf-digital/kf-assess) [EAB Navigate](../saas-apps/eab-navigate-tutorial.md) [davetli](https://invitepeople.com/login) [,](../saas-apps/teamviewer-tutorial.md) [Reprints Desk - Article Galaxy](../saas-apps/reprints-desk-article-galaxy-tutorial.md)
 
  
-Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../azuread-dev/howto-app-gallery-listing.md)listeleme bölümüne bakın.
+Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../develop/v2-howto-app-gallery-listing.md)listeleme bölümüne bakın.
 
 ---
  
@@ -713,7 +713,7 @@ Otomatik Kullanıcı hesabı sağlamayı kullanarak kuruluşunuzun daha iyi güv
 
 [Josa](../saas-apps/josa-tutorial.md), [fastly Edge bulutu](../saas-apps/fastly-edge-cloud-tutorial.md), [terraform Enterprise](../saas-apps/terraform-enterprise-tutorial.md), [Spintr SSO](../saas-apps/spintr-sso-tutorial.md), [abibot Netlogistik](https://azuremarketplace.microsoft.com/marketplace/apps/aad.abibotnetlogistik), [ufuk](https://login.skykick.com/login?state=g6Fo2SBTd3M5Q0xBT0JMd3luS2JUTGlYN3pYTE1remJQZnR1c6N0aWTZIDhCSkwzYVQxX2ZMZjNUaWxNUHhCSXg2OHJzbllTcmYto2NpZNkgM0h6czk3ZlF6aFNJV1VNVWQzMmpHeFFDbDRIMkx5VEc&client=3Hzs97fQzhSIWUMUd32jGxQCl4H2LyTG&protocol=oauth2&audience=https://papi.skykick.com&response_type=code&redirect_uri=https://portal.skykick.com/callback&scope=openid%20profile%20offline_access)anında, [Upshotly](../saas-apps/upshotly-tutorial.md) [upvebot](https://leavebot.io/#home), [Datacamp](../saas-apps/datacamp-tutorial.md), [tripactions](../saas-apps/tripactions-tutorial.md), [smartwork](https://www.intumit.com/english/SmartWork.html), [Dotcom-Monitor](../saas-apps/dotcom-monitor-tutorial.md), [Ssogen-Azure AD SSO Gateway for Oracle E-Business Suite-EBS, PeopleSoft ve JDE](../saas-apps/ssogen-tutorial.md), [barındırılan Mycirqa SSO](../saas-apps/hosted-mycirqa-sso-tutorial.md), [yuhu özelliği YÖNETIM platformu](../saas-apps/yuhu-property-management-platform-tutorial.md), [Lumapps](https://sites.lumapps.com/login), [upwork Enterprise](../saas-apps/upwork-enterprise-tutorial.md), [talentsoft](../saas-apps/talentsoft-tutorial.md), [smartdb for Microsoft ekipleri](http://teams.smartdb.jp/login/), [presspage](../saas-apps/presspage-tutorial.md), [contractsafe SAML2 SSO](../saas-apps/contractsafe-saml2-sso-tutorial.md), [maxdentitydeploy Manager yazılımı](../saas-apps/maxient-conduct-manager-software-tutorial.md), [helpshıft](../saas-apps/helpshift-tutorial.md), [PortalTalk 365](https://www.portaltalk.com/), [coreview](https://portal.coreview.com/), [Squelch Cloud Office365 bağlayıcı](https://laxmi.squelch.io/login), [pingflow kimlik doğrulaması](https://app-staging.pingview.io/), [printerlogic SaaS](../saas-apps/printerlogic-saas-tutorial.md), [taskize Connect](../saas-apps/taskize-connect-tutorial.md), [sandwai](https://app.sandwai.com/), [EZRentOut](../saas-apps/ezrentout-tutorial.md), [assetsonar](../saas-apps/assetsonar-tutorial.md), [akarı Sanal Yardımcısı](https://akari.io/akari-virtual-assistant/)
 
-Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../azuread-dev/howto-app-gallery-listing.md)listeleme bölümüne bakın.
+Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../develop/v2-howto-app-gallery-listing.md)listeleme bölümüne bakın.
 
 ---
 
@@ -935,7 +935,7 @@ Otomatik Kullanıcı hesabı sağlamayı kullanarak kuruluşunuzun daha iyi güv
 
 [Airtable](../saas-apps/airtable-tutorial.md), [HootSuite](../saas-apps/hootsuite-tutorial.md), [Üyeler için mavi erişim (BAI)](../saas-apps/blue-access-for-members-tutorial.md), [Bitly](../saas-apps/bitly-tutorial.md), [Riva](../saas-apps/riva-tutorial.md), [reslife portalı](https://app.reslifecloud.com/hub5_signin/microsoft_azuread/?g=44BBB1F90915236A97502FF4BE2952CB&c=5&uid=0&ht=2&ref=), [NegometrixPortal çoklu oturum açma (SSO)](../saas-apps/negometrixportal-tutorial.md), [teamschamp](https://login.microsoftonline.com/551f45da-b68e-4498-a7f5-a6e1efaeb41c/adminconsent?client_id=ca9bbfa4-1316-4c0f-a9ee-1248ac27f8ab&redirect_uri=https://admin.teamschamp.com/api/adminconsent&state=6883c143-cb59-42ee-a53a-bdb5faabf279), [motlar](../saas-apps/motus-tutorial.md), [myaryaka](../saas-apps/myaryaka-tutorial.md), [Mave-posta](https://loginself1.bluemail.me/), [Beedle](https://teams-web.beedle.co/#/), [Visma](../saas-apps/visma-tutorial.md) [Claromentis](../saas-apps/claromentis-tutorial.md), [onedesk](../saas-apps/onedesk-tutorial.md), [Foko perakende](../saas-apps/foko-retail-tutorial.md), [gpazarlar fikir & yenilik yönetimi](../saas-apps/qmarkets-idea-innovation-management-tutorial.md), [netüse Kullanıcı kimliği](../saas-apps/netskope-user-authentication-tutorial.md) [uniFLOW Online](../saas-apps/uniflow-online-tutorial.md) [Jisc Student Voter Registration](../saas-apps/jisc-student-voter-registration-tutorial.md) [e4enable](https://portal.e4enable.com/)
 
-Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../azuread-dev/howto-app-gallery-listing.md)listeleme bölümüne bakın.
+Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../develop/v2-howto-app-gallery-listing.md)listeleme bölümüne bakın.
 
 ---
 
@@ -1096,7 +1096,7 @@ Daha fazla bilgi için bkz. [aylık etkin kullanıcıları faturalama modeline y
 
 [Çapraz-mobil](../saas-apps/in-case-of-crisis-mobile-tutorial.md), [Juno ile yolculuğa](../saas-apps/juno-journey-tutorial.md), [ExponentHR](../saas-apps/exponenthr-tutorial.md), [kişi](https://tact.ai/assistant/), [opuscapita nakit yönetimi](http://cm1.opuscapita.com/tenantname), [salestim](https://www.salestim.com/), [learnster](../saas-apps/learnster-tutorial.md), [dynaTrace](../saas-apps/dynatrace-tutorial.md), [hunchbuzz](https://login.hunchbuzz.com/integrations/azure/process), en uygun [çalışma](../saas-apps/freshworks-tutorial.md), [ECornell](../saas-apps/ecornell-tutorial.md), [Shiphazı](../saas-apps/shiphazmat-tutorial.md), [NETÜSE Bulut güvenliği](../saas-apps/netskope-cloud-security-tutorial.md), [çekişme](../saas-apps/contentful-tutorial.md), [bindtuning](https://bindtuning.com/login), [HireVue koordinatı – Avrupa](https://www.hirevue.com/), [HireVue koordinatı-usonly](https://www.hirevue.com/), [HireVue koordinatı-US](https://www.hirevue.com/), [WittyParrot BILGI kutusu](https://wittyapi.wittyparrot.com/wittyparrot/api/provision/trail/signup), [cloudmore](../saas-apps/cloudmore-tutorial.md), [Visit.org](../saas-apps/visitorg-tutorial.md), [cambium Xirrus EasyPass Portal](https://login.xirrus.com/azure-signup), [Paylocity](../saas-apps/paylocity-tutorial.md), [posta şanslar!](../saas-apps/mail-luck-tutorial.md), [teamie](https://theteamie.com/), [takımlar için hız](https://velocity.peakup.org/teams/login), [sıgnl4](https://account.signl4.com/manage), [EAB gidilecek Impl](../saas-apps/eab-navigate-impl-tutorial.md), [ekran karşılamaları](https://console.screenmeet.com/), [Omega noktası](https://pi.ompnt.com/), [konuşma](https://speaking.email/FAQ/98/email-access-via-microsoft-intune)için konuşma e-postası, [for Office 365 Direct (iPhone/Android)](https://speaking.email/FAQ/126/email-access-via-microsoft-office-365-direct), [ExactCare SSO](../saas-apps/exactcare-sso-tutorial.md), [ıhealthhome bakım gezinti sistemi](https://ihealthnav.com/account/signin), [qubie](https://qubie.azurewebsites.net/static/adminTab/authorize.html)
 
-Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../azuread-dev/howto-app-gallery-listing.md)listeleme bölümüne bakın.
+Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../develop/v2-howto-app-gallery-listing.md)listeleme bölümüne bakın.
 
 ---
 
@@ -1199,7 +1199,7 @@ Eylül 2019 ' de, uygulama galerisine federasyon desteğiyle bu 29 yeni uygulama
 
 [Schedulelook](https://schedulelook.bbsonlineservices.net/), [MS Azure SSO erişimi, etidex uyumluluk ofisi &trade; -Çoklu oturum açma](../saas-apps/ms-azure-sso-access-for-ethidex-compliance-office-tutorial.md), [Iver portalı](../saas-apps/iserver-portal-tutorial.md), [ufuk sitesi](../saas-apps/skysite-tutorial.md), [yarışmayı ve harcama](../saas-apps/concur-travel-and-expense-tutorial.md), [çalışma panosu](../saas-apps/workboard-tutorial.md), `https://apps.yeeflow.com/` [yay tesislerini](../saas-apps/arc-facilities-tutorial.md), [luware strazı ekibi](https://stratus.emea.luware.cloud/login), [geniş fikirler](https://wideideas.online/wideideas/), [przma bulutu](../saas-apps/prisma-cloud-tutorial.md), [jdlt Client hub](https://clients.jdlt.co.uk/login), [renpaku](../saas-apps/renraku-tutorial.md), [sealpath Secure Browser](https://protection.sealpath.com/SealPathInterceptorWopiSaas/Open/InstallSealPathEditorOneDrive), [przma bulutu](../saas-apps/prisma-cloud-tutorial.md), `https://app.penneo.com/` ,, işlem `https://app.testhtm.com/settings/email-integration` [çok fazla bulut](https://aec.cintoo.com/login), [beyaz kaynak](../saas-apps/whitesource-tutorial.md), [barındırılan herials online SSO](../saas-apps/hosted-heritage-online-sso-tutorial.md), [IDC](../saas-apps/idc-tutorial.md), [cakehr](../saas-apps/cakehr-tutorial.md) [,](../saas-apps/bis-tutorial.md)b, [COO Kai ekip derlemesi](https://ms-contacts.coo-kai.jp/), [sonarquin](../saas-apps/sonarqube-tutorial.md), [Adobe Identity Management](../saas-apps/tutorial-list.md), [Discovery avantajları SSO](../saas-apps/discovery-benefits-sso-tutorial.md), [Amelio](https://app.amelio.co/), `https://itask.yipinapp.com/`
 
-Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../azuread-dev/howto-app-gallery-listing.md)listeleme bölümüne bakın.
+Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../develop/v2-howto-app-gallery-listing.md)listeleme bölümüne bakın.
 
 ---
 
@@ -1370,7 +1370,7 @@ Ağustos 2019 ' de, uygulama galerisine federasyon desteğiyle bu 26 yeni uygula
 
 [Cıvic platform](../saas-apps/civic-platform-tutorial.md), [Amazon Business](../saas-apps/amazon-business-tutorial.md), [ProNovos Ops Manager](../saas-apps/pronovos-ops-manager-tutorial.md), [bilitodoks](../saas-apps/cognidox-tutorial.md), [viareport 'ın Inativ Portal (Avrupa)](../saas-apps/viareports-inativ-portal-europe-tutorial.md), [Azure Databricks](https://azure.microsoft.com/services/databricks), [deneme](../saas-apps/robin-tutorial.md), akademik katılım, [Öncelik matrisi](https://sync.appfluence.com/pmwebng/), [cousto MySpace](https://cousto.platformers.be/account/login), [uploadilgilenme](https://uploadcare.com/accounts/signup/), [Carbonite uç nokta yedeklemesi](../saas-apps/carbonite-endpoint-backup-tutorial.md),, [Incom ile cpqsync](../saas-apps/cpqsync-by-cincom-tutorial.md), [chargebee](../saas-apps/chargebee-tutorial.md), [sunma. Media &trade; Portal](https://portal.deliver.media), [Frontline eğitim](../saas-apps/frontline-education-tutorial.md), [F5](https://www.f5.com/products/security/access-policy-manager), [stashcat AD Connect](https://www.stashcat.com), [yanıp sönme](../saas-apps/blink-tutorial.md), [vocoli](../saas-apps/vocoli-tutorial.md), [ProNovos Analytics](../saas-apps/pronovos-analytics-tutorial.md), [sigstr](../saas-apps/sigstr-tutorial.md), [darwinbox](../saas-apps/darwinbox-tutorial.md), [renklerin göre izleme](../saas-apps/watch-by-colors-tutorial.md) [, ana,](../saas-apps/harness-tutorial.md) [EAB stratejik bakım](../saas-apps/eab-navigate-strategic-care-tutorial.md) [Academy Attendance](../saas-apps/academy-attendance-tutorial.md)
 
-Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../azuread-dev/howto-app-gallery-listing.md)listeleme bölümüne bakın.
+Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../develop/v2-howto-app-gallery-listing.md)listeleme bölümüne bakın.
 
 ---
 
@@ -1523,7 +1523,7 @@ Haziran 2019 ' de, uygulama galerisine federasyon desteği olan bu 18 yeni uygul
 
 [Ungerboeck yazılımı](../saas-apps/ungerboeck-software-tutorial.md), [parlak model omnichannel iletişim merkezi](../saas-apps/bright-pattern-omnichannel-contact-center-tutorial.md), [Clever Nelly](../saas-apps/clever-nelly-tutorial.md), [acquireio](../saas-apps/acquireio-tutorial.md), [gevop](https://www.looop.co/schedule-a-demo/), [productboard](../saas-apps/productboard-tutorial.md), [MS Azure SSO, etiıdex uyumluluk ofisi &trade; ](../saas-apps/ms-azure-sso-access-for-ethidex-compliance-office-tutorial.md), [hype](../saas-apps/hype-tutorial.md), [soyut](../saas-apps/abstract-tutorial.md), [ascentis](../saas-apps/ascentis-tutorial.md), [flipsnack](https://www.flipsnack.com/accounts/sign-in-sso.html), [wandera](../saas-apps/wandera-tutorial.md), [TwineSocial](https://twinesocial.com/), [kallifer](../saas-apps/kallidus-tutorial.md), [hyperanna](../saas-apps/hyperanna-tutorial.md) [,](../saas-apps/jfrog-artifactory-tutorial.md) [ilaç](https://pharmid.com/) [i2B Connect](https://www.i2b-online.com/sign-up-to-use-i2b-connect-here-sso-access/)
 
-Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../azuread-dev/howto-app-gallery-listing.md)listeleme bölümüne bakın.
+Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../develop/v2-howto-app-gallery-listing.md)listeleme bölümüne bakın.
 
 ---
 
@@ -1701,7 +1701,7 @@ Haziran 2019 ' de, uygulama galerisine federasyon desteğiyle bu 22 yeni uygulam
 
 [Azure AD SAML araç seti](../saas-apps/saml-toolkit-tutorial.md), [Otsuka Shokai (大塚商会)](../saas-apps/otsuka-shokai-tutorial.md), [ANAQUA](../saas-apps/anaqua-tutorial.md), [Azure VPN istemcisi](https://portal.azure.com/), [expenseın](../saas-apps/expensein-tutorial.md), [Helper Yardımcısı](../saas-apps/helper-helper-tutorial.md), [costpoint](../saas-apps/costpoint-tutorial.md), [GlobalOne](../saas-apps/globalone-tutorial.md), [Mercedes-Benz In-Car Office](https://me.secure.mercedes-benz.com/), [Skore](https://app.justskore.it/), [Oracle Cloud Infrastructure Console](../saas-apps/oracle-cloud-tutorial.md), [SIVARK SAML kimlik doğrulaması](../saas-apps/cyberark-saml-authentication-tutorial.md), IServiceProvider [,](https://www.scrible.com/sign-in/#/create-account) [PandaDoc](../saas-apps/pandadoc-tutorial.md), [Perceptyx](https://apexdata.azurewebsites.net/docs.microsoft.com/azure/active-directory/saas-apps/perceptyx-tutorial), [proptıbol OS](https://proptimise.co.uk/software/), [vtiger CRM (SAML)](../saas-apps/vtiger-crm-saml-tutorial.md), Oracle Retail Merchandising için Oracle Erişim Yöneticisi, Oracle e-iş paketi için Oracle Erişim Yöneticisi, c-Business Suite için Oracle IDCs, JD Edler için Oracle IDCs
 
-Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../azuread-dev/howto-app-gallery-listing.md)listeleme bölümüne bakın.
+Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../develop/v2-howto-app-gallery-listing.md)listeleme bölümüne bakın.
 
 ---
 
@@ -1849,7 +1849,7 @@ Mayıs 2019 ' de, uygulama galerisine federasyon desteğiyle bu 21 yeni uygulama
 
 [Freedcamp](../saas-apps/freedcamp-tutorial.md), [gerçek bağlantılar](../saas-apps/real-links-tutorial.md), [Kida](https://app.kianda.com/sso/OpenID/AzureAD/), [basit imza](../saas-apps/simple-sign-tutorial.md), [BRAZE](../saas-apps/braze-tutorial.md), [displayr](../saas-apps/displayr-tutorial.md), [templamy](../saas-apps/templafy-tutorial.md), [Marketo Sales](https://toutapp.com/login)katılım, [aclp](../saas-apps/aclp-tutorial.md), [OutSystems](../saas-apps/outsystems-tutorial.md), [META4 Global HR](../saas-apps/meta4-global-hr-tutorial.md), [hisse çalışma alanı](../saas-apps/quantum-workplace-tutorial.md), [Cobalt](../saas-apps/cobalt-tutorial.md), [WebMethods API bulutu](../saas-apps/webmethods-integration-cloud-tutorial.md), [redflag](https://pocketstop.com/redflag/), [whatdüzeltmesini](../saas-apps/whatfix-tutorial.md), [denetimi](../saas-apps/control-tutorial.md), [jobhub](../saas-apps/jobhub-tutorial.md), [neogov](../saas-apps/neogov-tutorial.md), [pdee](../saas-apps/foodee-tutorial.md), [myvr](../saas-apps/myvr-tutorial.md)
 
-Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../azuread-dev/howto-app-gallery-listing.md)listeleme bölümüne bakın.
+Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../develop/v2-howto-app-gallery-listing.md)listeleme bölümüne bakın.
 
 ---
 
@@ -1979,7 +1979,7 @@ Daha fazla bilgi için bkz. [Azure izleyici çalışma kitaplarını Azure Activ
 
 [SAP Fiori](../saas-apps/sap-fiori-tutorial.md), [Hrçalışmalar çoklu oturum açma](../saas-apps/hrworks-single-sign-on-tutorial.md), [percogeç](../saas-apps/percolate-tutorial.md), [Mobıoncontrol](../saas-apps/mobicontrol-tutorial.md), [Citrix NetScaler](../saas-apps/citrix-netscaler-tutorial.md), [shibumi](../saas-apps/shibumi-tutorial.md), [benchling](../saas-apps/benchling-tutorial.md), [MileIQ](https://mileiq.onelink.me/991934284/7e980085), [PageDNA](../saas-apps/pagedna-tutorial.md), [eğitibrite LMS](../saas-apps/edubrite-lms-tutorial.md), [rstudio Connect](../saas-apps/rstudio-connect-tutorial.md), [AMMS](../saas-apps/amms-tutorial.md), [Mitel Connect](../saas-apps/mitel-connect-tutorial.md), [Alibaba Cloud (rol tabanlı SSO)](../saas-apps/alibaba-cloud-service-role-based-sso-tutorial.md), [cerkatlanmış hisse senedi yönetimi](../saas-apps/certent-equity-management-tutorial.md), [sectigo Sertifika Yöneticisi](../saas-apps/sectigo-certificate-manager-tutorial.md), [tarzorbit](../saas-apps/greenorbit-tutorial.md), [workgrid](../saas-apps/workgrid-tutorial.md), [Monday.com](../saas-apps/mondaycom-tutorial.md), [gözcemaymun Enterprise](../saas-apps/surveymonkey-enterprise-tutorial.md), [ındiggo](https://indiggolead.com/)
 
-Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../azuread-dev/howto-app-gallery-listing.md)listeleme bölümüne bakın.
+Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../develop/v2-howto-app-gallery-listing.md)listeleme bölümüne bakın.
 
 ---
 
@@ -2073,7 +2073,7 @@ Artık Azure AD B2C, ölçeklendirerek ve Azure SLA 'umuz kapsamında desteklene
 
 [ISEC7 mobil Exchange temsilcisi](https://www.isec7.com/english/), [mediusflow](https://office365.cloudapp.mediusflow.com/), [eplatform](../saas-apps/eplatform-tutorial.md), [fulcrud](../saas-apps/fulcrum-tutorial.md), [excelityglobal](../saas-apps/excelityglobal-tutorial.md), [Açıklama tabanlı denetim sistemi](../saas-apps/explanation-based-auditing-system-tutorial.md), [yalın](../saas-apps/lean-tutorial.md), [powerokul performansı önemli](../saas-apps/powerschool-performance-matters-tutorial.md), [cincode](https://cinode.com/), [Iris intraneti](../saas-apps/iris-intranet-tutorial.md), [empactis](../saas-apps/empactis-tutorial.md), [SmartDraw](../saas-apps/smartdraw-tutorial.md), [Confirmit Horizons](../saas-apps/confirmit-horizons-tutorial.md), [tas](../saas-apps/tas-tutorial.md)
 
-Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../azuread-dev/howto-app-gallery-listing.md)listeleme bölümüne bakın.
+Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../develop/v2-howto-app-gallery-listing.md)listeleme bölümüne bakın.
 
 ---
 
@@ -2209,7 +2209,7 @@ Azure AD erişim gözden geçirmeleri kullanarak erişim incelemesi oluşturma h
 
 [Euromonitor Passport](../saas-apps/euromonitor-passport-tutorial.md), [Mindticyon](../saas-apps/mindtickle-tutorial.md), [FAT FINGER](https://seeforgetest-exxon.azurewebsites.net/Account/create?Length=7), [airstack](../saas-apps/airstack-tutorial.md), [Oracle Fusion ERP](../saas-apps/oracle-fusion-erp-tutorial.md), [iDrive](../saas-apps/idrive-tutorial.md), [ufuk ve qmlativ](../saas-apps/skyward-qmlativ-tutorial.md), [Parlatidea](../saas-apps/brightidea-tutorial.md), [alerla](../saas-apps/alertops-tutorial.md), [Soloinsight-cloudgate SSO](../saas-apps/soloinsight-cloudgate-sso-tutorial.md), izin tıklama, [Brandfolder](../saas-apps/brandfolder-tutorial.md), [storegatesmartfile](../saas-apps/smartfile-tutorial.md), [Pexıp](../saas-apps/pexip-tutorial.md), [stormboard](../saas-apps/stormboard-tutorial.md), [seismik](../saas-apps/seismic-tutorial.md), [bir rüt](https://www.shareadream.org/how-it-works), [Bugsnag](../saas-apps/bugsnag-tutorial.md), [WebMethods Integration Cloud](../saas-apps/webmethods-integration-cloud-tutorial.md), [her yerde LMS](../saas-apps/knowledge-anywhere-lms-tutorial.md), [OU kampüs](../saas-apps/ou-campus-tutorial.md), [Periscope verileri](../saas-apps/periscope-data-tutorial.md), [NetOp Portal](../saas-apps/netop-portal-tutorial.md), [smartvid.io](../saas-apps/smartvid.io-tutorial.md), [purecg, Genesys](../saas-apps/purecloud-by-genesys-tutorial.md), İK [üretkenlik platformu](../saas-apps/clickup-productivity-platform-tutorial.md)
 
-Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../azuread-dev/howto-app-gallery-listing.md)listeleme bölümüne bakın.
+Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../develop/v2-howto-app-gallery-listing.md)listeleme bölümüne bakın.
 
 ---
 
@@ -2315,7 +2315,7 @@ Yeni tanımlama bilgileri hakkında daha fazla bilgi için bkz. [Azure Active Di
 
 [Firstbird](../saas-apps/firstbird-tutorial.md), [Fize](../saas-apps/folloze-tutorial.md), [Tatatci paleti](../saas-apps/talent-palette-tutorial.md),, [cloudsuite](../saas-apps/infor-cloud-suite-tutorial.md), [Cisco şemsiye](../saas-apps/cisco-umbrella-tutorial.md), [Zscaler Internet Erişim Yöneticisi](../saas-apps/zscaler-internet-access-administrator-tutorial.md), [süre sonu anımsatıcısı](../saas-apps/expiration-reminder-tutorial.md), [EVR Görüntüleyicisi](../saas-apps/instavr-viewer-tutorial.md), [Corptax](../saas-apps/corptax-tutorial.md), [Verb](https://app.verb.net/login), [OPENLATLET](https://openlattice.com/agora), [theorgwiki](https://www.theorgwiki.com/signup), [pavaso DIJITAL kapatma](../saas-apps/pavaso-digital-close-tutorial.md), [Goodalıştırma araç seti](../saas-apps/goodpractice-toolkit-tutorial.md), [Cloud Service Picco](../saas-apps/cloud-service-picco-tutorial.md), [denetimpanosu](../saas-apps/auditboard-tutorial.md), [iProva](../saas-apps/iprova-tutorial.md), [workable](../saas-apps/workable-tutorial.md), [Callbir](https://webapp.callplease.com/create-account/create-account.html), [GTNexus SSO sistemi](../saas-apps/gtnexus-sso-module-tutorial.md), [CBRE serviceınsight](../saas-apps/cbre-serviceinsight-tutorial.md), [Deskradar](../saas-apps/deskradar-tutorial.md), [coralogixv](../saas-apps/coralogix-tutorial.md), [Signagelive](../saas-apps/signagelive-tutorial.md), [Ares](../saas-apps/ares-for-enterprise-tutorial.md), [for Enterprise, for Office 365](https://www.k2.com/O365), [xledger](https://www.xledger.net/), [IDID Manager](../saas-apps/idid-manager-tutorial.md), [highdişli](../saas-apps/highgear-tutorial.md), [K2](../saas-apps/visitly-tutorial.md), [Korn Fraz alp](../saas-apps/korn-ferry-alp-tutorial.md), [Acadia](../saas-apps/acadia-tutorial.md), [Visitly csaas platform](../saas-apps/adoddle-csaas-platform-tutorial.md)<!-- , [CaféX Portal (Meetings)](https://docs.microsoft.com/azure/active-directory/saas-apps/cafexportal-meetings-tutorial), [MazeMap Link](https://docs.microsoft.com/azure/active-directory/saas-apps/mazemaplink-tutorial)-->
 
-Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../azuread-dev/howto-app-gallery-listing.md)listeleme bölümüne bakın.
+Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../develop/v2-howto-app-gallery-listing.md)listeleme bölümüne bakın.
 
 ---
 
@@ -2535,7 +2535,7 @@ Grup tabanlı lisanslama hakkında daha fazla bilgi için bkz. [Azure Active Dir
 
 [Corestack](https://cloud.corestack.io/site/login), [HubSpot](../saas-apps/hubspot-tutorial.md), [Getno](../saas-apps/getthere-tutorial.md), [GRA-PE](../saas-apps/grape-tutorial.md), [ehour](https://getehour.com/try-now), [Consent2Go](../saas-apps/consent2go-tutorial.md), [appınux](../saas-apps/appinux-tutorial.md), [drivedolar](https://azuremarketplace.microsoft.com/marketplace/apps/savitas.drivedollar-azuread?tab=Overview), [useall](../saas-apps/useall-tutorial.md), [sonsuz kampüs](../saas-apps/infinitecampus-tutorial.md), [alaya](https://alayagood.com), [heyıarkadaş](../saas-apps/heybuddy-tutorial.md), [Wrike SAML](../saas-apps/wrike-tutorial.md), [drift](../saas-apps/drift-tutorial.md), [zenegy for Business Central 365](https://accounting.zenegy.com/), [yaprak Köprüsü üye portalı](../saas-apps/everbridge-tutorial.md), [IDEO](https://profile.ideo.com/users/sign_up), [ivanti Service Manager (ISM)](../saas-apps/ivanti-service-manager-tutorial.md), [Peakon](../saas-apps/peakon-tutorial.md), [allbağlanacak SSO](../saas-apps/allbound-sso-tutorial.md), [parçalı uygulamalar-klasik test](https://test.plexonline.com/signon), [parçalı uygulamalar](https://www.plexonline.com/signon)– bir, parçalı uygulamalar [-UX testi](https://test.cloud.plex.com/sso), [parçalı uygulamalar – UX](https://cloud.plex.com/sso), [parçalı uygulamalar – IAM](https://accounts.plex.com/), [öğelerini-childilgilenme kayıtları, katılım, & finansal izleme sistemi](https://getcrafts.ca/craftsregistration)
 
-Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../azuread-dev/howto-app-gallery-listing.md)listeleme bölümüne bakın.
+Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../develop/v2-howto-app-gallery-listing.md)listeleme bölümüne bakın.
 
 ---
 
@@ -2557,7 +2557,7 @@ Azure AD günlüklerinizi artık Azure Log Analytics ilettiğini duyurmaktan mut
 
 [Ikramiye noktalarım](../saas-apps/myawardpoints-tutorial.md), [Vibe HCM](../saas-apps/vibehcm-tutorial.md), Ambyint, [myworkdrive](../saas-apps/myworkdrive-tutorial.md), [ödünç kutusu](../saas-apps/borrowbox-tutorial.md), dialpad, [ON24 sanal ortamı](../saas-apps/on24-tutorial.md), [halka orta](../saas-apps/ringcentral-tutorial.md), [Zscaler üç](../saas-apps/zscaler-three-tutorial.md), [Phraseanet](../saas-apps/phraseanet-tutorial.md), [Appraisd](../saas-apps/appraisd-tutorial.md), [workspot denetimi](../saas-apps/workspotcontrol-tutorial.md), [shuccho Navi](../saas-apps/shucchonavi-tutorial.md), [glassfrog](../saas-apps/glassfrog-tutorial.md)
 
-Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../azuread-dev/howto-app-gallery-listing.md)listeleme bölümüne bakın.
+Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../develop/v2-howto-app-gallery-listing.md)listeleme bölümüne bakın.
 
 ---
 
@@ -2672,7 +2672,7 @@ Aşağıdaki uygulamalar [onaylanan istemci uygulamaları](../conditional-access
 
 - Microsoft Stream
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 - [Azure AD uygulama tabanlı koşullu erişim](../conditional-access/app-based-conditional-access.md)
 
@@ -2708,7 +2708,7 @@ Eylül 2018 ' de, uygulama galerisine federasyon desteğiyle bu 16 yeni uygulama
 
 [Uberflip](../saas-apps/uberflip-tutorial.md), [Cokarşılayan işe alma yazılımı](../saas-apps/comeetrecruitingsoftware-tutorial.md), [workteam](../saas-apps/workteam-tutorial.md), ArcGIS [Enterprise](../saas-apps/arcgisenterprise-tutorial.md), [nuclino](../saas-apps/nuclino-tutorial.md), [jda Cloud](../saas-apps/jdacloud-tutorial.md), [kar ke](../saas-apps/snowflake-tutorial.md), NavigoCloud, [figma](../saas-apps/figma-tutorial.md), Join.me, [Zephyrsso](../saas-apps/zephyrsso-tutorial.md), [SILVERBACK](../saas-apps/silverback-tutorial.md), riveryatak Xirrus EasyPass, [Rackspace SSO](../saas-apps/rackspacesso-tutorial.md), Azure için enlyft SSO, [Palatino,](../saas-apps/convene-tutorial.md) [dmarcıa](../saas-apps/dmarcian-tutorial.md)
 
-Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../azuread-dev/howto-app-gallery-listing.md)listeleme bölümüne bakın.
+Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../develop/v2-howto-app-gallery-listing.md)listeleme bölümüne bakın.
 
 ---
 
@@ -2826,7 +2826,7 @@ Ağustos 2018 ' de, uygulama galerisine federasyon desteğiyle bu 16 yeni uygula
 
 [Hornbill](../saas-apps/hornbill-tutorial.md), [bridgeline bağlanmamış](../saas-apps/bridgelineunbound-tutorial.md), [Sauce Labs-mobil ve Web testi](../saas-apps/saucelabs-mobileandwebtesting-tutorial.md), [meta ağlar Bağlayıcısı](../saas-apps/metanetworksconnector-tutorial.md), [yaptığımız](../saas-apps/waywedo-tutorial.md), [spotinst](../saas-apps/spotinst-tutorial.md), [Promaster (ınlogik tarafından)](../saas-apps/promaster-tutorial.md), SchoolBooking, [4me](../saas-apps/4me-tutorial.md), [dossıer](../saas-apps/dossier-tutorial.md), [N2F-harcama raporları](../saas-apps/n2f-expensereports-tutorial.md), [Comm100 canlı sohbet](../saas-apps/comm100livechat-tutorial.md), [safeconnect](../saas-apps/safeconnect-tutorial.md), [zenqms](../saas-apps/zenqms-tutorial.md), [eluminate](../saas-apps/eluminate-tutorial.md), [dovetale](../saas-apps/dovetale-tutorial.md).
 
-Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../azuread-dev/howto-app-gallery-listing.md)listeleme bölümüne bakın.
+Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../develop/v2-howto-app-gallery-listing.md)listeleme bölümüne bakın.
 
 ---
 
@@ -2912,7 +2912,7 @@ Haziran 2018 ' de, uygulama galerisine federasyon desteğiyle bu 16 yeni uygulam
 
 [Yenilik hub](../saas-apps/innovationhub-tutorial.md), [leapsome](../saas-apps/leapsome-tutorial.md), [belirli yönetici SSO](../saas-apps/certainadminsso-tutorial.md), Psuc hazırlama, [IPASS SmartConnect](../saas-apps/ipasssmartconnect-tutorial.md), [ekran kaydı-O-arada](../saas-apps/screencast-tutorial.md), powerokul Birleşik sınıf, [eli ekleme](../saas-apps/elionboarding-tutorial.md), [bomgar remote support](../saas-apps/bomgarremotesupport-tutorial.md), [Nimblex](../saas-apps/nimblex-tutorial.md), [Imagineer WebVision](../saas-apps/imagineerwebvision-tutorial.md), [Insight4GRC](../saas-apps/insight4grc-tutorial.md), [SecureW2 joinnow Connector](../saas-apps/securejoinnow-tutorial.md), [kanbanize](../saas-apps/kanbanize-tutorial.md), [smartlpa](../saas-apps/smartlpa-tutorial.md), [yetenekler tabanı](../saas-apps/skillsbase-tutorial.md)
 
-Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../azuread-dev/howto-app-gallery-listing.md)listeleme bölümüne bakın.
+Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../develop/v2-howto-app-gallery-listing.md)listeleme bölümüne bakın.
 
 ---
 
@@ -3092,7 +3092,7 @@ Haziran 2018 ' de, uygulama galerisine federasyon desteğiyle bu 15 yeni uygulam
 
 [Ufuk dokunma](../saas-apps/skytap-tutorial.md), [müzik kapatma](../saas-apps/settlingmusic-tutorial.md), [SAML 1,1 belirteci etkin lob uygulaması](../saas-apps/saml-tutorial.md), [süper ruh](../saas-apps/supermood-tutorial.md), [otomatik görev](../saas-apps/autotaskendpointbackup-tutorial.md), [uç nokta yedekleme](../saas-apps/autotaskendpointbackup-tutorial.md), [ufuk yüksek ağlar](../saas-apps/skyhighnetworks-tutorial.md), Smartway2, [Tonicdm](../saas-apps/tonicdm-tutorial.md), [moconavi](../saas-apps/moconavi-tutorial.md), [Zoho One](../saas-apps/zohoone-tutorial.md), [SharePoint şirket içi](../saas-apps/sharepoint-on-premises-tutorial.md), bir adet [CX Suite](../saas-apps/foreseecxsuite-tutorial.md), [yükselkx](../saas-apps/vidyard-tutorial.md) [ChronicX](../saas-apps/chronicx-tutorial.md)
 
-Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../azuread-dev/howto-app-gallery-listing.md)listeleme bölümüne bakın.
+Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../develop/v2-howto-app-gallery-listing.md)listeleme bölümüne bakın.
 
 ---
 
@@ -3270,7 +3270,7 @@ Mayıs 2018 ' de, uygulama galerimize federasyon desteği olan bu 18 yeni uygula
 
 Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md).
 
-Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../azuread-dev/howto-app-gallery-listing.md)listeleme bölümüne bakın.
+Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../develop/v2-howto-app-gallery-listing.md)listeleme bölümüne bakın.
 
 ---
 
@@ -3336,10 +3336,10 @@ Daha fazla bilgi için bkz. [Azure AD B2C: erişim belirteçleri isteme](../../a
 
 SAML tabanlı SSO uygulamalarını yapılandırırken yapılandırma sayfasında tümleştirmeyi test edebilirsiniz. Oturum açma sırasında bir hatayla karşılaşırsanız, testi deneymenizde hata verebilir ve Azure AD, belirli sorunu çözmek için çözüm adımları sağlar.
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 - [Azure Active Directory uygulama galerisinde bulunmayan uygulamalar için çoklu oturum açmayı yapılandırma](../manage-apps/view-applications-portal.md)
-- [Azure Active Directory içindeki uygulamalarda SAML tabanlı çoklu oturum açma hatalarını ayıklama](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
+- [Azure Active Directory içindeki uygulamalarda SAML tabanlı çoklu oturum açma hatalarını ayıklama](../manage-apps/debug-saml-sso-issues.md)
 
 ---
 
@@ -3415,7 +3415,7 @@ Daha fazla bilgi için, bkz. [belirli kuruluşlardan B2B kullanıcılarına Izin
 
 Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md).
 
-Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../azuread-dev/howto-app-gallery-listing.md)listeleme bölümüne bakın.
+Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../develop/v2-howto-app-gallery-listing.md)listeleme bölümüne bakın.
 
 ---
 
@@ -3471,7 +3471,7 @@ Bir galeri veya Galeri dışı bir uygulama için bir sertifika sona ermek üzer
 
 Bazı kullanıcılar SAML tabanlı çoklu oturum açma için yapılandırılmış kurumsal uygulamalar için bildirim almadı. Bu sorun çözüldü. Azure AD, 7, 30 ve 60 gün içinde süresi dolan sertifikaların bildirimini gönderir. Bu olayı denetim günlüklerinde görebilirsiniz.
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 - [Azure Active Directory 'da federe çoklu oturum açma için sertifikaları yönetme](../manage-apps/manage-certificates-for-federated-single-sign-on.md)
 - [Azure Active Directory portalındaki denetim etkinliği raporları](../reports-monitoring/concept-audit-logs.md)
@@ -3500,7 +3500,7 @@ Daha fazla bilgi için bkz. [Azure AD B2B işbirliği nedir?](../external-identi
 
 [Blog gönderimizde](https://cloudblogs.microsoft.com/enterprisemobility/2018/03/15/the-intune-managed-browser-now-supports-azure-ad-sso-and-conditional-access/)bunun hakkında daha fazla bilgi edinin.
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 - [Uygulama tabanlı koşullu erişim kurulumu](../conditional-access/app-based-conditional-access.md)
 
@@ -3558,7 +3558,7 @@ Bu 15 Mart 2018 ' de, uygulama galerimize federasyon desteği olan bu 15 yeni uy
 
 Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md).
 
-Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../azuread-dev/howto-app-gallery-listing.md)listeleme bölümüne bakın.
+Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../develop/v2-howto-app-gallery-listing.md)listeleme bölümüne bakın.
 
 ---
 
@@ -3817,7 +3817,7 @@ Aşağıdaki uygulamalar Şubat sonuna kadar eklenecektir:
 
 - Microsoft faturalandırma
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 - [Onaylanan istemci uygulaması gereksinimi](../conditional-access/concept-conditional-access-conditions.md#client-apps)
 - [Azure AD uygulama tabanlı koşullu erişim](../conditional-access/app-based-conditional-access.md)
@@ -3844,7 +3844,7 @@ Ocak 2018 ' de, uygulama galerisine federasyon desteği olan aşağıdaki yeni u
 
 Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md).
 
-Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../azuread-dev/howto-app-gallery-listing.md)listeleme bölümüne bakın.
+Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../develop/v2-howto-app-gallery-listing.md)listeleme bölümüne bakın.
 
 ---
 
@@ -3914,7 +3914,7 @@ Yeni Azure Active Directory Yönetim konsolunun genel kullanıma sunulduğuna ve
 
 Yeni Yönetici konsoluna geçişin bir parçası olarak, Azure AD etkinlik günlüklerini almak için 2 yeni API 'si yaptık. Yeni API 'Ler kümesi, daha zengin denetim ve oturum açma etkinlikleri sağlamaya ek olarak daha zengin filtreleme ve sıralama işlevselliği sağlar. Daha önce güvenlik raporları üzerinden kullanılabilen verilere artık Microsoft Graph kimlik koruması risk algılamaları API 'SI aracılığıyla erişilebilir.
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 - [Azure Active Directory Reporting API 'SI ile çalışmaya başlama](../reports-monitoring/concept-reporting-api.md)
 
@@ -3998,7 +3998,7 @@ Bu yeni uygulamaları, Aralık 2017 ' de, uygulama galerimize federasyon desteğ
 
 Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md).
 
-Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../azuread-dev/howto-app-gallery-listing.md)listeleme bölümüne bakın.
+Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../develop/v2-howto-app-gallery-listing.md)listeleme bölümüne bakın.
 
 ---
 
@@ -4075,7 +4075,7 @@ Aşağıdaki uygulamalar [onaylanan istemci uygulamaları](../conditional-access
 - [Microsoft Kaizala](https://www.microsoft.com/garage/profiles/kaizala/)
 - Microsoft StaffHub
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 - [Onaylanan istemci uygulaması gereksinimi](../conditional-access/concept-conditional-access-conditions.md#client-apps)
 - [Azure AD uygulama tabanlı koşullu erişim](../conditional-access/app-based-conditional-access.md)
@@ -4157,7 +4157,7 @@ Artık macOS 'ı Azure AD koşullu erişim ilkenize cihaz platformu olarak dahil
 - **MacOS cihazlarının, kuruluşunuzun Intune 'da tanımlanan uyumluluk ilkelerine bağlı olduğundan emin olun.** Azure portal Intune 'da, artık macOS cihazları için uyumluluk ilkeleri ayarlayabilirsiniz.
 - **Azure AD 'deki uygulamalara erişimi yalnızca uyumlu macOS cihazlarına kısıtlayın.** Koşullu erişim ilkesi yazma, macOS öğesini ayrı bir cihaz platformu seçeneği olarak içerir. Artık Azure 'da ayarlanan hedeflenen uygulama için macOS 'a özgü koşullu erişim ilkelerini yazabilirsiniz.
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 - [Intune ile macOS cihazları için cihaz uyumluluğu ilkesi oluşturma](/mem/intune/protect/compliance-policy-create-mac-os)
 - [Azure AD 'de koşullu erişim](../conditional-access/overview.md)
@@ -4204,7 +4204,7 @@ Azure AD Yönetim merkezinde artık şunları yapabilirsiniz:
 - Microsoft Planner
 - Azure Information Protection
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 - [Onaylanan istemci uygulaması gereksinimi](../conditional-access/concept-conditional-access-conditions.md#client-apps)
 - [Azure AD uygulama tabanlı koşullu erişim](../conditional-access/app-based-conditional-access.md)

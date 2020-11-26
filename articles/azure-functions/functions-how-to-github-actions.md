@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
-ms.openlocfilehash: a2d5234b3c80456a98fde4547b9665ca1b0a83dd
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 651c1913491952c53af42abec5ce5d5009da06a0
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913555"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168075"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>GitHub eylemini kullanarak sürekli teslim
 
@@ -29,12 +29,12 @@ Azure Işlevleri iş akışı için, dosyanın üç bölümü vardır:
 | **Derleme** | Ortamı ayarlayın.<br/>İşlev uygulamasını oluşturun.|
 | **Dağıtma** | İşlev uygulamasını dağıtın.|
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - GitHub hesabı. Bir hesabınız yoksa [ücretsiz](https://github.com/join)kaydolun.  
 - GitHub deposu ile Azure üzerinde barındırılan bir çalışan işlev uygulaması.   
-    - [Hızlı Başlangıç: Visual Studio Code’u kullanarak Azure’da işlev oluşturma](functions-create-first-function-vs-code.md)
+    - [Hızlı Başlangıç: Visual Studio Code’u kullanarak Azure’da işlev oluşturma](./create-first-function-vs-code-csharp.md)
 
 ## <a name="generate-deployment-credentials"></a>Dağıtım kimlik bilgileri oluştur
 
@@ -46,7 +46,7 @@ Yayımlama profili kimlik bilgilerinizi [GitHub gizli anahtarı](https://docs.gi
 
 İşlev uygulamanızın yayımlama profilini indirmek için:
 
-1. İşlev uygulamasının **genel bakış** sayfasını seçin ve ardından **Yayımlama profili al** ' ı seçin.
+1. İşlev uygulamasının **genel bakış** sayfasını seçin ve ardından **Yayımlama profili al**' ı seçin.
 
    :::image type="content" source="media/functions-how-to-github-actions/get-publish-profile.png" alt-text="Yayımlama profilini indir":::
 
@@ -55,11 +55,11 @@ Yayımlama profili kimlik bilgilerinizi [GitHub gizli anahtarı](https://docs.gi
 
 ### <a name="add-the-github-secret"></a>GitHub gizliliğini ekleyin
 
-1. [GitHub](https://github.com)'da deponuza gidin, **Ayarlar**  >  **gizli** dizileri  >  **Yeni bir parola ekleyin** ' i seçin.
+1. [GitHub](https://github.com)'da deponuza gidin, **Ayarlar**  >  **gizli** dizileri  >  **Yeni bir parola ekleyin**' i seçin.
 
-   :::image type="content" source="media/functions-how-to-github-actions/add-secret.png" alt-text="Yayımlama profilini indir":::
+   :::image type="content" source="media/functions-how-to-github-actions/add-secret.png" alt-text="Gizli dizi Ekle":::
 
-1. `AZURE_FUNCTIONAPP_PUBLISH_PROFILE` **Ad** , yayımlama profili dosyasının içeriği için kullanarak yeni bir gizli dizi ekleyin ve sonra gizli **Value** dizi **Ekle** ' yi seçin.
+1. `AZURE_FUNCTIONAPP_PUBLISH_PROFILE` **Ad**, yayımlama profili dosyasının içeriği için kullanarak yeni bir gizli dizi ekleyin ve sonra gizli **Value** dizi **Ekle**' yi seçin.
 
 GitHub artık Azure 'daki işlev uygulamanıza kimlik doğrulaması yapabilir.
 

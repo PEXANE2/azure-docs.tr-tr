@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4dd9f98f174144cef455157162694a470aa1065f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2652bd8ed33eb68e228f059fba9daa3c6e7c22da
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951780"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170166"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Azure Pipelines ile özel ilkeler dağıtma
 
@@ -29,7 +29,7 @@ Azure AD B2C içindeki özel ilkeleri yönetmek için Azure Pipelines etkinleşt
 1. Azure işlem hattı yapılandırma
 
 > [!IMPORTANT]
-> Azure işlem hattı ile Azure AD B2C özel ilkeleri yönetmek Şu anda Microsoft Graph API uç noktasında kullanılabilen **Önizleme** işlemlerini kullanıyor `/beta` . Üretim uygulamalarında bu API 'lerin kullanılması desteklenmez. Daha fazla bilgi için [Microsoft Graph REST API Beta uç nokta başvurusuna](/graph/api/overview?toc=.%252fref%252ftoc.json&view=graph-rest-beta)bakın.
+> Azure işlem hattı ile Azure AD B2C özel ilkeleri yönetmek Şu anda Microsoft Graph API uç noktasında kullanılabilen **Önizleme** işlemlerini kullanıyor `/beta` . Üretim uygulamalarında bu API 'lerin kullanılması desteklenmez. Daha fazla bilgi için [Microsoft Graph REST API Beta uç nokta başvurusuna](/graph/api/overview?toc=.%2fref%2ftoc.json&view=graph-rest-beta)bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -131,7 +131,7 @@ Deponuz başlatılmış ve özel ilke dosyalarınıza doldurulduktan sonra yayı
 1. **Değişkenler** sekmesini seçin.
 1. Aşağıdaki değişkenleri **ardışık düzen değişkenleri** altına ekleyin ve değerlerini belirtilen şekilde ayarlayın:
 
-    | Name | Değer |
+    | Ad | Değer |
     | ---- | ----- |
     | `clientId` | Daha önce kaydettiğiniz uygulamanın **uygulama (istemci) kimliği** . |
     | `clientSecret` | Daha önce oluşturduğunuz **istemci parolasının** değeri. <br /> Değişken türünü **gizli** olarak değiştirin (kilit simgesini seçin). |

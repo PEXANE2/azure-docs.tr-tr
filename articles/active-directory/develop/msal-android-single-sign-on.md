@@ -14,26 +14,26 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: hahamil
 ms.reviewer: marsma
-ms.openlocfilehash: 7e53e21b6d929e2f0ba9a2e23e4e8e1b2278f828
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 3f5791bfcf6547b7fc4e84bee3d4c1c49453af9c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92210395"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169503"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-msal"></a>Nasıl yapılır: MSAL kullanarak Android üzerinde uygulamalar arası SSO etkinleştirme
 
 Çoklu oturum açma (SSO), kullanıcıların kimlik bilgilerini yalnızca bir kez girmelerini ve bu kimlik bilgilerinin uygulamalar arasında otomatik olarak çalışmasını sağlar.
 
-[Microsoft Identity platformu](/azure/active-directory/develop/) ve Microsoft kimlik doğrulama KITAPLıĞı (msal) kendi uygulama paketinizde SSO 'yu etkinleştirmenize yardımcı olur. Aracı yeteneği ve Authenticator uygulamalarıyla, SSO 'yu tüm cihaz genelinde genişletebilirsiniz.
+[Microsoft Identity platformu](./index.yml) ve Microsoft kimlik doğrulama KITAPLıĞı (msal) kendi uygulama paketinizde SSO 'yu etkinleştirmenize yardımcı olur. Aracı yeteneği ve Authenticator uygulamalarıyla, SSO 'yu tüm cihaz genelinde genişletebilirsiniz.
 
 Bu nasıl yapılır, uygulamanız tarafından müşterilerinize SSO sağlamak üzere kullanılan SDK 'Ları nasıl yapılandıracağınızı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu şekilde nasıl yapılacağını bildiğiniz varsayılır:
 
-- Azure portal kullanarak uygulamanızı sağlayın. Bu konu hakkında daha fazla bilgi için [Android öğreticisinde](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-android#create-a-project) uygulama oluşturma yönergelerine bakın.
+- Azure portal kullanarak uygulamanızı sağlayın. Bu konu hakkında daha fazla bilgi için [Android öğreticisinde](./tutorial-v2-android.md#create-a-project) uygulama oluşturma yönergelerine bakın.
 - Uygulamanızı [Android Için Microsoft kimlik doğrulama kitaplığı](https://github.com/AzureAD/microsoft-authentication-library-for-android)ile tümleştirin.
 
 ## <a name="methods-for-single-sign-on"></a>Çoklu oturum açma yöntemleri
@@ -117,11 +117,11 @@ Windows:
 keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.keystore | openssl sha1 -binary | openssl base64
 ```
 
-*Keytool*ile imza karması oluşturduktan sonra, YENIDEN yönlendirme URI 'sini oluşturmak için Azure Portal kullanın:
+*Keytool* ile imza karması oluşturduktan sonra, YENIDEN yönlendirme URI 'sini oluşturmak için Azure Portal kullanın:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın ve **uygulama kayıtları**Android uygulamanızı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın ve **uygulama kayıtları** Android uygulamanızı seçin.
 1. **Kimlik doğrulama**  >  **platformu Ekle**  >  **Android**' i seçin.
-1. Açılan **Android uygulamanızı yapılandırın** bölmesinde, daha önce oluşturduğunuz **imza karmasını** ve bir **paket adını**girin.
+1. Açılan **Android uygulamanızı yapılandırın** bölmesinde, daha önce oluşturduğunuz **imza karmasını** ve bir **paket adını** girin.
 1. **Yapılandır** düğmesini seçin.
 
 Azure portal, yeniden yönlendirme URI 'sini oluşturur ve **Android yapılandırma** bölmesinin **yeniden yönlendirme URI 'si** alanında görüntüler.
@@ -159,7 +159,7 @@ MSAL önce bu hizmeti çağırmak hiçbir Android izni gerektirmediğinden, ilk 
 Aracı tümleştirmesi 'nin çalıştığını hemen temizlemeyebilir, ancak aşağıdakileri denetlemek için aşağıdaki adımları kullanabilirsiniz:
 
 1. Android cihazınızda, aracıyı kullanarak bir istek doldurun.
-1. Android cihazınızdaki Ayarlar ' da, kimlik doğrulamasından geçen hesaba karşılık gelen yeni oluşturulan bir hesabı arayın. Hesap *iş hesabı*türünde olmalıdır.
+1. Android cihazınızdaki Ayarlar ' da, kimlik doğrulamasından geçen hesaba karşılık gelen yeni oluşturulan bir hesabı arayın. Hesap *iş hesabı* türünde olmalıdır.
 
 Testi yinelemek istiyorsanız, hesabı ayarlardan kaldırabilirsiniz.
 
