@@ -11,18 +11,18 @@ ms.custom: mvc, seo-javascript-september2019, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 705df6ddc6b665ac3d0d62ec3dad93e38f5e513e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 6a9f3b864bd8aba2140c7d32d4b5474ff7b95f88
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953109"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171237"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>Öğretici: Azure AD B2C ile tek sayfalı bir uygulamada kimlik doğrulamasını etkinleştirme
 
 Bu öğreticide, tek sayfalı bir uygulamada (SPA) kullanıcıları kaydolmak ve oturum açmak için aşağıdakilerden birini kullanarak Azure Active Directory B2C (Azure AD B2C) nasıl kullanılacağı gösterilmektedir:
-* [OAuth 2,0 yetkilendirme kodu akışı](https://docs.microsoft.com/azure/active-directory-b2c/authorization-code-flow) ( [MSAL.js 2. x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)kullanarak)
-* [OAuth 2,0 örtük verme akışı](https://docs.microsoft.com/azure/active-directory-b2c/implicit-flow-single-page-application) ( [MSAL.js 1. x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core)kullanarak)
+* [OAuth 2,0 yetkilendirme kodu akışı](./authorization-code-flow.md) ( [MSAL.js 2. x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)kullanarak)
+* [OAuth 2,0 örtük verme akışı](./implicit-flow-single-page-application.md) ( [MSAL.js 1. x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core)kullanarak)
 
 Bu öğreticide, birincisi iki bölümlü bir seride:
 
@@ -51,13 +51,13 @@ Ayrıca, yerel geliştirme ortamınızda aşağıdakiler gereklidir:
 
 ## <a name="update-the-application"></a>Uygulamayı güncelleştirme
 
-Önkoşulların bir parçası olarak tamamladığınız [ikinci öğreticide](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-spa) , Azure AD B2C bir tek sayfalı uygulama kaydettiniz. Bu öğreticide kod örneğiyle iletişimi etkinleştirmek için uygulama kaydına bir yanıt URL 'SI (yeniden yönlendirme URI 'SI olarak da bilinir) ekleyin.
+Önkoşulların bir parçası olarak tamamladığınız [ikinci öğreticide](./tutorial-register-spa.md) , Azure AD B2C bir tek sayfalı uygulama kaydettiniz. Bu öğreticide kod örneğiyle iletişimi etkinleştirmek için uygulama kaydına bir yanıt URL 'SI (yeniden yönlendirme URI 'SI olarak da bilinir) ekleyin.
 
 Azure AD B2C kiracınızdaki bir uygulamayı güncelleştirmek için yeni Birleşik **uygulama kayıtları** deneyimimizi veya eski  **uygulamalarımız (eski)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin](./app-registrations-training-guide.md).
 
 #### <a name="app-registrations-auth-code-flow"></a>[Uygulama kayıtları (kimlik doğrulama kodu akışı)](#tab/app-reg-auth/)
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C** seçin.
 1. **Uygulama kayıtları** öğesini seçin, **sahip olunan uygulamalar** sekmesini seçin ve ardından *spaapp1* uygulamasını seçin.
@@ -68,7 +68,7 @@ Azure AD B2C kiracınızdaki bir uygulamayı güncelleştirmek için yeni Birle�
 
 #### <a name="app-registrations-implicit-flow"></a>[Uygulama kayıtları (örtük akış)](#tab/app-reg-implicit/)
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C** seçin.
 1. **Uygulama kayıtları** öğesini seçin, **sahip olunan uygulamalar** sekmesini seçin ve ardından *spaapp1* uygulamasını seçin.
@@ -79,7 +79,7 @@ Azure AD B2C kiracınızdaki bir uygulamayı güncelleştirmek için yeni Birle�
 
 #### <a name="applications-legacy"></a>[Uygulamalar (eski)](#tab/applications-legacy/)
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve sonra **Azure AD B2C**' i arayıp seçin.
 1. **Uygulamalar (eski)** öğesini seçin ve ardından *spaapp1* uygulamasını seçin.

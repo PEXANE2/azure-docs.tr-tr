@@ -12,12 +12,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 420cc2bc38d079fa95f6b90ed20cb31e994f4ea3
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 6be0720b7eafb251b262d5cd182bdf06e201402d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027083"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173082"
 ---
 # <a name="what-are-external-identities-in-azure-active-directory"></a>Azure Active Directory dış kimlikler nelerdir?
 
@@ -27,9 +27,9 @@ Azure AD 'de dış kimliklerle, kuruluşunuzun dışındaki kişilerin uygulamal
 
 Azure AD dış kimlikleri, kullanıcının kuruluşunuzla olan ilişkisine ve Kullanıcı uygulamalarınızda ve kaynaklarda oturum açmak istediğinde daha az odaklanır. Bu çerçevede, Azure AD, işletmeden işletmeye (B2B) işbirliğiyle tüketici/müşteri veya vatandaşlık 'e yönelik uygulamalar (işletmeler arası veya B2C) için erişim yönetimine kadar çeşitli senaryolar destekler.
 
-- **Uygulamalarınızı ve kaynaklarınızı dış kullanıcılarla (B2B işbirliği) paylaşabilirsiniz** . Dış kullanıcıları kendi kiracınıza (yetkilendirme için), mevcut kimlik bilgilerini (kimlik doğrulama için) kullanmalarına izin vermek için izin atayabilmenizi sağlayan "Konuk" kullanıcılar olarak kendi kiracınıza davet edebilirsiniz. Kullanıcılar, iş, okul veya diğer e-posta hesapları ile basit bir davet ve kullanım süreci kullanarak paylaşılan kaynaklarda oturum açabilirler. Ayrıca, [dış kullanıcılara erişimi yöneten](../governance/entitlement-management-external-users.md#how-access-works-for-external-users)ilkeleri yapılandırmak IÇIN [Azure AD Yetkilendirme Yönetimi](../governance/entitlement-management-overview.md) de kullanabilirsiniz. Artık [self servis kaydolma Kullanıcı akışlarının (Önizleme)](self-service-sign-up-overview.md)kullanılabilirliğiyle, dış kullanıcıların uygulamalara kaydolmalarına izin verebilirsiniz. Deneyim, bir iş, okul veya sosyal kimlik (Google veya Facebook gibi) ile kaydolma izni verecek şekilde özelleştirilebilir. Kaydolma işlemi sırasında kullanıcı hakkındaki bilgileri de toplayabilirsiniz. Daha fazla bilgi için bkz. [Azure AD B2B belgeleri](index.yml).
+- **Uygulamalarınızı ve kaynaklarınızı dış kullanıcılarla (B2B işbirliği) paylaşabilirsiniz**. Dış kullanıcıları kendi kiracınıza (yetkilendirme için), mevcut kimlik bilgilerini (kimlik doğrulama için) kullanmalarına izin vermek için izin atayabilmenizi sağlayan "Konuk" kullanıcılar olarak kendi kiracınıza davet edebilirsiniz. Kullanıcılar, iş, okul veya diğer e-posta hesapları ile basit bir davet ve kullanım süreci kullanarak paylaşılan kaynaklarda oturum açabilirler. Ayrıca, [dış kullanıcılara erişimi yöneten](../governance/entitlement-management-external-users.md#how-access-works-for-external-users)ilkeleri yapılandırmak IÇIN [Azure AD Yetkilendirme Yönetimi](../governance/entitlement-management-overview.md) de kullanabilirsiniz. Artık [self servis kaydolma Kullanıcı akışlarının (Önizleme)](self-service-sign-up-overview.md)kullanılabilirliğiyle, dış kullanıcıların uygulamalara kaydolmalarına izin verebilirsiniz. Deneyim, bir iş, okul veya sosyal kimlik (Google veya Facebook gibi) ile kaydolma izni verecek şekilde özelleştirilebilir. Kaydolma işlemi sırasında kullanıcı hakkındaki bilgileri de toplayabilirsiniz. Daha fazla bilgi için bkz. [Azure AD B2B belgeleri](index.yml).
 
-- **Tüketici ve müşterilere yönelik uygulamalar için bir beyaz etiketli kimlik yönetimi çözümüyle Kullanıcı yolculukları oluşturun (Azure AD B2C)** . Müşterilere yönelik uygulamalar oluşturan bir iş veya geliştiricisiyseniz Azure AD B2C kullanarak milyonlarca tüketiciye, müşteriye veya vatandaşları ölçeklendirebilirsiniz. Geliştiriciler, Azure AD 'yi uygulamalarına yönelik tam özellikli müşteri kimliği ve erişim yönetimi (CıHAR) sistemi olarak kullanabilir. Müşteriler, zaten oluşturmuş oldukları bir kimlikle (Facebook veya Gmail gibi) oturum açabilir. Azure AD B2C sayesinde, uygulamalarınızı kullanırken müşterilerin nasıl kaydolup oturum açdığını ve profillerini nasıl yönetebileceğinizi denetleyebilir. Daha fazla bilgi için [Azure AD B2C belgelerine](../../active-directory-b2c/index.yml)bakın.
+- **Tüketici ve müşterilere yönelik uygulamalar için bir beyaz etiketli kimlik yönetimi çözümüyle Kullanıcı yolculukları oluşturun (Azure AD B2C)**. Müşterilere yönelik uygulamalar oluşturan bir iş veya geliştiricisiyseniz Azure AD B2C kullanarak milyonlarca tüketiciye, müşteriye veya vatandaşları ölçeklendirebilirsiniz. Geliştiriciler, Azure AD 'yi uygulamalarına yönelik tam özellikli müşteri kimliği ve erişim yönetimi (CıHAR) sistemi olarak kullanabilir. Müşteriler, zaten oluşturmuş oldukları bir kimlikle (Facebook veya Gmail gibi) oturum açabilir. Azure AD B2C sayesinde, uygulamalarınızı kullanırken müşterilerin nasıl kaydolup oturum açdığını ve profillerini nasıl yönetebileceğinizi denetleyebilir. Daha fazla bilgi için [Azure AD B2C belgelerine](../../active-directory-b2c/index.yml)bakın.
 
 ## <a name="compare-external-identities-solutions"></a>Dış Kimlikler çözümlerini karşılaştırma
 
@@ -51,7 +51,7 @@ Azure AD dış kimlikleri ile kurumsal sınırlarınızın ötesinde müşterile
 
 ## <a name="about-multitenant-applications"></a>Çok kiracılı uygulamalar hakkında
 
-Bir hizmet olarak uygulama sağlıyorsanız ve müşterilerinizin Kullanıcı hesaplarını yönetmek istemiyorsanız, çok kiracılı bir uygulama muhtemelen sizin için doğru seçimdir. Diğer Azure AD kiracılarına yönelik uygulamalar geliştirirken, kullanıcıları tek bir kuruluştan (tek bir kiracı) veya bir Azure AD kiracısına (çok kiracılı uygulamalar) sahip olan herhangi bir kuruluştan hedefleyebilirsiniz. Azure AD 'deki Uygulama kayıtları varsayılan olarak tek kiracıya sahiptir, ancak kaydınızı çok kiracılı hale getirebilirsiniz. Bu çok kiracılı uygulama, kendi Azure AD 'niz tarafından bir kez kaydoldu. Ancak, herhangi bir kuruluştan herhangi bir Azure AD kullanıcısı, sizin bölüminizden ek çalışma gerektirmeden uygulamayı kullanabilir. Daha fazla bilgi için bkz. [çok kiracılı uygulamalarda kimlik yönetimi](https://docs.microsoft.com/azure/architecture/multitenant-identity/), [nasıl yapılır Kılavuzu](../develop/howto-convert-app-to-be-multi-tenant.md).
+Bir hizmet olarak uygulama sağlıyorsanız ve müşterilerinizin Kullanıcı hesaplarını yönetmek istemiyorsanız, çok kiracılı bir uygulama muhtemelen sizin için doğru seçimdir. Diğer Azure AD kiracılarına yönelik uygulamalar geliştirirken, kullanıcıları tek bir kuruluştan (tek bir kiracı) veya bir Azure AD kiracısına (çok kiracılı uygulamalar) sahip olan herhangi bir kuruluştan hedefleyebilirsiniz. Azure AD 'deki Uygulama kayıtları varsayılan olarak tek kiracıya sahiptir, ancak kaydınızı çok kiracılı hale getirebilirsiniz. Bu çok kiracılı uygulama, kendi Azure AD 'niz tarafından bir kez kaydoldu. Ancak, herhangi bir kuruluştan herhangi bir Azure AD kullanıcısı, sizin bölüminizden ek çalışma gerektirmeden uygulamayı kullanabilir. Daha fazla bilgi için bkz. [çok kiracılı uygulamalarda kimlik yönetimi](/azure/architecture/multitenant-identity/), [nasıl yapılır Kılavuzu](../develop/howto-convert-app-to-be-multi-tenant.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -13,11 +13,11 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: 7fa13a328a55b0e9eaa546e70bf0711f4f011cf1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89068551"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173439"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Xamarin uygulamalarında Microsoft Authenticator veya Intune Şirket Portalı kullanma
 
@@ -101,13 +101,13 @@ Nesne penceresini ayarlamak için:
 
 1. `AcquireTokenInteractive`Çağrıda, `.WithParentActivityOrWindow(App.RootViewController)` öğesini kullanın ve ardından kullanacağınız nesne penceresi başvurusunu geçirin.
 
-    *App.cs*içinde:
+    *App.cs* içinde:
 
     ```csharp
        public static object RootViewController { get; set; }
     ```
 
-    *AppDelegate.cs*içinde:
+    *AppDelegate.cs* içinde:
 
     ```csharp
        LoadApplication(new App());
@@ -183,8 +183,8 @@ Yeniden yönlendirme URI 'sini [Azure Portal](https://portal.azure.com)uygulaman
 
 **Yeniden yönlendirme URI 'SI oluşturmak için:**
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. **Azure Active Directory**  >  Kayıtlı uygulamanızı > Azure Active Directory**uygulama kayıtları** seçin
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. **Azure Active Directory**  >  Kayıtlı uygulamanızı > Azure Active Directory **uygulama kayıtları** seçin
 1. **Kimlik doğrulama**  >  **Platform Ekle**  >  **iOS/MacOS** seçin
 1. Paket KIMLIĞINIZI girin ve ardından **Yapılandır**' ı seçin.
 
@@ -347,7 +347,7 @@ Android 'de aracılı kimlik doğrulaması uyguladığınızda sorunları önlem
   - Microsoft Authenticator günlüklerini görüntüle:
 
     1. Uygulamanın sağ üst köşesindeki menü düğmesini seçin.
-    1. **Yardım**  >  **günlüklerini**  >  **görüntüleme günlüklerini**seçin.
+    1. **Yardım**  >  **günlüklerini**  >  **görüntüleme günlüklerini** seçin.
     1. Aracı günlüklerini cihazın panosuna kopyalamak için **Tümünü Kopyala** ' yı seçin.
 
     Bu günlüklerle hata ayıklamanın en iyi yolu, bunları kendinize e-posta ile ve geliştirme makinenizde görüntülemenizi sağlar. Bilgisayarınızdaki günlükleri cihazın kendisi yerine ayrıştırmayı daha kolay bulabilirsiniz. Ayrıca, Android 'de bir Test Düzenleyicisi kullanarak günlükleri bir metin dosyası olarak kaydedebilir ve ardından bir USB kablosu kullanarak dosyayı bir bilgisayara kopyalayabilirsiniz.

@@ -11,31 +11,31 @@ ms.topic: how-to
 ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 6276bd0db9bfb93897f7350b87d208ac2951c859
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: bddc4c64feb31f78bed482bbd729ab1c4b8e676e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94330334"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171424"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>Strata kullanarak şirket içi uygulamaları korumak için Azure AD B2C genişletme öğreticisi
 
 Bu örnek öğreticide, Azure Active Directory (AD) B2C 'yi Strata 'nun [Maverics kimlik Orchestrator](https://www.strata.io/maverics-identity-orchestrator/)ile tümleştirmeyi öğrenin.
 Maverics Identity Orchestrator, şirket içi uygulamaları korumak için Azure AD B2C genişletir. Herhangi bir kimlik sistemine bağlanır, kullanıcıları ve kimlik bilgilerini saydam biçimde geçirir, ilkeleri ve konfigürasyonları eşitler, kimlik doğrulama ve oturum yönetimini soyutlar. Strata kurumların kullanılması, uygulamaları yeniden yazmadan eski 'dan Azure AD B2C hızla geçiş yapabilir. Çözümün şöyle avantajları vardır:
 
-- **Müşteri tek Sign-On (SSO) Şirket içi karma uygulamalar** : Azure AD B2C Maverics Identity Orchestrator ile müşteri SSO 'su destekler. Kullanıcılar, Azure AD B2C veya sosyal kimlik sağlayıcısı (IDP) ' de barındırılan hesaplarıyla oturum açabilirler. Maverics SSO 'yu, Symantec Sitedefteri gibi eski kimlik sistemleri tarafından geçmişte güvenliği sağlanmış olan uygulamalara genişletir.
+- **Müşteri tek Sign-On (SSO) Şirket içi karma uygulamalar**: Azure AD B2C Maverics Identity Orchestrator ile müşteri SSO 'su destekler. Kullanıcılar, Azure AD B2C veya sosyal kimlik sağlayıcısı (IDP) ' de barındırılan hesaplarıyla oturum açabilirler. Maverics SSO 'yu, Symantec Sitedefteri gibi eski kimlik sistemleri tarafından geçmişte güvenliği sağlanmış olan uygulamalara genişletir.
 
-- **Standartlara DAYALı SSO 'yu uygulamalara yeniden yazmadan Genişlet** : Kullanıcı erişimini yönetmek ve Maverics ıDENTITY Orchestrator SAML veya OIDC BAĞLAYıCıLARıYLA SSO 'yu etkinleştirmek için Azure AD B2C kullanın.
+- **Standartlara DAYALı SSO 'yu uygulamalara yeniden yazmadan Genişlet**: Kullanıcı erişimini yönetmek ve Maverics ıDENTITY Orchestrator SAML veya OIDC BAĞLAYıCıLARıYLA SSO 'yu etkinleştirmek için Azure AD B2C kullanın.
 
-- **Kolay yapılandırma** : Azure AD B2C Maverics KIMLIK Orchestrator SAML veya OIDC bağlayıcılarını Azure AD B2C bağlamak için basit bir adım adım kullanıcı arabirimi sağlar.
+- **Kolay yapılandırma**: Azure AD B2C Maverics KIMLIK Orchestrator SAML veya OIDC bağlayıcılarını Azure AD B2C bağlamak için basit bir adım adım kullanıcı arabirimi sağlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için şunlar gerekir:
 
 - Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
 
-- Azure aboneliğinize bağlı bir [Azure AD B2C kiracısı](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) .
+- Azure aboneliğinize bağlı bir [Azure AD B2C kiracısı](./tutorial-create-tenant.md) .
 
 - Maverics kimlik Orchestrator tarafından kullanılan gizli dizileri depolamak için bir [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) örneği. Azure AD B2C veya Basit Dizin Erişim Protokolü (LDAP) dizini veya veritabanı gibi diğer öznitelik sağlayıcılarına bağlanmak için kullanılır.
 
@@ -47,17 +47,17 @@ Başlamak için şunlar gerekir:
 
 Strata 'nın Maverics tümleştirmesi aşağıdaki bileşenleri içerir:
 
-- **Azure AD B2C** : kullanıcının kimlik bilgilerini doğrulamaktan sorumlu olan yetkilendirme sunucusu. Kimliği doğrulanmış kullanıcılar Azure AD B2C dizininde depolanan yerel bir hesabı kullanarak şirket içi uygulamalara erişebilir.
+- **Azure AD B2C**: kullanıcının kimlik bilgilerini doğrulamaktan sorumlu olan yetkilendirme sunucusu. Kimliği doğrulanmış kullanıcılar Azure AD B2C dizininde depolanan yerel bir hesabı kullanarak şirket içi uygulamalara erişebilir.
 
-- **Dış sosyal veya kurumsal IDP** : herhangi bir OpenID Connect sağlayıcısı, Facebook, Google veya GitHub olabilir. Azure AD B2C ile [dış IDPs](https://docs.microsoft.com/azure/active-directory-b2c/technical-overview#external-identity-providers) kullanma hakkında bilgi için bkz..  
+- **Dış sosyal veya kurumsal IDP**: herhangi bir OpenID Connect sağlayıcısı, Facebook, Google veya GitHub olabilir. Azure AD B2C ile [dış IDPs](./technical-overview.md#external-identity-providers) kullanma hakkında bilgi için bkz..  
 
-- **Strata 'Nın Maverics kimlik Orchestrator** : Kullanıcı oturum açma bilgilerini düzenleyen ve http üstbilgileri aracılığıyla uygulamaları saydam olarak bir şekilde geçiren hizmet.
+- **Strata 'Nın Maverics kimlik Orchestrator**: Kullanıcı oturum açma bilgilerini düzenleyen ve http üstbilgileri aracılığıyla uygulamaları saydam olarak bir şekilde geçiren hizmet.
 
 Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 ![Görüntü, karma uygulamalara erişimi etkinleştirmek için Strata Maverics ile Azure AD B2C tümleştirme mimarisini gösterir](./media/partner-strata/strata-architecture-diagram.png)
 
-| Adımlar | Description |
+| Adımlar | Açıklama |
 |:-------|:---------------|
 | 1. | Kullanıcı, şirket içi barındırılan uygulamaya erişmek için bir istek yapar. Maverics kimlik Orchestrator, Kullanıcı tarafından uygulamaya yapılan isteği bir proxy 'ye sağlar.|
 | 2. | Orchestrator kullanıcının kimlik doğrulama durumunu denetler. Oturum belirteci almazsa veya sağlanan oturum belirteci geçersizse, kimlik doğrulaması için kullanıcıyı Azure AD B2C gönderir.|
@@ -75,7 +75,7 @@ Eski şirket içi uygulamanızı Azure AD B2C tümleştirmek için kullanacağı
 
 1. **Uygulamanızı kaydetme**
 
-   a. Orchestrator 'ı Azure AD B2C kiracısına [uygulama olarak kaydedin](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-applications?tabs=app-reg-ga) .
+   a. Orchestrator 'ı Azure AD B2C kiracısına [uygulama olarak kaydedin](./tutorial-register-applications.md?tabs=app-reg-ga) .
    >[!Note]
    >Orchestrator örneğinizi yapılandırdığınızda kiracı adı ve tanımlayıcı, istemci KIMLIĞI, istemci gizli anahtarı, yapılandırılmış talepler ve yeniden yönlendirme URI 'SI gerekir.
 
@@ -83,13 +83,13 @@ Eski şirket içi uygulamanızı Azure AD B2C tümleştirmek için kullanacağı
 
    c. Uygulamanız için bir yeniden yönlendirme URI 'SI ekleyin. Bu URI, `oauthRedirectURL` Orchestrator Azure AD B2C bağlayıcı yapılandırmanızın parametresiyle eşleşir, örneğin, `https://example.com/oidc-endpoint` .
 
-2. **Kullanıcı akışı oluşturma** : bir [oturum açma ve oturum açma Kullanıcı akışı](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows)oluşturun.
+2. **Kullanıcı akışı oluşturma**: bir [oturum açma ve oturum açma Kullanıcı akışı](./tutorial-create-user-flows.md)oluşturun.
 
-3. **IDP ekleme** : Kullanıcı hesabını yerel bir hesap veya sosyal ya da kurumsal [IDP](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers)ile oturum açmak için seçin.
+3. **IDP ekleme**: Kullanıcı hesabını yerel bir hesap veya sosyal ya da kurumsal [IDP](./tutorial-add-identity-providers.md)ile oturum açmak için seçin.
 
-4. **Kullanıcı özniteliklerini tanımlayın** : kaydolma sırasında toplanacak öznitelikleri tanımlayın.
+4. **Kullanıcı özniteliklerini tanımlayın**: kaydolma sırasında toplanacak öznitelikleri tanımlayın.
 
-5. **Uygulama taleplerini belirtin** : Orchestrator örneğiniz aracılığıyla uygulamaya döndürülecek öznitelikleri belirtin. Orchestrator, Azure AD B2C tarafından döndürülen taleplerden öznitelikleri kullanır ve LDAP dizinleri ve veritabanları gibi diğer bağlı kimlik sistemlerinden ek öznitelikler alabilir. Bu öznitelikler HTTP üst bilgilerinde ayarlanır ve şirket içi şirket içi uygulamaya gönderilir.
+5. **Uygulama taleplerini belirtin**: Orchestrator örneğiniz aracılığıyla uygulamaya döndürülecek öznitelikleri belirtin. Orchestrator, Azure AD B2C tarafından döndürülen taleplerden öznitelikleri kullanır ve LDAP dizinleri ve veritabanları gibi diğer bağlı kimlik sistemlerinden ek öznitelikler alabilir. Bu öznitelikler HTTP üst bilgilerinde ayarlanır ve şirket içi şirket içi uygulamaya gönderilir.
 
 ## <a name="configure-maverics-identity-orchestrator"></a>Maverics kimlik Orchestrator 'ı yapılandırma
 
@@ -259,7 +259,7 @@ appgateways:
 
 Orchestrator 'ın Azure AD B2C ve diğer tüm kimlik sistemine bağlanmak için kullandığı gizli dizileri güvence altına almak önemlidir. Maverics, gizli dizileri varsayılan olarak düz metin olarak yüklemeyi sağlar `maverics.yaml` , ancak bu öğreticide gizli dizi sağlayıcısı olarak Azure Key Vault kullanacaksınız.
 
-Orchestrator örneğinizin gizli bir sağlayıcı olarak kullanacağı [Yeni bir Key Vault oluşturmak](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#create-a-vault) için yönergeleri izleyin. Kasanıza sırlarınızı ekleyin ve her gizli dizi için verilen ' i buraya göz atın `SECRET NAME` . Örneğin, `AzureADB2CClientSecret`.
+Orchestrator örneğinizin gizli bir sağlayıcı olarak kullanacağı [Yeni bir Key Vault oluşturmak](../key-vault/secrets/quick-create-portal.md) için yönergeleri izleyin. Kasanıza sırlarınızı ekleyin ve her gizli dizi için verilen ' i buraya göz atın `SECRET NAME` . Örneğin, `AzureADB2CClientSecret`.
 
 Bir değeri bir yapılandırma dosyasında gizli olarak bildirmek için `maverics.yaml` , parolayı açılı parantezle sarın:
 
@@ -342,6 +342,6 @@ appgateways:
 
 Daha fazla bilgi için aşağıdaki makaleleri gözden geçirin:
 
-- [Azure AD B2C'deki özel ilkeler](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C'deki özel ilkeler](./custom-policy-overview.md)
 
-- [Azure AD B2C özel ilkeleri kullanmaya başlama](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C özel ilkeleri kullanmaya başlama](./custom-policy-get-started.md?tabs=applications)

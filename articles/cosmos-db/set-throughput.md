@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: a02fa7d9f656ed3b6e61aab1f42e2a3ffca131a7
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 4fea027663b55e87822eae1fd0cdb2d67dbc630b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917265"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170840"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB sağlanan üretilen iş hızına giriş
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -137,7 +137,7 @@ Azure portal veya SDK 'Ları kullanarak bir kapsayıcının veya veritabanının
 
 Yukarıdaki [geçerli sağlama üretilen iş](#current-provisioned-throughput) bölümünde açıklandığı gibi, bir kapsayıcı veya veritabanı üzerinde sağlayabileceğiniz en düşük aktarım hızı, bir dizi etkene bağlıdır. Bunlardan biri, depolama birimi başına 10 RU/sn 'lik en düşük aktarım hızını zorladığından, şu anda depolanan veri miktarıdır Azure Cosmos DB.
 
-Bu, büyük miktarlarda veri depolamanız gereken ancak karşılaştırmada düşük aktarım hızı gereksinimlerinin olduğu durumlarda sorun olabilir. Bu senaryolara daha iyi uyum sağlamak için, Azure Cosmos DB GB başına RU/sn kısıtlamasını uygun hesaplarda 10 ' dan 1 ' e azaltan **"yüksek depolama/düşük aktarım hızı" programı** getirmiştir.
+Bu, büyük miktarlarda veri depolamanız gereken ancak karşılaştırmada düşük aktarım hızı gereksinimlerinin olduğu durumlarda sorun olabilir. Azure Cosmos DB bu senaryolara daha iyi uyum sağlamak için, uygun hesaplarda GB başına RU/sn kısıtlamasını azaltan bir **"yüksek depolama/düşük aktarım hızı" programı** getirmiştir.
 
 Şu anda hesabınızda 1 TB 'den fazla veri içeren en az 1 kapsayıcı veya paylaşılan işleme veritabanınız olması gerekir. Bu programa katılın ve tam uygunluğu değerlendirin, [Bu anketi](https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRzBPrdEMjvxPuDm8fCLUtXpUREdDU0pCR0lVVFY5T1lRVEhWNUZITUJGMC4u)doldurmanız gerekir. Azure Cosmos DB takım daha sonra ilerlemeniz ve ekleme işlemine devam eder.
 

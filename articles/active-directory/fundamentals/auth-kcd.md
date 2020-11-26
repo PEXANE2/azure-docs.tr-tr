@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62c8f230ca2b2d0db1170cde9b24f9e4819889bb
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: a1c7aa4d2300a6dee44da067b122fc7af97f7aa9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577133"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172865"
 ---
 # <a name="windows-authentication---kerberos-constrained-delegation-with-azure-active-directory"></a>Windows kimlik doğrulaması-Azure Active Directory ile Kerberos kısıtlı temsili
 
@@ -36,24 +36,23 @@ Uzaktan erişim sağlamak, ön kimlik doğrulamasıyla korumak ve şirket içi �
 
 ## <a name="components-of-system"></a>Sistem bileşenleri
 
-* **Kullanıcı** : uygulama proxy 'si tarafından sunulan eski uygulamaya erişir.
+* **Kullanıcı**: uygulama proxy 'si tarafından sunulan eski uygulamaya erişir.
 
-* **Web tarayıcısı** : kullanıcının uygulamanın dış URL 'sine erişmek için etkileşimde bulunduğu bileşen.
+* **Web tarayıcısı**: kullanıcının uygulamanın dış URL 'sine erişmek için etkileşimde bulunduğu bileşen.
 
-* **Azure AD** : kullanıcının kimliğini doğrular. 
+* **Azure AD**: kullanıcının kimliğini doğrular. 
 
-* **Uygulama proxy hizmeti** : kullanıcıdan şirket içi uygulamaya istek göndermek için ters proxy işlevi görür. Azure AD 'de bulunur. Uygulama proxy 'Si, koşullu erişim ilkelerini de uygulayabilir.
+* **Uygulama proxy hizmeti**: kullanıcıdan şirket içi uygulamaya istek göndermek için ters proxy işlevi görür. Azure AD 'de bulunur. Uygulama proxy 'Si, koşullu erişim ilkelerini de uygulayabilir.
 
-* **Uygulama proxy Bağlayıcısı** : uygulamaya bağlantı sağlamak için Windows Server 'da şirket içinde yüklü. Azure AD 'nin yanıtını döndürür. Active Directory ile KCD anlaşması gerçekleştirerek uygulamaya Kerberos belirteci almak için kullanıcıyı taklit edin.
+* **Uygulama proxy Bağlayıcısı**: uygulamaya bağlantı sağlamak için Windows Server 'da şirket içinde yüklü. Azure AD 'nin yanıtını döndürür. Active Directory ile KCD anlaşması gerçekleştirerek uygulamaya Kerberos belirteci almak için kullanıcıyı taklit edin.
 
-* **Active Directory** : uygulamanın Kerberos belirtecini uygulama proxy Bağlayıcısı 'na gönderir.
+* **Active Directory**: uygulamanın Kerberos belirtecini uygulama proxy Bağlayıcısı 'na gönderir.
 
-* **Eski uygulamalar** : uygulama proxy 'sinden Kullanıcı istekleri alan uygulamalar. Eski uygulamalar, uygulama proxy Bağlayıcısı 'na yanıtı döndürür.
+* **Eski uygulamalar**: uygulama proxy 'sinden Kullanıcı istekleri alan uygulamalar. Eski uygulamalar, uygulama proxy Bağlayıcısı 'na yanıtı döndürür.
 
 ## <a name="implement-windows-authentication-kcd-with-azure-ad"></a>Azure AD ile Windows kimlik doğrulaması (KCD) uygulama
 
-* [Uygulama Ara Sunucusu ile uygulamalarınızda çoklu oturum açmak için Kerberos Kısıtlanmış Temsil](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-kcd) 
+* [Uygulama Ara Sunucusu ile uygulamalarınızda çoklu oturum açmak için Kerberos Kısıtlanmış Temsil](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md) 
 
-* [Azure Active Directory içindeki uygulama proxy 'Si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application)
+* [Azure Active Directory içindeki uygulama proxy 'Si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme](../manage-apps/application-proxy-add-on-premises-application.md)
 
- 

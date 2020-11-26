@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: c811a2ea5c06250068e7c0276e4b79e9108d920d
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.date: 11/25/2020
+ms.openlocfilehash: cabc243c6ba74217873b5b0a5fa51a7cb410512e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490364"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170846"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB sunucusuz (Önizleme)
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -33,9 +33,8 @@ Azure Cosmos DB kullanırken, her veritabanı işleminin, [Istek birimlerinde](r
 
 İstediğiniz yerde sunucusuz en iyi uyan senaryolar Azure Cosmos DB:
 
-- **Hafif trafik** : Bu gibi durumlarda sağlama kapasitesi gerekli değildir ve düşük maliyetli olabilir
-- **Orta burkararlılığı** : sunucusuz kapsayıcılar saniyede 5.000 istek birimi sunabileceğinden,
-- **Orta performans** : sunucusuz kapsayıcılar [belirli performans özelliklerine](#performance) sahip olduğundan
+- **Düşük, aralıklı ve öngörülemeyen trafik**: Bu gibi durumlarda sağlama kapasitesi gerekli değildir ve maliyet probisel olabilir
+- **Orta performans**: sunucusuz kapsayıcılar [belirli performans özelliklerine](#performance) sahip olduğundan
 
 Bu nedenlerden dolayı sunucusuz Azure Cosmos DB aşağıdaki iş yükü türleri için göz önünde bulundurulmalıdır:
 
@@ -62,7 +61,6 @@ Sunucusuz hesapta oluşturulan herhangi bir kapsayıcı sunucusuz bir kapsayıc�
     - Sunucusuz kapsayıcı oluştururken bir işleme geçirilemez ve bunu yapmak bir hata döndürür.
     - Sunucusuz bir kapsayıcıda üretilen işi okuyamıyorum ve güncelleştiremezsiniz, bu nedenle bir hata döndürür.
     - Sunucusuz bir hesapta paylaşılan bir üretilen iş veritabanı oluşturamazsınız ve bunu yapmak bir hata döndürür.
-- Sunucusuz kapsayıcılar, saniye başına 5.000 Istek birimi olan en yüksek aktarım hızı kararlılığını sunabilir.
 - Sunucusuz kapsayıcılar en fazla 50 GB veri ve Dizin saklayabilir.
 
 ## <a name="monitoring-your-consumption"></a>Tüketiminizi izleme
@@ -79,9 +77,9 @@ Hesabınızın **ölçümler** bölmesine gözatarken, **genel bakış** sekmesi
 
 Sunucusuz kaynaklar, sağlanan aktarım hızı kaynaklarından farklı olarak belirli performans özellikleri sunar:
 
-- **Kullanılabilirlik** : sunucusuz teklif genel kullanıma sunulduktan sonra, kullanılabilirlik alanları (bölge yedekliliği) kullanılmazsa sunucusuz kapsayıcıların kullanılabilirliği% 99,9 HIZMET DÜZEYI SÖZLEŞMESI (SLA) kapsamında olur. Kullanılabilirlik Alanları kullanıldığında SLA% 99,99 ' dir.
-- **Gecikme süresi** : sunucusuz teklif genel kullanıma hazır hale geldikten sonra sunucusuz kapsayıcıların gecikmesi, bir hizmet düzeyi hedefı (SLO) için 10 milisaniye veya nokta okuma ve 30 milisaniye ya da daha az yazma için daha az olabilir. Bir nokta okuma işlemi, KIMLIĞINE ve bölüm anahtarı değerine göre tek bir öğe getirilirken oluşur.
-- **Buristimsuz** : sunucusuz bir teklif genel kullanıma sunulduğunda, sunucusuz kapsayıcıların maistikliğine yönelik bir hizmet düzeyi hedefı (SLO) %95 olarak ele alınacaktır. Bu, en fazla patlama süresinin en az %95 ' i kadar erişilebilir olması anlamına gelir.
+- **Kullanılabilirlik**: sunucusuz teklif genel kullanıma sunulduktan sonra, kullanılabilirlik alanları (bölge yedekliliği) kullanılmazsa sunucusuz kapsayıcıların kullanılabilirliği% 99,9 HIZMET DÜZEYI SÖZLEŞMESI (SLA) kapsamında olur. Kullanılabilirlik Alanları kullanıldığında SLA% 99,99 ' dir.
+- **Gecikme süresi**: sunucusuz teklif genel kullanıma hazır hale geldikten sonra sunucusuz kapsayıcıların gecikmesi, bir hizmet düzeyi hedefı (SLO) için 10 milisaniye veya nokta okuma ve 30 milisaniye ya da daha az yazma için daha az olabilir. Bir nokta okuma işlemi, KIMLIĞINE ve bölüm anahtarı değerine göre tek bir öğe getirilirken oluşur.
+- **Buristimsuz**: sunucusuz bir teklif genel kullanıma sunulduğunda, sunucusuz kapsayıcıların maistikliğine yönelik bir hizmet düzeyi hedefı (SLO) %95 olarak ele alınacaktır. Bu, en fazla patlama süresinin en az %95 ' i kadar erişilebilir olması anlamına gelir.
 
 > [!NOTE]
 > Azure önizlemesi olarak, Azure Cosmos DB sunucusuz hizmet düzeyi sözleşmelerinden (SLA) hariç tutulur. Yukarıda belirtilen performans özellikleri, genel kullanıma sunulduğunda bu teklifin ne kadar teslim edileceği hakkında bir önizleme olarak sağlanır.

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 10ae9e1356cea954435d15441d74f4f86a804578
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 929aed28df2725ccde62c348a18ef7b41334e233
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95893989"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172138"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Form Tanıma'daki yenilikler
 
@@ -37,6 +37,7 @@ Form tanıyıcı hizmeti sürekli olarak güncelleştirilir. Özellik geliştirm
  
   > [Düzen ayıklama hakkında daha fazla bilgi edinin](concept-layout.md)
 
+- **İstemci kitaplığı güncelleştirmesi** -.net, Python, Java ve JavaScript için [Istemci kitaplıkları](quickstarts/client-library.md) genel kullanılabilirliği girilmiştir.
 - **Desteklenen yeni dil: Japonca** -şu yeni diller artık desteklenmektedir: `AnalyzeLayout` ve için `AnalyzeCustomForm` : Japonca ( `ja` ). [Dil desteği](language-support.md)
 - **Metin çizgisi stil göstergesi (el ile/diğer) (yalnızca Latin dilleri)** -form tanıyıcı `appearance` , her metin satırının bir güvenilirlik puanıyla birlikte el ile yazılmış tarzına göre bir nesne sınıflandırılmasına neden olur. Bu özellik yalnızca Latin dilleri için desteklenir.
 - **Kalite geliştirmeleri** -tek basamaklı ayıklama geliştirmeleri dahil ayıklama geliştirmeleri.
@@ -46,8 +47,8 @@ Form tanıyıcı hizmeti sürekli olarak güncelleştirilir. Özellik geliştirm
 
   ![FOTT örneği](./media/ui-preview.jpg)
   
-- **Geri bildirim döngüsü** -dosyaları örnek etiketleme aracı aracılığıyla analiz edilirken, şimdi de bunu eğitim kümesine ekleyebilir ve gerekirse etiketleri 'leri ve modeli geliştirmek için eğitebilirsiniz.
-- **Otomatik etiket Documets** -otomatik Etiketler projedeki önceki Labeld belgelerini temel alan ek belgeler. 
+- **Geri bildirim döngüsü** -dosyaları örnek etiketleme aracı aracılığıyla analiz edilirken, artık bunu eğitim kümesine ekleyebilir ve gerekiyorsa etiketleri ayarlayabilir ve modeli geliştirmek için eğitebilirsiniz.
+- **Belgeleri otomatik etiketle** -projedeki önceki etiketli belgelere göre ek belgelere otomatik olarak Etiketler.
 
 ## <a name="august-2020"></a>Ağustos 2020
 

@@ -16,12 +16,12 @@ ms.date: 11/05/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eccc0e71c73fb8bd2a5a50ebd0dda048d34dbea0
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 032b1ca945cf729f8a6682cf71d26a716b1e8863
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94488409"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172359"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect Önkoşulları
 Bu makalede Azure Active Directory (Azure AD) Connect için Önkoşullar ve donanım gereksinimleri açıklanmaktadır.
@@ -52,7 +52,7 @@ Azure Active Directory Connect, yüklemesinin bir parçası olarak imzalı Power
 
 Yükleme sırasında önerilen yürütme ilkesi "RemoteSigned" dır.
 
-PowerShell yürütme ilkesini ayarlama hakkında daha fazla bilgi için bkz. [set-ExecutionPolicy](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7).
+PowerShell yürütme ilkesini ayarlama hakkında daha fazla bilgi için bkz. [set-ExecutionPolicy](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7).
 
 
 ### <a name="azure-ad-connect-server"></a>Azure AD Connect sunucusu
@@ -82,7 +82,7 @@ BT ortamınızın bu kritik bileşeninin güvenlik saldırısı yüzeyini azaltm
 - [Ayrıcalıklı erişime sahip tüm personel için adanmış bir hesap](/windows-server/identity/securing-privileged-access/securing-privileged-access)oluşturun. Yöneticiler web 'e göz atmamalıdır, e-postalarını kontrol etmemeli ve yüksek ayrıcalıklı hesaplar ile gündelik üretkenlik görevleri yapmaktan önce.
 - [Ayrıcalıklı erişimin güvenliğini sağlama](/windows-server/identity/securing-privileged-access/securing-privileged-access)bölümünde sunulan yönergeleri izleyin. 
 - AADConnect sunucusu ile NTLM kimlik doğrulamasının kullanımını reddetme. Bunu yapmak için bazı yollar şunlardır: [AADConnect sunucusunda NTLM 'Yi kısıtlama](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-outgoing-ntlm-traffic-to-remote-servers) ve [BIR etki alanında NTLM 'yi kısıtlama](/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-ntlm-authentication-in-this-domain)
-- Her makinenin benzersiz bir yerel yönetici parolası olduğundan emin olun. Daha fazla bilgi için, bkz. [yerel yönetici parolası çözümü (LAPS)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps) , her iş istasyonunda benzersiz rastgele parolalar yapılandırabilir ve bir ACL tarafından korunan Active Directory sunucuda depolar. Yalnızca uygun yetkili kullanıcılar bu yerel yönetici hesabı parolalarını sıfırlayabilir veya sıfırlamayı isteyebilir. [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=46899#:~:text=The%20%22Local%20Administrator%20Password%20Solution,it%20or%20request%20its%20reset.)' nden iş istasyonlarında ve sunucularda kullanım için laps 'leri edinebilirsiniz. LAPS ve ayrıcalıklı erişim iş istasyonları (Paw 'lar) içeren bir ortamı çalıştırmak için ek yönergeler, [Temizleme kaynak ilkesine dayalı işlem standartları](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle)içinde bulunabilir. 
+- Her makinenin benzersiz bir yerel yönetici parolası olduğundan emin olun. Daha fazla bilgi için, bkz. [yerel yönetici parolası çözümü (LAPS)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps) , her iş istasyonunda benzersiz rastgele parolalar yapılandırabilir ve bir ACL tarafından korunan Active Directory sunucuda depolar. Yalnızca uygun yetkili kullanıcılar bu yerel yönetici hesabı parolalarını sıfırlayabilir veya sıfırlamayı isteyebilir. [Microsoft Indirme merkezi](https://www.microsoft.com/download/details.aspx?id=46899)' nden iş istasyonlarında ve sunucularda kullanım için laps 'leri edinebilirsiniz. LAPS ve ayrıcalıklı erişim iş istasyonları (Paw 'lar) içeren bir ortamı çalıştırmak için ek yönergeler, [Temizleme kaynak ilkesine dayalı işlem standartları](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle)içinde bulunabilir. 
 - Kuruluşunuzun bilgi sistemlerine ayrıcalıklı erişimi olan tüm personel için adanmış [ayrıcalıklı erişim iş istasyonları](/windows-server/identity/securing-privileged-access/privileged-access-workstations) uygulayın. 
 - Active Directory ortamınızın saldırı yüzeyini azaltmak için bu [ek yönergeleri](/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface) izleyin.
 
@@ -180,9 +180,9 @@ AD FS veya Web uygulaması ara sunucusu (WAP) dağıtmak için Azure AD Connect 
   * Sihirbazın çalıştığı makinede (hedef makine etki alanına katılmamış veya güvenilmeyen bir etki alanı ise):
     * Yükseltilmiş bir PowerShell komut penceresinde komutunu kullanın `Set-Item.WSMan:\localhost\Client\TrustedHosts –Value <DMZServerFQDN> -Force –Concatenate` .
     * Sunucu Yöneticisi 'nde:
-      * Makine havuzuna bir DMZ WAP Konağı ekleyin. Sunucu Yöneticisi 'nde **Yönet**  >  **Sunucu Ekle** ' yi seçin ve sonra **DNS** sekmesini kullanın.
-      * **Tüm sunucuları Sunucu Yöneticisi** SEKMESINDE, WAP sunucusuna sağ tıklayın ve **Farklı Yönet** ' i seçin. WAP makinesi için yerel (etki alanı değil) kimlik bilgilerini girin.
-      * Uzak PowerShell bağlantısını doğrulamak için, **tüm sunucular sunucu yöneticisi** SEKMESINDE, WAP sunucusuna sağ tıklayıp **Windows PowerShell** ' i seçin. Uzak PowerShell oturumlarının kurulabilmek için uzak bir PowerShell oturumunun açılması gerekir.
+      * Makine havuzuna bir DMZ WAP Konağı ekleyin. Sunucu Yöneticisi 'nde **Yönet**  >  **Sunucu Ekle**' yi seçin ve sonra **DNS** sekmesini kullanın.
+      * **Tüm sunucuları Sunucu Yöneticisi** SEKMESINDE, WAP sunucusuna sağ tıklayın ve **Farklı Yönet**' i seçin. WAP makinesi için yerel (etki alanı değil) kimlik bilgilerini girin.
+      * Uzak PowerShell bağlantısını doğrulamak için, **tüm sunucular sunucu yöneticisi** SEKMESINDE, WAP sunucusuna sağ tıklayıp **Windows PowerShell**' i seçin. Uzak PowerShell oturumlarının kurulabilmek için uzak bir PowerShell oturumunun açılması gerekir.
 
 ### <a name="tlsssl-certificate-requirements"></a>TLS/SSL sertifikası gereksinimleri
 * AD FS grubunuzun ve tüm Web uygulaması ara sunucularının tüm düğümlerinde aynı TLS/SSL sertifikasını kullanmanızı öneririz.

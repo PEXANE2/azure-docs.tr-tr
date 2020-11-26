@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de91ffe721cbaf2061c0ded70a150fbc410af955
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 1b24989c32c0c385f8ad41d73dacba41bb7eef79
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95503087"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173252"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Azure Active Directory bir grup için lisans atama sorunlarını tanımla ve çözümle
 
@@ -177,8 +177,8 @@ Hataları çözmek için hangi adımlara götürülürsünüz bağlı olarak, Ku
 Gruplar aracılığıyla lisans yönetimine yönelik diğer senaryolar hakkında daha fazla bilgi için aşağıdakilere bakın:
 
 * [Azure Active Directory 'de grup tabanlı lisanslama nedir?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
-* [Azure Active Directory'de gruba lisans atama](../users-groups-roles/licensing-groups-assign.md)
+* [Azure Active Directory'de gruba lisans atama](./licensing-groups-assign.md)
 * [Azure Active Directory'de tek tek lisanslı kullanıcıları grup tabanlı lisanslamaya geçirme](licensing-groups-migrate-users.md)
 * [Azure Active Directory 'de grup tabanlı lisanslama kullanarak kullanıcıları ürün lisansları arasında geçirme](licensing-groups-change-licenses.md)
-* [Azure Active Directory grup tabanlı lisanslamayla ilgili ek senaryolar](../users-groups-roles/licensing-group-advanced.md)
+* [Azure Active Directory grup tabanlı lisanslamayla ilgili ek senaryolar](./licensing-group-advanced.md)
 * [Azure Active Directory 'de grup tabanlı lisanslama için PowerShell örnekleri](licensing-ps-examples.md)

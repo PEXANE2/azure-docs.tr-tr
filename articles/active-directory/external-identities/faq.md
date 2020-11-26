@@ -12,19 +12,19 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f92b95e38dea6555ca881d56ccf1cf2d68783e53
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 2825d3776f7b45f6726aaec05484900511ed1477
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896098"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172984"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B işbirliği SSS
 
 Azure Active Directory (Azure AD) işletmeden işletmeye (B2B) işbirliğiyle ilgili sık sorulan sorular (SSS), yeni konuları içerecek şekilde düzenli olarak güncelleştirilir.
 
    > [!IMPORTANT]
-   > Microsoft, **31 mart 2021** ' den ıtıbaren, B2B işbirliği senaryoları Için YÖNETILMEYEN Azure AD hesapları ve kiracılar oluşturarak artık davetlerin kullanımını desteklememektedir. Hazırlık aşamasında, müşterilerin [e-posta bir kerelik geçiş kodu kimlik doğrulamasını](one-time-passcode.md)kabul etmelerini öneririz. Bu genel önizleme özelliğiyle ilgili geri bildirimlerinize hoş geldiniz ve işbirliği yapmak için daha fazla yol oluşturmak heyecanlıyız.
+   > Microsoft, **31 mart 2021**' den ıtıbaren, B2B işbirliği senaryoları Için YÖNETILMEYEN Azure AD hesapları ve kiracılar oluşturarak artık davetlerin kullanımını desteklememektedir. Hazırlık aşamasında, müşterilerin [e-posta bir kerelik geçiş kodu kimlik doğrulamasını](one-time-passcode.md)kabul etmelerini öneririz. Bu genel önizleme özelliğiyle ilgili geri bildirimlerinize hoş geldiniz ve işbirliği yapmak için daha fazla yol oluşturmak heyecanlıyız.
 
 ### <a name="can-we-customize-our-sign-in-page-so-its-more-intuitive-for-our-b2b-collaboration-guest-users"></a>, B2B işbirliği Konuk kullanıcılarımız için daha sezgisel olması için oturum açma sayfamızı özelleştirebiliriz.
 Kesinlikle! [Bu özellik hakkında blog gönderimize](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/)bakın. Kuruluşunuzun oturum açma sayfasını özelleştirme hakkında daha fazla bilgi için bkz. [oturum açma ve erişim paneli sayfalarına Şirket markası ekleme](../fundamentals/customize-branding.md).
@@ -64,17 +64,17 @@ Kullanıcılara sınırlı yönetici rolü atanmamışsa, B2B işbirliği kullan
 Evet! Tüm konuk ve dış kullanıcıların Azure portal erişimini engelleyen bir koşullu erişim ilkesi oluşturabilirsiniz. Bu ilkeyi yapılandırırken, yanlışlıkla üyelere ve yöneticilere erişimi engellemeyi unutmaktan emin olun.
 
 1. [Azure Portal](https://portal.azure.com/) Güvenlik Yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
-2. Azure portal **Azure Active Directory** ' ni seçin. 
-3. **Yönet** altında **güvenlik** ' i seçin.
-4. **Koru** altında **koşullu erişim** ' i seçin. **Yeni ilke** ' yi seçin.
+2. Azure portalında **Azure Active Directory** seçeneğini belirleyin. 
+3. **Yönet** altında **güvenlik**' i seçin.
+4. **Koru** altında **koşullu erişim**' i seçin. **Yeni ilke**' yi seçin.
 5. **Yeni** sayfada, **ad** metin kutusuna ilke için bir ad girin (örneğin, "konukların portala erişimini engelle").
-6. **Atamalar** altında **Kullanıcılar ve gruplar** ’ı seçin.
-7. **Dahil et** sekmesinde **kullanıcıları ve grupları seç** ' i seçin ve ardından **tüm konuk ve dış kullanıcılar ' ı (Önizleme)** seçin.
-9. **Bitti** seçeneğini belirleyin.
-10. **Yeni** sayfada, **atamalar** bölümünde, **bulut uygulamaları veya eylemler** ' i seçin.
-11. **Bulut uygulamaları veya eylemler** sayfasında, **uygulamaları seç** ' i seçin ve ardından **Seç** ' i seçin.
-12. **Seç** sayfasında **Microsoft Azure Management** ’ı ve sonra **Seç** öğesini seçin.
-13. **Bulut uygulamaları veya eylemler** sayfasında **bitti** ' yi seçin.
+6. **Atamalar** altında **Kullanıcılar ve gruplar**’ı seçin.
+7. **Dahil et** sekmesinde **kullanıcıları ve grupları seç**' i seçin ve ardından **tüm konuk ve dış kullanıcılar ' ı (Önizleme)** seçin.
+9. **Bitti**'yi seçin.
+10. **Yeni** sayfada, **atamalar** bölümünde, **bulut uygulamaları veya eylemler**' i seçin.
+11. **Bulut uygulamaları veya eylemler** sayfasında, **uygulamaları seç**' i seçin ve ardından **Seç**' i seçin.
+12. **Seç** sayfasında **Microsoft Azure Management**’ı ve sonra **Seç** öğesini seçin.
+13. **Bulut uygulamaları veya eylemler** sayfasında **bitti**' yi seçin.
 
 ### <a name="does-azure-ad-b2b-collaboration-support-multi-factor-authentication-and-consumer-email-accounts"></a>Azure AD B2B işbirliği, Multi-Factor Authentication ve müşteri e-posta hesaplarını destekliyor mu?
 Evet. Multi-Factor Authentication ve tüketici e-posta hesaplarının her ikisi de Azure AD B2B işbirliği için desteklenir.
@@ -84,7 +84,7 @@ Azure AD kiracınız bir kullanıcının giriş dizinidir ve [Kullanıcı parola
  
 * Bir Microsoft hesabı (örneğin) ile oturum açan Konuk kullanıcılar, guestuser@live.com Microsoft hesabı self servis parola sıfırlama (SSPR) kullanarak kendi parolalarını sıfırlayabilir. [Microsoft hesabı parolanızı sıfırlama](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password)bölümüne bakın.
 * Bir Google hesabı veya başka bir dış kimlik sağlayıcısı ile oturum açan Konuk kullanıcılar, kimlik sağlayıcısının SSPR metodunu kullanarak kendi parolalarını sıfırlayabilir. Örneğin, Google hesabı olan bir Konuk Kullanıcı parolanızı guestuser@gmail.com [değiştirme veya sıfırlama](https://support.google.com/accounts/answer/41078)bölümündeki yönergeleri izleyerek parolalarını sıfırlayabilir.
-* Kimlik kiracısı tam zamanında (JıT) veya "viral" kiracınız (yani ayrı, yönetilmeyen bir Azure kiracısı) ise, yalnızca Konuk Kullanıcı parolasını sıfırlayabilir. Bazen bir kuruluş, çalışanlar hizmetlere kaydolmak için iş e-posta adreslerini kullandıklarında oluşturulan [viral kiracılarının yönetimini ele geçirebilir](../users-groups-roles/domains-admin-takeover.md) . Kuruluş bir viral kiracısı gerçekleştirdikten sonra, yalnızca o kuruluştaki bir yönetici kullanıcı parolasını sıfırlayabilir veya SSPR 'yi etkinleştirebilir. Gerekirse, kuruluş olarak, Konuk Kullanıcı hesabını dizininizden kaldırabilir ve bir daveti yeniden gönderebilirsiniz.
+* Kimlik kiracısı tam zamanında (JıT) veya "viral" kiracınız (yani ayrı, yönetilmeyen bir Azure kiracısı) ise, yalnızca Konuk Kullanıcı parolasını sıfırlayabilir. Bazen bir kuruluş, çalışanlar hizmetlere kaydolmak için iş e-posta adreslerini kullandıklarında oluşturulan [viral kiracılarının yönetimini ele geçirebilir](../enterprise-users/domains-admin-takeover.md) . Kuruluş bir viral kiracısı gerçekleştirdikten sonra, yalnızca o kuruluştaki bir yönetici kullanıcı parolasını sıfırlayabilir veya SSPR 'yi etkinleştirebilir. Gerekirse, kuruluş olarak, Konuk Kullanıcı hesabını dizininizden kaldırabilir ve bir daveti yeniden gönderebilirsiniz.
 
 * Konuk kullanıcının ana dizini Azure AD kiracınız ise, kullanıcının parolasını sıfırlayabilirsiniz. Örneğin, bir Kullanıcı oluşturmuş veya şirket içi Active Directory bir kullanıcıyı eşitledi ve Kullanıcıtürünü Konuk olarak ayarlamış olabilirsiniz. Bu Kullanıcı dizininizde bulunduğundan, Azure portal parolalarını sıfırlayabilirsiniz.
 

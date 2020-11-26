@@ -13,16 +13,16 @@ ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: ed3e9da628ab779ab47673fa2ce728c5c25539be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b683eaaf4c93ef0dcf74680e1e174e0f867a7041
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88166442"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173405"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Kullanıcıları sosyal kimliklerle oturum açmak için MSAL.NET kullanma
 
-[Azure Active Directory B2C (Azure AD B2C)](https://aka.ms/aadb2c)kullanarak sosyal kimliklerle kullanıcıları oturum açmak için msal.net kullanabilirsiniz. Azure AD B2C, ilke kavramı etrafında oluşturulmuştur. MSAL.NET ' de, bir ilke belirtildiğinde bir yetkili sağlamaya çevrilir.
+[Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/overview.md)kullanarak sosyal kimliklerle kullanıcıları oturum açmak için msal.net kullanabilirsiniz. Azure AD B2C, ilke kavramı etrafında oluşturulmuştur. MSAL.NET ' de, bir ilke belirtildiğinde bir yetkili sağlamaya çevrilir.
 
 - Ortak istemci uygulamasını başlattığınızda, ilkeyi yetkilinin bir parçası olarak belirtmeniz gerekir.
 - Bir ilke uygulamak istediğinizde, parametresini kabul eden bir geçersiz kılma çağırın `AcquireTokenInteractive` `authority` .
@@ -35,7 +35,7 @@ Azure AD B2C için yetki biçimi: `https://{azureADB2CHostname}/tfp/{tenant}/{po
 
 - `azureADB2CHostname` -Azure AD B2C kiracının ve ana bilgisayarın adı. Örneğin, *contosob2c.b2clogin.com*.
 - `tenant` -Azure AD B2C kiracının etki alanı adı veya dizin (kiracı) KIMLIĞI. Örneğin, sırasıyla *contosob2c.onmicrosoft.com* veya GUID.
-- `policyName` -Uygulanacak Kullanıcı akışı veya özel ilke adı. Örneğin, *b2c_1_susi*gibi bir kaydolma/oturum açma ilkesi.
+- `policyName` -Uygulanacak Kullanıcı akışı veya özel ilke adı. Örneğin, *b2c_1_susi* gibi bir kaydolma/oturum açma ilkesi.
 
 Azure AD B2C yetkilileri hakkında daha fazla bilgi için bkz. [yeniden yönlendirme URL 'lerini b2clogin.com 'A ayarlama](../../active-directory-b2c/b2clogin.md).
 

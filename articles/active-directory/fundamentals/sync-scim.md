@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f957070ec94fc4c61089f31fe91261a2f52c4ee4
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: b95aac504bc6ee72c353faecad25384e2dc90840
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578867"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172427"
 ---
 # <a name="scim-synchronization-with-azure-active-directory"></a>Azure Active Directory ile SCıM eşitlemesi
 
@@ -35,21 +35,20 @@ Kullanıcı bilgilerini bir HCM sisteminden Azure AD 'ye ve Windows Server Activ
 
 ## <a name="components-of-system"></a>Sistem bileşenleri 
 
-* **HCM sistemi** : çalışan yaşam döngüsü boyunca HR işlemlerini destekleyen ve otomatikleştiren ınsan sermaye yönetimi sürecini ve uygulamalarını etkinleştiren uygulamalar ve teknolojiler. 
+* **HCM sistemi**: çalışan yaşam döngüsü boyunca HR işlemlerini destekleyen ve otomatikleştiren ınsan sermaye yönetimi sürecini ve uygulamalarını etkinleştiren uygulamalar ve teknolojiler. 
 
-* **Azure AD sağlama hizmeti** : otomatik sağlama için scım 2,0 protokolünü kullanır. Hizmet, uygulama için SCıM uç noktasına bağlanır ve kullanıcıların ve grupların sağlanması ve sağlanması GERI almak için SCıM Kullanıcı nesne şemasını ve REST API 'Lerini kullanır.  
+* **Azure AD sağlama hizmeti**: otomatik sağlama için scım 2,0 protokolünü kullanır. Hizmet, uygulama için SCıM uç noktasına bağlanır ve kullanıcıların ve grupların sağlanması ve sağlanması GERI almak için SCıM Kullanıcı nesne şemasını ve REST API 'Lerini kullanır.  
 
-* **Azure AD** : kimlik yaşam döngüsünü ve bunların yetkilendirmelerini yönetmek için kullanılan kullanıcı deposu. 
+* **Azure AD**: kimlik yaşam döngüsünü ve bunların yetkilendirmelerini yönetmek için kullanılan kullanıcı deposu. 
 
-* **Hedef sistem** : Kullanıcı ve grupların otomatik olarak sağlanmasını sağlamak için SCIM uç noktası olan ve Azure AD sağlama ile birlikte çalışarak uygulama veya sistem.  
+* **Hedef sistem**: Kullanıcı ve grupların otomatik olarak sağlanmasını sağlamak için SCIM uç noktası olan ve Azure AD sağlama ile birlikte çalışarak uygulama veya sistem.  
 
 ## <a name="implement-scim-with-azure-ad"></a>Azure AD ile SCıM 'i uygulama 
 
-* [Azure AD 'de sağlama nasıl yapılır? ](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works)
+* [Azure AD 'de sağlama nasıl yapılır? ](../app-provisioning/how-provisioning-works.md)
 
-* [Azure portal kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme ](https://docs.microsoft.com/azure/active-directory/app-provisioning/configure-automatic-user-provisioning-portal)
+* [Azure portal kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme ](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 
-* [Azure AD ile bir SCıM uç noktası oluşturun ve Kullanıcı sağlamasını yapılandırın  ](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups)
+* [Azure AD ile bir SCıM uç noktası oluşturun ve Kullanıcı sağlamasını yapılandırın  ](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 
-* [SCıM 2,0 Azure AD sağlama hizmeti 'nin protokol uyumluluğu](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-scim-compatibility)
-
+* [SCıM 2,0 Azure AD sağlama hizmeti 'nin protokol uyumluluğu](../app-provisioning/application-provisioning-config-problem-scim-compatibility.md)

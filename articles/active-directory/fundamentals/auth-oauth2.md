@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: daf40a2ced3f753619e9c4723dbe78cd7e51ff21
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: c1604d79ce5eb9949028cd677b340bf3d4b09f6c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577915"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172848"
 ---
 # <a name="oauth-20-authentication-with-azure-active-directory"></a>Azure Active Directory ile OAuth 2,0 kimlik doğrulaması
 
@@ -34,20 +34,19 @@ Zengin istemci & modern uygulama senaryoları ve yeniden Web API erişimi için.
 
 ## <a name="components-of-system"></a>Sistem bileşenleri
 
-* **Kullanıcı** : Web uygulamasından (uygulama) bir hizmet ister. Kullanıcı genellikle verilerin sahibi olan kaynak sahibidir ve istemcilerin verilere veya kaynağa erişmesine izin veren bir güce sahiptir. 
+* **Kullanıcı**: Web uygulamasından (uygulama) bir hizmet ister. Kullanıcı genellikle verilerin sahibi olan kaynak sahibidir ve istemcilerin verilere veya kaynağa erişmesine izin veren bir güce sahiptir. 
 
-* **Web tarayıcısı** : kullanıcının etkileşime girdiği Web tarayıcısı OAuth istemcisiyle aynıdır. 
+* **Web tarayıcısı**: kullanıcının etkileşime girdiği Web tarayıcısı OAuth istemcisiyle aynıdır. 
 
-* **Web uygulaması** : Web uygulaması veya kaynak sunucu, kaynak veya verilerin bulunduğu yerdir. OAuth istemcisini güvenli bir şekilde doğrulamak ve yetkilendirmek için yetkilendirme sunucusuna güvenir. 
+* **Web uygulaması**: Web uygulaması veya kaynak sunucu, kaynak veya verilerin bulunduğu yerdir. OAuth istemcisini güvenli bir şekilde doğrulamak ve yetkilendirmek için yetkilendirme sunucusuna güvenir. 
 
-* **Azure AD** : Azure AD, kimlik sağlayıcısı (IDP) olarak da bilinen yetkilendirme sunucusudur. Kullanıcının bilgileri, erişimleri ve güven ilişkisinin yaptığı her şeyi güvenli bir şekilde işler. Kaynaklara erişim izni veren veya erişimi iptal eden belirteçleri yayınmaktan sorumludur.
+* **Azure AD**: Azure AD, kimlik sağlayıcısı (IDP) olarak da bilinen yetkilendirme sunucusudur. Kullanıcının bilgileri, erişimleri ve güven ilişkisinin yaptığı her şeyi güvenli bir şekilde işler. Kaynaklara erişim izni veren veya erişimi iptal eden belirteçleri yayınmaktan sorumludur.
 
 ## <a name="implement-oauth-20-with-azure-ad"></a>Azure AD ile OAuth 2,0 uygulama
 
-* [Uygulamaları Azure AD ile tümleştirme](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) 
+* [Uygulamaları Azure AD ile tümleştirme](../saas-apps/tutorial-list.md) 
 
-* [Microsoft Identity platformunda OAuth 2,0 ve OpenID Connect protokolleri](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols) 
+* [Microsoft Identity platformunda OAuth 2,0 ve OpenID Connect protokolleri](../develop/active-directory-v2-protocols.md) 
 
-* [Uygulama türleri ve OAuth2](https://docs.microsoft.com/azure/active-directory/develop/v2-app-types) 
+* [Uygulama türleri ve OAuth2](../develop/v2-app-types.md) 
 
- 

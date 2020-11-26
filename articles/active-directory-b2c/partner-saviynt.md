@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 184616058cb2a86025eb75b4923e374ab42ebf05
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 99741a412ae02a2d30293e1aa254245f5ca7b662
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953568"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171441"
 ---
 # <a name="tutorial-for-configuring-saviynt-with-azure-active-directory-b2c"></a>Azure Active Directory B2C ile Saviynt yapılandırma öğreticisi
 
@@ -54,7 +54,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 ![Saviynt mimari diyagramını gösteren resim](./media/partner-saviynt/saviynt-architecture-diagram.png)
 
-|Adım | Description |
+|Adım | Açıklama |
 |:-----| :-----------|
 | 1. | Yetkilendirilmiş bir yönetici, Saviynt aracılığıyla Azure AD B2C Kullanıcı yönetme işlemini başlatır.
 | 2. | Saviynt, yetkilendirilmiş yönetici belirli bir işlemi yapabiliyorsanız yetkilendirme altyapısını doğrular.
@@ -69,13 +69,13 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 1. Saviynt hesabı oluşturmak için [Saviynt](https://saviynt.com/contact-us/) başvurun
 
-2. Temsilcili yönetim ilkeleri oluşturun ve kullanıcıları farklı rollerle [yönetici temsilcileri](../active-directory/users-groups-roles/roles-concept-delegation.md) olarak atayın.
+2. Temsilcili yönetim ilkeleri oluşturun ve kullanıcıları farklı rollerle [yönetici temsilcileri](../active-directory/roles/concept-delegation.md) olarak atayın.
 
 ## <a name="configure-azure-ad-b2c-with-saviynt"></a>Saviynt ile Azure AD B2C yapılandırma
 
 ### <a name="create-an-azure-ad-application-for-saviynt"></a>Saviynt için bir Azure AD uygulaması oluşturma
 
-1. [Azure portalında](https://portal.azure.com/#home) oturum açın.
+1. [Azure Portal](https://portal.azure.com/#home) oturum açın.
 
 2. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 

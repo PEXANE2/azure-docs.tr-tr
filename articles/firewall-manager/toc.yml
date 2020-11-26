@@ -40,6 +40,10 @@
       href: threat-intelligence-settings.md
     - name: Ağ kurallarında FQDN
       href: fqdn-filtering-network-rules.md
+    - name: Güvenlik
+      items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Güvenlik iş ortağı sağlayıcılarını dağıtma

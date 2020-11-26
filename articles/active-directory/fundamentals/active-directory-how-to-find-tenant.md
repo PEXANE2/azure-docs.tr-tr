@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbf23a32fdf5515402e18f70fe032a1a589dbcbe
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 32526a31a9d52fbfac57f1d384b25e0939b5e297
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424466"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172882"
 ---
 # <a name="how-to-find-your-azure-active-directory-tenant-id"></a>Azure Active Directory kiracı KIMLIĞINIZI bulma
 
@@ -26,11 +26,11 @@ Azure aboneliklerinin Azure Active Directory (Azure AD) ile bir güven ilişkisi
 
 ## <a name="find-tenant-id-through-the-azure-portal"></a>Azure portal aracılığıyla kiracı KIMLIĞINI bulun
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
  
 1. **Azure Active Directory** seçin.
 
-1. **Özellikler** ’i seçin.
+1. **Özellikler**’i seçin.
 
 1. Ardından, **KIRACı kimliği** alanına aşağı kaydırın. Kiracı KIMLIĞINIZ kutuda olacaktır.
 
@@ -51,7 +51,7 @@ Daha fazla bilgi için [Get-AzTenant](/powershell/module/az.accounts/get-aztenan
 ## <a name="find-tenant-id-with-cli"></a>CLı ile kiracı KIMLIĞINI bulma
 Kiracı KIMLIĞINI bulmak için bir komut satırı arabirimi kullanmak istiyorsanız, bunu [Azure CLI](/cli/azure/install-azure-cli) veya [Microsoft 365 CLI](https://pnp.github.io/cli-microsoft365/)ile yapabilirsiniz. 
 
-Azure CLı için, aşağıdaki örnekte gösterildiği gibi, **az Login** , **az Account List** veya **az Account Tenant List** komutlarından birini kullanın. Her bir komutun çıkışında bulunan aboneliklerinizin her biri için **Tenantıd** özelliğine dikkat edin.
+Azure CLı için, aşağıdaki örnekte gösterildiği gibi, **az Login**, **az Account List** veya **az Account Tenant List** komutlarından birini kullanın. Her bir komutun çıkışında bulunan aboneliklerinizin her biri için **Tenantıd** özelliğine dikkat edin.
 
 ```azurecli-interactive
 az login
@@ -77,4 +77,4 @@ Daha fazla bilgi için Microsoft 365 [Kiracı kimliği Al](https://pnp.github.io
 
 - Bir kiracıya nasıl ilişki veya bir abonelik ekleneceğini öğrenmek için bkz. [Azure Active Directory Kiracınıza Azure aboneliği ilişkilendirme veya ekleme](active-directory-how-subscriptions-associated-directory.md).
 
-- Nesne KIMLIĞINI bulma hakkında bilgi edinmek için bkz. [Kullanıcı nesne kimliğini bulma](https://docs.microsoft.com/partner-center/find-ids-and-domain-names#find-the-user-object-id).
+- Nesne KIMLIĞINI bulma hakkında bilgi edinmek için bkz. [Kullanıcı nesne kimliğini bulma](/partner-center/find-ids-and-domain-names#find-the-user-object-id).

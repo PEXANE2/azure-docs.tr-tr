@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: dd6e760fe8052463491f249b54c3af3d2636d46d
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 337275cef0f2159cb5fac40ac0435408baf3bbef
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93376893"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170931"
 ---
 # <a name="tutorial-for-configuring-theaccesshub-admin-tool-with-azure-active-directory-b2c"></a>Azure Active Directory B2C ile Accesshub yönetici aracını yapılandırma öğreticisi
 
@@ -38,13 +38,13 @@ Başlamak için şunlar gerekir:
 
 - Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
 
-- [Azure AD B2C kiracısı](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant). Kiracının Azure aboneliğinize bağlı olması gerekir.
+- [Azure AD B2C kiracısı](./tutorial-create-tenant.md). Kiracının Azure aboneliğinize bağlı olması gerekir.
 
 - Bir TheAccessHub yönetici aracı ortamı: yeni bir ortam sağlamak için [N8 Identity](https://n8id.com/contact/) Ile iletişim kurun.
 
 - Seçim Müşteri verilerini geçirmek istediğiniz veritabanları veya Basit Dizin erişim protokolleri (LDAPs) için bağlantı ve kimlik bilgileri.
 
-- Seçim [Özel ilkeleri](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started)kullanmak için Azure AD B2C ortamı, bu ilkeyi kaydolma ilkesi akışınızla bütünleştirmek istiyorsanız kullanın.
+- Seçim [Özel ilkeleri](./custom-policy-get-started.md)kullanmak için Azure AD B2C ortamı, bu ilkeyi kaydolma ilkesi akışınızla bütünleştirmek istiyorsanız kullanın.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -124,7 +124,7 @@ CSR/yardım masası kullanıcısını çoklu oturum açma (SSO) ile yapılandır
 
    c. TheAccessHub rolleri sekmesinde yönetilen rol Yardım Masası ' nı işaretleyin. Kullanıcının iş arkadaşlarınızı yönetme görünümüne erişmesine izin verir. Kullanıcının yine de bir gruba yerleştirilmesi veya bir kuruluş sahibinden müşteriler üzerinde işlem yapması gerekir.
 
-6. **Gönder** ’i seçin.
+6. **Gönder**’i seçin.
 
 ## <a name="configure-a-new-csr-user-using-a-new-identity"></a>Yeni bir kimlik kullanarak yeni bir CSR kullanıcısı yapılandırma
 
@@ -144,7 +144,7 @@ SSO olmadan [BIR CSR/yardım masası kullanıcısı ayarlamak](https://youtu.be/
 
    a. Bir giriş kuruluşunun seçilmesi, bu kullanıcıyı yönetme iznine sahip olduğunu denetler.
 
-   b. **Theaccesshub rolleri** sekmesinde yönetilen rol **Yardım Masası** ' nı seçin. Kullanıcının iş arkadaşlarınızı yönetme görünümüne erişmesine izin verir. Kullanıcının yine de bir gruba yerleştirilmesi veya bir kuruluş sahibinden müşteriler üzerinde işlem yapması gerekir.
+   b. **Theaccesshub rolleri** sekmesinde yönetilen rol **Yardım Masası**' nı seçin. Kullanıcının iş arkadaşlarınızı yönetme görünümüne erişmesine izin verir. Kullanıcının yine de bir gruba yerleştirilmesi veya bir kuruluş sahibinden müşteriler üzerinde işlem yapması gerekir.
 
 6. **Oturum açma kimliği/e-posta** ve **bir kerelik parola** özniteliklerini kopyalayın. Bunu yeni kullanıcıya sağlayın. Bu kimlik bilgilerini kullanarak Accesshub yönetici aracında oturum açın. Kullanıcıdan ilk oturum açmada yeni bir parola girmesi istenir.
 
@@ -162,9 +162,9 @@ Müşteri ve CSR/yardım masası kullanıcılarını, TheAccessHub yönetici ara
 
 3. **Grup eklemek** > seçin
 
-4. **Grup adı** , **Grup açıklaması** ve **Grup sahibi** girin
+4. **Grup adı**, **Grup açıklaması** ve **Grup sahibi** girin
 
-5. Grubun üyesi olmak istediğiniz iş arkadaşları üzerinde arama yapın ve onay kutularını işaretleyin > **Ekle** ' yi seçin.
+5. Grubun üyesi olmak istediğiniz iş arkadaşları üzerinde arama yapın ve onay kutularını işaretleyin >**Ekle** ' yi seçin.
 
 6. Sayfanın en altında, grubun tüm üyelerini görebilirsiniz.
 
@@ -180,7 +180,7 @@ Müşteri ve CSR/yardım masası kullanıcılarını, TheAccessHub yönetici ara
 
 3. **Kuruluş eklemek** > seçin
 
-4. **Kuruluş adı** , **kuruluş sahibi** ve **üst kuruluş** sağlayın.
+4. **Kuruluş adı**, **kuruluş sahibi** ve **üst kuruluş** sağlayın.
 
     a. Kuruluş adı ideal olarak Müşteri verilerinize karşılık gelen bir değerdir. İş arkadaşı ve müşteri verileri yüklenirken, yük içinde kuruluşun adını sağlarsanız, iş arkadaşı kuruluşa otomatik olarak yerleştirilebilir.
 
@@ -188,7 +188,7 @@ Müşteri ve CSR/yardım masası kullanıcılarını, TheAccessHub yönetici ara
 
     c. Üst kuruluş, bu kuruluştan sorumlu olan diğer kuruluşun hangi diğer kuruluşa ait olduğunu gösterir.
 
-5. **Gönder** ’i seçin.
+5. **Gönder**’i seçin.
 
 ### <a name="modify-the-hierarchy-via-the-tree-view"></a>Hiyerarşiyi ağaç görünümü aracılığıyla değiştirme
 
@@ -250,7 +250,7 @@ Accesshub yönetim aracını kullanarak çeşitli veritabanlarındaki verileri, 
 
    f. **Sorgu** – müşteri ayrıntılarını AYıKLAMAK için SQL sorgusunu girin. Örneğin: ``SELECT * FROM mytable;``
 
-   örneğin: Bağlantıyı **Sına** ' yı seçin, bağlantının çalıştığından emin olmak için verilerinizin bir örneğini görürsünüz.
+   örneğin: Bağlantıyı **Sına**' yı seçin, bağlantının çalıştığından emin olmak için verilerinizin bir örneğini görürsünüz.
 
    **LDAPs için**
 
@@ -280,7 +280,7 @@ Accesshub yönetim aracını kullanarak çeşitli veritabanlarındaki verileri, 
 
    b. **Yetkilendir bağlantısını** seçin
 
-   c. OneDrive hesabınıza yönelik okuma erişimi olan bir kullanıcıyla oturum açmak için yeni bir pencere, **OneDrive** 'da oturum açmanız istenir. TheAccessHub admin Aracı, bu kullanıcının CSV yükleme dosyalarını okumasını sağlayacak.
+   c. OneDrive hesabınıza yönelik okuma erişimi olan bir kullanıcıyla oturum açmak için yeni bir pencere, **OneDrive**'da oturum açmanız istenir. TheAccessHub admin Aracı, bu kullanıcının CSV yükleme dosyalarını okumasını sağlayacak.
 
    d. Komut istemlerini izleyin **ve izin ver ' i seçerek** Accesshub yönetici aracına istenen izinleri verin.
 
@@ -296,23 +296,23 @@ Accesshub yönetim aracını kullanarak çeşitli veritabanlarındaki verileri, 
 
 4. Kullanıcı Azure AD B2C **Iş arkadaşı türünü** seçin
 
-5. **Kaynak** ' ı seçin, açılır iletişim kutusunda veri kaynağınızı seçin. OneDrive veri kaynağı oluşturduysanız, dosyayı da seçin.
+5. **Kaynak**' ı seçin, açılır iletişim kutusunda veri kaynağınızı seçin. OneDrive veri kaynağı oluşturduysanız, dosyayı da seçin.
 
 6. Bu yük ile yeni müşteri hesapları oluşturmak istemiyorsanız, ilk ilkeyi değiştirin: **iş arkadaşından daha sonra herhangi** bir **şey yapma**
 
 7. Var olan müşteri hesaplarını bu yük ile güncelleştirmek istemiyorsanız, **kaynak ve ardından Accesshub verilerinin eşleşmemesi durumunda** ikinci Ilkeyi değiştirip **hiçbir şey yapmayın**
 
-8. **İleri** ’yi seçin
+8. **İleri**’yi seçin
 
-9. **Arama eşleme yapılandırmasında** , yük kayıtlarını Accesshub yönetici aracına zaten yüklenmiş müşterilerle nasıl ilişkilendirirsiniz. Kaynakta bir veya daha fazla tanımlayıcı öznitelik seçin. Öznitelikleri, aynı değerleri tutan TheAccessHub yönetici aracında bir özniteliğiyle eşleştirin. Bir eşleşme bulunursa, var olan kayıt geçersiz kılınır; Aksi takdirde, yeni bir müşteri oluşturulur. Bu denetimlerin sayısını sıraya alabilirsiniz. Örneğin, önce e-postayı, sonra adı ve soyadı ' nı kontrol edebilirsiniz.
+9. **Arama eşleme yapılandırmasında**, yük kayıtlarını Accesshub yönetici aracına zaten yüklenmiş müşterilerle nasıl ilişkilendirirsiniz. Kaynakta bir veya daha fazla tanımlayıcı öznitelik seçin. Öznitelikleri, aynı değerleri tutan TheAccessHub yönetici aracında bir özniteliğiyle eşleştirin. Bir eşleşme bulunursa, var olan kayıt geçersiz kılınır; Aksi takdirde, yeni bir müşteri oluşturulur. Bu denetimlerin sayısını sıraya alabilirsiniz. Örneğin, önce e-postayı, sonra adı ve soyadı ' nı kontrol edebilirsiniz.
 
-10. Sol taraftaki menüde **veri eşleme** ' yi seçin.
+10. Sol taraftaki menüde **veri eşleme**' yi seçin.
 
 11. Data-Mapping yapılandırmasında, hangi TheAccessHub yönetici aracı özniteliklerinin kaynak özniteliklerinden doldurulması gerektiğini atayın. Tüm özniteliklerin eşlenme gereksinimi yoktur. Eşlenmemiş öznitelikler, mevcut müşteriler için değişmeden kalacak.
 
 12. Varolan bir kuruluşun adı olan bir değerle org_name özniteliğiyle eşleme yaparsanız oluşturulan yeni müşteriler bu kuruluşa yerleştirilir.
 
-13. **İleri** ’yi seçin
+13. **İleri**’yi seçin
 
 14. Bu yük yeniden oluşturulması gerekiyorsa günlük/haftalık veya aylık zamanlama belirtilebilir. Aksi **takdirde varsayılan değerini** koruyun.
 
@@ -340,11 +340,11 @@ Azure AD B2C verileri ' den Accesshub yönetim aracı ile eşzamanlı hale getir
 
 5. **Seçenekler** adımı için varsayılan değerleri bırakın.
 
-6. **İleri** ’yi seçin
+6. **İleri**’yi seçin
 
 7. **Veri eşleme & arama** adımı için varsayılan değerleri bırakın. Öznitelik **org_name** mevcut bir kuruluşun adı olan bir değerle eşleştirdiyseniz, oluşturulan yeni müşteriler bu kuruluşa yerleştirilir.
 
-8. **İleri** ’yi seçin
+8. **İleri**’yi seçin
 
 9. Bu yük yeniden oluşturulması gerekiyorsa günlük/haftalık veya aylık zamanlama belirtilebilir. Aksi takdirde, varsayılan olarak kalsın: **Şimdi**. Azure AD B2C, düzenli aralıklarla eşitleme yapmanızı öneririz.
 
@@ -358,7 +358,7 @@ Azure AD B2C verileri ' den Accesshub yönetim aracı ile eşzamanlı hale getir
 
 ## <a name="configure-azure-ad-b2c-policies"></a>Azure AD B2C ilkelerini yapılandırma
 
-Bazen Accesshub yönetim aracının eşitlenmesi, Azure AD B2C ile durumunu güncel tutabilme özelliği ile sınırlıdır. Accesshub yönetim aracının API ve Azure AD B2C ilkelerinden yararlanarak, bu değişiklikleri yaptığı gibi, erişen tarafından yapılan değişiklikleri bilgilendirebiliriz. Bu çözüm, [özel ilkeler Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started#:~:text=%20Get%20started%20with%20custom%20policies%20in%20Azure,Experience%20Framework%20applications.%20Azure%20AD%20B2C...%20More%20)için teknik bilgi gerektirir. Bir sonraki bölümde, yeni hesapların Sign-Up özel ilkeleriniz içindeki Accesshub yönetim aracına bildirimde bulunan bir örnek ilke adımları ve güvenli bir sertifika sunacağız.
+Bazen Accesshub yönetim aracının eşitlenmesi, Azure AD B2C ile durumunu güncel tutabilme özelliği ile sınırlıdır. Accesshub yönetim aracının API ve Azure AD B2C ilkelerinden yararlanarak, bu değişiklikleri yaptığı gibi, erişen tarafından yapılan değişiklikleri bilgilendirebiliriz. Bu çözüm, [özel ilkeler Azure AD B2C](./custom-policy-get-started.md)için teknik bilgi gerektirir. Bir sonraki bölümde, yeni hesapların Sign-Up özel ilkeleriniz içindeki Accesshub yönetim aracına bildirimde bulunan bir örnek ilke adımları ve güvenli bir sertifika sunacağız.
 
 ### <a name="create-a-secure-credential-to-invoke-theaccesshub-admin-tools-api"></a>The Accesshub yönetim aracının API 'sini çağırmak için güvenli bir kimlik bilgisi oluşturun
 
@@ -372,7 +372,7 @@ Bazen Accesshub yönetim aracının eşitlenmesi, Azure AD B2C ile durumunu gün
 
 5. İstemci sertifikasını almak için **İndir** ' i seçin.
 
-6. İstemci sertifikasını Azure AD B2C eklemek için bu [öğreticiyi](https://docs.microsoft.com/azure/active-directory-b2c/secure-rest-api#https-client-certificate-authentication ) izleyin.
+6. İstemci sertifikasını Azure AD B2C eklemek için bu [öğreticiyi](./secure-rest-api.md#https-client-certificate-authentication ) izleyin.
 
 ### <a name="retrieve-your-custom-policy-examples"></a>Özel ilke örneklerinizi alma
 
@@ -382,16 +382,16 @@ Bazen Accesshub yönetim aracının eşitlenmesi, Azure AD B2C ile durumunu gün
 
 3. Kimlik deneyimi çerçevesi yapılandırmanızda Azure AD B2C kiracı etki alanınızı ve iki kimlik deneyimi çerçevesi kimliğini sağlayın
 
-4. **Kaydet** 'i seçin
+4. **Kaydet**’i seçin
 
 5. Müşterilerin kaydolup oturum açması için kullanıcıları, Accesshub yönetim aracına ekleyen temel ilkelerle bir ZIP dosyası almak için **İndir** ' i seçin.
 
-6. Azure AD B2C ' de özel ilke tasarlamaya başlamak için bu [öğreticiyi](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started) izleyin.
+6. Azure AD B2C ' de özel ilke tasarlamaya başlamak için bu [öğreticiyi](./custom-policy-get-started.md) izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Daha fazla bilgi için aşağıdaki makaleleri gözden geçirin:
 
-- [Azure AD B2C'deki özel ilkeler](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C'deki özel ilkeler](./custom-policy-overview.md)
 
-- [Azure AD B2C özel ilkeleri kullanmaya başlama](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C özel ilkeleri kullanmaya başlama](./custom-policy-get-started.md?tabs=applications)

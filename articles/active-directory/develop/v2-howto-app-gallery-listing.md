@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 3b9f744e414e83c103f6b9249a0ccf5020588463
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 6374164bb5049742d63a669b4c1e552c93967977
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356357"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173388"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Uygulamanızı Azure AD uygulama galerisine yayımlayın
 
@@ -36,7 +36,7 @@ Ayrıca, müşterilerinizin uygulamanız için bir kimlik sağlayıcısı olarak
 - Kullanıcılarınız için çoklu oturum açma sağlayın. SSO ile müşterilerinizin çoklu oturum açma ile daha kolay olmasını sağlayarak destek maliyetlerini azaltabilirsiniz. Tek tıklamayla SSO etkinse, müşterilerinizin BT yöneticileri, uygulamanızın kuruluşunuzda kullanılmak üzere nasıl yapılandırılacağını öğrenmek zorunda kalmaz. Çoklu oturum açma hakkında daha fazla bilgi edinmek için bkz. [Çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 - Uygulamanız Microsoft 365 App Gallery, Microsoft 365 uygulama başlatıcısı ve Microsoft Search içinde Office.com üzerinde bulunabilir. 
 - Tümleşik uygulama yönetimi. Azure AD 'de uygulama yönetimi hakkında daha fazla bilgi edinmek için bkz. [uygulama yönetimi nedir?](../manage-apps/what-is-application-management.md).
-- Uygulamanız, Microsoft ekosisteminde Kullanıcı üretkenliğini yönlendiren verilere erişmek için [Graph API](https://docs.microsoft.com/graph/) kullanabilir.
+- Uygulamanız, Microsoft ekosisteminde Kullanıcı üretkenliğini yönlendiren verilere erişmek için [Graph API](/graph/) kullanabilir.
 - Karşılıklı müşterilerimiz için Azure AD ekibiyle birlikte üretilmiş uygulamaya özgü belgeler benimseme kolaylaştırır.
 - Müşterilerinizin kendi çalışan ve konuk kimliklerinin kimlik doğrulama ve yetkilendirme işlemlerini tamamen yönetmesine olanak sağlarsınız.
 - Tüm hesap yönetimi ve uyumluluk sorumluluğunun bu kimliklerin müşteri sahibine yerleştirilmesi.
@@ -47,7 +47,7 @@ Ayrıca, müşterilerinizin uygulamanız için bir kimlik sağlayıcısı olarak
 - Kullanıcılar, Azure AD SSO kullanarak uygulamalara oturum açtığında ve ayrı kimlik bilgileri gereksinimini kaldırarak güvenlik ve kolaylık sağlar.
 
 > [!TIP]
-> Uygulamanızı bir satın alma veya abonelik aracılığıyla diğer şirketler tarafından kullanılmak üzere sunmanızdan sonra, uygulamanızı kendi Azure kiracılarındaki müşteriler için kullanılabilir hale getirebilirsiniz. Bu, çok kiracılı bir uygulama oluşturma olarak bilinir. Bu kavram hakkında genel bir bakış için bkz. [Azure 'Da çok kiracılı uygulamalar](https://docs.microsoft.com/azure/dotnet-develop-multitenant-applications) ve [Azure Active Directory içinde Kiralama](single-and-multi-tenant-apps.md).
+> Uygulamanızı bir satın alma veya abonelik aracılığıyla diğer şirketler tarafından kullanılmak üzere sunmanızdan sonra, uygulamanızı kendi Azure kiracılarındaki müşteriler için kullanılabilir hale getirebilirsiniz. Bu, çok kiracılı bir uygulama oluşturma olarak bilinir. Bu kavram hakkında genel bir bakış için bkz. [Azure 'Da çok kiracılı uygulamalar](../../dotnet-develop-multitenant-applications.md) ve [Azure Active Directory içinde Kiralama](single-and-multi-tenant-apps.md).
 
 > [!IMPORTANT]
 > Uygulamanızı Azure AD galerisinde yayımlamak için belirli hüküm ve koşulları kabul etmeniz gerekir. Başlamadan önce [hüküm ve koşulları](https://azure.microsoft.com/support/legal/active-directory-app-gallery-terms/)okuduğunuzdan ve kabul ettiğinizden emin olun.
@@ -69,7 +69,7 @@ Uygulamanızı Azure AD uygulama galerisinde yayımlama adımları şunlardır:
 - Karşılıklı müşteriler, adım adım bir yapılandırma öğreticisini alır.
 - Etki alanları arası kimlik yönetimi ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) için sistemi kullanan müşteriler aynı uygulama için sağlama kullanabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 En az iki Kullanıcı kayıtlı olarak test için kalıcı bir hesaba ihtiyacınız vardır.
 
@@ -162,7 +162,7 @@ Uygulamanız SAML 2,0 ' yi destekliyorsa, bunu doğrudan bir Azure AD kiracısı
 Microsoft, SAML uygulamalarına yönelik kitaplıklar sağlamaz veya önermemektedir. Kullanılabilir çok sayıda açık kaynak kitaplığı vardır.
 
 ### <a name="implement-ws-fed"></a>WS-Fed Uygula
-ASP.NET Core WS-Fed hakkında daha fazla bilgi edinmek için bkz. [ASP.NET Core WS-Federation ile kullanıcıların kimliğini doğrulama](https://docs.microsoft.com/aspnet/core/security/authentication/ws-federation).
+ASP.NET Core WS-Fed hakkında daha fazla bilgi edinmek için bkz. [ASP.NET Core WS-Federation ile kullanıcıların kimliğini doğrulama](/aspnet/core/security/authentication/ws-federation).
 
 ### <a name="implement-password-vaulting"></a>Parola ululturma
 
@@ -173,13 +173,13 @@ HTML oturum açma sayfasına sahip bir Web uygulaması oluşturun. Uygulamanız�
 
 Uygulamanızı test etmek için bir Azure AD kiracısına sahip olmanız gerekir. Geliştirme ortamınızı ayarlamak için bkz. [hızlı başlangıç: kiracı ayarlama](quickstart-create-new-tenant.md).
 
-Alternatif olarak, Azure AD kiracısı her Microsoft 365 abonelikle birlikte gelir. Ücretsiz bir Microsoft 365 geliştirme ortamı ayarlamak için, bkz. [Microsoft 365 Geliştirici programına ekleme](https://docs.microsoft.com/office/developer-program/microsoft-365-developer-program).
+Alternatif olarak, Azure AD kiracısı her Microsoft 365 abonelikle birlikte gelir. Ücretsiz bir Microsoft 365 geliştirme ortamı ayarlamak için, bkz. [Microsoft 365 Geliştirici programına ekleme](/office/developer-program/microsoft-365-developer-program).
 
 Kiracınız olduktan sonra, tek oturum açma erişimini etkinleştirip test etmeniz gerekir. 
 
 **OıDC veya Oath uygulamaları için** uygulamanızı çok kiracılı bir uygulama olarak [kaydedin](quickstart-register-app.md) . Desteklenen hesap türlerinde herhangi bir kurumsal dizin ve kişisel Microsoft hesabı seçeneğinde bulunan hesapları seçin.
 
-**SAML ve WS-Bessel tabanlı uygulamalar için** , Azure AD 'de genel bir SAML şablonu kullanarak [SAML tabanlı çoklu oturum açma uygulamalarını yapılandırırsınız](../manage-apps/configure-saml-single-sign-on.md) .
+**SAML ve WS-Bessel tabanlı uygulamalar için**, Azure AD 'de genel bir SAML şablonu kullanarak [SAML tabanlı çoklu oturum açma uygulamalarını yapılandırırsınız](../manage-apps/configure-saml-single-sign-on.md) .
 
 Ayrıca, gerekirse [tek kiracılı bir uygulamayı birden çok kiracıya dönüştürebilirsiniz](howto-convert-app-to-be-multi-tenant.md) .
 
@@ -209,7 +209,7 @@ Sitenizdeki tüm belgelerinize, en azından aşağıdaki öğeleri eklemesi öne
 
 ### <a name="documentation-on-the-microsoft-site"></a>Microsoft sitesindeki belgeler
 
-Uygulamanızı Azure Marketi 'nde da yayımlayan Azure Active Directory Uygulama galerisinde, Microsoft, adım adım işlemi açıklayan, karşılıklı müşterilerimiz için belge oluşturacaktır. [Burada](https://aka.ms/appstutorial)bir örnek görebilirsiniz. Bu belge, galeriye gönderiminiz temel alınarak oluşturulur ve GitHub hesabınızı kullanarak uygulamanızda değişiklik yaparsanız onu kolayca güncelleştirebilirsiniz.
+Uygulamanızı Azure Marketi 'nde da yayımlayan Azure Active Directory Uygulama galerisinde, Microsoft, adım adım işlemi açıklayan, karşılıklı müşterilerimiz için belge oluşturacaktır. [Burada](../saas-apps/tutorial-list.md)bir örnek görebilirsiniz. Bu belge, galeriye gönderiminiz temel alınarak oluşturulur ve GitHub hesabınızı kullanarak uygulamanızda değişiklik yaparsanız onu kolayca güncelleştirebilirsiniz.
 
 
 ## <a name="step-5---submit-your-app"></a>5. adım-uygulamanızı gönderme
@@ -220,7 +220,7 @@ Portalda ilk kez oturum açmaya çalıştığınızda, iki ekranda bir tane gör
 
 "İşe yaramadı" iletisini alırsanız, [Azure AD SSO tümleştirme ekibine](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)başvurmanız gerekecektir. İsteği göndermek için kullanmak istediğiniz e-posta hesabını belirtin. Gibi bir iş e-posta adresi `name@yourbusiness.com` tercih edilir. Azure AD ekibi, hesabı Microsoft uygulama ağı portalına ekler.
 
-"Erişim ıste" sayfası görürseniz, iş gerekçe ' nı doldurup **erişim iste** ' yi seçin.
+"Erişim ıste" sayfası görürseniz, iş gerekçe ' nı doldurup **erişim iste**' yi seçin.
 
 Hesap eklendikten sonra, Microsoft uygulama ağı portalında oturum açabilir ve giriş sayfasında **Isteği gönder (ISV)** kutucuğunu seçerek isteği gönderebilirsiniz.
 
@@ -262,7 +262,7 @@ Uygulamanızı parola SSO kullanarak galerideki listeye eklemek istiyorsanız, g
 
 ![Galerideki parola SSO uygulamasını listeleme](./media/howto-app-gallery-listing/passwordsso.png)
 
-Kullanıcı hazırlama için bir [SCIM](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups) 2,0 uç noktası uygulamadıysanız gösterilen seçeneği belirleyin. 
+Kullanıcı hazırlama için bir [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2,0 uç noktası uygulamadıysanız gösterilen seçeneği belirleyin. 
 
    ![Kullanıcı hazırlama isteği](./media/howto-app-gallery-listing/user-provisioning.png)
 

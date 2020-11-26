@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: joflore
-ms.openlocfilehash: bc16f75a4ed2f9fe3be8a8bdc2d981a339780cc3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 7c30bca947788e93e57f462094d51f00e338c0b8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960788"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171662"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services yönetilen bir etki alanında iç uygulamalara güvenli erişim için Azure AD Uygulama Ara Sunucusu Dağıtma
 
@@ -55,7 +55,7 @@ Azure AD Uygulama Ara Sunucusu bağlayıcısını indirmek için aşağıdaki ad
 
 1. Azure AD 'de *Kurumsal Yönetici* izinlerine sahip bir kullanıcı hesabıyla [Azure Portal](https://portal.azure.com) oturum açın.
 1. Portalın üst kısmındaki **Azure Active Directory** arayıp seçin, sonra **Kurumsal uygulamalar**' ı seçin.
-1. Sol taraftaki menüden **uygulama proxy 'si** ' ni seçin. İlk bağlayıcınızı oluşturmak ve uygulama proxy 'Sini etkinleştirmek için **bağlayıcıyı indirmek**üzere bağlantıyı seçin.
+1. Sol taraftaki menüden **uygulama proxy 'si** ' ni seçin. İlk bağlayıcınızı oluşturmak ve uygulama proxy 'Sini etkinleştirmek için **bağlayıcıyı indirmek** üzere bağlantıyı seçin.
 1. İndirme sayfasında, lisans koşullarını ve gizlilik sözleşmesi 'ni kabul edin, ardından **terimleri kabul et & indir**' i seçin.
 
     ![Azure AD Uygulaması Proxy bağlayıcısını indirin](./media/app-proxy/download-app-proxy-connector.png)
@@ -65,19 +65,19 @@ Azure AD Uygulama Ara Sunucusu bağlayıcısını indirmek için aşağıdaki ad
 Azure AD Uygulama Ara Sunucusu Bağlayıcısı olarak kullanılmak üzere bir VM ile, şimdi Azure portal indirilen kurulum dosyasını kopyalayın ve çalıştırın.
 
 1. Azure AD Uygulama Ara Sunucusu Bağlayıcısı kurulum dosyasını sanal makinenize kopyalayın.
-1. *AADApplicationProxyConnectorInstaller.exe*gibi kurulum dosyasını çalıştırın. Yazılım lisans koşulları 'nı kabul edin.
+1. *AADApplicationProxyConnectorInstaller.exe* gibi kurulum dosyasını çalıştırın. Yazılım lisans koşulları 'nı kabul edin.
 1. Yüklemesi sırasında, bağlayıcıyı Azure AD dizininize uygulama proxy 'Si ile kaydetmeniz istenir.
    * Azure AD dizininizde genel yönetici için kimlik bilgilerini sağlayın. Azure AD Genel yönetici kimlik bilgileri, portalda Azure kimlik bilgilerinizle farklı olabilir
 
         > [!NOTE]
         > Bağlayıcıyı kaydetmek için kullanılan genel yönetici hesabı, uygulama ara sunucusu hizmetini etkinleştirdiğiniz dizine ait olmalıdır.
         >
-        > Örneğin, Azure AD etki alanı *contoso.com*ise, genel yönetici `admin@contoso.com` Bu etki alanında veya geçerli bir diğer ad olmalıdır.
+        > Örneğin, Azure AD etki alanı *contoso.com* ise, genel yönetici `admin@contoso.com` Bu etki alanında veya geçerli bir diğer ad olmalıdır.
 
    * Bağlayıcıyı yüklediğiniz VM için Internet Explorer Artırılmış Güvenlik Yapılandırması açıksa, kayıt ekranı engellenebilir. Erişime izin vermek için, hata iletisindeki yönergeleri uygulayın veya yüklemenin işlemi sırasında Internet Explorer gelişmiş güvenliği ' ni kapatın.
    * Bağlayıcı kaydı başarısız olursa bkz. [uygulama proxy 'Si sorunlarını giderme](../active-directory/manage-apps/application-proxy-troubleshoot.md).
 1. Kurulumun sonunda, giden ara sunucuya sahip ortamlar için bir Note gösterilir. Azure AD Uygulama Ara Sunucusu bağlayıcısını giden ara sunucu üzerinden çalışacak şekilde yapılandırmak için, belirtilen betiği çalıştırın, örneğin `C:\Program Files\Microsoft AAD App Proxy connector\ConfigureOutBoundProxy.ps1` .
-1. Azure portal uygulama proxy 'si sayfasında, yeni bağlayıcı aşağıdaki örnekte gösterildiği gibi *etkin*durumuyla listelenir:
+1. Azure portal uygulama proxy 'si sayfasında, yeni bağlayıcı aşağıdaki örnekte gösterildiği gibi *etkin* durumuyla listelenir:
 
     ![Azure portal etkin olarak gösterilen yeni Azure AD Uygulama Ara Sunucusu Bağlayıcısı](./media/app-proxy/connected-app-proxy.png)
 
@@ -97,7 +97,7 @@ Daha fazla bilgi için, [Azure Active Directory Domain Services Içinde Kerberos
 
 Azure AD Uygulama Ara Sunucusu bağlayıcısının yüklü olduğu bilgisayarın ayarlarını almak için [Get-ADComputer][Get-ADComputer] komutunu kullanın. Etki alanına katılmış Yönetim sanal makinenizde ve *Azure AD DC Yöneticiler* grubunun bir üyesi olan kullanıcı hesabı olarak oturum açmış olarak, aşağıdaki cmdlet 'leri çalıştırın.
 
-Aşağıdaki örnek, *appproxy.aaddscontoso.com*adlı bilgisayar hesabı hakkında bilgi alır. Önceki adımlarda yapılandırılan Azure AD Uygulama Ara Sunucusu sanal makinesi için kendi bilgisayar adınızı girin.
+Aşağıdaki örnek, *appproxy.aaddscontoso.com* adlı bilgisayar hesabı hakkında bilgi alır. Önceki adımlarda yapılandırılan Azure AD Uygulama Ara Sunucusu sanal makinesi için kendi bilgisayar adınızı girin.
 
 ```powershell
 $ImpersonatingAccount = Get-ADComputer -Identity appproxy.aaddscontoso.com
@@ -120,6 +120,6 @@ Azure AD Uygulama Ara Sunucusu ile tümleştirilmiş Azure AD DS ile, kullanıc�
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
 [create-join-windows-vm]: join-windows-vm.md
-[azure-bastion]: ../bastion/bastion-create-host-portal.md
+[azure-bastion]: ../bastion/tutorial-create-host-portal.md
 [Get-ADComputer]: /powershell/module/addsadministration/get-adcomputer
 [Set-ADComputer]: /powershell/module/addsadministration/set-adcomputer

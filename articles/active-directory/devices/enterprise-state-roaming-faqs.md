@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9510bd564ced2f458a9a78ff23200bb32358c3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cb889298a09c30a629c69442ebf31bc735af31d1
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268545"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173133"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Ayarlar ve veri dolaşımı hakkında SSS
 
@@ -76,16 +76,16 @@ Windows 10 ' un Kasım 2015 veya sonraki sürümlerinde Enterprise State Roaming
 
 Farklı Azure AD kiracılarından birden çok Azure AD hesabı aynı cihazdan olduğunda, her bir Azure AD kiracısı için Azure Rights Management hizmetiyle iletişim kurmak üzere cihazın kayıt defterini güncelleştirmeniz gerekir.  
 
-1. Her Azure AD kiracısı için GUID 'ı bulun. Azure portal açın ve bir Azure AD kiracısı seçin. Kiracının GUID 'SI, seçilen kiracının ( https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) **dizin kimliği**etiketli) özellikler sayfasıdır. 
-2. GUID 'yi aldıktan sonra **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<tenant ID GUID> **kayıt defteri anahtarını eklemeniz gerekir.
-   **KIRACı KIMLIĞI GUID** anahtarından, **Allowedrmsserverurls**adlı yeni bir çok dizeli değer (reg-Multi-SZ) oluşturun. Verileri için, cihazın eriştiği diğer Azure kiracılarının lisanslama dağıtım noktası URL 'Lerini belirtin.
+1. Her Azure AD kiracısı için GUID 'ı bulun. Azure portal açın ve bir Azure AD kiracısı seçin. Kiracının GUID 'SI, seçilen kiracının ( https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) **dizin kimliği** etiketli) özellikler sayfasıdır. 
+2. GUID 'yi aldıktan sonra **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<tenant ID GUID>** kayıt defteri anahtarını eklemeniz gerekir.
+   **KIRACı KIMLIĞI GUID** anahtarından, **Allowedrmsserverurls** adlı yeni bir çok dizeli değer (reg-Multi-SZ) oluşturun. Verileri için, cihazın eriştiği diğer Azure kiracılarının lisanslama dağıtım noktası URL 'Lerini belirtin.
 3. AADRM modülünden **Get-AadrmConfiguration** cmdlet 'ini çalıştırarak lisanslama dağıtım noktası URL 'lerini bulabilirsiniz. **Licensingıntranetdistributionpointurl** ve **LicensingExtranetDistributionPointUrl** değerleri farklıysa, her iki değeri de belirtin. Değerler aynıysa, değeri yalnızca bir kez belirtin.
 
 ## <a name="what-are-the-roaming-settings-options-for-existing-windows-desktop-applications"></a>Mevcut Windows Masaüstü uygulamaları için Dolaşım ayarları seçenekleri nelerdir?
 
 Dolaşım yalnızca Evrensel Windows uygulamaları için geçerlidir. Mevcut bir Windows masaüstü uygulamasında dolaşımı etkinleştirmek için kullanılabilecek iki seçenek vardır:
 
-* [Masaüstü Köprüsü](https://aka.ms/desktopbridge) , mevcut Windows masaüstü uygulamalarınızı Evrensel Windows platformu taşımanıza yardımcı olur. Buradan, Azure AD uygulama veri dolaşımı avantajlarından yararlanmak için en az kod değişikliği yapmanız gerekecektir. Masaüstü Köprüsü, uygulamalarınızı mevcut masaüstü uygulamaları için uygulama verilerini dolaşımı etkinleştirmek için gereken bir uygulama kimliğiyle sağlar.
+* [Masaüstü Köprüsü](/windows/msix/desktop/source-code-overview) , mevcut Windows masaüstü uygulamalarınızı Evrensel Windows platformu taşımanıza yardımcı olur. Buradan, Azure AD uygulama veri dolaşımı avantajlarından yararlanmak için en az kod değişikliği yapmanız gerekecektir. Masaüstü Köprüsü, uygulamalarınızı mevcut masaüstü uygulamaları için uygulama verilerini dolaşımı etkinleştirmek için gereken bir uygulama kimliğiyle sağlar.
 * [Kullanıcı deneyimi sanallaştırma (UE-V)](/previous-versions//dn458947(v=vs.85)) , var olan Windows Masaüstü uygulamaları için özel bir ayarlar şablonu oluşturmanıza ve Win32 uygulamaları için dolaşımı etkinleştirmesine yardımcı olur. Bu seçenek, uygulama geliştiricisinin uygulamanın kodunu değiştirmesini gerektirmez. UE-V, Microsoft Desktop optimizasyon paketini satın almış olan müşteriler için şirket içi Active Directory dolaşımla sınırlandırılmıştır.
 
 Yöneticiler, Windows işletim sistemi ayarlarının ve evrensel uygulama verilerinin dolaşımını, [UE-v grup ilkeleriyle](/microsoft-desktop-optimization-pack/uev-v2/configuring-ue-v-2x-with-group-policy-objects-both-uevv2)ve aşağıdakiler de dahil olmak üzere değiştirerek Windows masaüstü uygulaması verilerini DOLAŞıMA arak UE-v ' yi yapılandırabilir.
@@ -112,7 +112,7 @@ Windows 10 ' da, tek bir uygulama için dolaşımı devre dışı bırakmak üze
 
 ## <a name="how-can-i-enable-or-disable-roaming"></a>Dolaşımı nasıl etkinleştirebilir veya devre dışı bırakabilirim?
 
-**Ayarlar** uygulamasında **hesaplar**  >  **Ayarlar ' a**gidin. Bu sayfadan, ayarları dolaşırken hangi hesabın kullanıldığını görebilir ve tek tek ayar gruplarını, dolaşımda olacak şekilde etkinleştirebilir veya devre dışı bırakabilirsiniz.
+**Ayarlar** uygulamasında **hesaplar**  >  **Ayarlar ' a** gidin. Bu sayfadan, ayarları dolaşırken hangi hesabın kullanıldığını görebilir ve tek tek ayar gruplarını, dolaşımda olacak şekilde etkinleştirebilir veya devre dışı bırakabilirsiniz.
 
 ## <a name="what-is-microsofts-recommendation-for-enabling-roaming-in-windows-10"></a>Microsoft 'un Windows 10 ' da dolaşımını etkinleştirme önerisi nedir?
 

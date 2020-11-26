@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74815976036abafc56f97e622351a1018fe30504
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 5bd6a5c8af117bf6cb39969a5f1b1f17ff08681c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576941"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172831"
 ---
 # <a name="password-based-authentication-with-azure-active-directory"></a>Azure Active Directory ile parola tabanlı kimlik doğrulaması
 
@@ -35,20 +35,19 @@ Bir uygulama, belirteç ve üst bilgiler yerine Kullanıcı adı ve parolayla ki
 
 ## <a name="components-of-system"></a>Sistem bileşenleri
 
-* **Kullanıcı** : uygulamalarım ya da doğrudan siteyi ziyaret ederek oluşturulmuş tabanlı uygulamaya erişir. 
+* **Kullanıcı**: uygulamalarım ya da doğrudan siteyi ziyaret ederek oluşturulmuş tabanlı uygulamaya erişir. 
 
-* **Web tarayıcısı** : kullanıcının uygulamanın dış URL 'sine erişmek için etkileşimde bulunduğu bileşen. Kullanıcı, form tabanlı uygulamaya Uygps uzantısı aracılığıyla erişir. 
+* **Web tarayıcısı**: kullanıcının uygulamanın dış URL 'sine erişmek için etkileşimde bulunduğu bileşen. Kullanıcı, form tabanlı uygulamaya Uygps uzantısı aracılığıyla erişir. 
 
-* **Uygps uzantısı** : yapılandırılan parola tabanlı SSO uygulamasını tanımlar ve oturum açma formuna kimlik bilgilerini sağlar. Uygps uzantısı Web tarayıcısına yüklendi. 
+* **Uygps uzantısı**: yapılandırılan parola tabanlı SSO uygulamasını tanımlar ve oturum açma formuna kimlik bilgilerini sağlar. Uygps uzantısı Web tarayıcısına yüklendi. 
 
-* **Azure AD** : kullanıcının kimliğini doğrular.
+* **Azure AD**: kullanıcının kimliğini doğrular.
 
 ## <a name="implement-password-based-sso-with-azure-ad"></a>Azure AD ile parola tabanlı SSO uygulama
 
-* [Parola tabanlı SSO nedir?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) 
+* [Parola tabanlı SSO nedir?](../manage-apps/what-is-single-sign-on.md) 
 
-* [Bulut uygulamaları için parola tabanlı SSO 'yu yapılandırma ](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-password-single-sign-on-non-gallery-applications)
+* [Bulut uygulamaları için parola tabanlı SSO 'yu yapılandırma ](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md)
 
-* [Uygulama proxy 'Si ile şirket içi uygulamalar için parola tabanlı SSO 'yu yapılandırma](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-password-vaulting)
+* [Uygulama proxy 'Si ile şirket içi uygulamalar için parola tabanlı SSO 'yu yapılandırma](../manage-apps/application-proxy-configure-single-sign-on-password-vaulting.md)
 
- 

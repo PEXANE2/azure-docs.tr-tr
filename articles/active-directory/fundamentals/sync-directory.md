@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c340f973193f9c46735423c86112816003fecfcd
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 748f91b2fe77667969e9736f8084a9dd24018425
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578918"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172478"
 ---
 # <a name="directory-synchronization"></a>Dizin eşitlemesi
 
@@ -40,22 +40,22 @@ Eşitleme, şu işlemdir
 
 ## <a name="components-of-system"></a>Sistem bileşenleri
 
-* **Kullanıcı** : Azure ad kullanarak bir uygulamaya erişir.
+* **Kullanıcı**: Azure ad kullanarak bir uygulamaya erişir.
 
-* **Web tarayıcısı** : kullanıcının uygulamanın dış URL 'sine erişmek için etkileşimde bulunduğu bileşen.
+* **Web tarayıcısı**: kullanıcının uygulamanın dış URL 'sine erişmek için etkileşimde bulunduğu bileşen.
 
-* **Uygulama** : kimlik doğrulaması ve yetkilendirme AMACıYLA Azure AD 'nin kullanımına dayalı Web uygulaması.
+* **Uygulama**: kimlik doğrulaması ve yetkilendirme AMACıYLA Azure AD 'nin kullanımına dayalı Web uygulaması.
 
-* **Azure AD** : kimlik bilgilerini kuruluşun şirket içi dizininden Azure AD Connect aracılığıyla eşitler. 
+* **Azure AD**: kimlik bilgilerini kuruluşun şirket içi dizininden Azure AD Connect aracılığıyla eşitler. 
 
-* **Azure AD Connect** : şirket kimliği altyapılarına Microsoft Azure AD bağlanmak için bir araç. Sihirbaz ve kılavuzlu deneyimler, bağlantı için gerekli olan önkoşulları ve bileşenleri dağıtmanıza ve yapılandırmanıza yardımcı olur ve Active Directory 'den Azure AD 'ye oturum açın. 
+* **Azure AD Connect**: şirket kimliği altyapılarına Microsoft Azure AD bağlanmak için bir araç. Sihirbaz ve kılavuzlu deneyimler, bağlantı için gerekli olan önkoşulları ve bileşenleri dağıtmanıza ve yapılandırmanıza yardımcı olur ve Active Directory 'den Azure AD 'ye oturum açın. 
 
-* **Active Directory** : Active Directory, çoğu Windows Server işletim sisteminde yer alan bir dizin hizmetidir. Active Directory Domain Services çalıştıran sunuculara (AD DS) etki alanı denetleyicileri denir. Bunlar, etki alanındaki tüm kullanıcıları ve bilgisayarları doğrular ve yetkilendirirler.
+* **Active Directory**: Active Directory, çoğu Windows Server işletim sisteminde yer alan bir dizin hizmetidir. Active Directory Domain Services çalıştıran sunuculara (AD DS) etki alanı denetleyicileri denir. Bunlar, etki alanındaki tüm kullanıcıları ve bilgisayarları doğrular ve yetkilendirirler.
 
 ## <a name="implement-directory-synchronization-with-azure-ad"></a>Azure AD ile dizin eşitlemeyi uygulama
 
-* [Kimlik sağlama nedir?](https://docs.microsoft.com/azure/active-directory/cloud-provisioning/what-is-provisioning) 
+* [Kimlik sağlama nedir?](../cloud-provisioning/what-is-provisioning.md) 
 
-* [Karma kimlik dizini tümleştirme araçları](https://docs.microsoft.com/azure/active-directory/hybrid/plan-hybrid-identity-design-considerations-tools-comparison) 
+* [Karma kimlik dizini tümleştirme araçları](../hybrid/plan-hybrid-identity-design-considerations-tools-comparison.md) 
 
-* [Azure AD Connect yükleme yol haritası](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-roadmap)
+* [Azure AD Connect yükleme yol haritası](../hybrid/how-to-connect-install-roadmap.md)

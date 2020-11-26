@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 08c1b415ac075429a9bc89098233fffb8c25b710
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 69a0272061d8518119114e8fe7b023c889639844
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369265"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171576"
 ---
 # <a name="managed-hsm-disaster-recovery"></a>Yönetilen HSM olağanüstü durum kurtarma
 
@@ -35,7 +35,7 @@ Olağanüstü durum kurtarma yordamının adımları şunlardır:
 1. Yeni HSM 'nin bir yedeğini alın. HSM boş olduğunda bile, herhangi bir geri yüklemeden önce bir yedekleme gereklidir. Yedeklemeler, kolayca geri alma için izin verir.
 1. Kaynak HSM 'den son HSM yedeklemesini geri yükleme
 
-Anahtar kasanızın içeriği bölge içinde ve bir ikincil bölgeye en az 150 mil uzakta, ancak aynı coğrafya dahilinde çoğaltılır. Bu özellik, anahtarlarınızın ve sırlarınızın yüksek dayanıklılığını korur. Belirli bölge çiftleri hakkındaki ayrıntılar için bkz. [Azure eşleştirilmiş bölgeler](../../best-practices-availability-paired-regions.md) belgesi.
+Bu adımlar, HSM 'nin içeriğini başka bir bölgeye el ile çoğaltmanıza olanak sağlar. HSM adı (ve hizmet uç noktası URI 'SI) farklı olacak, bu nedenle bu anahtarların farklı bir konumdan kullanımını sağlamak için uygulama yapılandırmanızı değiştirmeniz gerekebilir.
 
 ## <a name="create-a-new-managed-hsm"></a>Yeni bir yönetilen HSM oluştur
 
@@ -60,8 +60,8 @@ az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGro
 
 Bu komutun çıktısı, oluşturduğunuz yönetilen HSM 'nin özelliklerini gösterir. En önemli iki özellik şunlardır:
 
-* **ad** : örnekte, ad ContosoMHSM ' dir. Bu adı diğer Key Vault komutları için kullanacaksınız.
-* **Hsmuri** : örnekte, URI ' https://contosohsm.managedhsm.azure.net . ' HSM 'nizi REST API aracılığıyla kullanan uygulamalar bu URI 'yi kullanmalıdır.
+* **ad**: örnekte, ad ContosoMHSM ' dir. Bu adı diğer Key Vault komutları için kullanacaksınız.
+* **Hsmuri**: örnekte, URI ' https://contosohsm.managedhsm.azure.net . ' HSM 'nizi REST API aracılığıyla kullanan uygulamalar bu URI 'yi kullanmalıdır.
 
 Azure hesabınız artık bu yönetilen HSM üzerinde herhangi bir işlem gerçekleştirmeye yetkilendirildi. Henüz hiç olmadığı için, başka hiç kimse yetkili değil.
 
@@ -86,7 +86,7 @@ Bu adım için şunlar gerekir:
 - Önceki adımda indirdiğimiz güvenlik etki alanı değişim anahtarıyla şifrelenmiş bir güvenlik etki alanı karşıya yükleme blobu oluşturun ve ardından
 - Güvenlik etki alanı kurtarmayı gerçekleştirmek için güvenlik etki alanı yükleme blobunu HSM 'ye yükleyin
 
-Aşağıdaki örnekte, **Contosomhsm** 'Deki güvenlik etki alanını, karşılık gelen özel anahtarların 2 ' yi kullanıyoruz ve bir güvenlik etki alanı almayı bekleyen **ContosoMHSM2** 'e yüklersiniz. 
+Aşağıdaki örnekte, **Contosomhsm**'Deki güvenlik etki alanını, karşılık gelen özel anahtarların 2 ' yi kullanıyoruz ve bir güvenlik etki alanı almayı bekleyen **ContosoMHSM2**'e yüklersiniz. 
 
 ```azurecli-interactive
 az keyvault security-domain upload --hsm-name ContosoMHSM2 --sd-exchange-key ContosoMHSM-SDE.cer --sd-file ContosoMHSM-SD.json --sd-wrapping-keys cert_0.key cert_1.key

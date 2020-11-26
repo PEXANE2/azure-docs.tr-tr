@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: 4a9282882d23ecbdc3c03ca158ea3de5566143e7
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 59924c1f876d08aa504f19c5d6c86dca32fbd1e2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94634863"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173473"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>Geliştirdiğiniz mobil uygulamalarda çoklu oturum açma ve uygulama koruma ilkelerini destekleme
 
@@ -38,7 +38,7 @@ Uygulamanızın çoklu oturum açma özelliğinden yararlanmasını sağlamak i�
 
 ### <a name="use-microsoft-authentication-library-msal"></a>Microsoft kimlik doğrulama kitaplığı (MSAL) kullanma
 
-Uygulamanızda çoklu oturum açmayı uygulamak için en iyi seçenek, [Microsoft kimlik doğrulama kitaplığı 'nı (msal)](msal-overview.md)kullanmaktır. MSAL kullanarak, en az kod ve API çağrılarında uygulamanıza kimlik doğrulaması ekleyebilir, [Microsoft Identity platformunun](/azure/active-directory/develop/)tüm özelliklerini alabilir ve Microsoft 'un güvenli bir kimlik doğrulama çözümünün bakımını gerçekleştirmesini sağlayabilirsiniz. Varsayılan olarak, MSAL, uygulamanız için SSO desteği ekler. Ayrıca, uygulama koruma ilkelerini uygulamayı da planlamanız planlanmanız durumunda MSAL kullanılması da bir gereksinimdir.
+Uygulamanızda çoklu oturum açmayı uygulamak için en iyi seçenek, [Microsoft kimlik doğrulama kitaplığı 'nı (msal)](msal-overview.md)kullanmaktır. MSAL kullanarak, en az kod ve API çağrılarında uygulamanıza kimlik doğrulaması ekleyebilir, [Microsoft Identity platformunun](./index.yml)tüm özelliklerini alabilir ve Microsoft 'un güvenli bir kimlik doğrulama çözümünün bakımını gerçekleştirmesini sağlayabilirsiniz. Varsayılan olarak, MSAL, uygulamanız için SSO desteği ekler. Ayrıca, uygulama koruma ilkelerini uygulamayı da planlamanız planlanmanız durumunda MSAL kullanılması da bir gereksinimdir.
 
 > [!NOTE]
 > MSAL ' i katıştırılmış Web görünümü kullanacak şekilde yapılandırmak mümkündür. Bu, çoklu oturum açmayı engeller. SSO 'nun çalışmasını sağlamak için varsayılan davranışı (yani, sistem Web tarayıcısı) kullanın.
@@ -64,7 +64,7 @@ Apple 'ın bunu iOS uygulamalarında yapma kılavuzu vardır: bir [Web hizmeti a
 
 Uygulama koruma ilkelerini etkinleştirmek için [Microsoft kimlik doğrulama kitaplığı 'nı (msal)](msal-overview.md)kullanın. MSAL, Microsoft Identity platformunun kimlik doğrulama ve yetkilendirme kitaplığı ve Intune SDK 'Sı ile birlikte çalışmak üzere geliştirilmiştir.
 
-Ayrıca, kimlik doğrulaması için bir aracı uygulaması kullanmanız gerekir. Aracı uygulamanın uyumluluğunu sağlamak için uygulamanın uygulama ve cihaz bilgilerini sağlamasını gerektirir. iOS kullanıcıları [Microsoft Authenticator uygulamasını](../user-help/user-help-auth-app-sign-in.md) kullanır ve Android kullanıcıları, [aracılı kimlik doğrulaması](brokered-auth.md)için Microsoft Authenticator uygulamasını veya [Şirket Portalı uygulamasını](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal) kullanır. Varsayılan olarak, MSAL, bir kimlik doğrulama isteği yerine bir aracı kullanır; bu nedenle, kimlik doğrulaması için aracı kullanılması, MSAL kullanıma hazır olduğunuzda uygulamanız için otomatik olarak etkinleştirilir.
+Ayrıca, kimlik doğrulaması için bir aracı uygulaması kullanmanız gerekir. Aracı uygulamanın uyumluluğunu sağlamak için uygulamanın uygulama ve cihaz bilgilerini sağlamasını gerektirir. iOS kullanıcıları [Microsoft Authenticator uygulamasını](../user-help/user-help-auth-app-sign-in.md) kullanır ve Android kullanıcıları, [aracılı kimlik doğrulaması](./msal-android-single-sign-on.md)için Microsoft Authenticator uygulamasını veya [Şirket Portalı uygulamasını](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal) kullanır. Varsayılan olarak, MSAL, bir kimlik doğrulama isteği yerine bir aracı kullanır; bu nedenle, kimlik doğrulaması için aracı kullanılması, MSAL kullanıma hazır olduğunuzda uygulamanız için otomatik olarak etkinleştirilir.
 
 Son olarak, uygulama koruma ilkelerini etkinleştirmek için [Intune SDK 'sını uygulamanıza ekleyin](/mem/intune/developer/app-sdk-get-started) . Çoğu bölüm için SDK, bir kesme modelini izler ve uygulama koruma ilkelerini otomatik olarak uygulayarak uygulamanın işlem yapmasına izin verilip verilmediğini tespit eder. Ayrıca, belirli eylemlerde kısıtlamalar varsa uygulamayı söylemek için el ile çağırabilen API 'Ler de vardır.
 
@@ -73,8 +73,8 @@ Son olarak, uygulama koruma ilkelerini etkinleştirmek için [Intune SDK 'sını
 - [Azure Active Directory çoklu oturum açma dağıtımı planlayın](../manage-apps/plan-sso-deployment.md)
 - [Nasıl yapılır: macOS ve iOS 'ta SSO 'yu yapılandırma](single-sign-on-macos-ios.md)
 - [Apple cihazları için Microsoft Enterprise SSO eklentisi (Önizleme)](apple-sso-plugin.md)
-- [Android 'de aracılı kimlik doğrulaması](brokered-auth.md)
-- [Yetkilendirme aracıları ve bunların nasıl etkinleştirileceği](authorization-agents.md)
+- [Android 'de aracılı kimlik doğrulaması](./msal-android-single-sign-on.md)
+- [Yetkilendirme aracıları ve bunların nasıl etkinleştirileceği](./msal-android-single-sign-on.md)
 - [Microsoft Intune Uygulama SDK’sını kullanmaya başlama](/mem/intune/developer/app-sdk-get-started)
 - [Intune Uygulama SDK'sı ayarlarını yapılandırma](/mem/intune/developer/app-sdk-ios#configure-settings-for-the-intune-app-sdk)
 - [Microsoft Intune korumalı uygulamalar](/mem/intune/apps/apps-supported-intune-apps)

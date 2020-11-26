@@ -16,12 +16,12 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a0765f5279eb41324691c431c5973bb55a8b52d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74bc659c11c4f43ab3cf85cdc53f704cd07a1cde
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89662492"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172376"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Eşitleme Azure AD Connect: Dizin uzantıları
 Azure Active Directory (Azure AD) içindeki şemayı şirket içi Active Directory kendi nitelikleriyle genişletmek için Dizin uzantıları 'nı kullanabilirsiniz. Bu özellik, şirket içinde yönetmeye devam ettiğiniz öznitelikleri kullanıp LOB uygulamaları oluşturmanıza olanak sağlar. Bu öznitelikler, [Uzantılar](/graph/extensibility-overview
@@ -60,7 +60,7 @@ Azure AD Connect yüklenmesi sırasında, bu özniteliklerin kullanılabildiği 
 
 Bu uygulamayı görmek için **tüm uygulamalar** ' ı seçtiğinizden emin olun.
 
-Öznitelikler ** \_ {ApplicationId \_ } uzantısıyla**önek olarak eklenir. ApplicationId, Azure AD kiracınızdaki tüm öznitelikler için aynı değere sahiptir. Bu konudaki tüm diğer senaryolar için bu değere ihtiyacınız olacaktır.
+Öznitelikler **\_ {ApplicationId \_ } uzantısıyla** önek olarak eklenir. ApplicationId, Azure AD kiracınızdaki tüm öznitelikler için aynı değere sahiptir. Bu konudaki tüm diğer senaryolar için bu değere ihtiyacınız olacaktır.
 
 ## <a name="viewing-attributes-using-the-microsoft-graph-api"></a>Microsoft Graph API 'sini kullanarak öznitelikleri görüntüleme
 
@@ -71,15 +71,18 @@ Bu öznitelikler artık Microsoft Graph API ile [Microsoft Graph Explorer](https
 >
 > Daha fazla bilgi için bkz. [Microsoft Graph: sorgu parametrelerini kullanma](/graph/query-parameters#select-parameter).
 
+>[!NOTE]
+> AADConnect ile öznitelik değerlerinin AADConnect tarafından oluşturulmamış uzantı özniteliklerine eşitlenmesi desteklenmez. Bunun yapılması, performans sorunları ve beklenmedik sonuçlar doğurabilir. Yalnızca yukarıda gösterildiği gibi oluşturulan uzantı öznitelikleri eşitleme için desteklenir.
+
 ## <a name="use-the-attributes-in-dynamic-groups"></a>Dinamik gruplardaki öznitelikleri kullanma
 
 Daha kullanışlı senaryolarından biri, bu özniteliklerin dinamik güvenlik veya Microsoft 365 gruplarında kullanılması.
 
-1. Azure AD 'de yeni bir grup oluşturun. Buna iyi bir ad verin ve **Üyelik türünün** **Dinamik Kullanıcı**olduğundan emin olun.
+1. Azure AD 'de yeni bir grup oluşturun. Buna iyi bir ad verin ve **Üyelik türünün** **Dinamik Kullanıcı** olduğundan emin olun.
 
    ![Yeni bir grup ile ekran görüntüsü](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup1.png)
 
-2. **Dinamik sorgu eklemek**için seçin. Özelliklere bakarsanız, bu genişletilmiş öznitelikleri görmezsiniz. Önce bunları eklemeniz gerekir. **Özel uzantı özellikleri al**' a tıklayın, uygulama kimliğini girin ve **özellikleri Yenile**' ye tıklayın.
+2. **Dinamik sorgu eklemek** için seçin. Özelliklere bakarsanız, bu genişletilmiş öznitelikleri görmezsiniz. Önce bunları eklemeniz gerekir. **Özel uzantı özellikleri al**' a tıklayın, uygulama kimliğini girin ve **özellikleri Yenile**' ye tıklayın.
 
    ![Dizin uzantılarının eklendiği ekran görüntüsü](./media/how-to-connect-sync-feature-directory-extensions/dynamicgroup2.png) 
 

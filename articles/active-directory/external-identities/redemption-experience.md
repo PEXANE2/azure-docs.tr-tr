@@ -11,18 +11,18 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2427d974f96c0905ea2eb33daea7c89de277ec9
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8520afdd05ecce8604ce72596bdf06053217cc2e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441819"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173099"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B işbirliği daveti kullanım
 
 Bu makalede, konuk kullanıcıların kaynaklarınızda ve iletişim kurdukları onay sürecinde erişebileceği yollar açıklanmaktadır. Konuğa bir davet e-postası gönderirseniz, davet, konuğun uygulamanıza veya portala erişim sağlamak için yararlanana bir bağlantı içerir. Davet e-postası, konuklarınızın kaynaklarınıza erişebileceği yollarla yalnızca biridir. Alternatif olarak, dizininize Konuk ekleyebilir ve paylaşmak istediğiniz portalın ya da uygulamanın doğrudan bağlantısını sağlayabilirsiniz. Konukların, kullandıkları yöntemden bağımsız olarak, bir ilk kez onay süreci aracılığıyla yapılır. Bu işlem, konukların gizlilik koşullarını kabul etmesini ve ayarlamış olduğunuz tüm [kullanım koşullarını](../conditional-access/terms-of-use.md) kabul etmesini sağlar.
 
-Dizininize bir Konuk kullanıcı eklediğinizde, Konuk Kullanıcı hesabının başlangıçta **Pendingkabulünü**olarak ayarlanan bir izin durumu (PowerShell 'de görüntülenebilir) vardır. Bu ayar, Konuk davetinizi kabul edene ve gizlilik ilkenize ve kullanım koşullarınıza karşı kabul edilene kadar kalır. Bundan sonra, onay durumu **kabul edildi**olarak değişir ve izin sayfaları artık konuğa sunulmaz.
+Dizininize bir Konuk kullanıcı eklediğinizde, Konuk Kullanıcı hesabının başlangıçta **Pendingkabulünü** olarak ayarlanan bir izin durumu (PowerShell 'de görüntülenebilir) vardır. Bu ayar, Konuk davetinizi kabul edene ve gizlilik ilkenize ve kullanım koşullarınıza karşı kabul edilene kadar kalır. Bundan sonra, onay durumu **kabul edildi** olarak değişir ve izin sayfaları artık konuğa sunulmaz.
 
    > [!IMPORTANT]
    > Microsoft, **31 mart 2021**' den ıtıbaren, B2B işbirliği senaryoları Için YÖNETILMEYEN Azure AD hesapları ve kiracılar oluşturarak artık davetlerin kullanımını desteklememektedir. Hazırlık aşamasında, müşterilerin [e-posta bir kerelik geçiş kodu kimlik doğrulamasını](one-time-passcode.md)kabul etmelerini öneririz. Bu genel önizleme özelliğiyle ilgili geri bildirimlerinize hoş geldiniz ve işbirliği yapmak için daha fazla yol oluşturmak heyecanlıyız.
@@ -31,9 +31,9 @@ Dizininize bir Konuk kullanıcı eklediğinizde, Konuk Kullanıcı hesabının b
 
 [Azure Portal kullanarak](./b2b-quickstart-add-guest-users-portal.md)dizininize bir Konuk kullanıcı eklediğinizde, işlemde konuğa bir davet e-postası gönderilir. Ayrıca, [PowerShell kullanırken](./b2b-quickstart-invite-powershell.md) , dizininize Konuk kullanıcıları eklemek için davet e-postaları gönderilmesini de tercih edebilirsiniz. İşte e-postadaki bağlantıyı kullandıklarında konuğun deneyiminden oluşan bir açıklama.
 
-1. Konuk, **Microsoft davetlerden**gönderilen bir [davet e-postası](./invitation-email-elements.md) alır.
+1. Konuk, **Microsoft davetlerden** gönderilen bir [davet e-postası](./invitation-email-elements.md) alır.
 2. Konuk, e-postadaki **daveti kabul et** ' i seçer.
-3. Konuk, dizininizde oturum açmak için kendi kimlik bilgilerini kullanır. Konukta dizininizden federe olabilecek bir hesap yoksa, [e-posta bir kerelik geçiş kodu (OTP)](./one-time-passcode.md) özelliği etkin değildir; konuğa bir kişisel [MSA](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) veya BIR [Azure AD Self Servis hesabı](../users-groups-roles/directory-self-service-signup.md)oluşturması istenir. Ayrıntılar için [davet kullanım akışına](#invitation-redemption-flow) bakın.
+3. Konuk, dizininizde oturum açmak için kendi kimlik bilgilerini kullanır. Konukta dizininizden federe olabilecek bir hesap yoksa, [e-posta bir kerelik geçiş kodu (OTP)](./one-time-passcode.md) özelliği etkin değildir; konuğa bir kişisel [MSA](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create) veya BIR [Azure AD Self Servis hesabı](../enterprise-users/directory-self-service-signup.md)oluşturması istenir. Ayrıntılar için [davet kullanım akışına](#invitation-redemption-flow) bakın.
 4. Konuk, aşağıda açıklanan [onay deneyimine](#consent-experience-for-the-guest) göre yapılır.
 
 ## <a name="redemption-through-a-direct-link"></a>Doğrudan bir bağlantı üzerinden ödeme
@@ -74,9 +74,9 @@ Bir Kullanıcı [davet e-postasında](invitation-email-elements.md) **daveti kab
 
 7. [Konuklar için bir kerelik geçiş kodu etkinleştirilirse](./one-time-passcode.md#when-does-a-guest-user-get-a-one-time-passcode), davet edilen e-posta aracılığıyla kullanıcıya bir geçiş kodu gönderilir. Kullanıcı Azure AD oturum açma sayfasında bu geçiş kodunu alır ve girer.
 
-8. Konuklarınız için bir kerelik geçiş kodu devre dışıysa Azure AD, bir tüketici hesabına ait olup olmadığını öğrenmek için etki alanı sonekini denetler. Öyleyse, kullanıcıdan kişisel [Microsoft hesabı](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create)oluşturması istenir. Aksi takdirde, kullanıcıdan bir [Azure AD Self Servis hesabı](../users-groups-roles/directory-self-service-signup.md)oluşturması istenir.
+8. Konuklarınız için bir kerelik geçiş kodu devre dışıysa Azure AD, bir tüketici hesabına ait olup olmadığını öğrenmek için etki alanı sonekini denetler. Öyleyse, kullanıcıdan kişisel [Microsoft hesabı](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create)oluşturması istenir. Aksi takdirde, kullanıcıdan bir [Azure AD Self Servis hesabı](../enterprise-users/directory-self-service-signup.md)oluşturması istenir.
 
-9. Azure AD, e-postaya erişimi doğrulayarak bir [Azure AD Self Servis hesabı](../users-groups-roles/directory-self-service-signup.md) oluşturmaya çalışır. Hesap, e-postaya bir kod göndererek ve kullanıcının bunu alıp Azure AD 'ye göndermesini sağlayarak yapılır. Ancak, davet edilen kullanıcının kiracısı federe ise veya davet edilen kullanıcının kiracısında AllowEmailVerifiedUsers alanı false olarak ayarlandıysa, Kullanıcı kullanım alanını tamamlayamaz ve Flow bir hatayla sonuçlanır. Daha fazla bilgi için bkz. [B2B işbirliği Azure Active Directory sorun giderme](./troubleshoot.md#the-user-that-i-invited-is-receiving-an-error-during-redemption).
+9. Azure AD, e-postaya erişimi doğrulayarak bir [Azure AD Self Servis hesabı](../enterprise-users/directory-self-service-signup.md) oluşturmaya çalışır. Hesap, e-postaya bir kod göndererek ve kullanıcının bunu alıp Azure AD 'ye göndermesini sağlayarak yapılır. Ancak, davet edilen kullanıcının kiracısı federe ise veya davet edilen kullanıcının kiracısında AllowEmailVerifiedUsers alanı false olarak ayarlandıysa, Kullanıcı kullanım alanını tamamlayamaz ve Flow bir hatayla sonuçlanır. Daha fazla bilgi için bkz. [B2B işbirliği Azure Active Directory sorun giderme](./troubleshoot.md#the-user-that-i-invited-is-receiving-an-error-during-redemption).
 
 10. Kullanıcıdan bir kişisel [Microsoft hesabı (MSA)](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create)oluşturması istenir.
 
@@ -105,7 +105,7 @@ Bir konuk, bir iş ortağı kuruluşundaki kaynaklara ilk kez erişmek üzere ot
 
    ![Uygulamalar erişim panelini gösteren ekran görüntüsü](media/redemption-experience/myapps.png) 
 
-Dizininizde, Konuk **davetinin kabul edilebilir** değeri **Evet**olarak değişir. Bir MSA oluşturulduysa, Konuk **kaynağı** **Microsoft hesabını**gösterir. Konuk Kullanıcı hesabı özellikleri hakkında daha fazla bilgi için bkz. [Azure AD B2B işbirliği kullanıcısının özellikleri](user-properties.md). 
+Dizininizde, Konuk **davetinin kabul edilebilir** değeri **Evet** olarak değişir. Bir MSA oluşturulduysa, Konuk **kaynağı** **Microsoft hesabını** gösterir. Konuk Kullanıcı hesabı özellikleri hakkında daha fazla bilgi için bkz. [Azure AD B2B işbirliği kullanıcısının özellikleri](user-properties.md). 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

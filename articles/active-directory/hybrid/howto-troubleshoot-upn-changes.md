@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a1acdbeb29091bae0be214b740023f13928506a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46ecc2cba96b07d9105020e69ae3198a3765be7c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319852"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172240"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>Azure Active Directory Kullanıcı asıl adı değişikliklerini planlayın ve sorun giderin
 
@@ -174,7 +174,7 @@ Kuruluşunuz, oturum açmak ve kurumsal uygulamalara ve verilere erişmek için 
 
 * Bir anında iletme bildirimi veya doğrulama kodu aracılığıyla çok faktörlü kimlik doğrulaması
 
-* [Aracılı kimlik doğrulaması](../develop/brokered-auth.md) kullanan uygulamalar için çoklu oturum açma sağlamak üzere IOS ve Android cihazlarda kimlik doğrulama Aracısı işlevi görür
+* [Aracılı kimlik doğrulaması](../develop/msal-android-single-sign-on.md) kullanan uygulamalar için çoklu oturum açma sağlamak üzere IOS ve Android cihazlarda kimlik doğrulama Aracısı işlevi görür
 
 * Intune Uygulama Koruması ve cihaz kaydı/yönetimi gibi diğer özellikler için bir gereksinim olan Azure AD 'de cihaz kaydı (Workplace Join olarak da bilinir)
 

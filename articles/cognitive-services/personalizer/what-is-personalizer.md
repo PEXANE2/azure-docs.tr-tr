@@ -8,11 +8,11 @@ ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: kişiselleştirici, Azure kişiselleştirici, makine öğrenimi
 ms.openlocfilehash: f843e7bfa014ad8391e20efff83a3c21a9de11b9
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363910"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171968"
 ---
 # <a name="what-is-personalizer"></a>Kişiselleştirme nedir?
 
@@ -29,7 +29,7 @@ Başlamadan önce [Bu etkileşimli tanıtım Ile kişiselleştirici](https://per
 
 ## <a name="how-does-personalizer-select-the-best-content-item"></a>Kişiselleştirici en iyi içerik öğesini nasıl seçer?
 
-Kişiselleştirici, tüm kullanıcılar arasında toplu davranışa ve yeniden puanları temel alan en iyi öğeyi ( _eylem_ ) seçmek için **pekiştirmeye dayalı Learning** kullanır. Eylemler, haber makaleleri, belirli filmler veya ürünler gibi içerik öğeleridir.
+Kişiselleştirici, tüm kullanıcılar arasında toplu davranışa ve yeniden puanları temel alan en iyi öğeyi (_eylem_) seçmek için **pekiştirmeye dayalı Learning** kullanır. Eylemler, haber makaleleri, belirli filmler veya ürünler gibi içerik öğeleridir.
 
 **Sıralama** çağrısı, eylem öğesini ve eylem özelliklerini ve en üstteki eylem öğesini seçmek için bağlam özelliklerini alır:
 

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: joflore
-ms.openlocfilehash: 3df96f5576829694b5eb12fd1811de112279884d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5481dbfe1f7b185e87ee13f26f23ea563350b0fa
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963236"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171798"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Öğretici: Windows Server sanal makinesini Azure Active Directory Domain Services yönetilen bir etki alanına katma
 
@@ -58,17 +58,17 @@ Etki alanına katmak istediğiniz bir VM zaten varsa, [VM 'yi yönetilen etki al
 
 1. Azure portal menüsünden veya **giriş** sayfasından **kaynak oluştur**' u seçin.
 
-1. **Kullanmaya**başlayın ' dan **Windows Server 2016 Datacenter**' u seçin.
+1. **Kullanmaya** başlayın ' dan **Windows Server 2016 Datacenter**' u seçin.
 
     ![Azure portal Windows Server 2016 Datacenter VM oluşturmayı seçin](./media/join-windows-vm/select-vm-image.png)
 
-1. **Temel bilgiler** penceresinde, sanal makine için çekirdek ayarları yapılandırın. *Kullanılabilirlik seçenekleri*, *resim*ve *Boyut*için varsayılan değerleri bırakın.
+1. **Temel bilgiler** penceresinde, sanal makine için çekirdek ayarları yapılandırın. *Kullanılabilirlik seçenekleri*, *resim* ve *Boyut* için varsayılan değerleri bırakın.
 
     | Parametre            | Önerilen değer   |
     |----------------------|-------------------|
     | Kaynak grubu       | *Myresourcegroup* gibi bir kaynak grubu seçin veya oluşturun |
     | Sanal makine adı | VM için *Myvm* gibi bir ad girin |
-    | Bölge               | VM 'nizi oluşturmak için bir bölge seçin; örneğin, *Doğu ABD* |
+    | Region               | VM 'nizi oluşturmak için bir bölge seçin; örneğin, *Doğu ABD* |
     | Kullanıcı adı             | VM üzerinde oluşturulacak yerel yönetici hesabı için bir Kullanıcı adı girin; Örneğin, *azureuser* . |
     | Parola             | Yerel yönetici için VM 'de oluşturulacak güvenli bir parola girin ve ardından onaylayın. Bir etki alanı kullanıcı hesabının kimlik bilgilerini belirtmeyin. |
 
@@ -76,10 +76,10 @@ Etki alanına katmak istediğiniz bir VM zaten varsa, [VM 'yi yönetilen etki al
 
     RDP yalnızca gerektiğinde etkinleştirilmelidir ve bir yetkili IP aralığı kümesiyle sınırlıdır. Bu yapılandırma, sanal makinenin güvenliğini artırmaya yardımcı olur ve olası saldırı için alanı azaltır. Ya da yalnızca TLS üzerinden Azure portal erişim sağlayan bir Azure savunma ana bilgisayarı oluşturup kullanın. Bu öğreticinin bir sonraki adımında, sanal makineye güvenli bir şekilde bağlanmak için bir Azure savunma ana bilgisayarı kullanırsınız.
 
-    **Ortak gelen bağlantı noktaları**altında *hiçbiri*' ni seçin.
+    **Ortak gelen bağlantı noktaları** altında *hiçbiri*' ni seçin.
 
 1. İşiniz bittiğinde **İleri: diskler**' i seçin.
-1. **Işletim sistemi diski türünün**açılan menüsünde *Standart SSD*' yi seçin ve ardından İleri ' yi seçin **: ağ**.
+1. **Işletim sistemi diski türünün** açılan menüsünde *Standart SSD*' yi seçin ve ardından İleri ' yi seçin **: ağ**.
 1. SANAL makinenizin, yönetilen etki alanının dağıtıldığı alt ağ ile iletişim kurabilen bir Azure sanal ağ alt ağına bağlanması gerekir. Yönetilen bir etki alanının kendi adanmış alt ağına dağıtılmasını öneririz. VM 'nizi, yönetilen etki alanınız ile aynı alt ağda dağıtmayın.
 
     VM 'nizi dağıtmanın ve uygun bir sanal ağ alt ağına bağlanmanın iki ana yolu vardır:
@@ -94,7 +94,7 @@ Etki alanına katmak istediğiniz bir VM zaten varsa, [VM 'yi yönetilen etki al
 
     ![Azure portal alt ağ yapılandırmasını yönetmeyi seçin](./media/join-windows-vm/manage-subnet.png)
 
-1. Sanal ağ penceresinin sol menüsünde **Adres alanı**' nı seçin. Sanal ağ, varsayılan alt ağ tarafından kullanılan *10.0.2.0/24*tek bir adres alanı ile oluşturulur. *İş yükleri* veya Azure savunma gibi diğer alt ağlar da zaten var olabilir.
+1. Sanal ağ penceresinin sol menüsünde **Adres alanı**' nı seçin. Sanal ağ, varsayılan alt ağ tarafından kullanılan *10.0.2.0/24* tek bir adres alanı ile oluşturulur. *İş yükleri* veya Azure savunma gibi diğer alt ağlar da zaten var olabilir.
 
     Sanal ağa ek bir IP adresi aralığı ekleyin. Bu adres aralığının ve kullanılacak gerçek IP adresi aralığının boyutu, zaten dağıtılmış olan diğer ağ kaynaklarına bağlıdır. IP adresi aralığı, Azure veya şirket içi ortamınızda var olan tüm adres aralıklarıyla çakışmamalıdır. Alt ağa dağıtmayı düşündüğünüz VM sayısı için yeterince büyük olan IP adresi aralığını boyutlandırdığınızdan emin olun.
 
@@ -104,15 +104,15 @@ Etki alanına katmak istediğiniz bir VM zaten varsa, [VM 'yi yönetilen etki al
 
 1. Sonra, sanal ağ penceresinin sol menüsünde **alt ağlar**' ı seçin, sonra da **+ alt** ağ ' i seçerek alt ağ ekleyin.
 
-1. **+ Alt ağ**' ı seçin ve ardından alt ağ için *Yönetim*gibi bir ad girin. *10.0.5.0/24*gibi bir **adres aralığı (CIDR bloğu)** sağlayın. Bu IP adresi aralığının diğer mevcut Azure veya şirket içi adres aralıklarıyla çakışmadığından emin olun. Diğer seçenekleri varsayılan değerler olarak bırakın ve **Tamam**' ı seçin.
+1. **+ Alt ağ**' ı seçin ve ardından alt ağ için *Yönetim* gibi bir ad girin. *10.0.5.0/24* gibi bir **adres aralığı (CIDR bloğu)** sağlayın. Bu IP adresi aralığının diğer mevcut Azure veya şirket içi adres aralıklarıyla çakışmadığından emin olun. Diğer seçenekleri varsayılan değerler olarak bırakın ve **Tamam**' ı seçin.
 
     ![Azure portal alt ağ yapılandırması oluşturma](./media/join-windows-vm/create-subnet.png)
 
 1. Alt ağın oluşturulması birkaç saniye sürer. Oluşturulduktan sonra alt ağ penceresini kapatmak için *X* ' i seçin.
-1. **Ağ** bölmesine geri döndüğünüzde, bir VM oluşturmak için, *Yönetim*gibi açılan menüden oluşturduğunuz alt ağı seçin. Yine, doğru alt ağı seçtiğinizden ve VM 'nizi yönetilen etki alanı ile aynı alt ağda dağıttığınızdan emin olun.
-1. **Genel IP**için, açılan menüden *hiçbiri* ' ni seçin. Bu öğreticide Azure savunma 'yı kullanarak yönetime bağlandığınızda, VM 'ye atanmış bir genel IP adresine ihtiyacınız yoktur.
+1. **Ağ** bölmesine geri döndüğünüzde, bir VM oluşturmak için, *Yönetim* gibi açılan menüden oluşturduğunuz alt ağı seçin. Yine, doğru alt ağı seçtiğinizden ve VM 'nizi yönetilen etki alanı ile aynı alt ağda dağıttığınızdan emin olun.
+1. **Genel IP** için, açılan menüden *hiçbiri* ' ni seçin. Bu öğreticide Azure savunma 'yı kullanarak yönetime bağlandığınızda, VM 'ye atanmış bir genel IP adresine ihtiyacınız yoktur.
 1. Diğer seçenekleri varsayılan değerler olarak bırakın ve sonra **Yönetim**' i seçin.
-1. **Önyükleme tanılamayı** *kapalı*olarak ayarlayın. Diğer seçenekleri varsayılan değerler olarak bırakın ve ardından **gözden geçir + oluştur**' u seçin.
+1. **Önyükleme tanılamayı** *kapalı* olarak ayarlayın. Diğer seçenekleri varsayılan değerler olarak bırakın ve ardından **gözden geçir + oluştur**' u seçin.
 1. VM ayarlarını gözden geçirin ve ardından **Oluştur**' u seçin.
 
 VM 'nin oluşturulması birkaç dakika sürer. Azure portal dağıtımın durumunu gösterir. VM çalışmaya başladıktan sonra **Kaynağa Git**' i seçin.
@@ -139,7 +139,7 @@ Gerekirse, Web tarayıcınızın görüntülenecek savunma bağlantısı için a
 
 Oluşturulan VM ve Azure savunma kullanılarak oluşturulan Web tabanlı bir RDP bağlantısı ile, artık Windows Server sanal makinesini yönetilen etki alanına katalım. Bu işlem, düzenli bir şirket içi Active Directory Domain Services etki alanına bağlanan bir bilgisayarla aynıdır.
 
-1. **Sunucu Yöneticisi** sanal makinede oturum açtığınızda varsayılan olarak açılmazsa **Başlat** menüsünü ve ardından **Sunucu Yöneticisi**öğesini seçin.
+1. **Sunucu Yöneticisi** sanal makinede oturum açtığınızda varsayılan olarak açılmazsa **Başlat** menüsünü ve ardından **Sunucu Yöneticisi** öğesini seçin.
 1. **Sunucu Yöneticisi** penceresinin sol bölmesinde **yerel sunucu**' yı seçin. Sağ bölmedeki **Özellikler** altında **çalışma grubu**' nu seçin.
 
     ![VM üzerinde Sunucu Yöneticisi açın ve çalışma grubu özelliğini düzenleyin](./media/join-windows-vm/server-manager.png)
@@ -157,8 +157,8 @@ Oluşturulan VM ve Azure savunma kullanılarak oluşturulan Web tabanlı bir RDP
     Hesap kimlik bilgileri, aşağıdaki yollarla belirtilebilir:
 
     * **UPN biçimi** (önerilir)-Kullanıcı hesabı IÇIN Azure AD 'de yapılandırıldığı şekilde Kullanıcı asıl adı (UPN) sonekini girin. Örneğin, *contosoadmin* kullanıcısının UPN son eki olacaktır `contosoadmin@aaddscontoso.onmicrosoft.com` . UPN biçiminin *sAMAccountName* biçimi yerine etki alanında oturum açmak için güvenilir bir şekilde kullanılabilecek, yaygın olarak kullanılan birkaç kullanım durumu vardır:
-        * Bir kullanıcının UPN öneki uzunsa ( *deehasareallylongname*gibi), *sAMAccountName* otomatik olarak oluşturulabilir.
-        * Birden çok Kullanıcı Azure AD kiracınızda, *Dee*gıbı aynı UPN ön ekine sahip Ise, *sAMAccountName* biçimleri otomatik olarak oluşturulabilir.
+        * Bir kullanıcının UPN öneki uzunsa ( *deehasareallylongname* gibi), *sAMAccountName* otomatik olarak oluşturulabilir.
+        * Birden çok Kullanıcı Azure AD kiracınızda, *Dee* gıbı aynı UPN ön ekine sahip Ise, *sAMAccountName* biçimleri otomatik olarak oluşturulabilir.
     * **SAMAccountName biçimi** -hesap adını *sAMAccountName* biçiminde girin. Örneğin, *contosoadmin* kullanıcısının *sAMAccountName* 'ı olacaktır `AADDSCONTOSO\contosoadmin` .
 
 1. Yönetilen etki alanına katılması birkaç saniye sürer. Bu tamamlandığında, şu ileti size etki alanına gönderilir:
@@ -184,7 +184,7 @@ Sonraki öğreticide, yönetilen etki alanını yönetmenize olanak sağlayan y�
 
 ### <a name="unjoin-the-vm-from-the-managed-domain"></a>VM 'nin yönetilen etki alanından ayrılma
 
-VM 'yi yönetilen etki alanından kaldırmak için adımları tekrar izleyerek [VM 'yi bir etki alanına katın](#join-the-vm-to-the-managed-domain). Yönetilen etki alanına katılmak yerine, varsayılan *çalışma grubu*gibi bir çalışma grubuna katılmayı seçin. VM yeniden başlatıldıktan sonra, bilgisayar nesnesi yönetilen etki alanından kaldırılır.
+VM 'yi yönetilen etki alanından kaldırmak için adımları tekrar izleyerek [VM 'yi bir etki alanına katın](#join-the-vm-to-the-managed-domain). Yönetilen etki alanına katılmak yerine, varsayılan *çalışma grubu* gibi bir çalışma grubuna katılmayı seçin. VM yeniden başlatıldıktan sonra, bilgisayar nesnesi yönetilen etki alanından kaldırılır.
 
 VM 'yi etki alanından çıkmadan [silerseniz](#delete-the-vm) , yalnız bırakılmış bir bilgisayar nesnesi Azure AD DS ' de bırakılır.
 
@@ -193,8 +193,8 @@ VM 'yi etki alanından çıkmadan [silerseniz](#delete-the-vm) , yalnız bırak�
 Bu Windows Server VM 'yi kullanmıyorsanız, aşağıdaki adımları kullanarak VM 'yi silin:
 
 1. Sol taraftaki menüden **kaynak grupları** ' nı seçin.
-1. Kaynak grubunuzu ( *Myresourcegroup*gibi) seçin.
-1. VM 'nizi ( *Myvm*gibi) seçip **Sil**' i seçin. Kaynak silme işlemini onaylamak için **Evet** ' i seçin. VM 'nin silinmesi birkaç dakika sürer.
+1. Kaynak grubunuzu ( *Myresourcegroup* gibi) seçin.
+1. VM 'nizi ( *Myvm* gibi) seçip **Sil**' i seçin. Kaynak silme işlemini onaylamak için **Evet** ' i seçin. VM 'nin silinmesi birkaç dakika sürer.
 1. VM silindiğinde, işletim sistemi diski, ağ arabirimi kartı ve *Myvm-* prefix ile diğer tüm kaynakları seçin ve silin.
 
 ## <a name="troubleshoot-domain-join-issues"></a>Etki alanına ekleme sorunlarını giderme
@@ -246,5 +246,5 @@ Yönetilen etki alanınızı yönetmek için Active Directory Yönetim Merkezi (
 [vnet-peering]: ../virtual-network/virtual-network-peering-overview.md
 [password-sync]: ./tutorial-create-instance.md
 [add-computer]: /powershell/module/microsoft.powershell.management/add-computer
-[azure-bastion]: ../bastion/bastion-create-host-portal.md
+[azure-bastion]: ../bastion/tutorial-create-host-portal.md
 [set-azvmaddomainextension]: /powershell/module/az.compute/set-azvmaddomainextension

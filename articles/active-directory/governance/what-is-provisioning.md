@@ -11,12 +11,12 @@ ms.date: 10/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ef6f6068bce7a676e55eca10ae9198b2238a143
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 640367d1b833f61e8a83fe9ce6b14d6d799cf9b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135451"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172461"
 ---
 # <a name="what-is-provisioning"></a>Sağlama nedir?
 
@@ -59,7 +59,7 @@ Daha fazla bilgi için bkz. [İK odaklı sağlama nedir?](what-is-hr-driven-prov
 
 ![uygulama sağlama](media/what-is-provisioning/cloud-3b.png)
 
-Azure AD 'de, **[uygulama sağlama](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)** terimi, kullanıcıların erişim ihtiyacı olan uygulamalarda, kendi veri deposuna sahip olan uygulamalar Için, Azure ad veya Active Directory birbirinden farklı şekilde kullanıcı kimliklerinin kopyalarını otomatik olarak oluşturmayı ifade eder. Kullanıcı kimlikleri oluşturmaya ek olarak, uygulama sağlama, kullanıcının durumu veya rolleri değiştikçe, bu uygulamalardan Kullanıcı kimliklerinin bakımını ve kaldırılmasını içerir. Yaygın senaryolar, bu uygulamaların her biri Azure AD 'den farklı olan kendi Kullanıcı deposuna sahip olduğu için [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial), [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial), [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)gibi uygulamalarda bir Azure AD kullanıcısı sağlamayı içerir.
+Azure AD 'de, **[uygulama sağlama](../app-provisioning/user-provisioning.md)** terimi, kullanıcıların erişim ihtiyacı olan uygulamalarda, kendi veri deposuna sahip olan uygulamalar Için, Azure ad veya Active Directory birbirinden farklı şekilde kullanıcı kimliklerinin kopyalarını otomatik olarak oluşturmayı ifade eder. Kullanıcı kimlikleri oluşturmaya ek olarak, uygulama sağlama, kullanıcının durumu veya rolleri değiştikçe, bu uygulamalardan Kullanıcı kimliklerinin bakımını ve kaldırılmasını içerir. Yaygın senaryolar, bu uygulamaların her biri Azure AD 'den farklı olan kendi Kullanıcı deposuna sahip olduğu için [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md), [Salesforce](../saas-apps/salesforce-provisioning-tutorial.md), [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md)gibi uygulamalarda bir Azure AD kullanıcısı sağlamayı içerir.
 
 Daha fazla bilgi için bkz. [uygulama sağlama nedir?](what-is-app-provisioning.md)
 
@@ -80,4 +80,4 @@ Daha fazla bilgi için bkz. [Inter-Directory sağlama nedir?](what-is-inter-dire
 - [Kimlik yaşam döngüsü yönetimi nedir?](what-is-identity-lifecycle-management.md)
 - [HR odaklı sağlama nedir?](what-is-hr-driven-provisioning.md)
 - [Uygulama sağlama nedir?](what-is-app-provisioning.md)
-- [Dizin içi sağlama nedir?](what-is-inter-directory-provisioning.md)
+- [Dizinler arası sağlama nedir?](what-is-inter-directory-provisioning.md)
