@@ -5,12 +5,12 @@ ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.topic: how-to
 ms.date: 04/28/2020
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: c7dc18d8186d7262154cc0718bb6ad77ebbb5d2e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 907836b0e45ccc9e9481e605b1ebf4180f7650d6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85829848"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182589"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Azure Cosmos DB tarafından tetiklenen bir işlev oluşturma
 
@@ -18,7 +18,7 @@ Azure Cosmos DB’de veri eklendiğinde veya değiştirildiğinde tetiklenen bir
 
 :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/quickstart-completed.png" alt-text="Azure Cosmos DB kodu":::
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -50,7 +50,7 @@ Ardından, yeni işlev uygulamasında bir işlev oluşturun.
 
 1. **Yeni işlev** sayfasında, `cosmos` Arama alanına girin ve sonra **Azure Cosmos DB tetikleyici** şablonunu seçin.
 
-   :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-choose-cosmos.png" alt-text="Azure Cosmos DB kodu":::
+   :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-choose-cosmos.png" alt-text="Azure portal işlevler sayfası":::
 
 
 1. Yeni tetikleyiciyi aşağıdaki tabloda belirtilen ayarlarla yapılandırın:
@@ -64,7 +64,7 @@ Ardından, yeni işlev uygulamasında bir işlev oluşturun.
     | **Kiralamalar için koleksiyon adı** | leases | Kiralamaları depolayacak koleksiyonun adı. |
     | **Yoksa kira koleksiyonu oluştur** | Evet | Kira koleksiyonunun varlığını denetler ve otomatik olarak oluşturur. |
 
-    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png" alt-text="Azure Cosmos DB kodu":::
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png" alt-text="Azure Cosmos DB tarafından tetiklenen işlevi oluşturma":::
 
 1. **İşlev Oluştur**'u seçin. 
 
@@ -72,7 +72,7 @@ Ardından, yeni işlev uygulamasında bir işlev oluşturun.
 
 1. Şablon tabanlı işlev kodunu göstermek için **Code + test**' i seçin.
 
-    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-cosmosdb-template.png" alt-text="Azure Cosmos DB kodu":::
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-cosmosdb-template.png" alt-text="C# dilinde Cosmos DB işlev şablonu":::
 
     Bu işlev şablonu, günlüklere belge sayısını ve ilk belgenin kimliğini yazar.
 
@@ -88,9 +88,9 @@ Sonra, Azure Cosmos DB hesabınıza bağlanıp `Items` kapsayıcıyı `Tasks` ve
 
 1. Azure Cosmos DB hesabınızı seçin ve ardından **Veri Gezgini**’ni seçin. 
 
-1. **SQL API 'si**altında **Görevler** veritabanı ' nı seçin ve **yeni kapsayıcı**' yı seçin.
+1. **SQL API 'si** altında **Görevler** veritabanı ' nı seçin ve **yeni kapsayıcı**' yı seçin.
 
-    ![Bir kapsayıcı oluşturma](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-container.png)
+    ![Kapsayıcı oluşturma](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-container.png)
 
 1. **Kapsayıcı Ekle**' de, görüntünün altındaki tabloda gösterilen ayarları kullanın. 
 
@@ -100,7 +100,7 @@ Sonra, Azure Cosmos DB hesabınıza bağlanıp `Items` kapsayıcıyı `Tasks` ve
     | ---|---|--- |
     | **Veritabanı Kimliği** | Görevler |Yeni veritabanınızın adı. Bu, işlev bağlamanızda tanımlanan adla eşleşmelidir. |
     | **Kapsayıcı Kimliği** | Öğeler | Yeni kapsayıcının adı. Bu, işlev bağlamanızda tanımlanan adla eşleşmelidir.  |
-    | **[Bölüm anahtarı](../cosmos-db/partition-data.md)** | /kategori|Verileri her bölüme eşit şekilde dağıtan bir bölüm anahtarı. Doğru bölüm anahtarının seçilmesi, bir performanslı kapsayıcı oluşturmak için önemlidir. | 
+    | **[Bölüm anahtarı](../cosmos-db/partitioning-overview.md)** | /kategori|Verileri her bölüme eşit şekilde dağıtan bir bölüm anahtarı. Doğru bölüm anahtarının seçilmesi, bir performanslı kapsayıcı oluşturmak için önemlidir. | 
     | **İşleme hızı** |400 RU| Varsayılan değeri kullanın. Daha sonra gecikme süresini azaltmak isterseniz işlem hızının ölçeğini artırabilirsiniz. |    
 
 1. Öğeler kapsayıcısını oluşturmak için **Tamam** ' ı tıklatın. Kapsayıcının oluşturulması kısa bir zaman alabilir.
@@ -111,7 +111,15 @@ Sonra, Azure Cosmos DB hesabınıza bağlanıp `Items` kapsayıcıyı `Tasks` ve
 
 1. Veri Gezgini yeni **öğeler** kapsayıcısını genişletin, **öğeler**' i seçin ve sonra **Yeni öğe**' yi seçin.
 
-    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png" alt-text="Azure Cosmos DB kodu"
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png" alt-text="Öğeler kapsayıcısında bir öğe oluşturma":::
+
+1. Yeni öğenin içeriğini aşağıdaki içerikle değiştirin ve ardından **Kaydet**' i seçin.
+
+    ```yaml
+    {
+        "id": "task1",
+        "category": "general",
+        "description": "some task"
     }
     ```
 

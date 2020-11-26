@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 846599414c0bca95a3f41e127dc01e06d0fd43f9
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 30481fee949df16c70718d0a9cbc6df9ca54d11e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747095"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182555"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Linux üzerinde özel kapsayıcı kullanarak bir işlev oluşturma
 
@@ -18,7 +18,7 @@ Bu öğreticide, bir Linux temel görüntüsü kullanarak kodunuzu oluşturup Az
 
 İşlev kodunuzu özel bir Linux kapsayıcısında dağıtmak [Premium plan](functions-premium-plan.md#features) veya [adanmış (App Service) bir plan](functions-scale.md#app-service-plan) barındırmayı gerektirir. Bu öğreticiyi tamamlamak, Azure hesabınızda birkaç ABD Doları ücretlerinden oluşur ve bu işlem tamamlandığında [kaynakları temizleyerek](#clean-up-resources) en aza indirmenize neden olur.
 
-[Linux üzerinde barındırılan ilk işlevinizi oluşturma](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python)konusunda açıklandığı gibi varsayılan bir Azure App Service kapsayıcısını de kullanabilirsiniz. Azure Işlevleri için desteklenen temel görüntüler, [Azure işlevleri temel görüntüler](https://hub.docker.com/_/microsoft-azure-functions-base)deposunda bulunur.
+[Linux üzerinde barındırılan ilk işlevinizi oluşturma](./create-first-function-cli-csharp.md?pivots=programming-language-python)konusunda açıklandığı gibi varsayılan bir Azure App Service kapsayıcısını de kullanabilirsiniz. Azure Işlevleri için desteklenen temel görüntüler, [Azure işlevleri temel görüntüler](https://hub.docker.com/_/microsoft-azure-functions-base)deposunda bulunur.
 
 Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
@@ -189,7 +189,7 @@ Görüntü yerel kapsayıcıda çalışmaya başladıktan sonra, bir tarayıcı 
 Görüntü yerel kapsayıcıda çalışmaya başladıktan sonra, `http://localhost:8080/api/HttpExample?name=Functions` daha önce olduğu gibi aynı "Merhaba" iletisini görüntülemesi gereken öğesine gidin. Maven arşiv ETYPE, anonim yetkilendirme kullanan bir HTTP ile tetiklenen bir işlev oluşturduğundan, kapsayıcıda çalışıyor olsa bile işlevi çağırabilirsiniz. 
 ::: zone-end  
 
-Kapsayıcıda işlev uygulamasını doğruladıktan sonra, **CTRL** C ile Docker 'ı durdurun + **C** .
+Kapsayıcıda işlev uygulamasını doğruladıktan sonra, **CTRL** C ile Docker 'ı durdurun + **C**.
 
 ## <a name="push-the-image-to-docker-hub"></a>Görüntüyü Docker Hub 'a gönderme
 
@@ -306,12 +306,12 @@ Azure 'da işlev uygulamasına dağıtılan görüntü ile, artık işlevi HTTP 
 
     1. Doğrulamak istediğiniz işlevi seçin.
 
-    1. Sol gezinti panelinde **işlevler** ' i seçin ve ardından doğrulamak istediğiniz işlevi seçin.
+    1. Sol gezinti panelinde **işlevler**' i seçin ve ardından doğrulamak istediğiniz işlevi seçin.
 
         ![Azure portal işlevinizi seçin](./media/functions-create-function-linux-custom-image/functions-portal-select-function.png)   
 
     
-    1. **Işlev URL 'Sini al** ' ı seçin.
+    1. **Işlev URL 'Sini al**' ı seçin.
 
         ![Azure portal işlev URL 'sini alın](./media/functions-create-function-linux-custom-image/functions-portal-get-function-url.png)   
 
@@ -375,7 +375,7 @@ Kayıt defterinde görüntüyü güncelleştirdiğinizde bir görüntü dağıt�
 
 1. Dağıtım Web kancası URL 'sini panoya kopyalayın.
 
-1. [Docker Hub 'ını](https://hub.docker.com/)açın, oturum açın ve gezinti çubuğunda **depolar** ' ı seçin. Görüntü bulun ve seçin, **Web kancaları** sekmesini seçin, **Web kancası adı** belirtin, URL 'nizi **Web kancası URL 'sine** yapıştırın ve sonra **Oluştur** ' u seçin:
+1. [Docker Hub 'ını](https://hub.docker.com/)açın, oturum açın ve gezinti çubuğunda **depolar** ' ı seçin. Görüntü bulun ve seçin, **Web kancaları** sekmesini seçin, **Web kancası adı** belirtin, URL 'nizi **Web kancası URL 'sine** yapıştırın ve sonra **Oluştur**' u seçin:
 
     ![Web kancasını DockerHub depoya ekleme](./media/functions-create-function-linux-custom-image/dockerhub-set-continuous-webhook.png)  
 
@@ -441,7 +441,7 @@ SSH, kapsayıcı ile istemci arasında güvenli iletişime olanak tanır. SSH et
 
 ## <a name="write-to-an-azure-storage-queue"></a>Azure depolama kuyruğuna yazma
 
-Azure Işlevleri, kendi tümleştirme kodunuzu yazmak zorunda kalmadan işlevlerinizi diğer Azure hizmetleri ve kaynaklarına bağlamanıza olanak tanır. Hem giriş hem de çıktıyı temsil eden bu *bağlamalar* , işlev tanımı içinde bildirilmiştir. Bağlamalardan alınan veriler işleve parametre olarak sağlanır. *Tetikleyici* özel bir giriş bağlama türüdür. Bir işlevde yalnızca bir tetikleyici olsa da, birden çok giriş ve çıkış bağlaması olabilir. Daha fazla bilgi için bkz. [Azure işlevleri Tetikleyicileri ve bağlamaları kavramları](functions-triggers-bindings.md).
+Azure Işlevleri, kendi tümleştirme kodunuzu yazmak zorunda kalmadan işlevlerinizi diğer Azure hizmetleri ve kaynaklarına bağlamanıza olanak tanır. Hem giriş hem de çıktıyı temsil eden bu *bağlamalar*, işlev tanımı içinde bildirilmiştir. Bağlamalardan alınan veriler işleve parametre olarak sağlanır. *Tetikleyici* özel bir giriş bağlama türüdür. Bir işlevde yalnızca bir tetikleyici olsa da, birden çok giriş ve çıkış bağlaması olabilir. Daha fazla bilgi için bkz. [Azure işlevleri Tetikleyicileri ve bağlamaları kavramları](functions-triggers-bindings.md).
 
 Bu bölümde, işlevinizi bir Azure depolama kuyruğu ile tümleştirme işlemi gösterilmektedir. Bu işleve eklediğiniz çıkış bağlaması, verileri bir HTTP isteğinden kuyruktaki bir iletiye yazar.
 

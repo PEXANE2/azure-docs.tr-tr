@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: fe2d09315dcb2a0958f8a1b8efe7532c64c111d8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: ab729460a676bb5daa8860b3b4a837ec276fc5db
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966556"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182350"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için ServiceNow 'ı yapılandırma
 
@@ -36,7 +36,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Servic
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
 * [Bir Azure AD kiracısı](../develop/quickstart-create-new-tenant.md) 
-* Azure AD'de hazırlama [iznine](../users-groups-roles/directory-assign-admin-roles.md) sahip bir kullanıcı hesabı (Uygulama Yöneticisi, Bulut Uygulaması Yöneticisi, Uygulama Sahibi veya Genel Yönetici). 
+* Azure AD'de hazırlama [iznine](../roles/permissions-reference.md) sahip bir kullanıcı hesabı (Uygulama Yöneticisi, Bulut Uygulaması Yöneticisi, Uygulama Sahibi veya Genel Yönetici). 
 * Calgary veya üzeri bir [ServiceNow örneği](https://www.servicenow.com/)
 * Helsinki veya üzeri bir [ServiceNow Express örneği](https://www.servicenow.com/)
 * Yönetim rolüyle ServiceNow 'da bir kullanıcı hesabı

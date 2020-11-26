@@ -14,12 +14,12 @@ ms.date: 03/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f82314b0a4e16829b4c192a14fae7f24875365d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a632c0e31de1c2d7e5417656d537e5f9f82ecfbe
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359620"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180498"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure AD rolleri için güvenlik uyarılarını yapılandırma
 
@@ -30,7 +30,7 @@ Privileged Identity Management (PıM), Azure Active Directory (Azure AD) kurulu�
 2019 Kasım 'Dan başlayarak Privileged Identity Management Azure AD rolleri bölümü, Azure Kaynak rolleri deneyimleriyle eşleşen yeni bir sürüme güncelleştiriliyor. Bu, ek özellikleri [ve var olan API üzerinde yapılan değişiklikleri](azure-ad-roles-features.md#api-changes)de oluşturur. Yeni sürüm kullanıma sunulurken, bu makalede izlediğiniz yordamlar Şu anda sahip olduğunuz Privileged Identity Management sürümüne bağlıdır. Hangi Privileged Identity Management sürümünü istediğinizi öğrenmek için bu bölümdeki adımları izleyin. Privileged Identity Management Sürümünüzü öğrendikten sonra bu makaledeki sürümle eşleşen yordamları seçebilirsiniz.
 
 1. [Ayrıcalıklı rol yöneticisi](../roles/permissions-reference.md#privileged-role-administrator) rolünde olan bir kullanıcıyla [Azure Portal](https://portal.azure.com/) oturum açın.
-1. **Azure AD Privileged Identity Management**açın. Genel Bakış sayfasının üst kısmında yer alan bir başlık varsa, bu makalenin **Yeni sürüm** sekmesinde yer alan yönergeleri izleyin. Aksi takdirde, **önceki sürüm** sekmesindeki yönergeleri izleyin.
+1. **Azure AD Privileged Identity Management** açın. Genel Bakış sayfasının üst kısmında yer alan bir başlık varsa, bu makalenin **Yeni sürüm** sekmesinde yer alan yönergeleri izleyin. Aksi takdirde, **önceki sürüm** sekmesindeki yönergeleri izleyin.
 
   [![Azure AD > Privileged Identity Management seçin.](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
@@ -186,7 +186,7 @@ Bu bölümde, Azure AD rolleri için tüm güvenlik uyarıları ve nasıl düzel
 | **Nasıl düzeltilir?** | Listedeki hesapları gözden geçirin. Artık erişim gerekmiyorsa, bunları ayrıcalıklı rollerden kaldırın. |
 | **Önleme** | Parolayı bilen kullanıcılarda değişiklik olduğunda, paylaşılan hesapların güçlü parolalar döndürürken emin olun. </br>[Erişim gözden geçirmeleri](pim-how-to-start-security-review.md) kullanarak ayrıcalıklı rollere sahip hesapları düzenli olarak gözden geçirin ve artık gerekmeyen rol atamalarını kaldırın. |
 | **Portalın risk azaltma eylemi** | Hesabı ayrıcalıklı rolünden kaldırır. |
-| **En iyi uygulamalar** | Bir parola kullanarak kimlik doğrulayan ve genel yönetici veya güvenlik yöneticisi gibi son derece ayrıcalıklı yönetim rollerine atanan paylaşılan, hizmet ve acil durum erişim hesapları, parolalarının aşağıdaki durumlar için döndürülmelidir:<ul><li>Bir güvenlik olayından sonra yönetim erişimi haklarının kötüye kullanımını veya güvenliğinin aşılmasına neden olacak şekilde</li><li>Herhangi bir kullanıcının ayrıcalıkları, artık yönetici kalmayacak şekilde değiştirildikten sonra (örneğin, yönetici olan bir çalışan, veya kuruluştan ayrıldıktan sonra)</li><li>Düzenli aralıklarla (örneğin, üç aylık veya yıllık), bilinen bir ihlal olmaması veya BT ekip üzerinde değişiklik yapılmasa bile</li></ul>Birden çok kişinin bu hesapların kimlik bilgilerine erişimi olduğundan, rollerinin bırakılmış kişilerin hesaplara artık erişememesini sağlamak için kimlik bilgileri döndürülmelidir. [Daha fazla bilgi edinin](../users-groups-roles/directory-admin-roles-secure.md) |
+| **En iyi uygulamalar** | Bir parola kullanarak kimlik doğrulayan ve genel yönetici veya güvenlik yöneticisi gibi son derece ayrıcalıklı yönetim rollerine atanan paylaşılan, hizmet ve acil durum erişim hesapları, parolalarının aşağıdaki durumlar için döndürülmelidir:<ul><li>Bir güvenlik olayından sonra yönetim erişimi haklarının kötüye kullanımını veya güvenliğinin aşılmasına neden olacak şekilde</li><li>Herhangi bir kullanıcının ayrıcalıkları, artık yönetici kalmayacak şekilde değiştirildikten sonra (örneğin, yönetici olan bir çalışan, veya kuruluştan ayrıldıktan sonra)</li><li>Düzenli aralıklarla (örneğin, üç aylık veya yıllık), bilinen bir ihlal olmaması veya BT ekip üzerinde değişiklik yapılmasa bile</li></ul>Birden çok kişinin bu hesapların kimlik bilgilerine erişimi olduğundan, rollerinin bırakılmış kişilerin hesaplara artık erişememesini sağlamak için kimlik bilgileri döndürülmelidir. [Daha fazla bilgi edinin](../roles/security-planning.md) |
 
 ### <a name="roles-are-being-assigned-outside-of-privileged-identity-management"></a>Roller Privileged Identity Management dışında atanıyor
 

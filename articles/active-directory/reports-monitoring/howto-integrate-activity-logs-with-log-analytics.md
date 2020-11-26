@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01f762ef1fa3a997c01873df02abf87362b8c06f
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 85e6a66f4520f12278266203211e1d1ae224c97f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92055962"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180464"
 ---
 # <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>Azure AD günlüklerini Azure Izleyici günlükleriyle tümleştirme
 
@@ -46,7 +46,7 @@ Daha fazla analiz için denetim etkinlik günlüklerini ve oturum açma etkinli�
 
 * **Denetim günlükleri**: [Denetim günlükleri etkinlik raporu](concept-audit-logs.md), kiracınızda gerçekleştirilen her görevin geçmişine erişmenizi sağlar.
 * **Oturum açma günlükleri**: [Oturum açma işlemleri etkinlik raporuyla](concept-sign-ins.md), denetim günlüklerinde bildirilen görevleri kimlerin gerçekleştirdiğini saptayabilirsiniz.
-* **Sağlama günlükleri**: [sağlama günlükleri](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics)ile, tüm üçüncü taraf uygulamalarınızda oluşturulan, güncellenen ve sildiğiniz kullanıcıları izleyebilirsiniz. 
+* **Sağlama günlükleri**: [sağlama günlükleri](../app-provisioning/application-provisioning-log-analytics.md)ile, tüm üçüncü taraf uygulamalarınızda oluşturulan, güncellenen ve sildiğiniz kullanıcıları izleyebilirsiniz. 
 
 > [!NOTE]
 > B2C ile ilgili denetim ve oturum açma işlemleri etkinlik günlükleri şu an için desteklenmemektedir.
@@ -67,9 +67,9 @@ Bu özelliğin kullanılması için Azure AD Premium P1 veya P2 lisansı gerekir
 
 ## <a name="send-logs-to-azure-monitor"></a>Günlükleri Azure Izleyici 'ye gönderme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
+1. [Azure Portal](https://portal.azure.com) oturum açın. 
 
-2. **Azure Active Directory**  >  **Tanılama ayarlarını**Azure Active Directory  ->  **Tanılama ayarı Ekle**' yi seçin. Tanılama ayarları yapılandırma sayfasına ulaşmak için **Denetim günlükleri** veya **oturum açma** sayfasından **ayarları dışarı aktar** ' ı da seçebilirsiniz.  
+2. **Azure Active Directory**  >  **Tanılama ayarlarını** Azure Active Directory  ->  **Tanılama ayarı Ekle**' yi seçin. Tanılama ayarları yapılandırma sayfasına ulaşmak için **Denetim günlükleri** veya **oturum açma** sayfasından **ayarları dışarı aktar** ' ı da seçebilirsiniz.  
     
 3. **Tanılama ayarları** menüsünde **Log Analytics çalışma alanına gönder** onay kutusunu seçin ve ardından **Yapılandır**' ı seçin.
 

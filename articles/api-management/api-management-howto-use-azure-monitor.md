@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 2317e61111c3ad328e8f112e7d9567f3f5d47990
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 031b3bfd30e0272589c5c7ee2c546b9459767b33
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997061"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183201"
 ---
 # <a name="tutorial-monitor-published-apis"></a>Öğretici: yayımlanan API 'Leri Izleme
 
@@ -27,7 +27,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > * Etkinlik günlüklerini görüntüleme
 > * Kaynak günlüklerini etkinleştirme ve görüntüleme
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 + [Azure API Management terminolojisini](api-management-terminology.md) öğrenin.
 + Şu hızlı başlangıcı tamamlayın: [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
@@ -90,7 +90,7 @@ Bir istek ölçüsüne göre örnek bir uyarı kuralı yapılandırmak için:
 
 1. Uyarı kuralının adını ve açıklamasını girip önem derecesini seçin. 
 1. **Uyarı kuralı oluşturma**’yı seçin.
-1. Şimdi, bir API anahtarı olmadan konferans API 'sini çağırarak uyarı kuralını test edin. Örnek:
+1. Şimdi, bir API anahtarı olmadan konferans API 'sini çağırarak uyarı kuralını test edin. Örneğin:
 
     ```bash
     curl GET https://apim-hello-world.azure-api.net/conference/speakers HTTP/1.1 
@@ -149,7 +149,7 @@ Log Analytics çalışma alanında GatewayLogs veya ölçümler koleksiyonunu et
 
     :::image type="content" source="media/api-management-howto-use-azure-monitor/logs-menu-item.png" alt-text="Izleme menüsündeki Günlükler öğesinin ekran görüntüsü":::
 
-Verileri görüntülemek için sorguları çalıştırın. Birkaç [örnek sorgu](../azure-monitor/log-query/saved-queries.md) sağlanır veya kendi kendinize çalıştırılır. Örneğin, aşağıdaki sorgu, GatewayLogs tablosundan en son 24 saat verileri alır:
+Verileri görüntülemek için sorguları çalıştırın. Birkaç [örnek sorgu](../azure-monitor/log-query/example-queries.md) sağlanır veya kendi kendinize çalıştırılır. Örneğin, aşağıdaki sorgu, GatewayLogs tablosundan en son 24 saat verileri alır:
 
 ```kusto
 ApiManagementGatewayLogs
@@ -158,7 +158,7 @@ ApiManagementGatewayLogs
 
 API Management için kaynak günlüklerini kullanma hakkında daha fazla bilgi için bkz.:
 
-* [Azure izleyici Log Analytics kullanmaya başlayın](../azure-monitor/log-query/get-started-portal.md)veya [Log Analytics demo ortamını](https://portal.loganalytics.io/demo)deneyin.
+* [Azure izleyici Log Analytics kullanmaya başlayın](../azure-monitor/log-query/log-analytics-tutorial.md)veya [Log Analytics demo ortamını](https://portal.loganalytics.io/demo)deneyin.
 
 * [Azure izleyici 'de günlük sorgularına genel bakış](../azure-monitor/log-query/log-query-overview.md).
 

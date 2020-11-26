@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: memildin
-ms.openlocfilehash: 7f5f920f14a556d63f433b36658d7b265d51a28d
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 033f06aa61baf04b5c74fbbe9cc8f925d5d4e3d3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340385"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182317"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenlik uyarıları
 
@@ -25,7 +25,7 @@ Güvenlik uyarıları, gelişmiş algılamalar tarafından tetiklenir ve yalnız
 
 ## <a name="respond-to-todays-threats"></a>Bugünün tehditlerine <a name="respond-threats"> </a> yanıt verme
 
-Son 20 yılda tehdit kapsamında önemli değişiklikler olmuştur. Geçmişte, şirketler genellikle "neler yapabileceklerini" görmekte olan bireysel saldırganlar tarafından yalnızca Web sitesi savunma hakkında endişelenmek zorunda kalmıştı. Günümüzde saldırganlar çok daha gelişmiş ve düzenlenmiştir. Saldırganlar genellikle belirli finansal ve stratejik hedeflere sahiptir. Ayrıca, ulus devletler veya organize suç örgütleri tarafından finanse edilebildiklerinden ellerinde daha fazla kaynak bulunmaktadır.
+Son 20 yılda tehdit kapsamında önemli değişiklikler olmuştur. Geçmişte, şirketler genellikle "neler yapabileceklerini" görmekte olan bireysel saldırganlar tarafından yalnızca Web sitesi savunma hakkında endişelenmek zorunda kalmıştı. Günümüzde saldırganlar çok daha gelişmiş ve düzenlenmiştir. Saldırganlar genellikle belirli finansal ve stratejik hedeflere sahiptir. Ayrıca, bu kaynaklar, nasyon durumları veya düzenlenmiş SUI tarafından komik olabileceği için daha fazla kaynak kullanabilir.
 
 Bu değişen bu değişiklik, saldırgan derecelendirmelerinin dışı bir professionalism düzeyine kadar LED 'e sahiptir. Saldırganlar artık web tahrifatı ile ilgilenmemektedir. Bunlar artık bilgileri, finansal hesapları ve özel verileri çalmaya ve bunların tümünün açık pazar üzerinde nakit oluşturmak veya belirli bir iş, siyasi veya askeri bir konumdan yararlanmak için kullanabileceği bir şekilde ilgileniyor. Mali hedefleri olan saldırganlardan çok daha fazla endişe verici olan ise altyapıya ve insanlara zarar vermek için ağları ihlal eden saldırganlardır.
 
@@ -67,12 +67,12 @@ Güvenlik Merkezi, her uyarıya katılma sırasını önceliklendirmenize yardı
 > Uyarı önem derecesi, Portal 'da ve 01-01-2019 ön tarihlik REST API sürümlerinde farklı şekilde görüntülenir. API 'nin eski bir sürümünü kullanıyorsanız, aşağıda açıklanan tutarlı deneyime yükseltin.
 
 - **Yüksek:** Kaynağınızın güvenliğinin tehlikeye girdiği büyük bir olasılık vardır. Hemen bir yere bakmanız gerekir. Güvenlik Merkezi, hem kötü amaçlı amaç hem de uyarı vermek için kullanılan bulgularda yüksek güvenilirliğe sahiptir. Örneğin, Mimikatz gibi bilinen kötü amaçlı bir aracın yürütülmesini algılayan bir uyarı, kimlik bilgilerinin çalınması için kullanılan ortak bir araçtır.
-- **Orta:** Bu muhtemelen şüpheli bir etkinlik, bir kaynağın güvenliğinin aşıldığını gösteriyor olabilir.
+- **Orta:** Bu muhtemelen şüpheli bir etkinlik, bir kaynağın tehlikede olduğunu gösteriyor olabilir.
 Güvenlik Merkezi 'nin analitik veya bulma 'daki güvenilirliği orta ve kötü amaçlı amaç 'nin güvenilirliği orta ile yüksektir. Bunlar genellikle makine öğrenimi veya anomali tabanlı algılamalar olur. Örneğin, anormal bir konumdan oturum açma girişimi.
 - **Düşük:** Bu bir zararsız veya engellenmiş saldırı olabilir.
-   * Güvenlik Merkezi, amacın kötü amaçlı olduğu ve etkinliğin masum olabileceğinden emin olmak için yeterli değildir. Örneğin, günlük Temizleme, bir saldırgan parçaları gizlemeyi denediğinde gerçekleşemeyen bir eylemdir, ancak çoğu durumda Yöneticiler tarafından gerçekleştirilen bir rutin işlemdir.
+   * Güvenlik Merkezi, amacın kötü amaçlı olduğu ve etkinliğin masum olabileceğinden emin olmak için yeterli değildir. Örneğin, günlük Temizleme, bir saldırgan parçaları gizlemeyi denediğinde oluşabilecek bir eylemdir, ancak çoğu durumda Yöneticiler tarafından gerçekleştirilen bir rutin işlemdir.
    * Güvenlik Merkezi, baktığımız ilginç bir durum olmadığı takdirde saldırı ne zaman engellendiğine ilişkin bilgi vermez. 
-- **Bilgi amaçlı:** Yalnızca bir güvenlik olayının detayına veya belirli bir uyarı KIMLIĞIYLE REST API kullandığınızda bilgilendirme uyarıları görürsünüz. Genellikle bir olay bir dizi uyarıdan oluşur, bazıları yalnızca bilgilendirici olarak görünebilir, ancak diğer uyarıların bağlamında daha yakından bir görünüme sahip olabilir. 
+- **Bilgi amaçlı:** Yalnızca bir güvenlik olayının detayına veya belirli bir uyarı KIMLIĞIYLE REST API kullandığınızda bilgilendirme uyarıları görürsünüz. Bir olay genellikle bilgilendirici bir dizi uyarıdan oluşur, bazıları yalnızca bilgilendirme amaçlıdır, ancak diğer uyarıların bağlamında daha yakından bir görünmeyebilir. 
 
 ## <a name="continuous-monitoring-and-assessments"></a>Sürekli izleme ve değerlendirmeler
 
@@ -96,6 +96,6 @@ Uyarıları Güvenlik Merkezi dışında görüntülemek için kullanabileceğin
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, güvenlik merkezi 'nde bulunan farklı Uyarı türleri hakkında bilgi edindiniz. Daha fazla bilgi için bkz.
+Bu makalede, güvenlik merkezi 'nde bulunan farklı Uyarı türleri hakkında bilgi edindiniz. Daha fazla bilgi için bkz:
 
 - **Azure etkinlik günlüğündeki güvenlik uyarıları** -Azure Portal veya programlı olarak, güvenlik uyarıları ve olayları [Azure etkinlik günlüğünde](../azure-monitor/platform/activity-log.md#view-the-activity-log)olay olarak denetlenir. Olay şeması hakkında daha fazla bilgi için bkz. [Azure etkinlik günlüğündeki güvenlik uyarıları](https://go.microsoft.com/fwlink/?linkid=2114113)

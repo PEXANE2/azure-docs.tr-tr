@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85da26c9ff302c526ea6210dde776f3a34929ccd
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: fa17a18de8e71b099d6ed717974486203c4379f4
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360389"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180515"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Öğretici: Azure Key Vault'a erişmek için Windows VM sistem tarafından atanan yönetilen kimlik kullanma 
 
@@ -34,13 +34,13 @@ Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 > * VM'nize Key Vault'ta depolanan gizli diziye erişim verme
 > * VM kimliği kullanarak erişim belirteci alma ve Key Vault'tan gizli diziyi almak için bunu kullanma 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Yönetilen kimliklerin anlaşılmasıdır. Azure kaynakları için yönetilen kimlikler özelliği hakkında bilgi sahibi değilseniz bu [genel bakışı](overview.md) inceleyin. 
 - Azure hesabı, [ücretsiz bir hesap için kaydolun](https://azure.microsoft.com/free/).
 - Gerekli kaynak oluşturma ve rol yönetimi adımlarını gerçekleştirmek için uygun kapsamda (aboneliğiniz veya kaynak grubunuz) "sahip" izinleri. Rol atamayla ilgili yardıma ihtiyacınız varsa bkz. [Azure abonelik kaynaklarınıza erişimi yönetmek için Rol Tabanlı Erişim Denetimi kullanma](../../role-based-access-control/role-assignments-portal.md).
 - Ayrıca, sistem tarafından atanmış Yönetilen kimlikler etkinleştirilmiş bir Windows sanal makinesine de ihtiyacınız vardır.
-  - Bu öğretici için bir sanal makine oluşturmanız gerekiyorsa, [sistem tarafından atanan kimliğin etkin olduğu bir sanal makine oluşturma](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity) başlıklı makaleyi izleyebilirsiniz.
+  - Bu öğretici için bir sanal makine oluşturmanız gerekiyorsa, [sistem tarafından atanan kimliğin etkin olduğu bir sanal makine oluşturma](./qs-configure-portal-windows-vm.md#system-assigned-managed-identity) başlıklı makaleyi izleyebilirsiniz.
 
 ## <a name="create-a-key-vault"></a>Anahtar kasası oluşturma  
 
@@ -52,14 +52,14 @@ Bu bölümde, VM 'nizin Key Vault depolanan bir gizli dizi erişimine nasıl izi
 1. Sol gezinti çubuğunun üst kısmında **kaynak oluştur** ' u seçin.  
 1. Market 'te **Ara** kutusuna **Key Vault** yazın ve **ENTER** tuşuna basın.  
 1. Sonuçlardan **Key Vault** seçin.
-1. **Oluştur** ’u seçin
+1. **Oluştur**’u seçin
 1. Yeni Key Vault için bir **Ad** belirtin.
 
     ![Anahtar Kasası ekranı oluşturma](./media/msi-tutorial-windows-vm-access-nonaad/create-key-vault.png)
 
 1. Bu öğretici için kullandığınız sanal makineyi oluşturduğunuz aboneliği ve kaynak grubunu seçtiğinizden emin olarak tüm gerekli bilgileri doldurun.
 1. **Gözden geçir + oluştur** ' u seçin
-1. **Oluştur** ’u seçin
+1. **Oluştur**’u seçin
 
 ## <a name="grant-access"></a>Erişim verme
 
@@ -72,21 +72,21 @@ Sanal makine tarafından kullanılan yönetilen kimliğe, Key Vault depolayabilm
    ![Anahtar Kasası erişim ilkesi oluşturma ekranı](./media/msi-tutorial-windows-vm-access-nonaad/key-vault-access-policy.png)
 
 1. Şablondan Yapılandır altındaki **erişim Ilkesi Ekle** bölümünde **(isteğe bağlı)** aşağı açılan menüden **gizli yönetim** ' i seçin.
-1. **Sorumlu Seç** 'i seçin ve arama alanına daha önce oluşturduğunuz VM'nin adını girin.  Sonuç listesinde VM 'yi seçin ve **Seç** ' i seçin.
-1. **Ekle** ’yi seçin
-1. **Kaydet** ’i seçin.
+1. **Sorumlu Seç**'i seçin ve arama alanına daha önce oluşturduğunuz VM'nin adını girin.  Sonuç listesinde VM 'yi seçin ve **Seç**' i seçin.
+1. **Ekle**’yi seçin
+1. **Kaydet**’i seçin.
 
 ## <a name="create-a-secret"></a>Gizli anahtar oluşturma
 
 Ardından, Key Vault bir gizli dizi ekleyin, böylece daha sonra sanal makinenizde çalışan kodu kullanarak elde edebilirsiniz. Bu öğreticinin amacı doğrultusunda PowerShell kullanıyoruz, ancak aynı kavramlar bu sanal makinede yürütülen tüm kodlar için geçerlidir.
 
 1. Yeni oluşturduğunuz Key Vault gidin.
-1. **Gizli Diziler** 'i seçin ve **Ekle** 'ye tıklayın.
+1. **Gizli Diziler**'i seçin ve **Ekle**'ye tıklayın.
 1. **Oluştur/Içeri aktar** 'ı seçin
 1. **Karşıya yükleme seçeneklerinden** **gizli bir ekran oluştur** bölümünde **el ile** seçili bırakın.
 1. Gizli dizi için bir ad ve değer girin.  Değer, istediğiniz herhangi bir şey olabilir. 
 1. Etkinleştirme tarihi ile sona erme tarihini boş bırakın ve **Etkin** seçeneğini **Evet** değerinde bırakın. 
-1. Gizli diziyi oluşturmak için **Oluştur** 'a tıklayın.
+1. Gizli diziyi oluşturmak için **Oluştur**'a tıklayın.
 
    ![Gizli anahtar oluşturma](./media/msi-tutorial-windows-vm-access-nonaad/create-secret.png)
 
@@ -96,9 +96,9 @@ Bu bölüm, VM kimliğini kullanarak bir erişim belirtecinin nasıl alınacağ�
 
 İlk olarak, Key Vault'ta kimlik doğrulaması yapmak üzere erişim belirteci almak için VM’nin sistem tarafından atanan yönetilen kimliğini kullanırız:
  
-1. Portalda, **Sanal Makineler** 'e ve Windows sanal makinenize gidin, ardından **Genel Bakış** 'ta **Bağlan** 'a tıklayın.
+1. Portalda, **Sanal Makineler**'e ve Windows sanal makinenize gidin, ardından **Genel Bakış**'ta **Bağlan**'a tıklayın.
 2. **Windows VM'sini** oluştururken eklendiğiniz hesabın **Kullanıcı adı** ve **Parola** değerlerini girin.  
-3. Artık sanal makineyle **Uzak Masaüstü Bağlantısı** 'nı oluşturduğunuza göre, uzak oturumda PowerShell'i açın.  
+3. Artık sanal makineyle **Uzak Masaüstü Bağlantısı**'nı oluşturduğunuza göre, uzak oturumda PowerShell'i açın.  
 4. PowerShell'de, VM için belirtilen bağlantı noktasında yerel konağın belirtecini almak üzere kiracıda web isteğini çağırın.  
 
 PowerShell isteği:
@@ -135,7 +135,7 @@ Key Vault'tan gizli diziyi aldıktan sonra, bunu kullanarak ad ve parola gerekti
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Kaynakları temizlemek istediğinizde, [Azure Portal](https://portal.azure.com)ziyaret edin, **kaynak grupları** ' nı seçin, Bu öğreticinin işleminde oluşturulan kaynak grubunu bulun (gibi `mi-test` ) ve ardından **kaynak grubunu sil** komutunu kullanın.
+Kaynakları temizlemek istediğinizde, [Azure Portal](https://portal.azure.com)ziyaret edin, **kaynak grupları**' nı seçin, Bu öğreticinin işleminde oluşturulan kaynak grubunu bulun (gibi `mi-test` ) ve ardından **kaynak grubunu sil** komutunu kullanın.
 
 Alternatif olarak bunu [PowerShell veya CLI](../../azure-resource-manager/management/delete-resource-group.md) aracılığıyla da yapabilirsiniz
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: bc3352dd57a76cbb0b38455adfa11987ec93781a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d73cf3336afad83fadf6f56606161f523e202280
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003030"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180549"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Uzak kullanıcılar için şirket içi uygulamalar yayımlamak üzere Azure AD Uygulama Ara Sunucusu kullanma
 
@@ -95,7 +95,7 @@ Uygulama proxy 'Si, aşağıdaki yerel kimlik doğrulama protokolünü kullanan 
 
 Ayrıca, uygulama proxy 'Si, üçüncü taraf tümleştirmeyle veya belirli yapılandırma senaryolarında aşağıdaki kimlik doğrulama protokollerini destekler:
 
-* [**Üst bilgi tabanlı kimlik doğrulama**](/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-headers). Bu oturum açma yöntemi, PingAccess adlı bir üçüncü taraf kimlik doğrulama hizmeti kullanır ve uygulamanın kimlik doğrulaması için üst bilgileri kullanması durumunda kullanılır. Bu senaryoda, kimlik doğrulaması PingAccess tarafından işlenir.
+* [**Üst bilgi tabanlı kimlik doğrulama**](./application-proxy-configure-single-sign-on-with-headers.md). Bu oturum açma yöntemi, PingAccess adlı bir üçüncü taraf kimlik doğrulama hizmeti kullanır ve uygulamanın kimlik doğrulaması için üst bilgileri kullanması durumunda kullanılır. Bu senaryoda, kimlik doğrulaması PingAccess tarafından işlenir.
 * [**Form veya parola tabanlı kimlik doğrulama**](application-proxy-configure-single-sign-on-password-vaulting.md). Bu kimlik doğrulama yöntemiyle, kullanıcılar ilk kez erişirken Kullanıcı adı ve parola ile uygulama üzerinde oturum açabilirler. İlk oturum açma işleminden sonra Azure AD, uygulamaya Kullanıcı adı ve parola sağlar. Bu senaryoda, kimlik doğrulaması Azure AD tarafından işlenir.
 * [**SAML kimlik doğrulaması**](application-proxy-configure-single-sign-on-on-premises-apps.md). SAML tabanlı çoklu oturum açma, SAML 2,0 veya WS-Federation protokollerini kullanan uygulamalar için desteklenir. SAML çoklu oturum açma ile Azure AD, kullanıcının Azure AD hesabını kullanarak uygulamanın kimliğini doğrular.
 

@@ -4,11 +4,11 @@ description: Makineleri geçirmek için Azure geçişi sunucu geçişini kullanm
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.openlocfilehash: b62110e6b2ce97cdd80ed91ee4b1e75d119c7c7d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315245"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180702"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure geçişi sunucu geçişi: sık sorulan sorular
 
@@ -34,8 +34,8 @@ Azure geçişi: sunucu geçiş aracı, UEFı tabanlı makineleri Azure 2. nesil 
 | SUSE Linux Enterprise Server 15 SP1                     | E                                                                                                                                         | E                              | E                                                          |
 | SUSE Linux Enterprise Server 12 SP4                     | E                                                                                                                                         | E                              | E                                                          |
 | Ubuntu Server 16,04, 18,04, 19,04, 19,10                | E                                                                                                                                         | E                              | E                                                          |
-| RHEL 8,1, 8,0, 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x        | E<br>                 _RHEL 8. x [el ile hazırlık](./prepare-for-migration.md#linux-machines) gerektiriyor_   | E                              | E                                                          |
-| Sent OS 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 6. x               | E<br>_Sent OS 8. x [el ile hazırlık](./prepare-for-migration.md#linux-machines) gerektirir_ | E                              | E                                                          |
+| RHEL 8,1, 8,0, 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x        | Y<br>                 _RHEL 8. x [el ile hazırlık](./prepare-for-migration.md#linux-machines) gerektiriyor_   | E                              | E                                                          |
+| Sent OS 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 6. x               | Y<br>_Sent OS 8. x [el ile hazırlık](./prepare-for-migration.md#linux-machines) gerektirir_ | E                              | E                                                          |
 | Oracle Linux 7,7, 7,7-CI                                |  E                                                                                                                                        | E                              | E                                                          |
 
 ## <a name="can-i-use-the-recovery-services-vault-created-by-azure-migrate-for-disaster-recovery-scenarios"></a>Olağanüstü durum kurtarma senaryoları için Azure geçişi tarafından oluşturulan Kurtarma Hizmetleri kasasını kullanabilir miyim?
@@ -143,7 +143,7 @@ Aracısız çoğaltma durumunda Azure geçişi gereci verileri sıkıştırır v
 
 ## <a name="how-does-churn-rate-affect-agentless-replication"></a>Dalgalanma oranı aracısız çoğaltmayı nasıl etkiler?
 
-Aracısız çoğaltma veride veri katdığından, *karmaşıklık* *oranı karmaşıklık hızından*daha önemlidir. Bir dosya tekrar yazıldığında ve yeniden yazıldığında, oran çok etkiye sahip değildir. Ancak, diğer her kesimin yazıldığı bir model sonraki döngüde yüksek dalgalanma neden olur. Aktardığımız veri miktarını en aza indirdiğimiz için, bir sonraki döngüyü zamanlamadan önce verilerin mümkün olduğunca katlarına izin veririz.
+Aracısız çoğaltma veride veri katdığından, *karmaşıklık* *oranı karmaşıklık hızından* daha önemlidir. Bir dosya tekrar yazıldığında ve yeniden yazıldığında, oran çok etkiye sahip değildir. Ancak, diğer her kesimin yazıldığı bir model sonraki döngüde yüksek dalgalanma neden olur. Aktardığımız veri miktarını en aza indirdiğimiz için, bir sonraki döngüyü zamanlamadan önce verilerin mümkün olduğunca katlarına izin veririz.
 
 ## <a name="how-frequently-is-a-replication-cycle-scheduled"></a>Çoğaltma döngüsünü ne sıklıkta planlıyor?
 

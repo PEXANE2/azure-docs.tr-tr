@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 9bebb11c3a1162a0a7b72140f7d3812f86f793ce
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 9272114dd472717e59680b40c07d8435dea19682
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95791352"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181977"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>Öğretici: Azure AD çoklu oturum açma (SSO) ile NetSuite tümleştirme
 
@@ -26,7 +26,7 @@ Bu öğreticide, NetSuite 'i Azure Active Directory (Azure AD) ile tümleştirme
 * Kullanıcılarınızın Azure AD hesaplarıyla NetSuite 'e otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin, Azure portal.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -104,7 +104,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için aşağıdakileri yapın:
 
 1. NetSuite uygulaması, yukarıdakine ek olarak aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
-    | Name | Kaynak özniteliği |
+    | Adı | Kaynak özniteliği |
     | ---------------| --------------- |
     | account  | `account id` |
 
@@ -215,7 +215,7 @@ Bu bölümde, NetSuite 'e erişim izni vererek Kullanıcı B. Simon 'u Azure ço
 
     ![Ekran görüntüsü, rol için bir ad girebileceğiniz Kurulum Yöneticisini gösterir.](./media/NetSuite-tutorial/ns-new-role.png)
 
-    e. **Kaydet**'i seçin.
+    e. **Kaydet**’i seçin.
 
     f. Üst gezinti çubuğunda **izinler**' i seçin. Ardından **Kurulum**' u seçin.
 
@@ -223,7 +223,7 @@ Bu bölümde, NetSuite 'e erişim izni vererek Kullanıcı B. Simon 'u Azure ço
 
     örneğin: **SAML çoklu oturum açma**' yı seçin ve ardından **Ekle**' yi seçin.
 
-    h. **Kaydet**'i seçin.
+    h. **Kaydet**’i seçin.
 
     i. Üst gezinti çubuğunda **Kurulum**' u ve ardından **Kurulum Yöneticisi**' ni seçin.
 
@@ -241,7 +241,7 @@ Bu bölümde, NetSuite 'e erişim izni vererek Kullanıcı B. Simon 'u Azure ço
 
     ![Ekran görüntüsü, çalışan tarafından seçilen yöneticiyi gösterir.](./media/NetSuite-tutorial/ns-add-role.png)
 
-    m. **Kaydet**'i seçin.
+    m. **Kaydet**’i seçin.
 
 ### <a name="create-the-netsuite-test-user"></a>NetSuite test kullanıcısını oluşturma
 
@@ -253,7 +253,7 @@ Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki se�
 
 - Azure portal bu uygulamayı test et ' e tıklayın ve SSO 'yu ayarladığınız NetSuite 'te otomatik olarak oturum açmış olmanız gerekir
 
-- Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki NetSuite kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız NetSuite 'e otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+- Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki NetSuite kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız NetSuite 'e otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

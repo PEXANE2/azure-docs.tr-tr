@@ -5,23 +5,23 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: 73813ffbb6ac1839a48fc455dec5f6ad26ed0164
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: ac402587c8346c14f34b683ba10832c7779b660b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348798"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182776"
 ---
 # <a name="enable-update-management-from-the-azure-portal"></a>Azure portalından Güncelleştirme Yönetimi’ni etkinleştirme
 
 Bu makalede, Azure portal göz atarak VM 'Ler için [güncelleştirme yönetimi](overview.md) özelliğini nasıl etkinleştirebileceğinizi açıklanmaktadır. Azure VM 'lerini ölçekli olarak etkinleştirmek için, Güncelleştirme Yönetimi kullanarak mevcut bir Azure VM 'yi etkinleştirmeniz gerekir.
 
-VM 'lerinizi yönetmek için kullanabileceğiniz kaynak gruplarının sayısı [Kaynak Yöneticisi dağıtım limitleriyle](../../azure-resource-manager/templates/cross-scope-deployment.md)sınırlıdır. Güncelleştirme dağıtımlarıyla karıştırılmamalıdır Kaynak Yöneticisi dağıtımlar, dağıtım başına beş kaynak grubu ile sınırlıdır. Log Analytics çalışma alanını, Otomasyon hesabını ve ilgili kaynakları yapılandırmak için bu kaynak gruplarından ikisi ayrılmıştır. Bu, Güncelleştirme Yönetimi tarafından yönetim için seçilecek üç kaynak grubu ile birlikte kalır. Bu sınır, bir Otomasyon özelliği tarafından yönetilebilen kaynak gruplarının sayısını değil, yalnızca eşzamanlı kurulum için geçerlidir.
+VM 'lerinizi yönetmek için kullanabileceğiniz kaynak gruplarının sayısı [Kaynak Yöneticisi dağıtım limitleriyle](../../azure-resource-manager/templates/deploy-to-resource-group.md)sınırlıdır. Güncelleştirme dağıtımlarıyla karıştırılmamalıdır Kaynak Yöneticisi dağıtımlar, dağıtım başına beş kaynak grubu ile sınırlıdır. Log Analytics çalışma alanını, Otomasyon hesabını ve ilgili kaynakları yapılandırmak için bu kaynak gruplarından ikisi ayrılmıştır. Bu, Güncelleştirme Yönetimi tarafından yönetim için seçilecek üç kaynak grubu ile birlikte kalır. Bu sınır, bir Otomasyon özelliği tarafından yönetilebilen kaynak gruplarının sayısını değil, yalnızca eşzamanlı kurulum için geçerlidir.
 
 > [!NOTE]
 > Güncelleştirme Yönetimi etkinleştirilirken, bir Log Analytics çalışma alanını ve bir Otomasyon hesabını bağlamak için yalnızca belirli bölgeler desteklenir. Desteklenen eşleme çiftlerinin bir listesi için bkz. [Otomasyon hesabı ve Log Analytics çalışma alanı Için bölge eşleme](../how-to/region-mappings.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Henüz bir hesabınız yoksa [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)için kaydolabilirsiniz.
 * Makineleri yönetmek için [Otomasyon hesabı](../index.yml).
@@ -33,7 +33,7 @@ Adresinden Azure 'da oturum açın https://portal.azure.com .
 
 ## <a name="enable-update-management"></a>Güncelleştirme Yönetimi’ni etkinleştirme
 
-1. Azure portal, **sanal makineler** ' e gidin.
+1. Azure portal, **sanal makineler**' e gidin.
 
 2. **Sanal makineler** sayfasında, güncelleştirme yönetimi eklenecek VM 'leri seçmek için onay kutularını kullanın. Tek seferde en fazla üç farklı kaynak grubu için makine ekleyebilirsiniz. Otomasyon hesabınızın konumu ne olduğuna bakılmaksızın, Azure VM 'Leri herhangi bir bölgede bulunabilir.
 
@@ -48,7 +48,7 @@ Adresinden Azure 'da oturum açın https://portal.azure.com .
 
 4. Sanal makinelerin listesi, yalnızca aynı abonelikte ve konumda bulunan sanal makineleri gösterecek şekilde filtrelenmiştir. Sanal makinelerinizde üçten fazla kaynak grubu varsa, ilk üç kaynak grubu seçilir.
 
-5. Mevcut bir Log Analytics çalışma alanı ve Otomasyon hesabı varsayılan olarak seçilidir. Farklı bir Log Analytics çalışma alanı ve Otomasyon hesabı kullanmak istiyorsanız, özel yapılandırma sayfasından seçmek için **özel** ' i seçin. Bir Log Analytics çalışma alanı seçtiğinizde, bir Otomasyon hesabıyla bağlanıp bağlanmadığını belirlemek için bir onay yapılır. Bağlı bir Otomasyon hesabı bulunursa, aşağıdaki ekranı görürsünüz. İşiniz bittiğinde **Tamam** ’ı seçin.
+5. Mevcut bir Log Analytics çalışma alanı ve Otomasyon hesabı varsayılan olarak seçilidir. Farklı bir Log Analytics çalışma alanı ve Otomasyon hesabı kullanmak istiyorsanız, özel yapılandırma sayfasından seçmek için **özel** ' i seçin. Bir Log Analytics çalışma alanı seçtiğinizde, bir Otomasyon hesabıyla bağlanıp bağlanmadığını belirlemek için bir onay yapılır. Bağlı bir Otomasyon hesabı bulunursa, aşağıdaki ekranı görürsünüz. İşiniz bittiğinde **Tamam**’ı seçin.
 
     [![Çalışma alanını ve hesabı seçin](./media/enable-from-portal/select-workspace-and-account.png)](./media/enable-from-portal/select-workspace-and-account-expanded.png#lightbox)
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2d0157f3e7ab0ef373235fcc6e188f9caa36eff4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: e07e9035dc55f77a2e76b4f4ee306deab829980a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833308"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182759"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Otomasyon için Azure Güvenlik temeli
 
@@ -44,9 +44,9 @@ Alternatif olarak, belirli bir gereksiniminize sahipseniz, Azure Güvenlik duvar
 
 * [Runbook yürütme ortamı](./automation-runbook-execution.md#runbook-execution-environment)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-nics"></a>1,2: sanal ağların, alt ağların ve NIC 'lerin yapılandırmasını ve trafiğini izleyin ve günlüğe kaydedin
 
@@ -60,15 +60,15 @@ NSG kuralları ve Kullanıcı tanımlı yollar özel uç nokta için uygulanmad�
 
 * [Trafik Analizi etkinleştirme ve kullanma](../network-watcher/traffic-analytics.md)
 
-**Azure Güvenlik Merkezi izleme**: Evet
+**Azure Güvenlik Merkezi izlemesi**: Yes
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="13-protect-critical-web-applications"></a>1,3: kritik Web uygulamalarını koruma
 
 **Rehberlik**: uygulanamaz; Bu öneri, Azure App Service veya işlem kaynaklarında çalışan Web uygulamalarına yöneliktir.
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -80,7 +80,7 @@ Azure sanal makineler tarafından desteklenen karma runbook çalışanları kull
 
 Windows sanal makinelerinin sınırlı bir süre boyunca onaylanan IP adresleriyle açıklanabilmesi için Azure Güvenlik Merkezi 'nin tam zamanında ağ erişimini kullanabilirsiniz. Ayrıca, bağlantı noktalarını ve kaynak IP 'Leri gerçek trafik ve tehdit zekası temelinde sınırlamak için NSG yapılandırmalarının Azure Güvenlik Merkezi Uyarlamalı ağ sağlamlaştırma önerilerini kullanın.
 
-* [DDoS korumasını yapılandırma](../virtual-network/manage-ddos-protection.md)
+* [DDoS korumasını yapılandırma](../ddos-protection/manage-ddos-protection.md)
 
 * [Azure Güvenlik duvarını dağıtma](../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -90,9 +90,9 @@ Windows sanal makinelerinin sınırlı bir süre boyunca onaylanan IP adresleriy
 
 * [Azure Güvenlik Merkezi 'Ni tam zamanında ağ Access Control anlama](../security-center/security-center-just-in-time.md)
 
-**Azure Güvenlik Merkezi izleme**: Evet
+**Azure Güvenlik Merkezi izlemesi**: Yes
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="15-record-network-packets"></a>1,5: ağ paketlerini kaydetme
 
@@ -104,9 +104,9 @@ Azure sanal makineler tarafından desteklenen karma runbook çalışanları kull
 
 * [Ağ İzleyicisini etkinleştirme](../network-watcher/network-watcher-create.md)
 
-**Azure Güvenlik Merkezi izleme**: Evet
+**Azure Güvenlik Merkezi izlemesi**: Yes
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: ağ tabanlı yetkisiz giriş algılama/yetkisiz erişim önleme sistemleri (KIMLIKLER/IP 'ler) dağıtma
 
@@ -120,17 +120,17 @@ Azure sanal makinelerinde barındırılan karma runbook çalışanları kullanı
 
 * [Azure Güvenlik Duvarı ile uyarıları yapılandırma](../firewall/threat-intel.md)
 
-**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1,7: Web uygulamalarına trafiği yönetme
 
 **Rehberlik**: uygulanamaz; Bu öneri, Azure App Service veya işlem kaynaklarında çalışan Web uygulamalarına yöneliktir.
 
-**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: ağ güvenlik kurallarının karmaşıklığını ve yönetim yükünü en aza indirme
 
@@ -138,9 +138,9 @@ Azure sanal makinelerinde barındırılan karma runbook çalışanları kullanı
 
 * [Hizmet etiketlerini anlama ve kullanma](../virtual-network/service-tags-overview.md)
 
-**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: ağ cihazları için standart güvenlik yapılandırmalarının bakımını yapma
 
@@ -154,9 +154,9 @@ Azure şemaları, Azure Kaynak Yöneticisi şablonları, Azure RBAC denetimleri 
 
 * [Azure Blueprint oluşturma](../governance/blueprints/create-blueprint-portal.md)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="110-document-traffic-configuration-rules"></a>1,10: belge trafiği yapılandırma kuralları
 
@@ -172,9 +172,9 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzeri
 
 * [Güvenlik Yapılandırması ile NSG oluşturma](../virtual-network/tutorial-filter-network-traffic.md)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: ağ kaynağı yapılandırmasını izlemek ve değişiklikleri algılamak için otomatikleştirilmiş araçları kullanın
 
@@ -184,9 +184,9 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzeri
 
 * [Azure Izleyici 'de uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
 
-**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ## <a name="logging-and-monitoring"></a>Günlüğe kaydetme ve izleme
 
@@ -198,7 +198,7 @@ Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynaklar üzeri
 
 * [Azure işlem kaynakları için zaman eşitlemesini yapılandırma](../virtual-machines/windows/time-sync.md)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
 **Sorumluluk**: Microsoft
 
@@ -220,11 +220,11 @@ Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri et
 
 * [Bağlı Log Analytics çalışma alanı için desteklenen bölgeler](./how-to/region-mappings.md)
 
-* [Güncelleştirme Yönetimi günlükleri sorgula](./update-management/update-mgmt-query-logs.md)
+* [Güncelleştirme Yönetimi günlükleri sorgula](./update-management/query-logs.md)
 
-**Azure Güvenlik Merkezi izleme**: Evet
+**Azure Güvenlik Merkezi izlemesi**: Yes
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: Azure kaynakları için denetim günlüğünü etkinleştirme
 
@@ -234,9 +234,9 @@ Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri et
 
 * [Azure etkinlik günlüğü olaylarını görüntüleme ve alma](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
-**Azure Güvenlik Merkezi izleme**: Evet
+**Azure Güvenlik Merkezi izlemesi**: Yes
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2,4: işletim sistemlerinden güvenlik günlüklerini toplama
 
@@ -246,7 +246,7 @@ Karma Runbook Worker özelliği kullanılırken Azure Güvenlik Merkezi, Windows
 
 * [Azure Güvenlik Merkezi 'nde veri toplama katmanını yapılandırma](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -258,9 +258,9 @@ Karma Runbook Worker özelliği kullanılırken Azure Güvenlik Merkezi, Windows
 
 * [Otomasyon hesapları için veri saklama ayrıntıları](./automation-managing-data.md#data-retention)
 
-**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="26-monitor-and-review-logs"></a>2,6: günlükleri izleme ve gözden geçirme
 
@@ -270,13 +270,13 @@ Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri et
 
 * [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
-* [Azure Izleyici 'de günlük sorgularını anlama](../azure-monitor/log-query/get-started-portal.md)
+* [Azure Izleyici 'de günlük sorgularını anlama](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 * [Azure Izleyici 'de özel sorgular gerçekleştirme](../azure-monitor/log-query/get-started-queries.md)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="27-enable-alerts-for-anomalous-activities"></a>2,7: anormal etkinlikler için uyarıları etkinleştir
 
@@ -290,9 +290,9 @@ Alternatif olarak, Azure Sentinel 'de ve yerleşik verileri etkinleştirebilir.
 
 * [Azure Izleyici günlük verilerinde uyarı alma](../azure-monitor/learn/tutorial-response.md)
 
-**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="28-centralize-anti-malware-logging"></a>2,8: kötü amaçlı yazılımdan koruma 'yı merkezileştirme
 
@@ -304,7 +304,7 @@ Ancak karma Runbook Worker özelliğini kullanırken, Azure Cloud Services ve sa
 
 * [Sanal makineler için konuk düzeyinde izlemeyi etkinleştirme](../cost-management-billing/cloudyn/azure-vm-extended-metrics.md)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -312,9 +312,9 @@ Ancak karma Runbook Worker özelliğini kullanırken, Azure Cloud Services ve sa
 
 **Rehberlik**: kuruluşunuzun ihtiyaç duyduğu şekılde, DNS günlüğü çözümü Için Azure Marketi 'nden bir üçüncü taraf çözümü uygulayın.
 
-**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="210-enable-command-line-audit-logging"></a>2,10: komut satırı denetim günlüğünü etkinleştir
 
@@ -324,7 +324,7 @@ Ancak, karma Runbook Worker özelliği kullanılırken Azure Güvenlik Merkezi, 
 
 * [Azure Güvenlik Merkezinde veri toplama](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -344,17 +344,17 @@ Ancak, karma Runbook Worker özelliği kullanılırken Azure Güvenlik Merkezi, 
 
 * [Azure Otomasyonu farklı çalıştır hesabını yönetme](./manage-runas-account.md)
 
-**Azure Güvenlik Merkezi izleme**: Evet
+**Azure Güvenlik Merkezi izlemesi**: Yes
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3,2: uygun yerlerde varsayılan parolaları değiştirme
 
 **Kılavuz**: Azure Otomasyonu hesabının varsayılan parola kavramı yoktur. Müşteriler, hizmette veya karma runbook çalışanları üzerinde çalışan varsayılan parolaları kullanan üçüncü taraf uygulamalardan ve Market hizmetlerinden sorumludur.
 
-**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3,3: adanmış yönetim hesapları kullanın
 
@@ -368,9 +368,9 @@ Ayrıca, Microsoft Hizmetleri için Azure AD Privileged Identity Management ayr�
 
 * [Azure Otomasyonu farklı çalıştır hesabını yönetme](./manage-runas-account.md)
 
-**Azure Güvenlik Merkezi izleme**: Evet
+**Azure Güvenlik Merkezi izlemesi**: Yes
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: Azure Active Directory ile çoklu oturum açma (SSO) kullanın
 
@@ -382,21 +382,21 @@ Ayrıca, Microsoft Hizmetleri için Azure AD Privileged Identity Management ayr�
 
 * [Azure’da kimlik doğrulaması yapmak için Azure AD’yi kullanma](./automation-use-azure-ad.md)
 
-**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: tüm Azure Active Directory tabanlı erişim için Multi-Factor Authentication kullanın
 
 **Kılavuz**: Azure AD Multi-Factor Authentication 'ı (MFA) etkinleştirin ve Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini izleyin.
 
-* [Azure 'da MFA 'yı etkinleştirme](../active-directory/authentication/howto-mfa-getstarted.md)
+* [Azure’da MFA’yı etkinleştirme](../active-directory/authentication/howto-mfa-getstarted.md)
 
 * [Azure Güvenlik Merkezi 'nde kimliği ve erişimi izleme](../security-center/security-center-identity-access.md)
 
-**Azure Güvenlik Merkezi izleme**: Evet
+**Azure Güvenlik Merkezi izlemesi**: Yes
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="36-use-dedicated-machines-for-all-administrative-tasks"></a>3,6: tüm yönetim görevleri için adanmış makineleri kullanın
 
@@ -404,11 +404,11 @@ Ayrıca, Microsoft Hizmetleri için Azure AD Privileged Identity Management ayr�
 
 * [Ayrıcalıklı erişim Iş Istasyonları hakkında bilgi edinin](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-* [Azure 'da MFA 'yı etkinleştirme](../active-directory/authentication/howto-mfa-getstarted.md)
+* [Azure’da MFA’yı etkinleştirme](../active-directory/authentication/howto-mfa-getstarted.md)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3,7: yönetim hesaplarından şüpheli etkinliklerle ilgili günlüğe kaydet ve uyar
 
@@ -416,13 +416,13 @@ Ayrıca, Microsoft Hizmetleri için Azure AD Privileged Identity Management ayr�
 
 * [Azure Güvenlik Merkezi risk algılamalarını anlama (şüpheli etkinlik)](../active-directory/identity-protection/overview-identity-protection.md)
 
-* [Azure etkinlik günlüklerini Azure Izleyici ile tümleştirme](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
+* [Azure Etkinlik Günlüklerini Azure İzleyici ile tümleştirme](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 * [Özel uyarı ve bildirim için eylem gruplarını yapılandırma](../azure-monitor/platform/action-groups.md)
 
-**Azure Güvenlik Merkezi izleme**: Evet
+**Azure Güvenlik Merkezi izlemesi**: Yes
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3,8: Azure kaynaklarını yalnızca onaylanan konumlardan yönetme
 
@@ -430,9 +430,9 @@ Ayrıca, Microsoft Hizmetleri için Azure AD Privileged Identity Management ayr�
 
 * [Azure 'da adlandırılmış konumları yapılandırma](../active-directory/reports-monitoring/quickstart-configure-named-locations.md)
 
-**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="39-use-azure-active-directory"></a>3,9: Azure Active Directory kullanın
 
@@ -442,9 +442,9 @@ Ayrıca, Microsoft Hizmetleri için Azure AD Privileged Identity Management ayr�
 
 * [Yönetilen kimliklerle runbook kimlik doğrulamasını kullanma](./automation-hrw-run-runbooks.md#runbook-auth-managed-identities)
 
-**Azure Güvenlik Merkezi izleme**: Evet
+**Azure Güvenlik Merkezi izlemesi**: Yes
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: Kullanıcı erişimini düzenli olarak gözden geçirin ve karşılaştırın
 
@@ -458,9 +458,9 @@ Ayrıca, Microsoft Hizmetleri için Azure AD Privileged Identity Management ayr�
 
 * [Azure Otomasyonu farklı çalıştır hesabını yönetme](./manage-runas-account.md)
 
-**Azure Güvenlik Merkezi izleme**: Evet
+**Azure Güvenlik Merkezi izlemesi**: Yes
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="311-monitor-attempts-to-access-deactivated-credentials"></a>3,11: devre dışı bırakılmış kimlik bilgilerine erişme girişimlerini izleme
 
@@ -468,11 +468,11 @@ Ayrıca, Microsoft Hizmetleri için Azure AD Privileged Identity Management ayr�
 
 Azure Active Directory Kullanıcı hesapları için Tanılama ayarları oluşturarak ve denetim günlüklerini ve oturum açma günlüklerini bir Log Analytics çalışma alanına göndererek bu işlemi kolaylaştırabilirsiniz. İstenen uyarıları Log Analytics çalışma alanı içinde yapılandırabilirsiniz.
 
-* [Azure etkinlik günlüklerini Azure Izleyici ile tümleştirme](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
+* [Azure Etkinlik Günlüklerini Azure İzleyici ile tümleştirme](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: hesap oturum açma davranışı sapmasından uyar
 
@@ -484,9 +484,9 @@ Azure Active Directory Kullanıcı hesapları için Tanılama ayarları oluştur
 
 * [Azure Sentinel 'i ekleme](../sentinel/quickstart-onboard.md)
 
-**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: destek senaryoları sırasında Microsoft 'un ilgili müşteri verilerine erişimini sağlama
 
@@ -496,9 +496,9 @@ Bununla birlikte, Azure sanal makineler tarafından desteklenen karma runbook ç
 
 * [Müşteri Kasası anlama](../security/fundamentals/customer-lockbox-overview.md)
 
-**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ## <a name="data-protection"></a>Veri koruma
 
@@ -510,9 +510,9 @@ Bununla birlikte, Azure sanal makineler tarafından desteklenen karma runbook ç
 
 * [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
-**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: hassas bilgileri depolayan veya işleyen sistemleri yalıtma
 
@@ -532,9 +532,9 @@ Bununla birlikte, Azure sanal makineler tarafından desteklenen karma runbook ç
 
 * [Azure Güvenlik Duvarı ile uyarı veya uyarı yapılandırma ve reddetme](../firewall/threat-intel.md)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: hassas bilgilerin yetkisiz aktarımını izleme ve engelleme
 
@@ -542,11 +542,11 @@ Bununla birlikte, Azure sanal makineler tarafından desteklenen karma runbook ç
 
 Microsoft tarafından yönetilen temel alınan platform için, Microsoft tüm müşteri içeriklerini, müşteri veri kaybına ve pozlamaya karşı hassas ve koruma olarak değerlendirir. Azure 'daki müşteri verilerinin güvende kalmasını sağlamak için Microsoft, bir dizi güçlü veri koruma denetimi ve özelliği uygulamıştır ve bakımını yapar.
 
-* [Azure 'da müşteri veri korumasını anlama](../security/fundamentals/protection-customer-data.md)
+* [Azure’da müşteri verilerinin korunmasını anlama](../security/fundamentals/protection-customer-data.md)
 
-**Azure Güvenlik Merkezi izleme**: Evet
+**Azure Güvenlik Merkezi izlemesi**: Yes
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: yoldaki tüm hassas bilgileri şifreleyin
 
@@ -558,17 +558,17 @@ Azure Güvenlik Merkezi önerilerini, varsa, bekleyen ve geçişte şifreleme i�
 
 * [Azure Otomasyonu TLS 1,2 zorlaması](https://azure.microsoft.com/updates/azure-automation-tls12-enforcement/)
 
-**Azure Güvenlik Merkezi izleme**: Evet
+**Azure Güvenlik Merkezi izlemesi**: Yes
 
-**Sorumluluk**: paylaşılan
+**Sorumluluk**: Paylaşımlı
 
 ### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: hassas verileri belirlemek için etkin bir keşif aracı kullanın
 
 **Rehberlik**: bir üçüncü taraf etkin bulma aracı kullanarak, şirket içi veya uzak bir hizmet sağlayıcı gibi kuruluş teknoloji sistemleri tarafından depolanan, işlenen veya aktarılan tüm hassas bilgileri, kuruluşun hassas bilgi envanterini güncelleştirmek için kullanın.
 
-**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4,6: kaynaklara erişimi denetlemek için Azure RBAC kullanma
 
@@ -580,9 +580,9 @@ Azure Güvenlik Merkezi önerilerini, varsa, bekleyen ve geçişte şifreleme i�
 
 * [Rol izinlerini ve güvenliği yönetme](./automation-role-based-access-control.md)
 
-**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: erişim denetimini zorlamak için ana bilgisayar tabanlı veri kaybı önleme kullanın
 
@@ -590,9 +590,9 @@ Azure Güvenlik Merkezi önerilerini, varsa, bekleyen ve geçişte şifreleme i�
 
 Azure sanal makineler tarafından desteklenen karma runbook çalışanları kullanıyorsanız, barındırılan karma Runbook Worker sanal makinelerinize erişim denetimleri zorlamak için üçüncü taraf ana bilgisayar tabanlı bir veri kaybı önleme çözümü kullanmanız gerekir.
 
-**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: hassas bilgileri Rest 'te şifreleyin
 
@@ -600,7 +600,7 @@ Azure sanal makineler tarafından desteklenen karma runbook çalışanları kull
 
 Karma runbook çalışanları kullanılırken, sanal makinelerdeki sanal diskler, sunucu tarafı şifreleme veya Azure disk şifrelemesi (ADE) kullanılarak geri kalanıyla şifrelenir. Azure disk şifrelemesi, yönetilen diskleri, Konuk VM içindeki müşteri tarafından yönetilen anahtarlarla şifrelemek için Windows 'un BitLocker özelliğinden yararlanır. Müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifreleme, depolama hizmetindeki verileri şifreleyerek VM 'niz için herhangi bir işletim sistemi türünü ve görüntüsünü kullanmanızı sağlayarak ADE 'yi geliştirir.
 
-* [Azure yönetilen disklerinin sunucu tarafı şifrelemesi](../virtual-machines/windows/disk-encryption.md)
+* [Azure yönetilen disklerinin sunucu tarafı şifrelemesi](../virtual-machines/disk-encryption.md)
 
 * [Windows VM 'Leri için Azure disk şifrelemesi](../virtual-machines/windows/disk-encryption-overview.md)
 
@@ -608,9 +608,9 @@ Karma runbook çalışanları kullanılırken, sanal makinelerdeki sanal diskler
 
 * [Azure Otomasyonu 'nda yönetilen değişkenler](./shared-resources/variables.md)
 
-**Azure Güvenlik Merkezi izleme**: Evet
+**Azure Güvenlik Merkezi izlemesi**: Yes
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: kritik Azure kaynaklarında yapılan değişikliklerle ilgili günlük ve uyarı
 
@@ -620,9 +620,9 @@ Karma runbook çalışanları kullanılırken, sanal makinelerdeki sanal diskler
 
 * [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
 
-**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ## <a name="vulnerability-management"></a>Güvenlik açığı yönetimi
 
@@ -636,9 +636,9 @@ Karma runbook çalışanları kullanılırken, sanal makinelerdeki sanal diskler
 
 * [Güvenlik Merkezi öneri başvurusu](../security-center/recommendations-reference.md)
 
-**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5,2: otomatik işletim sistemi düzeltme eki yönetimi çözümünü dağıtma
 
@@ -646,11 +646,11 @@ Karma runbook çalışanları kullanılırken, sanal makinelerdeki sanal diskler
 
 Azure sanal makineler tarafından desteklenen karma runbook çalışanları kullanıyorsanız, sanal makineleriniz için güncelleştirmeleri ve düzeltme eklerini yönetmek üzere Azure Güncelleştirme Yönetimi kullanın. Güncelleştirme Yönetimi, desteklenen Windows sistemlerine yama yapmak için yerel olarak yapılandırılmış güncelleştirme deposuna bağımlıdır. System Center Updates Publisher (Updates Publisher) gibi araçlar, Windows Server Update Services (WSUS) içinde özel güncelleştirmeler yayımlamanıza olanak sağlar. Bu senaryo Güncelleştirme Yönetimi, üçüncü taraf yazılımlarla güncelleştirme deposu olarak Configuration Manager kullanan makinelere yaması sağlar.
 
-* [Azure 'da Güncelleştirme Yönetimi](./update-management/update-mgmt-overview.md)
+* [Azure 'da Güncelleştirme Yönetimi](./update-management/overview.md)
 
-* [VM 'niz için güncelleştirmeleri ve düzeltme eklerini yönetme](./update-management/update-mgmt-manage-updates-for-vm.md)
+* [VM 'niz için güncelleştirmeleri ve düzeltme eklerini yönetme](./update-management/manage-updates-for-vm.md)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -660,11 +660,11 @@ Azure sanal makineler tarafından desteklenen karma runbook çalışanları kull
 
 Azure sanal makineler tarafından desteklenen karma runbook çalışanları kullanıyorsanız, sanal makineleriniz için güncelleştirmeleri ve düzeltme eklerini yönetmek üzere Azure Güncelleştirme Yönetimi kullanabilirsiniz. Güncelleştirme Yönetimi, desteklenen Windows sistemlerine yama yapmak için yerel olarak yapılandırılmış güncelleştirme deposuna bağımlıdır. System Center Updates Publisher (Updates Publisher) gibi araçlar, Windows Server Update Services (WSUS) içinde özel güncelleştirmeler yayımlamanıza olanak sağlar. Bu senaryo, Configuration Manager kullanan makinelerin üçüncü taraf yazılımla güncelleştirme deposu olarak Güncelleştirme Yönetimi yalamasını sağlar.
 
-* [Azure 'da Güncelleştirme Yönetimi çözümü](./update-management/update-mgmt-overview.md)
+* [Azure 'da Güncelleştirme Yönetimi çözümü](./update-management/overview.md)
 
-* [Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](./update-management/update-mgmt-manage-updates-for-vm.md)
+* [Azure VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetme](./update-management/manage-updates-for-vm.md)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -672,9 +672,9 @@ Azure sanal makineler tarafından desteklenen karma runbook çalışanları kull
 
 **Rehberlik**: tarama sonuçlarını tutarlı aralıklarla dışarı aktarın ve güvenlik açıklarının düzeltildiğini doğrulamak için sonuçları karşılaştırın. Azure Güvenlik Merkezi tarafından önerilen güvenlik açığı yönetimi önerisi kullanılırken, müşteri, geçmiş tarama verilerini görüntülemek için seçili çözümün portalına pivot olarak eklenebilir.
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5,5: bulunan güvenlik açıklarının düzeltilmesine öncelik vermek için risk derecelendirme işlemi kullanın
 
@@ -682,9 +682,9 @@ Azure sanal makineler tarafından desteklenen karma runbook çalışanları kull
 
 * [Azure Güvenlik Merkezi güvenli Puanını anlama](../security-center/secure-score-security-controls.md)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ## <a name="inventory-and-asset-management"></a>Envanter ve varlık yönetimi
 
@@ -700,9 +700,9 @@ Azure sanal makineler tarafından desteklenen karma runbook çalışanları kull
 
 * [Azure RBAC 'yi anlama](../role-based-access-control/overview.md)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="62-maintain-asset-metadata"></a>6,2: varlık meta verilerini koruma
 
@@ -710,9 +710,9 @@ Azure sanal makineler tarafından desteklenen karma runbook çalışanları kull
 
 * [Etiketler oluşturma ve kullanma](../azure-resource-manager/management/tag-resources.md)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6,3: yetkisiz Azure kaynaklarını silme
 
@@ -728,17 +728,17 @@ Azure sanal makineler tarafından desteklenen karma runbook çalışanları kull
 
 * [Azure Otomasyonu farklı çalıştır hesabını yönetme](./manage-runas-account.md)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6,4: onaylanan Azure kaynakları envanterini tanımlama ve sürdürme
 
 **Rehberlik**: Kurumsal gereksinimleriniz uyarınca, işlem kaynakları Için onaylanan Azure kaynakları ve onaylanan yazılım envanterini oluşturmanız gerekir.
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: onaylanmamış Azure kaynakları için izleyici
 
@@ -754,9 +754,9 @@ Ayrıca, abonelikleri içindeki kaynakları sorgulamak/öğrenmek için Azure Ka
 
 * [Azure Otomasyonu için Azure Ilke örneği yerleşik bileşenleri](./policy-reference.md)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: işlem kaynakları içindeki onaylanmamış yazılım uygulamaları için izleyici
 
@@ -770,7 +770,7 @@ Azure sanal makineler tarafından desteklenen karma runbook çalışanları kull
 
 * [Azure Otomasyonu 'nda modülü yönetme](./shared-resources/modules.md)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -782,9 +782,9 @@ Azure sanal makineler tarafından desteklenen karma runbook çalışanları kull
 
 * [Azure Otomasyonu 'nda modülü yönetme](./shared-resources/modules.md)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="68-use-only-approved-applications"></a>6,8: yalnızca onaylanan uygulamaları kullan
 
@@ -792,7 +792,7 @@ Azure sanal makineler tarafından desteklenen karma runbook çalışanları kull
 
 * [Azure Güvenlik Merkezi Uyarlamalı uygulama denetimlerini kullanma](../security-center/security-center-adaptive-application.md)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -806,9 +806,9 @@ Azure sanal makineler tarafından desteklenen karma runbook çalışanları kull
 
 * [Azure Ilkesiyle belirli bir kaynak türünü reddetme](../governance/policy/samples/index.md)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6,10: onaylanan yazılım başlıkları envanterini koruyun
 
@@ -818,7 +818,7 @@ Uyarlamalı uygulama denetimi, Azure Güvenlik Merkezi 'nden, Azure ve Azure dı
 
 * [Azure Güvenlik Merkezi Uyarlamalı uygulama denetimlerini kullanma](../security-center/security-center-adaptive-application.md)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -828,9 +828,9 @@ Uyarlamalı uygulama denetimi, Azure Güvenlik Merkezi 'nden, Azure ve Azure dı
 
 * [Azure Resource Manager erişimi engellemek için koşullu erişimi yapılandırma](../role-based-access-control/conditional-access-azure-management.md)
 
-**Azure Güvenlik Merkezi izleme**: Evet
+**Azure Güvenlik Merkezi izlemesi**: Yes
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: kullanıcıların işlem kaynakları içinde betikleri yürütme yeteneğini sınırlayın
 
@@ -840,7 +840,7 @@ Uyarlamalı uygulama denetimi, Azure Güvenlik Merkezi 'nden, Azure ve Azure dı
 
 * [Azure Güvenlik Merkezi Uyarlamalı uygulama denetimlerini kullanma](../security-center/security-center-adaptive-application.md)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -862,7 +862,7 @@ Uyarlamalı uygulama denetimi, Azure Güvenlik Merkezi 'nden, Azure ve Azure dı
 
 * [Abonelik kararı kılavuzu](/azure/cloud-adoption-framework/decision-guides/subscriptions/)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -888,9 +888,9 @@ Azure Güvenlik Merkezi 'nin önerilerini Azure kaynaklarınız için güvenli b
 
 * [Güvenlik önerileri - başvuru kılavuzu](../security-center/recommendations-reference.md)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7,2: güvenli işletim sistemi yapılandırması oluşturma
 
@@ -902,7 +902,7 @@ Karma Runbook Worker özelliğini kullanırken, sanal makinelerinizdeki güvenli
 
 * [Azure Güvenlik Merkezi önerilerini Düzeltme](../security-center/security-center-remediate-recommendations.md)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -922,9 +922,9 @@ Karma Runbook Worker özelliğini kullanırken, sanal makinelerinizdeki güvenli
 
 * [Azure Otomasyonu için Azure Ilke örneği yerleşik bileşenleri](./policy-reference.md)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7,4: güvenli işletim sistemi yapılandırmalarının bakımını yapma
 
@@ -944,7 +944,7 @@ Karma Runbook Worker özelliğini kullanırken, dağıtım için Azure sanal mak
 
 * [Özel bir VM VHD 'sini Azure 'a yükleme](/azure-stack/operator/azure-stack-add-vm-image?view=azs-1910)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -958,9 +958,9 @@ Karma Runbook Worker özelliğini kullanırken, dağıtım için Azure sanal mak
 
 * [Kaynak denetimi tümleştirmesini kullanma](./source-control-integration.md)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7,6: özel işletim sistemi görüntülerini güvenli bir şekilde depolayın
 
@@ -972,7 +972,7 @@ Karma Runbook Worker özelliğini kullanırken, yalnızca yetkili kullanıcılar
 
 * [Azure RBAC 'yi yapılandırma](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -986,9 +986,9 @@ Karma Runbook Worker özelliğini kullanırken, yalnızca yetkili kullanıcılar
 
 * [Azure Otomasyonu için Azure Ilke örneği yerleşik bileşenleri](./policy-reference.md)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7,8: işletim sistemleri için yapılandırma yönetimi araçları dağıtma
 
@@ -998,7 +998,7 @@ Karma Runbook Worker özelliğini kullanırken, herhangi bir bulutta veya şirke
 
 * [Azure Otomasyonu durum yapılandırmasına göre yönetim için makine ekleme](./automation-dsc-onboarding.md)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -1016,9 +1016,9 @@ Karma Runbook Worker özelliğini kullanırken Azure sanal makineleriniz için t
 
 * [Azure Otomasyonu için Azure Ilke örneği yerleşik bileşenleri](./policy-reference.md)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: işletim sistemleri için otomatik yapılandırma izlemeyi Uygula
 
@@ -1028,7 +1028,7 @@ Karma Runbook Worker özelliğini kullanırken, herhangi bir bulutta veya şirke
 
 * [Azure Otomasyonu durum yapılandırmasına göre yönetim için makine ekleme](./automation-dsc-onboarding.md)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -1046,7 +1046,7 @@ Karma Runbook Worker özelliğini kullanırken, herhangi bir bulutta veya şirke
 
 * [Key Vault erişim ilkesi atama](../key-vault/general/assign-access-policy-portal.md)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -1058,7 +1058,7 @@ Karma Runbook Worker özelliğini kullanırken, herhangi bir bulutta veya şirke
 
 * [Otomasyon hesabı için müşteri tarafından yönetilen anahtarların kullanımı](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -1068,9 +1068,9 @@ Karma Runbook Worker özelliğini kullanırken, herhangi bir bulutta veya şirke
 
 * [Kimlik bilgisi tarayıcısı kurulumu](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
-**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ## <a name="malware-defense"></a>Kötü amaçlı yazılımdan koruma
 
@@ -1084,7 +1084,7 @@ Karma Runbook Worker özelliğini kullanırken, runbook worker kaynaklarınızı
 
 * [Cloud Services ve sanal makineler için Microsoft kötü amaçlı yazılımdan koruma yapılandırma](../security/fundamentals/antimalware.md)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -1094,7 +1094,7 @@ Karma Runbook Worker özelliğini kullanırken, runbook worker kaynaklarınızı
 
 * [Azure Cloud Services ve sanal makineler için Microsoft Antimalware 'i anlayın](../security/fundamentals/antimalware.md)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -1108,7 +1108,7 @@ Karma Runbook Worker özelliğini kullanırken, en son imzayı, platformu ve alt
 
 * [Microsoft Defender Gelişmiş Tehdit Koruması](/windows/security/threat-protection/microsoft-defender-atp/onboard-configure)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
 **Sorumluluk**: geçerli değil
 
@@ -1140,9 +1140,9 @@ Kaynak denetimi deponuzdaki betiklerle Otomasyon hesabınızda runbook 'larını
 
 * [Kaynak denetimi tümleştirmesini kullanma](./source-control-integration.md)
 
-**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: tam sistem yedeklemeleri gerçekleştirin ve müşterinin yönettiği tüm anahtarları yedekleyin
 
@@ -1166,9 +1166,9 @@ Kaynak denetimi deponuzdaki betiklerle Otomasyon hesabınızda runbook 'larını
 
 * [Otomasyon hesapları için Azure veri yedeklemesi](./automation-managing-data.md#data-backup)
 
-**Azure Güvenlik Merkezi izleme**: Evet
+**Azure Güvenlik Merkezi izlemesi**: Yes
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: müşteri tarafından yönetilen anahtarlar dahil tüm yedeklemeleri doğrulama
 
@@ -1180,9 +1180,9 @@ Kaynak denetimi deponuzdaki betiklerle Otomasyon hesabınızda runbook 'larını
 
 * [Otomasyon hesabı için müşteri tarafından yönetilen anahtarların kullanımı](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
-**Azure Güvenlik Merkezi izleme**: Evet
+**Azure Güvenlik Merkezi izlemesi**: Yes
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: yedeklemelerin ve müşteri tarafından yönetilen anahtarların korunmasını sağlayın
 
@@ -1196,9 +1196,9 @@ Kaynak denetimi deponuzdaki betiklerle Otomasyon hesabınızda runbook 'larını
 
 * [Kaynak denetimi tümleştirmesini kullanma](./source-control-integration.md)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ## <a name="incident-response"></a>Olay yanıtı
 
@@ -1214,23 +1214,23 @@ Kaynak denetimi deponuzdaki betiklerle Otomasyon hesabınızda runbook 'larını
 
 * [Müşteri, kendi olay yanıt planının oluşturulmasına yardımcı olması için NıST 'nin bilgisayar güvenliği olay Işleme kılavuzunu da kullanabilir](https://csrc.nist.gov/publications/detail/sp/800-61/rev-2/final)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: olay Puanlama ve öncelik belirlemesi prosedürü oluşturma
 
 **Rehberlik**: Güvenlik Merkezi, ilk olarak hangi uyarıların araştırılması gerektiğini önceliklendirmenize yardımcı olmak için her bir uyarıya önem derecesi atar. Önem derecesi, uyarı veren etkinliğin arkasında kötü amaçlı bir amaç olduğunu ve uyarıyı vermek için kullanılan analitik düzeyini, ne kadar güvenli bir güvenlik merkezinin olduğunu temel alır.
 
-Ayrıca, abonelikleri açıkça işaretleyin (örn. üretim, üretim dışı) etiketleri kullanarak Azure kaynaklarını açıkça tanımlamak ve kategorilere ayırmak için özellikle de hassas verileri işleyen bir adlandırma sistemi oluşturun. Olayın gerçekleştiği Azure kaynakları ve ortamının önem derecesine bağlı olarak, uyarıların düzeltilmesine öncelik vermek sizin sorumluluğunuzdadır.
+Ayrıca, abonelikleri açıkça işaretleyin (örn. üretim, üretim dışı) etiketleri kullanarak Azure kaynaklarını açıkça tanımlamak ve kategorilere ayırmak için özellikle de hassas verileri işleyen bir adlandırma sistemi oluşturun. Azure kaynaklarının önem düzeyine ve olayın oluştuğu ortama bağlı olarak uyarıların çözümünde önceliği belirlemek sizin sorumluluğunuzdadır.
 
 * [Azure Güvenlik Merkezi'nde güvenlik uyarıları](../security-center/security-center-alerts-overview.md)
 
 * [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](../azure-resource-manager/management/tag-resources.md)
 
-**Azure Güvenlik Merkezi izleme**: Evet
+**Azure Güvenlik Merkezi izlemesi**: Yes
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="103-test-security-response-procedures"></a>10,3: test Güvenliği Yanıt yordamları
 
@@ -1238,9 +1238,9 @@ Ayrıca, abonelikleri açıkça işaretleyin (örn. üretim, üretim dışı) et
 
 * [NıST 'nin Yayımlama Kılavuzu, BT planları ve becerileri için programları test etme, eğitim ve alıştırma Kılavuzu](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: güvenlik olaylarına ilişkin iletişim ayrıntılarını sağlayın ve güvenlik olayları için uyarı bildirimleri yapılandırın
 
@@ -1248,9 +1248,9 @@ Ayrıca, abonelikleri açıkça işaretleyin (örn. üretim, üretim dışı) et
 
 * [Azure Güvenlik Merkezi güvenlik Ilgili kişisini ayarlama](../security-center/security-center-provide-security-contact-details.md)
 
-**Azure Güvenlik Merkezi izleme**: Evet
+**Azure Güvenlik Merkezi izlemesi**: Yes
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: güvenlik uyarılarını olay yanıt sisteminizle birleştirme
 
@@ -1258,11 +1258,11 @@ Ayrıca, abonelikleri açıkça işaretleyin (örn. üretim, üretim dışı) et
 
 * [Sürekli dışarı aktarmayı yapılandırma](../security-center/continuous-export.md)
 
-* [Uyarıları Azure Sentinel 'e akış](../sentinel/connect-azure-security-center.md)
+* [Uyarıların Azure Sentinel’e akışını yapma](../sentinel/connect-azure-security-center.md)
 
-**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10,6: güvenlik uyarılarına yanıtı otomatikleştirme
 
@@ -1270,9 +1270,9 @@ Ayrıca, abonelikleri açıkça işaretleyin (örn. üretim, üretim dışı) et
 
 * [Iş akışı otomasyonu ve Logic Apps yapılandırma](../security-center/workflow-automation.md)
 
-**Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
+**Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Sızma testleri ve red team alıştırmaları
 
@@ -1280,15 +1280,15 @@ Ayrıca, abonelikleri açıkça işaretleyin (örn. üretim, üretim dışı) et
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings"></a>11,1: Azure kaynaklarınızın düzenli olarak sızma testini gerçekleştirin ve tüm kritik güvenlik bulgularını düzeltmeye dikkat edin
 
-**Rehberlik**: sızma testlerinizin Microsoft ilkelerini ihlal etmediğinden emin olmak Için Microsoft katılım kurallarını izleyin. Microsoft 'un, Microsoft tarafından yönetilen bulut altyapısına, hizmetlerine ve uygulamalarına karşı kırmızı ekip oluşturma ve canlı site sızma testi stratejisini kullanın.
+**Rehberlik**: sızma testlerinizin Microsoft ilkelerini ihlal etmediğinden emin olmak Için Microsoft katılım kurallarını izleyin. Microsoft tarafından yönetilen bulut altyapısında, hizmetlerde ve uygulamalarda Microsoft'un stratejisini ve Kırmızı Ekip ile canlı site sızma testi yürütmesini kullanın.
 
-* [Katılım test kurallarını oyma](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
+* [Sızma Testi Angajman Kuralları](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-* [Microsoft Bulut Kırmızı ekip oluşturma](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
+* [Microsoft Cloud Kırmızı Ekibi](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izlemesi**: Uygulanamaz
 
-**Sorumluluk**: paylaşılan
+**Sorumluluk**: Paylaşımlı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

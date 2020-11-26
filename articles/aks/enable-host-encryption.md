@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) kümesinde konak tabanlı şifreleme
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 4b5deeec0b76520952345e9b03135fa094a1f78e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14ec39272bf2f434aaa57217a90667a62e82901a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87986874"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183303"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes hizmeti (AKS) üzerinde ana bilgisayar tabanlı şifreleme (Önizleme)
 
@@ -41,7 +41,7 @@ az feature register --namespace "Microsoft.Compute" --name "EncryptionAtHost"
 az feature register --namespace "Microsoft.ContainerService"  --name "EnableEncryptionAtHostPreview"
 ```
 
-Durumun *kayıtlı*gösterilmesi birkaç dakika sürer. [Az Feature List][az-feature-list] komutunu kullanarak kayıt durumunu denetleyebilirsiniz:
+Durumun *kayıtlı* gösterilmesi birkaç dakika sürer. [Az Feature List][az-feature-list] komutunu kullanarak kayıt durumunu denetleyebilirsiniz:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.Compute/EncryptionAtHost')].{Name:name,State:properties.state}"
@@ -75,7 +75,7 @@ az extension update --name aks-preview
 
 - Yalnızca yeni düğüm havuzlarında veya yeni kümelerde etkinleştirilebilir.
 - Yalnızca Azure yönetilen disklerinin sunucu tarafı şifrelemesini ve yalnızca belirli [desteklenen VM boyutlarını][supported-sizes]destekleyen [Azure bölgelerinde][supported-regions] etkinleştirilebilir.
-- *VM kümesi türü*olarak sanal makine ölçek kümeleri (VMSS) tabanlı bir aks kümesi ve düğüm havuzu gerektirir.
+- *VM kümesi türü* olarak sanal makine ölçek kümeleri (VMSS) tabanlı bir aks kümesi ve düğüm havuzu gerektirir.
 
 ## <a name="use-host-based-encryption-on-new-clusters-preview"></a>Yeni kümelerde ana bilgisayar tabanlı şifrelemeyi kullan (Önizleme)
 
@@ -99,7 +99,7 @@ Konak tabanlı şifreleme özelliği olmadan yeni düğüm havuzları oluşturma
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[AKS kümesi güvenliğine yönelik en iyi uygulamaları][best-practices-security] gözden geçirin [ana bilgisayar tabanlı şifreleme](../virtual-machines/linux/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)hakkında daha fazla bilgi edinin.
+[AKS kümesi güvenliğine yönelik en iyi uygulamaları][best-practices-security] gözden geçirin [ana bilgisayar tabanlı şifreleme](../virtual-machines/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)hakkında daha fazla bilgi edinin.
 
 
 <!-- LINKS - external -->
@@ -108,8 +108,8 @@ Konak tabanlı şifreleme özelliği olmadan yeni düğüm havuzları oluşturma
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [best-practices-security]: ./operator-best-practices-cluster-security.md
-[supported-regions]: ../virtual-machines/linux/disk-encryption.md#supported-regions
-[supported-sizes]: ../virtual-machines/linux/disk-encryption.md#supported-vm-sizes
+[supported-regions]: ../virtual-machines/disk-encryption.md#supported-regions
+[supported-sizes]: ../virtual-machines/disk-encryption.md#supported-vm-sizes
 [azure-cli-install]: /cli/azure/install-azure-cli
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-feature-list]: /cli/azure/feature#az-feature-list

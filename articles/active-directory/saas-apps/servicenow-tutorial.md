@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 3413e594179cdca0704cb5db7908276b7502e719
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5ba81c7a3da6747b0fee8a05e359181e86e4a19d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004764"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181535"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Öğretici: ServiceNow ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,7 +26,7 @@ Bu öğreticide ServiceNow 'ı Azure Active Directory (Azure AD) ile tümleştir
 * Kullanıcılarınızın Azure AD hesaplarıyla ServiceNow için otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin: Azure portal.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -230,7 +230,7 @@ Bu bölümde, ServiceNow 'a erişim vererek Azure çoklu oturum açma özelliği
 
     * **Kullanıcı tablosundaki... Bu alan** için **e-posta** girin.
   
-    * **Kaydet**'i seçin.
+    * **Kaydet**’i seçin.
 
 1. ServiceNow 'ı otomatik olarak veya el ile yapılandırabilirsiniz. ServiceNow 'ı otomatik olarak yapılandırmak için aşağıdaki adımları izleyin:
 
@@ -281,7 +281,7 @@ Bu bölümde, ServiceNow 'a erişim vererek Azure çoklu oturum açma özelliği
 
             ![Sertifika ve sağ ok simgesi vurgulanmış şekilde koleksiyonun ekran görüntüsü](./media/servicenow-tutorial/tutorial-servicenow-11.png "Çoklu oturum açmayı yapılandırma")
 
-          1. **Kaydet**'i seçin.
+          1. **Kaydet**’i seçin.
 
           1. Sayfanın sağ üst köşesinde **Bağlantıyı Sına**' yı seçin.
 
@@ -446,7 +446,7 @@ Bu bölümün amacı, ServiceNow 'da B. Simon adlı bir Kullanıcı oluşturmakt
     > [!NOTE]
     > Azure AD 'yi, SAML belirtecindeki benzersiz tanımlayıcı olarak Azure AD kullanıcı KIMLIĞINI (Kullanıcı asıl adı) veya e-posta adresini yaymaktır. Bunu, Azure Portal **ServiceNow**  >  **özniteliklerini**  >  **tek oturum açma** bölümüne giderek ve istenen alanı **NameIdentifier** özniteliğiyle eşleştirerek yapın. Azure AD 'de seçili öznitelik için depolanan değer (örneğin, Kullanıcı asıl adı), girilen alan için ServiceNow içinde depolanan değerle eşleşmelidir (örneğin, user_name).
 
-    f. **Kaydet**'i seçin.
+    f. **Kaydet**’i seçin.
 
 ## <a name="test-sso"></a>Test SSO 'SU
 
@@ -478,5 +478,4 @@ Erişim panelinde ServiceNow kutucuğunu seçtiğinizde, SSO 'yu ayarladığın�
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-ServiceNow 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimlerini zorunlu kılabilirsiniz. Oturum denetimleri koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
-
+ServiceNow 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimlerini zorunlu kılabilirsiniz. Oturum denetimleri koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-aad)

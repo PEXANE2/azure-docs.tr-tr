@@ -5,12 +5,12 @@ description: Sorun giderme ve bakım görevleri için Azure Kubernetes Service (
 services: container-service
 ms.topic: article
 ms.date: 06/04/2019
-ms.openlocfilehash: c774e2287d0540c73cdd2234843d6766e7f2fb91
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 4f221a98adb779d32fc5567b201699672c8b90f5
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95792245"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183286"
 ---
 # <a name="connect-with-rdp-to-azure-kubernetes-service-aks-cluster-windows-server-nodes-for-maintenance-or-troubleshooting"></a>Azure Kubernetes Service (AKS) kümesi Windows Server düğümlerine bakım veya sorun giderme için RDP ile bağlanma
 
@@ -20,7 +20,7 @@ Bu makalede, özel IP adreslerini kullanarak AKS düğümüyle bir RDP bağlant�
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makalede, bir Windows Server düğümü olan bir AKS kümeniz olduğunu varsaymaktadır. AKS kümesine ihtiyacınız varsa, [Azure CLI kullanarak bir Windows kapsayıcısı Ile AKS kümesi oluşturma][aks-windows-cli]hakkındaki makaleye bakın. Sorun gidermek istediğiniz Windows Server düğümü için Windows Yöneticisi Kullanıcı adı ve parolası gerekir. Bunları bilmiyorsanız, [bir WINDOWS sanal makinesinde Uzak Masaüstü Hizmetleri sıfırlamayı veya yönetici parolasını ](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/reset-rdp)izleyerek bunları sıfırlayabilirsiniz. Ayrıca, [Microsoft Uzak Masaüstü][rdp-mac]gıbı bir RDP istemcisine da ihtiyacınız vardır.
+Bu makalede, bir Windows Server düğümü olan bir AKS kümeniz olduğunu varsaymaktadır. AKS kümesine ihtiyacınız varsa, [Azure CLI kullanarak bir Windows kapsayıcısı Ile AKS kümesi oluşturma][aks-windows-cli]hakkındaki makaleye bakın. Sorun gidermek istediğiniz Windows Server düğümü için Windows Yöneticisi Kullanıcı adı ve parolası gerekir. Bunları bilmiyorsanız, [bir WINDOWS sanal makinesinde Uzak Masaüstü Hizmetleri sıfırlamayı veya yönetici parolasını ](../virtual-machines/troubleshooting/reset-rdp.md)izleyerek bunları sıfırlayabilirsiniz. Ayrıca, [Microsoft Uzak Masaüstü][rdp-mac]gıbı bir RDP istemcisine da ihtiyacınız vardır.
 
 Ayrıca Azure CLı sürüm 2.0.61 veya üzeri yüklü ve yapılandırılmış olmalıdır. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][install-azure-cli].
 

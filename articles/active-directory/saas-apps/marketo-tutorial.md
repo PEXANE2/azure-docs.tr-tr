@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/04/2020
 ms.author: jeedes
-ms.openlocfilehash: fc98201ac97409edd9be8522532728d7bb9b15af
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bd62855aef59439ed476a13770f79ce6d3cf68f8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021410"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180807"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-marketo"></a>Öğretici: Marketo ile tümleştirme Azure Active Directory
 
@@ -27,7 +27,7 @@ Marketo 'nın Azure AD ile tümleştirilmesi aşağıdaki avantajları sağlar:
 * Kullanıcılarınızın Azure AD hesaplarıyla Marketo 'nın (çoklu oturum açma) otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini Marketo ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -239,9 +239,8 @@ Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki se�
 
 1. Azure portal bu uygulamayı test et ' e tıklayın ve SSO 'yu ayarladığınız Marketo 'da otomatik olarak oturum açmış olmanız gerekir
 
-1. Microsoft Access panel ' i kullanabilirsiniz. Erişim panelinde Marketo kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Marketo 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+1. Microsoft Access panel ' i kullanabilirsiniz. Erişim panelinde Marketo kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Marketo 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Marketo 'yı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
+Marketo 'yı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).

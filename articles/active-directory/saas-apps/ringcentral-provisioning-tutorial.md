@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 915133210c9797db7446bf30391635fd36b73bf0
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: f57114fc4cb76c500cc422966635273c3a923046
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94352821"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181637"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için RingCentral 'ı yapılandırma
 
@@ -30,12 +30,12 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem zil me
 > * Azure AD ile halka merkezi arasında kullanıcı özniteliklerinin eşitlenmiş olmasını sağlama
 > * RingCentral ['Da çoklu oturum açma](./ringcentral-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
 * [Bir Azure AD kiracısı](../develop/quickstart-create-new-tenant.md) 
-* Azure AD'de hazırlama [iznine](../users-groups-roles/directory-assign-admin-roles.md) sahip bir kullanıcı hesabı (Uygulama Yöneticisi, Bulut Uygulaması Yöneticisi, Uygulama Sahibi veya Genel Yönetici). 
+* Azure AD'de hazırlama [iznine](../roles/permissions-reference.md) sahip bir kullanıcı hesabı (Uygulama Yöneticisi, Bulut Uygulaması Yöneticisi, Uygulama Sahibi veya Genel Yönetici). 
 * [Halka merkezi kiracı](https://www.ringcentral.com/office/plansandpricing.html)
 * Yönetim izinlerine sahip halka merkezi 'nde bir kullanıcı hesabı.
 
@@ -46,11 +46,11 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
 ## <a name="step-2-configure-ringcentral-to-support-provisioning-with-azure-ad"></a>Adım 2. Azure AD ile sağlamayı desteklemek için RingCentral 'ı yapılandırma
 
-1. [Halka yönetim konsolunda](https://login.ringcentral.com/sw.html)oturum açın. **Araçlar > Dizin tümleştirmesi** ' ne gidin.
+1. [Halka yönetim konsolunda](https://login.ringcentral.com/sw.html)oturum açın. **Araçlar > Dizin tümleştirmesi**' ne gidin.
 
     ![RingCentral Yönetici Konsolu](media/ringcentral-provisioning-tutorial/admin.png)
 
-2.  **Dizin Sağlayıcısı seç** altında **SCIM** öğesini seçin. (Gelecekte Azure Active Directory) olarak adlandırılan bir seçenek olacaktır. **SCıM hizmetini etkinleştir** ' e tıklayın.
+2.  **Dizin Sağlayıcısı seç** altında **SCIM** öğesini seçin. (Gelecekte Azure Active Directory) olarak adlandırılan bir seçenek olacaktır. **SCıM hizmetini etkinleştir**' e tıklayın.
 
     ![Halka merkezi Add SCıM](media/ringcentral-provisioning-tutorial/scim.png)
 
@@ -78,11 +78,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 ### <a name="to-configure-automatic-user-provisioning-for-ringcentral-in-azure-ad"></a>Azure AD 'de RingCentral için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **RingCentral** ' ı seçin.
+2. Uygulamalar listesinde, **RingCentral**' ı seçin.
 
     ![Uygulamalar listesindeki halka Merkezi bağlantısı](common/all-applications.png)
 
@@ -90,7 +90,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
@@ -102,9 +102,9 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet** ’i seçin.
+7. **Kaydet**’i seçin.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları RingCentral ile eşitler** ' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları RingCentral ile eşitler**' ı seçin.
 
 9. **Öznitelik eşleme** bölümünde Azure AD 'Den RingCentral 'a eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için RingCentral 'daki Kullanıcı hesaplarıyla eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](../app-provisioning/customize-application-attributes.md)değiştirmeyi seçerseniz, bu özniteliğe bağlı olarak, halka merkezi API 'sinin kullanıcıların filtrelenmesini desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -135,7 +135,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-13. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
+13. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: 069c8a8e2a595248afe45bbb90de877b3b6fc87d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc05e83ac6c7f0f7c5e9a571c1fa7397af858f44
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91849357"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180133"
 ---
 # <a name="tutorial-configure-cisco-webex-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Cisco WebEx 'ı yapılandırma
 
@@ -27,7 +27,7 @@ Bu öğreticinin amacı Cisco WebEx ve Azure Active Directory (Azure AD) ' de ge
 >
 > Bu bağlayıcı Şu anda önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -53,7 +53,7 @@ Azure AD ile otomatik Kullanıcı sağlama için Cisco WebEx 'ı yapılandırmad
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Cisco WebEx**yazın, sonuç panelinden **Cisco WebEx** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **Cisco WebEx** yazın, sonuç panelinden **Cisco WebEx** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
     ![Sonuç listesinde Cisco WebEx](common/search-new-app.png)
 
@@ -81,7 +81,7 @@ Bu bölüm, Azure AD sağlama hizmetini Azure AD 'de kullanıcı atamalarını t
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Cisco WebEx**öğesini seçin.
+2. Uygulamalar listesinde **Cisco WebEx** öğesini seçin.
 
     ![Uygulamalar listesindeki Cisco WebEx bağlantısı](common/all-applications.png)
 
@@ -91,21 +91,21 @@ Bu bölüm, Azure AD sağlama hizmetini Azure AD 'de kullanıcı atamalarını t
 
 4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
-    :::image type="content" source="common/provisioning-automatic.png" alt-text="Azure portal bir menünün ekran görüntüsü. Yönet ' in altında sağlama vurgulanır." border="false":::
+    :::image type="content" source="common/provisioning-automatic.png" alt-text="Otomatik vurgulanmış şekilde sağlama modu liste kutusunun ekran görüntüsü." border="false":::
 
-5. **Yönetici kimlik bilgileri** bölümü altında, **kiracı URL 'Sini**ve Cisco WebEx hesabınızın **gizli belirtecini** girin.
+5. **Yönetici kimlik bilgileri** bölümü altında, **kiracı URL 'Sini** ve Cisco WebEx hesabınızın **gizli belirtecini** girin.
 
-    :::image type="content" source="./media/cisco-webex-provisioning-tutorial/secrettoken1.png" alt-text="Azure portal bir menünün ekran görüntüsü. Yönet ' in altında sağlama vurgulanır." border="false":::
+    :::image type="content" source="./media/cisco-webex-provisioning-tutorial/secrettoken1.png" alt-text="Yönetici kimlik bilgileri bölümünün ekran görüntüsü. Kiracı U R L ve gizli belirteç kutuları vurgulanır ancak boştur." border="false":::
 
 6.  **Kiracı URL 'si** alanında, biçiminde bir değer girin `https://api.ciscospark.com/v1/scim/[OrgId]` . `[OrgId]` [Cisco WebEx denetim hub](https://admin.webex.com/login)'ınızı almak için oturum açın. Sol alt kısımdaki kuruluş adına tıklayın ve değeri **kuruluş kimliği**' nden kopyalayın. 
 
-    * **Gizli belirteç**değerini almak Için bu [URL](https://idbroker.webex.com/idb/saml2/jsp/doSSO.jsp?type=login&goto=https%3A%2F%2Fidbroker.webex.com%2Fidb%2Foauth2%2Fv1%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3DC4ca14fe00b0e51efb414ebd45aa88c1858c3bfb949b2405dba10b0ca4bc37402%26redirect_uri%3Dhttp%253A%252F%252Flocalhost%253A3000%252Fauth%252Fcode%26scope%3Dspark%253Apeople_read%2520spark%253Apeople_write%2520Identity%253ASCIM%26state%3Dthis-should-be-a-random-string-for-security-purpose)'ye gidin. Görüntülenen WebEx oturum açma sayfasında, kuruluşunuzun tam Cisco WebEx yönetici hesabıyla oturum açın. Siteye ulaşılamadığını gösteren bir hata sayfası görüntülenir, ancak bu normaldir.
+    * **Gizli belirteç** değerini almak Için bu [URL](https://idbroker.webex.com/idb/saml2/jsp/doSSO.jsp?type=login&goto=https%3A%2F%2Fidbroker.webex.com%2Fidb%2Foauth2%2Fv1%2Fauthorize%3Fresponse_type%3Dtoken%26client_id%3DC4ca14fe00b0e51efb414ebd45aa88c1858c3bfb949b2405dba10b0ca4bc37402%26redirect_uri%3Dhttp%253A%2f%2flocalhost%253A3000%2fauth%2fcode%26scope%3Dspark%253Apeople_read%2520spark%253Apeople_write%2520Identity%253ASCIM%26state%3Dthis-should-be-a-random-string-for-security-purpose)'ye gidin. Görüntülenen WebEx oturum açma sayfasında, kuruluşunuzun tam Cisco WebEx yönetici hesabıyla oturum açın. Siteye ulaşılamadığını gösteren bir hata sayfası görüntülenir, ancak bu normaldir.
 
-        :::image type="content" source="./media/cisco-webex-provisioning-tutorial/test.png" alt-text="Azure portal bir menünün ekran görüntüsü. Yönet ' in altında sağlama vurgulanır." border="false":::
+        :::image type="content" source="./media/cisco-webex-provisioning-tutorial/test.png" alt-text="Hata iletisi görüntüleyen bir Web sayfasının ekran görüntüsü. İleti, siteye ulaşılamadığından ve birkaç sorun giderme ipucu içerdiğini belirtir." border="false":::
  
     * Oluşturulan taşıyıcı belirtecinin değerini, URL 'den aşağıda vurgulanan şekilde kopyalayın. Bu belirteç 365 gün için geçerlidir.
         
-        :::image type="content" source="./media/cisco-webex-provisioning-tutorial/test1.png" alt-text="Azure portal bir menünün ekran görüntüsü. Yönet ' in altında sağlama vurgulanır." border="false":::
+        :::image type="content" source="./media/cisco-webex-provisioning-tutorial/test1.png" alt-text="Uzun U R L 'yi gösteren ekran görüntüsü. adresin bir kısmı dizinlenebilir ancak vurgulanmış ve etiketlendirilmiş bir taşıyıcı belirteç." border="false":::
 
 7. 5. adımda gösterilen alanları doldurarak Azure AD 'nin Cisco WebEx 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Cisco WebEx hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
@@ -119,11 +119,11 @@ Bu bölüm, Azure AD sağlama hizmetini Azure AD 'de kullanıcı atamalarını t
 
 10. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Cisco WebEx olarak eşitler**' ı seçin.
 
-    :::image type="content" source="./media/cisco-webex-provisioning-tutorial/usermapping.png" alt-text="Azure portal bir menünün ekran görüntüsü. Yönet ' in altında sağlama vurgulanır." border="false":::
+    :::image type="content" source="./media/cisco-webex-provisioning-tutorial/usermapping.png" alt-text="Azure portal eşlemeler bölümünün ekran görüntüsü. Ad ' ın altında, Azure Active Directory Kullanıcıları Cıcospark ile eşitler." border="false":::
 
 11. **Öznitelik eşleme** bölümünde Azure AD 'Den Cisco WebEx 'e eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Cisco WebEx içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    :::image type="content" source="./media/cisco-webex-provisioning-tutorial/usermappingattributes.png" alt-text="Azure portal bir menünün ekran görüntüsü. Yönet ' in altında sağlama vurgulanır." border="false":::
+    :::image type="content" source="./media/cisco-webex-provisioning-tutorial/usermappingattributes.png" alt-text="Azure Active Directory özniteliklerini, karşılık gelen Cıcospark özniteliklerini ve eşleşen durumu gösteren öznitelik eşlemeleri bölümünün ekran görüntüsü." border="false":::
 
 12. Kapsam belirleme filtrelerini yapılandırmak için [Kapsam belirleme filtresi öğreticisi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) ile sunulan yönergeleri izleyin.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: 5fd1f310d952873ed178a88b830ee979344143c8
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 7e63b0af2c5b9bd39f755c39adc296b3a8c4a049
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94355342"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180974"
 ---
 # <a name="tutorial-configure-envoy-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Envoy yapılandırma
 
@@ -31,12 +31,12 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Envoy 
 > * Envoy 'de grupları ve grup üyeliklerini sağlama
 > * Envoy için [Çoklu oturum açma](./envoy-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
 * [Bir Azure AD kiracısı](../develop/quickstart-create-new-tenant.md) 
-* Azure AD'de hazırlama [iznine](../users-groups-roles/directory-assign-admin-roles.md) sahip bir kullanıcı hesabı (Uygulama Yöneticisi, Bulut Uygulaması Yöneticisi, Uygulama Sahibi veya Genel Yönetici). 
+* Azure AD'de hazırlama [iznine](../roles/permissions-reference.md) sahip bir kullanıcı hesabı (Uygulama Yöneticisi, Bulut Uygulaması Yöneticisi, Uygulama Sahibi veya Genel Yönetici). 
 * [Bir Envoy kiracısı](https://envoy.com/pricing/).
 * Yönetici izinlerine sahip bir kullanıcı hesabı.
 
@@ -47,7 +47,7 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
 ## <a name="step-2-configure-envoy-to-support-provisioning-with-azure-ad"></a>Adım 2. Azure AD ile sağlamayı desteklemek için Envoy 'yi yapılandırma
 
-1. [Envoy Yönetici konsolunuza](https://dashboard.envoy.com/login)oturum açın. **Tümleştirmeler** ' e tıklayın.
+1. [Envoy Yönetici konsolunuza](https://dashboard.envoy.com/login)oturum açın. **Tümleştirmeler**' e tıklayın.
 
     ![Envoy tümleştirmeleri](media/envoy-provisioning-tutorial/envoy01.png)
 
@@ -82,11 +82,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 ### <a name="to-configure-automatic-user-provisioning-for-envoy-in-azure-ad"></a>Azure AD 'de Envoy için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Envoy** ' yi seçin.
+2. Uygulamalar listesinde, **Envoy**' yi seçin.
 
     ![Uygulamalar listesindeki Envoy bağlantısı](common/all-applications.png)
 
@@ -94,7 +94,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
@@ -106,9 +106,9 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet** ’i seçin.
+7. **Kaydet**’i seçin.
 
-8. **Eşlemeler** bölümü altında, **kullanıcıları Azure Active Directory kullanıcılarla eşitler** ' ı seçin.
+8. **Eşlemeler** bölümü altında, **kullanıcıları Azure Active Directory kullanıcılarla eşitler**' ı seçin.
 
 9. **Öznitelik eşleme** bölümünde Azure AD 'den tam olarak eşitlenecek Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Envoy içindeki kullanıcı hesaplarıyla eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](../app-provisioning/customize-application-attributes.md)değiştirmeyi seçerseniz, Envoy API 'sinin kullanıcıları bu özniteliğe göre filtrelemeyi desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -154,7 +154,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-15. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

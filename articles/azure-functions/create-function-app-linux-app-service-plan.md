@@ -3,12 +3,12 @@ title: Linux üzerinde Azure portal bir işlev uygulaması oluşturma
 description: Azure portal kullanarak Linux üzerinde ilk Azure işlevinizi oluşturmayı öğrenin.
 ms.topic: how-to
 ms.date: 04/29/2020
-ms.openlocfilehash: 53edee15d9c9dfa66e57bb1eb03b1d8f66aa1ee2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20390239ed58e42749e9a3bae472a2f3f6324bb2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90970728"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181263"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Azure App Service planında Linux üzerinde bir işlev uygulaması oluşturma
 
@@ -26,7 +26,7 @@ Azure hesabınızla Azure portalında <https://portal.azure.com> sayfasında otu
 
 Linux’ta işlevlerinizin yürütülmesini barındıran bir işlev uygulamasına sahip olmanız gerekir. İşlev uygulaması, işlev kodunuzun yürütülmesine yönelik bir ortam sağlar. Kaynakların daha kolay yönetilmesi, dağıtılması, ölçeklendirilmesi ve paylaşılması için işlevleri bir mantıksal birim olarak gruplandırmanızı sağlar. Bu makalede, işlev uygulamanızı oluştururken bir App Service planı oluşturacaksınız.
 
-1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**'u seçin.
+1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur** seçeneğini belirleyin.
 
 1. **Yeni** sayfasında, **işlem**  >  **işlev uygulaması**' yi seçin.
 
@@ -44,7 +44,7 @@ Linux’ta işlevlerinizin yürütülmesini barındıran bir işlev uygulamasın
     |**Sürüm**| Sürüm numarası | Yüklü çalışma zamanının sürümünü seçin.  |
     |**Bölge**| Tercih edilen bölge | Size yakın bir bölge seçin ve işlevlerinizin erişebileceği diğer hizmetlere yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. |
 
-    :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-basics-linux.png" alt-text="Azure portalında işlev uygulaması oluşturma":::
+    :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-basics-linux.png" alt-text="Temel bilgiler sayfası":::
 
 1. Ileri 'yi seçin **: barındırma**. **Barındırma** sayfasında, aşağıdaki ayarları girin.
 
@@ -54,15 +54,15 @@ Linux’ta işlevlerinizin yürütülmesini barındıran bir işlev uygulamasın
     |**İşletim sistemi**| **Linux** | Çalışma zamanı yığını seçiminize göre sizin için bir işletim sistemi önceden seçilmiştir, ancak gerekirse ayarı değiştirebilirsiniz. |
     | **[Planlama](../azure-functions/functions-scale.md)** | **Kullanım (Sunucusuz)** | Kaynakların işlev uygulamanıza nasıl ayrılacağını tanımlayan barındırma planı. Varsayılan **Tüketim** planında kaynaklar işlevlerin taleplerine göre dinamik olarak eklenir. Bu [sunucusuz](https://azure.microsoft.com/overview/serverless-computing/) barındırmada yalnızca işlevlerinizin çalıştığı süre için ödeme yaparsınız. Bir App Service planı içinde çalıştırdığınızda [işlev uygulamanızın ölçeklendirmesini](../azure-functions/functions-scale.md) yönetmeniz gerekir.  |
 
-    :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-hosting-linux.png" alt-text="Azure portalında işlev uygulaması oluşturma":::
+    :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-hosting-linux.png" alt-text="Barındırma sayfası":::
 
-1. **İleri: izleme**öğesini seçin. **İzleme** sayfasında, aşağıdaki ayarları girin.
+1. **İleri: izleme** öğesini seçin. **İzleme** sayfasında, aşağıdaki ayarları girin.
 
     | Ayar      | Önerilen değer  | Açıklama |
     | ------------ | ---------------- | ----------- |
     | **[Application Insights](../azure-functions/functions-monitoring.md)** | **Evet** (varsayılan) | En yakın desteklenen bölgede aynı *uygulama adının* Application Insights kaynağını oluşturur. Bu ayarı genişleterek veya **Yeni oluştur**' u seçerek, Application Insights adını değiştirebilir veya verilerinizi depolamak istediğiniz [Azure Coğrafya](https://azure.microsoft.com/global-infrastructure/geographies/) 'da farklı bir bölge seçebilirsiniz. |
 
-   :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-monitoring-linux.png" alt-text="Azure portalında işlev uygulaması oluşturma":::
+   :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-monitoring-linux.png" alt-text="İzleme sayfası":::
 
 1. Uygulama yapılandırma seçimlerini gözden geçirmek için **gözden geçir + oluştur** ' u seçin.
 
@@ -70,7 +70,7 @@ Linux’ta işlevlerinizin yürütülmesini barındıran bir işlev uygulamasın
 
 1. Portalın sağ üst köşesindeki **Bildirimler** simgesini seçin ve **dağıtım başarılı** iletisini izleyin.
 
-1. Yeni işlev uygulamanızı görüntülemek için **Kaynağa git**’i seçin. **Panoya sabitle ' yi**de seçebilirsiniz. Sabitleme, panonuzdan bu işlev uygulama kaynağına döndürülmesini kolaylaştırır.
+1. Yeni işlev uygulamanızı görüntülemek için **Kaynağa git**’i seçin. **Panoya sabitle ' yi** de seçebilirsiniz. Sabitleme, panonuzdan bu işlev uygulama kaynağına döndürülmesini kolaylaştırır.
 
     ![Dağıtım bildirimi](./media/create-function-app-linux-app-service-plan/function-app-create-notification2.png)
 
@@ -83,7 +83,7 @@ Ardından, yeni işlev uygulamasında bir işlev oluşturun.
 Bu bölümde, portalda yeni işlev uygulamanızda nasıl bir işlev oluşturacağınız gösterilmektedir.
 
 > [!NOTE]
-> Portal geliştirme deneyimi, Azure Işlevleri 'ni denemek için yararlı olabilir. Çoğu senaryoda, işlevlerinizi yerel olarak geliştirmeyi ve [Visual Studio Code](functions-create-first-function-vs-code.md#create-an-azure-functions-project) ya da [Azure Functions Core Tools](functions-run-local.md#create-a-local-functions-project)kullanarak projeyi işlev uygulamanızda yayımlamayı düşünün.  
+> Portal geliştirme deneyimi, Azure Işlevleri 'ni denemek için yararlı olabilir. Çoğu senaryoda, işlevlerinizi yerel olarak geliştirmeyi ve [Visual Studio Code](./create-first-function-vs-code-csharp.md#create-an-azure-functions-project) ya da [Azure Functions Core Tools](functions-run-local.md#create-a-local-functions-project)kullanarak projeyi işlev uygulamanızda yayımlamayı düşünün.  
 
 1. **İşlevler** penceresinin sol menüsünde **işlevler**' i seçin ve ardından üst menüden **Ekle** ' yi seçin. 
  
@@ -91,7 +91,7 @@ Bu bölümde, portalda yeni işlev uygulamanızda nasıl bir işlev oluşturaca�
 
     ![HTTP tetikleyici işlevini seçin](./media/create-function-app-linux-app-service-plan/function-app-select-http-trigger.png)
 
-1. **Yeni işlev** penceresinde, **yeni işlev**için varsayılan adı kabul edin veya yeni bir ad girin. 
+1. **Yeni işlev** penceresinde, **yeni işlev** için varsayılan adı kabul edin veya yeni bir ad girin. 
 
 1. **Yetkilendirme düzeyi** açılan listesinden **anonim** ' i seçin ve ardından **işlev oluştur**' u seçin.
 

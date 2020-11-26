@@ -17,12 +17,12 @@ ms.date: 10/07/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 675c98e00b7458f326c95741529f7ce41a91dc18
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 2408db2d91740350405f11e2a1250ab9b3a4fe31
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319718"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181212"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Azure Active Directory portalında raporları sağlama (Önizleme)
 
@@ -211,7 +211,7 @@ Ayrıntılar aşağıdaki kategorilere göre gruplandırılır:
 
 ## <a name="what-you-should-know"></a>Bilmeniz gerekenler
 
-- Azure portal, bir Premium sürümünüz varsa ve ücretsiz sürümünüz varsa 7 gün sonra, bildirilen sağlama verilerini 30 gün boyunca depolar. Sağlama günlükleri, 30 günden daha fazla bekletme için [Log Analytics](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics) 'e yayımlanabilir. 
+- Azure portal, bir Premium sürümünüz varsa ve ücretsiz sürümünüz varsa 7 gün sonra, bildirilen sağlama verilerini 30 gün boyunca depolar. Sağlama günlükleri, 30 günden daha fazla bekletme için [Log Analytics](../app-provisioning/application-provisioning-log-analytics.md) 'e yayımlanabilir. 
 
 - Değişiklik KIMLIĞI özniteliğini benzersiz tanımlayıcı olarak kullanabilirsiniz. Bu örneğin, ürün desteğiyle etkileşim kurarken faydalı olur.
 

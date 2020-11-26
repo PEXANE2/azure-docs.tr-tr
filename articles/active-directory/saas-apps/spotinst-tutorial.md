@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.openlocfilehash: d9c9ac87e655cf9178d58f04b502f7e781d1fef7
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520549"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181420"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-spotinst"></a>Öğretici: Spotınst ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Spotinst 'ı Azure Active Directory (Azure AD) ile tümleştirm
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -54,7 +54,7 @@ Spotınst 'in Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden,
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-spotinst"></a>Spotinst için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak, spotinst Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Spotinst içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak, spotinst Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Spotinst içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Spotinst ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -113,7 +113,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -171,11 +171,11 @@ Bu bölümün amacı, Spotınst 'de Britta Simon adlı bir Kullanıcı oluşturm
 
     ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz Kullanıcı ekle bölümünü gösterir.](./media/spotinst-tutorial/adduser2.png)
 
-    * **Tam ad** metin kutusuna, **Brittasıon**gibi kullanıcının tam adını girin.
+    * **Tam ad** metin kutusuna, **Brittasıon** gibi kullanıcının tam adını girin.
 
     * **E-posta** metin kutusuna, gibi kullanıcının e-posta adresini girin `brittasimon\@contoso.com` .
 
-    * Kuruluş **rolü, hesap rolü ve hesaplar**için kuruluşa özgü ayrıntıları seçin.
+    * Kuruluş **rolü, hesap rolü ve hesaplar** için kuruluşa özgü ayrıntıları seçin.
 
 2. Uygulamayı **IDP** tarafından başlatılan modda yapılandırdıysanız, bu bölümde sizin için herhangi bir eylem öğesi yoktur. Spotinst, varsayılan olarak etkinleştirilen tam zamanında sağlamayı destekler. Henüz mevcut değilse, Spotinst 'a erişme girişimi sırasında yeni bir Kullanıcı oluşturulur.
 

@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/22/2020
 ms.author: Zhchia
-ms.openlocfilehash: bdbda77c45e3b1f1533326483ee19aa8ff4af515
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: d003a512ebde626b8726dfccc58110e53f1cd467
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358346"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180923"
 ---
 # <a name="tutorial-configure-global-relay-identity-sync-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için genel geçiş kimlik eşitlemesini yapılandırma
 
-Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem genel geçiş kimlik eşitleme hem de Azure Active Directory (Azure AD) içinde gerçekleştirmeniz gereken adımları açıklamaktadır. Yapılandırıldığında, Azure AD, Azure AD sağlama hizmeti 'ni kullanarak kullanıcıları ve grupları küresel geçiş kimlik eşitlemesine otomatik olarak sağlar. Hizmetin işlevleri ve çalışma şekli hakkında daha fazla bilgi edinmek ve sık sorulan soruları incelemek için bkz. [Azure Active Directory ile SaaS uygulamalarına kullanıcı hazırlama ve kaldırma işlemlerini otomatik hale getirme](../manage-apps/user-provisioning.md). 
+Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem genel geçiş kimlik eşitleme hem de Azure Active Directory (Azure AD) içinde gerçekleştirmeniz gereken adımları açıklamaktadır. Yapılandırıldığında, Azure AD, Azure AD sağlama hizmeti 'ni kullanarak kullanıcıları ve grupları küresel geçiş kimlik eşitlemesine otomatik olarak sağlar. Hizmetin işlevleri ve çalışma şekli hakkında daha fazla bilgi edinmek ve sık sorulan soruları incelemek için bkz. [Azure Active Directory ile SaaS uygulamalarına kullanıcı hazırlama ve kaldırma işlemlerini otomatik hale getirme](../app-provisioning/user-provisioning.md). 
 
 
 ## <a name="capabilities-supported"></a>Desteklenen özellikler
@@ -38,17 +38,17 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem genel 
 > [!NOTE]
 > Küresel geçiş kimlik eşitleme sağlama Bağlayıcısı, güvenlik sorunları nedeniyle artık desteklenmeyen bir SCıM yetkilendirme yöntemi kullanır. Çabalar, daha güvenli bir yetkilendirme yöntemine geçiş yapmak için küresel geçişle devam eden çalışmalardır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
-* [Bir Azure AD kiracısı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
-* Azure AD 'de sağlamayı yapılandırma [izni](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) olan bir kullanıcı hesabı (örneğin, uygulama Yöneticisi, bulut uygulaması Yöneticisi, uygulama sahibi veya genel yönetici).
+* [Bir Azure AD kiracısı](../develop/quickstart-create-new-tenant.md) 
+* Azure AD 'de sağlamayı yapılandırma [izni](../roles/permissions-reference.md) olan bir kullanıcı hesabı (örneğin, uygulama Yöneticisi, bulut uygulaması Yöneticisi, uygulama sahibi veya genel yönetici).
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Adım 1. Hazırlama dağıtımınızı planlama
-1. [Hazırlama hizmetinin nasıl çalıştığı](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) hakkında bilgi edinin.
-2. [Hazırlık kapsamına](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) dahil edilecek kullanıcıları seçin.
-3. [Azure AD Ile genel geçiş kimlik eşitlemesi arasında](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)hangi verilerin eşlendiğini saptayın. 
+1. [Hazırlama hizmetinin nasıl çalıştığı](../app-provisioning/user-provisioning.md) hakkında bilgi edinin.
+2. [Hazırlık kapsamına](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) dahil edilecek kullanıcıları seçin.
+3. [Azure AD Ile genel geçiş kimlik eşitlemesi arasında](../app-provisioning/customize-application-attributes.md)hangi verilerin eşlendiğini saptayın. 
 
 ## <a name="step-2-configure-global-relay-identity-sync-to-support-provisioning-with-azure-ad"></a>Adım 2. Azure AD ile sağlamayı desteklemek için küresel geçiş kimlik eşitlemesini yapılandırın
 
@@ -56,13 +56,13 @@ Kiracı URL 'sini almak için genel geçiş kimliği eşitleme temsilcinizle ile
 
 ## <a name="step-3-add-global-relay-identity-sync-from-the-azure-ad-application-gallery"></a>3. Adım Azure AD uygulama galerisinden genel geçiş kimlik eşitlemesi ekleme
 
-Küresel geçiş kimlik eşitlemesine sağlamayı yönetmeye başlamak için Azure AD uygulama galerisinden genel geçiş kimlik eşitlemesi ekleyin. Galeriden bir uygulamayı [buradan](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)ekleme hakkında daha fazla bilgi edinin. 
+Küresel geçiş kimlik eşitlemesine sağlamayı yönetmeye başlamak için Azure AD uygulama galerisinden genel geçiş kimlik eşitlemesi ekleyin. Galeriden bir uygulamayı [buradan](../manage-apps/add-application-portal.md)ekleme hakkında daha fazla bilgi edinin. 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. Adım: Hazırlık kapsamına dahil edilecek kullanıcıları tanımlama 
 
-Azure AD hazırlama hizmeti, uygulama atamasına veya kullanıcının/grubun özniteliklerine göre hazırlanacak kişilerin kapsamını belirlemenizi sağlar. Uygulamanız için hazırlanacak kişilerin kapsamını atamaya göre belirlemeyi seçerseniz kullanıcıları ve grupları uygulamaya atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Hazırlanacak kişilerin kapsamını yalnızca kullanıcı veya grup özniteliklerine göre belirlemeyi seçerseniz [burada](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) anlatılan kapsam belirleme filtresini kullanabilirsiniz. 
+Azure AD hazırlama hizmeti, uygulama atamasına veya kullanıcının/grubun özniteliklerine göre hazırlanacak kişilerin kapsamını belirlemenizi sağlar. Uygulamanız için hazırlanacak kişilerin kapsamını atamaya göre belirlemeyi seçerseniz kullanıcıları ve grupları uygulamaya atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Hazırlanacak kişilerin kapsamını yalnızca kullanıcı veya grup özniteliklerine göre belirlemeyi seçerseniz [burada](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) anlatılan kapsam belirleme filtresini kullanabilirsiniz. 
 
-* Başlangıçta kapsamı sınırlı tutun. Herkesi hazırlamadan önce birkaç kullanıcı ve grupla test yapın. Hazırlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında uygulamaya bir veya iki kullanıcı ya da grup atayarak bu adımı kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında [öznitelik tabanlı kapsam filtresi](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) belirtebilirsiniz. 
+* Başlangıçta kapsamı sınırlı tutun. Herkesi hazırlamadan önce birkaç kullanıcı ve grupla test yapın. Hazırlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında uygulamaya bir veya iki kullanıcı ya da grup atayarak bu adımı kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında [öznitelik tabanlı kapsam filtresi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) belirtebilirsiniz. 
 
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-global-relay-identity-sync"></a>5. Adım. Otomatik Kullanıcı sağlamayı genel geçiş kimlik eşitlemesine yapılandırma 
@@ -71,11 +71,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak genel geçiş kimlik eşi
 
 ### <a name="to-configure-automatic-user-provisioning-for-global-relay-identity-sync-in-azure-ad"></a>Azure AD 'de küresel geçiş kimlik eşitlemesi için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **genel geçiş kimlik eşitleme** ' yi seçin.
+2. Uygulamalar listesinde, **genel geçiş kimlik eşitleme**' yi seçin.
 
     ![Uygulamalar listesindeki genel geçiş kimlik eşitleme bağlantısı](common/all-applications.png)
 
@@ -83,11 +83,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak genel geçiş kimlik eşi
 
     ![Hazırlama sekmesi](common/provisioning.png)
 
-4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Sekme otomatik sağlama](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümünde, genel geçiş kimliği eşitleme **kiracı URL** 'nizi girin. Azure AD 'nin genel geçiş kimlik eşitlemesine bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, genel geçiş kimlik eşitleme hesabınızın yönetici izinlerine sahip olduğundan emin olun ve sorunu çözmek için küresel geçiş temsilcinizle iletişime geçin.
+5. **Yönetici kimlik bilgileri** bölümünde, genel geçiş kimliği eşitleme **kiracı URL**'nizi girin. Azure AD 'nin genel geçiş kimlik eşitlemesine bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, genel geçiş kimlik eşitleme hesabınızın yönetici izinlerine sahip olduğundan emin olun ve sorunu çözmek için küresel geçiş temsilcinizle iletişime geçin.
 
     ![Yetkilendirme düğmesi](media/global-relay-identity-sync-provisioning-tutorial/authorization.png)
 
@@ -95,11 +95,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak genel geçiş kimlik eşi
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet** ’i seçin.
+7. **Kaydet**’i seçin.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory kullanıcıları genel geçiş kimlik eşitlemesi olarak eşitle** ' yi seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory kullanıcıları genel geçiş kimlik eşitlemesi olarak eşitle**' yi seçin.
 
-9. **Öznitelik eşleme** bölümünde, Azure AD 'Den genel geçiş kimlik eşitlemesine eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için genel geçiş kimliği eşitleme içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)değiştirmeyi seçerseniz, genel geçiş kimlik eşitleme API 'sinin kullanıcıları bu özniteliğe göre filtrelemeyi desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+9. **Öznitelik eşleme** bölümünde, Azure AD 'Den genel geçiş kimlik eşitlemesine eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için genel geçiş kimliği eşitleme içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](../app-provisioning/customize-application-attributes.md)değiştirmeyi seçerseniz, genel geçiş kimlik eşitleme API 'sinin kullanıcıları bu özniteliğe göre filtrelemeyi desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
    |Öznitelik|Tür|
    |---|---|
@@ -173,7 +173,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak genel geçiş kimlik eşi
 
 
 
-10. **Eşlemeler** bölümünde **Azure Active Directory gruplarını genel geçiş kimlik eşitlemesi olarak eşitle** ' yi seçin.
+10. **Eşlemeler** bölümünde **Azure Active Directory gruplarını genel geçiş kimlik eşitlemesi olarak eşitle**' yi seçin.
 
 11. **Öznitelik eşleme** bölümünde, Azure AD 'Den genel geçiş kimlik eşitlemesine eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için genel geçiş kimliği eşitleme 'deki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -182,7 +182,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak genel geçiş kimlik eşi
       |displayName|Dize|
       |üyeler|Başvuru|
 
-12. Kapsam belirleme filtrelerini yapılandırmak için [Kapsam belirleme filtresi öğreticisi](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md) ile sunulan yönergeleri izleyin.
+12. Kapsam belirleme filtrelerini yapılandırmak için [Kapsam belirleme filtresi öğreticisi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) ile sunulan yönergeleri izleyin.
 
 13. Küresel geçiş kimlik eşitleme için Azure AD sağlama hizmeti 'ni etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
@@ -192,7 +192,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak genel geçiş kimlik eşi
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-15. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 
@@ -201,15 +201,15 @@ Bu işlem, **Ayarlar** bölümündeki **Kapsam** alanında tanımlanan tüm kull
 ## <a name="step-6-monitor-your-deployment"></a>6. Adım. Dağıtımınızı izleme
 Hazırlama ayarlarını yapılandırdıktan sonra dağıtımınızı izlemek için aşağıdaki kaynakları kullanın:
 
-1. Hazırlama işlemi başarılı ve başarısız olan kullanıcıları belirlemek için [hazırlama günlüklerini](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) kullanın
-2. Hazırlama döngüsünün durumunu ve tamamlanması için kalan miktarı görmek için [ilerleme çubuğuna](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user) bakın
-3. Hazırlama yapılandırmasının durumu iyi görünmüyorsa uygulama karantinaya geçer. Karantina durumu hakkında daha fazla bilgi edinmek için [buraya](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) bakın.  
+1. Hazırlama işlemi başarılı ve başarısız olan kullanıcıları belirlemek için [hazırlama günlüklerini](../reports-monitoring/concept-provisioning-logs.md) kullanın
+2. Hazırlama döngüsünün durumunu ve tamamlanması için kalan miktarı görmek için [ilerleme çubuğuna](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) bakın
+3. Hazırlama yapılandırmasının durumu iyi görünmüyorsa uygulama karantinaya geçer. Karantina durumu hakkında daha fazla bilgi edinmek için [buraya](../app-provisioning/application-provisioning-quarantine-status.md) bakın.  
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal Uygulamalar için kullanıcı hesabı hazırlamayı yönetme](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal Uygulamalar için kullanıcı hesabı hazırlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Hazırlama etkinliği günlüklerini incelemeyi ve rapor oluşturmayı öğrenin](../manage-apps/check-status-user-account-provisioning.md)
+* [Hazırlama etkinliği günlüklerini incelemeyi ve rapor oluşturmayı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)

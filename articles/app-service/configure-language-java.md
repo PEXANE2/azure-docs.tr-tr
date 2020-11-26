@@ -10,12 +10,12 @@ ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 9abc069c202af425970e46286d88d1c18ece5a20
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: aa3329c3d9e241fb8224ecc69199779d53027474
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616204"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183150"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Azure App Service için bir Java uygulaması yapılandırma
 
@@ -437,7 +437,7 @@ Daha sonra, veri kaynağının bir uygulama için mi yoksa Tomcat servlet üzeri
 
 1. Projenizin *meta INF/* dizininde bir *context.xml* dosyası oluşturun. Yoksa *meta INF/* dizin oluşturun.
 
-2. *context.xml* , `Context` veri kaynağını bir JNDI adresine bağlamak için bir öğe ekleyin. `driverClassName`Yer tutucusunu, yukarıdaki tablodaki sürücünüzün sınıf adıyla değiştirin.
+2. *context.xml*, `Context` veri kaynağını bir JNDI adresine bağlamak için bir öğe ekleyin. `driverClassName`Yer tutucusunu, yukarıdaki tablodaki sürücünüzün sınıf adıyla değiştirin.
 
     ```xml
     <Context>
@@ -515,7 +515,7 @@ Daha sonra, veri kaynağının bir uygulama için mi yoksa Tomcat servlet üzeri
 
 1. Projenizin *meta INF/* dizininde bir *context.xml* dosyası oluşturun. Yoksa *meta INF/* dizin oluşturun.
 
-2. *context.xml* , `Context` veri kaynağını bir JNDI adresine bağlamak için bir öğe ekleyin. `driverClassName`Yer tutucusunu, yukarıdaki tablodaki sürücünüzün sınıf adıyla değiştirin.
+2. *context.xml*, `Context` veri kaynağını bir JNDI adresine bağlamak için bir öğe ekleyin. `driverClassName`Yer tutucusunu, yukarıdaki tablodaki sürücünüzün sınıf adıyla değiştirin.
 
     ```xml
     <Context>
@@ -678,7 +678,7 @@ Son olarak, sürücü JARs ' ı Tomcat Sınıfyoluna yerleştirip App Service ye
     ```
 
 1. İstediğiniz FTP istemcisini kullanarak, JDBC sürücünüzü, `jboss-cli-commands.cli` , `startup_script.sh` ve modül tanımınızı öğesine yükleyin `/site/deployments/tools/` .
-2. Sitenizi kapsayıcı başladığında çalışacak şekilde yapılandırın `startup_script.sh` . Azure portalında, **yapılandırma**  >  **Genel ayarlar**  >  **başlangıç komutu** ' na gidin. Başlangıç komut alanını olarak ayarlayın `/home/site/deployments/tools/startup_script.sh` . Değişikliklerinizi **kaydedin** .
+2. Sitenizi kapsayıcı başladığında çalışacak şekilde yapılandırın `startup_script.sh` . Azure portalında, **yapılandırma**  >  **Genel ayarlar**  >  **başlangıç komutu**' na gidin. Başlangıç komut alanını olarak ayarlayın `/home/site/deployments/tools/startup_script.sh` . Değişikliklerinizi **kaydedin** .
 
 Veri kaynağının Jpatron sunucusuna eklendiğini doğrulamak için, WebApp ile SSH ve çalıştırın `$JBOSS_HOME/bin/jboss-cli.sh --connect` . Jpatron 'a bağlandıktan sonra, `/subsystem=datasources:read-resource` veri kaynaklarının bir listesini yazdırmak için öğesini çalıştırın.
 
@@ -700,7 +700,7 @@ Jpatron EAP yalnızca Premium ve yalıtılmış donanım seçeneklerinde kullan�
 
 ### <a name="jdk-versions-and-maintenance"></a>JDK sürümleri ve bakım
 
-Azure 'un desteklenen Java Geliştirme Seti (JDK), [Azul sistemleri](https://www.azul.com/)aracılığıyla bir [Zulu](https://www.azul.com/downloads/azure-only/zulu/) dili olarak sunulmaktadır. Azul Zulu kurumsal Derlemeleriyle OpenJDK, Azure için OpenJDK ve Microsoft ve Azul sistemleri tarafından desteklenen Azure Stack için ücretsiz, çok platformlu, üretime hazırlı bir dağıtımıdır. Java SE uygulamalarını oluşturmak ve çalıştırmak için gereken tüm bileşenleri içerir. JDK 'yi [Java JDK yüklemesinden](https://aka.ms/azure-jdks)yükleyebilirsiniz.
+Azure 'un desteklenen Java Geliştirme Seti (JDK), [Azul sistemleri](https://www.azul.com/)aracılığıyla bir [Zulu](https://www.azul.com/downloads/azure-only/zulu/) dili olarak sunulmaktadır. Azul Zulu kurumsal Derlemeleriyle OpenJDK, Azure için OpenJDK ve Microsoft ve Azul sistemleri tarafından desteklenen Azure Stack için ücretsiz, çok platformlu, üretime hazırlı bir dağıtımıdır. Java SE uygulamalarını oluşturmak ve çalıştırmak için gereken tüm bileşenleri içerir. JDK 'yi [Java JDK yüklemesinden](/azure/developer/java/fundamentals/java-jdk-long-term-support)yükleyebilirsiniz.
 
 Ana sürüm güncelleştirmeleri, Azure App Service yeni çalışma zamanı seçenekleri aracılığıyla sağlanacaktır. Müşteriler, App Service dağıtımını yapılandırarak ve ana güncelleştirmenin ihtiyaçlarını karşıladığından sorumlu olduğundan, bu yeni Java sürümlerine güncelleştirir.
 

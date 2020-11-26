@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 11/09/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: 250e95b33b985aedcc1b1537f57338d29e848451
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: c596b0d218c0b935fa1f3e971067160e52d87af1
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96020220"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183133"
 ---
 # <a name="tutorial-access-azure-storage-from-a-web-app"></a>Öğretici: bir Web uygulamasından Azure depolama erişimi
 
@@ -23,7 +23,7 @@ Yönetilen kimlikler kullanarak Azure App Service çalıştıran bir Web uygulam
 
 :::image type="content" alt-text="Depolama alanının nasıl erişebileceğini gösteren diyagram." source="./media/scenario-secure-app-access-storage/web-app-access-storage.svg" border="false":::
 
-Web uygulamanızdan Azure veri düzlemi 'ne (Azure depolama, Azure SQL veritabanı, Azure Key Vault veya diğer hizmetlere) erişim eklemek istiyorsunuz. Paylaşılan bir anahtar kullanabilirsiniz, ancak gizli dizi oluşturma, dağıtma ve yönetme ile ilgili işlemsel güvenlik konusunda endişelenmeniz gerekir. Anahtarın GitHub 'da denetlenmesi olasıdır ve bu da korsanların nasıl tarama yapılacağını bilir. Web uygulamanıza verilere erişim izni sağlamanın daha güvenli bir yolu, [Yönetilen kimlikler](/azure/active-directory/managed-identities-azure-resources/overview)kullanmaktır.
+Web uygulamanızdan Azure veri düzlemi 'ne (Azure depolama, Azure SQL veritabanı, Azure Key Vault veya diğer hizmetlere) erişim eklemek istiyorsunuz. Paylaşılan bir anahtar kullanabilirsiniz, ancak gizli dizi oluşturma, dağıtma ve yönetme ile ilgili işlemsel güvenlik konusunda endişelenmeniz gerekir. Anahtarın GitHub 'da denetlenmesi olasıdır ve bu da korsanların nasıl tarama yapılacağını bilir. Web uygulamanıza verilere erişim izni sağlamanın daha güvenli bir yolu, [Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md)kullanmaktır.
 
 Azure Active Directory (Azure AD) tarafından yönetilen bir kimlik, App Service rol tabanlı erişim denetimi (RBAC) aracılığıyla uygulama kimlik bilgileri gerekmeden kaynaklara erişmesine olanak sağlar. Web uygulamanıza yönetilen bir kimlik atadıktan sonra, Azure bir sertifikanın oluşturulmasını ve dağıtımını gerçekleştirir. Kişilerin gizli dizileri veya uygulama kimlik bilgilerini yönetme konusunda endişelenmek zorunda değildir.
 
@@ -37,7 +37,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [App Service kimlik doğrulama/yetkilendirme modülü etkinleştirilmiş](scenario-secure-app-authentication-app-service.md)Azure App Service üzerinde çalışan bir Web uygulaması.
 
@@ -173,7 +173,7 @@ Blobları oluşturabilmeniz, okumanız veya silebilmeniz için önce, Web uygula
 
 [Azure Portal](https://portal.azure.com), Web uygulamanıza erişim sağlamak için depolama hesabınıza gidin. Sol bölmede **erişim denetimi (IAM)** öğesini seçin ve ardından **rol atamaları**' nı seçin. Depolama hesabına kimlerin erişebileceğini içeren bir liste görürsünüz. Şimdi, depolama hesabına erişmesi gereken bir robot, uygulama hizmeti olan bir rol ataması eklemek istiyorsunuz. **Add**  >  **Rol Ekle ataması** Ekle ' yi seçin.
 
-**Rol**' de, Web uygulamanıza depolama Blobları okuma erişimi sağlamak Için **Depolama Blobu veri katılımcısı** ' nı seçin. **Erişim ata**' da **App Service**' yi seçin. **Abonelikte** aboneliğinizi seçin. Daha sonra erişim sağlamak istediğiniz App Service 'i seçin. **Kaydet**'i seçin.
+**Rol**' de, Web uygulamanıza depolama Blobları okuma erişimi sağlamak Için **Depolama Blobu veri katılımcısı** ' nı seçin. **Erişim ata**' da **App Service**' yi seçin. **Abonelikte** aboneliğinizi seçin. Daha sonra erişim sağlamak istediğiniz App Service 'i seçin. **Kaydet**’i seçin.
 
 :::image type="content" alt-text="Rol ataması ekleme ekranını gösteren ekran görüntüsü." source="./media/scenario-secure-app-access-storage/add-role-assignment.png":::
 

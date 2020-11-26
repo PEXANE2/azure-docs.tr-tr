@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/04/2020
 ms.author: jeedes
-ms.openlocfilehash: ac7382f60d5c49ac8c784566af4d9db8ea78956b
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: e0cabcbaaf8e84ac1bdfd13c0ef4ab14f326fcf7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331350"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182300"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>Öğretici: Citrix ShareFile ile tümleştirme Azure Active Directory
 
@@ -27,7 +27,7 @@ Citrix ShareFile 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağl
 * Kullanıcılarınızın Azure AD hesaplarıyla Citrix ShareFile (çoklu oturum açma) ile otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini Citrix ShareFile ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -46,8 +46,8 @@ Citrix ShareFile 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için Gal
 
 1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama** ' yı seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Citrix ShareFile** yazın.
 1. Sonuçlar panelinden **Citrix ShareFile** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
@@ -70,8 +70,8 @@ Azure AD çoklu oturum açmayı Citrix ShareFile ile yapılandırmak ve test etm
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. Azure portal, **Citrix ShareFile** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma** ' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML** ' yi seçin.
+1. Azure portal, **Citrix ShareFile** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
@@ -109,22 +109,22 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portal sol bölmeden **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur** 'a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, Citrix ShareFile erişimi vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portal **Kurumsal uygulamalar** ' ı seçin ve ardından **tüm uygulamalar** ' ı seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde **Citrix ShareFile** öğesini seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar** ' ı seçin.
-1. **Kullanıcı Ekle** ' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
 Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
@@ -133,11 +133,11 @@ Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır l
 
 1. Farklı bir Web tarayıcısı penceresinde, **Citrix ShareFile** şirket sitenizde yönetici olarak oturum açın.
 
-1. **Panoda** , **Ayarlar** ' a tıklayın ve **yönetici ayarları** ' nı seçin.
+1. **Panoda**, **Ayarlar** ' a tıklayın ve **yönetici ayarları** ' nı seçin.
 
     ![Yönetim](./media/sharefile-tutorial/settings.png)
 
-1. Yönetici ayarları ' **nda güvenlik**  ->  **oturumu & güvenlik ilkesi** ' ne gidin.
+1. Yönetici ayarları ' **nda güvenlik**  ->  **oturumu & güvenlik ilkesi**' ne gidin.
    
     ![Hesap yönetimi](./media/sharefile-tutorial/settings-security.png "Hesap yönetimi")
 
@@ -145,7 +145,7 @@ Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır l
    
     ![Çoklu oturum açma](./media/sharefile-tutorial/saml-configuration.png "Çoklu oturum açma")
    
-    a. **SAML etkinleştir** ' de **Evet** ' i seçin.
+    a. **SAML etkinleştir**' de **Evet** ' i seçin.
 
     b. **ShareFile Issuer/ENTITY ID** değerini kopyalayın ve Azure Portal **temel SAML yapılandırması** iletişim kutusundaki **tanımlayıcı URL** kutusuna yapıştırın.
     
@@ -163,13 +163,13 @@ Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır l
 
 1. **Citrix ShareFile** kiracınızda oturum açın.
 
-2. **Kişiler**  ->  **Kullanıcıları Yönet ana**  ->  **Yeni Kullanıcı oluştur**  ->  **çalışanlar oluştur** ' a tıklayın.
+2. **Kişiler**  ->  **Kullanıcıları Yönet ana**  ->  **Yeni Kullanıcı oluştur**  ->  **çalışanlar oluştur**' a tıklayın.
    
     ![Çalışan oluştur](./media/sharefile-tutorial/create-user.png "Çalışan oluştur")
 
 3. **Temel bilgiler** bölümünde aşağıdaki adımları uygulayın:
    
-    ![Temel bilgiler](./media/sharefile-tutorial/user-form.png "Temel bilgiler")
+    ![Temel Bilgiler](./media/sharefile-tutorial/user-form.png "Temel Bilgiler")
    
     a. **Ad** metin kutusuna **Ilk Kullanıcı adını** **Britta** olarak yazın.
    
@@ -177,7 +177,7 @@ Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır l
    
     c. **E-posta adresi** metin kutusuna Britta Simon 'un e-posta adresini **brittasıon \@ contoso.com** olarak yazın.
 
-4. **Kullanıcı Ekle** 'ye tıklayın.
+4. **Kullanıcı Ekle**'ye tıklayın.
   
     >[!NOTE]
     >Azure AD hesap sahibi bir e-posta alır ve etkin hale gelmeden önce hesaplarını onaylamak için bir bağlantıyı izler. Azure AD Kullanıcı hesapları sağlamak için Citrix ShareFile tarafından sunulan diğer Citrix ShareFile Kullanıcı hesabı oluşturma araçlarını veya API 'Leri kullanabilirsiniz.
@@ -190,7 +190,7 @@ Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki se�
 
 2. Doğrudan Citrix ShareFile oturum açma URL 'sine gidin ve oturum açma akışını buradan başlatın.
 
-3. Microsoft Access panel ' i kullanabilirsiniz. Erişim panelinde Citrix ShareFile kutucuğuna tıkladığınızda bu işlem Citrix ShareFile oturum açma URL 'sine yeniden yönlendirilir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+3. Microsoft Access panel ' i kullanabilirsiniz. Erişim panelinde Citrix ShareFile kutucuğuna tıkladığınızda bu işlem Citrix ShareFile oturum açma URL 'sine yeniden yönlendirilir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

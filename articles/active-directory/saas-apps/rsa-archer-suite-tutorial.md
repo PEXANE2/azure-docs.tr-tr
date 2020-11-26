@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 09/01/2020
 ms.author: jeedes
 ms.openlocfilehash: 397d59c60ed90e0e25df671baa3d46660eff1d47
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520617"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181586"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-rsa-archer-suite"></a>Öğretici: RSA ıleyici Suite ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,7 +26,7 @@ Bu öğreticide, RSA ıleyici paketini Azure Active Directory (Azure AD) ile tü
 * Kullanıcılarınızın Azure AD hesaplarıyla RSA ıleyici Suite 'e otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -57,7 +57,7 @@ RSA ıleyici Suite 'in Azure AD ile tümleştirilmesini yapılandırmak için, G
 
 ## <a name="configure-and-test-azure-ad-sso-for-rsa-archer-suite"></a>RSA ıleyici Suite için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test KULLANıCıSı kullanarak RSA ıleyici Suite Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve RSA ıleyici Suite içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon** adlı bir test KULLANıCıSı kullanarak RSA ıleyici Suite Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve RSA ıleyici Suite içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
 Azure AD SSO 'yu RSA ıleyici Suite ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
@@ -121,7 +121,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

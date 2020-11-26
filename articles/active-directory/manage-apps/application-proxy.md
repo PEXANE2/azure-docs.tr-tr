@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 668976e9777b35e514746070f0f4039a12b4e02b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 9d620342d53bdae0b3a520000f6d240eb0e28d15
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651728"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180602"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-ad-application-proxy"></a>Azure Active Directory Uygulama Ara Sunucusu aracılığıyla şirket içi uygulamalara uzaktan erişim
 
@@ -36,7 +36,7 @@ Uygulama proxy 'Si, kullanıcıların uzak bir istemciden şirket içi Web uygul
 Uygulama proxy 'Si ile birlikte kullanılabilir:
 
 * Kimlik doğrulaması için [Tümleşik Windows kimlik doğrulaması](application-proxy-configure-single-sign-on-with-kcd.md) kullanan Web uygulamaları
-* Form tabanlı veya [üst bilgi tabanlı](/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-headers) erişim kullanan Web uygulamaları
+* Form tabanlı veya [üst bilgi tabanlı](./application-proxy-configure-single-sign-on-with-headers.md) erişim kullanan Web uygulamaları
 * Farklı cihazlarda zengin uygulamalarda kullanıma sunmak istediğiniz Web API 'Leri
 * [Uzak Masaüstü Ağ Geçidi](application-proxy-integrate-with-remote-desktop-services.md) arkasında barındırılan uygulamalar
 * Microsoft kimlik doğrulama kitaplığı (MSAL) ile tümleştirilmiş zengin istemci uygulamaları

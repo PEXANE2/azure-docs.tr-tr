@@ -11,11 +11,11 @@ ms.topic: overview
 ms.date: 11/23/2020
 ms.author: trbye
 ms.openlocfilehash: 291ac7804109b098b556e38c57ca493ba74f1b14
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95528899"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183115"
 ---
 # <a name="what-is-the-speech-service"></a>Konuşma tanıma hizmeti nedir?
 
@@ -129,7 +129,7 @@ Konuşma hizmeti yerleşik modellerle iyi çalışmaktadır, ancak ürününüz�
 
 Diğer ürünler, sağlık veya sigorta gibi belirli amaçlar için ayarlanan konuşma modellerini sunar, ancak herkese eşit olarak erişilebilir. Azure konuşma 'da özelleştirme, başka bir kullanıcı veya müşteri tarafından kullanılamayan *benzersiz rekabet avantajlarınızın* bir parçası haline gelir. Diğer bir deyişle, modelleriniz özel ve yalnızca kullanım için özel olarak ayarlanmıştır.
 
-| Konuşma Hizmeti | Platform | Description |
+| Konuşma Hizmeti | Platform | Açıklama |
 | -------------- | -------- | ----------- |
 | Konuşmayı Metne Dönüştürme | [Özel Konuşma Tanıma](https://aka.ms/customspeech) | Konuşma tanıma modellerini gereksinimlerinize ve kullanılabilir verilerinize göre özelleştirin. Konuşma stili, sözlük ve arka plan gürültüsü gibi konuşma tanıma engellerinin üstesinden gelme. |
 | Metin Okuma | [Özel ses](https://aka.ms/customvoice) | Kullanılabilir konuşma verilerinizle Metin Okuma uygulamalarınız için tanınabilir, kendine özgü bir ses oluşturun. Ses çıkışlarını bir dizi parametre kümesini ayarlayarak daha fazla hassas ayarlamalar yapabilirsiniz. |

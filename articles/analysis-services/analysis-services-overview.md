@@ -8,12 +8,12 @@ ms.date: 10/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: a05da5fae748e799d7965c51415956c2e2a524b1
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: d8c7965a1d77d443b538392a4c190a8f578d8e18
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201520"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183218"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services nedir?
 
@@ -35,7 +35,7 @@ Azure Analysis Services, birçok Azure hizmetiyle tümleştirildiğinden gelişm
 
 ## <a name="the-right-tier-when-you-need-it"></a>İhtiyacınız olduğunda doğru katman
 
-Azure Analysis Services **Geliştirici**, **temel**ve **Standart** katmanlarda kullanılabilir. Her katmanda, plan maliyetleri, işleme gücüne, sorgu Işleme birimlerine (QPUs) ve bellek boyutuna göre farklılık gösterir. Sunucu oluşturduğunuzda, katman içinde bir plan seçersiniz. Aynı katman içinde planları yukarı veya aşağı doğru değişiklik yapabilir veya daha üst bir katmana yükseltebilirsiniz, ama üst katmandan daha alt bir katmana inemezsiniz.
+Azure Analysis Services **Geliştirici**, **temel** ve **Standart** katmanlarda kullanılabilir. Her katmanda, plan maliyetleri, işleme gücüne, sorgu Işleme birimlerine (QPUs) ve bellek boyutuna göre farklılık gösterir. Sunucu oluşturduğunuzda, katman içinde bir plan seçersiniz. Aynı katman içinde planları yukarı veya aşağı doğru değişiklik yapabilir veya daha üst bir katmana yükseltebilirsiniz, ama üst katmandan daha alt bir katmana inemezsiniz.
 
 ### <a name="developer-tier"></a>Geliştirici katmanı
 
@@ -79,7 +79,7 @@ Azure Analysis Services, dünyanın dört bir yanındaki bölgelerde desteklenir
 
 ### <a name="americas"></a>Kuzey ve Güney Amerika
 
-|Bölge  | Desteklenen planlar | Sorgu çoğaltmaları (yalnızca Standart planlar) |
+|Region  | Desteklenen planlar | Sorgu çoğaltmaları (yalnızca Standart planlar) |
 |---------|---------|:---------:|
 |Brezilya Güney     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
 |Orta Kanada    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
@@ -88,8 +88,8 @@ Azure Analysis Services, dünyanın dört bir yanındaki bölgelerde desteklenir
 |Doğu ABD 2     |     S8v2, S9v2   |    1    |
 |Orta Kuzey ABD     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
 |Orta Kuzey ABD     |     S8v2, S9v2    |    1     |
-|Central US     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
-|Central US     |    S8v2, S9v2     |    1     |
+|Orta ABD     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|Orta ABD     |    S8v2, S9v2     |    1     |
 |Orta Güney ABD     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |Orta Batı ABD   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |Batı ABD     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
@@ -99,7 +99,7 @@ Azure Analysis Services, dünyanın dört bir yanındaki bölgelerde desteklenir
 
 ### <a name="europe"></a>Europe
 
-|Bölge  | Desteklenen planlar | Sorgu çoğaltmaları (yalnızca Standart planlar) |
+|Region  | Desteklenen planlar | Sorgu çoğaltmaları (yalnızca Standart planlar) |
 |---------|---------|:---------:|
 |Kuzey Avrupa     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
 |Kuzey Avrupa     |    S8v2, S9v2      |    3     |
@@ -109,7 +109,7 @@ Azure Analysis Services, dünyanın dört bir yanındaki bölgelerde desteklenir
 
 ### <a name="asia-pacific"></a>Asya Pasifik 
 
-|Bölge  | Desteklenen planlar | Sorgu çoğaltmaları (yalnızca Standart planlar) |
+|Region  | Desteklenen planlar | Sorgu çoğaltmaları (yalnızca Standart planlar) |
 |---------|---------|:---------:|
 |Doğu Avustralya     |    B1, B2, S0, S1, S2, S4     |    3     |
 |Doğu Avustralya     |    S8v2, S9v2    |    1     |
@@ -160,15 +160,15 @@ Uyumluluk düzeyi Analysis Services altyapıdaki yayına özgü davranışları 
 
 ## <a name="your-data-is-secure"></a>Verileriniz güvende
 
-Azure Analysis Services, birden fazla düzeyde hassas verileriniz için güvenlik sağlar. Azure hizmeti olarak Analysis Services, Azure platformunun bir parçası olarak otomatik olarak etkinleştirilen **temel** hizmet reddi (DDoS) saldırıları sağlar. Daha fazla bilgi için bkz. [Azure DDoS koruması standardına genel bakış](../virtual-network/ddos-protection-overview.md). 
+Azure Analysis Services, birden fazla düzeyde hassas verileriniz için güvenlik sağlar. Azure hizmeti olarak Analysis Services, Azure platformunun bir parçası olarak otomatik olarak etkinleştirilen **temel** hizmet reddi (DDoS) saldırıları sağlar. Daha fazla bilgi için bkz. [Azure DDoS koruması standardına genel bakış](../ddos-protection/ddos-protection-overview.md). 
 
 Sunucu düzeyinde Analysis Services, güvenlik duvarı, Azure kimlik doğrulaması, sunucu yöneticisi rolleri ve Server-Side şifreleme sağlar. Veri modeli düzeyinde, Kullanıcı rolleri, satır düzeyi ve nesne düzeyinde güvenlik, verilerinizin güvende olduğundan ve yalnızca bunu gördüğü kullanıcılar tarafından görülendiğinden emin olmanızı sağlar.
 
-### <a name="firewall"></a>Güvenlik duvarı
+### <a name="firewall"></a>Güvenlik Duvarı
 
 Azure Analysis Services Güvenlik Duvarı, kurallarda belirtilen IP adresleri dışındaki tüm istemci bağlantılarını engeller. Varsayılan olarak, güvenlik duvarı koruması yeni sunucular için etkin değildir. Önerilen güvenlik duvarı koruması etkinleştirilir ve kurallar sunucu sağlama komut dosyasının bir parçası olarak veya sunucu oluşturulduktan hemen sonra portalda yapılandırılır. İstemci IP’lerine veya aralığa göre izin verilen IP adreslerini belirten kuralları yapılandırın. Power BI (hizmet) bağlantılarına da izin verilebilir veya bağlantılar engellenebilir. Güvenlik duvarı ve kuralları portaldan ya da PowerShell kullanarak yapılandırın. Daha fazla bilgi için bkz. [Sunucu güvenlik duvarı yapılandırma](analysis-services-qs-firewall.md).
 
-### <a name="authentication"></a>Kimlik doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 Kullanıcı kimlik doğrulaması, [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md) tarafından işlenir. Kullanıcılar oturum açarken veritabanına rol tabanlı erişim ile bir kuruluş hesabı kimliği kullanır. Kullanıcı kimlikleri, sunucunun içinde bulunduğu abonelik için varsayılan Azure Active Directory’nin üyesi olmalıdır. Daha fazla bilgi için bkz. [Kimlik doğrulaması ve izinler](analysis-services-manage-users.md).
 

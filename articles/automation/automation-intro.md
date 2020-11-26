@@ -7,12 +7,12 @@ keywords: Azure Otomasyonu, DSC, PowerShell, durum yapılandırması, güncelle�
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 24aeb37cf868bed5d4211bc9b459a4736ceea4b2
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: e3986b7e8fc70f8662bed40b076897caa6165744
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205345"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182827"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure Otomasyonu'na giriş
 
@@ -43,7 +43,7 @@ Değişiklik İzleme ve envanter, sanal makine ve sunucu altyapısı değişikli
 
 ## <a name="update-management"></a>Güncelleştirme yönetimi
 
-Azure Otomasyonu, karma ortamlarda Windows ve Linux sistemleri için [güncelleştirme yönetimi](update-management/update-mgmt-overview.md) özelliğini içerir. Güncelleştirme Yönetimi, Azure ve diğer bulutlarda ve şirket içinde güncelleştirme uyumluluğuna ilişkin görünürlük sağlar. Özelliği, güncelleştirmelerin tanımlı bir bakım penceresi içinde yüklenmesini düzenleyen zamanlanmış dağıtımlar oluşturmanıza olanak sağlar. Bir güncelleştirme bir makineye yüklenmemelidir, bir dağıtımdan dışlamak için Güncelleştirme Yönetimi işlevselliğini kullanabilirsiniz.
+Azure Otomasyonu, karma ortamlarda Windows ve Linux sistemleri için [güncelleştirme yönetimi](./update-management/overview.md) özelliğini içerir. Güncelleştirme Yönetimi, Azure ve diğer bulutlarda ve şirket içinde güncelleştirme uyumluluğuna ilişkin görünürlük sağlar. Özelliği, güncelleştirmelerin tanımlı bir bakım penceresi içinde yüklenmesini düzenleyen zamanlanmış dağıtımlar oluşturmanıza olanak sağlar. Bir güncelleştirme bir makineye yüklenmemelidir, bir dağıtımdan dışlamak için Güncelleştirme Yönetimi işlevselliğini kullanabilirsiniz.
 
 ## <a name="shared-capabilities"></a>Paylaşılan özellikler
 

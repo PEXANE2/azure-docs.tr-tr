@@ -1,5 +1,5 @@
 ---
-title: Azure’daki Bölgeler ve Kullanılabilirlik Alanları
+title: Azure 'da bölgeler ve Kullanılabilirlik Alanları
 description: Azure 'da teknik ve yasal gereksinimlerinizi karşılayacak bölgeler ve Kullanılabilirlik Alanları hakkında bilgi edinin.
 author: cynthn
 ms.service: azure
@@ -7,14 +7,14 @@ ms.topic: article
 ms.date: 08/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 771635baa3c49c07d0d796cf6ef3be7b870de3e1
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 32cd6c23e1fe465a801e56fad5dd3461df860503
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425447"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182742"
 ---
-# <a name="regions-and-availability-zones-in-azure"></a>Azure’daki Bölgeler ve Kullanılabilirlik Alanları
+# <a name="regions-and-availability-zones-in-azure"></a>Azure 'da bölgeler ve Kullanılabilirlik Alanları
 
 Microsoft Azure Hizmetleri, bulut işlemlerinizi en uygun düzeyde olacak şekilde küresel olarak kullanılabilir. Gereksinimlerinize göre en iyi bölgeyi teknik ve yasal noktalara göre seçebilirsiniz: hizmet özellikleri, veri yerleşimi, uyumluluk gereksinimleri ve gecikme.
 
@@ -22,13 +22,13 @@ Microsoft Azure Hizmetleri, bulut işlemlerinizi en uygun düzeyde olacak şekil
 
 Azure 'da bölgeleri ve Kullanılabilirlik Alanları daha iyi anlamak için, temel hüküm veya kavramların anlaşılmasına yardımcı olur.
 
-| Terim veya kavram | Description |
+| Terim veya kavram | Açıklama |
 | --- | --- |
 | region | Gecikme süresi tanımlı bir çevre içinde dağıtılan ve ayrılmış bölgesel düşük gecikmeli bir ağ ile bağlanmış bir veri merkezleri kümesi. |
 | Coğrafya | En az bir Azure bölgesi içeren bir dünya alanı. Geographiler, veri uygunluğunu ve uyumluluk sınırlarını koruyan ayrı bir pazar tanımlar. Coğrafyalar, özel veri yerleşikliği ve uyumluluk gereksinimleri olan müşterilerin verileri ile uygulamalarını yakın tutmasına olanak tanır. Geographiler, adanmış yüksek kapasiteli ağ altyapımıza yönelik bağlantı yoluyla, tam bölge arızalarına karşı dayanıklı bir şekilde hataya dayanıklıdır. |
 | Kullanılabilirlik Alanı | Bölge içindeki benzersiz fiziksel konumlar. Her alan bağımsız güç, soğutma ve ağ bağlantısı ile donatılmış bir veya daha fazla veri merkezinden oluşur. |
-| Önerilen bölge | En geniş hizmet özelliklerini sağlayan ve şimdi Kullanılabilirlik Alanları destekleyecek şekilde tasarlanan bölge. Bunlar, Azure portal **Önerilen**şekilde belirtilmiştir. |
-| Alternatif (diğer) bölge | Azure 'un bir veri yerleşimi içindeki parmak izini, önerilen bir bölgenin de bulunduğu bölge için genişleten bölge. Alternatif bölgeler, gecikme süresini en iyi duruma getirmeye ve olağanüstü durum kurtarma gereksinimlerine ikinci bir bölge sağlamaya yardımcı olur. Bunlar, Kullanılabilirlik Alanları desteklemek için tasarlanmamıştır (Azure, bu bölgelerin önerilen bölgeler olup olmadığını belirlemesi için düzenli olarak değerlendirmelerine rağmen). Bunlar, Azure portal **başka**bir şekilde belirtilmiştir. |
+| Önerilen bölge | En geniş hizmet özelliklerini sağlayan ve şimdi Kullanılabilirlik Alanları destekleyecek şekilde tasarlanan bölge. Bunlar, Azure portal **Önerilen** şekilde belirtilmiştir. |
+| Alternatif (diğer) bölge | Azure 'un bir veri yerleşimi içindeki parmak izini, önerilen bir bölgenin de bulunduğu bölge için genişleten bölge. Alternatif bölgeler, gecikme süresini en iyi duruma getirmeye ve olağanüstü durum kurtarma gereksinimlerine ikinci bir bölge sağlamaya yardımcı olur. Bunlar, Kullanılabilirlik Alanları desteklemek için tasarlanmamıştır (Azure, bu bölgelerin önerilen bölgeler olup olmadığını belirlemesi için düzenli olarak değerlendirmelerine rağmen). Bunlar, Azure portal **başka** bir şekilde belirtilmiştir. |
 | temel hizmet | Bölge Genel kullanıma sunulduğunda tüm bölgelerde kullanılabilen bir çekirdek Azure hizmeti. |
 | temel hizmet | Bölge/hizmet genel kullanılabilirliği veya diğer bölgelerde isteğe bağlı kullanılabilirlik için 12 ay içinde tüm önerilen bölgelerde kullanılabilen bir Azure hizmeti. |
 | özelleştirilmiş hizmet | Özelleştirilmiş/özelleştirilmiş donanımla desteklenen bölgeler arasında isteğe bağlı kullanılabilirlik sağlayan bir Azure hizmetidir. |
@@ -61,8 +61,8 @@ Azure 'da kapsamlı iş sürekliliği elde etmek için Azure bölge çiftleriyle
 
 Azure 'un bölgeler genelinde Azure hizmetlerinin kullanılabilirliğine yönelik yaklaşımı, önerilen bölgelerde ve alternatif bölgelerde sunulan hizmetleri ifade ederek en iyi şekilde açıklanmıştır.
 
-- **Önerilen bölge** -en geniş hizmet özelliklerini sağlayan ve şimdi kullanılabilirlik alanları veya gelecekte destekleyecek şekilde tasarlanan bölge. Bunlar, Azure portal **Önerilen**şekilde belirtilmiştir.
-- **Alternatif (diğer) bölge** -Azure 'un bir veri yerleşimi içindeki parmak izini, önerilen bir bölgenin de bulunduğu bölge için genişleten bir bölgedir. Alternatif bölgeler, gecikme süresini en iyi duruma getirmeye ve olağanüstü durum kurtarma gereksinimlerine ikinci bir bölge sağlamaya yardımcı olur. Bunlar, Kullanılabilirlik Alanları desteklemek için tasarlanmamıştır (Azure, bu bölgelerin önerilen bölgeler olup olmadığını belirlemesi için düzenli olarak değerlendirmelerine rağmen). Bunlar, Azure portal **başka**bir şekilde belirtilmiştir.
+- **Önerilen bölge** -en geniş hizmet özelliklerini sağlayan ve şimdi kullanılabilirlik alanları veya gelecekte destekleyecek şekilde tasarlanan bölge. Bunlar, Azure portal **Önerilen** şekilde belirtilmiştir.
+- **Alternatif (diğer) bölge** -Azure 'un bir veri yerleşimi içindeki parmak izini, önerilen bir bölgenin de bulunduğu bölge için genişleten bir bölgedir. Alternatif bölgeler, gecikme süresini en iyi duruma getirmeye ve olağanüstü durum kurtarma gereksinimlerine ikinci bir bölge sağlamaya yardımcı olur. Bunlar, Kullanılabilirlik Alanları desteklemek için tasarlanmamıştır (Azure, bu bölgelerin önerilen bölgeler olup olmadığını belirlemesi için düzenli olarak değerlendirmelerine rağmen). Bunlar, Azure portal **başka** bir şekilde belirtilmiştir.
 
 ### <a name="comparing-region-types"></a>Bölge türlerini karşılaştırma
 
@@ -112,7 +112,7 @@ Daha önce belirtildiği gibi, Azure hizmetleri üç kategoride sınıflandırı
 > | Service Bus | Azure İşlevleri | Data Box Heavy |
 > | Service Fabric | Azure HPC Önbelleği | Veri Kataloğu |
 > | Sanal Makine Ölçek Kümeleri | Azure IoT Hub | Data Factory: Data Factory v1 |
-> | Sanal Makineler | Azure Kubernetes Service (AKS) | Data Lake Analytics |
+> | Sanal Makineler | Azure Kubernetes Hizmeti (AKS) | Data Lake Analytics |
 > | Sanal makineler: Av2-Series | Azure Machine Learning | Azure Machine Learning Studio (klasik)|
 > | Sanal makineler: Bs-Series | Azure Özel Bağlantı | Microsoft Genomiks |
 > | Sanal makineler: DSv2-Series | Azure Red Hat OpenShift | Remote Rendering |
@@ -170,9 +170,9 @@ Bir kullanılabilirlik bölgesinde dağıtılan sanal makineler için ek ücret 
 - [Sanal makine oluşturma](../virtual-machines/windows/create-portal-availability-zone.md)
 - [PowerShell kullanarak yönetilen disk ekleme](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
 - [Bölge yedekli sanal makine ölçek kümesi oluşturma](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
-- [Bölgesel olarak yedekli bir ön uç ile bir Standart Load Balancer kullanarak VM 'lerde Yük Dengeleme](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
-- [Bir bölge içindeki VM 'leri, bölgesel ön ucu ile standart Load Balancer kullanarak yük dengeleme](../load-balancer/load-balancer-standard-public-zonal-cli.md)
-- [Alanlar arası yedekli depolama](../storage/common/storage-redundancy-zrs.md)
+- [Bölgesel olarak yedekli bir ön uç ile bir Standart Load Balancer kullanarak VM 'lerde Yük Dengeleme](../load-balancer/quickstart-load-balancer-standard-public-cli.md)
+- [Bir bölge içindeki VM 'leri, bölgesel ön ucu ile standart Load Balancer kullanarak yük dengeleme](../load-balancer/quickstart-load-balancer-standard-public-cli.md)
+- [Alanlar arası yedekli depolama](../storage/common/storage-redundancy.md)
 - [SQL veritabanı genel amaçlı katmanı](../azure-sql/database/high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)
 - [Event Hubs coğrafi olağanüstü durum kurtarma](../event-hubs/event-hubs-geo-dr.md#availability-zones)
 - [Service Bus coğrafi olağanüstü durum kurtarma](../service-bus-messaging/service-bus-geo-dr.md#availability-zones)

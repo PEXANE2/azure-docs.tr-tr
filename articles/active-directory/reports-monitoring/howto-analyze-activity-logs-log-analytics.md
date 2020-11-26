@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a48a72aa021a17c59adb86bece66cec966e234bd
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 0c4fde22b1b8d72ae8ae775c090e0da25ce0665f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056149"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181178"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Azure Izleyici günlükleri ile Azure AD etkinlik günlüklerini çözümleme
 
@@ -47,7 +47,7 @@ Bu arada izlemek için şunlar gerekir:
     
 ## <a name="navigate-to-the-log-analytics-workspace"></a>Log Analytics çalışma alanına gidin
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. 
+1. [Azure Portal](https://portal.azure.com) oturum açın. 
 
 2. **Azure Active Directory**' yi seçin ve sonra Log Analytics çalışma alanınızı açmak için **izleme** bölümünde **Günlükler** ' i seçin. Çalışma alanı varsayılan bir sorgu ile açılır.
 
@@ -94,7 +94,7 @@ Ayrıca, sorgunuzda uyarıları da ayarlayabilirsiniz. Örneğin, son hafta 10 '
 
     ![Uyarı ölçütleri](./media/howto-analyze-activity-logs-log-analytics/alertcriteria.png)
 
-3. Uyarı için bir ad ve açıklama girin ve önem derecesini seçin. Bizim örneğimiz için, bunu **bilgilendirici**olarak ayarlayabiliriz.
+3. Uyarı için bir ad ve açıklama girin ve önem derecesini seçin. Bizim örneğimiz için, bunu **bilgilendirici** olarak ayarlayabiliriz.
 
 4. Sinyal oluştuğunda uyarı verilecek **Eylem grubunu** seçin. Ekibinize e-posta veya kısa mesaj yoluyla bildirimde bulunabilir veya Web kancaları, Azure işlevleri veya Logic Apps kullanarak eylemi otomatikleştirebileceğinizi seçebilirsiniz. [Azure Portal Uyarı grupları oluşturma ve yönetme](../../azure-monitor/platform/action-groups.md)hakkında daha fazla bilgi edinin.
 
@@ -104,9 +104,9 @@ Ayrıca, sorgunuzda uyarıları da ayarlayabilirsiniz. Örneğin, son hafta 10 '
 
 Çalışma kitapları denetim, oturum açma ve sağlama olaylarını içeren yaygın senaryolarla ilgili birkaç rapor sağlar. Ayrıca, önceki bölümde açıklanan adımları kullanarak raporlarda belirtilen verileri de uyarabilir.
 
-* **Sağlama Analizi**: Bu [çalışma kitabı](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics) , sağlanan Yeni Kullanıcı sayısı ve sağlama hatalarının sayısı, Kullanıcı sayısı ve güncelleştirme başarısızlıklarını ve kullanıcı sayısını ve bunlara karşılık gelen hataların sayısını gösteren denetim sağlama etkinliğiyle ilgili raporları gösterir.    
+* **Sağlama Analizi**: Bu [çalışma kitabı](../app-provisioning/application-provisioning-log-analytics.md) , sağlanan Yeni Kullanıcı sayısı ve sağlama hatalarının sayısı, Kullanıcı sayısı ve güncelleştirme başarısızlıklarını ve kullanıcı sayısını ve bunlara karşılık gelen hataların sayısını gösteren denetim sağlama etkinliğiyle ilgili raporları gösterir.    
 * **Oturum açma olayları**: Bu çalışma kitabı, uygulama, Kullanıcı, cihaz, oturum açma işlemleri ve zaman içinde oturum açma sayısını izleyen bir Özet görünümü gibi oturum açma etkinliklerini izlemeye ilişkin en ilgili raporları gösterir.
-* **Koşullu erişim öngörüleri**: koşullu erişim öngörüleri ve raporlama [çalışma kitabı](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-insights-reporting) , kuruluşunuzda koşullu erişim ilkelerinin zaman içinde etkisini anlamanıza olanak sağlar. 
+* **Koşullu erişim öngörüleri**: koşullu erişim öngörüleri ve raporlama [çalışma kitabı](../conditional-access/howto-conditional-access-insights-reporting.md) , kuruluşunuzda koşullu erişim ilkelerinin zaman içinde etkisini anlamanıza olanak sağlar. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

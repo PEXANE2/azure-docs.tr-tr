@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: feb661a5f0a22350d9660669c18209e7b1fd878d
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: d374043235d6c09243ea5ecdacccf141a2d4f8b4
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358533"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181357"
 ---
 # <a name="tutorial-configure-webroot-security-awareness-training-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Webroot güvenlik tanıma eğitimini yapılandırma
 
@@ -34,12 +34,12 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Webroo
 > * Kullanıcı özniteliklerinin Azure AD ile Webroot güvenlik tanıma eğitimi arasında eşitlenmiş olmasını sağlama
 > * Webroot güvenlik tanıma eğitiminde grupları ve grup üyeliklerini sağlama
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
 * [Bir Azure AD kiracısı](../develop/quickstart-create-new-tenant.md) 
-* Azure AD 'de sağlamayı yapılandırma [izni](../users-groups-roles/directory-assign-admin-roles.md) olan bir kullanıcı hesabı (örneğin, uygulama Yöneticisi, bulut uygulaması Yöneticisi, uygulama sahibi veya genel yönetici).
+* Azure AD 'de sağlamayı yapılandırma [izni](../roles/permissions-reference.md) olan bir kullanıcı hesabı (örneğin, uygulama Yöneticisi, bulut uygulaması Yöneticisi, uygulama sahibi veya genel yönetici).
 * En az bir adet sitelerinizden biri için, Webroot güvenlik tanıma Eğitimi özellikli yönetilen bir hizmet sağlayıcı konsolu.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Adım 1. Hazırlama dağıtımınızı planlama
@@ -65,7 +65,7 @@ Sitenizi Azure AD 'ye bağlamak için, Webroot yönetim konsolundaki bu site iç
 
 4. **Gizli belirteç** kopyalayın ve kaydedin. Bu değer, Azure portal Webroot güvenlik tanıma eğitim uygulamanızın sağlama sekmesindeki gizli belirteç alanına girilir.
 
-5. **Bitti** ’ye tıklayın.
+5. **Bitti**’ye tıklayın.
 
     ![Gizli dizi belirtecini Kopyala](./media/webroot-security-awareness-training-provisioning-tutorial/copy-secret-token.png)
 
@@ -88,11 +88,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 ### <a name="to-configure-automatic-user-provisioning-for-webroot-security-awareness-training-in-azure-ad"></a>Azure AD 'de Webroot güvenlik tanıma eğitiminde otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Webroot güvenlik tanıma Eğitimi** ' ni seçin.
+2. Uygulamalar listesinde, **Webroot güvenlik tanıma Eğitimi**' ni seçin.
 
     ![Uygulamalar listesindeki Webroot güvenlik tanıma Eğitimi bağlantısı](common/all-applications.png)
 
@@ -100,7 +100,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
@@ -112,9 +112,9 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet** ’i seçin.
+7. **Kaydet**’i seçin.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları sağla** ' yı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları sağla**' yı seçin.
 
 9. **Öznitelik eşleme** bölümünde Azure AD 'Den Webroot güvenlik tanıma eğitimine eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Webroot güvenlik tanıma eğitiminde Kullanıcı hesaplarını eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](../app-provisioning/customize-application-attributes.md)değiştirmeyi seçerseniz, Webroot güvenlik tanıma Eğitimi API 'sinin kullanıcıları bu özniteliğe göre filtrelemeyi desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -125,7 +125,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
    |name.familyName|Dize|
    |emails[type eq "work"].value|Dize|
 
-10. **Eşlemeler** bölümünde **Azure Active Directory grupları sağla** ' yı seçin.
+10. **Eşlemeler** bölümünde **Azure Active Directory grupları sağla**' yı seçin.
 
 11. **Öznitelik eşleme** bölümünde Azure AD 'Den Webroot güvenlik tanıma eğitimine eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Webroot güvenlik tanıma eğitiminde grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -145,7 +145,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-15. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 528ab93d1cf47d64338ef186a120695681f48e55
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 00f713e8d319d7ad8dcea014429c57d7fba40541
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998660"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181229"
 ---
 # <a name="tutorial-configure-15five-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için 15Beş yapılandırma
 
@@ -34,12 +34,12 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları [15Be�
 > * 15 beş üzerinde gruplar ve grup üyelikleri sağlama
 > * 15 beş [üzerinde çoklu oturum açma](./15five-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
 * [Bir Azure AD kiracısı](../develop/quickstart-create-new-tenant.md) .
-* Azure AD'de hazırlama [iznine](../users-groups-roles/directory-assign-admin-roles.md) sahip bir kullanıcı hesabı (Uygulama Yöneticisi, Bulut Uygulaması Yöneticisi, Uygulama Sahibi veya Genel Yönetici).
+* Azure AD'de hazırlama [iznine](../roles/permissions-reference.md) sahip bir kullanıcı hesabı (Uygulama Yöneticisi, Bulut Uygulaması Yöneticisi, Uygulama Sahibi veya Genel Yönetici).
 * [15 beş kiracı](https://www.15five.com/pricing/).
 * Yönetici izinlerine sahip 15 beş bir kullanıcı hesabı.
 

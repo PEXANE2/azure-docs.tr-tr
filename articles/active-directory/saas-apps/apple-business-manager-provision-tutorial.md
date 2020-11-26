@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: f7fd2337fe496e75ced78215d14d530a853096fd
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: b4f24c9beffcd67fb84940c2e159da615496d9aa
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359298"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180379"
 ---
 # <a name="tutorial-configure-apple-business-manager-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Apple Business Manager 'ı yapılandırma
 
@@ -34,12 +34,12 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Apple 
 > * Apple Business Manager 'daki kullanıcıları artık erişim gerektirdiklerinde kaldırın
 > * Kullanıcı özniteliklerinin Azure AD ile Apple Business Manager arasında eşitlenmiş olmasını sağlama
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
 * [Azure AD kiracısı](../develop/quickstart-create-new-tenant.md).
-* Azure AD 'de sağlamayı yapılandırma [izni](../users-groups-roles/directory-assign-admin-roles.md) olan bir kullanıcı hesabı (örneğin, uygulama Yöneticisi, bulut uygulaması Yöneticisi, uygulama sahibi veya genel yönetici).
+* Azure AD 'de sağlamayı yapılandırma [izni](../roles/permissions-reference.md) olan bir kullanıcı hesabı (örneğin, uygulama Yöneticisi, bulut uygulaması Yöneticisi, uygulama sahibi veya genel yönetici).
 * Yönetici veya kişiler yöneticisi rolüne sahip bir Apple Business Manager hesabı.
 
 > [!NOTE]
@@ -76,11 +76,11 @@ Azure AD hazırlama hizmeti, uygulama atamasına veya kullanıcının/grubun öz
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-apple-business-manager"></a>5. Adım. Apple Business Manager 'a otomatik Kullanıcı sağlamayı yapılandırma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Apple Business Manager** ' ı seçin.
+2. Uygulamalar listesinde **Apple Business Manager**' ı seçin.
 
     ![Uygulamalar listesindeki Apple Business Manager](common/all-applications.png)
 
@@ -88,7 +88,7 @@ Azure AD hazırlama hizmeti, uygulama atamasına veya kullanıcının/grubun öz
 
     ![Hazırlama sekmesi](common/provisioning.png)
 
-4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Sekme otomatik sağlama](common/provisioning-automatic.png)
 
@@ -99,13 +99,13 @@ Azure AD hazırlama hizmeti, uygulama atamasına veya kullanıcının/grubun öz
 > [!NOTE]
 >Bağlantı başarılı olursa, Apple Business Manager, SCıM bağlantısını etkin olarak gösterir. Bu işlem, Apple Business Manager 'ın en son bağlantı durumunu yansıtması için 60 saniyeye kadar sürebilir.
 
-6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder** ' i işaretleyin.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet** ’e tıklayın.
+7. **Kaydet**’e tıklayın.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory kullanıcıları Apple Business Manager ile eşitler** ' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory kullanıcıları Apple Business Manager ile eşitler**' ı seçin.
 
 9. **Öznitelik eşleme** bölümünde, Azure AD 'Den Apple Business Manager 'a eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Apple Business Manager 'daki Kullanıcı hesaplarıyla eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -134,7 +134,7 @@ Azure AD hazırlama hizmeti, uygulama atamasına veya kullanıcının/grubun öz
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-13. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
+13. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

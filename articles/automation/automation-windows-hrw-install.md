@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 31bb0fac302a81c2523a2d2855ca1930cb266ac4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e77a90617d79dab8c71cdf0c7a6a4fb21e052fbd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95906628"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182793"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows karma runbook çalışanı dağıtma
 
@@ -20,7 +20,7 @@ Azure Otomasyonu runbook 'ları depolar ve yönetir ve ardından bunları bir ve
 
 Runbook Worker 'ı başarıyla dağıttıktan sonra, runbook 'larınızı şirket içi veri merkezinizde veya diğer bulut ortamınızda otomatikleştirmek üzere nasıl yapılandıracağınızı öğrenmek için [karma Runbook Worker 'daki runbook 'Ları Çalıştır](automation-hrw-run-runbooks.md) ' ı inceleyin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, aşağıdakilere sahip olduğunuzdan emin olun.
 
@@ -65,7 +65,7 @@ Karma Runbook Worker ağ gereksinimleri için bkz. [ağınızı yapılandırma](
 Çalışan makineyi, Otomasyon hesaplarınızdan birindeki bir karma Runbook Worker grubuna ekleyebilirsiniz. Güncelleştirme Yönetimi tarafından yönetilen sistem karma Runbook Worker 'ı barındıran makinelerde, karma Runbook Worker grubuna eklenebilirler. Ancak hem Güncelleştirme Yönetimi hem de karma runbook çalışanı grup üyeliği için aynı Otomasyon hesabını kullanmanız gerekir.
 
 >[!NOTE]
->Azure Otomasyonu [güncelleştirme yönetimi](update-management/update-mgmt-overview.md) , sistem karma runbook çalışanını güncelleştirme yönetimi için etkinleştirilmiş bir Azure veya Azure dışı makineye otomatik olarak yüklüyor. Ancak, bu çalışan Otomasyon hesabınızdaki herhangi bir karma Runbook Worker grubuna kayıtlı değildir. Runbook 'larınızı bu makinelerde çalıştırmak için, onları karma Runbook Worker grubuna eklemeniz gerekir. Bir gruba eklemek için [el ile dağıtım](#manual-deployment) bölümünde 6. adımı izleyin.
+>Azure Otomasyonu [güncelleştirme yönetimi](./update-management/overview.md) , sistem karma runbook çalışanını güncelleştirme yönetimi için etkinleştirilmiş bir Azure veya Azure dışı makineye otomatik olarak yüklüyor. Ancak, bu çalışan Otomasyon hesabınızdaki herhangi bir karma Runbook Worker grubuna kayıtlı değildir. Runbook 'larınızı bu makinelerde çalıştırmak için, onları karma Runbook Worker grubuna eklemeniz gerekir. Bir gruba eklemek için [el ile dağıtım](#manual-deployment) bölümünde 6. adımı izleyin.
 
 ## <a name="enable-for-management-with-azure-automation-state-configuration"></a>Azure Otomasyonu durum yapılandırması ile yönetimi etkinleştirme
 

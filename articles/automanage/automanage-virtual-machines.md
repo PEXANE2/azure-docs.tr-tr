@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: a51a4a95d3580912d9b727d1580e6f278831f677
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: ffbf3fa3e2d404b7bc5888ef01707cbd816600b3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891511"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182861"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Sanal makineler için Azure oto yönetimi
 
@@ -28,7 +28,7 @@ Bu makalede, aşağıdaki avantajları içeren sanal makineler için Azure oto y
 
 ## <a name="overview"></a>Genel Bakış
 
-Sanal makineler için Azure oto yönetimi, Azure 'da sanal makinenize faydalanabilir belirli hizmetlerin nasıl ekleneceğini ve nasıl yapılandırılacağını öğrenmenizi sağlayan bir hizmettir. Bu hizmetler, sanal makineler için güvenilirlik, güvenlik ve yönetimin geliştirilmesine yardımcı olur ve Azure [güncelleştirme yönetimi](../automation/update-management/update-mgmt-overview.md) ve [Azure Backup](../backup/backup-overview.md) gibi Azure en iyi yöntem hizmetleri gibi kabul edilir.
+Sanal makineler için Azure oto yönetimi, Azure 'da sanal makinenize faydalanabilir belirli hizmetlerin nasıl ekleneceğini ve nasıl yapılandırılacağını öğrenmenizi sağlayan bir hizmettir. Bu hizmetler, sanal makineler için güvenilirlik, güvenlik ve yönetimin geliştirilmesine yardımcı olur ve Azure [güncelleştirme yönetimi](../automation/update-management/overview.md) ve [Azure Backup](../backup/backup-overview.md) gibi Azure en iyi yöntem hizmetleri gibi kabul edilir.
 
 Sanal makinelerinizi Azure otomatik Yönet 'e ekledikten sonra, her bir en iyi uygulama hizmetini önerilen ayarlarına otomatik olarak yapılandırır. En iyi uygulamalar, hizmetlerin her biri için farklıdır. En iyi uygulama, her gün bir kez sanal makineyi yedeklemek ve altı aylık bir bekletme dönemi varsa, bu örnek Azure Backup olabilir.
 
@@ -37,7 +37,7 @@ Ayrıca, Azure otomatik yönetimi de DRFT için otomatik olarak izler ve algıla
 Son olarak, deneyim inanılmaz basittir.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Sanal makinelerinizde Azure oto yönetimi 'ni etkinleştirmeyi denemeden önce göz önünde bulundurmanız gereken birkaç önkoşul vardır.
 
@@ -69,7 +69,7 @@ Bu hizmetlerin tümü için otomatik olarak, otomatik yapılandırma, izleme iç
 
 Azure portal, var olan bir sanal makinede ya da yeni bir sanal makine oluştururken, oto yönetimini etkinleştirebilirsiniz. Bu işlemin kısa adımları için, [sanal makineler Için oto yönetimi hızlı](quick-create-virtual-machines-portal.md)başlangıcı ' na göz atın.
 
-SANAL makineniz için Automanage 'u ilk kez etkinleştirdiğinizde, **automanage: Azure sanal makine en iyi yöntemleri** için Azure Portal araması yapabilirsiniz. **Mevcut VM 'de etkinleştir** ' e tıklayın, eklemek Istediğiniz VM 'leri seçin, **Seç** ' e tıklayın, **Etkinleştir** ' e tıklayın ve işiniz bitti demektir.
+SANAL makineniz için Automanage 'u ilk kez etkinleştirdiğinizde, **automanage: Azure sanal makine en iyi yöntemleri** için Azure Portal araması yapabilirsiniz. **Mevcut VM 'de etkinleştir**' e tıklayın, eklemek Istediğiniz VM 'leri seçin, **Seç**' e tıklayın, **Etkinleştir**' e tıklayın ve işiniz bitti demektir.
 
 Bu hizmetleri yönetmek için bu VM ile etkileşimde bulunabilmeniz gereken tek zaman, sanal makinenizin düzeltilmesi için denediğimiz olaydır, ancak bunu yapamadı. VM 'nizi başarılı bir şekilde düzeltmemiz durumunda sizi uyarmadan yine de uyumluluğa geri getirilecektir.
 
@@ -114,7 +114,7 @@ Azure portal deneyiminde, sanal makinelerinizdeki oto yönetimini etkinleştirir
 
 Azure portal, otomatik olarak yönetilen tüm sanal **makinelerinizi listeleyen otomatik Yönet – Azure sanal makine en iyi uygulamaları** sayfasına gidin. Burada her bir sanal makinenin genel durumunu görürsünüz.
 
-:::image type="content" source="media\automanage-virtual-machines\configured-status.png" alt-text="Hizmetleri akıllıca ekleyin.":::
+:::image type="content" source="media\automanage-virtual-machines\configured-status.png" alt-text="Yapılandırılmış sanal makinelerin listesi.":::
 
 Listelenen her VM için şu ayrıntılar görüntülenir: ad, yapılandırma profili, yapılandırma tercihi, durum, hesap, abonelik ve kaynak grubu.
 
@@ -123,7 +123,7 @@ Listelenen her VM için şu ayrıntılar görüntülenir: ad, yapılandırma pro
 - *Yapılandırıldı* -VM yapılandırıldı ve bir DRT algılanmadı
 - *Başarısız* -VM 'de düzeltebilecekler ve düzeltilemedi
 
-**Durumu** *başarısız* olarak görürseniz, sanal makinenizin bulunduğu kaynak grubu aracılığıyla dağıtımda sorun giderebilirsiniz. **Kaynak grupları** ' na gidin, kaynak grubunuzu seçin, **dağıtımlar** ' a tıklayın ve hata ayrıntılarıyla birlikte *başarısız* durumuna bakın.
+**Durumu** *başarısız* olarak görürseniz, sanal makinenizin bulunduğu kaynak grubu aracılığıyla dağıtımda sorun giderebilirsiniz. **Kaynak grupları**' na gidin, kaynak grubunuzu seçin, **dağıtımlar** ' a tıklayın ve hata ayrıntılarıyla birlikte *başarısız* durumuna bakın.
 
 
 ## <a name="disabling-automanage-for-vms"></a>VM 'Ler için oto yönetimini devre dışı bırakma
@@ -132,7 +132,7 @@ Belirli sanal makinelerde, tek bir güne kadar her gün tekrar yönetmeyi seçeb
 
 Azure portal bu işlemleri yapmak için otomatik olarak yönetilen tüm sanal **makinelerinizi listeleyen otomatik Yönet – Azure sanal makine en iyi uygulamaları** sayfasına gidin. Tekrar Yönet ' e tıklayarak devre dışı bırakmak istediğiniz sanal makinenin yanındaki onay kutusunu işaretleyin ve ardından yeniden **Aç düğmesine tıklayın** .
 
-:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="Hizmetleri akıllıca ekleyin.":::
+:::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="Bir sanal makinede oto yönetimi devre dışı bırakılıyor.":::
 
 Kabul etmiş önce **devre dışı bırakmak** için ortaya çıkan açılan pencerede iletiyi dikkatle okuyun.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: jeedes
-ms.openlocfilehash: 84bf1b5ebac158135cf4e19cdbd0afdb181905d9
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 256685e035659cd0fac7fa5577d99f43f4761ea2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93079232"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180628"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alibaba-cloud-service-role-based-sso"></a>Öğretici: Alibaba Cloud Service ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory (rol tabanlı SSO)
 
@@ -26,7 +26,7 @@ Bu öğreticide, Alibaba bulut hizmeti 'ni (rol tabanlı SSO) Azure Active Direc
 * Kullanıcılarınızın Azure AD hesaplarıyla Alibaba bulut hizmeti 'ne (rol tabanlı SSO) otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -45,8 +45,8 @@ Alibaba bulut hizmeti 'nin (rol tabanlı SSO) tümleştirmesini Azure AD 'ye yap
 
 1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama** ' yı seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Alibaba Cloud Service (rol tabanlı SSO)** yazın.
 1. Sonuçlar panelinden **Alibaba Cloud Service (rol tabanlı SSO)** öğesini seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 5. **Alibaba bulut hizmeti (rol tabanlı SSO)** sayfasında, sol taraftaki Gezinti bölmesindeki **Özellikler** ' e tıklayın ve **nesne kimliğini** kopyalayın ve daha sonra kullanmak üzere bilgisayarınıza kaydedin.
@@ -72,17 +72,17 @@ Azure AD SSO 'yu Alibaba bulut hizmeti (rol tabanlı SSO) ile yapılandırmak ve
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **Alibaba bulut hizmeti (rol tabanlı SSO)** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma** ' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML** ' yi seçin.
+1. [Azure Portal](https://portal.azure.com/), **Alibaba bulut hizmeti (rol tabanlı SSO)** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
 4. **Temel SAML yapılandırması** bölümünde, **hizmet sağlayıcısı meta verileri dosyanız** varsa, aşağıdaki adımları uygulayın:
 
-    a. **Meta veri dosyasını karşıya yükle** ' ye tıklayın.
+    a. **Meta veri dosyasını karşıya yükle**' ye tıklayın.
 
-    b. Meta veri dosyasını seçmek için **klasör logosu** ' na tıklayın ve **karşıya yükle** ' ye tıklayın.
+    b. Meta veri dosyasını seçmek için **klasör logosu** ' na tıklayın ve **karşıya yükle**' ye tıklayın.
 
     
     >[!NOTE]
@@ -108,23 +108,23 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portal sol bölmeden **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur** 'a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, Alibaba bulut hizmeti 'ne (rol tabanlı SSO) erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portal **Kurumsal uygulamalar** ' ı seçin ve ardından **tüm uygulamalar** ' ı seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde **Alibaba Cloud Service (rol tabanlı SSO)** öğesini seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar** ' ı seçin.
-1. **Kullanıcı Ekle** ' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-1. **Kullanıcılar ve gruplar** sekmesinde, Kullanıcı listesinden U2 ' i seçin ve **Seç** ' e tıklayın. Ardından **ata** ' ya tıklayın.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcılar ve gruplar** sekmesinde, Kullanıcı listesinden U2 ' i seçin ve **Seç**' e tıklayın. Ardından **ata**' ya tıklayın.
 
     ![Azure AD testi Kullanıcı1 ' i atama](./media/alibaba-cloud-service-role-based-sso-tutorial/test01.png)
 
@@ -139,13 +139,13 @@ Bu bölümde, Alibaba bulut hizmeti 'ne (rol tabanlı SSO) erişim izni vererek 
 
 1. Account1 kullanarak Alibaba Cloud [RAM konsolunda](https://account.alibabacloud.com/login/login.htm?oauth_callback=https%3A%2F%2Fram.console.aliyun.com%2F%3Fspm%3Da2c63.p38356.879954.8.7d904e167h6Yg9) oturum açın.
 
-2. Sol taraftaki Gezinti bölmesinde **SSO** ' yı seçin.
+2. Sol taraftaki Gezinti bölmesinde **SSO**' yı seçin.
 
 3. **Rol tabanlı SSO** sekmesinde **IDP oluştur ' a** tıklayın.
 
-4. Görüntülenecek sayfada `AAD` IDP adı alanına bir açıklama girin, daha önce indirdiğiniz Federasyon meta veri dosyasını karşıya **Note** yüklemek için **karşıya yükle** ' ye tıklayın ve **Tamam** ' a tıklayın.
+4. Görüntülenecek sayfada `AAD` IDP adı alanına bir açıklama girin, daha önce indirdiğiniz Federasyon meta veri dosyasını karşıya **Note** yüklemek için **karşıya yükle** ' ye tıklayın ve **Tamam**' a tıklayın.
 
-5. IDP başarıyla oluşturulduktan sonra, **RAM rolü oluştur** ' a tıklayın.
+5. IDP başarıyla oluşturulduktan sonra, **RAM rolü oluştur**' a tıklayın.
 
 6. **RAM rolü adı** alanına yazın `AADrole` , `AAD` **IDP Seç** açılan listesinden öğesini seçin ve Tamam ' a tıklayın.
 
@@ -160,14 +160,14 @@ Bu bölümde, Alibaba bulut hizmeti 'ne (rol tabanlı SSO) erişim izni vererek 
 
     ![Graph config1](./media/alibaba-cloud-service-role-based-sso-tutorial/graph01.png)
 
-    c. Listeden aşağıdaki izinleri seçin ve aşağıdaki şekilde gösterildiği gibi **Izinleri Değiştir** ' e tıklayın.
+    c. Listeden aşağıdaki izinleri seçin ve aşağıdaki şekilde gösterildiği gibi **Izinleri Değiştir**' e tıklayın.
 
     ![Graph Config2](./media/alibaba-cloud-service-role-based-sso-tutorial/graph02.png)
 
     >[!NOTE]
     >İzinler verildikten sonra, Graph Explorer 'da yeniden oturum açın.
 
-    d. Graph Explorer sayfasında, ilk açılan listeden **Al** ' ı ve ikinci açılan listeden **Beta** ' yı seçin. Ardından `https://graph.microsoft.com/beta/servicePrincipals` aşağı açılan listelerin yanındaki alana girip **Sorguyu Çalıştır** ' a tıklayın.
+    d. Graph Explorer sayfasında, ilk açılan listeden **Al** ' ı ve ikinci açılan listeden **Beta** ' yı seçin. Ardından `https://graph.microsoft.com/beta/servicePrincipals` aşağı açılan listelerin yanındaki alana girip **Sorguyu Çalıştır**' a tıklayın.
 
     ![Graph Config3](./media/alibaba-cloud-service-role-based-sso-tutorial/graph03.png)
 
@@ -181,7 +181,7 @@ Bu bölümde, Alibaba bulut hizmeti 'ne (rol tabanlı SSO) erişim izni vererek 
     >[!NOTE]
     >Sorgunun alanına girerek appRoles özelliğini bulabilirsiniz `https://graph.microsoft.com/beta/servicePrincipals/<objectID>` . ' Nin, `objectID` Azure AD **özellikleri** SAYFASıNDAN kopyaladığınız nesne kimliği olduğunu unutmayın.
 
-    f. Graph Explorer 'a geri dönün, yöntemi **Al** **'a git 'Ten değiştirin,** **İstek gövdesi** bölümüne aşağıdaki içeriği yapıştırın ve **Sorguyu Çalıştır** ' a tıklayın:
+    f. Graph Explorer 'a geri dönün, yöntemi **Al** **'a git 'Ten değiştirin,** **İstek gövdesi** bölümüne aşağıdaki içeriği yapıştırın ve **Sorguyu Çalıştır**' a tıklayın:
     ```
     { 
     "appRoles": [
@@ -226,11 +226,11 @@ Bu bölümde, Alibaba bulut hizmetinde (rol tabanlı SSO) Britta Simon adlı bir
 
 Yukarıdaki yapılandırma tamamlandıktan sonra, aşağıdaki adımları izleyerek Alibaba bulut hizmetini (rol tabanlı SSO) test edin:
 
-1. Azure portal, **Alibaba bulut hizmeti (rol tabanlı SSO)** sayfasına gidin, **Çoklu oturum açma** ' yı seçin ve **Test** ' e tıklayın.
+1. Azure portal, **Alibaba bulut hizmeti (rol tabanlı SSO)** sayfasına gidin, **Çoklu oturum açma**' yı seçin ve **Test**' e tıklayın.
 
     ![Test config1](./media/alibaba-cloud-service-role-based-sso-tutorial/test03.png)
 
-2. **Geçerli kullanıcı olarak oturum aç** 'a tıklayın.
+2. **Geçerli kullanıcı olarak oturum aç**'a tıklayın.
 
     ![Test Config2](./media/alibaba-cloud-service-role-based-sso-tutorial/test04.png)
 
@@ -244,5 +244,4 @@ Yukarıdaki yapılandırma tamamlandıktan sonra, aşağıdaki adımları izleye
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Alibaba bulut hizmetini (rol tabanlı SSO) yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
+Alibaba bulut hizmetini (rol tabanlı SSO) yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).

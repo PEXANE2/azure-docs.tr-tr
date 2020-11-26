@@ -12,12 +12,12 @@ ms.date: 10/10/2019
 ms.author: jeedes
 ms.custom: it-pro
 ms.reviewer: celested
-ms.openlocfilehash: 19889c05447db05cc20c8f46e97bd8d16ff43bdf
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: f74cdb700013dc9b124c6a2df195456f08e4b60a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445668"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182147"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>SaaS uygulamalarını Azure Active Directory ile tümleştirme öğreticileri
 
@@ -25,7 +25,7 @@ Bulut özellikli [bir hizmet olarak yazılım (SaaS)](https://azure.microsoft.co
 
 Azure AD ile önceden tümleştirilmiş olan tüm SaaS uygulamalarının listesi için bkz. [market Active Directory](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/azure-active-directory-apps).
 
-Otomatik sağlama galerisine veya SSO galerisine eklenecek bir SAML/OıDC özellikli uygulamaya eklenecek bir [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) etkin uygulaması istemek için [uygulama ağ portalı](../azuread-dev/howto-app-gallery-listing.md) 'nı kullanın.
+Otomatik sağlama galerisine veya SSO galerisine eklenecek bir SAML/OıDC özellikli uygulamaya eklenecek bir [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) etkin uygulaması istemek için [uygulama ağ portalı](../develop/v2-howto-app-gallery-listing.md) 'nı kullanın.
 
 ## <a name="quick-links"></a>Hızlı bağlantılar
 

@@ -7,12 +7,12 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 10/09/2020
 ms.author: apimpm
-ms.openlocfilehash: 92d108304f788279a636b1dc5e1c4e6c103ede3d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 62f163b9ce649cd5ddb52b4325682570633dfb92
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088888"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183167"
 ---
 # <a name="cicd-for-api-management-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak API Management için CI/CD
 
@@ -36,19 +36,19 @@ Aşağıdaki görüntüde önerilen yaklaşım gösterilmektedir.
 
 :::image type="content" source="media/devops-api-development-templates/apim-devops.png" alt-text="API Management ile DevOps gösteren diyagram.":::
 
-Bu örnekte, iki dağıtım ortamı vardır: *geliştirme* ve *Üretim* . Her birinin kendi API Management örneği vardır. 
+Bu örnekte, iki dağıtım ortamı vardır: *geliştirme* ve *Üretim*. Her birinin kendi API Management örneği vardır. 
 
 * API geliştiricilerin geliştirme örneğine erişimi vardır ve API 'Lerini geliştirmek ve test etmek için kullanabilir. 
 * *API yayımcıları* adlı belirlenmiş bir takım, üretim örneğini yönetir.
 
-Bu önerilen yaklaşımdaki anahtar, tüm API Management yapılandırmalarının [Azure Resource Manager şablonlarda](../azure-resource-manager/resource-group-authoring-templates.md)tutulmasını kullanmaktır. Kuruluş, bu şablonları git gibi bir kaynak denetimi sisteminde tutmalıdır. Görüntüde gösterildiği gibi, bir yayımcı deposu, bir şablon koleksiyonundaki üretim API Management örneğinin tüm yapılandırmasını içerir:
+Bu önerilen yaklaşımdaki anahtar, tüm API Management yapılandırmalarının [Azure Resource Manager şablonlarda](../azure-resource-manager/templates/template-syntax.md)tutulmasını kullanmaktır. Kuruluş, bu şablonları git gibi bir kaynak denetimi sisteminde tutmalıdır. Görüntüde gösterildiği gibi, bir yayımcı deposu, bir şablon koleksiyonundaki üretim API Management örneğinin tüm yapılandırmasını içerir:
 
 |Şablon  |Açıklama  |
 |---------|---------|
 |Hizmet şablonu     | API Management örneğinin fiyatlandırma katmanı ve özel etki alanları gibi hizmet düzeyi yapılandırması.         |
 |Paylaşılan Şablonlar     |  Gruplar, ürünler ve Günlükçüler gibi API Management bir örnek genelinde paylaşılan kaynaklar.    |
 |API şablonları     |  API 'lerin ve alt kaynaklarının yapılandırması: işlemler, ilkeler, Tanılama ayarları.        |
-|Ana (ana) şablon     |   Tüm şablonlara bağlanarak ve bunları sırayla dağıtarak her şeyi birbirine [bağlama](../azure-resource-manager/resource-group-linked-templates.md) . Tüm konfigürasyonları bir API Management örneğine dağıtmak için, ana şablonu dağıtın. Ayrıca, her bir şablonu ayrı ayrı dağıtabilirsiniz.       |
+|Ana (ana) şablon     |   Tüm şablonlara bağlanarak ve bunları sırayla dağıtarak her şeyi birbirine [bağlama](../azure-resource-manager/templates/linked-templates.md) . Tüm konfigürasyonları bir API Management örneğine dağıtmak için, ana şablonu dağıtın. Ayrıca, her bir şablonu ayrı ayrı dağıtabilirsiniz.       |
 
 API geliştiricileri, yayımcı deposunu bir geliştirici deposuna çatalla ve API 'lerinde değişiklikler üzerinde çalışacaktır. Çoğu durumda, API 'Ler için API şablonlarına odaklanırlar ve paylaşılan veya hizmet şablonlarını değiştirmenize gerek kalmaz.
 

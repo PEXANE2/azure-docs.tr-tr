@@ -4,12 +4,12 @@ description: AKS işletim sistemini ve veri disklerini şifrelemek için kendi a
 services: container-service
 ms.topic: article
 ms.date: 09/01/2020
-ms.openlocfilehash: 8d0f66d034bb0566674e521ced3e3887e29e3aaa
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 3388b16edee86971b66b3a6b47e08015a6710977
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071736"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183320"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki Azure diskleriyle kendi anahtarlarınızı (BYOK) getirin
 
@@ -19,7 +19,7 @@ Azure depolama, bekleyen bir depolama hesabındaki tüm verileri şifreler. Vars
 * Veri diski şifreleme desteği, Kubernetes sürüm 1,17 ve üstünü çalıştıran AKS kümeleriyle sınırlıdır.
 * Müşteri tarafından yönetilen anahtarlarla işletim sistemi ve veri diski şifrelemesi, yalnızca bir AKS kümesi oluşturulurken etkinleştirilebilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 * Yönetilen diskleri şifrelemek için Key Vault kullanırken *Azure Key Vault* için geçici silme ve Temizleme korumasını etkinleştirmeniz gerekir.
 * Azure CLı sürüm 2.11.1 veya sonraki bir sürümü gereklidir.
 
@@ -27,7 +27,7 @@ Azure depolama, bekleyen bir depolama hesabındaki tüm verileri şifreler. Vars
 
 Anahtarlarınızı depolamak için bir Azure Key Vault örneği kullanın.  Azure portal, [müşteri tarafından yönetilen anahtarları Azure Key Vault Ile yapılandırmak][byok-azure-portal] için isteğe bağlı olarak kullanabilirsiniz
 
-Yeni bir *kaynak grubu*oluşturun ve ardından yeni bir *Key Vault* örneği oluşturun ve geçici silme ve Temizleme korumasını etkinleştirin.  Her komut için aynı bölgeyi ve kaynak grubu adlarını kullandığınızdan emin olun.
+Yeni bir *kaynak grubu* oluşturun ve ardından yeni bir *Key Vault* örneği oluşturun ve geçici silme ve Temizleme korumasını etkinleştirin.  Her komut için aynı bölgeyi ve kaynak grubu adlarını kullandığınızdan emin olun.
 
 ```azurecli-interactive
 # Optionally retrieve Azure region short names for use on upcoming commands
@@ -152,7 +152,7 @@ kubectl apply -f byok-azure-disk.yaml
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [best-practices-security]: ./operator-best-practices-cluster-security.md
 [byok-azure-portal]: ../storage/common/customer-managed-keys-configure-key-vault.md
-[customer-managed-keys-windows]: ../virtual-machines/windows/disk-encryption.md#customer-managed-keys
-[customer-managed-keys-linux]: ../virtual-machines/linux/disk-encryption.md#customer-managed-keys
+[customer-managed-keys-windows]: ../virtual-machines/disk-encryption.md#customer-managed-keys
+[customer-managed-keys-linux]: ../virtual-machines/disk-encryption.md#customer-managed-keys
 [key-vault-generate]: ../key-vault/general/manage-with-cli2.md
 [supported-regions]: ../virtual-machines/windows/disk-encryption.md#supported-regions

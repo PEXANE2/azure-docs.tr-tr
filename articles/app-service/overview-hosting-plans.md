@@ -6,16 +6,16 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5f96b48b8fec07ab207ea3962a201bbff68a5339
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 8033235cde5b7ebe298bb1fa8d4222e208df998b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92200857"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183014"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service planına genel bakış
 
-App Service (Web Apps, API Apps veya Mobile Apps), bir uygulama her zaman bir _App Service planında_çalışır. Ayrıca, [Azure işlevleri](../azure-functions/functions-scale.md#app-service-plan) bir _App Service planında_çalıştırma seçeneğine de sahiptir. App Service planı, bir web uygulamasının birlikte çalıştırılacağı işlem kaynakları kümesini tanımlar. Bu işlem kaynakları geleneksel web barındırma içindeki [_sunucu grubuna_](https://wikipedia.org/wiki/Server_farm) benzerdir. Bir veya daha fazla uygulama aynı bilgi işlem kaynaklarında (veya aynı App Service planında) çalışacak şekilde yapılandırılabilir.
+App Service (Web Apps, API Apps veya Mobile Apps), bir uygulama her zaman bir _App Service planında_ çalışır. Ayrıca, [Azure işlevleri](../azure-functions/functions-scale.md#app-service-plan) bir _App Service planında_ çalıştırma seçeneğine de sahiptir. App Service planı, bir web uygulamasının birlikte çalıştırılacağı işlem kaynakları kümesini tanımlar. Bu işlem kaynakları geleneksel web barındırma içindeki [_sunucu grubuna_](https://wikipedia.org/wiki/Server_farm) benzerdir. Bir veya daha fazla uygulama aynı bilgi işlem kaynaklarında (veya aynı App Service planında) çalışacak şekilde yapılandırılabilir.
 
 Belirli bir bölgede bir App Service planı oluşturduğunuzda (örneğin, Batı Avrupa), bu plan için o bölgedeki bir işlem kaynakları kümesi oluşturulur. Bu App Service planına yerleştirdiğiniz uygulamalar, App Service planınız tarafından tanımlandığı şekilde bu işlem kaynakları üzerinde çalışır. Her App Service planı şunları tanımlar:
 
@@ -26,8 +26,8 @@ Belirli bir bölgede bir App Service planı oluşturduğunuzda (örneğin, Batı
 
 Bir App Service planının _fiyatlandırma katmanı_ , aldığınız App Service özelliklerini ve plan için ne kadar ücret ödersiniz belirler. Birkaç fiyatlandırma katmanı kategorisi vardır:
 
-- **Paylaşılan işlem**: **ücretsiz** ve **paylaşılan**iki temel katman, diğer müşterilerin uygulamaları da dahil olmak üzere diğer App Service uygulamalarla aynı Azure VM üzerinde bir uygulamayı çalıştırır. Bu katmanlar, paylaşılan kaynaklar üzerinde çalışan her uygulamaya belirli CPU kotaları atar ve kaynaklar için ölçeklendirme yapılamaz.
-- **Adanmış işlem**: **temel**, **standart**, **Premium**, **PremiumV2**ve **PremiumV3** katmanları, uygulamaları adanmış Azure VM 'lerinde çalıştırır. Yalnızca aynı App Service planındaki uygulamalar aynı işlem kaynaklarını kullanır. Katman yükseldikçe ölçeği genişletme için kullanabileceğiniz VM örneği sayısı da artar.
+- **Paylaşılan işlem**: **ücretsiz** ve **paylaşılan** iki temel katman, diğer müşterilerin uygulamaları da dahil olmak üzere diğer App Service uygulamalarla aynı Azure VM üzerinde bir uygulamayı çalıştırır. Bu katmanlar, paylaşılan kaynaklar üzerinde çalışan her uygulamaya belirli CPU kotaları atar ve kaynaklar için ölçeklendirme yapılamaz.
+- **Adanmış işlem**: **temel**, **standart**, **Premium**, **PremiumV2** ve **PremiumV3** katmanları, uygulamaları adanmış Azure VM 'lerinde çalıştırır. Yalnızca aynı App Service planındaki uygulamalar aynı işlem kaynaklarını kullanır. Katman yükseldikçe ölçeği genişletme için kullanabileceğiniz VM örneği sayısı da artar.
 - **Yalıtılmış**: Bu katman adanmış Azure sanal ağlarında adanmış Azure VM 'leri çalıştırır. Uygulamalarınıza işlem yalıtımının en üstünde ağ yalıtımı sağlar. En fazla ölçek genişletme özellikleri sunan katmandır.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
@@ -37,13 +37,13 @@ Her katman, App Service özelliklerinin belirli bir alt kümesini de sağlar. Bu
 <a name="new-pricing-tier-premiumv3"></a>
 
 > [!NOTE]
-> Yeni **PremiumV3** fiyatlandırma katmanı, **Standart** katmana kıyasla daha hızlı işlemciler (sanal CPU başına en az 195 [acu](https://docs.microsoft.com/azure/virtual-machines/acu) ), SSD depolama ve dört bellekten çekirdek oranına sahip makineleri garanti eder. **PremiumV3** Ayrıca **Standart** katmanda bulunan tüm gelişmiş özellikleri sağlarken daha fazla örnek sayısı aracılığıyla daha yüksek ölçeklendirmeyi destekler. Mevcut **PremiumV2** katmanında bulunan tüm özellikler **PremiumV3**'e dahildir.
+> Yeni **PremiumV3** fiyatlandırma katmanı, **Standart** katmana kıyasla daha hızlı işlemciler (sanal CPU başına en az 195 [acu](../virtual-machines/acu.md) ), SSD depolama ve dört bellekten çekirdek oranına sahip makineleri garanti eder. **PremiumV3** Ayrıca **Standart** katmanda bulunan tüm gelişmiş özellikleri sağlarken daha fazla örnek sayısı aracılığıyla daha yüksek ölçeklendirmeyi destekler. Mevcut **PremiumV2** katmanında bulunan tüm özellikler **PremiumV3**'e dahildir.
 >
 > Diğer ayrılmış katmanlara benzer şekilde, bu katmanda üç VM boyutu vardır:
 >
 > - Küçük (2 CPU çekirdeği, 8 GiB bellek) 
 > - Orta (4 CPU çekirdeği, 16 GiB bellek) 
-> - Büyük (8 CPU çekirdeği, 32 GiB bellek)  
+> - Büyük (8 CPU çekirdeği, 32 GiB bellek)  
 >
 > **PremiumV3** fiyatlandırma bilgileri için bkz. [App Service fiyatlandırması](https://azure.microsoft.com/pricing/details/app-service/).
 >

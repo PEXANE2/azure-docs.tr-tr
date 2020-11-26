@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: 280083ccbd732e95796013bf2b2c08e96564c24c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c87c3692d7e1106e0952b85791da663e03c6001d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020492"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182487"
 ---
 # <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için yakınlaştırmayı yapılandırma
 
@@ -30,12 +30,12 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem yakın
 > * Azure AD ve yakınlaştırma arasında kullanıcı özniteliklerinin eşitlenmiş olmasını sağlama
 > * Yakınlaştırmak için [Çoklu oturum açma](./zoom-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
 * [Azure AD kiracısı](../develop/quickstart-create-new-tenant.md).
-* Azure AD'de hazırlama [iznine](../users-groups-roles/directory-assign-admin-roles.md) sahip bir kullanıcı hesabı (Uygulama Yöneticisi, Bulut Uygulaması Yöneticisi, Uygulama Sahibi veya Genel Yönetici). 
+* Azure AD'de hazırlama [iznine](../roles/permissions-reference.md) sahip bir kullanıcı hesabı (Uygulama Yöneticisi, Bulut Uygulaması Yöneticisi, Uygulama Sahibi veya Genel Yönetici). 
 * [Bir yakınlaştırma kiracısı](https://zoom.us/pricing).
 * Yönetici izinleriyle yakınlaştırılmış bir kullanıcı hesabı.
 

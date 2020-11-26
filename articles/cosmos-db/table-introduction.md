@@ -5,14 +5,14 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: overview
-ms.date: 07/26/2019
+ms.date: 11/25/2020
 ms.author: sngun
-ms.openlocfilehash: 9f44279e47de737bd23fcd0266b7fb73e6245b13
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 98b1db18b72aad0c68f2faee031cc040a2a1f369
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096062"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181246"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB: Tablo API’sine Giriş
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -26,6 +26,9 @@ ms.locfileid: "93096062"
 * Otomatik ikincil dizin oluşturma.
 
 Azure Tablo depolama için yazılmış uygulamalar herhangi bir kod değişikliği olmadan Tablo API'sini kullanarak Azure Cosmos DB'ye geçirilebilir ve üst düzey özelliklerden yararlanabilir. Tablo API’si, .NET, Java, Python ve Node.js ile kullanılabilecek istemci SDK’larına sahiptir.
+
+> [!NOTE]
+> [Sunucusuz kapasite modu](serverless.md) artık Azure Cosmos db tablo API'si kullanılabilir.
 
 > [!IMPORTANT]
 > .NET Framework SDK [Microsoft. Azure. CosmosDB. Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) bakım modunda ve yakında kullanım dışı bırakılacak. Tablo API'si tarafından desteklenen en son özellikleri almaya devam etmek için lütfen yeni .NET Standard Kitaplığı [Microsoft. Azure. Cosmos. Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) ' a yükseltin.

@@ -6,23 +6,23 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 4171155f5a9f72ef0c021bd0e37fe4ec2f206646
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: bd1667f6c17922b6c0b0bfba7a7329a3fc96b62e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95253379"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182640"
 ---
 # <a name="hmac-authentication---rest-api-reference"></a>HMAC kimlik doğrulaması-REST API başvurusu
 
 HMAC-SHA256 kimlik doğrulama şemasını kullanarak HTTP isteklerinin kimliğini doğrulayabilirsiniz. (HMAC, karma tabanlı ileti kimlik doğrulama koduna başvurur.) Bu istekler TLS üzerinden aktarılmalıdır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - **Credential** - \<Access Key ID\>
 - **Gizli** -Base64 kodu çözülmüş erişim anahtarı değeri. ``base64_decode(<Access Key Value>)``
 
-Kimlik bilgileri (Ayrıca denir `id` ) ve gizli dizi (Ayrıca denir `value` ) değerlerinin Azure Uygulama yapılandırması örneğinden alınması gerekir. Bunu, [Azure Portal](https://portal.azure.com) veya [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true)kullanarak yapabilirsiniz.
+Kimlik bilgileri (Ayrıca denir `id` ) ve gizli dizi (Ayrıca denir `value` ) değerlerinin Azure Uygulama yapılandırması örneğinden alınması gerekir. Bunu, [Azure Portal](https://portal.azure.com) veya [Azure CLI](/cli/azure/?preserve-view=true&view=azure-cli-latest)kullanarak yapabilirsiniz.
 
 Kimlik doğrulaması için gereken tüm HTTP üstbilgilerini içeren her isteği sağlayın. Gerekli olan en düşük değer şunlardır:
 
@@ -49,7 +49,7 @@ Authorization: HMAC-SHA256 Credential={Access Key ID}&SignedHeaders=x-ms-date;ho
 
 ``Authorization``: **HMAC-SHA256**```Credential```=\<value\>&```SignedHeaders```=\<value\>&```Signature```=\<value\>
 
-|  Bağımsız Değişken | Description  |
+|  Bağımsız Değişken | Açıklama  |
 | ------ | ------ |
 | **HMAC-SHA256** | Yetkilendirme düzeni. _istenir_ |
 | **Kimlik Bilgisi** | İmzayı hesaplamak için kullanılan erişim anahtarının KIMLIĞI. _istenir_ |
@@ -87,7 +87,7 @@ _Dizeden Imzalanacak =_
 
 **HTTP_METHOD** + ' \n ' + **path_and_query** + ' \n ' + **signed_headers_values**
 
-|  Bağımsız Değişken | Description  |
+|  Bağımsız Değişken | Açıklama  |
 | ------ | ------ |
 | **HTTP_METHOD** | İstekle birlikte kullanılan büyük harfli HTTP yöntemi adı. Daha fazla bilgi için bkz. [Bölüm 9](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html). |
 |**path_and_query** | İstek mutlak URI yolu ve sorgu dizesi birleştirme. Daha fazla bilgi için bkz. [bölüm 3,3](https://tools.ietf.org/html/rfc3986#section-3.3).

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: 43b430ffe1eb9b074eedea3d977523589bc4606a
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 00e3b40b0e3f4c799c54308b35ce3e810cde118c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359295"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181105"
 ---
 # <a name="tutorial-configure-apple-school-manager-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Apple Okul Yöneticisini yapılandırma
 
@@ -34,12 +34,12 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Apple 
 > * Apple Okul yöneticisindeki kullanıcıları artık erişim gerektirdiklerinde kaldırın
 > * Belirli kullanıcı özniteliklerini Azure AD ile Apple Okul Yöneticisi arasında eşitlenmiş olarak tut
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
 * [Bir Azure AD kiracısı](../develop/quickstart-create-new-tenant.md) 
-* Azure AD 'de sağlamayı yapılandırma [izni](../users-groups-roles/directory-assign-admin-roles.md) olan bir kullanıcı hesabı (örneğin, uygulama Yöneticisi, bulut uygulaması Yöneticisi, uygulama sahibi veya genel yönetici). 
+* Azure AD 'de sağlamayı yapılandırma [izni](../roles/permissions-reference.md) olan bir kullanıcı hesabı (örneğin, uygulama Yöneticisi, bulut uygulaması Yöneticisi, uygulama sahibi veya genel yönetici). 
 * Yönetici, site yöneticisi veya kişiler yöneticisi rolüne sahip bir Apple Okul Yöneticisi hesabı.
 
 > [!NOTE]
@@ -76,11 +76,11 @@ Azure AD hazırlama hizmeti, uygulama atamasına veya kullanıcının/grubun öz
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-apple-school-manager"></a>5. Adım. Apple Okul Yöneticisi 'ne otomatik Kullanıcı sağlamayı yapılandırma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Apple Okul Yöneticisi** ' ni seçin.
+2. Uygulamalar listesinde **Apple Okul Yöneticisi**' ni seçin.
 
     ![Uygulamalar listesindeki Apple Okul Yöneticisi](common/all-applications.png)
 
@@ -88,7 +88,7 @@ Azure AD hazırlama hizmeti, uygulama atamasına veya kullanıcının/grubun öz
 
     ![Hazırlama sekmesi](common/provisioning.png)
 
-4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Sekme otomatik sağlama](common/provisioning-automatic.png)
 
@@ -99,13 +99,13 @@ Azure AD hazırlama hizmeti, uygulama atamasına veya kullanıcının/grubun öz
 > [!NOTE]
 >Bağlantı başarılı olursa, Apple Okul Yöneticisi SCıM bağlantısını etkin olarak gösterir. Bu işlem, Apple okul yöneticisinin en son bağlantı durumunu yansıtması için 60 saniyeye kadar sürebilir.
 
-6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder** ' i işaretleyin.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet** ’e tıklayın.
+7. **Kaydet**’e tıklayın.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory kullanıcıları Apple Okul Yöneticisi ile eşitler** ' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory kullanıcıları Apple Okul Yöneticisi ile eşitler**' ı seçin.
 
 9. **Öznitelik eşleme** bölümünde, Azure AD 'Den Apple Okul Yöneticisi ' ne eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Apple Okul Yöneticisi 'ndeki Kullanıcı hesaplarıyla eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -134,7 +134,7 @@ Azure AD hazırlama hizmeti, uygulama atamasına veya kullanıcının/grubun öz
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-13. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
+13. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

@@ -4,12 +4,12 @@ description: Öğrenciler için Azure başlangıç aboneliği içinden bir Azure
 Customer intent: As a student, I want to be able to create an HTTP triggered Function App within the Student Starter plan so that I can easily add APIs to any project.
 ms.topic: how-to
 ms.date: 04/29/2020
-ms.openlocfilehash: ecb2cc20bec602101d683dbfdd3f82a2e199aa16
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f40405c9325743da5d1963e3baea781606d2d8d9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87386971"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182538"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Öğrenciler için Azure başlangıç kullanarak bir işlev oluşturma
 
@@ -47,7 +47,7 @@ Ardından, yeni işlev uygulamasında bir işlev oluşturun.
 
     ![HTTP tetikleyici işlevini seçin](./media/functions-create-student-starter/function-app-select-http-trigger.png)
 
-1. **Yeni işlev** penceresinde, **yeni işlev**için varsayılan adı kabul edin veya yeni bir ad girin. 
+1. **Yeni işlev** penceresinde, **yeni işlev** için varsayılan adı kabul edin veya yeni bir ad girin. 
 
 1. **Yetkilendirme düzeyi** açılan listesinden **anonim** ' i seçin ve ardından **işlev oluştur**' u seçin.
 
@@ -100,7 +100,7 @@ Ardından, yeni işlev uygulamasında bir işlev oluşturun.
 Artık basit bir HTTP tetikleyici işlevi olan bir işlev uygulaması oluşturmayı tamamladınız. Ardından, yerel araçları, daha fazla dili, izlemeyi ve tümleştirmeleri inceleyebilirsiniz.
 
  * [Visual Studio kullanarak ilk işlevinizi oluşturma](./functions-create-your-first-function-visual-studio.md)
- * [Visual Studio Code kullanarak ilk işlevinizi oluşturma](./functions-create-first-function-vs-code.md)
+ * [Visual Studio Code kullanarak ilk işlevinizi oluşturma](./create-first-function-vs-code-csharp.md)
  * [Azure Işlevleri JavaScript Geliştirici Kılavuzu](./functions-reference-node.md)
  * [Azure Işlevleri 'ni kullanarak bir Azure SQL veritabanına bağlanma](./functions-scenario-database-table-cleanup.md)
  * [Azure IŞLEVLERI http bağlamaları hakkında daha fazla bilgi edinin](./functions-bindings-http-webhook.md).

@@ -11,15 +11,14 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: e041b69d8fc256ff5fe759be9716db032540f2cb
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: d314c285057950ebaecb2e3f75a83948c8bf3cc2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873803"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182453"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesine model dağıtma
-
 
 Azure Kubernetes Service (AKS) üzerinde bir modeli Web hizmeti olarak dağıtmak için Azure Machine Learning kullanmayı öğrenin. Azure Kubernetes hizmeti, yüksek ölçekli üretim dağıtımları için uygundur. Aşağıdaki özelliklerde bir veya daha fazlasına ihtiyacınız varsa Azure Kubernetes hizmetini kullanın:
 
@@ -34,7 +33,7 @@ Azure Kubernetes Service (AKS) üzerinde bir modeli Web hizmeti olarak dağıtma
 Azure Kubernetes hizmetine dağıtırken, __çalışma alanınıza bağlı__ bir aks kümesine dağıtırsınız. Bir AKS kümesini çalışma alanınıza bağlama hakkında daha fazla bilgi için bkz. [Azure Kubernetes hizmet kümesi oluşturma ve iliştirme](how-to-create-attach-kubernetes.md).
 
 > [!IMPORTANT]
-> Web hizmetine dağıtım yapmadan önce yerel olarak hata ayıklamanızı öneririz. Daha fazla bilgi için bkz. [yerel olarak hata ayıklama](./how-to-troubleshoot-deployment.md#debug-locally)
+> Web hizmetine dağıtım yapmadan önce yerel olarak hata ayıklamanızı öneririz. Daha fazla bilgi için bkz. [yerel olarak hata ayıklama](./how-to-troubleshoot-deployment-local.md)
 >
 > Azure Machine Learning - [Yerel Not Defterine Dağıtma](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local) konusuna da bakabilirsiniz
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: fd1ca218d9c079e26f8424a36b90b9b657690b41
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: d44f9109540c3899ab50bd5c4c02afa19045bafb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397714"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182946"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Application Gateway’deki hatalı ağ geçidi hataları ile ilgili sorunları giderme
 
@@ -95,7 +95,7 @@ Aşağıdaki tabloda, varsayılan sistem durumu araştırmasıyla ilişkili değ
 * BackendHttpSetting, 80 dışında bir bağlantı noktası belirtiyorsa, varsayılan site bu bağlantı noktasını dinlemek üzere yapılandırılmalıdır.
 * Çağrısı, `http://127.0.0.1:port` 200 http sonuç kodunu döndürmelidir. Bu, 30 saniyelik zaman aşımı süresi içinde döndürülmelidir.
 * Yapılandırılmış bağlantı noktasının açık olduğundan ve yapılandırılmış bağlantı noktasındaki gelen veya giden trafiği engelleyen güvenlik duvarı kuralları veya Azure ağ güvenlik grupları olmadığından emin olun.
-* Azure klasik VM 'Ler veya bulut hizmeti bir FQDN veya genel IP ile kullanılıyorsa, karşılık gelen [bitiş noktasının](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints?toc=%252fazure%252fapplication-gateway%252ftoc.json) açık olduğundan emin olun.
+* Azure klasik VM 'Ler veya bulut hizmeti bir FQDN veya genel IP ile kullanılıyorsa, karşılık gelen [bitiş noktasının](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints?toc=%2fazure%2fapplication-gateway%2ftoc.json) açık olduğundan emin olun.
 * VM, Azure Resource Manager aracılığıyla yapılandırıldıysa ve uygulama ağ geçidinin dağıtıldığı VNet dışındaysa, istenen bağlantı noktasında erişime izin verecek şekilde bir [ağ güvenlik grubu](../virtual-network/network-security-groups-overview.md) yapılandırılmalıdır.
 
 ## <a name="problems-with-custom-health-probe"></a>Özel durum araştırmasıyla ilgili sorunlar

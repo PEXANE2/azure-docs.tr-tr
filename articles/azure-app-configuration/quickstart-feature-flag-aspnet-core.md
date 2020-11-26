@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: 88481346f22176b8e307b53774b42d753838f90b
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 5179a619b1adba432910605c75fae0789efd3397
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554832"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182725"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Hızlı başlangıç: ASP.NET Core uygulamasına özellik bayrakları ekleme
 
@@ -106,9 +106,9 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     ---
 
-    Önceki değişiklikten sonra, [uygulama yapılandırması için yapılandırma sağlayıcısı](https://go.microsoft.com/fwlink/?linkid=2074664) .NET Core Yapılandırma API 'sine kaydedilir.
+    Önceki değişiklikten sonra, [uygulama yapılandırması için yapılandırma sağlayıcısı](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration) .NET Core Yapılandırma API 'sine kaydedilir.
 
-1. *Startup.cs* ' de .NET Core Özellik Yöneticisi 'ne bir başvuru ekleyin:
+1. *Startup.cs*' de .NET Core Özellik Yöneticisi 'ne bir başvuru ekleyin:
 
     ```csharp
     using Microsoft.FeatureManagement;
@@ -173,7 +173,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
     }
     ```
 
-1. *Görünümler/_ViewImports. cshtml* 'de, bir yönergesi kullanarak Feature Manager etiketi yardımcısını kaydedin `@addTagHelper` :
+1. *Görünümler/_ViewImports. cshtml*'de, bir yönergesi kullanarak Feature Manager etiketi yardımcısını kaydedin `@addTagHelper` :
 
     ```cshtml
     @addTagHelper *, Microsoft.FeatureManagement.AspNetCore
@@ -209,7 +209,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
     dotnet run
     ```
 
-1. Bir tarayıcı penceresi açın ve `http://localhost:5000` yerel olarak barındırılan Web uygulaması için varsayılan URL olan öğesine gidin. Azure Cloud Shell çalışıyorsanız, **Web önizleme** düğmesini ve ardından **Yapılandır** ' ı seçin. İstendiğinde, 5000 numaralı bağlantı noktasını seçin.
+1. Bir tarayıcı penceresi açın ve `http://localhost:5000` yerel olarak barındırılan Web uygulaması için varsayılan URL olan öğesine gidin. Azure Cloud Shell çalışıyorsanız, **Web önizleme** düğmesini ve ardından **Yapılandır**' ı seçin. İstendiğinde, 5000 numaralı bağlantı noktasını seçin.
 
     ![Web önizlemesi düğmesini bulun](./media/quickstarts/cloud-shell-web-preview.png)
 
@@ -217,11 +217,11 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     :::image type="content" source="media/quickstarts/aspnet-core-feature-flag-local-before.png" alt-text="Değişiklikten önce yerel hızlı başlangıç uygulaması" border="true":::
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. **Tüm kaynaklar** ' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Tüm kaynaklar**' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
 
-1. **Özellik Yöneticisi** ' ni seçin. 
+1. **Özellik Yöneticisi**' ni seçin. 
 
-1. **Etkin** ' in altındaki onay kutusunu seçerek *Beta* bayrağını etkinleştirin.
+1. **Etkin**' in altındaki onay kutusunu seçerek *Beta* bayrağını etkinleştirin.
 
 1. Komut kabuğuna geri dönün. `dotnet` <kbd>CTRL + C</kbd>tuşlarına basarak çalışan işlemi iptal edin. Uygulamasını kullanarak uygulamanızı yeniden başlatın `dotnet run` .
 
@@ -235,7 +235,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta yeni bir uygulama yapılandırma deposu oluşturdunuz ve bunu, [Özellik Yönetimi kitaplıkları](https://go.microsoft.com/fwlink/?linkid=2074664)aracılığıyla bir ASP.NET Core Web uygulamasındaki özellikleri yönetmek için kullandınız.
+Bu hızlı başlangıçta yeni bir uygulama yapılandırma deposu oluşturdunuz ve bunu, [Özellik Yönetimi kitaplıkları](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration)aracılığıyla bir ASP.NET Core Web uygulamasındaki özellikleri yönetmek için kullandınız.
 
 * [Özellik yönetimi](./concept-feature-management.md)hakkında daha fazla bilgi edinin.
 * [Özellik bayraklarını yönetin](./manage-feature-flags.md).

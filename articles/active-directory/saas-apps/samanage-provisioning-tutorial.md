@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: 5cdc36c20cbba148bb68bda700f5fdccbc593caf
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: cca46d47003a1611c861986f8df839de57500db6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94353008"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181497"
 ---
 # <a name="tutorial-configure-solarwinds-service-desk-previously-samanage-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için SolarWinds Service Desk (daha önce Samanage) yapılandırma
 
@@ -24,7 +24,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem SolarW
 
 ## <a name="migrate-to-the-new-solarwinds-service-desk-application"></a>Yeni SolarWinds Service Desk uygulamasına geçiş
 
-SolarWinds Service Desk ile mevcut bir tümleştirmeye sahipseniz, yaklaşan değişiklikler hakkında aşağıdaki bölüme bakın. SolarWinds Service Desk 'i ilk kez ayarlıyorsanız, bu bölümü atlayıp **desteklenen yetenekler** ' e geçebilirsiniz.
+SolarWinds Service Desk ile mevcut bir tümleştirmeye sahipseniz, yaklaşan değişiklikler hakkında aşağıdaki bölüme bakın. SolarWinds Service Desk 'i ilk kez ayarlıyorsanız, bu bölümü atlayıp **desteklenen yetenekler**' e geçebilirsiniz.
 
 #### <a name="whats-changing"></a>Ne değişiyor?
 
@@ -49,12 +49,12 @@ Uygulamanız geçirildiğinde, yönetici **kimlik bilgileri** bölümünde **Yö
 > * SolarWinds Service Desk 'te grupları ve grup üyeliklerini sağlama
 > * SolarWinds Service Desk ['Te çoklu oturum açma](./samanage-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
 * [Bir Azure AD kiracısı](../develop/quickstart-create-new-tenant.md) 
-* Azure AD 'de sağlamayı yapılandırma [izni](../users-groups-roles/directory-assign-admin-roles.md) olan bir kullanıcı hesabı (örneğin, uygulama Yöneticisi, bulut uygulaması Yöneticisi, uygulama sahibi veya genel yönetici). 
+* Azure AD 'de sağlamayı yapılandırma [izni](../roles/permissions-reference.md) olan bir kullanıcı hesabı (örneğin, uygulama Yöneticisi, bulut uygulaması Yöneticisi, uygulama sahibi veya genel yönetici). 
 * Profesyonel paketi olan bir [Solarwinds Service Desk kiracısı](https://www.samanage.com/pricing/) .
 * Yönetici izinlerine sahip SolarWinds Service Desk içindeki bir kullanıcı hesabı.
 
@@ -86,17 +86,17 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 ### <a name="to-configure-automatic-user-provisioning-for-solarwinds-service-desk-in-azure-ad"></a>Azure AD 'de SolarWinds Service Desk için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Solarwinds Service Desk** ' i seçin.
+2. Uygulamalar listesinde **Solarwinds Service Desk**' i seçin.
 
 3. **Hazırlama** sekmesini seçin.
 
     ![Hazırlama sekmesinin seçili olduğunu gösteren ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Sağlama modunun otomatik olarak ayarlandığını gösteren ekran görüntüsü.](common/provisioning-automatic.png)
 
@@ -108,15 +108,15 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet** ’i seçin.
+7. **Kaydet**’i seçin.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Solarwinds hizmet masası** ' na eşitler ' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Solarwinds hizmet masası**' na eşitler ' ı seçin.
 
 9. **Öznitelik eşleme** bölümünde Azure AD 'Den Solarwinds Service Desk 'e eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Solarwinds Service Desk içindeki kullanıcı hesaplarıyla eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](../app-provisioning/customize-application-attributes.md)değiştirmeyi seçerseniz, Solarwinds Service Desk API 'sinin kullanıcıları bu özniteliğe göre filtrelemeyi desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
       ![Samange Kullanıcı eşlemeleri](./media/samanage-provisioning-tutorial/user-attributes.png)
 
-10. **Eşlemeler** bölümünde **Azure Active Directory grupları Solarwinds Service Desk olarak eşitler** ' ı seçin.
+10. **Eşlemeler** bölümünde **Azure Active Directory grupları Solarwinds Service Desk olarak eşitler**' ı seçin.
 
 11. **Öznitelik eşleme** bölümünde Azure AD 'Den Solarwinds Service Desk 'e eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Solarwinds Service Desk içindeki gruplarla eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -132,7 +132,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-15. Sağlamaya hazırsanız **Kaydet** ' i seçin.
+15. Sağlamaya hazırsanız **Kaydet**' i seçin.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

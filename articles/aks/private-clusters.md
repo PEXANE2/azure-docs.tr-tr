@@ -4,12 +4,12 @@ description: Özel bir Azure Kubernetes hizmeti (AKS) kümesi oluşturmayı öğ
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 5c45c01e34c4663657dbeee803fe0bb5cdae6a3c
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 450d68e26c5a3fc1ecfbaf6a3be6b5f698ee65e3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380581"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183269"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Özel bir Azure Kubernetes hizmet kümesi oluşturma
 
@@ -24,7 +24,7 @@ Denetim düzlemi veya API sunucusu, Azure Kubernetes hizmeti (AKS) tarafından y
 > [!NOTE]
 > Azure Kamu siteleri desteklenir, ancak eksik özel bağlantı desteği nedeniyle US Gov Teksas Şu anda desteklenmiyor.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure CLı sürüm 2.2.0 veya üzeri
 
@@ -85,7 +85,7 @@ Belirtildiği gibi, sanal ağ eşlemesi özel kümenize erişmenin bir yoludur. 
 5. Azure portal, kümenizin sanal ağını içeren kaynak grubuna gidin.  
 6. Sağ bölmede sanal ağı seçin. Sanal ağ adı *aks-VNET- \** biçimindedir.  
 7. Sol bölmede, eşlemeler ' i **seçin.**  
-8. **Ekle** ' yi SEÇIN, VM 'nin sanal ağını ekleyin ve ardından eşlemeyi oluşturun.  
+8. **Ekle**' yi SEÇIN, VM 'nin sanal ağını ekleyin ve ardından eşlemeyi oluşturun.  
 9. VM 'nin bulunduğu sanal ağa gidin, **eşlemeler ' i seçin,** aks sanal ağını seçin ve ardından eşlemeyi oluşturun. AKS sanal ağındaki adres aralıkları ve VM 'nin sanal ağ çakışması, eşleme başarısız olur. Daha fazla bilgi için bkz.  [sanal ağ eşlemesi][virtual-network-peering].
 
 ## <a name="hub-and-spoke-with-custom-dns"></a>Özel DNS ile hub ve bağlı bileşen
@@ -125,7 +125,7 @@ Belirtildiği gibi, sanal ağ eşlemesi özel kümenize erişmenin bir yoludur. 
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [private-link-service]: ../private-link/private-link-service-overview.md#limitations
 [virtual-network-peering]: ../virtual-network/virtual-network-peering-overview.md
-[azure-bastion]: ../bastion/bastion-create-host-portal.md
+[azure-bastion]: ../bastion/tutorial-create-host-portal.md
 [express-route-or-vpn]: ../expressroute/expressroute-about-virtual-network-gateways.md
 [devops-agents]: /azure/devops/pipelines/agents/agents?view=azure-devops
 [availability-zones]: availability-zones.md

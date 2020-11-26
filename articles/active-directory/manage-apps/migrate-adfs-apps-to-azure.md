@@ -14,14 +14,14 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1012ae32f679d23f16a7483415657596d027cc01
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: ab3b655d59e2cb8c6773fa1a34a08638e6926475
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658834"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180668"
 ---
-# <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Active Directory Federasyon Hizmetleri (AD FS) uygulama kimlik doğrulamasını Azure Active Directory olarak taşıma
+# <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Uygulama kimlik doğrulamasını Active Directory Federasyon Hizmetleri’nden Azure Active Directory’ye taşıma
 
 [Azure Active Directory (Azure AD)](../fundamentals/active-directory-whatis.md) , kişilere, iş ortaklarınıza ve müşterilerinize uygulamalara erişmek ve herhangi bir platformdan ve cihazdan işbirliği yapmak için tek bir kimlik sağlayan bir evrensel kimlik platformu sunar. Azure AD ['nin eksiksiz bir kimlik yönetimi özellikleri paketi](../fundamentals/active-directory-whatis.md)vardır. Uygulama (uygulama) kimlik doğrulama ve Azure AD yetkilendirmesi için standartlaştırarak bu yeteneklerin sağladığı avantajlar sağlanır.
 
@@ -198,13 +198,13 @@ Aşağıdaki tabloda, Azure AD kurumsal uygulamasına AD FS bağlı olan taraf g
 
 | Yapılandırma ayarı| AD FS| Azure AD 'de yapılandırma| SAML belirteci |
 | - | - | - | - |
-| **Uygulama oturum açma URL'si** <p>Bir hizmet sağlayıcısı (SP) tarafından başlatılan bir SAML akışında uygulamada oturum açmak için kullanıcının URL 'SI.| YOK| SAML tabanlı oturum açma işleminden temel SAML yapılandırması 'nı açın| YOK |
+| **Uygulama oturum açma URL'si** <p>Bir hizmet sağlayıcısı (SP) tarafından başlatılan bir SAML akışında uygulamada oturum açmak için kullanıcının URL 'SI.| Yok| SAML tabanlı oturum açma işleminden temel SAML yapılandırması 'nı açın| Yok |
 | **Uygulama yanıtı URL 'SI** <p>Kimlik sağlayıcısının (IDP 'nin) perspektifinden uygulamanın URL 'SI. IDP, Kullanıcı IDP 'de oturum açtıktan sonra kullanıcıyı ve belirteci buraya gönderir.  Bu, **SAML onaylama tüketici uç noktası** olarak da bilinir.| **Uç noktalar** sekmesini seçin| SAML tabanlı oturum açma işleminden temel SAML yapılandırması 'nı açın| SAML belirtecindeki hedef öğe. Örnek değer: `https://contoso.my.salesforce.com` |
-| **Uygulama oturumu kapatma URL'si** <p>Bu, Kullanıcı bir uygulamadan oturumu kapattığında "oturum kapatma temizleme" isteklerinin gönderildiği URL 'dir. IDP, kullanıcıyı diğer tüm uygulamalardan da oturumu kapatmak için isteği gönderir.| **Uç noktalar** sekmesini seçin| SAML tabanlı oturum açma işleminden temel SAML yapılandırması 'nı açın| YOK |
+| **Uygulama oturumu kapatma URL'si** <p>Bu, Kullanıcı bir uygulamadan oturumu kapattığında "oturum kapatma temizleme" isteklerinin gönderildiği URL 'dir. IDP, kullanıcıyı diğer tüm uygulamalardan da oturumu kapatmak için isteği gönderir.| **Uç noktalar** sekmesini seçin| SAML tabanlı oturum açma işleminden temel SAML yapılandırması 'nı açın| Yok |
 | **Uygulama tanımlayıcısı** <p>Bu, IDP 'nin perspektifinden uygulama tanımlayıcısıdır. Oturum açma URL 'SI değeri genellikle tanımlayıcı için kullanılır (ancak her zaman kullanılmaz).  Bazen uygulama bunu "varlık KIMLIĞI" olarak çağırır.| **Tanımlayıcılar** sekmesini seçin|SAML tabanlı oturum açma işleminden temel SAML yapılandırması 'nı açın| SAML belirtecindeki **hedef kitle** öğesiyle eşlenir. |
-| **Uygulama Federasyon meta verileri** <p>Bu, uygulamanın Federasyon meta verilerinin konumudur. IdP bunu, uç noktalar veya şifreleme sertifikaları gibi belirli yapılandırma ayarlarını otomatik olarak güncelleştirmek için kullanır.| **İzleme** sekmesini seçin| Yok. Azure AD uygulama Federasyon meta verilerini doğrudan kullanmayı desteklemez. Federasyon meta verilerini el ile içeri aktarabilirsiniz.| YOK |
+| **Uygulama Federasyon meta verileri** <p>Bu, uygulamanın Federasyon meta verilerinin konumudur. IdP bunu, uç noktalar veya şifreleme sertifikaları gibi belirli yapılandırma ayarlarını otomatik olarak güncelleştirmek için kullanır.| **İzleme** sekmesini seçin| Yok. Azure AD uygulama Federasyon meta verilerini doğrudan kullanmayı desteklemez. Federasyon meta verilerini el ile içeri aktarabilirsiniz.| Yok |
 | **Kullanıcı tanımlayıcısı/ad KIMLIĞI** <p>Azure AD'den veya AD FS'den kullanıcı tanımlayıcınızı uygulamanıza benzersiz olarak göstermek için kullanılan öznitelik.  Bu öznitelik genellikle kullanıcının UPN 'si veya e-posta adresidir.| Talep kuralları. Çoğu durumda, talep kuralı NameIdentifier ile biten bir türle bir talep yayınlar.| Tanımlayıcıyı, **Kullanıcı öznitelikleri ve talepler** başlığı altında bulabilirsiniz. Varsayılan olarak UPN kullanılır| SAML belirtecindeki **NameID** öğesiyle eşlenir. |
-| **Diğer talepler** <p>IDP 'den uygulamaya genellikle gönderilen diğer talep bilgilerine örnek olarak ad, soyadı, e-posta adresi ve grup üyeliği dahildir.| AD FS'de, bunu bağlı olan tarafta diğer talep kuralları olarak bulabilirsiniz.| Tanımlayıcıyı, **Kullanıcı öznitelikleri & talepler** altında bulabilirsiniz. **Görünüm**'ü seçin ve diğer tüm kullanıcı özniteliklerini düzenleyin.| YOK |
+| **Diğer talepler** <p>IDP 'den uygulamaya genellikle gönderilen diğer talep bilgilerine örnek olarak ad, soyadı, e-posta adresi ve grup üyeliği dahildir.| AD FS'de, bunu bağlı olan tarafta diğer talep kuralları olarak bulabilirsiniz.| Tanımlayıcıyı, **Kullanıcı öznitelikleri & talepler** altında bulabilirsiniz. **Görünüm**'ü seçin ve diğer tüm kullanıcı özniteliklerini düzenleyin.| Yok |
 
 
 ### <a name="map-identity-provider-idp-settings"></a>Eşleme kimlik sağlayıcısı (IDP) ayarları
@@ -320,7 +320,7 @@ Kullanıcı/gruplar Seçicisi, MFA 'yı grup başına (Grup SID) veya Kullanıc�
 
 Azure AD 'de bir kullanıcı veya grup için MFA kurallarını belirtin:
 
-1. Yeni bir [koşullu erişim ilkesi](../authentication/tutorial-enable-azure-mfa.md?bc=%252fazure%252factive-directory%252fconditional-access%252fbreadcrumb%252ftoc.json&toc=%252fazure%252factive-directory%252fconditional-access%252ftoc.json)oluşturun.
+1. Yeni bir [koşullu erişim ilkesi](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json)oluşturun.
 
 2. **Atamalar**' ı seçin. MFA 'yı zorlamak istediğiniz kullanıcıları veya grupları ekleyin.
 
@@ -333,7 +333,7 @@ Azure AD 'de bir kullanıcı veya grup için MFA kurallarını belirtin:
 
 Azure AD 'de kayıtlı olmayan cihazlar için MFA kurallarını belirtin:
 
-1. Yeni bir [koşullu erişim ilkesi](../authentication/tutorial-enable-azure-mfa.md?bc=%252fazure%252factive-directory%252fconditional-access%252fbreadcrumb%252ftoc.json&toc=%252fazure%252factive-directory%252fconditional-access%252ftoc.json)oluşturun.
+1. Yeni bir [koşullu erişim ilkesi](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json)oluşturun.
 
 2. **Atamaları** **tüm kullanıcılara** ayarlayın.
 
@@ -348,7 +348,7 @@ Seçilen denetimlerden birini gerektirmek için birden çok denetim Için seçen
 
 Azure AD 'de bir kullanıcının konumuna göre MFA kurallarını belirtin:
 
-1. Yeni bir [koşullu erişim ilkesi](../authentication/tutorial-enable-azure-mfa.md?bc=%252fazure%252factive-directory%252fconditional-access%252fbreadcrumb%252ftoc.json&toc=%252fazure%252factive-directory%252fconditional-access%252ftoc.json)oluşturun.
+1. Yeni bir [koşullu erişim ilkesi](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json)oluşturun.
 
 1. **Atamaları** **tüm kullanıcılara** ayarlayın.
 
@@ -386,7 +386,7 @@ AD FS 2016, aralarından seçim yapabileceğiniz çeşitli yerleşik erişim den
 ![Azure AD yerleşik Access Control](media/migrate-adfs-apps-to-azure/map-builtin-access-control-policies-1.png)
 
 
-Azure AD 'de yerleşik ilkeleri uygulamak için, [Yeni bir koşullu erişim ilkesi](../authentication/tutorial-enable-azure-mfa.md?bc=%252fazure%252factive-directory%252fconditional-access%252fbreadcrumb%252ftoc.json&toc=%252fazure%252factive-directory%252fconditional-access%252ftoc.json) kullanabilir ve erişim denetimlerini yapılandırabilir ya da erişim denetim ilkelerini yapılandırmak için AD FS 2016 ' de özel ilke tasarımcısını kullanabilirsiniz. Kural Düzenleyicisi, her türlü permütasyon oluşturmanıza yardımcı olabilecek, Izin verme ve dışındaki seçeneklerin kapsamlı bir listesini içerir.
+Azure AD 'de yerleşik ilkeleri uygulamak için, [Yeni bir koşullu erişim ilkesi](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json) kullanabilir ve erişim denetimlerini yapılandırabilir ya da erişim denetim ilkelerini yapılandırmak için AD FS 2016 ' de özel ilke tasarımcısını kullanabilirsiniz. Kural Düzenleyicisi, her türlü permütasyon oluşturmanıza yardımcı olabilecek, Izin verme ve dışındaki seçeneklerin kapsamlı bir listesini içerir.
 
 ![Azure AD erişim denetimi ilkeleri](media/migrate-adfs-apps-to-azure/map-builtin-access-control-policies-2.png)
 

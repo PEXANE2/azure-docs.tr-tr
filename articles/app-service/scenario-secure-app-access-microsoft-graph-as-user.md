@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 11/09/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: d3706c26d9b15e9ea607996ace222b29ccd84458
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 4125a4493b72fa60203067f3eba1ccebdc820b02
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95999663"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182980"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-user"></a>Öğretici: Kullanıcı olarak güvenli bir uygulamadan Microsoft Graph erişim
 
@@ -34,7 +34,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [App Service kimlik doğrulama/yetkilendirme modülü etkinleştirilmiş](scenario-secure-app-authentication-app-service.md)Azure App Service üzerinde çalışan bir Web uygulaması.
 
@@ -78,7 +78,7 @@ Web uygulamanız artık gerekli izinlere sahiptir ve ayrıca Microsoft Graph ist
 > [!NOTE]
 > Microsoft. Identity. Web kitaplığı, temel kimlik doğrulaması/yetkilendirme için Web uygulamanızda gerekli değildir veya Microsoft Graph ile isteklerin kimliğini doğrular. Yalnızca App Service kimlik doğrulaması/yetkilendirme modülü etkin olan [aşağı akış API 'lerini güvenli](tutorial-auth-aad.md#call-api-securely-from-server-code) bir şekilde çağırmak mümkündür.
 > 
-> Ancak App Service kimlik doğrulaması/yetkilendirme, daha temel kimlik doğrulama senaryoları için tasarlanmıştır. Daha karmaşık senaryolar (örneğin, özel talepler işleme) için Microsoft. Identity. Web kitaplığı veya [Microsoft kimlik doğrulama kitaplığı](/azure/active-directory/develop/msal-overview)gerekir. Başlangıçta daha fazla kurulum ve yapılandırma işi vardır ancak Microsoft. Identity. Web kitaplığı App Service kimlik doğrulaması/yetkilendirme modülü ile birlikte çalışabilir. Daha sonra, Web uygulamanızın daha karmaşık senaryolar işlemesi gerektiğinde App Service kimlik doğrulaması/yetkilendirme modülünü devre dışı bırakabilir ve Microsoft. Identity. Web uygulamanızın bir parçası olacak.
+> Ancak App Service kimlik doğrulaması/yetkilendirme, daha temel kimlik doğrulama senaryoları için tasarlanmıştır. Daha karmaşık senaryolar (örneğin, özel talepler işleme) için Microsoft. Identity. Web kitaplığı veya [Microsoft kimlik doğrulama kitaplığı](../active-directory/develop/msal-overview.md)gerekir. Başlangıçta daha fazla kurulum ve yapılandırma işi vardır ancak Microsoft. Identity. Web kitaplığı App Service kimlik doğrulaması/yetkilendirme modülü ile birlikte çalışabilir. Daha sonra, Web uygulamanızın daha karmaşık senaryolar işlemesi gerektiğinde App Service kimlik doğrulaması/yetkilendirme modülünü devre dışı bırakabilir ve Microsoft. Identity. Web uygulamanızın bir parçası olacak.
 
 ### <a name="install-client-library-packages"></a>İstemci kitaplığı paketlerini yükler
 

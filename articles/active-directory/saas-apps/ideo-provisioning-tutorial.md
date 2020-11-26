@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: Zhchia
-ms.openlocfilehash: 10b7b79ba5081e6133f2e5e94840eddfe403caef
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4d877468e87edb11b606668739d8d539ef0cc1dd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013187"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180864"
 ---
 # <a name="tutorial-configure-ideo-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için ıDEO 'ı yapılandırma
 
@@ -34,12 +34,12 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları ıDEO 
 > * IDEO 'da grupları ve grup üyeliklerini sağlama
 > * IDEO 'da çoklu oturum açma (önerilir)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
 * [Azure AD kiracısı](../develop/quickstart-create-new-tenant.md).
-* Azure AD'de hazırlama [iznine](../users-groups-roles/directory-assign-admin-roles.md) sahip bir kullanıcı hesabı (Uygulama Yöneticisi, Bulut Uygulaması Yöneticisi, Uygulama Sahibi veya Genel Yönetici).
+* Azure AD'de hazırlama [iznine](../roles/permissions-reference.md) sahip bir kullanıcı hesabı (Uygulama Yöneticisi, Bulut Uygulaması Yöneticisi, Uygulama Sahibi veya Genel Yönetici).
 * [Bir ıDEO kiracısı](https://www.shape.space/product/pricing)
 * IDEO 'da bir kullanıcı hesabı | Yönetici izinleri olan şekil.
 

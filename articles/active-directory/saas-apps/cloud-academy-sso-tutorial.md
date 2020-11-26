@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 07/16/2020
 ms.author: jeedes
 ms.openlocfilehash: 822e28402d0b7829b835ad03a3b3cf7d05c3d343
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455819"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181013"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-cloud-academy---sso"></a>Öğretici: bulut akademik My-SSO ile çoklu oturum açma tümleştirmesi Azure Active Directory
 
@@ -57,7 +57,7 @@ Cloud akademik My-SSO ile Azure AD arasındaki tümleştirmeyi yapılandırmak i
 
 ## <a name="configure-and-test-azure-ad-sso-for-cloud-academy---sso"></a>Cloud akademik My-SSO için Azure AD SSO 'yu yapılandırma ve test etme
 
-Azure AD SSO 'yu, **B. Simon**adlı bir test kullanıcısı kullanarak Cloud akademik My-SSO ile yapılandırıp test edersiniz. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Cloud akademik My-SSO ' daki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+Azure AD SSO 'yu, **B. Simon** adlı bir test kullanıcısı kullanarak Cloud akademik My-SSO ile yapılandırıp test edersiniz. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Cloud akademik My-SSO ' daki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Cloud akademik My-SSO ile yapılandırmak ve test etmek için şu üst düzey adımları tamamlayacaksınız:
 
@@ -80,7 +80,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
 
 1. **Temel SAML yapılandırması** bölümünde, **oturum açma URL 'si** kutusuna girin `https://cloudacademy.com/login/enterprise/` .
 
-1. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini**kopyalamak için Kopyala düğmesini seçin. URL 'YI kaydedin.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak için Kopyala düğmesini seçin. URL 'YI kaydedin.
 
     ![Uygulama Federasyon meta veri URL 'SI için Kopyala düğmesini gösteren ekran görüntüsü.](common/copy-metadataurl.png)
 
@@ -91,7 +91,7 @@ Bu bölümde, Azure portal B. Simon adlı bir test kullanıcısı oluşturacaks�
 1. Azure portal sol bölmesinde **Azure Active Directory**' ı seçin. **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları uygulayın:
-   1. **Ad** kutusuna **B. Simon**girin.  
+   1. **Ad** kutusuna **B. Simon** girin.  
    1. **Kullanıcı adı** kutusuna \<username> @ \<companydomain> .. yazın. \<extension> Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster**' i seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
    1. **Oluştur**’u seçin.

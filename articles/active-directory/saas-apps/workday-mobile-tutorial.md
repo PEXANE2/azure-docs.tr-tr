@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: e706649957bf427cd577d7995fb9ce104c687f4b
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: ef1ca41f54a15554a04fa3edf608bb13f5fb3398
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379001"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182028"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday-mobile-application"></a>Öğretici: Workday mobil uygulamasıyla çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -33,13 +33,13 @@ Bu öğreticide, Azure Active Directory (Azure AD), koşullu erişim ve Intune '
 Başlamak için:
 
 * Workday 'yi Azure AD ile tümleştirin.
-* [Workday ile çoklu oturum açma (SSO) tümleştirmesi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-tutorial)okuyun.
+* [Workday ile çoklu oturum açma (SSO) tümleştirmesi Azure Active Directory](./workday-tutorial.md)okuyun.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
 Bu öğreticide, Azure AD koşullu erişim ilkelerini ve Intune 'U Workday mobil uygulamasıyla yapılandırıp test edersiniz.
 
-Çoklu oturum açmayı (SSO) etkinleştirmek için, Workday Federasyon uygulamasını Azure AD ile yapılandırabilirsiniz. Daha fazla bilgi için bkz. [Workday ile çoklu oturum açma (SSO) tümleştirmesi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-tutorial).
+Çoklu oturum açmayı (SSO) etkinleştirmek için, Workday Federasyon uygulamasını Azure AD ile yapılandırabilirsiniz. Daha fazla bilgi için bkz. [Workday ile çoklu oturum açma (SSO) tümleştirmesi Azure Active Directory](./workday-tutorial.md).
 
 > [!NOTE] 
 > Workday, Intune uygulama koruma ilkelerini desteklemiyor. Koşullu erişimi kullanmak için mobil cihaz yönetimi kullanmanız gerekir.
@@ -54,15 +54,15 @@ Workday 'yi mobil uygulamalarına erişime izin verecek şekilde yapılandırın
     * Mobil kullanım-Android
     * Mobil kullanım-iPad
     * Mobil kullanım-iPhone
-1. **Izinleri Düzenle** ' yi seçin.
+1. **Izinleri Düzenle**' yi seçin.
 1. Güvenlik gruplarına rapor veya görev güvenliği sağlanabilir öğelerine erişim izni vermek için **görünüm veya değiştirme** onay kutusunu seçin.
 1. Güvenlik gruplarına tümleştirme ve rapor veya görev güvenliği sağlanabilir eylemlerine erişim izni vermek için **Al veya koy** onay kutusunu seçin.
 
-Bekleyen **Güvenlik Ilkesi değişikliklerini etkinleştir** ' i çalıştırarak bekleyen güvenlik ilkesi değişikliklerini etkinleştirin.
+Bekleyen **Güvenlik Ilkesi değişikliklerini etkinleştir**' i çalıştırarak bekleyen güvenlik ilkesi değişikliklerini etkinleştirin.
 
 ## <a name="open-workday-sign-in-page-in-workday-mobile-browser"></a>Workday Mobile Browser 'da Workday oturum açma sayfasını aç
 
-Workday mobil uygulamasına koşullu erişim uygulamak için, uygulamayı bir dış tarayıcıda açmanız gerekir. **Kiracı kurulumunu Düzenle-güvenlik** bölümünde, **yerel uygulamalar için mobil tarayıcı SSO 'su etkinleştir** ' i seçin. Bu, Intune 'un iOS için cihaza ve Android için iş profilinde yüklü olmasını gerektirir.
+Workday mobil uygulamasına koşullu erişim uygulamak için, uygulamayı bir dış tarayıcıda açmanız gerekir. **Kiracı kurulumunu Düzenle-güvenlik** bölümünde, **yerel uygulamalar için mobil tarayıcı SSO 'su etkinleştir**' i seçin. Bu, Intune 'un iOS için cihaza ve Android için iş profilinde yüklü olmasını gerektirir.
 
 ![Işgünü mobil tarayıcı oturum açma ekranının ekran görüntüsü.](./media/workday-tutorial/mobile-browser.png)
 
@@ -82,45 +82,45 @@ Workday 'i yönetilen bir cihaz olarak ayarlamak için aşağıdaki adımları g
 
 ![Yalnızca yönetilen cihazların ve bulut uygulamalarının veya eylemlerinin ekran görüntüsü.](./media/workday-tutorial/managed-devices-only.png)
 
-1. **Ana**  >  **Microsoft Intune**  >  **koşullu erişim-ilkeleri** ' ni seçin. Ardından **yalnızca yönetilen cihazlar** ' ı seçin. 
+1. **Ana**  >  **Microsoft Intune**  >  **koşullu erişim-ilkeleri**' ni seçin. Ardından **yalnızca yönetilen cihazlar**' ı seçin. 
 
-1. **Yalnızca yönetilen cihazlarda** , **ad** ' ın altında **yalnızca yönetilen cihazlar** ' ı seçin ve ardından **bulut uygulamaları veya eylemler** ' i seçin.
+1. **Yalnızca yönetilen cihazlarda**, **ad**' ın altında **yalnızca yönetilen cihazlar** ' ı seçin ve ardından **bulut uygulamaları veya eylemler**' i seçin.
 
-1. **Bulut uygulamaları veya eylemleri** :
+1. **Bulut uygulamaları veya eylemleri**:
 
     a. Bu ilkenin **bulut uygulamaları** için **geçerli olduğunu Değiştir ' i seçin** .
 
-    b. **Ekle** ' de, **Uygulama Seç** ' i seçin.
+    b. **Ekle**' de, **Uygulama Seç**' i seçin.
 
-    c. **Seçim** listesinden **Workday** ' i seçin.
+    c. **Seçim** listesinden **Workday**' i seçin.
 
-    d. **Bitti** ’yi seçin.
+    d. **Bitti**'yi seçin.
 
 1. İlkeyi **Açık** olarak **etkinleştirin** .
 
-1. **Kaydet** ’i seçin.
+1. **Kaydet**’i seçin.
 
 Erişim **verme** için aşağıdaki adımları gerçekleştirin:
 
 ![Yalnızca yönetilen cihazların ekran görüntüsü ve Izin ver.](./media/workday-tutorial/managed-devices-only-2.png)
 
-1. **Ana**  >  **Microsoft Intune**  >  **koşullu erişim-ilkeleri** ' ni seçin. Ardından **yalnızca yönetilen cihazlar** ' ı seçin. 
+1. **Ana**  >  **Microsoft Intune**  >  **koşullu erişim-ilkeleri**' ni seçin. Ardından **yalnızca yönetilen cihazlar**' ı seçin. 
 
-1. **Yalnızca yönetilen cihazlarda** , **ad** ' ın altında **yalnızca yönetilen cihazlar** ' ı seçin. **Erişim denetimleri** altında **Ver** ’i seçin.
+1. **Yalnızca yönetilen cihazlarda**, **ad**' ın altında **yalnızca yönetilen cihazlar**' ı seçin. **Erişim denetimleri** altında **Ver**’i seçin.
 
 1. **Verme** aşamasında:
 
     a. **Erişim izni** olarak uygulanacak denetimleri seçin.
 
-    b. **Cihazın uyumlu olarak işaretlenmesini gerektir** ’i seçin.
+    b. **Cihazın uyumlu olarak işaretlenmesini gerektir**’i seçin.
 
-    c. **Seçili denetimlerden birini gerektir** ' i seçin.
+    c. **Seçili denetimlerden birini gerektir**' i seçin.
 
-    d. **Seç** ’i seçin.
+    d. **Seç**’i seçin.
 
 1. İlkeyi **Açık** olarak **etkinleştirin** .
 
-1. **Kaydet** ’i seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="set-up-device-compliance-policy"></a>Cihaz Uyumluluk ilkesini ayarlama
 
@@ -144,11 +144,11 @@ Erişim **verme** için aşağıdaki adımları gerçekleştirin:
 
 1. [Azure portalına](https://portal.azure.com/) gidip oturum açın.
 1. **Intune 'u** arayın veya listeden pencere öğesini seçin.
-1. **İstemci uygulamaları**  >  **uygulamalar**  >  **uygulama yapılandırma ilkeleri** ' ne gidin. Ardından **+**  >  **yönetilen cihaz** Ekle ' yi seçin.
+1. **İstemci uygulamaları**  >  **uygulamalar**  >  **uygulama yapılandırma ilkeleri**' ne gidin. Ardından **+**  >  **yönetilen cihaz** Ekle ' yi seçin.
 1. Bir ad girin.
-1. **Platform** altında **IOS/ıpados** ' ı seçin.
+1. **Platform** altında **IOS/ıpados**' ı seçin.
 1. **Ilişkili uygulama** altında, eklediğiniz IOS için Workday uygulamasını seçin.
-1. **Yapılandırma ayarları** ' nı seçin. **Yapılandırma ayarları biçimi** altında, **XML verisi gir** ' i seçin.
+1. **Yapılandırma ayarları**' nı seçin. **Yapılandırma ayarları biçimi** altında, **XML verisi gir**' i seçin.
 1. Örnek bir XML dosyası aşağıda verilmiştir. Uygulamak istediğiniz konfigürasyonları ekleyin. `STRING_VALUE`Kullanmak istediğiniz dize ile değiştirin. `<true /> or <false />`Veya ile `<true />` değiştirin `<false />` . Bir yapılandırma eklememeniz durumunda bu örnek olarak ayarlanır `True` .
 
     ```
@@ -168,18 +168,17 @@ Erişim **verme** için aşağıdaki adımları gerçekleştirin:
     </dict>
 
     ```
-1. **Ekle** ’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 1. Sayfayı yenileyin ve yeni oluşturulan ilkeyi seçin.
-1. **Atamalar** ' ı seçin ve uygulamanın uygulanmasını istediğinizi seçin.
-1. **Kaydet** ’i seçin.
+1. **Atamalar**' ı seçin ve uygulamanın uygulanmasını istediğinizi seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="android-configuration-policies"></a>Android yapılandırma ilkeleri
 
 1. [Azure portalına](https://portal.azure.com/) gidip oturum açın.
 2. **Intune 'u** arayın veya listeden pencere öğesini seçin.
-3. **İstemci uygulamaları**  >  **uygulamalar**  >  **uygulama yapılandırma ilkeleri** ' ne gidin. Ardından **+**  >  **yönetilen cihaz** Ekle ' yi seçin.
+3. **İstemci uygulamaları**  >  **uygulamalar**  >  **uygulama yapılandırma ilkeleri**' ne gidin. Ardından **+**  >  **yönetilen cihaz** Ekle ' yi seçin.
 5. Bir ad girin. 
-6. **Platform** altında **Android** ' i seçin.
+6. **Platform** altında **Android**' i seçin.
 7. **Ilişkili uygulama** altında, eklediğiniz Android uygulaması için Workday 'yi seçin.
-8. **Yapılandırma ayarları** ' nı seçin. **Yapılandırma ayarları biçimi** altında **JSON verisi gir** ' i seçin.
-
+8. **Yapılandırma ayarları**' nı seçin. **Yapılandırma ayarları biçimi** altında **JSON verisi gir**' i seçin.

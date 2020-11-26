@@ -3,12 +3,12 @@ title: Danışman ile Azure uygulamalarının performansını geliştirme
 description: İş açısından kritik uygulamalarınızın hızını ve yanıt hızını artırmak için Azure Danışmanı 'nda performans önerilerini kullanın.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 6a008411d4422853e6a98fad59bd4519b42a9548
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 55f5ac6784bf613170fd10060799ab5ad1290a62
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308680"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183354"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Azure Advisor 'ı kullanarak Azure uygulamalarının performansını geliştirme
 
@@ -146,7 +146,7 @@ Danışman, şu anda yapılandırılmamış bir bölgeden gelen trafiğe sahip A
 
 ## <a name="configure-your-azure-cosmos-db-indexing-policy-by-using-custom-included-or-excluded-paths"></a>Azure Cosmos DB Dizin oluşturma ilkenizi özel dahil edilen veya dışlanan yollar kullanarak yapılandırma
 
-Advisor varsayılan dizin oluşturma ilkesini kullanan, ancak özel bir dizin oluşturma ilkesinden faydalanabilecek Azure Cosmos DB kapsayıcıları tanımlar. Bu belirleme iş yükü düzenine göre belirlenir. Varsayılan dizin oluşturma ilkesi tüm özellikleri dizine ekler. Sorgu filtrelerinde açık dahil edilen veya dışlanan yolların kullanıldığı özel bir dizin oluşturma ilkesi, dizin oluşturma için tüketilen ru ve depolamayı azaltabilir. [Dizin ilkelerini değiştirme hakkında daha fazla bilgi edinin.](/azure/cosmos-db/index-policy)
+Advisor varsayılan dizin oluşturma ilkesini kullanan, ancak özel bir dizin oluşturma ilkesinden faydalanabilecek Azure Cosmos DB kapsayıcıları tanımlar. Bu belirleme iş yükü düzenine göre belirlenir. Varsayılan dizin oluşturma ilkesi tüm özellikleri dizine ekler. Sorgu filtrelerinde açık dahil edilen veya dışlanan yolların kullanıldığı özel bir dizin oluşturma ilkesi, dizin oluşturma için tüketilen ru ve depolamayı azaltabilir. [Dizin ilkelerini değiştirme hakkında daha fazla bilgi edinin.](../cosmos-db/index-policy.md)
 
 ## <a name="set-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>Azure Cosmos DB sorgu sayfası boyutunu (Maxıtemcount)-1 olarak ayarlayın 
 

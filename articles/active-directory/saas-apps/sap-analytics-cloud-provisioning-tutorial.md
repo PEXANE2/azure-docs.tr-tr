@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: b87b9d9e7cab0334f1b1996feb99dc69396527b7
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 31e5393cb5de627ebf8832e43302583d6eacbf59
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94352974"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181504"
 ---
 # <a name="tutorial-configure-sap-analytics-cloud-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için SAP Analytics bulutu 'nı yapılandırma
 
@@ -34,12 +34,12 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem SAP An
 > * Kullanıcı özniteliklerinin Azure AD ile SAP Analytics bulutu arasında eşitlenmiş olmasını sağlama
 > * SAP Analytics bulutu ['Nda çoklu oturum açma](sapboc-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
 * [Bir Azure AD kiracısı](../develop/quickstart-create-new-tenant.md) 
-* Azure AD'de hazırlama [iznine](../users-groups-roles/directory-assign-admin-roles.md) sahip bir kullanıcı hesabı (Uygulama Yöneticisi, Bulut Uygulaması Yöneticisi, Uygulama Sahibi veya Genel Yönetici). 
+* Azure AD'de hazırlama [iznine](../roles/permissions-reference.md) sahip bir kullanıcı hesabı (Uygulama Yöneticisi, Bulut Uygulaması Yöneticisi, Uygulama Sahibi veya Genel Yönetici). 
 * SAP Analytics bulut kiracısı
 * SAP kimlik sağlama yönetici konsolunda yönetici izinleriyle bir kullanıcı hesabı. Kimlik sağlama yönetim konsolundaki proxy sistemlerine erişiminiz olduğundan emin olun. **Proxy sistemleri** kutucuğunu görmüyorsanız, bu kutucuğa erişim istemek Için bileşen **BC-ıAM-IP 'ler** için bir olay oluşturun.
 * Yetkilendirmeyi içeren bir OAuth istemcisi SAP Analytics bulutu 'nda Istemci kimlik bilgileri verir. Hakkında bilgi edinmek için bkz.. [OAuth istemcilerini ve güvenilir kimlik sağlayıcılarını yönetme](https://help.sap.com/viewer/00f68c2e08b941f081002fd3691d86a7/release/en-US/4f43b54398fc4acaa5efa32badfe3df6.html)
@@ -52,11 +52,11 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
 ## <a name="step-2-configure-sap-analytics-cloud-to-support-provisioning-with-azure-ad"></a>Adım 2. SAP Analytics bulutu 'nı Azure AD ile sağlamayı destekleyecek şekilde yapılandırma
 
-1. Yönetici hesabıyla [SAP Identity sağlamasını Yönetici Konsolu 'nda](https://ips-xlnk9v890j.dispatcher.us1.hana.ondemand.com/) oturum açın ve **proxy sistemleri** ' ni seçin.
+1. Yönetici hesabıyla [SAP Identity sağlamasını Yönetici Konsolu 'nda](https://ips-xlnk9v890j.dispatcher.us1.hana.ondemand.com/) oturum açın ve **proxy sistemleri**' ni seçin.
 
    ![SAP proxy sistemleri](./media/sap-analytics-cloud-provisioning-tutorial/sap-proxy-systems.png.png)
 
-2. **Özellikler** ’i seçin.
+2. **Özellikler**’i seçin.
 
    ![SAP proxy sistemleri özellikleri](./media/sap-analytics-cloud-provisioning-tutorial/sap-proxy-systems-properties.png)
 
@@ -68,7 +68,7 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
    ![SAP IP proxy sistemleri özellikleri OAuth](./media/sap-analytics-cloud-provisioning-tutorial/sap-proxy-systems-details-oauth.png)
 
-5. Postman 'da **temel kimlik doğrulaması** ' nı kullanın ve Kullanıcı olarak OAUTH istemci kimliğini ve parola olarak gizli anahtarı ayarlayın. Bu çağrı bir erişim belirteci döndürür. Daha sonra bu kopyalanmış olması için **gizli dizi belirteci** alanında kullanılmak üzere saklayın.
+5. Postman 'da **temel kimlik doğrulaması**' nı kullanın ve Kullanıcı olarak OAUTH istemci kimliğini ve parola olarak gizli anahtarı ayarlayın. Bu çağrı bir erişim belirteci döndürür. Daha sonra bu kopyalanmış olması için **gizli dizi belirteci** alanında kullanılmak üzere saklayın.
 
    ![Postman POST Isteği](./media/sap-analytics-cloud-provisioning-tutorial/postman-post-request.png)
 
@@ -91,11 +91,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 ### <a name="to-configure-automatic-user-provisioning-for-sap-analytics-cloud-in-azure-ad"></a>Azure AD 'de SAP Analytics bulutu için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **SAP Analytics bulutu** ' nı seçin.
+2. Uygulamalar listesinde, **SAP Analytics bulutu**' nı seçin.
 
     ![Uygulamalar listesindeki SAP Analytics bulut bağlantısı](common/all-applications.png)
 
@@ -103,7 +103,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
@@ -115,9 +115,9 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet** ’i seçin.
+7. **Kaydet**’i seçin.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları sağla** ' yı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları sağla**' yı seçin.
 
 9. **Öznitelik eşleme** bölümünde Azure AD 'Den SAP Analytics bulutu 'na eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme IŞLEMLERI Için SAP Analytics bulutu 'ndaki Kullanıcı hesaplarıyla eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](../app-provisioning/customize-application-attributes.md)değiştirmeyi SEÇERSENIZ, SAP Analytics bulut API 'sinin kullanıcıları bu özniteliğe göre filtrelemeyi desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -140,7 +140,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-13. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
+13. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

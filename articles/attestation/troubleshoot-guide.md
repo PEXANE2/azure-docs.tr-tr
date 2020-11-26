@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: fe347983e2143c7a4bdf00ca0207356c881c66ac
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 72d7a40c38f3629a70260f223074b456dff9ce38
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95891291"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182844"
 ---
 # <a name="microsoft-azure-attestation-troubleshooting-guide"></a>Microsoft Azure kanıtlama sorun giderme kılavuzu
 
@@ -95,7 +95,7 @@ b. Azure rolü atama ayarlarınızı doğrulayın
  
   ```
 
-c. Listede uygun bir rol ataması bulamazsanız, [buradaki](/azure/role-based-access-control/role-assignments-powershell) yönergeleri izleyin.
+c. Listede uygun bir rol ataması bulamazsanız, [buradaki](../role-based-access-control/role-assignments-powershell.md) yönergeleri izleyin.
 
 ## <a name="2-http--400-errors"></a>2. HTTP – 400 hata
 
@@ -123,7 +123,7 @@ G:\Az\security\Attestation\src\AttestationServices\Instance\Enclave\api.cpp(840)
 
 "Draftpolicyforkanıtlama" parametresinde ilke metni sağlayarak onaylamasını sağlar API 'sine bir istek gönderin. AttestSgxEnclave API 'si, onaylamasını sağlar çağrısı sırasında bu ilke belgesini kullanır ve bu işlem, tüketilme öncesinde kanıtlama ilkelerini test etmek için kullanılabilir. Bu alan mevcut olduğunda üretilen kanıtlama belirteci güvenli olmayan bir şekilde yapılır.
 
-[Kanıtlama ilkesi örneklerine](/azure/attestation/policy-examples) bakın
+[Kanıtlama ilkesi örneklerine](./policy-examples.md) bakın
 
 ### <a name="22-attestation-failure-due-to-invalid-input"></a>2.2. Geçersiz giriş nedeniyle kanıtlama hatası
 
@@ -163,7 +163,7 @@ Kök sertifikanın temel kısıtlamalar uzantısının, konu türü = CA 'nın o
 
 Aksi takdirde sertifika zinciri geçersiz olarak kabul edilir.
 
-Bkz. [ilke imzalayan](/azure/attestation/policy-signer-examples) ve [ilke](/azure/attestation/policy-examples) örnekleri 
+Bkz. [ilke imzalayan](./policy-signer-examples.md) ve [ilke](./policy-examples.md) örnekleri 
 
 ### <a name="24-adddelete-policy-signer-failure"></a>2.4. İlke imzalayan ekleme/silme hatası
 
@@ -209,7 +209,7 @@ At line:1 char:1
     + FullyQualifiedErrorId : Microsoft.Azure.Commands.Attestation.AddAzureAttestationPolicySigner
 ```
 
-**Sorun giderme adımları** Yeni bir ilke imzalayan sertifikası eklemek/silmek için, "x-MS-policyCertificate" adlı bir talep ile RFC7519 JSON Web Token (JWT) kullanın. Talebin değeri, eklenecek sertifikayı içeren bir RFC7517 JSON Web anahtarıdır. JWT, sağlayıcı ile ilişkili geçerli ilke imzalayan sertifikalarının herhangi birinin özel anahtarıyla imzalanmalıdır. Bkz. [ilke imzalayan örnekleri](/azure/attestation/policy-signer-examples).
+**Sorun giderme adımları** Yeni bir ilke imzalayan sertifikası eklemek/silmek için, "x-MS-policyCertificate" adlı bir talep ile RFC7519 JSON Web Token (JWT) kullanın. Talebin değeri, eklenecek sertifikayı içeren bir RFC7517 JSON Web anahtarıdır. JWT, sağlayıcı ile ilişkili geçerli ilke imzalayan sertifikalarının herhangi birinin özel anahtarıyla imzalanmalıdır. Bkz. [ilke imzalayan örnekleri](./policy-signer-examples.md).
 
 ### <a name="25-attestation-policy-configuration-failure"></a>2.5. Kanıtlama ilkesi yapılandırma hatası
 
@@ -255,7 +255,7 @@ Bir ilkeyi metin biçiminde yapılandırmak için, ilke metnini doğrudan belirt
 
 PowerShell 'de, ilkeyi JWT biçiminde yapılandırmak için PolicyFormat öğesini JWT olarak belirtin. Varsayılan ilke biçimi metindir.
 
-Bkz. kanıtlama [ilkesi örnekleri](/azure/attestation/policy-examples) ve [bir kanıtlama ilkesi yazma](/azure/attestation/author-sign-policy) 
+Bkz. kanıtlama [ilkesi örnekleri](./policy-examples.md) ve [bir kanıtlama ilkesi yazma](./author-sign-policy.md) 
 
 ## <a name="3-azattestation-installation-issues-in-powershell"></a>3. az. PowerShell 'de kanıtlama yükleme sorunları
 
@@ -301,4 +301,3 @@ Get-InstalledModule
 Sürümler en düşük gereksinimle eşleşmez Update-Module komutları çalıştırın
 
 Örneğin-Update-Module adı az. kanıtlama
-

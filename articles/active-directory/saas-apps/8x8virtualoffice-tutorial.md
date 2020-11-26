@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 2102ea1ef4afb6d7f3ce96e4cd7ead0e7af08bf0
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 81a7efea268600e661981b35f79149fe814ef084
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129448"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180685"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-8x8"></a>Öğretici: 8x8 ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,7 +26,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile 8x8 ' i tümleştirme hak
 * Kullanıcılarınızın Azure AD hesaplarıyla 8x8 ' e otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -51,8 +51,8 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama** ' yı seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **8x8** yazın.
 1. Sonuçlar panelinden **8x8** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
@@ -73,8 +73,8 @@ Azure AD SSO 'yu 8x8 ile yapılandırmak ve test etmek için aşağıdaki adıml
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. Azure portal, **8x8** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma** ' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML** ' yi seçin.
+1. Azure portal, **8x8** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
@@ -97,25 +97,25 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portal sol bölmeden **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin.
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur** 'a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, 8x8 ' e erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portal **Kurumsal uygulamalar** ' ı seçin ve ardından **tüm uygulamalar** ' ı seçin.
-1. Uygulamalar listesinde **8x8** ' i seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar** ' ı seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde **8x8**' i seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle** ' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
@@ -141,7 +141,7 @@ Bu bölümde, 8x8 ' e erişim vererek Azure çoklu oturum açma özelliğini kul
 
 1. 8x8 ' i el ile ayarlamak istiyorsanız, bir yönetici olarak 8x8 [yönetici konsolunda](https://admin.8x8.com/) oturum açın.
 
-1. Giriş sayfasından **kimlik yönetimi** ' ne tıklayın.
+1. Giriş sayfasından **kimlik yönetimi**' ne tıklayın.
 
     ![Kimlik yönetimi kutucuğunu vurgulayan ekran görüntüsü.](./media/8x8virtualoffice-tutorial/configure1.png)
 
@@ -153,15 +153,15 @@ Bu bölümde, 8x8 ' e erişim vererek Azure çoklu oturum açma özelliğini kul
 
     ![8x8 Yönetici Konsolu](./media/8x8virtualoffice-tutorial/configure3.png)
 
-    a. **IDP oturum açma URL** 'Sine **oturum açma URL** 'sini kopyalayın.
+    a. **IDP oturum açma URL**'Sine **oturum açma URL** 'sini kopyalayın.
 
-    b. **Azure ad tanımlayıcısını** **ıDP veren URL/urn** 'ye kopyalayın.
+    b. **Azure ad tanımlayıcısını** **ıDP veren URL/urn**'ye kopyalayın.
 
-    c. **Oturum kapatma URL 'Sini** **ıDP oturum kapatma URL** 'sine kopyalayın.
+    c. **Oturum kapatma URL 'Sini** **ıDP oturum kapatma URL**'sine kopyalayın.
 
     d. **Sertifikayı indirin (base64)** ve **sertifikayı** karşıya yükleyin.
 
-    e. **Kaydet** ’e tıklayın.
+    e. **Kaydet**’e tıklayın.
 
 ### <a name="configure-8x8-account-manager"></a>8x8 hesap yöneticisini Yapılandır
 
@@ -183,7 +183,7 @@ Bu bölümde, 8x8 ' e erişim vererek Azure çoklu oturum açma özelliğini kul
 
     ![Çoklu oturum açma seçeneğini vurgulayan ekran görüntüsü.](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_004.png)
 
-1. Kimlik doğrulama yöntemlerinde **Çoklu oturum açma** ' yı seçin ve **SAML** ' ye tıklayın.
+1. Kimlik doğrulama yöntemlerinde **Çoklu oturum açma** ' yı seçin ve **SAML**' ye tıklayın.
 
     ![Çoklu oturum açma altındaki SAML 'Yi vurgulayan ekran görüntüsü.](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_005.png)
 
@@ -219,7 +219,7 @@ Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki se�
 
 * Azure portal **Bu uygulamayı test et** ' e tıklayın ve SSO 'yu ayarladığınız 8x8 ' de otomatik olarak oturum açmış olmanız gerekir 
 
-Uygulamayı dilediğiniz modda test etmek için Microsoft Access panel ' i de kullanabilirsiniz. Erişim panelinde 8x8 kutucuğuna tıkladığınızda, SP modunda yapılandırıldıysa, oturum açma akışını başlatmak için uygulama oturum açma sayfasına yönlendirilirsiniz ve ıDP modunda yapılandırıldıysa, SSO 'yu ayarladığınız 8x8 ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Uygulamayı dilediğiniz modda test etmek için Microsoft Access panel ' i de kullanabilirsiniz. Erişim panelinde 8x8 kutucuğuna tıkladığınızda, SP modunda yapılandırıldıysa, oturum açma akışını başlatmak için uygulama oturum açma sayfasına yönlendirilirsiniz ve ıDP modunda yapılandırıldıysa, SSO 'yu ayarladığınız 8x8 ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
