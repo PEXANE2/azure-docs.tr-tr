@@ -79,6 +79,46 @@
               href: sync-ldap.md
             - name: SCIM eşitlemesi
               href: sync-scim.md
+        - name: Dayanıklılığı gözeterek oluşturma
+          items:
+            - name: Genel Bakış
+              href: resilience-overview.md
+            - name: Altyapı rehberliği
+              items:
+                - name: Altyapıya genel bakış
+                  href: resilience-in-infrastructure.md
+                - name: Kimlik bilgileri yönetimi
+                  href: resilience-in-credentials.md
+                - name: Cihaz durumları
+                  href: resilience-with-device-states.md
+                - name: Sürekli erişim değerlendirmesi
+                  href: resilience-with-continuous-access-evaluation.md
+                - name: Dış kullanıcı kimlik doğrulaması
+                  href: resilience-b2b-authentication.md
+                - name: Karma kimlik doğrulaması
+                  href: resilience-in-hybrid.md
+                - name: Uygulama Ara Sunucusu
+                  href: resilience-on-premises-access.md
+            - name: Azure AD B2C rehberliği
+              items:
+                - name: Azure AD B2C dayanıklılığa giriş
+                  href: resilience-b2c.md
+                - name: Son kullanıcı deneyimi
+                  href: resilient-end-user-experience.md
+                - name: Dış işlemlerle arabirimler
+                  href: resilient-external-processes.md
+                - name: Azure AD B2C geliştirici en iyi yöntemleri
+                  href: resilience-b2c-developer-best-practices.md
+                - name: İzleme ve analiz
+                  href: resilience-with-monitoring-alerting.md
+            - name: Uygulama geliştirme rehberliği
+              items:
+                - name: Geliştirmeye genel bakış
+                  href: resilience-app-development-overview.md
+                - name: İstemci uygulamaları
+                  href: resilience-client-app.md
+                - name: Daemon uygulamaları
+                  href: resilience-daemon-app.md
         - name: Azure’da kullanılan yetkililere sertifika sağlama
           href: certificate-authorities.md
     - name: Dağıtım kılavuzu

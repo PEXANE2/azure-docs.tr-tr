@@ -11,9 +11,9 @@
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: .NET Core
+    - name: ASP.NET Çekirdeği
       href: quickstart-dotnetcore.md
-    - name: .NET Framework
+    - name: ASP.NET
       href: quickstart-dotnet-framework.md
     - name: Node.js
       href: quickstart-nodejs.md
@@ -52,9 +52,9 @@
           href: scenario-secure-app-clean-up-resources.md
     - name: DB ile uygulama
       items:
-        - name: SQL DB ile .NET Core
+        - name: SQL DB ile ASP.NET Core
           href: tutorial-dotnetcore-sqldb-app.md
-        - name: SQL DB ile .NET Framework
+        - name: SQL DB ile ASP.NET
           href: app-service-web-tutorial-dotnet-sqldatabase.md
         - name: MySQL ile PHP
           href: tutorial-php-mysql-app.md

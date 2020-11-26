@@ -26,18 +26,24 @@
               href: service-bus-resource-manager-namespace-queue.md
         - name: İleti alma ve gönderme
           items:
-            - name: .NET
+            - name: .NET (Azure.Messaging.ServiceBus)
               href: service-bus-dotnet-get-started-with-queues.md
-            - name: Java
+            - name: Java (azure-messaging-servicebus)
               href: service-bus-java-how-to-use-queues.md
-            - name: Node.js
-              href: service-bus-nodejs-how-to-use-queues-new-package.md
+            - name: Python (azure-servicebus)
+              href: service-bus-python-how-to-use-queues.md
+            - name: JavaScript (@azure/service-bus)
+              href: service-bus-nodejs-how-to-use-queues.md
             - name: PHP
               href: service-bus-php-how-to-use-queues.md
-            - name: Python
-              href: service-bus-python-how-to-use-queues.md
             - name: Ruby
               href: service-bus-ruby-how-to-use-queues.md
+        - name: İletileri gönderme ve alma (eski sürümler/paketler)
+          items:
+            - name: .NET (Microsoft.Azure.ServiceBus)
+              href: service-bus-dotnet-get-started-with-queues-legacy.md
+            - name: Java (azure-servicebus)
+              href: service-bus-java-how-to-use-queues-legacy.md
     - name: Services Bus konu başlıkları ve abonelikler
       items:
         - name: Konu başlıklarını ve abonelikleri oluşturma
@@ -50,24 +56,34 @@
               href: service-bus-resource-manager-namespace-topic.md
         - name: İleti yayımlama ve iletilere abone olma
           items:
-            - name: .NET
+            - name: .NET (Azure.Messaging.ServiceBus)
               href: service-bus-dotnet-how-to-use-topics-subscriptions.md
-            - name: Java
+            - name: Java (azure-messaging-servicebus)
               href: service-bus-java-how-to-use-topics-subscriptions.md
-            - name: Node.js
-              href: service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md
+            - name: Python (azure-servicebus)
+              href: service-bus-python-how-to-use-topics-subscriptions.md
+            - name: JavaScript (@azure/service-bus)
+              href: service-bus-nodejs-how-to-use-topics-subscriptions.md
             - name: PHP
               href: service-bus-php-how-to-use-topics-subscriptions.md
-            - name: Python
-              href: service-bus-python-how-to-use-topics-subscriptions.md
             - name: Ruby
               href: service-bus-ruby-how-to-use-topics-subscriptions.md
+        - name: İleti yayımlama ve iletilere abone olma (eski sürümler/paketler)
+          items:
+            - name: .NET (Microsoft.Azure.ServiceBus)
+              href: service-bus-dotnet-how-to-use-topics-subscriptions-legacy.md
+            - name: Java (azure-servicebus)
+              href: service-bus-java-how-to-use-topics-subscriptions-legacy.md
 - name: Öğreticiler
   items:
     - name: Envanteri güncelleştirme
       href: service-bus-tutorial-topics-subscriptions-portal.md
-    - name: Event Grid yoluyla olaylara yanıt verme
-      href: service-bus-to-event-grid-integration-example.md
+    - name: Event Grid aracılığıyla Service Bus olaylarını işleme
+      items:
+        - name: Azure Logic Apps
+          href: service-bus-to-event-grid-integration-example.md
+        - name: Azure İşlevleri
+          href: service-bus-to-event-grid-integration-function.md
 - name: Örnekler
   items:
     - name: Service Bus örnekleri
@@ -182,10 +198,6 @@
           href: service-bus-end-to-end-tracing.md
         - name: Çok katmanlı Service Bus uygulaması derleme
           href: service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
-        - name: Kuyruklardan ileti gönderme ve alma (eski azure-sb)
-          href: service-bus-nodejs-how-to-use-queues.md
-        - name: İleti yayımlama ve iletilere abone olma (eski azure-sb)
-          href: service-bus-nodejs-how-to-use-topics-subscriptions.md
     - name: Geçiş
       items:
         - name: ActiveMQ’dan Azure Service Bus’a geçiş
@@ -241,16 +253,38 @@
   items:
     - name: .NET
       items:
-        - name: Microsoft.ServiceBus.Messaging (.NET Framework)
-          href: /dotnet/api/microsoft.servicebus.messaging
+        - name: Microsoft.Azure.ServiceBus’tan Azure.Messaging.ServiceBus’a geçiş
+          href: 'https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/MigrationGuide.md'
+        - name: Azure.Messaging.ServiceBus (.NET Standard - en son)
+          href: 'https://docs.microsoft.com/dotnet/api/azure.messaging.servicebus'
         - name: Microsoft.Azure.ServiceBus (.NET Standard)
-          href: /dotnet/api/microsoft.azure.servicebus
+          href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus'
+        - name: Microsoft.ServiceBus.Messaging (.NET Framework)
+          href: 'https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging'
     - name: Java
-      href: /java/api/overview/azure/servicebus
+      items:
+        - name: azure-servicebus’tan azure-messaging-servicebus’a geçiş
+          href: 'https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/servicebus/azure-messaging-servicebus/migration-guide.md'
+        - name: azure-messaging-servicebus (en son)
+          href: 'https://docs.microsoft.com/java/api/overview/azure/servicebus?view=azure-java-preview'
+        - name: azure-servicebus
+          href: 'https://docs.microsoft.com/java/api/overview/azure/servicebus'
     - name: Python
-      href: /python/api/overview/azure/servicebus?view=azure-python
-    - name: Node.js
-      href: /javascript/api/overview/azure/service-bus
+      items:
+        - name: azure-servicebus sürüm 0.50’den sürüm 7’ye geçiş
+          href: 'https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/servicebus/azure-servicebus/migration_guide.md'
+        - name: azure-servicebus sürüm 7
+          href: 'https://docs.microsoft.com/python/api/overview/azure/servicebus?view=azure-python-preview'
+        - name: azure-servicebus sürüm 0.50
+          href: 'https://docs.microsoft.com/python/api/overview/azure/servicebus'
+    - name: JavaScript
+      items:
+        - name: Sürüm 1’den sürüm 7’ye geçiş
+          href: 'https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/migrationguide.md'
+        - name: azure/service-bus sürüm 7
+          href: 'https://docs.microsoft.com/javascript/api/overview/azure/service-bus?view=azure-node--preview'
+        - name: azure/service-bus sürüm 1
+          href: 'https://docs.microsoft.com/javascript/api/overview/azure/service-bus?view=azure-node-latest'
     - name: PHP
       href: 'https://github.com/Azure/azure-sdk-for-php'
     - name: Ruby
@@ -265,9 +299,9 @@
       href: /azure/templates/microsoft.servicebus/allversions
     - name: Kotalar
       href: service-bus-quotas.md
-    - name: SQLFilter söz dizimi
+    - name: Abonelik Kuralı SQL filtresi söz dizimi
       href: service-bus-messaging-sql-filter.md
-    - name: SQLRuleAction söz dizimi
+    - name: Abonelik Kuralı SQL eylemi söz dizimi
       href: service-bus-messaging-sql-rule-action.md
     - name: Azure İlkesi yerleşik ilkeler
       displayName: 'samples, policies, definitions'

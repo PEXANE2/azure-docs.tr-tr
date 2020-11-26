@@ -424,5 +424,9 @@
           href: sql-data-warehouse-partner-data-management.md
         - name: Makine öğrenimi ve AI
           href: sql-data-warehouse-partner-machine-learning-ai.md
+        - name: Sistem tümleştirme
+          href: sql-data-warehouse-partner-system-integration.md
         - name: Genel Önizleme iş ortakları
           href: sql-data-warehouse-partner-launch.md
+        - name: Üçüncü taraf uygulamalarla uyumluluk sorunları
+          href: sql-data-warehouse-partner-compatibility-issues.md

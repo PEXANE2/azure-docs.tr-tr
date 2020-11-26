@@ -1,5 +1,5 @@
 ---
-title: Ölçüm Izleyicisi REST API hızlı başlangıç
+title: Ölçüm Danışmanı REST API hızlı başlangıç
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: mrbullwinkle
@@ -9,12 +9,12 @@ ms.subservice: metrics-advisor
 ms.topic: include
 ms.date: 09/23/2020
 ms.author: mbullwin
-ms.openlocfilehash: 416f28f51a3ebe00e7227503f189898406229c8a
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 42ea166119d3cc405b3d73e184c44dbfd6708a97
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047479"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96231489"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -38,7 +38,7 @@ REST API kullanmaya başlamak için iki anahtara ihtiyacınız olacaktır:
 
 ## <a name="add-a-data-feed-from-a-sample-or-data-source"></a>Örnek veya veri kaynağından veri akışı ekleme
 
-Zaman serisi verilerinizi izlemeye başlamak için bir veri akışı eklemeniz gerekir. Veri akışı eklemek için veri kaynağı türü ve parametrelerine göre bir veri şeması sağlamanız gerekir. Aşağıdaki JSON istek gövdesini * üzerindebody.js*adlı bir dosyaya kaydedin ve kıvrımlı komutunu çalıştırın.
+Zaman serisi verilerinizi izlemeye başlamak için bir veri akışı eklemeniz gerekir. Veri akışı eklemek için veri kaynağı türü ve parametrelerine göre bir veri şeması sağlamanız gerekir. Aşağıdaki JSON istek gövdesini *üzerindebody.js* adlı bir dosyaya kaydedin ve kıvrımlı komutunu çalıştırın.
 
 ```json
 {
@@ -197,7 +197,7 @@ curl https://REPLACE-WITH-YOUR-ENDPOINT/metricsadvisor/v1.0/datafeeds/REPLACE-WI
 
 ## <a name="check-ingestion-status"></a>Alma durumunu denetle
 
-Veri akışı eklendikten sonra, bir alım işinin ilerlemesini denetlemek isterseniz, onun durumunu kontrol edebilirsiniz. Aşağıdaki JSON istek gövdesini * üzerindebody.js*adlı bir dosyaya kaydedin ve kıvrımlı komutunu çalıştırın.
+Veri akışı eklendikten sonra, bir alım işinin ilerlemesini denetlemek isterseniz, onun durumunu kontrol edebilirsiniz. Aşağıdaki JSON istek gövdesini *üzerindebody.js* adlı bir dosyaya kaydedin ve kıvrımlı komutunu çalıştırın.
 
 ```json
 {
@@ -246,7 +246,7 @@ curl https://REPLACE-WITH-YOUR-ENDPOINT/metricsadvisor/v1.0/datafeeds/REPLACE-WI
 
 ##  <a name="configure-anomaly-detection-configuration"></a>Anomali algılama yapılandırmasını Yapılandır
 
-Varsayılan yapılandırma her ölçüm için otomatik olarak uygulandığında, verilerinizde kullanılan algılama modlarını ayarlayabilirsiniz. Aşağıdaki JSON istek gövdesini * üzerindebody.js*adlı bir dosyaya kaydedin ve kıvrımlı komutunu çalıştırın.
+Varsayılan yapılandırma her ölçüm için otomatik olarak uygulandığında, verilerinizde kullanılan algılama modlarını ayarlayabilirsiniz. Aşağıdaki JSON istek gövdesini *üzerindebody.js* adlı bir dosyaya kaydedin ve kıvrımlı komutunu çalıştırın.
 
 ```json
 {
@@ -338,7 +338,7 @@ curl https://REPLACE-WITH-YOUR-ENDPOINT/metricsadvisor/v1.0/enrichment/anomalyDe
 
 Uyarıyı yapılandırmadan önce, uyarıyı bilgilendirmek için kullanılacak bir kanca oluşturmanız gerekir. Web kancası ve e-posta olan bir uyarı tetiklendiğinde bildirim almanın iki yolu vardır. Kanca oluştururken kanca türü olarak bu bunlardan birini kanca içinde belirtebilirsiniz.
 
-Aşağıdaki JSON istek gövdesini * üzerindebody.js*adlı bir dosyaya kaydedin ve kıvrımlı komutunu çalıştırın.
+Aşağıdaki JSON istek gövdesini *üzerindebody.js* adlı bir dosyaya kaydedin ve kıvrımlı komutunu çalıştırın.
 
 ```json
 {
@@ -414,7 +414,7 @@ curl https://REPLACE-WITH-YOUR-ENDPOINT/metricsadvisor/v1.0/hooks/REPLACE-WITH-Y
 }
 ```
 
-Uyarı yapılandırmasını yapılandırarak, uyarının tetiklenmesi için kullanılabilecek algılama koşulu belirtebilirsiniz. Aşağıdaki JSON istek gövdesini * üzerindebody.js*adlı bir dosyaya kaydedin ve kıvrımlı komutunu çalıştırın.
+Uyarı yapılandırmasını yapılandırarak, uyarının tetiklenmesi için kullanılabilecek algılama koşulu belirtebilirsiniz. Aşağıdaki JSON istek gövdesini *üzerindebody.js* adlı bir dosyaya kaydedin ve kıvrımlı komutunu çalıştırın.
 
 ```json
 {

@@ -9,18 +9,18 @@ ms.subservice: metrics-advisor
 ms.topic: include
 ms.date: 09/10/2020
 ms.author: mbullwin
-ms.openlocfilehash: c754efef02cdad6edbf047c5de9f1af6d758f137
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 4c55c25621df1925b6ed6c374d8af88551eb1e46
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043229"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96231438"
 ---
-Ölçüm Izleyicisi, zaman serisi anomali algılama, tanılama ve analize yönelik bir hizmettir. AI destekli bir hizmet olarak, kullanılan modeli eğitebilmeniz için verilerinizi kullanır. Hizmet, toplanan verilerin tablolarını aşağıdaki sütunlara sahip olarak kabul eder:
+Ölçüm Danışmanı, zaman serisi anomali algılama, tanılama ve analizler için bir hizmettir. AI destekli bir hizmet olarak, kullanılan modeli eğitebilmeniz için verilerinizi kullanır. Hizmet, toplanan verilerin tablolarını aşağıdaki sütunlara sahip olarak kabul eder:
 
 * **Ölçü** (zorunlu): sayısal değerler içeren bir veya daha fazla sütun.
 * **Zaman damgası** (isteğe bağlı): sıfır veya türü olan bir `DateTime` sütun `String` . Bu sütun ayarlanmamışsa, zaman damgası her alma döneminin başlangıç saati olarak ayarlanır. Zaman damgasını şu şekilde biçimlendirin: `yyyy-MM-ddTHH:mm:ssZ` . 
-  * **Zaman Damgalarınız, ölçümün ayrıntı düzeyi ile eşleşmelidir. Örneğin, günlük ölçüm, zaman damgasında olarak `00:00:00` etiketlenen saat, dakika ve saniyeyi sağlamalıdır **.
+  * **Zaman Damgalarınız, ölçümün ayrıntı düzeyi ile eşleşmelidir. Örneğin, günlük ölçüm, zaman damgasında olarak `00:00:00` etiketlenen saat, dakika ve saniyeyi sağlamalıdır**.
 * **Boyut** (isteğe bağlı): sütunlar herhangi bir veri türünde olabilir. Fazla sayıda boyutun işlenmesini engellemek için büyük miktarda sütun ve değerle çalışırken dikkatli olun.
 
 > [!Note]

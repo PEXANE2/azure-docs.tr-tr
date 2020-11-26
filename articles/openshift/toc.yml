@@ -22,6 +22,12 @@
           href: howto-create-private-cluster-4x.md
         - name: DNS iletmeyi yapılandırma
           href: dns-forwarding.md
+    - name: Depolama
+      items:
+        - name: Azure Dosyalar Storageclass oluşturma
+          href: howto-create-a-storageclass.md
+        - name: Yerleşik kapsayıcı kayıt defterini kullanma
+          href: built-in-container-registry.md
     - name: Güvenlik ve kimlik doğrulaması
       items:
         - name: Azure Active Directory kimlik doğrulamasını yapılandırma (CLI)

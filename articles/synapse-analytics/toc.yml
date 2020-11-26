@@ -445,61 +445,72 @@
           href: quickstart-create-apache-spark-pool-studio.md
     - name: Öğreticiler
       items:
-        - name: Apache Spark uygulamaları çalıştırma
-          href: ./spark/intellij-tool-synapse.md
-          displayname: intellij
-        - name: Spark havuzları için PySpark uygulamalarını çalıştırma
-          href: ./spark/vscode-tool-synapse.md
-        - name: Spark iş tanımları
+        - name: Synapse Studio not defterleriyle veri görselleştirme
+          href: ./spark/apache-spark-data-visualization-tutorial.md
+        - name: Apache Spark ve Power BI ile verileri analiz etme
+          href: ./spark/apache-spark-to-power-bi.md
+        - name: Makine öğrenmesi modelleri oluşturma
+          href: ./spark/apache-spark-machine-learning-mllib-notebook.md
+        - name: Spark iş tanımlarını görnderme
           href: ./spark/apache-spark-job-definitions.md
     - name: Kavramlar
       items:
-        - name: Apache Spark kavramları
+        - name: Apache Spark
           href: ./spark/apache-spark-concepts.md
-        - name: Delta Lake nedir?
+        - name: Delta Lake
           href: ./spark/apache-spark-what-is-delta-lake.md
-        - name: Delta Lake’e işlevsel genel bakış
-          href: ./spark/apache-spark-delta-lake-overview.md
-        - name: Apache Spark performansı
-          href: ./spark/apache-spark-performance.md
-        - name: Hyperspace dizinlerini kullanarak Apache Spark için performans iyileştirmesi
-          href: ./spark/apache-spark-performance-hyperspace.md
-        - name: Apache Spark Otomatik Ölçeklendirme davranışı
+        - name: Apache Spark otomatik ölçeklendirme davranışı
           href: ./spark/apache-spark-autoscale.md
-        - name: Geliştirme
+        - name: Synapse çalışma zamanları
+          href: ./spark/apache-spark-version-support.md
+        - name: Makine öğrenimi
+          href: ./spark/apache-spark-machine-learning-concept.md
+        - name: Notebooks
+          href: ./spark/apache-spark-notebook-concept.md
+        - name: İzleme araçları
+          href: monitoring/how-to-monitor-spark-applications.md
+    - name: Nasıl yapılır kılavuzları
+      items:
+        - name: Delta Lake ile çalışma
+          href: ./spark/apache-spark-delta-lake-overview.md
+        - name: Kitaplıkları yönetme
+          href: ./spark/apache-spark-azure-portal-add-libraries.md
+        - name: Not defterlerini kullanma
           items:
-            - name: Kitaplıklar
-              items:
-                - name: Kitaplıkları ekleme ve yönetme
-                  href: ./spark/apache-spark-azure-portal-add-libraries.md
-                - name: Çalışma zamanı dil ve kitaplık desteği
-                  href: ./spark/apache-spark-version-support.md
-            - name: Azure Synapse Studio not defterleri
+            - name: Not defterlerini yönetme
               href: ./spark/apache-spark-development-using-notebooks.md
-            - name: TokenLibrary kullanarak kimlik bilgilerinin güvenliğini sağlama
-              href: ./spark/apache-spark-secure-credentials-with-tokenlibrary.md
+            - name: Verileri görselleştirme
+              href: ./spark/apache-spark-data-visualization.md
+            - name: IntelliJ eklentisiyle Spark’a bağlanma
+              href: ./spark/intellij-tool-synapse.md
+            - name: VSCode ile Spark havuzlarına bağlanma
+              href: ./spark/vscode-tool-synapse.md
+        - name: Dilleri keşfetme
+          items:
             - name: Apache Spark için .NET
               href: ./spark/spark-dotnet.md
-        - name: İzleme
+        - name: Güvenlik
+          items:
+            - name: TokenLibrary kullanarak kimlik bilgilerinin güvenliğini sağlama
+              href: ./spark/apache-spark-secure-credentials-with-tokenlibrary.md
+        - name: Performansı iyileştirme
+          items:
+            - name: Apache Spark performansı
+              href: ./spark/apache-spark-performance.md
+            - name: Hyperspace dizinlerini kullanarak Apache Spark için performans iyileştirmesi
+              href: ./spark/apache-spark-performance-hyperspace.md
+        - name: Yönetme ve izleme
           items:
             - name: Spark havuz geçmişi sunucusu
               href: ./spark/apache-spark-history-server.md
-    - name: Nasıl yapılır kılavuzları
-      items:
-        - name: Yönetme ve izleme
-          items:
-            - name: Apache Spark uygulamaları
-              href: monitoring/how-to-monitor-spark-applications.md
-            - name: Apache Spark uygulaması ayrıntıları
+            - name: Spark uygulamalarını izleme
               href: monitoring/apache-spark-applications.md
-            - name: Apache Spark ile JSON analizi yapma
-              href: how-to-analyze-complex-schema.md
         - name: Verileri alma ve hazırlama
           items:
-            - name: Veri ambarına
-              items:
-                - name: Apache Spark ile verileri içeri ve dışarı aktarma
-                  href: ./spark/synapse-spark-sql-pool-import-export.md
+            - name: SQL Veri Ambarı
+              href: ./spark/synapse-spark-sql-pool-import-export.md
+            - name: JSON dosyasını analiz etme
+              href: how-to-analyze-complex-schema.md
 - name: Synapse Link
   items:
     - name: Genel Bakış
@@ -616,6 +627,8 @@
               href: ../data-factory/connector-azure-database-for-mysql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: PostgreSQL için Azure Veritabanı
               href: ../data-factory/connector-azure-database-for-postgresql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Azure Databricks Delta Lake
+              href: ../data-factory/connector-azure-databricks-delta-lake.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure Dosya Depolama
               href: ../data-factory/connector-azure-file-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure SQL Veritabanı
@@ -959,8 +972,8 @@
               href: ../data-factory/data-factory-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Bağlayıcı sorunlarını giderme
               href: ../data-factory/connector-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Veri Kopyalama aracında sorun giderme
-              href: ../data-factory/copy-data-tool-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Güvenlik ve erişim denetimi
+              href: ../data-factory/security-and-access-control-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Şirket içinde barındırılan tümleştirme çalışma zamanlarında sorun giderme
               href: ../data-factory/self-hosted-integration-runtime-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
 - name: Machine Learning
@@ -973,15 +986,22 @@
       items:
         - name: Azure Machine Learning bağlantılı yeni bir hizmet oluşturma
           href: machine-learning/quickstart-integrate-azure-machine-learning.md
+    - name: Kavramlar
+      items:
+        - name: Modelleri eğitme
+          href: ./spark/apache-spark-machine-learning-training.md
     - name: Öğreticiler
       items:
+        - name: Apache Spark ile verileri görselleştirme
+          href: ./spark/apache-spark-data-visualization-tutorial.md
+          displayname: machine learning
         - name: SQL havuzları için model puanlama sihirbazı
           href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
           displayname: machine learning
         - name: Azure AutoML kullanarak gerileme denemesi çalıştırma
           href: ./spark/apache-spark-azure-machine-learning-tutorial.md
           displayname: machine learning
-        - name: Apache Spark makine öğrenmesi uygulaması oluşturma
+        - name: Apache Spark MLlib ile makine öğrenmesi modeli oluşturma
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
           displayname: machine learning
 - name: Başvuru
@@ -1046,5 +1066,9 @@
           href: ./sql-data-warehouse/sql-data-warehouse-partner-data-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Makine öğrenimi ve AI
           href: ./sql-data-warehouse/sql-data-warehouse-partner-machine-learning-ai.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Sistem tümleştirme
+          href: ./sql-data-warehouse/sql-data-warehouse-partner-system-integration.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Genel Önizleme iş ortakları
           href: ./sql-data-warehouse/sql-data-warehouse-partner-launch.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Üçüncü taraf uygulamalarla uyumluluk sorunları
+          href: ./sql-data-warehouse/sql-data-warehouse-partner-compatibility-issues.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
