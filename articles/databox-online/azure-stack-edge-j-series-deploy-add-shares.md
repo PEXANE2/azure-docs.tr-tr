@@ -10,11 +10,11 @@ ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
 ms.openlocfilehash: cd288926e6f7a3f454be2788479b5c9d414b167a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440292"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185496"
 ---
 # <a name="tutorial-transfer-data-via-shares-with-azure-stack-edge-pro-gpu"></a>Öğretici: Azure Stack Edge Pro GPU 'SU ile paylaşımlar aracılığıyla veri aktarımı
 
@@ -24,14 +24,14 @@ Bu öğretici, Azure Stack Edge Pro cihazınızda paylaşımların nasıl eklene
 
 Bu yordamın tamamlanması 10 dakika kadar sürebilir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
 > * Paylaşım ekleme
 > * Paylaşıma bağlanma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure Stack Edge Pro 'ya paylaşımlar eklemeden önce şunları yaptığınızdan emin olun:
 
@@ -56,19 +56,19 @@ Bir paylaşma oluşturmak için aşağıdaki yordamı uygulayın:
     a. **Ad** kutusunda, paylaşımınız için benzersiz bir ad sağlayın.  
     Paylaşma adı yalnızca harf, rakam ve kısa çizgi içerebilir. 3 ila 63 karakter arasında olmalıdır ve bir harf veya rakam ile başlamalıdır. Kısa çizgilerden önce ve ardından bir harf ya da rakam gelmelidir.
     
-    b. Paylaşım için **Tür** seçin.  
+    b. Paylaşma için bir **tür** seçin.  
     Bu tür SMB veya **NFS**, SMB 'nin varsayılan olarak **olması olabilir.** SMB Windows istemcilerinin standardıdır ve NFS de Linux istemcilerinde kullanılır.  
     SMB veya NFS paylaşımlarını seçmenize bağlı olarak, seçeneklerin geri kalanı biraz farklılık gösterir. 
 
-    c. Paylaşımın bulunacağı bir depolama hesabı sağlayın.
+    c. Paylaşımın duracağı depolama hesabını sağlayın.
 
-    d. **Depolama hizmeti** açılan listesinde, **Blok Blobu**, **Sayfa Blobu**veya **dosyalar**' ı seçin.  
-    Seçtiğiniz hizmetin türü, verilerin Azure 'da kullanmasını istediğiniz biçime bağlıdır. Bu örnekte, verileri Azure 'da blok Blobları olarak depolamak istiyoruz, **Blok Blobu**seçtik. **Sayfa Blobu**' nı seçerseniz, verilerinizin 512 bayt hizalı olduğundan emin olun. Örneğin VHDX her zaman 512 bayt hizalıdır.
+    d. **Depolama hizmeti** açılan listesinde, **Blok Blobu**, **Sayfa Blobu** veya **dosyalar**' ı seçin.  
+    Seçtiğiniz hizmetin türü, verilerin Azure 'da kullanmasını istediğiniz biçime bağlıdır. Bu örnekte, verileri Azure 'da blok Blobları olarak depolamak istiyoruz, **Blok Blobu** seçtik. **Sayfa Blobu**' nı seçerseniz, verilerinizin 512 bayt hizalı olduğundan emin olun. Örneğin VHDX her zaman 512 bayt hizalıdır.
 
    > [!IMPORTANT]
    > Kullandığınız Azure depolama hesabının, bir Azure Stack Edge Pro veya Data Box Gateway cihazından yararlanarak bu sunucuda ayarlanmış bir değişiklik olmadığından emin olun. Daha fazla bilgi için bkz. [BLOB depolama için dengesde kullanılabilirlik Ilkelerini ayarlama ve yönetme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
 
-    e. Yeni bir blob kapsayıcısı oluşturun veya açılan listeden mevcut bir tane kullanın. Blob kapsayıcısı oluşturuyorsanız bir kapsayıcı adı sağlayın. Zaten bir kapsayıcı yoksa, depolama hesabında yeni oluşturulan paylaşma adıyla oluşturulur.
+    e. Yeni bir blob kapsayıcısı oluşturun veya açılan listeden mevcut bir tane kullanın. Blob kapsayıcısı oluşturuyorsanız bir kapsayıcı adı sağlayın. Henüz kapsayıcı yoksa, yeni oluşturulan paylaşım adıyla depolama hesabında oluşturulur.
    
     f. Bir SMB veya NFS paylaşımının oluşturulup oluşturulmayacağını bağlı olarak, aşağıdaki adımlardan birini yapın: 
      
@@ -123,7 +123,7 @@ Cihaza bağlanmak için kullandığınız Windows istemcisinde aşağıdaki adı
 Azure Stack Edge Pro cihazınıza bağlı Windows Server istemcisinde şu komutları girerek bir SMB paylaşımıyla bağlantı edin:
 
 
-1. Bir komut penceresinde, şunu yazın:
+1. Komut penceresinde şunu yazın: 
 
     `net use \\<Device name>\<share name>  /u:<user name for the share>`
 

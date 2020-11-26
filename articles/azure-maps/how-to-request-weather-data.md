@@ -9,24 +9,24 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 3e0dce10d582006ab8c1dabf6d4b3efc82d8f39f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: c11f20286c514056d14b8faa941315345fea71f2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957121"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186346"
 ---
 # <a name="request-real-time-and-forecasted-weather-data-using-azure-maps-weather-services"></a>Azure haritalar Hava Hizmetleri 'ni kullanarak gerçek zamanlı ve tahmini hava durumu verileri isteyin
 
-Azure haritalar [Hava durumu hizmeti](https://docs.microsoft.com/rest/api/maps/weather) , geliştiricilerin yüksek düzeyde dinamik geçmiş, gerçek zamanlı ve tahmini hava durumu verilerini ve görselleştirmelerini çözümlerle tümleştirmelerine olanak tanıyan bir dizi yeniden API 'dir. Bu makalede, hem gerçek zamanlı hem de tahmin edilen hava durumu verilerini nasıl isteyeceğini göstereceğiz.
+Azure haritalar [Hava durumu hizmeti](/rest/api/maps/weather) , geliştiricilerin yüksek düzeyde dinamik geçmiş, gerçek zamanlı ve tahmini hava durumu verilerini ve görselleştirmelerini çözümlerle tümleştirmelerine olanak tanıyan bir dizi yeniden API 'dir. Bu makalede, hem gerçek zamanlı hem de tahmin edilen hava durumu verilerini nasıl isteyeceğini göstereceğiz.
 
 Bu makalede şunları öğreneceksiniz:
 
-* [Geçerli koşulları Al API](https://docs.microsoft.com/rest/api/maps/weather/getcurrentconditionspreview)'sini kullanarak gerçek zamanlı (geçerli) Hava durumu verileri isteyin.
-* [Ciddi hava durumu uyarılarını al API](https://docs.microsoft.com/rest/api/maps/weather/getsevereweatheralertspreview)'sini kullanarak ciddi hava durumu uyarıları isteyin.
-* [Günlük tahmin al API](https://docs.microsoft.com/rest/api/maps/weather/getdailyforecastpreview)'sini kullanarak günlük tahminleri isteyin.
-* [Saatlik tahmin al API](https://docs.microsoft.com/rest/api/maps/weather/gethourlyforecastpreview)'sini kullanarak saatlik tahminleri isteyin.
-* Dakika [Tahmini al API](https://docs.microsoft.com/rest/api/maps/weather/getminuteforecastpreview)'sini kullanarak dakikalık tahminlere göre dakika isteyin.
+* [Geçerli koşulları Al API](/rest/api/maps/weather/getcurrentconditionspreview)'sini kullanarak gerçek zamanlı (geçerli) Hava durumu verileri isteyin.
+* [Ciddi hava durumu uyarılarını al API](/rest/api/maps/weather/getsevereweatheralertspreview)'sini kullanarak ciddi hava durumu uyarıları isteyin.
+* [Günlük tahmin al API](/rest/api/maps/weather/getdailyforecastpreview)'sini kullanarak günlük tahminleri isteyin.
+* [Saatlik tahmin al API](/rest/api/maps/weather/gethourlyforecastpreview)'sini kullanarak saatlik tahminleri isteyin.
+* Dakika [Tahmini al API](/rest/api/maps/weather/getminuteforecastpreview)'sini kullanarak dakikalık tahminlere göre dakika isteyin.
 
 Bu videoda, REST çağrı örnekleriyle Azure Maps 'ta Hava durumu hizmetlerine genel bir bakış sunulmaktadır.
 
@@ -40,15 +40,15 @@ Bu videoda, REST çağrı örnekleriyle Azure Maps 'ta Hava durumu hizmetlerine 
 2. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account). Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](./how-to-manage-authentication.md).
 
     >[!IMPORTANT]
-    >[Get dakikalık tahmin API 'si](https://docs.microsoft.com/rest/api/maps/weather/getminuteforecastpreview) bir S1 fiyatlandırma katmanı anahtarı gerektirir. Diğer tüm API 'Ler S0 fiyatlandırma katmanı anahtarı gerektirir.
+    >[Get dakikalık tahmin API 'si](/rest/api/maps/weather/getminuteforecastpreview) bir S1 fiyatlandırma katmanı anahtarı gerektirir. Diğer tüm API 'Ler S0 fiyatlandırma katmanı anahtarı gerektirir.
 
 Bu öğretici [Postman](https://www.postman.com/) uygulamasını kullanır, ancak farklı bir API geliştirme ortamı seçebilirsiniz.
 
 ## <a name="request-real-time-weather-data"></a>Gerçek zamanlı hava durumu verileri iste
 
-[Geçerli koşulları Al API 'si](https://docs.microsoft.com/rest/api/maps/weather/getcurrentconditionspreview) , belirli bir koordinat konumu için yağış, sıcaklık ve rüzgar gibi ayrıntılı hava durumu koşullarını döndürür. Ayrıca, belirli bir konum için son 6 veya 24 saatten gözlemlenebilir. Yanıt, gözlem tarihi ve saati, hava durumu koşullarının kısa açıklaması, hava durumu simgesi, yağış gösterge bayrakları ve sıcaklık gibi ayrıntıları içerir. Gerçekçi™ sıcaklık ve Ultraviolet (UV) dizini de döndürülür.
+[Geçerli koşulları Al API 'si](/rest/api/maps/weather/getcurrentconditionspreview) , belirli bir koordinat konumu için yağış, sıcaklık ve rüzgar gibi ayrıntılı hava durumu koşullarını döndürür. Ayrıca, belirli bir konum için son 6 veya 24 saatten gözlemlenebilir. Yanıt, gözlem tarihi ve saati, hava durumu koşullarının kısa açıklaması, hava durumu simgesi, yağış gösterge bayrakları ve sıcaklık gibi ayrıntıları içerir. Gerçekçi™ sıcaklık ve Ultraviolet (UV) dizini de döndürülür.
 
-Bu örnekte, Seattle, WA 'da bulunan koordinatlardaki geçerli hava durumu koşullarını almak için [geçerli koşulları Al API](https://docs.microsoft.com/rest/api/maps/weather/getcurrentconditionspreview) 'sini kullanacaksınız.
+Bu örnekte, Seattle, WA 'da bulunan koordinatlardaki geçerli hava durumu koşullarını almak için [geçerli koşulları Al API](/rest/api/maps/weather/getcurrentconditionspreview) 'sini kullanacaksınız.
 
 1. Postman uygulamasını açın. Postman uygulamasının üst kısmında **Yeni**' yi seçin. **Yeni oluştur** penceresinde **koleksiyon**' ı seçin.  Koleksiyonu adlandırın ve **Oluştur** düğmesini seçin. Bu belgenin geri kalan örnekleri için bu koleksiyonu kullanacaksınız.
 
@@ -235,9 +235,9 @@ Bu örnekte, Seattle, WA 'da bulunan koordinatlardaki geçerli hava durumu koşu
 
 ## <a name="request-severe-weather-alerts"></a>Ciddi hava durumu uyarıları iste
 
-[Azure haritalar önemli hava durumu uyarıları API](https://docs.microsoft.com/rest/api/maps/weather/getsevereweatheralertspreview) 'leri, hem resmi devlet türüdür kurumları hem de önde gelen küresel hava durumu uyarı sağlayıcılarından dünya çapında kullanılabilen ciddi hava durumu uyarılarını döndürür. Hizmet, uyarı türü, kategori, düzey ve istenen konuma yönelik etkin ciddi uyarılarla ilgili ayrıntılı açıklamalar (örneğin, acericanes, thunderstorms, şimşek, ısı dalgaları veya orman) gibi ayrıntılar döndürebilir. Örnek olarak, lojistik yöneticileri bir haritada önemli hava durumu koşullarını görselleştirerek iş konumları ve planlı yolların yanı sıra sürücülerle ve yerel çalışanları daha da koordine edebilir.
+[Azure haritalar önemli hava durumu uyarıları API](/rest/api/maps/weather/getsevereweatheralertspreview) 'leri, hem resmi devlet türüdür kurumları hem de önde gelen küresel hava durumu uyarı sağlayıcılarından dünya çapında kullanılabilen ciddi hava durumu uyarılarını döndürür. Hizmet, uyarı türü, kategori, düzey ve istenen konuma yönelik etkin ciddi uyarılarla ilgili ayrıntılı açıklamalar (örneğin, acericanes, thunderstorms, şimşek, ısı dalgaları veya orman) gibi ayrıntılar döndürebilir. Örnek olarak, lojistik yöneticileri bir haritada önemli hava durumu koşullarını görselleştirerek iş konumları ve planlı yolların yanı sıra sürücülerle ve yerel çalışanları daha da koordine edebilir.
 
-Bu örnekte, geçerli hava durumu koşullarını, Cheyenne, WY ' de bulunan koordinatlara almak için [önemli hava durumu uyarılarını al API 'sini](https://docs.microsoft.com/rest/api/maps/weather/getsevereweatheralertspreview) kullanacaksınız.
+Bu örnekte, geçerli hava durumu koşullarını, Cheyenne, WY ' de bulunan koordinatlara almak için [önemli hava durumu uyarılarını al API 'sini](/rest/api/maps/weather/getsevereweatheralertspreview) kullanacaksınız.
 
 >[!NOTE]
 >Bu örnekte, bu yazma sırasında ciddi hava durumu uyarıları alınır. İstenen konumda artık ciddi hava durumu uyarılarının olmaması olasıdır. Bu örneği çalıştırırken gerçek ciddi uyarı verilerini almak için, farklı bir koordinat konumundaki verileri almanız gerekir.
@@ -287,12 +287,12 @@ Bu örnekte, geçerli hava durumu koşullarını, Cheyenne, WY ' de bulunan koor
 
 ## <a name="request-daily-weather-forecast-data"></a>Günlük hava durumu tahmin verileri iste
 
-[Günlük tahmin API 'Si al](https://docs.microsoft.com/rest/api/maps/weather/getdailyforecastpreview) , sıcaklık ve rüzgar gibi ayrıntılı günlük hava durumu tahminini döndürür. İstek, belirli bir koordinat konumu için kaç gün dönemeyeceğini belirtebilir: 1, 5, 10, 15, 25 veya 45 gün. Yanıt, sıcaklık, Rüzgar, yağış, hava kalitesi ve UV dizini gibi ayrıntıları içerir.  Bu örnekte, ayarlayarak beş gün boyunca istek yaptık `duration=5` .
+[Günlük tahmin API 'Si al](/rest/api/maps/weather/getdailyforecastpreview) , sıcaklık ve rüzgar gibi ayrıntılı günlük hava durumu tahminini döndürür. İstek, belirli bir koordinat konumu için kaç gün dönemeyeceğini belirtebilir: 1, 5, 10, 15, 25 veya 45 gün. Yanıt, sıcaklık, Rüzgar, yağış, hava kalitesi ve UV dizini gibi ayrıntıları içerir.  Bu örnekte, ayarlayarak beş gün boyunca istek yaptık `duration=5` .
 
 >[!IMPORTANT]
 >S0 fiyatlandırma katmanında, sonraki 1, 5, 10 ve 15 gün için günlük tahmin isteyebilirsiniz. S1 fiyatlandırma katmanında, sonraki 25 gün ve 45 gün için günlük tahmin da isteyebilirsiniz.
 
-Bu örnekte, Seattle, WA 'da bulunan koordinatlar için beş günlük bir hava durumu tahminini almak üzere [günlük tahmin al API](https://docs.microsoft.com/rest/api/maps/weather/getdailyforecastpreview) 'sini kullanacaksınız.
+Bu örnekte, Seattle, WA 'da bulunan koordinatlar için beş günlük bir hava durumu tahminini almak üzere [günlük tahmin al API](/rest/api/maps/weather/getdailyforecastpreview) 'sini kullanacaksınız.
 
 1. Postman uygulamasını açın, **Yeni**' ye tıklayın ve **istek**' ı seçin. İstek için bir **istek adı** girin. Önceki bölümde oluşturduğunuz veya yeni bir tane oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet**' i seçin.
 
@@ -535,12 +535,12 @@ Bu örnekte, Seattle, WA 'da bulunan koordinatlar için beş günlük bir hava d
 
 ## <a name="request-hourly-weather-forecast-data"></a>Saatlik hava durumu tahmin verileri iste
 
-[Saatlik tahmin API 'Si al](https://docs.microsoft.com/rest/api/maps/weather/gethourlyforecastpreview) , verilen koordinat konumu için bir sonraki 1, 12, 24 (1 gün), 72 (3 gün), 120 (5 gün) ve 240 saat (10 gün) için saat bazında ayrıntılı hava durumu tahmini döndürür. API, sıcaklık, nem, Rüzgar, yağış ve UV dizini gibi ayrıntıları döndürür.
+[Saatlik tahmin API 'Si al](/rest/api/maps/weather/gethourlyforecastpreview) , verilen koordinat konumu için bir sonraki 1, 12, 24 (1 gün), 72 (3 gün), 120 (5 gün) ve 240 saat (10 gün) için saat bazında ayrıntılı hava durumu tahmini döndürür. API, sıcaklık, nem, Rüzgar, yağış ve UV dizini gibi ayrıntıları döndürür.
 
 >[!IMPORTANT]
 >S0 fiyatlandırma katmanında, sonraki 1, 12, 24 saat (1 gün) ve 72 saat (3 gün) için saatlik tahmin isteyebilirsiniz. S1 fiyatlandırma katmanında sonraki 120 (5 gün) ve 240 saat (10 gün) için saatlik tahmin isteyebilirsiniz.
 
-Bu örnekte, Seattle, WA 'da bulunan koordinatlardan sonraki 12 saat için saatlik hava durumu tahminini almak üzere [saatlik tahmin API 'Si al](https://docs.microsoft.com/rest/api/maps/weather/gethourlyforecastpreview) ' ı kullanacaksınız.
+Bu örnekte, Seattle, WA 'da bulunan koordinatlardan sonraki 12 saat için saatlik hava durumu tahminini almak üzere [saatlik tahmin API 'Si al](/rest/api/maps/weather/gethourlyforecastpreview) ' ı kullanacaksınız.
 
 1. Postman uygulamasını açın, **Yeni**' ye tıklayın ve **istek**' ı seçin. İstek için bir **istek adı** girin. Önceki bölümde oluşturduğunuz veya yeni bir tane oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet**' i seçin.
 
@@ -645,9 +645,9 @@ Bu örnekte, Seattle, WA 'da bulunan koordinatlardan sonraki 12 saat için saatl
     ```
 ## <a name="request-minute-by-minute-weather-forecast-data"></a>Dakika başına Hava durumu tahmin verileri iste
 
- [Get dakikalık tahmin API 'si](https://docs.microsoft.com/rest/api/maps/weather/getminuteforecastpreview) , bir sonraki 120 dakika boyunca belirli bir konum için dakika başına birkaç tahmine geri döndürür. Kullanıcılar, 1, 5 ve 15 dakika aralıklarında Hava durumu tahminleri isteyebilir. Yanıt, yağış türü (yağmur, kar veya her ikisinin karışımı dahil), başlangıç zamanı ve yağış yoğunluk değeri (dBZ) gibi ayrıntıları içerir.
+ [Get dakikalık tahmin API 'si](/rest/api/maps/weather/getminuteforecastpreview) , bir sonraki 120 dakika boyunca belirli bir konum için dakika başına birkaç tahmine geri döndürür. Kullanıcılar, 1, 5 ve 15 dakika aralıklarında Hava durumu tahminleri isteyebilir. Yanıt, yağış türü (yağmur, kar veya her ikisinin karışımı dahil), başlangıç zamanı ve yağış yoğunluk değeri (dBZ) gibi ayrıntıları içerir.
 
-Bu örnekte, Seattle, WA 'da bulunan koordinatlara göre dakika başına Hava durumu tahminini almak için [dakikalık tahmini alma API](https://docs.microsoft.com/rest/api/maps/weather/getminuteforecastpreview) 'sini kullanırsınız. Hava durumu tahmini önümüzdeki 120 dakika boyunca verilir. Sorgumız tahminin 15 dakikalık aralıklarla verilmesini ister, ancak parametreyi 1 veya 5 dakika olacak şekilde ayarlayabilirsiniz.
+Bu örnekte, Seattle, WA 'da bulunan koordinatlara göre dakika başına Hava durumu tahminini almak için [dakikalık tahmini alma API](/rest/api/maps/weather/getminuteforecastpreview) 'sini kullanırsınız. Hava durumu tahmini önümüzdeki 120 dakika boyunca verilir. Sorgumız tahminin 15 dakikalık aralıklarla verilmesini ister, ancak parametreyi 1 veya 5 dakika olacak şekilde ayarlayabilirsiniz.
 
 1. Postman uygulamasını açın, **Yeni**' ye tıklayın ve **istek**' ı seçin. İstek için bir **istek adı** girin. Önceki bölümde oluşturduğunuz veya yeni bir tane oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet**' i seçin.
 
@@ -751,8 +751,8 @@ Bu örnekte, Seattle, WA 'da bulunan koordinatlara göre dakika başına Hava du
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure haritalar Hava durumu hizmeti kavramları](https://docs.microsoft.com/azure/azure-maps/weather-services-concepts)
+> [Azure haritalar Hava durumu hizmeti kavramları](./weather-services-concepts.md)
 
 > [!div class="nextstepaction"]
-> [Azure haritalar Hava durumu hizmeti REST API](https://docs.microsoft.com/rest/api/maps/weather
+> [Azure haritalar Hava durumu hizmeti REST API](/rest/api/maps/weather
 )

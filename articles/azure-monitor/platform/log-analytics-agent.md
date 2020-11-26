@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: c09b50272ce73fe084e84d49be7d9d81cbe725aa
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 8563f734db8524d6e90171bb2272723f14533055
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207147"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185938"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics aracısına genel bakış
 Azure Log Analytics Aracısı tüm bulutta, şirket içi makinelerde ve [System Center Operations Manager](/system-center/scom/) tarafından izlenen Windows ve Linux sanal makinelerinden telemetri toplar ve toplanan verileri Azure izleyici 'de Log Analytics çalışma alanınıza gönderir. Log Analytics Aracısı Ayrıca Azure Izleyici 'de [VM'ler için Azure izleyici](../insights/vminsights-enable-overview.md), [Azure Güvenlik Merkezi](../../security-center/index.yml)ve [Azure Otomasyonu](../../automation/automation-intro.md)gibi diğer hizmetleri de destekler. Bu makalede Aracı, sistem ve ağ gereksinimleri ve dağıtım yöntemlerine ilişkin ayrıntılı bir genel bakış sunulmaktadır.
@@ -51,7 +51,7 @@ Aşağıdaki tabloda, tüm bağlı aracılardan toplanacak bir Log Analytics ça
 Log Analytics Aracısı verileri Azure Izleyici 'de bir Log Analytics çalışma alanına gönderir. Birden çok çalışma alanına ve System Center Operations Manager yönetim grubuna veri göndermek için Windows aracısının birden çok bağlantısı olabilir. Linux Aracısı, bir çalışma alanı veya yönetim grubu olmak üzere yalnızca tek bir hedefe gönderebilir.
 
 ## <a name="other-services"></a>Diğer hizmetler
-Linux ve Windows için aracı yalnızca Azure Izleyici 'ye bağlanmıyor. Azure Güvenlik Merkezi ve Azure Sentinel gibi diğer hizmetler aracıya ve bağlı Log Analytics çalışma alanına bağlıdır. Aracı Ayrıca karma Runbook Worker rolünü ve [değişiklik izleme](../../automation/change-tracking/overview.md), [güncelleştirme yönetimi](../../automation/update-management/update-mgmt-overview.md)ve [Azure Güvenlik Merkezi](../../security-center/security-center-intro.md)gibi diğer hizmetleri barındırmak için Azure Otomasyonu 'nu destekler. Karma Runbook Worker rolü hakkında daha fazla bilgi için bkz. [Azure Otomasyonu karma Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).  
+Linux ve Windows için aracı yalnızca Azure Izleyici 'ye bağlanmıyor. Azure Güvenlik Merkezi ve Azure Sentinel gibi diğer hizmetler aracıya ve bağlı Log Analytics çalışma alanına bağlıdır. Aracı Ayrıca karma Runbook Worker rolünü ve [değişiklik izleme](../../automation/change-tracking/overview.md), [güncelleştirme yönetimi](../../automation/update-management/overview.md)ve [Azure Güvenlik Merkezi](../../security-center/security-center-introduction.md)gibi diğer hizmetleri barındırmak için Azure Otomasyonu 'nu destekler. Karma Runbook Worker rolü hakkında daha fazla bilgi için bkz. [Azure Otomasyonu karma Runbook Worker](../../automation/automation-hybrid-runbook-worker.md).  
 
 ## <a name="workspace-and-management-group-limitations"></a>Çalışma alanı ve yönetim grubu sınırlamaları
 
@@ -111,10 +111,10 @@ Aşağıdaki tabloda, Linux ve Windows aracılarının Azure Izleyici günlükle
 
 |Aracı Kaynağı|Bağlantı noktaları |Yön |HTTPS denetlemesini atlama|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Bağlantı noktası 443 |Outbound|Yes |  
-|*.oms.opinsights.azure.com |Bağlantı noktası 443 |Outbound|Yes |  
-|*.blob.core.windows.net |Bağlantı noktası 443 |Outbound|Yes |
-|*.azure-automation.net |Bağlantı noktası 443 |Outbound|Yes |
+|*.ods.opinsights.azure.com |Bağlantı noktası 443 |Giden|Evet |  
+|*.oms.opinsights.azure.com |Bağlantı noktası 443 |Giden|Evet |  
+|*.blob.core.windows.net |Bağlantı noktası 443 |Giden|Evet |
+|*.azure-automation.net |Bağlantı noktası 443 |Giden|Evet |
 
 Azure Kamu için gereken güvenlik duvarı bilgileri için bkz. [Azure Kamu Yönetimi](../../azure-government/compare-azure-government-global-azure.md#azure-monitor). 
 

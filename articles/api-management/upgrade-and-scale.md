@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: c7f0e98b5ea2fdd13b1daa9fd9737998eb6cfaf1
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 466af29a3f073f73d4a0fc62d74709cd59f82425
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "96010223"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183796"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Azure API Management örneğini yükseltme ve ölçeklendirme  
 
@@ -29,7 +29,7 @@ Her bir birimin fiyatı ve kullanılabilir Özellikler (örneğin, çok bölgeli
 >[!NOTE]
 >[Fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) makalesi her katmandaki birim kapasitesini yaklaşık olarak gösterir. Daha doğru sayılar almak için API 'leriniz için gerçekçi bir senaryoya bakmanız gerekir. [Azure API Management örneği 'Nin kapasitesine](api-management-capacity.md) bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki adımları izleyerek şunları yapmanız gerekir:
 
@@ -80,7 +80,7 @@ Herhangi bir katmana ve sürümüne yükseltebilir ve buradan indirgeme yapabili
 Ya da geliştirici katmanına ölçeklendirebilirsiniz kapalı kalma süresi olacaktır. Aksi takdirde, kapalı kalma süresi yoktur. 
 
 ## <a name="compute-isolation"></a>İşlem yalıtımı
-Güvenlik gereksinimleriniz [işlem yalıtımı](https://docs.microsoft.com/azure/azure-government/azure-secure-isolation-guidance#compute-isolation)Içeriyorsa, **yalıtılmış** fiyatlandırma katmanını kullanabilirsiniz. Bu katman, bir API Management hizmet örneğinin işlem kaynaklarının tüm fiziksel ana bilgisayarı kullanmasını sağlar ve örneğin ABD Savunma etki düzeyi 5 (IL5) iş yüklerinin desteklenmesi için gereken yalıtım düzeyini sağlar. Yalıtılmış katmana erişim sağlamak için lütfen [bir destek bileti oluşturun](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). 
+Güvenlik gereksinimleriniz [işlem yalıtımı](../azure-government/azure-secure-isolation-guidance.md#compute-isolation)Içeriyorsa, **yalıtılmış** fiyatlandırma katmanını kullanabilirsiniz. Bu katman, bir API Management hizmet örneğinin işlem kaynaklarının tüm fiziksel ana bilgisayarı kullanmasını sağlar ve örneğin ABD Savunma etki düzeyi 5 (IL5) iş yüklerinin desteklenmesi için gereken yalıtım düzeyini sağlar. Yalıtılmış katmana erişim sağlamak için lütfen [bir destek bileti oluşturun](../azure-portal/supportability/how-to-create-azure-support-request.md). 
 
 
 

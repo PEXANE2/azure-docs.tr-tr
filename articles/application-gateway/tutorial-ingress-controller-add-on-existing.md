@@ -7,18 +7,18 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 7a7a3669c5462adba3828bb1fd6c2fc9c4b3213c
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 9d1aa54ba1e3f3a589df8f694e340909c4e24ecc
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566172"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183694"
 ---
 # <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway-through-azure-cli-preview"></a>Öğretici: mevcut bir AKS kümesi için Application Gateway giriş denetleyicisi eklentisini Azure CLı aracılığıyla mevcut bir Application Gateway ile etkinleştirme (Önizleme)
 
 Azure CLı 'yi [Azure Kubernetes Services (AKS)](https://azure.microsoft.com/services/kubernetes-service/) kümeniz için şu anda önizleme aşamasında olan [Application Gateway giriş denetleyicisi (agic)](ingress-controller-overview.md) eklentisini etkinleştirmek için kullanabilirsiniz. Bu öğreticide, ayrı sanal ağlarda dağıtılan mevcut bir Application Gateway ile Kubernetes uygulamanızı mevcut bir AKS kümesinde ortaya çıkarmak için AGIC eklentisini nasıl kullanacağınızı öğreneceksiniz. Mevcut kaynakların benzetimini yapmak için bir sanal ağda AKS kümesi ve ayrı bir sanal ağda Application Gateway oluşturmaya başlayacaksınız. Ardından, AGIC eklentisini etkinleştireceksiniz, iki sanal ağı birlikte eşleyebilir ve AGIC eklentisi kullanılarak Application Gateway üzerinden kullanıma sunulacak bir örnek uygulama dağıtırsınız. Aynı sanal ağdaki mevcut bir Application Gateway ve mevcut AKS kümesi için AGIC eklentisini etkinleştirirseniz, aşağıdaki eşleme adımını atlayabilirsiniz. Eklenti, AKS kümeniz için AGC 'yi [daha önce Held üzerinden](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on) dağıtmanın çok daha hızlı bir yolunu sağlar ve ayrıca tam olarak yönetilen bir deneyim sunar.  
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Kaynak grubu oluşturma 
@@ -35,16 +35,16 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
  - Bu öğretici, Azure CLı 'nin sürüm 2.0.4 veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
 
- - Aşağıdaki örnekte gösterildiği gibi [az Feature Register](https://docs.microsoft.com/cli/azure/feature#az-feature-register) komutunu kullanarak *aks-IngressApplicationGatewayAddon* Özellik bayrağını kaydedin; Bu işlemi abonelik başına yalnızca bir kez yapmanız gerekir, eklenti hala önizlemededir:
+ - Aşağıdaki örnekte gösterildiği gibi [az Feature Register](/cli/azure/feature#az-feature-register) komutunu kullanarak *aks-IngressApplicationGatewayAddon* Özellik bayrağını kaydedin; Bu işlemi abonelik başına yalnızca bir kez yapmanız gerekir, eklenti hala önizlemededir:
      ```azurecli-interactive
      az feature register --name AKS-IngressApplicationGatewayAddon --namespace microsoft.containerservice
      ```
-    Durumun kaydı gösterilmesi birkaç dakika sürebilir. [Az Feature List](https://docs.microsoft.com/cli/azure/feature#az-feature-register) komutunu kullanarak kayıt durumunu denetleyebilirsiniz:
+    Durumun kaydı gösterilmesi birkaç dakika sürebilir. [Az Feature List](/cli/azure/feature#az-feature-register) komutunu kullanarak kayıt durumunu denetleyebilirsiniz:
      ```azurecli-interactive
      az feature list -o table --query "[?contains(name, 'microsoft.containerservice/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
      ```
 
- - Hazırlandığınızda, [az Provider Register](https://docs.microsoft.com/cli/azure/provider#az-provider-register) komutunu kullanarak Microsoft. Containerservice kaynak sağlayıcısı kaydını yenileyin:
+ - Hazırlandığınızda, [az Provider Register](/cli/azure/provider#az-provider-register) komutunu kullanarak Microsoft. Containerservice kaynak sağlayıcısı kaydını yenileyin:
     ```azurecli-interactive
     az provider register --namespace Microsoft.ContainerService
     ```
@@ -86,7 +86,7 @@ az network application-gateway create -n myApplicationGateway -l canadacentral -
 
 ## <a name="enable-the-agic-add-on-in-existing-aks-cluster-with-existing-application-gateway"></a>Mevcut AKS kümesindeki AGIC eklentisini mevcut Application Gateway etkinleştirme 
 
-Şimdi oluşturduğunuz AKS kümesindeki AGIC eklentisini, *MyCluster* ' ı etkinleştirip, *myApplicationGateway* oluşturduğunuz mevcut Application Gateway kullanmak için agic eklentisini belirtmeniz gerekir. Bu öğreticinin başlangıcında aks-Preview uzantısını eklediğinizden/güncelleştirdiğinizden emin olun. 
+Şimdi oluşturduğunuz AKS kümesindeki AGIC eklentisini, *MyCluster*' ı etkinleştirip, *myApplicationGateway* oluşturduğunuz mevcut Application Gateway kullanmak için agic eklentisini belirtmeniz gerekir. Bu öğreticinin başlangıcında aks-Preview uzantısını eklediğinizden/güncelleştirdiğinizden emin olun. 
 
 ```azurecli-interactive
 appgwId=$(az network application-gateway show -n myApplicationGateway -g myResourceGroup -o tsv --query "id") 

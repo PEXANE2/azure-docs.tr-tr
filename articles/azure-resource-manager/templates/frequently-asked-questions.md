@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 7f4238035a6fccb0addb9a481287b31732bd2662
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: af6a46e16cd888e3ff6a382be2b1a4264fcc2941
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94744544"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184017"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>ARM şablonları hakkında sık sorulan sorular
 
@@ -68,7 +68,7 @@ Bu makale Azure Resource Manager (ARM) şablonları hakkında sık sorulan sorul
 
 * **ARM şablonunda bir abonelik oluşturabilir miyim?**
 
-  Evet, daha fazla bilgi için bkz. [Azure aboneliklerini en son API 'Lerle program aracılığıyla oluşturma](../../cost-management-billing/manage/programmatically-create-subscription.md).
+  Evet, daha fazla bilgi için bkz. [Azure aboneliklerini en son API 'Lerle program aracılığıyla oluşturma](../../cost-management-billing/manage/programmatically-create-subscription-enterprise-agreement.md).
 
 * **Uygulamamı dağıtımdan önce nasıl test edebilirim?**
 

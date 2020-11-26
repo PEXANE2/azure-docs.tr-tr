@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 11/18/2020
-ms.openlocfilehash: 7bfd951d7cec27e0b8264aaabf9bc3a17875256a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9715724fc0fbd25198dd3244215ac2c12638d2b8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000734"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185972"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure İzleyici müşteri tarafından yönetilen anahtar 
 
@@ -72,7 +72,7 @@ Aşağıdaki kurallar geçerlidir:
 1. Key Vault izinler veriliyor
 1. Log Analytics çalışma alanlarını bağlama
 
-Customer-Managed anahtar yapılandırması Azure portal desteklenmez ve sağlama [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/), [CLI](https://docs.microsoft.com/cli/azure/monitor/log-analytics) veya [rest](https://docs.microsoft.com/rest/api/loganalytics/) istekleri aracılığıyla gerçekleştirilir.
+Customer-Managed anahtar yapılandırması Azure portal desteklenmez ve sağlama [PowerShell](/powershell/module/az.operationalinsights/), [CLI](/cli/azure/monitor/log-analytics) veya [rest](/rest/api/loganalytics/) istekleri aracılığıyla gerçekleştirilir.
 
 ### <a name="asynchronous-operations-and-status-check"></a>Zaman uyumsuz işlemler ve durum denetimi
 
@@ -107,7 +107,7 @@ Bu ayarlar, CLı ve PowerShell aracılığıyla Key Vault güncelleştirilebilen
 
 ### <a name="create-cluster"></a>Küme oluşturma
 
-[Adanmış kümeler](https://docs.microsoft.com/azure/azure-monitor/log-query/logs-dedicated-clusters#creating-a-cluster)makalesinde gösterilen yordamı izleyin. 
+[Adanmış kümeler](../log-query/logs-dedicated-clusters.md#creating-a-cluster)makalesinde gösterilen yordamı izleyin. 
 
 > [!IMPORTANT]
 > Sonraki adımlarda ayrıntılara ihtiyacınız olacağı için yanıtı kopyalayın ve kaydedin.
@@ -212,7 +212,7 @@ Bu işlemi gerçekleştirmek için hem çalışma alanınızda hem de kümenizde
 
 Bu işlem zaman uyumsuzdur ve tamamlanırken bir süre olabilir.
 
-[Adanmış kümeler](https://docs.microsoft.com/azure/azure-monitor/log-query/logs-dedicated-clusters#link-a-workspace-to-the-cluster)makalesinde gösterilen yordamı izleyin.
+[Adanmış kümeler](../log-query/logs-dedicated-clusters.md#link-a-workspace-to-the-cluster)makalesinde gösterilen yordamı izleyin.
 
 ## <a name="key-revocation"></a>Anahtar iptali
 

@@ -10,11 +10,11 @@ ms.date: 08/31/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to storage accounts on Azure Stack Edge Pro so I can use it to transfer data to Azure.
 ms.openlocfilehash: c24970b30e522d593a491194dbbabb0421ad7f4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891066"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185570"
 ---
 # <a name="tutorial-transfer-data-via-storage-accounts-with-azure-stack-edge-pro-gpu"></a>Öğretici: Azure Stack Edge Pro GPU ile depolama hesapları aracılığıyla veri aktarımı 
 
@@ -24,14 +24,14 @@ Bu öğreticide, Azure Stack Edge Pro cihazınıza depolama hesaplarının nası
 
 Bu yordamın tamamlanması yaklaşık 30 dakika sürebilir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Depolama hesabı ekleme
 > * Depolama hesabına Bağlan
 
  
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure Stack Edge Pro 'ya depolama hesapları eklemeden önce şunları yaptığınızdan emin olun:
 
@@ -49,7 +49,7 @@ Bir Edge depolama hesabı oluşturmak için aşağıdaki yordamı uygulayın:
 
 ## <a name="connect-to-the-edge-storage-account"></a>Edge depolama hesabına bağlanma
 
-Artık, *http* veya *https*üzerinden Edge depolama REST API 'lerine bağlanabilirsiniz.
+Artık, *http* veya *https* üzerinden Edge depolama REST API 'lerine bağlanabilirsiniz.
 
 - *Https* güvenli ve önerilen bir yoldur.
 - Güvenilen ağlar üzerinden bağlanılırken *http* kullanılır.
@@ -159,11 +159,11 @@ Azure Depolama Gezgini sertifikaları içeri aktarmak için aşağıdaki adımla
 
 ### <a name="add-device-ip-address-and-blob-service-endpoint"></a>Cihaz IP adresi ve BLOB hizmeti uç noktası ekle
 
-[ *Http*ÜZERINDEN bağlanılırken cihaz IP adresi ve BLOB hizmeti uç noktası eklemek](#add-device-ip-address-and-blob-service-endpoint-to-the-remote-client)için aynı adımları izleyin.
+[ *Http* ÜZERINDEN bağlanılırken cihaz IP adresi ve BLOB hizmeti uç noktası eklemek](#add-device-ip-address-and-blob-service-endpoint-to-the-remote-client)için aynı adımları izleyin.
 
 ### <a name="configure-and-verify-connection"></a>Bağlantıyı yapılandırma ve doğrulama
 
-[ *Http*üzerinden bağlanırken kullandığınız bağlantıyı yapılandırmak ve doğrulamak](#verify-connection)için adımları izleyin. Tek fark, *http kullan seçeneğini* işaretlenmemiş olarak bırakmanız gerektiğidir.
+[ *Http* üzerinden bağlanırken kullandığınız bağlantıyı yapılandırmak ve doğrulamak](#verify-connection)için adımları izleyin. Tek fark, *http kullan seçeneğini* işaretlenmemiş olarak bırakmanız gerektiğidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

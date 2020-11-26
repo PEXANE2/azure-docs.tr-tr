@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 61073ce7e8d3abc43d1db031608da72e6d3e0791
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 3f9779d2676d4d2b67efff37118d109664b84bd5
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92926810"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184612"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Ağları Azure İzleyici'ye güvenle bağlamak için Azure Özel Bağlantı'yı kullanma
 
@@ -94,14 +94,14 @@ Azure Izleyici özel bağlantı kapsamı kaynağı oluşturarak başlayın.
 
    ![Azure Izleyici özel bağlantı kapsamını bulun](./media/private-link-security/ampls-find-1c.png)
 
-2. **Oluştur** ' a tıklayın.
+2. **Oluştur**' a tıklayın.
 3. Bir abonelik ve kaynak grubu seçin.
 4. AMPLS 'e bir ad verin. Kapsamın, ağ güvenlik sınırlarını yanlışlıkla kesmesine izin vermek için, kapsamın kullanılacağı amacı ve güvenlik sınırını belirten bir ad kullanmak en iyisidir. Örneğin, "AppServerProdTelem".
-5. **Gözden Geçir ve Oluştur** ’a tıklayın. 
+5. **Gözden Geçir ve Oluştur**’a tıklayın. 
 
    ![Azure Izleyici özel bağlantı kapsamı oluştur](./media/private-link-security/ampls-create-1d.png)
 
-6. Doğrulama geçişine izin verin ve ardından **Oluştur** ' a tıklayın.
+6. Doğrulama geçişine izin verin ve ardından **Oluştur**' a tıklayın.
 
 ## <a name="connect-azure-monitor-resources"></a>Azure Izleyici kaynaklarını bağlama
 
@@ -119,23 +119,23 @@ AMPLS 'yi önce özel uç noktalara, sonra da Azure Izleyici kaynaklarına veya 
 
 Şimdi, AMPLS 'larınızla bağlantılı kaynaklarınız olduğuna göre, ağımızı bağlamak için özel bir uç nokta oluşturun. Bu görevi, bu örnekte olduğu gibi [Azure Portal özel bağlantı merkezinde](https://portal.azure.com/#blade/Microsoft_Azure_Network/PrivateLinkCenterBlade/privateendpoints)veya Azure Izleyici özel bağlantı kapsamınızda yapabilirsiniz.
 
-1. Kapsam kaynağında, sol taraftaki kaynak menüsünde **Özel uç nokta bağlantıları** ' na tıklayın. Uç nokta oluşturma işlemini başlatmak için **Özel uç noktaya** tıklayın. Ayrıca, özel bağlantı merkezinde başlatılan bağlantıları, seçerek ve **Onayla** ' ya tıklayarak da onaylayabilirsiniz.
+1. Kapsam kaynağında, sol taraftaki kaynak menüsünde **Özel uç nokta bağlantıları** ' na tıklayın. Uç nokta oluşturma işlemini başlatmak için **Özel uç noktaya** tıklayın. Ayrıca, özel bağlantı merkezinde başlatılan bağlantıları, seçerek ve **Onayla**' ya tıklayarak da onaylayabilirsiniz.
 
     ![Özel uç nokta bağlantıları UX görüntüsü](./media/private-link-security/ampls-select-private-endpoint-connect-3.png)
 
 2. Abonelik, kaynak grubu ve uç noktanın adını ve üzerinde etkin olması gereken bölgeyi seçin. Bölgenin, bağlayacaksınız sanal ağ ile aynı bölgede olması gerekir.
 
-3. **İleri: kaynak** ' a tıklayın. 
+3. **İleri: kaynak**' a tıklayın. 
 
 4. Kaynak ekranında,
 
    a. Azure Izleyici özel kapsam kaynağınızı içeren **aboneliği** seçin. 
 
-   b. **Kaynak türü** için **Microsoft. Insights/privatelinkscopes** ' ı seçin. 
+   b. **Kaynak türü** için **Microsoft. Insights/privatelinkscopes**' ı seçin. 
 
    c. **Kaynak** açılan listesinden daha önce oluşturduğunuz özel bağlantı kapsamınızı seçin. 
 
-   d. Ileri ' ye tıklayın **: yapılandırma >** .
+   d. Ileri ' ye tıklayın **: yapılandırma >**.
       ![Özel uç nokta oluştur Seç ekran görüntüsü](./media/private-link-security/ampls-select-private-endpoint-create-4.png)
 
 5. Yapılandırma bölmesinde,
@@ -144,13 +144,13 @@ AMPLS 'yi önce özel uç noktalara, sonra da Azure Izleyici kaynaklarına veya 
  
    b.    **Özel DNS bölgesi Ile tümleştirme** için **Evet** ' i seçin ve otomatik olarak yeni bir özel DNS bölgesi oluşturmasını sağlayın. Gerçek DNS bölgeleri aşağıdaki ekran görüntüsünde gösterilenden farklı olabilir. 
    > [!NOTE]
-   > **Hayır** ' ı SEÇIN ve DNS kayıtlarını el ile yönetmeyi tercih ederseniz, bu özel uç nokta ve ampls yapılandırması dahil olmak üzere, Ilk olarak özel bağlantınız kurulumunu tamamlayabilirsiniz. Ardından, DNS 'nizi [Azure özel uç nokta DNS yapılandırmasındaki](https://docs.microsoft.com/azure/private-link/private-endpoint-dns)yönergelere göre yapılandırın. Özel bağlantı kurulumunuzu hazırlama olarak boş kayıtlar oluşturmadığından emin olun. Oluşturduğunuz DNS kayıtları var olan ayarları geçersiz kılabilir ve Azure Izleyici ile bağlantınızı etkileyebilir.
+   > **Hayır** ' ı SEÇIN ve DNS kayıtlarını el ile yönetmeyi tercih ederseniz, bu özel uç nokta ve ampls yapılandırması dahil olmak üzere, Ilk olarak özel bağlantınız kurulumunu tamamlayabilirsiniz. Ardından, DNS 'nizi [Azure özel uç nokta DNS yapılandırmasındaki](../../private-link/private-endpoint-dns.md)yönergelere göre yapılandırın. Özel bağlantı kurulumunuzu hazırlama olarak boş kayıtlar oluşturmadığından emin olun. Oluşturduğunuz DNS kayıtları var olan ayarları geçersiz kılabilir ve Azure Izleyici ile bağlantınızı etkileyebilir.
  
-   c.    **Gözden geçir ve oluştur** ’a tıklayın.
+   c.    **Gözden geçir ve oluştur**’a tıklayın.
  
    d.    Doğrulama geçişine izin verin. 
  
-   e.    **Oluştur** 'a tıklayın. 
+   e.    **Oluştur**'a tıklayın. 
 
     ![Create Private Endpoint2 Select ekran görüntüsü](./media/private-link-security/ampls-select-private-endpoint-create-5.png)
 
@@ -240,11 +240,11 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace k
 
 ### <a name="azure-portal"></a>Azure portal
 
-Application Insights ve Log Analytics gibi Azure Izleyici portalı deneyimlerini kullanmak için, Azure portal ve Azure Izleyici uzantılarına özel ağlarda erişilebilir durumda izin vermeniz gerekir. Ağ güvenlik grubunuza **AzureActiveDirectory** , **AzureResourceManager** , **Azurefrontkapısı. Firstpartisi** ve **Azurefrontkapısı. ön uç** [hizmeti etiketleri](../../firewall/service-tags.md) ekleyin.
+Application Insights ve Log Analytics gibi Azure Izleyici portalı deneyimlerini kullanmak için, Azure portal ve Azure Izleyici uzantılarına özel ağlarda erişilebilir durumda izin vermeniz gerekir. Ağ güvenlik grubunuza **AzureActiveDirectory**, **AzureResourceManager**, **Azurefrontkapısı. Firstpartisi** ve **Azurefrontkapısı. ön uç** [hizmeti etiketleri](../../firewall/service-tags.md) ekleyin.
 
 ### <a name="programmatic-access"></a>Programlı erişim
 
-REST API, [CLI](/cli/azure/monitor?view=azure-cli-latest) veya PowerShell 'i özel ağlarda Azure izleyici ile kullanmak için, **AzureActiveDirectory** ve AzureResourceManager [hizmet etiketlerini](../../virtual-network/service-tags-overview.md)güvenlik duvarınızın **AzureResourceManager** içine ekleyin.  
+REST API, [CLI](/cli/azure/monitor?view=azure-cli-latest) veya PowerShell 'i özel ağlarda Azure izleyici ile kullanmak için,**AzureActiveDirectory** ve AzureResourceManager [hizmet etiketlerini](../../virtual-network/service-tags-overview.md)güvenlik duvarınızın **AzureResourceManager** içine ekleyin.  
 
 Bu etiketlerin eklenmesi, Log Analytics çalışma alanlarını ve AI bileşenlerini sorgulama, oluşturma ve yönetme gibi eylemleri gerçekleştirmenize olanak tanır.
 

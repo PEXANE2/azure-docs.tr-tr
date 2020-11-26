@@ -4,12 +4,12 @@ description: Azure 'da uyarı konusuna genel bakış. Uyarılar, klasik uyarıla
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 01/28/2018
-ms.openlocfilehash: b8d24eab79bdf16e4d883549be00431bd5372af8
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: d0f71ebf8a7acab6d4b46f59049bf1efd5290284
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536056"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186652"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure'da uyarılara genel bakış 
 
@@ -84,7 +84,7 @@ Aşağıdaki uyarı durumları desteklenir.
 
 *Uyarı durumu* , *izleyici koşulunun* farklıdır ve bağımsızdır. Uyarı durumu Kullanıcı tarafından ayarlanır. İzleme koşulu sistem tarafından ayarlanır. Bir uyarı tetiklendiğinde, uyarının izleyici koşulu *' tetiklenir '* olarak ayarlanır ve Uyarının tetiklenmesine neden olan temeldeki koşul temizler, izleme koşulu *' çözüldü '* olarak ayarlanır. 
 
-Uyarı durumu Kullanıcı tarafından değiştirilene kadar değiştirilmez. [Uyarılarınızın ve akıllı grupların durumunu değiştirme hakkında](./alerts-managing-alert-states.md?toc=%252fazure%252fazure-monitor%252ftoc.json)bilgi edinin.
+Uyarı durumu Kullanıcı tarafından değiştirilene kadar değiştirilmez. [Uyarılarınızın ve akıllı grupların durumunu değiştirme hakkında](./alerts-managing-alert-states.md?toc=%2fazure%2fazure-monitor%2ftoc.json)bilgi edinin.
 
 ## <a name="alerts-experience"></a>Uyarı deneyimi 
 Varsayılan uyarılar sayfası, belirli bir zaman aralığı içinde oluşturulan uyarıların bir özetini sağlar. Her önem derecesine yönelik toplam uyarı sayısını, her önem derecesine göre her bir durum için toplam uyarı sayısını tanımlayan sütunlarla görüntüler. Bu önem derecesine göre filtrelenen [tüm uyarılar](#all-alerts-page) sayfasını açmak için tüm önem derecelerinin herhangi birini seçin.
@@ -167,11 +167,11 @@ Bir uyarı seçtiğinizde, Bu sayfa uyarının ayrıntılarını sağlar ve duru
 
 Uyarı ayrıntıları sayfası aşağıdaki bölümleri içerir:
 
-| Section | Description |
+| Section | Açıklama |
 |:---|:---|
 | Özet | Uyarı hakkındaki özellikleri ve diğer önemli bilgileri görüntüler. |
 | Geçmiş | Uyarı tarafından gerçekleştirilen her eylemi ve uyarıya yapılan tüm değişiklikleri listeler. Şu anda durum değişiklikleriyle sınırlı. |
-| Tanılamalar | Uyarının dahil olduğu akıllı grup hakkında bilgi. *Uyarı sayısı* , akıllı gruba dahil edilen uyarı sayısını ifade eder. Son 30 gün içinde oluşturulan aynı akıllı gruptaki diğer uyarıları, uyarılar listesi sayfasındaki zaman filtreinne olursa olsun içerir. Ayrıntılarını görüntülemek için bir uyarı seçin. |
+| Tanılama | Uyarının dahil olduğu akıllı grup hakkında bilgi. *Uyarı sayısı* , akıllı gruba dahil edilen uyarı sayısını ifade eder. Son 30 gün içinde oluşturulan aynı akıllı gruptaki diğer uyarıları, uyarılar listesi sayfasındaki zaman filtreinne olursa olsun içerir. Ayrıntılarını görüntülemek için bir uyarı seçin. |
 
 ## <a name="azure-role-based-access-control-azure-rbac-for-your-alert-instances"></a>Uyarı örneklerinizin Azure rol tabanlı erişim denetimi (Azure RBAC)
 
@@ -204,12 +204,12 @@ Uyarıları, [önemli](alerts-common-schema-definitions.md#essentials) alanları
 
 ## <a name="smart-groups"></a>Akıllı gruplar
 
-Akıllı gruplar, uyarı gürültüsünü azaltmaya ve sorun gidermeye yardımcı olabilecek makine öğrenimi algoritmalarına dayalı uyarıların toplamasıdır. Akıllı gruplar ve [akıllı gruplarınızı yönetme](./alerts-managing-smart-groups.md?toc=%252fazure%252fazure-monitor%252ftoc.json) [hakkında daha fazla bilgi edinin](./alerts-smartgroups-overview.md?toc=%252fazure%252fazure-monitor%252ftoc.json) .
+Akıllı gruplar, uyarı gürültüsünü azaltmaya ve sorun gidermeye yardımcı olabilecek makine öğrenimi algoritmalarına dayalı uyarıların toplamasıdır. Akıllı gruplar ve [akıllı gruplarınızı yönetme](./alerts-managing-smart-groups.md?toc=%2fazure%2fazure-monitor%2ftoc.json) [hakkında daha fazla bilgi edinin](./alerts-smartgroups-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Akıllı gruplar hakkında daha fazla bilgi edinin](./alerts-smartgroups-overview.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
+- [Akıllı gruplar hakkında daha fazla bilgi edinin](./alerts-smartgroups-overview.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 - [Eylem grupları hakkında bilgi edinin](./action-groups.md)
-- [Azure 'da uyarı örneklerinizi yönetme](./alerts-managing-alert-instances.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
-- [Akıllı grupları yönetme](./alerts-managing-smart-groups.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
+- [Azure 'da uyarı örneklerinizi yönetme](./alerts-managing-alert-instances.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
+- [Akıllı grupları yönetme](./alerts-managing-smart-groups.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 - [Azure uyarıları fiyatlandırması hakkında daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/monitor/)

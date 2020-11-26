@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: e3a8e8b908c9d278654bfe992474811d6a9ddb86
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: d365b13ef8fb7ed9676bb00919315dc6fc9773ee
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91993714"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184595"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Azure İzleyici ile Azure kaynaklarını izleme
 Azure kaynaklarına bağlı kritik Uygulamalarınız ve iş süreçleriniz olduğunda, bu kaynakları kullanılabilirlik, performans ve işlem için izlemek istersiniz. Bu makalede, Azure kaynakları tarafından oluşturulan izleme verileri ve bu verileri çözümlemek ve uyarmak için Azure Izleyici 'nin özelliklerini nasıl kullanabileceğiniz açıklanır.
@@ -93,7 +93,7 @@ Birçok hizmet, **genel bakış** sayfasına, işlem için hızlı bir bakış o
 
 
 ### <a name="insights-and-solutions"></a>Öngörüler ve çözümler 
-Bazı hizmetler, Azure Izleyici 'nin standart özelliklerinden daha fazla araç sağlar. [Öngörüler](./insights-overview.md) , Azure izleyici veri platformu ve standart özellikleri üzerinde oluşturulmuş özelleştirilmiş bir izleme deneyimi sağlar. [Çözümler](./solutions.md) , Azure izleyici günlükleri üzerinde oluşturulmuş, önceden tanımlanmış izleme mantığı sağlar. 
+Bazı hizmetler, Azure Izleyici 'nin standart özelliklerinden daha fazla araç sağlar. [Öngörüler](../monitor-reference.md) , Azure izleyici veri platformu ve standart özellikleri üzerinde oluşturulmuş özelleştirilmiş bir izleme deneyimi sağlar. [Çözümler](./solutions.md) , Azure izleyici günlükleri üzerinde oluşturulmuş, önceden tanımlanmış izleme mantığı sağlar. 
 
 Bir hizmette Azure Izleyici Insight varsa, bu kaynağa her bir kaynağın menüsündeki **izleme** 'den erişebilirsiniz. **Azure izleyici** menüsünden tüm Öngörüler ve çözümlere erişin.
 
@@ -119,7 +119,7 @@ Geçerli kaynağa ilk filtresi ayarlanmış Azure portal etkinlik günlüğünde
 ### <a name="azure-monitor-logs"></a>Azure İzleyici Günlükleri
 Azure Izleyici günlükleri, güçlü bir sorgu aracıyla analizler için birden çok hizmetten ve diğer veri kaynaklarından günlükleri ve ölçümleri birleştirir. Yukarıda açıklandığı gibi, Azure Izleyici 'deki bir Log Analytics çalışma alanında platform ölçümleri, etkinlik günlüğü ve kaynak günlüklerini toplamak için bir tanılama ayarı oluşturun.
 
-[Log Analytics](../log-query/get-started-portal.md) , tam özellikli bir sorgu dili kullanarak günlük verilerinin gelişmiş analizini gerçekleştirmenize olanak tanıyan, Azure izleyici 'nin güçlü bir özelliği olan [günlük sorgularıyla](../log-query/log-query-overview.md)çalışmanıza olanak sağlar. [Sorgu kapsamı](../log-query/scope.md#query-scope)olarak kaynağı kullanarak günlük sorgularıyla çalışmak Için bir Azure kaynağının **izleme** menüsündeki **günlüklerden** Log Analytics açın. Bu, yalnızca söz konusu kaynak için birden çok tablo genelinde verileri analiz etmenizi sağlar. Tüm kaynaklar için günlüklere erişmek üzere Azure Izleyici menüsünden **günlükleri** kullanın. 
+[Log Analytics](../log-query/log-analytics-tutorial.md) , tam özellikli bir sorgu dili kullanarak günlük verilerinin gelişmiş analizini gerçekleştirmenize olanak tanıyan, Azure izleyici 'nin güçlü bir özelliği olan [günlük sorgularıyla](../log-query/log-query-overview.md)çalışmanıza olanak sağlar. [Sorgu kapsamı](../log-query/scope.md#query-scope)olarak kaynağı kullanarak günlük sorgularıyla çalışmak Için bir Azure kaynağının **izleme** menüsündeki **günlüklerden** Log Analytics açın. Bu, yalnızca söz konusu kaynak için birden çok tablo genelinde verileri analiz etmenizi sağlar. Tüm kaynaklar için günlüklere erişmek üzere Azure Izleyici menüsünden **günlükleri** kullanın. 
 
 - Günlük sorgularını yazmak için kullanılan sorgu dilini kullanma hakkında bir öğretici için bkz. [Azure izleyici 'de günlük sorgularıyla çalışmaya başlama](../log-query/get-started-queries.md) .
 - Azure Izleyici günlüklerinde kaynak günlüklerinin nasıl toplandığını ve bir sorgudaki bunlara nasıl erişecekleri hakkında bilgi için bkz. Azure [izleyici 'de Log Analytics çalışma alanında Azure Kaynak günlüklerini toplama](../platform/resource-logs.md#send-to-log-analytics-workspace) .

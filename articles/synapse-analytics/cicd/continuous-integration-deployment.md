@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 2f2221ad10a2e07a3443cab9f957c8ec26969a3b
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 7b77a47acba6180df4a067887b79d8cdc0f56df6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96031418"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185088"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Azure SYNAPSE çalışma alanı için sürekli tümleştirme ve teslim
 
@@ -25,7 +25,7 @@ Azure SYNAPSE çalışma alanı için, sürekli tümleştirme ve teslim (CI/CD) 
 
 Bu makale, bir Synapse çalışma alanının birden çok ortama dağıtımını otomatik hale getirmek için Azure sürüm ardışık düzeni kullanılarak ana hatlarıyla sunulacaktır.
 
-## <a name="pre-requirements"></a>Ön gereksinimler
+## <a name="prerequisites"></a>Ön koşullar
 
 -   Geliştirme için kullanılan çalışma alanı Studio 'daki bir git deposu ile yapılandırılmış, bkz. [SYNAPSE Studio 'Da kaynak denetimi](source-control.md).
 -   Bir Azure DevOps projesi, yayın işlem hattını çalıştırmak için hazırlandı.
@@ -82,7 +82,7 @@ Bu makale, bir Synapse çalışma alanının birden çok ortama dağıtımını 
     
     ![çalışma alanı ve havuzlar dağıtım](media/pools-resource-deploy.png)
 
-1. Seçim Çalışma alanı rol atamasını verme ve güncelleştirme için **Azure PowerShell** ekleyin. Bir Synapse çalışma alanı oluşturmak için yayın işlem hattını kullanıyorsanız, işlem hattının hizmet sorumlusu varsayılan çalışma alanı yöneticisi olarak eklenmelidir. Diğer hesaplara çalışma alanına erişim vermek için PowerShell 'i çalıştırabilirsiniz. 
+1. Seçim Çalışma alanı rol atamasını verme ve güncelleştirme için **Azure PowerShell** ekleyin. Bir Synapse çalışma alanı oluşturmak için yayın işlem hattını kullanıyorsanız, işlem hattının hizmet sorumlusu varsayılan çalışma alanı yöneticisi olarak eklenir. Diğer hesaplara çalışma alanına erişim vermek için PowerShell 'i çalıştırabilirsiniz. 
     
     ![izin ver](media/release-creation-grant-permission.png)
 
@@ -115,12 +115,8 @@ Tüm değişiklikleri kaydettikten sonra bir yayını el ile oluşturmak için *
 SYNAPSE çalışma alanınız ile git tümleştirmesi kullanıyorsanız ve değişikliklerinizi geliştirmeden test ve daha sonra üretime taşıyan bir CI/CD işlem hattına sahipseniz, bu en iyi yöntemleri öneririz:
 
 -   **Git tümleştirmesi**. Git tümleştirmesiyle yalnızca geliştirme SYNAPSE çalışma alanınızı yapılandırın. Test ve üretim çalışma alanlarındaki değişiklikler CI/CD aracılığıyla dağıtılır ve git tümleştirmesi gerekmez.
--   **Yapıları yapıtları geçişten önce hazırlayın**. Geliştirme çalışma alanındaki SQL betiğe veya Not defterinize havuzlar eklerseniz, farklı ortamlardaki havuzların adı da beklenmektedir. 
--   **Diğerleri**. [Diğer en iyi yöntemlere](/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd) bakın
+-   **Yapıları yapıtları geçişten önce hazırlayın**. Geliştirme çalışma alanındaki havuzlara eklenmiş SQL betiği veya Not defteriniz varsa, farklı ortamlardaki havuzların adı da beklenmektedir. 
+-   **Kod olarak altyapı (IAC)**. Bir açıklayıcı modelde altyapının (ağlar, sanal makineler, yük dengeleyiciler ve bağlantı topolojisi) yönetimi, DevOps ekibinin kaynak kodu için kullandığı sürüm oluşturma 'yı kullanır. 
+-   **Diğerleri**. Bkz. [ADF yapıtları için en iyi uygulamalar](/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd)
 
-## <a name="unsupported-features"></a>Desteklenmeyen özellikler
-
-- SYNAPSE Studio, işleme ya da kaynakların seçmeli yayımlamasına izin vermez. 
-- SYNAPSE Studio, COMMIT iletisini özelleştirmeyi desteklemiyor.
-- Tasarıma göre, silme eylemi doğrudan git 'e kaydedilecek
 

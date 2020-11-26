@@ -13,11 +13,11 @@ ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: apimpm
 ms.openlocfilehash: 39a3b9d7dd9efbda93de0b5d7c5f9938922d0012
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631299"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183856"
 ---
 # <a name="add-an-api-manually"></a>El ile API ekleme
 
@@ -27,7 +27,7 @@ Mevcut bir API’yi içeri aktarmak istiyorsanız [ilgili konular](#related-topi
 
 Bu makalede boş bir API oluşturacak ve [httpbin.org](https://httpbin.org)’u (genel bir test hizmeti) bir arka uç API’si olarak ekleyeceğiz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Şu hızlı başlangıcı doldurun: [Azure API Management örneği oluşturma](get-started-create-service-instance.md)
 
@@ -42,7 +42,7 @@ Bu makalede boş bir API oluşturacak ve [httpbin.org](https://httpbin.org)’u 
 4. API için ayarları girin. Ayarlar, [Ilk API 'Nizi Içeri aktarma ve yayımlama](import-and-publish.md#import-and-publish-a-backend-api) öğreticisinde açıklanmıştır.
 5. **Oluştur**’u seçin.
 
-Bu noktada, arka uç API 'nizin işlemlerine eşlenen API Management hiçbir işlem yok. Arka uçtan açığa çıkarılan ancak API Management aracılığıyla kullanıma sunulan bir işlem çağırırsanız, **404**alırsınız.
+Bu noktada, arka uç API 'nizin işlemlerine eşlenen API Management hiçbir işlem yok. Arka uçtan açığa çıkarılan ancak API Management aracılığıyla kullanıma sunulan bir işlem çağırırsanız, **404** alırsınız.
 
 >[!NOTE] 
 > Varsayılan olarak, bir API eklediğinizde, bir arka uç hizmetine bağlı olsa bile APıM, izin verene kadar herhangi bir işlem sergilemez. Arka uç hizmetinizin bir işlemine izin vermek için, arka uç işlemiyle eşleşen bir APıM işlemi oluşturun.

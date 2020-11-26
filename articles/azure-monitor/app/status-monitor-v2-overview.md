@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: 0fa0b0d5e3620fc45a104ea31fd3bcbedd673da1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0ce969a4ab016d6a036d33a0e9bf027bb580a20
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318955"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186227"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Şirket içi sunucular için Azure Izleyici Application Insights aracısını dağıtma
 
@@ -67,7 +67,7 @@ Bu seçeneklerin her biri [ayrıntılı yönergeler](status-monitor-v2-detailed-
   - [Get-Applicationınsisofsmonitoringstatus](./status-monitor-v2-api-reference.md#get-applicationinsightsmonitoringstatus) cmdlet 'i, etkinleştirme başarılı olduğunu doğrulamak için kullanılabilir.
   - Uygulamanızın telemetri gönderip göndermediğine hızlı bir şekilde anlamak için [canlı ölçümleri](./live-stream.md) kullanmanızı öneririz.
 
-  - Şu anda telemetri gönderen tüm bulut rollerini listelemek için [Log Analytics](../log-query/get-started-portal.md) de kullanabilirsiniz:
+  - Şu anda telemetri gönderen tüm bulut rollerini listelemek için [Log Analytics](../log-query/log-analytics-tutorial.md) de kullanabilirsiniz:
       ```Kusto
       union * | summarize count() by cloud_RoleName, cloud_RoleInstance
       ```
@@ -86,4 +86,3 @@ Daha fazla telemetri ekleyin:
 * Sitenizin canlı kalması için [web testleri oluşturun](monitor-web-app-availability.md).
 * Web sayfası kodundan özel durumları görmek ve izleme çağrılarını etkinleştirmek için [Web istemcisi telemetrisini ekleyin](./javascript.md) .
 * İzleme ve günlük çağrısı ekleyebilmeniz [için Application Insights SDK 'sını kodunuza ekleyin](./asp-net.md) .
-

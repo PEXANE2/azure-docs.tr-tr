@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/02/2020
-ms.openlocfilehash: ed9942fa7b73418e3ef1ddf0651781d32b662995
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 04f1eb0d9db00a2be1a4619cafe38aa18145fc78
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92049953"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186006"
 ---
 # <a name="archive-data-from-log-analytics-workspace-to-azure-storage-using-logic-app"></a>Logic App kullanarak Log Analytics çalışma alanındaki verileri Azure depolama 'ya arşivleme
 Bu makalede, Azure Izleyici 'deki bir Log Analytics çalışma alanındaki verileri sorgulamak ve Azure Storage 'a göndermek için [Azure Logic Apps](../../logic-apps/index.yml) kullanma yöntemi açıklanır. Denetim ve uyumluluk senaryolarında Azure Izleyici günlük verilerinizi dışarı aktarmanız veya başka bir hizmetin bu verileri almasına izin vermek istediğinizde bu işlemi kullanın.  
@@ -25,7 +25,7 @@ Bu makalede açıklanan yöntem, bir mantıksal uygulama kullanılarak günlük 
 - PowerShell betiği kullanılarak yerel makineye bir kerelik dışarı aktarma. Bkz. [Invoke-Azoperationalınsightsqueryexport]] ( https://www.powershellgallery.com/packages/Invoke-AzOperationalInsightsQueryExport) .
 
 ## <a name="overview"></a>Genel Bakış
-Bu yordam, bir mantıksal uygulamadan bir günlük sorgusu çalıştırmanızı ve çıkışını iş akışındaki diğer eylemlerde kullanmanızı sağlayan [Azure Izleyici günlükleri bağlayıcısını](https://docs.microsoft.com/connectors/azuremonitorlogs/) kullanır. [Azure Blob depolama Bağlayıcısı](https://docs.microsoft.com/connectors/azureblob/) , bu yordamda sorgu çıktısını Azure depolama 'ya göndermek için kullanılır. Diğer eylemler aşağıdaki bölümlerde açıklanmıştır.
+Bu yordam, bir mantıksal uygulamadan bir günlük sorgusu çalıştırmanızı ve çıkışını iş akışındaki diğer eylemlerde kullanmanızı sağlayan [Azure Izleyici günlükleri bağlayıcısını](/connectors/azuremonitorlogs/) kullanır. [Azure Blob depolama Bağlayıcısı](/connectors/azureblob/) , bu yordamda sorgu çıktısını Azure depolama 'ya göndermek için kullanılır. Diğer eylemler aşağıdaki bölümlerde açıklanmıştır.
 
 ![Mantıksal uygulamaya genel bakış](media/logs-export-logicapp/logic-app-overview.png)
 
@@ -39,7 +39,7 @@ SecurityEvent
 
 Verileri bir zamanlamaya göre dışarı aktardığınızda, geç gelen verileri kaçırmadığınızdan emin olmak için Sorgunuzdaki ingestion_time () işlevini kullanın. Ağ veya platform sorunları nedeniyle veriler gecikirse, alma süresinin kullanılması, bir sonraki mantıksal uygulama yürütmeye dahil edilmesini sağlar. Bir örnek için bkz. [Azure Izleyici günlükleri ekleme eylemi](#add-azure-monitor-logs-action) .
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu yordam tamamlanmadan önce tamamlanması gereken önkoşullar aşağıda verilmiştir.
 
 - Log Analytics çalışma alanı. Mantıksal uygulamayı oluşturan kullanıcının çalışma alanına en azından okuma izni olması gerekir. 
@@ -61,12 +61,12 @@ Azure Izleyici 'de Log Analytics çalışma alanı ve günlük sorguları, müş
 
 ## <a name="create-logic-app"></a>Mantıksal Uygulama oluşturma
 
-Azure portal **Logic Apps** gidin ve **Ekle**' ye tıklayın. Yeni mantıksal uygulamayı depolamak için bir **abonelik**, **kaynak grubu**ve **bölge** seçin ve benzersiz bir ad verin. [Azure izleyici günlüklerini ayarlama ve Azure Logic Apps için tanılama verilerini toplama](../../logic-apps/monitor-logic-apps-log-analytics.md)bölümünde açıklandığı gibi çalışma zamanı verileri ve olayları hakkında bilgi toplamak için **Log Analytics** ayarını açabilirsiniz. Bu ayar, Azure Izleyici günlükleri bağlayıcısının kullanılması için gerekli değildir.
+Azure portal **Logic Apps** gidin ve **Ekle**' ye tıklayın. Yeni mantıksal uygulamayı depolamak için bir **abonelik**, **kaynak grubu** ve **bölge** seçin ve benzersiz bir ad verin. [Azure izleyici günlüklerini ayarlama ve Azure Logic Apps için tanılama verilerini toplama](../../logic-apps/monitor-logic-apps-log-analytics.md)bölümünde açıklandığı gibi çalışma zamanı verileri ve olayları hakkında bilgi toplamak için **Log Analytics** ayarını açabilirsiniz. Bu ayar, Azure Izleyici günlükleri bağlayıcısının kullanılması için gerekli değildir.
 
 ![Mantıksal uygulama oluşturma](media/logs-export-logicapp/create-logic-app.png)
 
 
-**Gözden geçir + oluştur** ve sonra **Oluştur**' a tıklayın. Dağıtım tamamlandığında, **Logic Apps tasarımcısını**açmak Için **Kaynağa Git** ' e tıklayın.
+**Gözden geçir + oluştur** ve sonra **Oluştur**' a tıklayın. Dağıtım tamamlandığında, **Logic Apps tasarımcısını** açmak Için **Kaynağa Git** ' e tıklayın.
 
 ## <a name="create-a-trigger-for-the-logic-app"></a>Mantıksal uygulama için bir tetikleyici oluşturma
 **Ortak bir tetikleyiciden başla**' nın altında **yinelenme**' yi seçin. Bu, düzenli aralıklarla otomatik olarak çalışan bir mantıksal uygulama oluşturur. İşlemin **Sıklık** kutusunda **saat** ' i seçin ve **Aralık** kutusunda, iş akışını günde bir kez çalıştırmak için **1** değerini girin.
@@ -75,7 +75,7 @@ Azure portal **Logic Apps** gidin ve **Ekle**' ye tıklayın. Yeni mantıksal uy
 
 
 ### <a name="add-azure-monitor-logs-action"></a>Azure Izleyici günlükleri ekleme eylemi
-Yineleme eyleminden sonra çalışacak bir eylem eklemek için **+ yeni adım** ' a tıklayın. **Eylem seçin**altında **Azure izleyici** yazın ve ardından **Azure izleyici günlükleri**' ni seçin.
+Yineleme eyleminden sonra çalışacak bir eylem eklemek için **+ yeni adım** ' a tıklayın. **Eylem seçin** altında **Azure izleyici** yazın ve ardından **Azure izleyici günlükleri**' ni seçin.
 
 ![Azure Izleme günlükleri eylemi](media/logs-export-logicapp/select-azure-monitor-connector.png)
 
@@ -89,7 +89,7 @@ Bir kiracı seçmeniz ve iş akışının sorguyu çalıştırmak için kullanac
 ## <a name="add-azure-monitor-logs-action"></a>Azure Izleyici günlükleri ekleme eylemi
 Azure Izleyici günlükleri eylemi, çalıştırılacak sorguyu belirtmenizi sağlar. Bu örnekte kullanılan günlük sorgusu saatlik yinelenme için iyileştirilmiştir ve belirli yürütme süresi boyunca alınan verileri toplar. Örneğin, iş akışı 4:35 ' de çalışıyorsa, zaman aralığı 4:00 ile 5:00. Mantıksal uygulamayı farklı bir sıklıkta çalışacak şekilde değiştirirseniz, sorguyu da değiştirmeniz gerekir. Örneğin, yinelemeyi günlük olarak çalışacak şekilde ayarlarsanız, sorgudaki startTime öğesini startofday (make_datetime (year, month, Day, 0, 0)) olarak ayarlamanız gerekir. 
 
-Log Analytics çalışma alanınız için **aboneliği** ve **kaynak grubunu** seçin. **Kaynak türü** Için *Log Analytics çalışma alanı* ' nı seçin ve ardından **kaynak adı**altında çalışma alanının adını seçin.
+Log Analytics çalışma alanınız için **aboneliği** ve **kaynak grubunu** seçin. **Kaynak türü** Için *Log Analytics çalışma alanı* ' nı seçin ve ardından **kaynak adı** altında çalışma alanının adını seçin.
 
 **Sorgu** penceresine aşağıdaki günlük sorgusunu ekleyin.  
 
@@ -120,7 +120,7 @@ AzureActivity
 
 **Zaman aralığı** , **TimeGenerated** sütununa göre sorguya dahil edilecek kayıtları belirtir. Bu, sorguda seçilen zaman aralığına eşit veya daha yüksek bir değere ayarlanmalıdır. Bu sorgu **TimeGenerated** sütununu kullanmıyor, sonra **sorgu seçeneğinde ayarla** seçeneği kullanılamaz. Zaman aralığı hakkında daha fazla ayrıntı için bkz. [sorgu kapsamı](../log-query/scope.md) . 
 
-**Zaman aralığı**için **son 4 saati** seçin. Bu, zaman **üretilmeden** daha büyük bir alım süresi içeren tüm kayıtların sonuçlara dahil edilmesini sağlayacaktır.
+**Zaman aralığı** için **son 4 saati** seçin. Bu, zaman **üretilmeden** daha büyük bir alım süresi içeren tüm kayıtların sonuçlara dahil edilmesini sağlayacaktır.
    
 ![Sorgu Çalıştır ve sonuçları görselleştirin adlı yeni Azure Izleyici günlükleri eyleminin ayarlarının ekran görüntüsü.](media/logs-export-logicapp/run-query-list-action.png)
 
@@ -131,7 +131,7 @@ AzureActivity
 Almayı düşündüğünüz yükü açıklayan bir JSON şeması sağlayabilirsiniz. Tasarımcı, bu şemayı kullanarak JSON içeriğini ayrıştırır ve JSON içeriğinizin özelliklerini temsil eden Kullanıcı dostu belirteçler oluşturur. Daha sonra mantıksal uygulamanızın iş akışının tamamında bu özellikleri kolayca başvurabilir ve kullanabilirsiniz. 
 
 
-**+ Yeni adım**' a ve ardından **+ Eylem Ekle**' ye tıklayın. **Eylem seçin**altında **JSON** yazın ve ardından **JSON 'u Ayrıştır**' ı seçin.
+**+ Yeni adım**' a ve ardından **+ Eylem Ekle**' ye tıklayın. **Eylem seçin** altında **JSON** yazın ve ardından **JSON 'u Ayrıştır**' ı seçin.
 
 ![JSON ayrıştırma etkinliğini seçin](media/logs-export-logicapp/select-parse-json.png)
 
@@ -166,7 +166,7 @@ Almayı düşündüğünüz yükü açıklayan bir JSON şeması sağlayabilirsi
 ## <a name="add-the-compose-action"></a>Oluşturma eylemini ekleme
 **Oluşturma** eylemi, ayrıştırılmış JSON çıkışını alır ve bloba depolamanız gereken nesneyi oluşturur.
 
-**+ Yeni adım**' a ve ardından **+ Eylem Ekle**' ye tıklayın. **Eylem seçin**altında **Oluştur** yazın ve ardından **oluşturma** eylemini seçin.
+**+ Yeni adım**' a ve ardından **+ Eylem Ekle**' ye tıklayın. **Eylem seçin** altında **Oluştur** yazın ve ardından **oluşturma** eylemini seçin.
 
 ![Oluşturma eylemini seçin](media/logs-export-logicapp/select-compose.png)
 
@@ -179,7 +179,7 @@ Almayı düşündüğünüz yükü açıklayan bir JSON şeması sağlayabilirsi
 ## <a name="add-the-create-blob-action"></a>Blob oluştur eylemini ekleyin
 Blob oluştur eylemi, oluşturulan JSON 'ı depolamaya yazar.
 
-**+ Yeni adım**' a ve ardından **+ Eylem Ekle**' ye tıklayın. **Eylem seçin**altında **BLOB** yazın ve ardından **BLOB oluştur** eylemini seçin.
+**+ Yeni adım**' a ve ardından **+ Eylem Ekle**' ye tıklayın. **Eylem seçin** altında **BLOB** yazın ve ardından **BLOB oluştur** eylemini seçin.
 
 ![Blob oluştur ' u seçin](media/logs-export-logicapp/select-create-blob.png)
 

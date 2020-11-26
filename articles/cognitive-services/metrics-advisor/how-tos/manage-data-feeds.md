@@ -10,16 +10,16 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: mbullwin
-ms.openlocfilehash: de8d5d8e9fc5ce1df05cfd4c67ef146760e2c7e9
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: fb6eaf44967732d3a41ea92b0896540a40f694e3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92043179"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184731"
 ---
 # <a name="how-to-manage-your-data-feeds"></a>Nasıl yapılır: veri akışlarınızı yönetme
 
-Ölçüm Danışmanı 'nda eklendi veri akışlarınızı yönetme hakkında bilgi edinin. Bu makale, ölçüm Izleyicisinde veri akışlarını yönetme konusunda size rehberlik eder.
+Ölçüm Danışmanı 'nda eklendi veri akışlarınızı yönetme hakkında bilgi edinin. Bu makale, ölçüm Danışmanı 'nda veri akışlarını yönetme konusunda size rehberlik eder.
 
 ## <a name="edit-a-data-feed"></a>Veri akışını düzenleme
 
@@ -45,7 +45,7 @@ Bir veri akışını silmek için:
 
 2. Veri akışı ayrıntıları sayfasında **Sil**' e tıklayın.
 
-Başlangıç saatini değiştirirken şemayı yeniden doğrulamanız gerekir. **Parametreleri Düzenle**öğesini kullanarak değiştirebilirsiniz.
+Başlangıç saatini değiştirirken şemayı yeniden doğrulamanız gerekir. **Parametreleri Düzenle** öğesini kullanarak değiştirebilirsiniz.
 
 ##  <a name="backfill-your-data-feed"></a>Veri akışınızı geri doldurma
 
@@ -106,7 +106,7 @@ Seçenekler şunlardır:
 
 Eylem bağlantısı şablonları,,,, ve yer tutucularından oluşan, işlem yapılabilir http url 'lerini önceden tanımlamak için kullanılır `%datafeed` `%metric` `%timestamp` `%detect_config` `%tagset` . Ayrıntıya gitmek için bir anomali veya olaydan belirli bir URL 'ye yönlendirmek üzere şablonu kullanabilirsiniz.
 
-:::image type="content" source="../media/action-link-template.png" alt-text="Veri akışını geri doldurma" lightbox="../media/action-link-template.png":::
+:::image type="content" source="../media/action-link-template.png" alt-text="Eylem bağlantısı şablonu" lightbox="../media/action-link-template.png":::
 
 Eylem bağlantısını doldurduktan sonra olay listesinin eylem seçeneğinde **eylem bağlantısına git ' e** tıklayın ve olay ağacının sağ tıklama menüsü ' ne tıklayın. Eylem bağlantı şablonundaki yer tutucuları, anomali veya olay için karşılık gelen değerlerle değiştirin.
 

@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: 11ea348a80bc226b6a96bea1e7c023ee9c06b13a
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: cc17dcef7a554bee2715c79ba7d0c2356db2c6b3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684126"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185666"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Azure SignalR hizmeti yaygın sorunları için sorun giderme kılavuzu
 
@@ -148,7 +148,7 @@ ASP.NET SignalR için, [istemci bağlantısı düşerse](#client_connection_drop
 
 **Ücretsiz** örnekler Için, **eşzamanlı** bağlantı sayısı sınırı **Standart** örnekler için 20, **birim başına** **eşzamanlı** bağlantı sayısı sınırı 1 K olur, bu da Unit100 100-K eş zamanlı bağlantılara izin verir.
 
-Bağlantılar hem istemci hem de sunucu bağlantılarını içerir. bağlantıların nasıl sayılacağını [kontrol edin](https://docs.microsoft.com/azure/azure-signalr/signalr-concept-messages-and-connections#how-connections-are-counted) .
+Bağlantılar hem istemci hem de sunucu bağlantılarını içerir. bağlantıların nasıl sayılacağını [kontrol edin](./signalr-concept-messages-and-connections.md#how-connections-are-counted) .
 
 ## <a name="500-error-when-negotiate-azure-signalr-service-is-not-connected-yet-please-try-again-later"></a>500: Azure SignalR hizmeti henüz bağlı değil, lütfen daha sonra yeniden deneyin.
 
@@ -162,7 +162,7 @@ Sunucu Azure SignalR hizmetine bağlanmayı denediğinde hata ayrıntılarını 
 
 #### <a name="enable-server-side-logging-for-aspnet-core-signalr"></a>ASP.NET Core SignalR için sunucu tarafında günlüğe kaydetmeyi etkinleştirme
 
-ASP.NET Core SignalR için sunucu tarafında günlüğe kaydetme `ILogger` , ASP.NET Core çerçevesinde sunulan temel [günlük](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1&tabs=aspnetcore2x) kaydıyla tümleştirilir. Aşağıdaki gibi bir örnek kullanım kullanarak sunucu tarafı günlük kaydını etkinleştirebilirsiniz `ConfigureLogging` :
+ASP.NET Core SignalR için sunucu tarafında günlüğe kaydetme `ILogger` , ASP.NET Core çerçevesinde sunulan temel [günlük](/aspnet/core/fundamentals/logging/?tabs=aspnetcore2x&view=aspnetcore-2.1) kaydıyla tümleştirilir. Aşağıdaki gibi bir örnek kullanım kullanarak sunucu tarafı günlük kaydını etkinleştirebilirsiniz `ConfigureLogging` :
 ```cs
 .ConfigureLogging((hostingContext, logging) =>
         {
@@ -257,7 +257,7 @@ SignalR istemci bağlantısı `DisposeAsync` hiçbir şekilde çağrılmaz, bağ
 
 Bağlantıyı kapatmayı denetleyin. `HubConnection.DisposeAsync()`Bağlantıyı kullandıktan sonra durdurmak için el ile çağrı yapın.
 
-Örnek:
+Örneğin:
 
 ```C#
 var connection = new HubConnectionBuilder()

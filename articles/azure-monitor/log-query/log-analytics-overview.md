@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/04/2020
-ms.openlocfilehash: 26d6bcb52099b15aeeb73a36a7144c14bdf481d6
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: ba27739ff9e9d992ffe6202629a1db19604b1409
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94497346"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186125"
 ---
 # <a name="overview-of-log-analytics-in-azure-monitor"></a>Azure Izleyici 'de Log Analytics genel bakış
 Log Analytics, Azure Izleyici günlüklerinde verilerle günlük sorgularını düzenlemek ve çalıştırmak için kullanılan Azure portal bir araçtır. Kayıt kümesi döndüren basit bir sorgu yazabilir ve ardından bunları sıralamak, filtrelemek ve analiz etmek için Log Analytics özellikleri kullanabilirsiniz. Ya da istatistiksel analizler gerçekleştirmek için daha gelişmiş bir sorgu yazabilir ve belirli bir eğilimi tanımlamak için bir grafikteki sonuçları görselleştirebilirsiniz. Sorgularınızın sonuçlarıyla etkileşimli olarak çalışıp çalışmadığınızı veya bunları günlük sorgu uyarıları veya çalışma kitapları gibi diğer Azure Izleyici özellikleriyle birlikte kullanmaya devam etmeksizin Log Analytics, bunları yazmak ve test etmek için kullandığınız araçtır. 
 
 
 > [!TIP]
-> Bu makalede, Log Analytics ve özelliklerinin her birinin açıklaması sağlanmaktadır. Bir öğreticiye doğrudan gitmek istiyorsanız [Log Analytics öğreticisine](get-started-portal.md)bakın.
+> Bu makalede, Log Analytics ve özelliklerinin her birinin açıklaması sağlanmaktadır. Bir öğreticiye doğrudan gitmek istiyorsanız [Log Analytics öğreticisine](./log-analytics-tutorial.md)bakın.
 
 
 
@@ -91,5 +91,5 @@ Sonuçları, birden fazla kullanılabilir grafik türünden biri olarak görünt
 Azure Veri Gezgini Web Kullanıcı arabirimine zaten alışdıysanız Log Analytics tanıdık görünmelidir. Bunun nedeni Azure Veri Gezgini üzerine kurulmuştur ve aynı kusto sorgu dilini (KQL) kullanır. Log Analytics, Azure Izleyici 'ye özgü, zaman aralığına göre filtreleme ve bir sorgudan uyarı kuralı oluşturma gibi özellikler ekler. Her iki araç de kullanılabilir tabloların yapısını taramanızı sağlayan bir gezgin içeriyordu, ancak Azure Veri Gezgini Web Kullanıcı arabirimi, bir Log Analytics çalışma alanındaki tablolarla çalışırken Log Analytics birincil olarak Azure Veri Gezgini veritabanlarındaki tablolarla birlikte çalışmaktadır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure portal Log Analytics kullanma hakkında öğreticiyi](get-started-portal.md)adım adım inceleyin.
+- [Azure portal Log Analytics kullanma hakkında öğreticiyi](./log-analytics-tutorial.md)adım adım inceleyin.
 - [Sorgu yazma hakkında öğreticiyi](get-started-queries.md)adım adım inceleyin.

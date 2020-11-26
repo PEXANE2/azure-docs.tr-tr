@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: ramakk
-ms.openlocfilehash: 50669dcce044988f2e45acc2a17ae43c140d1ab5
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 96d8ba058a33d408ec2ee2a1adfba9011f393da9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930314"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184493"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Azure NetApp Files ağ planlaması yönergeleri
 
@@ -58,7 +58,7 @@ Aşağıdaki tabloda Azure NetApp Files tarafından desteklenen ağ topolojileri
 |-------------------------------------------------------------------------------------------------------------------------------|--------------------|-----------------------------------------------------------------------------|
 |    Yerel VNet 'teki birime bağlantı    |    Evet    |         |
 |    Eşlenen VNet 'teki birime bağlantı (aynı bölge)    |    Evet    |         |
-|    Eşlenmiş VNet 'teki birime bağlantı (çapraz bölge veya genel eşleme)    |    Hayır    |    Hiçbiri    |
+|    Eşlenmiş VNet 'teki birime bağlantı (çapraz bölge veya genel eşleme)    |    Hayır    |    Yok    |
 |    ExpressRoute ağ geçidi üzerinden bir birime bağlantı    |    Evet    |         |
 |    Şirket içinden bir bağlantı noktasında ExpressRoute ağ geçidi ile VNet eşlemesi ve ağ geçidi geçişi ile VNet eşlemesi    |    Evet    |        |
 |    Şirket içinden VPN Gateway üzerinden bağlı olan VNet 'teki bir birime bağlantı    |    Evet    |         |
@@ -116,7 +116,7 @@ Aşağıdaki diyagramda karma bir ortam gösterilmektedir:
 
 ![Karma ağ ortamı](../media/azure-netapp-files/azure-netapp-files-network-hybrid-environment.png)
 
-Karma senaryoda, şirket içi veri merkezlerinden uygulamaların Azure 'daki kaynaklara erişmesi gerekir.  Bu, veri merkezinizi Azure 'a genişletmek veya Azure yerel hizmetleri 'ni veya olağanüstü durum kurtarma için kullanmak istediğiniz durumdur. Siteden siteye VPN veya ExpressRoute aracılığıyla şirket içi birden çok kaynağı Azure 'daki kaynaklara bağlama hakkında bilgi için bkz. [VPN Gateway planlama seçenekleri](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%252fazure%252fvirtual-network%252ftoc.json#planningtable) .
+Karma senaryoda, şirket içi veri merkezlerinden uygulamaların Azure 'daki kaynaklara erişmesi gerekir.  Bu, veri merkezinizi Azure 'a genişletmek veya Azure yerel hizmetleri 'ni veya olağanüstü durum kurtarma için kullanmak istediğiniz durumdur. Siteden siteye VPN veya ExpressRoute aracılığıyla şirket içi birden çok kaynağı Azure 'daki kaynaklara bağlama hakkında bilgi için bkz. [VPN Gateway planlama seçenekleri](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable) .
 
 Karma hub tabanlı topolojide Azure 'daki hub VNet, şirket içi ağınıza yönelik merkezi bir bağlantı noktası görevi görür. Bağlı bileşen hub 'iyle eşlenirler ve iş yüklerini yalıtmak için kullanılabilirler.
 
@@ -128,7 +128,7 @@ Yukarıda gösterilen topolojide şirket içi ağ, Azure 'daki bir hub VNet 'e b
 * Şirket içi kaynaklar VM 1 ve VM 2, bir siteden siteye VPN ve bölgesel VNET eşlemesi üzerinden birim 2 veya birim 3 ' e bağlanabilir.
 * Hub VNet 'teki VM 3, bağlı olan VNet 1 ' de 2. birim ve bağlı ağ VNet 2 ' de birim 3 ' e bağlanabilir.
 * Sanal ağ VNet 1 ' den VM 4 ve bağlı ağ VNet 2 ' den VM 5, hub VNet 'teki birim 1 ' e bağlanabilir.
-* Bağlı ağ VNet 1 ' deki VM 4, bağlı olan VNet 2 ' de birim 3 ' e bağlanamaz. Ayrıca, bağlı bileşen VNet2 içindeki VM 5, bağlı olan VNet 1 ' de birim 2 ' ye bağlanamaz. Bu durum, bağlı olan VNET 'lerin eşlenmediği ve _geçiş yönlendirmenin VNET eşlemesi üzerinden desteklenmediği_için oluşur.
+* Bağlı ağ VNet 1 ' deki VM 4, bağlı olan VNet 2 ' de birim 3 ' e bağlanamaz. Ayrıca, bağlı bileşen VNet2 içindeki VM 5, bağlı olan VNet 1 ' de birim 2 ' ye bağlanamaz. Bu durum, bağlı olan VNET 'lerin eşlenmediği ve _geçiş yönlendirmenin VNET eşlemesi üzerinden desteklenmediği_ için oluşur.
 * Yukarıdaki mimaride, bağlı olan VNET 'te bir ağ geçidi varsa, hub 'daki ağ geçidi üzerinden bağlantı kurulurken ANF hacminin bağlantısı kaybedilir. Tasarıma göre, tercih, bağlı olan VNet 'teki ağ geçidine verilmelidir ve bu nedenle yalnızca söz konusu ağ geçidi üzerinden bağlanan makinelerin ANF birimine bağlanmasını sağlayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar

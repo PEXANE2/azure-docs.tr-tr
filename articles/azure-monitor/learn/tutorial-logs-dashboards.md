@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 05/28/2020
 ms.custom: mvc
-ms.openlocfilehash: d38a4ba04529e70ecfd772eef7f60179041f0273
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 880d173c6eef9d267e8860ebad805e071706de42
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87927377"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186159"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Log Analytics verilerinin panolarını oluşturma ve paylaşma
 
@@ -57,7 +57,7 @@ Bir pano oluşturulduğunda varsayılan olarak gizlidir, yani onu yalnızca siz 
 Panonuzun yayımlanması için bir abonelik ve kaynak grubu seçmeniz istenir. Kolaylık olması için portalın yayımlama deneyimi, bir kaynak grubuna panoları yerleştirdiğiniz **panolar** adlı bir modelde size kılavuzluk eder.  Seçili olan aboneliği doğrulayın ve sonra **Yayımla**’ya tıklayın.  Panoda görünen bilgilere erişim, [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)ile denetlenir.   
 
 ## <a name="visualize-a-log-query"></a>Günlük sorgusu görselleştirin
-[Log Analytics](../log-query/get-started-portal.md) , günlük sorgularıyla ve bunların sonuçlarıyla çalışmak için kullanılan özel bir portaldır. Birden fazla satırda sorgu düzenleme, seçerek kod yürütme, bağlama duyarlı IntelliSense ve Akıllı Analiz özellikleri mevcuttur. Bu öğreticide, grafik biçiminde bir performans görünümü oluşturmak, gelecekteki bir sorgu için kaydetmek ve daha önce oluşturulan paylaşılan panoya sabitlemek için Log Analytics kullanacaksınız.
+[Log Analytics](../log-query/log-analytics-tutorial.md) , günlük sorgularıyla ve bunların sonuçlarıyla çalışmak için kullanılan özel bir portaldır. Birden fazla satırda sorgu düzenleme, seçerek kod yürütme, bağlama duyarlı IntelliSense ve Akıllı Analiz özellikleri mevcuttur. Bu öğreticide, grafik biçiminde bir performans görünümü oluşturmak, gelecekteki bir sorgu için kaydetmek ve daha önce oluşturulan paylaşılan panoya sabitlemek için Log Analytics kullanacaksınız.
 
 Azure Izleyici menüsünde **Günlükler** ' i seçerek Log Analytics açın. Yeni bir boş sorgu ile başlar.
 

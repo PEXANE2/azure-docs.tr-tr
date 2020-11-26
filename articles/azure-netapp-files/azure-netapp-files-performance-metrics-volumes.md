@@ -7,12 +7,12 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: conceptual
 ms.date: 08/07/2019
-ms.openlocfilehash: cf25ef59bc1ea5db61dcfb3c76c0d978cb1f95d0
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: b41575208d0793a33864556ec4313ae1a71f2db5
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931845"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184476"
 ---
 # <a name="performance-benchmark-test-recommendations-for-azure-netapp-files"></a>Azure NetApp Files için performans kıyaslamaları test önerileri
 
@@ -24,7 +24,7 @@ Azure NetApp Files bir birimin performans özelliklerini anlamak için, açık k
 
 ### <a name="vm-instance-sizing"></a>VM örneği boyutlandırma
 
-En iyi sonuçlar için, testleri gerçekleştirmek üzere uygun şekilde boyutlandırılabilen bir sanal makine (VM) örneği kullandığınızdan emin olun. Aşağıdaki örneklerde bir Standard_D32s_v3 örneği kullanılmaktadır. VM örnek boyutları hakkında daha fazla bilgi için bkz. Windows tabanlı VM 'Ler için [Azure 'Da Windows sanal makineleri Için boyutlar](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-network%252ftoc.json) ve Linux tabanlı VM 'Ler için [Azure 'da Linux sanal makineleri için Boyutlar](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) .
+En iyi sonuçlar için, testleri gerçekleştirmek üzere uygun şekilde boyutlandırılabilen bir sanal makine (VM) örneği kullandığınızdan emin olun. Aşağıdaki örneklerde bir Standard_D32s_v3 örneği kullanılmaktadır. VM örnek boyutları hakkında daha fazla bilgi için bkz. Windows tabanlı VM 'Ler için [Azure 'Da Windows sanal makineleri Için boyutlar](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ve Linux tabanlı VM 'Ler için [Azure 'da Linux sanal makineleri için Boyutlar](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
 
 ### <a name="azure-netapp-files-volume-sizing"></a>Azure NetApp Files birim boyutlandırma
 

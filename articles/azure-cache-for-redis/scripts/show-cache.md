@@ -9,12 +9,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/30/2017
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8874a17b40b60a194811630b2f93d2be9d7faf7f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8901847a1c214b257243c4da0a74897061409bee
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87494715"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184255"
 ---
 # <a name="get-details-of-an-azure-cache-for-redis"></a>Redsıs için Azure önbelleğinin ayrıntılarını alma
 
@@ -32,11 +32,11 @@ Bu betik, Redsıs örneği için bir Azure önbelleğinin ayrıntılarını alma
 
 | Komut | Notlar |
 |---|---|
-| [az redin Show](https://docs.microsoft.com/cli/azure/redis) | Redsıs örneği için Azure önbelleğinin ayrıntılarını alın. |
+| [az redin Show](/cli/azure/redis) | Redsıs örneği için Azure önbelleğinin ayrıntılarını alın. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](https://docs.microsoft.com/cli/azure).
+Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](/cli/azure).
 
 Redsıs CLı betik örnekleri için ek Azure önbelleği, [redin belgeleri Için Azure önbelleğinde](../cli-samples.md)bulunabilir.

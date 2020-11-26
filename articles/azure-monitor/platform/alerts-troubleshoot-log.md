@@ -6,18 +6,18 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 10/29/2018
-ms.openlocfilehash: ec2ffe71a32781a855da258f3621738f1a5f6be4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9a1bef582053eccdbfef63c2159cf540ffd9bfb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294300"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186601"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Azure Izleyici 'de günlük uyarıları sorunlarını giderme  
 
 Bu makalede, Azure Izleyici 'de günlük uyarılarla ilgili yaygın sorunları nasıl giderecağınızı gösterilmektedir. Ayrıca, günlük uyarılarının işlevleri ve yapılandırmasıyla ilgili sık karşılaşılan sorunlara çözümler sağlar.
 
-Günlük uyarıları, kullanıcıların kaynak günlüklerini her ayarlama sıklığını değerlendirmek ve sonuçlara göre bir uyarı tetiklemesi için [Log Analytics](../log-query/get-started-portal.md) bir sorgu kullanmasına izin verir. Kurallar, [eylem gruplarını](./action-groups.md)kullanarak bir veya daha fazla eylemi tetikleyebilir. [Günlük uyarılarının işlevselliği ve terminolojisi hakkında daha fazla bilgi edinin](alerts-unified-log.md).
+Günlük uyarıları, kullanıcıların kaynak günlüklerini her ayarlama sıklığını değerlendirmek ve sonuçlara göre bir uyarı tetiklemesi için [Log Analytics](../log-query/log-analytics-tutorial.md) bir sorgu kullanmasına izin verir. Kurallar, [eylem gruplarını](./action-groups.md)kullanarak bir veya daha fazla eylemi tetikleyebilir. [Günlük uyarılarının işlevselliği ve terminolojisi hakkında daha fazla bilgi edinin](alerts-unified-log.md).
 
 > [!NOTE]
 > Bu makalede, Azure portal tetiklenen bir uyarı kuralı gösterdiği ve ilişkili bir eylem grubu tarafından bir bildirim gerçekleştirilmediği durumlar dikkate almaz. Bu gibi durumlarda [, sorun giderme](./alerts-troubleshoot.md#action-or-notification-on-my-alert-did-not-work-as-expected)hakkındaki ayrıntılara bakın.
@@ -42,7 +42,7 @@ Sorgu zaman aralığı, kural koşulu tanımında ayarlanır. Bu alana, çalış
 
 ### <a name="actions-are-muted-in-the-alert-rule"></a>Uyarı kuralında eylemler kapalı
 
-Günlük uyarıları, ayarlanan bir süre boyunca tetiklenen uyarı eylemlerini sessize etmek için bir seçenek sağlar. Bu alan, çalışma alanlarında ve Application Insights **uyarıları gösterme** olarak adlandırılır. Diğer tüm kaynak türlerinde, bu, **sessiz eylemler**olarak adlandırılır. 
+Günlük uyarıları, ayarlanan bir süre boyunca tetiklenen uyarı eylemlerini sessize etmek için bir seçenek sağlar. Bu alan, çalışma alanlarında ve Application Insights **uyarıları gösterme** olarak adlandırılır. Diğer tüm kaynak türlerinde, bu, **sessiz eylemler** olarak adlandırılır. 
 
 Yaygın bir sorun, bir hizmet sorunu nedeniyle uyarının eylemleri tetikleyemedi olduğunu düşündüğünüzden oluşur. Bu, kural yapılandırması tarafından sessize bırakılmıştı.
 

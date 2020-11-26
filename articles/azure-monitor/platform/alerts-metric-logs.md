@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.subservice: alerts
-ms.openlocfilehash: 23ebb513e55e6b61f608354ae1cb3bf3864a54ae
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 7c1e1d52b8434db930fcdd05c5c5441ba027abc8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108856"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186023"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Azure Izleyici 'de Günlükler için ölçüm uyarıları oluşturma
 
@@ -25,7 +25,7 @@ Azure 'daki veya Şirket içindeki kaynaklar dahil olmak üzere günlüklerdeki 
 
 - Windows & Linux makineleri için [performans sayaçları](./data-sources-performance-counters.md)
 - [Aracı Durumu için sinyal kayıtları](../insights/solution-agenthealth.md)
-- [Yönetim kayıtlarını Güncelleştir](../../automation/update-management/update-mgmt-overview.md)
+- [Yönetim kayıtlarını Güncelleştir](../../automation/update-management/overview.md)
 - [Olay veri](./data-sources-windows-events.md) günlükleri
 
 Azure 'da sorgu tabanlı [günlük uyarıları](./alerts-log.md) üzerinde **Günlükler için ölçüm uyarılarını** kullanmanın birçok avantajı vardır; Bunlardan bazıları aşağıda listelenmiştir:
@@ -55,7 +55,7 @@ Log Analytics verilerinde toplanan Günlükler için ölçüm öncesinde, aşağ
 
 1. **Etkin Log Analytics çalışma alanı**: geçerli ve etkin bir Log Analytics çalışma alanı bulunmalıdır. Daha fazla bilgi için bkz. [Azure portal Log Analytics çalışma alanı oluşturma](../learn/quick-create-workspace.md).
 2. **Aracı Log Analytics çalışma alanı için yapılandırılmış**: Azure VM 'ler (ve/veya) Şirket Içi VM 'ler için, önceki adımda kullanılan Log Analytics çalışma alanına veri göndermek üzere aracının yapılandırılması gerekir. Daha fazla bilgi için bkz. [Log Analytics aracısına genel bakış](./agents-overview.md).
-3. **Desteklenen Log Analytics çözümleri yüklendi**: Log Analytics çözüm yapılandırılmalı ve Log Analytics çalışma alanında veri göndermesi gerekir-desteklenen çözümler, [Windows & Linux için performans sayaçlarıdır](./data-sources-performance-counters.md), aracı durumu, [güncelleştirme yönetimi](../../automation/update-management/update-mgmt-overview.md)ve [Olay verileri](./data-sources-windows-events.md) [için sinyal kayıtları](../insights/solution-agenthealth.md).
+3. **Desteklenen Log Analytics çözümleri yüklendi**: Log Analytics çözüm yapılandırılmalı ve Log Analytics çalışma alanında veri göndermesi gerekir-desteklenen çözümler, [Windows & Linux için performans sayaçlarıdır](./data-sources-performance-counters.md), aracı durumu, [güncelleştirme yönetimi](../../automation/update-management/overview.md)ve [Olay verileri](./data-sources-windows-events.md) [için sinyal kayıtları](../insights/solution-agenthealth.md).
 4. **Günlükleri göndermek için yapılandırılan Log Analytics çözümleri**: Log Analytics çözüm, [Log Analytics çalışma alanları için desteklenen ölçümlere](./metrics-supported.md#microsoftoperationalinsightsworkspaces) karşılık gelen gerekli günlüklere/verilere sahip olmalıdır. Örneğin, *% kullanılabilir bellek* sayacı için Ilk olarak [performans sayaçları](./data-sources-performance-counters.md) çözümünde yapılandırılması gerekir.
 
 ## <a name="configuring-metric-alert-for-logs"></a>Günlükler için ölçüm uyarısını yapılandırma
@@ -67,11 +67,11 @@ Adım adım ayrıntılar ve örnekler için bkz. [ölçüm uyarıları oluşturm
 - Ölçüm uyarısı hedefi geçerli bir *Log Analytics çalışma alanıdır*
 - Seçili *Log Analytics çalışma alanı* için ölçüm uyarısı için seçilen sinyal **ölçüm** türünde
 - Boyut filtrelerini kullanarak belirli koşullar veya kaynaklar için filtre uygulayın; Günlükler için ölçümler çok boyutlu
-- *Sinyal mantığını*yapılandırırken, boyutun birden çok değerini (bilgisayar gibi) yaymak için tek bir uyarı oluşturulabilir
-- Seçili *Log Analytics çalışma alanı*için ölçüm uyarısı oluşturmak üzere **Azure Portal kullanmıyorsanız;** daha sonra kullanıcının [Azure izleyici tarafından zamanlanan sorgu kurallarını](/rest/api/monitor/scheduledqueryrules)kullanarak günlük verilerini bir ölçüme dönüştürmek için el ile bir açık kural oluşturması gerekir.
+- *Sinyal mantığını* yapılandırırken, boyutun birden çok değerini (bilgisayar gibi) yaymak için tek bir uyarı oluşturulabilir
+- Seçili *Log Analytics çalışma alanı* için ölçüm uyarısı oluşturmak üzere **Azure Portal kullanmıyorsanız;** daha sonra kullanıcının [Azure izleyici tarafından zamanlanan sorgu kurallarını](/rest/api/monitor/scheduledqueryrules)kullanarak günlük verilerini bir ölçüme dönüştürmek için el ile bir açık kural oluşturması gerekir.
 
 > [!NOTE]
-> Log Analytics çalışma alanı için ölçüm uyarısı oluştururken, [Azure izleyici](/rest/api/monitor/scheduledqueryrules) ile günlük verilerini ölçüsüne dönüştürmek için Azure Portal ilgili kural aracılığıyla, *herhangi bir kullanıcı müdahalesi veya eylemi gerekmeden*arka planda otomatik olarak oluşturulur. Azure portal dışındaki yollarla günlük oluşturma için ölçüm uyarısı için, bkz. bir ScheduledQueryRule tabanlı [Günlükler Için kaynak şablonu](#resource-template-for-metric-alerts-for-logs) ölçüm uyarı oluşturma işleminden önce ölçüm dönüştürme kuralına kaydetme, diğer bir deyişle, oluşturulan günlüklerde ölçüm uyarısı için veri olmaz.
+> Log Analytics çalışma alanı için ölçüm uyarısı oluştururken, [Azure izleyici](/rest/api/monitor/scheduledqueryrules) ile günlük verilerini ölçüsüne dönüştürmek için Azure Portal ilgili kural aracılığıyla, *herhangi bir kullanıcı müdahalesi veya eylemi gerekmeden* arka planda otomatik olarak oluşturulur. Azure portal dışındaki yollarla günlük oluşturma için ölçüm uyarısı için, bkz. bir ScheduledQueryRule tabanlı [Günlükler Için kaynak şablonu](#resource-template-for-metric-alerts-for-logs) ölçüm uyarı oluşturma işleminden önce ölçüm dönüştürme kuralına kaydetme, diğer bir deyişle, oluşturulan günlüklerde ölçüm uyarısı için veri olmaz.
 
 ## <a name="resource-template-for-metric-alerts-for-logs"></a>Günlükler için ölçüm uyarıları kaynak şablonu
 

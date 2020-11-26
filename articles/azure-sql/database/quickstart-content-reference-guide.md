@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/29/2019
-ms.openlocfilehash: 727792b110c3bc486d31214096be1934539f6d11
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 392f361f6fe487a15bdd63c2f3281ccc78b2f86d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790313"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184425"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>Azure SQL veritabanı 'nda tek veritabanlarıyla çalışmaya başlama
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,7 +41,7 @@ Veritabanınızı oluşturmak, yapılandırmak ve ölçeklendirmek için PowerSh
 
 ## <a name="migrating-to-a-single-database-with-minimal-downtime"></a>En az kapalı kalma süresiyle tek bir veritabanına geçiş
 
-Bu hızlı başlangıç, bir dosya kullanarak veritabanınızı hızlı bir şekilde oluşturmanıza veya Azure 'da aktarmanıza olanak tanır `.bacpac` . Ancak, `.bacpac` ve `.dacpac` dosyaları, veritabanlarını SQL Server ve Azure SQL içindeki farklı sürümlerinde hızla taşımak veya DevOps işlem hattınızda sürekli tümleştirme uygulamak üzere tasarlanmıştır. Ancak, bu yöntem en az kapalı kalma süresiyle üretim veritabanlarınızın geçirilmesi için tasarlanmamıştır, çünkü yeni veri ekleme işlemini durdurmanız, kaynak veritabanının bir `.bacpac` dosyanın tamamlanmasını beklemeniz ve sonra Azure SQL veritabanı 'na aktarma işleminin tamamlanmasını beklemeniz gerekir. Bu bekleyen tüm bu durum, özellikle büyük veritabanları için uygulamanızın kapalı kalma süresine neden olur. Üretim veritabanınızı taşımak için geçişin en az kapalı kalma süresini garanti eden geçiş için daha iyi bir yol gerekir. Bunun için, [veri geçiş hizmeti 'ni (DMS)](../../dms/tutorial-sql-server-to-azure-sql.md?toc=%252fazure%252fsql-database%252ftoc.json) kullanarak veritabanınızı en düşük kapalı kalma süresiyle geçirin. DMS, kaynak veritabanınızda yapılan değişiklikleri geri yüklenen tek veritabanına artırarak bunu gerçekleştirir. Bu şekilde, uygulamanızı kaynaktan hedef veritabanına en az kapalı kalma süresi ile hızlıca geçirebilirsiniz.
+Bu hızlı başlangıç, bir dosya kullanarak veritabanınızı hızlı bir şekilde oluşturmanıza veya Azure 'da aktarmanıza olanak tanır `.bacpac` . Ancak, `.bacpac` ve `.dacpac` dosyaları, veritabanlarını SQL Server ve Azure SQL içindeki farklı sürümlerinde hızla taşımak veya DevOps işlem hattınızda sürekli tümleştirme uygulamak üzere tasarlanmıştır. Ancak, bu yöntem en az kapalı kalma süresiyle üretim veritabanlarınızın geçirilmesi için tasarlanmamıştır, çünkü yeni veri ekleme işlemini durdurmanız, kaynak veritabanının bir `.bacpac` dosyanın tamamlanmasını beklemeniz ve sonra Azure SQL veritabanı 'na aktarma işleminin tamamlanmasını beklemeniz gerekir. Bu bekleyen tüm bu durum, özellikle büyük veritabanları için uygulamanızın kapalı kalma süresine neden olur. Üretim veritabanınızı taşımak için geçişin en az kapalı kalma süresini garanti eden geçiş için daha iyi bir yol gerekir. Bunun için, [veri geçiş hizmeti 'ni (DMS)](../../dms/tutorial-sql-server-to-azure-sql.md?toc=%2fazure%2fsql-database%2ftoc.json) kullanarak veritabanınızı en düşük kapalı kalma süresiyle geçirin. DMS, kaynak veritabanınızda yapılan değişiklikleri geri yüklenen tek veritabanına artırarak bunu gerçekleştirir. Bu şekilde, uygulamanızı kaynaktan hedef veritabanına en az kapalı kalma süresi ile hızlıca geçirebilirsiniz.
 
 ## <a name="hands-on-learning-modules"></a>Uygulamalı öğrenme modülleri
 

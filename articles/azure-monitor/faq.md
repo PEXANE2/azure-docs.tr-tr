@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 391d9562bc73265a10976f485c78e3966aa4fe83
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: b770e4488b6edb1c2d3749066315b552c0b5b40a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536294"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186176"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Izleyici sık sorulan sorular
 
@@ -31,7 +31,7 @@ Eylül 2018 ' de, Microsoft birleştirilmiş Azure Izleyici, Log Analytics ve Ap
 Ölçüm ve etkinlik günlüklerinin toplanması gibi otomatik olarak etkinleştirilen Azure Izleyici özellikleri ücretsiz olarak sunulmaktadır. Günlük sorguları ve uyarı gibi diğer özelliklerle ilişkili bir maliyet vardır. Ayrıntılı fiyatlandırma bilgileri için bkz. [Azure izleyici fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/monitor/) .
 
 ### <a name="how-do-i-enable-azure-monitor"></a>Azure Izleyiciyi etkinleştirmek Nasıl yaparım? mı?
-Azure Izleyici, yeni bir Azure aboneliği oluşturduğunuz anda ve [etkinlik günlüğü](./platform/platform-logs-overview.md) ile Platform [ölçümleri](platform/data-platform-metrics.md) otomatik olarak toplandığında etkindir. Azure kaynaklarınızın çalışması hakkında daha ayrıntılı bilgi toplamak için [Tanılama ayarları](platform/diagnostic-settings.md) oluşturun ve belirli hizmetler için toplanan veriler hakkında ek analizler sağlamak üzere [izleme çözümleri](insights/solutions.md) ve [Öngörüler](insights/insights-overview.md) ekleyin. 
+Azure Izleyici, yeni bir Azure aboneliği oluşturduğunuz anda ve [etkinlik günlüğü](./platform/platform-logs-overview.md) ile Platform [ölçümleri](platform/data-platform-metrics.md) otomatik olarak toplandığında etkindir. Azure kaynaklarınızın çalışması hakkında daha ayrıntılı bilgi toplamak için [Tanılama ayarları](platform/diagnostic-settings.md) oluşturun ve belirli hizmetler için toplanan veriler hakkında ek analizler sağlamak üzere [izleme çözümleri](insights/solutions.md) ve [Öngörüler](./monitor-reference.md) ekleyin. 
 
 ### <a name="how-do-i-access-azure-monitor"></a>Azure Izleyici erişimi mi Nasıl yaparım??
 Tüm Azure Izleyici özelliklerine ve verilerine, Azure portal 'daki **izleyici** menüsünden erişin. Farklı Azure hizmetleri menüsünün **izleme** bölümü, belirli bir kaynağa filtrelenen verilerle aynı araçlara erişim sağlar. Azure Izleyici verilerine, CLı, PowerShell ve bir REST API kullanan çeşitli senaryolar için de erişilebilir.
@@ -65,7 +65,7 @@ Toplayacağınız Ölçüm verisi miktarına yönelik bir sınır yoktur, ancak 
 ## <a name="solutions-and-insights"></a>Çözümler ve Öngörüler
 
 ### <a name="what-is-an-insight-in-azure-monitor"></a>Azure Izleyici 'de öngörü nedir?
-Öngörüler, belirli Azure hizmetleri için özelleştirilmiş bir izleme deneyimi sağlar. Bunlar, Azure Izleyici 'deki diğer özelliklerle aynı ölçümleri ve günlükleri kullanır, ancak ek veri toplayabilir ve Azure portal benzersiz bir deneyim sağlayabilir. Bkz. [Azure izleyici 'de Öngörüler](insights/insights-overview.md).
+Öngörüler, belirli Azure hizmetleri için özelleştirilmiş bir izleme deneyimi sağlar. Bunlar, Azure Izleyici 'deki diğer özelliklerle aynı ölçümleri ve günlükleri kullanır, ancak ek veri toplayabilir ve Azure portal benzersiz bir deneyim sağlayabilir. Bkz. [Azure izleyici 'de Öngörüler](./monitor-reference.md).
 
 Azure portal içgörüleri görüntülemek için, **izleme** menüsündeki **Öngörüler** bölümüne veya hizmet menüsünün **izleme** bölümüne bakın.
 
@@ -77,7 +77,7 @@ Azure portal çözümleri görüntülemek için **izleyici** menüsünün **Öng
 ## <a name="logs"></a>Günlükler
 
 ### <a name="whats-the-difference-between-azure-monitor-logs-and-azure-data-explorer"></a>Azure Izleyici günlükleri ve Azure Veri Gezgini arasındaki fark nedir?
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Azure Izleyici günlükleri Azure Veri Gezgini üzerine kurulmuştur ve bazı küçük farklılıklar ile aynı kusto sorgu dilini (KQL) kullanır. Bkz. [Azure izleyici günlük sorgusu dil farkları](log-query/data-explorer-difference.md).
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Azure Izleyici günlükleri Azure Veri Gezgini üzerine kurulmuştur ve bazı küçük farklılıklar ile aynı kusto sorgu dilini (KQL) kullanır. Bkz. [Azure izleyici günlük sorgusu dil farkları](/azure/data-explorer/kusto/query/).
 
 ### <a name="how-do-i-retrieve-log-data"></a>Günlük verilerini almak Nasıl yaparım??
 Tüm veriler, kusto sorgu dili (KQL) kullanılarak yazılmış bir günlük sorgusu kullanarak bir Log Analytics çalışma alanından alınır. Kendi sorgularınızı yazabilir veya belirli bir uygulama veya hizmete ait günlük sorgularını içeren çözüm ve Öngörüler kullanabilirsiniz. Bkz. [Azure izleyici 'de günlük sorgularına genel bakış](log-query/log-query-overview.md).
@@ -224,7 +224,7 @@ Görünüm Tasarımcısı yalnızca Log Analytics çalışma alanında katkıda 
 * [Node.js uygulamaları](app/nodejs.md)
 * [Azure 'da Web Apps](app/azure-web-apps.md)
 * [Azure üzerinde Cloud Services](app/cloudservices.md)
-* [Docker 'da çalışan uygulama sunucuları](app/docker.md)
+* [Docker 'da çalışan uygulama sunucuları](./azure-monitor-app-hub.yml)
 * [Tek sayfalı web uygulamaları](app/javascript.md)
 * [SharePoint](app/sharepoint.md)
 * [Windows masaüstü uygulaması](app/windows-desktop.md)
@@ -401,7 +401,7 @@ Aktarılan her öğe, `itemCount` öğenin kaç tane özgün olay temsil ettiği
 
 Mevcut Application Insights kaynaklarının bir bölgeden diğerine taşınması **Şu anda desteklenmiyor**. Topladığınız geçmiş verileri yeni bir bölgeye **geçirilemez** . Kısmi geçici çözüm şunlardır:
 
-1. Yeni bölgede yepyeni bir Application Insights kaynak ([Klasik](app/create-new-resource.md) veya [çalışma alanı tabanlı](/azure/azure-monitor/app/create-workspace-resource)) oluşturun.
+1. Yeni bölgede yepyeni bir Application Insights kaynak ([Klasik](app/create-new-resource.md) veya [çalışma alanı tabanlı](./app/create-workspace-resource.md)) oluşturun.
 2. Yeni kaynaktaki özgün kaynağa özgü tüm benzersiz özelleştirmeleri yeniden oluşturun.
 3. Uygulamanızı yeni bölge kaynak [izleme anahtarını](app/create-new-resource.md#copy-the-instrumentation-key) veya [bağlantı dizesini](app/sdk-connection-string.md)kullanacak şekilde değiştirin.  
 4. Yeni Application Insights kaynağınız ile her şeyin beklendiği gibi çalışmaya devam etmekte olduğunu onaylamak için test edin. 
@@ -414,7 +414,7 @@ Genellikle yeni bölgedeki kaynak için el ile yeniden oluşturulması veya gün
 - Kullanılabilirlik uyarılarını yeniden oluşturun.
 - Kullanıcılarınızın yeni kaynağa erişmesi için gerekli olan tüm özel Azure rol tabanlı erişim denetimi (Azure RBAC) ayarlarını yeniden oluşturun. 
 - Alma örnekleme, veri saklama, günlük uç ve özel ölçümler ile ilgili ayarları çoğaltın. Bu ayarlar, **kullanım ve tahmini maliyetler** bölmesi aracılığıyla denetlenir.
-- [Sürüm ek açıklamaları](/azure/azure-monitor/app/annotations), [canlı ölçümler güvenli denetim kanalı](app/live-stream.md#secure-the-control-channel) vb. gibi API anahtarlarına bağlı olan herhangi bir tümleştirme Yeni API anahtarları oluşturmanız ve ilişkili tümleştirmeyi güncelleştirmeniz gerekecektir. 
+- [Sürüm ek açıklamaları](./app/annotations.md), [canlı ölçümler güvenli denetim kanalı](app/live-stream.md#secure-the-control-channel) vb. gibi API anahtarlarına bağlı olan herhangi bir tümleştirme Yeni API anahtarları oluşturmanız ve ilişkili tümleştirmeyi güncelleştirmeniz gerekecektir. 
 - Klasik kaynaklarda sürekli dışarı aktarmanın yeniden yapılandırılması gerekir.
 - Çalışma alanı tabanlı kaynaklardaki tanılama ayarlarının yeniden yapılandırılması gerekir.
 

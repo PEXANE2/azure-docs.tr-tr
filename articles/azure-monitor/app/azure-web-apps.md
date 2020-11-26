@@ -4,12 +4,12 @@ description: Azure Uygulama Hizmetleri için uygulama performansı izleme. Grafi
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: f46d00f97dab18b0c7c1d4a5742a87308f814e9e
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: c0ee68659f4729ed8f63b9ea990343adf51513bd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832907"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186380"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service performansını izleme
 
@@ -61,11 +61,11 @@ Azure App Services 'da barındırılan uygulamalar için uygulama izlemeyi etkin
         
 | Veriler | ASP.NET temel koleksiyonu | ASP.NET önerilen koleksiyon |
 | --- | --- | --- |
-| CPU, bellek ve G/Ç kullanım eğilimlerini ekler |Yes |Yes |
-| Kullanım eğilimlerini toplar ve kullanılabilirlik sonuçlarıyla işlemler arasında bağıntı sağlar | Yes |Yes |
-| Ana işlem tarafından işlenmeyen özel durumları toplar | Yes |Yes |
-| Örnekleme kullanıldığında yük altındaki APM ölçümü doğruluğunu geliştirir | Yes |Yes |
-| Mikro hizmetler ile istek/bağımlılık sınırları arasında bağıntı sağlar | Hayır (yalnızca tek örnekli APM özellikleri) |Yes |
+| CPU, bellek ve G/Ç kullanım eğilimlerini ekler |Evet |Evet |
+| Kullanım eğilimlerini toplar ve kullanılabilirlik sonuçlarıyla işlemler arasında bağıntı sağlar | Evet |Evet |
+| Ana işlem tarafından işlenmeyen özel durumları toplar | Evet |Evet |
+| Örnekleme kullanıldığında yük altındaki APM ölçümü doğruluğunu geliştirir | Evet |Evet |
+| Mikro hizmetler ile istek/bağımlılık sınırları arasında bağıntı sağlar | Hayır (yalnızca tek örnekli APM özellikleri) |Evet |
 
 3. Daha önce applicationinsights.config dosyası aracılığıyla denetleyebilmeniz gereken örnekleme gibi ayarları yapılandırmak için artık karşılık gelen bir ön ek ile uygulama ayarları aracılığıyla aynı ayarlarla etkileşime geçebilirsiniz. 
 
@@ -372,7 +372,7 @@ Azure Uygulama Hizmetleri 'nde çalışan ASP.NET ve ASP.NET Core tabanlı uygul
 
     * , Ve için girdi olmadığını doğrulayın `AppAlreadyInstrumented` `AppContainsDiagnosticSourceAssembly` `AppContainsAspNetTelemetryCorrelationAssembly` .
         * Bu girdilerden herhangi biri mevcutsa, aşağıdaki paketleri uygulamanızdan kaldırın: `Microsoft.ApplicationInsights` , `System.Diagnostics.DiagnosticSource` ve `Microsoft.AspNet.TelemetryCorrelation` .
-        * Yalnızca ASP.NET Core uygulamalar için: uygulamanızın herhangi bir Application Insights paketine başvurması durumunda, örneğin uygulamanızı [ASP.NET Core SDK 'sı](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)ile daha önce (veya işaretleme girişiminde bulunursa), App Service tümleştirmenin etkin olmaması ve veriler Application Insights görünmeyebilir. Sorunu onarmak için Portal 'da "Application Insights SDK ile birlikte çalışma" seçeneğini açın ve verileri Application Insights görmeye başlayabilirsiniz 
+        * Yalnızca ASP.NET Core uygulamalar için: uygulamanızın herhangi bir Application Insights paketine başvurması durumunda, örneğin uygulamanızı [ASP.NET Core SDK 'sı](./asp-net-core.md)ile daha önce (veya işaretleme girişiminde bulunursa), App Service tümleştirmenin etkin olmaması ve veriler Application Insights görünmeyebilir. Sorunu onarmak için Portal 'da "Application Insights SDK ile birlikte çalışma" seçeneğini açın ve verileri Application Insights görmeye başlayabilirsiniz 
         > [!IMPORTANT]
         > Bu işlevsellik önizlemededir 
 
@@ -432,4 +432,3 @@ En son güncelleştirmeler ve hata düzeltmeleri için [sürüm notlarına bakı
 * İşletimsel olaylar gerçekleştiğinde ya da ölçümler bir eşiği aştığında [uyarı bildirimleri alın](../platform/alerts-overview.md).
 * Bir web sayfasını ziyaret eden tarayıcılardan istemci telemetrisi toplamak istiyorsanız [JavaScript uygulamaları ve web sayfaları için Application Insights](javascript.md)’ı kullanın.
 * Sitenizin kapalı olması durumunda uyarı almak istiyorsanız [Kullanılabilirlik web testleri](monitor-web-app-availability.md) ayarlayın.
-

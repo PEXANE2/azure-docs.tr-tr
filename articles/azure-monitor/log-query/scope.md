@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/09/2020
-ms.openlocfilehash: 066e9cf6c63c9f2073ba869e8b40e25bfc993cd8
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: ddb73de87789934aa66893bdbe6519011cf324b3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491384"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186108"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Azure Izleyici 'de günlük sorgusu kapsamı ve zaman aralığı Log Analytics
-[Azure portal Log Analytics](get-started-portal.md)bir [günlük sorgusu](log-query-overview.md) çalıştırdığınızda, sorgu tarafından değerlendirilen veri kümesi, seçtiğiniz kapsama ve zaman aralığına bağlıdır. Bu makalede kapsam ve zaman aralığı ve gereksinimlerinize bağlı olarak her bir şekilde nasıl ayarlayabileceğiniz açıklanır. Ayrıca, farklı kapsam türlerinin davranışlarını açıklar.
+[Azure portal Log Analytics](./log-analytics-tutorial.md)bir [günlük sorgusu](log-query-overview.md) çalıştırdığınızda, sorgu tarafından değerlendirilen veri kümesi, seçtiğiniz kapsama ve zaman aralığına bağlıdır. Bu makalede kapsam ve zaman aralığı ve gereksinimlerinize bağlı olarak her bir şekilde nasıl ayarlayabileceğiniz açıklanır. Ayrıca, farklı kapsam türlerinin davranışlarını açıklar.
 
 
 ## <a name="query-scope"></a>Sorgu kapsamı
@@ -48,7 +48,7 @@ Sorgu kapsamı bir Log Analytics çalışma alanı veya Application Insights uyg
 Sorgu kapsamı, kaynak veya kaynak kümesi için veri içeren herhangi bir çalışma alanı içerdiğinden, bir kaynağa kapsam yaparken aşağıdaki komutları kullanamazsınız:
 
 - [uygulamanızda](app-expression.md)
-- [workspace (çalışma alanı)](workspace-expression.md) 
+- [alanında](workspace-expression.md)
  
 
 ## <a name="query-scope-limits"></a>Sorgu kapsamı sınırları
@@ -87,5 +87,5 @@ Sorgu, klasik bir Application Insights uygulamasından veri almak için **uygula
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure portal Log Analytics kullanma hakkında öğreticiyi](get-started-portal.md)adım adım inceleyin.
+- [Azure portal Log Analytics kullanma hakkında öğreticiyi](./log-analytics-tutorial.md)adım adım inceleyin.
 - [Sorgu yazma hakkında öğreticiyi](get-started-queries.md)adım adım inceleyin.

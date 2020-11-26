@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: db77df29d1b9b0adf07c7da377c028dee5312617
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: cd0fd7ac004d07b71a69a3e59c9cfd4727d98eb6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579207"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184680"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>Öğretici: IoT Edge cihazları hiyerarşisi oluşturma (Önizleme)
 
@@ -27,7 +27,7 @@ Yalnızca en üst katmanın buluta bağlantısı olması için bir cihaz hiyerar
 
 Bu öğreticinin amacı, bir üretim ortamına benzetim yapan bir IoT Edge cihazları hiyerarşisi oluşturmaktır. Sonunda, kapsayıcı görüntülerini hiyerarşi aracılığıyla indirerek internet erişimi olmadan daha düşük bir katman cihazına [sanal sıcaklık algılayıcısı modülünü](https://azuremarketplace.microsoft.com/marketplace/apps/azure-iot.simulated-temperature-sensor) dağıtacaksınız.
 
-Bu öğreticiyi başarmak için, bu öğreticide IoT Edge cihaz hiyerarşisi oluşturma, cihazlarınıza IoT Edge çalışma zamanı kapsayıcıları dağıtma ve cihazlarınızı yerel olarak yapılandırma işlemleri adım adım açıklanmıştır. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticiyi başarmak için, bu öğreticide IoT Edge cihaz hiyerarşisi oluşturma, cihazlarınıza IoT Edge çalışma zamanı kapsayıcıları dağıtma ve cihazlarınızı yerel olarak yapılandırma işlemleri adım adım açıklanmıştır. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -39,11 +39,11 @@ Bu öğreticiyi başarmak için, bu öğreticide IoT Edge cihaz hiyerarşisi olu
 
 Bu öğreticide, aşağıdaki ağ katmanları tanımlanmıştır:
 
-* **Üst katman** : bu katmandaki IoT Edge cihazlar doğrudan buluta bağlanabilir.
+* **Üst katman**: bu katmandaki IoT Edge cihazlar doğrudan buluta bağlanabilir.
 
-* **Alt katman** : IoT Edge cihazlar bu katmanda doğrudan buluta bağlanamaz. Veri göndermek ve almak için bir veya daha fazla ara IoT Edge cihazlarından birine gitmeleri gerekir.
+* **Alt katman**: IoT Edge cihazlar bu katmanda doğrudan buluta bağlanamaz. Veri göndermek ve almak için bir veya daha fazla ara IoT Edge cihazlarından birine gitmeleri gerekir.
 
-Bu öğreticide kolaylık sağlamak için iki cihaz hiyerarşisi kullanılmaktadır. Bir cihaz, **topLayerDevice** , hiyerarşinin en üst katmanında, doğrudan buluta bağlanabilecek bir cihazı temsil eder. Bu cihaza **ana cihaz** da denir. Diğer cihaz, küçük **harf Layerdevice** , hiyerarşinin alt katmanında doğrudan buluta bağlanamaz bir cihazı temsil eder. Bu cihaza **alt cihaz** da denir. Üretim ortamınızı temsil etmek için ek alt katman cihazları ekleyebilirsiniz. Diğer tüm ek katman cihazlarının yapılandırması, küçük **Layerdevice** 'ın yapılandırmasını izler.
+Bu öğreticide kolaylık sağlamak için iki cihaz hiyerarşisi kullanılmaktadır. Bir cihaz, **topLayerDevice**, hiyerarşinin en üst katmanında, doğrudan buluta bağlanabilecek bir cihazı temsil eder. Bu cihaza **ana cihaz** da denir. Diğer cihaz, küçük **harf Layerdevice**, hiyerarşinin alt katmanında doğrudan buluta bağlanamaz bir cihazı temsil eder. Bu cihaza **alt cihaz** da denir. Üretim ortamınızı temsil etmek için ek alt katman cihazları ekleyebilirsiniz. Diğer tüm ek katman cihazlarının yapılandırması, küçük **Layerdevice**'ın yapılandırmasını izler.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -67,13 +67,13 @@ IoT Edge cihazlarınızı oluşturmaya yönelik ilk adım, Azure portal veya Azu
 
 1. [Azure portal](https://ms.portal.azure.com/)IoT Hub gidin.
 
-1. Sol bölmedeki menüden, **otomatik cihaz yönetimi** altında **IoT Edge** ' yi seçin.
+1. Sol bölmedeki menüden, **otomatik cihaz yönetimi** altında **IoT Edge**' yi seçin.
 
-1. **+ IoT Edge cihaz ekle** ' yi seçin. Bu cihaz üst katman cihazı olacak, uygun bir benzersiz cihaz KIMLIĞI girin. **Kaydet** ’i seçin.
+1. **+ IoT Edge cihaz ekle**' yi seçin. Bu cihaz üst katman cihazı olacak, uygun bir benzersiz cihaz KIMLIĞI girin. **Kaydet**’i seçin.
 
 1. **+ IoT Edge cihaz ekle** ' yi seçin. Bu cihaz kenar alt katman cihazı olacak, uygun bir benzersiz cihaz KIMLIĞI girin.
 
-1. **Bir üst cihaz ayarla** ' yı seçin, cihaz listesinden en üst katman cihazınızı seçin ve **Tamam** ' ı seçin. **Kaydet** ’i seçin.
+1. **Bir üst cihaz ayarla**' yı seçin, cihaz listesinden en üst katman cihazınızı seçin ve **Tamam**' ı seçin. **Kaydet**’i seçin.
 
    ![Alt katman cihazı için üst öğe ayarlanıyor](./media/tutorial-nested-iot-edge/set-parent-device.png)
 
@@ -188,8 +188,8 @@ Her iki cihazda da bu adımları izleyerek IoT Edge 'yi yükler.
 1. Hsmlib ve IoT Edge Daemon 'ı yükler <!-- Update with proper image links on release -->
 
    ```bash
-   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/libiothsm-std_1.2.0.rc1-1-1_debian9_amd64.deb -o libiothsm-std.deb
-   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc1/iotedge_1.2.0_rc1-1_debian9_amd64.deb -o iotedge.deb
+   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc2/libiothsm-std_1.2.0.rc2-1-1_debian9_amd64.deb -o libiothsm-std.deb
+   curl -L https://github.com/Azure/azure-iotedge/releases/download/1.2.0-rc2/iotedge_1.2.0_rc2-1_debian9_amd64.deb -o iotedge.deb
    sudo dpkg -i ./libiothsm-std.deb
    sudo dpkg -i ./iotedge.deb
    ```
@@ -261,7 +261,7 @@ Cihazlarınızı yapılandırmak için bu adımları tamamlayıp IoT Edge hizmet
      type: "docker"
      env: {}
      config:
-       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc1"
+       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2"
        auth: {}
    ```
 
@@ -273,7 +273,7 @@ Cihazlarınızı yapılandırmak için bu adımları tamamlayıp IoT Edge hizmet
      type: "docker"
      env: {}
      config:
-       image: "<parent_device_fqdn_or_ip>:8000/azureiotedge-agent:1.2.0-rc1"
+       image: "<parent_device_fqdn_or_ip>:8000/azureiotedge-agent:1.2.0-rc2"
        auth: {}
    ```
 
@@ -297,34 +297,34 @@ IoT Edge çalışma zamanının ve dağıtım iş yüklerinin yapılandırılmas
 
 1. IoT Hub gidin.
 
-1. Sol bölmedeki menüden, **otomatik cihaz yönetimi** altında **IoT Edge** ' yi seçin.
+1. Sol bölmedeki menüden, **otomatik cihaz yönetimi** altında **IoT Edge**' yi seçin.
 
 1. Cihazlar listesinde **en üst katman** sınır CIHAZıNıZıN cihaz kimliğine tıklayın.
 
-1. Üstteki çubukta **modülleri ayarla** ' yı seçin.
+1. Üstteki çubukta **modülleri ayarla**' yı seçin.
 
-1. Dişli simgesinin yanındaki **çalışma zamanı ayarları** ' nı seçin.
+1. Dişli simgesinin yanındaki **çalışma zamanı ayarları**' nı seçin.
 
-1. **Edge hub** 'ı altında, görüntü alanına girin `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc1` .
+1. **Edge hub**'ı altında, görüntü alanına girin `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2` .
 
    ![Edge hub görüntüsünü düzenleme](./media/tutorial-nested-iot-edge/edge-hub-image.png)
 
 1. Aşağıdaki ortam değişkenlerini Edge hub modülünüzü ekleyin:
 
-    | Name | Değer |
+    | Ad | Değer |
     | - | - |
     | `experimentalFeatures__enabled` | `true` |
     | `experimentalFeatures__nestedEdgeEnabled` | `true` |
 
    ![Edge hub 'ının ortam değişkenlerini düzenleme](./media/tutorial-nested-iot-edge/edge-hub-environment-variables.png)
 
-1. **Edge Aracısı** altında, görüntü alanına girin `mcr.microsoft.com/azureiotedge-agent:1.2.0-rc1` . **Kaydet** ’i seçin.
+1. **Edge Aracısı** altında, görüntü alanına girin `mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2` . **Kaydet**’i seçin.
 
 1. Docker kayıt defteri modülünü en üst katman cihazınıza ekleyin. **+ Ekle** ' yi seçin ve açılan listeden **IoT Edge modülü** ' nü seçin. `registry`Docker kayıt defteri modülünüzün adını sağlayın ve `registry:latest` görüntü URI 'si için girin. Ardından, ' den kapsayıcı görüntülerini indirmek ve kayıt defteri 'nde bu görüntüleri çalıştırmak için Microsoft Container Registry 'de yerel kayıt defteri modülünüzü işaret etmek üzere ortam değişkenleri ekleyin ve seçenekler oluşturun: 5000.
 
 1. Ortam değişkenleri sekmesinde, aşağıdaki ortam değişkeni adı-değer çiftini girin:
 
-    | Name | Değer |
+    | Ad | Değer |
     | - | - |
     | `REGISTRY_PROXY_REMOTEURL` | `https://mcr.microsoft.com` |
 
@@ -346,7 +346,7 @@ IoT Edge çalışma zamanının ve dağıtım iş yüklerinin yapılandırılmas
 
 1. Sonra, API proxy modülünü en üst katman cihazınıza ekleyin. **+ Ekle** ' yi seçin ve açılan listeden **Market modülü** ' nü seçin. Modülünü arayın `IoT Edge API Proxy` ve seçin. IoT Edge API proxy, 8000 bağlantı noktasını kullanır ve `registry` Varsayılan olarak bağlantı noktası 5000 ' de adlı kayıt defteri modülünüzü kullanacak şekilde yapılandırılmıştır.
 
-1. Dağıtımı gerçekleştirmek için **gözden geçir + oluştur** ' u ve ardından **Oluştur** ' u seçin. İnternet erişimi olan en üst katman cihazınızın IoT Edge çalışma zamanı, IoT Edge hub ve IoT Edge Aracısı için **genel önizleme** yapılandırmalarını çeker ve çalıştırır.
+1. Dağıtımı gerçekleştirmek için **gözden geçir + oluştur**' u ve ardından **Oluştur** ' u seçin. İnternet erişimi olan en üst katman cihazınızın IoT Edge çalışma zamanı, IoT Edge hub ve IoT Edge Aracısı için **genel önizleme** yapılandırmalarını çeker ve çalıştırır.
 
    ![Edge hub, Edge Aracısı, kayıt modülü ve API ara sunucu modülünü içeren dağıtımı tamamen yapın](./media/tutorial-nested-iot-edge/complete-top-layer-deployment.png)
 
@@ -412,14 +412,14 @@ IoT Edge çalışma zamanının ve dağıtım iş yüklerinin yapılandırılmas
                    "systemModules": {
                        "edgeAgent": {
                            "settings": {
-                               "image": "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc1",
+                               "image": "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2",
                                "createOptions": ""
                            },
                            "type": "docker"
                        },
                        "edgeHub": {
                            "settings": {
-                               "image": "mcr.microsoft.com/azureiotedge-hub:1.2.0-rc1",
+                               "image": "mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2",
                                "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
                            },
                            "type": "docker",
@@ -470,30 +470,30 @@ Buluttan iş yüklerini **alt katman** cihazlarınıza dağıtmak için hem Azur
 
 1. IoT Hub gidin.
 
-1. Sol bölmedeki menüden, **otomatik cihaz yönetimi** altında **IoT Edge** ' yi seçin.
+1. Sol bölmedeki menüden, **otomatik cihaz yönetimi** altında **IoT Edge**' yi seçin.
 
 1. IoT Edge cihazlar listesinde alt katman cihazınızın cihaz KIMLIĞINE tıklayın.
 
-1. Üstteki çubukta **modülleri ayarla** ' yı seçin.
+1. Üstteki çubukta **modülleri ayarla**' yı seçin.
 
-1. Dişli simgesinin yanındaki **çalışma zamanı ayarları** ' nı seçin.
+1. Dişli simgesinin yanındaki **çalışma zamanı ayarları**' nı seçin.
 
-1. **Edge hub** 'ı altında, görüntü alanına girin `$upstream:8000/azureiotedge-hub:1.2.0-rc1` .
+1. **Edge hub**'ı altında, görüntü alanına girin `$upstream:8000/azureiotedge-hub:1.2.0-rc2` .
 
 1. Aşağıdaki ortam değişkenlerini Edge hub modülünüzü ekleyin:
 
-    | Name | Değer |
+    | Ad | Değer |
     | - | - |
     | `experimentalFeatures__enabled` | `true` |
     | `experimentalFeatures__nestedEdgeEnabled` | `true` |
 
-1. **Edge Aracısı** altında, görüntü alanına girin `$upstream:8000/azureiotedge-agent:1.2.0-rc1` . **Kaydet** ’i seçin.
+1. **Edge Aracısı** altında, görüntü alanına girin `$upstream:8000/azureiotedge-agent:1.2.0-rc2` . **Kaydet**’i seçin.
 
 1. Sıcaklık algılayıcısı modülünü ekleyin. **+ Ekle** ' yi seçin ve açılan listeden **Market modülü** ' nü seçin. Modülünü arayın `Simulated Temperature Sensor` ve seçin.
 
 1. **IoT Edge modüller** altında, `Simulated Temperature Sensor` az önce eklediğiniz modülü seçin ve görüntü URI 'sini öğesine işaret etmek için güncelleştirin `$upstream:8000/azureiotedge-simulated-temperature-sensor:1.0` .
 
-1. Dağıtımı tamamladıktan sonra **Kaydet** , **gözden geçir** ve **Oluştur** ' u seçin.
+1. Dağıtımı tamamladıktan sonra **Kaydet**, **gözden geçir** ve **Oluştur** ' u seçin.
 
    ![Edge hub, Edge Aracısı ve sanal sıcaklık algılayıcısı içeren dağıtımı tamamen yapın](./media/tutorial-nested-iot-edge/complete-lower-layer-deployment.png)
 
@@ -534,14 +534,14 @@ Buluttan iş yüklerini **alt katman** cihazlarınıza dağıtmak için hem Azur
                    "systemModules": {
                        "edgeAgent": {
                            "settings": {
-                               "image": "$upstream:8000/azureiotedge-agent:1.2.0-rc1",
+                               "image": "$upstream:8000/azureiotedge-agent:1.2.0-rc2",
                                "createOptions": ""
                            },
                            "type": "docker"
                        },
                        "edgeHub": {
                            "settings": {
-                               "image": "$upstream:8000/azureiotedge-hub:1.2.0-rc1",
+                               "image": "$upstream:8000/azureiotedge-hub:1.2.0-rc2",
                                "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}]}}}"
                            },
                            "type": "docker",
@@ -603,11 +603,11 @@ You can also view these messages through the [Azure Cloud Shell](https://shell.a
 
 Kaynakları silmek için:
 
-1. [Azure portalda](https://portal.azure.com) oturum açın ve **Kaynak grupları** ’nı seçin.
+1. [Azure portalda](https://portal.azure.com) oturum açın ve **Kaynak grupları**’nı seçin.
 
 2. IoT Edge test kaynaklarınızı içeren kaynak grubunun adını seçin. 
 
-3. Kaynak grubunuzda bulunan kaynak listesini gözden geçirin. Tümünü silmek isterseniz **Kaynak grubunu sil** 'i seçebilirsiniz. Kaynakların yalnızca bazılarını silmek istiyorsanız tek tek tıklayarak silebilirsiniz. 
+3. Kaynak grubunuzda bulunan kaynak listesini gözden geçirin. Tümünü silmek isterseniz **Kaynak grubunu sil**'i seçebilirsiniz. Kaynakların yalnızca bazılarını silmek istiyorsanız tek tek tıklayarak silebilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

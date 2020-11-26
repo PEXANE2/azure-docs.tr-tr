@@ -3,12 +3,12 @@ title: Geçersiz şablon hataları
 description: Azure Resource Manager şablonları dağıtılırken geçersiz şablon hatalarının nasıl çözümleneceğini açıklar.
 ms.topic: troubleshooting
 ms.date: 05/22/2020
-ms.openlocfilehash: 3e68d4634d0092d05222348ca0db0116422faec3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba19d3c4e72a765e2aaff7393915b77a80daf2ba
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87373819"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185802"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Geçersiz şablon hatalarını giderme
 
@@ -130,7 +130,7 @@ part of the allowed values
 
 ## <a name="solution-4---too-many-target-resource-groups"></a>Çözüm 4-çok fazla hedef kaynak grubu
 
-Tek bir dağıtımda beş hedef kaynak grubu ile sınırlı olduğunuzdan bu hatayı daha önceki dağıtımlarda görebilirsiniz. Mayıs 2020 ' de, bu sınır 800 kaynak gruplarına artmıştı. Daha fazla bilgi için bkz. [Azure kaynaklarını birden fazla aboneliğe veya kaynak grubuna dağıtma](cross-scope-deployment.md).
+Tek bir dağıtımda beş hedef kaynak grubu ile sınırlı olduğunuzdan bu hatayı daha önceki dağıtımlarda görebilirsiniz. Mayıs 2020 ' de, bu sınır 800 kaynak gruplarına artmıştı. Daha fazla bilgi için bkz. [Azure kaynaklarını birden fazla aboneliğe veya kaynak grubuna dağıtma](./deploy-to-resource-group.md).
 
 <a id="circular-dependency"></a>
 

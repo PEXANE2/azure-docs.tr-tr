@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 11/05/2020
 ms.author: alsin
-ms.openlocfilehash: 226a23bfdacb0f7423c7dafb8cae36af7333699d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 4694fa679c7bbff309a0452219ff39bacf2488c4
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681848"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183711"
 ---
 # <a name="repair-an-automanage-account"></a>Bir oto Yönet hesabını onarma
 [Azure otomatik Yönet hesabınız](./automanage-virtual-machines.md#automanage-account) , otomatik işlemlerin oluştuğu güvenlik bağlamına veya kimliğe sahiptir. Kısa süre önce yeni bir kiracıya bir oto Yönet hesabı içeren bir abonelik taşıdıysanız, hesabı yeniden yapılandırmanız gerekir. Yeniden yapılandırmak için kimlik türünü sıfırlamanız ve hesap için uygun rolleri atamanız gerekir.
@@ -22,8 +22,8 @@ ms.locfileid: "94681848"
 Aşağıdaki Azure Resource Manager (ARM) şablonunu kullanarak, hesap kimliği türünü, oto Yönet ' i sıfırlayın. Dosyayı armdeploy.jsolarak yerel olarak veya benzer bir adla kaydedin. ARM şablonunda gerekli parametreler olduklarından, hesap adını ve konumunu, sizin için bir daha göz önüne alın.
 
 1. Aşağıdaki şablonu kullanarak bir Kaynak Yöneticisi dağıtımı oluşturun. `identityType = None` komutunu kullanın.
-    * Kullanarak Azure CLı 'de dağıtımı oluşturabilirsiniz `az deployment sub create` . Daha fazla bilgi için bkz. [az Deployment Sub](https://docs.microsoft.com/cli/azure/deployment/sub).
-    * PowerShell 'de, modülünü kullanarak dağıtım oluşturabilirsiniz `New-AzDeployment` . Daha fazla bilgi için bkz. [New-AzDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azdeployment).
+    * Kullanarak Azure CLı 'de dağıtımı oluşturabilirsiniz `az deployment sub create` . Daha fazla bilgi için bkz. [az Deployment Sub](/cli/azure/deployment/sub).
+    * PowerShell 'de, modülünü kullanarak dağıtım oluşturabilirsiniz `New-AzDeployment` . Daha fazla bilgi için bkz. [New-AzDeployment](/powershell/module/az.resources/new-azdeployment).
 
 1. Aynı ARM şablonunu ile yeniden çalıştırın `identityType = SystemAssigned` .
 
@@ -63,11 +63,11 @@ Oto Yönet hesabı, bir abonelik üzerinde, oto tarafından yönetilecek VM 'Ler
 
 ARM şablonu veya Azure CLı kullanıyorsanız, oto Yönet hesabınızın asıl KIMLIĞI (nesne KIMLIĞI olarak da bilinir) gerekir. (Azure portal kullanıyorsanız KIMLIĞE ihtiyacınız yoktur.) Aşağıdaki yöntemleri kullanarak bu KIMLIĞI bulabilirsiniz:
 
-- [Azure CLI](https://docs.microsoft.com/cli/azure/ad/sp): komutunu kullanın `az ad sp list --display-name <name of your Automanage Account>` .
+- [Azure CLI](/cli/azure/ad/sp): komutunu kullanın `az ad sp list --display-name <name of your Automanage Account>` .
 
 - Azure portal: **Azure Active Directory** gidin ve hesap adına göre oto Yönet hesabınızı arayın. **Kurumsal uygulamalar**' ın altında, görüntülendiğinde, hesap adını oto Yönet ' i seçin.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 1. **Abonelikler**' in altında, oto tarafından yönetilen sanal makinelerinizi içeren aboneliğe gidin.
 1. **Access Control (IAM)** sayfasına gidin.
 1. **Rol atamaları Ekle**' yi seçin.
@@ -117,7 +117,7 @@ Aşağıdaki ARM şablonunu çalıştırın. Oto Yönet hesabınızın asıl KIM
 }
 ```
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 Şu komutları çalıştırın:
 
 ```azurecli

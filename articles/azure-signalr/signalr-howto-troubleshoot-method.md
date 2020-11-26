@@ -6,18 +6,18 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: yajin1
-ms.openlocfilehash: 4b0b85b08c3f813440d556c61ba5e290ac200049
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 413bb88deac96c1ca12e8a9d25fc9cd16edf4616
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94687130"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183966"
 ---
 # <a name="how-to-troubleshoot-connectivity-and-message-delivery-issues"></a>Bağlantı ve ileti teslimi sorunlarını giderme
 
 Bu kılavuzda, kök nedeni doğrudan bulmak veya sorunu daraltmak için kendi kendine tanılama yapmanıza yardımcı olacak çeşitli yollar tanıtılmaktadır. Kendi kendine Tanılama sonucu, daha fazla araştırma için bize bildirirken de yararlı olur.
 
-İlk olarak, hangi [Servicemode](https://docs.microsoft.com/azure/azure-signalr/concept-service-mode) 'ın ( **ASRS** olarak da bilinir) yapılandırıldığı Azure Portal kontrol etmeniz gerekir.
+İlk olarak, hangi [Servicemode](./concept-service-mode.md) 'ın ( **ASRS** olarak da bilinir) yapılandırıldığı Azure Portal kontrol etmeniz gerekir.
 
 :::image type="content" source="./media/signalr-howto-troubleshoot-method/service-mode.png" alt-text="ServiceMode":::
 
@@ -49,13 +49,13 @@ Sorunu daraltmanıza yardımcı olabilecek çeşitli yollar vardır.
 
 ### <a name="how-to-view-the-traffic-and-narrow-down-the-issue"></a>Trafiği görüntüleme ve sorunu daraltma
 
-Devam eden trafiği yakalamak, sorunu daraltmak için en basit yoldur. [Ağ izlemelerini](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#network-traces) aşağıda açıklanan seçenekleri kullanarak yakalayabilirsiniz:
+Devam eden trafiği yakalamak, sorunu daraltmak için en basit yoldur. [Ağ izlemelerini](/aspnet/core/signalr/diagnostics#network-traces) aşağıda açıklanan seçenekleri kullanarak yakalayabilirsiniz:
 
-* [Fiddler ile ağ izlemesi toplama](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#network-traces)
+* [Fiddler ile ağ izlemesi toplama](/aspnet/core/signalr/diagnostics#network-traces)
 
-* [Tcpdump ile ağ izlemesi toplama](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#collect-a-network-trace-with-tcpdump-macos-and-linux-only)
+* [Tcpdump ile ağ izlemesi toplama](/aspnet/core/signalr/diagnostics#collect-a-network-trace-with-tcpdump-macos-and-linux-only)
 
-* [Tarayıcıda bir ağ izlemesi toplayın](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#collect-a-network-trace-in-the-browser)
+* [Tarayıcıda bir ağ izlemesi toplayın](/aspnet/core/signalr/diagnostics#collect-a-network-trace-in-the-browser)
 
 <a name="view_traffic_client"></a>
 
@@ -63,7 +63,7 @@ Devam eden trafiği yakalamak, sorunu daraltmak için en basit yoldur. [Ağ izle
 
 Bir SignalR kalıcı bağlantısı için, önce `/negotiate` barındırılan uygulama sunucunuza yönlendirilir ve ardından Azure SignalR hizmetine yeniden yönlendirilir ve ardından Azure SignalR hizmetine gerçek kalıcı bağlantıyı kurar. Ayrıntılı adımlar için [Azure SignalR hizmeti Iç işlevleri](https://github.com/Azure/azure-signalr/blob/dev/docs/internal.md) bölümüne bakın.
 
-İstemci tarafı ağ izleme ile, hangi isteğin hangi durum kodu ve Yanıt ile başarısız olduğunu kontrol edin ve [sorun giderme kılavuzu](https://docs.microsoft.com/azure/azure-signalr/signalr-howto-troubleshoot-guide)içindeki çözümleri arayın.
+İstemci tarafı ağ izleme ile, hangi isteğin hangi durum kodu ve Yanıt ile başarısız olduğunu kontrol edin ve [sorun giderme kılavuzu](./signalr-howto-troubleshoot-guide.md)içindeki çözümleri arayın.
 
 #### <a name="server-requests"></a>Sunucu istekleri
 
@@ -71,7 +71,7 @@ SignalR *Server* *sunucu ve* *hizmet* arasında *sunucu bağlantısını* korur.
 
 *Sunucu bağlantısı*, Azure SignalR hizmeti 'nin ağ kararsızlığına veya düzenli olarak bakımına veya barındırılan App Server güncelleştirme/bakım nedeniyle düşürülemiyor. İstemci tarafında bir bağlantı kesme/yeniden bağlanma mekanizması olduğu sürece, etki tüm istemci tarafı bağlantı kesilmesinin başarısız olması gibi en düşük düzeyde etki olur.
 
-Sunucu tarafı ağ izlemesini görüntüleyerek, durum kodunu ve *sunucu bağlantısının* neden hizmet tarafından reddedildiğini veya *hizmetten* kaynaklandığını öğrenmek Için hata ayrıntılarını ve [sorun giderme kılavuzu](https://docs.microsoft.com/azure/azure-signalr/signalr-howto-troubleshoot-guide)içinde kök nedeni arayın.
+Sunucu tarafı ağ izlemesini görüntüleyerek, durum kodunu ve *sunucu bağlantısının* neden hizmet tarafından reddedildiğini veya *hizmetten* kaynaklandığını öğrenmek Için hata ayrıntılarını ve [sorun giderme kılavuzu](./signalr-howto-troubleshoot-guide.md)içinde kök nedeni arayın.
 
 
 ### <a name="how-to-add-logs"></a>Günlükleri ekleme
@@ -86,18 +86,18 @@ Günlükler sorunları tanılamak ve çalışma durumunu izlemek için yararlı 
 
 ##### <a name="enable-client-side-logging-for-aspnet-core-signalr"></a>İçin istemci tarafı günlüğe kaydetmeyi etkinleştir `ASP.NET Core SignalR`
 
-* [JavaScript istemci günlüğü](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#javascript-client-logging)
+* [JavaScript istemci günlüğü](/aspnet/core/signalr/diagnostics#javascript-client-logging)
 
-* [.NET istemci günlüğü](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#net-client-logging)
+* [.NET istemci günlüğü](/aspnet/core/signalr/diagnostics#net-client-logging)
 
 
 ##### <a name="enable-client-side-logging-for-aspnet-signalr"></a>İçin istemci tarafı günlüğe kaydetmeyi etkinleştir `ASP.NET SignalR`
 
-* [.NET istemcisi](https://docs.microsoft.com/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-the-net-client-windows-desktop-apps)
+* [.NET istemcisi](/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-the-net-client-windows-desktop-apps)
 
-* [Windows Phone 8 istemcilerde izlemeyi etkinleştirme](https://docs.microsoft.com/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-windows-phone-8-clients)
+* [Windows Phone 8 istemcilerde izlemeyi etkinleştirme](/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-windows-phone-8-clients)
 
-* [JavaScript istemcisinde izlemeyi etkinleştirme](https://docs.microsoft.com/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-the-javascript-client)
+* [JavaScript istemcisinde izlemeyi etkinleştirme](/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-the-javascript-client)
 
 <a name="add_logs_server"></a>
 
@@ -105,7 +105,7 @@ Günlükler sorunları tanılamak ve çalışma durumunu izlemek için yararlı 
 
 ##### <a name="enable-server-side-logging-for-aspnet-core-signalr"></a>Sunucu tarafı günlük kaydını etkinleştirme `ASP.NET Core SignalR`
 
-İçin sunucu tarafında günlüğe kaydetme `ASP.NET Core SignalR` `ILogger` , çerçevede belirtilen tabanlı [günlük](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1&tabs=aspnetcore2x) ile tümleşir `ASP.NET Core` . Aşağıdaki gibi bir örnek kullanım kullanarak sunucu tarafı günlük kaydını etkinleştirebilirsiniz `ConfigureLogging` :
+İçin sunucu tarafında günlüğe kaydetme `ASP.NET Core SignalR` `ILogger` , çerçevede belirtilen tabanlı [günlük](/aspnet/core/fundamentals/logging/?tabs=aspnetcore2x&view=aspnetcore-2.1) ile tümleşir `ASP.NET Core` . Aşağıdaki gibi bir örnek kullanım kullanarak sunucu tarafı günlük kaydını etkinleştirebilirsiniz `ConfigureLogging` :
 
 ```cs
 .ConfigureLogging((hostingContext, logging) =>
@@ -162,7 +162,7 @@ Olağan dışı bir uyarı/hata günlüğü kaydedilip kaydedilmediğini kontrol
 
 #### <a name="how-to-enable-logs-inside-azure-signalr-service"></a>Azure SignalR hizmeti içinde günlükleri etkinleştirme
 
-Ayrıca, Azure SignalR hizmeti için [tanılama günlüklerini etkinleştirebilirsiniz](https://docs.microsoft.com/azure/azure-signalr/signalr-tutorial-diagnostic-logs) , bu Günlükler Azure SignalR hizmetine bağlı her bağlantıyla ilgili ayrıntılı bilgi sağlar.
+Ayrıca, Azure SignalR hizmeti için [tanılama günlüklerini etkinleştirebilirsiniz](./signalr-howto-diagnostic-logs.md) , bu Günlükler Azure SignalR hizmetine bağlı her bağlantıyla ilgili ayrıntılı bilgi sağlar.
 
 <a name="serverless_mode_tsg"></a>
 
@@ -194,7 +194,7 @@ Hizmet durumu için sistem sağlığı API 'sini kontrol edebilirsiniz.
     * Veya örneği yeniden başlatın.
     * Yukarıdaki tüm seçenekler çalışmazsa, Azure portal yeni destek isteği ekleyerek bizimle iletişim kurun.
 
-[Olağanüstü durum kurtarma](https://docs.microsoft.com/azure/azure-signalr/signalr-concept-disaster-recovery)hakkında daha fazla bilgi.
+[Olağanüstü durum kurtarma](./signalr-concept-disaster-recovery.md)hakkında daha fazla bilgi.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

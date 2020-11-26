@@ -6,14 +6,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/22/2020
 ms.author: bwren
-ms.openlocfilehash: d00ffb1cb9b9fd6231322d4ef5bfebfbe242eac7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3c3a20d8401affc519e118c7f2295339990e7dee
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014246"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186516"
 ---
-# <a name="azure-monitor-logs-overview"></a>Azure Izleyici günlüklerine genel bakış
+# <a name="azure-monitor-logs-overview"></a>Azure İzleyici Günlükleri'ne genel bakış
 Azure Izleyici günlükleri, [izlenen kaynaklardan](../monitor-reference.md)gelen günlük ve performans verilerini toplayan ve düzenleyen bir Azure izleyici özelliğidir. Azure hizmetlerinden gelen [Platform günlükleri](platform-logs-overview.md) , [sanal makine aracılarından](agents-overview.md)gelen günlük ve performans verileri ve [uygulamalardan](../app/app-insights-overview.md) kullanım ve performans verileri gibi farklı kaynaklardaki veriler tek bir çalışma alanında birleştirilebilir ve bu sayede milyonlarca kaydı hızlı bir şekilde analiz etme yeteneğine sahip olan gelişmiş bir sorgu dili kullanılarak analiz edilebilir. Yalnızca belirli bir kayıt kümesini alan basit bir sorgu gerçekleştirebilir veya izleme verilerinizde kritik desenleri belirlemek için gelişmiş veri analizi gerçekleştirebilirsiniz. Günlük sorgularıyla ve sonuçlarıyla birlikte Log Analytics kullanarak etkileşimli olarak çalışın, sorunları önceden bilgilendirerek bir uyarı kurallarında kullanın veya sonuçları bir çalışma kitabı veya panoda görselleştirin.
 
 > [!NOTE]
@@ -25,11 +25,11 @@ Aşağıdaki tabloda Azure Izleyici 'de günlükleri kullanmanın farklı yollar
 
 |  |  |
 |:---|:---|
-| **Analiz** | [Günlük sorgularını](../log-query/log-query-overview.md) yazmak ve güçlü bir analiz altyapısı kullanarak günlük verilerini etkileşimli olarak çözümlemek için Azure Portal [Log Analytics](../log-query/get-started-portal.md) kullanın |
+| **Analiz** | [Günlük sorgularını](../log-query/log-query-overview.md) yazmak ve güçlü bir analiz altyapısı kullanarak günlük verilerini etkileşimli olarak çözümlemek için Azure Portal [Log Analytics](../log-query/log-analytics-tutorial.md) kullanın |
 | **Uyarı** | Sorgu sonuçları belirli bir sonuçla eşleşiyorsa bildirim gönderen veya [otomatik eylem](action-groups.md) alan bir [günlük uyarı kuralı](alerts-log.md) yapılandırın. |
-| **Görselleştirme** | Bir [Azure panosuna](../../azure-portal/azure-portal-dashboards.md)tablo veya grafik olarak işlenen sorgu sonuçlarını sabitleme.<br>Etkileşimli bir raporda birden fazla veri kümesiyle birleştirilecek bir [çalışma kitabı](../app/usage-workbooks.md) oluşturun. <br>Farklı görselleştirmeler kullanmak ve Azure dışındaki kullanıcılarla paylaşmak için bir sorgunun sonuçlarını [Power BI](powerbi.md) dışarı aktarın.<br>Bir sorgunun sonuçlarını [Grafana](grafana-plugin.md) olarak dışa aktarın ve diğer veri kaynaklarıyla birleştirin.|
+| **Görselleştirme** | Bir [Azure panosuna](../../azure-portal/azure-portal-dashboards.md)tablo veya grafik olarak işlenen sorgu sonuçlarını sabitleme.<br>Etkileşimli bir raporda birden fazla veri kümesiyle birleştirilecek bir [çalışma kitabı](./workbooks-overview.md) oluşturun. <br>Farklı görselleştirmeler kullanmak ve Azure dışındaki kullanıcılarla paylaşmak için bir sorgunun sonuçlarını [Power BI](powerbi.md) dışarı aktarın.<br>Bir sorgunun sonuçlarını [Grafana](grafana-plugin.md) olarak dışa aktarın ve diğer veri kaynaklarıyla birleştirin.|
 | **İçgörüler** | Belirli uygulamalar ve hizmetler için özelleştirilmiş bir izleme deneyimi sağlayan [öngörüleri](../monitor-reference.md#insights-and-core-solutions) destekleme.  |
-| **Almanın** | [Azure CLI](/cli/azure/ext/log-analytics/monitor/log-analytics)kullanarak bir komut satırından günlük sorgusu sonuçlarına erişin.<br>[PowerShell cmdlet 'lerini](https://docs.microsoft.com/powershell/module/az.operationalinsights)kullanarak bir komut satırından günlük sorgusu sonuçlarına erişin.<br>[REST API](https://dev.loganalytics.io/)kullanarak özel bir uygulamadan günlük sorgusu sonuçlarına erişin. |
+| **Almanın** | [Azure CLI](/cli/azure/ext/log-analytics/monitor/log-analytics)kullanarak bir komut satırından günlük sorgusu sonuçlarına erişin.<br>[PowerShell cmdlet 'lerini](/powershell/module/az.operationalinsights)kullanarak bir komut satırından günlük sorgusu sonuçlarına erişin.<br>[REST API](https://dev.loganalytics.io/)kullanarak özel bir uygulamadan günlük sorgusu sonuçlarına erişin. |
 | **Dışarı Aktarma** | Azure depolama hesabına veya Azure Event Hubs [otomatik olarak günlük verilerinin dışarı aktarılmasını](logs-data-export.md) yapılandırın.<br>Günlük verilerini almak ve [Logic Apps](logicapp-flow-connector.md)kullanarak bir dış konuma kopyalamak için bir iş akışı oluşturun. |
 
 ![Günlüklere genel bakış](media/data-platform-logs/logs-overview.png)
@@ -75,8 +75,8 @@ Veriler, verileri işlemek ve sonuçları döndürmek için salt okunurdur bir i
 ## <a name="log-analytics"></a>Log Analytics
 Günlük sorgularını düzenlemek ve çalıştırmak ve sonuçlarını etkileşimli olarak çözümlemek için Azure portal bir araç olan Log Analytics kullanın. Daha sonra, Azure Izleyici 'de günlük sorgu uyarıları ve çalışma kitapları gibi diğer özellikleri desteklemek için oluşturduğunuz sorguları kullanabilirsiniz. Azure Izleyici menüsündeki **Günlükler** seçeneğinden veya Azure Portal diğer hizmetlerden Log Analytics erişin.
 
-- Log Analytics açıklaması için bkz. [Azure izleyici 'de Log Analytics genel bakış](/azure/azure-monitor/log-query/log-analytics-overview) . 
-- Basit bir günlük sorgusu oluşturmak ve sonuçlarını çözümlemek için Log Analytics özelliklerini kullanma hakkında bilgi almak için [Log Analytics öğreticiye](/azure/azure-monitor/log-query/log-analytics-tutorial) bakın.
+- Log Analytics açıklaması için bkz. [Azure izleyici 'de Log Analytics genel bakış](../log-query/log-analytics-overview.md) . 
+- Basit bir günlük sorgusu oluşturmak ve sonuçlarını çözümlemek için Log Analytics özelliklerini kullanma hakkında bilgi almak için [Log Analytics öğreticiye](../log-query/log-analytics-tutorial.md) bakın.
 
 
 

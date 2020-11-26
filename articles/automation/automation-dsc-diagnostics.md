@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 425a7ff0553ddeac502c59e240f5ab152d6e0d79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f66c710901b129cb6b138fff126e67615c790714
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87015162"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183677"
 ---
 # <a name="integrate-with-azure-monitor-logs"></a>Azure Izleyici günlükleriyle tümleştirme
 
@@ -30,13 +30,13 @@ Azure Izleyici günlükleri, otomasyon durumu yapılandırma verilerinize daha f
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Automation durum yapılandırma raporlarınızı Azure Izleyici günlüklerine göndermeye başlamak için şunlar gerekir:
 
 - [Azure PowerShell](/powershell/azure/) Kasım 2016 veya sonraki bir sürümü (v 2.3.0).
 - Azure Otomasyonu hesabı. Daha fazla bilgi için bkz. [Azure Otomasyonu 'na giriş](automation-intro.md).
-- Otomasyon & denetim hizmeti teklifiyle Log Analytics çalışma alanı. Daha fazla bilgi için bkz. [Azure izleyici 'de Log Analytics kullanmaya başlama](../azure-monitor/log-query/get-started-portal.md).
+- Otomasyon & denetim hizmeti teklifiyle Log Analytics çalışma alanı. Daha fazla bilgi için bkz. [Azure izleyici 'de Log Analytics kullanmaya başlama](../azure-monitor/log-query/log-analytics-tutorial.md).
 - En az bir Azure Otomasyonu durum yapılandırması düğümü. Daha fazla bilgi için bkz. [Azure Otomasyonu durum yapılandırmasına göre yönetim için makineleri ekleme](automation-dsc-onboarding.md).
 - [Xdscdiagnostics](https://www.powershellgallery.com/packages/xDscDiagnostics/2.7.0.0) modülü, sürüm 2.7.0.0 veya üstü. Yükleme adımları için bkz. [Azure Otomasyonu Istenen durum yapılandırması sorunlarını giderme](./troubleshoot/desired-state-configuration.md).
 
@@ -154,7 +154,7 @@ Azure Otomasyonu tanılama, Azure Izleyici günlüklerinde iki kayıt kategorisi
 | SourceSystem | Azure Izleyici günlüklerinin verileri nasıl topladığını tanımlayan kaynak sistem. Her zaman `Azure` Azure Tanılama için. |
 | ResourceId |Azure Otomasyonu hesabının kaynak tanımlayıcısı. |
 | ResultDescription | Bu işlem için kaynak açıklaması. |
-| kaynak grubundaki | Otomasyon hesabı için Azure abonelik KIMLIĞI (GUID). |
+| SubscriptionId | Otomasyon hesabı için Azure abonelik KIMLIĞI (GUID). |
 | adlı yönetilen örnek, | Otomasyon hesabı için kaynak grubunun adı. |
 | ResourceProvider | MICROSOFT. Otomasyon. |
 | ResourceType | AUTOMATIONACCOUNTS. |
@@ -185,7 +185,7 @@ Azure Otomasyonu tanılama, Azure Izleyici günlüklerinde iki kayıt kategorisi
 | SourceSystem | Azure Izleyici günlükleri verileri nasıl topladı. Her zaman `Azure` Azure Tanılama için. |
 | ResourceId |Azure Otomasyonu hesabının tanımlayıcısı. |
 | ResultDescription | Bu işlemin açıklaması. |
-| kaynak grubundaki | Otomasyon hesabı için Azure abonelik KIMLIĞI (GUID). |
+| SubscriptionId | Otomasyon hesabı için Azure abonelik KIMLIĞI (GUID). |
 | adlı yönetilen örnek, | Otomasyon hesabı için kaynak grubunun adı. |
 | ResourceProvider | MICROSOFT. Otomasyon. |
 | ResourceType | AUTOMATIONACCOUNTS. |

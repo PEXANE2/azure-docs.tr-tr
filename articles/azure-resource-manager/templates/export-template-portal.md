@@ -3,12 +3,12 @@ title: Azure portal şablonu dışarı aktarma
 description: Aboneliğinizdeki kaynaklardan bir Azure Resource Manager şablonu dışarı aktarmak için Azure portal kullanın.
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 6d0c9adb121372047336d2753df047f54f1e0fa2
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: ee97953a337bbb7cc9a8d1f042a3beae7bccdcae
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951766"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185700"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Azure portal bir şablona tek ve çoklu kaynak verme
 
@@ -51,7 +51,7 @@ Bir kaynak grubu veya kaynaktan dışarı aktarırken, dışarı aktarılan şab
 
 Şablonu dışarı aktar özelliği Azure Data Factory kaynaklarının dışarı aktarılmasını desteklemez. Data Factory kaynaklarını nasıl dışarı aktarabilirsiniz hakkında bilgi edinmek için bkz. [Azure Data Factory veri fabrikasını kopyalama veya](../../data-factory/copy-clone-data-factory.md)kopyalama.
 
-Klasik dağıtım modeliyle oluşturulan kaynakları dışarı aktarmak için, [bunları Kaynak Yöneticisi dağıtım modeline geçirmeniz](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)gerekir.
+Klasik dağıtım modeliyle oluşturulan kaynakları dışarı aktarmak için, [bunları Kaynak Yöneticisi dağıtım modeline geçirmeniz](../../virtual-machines/migration-classic-resource-manager-overview.md)gerekir.
 
 Bir kaynak türünün dışarı aktarılmadığını belirten bir şablonu dışarı aktarırken uyarı alırsanız, bu kaynağın özelliklerini yine de bulabilirsiniz. Kaynak özelliklerini görüntülemeye yönelik farklı seçenekler hakkında bilgi edinmek için bkz. [keşif kaynağı özellikleri](view-resources.md). Kaynak türü için [Azure REST API](/rest/api/azure/) de bakabilirsiniz.
 
@@ -63,7 +63,7 @@ Bir kaynak grubundan bir veya daha fazla kaynağı dışarı aktarmak için:
 
 1. Dışarı aktarmak istediğiniz kaynakları içeren kaynak grubunu seçin.
 
-1. Onay kutularını seçerek bir veya daha fazla kaynak seçin.  Tümünü seçmek için, **adının**solundaki onay kutusunu seçin. **Şablonu dışarı aktar** menü öğesi yalnızca en az bir kaynak seçildikten sonra etkin hale gelir.
+1. Onay kutularını seçerek bir veya daha fazla kaynak seçin.  Tümünü seçmek için, **adının** solundaki onay kutusunu seçin. **Şablonu dışarı aktar** menü öğesi yalnızca en az bir kaynak seçildikten sonra etkin hale gelir.
 
    ![Tüm kaynakları dışarı aktar](./media/export-template-portal/select-all-resources.png)
 
@@ -109,7 +109,7 @@ Mevcut kaynakları dağıtmak için kullanılan şablonu dışarı aktarabilirsi
 
 1. Dışarı aktarmak istediğiniz kaynak grubunu seçin.
 
-1. **Dağıtımlar**altındaki bağlantıyı seçin.
+1. **Dağıtımlar** altındaki bağlantıyı seçin.
 
    ![Dağıtım geçmişini seçin](./media/export-template-portal/select-deployment-history.png)
 
@@ -117,7 +117,7 @@ Mevcut kaynakları dağıtmak için kullanılan şablonu dışarı aktarabilirsi
 
    ![Dağıtım seçin](./media/export-template-portal/select-details.png)
 
-1. **Şablon**seçin. Bu dağıtım için kullanılan şablon görüntülenir ve indirilmek üzere kullanılabilir.
+1. **Şablon** seçin. Bu dağıtım için kullanılan şablon görüntülenir ve indirilmek üzere kullanılabilir.
 
    ![Şablon seçme](./media/export-template-portal/show-template-from-history.png)
 

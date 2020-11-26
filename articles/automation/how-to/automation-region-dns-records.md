@@ -3,14 +3,14 @@ title: Azure Otomasyonu tarafından kullanılan Azure veri merkezi DNS kayıtlar
 description: Bu makalede, Azure Otomasyonu özelliklerinin gerektirdiği DNS kayıtları, bu Otomasyon hesabını barındıran belirli bir Azure bölgesiyle iletişim kısıtlaması sağlar.
 services: automation
 ms.subservice: process-automation
-ms.date: 07/23/2020
+ms.date: 11/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: 17d0857a8979cfcc632ab8951fb255f97229a665
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4b8f48afc75c0a96937575bdad5bb884d0cb4d8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87117181"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183728"
 ---
 # <a name="dns-records-for-azure-regions-used-by-azure-automation"></a>Azure Otomasyonu tarafından kullanılan Azure bölgelerinin DNS kayıtları
 
@@ -57,7 +57,7 @@ Azure Otomasyonu 'nda [özel bağlantıyı](../../private-link/private-link-over
 | Orta Batı ABD |`https://<accountId>.webhook.wcus.azure-automation.net`<br>`https://<accountId>.agentsvc.wcus.azure-automation.net`<br>`https://<accountId>.jrds.wcus.azure-automation.net` |
 | Batı ABD |`https://<accountId>.webhook.wus.azure-automation.net`<br>`https://<accountId>.agentsvc.wus.azure-automation.net`<br>`https://<accountId>.jrds.wus.azure-automation.net` |
 | Batı ABD 2 |`https://<accountId>.webhook.wus2.azure-automation.net`<br>`https://<accountId>.agentsvc.wus2.azure-automation.net`<br>`https://<accountId>.jrds.wus2.azure-automation.net` |
-| Central US |`https://<accountId>.webhook.cus.azure-automation.net`<br>`https://<accountId>.agentsvc.cus.azure-automation.net`<br>`https://<accountId>.jrds.cus.azure-automation.net` |
+| Orta ABD |`https://<accountId>.webhook.cus.azure-automation.net`<br>`https://<accountId>.agentsvc.cus.azure-automation.net`<br>`https://<accountId>.jrds.cus.azure-automation.net` |
 | Orta Güney ABD |`https://<accountId>.webhook.scus.azure-automation.net`<br>`https://<accountId>.agentsvc.scus.azure-automation.net`<br>`https://<accountId>.jrds.scus.azure-automation.net` |
 | Orta Kuzey ABD |`https://<accountId>.webhook.ncus.azure-automation.net`<br>`https://<accountId>.agentsvc.ncus.azure-automation.net`<br>`https://<accountId>.jrds.ncus.azure-automation.net` |
 | Doğu ABD |`https://<accountId>.webhook.eus.azure-automation.net`<br>`https://<accountId>.agentsvc.eus.azure-automation.net`<br>`https://<accountId>.jrds.eus.azure-automation.net` |
@@ -75,7 +75,7 @@ Azure Otomasyonu 'nda [özel bağlantıyı](../../private-link/private-link-over
 | Orta Avustralya |`https://<accountId>.webhook.ac.azure-automation.net`<br>`https://<accountId>.agentsvc.ac.azure-automation.net`<br>`https://<accountId>.jrds.ac.azure-automation.net` |
 | Güney Birleşik Krallık |`https://<accountId>.webhook.uks.azure-automation.net`<br>`https://<accountId>.agentsvc.uks.azure-automation.net`<br>`https://<accountId>.jrds.uks.azure-automation.net` |
 | Orta Fransa |`https://<accountId>.webhook.fc.azure-automation.net`<br>`https://<accountId>.agentsvc.fc.azure-automation.net`<br>`https://<accountId>.jrds.fc.azure-automation.net` |
-| Güney Afrika Kuzey |`https://<accountId>.webhook.san.azure-automation.net`<br>`https://<accountId>.agentsvc.san.azure-automation.net`<br>`https://<accountId>.jrds.san.azure-automation.net` |
+| Güney Afrika - Kuzey |`https://<accountId>.webhook.san.azure-automation.net`<br>`https://<accountId>.agentsvc.san.azure-automation.net`<br>`https://<accountId>.jrds.san.azure-automation.net` |
 | Brezilya Güney |`https://<accountId>.webhook.brs.azure-automation.net`<br>`https://<accountId>.agentsvc.brs.azure-automation.net`<br>`https://<accountId>.jrds.brs.azure-automation.net` |
 | Kuzey Çin |`https://<accountId>.webhook.bjb.azure-automation.cn`<br>`https://<accountId>.agentsvc.bjb.azure-automation.cn`<br>`https://<accountId>.jrds.bjb.azure-automation.cn` |
 | Çin Kuzey 2 |`https://<accountId>.webhook.bjs2.azure-automation.cn`<br>`https://<accountId>.agentsvc.bjs2.azure-automation.cn`<br>`https://<accountId>.jrds.bjs2.azure-automation.cn` |
@@ -89,6 +89,9 @@ Azure Otomasyonu 'nda [özel bağlantıyı](../../private-link/private-link-over
 ![Otomasyon hesabı birincil anahtar sayfası](./media/automation-region-dns-records/automation-account-keys.png)
 
 *Hesaptan* sonra değeri, **URL** alanından kopyalayın-`https://<GUID>.agentsvc.<region>.azure-automation.net/accounts/<GUID>`
+
+> [!NOTE]
+> Web kancası ve agentservice DNS kayıtları, özel bağlantıyı desteklemek için yeni stil DNS kayıtlarına güncelleştirildi. JRDS DNS kayıtları için hem eski hem de yeni stil DNS kayıtları desteklenir. Özel bağlantı kullanmıyorsanız, eski stil DNS kayıtları görürsünüz, ancak özel bağlantı kullanırken, DNS kayıtlarının yeni stili görüntülenir.
 
 [Özel durumları](../automation-runbook-execution.md#exceptions)tanımlarken listelenen adresleri kullanmanızı öneririz. Bölge adları yerine bölge IP adresleri listesi için, aşağıdaki bulut ortamları için Microsoft Indirme Merkezi ' nden JSON dosyasını indirin:
 

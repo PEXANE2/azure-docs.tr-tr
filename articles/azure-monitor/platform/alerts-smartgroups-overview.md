@@ -4,12 +4,12 @@ description: Akıllı gruplar, uyarı gürültüsünü azaltmanıza yardımcı o
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 05/15/2018
-ms.openlocfilehash: dff59ac207e6078a264d1350d24c9e6f4a461d78
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 743bd1a674c034cd6a0350f959289ac3ecb568de
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012893"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186618"
 ---
 # <a name="smart-groups"></a>Akıllı gruplar
 
@@ -33,7 +33,7 @@ Aşağıdaki akıllı grup durumları desteklenir.
 | Onaylandı | Bir yönetici akıllı grubu incelendi ve üzerinde çalışmaya başladı. |
 | Kapatıldı | Sorun çözüldü. Bir akıllı grup kapatıldıktan sonra, başka bir durumla değiştirerek dosyayı yeniden açabilirsiniz. |
 
-[Akıllı grubunuzun durumunu değiştirme hakkında bilgi edinin.](./alerts-managing-alert-states.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
+[Akıllı grubunuzun durumunu değiştirme hakkında bilgi edinin.](./alerts-managing-alert-states.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 
 > [!NOTE]
 >  Bir akıllı grubun durumunun değiştirilmesi, bağımsız üye uyarılarının durumunu değiştirmez.
@@ -47,7 +47,7 @@ Akıllı Grup Ayrıntısı sayfası, bir akıllı grup seçtiğinizde görüntü
 
 Akıllı Grup Ayrıntısı sayfası aşağıdaki bölümleri içerir.
 
-| Section | Description |
+| Section | Açıklama |
 |:---|:---|
 | Uyarılar | Akıllı gruba dahil olan bireysel uyarıları listeler. Uyarı ayrıntısı sayfasını açmak için bir uyarı seçin. |
 | Geçmiş | Akıllı grup tarafından gerçekleştirilen her eylemi ve üzerinde yapılan değişiklikleri listeler. Bu, şu anda durum değişiklikleri ve uyarı üyeliği değişiklikleri ile sınırlıdır. |
@@ -58,5 +58,5 @@ Bir akıllı grubun adı, ilk uyarısının adıdır. Akıllı grup oluşturamaz
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Akıllı grupları yönetme](./alerts-managing-smart-groups.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
-- [Uyarınızı ve akıllı grup durumunu değiştirme](./alerts-managing-alert-states.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
+- [Akıllı grupları yönetme](./alerts-managing-smart-groups.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
+- [Uyarınızı ve akıllı grup durumunu değiştirme](./alerts-managing-alert-states.md?toc=%2fazure%2fazure-monitor%2ftoc.json)

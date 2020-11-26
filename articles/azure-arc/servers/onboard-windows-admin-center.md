@@ -3,18 +3,18 @@ title: Windows Yönetim Merkezi 'nden karma makineleri Azure 'a bağlama
 description: Bu makalede, Windows Yönetim Merkezi 'nden Azure Arc etkin sunucularını kullanarak aracıyı yüklemeyi ve makineleri Azure 'a bağlamayı öğreneceksiniz.
 ms.date: 10/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: d47e3dd4434d719f890b64e4cdfb12a189c0632a
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 8fa118a254689feade2897f083bb3aa2dc9db02c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93133795"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183422"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-windows-admin-center"></a>Windows Yönetim Merkezi 'nden karma makineleri Azure 'a bağlama
 
 Bir adım kümesini el ile gerçekleştirerek ortamınızdaki bir veya daha fazla Windows makinesi için Azure Arc etkin sunucularını etkinleştirebilirsiniz. Ya da [Windows yönetici merkezini](/windows-server/manage/windows-admin-center/understand/what-is) , bağlı makine aracısını dağıtmak ve şirket içi sunucularınızı bu aracın dışında herhangi bir adım gerçekleştirmek zorunda kalmadan kaydetmek için de kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Yay etkin sunucular- [önkoşulları](agent-overview.md#prerequisites) gözden geçirin ve aboneliğinizin, Azure hesabınızın ve kaynaklarınızın gereksinimleri karşıladığını doğrulayın.
 
@@ -36,13 +36,13 @@ Windows Server 'ı yay özellikli sunucularla yapılandırmak için aşağıdaki
 
 1. **Genel bakış** sayfasındaki bağlantı listesinden, bağlı Windows Server listesinde, bu sunucuya bağlanmak için listeden bir sunucu seçin.
 
-1. Sol bölmeden **Azure hibrit Hizmetleri** ' ni seçin.
+1. Sol bölmeden **Azure hibrit Hizmetleri**' ni seçin.
 
-1. **Azure hibrit Hizmetleri** sayfasında **Azure hizmetlerini bul** ' u seçin.
+1. **Azure hibrit Hizmetleri** sayfasında **Azure hizmetlerini bul**' u seçin.
 
-1. Azure **hizmetlerini bul** sayfasında, Azure **Arc ile sunucularınızı yönetmek için Azure ilkeleri ve çözümleri 'nden yararlanın** ' ın altında **Ayarla** ' yı seçin.
+1. Azure **hizmetlerini bul** sayfasında, Azure **Arc ile sunucularınızı yönetmek için Azure ilkeleri ve çözümleri 'nden yararlanın**' ın altında **Ayarla**' yı seçin.
 
-1. **Sunucular için Settings\azure Arc** sayfasında, Azure 'da kimlik doğrulaması yaptıysanız ve ardından **kullanmaya başlayın** ' ı seçin.
+1. **Sunucular için Settings\azure Arc** sayfasında, Azure 'da kimlik doğrulaması yaptıysanız ve ardından **kullanmaya başlayın**' ı seçin.
 
 1. **Azure 'a sunucu bağlantısı** sayfasında, aşağıdakileri sağlayın:
 
@@ -69,4 +69,4 @@ Aracıyı yükledikten ve Azure Arc etkin sunucularına bağlanacak şekilde yap
 
 * VM [Konuk yapılandırması](../../governance/policy/concepts/guest-configuration.md), makinenin beklenen Log Analytics çalışma alanına rapor olduğunu doğrulama, [VM 'lerle Azure izleyici](../../azure-monitor/insights/vminsights-enable-policy.md)ile izlemeyi etkinleştirme ve çok daha birçok şey için [Azure ilkesi](../../governance/policy/overview.md)'ni kullanarak makinenizi yönetmeyi öğrenin.
 
-* [Log Analytics Aracısı](../../azure-monitor/platform/log-analytics-agent.md)hakkında daha fazla bilgi edinin. Windows ve Linux için Log Analytics Aracısı, işletim sistemi ve iş yükü izleme verilerini toplamak, Otomasyon Runbook 'larını veya Güncelleştirme Yönetimi gibi özellikleri kullanarak yönetmek ya da [Azure Güvenlik Merkezi](../../security-center/security-center-intro.md)gibi diğer Azure hizmetlerini kullanmak istediğinizde gereklidir.
+* [Log Analytics Aracısı](../../azure-monitor/platform/log-analytics-agent.md)hakkında daha fazla bilgi edinin. Windows ve Linux için Log Analytics Aracısı, işletim sistemi ve iş yükü izleme verilerini toplamak, Otomasyon Runbook 'larını veya Güncelleştirme Yönetimi gibi özellikleri kullanarak yönetmek ya da [Azure Güvenlik Merkezi](../../security-center/security-center-introduction.md)gibi diğer Azure hizmetlerini kullanmak istediğinizde gereklidir.

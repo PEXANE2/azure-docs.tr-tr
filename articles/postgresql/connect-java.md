@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/17/2020
 ms.openlocfilehash: 42547338c0f5f2f3105833b12e499d40b6209b05
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341425"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184714"
 ---
 # <a name="quickstart-use-java-and-jdbc-with-azure-database-for-postgresql"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı ile Java ve JDBC kullanma
 
@@ -46,8 +46,8 @@ AZ_LOCAL_IP_ADDRESS=<YOUR_LOCAL_IP_ADDRESS>
 Yer tutucuları, bu makale boyunca kullanılan aşağıdaki değerlerle değiştirin:
 
 - `<YOUR_DATABASE_NAME>`: PostgreSQL sunucunuzun adı. Azure genelinde benzersiz olmalıdır.
-- `<YOUR_AZURE_REGION>`: Kullanacağınız Azure bölgesi. `eastus`Varsayılan olarak kullanabilirsiniz, ancak bir bölgeyi yaşadığınız yere yakın bir yerde yapılandırmanızı öneririz. ' İ girerek kullanılabilir bölgelerin tam listesini alabilirsiniz `az account list-locations` .
-- `<YOUR_POSTGRESQL_PASSWORD>`: PostgreSQL veritabanı sunucunuzun parolası. Bu parola en az sekiz karakter uzunluğunda olmalıdır. Karakterler şu kategorilerden üçünde olmalıdır: Ingilizce büyük harfler, Ingilizce küçük harfler, sayılar (0-9) ve alfasayısal olmayan karakterler (!, $, #,%, vb.).
+- `<YOUR_AZURE_REGION>`: Kullanacağınız Azure bölgesi. Varsayılan olarak `eastus` kullanabilirsiniz ancak bölgeyi, yaşadığınız yere yakın bir yerde yapılandırmanızı öneririz. ' İ girerek kullanılabilir bölgelerin tam listesini alabilirsiniz `az account list-locations` .
+- `<YOUR_POSTGRESQL_PASSWORD>`: PostgreSQL veritabanı sunucunuzun parolası. Bu parola en az sekiz karakter uzunluğunda olmalıdır. Karakterler şu kategorilerin üçünü de içermelidir: İngilizce büyük harfler, İngilizce küçük harfler, rakamlar (0-9) ve alfasayısal olmayan karakterler (!, $, #, % vb.).
 - `<YOUR_LOCAL_IP_ADDRESS>`: Java uygulamanızı çalıştıracağınız yerel bilgisayarınızın IP adresi. Bunu bulmanın kolay bir yolu, tarayıcınızı [whatismyip.Akamai.com](http://whatismyip.akamai.com/)'e işaret kullanmaktır.
 
 Ardından, aşağıdaki komutu kullanarak bir kaynak grubu oluşturun:
@@ -60,7 +60,7 @@ az group create \
 ```
 
 > [!NOTE]
-> `jq`JSON verilerini göstermek ve daha okunabilir hale getirmek için yardımcı programı kullanıyoruz. Bu yardımcı program, [Azure Cloud Shell](https://shell.azure.com/)varsayılan olarak yüklenir. Bu yardımcı programı beğenmezseniz, `| jq` kullanacağımız tüm komutların bölümünü güvenle kaldırabilirsiniz.
+> `jq`JSON verilerini göstermek ve daha okunabilir hale getirmek için yardımcı programı kullanıyoruz. Bu yardımcı program, [Azure Cloud Shell](https://shell.azure.com/)varsayılan olarak yüklenir. Bu yardımcı programı beğenmezseniz kullanacağımız tüm komutlardan `| jq` bölümünü kaldırabilirsiniz.
 
 ## <a name="create-an-azure-database-for-postgresql-instance"></a>PostgreSQL için Azure veritabanı örneği oluşturma
 
@@ -87,7 +87,7 @@ Bu komut, küçük bir PostgreSQL sunucusu oluşturur.
 
 ### <a name="configure-a-firewall-rule-for-your-postgresql-server"></a>PostgreSQL sunucunuz için bir güvenlik duvarı kuralı yapılandırma
 
-PostgreSQL için Azure veritabanı örnekleri varsayılan olarak güvenli hale getirilir. Herhangi bir gelen bağlantıya izin veren bir güvenlik duvarı vardır. Veritabanınızı kullanabilmeniz için, yerel IP adresinin veritabanı sunucusuna erişmesine imkan sağlayacak bir güvenlik duvarı kuralı eklemeniz gerekir.
+PostgreSQL için Azure veritabanı örnekleri varsayılan olarak güvenli hale getirilir. Gelen bağlantılara izin vermeyen bir güvenlik duvarı vardır. Veritabanınızı kullanabilmeniz için, yerel IP adresinin veritabanı sunucusuna erişmesine imkan sağlayacak bir güvenlik duvarı kuralı eklemeniz gerekir.
 
 Yerel IP adresinizi Bu makalenin başlangıcında yapılandırdığınız için, aşağıdaki komutu çalıştırarak sunucunun güvenlik duvarını açabilirsiniz:
 
@@ -173,7 +173,7 @@ DROP TABLE IF EXISTS todo;
 CREATE TABLE todo (id SERIAL PRIMARY KEY, description VARCHAR(255), details VARCHAR(4096), done BOOLEAN);
 ```
 
-## <a name="code-the-application"></a>Uygulamayı kodlayın
+## <a name="code-the-application"></a>Uygulamayı kodlama
 
 ### <a name="connect-to-the-database"></a>Veritabanına bağlanın
 

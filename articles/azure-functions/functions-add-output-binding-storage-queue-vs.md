@@ -4,12 +4,12 @@ description: C# sınıf kitaplığı işlevlerinizi Visual Studio kullanarak bir
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 0711516143839dbcdbafec56ab1d9643b4b8cdc7
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 635392212027c73e5aa954eb671be31228796a0d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167131"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185139"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>Visual Studio kullanarak işlevleri Azure depolama 'ya bağlama
 
@@ -19,7 +19,7 @@ Bu makalede, Visual Studio 'Yu kullanarak [önceki hızlı başlangıç makalesi
 
 Çoğu bağlamanın, bağlı hizmete erişmek için kullandığı depolanan bir bağlantı dizesi gerekir. Daha kolay hale getirmek için, işlev uygulamanız ile oluşturduğunuz depolama hesabını kullanırsınız. Bu hesap bağlantısı zaten adlı bir uygulama ayarında depolanıyor `AzureWebJobsStorage` .  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaleye başlamadan önce şunları yapmanız gerekir: 
 
@@ -29,7 +29,7 @@ Bu makaleye başlamadan önce şunları yapmanız gerekir:
 
 ## <a name="download-the-function-app-settings"></a>İşlev uygulaması ayarlarını indirin
 
-[Önceki hızlı başlangıç makalesinde](functions-create-first-function-vs-code.md), Azure 'Da gerekli depolama hesabıyla birlikte bir işlev uygulaması oluşturdunuz. Bu hesabın bağlantı dizesi, Azure 'daki uygulama ayarlarında güvenli bir şekilde depolanır. Bu makalede, aynı hesaptaki bir depolama kuyruğuna iletiler yazarsınız. İşlevi yerel olarak çalıştırırken depolama hesabınıza bağlanmak için, uygulama ayarlarını dosyaya *local.settings.js* indirmeniz gerekir. 
+[Önceki hızlı başlangıç makalesinde](./create-first-function-vs-code-csharp.md), Azure 'Da gerekli depolama hesabıyla birlikte bir işlev uygulaması oluşturdunuz. Bu hesabın bağlantı dizesi, Azure 'daki uygulama ayarlarında güvenli bir şekilde depolanır. Bu makalede, aynı hesaptaki bir depolama kuyruğuna iletiler yazarsınız. İşlevi yerel olarak çalıştırırken depolama hesabınıza bağlanmak için, uygulama ayarlarını dosyaya *local.settings.js* indirmeniz gerekir. 
 
 1. **Çözüm Gezgini**'nde projeye sağ tıklayın ve **Yayımla**'yı seçin. 
 
@@ -37,7 +37,7 @@ Bu makaleye başlamadan önce şunları yapmanız gerekir:
 
     ![Uygulama ayarlarını düzenleme](media/functions-add-output-binding-storage-queue-vs/edit-app-settings.png)
 
-1. **AzureWebJobsStorage**altında, **uzak** dize değerini **Yerel**olarak kopyalayın ve ardından **Tamam**' ı seçin. 
+1. **AzureWebJobsStorage** altında, **uzak** dize değerini **Yerel** olarak kopyalayın ve ardından **Tamam**' ı seçin. 
 
 Bağlantı ayarını kullanan depolama bağlaması `AzureWebJobsStorage` artık yerel olarak çalışırken kuyruk depolamaya bağlanabilir.
 
@@ -75,7 +75,7 @@ Bağlama tanımlandıktan sonra, `name` işlev imzasında bir öznitelik olarak 
 
 1. **Görünüm** menüsünde, Visual Studio ' da **bulut Gezgini**' ni seçin.
 
-1. **Cloud Explorer**'da Azure aboneliğinizi ve **depolama hesaplarınızı**genişletin, sonra işleviniz tarafından kullanılan depolama hesabını genişletin. Depolama hesabı adını hatırlayamıyorsanız, `AzureWebJobsStorage` dosyadaki *local.settings.js* bağlantı dizesi ayarını kontrol edin.  
+1. **Cloud Explorer**'da Azure aboneliğinizi ve **depolama hesaplarınızı** genişletin, sonra işleviniz tarafından kullanılan depolama hesabını genişletin. Depolama hesabı adını hatırlayamıyorsanız, `AzureWebJobsStorage` dosyadaki *local.settings.js* bağlantı dizesi ayarını kontrol edin.  
 
 1. **Kuyruklar** düğümünü genişletin ve ardından Visual Studio 'da sıranın içeriğini görüntülemek için **outqueue** adlı kuyruğa çift tıklayın. 
 

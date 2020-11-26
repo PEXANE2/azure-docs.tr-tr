@@ -5,12 +5,12 @@ ms.date: 10/19/2020
 services: automation
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: bffd1cc0ce2a6a827c0bc708321a6bd2839aae2d
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 23e5293301a2fc311565d0c1c8ec5fd92bebe9b2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207334"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183575"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>Bağlı Log Analytics çalışma alanı için desteklenen bölgeler
 
@@ -63,7 +63,7 @@ Kaldırılan özellikler ile otomasyon Hesabınızın bağlantısını kaldırma
 > [!NOTE]
 > Azure SQL izleme çözümünün önceki sürümleri de dahil olmak üzere bazı özellikler, çalışma alanının bağlantısı kaldırılmadan önce kaldırılması gereken Otomasyon varlıklarını oluşturmuş olabilir.
 
-1. Azure portal Otomasyon hesabınızı açın. Otomasyon hesabı sayfasında, **Ilgili kaynaklar**altında **bağlantılı çalışma alanı** ' nı seçin.
+1. Azure portal Otomasyon hesabınızı açın. Otomasyon hesabı sayfasında, **Ilgili kaynaklar** altında **bağlantılı çalışma alanı** ' nı seçin.
 
 2. Çalışma alanının bağlantısını Kaldır sayfasında, **çalışma alanının bağlantısını kaldır**' ı seçin. Devam etmek isteyip istemediğinizi doğrulayan bir istem alırsınız.
 
@@ -82,11 +82,11 @@ Kaldırılan özellikler ile otomasyon Hesabınızın bağlantısını kaldırma
 
 Alternatif olarak, çalışma alanınızın içindeki Otomasyon hesabınızdan çalışma alanınızın bağlantısını kaldırabilirsiniz.
 
-1. Çalışma alanında **Ilgili kaynaklar**altında **Otomasyon hesabı** ' nı seçin.
+1. Çalışma alanında **Ilgili kaynaklar** altında **Otomasyon hesabı** ' nı seçin.
 2. Otomasyon hesabı sayfasında **Hesap bağlantısını kaldır**' ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Güncelleştirme yönetimi genel bakışta](../update-management/update-mgmt-overview.md)güncelleştirme yönetimi hakkında bilgi edinin.
+* [Güncelleştirme yönetimi genel bakışta](../update-management/overview.md)güncelleştirme yönetimi hakkında bilgi edinin.
 * [Değişiklik izleme ve envanterde genel bakış](../change-tracking/overview.md)hakkında bilgi edinin değişiklik izleme.
 * [VM'leri çalışma saatleri dışında Başlat/Durdur genel bakışta](../automation-solution-vm-management.md)VM'leri çalışma saatleri dışında Başlat/Durdur hakkında bilgi edinin.

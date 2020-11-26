@@ -4,12 +4,12 @@ description: Azure 'da kaynak Web uygulamanızı, bulut hizmetinizi, sanal makin
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 543ecc80abeb9a437a895224de6ade679698c4d7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5af60befeda9f0ed4ed76f7ab8449e94950352fb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020917"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186584"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure 'da otomatik ölçeklendirme ile çalışmaya başlama
 Bu makalede, Microsoft Azure portal kaynağınız için otomatik ölçeklendirme ayarlarınızı nasıl ayarlayabileceğinizi açıklar.
@@ -151,12 +151,12 @@ Bu bölümde, Azure otomatik ölçeklendirmeyi aynı abonelik ve kaynak grubu al
 1. Azure otomatik ölçeklendirme 'nın, [taşımak Istediğiniz Azure bölgesinde](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=all)kullanılabilir olduğundan emin olun.
 
 ### <a name="move"></a>Taşı
-Yeni ortamda bir otomatik ölçeklendirme ayarı oluşturmak için [REST API](https://docs.microsoft.com/rest/api/monitor/autoscalesettings/createorupdate) kullanın. Hedef bölgede oluşturulan otomatik ölçeklendirme ayarı, kaynak bölgedeki otomatik ölçeklendirme ayarının bir kopyası olacaktır.
+Yeni ortamda bir otomatik ölçeklendirme ayarı oluşturmak için [REST API](/rest/api/monitor/autoscalesettings/createorupdate) kullanın. Hedef bölgede oluşturulan otomatik ölçeklendirme ayarı, kaynak bölgedeki otomatik ölçeklendirme ayarının bir kopyası olacaktır.
 
-Kaynak bölgedeki otomatik ölçeklendirme ayarıyla ilişkilendirmede oluşturulan [Tanılama ayarları](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) taşınamaz. Tekrar satış ayarları oluşturulduktan sonra, hedef bölgede tanılama ayarlarını yeniden oluşturmanız gerekir. 
+Kaynak bölgedeki otomatik ölçeklendirme ayarıyla ilişkilendirmede oluşturulan [Tanılama ayarları](./diagnostic-settings.md) taşınamaz. Tekrar satış ayarları oluşturulduktan sonra, hedef bölgede tanılama ayarlarını yeniden oluşturmanız gerekir. 
 
 ### <a name="learn-more-about-moving-resources-across-azure-regions"></a>Azure bölgelerindeki kaynakları taşıma hakkında daha fazla bilgi edinin
-Azure 'da bölgeler ve olağanüstü durum kurtarma arasında kaynakları taşıma hakkında daha fazla bilgi edinmek için bkz. [kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
+Azure 'da bölgeler ve olağanüstü durum kurtarma arasında kaynakları taşıma hakkında daha fazla bilgi edinmek için bkz. [kaynakları yeni bir kaynak grubuna veya aboneliğe taşıma](../../azure-resource-manager/management/move-resource-group-and-subscription.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Aboneliğinizdeki tüm otomatik ölçeklendirme motoru işlemlerini izlemek için bir etkinlik günlüğü uyarısı oluşturun](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)

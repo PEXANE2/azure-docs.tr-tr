@@ -3,12 +3,12 @@ title: Azure Application Insights 'de akıllı algılama | Microsoft Docs
 description: Application Insights, uygulama telemetrinizin otomatik derin analizini yapar ve olası sorunlar hakkında sizi uyarır.
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: 24ed8eefb7e07930cbd123fbe4081d555f0c27c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b6e9370387bf3bb87555261b3949db2917e9911
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87305882"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186261"
 ---
 # <a name="smart-detection-in-application-insights"></a>Application Insights'da Akıllı Algılama
  Akıllı algılama, Web uygulamanızdaki olası performans sorunlarını ve hata bozuklumlarını otomatik olarak uyarır. Uygulamanızın [Application Insights](./app-insights-overview.md)için gönderdiği Telemetriyi proaktif analizini gerçekleştirir. Hata hızlarındaki ani bir artış veya istemci ya da sunucu performansındaki anormal desenler varsa, bir uyarı alırsınız. Bu özelliğin yapılandırması yok. Uygulamanız yeterli telemetri gönderdiğinde çalışır.
@@ -40,7 +40,7 @@ Akıllı algılama, şu gibi çeşitli sorunları algılar ve bildirir:
 
 ## <a name="smart-detection-email-notifications"></a>Akıllı algılama e-posta bildirimleri
 
-_Önizleme_olarak işaretlenen kurallar dışında tüm akıllı algılama kuralları, algılamalar bulunduğunda e-posta bildirimleri göndermek için varsayılan olarak yapılandırılır.
+_Önizleme_ olarak işaretlenen kurallar dışında tüm akıllı algılama kuralları, algılamalar bulunduğunda e-posta bildirimleri göndermek için varsayılan olarak yapılandırılır.
 
 Belirli bir akıllı algılama kuralı için e-posta bildirimlerini yapılandırmak, akıllı algılama **ayarları** dikey penceresi açılarak ve kural **düzenleme** dikey penceresini açacak olan kuralı seçerek yapılabilir.
 
@@ -55,10 +55,9 @@ Bu tanılama araçları uygulamanızdan Telemetriyi incelemenize yardımcı olur
 
 * [Ölçüm Gezgini](../platform/metrics-charts.md)
 * [Arama Gezgini](./diagnostic-search.md)
-* [Analytics-güçlü sorgu dili](../log-query/get-started-portal.md)
+* [Analytics-güçlü sorgu dili](../log-query/log-analytics-tutorial.md)
 
 Akıllı algılama tamamen otomatiktir. Ancak daha fazla uyarı kurmak istiyor olabilirsiniz?
 
 * [El ile yapılandırılmış ölçüm uyarıları](../platform/alerts-log.md)
-* [Kullanılabilirlik web testleri](./monitor-web-app-availability.md) 
-
+* [Kullanılabilirlik web testleri](./monitor-web-app-availability.md)

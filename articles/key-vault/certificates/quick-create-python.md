@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 05b1ea8e6daa9fae0588535534c4a8be45ab91d5
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: d9fdfc89c8c02749fdf677ad119f1eed5a4b1fa2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285263"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185190"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-python"></a>Hızlı başlangıç: Python için sertifika istemci kitaplığı Azure Key Vault
 
@@ -21,7 +21,7 @@ Python için Azure Key Vault sertifika istemci kitaplığı ile çalışmaya ba�
 
 [API başvuru belgeleri](/python/api/overview/azure/keyvault-certificates-readme)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-certificates)  |  [Paket (Python paket dizini)](https://pypi.org/project/azure-keyvault-certificates)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Python 2.7 + veya 3.5.3 +](/azure/developer/python/configure-local-development-environment)
@@ -70,10 +70,10 @@ Bu hızlı başlangıç, Azure 'da kullanıcının kimliğini doğrulamak için 
 
 ### <a name="grant-access-to-your-key-vault"></a>Anahtar kasanıza erişim izni verin
 
-Anahtar kasanız için Kullanıcı hesabınıza gizli izin veren bir erişim ilkesi oluşturun
+Anahtar kasanız için Kullanıcı hesabınıza Sertifika izni veren bir erişim ilkesi oluşturun
 
 ```console
-az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --secret-permissions delete get list set
+az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --certificate-permissions delete get list create
 ```
 
 #### <a name="set-environment-variables"></a>Ortam değişkenlerini belirleme

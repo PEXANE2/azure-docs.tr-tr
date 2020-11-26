@@ -7,11 +7,11 @@ ms.service: data-share
 ms.topic: quickstart
 ms.date: 10/30/2020
 ms.openlocfilehash: 1442720fdf48aaa7da76e181b168a04306ff3e33
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577507"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186465"
 ---
 # <a name="quickstart-share-data-using-azure-data-share-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal Azure veri paylaşımından kullanarak veri paylaşma
 
@@ -27,19 +27,19 @@ Bu hızlı başlangıçta, Azure portal kullanarak depolama hesabından veri pay
 
 * Azure depolama hesabı: henüz yoksa bir [Azure depolama hesabı](../storage/common/storage-account-create.md) oluşturabilirsiniz
 * *Microsoft. Storage/storageAccounts/Write* içinde bulunan depolama hesabına yazma izni. Bu izin **Katkıda Bulunan** rolünde vardır.
-* *Microsoft. Authorization/role atamalar/Write* ' de bulunan depolama hesabına rol ataması ekleme izni. Bu izin **Sahip** rolünde vardır. 
+* *Microsoft. Authorization/role atamalar/Write*' de bulunan depolama hesabına rol ataması ekleme izni. Bu izin **Sahip** rolünde vardır. 
 
 ## <a name="create-a-data-share-account"></a>Veri paylaşma hesabı oluşturma
 
 Azure Kaynak grubunda bir Azure veri paylaşma kaynağı oluşturun.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 1. Portalın sol üst köşesinde bulunan **kaynak oluştur** düğmesini (+) seçin.
 
 1. *Veri paylaşımında* arama yapın.
 
-1. **Veri paylaşma** ' yı seçin ve **Oluştur** ' u seçin.
+1. **Veri paylaşma** ' yı seçin ve **Oluştur**' u seçin.
 
 1. Aşağıdaki bilgilerle Azure veri paylaşma kaynağınızın temel ayrıntılarını doldurun. 
 
@@ -48,11 +48,11 @@ Azure Kaynak grubunda bir Azure veri paylaşma kaynağı oluşturun.
    | Abonelik | Aboneliğiniz | Veri paylaşma hesabınız için kullanmak istediğiniz Azure aboneliğini seçin.|
    | Kaynak grubu | *test-resource-group* | Mevcut bir kaynak grubunu kullanın veya yeni bir kaynak grubu oluşturun. |
    | Konum | *Doğu ABD 2* | Veri paylaşma hesabınız için bir bölge seçin.
-   | Name | *datashareaccount* | Veri paylaşma hesabınız için bir ad belirtin. |
+   | Adı | *datashareaccount* | Veri paylaşma hesabınız için bir ad belirtin. |
 
-1. Veri paylaşma hesabınızı sağlamak için **gözden geçir + oluştur** ' u seçin ve **Oluştur** ' a tıklayın. Yeni bir veri paylaşma hesabının sağlanması genellikle yaklaşık 2 dakika veya daha kısa sürer.
+1. Veri paylaşma hesabınızı sağlamak için **gözden geçir + oluştur**' u seçin ve **Oluştur** ' a tıklayın. Yeni bir veri paylaşma hesabının sağlanması genellikle yaklaşık 2 dakika veya daha kısa sürer.
 
-1. Dağıtım tamamlandığında **Kaynağa Git** ' i seçin.
+1. Dağıtım tamamlandığında **Kaynağa Git**' i seçin.
 
 ## <a name="create-a-share"></a>Bir paylaşma oluşturun
 
@@ -60,17 +60,17 @@ Azure Kaynak grubunda bir Azure veri paylaşma kaynağı oluşturun.
 
    ![Verilerinizi paylaşma](./media/share-receive-data.png "Verilerinizi paylaşma") 
 
-1. **Verilerinizi paylaşmayı Başlat** ' ı seçin.
+1. **Verilerinizi paylaşmayı Başlat**' ı seçin.
 
-1. **Oluştur** ’u seçin.
+1. **Oluştur**’u seçin.
 
 1. Paylaşımınızın ayrıntılarını doldurun. Bir ad, paylaşma türü, içerik paylaşma açıklaması ve kullanım koşulları (isteğe bağlı) belirtin. 
 
    ![EnterShareDetails](./media/enter-share-details.png "Paylaşma ayrıntılarını girin") 
 
-1. **Devam** ’ı seçin.
+1. **Devam**’ı seçin.
 
-1. Paylaşımınıza veri kümeleri eklemek için **veri kümesi Ekle** ' yi seçin. 
+1. Paylaşımınıza veri kümeleri eklemek için **veri kümesi Ekle**' yi seçin. 
 
    ![Paylaşımınıza veri kümeleri ekleme](./media/datasets.png "Veri kümeleri")
 
@@ -86,7 +86,7 @@ Azure Kaynak grubunda bir Azure veri paylaşma kaynağı oluşturun.
 
    ![AddRecipients](./media/add-recipient.png "Alıcı ekleme") 
 
-1. **Devam** ’ı seçin.
+1. **Devam**’ı seçin.
 
 1. Anlık görüntü paylaşma türü ' nu seçtiyseniz, veri tüketicisine verilerinizin güncelleştirmelerini sağlamak için anlık görüntü zamanlamasını yapılandırabilirsiniz. 
 
@@ -94,9 +94,9 @@ Azure Kaynak grubunda bir Azure veri paylaşma kaynağı oluşturun.
 
 1. Bir başlangıç saati ve yinelenme aralığı seçin. 
 
-1. **Devam** ’ı seçin.
+1. **Devam**’ı seçin.
 
-1. Gözden geçir + Oluştur sekmesinde paket Içeriklerinizi, ayarlarınızı, alıcılarını ve eşitleme ayarlarınızı gözden geçirin. **Oluştur** ’u seçin.
+1. Gözden geçir + Oluştur sekmesinde paket Içeriklerinizi, ayarlarınızı, alıcılarını ve eşitleme ayarlarınızı gözden geçirin. **Oluştur**’u seçin.
 
 Azure veri paylaşımınız artık oluşturulmuştur ve veri paylaşımınızın alıcısı artık davetinizi kabul etmeye hazırdır.
 

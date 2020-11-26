@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 07/03/2019
 ms.author: vitalyg
 ms.subservice: application-insights
-ms.openlocfilehash: 9ea98df4b6cd8572412e7082b451feac3736919c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c61287475eb82241aa5c9e1d1649e8b20e3b28c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87327081"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185955"
 ---
 # <a name="application-insights-log-based-metrics"></a>Günlük tabanlı ölçümleri Application Insights
 
@@ -35,10 +35,10 @@ Bu makalede, desteklenen toplamalar ve boyutlarla ölçümler listelenir. Günl�
 
 - Seçili herhangi bir **filtre** boyutu, diğer *WHERE* yan tümcelerlerine çevrilir.
 
-- Seçili **bölünmüş grafik** boyutu fazladan bir özetleme özelliğine çevrilir. Örneğin, grafiğinizi *konuma*göre bölüerseniz ve 5 dakikalık bir zaman ayrıntı düzeyi kullanarak çizim yaparsanız, *özetleme* yan tümcesi özetlenir *... bin (zaman damgası, 5 milyon), konum*.
+- Seçili **bölünmüş grafik** boyutu fazladan bir özetleme özelliğine çevrilir. Örneğin, grafiğinizi *konuma* göre bölüerseniz ve 5 dakikalık bir zaman ayrıntı düzeyi kullanarak çizim yaparsanız, *özetleme* yan tümcesi özetlenir *... bin (zaman damgası, 5 milyon), konum*.
 
 > [!NOTE]
-> Kusto sorgu diline yeni başladıysanız, kusto deyimlerini kopyalayıp Log Analytics sorgu bölmesine hiçbir değişiklik yapmadan başlayabilirsiniz. Temel grafiği görmek için **Çalıştır** ' a tıklayın. Sorgu dilinin söz dizimini anlamaya başladığınızda, küçük değişiklikler yapmaya başlayabilir ve yaptığınız değişikliğin etkisini görebilirsiniz. Kendi verilerinizi keşfetmek, [Log Analytics](../log-query/get-started-portal.md) ve [Azure izleyici](../overview.md)'nin tam gücünü yapmaya başlamak için harika bir yoldur.
+> Kusto sorgu diline yeni başladıysanız, kusto deyimlerini kopyalayıp Log Analytics sorgu bölmesine hiçbir değişiklik yapmadan başlayabilirsiniz. Temel grafiği görmek için **Çalıştır** ' a tıklayın. Sorgu dilinin söz dizimini anlamaya başladığınızda, küçük değişiklikler yapmaya başlayabilir ve yaptığınız değişikliğin etkisini görebilirsiniz. Kendi verilerinizi keşfetmek, [Log Analytics](../log-query/log-analytics-tutorial.md) ve [Azure izleyici](../overview.md)'nin tam gücünü yapmaya başlamak için harika bir yoldur.
 
 ## <a name="availability-metrics"></a>Kullanılabilirlik ölçümleri
 
@@ -79,7 +79,7 @@ availabilityResults
 
 |Ölçü birimi|Desteklenen toplamalar|Desteklenen boyutlar|
 |---|---|---|---|---|---|
-|Sayı|Sayı|Çalıştırma konumu, test adı, test sonucu|
+|Count|Count|Çalıştırma konumu, test adı, test sonucu|
 
 ```Kusto
 availabilityResults
@@ -184,7 +184,7 @@ Bu ölçüm, tarayıcıda çalışan uygulama kodunuzda oluşan özel durum say�
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|Notlar|
 |---|---|---|---|
-|Sayı|Sayı|Yok|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
+|Count|Count|Yok|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
 
 ```Kusto
 exceptions
@@ -199,7 +199,7 @@ Başarısız bağımlılık çağrılarının sayısı.
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|Notlar|
 |---|---|---|---|
-|Sayı|Sayı|Yok|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
+|Count|Count|Yok|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
 
 ```Kusto
 dependencies
@@ -214,7 +214,7 @@ Application Insights için bir özel durum kaydettiğinizde, SDK 'nın [trackexc
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|Notlar|
 |---|---|---|---|
-|Sayı|Sayı|Bulut rolü adı, bulut rolü örneği, cihaz türü|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
+|Count|Count|Bulut rolü adı, bulut rolü örneği, cihaz türü|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
 
 ```Kusto
 exceptions
@@ -224,11 +224,11 @@ exceptions
 
 ### <a name="failed-requests-requestsfailed"></a>Başarısız istekler (istek/başarısız)
 
-*Başarısız*olarak işaretlenen izlenen sunucu isteklerinin sayısı. Varsayılan olarak, Application Insights SDK, HTTP yanıt kodu 5 xx veya 4xx döndüren her sunucu isteğini başarısız bir istek olarak otomatik olarak işaretler. [Özel bir telemetri başlatıcısında](../app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)istek telemetri öğesinin *başarı* özelliğini değiştirerek bu mantığı özelleştirebilirsiniz.
+*Başarısız* olarak işaretlenen izlenen sunucu isteklerinin sayısı. Varsayılan olarak, Application Insights SDK, HTTP yanıt kodu 5 xx veya 4xx döndüren her sunucu isteğini başarısız bir istek olarak otomatik olarak işaretler. [Özel bir telemetri başlatıcısında](../app/api-filtering-sampling.md#addmodify-properties-itelemetryinitializer)istek telemetri öğesinin *başarı* özelliğini değiştirerek bu mantığı özelleştirebilirsiniz.
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|Notlar|
 |---|---|---|---|
-|Sayı|Sayı|Bulut rolü örneği, bulut rolü adı, gerçek veya yapay trafik, Istek performansı, yanıt kodu|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
+|Count|Count|Bulut rolü örneği, bulut rolü adı, gerçek veya yapay trafik, Istek performansı, yanıt kodu|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
 
 ```Kusto
 requests
@@ -243,7 +243,7 @@ Bu ölçüm, sunucu özel durumlarının sayısını gösterir.
 
 |Ölçü birimi|Desteklenen toplamalar|Önceden toplanmış Boyutlar|Notlar|
 |---|---|---|---|
-|Sayı|Sayı|Bulut rolü adı, bulut rolü örneği|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
+|Count|Count|Bulut rolü adı, bulut rolü örneği|Günlük tabanlı sürüm **Sum** toplamasını kullanır|
 
 ```Kusto
 exceptions
@@ -492,4 +492,3 @@ union traces, requests, pageViews, dependencies, customEvents, availabilityResul
 | summarize dcount(user_AuthenticatedId) by bin(timestamp, 1h)
 | render barchart
 ```
-

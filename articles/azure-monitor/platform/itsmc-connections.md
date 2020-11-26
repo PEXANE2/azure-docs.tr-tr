@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: f7980ca7bc6f23c383ea013c2b017b3bd61e2d25
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 410281ce67faf345539701389d4b03351d403b99
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842305"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186074"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>BT Hizmet Yönetimi Bağlayıcısı ile ITSM ürünlerine/hizmetlerine bağlanma
 Bu makalede, çalışma öğelerinizi merkezi olarak yönetmek için ıTSM ürününüz/hizmetiniz ile Log Analytics BT Hizmet Yönetimi Bağlayıcısı (ITSMC) arasındaki bağlantının nasıl yapılandırılacağı hakkında bilgi sağlanır. ISMC hakkında daha fazla bilgi için bkz. [genel bakış](./itsmc-overview.md).
@@ -46,7 +46,7 @@ Aşağıdaki önkoşulların karşılandığından emin olun:
 > [!NOTE]
 > 
 > - ITSM Bağlayıcısı, yalnızca bulut tabanlı ServiceNow örneklerine bağlanabilir. Şirket içi ServiceNow örnekleri şu anda desteklenmiyor.
-> - Eylemlerin bir parçası olarak özel [Şablonlar](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#template-definitions) kullanmak IÇIN, SCSM şablonundaki "projectiontype" parametresi "IncidentManagement!" ile eşlenmelidir. System. WorkItem. Incident. ProjectionType "
+> - Eylemlerin bir parçası olarak özel [Şablonlar](./itsmc-overview.md#template-definitions) kullanmak IÇIN, SCSM şablonundaki "projectiontype" parametresi "IncidentManagement!" ile eşlenmelidir. System. WorkItem. Incident. ProjectionType "
 
 ### <a name="connection-procedure"></a>Bağlantı yordamı
 
@@ -432,4 +432,3 @@ Cherwell için istemci KIMLIĞINI/anahtarını oluşturmak için aşağıdaki yo
 
 ## <a name="next-steps"></a>Sonraki adımlar
  - [Azure uyarılarından ıTSM iş öğeleri oluşturma](./itsmc-overview.md#create-itsm-work-items-from-azure-alerts)
-

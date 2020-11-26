@@ -4,11 +4,11 @@ description: Azure Backup için özel uç noktalar oluşturma sürecini anlayın
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.openlocfilehash: 0ca4e7a83e18ac72e25131d320737ce9578b1cf3
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172234"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184764"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup için özel uç noktalar
 
@@ -77,7 +77,7 @@ Bu üç kaynak grubu için **katılımcı** rolünü kasaya vermenizi öneririz 
 
     ![Rol ataması ekleyin](./media/private-endpoints/add-role-assignment.png)
 
-1. **Rol ataması Ekle** bölmesinde, **rol**olarak **katkıda bulunan** ' ı seçin ve kasasının **adını** **sorumlu**olarak kullanın. Kasanızı seçin ve işiniz bittiğinde **Kaydet** ' i seçin.
+1. **Rol ataması Ekle** bölmesinde, **rol** olarak **katkıda bulunan** ' ı seçin ve kasasının **adını** **sorumlu** olarak kullanın. Kasanızı seçin ve işiniz bittiğinde **Kaydet** ' i seçin.
 
     ![Rol ve asıl seçin](./media/private-endpoints/choose-role-and-principal.png)
 
@@ -89,7 +89,7 @@ Bu üç kaynak grubu için **katılımcı** rolünü kasaya vermenizi öneririz 
 
 Bu bölümde, kasanız için özel bir uç nokta oluşturma işlemi açıklanmaktadır.
 
-1. Arama çubuğunda **özel bağlantı**' yı arayıp seçin. Bu sizi **özel bağlantı merkezine**götürür.
+1. Arama çubuğunda **özel bağlantı**' yı arayıp seçin. Bu sizi **özel bağlantı merkezine** götürür.
 
     ![Özel bağlantı ara](./media/private-endpoints/search-for-private-link.png)
 
@@ -103,7 +103,7 @@ Bu bölümde, kasanız için özel bir uç nokta oluşturma işlemi açıklanmak
 
         ![Temel ayrıntıları doldur](./media/private-endpoints/basic-details.png)
 
-    1. **Kaynak**: Bu sekme, bağlantınızı oluşturmak Istediğiniz PaaS kaynağını bahsetmeyi gerektirir. İstediğiniz abonelik için kaynak türünden **Microsoft. RecoveryServices/kasaults** ' ı seçin. İşiniz bittiğinde, **kaynak** olarak kurtarma hizmetleri kasasının adını seçin ve **hedef alt kaynak**olarak **AzureBackup** .
+    1. **Kaynak**: Bu sekme, bağlantınızı oluşturmak Istediğiniz PaaS kaynağını bahsetmeyi gerektirir. İstediğiniz abonelik için kaynak türünden **Microsoft. RecoveryServices/kasaults** ' ı seçin. İşiniz bittiğinde, **kaynak** olarak kurtarma hizmetleri kasasının adını seçin ve **hedef alt kaynak** olarak **AzureBackup** .
 
         ![Kaynak sekmesini doldur](./media/private-endpoints/resource-tab.png)
 
@@ -411,13 +411,13 @@ Yedekleme, blob ve Kuyruk hizmeti için oluşturulan özel uç noktaları kullan
 - Kasa için özel uç nokta, Özel uç nokta oluşturulurken belirtilen adı kullanıyor
 - Blob ve kuyruk Hizmetleri için özel uç noktalara, kasa için aynı adı eklenir.
 
-Örneğin, aşağıdaki resimde, *pee2epe*adlı özel bir uç nokta bağlantısı için oluşturulan üç özel uç nokta gösterilmektedir:
+Örneğin, aşağıdaki resimde, *pee2epe* adlı özel bir uç nokta bağlantısı için oluşturulan üç özel uç nokta gösterilmektedir:
 
 ![Özel bir uç nokta bağlantısı için üç özel uç nokta](./media/private-endpoints/three-private-endpoints.png)
 
 Yedekleme hizmeti () için DNS bölgesi `privatelink.<geo>.backup.windowsazure.com` :
 
-1. **Özel bağlantı merkezinde**yedekleme için özel uç noktanıza gidin. Genel Bakış sayfası, Özel uç noktanız için FQDN ve özel IP 'Leri listeler.
+1. **Özel bağlantı merkezinde** yedekleme için özel uç noktanıza gidin. Genel Bakış sayfası, Özel uç noktanız için FQDN ve özel IP 'Leri listeler.
 
 1. Her FQDN ve özel IP için bir tür kaydı olarak bir giriş ekleyin.
 
@@ -425,7 +425,7 @@ Yedekleme hizmeti () için DNS bölgesi `privatelink.<geo>.backup.windowsazure.c
 
 Blob hizmeti () için DNS bölgesi `privatelink.blob.core.windows.net` :
 
-1. **Özel bağlantı merkezinde**blob için özel uç noktanıza gidin. Genel Bakış sayfası, Özel uç noktanız için FQDN ve özel IP 'Leri listeler.
+1. **Özel bağlantı merkezinde** blob için özel uç noktanıza gidin. Genel Bakış sayfası, Özel uç noktanız için FQDN ve özel IP 'Leri listeler.
 
 1. FQDN ve özel IP için bir tür kaydı olarak bir giriş ekleyin.
 
@@ -433,7 +433,7 @@ Blob hizmeti () için DNS bölgesi `privatelink.blob.core.windows.net` :
 
 Kuyruk hizmeti () için DNS bölgesi `privatelink.queue.core.windows.net` :
 
-1. **Özel bağlantı merkezinde**kuyruk için özel uç noktanıza gidin. Genel Bakış sayfası, Özel uç noktanız için FQDN ve özel IP 'Leri listeler.
+1. **Özel bağlantı merkezinde** kuyruk için özel uç noktanıza gidin. Genel Bakış sayfası, Özel uç noktanız için FQDN ve özel IP 'Leri listeler.
 
 1. FQDN ve özel IP için bir tür kaydı olarak bir giriş ekleyin.
 

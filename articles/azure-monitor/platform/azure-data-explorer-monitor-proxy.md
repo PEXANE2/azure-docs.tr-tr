@@ -7,12 +7,12 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 9b434c426264fcfee0dfe663a7d1b21a354badec
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 2a21d7a06e8a92022b620704d1fb51a303da3ae0
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491265"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185989"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Azure Veri Gezgini kullanarak Azure Izleyici 'de verileri sorgulama (Önizleme)
 Azure Veri Gezgini proxy kümesi, Azure Izleyici 'de Azure Veri Gezgini, Log Analytics çalışma alanları ve klasik Application Insights uygulamaları arasında çapraz ürün sorguları gerçekleştirmenizi sağlar. Azure Izleyici veya klasik Application Insights uygulamalarında Log Analytics çalışma alanlarını ara sunucu kümeleri olarak eşleyebilirsiniz. Daha sonra Azure Veri Gezgini araçları 'nı kullanarak proxy kümesini sorgulayabilir ve bir çapraz küme sorgusunda buna başvurabilirsiniz. Makalede bir proxy kümesine bağlanma, Azure Veri Gezgini Web Kullanıcı arabirimine bir proxy kümesi ekleme ve Log Analytics çalışma alanlarınızda ya da Azure Veri Gezgini klasik Application Insights uygulamalarında sorgu çalıştırmanın nasıl yapılacağı gösterilir.
@@ -60,7 +60,7 @@ Sorguları, örneğin: kusto Explorer, Azure Veri Gezgini Web UI, Jupyter Kbir M
 > * Veritabanı adı, proxy kümesinde belirtilen kaynakla aynı ada sahip olmalıdır. Adlar büyük/küçük harfe duyarlıdır.
 > * Küme içi sorgularda, Application Insights uygulamalar ve Log Analytics çalışma alanlarının adlandırılmasının doğru olduğundan emin olun.
 >     * Adlar özel karakterler içeriyorsa, bunlar proxy kümesi adındaki URL kodlamasıyla değiştirilirler. 
->     * Adlar, [KQL tanımlayıcı adı kurallarını](https://docs.microsoft.com/azure/data-explorer/kusto/query/schema-entities/entity-names)karşılamayan karakterler içeriyorsa, bunlar Dash **-** karakteriyle değiştirilmiştir.
+>     * Adlar, [KQL tanımlayıcı adı kurallarını](/azure/data-explorer/kusto/query/schema-entities/entity-names)karşılamayan karakterler içeriyorsa, bunlar Dash **-** karakteriyle değiştirilmiştir.
 
 ### <a name="direct-query-from-your-log-analytics-or-application-insights-proxy-cluster"></a>Log Analytics veya Application Insights proxy kümenizdeki doğrudan sorgu
 
@@ -93,9 +93,9 @@ UNION yerine [ `join` işleci](/azure/data-explorer/kusto/query/joinoperator?piv
 
 Azure Veri Gezgini kaynağı ' A ' kiracısında ve Log Analytics çalışma alanı ' B ' kiracısında ise aşağıdaki iki yöntemden birini kullanın:
 
-- Azure Veri Gezgini, farklı kiracılardaki sorumlular için roller eklemenize olanak tanır. ' B ' kiracısında Kullanıcı KIMLIĞINIZI Azure Veri Gezgini kümesinde yetkili bir kullanıcı olarak ekleyin. Azure Veri Gezgini kümesinde ' *[Trustedexternaltenant '](https://docs.microsoft.com/powershell/module/az.kusto/update-azkustocluster)* özelliğinin ' B ' kiracısı içerdiğini doğrulayın. Çapraz sorguyu ' B ' kiracısında tamamen çalıştırın.
+- Azure Veri Gezgini, farklı kiracılardaki sorumlular için roller eklemenize olanak tanır. ' B ' kiracısında Kullanıcı KIMLIĞINIZI Azure Veri Gezgini kümesinde yetkili bir kullanıcı olarak ekleyin. Azure Veri Gezgini kümesinde ' *[Trustedexternaltenant '](/powershell/module/az.kusto/update-azkustocluster)* özelliğinin ' B ' kiracısı içerdiğini doğrulayın. Çapraz sorguyu ' B ' kiracısında tamamen çalıştırın.
 
-- Azure Izleyici kaynağını ' A ' kiracısında görüntülemek için, açık [thouse](/azure/lighthouse/) kullanın.
+- Azure Izleyici kaynağını ' A ' kiracısında görüntülemek için, açık [thouse](../../lighthouse/index.yml) kullanın.
 
 ### <a name="connect-to-azure-data-explorer-clusters-from-different-tenants"></a>Farklı kiracılardan Azure Veri Gezgini kümelerine bağlanma
 
@@ -124,7 +124,7 @@ Log Analytics veya Application Insights kümelerini çağırırken aşağıdaki 
 
 |Sözdizimi açıklaması  |Application Insights  |Log Analytics  |
 |----------------|---------|---------|
-| Bu abonelikte yalnızca tanımlı kaynağı içeren bir küme içindeki veritabanı ( **çapraz küme sorguları için önerilir** ) |   küme ( `https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>').database('<ai-app-name>` ) | küme ( `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name>` )     |
+| Bu abonelikte yalnızca tanımlı kaynağı içeren bir küme içindeki veritabanı (**çapraz küme sorguları için önerilir**) |   küme ( `https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>').database('<ai-app-name>` ) | küme ( `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>').database('<workspace-name>` )     |
 | Bu abonelikteki tüm uygulamaları/çalışma alanlarını içeren küme    |     küme ( `https://ade.applicationinsights.io/subscriptions/<subscription-id>` )    |    küme ( `https://ade.loganalytics.io/subscriptions/<subscription-id>` )     |
 |Abonelikteki tüm uygulamaları/çalışma alanlarını içeren ve bu kaynak grubunun üyesi olan küme    |   küme ( `https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>` )      |    küme ( `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>` )      |
 |Bu abonelikte yalnızca tanımlı kaynağı içeren küme      |    küme ( `https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>` )    |  küme ( `https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>` )     |
@@ -132,4 +132,4 @@ Log Analytics veya Application Insights kümelerini çağırırken aşağıdaki 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Log Analytics çalışma alanları ve Application Insights veri yapısı](data-platform-logs.md)hakkında daha fazla bilgi edinin.
-- [Azure Veri Gezgini sorguları yazmayı](https://docs.microsoft.com/azure/data-explorer/write-queries)öğrenin.
+- [Azure Veri Gezgini sorguları yazmayı](/azure/data-explorer/write-queries)öğrenin.

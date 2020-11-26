@@ -10,11 +10,11 @@ ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
 ms.openlocfilehash: 711da24b3edf08f4867109d0d70165955236c39a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743429"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184663"
 ---
 # <a name="tutorial-configure-compute-on-azure-stack-edge-pro-gpu-device"></a>Öğretici: Azure Stack Edge Pro GPU cihazında işlem yapılandırma
 
@@ -25,14 +25,14 @@ Bu öğreticide, Azure Stack Edge Pro cihazınızda bir işlem rolünün nasıl 
 Bu yordamın tamamlanması 20 ila 30 dakika kadar sürebilir.
 
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * İşlem yapılandırma
 > * Kubernetes uç noktalarını al
 
  
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure Stack Edge Pro cihazınızda bir işlem rolü ayarlamadan önce şunları yaptığınızdan emin olun:
 
@@ -45,7 +45,7 @@ Azure Stack Edge Pro cihazınızda bir işlem rolü ayarlamadan önce şunları 
 
 Azure Stack Edge Pro ortamınızda işlem yapılandırmak için Azure portal aracılığıyla bir IoT Hub kaynağı oluşturacaksınız.
 
-1. Azure Stack Edge kaynağınızın Azure portal **Genel Bakış ' a**gidin. Sağ bölmede, **işlem** kutucuğunda **başlayın**' ı seçin.
+1. Azure Stack Edge kaynağınızın Azure portal **Genel Bakış ' a** gidin. Sağ bölmede, **işlem** kutucuğunda **başlayın**' ı seçin.
 
     ![İşlem ile çalışmaya başlama](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-1.png)
 
@@ -58,8 +58,8 @@ Azure Stack Edge Pro ortamınızda işlem yapılandırmak için Azure portal ara
    
     |Alan  |Değer  |
     |---------|---------|
-    |IoT Hub     | **Yeni** veya **mevcut**seçeneklerinden birini belirleyin. <br> Varsayılan olarak IoT kaynağı oluşturulurken Standart katmanı (S1) kullanılır. Bir ücretsiz katman IoT kaynağı kullanmak için kaynağı oluşturun ve sonra da mevcut kaynağı seçin. <br> Her durumda IoT Hub kaynak, Azure Stack Edge kaynağı tarafından kullanılan aynı abonelik ve kaynak grubunu kullanır.     |
-    |Name     |IoT Hub kaynağınız için bir ad girin.         |
+    |IoT Hub     | **Yeni** veya **mevcut** seçeneklerinden birini belirleyin. <br> Varsayılan olarak IoT kaynağı oluşturulurken Standart katmanı (S1) kullanılır. Bir ücretsiz katman IoT kaynağı kullanmak için kaynağı oluşturun ve sonra da mevcut kaynağı seçin. <br> Her durumda IoT Hub kaynak, Azure Stack Edge kaynağı tarafından kullanılan aynı abonelik ve kaynak grubunu kullanır.     |
+    |Adı     |IoT Hub kaynağınız için bir ad girin.         |
 
     ![İşlem 2 ile çalışmaya başlama](./media/azure-stack-edge-j-series-deploy-configure-compute/configure-compute-3.png)
 
@@ -76,7 +76,7 @@ Azure Stack Edge Pro ortamınızda işlem yapılandırmak için Azure portal ara
     
 Edge cihazında Edge hesaplama rolü ayarlandığında, iki cihaz oluşturur: bir IoT cihazı ve bir IoT Edge cihaz. Her iki cihaz de IoT Hub kaynağında görüntülenebilir. Bu IoT Edge cihazında aynı zamanda bir IoT Edge çalışma zamanı çalışıyor. Bu noktada, IoT Edge cihazınız için yalnızca Linux platformu kullanılabilir.
 
-Arka planda, sanal makinelerin ve Kubernetes kümesinin oluşturulmasından bu yana işlem yapılandırmak 20-30 dakika sürebilir. 
+Arka planda, sanal makinelerin ve Kubernetes kümesinin oluşturulmasından bu yana işlem yapılandırmak 20-30 dakika sürebilir. 
 
 Azure portal içinde işlem başarıyla yapılandırıldıktan sonra, bir Kubernetes kümesi ve IoT ad alanıyla ilişkili bir varsayılan kullanıcı (Azure Stack Edge Pro tarafından denetlenen bir sistem ad alanı) mevcuttur. 
 
@@ -85,7 +85,7 @@ Azure portal içinde işlem başarıyla yapılandırıldıktan sonra, bir Kubern
 Bir istemciyi Kubernetes kümesine erişecek şekilde yapılandırmak için Kubernetes uç noktasına ihtiyacınız olacaktır. Azure Stack Edge Pro cihazınızın yerel kullanıcı arabiriminden Kubernetes API uç noktasını almak için aşağıdaki adımları izleyin.
 
 1. Cihazınızın yerel Web Kullanıcı arabiriminde, **cihazlar** sayfasına gidin.
-2. **Cihaz uç noktaları**altında **Kubernetes API hizmeti** uç noktasını kopyalayın. Bu uç nokta aşağıdaki biçimde bir dizedir: `https://compute.<device-name>.<DNS-domain>[Kubernetes-cluster-IP-address]` . 
+2. **Cihaz uç noktaları** altında **Kubernetes API hizmeti** uç noktasını kopyalayın. Bu uç nokta aşağıdaki biçimde bir dizedir: `https://compute.<device-name>.<DNS-domain>[Kubernetes-cluster-IP-address]` . 
 
     ![Yerel Kullanıcı arabirimindeki cihaz sayfası](./media/azure-stack-edge-j-series-create-kubernetes-cluster/device-kubernetes-endpoint-1.png)
 

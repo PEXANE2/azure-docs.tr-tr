@@ -4,12 +4,12 @@ description: Application Insights, uygulama telemetrinizin akıllı analizini ya
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: c817e2c7f609bbbec52eff1b898a8d7c53209a28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28a32c714618a3b6b0c3126d8060295f134ddc7c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87321318"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186244"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Akıllı algılama-performans bozuklukları
 
@@ -175,11 +175,10 @@ Bu tanılama araçları uygulamanızdan Telemetriyi incelemenize yardımcı olur
 
 * [Profil Oluşturucu](profiler.md) 
 * [anlık görüntü hata ayıklayıcısı](./snapshot-debugger.md)
-* [Analiz](../log-query/get-started-portal.md)
+* [Analiz](../log-query/log-analytics-tutorial.md)
 * [Analytics akıllı tanılama](../log-query/log-query-overview.md)
 
 Akıllı algılamalar tamamen otomatiktir. Ancak daha fazla uyarı kurmak istiyor olabilirsiniz?
 
 * [El ile yapılandırılmış ölçüm uyarıları](../platform/alerts-log.md)
 * [Kullanılabilirlik web testleri](./monitor-web-app-availability.md)
-

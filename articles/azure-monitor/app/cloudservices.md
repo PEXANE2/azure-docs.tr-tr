@@ -4,19 +4,19 @@ description: Application Insights ile web ve çalışan rollerinizi etkili bir �
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: cae2e4e1d5b5e199e772c5263a46d82289f5d6ac
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 29482403358936b95fc5e814b68238cc8c25f7a8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91992850"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186363"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure Cloud Services için Application Insights
 [Application Insights][start] , bulut hizmetinizdeki [Azure tanılama](../platform/diagnostics-extension-overview.md) verilerle Application Insights SDK 'lardan verileri birleştirerek kullanılabilirlik, performans, başarısızlık ve kullanım için [Azure bulut hizmeti uygulamalarını](https://azure.microsoft.com/services/cloud-services/) izleyebilir. Uygulamanızın gerçek hayattaki performansı ve etkinliğine ilişkin aldığınız geri bildirimlerden yararlanarak her geliştirme yaşam döngüsünde tasarımın yönü konusunda bilinçli kararlar alabilirsiniz.
 
 ![Genel Bakış Panosu](./media/cloudservices/overview-graphs.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Başlamadan önce şunları yapmanız gerekir:
 
 * Bir [Azure](https://azure.com) aboneliği. Windows, Xbox Live veya diğer Microsoft bulut hizmetleri için Microsoft hesabı oturum açın. 
@@ -85,9 +85,9 @@ Her kaynak bir izleme anahtarı ile tanımlanır. SDK yapılandırmasını el il
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>Her rol için Azure Tanılama ayarlama
 Uygulamanızı Application Insights ile izlemek için bu seçeneği ayarlayın. Web rolleri için bu seçenek performans izleme, uyarılar, Tanılamalar ve kullanım analizi sağlar. Diğer roller için, yeniden başlatma, performans sayaçları ve System. Diagnostics. Trace çağrıları gibi Azure Tanılama arayabilir ve izleyebilirsiniz. 
 
-1. Visual Studio Çözüm Gezgini **\<YourCloudService>**  >  **Roller**altında her rolün özelliklerini açın.
+1. Visual Studio Çözüm Gezgini **\<YourCloudService>**  >  **Roller** altında her rolün özelliklerini açın.
 
-1. **Yapılandırma**bölümünde **tanılama verilerini Application Insights gönder** onay kutusunu seçin ve ardından daha önce oluşturduğunuz Application Insights kaynağını seçin.
+1. **Yapılandırma** bölümünde **tanılama verilerini Application Insights gönder** onay kutusunu seçin ve ardından daha önce oluşturduğunuz Application Insights kaynağını seçin.
 
 Her derleme yapılandırması için ayrı bir Application Insights kaynağı kullanmaya karar verdiyseniz önce yapılandırmayı seçin.
 
@@ -102,9 +102,9 @@ Bu seçenekle, herhangi bir role özel iş telemetrisi ekleyebilirsiniz. Bu seç
 
 Visual Studio’da her bulut uygulaması projesi için Application Insights SDK’sını yapılandırın.
 
-1. **Web rollerini**yapılandırmak için projeye sağ tıklayın ve ardından **Application Insights Yapılandır** ' ı veya **> Application Insights telemetri Ekle**' yi seçin.
+1. **Web rollerini** yapılandırmak için projeye sağ tıklayın ve ardından **Application Insights Yapılandır** ' ı veya **> Application Insights telemetri Ekle**' yi seçin.
 
-1. **Çalışan rollerini**yapılandırmak için: 
+1. **Çalışan rollerini** yapılandırmak için: 
 
     a. Projeye sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' i seçin.
 
@@ -191,7 +191,7 @@ Performans sayaçlarını ve olay sayılarını görüntülemek için [Ölçüm 
 
 ![Azure Tanılama verileri](./media/cloudservices/23-wad.png)
 
-Azure Tanılama tarafından gönderilen çeşitli izleme günlüklerinde arama yapmak için [arama](./diagnostic-search.md) veya [analiz sorgusu](../log-query/get-started-portal.md)kullanın. Örneğin, bir rolün kilitlenmesine ve geri dönüştürülmesine neden olan işlenmeyen bir özel durum olduğunu varsayalım. Bu bilgi, Windows Olay Günlüğü’nün Uygulama kanalında görünür. Windows olay günlüğü hatasını görüntülemek ve özel durum için tam yığın izlemesini almak üzere ara ' yı kullanabilirsiniz. Bunun yapılması, sorunun asıl nedenini bulmanıza yardımcı olur.
+Azure Tanılama tarafından gönderilen çeşitli izleme günlüklerinde arama yapmak için [arama](./diagnostic-search.md) veya [analiz sorgusu](../log-query/log-analytics-tutorial.md)kullanın. Örneğin, bir rolün kilitlenmesine ve geri dönüştürülmesine neden olan işlenmeyen bir özel durum olduğunu varsayalım. Bu bilgi, Windows Olay Günlüğü’nün Uygulama kanalında görünür. Windows olay günlüğü hatasını görüntülemek ve özel durum için tam yığın izlemesini almak üzere ara ' yı kullanabilirsiniz. Bunun yapılması, sorunun asıl nedenini bulmanıza yardımcı olur.
 
 ![Azure Tanılama arama](./media/cloudservices/25-wad.png)
 

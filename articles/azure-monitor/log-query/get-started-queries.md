@@ -6,17 +6,17 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: 8b3b6a41da6e3100739da920472d582711d1e9b1
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: a949c9b34e299e0dc4eccbb62f4b4ebb38d6ccb9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024390"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186720"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Azure İzleyici’de günlük sorgularını kullanmaya başlama
 
 > [!NOTE]
-> En az bir sanal makineden veri topluyorsanız, kendi ortamınızda bu alıştırma aracılığıyla çalışabilirsiniz. Daha sonra, çok sayıda örnek veri içeren [tanıtım ortamımuzu](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade)kullanın.  KQL 'de sorgu oluşturmayı zaten biliyorsanız, ancak yalnızca kaynak türlerine göre kısa bir süre önce yararlı sorgular oluşturmanız gerekiyorsa, [kaydedilen örnek sorgular bölmesine](saved-queries.md)bakın.
+> En az bir sanal makineden veri topluyorsanız, kendi ortamınızda bu alıştırma aracılığıyla çalışabilirsiniz. Daha sonra, çok sayıda örnek veri içeren [tanıtım ortamımuzu](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade)kullanın.  KQL 'de sorgu oluşturmayı zaten biliyorsanız, ancak yalnızca kaynak türlerine göre kısa bir süre önce yararlı sorgular oluşturmanız gerekiyorsa, [kaydedilen örnek sorgular bölmesine](./example-queries.md)bakın.
 
 Bu öğreticide, Azure Izleyici 'de günlük sorgularını yazmayı öğreneceksiniz. Şu şekilde nasıl yapılacağını öğretir:
 
@@ -28,7 +28,7 @@ Bu öğreticide, Azure Izleyici 'de günlük sorgularını yazmayı öğreneceks
 - Özel alanları tanımlama ve kullanma
 - Toplam ve Grup sonuçları
 
-Azure portal Log Analytics kullanmaya yönelik bir öğretici için bkz. [Azure izleyici 'yi kullanmaya başlama Log Analytics](get-started-portal.md).<br>
+Azure portal Log Analytics kullanmaya yönelik bir öğretici için bkz. [Azure izleyici 'yi kullanmaya başlama Log Analytics](./log-analytics-tutorial.md).<br>
 Azure Izleyici 'de günlük sorguları hakkında daha fazla bilgi için bkz. [Azure izleyici 'de günlük sorgularına genel bakış](log-query-overview.md).
 
 Aşağıdaki öğreticinin video sürümüyle birlikte izleyin:
@@ -44,7 +44,7 @@ Sorgular, bir tablo adı veya *Search* komutuyla başlayabilir. Sorgu için aç�
 
 ### <a name="table-based-queries"></a>Tablo tabanlı sorgular
 
-Azure Izleyici, tablolardaki günlük verilerini, her biri birden çok sütundan oluşan şekilde düzenler. Tüm tablolar ve sütunlar, analiz portalında Log Analytics şema bölmesinde gösterilir. İlgilendiğiniz bir tabloyu tanımlayabilir ve ardından bir veri bölümüne göz atın:
+Azure İzleyici, günlük verilerini her birinde birden çok sütun bulunan tablolar halinde düzenler. Tüm tablolar ve sütunlar, analiz portalında Log Analytics şema bölmesinde gösterilir. İlgilendiğiniz bir tabloyu tanımlayabilir ve ardından bir veri bölümüne göz atın:
 
 ```Kusto
 SecurityEvent

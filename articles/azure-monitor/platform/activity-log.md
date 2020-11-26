@@ -7,23 +7,23 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 6543b629af8d67658afe61ef81e22eb7355e1de7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b49faabb1c61a10418bfce3ae2e8187429981ad
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91772813"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186091"
 ---
 # <a name="azure-activity-log"></a>Azure Etkinlik Günlüğü
-Etkinlik günlüğü, Azure 'da abonelik düzeyindeki olaylara ilişkin Öngörüler sağlayan bir [Platform Günlüğliğidir](platform-logs-overview.md) . Bu, bir kaynağın değiştirildiği veya bir sanal makinenin başlatıldığı zaman gibi bilgileri içerir. Etkinlik günlüğünü Azure portal görüntüleyebilir veya PowerShell ve CLı ile girdileri alabilirsiniz. Ek işlevsellik için, etkinlik günlüğü 'nü Azure [Izleyici günlüklerine](data-platform-logs.md), Azure Event Hubs Azure 'da veya arşivleme Için Azure depolama 'ya iletecek şekilde göndermek üzere bir tanılama ayarı oluşturmanız gerekir. Bu makale, etkinlik günlüğünü görüntüleme ve farklı hedeflere gönderme hakkında ayrıntılar sağlar.
+Etkinlik günlüğü Azure'da abonelik düzeyi olaylarıyla ilgili içgörüler sağlayan bir [platform günlüğüdür](platform-logs-overview.md). Bir kaynağın ne zaman değiştirildiği veya sanal makinenin ne zaman başlatıldığı gibi bilgileri içerir. Etkinlik günlüğünü Azure portal görüntüleyebilir veya PowerShell ve CLı ile girdileri alabilirsiniz. Ek işlevsellik için, etkinlik günlüğü 'nü Azure [Izleyici günlüklerine](data-platform-logs.md), Azure Event Hubs Azure 'da veya arşivleme Için Azure depolama 'ya iletecek şekilde göndermek üzere bir tanılama ayarı oluşturmanız gerekir. Bu makale, etkinlik günlüğünü görüntüleme ve farklı hedeflere gönderme hakkında ayrıntılar sağlar.
 
 Tanılama ayarı oluşturma hakkında ayrıntılı bilgi için bkz. [Platform günlüklerini ve ölçümleri farklı hedeflere göndermek için Tanılama ayarları oluşturma](diagnostic-settings.md) .
 
 > [!NOTE]
-> Etkinlik günlüğündeki girişler sistem tarafından oluşturuldu ve değiştirilemez ya da silinemez.
+> Etkinlik Günlüğündeki girdiler sistem tarafından oluşturulur ve değiştirilemez veya silinemez.
 
 ## <a name="view-the-activity-log"></a>Etkinlik günlüğünü görüntüleme
-Etkinlik günlüğüne Azure portal birçok menü üzerinden erişebilirsiniz. İçinden açtığınız menü ilk filtresini belirler. Bunu **izleyici** menüsünden açarsanız, abonelik üzerinde tek filtre olur. Bunu bir kaynağın menüsünden açarsanız, filtre o kaynağa ayarlanır. Tüm diğer girdileri görüntülemek için filtreyi her zaman değiştirebilirsiniz. Filtreye ek özellikler eklemek için **Filtre Ekle** ' ye tıklayın.
+Azure portaldaki menülerin çoğundan Etkinlik günlüğüne erişebilirsiniz. Günlüğün başlangıçtaki filtresi, günlüğü hangi menüden açtığınıza göre belirlenir. Bunu **izleyici** menüsünden açarsanız, abonelik üzerinde tek filtre olur. Bunu bir kaynağın menüsünden açarsanız, filtre o kaynağa ayarlanır. Tüm diğer girdileri görüntülemek için filtreyi her zaman değiştirebilirsiniz. Filtreye ek özellikler eklemek için **Filtre Ekle** ' ye tıklayın.
 
 ![Etkinlik günlüğünü görüntüle](./media/activity-logs-overview/view-activity-log.png)
 
@@ -58,9 +58,9 @@ Etkinlik günlüğü olaylarına aşağıdaki yöntemleri kullanarak da erişebi
 - Etkinlik günlüğü girdilerini 90 günden daha uzun bir süre için depolayın.
 - Log Analytics çalışma alanında depolanan etkinlik günlüğü verileri için veri alımı veya veri saklama ücreti alınmaz.
 
-Etkinlik günlüğünü bir Log Analytics çalışma alanına göndermek için [bir tanılama ayarı oluşturun](diagnostic-settings.md) . Etkinlik günlüğünü herhangi bir tek abonelikten beş çalışma alanına gönderebilirsiniz. Kiracılar arasında günlüklerin toplanması için [Azure açık Thouse](../../lighthouse/index.yml)gerekir.
+Etkinlik günlüğünü bir Log Analytics çalışma alanına göndermek için [bir tanılama ayarı oluşturun](diagnostic-settings.md) . Etkinlik günlüğünü herhangi bir tek abonelikten beş çalışma alanına gönderebilirsiniz. Kiracılar arasında günlükleri toplamak için [Azure Lighthouse](../../lighthouse/index.yml) gerekir.
 
-Log Analytics çalışma alanındaki etkinlik günlüğü verileri, [Log Analytics](../log-query/get-started-portal.md)bir [günlük sorgusuyla](../log-query/log-query-overview.md) alabileceğiniz, *AzureActivity* adlı bir tabloda depolanır. Bu tablonun yapısı, [günlük girişinin kategorisine](activity-log-schema.md)bağlı olarak değişir. Tablo özelliklerinin açıklaması için bkz. [Azure izleyici veri başvurusu](/azure/azure-monitor/reference/tables/azureactivity).
+Log Analytics çalışma alanındaki etkinlik günlüğü verileri, [Log Analytics](../log-query/log-analytics-tutorial.md)bir [günlük sorgusuyla](../log-query/log-query-overview.md) alabileceğiniz, *AzureActivity* adlı bir tabloda depolanır. Bu tablonun yapısı, [günlük girişinin kategorisine](activity-log-schema.md)bağlı olarak değişir. Tablo özelliklerinin açıklaması için bkz. [Azure izleyici veri başvurusu](/azure/azure-monitor/reference/tables/azureactivity).
 
 Örneğin, her bir kategorinin etkinlik günlüğü kayıtlarının sayımını görüntülemek için aşağıdaki sorguyu kullanın.
 
@@ -206,7 +206,7 @@ Zaten bir günlük profili varsa, önce mevcut günlük profilini kaldırmalı v
     | Servicebusruleıd |Hayır |İçinde Olay Hub 'larının oluşturulmasını istediğiniz Service Bus ad alanı için kural KIMLIĞI Service Bus. Bu şu biçimde bir dizedir: `{service bus resource ID}/authorizationrules/{key name}` . |
     | Konum |Evet |Etkinlik günlüğü olaylarını toplamak istediğiniz bölgelerin virgülle ayrılmış listesi. |
     | Retentionındays |Evet |Depolama hesabında olayların saklanacağı gün sayısı (1 ile 365 arasında). Sıfır değeri, günlükleri süresiz olarak depolar. |
-    | Kategori |Hayır |Toplanması gereken olay kategorilerinin virgülle ayrılmış listesi. Olası değerler _yazma_, _silme_ve _eylem_. |
+    | Kategori |Hayır |Toplanması gereken olay kategorilerinin virgülle ayrılmış listesi. Olası değerler _yazma_, _silme_ ve _eylem_. |
 
 ### <a name="example-script"></a>Örnek betik
 Aşağıda, etkinlik günlüğünü hem depolama hesabına hem de Olay Hub 'ına yazan bir günlük profili oluşturmak için örnek bir PowerShell betiği verilmiştir.
@@ -281,7 +281,7 @@ Aşağıdaki tablodaki sütunlar güncelleştirilmiş şemada kullanımdan kald�
 | ResourceProvider  | ResourceProviderValue  |
 
 > [!IMPORTANT]
-> Bazı durumlarda, bu sütunlardaki değerler tüm büyük harfle olabilir. Bu sütunları içeren bir sorgunuz varsa, büyük/küçük harfe duyarsız bir karşılaştırma yapmak için [= ~ işlecini](/azure/kusto/query/datatypes-string-operators) kullanmanız gerekir.
+> Bazı durumlarda bu sütunlardaki değerler tümüyle büyük harf olabilir. Bu sütunları içeren bir sorgunuz varsa, büyük/küçük harfe duyarsız bir karşılaştırma yapmak için [=~ işlecini](/azure/kusto/query/datatypes-string-operators) kullanmalısınız.
 
 Güncelleştirilmiş şemada *AzureActivity* 'e aşağıdaki sütun eklenmiştir:
 

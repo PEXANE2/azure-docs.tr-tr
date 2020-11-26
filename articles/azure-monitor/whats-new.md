@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: 4fa00bffc35c4ed67ce70751c8882b74ad6b01a1
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: bf15e380eb1a88acc39ca63165d18d04a260b35d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95534509"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185904"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Izleyici belgelerindeki yenilikler nelerdir?
 
@@ -230,7 +230,7 @@ Bu makalede, yeni veya önemli ölçüde güncelleştirilmiş Azure Izleyici mak
 - [Azure izleyici müşterinin yönettiği anahtar tarafından yönetilen](platform/customer-managed-keys.md) hata iletisi ve bölüm CMK yapılandırması.
 - [Azure IZLEYICI http veri toplayıcı API 'si](platform/data-collector-api.md) -Python 3 örneği eklendi.
 - Alt sorgular kullanılırken birden çok veri taramasını önleme başlıklı bölümde [Azure izleyici 'de günlük sorgularını en iyileştirin](log-query/query-optimization.md) .
-- [Öğretici: Log Analytics sorguları ile çalışmaya](log-query/get-started-portal.md) başlayın-video eklendi.
+- [Öğretici: Log Analytics sorguları ile çalışmaya](./log-query/log-analytics-tutorial.md) başlayın-video eklendi.
 
 ### <a name="platform-logs"></a>Platform günlükleri
 - [Platform günlüklerini ve ölçümlerini farklı hedeflerle eklenen videoya göndermek için Tanılama ayarları oluşturun](platform/diagnostic-settings.md) .

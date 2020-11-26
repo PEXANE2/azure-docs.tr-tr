@@ -15,12 +15,12 @@ ms.date: 11/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1, devx-track-azurecli
-ms.openlocfilehash: 53628f5aa0bc5ab5dedde5deb9950c7b13fb4bf6
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: e30af9522d7c8fa81c4d93e11d252aefc4426586
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490755"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184272"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Azure RBAC sorunlarını giderme
 
@@ -151,7 +151,7 @@ Benzer şekilde, bu rol atamasını Azure CLı kullanarak listelüyor olmanız h
 }
 ```
 
-Güvenlik sorumlusunun silindiği bu rol atamalarından ayrılmayan bir sorun değildir. İsterseniz, diğer rol atamalarına benzer adımları kullanarak bu rol atamalarını kaldırabilirsiniz. Rol atamalarını kaldırma hakkında daha fazla bilgi için bkz. [Azure Portal](role-assignments-portal.md#remove-a-role-assignment), [Azure POWERSHELL](role-assignments-powershell.md#remove-a-role-assignment)veya [Azure CLI](role-assignments-cli.md#remove-role-assignment)
+Güvenlik sorumlusunun silindiği bu rol atamalarından ayrılmayan bir sorun değildir. İsterseniz, diğer rol atamalarına benzer adımları kullanarak bu rol atamalarını kaldırabilirsiniz. Rol atamalarını kaldırma hakkında daha fazla bilgi için bkz. [Azure Portal](role-assignments-portal.md#remove-a-role-assignment), [Azure POWERSHELL](role-assignments-powershell.md#remove-a-role-assignment)veya [Azure CLI](role-assignments-cli.md#remove-a-role-assignment)
 
 PowerShell 'de, rol atamalarını nesne KIMLIĞI ve rol tanımı adı kullanarak kaldırmaya çalışırsanız ve parametreleriniz ile eşleşen birden fazla rol ataması varsa, şu hata iletisini alırsınız: "belirtilen bilgiler bir rol atamasıyla eşlenmiyor". Aşağıdaki çıktıda hata iletisi örneği gösterilmektedir:
 
@@ -228,7 +228,7 @@ Bu öğeler, **sanal makineye** **yazma** erişimi gerektirir:
 * Uç Noktalar  
 * IP adresleri  
 * Diskler  
-* Uzantılar  
+* Uzantıları  
 
 Bunlar, hem **sanal makineye** hem de **kaynak grubuna** (etki alanı adıyla birlikte) **yazma** erişimi gerektirir:  
 

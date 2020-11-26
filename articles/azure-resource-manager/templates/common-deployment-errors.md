@@ -4,12 +4,12 @@ description: Azure 'a Azure Resource Manager kullanarak kaynak dağıtırken yay
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 09/09/2020
-ms.openlocfilehash: fb7e476a5b4416282546d321a5e9a0127b7a4364
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 785a74184cae8523b99da7f647ca87fda53c8648
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000717"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185836"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Azure Resource Manager'la yaygın Azure dağıtım hatalarını giderme
 
@@ -76,10 +76,10 @@ Bir hata kodu hakkında bilgi arıyorsanız ve bu makalede bilgi sağlanmazsa bi
 | Storageaccountalreadyçekildi | Depolama hesabına benzersiz bir ad verin. | [Depolama hesabı adını çözümle](error-storage-account-name.md) |
 | StorageAccountNotFound | Kullanmayı denediğiniz depolama hesabının aboneliğini, kaynak grubunu ve adını denetleyin. | |
 | SubnetsNotInSameVnet | Bir sanal makine yalnızca bir sanal ağa sahip olabilir. Çeşitli NIC 'ler dağıtıldığında aynı sanal ağa ait olduklarından emin olun. | [Birden çok NIC](../../virtual-machines/windows/multiple-nics.md) |
-| SubscriptionNotFound | Dağıtım için belirtilen aboneliğe erişilemiyor. Abonelik KIMLIĞI yanlış olabilir, şablonu dağıtmanın Kullanıcı aboneliğe dağıtmak için yeterli izinlere sahip değil veya abonelik KIMLIĞI yanlış biçimde. [Kapsamları genelinde dağıtmak](cross-scope-deployment.md)üzere iç içe dağıtımlar kullanılırken, aboneliğin GUID 'sini sağlayın. | |
+| SubscriptionNotFound | Dağıtım için belirtilen aboneliğe erişilemiyor. Abonelik KIMLIĞI yanlış olabilir, şablonu dağıtmanın Kullanıcı aboneliğe dağıtmak için yeterli izinlere sahip değil veya abonelik KIMLIĞI yanlış biçimde. [Kapsamları genelinde dağıtmak](./deploy-to-resource-group.md)üzere iç içe dağıtımlar kullanılırken, aboneliğin GUID 'sini sağlayın. | |
 | SubscriptionNotRegistered | Bir kaynak dağıtıldığında, aboneliğiniz için kaynak sağlayıcının kayıtlı olması gerekir. Dağıtım için bir Azure Resource Manager şablonu kullandığınızda, kaynak sağlayıcısı abonelikte otomatik olarak kaydedilir. Bazen otomatik kayıt zaman içinde tamamlanmaz. Bu aralıklı hatadan kaçınmak için, dağıtımdan önce kaynak sağlayıcısını kaydedin. | [Kaydı çözümle](error-register-resource-provider.md) |
 | Templateresourcecırculardependency | Gereksiz bağımlılıkları kaldırın. | [Döngüsel bağımlılıkları çözümle](error-invalid-template.md#circular-dependency) |
-| TooManyTargetResourceGroups | Tek bir dağıtım için kaynak gruplarının sayısını azaltın. | [Çapraz kapsam dağıtımı](cross-scope-deployment.md) |
+| TooManyTargetResourceGroups | Tek bir dağıtım için kaynak gruplarının sayısını azaltın. | [Çapraz kapsam dağıtımı](./deploy-to-resource-group.md) |
 
 ## <a name="find-error-code"></a>Hata kodunu bul
 
@@ -166,7 +166,7 @@ Ya da yanıt içeriği:
 
 Bu bilgiler, şablondaki bir değerin yanlış şekilde ayarlanmış olup olmadığını belirlemenize yardımcı olabilir.
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Azure CLı Şu anda hata ayıklama günlük kaydını açmayı desteklemez, ancak hata ayıklama günlüğünü alabilirsiniz.
 

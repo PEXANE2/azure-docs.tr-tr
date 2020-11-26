@@ -2,13 +2,13 @@
 title: Azure VM 'lerini yeni aboneliğe veya kaynak grubuna taşıma
 description: Sanal makineleri yeni bir kaynak grubuna veya aboneliğe taşımak için Azure Resource Manager kullanın.
 ms.topic: conceptual
-ms.date: 09/21/2020
-ms.openlocfilehash: 219a8b438d2715f6e97085a527b386e51759ec2c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/25/2020
+ms.openlocfilehash: ace1fb6bf3944df539ec8f7301357e67d2b315a9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317115"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184085"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>Sanal makineler için taşıma Kılavuzu
 
@@ -19,7 +19,6 @@ Bu makalede, şu anda desteklenmeyen senaryolar ve sanal makineleri yedekleme il
 Aşağıdaki senaryolar henüz desteklenmemektedir:
 
 * Standart SKU 'SU Load Balancer veya standart SKU genel IP 'si olan sanal makine ölçek kümeleri taşınamaz.
-* Planların eklendiği Market kaynaklarından oluşturulan sanal makineler abonelikler arasında taşınamaz. Sanal makinenin geçerli abonelikte sağlamasını kaldırın ve yeni abonelikte yeniden dağıtın.
 * Sanal ağdaki tüm kaynakları taşımadan, var olan bir sanal ağdaki sanal makineler yeni bir aboneliğe taşınamaz.
 * Düşük öncelikli sanal makineler ve düşük öncelikli sanal makine ölçek kümeleri kaynak grupları veya abonelikler arasında taşınamaz.
 * Bir kullanılabilirlik kümesindeki sanal makineler tek tek taşınamaz.
@@ -36,6 +35,24 @@ az vm encryption disable --resource-group demoRG --name myVm1
 Disable-AzVMDiskEncryption -ResourceGroupName demoRG -VMName myVm1
 ```
 
+## <a name="virtual-machines-with-marketplace-plans"></a>Market planlarına sahip sanal makineler
+
+Planların eklendiği Market kaynaklarından oluşturulan sanal makineler abonelikler arasında taşınamaz. Bu sınırlamaya geçici bir çözüm bulmak için, sanal makineyi geçerli abonelikte serbest olarak temin edebilir ve yeni abonelikte yeniden dağıtabilirsiniz. Aşağıdaki adımlar, sanal makineyi yeni abonelikte yeniden oluşturmanıza yardımcı olur. Ancak, bunlar tüm senaryolarda çalışmayabilir. Plan Market 'te artık mevcut değilse, bu adımlar işe alınmaz.
+
+1. Plan hakkındaki bilgileri kopyalayın.
+
+1. İşletim sistemi diskini hedef aboneliğe kopyalayın ya da sanal makineyi kaynak aboneliğinden sildikten sonra özgün diski taşıyın.
+
+1. Hedef abonelikte, planınız için Market koşullarını kabul edin. Aşağıdaki PowerShell komutunu çalıştırarak koşulları kabul edebilirsiniz:
+
+   ```azurepowershell
+   Get-AzMarketplaceTerms -Publisher {publisher} -Product {product/offer} -Name {name/SKU} | Set-AzMarketplaceTerms -Accept
+   ```
+
+   Veya, Portal üzerinden plana sahip bir sanal makinenin yeni bir örneğini oluşturabilirsiniz. Yeni abonelikteki koşulları kabul ettikten sonra sanal makineyi silebilirsiniz.
+
+1. Hedef abonelikte, sanal makineyi PowerShell, CLı veya bir Azure Resource Manager şablonu kullanarak kopyalanmış işletim sistemi diskinden yeniden oluşturun. Diske eklenmiş Market planını ekleyin. Plan hakkındaki bilgiler, yeni abonelikte satın aldığınız planla eşleşmelidir.
+
 ## <a name="virtual-machines-with-azure-backup"></a>Azure Backup olan sanal makineler
 
 Azure Backup ile yapılandırılmış sanal makineleri taşımak için, geri yükleme noktalarını kasadan silmeniz gerekir.
@@ -48,7 +65,7 @@ Sanal makineniz için [geçici silme](../../../backup/backup-azure-security-feat
 2. Azure Backup ile yapılandırılmış sanal makineleri taşımak için aşağıdaki adımları uygulayın:
 
    1. Sanal makinenizin konumunu bulun.
-   2. Şu adlandırma düzenine sahip bir kaynak grubu bulun: `AzureBackupRG_<VM location>_1` . Örneğin, ad *AzureBackupRG_westus2_1*biçimindedir.
+   2. Şu adlandırma düzenine sahip bir kaynak grubu bulun: `AzureBackupRG_<VM location>_1` . Örneğin, ad *AzureBackupRG_westus2_1* biçimindedir.
    3. Azure portal, **gizli türleri göster**' i işaretleyin.
    4. Adlandırma düzenine sahip **Microsoft. COMPUTE/restorePointCollections** türünde kaynağı bulun `AzureBackup_<VM name>_###########` .
    5. Bu kaynağı silin. Bu işlem, kasadaki yedeklenen verileri değil yalnızca anlık kurtarma noktalarını siler.

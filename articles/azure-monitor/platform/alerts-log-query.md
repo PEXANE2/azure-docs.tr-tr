@@ -6,19 +6,19 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.subservice: alerts
-ms.openlocfilehash: 7f03858b2427b2a2069ebe2c9d06425e7a741e2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7c9c76816b5d1ee2eedfb7e54645e056906feef
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91294368"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186635"
 ---
 # <a name="optimizing-log-alert-queries"></a>Günlük uyarısı sorgularını iyileştirme
 Bu makalede, en iyi performansı elde etmek için [günlük uyarısı](alerts-unified-log.md) sorgularının nasıl yazılacağı ve dönüştürüleceği açıklanır. İyileştirilmiş sorgular, sıklıkla çalışan uyarıları ve uyarı yükünü azaltır.
 
 ## <a name="how-to-start-writing-an-alert-log-query"></a>Uyarı günlüğü sorgusu yazmaya başlama
 
-Uyarı sorguları, sorunu belirten [Log Analytics günlük verilerini sorgulamadan](alerts-log.md#create-a-log-alert-rule-with-the-azure-portal) başlar. Neleri keşfedebileceğinizi anlamak için [Uyarı sorgu örnekleri konusunu](../log-query/saved-queries.md) kullanabilirsiniz. [Kendi sorgunuzu yazmaya de başlamanızı](../log-query/get-started-portal.md)sağlayabilirsiniz. 
+Uyarı sorguları, sorunu belirten [Log Analytics günlük verilerini sorgulamadan](alerts-log.md#create-a-log-alert-rule-with-the-azure-portal) başlar. Neleri keşfedebileceğinizi anlamak için [Uyarı sorgu örnekleri konusunu](../log-query/example-queries.md) kullanabilirsiniz. [Kendi sorgunuzu yazmaya de başlamanızı](../log-query/log-analytics-tutorial.md)sağlayabilirsiniz. 
 
 ### <a name="queries-that-indicate-the-issue-and-not-the-alert"></a>Uyarı değil, sorunu belirten sorgular
 

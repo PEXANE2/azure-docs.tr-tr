@@ -9,19 +9,19 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/21/2020
-ms.openlocfilehash: 6231e4631c19aa3595fa85ca0aa7997861de65a3
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: e068ad01c07af4e5833399c0053da3362cd6aaa6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675044"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185649"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>Öğretici: Azure AD uygulamalarını kullanarak Azure AD kullanıcıları oluşturma
 
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 > [!NOTE]
-> Bu makale **genel önizlemede** . Daha fazla bilgi için bkz. [Azure SQL ile Azure Active Directory hizmet sorumlusu](authentication-aad-service-principal.md). Bu makale, gerekli öğretici adımlarını göstermek için Azure SQL veritabanı 'nı kullanır, ancak aynı şekilde [Azure SYNAPSE Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)'e uygulanabilir.
+> Bu makale **genel önizlemede**. Daha fazla bilgi için bkz. [Azure SQL ile Azure Active Directory hizmet sorumlusu](authentication-aad-service-principal.md). Bu makale, gerekli öğretici adımlarını göstermek için Azure SQL veritabanı 'nı kullanır, ancak aynı şekilde [Azure SYNAPSE Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)'e uygulanabilir.
 
 Bu makale, Azure hizmet sorumlularını (Azure AD uygulamaları) kullanarak Azure SQL veritabanı 'nda Azure AD kullanıcıları oluşturma sürecinde size kılavuzluk ediyor. Bu işlevsellik Azure SQL yönetilen örneği 'nde zaten var, ancak artık Azure SQL veritabanı ve Azure SYNAPSE Analytics 'te kullanıma sunulmuştur. Bu senaryoyu desteklemek için bir Azure AD kimliğinin oluşturulup Azure SQL mantıksal sunucusuna atanması gerekir.
 
@@ -82,7 +82,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 1. [Azure Portal](https://portal.azure.com)giderek kimliği de denetleyebilirsiniz.
 
-    - **Azure Active Directory** kaynağı altında **Kurumsal uygulamalar** ' a gidin. SQL mantıksal sunucunuzun adını yazın. Kaynağa bağlı bir **nesne kimliği** olduğunu görürsünüz.
+    - **Azure Active Directory** kaynağı altında **Kurumsal uygulamalar**' a gidin. SQL mantıksal sunucunuzun adını yazın. Kaynağa bağlı bir **nesne kimliği** olduğunu görürsünüz.
     
     :::image type="content" source="media/authentication-aad-service-principals-tutorial/enterprise-applications-object-id.png" alt-text="nesne kimliği":::
 
@@ -95,7 +95,7 @@ Gerekli izni vermek için aşağıdaki betiği çalıştırın.
 > [!NOTE] 
 > Bu betiğin bir Azure AD veya bir tarafından yürütülmesi gerekir `Global Administrator` `Privileged Roles Administrator` .
 >
-> **Genel önizlemede** , `Directory Readers` rolü Azure AD 'deki bir gruba atayabilirsiniz. Grup sahipleri daha sonra yönetilen kimliği bu grubun bir üyesi olarak ekleyebilir ve bu da `Global Administrator` `Privileged Roles Administrator` rolü verme gereksinimini atlar `Directory Readers` . Bu özellik hakkında daha fazla bilgi için bkz. [Azure SQL için Azure Active Directory Directory okuyucuları rolü](authentication-aad-directory-readers-role.md).
+> **Genel önizlemede**, `Directory Readers` rolü Azure AD 'deki bir gruba atayabilirsiniz. Grup sahipleri daha sonra yönetilen kimliği bu grubun bir üyesi olarak ekleyebilir ve bu da `Global Administrator` `Privileged Roles Administrator` rolü verme gereksinimini atlar `Directory Readers` . Bu özellik hakkında daha fazla bilgi için bkz. [Azure SQL için Azure Active Directory Directory okuyucuları rolü](authentication-aad-directory-readers-role.md).
 
 - `<TenantId>` `TenantId` Daha önce topladığınız ile değiştirin.
 - `<server name>`SQL mantıksal sunucu adınızla değiştirin. Sunucunuzun adı ise `myserver.database.windows.net` `<server name>` ile değiştirin `myserver` .
@@ -163,9 +163,9 @@ SQL yönetilen örneği için **Dizin okuyucuları** izninin nasıl ayarlanacağ
 
     **Uygulama izinlerinin** yanı sıra **temsilci izinleri** de eklediğinizden emin olun.
 
-    :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-apps.png" alt-text="nesne kimliği":::
+    :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-apps.png" alt-text="Azure Active Directory için Uygulama kayıtları sayfasını gösteren ekran görüntüsü. AppSP görünen adına sahip bir uygulama vurgulanır.":::
 
-    :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-app-registration-api-permissions.png" alt-text="nesne kimliği":::
+    :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-app-registration-api-permissions.png" alt-text="api izinleri":::
 
 2. Oturum açmak için bir istemci parolası da oluşturmanız gerekir. [Oturum açmak için buradaki kılavuzu izleyerek bir sertifikayı karşıya yükleyin veya bir parola oluşturun](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options).
 
@@ -179,9 +179,9 @@ Azure AD uygulaması oluşturma hakkında daha fazla bilgi için bkz. [nasıl ya
 
 ### <a name="permissions-required-to-set-or-unset-the-azure-ad-admin"></a>Azure AD yöneticisini ayarlamak veya ayarını kaldırmak için gereken izinler
 
-Hizmet sorumlusu 'nın Azure SQL için bir Azure AD yöneticisi ayarlaması veya ayarı ayarlaması için ek bir API Izni gereklidir. [Directory. Read. tüm](https://docs.microsoft.com/graph/permissions-reference#application-permissions-18) Application API IZINLERININ Azure AD 'de uygulamanıza eklenmesi gerekir.
+Hizmet sorumlusu 'nın Azure SQL için bir Azure AD yöneticisi ayarlaması veya ayarı ayarlaması için ek bir API Izni gereklidir. [Directory. Read. tüm](/graph/permissions-reference#application-permissions-18) Application API IZINLERININ Azure AD 'de uygulamanıza eklenmesi gerekir.
 
-:::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-directory-reader-all-permissions.png" alt-text="nesne kimliği":::
+:::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-directory-reader-all-permissions.png" alt-text="Directory. Reader. Azure AD 'deki tüm izinler":::
 
 Ayrıca hizmet sorumlusu SQL veritabanı için [**SQL Server katkıda**](../../role-based-access-control/built-in-roles.md#sql-server-contributor) bulunan rolüne veya SQL yönetilen örneği Için [**SQL yönetilen örnek katılımcısı**](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor) rolüne gerekecektir.
 
@@ -199,7 +199,7 @@ Azure AD 'de bir hizmet sorumlusu oluşturulduktan sonra, kullanıcıyı SQL ver
     GO
     ```
 
-2. `db_owner`Kullanıcının veritabanında diğer Azure AD kullanıcılarını oluşturmalarına izin veren *appsp* 'ye izin verin.
+2. `db_owner`Kullanıcının veritabanında diğer Azure AD kullanıcılarını oluşturmalarına izin veren *appsp*'ye izin verin.
 
     ```sql
     EXEC sp_addrolemember 'db_owner', [AppSP]

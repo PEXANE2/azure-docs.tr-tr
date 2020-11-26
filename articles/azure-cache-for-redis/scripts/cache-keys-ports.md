@@ -9,12 +9,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/30/2017
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9fef834e550f144075ec9cc72cac3b11cc1e99e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d3e8e359a97c091e025049ac8a978e1beca1d759
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87504220"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184237"
 ---
 # <a name="get-the-hostname-ports-and-keys-for-azure-cache-for-redis"></a>Redsıs için Azure önbelleği için ana bilgisayar adı, bağlantı noktaları ve anahtarlar alın
 
@@ -33,12 +33,12 @@ Bu betik, Redsıs örneği için bir Azure önbelleğinin ana bilgisayar adını
 
 | Komut | Notlar |
 |---|---|
-| [az redin Show](https://docs.microsoft.com/cli/azure/redis) | Redsıs örneği için Azure önbelleğinin ayrıntılarını alın. |
-| [az redsıs List-Keys](https://docs.microsoft.com/cli/azure/redis) | Redsıs örneği için bir Azure önbelleği erişim anahtarlarını alın. |
+| [az redin Show](/cli/azure/redis) | Redsıs örneği için Azure önbelleğinin ayrıntılarını alın. |
+| [az redsıs List-Keys](/cli/azure/redis) | Redsıs örneği için bir Azure önbelleği erişim anahtarlarını alın. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](https://docs.microsoft.com/cli/azure).
+Azure CLI hakkında daha fazla bilgi için bkz. [Azure CLI belgeleri](/cli/azure).
 
 Redsıs CLı betik örnekleri için ek Azure önbelleği, [redin belgeleri Için Azure önbelleğinde](../cli-samples.md)bulunabilir.

@@ -4,20 +4,23 @@ description: MongoDB için Azure Cosmos DB API 'sini kullanarak çok büyük mik
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-ms.date: 10/1/2019
+ms.date: 11/25/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: a9c4931338635e53054801885e071ad21723dea3
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 8ae8108c52e150625540c8b13fa66a03f985ba5a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096470"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184629"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API'si
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 [Azure Cosmos DB](introduction.md), Microsoft'un görev açısından kritik uygulamalar için genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Azure Cosmos DB, [kullanıma hazır genel dağıtım](distribute-data-globally.md), dünya çapında [aktarım hızı ve depolama için esnek ölçeklendirme](partitioning-overview.md), 99. yüzdebirlik dilimde tek haneli milisaniyelik gecikme süreleri ve garantili yüksek kullanılabilirlik olanakları sunar ve bunların tümü [sektör lideri SLA’lar](https://azure.microsoft.com/support/legal/sla/cosmos-db/) ile desteklenir. Azure Cosmos DB, şema ve dizin yönetimiyle ilgilenmenize gerek kalmadan [otomatik olarak verilerin dizinini oluşturur](https://www.vldb.org/pvldb/vol8/p1668-shukla.pdf). Çok modelli olan bu hizmet belge, anahtar-değer, grafik ve sütunlu veri modellerini destekler. Azure Cosmos DB hizmeti, Cassandra, MongoDB, Gremlin ve Azure Tablo depolama dahil olmak üzere yaygın NoSQL API 'Leri için tel protokoller uygular. Bu, Cosmos veritabanınız ile etkileşim kurmak için tanıdık NoSQL istemci sürücülerinizi ve araçlarınızı kullanmanıza olanak sağlar.
+
+> [!NOTE]
+> [Sunucusuz kapasite modu](serverless.md) artık Azure Cosmos DB MongoDB için API 'sinde kullanılabilir.
 
 ## <a name="wire-protocol-compatibility"></a>Kablo protokol uyumluluğu
 

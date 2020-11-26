@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 2e183ad8a6e25c12f073f51e9416b4fc0ed9365f
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 33672e90406b94a1b5788803911c072cdc2577f7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95530412"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186397"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure sözlüğü: Azure platformunda bulut terminolojisi sözlüğü
 
@@ -41,7 +41,7 @@ Bir Azure aboneliğine erişmek ve bunları yönetmek için kullanılan bir hesa
 
 ## <a name="availability-set"></a>kullanılabilirlik kümesi
 Uygulama artıklığı ve güvenilirliği sağlamak için birlikte yönetilen bir sanal makine koleksiyonu. Kullanılabilirlik kümesi kullanımı, planlı veya plansız bir bakım olayı sırasında en az bir sanal makinenin kullanılabilir olmasını sağlar.  
-Bkz [. Windows sanal makinelerinin kullanılabilirliğini yönetme](./virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) ve [Linux sanal makinelerinin kullanılabilirliğini yönetme](./virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json)
+Bkz [. Windows sanal makinelerinin kullanılabilirliğini yönetme](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ve [Linux sanal makinelerinin kullanılabilirliğini yönetme](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="azure-classic-deployment-model"></a><a name="classic-model"></a>Azure klasik dağıtım modeli
 Azure 'da kaynak dağıtmak için kullanılan iki [dağıtım modelinden](./azure-resource-manager/management/deployment-models.md) biri (yeni model Azure Resource Manager). Bazı Azure hizmetleri yalnızca Kaynak Yöneticisi dağıtım modelini destekler, bazıları yalnızca klasik dağıtım modelini destekler ve her ikisini de destekler. Her Azure hizmeti için belgeler, hangi model destekler destekledikleri belirler.
@@ -58,7 +58,7 @@ Microsoft Azure içinde kaynak dağıtmak için kullanılan iki [dağıtım mode
 
 ## <a name="fault-domain"></a>hata etki alanı
 Aynı anda başarısız olabilecek bir kullanılabilirlik kümesindeki sanal makinelerin toplanması. Bir raf içindeki ortak bir güç kaynağı ve ağ anahtarını paylaşan bir makine grubudur. Azure 'da, bir kullanılabilirlik kümesindeki sanal makineler birden çok hata etki alanı arasında otomatik olarak ayrılır.  
-Bkz [. Windows sanal makinelerinin kullanılabilirliğini yönetme](./virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) veya [Linux sanal makinelerinin kullanılabilirliğini yönetme](./virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json)  
+Bkz [. Windows sanal makinelerinin kullanılabilirliğini yönetme](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) veya [Linux sanal makinelerinin kullanılabilirliğini yönetme](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)  
 
 ## <a name="geo"></a>Co
 Genellikle iki veya daha fazla bölge içeren veri yerleşimi için tanımlanmış sınır. Sınırlar Ulusal kenarlıkların içinde veya ötesinde olabilir ve vergi Yönetmeliği etkilenebilir. Her coğrafi bölgede en az bir bölge vardır. Coğrafyalar örnekleri Asya Pasifik ve Japonya örnekleridir. *Coğrafya* da denir.  
@@ -135,7 +135,7 @@ Bkz. [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](./azure-res
 
 ## <a name="update-domain"></a>etki alanını güncelleştir
 Aynı anda güncelleştirilmiş bir kullanılabilirlik kümesindeki sanal makinelerin toplanması. Aynı güncelleştirme etki alanındaki sanal makineler, planlı bakım sırasında birlikte yeniden başlatılır. Azure tek seferde birden çok güncelleştirme etki alanını yeniden başlatmaz. Yükseltme etki alanı da denir.  
-Bkz [. Windows sanal makinelerinin kullanılabilirliğini yönetme](./virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) ve [Linux sanal makinelerinin kullanılabilirliğini yönetme](./virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json)
+Bkz [. Windows sanal makinelerinin kullanılabilirliğini yönetme](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) ve [Linux sanal makinelerinin kullanılabilirliğini yönetme](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="virtual-machine"></a><a name="vm"></a>sanal makine
 Bir işletim sistemi çalıştıran fiziksel bir bilgisayarın yazılım uygulamasıdır. Aynı donanımda birden çok sanal makine aynı anda çalışabilir. Azure 'da, sanal makineler çeşitli boyutlarda kullanılabilir.  
@@ -144,7 +144,7 @@ Bkz. [sanal makineler belgeleri](https://azure.microsoft.com/documentation/servi
 ## <a name="virtual-machine-extension"></a><a name="vm-extension"></a>sanal makine uzantısı
 Diğer programların çalışmasına yardımcı olan veya çalışan bir bilgisayarla etkileşime girebilme olanağı sağlayan davranışlar veya özellikler uygulayan bir kaynaktır. Örneğin, bir Azure sanal makinesindeki uzaktan erişim değerlerini sıfırlamak veya değiştirmek için VM erişimi uzantısını kullanabilirsiniz.
 <!-- This definition seems obscure to me; maybe a list of examples would work better than a conceptual definition? -->
-Bkz. [sanal makine uzantıları ve özellikleri (Windows)](./virtual-machines/extensions/features-windows.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) veya [sanal makine uzantıları ve özellikleri hakkında (Linux)](./virtual-machines/extensions/features-linux.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json)
+Bkz. [sanal makine uzantıları ve özellikleri (Windows)](./virtual-machines/extensions/features-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) veya [sanal makine uzantıları ve özellikleri hakkında (Linux)](./virtual-machines/extensions/features-linux.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="virtual-network"></a><a name="vnet"></a>sanal ağ
 Diğer tüm Azure kiracılarından yalıtılmış Azure kaynaklarınız arasında bağlantı sağlayan bir ağ. [Azure VPN Gateway](vpn-gateway/vpn-gateway-about-vpngateways.md) , sanal ağlar ve bir sanal ağ ile şirket içi ağ arasında bağlantı kurmanıza olanak tanır. IP adresi bloklarını, DNS ayarlarını, güvenlik ilkelerini ve bir sanal ağ içindeki yol tablolarını tam olarak denetleyebilirsiniz.  

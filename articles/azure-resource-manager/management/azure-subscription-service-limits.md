@@ -3,12 +3,12 @@ title: Azure abonelik limitleri ve kotaları
 description: Ortak Azure aboneliği ve hizmet sınırları, Kotalar ve kısıtlamaların bir listesini sağlar. Bu makale, limitlerin en yüksek değerleriyle birlikte nasıl artabileceğine ilişkin bilgiler içerir.
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 54eb25e302d49be9e3ab1febeb5c636d267d7e4f
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 810d503f1abdc14ad2d255a89aebe7c10954a889
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577847"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186210"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar
 
@@ -96,7 +96,7 @@ Fiyatlandırma katmanları, arama hizmetinizin kapasitesini ve sınırlarını t
 
 * Diğer Azure aboneleri ile paylaşılan **ücretsiz** çok kiracılı hizmet, değerlendirme ve küçük geliştirme projelerine yöneliktir.
 * **Temel** , yüksek düzeyde kullanılabilir sorgu iş yükleri için en fazla üç çoğaltmaya sahip üretim iş yükleri için özel bilgi işlem kaynakları sağlar.
-* S1, S2, S3 ve S3 yüksek yoğunluklu gibi **Standart** , daha büyük üretim iş yükleri için de kullanılır. İş yükü profilinizle en iyi şekilde eşleşen bir kaynak yapılandırması seçebilmeniz için Standart katmanda birden çok düzey bulunur.
+* S1, S2, S3 ve S3 yüksek yoğunluklu gibi **Standart**, daha büyük üretim iş yükleri için de kullanılır. İş yükü profilinizle en iyi şekilde eşleşen bir kaynak yapılandırması seçebilmeniz için Standart katmanda birden çok düzey bulunur.
 
 **Abonelik başına sınırlar**
 
@@ -231,7 +231,7 @@ Aşağıdaki tabloda temel, standart ve Premium [hizmet katmanlarının](../../c
 ## <a name="digital-twins-limits"></a>Dijital TWINS limitleri
 
 > [!NOTE]
-> Bu hizmetin bazı alanlarında ayarlanabilir sınırlar ve diğerleri değildir. Bu, aşağıdaki tabloda, *ayarlanabilir?* sütunuyla birlikte gösterilir. Sınır ayarlanabilirken, *ayarlanabilir?* değeri *Evet* ' tir.
+> Bu hizmetin bazı alanlarında ayarlanabilir sınırlar ve diğerleri değildir. Bu, aşağıdaki tabloda, *ayarlanabilir?* sütunuyla birlikte gösterilir. Sınır ayarlanabilirken, *ayarlanabilir?* değeri *Evet*' tir.
 
 [!INCLUDE [digital-twins-limits](../../../includes/digital-twins-limits.md)]
 
@@ -398,7 +398,7 @@ Daha fazla bilgi için bkz. [sanal makine boyutları](../../virtual-machines/siz
 
 #### <a name="disk-encryption-sets"></a>Disk şifreleme kümeleri
 
-Her abonelik için bölge başına 50 disk şifreleme kümesi sınırlaması vardır. Daha fazla bilgi için bkz. [Linux](../../virtual-machines/linux/disk-encryption.md#restrictions) veya [Windows](../../virtual-machines/windows/disk-encryption.md#restrictions) sanal makineleri için şifreleme belgeleri. Kotayı artırmanız gerekiyorsa Azure desteği 'ne başvurun.
+Her abonelik için bölge başına 50 disk şifreleme kümesi sınırlaması vardır. Daha fazla bilgi için bkz. [Linux](../../virtual-machines/disk-encryption.md#restrictions) veya [Windows](../../virtual-machines/disk-encryption.md#restrictions) sanal makineleri için şifreleme belgeleri. Kotayı artırmanız gerekiyorsa Azure desteği 'ne başvurun.
 
 ### <a name="managed-virtual-machine-disks"></a>Yönetilen sanal makine diskleri
 
