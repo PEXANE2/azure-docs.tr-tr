@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 011071c9aa1722b8f1cf81ec8d9ef88e8d91ea03
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: b371baec663ffc7ff5909e04965353e79acb9708
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359060"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96177081"
 ---
 # <a name="tutorial-configure-hootsuite-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için HootSuite yapılandırma
 
@@ -30,12 +30,12 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem HootSu
 > * HootSuite 'de grupları ve grup üyeliklerini sağlama
 > * HootSuite ['de çoklu oturum açma](./hootsuite-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
 * [Bir Azure AD kiracısı](../develop/quickstart-create-new-tenant.md) 
-* Azure AD 'de sağlamayı yapılandırma [izni](../users-groups-roles/directory-assign-admin-roles.md) olan bir kullanıcı hesabı (örneğin, uygulama Yöneticisi, bulut uygulaması Yöneticisi, uygulama sahibi veya genel yönetici). 
+* Azure AD 'de sağlamayı yapılandırma [izni](../roles/permissions-reference.md) olan bir kullanıcı hesabı (örneğin, uygulama Yöneticisi, bulut uygulaması Yöneticisi, uygulama sahibi veya genel yönetici). 
 * Kuruluşta **üye yönetme** Izinlerine sahip [HootSuite](http://www.hootsuite.com/) sahip bir kullanıcı hesabı.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Adım 1. Hazırlama dağıtımınızı planlama
@@ -66,23 +66,23 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 ### <a name="to-configure-automatic-user-provisioning-for-hootsuite-in-azure-ad"></a>Azure AD 'de HootSuite için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](./media/hootsuite-provisioning-tutorial/enterprise-applications.png)
 
     ![Tüm uygulamalar dikey penceresi](./media/hootsuite-provisioning-tutorial/all-applications.png)
 
-2. Uygulamalar listesinde **HootSuite** ' yi seçin.
+2. Uygulamalar listesinde **HootSuite**' yi seçin.
 
     ![Uygulamalar listesindeki HootSuite bağlantısı](common/all-applications.png)
 
-3. **Sağlama** sekmesini seçin. **Başlarken** ' e tıklayın.
+3. **Sağlama** sekmesini seçin. **Başlarken**' e tıklayın.
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
     ![Kullanmaya başlama dikey penceresi](./media/hootsuite-provisioning-tutorial/get-started.png)
 
-4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
@@ -94,9 +94,9 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet** ’i seçin.
+7. **Kaydet**’i seçin.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları sağla** ' yı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları sağla**' yı seçin.
 
 9. **Öznitelik eşleme** bölümünde Azure AD 'den HootSuite 'e eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri için HootSuite içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](../app-provisioning/customize-application-attributes.md)değiştirmeyi seçerseniz, HootSuite API 'sinin kullanıcıları bu özniteliğe göre filtrelemeyi desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -111,7 +111,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
    |name.givenName|Dize|
    |name.familyName|Dize|
 
-10. **Eşlemeler** bölümünde **Azure Active Directory gruplarını eşitler** ' ı seçin.
+10. **Eşlemeler** bölümünde **Azure Active Directory gruplarını eşitler**' ı seçin.
 
 11. **Öznitelik eşleme** bölümünde Azure AD 'den HootSuite 'e eşitlenen grup özniteliklerini gözden geçirin. **Eşlenen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri için HootSuite içindeki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -121,7 +121,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
       |externalId|Dize|
       |üyeler|Başvuru|
 
-12. Kapsam belirleme filtrelerini yapılandırmak için [Kapsam belirleme filtresi öğreticisi](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md) ile sunulan yönergeleri izleyin.
+12. Kapsam belirleme filtrelerini yapılandırmak için [Kapsam belirleme filtresi öğreticisi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) ile sunulan yönergeleri izleyin.
 
 13. HootSuite için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
@@ -131,7 +131,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-15. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

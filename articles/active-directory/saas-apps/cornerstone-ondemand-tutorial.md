@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 2837f8c5b098b0502bd293ec2414ad7401cc4f95
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 33c7b9b91067c39ea047242d207a4834c08b7e40
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996177"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96179359"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone-ondemand"></a>Öğretici: köşeli Azure Active Directory çoklu oturum açma (SSO) Tümleştirmesi
 
@@ -28,7 +28,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile bir temel taş OnDemand n
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -82,9 +82,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<company>.csod.com`
+    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<company>.csod.com/samldefault.aspx?ouid=2`
 
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<company>.csod.com`
+    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<company>.csod.com/samldefault.aspx?ouid=2`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için, bir temel bağlantı iletişim [ekibi istemci destek ekibine](mailto:moreinfo@csod.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.

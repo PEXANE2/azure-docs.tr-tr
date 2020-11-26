@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 130bb108af5e44ddf61b639c666cb0dba64d69cb
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 2fcb85b2c16bc2dd418c2260420733dd8663382a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94356901"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96179267"
 ---
 # <a name="tutorial-configure-fuze-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için belirsizlik yapılandırma
 
@@ -33,12 +33,12 @@ Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları [belir
 > * Kullanıcı özniteliklerinin Azure AD ve belirsizlik arasında eşitlenmiş olmasını sağlama
 > * Belirsizlik için [Çoklu oturum açma](./fuze-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
 * [Azure AD kiracısı](../develop/quickstart-create-new-tenant.md).
-* Azure AD'de hazırlama [iznine](../users-groups-roles/directory-assign-admin-roles.md) sahip bir kullanıcı hesabı (Uygulama Yöneticisi, Bulut Uygulaması Yöneticisi, Uygulama Sahibi veya Genel Yönetici).
+* Azure AD'de hazırlama [iznine](../roles/permissions-reference.md) sahip bir kullanıcı hesabı (Uygulama Yöneticisi, Bulut Uygulaması Yöneticisi, Uygulama Sahibi veya Genel Yönetici).
 * [Bir belirsizlik kiracısı](https://www.fuze.com/).
 * Yönetici izinleriyle belirsizlik halinde bir kullanıcı hesabı.
 
@@ -80,11 +80,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve/veya grupl
 
 ### <a name="to-configure-automatic-user-provisioning-for-fuze-in-azure-ad"></a>Azure AD 'de belirsizlik için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **belirsizlik** ' i seçin.
+2. Uygulamalar listesinde, **belirsizlik**' i seçin.
 
     ![Uygulamalar listesindeki belirsizlik bağlantısı](common/all-applications.png)
 
@@ -92,7 +92,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve/veya grupl
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
@@ -100,13 +100,13 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve/veya grupl
 
     ![Kiracı URL belirteci](common/provisioning-testconnection-tenanturltoken.png)
 
-6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder** ' i işaretleyin.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet** ’e tıklayın.
+7. **Kaydet**’e tıklayın.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları belirsizlik olarak eşitler** ' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları belirsizlik olarak eşitler**' ı seçin.
 
 9. **Öznitelik eşleme** bölümünde Azure AD 'den belirsizlik 'e eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri için belirsizlik içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -128,7 +128,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve/veya grupl
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-15. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

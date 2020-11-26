@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 87741420a693c22be7d549eb57dfeb834b0e6ca8
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 8d5881d838c4fe952206afb827fd60ed98dbba86
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94687259"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96178373"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hownow-webapp-sso"></a>Öğretici: HowNow WebApp SSO ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,7 +26,7 @@ Bu öğreticide, HowNow WebApp SSO 'yu Azure Active Directory (Azure AD) ile tü
 * Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak bir HowNow WebApp SSO 'ya kaydolmalarına olanak tanır.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -108,7 +108,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -138,10 +138,8 @@ Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki se�
 
 * HowNow WebApp SSO oturum açma URL 'sine doğrudan gidin ve oturum akışını buradan başlatın.
 
-* Microsoft Access panel ' i kullanabilirsiniz. Erişim panelinde HowNow WebApp SSO kutucuğuna tıkladığınızda bu, HowNow WebApp SSO oturum açma URL 'sine yeniden yönlendirilir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Microsoft Access panel ' i kullanabilirsiniz. Erişim panelinde HowNow WebApp SSO kutucuğuna tıkladığınızda bu, HowNow WebApp SSO oturum açma URL 'sine yeniden yönlendirilir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-HowNow WebApp SSO 'yu yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
+HowNow WebApp SSO 'yu yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).

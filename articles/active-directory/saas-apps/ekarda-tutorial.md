@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 06/15/2020
 ms.author: jeedes
 ms.openlocfilehash: 7bb74732074482c12d3bc760e259bb014ccf006f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454207"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96179349"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ekarda"></a>Öğretici: ekarda ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -57,7 +57,7 @@ Ekarda tümleştirmesini Azure AD 'ye göre yapılandırmak için galerideki eka
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-ekarda"></a>Ekarda için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu ekarda ile yapılandırın ve test edin. SSO 'nun çalışması için, ekarda içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlı bir ilişki kurmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu ekarda ile yapılandırın ve test edin. SSO 'nun çalışması için, ekarda içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlı bir ilişki kurmanız gerekir.
 
 Azure AD SSO 'yu ekarda ile yapılandırmak ve test etmek için aşağıdaki adımları izleyin:
 
@@ -73,7 +73,7 @@ Azure AD SSO 'yu ekarda ile yapılandırmak ve test etmek için aşağıdaki ad�
 
 Azure AD SSO 'yu etkinleştirmek için Azure portal aşağıdaki adımları izleyin:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 1. **Ekarda** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırma** ayarlarını düzenlemek için kurşun kalem simgesini seçin.

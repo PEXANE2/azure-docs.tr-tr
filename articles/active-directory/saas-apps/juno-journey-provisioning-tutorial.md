@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: f060a6ee2b5968c1d1daf3c668b6e7009b6ccd69
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 0efb451997b0ed842e6757a7e6b30dd88b33f4aa
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358142"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96177914"
 ---
 # <a name="tutorial-configure-juno-journey-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Juno yolculuğu yapılandırma
 
@@ -30,12 +30,12 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Juno y
 > * Kullanıcı özniteliklerinin Azure AD ile Juno yolculuğu arasında eşitlenmiş olmasını sağlama
 > * Juno yolculukta [Çoklu oturum açma](./juno-journey-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
 * [Bir Azure AD kiracısı](../develop/quickstart-create-new-tenant.md) 
-* Azure AD'de hazırlama [iznine](../users-groups-roles/directory-assign-admin-roles.md) sahip bir kullanıcı hesabı (Uygulama Yöneticisi, Bulut Uygulaması Yöneticisi, Uygulama Sahibi veya Genel Yönetici). 
+* Azure AD'de hazırlama [iznine](../roles/permissions-reference.md) sahip bir kullanıcı hesabı (Uygulama Yöneticisi, Bulut Uygulaması Yöneticisi, Uygulama Sahibi veya Genel Yönetici). 
 *  Bir [Juno yolculuğu kiracısı](https://www.junojourney.com/getstarted).
 *  Yönetim izinlerine sahip yolculukta bir kullanıcı hesabı.
 
@@ -67,11 +67,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 ### <a name="to-configure-automatic-user-provisioning-for-juno-journey-in-azure-ad"></a>Azure AD 'de Juno yolculuğu için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Juno yolculuğu** ' nı seçin.
+2. Uygulamalar listesinde, **Juno yolculuğu**' nı seçin.
 
     ![Uygulamalar listesindeki Juno yolculuğu bağlantısı](common/all-applications.png)
 
@@ -79,7 +79,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
@@ -91,9 +91,9 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet** ’i seçin.
+7. **Kaydet**’i seçin.
 
-8. **Eşlemeler** Bölümü ' nün altında, **Kullanıcı Azure Active Directory eş yolculuğa git** ' i seçin.
+8. **Eşlemeler** Bölümü ' nün altında, **Kullanıcı Azure Active Directory eş yolculuğa git**' i seçin.
 
 9. **Öznitelik eşleme** bölümünde Azure AD 'Den Juno yolculuğuna eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Juno yolculuğu içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](../app-provisioning/customize-application-attributes.md)değiştirmeyi seçerseniz, Juno 'ın yolculuğu API 'sinin, bu özniteliğe göre kullanıcıların filtrelenmesini desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -137,7 +137,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-13. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
+13. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: Zhchia
-ms.openlocfilehash: dd625d082d15ce4a6ec59972483b06a84ea6d080
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: ea2f25d6b03f002448079b16bd261729807d8a03
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94355048"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96179733"
 ---
 # <a name="tutorial-configure-coda-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Coda yapılandırma
 
@@ -34,12 +34,12 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Coda h
 > * Azure AD ve Coda arasında kullanıcı özniteliklerinin eşitlenmiş olmasını sağlama
 > * CODA ['Da çoklu oturum açma](./coda-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
 * [Bir Azure AD kiracısı](../develop/quickstart-create-new-tenant.md)
-* Azure AD'de hazırlama [iznine](../users-groups-roles/directory-assign-admin-roles.md) sahip bir kullanıcı hesabı (Uygulama Yöneticisi, Bulut Uygulaması Yöneticisi, Uygulama Sahibi veya Genel Yönetici).
+* Azure AD'de hazırlama [iznine](../roles/permissions-reference.md) sahip bir kullanıcı hesabı (Uygulama Yöneticisi, Bulut Uygulaması Yöneticisi, Uygulama Sahibi veya Genel Yönetici).
 * Bir [Coda kurumsal](https://help.coda.io/en/articles/3520174-getting-started-with-sso) yönetici hesabı.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Adım 1. Hazırlama dağıtımınızı planlama
@@ -75,11 +75,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı atamaları
 
 ### <a name="to-configure-automatic-user-provisioning-for-coda-in-azure-ad"></a>Azure AD 'de Coda otomatik Kullanıcı sağlamasını yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Coda** ' yı seçin.
+2. Uygulamalar listesinde, **Coda**' yı seçin.
 
     ![Uygulamalar listesindeki Coda bağlantısı](common/all-applications.png)
 
@@ -87,7 +87,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı atamaları
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
@@ -99,9 +99,9 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı atamaları
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet** ’i seçin.
+7. **Kaydet**’i seçin.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Coda** ' ya eşitler ' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Coda**' ya eşitler ' ı seçin.
 
 9. **Öznitelik eşleme** bölümünde Azure AD 'den Coda 'ya eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri için Coda 'daki Kullanıcı hesaplarını eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](../app-provisioning/customize-application-attributes.md)değiştirmeyi seçerseniz, Coda API 'sinin kullanıcıları bu özniteliğe göre filtrelemeyi desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -123,7 +123,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı atamaları
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-13. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
+13. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

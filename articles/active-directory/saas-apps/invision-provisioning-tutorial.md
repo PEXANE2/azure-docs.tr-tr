@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/25/2020
 ms.author: Zhchia
-ms.openlocfilehash: f6a03a65b18d09000e93a1e0fa4a194321912211
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 75da1e2b2f1954b0126b08232046fe09b1c2b6e7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94354264"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96177972"
 ---
 # <a name="tutorial-configure-invision-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için bakış 'ı yapılandırma
 
@@ -34,12 +34,12 @@ Bu öğreticide, otomatik Kullanıcı sağlamayı yapılandırmak için hem Içv
 > * Azure AD ile Invision arasında kullanıcı özniteliklerinin eşitlenmiş olmasını sağlama
 > * Invision ['Da çoklu oturum açma](./invision-tutorial.md) (gerekli)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
 * [Bir Azure AD kiracısı](../develop/quickstart-create-new-tenant.md) 
-* Azure AD'de hazırlama [iznine](../users-groups-roles/directory-assign-admin-roles.md) sahip bir kullanıcı hesabı (Uygulama Yöneticisi, Bulut Uygulaması Yöneticisi, Uygulama Sahibi veya Genel Yönetici). 
+* Azure AD'de hazırlama [iznine](../roles/permissions-reference.md) sahip bir kullanıcı hesabı (Uygulama Yöneticisi, Bulut Uygulaması Yöneticisi, Uygulama Sahibi veya Genel Yönetici). 
 * SSO etkin olan bir [Invision Enterprise hesabı](https://www.invisionapp.com/enterprise) .
 * Yönetici izinlerine sahip bir kullanıcı hesabı.
 
@@ -50,7 +50,7 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
 ## <a name="step-2-configure-invision-to-support-provisioning-with-azure-ad"></a>Adım 2. Azure AD ile sağlamayı desteklemek için MVision 'ı yapılandırma
 
-1. [Invision kurumsal hesabınızda](https://www.invisionapp.com/enterprise) yönetici veya sahip olarak oturum açın. Sol alt kısımdaki **Takım ayarları** çekmecesini açın ve **Ayarlar** ' ı seçin.
+1. [Invision kurumsal hesabınızda](https://www.invisionapp.com/enterprise) yönetici veya sahip olarak oturum açın. Sol alt kısımdaki **Takım ayarları** çekmecesini açın ve **Ayarlar**' ı seçin.
 
    ![SCıM kurulum yapılandırması](./media/invision-provisioning-tutorial/invision-scim-settings.png)
 
@@ -86,11 +86,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 ### <a name="to-configure-automatic-user-provisioning-for-invision-in-azure-ad"></a>Azure AD 'de Invision için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Invision** ' ı seçin.
+2. Uygulamalar listesinde, **Invision**' ı seçin.
 
     ![Uygulamalar listesindeki Invision bağlantısı](common/all-applications.png)
 
@@ -98,11 +98,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Hazırlama sekmesi](common/provisioning.png)
 
-4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Sağlama modu](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümünde, **kiracı URL** 'sinde daha önce ALıNAN SCIM API URL 'si değerini girin. Kimlik doğrulama belirteci değerini **gizli belirteçte** daha önce alındı olarak girin. Azure AD 'nin Invision 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, hesap görme hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünde, **kiracı URL**'sinde daha önce ALıNAN SCIM API URL 'si değerini girin. Kimlik doğrulama belirteci değerini **gizli belirteçte** daha önce alındı olarak girin. Azure AD 'nin Invision 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, hesap görme hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![Yönetici kimlik bilgileri](./media/inVision-provisioning-tutorial/provisioning.png)
 
@@ -110,9 +110,9 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet** ’i seçin.
+7. **Kaydet**’i seçin.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları sağla** ' yı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları sağla**' yı seçin.
 
 9. **Öznitelik eşleme** bölümünde Azure AD 'Den Invision 'a eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Invision içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](../app-provisioning/customize-application-attributes.md)değiştirmeyi seçerseniz, ıNVISION API 'sinin, bu özniteliğe göre kullanıcıların filtrelenmesini desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
@@ -134,7 +134,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-13. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
+13. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

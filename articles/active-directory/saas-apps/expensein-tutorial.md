@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 07/17/2020
 ms.author: jeedes
 ms.openlocfilehash: eb7062b745ae6eb97dc2cd4ba2051cc221031630
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92453782"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96179206"
 ---
 # <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>Öğretici: Expensewith Azure Active Directory ile tümleştirin
 
@@ -55,7 +55,7 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 ## <a name="configure-and-test-azure-ad-sso-for-expensein"></a>' De Expensefor Expenseazure AD SSO 'yu yapılandırın ve test edin
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu expenseile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve ' de Expenseiçindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu expenseile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve ' de Expenseiçindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu ' de Expensewith yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -100,7 +100,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -123,7 +123,7 @@ Bu bölümde, ' de Expense'e erişim izni vererek Azure çoklu oturum açma öze
 
 ## <a name="configure-expensein-sso"></a>SSO 'Da Expenseconfigure
 
-1. ' De Expenseın içindeki yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemek**üzere **uygulamalarımı güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+1. ' De Expenseın içindeki yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemek** üzere **uygulamalarımı güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
     ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
 
@@ -143,15 +143,15 @@ Bu bölümde, ' de Expense'e erişim izni vererek Azure çoklu oturum açma öze
 
     a. **Sağlayıcı adı** metin kutusuna adı yazın; Örneğin, Azure.
 
-    b. **Sağlayıcının Izin verilen oturum açma izni**için **Evet** ' i seçin.
+    b. **Sağlayıcının Izin verilen oturum açma izni** için **Evet** ' i seçin.
 
-    c. **Hedef URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+    c. **Hedef URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
-    d. **Veren** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının**değerini yapıştırın.
+    d. **Veren** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının** değerini yapıştırın.
 
     e. Sertifika (base64) Not defteri 'nde açın, içeriğini kopyalayın ve **sertifika** metin kutusuna yapıştırın.
 
-    f. **Oluştur**’a tıklayın.
+    f. **Oluştur**'a tıklayın.
 
 ### <a name="create-expensein-test-user"></a>Test kullanıcısına Expenseoluştur
 
@@ -169,13 +169,13 @@ Azure AD kullanıcılarının ' de Expenseöğesinde oturum açmasını sağlama
 
     ![Yapılandırmada Expense](./media/expenseIn-tutorial/config04.png)
 
-    a. **Ad** metin kutusuna **B**gibi kullanıcının adını girin.
+    a. **Ad** metin kutusuna **B** gibi kullanıcının adını girin.
 
-    b. **Soyadı** metin kutusuna, **Simon**gibi kullanıcı adının soyadını girin.
+    b. **Soyadı** metin kutusuna, **Simon** gibi kullanıcı adının soyadını girin.
 
     c. **E-posta** metin kutusuna kullanıcının e-postasını girin `B.Simon@contoso.com` .
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ## <a name="test-sso"></a>Test SSO 'SU
 

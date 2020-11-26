@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/18/2020
 ms.author: jeedes
-ms.openlocfilehash: 3663eedecca559e841962d2868c357b3ca10c8cf
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2405ba800e5ff64b9c0513e07d685e026cc3691c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026825"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96179053"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-crises-control"></a>Öğretici: Criler denetimiyle çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,7 +26,7 @@ Bu öğreticide, Criı denetimini Azure Active Directory (Azure AD) ile tümleş
 * Kullanıcılarınızın Azure AD hesaplarıyla denetim altına almak için otomatik olarak oturum açmaları sağlar.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -141,10 +141,8 @@ Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki se�
 
 * Azure portal **Bu uygulamayı test et** ' e tıklayın ve SSO 'yu ayarladığınız önem denetiminde otomatik olarak oturum açmanız gerekir 
 
-Uygulamayı dilediğiniz modda test etmek için Microsoft My Apps ' i de kullanabilirsiniz. Uygulamalarım denetim kutucuğuna tıkladığınızda, SP modunda yapılandırıldıysa, oturum açma akışını başlatmak için uygulama oturum açma sayfasına yönlendirilirsiniz ve ıDP modunda yapılandırıldıysa, SSO 'yu ayarladığınız Crim denetiminde otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Uygulamayı dilediğiniz modda test etmek için Microsoft My Apps ' i de kullanabilirsiniz. Uygulamalarım denetim kutucuğuna tıkladığınızda, SP modunda yapılandırıldıysa, oturum açma akışını başlatmak için uygulama oturum açma sayfasına yönlendirilirsiniz ve ıDP modunda yapılandırıldıysa, SSO 'yu ayarladığınız Crim denetiminde otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Crira denetimini yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
+Crira denetimini yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).
