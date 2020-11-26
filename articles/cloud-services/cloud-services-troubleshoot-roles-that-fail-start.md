@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 68daec6bb6682d2b488abacb2f79bdfadc4ae628
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: bedf4dd2a955a8ffe648b47c1691e77ac1fdb8f5
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076581"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187808"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Başlayamayabilir bulut hizmeti rollerinin sorunlarını giderme
 İşte başlayamamasının başarısız olduğu Azure Cloud Services rolleriyle ilgili bazı yaygın sorunlar ve çözümler aşağıda verilmiştir.
@@ -27,11 +27,11 @@ ms.locfileid: "92076581"
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="missing-dlls-or-dependencies"></a>Eksik DLL 'Ler veya bağımlılıklar
-**Başlatma**, **meşgul**ve **durdurma** durumları arasında geçiş yapan yanıt vermeyen roller ve roller, eksik DLL 'ler veya derlemeler nedeniyle oluşabilir.
+**Başlatma**, **meşgul** ve **durdurma** durumları arasında geçiş yapan yanıt vermeyen roller ve roller, eksik DLL 'ler veya derlemeler nedeniyle oluşabilir.
 
 Eksik DLL 'Ler veya derlemelerin belirtileri şu olabilir:
 
-* Rol örneğiniz **başlatma**, **meşgul**ve **durdurma** durumlarıyla geçiş yapıyor.
+* Rol örneğiniz **başlatma**, **meşgul** ve **durdurma** durumlarıyla geçiş yapıyor.
 * Rol örneğiniz **başlamaya** taşındı, ancak Web uygulamanıza gittiğinizde sayfa görünmez.
 
 Bu sorunları araştırmak için önerilen birkaç yöntem vardır.
@@ -63,7 +63,7 @@ Role erişmek ve daha fazla hata bilgisini uzaktan görüntülemek için Uzak Ma
 
 1. Azure SDK 1,3 veya sonraki bir sürümünün yüklü olduğundan emin olun.
 2. Visual Studio 'Yu kullanarak çözümün dağıtımı sırasında uzak masaüstü 'Nü etkinleştirin. Daha fazla bilgi için bkz. [Visual Studio kullanarak Azure Cloud Services bir rol için Uzak Masaüstü bağlantısı etkinleştirme](cloud-services-role-enable-remote-desktop-visual-studio.md).
-3. Microsoft Azure portal, **örnek, örneğine**uzak bir durumu gösterir. Cloud Services ile uzak masaüstü kullanma hakkında daha fazla bilgi için bkz. [Uzak rol örneklerine uzaktan](cloud-services-role-enable-remote-desktop-new-portal.md#remote-into-role-instances).
+3. Microsoft Azure portal, **örnek, örneğine** uzak bir durumu gösterir. Cloud Services ile uzak masaüstü kullanma hakkında daha fazla bilgi için bkz. [Uzak rol örneklerine uzaktan](cloud-services-role-enable-remote-desktop-new-portal.md#remote-into-role-instances).
 5. Uzak Masaüstü yapılandırması sırasında belirtilen kimlik bilgilerini kullanarak sanal makinede oturum açın.
 6. Komut penceresi açın.
 7. `IPconfig` yazın.
@@ -77,12 +77,12 @@ Web sitesine gidildiğinde artık daha açık hata iletileri geri alınacaktır:
 * Açıklama: geçerli Web isteğinin yürütülmesi sırasında işlenmeyen bir özel durum oluştu. Hata ve kodun kaynaklandığı yer hakkında daha fazla bilgi için lütfen yığın izlemesini gözden geçirin.
 * Özel durum ayrıntıları: System. ıO. FIleNotFoundException: dosya veya derleme ' Microsoft. WindowsAzure. StorageClient, Version = 1.1.0.0, Culture = neutral, PublicKeyToken = 31bf856ad364e35 ' veya bağımlılıklarından biri yüklenemedi. Sistem belirtilen dosyayı bulamıyor.
 
-Örnek:
+Örneğin:
 
 !['/' Uygulamasında açık sunucu hatası](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503389.png)
 
 ## <a name="diagnose-issues-by-using-the-compute-emulator"></a>İşlem öykünücüsünü kullanarak sorunları tanılama
-Eksik bağımlılıkların ve web.config hataların sorunlarını tanılamak ve gidermek için Microsoft Azure işlem öykünücüsünü kullanabilirsiniz.
+Eksik bağımlılıkların ve web.config hataların sorunlarını tanılamak ve gidermek için Microsoft Azure Işlem öykünücüsünü kullanabilirsiniz.
 
 Bu tanılama yöntemini kullanmanın en iyi sonucu için, temiz bir Windows yüklemesi olan bir bilgisayar veya sanal makine kullanmanız gerekir. Azure ortamının en iyi benzetimini yapmak için Windows Server 2008 R2 x64 kullanın.
 
@@ -101,11 +101,11 @@ Hizmeti IntelliTrace etkin olarak dağıtmak için şu adımları izleyin:
 
 1. Azure SDK 1,3 veya sonraki bir sürümünün yüklü olduğunu doğrulayın.
 2. Visual Studio 'Yu kullanarak çözümü dağıtın. Dağıtım sırasında, **.NET 4 rolleri Için IntelliTrace 'ı etkinleştir** onay kutusunu işaretleyin.
-3. Örnek başladıktan sonra **Sunucu Gezgini**açın.
+3. Örnek başladıktan sonra **Sunucu Gezgini** açın.
 4. **Azure \\ Cloud Services** düğümünü genişletin ve dağıtımı bulun.
 5. Rol örneklerini görene kadar dağıtımı genişletin. Örneklerden birine sağ tıklayın.
 6. **IntelliTrace günlüklerini görüntüle**' yi seçin. **IntelliTrace Özeti** açılır.
-7. Özetin özel durumlar bölümünü bulun. Özel durumlar varsa, bölüm **özel durum verileri**olarak etiketlenir.
+7. Özetin özel durumlar bölümünü bulun. Özel durumlar varsa, bölüm **özel durum verileri** olarak etiketlenir.
 8. **Özel durum verilerini** genişletin ve aşağıdakilere benzer şekilde **System. IO. FileNotFoundException** hatalarını arayın:
 
 ![Özel durum verileri, eksik dosya veya derleme](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503390.png)
@@ -116,7 +116,7 @@ Eksik DLL ve derleme hatalarını gidermek için aşağıdaki adımları izleyin
 1. Visual Studio 'da çözümü açın.
 2. **Çözüm Gezgini**, **Başvurular** klasörünü açın.
 3. Hatada tanımlanan derlemeye tıklayın.
-4. **Özellikler** bölmesinde, **yerel özelliği Kopyala** ' yı bulun ve değeri **true**olarak ayarlayın.
+4. **Özellikler** bölmesinde, **yerel özelliği Kopyala** ' yı bulun ve değeri **true** olarak ayarlayın.
 5. Bulut hizmetini yeniden dağıtın.
 
 Tüm hataların düzeltilmediğini doğruladıktan sonra, **.NET 4 rolleri Için IntelliTrace 'ı etkinleştir** onay kutusunu işaretleyerek Hizmeti dağıtabilirsiniz.

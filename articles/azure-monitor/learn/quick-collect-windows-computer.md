@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 726caa0c4a7bbd6b8d0c17ffdfade5f9cc3c2a34
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9cd92075c7e0c4450dbee750fd31efb394dd24f7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89020380"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186754"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Azure Izleyici ile Karma ortamda bir Windows bilgisayarından veri toplama
 
@@ -34,13 +34,13 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 ## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
 
-1. Azure portal, **tüm hizmetler**' i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını**seçin.
+1. Azure portal, **tüm hizmetler**' i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını** seçin.
 
     ![Azure portal](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
 2. **Oluştur**' u seçin ve sonra aşağıdaki öğeler için Seçenekler ' i seçin:
 
-   * Yeni **Log Analytics çalışma alanı**Için *defaultlaworkspace*gibi bir ad sağlayın.  
+   * Yeni **Log Analytics çalışma alanı** Için *defaultlaworkspace* gibi bir ad sağlayın.  
    * Varsayılan seçili abonelik uygun değilse açılan listeden bağlanacak bir **Abonelik** seçin.
    * **Kaynak Grubu** için, bir veya daha fazla Azure sanal makinesi içeren mevcut bir kaynak grubunu seçin.  
    * VM’lerinizin dağıtıldığı **Konum**’u seçin.  Ek bilgi için bkz. [Log Analytics’in sunulduğu bölgeler](https://azure.microsoft.com/regions/services/).
@@ -57,17 +57,17 @@ Bilgilerin doğrulanıp çalışma alanının oluşturulması sırasında işlem
 
 Windows için Log Analytics aracısını (Microsoft Monitoring Agent (MMA) olarak da bilinir) yüklemeden önce, Log Analytics çalışma alanınız için çalışma alanı KIMLIĞI ve anahtarı gereklidir. Kurulum Sihirbazı, aracıyı doğru bir şekilde yapılandırmak ve Azure Izleyici ile iletişim kurabildiğinden emin olmak için bu bilgilere ihtiyaç duyuyor.  
 
-1. Azure portal sol üst köşesinde **tüm hizmetler**' i seçin. Arama kutusuna **Log Analytics**girin. Siz yazarken, liste, girişinizi temel alarak filtreler. **Log Analytics çalışma alanlarını**seçin.
+1. Azure portal sol üst köşesinde **tüm hizmetler**' i seçin. Arama kutusuna **Log Analytics** girin. Siz yazarken, liste, girişinizi temel alarak filtreler. **Log Analytics çalışma alanlarını** seçin.
 
-2. Log Analytics çalışma alanları listenizde, daha önce oluşturduğunuz çalışma alanını seçin. ( **Defaultlaworkspace**adında bir adlandırılmış olabilir.)
+2. Log Analytics çalışma alanları listenizde, daha önce oluşturduğunuz çalışma alanını seçin. ( **Defaultlaworkspace** adında bir adlandırılmış olabilir.)
 
-3. **Gelişmiş ayarları**seçin:
+3. **Gelişmiş ayarları** seçin:
 
     ![Gelişmiş ayarları Log Analytics](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png)
   
 4. **Bağlı Kaynaklar**’ı seçin ve ardından **Windows Sunucuları**’nı seçin.
 
-5. Değerleri **çalışma alanı kimliği** ve **birincil anahtarın**sağına kopyalayın. Bunları en sevdiğiniz düzenleyiciye yapıştırın.
+5. Değerleri **çalışma alanı kimliği** ve **birincil anahtarın** sağına kopyalayın. Bunları en sevdiğiniz düzenleyiciye yapıştırın.
 
 ## <a name="install-the-agent-for-windows"></a>Windows için aracıyı yükleme
 
@@ -104,15 +104,15 @@ Yükleme ve Kurulum bittiğinde, Denetim Masası 'nda Microsoft Monitoring Agent
 
 Azure Izleyici, daha uzun süreli analiz ve raporlama için Windows olay günlüğü ve performans sayaçlarından belirttiğiniz olayları toplayabilir. Ayrıca, belirli bir koşul algıladığında eylem gerçekleştirebilir. Windows olay günlüğünden olayları toplamayı yapılandırmak ve birkaç ortak performans sayacı ile başlamak için bu adımları izleyin.  
 
-1. Azure portal sol alt köşesinde **diğer hizmetler**' i seçin. Arama kutusuna **Log Analytics**girin. Siz yazarken, liste, girişinizi temel alarak filtreler. **Log Analytics çalışma alanlarını**seçin.
+1. Azure portal sol alt köşesinde **diğer hizmetler**' i seçin. Arama kutusuna **Log Analytics** girin. Siz yazarken, liste, girişinizi temel alarak filtreler. **Log Analytics çalışma alanlarını** seçin.
 
-2. **Gelişmiş ayarları**seçin:
+2. **Gelişmiş ayarları** seçin:
 
     ![Gelişmiş ayarları Log Analytics](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png)
  
 3. **Veri**’yi seçin ve ardından **Windows Olay Günlükleri**’ni seçin.  
 
-4. Günlüğün adını girerek bir olay günlüğü eklersiniz. **Sistemi**girin ve ardından artı işaretini ( **+** ) seçin.  
+4. Günlüğün adını girerek bir olay günlüğü eklersiniz. **Sistemi** girin ve ardından artı işaretini ( **+** ) seçin.  
 
 5. Tabloda **hata** ve **Uyarı** önem derecesi ' ni seçin.
 
@@ -160,10 +160,9 @@ Daha önce oluşturduğunuz Log Analytics çalışma alanını silmek için, se�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık Windows bilgisayarınızdan işletimsel ve performans verileri topladığınıza göre, topladığınız verileri *ücretsiz*olarak keşfetmeye, analiz etmenize ve üzerinde işlem yapmaya başlayabilirsiniz.  
+Artık Windows bilgisayarınızdan işletimsel ve performans verileri topladığınıza göre, topladığınız verileri *ücretsiz* olarak keşfetmeye, analiz etmenize ve üzerinde işlem yapmaya başlayabilirsiniz.  
 
 Verileri görüntüleme ve çözümleme hakkında bilgi edinmek için öğreticiye geçin:
 
 > [!div class="nextstepaction"]
-> [Log Analytics’te verileri görüntüleme veya analiz etme](../log-query/get-started-portal.md)
-
+> [Log Analytics’te verileri görüntüleme veya analiz etme](../log-query/log-analytics-tutorial.md)

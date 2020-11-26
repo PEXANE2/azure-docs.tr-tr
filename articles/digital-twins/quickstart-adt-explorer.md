@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: d203cb5ccef90fd09659ba64b7bcbc8b9be9e47a
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: d42a32e236eb73f2aa9f2f61d9708314783564dd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358108"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187314"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Hızlı başlangıç-ADT Explorer kullanarak örnek bir Azure dijital TWINS senaryosunu araştırma
 
@@ -35,13 +35,13 @@ Hızlı başlangıç aşağıdaki önemli adımları içerir:
 
 :::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="Oklar ile bağlanmış dört dairesel düğüm tarafından oluşturulan grafiğin görünümü. ' Floor1 ' etiketli bir daire, ' Contains ' etiketli bir okla ' room1 ' etiketli bir daireye bağlanır. ' Floor0 ' etiketli bir daire, ' Contains ' etiketli bir okla ' Room0 ' etiketli bir daireye bağlanır. ' Floor1 ' ve ' Floor0 ' bağlı değil.":::
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlayabilmeniz için bir Azure aboneliğine sahip olmanız gerekir. Henüz bir tane yoksa, şimdi [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 Ayrıca makinenizde **Node.js** gerekir. En son sürümü almak için bkz. [Node.js](https://nodejs.org/).
 
-Son olarak, hızlı başlangıç sırasında kullanmak üzere örneği de indirmeniz gerekir. Örnek uygulama, **ADT Gezgini** ' dir. Bu örnek, hızlı başlangıçta bir Azure dijital TWINS senaryosu yüklemek ve araştırmak için kullandığınız uygulamayı içerir. Örnek senaryo dosyalarını da içerir. Örneği almak için [Azure Digital TWINS (ADT) Gezgini](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)' ne gidin. Makinenize Bu örnek kodun bir. zip dosyasını indirmek için **ZIP indir** düğmesini seçin. **Azure_Digital_Twins__ADT__explorer.zip** klasörünü sıkıştırmayı açın ve dosyaları ayıklayın.
+Son olarak, hızlı başlangıç sırasında kullanmak üzere örneği de indirmeniz gerekir. Örnek uygulama, **ADT Gezgini**' dir. Bu örnek, hızlı başlangıçta bir Azure dijital TWINS senaryosu yüklemek ve araştırmak için kullandığınız uygulamayı içerir. Örnek senaryo dosyalarını da içerir. Örneği almak için [Azure Digital TWINS (ADT) Gezgini](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)' ne gidin. Makinenize Bu örnek kodun bir. zip dosyasını indirmek için **ZIP indir** düğmesini seçin. **Azure_Digital_Twins__ADT__explorer.zip** klasörünü sıkıştırmayı açın ve dosyaları ayıklayın.
 
 ## <a name="set-up-azure-digital-twins-and-adt-explorer"></a>Azure dijital TWINS ve ADT Gezginini ayarlama
 
@@ -66,6 +66,7 @@ Aksi takdirde, yerel Azure CLı 'yi şu adımlarla yükleyebilirsiniz:
 1. İşletim sistemi ile eşleşen yüklemeyi tamamlamaya yönelik [Bu yükleme bağlantısındaki](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) işlemi izleyin.
 1. Makinenizde bir konsol penceresi açın.
 1. `az login`' İ çalıştırın ve Azure hesabınızda oturum açmak için kimlik doğrulama istemlerini izleyin.
+1. Olası son adım: Bu hesap altında birden çok Azure aboneliği kullanıyorsanız, kimlik doğrulama bağlamını, çalıştırarak Azure dijital TWINS örneğinizi içeren Azure aboneliğine ayarlayın `az account set --subscription "<your-subscription-name-or-ID>"` (aboneliğin adı veya kimlik değeri çalışacaktır).
 
 Oturum açtıktan sonra, bir sonraki bölümde çalıştırdığınızda ADT Gezgini, Azure kimlik bilgilerinizi otomatik olarak göstermelidir.
 
@@ -90,7 +91,7 @@ Sonra, ADT Explorer uygulamasını çalıştırın ve Azure dijital TWINS örne�
 
    :::image type="content" source="media/quickstart-adt-explorer/sign-in.png" alt-text="Pencerenin üst kısmındaki oturum açma simgesini vurgulayan ADT Explorer. Simge, bir anahtarın silueti içeren bir kişinin basit silueti gösterir." lightbox="media/quickstart-adt-explorer/sign-in.png":::
 
-1. [Önkoşullar](#prerequisites) bölümünde toplanan Azure dijital TWINS örneği URL 'sini *https://{örnek ana bilgisayar adı}* biçiminde girin.
+1. Daha önce [Azure dijital TWINS örneği ayarlama](#set-up-an-azure-digital-twins-instance) bölümünde toplanan Azure dijital TWıNS örneği URL 'sini *https://{örnek konak adı}* biçiminde girin.
 
 >[!NOTE]
 > Aynı simgeyi seçerek, **oturum açma** kutusunu yeniden açmak için bu bilgileri dilediğiniz zaman tekrar ziyaret edebilir veya düzenleyebilirsiniz. Bu, geçirilen değerleri tutacak.
@@ -108,7 +109,7 @@ Daha sonra, örnek senaryoyu ve grafiği ADT Explorer 'a aktarırsınız. Örnek
 
 Bir Azure dijital TWINS çözümünün ilk adımı, ortamınız için sözlük tanımlamaktır. Ortamınızda var olan varlık türlerini tanımlayan özel [modeller](concepts-models.md) oluşturacaksınız.
 
-Her model JSON-LD gibi dijital Ikizi tanım dili (DTDL) olarak adlandırılan bir dilde yazılır. Her model, *özellikleri* , *telemetri* , *ilişkiler* ve *bileşenleri* bakımından tek bir varlık türünü tanımlar. Daha sonra bu modelleri, bu türlerin belirli örneklerini temsil eden dijital TWINS 'in temeli olarak kullanacaksınız.
+Her model JSON-LD gibi dijital Ikizi tanım dili (DTDL) olarak adlandırılan bir dilde yazılır. Her model, *özellikleri*, *telemetri*, *ilişkiler* ve *bileşenleri* bakımından tek bir varlık türünü tanımlar. Daha sonra bu modelleri, bu türlerin belirli örneklerini temsil eden dijital TWINS 'in temeli olarak kullanacaksınız.
 
 Genellikle, bir model oluşturduğunuzda üç adımı tamamlayacaksınız:
 
@@ -130,7 +131,7 @@ Modelleri karşıya yüklemek için bu adımları izleyin.
    :::image type="content" source="media/quickstart-adt-explorer/upload-model.png" alt-text="Model görünümü kutusunda ortadaki simge vurgulanır. Bir buluta işaret eden bir ok gösterir." lightbox="media/quickstart-adt-explorer/upload-model.png":::
  
 1. Görüntülenen dosya Seçicisi kutusunda, indirilen depodaki **Azure_Digital_Twins__ADT__explorer/Client/examples** klasörüne gidin.
-1. **ÜzerindeRoom.js** seçin ve **üzerindeFloor.js** ve **Tamam** ' ı seçin. İsterseniz ek modeller yükleyebilirsiniz, ancak bu hızlı başlangıçta kullanılmaz.
+1. **ÜzerindeRoom.js** seçin ve **üzerindeFloor.js** ve **Tamam**' ı seçin. İsterseniz ek modeller yükleyebilirsiniz, ancak bu hızlı başlangıçta kullanılmaz.
 1. Azure hesabınızda oturum açmanızı isteyen açılır iletişim kutusunu izleyin.
 
 >[!NOTE]
@@ -170,7 +171,7 @@ Grafiği içeri aktarmak için aşağıdaki adımları izleyin.
 
    :::image type="content" source="media/quickstart-adt-explorer/import-graph.png" alt-text="Grafik görünümü kutusunda bir simge vurgulanır. Bir buluta işaret eden bir ok gösterir." lightbox="media/quickstart-adt-explorer/import-graph.png":::
 
-2. Dosya Seçicisi kutusunda, **Azure_Digital_Twins__ADT__explorer/Client/examples** klasörüne gidin ve **buildingScenario.xlsx** elektronik tablo dosyasını seçin. Bu dosya, örnek grafiğin bir açıklamasını içerir. **Tamam** ’ı seçin.
+2. Dosya Seçicisi kutusunda, **Azure_Digital_Twins__ADT__explorer/Client/examples** klasörüne gidin ve **buildingScenario.xlsx** elektronik tablo dosyasını seçin. Bu dosya, örnek grafiğin bir açıklamasını içerir. **Tamam**’ı seçin.
 
    Birkaç saniye sonra ADT Explorer, yüklenecek Grafiğin önizlemesini gösteren bir **Içeri aktarma** görünümü açar.
 
@@ -184,7 +185,7 @@ Grafiği içeri aktarmak için aşağıdaki adımları izleyin.
     :::column-end:::
    :::row-end:::
 
-4. ADT Explorer artık, istenen TWINS 'leri ve bunlar arasındaki ilişkileri oluşturmak için karşıya yüklenen dosyayı kullanır. Bittiğinde bir iletişim kutusu görüntülenir. **Kapat** ’ı seçin.
+4. ADT Explorer artık, istenen TWINS 'leri ve bunlar arasındaki ilişkileri oluşturmak için karşıya yüklenen dosyayı kullanır. Bittiğinde bir iletişim kutusu görüntülenir. **Kapat**’ı seçin.
 
    :::row:::
     :::column:::
@@ -277,7 +278,7 @@ Bu listedeki Özellikler düzenlenebilir. Yeni bir değer girmeyi etkinleştirme
     :::column-end:::
 :::row-end:::
 
-Şimdi, güncelleştirmeyi yapmak için Azure Digital TWINS [API 'leri](how-to-use-apis-sdks.md) ile arka planda kullanılan düzeltme eki kodunun göründüğü bir **yama bilgileri** penceresi görürsünüz. **Kapat** ’ı seçin.
+Şimdi, güncelleştirmeyi yapmak için Azure Digital TWINS [API 'leri](how-to-use-apis-sdks.md) ile arka planda kullanılan düzeltme eki kodunun göründüğü bir **yama bilgileri** penceresi görürsünüz. **Kapat**’ı seçin.
 
 ### <a name="query-to-see-the-result"></a>Sonucu görmek için sorgu
 
@@ -313,7 +314,7 @@ Azure dijital TWINS öğreticilerine devam etmeyi planlıyorsanız, söz konusu 
  
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-Son olarak, **Azure_Digital_Twins__ADT__explorer** , yerel makinenize indirdiğiniz proje örnek klasörünü silin. Hem daraltılmış hem de daraltılmış sürümleri silmeniz gerekebilir.
+Son olarak, **Azure_Digital_Twins__ADT__explorer**, yerel makinenize indirdiğiniz proje örnek klasörünü silin. Hem daraltılmış hem de daraltılmış sürümleri silmeniz gerekebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

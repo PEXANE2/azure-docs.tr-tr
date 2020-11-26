@@ -3,12 +3,12 @@ title: Azure Application Insights Power BI dışa aktarma | Microsoft Docs
 description: Analiz sorguları Power BI ' de görüntülenebilir.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: 804da7d3aaa2fd1b7973a686bc9ca5cb5ee973a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e88d60cd9a9d0e6267998237b33a361b12ffd84
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979155"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187009"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Application Insights akış Power BI
 [Power BI](https://www.powerbi.com/) , verileri çözümlemenize ve öngörüleri paylaşmanıza yardımcı olan bir iş araçları paketidir. Her cihazda zengin panolar bulunur. [Azure Application Insights](./app-insights-overview.md)Analytics sorguları dahil olmak üzere birçok kaynaktaki verileri birleştirebilirsiniz.
@@ -31,12 +31,12 @@ Application Insights sorgunuzu içeri aktarmak için, Power BI Masaüstü sürü
 [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/)'i yükler.
 
 ### <a name="export-an-analytics-query"></a>Analiz sorgusunu dışarı aktarma
-1. [Analizi açın ve sorgunuzu yazın](../log-query/get-started-portal.md).
+1. [Analizi açın ve sorgunuzu yazın](../log-query/log-analytics-tutorial.md).
 2. Sonuçlardan memnun olana kadar sorguyu test edin ve daraltın. Dışarı aktarmadan önce sorgunun Analize doğru çalıştığından emin olun.
 3. **Dışarı aktar** menüsünde **Power BI (d)** öğesini seçin. Metin dosyasını kaydedin.
    
     ![Dışa aktarma menüsü vurgulanmış analiz ekran görüntüsü](./media/export-power-bi/analytics-export-power-bi.png)
-4. Power BI Desktop **veri al**  >  **boş sorgu**' yı seçin. Ardından, sorgu Düzenleyicisi 'nde, **Görünüm**altında **Gelişmiş Düzenleyici**' yi seçin.
+4. Power BI Desktop **veri al**  >  **boş sorgu**' yı seçin. Ardından, sorgu Düzenleyicisi 'nde, **Görünüm** altında **Gelişmiş Düzenleyici**' yi seçin.
 
     Dışarıya aktarılmış e-dil betiğini Gelişmiş Düzenleyici yapıştırın.
 
@@ -57,11 +57,11 @@ Application Insights sorgunuzu içeri aktarmak için, Power BI Masaüstü sürü
 
 ### <a name="export-a-funnel"></a>Huni dışarı aktarma
 1. [Huni yapın](./usage-funnels.md).
-2. **Power BI**seçin.
+2. **Power BI** seçin.
 
    ![Power BI düğmesinin ekran görüntüsü](./media/export-power-bi/button.png)
 
-3. Power BI Desktop **veri al**  >  **boş sorgu**' yı seçin. Ardından, sorgu Düzenleyicisi 'nde, **Görünüm**altında **Gelişmiş Düzenleyici**' yi seçin.
+3. Power BI Desktop **veri al**  >  **boş sorgu**' yı seçin. Ardından, sorgu Düzenleyicisi 'nde, **Görünüm** altında **Gelişmiş Düzenleyici**' yi seçin.
 
    ![Boş sorgu düğmesi vurgulanmış Power BI Desktop ekran görüntüsü](./media/export-power-bi/blankquery.png)
 
@@ -146,5 +146,4 @@ Panoyu düzenleyebilir, Application Insights grafiklerini diğer kaynaklardaki v
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Power BI-öğrenme](https://www.powerbi.com/learning/)
-* [Analiz öğreticisi](../log-query/get-started-portal.md)
-
+* [Analiz öğreticisi](../log-query/log-analytics-tutorial.md)

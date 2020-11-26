@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: d5da6576258d3e33296781bbc262494220140ddc
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 37c237cdaf6c0d4f766d4b2e39c10e3e96215463
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489293"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187842"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway-preview"></a>Bir aşağı akış IoT Edge cihazını bir Azure IoT Edge ağ geçidine bağlama (Önizleme)
 
@@ -34,15 +34,15 @@ Bazı ağ mimarileri, bir hiyerarşideki yalnızca en iyi IoT Edge cihazının b
 
 Bu makaledeki tüm adımlar, bir IoT Edge cihazını aşağı akış IoT cihazları için bir ağ geçidi olacak şekilde ayarlayan [saydam bir ağ geçidi görevi gören bir IoT Edge cihazını yapılandırma](how-to-create-transparent-gateway.md)' da oluşturur. Tüm Ağ Geçidi senaryoları için aynı temel adımlar geçerlidir:
 
-* **Kimlik doğrulaması** : ağ geçidi hiyerarşisindeki tüm cihazlar için IoT Hub kimlikleri oluşturun.
-* **Yetkilendirme** : alt cihazların IoT Hub bağlanacak şekilde üst cihazlarına bağlanmasını sağlamak üzere IoT Hub ' de üst/alt ilişkiyi ayarlayın.
-* **Ağ geçidi bulma** : alt cihazın ana cihazını yerel ağda bulabağlanabildiğinden emin olun.
-* **Güvenli bağlantı** : aynı zincirin parçası olan güvenilen sertifikalarla güvenli bir bağlantı kurun.
+* **Kimlik doğrulaması**: ağ geçidi hiyerarşisindeki tüm cihazlar için IoT Hub kimlikleri oluşturun.
+* **Yetkilendirme**: alt cihazların IoT Hub bağlanacak şekilde üst cihazlarına bağlanmasını sağlamak üzere IoT Hub ' de üst/alt ilişkiyi ayarlayın.
+* **Ağ geçidi bulma**: alt cihazın ana cihazını yerel ağda bulabağlanabildiğinden emin olun.
+* **Güvenli bağlantı**: aynı zincirin parçası olan güvenilen sertifikalarla güvenli bir bağlantı kurun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Ücretsiz veya standart bir IoT Hub 'ı.
-* En az iki **IoT Edge cihaz** , biri en üst katman cihazıdır ve bir veya daha fazla alt katman cihazıdır. Kullanılabilir IoT Edge cihazları yoksa [Ubuntu sanal makinelerinde Azure IoT Edge çalıştırabilirsiniz](how-to-install-iot-edge-ubuntuvm.md).
+* En az iki **IoT Edge cihaz**, biri en üst katman cihazıdır ve bir veya daha fazla alt katman cihazıdır. Kullanılabilir IoT Edge cihazları yoksa [Ubuntu sanal makinelerinde Azure IoT Edge çalıştırabilirsiniz](how-to-install-iot-edge-ubuntuvm.md).
 * Cihazları oluşturmak ve yönetmek için Azure CLı kullanıyorsanız, Azure IoT uzantısı v 0.10.6 veya üzeri yüklü olan Azure CLı v 2.3.1 ' yi kullanın.
 
 Bu makalede, senaryonuza doğru ağ geçidi hiyerarşisini oluşturmanıza yardımcı olacak ayrıntılı adımlar ve seçenekler sağlanmaktadır. Kılavuzlu bir öğretici için bkz. [ağ geçitlerini kullanarak IoT Edge cihazları hiyerarşisi oluşturma](tutorial-nested-iot-edge.md).
@@ -65,7 +65,7 @@ Yeni bir IoT Edge cihaz oluşturduğunuzda, bu hub 'daki mevcut IoT Edge cihazla
 
 1. [Azure portalında](https://portal.azure.com) IoT hub'ınıza gidin.
 1. Gezinti menüsünden **IoT Edge** ' yi seçin.
-1. **IoT Edge cihaz ekle** ' yi seçin.
+1. **IoT Edge cihaz ekle**' yi seçin.
 1. Cihaz KIMLIĞI ve kimlik doğrulama ayarlarını ayarlamaya birlikte, **bir üst cihaz ayarlayabilir** veya **alt cihazlar seçebilirsiniz**.
 1. Üst veya alt öğe olarak istediğiniz cihaz veya cihazları seçin.
 
@@ -74,7 +74,7 @@ Ayrıca, var olan cihazlar için üst/alt ilişkileri oluşturabilir veya yönet
 1. [Azure portalında](https://portal.azure.com) IoT hub'ınıza gidin.
 1. Gezinti menüsünden **IoT Edge** ' yi seçin.
 1. **IoT Edge cihaz** listesinden yönetmek istediğiniz cihazı seçin.
-1. **Bir üst cihaz ayarla** veya **alt cihazları yönet** ' i seçin.
+1. **Bir üst cihaz ayarla** veya **alt cihazları yönet**' i seçin.
 1. Üst veya alt cihaz ekleyin veya kaldırın.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -148,9 +148,9 @@ Linux 'ta, kullanıcının **ıotedge** 'in sertifikaları ve anahtarları tutan
 
 1. Config. YAML dosyasındaki **Sertifikalar** bölümünü bulun. Sertifikalarınızı işaret etmek için üç sertifika alanını güncelleştirin. Dosya URI 'SI yollarını sağlayın, bu biçimi alır `file:///<path>/<filename>` .
 
-   * **device_ca_cert** : Bu cihaza özel cihaz CA SERTIFIKASıNıN dosya URI yolu.
-   * **device_ca_pk** : Bu cihaza benzersiz olan cihaz CA özel ANAHTARıNıN dosya URI yolu.
-   * **trusted_ca_certs** : ağ geçidi hiyerarşisindeki tüm cihazlar tarafından PAYLAŞıLAN kök CA SERTIFIKASıNıN dosya URI yolu.
+   * **device_ca_cert**: Bu cihaza özel cihaz CA SERTIFIKASıNıN dosya URI yolu.
+   * **device_ca_pk**: Bu cihaza benzersiz olan cihaz CA özel ANAHTARıNıN dosya URI yolu.
+   * **trusted_ca_certs**: ağ geçidi hiyerarşisindeki tüm cihazlar tarafından PAYLAŞıLAN kök CA SERTIFIKASıNıN dosya URI yolu.
 
 1. Config. YAML dosyasında **hostname** parametresini bulun. Ana bilgisayar adını tam etki alanı adı (FQDN) veya IoT Edge cihazının IP adresi olacak şekilde güncelleştirin.
 
@@ -172,7 +172,7 @@ Linux 'ta, kullanıcının **ıotedge** 'in sertifikaları ve anahtarları tutan
      type: "docker"
      env: {}
      config:
-       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc1"
+       image: "mcr.microsoft.com/azureiotedge-agent:1.2.0-rc2"
        auth: {}
    ```
 
@@ -202,7 +202,7 @@ Linux 'ta, kullanıcının **ıotedge** 'in sertifikaları ve anahtarları tutan
 
 Bu özellik genel önizlemede olduğundan, IoT Edge cihazınızı, IoT Edge çalışma zamanı modüllerinin genel önizleme sürümlerini kullanacak şekilde yapılandırmanız gerekir. Önceki bölümde, edgeAgent 'ı başlangıçta yapılandırma adımları sağlanmaktadır. Ayrıca, cihazınız için dağıtımlarda çalışma zamanı modüllerini yapılandırmanız gerekir.
 
-1. EdgeHub modülünü genel önizleme görüntüsünü kullanacak şekilde yapılandırın: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc1` .
+1. EdgeHub modülünü genel önizleme görüntüsünü kullanacak şekilde yapılandırın: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2` .
 
 1. EdgeHub modülü için aşağıdaki ortam değişkenlerini yapılandırın:
 
@@ -211,7 +211,7 @@ Bu özellik genel önizlemede olduğundan, IoT Edge cihazınızı, IoT Edge çal
    | `experimentalFeatures__enabled` | `true` |
    | `experimentalFeatures__nestedEdgeEnabled` | `true` |
 
-1. EdgeAgent modülünü genel önizleme görüntüsünü kullanacak şekilde yapılandırın: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc1` .
+1. EdgeAgent modülünü genel önizleme görüntüsünü kullanacak şekilde yapılandırın: `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc2` .
 
 ## <a name="network-isolate-downstream-devices"></a>Ağ yukarı akış cihazlarını yalıtma
 
@@ -251,8 +251,8 @@ API proxy modülü, en yaygın ağ geçidi senaryolarını işleyecek şekilde �
 1. [Azure portalında](https://portal.azure.com) IoT hub'ınıza gidin.
 1. Gezinti menüsünden **IoT Edge** ' yi seçin.
 1. **IoT Edge cihaz** listesinden yapılandırmakta olduğunuz en üst katman cihazını seçin.
-1. **Modül ayarla** ' yı seçin.
-1. **IoT Edge modüller** bölümünde **Ekle** ' yi ve ardından **Market modülü** ' nü seçin.
+1. **Modül ayarla**' yı seçin.
+1. **IoT Edge modüller** bölümünde **Ekle** ' yi ve ardından **Market modülü**' nü seçin.
 1. **IoT Edge API ara sunucu** modülünü arayın ve seçin.
 1. Dağıtılan modüller listesinden API proxy modülünün adını seçin ve aşağıdaki modül ayarlarını güncelleştirin:
    1. **Ortam değişkenleri** sekmesinde **NGINX_DEFAULT_PORT** değerini olarak güncelleştirin `443` .
@@ -296,19 +296,19 @@ API proxy modülü, en yaygın ağ geçidi senaryolarını işleyecek şekilde �
    ```
 
 1. Çalışma zamanı ayarlarına yaptığınız değişiklikleri kaydetmek için **Kaydet** ' i seçin.
-1. Yeniden **Ekle** ' yi ve ardından **IoT Edge modülü** ' nü seçin.
+1. Yeniden **Ekle** ' yi ve ardından **IoT Edge modülü**' nü seçin.
 1. Dağıtımınıza Docker kayıt defteri modülünü eklemek için aşağıdaki değerleri girin:
-   1. **IoT Edge modül adı** : `registry`
-   1. **Modül ayarları** sekmesinde, **görüntü URI 'si** :`registry:latest`
+   1. **IoT Edge modül adı**: `registry`
+   1. **Modül ayarları** sekmesinde, **görüntü URI 'si**:`registry:latest`
    1. **Ortam değişkenleri** sekmesinde, aşağıdaki ortam değişkenlerini ekleyin:
 
-      * **Ad** : `REGISTRY_PROXY_REMOTEURL` **değer** : Bu kayıt defteri modülünün eşleşmesini istediğiniz kapsayıcı kayıt defterinin URL 'si. Örneğin, `https://myregistry.azurecr`.
+      * **Ad**: `REGISTRY_PROXY_REMOTEURL` **değer**: Bu kayıt defteri modülünün eşleşmesini istediğiniz kapsayıcı kayıt defterinin URL 'si. Örneğin, `https://myregistry.azurecr`.
 
         Kayıt modülü yalnızca bir kapsayıcı kayıt defterine eşlenir, bu nedenle tüm kapsayıcı görüntülerinin tek bir özel kapsayıcı kayıt defterinde olmasını öneririz.
 
-      * **Ad** : `REGISTRY_PROXY_USERNAME` **değer** : kapsayıcı kayıt defterinin kimliğini doğrulamak için Kullanıcı adı.
+      * **Ad**: `REGISTRY_PROXY_USERNAME` **değer**: kapsayıcı kayıt defterinin kimliğini doğrulamak için Kullanıcı adı.
 
-      * **Ad** : `REGISTRY_PROXY_PASSWORD` **değer** : kapsayıcı kayıt defterinin kimliğini doğrulamak için parola.
+      * **Ad**: `REGISTRY_PROXY_PASSWORD` **değer**: kapsayıcı kayıt defterinin kimliğini doğrulamak için parola.
 
    1. **Kapsayıcı oluşturma seçenekleri** sekmesinde, Yapıştır:
 
@@ -329,8 +329,8 @@ API proxy modülü, en yaygın ağ geçidi senaryolarını işleyecek şekilde �
 1. Modülü dağıtıma eklemek için **Ekle** ' yi seçin.
 1. Ileri ' yi seçin: sonraki adıma gitmek için **yollar** .
 1. Cihazdan buluta iletilerin aşağı akış aygıtlarından IoT Hub ulaşmasını sağlamak için, tüm iletileri IoT Hub ileten bir yol ekleyin. Örneğin:
-    1. **Ad** : `Route`
-    1. **Değer** : `FROM /messages/* INTO $upstream`
+    1. **Ad**: `Route`
+    1. **Değer**: `FROM /messages/* INTO $upstream`
 1. Son adıma geçmek için **gözden geçir + oluştur** ' u seçin.
 1. Cihazınıza dağıtmak için **Oluştur** ' u seçin.
 
@@ -366,7 +366,7 @@ agent:
   type: "docker"
   env: {}
   config:
-    image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2.0-rc1"
+    image: "{Parent FQDN or IP}:443/azureiotedge-agent:1.2.0-rc2"
     auth: {}
 ```
 
@@ -381,8 +381,8 @@ API proxy modülü, en yaygın ağ geçidi senaryolarını işleyecek şekilde �
 1. [Azure portalında](https://portal.azure.com) IoT hub'ınıza gidin.
 1. Gezinti menüsünden **IoT Edge** ' yi seçin.
 1. **IoT Edge cihaz** listesinden yapılandırmakta olduğunuz alt katman cihazını seçin.
-1. **Modül ayarla** ' yı seçin.
-1. **IoT Edge modüller** bölümünde **Ekle** ' yi ve ardından **Market modülü** ' nü seçin.
+1. **Modül ayarla**' yı seçin.
+1. **IoT Edge modüller** bölümünde **Ekle** ' yi ve ardından **Market modülü**' nü seçin.
 1. **IoT Edge API ara sunucu** modülünü arayın ve seçin.
 1. Dağıtılan modüller listesinden API proxy modülünün adını seçin ve aşağıdaki modül ayarlarını güncelleştirin:
    1. **Modül ayarları** sekmesinde, **görüntü URI 'si** değerini güncelleştirin. `mcr.microsoft.com` yerine `$upstream:443` yazın.
@@ -405,7 +405,7 @@ API proxy modülü, en yaygın ağ geçidi senaryolarını işleyecek şekilde �
 
    Bu değişiklikler API proxy modülünü 443 numaralı bağlantı noktasında dinlemek üzere yapılandırır. Bağlantı noktası bağlama çakışmalarını engellemek için, edgeHub modülünü 443 numaralı bağlantı noktasında dinlememek üzere yapılandırmanız gerekir. Bunun yerine, API proxy modülü 443 numaralı bağlantı noktasında herhangi bir edgeHub trafiğini yönlendirir.
 
-1. **Çalışma zamanı ayarları** ' nı seçin.
+1. **Çalışma zamanı ayarları**' nı seçin.
 1. EdgeHub modülü ayarlarını güncelleştirin:
 
    1. **Görüntü** alanında `mcr.microsoft.com` ile değiştirin `$upstream:443` .
@@ -436,8 +436,8 @@ API proxy modülü, en yaygın ağ geçidi senaryolarını işleyecek şekilde �
 1. Çalışma zamanı ayarlarına yaptığınız değişiklikleri kaydetmek için **Kaydet** ' i seçin.
 1. Ileri ' yi seçin: sonraki adıma gitmek için **yollar** .
 1. Cihazdan buluta iletilerin aşağı akış aygıtlarından IoT Hub ulaşmasını sağlamak için, tüm iletileri öğesine ileten bir yol ekleyin `$upstream` . Yukarı akış parametresi, alt katman cihazları durumunda üst cihaza işaret eder. Örneğin:
-    1. **Ad** : `Route`
-    1. **Değer** : `FROM /messages/* INTO $upstream`
+    1. **Ad**: `Route`
+    1. **Değer**: `FROM /messages/* INTO $upstream`
 1. Son adıma geçmek için **gözden geçir + oluştur** ' u seçin.
 1. Cihazınıza dağıtmak için **Oluştur** ' u seçin.
 

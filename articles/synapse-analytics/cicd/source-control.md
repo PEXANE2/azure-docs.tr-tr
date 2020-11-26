@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: b7248a3a66e0eeca4d86568f80af82bf2d89701f
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: a5cb5831090987f1b620593843ddba817d8e68d4
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96031362"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188131"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Azure SYNAPSE Studio 'da kaynak denetimi
 
@@ -38,7 +38,7 @@ SYNAPSE Studio yazma tuvalinde, **SYNAPSE Live** açılır menüsünü ve ardın
 
 ![Kod deposu ayarlarını yazma işleminden yapılandırma](media/configure-repo-1.png)
 
-### <a name="configuration-method-2-management-hub"></a>Yapılandırma yöntemi 2: Yönetim Merkezi
+### <a name="configuration-method-2-manage-hub"></a>Yapılandırma yöntemi 2: hub 'ı yönetme
 
 SYNAPSE Studio yönetim merkezine gidin. **Kaynak denetimi** bölümünde **Git yapılandırması** ' nı seçin. Bağlı depo yoksa, **Yapılandır**' a tıklayın.
 
@@ -217,6 +217,11 @@ Yayımla dalı işbirliği dalında eşitlenmemiş ve yeni bir yayımlamaya rağ
 
 1. İşbirliği dalında yapılan değişiklikleri birleştirmek için bir çekme isteği oluşturun 
 
+## <a name="unsupported-features"></a>Desteklenmeyen özellikler
+
+- SYNAPSE Studio, işleme ya da kaynakların seçmeli yayımlamasına izin vermez. 
+- SYNAPSE Studio, COMMIT iletisini özelleştirmeyi desteklemiyor.
+- Tasarıma göre, Studio 'daki silme eylemi doğrudan git 'e kaydedilecek
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

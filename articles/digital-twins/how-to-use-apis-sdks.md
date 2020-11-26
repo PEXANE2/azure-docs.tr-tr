@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d349d07a66b21766ea529661c2f27d0c76ea4d3b
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: cac0d8cb8a910b735454c9270060364cab2db5fb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024730"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187247"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure Digital Twins API’lerini ve SDK’larını kullanma
 
@@ -20,7 +20,7 @@ Azure dijital TWINS, örneğinizi ve onun öğelerini yönetmek için hem **Dene
 * Denetim düzlemi API 'leri [Azure Resource Manager (ARM)](../azure-resource-manager/management/overview.md) API 'lardır ve örneğinizi oluşturma ve silme gibi kaynak yönetimi işlemlerini kapsar. 
 * Veri düzlemi API 'leri Azure dijital TWINS API 'leridir ve modelleri, TWINS 'Leri ve grafiği yönetme gibi veri yönetimi işlemleri için kullanılır.
 
-Bu makale, kullanılabilir API 'Lere ve bunlarla etkileşime yönelik yöntemlere genel bir bakış sunar. REST API 'Leri doğrudan ilişkili Swaggers ile veya bir SDK aracılığıyla kullanabilirsiniz.
+Bu makale, kullanılabilir API 'Lere ve bunlarla etkileşime yönelik yöntemlere genel bir bakış sunar. REST API 'Leri doğrudan ilişkili Swaggers ( [Postman](how-to-use-postman.md)gibi bir araç aracılığıyla) ya da bir SDK aracılığıyla kullanabilirsiniz.
 
 ## <a name="overview-control-plane-apis"></a>Genel Bakış: denetim düzlemi API 'Leri
 
@@ -32,7 +32,7 @@ Denetim düzlemi API 'Lerini kullanmak için:
 * [Denetim düzlemi Swagger klasöründeki](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins)en son Swagger 'A başvurarak API 'leri doğrudan çağırabilirsiniz. Bu depo ayrıca kullanımı gösteren örneklerin bir klasörünü de içerir.
 * Şu anda, içindeki denetim API 'Leri için SDK 'Lara erişebilirsiniz...
   - [**.Net (C#)**](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([başvuru [otomatik olarak oluşturulan]](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet&preserve-view=true)) ([kaynak](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))
-  - [**Java**](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([başvuru [otomatik olarak oluşturulan]](/java/api/overview/azure/digitaltwins?view=azure-java-stable)) ([kaynak](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31))
+  - [**Java**](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([başvuru [otomatik olarak oluşturulan]](/java/api/overview/azure/digitaltwins?view=azure-java-stable&preserve-view=true)) ([kaynak](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31))
   - [**JavaScript**](https://www.npmjs.com/package/@azure/arm-digitaltwins) ([kaynak](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins))
   - [**Python**](https://pypi.org/project/azure-mgmt-digitaltwins/) ([kaynak](https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins))
   - [**Git**](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins) ([kaynak](https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins))
@@ -279,6 +279,7 @@ client.UpdateDigitalTwin("myTwin", updateTwinData);
 
 Aşağıdaki listede, API 'Leri ve SDK 'ları kullanmaya yönelik ek ayrıntılar ve genel yönergeler verilmiştir.
 
+* Azure dijital TWINS API 'Lerine doğrudan çağrı yapmak için Postman gibi bir HTTP REST test aracı kullanabilirsiniz. Bu işlem hakkında daha fazla bilgi için bkz. [*nasıl yapılır: Istekleri Postman Ile oluşturma*](how-to-use-postman.md).
 * SDK 'yı kullanmak için, sınıfın örneğini oluşturun `DigitalTwinsClient` . Oluşturucu, paketteki çeşitli kimlik doğrulama yöntemleriyle elde edilebilir kimlik bilgileri gerektirir `Azure.Identity` . Daha fazla bilgi için `Azure.Identity` bkz. [ad alanı belgeleri](/dotnet/api/azure.identity?preserve-view=true&view=azure-dotnet). 
 * Başlarken faydalı olduğunu fark edebilirsiniz `InteractiveBrowserCredential` , ancak [yönetilen kimliğin](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet)kimlik bilgileri de dahil olmak üzere, Azure Digital TWINS ['e karşı MSI ile ayarlanan Azure işlevleri](../app-service/overview-managed-identity.md?tabs=dotnet) kimlik doğrulaması için kullanacağınız diğer birkaç seçenek vardır. Hakkında daha fazla bilgi için `InteractiveBrowserCredential` bkz. [sınıf belgeleri](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet).
 * Tüm hizmet API çağrıları, sınıf üzerinde üye işlevleri olarak gösterilir `DigitalTwinsClient` .
@@ -303,8 +304,8 @@ Buradan, örneğiniz için ölçümleri görüntüleyebilir ve özel görünüml
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bkz. bir Azure dijital TWINS örneği ve kimlik doğrulaması kurmak için API 'Leri kullanma:
-* [*Nasıl yapılır: örnek ve kimlik doğrulaması ayarlama*](how-to-set-up-instance-cli.md)
+Bkz. Postman kullanarak API 'lere doğrudan istek yapma:
+* [*Nasıl yapılır: Postman ile istek yapma*](how-to-use-postman.md)
 
-Ya da, bu nasıl yapılır: ile aynı şekilde kullanılan bir istemci uygulaması oluşturma adımlarını gözden geçir:
+Ya da, bu öğreticiyle bir istemci uygulaması oluşturarak .NET SDK 'Yı kullanmayı deneyin:
 * [*Öğretici: istemci uygulamasını kodlayın*](tutorial-code.md)

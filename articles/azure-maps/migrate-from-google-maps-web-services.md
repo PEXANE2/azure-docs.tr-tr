@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: f97d04ca40e69ba2516744adfc9f1f455cba97c0
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 0bb252e227e4f23388929f2fca18769e0bd02e19
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896353"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187043"
 ---
 # <a name="tutorial---migrate-web-service-from-google-maps"></a>Öğretici-Google Maps 'tan Web hizmeti geçirme
 
@@ -40,7 +40,7 @@ Tablo, listelenen Google Maps hizmeti API 'Lerinde benzer işlevlere sahip Azure
 
 | Google Maps hizmeti API 'SI | Azure haritalar hizmeti API 'SI                                                                      |
 |-------------------------|---------------------------------------------------------------------------------------------|
-| Yönergeler              | [Yol](/rest/api/maps/route)                                     |
+| Yönergeler              | [Yolu](/rest/api/maps/route)                                     |
 | Uzaklık matrisi         | [Yol matrisi](/rest/api/maps/route/postroutematrixpreview)       |
 | Coğrafi Kodlama               | [Ara](/rest/api/maps/search)                                   |
 | Konum arama           | [Ara](/rest/api/maps/search)                                   |
@@ -65,9 +65,9 @@ Azure haritalar, ilgi çekici olabilecek birkaç ek REST Web hizmetine sahiptir:
 - [Uzamsal işlemler](/rest/api/maps/spatial): bir hizmete bölge sınırlaması gibi karmaşık uzamsal hesaplamalar ve işlemler için yük boşaltma.
 - [Trafik](/rest/api/maps/traffic): gerçek zamanlı trafik akışına ve olay verilerine erişin.
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+1. [Azure Portal](https://portal.azure.com) oturum açın. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 2. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
 3. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account). Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](how-to-manage-authentication.md).
 
@@ -132,7 +132,7 @@ Azure haritalar ters coğrafi kodlama API 'SI, Google Maps ' de kullanılamayan 
 Yer arama API 'sini kullanarak Google Haritalar 'da ilgi çekici verilerin bulunduğu noktaya erişilebilir. Bu API, ilgilendiğiniz noktaları aramak için üç farklı yol sağlar:
 
 - **Metinden yer bulun:** Adını, adresini veya telefon numarasını temel alarak bir ilgi alanı arar.
-- **Yakın arama** : bir konumun belirli bir uzaklıkta yer alan ilgi alanlarını arar.
+- **Yakın arama**: bir konumun belirli bir uzaklıkta yer alan ilgi alanlarını arar.
 - **Metin arama:** Bir dizi ilgi ve konum bilgisi içeren serbest biçimli bir metin kullanarak yerleri arar. Örneğin, "New York 'ta pizza" veya "ana St yakınında" Restoranlar ".
 
 Azure Maps, ilgi noktaları için çeşitli arama API 'Leri sağlar:
@@ -501,10 +501,10 @@ Azure haritalar REST hizmetleri hakkında daha fazla bilgi edinin:
 > [Yönlendirme için en iyi uygulamalar](how-to-use-best-practices-for-routing.md)
 
 > [!div class="nextstepaction"]
-> [Azure haritalar REST hizmeti API başvuru belgeleri](https://docs.microsoft.com/rest/api/maps/)
+> [Azure haritalar REST hizmeti API başvuru belgeleri](/rest/api/maps/)
 
 > [!div class="nextstepaction"]
-> [Kod örnekleri](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Kod örnekleri](/samples/browse/?products=azure-maps)
 
 > [!div class="nextstepaction"]
 > [Hizmetler modülünü kullanma (Web SDK)](how-to-use-best-practices-for-routing.md)

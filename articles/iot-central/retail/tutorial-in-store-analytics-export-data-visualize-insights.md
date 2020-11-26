@@ -12,11 +12,11 @@ ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
 ms.openlocfilehash: f00448f19cc0a2118477a9527005548fea25537e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91651454"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187281"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Öğretici: Azure IoT Central verileri dışarı aktarın ve öngörüleri Power BI görselleştirin
 
@@ -30,7 +30,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * Bir olay hub 'ından Power BI akış veri kümesine veri göndermek için Logic Apps kullanın.
 > * Akış veri kümesindeki verileri görselleştirmek için Power BI panosu oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
@@ -42,11 +42,11 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 Olay Hub 'ınızı ve mantıksal uygulamanızı oluşturmadan önce, bunları yönetmek için bir kaynak grubu oluşturmanız gerekir. Kaynak grubu, **Mağaza Analytics-checkout** IoT Central uygulaması ile aynı konumda olmalıdır. Kaynak grubu oluşturmak için:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Sol gezinti bölmesinde **kaynak grupları**' nı seçin. Ardından **Ekle**'yi seçin.
-1. **Abonelik**için, IoT Central uygulamanızı oluşturmak Için kullandığınız Azure aboneliğinin adını seçin.
+1. **Abonelik** için, IoT Central uygulamanızı oluşturmak Için kullandığınız Azure aboneliğinin adını seçin.
 1. **Kaynak grubu** adı için _Retail-Store-Analysis_* yazın.
-1. **Bölge**için IoT Central uygulaması için seçtiğiniz bölgeyi seçin.
+1. **Bölge** için IoT Central uygulaması için seçtiğiniz bölgeyi seçin.
 1. **Gözden geçir + oluştur**' u seçin.
 1. **Gözden geçir + oluştur** sayfasında **Oluştur**' u seçin.
 
@@ -57,19 +57,19 @@ Artık aboneliğinizde **Retail-Store-Analysis** adlı bir kaynak grubunuz var.
 Perakende izleme uygulamasını telemetri dışa aktarmaya yapılandırmadan önce, dışarı aktarılmış verileri almak için bir olay hub 'ı oluşturmanız gerekir. Aşağıdaki adımlarda, Olay Hub 'ınızı nasıl oluşturacağınız gösterilmektedir:
 
 1. Azure portal, ekranın sol üst kısmında bulunan **kaynak oluştur** ' u seçin.
-1. **Market 'Te ara**' te _Event Hubs_girin ve ardından **ENTER**tuşuna basın.
+1. **Market 'Te ara**' te _Event Hubs_ girin ve ardından **ENTER** tuşuna basın.
 1. **Event Hubs** sayfasında **Oluştur**' u seçin.
 1. **Ad alanı oluştur** sayfasında, aşağıdaki adımları uygulayın:
-    * Ad alanı için adınız _-Retail-Store-Analysis_gibi benzersiz bir ad girin. Sistem, bu adın kullanılabilir olup olmadığını denetler.
+    * Ad alanı için adınız _-Retail-Store-Analysis_ gibi benzersiz bir ad girin. Sistem, bu adın kullanılabilir olup olmadığını denetler.
     * **Temel** fiyatlandırma katmanını seçin.
     * IoT Central uygulamanızı oluşturmak için kullandığınız **aboneliği** seçin.
     * **Retail-Store-Analysis** kaynak grubunu seçin.
     * IoT Central uygulamanız için kullandığınız konumu seçin.
     * **Oluştur**’u seçin. Sistemin kaynakları sağlaması için birkaç dakika beklemeniz gerekebilir.
-1. Portalda **Perakende-mağaza-analiz** kaynak grubuna gidin. Dağıtımın tamamlanmasını bekleyin. Dağıtım durumunu güncelleştirmek için **Yenile** ' yi seçmeniz gerekebilir. Ayrıca, **bildirimlerde**Olay Hub 'ı ad alanı oluşturma durumunu da denetleyebilirsiniz.
-1. **Perakende-mağaza-analiz** kaynak grubunda **Event Hubs ad alanını**seçin. Portalda **Event Hubs ad alanınız** için giriş sayfasını görürsünüz.
+1. Portalda **Perakende-mağaza-analiz** kaynak grubuna gidin. Dağıtımın tamamlanmasını bekleyin. Dağıtım durumunu güncelleştirmek için **Yenile** ' yi seçmeniz gerekebilir. Ayrıca, **bildirimlerde** Olay Hub 'ı ad alanı oluşturma durumunu da denetleyebilirsiniz.
+1. **Perakende-mağaza-analiz** kaynak grubunda **Event Hubs ad alanını** seçin. Portalda **Event Hubs ad alanınız** için giriş sayfasını görürsünüz.
 
-Artık bir **Event Hubs ad alanına**sahipsiniz, IoT Central uygulamanızla birlikte kullanmak üzere bir **Olay Hub** 'ı oluşturabilirsiniz:
+Artık bir **Event Hubs ad alanına** sahipsiniz, IoT Central uygulamanızla birlikte kullanmak üzere bir **Olay Hub** 'ı oluşturabilirsiniz:
 
 1. Portalda **Event Hubs ad alanınız** için giriş sayfasında **+ Olay Hub**' ı seçin.
 1. **Olay Hub 'ı oluştur** sayfasında, ad olarak _Mağaza telemetrisi_ girin ve ardından **Oluştur**' u seçin.
@@ -85,8 +85,8 @@ Artık bir olay hub 'ınız olduğundan, bağlı cihazlardan telemetri dışarı
 1. **Mağaza içi analiz-kullanıma alma** IoT Central uygulamanızda oturum açın.
 1. Sol bölmedeki **veri dışa aktarma** ' yı seçin.
 1. **Azure Event Hubs > yeni**' yi seçin.
-1. **Görünen ad**olarak _telemetri dışarı aktarmayı_ girin.
-1. **Event Hubs ad**alanınızı seçin.
+1. **Görünen ad** olarak _telemetri dışarı aktarmayı_ girin.
+1. **Event Hubs ad** alanınızı seçin.
 1. **Mağaza-telemetri** Olay Hub 'ını seçin.
 1. **Verilerin dışarı aktarılması Için** **cihazların** ve **cihaz şablonlarının** kapalı olması bölümüne geçin.
 1. **Kaydet**’i seçin.
@@ -101,11 +101,11 @@ Power BI panonuz, perakende izleme uygulamanızdan verileri görüntüler. Bu ç
 
 1. **Power BI** hesabınızda oturum açın.
 1. **Çalışma alanları**' nı ve ardından **çalışma alanı oluştur**' u seçin.
-1. **Çalışma alanı oluştur** sayfasında, **çalışma alanı adı**olarak _Mağaza içi Analytics-Checkout_ girin.
+1. **Çalışma alanı oluştur** sayfasında, **çalışma alanı adı** olarak _Mağaza içi Analytics-Checkout_ girin.
 1. **Mağaza içi analiz-kullanıma alma çalışma alanına hoş geldiniz** sayfasının en altına gidin ve **Atla**' yı seçin.
 1. Çalışma alanı sayfasında **> akış veri kümesi oluştur**' u seçin.
 1. **Yeni akış veri kümesi** sayfasında **API**' yi seçin ve ardından **İleri**' yi seçin.
-1. **Veri kümesi adı**olarak _bölge 1 algılayıcı_ girin.
+1. **Veri kümesi adı** olarak _bölge 1 algılayıcı_ girin.
 1. Akıştan aşağıdaki tablodaki üç **değeri** girin:
 
     | Değer adı  | Değer türü |
@@ -128,7 +128,7 @@ Ayrıca, doluluk telemetrisi için bir akış veri kümesi gerekir:
 
 1. Çalışma alanı sayfasında **> akış veri kümesi oluştur**' u seçin.
 1. **Yeni akış veri kümesi** sayfasında **API**' yi seçin ve ardından **İleri**' yi seçin.
-1. **Veri kümesi adı**olarak _sahiplik algılayıcısı_ girin.
+1. **Veri kümesi adı** olarak _sahiplik algılayıcısı_ girin.
 1. Aşağıdaki tabloda **akıştan beş değer** girin:
 
     | Değer adı     | Değer türü |
@@ -153,27 +153,27 @@ Bu çözümde, Logic App Olay Hub 'ından Telemetriyi okur, verileri ayrıştır
 Mantıksal uygulamayı oluşturmadan önce [Azure 'da bir yerleşik analiz uygulaması oluşturma IoT Central](./tutorial-in-store-analytics-create-app.md) öğreticisindeki IoT Central uygulamanıza bağladığınız Iki RuuviTag sensörlerinin cihaz kimliklerine sahip olmanız gerekir:
 
 1. **Mağaza içi analiz-kullanıma alma** IoT Central uygulamanızda oturum açın.
-1. Sol bölmedeki **cihazlar** ' ı seçin. Sonra **Ruuvitag**öğesini seçin.
-1. **Cihaz kimliklerini**bir yere göz önünde yapın. Aşağıdaki ekran görüntüsünde, kimlikler **f5dcf4ac32e8** ve **e29ffc8d5326**' dir:
+1. Sol bölmedeki **cihazlar** ' ı seçin. Sonra **Ruuvitag** öğesini seçin.
+1. **Cihaz kimliklerini** bir yere göz önünde yapın. Aşağıdaki ekran görüntüsünde, kimlikler **f5dcf4ac32e8** ve **e29ffc8d5326**' dir:
 
     ![Cihaz kimlikleri](./media/tutorial-in-store-analytics-visualize-insights/device-ids.png)
 
 Aşağıdaki adımlarda Azure portal mantıksal uygulamayı nasıl oluşturacağınız gösterilmektedir:
 
 1. [Azure Portal](https://portal.azure.com) oturum açın ve ekranın sol üst kısmında **kaynak oluştur** ' u seçin.
-1. **Market 'Te arama**yapın bölümünde _Logic App_yazın ve **ENTER**tuşuna basın.
+1. **Market 'Te arama** yapın bölümünde _Logic App_ yazın ve **ENTER** tuşuna basın.
 1. **Mantıksal uygulama** sayfasında **Oluştur**' u seçin.
 1. **Mantıksal uygulama** Oluştur sayfasında:
-    * Mantıksal uygulamanız için _ad-perakende-mağaza-analiz_gibi benzersiz bir ad girin.
+    * Mantıksal uygulamanız için _ad-perakende-mağaza-analiz_ gibi benzersiz bir ad girin.
     * IoT Central uygulamanızı oluşturmak için kullandığınız **aboneliği** seçin.
     * **Retail-Store-Analysis** kaynak grubunu seçin.
     * IoT Central uygulamanız için kullandığınız konumu seçin.
     * **Oluştur**’u seçin. Sistemin kaynakları sağlaması için birkaç dakika beklemeniz gerekebilir.
 1. Azure portal yeni mantıksal uygulamanıza gidin.
 1. **Logic Apps tasarımcı** sayfasında, aşağı kaydırarak **boş mantıksal uygulama**' yı seçin.
-1. **Ara bağlayıcılar ve Tetikleyiciler**' de _Event Hubs_girin.
-1. **Tetikleyiciler**' de **olayları Olay Hub 'ında ne zaman kullanılabilir olduğunu**seçin.
-1. _Mağaza telemetrisini_ **bağlantı adı**olarak girin ve **Event Hubs ad**alanınızı seçin.
+1. **Ara bağlayıcılar ve Tetikleyiciler**' de _Event Hubs_ girin.
+1. **Tetikleyiciler**' de **olayları Olay Hub 'ında ne zaman kullanılabilir olduğunu** seçin.
+1. _Mağaza telemetrisini_ **bağlantı adı** olarak girin ve **Event Hubs ad** alanınızı seçin.
 1. **RootManageSharedAccess** ilkesini seçin ve **Oluştur**' u seçin.
 1. **Olay Hub 'ında olaylar kullanılabilir olduğunda** :
     * **Olay Hub 'ı adı**' nda **Mağaza-telemetri**' i seçin.
@@ -373,54 +373,54 @@ Mantıksal uygulama tasarımınıza mantığı eklemek için **kod görünümü*
     ![Mantıksal uygulama tasarımı](./media/tutorial-in-store-analytics-visualize-insights/logic-app.png)
 
 1. Eylemi genişletmek için **DeviceID 'e göre Değiştir** ' i seçin. Ardından **bölge 1 ortamı**' nı seçin ve **Eylem Ekle**' yi seçin.
-1. **Ara bağlayıcılar ve eylemler**' de **Power BI**girin ve ardından **ENTER**tuşuna basın.
+1. **Ara bağlayıcılar ve eylemler**' de **Power BI** girin ve ardından **ENTER** tuşuna basın.
 1. **Veri kümesine satır ekle (Önizleme)** eylemini seçin.
 1. **Oturum aç '** ı seçin ve Power BI hesabınızda oturum açmak için istemleri izleyin.
 1. Oturum açma işlemi tamamlandıktan sonra, **bir veri kümesine satır ekleme** eylemine:
     * Çalışma alanı olarak **Mağaza içi analiz-kullanıma al** seçeneğini belirleyin.
     * Veri kümesi olarak **bölge 1 algılayıcı** seçin.
     * Tablo olarak **RealTimeData** öğesini seçin.
-    * **Yeni parametre Ekle** ' yi seçin ve ardından **zaman damgası**, **nem**ve **sıcaklık** alanlarını seçin.
+    * **Yeni parametre Ekle** ' yi seçin ve ardından **zaman damgası**, **nem** ve **sıcaklık** alanlarını seçin.
     * **Zaman damgası** alanını seçin ve ardından **dinamik içerik** listesinden **x-opt-enqueuedtime** ' ı seçin.
-    * **Nem** alanını seçin ve ardından **telemetri ayrıştırmak**için **daha fazla göster** ' i seçin. Sonra **nem**' ı seçin.
-    * **Sıcaklık** alanını seçin ve ardından **Telemetriyi ayrıştırmak**için **daha fazla göster** ' i seçin. Sonra **sıcaklık**' ı seçin.
+    * **Nem** alanını seçin ve ardından **telemetri ayrıştırmak** için **daha fazla göster** ' i seçin. Sonra **nem**' ı seçin.
+    * **Sıcaklık** alanını seçin ve ardından **Telemetriyi ayrıştırmak** için **daha fazla göster** ' i seçin. Sonra **sıcaklık**' ı seçin.
     * Değişikliklerinizi kaydetmek için **Kaydet** seçeneğini belirleyin. **Bölge 1 ortamı** eylemi aşağıdaki ekran görüntüsüne benzer şekilde görünür: ![ bölge 1 ortamı](./media/tutorial-in-store-analytics-visualize-insights/zone-1-action.png)
 1. **Bölge 2 ortamı** eylemini seçin ve **Eylem Ekle**' yi seçin.
-1. **Ara bağlayıcılar ve eylemler**' de **Power BI**girin ve ardından **ENTER**tuşuna basın.
+1. **Ara bağlayıcılar ve eylemler**' de **Power BI** girin ve ardından **ENTER** tuşuna basın.
 1. **Veri kümesine satır ekle (Önizleme)** eylemini seçin.
 1. **Veri kümesine satır ekleme 2** eylemi:
     * Çalışma alanı olarak **Mağaza içi analiz-kullanıma al** seçeneğini belirleyin.
     * Veri kümesi olarak **bölge 2 algılayıcı** seçin.
     * Tablo olarak **RealTimeData** öğesini seçin.
-    * **Yeni parametre Ekle** ' yi seçin ve ardından **zaman damgası**, **nem**ve **sıcaklık** alanlarını seçin.
+    * **Yeni parametre Ekle** ' yi seçin ve ardından **zaman damgası**, **nem** ve **sıcaklık** alanlarını seçin.
     * **Zaman damgası** alanını seçin ve ardından **dinamik içerik** listesinden **x-opt-enqueuedtime** ' ı seçin.
-    * **Nem** alanını seçin ve ardından **telemetri ayrıştırmak**için **daha fazla göster** ' i seçin. Sonra **nem**' ı seçin.
-    * **Sıcaklık** alanını seçin ve ardından **Telemetriyi ayrıştırmak**için **daha fazla göster** ' i seçin. Sonra **sıcaklık**' ı seçin.
+    * **Nem** alanını seçin ve ardından **telemetri ayrıştırmak** için **daha fazla göster** ' i seçin. Sonra **nem**' ı seçin.
+    * **Sıcaklık** alanını seçin ve ardından **Telemetriyi ayrıştırmak** için **daha fazla göster** ' i seçin. Sonra **sıcaklık**' ı seçin.
     Değişikliklerinizi kaydetmek için **Kaydet** seçeneğini belirleyin.  **Bölge 2 ortamı** eylemi aşağıdaki ekran görüntüsüne benzer şekilde görünür: ![ bölge 2 ortamı](./media/tutorial-in-store-analytics-visualize-insights/zone-2-action.png)
 1. **Sahiplik** eylemini seçin ve ardından **arabirim kimliğiyle anahtar** eylemini seçin.
 1. **Iyi zaman arabirimi** eylemini seçin ve **Eylem Ekle**' yi seçin.
-1. **Ara bağlayıcılar ve eylemler**' de **Power BI**girin ve ardından **ENTER**tuşuna basın.
+1. **Ara bağlayıcılar ve eylemler**' de **Power BI** girin ve ardından **ENTER** tuşuna basın.
 1. **Veri kümesine satır ekle (Önizleme)** eylemini seçin.
 1. **Veri kümesine satır ekleme** eylemi:
     * Çalışma alanı olarak **Mağaza içi analiz-kullanıma al** seçeneğini belirleyin.
     * Veri kümesi olarak **sahiplik algılayıcısı** ' nı seçin.
     * Tablo olarak **RealTimeData** öğesini seçin.
-    * **Yeni parametre Ekle** ' yi seçin ve ardından **zaman damgası**, **diyi zaman 1**ve **diyi zaman 2** alanlarını seçin.
+    * **Yeni parametre Ekle** ' yi seçin ve ardından **zaman damgası**, **diyi zaman 1** ve **diyi zaman 2** alanlarını seçin.
     * **Zaman damgası** alanını seçin ve ardından **dinamik içerik** listesinden **x-opt-enqueuedtime** ' ı seçin.
-    * **Iyi saat 1** alanını seçin ve ardından **telemetri ayrıştırmak**için **daha fazla göster** ' i seçin. Ardından **DwellTime1**öğesini seçin.
-    * **Diyi zaman 2** alanını seçin ve ardından **Telemetriyi ayrıştırmak**için **daha fazla bilgi** 'yi seçin. Ardından **DwellTime2**öğesini seçin.
+    * **Iyi saat 1** alanını seçin ve ardından **telemetri ayrıştırmak** için **daha fazla göster** ' i seçin. Ardından **DwellTime1** öğesini seçin.
+    * **Diyi zaman 2** alanını seçin ve ardından **Telemetriyi ayrıştırmak** için **daha fazla bilgi** 'yi seçin. Ardından **DwellTime2** öğesini seçin.
     * Değişikliklerinizi kaydetmek için **Kaydet** seçeneğini belirleyin. **Iyi zaman arabirimi** eylemi aşağıdaki ekran görüntüsüne benzer şekilde görünür: ![ "iyi zaman arabirimi" eylemini gösteren ekran görüntüsü.](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-1.png)
 1. **Kişi sayısı arabirim** eylemini seçin ve **Eylem Ekle**' yi seçin.
-1. **Ara bağlayıcılar ve eylemler**' de **Power BI**girin ve ardından **ENTER**tuşuna basın.
+1. **Ara bağlayıcılar ve eylemler**' de **Power BI** girin ve ardından **ENTER** tuşuna basın.
 1. **Veri kümesine satır ekle (Önizleme)** eylemini seçin.
 1. **Veri kümesine satır ekleme** eylemi:
     * Çalışma alanı olarak **Mağaza içi analiz-kullanıma al** seçeneğini belirleyin.
     * Veri kümesi olarak **sahiplik algılayıcısı** ' nı seçin.
     * Tablo olarak **RealTimeData** öğesini seçin.
-    * **Yeni parametre Ekle** ' yi seçin ve ardından **zaman damgası**, **sıra uzunluğu 1**ve **sıra uzunluğu 2** alanlarını seçin.
+    * **Yeni parametre Ekle** ' yi seçin ve ardından **zaman damgası**, **sıra uzunluğu 1** ve **sıra uzunluğu 2** alanlarını seçin.
     * **Zaman damgası** alanını seçin ve ardından **dinamik içerik** listesinden **x-opt-enqueuedtime** ' ı seçin.
-    * **Sıra uzunluğu 1** alanını seçin ve ardından **telemetri ayrıştırmak**için **daha fazla göster** ' i seçin. Ardından **count1**öğesini seçin.
-    * **Sıra uzunluğu 2** alanını seçin ve ardından **telemetri ayrıştırmak**için **daha fazla göster** ' i seçin. Ardından **count2**öğesini seçin.
+    * **Sıra uzunluğu 1** alanını seçin ve ardından **telemetri ayrıştırmak** için **daha fazla göster** ' i seçin. Ardından **count1** öğesini seçin.
+    * **Sıra uzunluğu 2** alanını seçin ve ardından **telemetri ayrıştırmak** için **daha fazla göster** ' i seçin. Ardından **count2** öğesini seçin.
     * Değişikliklerinizi kaydetmek için **Kaydet** seçeneğini belirleyin. **Kişi sayısı arabirim** eylemi şu ekran görüntüsüne benzer şekilde görünür: ![ sahiplik eylemi](./media/tutorial-in-store-analytics-visualize-insights/occupancy-action-2.png)
 
 Mantıksal uygulama otomatik olarak çalışır. Her çalıştırmanın durumunu görmek için Azure portal mantıksal uygulamanın **genel bakış** sayfasına gidin:
@@ -430,8 +430,8 @@ Mantıksal uygulama otomatik olarak çalışır. Her çalıştırmanın durumunu
 Artık, Olay Hub 'ınız aracılığıyla IoT Central uygulamanızdan telemetri akışı oluşturdunuz. Daha sonra mantıksal uygulamanız, Olay Hub 'ı iletilerini ayrıştırır ve bunları bir Power BI akış veri kümesine ekler. Şimdi Telemetriyi görselleştirmek için bir Power BI panosu oluşturabilirsiniz:
 
 1. **Power BI** hesabınızda oturum açın.
-1. **Mağaza > çalışma alanlarını**seçin.
-1. **> Panosu Oluştur ' u**seçin.
+1. **Mağaza > çalışma alanlarını** seçin.
+1. **> Panosu Oluştur ' u** seçin.
 1. **Depo analizlerini** Pano adı olarak girin ve **Oluştur**' u seçin.
 
 ### <a name="add-line-charts"></a>Çizgi grafikleri ekleme
@@ -496,7 +496,7 @@ IoT Central uygulamanız ile işiniz bittiğinde, uygulamada oturum açıp **Yö
 
 Uygulamayı korumak, ancak bununla ilişkili maliyetleri azaltmak istiyorsanız, Olay Hub 'ınıza telemetri gönderen veri dışa aktarmayı devre dışı bırakın.
 
-**Retail-Store-Analysis**adlı kaynak grubunu silerek Azure Portal Olay Hub 'ını ve mantıksal uygulamayı silebilirsiniz.
+**Retail-Store-Analysis** adlı kaynak grubunu silerek Azure Portal Olay Hub 'ını ve mantıksal uygulamayı silebilirsiniz.
 
 Çalışma alanı için Power BI ayarları sayfasından çalışma alanını silerek Power BI veri kümelerinizi ve panonuzu silebilirsiniz.
 

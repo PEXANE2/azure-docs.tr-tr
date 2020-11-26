@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/17/2020
 ms.openlocfilehash: 457f7e07391c647d2ab0e7d78197086f6f5e2cf7
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337448"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187791"
 ---
 # <a name="quickstart-use-java-and-jdbc-with-azure-database-for-mysql"></a>Hızlı başlangıç: MySQL için Azure veritabanı ile Java ve JDBC kullanma
 
@@ -46,11 +46,11 @@ AZ_LOCAL_IP_ADDRESS=<YOUR_LOCAL_IP_ADDRESS>
 Yer tutucuları, bu makale boyunca kullanılan aşağıdaki değerlerle değiştirin:
 
 - `<YOUR_DATABASE_NAME>`: MySQL sunucunuzun adı. Azure genelinde benzersiz olmalıdır.
-- `<YOUR_AZURE_REGION>`: Kullanacağınız Azure bölgesi. `eastus`Varsayılan olarak kullanabilirsiniz, ancak bir bölgeyi yaşadığınız yere yakın bir yerde yapılandırmanızı öneririz. ' İ girerek kullanılabilir bölgelerin tam listesini alabilirsiniz `az account list-locations` .
-- `<YOUR_MYSQL_PASSWORD>`: MySQL veritabanı sunucunuzun parolası. Bu parola en az sekiz karakter uzunluğunda olmalıdır. Karakterler şu kategorilerden üçünde olmalıdır: Ingilizce büyük harfler, Ingilizce küçük harfler, sayılar (0-9) ve alfasayısal olmayan karakterler (!, $, #,%, vb.).
+- `<YOUR_AZURE_REGION>`: Kullanacağınız Azure bölgesi. Varsayılan olarak `eastus` kullanabilirsiniz ancak bölgeyi, yaşadığınız yere yakın bir yerde yapılandırmanızı öneririz. ' İ girerek kullanılabilir bölgelerin tam listesini alabilirsiniz `az account list-locations` .
+- `<YOUR_MYSQL_PASSWORD>`: MySQL veritabanı sunucunuzun parolası. Bu parola en az sekiz karakter uzunluğunda olmalıdır. Karakterler şu kategorilerin üçünü de içermelidir: İngilizce büyük harfler, İngilizce küçük harfler, rakamlar (0-9) ve alfasayısal olmayan karakterler (!, $, #, % vb.).
 - `<YOUR_LOCAL_IP_ADDRESS>`: Java uygulamanızı çalıştıracağınız yerel bilgisayarınızın IP adresi. Bunu bulmanın kolay bir yolu, tarayıcınızı [whatismyip.Akamai.com](http://whatismyip.akamai.com/)'e işaret kullanmaktır.
 
-Sonra, bir kaynak grubu oluşturun:
+Sonra, kaynak grubu oluşturun:
 
 ```azurecli
 az group create \
@@ -60,15 +60,15 @@ az group create \
 ```
 
 > [!NOTE]
-> `jq`JSON verilerini göstermek ve daha okunabilir hale getirmek için [Azure Cloud Shell](https://shell.azure.com/) varsayılan olarak yüklenen yardımcı programı kullanıyoruz.
-> Bu yardımcı programı beğenmezseniz, `| jq` kullanacağımız tüm komutların bölümünü güvenle kaldırabilirsiniz.
+> JSON verilerini görüntüleyip daha okunur hale getirmesi için, [Azure Cloud Shell](https://shell.azure.com/)’de varsayılan olarak yüklü olan `jq` yardımcı programını kullanacağız.
+> Bu yardımcı programı beğenmezseniz kullanacağımız tüm komutlardan `| jq` bölümünü kaldırabilirsiniz.
 
-## <a name="create-an-azure-database-for-mysql-instance"></a>MySQL için Azure veritabanı örneği oluşturma
+## <a name="create-an-azure-database-for-mysql-instance"></a>MySQL için Azure Veritabanı örneği oluşturma
 
-Oluşturacağız ilk şey, yönetilen bir MySQL sunucusudur.
+İlk olarak, yönetilen bir MySQL sunucusu oluşturacağız.
 
 > [!NOTE]
-> Azure portal kullanarak MySQL sunucusu oluşturma hakkında daha ayrıntılı bilgi edinmek için bkz. [MySQL Için Azure veritabanı sunucusu oluşturma](./quickstart-create-mysql-server-database-using-azure-portal.md).
+> MySQL sunucuları oluşturma hakkında daha ayrıntılı bilgileri [Azure portalı kullanarak MySQL için Azure Veritabanı sunucusu oluşturma](./quickstart-create-mysql-server-database-using-azure-portal.md) başlıklı makaleyi okuyarak edinebilirsiniz.
 
 [Azure Cloud Shell](https://shell.azure.com/), aşağıdaki betiği çalıştırın:
 
@@ -88,7 +88,7 @@ Bu komut, küçük bir MySQL sunucusu oluşturur.
 
 ### <a name="configure-a-firewall-rule-for-your-mysql-server"></a>MySQL sunucunuz için bir güvenlik duvarı kuralı yapılandırma
 
-MySQL için Azure veritabanı örnekleri varsayılan olarak güvenli hale getirilir. Herhangi bir gelen bağlantıya izin veren bir güvenlik duvarı vardır. Veritabanınızı kullanabilmeniz için, yerel IP adresinin veritabanı sunucusuna erişmesine imkan sağlayacak bir güvenlik duvarı kuralı eklemeniz gerekir.
+MySQL için Azure veritabanı örnekleri varsayılan olarak güvenli hale getirilir. Gelen bağlantılara izin vermeyen bir güvenlik duvarı vardır. Veritabanınızı kullanabilmeniz için, yerel IP adresinin veritabanı sunucusuna erişmesine imkan sağlayacak bir güvenlik duvarı kuralı eklemeniz gerekir.
 
 Bu makalenin başlangıcında yerel IP adresimizi yapılandırdığınız için, şunu çalıştırarak sunucunun güvenlik duvarını açabilirsiniz:
 
@@ -104,7 +104,7 @@ az mysql server firewall-rule create \
 
 ### <a name="configure-a-mysql-database"></a>MySQL veritabanı yapılandırma
 
-Daha önce oluşturduğunuz MySQL sunucusu boştur. Java uygulamasıyla kullanabileceğiniz herhangi bir veritabanı yoktur. Adlı yeni bir veritabanı oluşturun `demo` :
+Önceden oluşturduğunuz MySQL sunucusu boştur. Java uygulamasıyla kullanabileceğiniz herhangi bir veritabanı yoktur. `demo` adlı yeni bir veritabanı oluşturun:
 
 ```azurecli
 az mysql db create \
@@ -163,7 +163,7 @@ password=$AZ_MYSQL_PASSWORD
 - Değişkenini, `$AZ_MYSQL_PASSWORD` Bu makalenin başlangıcında yapılandırdığınız değerle değiştirin.
 
 > [!NOTE]
-> `?serverTimezone=UTC` `url` VERITABANıNA bağlanırken JDBC sürücüsüne UTC tarih biçimini (veya Eşgüdümlü Evrensel Saat) kullanmasını söylemek için yapılandırma özelliğine ekledik. Aksi halde, Java sunucusu veritabanıyla aynı tarih biçimini kullanmaz ve bu da hataya yol açabilir.
+> Veritabanına bağlanırken JDBC sürücüsünün UTC tarih biçimini (veya Eşgüdümlü Evrensel Saat) kullanmasını söylemek için `url` yapılandırma özelliğine `?serverTimezone=UTC` ekliyoruz. Aksi halde, Java sunucumuz veritabanıyla aynı tarih biçimini kullanmaz ve bu bir hataya neden olur.
 
 ### <a name="create-an-sql-file-to-generate-the-database-schema"></a>Veritabanı şemasını oluşturmak için bir SQL dosyası oluşturma
 
@@ -174,7 +174,7 @@ DROP TABLE IF EXISTS todo;
 CREATE TABLE todo (id SERIAL PRIMARY KEY, description VARCHAR(255), details VARCHAR(4096), done BOOLEAN);
 ```
 
-## <a name="code-the-application"></a>Uygulamayı kodlayın
+## <a name="code-the-application"></a>Uygulamayı kodlama
 
 ### <a name="connect-to-the-database"></a>Veritabanına bağlanın
 

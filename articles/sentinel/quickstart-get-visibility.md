@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 26a29524e0bf329a368b3cd2281dd9b070b42a14
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 369847810cdb7f7e93a13f5d410f226d3663080d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660823"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188590"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Hızlı Başlangıç: Azure Sentinel'i kullanmaya başlama
 
@@ -30,7 +30,7 @@ Ortamınızda neler olduğunu görselleştirmek ve analiz etmek için öncelikle
 
 - Azure portal Azure Sentinel ' i seçin ve ardından izlemek istediğiniz çalışma alanını seçin.
 
-  ![Azure Sentinel genel bakış](./media/qs-get-visibility/overview.png)
+  ![Azure Sentinel'e genel bakış](./media/qs-get-visibility/overview.png)
 
 - Üstteki araç çubuğu, belirlenen zaman dilimine göre kaç olay olduğunu size bildirir ve bunu önceki 24 saat ile karşılaştırır. Araç çubuğu, bu olayları, tetiklenen uyarıları (küçük sayı, son 24 saat içindeki değişikliği temsil eder) ve ardından bu olayları, ne kadar açık, devam ediyor ve kapalı olduğunu bildirir. Olay sayısında önemli bir artış veya bırakma olmadığını kontrol edin. Bir bırakma işlemi varsa, bağlantı Azure Sentinel 'e raporlamayı durdurdu olabilir. Bir artış varsa şüpheli bir sorun oluşmuş olabilir. Yeni uyarılar olup olmadığını kontrol edin.
 
@@ -91,12 +91,11 @@ Sıfırdan yeni bir çalışma kitabı oluşturabilir veya yeni çalışma kitab
 Aşağıdaki örnek sorgu, trafik eğilimlerini haftalar içinde karşılaştırmanızı sağlar. Sorguyu çalıştırdığınız cihaz satıcısını ve veri kaynağını kolayca geçirebilirsiniz. Bu örnek, Windows 'da SecurityEvent kullanır, diğer tüm güvenlik duvarında AzureActivity veya CommonSecurityLog üzerinde çalışacak şekilde geçiş yapabilirsiniz.
 
 ```console
- |where DeviceVendor == "Palo Alto Networks":
-  // week over week query
-  SecurityEvent
-  | where TimeGenerated > ago(14d)
-  | summarize count() by bin(TimeGenerated, 1d)
-  | extend Week = iff(TimeGenerated>ago(7d), "This Week", "Last Week"), TimeGenerated = iff(TimeGenerated>ago(7d), TimeGenerated, TimeGenerated + 7d)
+// week over week query
+SecurityEvent
+| where TimeGenerated > ago(14d)
+| summarize count() by bin(TimeGenerated, 1d)
+| extend Week = iff(TimeGenerated>ago(7d), "This Week", "Last Week"), TimeGenerated = iff(TimeGenerated>ago(7d), TimeGenerated, TimeGenerated + 7d)
 ```
 
 Katları kaynaklardan veri içeren bir sorgu oluşturmak isteyebilirsiniz. Yeni oluşturulan yeni kullanıcılar için Azure Active Directory Denetim günlüklerine bakar ve sonra kullanıcının, 24 saat içinde rol ataması değişikliği yapıp başlatmadığını görmek için Azure günlüklerinizi denetleyerek bir sorgu oluşturabilirsiniz. Bu şüpheli etkinlik bu panoda görünür:

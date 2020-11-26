@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: b684123068889e422080605fb9c50ef9aed0cb76
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: e446ec08d63c44566b2f45c1427999536d0be703
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630167"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188726"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Windows 'da Azure dosyaları sorunlarını giderme (SMB)
 
@@ -26,7 +26,7 @@ Bu makalede, Windows istemcilerinden bağlandığınızda Microsoft Azure dosyal
 
 Bir dosya payını bağlamaya çalıştığınızda, şu hatayı alabilirsiniz:
 
-- Sistem hatası 5 oluştu. Erişim reddedilir.
+- Sistem hatası 5 oluştu. Erişim reddedildi.
 
 ### <a name="cause-1-unencrypted-communication-channel"></a>Neden 1: şifrelenmemiş iletişim kanalı
 
@@ -176,7 +176,7 @@ Depolama hesabında sanal ağ ve güvenlik duvarı kurallarının düzgün yapı
 Azure dosya paylaşımının bulunduğu depolama hesabına gidin, **erişim denetimi (IAM)** öğesine tıklayın ve Kullanıcı hesabınızın depolama hesabına erişimi olduğunu doğrulayın. Daha fazla bilgi edinmek için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC) ile depolama hesabınızın güvenliğini sağlama](../blobs/security-recommendations.md#data-protection).
 
 <a id="open-handles"></a>
-## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Azure dosya paylaşımında dosya veya dizin silinemiyor
+## <a name="unable-to-modify-moverename-or-delete-a-file-or-directory"></a>Dosya veya dizin değiştirilemez, taşınamaz/yeniden adlandırılamaz veya silinemez
 Bir dosya paylaşımının temel amaçlarından biri, birden çok kullanıcının ve uygulamanın paylaşımdaki dosyalarla ve dizinlerde eşzamanlı olarak etkileşime girebileceği bir dosyadır. Dosya paylaşımları, bu etkileşime yardımcı olmak için dosyalara ve dizinlere erişim sağlayan çeşitli yollar sağlar.
 
 SMB üzerinden bağlı bir Azure dosya paylaşımından bir dosya açtığınızda, uygulamanız/işletim sisteminiz dosya başvurusu olan bir dosya tanıtıcısı ister. Diğer şeyler arasında, uygulamanız bir dosya tanıtıcısı istediğinde, Azure dosyaları tarafından zorlanan dosyaya erişiminizin denetim düzeyini belirten bir dosya paylaşım modu belirtir: 

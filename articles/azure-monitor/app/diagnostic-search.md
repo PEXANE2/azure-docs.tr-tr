@@ -3,18 +3,18 @@ title: Azure Application Insights arama kullanma | Microsoft Docs
 description: Web uygulamanız tarafından gönderilen ham Telemetriyi arayın ve filtreleyin.
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.openlocfilehash: f88e0fb8fbd7e9605635ede1e8f71b57de84b74e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f87a972b417bf6074de1c10b7a54bd2416f88daa
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324463"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187026"
 ---
 # <a name="using-search-in-application-insights"></a>Application Insights arama kullanma
 
 Arama, sayfa görünümleri, özel durumlar veya Web istekleri gibi tek tek telemetri öğelerini bulmak ve araştırmak için kullandığınız [Application Insights](./app-insights-overview.md) özelliğidir. Ve kodlandığı günlük izlemelerini ve olayları görüntüleyebilirsiniz.
 
-(Verileriniz üzerinde daha karmaşık sorgular için [analiz](../log-query/get-started-portal.md)kullanın.)
+(Verileriniz üzerinde daha karmaşık sorgular için [analiz](../log-query/log-analytics-tutorial.md)kullanın.)
 
 ## <a name="where-do-you-see-search"></a>Aramayı nerede görüyorsunuz?
 
@@ -81,7 +81,7 @@ Aynı özellik değerine sahip tüm öğeleri bulmak için arama çubuğuna yaz�
 ## <a name="search-the-data"></a>Verilerde arama
 
 > [!NOTE]
-> Daha karmaşık sorgular yazmak için arama dikey penceresinin en üstünden [**günlükleri (Analiz)**](../log-query/get-started-portal.md) açın.
+> Daha karmaşık sorgular yazmak için arama dikey penceresinin en üstünden [**günlükleri (Analiz)**](../log-query/log-analytics-tutorial.md) açın.
 >
 
 Özellik değerlerinin herhangi birinde terimleri arayabilirsiniz. Bu özellik değerleri ile [özel olaylar](./api-custom-events-metrics.md) yazdıysanız yararlı olur.
@@ -145,8 +145,7 @@ POST verilerini otomatik olarak günlüğe vermedik, ancak [Tracktrace veya log 
 
 ## <a name="next-steps"></a><a name="add"></a>Sonraki adımlar
 
-* [Analytics 'te karmaşık sorgular yazma](../log-query/get-started-portal.md)
+* [Analytics 'te karmaşık sorgular yazma](../log-query/log-analytics-tutorial.md)
 * [Application Insights için Günlükler ve özel telemetri gönder](./asp-net-trace-logs.md)
 * [Kullanılabilirlik ve yanıt verme testlerini ayarlama](./monitor-web-app-availability.md)
 * [Sorun giderme](../faq.md)
-

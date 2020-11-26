@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 0c1e84695ce40b489fb1005325d501ea241cdaf1
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: fc89790c7d268bcfa0c08bd26249bc91979d7fca
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94738110"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186907"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Azure Izleyici ile Azure sanal makinelerini izleme
 Bu makalede, Azure Izleyici 'nin, Azure sanal makinelerindeki izleme verilerini toplamak ve analiz etmek için, sistem durumlarını korumak üzere nasıl kullanılacağı açıklanır. Sanal makineler, Azure Izleyici ile [diğer Azure kaynakları](monitor-azure-resource.md)gibi kullanılabilirlik ve performans için izlenebilir, ancak Konuk işletim sistemini ve sistemi ve içinde çalışan iş yüklerini izlemeniz gerektiğinden diğer kaynaklardan benzersizdir. 
@@ -58,13 +58,13 @@ Azure Izleyici 'nin bir sanal makineyi izlemeye yönelik tüm özelliklerini etk
 | Yapılandırma yok | -Ölçümlere toplanan konak platformu ölçümleri.<br>-Etkinlik günlüğü toplandı. | -Konak için ölçüm Gezgini.<br>-Konak için ölçüm uyarıları.<br>-Etkinlik günlüğü uyarıları. |
 | [VM'ler için Azure İzleyici etkinleştir](#enable-azure-monitor-for-vms) | -Log Analytics Aracısı yüklendi.<br>-Bağımlılık Aracısı yüklendi.<br>-Günlüklere toplanan konuk performansı verileri.<br>-Günlüklere toplanan işlem ve bağımlılık ayrıntıları. | -Konuk performans verileri için performans grafikleri ve çalışma kitapları.<br>-Konuk performans verileri için sorguları günlüğe kaydedin.<br>-Konuk performans verileri için günlük uyarıları.<br>-Bağımlılık eşlemesi. |
 | [Tanılama uzantısı ve telegraf Aracısı 'nı yükler](#enable-diagnostics-extension-and-telegraf-agent) | -Ölçümlere toplanan konuk performansı verileri. | -Konuk için ölçüm Gezgini.<br>-Konuk için ölçüm uyarıları.  |
-| [Log Analytics çalışma alanını Yapılandır](#configure-log-analytics-workspace) | -Konuktaki toplanan olaylar. | -Konuk olayları için sorguları günlüğe kaydedin.<br>-Konuk olayları için günlük uyarıları. |
+| [Log Analytics çalışma alanını yapılandırma](#configure-log-analytics-workspace) | -Konuktaki toplanan olaylar. | -Konuk olayları için sorguları günlüğe kaydedin.<br>-Konuk olayları için günlük uyarıları. |
 | [Sanal makine için tanılama ayarı oluştur](#collect-platform-metrics-and-activity-log) | -Günlüklere toplanan platform ölçümleri.<br>-Etkinlik günlüğü günlüklere toplandı. | -Konak ölçümleri için günlük sorguları.<br>-Konak ölçümleri için günlük uyarıları.<br>-Etkinlik günlüğü için sorgular günlüğe yazılır.
 
 Bu yapılandırma adımlarının her biri aşağıdaki bölümlerde açıklanmıştır.
 
 ### <a name="enable-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici etkinleştir
-[VM'ler için Azure izleyici](vminsights-overview.md) , Azure izleyici 'de sanal makineleri izlemeye yönelik birincil araç olan Azure izleyici ile ilgili bir [anlayış](insights-overview.md) . Standart Azure Izleyici özellikleri üzerinde aşağıdaki ek değeri sağlar.
+[VM'ler için Azure izleyici](vminsights-overview.md) , Azure izleyici 'de sanal makineleri izlemeye yönelik birincil araç olan Azure izleyici ile ilgili bir [anlayış](../monitor-reference.md) . Standart Azure Izleyici özellikleri üzerinde aşağıdaki ek değeri sağlar.
 
 - Sanal makine konuk işletim sistemini ve iş yüklerini izlemeyi etkinleştirmek için Log Analytics aracısının ve bağımlılık aracısının basitleştirilmesi. 
 - Sanal makinenin Konuk işletim sisteminden temel performans ölçümlerini incelemenize olanak tanıyan, önceden tanımlanmış popüler performans grafikleri ve çalışma kitapları.
@@ -79,7 +79,7 @@ Azure portal sanal makine menüsündeki **Öngörüler** seçeneğinden VM'ler i
 
 ![VM'ler için Azure İzleyici etkinleştir](media/monitor-vm-azure/enable-vminsights.png)
 
-### <a name="configure-log-analytics-workspace"></a>Log Analytics çalışma alanını Yapılandır
+### <a name="configure-log-analytics-workspace"></a>Log Analytics çalışma alanını yapılandırma
 VM'ler için Azure İzleyici tarafından kullanılan Log Analytics Aracısı bir [Log Analytics çalışma alanına](../platform/data-platform-logs.md)veri gönderir. Log Analytics çalışma alanını yapılandırarak ek performans verileri, olaylar ve diğer izleme verilerini aracıdan etkinleştirebilirsiniz. Çalışma alanına bağlanan herhangi bir aracı yapılandırmayı otomatik olarak indirecek ve tanımlanan verileri toplamaya başladıktan sonra yalnızca bir kez yapılandırılması gerekir. 
 
 **Kullanmaya başlama** alanı **yapılandırması** ' nı seçerek çalışma alanının yapılandırmasına doğrudan VM'ler için Azure izleyici erişebilirsiniz. Menüsünü açmak için çalışma alanı adına tıklayın.
@@ -140,7 +140,7 @@ Bir sanal makine için izleme verileri koleksiyonunu yapılandırdıktan sonra, 
 | Tanılama ayarları | Geçerli sanal makine için [Tanılama uzantısını](../platform/diagnostics-extension-overview.md) etkinleştirin ve yapılandırın. |
 | Danışman önerileri | [Azure Advisor](../../advisor/index.yml)'ın geçerli sanal makinesine yönelik öneriler. |
 | Günlükler | [Kapsamın](../log-query/scope.md) geçerli sanal makineye ayarlandığı [Log Analytics](../log-query/log-analytics-overview.md) açın. |
-| Bağlantı İzleyicisi | Geçerli sanal makine ile diğer sanal makineler arasındaki bağlantıları izlemek için [ağ Izleyicisi bağlantı izleyicisini](../../network-watcher/connection-monitor-preview.md) açın. |
+| Bağlantı İzleyicisi | Geçerli sanal makine ile diğer sanal makineler arasındaki bağlantıları izlemek için [ağ Izleyicisi bağlantı izleyicisini](../../network-watcher/connection-monitor-overview.md) açın. |
 
 
 ## <a name="analyzing-metric-data"></a>Ölçüm verileri çözümleniyor
@@ -148,7 +148,7 @@ Sanal makine menüsünden **ölçümler** ' i açarak, Ölçüm Gezgini 'ni kull
 
 Ölçümler için sanal makineler tarafından kullanılan üç ad alanı vardır:
 
-| Ad Alanı | Description | Gereksinim |
+| Ad Alanı | Açıklama | Gereksinim |
 |:---|:---|:---|
 | Sanal Makine Ana Bilgisayarı | Tüm Azure sanal makineleri için otomatik olarak toplanan konak ölçümleri. [Microsoft. COMPUTE/virtualMachines](../platform/metrics-supported.md#microsoftcomputevirtualmachines)'teki ayrıntılı ölçüm listesi. | Yapılandırma gerekmeden otomatik olarak toplanır. |
 | Konuk (klasik) | Sınırlı bir konuk işletim sistemi ve uygulama performansı verileri kümesi. Ölçüm uyarıları gibi diğer Azure Izleyici özellikleriyle Ölçüm Gezgini 'nde kullanılabilir.  | [Tanılama uzantısı](../platform/diagnostics-extension-overview.md) yüklendi. Veriler Azure depolama alanından okundu.  |
@@ -242,4 +242,3 @@ Mevcut Operations Manager Yönetimi grubunuzu Log Analytics çalışma alanını
 
 * [Günlük sorgularını kullanarak Azure Izleyici günlüklerinde verileri çözümlemeyi öğrenin.](../log-query/get-started-queries.md)
 * [Azure Izleyici 'de ölçümleri ve günlükleri kullanarak uyarılar hakkında bilgi edinin.](../platform/alerts-overview.md)
-

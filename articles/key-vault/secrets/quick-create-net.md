@@ -1,6 +1,6 @@
 ---
-title: Hızlı başlangıç-.NET için Azure Key Vault istemci kitaplığı (v4)
-description: .NET istemci kitaplığı 'nı (v4) kullanarak bir Azure Anahtar Kasası 'ndan gizli dizileri oluşturmayı, almayı ve silmeyi öğrenin
+title: Hızlı başlangıç-.NET için Azure Key Vault gizlilikler istemci kitaplığı (sürüm 4)
+description: .NET istemci kitaplığı 'nı kullanarak bir Azure Anahtar Kasası 'nda gizli dizileri oluşturmayı, almayı ve silmeyi öğrenin (sürüm 4)
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 09/23/2020
@@ -8,30 +8,37 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 20974367b9d4b75bb9746cd065bc7490011f37ad
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ecd5fd4f5af883d26f904181796a78f61669b37a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786165"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187366"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-net-sdk-v4"></a>Hızlı başlangıç: .NET için Azure Key Vault gizli istemci kitaplığı (SDK v4)
 
-.NET için Azure Key Vault gizli istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek ve temel görevler için örnek kodu denemek üzere aşağıdaki adımları izleyin.
+.NET için Azure Key Vault gizli istemci kitaplığı ile çalışmaya başlayın. [Azure Key Vault](../general/overview.md) , gizli dizileri için güvenli bir mağaza sağlayan bir bulut hizmetidir. Anahtarları, parolaları, sertifikaları ve diğer gizli dizileri güvenli bir şekilde depolayabilirsiniz. Azure anahtar kasaları Azure portalı aracılığıyla oluşturulup yönetilebilir. Bu hızlı başlangıçta, .NET istemci kitaplığını kullanarak bir Azure Anahtar Kasası 'ndan gizli dizileri oluşturmayı, almayı ve silmeyi öğreneceksiniz
+
+Key Vault istemci kitaplığı kaynakları:
 
 [API başvuru belgeleri](/dotnet/api/azure.security.keyvault.secrets?view=azure-dotnet&preserve-view=true)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault)  |  [Paket (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
+
+Key Vault ve gizli dizileri hakkında daha fazla bilgi için bkz.:
+- [Key Vault genel bakış](../general/overview.md)
+- [Gizli dizi genel bakış](about-secrets.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/dotnet)
 * [.NET Core 3,1 SDK veya üzeri](https://dotnet.microsoft.com/download/dotnet-core)
 * [Azure CLI](/cli/azure/install-azure-cli)
+* Key Vault- [Azure Portal](../general/quick-create-portal.md), [Azure CLI](../general/quick-create-cli.md)veya [Azure PowerShell](../general/quick-create-powershell.md)kullanarak bir tane oluşturabilirsiniz.
 
 Bu hızlı başlangıç, `dotnet` Azure CLI 'yi kullanıyor
 
 ## <a name="setup"></a>Kurulum
 
-Bu hızlı başlangıç, Azure 'da kullanıcının kimliğini doğrulamak için Azure CLı ile Azure Identity Library kullanıyor. Geliştiriciler, aramalarını doğrulamak için Visual Studio veya Visual Studio Code de kullanabilir. daha fazla bilgi için bkz. [Azure Identity istemci kitaplığı ile Istemci kimlik doğrulaması](/dotnet/api/overview/azure/identity-readme#authenticate-the-client&preserve-view=true).
+Bu hızlı başlangıç, Azure 'da kullanıcının kimliğini doğrulamak için Azure CLı ile Azure Identity Library kullanıyor. Geliştiriciler, aramalarını doğrulamak için Visual Studio veya Visual Studio Code de kullanabilir. daha fazla bilgi için bkz. [Azure Identity istemci kitaplığı ile Istemci kimlik doğrulaması](/dotnet/api/overview/azure/identity-readme?#authenticate-the-client&preserve-view=true).
 
 ### <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -84,16 +91,12 @@ Bu hızlı başlangıçta Azure Identity için Azure SDK istemci kitaplığı 'n
 dotnet add package Azure.Identity
 ```
 
-### <a name="create-a-resource-group-and-key-vault"></a>Kaynak grubu ve Anahtar Kasası oluşturma
-
-[!INCLUDE[Create a resource group and key vault](../../../includes/key-vault-rg-kv-creation.md)]
-
 #### <a name="grant-access-to-your-key-vault"></a>Anahtar kasanıza erişim izni verin
 
 Anahtar kasanız için Kullanıcı hesabınıza gizli izin veren bir erişim ilkesi oluşturun
 
 ```console
-az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --secret-permissions delete get list set
+az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --secret-permissions delete get list set purge
 ```
 
 #### <a name="set-environment-variables"></a>Ortam değişkenlerini belirleme
@@ -122,7 +125,7 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 
 ### <a name="add-directives"></a>Yönergeler ekleme
 
-Aşağıdaki yönergeleri *program.cs* ' nin en üstüne ekleyin:
+Aşağıdaki yönergeleri *program.cs*' nin en üstüne ekleyin:
 
 [!code-csharp[](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=directives)]
 
@@ -140,17 +143,11 @@ Konsol uygulamasının kimliğinin doğrulandığına göre, anahtar kasasına b
 
 ```csharp
 await client.SetSecretAsync(secretName, secretValue);
-``````
-
-Parolanın [az keykasası Secret Show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show&preserve-view=true) komutuyla ayarlandığını doğrulayabilirsiniz:
-
-```azurecli
-az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
-```azurepowershell
-(Get-AzKeyVaultSecret -VaultName <your-unique-keyvault-name> -Name mySecret).SecretValue | ConvertFrom-SecureString -AsPlainText
-```
+> [!NOTE]
+> Gizli dizi adı varsa, yukarıdaki kod bu gizli dizinin yeni bir sürümünü oluşturur.
+
 
 ### <a name="retrieve-a-secret"></a>Gizli dizi alma
 
@@ -168,17 +165,81 @@ Son olarak, [Startdeletesecretasync](/dotnet/api/azure.security.keyvault.secrets
 
 ```csharp
 await client.StartDeleteSecretAsync(secretName);
-``````
-
-Parolanın [az keykasasecret Show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show&preserve-view=true) komutuyla yapıldığını doğrulayabilirsiniz:
-
-```azurecli
-az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
-```azurepowershell
-(Get-AzKeyVaultSecret -VaultName <your-unique-keyvault-name> -Name mySecret).SecretValue | ConvertFrom-SecureString -AsPlainText
-```
+## <a name="sample-code"></a>Örnek kod
+
+Aşağıdaki adımları tamamlayarak, .NET Core konsol uygulamasını Key Vault etkileşimde bulunmak üzere değiştirin:
+
+1. *Program.cs* içindeki kodu aşağıdaki kodla değiştirin:
+
+    ```csharp
+    using System;
+    using System.Threading.Tasks;
+    using Azure.Identity;
+    using Azure.Security.KeyVault.Secrets;
+    
+    namespace key_vault_console_app
+    {
+        class Program
+        {
+            static async Task Main(string[] args)
+            {
+                const string secretName = "mySecret";
+                var keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
+                var kvUri = $"https://{keyVaultName}.vault.azure.net";
+    
+                var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
+    
+                Console.Write("Input the value of your secret > ");
+                var secretValue = Console.ReadLine();
+    
+                Console.Write($"Creating a secret in {keyVaultName} called '{secretName}' with the value '{secretValue}' ...");
+                await client.SetSecretAsync(secretName, secretValue);
+                Console.WriteLine(" done.");
+    
+                Console.WriteLine("Forgetting your secret.");
+                secretValue = string.Empty;
+                Console.WriteLine($"Your secret is '{secretValue}'.");
+    
+                Console.WriteLine($"Retrieving your secret from {keyVaultName}.");
+                var secret = await client.GetSecretAsync(secretName);
+                Console.WriteLine($"Your secret is '{secret.Value}'.");
+    
+                Console.Write($"Deleting your secret from {keyVaultName} ...");
+                DeleteSecretOperation operation = await client.StartDeleteSecretAsync(secretName);
+                // You only need to wait for completion if you want to purge or recover the secret.
+                await operation.WaitForCompletionAsync();
+                Console.WriteLine(" done.");
+                
+                Console.Write($"Purging your secret from {keyVaultName} ...");
+                await client.PurgeDeletedSecretAsync(secretName);
+                Console.WriteLine(" done.");
+            }
+        }
+    }
+    ```
+### <a name="test-and-verify"></a>Test ve doğrulama
+
+1. Uygulamayı çalıştırmak için aşağıdaki komutu yürütün.
+
+    ```dotnetcli
+    dotnet run
+    ```
+
+1. İstendiğinde, gizli bir değer girin. Örneğin, mySecretPassword.
+
+    Aşağıdaki çıkışın bir varyasyonu görüntülenir:
+
+    ```console
+    Input the value of your secret > mySecretPassword
+    Creating a secret in <your-unique-keyvault-name> called 'mySecret' with the value 'mySecretPassword' ... done.
+    Forgetting your secret.
+    Your secret is ''.
+    Retrieving your secret from <your-unique-keyvault-name>.
+    Your secret is 'mySecretPassword'.
+    Deleting your secret from <your-unique-keyvault-name> ... done.    
+    ```
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -214,79 +275,8 @@ az group delete -g "myResourceGroup"
 Remove-AzResourceGroup -Name "myResourceGroup"
 ```
 
-## <a name="sample-code"></a>Örnek kod
-
-Aşağıdaki adımları tamamlayarak, .NET Core konsol uygulamasını Key Vault etkileşimde bulunmak üzere değiştirin:
-
-1. *Program.cs* içindeki kodu aşağıdaki kodla değiştirin:
-
-    ```csharp
-    using System;
-    using Azure.Identity;
-    using Azure.Security.KeyVault.Secrets;
-    
-    namespace key_vault_console_app
-    {
-        class Program
-        {
-            static async Task Main(string[] args)
-            {
-                const string secretName = "mySecret";
-                var keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
-                var kvUri = $"https://{keyVaultName}.vault.azure.net";
-    
-                var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
-    
-                Console.Write("Input the value of your secret > ");
-                var secretValue = Console.ReadLine();
-    
-                Console.Write($"Creating a secret in {keyVaultName} called '{secretName}' with the value '{secretValue}' ...");
-                await client.SetSecretAsync(secretName, secretValue);
-                Console.WriteLine(" done.");
-    
-                Console.WriteLine("Forgetting your secret.");
-                secretValue = string.Empty;
-                Console.WriteLine($"Your secret is '{secretValue}'.");
-    
-                Console.WriteLine($"Retrieving your secret from {keyVaultName}.");
-                var secret = await client.GetSecretAsync(secretName);
-                Console.WriteLine($"Your secret is '{secret.Value}'.");
-    
-                Console.Write($"Deleting your secret from {keyVaultName} ...");
-                DeleteSecretOperation operation = await client.StartDeleteSecretAsync(secretName);
-                // You only need to wait for completion if you want to purge or recover the secret.
-                await operation.WaitForCompletionAsync();
-
-                await client.PurgeDeletedSecret(secretName);
-                Console.WriteLine(" done.");
-            }
-        }
-    }
-    ```
-
-1. Uygulamayı çalıştırmak için aşağıdaki komutu yürütün.
-
-    ```dotnetcli
-    dotnet run
-    ```
-
-1. İstendiğinde, gizli bir değer girin. Örneğin, mySecretPassword.
-
-    Aşağıdaki çıkışın bir varyasyonu görüntülenir:
-
-    ```console
-    Input the value of your secret > mySecretPassword
-    Creating a secret in <your-unique-keyvault-name> called 'mySecret' with the value 'mySecretPassword' ... done.
-    Forgetting your secret.
-    Your secret is ''.
-    Retrieving your secret from <your-unique-keyvault-name>.
-    Your secret is 'mySecretPassword'.
-    Deleting your secret from <your-unique-keyvault-name> ... done.    
-    ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-
-Bu hızlı başlangıçta bir Anahtar Kasası oluşturdunuz, gizli dizi depolandı ve bu gizli dizi alındı. [GitHub 'da konsol uygulamasının tamamına](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app)bakın.
 
 Key Vault ve bunu uygulamalarınızla tümleştirme hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 

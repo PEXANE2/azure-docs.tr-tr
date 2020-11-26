@@ -8,12 +8,12 @@ ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2fb67cf29800cf80f07181f68d266a6183f8d710
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 6a08fc25083ecd6917f658f27cb954391228adf7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104739"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188709"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Desteklenen sistemleri Azure IoT Edge
 
@@ -62,7 +62,7 @@ Aşağıdaki tabloda listelenen sistemler Microsoft tarafından desteklenir, gen
 
 | İşletim Sistemi | 'TÜR | ARM32v7 | ARM64 |
 | ---------------- | ----- | ------- | ----- |
-| Raspbian Stretch |  | ![Raspbian uzat + ARM32v7](./media/tutorial-c-module/green-check.png) |  |
+| Raspberry PI OS Esnetme |  | ![Raspberry PI OS Esneti + ARM32v7](./media/tutorial-c-module/green-check.png) |  |
 | [Ubuntu Server 16.04](https://wiki.ubuntu.com/XenialXerus/ReleaseNotes) | ![Ubuntu Server 16,04 + AMD64](./media/tutorial-c-module/green-check.png) |  | Genel Önizleme  |
 | [Ubuntu Server 18.04](https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes) | ![Ubuntu Server 18,04 + AMD64](./media/tutorial-c-module/green-check.png) |  | Genel Önizleme |
 | [Windows 10 IoT Enterprise](/windows/iot-core/windows-iot-enterprise), derleme 17763 | ![Windows 10 IoT Enterprise + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
@@ -89,10 +89,10 @@ Aşağıdaki tabloda listelenen sistemler Azure IoT Edge uyumlu olarak değerlen
 | [Ubuntu 18.04](https://wiki.ubuntu.com/BionicBeaver/ReleaseNotes) | ![Ubuntu 18,04 + AMD64](./media/tutorial-c-module/green-check.png) | ![Ubuntu 18,04 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Ubuntu 18,04 + ARM64](./media/tutorial-c-module/green-check.png) |
 | [Wind River 8](https://docs.windriver.com/category/os-wind_river_linux) | ![Rüzgar River 8 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 | [Yocto](https://www.yoctoproject.org/) | ![Yocto + AMD64](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM64](./media/tutorial-c-module/green-check.png) |
-| Raspbian Buster <sup>1</sup> |  | ![Raspbian Buster + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Raspbian Buster + ARM64](./media/tutorial-c-module/green-check.png) |
+| Raspberry PI OS Buster <sup>1</sup> |  | ![Raspberry PI OS Buster + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Raspberry PI OS Buster + ARM64](./media/tutorial-c-module/green-check.png) |
 | [Ubuntu 20,04 <sup>2</sup>](https://wiki.ubuntu.com/FocalFossa/ReleaseNotes) | ![Ubuntu 20,04 + AMD64](./media/tutorial-c-module/green-check.png) | ![Ubuntu 20,04 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Ubuntu 20,04 + ARM64](./media/tutorial-c-module/green-check.png) |
 
-Raspian Buster dahil olmak üzere <sup>1</sup> dekon, IoT Edge desteklemediği bir OpenSSL sürümü kullanır. IoT Edge yüklemeden önce önceki bir sürümü yüklemek için aşağıdaki komutu kullanın:
+Raspberry PI OS Buster dahil olmak üzere <sup>1</sup> dekon IoT Edge sistemi, tarafından desteklenen bir OpenSSL sürümü kullanır. IoT Edge yüklemeden önce önceki bir sürümü yüklemek için aşağıdaki komutu kullanın:
 
 ```bash
 sudo apt-get install libssl1.0.2

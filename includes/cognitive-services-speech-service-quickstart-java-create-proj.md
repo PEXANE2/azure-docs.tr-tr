@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: erhopf
 ms.openlocfilehash: ee88a7cc187644c89aca5656df9ab9ae48a5a056
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096921"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187770"
 ---
 1. Eclipse’i başlatın.
 
@@ -31,11 +31,11 @@ ms.locfileid: "92096921"
 
 1. **İlişkili Perspektif Açılsın mı?** penceresi görüntülenirse **Perspektifi Aç**’ı seçin.
 
-1. **Paket gezgini**’nde **hızlı başlangıç** projesine sağ tıklayın. **Configure**  >  Bağlam menüsünden**Maven projesine dönüştürmeyi** Yapılandır ' ı seçin.
+1. **Paket gezgini**’nde **hızlı başlangıç** projesine sağ tıklayın. **Configure**  >  Bağlam menüsünden **Maven projesine dönüştürmeyi** Yapılandır ' ı seçin.
 
    ![Paket gezgininin ekran görüntüsü](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-04-convert-to-maven-project.png)
 
-1. **Yeni POM Oluştur** penceresi görüntülenir. **Grup Kimliği** alanına *com. Microsoft. biliveservices. Speech. Samples*girin ve **yapıt kimliği** alanına *hızlı başlangıç*girin. Ardından **son**' u seçin.
+1. **Yeni POM Oluştur** penceresi görüntülenir. **Grup Kimliği** alanına *com. Microsoft. biliveservices. Speech. Samples* girin ve **yapıt kimliği** alanına *hızlı başlangıç* girin. Ardından **son**' u seçin.
 
    ![Yeni POM Oluştur penceresinin ekran görüntüsü](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-05-configure-maven-pom.png)
 

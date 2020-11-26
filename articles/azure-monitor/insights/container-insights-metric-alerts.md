@@ -3,12 +3,12 @@ title: Kapsayıcılar için Azure Izleyici 'den ölçüm uyarıları
 description: Bu makalede, Azure Izleyici 'de genel önizlemede bulunan kapsayıcılar için sunulan önerilen ölçüm uyarıları incelenir.
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: cda5639fdf72f5731af851860f37afa888e7d965
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 16995246578dc8d3c009253d8384c6d7ff3911d3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927830"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186890"
 ---
 # <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici 'den önerilen ölçüm uyarıları (Önizleme)
 
@@ -18,7 +18,7 @@ Bu makale, deneyimi inceler ve bu uyarı kurallarını yapılandırma ve yönetm
 
 Azure Izleyici uyarılarını bilmiyorsanız, başlamadan önce bkz. [Microsoft Azure uyarılara genel bakış](../platform/alerts-overview.md) . Ölçüm uyarıları hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de ölçüm uyarıları](../platform/alerts-metric-overview.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce, aşağıdakileri onaylayın:
 
@@ -39,7 +39,7 @@ Başlamadan önce, aşağıdakileri onaylayın:
 
 Önemli şeyler hakkında uyarı almak için, kapsayıcılar için Azure Izleyici, AKS ve Azure Arc etkin Kubernetes kümelerine yönelik aşağıdaki ölçüm uyarılarını içerir:
 
-|Ad| Açıklama |Varsayılan eşik |
+|Adı| Açıklama |Varsayılan eşik |
 |----|-------------|------------------|
 |Ortalama kapsayıcı CPU 'SU yüzdesi |Kapsayıcı başına kullanılan ortalama CPU 'YU hesaplar.|Kapsayıcı başına ortalama CPU kullanımı %95 ' den büyük olduğunda.| 
 |Ortalama kapsayıcı çalışma kümesi belleği yüzdesi |Kapsayıcı başına kullanılan ortalama çalışma kümesi belleğini hesaplar.|Kapsayıcı başına ortalama çalışma kümesi bellek kullanımı %95 ' den büyük olduğunda. |
@@ -74,15 +74,15 @@ Aşağıdaki uyarı tabanlı ölçümler, diğer ölçümler ile karşılaştır
 
 * *Oomkilledcontainercount* ölçümü yalnızca OOM tarafından sonlandırılan kapsayıcılar olduğunda gönderilir.
 
-* CPU, bellek RSS ve bellek çalışma kümesi değerleri yapılandırılan eşiği aştığında (varsayılan eşik %95), *Cpuexceededpercentage* , *memoryrssexceededpercentage* ve *Memoryworkingsetexceededpercentage* ölçümleri gönderilir. Bu eşikler, karşılık gelen uyarı kuralı için belirtilen uyarı koşulu eşiğini dışlıyor. Anlamı, bu ölçümleri toplamak ve [Ölçüm Gezgini](../platform/metrics-getting-started.md)' nden çözümlemek istiyorsanız, eşiği uyarı eşiğinden daha düşük bir değere yapılandırmanızı öneririz. Kapsayıcı kaynak kullanımı eşikleri için koleksiyon ayarlarıyla ilişkili yapılandırma, bölümünde ConfigMaps dosyasında geçersiz kılınabilir `[alertable_metrics_configuration_settings.container_resource_utilization_thresholds]` . ConfigMap yapılandırma dosyanızı yapılandırma ile ilgili ayrıntılar için, [alertable ölçümleri ConfigMaps](#configure-alertable-metrics-in-configmaps) bölümüne bakın.
+* CPU, bellek RSS ve bellek çalışma kümesi değerleri yapılandırılan eşiği aştığında (varsayılan eşik %95), *Cpuexceededpercentage*, *memoryrssexceededpercentage* ve *Memoryworkingsetexceededpercentage* ölçümleri gönderilir. Bu eşikler, karşılık gelen uyarı kuralı için belirtilen uyarı koşulu eşiğini dışlıyor. Anlamı, bu ölçümleri toplamak ve [Ölçüm Gezgini](../platform/metrics-getting-started.md)' nden çözümlemek istiyorsanız, eşiği uyarı eşiğinden daha düşük bir değere yapılandırmanızı öneririz. Kapsayıcı kaynak kullanımı eşikleri için koleksiyon ayarlarıyla ilişkili yapılandırma, bölümünde ConfigMaps dosyasında geçersiz kılınabilir `[alertable_metrics_configuration_settings.container_resource_utilization_thresholds]` . ConfigMap yapılandırma dosyanızı yapılandırma ile ilgili ayrıntılar için, [alertable ölçümleri ConfigMaps](#configure-alertable-metrics-in-configmaps) bölümüne bakın.
 
-* kalıcı Birim kullanımı yüzdesi yapılandırılan eşiği aştığında, *Pvusageexceededpercentage* ölçümü gönderilir (varsayılan eşik %60 ' dir.) Bu eşik, karşılık gelen uyarı kuralı için belirtilen uyarı koşulu eşiğini dışlıyor. Anlamı, bu ölçümleri toplamak ve [Ölçüm Gezgini](../platform/metrics-getting-started.md)' nden çözümlemek istiyorsanız, eşiği uyarı eşiğinden daha düşük bir değere yapılandırmanızı öneririz. Kalıcı Birim kullanımı eşikleri için koleksiyon ayarlarıyla ilişkili yapılandırma, bölümünde ConfigMaps dosyasında geçersiz kılınabilir `[alertable_metrics_configuration_settings.pv_utilization_thresholds]` . ConfigMap yapılandırma dosyanızı yapılandırma ile ilgili ayrıntılar için, [alertable ölçümleri ConfigMaps](#configure-alertable-metrics-in-configmaps) bölümüne bakın. *Kuto-System* ad alanındaki talepler ile kalıcı birim ölçümleri koleksiyonu varsayılan olarak dışlanır. Bu ad alanında toplamayı etkinleştirmek için `[metric_collection_settings.collect_kube_system_pv_metrics]` ConfigMap dosyasındaki bölümünü kullanın. Ayrıntılar için [ölçüm koleksiyonu ayarlarını](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-agent-config#metric-collection-settings) görüntüleyin.
+* kalıcı Birim kullanımı yüzdesi yapılandırılan eşiği aştığında, *Pvusageexceededpercentage* ölçümü gönderilir (varsayılan eşik %60 ' dir.) Bu eşik, karşılık gelen uyarı kuralı için belirtilen uyarı koşulu eşiğini dışlıyor. Anlamı, bu ölçümleri toplamak ve [Ölçüm Gezgini](../platform/metrics-getting-started.md)' nden çözümlemek istiyorsanız, eşiği uyarı eşiğinden daha düşük bir değere yapılandırmanızı öneririz. Kalıcı Birim kullanımı eşikleri için koleksiyon ayarlarıyla ilişkili yapılandırma, bölümünde ConfigMaps dosyasında geçersiz kılınabilir `[alertable_metrics_configuration_settings.pv_utilization_thresholds]` . ConfigMap yapılandırma dosyanızı yapılandırma ile ilgili ayrıntılar için, [alertable ölçümleri ConfigMaps](#configure-alertable-metrics-in-configmaps) bölümüne bakın. *Kuto-System* ad alanındaki talepler ile kalıcı birim ölçümleri koleksiyonu varsayılan olarak dışlanır. Bu ad alanında toplamayı etkinleştirmek için `[metric_collection_settings.collect_kube_system_pv_metrics]` ConfigMap dosyasındaki bölümünü kullanın. Ayrıntılar için [ölçüm koleksiyonu ayarlarını](./container-insights-agent-config.md#metric-collection-settings) görüntüleyin.
 
 ## <a name="metrics-collected"></a>Toplanan ölçümler
 
 Aşağıdaki ölçümler, aksi belirtilmediği sürece, bu özelliğin bir parçası olarak etkinleştirilir ve toplanır:
 
-|Ölçüm ad alanı |Ölçüm |Açıklama |
+|Ölçüm ad alanı |Metric |Açıklama |
 |---------|----|------------|
 |Öngörüler. kapsayıcı/düğümler |Cpuusagemiliçekirdekler |Ana bilgisayara göre miliçekirdekte CPU kullanımı.|
 |Öngörüler. kapsayıcı/düğümler |cpuUsagePercentage |Düğüme göre CPU kullanım yüzdesi.|
@@ -110,15 +110,15 @@ Azure portal Azure Izleyici 'de ölçüm uyarılarını etkinleştirmek için bu
 
 Bu bölümde, Azure portal kapsayıcılar ölçüm Uyarısı (Önizleme) için Azure Izleyici 'nin etkinleştirilmesi gösterilmektedir.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 2. Kapsayıcılar için Azure Izleyici ölçümleri Uyarısı (Önizleme) özelliğine erişim, Azure portal sol bölmeden **Öngörüler** ' i seçerek doğrudan bir aks kümesinden edinilebilir.
 
-3. Komut çubuğundan **Önerilen uyarılar** ' ı seçin.
+3. Komut çubuğundan **Önerilen uyarılar**' ı seçin.
 
     ![Kapsayıcılar için Azure Izleyici 'de önerilen uyarılar seçeneği](./media/container-insights-metric-alerts/command-bar-recommended-alerts.png)
 
-4. **Önerilen uyarılar** özellik bölmesi otomatik olarak sayfanın sağ tarafında görüntülenir. Varsayılan olarak, listedeki tüm uyarı kuralları devre dışıdır. **Etkinleştir** ' i seçtikten sonra, uyarı kuralı oluşturulur ve kural adı, uyarı kaynağına bir bağlantı içerecek şekilde güncelleştirilir.
+4. **Önerilen uyarılar** özellik bölmesi otomatik olarak sayfanın sağ tarafında görüntülenir. Varsayılan olarak, listedeki tüm uyarı kuralları devre dışıdır. **Etkinleştir**' i seçtikten sonra, uyarı kuralı oluşturulur ve kural adı, uyarı kaynağına bir bağlantı içerecek şekilde güncelleştirilir.
 
     ![Önerilen uyarılar Özellikler bölmesi](./media/container-insights-metric-alerts/recommended-alerts-pane.png)
 
@@ -126,7 +126,7 @@ Bu bölümde, Azure portal kapsayıcılar ölçüm Uyarısı (Önizleme) için A
 
     ![Uyarı kuralını etkinleştirme](./media/container-insights-metric-alerts/recommended-alerts-pane-enable.png)
 
-5. Uyarı kuralları, kullanıcılara bir uyarının tetiklendiğini bildirmek için bir [eylem grubuyla](../platform/action-groups.md) ilişkili değildir. **Atanmış eylem grubu yok** ' u seçin ve **eylem grupları** sayfasında, **Ekle** veya **Oluştur** ' u seçerek mevcut bir eylem grubu belirtin veya bir eylem grubu oluşturun.
+5. Uyarı kuralları, kullanıcılara bir uyarının tetiklendiğini bildirmek için bir [eylem grubuyla](../platform/action-groups.md) ilişkili değildir. **Atanmış eylem grubu yok** ' u seçin ve **eylem grupları** sayfasında, **Ekle** veya **Oluştur**' u seçerek mevcut bir eylem grubu belirtin veya bir eylem grubu oluşturun.
 
     ![Bir eylem grubu seçin](./media/container-insights-metric-alerts/select-action-group.png)
 
@@ -148,15 +148,15 @@ Temel adımlar aşağıdaki gibidir:
 
 2. Portal üzerinden özelleştirilmiş bir şablon dağıtmak için [Azure Portal](https://portal.azure.com) **kaynak oluştur** ' u seçin.
 
-3. **Şablon** araması yapın ve ardından **şablon dağıtımı** ' yi seçin.
+3. **Şablon** araması yapın ve ardından **şablon dağıtımı**' yi seçin.
 
-4. **Oluştur** ’u seçin.
+4. **Oluştur**’u seçin.
 
 5. Şablon oluşturmak için çeşitli seçenekler görürsünüz, **düzenleyicide kendi şablonunuzu oluşturun** seçeneğini belirleyin.
 
 6. **Şablonu Düzenle sayfasında** **Dosya Yükle** ' yi seçin ve şablon dosyasını seçin.
 
-7. **Şablonu Düzenle** sayfasında **Kaydet** ' i seçin.
+7. **Şablonu Düzenle** sayfasında **Kaydet**' i seçin.
 
 8. **Özel dağıtım** sayfasında, aşağıdakileri belirtin ve ardından tamamlandığında, şablonu dağıtmak ve uyarı kuralını oluşturmak Için **satın al** ' ı seçin.
 
@@ -200,14 +200,14 @@ Temel adımlar aşağıdaki gibidir:
 
 Kapsayıcılar için Azure Izleyici uyarı kurallarını görüntüleyebilir ve yönetebilir, eşiğini düzenleyebilir veya AKS kümeniz için bir [eylem grubu](../platform/action-groups.md) yapılandırabilirsiniz. Azure portal ve Azure CLı 'den bu işlemleri gerçekleştirebilmeniz mümkün olsa da, kapsayıcılar için Azure Izleyici 'deki AKS kümenizdeki doğrudan de yapılabilir.
 
-1. Komut çubuğundan **Önerilen uyarılar** ' ı seçin.
+1. Komut çubuğundan **Önerilen uyarılar**' ı seçin.
 
-2. Eşiği değiştirmek için **Önerilen uyarılar** bölmesinde, etkin uyarıyı seçin. **Düzenle kuralında** , düzenlemek istediğiniz **uyarı ölçütünü** seçin.
+2. Eşiği değiştirmek için **Önerilen uyarılar** bölmesinde, etkin uyarıyı seçin. **Düzenle kuralında**, düzenlemek istediğiniz **uyarı ölçütünü** seçin.
 
     * Uyarı kuralı eşiğini değiştirmek için **koşulu** seçin.
     * Var olan veya bir eylem grubu oluşturmak için, **eylem grubu** altında **Ekle** veya **Oluştur** ' u seçin.
 
-Etkin kurallar için oluşturulan uyarıları görüntülemek için **Önerilen uyarılar** bölmesinde **uyarılarda görüntüle** ' yi seçin. Zaten kümeniz için oluşturulmuş olan tüm uyarıları görebileceğiniz AKS kümesinin uyarı menüsüne yönlendirilirsiniz.
+Etkin kurallar için oluşturulan uyarıları görüntülemek için **Önerilen uyarılar** bölmesinde **uyarılarda görüntüle**' yi seçin. Zaten kümeniz için oluşturulmuş olan tüm uyarıları görebileceğiniz AKS kümesinin uyarı menüsüne yönlendirilirsiniz.
 
 ## <a name="configure-alertable-metrics-in-configmaps"></a>ConfigMaps 'ta alertable ölçümlerini yapılandırma
 

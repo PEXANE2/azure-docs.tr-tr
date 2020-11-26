@@ -6,18 +6,18 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
-ms.openlocfilehash: 0842efe304faa9a0d94fbf71075f1bc16ff34014
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 61aba3e5792d1cc20da16686d052de91744dab76
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018214"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186788"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak günlük uyarıları oluşturma, görüntüleme ve yönetme
 
 ## <a name="overview"></a>Genel Bakış
 
-Günlük uyarıları, kullanıcıların kaynak günlüklerini her ayarlama sıklığını değerlendirmek ve sonuçlara göre bir uyarı tetiklemesi için [Log Analytics](../log-query/get-started-portal.md) bir sorgu kullanmasına izin verir. Kurallar, [eylem gruplarını](./action-groups.md)kullanarak bir veya daha fazla eylemi tetikleyebilir. [Günlük uyarılarının işlevselliği ve terminolojisi hakkında daha fazla bilgi edinin](alerts-unified-log.md).
+Günlük uyarıları, kullanıcıların kaynak günlüklerini her ayarlama sıklığını değerlendirmek ve sonuçlara göre bir uyarı tetiklemesi için [Log Analytics](../log-query/log-analytics-tutorial.md) bir sorgu kullanmasına izin verir. Kurallar, [eylem gruplarını](./action-groups.md)kullanarak bir veya daha fazla eylemi tetikleyebilir. [Günlük uyarılarının işlevselliği ve terminolojisi hakkında daha fazla bilgi edinin](alerts-unified-log.md).
 
 Bu makalede, Azure Izleyici kullanarak günlük uyarılarını oluşturma ve yönetme işlemlerinin nasıl yapılacağı gösterilir. Uyarı kuralları üç bileşen tarafından tanımlanır:
 - Hedef: izlenecek belirli bir Azure kaynağı.
@@ -27,7 +27,7 @@ Bu makalede, Azure Izleyici kullanarak günlük uyarılarını oluşturma ve yö
 Ayrıca, [ayrı bir makalede](alerts-log-create-templates.md)açıklanan Azure Resource Manager şablonlarını kullanarak günlük uyarı kuralları oluşturabilirsiniz.
 
 > [!NOTE]
-> [Log Analytics çalışma alanındaki](../log-query/get-started-portal.md) günlük verileri Azure izleyici ölçüm deposuna gönderilebilir. Ölçüm uyarıları [farklı davranışa](alerts-metric-overview.md)sahiptir ve bu işlem, çalıştığınız verilere bağlı olarak daha çok tercih edilebilir. Günlükleri ölçümlere yönlendirme hakkında bilgi için bkz. [Günlükler Için ölçüm uyarısı](alerts-metric-logs.md).
+> [Log Analytics çalışma alanındaki](../log-query/log-analytics-tutorial.md) günlük verileri Azure izleyici ölçüm deposuna gönderilebilir. Ölçüm uyarıları [farklı davranışa](alerts-metric-overview.md)sahiptir ve bu işlem, çalıştığınız verilere bağlı olarak daha çok tercih edilebilir. Günlükleri ölçümlere yönlendirme hakkında bilgi için bkz. [Günlükler Için ölçüm uyarısı](alerts-metric-logs.md).
 
 ## <a name="create-a-log-alert-rule-with-the-azure-portal"></a>Azure portal bir günlük uyarı kuralı oluşturun
 
@@ -35,7 +35,7 @@ Uyarılar için sorgular yazmaya başlama adımları burada verilmiştir:
 
 1. Uyarı vermek istediğiniz kaynağa gidin.
 1. **İzleyici** altında **Günlükler**' i seçin.
-1. Soruna işaret edebilecek günlük verilerini sorgulayın. [Kendi sorgunuzu yazmaya](../log-query/get-started-portal.md)ne bulabileceğinizi veya başladığınızı anlamak için [Uyarı sorgusu örnekleri konusunu](../log-query/saved-queries.md) kullanabilirsiniz. [İyileştirilmiş uyarı sorguları oluşturmayı öğrenin](alerts-log-query.md).
+1. Soruna işaret edebilecek günlük verilerini sorgulayın. [Kendi sorgunuzu yazmaya](../log-query/log-analytics-tutorial.md)ne bulabileceğinizi veya başladığınızı anlamak için [Uyarı sorgusu örnekleri konusunu](../log-query/example-queries.md) kullanabilirsiniz. [İyileştirilmiş uyarı sorguları oluşturmayı öğrenin](alerts-log-query.md).
 1. Uyarı oluşturma akışını başlatmak için ' + yeni uyarı kuralı ' düğmesine basın.
 
     ![Log Analytics-uyarı ayarla](media/alerts-log/AlertsAnalyticsCreate.png)
@@ -55,7 +55,7 @@ Uyarılar için sorgular yazmaya başlama adımları burada verilmiştir:
 
 1. Günlük uyarıları, iki [**Ölçü**](alerts-unified-log.md#measure)türüne göre olabilir:
     1. **Sonuç sayısı** -sorgu tarafından döndürülen kayıt sayısı.
-    1. **Ölçüm ölçümü**  -  Seçilen ifade ve [bin ()](/azure/kusto/query/binfunction) seçimine göre gruplanmış özetleme kullanılarak hesaplanan *Toplam değer* . Örnek:
+    1. **Ölçüm ölçümü**  -  Seçilen ifade ve [bin ()](/azure/kusto/query/binfunction) seçimine göre gruplanmış özetleme kullanılarak hesaplanan *Toplam değer* . Örneğin:
 
     ```Kusto
     // Reported errors
@@ -327,4 +327,3 @@ Oluşturma işlemi başarılı olduğunda 201 döndürülür. Güncelleştirme b
 * [Azure Resource Manager şablonları](./alerts-log-create-templates.md)kullanarak günlük uyarıları oluşturun.
 * [Günlük uyarıları için Web kancası eylemlerini](./alerts-log-webhook.md)anlayın.
 * [Günlük sorguları](../log-query/log-query-overview.md)hakkında daha fazla bilgi edinin.
-

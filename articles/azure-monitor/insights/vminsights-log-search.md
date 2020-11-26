@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 6b3fdf052ce7f0d6a5c3497aa1ac971d9249546a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 118bdcb6929abfc162ff05e91f1621f087b6c50c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015604"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186737"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>VM'ler için Azure İzleyici günlüklerini sorgulama
 
@@ -112,7 +112,7 @@ Kolaylık olması için, bir bağlantının uzak ucunun IP adresi Remoteıp öze
 |:--|:--|
 |MaliciousIp |Remoteıp adresi |
 |Indicatorthreadtype |Algılanan tehdit göstergesi, *botnet*, *C2*, *cryptoaraştırma*, *koyu ağ*, *DDoS*, *MaliciousUrl*, *kötü amaçlı yazılım*, *kimlik avı*, *proxy*, *Pua*, *listem* değerlerinden biridir.   |
-|Description |Gözlemlenen tehdit açıklaması. |
+|Açıklama |Gözlemlenen tehdit açıklaması. |
 |TLPLevel |Trafik ışığı Protokolü (TLP) düzeyi, tanımlı değerlerden biridir, *beyaz*, *yeşil* *,,* ve *kırmızı*. |
 |Güvenilirlik |Değerler *0 – 100*' dir. |
 |Önem derecesi |Değerler *0 – 5*' dir; burada *5* en önemdir ve *0* , hiç önemli değildir. Varsayılan değer *3*' dir.  |
@@ -233,7 +233,7 @@ Bir *Vmprocess* türüne sahip kayıtlar, bağımlılık aracısına sahıp sunu
 |Grup | İşlem grubu adı. Aynı gruptaki süreçler mantıksal olarak ilişkilidir, ör. aynı ürün veya sistem bileşeninin bir parçasıdır. |
 |StartTime | İşlem havuzu başlangıç zamanı |
 |FirstPid | İşlem havuzundaki ilk PID |
-|Description | İşlem açıklaması |
+|Açıklama | İşlem açıklaması |
 |CompanyName | Şirketin adı |
 |InternalName | İç ad |
 |ProductName | Ürünün adı |
@@ -442,7 +442,7 @@ Bir *ınsightsmetrik* türü olan kayıtlar, sanal makinenin Konuk işletim sist
 |Bilgisayar | Bilgisayar FQDN 'SI | 
 |Kaynak | *vm.azm.ms* |
 |Ad Alanı | Performans sayacının kategorisi | 
-|Name | Performans sayacının adı |
+|Adı | Performans sayacının adı |
 |Val | Toplanan değer | 
 |Etiketler | Kayıtla ilgili ayrıntılar. Farklı kayıt türleriyle kullanılan etiketler için aşağıdaki tabloya bakın.  |
 |AgentId | Her bilgisayar aracısının benzersiz tanımlayıcısı |
@@ -451,7 +451,7 @@ Bir *ınsightsmetrik* türü olan kayıtlar, sanal makinenin Konuk işletim sist
 
 Aşağıdaki tabloda, şu anda *ınsightsölçümlerini* tablosunda toplanan performans sayaçları listelenmiştir:
 
-| Ad Alanı | Ad | Açıklama | Birim | Etiketler |
+| Ad Alanı | Adı | Açıklama | Birim | Etiketler |
 |:---|:---|:---|:---|:---|
 | Bilgisayar    | Sinyal             | Bilgisayar sinyali                        | | |
 | Bellek      | AvailableMB           | Kullanılabilir bellek baytları                    | TI      | memorySizeMB-toplam bellek boyutu|
@@ -473,7 +473,6 @@ Aşağıdaki tabloda, şu anda *ınsightsölçümlerini* tablosunda toplanan per
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Izleyici 'de günlük sorguları yazmaya yeni çalışıyorsanız, günlük sorgularını yazmak için Azure portal [Log Analytics nasıl kullanacağınızı](../log-query/get-started-portal.md) inceleyin.
+* Azure Izleyici 'de günlük sorguları yazmaya yeni çalışıyorsanız, günlük sorgularını yazmak için Azure portal [Log Analytics nasıl kullanacağınızı](../log-query/log-analytics-tutorial.md) inceleyin.
 
-* [Arama sorguları yazma](/azure/azure-monitor/log-query/get-started-queries)hakkında bilgi edinin.
-
+* [Arama sorguları yazma](../log-query/get-started-queries.md)hakkında bilgi edinin.

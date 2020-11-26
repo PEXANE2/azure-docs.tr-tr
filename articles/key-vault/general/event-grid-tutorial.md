@@ -11,11 +11,11 @@ ms.topic: how-to
 ms.date: 10/25/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d7bb697879f40b45c886cd90bbb1e34906d35f66
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530514"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187383"
 ---
 # <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid"></a>Azure Event Grid ile Anahtar Kasası bildirimlerini alın ve yanıtlayın
 
@@ -40,11 +40,11 @@ Event Grid, bulut için bir olay hizmetidir. Bu kılavuzdaki adımları izleyere
 
 1.  Portal.azure.com adresine gidin ve aboneliğinizde oturum açın.
 
-1.  Arama kutusuna **Otomasyon hesapları**girin.
+1.  Arama kutusuna **Otomasyon hesapları** girin.
 
 1.  Arama çubuğundaki aşağı açılan listenin **Hizmetler** bölümünde **Otomasyon hesapları**' nı seçin.
 
-1.  **Ekle**’yi seçin.
+1.  **Add (Ekle)** seçeneğini belirleyin.
 
     ![Otomasyon hesapları bölmesi](../media/event-grid-tutorial-2.png)
 
@@ -58,7 +58,7 @@ Otomasyon hesabınız hazırlandıktan sonra bir runbook oluşturun.
 
 1.  Yeni oluşturduğunuz Otomasyon hesabını seçin.
 
-1.  **Işlem Otomasyonu**altında **runbook 'ları** seçin.
+1.  **Işlem Otomasyonu** altında **runbook 'ları** seçin.
 
 1.  **Runbook oluştur**' u seçin.
 
@@ -133,11 +133,11 @@ Yeni oluşturduğunuz runbook 'u tetiklemek için bir Web kancası oluşturun.
 
 1.  **Konu kaynağı** , durum değişikliklerini izlemek istediğiniz Anahtar Kasası olmalıdır.
 
-1.  **Olay türlerine filtre uygulamak**için tüm seçenekleri seçili bırakın (**9 seçili**).
+1.  **Olay türlerine filtre uygulamak** için tüm seçenekleri seçili bırakın (**9 seçili**).
 
 1.  **Uç Noktası Türü** için **Web kancası**'nı seçin.
 
-1.  **Uç nokta seç ' i**seçin. Yeni bağlam bölmesinde Web kancası URL 'sini [bir Web kancası oluştur](#create-a-webhook) adımından **abone uç noktası** alanına yapıştırın.
+1.  **Uç nokta seç ' i** seçin. Yeni bağlam bölmesinde Web kancası URL 'sini [bir Web kancası oluştur](#create-a-webhook) adımından **abone uç noktası** alanına yapıştırın.
 
 1.  Bağlam bölmesinde **Seçimi Onayla** ' yı seçin.
 
@@ -159,7 +159,7 @@ Event Grid aboneliğinizin düzgün yapılandırıldığını doğrulayın. Bu t
 
 1.  Anahtar kasanızın **Olaylar** sekmesinde, oluşturduğunuz Event Grid aboneliğini seçin.
 
-1.  **Ölçümler**altında bir olayın yakalanıp yakalanmadığını denetleyin. İki olay bekleniyor: SecretNewVersion ve Secretasyncresult süre sonu. Bu olaylar, anahtar kasasındaki gizli dizinin durum değişikliğini Event Grid başarıyla yakalayacağını doğrular.
+1.  **Ölçümler** altında bir olayın yakalanıp yakalanmadığını denetleyin. İki olay bekleniyor: SecretNewVersion ve Secretasyncresult süre sonu. Bu olaylar, anahtar kasasındaki gizli dizinin durum değişikliğini Event Grid başarıyla yakalayacağını doğrular.
 
     ![Ölçümler bölmesi: yakalanan olayları denetle](../media/event-grid-tutorial-11.png)
 

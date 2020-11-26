@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: d7ec1edb779ddaf53cef02dd6e83bb3e719d0b4e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b096b24acd5cf65f6ad3e9eabb1d536b3aae0168
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503564"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187077"
 ---
 # <a name="tutorial---migrate-an-android-app-from-google-maps"></a>Öğretici-Google Maps 'tan bir Android uygulaması geçirme
 
@@ -33,9 +33,9 @@ Tüm örnekler Java 'da verilmiştir; Ancak, Azure Maps Android SDK Kotlin kulla
 
 Azure haritalar tarafından Android SDK ile geliştirme hakkında daha fazla bilgi için bkz. [Azure Maps Için nasıl yapılır kılavuzlarıyla Android SDK](how-to-use-android-map-control-library.md).
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+1. [Azure Portal](https://portal.azure.com) oturum açın. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 2. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
 3. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account). Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](how-to-manage-authentication.md).
 
@@ -65,7 +65,7 @@ Android için Google Maps SDK 'sını kullanarak bir Haritayı göstermek için 
 
     `implementation 'com.google.android.gms:play-services-maps:17.0.0'`
 
-3. Google Maps  ** \_ \_api.xml** dosyasının uygulama bölümünde Google Maps API anahtarı ekleyin:
+3. Google Maps  **\_ \_api.xml** dosyasının uygulama bölümünde Google Maps API anahtarı ekleyin:
 
     ```xml
     <meta-data android:name="com.google.android.geo.API_KEY" android:value="YOUR_GOOGLE_MAPS_KEY"/>
@@ -322,7 +322,7 @@ Uygulamanızı çalıştırırsanız, eşleme denetimi aşağıdaki görüntüde
 Azure haritalar denetiminin daha fazla yakınlaştırmayı desteklediğini ve bir dünya görünümü daha fazlasını sağladığını unutmayın.
 
 > [!TIP]
-> Bir Windows makinesinde Android öykünücüsü kullanıyorsanız, OpenGL ve yazılım hızlandırılmış grafik işleme ile çakışmalar nedeniyle eşleme işlenmeyebilir. Aşağıdakiler, bazı kişilerin bu sorunu çözmesi için çalışmıştır. AVD yöneticisini açın ve düzenlenecek sanal cihazı seçin. **Yapılandırmayı Doğrula** panelinde aşağı kaydırın. **Öykünülmüş performans** bölümünde **grafik** seçeneğini **donanım**olarak ayarlayın.
+> Bir Windows makinesinde Android öykünücüsü kullanıyorsanız, OpenGL ve yazılım hızlandırılmış grafik işleme ile çakışmalar nedeniyle eşleme işlenmeyebilir. Aşağıdakiler, bazı kişilerin bu sorunu çözmesi için çalışmıştır. AVD yöneticisini açın ve düzenlenecek sanal cihazı seçin. **Yapılandırmayı Doğrula** panelinde aşağı kaydırın. **Öykünülmüş performans** bölümünde **grafik** seçeneğini **donanım** olarak ayarlayın.
 
 ## <a name="localizing-the-map"></a>Haritayı yerelleştirme
 
@@ -769,7 +769,7 @@ Azure haritalar hakkında daha fazla bilgi Android SDK:
 > [Android haritasına sembol katmanı ekleme](how-to-add-symbol-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [Android haritasına şekil ekleme](https://docs.microsoft.com/azure/azure-maps/how-to-add-shapes-to-android-map)
+> [Android haritasına şekil ekleme](./how-to-add-shapes-to-android-map.md)
 
 > [!div class="nextstepaction"]
-> [Android haritalar 'da harita stillerini değiştirme](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
+> [Android haritalar 'da harita stillerini değiştirme](./set-android-map-styles.md)

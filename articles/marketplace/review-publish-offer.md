@@ -9,11 +9,11 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/27/2020
 ms.openlocfilehash: b038834df3889a8b4b7f4a749568635e99f8408e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129584"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188760"
 ---
 # <a name="how-to-review-and-publish-an-offer-to-the-commercial-marketplace"></a>Ticari Market 'e yönelik bir teklifi İnceleme ve yayımlama
 
@@ -52,7 +52,7 @@ Tüm sayfalar tamamlandıktan ve ilgili test notlarını girdikten sonra, doğru
 | [Sertifikasyon](#certification-phase) | El ile doğrulama yaptık. |
 | [Önizleme oluşturma](#preview-creation-phase) | Teklif önizlemeniz için liste sayfası önizleme bağlantısına sahip olan herkes tarafından kullanılabilir. Teklifiniz Microsoft (transactable) üzerinden satılıyorsa, yalnızca teklifinizin **ön izleme İzleyicisi** sayfasında belirttiğiniz hedef kitle, test için teklif satın alabilir ve bu teklifi erişebilir. |
 | [Yayımcı oturumu kapatma](#publisher-sign-off-phase) | Teklifinizi önizlemenizi ve onaylamanıza yönelik bir istek içeren bir e-posta göndereceğiz. |
-| [Yayımla](#publish-phase) | Önizleme teklifinin ticari Market 'e canlı olarak yayımlandığını doğrulamak için bir dizi adımı çalıştırdık. |
+| [Yayımlama](#publish-phase) | Önizleme teklifinin ticari Market 'e canlı olarak yayımlandığını doğrulamak için bir dizi adımı çalıştırdık. |
 |||
 
 ## <a name="automated-validation-phase"></a>Otomatik doğrulama aşaması
@@ -137,7 +137,7 @@ Bu rapor, gözden geçirme notlarıyla birlikte başarısız olan ilkelerin aç�
 Teklifi daha sonra yayınlamak istiyorsanız, Yayımlama sürecini üzerinde başlatmanız gerekir.
 
 > [!NOTE]
-> Bir teklifin yayımlanmasını, yalnızca teklif yayımcı oturumu kapatma adımına ilerlemedi. **Canlı git** ' i seçtikten sonra, yayımlamayı daha uzun süre iptal etme seçeneğiniz olmayacaktır.
+> Bir teklifin yayımlanmasını, yalnızca teklif yayımcı oturumu kapatma adımına ilerlemedi. **Canlı git**' i seçtikten sonra, yayımlamayı daha uzun süre iptal etme seçeneğiniz olmayacaktır.
 
 ## <a name="publisher-sign-off-phase"></a>Yayımcı oturum kapatma aşaması
 
@@ -156,7 +156,7 @@ Aşağıdaki ekran görüntüsünde bir SaaS teklifinin **teklif genel bakış**
 
 Önizlemeyi onayladıktan sonra, teklifinizi ticari Market 'te canlı yayımlamak için **canlı ol** ' u seçin. 
 
-Teklifin önizlemesini yaptıktan sonra değişiklik yapmak istiyorsanız, yayın isteğinizi düzenleyebilir ve yeniden gönderebilirsiniz. Teklifiniz zaten canlı ve Market 'te herkese açık ise, yaptığınız güncelleştirmeler * *canlı git* ' i seçene kadar canlı olmaz. Daha fazla bilgi için bkz [. ticari Market 'te mevcut teklifi güncelleştirme](partner-center-portal/update-existing-offer.md)
+Teklifin önizlemesini yaptıktan sonra değişiklik yapmak istiyorsanız, yayın isteğinizi düzenleyebilir ve yeniden gönderebilirsiniz. Teklifiniz zaten canlı ve Market 'te herkese açık ise, yaptığınız güncelleştirmeler **canlı git*' i seçene kadar canlı olmaz. Daha fazla bilgi için bkz [. ticari Market 'te mevcut teklifi güncelleştirme](partner-center-portal/update-existing-offer.md)
 
 ## <a name="publish-phase"></a>Yayımlama aşaması
 
@@ -191,24 +191,24 @@ Iş ortağı merkezindeki **Geçmiş** sayfası, ticari Market tekliflerinizin y
 Teklifinizin geçmişini görüntülemek için:
 
 1.    [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home)' nde oturum açın.
-2.    Sol taraftaki gezinti menüsünde **ticari Market**  >  **genel bakış** ' ı seçin.
+2.    Sol taraftaki gezinti menüsünde **ticari Market**  >  **genel bakış**' ı seçin.
 3.    Teklifinizi seçin.
 4.    Sol taraftaki gezinti menüsünde **Geçmiş** sekmesini seçin. Bu sayfa, teklifiniz için geçerli olan aşağıdaki olayların ayrıntılarını sağlar:
 
 |Olay    |Açıklama    |
 |---------|---------------|
 |Teklif oluşturuldu    |Teklif Iş Ortağı Merkezi 'nde oluşturulmuştur. Bir Kullanıcı, **ticari Market**  >  **'e genel bakış** bölümünde teklif türü, teklif kimliği ve teklif diğer adını seçti.    |
-|Plan oluşturuldu: *Plan adı*    |Kullanıcı plana **genel bakış** SEKMESINDE plan kimliği ve plan adı girerek yeni bir plan oluşturdu.</br>*Bu olay yalnızca planları destekleyen teklif türleri için geçerlidir* .    |
-|Plan silindi    |Kullanıcı **plana genel bakış** sayfasında **taslağı Sil** ' i seçerek yayımlanmamış bir taslak planı sildi.</br>*Bu olay yalnızca planları destekleyen teklif türleri için geçerlidir* .    |
-|Başlatılan plan satışı Durdur: *Plan adı*    |Kullanıcı **plana genel bakış** sayfasından **satışı durdur** ' ı seçerek bir planı başlattı.</br>*Bu olay yalnızca planları destekleyen teklif türleri için geçerlidir* .    |
-|Plan durdur satışı al: *Plan adı*    |Kullanıcı **plana genel bakış** sayfasında **satışı durdur** ' ı seçerek bir planı durdur-satışı iptal etti.</br>*Bu olay yalnızca planları destekleyen teklif türleri için geçerlidir* .    |
+|Plan oluşturuldu: *Plan adı*    |Kullanıcı plana **genel bakış** SEKMESINDE plan kimliği ve plan adı girerek yeni bir plan oluşturdu.</br>*Bu olay yalnızca planları destekleyen teklif türleri için geçerlidir*.    |
+|Plan silindi    |Kullanıcı **plana genel bakış** sayfasında **taslağı Sil** ' i seçerek yayımlanmamış bir taslak planı sildi.</br>*Bu olay yalnızca planları destekleyen teklif türleri için geçerlidir*.    |
+|Başlatılan plan satışı Durdur: *Plan adı*    |Kullanıcı **plana genel bakış** sayfasından **satışı durdur** ' ı seçerek bir planı başlattı.</br>*Bu olay yalnızca planları destekleyen teklif türleri için geçerlidir*.    |
+|Plan durdur satışı al: *Plan adı*    |Kullanıcı **plana genel bakış** sayfasında **satışı durdur** ' ı seçerek bir planı durdur-satışı iptal etti.</br>*Bu olay yalnızca planları destekleyen teklif türleri için geçerlidir*.    |
 |Önizlemeye gönderilen teklif    |Bir Kullanıcı, **Gözden geçirme ve yayımlama** sayfasından **Yayımla** ' yı seçerek, teklifi önizlemeye gönderdi.    |
-|Önizleme iptaline gönderim başlatıldı    |Bir Kullanıcı, önizlemeye gönderim sonrasında **teklif genel bakış** sayfasında **yayımlamayı iptal et** ' i seçerek önizleme için teklif yayınını iptal etmek istedi.</br>*Bu olay, iptal isteği işlendiği için görüntülenir* .    |
-|Önizlemeye gönderim iptal edildi    |Kullanıcı, önizlemeye gönderim sonrasında **teklif genel bakış** sayfasında **yayımlamayı iptal et** seçeneğini belirleyerek teklif yayınını önizlemek üzere iptal etti.</br>*Bu olay, iptal isteği başarıyla işlendikten sonra görüntülenir* .    |
+|Önizleme iptaline gönderim başlatıldı    |Bir Kullanıcı, önizlemeye gönderim sonrasında **teklif genel bakış** sayfasında **yayımlamayı iptal et** ' i seçerek önizleme için teklif yayınını iptal etmek istedi.</br>*Bu olay, iptal isteği işlendiği için görüntülenir*.    |
+|Önizlemeye gönderim iptal edildi    |Kullanıcı, önizlemeye gönderim sonrasında **teklif genel bakış** sayfasında **yayımlamayı iptal et** seçeneğini belirleyerek teklif yayınını önizlemek üzere iptal etti.</br>*Bu olay, iptal isteği başarıyla işlendikten sonra görüntülenir*.    |
 |Canlı gitmek için oturum kapatma    |**Teklif genel bakış** sayfasından **canlı ol** ' ı seçerek bir Kullanıcı teklifi ticari Market 'e yayımladı.    |
-|Market 'te yayımlama iptali başlatıldı    |Oturum kapattıktan sonra, bir Kullanıcı, teklif **genel bakış** sayfasında **yayımlamayı iptal et** ' i seçerek teklif yayınını iptal etmek istedi.</br>*Bu olay, iptal isteği işlendiği için görüntülenir* .    |
-|Ticari Market 'te yayımlamayı iptal etti    |Bir Kullanıcı, oturum açma işleminden sonra, canlı çalışmaya başladıktan sonra **teklif genel bakış** sayfasında **yayımlamayı iptal et** ' i seçerek teklif yayınını iptal etti.</br>*Bu olay, iptal isteği başarıyla işlendikten sonra görüntülenir* .    |
-|Özel izleyiciyi Eşitle    |Bir Kullanıcı **plana genel bakış** sayfasında veya **fiyatlandırma & kullanılabilirliği** sayfasında özel izleyiciyi **Eşitle** seçeneğini belirleyerek özel izleyiciyi güncelleştirmiş ve eşitledi.</br>*Bu olay yalnızca özel planları destekleyen teklif türleri için geçerlidir* .    |
+|Market 'te yayımlama iptali başlatıldı    |Oturum kapattıktan sonra, bir Kullanıcı, teklif **genel bakış** sayfasında **yayımlamayı iptal et** ' i seçerek teklif yayınını iptal etmek istedi.</br>*Bu olay, iptal isteği işlendiği için görüntülenir*.    |
+|Ticari Market 'te yayımlamayı iptal etti    |Bir Kullanıcı, oturum açma işleminden sonra, canlı çalışmaya başladıktan sonra **teklif genel bakış** sayfasında **yayımlamayı iptal et** ' i seçerek teklif yayınını iptal etti.</br>*Bu olay, iptal isteği başarıyla işlendikten sonra görüntülenir*.    |
+|Özel izleyiciyi Eşitle    |Bir Kullanıcı **plana genel bakış** sayfasında veya **fiyatlandırma & kullanılabilirliği** sayfasında özel izleyiciyi **Eşitle** seçeneğini belirleyerek özel izleyiciyi güncelleştirmiş ve eşitledi.</br>*Bu olay yalnızca özel planları destekleyen teklif türleri için geçerlidir*.    |
 |Satış teklifini durdur    |Bir kullanıcı teklif **genel bakış** sayfasından satışı Durdur ' ı seçerek teklifi **satmaya** durdurdu.    |
 
 > [!NOTE]
@@ -223,7 +223,7 @@ Belirli yayımlama olaylarına teklifinizin tam geçmişini daraltmak için filt
 3.    Teklifinizin tam geçmişine geri dönmek için **filtreleri temizle** ' yi seçin.
 
 Dört filtre vardır:
-* Olaylar
+* Ekinlikler
 * Kullanıcılar
 * Tarih
 * Sayfalar

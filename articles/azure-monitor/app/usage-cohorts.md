@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d12244bce117d6a631fdb67dc460af18bc77028c
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: f8edeb452f01af88f0305cd0a3e3a2332ec09e4e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995748"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186958"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights cohortaları
 
@@ -43,22 +43,22 @@ Takımınız, belirli bir ayda uygulamanızı beş veya daha fazla kez kullanan 
     * **Dönem**, bir ayın tanımı.
     * **Usedatleastcustom**, kullanıcıların, bir dönemde bir süre içinde kullanıcı olarak saymak için kaç kez kullanması gerektiği.
 
-4. **Usedatleastcustom** değerini **5 + gün**olarak değiştirin ve **süresi** varsayılan 28 gün olarak bırakın.
+4. **Usedatleastcustom** değerini **5 + gün** olarak değiştirin ve **süresi** varsayılan 28 gün olarak bırakın.
 
     ![Bağlı kullanıcılar](./media/usage-cohorts/003.png)
 
     Artık bu kohortu, geçmiş 28 ' de 5 ayrı gün içinde herhangi bir özel olay veya sayfa görünümüyle gönderilen tüm Kullanıcı kimliklerini temsil eder.
 
-5. **Kaydet**'i seçin.
+5. **Kaydet**’i seçin.
 
    > [!TIP]
    > "Bağlı kullanıcılar (5 + gün)" gibi kohortu bir ad verin. Bu Application Insights kaynağına erişimi olan diğer kişilerin bu kohortu görmesini isteyip istemediğinize bağlı olarak, bu dosyayı "Raporlarım" veya "paylaşılan Raporlar" olarak kaydedin.
 
-6. **Galeriye geri dön**seçeneğini belirleyin.
+6. **Galeriye geri dön** seçeneğini belirleyin.
 
 ### <a name="what-can-you-do-by-using-this-cohort"></a>Bu kohortu kullanarak ne yapabilirsiniz?
 
-Kullanıcılar aracını açın. **Göster** açılan kutusunda, **ait kullanıcılar**altında oluşturduğunuz kohortu seçin.
+Kullanıcılar aracını açın. **Göster** açılan kutusunda, **ait kullanıcılar** altında oluşturduğunuz kohortu seçin.
 
 Artık kullanıcılar aracı bu kohortu Kullanıcı adına filtrelenmiştir:
 
@@ -79,7 +79,7 @@ Ayrıca, olayların birlikte da kullanılabilmesini sağlayabilirsiniz. Bu böl�
 
 2. **Şablon Galerisi** sekmesini seçin. Çeşitli Tebrikler ilgili şablonlar koleksiyonu görürsünüz.
 
-3. **Olay seçiciyi**seçin.
+3. **Olay seçiciyi** seçin.
 
     ![Olay seçicisinin ekran görüntüsü](./media/usage-cohorts/006.png)
 
@@ -131,7 +131,7 @@ Cohortalar ve filtreler farklıdır. Birleşik Krallık 'tan (önceki örnekte o
 
 ## <a name="learn-more"></a>Daha fazla bilgi edinin
 
-* [Analytics sorgu dili](../log-query/get-started-portal.md?toc=%252fazure%252fazure-monitor%252ftoc.json)
+* [Analytics sorgu dili](../log-query/log-analytics-tutorial.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 * [Kullanıcılar, oturumlar, olaylar](usage-segmentation.md)
 * [Kullanıcı akışları](usage-flows.md)
 * [Kullanıma genel bakış](usage-overview.md)

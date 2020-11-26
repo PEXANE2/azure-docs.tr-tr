@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 3a523421c128ea26503c0848ad8fcf7d74636a04
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: bd8c5c31579ac22cd6c77dffd31103680e393f69
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341338"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187179"
 ---
 # <a name="quickstart-setting-up-azure-security-center"></a>Hızlı başlangıç: Azure Güvenlik Merkezi 'Ni ayarlama
 
@@ -47,7 +47,7 @@ Azure Defender 'ı bir abonelikte etkinleştirmek için abonelik sahibi, aboneli
 
 **Abonelikler menü öğesini** seçerek Aboneliklerin listesini görüntüleyebilir ve filtreleyebilirsiniz. Güvenlik Merkezi, seçilen aboneliklerin güvenlik duruşunu yansıtacak şekilde ekranı ayarlar. 
 
-Güvenlik Merkezi’ni başlattıktan sonraki ilk birkaç dakika içinde şunları görebilirsiniz:
+Güvenlik Merkezi 'nin ilk kez başlatılması sırasında geçen dakikalar içinde şu şekilde karşılaşabilirsiniz:
 
 - Bağlı kaynaklarınızın güvenliğini artırmanın yolları için **öneriler** .
 - Artık Güvenlik Merkezi tarafından değerlendirilmekte olan kaynaklarınızın envanterini ve bunların güvenlik duruşunu.
@@ -57,13 +57,13 @@ Güvenlik Merkezi 'Nden tam olarak yararlanabilmek için, Azure Defender 'ı etk
 > [!TIP]
 > Yönetim grubu içindeki tüm aboneliklerde Güvenlik Merkezi 'ni etkinleştirmek için, bkz. [birden çok Azure aboneliği üzerinde güvenlik merkezini etkinleştirme](onboard-management-group.md).
 
-## <a name="enable-azure-defender"></a>Azure Defender 'ı etkinleştir
+## <a name="enable-azure-defender"></a>Azure Defender’ı etkinleştirme
 
 Güvenlik Merkezi hızlı başlangıç ve öğreticiler amacına yönelik olarak Azure Defender 'ı etkinleştirmeniz gerekir. Ücretsiz 30 günlük deneme sürümü mevcuttur. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/). 
 
 1. Güvenlik Merkezi 'nin kenar çubuğundan **Başlarken**' i seçin.
 
-    :::image type="content" source="./media/security-center-get-started/get-started-upgrade-tab.png" alt-text="Güvenlik Merkezi 'ne Genel Bakış Panosu"::: 
+    :::image type="content" source="./media/security-center-get-started/get-started-upgrade-tab.png" alt-text="Başlarken sayfasının yükseltme sekmesi"::: 
 
     **Yükseltme** sekmesi, ekleme için uygun olan abonelikleri ve çalışma alanlarını listeler.
 
@@ -81,10 +81,10 @@ Log Analytics aracısının otomatik sağlamasını etkinleştirmek için:
 
 1. Güvenlik Merkezi 'nin menüsünde **fiyatlandırma & ayarları**' nı seçin.
 1. Uygun aboneliği seçin.
-1. **Veri toplama** sayfasında, **otomatik sağlamayı** **Açık**olarak ayarlayın.
+1. **Veri toplama** sayfasında, **otomatik sağlamayı** **Açık** olarak ayarlayın.
 1. **Kaydet**’i seçin.
 
-    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Güvenlik Merkezi 'ne Genel Bakış Panosu":::
+    :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Log Analytics aracısının otomatik olarak sağlanması etkinleştiriliyor":::
 
 >[!TIP]
 > Bir çalışma alanının sağlanması gerekiyorsa, aracı yüklemesi 25 dakikaya kadar sürebilir.

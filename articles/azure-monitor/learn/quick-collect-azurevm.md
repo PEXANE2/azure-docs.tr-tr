@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 08/19/2019
 ms.custom: mvc, sec-javascript-october2019
-ms.openlocfilehash: fb7a32199117be76e411155910d558ef187398ab
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6cc9c6af4592956b6498e826ef65b556e5780f34
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91448255"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186839"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Azure Izleyici ile Azure sanal makinesinden veri toplama
 
@@ -26,13 +26,13 @@ Bu hızlı başlangıçta mevcut bir Azure sanal makinenizin olduğu varsayılma
 
 ## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
 
-1. Azure portal, **tüm hizmetler**' i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını**seçin.
+1. Azure portal, **tüm hizmetler**' i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını** seçin.
 
     ![Azure portal](media/quick-collect-azurevm/azure-portal-log-analytics-workspaces.png)<br>  
 
 2. **Oluştur**' u seçin ve sonra aşağıdaki öğeler için Seçenekler ' i seçin:
 
-   * Yeni **Log Analytics çalışma alanı**Için *defaultlaworkspace*gibi bir ad sağlayın.  
+   * Yeni **Log Analytics çalışma alanı** Için *defaultlaworkspace* gibi bir ad sağlayın.  
    * Varsayılan seçili abonelik uygun değilse açılan listeden bağlanacak bir **Abonelik** seçin.
    * **Kaynak Grubu** için, bir veya daha fazla Azure sanal makinesi içeren mevcut bir kaynak grubunu seçin.  
    * VM’lerinizin dağıtıldığı **Konum**’u seçin.  Ek bilgi için bkz. [Log Analytics’in sunulduğu bölgeler](https://azure.microsoft.com/regions/services/).
@@ -53,7 +53,7 @@ Zaten Azure’da dağıtılan Windows ve Linux sanal makineler için, Log Analyt
 >[!NOTE]
 >Linux için Log Analytics aracısı birden fazla Log Analytics çalışma alanına raporlamak için yapılandırılamaz. 
 
-1. Azure portal sol üst köşede bulunan **tüm hizmetler** ' i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını**seçin.
+1. Azure portal sol üst köşede bulunan **tüm hizmetler** ' i seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Log Analytics çalışma alanlarını** seçin.
 
 2. Log Analytics çalışma alanlarınızın listesinde, daha önceden oluşturduğunuz *DefaultLAWorkspace* çalışma alanını seçin.
 
@@ -61,7 +61,7 @@ Zaten Azure’da dağıtılan Windows ve Linux sanal makineler için, Log Analyt
 
 4. **Sanal makine** listesinden aracıyı yüklemek istediğiniz bir sanal makine seçin. VM için **Log Analytics bağlantı durumunun****Bağlı değil** olduğuna dikkat edin.
 
-5. Sanal makinenizin ayrıntılarında, **Bağlan**’ı seçin. Aracı otomatik olarak yüklenir ve Log Analytics çalışma alanınız için yapılandırılır. Bu işlem birkaç dakika sürer. bu süre, **durumun** **bağlantı**gösterdiği zamanı gösterir.
+5. Sanal makinenizin ayrıntılarında, **Bağlan**’ı seçin. Aracı otomatik olarak yüklenir ve Log Analytics çalışma alanınız için yapılandırılır. Bu işlem birkaç dakika sürer. bu süre, **durumun** **bağlantı** gösterdiği zamanı gösterir.
 
 6. Aracıyı yükleyip bağlandıktan sonra, **Log Analytics bağlantı durumu****Bu çalışma alanı** olarak güncelleştirilir.
 
@@ -99,7 +99,7 @@ Azure Izleyici, daha uzun süreli analiz ve raporlama için belirttiğiniz Windo
 
 2. Bir olay günlüğü eklemek için günlüğün adını yazın.  **Syslog** yazın ve ardından artı işaretini seçin **+** .  
 
-3. Tabloda, önem derecesi **bilgileri**, **bildirim** ve **hata ayıklama**seçimlerini kaldırın. 
+3. Tabloda, önem derecesi **bilgileri**, **bildirim** ve **hata ayıklama** seçimlerini kaldırın. 
 
 4. Yapılandırmayı kaydetmek için sayfanın en üstünde bulunan **Kaydet** ' i seçin.
 
@@ -141,4 +141,4 @@ Artık gerekli olmadığında, Log Analytics çalışma alanını silin. Bunu ya
 Verileri görüntüleme ve analiz etmeyi öğrenmek için, öğreticiye devam edin.
 
 > [!div class="nextstepaction"]
-> [Log Analytics’te verileri görüntüleme veya analiz etme](../log-query/get-started-portal.md)
+> [Log Analytics’te verileri görüntüleme veya analiz etme](../log-query/log-analytics-tutorial.md)

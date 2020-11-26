@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 10/16/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: c38fa77951aaeb5559dc2030f1401a896d7c238d
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: f9ced3dfeccdbac5f0eb220cf0e104679f263aac
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841929"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186873"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Izleyici 'de çözümleri izleme
 
@@ -29,7 +29,7 @@ Azure Izleyici 'de çözümlere **genel bakış** sayfası, Log Analytics çalı
 
 [![Ekran görüntüsü, çözümler bölmesinde seçili çözümlerin ve çözümlerin gösterildiği Azure portal menüsünü gösterir.](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
 
-İzleme çözümleri birden çok Azure kaynağı türü içerebilir ve bir çözüme dahil olan tüm kaynakları diğer kaynaklar gibi görüntüleyebilirsiniz. Örneğin, çözüme dahil edilen herhangi bir günlük sorgusu, [sorgu Gezgini](../log-query/get-started-portal.md#load-queries) 'Ndeki **çözüm sorguları** altında listelenmiştir ve [günlük sorgularıyla](../log-query/log-query-overview.md)geçici analiz gerçekleştirirken bu sorguları kullanabilirsiniz.
+İzleme çözümleri birden çok Azure kaynağı türü içerebilir ve bir çözüme dahil olan tüm kaynakları diğer kaynaklar gibi görüntüleyebilirsiniz. Örneğin, çözüme dahil edilen tüm günlük sorguları, [sorgu Gezgini](../log-query/log-analytics-tutorial.md)'Ndeki **çözüm sorguları** altında listelenir. [Günlük sorgularıyla](../log-query/log-query-overview.md)geçici analiz gerçekleştirirken bu sorguları kullanabilirsiniz.
 
 ## <a name="list-installed-monitoring-solutions"></a>Yüklü izleme çözümlerini Listele
 

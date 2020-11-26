@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: b309ce01595e2e62bea7f78ae728d83bc7d9b9be
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 803c9a98f0dc10ff8218ac7b7c20dcb117700034
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992174"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187111"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği ile ortak güvenlik gereksinimlerini ele almak için PlayBook
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -614,7 +614,7 @@ Dağıtılmış hizmet reddi (DDoS) saldırıları, kötü niyetli bir kullanıc
 
 DDoS koruması, Azure platformunun bir parçası olarak otomatik olarak etkinleştirilir. Ortak uç noktalarda her zaman açık trafik izleme ve ağ düzeyinde saldırıları gerçek zamanlı olarak hafifletme bilgilerini içerir.
 
-- Sanal ağlarda dağıtılan kaynaklarla ilişkili genel IP adreslerini izlemek için [Azure DDoS koruması](../../virtual-network/ddos-protection-overview.md) 'nı kullanın.
+- Sanal ağlarda dağıtılan kaynaklarla ilişkili genel IP adreslerini izlemek için [Azure DDoS koruması](../../ddos-protection/ddos-protection-overview.md) 'nı kullanın.
 
 - Veritabanlarına karşı hizmet reddi (DoS) saldırılarını algılamak için [Azure SQL veritabanı Için Gelişmiş tehdit koruması](threat-detection-overview.md) 'nı kullanın.
 

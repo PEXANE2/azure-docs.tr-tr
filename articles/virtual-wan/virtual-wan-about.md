@@ -9,11 +9,11 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
 ms.openlocfilehash: 69525173aa5c4af536105a4e897ee4860f021b6c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91267440"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187449"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Azure Sanal WAN nedir?
 
@@ -95,7 +95,7 @@ Sanal WAN, VNET 'ler arasında geçiş bağlantısına izin verir. VNET 'ler bir
 
 Yönlendiricide dört yönlendirme durumu olabilir: sağlanan, sağlama, başarısız veya yok. **Yönlendirme durumu** Azure Portal sanal hub sayfasına gidilerek bulunur.
 
-* **Hiçbiri** durum, sanal hub 'ın yönlendirici sağlamadığını gösterir. Bu durum, sanal WAN *temel*tür ise veya sanal hub 'ın kullanılabilir hale getirilmesinden önce dağıtılması durumunda gerçekleşebilir.
+* **Hiçbiri** durum, sanal hub 'ın yönlendirici sağlamadığını gösterir. Bu durum, sanal WAN *temel* tür ise veya sanal hub 'ın kullanılabilir hale getirilmesinden önce dağıtılması durumunda gerçekleşebilir.
 * **Hatalı** durum, örnekleme sırasında hata olduğunu gösterir. Yönlendiriciyi başlatmak veya sıfırlamak için Azure portal sanal hub genel bakış sayfasına giderek, **yönlendirici sıfırlama** seçeneğini bulabilirsiniz.
 
 Her sanal hub yönlendiricisi, 50 Gbps 'e kadar toplam üretimi destekler. Sanal ağ bağlantıları arasındaki bağlantı, tek bir sanal hub 'a bağlı tüm VNET 'lerde toplam 2000 VM iş yükünün olduğunu varsayar.

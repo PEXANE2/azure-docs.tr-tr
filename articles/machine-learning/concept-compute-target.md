@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: 2a19183f5ba5b1ea4d50cd5cfba6115f7dede6cd
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 1d3a7be429f730dd4dbd71bade1e3e51ea73c10f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540055"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188658"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning'deki işlem hedefleri nelerdir?
 
@@ -119,6 +119,12 @@ Desteklenen seriler ve kısıtlamalar hakkında daha fazla bilgi edinmek için a
 
 
 Azure Machine Learning bu VM serisini desteklese de, tüm Azure bölgelerinde kullanılamayabilir. VM serisinin kullanılabilir olup olmadığını denetlemek için bkz. [bölgelere göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).
+
+> [!NOTE]
+> Azure Machine Learning, Azure Işlem tarafından desteklenen tüm VM boyutlarını desteklemez. Kullanılabilir VM boyutlarını listelemek için aşağıdaki yöntemlerden birini kullanın:
+> * [REST API](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2020-08-01/examples/ListVMSizesResult.json)
+> * [Python SDK'sı](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py.md#supported-vmsizes-workspace--location-none-)
+>
 
 ### <a name="compute-isolation"></a>İşlem yalıtımı
 

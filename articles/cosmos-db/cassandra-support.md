@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: ecf4229c95ff9103cd27fd161fdd19c9e7a0f76b
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 8c51450fb6ce5c381784e6aaf9b1a66c3c4ff153
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636971"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188556"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API'si tarafından desteklenen Apache Cassandra özellikleri 
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -50,7 +50,7 @@ Azure Cosmos DB Cassandra API'si aşağıdaki CQL veri türlerini destekler:
 | blob  | Evet |
 | boolean  | Evet |
 | counter  | Evet |
-| tarih  | Evet |
+| date  | Evet |
 | decimal  | Evet |
 | double  | Evet |
 | float  | Evet |
@@ -205,7 +205,7 @@ Azure Cosmos DB Cassandra API'si bir yönetilen hizmet platformudur. Kümeyi yö
 
 ## <a name="hosted-cql-shell-preview"></a>Barındırılan CQL kabuğu (Önizleme)
 
-Barındırılan yerel Cassandra kabuğunu (CDıSH v 5.0.1) doğrudan [Azure Portal](data-explorer.md) veya [Azure cosmos Gezgini](https://cosmos.azure.com/)'ndeki Veri Gezgini açabilirsiniz. CQL kabuğu 'nu etkinleştirmeden önce hesabınızdaki [Not defterleri özelliğini etkinleştirmeniz](enable-notebooks.md) gerekir (henüz etkinleştirilmemişse, üzerine tıklandığınızda sorulur `Open Cassandra Shell` ). Desteklenen Azure bölgeleri için [Azure Cosmos DB hesapları için not defterlerini etkinleştirme](enable-notebooks.md) bölümünde vurgulanan nota bakın.
+Barındırılan yerel Cassandra kabuğunu (CDıSH v 5.0.1) doğrudan [Azure Portal](data-explorer.md) veya [Azure Cosmos DB Explorer](https://cosmos.azure.com/)'daki Veri Gezgini açabilirsiniz. CQL kabuğu 'nu etkinleştirmeden önce hesabınızdaki [Not defterleri özelliğini etkinleştirmeniz](enable-notebooks.md) gerekir (henüz etkinleştirilmemişse, üzerine tıklandığınızda sorulur `Open Cassandra Shell` ). Desteklenen Azure bölgeleri için [Azure Cosmos DB hesapları için not defterlerini etkinleştirme](enable-notebooks.md) bölümünde vurgulanan nota bakın.
 
 :::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="CSQLSH 'i aç":::
 

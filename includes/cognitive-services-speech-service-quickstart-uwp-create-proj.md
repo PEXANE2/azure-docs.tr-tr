@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: erhopf
 ms.openlocfilehash: df9dbdf61dbc7d83f1cf74871ddc864488ed9d47
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097227"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188348"
 ---
 Evrensel Windows Platformu (UWP) geliştirme için Visual Studio projesi oluşturmak üzere Visual Studio geliştirme seçeneklerini ayarlamanız, projeyi oluşturmanız, hedef mimariyi seçmeniz, ses yakalamayı ayarlamanız ve konuşma SDK 'sını yüklemeniz gerekir.
 
@@ -23,11 +23,11 @@ Başlamak için, UWP geliştirmesi için Visual Studio 'da doğru şekilde ayarl
 
 1. Visual Studio IDE 'ye gitmek için **kod olmadan devam et** ' i seçin.
 
-1. Visual Studio menü çubuğunda **Araçlar**' ı  >  açmak için Araçlar**ve Özellikler al** ' ı seçin Visual Studio yükleyicisi açın ve **değiştirme** iletişim kutusunu görüntüleyin.
+1. Visual Studio menü çubuğunda **Araçlar**' ı  >  açmak için Araçlar **ve Özellikler al** ' ı seçin Visual Studio yükleyicisi açın ve **değiştirme** iletişim kutusunu görüntüleyin.
 
    !["Evrensel Windows Platformu geliştirme" vurgulanmış "değiştirme" iletişim kutusunun "Iş yükleri" sekmesini gösteren ekran görüntüsü.](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-workload.png)
 
-1. **Iş yükleri** sekmesinde, **Windows**altında **Evrensel Windows platformu geliştirme** iş yükünü bulun. Bu iş yükünün yanındaki onay kutusu zaten seçiliyse, **değiştirme** iletişim kutusunu kapatın ve 6. adıma gidin.
+1. **Iş yükleri** sekmesinde, **Windows** altında **Evrensel Windows platformu geliştirme** iş yükünü bulun. Bu iş yükünün yanındaki onay kutusu zaten seçiliyse, **değiştirme** iletişim kutusunu kapatın ve 6. adıma gidin.
 
 1. **Evrensel Windows platformu geliştirme** onay kutusunu seçin, **Değiştir**' i seçin ve ardından **Başlarken** iletişim kutusunda, UWP geliştirme iş yükünü yüklemek için **devam** ' ı seçin. Yeni özelliğin yüklenmesi biraz zaman alabilir.
 
@@ -37,7 +37,7 @@ Başlamak için, UWP geliştirmesi için Visual Studio 'da doğru şekilde ayarl
 
 Sonra, projenizi oluşturun:
 
-1. **File**  >  **New**  >  **Yeni proje oluştur** penceresini göstermek için Visual Studio menü çubuğunda dosya yeni**Proje** ' yi seçin.
+1. **File**  >  **New**  >  **Yeni proje oluştur** penceresini göstermek için Visual Studio menü çubuğunda dosya yeni **Proje** ' yi seçin.
 
    !["Boş uygulama (Evrensel Windows)" seçiliyken ve "Ileri" düğmesinin vurgulandığı "yeni proje oluştur" penceresini gösteren ekran görüntüsü.](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-create-new-project.png)
 
@@ -47,7 +47,7 @@ Sonra, projenizi oluşturun:
 
    !["Proje adı" ve "konum" alanları ve "Oluştur" düğmesinin vurgulandığı "yeni projenizi yapılandırma" ekranını gösteren ekran görüntüsü.](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-configure-your-new-project.png)
 
-1. **Proje adı**alanına girin `helloworld` .
+1. **Proje adı** alanına girin `helloworld` .
 
 1. **Konum**' a gidin ve projenizi kaydetmek için klasörü seçin veya oluşturun.
 
@@ -57,13 +57,13 @@ Sonra, projenizi oluşturun:
 
 1. **En düşük sürüm** (ikinci açılan kutu) altında, **Windows 10 Fall Creators Update (10,0) öğesini seçin. Yapı 16299)**, konuşma SDK 'sı için en düşük gereksinimdir.
 
-1. **Hedef sürümde** (ilk açılan kutu), **En düşük sürümdeki**değerden veya daha sonraki bir değere sahip bir değer seçin.
+1. **Hedef sürümde** (ilk açılan kutu), **En düşük sürümdeki** değerden veya daha sonraki bir değere sahip bir değer seçin.
 
 1. **Tamam**’ı seçin. Visual Studio IDE 'ye geri döndürüyorsunuz, yeni proje oluşturulup **Çözüm Gezgini** bölmesinde görünür.
 
    ![HelloWorld projesi-Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-helloworld.png)
 
-Şimdi hedef platform mimarinizi seçin. Visual Studio araç çubuğunda, **çözüm platformları** açılan kutusunu bulun. (Görmüyorsanız, **Görünüm**  >  ' ü seçin. **Araç çubukları**  >  **Çözüm platformlarını**içeren araç çubuğunu göstermek için **Standart** .) 64 bit Windows çalıştırıyorsanız, açılan kutuda **x64** ' ü seçin. 64 bit Windows ayrıca 32 bit uygulamalar çalıştırabilir, bu sayede isterseniz **x86** seçeneğini belirleyebilirsiniz.
+Şimdi hedef platform mimarinizi seçin. Visual Studio araç çubuğunda, **çözüm platformları** açılan kutusunu bulun. (Görmüyorsanız, **Görünüm**  >  ' ü seçin. **Araç çubukları**  >  **Çözüm platformlarını** içeren araç çubuğunu göstermek için **Standart** .) 64 bit Windows çalıştırıyorsanız, açılan kutuda **x64** ' ü seçin. 64 bit Windows ayrıca 32 bit uygulamalar çalıştırabilir, bu sayede isterseniz **x86** seçeneğini belirleyebilirsiniz.
 
 > [!NOTE]
 > Konuşma SDK 'Sı, tüm Intel uyumlu işlemcileri destekler, ancak **yalnızca** ARM işlemcilerin x64 sürümleridir.
@@ -100,7 +100,7 @@ Son olarak, [konuşma SDK 'Sı NuGet paketini](https://aka.ms/csspeech/nuget)yü
 
 1. Arama sonuçlarının yanındaki paket durumu bölmesinde **HelloWorld** projenizi seçin.
 
-1. **Yükle**'yi seçin.
+1. **Yükle**’yi seçin.
 
 1. **Değişiklikleri Önizle** Iletişim kutusunda **Tamam**' ı seçin.
 

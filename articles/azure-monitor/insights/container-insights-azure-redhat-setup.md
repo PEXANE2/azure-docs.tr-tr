@@ -3,12 +3,12 @@ title: Azure Red Hat OpenShift v3. x ' i kapsayıcılar için Azure Izleyici ile
 description: Bu makalede, Azure Red Hat OpenShift sürüm 3 ve üzerinde barındırılan Azure Izleyici ile bir Kubernetes kümesi izlemenin nasıl yapılandırılacağı açıklanır.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 1186056559d6497b2b48cb3533a0967d6d61f38e
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 2cd39c13ce7d67b2bfcfaca0a6f627e19d289783
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216377"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186924"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Azure Red Hat OpenShift v3 'i kapsayıcılar için Azure Izleyici ile yapılandırma
 
@@ -18,7 +18,7 @@ ms.locfileid: "92216377"
 > Ekim 2020 itibariyle, artık yeni 3,11 kümeleri oluşturamayacak.
 > Mevcut 3,11 kümeleri, 2022 Haziran 'a kadar çalışmaya devam eder, ancak bu tarihten sonra daha fazla desteklenmeyecektir.
 >
-> [Azure Red Hat OpenShift 4 kümesi oluşturmak](https://docs.microsoft.com/azure/openshift/tutorial-create-cluster)için bu kılavuzu izleyin.
+> [Azure Red Hat OpenShift 4 kümesi oluşturmak](../../openshift/tutorial-create-cluster.md)için bu kılavuzu izleyin.
 > Belirli sorularınız varsa [lütfen bizimle iletişime geçin](mailto:aro-feedback@microsoft.com).
 
 Kapsayıcılar için Azure Izleyici, Azure Kubernetes hizmeti (AKS) ve AKS motoru kümeleri için zengin izleme deneyimi sağlar. Bu makalede, benzer bir izleme deneyimi elde etmek için [Azure Red Hat OpenShift](../../openshift/intro-openshift.md) sürüm 3 ve sürüm 3 ' ün en son desteklenen sürümünde barındırılan Kubernetes kümelerinin izlenmesini nasıl etkinleştireceğinizi açıklanmaktadır.
@@ -39,7 +39,7 @@ Kapsayıcılar için Azure Izleyici, [genel bakış](container-insights-overview
 - Canlı veriler (Önizleme)
 - Küme düğümlerinden ve yığınlardan [ölçümler toplayın](container-insights-update-metrics.md) ve bunları Azure izleyici ölçümleri veritabanında depolarsınız
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Bir [Log Analytics çalışma alanı](../platform/design-logs-deployment.md).
 
@@ -67,7 +67,7 @@ Kapsayıcılar için Azure Izleyici, [genel bakış](container-insights-overview
     Microsoft Azure                       AzureCloud   0fb60ef2-03cc-4290-b595-e71108e8f4ce  Enabled  True
     ```
 
-1. **SubscriptionID**değerini kopyalayın.
+1. **SubscriptionID** değerini kopyalayın.
 
 1. Aşağıdaki komutu çalıştırarak Log Analytics çalışma alanını barındıran aboneliğe geçin:
 
@@ -81,7 +81,7 @@ Kapsayıcılar için Azure Izleyici, [genel bakış](container-insights-overview
     az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
     ```
 
-1. Çıktıda, çalışma alanı adını bulun ve alan **kimliği**altında bu Log Analytics çalışma alanının tam kaynak kimliğini kopyalayın.
+1. Çıktıda, çalışma alanı adını bulun ve alan **kimliği** altında bu Log Analytics çalışma alanının tam kaynak kimliğini kopyalayın.
 
 ## <a name="enable-for-a-new-cluster-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak yeni küme için etkinleştirme
 
@@ -168,13 +168,13 @@ Azure 'da dağıtılan bir Azure Red Hat OpenShift kümesinin izlenmesini etkinl
 
 ### <a name="from-the-azure-portal"></a>Azure portalından
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 2. Azure portal menüsünde veya giriş sayfasından **Azure izleyici**' yi seçin. **Öngörüler** bölümünde **kapsayıcılar**' ı seçin.
 
 3. **İzleyici-kapsayıcılar** sayfasında, **izlenmeyen kümeler**' ı seçin.
 
-4. İzlenmeyen kümeler listesinden, listeden kümeyi bulun ve **Etkinleştir**' e tıklayın. Sütun **KÜMESI türü**altında, **Aro** değerini arayarak listedeki sonuçları belirleyebilirsiniz.
+4. İzlenmeyen kümeler listesinden, listeden kümeyi bulun ve **Etkinleştir**' e tıklayın. Sütun **KÜMESI türü** altında, **Aro** değerini arayarak listedeki sonuçları belirleyebilirsiniz.
 
 5. **Kapsayıcılar Için Azure Izleyicisine ekleme** sayfasında, kümeyle aynı abonelikte mevcut bir Log Analytics çalışma alanınız varsa, bu seçeneği, açılan listeden seçin.  
     Liste, varsayılan çalışma alanını ve kümenin abonelikte dağıtıldığı konumu önceden seçer.
@@ -230,7 +230,7 @@ Azure CLı 'yı kullanmayı seçerseniz, önce CLı 'yi yerel olarak yüklemeniz
     az openshift show -g <clusterResourceGroup> -n <clusterName>
     ```
 
-5. **ÜzerindeexistingClusterParam.js** JSON parametre dosyasını düzenleyin ve *aroresourceıd* ve *Aroresourcelocation*değerlerini güncelleştirin. **WorkspaceResourceId** değeri, çalışma alanının adı da dahil olmak üzere Log Analytics çalışma alanınızın tam kaynak kimliğidir.
+5. **ÜzerindeexistingClusterParam.js** JSON parametre dosyasını düzenleyin ve *aroresourceıd* ve *Aroresourcelocation* değerlerini güncelleştirin. **WorkspaceResourceId** değeri, çalışma alanının adı da dahil olmak üzere Log Analytics çalışma alanınızın tam kaynak kimliğidir.
 
 6. Azure CLı ile dağıtmak için aşağıdaki komutları çalıştırın:
 

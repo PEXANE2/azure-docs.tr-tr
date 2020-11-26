@@ -12,11 +12,11 @@ ms.date: 10/15/2020
 ms.author: erhopf
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: f63c97fd23d56ff508de8d5953eefac6b15ae1aa
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097074"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188458"
 ---
 Bu kılavuzda, .NET Framework (Windows) için [konuşma SDK 'sının](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yükleneceği gösterilmektedir. Yalnızca paket adının kendi kendinize başlatılmasını istiyorsanız `Install-Package Microsoft.CognitiveServices.Speech` NuGet konsolunda öğesini çalıştırın.
 
@@ -40,9 +40,9 @@ Kodunuzda başvurabilmeniz için [konuşma SDK 'Sı NuGet paketini](https://aka.
 
 1. **Yeni proje oluştur** penceresinde **konsol uygulaması (.NET Framework)** öğesini seçin ve ardından **İleri**' yi seçin.
 
-1. **Yeni projenizi yapılandırın** penceresinde, **Proje adı**alanına *HelloWorld* girin, **konum**bölümünde dizin yolunu seçin veya oluşturun ve ardından **Oluştur**' u seçin.
+1. **Yeni projenizi yapılandırın** penceresinde, **Proje adı** alanına *HelloWorld* girin, **konum** bölümünde dizin yolunu seçin veya oluşturun ve ardından **Oluştur**' u seçin.
 
-1. Visual Studio menü çubuğunda **Araçlar**' ı seçin ve  >  Visual Studio yükleyicisi açan araçlar**ve Özellikler**' i seçin ve **değiştirme** iletişim kutusunu görüntüler.
+1. Visual Studio menü çubuğunda **Araçlar**' ı seçin ve  >  Visual Studio yükleyicisi açan araçlar **ve Özellikler**' i seçin ve **değiştirme** iletişim kutusunu görüntüler.
 
 1. **.Net masaüstü geliştirme** iş yükünün kullanılabilir olup olmadığını denetleyin. İş yükü yüklenmemişse, yanındaki onay kutusunu işaretleyin ve ardından yüklemeyi başlatmak için **Değiştir** ' i seçin. İndirmesi ve yüklenmesi birkaç dakika sürebilir.
 

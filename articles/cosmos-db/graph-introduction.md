@@ -5,14 +5,14 @@ author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 07/10/2020
+ms.date: 11/25/2020
 ms.author: chrande
-ms.openlocfilehash: d0bd94037a75db8d69cfd44820a80ae8b403c9ea
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 56ed1e653547b3c0e3469f820eb33155aedb1bcb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357088"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187213"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Azure Cosmos DB Gremlin API 'sine giriş
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -24,6 +24,9 @@ ms.locfileid: "93357088"
 Bu makale, Azure Cosmos DB Gremlin API 'sine genel bir bakış sağlar ve milyarlarca köşeler ve kenarlarla büyük grafikler depolamak için nasıl kullanılacağını açıklar. Daha fazla milisaniyelik gecikme süresiyle grafikleri sorgulayabilir ve Graf yapısını kolayca geliştirebilirsiniz. Azure Cosmos DB Gremlin API 'SI, bir Graph bilgi işlem çerçevesi olan [Apache TinkerPop](https://tinkerpop.apache.org)temel alınarak oluşturulmuştur. Azure Cosmos DB Gremlin API 'SI Gremlin sorgu dilini kullanır.
 
 Azure Cosmos DB Gremlin API 'SI, grafik veritabanı algoritmalarının gücünü yüksek düzeyde ölçeklenebilir, yönetilen altyapıyla birleştirerek esneklik ve ilişkisel yaklaşımlarla ilişkili en yaygın veri sorunlarına yönelik benzersiz ve esnek bir çözüm sunar.
+
+> [!NOTE]
+> [Sunucusuz kapasite modu](serverless.md) artık Azure Cosmos DB Gremlin API 'sinde kullanılabilir.
 
 ## <a name="features-of-azure-cosmos-dbs-gremlin-api"></a>Azure Cosmos DB Gremlin API 'SI özellikleri
  
@@ -111,19 +114,19 @@ Sorguların Gremlin’de nasıl ifade edildiğini anlamak için örnek bir grafi
 
 Bu grafik aşağıdaki *köşe* türlerine sahiptir (bunlar Gremlin içinde "etiket" olarak da adlandırılır):
 
-* **Kişiler** : grafikte üç kişi, deneme, Thomas ve ben bulunur
-* **Ilgi alanları** : Bu örnekte, futbol oyununun oyunu
-* **Cihazlar** : kişilerin kullandığı cihazlar
-* **Işletim sistemleri** : cihazların üzerinde çalıştığı işletim sistemleri
-* **Yer** : cihazların eriştiği konumlar
+* **Kişiler**: grafikte üç kişi, deneme, Thomas ve ben bulunur
+* **Ilgi alanları**: Bu örnekte, futbol oyununun oyunu
+* **Cihazlar**: kişilerin kullandığı cihazlar
+* **Işletim sistemleri**: cihazların üzerinde çalıştığı işletim sistemleri
+* **Yer**: cihazların eriştiği konumlar
 
 Aşağıdaki *uç* türleri aracılığıyla bu varlıklar arasındaki ilişkileri temsil ediyoruz:
 
-* **Biliyor** : Örneğin, "Thomas biliyor"
-* **İlgileniyor** : grafımızda bulunan kişilerin ilgi alanlarınızı göstermek Için "Ben futbol ile ilgileniyor"
-* **Runsos** : dizüstü bilgisayar Windows işletim sistemini çalıştırır
+* **Biliyor**: Örneğin, "Thomas biliyor"
+* **İlgileniyor**: grafımızda bulunan kişilerin ilgi alanlarınızı göstermek Için "Ben futbol ile ilgileniyor"
+* **Runsos**: dizüstü bilgisayar Windows işletim sistemini çalıştırır
 * Bir kişinin hangi cihaza kullandığını göstermek için: **kullanır**. Örneğin Robin, seri numarası 77 olan bir Motorola telefon kullanır
-* **Bulunur** : cihazların eriştiği konumu temsil etmek için
+* **Bulunur**: cihazların eriştiği konumu temsil etmek için
 
 Gremlin konsolu, Apache TinkerPop tarafından sunulan etkileşimli bir terminaldir ve bu Terminal, grafik verileriyle etkileşim kurmak için kullanılır. Daha fazla bilgi edinmek için bkz. [Gremlin konsolunun kullanımı](create-graph-gremlin-console.md)hakkındaki hızlı başlangıç belgesi. Dilerseniz bu işlemleri, tercih ettiğiniz platformdaki (Java, Node.js, Python veya .NET) Gremlin sürücülerini kullanarak da gerçekleştirebilirsiniz. Aşağıdaki örneklerde Gremlin konsolunu kullanarak bu grafik verilerinde nasıl sorgu çalıştırılacağı gösterilmektedir.
 

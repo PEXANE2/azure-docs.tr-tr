@@ -6,16 +6,16 @@ ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.openlocfilehash: aa2530f817bf20af40ab2913df9f16e7d1974ef3
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94375477"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187145"
 ---
 # <a name="tutorial-create-an-faq-bot-with-azure-bot-service"></a>Öğretici: Azure bot hizmeti ile bir SSS bot oluşturma
 Kod içermeyen Soru-Cevap Oluşturma ve Azure [bot hizmeti](https://azure.microsoft.com/services/bot-service/) Ile bir SSS bot oluşturun.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -47,7 +47,7 @@ Yayımladıktan sonra **Yayımla** sayfasından bir bot oluşturabilirsiniz:
 
 Bilgi bankasında değişiklikler yaptığınızda ve yeniden yayımladığınızda, bot ile daha fazla işlem yapmanız gerekmez. Bilgi Bankası ile çalışmak üzere zaten yapılandırılmıştır ve ileride Bilgi Bankası değişiklikleriyle birlikte çalışır. Bilgi Bankası 'nı her yayımladığınızda, kendisine bağlı olan tüm botlar otomatik olarak güncelleştirilir.
 
-1. Soru-Cevap Oluşturma portalında, **Yayımla** sayfasında, **bot oluştur** ' u seçin. Bu düğme yalnızca Bilgi Bankası 'nı yayımladıktan sonra görünür.
+1. Soru-Cevap Oluşturma portalında, **Yayımla** sayfasında, **bot oluştur**' u seçin. Bu düğme yalnızca Bilgi Bankası 'nı yayımladıktan sonra görünür.
 
      # <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
 
@@ -72,7 +72,7 @@ Bilgi bankasında değişiklikler yaptığınızda ve yeniden yayımladığını
 
 
 1. Bot oluşturulduktan sonra, **bot hizmeti** kaynağını açın.
-1. **Bot Management** altında **Web sohbeti ' nda test** ' i seçin.
+1. **Bot Management** altında **Web sohbeti ' nda test**' i seçin.
 1. **Iletinizi yazın** sohbet isteminde şunu girin:
 
     `Azure services?`

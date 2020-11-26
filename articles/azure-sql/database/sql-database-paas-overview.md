@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/21/2020
-ms.openlocfilehash: 093d470052a639ad3d4e819d08fad7c34b547d44
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: bf7e99f6e6201afefd316deafe37e38088fb9fae
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789514"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187128"
 ---
 # <a name="what-is-azure-sql-database"></a>Azure SQL Veritabanı nedir?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -26,7 +26,7 @@ Azure SQL Veritabanı yükseltme, düzeltme eki uygulama, yedekleme ve izleme gi
 
 Azure SQL Veritabanı ile Azure'da çalışan uygulamalar ve çözümler için yüksek oranda kullanılabilir ve yüksek performanslı bir veri depolama katmanı oluşturabilirsiniz. SQL veritabanı, hem ilişkisel verileri hem de [ilişkisel olmayan yapıları](../multi-model-features.md)(GRAFIKLER, JSON, uzamsal ve XML gibi) işleyebilmenizi sağladığından, çeşitli modern bulut uygulamaları için doğru seçim yapılabilir.
 
-Azure SQL veritabanı, [Microsoft SQL Server veritabanı altyapısının](/sql/sql-server/sql-server-technical-documentation?toc=%252fazure%252fsql-database%252ftoc.json)en son kararlı sürümünü temel alır. [Yüksek performanslı bellek içi teknolojiler](../in-memory-oltp-overview.md) ve [akıllı sorgu işleme](/sql/relational-databases/performance/intelligent-query-processing?toc=%252fazure%252fsql-database%252ftoc.json)gibi gelişmiş sorgu işleme özelliklerini kullanabilirsiniz. Hatta en yeni SQL Server özellikleri önce SQL Veritabanı'na, daha sonra SQL Server'a uygulanır. Düzeltme eki uygulama veya yükseltme konusunda endişelenmeden milyonlarca veritabanıyla test edilmiş olan en güncel SQL Server özelliklerine sahip olursunuz. 
+Azure SQL veritabanı, [Microsoft SQL Server veritabanı altyapısının](/sql/sql-server/sql-server-technical-documentation?toc=%2fazure%2fsql-database%2ftoc.json)en son kararlı sürümünü temel alır. [Yüksek performanslı bellek içi teknolojiler](../in-memory-oltp-overview.md) ve [akıllı sorgu işleme](/sql/relational-databases/performance/intelligent-query-processing?toc=%2fazure%2fsql-database%2ftoc.json)gibi gelişmiş sorgu işleme özelliklerini kullanabilirsiniz. Hatta en yeni SQL Server özellikleri önce SQL Veritabanı'na, daha sonra SQL Server'a uygulanır. Düzeltme eki uygulama veya yükseltme konusunda endişelenmeden milyonlarca veritabanıyla test edilmiş olan en güncel SQL Server özelliklerine sahip olursunuz. 
 
 SQL veritabanı iki farklı satın alma modelinde performansı kolayca tanımlamanızı ve ölçeklendirmenizi sağlar: [sanal çekirdek tabanlı satın alma modeli](service-tiers-vcore.md) ve [DTU tabanlı satın alma modeli](service-tiers-dtu.md). SQL Veritabanı yerleşik yüksek kullanılabilirlik, yedekleme ve diğer yaygın bakım işlemlerine sahip olan tam olarak yönetilen bir hizmettir. Microsoft, SQL ve işletim sistemi kodunun tüm düzeltme ekini ve güncelleştirilmesini işler. Temel alınan altyapıyı yönetmeniz gerekmez.
 
@@ -37,7 +37,7 @@ Azure SQL veritabanı 'na yeni başladıysanız, Azure SQL *veritabanı 'Na gene
 
 Azure SQL veritabanı, bir veritabanı için aşağıdaki dağıtım seçeneklerini sağlar:
 
-- [Tek veritabanı](single-database-overview.md) , tam olarak yönetilen, yalıtılmış bir veritabanını temsil eder. Tek bir güvenilir veri kaynağı gerektiren modern bulut Uygulamalarınız ve mikro hizmetlerinize sahipseniz bu seçeneği kullanabilirsiniz. Tek bir veritabanı, [SQL Server veritabanı altyapısındaki](/sql/sql-server/sql-server-technical-documentation?toc=%252fazure%252fsql-database%252ftoc.json) [Kapsanan veritabanına](/sql/relational-databases/databases/contained-databases?toc=%252fazure%252fsql-database%252ftoc.json) benzerdir.
+- [Tek veritabanı](single-database-overview.md) , tam olarak yönetilen, yalıtılmış bir veritabanını temsil eder. Tek bir güvenilir veri kaynağı gerektiren modern bulut Uygulamalarınız ve mikro hizmetlerinize sahipseniz bu seçeneği kullanabilirsiniz. Tek bir veritabanı, [SQL Server veritabanı altyapısındaki](/sql/sql-server/sql-server-technical-documentation?toc=%2fazure%2fsql-database%2ftoc.json) [Kapsanan veritabanına](/sql/relational-databases/databases/contained-databases?toc=%2fazure%2fsql-database%2ftoc.json) benzerdir.
 - [Elastik havuz](elastic-pool-overview.md) , CPU veya bellek gibi paylaşılan bir kaynak kümesiyle [tek bir veritabanı](single-database-overview.md) koleksiyonudur. Tek veritabanları, elastik bir havuzun içine ve dışına taşınabilir.
 
 > [!IMPORTANT]
@@ -96,9 +96,9 @@ Azure SQL veritabanı, iş yükü özelliklerine daha derin Öngörüler elde et
 
 Azure, binlerce veritabanının durumunu izlemenize olanak sağlayan, performans derecelendirmeleri ile birleştirilmiş [yerleşik performans izleme](performance-guidance.md) ve [Uyarı](alerts-insights-configure-portal.md) araçları sağlar. Bu araçları kullanarak, geçerli veya tahmini performans ihtiyaçlarınıza göre ölçeği artırma veya azaltma etkilerini hızla değerlendirebilirsiniz. Ayrıca, SQL veritabanı daha kolay izleme için [ölçümleri ve kaynak günlüklerini yayabilir](metrics-diagnostic-telemetry-logging-streaming-export-configure.md) . SQL Veritabanını kaynak kullanımını, çalışanları, oturumları ve bu Azure kaynaklarından birine yapılan bağlantıları kaydedecek şekilde yapılandırabilirsiniz:
 
-- **Azure Depolama** : Küçük maliyetlerle çok sayıda telemetri arşivleme için.
-- **Azure Event Hubs** : SQL veritabanı telemetrisini özel izleme çözümünüz veya etkin işlem hatlarınız ile tümleştirmek için.
-- **Azure izleyici günlükleri** : raporlama, uyarı ve azaltıcı yetenekler içeren yerleşik bir izleme çözümü için.
+- **Azure Depolama**: Küçük maliyetlerle çok sayıda telemetri arşivleme için.
+- **Azure Event Hubs**: SQL veritabanı telemetrisini özel izleme çözümünüz veya etkin işlem hatlarınız ile tümleştirmek için.
+- **Azure izleyici günlükleri**: raporlama, uyarı ve azaltıcı yetenekler içeren yerleşik bir izleme çözümü için.
 
 ![Azure izleme mimarisi diyagramı](./media/sql-database-paas-overview/architecture.png)
 
@@ -149,8 +149,8 @@ SQL veritabanı üzerinde [SaaS çok kiracılı uygulamalar](saas-tenancy-app-de
 
 [SQL veritabanında](automatic-tuning-overview.md)iki otomatik ayarlama yönü mevcuttur:
 
-- **Otomatik dizin yönetimi** : Veritabanınıza eklenmesi ve veritabanınızdan kaldırılması gereken dizinleri tanımlar.
-- **Otomatik plan düzeltme** : sorunlu planları TANıMLAR ve SQL planı performans sorunlarını düzeltir.
+- **Otomatik dizin yönetimi**: Veritabanınıza eklenmesi ve veritabanınızdan kaldırılması gereken dizinleri tanımlar.
+- **Otomatik plan düzeltme**: sorunlu planları TANıMLAR ve SQL planı performans sorunlarını düzeltir.
 
 ### <a name="adaptive-query-processing"></a>Uyarlamalı sorgu işleme
 

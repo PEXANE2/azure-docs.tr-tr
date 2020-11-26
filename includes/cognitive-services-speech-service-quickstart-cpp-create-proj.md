@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/15/2020
 ms.author: erhopf
 ms.openlocfilehash: 967861363d5056a5a466aa88840cda2aafbeb86b
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097176"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188490"
 ---
 C++ masaüstü geliştirmesi için Visual Studio projesi oluşturmak üzere Visual Studio geliştirme seçeneklerini ayarlamanız, projeyi oluşturmanız, hedef mimariyi seçmeniz ve konuşma SDK 'sını yüklemeniz gerekir.
 
@@ -23,15 +23,15 @@ Başlamak için, C++ masaüstü geliştirmesi için Visual Studio 'da doğru şe
 
 1. Visual Studio IDE 'ye gitmek için **kod olmadan devam et** ' i seçin.
 
-1. Visual Studio menü çubuğunda **Araçlar**' ı  >  açmak için Araçlar**ve Özellikler al** ' ı seçin Visual Studio yükleyicisi açın ve **değiştirme** iletişim kutusunu görüntüleyin.
+1. Visual Studio menü çubuğunda **Araçlar**' ı  >  açmak için Araçlar **ve Özellikler al** ' ı seçin Visual Studio yükleyicisi açın ve **değiştirme** iletişim kutusunu görüntüleyin.
 
    !["Visual Studio Yükleyicisi" için "değiştirme" iletişim kutusunun "Iş yükleri" sekmesini gösteren ekran görüntüsü.](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-workload.png)
 
-1. **Iş yükleri** sekmesinde, **Windows**altında, C++ iş yüküyle **Masaüstü geliştirmeyi** bulun. Bu iş yükünün yanındaki onay kutusu zaten seçili değilse, bunu seçin.
+1. **Iş yükleri** sekmesinde, **Windows** altında, C++ iş yüküyle **Masaüstü geliştirmeyi** bulun. Bu iş yükünün yanındaki onay kutusu zaten seçili değilse, bunu seçin.
 
 1. **Ayrı bileşenler** sekmesinde, **NuGet Paket Yöneticisi** onay kutusunu bulun. Onay kutusu zaten seçili değilse, bunu seçin.
 
-1. Köşede **Kapat** veya **Değiştir**etiketli düğmeyi seçin. (Düğme adı, yükleme için herhangi bir özellik seçtiğinizden bağımsız olarak değişir.) **Değiştir**' i seçerseniz yükleme başlar ve bu işlem biraz zaman alabilir.
+1. Köşede **Kapat** veya **Değiştir** etiketli düğmeyi seçin. (Düğme adı, yükleme için herhangi bir özellik seçtiğinizden bağımsız olarak değişir.) **Değiştir**' i seçerseniz yükleme başlar ve bu işlem biraz zaman alabilir.
 
 1. Visual Studio Yükleyicisi kapatın.
 
@@ -39,21 +39,21 @@ Başlamak için, C++ masaüstü geliştirmesi için Visual Studio 'da doğru şe
 
 Sonra, projenizi oluşturun:
 
-1. **File**  >  **New**  >  **Yeni proje oluştur** penceresini göstermek için Visual Studio menü çubuğunda dosya yeni**Proje** ' yi seçin.
+1. **File**  >  **New**  >  **Yeni proje oluştur** penceresini göstermek için Visual Studio menü çubuğunda dosya yeni **Proje** ' yi seçin.
 
    ![Yeni proje oluşturma, C++-Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-01-new-console-app.png)
 
-1. **Konsol uygulaması**bulun ve seçin. Bu proje türünün C++ sürümünü seçtiğinizden emin olun (C# veya Visual Basic aksine).
+1. **Konsol uygulaması** bulun ve seçin. Bu proje türünün C++ sürümünü seçtiğinizden emin olun (C# veya Visual Basic aksine).
 
 1. **Yeni projeyi Yapılandır** ekranınızı göstermek için **İleri ' yi** seçin.
 
    ![Yeni projenizi yapılandırma, C++-Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-configure-your-new-project.png)
 
-1. **Proje adı**alanına girin `helloworld` .
+1. **Proje adı** alanına girin `helloworld` .
 
 1. **Konum**' a gidin ve projenizi kaydetmek için klasörü seçin veya oluşturun.
 
-Şimdi hedef platform mimarinizi seçin. Visual Studio araç çubuğunda, **çözüm platformları** açılan kutusunu bulun. (Görmüyorsanız, **Görünüm**  >  ' ü seçin. **Araç çubukları**  >  **Çözüm platformlarını**içeren araç çubuğunu göstermek için **Standart** .) 64 bit Windows çalıştırıyorsanız, açılan kutuda **x64** ' ü seçin. 64 bit Windows ayrıca 32 bit uygulamalar çalıştırabilir, bu sayede isterseniz **x86** seçeneğini belirleyebilirsiniz.
+Şimdi hedef platform mimarinizi seçin. Visual Studio araç çubuğunda, **çözüm platformları** açılan kutusunu bulun. (Görmüyorsanız, **Görünüm**  >  ' ü seçin. **Araç çubukları**  >  **Çözüm platformlarını** içeren araç çubuğunu göstermek için **Standart** .) 64 bit Windows çalıştırıyorsanız, açılan kutuda **x64** ' ü seçin. 64 bit Windows ayrıca 32 bit uygulamalar çalıştırabilir, bu sayede isterseniz **x86** seçeneğini belirleyebilirsiniz.
 
 ### <a name="install-the-speech-sdk"></a>Konuşma SDK 'sını yükler
 
@@ -73,7 +73,7 @@ Son olarak, [konuşma SDK 'Sı NuGet paketini](https://aka.ms/csspeech/nuget)yü
 
 1. Arama sonuçlarının yanındaki paket durumu bölmesinde **HelloWorld** projenizi seçin.
 
-1. **Yükle**'yi seçin.
+1. **Yükle**’yi seçin.
 
 1. **Değişiklikleri Önizle** Iletişim kutusunda **Tamam**' ı seçin.
 

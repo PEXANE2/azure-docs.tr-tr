@@ -4,12 +4,12 @@ description: Web uygulamanıza yönelik başarısız isteklerin hızında olağa
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: 0f93c7b185b292f8d9792a11807b7c99ad846d37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 329f5bc6f5c3523bc76876f946474eaeb897cfe9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565846"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186975"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Akıllı algılama-hata bozuklukları
 [Application Insights](./app-insights-overview.md) , Web uygulamanız başarısız isteklerin hızında anormal bir artış yaşıyorsa sizi neredeyse gerçek zamanlı olarak uyarır. HTTP isteklerinin veya başarısız olarak bildirilen bağımlılık çağrılarının hızında olağan dışı bir artış algılar. İstekler için, başarısız olan isteklerin genellikle 400 veya üzeri yanıt kodları vardır. Sorunu önceliklendirmenize ve tanılamanıza yardımcı olması için, uyarı ayrıntılarında hataların özelliklerinin ve ilgili uygulama verilerinin bir analizi verilmiştir. Ayrıca, daha fazla tanılama için Application Insights portalına bağlantılar da vardır. Özelliğin, normal hata oranını tahmin etmek için makine öğrenimi algoritmalarını kullandığından, kurulum veya yapılandırma gerekmez.
@@ -60,7 +60,7 @@ Uyarılar, özel makine öğrenimi algoritmız tarafından tetiklenir, bu nedenl
 * Sorun artık 8-24 saat için algılanmadıysa, tetiklenen uyarı İzleyicisi koşulunu otomatik olarak çözebilecek mantık vardır.
   Note: geçerli tasarımda. Akıllı algılama uyarısı çözümlendiğinde bir bildirim veya eylem gönderilmez. Azure portal bir akıllı algılama uyarısının çözümlenmiş olup olmadığını kontrol edebilirsiniz.
 
-## <a name="configure-alerts"></a>Uyarıları yapılandırma
+## <a name="configure-alerts"></a>Uyarı yapılandırma
 
 Portaldan veya Azure Resource Manager kullanarak akıllı algılama uyarı kuralını devre dışı bırakabilirsiniz ([bkz. şablon örneği](./proactive-arm-config.md)).
 
@@ -73,11 +73,11 @@ Bu uyarı kuralı, e-posta ve Web kancası eylemleri içeren "Application Insigh
 
 Uyarılar sayfasını açın. Hata bozuklukları uyarı kuralları, el ile ayarladığınız uyarılarla birlikte eklenir ve şu anda uyarı durumunda olup olmadığını görebilirsiniz.
 
-:::image type="content" source="./media/proactive-failure-diagnostics/021.png" alt-text="Hata etrafında küme analizini gösteren örnek akıllı algılama uyarısı." lightbox="./media/proactive-failure-diagnostics/021.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/021.png" alt-text="Kaynak Application Insights sayfasında, uyarılar Kutucuğu ' na ve ardından uyarı kurallarını yönet ' e tıklayın." lightbox="./media/proactive-failure-diagnostics/021.png":::
 
 Yapılandırmak için uyarıya tıklayın.
 
-:::image type="content" source="./media/proactive-failure-diagnostics/032.png" alt-text="Hata etrafında küme analizini gösteren örnek akıllı algılama uyarısı." lightbox="./media/proactive-failure-diagnostics/032.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/032.png" alt-text="Kural yapılandırma ekranı." lightbox="./media/proactive-failure-diagnostics/032.png":::
 
 Hata anomali uyarı kuralını devre dışı bırakabildiğinize veya silebildiğinize, ancak aynı Application Insights kaynağında başka bir tane oluşturamazsınız.
 
@@ -299,7 +299,7 @@ Ayrıca, [Azure Portal](https://portal.azure.com)açabilir, uygulamanız için A
 
 ' Hata Tanıla 'yı tıklatmak, daha fazla ayrıntı almanıza ve sorunu çözmenize yardımcı olur.
 
-:::image type="content" source="./media/proactive-failure-diagnostics/051.png" alt-text="Hata etrafında küme analizini gösteren örnek akıllı algılama uyarısı." lightbox="./media/proactive-failure-diagnostics/051.png#lightbox":::
+:::image type="content" source="./media/proactive-failure-diagnostics/051.png" alt-text="Tanılama araması." lightbox="./media/proactive-failure-diagnostics/051.png#lightbox":::
 
 İsteklerin yüzdesinden ve etkilenen kullanıcı sayısına göre, sorunun ne kadar acil olduğuna karar verebilirsiniz. Yukarıdaki örnekte,% 78,5 hata oranı normal% 2,2 oranında karşılaştırıldığı için kötü bir şeyin olduğunu gösterir. Öte yandan yalnızca 46 Kullanıcı etkilendi. Uygulamanız ise, ne kadar ciddi olduğunu değerlendirebileceksiniz.
 
@@ -307,13 +307,13 @@ Ayrıca, [Azure Portal](https://portal.azure.com)açabilir, uygulamanız için A
 
 Bu örnekte, istek sınırına ulaşıldığından SQL veritabanından bir özel durum oluştu.
 
-:::image type="content" source="./media/proactive-failure-diagnostics/052.png" alt-text="Hata etrafında küme analizini gösteren örnek akıllı algılama uyarısı." lightbox="./media/proactive-failure-diagnostics/052.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/052.png" alt-text="Başarısız istek ayrıntıları." lightbox="./media/proactive-failure-diagnostics/052.png":::
 
 ## <a name="review-recent-alerts"></a>Son uyarıları gözden geçir
 
 En son tetiklenen uyarılara ulaşmak için Application Insights kaynak sayfasındaki **Uyarılar** ' a tıklayın:
 
-:::image type="content" source="./media/proactive-failure-diagnostics/070.png" alt-text="Hata etrafında küme analizini gösteren örnek akıllı algılama uyarısı." lightbox="./media/proactive-failure-diagnostics/070.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/070.png" alt-text="Uyarı Özeti." lightbox="./media/proactive-failure-diagnostics/070.png":::
 
 ## <a name="whats-the-difference-"></a>Fark nedir?..
 Hata anomali algılama, Application Insights benzer ancak farklı özellikleri tamamlar.
@@ -356,10 +356,9 @@ Bu tanılama araçları uygulamanızdaki verileri incelemenize yardımcı olur:
 
 * [Ölçüm Gezgini](../platform/metrics-charts.md)
 * [Arama Gezgini](./diagnostic-search.md)
-* [Analytics-güçlü sorgu dili](../log-query/get-started-portal.md)
+* [Analytics-güçlü sorgu dili](../log-query/log-analytics-tutorial.md)
 
 Akıllı algılamalar otomatiktir. Ancak daha fazla uyarı kurmak istiyor olabilirsiniz?
 
 * [El ile yapılandırılmış ölçüm uyarıları](../platform/alerts-log.md)
 * [Kullanılabilirlik web testleri](./monitor-web-app-availability.md)
-

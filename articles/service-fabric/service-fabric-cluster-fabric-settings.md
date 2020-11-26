@@ -4,11 +4,11 @@ description: Bu makalede, özelleştirebileceğiniz doku ayarları ve doku yüks
 ms.topic: reference
 ms.date: 08/30/2019
 ms.openlocfilehash: 1f16e89dd1131f6aea64e5e72a342b3b737f3728
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95542652"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187230"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric kümesi ayarlarını özelleştirme
 Bu makalede, Service Fabric kümeniz için özelleştirebileceğiniz çeşitli yapı ayarları açıklanmaktadır. Azure 'da barındırılan kümeler için [Azure Portal](https://portal.azure.com) veya Azure Resource Manager şablonu kullanarak ayarları özelleştirebilirsiniz. Daha fazla bilgi için bkz. [Azure kümesinin yapılandırmasını yükseltme](service-fabric-cluster-config-upgrade-azure.md). Tek başına kümeler için, dosyadaki *ClusterConfig.js* güncelleyerek ve kümenizde bir yapılandırma yükseltmesi gerçekleştirerek ayarları özelleştirirsiniz. Daha fazla bilgi için bkz. [tek başına kümenin yapılandırmasını yükseltme](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -112,7 +112,7 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 | --- | --- | --- | --- |
 |PropertyGroup|KeyDoubleValueMap, varsayılan değer None|Dinamik|[0,0-1,0] aralığında yüzde veya sayı olarak boş düğüm sayısı belirterek kümeyi ele almak için gereken boş düğüm sayısını belirler >= 1,0 |
 
-## <a name="diagnostics"></a>Tanılamalar
+## <a name="diagnostics"></a>Tanılama
 
 | **Parametre** | **İzin Verilen Değerler** | **Yükseltme Ilkesi** | **Kılavuz veya kısa açıklama** |
 | --- | --- | --- | --- |

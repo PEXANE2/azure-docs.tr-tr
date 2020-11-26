@@ -7,12 +7,12 @@ ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 03/10/2020
-ms.openlocfilehash: 11475de159cf3d59923d6f2129aa46ddf0ef8f2c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ef0e3a451a5687278acaf1e857012027a5e657a3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90084439"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186771"
 ---
 # <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>Hızlı başlangıç: Azure Izleyici ile Azure sanal makinesini Izleme
 [Azure izleyici](../overview.md) , Azure sanal makinelerinden oluşturulan verilerin veri toplamaya başlar. Bu hızlı başlangıçta, bir Azure sanal makinesi için otomatik olarak toplanan verileri ve Azure portal nasıl görüntüleyekullanacağınızı gösteren kısa bir adım adım bulacaksınız. Daha sonra VM 'niz için [VM'ler için Azure izleyici](../insights/vminsights-overview.md) ETKINLEŞTIREREK, sanal makine üzerindeki aracıların süreçler ve bunların bağımlılıkları dahil Konuk işletim sisteminden veri toplayıp analiz etmesine olanak sağlar.
@@ -48,7 +48,7 @@ Konak VM 'si için ölçümler ve etkinlik günlükleri toplanırken, Konuk işl
 
 6. SANAL makinelerinizi aboneliğinizdeki eklendi olan diğer VM 'lerle görürsünüz. Aboneliğinizdeki eklendi olmayan sanal makineleri görüntülemek istiyorsanız **izlenmiyor** sekmesini seçin.
 
-    ![Kullanmaya başlayın](media/quick-monitor-azure-vm/get-started.png)
+    ![başlarken](media/quick-monitor-azure-vm/get-started.png)
 
 
 ## <a name="configure-workspace"></a>Çalışma alanını yapılandırma
@@ -77,7 +77,7 @@ Yeni bir Log Analytics çalışma alanı oluşturduğunuzda, günlükleri toplam
 
 2. Günlüğün adını yazarak bir olay günlüğü ekleyin.  **Syslog** yazın ve ardından artı işaretini seçin **+** .  
 
-3. Tabloda, önem derecesi **bilgileri**, **bildirim** ve **hata ayıklama**seçimlerini kaldırın. 
+3. Tabloda, önem derecesi **bilgileri**, **bildirim** ve **hata ayıklama** seçimlerini kaldırın. 
 
 4. Yapılandırmayı kaydetmek için sayfanın en üstünde bulunan **Kaydet** ' i seçin.
 
@@ -107,4 +107,4 @@ Yeni bir Log Analytics çalışma alanı oluşturduğunuzda, günlükleri toplam
 Bu hızlı başlangıçta, bir sanal makine için VM'ler için Azure İzleyici etkinleştirdi ve Log Analytics çalışma alanını Konuk işletim sistemine yönelik olayları toplayacak şekilde yapılandırdınız. Verileri görüntüleme ve analiz etmeyi öğrenmek için, öğreticiye devam edin.
 
 > [!div class="nextstepaction"]
-> [Log Analytics’te verileri görüntüleme veya analiz etme](../log-query/get-started-portal.md)
+> [Log Analytics’te verileri görüntüleme veya analiz etme](../log-query/log-analytics-tutorial.md)
