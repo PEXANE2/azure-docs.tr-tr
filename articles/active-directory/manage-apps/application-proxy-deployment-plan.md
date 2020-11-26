@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: kenwith
-ms.openlocfilehash: 9736e1b71f5e129989aba9a045581bae8a1c5f93
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9815237617566eda4759ecc31718786b6cb2cac8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997554"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96176061"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD Uygulama Ara Sunucusu dağıtımı planlama
 
@@ -33,7 +33,7 @@ Bu makale, Azure AD Uygulama Ara Sunucusu planlamak, çalıştırmak ve yönetme
 
 Aşağıdaki bölümde, etkili bir dağıtım deneyimine yönelik olarak ayarlanacak anahtar planlama öğelerinin geniş bir görünümü sunulmaktadır.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Uygulamanıza başlamadan önce aşağıdaki önkoşulları karşılamanız gerekir. Ortamınızı ayarlama hakkında daha fazla bilgiyi bu ön koşullar da dahil olmak üzere bu [öğreticiye](application-proxy-add-on-premises-application.md)bakabilirsiniz.
 
@@ -323,7 +323,7 @@ Aşağıdaki makalelerde, destek kuruluşunuza yönelik sorun giderme kılavuzla
 * [Uygulamamda çoklu oturum açmayı yapılandırma](application-proxy-config-sso-how-to.md)
 * [Yönetici portalında uygulama oluştururken sorun oluşuyor](application-proxy-config-problem.md)
 * [Kerberos Kısıtlanmış Temsilini Yapılandırma](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
-* [PingAccess ile yapılandırma](/azure/active-directory/manage-apps/application-proxy-ping-access-publishing-guide)
+* [PingAccess ile yapılandırma](./application-proxy-ping-access-publishing-guide.md)
 * [“Bu Şirket Uygulamasına Erişilemiyor” hatası](application-proxy-sign-in-bad-gateway-timeout-error.md)
 * [Uygulama Ara Sunucusu Aracı Bağlayıcısı’nı yüklerken sorun oluşuyor](application-proxy-connector-installation-problem.md)
 * [Oturum açma sorunu](application-sign-in-problem-on-premises-application-proxy.md)

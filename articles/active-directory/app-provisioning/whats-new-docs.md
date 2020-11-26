@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: 21307deb509d0735e4367f2b41603086f301bdeb
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 51a2facfdaccc6cb29264873e9ffd60fc48735da
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533540"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174671"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Uygulama sağlamayı Azure Active Directory: yenilikler
 
@@ -59,7 +59,7 @@ Azure Active Directory uygulama sağlama belgelerindeki yenilikler ' e hoş geld
 
 
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
-- [Microsoft Graph API 'Leri kullanarak sağlamayı yapılandırma](application-provisioning-configure-api.md)
+- [Microsoft Graph API 'Leri kullanarak sağlamayı yapılandırma](/graph/application-provisioning-configure-api)
 - [Azure AD Kullanıcı sağlama hizmeti 'nin SCıM 2,0 protokol uyumluluğuyla ilgili bilinen sorunlar ve çözümleri](application-provisioning-config-problem-scim-compatibility.md)
 
 ## <a name="july-2020"></a>Temmuz 2020

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 68e47fe3cc674542a807ecbabd37cc6b624d5c03
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 167ed7e5c00452db4ee77e10236fec3ff86f0439
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145587"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175109"
 ---
 # <a name="understand-how-provisioning-integrates-with-azure-monitor-logs"></a>Sağlamanın Azure Izleyici günlükleriyle nasıl tümleştirildiğini anlama
 
@@ -30,13 +30,13 @@ Azure izlemeyi yapılandırdıktan sonra, uygulama sağlama için günlükleri e
 
 :::image type="content" source="media/application-provisioning-log-analytics/diagnostic-settings.png" alt-text="Erişim Tanılama ayarları" lightbox="media/application-provisioning-log-analytics/diagnostic-settings.png":::
 
-:::image type="content" source="media/application-provisioning-log-analytics/enable-log-analytics.png" alt-text="Erişim Tanılama ayarları" lightbox="media/application-provisioning-log-analytics/enable-log-analytics.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/enable-log-analytics.png" alt-text="Uygulama sağlama günlüklerini etkinleştir" lightbox="media/application-provisioning-log-analytics/enable-log-analytics.png":::
 
 > [!NOTE]
 > Yeni bir çalışma alanı sağladıysanız, günlüğe Günlükler gönderebilmeniz için biraz zaman alabilir. Aboneliğin *Microsoft. Insights* 'ı kullanmak için kayıtlı olmadığını belirten bir hata alırsanız, birkaç dakika sonra tekrar kontrol edin.
  
 ## <a name="understanding-the-data"></a>Verileri anlama
-Kaynak görüntüleyicilerinin gönderdiği temel alınan veri akışı neredeyse aynıdır. Azure Izleyici günlükleri Azure portal UI ve Azure API 'SI ile neredeyse aynı akışı alır. Aşağıdaki tabloda özetlenen günlük alanlarında yalnızca birkaç **fark** vardır. Bu alanlar hakkında daha fazla bilgi edinmek için bkz. [provisioningObjectSummary listeleme](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http&preserve-view=true).
+Kaynak görüntüleyicilerinin gönderdiği temel alınan veri akışı neredeyse aynıdır. Azure Izleyici günlükleri Azure portal UI ve Azure API 'SI ile neredeyse aynı akışı alır. Aşağıdaki tabloda özetlenen günlük alanlarında yalnızca birkaç **fark** vardır. Bu alanlar hakkında daha fazla bilgi edinmek için bkz. [provisioningObjectSummary listeleme](/graph/api/provisioningobjectsummary-list?preserve-view=true&tabs=http&view=graph-rest-beta).
 
 |Azure İzleyici günlükleri   |Azure portal Kullanıcı arabirimi   |Azure API 'SI |
 |----------|-----------|------------|
@@ -51,9 +51,9 @@ Azure Izleyici çalışma kitapları, veri analizi için esnek bir tuval sağlar
 
 Uygulama sağlama, önceden oluşturulmuş bir çalışma kitapları kümesiyle gelir. Bunları çalışma kitapları sayfasında bulabilirsiniz. Verileri görüntülemek için tüm filtrelerin (timeRange, JobId, appName) doldurulduğundan emin olmanız gerekir. Ayrıca, bir uygulamayı sağladığınızdan emin olmanız gerekir, aksi takdirde günlüklerde hiç veri olmayacaktır.
 
-:::image type="content" source="media/application-provisioning-log-analytics/workbooks.png" alt-text="Erişim Tanılama ayarları" lightbox="media/application-provisioning-log-analytics/workbooks.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/workbooks.png" alt-text="Uygulama sağlama çalışma kitapları" lightbox="media/application-provisioning-log-analytics/workbooks.png":::
 
-:::image type="content" source="media/application-provisioning-log-analytics/report.png" alt-text="Erişim Tanılama ayarları" lightbox="media/application-provisioning-log-analytics/report.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/report.png" alt-text="Uygulama sağlama panosu" lightbox="media/application-provisioning-log-analytics/report.png":::
 
 ## <a name="custom-queries"></a>Özel sorgular
 
@@ -100,15 +100,15 @@ Uyarılar hakkında daha fazla bilgi edinmek için bkz. [Azure Izleyici uyarıla
 
 Hatalarda ani bir artış olduğunda uyarır. JobId öğesini uygulamanızın iş kimliği ile değiştirin.
 
-:::image type="content" source="media/application-provisioning-log-analytics/alert1.png" alt-text="Erişim Tanılama ayarları" lightbox="media/application-provisioning-log-analytics/alert1.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/alert1.png" alt-text="Hatalarda ani bir artış olduğunda uyarır." lightbox="media/application-provisioning-log-analytics/alert1.png":::
 
 Sağlama hizmetinin çalışmayı durdurmasına neden olan bir sorun olabilir. Belirli bir zaman aralığı boyunca hiçbir sağlama olayı olmadığını algılamak için aşağıdaki uyarıyı kullanın.
 
-:::image type="content" source="media/application-provisioning-log-analytics/alert2.png" alt-text="Erişim Tanılama ayarları" lightbox="media/application-provisioning-log-analytics/alert2.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/alert2.png" alt-text="Sağlama hizmetinin çalışmayı durdurmasına neden olan bir sorun olabilir." lightbox="media/application-provisioning-log-analytics/alert2.png":::
 
 Devre dışı bırakıldığında veya silindiğinde uyarır.
 
-:::image type="content" source="media/application-provisioning-log-analytics/alert3.png" alt-text="Erişim Tanılama ayarları" lightbox="media/application-provisioning-log-analytics/alert3.png":::
+:::image type="content" source="media/application-provisioning-log-analytics/alert3.png" alt-text="Devre dışı bırakıldığında veya silindiğinde uyarır." lightbox="media/application-provisioning-log-analytics/alert3.png":::
 
 
 ## <a name="community-contributions"></a>Topluluk katkıları
@@ -121,4 +121,4 @@ Uygulama sağlama sorgularına ve panolarına yönelik açık kaynaklı ve toplu
 - [Azure Izleyici günlüklerinde sorguları kullanmaya başlama](../../azure-monitor/log-query/get-started-queries.md)
 - [Azure portal uyarı grupları oluşturma ve yönetme](../../azure-monitor/platform/action-groups.md)
 - [Azure Active Directory için Log Analytics görünümlerini yükleyip kullanın](../reports-monitoring/howto-install-use-log-analytics-views.md)
-- [Sağlama günlükleri API 'SI](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta.md&preserve-view=true)
+- [Sağlama günlükleri API 'SI](/graph/api/resources/provisioningobjectsummary?preserve-view=true&view=graph-rest-beta.md)

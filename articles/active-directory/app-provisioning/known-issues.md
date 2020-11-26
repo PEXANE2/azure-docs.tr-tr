@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 11/19/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: 8a1c789759f1119a6170fffc2c70874cd9a32fde
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: e0a77e1e4757c8951756c3e41479628c293dfd8f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94919701"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174841"
 ---
 # <a name="known-issues-application-provisioning"></a>Bilinen sorunlar: uygulama sağlama
 Uygulama sağlama ile çalışırken farkında olmak üzere bilinen sorunlar. UserVoice üzerinde uygulama sağlama hizmeti hakkında geri bildirimde bulunmak için bkz. [Azure AD uygulama sağlama UserVoice](https://aka.ms/appprovisioningfeaturerequest). Hizmeti iyileştirebilmemiz için UserVoice 'ı yakından izliyoruz. 
@@ -28,7 +28,7 @@ Uygulama sağlama ile çalışırken farkında olmak üzere bilinen sorunlar. Us
 
 **Başarılı bağlantı testinin ardından kaydedilemiyor**
 
-Bir bağlantıyı başarıyla test edebilir, ancak kaydedebiliyorsanız kimlik bilgileri için izin verilen depolama sınırını aştınız. Daha fazla bilgi edinmek için bkz. [yönetici kimlik bilgilerini kaydetme sorunu](application-provisioning-config-problem-storage-limit.md).
+Bir bağlantıyı başarıyla test edebilir, ancak kaydedebiliyorsanız kimlik bilgileri için izin verilen depolama sınırını aştınız. Daha fazla bilgi edinmek için bkz. [yönetici kimlik bilgilerini kaydetme sorunu](./user-provisioning.md).
 
 **Kaydedilemiyor**
 

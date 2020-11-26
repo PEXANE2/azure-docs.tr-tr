@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: joflore
-ms.openlocfilehash: 02c4679016ea80a4ac8bb53b502292945cbe9d7b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5d19cddc82d9fb092887c5cdeba36b8ab7127f94
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967078"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175143"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>Azure Izleyici çalışma kitaplarını kullanarak Azure Active Directory Domain Services güvenlik denetim olaylarını gözden geçirme
 
@@ -60,16 +60,16 @@ Güvenlik Genel Bakış raporunun çalışma kitabı şablonuna erişmek için a
 
     ![Güvenlik genel bakış raporunu ve hesap etkinliği raporunu seçmesinin yer aldığı hightışığının ekran görüntüsü.](./media/use-azure-monitor-workbooks/select-workbooks-in-azure-portal.png)
 
-1. **Güvenlik genel bakış raporunu**seçin.
+1. **Güvenlik genel bakış raporunu** seçin.
 1. Çalışma kitabının en üstündeki aşağı açılan menülerden Azure aboneliğinizi ve ardından bir Azure Izleyici çalışma alanını seçin.
 
-    Aşağıdaki örnek ekran görüntüsünde gösterildiği gibi *son 7 gün*gibi bir **zaman aralığı**seçin:
+    Aşağıdaki örnek ekran görüntüsünde gösterildiği gibi *son 7 gün* gibi bir **zaman aralığı** seçin:
 
     ![Azure portal çalışma kitapları menü seçeneğini belirleyin](./media/use-azure-monitor-workbooks/select-query-filters.png)
 
     **Kutucuk görünümü** ve **grafik görünümü** seçenekleri, verileri istediğiniz şekilde analiz etmek ve görselleştirmek için de değiştirilebilir.
 
-1. Belirli bir olay türünün detayına gitmek için, aşağıdaki örnekte gösterildiği gibi, *Hesap kilitli*gibi **oturum açma sonuç** kartlarının birini seçin:
+1. Belirli bir olay türünün detayına gitmek için, aşağıdaki örnekte gösterildiği gibi, *Hesap kilitli* gibi **oturum açma sonuç** kartlarının birini seçin:
 
     ![Azure Izleyici çalışma kitaplarında görselleştirilen örnek güvenliğe genel bakış rapor verileri](./media/use-azure-monitor-workbooks/example-security-overview-report.png)
 
@@ -86,12 +86,12 @@ Hesap etkinliği raporunun çalışma kitabı şablonuna erişmek için aşağı
 1. Azure portal **Azure Active Directory Domain Services** arayın ve seçin.
 1. Yönetilen etki alanınızı seçin (örneğin, *aaddscontoso.com* )
 1. Sol taraftaki menüden **izleme > çalışma kitaplarını** seçin
-1. **Hesap etkinliği raporunu**seçin.
+1. **Hesap etkinliği raporunu** seçin.
 1. Çalışma kitabının en üstündeki aşağı açılan menülerden Azure aboneliğinizi ve ardından bir Azure Izleyici çalışma alanını seçin.
 
-    *Son 30 gün*gibi bir **zaman aralığı**seçin, sonra **kutucuk görünümünün** verileri nasıl göstermesini istediğinizi belirleyin.
+    *Son 30 gün* gibi bir **zaman aralığı** seçin, sonra **kutucuk görünümünün** verileri nasıl göstermesini istediğinizi belirleyin.
 
-    Aşağıdaki örnek raporda gösterildiği gibi, *Felix*gibi **hesap Kullanıcı adına**göre filtreleyebilirsiniz:
+    Aşağıdaki örnek raporda gösterildiği gibi, *Felix* gibi **hesap Kullanıcı adına** göre filtreleyebilirsiniz:
 
     [![Azure Izleyici çalışma kitaplarında hesap etkinliği raporu.](./media/use-azure-monitor-workbooks/account-activity-report-cropped.png)](./media/use-azure-monitor-workbooks/account-activity-report.png#lightbox)
 
@@ -122,5 +122,5 @@ Kullanıcılar ile ilgili sorunlar için, [Hesap oturum açma sorunlarını][tro
 [password-policy]: password-policy.md
 [troubleshoot-sign-in]: troubleshoot-sign-in.md
 [troubleshoot-account-lockout]: troubleshoot-account-lockout.md
-[azure-monitor-queries]: ../azure-monitor/log-query/query-language.md
+[azure-monitor-queries]: /azure/data-explorer/kusto/query/
 [kusto-queries]: /azure/kusto/query/tutorial?pivots=azuredataexplorer

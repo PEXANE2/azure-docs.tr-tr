@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58f0ffa8bd43a8428603334b6c89fa1cf36315b5
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: ba22745923f1b157c477dce0b5704c7e278e748e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94987346"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96176010"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Azure Active Directory 'de sık sorulan sorular kimlik koruması
 
@@ -38,7 +38,7 @@ Azure AD Kimlik Koruması müşteriyseniz, [riskli kullanıcılar](howto-identit
 ## <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>Oturum açma, neden engelleniyor, ancak kimlik koruması risk algılama işlemi oluşturmaz mi?
 Oturum açma işlemleri, çeşitli nedenlerle engellenebilir. Kimlik koruması, kimlik doğrulama isteğinde doğru kimlik bilgileri kullanıldığında yalnızca risk algılamalarını ürettiğine dikkat edin. Bir Kullanıcı yanlış kimlik bilgilerini kullanıyorsa, kötü bir aktör doğru kimlik bilgilerini kullanmadığı takdirde kimlik bilgilerinin güvenliğinin olmaması nedeniyle kimlik koruması tarafından işaretlenmeyecektir. Bir kullanıcının bir kimlik koruması algılaması üretmeyecek bir şekilde imzalanmasına neden olabilecek bazı nedenler şunlardır:
 * IP adresinden gelen kötü amaçlı etkinlik nedeniyle **IP engelleniyor olabilir** . IP engellenen ileti, kimlik bilgilerinin doğru olup olmadığını ayırt etmez. IP engellenirse ve kimlik bilgileri doğru değilse, Kimlik Koruması Algılama işlemi oluşturmaz
-* **[Akıllı kilitleme](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout)** , birden çok başarısız girişimden sonra hesabın oturum açmasını engelleyebilir
+* **[Akıllı kilitleme](../authentication/howto-password-smart-lockout.md)** , birden çok başarısız girişimden sonra hesabın oturum açmasını engelleyebilir
 * Bir kimlik doğrulama isteğini engellemek için risk düzeyinden farklı koşulları kullanan **koşullu erişim ilkesi** zorlanabilir
 
 ### <a name="how-can-i-get-a-report-of-detections-of-a-specific-type"></a>Belirli bir türdeki algılamalardan nasıl rapor alabilirim?
@@ -93,6 +93,4 @@ Kullanıcı riskini doğası gereği, kullanım süreleri dolana kadar, kimlik k
 
 ### <a name="why-does-a-sign-in-have-a-sign-in-risk-aggregate-score-of-high-when-the-detections-associated-with-it-are-of-low-or-medium-risk"></a>Neden bir oturum açma, bununla ilişkili algılamalar düşük veya orta riskli olduğunda bir "oturum açma riski (toplama)" puanı elde ediyor mu?
 
-Yüksek toplu risk puanı, oturum açma işleminin diğer özelliklerine veya bu oturum açma için birden fazla algılamanın tetiklenmesi durumunda olabilir. Üstelik, oturum açma ile ilişkili algılamalar yüksek riskli olsa da, oturum açma, ortamın bir oturum açma riski (toplama) olabilir. 
-
-
+Yüksek toplu risk puanı, oturum açma işleminin diğer özelliklerine veya bu oturum açma için birden fazla algılamanın tetiklenmesi durumunda olabilir. Üstelik, oturum açma ile ilişkili algılamalar yüksek riskli olsa da, oturum açma, ortamın bir oturum açma riski (toplama) olabilir.

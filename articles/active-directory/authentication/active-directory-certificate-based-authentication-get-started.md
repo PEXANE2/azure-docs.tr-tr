@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 96f1e3983f3c093cdf643e7674221b04631eeabd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ddff11caba9d83e9ed21748fd50a3480d866d8a9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965633"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174573"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory’de sertifika tabanlı kimlik doğrulamayı kullanmaya başlama
 
@@ -31,7 +31,7 @@ Bu özelliği yapılandırmak, mobil cihazınızda belirli e-posta ve Microsoft 
 Bu konu:
 
 - Office 365 Kurumsal, Iş, eğitim ve ABD devlet planlarındaki kiracılar kullanıcıları için sertifika tabanlı kimlik doğrulamasını yapılandırma ve kullanma adımlarını sağlar. Bu özellik, Office 365 Çin, ABD kamu savunması ve ABD kamu Federal planlarında önizlemede sunulmaktadır.
-- Zaten bir [ortak anahtar altyapısına (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) sahip olduğunuzu ve [AD FS](../hybrid/how-to-connect-fed-whatis.md) yapılandırıldığını varsayar.
+- Zaten bir [ortak anahtar altyapısına (PKI)](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831740(v=ws.11)) sahip olduğunuzu ve [AD FS](../hybrid/how-to-connect-fed-whatis.md) yapılandırıldığını varsayar.
 
 ## <a name="requirements"></a>Gereksinimler
 
@@ -190,7 +190,7 @@ Ayarladığınız tarih gelecekte olmalıdır. Tarih gelecekte değilse, **StsRe
 
 ### <a name="testing-your-certificate"></a>Sertifikanızı test etme
 
-İlk yapılandırma testi olarak, **cihaz içi tarayıcınızı**kullanarak [Outlook Web erişimi](https://outlook.office365.com) veya [SharePoint Online](https://microsoft.sharepoint.com) 'da oturum açmaya çalışın.
+İlk yapılandırma testi olarak, **cihaz içi tarayıcınızı** kullanarak [Outlook Web erişimi](https://outlook.office365.com) veya [SharePoint Online](https://microsoft.sharepoint.com) 'da oturum açmaya çalışın.
 
 Oturum açma işlemi başarılı olursa şunları bilirsiniz:
 

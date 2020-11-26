@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06c37eaf63b79b171e5a21d807262cfb359d416c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 765bfe0f805ae4219110d689e8f7f8fd54a26cf3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994171"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173945"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Azure Active Directory self servis parola sıfırlama dağıtımını planlayın
 
@@ -64,7 +64,7 @@ Sürümleri ve özellikleri karşılaştırmak ve grup veya Kullanıcı tabanlı
 
 Fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure Active Directory fiyatlandırması](https://azure.microsoft.com/pricing/details/active-directory/).
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 * En az deneme sürümü lisansı etkinleştirilmiş çalışan bir Azure AD kiracısına erişim. Gerekirse, [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -123,7 +123,7 @@ Ortamınızda bu dağıtımın stratejisini belirlerken kurumsal ihtiyaçların�
 
 ### <a name="engage-the-right-stakeholders"></a>Doğru paydaşlara katılın
 
-Teknoloji projeleri başarısız olduğunda, genellikle etki, sonuç ve sorumlulukların eşleşmeyen beklentileri nedeniyle bu, genellikle bu şekilde yapılır. Bu girişlerin oluşmasını önlemek için, [doğru paydaşları](https://aka.ms/deploymentplans) ve proje giriş ve accountatçlarını belgeleyerek projedeki paydaş rollerinin iyi anlaşıldığından emin olun.
+Teknoloji projeleri başarısız olduğunda, genellikle etki, sonuç ve sorumlulukların eşleşmeyen beklentileri nedeniyle bu, genellikle bu şekilde yapılır. Bu girişlerin oluşmasını önlemek için, [doğru paydaşları](../fundamentals/active-directory-deployment-plans.md) ve proje giriş ve accountatçlarını belgeleyerek projedeki paydaş rollerinin iyi anlaşıldığından emin olun.
 
 #### <a name="required-administrator-roles"></a>Gerekli yönetici rolleri
 
@@ -154,14 +154,14 @@ SSPR 'yi önerilen değerlerle birlikte etkinleştirmek için aşağıdaki ayarl
 | **SSPR özellikleri** | Self servis parola sıfırlama etkin | Pilot için **Seçili** grup ve **üretim için** |
 | **Kimlik doğrulama yöntemleri** | Kaydolmak için gereken kimlik doğrulama yöntemleri | Sıfırlama için her zaman 1 daha fazla |
 |   | Sıfırlamak için gereken kimlik doğrulama yöntemleri | Bir veya iki |
-| **Kaydını** | Kullanıcılardan oturum açarken kaydolmalarını iste | Yes |
+| **Kaydını** | Kullanıcılardan oturum açarken kaydolmalarını iste | Evet |
 |   | Kullanıcıların kimlik doğrulaması bilgilerini yeniden onaylamasını istemeden önce geçen gün sayısı | 90 – 180 gün |
-| **Bildirimler** | Parola sıfırlamayı kullanıcılara bildir | Yes |
-|   | Diğer yöneticiler parolalarını sıfırladığında tüm yöneticilere bildir | Yes |
-| **Özelleştirme** | Yardım masası bağlantısını Özelleştir | Yes |
+| **Bildirimler** | Parola sıfırlamayı kullanıcılara bildir | Evet |
+|   | Diğer yöneticiler parolalarını sıfırladığında tüm yöneticilere bildir | Evet |
+| **Özelleştirme** | Yardım masası bağlantısını Özelleştir | Evet |
 |   | Özel yardım masası e-postası veya URL 'SI | Destek sitesi veya e-posta adresi |
-| **Şirket içi tümleştirme** | Parolaları şirket içi AD 'ye geri yazma | Yes |
-|   | Kullanıcıların, parolayı sıfırlamadan hesabın kilidini açma izni ver | Yes |
+| **Şirket içi tümleştirme** | Parolaları şirket içi AD 'ye geri yazma | Evet |
+|   | Kullanıcıların, parolayı sıfırlamadan hesabın kilidini açma izni ver | Evet |
 
 ### <a name="sspr-properties"></a>SSPR özellikleri
 
@@ -254,7 +254,7 @@ SSPR genellikle kullanıcı sorunları oluşturmadığından, oluşabilecek soru
 
 Destek takımınızın başarısını etkinleştirmek için, kullanıcılarınızın aldığınız sorulara dayalı bir SSS oluşturabilirsiniz. İşte birkaç örnek:
 
-| Senaryolar| Description |
+| Senaryolar| Açıklama |
 | - | - |
 | Kullanıcının kayıtlı bir kimlik doğrulama yöntemi yok| Kullanıcı parolasını sıfırlamaya çalışıyor ancak kaydoldukları kimlik doğrulama yöntemlerinden hiçbirine sahip değil (örnek: kendi cep telefonlarını evde ve e-postaya erişemez) |
 | Kullanıcı Office veya cep telefonunda bir metin veya çağrı almıyor| Kullanıcı, kimliğini metin veya çağrı yoluyla doğrulamaya çalışıyor ancak bir metin/çağrı almıyor. |
@@ -325,7 +325,7 @@ Kayıt ve parola sıfırlama için denetim günlükleri 30 gün boyunca kullanı
 
 ### <a name="troubleshoot"></a>Sorun giderme
 
-* [Self servis parola sıfırlama sorunlarını giderme](./active-directory-passwords-troubleshoot.md) bölümüne bakın 
+* [Self servis parola sıfırlama sorunlarını giderme](./troubleshoot-sspr.md) bölümüne bakın 
 
 * [Parola yönetimi hakkında sık sorulan soruları](./active-directory-passwords-faq.md) izleyin 
 

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: joflore
-ms.openlocfilehash: cc183a047023e5377d7a45088b7c9ae2407f6829
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 52a97b824824d8e9eaf79cfa4a447494bf1525cf
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967129"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175160"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Öğretici: Azure Active Directory Domain Services yönetilen bir etki alanını yapılandırmak ve yönetmek için bir yönetim sanal makinesi oluşturma
 
@@ -84,7 +84,7 @@ Yönetilen etki alanı kilitlidir, bu nedenle etki alanında belirli yönetim g�
 
 Başlamak için Windows Server VM 'sine aşağıdaki şekilde bağlanın:
 
-1. Azure portal sol taraftaki **kaynak grupları** ' nı seçin. SANAL makinenizin oluşturulduğu kaynak grubunu ( *Myresourcegroup*gibi) seçin ve ardından VM 'yi seçin ( *myvm*gibi).
+1. Azure portal sol taraftaki **kaynak grupları** ' nı seçin. SANAL makinenizin oluşturulduğu kaynak grubunu ( *Myresourcegroup* gibi) seçin ve ardından VM 'yi seçin ( *myvm* gibi).
 1. VM 'nizin **genel bakış** bölmesinde **Bağlan** **' ı ve sonra da**' yi seçin.
 
     ![Azure portal kullanarak Windows sanal makinesine bağlanma](./media/join-windows-vm/connect-to-vm.png)
@@ -101,11 +101,11 @@ Yönetilen bir etki alanında, Active Directory Yönetim Merkezi (ADAC) veya AD 
 
 Etki alanına katılmış bir VM 'ye Active Directory Yönetim Araçları 'nı yüklemek için aşağıdaki adımları izleyin:
 
-1. **Sunucu Yöneticisi** sanal makinede oturum açtığınızda varsayılan olarak açılmazsa **Başlat** menüsünü ve ardından **Sunucu Yöneticisi**öğesini seçin.
+1. **Sunucu Yöneticisi** sanal makinede oturum açtığınızda varsayılan olarak açılmazsa **Başlat** menüsünü ve ardından **Sunucu Yöneticisi** öğesini seçin.
 1. **Sunucu Yöneticisi** penceresinin *Pano* bölmesinde **rol ve Özellik Ekle**' yi seçin.
 1. *Rol ve Özellik Ekleme Sihirbazı*' nın **başlamadan önce** sayfasında **İleri**' yi seçin.
-1. *Yükleme türü*Için, **rol tabanlı veya özellik tabanlı yükleme** seçeneğini işaretli bırakın ve **İleri ' yi**seçin.
-1. **Sunucu seçimi** sayfasında, sunucu havuzundan *MYVM.AADDSCONTOSO.com*gibi geçerli VM 'Yi seçin ve ardından **İleri**' yi seçin.
+1. *Yükleme türü* Için, **rol tabanlı veya özellik tabanlı yükleme** seçeneğini işaretli bırakın ve **İleri ' yi** seçin.
+1. **Sunucu seçimi** sayfasında, sunucu havuzundan *MYVM.AADDSCONTOSO.com* gibi geçerli VM 'Yi seçin ve ardından **İleri**' yi seçin.
 1. **Sunucu rolleri** sayfasında, **İleri**' ye tıklayın.
 1. **Özellikler** sayfasında, **uzak sunucu yönetim araçları** düğümünü genişletin ve ardından **rol yönetim araçları** düğümünü genişletin.
 
@@ -124,8 +124,8 @@ Yönetim Araçları yüklüyken, yönetilen etki alanını yönetmek için bunla
 
     ![Sunucuda yüklü yönetim araçlarının listesi](./media/tutorial-create-management-vm/list-admin-tools.png)
 
-1. **Active Directory Yönetim Merkezi**seçin.
-1. Yönetilen etki alanını araştırmak için, sol bölmedeki ( *aaddscontoso*gibi) etki alanı adını seçin. *Aaddc bilgisayarları* ve *Aaddc kullanıcıları* adlı iki kapsayıcı listenin en üstünde bulunur.
+1. **Active Directory Yönetim Merkezi** seçin.
+1. Yönetilen etki alanını araştırmak için, sol bölmedeki ( *aaddscontoso* gibi) etki alanı adını seçin. *Aaddc bilgisayarları* ve *Aaddc kullanıcıları* adlı iki kapsayıcı listenin en üstünde bulunur.
 
     ![Yönetilen etki alanının kullanılabilir kapsayıcılar bölümünü listeleyin](./media/tutorial-create-management-vm/active-directory-administrative-center.png)
 
@@ -135,11 +135,11 @@ Yönetim Araçları yüklüyken, yönetilen etki alanını yönetmek için bunla
 
     ![Active Directory Yönetim Merkezi Azure AD DS etki alanı kullanıcılarının listesini görüntüleyin](./media/tutorial-create-management-vm/list-azure-ad-users.png)
 
-1. Yönetilen etki alanına katılmış bilgisayarları görmek için **Aaddc bilgisayarları** kapsayıcısını seçin. Geçerli sanal makine için *Myvm*gibi bir giriş listelenir. Yönetilen etki alanına katılmış tüm cihazlar için bilgisayar hesapları, bu *Aaddc bilgisayarları* kapsayıcısında depolanır.
+1. Yönetilen etki alanına katılmış bilgisayarları görmek için **Aaddc bilgisayarları** kapsayıcısını seçin. Geçerli sanal makine için *Myvm* gibi bir giriş listelenir. Yönetilen etki alanına katılmış tüm cihazlar için bilgisayar hesapları, bu *Aaddc bilgisayarları* kapsayıcısında depolanır.
 
 Kullanıcı hesabı parolasını sıfırlama veya grup üyeliğini yönetme gibi genel Active Directory Yönetim Merkezi eylemler kullanılabilir. Bu eylemler yalnızca doğrudan yönetilen etki alanında oluşturulan kullanıcılar ve gruplar için geçerlidir. Kimlik bilgileri yalnızca Azure AD *'Den* Azure AD DS eşitlenir. Azure AD DS 'den Azure AD 'ye geri yazma yok. Azure AD 'den eşitlenen kullanıcılar için parolaları veya yönetilen grup üyeliklerini değiştiremezsiniz ve bu değişiklikleri geri eşitlenmiş olacak şekilde değiştirebilirsiniz.
 
-Yönetilen etki alanındaki yaygın işlemleri yönetmek için yönetim araçlarının bir parçası olarak yüklenen *Windows PowerShell için Active Directory modülünü*de kullanabilirsiniz.
+Yönetilen etki alanındaki yaygın işlemleri yönetmek için yönetim araçlarının bir parçası olarak yüklenen *Windows PowerShell için Active Directory modülünü* de kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -160,4 +160,4 @@ Diğer uygulamalardan yönetilen etki alanı ile güvenli bir şekilde etkileşi
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
 [create-join-windows-vm]: join-windows-vm.md
-[azure-bastion]: ../bastion/bastion-create-host-portal.md
+[azure-bastion]: ../bastion/tutorial-create-host-portal.md

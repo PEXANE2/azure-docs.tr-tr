@@ -10,11 +10,11 @@ ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.openlocfilehash: a9f58a9cdf8dea9631443d499548f2aee61eda69
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553684"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175415"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>SYNAPSE SQL ile dış tabloları kullanma
 
@@ -332,7 +332,7 @@ DıŞ tablo oluşturma, sütun adı, veri türü, null olabilme ve harmanlama ya
 
 Parquet dosyalarından okurken yalnızca okumak istediğiniz sütunları belirtebilir ve geri kalanını atlayabilirsiniz.
 
-KONUM = ' *folder_or_filepath* '
+KONUM = '*folder_or_filepath*'
 
 Azure Blob depolamada gerçek verilerin klasörünü veya dosya yolunu ve dosya adını belirtir. Konum kök klasörden başlar. Kök klasör, dış veri kaynağında belirtilen veri konumudur.
 

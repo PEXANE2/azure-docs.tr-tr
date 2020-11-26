@@ -11,12 +11,12 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f6c5985c16875e263f2494f56636abb4d4e980d
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 8eb8de2424012d12f216f154eb077028a8f82d76
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95237264"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173711"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect bulut sağlama önkoşulları
 Bu makalede, kimlik çözümünüz olarak Azure Active Directory (Azure AD) bulut sağlamasını bağlama ve kullanma hakkında rehberlik sunulmaktadır.
@@ -30,11 +30,11 @@ Bulut sağlamasını Azure AD Connect kullanmak için aşağıdakiler gerekir:
 - Şirket içi güvenlik duvarı konfigürasyonları.
 
 ## <a name="group-managed-service-accounts"></a>Grup Tarafından Yönetilen Hizmet Hesapları
-Grup tarafından yönetilen hizmet hesabı, otomatik parola yönetimi, Basitleştirilmiş hizmet asıl adı (SPN) yönetimi, yönetimi diğer yöneticilere devretmek ve ayrıca bu işlevselliği birden çok sunucuya genişleten bir yönetilen etki alanı hesabıdır.  Azure AD Connect bulut eşitlemesi destekler ve aracıyı çalıştırmak için gMSA kullanır.  Bu hesabı oluşturmak için kurulum sırasında yönetici kimlik bilgileri istenir.  Hesap (domain\provAgentgMSA $) olarak görünür.  Bir gMSA hakkında daha fazla bilgi için bkz. [Grup yönetilen hizmet hesapları](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) 
+Grup tarafından yönetilen hizmet hesabı, otomatik parola yönetimi, Basitleştirilmiş hizmet asıl adı (SPN) yönetimi, yönetimi diğer yöneticilere devretmek ve ayrıca bu işlevselliği birden çok sunucuya genişleten bir yönetilen etki alanı hesabıdır.  Azure AD Connect bulut eşitlemesi destekler ve aracıyı çalıştırmak için gMSA kullanır.  Bu hesabı oluşturmak için kurulum sırasında yönetici kimlik bilgileri istenir.  Hesap (domain\provAgentgMSA $) olarak görünür.  Bir gMSA hakkında daha fazla bilgi için bkz. [Grup yönetilen hizmet hesapları](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) 
 
 ### <a name="prerequisites-for-gmsa"></a>GMSA önkoşulları:
 1.  GMSA etki alanı ormanındaki Active Directory şemasının Windows Server 2012 ' e güncelleştirilmesi gerekir
-2.  Bir etki alanı denetleyicisindeki [POWERSHELL RSAT modülleri](https://docs.microsoft.com/windows-server/remote/remote-server-administration-tools)
+2.  Bir etki alanı denetleyicisindeki [POWERSHELL RSAT modülleri](/windows-server/remote/remote-server-administration-tools)
 3.  Etki alanındaki en az bir etki alanı denetleyicisinin Windows Server 2012 çalıştırması gerekir.
 4.  Aracının yüklenmekte olduğu etki alanına katılmış bir sunucunun Windows Server 2012 veya üzeri olması gerekir.
 

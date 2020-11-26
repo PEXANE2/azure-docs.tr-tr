@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: joflore
-ms.openlocfilehash: a66268c0cd0c2382b412873ec7f78b87d3491594
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: aae665b5982ab2b5c1163bb9297eda5f2e5d344a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968183"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175381"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Klasik sanal ağ modelinden Azure Active Directory Domain Services Kaynak Yöneticisi 'ye geçirin
 
@@ -153,11 +153,11 @@ Kaynak Yöneticisi dağıtım modeline ve sanal ağa geçiş, 5 ana adıma böl�
 
 | Adım    | Üzerinde gerçekleştirilen  | Tahmini süre  | Downtime  | Geri alma/geri yükleme? |
 |---------|--------------------|-----------------|-----------|-------------------|
-| [1. adım-yeni sanal ağı güncelleştirme ve bulma](#update-and-verify-virtual-network-settings) | Azure portal | 15 dakika | Kesinti süresi gerekli değildir | YOK |
+| [1. adım-yeni sanal ağı güncelleştirme ve bulma](#update-and-verify-virtual-network-settings) | Azure portal | 15 dakika | Kesinti süresi gerekli değildir | Yok |
 | [2. adım-yönetilen etki alanını geçiş için hazırlama](#prepare-the-managed-domain-for-migration) | PowerShell | 15 – ortalama 30 dakika | Azure AD DS kapalı kalma süresi bu komut tamamlandıktan sonra başlar. | Geri alma ve geri yükleme var. |
 | [3. adım-yönetilen etki alanını mevcut bir sanal ağa taşıma](#migrate-the-managed-domain) | PowerShell | 1 – 3 saat (Ortalama) | Bu komut tamamlandığında bir etki alanı denetleyicisi kullanılabilir, kapalı kalma süresi sona erer. | Hata durumunda hem geri alma (self servis) hem de geri yükleme kullanılabilir. |
 | [4. Adım-çoğaltma etki alanı denetleyicisi için test ve bekleme](#test-and-verify-connectivity-after-the-migration)| PowerShell ve Azure portal | test sayısına bağlı olarak 1 saat veya daha fazla | Her iki etki alanı denetleyicisi de kullanılabilir ve normal şekilde çalışır. | Yok. İlk VM başarıyla geçirildikten sonra, geri alma veya geri yükleme seçeneği yoktur. |
-| [5. adım-Isteğe bağlı yapılandırma adımları](#optional-post-migration-configuration-steps) | Azure portal ve VM 'Ler | YOK | Kesinti süresi gerekli değildir | YOK |
+| [5. adım-Isteğe bağlı yapılandırma adımları](#optional-post-migration-configuration-steps) | Azure portal ve VM 'Ler | Yok | Kesinti süresi gerekli değildir | Yok |
 
 > [!IMPORTANT]
 > Ek kapalı kalma süresini önlemek için, geçiş işlemine başlamadan önce bu geçiş makalesinin ve kılavuzunun hepsini okuyun. Geçiş işlemi, Azure AD DS etki alanı denetleyicilerinin bir süre için kullanılabilirliğini etkiler. Kullanıcılar, hizmetler ve uygulamalar geçiş işlemi sırasında yönetilen etki alanında kimlik doğrulaması yapamaz.
@@ -166,7 +166,7 @@ Kaynak Yöneticisi dağıtım modeline ve sanal ağa geçiş, 5 ana adıma böl�
 
 Geçiş işlemine başlamadan önce, aşağıdaki ilk denetimleri ve güncelleştirmeleri doldurun. Bu adımlar, geçişten önce herhangi bir zamanda gerçekleşebilir ve yönetilen etki alanının işlemini etkilemez.
 
-1. Yerel Azure PowerShell ortamınızı en son sürüme güncelleştirin. Geçiş adımlarını tamamlayabilmeniz için en az sürüm *2.3.2*gerekir.
+1. Yerel Azure PowerShell ortamınızı en son sürüme güncelleştirin. Geçiş adımlarını tamamlayabilmeniz için en az sürüm *2.3.2* gerekir.
 
     PowerShell sürümünüzü denetleme ve güncelleştirme hakkında daha fazla bilgi için bkz. [Azure PowerShell genel bakış][azure-powershell].
 
@@ -176,7 +176,7 @@ Geçiş işlemine başlamadan önce, aşağıdaki ilk denetimleri ve güncelleş
 
     Azure AD DS, yönetilen etki alanı için gereken bağlantı noktalarının güvenliğini sağlamak ve diğer tüm gelen trafiği engellemek için bir ağ güvenlik grubu gerektirir. Bu ağ güvenlik grubu, yönetilen etki alanına erişimi kilitlemek için ek bir koruma katmanı işlevi görür. Gerekli olan bağlantı noktalarını görüntülemek için bkz. [ağ güvenlik grupları ve gerekli bağlantı noktaları][network-ports].
 
-    Güvenli LDAP kullanıyorsanız, *TCP* bağlantı noktası *636*için gelen trafiğe izin vermek üzere ağ güvenlik grubuna bir kural ekleyin. Daha fazla bilgi için bkz [. internet üzerinden GÜVENLI LDAP erişimini kilitleme](tutorial-configure-ldaps.md#lock-down-secure-ldap-access-over-the-internet)
+    Güvenli LDAP kullanıyorsanız, *TCP* bağlantı noktası *636* için gelen trafiğe izin vermek üzere ağ güvenlik grubuna bir kural ekleyin. Daha fazla bilgi için bkz [. internet üzerinden GÜVENLI LDAP erişimini kilitleme](tutorial-configure-ldaps.md#lock-down-secure-ldap-access-over-the-internet)
 
     Bu hedef kaynak grubunu, hedef sanal ağı ve hedef sanal ağ alt ağını bir yere getirin. Bu kaynak adları, geçiş işlemi sırasında kullanılır.
 
@@ -214,7 +214,7 @@ Yönetilen etki alanını geçişe hazırlamak için aşağıdaki adımları izl
    $subscriptionId = 'yourSubscriptionId'
    ```
 
-1. Şimdi `Migrate-Aadds` *-Prepare* parametresini kullanarak cmdlet 'ini çalıştırın. Kendi yönetilen etki alanınız için *aaddscontoso.com*gibi *-manageddomainfqdn* sağlayın:
+1. Şimdi `Migrate-Aadds` *-Prepare* parametresini kullanarak cmdlet 'ini çalıştırın. Kendi yönetilen etki alanınız için *aaddscontoso.com* gibi *-manageddomainfqdn* sağlayın:
 
     ```powershell
     Migrate-Aadds `
@@ -228,9 +228,9 @@ Yönetilen etki alanını geçişe hazırlamak için aşağıdaki adımları izl
 
 Hazırlanan ve yedeklenen yönetilen etki alanı ile etki alanı geçirilebilir. Bu adım, Kaynak Yöneticisi dağıtım modelini kullanarak Azure AD DS etki alanı denetleyicisi VM 'lerini yeniden oluşturur. Bu adımın tamamlanması 1-3 saat sürebilir.
 
-`Migrate-Aadds` *-COMMIT* parametresini kullanarak cmdlet 'ini çalıştırın. *Aaddscontoso.com*gibi önceki bölümde hazırlanan kendi yönetilen etki alanınız için *-manageddomainfqdn* sağlayın:
+`Migrate-Aadds` *-COMMIT* parametresini kullanarak cmdlet 'ini çalıştırın. *Aaddscontoso.com* gibi önceki bölümde hazırlanan kendi yönetilen etki alanınız için *-manageddomainfqdn* sağlayın:
 
-Azure AD DS geçirmek istediğiniz sanal ağı içeren hedef kaynak grubunu ( *Myresourcegroup*gibi) belirtin. *Myvnet*gibi hedef sanal ağı ve *DomainServices*gibi alt ağı sağlayın.
+Azure AD DS geçirmek istediğiniz sanal ağı içeren hedef kaynak grubunu ( *Myresourcegroup* gibi) belirtin. *Myvnet* gibi hedef sanal ağı ve *DomainServices* gibi alt ağı sağlayın.
 
 Bu komut çalıştıktan sonra geri alamazsınız:
 
@@ -254,7 +254,7 @@ Geçiş işlemi sırasında her iki dakikada bir ilerleme göstergesi, aşağıd
 
 ![Azure AD DS geçişinin ilerleme göstergesi](media/migrate-from-classic-vnet/powershell-migration-status.png)
 
-Geçiş işlemi, PowerShell betiğini kapatsanız bile çalışmaya devam eder. Azure portal, yönetilen etki alanı raporlarının *geçiş*olarak durumu.
+Geçiş işlemi, PowerShell betiğini kapatsanız bile çalışmaya devam eder. Azure portal, yönetilen etki alanı raporlarının *geçiş* olarak durumu.
 
 Geçiş başarıyla tamamlandığında, ilk etki alanı denetleyicinizin IP adresini Azure portal veya Azure PowerShell aracılığıyla görüntüleyebilirsiniz. Kullanılabilir ikinci etki alanı denetleyicisinde tahmini bir zaman gösterilir.
 
@@ -302,7 +302,7 @@ Gerekirse, hassas parola ilkesini varsayılan yapılandırmadan daha az kısıtl
 
 1. Yönetilen etki alanında daha az kısıtlama için [parola Ilkesi yapılandırın][password-policy] ve denetim günlüklerindeki olayları gözlemleyin.
 1. Herhangi bir hizmet hesabı, denetim günlüklerinde tanımlandığı şekilde, zaman aşımına uğradı parolaları kullanıyorsa, bu hesapları doğru parolayla güncelleştirin.
-1. Bir sanal makine Internet 'e sunulduğunu, yüksek oturum açma girişimleri ile *yönetici*, *Kullanıcı*veya *Konuk* gibi genel hesap adlarını gözden geçirin. Mümkün olduğunda, bu VM 'Leri daha az genel olarak adlandırılmış hesaplar kullanacak şekilde güncelleştirin.
+1. Bir sanal makine Internet 'e sunulduğunu, yüksek oturum açma girişimleri ile *yönetici*, *Kullanıcı* veya *Konuk* gibi genel hesap adlarını gözden geçirin. Mümkün olduğunda, bu VM 'Leri daha az genel olarak adlandırılmış hesaplar kullanacak şekilde güncelleştirin.
 1. Saldırıların kaynağını bulmak için sanal makinede bir ağ izlemesi kullanın ve bu IP adreslerinin oturum açma işlemlerini deneyebilmesini engelleyin.
 1. En düşük kilitleme sorunları olduğunda, hassas parola ilkesini gerektiği kadar kısıtlayıcı olacak şekilde güncelleştirin.
 
@@ -314,7 +314,7 @@ Geçiş sürecinde belirli bir noktaya kadar, yönetilen etki alanını geri alm
 
 Adım 2 ' de Geçişe hazırlanmak üzere PowerShell cmdlet 'ini çalıştırdığınızda bir hata oluşursa, adım 3 ' te yönetilen etki alanı özgün yapılandırmaya geri dönebilir. Bu geri alma, başlangıçtaki klasik sanal ağı gerektirir. IP adresleri geri alma işleminden sonra hala değişebilir.
 
-`Migrate-Aadds` *-Abort* parametresini kullanarak cmdlet 'ini çalıştırın. *Aaddscontoso.com*gibi önceki bir bölümde hazırlanan kendi yönetilen etki alanınız için *-Manageddomainfqdn* ve *Myclassicvnet*gibi klasik sanal ağ adını sağlayın:
+`Migrate-Aadds` *-Abort* parametresini kullanarak cmdlet 'ini çalıştırın. *Aaddscontoso.com* gibi önceki bir bölümde hazırlanan kendi yönetilen etki alanınız için *-Manageddomainfqdn* ve *Myclassicvnet* gibi klasik sanal ağ adını sağlayın:
 
 ```powershell
 Migrate-Aadds `
@@ -360,7 +360,7 @@ Yönetilen etki alanınız Kaynak Yöneticisi dağıtım modeline geçirildiğin
 [notifications]: notifications.md
 [password-policy]: password-policy.md
 [secure-ldap]: tutorial-configure-ldaps.md
-[migrate-iaas]: ../virtual-machines/windows/migration-classic-resource-manager-overview.md
+[migrate-iaas]: ../virtual-machines/migration-classic-resource-manager-overview.md
 [join-windows]: join-windows-vm.md
 [tutorial-create-management-vm]: tutorial-create-management-vm.md
 [troubleshoot-domain-join]: troubleshoot-domain-join.md

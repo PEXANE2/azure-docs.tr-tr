@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: a487d984fe4b8f5d6313e181863872c4ea150059
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 3355b502033451f58ac2289a81414e62823e459b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93334548"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175959"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Cosmos DB için Azure SYNAPSE bağlantısı 'nı yapılandırma ve kullanma (Önizleme)
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -45,7 +45,7 @@ Azure SYNAPSE link, Azure Cosmos DB SQL API kapsayıcıları veya Mongo DB kolek
 
    :::image type="content" source="./media/configure-synapse-link/find-synapse-link-feature.png" alt-text="SYNAPSE link Preview özelliğini bulma":::
 
-1. Bundan sonra hesabınızda SYNAPSE bağlantısını etkinleştirmenizi ister. **Etkinleştir** ’i seçin. Bu işlemin tamamlanması 1 ila 5 dakika sürebilir.
+1. Bundan sonra hesabınızda SYNAPSE bağlantısını etkinleştirmenizi ister. **Etkinleştir**’i seçin. Bu işlemin tamamlanması 1 ila 5 dakika sürebilir.
 
    :::image type="content" source="./media/configure-synapse-link/enable-synapse-link-feature.png" alt-text="SYNAPSE Link özelliğini etkinleştir":::
 
@@ -63,7 +63,7 @@ Kapsayıcıyı oluştururken Azure Cosmos kapsayıcısında analitik depoyu aça
 
 ### <a name="azure-portal"></a>Azure portal
 
-1. [Azure Portal](https://portal.azure.com/) veya [Azure Cosmos Gezgini](https://cosmos.azure.com/)' nde oturum açın.
+1. [Azure Portal](https://portal.azure.com/) veya [Azure Cosmos DB Gezgininde](https://cosmos.azure.com/)oturum açın.
 
 1. Azure Cosmos DB hesabınıza gidin ve **Veri Gezgini** sekmesini açın.
 
@@ -71,11 +71,11 @@ Kapsayıcıyı oluştururken Azure Cosmos kapsayıcısında analitik depoyu aça
 
    :::image type="content" source="./media/configure-synapse-link/create-container-analytical-store.png" alt-text="Azure Cosmos kapsayıcısı için analitik depoyu aç":::
 
-1. Bu hesapta daha önce SYNAPSE bağlantısı etkinleştirilmemişse, analitik depo özellikli bir kapsayıcı oluşturmak için önkoşul olduğundan bunu yapmanız istenir. İstenirse, **SYNAPSE bağlantısını etkinleştir** ' i seçin. Bu işlemin tamamlanması 1 ila 5 dakika sürebilir.
+1. Bu hesapta daha önce SYNAPSE bağlantısı etkinleştirilmemişse, analitik depo özellikli bir kapsayıcı oluşturmak için önkoşul olduğundan bunu yapmanız istenir. İstenirse, **SYNAPSE bağlantısını etkinleştir**' i seçin. Bu işlemin tamamlanması 1 ila 5 dakika sürebilir.
 
-1. Azure Cosmos kapsayıcısını etkin bir analitik mağaza oluşturmak için **Tamam** ' ı seçin.
+1. Azure Cosmos kapsayıcısını etkin bir analitik mağaza oluşturmak için **Tamam**' ı seçin.
 
-1. Kapsayıcı oluşturulduktan sonra, **Ayarlar** ' a tıklayıp Veri Gezgini ' deki belgeler ' e tıklayarak analitik deponun etkinleştirildiğini doğrulayın ve **analitik depo süresinin canlı** olup olmadığını denetleyin.
+1. Kapsayıcı oluşturulduktan sonra, **Ayarlar**' a tıklayıp Veri Gezgini ' deki belgeler ' e tıklayarak analitik deponun etkinleştirildiğini doğrulayın ve **analitik depo süresinin canlı** olup olmadığını denetleyin.
 
 ### <a name="net-sdk"></a>.NET SDK
 
@@ -171,7 +171,7 @@ Analiz deposunu belirli bir TTL değeriyle etkinleştirdikten sonra ilerleyen za
 
 Azure portal aracılığıyla analitik mağaza etkin bir kapsayıcı oluşturduysanız, varsayılan bir analitik TTL-1 ' i içerir. Bu değeri güncelleştirmek için aşağıdaki adımları kullanın:
 
-1. [Azure Portal](https://portal.azure.com/) veya [Azure Cosmos Gezgini](https://cosmos.azure.com/)' nde oturum açın.
+1. [Azure Portal](https://portal.azure.com/) veya [Azure Cosmos DB Gezgininde](https://cosmos.azure.com/)oturum açın.
 
 1. Azure Cosmos DB hesabınıza gidin ve **Veri Gezgini** sekmesini açın.
 
@@ -180,7 +180,7 @@ Azure portal aracılığıyla analitik mağaza etkin bir kapsayıcı oluşturduy
   * **Ölçek & ayarları** penceresini açın.
   * Bul **ayarı** altında, * * gerçek zamanlı analitik depolama süresi * *.
   * **Açık (varsayılan)** **seçeneğini belirleyin veya SEÇIN ve bir** TTL değeri ayarlayın
-  * Değişiklikleri kaydetmek için **Kaydet** ’e tıklayın.
+  * Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
 
 #### <a name="net-sdk"></a>.NET SDK
 

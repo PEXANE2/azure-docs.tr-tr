@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 010e2a206ef08677651572c274cfc38fd516ecc9
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: e741bd6c87ea32b0d92b1dd53112a1bed3e4cd38
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041125"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174926"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Otomatik kullanıcı sağlama dağıtımı planlama
 
@@ -34,13 +34,13 @@ Kullanıcı hazırlama, sürekli kimlik yönetimi için bir temel oluşturur ve 
 
 Otomatik Kullanıcı sağlamayı etkinleştirmenin başlıca avantajları şunlardır:
 
-* **Daha fazla üretkenlik** . Tek bir Kullanıcı sağlama yönetim arabirimiyle SaaS uygulamaları genelinde Kullanıcı kimliklerini yönetebilirsiniz. Bu arabirimin tek bir sağlama ilkeleri kümesi vardır.
+* **Daha fazla üretkenlik**. Tek bir Kullanıcı sağlama yönetim arabirimiyle SaaS uygulamaları genelinde Kullanıcı kimliklerini yönetebilirsiniz. Bu arabirimin tek bir sağlama ilkeleri kümesi vardır.
 
-* **Riski yönetin** . Rolleri ve/veya erişimi tanımlayan çalışan durumu veya grup üyelikleri temelinde değişiklikleri otomatikleştirerek güvenliği artırabilirsiniz.
+* **Riski yönetin**. Rolleri ve/veya erişimi tanımlayan çalışan durumu veya grup üyelikleri temelinde değişiklikleri otomatikleştirerek güvenliği artırabilirsiniz.
 
-* **Adres uyumluluğu ve idare** . Azure AD, her Kullanıcı sağlama isteği için yerel denetim günlüklerini destekler. İstekler hem kaynak hem de hedef sistemlerde yürütülür. Bu, tek bir ekrandan uygulamalara kimlerin erişebileceğini izlemenize olanak sağlar.
+* **Adres uyumluluğu ve idare**. Azure AD, her Kullanıcı sağlama isteği için yerel denetim günlüklerini destekler. İstekler hem kaynak hem de hedef sistemlerde yürütülür. Bu, tek bir ekrandan uygulamalara kimlerin erişebileceğini izlemenize olanak sağlar.
 
-* **Maliyeti azaltın** . Otomatik Kullanıcı sağlama, el ile sağlama ile ilişkili verimsizlikleri ve insan hatasından kaçınarak maliyetleri azaltır. Özel olarak geliştirilmiş Kullanıcı sağlama çözümleri, betikler ve denetim günlükleri gereksinimini azaltır.
+* **Maliyeti azaltın**. Otomatik Kullanıcı sağlama, el ile sağlama ile ilişkili verimsizlikleri ve insan hatasından kaçınarak maliyetleri azaltır. Özel olarak geliştirilmiş Kullanıcı sağlama çözümleri, betikler ve denetim günlükleri gereksinimini azaltır.
 
 ### <a name="licensing"></a>Lisanslama
 
@@ -157,7 +157,7 @@ Otomatik sağlamayı etkinleştirmek ve yapılandırmak için gereken gerçek ad
 
 Aksi takdirde, aşağıdaki adımları izleyin:
 
-1. Önceden tümleştirilmiş Kullanıcı sağlama Bağlayıcısı için [bir Istek oluşturun](../azuread-dev/howto-app-gallery-listing.md) . Ekibimiz, SCıM destekliyorsa, uygulamanızı platformumuza eklemek için sizinle ve uygulama geliştiricimize çalışacağız.
+1. Önceden tümleştirilmiş Kullanıcı sağlama Bağlayıcısı için [bir Istek oluşturun](../develop/v2-howto-app-gallery-listing.md) . Ekibimiz, SCıM destekliyorsa, uygulamanızı platformumuza eklemek için sizinle ve uygulama geliştiricimize çalışacağız.
 
 1. Uygulama için [Byoa SCıM](../app-provisioning/use-scim-to-provision-users-and-groups.md) genel Kullanıcı sağlama desteğini kullanın. Bu, Azure AD 'nin uygulamayı önceden tümleşik sağlama Bağlayıcısı olmadan uygulamaya sağlaması için bir gereksinimdir.
 
@@ -300,11 +300,11 @@ Sağlama sırasında oluşabilecek sorunları gidermek için aşağıdaki bağla
 
 * [Bir uygulamaya sağlamak için şirket içi Active Directory bir özniteliği Azure AD 'ye eşitleyin](../app-provisioning/user-provisioning-sync-attributes-for-mapping.md)
 
-* [Azure Active Directory Galeri uygulamasına kullanıcı sağlamayı yapılandırırken yönetici kimlik bilgileri kaydedilirken sorun oluştu](../app-provisioning/application-provisioning-config-problem-storage-limit.md)
+* [Azure Active Directory Galeri uygulamasına kullanıcı sağlamayı yapılandırırken yönetici kimlik bilgileri kaydedilirken sorun oluştu](./user-provisioning.md)
 
 * [Azure AD Galeri uygulamasına hiçbir Kullanıcı sağlanmıyor](../app-provisioning/application-provisioning-config-problem-no-users-provisioned.md)
 
-* [Azure AD Galeri uygulamasına yanlış kullanıcı kümesi sağlanıyor](../app-provisioning/application-provisioning-config-problem-wrong-users-provisioned.md)
+* [Azure AD Galeri uygulamasına yanlış kullanıcı kümesi sağlanıyor](../manage-apps/add-application-portal-assign-users.md)
 
 ### <a name="helpful-documentation"></a>Faydalı belgeler
 

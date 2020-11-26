@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperfq2
-ms.openlocfilehash: 5e2f323f705a891f06cee1d25779351d02a91572
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 19942e5400be63dfde48b9653282fb93bcb1ec42
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695274"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174824"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Öğretici-Azure AD ile bir SCıM uç noktası oluşturun ve Kullanıcı sağlamayı yapılandırın
 
@@ -154,7 +154,7 @@ SCıM 2,0 kullanıcı yönetim API 'sini destekleyen bir uygulama oluşturuyorsa
 * , [SCıM protokolünün](https://tools.ietf.org/html/rfc7644#section-3.4.2)bölüm başına 3.4.2 göre Kullanıcı veya grupların sorgulanmasını destekler.  Varsayılan olarak, kullanıcılar, `id` ve tarafından sorgulanır ve grupları tarafından `username` `externalId` sorgulanır `displayName` .  
 * , SCıM protokolünün Bölüm 3.4.2 göre, kullanıcının KIMLIĞE ve yöneticiye göre sorgulanmasını destekler.  
 * , SCıM protokolünün Bölüm 3.4.2 göre grupların KIMLIĞE ve üyeye göre sorgulanmasını destekler.  
-* , SCıM protokolünün Bölüm 3.4.2.5 göre grup kaynağı sorgulanırken, [Excludedattributes = üyelerini](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#get-group) destekler.
+* , SCıM protokolünün Bölüm 3.4.2.5 göre grup kaynağı sorgulanırken, [Excludedattributes = üyelerini](#get-group) destekler.
 * Azure AD 'nin uygulamanıza kimlik doğrulaması ve yetkilendirmesi için tek bir taşıyıcı belirtecini kabul eder.
 * , Bir kullanıcının geçici olarak silinmesini `active=false` ve kullanıcıyı geri yüklemeyi destekler `active=true` (Kullanıcı nesnesi, kullanıcının etkin olup olmadığına bakılmaksızın bir istekte döndürülmelidir). Kullanıcının döndürülmediği tek zaman, uygulamadan kalıcı olarak silinir. 
 
@@ -1173,7 +1173,7 @@ Başlangıç çevrimi başladıktan sonra, uygulamanızdaki sağlama hizmeti tar
 
 ## <a name="step-5-publish-your-application-to-the-azure-ad-application-gallery"></a>5. Adım: uygulamanızı Azure AD Uygulama Galerisi 'nde yayımlama
 
-Birden fazla kiracı tarafından kullanılacak bir uygulama oluşturuyorsanız, Azure AD uygulama galerisinde kullanılabilir hale getirebilirsiniz. Bu, kuruluşların uygulamayı keşfetmesini ve sağlamayı yapılandırmasını kolaylaştırır. Uygulamanızı Azure AD galerisinde yayımlama ve sağlama sağlamak kolaydır. [Buradaki](../azuread-dev/howto-app-gallery-listing.md)adımlara göz atın. Microsoft, uygulamanızı galerimize tümleştirme, uç noktanızı test etme ve müşterilerin kullanması için ekleme [belgelerini](../saas-apps/tutorial-list.md) yayınlama konusunda sizinle birlikte çalışacaktır. 
+Birden fazla kiracı tarafından kullanılacak bir uygulama oluşturuyorsanız, Azure AD uygulama galerisinde kullanılabilir hale getirebilirsiniz. Bu, kuruluşların uygulamayı keşfetmesini ve sağlamayı yapılandırmasını kolaylaştırır. Uygulamanızı Azure AD galerisinde yayımlama ve sağlama sağlamak kolaydır. [Buradaki](../develop/v2-howto-app-gallery-listing.md)adımlara göz atın. Microsoft, uygulamanızı galerimize tümleştirme, uç noktanızı test etme ve müşterilerin kullanması için ekleme [belgelerini](../saas-apps/tutorial-list.md) yayınlama konusunda sizinle birlikte çalışacaktır.
 
 ### <a name="gallery-onboarding-checklist"></a>Galeri ekleme denetim listesi
 Uygulamanızın eklendi Quicky olduğundan ve müşterilerin sorunsuz bir dağıtım deneyimine sahip olduğundan emin olmak için aşağıdaki denetim listesini izleyin. Bu bilgiler, galeriye ekleme sırasında sizin için toplanacaktır. 

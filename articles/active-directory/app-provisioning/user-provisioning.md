@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: kenwith
 ms.reviewer: arvinh, celested
-ms.openlocfilehash: b6eb571c7c37a628d11f07b4e1b207e38830250b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5b593add9c9d7be446798eecdd03b396c3fe513a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88235409"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174739"
 ---
 # <a name="what-is-automated-saas-app-user-provisioning-in-azure-ad"></a>Azure AD 'de otomatik SaaS uygulaması Kullanıcı hazırlama nedir?
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) ' de, **uygulama sağlama** terimi, kullanıc�
 
 Bu özellik şunları yapmanızı sağlar:
 
-- **Sağlama otomatik hale**getirme: takımınıza veya kuruluşunuza katılımlarsa yeni kişiler için doğru sistemlerde otomatik olarak yeni hesaplar oluşturun.
+- **Sağlama otomatik hale** getirme: takımınıza veya kuruluşunuza katılımlarsa yeni kişiler için doğru sistemlerde otomatik olarak yeni hesaplar oluşturun.
 - **Sağlamayı kaldırmayı otomatikleştirme:** Kullanıcılar takımdan veya kuruluştan ayrıldığında doğru sistemlerdeki hesapları otomatik olarak devre dışı bırakır.
 - **Sistemler arasında veri eşitlemesi:** Uygulama ve sistemlerinizdeki kimliklerin, dizin veya insan kaynakları sisteminizdeki değişikliklere göre güncel tutulduğundan emin olun.
 - **Grupları sağla:** Grupları destekleyen uygulamalara gruplar sağlayın.
@@ -59,7 +59,7 @@ Azure AD, birçok popüler SaaS uygulaması ve insan kaynakları sistemi için �
 
    ![Salesforce logosu](./media/user-provisioning/gallery-app-logos.png)
 
-   Sağlama için yeni bir uygulama istemek istiyorsanız [uygulamanızın uygulama galerimiz ile tümleştirmesini](../azuread-dev/howto-app-gallery-listing.md)isteyebilirsiniz. Bir Kullanıcı sağlama isteği için uygulamanın SCıM ile uyumlu bir uç noktaya sahip olmasını gerektiririz. Uygulamayı platformumuza hızlı bir şekilde sunabilmeniz için lütfen uygulama satıcısının SCıM standardını izlediğinden emin olun.
+   Sağlama için yeni bir uygulama istemek istiyorsanız [uygulamanızın uygulama galerimiz ile tümleştirmesini](../develop/v2-howto-app-gallery-listing.md)isteyebilirsiniz. Bir Kullanıcı sağlama isteği için uygulamanın SCıM ile uyumlu bir uç noktaya sahip olmasını gerektiririz. Uygulamayı platformumuza hızlı bir şekilde sunabilmeniz için lütfen uygulama satıcısının SCıM standardını izlediğinden emin olun.
 
 * **SCıM 2,0 ' i destekleyen uygulamalar**. SCıM 2,0 tabanlı kullanıcı yönetimi API 'Leri uygulayan uygulamaları genel olarak bağlama hakkında daha fazla bilgi için bkz. [SCIM uç noktası oluşturma ve Kullanıcı sağlamayı yapılandırma](use-scim-to-provision-users-and-groups.md).
 
@@ -79,11 +79,11 @@ Azure AD galerisinde bulunan uygulamalar, iki sağlama modundan birini destekler
 
 * **Otomatik** , bu uygulama Için BIR Azure AD sağlama bağlayıcısının geliştirildiği anlamına gelir. Uygulama için sağlamayı ayarlamaya özgü kurulum öğreticisini izlemelisiniz. Uygulama öğreticileri, [SaaS uygulamalarını Azure Active Directory Ile tümleştirme hakkındaki öğreticiler listesinde](../saas-apps/tutorial-list.md)bulunabilir.
 
-Azure AD galerisinde, otomatik sağlamayı destekleyen uygulamalar bir **sağlama** simgesiyle belirlenir. Yeni Galeri önizleme deneyimine geçiş yapın ( **Uygulama Ekle sayfasının**en üstündeki başlıkta, **yeni ve geliştirilmiş uygulama galerisini denemek için buraya tıklayın**) bağlantısını seçin.
+Azure AD galerisinde, otomatik sağlamayı destekleyen uygulamalar bir **sağlama** simgesiyle belirlenir. Yeni Galeri önizleme deneyimine geçiş yapın ( **Uygulama Ekle sayfasının** en üstündeki başlıkta, **yeni ve geliştirilmiş uygulama galerisini denemek için buraya tıklayın**) bağlantısını seçin.
 
 ![Uygulama galerisinde sağlama simgesi](./media/user-provisioning/browse-gallery.png)
 
-Uygulama tarafından desteklenen sağlama modu, uygulamayı **Kurumsal uygulamalarınıza**ekledikten sonra **sağlama** sekmesinde da görünür.
+Uygulama tarafından desteklenen sağlama modu, uygulamayı **Kurumsal uygulamalarınıza** ekledikten sonra **sağlama** sekmesinde da görünür.
 
 ## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>Nasıl yaparım? bir uygulamaya otomatik sağlama mi ayarlanacak?
 

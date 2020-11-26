@@ -11,12 +11,12 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5322e5ce1bb124387931eac666cf9e5510cb2463
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: c3960b8afeb9d7ecc80aa49fc13eee4977fa5494
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95237654"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173979"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>Azure AD Connect bulut sağlama aracısını yükleme
 Bu belgede Azure Active Directory (Azure AD) Connect sağlama aracısının yükleme işleminde ve bu dosyayı ilk olarak Azure portal nasıl yapılandıracağınız açıklanmaktadır.
@@ -32,7 +32,7 @@ Azure AD Connect sağlamayı yükleme ve yapılandırma aşağıdaki adımlarda 
 
 
 ## <a name="group-managed-service-accounts"></a>Grup Tarafından Yönetilen Hizmet Hesapları
-Grup tarafından yönetilen hizmet hesabı, otomatik parola yönetimi, Basitleştirilmiş hizmet asıl adı (SPN) yönetimi, yönetimi diğer yöneticilere devretmek ve ayrıca bu işlevselliği birden çok sunucuya genişleten bir yönetilen etki alanı hesabıdır.  Azure AD Connect bulut eşitlemesi, aracıyı çalıştırmak için Grup tarafından yönetilen bir hizmet hesabının kullanımını destekler ve önerir.  Bir gMSA hakkında daha fazla bilgi için bkz. [Grup yönetilen hizmet hesapları](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) 
+Grup tarafından yönetilen hizmet hesabı, otomatik parola yönetimi, Basitleştirilmiş hizmet asıl adı (SPN) yönetimi, yönetimi diğer yöneticilere devretmek ve ayrıca bu işlevselliği birden çok sunucuya genişleten bir yönetilen etki alanı hesabıdır.  Azure AD Connect bulut eşitlemesi, aracıyı çalıştırmak için Grup tarafından yönetilen bir hizmet hesabının kullanımını destekler ve önerir.  Bir gMSA hakkında daha fazla bilgi için bkz. [Grup yönetilen hizmet hesapları](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) 
 
 
 ### <a name="upgrading-an-existing-agent-to-use-the-gmsa-account"></a>Mevcut bir aracıyı gMSA hesabını kullanacak şekilde yükseltme
@@ -107,4 +107,3 @@ Aracının çalıştığını doğrulamak için aşağıdaki adımları izleyin.
 
 - [Sağlama nedir?](what-is-provisioning.md)
 - [Azure AD Connect bulut sağlama nedir?](what-is-cloud-provisioning.md)
- 

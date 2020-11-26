@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-java
 - devx-track-azurecli
-ms.openlocfilehash: 5c8993bdf892ceb7d9886d0d2b97063dedec720c
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: db24fa4721e2e502c5098b415c4cf06da80f697d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635560"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175687"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>Hızlı başlangıç: komut satırından Azure 'da Java işlevi oluşturma
 
@@ -34,7 +34,7 @@ Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
 + [Azure CLI](/cli/azure/install-azure-cli) sürüm 2,4 veya sonraki bir sürümü.
 
-+ [Java geliştirici seti](https://aka.ms/azure-jdks), sürüm 8 veya 11. `JAVA_HOME`Ortam değişkeni, JDK 'nin doğru sürümünün yükleneceği konum olarak ayarlanmalıdır.     
++ [Java geliştirici seti](/azure/developer/java/fundamentals/java-jdk-long-term-support), sürüm 8 veya 11. `JAVA_HOME`Ortam değişkeni, JDK 'nin doğru sürümünün yükleneceği konum olarak ayarlanmalıdır.     
 
 + [Apache Maven](https://maven.apache.org), sürüm 3,0 veya üzeri.
 
@@ -191,7 +191,7 @@ Ayrıca, bu, işleviniz için bir birim testi de oluşturur. Bağlama eklemek ve
     
     + Kaynak grubu. _Java-Functions-Group_ olarak adlandırılır.
     + Depolama hesabı. Işlevleri için gereklidir. Ad, depolama hesabı adı gereksinimlerine göre rastgele oluşturulur.
-    + Barındırma planı. _Westus_ bölgesindeki işlev uygulamanız için sunucusuz barındırma. Ad, _Java-Functions-App-Service-plan_ ' dır.
+    + Barındırma planı. _Westus_ bölgesindeki işlev uygulamanız için sunucusuz barındırma. Ad, _Java-Functions-App-Service-plan_' dır.
     + İşlev uygulaması. İşlev uygulaması, işlevleriniz için dağıtım ve yürütme birimidir. Ad, rastgele oluşturulmuş bir sayı eklenerek, _ArtifactId_ temel alınarak rastgele oluşturulur.
     
     Dağıtım proje dosyalarını paketler ve bunları [ZIP dağıtımı](functions-deployment-technologies.md#zip-deploy)kullanarak yeni işlev uygulamasına dağıtır. Kod, Azure 'daki dağıtım paketinden çalışır.

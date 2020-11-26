@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 690d4761657b8bf6e5ba63ddfbce7163584e64e2
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964579"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174043"
 ---
 # <a name="troubleshooting-for-hybrid-deployments-of-fido2-security-keys-in-azure-ad-preview"></a>Azure AD 'de FIDO2 güvenlik anahtarlarının karma dağıtımları için sorun giderme (Önizleme)
 
@@ -54,7 +54,7 @@ Karma bir Azure AD 'ye katılmış makinenin temiz bir yüklemesi sırasında et
 
 Bu davranış, etki alanına katılmış cihazlar için bilinen bir kısıtlamadır ve FIDO2 güvenlik anahtarlarına özgü değildir.
 
-Geçerli durumu denetlemek için `dsregcmd /status` komutunu kullanın. Hem *Azureadkatılmış* hem de *Domainkatılmış* 'in *Yes*olduğunu denetleyin.
+Geçerli durumu denetlemek için `dsregcmd /status` komutunu kullanın. Hem *Azureadkatılmış* hem de *Domainkatılmış* 'in *Yes* olduğunu denetleyin.
 
 ### <a name="users-are-unable-to-get-sso-to-my-ntlm-network-resource-after-signing-in-with-a-fido2-security-key-and-receiving-a-credential-prompt"></a>Kullanıcılar, bir FIDO2 güvenlik anahtarıyla oturum açtıktan ve kimlik bilgisi istemi aldıktan sonra NTLM ağı kaynağına SSO alamıyor
 
@@ -75,10 +75,10 @@ Windows 'da oturum açma veya Windows 10 cihazlarındaki şirket içi kaynaklara
     Geri bildirim öğesi türü için *sorun*' ı seçin.
 
 1. *Güvenlik ve gizlilik* kategorisini, sonra *FIDO* alt kategorisini seçin.
-1. *Ekli dosyaları ve tanılamayı Microsoft 'a geri bildirimlerimin yanında gönder*onay kutusunu değiştirin.
+1. *Ekli dosyaları ve tanılamayı Microsoft 'a geri bildirimlerimin yanında gönder* onay kutusunu değiştirin.
 1. *Sorunlarımı yeniden oluştur*' u seçin ve ardından *yakalamayı başlatın*.
 1. FIDO2 güvenlik anahtarıyla makineyi kilitler ve kilidini açın. Sorun oluşursa, diğer kimlik bilgileriyle kilit açmayı deneyin.
-1. **Geri Bildirim Hub 'ına**dönün, **Yakalamayı Durdur**' u seçin ve geri bildiriminizi gönderin.
+1. **Geri Bildirim Hub 'ına** dönün, **Yakalamayı Durdur**' u seçin ve geri bildiriminizi gönderin.
 1. *Geri bildirim* sayfasına gidin ve *geri bildirim* sekmesine gidin. Son gönderdiğiniz geri bildirimlerinizi seçin.
 1. Geri bildirimin bağlantısını almak için sağ üst köşedeki *paylaşma* düğmesini seçin. Bir destek talebi açtığınızda bu bağlantıyı ekleyin veya var olan bir destek örneğine atanan mühendisi yanıtlayın.
 
@@ -149,7 +149,7 @@ Komut Azure AD Kerberos sunucusunun özelliklerini hem Azure AD hem de şirket i
 | DomainDnsName      | AD DS etki alanının DNS etki alanı adı. |
 | Bilgisayar hesabı    | Azure AD Kerberos Sunucusu nesnesinin (DC) bilgisayar hesabı nesnesi. |
 | UserAccount        | Azure AD Kerberos Sunucusu TGT şifreleme anahtarını tutan devre dışı Kullanıcı hesabı nesnesi. Bu hesabın DN 'si *CN = krbtgt_AzureAD, CN = kullanıcılar, <Domain-DN>* |
-| KeyVersion         | Azure AD Kerberos Sunucusu TGT şifreleme anahtarının anahtar sürümü. Anahtar oluşturulduğunda sürüm atanır. Anahtar her döndürüldüğünde sürüm artar. Artımlar, çoğaltma meta verilerine dayalıdır ve büyük olasılıkla bunlardan büyük olacaktır.<br /><br /> Örneğin, ilk *Keyversion* *192272*olabilir. Anahtar ilk kez döndürüldüğünde, sürüm *212621*' e kadar ilerleyebilirsiniz.<br /><br /> Doğrulamanız gereken önemli şey, şirket içi nesne için *keyversion* ve bulut nesnesine ait *cloudkeyversion* 'un aynı olmasıdır. |
+| KeyVersion         | Azure AD Kerberos Sunucusu TGT şifreleme anahtarının anahtar sürümü. Anahtar oluşturulduğunda sürüm atanır. Anahtar her döndürüldüğünde sürüm artar. Artımlar, çoğaltma meta verilerine dayalıdır ve büyük olasılıkla bunlardan büyük olacaktır.<br /><br /> Örneğin, ilk *Keyversion* *192272* olabilir. Anahtar ilk kez döndürüldüğünde, sürüm *212621*' e kadar ilerleyebilirsiniz.<br /><br /> Doğrulamanız gereken önemli şey, şirket içi nesne için *keyversion* ve bulut nesnesine ait *cloudkeyversion* 'un aynı olmasıdır. |
 | KeyUpdatedOn       | Azure AD Kerberos Sunucusu TGT şifreleme anahtarının güncelleştirildiği veya oluşturulduğu tarih ve saat. |
 | KeyUpdatedFrom     | Azure AD Kerberos Sunucusu TGT şifreleme anahtarının en son güncelleştirildiği DC. |
 | Cloudıd            | Azure AD nesnesinden *kimliği* . Yukarıdaki *kimlikle* eşleşmelidir. |

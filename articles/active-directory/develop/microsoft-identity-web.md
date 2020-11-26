@@ -13,12 +13,12 @@ ms.date: 10/09/2020
 ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 77cb3b0c13a6bfe41c6f7a1a5a0f9d7278aea1db
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: b82e300128a41f8315132e1ff93af33c853edb15
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930161"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173524"
 ---
 # <a name="microsoft-identity-web-authentication-library"></a>Microsoft Identity Web kimlik doğrulaması kitaplığı
 
@@ -58,14 +58,14 @@ dotnet new --install Microsoft.Identity.Web.ProjectTemplates::1.0.0
 
 Aşağıdaki diyagramda, desteklenen uygulama türlerinin ve ilgili bağımsız değişkenlerinin üst düzey bir görünümü gösterilmektedir:
 
-:::image type="content" source="media/microsoft-identity-web-overview/diagram-microsoft-identity-web-templates.png" lightbox="media/microsoft-identity-web-overview/diagram-microsoft-identity-web-templates.png" alt-text="Microsoft Identity Web için kullanılabilir dot net CLı proje şablonlarının diyagramı&quot;:::
+:::image type="content" source="media/microsoft-identity-web-overview/diagram-microsoft-identity-web-templates.png" lightbox="media/microsoft-identity-web-overview/diagram-microsoft-identity-web-templates.png" alt-text="Microsoft Identity Web için kullanılabilir dot net CLı proje şablonlarının diyagramı":::
 <br /><sup><b>*</b></sup>`MultiOrg`, ile desteklenmez `webapi2` , ancak kiracı ya da olarak ayarlanarak *appsettings.jsüzerinde* etkinleştirilebilir. `common``organizations`
 <br /><sup><b>**</b></sup>`--calls-graph`Azure AD B2C için desteklenmez
 
 [Blazor Server öğreticimizden](tutorial-blazor-server.md)alınan bu örnek .net CLI komutu, doğru paketleri ve Başlatıcı kodunu (yer tutucu değerleri gösterilen) içeren yeni bir Blazor Server projesi oluşturur:
 
 ```dotnetcli
-dotnet new blazorserver2 --auth SingleOrg --calls-graph --client-id &quot;00000000-0000-0000-0000-000000000000&quot; --tenant-id &quot;11111111-1111-1111-1111-111111111111" --output my-blazor-app
+dotnet new blazorserver2 --auth SingleOrg --calls-graph --client-id "00000000-0000-0000-0000-000000000000" --tenant-id "11111111-1111-1111-1111-111111111111" --output my-blazor-app
 ```
 
 #### <a name="github"></a>GitHub
@@ -82,7 +82,7 @@ Varsayılan ASP.NET 3,1 proje şablonlarını kullanırsanız Microsoft Identity
 |------------------------------------------------------------------------------------------|----------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
 | Web uygulamalarında [oturum açma kullanıcıları](scenario-web-app-sign-user-app-configuration.md)             | <li>İş veya okul hesapları<li>Sosyal kimlikler (Azure AD B2C ile) | <li>İş veya okul hesapları<li>Kişisel Microsoft hesapları<li>Sosyal kimlikler (Azure AD B2C ile)     |
 | [Web API 'Lerini koruma](scenario-protected-web-api-app-configuration.md#microsoftidentityweb) | <li>İş veya okul hesapları<li>Sosyal kimlikler (Azure AD B2C ile) | <li>İş veya okul hesapları<li>Kişisel Microsoft hesapları<li>Sosyal kimlikler (Azure AD B2C ile)     |
-| Çok kiracılı uygulamalarda veren doğrulaması                                                   | Hayır                                                                   | Evet, [Tüm bulutlar](authentication-national-cloud.md) ve [Azure AD B2C](/azure/active-directory-b2c) |
+| Çok kiracılı uygulamalarda veren doğrulaması                                                   | Hayır                                                                   | Evet, [Tüm bulutlar](authentication-national-cloud.md) ve [Azure AD B2C](../../active-directory-b2c/index.yml) |
 | Web uygulaması/API [Microsoft Graph 'ı çağırır] [senaryo-API-Call-Graph]                             | Hayır                                                                   | Evet                                                                                                     |
 | Web uygulaması/API [çağıran Web API] [senaryo-API-Call-API]                                       | Hayır                                                                   | Evet                                                                                                     |
 | Sertifika kimlik bilgilerini destekler                                                         | Hayır                                                                   | Evet, Azure Key Vault dahil                                                                          |

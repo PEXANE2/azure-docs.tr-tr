@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/19/2020
-ms.openlocfilehash: f1a7ffc8225ea20b48df4e1d9a049655ca4776a4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: de74d7e3cf854f36d122be6a32c7fb4d449c5fe5
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964669"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175925"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB hizmet kotaları
 
@@ -91,7 +91,6 @@ Sağlanan geçerli RU/s ve kaynak ayarlarına bağlı olarak, her bir kaynak en 
 
 | Kaynak | Sınır |
 | --- | --- |
-| Kapsayıcı başına en fazla RU/sn | 5.000 |
 | (Mantıksal) bölüm başına en fazla RU/sn | 5.000 |
 | Tüm öğelerin tamamında (mantıksal) bölüm başına maksimum depolama alanı | 20 GB |
 | En fazla farklı (mantıksal) bölüm anahtarı sayısı | Sınırsız |

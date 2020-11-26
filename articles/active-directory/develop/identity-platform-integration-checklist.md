@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 036c40395e5da5ebc09a87e420893d7dbd2ec668
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94da22fbb2940bddaad1324bedc8759706eca37b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88116810"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173575"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft Identity platform en iyi uygulamaları ve önerileri
 
@@ -32,7 +32,7 @@ Uygulamanızın [Microsoft Identity platformu](./index.yml)ile etkin bir şekild
 
 ## <a name="basics"></a>Temel Bilgiler
 
-![onay kutusu ](./media/active-directory-integration-checklist/checkbox-two.svg) [Microsoft Platformu ilkelerini](https://go.microsoft.com/fwlink/?linkid=2090497&clcid=0x409)okuyun ve anlayın. Uygulamanızın, kullanıcıları ve platformu korumak üzere tasarlandıkları koşullara uyduğundan emin olun.
+![onay kutusu ](./media/active-directory-integration-checklist/checkbox-two.svg) [Microsoft Platformu ilkelerini](/legal/microsoft-identity-platform/terms-of-use)okuyun ve anlayın. Uygulamanızın, kullanıcıları ve platformu korumak üzere tasarlandıkları koşullara uyduğundan emin olun.
 
 ## <a name="ownership"></a>Sahiplik
 
@@ -94,7 +94,7 @@ Uygulamanızın [Microsoft Identity platformu](./index.yml)ile etkin bir şekild
 
 ![onay kutusu ](./media/active-directory-integration-checklist/checkbox-two.svg) [temiz bir çoklu oturum açma deneyimi](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-6-SignOut)uygulayın. Bu bir gizlilik ve güvenlik gereksinimidir ve iyi bir kullanıcı deneyimi sunar.
 
-## <a name="testing"></a>Test Etme
+## <a name="testing"></a>Sınama
 
 ![](./media/active-directory-integration-checklist/checkbox-two.svg)kullanıcılarınızın uygulamanızı kullanma yeteneğini etkileyebilecek [koşullu erişim ilkeleri](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-6-SignOut) için onay kutusu testi.
 

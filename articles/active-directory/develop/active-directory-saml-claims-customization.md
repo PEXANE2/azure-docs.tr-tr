@@ -13,16 +13,16 @@ ms.date: 10/22/2019
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 90efdd560735a112c2a4c5eb5740f211b587a241
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f462a78790e73f3e0f67f55b6417589c7826a75d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275766"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173677"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Nasıl yapılır: kurumsal uygulamalar için SAML belirtecinde verilen talepleri özelleştirme
 
-Günümüzde Microsoft Identity platformu, Azure AD uygulama galerisinde ve özel uygulamalarda önceden tümleştirilmiş uygulamalar da dahil olmak üzere çoğu kurumsal uygulamayla çoklu oturum açmayı (SSO) destekler. Bir Kullanıcı, SAML 2,0 protokolünü kullanarak Microsoft Identity platform aracılığıyla bir uygulamanın kimliğini doğruladığında, Microsoft Identity platform uygulamaya bir belirteç gönderir (bir HTTP POST aracılığıyla). Sonra uygulama, Kullanıcı adı ve parola istemek yerine, kullanıcının oturum açmasını sağlamak için belirtecini doğrular ve kullanır. Bu SAML belirteçleri, *talep*olarak bilinen kullanıcı hakkında bilgi parçalarını içerir.
+Günümüzde Microsoft Identity platformu, Azure AD uygulama galerisinde ve özel uygulamalarda önceden tümleştirilmiş uygulamalar da dahil olmak üzere çoğu kurumsal uygulamayla çoklu oturum açmayı (SSO) destekler. Bir Kullanıcı, SAML 2,0 protokolünü kullanarak Microsoft Identity platform aracılığıyla bir uygulamanın kimliğini doğruladığında, Microsoft Identity platform uygulamaya bir belirteç gönderir (bir HTTP POST aracılığıyla). Sonra uygulama, Kullanıcı adı ve parola istemek yerine, kullanıcının oturum açmasını sağlamak için belirtecini doğrular ve kullanır. Bu SAML belirteçleri, *talep* olarak bilinen kullanıcı hakkında bilgi parçalarını içerir.
 
 Bir *talep* , bir kimlik sağlayıcısının bu kullanıcı için çalıştıkları belirtecin içindeki bir kullanıcı hakkında bilgi veren bir sorundur. [SAML belirtecinde](https://en.wikipedia.org/wiki/SAML_2.0), bu VERILER genellikle SAML Attribute ifadesinde bulunur. Kullanıcının benzersiz KIMLIĞI, genellikle ad tanımlayıcısı olarak da bilinen SAML konusu içinde temsil edilir.
 
@@ -56,7 +56,7 @@ SAML isteği Nameıdpolicy için bir öğe içermiyorsa, Microsoft Identity plat
 
 | NameID biçimi | Açıklama |
 |---------------|-------------|
-| **Varsayılan** | Microsoft Identity platform varsayılan kaynak biçimini kullanır. |
+| **Varsayılanını** | Microsoft Identity platform varsayılan kaynak biçimini kullanır. |
 | **Kalıcı** | Microsoft Identity platform, NameID biçimi olarak persistent kullanacaktır. |
 | **EmailAddress** | Microsoft Identity platformu, NameID biçimi olarak Emapostaadı kullanacaktır. |
 | **Belirtilmemiş** | Microsoft Identity platform, NameID biçimi olarak belirtilmemiş olarak kullanılacak. |
@@ -68,7 +68,7 @@ Geçici NameID de desteklenir, ancak açılan listede kullanılamaz ve Azure tar
 
 `NameIdentifier`(Veya NameID) talebi için istenen kaynağı seçin. Aşağıdaki seçeneklerden seçim yapabilirsiniz.
 
-| Ad | Açıklama |
+| Adı | Açıklama |
 |------|-------------|
 | E-posta | Kullanıcının e-posta adresi |
 | userprincipalName | Kullanıcının Kullanıcı asıl adı (UPN) |
@@ -117,7 +117,7 @@ Uygulamaya özel talepler eklemek için:
 
 Bir Kullanıcı özniteliğine dönüşüm uygulamak için:
 
-1. **Talebi Yönet**bölümünde, isteği kaynak olarak *dönüştürme* ' yi seçerek **Dönüştürmeyi Yönet** sayfasını açın.
+1. **Talebi Yönet** bölümünde, isteği kaynak olarak *dönüştürme* ' yi seçerek **Dönüştürmeyi Yönet** sayfasını açın.
 2. Dönüştürme açılan listesinden işlevi seçin. Seçili işleve bağlı olarak, dönüşümde değerlendirmek için parametreler ve sabit bir değer sağlamanız gerekir. Kullanılabilir işlevler hakkında daha fazla bilgi için aşağıdaki tabloya bakın.
 3. Birden çok dönüşüm uygulamak için **dönüştürme Ekle**' ye tıklayın. Bir talebe en fazla iki dönüşüm uygulayabilirsiniz. Örneğin, önce öğesinin e-posta önekini ayıklayabilirsiniz `user.mail` . Ardından, dizeyi büyük harfe getirin.
 
@@ -178,5 +178,5 @@ Koşulları eklediğiniz sıra önemlidir. Azure AD, talebe göre hangi değerin
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure AD 'de uygulama yönetimi](../manage-apps/what-is-application-management.md)
-* [Azure AD uygulama galerisinde olmayan uygulamalarda çoklu oturum açmayı yapılandırma](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
-* [SAML tabanlı çoklu oturum açma sorunlarını giderme](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
+* [Azure AD uygulama galerisinde olmayan uygulamalarda çoklu oturum açmayı yapılandırma](../manage-apps/configure-saml-single-sign-on.md)
+* [SAML tabanlı çoklu oturum açma sorunlarını giderme](../manage-apps/debug-saml-sso-issues.md)

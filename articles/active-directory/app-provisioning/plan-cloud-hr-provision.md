@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: ce8b792beb8652bedfddff470444240bc3edf148
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 64418a727ecb9a300912a4766a9ea2066328ad31
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363666"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174909"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Kullanıcı sağlamayı Azure Active Directory için bulut HR uygulaması planlayın
 
@@ -301,9 +301,9 @@ Azure AD işlevi [Selectuniquevalues](../app-provisioning/functions-for-customiz
 
 Active Directory Kullanıcı hesaplarını iş birimlerine, konumlarına ve departmanlara göre kapsayıcılara yerleştirmek yaygın bir gereksinimdir. Bir geçiş işlemi başlattığınızda ve bir gözehirde kuruluş değişikliği varsa, kullanıcıyı Active Directory bir OU 'dan diğerine taşımanız gerekebilir.
 
-OU atamasının iş mantığını yapılandırmak ve onu **parentDistinguishedName**Active Directory özniteliğiyle eşlemek için [Switch ()](../app-provisioning/functions-for-customizing-application-data.md#switch) işlevini kullanın.
+OU atamasının iş mantığını yapılandırmak ve onu **parentDistinguishedName** Active Directory özniteliğiyle eşlemek için [Switch ()](../app-provisioning/functions-for-customizing-application-data.md#switch) işlevini kullanın.
 
-Örneğin, kullanıcı OU 'da ık özniteliği **Municipsellik**temelinde oluşturmak istiyorsanız aşağıdaki ifadeyi kullanabilirsiniz:
+Örneğin, kullanıcı OU 'da ık özniteliği **Municipsellik** temelinde oluşturmak istiyorsanız aşağıdaki ifadeyi kullanabilirsiniz:
 
 `
 Switch([Municipality], "OU=Default,OU=Users,DC=contoso,DC=com", "Dallas", "OU=Dallas,OU=Users,DC=contoso,DC=com", "Austin", "OU=Austin,OU=Users,DC=contoso,DC=com", "Seattle", "OU=Seattle,OU=Users,DC=contoso,DC=com", "London", "OU=London,OU=Users,DC=contoso,DC=com")
@@ -404,9 +404,9 @@ Sağlama sırasında oluşabilecek sorunları gidermek için aşağıdaki makale
 
 - [Azure AD Galeri uygulamasına kullanıcı sağlamayı yapılandırma sorunu](application-provisioning-config-problem.md)
 - [Bir uygulamaya sağlamak için şirket içi Active Directory bir özniteliği Azure AD 'ye eşitleyin](user-provisioning-sync-attributes-for-mapping.md)
-- [Azure Active Directory Galeri uygulamasına kullanıcı sağlamayı yapılandırırken yönetici kimlik bilgileri kaydedilirken sorun oluştu](application-provisioning-config-problem-storage-limit.md)
+- [Azure Active Directory Galeri uygulamasına kullanıcı sağlamayı yapılandırırken yönetici kimlik bilgileri kaydedilirken sorun oluştu](./user-provisioning.md)
 - [Azure AD Galeri uygulamasına hiçbir Kullanıcı sağlanmıyor](application-provisioning-config-problem-no-users-provisioned.md)
-- [Azure AD Galeri uygulamasına yanlış kullanıcı kümesi sağlanıyor](application-provisioning-config-problem-wrong-users-provisioned.md)
+- [Azure AD Galeri uygulamasına yanlış kullanıcı kümesi sağlanıyor](../manage-apps/add-application-portal-assign-users.md)
 - [Windows Olay Görüntüleyicisi aracı sorunlarını giderme için ayarlama](../saas-apps/workday-inbound-tutorial.md#setting-up-windows-event-viewer-for-agent-troubleshooting)
 - [Hizmet sorunlarını giderme için Azure portal denetim günlüklerini ayarlama](../saas-apps/workday-inbound-tutorial.md#setting-up-azure-portal-audit-logs-for-service-troubleshooting)
 - [AD Kullanıcı hesabı oluşturma işlemleri için günlükleri anlama](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-ad-user-account-create-operations)

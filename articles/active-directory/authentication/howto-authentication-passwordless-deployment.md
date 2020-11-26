@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0143da9c1961b4123467120210135f7db2c582c8
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b4c06e53d3ddfb5f344a759e31d83cb22ce6d4d3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839582"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174145"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Azure Active Directory bir passwordless kimlik doğrulama dağıtımı planlayın
 
@@ -126,7 +126,7 @@ Passwordless kimlik doğrulaması dağıttığınızda, önce bir veya daha fazl
 
 Gruplar, şirket içi bir dizinden veya Azure AD 'den eşitlenebilir. Pilot 'larınızın sonuçlarıyla memnun olduktan sonra, tüm kullanıcılar için passwordless kimlik doğrulaması üzerinde geçiş yapabilirsiniz.
 
-Dağıtım planları sayfasında [bir pilot Için en iyi uygulamalar](https://aka.ms/deploymentplans) bölümüne bakın.
+Dağıtım planları sayfasında [bir pilot Için en iyi uygulamalar](../fundamentals/active-directory-deployment-plans.md) bölümüne bakın.
 
 ## <a name="plan-passwordless-authentication-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamayla passwordless kimlik doğrulaması planlayın
 

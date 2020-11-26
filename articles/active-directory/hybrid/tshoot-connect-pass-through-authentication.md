@@ -16,12 +16,12 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 224ccaeace91288171db42d2b8b8cf8c21a352e0
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 99da9b787bfe06bece8b8dafdafc257336dddf63
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94652527"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96176197"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Azure Active Directory Geçişli Kimlik Doğrulaması Sorunlarını Giderme
 
@@ -72,7 +72,7 @@ Bu sorun olduğunu doğrulamak için, ilk olarak geçişli kimlik doğrulama ara
  ``` 
 4. Kimlik bilgilerini girmeniz istendiğinde, oturum açmak için kullanılan Kullanıcı adını ve parolayı girin ( https://login.microsoftonline.com) .
 
-Aynı Kullanıcı adı/parola hatası alırsanız, bu, geçişli kimlik doğrulama aracısının düzgün çalıştığı ve sorun şirket içi UPN 'nin yönlendirilemeyen olabileceği anlamına gelir. Daha fazla bilgi için bkz. [Alternatif oturum açma kimliğini yapılandırma]( /windows-server/identity/ad-fs/operations/configuring-alternate-login-id#:~:text=%20Configuring%20Alternate%20Login%20ID,See%20Also.%20%20More).
+Aynı Kullanıcı adı/parola hatası alırsanız, bu, geçişli kimlik doğrulama aracısının düzgün çalıştığı ve sorun şirket içi UPN 'nin yönlendirilemeyen olabileceği anlamına gelir. Daha fazla bilgi için bkz. [Alternatif oturum açma kimliğini yapılandırma](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id).
 
 > [!IMPORTANT]
 > Azure AD Connect sunucusu etki alanına katılmış değilse, [Azure AD Connect: Önkoşullar](./how-to-connect-install-prerequisites.md#installation-prerequisites)bölümünde bahsedilen bir gereksinim, geçersiz Kullanıcı adı/parola sorunu oluşur.

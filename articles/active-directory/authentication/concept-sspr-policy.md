@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 695d47c839a9436f4fad9399f7995b3197e1c0eb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b1583307771dd58053128d71cb0ae5dd7e709f68
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965004"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174390"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Azure Active Directory 'deki parola ilkeleri ve hesap kısıtlamaları
 
@@ -92,7 +92,7 @@ Varsayılan olarak, yönetici hesapları self servis parola sıfırlama için et
   * Ayrıcalıklı kimlik doğrulama Yöneticisi
 
 * Deneme aboneliğinde 30 gün geçtikten sonra veya
-* Azure AD kiracınız için *contoso.com*gibi özel bir etki alanı yapılandırılmıştır. veya
+* Azure AD kiracınız için *contoso.com* gibi özel bir etki alanı yapılandırılmıştır. veya
 * Azure AD Connect, şirket içi dizininizdeki kimlikler eşitleniyor
 
 [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) PowerShell cmdlet 'ini kullanarak yönetici hesaplarının SSPR kullanımını devre dışı bırakabilirsiniz. `-SelfServePasswordResetEnabled $False`Parametresi, Yöneticiler IÇIN SSPR 'yi devre dışı bırakır.
@@ -102,7 +102,7 @@ Varsayılan olarak, yönetici hesapları self servis parola sıfırlama için et
 Tek bir geçit ilkesi, bir e-posta adresi veya telefon numarası gibi bir dizi kimlik doğrulama verisi gerektirir. Tek bir geçit ilkesi aşağıdaki koşullarda geçerlidir:
 
 * Deneme aboneliğinin ilk 30 günü içinde olur; veya
-* Azure AD kiracınız için özel bir etki alanı yapılandırılmamış, bu nedenle varsayılan **. onmicrosoft.com*kullanılıyor. Varsayılan **. onmicrosoft.com* etki alanı, üretim kullanımı için önerilmez; '
+* Azure AD kiracınız için özel bir etki alanı yapılandırılmamış, bu nedenle varsayılan **. onmicrosoft.com* kullanılıyor. Varsayılan **. onmicrosoft.com* etki alanı, üretim kullanımı için önerilmez; '
 * Azure AD Connect kimlikleri eşitlemiyor
 
 ## <a name="password-expiration-policies"></a><a name="set-password-expiration-policies-in-azure-ad"></a>Parola süre sonu ilkeleri
@@ -127,7 +127,7 @@ Modül yüklendikten sonra, gerektiğinde her bir görevi gerçekleştirmek içi
 1. Bir PowerShell istemi açın ve *genel yönetici* veya *Kullanıcı Yöneticisi* hesabı kullanarak [Azure AD kiracınıza bağlanın](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples) .
 1. Tek bir kullanıcı veya tüm kullanıcılar için aşağıdaki komutlardan birini çalıştırın:
 
-   * Tek bir kullanıcının parolasının süresiz olarak ayarlanmış olup olmadığını görmek için aşağıdaki cmdlet 'i çalıştırın. `<user ID>`Denetlemek istediğiniz kullanıcının kullanıcı kimliğiyle değiştirin, örneğin *drley \@ contoso.onmicrosoft.com*gibi:
+   * Tek bir kullanıcının parolasının süresiz olarak ayarlanmış olup olmadığını görmek için aşağıdaki cmdlet 'i çalıştırın. `<user ID>`Denetlemek istediğiniz kullanıcının kullanıcı kimliğiyle değiştirin, örneğin *drley \@ contoso.onmicrosoft.com* gibi:
 
        ```powershell
        Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}
@@ -180,4 +180,4 @@ Modül yüklendikten sonra, gerektiğinde her bir görevi gerçekleştirmek içi
 
 SSPR 'yi kullanmaya başlamak için bkz. [öğretici: kullanıcıların hesaplarının kilidini açma veya Azure Active Directory self servis parola sıfırlama kullanarak parolaları sıfırlamalarını sağlama](tutorial-enable-sspr.md).
 
-Eğer veya kullanıcılarınızın SSPR ile ilgili sorunları varsa bkz. [self servis parola sıfırlama sorunlarını giderme](active-directory-passwords-troubleshoot.md)
+Eğer veya kullanıcılarınızın SSPR ile ilgili sorunları varsa bkz. [self servis parola sıfırlama sorunlarını giderme](./troubleshoot-sspr.md)

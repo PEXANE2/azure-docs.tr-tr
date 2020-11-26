@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperfq2
-ms.openlocfilehash: 31c9dcaf6c6f26d28d70e3d1664665c2dbc37ce6
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 48188adfc3648db76f2ca362f59de6986c7c1339
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393090"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174960"
 ---
 # <a name="how-provisioning-works"></a>Sağlama nasıl çalışır?
 
@@ -43,7 +43,7 @@ Azure AD sağlama hizmeti otomatik sağlama için [SCIM 2,0 protokolünü](https
 
 ## <a name="authorization"></a>Yetkilendirme
 
-Azure AD 'nin uygulamanın kullanıcı yönetim API 'sine bağlanması için kimlik bilgileri gereklidir. Bir uygulama için otomatik Kullanıcı sağlamayı yapılandırırken, geçerli kimlik bilgilerini girmeniz gerekir. Galeri uygulamaları için uygulama öğreticisine başvurarak uygulamanın kimlik bilgisi türlerini ve gereksinimlerini bulabilirsiniz. Galeri olmayan uygulamalar için, kimlik bilgisi türlerini ve gereksinimlerini anlamak üzere [SCIM](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#authorization-for-provisioning-connectors-in-the-application-gallery) belgelerine başvurabilirsiniz. Azure portal, Azure AD 'nin sağlanan kimlik bilgilerini kullanarak uygulamanın sağlama uygulamasına bağlanmasını sağlayarak kimlik bilgilerini sınayabileceksiniz.
+Azure AD 'nin uygulamanın kullanıcı yönetim API 'sine bağlanması için kimlik bilgileri gereklidir. Bir uygulama için otomatik Kullanıcı sağlamayı yapılandırırken, geçerli kimlik bilgilerini girmeniz gerekir. Galeri uygulamaları için uygulama öğreticisine başvurarak uygulamanın kimlik bilgisi türlerini ve gereksinimlerini bulabilirsiniz. Galeri olmayan uygulamalar için, kimlik bilgisi türlerini ve gereksinimlerini anlamak üzere [SCIM](./use-scim-to-provision-users-and-groups.md#authorization-for-provisioning-connectors-in-the-application-gallery) belgelerine başvurabilirsiniz. Azure portal, Azure AD 'nin sağlanan kimlik bilgilerini kullanarak uygulamanın sağlama uygulamasına bağlanmasını sağlayarak kimlik bilgilerini sınayabileceksiniz.
 
 ## <a name="mapping-attributes"></a>Öznitelikleri eşleme
 
@@ -51,7 +51,7 @@ Bir üçüncü taraf SaaS uygulaması için Kullanıcı sağlamayı etkinleştir
 
 Azure AD Kullanıcı nesneleri ve her bir SaaS uygulamasının Kullanıcı nesneleri arasında önceden yapılandırılmış bir öznitelikler ve öznitelik eşlemeleri kümesi vardır. Bazı uygulamalar, gruplar gibi kullanıcılarla birlikte diğer nesne türlerini de yönetir.
 
-Sağlamayı ayarlarken, hangi kullanıcı (veya grup) özelliklerinin Azure AD 'den uygulamaya akmasını tanımlayan öznitelik eşlemelerini ve iş akışlarını gözden geçirmeniz ve yapılandırmanız önemlidir. İki sistem arasındaki kullanıcıları/grupları benzersiz şekilde tanımlamak ve eşleştirmek için kullanılan eşleşen özelliği ( **Bu özniteliği kullanarak nesneleri Eşleştir** ) gözden geçirin ve yapılandırın.
+Sağlamayı ayarlarken, hangi kullanıcı (veya grup) özelliklerinin Azure AD 'den uygulamaya akmasını tanımlayan öznitelik eşlemelerini ve iş akışlarını gözden geçirmeniz ve yapılandırmanız önemlidir. İki sistem arasındaki kullanıcıları/grupları benzersiz şekilde tanımlamak ve eşleştirmek için kullanılan eşleşen özelliği (**Bu özniteliği kullanarak nesneleri Eşleştir**) gözden geçirin ve yapılandırın.
 
 Varsayılan öznitelik eşlemelerini iş gereksinimlerinize göre özelleştirebilirsiniz. Bu nedenle, var olan öznitelik eşlemelerini değiştirebilir veya silebilir veya yeni öznitelik eşlemeleri oluşturabilirsiniz. Ayrıntılar için bkz. [SaaS uygulamaları için Kullanıcı hazırlama özniteliğini özelleştirme-eşlemeler](./customize-application-attributes.md).
 
@@ -133,7 +133,7 @@ ServiceNow, G Suite ve Box gibi bazı uygulamalar yalnızca kullanıcıları sa�
 10. Daha sonraki artımlı döngüler için başlangıç noktasını sağlayan artımlı döngüsünün sonunda yeni bir filigranı kalıcı hale getirin.
 
 > [!NOTE]
-> İsteğe bağlı olarak, [eşlemeler](customize-application-attributes.md) bölümündeki **hedef nesne eylemleri** onay kutularını kullanarak **oluşturma** , **güncelleştirme** veya **silme** işlemlerini devre dışı bırakabilirsiniz. Bir güncelleştirme sırasında kullanıcıyı devre dışı bırakma mantığı, "accountEnabled" gibi bir alandan bir öznitelik eşlemesi aracılığıyla da denetlenir.
+> İsteğe bağlı olarak, [eşlemeler](customize-application-attributes.md) bölümündeki **hedef nesne eylemleri** onay kutularını kullanarak **oluşturma**, **güncelleştirme** veya **silme** işlemlerini devre dışı bırakabilirsiniz. Bir güncelleştirme sırasında kullanıcıyı devre dışı bırakma mantığı, "accountEnabled" gibi bir alandan bir öznitelik eşlemesi aracılığıyla da denetlenir.
 
 Sağlama Hizmeti, [her uygulamaya özgü öğreticide](../saas-apps/tutorial-list.md)tanımlanan aralıklarda sonsuza kadar sürekli artımlı Döngülerde çalışmaya devam eder. Artımlı döngüler aşağıdaki olaylardan biri gerçekleşene kadar devam eder:
 

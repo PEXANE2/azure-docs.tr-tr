@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eca3b8f1cd8f27c193e8f8235887e21230f60611
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 611107ed02aeb4dc75302f519681c932980f612e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94838629"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174179"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Sunucusu’nu kullanmaya başlama
 
@@ -58,7 +58,7 @@ Azure Multi-Factor Authentication için kullandığınız sunucunun aşağıdaki
 | Azure Multi-Factor Authentication Sunucusu Gereksinimleri | Açıklama |
 |:--- |:--- |
 | Donanım |<li>200 MB boş sabit disk alanı</li><li>x32 veya x64 özellikli işlemci</li><li>1 GB veya daha fazla RAM</li> |
-| Yazılım |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008/R2 (yalnızca [ESU](https://docs.microsoft.com/lifecycle/faq/extended-security-updates) ile)</li><li>Windows 10</li><li>Windows 8.1, tüm sürümler</li><li>Windows 8, tüm sürümler</li><li>Windows 7, tüm sürümler (yalnızca [ESU](https://docs.microsoft.com/lifecycle/faq/extended-security-updates) ile)</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 veya üst sürümü, kullanıcı portalı veya web hizmeti SDK’sı yüklüyorsanız</li> |
+| Yazılım |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008/R2 (yalnızca [ESU](/lifecycle/faq/extended-security-updates) ile)</li><li>Windows 10</li><li>Windows 8.1, tüm sürümler</li><li>Windows 8, tüm sürümler</li><li>Windows 7, tüm sürümler (yalnızca [ESU](/lifecycle/faq/extended-security-updates) ile)</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 veya üst sürümü, kullanıcı portalı veya web hizmeti SDK’sı yüklüyorsanız</li> |
 | İzinler | Active Directory kaydedileceği etki alanı yöneticisi veya kuruluş yöneticisi hesabı |
 
 ### <a name="azure-mfa-server-components"></a>Azure MFA Sunucusu Bileşenleri

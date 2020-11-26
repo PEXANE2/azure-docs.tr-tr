@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c154952d41db742c4d33899094a49a65fae72f26
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 7caeefb741e6916d69894ede3a7c64eb2e8f623f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840109"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174505"
 ---
 # <a name="self-service-password-reset-frequently-asked-questions"></a>Self servis parola sıfırlama sık sorulan sorular
 
@@ -289,4 +289,4 @@ Bu SSS aşağıdaki bölümlere ayrılır:
 * [Parola geri yazma nedir ve neden önemlidir?](./tutorial-enable-sspr-writeback.md)
 * [SSPR’de etkinliği nasıl bildirebilirim?](howto-sspr-reporting.md)
 * [SSPR’deki tüm seçenekler nelerdir ve ne anlama gelir?](concept-sspr-howitworks.md)
-* [Bir şeyin bozuk olduğunu düşünüyorum. SSPR sorunlarını gidermek Nasıl yaparım??](active-directory-passwords-troubleshoot.md)
+* [Bir şeyin bozuk olduğunu düşünüyorum. SSPR sorunlarını gidermek Nasıl yaparım??](./troubleshoot-sspr.md)

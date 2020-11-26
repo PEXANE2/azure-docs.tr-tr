@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fa1c2627917bfe386c488470f6a78db4c51f2ec
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fae9872593b48355d4ad3711e8e5092481b16213
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994273"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174539"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Nasıl çalışır? Azure AD self servis parola sıfırlama
 
@@ -195,9 +195,9 @@ Azure AD, geçerli karma bağlantınızı denetler ve Azure portal aşağıdaki 
 * Şirket içi geri yazma istemciniz çalışıyor ve çalışıyor.
 * Azure AD çevrimiçi ve şirket içi geri yazma istemcinizi bağlamış. Ancak, Azure AD Connect yüklü sürümü güncel değil gibi görünüyor. En son bağlantı özelliklerine ve önemli hata düzeltmelerine sahip olduğunuzdan emin olmak için [Azure AD Connect yükseltmeyi](../hybrid/how-to-upgrade-previous-version.md) düşünün.
 * Ne yazık ki, Azure AD Connect yüklü sürümü güncel olmadığından şirket içi geri yazma istemci durumunuzu denetleyemiyorum. Bağlantı durumunuzu denetlemek için [Azure AD Connect yükseltin](../hybrid/how-to-upgrade-previous-version.md) .
-* Ne yazık ki, şu anda şirket içi geri yazma istemcimize bağlanamıyoruz. Bağlantıyı geri yüklemek için [Azure AD Connect sorunlarını giderin](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity) .
+* Ne yazık ki, şu anda şirket içi geri yazma istemcimize bağlanamıyoruz. Bağlantıyı geri yüklemek için [Azure AD Connect sorunlarını giderin](./troubleshoot-sspr-writeback.md) .
 * Ne yazık ki, parola geri yazma düzgün yapılandırılmadığından şirket içi geri yazma istemcinizi bağlayamıyoruz. Bağlantıyı geri yüklemek için [parola geri yazma 'Yı yapılandırın](./tutorial-enable-sspr-writeback.md) .
-* Ne yazık ki, şu anda şirket içi geri yazma istemcimize bağlanamıyoruz. Bu, bizim sonunda geçici sorunlardan kaynaklanıyor olabilir. Sorun devam ederse, bağlantıyı geri yüklemek için [Azure AD Connect sorun giderin](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity) .
+* Ne yazık ki, şu anda şirket içi geri yazma istemcimize bağlanamıyoruz. Bu, bizim sonunda geçici sorunlardan kaynaklanıyor olabilir. Sorun devam ederse, bağlantıyı geri yüklemek için [Azure AD Connect sorun giderin](./troubleshoot-sspr-writeback.md) .
 
 SSPR geri yazma 'yı kullanmaya başlamak için aşağıdaki öğreticiyi izleyin:
 

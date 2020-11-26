@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: joflore
-ms.openlocfilehash: 4ced7331daa116e237d9628d12d16a67687db5b9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 43731f84066943b991b566ff5936e4288aa669eb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968098"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175228"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services için sanal ağ tasarımı konuları ve yapılandırma seçenekleri
 
@@ -104,15 +104,15 @@ Yönetilen bir etki alanı, dağıtım sırasında bazı ağ kaynakları oluştu
 
 ## <a name="network-security-groups-and-required-ports"></a>Ağ güvenlik grupları ve gerekli bağlantı noktaları
 
-Bir [ağ güvenlik grubu (NSG)](../virtual-network/security-overview.md) , bir Azure sanal ağındaki trafiğe ağ trafiğine izin veren veya reddeden kuralların listesini içerir. Hizmetin kimlik doğrulama ve yönetim işlevleri sağlamasına izin veren bir kurallar kümesi içeren bir yönetilen etki alanını dağıtırken bir ağ güvenlik grubu oluşturulur. Bu varsayılan ağ güvenlik grubu, yönetilen etki alanının dağıtıldığı sanal ağ alt ağı ile ilişkilendirilir.
+Bir [ağ güvenlik grubu (NSG)](../virtual-network/network-security-groups-overview.md) , bir Azure sanal ağındaki trafiğe ağ trafiğine izin veren veya reddeden kuralların listesini içerir. Hizmetin kimlik doğrulama ve yönetim işlevleri sağlamasına izin veren bir kurallar kümesi içeren bir yönetilen etki alanını dağıtırken bir ağ güvenlik grubu oluşturulur. Bu varsayılan ağ güvenlik grubu, yönetilen etki alanının dağıtıldığı sanal ağ alt ağı ile ilişkilendirilir.
 
 Yönetilen etki alanı için kimlik doğrulama ve yönetim hizmetleri sağlamak üzere aşağıdaki ağ güvenlik grubu kuralları gereklidir. Yönetilen etki alanının dağıtıldığı sanal ağ alt ağı için bu ağ güvenlik grubu kurallarını düzenlemeyin veya silmeyin.
 
 | Bağlantı noktası numarası | Protokol | Kaynak                             | Hedef | Eylem | Gerekli | Amaç |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
-| 443         | TCP      | AzureActiveDirectoryDomainServices | Herhangi biri         | İzin Ver  | Yes      | Azure AD kiracınızla eşitleme. |
-| 3389        | TCP      | Corpnetgördünüz                         | Herhangi biri         | İzin Ver  | Yes      | Etki alanınızı yönetme. |
-| 5986        | TCP      | AzureActiveDirectoryDomainServices | Herhangi biri         | İzin Ver  | Yes      | Etki alanınızı yönetme. |
+| 443         | TCP      | AzureActiveDirectoryDomainServices | Herhangi biri         | İzin Ver  | Evet      | Azure AD kiracınızla eşitleme. |
+| 3389        | TCP      | Corpnetgördünüz                         | Herhangi biri         | İzin Ver  | Evet      | Etki alanınızı yönetme. |
+| 5986        | TCP      | AzureActiveDirectoryDomainServices | Herhangi biri         | İzin Ver  | Evet      | Etki alanınızı yönetme. |
 
 Bu kuralların gerçekleşmesini gerektiren bir Azure Standart yük dengeleyici oluşturulur. Bu ağ güvenlik grubu, Azure AD DS güvenliğini sağlar ve yönetilen etki alanının düzgün çalışması için gereklidir. Bu ağ güvenlik grubunu silmeyin. Yük dengeleyici bu olmadan düzgün çalışmaz.
 
@@ -123,7 +123,7 @@ Gerekirse, [gerekli ağ güvenlik grubunu ve kuralları Azure PowerShell kullana
 >
 > Güvenli LDAP kullanıyorsanız, gerekirse dış trafiğe izin vermek için gerekli TCP bağlantı noktası 636 kuralını ekleyebilirsiniz. Bu kuralın eklenmesi, ağ güvenlik grubu kurallarınızı desteklenmeyen bir duruma yerleştirmez. Daha fazla bilgi için bkz [. internet üzerinden GÜVENLI LDAP erişimini kilitleme](tutorial-configure-ldaps.md#lock-down-secure-ldap-access-over-the-internet)
 >
-> Ağ güvenlik grubu için *Allowvnetınbound*, *AllowAzureLoadBalancerInBound*, *ınyallinbound*, *allowvnetoutbound*, *Allowınternetoutbound*ve *denyalloutbound* varsayılan kuralları da mevcuttur. Bu varsayılan kuralları düzenlemeyin veya silmeyin.
+> Ağ güvenlik grubu için *Allowvnetınbound*, *AllowAzureLoadBalancerInBound*, *ınyallinbound*, *allowvnetoutbound*, *Allowınternetoutbound* ve *denyalloutbound* varsayılan kuralları da mevcuttur. Bu varsayılan kuralları düzenlemeyin veya silmeyin.
 >
 > Azure SLA, etki alanınızı güncelleştirme ve yönetme konusunda Azure AD DS engelleyen, yanlış yapılandırılmış bir ağ güvenlik grubu ve/veya Kullanıcı tanımlı yol tablolarının uygulandığı dağıtımlar için uygulanmaz.
 
@@ -140,7 +140,7 @@ Gerekirse, [gerekli ağ güvenlik grubunu ve kuralları Azure PowerShell kullana
 * Varsayılan ağ güvenlik grubu kuralı, trafiği kısıtlamak için *Corpnetgördünüz* hizmet etiketini kullanır.
     * Bu hizmet etiketi, yalnızca Microsoft Kurumsal ağındaki güvenli erişim iş istasyonlarının, yönetilen etki alanına uzak masaüstü 'nü kullanmasına izin verir.
     * Erişime yalnızca, yönetim veya sorun giderme senaryoları gibi iş gerekçimiyle izin verilir.
-* Bu kural *Reddet*olarak ayarlanabilir ve yalnızca gerektiğinde *izin ver* olarak ayarlanabilir. Çoğu yönetim ve izleme görevi, PowerShell uzaktan iletişim kullanılarak gerçekleştirilir. RDP yalnızca Microsoft 'un, gelişmiş sorun giderme için yönetilen etki alanına uzaktan bağlanması gereken nadir bir olayda kullanılır.
+* Bu kural *Reddet* olarak ayarlanabilir ve yalnızca gerektiğinde *izin ver* olarak ayarlanabilir. Çoğu yönetim ve izleme görevi, PowerShell uzaktan iletişim kullanılarak gerçekleştirilir. RDP yalnızca Microsoft 'un, gelişmiş sorun giderme için yönetilen etki alanına uzaktan bağlanması gereken nadir bir olayda kullanılır.
 
 > [!NOTE]
 > Bu ağ güvenlik grubu kuralını düzenlemeye çalışırsanız portaldan *Corpnetgördünüz* hizmet etiketini el ile seçemezsiniz. *Corpnetgördünüz* hizmet etiketini kullanan bir kuralı el ile yapılandırmak için Azure PowerShell veya Azure CLI kullanmanız gerekir.
@@ -154,7 +154,7 @@ Gerekirse, [gerekli ağ güvenlik grubunu ve kuralları Azure PowerShell kullana
 * Yönetilen etki alanında PowerShell uzaktan iletişimini kullanarak yönetim görevlerini gerçekleştirmek için kullanılır.
 * Bu bağlantı noktasına erişim olmadan, yönetilen etki alanınız güncelleştirilemiyor, yapılandırılamaz, yedeklenmez veya izlenemez.
 * Kaynak Yöneticisi tabanlı bir sanal ağ kullanan yönetilen etki alanları için, bu bağlantı noktasına gelen erişimi *AzureActiveDirectoryDomainServices* hizmeti etiketiyle kısıtlayabilirsiniz.
-    * Klasik tabanlı bir sanal ağ kullanan eski yönetilen etki alanları için, bu bağlantı noktasına gelen erişimi şu kaynak IP adreslerine kısıtlayabilirsiniz: *52.180.183.8*, *23.101.0.70*, *52.225.184.198*, *52.179.126.223*, *13.74.249.156*, *52.187.117.83*, *52.161.13.95*, *104.40.156.18*ve *104.40.87.209*.
+    * Klasik tabanlı bir sanal ağ kullanan eski yönetilen etki alanları için, bu bağlantı noktasına gelen erişimi şu kaynak IP adreslerine kısıtlayabilirsiniz: *52.180.183.8*, *23.101.0.70*, *52.225.184.198*, *52.179.126.223*, *13.74.249.156*, *52.187.117.83*, *52.161.13.95*, *104.40.156.18* ve *104.40.87.209*.
 
     > [!NOTE]
     > 2017 ' de Azure AD Domain Services Azure Resource Manager ağda barındırana bilgisayar için kullanılabilir duruma geldi. Bu tarihten sonra, Azure Resource Manager modern yeteneklerini kullanarak daha güvenli bir hizmet oluşturuyoruz. Azure Resource Manager dağıtımları klasik dağıtımları tamamen yerine getirmek için Azure AD DS klasik sanal ağ dağıtımları 1 Mart 2023 ' de kullanımdan kaldırılacaktır.
@@ -176,4 +176,4 @@ Azure AD DS tarafından kullanılan bazı ağ kaynakları ve bağlantı seçenek
 
 * [Azure sanal ağ eşlemesi](../virtual-network/virtual-network-peering-overview.md)
 * [Azure VPN ağ geçitleri](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md)
-* [Azure ağ güvenlik grupları](../virtual-network/security-overview.md)
+* [Azure ağ güvenlik grupları](../virtual-network/network-security-groups-overview.md)

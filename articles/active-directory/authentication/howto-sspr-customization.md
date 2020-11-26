@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4bef201cbd14a4de0c785b5f86d534f27bfedb31
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: e121a6a45ab20055591a3670152114b8d03529cf
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363717"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174003"
 ---
 # <a name="customize-the-user-experience-for-azure-active-directory-self-service-password-reset"></a>Azure Active Directory self servis parola sıfırlama için Kullanıcı deneyimini özelleştirme
 
@@ -56,7 +56,7 @@ Farklı yönetici rolleri ve bunların nasıl atanacağı hakkında daha fazla b
 
 Kuruluşunuz yöneticilere parola sıfırlama istekleri hakkında bildirim almak istemiyor aşağıdaki yapılandırma seçenekleri kullanılabilir:
 
-* Kullanıcıların yardım almak için kullanabileceği bir Web URL 'SI veya mailto: adresi sağlamak için yardım masası bağlantısını özelleştirin. Bu seçenek **parola sıfırlama**  >  **özelleştirmesi**  >  **özel yardım masası e-postası veya URL 'si**altındadır.
+* Kullanıcıların yardım almak için kullanabileceği bir Web URL 'SI veya mailto: adresi sağlamak için yardım masası bağlantısını özelleştirin. Bu seçenek **parola sıfırlama**  >  **özelleştirmesi**  >  **özel yardım masası e-postası veya URL 'si** altındadır.
 * Tüm kullanıcılar için self servis parola sıfırlamayı etkinleştirin. Bu seçenek **parola sıfırlama**  >  **özellikleri**' nin altındadır. Kullanıcıların kendi parolalarını sıfırlamalarını istemiyorsanız boş bir gruba erişim kapsamını atayabilirsiniz. *Bu seçeneği önermiyoruz.*
 
 ## <a name="customize-the-sign-in-page-and-access-panel"></a>Oturum açma sayfası ve erişim panelini özelleştirme
@@ -72,7 +72,7 @@ Seçtiğiniz grafikler aşağıdaki durumlarda gösterilmektedir:
 
 ### <a name="directory-name"></a>Dizin adı
 
-İşleri daha kolay bir şekilde görmek için portalda ve otomatikleştirilmiş iletişimlerdeki kuruluş adını değiştirebilirsiniz. Azure Portal dizin adı özniteliğini değiştirmek için **Azure Active Directory**  >  **özelliklerine**gidin. Bu kolay kuruluş adı seçeneği, aşağıdaki örneklerde olduğu gibi otomatik e-postalarda en iyi şekilde görülebilir:
+İşleri daha kolay bir şekilde görmek için portalda ve otomatikleştirilmiş iletişimlerdeki kuruluş adını değiştirebilirsiniz. Azure Portal dizin adı özniteliğini değiştirmek için **Azure Active Directory**  >  **özelliklerine** gidin. Bu kolay kuruluş adı seçeneği, aşağıdaki örneklerde olduğu gibi otomatik e-postalarda en iyi şekilde görülebilir:
 
 * E-postadaki kolay ad (örneğin, "*contoso tanıtımı adına Microsoft*")
 * E-postadaki konu satırı, örneğin "*contoso demo hesabı e-posta doğrulama kodu*"
@@ -91,4 +91,4 @@ Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><a href='https://passwor
 
 Ortamınızdaki SSPR kullanımını anlamak için bkz. [Azure AD parola yönetimi Için raporlama seçenekleri](howto-sspr-reporting.md).
 
-Eğer veya kullanıcılarınızın SSPR ile ilgili sorunları varsa bkz. [self servis parola sıfırlama sorunlarını giderme](active-directory-passwords-troubleshoot.md)
+Eğer veya kullanıcılarınızın SSPR ile ilgili sorunları varsa bkz. [self servis parola sıfırlama sorunlarını giderme](./troubleshoot-sspr.md)

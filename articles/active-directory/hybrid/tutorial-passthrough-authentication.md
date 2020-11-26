@@ -12,11 +12,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f02ec2220827fbec8c981ab3a1859d633675a6f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91313272"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96176214"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-pass-through-authentication-pta"></a>Öğretici: geçişli kimlik doğrulaması (PTA) kullanarak tek bir AD ormanını tümleştirme
 
@@ -24,7 +24,7 @@ ms.locfileid: "91313272"
 
 Aşağıdaki öğretici, geçişli kimlik doğrulaması kullanarak karma kimlik ortamı oluşturma konusunda size yol gösterecektir.  Bu ortam daha sonra sınama için veya karma kimliğin nasıl çalıştığı hakkında daha tanıdık bilgi almak için kullanılabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu öğreticiyi tamamlamak için gerekli Önkoşullar aşağıda verilmiştir
 - [Hyper-V](/windows-server/virtualization/hyper-v/hyper-v-technology-overview) yüklü bir bilgisayar.  Bunu bir [Windows 10](/virtualization/hyper-v-on-windows/about/supported-guest-os) veya [Windows Server 2016](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) bilgisayarında yapmanız önerilir.
 - [Azure aboneliği](https://azure.microsoft.com/free)
@@ -262,4 +262,4 @@ Artık Azure 'un sunabileceği bir karma kimlik ortamını test etmek ve tanıma
 
 - [Donanım ve önkoşullar](how-to-connect-install-prerequisites.md) 
 - [Özelleştirilmiş ayarlar](how-to-connect-install-custom.md)
-- [Doğrudan kimlik doğrulama](how-to-connect-pta.md)
+- [Doğrudan kimlik doğrulaması](how-to-connect-pta.md)

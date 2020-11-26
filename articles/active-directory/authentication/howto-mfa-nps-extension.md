@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 576b9c11f167f7c0d5fcb06e484347c643589a66
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: abdfbc92af3617a7a13a2e4f603de9c1cc3959af
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839072"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174339"
 ---
 # <a name="integrate-your-existing-network-policy-server-nps-infrastructure-with-azure-ad-multi-factor-authentication"></a>Mevcut ağ Ilkesi sunucusu (NPS) altyapınızı Azure AD Multi-Factor Authentication tümleştirme
 
@@ -72,7 +72,7 @@ NPS uzantısı, Mevcut altyapınızla birlikte çalışmak üzere tasarlanmışt
 
 ### <a name="licenses"></a>Lisanslar
 
-Azure AD Multi-Factor Authentication için NPS uzantısı, [Azure ad Multi-Factor Authentication lisanslarına](multi-factor-authentication.md)sahip müşteriler tarafından kullanılabilir. Azure AD Multi-Factor Authentication için Kullanıcı başına veya kimlik doğrulama lisansı başına tüketim tabanlı lisanslar, NPS uzantısıyla uyumlu değildir.
+Azure AD Multi-Factor Authentication için NPS uzantısı, [Azure ad Multi-Factor Authentication lisanslarına](./concept-mfa-howitworks.md)sahip müşteriler tarafından kullanılabilir. Azure AD Multi-Factor Authentication için Kullanıcı başına veya kimlik doğrulama lisansı başına tüketim tabanlı lisanslar, NPS uzantısıyla uyumlu değildir.
 
 ### <a name="software"></a>Yazılım
 

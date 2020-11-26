@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: joflore
-ms.openlocfilehash: b9656b62e2c689d0993fb16c1f1d66b14d3430c6
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b4fb5c1dcb2bb34b472c2a3eda88ca4c219303d0
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967741"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175177"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services için güvenlik denetimlerini etkinleştir
 
@@ -50,13 +50,13 @@ Azure portal kullanarak Azure AD DS güvenlik denetim olaylarını etkinleştirm
 > Azure AD DS Güvenlik denetimleri geriye dönük olarak etkin değildir. Olayları eski bir kaynaktan alamaz veya yeniden çalıştıramazsınız. Azure AD DS, yalnızca güvenlik denetimleri etkinleştirildikten sonra oluşan olayları gönderebilir.
 
 1. https://portal.azure.com adresinden Azure portalında oturum açın.
-1. Azure portal en üstünde **Azure AD Domain Services**' i arayıp seçin. *Aaddscontoso.com*gibi yönetilen etki alanınızı seçin.
+1. Azure portal en üstünde **Azure AD Domain Services**' i arayıp seçin. *Aaddscontoso.com* gibi yönetilen etki alanınızı seçin.
 1. Azure AD DS penceresinde, sol taraftaki **Tanılama ayarları** ' nı seçin.
 1. Hiçbir Tanılama varsayılan olarak yapılandırılmaz. Başlamak için **Tanılama ayarı Ekle**' yi seçin.
 
     ![Azure AD Domain Services için bir tanılama ayarı ekleyin](./media/security-audit-events/add-diagnostic-settings.png)
 
-1. Tanılama yapılandırması için *aeklemeleri-denetim*gibi bir ad girin.
+1. Tanılama yapılandırması için *aeklemeleri-denetim* gibi bir ad girin.
 
     İstediğiniz güvenlik denetimi hedefinin kutusunu işaretleyin. Bir Azure depolama hesabı, Azure Olay Hub 'ı veya Log Analytics çalışma alanı arasından seçim yapabilirsiniz. Bu hedef kaynakların Azure aboneliğinizde zaten mevcut olması gerekir. Bu sihirbazda hedef kaynakları oluşturamazsınız.
 
@@ -68,7 +68,7 @@ Azure portal kullanarak Azure AD DS güvenlik denetim olaylarını etkinleştirm
         * Hazırlık sırasında **Tamam**' ı seçin.
     * **Azure Olay Hub 'ları**
         * **Bir olay hub 'ına akış**' ı seçin ve ardından **Yapılandır**' ı seçin.
-        * **Aboneliği** ve **Olay Hub 'ı ad alanını**seçin. Gerekirse, bir **Olay Hub 'ı adı** ve ardından **Olay Hub 'ı ilke adı**' nı da seçin.
+        * **Aboneliği** ve **Olay Hub 'ı ad alanını** seçin. Gerekirse, bir **Olay Hub 'ı adı** ve ardından **Olay Hub 'ı ilke adı**' nı da seçin.
         * Hazırlık sırasında **Tamam**' ı seçin.
     * **Azure log analitik çalışma alanları**
         * **Log Analytics gönder**' i seçin, ardından güvenlik denetim olaylarını depolamak için kullanmak istediğiniz **aboneliği** ve **Log Analytics çalışma alanını** seçin.
@@ -95,14 +95,14 @@ Azure PowerShell kullanarak Azure AD DS güvenlik denetim olaylarını etkinleş
 1. Güvenlik denetim olayları için hedef kaynağı oluşturun.
 
     * **Azure depolama**  -  [Azure PowerShell kullanarak bir depolama hesabı oluşturma](../storage/common/storage-account-create.md?tabs=azure-powershell)
-    * **Azure Olay Hub 'ları**  -  [Azure PowerShell kullanarak bir olay hub 'ı oluşturun](../event-hubs/event-hubs-quickstart-powershell.md). Ayrıca, Olay Hub 'ı *ad alanına*Azure AD DS izinleri veren bir yetkilendirme kuralı oluşturmak için [New-AzEventHubAuthorizationRule](/powershell/module/az.eventhub/new-azeventhubauthorizationrule) cmdlet 'ini de kullanmanız gerekebilir. Yetkilendirme kuralı **Yönet**, **dinle**ve **Gönder** haklarını içermelidir.
+    * **Azure Olay Hub 'ları**  -  [Azure PowerShell kullanarak bir olay hub 'ı oluşturun](../event-hubs/event-hubs-quickstart-powershell.md). Ayrıca, Olay Hub 'ı *ad alanına* Azure AD DS izinleri veren bir yetkilendirme kuralı oluşturmak için [New-AzEventHubAuthorizationRule](/powershell/module/az.eventhub/new-azeventhubauthorizationrule) cmdlet 'ini de kullanmanız gerekebilir. Yetkilendirme kuralı **Yönet**, **dinle** ve **Gönder** haklarını içermelidir.
 
         > [!IMPORTANT]
         > Olay Hub 'ında değil, Olay Hub 'ı ad alanında yetkilendirme kuralını ayarlamış olduğunuzdan emin olun.
 
     * **Azure log analitik çalışma alanları**  -  [Azure PowerShell bir Log Analytics çalışma alanı oluşturun](../azure-monitor/platform/powershell-workspace-configuration.md).
 
-1. [Get-AzResource](/powershell/module/Az.Resources/Get-AzResource) cmdlet 'Ini kullanarak Azure AD DS yönetilen etki alanınız IÇIN kaynak kimliği alın. $Aadds adlı bir değişken oluşturun *. * Değerin tutulacağı RESOURCEID:
+1. [Get-AzResource](/powershell/module/Az.Resources/Get-AzResource) cmdlet 'Ini kullanarak Azure AD DS yönetilen etki alanınız IÇIN kaynak kimliği alın. $Aadds adlı bir değişken oluşturun *.* Değerin tutulacağı RESOURCEID:
 
     ```azurepowershell
     $aadds = Get-AzResource -name aaddsDomainName
@@ -141,7 +141,7 @@ Azure PowerShell kullanarak Azure AD DS güvenlik denetim olaylarını etkinleş
 Log analitik çalışma alanları, Azure Izleyici ve kusto sorgu dilini kullanarak güvenlik denetim olaylarını görüntülemenize ve çözümlemenize olanak sağlar. Bu sorgu dili, kolay okunabilir bir sözdizimi ile Power analitik özelliklerine sahip olan salt okunurdur kullanım için tasarlanmıştır. Kusto sorgu dillerini kullanmaya başlama hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
 * [Azure İzleyici belgeleri](../azure-monitor/index.yml)
-* [Azure Izleyici 'de Log Analytics kullanmaya başlama](../azure-monitor/log-query/get-started-portal.md)
+* [Azure Izleyici 'de Log Analytics kullanmaya başlama](../azure-monitor/log-query/log-analytics-tutorial.md)
 * [Azure İzleyici’de günlük sorgularını kullanmaya başlama](../azure-monitor/log-query/get-started-queries.md)
 * [Log Analytics verilerinden pano oluşturma ve paylaşma](../azure-monitor/learn/tutorial-logs-dashboards.md)
 

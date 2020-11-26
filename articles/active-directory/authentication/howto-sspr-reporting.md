@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6aa31d0b8c68f38d2b4fc41a6bbaaeab8a3ffac
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 3f2c5b37c713b69df56e938fdaa2a9134402d765
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363615"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173911"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Azure AD parola yönetimi için raporlama seçenekleri
 
@@ -53,7 +53,7 @@ Azure portal deneyiminde, parola sıfırlama ve parola sıfırlama kayıt etkinl
 
 ### <a name="combined-registration"></a>Birleşik kayıt
 
-[Birleşik kaydı](./concept-registration-mfa-sspr-combined.md)etkinleştirdiyseniz, denetim günlüklerinde Kullanıcı etkinliğiyle ilgili bilgiler **güvenlik**  >  **kimlik doğrulama yöntemleri**altında bulunur.
+[Birleşik kaydı](./concept-registration-mfa-sspr-combined.md)etkinleştirdiyseniz, denetim günlüklerinde Kullanıcı etkinliğiyle ilgili bilgiler **güvenlik**  >  **kimlik doğrulama yöntemleri** altında bulunur.
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Azure portal rapor sütunlarının açıklaması
 
@@ -152,7 +152,7 @@ Aşağıdaki listede bu etkinlik ayrıntılı olarak açıklanmaktadır:
 * **Etkinlik aktör**: kendi parolasını sıfırlamadan hesaplarının kilidini açan kullanıcı. Kullanıcı bir son kullanıcı veya yönetici olabilir.
 * **Etkinlik hedefi**: kendi parolasını sıfırlamadan hesaplarının kilidini açan kullanıcı. Kullanıcı bir son kullanıcı veya yönetici olabilir.
 * **Izin verilen etkinlik durumları**:
-  * Başarılı: bir kullanıcının kendi hesabını başarıyla _Kilitduğunu_belirtir.
+  * Başarılı: bir kullanıcının kendi hesabını başarıyla _Kilitduğunu_ belirtir.
   * _Hata_: bir kullanıcının hesabının kilidini açmadığını gösterir. Hatanın neden gerçekleştiği hakkında daha fazla bilgi edinmek için **etkinlik durumu nedeni** kategorisini görmek üzere satırı seçebilirsiniz.
 
 ### <a name="activity-type-user-registered-for-self-service-password-reset"></a>Etkinlik türü: Kullanıcı self servis parola sıfırlama için kaydedildi
@@ -181,7 +181,7 @@ Aşağıdaki listede bu etkinlik ayrıntılı olarak açıklanmaktadır:
 * [SSPR ile kullanılabilen ilke seçenekleri nelerdir?](concept-sspr-policy.md)
 * [Parola geri yazma nedir ve neden önemlidir?](./tutorial-enable-sspr-writeback.md)
 * [SSPR’deki tüm seçenekler nelerdir ve ne anlama gelir?](concept-sspr-howitworks.md)
-* [Bir şeyin bozuk olduğunu düşünüyorum. SSPR sorunlarını gidermek Nasıl yaparım??](active-directory-passwords-troubleshoot.md)
+* [Bir şeyin bozuk olduğunu düşünüyorum. SSPR sorunlarını gidermek Nasıl yaparım??](./troubleshoot-sspr.md)
 * [Başka bir yerde ele alınmayan bir sorum var](active-directory-passwords-faq.md)
 
 [Reporting]: ./media/howto-sspr-reporting/sspr-reporting.png "Azure AD 'de SSPR etkinlik denetim günlükleri örneği"
