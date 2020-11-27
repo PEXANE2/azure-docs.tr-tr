@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 11/18/2020
-ms.openlocfilehash: 9715724fc0fbd25198dd3244215ac2c12638d2b8
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ac785b3ad534e80d4dd240d1a29ba5f6aa75e10a
+ms.sourcegitcommit: 236014c3274b31f03e5fcee5de510f9cacdc27a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185972"
+ms.locfileid: "96299048"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure İzleyici müşteri tarafından yönetilen anahtar 
 
@@ -538,7 +538,9 @@ Azure Izleyici 'de, Log Analytics adanmış kümenize bağlı olan çalışma al
   1. REST kullanırken, Azure-AsyncOperation URL değerini yanıttan kopyalayın ve [zaman uyumsuz işlemler durum denetimini](#asynchronous-operations-and-status-check)izleyin.
   2. Kümeye veya çalışma alanına GET isteği gönderin ve yanıtı gözlemleyin. Örneğin, bağlantısız çalışma alanının *Özellikler* bölümünde *kümeresourceıd* yok.
 
-- [Çift şifreleme](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) , bölgede Çift şifreleme olduğunda, 2020 Ekim 'den oluşturulan kümeler için otomatik olarak yapılandırılır. Bir küme oluşturur ve "<Region-adı> kümeler için çift şifrelemeyi desteklemiyor.", kümeyi yine de oluşturabilirsiniz, ancak çift şifrelemeyi devre dışı bırakabilirsiniz. Küme oluşturulduktan sonra etkinleştirilemez veya devre dışı bırakılamaz. Bölgede Çift şifreleme desteklenmediğinde bir küme oluşturmak için `"properties": {"isDoubleEncryptionEnabled": false}` rest istek gövdesine ekleyin.
+- Desteklenen bölgelerde, Ekim 2020 ' den oluşturulan kümeler için [Çift şifreleme](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) otomatik olarak yapılandırılır. Kümenizin kümedeki bir GET isteğiyle Çift şifreleme için yapılandırılıp yapılandırılmadığını ve özellik değerini gözlemleyerek, `"isDoubleEncryptionEnabled"` `true` çift şifrelemeyi etkin kümeler için olduğunu doğrulayabilirsiniz. 
+  - Bir küme oluşturur ve "<Region-adı> kümeler için çift şifrelemeyi desteklemez.", kümeyi yine de çift şifreleme olmadan oluşturabilirsiniz. `"properties": {"isDoubleEncryptionEnabled": false}`Rest istek gövdesine ekleyin.
+  - Küme oluşturulduktan sonra çift şifreleme ayarı değiştirilemez.
 
 - Hata iletileri
   

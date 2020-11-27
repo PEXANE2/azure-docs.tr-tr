@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için Paperkes bulut yazdırma yönetimini (Pocket/Hive) yapılandırma | Microsoft Docs'
-description: Azure AD 'deki Kullanıcı hesaplarını Paperkes bulut yazdırma yönetimi 'ne (Pocket/Hive) otomatik olarak sağlamayı ve sağlamayı öğrenin.
+title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için Paperkes bulut yazdırma yönetimini yapılandırın | Microsoft Docs'
+description: Azure AD 'den otomatik olarak Kullanıcı hesaplarını nasıl sağlayacağınızı ve serbest bırakma hakkında bilgi edinmek için bkz. bulut yazdırma yönetimi.
 services: active-directory
 documentationcenter: ''
 author: Zhchia
@@ -15,23 +15,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2020
 ms.author: Zhchia
-ms.openlocfilehash: d0ecc06cd256dc2fae598e8bc44336d69a9c99df
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 860b880faae9c5fe37a2c7eab2ef3a068ed4da3e
+ms.sourcegitcommit: 236014c3274b31f03e5fcee5de510f9cacdc27a0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96031394"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96299099"
 ---
-# <a name="tutorial-configure-papercut-cloud-print-management-pockethive-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Paperkes bulut yazdırma yönetimini (Pocket/Hive) yapılandırma
+# <a name="tutorial-configure-papercut-cloud-print-management-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Paperkes bulut yazdırma yönetimini yapılandırın
 
-Bu öğreticide, otomatik Kullanıcı sağlamayı yapılandırmak için hem Paperkes bulut yazdırma yönetimi 'nde (Pocket/Hive) ve Azure Active Directory (Azure AD) gerçekleştirmeniz gereken adımlar açıklanmaktadır. Yapılandırıldığında, Azure AD, Azure AD sağlama hizmeti 'ni kullanarak [bulut yazdırma yönetimini](https://www.papercut.com/products/papercut-pocket/) otomatik olarak hazırlar ve serbest hazırlar. Hizmetin işlevleri ve çalışma şekli hakkında daha fazla bilgi edinmek ve sık sorulan soruları incelemek için bkz. [Azure Active Directory ile SaaS uygulamalarına kullanıcı hazırlama ve kaldırma işlemlerini otomatik hale getirme](../manage-apps/user-provisioning.md).
+Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Paperkes bulut yazdırma yönetimi hem de Azure Active Directory (Azure AD) içinde gerçekleştirmeniz gereken adımları açıklamaktadır. Yapılandırıldığında, Azure AD, Azure AD sağlama hizmeti 'ni kullanarak [bulut yazdırma yönetimini](https://www.papercut.com/products/papercut-pocket/) otomatik olarak hazırlar ve serbest hazırlar. Hizmetin işlevleri ve çalışma şekli hakkında daha fazla bilgi edinmek ve sık sorulan soruları incelemek için bkz. [Azure Active Directory ile SaaS uygulamalarına kullanıcı hazırlama ve kaldırma işlemlerini otomatik hale getirme](../manage-apps/user-provisioning.md).
 
 ## <a name="capabilities-supported"></a>Desteklenen yetenekler
 
 > [!div class="checklist"]
-> * Paperkes bulut yazdırma yönetiminde Kullanıcı oluşturma (Pocket/Hive)
-> * Artık erişim gerektirdiklerinde Paperkes bulut yazdırma yönetimi (Pocket/Hive) içindeki kullanıcıları kaldırın
-> * Kullanıcı özniteliklerinin Azure AD ve Paperkes bulut yazdırma yönetimi (Pocket/Hive) arasında eşitlenmiş olmasını sağlama
+> * Paperkes bulut yazdırma yönetiminde Kullanıcı oluşturma
+> * Artık erişim gerektirdiklerinde Paperkes bulut yazdırma yönetiminde kullanıcıları kaldırma
+> * Azure AD ile Paperkes bulut yazdırma yönetimi arasında kullanıcı özniteliklerini eşitlenmiş olarak tut
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -39,7 +39,7 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
 * [Bir Azure AD kiracısı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
 * Azure AD 'de sağlamayı yapılandırma [izni](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) olan bir kullanıcı hesabı (örneğin, uygulama Yöneticisi, bulut uygulaması Yöneticisi, uygulama sahibi veya genel yönetici). 
-* Paperbir Kullanıcı hesabı, yönetici izinleriyle bulut yazdırma yönetimi (Pocket/Hive) ile kesilir
+* Paperbir Kullanıcı hesabı, yönetici izinleriyle bulut yazdırma yönetimini keser
 
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Adım 1. Hazırlama dağıtımınızı planlama
@@ -58,23 +58,23 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
 
 
-4. Yüklendikten sonra, **KIRACı URL** 'Niz ve **gizli belirteçle** bir eklenti ayrıntıları sayfası gösterilir. Bu değerler, \* \* Azure Portal Paperkes bulut yazdırma yönetimi (Pocket/Hive) uygulamanızın sağlama sekmesinde bulunan kiracı URL 'si alanına ve gizli belirteç alanına girilecektir.
+4. Yüklendikten sonra, **KIRACı URL** 'Niz ve **gizli belirteçle** bir eklenti ayrıntıları sayfası gösterilir. Bu değerler, \* \* Azure Portal, Paperkes bulut yazdırma yönetimi uygulamanızın sağlama sekmesinde bulunan kiracı URL 'si alanına ve gizli belirteç alanına girilecektir.
 
 
 
-## <a name="step-3-add-papercut-cloud-print-management-pockethive-from-the-azure-ad-application-gallery"></a>3. Adım Azure AD Uygulama Galerisi 'nden Paperkes bulut yazdırma yönetimi (Pocket/Hive) ekleme
+## <a name="step-3-add-papercut-cloud-print-management-from-the-azure-ad-application-gallery"></a>3. Adım Azure AD Uygulama Galerisi 'nden Paperkes bulut yazdırma yönetimi ekleme
 
-Azure AD Uygulama Galerisi 'nden Paperkes bulut yazdırma yönetimi (Pocket/Hive) ekleyerek, baskı, bulut yazdırma yönetimi (Pocket/Hive) için sağlamayı yönetmeye başlayın. Daha önce Paper, bulut yazdırma yönetimi 'ni (Pocket/Hive) SSO için ayarladıysanız aynı uygulamayı kullanabilirsiniz. Ancak başlangıçta tümleştirmeyi test ederken ayrı bir uygulama oluşturmanız önerilir. Galeriden uygulama ekleme hakkında daha fazla bilgi için [buraya](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) bakın.
+Azure AD Uygulama Galerisi 'nden Paperkes bulut yazdırma yönetimi ekleyerek, bir bulut yazdırma yönetimi için sağlamayı yönetmeye başlayın. Daha önce, diğer bir deyişle, daha önce paperiçin bulut yazdırma yönetimini ayarladıysanız aynı uygulamayı kullanabilirsiniz. Ancak başlangıçta tümleştirmeyi test ederken ayrı bir uygulama oluşturmanız önerilir. Galeriden uygulama ekleme hakkında daha fazla bilgi için [buraya](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) bakın.
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. Adım: Hazırlık kapsamına dahil edilecek kullanıcıları tanımlama
 
 Azure AD hazırlama hizmeti, uygulama atamasına veya kullanıcının/grubun özniteliklerine göre hazırlanacak kişilerin kapsamını belirlemenizi sağlar. Uygulamanız için hazırlanacak kişilerin kapsamını atamaya göre belirlemeyi seçerseniz kullanıcıları ve grupları uygulamaya atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Hazırlanacak kişilerin kapsamını yalnızca kullanıcı veya grup özniteliklerine göre belirlemeyi seçerseniz [burada](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) anlatılan kapsam belirleme filtresini kullanabilirsiniz.
 
-* Kullanıcı ve grupları Paperkes bulut yazdırma yönetimi 'ne (Pocket/Hive) atarken **varsayılan erişim** dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) daha fazla rol ekleyebilirsiniz.
+* Kullanıcı ve grupları Paperkes bulut yazdırma yönetimine atarken **varsayılan erişim** dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) daha fazla rol ekleyebilirsiniz.
 
 * Başlangıçta kapsamı sınırlı tutun. Herkesi hazırlamadan önce birkaç kullanıcı ve grupla test yapın. Hazırlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında uygulamaya bir veya iki kullanıcı ya da grup atayarak bu adımı kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında [öznitelik tabanlı kapsam filtresi](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) belirtebilirsiniz. 
 
-## <a name="step-5-configure-automatic-user-provisioning-to-papercut-cloud-print-management-pockethive"></a>5. Adım. Tek bir bulut yazdırma yönetimi (Pocket/Hive) için otomatik Kullanıcı sağlamayı yapılandırın
+## <a name="step-5-configure-automatic-user-provisioning-to-papercut-cloud-print-management"></a>5. Adım. Bulut yazdırma yönetimini kesmek için otomatik Kullanıcı sağlamayı yapılandırın
 
 Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan bir adım adım yol gösterir.
 
@@ -84,7 +84,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Paperkes bulut yazdırma yönetimi (Pocket/Hive)** seçeneğini belirleyin.
+2. Uygulamalar listesinde, **Paperkes bulut yazdırma yönetimi**' ni seçin.
 
    ![Uygulamalar listesindeki Paperkes bulut yazdırma yönetimi bağlantısı](common/all-applications.png)
 
@@ -96,7 +96,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
    ![Sekme otomatik sağlama](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümü altında, Paperkesilen bulut yazdırma yönetimi (Pocket/Hive) kiracı URL 'Sini ve gizli anahtarı girin. Azure AD 'nin Paperkes bulut yazdırma yönetimine bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Paperkesilen bulut yazdırma yönetimi hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünde, Paperkes bulut yazdırma yönetimi kiracı URL 'Si ve gizli belirteç girin. Azure AD 'nin Paperkes bulut yazdırma yönetimine bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Paperkesilen bulut yazdırma yönetimi hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
    ![Belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -118,11 +118,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 10. Kapsam belirleme filtrelerini yapılandırmak için [Kapsam belirleme filtresi öğreticisi](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md) ile sunulan yönergeleri izleyin.
 
-11. Paperkes bulut yazdırma yönetimi (Pocket/Hive) için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
+11. Azure AD sağlama hizmetini Paperkes bulut yazdırma yönetimi için etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
     ![Hazırlama Durumu Açık](common/provisioning-toggle-on.png)
 
-12. **Ayarlar** bölümünde **kapsam** içindeki Istenen değerleri seçerek, bulut yazdırma yönetimini (Pocket/Hive) oluşturmak için sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+12. **Ayarlar** bölümünde **kapsam** içinde istenen değerler ' i seçerek bulut yazdırma yönetimi 'ni kesmek için sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
