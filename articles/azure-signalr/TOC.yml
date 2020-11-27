@@ -66,6 +66,10 @@
       href: signalr-concept-authenticate-oauth.md
     - name: Olay işleme
       href: signalr-concept-event-grid-integration.md
+    - name: Güvenlik
+      items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Ölçek
