@@ -45,6 +45,10 @@
           href: manage-assets-quickstart.md
         - name: Portal kullanarak içeriği şifreleme
           href: encrypt-content-quickstart.md
+    - name: ARM şablonu kullanma
+      items:
+        - name: ARM ile hesap oluşturma
+          href: quickstart-arm-template-account.md
 - name: Öğreticiler
   items:
     - name: .NET
@@ -401,7 +405,7 @@
           href: /python/api/overview/azure/mediaservices/management
         - name: Node.js
           href: /javascript/api/overview/azure/mediaservices/management
-        - name: Go
+        - name: Başlayın
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.media/allversions

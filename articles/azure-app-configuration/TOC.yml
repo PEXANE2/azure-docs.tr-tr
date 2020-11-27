@@ -70,6 +70,8 @@
       items:
         - name: Azure Pipelines kullanarak gönderme
           href: push-kv-devops-pipeline.md
+        - name: Azure Pipelines’ı kullanarak çekme
+          href: pull-key-value-devops-pipeline.md
         - name: GitHub Actions kullanarak gönderme
           href: concept-github-action.md
         - name: Dışarı aktarılan yapılandırmayı kullanarak proje oluşturma

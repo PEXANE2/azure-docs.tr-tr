@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: 9a2bda0a526c307ae17d8415f6f24423ddf51b63
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 8a4f9a5df8def928c06fe95a53c7be0d93ec76c4
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917775"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302668"
 ---
 # <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight KIMLIK Aracısı (HIB)
 
@@ -140,7 +140,7 @@ Beeline ve Livy 'ı kullanmak için, istemcinizi OAuth kullanmak üzere ayarlama
 
 ## <a name="faq"></a>SSS
 ### <a name="what-app-is-created-by-hdinsight-in-aad"></a>AAD 'de HDInsight tarafından hangi uygulama oluşturuldu?
-Her küme için, üçüncü taraf bir uygulama, ıdentifieruri (gibi) olarak küme URI 'si ile AAD 'ye kaydedilir https://clustername.azurehdinsight.net .
+Her küme için, üçüncü taraf bir uygulama, ıdentifieruri (gibi) olarak küme URI 'si ile AAD 'ye kaydedilir `https://clustername.azurehdinsight.net` .
 
 ### <a name="why-are-users-prompted-for-consent-before-using-hib-enabled-clusters"></a>Kullanıcılardan, HIB etkin kümeleri kullanmadan önce neden onay istenir?
 AAD 'de, kullanıcıların kimliğini doğrulayabilmesi veya verilere erişim izni vermeden önce tüm üçüncü taraf uygulamalar için izin gerekir.

@@ -11,12 +11,12 @@ ms.date: 09/23/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy, devx-track-azurecli
-ms.openlocfilehash: cfa40332c45eac23d062b83bb789c25f1906ae24
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 8e479367a04e105ae2111ce66707999aff7ef960
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94831642"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302450"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Triton çıkarım sunucusuyla yüksek performanslı hizmet (Önizleme) 
 
@@ -32,7 +32,7 @@ Triton, *çıkarım için iyileştirilmiş* bir çerçevedir. GPU 'ların daha i
 > [!TIP]
 > Bu belgedeki kod parçacıkları tanım amaçlıdır ve bir çözümü tamamen gösteremeyebilir. Çalışan örnek kod için [Azure Machine Learning üç aylık dönemin uçtan uca örneklerine](https://github.com/Azure/azureml-examples/tree/main/tutorials)bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir **Azure aboneliği**. Bir tane yoksa, [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 * Azure Machine Learning [bir modelin nasıl ve nasıl dağıtılacağı hakkında](how-to-deploy-and-where.md) benzerlik.
@@ -53,7 +53,7 @@ Kendi modeliniz için Triton kullanmayı denemeden önce, Azure Machine Learning
 
 ### <a name="setting-the-number-of-workers"></a>Çalışan sayısını ayarlama
 
-Dağıtımınızdaki çalışanların sayısını ayarlamak için ortam değişkenini ayarlayın `WORKER_COUNT` . Adlı bir [ortam](https://docs.microsoft.compython/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true) nesneniz varsa `env` , şunları yapabilirsiniz:
+Dağıtımınızdaki çalışanların sayısını ayarlamak için ortam değişkenini ayarlayın `WORKER_COUNT` . Adlı bir [ortam](/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true) nesneniz varsa `env` , şunları yapabilirsiniz:
 
 ```{py}
 env.environment_variables["WORKER_COUNT"] = "1"

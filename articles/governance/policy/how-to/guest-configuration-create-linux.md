@@ -4,12 +4,12 @@ description: Linux için Azure Ilkesi Konuk yapılandırma ilkesi oluşturmayı 
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1e81d1a5157cc5872ba2628c8d6cb408e35ab9c6
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 1f6308250717d35dc725b097575bf3921646c6a0
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94694251"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302717"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Linux için Konuk Yapılandırma ilkelerini oluşturma
 
@@ -89,6 +89,10 @@ DSC, InSpec 'in nasıl yürütüldüğünü, parametrelerin nasıl sağlandığ�
 #### <a name="configuration-requirements"></a>Yapılandırma gereksinimleri
 
 Özel yapılandırmanın adı her yerde tutarlı olmalıdır. İçerik paketi için. zip dosyasının adı, MOF dosyasındaki yapılandırma adı ve Azure Resource Manager şablonundaki (ARM şablonu) Konuk atama adı aynı olmalıdır.
+
+PowerShell cmdlet 'leri, paketi oluşturmaya yardımcı olur.
+Kök düzey klasörü veya sürüm klasörü gerekli değil.
+Paket biçimi bir. zip dosyası olmalıdır. ve sıkıştırılmamış olarak toplam 100 MB 'ın boyutunu aşamaz.
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Linux üzerinde özel konuk yapılandırma yapılandırması
 

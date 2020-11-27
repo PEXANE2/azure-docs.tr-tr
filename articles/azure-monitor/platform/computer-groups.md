@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
-ms.openlocfilehash: 217be627f81406f671118d5290cd5f67f52c01d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92603165ac399415ec4fb6daeea1641065671a83
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86112121"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302928"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Azure Izleyici günlük sorgularının bilgisayar grupları
 Azure Izleyici 'de bilgisayar grupları, [günlük sorgularını](../log-query/log-query-overview.md) belirli bir bilgisayar kümesiyle kapsamlarınıza izin verir.  Her grup, tanımladığınız bir sorgu kullanılarak veya farklı kaynaklardan grupları içeri aktararak bilgisayarlarla doldurulur.  Grup bir günlük sorgusuna eklendiğinde, sonuçlar gruptaki bilgisayarlarla eşleşen kayıtlarla sınırlıdır.
@@ -61,7 +61,7 @@ Azure Izleyici 'yi Active Directory grup üyeliklerini içeri aktarmak üzere ya
 > [!NOTE]
 > İçeri aktarılan Active Directory grupları yalnızca Windows makinelerini içerir.
 
-Azure Izleyici 'yi, Azure portal Log Analytics çalışma alanınızdaki **Gelişmiş ayarlardan** Active Directory güvenlik gruplarını içeri aktaracak şekilde yapılandırırsınız.  **Bilgisayar grupları**' nı seçin, **Active Directory**ve sonra **Active Directory grup üyeliklerini bilgisayarlardan içeri aktarın**.  Başka bir yapılandırma işlemi gerekmez.
+Azure Izleyici 'yi, Azure portal Log Analytics çalışma alanınızdaki **Gelişmiş ayarlardan** Active Directory güvenlik gruplarını içeri aktaracak şekilde yapılandırırsınız.  **Bilgisayar grupları**' nı seçin, **Active Directory** ve sonra **Active Directory grup üyeliklerini bilgisayarlardan içeri aktarın**.  Başka bir yapılandırma işlemi gerekmez.
 
 ![Active Directory bilgisayardan bilgisayar grupları](media/computer-groups/configure-activedirectory.png)
 
@@ -70,7 +70,7 @@ Gruplar içeri aktarıldığında, menü, algılanan grup üyeliğine sahip bilg
 ### <a name="windows-server-update-service"></a>Windows Server güncelleştirme hizmeti
 Azure Izleyici 'yi WSUS grup üyeliklerini içeri aktarmak üzere yapılandırdığınızda, Log Analytics aracısına sahip bilgisayarların hedefleme grubu üyeliğini analiz eder.  İstemci tarafı hedefleme kullanıyorsanız, Azure Izleyici 'ye bağlı olan ve herhangi bir WSUS hedefleme grubunun parçası olan herhangi bir bilgisayar, Grup üyeliğini Azure Izleyici 'ye içeri aktarmıştır. Sunucu tarafı hedefleme kullanıyorsanız, Grup üyeliği bilgilerinin Azure Izleyici 'ye aktarılması için Log Analytics aracısının WSUS sunucusunda yüklü olması gerekir.  Bu üyelik, her 4 saatte bir sürekli güncelleştirilir. 
 
-Azure Izleyici 'yi, Azure portal Log Analytics çalışma alanınızdaki **Gelişmiş AYARLARDAN** WSUS gruplarını içeri aktaracak şekilde yapılandırırsınız.  **Bilgisayar grupları**, **WSUS**ve ardından **WSUS grup üyeliklerini içeri aktar**' ı seçin.  Başka bir yapılandırma işlemi gerekmez.
+Azure Izleyici 'yi, Azure portal Log Analytics çalışma alanınızdaki **Gelişmiş AYARLARDAN** WSUS gruplarını içeri aktaracak şekilde yapılandırırsınız.  **Bilgisayar grupları**, **WSUS** ve ardından **WSUS grup üyeliklerini içeri aktar**' ı seçin.  Başka bir yapılandırma işlemi gerekmez.
 
 ![WSUS 'den bilgisayar grupları](media/computer-groups/configure-wsus.png)
 
@@ -97,13 +97,13 @@ Bilgisayar grubunu silmek için **Kaldır** sütunundaki **x** simgesini tıklat
 Bir sorgudaki bir günlük sorgusundan oluşturulmuş bir bilgisayar grubunu, diğer adını bir işlev olarak düşünerek, genellikle aşağıdaki sözdizimi ile kullanabilirsiniz:
 
 ```kusto
-Table | where Computer in (ComputerGroup)`
+Table | where Computer in (ComputerGroup)
 ```
 
 Örneğin, yalnızca mycomputergroup adlı bir bilgisayar grubundaki bilgisayarlar için UpdateSummary kayıtlarını döndürmek üzere aşağıdakileri kullanabilirsiniz.
 
 ```kusto
-UpdateSummary | where Computer in (mycomputergroup)`
+UpdateSummary | where Computer in (mycomputergroup)
 ```
 
 İçeri aktarılan bilgisayar grupları ve dahil edilen bilgisayarları **Computergroup** tablosunda depolanır.  Örneğin, aşağıdaki sorgu Active Directory etki alanı bilgisayarları grubundaki bilgisayarların listesini döndürür. 

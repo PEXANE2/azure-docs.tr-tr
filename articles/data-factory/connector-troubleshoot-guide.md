@@ -5,16 +5,16 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 09/10/2020
+ms.date: 11/25/2020
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: 2e54c0b09c3dbe398b0522d0ad9ad2314e29ed26
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: dcc84dc252001721a3848a008a3db80dcc7822d2
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023849"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301267"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory bağlayıcı sorunlarını giderme
 
@@ -440,7 +440,7 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 - **İleti**: `The name of column index %index; is empty. Make sure column name is properly specified in the header row.`
 
-- **Neden**: etkinlikte ' firstRowAsHeader ' ayarlandığında, ilk satır sütun adı olarak kullanılır. Bu hata, ilk satırın boş değer içerdiği anlamına gelir. Örneğin: ' ColumnA,, ColumnB '.
+- **Neden**: etkinlikte ' firstRowAsHeader ' ayarlandığında, ilk satır sütun adı olarak kullanılır. Bu hata, ilk satırın boş değer içerdiği anlamına gelir. Örneğin: ' ColumnA, ColumnB '.
 
 - **Öneri**: ilk satırı denetleyin ve boş değer varsa değeri düzeltir.
 
@@ -449,7 +449,7 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 - **İleti**: `Error found when processing '%function;' source '%name;' with row number %rowCount;: found more columns than expected column count: %columnCount;.`
 
-- **Neden**: sorunlu satırın sütun sayısı, ilk satırın sütun sayısından büyük. Bu durum, veri sorunu ya da yanlış sütun sınırlayıcısı/quote char ayarlarından kaynaklanıyor olabilir.
+- **Neden**: sorunlu satırın sütun sayısı, ilk satırın sütun sayısından daha büyük. Bu durum, veri sorunu ya da yanlış sütun sınırlayıcısı/quote char ayarlarından kaynaklanıyor olabilir.
 
 - **Öneri**: hata iletisinde satır sayısını alın, satırın sütununu kontrol edin ve verileri onarın.
 
@@ -645,6 +645,29 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 - **Öneri**: yükte ' CompressionType ' öğesini kaldırın.
 
+
+## <a name="rest"></a>REST
+
+### <a name="unexpected-network-response-from-rest-connector"></a>REST bağlayıcısından beklenmeyen ağ yanıtı
+
+- **Belirtiler**: uç nokta bazen Rest bağlayıcısından beklenmedik yanıt (400/401/403/500) alır.
+
+- **Neden**: Rest kaynak Bağlayıcısı, bir http isteği oluştururken bağlı hizmetten/veri kümesinden/kopya kaynağından parametre olarak URL ve http yöntemi/üst bilgisi/gövdesi kullanır. Bu sorun büyük olasılıkla belirtilen bir veya daha fazla parametrede bazı hatalardan kaynaklanır.
+
+- **Çözüm**: 
+    - Parametrenin neden olup olmadığını denetlemek için cmd penceresinde ' KIVI ' kullanın (**kabul etme** ve **Kullanıcı Aracısı** üstbilgileri her zaman eklenmelidir):
+        ```
+        curl -i -X <HTTP method> -H <HTTP header1> -H <HTTP header2> -H "Accept: application/json" -H "User-Agent: azure-data-factory/2.0" -d '<HTTP body>' <URL>
+        ```
+      Komut, aynı beklenmeyen yanıtı döndürürse, lütfen beklenen yanıtı döndürünceye kadar, yukarıdaki parametreleri ' kıvrımlı ' ile onarın. 
+
+      Ayrıca, komutun daha gelişmiş kullanımı için ' kıvrık--help ' kullanabilirsiniz.
+
+    - Yalnızca ADF REST Bağlayıcısı beklenmeyen yanıt döndürürse, daha fazla sorun giderme için lütfen Microsoft desteğine başvurun.
+    
+    - Lütfen ' kıvır ', SSL sertifikası doğrulama sorununu yeniden oluşturmak için uygun olamayacağını unutmayın. Bazı senaryolarda, hiçbir SSL sertifikası doğrulama sorunu çıkmadan ' kıvır ' komutu başarıyla yürütüldü. Ancak aynı URL tarayıcıda yürütüldüğünde, istemcinin sunucu ile güven kurması için ilk yere hiçbir SSL sertifikası döndürülmez.
+
+      Yukarıdaki durum için **Postman** ve **Fiddler** gibi araçlar önerilir.
 
 
 ## <a name="general-copy-activity-error"></a>Genel kopyalama etkinliği hatası

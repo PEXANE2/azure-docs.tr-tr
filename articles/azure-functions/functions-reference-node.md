@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: d32c63332c530ec05eb9f93661a8f2a0c5d8264c
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 21ab58095fa919e6302251c16e474b02f1445993
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94743329"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302003"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Işlevleri JavaScript Geliştirici Kılavuzu
 
@@ -18,7 +18,7 @@ Bu kılavuz, JavaScript kullanarak Azure Işlevleri geliştirmeye yardımcı ola
 
 Express.js, Node.js veya JavaScript geliştiricisi olarak Azure Işlevleri 'ne yeni bir deyişle, lütfen önce aşağıdaki makalelerden birini okuyun:
 
-| Başlarken | Kavramlar| Kılavuzlu öğrenme |
+| Kullanmaya başlama | Kavramlar| Kılavuzlu öğrenme |
 | -- | -- | -- | 
 | <ul><li>[ Visual Studio Code kullanarakNode.js işlevi](./create-first-function-vs-code-node.md)</li><li>[ Terminal/komut istemiyleNode.js işlevi](./create-first-function-cli-java.md)</li></ul> | <ul><li>[Geliştirici kılavuzu](functions-reference.md)</li><li>[Barındırma seçenekleri](functions-scale.md)</li><li>[TypeScript işlevleri](#typescript)</li><li>[Performans &nbsp; konuları](functions-best-practices.md)</li></ul> | <ul><li>[Sunucusuz uygulamalar oluşturma](/learn/paths/create-serverless-applications/)</li><li>[Node.js ve hızlı API 'Leri sunucusuz API 'lere yeniden düzenleme](/learn/modules/shift-nodejs-express-apis-serverless/)</li></ul> |
 
@@ -201,7 +201,7 @@ module.exports = (context) => {
 
 İşlevinize geçirilen bağlam, `executionContext` aşağıdaki özelliklere sahip bir nesne olan bir özelliği gösterir:
 
-| Özellik adı  | Tür  | Description |
+| Özellik adı  | Tür  | Açıklama |
 |---------|---------|---------|
 | `invocationId` | Dize | Belirli işlev çağrısı için benzersiz bir tanımlayıcı sağlar. |
 | `functionName` | Dize | Çalışan işlevin adını sağlar |
@@ -567,7 +567,7 @@ Hem yerel hem de bulut ortamlarınızdaki işlemsel gizlilikler (bağlantı dize
 
 ### <a name="in-local-development-environment"></a>Yerel geliştirme ortamında
 
-Yerel olarak çalışırken, işlevleriniz, ortam değişkenlerinizi nesnesinde depoladığınız bir [ `local.settings.json` Dosya](/functions-run-local.md?tabs=node#local-settings-file)içerir `Values` . 
+Yerel olarak çalışırken, işlevleriniz, ortam değişkenlerinizi nesnesinde depoladığınız bir [ `local.settings.json` Dosya](/azure/azure-functions/functions-run-local)içerir `Values` . 
 
 ```json
 {

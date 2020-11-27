@@ -4,12 +4,12 @@ description: Bu makalede, Azure geçişi ile GCP VM 'lerinin Azure 'a nasıl ge�
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 2caebb5dda87a34d003f7f2bd208fff427c98431
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 0093bb453131eb87172021a976b8019a23e445f1
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315876"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302591"
 ---
 # <a name="discover-assess-and-migrate-google-cloud-platform-gcp-vms-to-azure"></a>Google Cloud Platform (GCP) sanal makinelerini Azure 'a bulma, değerlendirme ve geçirme
 
@@ -44,12 +44,12 @@ Bir değerlendirmeyi aşağıdaki şekilde ayarlayın:
         - Linux makineleri için:
             1. Her bir Linux makinesinde oturum açın.
             2. Sshd_config dosyasını açın: VI/etc/ssh/sshd_config
-            3. Dosyasında, **Passwordaduthentication** satırını bulun ve değeri **Evet**olarak değiştirin.
+            3. Dosyasında, **Passwordaduthentication** satırını bulun ve değeri **Evet** olarak değiştirin.
             4. Dosyayı kaydedin ve kapatın. SSH hizmetini yeniden başlatın.
     - Linux sanal makinelerinizi keşfettiğiniz bir kök Kullanıcı kullanıyorsanız, VM 'lerde kök oturum açmaya izin verildiğinden emin olun.
         1. Her Linux makinesinde oturum açın
         2. Sshd_config dosyasını açın: VI/etc/ssh/sshd_config
-        3. Dosyasında, **PermitRootLogin** satırını bulun ve değeri **Evet**olarak değiştirin.
+        3. Dosyasında, **PermitRootLogin** satırını bulun ve değeri **Evet** olarak değiştirin.
         4. Dosyayı kaydedin ve kapatın. SSH hizmetini yeniden başlatın.
 
 2. Ardından, GCP sanal makinelerinizi bulup değerlendirmek üzere bir Azure geçişi projesi ve gereci ayarlamak için bu [öğreticiyi](./tutorial-assess-gcp.md) izleyin.
@@ -58,7 +58,7 @@ Bir değerlendirmeyi denemenizi öneririz, ancak değerlendirme gerçekleştirme
 
 
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 - Geçirmek istediğiniz GCP VM 'lerinin desteklenen bir işletim sistemi sürümünü çalıştırdığından emin olun. GCP VM 'Leri geçiş amacıyla fiziksel makineler gibi değerlendirilir. Fiziksel sunucu geçişi iş akışı için [desteklenen işletim sistemlerini ve çekirdek sürümlerini](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) gözden geçirin. Linux sanal makinelerinize yönelik işletim sistemi ve çekirdek sürümlerini denetlemek için *hostnamectl* veya *uname-a* gibi standart komutları kullanabilirsiniz.  Gerçek geçişe devam etmeden önce VM 'nin beklendiği gibi çalışıp çalışmadığını doğrulamak için bir test geçişi gerçekleştirmenizi öneririz.
 - GCP sanal makinelerinizin Azure 'a geçiş için [desteklenen yapılandırmalara](./migrate-support-matrix-physical-migration.md#physical-server-requirements) uyduğundan emin olun.
@@ -74,7 +74,7 @@ Azure geçişi: sunucu geçiş aracı ile geçiş için Azure 'u hazırlayın.
 
 **Görev** | **Ayrıntılar**
 --- | ---
-**Azure Geçişi projesi oluşturma** | Azure hesabınızın bir proje oluşturmak için katılımcısı veya sahip izinlerine ihtiyacı vardır.
+**Azure Geçişi projesi oluşturma** | [Yeni bir proje oluşturmak](https://docs.microsoft.com/azure/migrate/create-manage-projects)için Azure hesabınızda katkıda bulunan veya sahip izinlerinin olması gerekir.
 **Azure hesabınız için izinleri doğrulama** | Azure hesabınızın bir VM oluşturmak ve Azure yönetilen diskine yazmak için izinleri olması gerekir.
 
 ### <a name="assign-permissions-to-create-project"></a>Proje oluşturmak için izin atama
@@ -123,30 +123,6 @@ Gereç dağıtımı için aşağıdaki gibi hazırlanın:
 - Çoğaltma gereci MySQL kullanır. Gereçte MySQL yükleme [seçeneklerini](migrate-replication-appliance.md#mysql-installation) gözden geçirin.
 - Çoğaltma gerecinin [ortak](migrate-replication-appliance.md#url-access) ve [kamu](migrate-replication-appliance.md#azure-government-url-access) bulutları 'Na erişmesi Için gereken Azure URL 'lerini gözden geçirin.
 
-## <a name="add-the-server-migration-tool"></a>Sunucu geçiş aracını ekleme
-
-Bir Azure geçişi projesi ayarlayın ve ardından sunucu geçiş aracını buna ekleyin.
-
-1. Azure portalı > **Tüm hizmetler** bölümünde **Azure Geçişi**’ni arayın.
-2. **Hizmetler** altında **Azure Geçişi**’ni seçin.
-3. **Genel Bakış** bölümünde **Sunucuları değerlendir ve geçir**’e tıklayın.
-4. **Sunucuları bul, değerlendir ve geçir**altında, **sunucuları değerlendir ve geçir**' e tıklayın.
-
-    ![Sunucuları bulma ve değerlendirme](./media/tutorial-migrate-physical-virtual-machines/assess-migrate.png)
-
-5. **Sunucuları bul, değerlendir ve geçir** bölümünde **Araç ekle**’ye tıklayın.
-6. **Projeyi geçir** bölümünde Azure aboneliğinizi seçin ve henüz yapmadıysanız bir kaynak grubu oluşturun.
-7. **Proje Ayrıntıları** bölümünde proje adını ve projeyi oluşturmak istediğiniz coğrafyayı belirtip **İleri**’ye tıklayın. [Kamu](migrate-support-matrix.md#supported-geographies-public-cloud) ve [kamu bulutları](migrate-support-matrix.md#supported-geographies-azure-government)için desteklenen coğrafi lıkları gözden geçirin.
-    - Proje Coğrafya yalnızca GCP makinelerinden toplanan meta verileri depolamak için kullanılır.
-    - Bir geçiş çalıştırdığınızda herhangi bir hedef bölgeyi seçebilirsiniz.
-
-    ![Azure Geçişi projesi oluşturma](./media/tutorial-migrate-physical-virtual-machines/migrate-project.png)
-
-8. **Değerlendirme seçme aracı**’nda **Değerlendirme aracı eklemeyi şimdilik atla** > **İleri**’yi seçin.
-9. **Geçiş aracı seçin** bölümünde **Azure Geçişi: Sunucu Geçişi** > **İleri**.
-10. **İnceleme + araç ekleme** bölümünde ayarları gözden geçirip **Araç ekle**’ye tıklayın
-11. Araç eklendikten sonra, Azure geçişi proje > **sunucuları**  >  **geçiş araçları**' nda görüntülenir.
-
 ## <a name="set-up-the-replication-appliance"></a>Çoğaltma gereç ayarı
 
 Geçişin ilk adımı, çoğaltma gerecini ayarlamaya yönelik. GCP VM 'Leri geçişi için gereci ayarlamak üzere gereç için yükleyici dosyasını indirmeniz ve ardından bunu [hazırladığınız sanal](#prepare-a-machine-for-the-replication-appliance)makinede çalıştırmanız gerekir.
@@ -159,14 +135,14 @@ Geçişin ilk adımı, çoğaltma gerecini ayarlamaya yönelik. GCP VM 'Leri ge�
 
 2. Makinelerde **bulunan makineler**  >  **sanallaştırılmış mi?**, **sanallaştırılmamış/diğer**' e tıklayın.
 3. **Hedef bölge**' de, makineleri geçirmek istediğiniz Azure bölgesini seçin.
-4. **Geçiş için hedef bölgenin <bölge adı>olduğunu onaylayın **' i seçin.
+4. **Geçiş için hedef bölgenin <bölge adı>olduğunu onaylayın**' i seçin.
 5. **Kaynak oluştur**' a tıklayın. Bu, arka planda bir Azure Site Recovery Kasası oluşturur.
     - Azure geçişi sunucu geçişi ile geçiş zaten ayarladıysanız, kaynaklar daha önce ayarlandığı için hedef seçenek yapılandırılamaz.
     - Bu düğmeye tıkladıktan sonra bu proje için hedef bölgeyi değiştiremezsiniz.
     - Sanal makinelerinizi farklı bir bölgeye geçirmek için yeni/farklı bir Azure geçişi projesi oluşturmanız gerekir.
 
-6. **Yeni bir çoğaltma gereci yüklemek**istiyor musunuz?, **çoğaltma gereci yüklensin**' i seçin.
-7. **Çoğaltma gereci yazılımını indirip yükleyin**bölümünde gereç yükleyicisini ve kayıt anahtarını indirin. Gereci kaydettirmek için anahtar gerekir. Anahtar indirildikten beş gün sonra geçerlidir.
+6. **Yeni bir çoğaltma gereci yüklemek** istiyor musunuz?, **çoğaltma gereci yüklensin**' i seçin.
+7. **Çoğaltma gereci yazılımını indirip yükleyin** bölümünde gereç yükleyicisini ve kayıt anahtarını indirin. Gereci kaydettirmek için anahtar gerekir. Anahtar indirildikten beş gün sonra geçerlidir.
 
     ![Sağlayıcıyı indir](media/tutorial-migrate-physical-virtual-machines/download-provider.png)
 
@@ -174,14 +150,14 @@ Geçişin ilk adımı, çoğaltma gerecini ayarlamaya yönelik. GCP VM 'Leri ge�
 9. Sonraki yordamda açıklandığı gibi, çoğaltma gereç kurulum dosyasını çalıştırın.  
     9.1. **Başlamadan Önce** bölümünde **Yapılandırma sunucusunu ve işlem sunucusunu yükleme**’yi seçin ve ardından **İleri**’yi seçin.   
     9,2 **üçüncü taraf yazılım lisansında**, **üçüncü taraf lisans sözleşmesini kabul ediyorum**' u seçin ve ardından **İleri**' yi seçin.   
-    9,3 **kayıt**sırasında, git **' i seçin ve**ardından kasa kayıt anahtarı dosyasını yerleştirdiğiniz yere gidin. **İleri**’yi seçin.  
+    9,3 **kayıt** sırasında, git **' i seçin ve** ardından kasa kayıt anahtarı dosyasını yerleştirdiğiniz yere gidin. **İleri**’yi seçin.  
     9,4 **Internet ayarları**'nda, **proxy sunucusu olmadan Azure Site Recovery Bağlan**' ı seçin ve ardından **İleri**' yi seçin.  
     9,5 **Önkoşul denetimi** sayfası, birkaç öğe için Denetim çalıştırır. Tamamlandığında, **İleri**’yi seçin.  
-    **MySQL yapılandırmasında**9,6 MySQL db için bir parola girin ve ardından **İleri**' yi seçin.  
+    **MySQL yapılandırmasında** 9,6 MySQL db için bir parola girin ve ardından **İleri**' yi seçin.  
     9,7 **ortam ayrıntılarında** **Hayır**' ı seçin. VM 'lerinizi korumanız gerekmez. Ardından **İleri**' yi seçin.  
-    9,8 **Install location**bölümünde, Varsayılanı kabul etmek için **İleri** ' yi seçin.  
+    9,8 **Install location** bölümünde, Varsayılanı kabul etmek için **İleri** ' yi seçin.  
     9,9 **ağ seçiminde**, Varsayılanı kabul etmek için **İleri** ' yi seçin.  
-    9,10 **Özet**bölümünde, **yüklensin**' i seçin.   
+    9,10 **Özet** bölümünde, **yüklensin**' i seçin.   
     9,11 **Yükleme ilerlemesi** , yükleme işlemi hakkındaki bilgileri gösterir. Tamamlandığında, **Bitir**’i seçin. Bir pencere sistemin yeniden başlatılması hakkında bir ileti görüntüler. **Tamam**’ı seçin.   
     9,12 sonra, bir pencerede yapılandırma sunucusu bağlantı parolası hakkında bir ileti görüntülenir. Parolayı panonuza kopyalayın ve kaynak VM 'lerdeki geçici bir metin dosyasına kaydedin. Bu parola, Mobility hizmeti yükleme işlemi sırasında daha sonra gerekecektir.
 10. Yükleme tamamlandıktan sonra gereç Yapılandırma Sihirbazı otomatik olarak başlatılır (gerecin masaüstünde oluşturulan Cspsconfigtool kısayolunu kullanarak Sihirbazı el ile de başlatabilirsiniz). Mobility hizmetinin göndererek yüklenmesi için kullanılacak hesap ayrıntılarını eklemek için sihirbazın hesapları Yönet sekmesini kullanın. Bu öğreticide, çoğaltılacak kaynak VM 'Lere Mobility hizmetini el ile yükleyeceğiz, bu nedenle bu adımda bir kukla hesap oluşturun ve devam edin. "Konuk" adlı kukla hesabı, Kullanıcı adı olarak "Kullanıcı adı" ve hesabın parolası olarak "parola" olarak oluşturmak için aşağıdaki ayrıntıları sağlayabilirsiniz. Çoğaltmayı etkinleştir aşamasında bu kukla hesabı kullanacaksınız. 
@@ -194,7 +170,7 @@ Geçişin ilk adımı, çoğaltma gerecini ayarlamaya yönelik. GCP VM 'Leri ge�
 Geçirilecek kaynak GCP sanal makinelerinde Mobility hizmeti aracısının yüklü olması gerekir. Aracı yükleyicileri, çoğaltma aracısında kullanılabilir. Doğru yükleyiciyi bulur ve geçirmek istediğiniz her makineye aracıyı yüklersiniz. Aşağıdaki gibi yapın:
 
 1. Çoğaltma gereci 'nda oturum açın.
-2. **%ProgramData%\asr\home\svsystems\pushınstallsvc\repository dizinine**gidin.
+2. **%ProgramData%\asr\home\svsystems\pushınstallsvc\repository dizinine** gidin.
 3. Kaynak GCP VM 'Leri işletim sistemi ve sürümü için yükleyiciyi bulun. [Desteklenen işletim sistemlerini](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines)gözden geçirin.
 4. Yükleyici dosyasını geçirmek istediğiniz kaynak GCP sanal makinesine kopyalayın.
 5. Çoğaltma gereci yüklerken oluşturulmuş olan kaydedilmiş parola metin dosyasına sahip olduğunuzdan emin olun.
@@ -250,13 +226,13 @@ Geçirilecek kaynak GCP sanal makinelerinde Mobility hizmeti aracısının yükl
 
     ![Sanal makineleri çoğaltma](./media/tutorial-migrate-physical-virtual-machines/select-replicate.png)
 
-2. **Çoğaltma**' da, makinelerinizde > **kaynak ayarları**  >  **sanallaştırılır mi?**, **sanallaştırılmamış/diğer**seçeneğini belirleyin.
-3. **Şirket içi gereç**bölümünde, ayarladığınız Azure geçiş gerecinin adını seçin.
+2. **Çoğaltma**' da, makinelerinizde > **kaynak ayarları**  >  **sanallaştırılır mi?**, **sanallaştırılmamış/diğer** seçeneğini belirleyin.
+3. **Şirket içi gereç** bölümünde, ayarladığınız Azure geçiş gerecinin adını seçin.
 4. **Işlem sunucusu**' nda, çoğaltma gerecinin adını seçin. 
 5. **Konuk kimlik bilgileri**' nde, Mobility hizmetini el ile yüklemek için lütfen daha önce [çoğaltma yükleyicisi kurulumu](#download-the-replication-appliance-installer) sırasında oluşturulan kukla hesabı seçin (gönderme yüklemesi desteklenmez). Ileri ' ye tıklayın **: sanal makineler**.   
  
     ![Çoğaltma ayarları](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
-6. **Sanal makinelerde** **geçiş ayarlarını bir değerlendirmede içeri aktar**bölümünde, varsayılan ayar Hayır olarak kalsın **, geçiş ayarlarını el ile belirteceğiz**.
+6. **Sanal makinelerde** **geçiş ayarlarını bir değerlendirmede içeri aktar** bölümünde, varsayılan ayar Hayır olarak kalsın **, geçiş ayarlarını el ile belirteceğiz**.
 7. Geçirmek istediğiniz her VM 'yi denetleyin. Ardından Ileri ' ye tıklayın **: hedef ayarlar**.
 
     ![VM 'Leri seçin](./media/tutorial-migrate-physical-virtual-machines/select-vms.png)
@@ -273,9 +249,9 @@ Geçirilecek kaynak GCP sanal makinelerinde Mobility hizmeti aracısının yükl
 
     ![Hedef ayarları](./media/tutorial-migrate-physical-virtual-machines/target-settings.png)
 
-12. **İşlem**bölümünde VM adı, boyutu, işletim sistemi disk türü ve kullanılabilirlik yapılandırmasını (önceki adımda seçildiyse) gözden geçirin. VM’ler [Azure gereksinimleriyle](migrate-support-matrix-physical-migration.md#azure-vm-requirements)uyumlu olmalıdır.
+12. **İşlem** bölümünde VM adı, boyutu, işletim sistemi disk türü ve kullanılabilirlik yapılandırmasını (önceki adımda seçildiyse) gözden geçirin. VM’ler [Azure gereksinimleriyle](migrate-support-matrix-physical-migration.md#azure-vm-requirements)uyumlu olmalıdır.
 
-    - **VM boyutu**: değerlendirme önerilerini KULLANıYORSANıZ, VM boyutu açılan listesi önerilen boyutu gösterir. Aksi takdirde Azure Geçişi, Azure aboneliğindeki en yakın eşleşmeye göre bir boyut seçer. Alternatif olarak **Azure VM boyutu **’nda el ile bir boyut seçin.
+    - **VM boyutu**: değerlendirme önerilerini KULLANıYORSANıZ, VM boyutu açılan listesi önerilen boyutu gösterir. Aksi takdirde Azure Geçişi, Azure aboneliğindeki en yakın eşleşmeye göre bir boyut seçer. Alternatif olarak **Azure VM boyutu**’nda el ile bir boyut seçin.
     - **Işletim sistemi diski**: VM için işletim sistemi (önyükleme) diskini belirtin. İşletim Sistemi diski, işletim sistemi önyükleyiciye ve yükleyiciye sahip disktir.
     - **Kullanılabilirlik alanı**: kullanılacak kullanılabilirlik bölgesini belirtin.
     - **Kullanılabilirlik kümesi**: kullanılacak kullanılabilirlik kümesini belirtin.
@@ -291,7 +267,7 @@ Geçirilecek kaynak GCP sanal makinelerinde Mobility hizmeti aracısının yükl
 14. **Çoğaltmayı gözden geçir ve başlat** bölümünde ayarları gözden geçirin ve sunuculara yönelik ilk çoğaltmayı başlatmak için **Çoğalt** üzerine tıklayın.
 
 > [!NOTE]
-> Çoğaltma ayarlarını, çoğaltma başlamadan önce dilediğiniz zaman güncelleştirebilirsiniz, **Manage**  >  **çoğaltılan makineleri**yönetin. Çoğaltma başladıktan sonra ayarlar değiştirilemez.
+> Çoğaltma ayarlarını, çoğaltma başlamadan önce dilediğiniz zaman güncelleştirebilirsiniz, **Manage**  >  **çoğaltılan makineleri** yönetin. Çoğaltma başladıktan sonra ayarlar değiştirilemez.
 
 ## <a name="track-and-monitor-replication-status"></a>Çoğaltma durumunu izleme ve izleme
 

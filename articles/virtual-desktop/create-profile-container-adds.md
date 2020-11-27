@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ea834ed874f3011d95f8b924df860576f72bc4ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70a56b7efc34ba2fd3c06521c6e4cac6ea28778f
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88825622"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302478"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Azure dosyaları ve Azure AD DS bir profil kapsayıcısı oluşturma
 
@@ -67,7 +67,7 @@ Kullanıcılara erişim izinleri atamak için:
 
 4. **Rol ataması Ekle** sekmesinde rol listesinden uygun yerleşik rolü seçin. Uygun izinleri almak için hesap için en az **depolama dosya VERI SMB paylaşımında katkıda bulunan** ' ı seçmeniz gerekir.
 
-5. **Erişim atama**için **Kullanıcı, Grup veya hizmet sorumlusu Azure Active Directory**seçin.
+5. **Erişim atama** için **Kullanıcı, Grup veya hizmet sorumlusu Azure Active Directory** seçin.
 
 6. Hedef Azure Active Directory kimliği için bir ad veya e-posta adresi seçin.
 
@@ -83,7 +83,7 @@ Depolama hesabı erişim anahtarını almak için:
 
 2. Depolama hesapları listesinden, Azure AD DS 'yi etkinleştirdiğiniz hesabı seçin ve yukarıdaki adımlarda özel rolleri oluşturdunuz.
 
-3. **Ayarlar**altında **erişim anahtarları** ' nı seçin ve anahtarı **KEY1**' dan kopyalayın.
+3. **Ayarlar** altında **erişim anahtarları** ' nı seçin ve anahtarı **KEY1**' dan kopyalayın.
 
 4. **Sanal makineler** sekmesine gidin ve konak havuzunuzun parçası olacak tüm VM 'leri bulun.
 
@@ -99,7 +99,7 @@ Depolama hesabı erişim anahtarını almak için:
 7. Şu komutu çalıştırın:
 
      ```cmd
-     net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
+     net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> /user:Azure\<storage-account-name> <storage-account-key>
      ```
 
     - `<desired-drive-letter>`Tercih ettiğiniz bir sürücü harfiyle değiştirin (örneğin, `y:` ).
@@ -142,24 +142,24 @@ FSLogix profil kapsayıcısını yapılandırmak için:
 
 1. Bu makalenin başlangıcında yapılandırdığınız oturum ana bilgisayarında oturum açın, ardından [FSLogix aracısını indirip yükleyin](/fslogix/install-ht/).
 
-2. İndirdiğiniz fslogix aracı dosyasını açın ve **x64**  >  **sürümleri**' ne gidin ve ardından **FSLogixAppsSetup.exe**açın.
+2. İndirdiğiniz fslogix aracı dosyasını açın ve **x64**  >  **sürümleri**' ne gidin ve ardından **FSLogixAppsSetup.exe** açın.
 
 3. Yükleyici başlatıldıktan sonra **Lisans hüküm ve koşullarını kabul** ediyorum ' u seçin. Uygulanabiliyorsa, yeni bir anahtar sağlayın.
 
-4. **Yükle**'yi seçin.
+4. **Yükle**’yi seçin.
 
-5. **Drive C** **Program Files**  >  **FSLogix**  >  Fslogix aracısının düzgün yüklendiğinden emin olmak için sürücü C 'yi açın ve Program Files fslogix**uygulamalarına** gidin.
+5. **Drive C** **Program Files**  >  **FSLogix**  >  Fslogix aracısının düzgün yüklendiğinden emin olmak için sürücü C 'yi açın ve Program Files fslogix **uygulamalarına** gidin.
 
      >[!NOTE]
      > Konak havuzunda birden çok VM varsa, her VM için 1 ile 5 arasındaki adımları tekrarlamanız gerekir.
 
 6. **Kayıt defteri Düzenleyicisi 'ni** (regedit) yönetici olarak çalıştırın.
 
-7. **Bilgisayar**  >  **HKEY_LOCAL_MACHINE**  >  **yazılım**  >  **fslogix**' e gidin, **fslogix**öğesine sağ tıklayın, **Yeni**' yi seçin ve ardından **anahtar**' ı seçin.
+7. **Bilgisayar**  >  **HKEY_LOCAL_MACHINE**  >  **yazılım**  >  **fslogix**' e gidin, **fslogix** öğesine sağ tıklayın, **Yeni**' yi seçin ve ardından **anahtar**' ı seçin.
 
-8. **Profiller**adlı yeni bir anahtar oluşturun.
+8. **Profiller** adlı yeni bir anahtar oluşturun.
 
-9.  **Profiller**' e sağ tıklayın, **Yeni**' yi ve ardından **DWORD (32-bit) değeri** ' ni seçin. Değeri **etkin** olarak adlandırın ve **veri** değerini **1**olarak ayarlayın.
+9.  **Profiller**' e sağ tıklayın, **Yeni**' yi ve ardından **DWORD (32-bit) değeri** ' ni seçin. Değeri **etkin** olarak adlandırın ve **veri** değerini **1** olarak ayarlayın.
 
     > [!div class="mx-imgBorder"]
     > ![Profiller anahtarının ekran görüntüsü. REG_DWORD dosyası vurgulanır ve veri değeri 1 olarak ayarlanır.](media/dword-value.png)

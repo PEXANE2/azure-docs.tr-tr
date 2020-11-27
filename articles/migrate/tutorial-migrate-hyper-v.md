@@ -6,12 +6,12 @@ ms.date: 06/08/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 84f04d2f1f8c9b54a1f2a2a13cc97954ac5add90
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 038d0ec817d4f81371546e8d7aa4b48b299c8d98
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995327"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302556"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Hyper-V VM’lerini Azure’a geçirme 
 
@@ -43,23 +43,9 @@ Bu öğreticiye başlamadan önce karşılamanız gereken ön koşullar şunlard
 2. [İnceleme](migrate-support-matrix-hyper-v-migration.md#hyper-v-host-requirements) Geçiş için Hyper-V konak gereksinimleri ve Hyper-V konaklarının ve kümelerinin VM geçişi için erişmesi gereken Azure URL 'Leri.
 3. Azure 'a geçirmek istediğiniz Hyper-V VM 'lerinin gereksinimlerini [gözden geçirin](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms) .
 4. [Hyper-V VM](tutorial-assess-hyper-v.md) 'lerini Azure 'a geçirmeden önce değerlendirmenizi öneririz, ancak şunları yapmanız gerekmez.
+5. Zaten oluşturulmuş projeye git veya [Yeni bir proje oluştur](https://docs.microsoft.com/azure/migrate/create-manage-projects)
+6. Azure hesabınız için izinleri doğrulama-Azure hesabınız, bir VM oluşturmak ve Azure yönetilen diskine yazmak için izinlere ihtiyaç duyuyor.
 
-   
-## <a name="add-the-azure-migrateserver-migration-tool"></a>Azure geçişi: sunucu geçiş aracı ekleme
-
-Azure geçişi: sunucu geçiş aracı 'nı ekleyin. Henüz bir Azure geçişi projesi oluşturmanız gerekmiyorsa, [önce](how-to-add-tool-first-time.md) bir Azure geçişi projesi ayarlayın. Projeyi oluştururken Azure geçişi: sunucu geçiş aracını eklersiniz.
-
-Ayarlanmış bir projeniz varsa, aracı aşağıdaki gibi ekleyin:
-
-1. Azure geçişi projesinde **Genel Bakış ' a** tıklayın. 
-2. **Bul, değerlendir ve geçiş sunucuları**' nda, **sunucuları değerlendir ve geçir**' e tıklayın.
-3. **Geçiş araçları**' nda, geçişe **hazır olduğunuzda bir geçiş aracı eklemek Için buraya tıklayın ' ı** seçin.
-
-    ![Bir araç seçin](./media/tutorial-migrate-hyper-v/select-migration-tool.png)
-
-4. Araçlar listesinde **Azure geçişi: sunucu geçişi**  >  **ekleme aracı** ' nı seçin.
-
-    ![Sunucu Geçişi aracı](./media/tutorial-migrate-hyper-v/server-migration-tool.png)
 
 ## <a name="download-and-install-the-provider"></a>Sağlayıcıyı indirme ve yükleme
 

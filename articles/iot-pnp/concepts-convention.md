@@ -7,12 +7,12 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: a58fa45f47ee8dce4ec96591551abad76c1218ee
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 86c6ea9dded423e7bd513faf73adfd293f2bd38f
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045491"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302613"
 ---
 # <a name="iot-plug-and-play-conventions"></a>IoT Tak Çalıştır kuralları
 
@@ -22,8 +22,8 @@ Cihazlar [modüller](../iot-hub/iot-hub-devguide-module-twins.md)içerebilir vey
 
 IoT Tak ve Kullan cihazının [dijital bir TWINS tanım dili v2 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) modeliyle uyguladığı telemetri, özellik ve komutları _betimleyebilirsiniz_. Bu makalede başvurulan iki tür model vardır:
 
-- **Bileşen yok** -bileşeni olmayan bir model. Model, ana arabirimin içerikler bölümünde telemetri, özellik ve komutları en üst düzey özellikler olarak bildirir. Azure IoT gezgin aracında, bu model tek bir _varsayılan bileşen_olarak görünür.
-- **Birden çok bileşen** -iki veya daha fazla arabirimden oluşan bir model. Telemetri, Özellikler ve komutlarla _varsayılan bileşen_olarak görünen ana arabirim. Ek telemetri, özellik ve komutlarla bileşen olarak belirtilen bir veya daha fazla arabirim.
+- **Bileşen yok** -bileşeni olmayan bir model. Model, ana arabirimin içerikler bölümünde telemetri, özellik ve komutları en üst düzey özellikler olarak bildirir. Azure IoT gezgin aracında, bu model tek bir _varsayılan bileşen_ olarak görünür.
+- **Birden çok bileşen** -iki veya daha fazla arabirimden oluşan bir model. Telemetri, Özellikler ve komutlarla _varsayılan bileşen_ olarak görünen ana arabirim. Ek telemetri, özellik ve komutlarla bileşen olarak belirtilen bir veya daha fazla arabirim.
 
 Daha fazla bilgi için bkz. [modellerdeki ıot Tak ve kullan bileşenleri](concepts-components.md).
 
@@ -43,7 +43,7 @@ Bileşen olmayan bir cihazdan gönderilen telemetri hiçbir ek meta veri gerekti
 
 Birden çok bileşen cihazından gönderilen telemetri `$.sub` bir ileti özelliği olarak eklememelidir. Sistem, `dt-subject` ve özelliklerini ekler `dt-dataschema` .
 
-## <a name="read-only-properties"></a>Salt okunurdur özellikleri
+## <a name="read-only-properties"></a>Salt okunur özellikler
 
 ### <a name="sample-no-component-read-only-property"></a>Bileşen olmayan salt okuma özelliği örneği
 
@@ -79,7 +79,7 @@ DTDL:
 
 Cihazın veya modülün, `{"__t": "c"}` öğenin bir bileşene başvurduğunu göstermek için işaretçiyi eklemesi gerekir.
 
-DTDL:
+Bir bileşene başvuran DTDL:
 
 ```json
 {
@@ -95,7 +95,11 @@ DTDL:
     }
   ]
 }
+```
 
+Bileşeni tanımlayan DTDL:
+
+```json
 {
   "@context": "dtmi:dtdl:context;2",
   "@id": "dtmi:com:example:Thermostat;1",
@@ -132,7 +136,7 @@ Cihaz veya modül bildirilen bir özellik göndererek özelliği aldığını on
 
 Bir cihaz başlatıldığında cihaz ikizi istemeli ve yazılabilir Özellik güncelleştirmelerini denetlemelidir. Cihaz çevrimdışıyken yazılabilir bir özelliğin sürümü artmışsa, cihazın güncelleştirmeyi aldığını onaylamak için bildirilen bir özellik yanıtı göndermelidir.
 
-Bir cihaz ilk kez başlatıldığında, bundan sonra bildirilen bir özellik için bir başlangıç değeri gönderebilir ve bu, hub 'dan istenen bir özelliği almaz. Bu durumda, cihaz `av` olarak ayarlanmalıdır `1` . Örnek:
+Bir cihaz ilk kez başlatıldığında, bundan sonra bildirilen bir özellik için bir başlangıç değeri gönderebilir ve bu, hub 'dan istenen bir özelliği almaz. Bu durumda, cihaz `av` olarak ayarlanmalıdır `1` . Örneğin:
 
 ```json
 "reported": {
@@ -255,7 +259,7 @@ Bir cihaz tek bir yükte birden çok bildirilen özellikleri aldığında, bildi
 
 Cihaz veya modül bildirilen özellikleri göndererek özellikleri aldığını onaylamasını sağlamalıdır:
 
-DTDL:
+Bir bileşene başvuran DTDL:
 
 ```json
 {
@@ -271,7 +275,11 @@ DTDL:
     }
   ]
 }
+```
 
+Bileşeni tanımlayan DTDL:
+
+```json
 {
   "@context": "dtmi:dtdl:context;2",
   "@id": "dtmi:com:example:Thermostat;1",

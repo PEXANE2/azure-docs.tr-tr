@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
-ms.openlocfilehash: 00501a1e17f8e085b817cfe3dac819ba890248f5
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c69ed7b9e2aaa7113637868e1c1329ed2962b931
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309851"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302784"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-classic-from-various-data-sources"></a>Eğitim verilerinizi çeşitli veri kaynaklarından Azure Machine Learning Studio (klasik) içine aktarın
 
-**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 
 Bir tahmine dayalı analiz çözümü geliştirmek ve eğitebilmek için Machine Learning Studio (klasik) içinde kendi verilerinizi kullanmak için şu verileri kullanabilirsiniz: 
@@ -54,7 +54,7 @@ Verileri içeri aktarmak için kullandığınız mekanizmaya ve nereden geldiği
 * SQL veritabanı tablosu
 * OData değerleri
 * SVMLight verileri (. svmlight) (biçim bilgileri için [svmlight tanımına](http://svmlight.joachims.org/) bakın)
-* Öznitelik Ilişki dosyası biçimi (ARFF) verileri (. arff) (biçim bilgileri için [arff tanımına](https://weka.wikispaces.com/ARFF) bakın)
+* Öznitelik Ilişki dosyası biçimi (ARFF) verileri (. arff) (biçim bilgileri için [arff tanımına](https://www.cs.waikato.ac.nz/ml/weka/arff.html) bakın)
 * ZIP dosyası (. zip)
 * R nesnesi veya çalışma alanı dosyası (. RDATA
 
@@ -73,12 +73,12 @@ Aşağıdaki veri türleri Studio tarafından tanınır (klasik):
 * DateTime
 * TimeSpan
 
-Studio, modüller arasında veri geçirmek için * **veri tablosu** _ adlı bir iç veri türü kullanır. Veri [kümesine Dönüştür][convert-to-dataset] modülünü kullanarak verilerinizi veri tablosu biçimine açıkça dönüştürebilirsiniz.
+Studio, modüller arasında veri geçirmek için ***veri tablosu** _ adlı bir iç veri türü kullanır. Veri [kümesine Dönüştür][convert-to-dataset] modülünü kullanarak verilerinizi veri tablosu biçimine açıkça dönüştürebilirsiniz.
 
 Veri tablosu dışındaki biçimleri kabul eden herhangi bir modül, verileri bir sonraki modüle geçirmeden önce sessizce veri tablosuna dönüştürür.
 
 Gerekirse, diğer dönüştürme modüllerini kullanarak veri tablosu biçimini CSV, TSV, ARFF veya SVMLight biçimine dönüştürebilirsiniz.
-Bu işlevleri gerçekleştiren modüller için modül paleti ' nin _ *veri biçimi dönüştürmeleri* * bölümüne bakın.
+Bu işlevleri gerçekleştiren modüller için modül paleti ' nin _ *veri biçimi dönüştürmeleri** bölümüne bakın.
 
 ## <a name="data-capacities"></a>Veri kapasiteleri
 
@@ -110,7 +110,7 @@ Sabit sürücünüzden, Studio 'da eğitim verileri olarak kullanılacak bir ver
 Yerel bir sabit sürücüden verileri içeri aktarmak için aşağıdakileri yapın:
 
 1. Studio (klasik) penceresinin alt kısmındaki **+ Yeni** seçeneğine tıklayın.
-2. **Veri kümesi** ve **yerel dosya** ' yı seçin.
+2. **Veri kümesi** ve **yerel dosya**' yı seçin.
 3. **Yeni bir veri kümesini karşıya yükle** iletişim kutusunda, karşıya yüklemek istediğiniz dosyaya gidin.
 4. Bir ad girin, veri türünü belirtin ve isteğe bağlı olarak bir açıklama girin. Bir açıklama önerilir; gelecekte verileri kullanırken hatırlamak istediğiniz veriler hakkında herhangi bir özelliği kaydetmenize olanak tanır.
 5. Bu onay kutusu, **mevcut bir veri kümesinin yeni sürümüdür** ve mevcut bir veri kümesini yeni verilerle güncelleştirmenize olanak tanır. Bunu yapmak için, bu onay kutusuna tıklayın ve ardından mevcut bir veri kümesinin adını girin.
@@ -172,7 +172,7 @@ Azure Machine Learning Studio (klasik) **veri alma** modülü aşağıdaki veri 
 Bir deneyden bir ara sonuç almak ve bunu başka bir deneyin parçası olarak kullanmak isteyeceğiniz durumlar olacaktır. Bunu yapmak için, modülü bir veri kümesi olarak kaydedersiniz:
 
 1. Veri kümesi olarak kaydetmek istediğiniz modülün çıktısına tıklayın.
-2. **Veri kümesi olarak kaydet** ' e tıklayın.
+2. **Veri kümesi olarak kaydet**' e tıklayın.
 3. İstendiğinde, veri kümesini kolayca tanımlamanızı sağlayacak bir ad ve açıklama girin.
 4. **Tamam** onay işaretine tıklayın.
 

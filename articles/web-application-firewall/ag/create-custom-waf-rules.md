@@ -8,12 +8,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 11/20/2020
 ms.author: victorh
-ms.openlocfilehash: f164418c29e9838928f3d03519342ebef40e16e7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: b14bd60ab744be5a1735abc073f32f8ebc3e1ab1
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015706"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301709"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules-on-application-gateway"></a>Web uygulaması güvenlik duvarı v2 özel kurallarını oluşturma ve kullanma Application Gateway
 
@@ -21,7 +21,7 @@ Azure Application Gateway Web uygulaması güvenlik duvarı (WAF) v2, Web uygula
 
 Bu makalede, v2 WAF 'niz ile oluşturabileceğiniz ve kullanabileceğiniz bazı örnek özel kurallar gösterilmektedir. Azure PowerShell kullanarak bir WAF 'yi özel bir kuralla dağıtmayı öğrenmek için, bkz. [Azure PowerShell kullanarak Web uygulaması güvenlik duvarı özel kurallarını yapılandırma](configure-waf-custom-rules.md).
 
-Bu makalede gösterilen JSON parçacıkları bir [Applicationgatewaywebapplicationfirewallpolicies](/templates/microsoft.network/applicationgatewaywebapplicationfirewallpolicies) kaynağından türetilir.
+Bu makalede gösterilen JSON parçacıkları bir [Applicationgatewaywebapplicationfirewallpolicies](/azure/templates/microsoft.network/applicationgatewaywebapplicationfirewallpolicies) kaynağından türetilir.
 
 >[!NOTE]
 > Uygulama ağ geçidiniz WAF katmanını kullanmıyor ise, uygulama ağ geçidini WAF katmanına yükseltme seçeneği sağ bölmede görüntülenir.

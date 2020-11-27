@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: 2f16ed3c455067ff2fa185bff023a6993ccda58c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a36eb21f681aec1cfc52a000b60bdbc30cab0633
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311964"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302801"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-machine-learning-studio-classic"></a>Machine Learning Studio için net # sinir ağ belirtim diline kılavuzluk (klasik)
 
-**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir. ](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
+**Uygulama hedefi:** ![ İçin geçerlidir. ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ için geçerlidir.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)  
 
 NET #, Microsoft tarafından geliştirilen ve derin sinir ağları ya da rastgele boyutlardaki evler gibi karmaşık sinir ağ mimarilerini tanımlamak için kullanılan bir dildir. Görüntü, video veya ses gibi verilerin öğrenmesini geliştirmek için karmaşık yapıları kullanabilirsiniz.
 
@@ -40,7 +40,7 @@ Bu makalede, net # kullanarak özel bir sinir ağı geliştirmek için gereken t
 
 Bir sinir ağ yapısı, katmanlarda düzenlenmiş düğümlerden oluşur ve düğümler arasında bağlantıları (veya kenarları) ağırlıklı olarak kapsar. Bağlantılar yönlüdür ve her bağlantının bir kaynak düğümü ve bir hedef düğümü vardır.
 
-Her bir veya daha fazla **bağlantı paketi** (gizli veya çıkış katmanı), bir veya daha fazla bağlantı paketinde bulunur. Bir bağlantı paketi, kaynak katmandan ve bu kaynak katmandaki bağlantılardan oluşan bir belirtiden oluşur. Belirli bir paketteki tüm bağlantılar kaynak ve hedef katmanları paylaşır. NET # öğesinde, bir bağlantı paketi, paketin hedef katmanına ait olduğu kabul edilir.
+Her bir veya daha fazla **bağlantı paketi**(gizli veya çıkış katmanı), bir veya daha fazla bağlantı paketinde bulunur. Bir bağlantı paketi, kaynak katmandan ve bu kaynak katmandaki bağlantılardan oluşan bir belirtiden oluşur. Belirli bir paketteki tüm bağlantılar kaynak ve hedef katmanları paylaşır. NET # öğesinde, bir bağlantı paketi, paketin hedef katmanına ait olduğu kabul edilir.
 
 NET #, girişlerin gizli katmanlarla eşlenme ve çıkışlarla eşlenme şeklini özelleştirmenize olanak sağlayan çeşitli türlerde bağlantı paketlerini destekler.
 
@@ -80,7 +80,7 @@ Ortak makine öğrenimi görevleri için sinir ağlarını tanımlama örnekleri
 
 ## <a name="structure-specifications"></a>Yapı belirtimleri
 
-Sinir ağ yapısı belirtimi üç bölümden oluşur: **sabit bildirim** , **Katman bildirimi** , **bağlantı bildirimi**. Ayrıca, isteğe bağlı bir **Share bildirimi** bölümü de vardır. Bölümler herhangi bir sırada belirlenebilir.
+Sinir ağ yapısı belirtimi üç bölümden oluşur: **sabit bildirim**, **Katman bildirimi**, **bağlantı bildirimi**. Ayrıca, isteğe bağlı bir **Share bildirimi** bölümü de vardır. Bölümler herhangi bir sırada belirlenebilir.
 
 ## <a name="constant-declaration"></a>Sabit bildirimi
 
@@ -192,21 +192,21 @@ Evsel paketlerde aşağıdaki öznitelikler desteklenir:
 
 **Inputshape** , bu evsel paketin amaçları doğrultusunda kaynak katmanın boyutlılık düzeyini tanımlar. Değer pozitif tamsayılar grubu olmalıdır. Tamsayıların çarpımı kaynak katmandaki düğüm sayısına eşit olmalıdır, ancak Aksi takdirde, kaynak katman için belirtilen boyutalya uyması gerekmez. Bu kayıt düzeninin uzunluğu, evsel paket için **parametre sayısı** değeri olur. Genellikle parametre sayısı, bir işlevin götürebileceğiniz bağımsız değişken veya işlenen sayısını ifade eder.
 
-Kernels 'in şeklini ve konumlarını tanımlamak için, **Kernelshape** , ilerme, **doldurma** , **küçük** **panel** ve en büyük **panel** özniteliklerini kullanın:
+Kernels 'in şeklini ve konumlarını tanımlamak için, **Kernelshape**, ilerme, **doldurma**, **küçük** **panel** ve en büyük **panel** özniteliklerini kullanın:
 
-+ **Kernelshape** : (gerekli), her bir çekirdeğin, evsel paket için boyutlılık sayısını tanımlar. Değer, bir uzunluğu paketin parametre sayısına eşit olan pozitif tamsayılar grubu olmalıdır. Bu kayıt düzeninin her bileşeni, **ınputshape** 'in karşılık gelen bileşenlerinden daha büyük olmamalıdır.
++ **Kernelshape**: (gerekli), her bir çekirdeğin, evsel paket için boyutlılık sayısını tanımlar. Değer, bir uzunluğu paketin parametre sayısına eşit olan pozitif tamsayılar grubu olmalıdır. Bu kayıt düzeninin her bileşeni, **ınputshape**'in karşılık gelen bileşenlerinden daha büyük olmamalıdır.
 
-+ **İlerleme** : (isteğe bağlı), merkezi düğümler arasındaki mesafe olan evlenme (her boyut için bir adım boyutunda) kayan adım boyutlarını tanımlar. Değer, bir uzunluğun parametre sayısı olan pozitif tamsayılar kümesi olmalıdır. Bu kayıt düzeninin her bileşeni, karşılık gelen **Kernelshape** bileşenlerinden daha büyük olmamalıdır. Varsayılan değer, tüm bileşenleri birine eşit olan bir tanımlama grubu olur.
++ **İlerleme**: (isteğe bağlı), merkezi düğümler arasındaki mesafe olan evlenme (her boyut için bir adım boyutunda) kayan adım boyutlarını tanımlar. Değer, bir uzunluğun parametre sayısı olan pozitif tamsayılar kümesi olmalıdır. Bu kayıt düzeninin her bileşeni, karşılık gelen **Kernelshape** bileşenlerinden daha büyük olmamalıdır. Varsayılan değer, tüm bileşenleri birine eşit olan bir tanımlama grubu olur.
 
-+ **Paylaşma** : (isteğe bağlı) her bir evlenme boyutu için ağırlık paylaşımını tanımlar. Değer, tek bir Boole değeri veya paket parametre sayısı olan bir Boolean değer kümesi olabilir. Tek bir Boole değeri, tüm bileşenleri belirtilen değere eşit olan doğru uzunlukta bir tanımlama grubu olacak şekilde genişletilir. Varsayılan değer, tüm doğru değerlerden oluşan bir tanımlama grubu olur.
++ **Paylaşma**: (isteğe bağlı) her bir evlenme boyutu için ağırlık paylaşımını tanımlar. Değer, tek bir Boole değeri veya paket parametre sayısı olan bir Boolean değer kümesi olabilir. Tek bir Boole değeri, tüm bileşenleri belirtilen değere eşit olan doğru uzunlukta bir tanımlama grubu olacak şekilde genişletilir. Varsayılan değer, tüm doğru değerlerden oluşan bir tanımlama grubu olur.
 
-+ **Mapcount** : (isteğe bağlı), evsel paket için özellik haritaları sayısını tanımlar. Değer, tek bir pozitif tamsayı veya paket parametre sayısı olan pozitif tamsayılar kümesi olabilir. Tek bir tamsayı değeri, belirtilen değere ve kalan tüm bileşenlere eşit olan ilk bileşenlere sahip doğru uzunlukta bir tanımlama grubu olacak şekilde genişletilir. Varsayılan değer bir değeridir. Özellik eşlemelerinin toplam sayısı, kayıt düzeni bileşenlerinin ürünüdür. Bileşenlerin tamamında bu toplam sayının düzenleme, özellik eşleme değerlerinin hedef düğümlerde nasıl gruplandığını belirler.
++ **Mapcount**: (isteğe bağlı), evsel paket için özellik haritaları sayısını tanımlar. Değer, tek bir pozitif tamsayı veya paket parametre sayısı olan pozitif tamsayılar kümesi olabilir. Tek bir tamsayı değeri, belirtilen değere ve kalan tüm bileşenlere eşit olan ilk bileşenlere sahip doğru uzunlukta bir tanımlama grubu olacak şekilde genişletilir. Varsayılan değer bir değeridir. Özellik eşlemelerinin toplam sayısı, kayıt düzeni bileşenlerinin ürünüdür. Bileşenlerin tamamında bu toplam sayının düzenleme, özellik eşleme değerlerinin hedef düğümlerde nasıl gruplandığını belirler.
 
-+ **Ağırlıklar** : (isteğe bağlı) paket için başlangıç ağırlıklarını tanımlar. Değer, bu makalede daha sonra tanımlandığı gibi, çekirdek başına düşen çekirdekler sayısı kadar olan kayan nokta değerlerinin bir kümesi olmalıdır. Varsayılan ağırlıklar rastgele oluşturulur.
++ **Ağırlıklar**: (isteğe bağlı) paket için başlangıç ağırlıklarını tanımlar. Değer, bu makalede daha sonra tanımlandığı gibi, çekirdek başına düşen çekirdekler sayısı kadar olan kayan nokta değerlerinin bir kümesi olmalıdır. Varsayılan ağırlıklar rastgele oluşturulur.
 
 Doldurmayı denetleyen iki özellik kümesi vardır: birbirini dışlayan Özellikler:
 
-+ **Doldurma** : (isteğe bağlı) girişin **varsayılan bir doldurma şeması** kullanılarak doldurulmuş olup olmayacağını belirler. Değer tek bir Boole değeri olabilir veya bir Boolean değer kümesi olabilir ve bu değer, paketin parametre sayısı olan bir uzunluğa sahip olabilir.
++ **Doldurma**: (isteğe bağlı) girişin **varsayılan bir doldurma şeması** kullanılarak doldurulmuş olup olmayacağını belirler. Değer tek bir Boole değeri olabilir veya bir Boolean değer kümesi olabilir ve bu değer, paketin parametre sayısı olan bir uzunluğa sahip olabilir.
 
     Tek bir Boole değeri, tüm bileşenleri belirtilen değere eşit olan doğru uzunlukta bir tanımlama grubu olacak şekilde genişletilir.
 
@@ -214,7 +214,7 @@ Doldurmayı denetleyen iki özellik kümesi vardır: birbirini dışlayan Özell
 
     Bir boyutun değeri false ise, çekirdekler, bırakılan her bir taraftaki düğümlerin sayısı aynı (1 ' e kadar bir farka kadar) olacak şekilde tanımlanır. Bu özniteliğin varsayılan değeri, tüm bileşenleri false değerine eşit olan bir tanımlama grubu olur.
 
-+ **Üsteli panel** ve küçük **panel** : (isteğe bağlı) kullanılacak doldurma miktarı üzerinde daha fazla denetim sağlar. **Önemli:** Bu öznitelikler ve yalnızca yukarıdaki **doldurma** özelliği **_not_*_ tanımlanmazsa tanımlanabilir. Değerler, paket parametre sayısı olan uzunluklara sahip tamsayı değerli diziler olmalıdır. Bu öznitelikler belirtildiğinde, giriş katmanının her boyutunun alt ve üst uçlarına "kukla" düğümler eklenir. Her boyuttaki alt ve üst uçlarına eklenen düğümlerin sayısı _* küçük panel** [i] ve en büyük **panel** [i] tarafından belirlenir.
++ **Üsteli panel** ve küçük **panel**: (isteğe bağlı) kullanılacak doldurma miktarı üzerinde daha fazla denetim sağlar. **Önemli:** Bu öznitelikler ve yalnızca yukarıdaki **doldurma** özelliği **_not_*_ tanımlanmazsa tanımlanabilir. Değerler, paket parametre sayısı olan uzunluklara sahip tamsayı değerli diziler olmalıdır. Bu öznitelikler belirtildiğinde, giriş katmanının her boyutunun alt ve üst uçlarına "kukla" düğümler eklenir. Her boyuttaki alt ve üst uçlarına eklenen düğümlerin sayısı _* küçük panel**[i] ve en büyük **panel**[i] tarafından belirlenir.
 
     Çekirdekler 'in yalnızca "gerçek" düğümlere karşılık geldiğinden ve "kukla" düğümlere karşılık gelmesini sağlamak için aşağıdaki koşulların karşılanması gerekir:
   - Küçük **panel** bileşeninin her bileşeni, öğesinden kesinlikle küçük olmalıdır `KernelShape[d]/2` .
@@ -225,12 +225,12 @@ Doldurmayı denetleyen iki özellik kümesi vardır: birbirini dışlayan Özell
 
 Evsel ağlar ve uygulamaları hakkında daha fazla bilgi için şu makalelere bakın:
 
-+ [http://deeplearning.net/tutorial/lenet.html](http://deeplearning.net/tutorial/lenet.html)
++ [http://d2l.ai/chapter_convolutional-neural-networks/lenet.html ](http://d2l.ai/chapter_convolutional-neural-networks/lenet.html )
 + [https://research.microsoft.com/pubs/68920/icdar03.pdf](https://research.microsoft.com/pubs/68920/icdar03.pdf)
 
 ## <a name="pooling-bundles"></a>Havuz demeti
 
-Bir **havuzlama paketi** , temel bağlantıya benzer bir geometri uygular, ancak hedef düğüm değerini türetmek için önceden tanımlanmış işlevler kaynak düğüm değerlerini kullanır. Bu nedenle, Havuzlama paketleri hiç bir duruma sahip değildir (ağırlık veya biases). Havuzlama paketleri **Paylaşım** , **Mapcount** ve **ağırlıklar** hariç tüm evsel öznitelikleri destekler.
+Bir **havuzlama paketi** , temel bağlantıya benzer bir geometri uygular, ancak hedef düğüm değerini türetmek için önceden tanımlanmış işlevler kaynak düğüm değerlerini kullanır. Bu nedenle, Havuzlama paketleri hiç bir duruma sahip değildir (ağırlık veya biases). Havuzlama paketleri **Paylaşım**, **Mapcount** ve **ağırlıklar** hariç tüm evsel öznitelikleri destekler.
 
 Genellikle, bitişik havuz birimlerine göre özetlenen çekirdekler çakışmaz. Her boyutta [d] Ilerlemesiyle, her boyuttaki KernelShape [d] değerine eşitse, elde edilen katman, genellikle evsel sinir ağlarında kullanılan geleneksel yerel havuz katmanıdır. Her hedef düğüm, kaynak katmandaki çekirdeğin etkinliklerinin en büyük veya ortalama sayısını hesaplar.
 
@@ -260,15 +260,15 @@ Havuz oluşturma katmanları hakkında daha fazla bilgi için şu makalelere bak
 
 **Yanıt normalleştirme** , [derin evsel sinir ağlarla kağıt Imagenet sınıflandırmasında](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf)Ilk olarak Geoffey Hinton, et al tarafından tanıtılan yerel bir normalleştirme düzenidir.
 
-Yanıt normalleştirme, sinir ağlarında genelleştirmeye yardımcı olmak için kullanılır. Bir neuron çok yüksek etkinleştirme düzeyinde başlatıldığında, yerel bir yanıt normalleştirme katmanı, çevreleyen eklentilerin etkinleştirme düzeyini bastırır. Bu, üç parametre ( `α` , `β` , ve `k` ) ve bir evsel yapı (veya komşu şekli) kullanılarak yapılır. Hedef katman **y** içindeki her neuron kaynak katmandaki bir neuron **x** 'e karşılık gelir. **Y** etkinleştirme düzeyi aşağıdaki formül tarafından verilir, burada `f` bir neuron öğesinin etkinleştirme düzeyidir ve `Nx` çekirdek (ya da **x** 'in komşuları içindeki neurons 'yi içeren küme) aşağıdaki alt yapı tarafından tanımlandığı şekilde belirlenir:
+Yanıt normalleştirme, sinir ağlarında genelleştirmeye yardımcı olmak için kullanılır. Bir neuron çok yüksek etkinleştirme düzeyinde başlatıldığında, yerel bir yanıt normalleştirme katmanı, çevreleyen eklentilerin etkinleştirme düzeyini bastırır. Bu, üç parametre ( `α` , `β` , ve `k` ) ve bir evsel yapı (veya komşu şekli) kullanılarak yapılır. Hedef katman **y** içindeki her neuron kaynak katmandaki bir neuron **x** 'e karşılık gelir. **Y** etkinleştirme düzeyi aşağıdaki formül tarafından verilir, burada `f` bir neuron öğesinin etkinleştirme düzeyidir ve `Nx` çekirdek (ya da **x**'in komşuları içindeki neurons 'yi içeren küme) aşağıdaki alt yapı tarafından tanımlandığı şekilde belirlenir:
 
 ![Evsel yapı için formül](./media/azure-ml-netsharp-reference-guide/formula_large.png)
 
-Yanıt normalleştirme paketleri, **Paylaşım** , **Mapcount** ve **ağırlıklar** hariç tüm evsel öznitelikleri destekler.
+Yanıt normalleştirme paketleri, **Paylaşım**, **Mapcount** ve **ağırlıklar** hariç tüm evsel öznitelikleri destekler.
 
 + Çekirdek x _ ile aynı haritada neurlanlar içeriyorsa **_x_*, normalleştirme şeması _* aynı eşleme normalleştirmesi olarak adlandırılır**. Aynı eşleme normalleştirmesini tanımlamak için **ınputshape** içindeki ilk koordinat 1 değerini içermelidir.
 
-+ Çekirdek, x _ ile aynı uzamsal konumdaki neurlanlar içeriyorsa **_x_*, ancak şemaların diğer Eşlemlerde olması halinde, normalleştirme şeması* , haritalar normalleştirmede _ olarak adlandırılır**. Bu tür bir yanıt normalleştirme, gerçek olarak bulunan tür tarafından ilham olarak bulunan, büyük etkinleştirme düzeyleri için, farklı haritalar üzerinde hesaplanan neuron çıkışları arasında rekabet oluşturma gibi bir yan yana engelleme biçimi uygular. Haritalar normalleştirmesini belirlemek için ilk koordinat, bir tamsayı ve eşleme sayısından büyük bir tamsayı olmalıdır ve koordinatların geri kalanı 1 değerini içermelidir.
++ Çekirdek, x _ ile aynı uzamsal konumdaki neurlanlar içeriyorsa **_x_*, ancak şemaların diğer Eşlemlerde olması halinde, normalleştirme şeması*, haritalar normalleştirmede _ olarak adlandırılır**. Bu tür bir yanıt normalleştirme, gerçek olarak bulunan tür tarafından ilham olarak bulunan, büyük etkinleştirme düzeyleri için, farklı haritalar üzerinde hesaplanan neuron çıkışları arasında rekabet oluşturma gibi bir yan yana engelleme biçimi uygular. Haritalar normalleştirmesini belirlemek için ilk koordinat, bir tamsayı ve eşleme sayısından büyük bir tamsayı olmalıdır ve koordinatların geri kalanı 1 değerini içermelidir.
 
 Yanıt normalleştirme paketleri, hedef düğüm değerini belirlemede önceden tanımlanmış bir işlevi kaynak düğüm değerlerine uygulayarak, hiçbir zaman kaybı yoktur (ağırlık veya Bialar).
 
@@ -277,9 +277,9 @@ Yanıt normalleştirme paketleri, hedef düğüm değerini belirlemede önceden 
 
 Daha önce açıklanan dört özniteliğe ek olarak, yanıt normalleştirme paketleri de aşağıdaki öznitelikleri destekler:
 
-+ **Alfa** : (gerekli) önceki formülde karşılık gelen bir kayan nokta değeri belirtir `α` .
-+ **Beta** : (gerekli) önceki formülde karşılık gelen bir kayan nokta değeri belirtir `β` .
-+ **Kaydırma** : (isteğe bağlı) önceki formülde karşılık gelen kayan nokta değerini belirtir `k` . Varsayılan olarak 1 ' dir.
++ **Alfa**: (gerekli) önceki formülde karşılık gelen bir kayan nokta değeri belirtir `α` .
++ **Beta**: (gerekli) önceki formülde karşılık gelen bir kayan nokta değeri belirtir `β` .
++ **Kaydırma**: (isteğe bağlı) önceki formülde karşılık gelen kayan nokta değerini belirtir `k` . Varsayılan olarak 1 ' dir.
 
 Aşağıdaki örnek, bu öznitelikleri kullanarak bir yanıt normalleştirme paketi tanımlar:
 

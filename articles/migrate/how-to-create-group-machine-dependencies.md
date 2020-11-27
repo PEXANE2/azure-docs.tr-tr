@@ -3,16 +3,16 @@ title: Azure geçişi sunucu değerlendirmesi 'nde aracı tabanlı bağımlılı
 description: Bu makalede, Azure geçişi sunucu değerlendirmesi ' nde aracı tabanlı bağımlılık analizinin nasıl ayarlanacağı açıklanır.
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 17c6e3e24596727350b11946bdf6896e22d41529
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 58c1aeea00ae033def0f45d220c12d13cc28b4b2
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96028971"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302845"
 ---
 # <a name="set-up-dependency-visualization"></a>Bağımlılık görselleştirmesini ayarlama
 
-Bu makalede, Azure geçişi: Sunucu değerlendirmesi ' nde aracısız bağımlılık analizinin nasıl ayarlanacağı açıklanır. [Bağımlılık Analizi](concepts-dependency-visualization.md) , değerlendirmek ve Azure 'a geçirmek istediğiniz makineler arasında bağımlılıkları belirlemenize ve anlamanıza yardımcı olur.
+Bu makalede, Azure geçişi: Sunucu değerlendirmesi ' nde aracı tabanlı bağımlılık analizinin nasıl ayarlanacağı açıklanır. [Bağımlılık Analizi](concepts-dependency-visualization.md) , değerlendirmek ve Azure 'a geçirmek istediğiniz makineler arasında bağımlılıkları belirlemenize ve anlamanıza yardımcı olur.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
@@ -42,7 +42,7 @@ Bu makalede, Azure geçişi: Sunucu değerlendirmesi ' nde aracısız bağımlı
 2. **Azure geçişi: Sunucu değerlendirmesi**' nde, **temel** bileşenler ' e tıklayın.
 3. **OMS çalışma alanında** **yapılandırma gerekiyor**' a tıklayın.
 
-     ![Log Analytics çalışma alanını Yapılandır](./media/how-to-create-group-machine-dependencies/oms-workspace-select.png)   
+     ![Log Analytics çalışma alanını yapılandırma](./media/how-to-create-group-machine-dependencies/oms-workspace-select.png)   
 
 4. **OMS çalışma alanını Yapılandır**' da, yeni bir çalışma alanı oluşturmak isteyip istemediğinizi belirtin veya var olanı kullanın.
     - Proje taşıma aboneliğindeki tüm çalışma alanlarından mevcut bir çalışma alanı seçebilirsiniz.

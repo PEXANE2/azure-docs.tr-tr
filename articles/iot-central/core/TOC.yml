@@ -47,12 +47,8 @@
   items:
     - name: Cihazları bağlama ve geliştirme
       items:
-        - name: Cihazı bağlama (Node.js)
-          href: tutorial-connect-device-nodejs.md
-        - name: Cihaz bağlama (Python)
-          href: tutorial-connect-device-python.md
-        - name: Cihaz bağlama (Java)
-          href: tutorial-connect-device-java.md
+        - name: Cihaz oluşturma ve bağlama
+          href: tutorial-connect-device.md
         - name: Ağ geçidi cihaz şablonu oluşturma
           href: tutorial-define-gateway-device-type.md
         - name: IoT Edge cihazına bağlanma

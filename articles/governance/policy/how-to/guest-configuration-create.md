@@ -3,12 +3,12 @@ title: Windows için Konuk Yapılandırma ilkeleri oluşturma
 description: Windows için Azure Ilke Konuk yapılandırma ilkesi oluşturmayı öğrenin.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: ea9b40006deefbac2c253082eda4ef2da12149a4
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 124f747a1e7c7925efc2519ee826d62034e69cc5
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94700696"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302691"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Windows için Konuk Yapılandırma ilkeleri oluşturma
 
@@ -160,7 +160,7 @@ Tamamlanmış paket, Azure Ilke tanımlarını oluşturmak için konuk yapıland
 
 PowerShell cmdlet 'leri, paketi oluşturmaya yardımcı olur.
 Kök düzey klasörü veya sürüm klasörü gerekli değil.
-Paket biçimi bir. zip dosyası olmalıdır.
+Paket biçimi bir. zip dosyası olmalıdır ve sıkıştırılmamış olarak toplam 100 MB boyutunda bir boyut aşamaz.
 
 ### <a name="storing-guest-configuration-artifacts"></a>Konuk yapılandırma yapıtları depolanıyor
 

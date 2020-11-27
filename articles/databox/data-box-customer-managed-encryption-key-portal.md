@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/19/2020
 ms.author: alkohli
 ms.subservice: pod
-ms.openlocfilehash: cd9f4ad6b6831b2b15c09b37edc569b3f2d247f7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: f75907dc1fa079cebb3b80874090c658fd7b8174
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94958204"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302822"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>Azure Key Vault Azure Data Box için müşteri tarafından yönetilen anahtarları kullanın
 
@@ -103,7 +103,7 @@ Azure portal mevcut Data Box siparişiniz için müşteri tarafından yönetilen
 
     ![Kullanılacak kimliği seçin](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-14.png)
 
-    Burada yeni bir kullanıcı kimliği oluşturamazsınız. Bir oluşturma hakkında bilgi edinmek için, bkz. [Azure Portal kullanarak Kullanıcı tarafından atanan yönetilen kimlik için rol oluşturma, listeleme, silme veya atama](/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal).
+    Burada yeni bir kullanıcı kimliği oluşturamazsınız. Bir oluşturma hakkında bilgi edinmek için, bkz. [Azure Portal kullanarak Kullanıcı tarafından atanan yönetilen kimlik için rol oluşturma, listeleme, silme veya atama](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal).
 
     Seçilen Kullanıcı kimliği, **şifreleme türü** ayarlarında gösterilir.
 

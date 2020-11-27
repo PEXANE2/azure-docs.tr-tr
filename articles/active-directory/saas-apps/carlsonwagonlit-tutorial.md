@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 04399dc82a3bd2d70b8b472b121e95a73ca43136
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9c27139e2dca37c1ff8d963e1e8cdb5de682d39d
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009628"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302941"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-carlson-wagonlit-travel"></a>Öğretici: Carlson Wagonaydınlatmalı seyahat ile Azure Active Directory tümleştirme
 
@@ -119,7 +119,7 @@ Azure AD çoklu oturum açmayı Carlson Wagonaydınlatma ile yapılandırmak iç
 
 ### <a name="configure-carlson-wagonlit-travel-single-sign-on"></a>Carlson Wagonaydınlatmalı seyahat tek Sign-On yapılandırma
 
-**Carlson Wagonaydınlatmalı seyahat** tarafında çoklu oturum açma 'yı yapılandırmak için, Indirilen **Federasyon meta verileri XML** 'sini ve Azure Portal ' den [Carlson wagonaydınlatmalı seyahat destek ekibine](http://www.carlsonwagonlit.in/content/cwt/in/en/technical-assistance.html)doğru kopyalanmış URL 'leri göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+**Carlson Wagonaydınlatmalı seyahat** tarafında çoklu oturum açma 'yı yapılandırmak için, Indirilen **Federasyon meta verileri XML** 'sini ve Azure Portal ' den [Carlson wagonaydınlatmalı seyahat destek ekibine](https://www.mycwt.com/traveler-help/)doğru kopyalanmış URL 'leri göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
@@ -174,7 +174,7 @@ Bu bölümde, Carlson Wagonaydınlatmalı geziye erişim vererek Britta Simon 'u
 
 ### <a name="create-carlson-wagonlit-travel-test-user"></a>Carlson Wagonaydınlatmalı seyahat testi Kullanıcı Oluştur
 
-Bu bölümde, Carlson Wagonaydınlatmalı yolculuğu içinde Britta Simon adlı bir Kullanıcı oluşturacaksınız. Carlson [Wagonaydınlatmalı seyahat destek ekibi](http://www.carlsonwagonlit.in/content/cwt/in/en/technical-assistance.html) ile çalışarak, Carlson wagonaydınlatma platformunda kullanıcıları ekleyin. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, Carlson Wagonaydınlatmalı yolculuğu içinde Britta Simon adlı bir Kullanıcı oluşturacaksınız. Carlson [Wagonaydınlatmalı seyahat destek ekibi](https://www.mycwt.com/traveler-help/) ile çalışarak, Carlson wagonaydınlatma platformunda kullanıcıları ekleyin. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 11/22/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: b9bcdbdf8bdad0d1ad96fc043f29a84b962318c2
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 9f443b15cd427dd31c2ffa95af8d1124f1169881
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95324019"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302636"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak VM 'Lerin yükünü dengelemek için ortak yük dengeleyici oluşturma
 
@@ -618,7 +618,7 @@ Bu bölümde, yük dengeleyicinin arka uç havuzu için sanal makineler oluştur
 
 * [New-Aznetworkınterface](/powershell/module/az.network/new-aznetworkinterface)ile üç ağ arabirimi oluşturun.
 
-* VM 'Ler için [Get-Credential](/powershell/reference/5.1/microsoft.powershell.security/Get-Credential)ile bir Yönetici Kullanıcı adı ve parola ayarlayın.
+* VM 'Ler için [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential)ile bir Yönetici Kullanıcı adı ve parola ayarlayın.
 
 * Sanal makineler için bir kullanılabilirlik kümesi oluşturmak üzere [New-AzAvailabilitySet](/powershell/module/az.compute/new-azvm) kullanın.
 

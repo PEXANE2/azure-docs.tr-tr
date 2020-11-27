@@ -7,21 +7,21 @@ ms.reviewer: susabat
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: troubleshooting
-ms.date: 11/26/2020
-ms.openlocfilehash: f07cc8e3d5e9d6f59671a3c8c2efd9f5fb9f27b7
-ms.sourcegitcommit: 236014c3274b31f03e5fcee5de510f9cacdc27a0
+ms.date: 11/27/2020
+ms.openlocfilehash: e0b4b31a1d732cbd5cbfaa9b6e5e021caa3adf01
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96299065"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301969"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>ADF 'de CI-CD, Azure DevOps ve GitHub sorunlarını giderme 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Bu makalede, Azure Data Factory ' deki CI-CD, Azure DevOps ve GitHub sorunları için genel sorun giderme yöntemleri incelenmektedir.
+Bu makalede, Azure Data Factory ' de sürekli Integration-Continuous dağıtım (CI-CD), Azure DevOps ve GitHub sorunları için genel sorun giderme yöntemleri incelenmektedir.
 
-Kaynak denetimi veya DevOps tekniklerini kullanarak sorularınız veya sorunlarınız varsa, yararlı bulabileceğiniz birkaç makale aşağıda verilmiştir.:
+Kaynak denetimi veya DevOps tekniklerini kullanarak sorularınız veya sorunlarınız varsa, yararlı bulabileceğiniz birkaç makale aşağıda verilmiştir:
 
 - Kaynak denetimi 'nin ADF 'de nasıl çalıştığını öğrenmek için [ADF 'de kaynak denetimi '](source-control.md) ne bakın. 
 - DevOps CI-CD ' nin ADF 'de nasıl çalıştığı hakkında daha fazla bilgi edinmek için  [ADF 'de CI-CD '](continuous-integration-deployment.md) ye başvurun.
@@ -158,9 +158,5 @@ Sorun giderme konusunda daha fazla yardım için aşağıdaki kaynakları deneyi
 *  [Data Factory blogu](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 *  [Data Factory Özellik istekleri](https://feedback.azure.com/forums/270578-data-factory)
 *  [Azure videoları](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
-*  [Soru sayfası Microsoft Q&](/answers/topics/azure-data-factory.html)
 *  [Data Factory için yığın taşma Forumu](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Data Factory hakkında Twitter bilgileri](https://twitter.com/hashtag/DataFactory)
-
-
- 

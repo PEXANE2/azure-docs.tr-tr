@@ -752,6 +752,8 @@
           href: connector-troubleshoot-guide.md
         - name: Veri Akışları
           href: data-flow-troubleshoot-guide.md
+        - name: Sürekli Tümleştirme ve Dağıtım
+          href: ci-cd-github-troubleshoot-guide.md
         - name: Güvenlik ve erişim denetimi
           href: security-and-access-control-troubleshoot-guide.md
         - name: Şirket içinde barındırılan Tümleştirme Çalışma Zamanları

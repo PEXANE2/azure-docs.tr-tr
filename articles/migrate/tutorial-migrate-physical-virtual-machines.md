@@ -4,12 +4,12 @@ description: Bu makalede, Azure geçişi ile fiziksel makinelerin Azure 'a nası
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: MVC
-ms.openlocfilehash: 67ea5800885b4edb16581f22c199d139053af495
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c783cb22ce8a31d346e98c53dee365fa59b73b8a
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018945"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302893"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Makineleri fiziksel sunucu olarak Azure 'a geçirme
 
@@ -52,7 +52,7 @@ Sunucu geçişi ile geçiş için Azure 'u hazırlayın.
 
 **Görev** | **Ayrıntılar**
 --- | ---
-**Azure Geçişi projesi oluşturma** | Azure hesabınızın bir proje oluşturmak için katılımcısı veya sahip izinlerine ihtiyacı vardır.
+**Azure Geçişi projesi oluşturma** | [Yeni bir proje oluşturmak](https://docs.microsoft.com/azure/migrate/create-manage-projects)için Azure hesabınızda katkıda bulunan veya sahip izinlerinin olması gerekir.
 **Azure hesabınız için izinleri doğrulama** | Azure hesabınızın bir VM oluşturmak ve Azure yönetilen diskine yazmak için izinleri olması gerekir.
 
 
@@ -110,28 +110,6 @@ Gereç dağıtımı için aşağıdaki gibi hazırlanın:
 
 > [!NOTE]
 > Çoğaltma gereci, çoğaltmak istediğiniz bir kaynak makineye veya daha önce yüklemiş olduğunuz Azure geçişi bulma ve değerlendirme gerecine yüklenmelidir.
-
-## <a name="add-the-server-migration-tool"></a>Sunucu geçiş aracını ekleme
-
-Bir Azure geçişi projesi ayarlayın ve ardından sunucu geçiş aracını buna ekleyin.
-
-1. Azure portalı > **Tüm hizmetler** bölümünde **Azure Geçişi**’ni arayın.
-2. **Hizmetler** altında **Azure Geçişi**’ni seçin.
-3. **Genel Bakış** bölümünde **Sunucuları değerlendir ve geçir**’e tıklayın.
-4. **Sunucuları bul, değerlendir ve geçir** altında, **sunucuları değerlendir ve geçir**' e tıklayın.
-
-    ![Sunucuları bulma ve değerlendirme](./media/tutorial-migrate-physical-virtual-machines/assess-migrate.png)
-
-5. **Sunucuları bul, değerlendir ve geçir** bölümünde **Araç ekle**’ye tıklayın.
-6. **Projeyi geçir** bölümünde Azure aboneliğinizi seçin ve henüz yapmadıysanız bir kaynak grubu oluşturun.
-7. **Proje Ayrıntıları** bölümünde proje adını ve projeyi oluşturmak istediğiniz coğrafyayı belirtip **İleri**’ye tıklayın. [Kamu](migrate-support-matrix.md#supported-geographies-public-cloud) ve [kamu bulutları](migrate-support-matrix.md#supported-geographies-azure-government)için desteklenen coğrafi lıkları gözden geçirin.
-
-    ![Azure Geçişi projesi oluşturma](./media/tutorial-migrate-physical-virtual-machines/migrate-project.png)
-
-8. **Değerlendirme seçme aracı**’nda **Değerlendirme aracı eklemeyi şimdilik atla** > **İleri**’yi seçin.
-9. **Geçiş aracı seçin** bölümünde **Azure Geçişi: Sunucu Geçişi** > **İleri**.
-10. **İnceleme + araç ekleme** bölümünde ayarları gözden geçirip **Araç ekle**’ye tıklayın
-11. Araç eklendikten sonra, Azure geçişi proje > **sunucuları**  >  **geçiş araçları**' nda görüntülenir.
 
 ## <a name="set-up-the-replication-appliance"></a>Çoğaltma gereç ayarı
 

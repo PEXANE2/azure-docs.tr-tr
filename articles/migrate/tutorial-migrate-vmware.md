@@ -4,12 +4,12 @@ description: Azure geçişi ile VMware VM 'lerinin aracısız geçişini nasıl 
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 3e263306cf18dfebe4b73f8d940b8eb5c99ed16f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 7eb918a844b1cd542664ac7e5aec2736ceba0e6f
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92310627"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301642"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware VM 'lerini Azure 'a geçirme (aracısız)
 
@@ -21,7 +21,7 @@ Bu öğretici, VMware VM 'lerinin Azure 'a nasıl değerlendirileceğini ve geç
 > Öğreticiler, bir senaryo için en basit dağıtım yolunu gösterir, böylece bir kavram kanıtı hızlı bir şekilde ayarlayabilmenizi sağlayabilirsiniz. Öğreticiler mümkün olduğunca varsayılan seçenekleri kullanır ve tüm olası ayarları ve yolları göstermez. 
 
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure geçişi: sunucu geçiş aracı 'nı ekleyin.
@@ -32,30 +32,14 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce karşılamanız gereken ön koşullar şunlardır:
 
 1. Geçiş için Azure ve VMware 'yi hazırlamak üzere [ilk öğreticiyi doldurun](./tutorial-discover-vmware.md) .
 2. [VMware VM](./tutorial-assess-vmware-azure-vm.md) 'lerini Azure 'a geçirmeden önce değerlendirmek için ikinci öğreticiyi tamamlamanızı öneririz, ancak şunları yapmanız gerekmez. 
-
-
-## <a name="add-the-azure-migrate-server-migration-tool"></a>Azure geçiş sunucusu geçiş aracını ekleme
-
-Henüz bir Azure geçişi projesi ayarlamadıysanız, aracı eklemeden önce [bunu yapın](how-to-add-tool-first-time.md) . Ayarlanmış bir projeniz varsa, aracı aşağıdaki gibi ekleyin:
-
-1. Azure geçişi projesinde **Genel Bakış ' a**tıklayın. 
-2. **Bul, değerlendir ve geçiş sunucuları**' nda, **sunucuları değerlendir ve geçir**' e tıklayın.
-
-     ![Sunucuları değerlendirin ve geçirin](./media/tutorial-migrate-vmware/assess-migrate.png)
-
-3. **Geçiş araçları**' nda, geçişe **hazır olduğunuzda bir geçiş aracı eklemek Için buraya tıklayın ' ı**seçin.
-
-    ![Bir araç seçin](./media/tutorial-migrate-vmware/select-migration-tool.png)
-
-4. Araçlar listesinde **Azure geçişi: sunucu geçişi**  >  **ekleme aracı** ' nı seçin.
-
-    ![Sunucu Geçişi aracı](./media/tutorial-migrate-vmware/server-migration-tool.png)
+3. Zaten oluşturulmuş projeye git veya [Yeni bir proje oluştur](https://docs.microsoft.com/azure/migrate/create-manage-projects)
+4. Azure hesabınız için izinleri doğrulama-Azure hesabınız, bir VM oluşturmak ve Azure yönetilen diskine yazmak için izinlere ihtiyaç duyuyor.
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>Azure geçişi gereç 'yi ayarlama
 
@@ -84,7 +68,7 @@ Aşağıda belirtilen şekilde çoğaltmayı etkinleştirin:
 
     ![Kaynak ayarları](./media/tutorial-migrate-vmware/source-settings.png)
 
-4. **Sanal makineler** bölümünde çoğaltmak istediğiniz makineleri seçin. VM boyutlandırma ve disk türünü bir değerlendirmede uygulamak için bir **Azure geçişi değerlendirmesinde geçiş ayarlarını Içeri aktarma**bölümünde, **Evet**' i seçin ve VM grubunu ve değerlendirme adını seçin. Değerlendirme ayarlarını kullanmıyorsanız **Hayır**' ı seçin.
+4. **Sanal makineler** bölümünde çoğaltmak istediğiniz makineleri seçin. VM boyutlandırma ve disk türünü bir değerlendirmede uygulamak için bir **Azure geçişi değerlendirmesinde geçiş ayarlarını Içeri aktarma** bölümünde, **Evet**' i seçin ve VM grubunu ve değerlendirme adını seçin. Değerlendirme ayarlarını kullanmıyorsanız **Hayır**' ı seçin.
    
     ![Değerlendirme seçme](./media/tutorial-migrate-vmware/select-assessment.png)
 
@@ -93,7 +77,7 @@ Aşağıda belirtilen şekilde çoğaltmayı etkinleştirin:
     ![VM 'Leri seçin](./media/tutorial-migrate-vmware/select-vms.png)
 
 6. **Hedef ayarlar**' da, abonelik ve hedef bölge ' yi seçin. Azure VM 'lerinin geçişten sonra bulunduğu kaynak grubunu belirtin.
-7. **Sanal ağ**bölümünde, Azure VM 'lerinin geçişten sonra birleşme Azure VNET/alt ağını seçin.
+7. **Sanal ağ** bölümünde, Azure VM 'lerinin geçişten sonra birleşme Azure VNET/alt ağını seçin.
 8. **Kullanılabilirlik seçenekleri**' nde şunları seçin:
     -  Bölge içindeki belirli bir kullanılabilirlik bölgesine geçirilen makineyi sabitlemek için kullanılabilirlik alanı. Kullanılabilirlik Alanları arasında çok düğümlü bir uygulama katmanı oluşturan sunucuları dağıtmak için bu seçeneği kullanın. Bu seçeneği belirlerseniz, Işlem sekmesinde seçilen makinenin her biri için kullanılacak kullanılabilirlik alanını belirtmeniz gerekir. Bu seçenek yalnızca geçiş için seçilen hedef bölge Kullanılabilirlik Alanları destekliyorsa kullanılabilir
     -  Geçirilen makinenin bir kullanılabilirlik kümesine yerleştirileceği kullanılabilirlik kümesi. Bu seçeneği kullanabilmek için seçilen hedef kaynak grubunun bir veya daha fazla kullanılabilirlik kümesi olmalıdır.
@@ -106,9 +90,9 @@ Aşağıda belirtilen şekilde çoğaltmayı etkinleştirin:
 
     ![Hedef ayarları](./media/tutorial-migrate-vmware/target-settings.png)
 
-10. **İşlem**bölümünde, işlem ' de VM adı, boyutu, işletim sistemi disk türü ve kullanılabilirlik yapılandırmasını (önceki adımda seçildiyse) gözden geçirin. VM’ler [Azure gereksinimleriyle](migrate-support-matrix-vmware-migration.md#azure-vm-requirements)uyumlu olmalıdır.
+10. **İşlem** bölümünde, işlem ' de VM adı, boyutu, işletim sistemi disk türü ve kullanılabilirlik yapılandırmasını (önceki adımda seçildiyse) gözden geçirin. VM’ler [Azure gereksinimleriyle](migrate-support-matrix-vmware-migration.md#azure-vm-requirements)uyumlu olmalıdır.
 
-    - **VM boyutu**: değerlendirme önerilerini KULLANıYORSANıZ, VM boyutu açılan listesi önerilen boyutu gösterir. Aksi takdirde Azure Geçişi, Azure aboneliğindeki en yakın eşleşmeye göre bir boyut seçer. Alternatif olarak **Azure VM boyutu **’nda el ile bir boyut seçin. 
+    - **VM boyutu**: değerlendirme önerilerini KULLANıYORSANıZ, VM boyutu açılan listesi önerilen boyutu gösterir. Aksi takdirde Azure Geçişi, Azure aboneliğindeki en yakın eşleşmeye göre bir boyut seçer. Alternatif olarak **Azure VM boyutu**’nda el ile bir boyut seçin. 
     - **Işletim sistemi diski**: VM için işletim sistemi (önyükleme) diskini belirtin. İşletim Sistemi diski, işletim sistemi önyükleyiciye ve yükleyiciye sahip disktir. 
     - **Kullanılabilirlik alanı**: kullanılacak kullanılabilirlik bölgesini belirtin.
     - **Kullanılabilirlik kümesi**: kullanılacak kullanılabilirlik kümesini belirtin.
@@ -126,7 +110,7 @@ Aşağıda belirtilen şekilde çoğaltmayı etkinleştirin:
 12. **Çoğaltmayı gözden geçir ve başlat** bölümünde ayarları gözden geçirin ve sunuculara yönelik ilk çoğaltmayı başlatmak için **Çoğalt** üzerine tıklayın.
 
 > [!NOTE]
-> Çoğaltma ayarlarını yineleme başlamadan önce dilediğiniz zaman güncelleştirebilirsiniz (**Manage**  >  **çoğaltılan makineleri**yönetin). Çoğaltma başladıktan sonra ayarları değiştiremezsiniz.
+> Çoğaltma ayarlarını yineleme başlamadan önce dilediğiniz zaman güncelleştirebilirsiniz (**Manage**  >  **çoğaltılan makineleri** yönetin). Çoğaltma başladıktan sonra ayarları değiştiremezsiniz.
 
 ### <a name="provisioning-for-the-first-time"></a>İlk kez sağlama
 

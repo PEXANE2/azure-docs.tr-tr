@@ -454,7 +454,9 @@
               href: ../iot-edge/tutorial-deploy-machine-learning.md?context=%2fazure%2fmachine-learning%2fservice%2fcontext%2fml-context
             - name: FPGA çıkarımı
               href: how-to-deploy-fpga-web-service.md
-        - name: Sorun giderme ve hata ayıklama
+        - name: Sorun giderme ve hata ayıklama (Yerel)
+          href: how-to-troubleshoot-deployment-local.md
+        - name: Sorun giderme ve hata ayıklama (Uzak)
           href: how-to-troubleshoot-deployment.md
         - name: Web hizmetini kullanma
           displayName: create client consume request response synchronous

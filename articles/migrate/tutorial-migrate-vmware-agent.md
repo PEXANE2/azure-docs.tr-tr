@@ -4,12 +4,12 @@ description: Azure geçişi ile VMware VM 'lerinin aracı tabanlı geçişini ç
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: ffdbdba0aeae33b04195c5a6bf6aeaff5658424b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 437dbce1c577b5d837ad0c70e8e8865ba59cf9e6
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012246"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302752"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware VM 'lerini Azure 'a geçirme (aracı tabanlı)
 
@@ -134,35 +134,6 @@ VMware sunucularının ve VM 'lerinin Azure 'a geçiş gereksinimleriyle uyumlu 
 > [!NOTE]
 > Azure geçişi sunucu geçişi ile aracı tabanlı geçiş, Azure Site Recovery hizmetinin özelliklerine dayalıdır. Bazı gereksinimler Site Recovery belgelerine bağlantı verebilir.
 
-
-
-## <a name="add-the-azure-migrateserver-migration-tool"></a>Azure geçişi: sunucu geçiş aracı ekleme
-
-Henüz bir Azure geçişi projeniz yoksa, şimdi [ayarlayın](how-to-add-tool-first-time.md) ve sunucu geçiş aracını ekleyin.
-
-Bir projeniz varsa, aracı aşağıdaki gibi ekleyin:
-
-1. Azure portalı > **Tüm hizmetler** bölümünde **Azure Geçişi**’ni arayın.
-2. **Hizmetler** altında **Azure Geçişi**’ni seçin.
-
-    ![Azure geçişi 'ni ayarlama](./media/tutorial-migrate-vmware-agent/azure-migrate-search.png)
-
-3. **Genel Bakış** bölümünde **Sunucuları değerlendir ve geçir**’e tıklayın.
-4. **Sunucuları bul, değerlendir ve geçir** altında, **sunucuları değerlendir ve geçir**' e tıklayın.
-
-    ![Sunucuları bulma ve değerlendirme](./media/tutorial-migrate-vmware-agent/assess-migrate.png)
-
-1. **Sunucuları bul, değerlendir ve geçir** bölümünde **Araç ekle**’ye tıklayın.
-2. **Projeyi geçir** bölümünde Azure aboneliğinizi seçin ve henüz yapmadıysanız bir kaynak grubu oluşturun.
-3. **Proje Ayrıntıları** bölümünde proje adını ve projeyi oluşturmak istediğiniz coğrafyayı belirtip **İleri**’ye tıklayın. [Kamu](migrate-support-matrix.md#supported-geographies-public-cloud) ve [kamu bulutları](migrate-support-matrix.md#supported-geographies-azure-government)için desteklenen coğrafi lıkları gözden geçirin.
-
-    ![Azure Geçişi projesi oluşturma](./media/tutorial-migrate-vmware-agent/migrate-project.png)
-
-
-4. **Değerlendirme seçme aracı**’nda **Değerlendirme aracı eklemeyi şimdilik atla** > **İleri**’yi seçin.
-5. **Geçiş aracı seçin** bölümünde **Azure Geçişi: Sunucu Geçişi** > **İleri**.
-6. **İnceleme + araç ekleme** bölümünde ayarları gözden geçirip **Araç ekle**’ye tıklayın
-7. Araç eklendikten sonra, Azure geçişi proje > **sunucuları**  >  **geçiş araçları**' nda görüntülenir.
 
 ## <a name="set-up-the-replication-appliance"></a>Çoğaltma gereç ayarı
 

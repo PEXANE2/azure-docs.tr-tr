@@ -10,12 +10,12 @@ author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: b9966d4d9ab0a37f5484ec9eb9b7e2472a6b41dc
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: a7fdb370847e72657829d53df019203b0a5b211b
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95012911"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302570"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure Machine Learning ile pekiştirmeye dayalı öğrenme (Önizleme)
 
@@ -117,7 +117,7 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 ### <a name="specify-a-virtual-network"></a>Bir sanal ağ belirtin
 
-Birden çok işlem hedefi kullanan RL işleri için, çalışan düğümlerinin ve baş düğümlerin birbirleriyle iletişim kurmasına izin veren açık bağlantı noktaları içeren bir sanal ağ belirtmeniz gerekir. Sanal ağ herhangi bir kaynak grubunda olabilir, ancak çalışma alanınız ile aynı bölgede olmalıdır. Sanal ağınızı ayarlama hakkında daha fazla bilgi için, Önkoşullar bölümünde bulunan [çalışma alanı kurulum Not defteri](https://aka.ms/azure-rl-env-setup) ' ne bakın. Burada, kaynak grubunuzda sanal ağın adını belirtirsiniz.
+Birden çok işlem hedefi kullanan RL işleri için, çalışan düğümlerinin ve baş düğümlerin birbirleriyle iletişim kurmasına izin veren açık bağlantı noktaları içeren bir sanal ağ belirtmeniz gerekir. Sanal ağ herhangi bir kaynak grubunda olabilir, ancak çalışma alanınız ile aynı bölgede olmalıdır. Sanal ağınızı ayarlama hakkında daha fazla bilgi için, Önkoşullar bölümünde bulunan çalışma alanı kurulum Not defteri ' ne bakın. Burada, kaynak grubunuzda sanal ağın adını belirtirsiniz.
 
 ```python
 vnet = 'your_vnet'

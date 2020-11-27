@@ -105,6 +105,8 @@
       href: ../../devtest-labs/security-baseline.md
     - name: Azure Güvenlik Duvarı güvenlik temeli
       href: ../../firewall/security-baseline.md
+    - name: Azure Güvenlik Duvarı Yöneticisi güvenlik temeli
+      href: ../../firewall-manager/security-baseline.md
     - name: Azure Front Door güvenlik temeli
       href: ../../frontdoor/security-baseline.md
     - name: Azure İşlevleri güvenlik temeli
@@ -185,6 +187,8 @@
       href: ../../logic-apps/security-baseline.md
     - name: Ağ İzleyicisi güvenlik temeli
       href: ../../network-watcher/security-baseline.md
+    - name: Power BI güvenlik temeli
+      href: /power-bi/fundamentals/security-baseline
     - name: Güvenlik Merkezi temeli
       href: ../../security-center/security-baseline.md
     - name: Service Bus temelleri
@@ -207,5 +211,7 @@
       href: ../../virtual-network/security-baseline.md
     - name: Sanal Ağ Adres Çevirisi güvenlik temeli
       href: ../../virtual-network/nat-security-baseline.md
+    - name: Sanal WAN güvenlik temeli
+      href: ../../virtual-wan/security-baseline.md
     - name: VPN Gateway güvenlik temeli
       href: ../../vpn-gateway/security-baseline.md
