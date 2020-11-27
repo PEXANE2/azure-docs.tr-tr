@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: c7a8fb63f775a76342849957f070861fd200a9d3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 81a892b10996686cf58d45867e3d889505b5d3d9
+ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998932"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96299590"
 ---
 # <a name="query-storage-files-with-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) ile depolama dosyalarını sorgulama
 
@@ -47,7 +47,7 @@ Parquet kaynak verilerini sorgulamak için FORMAT = ' PARQUET ' kullanın
 ```syntaxsql
 SELECT * FROM
 OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net//mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
-WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
+WITH (C1 int, C2 varchar(20), C3 varchar(max)) as rows
 ```
 
 Kullanım örnekleri için [sorgu Parquet dosyaları](query-parquet-files.md) makalesini gözden geçirin.
@@ -59,7 +59,7 @@ CSV kaynak verilerini sorgulamak için FORMAT = ' CSV ' kullanın. CSV dosyalar�
 ```sql
 SELECT * FROM
 OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolder/data.csv', FORMAT = 'CSV', PARSER_VERSION='2.0') 
-WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
+WITH (C1 int, C2 varchar(20), C3 varchar(max)) as rows
 ```
 
 Özel CSv biçimine ayrıştırma kuralları ayarlamak için kullanılabilen bazı ek seçenekler vardır:
@@ -85,7 +85,7 @@ OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolde
 WITH (
       C1 int, 
       C2 varchar(20),
-      C3 as varchar(max)
+      C3 varchar(max)
 ) as rows
 ```
 
@@ -248,7 +248,7 @@ Demo verileri aşağıdaki veri kümelerini içerir:
 - İç içe geçmiş sütunlara sahip örnek Parquet dosyaları
 - JSON biçimindeki kitaplar
 
-| Klasör yolu                                                  | Description                                                  |
+| Klasör yolu                                                  | Açıklama                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | CSV                                                        | CSV biçimindeki veriler için üst klasör                         |
 | /csv/population/<br />/csv/population-unix/<br />/csv/population-unix-hdr/<br />/csv/population-unix-hdr-escape<br />/csv/population-unix-hdr-quoted | Farklı CSV biçimlerinde popülasyon veri dosyaları içeren klasörler. |

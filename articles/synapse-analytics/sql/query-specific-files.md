@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: e3f0a9f0b7fdef26cf1ef2b145ede1826fda6ebd
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: d24ae1f42c685589309506b2d5e0eab157b2bc42
+ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685605"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96299624"
 ---
 # <a name="use-file-metadata-in-serverless-sql-pool-queries"></a>Sunucusuz SQL havuzu sorgularında dosya meta verilerini kullan
 
@@ -24,7 +24,7 @@ Bazen, sonuç kümesindeki belirli bir satırla hangi dosya veya klasör kaynağ
 
 `filepath` `filename` Sonuç kümesindeki dosya adlarını ve/veya yolu döndürmek için işlevini kullanabilirsiniz. Ya da bunları, dosya adı ve/veya klasör yoluna göre filtrelemek için kullanabilirsiniz. Bu işlevler, [dosya adı işlevi](query-data-storage.md#filename-function) ve [FilePath işlevinde](query-data-storage.md#filepath-function)sözdizimi bölümünde açıklanmaktadır. Aşağıdaki bölümlerde, örnekler üzerinde kısa açıklamalar bulacaksınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 İlk adımınız, depolama hesabına başvuran bir veri kaynağı ile **veritabanı oluşturmaktır** . Sonra bu veritabanında [kurulum betiğini](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) yürüterek nesneleri başlatın. Bu kurulum betiği, veri kaynaklarını, veritabanı kapsamlı kimlik bilgilerini ve bu örneklerde kullanılan harici dosya biçimlerini oluşturacaktır.
 
@@ -76,7 +76,7 @@ ORDER BY
 
 FilePath işlevi bir tam veya kısmi yol döndürür:
 
-- Parametresi olmadan çağrıldığında, satırın kaynaklandığı tam dosya yolunu döndürür.
+- Parametresi olmadan çağrıldığında, satırın kaynaklandığı tam dosya yolunu döndürür. OPENROWSET 'de DATA_SOURCE kullanıldığında, DATA_SOURCE göreli yolu döndürür. 
 - Parametresi ile çağrıldığında, parametrede belirtilen konumdaki joker karakterle eşleşen yolun bir bölümünü döndürür. Örneğin, parametre değeri 1 ilk joker karakterle eşleşen yolun bir bölümünü döndürür.
 
 Aşağıdaki örnek, 2017 'in son üç ayı için NYC sarı TAXI veri dosyalarını okur. Dosya yolu başına bayıldığı sayısını döndürür. Sorgunun OPENROWSET bölümü, hangi dosyaların okunacağını belirler.

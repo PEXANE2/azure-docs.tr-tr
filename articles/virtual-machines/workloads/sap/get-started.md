@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/05/2020
+ms.date: 11/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4f104accad2b23b907d888ce3d0da083f1fa019a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 05b2747dc21e2aedf16c6ca6e6c31af03b38c81f
+ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964839"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96299522"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -80,6 +80,7 @@ Bu bölümde, PowerBI tümleştirmesiyle ilgili belgeleri SAP veri kaynaklarına
 
 ## <a name="change-log"></a>Değişiklik Günlüğü
 
+- 11/26/2020: [SAP iş yükü için](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) Azure [sanal makine depolama yapılandırmalarının](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) ve Azure depolama türlerini tek [VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines) 'larını değiştirdi SAP HANA uyarlayın
 - 11/05/2020: [Azure sanal makine depolama yapılandırmalarında SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) desteklenen dosya sistemi türleri hakkında yeni SAP notuna yönelik bağlantıyı değiştirme 
 - 10/26/2020: Azure Premium Depolama yapılandırması için bazı tabloları değiştirme [SAP HANA Azure sanal makine depolama yapılandırmalarında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) sağlanan ve veri bloğu aktarım hızını açıklığa kavuşturacak
 - 10/22/2020: [SLES for SAP uygulamaları üzerindeki Azure VM](./high-availability-guide-suse.md)'lerinde SAP NW için ha 'DA, [ANF ile SLES](./high-availability-guide-suse-netapp-files.md)'deki Azure VM 'lerinde SAP NW 'de [sap NW için ha, net.IPv4.TCP_KEEPALIVE_TIME](./high-availability-guide-rhel.md) [Khel ile RHEL](./high-availability-guide-rhel-netapp-files.md) 'nin Azure VM 'lerinde  

@@ -3,12 +3,12 @@ title: Azure VM 'lerde performansı izleme-Azure Application Insights
 description: Azure VM ve Azure sanal makine ölçek kümeleri için uygulama performansı izleme. Grafik yükleme ve yanıt süresi, bağımlılık bilgileri ve performans üzerinde Uyarılar ayarlama.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 8b025c5196d65234a632bd1f939bc1116b72dce0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dcf0c88eae021487072424636113d5a3de08699a
+ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87024641"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96299573"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Azure sanal makineler ve Azure sanal makine ölçek kümelerinde Azure Izleyici Application Insights aracısını dağıtma
 
@@ -17,9 +17,9 @@ ms.locfileid: "87024641"
 Bu makale, Application Insights Aracısı kullanarak Application Insights izlemeyi etkinleştirme konusunda size kılavuzluk eder ve büyük ölçekli dağıtımlar için işlemi otomatikleştirmek üzere ön kılavuz sağlar.
 
 > [!IMPORTANT]
-> .NET için Azure Application Insights Aracısı Şu anda genel önizlemededir.
-> Bu önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için önermiyoruz. Bazı özellikler desteklenmeyebilir ve bazıları kısıtlı özelliklere sahip olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> **Azure VM 'lerinde ve VMSS** 'de çalışan APS.NET uygulamaları için Azure Application Insights Aracısı Şu anda genel önizlemededir. **Şirket içinde** çalışan ASP.NET uygulamalarınızı izlemek için, genel olarak kullanılabilen ve tam olarak desteklenen [Şirket Içi sunucular Için Azure Application Insights aracısını](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)kullanın.
+> Azure VM 'Leri ve VMSS 'nin önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve bunu üretim iş yükleri için önermiyoruz. Bazı özellikler desteklenmeyebilir ve bazıları kısıtlı özelliklere sahip olabilir.
+> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="enable-application-insights"></a>Application Insights'ı etkinleştirme
 

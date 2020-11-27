@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/05/2020
+ms.date: 11/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: af2eac929e3e3f40e1ac1cd384c943b1e09171a8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b8b8d100eb2ff16e8f8b7a734ad493ed4faddd33
+ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967474"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96299539"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure sanal makine depolama alanı yapılandırmaları
 
@@ -273,7 +273,7 @@ HANA için ANF hakkında ayrıntılı bilgi için [Azure NetApp Files belge NFS 
 
 
 ## <a name="cost-conscious-solution-with-azure-premium-storage"></a>Azure Premium Depolama ile maliyet bilincine çözüm
-Şimdiye kadar, bu belgede açıklanan Azure Premium depolama çözümü, [Azure n serisi sanal makineler için Premium Depolama ve azure yazma hızlandırıcısı ile Ilgili çözüm çözümleri](#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines) SAP HANA üretimde desteklenen senaryolara yöneliktir. Üretim destektable yapılandırmalarının özelliklerinden biri, SAP HANA verileri için birimlerin ayrılmasıdır ve günlüğü iki farklı birime geri kaydeder. Bu tür bir ayrımı nedeni, birimlerdeki iş yükü özelliklerinin farklı olması nedenidir. Bu, önerilen üretim yapılandırmalarına sahip olan, farklı türde önbelleğe alma veya hatta farklı Azure blok depolama türleri gerekli olabilir. Azure blok depolama hedefini kullanan üretim, [Azure sanal makineleri için tek VM SLA 'sı](https://azure.microsoft.com/support/legal/sla/virtual-machines/) ile uyumlu olacak şekilde desteklenir.  Üretim dışı senaryolar için, üretim sistemlerine yönelik olarak gerçekleştirilen bazı önemli noktalar, üretim dışı olan daha düşük üretimden oluşan sistemlere uygulanmayabilir. Sonuç olarak, HANA verileri ve günlük birimi birleştirilebilir. Sonuç olarak, bazı küller ile sonuç olarak, üretim sistemleri için gerekli olan belirli aktarım hızını veya gecikmeli KPI 'Ları henüz karşılamıyor. Bu ortamlarda maliyetleri azaltmanın başka bir yönü de [Azure Standart SSD Storage](./planning-guide-storage.md#azure-standard-ssd-storage)kullanımı olabilir. [Azure sanal makineleri için tek VM SLA 'sını](https://azure.microsoft.com/support/legal/sla/virtual-machines/)geçersiz kılan bir seçenek de vardır. 
+Şimdiye kadar, bu belgede açıklanan Azure Premium depolama çözümü, [Azure n serisi sanal makineler için Premium Depolama ve azure yazma hızlandırıcısı ile Ilgili çözüm çözümleri](#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines) SAP HANA üretimde desteklenen senaryolara yöneliktir. Üretim destektable yapılandırmalarının özelliklerinden biri, SAP HANA verileri için birimlerin ayrılmasıdır ve günlüğü iki farklı birime geri kaydeder. Bu tür bir ayrımı nedeni, birimlerdeki iş yükü özelliklerinin farklı olması nedenidir. Bu, önerilen üretim yapılandırmalarına sahip olan, farklı türde önbelleğe alma veya hatta farklı Azure blok depolama türleri gerekli olabilir. Üretim dışı senaryolar için, üretim sistemlerine yönelik olarak gerçekleştirilen bazı önemli noktalar, üretim dışı olan daha düşük üretimden oluşan sistemlere uygulanmayabilir. Sonuç olarak, HANA verileri ve günlük birimi birleştirilebilir. Sonuç olarak, bazı küller ile sonuç olarak, üretim sistemleri için gerekli olan belirli aktarım hızını veya gecikmeli KPI 'Ları henüz karşılamıyor. Bu ortamlarda maliyetleri azaltmanın başka bir yönü de [Azure Standart SSD Storage](./planning-guide-storage.md#azure-standard-ssd-storage)kullanımı olabilir. Standart SSD veya Standart HDD Azure Storage ' ın seçilmesi,  [sanal makineler Için SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines)makalesinde belgelendiği şekılde tek VM SLA 'larınız üzerinde etkili olduğunu unutmayın.
 
 Bu tür yapılandırmalara daha az maliyetli bir alternatif şöyle görünebilir:
 
@@ -311,6 +311,6 @@ SAP ile sertifikalı olmayan ve bu nedenle [SAP HANA donanım dizininde](https:/
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 - [Azure sanal makineleri Için yüksek kullanılabilirlik kılavuzu SAP HANA](./sap-hana-availability-overview.md).

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2020
 ms.author: yelevin
-ms.openlocfilehash: 247abafd7abec38e43794b76268ee52538aee508
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 63b9d74fbbb1a79dd4f3d3e7c5fb094a372282e0
+ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655689"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96299641"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>Veri kaynaklarını Azure Sentinel 'e bağlamak için Logstash 'i kullanma
 
@@ -57,7 +57,7 @@ Logstash için Azure Sentinel çıktı eklentisi, Log Analytics çalışma alan�
 
 Azure Sentinel çıktı eklentisi, Logstash koleksiyonunda kullanılabilir.
 
-- **_Microsoft-logstash-output-Azure-loganalytics_* _ eklentisini yüklemek için [Eklentiler belgesi Ile çalışan](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html) logstash içindeki yönergeleri izleyin.
+- **_[Microsoft-logstash-output-Azure-loganalytics](https://github.com/Azure/Azure-Sentinel/tree/master/DataConnectors/microsoft-logstash-output-azure-loganalytics)_* _ eklentisini yüklemek için [Eklentiler belgesi Ile çalışan](https://www.elastic.co/guide/en/logstash/current/working-with-plugins.html) logstash içindeki yönergeleri izleyin.
    
 - Logstash sisteminizin Internet erişimi yoksa, bir çevrimdışı eklenti paketi hazırlamak ve kullanmak için Logstash [çevrimdışı eklenti yönetimi](https://www.elastic.co/guide/en/logstash/current/offline-plugins.html) belgesindeki yönergeleri izleyin. (Bu, Internet erişimi ile başka bir Logstash sistemi oluşturmanızı gerektirir.)
 

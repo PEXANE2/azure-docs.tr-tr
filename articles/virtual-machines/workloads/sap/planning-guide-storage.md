@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/23/2020
+ms.date: 11/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1cd6f5f7865d18461ac7a635530e9aabfde380a6
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 325e28b9fde349fc4bf01d2b130bee0be0684962
+ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955421"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96299607"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>SAP iş yükü için Azure Depolama türleri
 Azure 'da yetenekler, verimlilik, gecikme ve fiyatlara göre büyük ölçüde farklı depolama türlerine sahiptir. Bazı depolama türleri veya SAP senaryolarında sınırlı kullanılabilir değildir. Ancak, birkaç Azure depolama türü, belirli SAP iş yükü senaryoları için uygundur veya iyileştirilmiştir. Özellikle SAP HANA için, bazı Azure Depolama türleri SAP HANA kullanım için sertifikalandıralındı. Bu belgede, farklı depolama türlerini inceleyeceğiz ve SAP iş yükleri ve SAP bileşenleriyle yeteneklerini ve kullanılabilirliğini anladık.
@@ -34,6 +34,8 @@ Bu makale boyunca kullanılan birimler hakkında açıklama. Genel bulut satıc�
 Standart HDD, Standart SSD, Azure Premium Storage ve ultra disk Microsoft Azure depolaması, temel VHD 'yi (işletim sistemi ile) ve VM 'ye bağlı veri disklerini veya VHD 'leri üç farklı depolama düğümü üzerinde üç kopyaya tutar. Bir depolama düğümü hatası durumunda başka bir çoğaltmaya yük devretmek ve yeni bir çoğaltmanın dengeli olması saydam olur. Bu yedekliliğe ilişkin bir sonuç olarak, birden çok Azure diskinde her türlü depolama artıklık katmanını kullanmak gerekli **değildir** . Bu olgu yerel yedekli depolama (LRS) olarak adlandırılır. LRS, Azure 'da bu depolama türleri için varsayılandır. [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) , diğer yerel Azure depolama alanı Ile aynı SLA 'ları elde etmek için yeterli artıklık sağlar.
 
 Azure [depolama çoğaltma](../../../storage/common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) makalesinde, Azure 'un sunabileceği farklı depolama türleri için uygulanan makalede açıklanan daha fazla artıklık yöntemi vardır. 
+
+Ayrıca, farklı Azure Depolama türlerinin [sanal makineler Için SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines)'da yayınlanan tek VM kullanılabilirliği SLA 'larını etkilediğini aklınızda bulundurun.
 
 ### <a name="azure-managed-disks"></a>Azure yönetilen diskler
 
@@ -131,7 +133,6 @@ Bu tür bir depolama, DBMS iş yüklerini, düşük tek basamaklı milisaniyelik
 - Bu depolama alanı için g/ç üretilen işi disk kategorisinin boyutuyla doğrusal değil. 65 GiB ve 128 GiB kapasitesi arasındaki kategori gibi daha küçük diskler için üretilen iş, 780KB/GiB ' dir. Bir 32.767 GiB diski gibi Extreme büyük diskler için üretilen iş, 28KB/GiB 'nin etrafında
 - IOPS ve üretilen iş SLA 'Ları, diskin kapasitesi değişmeksizin değiştirilemez
 
-Azure 'da, Azure Premium Depolama veya Azure Ultra disk depolama kullanımına bağlı olan% 99,9 oranında tek örnekli bir VM SLA 'Sı vardır. SLA, [sanal makineler Için SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)'da belgelenmiştir. Bu tek VM SLA 'sına uymak için, temel VHD diskinin yanı sıra **Tüm** eklenen disklerin Azure Premium Depolama veya Azure Ultra disk depolama olması gerekir.
 
 SAP iş yükünün yetenek matrisi şöyle görünür:
 
