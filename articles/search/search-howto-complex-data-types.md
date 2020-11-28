@@ -8,17 +8,17 @@ ms.author: brjohnst
 tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/07/2020
-ms.openlocfilehash: 1d380a41f5b20c52fefca9e68bb4ed858b3bf3a1
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 11/27/2020
+ms.openlocfilehash: b0b2dd9904682121c83b22b9029097e7ee57fb11
+ms.sourcegitcommit: 6b16e7cc62b29968ad9f3a58f1ea5f0baa568f02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422085"
+ms.lasthandoff: 11/28/2020
+ms.locfileid: "96303759"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Azure Bilişsel Arama karmaşık veri türlerini modelleme
 
-Azure Bilişsel Arama dizinini doldurmak için kullanılan dış veri kümeleri birçok şekilde gelebilir. Bazen hiyerarşik veya iç içe geçmiş alt yapıları içerirler. Örnekler tek bir müşteri için birden çok adres, tek bir SKU için birden çok renk ve boyut, tek bir kitabın birden çok yazarı vb. içerebilir. Modelleme koşullarında, bu yapıları *karmaşık* , *bileşik* , *bileşik* veya *toplama* veri türleri olarak ifade edilen olarak görebilirsiniz. Bu kavram için kullanılan Azure Bilişsel Arama terimi karmaşık bir **türdür**. Azure Bilişsel Arama 'de karmaşık türler **karmaşık alanlar** kullanılarak modellenir. Karmaşık alan, diğer karmaşık türler de dahil olmak üzere herhangi bir veri türünde olabilecek alt öğeler (alt alanlar) içeren bir alandır. Bu, bir programlama dilinde yapılandırılmış veri türleri gibi benzer bir şekilde çalışmaktadır.
+Azure Bilişsel Arama dizinini doldurmak için kullanılan dış veri kümeleri birçok şekilde gelebilir. Bazen hiyerarşik veya iç içe geçmiş alt yapıları içerirler. Örnekler tek bir müşteri için birden çok adres, tek bir SKU için birden çok renk ve boyut, tek bir kitabın birden çok yazarı vb. içerebilir. Modelleme koşullarında, bu yapıları *karmaşık*, *bileşik*, *bileşik* veya *toplama* veri türleri olarak ifade edilen olarak görebilirsiniz. Bu kavram için kullanılan Azure Bilişsel Arama terimi karmaşık bir **türdür**. Azure Bilişsel Arama 'de karmaşık türler **karmaşık alanlar** kullanılarak modellenir. Karmaşık alan, diğer karmaşık türler de dahil olmak üzere herhangi bir veri türünde olabilecek alt öğeler (alt alanlar) içeren bir alandır. Bu, bir programlama dilinde yapılandırılmış veri türleri gibi benzer bir şekilde çalışmaktadır.
 
 Karmaşık alanlar, veri türüne bağlı olarak belgedeki tek bir nesneyi ya da bir nesne dizisini temsil eder. Türündeki alanlar `Edm.ComplexType` tek nesneleri temsil ederken, tür alanları `Collection(Edm.ComplexType)` nesnelerin dizilerini temsil eder.
 
@@ -62,8 +62,6 @@ Aşağıdaki JSON belgesi basit alanlar ve karmaşık alanlardan oluşur. Ve gib
   ]
 }
 ```
-
-Name = "Indexing-Complex-Types><</a>
 
 ## <a name="indexing-complex-types"></a>Karmaşık türler dizinleniyor
 

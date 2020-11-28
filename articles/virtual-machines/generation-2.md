@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: jushiman
-ms.openlocfilehash: 0aedcc3be4cb319dc24990507d85756bd77777e4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 56a360f461c89d7c60e973bf2d6258d63113ab47
+ms.sourcegitcommit: 6b16e7cc62b29968ad9f3a58f1ea5f0baa568f02
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94963836"
+ms.lasthandoff: 11/28/2020
+ms.locfileid: "96303774"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure'da 2. nesil VM'ler için destek
 
@@ -49,6 +49,8 @@ ms.locfileid: "94963836"
 * [NCv3 serisi](ncv3-series.md)
 * [ND serisi](nd-series.md)
 * [NVv3 serisi](nvv3-series.md)
+* [NVv4 serisi](nvv4-series.md)
+* [NCasT4_v3 serisi](nct4-v3-series.md)
 
 <sup>1</sup> Mv2 serisi, 1. nesil VM görüntülerini desteklemez ve yalnızca 2. nesil görüntülerin bir alt kümesini destekler. Ayrıntılar için lütfen bkz. [Mv2-Series belgeleri](mv2-series.md) .
 
@@ -85,7 +87,7 @@ Azure, 2. nesil VM 'Ler için şirket içi Hyper-V ' d i destekleyen bazı özel
 
 ### <a name="generation-1-vs-generation-2-features"></a>1. nesil ve 2. nesil Özellikler
 
-| Öne çıkan özelliği | 1. nesil | 2. nesil |
+| Özellik | 1. nesil | 2. nesil |
 |---------|--------------|--------------|
 | Önyükleme             | PCAT                      | UEFı                               |
 | Disk denetleyicileri | IDE                       | SCSI                               |
@@ -145,7 +147,7 @@ Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer 
 
 Desteklenen Market görüntülerinin geçerli listesi için [Özellikler ve yetenekler](#features-and-capabilities) bölümüne bakın.
 
-#### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure CLI’si
 
 Alternatif olarak, **Yayımcı** tarafından listelenmiş olan 2. nesil görüntüleri görmek IÇIN Azure CLI ' yi de kullanabilirsiniz.
 
