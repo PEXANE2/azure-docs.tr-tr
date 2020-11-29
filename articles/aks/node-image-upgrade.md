@@ -3,37 +3,69 @@ title: Azure Kubernetes hizmeti (AKS) düğüm görüntülerini yükseltme
 description: AKS küme düğümleri ve düğüm havuzlarındaki görüntüleri nasıl yükselteceğinizi öğrenin.
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 11/17/2020
-ms.openlocfilehash: 211190228c1ea9c98004b55da96ad38808821d67
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.date: 11/25/2020
+ms.author: jpalma
+ms.openlocfilehash: e8214345bd1c328f0996f8aa8a2a8bb402a76e8d
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682392"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309605"
 ---
 # <a name="azure-kubernetes-service-aks-node-image-upgrade"></a>Azure Kubernetes hizmeti (AKS) düğümü görüntüsü yükseltme
 
-AKS, en yeni işletim sistemi ve çalışma zamanı güncelleştirmeleriyle güncel olması için bir düğümdeki görüntülerin yükseltilmesini destekler. AKS, en son güncelleştirmelerle hafta başına yeni bir görüntü sağlar; bu nedenle, Linux veya Windows yamaları dahil olmak üzere en son özellikler için düğümlerinizin görüntülerini düzenli olarak yükseltmeniz yararlı olur. Bu makalede, AKS küme düğümü görüntülerinin nasıl yükseltilebileceği ve Kubernetes 'in sürümünü yükseltmeden önce düğüm havuzu görüntülerinin nasıl güncelleşileceği gösterilmektedir.
+AKS, en yeni işletim sistemi ve çalışma zamanı güncelleştirmeleriyle güncel olması için bir düğümdeki görüntülerin yükseltilmesini destekler. AKS, en son güncelleştirmelerle hafta başına yeni bir görüntü sağlar; bu nedenle, Linux veya Windows yamaları dahil olmak üzere en son özellikler için düğümlerinizin görüntülerini düzenli olarak yükseltmeniz yararlı olur. Bu makalede, AKS kümesi düğüm görüntülerini yükseltme ve Kubernetes sürümünü yükseltmeden düğüm havuzu görüntülerini güncelleştirme işlemlerinin nasıl yapılacağı gösterilir.
 
-AKS tarafından sunulan en son görüntüler hakkında bilgi edinmek istiyorsanız, daha fazla ayrıntı için bkz. [aks sürüm notları](https://github.com/Azure/AKS/releases) .
+AKS tarafından sunulan en son görüntüler hakkında daha fazla bilgi için bkz. [aks sürüm notları](https://github.com/Azure/AKS/releases).
 
 Kümeniz için Kubernetes sürümünü yükseltme hakkında daha fazla bilgi için bkz. [AKS kümesini yükseltme][upgrade-cluster].
 
-## <a name="limitations"></a>Sınırlamalar
+> [!NOTE]
+> AKS kümesinin düğümlerin sanal makine ölçek kümelerini kullanması gerekir.
 
-* AKS kümesinin düğümlerin sanal makine ölçek kümelerini kullanması gerekir.
+## <a name="check-if-your-node-pool-is-on-the-latest-node-image"></a>Düğüm havuzunuzun en son düğüm görüntüsünde olup olmadığını denetleyin
 
-## <a name="install-the-aks-cli-extension"></a>AKS CLı uzantısını yükler
-
-Bir sonraki Core CLı sürümü yayınlanmadan önce, düğüm görüntüsü yükseltmesini kullanabilmeniz için *aks-Preview* CLI uzantısının olması gerekir. [Az Extension Add][az-extension-add] komutunu kullanın ve [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeler olup olmadığını denetleyin:
+Aşağıdaki komutla, düğüm havuzunuz için en son düğüm görüntüsü sürümünü nasıl kullanabileceğiniz görebilirsiniz: 
 
 ```azurecli
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
+az aks nodepool get-upgrades \
+    --nodepool-name mynodepool \
+    --cluster-name myAKSCluster \
+    --resource-group myResourceGroup
 ```
+
+Çıktıda `latestNodeImageVersion` Aşağıdaki örnekte olduğu gibi görebilirsiniz:
+
+```output
+{
+  "id": "/subscriptions/XXXX-XXX-XXX-XXX-XXXXX/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster/agentPools/nodepool1/upgradeProfiles/default",
+  "kubernetesVersion": "1.17.11",
+  "latestNodeImageVersion": "AKSUbuntu-1604-2020.10.28",
+  "name": "default",
+  "osType": "Linux",
+  "resourceGroup": "myResourceGroup",
+  "type": "Microsoft.ContainerService/managedClusters/agentPools/upgradeProfiles",
+  "upgrades": null
+}
+```
+
+Bu nedenle `nodepool1` , kullanılabilir en son düğüm görüntüsü için `AKSUbuntu-1604-2020.10.28` . Şimdi, şunu çalıştırarak düğüm havuzunuzun kullandığı geçerli düğüm görüntüsü sürümüyle karşılaştırabilirsiniz:
+
+```azurecli
+az aks nodepool show \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name mynodepool \
+    --query nodeImageVersion
+```
+
+Örnek bir çıktı şöyle olabilir:
+
+```output
+"AKSUbuntu-1604-2020.10.08"
+```
+
+Bu örnekte, geçerli `AKSUbuntu-1604-2020.10.08` görüntü sürümünden en son sürüme yükseltebilirsiniz `AKSUbuntu-1604-2020.10.28` . 
 
 ## <a name="upgrade-all-nodes-in-all-node-pools"></a>Tüm düğüm havuzlarındaki tüm düğümleri yükselt
 

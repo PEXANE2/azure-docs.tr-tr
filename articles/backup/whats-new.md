@@ -1,16 +1,16 @@
 ---
-title: Azure Backup yenilikleri
+title: Azure Backup’taki yenilikler
 description: Azure Backup yeni özellikler hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: e48a7df1e42591843c30b77026a4d8656773a57d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ba29ddea5d5f096640f2bfc012c44ab06bb3e131
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95511595"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309673"
 ---
-# <a name="whats-new-in-azure-backup"></a>Azure Backup yenilikleri
+# <a name="whats-new-in-azure-backup"></a>Azure Backup’taki yenilikler
 
 Azure Backup, Azure 'daki verilerinizin korunmasını geliştiren yeni özellikleri sürekli olarak geliştirir ve serbest bırakır. Bu yeni özellikler, veri korumanızı yeni iş yükü türlerine genişletir, güvenliği artırır ve yedekleme verilerinizin kullanılabilirliğini geliştirir. Ayrıca yeni yönetim, izleme ve otomasyon özellikleri de ekler.
 
@@ -19,6 +19,7 @@ Yeni yayınlar hakkında daha fazla bilgi edinmek için bu sayfayı kitap halind
 ## <a name="updates-summary"></a>Güncelleştirme Özeti
 
 - Kasım 2020
+  - [Azure dosya paylaşma (AFS) yedeklemesi için Azure Resource Manager şablonu](#azure-resource-manager-template-for-afs-backup)
   - [Azure VM 'lerinde SAP HANA veritabanları için artımlı yedeklemeler](#incremental-backups-for-sap-hana-databases)
 - Eylül 2020
   - [Yedekleme Merkezi](#backup-center)
@@ -30,6 +31,12 @@ Yeni yayınlar hakkında daha fazla bilgi edinmek için bu sayfayı kitap halind
   - [RHEL Azure sanal makinelerinde yedekleme SAP HANA](#backup-sap-hana-in-rhel-azure-virtual-machines)
   - [Yedekleme verileri için bölge yedekli depolama (ZRS)](#zone-redundant-storage-zrs-for-backup-data)
   - [Azure VM 'lerinde SQL Server ve SAP HANA iş yükleri için geçici silme](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="azure-resource-manager-template-for-afs-backup"></a>AFS yedeklemesi için Azure Resource Manager şablonu
+
+Azure Backup artık Azure Resource Manager (ARM) şablonu kullanarak mevcut Azure dosya paylaşımları için yedeklemeyi yapılandırmayı destekliyor. Şablon, kurtarma hizmetleri kasası ve yedekleme ilkesi için uygun ayrıntıları belirterek mevcut bir Azure dosya paylaşımının korumasını yapılandırır. Bu, isteğe bağlı olarak yeni bir kurtarma hizmetleri kasası ve yedekleme ilkesi oluşturur ve dosya paylaşımının bulunduğu depolama hesabını kurtarma hizmetleri kasasına kaydeder.
+
+Daha fazla bilgi için bkz. [Azure Backup için Azure Resource Manager şablonları](backup-rm-template-samples.md).
 
 ## <a name="incremental-backups-for-sap-hana-databases"></a>SAP HANA veritabanları için artımlı yedeklemeler
 

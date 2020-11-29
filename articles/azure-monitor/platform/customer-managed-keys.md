@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 11/18/2020
-ms.openlocfilehash: ac785b3ad534e80d4dd240d1a29ba5f6aa75e10a
-ms.sourcegitcommit: 236014c3274b31f03e5fcee5de510f9cacdc27a0
+ms.openlocfilehash: 6264ea50f128764a5213a7a1fd9b8c47ddae8961
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96299048"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309690"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure İzleyici müşteri tarafından yönetilen anahtar 
 
@@ -76,7 +76,23 @@ Customer-Managed anahtar yapılandırması Azure portal desteklenmez ve sağlama
 
 ### <a name="asynchronous-operations-and-status-check"></a>Zaman uyumsuz işlemler ve durum denetimi
 
-Yapılandırma adımlarının bazıları hızla tamamlanamadığından zaman uyumsuz olarak çalışır. REST kullanılırken, yanıt, kabul edildiğinde *Azure-AsyncOperation* özelliğine sahıp bir http durum kodu 200 (Tamam) ve üst bilgi döndürür:
+Yapılandırma adımlarının bazıları hızla tamamlanamadığından zaman uyumsuz olarak çalışır. `status`' In yanıtı, ' InProgress ', ' Updating ', ' siliyor ', ' SUCCEEDED veya ' Failed ' hata kodu dahil olabilir.
+
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+Yok
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Yok
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Yok
+
+# <a name="rest"></a>[REST](#tab/rest)
+
+REST kullanılırken, yanıt, kabul edildiğinde *Azure-AsyncOperation* özelliğine sahıp bir http durum kodu 200 (Tamam) ve üst bilgi döndürür:
 ```json
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
 ```
@@ -87,7 +103,7 @@ GET https://management.azure.com/subscriptions/subscription-id/providers/microso
 Authorization: Bearer <token>
 ```
 
-`status`' In yanıtı, ' InProgress ', ' Updating ', ' siliyor ', ' SUCCEEDED veya ' Failed ' hata kodu dahil olabilir.
+---
 
 ### <a name="allowing-subscription"></a>Aboneliğe izin verme
 
@@ -137,16 +153,25 @@ Anahtar tanımlayıcı ayrıntıları ile kümedeki KeyVaultProperties 'i günce
 
 İşlem zaman uyumsuzdur ve tamamlanması biraz zaman alabilir.
 
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+Yok
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 ```azurecli
 az monitor log-analytics cluster update --name "cluster-name" --resource-group "resource-group-name" --key-name "key-name" --key-vault-uri "key-uri" --key-version "key-version"
 ```
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -KeyVaultUri "key-uri" -KeyName "key-name" -KeyVersion "key-version"
 ```
 
+# <a name="rest"></a>[REST](#tab/rest)
+
 ```rst
-PATCH https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/cluster-name"?api-version=2020-08-01
+PATCH https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/cluster-name?api-version=2020-08-01
 Authorization: Bearer <token> 
 Content-type: application/json
  
@@ -200,6 +225,8 @@ Anahtar tanımlayıcı güncelleştirmesi tamamlandığında GET isteğinin yan�
 }
 ```
 
+---
+
 ### <a name="link-workspace-to-cluster"></a>Çalışma alanını kümeye bağla
 
 Bu işlemi gerçekleştirmek için hem çalışma alanınızda hem de kümenizde ' Write ' izinlerine sahip olmanız gerekir:
@@ -250,15 +277,25 @@ Kendi depolama alanınızı (BYOS) getirip çalışma alanınıza bağladığın
 
 Çalışma alanınıza *sorgu* için bir depolama hesabı bağlayın-- *kayıtlı aramalar* sorguları depolama hesabınıza kaydedilir. 
 
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+Yok
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 ```azurecli
 $storageAccountId = '/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage name>'
 az monitor log-analytics workspace linked-storage create --type Query --resource-group "resource-group-name" --workspace-name "workspace-name" --storage-accounts $storageAccountId
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "storage-account-name"
 New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -DataSourceType Query -StorageAccountIds $storageAccount.Id
 ```
+
+# <a name="rest"></a>[REST](#tab/rest)
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Query?api-version=2020-08-01
@@ -276,21 +313,33 @@ Content-type: application/json
 }
 ```
 
+---
+
 Yapılandırmadan sonra, yeni *Kaydedilmiş arama* sorgusu, depolama alanına kaydedilir.
 
 **KCG 'LERI log-Alerts sorguları için yapılandırma**
 
 Çalışma alanınıza *Uyarılar* için bir depolama hesabı bağlayın-- *log-Alerts* sorguları depolama hesabınıza kaydedilir. 
 
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+Yok
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 ```azurecli
 $storageAccountId = '/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage name>'
 az monitor log-analytics workspace linked-storage create --type ALerts --resource-group "resource-group-name" --workspace-name "workspace-name" --storage-accounts $storageAccountId
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "storage-account-name"
 New-AzOperationalInsightsLinkedStorageAccount -ResourceGroupName "resource-group-name" -WorkspaceName "workspace-name" -DataSourceType Alerts -StorageAccountIds $storageAccount.Id
 ```
+
+# <a name="rest"></a>[REST](#tab/rest)
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>/linkedStorageAccounts/Alerts?api-version=2020-08-01
@@ -308,9 +357,12 @@ Content-type: application/json
 }
 ```
 
+---
+
 Yapılandırmadan sonra, tüm yeni uyarı sorgusu depolama alanına kaydedilir.
 
 ## <a name="customer-lockbox-preview"></a>Müşteri Kasası (Önizleme)
+
 Kasa, destek isteği sırasında verilerinize erişmek için Microsoft mühendis isteğini onaylama veya reddetme denetimi sağlar.
 
 Azure Izleyici 'de, Log Analytics adanmış kümenize bağlı olan çalışma alanlarındaki veriler üzerinde bu denetime sahip olursunuz. Kasa denetimi, kasa korumalı aboneliğiniz altındaki kümenin depolama hesaplarında yalıtılmış olduğu Log Analytics adanmış bir kümede depolanan veriler için geçerlidir.  
@@ -321,13 +373,23 @@ Azure Izleyici 'de, Log Analytics adanmış kümenize bağlı olan çalışma al
 
 - **Bir kaynak grubundaki tüm kümeleri al**
   
+  # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+  Yok
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
   ```azurecli
   az monitor log-analytics cluster list --resource-group "resource-group-name"
   ```
 
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Get-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name"
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rst
   GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-08-01
@@ -369,15 +431,27 @@ Azure Izleyici 'de, Log Analytics adanmış kümenize bağlı olan çalışma al
   }
   ```
 
+  ---
+
 - **Bir abonelikteki tüm kümeleri al**
+
+  # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+  Yok
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
   ```azurecli
   az monitor log-analytics cluster list
   ```
 
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Get-AzOperationalInsightsCluster
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rst
   GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-08-01
@@ -388,17 +462,29 @@ Azure Izleyici 'de, Log Analytics adanmış kümenize bağlı olan çalışma al
     
   ' Kaynak grubunda bulunan ' kümesi ile aynı yanıt, ancak abonelik kapsamı.
 
+  ---
+
 - **Kümede *Kapasite ayırmayı* Güncelleştir**
 
   Bağlı çalışma alanlarınızdaki veri hacmi zaman içinde değişiklik yaparken ve kapasite ayırma düzeyini uygun şekilde güncellemek istediğinizde. [Güncelleştirme kümesini](#update-cluster-with-key-identifier-details) izleyin ve yeni kapasite değerini sağlayın. Bu, gün başına 1000 GB ve 100 adımlarında 3000 arasında olabilir. Günde 3000 GB 'den yüksek düzey için, Microsoft kişinize ulaşın. Tam REST istek gövdesini sağlamanız gerekmez, ancak SKU 'yu içermelidir:
+
+  # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+  Yok
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
   ```azurecli
   az monitor log-analytics cluster update --name "cluster-name" --resource-group "resource-group-name" --sku-capacity daily-ingestion-gigabyte
   ```
 
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -SkuCapacity daily-ingestion-gigabyte
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rst
   PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
@@ -413,6 +499,8 @@ Azure Izleyici 'de, Log Analytics adanmış kümenize bağlı olan çalışma al
   }
   ```
 
+  ---
+
 - **Kümede *Billingtype* 'ı güncelleştirme**
 
   *Billingtype* özelliği, küme ve verileri için faturalandırma atısyonu belirler:
@@ -420,6 +508,20 @@ Azure Izleyici 'de, Log Analytics adanmış kümenize bağlı olan çalışma al
   - *çalışma alanları* --faturalandırma, çalışma alanlarınızı orantılı olarak barındıran aboneliklerle ilişkilidir
   
   [Güncelleştirme kümesini](#update-cluster-with-key-identifier-details) izleyin ve yeni billingType değerini sağlayın. Tam REST istek gövdesini sağlamanız gerekmez ve *Billingtype* öğesini içermelidir:
+
+  # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+  Yok
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+  Yok
+
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+  Yok
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rst
   PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
@@ -433,36 +535,67 @@ Azure Izleyici 'de, Log Analytics adanmış kümenize bağlı olan çalışma al
   }
   ``` 
 
+  ---
+
 - **Çalışma alanının bağlantısını kaldırma**
 
   Bu işlemi gerçekleştirmek için çalışma alanı ve kümede ' yazma ' izinlerine sahip olmanız gerekir. Bir çalışma alanının kümenizi dilediğiniz zaman kaldırabilirsiniz. Bağlantıyı kaldırma işlemi sonrasında yeni alınan veriler Log Analytics depolama alanında depolanır ve Microsoft anahtarıyla şifrelenir. Küme sağlanmakta olduğu ve geçerli Key Vault anahtarıyla yapılandırıldığı sürece, çalışma alanınıza alınan ve bu bağlantıyı sorunsuz bir şekilde yeniden bağlamak istediğiniz verileri sorgulayabilirsiniz.
 
   Bu işlem zaman uyumsuzdur ve tamamlanırken bir süre olabilir.
 
+  # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+  Yok
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
   ```azurecli
   az monitor log-analytics workspace linked-service delete --resource-group "resource-group-name" --name "cluster-name" --workspace-name "workspace-name"
   ```
 
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Remove-AzOperationalInsightsLinkedService -ResourceGroupName "resource-group-name" -Name "workspace-name" -LinkedServiceName cluster
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rest
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-08-01
   Authorization: Bearer <token>
   ```
 
+  ---
+
   - **Çalışma alanı bağlantı durumunu denetle**
   
   Çalışma alanında Get işlemini gerçekleştirin ve *Kümeresourceıd* özelliğinin *Özellikler* altında yanıtta bulunup bulunmayacağını gözlemleyin. Bağlı bir çalışma alanı *Clusterresourceıd* özelliğine sahip olur.
+
+  # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+  Yok
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
   ```azurecli
   az monitor log-analytics cluster show --resource-group "resource-group-name" --name "cluster-name"
   ```
 
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Get-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
+
+   ```rest
+  GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>?api-version=2020-08-01
+  Authorization: Bearer <token>
+  ```
+
+  ---
 
 - **Kümenizi silme**
 
@@ -470,18 +603,30 @@ Azure Izleyici 'de, Log Analytics adanmış kümenize bağlı olan çalışma al
   
   Bağlantıyı kaldır işlemi zaman uyumsuzdur ve tamamlanması 90 dakika sürebilir.
 
+  # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+  Yok
+
+  # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
   ```azurecli
   az monitor log-analytics cluster delete --resource-group "resource-group-name" --name "cluster-name"
   ```
- 
+
+  # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
   ```powershell
   Remove-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name"
   ```
+
+  # <a name="rest"></a>[REST](#tab/rest)
 
   ```rst
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
   Authorization: Bearer <token>
   ```
+
+  ---
   
 - **Kümenizi ve verilerinizi kurtarma** 
   

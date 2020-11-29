@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: bd929d06bca370ffab53ce2023188bc12a1d8bd1
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d2e93ccfaf3ff2c5b74ceef1f6a274f71ee52c4e
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186448"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309843"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Izleyici 'de çalışma alanı verilerini dışarı aktarma Log Analytics (Önizleme)
 Azure Izleyici 'de Log Analytics çalışma alanı verileri dışarı aktarma işlemi, Log Analytics çalışma alanınızdaki seçili tablolardan verileri sürekli olarak bir Azure depolama hesabına veya Azure Event Hubs toplanarak dışarı aktaralmanıza olanak sağlar. Bu makalede, bu özellik hakkında ayrıntılar ve çalışma alanlarınızdaki veri dışarı aktarmayı yapılandırma adımları sağlanmaktadır.
@@ -58,7 +58,7 @@ Log Analytics çalışma alanı verileri dışarı aktarma bir Log Analytics ça
 ## <a name="data-completeness"></a>Veri bütünlüğü
 Verilerin dışarı aktarılması, hedefin kullanılamaz durumda olması durumunda 30 dakikaya kadar veri göndermeyi yeniden denemeye devam edecektir. 30 dakika sonra hala kullanılamıyorsa, veriler hedef kullanılabilir olana kadar atılır.
 
-## <a name="cost"></a>Maliyet
+## <a name="cost"></a>Cost
 Şu anda veri dışa aktarma özelliği için ek ücret alınmaz. Veri dışa aktarma fiyatlandırması gelecekte duyurulacaktır ve faturalandırma başlamadan önce bir uyarı verilir. Bildirim süresinden sonra veri dışa aktarmayı kullanmaya devam etmeyi seçerseniz, ilgili ücret üzerinden faturalandırılırsınız.
 
 ## <a name="export-destinations"></a>Hedefleri dışarı aktar
@@ -81,7 +81,7 @@ Dikkat edilmesi gerekenler:
 1. ' Temel ' Olay Hub 'ı SKU, daha düşük olay boyutu [sınırını](../../event-hubs/event-hubs-quotas.md#basic-vs-standard-tiers) destekler ve çalışma alanınızdaki bazı Günlükler onu aşabilir ve bırakılamaz. Dışarı aktarma hedefi olarak ' Standard ' veya ' adanmış ' Olay Hub 'ı kullanmanızı öneririz.
 2. İçe aktarılmış verilerin hacmi genellikle zaman içinde artar ve daha büyük aktarım hızlarını işlemek ve kısıtlama senaryolarından ve veri gecikmesinden kaçınmak için Olay Hub 'ı ölçeğinin artması gerekir. İşleme birimlerinin sayısını otomatik olarak artırmak ve kullanım ihtiyaçlarını karşılamak için Event Hubs otomatik Şişir özelliğini kullanmanız gerekir. Ayrıntılar için bkz. [Azure Event Hubs üretilen iş birimlerini otomatik olarak ölçeklendirme](../../event-hubs/event-hubs-auto-inflate.md) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Log Analytics veri dışarı aktarma yapılandırmadan önce tamamlanması gereken önkoşullar aşağıda verilmiştir.
 
 - Depolama hesabının ve Olay Hub 'ının zaten oluşturulması ve Log Analytics çalışma alanıyla aynı bölgede olması gerekir. Verilerinizi diğer depolama hesaplarına çoğaltmanız gerekiyorsa [Azure depolama yedekliliği seçeneklerinin](../../storage/common/storage-redundancy.md)herhangi birini kullanabilirsiniz.  
@@ -117,6 +117,10 @@ Depolama hesabınızı seçili ağlardan erişime izin verecek şekilde yapılan
 ### <a name="create-or-update-data-export-rule"></a>Veri dışarı aktarma kuralı oluştur veya güncelleştir
 Veri dışa aktarma kuralı, bir tablo kümesi için tek bir hedefe verilecek verileri tanımlar. Her hedef için bir kural oluşturabilirsiniz.
 
+
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+Yok
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -203,6 +207,10 @@ Aşağıda, Olay Hub 'ı adının sağlandığı bir olay hub 'ı için REST ist
 
 ## <a name="view-data-export-configuration"></a>Veri dışarı aktarma yapılandırmasını görüntüle
 
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+Yok
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 CLı kullanarak bir veri dışa aktarma kuralının yapılandırmasını görüntülemek için aşağıdaki komutu kullanın.
@@ -221,6 +229,10 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 ---
 
 ## <a name="disable-an-export-rule"></a>Dışarı aktarma kuralını devre dışı bırak
+
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+Yok
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -256,6 +268,10 @@ Content-type: application/json
 
 ## <a name="delete-an-export-rule"></a>Dışarı aktarma kuralını silme
 
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+Yok
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 CLı kullanarak bir veri dışarı aktarma kuralını silmek için aşağıdaki komutu kullanın.
@@ -274,6 +290,10 @@ DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegrou
 ---
 
 ## <a name="view-all-data-export-rules-in-a-workspace"></a>Çalışma alanındaki tüm veri dışarı aktarma kurallarını görüntüleme
+
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+Yok
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

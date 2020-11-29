@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 11/18/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0e637a09a5305e314a32b1cac34b2da669eec614
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 60c3fc6688dc4a25faf5ed94df25055e29d34403
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296208"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309826"
 ---
 # <a name="azure-synapse-analytics-terminology"></a>Azure SYNAPSE Analytics terminolojisi
 
@@ -36,8 +36,7 @@ Bir çalışma alanı, herhangi bir sayıda **bağlı hizmeti** içerebilir ve b
 
 **SYNAPSE SQL** , SYNAPSE çalışma alanında T-SQL tabanlı analizler yapabilme olanağıdır. SYNAPSE SQL 'in iki tüketim modeli vardır: adanmış ve sunucusuz.  Adanmış model için **ADANMıŞ SQL havuzları** kullanın. Bir çalışma alanı bu havuzlardan herhangi bir sayıda olabilir. Sunucusuz modeli kullanmak için **SUNUCUSUZ SQL havuzlarını** kullanın. Her çalışma alanı bu havuzlardan birine sahiptir.
 
-* **SQL isteği** -bir sorgu gibi işlem, adanmış SQL havuzu veya SUNUCUSUZ SQL havuzu aracılığıyla çalışır.
-* **SQL betiği** -bir dosyaya kaydedilen SQL komutlarının kümesi. Bir SQL betiği bir veya daha fazla SQL deyimi içerebilir. Adanmış SQL havuzu veya sunucusuz SQL havuzu aracılığıyla SQL isteklerini çalıştırmak için kullanılabilir.
+SYNAPSE Studio içinde **SQL komut dosyaları** OLUŞTURUP çalıştırarak SQL havuzlarıyla çalışabilirsiniz.
 
 ## <a name="apache-spark-for-synapse"></a>SYNAPSE için Apache Spark
 
@@ -47,7 +46,7 @@ SYNAPSE içinde Spark kullanmanın iki yolu vardır:
 * Veri veri bilimi ve Mühendisliği yapmak için **Spark Not defterleri** Scala, Pyspark, C# ve mini kullanılan SQL
 * Jar dosyalarını kullanarak Batch Spark işlerinin çalıştırılmasına yönelik **Spark iş tanımları** .
 
-## <a name="pipelines"></a>İşlem hatları
+## <a name="pipelines"></a>Pipelines
 
 İşlem hatları Azure SYNAPSE 'in veri tümleştirmesi sağladığı, verileri hizmetler arasında taşımanızı ve etkinlikleri düzenlemenizi sağlar.
 

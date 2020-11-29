@@ -4,21 +4,21 @@ description: Kurtarma Hizmetleri kasaları ve Azure Backup özellikleriyle kulla
 ms.topic: sample
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: 29a2499bfd3125cad98e72f7543bb9a29293f624
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a4c2f444cb821f7979571b9d777895a59450e7c2
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88755203"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309588"
 ---
 # <a name="azure-resource-manager-templates-for-azure-backup"></a>Azure Backup için Azure Resource Manager şablonları
 
 Aşağıdaki tabloda Kurtarma Hizmetleri kasaları ve Azure Backup özellikleri ile birlikte kullanılacak Azure Resource Manager şablonlarının bağlantıları bulunur. JSON sözdizimi ve özellikleri hakkında bilgi edinmek için bkz. [Microsoft. RecoveryServices kaynak türleri](/azure/templates/microsoft.recoveryservices/allversions).
 
-| Şablon | Açıklama |
+| Şablon | Description |
 |---|---|
 |**Kurtarma Hizmetleri kasası** | |
-| [Kurtarma Hizmetleri kasası oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-vault-create)| Kurtarma Hizmetleri kasası oluşturun. Kasa Azure Backup ve Azure Site Recovery için kullanılabilir. |
+| [Kurtarma Hizmetleri Kasası oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-vault-create)| Kurtarma Hizmetleri kasası oluşturun. Kasa Azure Backup ve Azure Site Recovery için kullanılabilir. |
 |**Sanal makineleri yedekleme**| |
 | [Kaynak Yöneticisi VM’lerini yedekleme](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-backup-vms) | Aynı kaynak grubundaki Kaynak Yöneticisi sanal makinelerini yedeklemek için kaynak var olan Kurtarma Hizmetleri kasasını ve Yedekleme ilkesini kullanın.|
 | [IaaS sanal makinelerini Kurtarma Hizmetleri kasasına yedekleme](https://github.com/Azure/azure-quickstart-templates/tree/master/201-recovery-services-backup-classic-resource-manager-vms) | Klasik ve Kaynak Yöneticisi sanal makinelerini yedekleme şablonu. |
@@ -29,4 +29,6 @@ Aşağıdaki tabloda Kurtarma Hizmetleri kasaları ve Azure Backup özellikleri 
 | [Azure Izleyici günlüklerini Azure Backup ile kullanma](https://github.com/Azure/azure-quickstart-templates/tree/master/101-backup-oms-monitoring) | Şablon, Azure Izleyici günlüklerini, yedekleme ve geri yükleme işlerini, yedekleme uyarılarını ve kurtarma hizmetleri kasalarınızda kullanılan bulut depolama alanını izlemenize olanak tanıyan Azure Backup ile dağıtır.|  
 |**Azure VM 'de yedekleme SQL Server** |  |
 | [Azure VM 'de yedekleme SQL Server](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-vm-workload-backup) | Şablon, bir kurtarma hizmetleri kasası ve Iş yüküne özgü yedekleme Ilkesi oluşturur. VM 'yi Azure Backup hizmetine kaydeder ve bu VM 'de korumayı yapılandırır. Şu anda yalnızca SQL galeri görüntüleri için geçerlidir. |
+|**Azure dosya paylaşımlarını yedekleme** |  |
+| [Azure dosya paylaşımlarını yedekleme](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-backup-file-share) | Bu şablon, kurtarma hizmetleri kasası ve yedekleme ilkesi için uygun ayrıntıları belirterek mevcut bir Azure dosya paylaşımının korumasını yapılandırır. Bu, isteğe bağlı olarak yeni bir kurtarma hizmetleri kasası ve yedekleme ilkesi oluşturur ve dosya paylaşımının bulunduğu depolama hesabını kurtarma hizmetleri kasasına kaydeder. |
 |   |   |

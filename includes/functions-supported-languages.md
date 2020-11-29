@@ -6,26 +6,27 @@ author: ggailey777
 manager: cfowler
 ms.service: azure-functions
 ms.topic: include
-ms.date: 12/09/2019
+ms.date: 11/27/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 23f342b7e6151657a93af6c83f7b73d102167bd8
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 78b94dad03200d25bd29861acc92b10037a81238
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94633388"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309721"
 ---
 |Dil                                 |'in         |2.x| 3.x |
 |-----------------------------------------|------------|---| --- |
 |[C#](../articles/azure-functions/functions-reference-csharp.md)|GA (.NET Framework 4,7)|GA (.NET Core 2,2)| GA (.NET Core 3,1) |
 |[JavaScript](../articles/azure-functions/functions-reference-node.md#node-version)|GA (düğüm 6)|GA (düğüm 10 & 8)| GA (düğüm 12 & 10)<br />Önizleme (düğüm 14) |
 |[F#](../articles/azure-functions/functions-reference-fsharp.md)|GA (.NET Framework 4,7)|GA (.NET Core 2,2)| GA (.NET Core 3,1) |
-|[Java](../articles/azure-functions/functions-reference-java.md)|YOK|GA (Java 8)| GA (Java 11 & 8)|
-|[PowerShell](../articles/azure-functions/functions-reference-powershell.md) |YOK|GA (PowerShell Core 6)| GA (PowerShell 7 & çekirdek 6)|
-|[Python](../articles/azure-functions/functions-reference-python.md#python-version)|YOK|GA (Python 3,7 & 3,6)| GA (Python 3,8, 3,7, & 3,6)|
-|[TypeScript](../articles/azure-functions/functions-reference-node.md#typescript) |YOK|GA<sup>*</sup>| GA<sup>*</sup> |
+|[Java](../articles/azure-functions/functions-reference-java.md)|Yok|GA (Java 8)| GA (Java 11 & 8)|
+|[PowerShell](../articles/azure-functions/functions-reference-powershell.md) |Yok|GA (PowerShell Core 6)| GA (PowerShell 7 & çekirdek 6)|
+|[Python](../articles/azure-functions/functions-reference-python.md#python-version)|Yok|GA (Python 3,7 & 3,6)| GA (Python 3,8, 3,7, & 3,6)|
+|[TypeScript](../articles/azure-functions/functions-reference-node.md#typescript) |Yok|GA<sup>*</sup>| GA<sup>*</sup> |
 
 <sup>*</sup> Transpiling aracılığıyla JavaScript 'e desteklenir.
 
+Desteklenen dil sürümleri hakkında daha fazla ayrıntı için dile özgü Geliştirici Kılavuzu makalesine bakın.   
 Dil desteğiyle ilgili planlı değişiklikler hakkında daha fazla bilgi için bkz. [Azure yol haritası](https://azure.microsoft.com/roadmap/?tag=functions).
