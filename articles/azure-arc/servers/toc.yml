@@ -62,7 +62,7 @@
         - name: Azure Sentinel’e ekleme
           href: scenario-onboard-azure-sentinel.md
         - name: Azure Güvenlik Merkezi'ne ekleme
-          href: /security-center/quickstart-onboard-machines
+          href: ../../security-center/quickstart-onboard-machines.md
     - name: Sorun giderme
       items:
         - name: Aracı bağlantı sorunları

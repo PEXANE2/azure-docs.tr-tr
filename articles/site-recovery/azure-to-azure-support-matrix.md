@@ -2,14 +2,14 @@
 title: Azure Site Recovery ile Azure VM olağanüstü durum kurtarma için destek matrisi
 description: Azure Site Recovery olan ikincil bir bölgeye Azure VM olağanüstü durum kurtarma desteğini özetler.
 ms.topic: article
-ms.date: 07/14/2020
+ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: 2391a4056d5c0c952677b57e7d37a181ef0eacc0
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 25fb28c8f420a64f60ab0d058c374f5de74ed883
+ms.sourcegitcommit: b849ecdc8aa97337299b0f09970b7810c59cd044
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95808850"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96310348"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure bölgeleri arasında Azure sanal makinesi olağanüstü durum kurtarma için destek matrisi
 
@@ -21,7 +21,7 @@ Bu makalede, Azure VM 'lerinin bir Azure bölgesinden diğerine olağanüstü du
 **Dağıtım** |  **Destek**
 --- | ---
 **Azure Portal** | Destekleniyor.
-**PowerShell** | Destekleniyor. [Daha fazla bilgi](azure-to-azure-powershell.md)
+**PowerShell** | Destekleniyor. [Daha fazla bilgi edinin](azure-to-azure-powershell.md)
 **REST API** | Destekleniyor.
 **CLI** | Şu anda desteklenmiyor
 
@@ -98,8 +98,8 @@ SP1 ile Windows 7 (x64) sürümleri | Azure VM 'Leri için Mobility hizmeti uzan
 
 **İşletim sistemi** | **Ayrıntılar**
 --- | ---
-Red Hat Enterprise Linux | 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6,[7,7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [7,8](https://support.microsoft.com/help/4564347/), [7,9](https://support.microsoft.com/help/4578241/), [8,0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery), 8,1, [8,2](https://support.microsoft.com/help/4570609/)
-CentOS | 6,5, 6,6, 6,7, 6,8, 6,9, 6,10 </br> 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, 7,7, [7,8](https://support.microsoft.com/help/4564347/), [7,9 pre-GA sürüm](https://support.microsoft.com/help/4578241/), 7,9 </br> 8,0, 8,1, [8,2](https://support.microsoft.com/en-us/help/4570609)
+Red Hat Enterprise Linux | 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6,[7,7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [7,8](https://support.microsoft.com/help/4564347/), [7,9](https://support.microsoft.com/help/4578241/), [8,0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery), 8,1, [8,2](https://support.microsoft.com/help/4570609/), [8,3](https://support.microsoft.com/help/4597409).
+CentOS | 6,5, 6,6, 6,7, 6,8, 6,9, 6,10 </br> 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, 7,7, [7,8](https://support.microsoft.com/help/4564347/), [7,9 ön GA sürüm](https://support.microsoft.com/help/4578241/), 7,9 ("Düzeltme 9,37 * *), 8,0, 8,1, [8,2](https://support.microsoft.com/en-us/help/4570609)
 Ubuntu 14,04 LTS sunucusu | Tüm 14,04 için destek içerir. *x* sürümleri; [Desteklenen çekirdek sürümleri](#supported-ubuntu-kernel-versions-for-azure-virtual-machines); 
 Ubuntu 16,04 LTS sunucusu | Tüm 16,04 için destek içerir. *x* sürümleri; [Desteklenen çekirdek sürümü](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> Parola tabanlı kimlik doğrulaması ve oturum açma kullanan Ubuntu sunucuları ve bulut VM 'Leri yapılandırmak için Cloud-init paketi, yük devretmede (cloudinit yapılandırmasına bağlı olarak) parola tabanlı oturum açma devre dışı kalabilir. Parola tabanlı oturum açma, Azure portal > sorun giderme > ayarları menüsündeki (yük devredilen VM 'nin) parolasını sıfırlayarak sanal makinede yeniden etkinleştirilebilir.
 Ubuntu 18,04 LTS sunucusu | Tüm 18,04 için destek içerir. *x* sürümleri; [Desteklenen çekirdek sürümü](#supported-ubuntu-kernel-versions-for-azure-virtual-machines) |
@@ -111,10 +111,10 @@ SUSE Linux Enterprise Server 12 | SP1, SP2, SP3, SP4, SP5  [(desteklenen çekird
 SUSE Linux Enterprise Server 15 | 15, SP1, SP2[(desteklenen çekirdek sürümleri)](#supported-suse-linux-enterprise-server-15-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 11 | SP3<br/><br/> Makine, SP3 ile SP4'E çoğaltma için yükseltme desteklenmez. Çoğaltılan bir makine yükseltildiyse, çoğaltmayı devre dışı bırakmanız ve yükseltmeden sonra çoğaltmayı yeniden etkinleştirmeniz gerekir.
 SUSE Linux Enterprise Server 11 | MADAN
-Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery), [7,8](https://support.microsoft.com/help/4573888/), [8,0](https://support.microsoft.com/help/4573888/), [8,1](https://support.microsoft.com/help/4573888/)  <br/> Red Hat uyumlu çekirdek veya ayırıcı kurumsal çekirdek sürümü 3, 4 & 5 (UEK3, UEK4, UEK5) çalıştırılıyor<br/><br/>8.1<br/>Tüm uı3.10.0 çekirdekler ve RedHat çekirdekleri üzerinde çalışma <=-1062. * [9,36](https://support.microsoft.com/help/4578241/) [9,35](https://support.microsoft.com/help/4573888/) desteklenir
+Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery), [7,8](https://support.microsoft.com/help/4573888/), [7,9](https://support.microsoft.com/help/4597409), [8,0, 8,1](https://support.microsoft.com/help/4573888/) [(Red](https://support.microsoft.com/help/4573888/) hat uyumlu çekirdek veya AYıRıCı kurumsal çekırdek sürüm 3, 4 & 5 (UEK3, UEK4, UEK5)<br/><br/>8,1 (tüm uıek çekirdekler ve RedHat çekirdekte çalışan <= 3.10.0-1062. *, [9,35](https://support.microsoft.com/help/4573888/)' de desteklenir. RedHat çekirdekler 'nin geri kalanı için destek [9,36](https://support.microsoft.com/help/4578241/)' de mevcuttur)
 
 > [!NOTE]
-> Lütfen Linux sürümleri için Azure Site Recovery özelleştirilmiş işletim sistemi görüntülerini desteklemediğinden emin olun. Yalnızca dağıtım alt sürüm sürümünün/güncelleştirmesinin parçası olan hisse senedi çekirdekleri desteklenir.
+> Linux sürümleri için Azure Site Recovery özelleştirilmiş işletim sistemi görüntülerini desteklemez. Yalnızca dağıtım alt sürüm sürümünün/güncelleştirmesinin parçası olan hisse senedi çekirdekleri desteklenir.
 
 * * Note: 15 gün içinde en son Linux keritelerini desteklemek Için, Azure Site Recovery en son Mobility Aracısı sürümünün en üstünde etkin düzeltme eki uygulama. Bu düzeltilme iki ana sürüm sürümü arasında kullanıma sunulacaktır. Mobility aracısının en son sürümüne (sık düzeltme eki ekleme) güncelleştirmek için [Bu makalede](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure)bahsedilen adımları izleyin. Bu düzeltme eki Şu anda Azure 'da Azure DR senaryosunda kullanılan Mobility aracıları için kullanıma hazır.
 
@@ -289,15 +289,15 @@ Birden çok IP adresi | Desteklenmez | Birden çok IP adresli NIC 'ye sahip bir 
 Traffic Manager     | Desteklenir | Traffic Manager, trafiğin kaynak bölgedeki uç noktaya ve yük devretme durumunda hedef bölgedeki uç noktaya yönlendirilmesi için önceden yapılandırabilirsiniz.
 Azure DNS | Desteklenir |
 Özel DNS    | Desteklenir |
-Kimliği doğrulanmamış proxy | Desteklenir | [Daha fazla bilgi](./azure-to-azure-about-networking.md)
+Kimliği doğrulanmamış proxy | Desteklenir | [Daha fazla bilgi edinin](./azure-to-azure-about-networking.md)
 Kimliği doğrulanmış ara sunucu | Desteklenmez | VM, giden bağlantı için kimliği doğrulanmış bir proxy kullanıyorsa, Azure Site Recovery kullanılarak çoğaltılamaz.
-Şirket içinde VPN siteden siteye bağlantısı<br/><br/>(ExpressRoute ile veya olmayan)| Desteklenir | UDRs ve NSG 'Lerin Site Recovery trafiğinin şirket içine yönlendirilmediğinden emin olmak için yapılandırıldığından emin olun. [Daha fazla bilgi](./azure-to-azure-about-networking.md)
-VNET 'ten VNET 'e bağlantı    | Desteklenir | [Daha fazla bilgi](./azure-to-azure-about-networking.md)
+Şirket içinde VPN siteden siteye bağlantısı<br/><br/>(ExpressRoute ile veya olmayan)| Desteklenir | UDRs ve NSG 'Lerin Site Recovery trafiğinin şirket içine yönlendirilmediğinden emin olmak için yapılandırıldığından emin olun. [Daha fazla bilgi edinin](./azure-to-azure-about-networking.md)
+VNET 'ten VNET 'e bağlantı    | Desteklenir | [Daha fazla bilgi edinin](./azure-to-azure-about-networking.md)
 Sanal Ağ Hizmet Uç Noktaları | Desteklenir | Depolama hesaplarına sanal ağ erişimini kısıtladığınız takdirde, güvenilen Microsoft hizmetlerinin depolama hesabına erişmesine izin verildiğinden emin olun.
 Hızlandırılmış ağ iletişimi | Desteklenir | Kaynak VM 'de hızlandırılmış ağ etkin olmalıdır. [Daha fazla bilgi edinin](azure-vm-disaster-recovery-with-accelerated-networking.md).
 Palo Alto ağ gereci | Desteklenmez | Üçüncü taraf gereçlerle, genellikle sağlayıcı tarafından sanal makine içinde uygulanan kısıtlamalar vardır. Azure Site Recovery aracı, Uzantılar ve giden bağlantıların kullanılabilir olmasını gerektirir. Ancak gereç, sanal makine içinde herhangi bir giden etkinliğin yapılandırılmasına izin vermez.
 IPv6  | Desteklenmez | Hem IPv4 hem de IPv6 içeren karışık yapılandırma de desteklenmez. Lütfen herhangi bir Site Recovery işleminden önce IPv6 aralığının alt ağını boşaltın.
-Site Recovery hizmetine özel bağlantı erişimi | Desteklenir | [Daha fazla bilgi](azure-to-azure-how-to-enable-replication-private-endpoints.md)
+Site Recovery hizmetine özel bağlantı erişimi | Desteklenir | [Daha fazla bilgi edinin](azure-to-azure-how-to-enable-replication-private-endpoints.md)
 
 
 

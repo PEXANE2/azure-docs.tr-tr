@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: d587c4dbdd8f46d6e098ff96f464d456fffc9ccf
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: ad880b7c23c687530a79ca1123474e94c923e150
+ms.sourcegitcommit: b849ecdc8aa97337299b0f09970b7810c59cd044
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95529997"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96310400"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Kapsayıcı kayıt defterleri için Azure Defender’a giriş
 
@@ -85,6 +85,8 @@ Evet. Bir bulmayı yok saymanız gereken bir kuruluş varsa, bunu düzeltmek yer
 
 [Tümleşik güvenlik açığı değerlendirmesi aracından bulguları devre dışı bırakmak için kurallar oluşturma hakkında bilgi edinin](defender-for-container-registries-usage.md#disable-specific-findings-preview).
 
+### <a name="why-is-security-center-alerting-me-to-vulnerabilities-about-an-image-that-isnt-in-my-registry"></a>Güvenlik Merkezi neden kayıt defterimde olmayan bir görüntüyle ilgili güvenlik açıklarına neden uyarır?
+Güvenlik Merkezi, bir kayıt defterine gönderilen veya çekilen her görüntü için güvenlik açığı değerlendirmeleri sağlar. Bazı görüntüler zaten taranmış bir görüntüden etiketleri yeniden kullanabilir. Örneğin, bir Özet 'e her görüntü eklediğinizde "en son" etiketini yeniden atayabilirsiniz. Bu gibi durumlarda, ' eski ' görüntü kayıt defterinde hala bulunur ve yine de Özet tarafından çekmeye devam edebilir. Görüntüde güvenlik bulguları varsa ve bu, çekilmışsa güvenlik açıklarını açığa çıkarır.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

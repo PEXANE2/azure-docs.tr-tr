@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 11/13/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4335c1e81ead36d14ee1794fffbdd4cc1ff72a0a
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 3e24024d9670d430e35b09a32b284a543d412842
+ms.sourcegitcommit: b849ecdc8aa97337299b0f09970b7810c59cd044
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029617"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96310383"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-net"></a>Azure Service Bus kuyruklarından ileti gönderme ve iletileri alma (.NET)
 Bu öğreticide, **Azure. Messaging. ServiceBus** paketini kullanarak bir Service Bus kuyruğuna ileti göndermek ve ileti almak için bir .NET Core konsol uygulaması oluşturacaksınız. 
@@ -63,7 +63,7 @@ Visual Studio 'Yu başlatın ve C# için yeni bir **konsol uygulaması (.NET Cor
     public static async Task Main(string[] args)
     {    
         const int numberOfMessages = 10;
-        queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
+        var queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
 
         Console.WriteLine("======================================================");
         Console.WriteLine("Press ENTER key to exit after sending all the messages.");
