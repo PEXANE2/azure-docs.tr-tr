@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 11/19/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 72575725c0924b8ec5f9466f4ffbba86bf071db4
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 28637f35294e9c70cbf0e96fb2cdcb1853d2ba39
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631553"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992735"
 ---
 ::: zone target="docs"
 
@@ -106,12 +106,6 @@ Veriler Azure'a yüklendikten sonra Data Box disklerindeki veriyi [NIST SP 800-8
 
 ::: zone-end
 
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
-
-::: zone-end
-
 ## <a name="australia"></a>[Avustralya](#tab/in-australia)
 
 Avustralya’daki Azure veri merkezlerinde ek güvenlik bildirimi uygulanır. Gelen tüm sevkiyatların önceden bildirilmesi gerekir. Avustralya’da gönderme için aşağıdaki adımları uygulayın.
@@ -131,12 +125,6 @@ Avustralya’daki Azure veri merkezlerinde ek güvenlik bildirimi uygulanır. Ge
 ## <a name="erasure-of-data-from-data-box"></a>Data Box'tan verileri silme
 
 Veriler Azure'a yüklendikten sonra Data Box disklerindeki veriyi [NIST SP 800-88 Revision 1 yönergelerine](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi) uygun şekilde siler.
-
-::: zone-end
-
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
 
 ::: zone-end
 
@@ -182,12 +170,6 @@ Veriler Azure'a yüklendikten sonra Data Box disklerindeki veriyi [NIST SP 800-8
 
 ::: zone-end
 
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
-
-::: zone-end
-
 ## <a name="singapore"></a>[Singapur](#tab/in-singapore)
 
 1. İade gönderimi için cihazı gönderirken kullanılan orijinal kutuyu saklayın.
@@ -223,33 +205,33 @@ Veriler Azure'a yüklendikten sonra Data Box disklerindeki veriyi [NIST SP 800-8
 
 ::: zone-end
 
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
-
-::: zone-end
-
 ## <a name="south-africa"></a>[Güney Afrika](#tab/in-sa)
 
 1. İade gönderimi için cihazı orijinal kutusunda paketleyin.
 2. Cihaz ile beraber sağlanan güç kablosunu sararak emniyetli şekilde cihazın arkasına yerleştirin.
-3. DHL ile teslim alma rezervasyonu yapmak için:
+3. İzleme numarasını (Data Box yerel web kullanıcı arabiriminin **Göndermeye Hazırlama** sayfasında başvuru numarası olarak gösterilir) not alın. Bu numara, “Göndermeye hazırlama” adımı başarıyla tamamlandıktan sonra sağlanır. Bu sayfadaki gönderim etiketini indirin ve kutunun üzerine yapıştırın.
+4. Azure Data Box İşlemlerinden dönüş kodunu isteyin. Dönüş kodu, paketi veri merkezine geri teslim etmek için gereklidir. [adbops@microsoft.com](mailto:adbops@microsoft.com) adresine e-posta gönderin. Açıkça görünebilmesi için bu kodu gönderim etiketinde iade adresinin yanına ekleyin.
+5. Aşağıdaki yöntemlerden birini kullanarak DHL ile bir teslim alma rezervasyonu yapın:
+ 
+   * [DHL Express Güney Afrika, **Schedule a Pickup**](https://mydhl.express.dhl/za/en/schedule-pickup.html#/schedule-pickup#label-reference) (Teslim Alma Zamanla) öğesine gidip bir çevrimiçi teslim alma rezervasyonu yapın.
+   * Aşağıdaki şablonu kullanarak [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) adresine e-posta gönderin:
 
-    * +27(0) 11 9213600 numaralı telefondan müşteri hizmetleri iletişim merkezini arayın, 1'i seçin ve ardından irsaliye numarasını belirtin.
-    * Teslim alma rezervasyonu için saat 14:00'dan önce arama yapılması gerekir.
-    * Aşağıdaki şablonu kullanarak [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) adresine e-posta gönderin:
+     ```output
+     To: Priority.Support@dhl.com
+     Subject: Pickup request for Microsoft Azure
+     Body: Need pick up for the below shipment
+       *  DHL tracking number: (reference number/waybill number)
+       *  Requested pickup date: yyyy/mm/dd;time:HH MM
+       *  Shipper contact: (company name)
+       *  Contact person: 
+       *  Phone number: 
+       *  Full physical address: 
+       *  Item to be collected: Azure Dt
+     ```
 
-    ```output
-    To: Priority.Support@dhl.com
-    Subject: Pickup request for Microsoft Azure
-    Body: Need pick up for the below shipment
-      *  DHL tracking number (reference number/waybill number)
-      *  Requested pickup date: yyyy/mm/dd;time:HH MM
-    ```
+    * İsterseniz paketi en yakın DHL hizmet noktasına da bırakabilirsiniz.
 
-    * Alternatif olarak, paketi en yakın DHL hizmet noktasına da bırakabilirsiniz.
-
-4. Herhangi bir sorunla karşılaşırsanız [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) adresine karşılaştığınız sorunun ayrıntılarını içeren bir e-posta gönderin ve Konu: satırına irsaliye numarasını ekleyin. +27(0)119213902 numaralı telefonu da arayabilirsiniz.
+6. Herhangi bir sorunla karşılaşırsanız [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) adresine karşılaştığınız sorunun ayrıntılarını içeren bir e-posta gönderin ve Konu: satırına irsaliye numarasını ekleyin. +27(0)119213902 numaralı telefonu da arayabilirsiniz.
 
 ::: zone target="chromeless"
 
@@ -260,12 +242,6 @@ Veriler Azure'a yüklendikten sonra Data Box disklerindeki veriyi [NIST SP 800-8
 ## <a name="erasure-of-data-from-data-box"></a>Data Box'tan verileri silme
 
 Veriler Azure'a yüklendikten sonra Data Box disklerindeki veriyi [NIST SP 800-88 Revision 1 yönergelerine](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi) uygun şekilde siler.
-
-::: zone-end
-
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
 
 ::: zone-end
 
@@ -301,12 +277,6 @@ Sorunlarla karşılaşırsanız konu üst bilgisine iş adını ve karşılaşı
 ## <a name="erasure-of-data-from-data-box"></a>Data Box'tan verileri silme
  
 Veriler Azure'a yüklendikten sonra Data Box disklerindeki veriyi [NIST SP 800-88 Revision 1 yönergelerine](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi) uygun şekilde siler.
-
-::: zone-end
-
-::: zone target="docs"
-
-[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
 
 ::: zone-end
 
@@ -369,8 +339,6 @@ Data Box’ı US Government, Japonya, Singapur, Güney Kore, Hindistan, Güney A
 
 ::: zone target="chromeless"
 
----
-
 ## <a name="verify-data-upload-to-azure"></a>Azure'a verilerin yüklendiğini doğrulama
 
 [!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
@@ -381,7 +349,11 @@ Veriler Azure'a yüklendikten sonra Data Box disklerindeki veriyi [NIST SP 800-8
 
 ::: zone-end
 
+---
+
 ::: zone target="docs"
+
+## <a name="verify-data-upload-to-azure"></a>Azure'a verilerin yüklendiğini doğrulama
 
 [!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
 

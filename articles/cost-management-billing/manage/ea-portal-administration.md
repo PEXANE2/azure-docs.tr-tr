@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperfq1
-ms.openlocfilehash: edcc94050880544a6c2de54ff27f833f1c60f99f
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: f18f1184f921aca4f2c1e33ac00dcf14c63b24eb
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683654"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95893367"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA portalı yönetimi
 
@@ -146,7 +146,7 @@ Sahiplik aktarımını gerçekleştirmeden önce şu Azure rol tabanlı erişim 
 - Aynı kiracıdaki iki kuruluş kimliği arasında abonelik veya hesap sahipliği aktarımları gerçekleştirildiğinde, Azure RBAC ilkeleri, mevcut hizmet yöneticisi ve ortak yönetici rolleri korunur.
 - Kiracılar arası abonelik veya hesap sahipliği aktarımları, Azure RBAC ilkelerinizin ve rol atamalarınızın kaybedilmesiyle sonuçlanır.
 - İlkeler ve yönetici rolleri farklı dizinler arasında aktarılmaz. Hizmet yöneticileri hedef hesabın sahibiyle güncelleştirilir.
-- Kiracılar arasında abonelik aktarımı yaparken RBAC ilkelerinin ve rol atamalarının kaybını önlemek için **Abonelikleri alıcının Azure AD kiracısına taşı** onay kutusunun **işaretsiz** kaldığından emin olun. Bu sayede hizmetler, RBAC rolleri ve ilkeler geçerli Azure AD kiracısında kalır ve yalnızca hesap için faturalama sahipliği aktarılır.  
+- Kiracılar arasında abonelik aktarımı yaparken Azure RBAC ilkelerinin ve rol atamalarının kaybını önlemek için **Abonelikleri alıcının Azure AD kiracısına taşı** onay kutusunun **işaretsiz** kaldığından emin olun. Bu sayede hizmetler, Azure rolleri ve ilkeler geçerli Azure AD kiracısında kalır ve yalnızca hesap için faturalama sahipliği aktarılır.  
     :::image type="content" source="./media/ea-portal-administration/unselected-checkbox-move-subscriptions-to-recipients-tenant.png" alt-text="Abonelikleri Azure AD kiracısına taşıma onay kutusunun işaretsiz olduğunu gösteren resim" lightbox="./media/ea-portal-administration/unselected-checkbox-move-subscriptions-to-recipients-tenant.png" :::
 
 
@@ -282,7 +282,7 @@ Azure EA portalı, Azure EA maliyetlerinizi ve kullanımınızı yönetmenize ya
 
 Her rolün farklı bir erişim düzeyi ve yetkisi vardır.
 
-Kullanıcı rolleri hakkında daha fazla bilgi için bkz. [Kurumsal kullanıcı rolleri](https://docs.microsoft.com/azure/manage/understand-ea-roles#enterprise-user-roles).
+Kullanıcı rolleri hakkında daha fazla bilgi için bkz. [Kurumsal kullanıcı rolleri](/azure/cost-management-billing/manage/understand-ea-roles#enterprise-user-roles).
 
 ## <a name="add-an-azure-ea-account"></a>Azure EA hesabı ekleme
 

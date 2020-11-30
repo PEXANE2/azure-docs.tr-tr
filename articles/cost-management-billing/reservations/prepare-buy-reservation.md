@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: d22ab9f028f0491db33d62d0a6dff8d06282f925
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: f22a8f085938f5a3cc3e7a748391a9048129296c
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91368728"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888377"
 ---
 # <a name="buy-a-reservation"></a>Ayırma satın alma
 
@@ -21,9 +21,9 @@ Azure Rezervasyonları birçok Azure kaynağı için bir yıllık veya üç yıl
 
 ## <a name="who-can-buy-a-reservation"></a>Kimler rezervasyon satın alabilir?
 
-Bir plan satın almak için bir Kurumsal (MS-AZR-0017P veya MS-AZR-0148P) ya da Kullandıkça Öde aboneliğinde (MS-AZR-0003P veya MS-AZR-0023P) veya Microsoft Müşteri Sözleşmesi aboneliğinde abonelik sahibi rolünüz olmalıdır. Bulut çözümü sağlayıcıları, Azure Ayrılmış Sanal Makine Örnekleri satın almak için Azure portalını veya  [İş Ortağı Merkezi](/partner-center/azure-reservations) ’ni kullanabilir.
+Rezervasyon satın almak için Kurumsal (MS-AZR-0017P veya MS-AZR-0148P), Kullandıkça Öde (MS-AZR-0003P veya MS-AZR-0023P) ya da Microsoft Müşteri Sözleşmesi türündeki Azure aboneliği üzerinde sahip rolünüz veya rezervasyon satın almacı rolünüz olmalıdır. Bulut çözümü sağlayıcıları, Azure Ayrılmış Sanal Makine Örnekleri satın almak için Azure portalını veya  [İş Ortağı Merkezi](/partner-center/azure-reservations) ’ni kullanabilir.
 
-Kurumsal Anlaşma (EA) müşterileri, EA Portalındaki **Ayrılmış Örnekler Ekle** seçeneğini devre dışı bırakarak satın alma işlemlerini EA yöneticileriyle sınırlayabilir. EA yöneticilerinin bir rezervasyon satın almak için en az bir EA aboneliğinin abonelik sahibi olması gerekir. Bu seçenek, merkezi bir ekibin farklı maliyet merkezleri için rezervasyonlar satın almasını isteyen kuruluşlar için yararlıdır. Satın alma işleminden sonra merkezi ekipler, rezervasyonlara maliyet merkezi sahiplerini ekleyebilirler. Bundan sonra sahipler, rezervasyonu aboneliklerinin kapsamına alabilirler. Merkezi ekibin, rezervasyonun satın alındığı yerde abonelik sahibi erişimine sahip olması gerekmez.
+Kurumsal Anlaşma (EA) müşterileri, EA Portalındaki **Ayrılmış Örnekler Ekle** seçeneğini devre dışı bırakarak satın alma işlemlerini EA yöneticileriyle sınırlayabilir. EA yöneticilerinin rezervasyon satın alabilmesi için en az bir EA aboneliği üzerinde sahip veya rezervasyon satın almacı erişimi olmalıdır. Bu seçenek, merkezi bir ekibin rezervasyonlar satın almasını isteyen kuruluşlar için yararlıdır.
 
 Rezervasyon indirimi yalnızca Kurumsal, Bulut Çözümü Sağlayıcısı (CSP) ve Microsoft Müşteri Sözleşmesi ile satın alınan abonelikler ve kullandıkça öde tarifelerine sahip bireysel planlar ile ilişkili kaynaklar için geçerlidir.
 

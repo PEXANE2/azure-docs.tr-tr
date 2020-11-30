@@ -3,18 +3,18 @@ title: Hızlı Başlangıç - Maliyet analiziyle Azure maliyetlerini keşfetme
 description: Bu hızlı başlangıç, Azure kurumsal maliyetlerinizi keşfetmek ve analiz etmek için maliyet analizini kullanmanıza yardımcı olur.
 author: bandersmsft
 ms.author: banders
-ms.date: 10/26/2020
+ms.date: 11/20/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contentperfq2
-ms.openlocfilehash: 31a95d8c02ee540fe6b52088159f04535c39ea93
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a7f3c0ea9517f0ce99912f004ac4de07cc981551
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676847"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122658"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Hızlı Başlangıç: Maliyet analiziyle maliyetleri araştırma ve analiz etme
 
@@ -42,7 +42,7 @@ Yeni bir aboneliğiniz varsa Maliyet Yönetimi özelliklerini hemen kullanamazs�
 
 ## <a name="review-costs-in-cost-analysis"></a>Maliyet analizinde maliyetleri gözden geçirme
 
-Maliyetlerinizi maliyet analizinde incelemek için Azure portalında kapsamı açın ve menüden **Maliyet analizi** 'ni seçin. Örneğin **Abonelikler** 'e gidin, listeden bir abonelik belirleyin ve menüden **Maliyet analizi** 'ni seçin. Maliyet analizinde farklı bir kapsama geçiş yapmak için **Kapsam** hapını kullanın.
+Maliyetlerinizi maliyet analizinde incelemek için Azure portalında kapsamı açın ve menüden **Maliyet analizi**'ni seçin. Örneğin **Abonelikler**'e gidin, listeden bir abonelik belirleyin ve menüden **Maliyet analizi**'ni seçin. Maliyet analizinde farklı bir kapsama geçiş yapmak için **Kapsam** hapını kullanın.
 
 Veri birleştirmesi sağlamak ve maliyet bilgilerine erişimi denetlemek için seçtiğiniz kapsam Maliyet Yönetimi’nin tamamında kullanılır. Kapsamları kullandığınızda, birden çok kapsam seçemezsiniz. Bunun yerine, diğerlerinin toplandığı büyük bir kapsam seçer ve iç içe yerleştirilmiş kapsamları ihtiyacınıza göre daraltırsınız. Bazı kullanıcılar birden fazla iç içe yerleştirilmiş kapsamı içine alan tek bir üst kapsama erişim iznine sahip olmayabileceğinden bu yaklaşımı anlamak önemlidir.
 
@@ -52,17 +52,17 @@ Maliyet Analizi’nin nasıl kullanılacağı hakkında daha fazla bilgi edinmek
 
 İlk maliyet analizi görünümünde aşağıdaki alanlar bulunur.
 
-**Birikmiş maliyet görünümü** : Önceden tanımlanmış maliyet analizi görünümü yapılandırmasını temsil eder. Her bir görünüm tarih aralığı, ayrıntı düzeyi, gruplama ölçütü ve filtreleme ayarlarını içerir. Varsayılan görünümde geçerli faturalama dönemi içinde birikmiş maliyetler gösterilir ama başka yerleşik görünümlere geçebilirsiniz.
+**Birikmiş maliyet görünümü**: Önceden tanımlanmış maliyet analizi görünümü yapılandırmasını temsil eder. Her bir görünüm tarih aralığı, ayrıntı düzeyi, gruplama ölçütü ve filtreleme ayarlarını içerir. Varsayılan görünümde geçerli faturalama dönemi içinde birikmiş maliyetler gösterilir ama başka yerleşik görünümlere geçebilirsiniz.
 
-**Gerçek maliyet** : Geçerli aya ait olan toplam kullanım ve satın alma maliyetlerini, tahakkuk ettikleri ve faturanızda görüntülenecekleri şekilde gösterir.
+**Gerçek maliyet**: Geçerli aya ait olan toplam kullanım ve satın alma maliyetlerini, tahakkuk ettikleri ve faturanızda görüntülenecekleri şekilde gösterir.
 
-**Tahmin** : Seçtiğiniz zaman dönemine ait tahmini maliyet toplamını gösterir.
+**Tahmin**: Seçtiğiniz zaman dönemine ait tahmini maliyet toplamını gösterir.
 
-**Bütçe** : Varsa, seçilen kapsam için planlanan harcama limitini gösterir.
+**Bütçe**: Varsa, seçilen kapsam için planlanan harcama limitini gösterir.
 
-**Birikmiş ayrıntı düzeyi** : Fatura döneminin başından itibaren toplam günlük maliyetleri gösterir. Fatura hesabınız veya aboneliğiniz için bütçe oluşturduktan sonra, bütçeye göre harcama eğiliminizi hemen görebilirsiniz. Tarihin üzerine gelerek o gün için birikmiş maliyeti görüntüleyebilirsiniz.
+**Birikmiş ayrıntı düzeyi**: Fatura döneminin başından itibaren toplam günlük maliyetleri gösterir. Fatura hesabınız veya aboneliğiniz için bütçe oluşturduktan sonra, bütçeye göre harcama eğiliminizi hemen görebilirsiniz. Tarihin üzerine gelerek o gün için birikmiş maliyeti görüntüleyebilirsiniz.
 
-**Özet (halka) grafikler** : Toplam maliyeti ortak bir standart özellikler kümesine ayırarak dinamik özetler sağlar. Geçerli ay için en büyükten en küçüğe kadar tüm maliyetleri gösterir. İstediğiniz zaman farklı bir özet seçerek özet grafikleri değiştirebilirsiniz. Maliyetler varsayılan olarak şu kategorilere ayrılır: hizmet (ölçüm kategorisi), konum (bölge) ve alt kapsam. Örneğin, fatura hesapları altında kayıt hesapları, abonelikler altında kaynak grupları ve kaynak grupları altında kaynaklar bulunur.
+**Özet (halka) grafikler**: Toplam maliyeti ortak bir standart özellikler kümesine ayırarak dinamik özetler sağlar. Geçerli ay için en büyükten en küçüğe kadar tüm maliyetleri gösterir. İstediğiniz zaman farklı bir özet seçerek özet grafikleri değiştirebilirsiniz. Maliyetler varsayılan olarak şu kategorilere ayrılır: hizmet (ölçüm kategorisi), konum (bölge) ve alt kapsam. Örneğin, fatura hesapları altında kayıt hesapları, abonelikler altında kaynak grupları ve kaynak grupları altında kaynaklar bulunur.
 
 ![Azure portalındaki maliyet analizinin ilk görünümü](./media/quick-acm-cost-analysis/cost-analysis-01.png)
 
@@ -82,12 +82,13 @@ Birikmiş maliyet | Bu ay şimdiye kadar ne kadar harcama yaptım? Bütçemin d�
 Günlük maliyet | Son 30 gün içinde günlük maliyetlerde artış yaşandı mı?
 Hizmete göre maliyet | Son üç faturada aylık kullanım nasıl değişti?
 Kaynağa göre maliyet | Bu ay en yüksek maliyete sahip olan kaynaklar hangileri?
+Fatura ayrıntıları | Son faturamdaki ücretler nelerdi?
 
 ![Bu ay için örnek seçimi gösteren görünüm seçici](./media/quick-acm-cost-analysis/view-selector.png)
 
 Öte yandan, birçok durumda daha derin analizler gerekir. Özelleştirme, seçilen tarihle sayfanın en üstünde başlatılır.
 
-Maliyet analizi, varsayılan olarak geçerli ayın verilerini gösterir. Tarih seçiciyi kullanarak yaygın tarih aralıkları arasında hızlıca geçiş yapabilirsiniz. Örneğin son yedi gün, geçen ay, geçerli yıl veya özel tarih aralığı seçebilirsiniz. Kullandıkça öde abonelikleri ayrıca faturalama döneminize göre belirlenen ve takvim ayına bağlı olmayan tarih aralıklarına da sahiptir (geçerli faturalama dönemi veya son fatura gibi). Menünün üst tarafındaki **<ÖNCEKİ** ve **SONRAKİ>** bağlantılarını kullanarak önceki veya sonraki döneme geçiş yapabilirsiniz. Örneğin **<ÖNCEKİ** bağlantısı, **Son 7 gün** görünümünü **8-14 gün önce** veya **15-21 gün önce** olarak değiştirir.
+Maliyet analizi, varsayılan olarak geçerli ayın verilerini gösterir. Tarih seçiciyi kullanarak yaygın tarih aralıkları arasında hızlıca geçiş yapabilirsiniz. Örneğin son yedi gün, geçen ay, geçerli yıl veya özel tarih aralığı seçebilirsiniz. Kullandıkça öde abonelikleri ayrıca faturalama döneminize göre belirlenen ve takvim ayına bağlı olmayan tarih aralıklarına da sahiptir (geçerli faturalama dönemi veya son fatura gibi). Menünün üst tarafındaki **<ÖNCEKİ** ve **SONRAKİ>** bağlantılarını kullanarak önceki veya sonraki döneme geçiş yapabilirsiniz. Örneğin **<ÖNCEKİ** bağlantısı, **Son 7 gün** görünümünü **8-14 gün önce** veya **15-21 gün önce** olarak değiştirir. Özel bir tarih aralığı belirlerken en fazla bir yıl (örneğin 1 Ocak-31 Aralık) seçebileceğinizi unutmayın.
 
 ![Bu ay için örnek seçimi gösteren tarih seçici](./media/quick-acm-cost-analysis/date-selector.png)
 
@@ -108,7 +109,7 @@ Harcama tahmini kapattığınızda ileri tarihler için öngörülen harcamayı 
 
 Genellikle 8-12 saat içinde tüketilen kaynaklara ait veriler veya bildirimler gösterilir.
 
-Maliyetlerin dökümünü almak ve en çok katkıda bulunanları belirlemek için ortak özelliklere göre **gruplayın** . Örneğin kaynak etiketlerine göre gruplamak için istediğiniz etiket anahtarını seçin. Her bir etiket değerinin maliyetlerine ait döküm gösterilir ve etiketin uygulanmadığı kaynaklar ek bir segmente eklenir.
+Maliyetlerin dökümünü almak ve en çok katkıda bulunanları belirlemek için ortak özelliklere göre **gruplayın**. Örneğin kaynak etiketlerine göre gruplamak için istediğiniz etiket anahtarını seçin. Her bir etiket değerinin maliyetlerine ait döküm gösterilir ve etiketin uygulanmadığı kaynaklar ek bir segmente eklenir.
 
 Çoğu Azure kaynağı etiketlemeyi destekler. Ancak bazı etiketler Maliyet Yönetimi ve faturalandırma için kullanılamaz. Ayrıca kaynak gruplarının etiketlenmesi de desteklenmez. Etiket desteği, etiket kaynağa uygulandıktan *sonra* bildirilen kullanımlar için geçerlidir. Etiketler, maliyet toplamları için geriye dönük olarak uygulanmaz.
 
@@ -152,13 +153,62 @@ Portalı kullanarak kuruluşunuzda maliyet bilgilerini paylaşma hakkında daha 
 
 Maliyet analizini sabitlemek için sağ üst köşede veya "<Subscription Name> | Maliyet analizi" öğesinden sonra yer alan raptiye simgesini seçin. Maliyet analizini sabitlediğinizde yalnızca ana grafik veya tablo görünümü kaydedilir. Panoyu kaydederek kutucuğa başkalarının da erişmesini sağlayabilirsiniz. Bu işlem yalnızca pano yapılandırmasını paylaşır ve başkalarına temel alınan veriler için erişim izni vermez. Maliyetlere erişiminiz yoksa ancak paylaşılan bir panoya erişebiliyorsanız "erişim engellendi" iletisiyle karşılaşırsınız.
 
-Maliyet analizi bağlantısını paylaşmak için dikey pencerenin üst tarafında **Paylaş** 'ı seçin. Bu belirli kapsam için belirli görünümü açan özel bir URL gösterilir. Maliyetlere erişiminiz yoksa bu URL'yi kullandığınızda "erişim engellendi" iletisiyle karşılaşırsınız.
+Maliyet analizi bağlantısını paylaşmak için dikey pencerenin üst tarafında **Paylaş**'ı seçin. Bu belirli kapsam için belirli görünümü açan özel bir URL gösterilir. Maliyetlere erişiminiz yoksa bu URL'yi kullandığınızda "erişim engellendi" iletisiyle karşılaşırsınız.
 
 ## <a name="download-usage-data"></a>Kullanım verilerini indirme
 
-Ek analiz gerçekleştirmek için verileri indirmek, kendi verilerinizle birleştirmek veya kendi sistemlerinizle tümleştirmek isteyebilirsiniz. Maliyet Yönetimi birkaç farklı seçenek sunar. Başlangıç noktası olarak maliyet analizinde olduğu gibi anlık üst düzey özete ihtiyacınız varsa ihtiyacınız olan görünümü oluşturmanız gerekir. Ardından **Dışarı aktar** 'ı ve ardından **Verileri CSV olarak indir** veya **Verileri Excel'e indir** 'i seçerek oluşturduğunuz görünümü indirebilirsiniz. Excel dosyası kapsam, sorgu yapılandırması, toplam ve oluşturma tarihi gibi indirilen dosyayı oluşturmak için kullandığınız görünümle ilgili ek bağlam bilgisi sunar.
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Tam, toplanmamış veri kümesine ihtiyacınız varsa ödeme hesabından indirebilirsiniz. Ardından, portalın sol gezinti bölmesindeki hizmetler listesinden **Maliyet Yönetimi + Faturalandırma** 'yı seçin. Gerekirse ödeme hesabınızı seçin. **Kullanım + ücretler** 'e gidip istediğiniz faturalama dönemine ait **İndir** simgesini seçin.
+Ek analiz gerçekleştirmek için verileri indirmek, kendi verilerinizle birleştirmek veya kendi sistemlerinizle tümleştirmek isteyebilirsiniz. Maliyet Yönetimi birkaç farklı seçenek sunar. Başlangıç noktası olarak maliyet analizinde olduğu gibi anlık üst düzey özete ihtiyacınız varsa ihtiyacınız olan görünümü oluşturmanız gerekir. Ardından **Dışarı aktar**'ı ve ardından **Verileri CSV olarak indir** veya **Verileri Excel'e indir**'i seçerek oluşturduğunuz görünümü indirebilirsiniz. Excel dosyası kapsam, sorgu yapılandırması, toplam ve oluşturma tarihi gibi indirilen dosyayı oluşturmak için kullandığınız görünümle ilgili ek bağlam bilgisi sunar.
+
+Tam, toplanmamış veri kümesine ihtiyacınız varsa ödeme hesabından indirebilirsiniz. Ardından, portalın sol gezinti bölmesindeki hizmetler listesinden **Maliyet Yönetimi + Faturalandırma**'yı seçin. Gerekirse ödeme hesabınızı seçin. **Kullanım + ücretler**'e gidip istediğiniz faturalama dönemine ait **İndir** simgesini seçin.
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Başlangıç olarak ortamınızı Azure CLI için hazırlayın:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+Oturum açtıktan sonra [az costmanagement query](/cli/azure/ext/costmanagement/costmanagement#ext_costmanagement_az_costmanagement_query) komutunu kullanarak aboneliğiniz için ay başından bugüne kadarki kullanım bilgilerini sorgulayın:
+
+```azurecli
+az costmanagement query --timeframe MonthToDate --type Usage \
+   --scope "subscriptions/00000000-0000-0000-0000-000000000000"
+```
+
+Ayrıca **--dataset-filter** parametresini veya başka parametreleri kullanarak sorguyu daraltabilirsiniz:
+
+```azurecli
+az costmanagement query --timeframe MonthToDate --type Usage \
+   --scope "subscriptions/00000000-0000-0000-0000-000000000000" \
+   --dataset-filter "{\"and\":[{\"or\":[{\"dimension\":{\"name\":\"ResourceLocation\",\"operator\":\"In\",\"values\":[\"East US\",\"West Europe\"]}},{\"tag\":{\"name\":\"Environment\",\"operator\":\"In\",\"values\":[\"UAT\",\"Prod\"]}}]},{\"dimension\":{\"name\":\"ResourceGroup\",\"operator\":\"In\",\"values\":[\"API\"]}}]}"
+```
+
+**--dataset-filter** parametresi bir JSON dizesi veya `@json-file` alır.
+
+Kullanım verilerini bir Azure depolama hesabına aktarmak için [az costmanagement export](/cli/azure/ext/costmanagement/costmanagement/export) komutlarını da kullanabilirsiniz. Verileri oradan indirebilirsiniz.
+
+1. Bir kaynak grubu oluşturun veya mevcut kaynak grubunu kullanın. Kaynak grubu oluşturmak için [az group create](/cli/azure/group#az_group_create) komutunu çalıştırın:
+
+   ```azurecli
+   az group create --name TreyNetwork --location "East US"
+   ```
+
+1. Dışarı aktarmaları almak için bir depolama hesabı oluşturun veya mevcut depolama hesabını kullanın. Hesap oluşturmak için [az storage account create](/cli/azure/storage/account#az_storage_account_create) komutunu kullanın:
+
+   ```azurecli
+   az storage account create --resource-group TreyNetwork --name cmdemo
+   ```
+
+1. Dışarı aktarmayı oluşturmak için [az costmanagement export create](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_create) komutunu kullanın:
+
+   ```azurecli
+   az costmanagement export create --name DemoExport --type Usage \
+   --scope "subscriptions/00000000-0000-0000-0000-000000000000" --storage-account-id cmdemo \
+   --storage-container democontainer --timeframe MonthToDate --storage-directory demodirectory
+   ```
+
+---
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

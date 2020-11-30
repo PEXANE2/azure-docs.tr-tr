@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: overview
-ms.date: 10/01/2020
+ms.date: 11/18/2020
 ms.author: banders
-ms.openlocfilehash: 5aeb9046b8901580e4de37b1735a2d2dddd42fce
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: eef19a6c421a64c3951d35eea78ea84f7e7d97b2
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147455"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887221"
 ---
 # <a name="what-are-azure-reservations"></a>Azure Ayırmaları nedir?
 
@@ -90,7 +90,7 @@ Daha fazla bilgi için bkz. [Azure Rezervasyonları için self servis değişiml
 - **Ayrılmış Sanal Makine Örneği** - Bir rezervasyon yalnızca sanal makine ve bulut hizmetleri işlem maliyetlerini içerir. Ek yazılım, Windows, ağ veya depolama ücretlerini kapsamaz.
 - **Azure Depolama ayrılmış kapasitesi** - Bir rezervasyon, Blob depolama veya Azure Data Lake 2. Nesil depolama için standart depolama hesaplarının depolama kapasitesini kapsar. Rezervasyon, bant genişliğini veya işlem oranlarını kapsamaz.
 - **Azure Cosmos DB ayrılmış kapasitesi** - Rezervasyon yalnızca kaynaklarınız için sağlanan aktarım hızını kapsar. Depolama ve ağ ücretlerini kapsamaz.
-- **SQL veritabanı ayrılmış sanal çekirdeği** - Rezervasyona yalnızca işlem maliyetleri dahildir. SQL lisansı ayrı faturalandırılır.
+- **SQL Veritabanı ayrılmış sanal çekirdeği** - Hem SQL Yönetilen Örneğini hem de SQL Veritabanı Elastik Havuzunu/tek veritabanını kapsar. Rezervasyona yalnızca işlem maliyetleri dahildir. SQL lisansı ayrı faturalandırılır. 
 - **Azure Synapse Analytics** - Rezervasyon cDWU kullanımını kapsar. Azure Synapse Analytics’in kullanımıyla ilişkili depolama ve ağ ücretlerini kapsamaz.
 - **Azure Databricks** - Rezervasyon yalnızca DBU kullanımını kapsar. İşlem, depolama ve ağ iletişimi gibi diğer ücretler ayrı olarak uygulanır.
 - **App Service taban fiyatı** - Rezervasyon, damga pulu kullanımını kapsar. Çalışanlara uygulanmaz, bu nedenle damga puluyla ilişkili diğer tüm kaynaklar ayrı olarak ücretlendirilir.

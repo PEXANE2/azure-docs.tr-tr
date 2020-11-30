@@ -3,17 +3,17 @@ title: Otomasyon ile Azure maliyetlerini yönetme
 description: Bu makalede, otomasyon ile Azure maliyetlerini nasıl yönetebileceğiniz açıklanmaktadır.
 author: bandersmsft
 ms.author: banders
-ms.date: 09/14/2020
+ms.date: 11/19/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
-ms.reviewer: matrive
-ms.openlocfilehash: 939e621da414fc2d4d55d85e8b66a409b1338941
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.reviewer: adwise
+ms.openlocfilehash: 47d9c2838c5c806214e3be2f9ba7ce335bc0af67
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131981"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94956101"
 ---
 # <a name="manage-costs-with-automation"></a>Otomasyon ile maliyetleri yönetme
 
@@ -63,11 +63,18 @@ Aşağıdaki örnek istekler, karşılaşabileceğiniz yaygın senaryoları ele 
 
 ### <a name="get-usage-details-for-a-scope-during-specific-date-range"></a>Belirli bir tarih aralığı süresince bir kapsama ait Kullanım Verilerini alma
 
-İstek tarafından döndürülen veriler, faturalama sistemi tarafından kullanım verilerinin alındığı tarihe karşılık gelir. Bu, birden çok faturadaki maliyetleri içerebilir.
+İstek tarafından döndürülen veriler, faturalama sistemi tarafından kullanım verilerinin alındığı tarihe karşılık gelir. Bu, birden çok faturadaki maliyetleri içerebilir. Kullanılacak çağrı abonelik türünüze göre değişiklik gösterir.
+
+Kurumsal Anlaşması (EA) veya kullandıkça öde aboneliği olan eski müşteriler için aşağıdaki çağrıyı kullanın:
 
 ```http
 GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDetails?$filter=properties%2FusageStart%20ge%20'2020-02-01'%20and%20properties%2FusageEnd%20le%20'2020-02-29'&$top=1000&api-version=2019-10-01
+```
 
+Microsoft Müşteri Sözleşmesi olan modern müşteriler için aşağıdaki çağrıyı kullanın:
+
+```http
+GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDetails?startDate=2020-08-01&endDate=&2020-08-05$top=1000&api-version=2019-10-01
 ```
 
 ### <a name="get-amortized-cost-details"></a>Amorti edilmiş maliyet ayrıntılarını alma
