@@ -11,12 +11,12 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: c2c2f9d0ad7bfa50f543b57326b9fc8dab0069c6
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: d06e851390537bf94b59e656f84bf58fe7216410
+ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029311"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96317361"
 ---
 # <a name="increase-resilience-of-authentication-and-authorization-applications-you-develop"></a>Geliştirdiğiniz kimlik doğrulama ve yetkilendirme uygulamalarının esnekliği artırma
 
@@ -29,4 +29,4 @@ Bu makaleler, Microsoft Identity platform ve Azure Active Directory kullanarak u
 - [Esnekliği, oturum açma kullanıcılarına yönelik uygulamalar oluşturun](resilience-client-app.md)
 - [Kullanıcılar olmadan esnekliği uygulamaları oluşturma](resilience-daemon-app.md)
 - [Kimlik ve erişim yönetimi altyapınızda esnekliği oluşturma](resilience-in-infrastructure.md)
-- [Azure Active Directory B2C ile Müşteri Kimliğiniz ve erişim yönetiminde esnekliği oluşturun](resilience-b2c.md)
+- [CıHAR sistemlerinizde derleme esnekliği](resilience-b2c.md)

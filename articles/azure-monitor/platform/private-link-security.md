@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 3f9779d2676d4d2b67efff37118d109664b84bd5
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8633aba2f7cda5dec4a48e9f7132283f8235f746
+ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184612"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96317529"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Ağları Azure İzleyici'ye güvenle bağlamak için Azure Özel Bağlantı'yı kullanma
 
@@ -79,10 +79,10 @@ Her VNet yalnızca bir AMPLS kaynağına bağlanabildiğinden, aynı ağlar içi
 * AMPLS nesnesi, en çok 10 özel uç noktaya bağlanabilir.
 
 Aşağıdaki topolojide:
-* Her VNet 1 AMPLS nesnesine bağlanır, bu nedenle diğer AMPLSs 'ye bağlanamaz.
-* AMPLS B, 2 sanal ağa bağlanır: olası özel uç nokta bağlantılarında 2/10 kullanma.
-* AMPLS A, 2 çalışma alanına ve 1 Application Insights bileşenine bağlanır: olası Azure Izleyici kaynaklarının 3/50 ' ünü kullanıyor.
-* Çalışma alanı 2, AMPLS A ve AMPLS B 'ye bağlanır: olası AMPLS bağlantılarında 2/5 kullanma.
+* Her VNet yalnızca **1** ampls nesnesine bağlanır.
+* AMPLS B iki sanal ağa ait özel uç noktalara (VNet2 ve VNet3) bağlı, 2/10 (%20) , olası özel uç nokta bağlantılarından oluşur.
+* AMPLS A, 3/50 (%6) kullanarak iki çalışma alanına ve bir Application Insight bileşenine bağlanır , olası Azure Izleyici kaynakları bağlantılarında.
+* Workspace2, 2/5 (40%) kullanarak AMPLS A ve AMPLS B 'ye bağlanır , olası AMPLS bağlantılarında.
 
 ![AMPLS limitlerinin diyagramı](./media/private-link-security/ampls-limits.png)
 
@@ -103,9 +103,9 @@ Azure Izleyici özel bağlantı kapsamı kaynağı oluşturarak başlayın.
 
 6. Doğrulama geçişine izin verin ve ardından **Oluştur**' a tıklayın.
 
-## <a name="connect-azure-monitor-resources"></a>Azure Izleyici kaynaklarını bağlama
+### <a name="connect-azure-monitor-resources"></a>Azure Izleyici kaynaklarını bağlama
 
-AMPLS 'yi önce özel uç noktalara, sonra da Azure Izleyici kaynaklarına veya bunun tersini yapabilir, ancak Azure Izleyici kaynaklarınızla başladıysanız bağlantı işlemi daha hızlı ilerler. Azure Izleyici Log Analytics çalışma alanlarını ve Application Insights bileşenlerini bir AMPLS 'e nasıl bağlayacağız
+Azure Izleyici kaynaklarını (Log Analytics çalışma alanları ve Application Insights bileşenleri) AMPLS 'nize bağlayın.
 
 1. Azure Izleyici özel bağlantı kapsamınızda, sol taraftaki menüden **Azure Izleyici kaynakları** ' na tıklayın. **Ekle** düğmesine tıklayın.
 2. Çalışma alanını veya bileşeni ekleyin. **Ekle** düğmesine tıkladığınızda Azure izleyici kaynaklarını seçebileceğiniz bir iletişim kutusu açılır. Aboneliklerinize ve kaynak gruplarınıza göz atabilir veya bunları filtrelemek için ad yazabilirsiniz. Çalışma alanını veya bileşeni seçin ve kapsamlarınıza eklemek için **Uygula** ' ya tıklayın.
@@ -158,16 +158,19 @@ Artık bu Azure Izleyici özel bağlantı kapsamına bağlı yeni bir özel uç 
 
 ## <a name="configure-log-analytics"></a>Log Analytics’i Yapılandır
 
-Azure portala gidin. Log Analytics çalışma alanı kaynağında, sol taraftaki bir menü öğesi **ağ yalıtımı** vardır. Bu menüden iki farklı durumu kontrol edebilirsiniz. 
+Azure portala gidin. Log Analytics çalışma alanı kaynağında, sol taraftaki bir menü öğesi **ağ yalıtımı** vardır. Bu menüden iki farklı durumu kontrol edebilirsiniz.
 
 ![LA ağ yalıtımı](./media/private-link-security/ampls-log-analytics-lan-network-isolation-6.png)
 
-İlk olarak, bu Log Analytics kaynağını erişiminiz olan tüm Azure Izleyici özel bağlantı kapsamlarına bağlayabilirsiniz. **Ekle** ' ye tıklayın ve Azure Izleyici özel bağlantı kapsamını seçin.  Bağlanmak için **Uygula** ' ya tıklayın. Tüm bağlı kapsamlar Bu ekranda görünür. Bu bağlantının yapılması, bağlı sanal ağlardaki ağ trafiğinin bu çalışma alanına ulaşmasını sağlar. Bağlantıyı, [Azure izleyici kaynaklarını bağlıyoruz](#connect-azure-monitor-resources), kapsamdan bağlama ile aynı etkiye sahip hale getirme.  
+### <a name="connected-azure-monitor-private-link-scopes"></a>Bağlı Azure Izleyici özel bağlantı kapsamları
+Bu çalışma alanına bağlı tüm kapsamlar Bu ekranda görünür. Kapsamlara bağlanma (AMPLSs), her bir AMPLS 'e bağlanan sanal ağdan gelen ağ trafiğinin bu çalışma alanına ulaşmasını sağlar. Buradan bir bağlantı oluşturmak, [Azure izleyici kaynaklarını bağlarken](#connect-azure-monitor-resources)olduğu gibi kapsamda ayarlama ile aynı etkiye sahiptir. Yeni bir bağlantı eklemek için **Ekle** ' ye tıklayın ve Azure Izleyici özel bağlantı kapsamını seçin. Bağlanmak için **Uygula** ' ya tıklayın. Bir çalışma alanının 5 AMPLS nesnesine bağlanabildiğini [göz önünde bulundurun](#consider-limits). 
 
-İkincisi, bu kaynağa yukarıda listelenen özel bağlantı kapsamlarının dışından nasıl ulaşılırsa denetleyebilirsiniz. Alma **için genel ağ erişimine Izin ver** ' i **Hayır** olarak ayarlarsanız, bağlı kapsamların dışındaki makineler bu çalışma alanına veri yükleyebilir. **Sorgular için ortak ağ erişimine Izin ver** ' i **Hayır** olarak ayarlarsanız, kapsamların dışındaki makineler bu çalışma alanındaki verilere erişemez. Bu veriler çalışma kitaplarına, panolara, sorgu API tabanlı istemci deneyimlerini, Azure portal öngörüleri ve daha fazlasını içerir. Azure portal dışında çalışan deneyimler ve sorgu Log Analytics verileri özel bağlantılı VNET içinde de çalışıyor olması gerekir.
+### <a name="access-from-outside-of-private-links-scopes"></a>Özel bağlantı kapsamları dışından erişim
+Bu sayfanın alt kısmındaki ayarlar, genel ağlardan erişimi denetler, yani yukarıda listelenen kapsamlar aracılığıyla bağlı olmayan ağlar. Alma **için genel ağ erişimine Izin ver** ' i **Hayır** olarak ayarlarsanız, bağlı kapsamların dışındaki makineler bu çalışma alanına veri yükleyebilir. **Sorgular için ortak ağ erişimine Izin ver** ' i **Hayır** olarak ayarlarsanız, kapsamların dışındaki makineler bu çalışma alanındaki verilere erişemez, bu da çalışma alanı verilerini sorgulayamaz. Bu, çalışma kitaplarındaki sorguları, panoları, API tabanlı istemci deneyimlerini, Azure portal öngörüleri ve daha fazlasını içerir. Azure portal dışında çalışan deneyimler ve sorgu Log Analytics verileri özel bağlantılı VNET içinde de çalışıyor olması gerekir.
 
-Erişimin bu şekilde kısıtlanması Azure Resource Manager uygulanmaz ve bu nedenle aşağıdaki sınırlamalara sahiptir:
-* Verilere erişim-ortak ağlardan gelen sorguları engelleme, çoğu Log Analytics deneyim için geçerli olsa da, bazı deneyimler verileri Azure Resource Manager aracılığıyla sorgular ve bu nedenle özel bağlantı ayarları Kaynak Yöneticisi de (yakında kullanıma sunulacak özellik) uygulanmamışsa verileri sorgulayamaz. Bu, örneğin Azure Izleyici çözümlerini, çalışma kitaplarını ve öngörülerini ve LogicApp bağlayıcısını içerir.
+### <a name="exceptions"></a>Özel durumlar
+Yukarıda açıklandığı gibi erişimin sınırlandırılması Azure Resource Manager uygulanmaz ve bu nedenle aşağıdaki sınırlamalara sahiptir:
+* Verilere erişim-ortak ağlardan gelen sorguların çoğu Log Analytics deneyim için geçerli olduğundan, bazı deneyimler verileri Azure Resource Manager aracılığıyla sorgular ve bu nedenle özel bağlantı ayarları Kaynak Yöneticisi de (yakında kullanıma sunulacak özellik) uygulanmamışsa verileri sorgulayamaz. Bu, örneğin Azure Izleyici çözümlerini, çalışma kitaplarını ve öngörülerini ve LogicApp bağlayıcısını içerir.
 * Çalışma alanı yönetimi-çalışma alanı ayarı ve yapılandırma değişiklikleri (Bu erişim ayarlarını açma veya kapatma dahil) Azure Resource Manager tarafından yönetilir. Uygun rolleri, izinleri, ağ denetimlerini ve denetimi kullanarak çalışma alanı yönetimine erişimi kısıtlayın. Daha fazla bilgi için bkz. [Azure Izleyici rolleri, izinleri ve güvenliği](roles-permissions-security.md).
 
 > [!NOTE]

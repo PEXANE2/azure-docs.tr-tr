@@ -7,12 +7,12 @@ ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 870a55e5bc2701df5c03e142522e8490612b2917
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 03abe4e4e098d46060e33ba114872905e54a443f
+ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506065"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96317086"
 ---
 # <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>Azure Key Vault'ta özel bağlantıları yapılandırma sorunlarını tanılama
 
@@ -63,9 +63,9 @@ Az sayıda Azure ürünü, *VNET ekleme* kavramını destekler. Basit koşullard
 Aşağıdaki adımlar özel uç nokta bağlantısının onaylandığını ve başarılı olduğunu doğrular:
 
 1. Azure portal açın ve Anahtar Kasası kaynağınızı açın.
-2. Sol menüde **ağ** ' ı seçin.
+2. Sol menüde **ağ**' ı seçin.
 3. **Özel uç nokta bağlantıları** sekmesine tıklayın. Bu, tüm özel uç nokta bağlantılarını ve ilgili durumlarını gösterir. Bağlantı yoksa veya sanal ağınız için bağlantı eksikse, yeni bir özel uç nokta oluşturmanız gerekir. Bu daha sonra ele alınacaktır.
-4. Hala **Özel uç nokta bağlantılarında** , tanıladığınız bir tane bulun ve "bağlantı durumu" nın **onaylandığını** ve "sağlama durumu" nın **başarılı** olduğunu onaylayın.
+4. Hala **Özel uç nokta bağlantılarında**, tanıladığınız bir tane bulun ve "bağlantı durumu" nın **onaylandığını** ve "sağlama durumu" nın **başarılı** olduğunu onaylayın.
     - Bağlantı "bekliyor" durumundaysa, bunu yalnızca onaylamanız mümkün olabilir.
     - Bağlantı "reddedildi", "başarısız", "hata", "bağlantısı kesildi" veya başka bir durum için geçerli değilse, yeni bir özel uç nokta kaynağı oluşturmanız gerekir.
 
@@ -79,7 +79,7 @@ Aşağıdaki adımlar özel uç nokta bağlantısının onaylandığını ve ba�
 Önemli bir kavram, özel bağlantılar özelliğinin yalnızca veri alımını engellemek için kapalı bir sanal ağda anahtar kasanıza erişim *izni verdiği* bir kavramdır. Var olan erişimi *kaldırmaz* . Genel Internet 'ten gelen erişimleri etkin bir şekilde engellemek için, Anahtar Kasası güvenlik duvarını açıkça etkinleştirmeniz gerekir:
 
 1. Azure portal açın ve Anahtar Kasası kaynağınızı açın.
-2. Sol menüde **ağ** ' ı seçin.
+2. Sol menüde **ağ**' ı seçin.
 3. Üst düzey **güvenlik duvarları ve sanal ağlar** sekmesinin seçili olduğundan emin olun.
 4. **Özel uç nokta ve seçili ağların** seçeneğinin seçili olduğundan emin olun. **Tüm ağları** Seç ' i seçerseniz, dış istemcilerin neden hala anahtar kasasına erişebileceğini açıklar.
 
@@ -120,7 +120,7 @@ Portala gözatarken veya IP adresini gösteren bir komut çalıştırdığınız
 Ana bilgisayar adı çözümlemesini tanılamanıza ve özel bağlantılar etkin olan anahtar kasasının tam özel IP adresini bilmeniz gerekir. Bu adresi bulmak için şu yordamı izleyin:
 
 1. Azure portal açın ve Anahtar Kasası kaynağınızı açın.
-2. Sol menüde **ağ** ' ı seçin.
+2. Sol menüde **ağ**' ı seçin.
 3. **Özel uç nokta bağlantıları** sekmesine tıklayın. Bu, tüm özel uç nokta bağlantılarını ve ilgili durumlarını gösterir.
 4. Tanıladığınız bir tane bulun ve "bağlantı durumu" nın **onaylandığını** ve sağlama durumunun **başarılı** olduğunu doğrulayın. Bunu görmüyorsanız, bu belgenin önceki bölümlerine geri dönün.
 5. Doğru öğeyi bulduğunuzda, **Özel uç nokta** sütunundaki bağlantıya tıklayın. Bu, Özel uç nokta kaynağını açar.
@@ -180,8 +180,15 @@ Windows:
 C:\> nslookup fabrikam.vault.azure.net
 ```
 
-Yetkili olmayan yanıt: Address: 52.168.109.101 takma adları: fabrikam.vault.azure.net fabrikam.privatelink.vaultcore.azure.net data-prod-eus.vaultcore.azure.net data-prod-eus-region.vaultcore.azure.net
+```output
+Non-authoritative answer:
+Address:  52.168.109.101
+Aliases:  fabrikam.vault.azure.net
+          fabrikam.privatelink.vaultcore.azure.net
+          data-prod-eus.vaultcore.azure.net
+          data-prod-eus-region.vaultcore.azure.net
 ```
+
 Linux:
 
 ```console
@@ -295,7 +302,7 @@ Gördüğünüz gibi, ad çözümlemesi denetiminizin altında yer alabilir. Bu 
 
 ### <a name="query-the-healthstatus-endpoint-of-the-key-vault"></a>`/healthstatus`Anahtar kasasının uç noktasını sorgulama
 
-Anahtar kasanız `/healthstatus` , Tanılama için kullanılabilen uç nokta sağlar. Yanıt üst bilgileri, Anahtar Kasası hizmeti tarafından görülen kaynak IP adresini içerir. Bu uç noktayı aşağıdaki komutla çağırabilirsiniz ( **Anahtar Kasası ana bilgisayar adını kullanmayı unutmayın** ):
+Anahtar kasanız `/healthstatus` , Tanılama için kullanılabilen uç nokta sağlar. Yanıt üst bilgileri, Anahtar Kasası hizmeti tarafından görülen kaynak IP adresini içerir. Bu uç noktayı aşağıdaki komutla çağırabilirsiniz (**Anahtar Kasası ana bilgisayar adını kullanmayı unutmayın**):
 
 Windows (PowerShell):
 
@@ -378,7 +385,7 @@ Aşağıdaki öğeler, ayrıntılı olmayan araştırma eylemlerdir. Bunlara ek 
 
 ### <a name="diagnose-custom-dns-servers-at-virtual-network"></a>Sanal ağda özel DNS sunucuları tanılama
 
-Portalda, sanal ağ kaynağını açın. Sol taraftaki menüde, **DNS sunucuları** ' nı açın. "Özel" i kullanıyorsanız, DNS çözümlemesi bu belgede açıklanmayabilir. DNS sunucularınızın Anahtar Kasası ana bilgisayar adını nasıl çözdüğünü tanılamanız gerekir.
+Portalda, sanal ağ kaynağını açın. Sol taraftaki menüde, **DNS sunucuları**' nı açın. "Özel" i kullanıyorsanız, DNS çözümlemesi bu belgede açıklanmayabilir. DNS sunucularınızın Anahtar Kasası ana bilgisayar adını nasıl çözdüğünü tanılamanız gerekir.
 
 Varsayılan Azure tarafından sağlanmış DNS sunucularını kullanıyorsanız, bu tüm belgeyi uygulanabilir olur.
 

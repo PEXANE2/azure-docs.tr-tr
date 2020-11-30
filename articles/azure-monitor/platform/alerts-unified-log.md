@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
-ms.openlocfilehash: 89cec12804f6fd2b8a3885248c42646d6c6dbb13
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 9f8004b41e8048dfc97fb61bb67a634963c0c575
+ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186567"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96317563"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Izleyici 'de günlük uyarıları
 
@@ -25,7 +25,7 @@ Günlük uyarıları, [Azure uyarıları](./alerts-overview.md)'nda desteklenen 
 > [!NOTE]
 > Şu anda API sürümü `2020-05-01-preview` ve kaynak merkezli günlük uyarıları için ek ücret alınmaz.  Önizlemede olan özellikler için fiyatlandırma, gelecekte duyurulacak ve faturalandırma başlamadan önce bir bildirim sunulacaktır. Bildirim döneminden sonra yeni API sürümü ve kaynak merkezli günlük uyarılarını kullanmaya devam etmeyi tercih etmeniz gerekir, ilgili ücret üzerinden faturalandırılırsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Günlük uyarıları Log Analytics verilerde sorgu çalıştırır. İlk olarak, [günlük verilerini toplamaya](resource-logs.md) başlamanız ve günlük verilerini sorun için sorgulamanızı gerekir. [Kendi sorgunuzu yazmaya](../log-query/log-analytics-tutorial.md)ne bulabileceğinizi veya başladığınızı anlamak için Log Analytics [Uyarı sorgu örnekleri konusunu](../log-query/example-queries.md) kullanabilirsiniz.
 
@@ -90,7 +90,7 @@ requests
 | where resultCode == "500"
 ```
 
-- **Zaman aralığı:** 15 dakika
+- **Zaman aralığı/toplama ayrıntı düzeyi:** 15 dakika
 - **Uyarı sıklığı:** 15 dakika
 - **Eşik değeri:** 0 ' dan büyük
 
@@ -145,7 +145,7 @@ Uyarıları sayı veya dize sütunlarına göre, benzersiz kombinasyonlara grupl
 - **Kaynak kimliği sütunu:** _ResourceId (uyarı KURALLARıNDA kaynak kimliği sütununa göre bölme yalnızca abonelikler ve kaynak grupları için kullanılabilir)
 - **Boyutlar/toplanan:**
   - Computer = VM1, VM2 (uyarı kuralları tanımındaki filtreleme değerleri şu anda çalışma alanları ve Application Insights için kullanılamaz. Sorgu metninde filtre uygulayın.)
-- **Zaman aralığı:** 15 dakika
+- **Zaman aralığı/toplama ayrıntı düzeyi:** 15 dakika
 - **Uyarı sıklığı:** 15 dakika
 - **Eşik değeri:** 0 ' dan büyük
 

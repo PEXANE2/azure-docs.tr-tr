@@ -11,12 +11,12 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: 69967035f98d7ec2fcedff173dcf481455014ac2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9189d4d8cda5f9fcfce7e6ac2097414aa29f0a68
+ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95920045"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96317478"
 ---
 # <a name="increase-the-resilience-of-authentication-and-authorization-in-client-applications-you-develop"></a>Geliştirdiğiniz istemci uygulamalarında kimlik doğrulama ve yetkilendirme esnekliği artırma
 
@@ -157,4 +157,4 @@ Kaynak API 'Leri geliştirirseniz, [paylaşılan sinyalleri ve olayları WG](htt
 - [Uygulamalarınızda sürekli erişim değerlendirmesi etkin API 'Leri kullanma](../develop/app-resilience-continuous-access-evaluation.md)
 - [Daemon uygulamalarına esnekliği derleme](resilience-daemon-app.md)
 - [Kimlik ve erişim yönetimi altyapınızda esnekliği oluşturma](resilience-in-infrastructure.md)
-- [Azure Active Directory B2C ile Müşteri Kimliğiniz ve erişim yönetiminde esnekliği oluşturun](resilience-b2c.md)
+- [CıHAR sistemlerinizde derleme esnekliği](resilience-b2c.md)

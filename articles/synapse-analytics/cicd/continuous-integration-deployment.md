@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 7b77a47acba6180df4a067887b79d8cdc0f56df6
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5dbd49312b58dc656e2239e8a0a4acea614023de
+ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185088"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96317193"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Azure SYNAPSE çalışma alanı için sürekli tümleştirme ve teslim
 
@@ -25,7 +25,7 @@ Azure SYNAPSE çalışma alanı için, sürekli tümleştirme ve teslim (CI/CD) 
 
 Bu makale, bir Synapse çalışma alanının birden çok ortama dağıtımını otomatik hale getirmek için Azure sürüm ardışık düzeni kullanılarak ana hatlarıyla sunulacaktır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 -   Geliştirme için kullanılan çalışma alanı Studio 'daki bir git deposu ile yapılandırılmış, bkz. [SYNAPSE Studio 'Da kaynak denetimi](source-control.md).
 -   Bir Azure DevOps projesi, yayın işlem hattını çalıştırmak için hazırlandı.
@@ -91,11 +91,21 @@ Bu makale, bir Synapse çalışma alanının birden çok ortama dağıtımını 
 
 ## <a name="set-up-a-stage-task-for-artifacts-deployment"></a>Yapıt dağıtımı için bir aşama görevi ayarlama 
 
-Veri kümesi, SQL betiği, Not defteri, Spark iş tanımı, dataflow, işlem hattı, bağlantılı hizmet, kimlik bilgileri ve IR (Integration Runtime) gibi SYNAPSE çalışma alanındaki diğer öğeleri dağıtmak için [SYNAPSE çalışma alanları derleme & serbest bırakma](https://marketplace.visualstudio.com/items?itemName=PraveenMathamsetty.synapsecicd-deploy) görevini kullanın.  
+SYNAPSE çalışma alanı, SQL betiği, Not defteri, Spark iş tanımı, dataflow, işlem hattı, bağlantılı hizmet, kimlik bilgileri ve IR (Integration Runtime) gibi diğer öğeleri dağıtmak için [SYNAPSE çalışma alanı dağıtım](https://marketplace.visualstudio.com/items?itemName=AzureSynapseWorkspace.synapsecicd-deploy) uzantısı ' nı kullanın.  
+
+1. **Azure DevOps marketi**'nden uzantıyı arayın ve alın (https://marketplace.visualstudio.com/azuredevops) 
+
+     ![Uzantıyı al](media/get-extension-from-market.png)
+
+1. Uzantıyı yüklemek için bir kuruluş seçin. 
+
+     ![Uzantıyı yükleme](media/install-extension.png)
 
 1. Azure DevOps işlem hattının hizmet ilkesine abonelik izni verildiğinden ve aynı zamanda hedef çalışma alanı için çalışma alanı yöneticisi olarak atanmış olduğundan emin olun. 
 
-1. Yeni bir görev oluşturun. **SYNAPSE çalışma alanları derleme & sürümünü** arayın ve ardından **Ekle**' yi seçin.
+1. Yeni bir görev oluşturun. **SYNAPSE çalışma alanı dağıtımı** araması yapın ve ardından **Ekle**' yi seçin.
+
+     ![Uzantı Ekle](media/add-extension-task.png)
 
 1.  Görevde ilgili git deposu bilgilerini **workspace_publish** sağlayın ve hedef çalışma alanı için kaynak grubu, bölge, ad ve bulut ortamı ' nı seçin. İhtiyacınız varsa parametreleri ve değerleri sağlayın.
 

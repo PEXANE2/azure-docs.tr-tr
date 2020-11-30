@@ -1,31 +1,31 @@
 ---
-title: Hızlı başlangıç-.NET için Azure Key Vault sertifikaları istemci kitaplığı (sürüm 4)
-description: .NET istemci kitaplığı 'nı kullanarak bir Azure anahtar kasasından sertifika oluşturmayı, almayı ve silmeyi öğrenin (sürüm 4)
+title: Hızlı başlangıç-.NET için Azure Key Vault anahtarları istemci kitaplığı (sürüm 4)
+description: .NET istemci kitaplığı 'nı kullanarak Azure Anahtar Kasası 'ndan anahtar oluşturmayı, almayı ve silmeyi öğrenin (sürüm 4)
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 09/23/2020
 ms.service: key-vault
-ms.subservice: certificates
+ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 49f244ea8e602f3b5e6499b8e14db2be15bfc8f7
+ms.openlocfilehash: 658fa81c972846292b1bf608110fc95ffe1a730d
 ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317087"
+ms.locfileid: "96318461"
 ---
-# <a name="quickstart-azure-key-vault-certificate-client-library-for-net-sdk-v4"></a>Hızlı başlangıç: .NET için Azure Key Vault sertifika istemci kitaplığı (SDK v4)
+# <a name="quickstart-azure-key-vault-key-client-library-for-net-sdk-v4"></a>Hızlı başlangıç: .NET için Azure Key Vault anahtar istemci kitaplığı (SDK v4)
 
-.NET için Azure Key Vault sertifika istemci kitaplığı ile çalışmaya başlayın. [Azure Key Vault](../general/overview.md) , sertifikalar için güvenli bir mağaza sağlayan bir bulut hizmetidir. Anahtarları, parolaları, sertifikaları ve diğer gizli dizileri güvenli bir şekilde depolayabilirsiniz. Azure anahtar kasaları Azure portalı aracılığıyla oluşturulup yönetilebilir. Bu hızlı başlangıçta, .NET istemci kitaplığını kullanarak bir Azure anahtar kasasından sertifika oluşturmayı, almayı ve silmeyi öğreneceksiniz
+.NET için Azure Key Vault anahtar istemci kitaplığı ile çalışmaya başlayın. [Azure Key Vault](../general/overview.md) , şifreleme anahtarları için güvenli bir mağaza sağlayan bir bulut hizmetidir. Şifreleme anahtarlarını, parolaları, sertifikaları ve diğer gizli dizileri güvenli bir şekilde depolayabilirsiniz. Azure anahtar kasaları Azure portalı aracılığıyla oluşturulup yönetilebilir. Bu hızlı başlangıçta, .NET anahtar istemci kitaplığını kullanarak Azure Anahtar Kasası 'ndan anahtar oluşturmayı, almayı ve silmeyi öğreneceksiniz
 
-Key Vault istemci kitaplığı kaynakları:
+Key Vault anahtar istemci kitaplığı kaynakları:
 
-[API başvuru belgeleri](/dotnet/api/azure.security.keyvault.certificates)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault)  |  [Paket (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Certificates/)
+[API başvuru belgeleri](/dotnet/api/azure.security.keyvault.keys)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault)  |  [Paket (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.keys/)
 
-Key Vault ve sertifikaları hakkında daha fazla bilgi için bkz.:
+Key Vault ve anahtarları hakkında daha fazla bilgi için bkz.:
 - [Key Vault genel bakış](../general/overview.md)
-- [Sertifikalara genel bakış](about-certificates.md).
+- [Anahtarlara genel bakış](about-keys.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -79,10 +79,10 @@ Bu hızlı başlangıç, Azure 'da kullanıcının kimliğini doğrulamak için 
 
 ### <a name="install-the-packages"></a>Paketleri yükler
 
-Komut kabuğundan, .NET için Azure Key Vault sertifikası istemci kitaplığı 'nı yükledikten sonra:
+Komut kabuğundan, .NET için Azure Key Vault anahtar istemci Kitaplığı ' nı yükledikten sonra:
 
 ```dotnetcli
-dotnet add package Azure.Security.KeyVault.Certificates
+dotnet add package Azure.Security.KeyVault.Keys
 ```
 
 Bu hızlı başlangıçta Azure Identity için Azure SDK istemci kitaplığı 'nı yüklemeniz gerekir:
@@ -93,10 +93,10 @@ dotnet add package Azure.Identity
 
 #### <a name="grant-access-to-your-key-vault"></a>Anahtar kasanıza erişim izni verin
 
-Anahtar kasanız için Kullanıcı hesabınıza Sertifika izni veren bir erişim ilkesi oluşturun
+Anahtar kasanız için Kullanıcı hesabınıza anahtar izni veren bir erişim ilkesi oluşturun
 
 ```console
-az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --certificate-permissions delete get list create purge
+az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --key-permissions delete get list create purge
 ```
 
 #### <a name="set-environment-variables"></a>Ortam değişkenlerini belirleme
@@ -119,7 +119,7 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 
 ## <a name="object-model"></a>Nesne modeli
 
-.NET için Azure Key Vault sertifikası istemci kitaplığı, sertifikaları yönetmenizi sağlar. [Kod örnekleri](#code-examples) bölümünde, bir istemci oluşturma, sertifika ayarlama, sertifika alma ve sertifikayı silme işlemlerinin nasıl yapılacağı gösterilir.
+.NET için Azure Key Vault anahtar istemci kitaplığı, anahtarları yönetmenizi sağlar. [Kod örnekleri](#code-examples) bölümünde, bir istemci oluşturma, anahtar ayarlama, anahtar alma ve bir anahtarı silme işlemlerinin nasıl yapılacağı gösterilir.
 
 ## <a name="code-examples"></a>Kod örnekleri
 
@@ -130,7 +130,7 @@ Aşağıdaki yönergeleri *program.cs*' nin en üstüne ekleyin:
 ```csharp
 using System;
 using Azure.Identity;
-using Azure.Security.KeyVault.Certificates;
+using Azure.Security.KeyVault.Keys;
 ```
 
 ### <a name="authenticate-and-create-a-client"></a>İstemci kimliğini doğrulama ve oluşturma
@@ -140,44 +140,43 @@ Bu hızlı başlangıçta oturum açan kullanıcı, yerel geliştirme için terc
 Aşağıdaki örnekte, anahtar kasanızın adı, "https://. vault.azure.net" biçiminde Anahtar Kasası URI 'sine genişletilir \<your-key-vault-name\> . Bu örnek, kimlik sağlamak için farklı seçeneklere sahip farklı ortamlarda aynı kodun kullanılmasına izin veren  [' DefaultAzureCredential () '](/dotnet/api/azure.identity.defaultazurecredential) sınıfını kullanıyor. Anahtar Kasası kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Geliştirici Kılavuzu](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code).
 
 ```csharp
-string keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
+var keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
 var kvUri = "https://" + keyVaultName + ".vault.azure.net";
 
-var client = new CertificateClient(new Uri(kvUri), new DefaultAzureCredential());
+var client = new KeyClient(new Uri(kvUri), new DefaultAzureCredential());
 ```
 
-### <a name="save-a-certificate"></a>Sertifika kaydetme
+### <a name="save-a-key"></a>Anahtar kaydetme
 
-Bu örnekte, kolaylık sağlaması için varsayılan verme ilkesiyle otomatik olarak imzalanan sertifika kullanabilirsiniz. Bu görev için [Startcreatecertificateasync](/dotnet/api/azure.security.keyvault.certificates.certificateclient.startcreatecertificateasync) yöntemini kullanın. Metodun parametreleri bir sertifika adı ve [sertifika ilkesi](https://docs.microsoft.com/dotnet/api/azure.security.keyvault.certificates.certificatepolicy)kabul eder.
+Bu görev için [Createkeyasync](/dotnet/api/azure.security.keyvault.keys.keyclient.createkeyasync) yöntemini kullanın. Metodun parametreleri bir anahtar adı ve [anahtar türü](https://docs.microsoft.com/dotnet/api/azure.security.keyvault.keys.keytype)kabul eder.
 
 ```csharp
-var operation = await client.StartCreateCertificateAsync("myCertificate", CertificatePolicy.Default);
-var certificate = await operation.WaitForCompletionAsync();
+var key = await client.CreateKeyAsync("myKey", KeyType.Rsa);
 ```
 
 > [!NOTE]
-> Sertifika adı varsa, yukarıdaki kod bu sertifikanın yeni bir sürümünü oluşturur.
+> Anahtar adı varsa, yukarıdaki kod bu anahtarın yeni bir sürümünü oluşturur.
 
-### <a name="retrieve-a-certificate"></a>Sertifika alma
+### <a name="retrieve-a-key"></a>Anahtar alma
 
-Artık, önceden oluşturulan sertifikayı [Getcertificateasync](/dotnet/api/azure.security.keyvault.certificates.certificateclient.getcertificateasync) yöntemiyle alabilirsiniz.
+Artık, daha önce oluşturulan anahtarı [Getkeyasync](/dotnet/api/azure.security.keyvault.keys.keyclient.getkeyasync) yöntemiyle elde edebilirsiniz.
 
 ```csharp
-var certificate = await client.GetCertificateAsync("myCertificate");
+var key = await client.GetKeyAsync("myKey");
 ```
 
-### <a name="delete-a-certificate"></a>Sertifikayı silme
+### <a name="delete-a-key"></a>Bir anahtarı silme
 
-Son olarak, [Startdeletecertificateasync](/dotnet/api/azure.security.keyvault.certificates.certificateclient.startdeletecertificateasync) ve [PurgeDeletedCertificateAsync](/dotnet/api/azure.security.keyvault.certificates.certificateclient.purgedeletedcertificateasync)  yöntemleriyle anahtar kasaınızdan sertifikayı silip temizlim.
+Son olarak, [Startdeletekeyasync](/dotnet/api/azure.security.keyvault.keys.keyclient.startdeletekeyasync) ve [PurgeDeletedKeyAsync](/dotnet/api/azure.security.keyvault.keys.keyclient.purgedeletedkeyasync) yöntemleriyle anahtar kasaınızdan anahtarı silip temizlim.
 
 ```csharp
-var operation = await client.StartDeleteCertificateAsync("myCertificate");
+var operation = await client.StartDeleteKeyAsync("myKey");
 
-// You only need to wait for completion if you want to purge or recover the certificate.
+// You only need to wait for completion if you want to purge or recover the key.
 await operation.WaitForCompletionAsync();
 
-var certificate = operation.Value;
-await client.PurgeDeletedCertificateAsync("myCertificate");
+var key = operation.Value;
+await client.PurgeDeletedKeyAsync("myKey");
 ```
 
 ## <a name="sample-code"></a>Örnek kod
@@ -190,7 +189,7 @@ Aşağıdaki adımları tamamlayarak, .NET Core konsol uygulamasını Key Vault 
     using System;
     using System.Threading.Tasks;
     using Azure.Identity;
-    using Azure.Security.KeyVault.Certificates;
+    using Azure.Security.KeyVault.Keys;
     
     namespace key_vault_console_app
     {
@@ -198,29 +197,28 @@ Aşağıdaki adımları tamamlayarak, .NET Core konsol uygulamasını Key Vault 
         {
             static async Task Main(string[] args)
             {
-                const string certificateName = "myCertificate";
+                const string keyName = "myKey";
                 var keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
                 var kvUri = $"https://{keyVaultName}.vault.azure.net";
     
-                var client = new CertificateClient(new Uri(kvUri), new DefaultAzureCredential());
+                var client = new KeyClient(new Uri(kvUri), new DefaultAzureCredential());
     
-                Console.Write($"Creating a certificate in {keyVaultName} called '{certificateName}' ...");
-                CertificateOperation operation = await client.StartCreateCertificateAsync(certificateName, CertificatePolicy.Default);
-                await operation.WaitForCompletionAsync();
-                Console.WriteLine(" done.");
+                Console.Write($"Creating a key in {keyVaultName} called '{keyName}' ...");
+                var createdKey = await client.CreateKeyAsync(keyName, KeyType.Rsa);
+                Console.WriteLine("done.");
     
-                Console.WriteLine($"Retrieving your certificate from {keyVaultName}.");
-                var certificate = await client.GetCertificateAsync(certificateName);
-                Console.WriteLine($"Your certificate version is '{certificate.Value.Properties.Version}'.");
+                Console.WriteLine($"Retrieving your key from {keyVaultName}.");
+                var key = await client.GetKeyAsync(keyName);
+                Console.WriteLine($"Your key version is '{key.Value.Properties.Version}'.");
     
-                Console.Write($"Deleting your certificate from {keyVaultName} ...");
-                DeleteCertificateOperation deleteOperation = await client.StartDeleteCertificateAsync(certificateName);
-                // You only need to wait for completion if you want to purge or recover the certificate.
+                Console.Write($"Deleting your key from {keyVaultName} ...");
+                var deleteOperation = await client.StartDeleteKeyAsync(keyName);
+                // You only need to wait for completion if you want to purge or recover the key.
                 await deleteOperation.WaitForCompletionAsync();
-                Console.WriteLine(" done.");
+                Console.WriteLine("done.");
 
-                Console.Write($"Purging your certificate from {keyVaultName} ...");
-                await client.PurgeDeletedCertificateAsync(certificateName);
+                Console.Write($"Purging your key from {keyVaultName} ...");
+                await client.PurgeDeletedKeyAsync(keyName);
                 Console.WriteLine(" done.");
             }
         }
@@ -245,10 +243,10 @@ Aşağıdaki adımları tamamlayarak, .NET Core konsol uygulamasını Key Vault 
     Aşağıdaki çıkışın bir varyasyonu görüntülenir:
 
     ```console
-    Creating a certificate in mykeyvault called 'myCertificate' ... done.
-    Retrieving your certificate from mykeyvault.
-    Your certificate version is '8532359bced24e4bb2525f2d2050738a'.
-    Deleting your certificate from jl-kv ... done
+    Creating a key in mykeyvault called 'myKey' ... done.
+    Retrieving your key from mykeyvault.
+    Your key version is '8532359bced24e4bb2525f2d2050738a'.
+    Deleting your key from jl-kv ... done
     ```
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
@@ -287,12 +285,12 @@ Remove-AzResourceGroup -Name "myResourceGroup"
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir Anahtar Kasası oluşturdunuz, bir sertifikayı depolı, ve bu sertifikayı almıştır. 
+Bu hızlı başlangıçta bir Anahtar Kasası oluşturdunuz, bir anahtar depo, ve bu anahtarı almıştır. 
 
 Key Vault ve bunu uygulamalarınızla tümleştirme hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
 - [Azure Key Vault genel bakışını](../general/overview.md) okuyun
-- [Sertifikalara genel bakış](about-certificates.md) konusunu okuyun
+- [Anahtarlara genel bir bakış](about-keys.md) okuyun
 - [App Service uygulama öğreticisindeki bir erişim Key Vault](../general/tutorial-net-create-vault-azure-web-app.md) görün
 - [Sanal makine öğreticiden bir erişim Key Vault](../general/tutorial-net-virtual-machine.md) görün
 - [Azure Key Vault geliştirici kılavuzuna](../general/developers-guide.md) bakın
