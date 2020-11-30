@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 10/29/2020
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d23560e8ee387ca8bc9cb4bba4211f6c8272addd
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 07f1a6ff5d15ee552680c59c86a194aeabe5b866
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490891"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326395"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Azure Blob depolama alanına veri aktarmak için Azure Içeri/dışarı aktarma hizmetini kullanma
 
@@ -52,7 +52,7 @@ Sürücüleri hazırlamak için aşağıdaki adımları gerçekleştirin.
 1. Windows sistemine SATA bağlayıcıları aracılığıyla disk sürücülerinizi bağlayın.
 2. Her sürücüde tek bir NTFS birimi oluşturun. Birime bir sürücü harfi atayın. Bağlama noktalarını kullanmayın.
 3. NTFS biriminde BitLocker şifrelemesini etkinleştirin. Windows Server sistemi kullanıyorsanız, [Windows server 2012 R2 'de BitLocker 'ı etkinleştirme](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/)bölümündeki yönergeleri kullanın.
-4. Verileri şifrelenmiş birime kopyalama. Sürükle ve bırak veya Robocopy ya da böyle bir kopyalama aracını kullanın. Bir günlük ( *. jrn* ) dosyası, aracı çalıştırdığınız klasörde oluşturulur.
+4. Verileri şifrelenmiş birime kopyalama. Sürükle ve bırak veya Robocopy ya da böyle bir kopyalama aracını kullanın. Bir günlük (*. jrn*) dosyası, aracı çalıştırdığınız klasörde oluşturulur.
 
    Sürücü kilitliyse ve sürücünün kilidini açmanız gerekiyorsa, kullanım durumunuza bağlı olarak kilit açma adımları farklı olabilir.
 
@@ -105,13 +105,13 @@ Azure portal bir içeri aktarma işi oluşturmak için aşağıdaki adımları g
 
     ![Içeri/dışarı aktarma işlerine git](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
 
-3. **İçeri/dışarı aktarma Işi oluştur** ' a tıklayın.
+3. **İçeri/dışarı aktarma Işi oluştur**' a tıklayın.
 
     ![Içeri/dışarı aktarma işi oluştur ' a tıklayın](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
 
-4. **Temel bilgiler** :
+4. **Temel bilgiler**:
 
-   * **Azure 'A aktar** ' ı seçin.
+   * **Azure 'A aktar**' ı seçin.
    * İçeri aktarma işi için açıklayıcı bir ad girin. İşlerinizin ilerlemesini izlemek için adı kullanın.
        * Ad yalnızca küçük harf, sayı ve kısa çizgi içerebilir.
        * Ad bir harfle başlamalı ve boşluk içermemelidir.
@@ -120,7 +120,7 @@ Azure portal bir içeri aktarma işi oluşturmak için aşağıdaki adımları g
 
      ![İçeri aktarma işi oluşturma-1. adım](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
 
-5. **İş için Ayrıntılar** :
+5. **İş için Ayrıntılar**:
 
    * Sürücü Hazırlama adımı sırasında elde ettiğiniz sürücü günlüğü dosyalarını karşıya yükleyin. `waimportexport.exe version1`Kullanıldıysa, hazırladığınız her sürücü için bir dosyayı karşıya yükleyin. Günlük dosyası boyutu 2 MB 'yi aşarsa, `<Journal file name>_DriveInfo_<Drive serial ID>.xml` günlük dosyası ile oluşturulan öğesini de kullanabilirsiniz.
    * Verilerin bulunacağı hedef depolama hesabını seçin.
@@ -128,7 +128,7 @@ Azure portal bir içeri aktarma işi oluşturmak için aşağıdaki adımları g
 
    ![İçeri aktarma işi oluşturma-2. adım](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
 
-6. **İade gönderimi bilgileri** :
+6. **İade gönderimi bilgileri**:
 
    * Açılan listeden taşıyıcısı seçin. FedEx/DHL dışında bir taşıyıcı kullanmak istiyorsanız, açılan listeden varolan bir seçeneği belirleyin. `adbops@microsoft.com`Kullanmayı planladığınız taşıyıcı ile ilgili bilgilerle birlikte Azure Data Box işlemler ekibine başvurun.
    * Bu taşıyıcı ile oluşturduğunuz geçerli bir taşıyıcı hesap numarası girin. Microsoft, içeri aktarma işiniz tamamlandıktan sonra sürücüleri size geri göndermek için bu hesabı kullanır. Hesap numaranız yoksa bir [FedEx](https://www.fedex.com/us/oadr/) veya [DHL](https://www.dhl.com/) taşıyıcı hesabı oluşturun.
@@ -139,7 +139,7 @@ Azure portal bir içeri aktarma işi oluşturmak için aşağıdaki adımları g
 
      ![İçeri aktarma işi oluşturma-3. adım](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
 
-7. **Özet** :
+7. **Özet**:
 
    * Özette belirtilen iş bilgilerini gözden geçirin. Disklerin Azure 'a geri sevk edilmesi için iş adı ve Azure veri merkezi teslimat adresini bir yere göz önünde yapın. Bu bilgiler daha sonra sevkiyat etiketinde kullanılır.
    * İçeri aktarma işini oluşturmak için **Tamam** ' ı tıklatın.
@@ -152,7 +152,7 @@ Azure CLı 'de bir içeri aktarma işi oluşturmak için aşağıdaki adımları
 
 [!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../../includes/azure-cli-prepare-your-environment-h3.md)]
 
-### <a name="create-a-job"></a>İş oluşturma
+### <a name="create-a-job"></a>Bir iş oluşturma
 
 1. [Az Import-Export](/cli/azure/ext/import-export/import-export) uzantısını eklemek için [az Extension Add](/cli/azure/extension#az_extension_add) komutunu kullanın:
 
@@ -160,7 +160,7 @@ Azure CLı 'de bir içeri aktarma işi oluşturmak için aşağıdaki adımları
     az extension add --name import-export
     ```
 
-1. Var olan bir kaynak grubunu kullanabilir veya bir tane oluşturabilirsiniz. Bir kaynak grubu oluşturmak için [az Group Create](/cli/azure/group#az_group_create) komutunu çalıştırın:
+1. Var olan bir kaynak grubunu kullanabilir veya bir tane oluşturabilirsiniz. Kaynak grubu oluşturmak için [az group create](/cli/azure/group#az_group_create) komutunu çalıştırın:
 
     ```azurecli
     az group create --name myierg --location "West US"
@@ -236,7 +236,7 @@ Azure PowerShell içinde bir içeri aktarma işi oluşturmak için aşağıdaki 
 Install-Module -Name Az.ImportExport
 ```
 
-### <a name="create-a-job"></a>İş oluşturma
+### <a name="create-a-job"></a>Bir iş oluşturma
 
 1. Var olan bir kaynak grubunu kullanabilir veya bir tane oluşturabilirsiniz. Bir kaynak grubu oluşturmak için [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) cmdlet 'ini çalıştırın:
 

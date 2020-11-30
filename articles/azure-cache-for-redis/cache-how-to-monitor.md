@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
-ms.openlocfilehash: 93ac9a0b8766da70a55ac04f864fe48106fe8774
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3d19d8f1b6a44f32e92f82e861471ca9b5c8fa41
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536751"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327347"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>Redis için Azure Cache'i izleme
 
@@ -23,7 +23,7 @@ Redsıs örnekleri için Azure Cache ölçümleri, dakikada yaklaşık olarak ik
 
 Önbellek ölçümlerini görüntülemek için [Azure Portal](https://portal.azure.com)önbellek örneğinizi [inceleyin](cache-configure.md#configure-azure-cache-for-redis-settings) .  Redin için Azure Cache, **genel bakış** dikey penceresinde ve **redin ölçümleri** dikey penceresinde bazı yerleşik grafikler sağlar. Her bir grafik, ölçümler eklenerek veya kaldırılarak ve Raporlama aralığı değiştirilerek özelleştirilebilir.
 
-![Redsıs ölçümleri](./media/cache-how-to-monitor/redis-cache-redis-metrics-blade.png)
+![Altı grafik gösteriliyor. Bunlardan biri önbellek Isabetlerinin ve önbellekte Isabetsiz bir süre geçti.](./media/cache-how-to-monitor/redis-cache-redis-metrics-blade.png)
 
 ## <a name="view-pre-configured-metrics-charts"></a>Önceden yapılandırılmış ölçüm grafiklerini görüntüleme
 
@@ -34,13 +34,13 @@ Redsıs örnekleri için Azure Cache ölçümleri, dakikada yaklaşık olarak ik
 
 ### <a name="monitoring-charts"></a>İzleme grafikleri
 
-**Genel bakış** dikey penceresindeki **izleme** bölümünde **isabetler ve Isabetsizlik** , **alır ve ayarlar** , **Bağlantılar** ve **Toplam komut** grafikleri bulunur.
+**Genel bakış** dikey penceresindeki **izleme** bölümünde **isabetler ve Isabetsizlik**, **alır ve ayarlar**, **Bağlantılar** ve **Toplam komut** grafikleri bulunur.
 
 ![İzleme grafikleri](./media/cache-how-to-monitor/redis-cache-monitoring-part.png)
 
 ### <a name="usage-charts"></a>Kullanım grafikleri
 
-**Genel bakış** dikey penceresindeki **kullanım** bölümünde **redsıs sunucu yükü** , **bellek kullanımı** , **ağ bant genişliği** ve **CPU kullanımı** grafikleri bulunur ve ayrıca önbellek örneğinin **fiyatlandırma katmanı** görüntülenir.
+**Genel bakış** dikey penceresindeki **kullanım** bölümünde **redsıs sunucu yükü**, **bellek kullanımı**, **ağ bant genişliği** ve **CPU kullanımı** grafikleri bulunur ve ayrıca önbellek örneğinin **fiyatlandırma katmanı** görüntülenir.
 
 ![Kullanım grafikleri](./media/cache-how-to-monitor/redis-cache-usage-part.png)
 
@@ -50,7 +50,7 @@ Redsıs örnekleri için Azure Cache ölçümleri, dakikada yaklaşık olarak ik
 
 Redsıs ölçümlerini görüntülemek ve Azure Izleyici 'yi kullanarak özel grafikler oluşturmak için **kaynak menüsünde** **ölçümler** ' e tıklayın ve istediğiniz ölçümleri, raporlama aralığını, grafik türünü ve daha fazlasını kullanarak grafiğinizi özelleştirin.
 
-![Redsıs ölçümleri](./media/cache-how-to-monitor/redis-cache-monitor.png)
+![Contoso55 sol gezinti bölmesinde ölçümler, Izleme altında bir seçenektir ve vurgulanır. Ölçümler ' de, ölçümlerin bir listesi bulunur. Önbellek İsabetleri ve önbellek isabetsizliği seçilidir.](./media/cache-how-to-monitor/redis-cache-monitor.png)
 
 Azure Izleyici kullanarak ölçümler ile çalışma hakkında daha fazla bilgi için, bkz. [Microsoft Azure ölçümlere genel bakış](../azure-monitor/platform/data-platform.md).
 
@@ -62,13 +62,13 @@ Varsayılan olarak, Azure Izleyici 'deki önbellek ölçümleri [30 gün boyunca
 
 Önbellek ölçümleriniz için bir depolama hesabı yapılandırmak için:
 
-1. **Redsıs Için Azure önbelleği** sayfasında, **Izleme** başlığı altında **Tanılama** ' yı seçin.
-2. **+ Tanılama ayarı Ekle** ' yi seçin.
+1. **Redsıs Için Azure önbelleği** sayfasında, **Izleme** başlığı altında **Tanılama**' yı seçin.
+2. **+ Tanılama ayarı Ekle**' yi seçin.
 3. Ayarları adlandırın.
 4. **Arşivi bir depolama hesabına** çekin. Bir depolama hesabına tanılama gönderdiğinizde, depolama ve işlemler için normal veri ücretleri ödersiniz.
 4. Önbellek ölçümlerinin kaydedileceği depolama hesabını seçmek için **Yapılandır** ' ı seçin.
-5. Tablo başlığı **ölçümü** altında, depolamak istediğiniz satır öğelerinin yanındaki onay kutusunu işaretleyin. Örneğin, **allölçümleri** . Bir **bekletme (gün)** ilkesi belirtin. Belirtebileceğiniz en fazla gün sayısı **365 gündür** . Ancak, ölçüm verilerini süresiz olarak saklamak istiyorsanız, **bekletme (gün)** seçeneğini **0** olarak ayarlayın.
-6. **Kaydet** ’e tıklayın.
+5. Tablo başlığı **ölçümü** altında, depolamak istediğiniz satır öğelerinin yanındaki onay kutusunu işaretleyin. Örneğin, **allölçümleri**. Bir **bekletme (gün)** ilkesi belirtin. Belirtebileceğiniz en fazla gün sayısı **365 gündür**. Ancak, ölçüm verilerini süresiz olarak saklamak istiyorsanız, **bekletme (gün)** seçeneğini **0** olarak ayarlayın.
+6. **Kaydet**’e tıklayın.
 
 
 ![Redsıs tanılama](./media/cache-how-to-monitor/redis-cache-diagnostics.png)
@@ -85,7 +85,7 @@ Varsayılan olarak, Azure Izleyici 'deki önbellek ölçümleri [30 gün boyunca
 
 ## <a name="available-metrics-and-reporting-intervals"></a>Kullanılabilir ölçümler ve raporlama aralıkları
 
-Önbellek ölçümleri, **Geçmiş saat** , **bugün** , **geçen hafta** ve **özel** gibi birkaç Raporlama aralığı kullanılarak raporlanır. Her ölçüm grafiğinin **ölçüm** dikey penceresi grafikteki her ölçüm için Ortalama, en düşük ve en yüksek değerleri görüntüler ve bazı ölçümler Raporlama aralığı için bir toplam görüntüler. 
+Önbellek ölçümleri, **Geçmiş saat**, **bugün**, **geçen hafta** ve **özel** gibi birkaç Raporlama aralığı kullanılarak raporlanır. Her ölçüm grafiğinin **ölçüm** dikey penceresi grafikteki her ölçüm için Ortalama, en düşük ve en yüksek değerleri görüntüler ve bazı ölçümler Raporlama aralığı için bir toplam görüntüler. 
 
 Her ölçüm iki sürüm içerir. Tek bir ölçüm önbelleğin tamamına yönelik performansı ölçer ve [kümeleme](cache-how-to-premium-clustering.md)kullanan önbellekler için, ad içinde bulunan bir ölçümün ikinci bir sürümü `(Shard 0-9)` önbellekte tek bir parça için performansı ölçer. Örneğin, bir önbellekte dört parça varsa, `Cache Hits` önbelleğin tamamına yönelik toplam isabet sayısı ve `Cache Hits (Shard 3)` yalnızca önbelleğin söz konusu parçasına ait olan isabetler bulunur.
 
@@ -94,7 +94,7 @@ Her ölçüm iki sürüm içerir. Tek bir ölçüm önbelleğin tamamına yönel
 > 
 > 
 
-| Ölçüm | Açıklama |
+| Metric | Açıklama |
 | --- | --- |
 | İsabetli Önbellek Okuma Sayısı |Belirtilen Raporlama aralığı sırasında başarılı anahtar arama sayısı. Bu sayı `keyspace_hits` Redsıs [Info](https://redis.io/commands/info) komutundan öğesine eşlenir. |
 | Önbellek gecikmesi (Önizleme) | Önbelleğin düğümler arası gecikme süresi temel alınarak hesaplanan önbelleğin gecikmesi. Bu ölçüm mikrosaniye cinsinden ölçülür ve `Avg` `Min` `Max` belirtilen Raporlama aralığı sırasında önbellekte ortalama, en düşük ve en fazla gecikme süresini temsil eden üç boyuta sahiptir:, ve. |

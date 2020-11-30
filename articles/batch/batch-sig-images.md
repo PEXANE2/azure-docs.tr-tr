@@ -4,12 +4,12 @@ description: Özel görüntü havuzları, toplu iş yüklerinizi çalıştırmak
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: c24da435540f62a793620fe6005d176ce10c7b05
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: eb21a9e0d355274142e34fbb5c90a4d293c88ef1
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917792"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327313"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Özel görüntü havuzu oluşturmak için paylaşılan görüntü galerisini kullanma
 
@@ -33,7 +33,7 @@ Senaryonuz için yapılandırılmış paylaşılan bir görüntünün kullanılm
 - **Özel görüntü olarak yalnızca yönetilen bir görüntü kullanmaktan daha iyi performans.** Paylaşılan görüntü özel görüntü havuzu için, kararlı duruma ulaşma süresi %25 ' e kadar daha hızlı ve VM boşta kalma gecikmesi %30 ' a kadar daha kısadır.
 - **Daha kolay yönetim için görüntü sürümü oluşturma ve gruplama.** Görüntü gruplandırma tanımı, görüntünün neden oluşturulduğu, ne kadar işletim sistemi olduğu ve görüntüyü kullanma hakkında bilgi içeren bilgileri içerir. Görüntülerin gruplandırılması, daha kolay görüntü yönetimine olanak tanır. Daha fazla bilgi için bkz. [görüntü tanımları](../virtual-machines/windows/shared-image-galleries.md#image-definitions).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 > [!NOTE]
 > Azure AD 'yi kullanarak kimlik doğrulaması yapmanız gerekir. Paylaşılan anahtar kimlik doğrulaması kullanırsanız, bir kimlik doğrulama hatası alırsınız.  
@@ -58,7 +58,7 @@ Azure 'da, yönetilen bir görüntüden şu kaynaktan oluşturulabilecek paylaş
 - Buluta yüklenen genelleştirilmiş bir şirket içi VHD
 
 > [!NOTE]
-> Şu anda Batch yalnızca Genelleştirilmiş paylaşılan görüntüleri destekler. Şu anda özelleştirilmiş bir paylaşılan görüntüden özel bir görüntü havuzu oluşturamazsınız.
+> Batch yalnızca Genelleştirilmiş paylaşılan görüntüleri destekler; özel bir paylaşılan görüntü, havuz oluşturmak için kullanılamaz.
 
 Aşağıdaki adımlarda, bir VM 'yi hazırlama, anlık görüntü alma ve anlık görüntüden görüntü oluşturma işlemleri gösterilmektedir.
 

@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makinelerini yedekleme ve geri yükleme il
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 343ad80a6b68de352424fa8f16686fcece921954
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: cb25d9263648fbd92bc075751c1a8e627d03bd44
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840925"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325222"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure sanal makinelerinde yedekleme hatalarının sorunlarını giderme
 
@@ -246,7 +246,7 @@ Bu, anlık görüntünün Konuk yerine konak üzerinden alınmasını sağlar. Y
 
 **2. adım**: Yedekleme zamanlamasını VM 'nin daha az yük altında olduğu bir saate değiştirmeyi deneyin (daha az CPU veya IOPS gibi)
 
-**3. adım**: [VM 'nin boyutunu artırmayı](https://docs.microsoft.com/azure/virtual-machines/windows/resize-vm) deneyin ve işlemi yeniden deneyin
+**3. adım**: [VM 'nin boyutunu artırmayı](../virtual-machines/windows/resize-vm.md) deneyin ve işlemi yeniden deneyin
 
 ### <a name="320001-resourcenotfound---could-not-perform-the-operation-as-vm-no-longer-exists--400094-bcmv2vmnotfound---the-virtual-machine-doesnt-exist--an-azure-virtual-machine-wasnt-found"></a>320001, ResourceNotFound-VM artık mevcut olmadığından işlem gerçekleştirilemedi/400094, BCMV2VMNotFound-sanal makine yok/bir Azure sanal makinesi bulunamadı
 

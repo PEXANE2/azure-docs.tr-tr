@@ -3,12 +3,12 @@ title: Şifrelenmiş Azure VM 'lerini yedekleme ve geri yükleme
 description: Azure Backup hizmetiyle şifrelenmiş Azure VM 'lerinin nasıl yedeklendiğini ve geri yükleneceğini açıklar.
 ms.topic: conceptual
 ms.date: 08/18/2020
-ms.openlocfilehash: 67c0e879fe2acf241b1ed08a5658209bf70b1b9c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c4760a54d0200e48b2d6a38c963e9fc23925f7ff
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95978123"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324933"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>Şifrelenmiş Azure sanal makinelerini yedekleme ve geri yükleme
 
@@ -16,13 +16,13 @@ Bu makalede, [Azure Backup](backup-overview.md) hizmetini kullanarak Windows vey
 
 ## <a name="encryption-using-platform-managed-keys"></a>Platform tarafından yönetilen anahtarları kullanarak şifreleme
 
-Varsayılan olarak, sanal makinelerinizdeki tüm diskler, [depolama hizmeti şifrelemesini](../storage/common/storage-service-encryption.md)kullanan platform tarafından yönetilen anahtarlar (PMK) kullanılarak otomatik olarak şifrelenir. Bu VM 'Leri, sonunda şifrelemeyi desteklemek için gerekli herhangi bir eylem olmadan Azure Backup kullanarak yedekleyebilirsiniz. Platform tarafından yönetilen anahtarlarla şifreleme hakkında daha fazla bilgi için [Bu makaleye bakın](../virtual-machines/windows/disk-encryption.md#platform-managed-keys).
+Varsayılan olarak, sanal makinelerinizdeki tüm diskler, [depolama hizmeti şifrelemesini](../storage/common/storage-service-encryption.md)kullanan platform tarafından yönetilen anahtarlar (PMK) kullanılarak otomatik olarak şifrelenir. Bu VM 'Leri, sonunda şifrelemeyi desteklemek için gerekli herhangi bir eylem olmadan Azure Backup kullanarak yedekleyebilirsiniz. Platform tarafından yönetilen anahtarlarla şifreleme hakkında daha fazla bilgi için [Bu makaleye bakın](../virtual-machines/disk-encryption.md#platform-managed-keys).
 
 ![Şifrelenmiş diskler](./media/backup-encryption/encrypted-disks.png)
 
 ## <a name="encryption-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak şifreleme
 
-Özel yönetilen anahtarlarla (CMK) disk şifrelerken, diskleri şifrelemek için kullanılan anahtar Azure Key Vault depolanır ve sizin tarafınızdan yönetilir. CMK kullanan Depolama Hizmeti Şifrelemesi (SSE), Azure disk şifrelemesi (ADE) şifrelemesi ile farklıdır. ADE, işletim sisteminin şifreleme araçlarını kullanır. SSE, depolama hizmetindeki verileri şifreler ve sanal makinelerinize yönelik herhangi bir işletim sistemini veya görüntüyü kullanmanıza olanak sağlar. Yönetilen disklerin müşteri tarafından yönetilen anahtarlarla şifrelenmesi hakkında daha fazla bilgi için [Bu makaleye](../virtual-machines/windows/disk-encryption.md#customer-managed-keys)bakın.
+Özel yönetilen anahtarlarla (CMK) disk şifrelerken, diskleri şifrelemek için kullanılan anahtar Azure Key Vault depolanır ve sizin tarafınızdan yönetilir. CMK kullanan Depolama Hizmeti Şifrelemesi (SSE), Azure disk şifrelemesi (ADE) şifrelemesi ile farklıdır. ADE, işletim sisteminin şifreleme araçlarını kullanır. SSE, depolama hizmetindeki verileri şifreler ve sanal makinelerinize yönelik herhangi bir işletim sistemini veya görüntüyü kullanmanıza olanak sağlar. Yönetilen disklerin müşteri tarafından yönetilen anahtarlarla şifrelenmesi hakkında daha fazla bilgi için [Bu makaleye](../virtual-machines/disk-encryption.md#customer-managed-keys)bakın.
 
 ## <a name="encryption-support-using-ade"></a>ADE kullanarak şifreleme desteği
 
@@ -131,7 +131,7 @@ Azure Backup, anahtar ve gizli dizileri, ilişkili VM 'lerle birlikte yedeklemek
 
     ![Azure Backup seçimi](./media/backup-azure-vms-encryption/select-backup-template.png)
 
-1. **Ekle**’yi seçin. **Yedekleme yönetimi hizmeti** **erişim ilkelerine** eklenir.
+1. **Add (Ekle)** seçeneğini belirleyin. **Yedekleme yönetimi hizmeti** **erişim ilkelerine** eklenir.
 
     ![Erişim ilkeleri](./media/backup-azure-vms-encryption/backup-service-access-policy.png)
 

@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: bc7db167ed1d1d8823e90bf422f17428a7ed4e48
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 369f17a39b9d7b2f85fffb8b72a293558d16416e
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94497131"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325171"
 ---
 # <a name="migration-guide-db2-to-sql-database"></a>Geçiş Kılavuzu: DB2 'den SQL veritabanına
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -44,8 +44,8 @@ SQL Server Geçiş Yardımcısı (SSMA) kullanarak bir değerlendirme oluşturun
 Bir değerlendirme oluşturmak için aşağıdaki adımları izleyin:
 
 1. DB2 için SQL Server Geçiş Yardımcısı (SSMA) açın. 
-1. **Dosya** ' yı ve ardından **Yeni proje** ' yi seçin. 
-1. Projenizin kaydedileceği bir konum belirtin ve ardından açılan listeden geçiş hedefi olarak Azure SQL veritabanı ' nı seçin. **Tamam** ’ı seçin.  
+1. **Dosya** ' yı ve ardından **Yeni proje**' yi seçin. 
+1. Projenizin kaydedileceği bir konum belirtin ve ardından açılan listeden geçiş hedefi olarak Azure SQL veritabanı ' nı seçin. **Tamam**’ı seçin.  
 
    :::image type="content" source="media/db2-to-sql-database-guide/new-project.png" alt-text="Proje ayrıntılarını girip kaydetmek için Tamam ' ı seçin.":::
 
@@ -55,7 +55,7 @@ Bir değerlendirme oluşturmak için aşağıdaki adımları izleyin:
    :::image type="content" source="media/db2-to-sql-database-guide/connect-to-db2.png" alt-text="DB2 örneğinize bağlanma":::
 
 
-1. Geçirmek istediğiniz DB2 şemasını sağ tıklatın ve ardından **rapor oluştur** ' u seçin. Bu, bir HTML raporu oluşturur. Alternatif olarak, şemayı seçtikten sonra gezinti çubuğundan **rapor oluştur** ' u seçebilirsiniz. 
+1. Geçirmek istediğiniz DB2 şemasını sağ tıklatın ve ardından **rapor oluştur**' u seçin. Bu, bir HTML raporu oluşturur. Alternatif olarak, şemayı seçtikten sonra gezinti çubuğundan **rapor oluştur** ' u seçebilirsiniz. 
 
    :::image type="content" source="media/db2-to-sql-database-guide/create-report.png" alt-text="Şemaya sağ tıklayıp rapor oluştur ' u seçin.":::
 
@@ -71,27 +71,27 @@ Bir değerlendirme oluşturmak için aşağıdaki adımları izleyin:
 Varsayılan veri türü eşlemelerini doğrulayın ve gerekirse gereksinimlere göre değiştirin. Bunu yapmak için aşağıdaki adımları izleyin: 
 
 1. Menüden **Araçlar** ' ı seçin. 
-1. **Proje ayarları** ' nı seçin. 
+1. **Proje ayarları**' nı seçin. 
 1. **Tür eşlemeleri** sekmesini seçin. 
 
    :::image type="content" source="media/db2-to-sql-database-guide/type-mapping.png" alt-text="Şemayı seçin ve sonra tür eşleme":::
 
-1. Her tablo için tür eşlemesini, **DB2 meta veri Gezgini** 'nde tabloyu seçerek değiştirebilirsiniz. 
+1. Her tablo için tür eşlemesini, **DB2 meta veri Gezgini**'nde tabloyu seçerek değiştirebilirsiniz. 
 
 ### <a name="schema-conversion"></a>Şema dönüştürme 
 
 Şemayı dönüştürmek için aşağıdaki adımları izleyin:
 
-1. Seçim Deyimlere dinamik veya geçici sorgular ekleyin. Düğüme sağ tıklayın ve ardından **deyim Ekle** ' yi seçin. 
-1. **Azure SQL veritabanı 'Na Bağlan** ' ı seçin. 
+1. Seçim Deyimlere dinamik veya geçici sorgular ekleyin. Düğüme sağ tıklayın ve ardından **deyim Ekle**' yi seçin. 
+1. **Azure SQL veritabanı 'Na Bağlan**' ı seçin. 
     1. Veritabanınızı Azure SQL veritabanı 'na bağlamak için bağlantı ayrıntılarını girin. 
     1. Açılan listeden hedef SQL veritabanınızı seçin. 
-    1. **Bağlan** ’ı seçin. 
+    1. **Bağlan**’ı seçin. 
 
    :::image type="content" source="media/db2-to-sql-database-guide/connect-to-sql-database.png" alt-text="Azure 'da mantıksal sunucuya bağlanmak için ayrıntıları doldur":::
 
 
-1. Şemaya sağ tıklayıp **Şemayı Dönüştür** ' ü seçin. Alternatif olarak, şemanızı seçtikten sonra üst gezinti çubuğundan **Şemayı Dönüştür** ' i de seçebilirsiniz. 
+1. Şemaya sağ tıklayıp **Şemayı Dönüştür**' ü seçin. Alternatif olarak, şemanızı seçtikten sonra üst gezinti çubuğundan **Şemayı Dönüştür** ' i de seçebilirsiniz. 
 
    :::image type="content" source="media/db2-to-sql-database-guide/convert-schema.png" alt-text="Şemaya sağ tıklayıp şemayı Dönüştür ' ü seçin.":::
 
@@ -108,11 +108,11 @@ Veritabanlarınızı değerlendirmek ve tutarsızlıkları doğruladıktan sonra
 
 Şemanızı yayımlamak ve verilerinizi geçirmek için şu adımları izleyin:
 
-1. Şemayı yayımlama: **Azure SQL veritabanı meta veri Gezgini** ' nde **veritabanları** düğümünden veritabanına sağ tıklayın ve **veritabanıyla Synchronize** ' ı seçin.
+1. Şemayı yayımlama: **Azure SQL veritabanı meta veri Gezgini** ' nde **veritabanları** düğümünden veritabanına sağ tıklayın ve **veritabanıyla Synchronize**' ı seçin.
 
    :::image type="content" source="media/db2-to-sql-database-guide/synchronize-with-database.png" alt-text="Veritabanına sağ tıklayın ve veritabanıyla Synchronize ' ı seçin.":::
 
-1. Verileri geçirme: **DB2 meta veri Gezgini** ' nden şemaya sağ tıklayın ve **veri geçişi** ' ni seçin. 
+1. Verileri geçirme: **DB2 meta veri Gezgini** ' nden şemaya sağ tıklayın ve **veri geçişi**' ni seçin. 
 
    :::image type="content" source="media/db2-to-sql-database-guide/migrate-data.png" alt-text="Şemaya sağ tıklayıp verileri geçir ' i seçin":::
 
@@ -138,10 +138,10 @@ Veriler hedef ortama geçirildikten sonra, daha önce kaynağı tüketen tüm uy
 
 Veritabanı geçişi için test yaklaşımı aşağıdaki etkinliklerden oluşur:
 
-1. **Doğrulama testleri geliştirme** : veritabanı geçişini test etmek için SQL sorguları kullanmanız gerekir. Kaynak ve hedef veritabanlarında çalıştırmak için doğrulama sorguları oluşturmanız gerekir. Doğrulama sorgularınız tanımladığınız kapsamı kapsamalıdır.
-1. **Test ortamını ayarlama** : test ortamı, kaynak veritabanının ve hedef veritabanının bir kopyasını içermelidir. Test ortamını yalıtdığınızdan emin olun.
-1. **Doğrulama testlerini Çalıştır** : doğrulama testlerini kaynak ve hedefe göre çalıştırın ve ardından sonuçları çözümleyin.
-1. **Performans testlerini Çalıştır** : kaynak ve hedefte performans testi çalıştırın ve ardından sonuçları çözümleyip karşılaştırın.
+1. **Doğrulama testleri geliştirme**: veritabanı geçişini test etmek için SQL sorguları kullanmanız gerekir. Kaynak ve hedef veritabanlarında çalıştırmak için doğrulama sorguları oluşturmanız gerekir. Doğrulama sorgularınız tanımladığınız kapsamı kapsamalıdır.
+1. **Test ortamını ayarlama**: test ortamı, kaynak veritabanının ve hedef veritabanının bir kopyasını içermelidir. Test ortamını yalıtdığınızdan emin olun.
+1. **Doğrulama testlerini Çalıştır**: doğrulama testlerini kaynak ve hedefe göre çalıştırın ve ardından sonuçları çözümleyin.
+1. **Performans testlerini Çalıştır**: kaynak ve hedefte performans testi çalıştırın ve ardından sonuçları çözümleyip karşılaştırın.
 
    > [!NOTE]
    > Geçiş sonrası doğrulama testlerini geliştirmeye ve çalıştırmaya yönelik yardım için iş ortağı [Querysurge](https://www.querysurge.com/company/partners/microsoft)tarafından kullanılabilen veri kalitesi çözümünü göz önünde bulundurun. 
@@ -149,7 +149,7 @@ Veritabanı geçişi için test yaklaşımı aşağıdaki etkinliklerden oluşur
 
 ## <a name="leverage-advanced-features"></a>Gelişmiş özelliklerden yararlanın 
 
-[Yerleşik yüksek kullanılabilirlik](../../database/high-availability-sla.md), [tehdit algılama](../../database/advanced-data-security.md)ve [iş yükünüzü Izleme ve ayarlama](../../database/monitor-tune-overview.md)gibi SQL veritabanı tarafından sunulan gelişmiş bulut tabanlı özelliklerden faydalandığınızdan emin olun. 
+[Yerleşik yüksek kullanılabilirlik](../../database/high-availability-sla.md), [tehdit algılama](../../database/azure-defender-for-sql.md)ve [iş yükünüzü Izleme ve ayarlama](../../database/monitor-tune-overview.md)gibi SQL veritabanı tarafından sunulan gelişmiş bulut tabanlı özelliklerden faydalandığınızdan emin olun. 
 
 
 Bazı SQL Server özellikleri yalnızca [veritabanı uyumluluk düzeyi](/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database) en son uyumluluk düzeyine (150) değiştirildiğinde kullanılabilir. 

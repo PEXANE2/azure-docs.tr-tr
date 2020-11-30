@@ -3,12 +3,12 @@ title: Güvenlik özelliklerine genel bakış
 description: Yedekleme verilerinizi korumanıza ve işletmenizin güvenlik ihtiyaçlarını karşılamanıza yardımcı olan Azure Backup güvenlik özellikleri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 8c4d3af9205df43c3596da64d7fcad2a9eb82500
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 9aa1909f1590b477d9a7f7a09ad0c2b1936e3e29
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093353"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325664"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure Backup güvenlik özelliklerine genel bakış
 
@@ -26,7 +26,7 @@ Azure Backup, yedekleme yönetimi işlemlerini denetlemek için üç [yerleşik 
 
 [Azure Backup yönetmek Için Azure rol tabanlı erişim denetimi](./backup-rbac-rs-vault.md)hakkında daha fazla bilgi edinin.
 
-Azure Backup, güvenlik açıklarını engellemek, algılamak ve yanıtlamak için hizmette yerleşik olarak bulunan çeşitli güvenlik denetimlerine sahiptir. [Azure Backup için güvenlik denetimleri](./backup-security-controls.md)hakkında daha fazla bilgi edinin.
+Azure Backup, güvenlik açıklarını engellemek, algılamak ve yanıtlamak için hizmette yerleşik olarak bulunan çeşitli güvenlik denetimlerine sahiptir. [Azure Backup için güvenlik denetimleri](./security-baseline.md)hakkında daha fazla bilgi edinin.
 
 ## <a name="separation-between-guest-and-azure-storage"></a>Konuk ve Azure depolama arasındaki ayrım
 
@@ -64,7 +64,7 @@ Azure Backup, Azure Backup ilgili olaylara yönelik eylemleri görüntülemek ve
 
 ## <a name="security-features-to-help-protect-hybrid-backups"></a>Karma yedeklemeleri korumaya yardımcı olan güvenlik özellikleri
 
-Azure Backup hizmeti, dosyaları, klasörleri ve birim ya da sistem durumunu şirket içi bir bilgisayardan Azure 'a yedeklemek ve geri yüklemek için Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı 'nı kullanır. MARS artık karma yedeklemeleri korumaya yardımcı olacak güvenlik özellikleri sağlıyor. Bu özellikler şunlardır:
+Azure Backup hizmeti, dosyaları, klasörleri ve birim ya da sistem durumunu şirket içi bir bilgisayardan Azure 'a yedeklemek ve geri yüklemek için Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı 'nı kullanır. MARS artık karma yedeklemeleri korumaya yardımcı olacak güvenlik özellikleri sağlıyor. Bu özellikler şunları içerir:
 
 * Bir parolayı değiştirme gibi kritik bir işlem gerçekleştirildiğinde ek bir kimlik doğrulama katmanı eklenir. Bu doğrulama, bu tür işlemlerin yalnızca geçerli Azure kimlik bilgilerine sahip kullanıcılar tarafından gerçekleştirilmesini sağlamaktır. [Saldırıları engelleyen özellikler hakkında daha fazla bilgi edinin](./backup-azure-security-feature.md#prevent-attacks).
 

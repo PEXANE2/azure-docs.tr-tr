@@ -15,12 +15,12 @@ ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c64ab815572af0f6c76a5076c9d4cf03586f242d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 57e9c82e5685171cff994aca7985f6a4211f00e7
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785009"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327296"
 ---
 # <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Azure VM 'lerinde SQL Server için fiyatlandırma Kılavuzu
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -59,21 +59,21 @@ Hafif olmayan bir üretim iş yükünüz varsa, aşağıdaki SQL Server sürüml
 |-----|-----|
 | Web | Küçük Web siteleri |
 | Standart | Küçük ve orta ölçekli iş yükleri |
-| Kurumsal | Büyük veya görev açısından kritik iş yükleri|
+| Enterprise | Büyük veya görev açısından kritik iş yükleri|
 
-Bu sürümler için SQL Server Lisanslama için ödeme yapmak üzere iki seçeneğiniz vardır: *kullanım başına ödeme* *yapın veya kendi LISANSıNıZı getirin (KLG)* .
+Bu sürümler için SQL Server Lisanslama için ödeme yapmak üzere iki seçeneğiniz vardır: *kullanım başına ödeme* *yapın veya kendi LISANSıNıZı getirin (KLG)*.
 
 ## <a name="pay-per-usage"></a>Kullanım başına ödeme
 
-**SQL Server lisansını kullanım başına** (Kullandıkça Öde olarak da bilinir) **ödeyin** , Azure VM 'yi çalıştırmanın ikinci başına maliyetinin SQL Server lisansın maliyetini içerir. [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) veya [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux)için Azure sanal makineler fiyatlandırma sayfasında farklı SQL Server sürümleri (Web, standart, kurumsal) için fiyatlandırmayı görebilirsiniz.
+**SQL Server lisansını kullanım başına** (Kullandıkça Öde olarak da bilinir) **ödeyin**, Azure VM 'yi çalıştırmanın ikinci başına maliyetinin SQL Server lisansın maliyetini içerir. [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) veya [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux)için Azure sanal makineler fiyatlandırma sayfasında farklı SQL Server sürümleri (Web, standart, kurumsal) için fiyatlandırmayı görebilirsiniz.
 
 Maliyet, tüm SQL Server sürümleri (2012 SP3 2019 ' e) için aynıdır. Saniye başına lisans maliyeti, VM vCPU sayısına bağlıdır.
 
 Kullanım başına SQL Server lisansa ödeme yapılması önerilir:
 
-- **Geçici veya düzenli iş yükleri** . Örneğin, her yıl birkaç ayda bir olayı desteklemesi gereken bir uygulama veya Mondays iş analizi.
+- **Geçici veya düzenli iş yükleri**. Örneğin, her yıl birkaç ayda bir olayı desteklemesi gereken bir uygulama veya Mondays iş analizi.
 
-- **Bilinmeyen yaşam süresine veya ölçeğe sahip Iş yükleri** . Örneğin, birkaç ay içinde gerekli olmayan veya talebe bağlı olarak daha fazla veya daha az işlem gücü gerektiren bir uygulama.
+- **Bilinmeyen yaşam süresine veya ölçeğe sahip Iş yükleri**. Örneğin, birkaç ay içinde gerekli olmayan veya talebe bağlı olarak daha fazla veya daha az işlem gücü gerektiren bir uygulama.
 
 Bu Kullandıkça Öde görüntülerinden biriyle SQL Server 2017 çalıştıran bir Azure VM oluşturmak için aşağıdaki bağlantılara bakın:
 
@@ -106,9 +106,9 @@ Bu Kullandıkça Öde görüntülerinden biriyle SQL Server 2017 çalıştıran 
 
 Kendi SQL Server lisanslarınızın Lisans Taşınabilirliği üzerinden getirilmesi için şunları yapmanız önerilir:
 
-- **Sürekli iş yükleri** . Örneğin, iş işlemlerini 7/24 desteklemek için gereken bir uygulama.
+- **Sürekli iş yükleri**. Örneğin, iş işlemlerini 7/24 desteklemek için gereken bir uygulama.
 
-- **Bilinen yaşam süresi ve ölçeğe sahip Iş yükleri** . Örneğin, tüm yıl için gerekli olan ve hangi talebin tahmin ettiği bir uygulama.
+- **Bilinen yaşam süresi ve ölçeğe sahip Iş yükleri**. Örneğin, tüm yıl için gerekli olan ve hangi talebin tahmin ettiği bir uygulama.
 
 Bir SQL Server VM ile KLG kullanmak için, bazı toplu lisanslama programları ve diğer kişilerle isteğe bağlı satın alma işlemleri aracılığıyla gerekli bir seçenek olan SQL Server Standard veya kuruluş ve [yazılım güvencesi](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default.aspx#tab=1)lisansına sahip olmanız gerekir. Toplu Lisanslama programları aracılığıyla belirtilen fiyatlandırma düzeyi, sözleşmenin türüne ve miktarına ve SQL Server taahhütüne göre değişir. Ancak, bir Thumb kuralı olarak, sürekli üretim iş yükleri için kendi lisansınızı getirmek aşağıdaki avantajlara sahiptir:
 
@@ -136,7 +136,7 @@ Gereksiz maliyetleri önlemek için, en iyi sanal makine boyutunu seçin ve sür
 
 ### <a name="correctly-size-your-vm"></a><a id="machinesize"></a> SANAL makinenizin boyutunu doğru yapın
 
-SQL Server Lisanslama ücreti, vCPU sayısıyla doğrudan ilgilidir. CPU, bellek, depolama ve g/ç bant genişliği için beklenen gereksinimle eşleşen bir VM boyutu seçin. Makine boyutu seçeneklerinin tüm listesi için bkz. [WINDOWS VM boyutları](../../../virtual-machines/sizes.md) ve [Linux VM boyutları](../../../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json).
+SQL Server Lisanslama ücreti, vCPU sayısıyla doğrudan ilgilidir. CPU, bellek, depolama ve g/ç bant genişliği için beklenen gereksinimle eşleşen bir VM boyutu seçin. Makine boyutu seçeneklerinin tüm listesi için bkz. [WINDOWS VM boyutları](../../../virtual-machines/sizes.md) ve [Linux VM boyutları](../../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 Belirli türdeki SQL Server iş yükleriyle iyi çalışan yeni makine boyutları vardır. Bu makine boyutları, yüksek düzeyde bellek, depolama ve g/ç bant genişliğini korur, ancak daha düşük bir sanallaştırılmış çekirdek sayısına sahiptir. Örneğin, aşağıdaki örneği göz önünde bulundurun:
 

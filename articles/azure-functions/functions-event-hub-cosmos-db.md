@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: c5510a66f48007d629d23a96d17205b489ab6a5c
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: aa9e7612a5b3b9655b0c1981fbba87645526b3a2
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95999136"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327211"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>Öğretici: bir olay hub 'ı tetikleyicisi ve bir Azure Cosmos DB çıktı bağlaması ile Java 'da işlev oluşturma
 
@@ -61,7 +61,9 @@ Cloud Shell kullanmıyorsanız, hesabınıza erişmek için Azure CLı 'yi yerel
 
 Sonra, oluşturacağınız kaynakların adları ve konumu için bazı ortam değişkenleri oluşturun. Yer tutucuları seçtiğiniz değerlerle değiştirerek aşağıdaki komutları kullanın `<value>` . Değerler, [Azure kaynakları için adlandırma kurallarına ve kısıtlamalarına](/azure/architecture/best-practices/resource-naming)uymalıdır. Değişkeni için `LOCATION` , komutu tarafından üretilen değerlerden birini kullanın `az functionapp list-consumption-locations` .
 
-```azurecli-interactive
+# <a name="bash"></a>[Bash](#tab/bash)
+
+```bash
 RESOURCE_GROUP=<value>
 EVENT_HUB_NAMESPACE=<value>
 EVENT_HUB_NAME=<value>
@@ -72,6 +74,21 @@ FUNCTION_APP=<value>
 LOCATION=<value>
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+set RESOURCE_GROUP=<value>
+set EVENT_HUB_NAMESPACE=<value>
+set EVENT_HUB_NAME=<value>
+set EVENT_HUB_AUTHORIZATION_RULE=<value>
+set COSMOS_DB_ACCOUNT=<value>
+set STORAGE_ACCOUNT=<value>
+set FUNCTION_APP=<value>
+set LOCATION=<value>
+```
+
+---
+
 Bu öğreticinin geri kalanı bu değişkenleri kullanır. Bu değişkenlerin yalnızca geçerli Azure CLı veya Cloud Shell oturumunuz süresince kalıcı olduğunu unutmayın. Farklı bir yerel Terminal penceresi kullanıyorsanız veya Cloud Shell oturumunuz zaman aşımına uğrarsa bu komutları yeniden çalıştırmanız gerekir.
 
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
@@ -80,15 +97,29 @@ Azure, hesabınızdaki tüm ilgili kaynakları toplamak için kaynak grupların�
 
 Bir kaynak grubu oluşturmak için aşağıdaki komutu kullanın:
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```azurecli-interactive
 az group create \
     --name $RESOURCE_GROUP \
     --location $LOCATION
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli
+az group create ^
+    --name %RESOURCE_GROUP% ^
+    --location %LOCATION%
+```
+
+---
+
 ### <a name="create-an-event-hub"></a>Olay hub’ı oluşturma
 
 Ardından, aşağıdaki komutları kullanarak bir Azure Event Hubs ad alanı, Olay Hub 'ı ve yetkilendirme kuralı oluşturun:
+
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```azurecli-interactive
 az eventhubs namespace create \
@@ -107,33 +138,78 @@ az eventhubs eventhub authorization-rule create \
     --rights Listen Send
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli
+az eventhubs namespace create ^
+    --resource-group %RESOURCE_GROUP% ^
+    --name %EVENT_HUB_NAMESPACE%
+az eventhubs eventhub create ^
+    --resource-group %RESOURCE_GROUP% ^
+    --name %EVENT_HUB_NAME% ^
+    --namespace-name %EVENT_HUB_NAMESPACE% ^
+    --message-retention 1
+az eventhubs eventhub authorization-rule create ^
+    --resource-group %RESOURCE_GROUP% ^
+    --name %EVENT_HUB_AUTHORIZATION_RULE% ^
+    --eventhub-name %EVENT_HUB_NAME% ^
+    --namespace-name %EVENT_HUB_NAMESPACE% ^
+    --rights Listen Send
+```
+
+---
+
 Event Hubs ad alanı gerçek olay hub 'ını ve yetkilendirme kuralını içerir. Yetkilendirme kuralı, işlevlerinizin hub 'a ileti göndermesini ve ilgili olayları dinlemesini sağlar. Bir işlev telemetri verilerini temsil eden iletiler gönderir. Başka bir işlev olayları dinler, olay verilerini analiz eder ve sonuçları Azure Cosmos DB depolar.
 
 ### <a name="create-an-azure-cosmos-db"></a>Azure Cosmos DB oluşturma
 
 Ardından, aşağıdaki komutları kullanarak bir Azure Cosmos DB hesabı, veritabanı ve koleksiyonu oluşturun:
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```azurecli-interactive
 az cosmosdb create \
     --resource-group $RESOURCE_GROUP \
     --name $COSMOS_DB_ACCOUNT
-az cosmosdb database create \
-    --resource-group-name $RESOURCE_GROUP \
-    --name $COSMOS_DB_ACCOUNT \
-    --db-name TelemetryDb
-az cosmosdb collection create \
-    --resource-group-name $RESOURCE_GROUP \
-    --name $COSMOS_DB_ACCOUNT \
-    --collection-name TelemetryInfo \
-    --db-name TelemetryDb \
+az cosmosdb sql database create \
+    --resource-group $RESOURCE_GROUP \
+    --account-name $COSMOS_DB_ACCOUNT \
+    --name TelemetryDb
+az cosmosdb sql container create \
+    --resource-group $RESOURCE_GROUP \
+    --account-name $COSMOS_DB_ACCOUNT \
+    --database-name TelemetryDb \
+    --name TelemetryInfo \
     --partition-key-path '/temperatureStatus'
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli
+az cosmosdb create ^
+    --resource-group %RESOURCE_GROUP% ^
+    --name %COSMOS_DB_ACCOUNT%
+az cosmosdb sql database create ^
+    --resource-group %RESOURCE_GROUP% ^
+    --account-name %COSMOS_DB_ACCOUNT% ^
+    --name TelemetryDb
+az cosmosdb sql container create ^
+    --resource-group %RESOURCE_GROUP% ^
+    --account-name %COSMOS_DB_ACCOUNT% ^
+    --database-name TelemetryDb ^
+    --name TelemetryInfo ^
+    --partition-key-path "/temperatureStatus"
+```
+
+---
 
 `partition-key-path`Değer, her öğenin değerine göre verilerinizi bölümler `temperatureStatus` . Bölüm anahtarı, verilerinizi bağımsız olarak erişebileceği farklı alt kümelere ayırarak performansı artırmaya Cosmos DB olanak sağlar.
 
 ### <a name="create-a-storage-account-and-function-app"></a>Depolama hesabı ve işlev uygulaması oluşturma
 
 Ardından, Azure Işlevleri için gerekli olan bir Azure depolama hesabı oluşturun ve ardından işlev uygulamasını oluşturun. Aşağıdaki komutları kullanın:
+
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```azurecli-interactive
 az storage account create \
@@ -145,8 +221,27 @@ az functionapp create \
     --name $FUNCTION_APP \
     --storage-account $STORAGE_ACCOUNT \
     --consumption-plan-location $LOCATION \
-    --runtime java
+    --runtime java \
+    --functions-version 2
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli
+az storage account create ^
+    --resource-group %RESOURCE_GROUP% ^
+    --name %STORAGE_ACCOUNT% ^
+    --sku Standard_LRS
+az functionapp create ^
+    --resource-group %RESOURCE_GROUP% ^
+    --name %FUNCTION_APP% ^
+    --storage-account %STORAGE_ACCOUNT% ^
+    --consumption-plan-location %LOCATION% ^
+    --runtime java ^
+    --functions-version 2
+```
+
+---
 
 Komut, `az functionapp create` işlev uygulamanızı oluşturduğunda aynı ada sahip bir Application Insights kaynağı da oluşturur. İşlev uygulaması, Application Insights ' ye bağlayan adlı bir ayarla otomatik olarak yapılandırılır `APPINSIGHTS_INSTRUMENTATIONKEY` . Bu öğreticinin ilerleyen kısımlarında açıklandığı gibi, işlevlerinizi Azure 'a dağıttıktan sonra uygulama telemetrisini görüntüleyebilirsiniz.
 
@@ -157,6 +252,8 @@ Komut, `az functionapp create` işlev uygulamanızı oluşturduğunda aynı ada 
 ### <a name="retrieve-resource-connection-strings"></a>Kaynak bağlantı dizelerini alma
 
 Depolama, Olay Hub 'ı ve Cosmos DB bağlantı dizelerini almak ve bunları ortam değişkenlerine kaydetmek için aşağıdaki komutları kullanın:
+
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```azurecli-interactive
 AZURE_WEB_JOBS_STORAGE=$( \
@@ -184,11 +281,40 @@ COSMOS_DB_CONNECTION_STRING=$( \
 echo $COSMOS_DB_CONNECTION_STRING
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli
+FOR /F "delims=" %X IN (' ^
+    az storage account show-connection-string ^
+        --name %STORAGE_ACCOUNT% ^
+        --query connectionString ^
+        --output tsv') DO SET AZURE_WEB_JOBS_STORAGE=%X
+FOR /F "delims=" %X IN (' ^
+    az eventhubs eventhub authorization-rule keys list ^
+        --resource-group %RESOURCE_GROUP% ^
+        --name %EVENT_HUB_AUTHORIZATION_RULE% ^
+        --eventhub-name %EVENT_HUB_NAME% ^
+        --namespace-name %EVENT_HUB_NAMESPACE% ^
+        --query primaryConnectionString ^
+        --output tsv') DO SET EVENT_HUB_CONNECTION_STRING=%X
+FOR /F "delims=" %X IN (' ^
+    az cosmosdb keys list ^
+        --resource-group %RESOURCE_GROUP% ^
+        --name %COSMOS_DB_ACCOUNT% ^
+        --type connection-strings ^
+        --query connectionStrings[0].connectionString ^
+        --output tsv') DO SET COSMOS_DB_CONNECTION_STRING=%X
+```
+
+---
+
 Bu değişkenler, Azure CLı komutlarından alınan değerlere ayarlanır. Her komut, döndürülen JSON yükünün bağlantı dizesini ayıklamak için bir JMESPath sorgusu kullanır. Bağlantı dizeleri de kullanılarak görüntülenir, `echo` böylece başarıyla alındığını doğrulayabilirsiniz.
 
 ### <a name="update-your-function-app-settings"></a>İşlev uygulaması ayarlarınızı güncelleştirme
 
 Sonra, bağlantı dizesi değerlerini Azure Işlevleri hesabınızdaki uygulama ayarlarına aktarmak için aşağıdaki komutu kullanın:
+
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```azurecli-interactive
 az functionapp config appsettings set \
@@ -200,6 +326,20 @@ az functionapp config appsettings set \
         CosmosDBConnectionString=$COSMOS_DB_CONNECTION_STRING
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli
+az functionapp config appsettings set ^
+    --resource-group %RESOURCE_GROUP% ^
+    --name %FUNCTION_APP% ^
+    --settings ^
+        AzureWebJobsStorage=%AZURE_WEB_JOBS_STORAGE% ^
+        EventHubConnectionString=%EVENT_HUB_CONNECTION_STRING% ^
+        CosmosDBConnectionString=%COSMOS_DB_CONNECTION_STRING%
+```
+
+---
+
 Azure kaynaklarınız artık oluşturulmuştur ve birlikte düzgün çalışacak şekilde yapılandırılmıştır.
 
 ## <a name="create-and-test-your-functions"></a>İşlevlerinizi oluşturma ve test etme
@@ -208,14 +348,27 @@ Ardından, yerel makinenizde bir proje oluşturacak, Java kodunu ekleyecek ve te
 
 Kaynaklarınızın oluşturulması için Cloud Shell kullandıysanız, Azure 'a yerel olarak Bağlanmayacağız. Bu durumda, `az login` tarayıcı tabanlı oturum açma işlemini başlatmak için komutunu kullanın. Gerekirse, varsayılan aboneliği, `az account set --subscription` ardından ABONELIK kimliği ile ayarlayın. Son olarak, yerel makinenizde bazı ortam değişkenlerini yeniden oluşturmak için aşağıdaki komutları çalıştırın. `<value>`Yer tutucuları, daha önce kullandığınız değerlerle değiştirin.
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```bash
 RESOURCE_GROUP=<value>
 FUNCTION_APP=<value>
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+set RESOURCE_GROUP=<value>
+set FUNCTION_APP=<value>
+```
+
+---
+
 ### <a name="create-a-local-functions-project"></a>Yerel işlevler projesi oluşturma
 
 Bir işlevler projesi oluşturmak ve gerekli bağımlılıkları eklemek için aşağıdaki Maven komutunu kullanın.
+
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```bash
 mvn archetype:generate --batch-mode \
@@ -227,6 +380,20 @@ mvn archetype:generate --batch-mode \
     -DartifactId=telemetry-functions
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+mvn archetype:generate --batch-mode ^
+    -DarchetypeGroupId=com.microsoft.azure ^
+    -DarchetypeArtifactId=azure-functions-archetype ^
+    -DappName=%FUNCTION_APP% ^
+    -DresourceGroup=%RESOURCE_GROUP% ^
+    -DgroupId=com.example ^
+    -DartifactId=telemetry-functions
+```
+
+---
+
 Bu komut bir klasör içinde birkaç dosya oluşturur `telemetry-functions` :
 
 * `pom.xml`Maven ile kullanım için bir dosya
@@ -237,18 +404,39 @@ Bu komut bir klasör içinde birkaç dosya oluşturur `telemetry-functions` :
 
 Derleme hatalarını önlemek için, test dosyalarını silmeniz gerekir. Yeni proje klasörüne gitmek ve test klasörünü silmek için aşağıdaki komutları çalıştırın:
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```bash
 cd telemetry-functions
 rm -r src/test
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+cd telemetry-functions
+rmdir /s /q src\test
+```
+
+---
+
 ### <a name="retrieve-your-function-app-settings-for-local-use"></a>Yerel kullanım için işlev uygulaması ayarlarınızı alma
 
 Yerel test için, işlev projenizin Bu öğreticide daha önce Azure 'daki işlev uygulamanıza eklediğiniz bağlantı dizeleri gerekir. Bulutta depolanan tüm işlev uygulaması ayarlarını alan ve bunları dosyanıza ekleyen aşağıdaki Azure Functions Core Tools komutunu kullanın `local.settings.json` :
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```bash
 func azure functionapp fetch-app-settings $FUNCTION_APP
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+func azure functionapp fetch-app-settings %FUNCTION_APP%
+```
+
+---
 
 ### <a name="add-java-code"></a>Java kodu ekle
 
@@ -394,10 +582,21 @@ Artık işlevleri yerel olarak oluşturup çalıştırabilir ve Azure Cosmos DB 
 
 İşlevleri derlemek ve çalıştırmak için aşağıdaki Maven komutlarını kullanın:
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```bash
 mvn clean package
 mvn azure-functions:run
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+mvn clean package
+mvn azure-functions:run
+```
+
+---
 
 Bazı derleme ve başlangıç iletilerinden sonra, işlevlerin her çalıştırılışında aşağıdaki örneğe benzer bir çıktı görürsünüz:
 
@@ -422,9 +621,19 @@ Son olarak, uygulamanızı Azure 'a dağıtabilir ve yerel olarak olduğu şekil
 
 Aşağıdaki komutu kullanarak projenizi Azure 'a dağıtın:
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```bash
 mvn azure-functions:deploy
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+mvn azure-functions:deploy
+```
+
+---
 
 İşlevleriniz artık Azure 'da çalışır ve Azure Cosmos DB verileri birikmeye devam eder. Dağıtılmış işlev uygulamanızı Azure portal görüntüleyebilir ve aşağıdaki ekran görüntülerinde gösterildiği gibi bağlı Application Insights kaynağı aracılığıyla uygulama telemetrisini görüntüleyebilirsiniz:
 
@@ -440,9 +649,19 @@ mvn azure-functions:deploy
 
 Bu öğreticide oluşturduğunuz Azure kaynaklarıyla işiniz bittiğinde aşağıdaki komutu kullanarak silebilirsiniz:
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```azurecli-interactive
 az group delete --name $RESOURCE_GROUP
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli
+az group delete --name %RESOURCE_GROUP%
+```
+
+---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

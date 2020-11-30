@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
-ms.openlocfilehash: d98f2390be3b3f4b3770125185cb33daa5ff6371
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: e2d87d4322ac6b91a19a4775c23ceec75d528030
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93143648"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325341"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>İçerik denetleme incelemeleri, iş akışları ve işler
 
@@ -26,7 +26,7 @@ Content Moderator, gerçek dünyada senaryolar için en iyi denetleme sürecini 
 İnceleme içinde içerik gözden geçirme aracına yüklenir. Panoda, Pano üzerinde **gözden geçir** sekmesinde bulunan içerik türü ' ne tıklayarak bu görünümü görüntüleyebilirsiniz. İnceleme ekranından, uygulanan etiketleri değiştirebilir ve kendi özel etiketlerinizi uygun şekilde uygulayabilirsiniz. Bir gözden geçirme gönderdiğinizde, sonuçlar belirtilen geri çağırma uç noktasına gönderilir ve içerik siteden kaldırılır.
 
 > [!div class="mx-imgBorder"]
-> ![Inceleme sekmesi seçiliyken araç sitesini gözden geçir](./Review-Tool-user-Guide/images/review-tab.png)
+> ![Gözden geçirme açılır menüsü vurgulanır. Bu içerik türlerini gösterir: görüntü, metin ve video.](./Review-Tool-user-Guide/images/review-tab.png)
 
 ### <a name="manage-reviews"></a>İncelemeleri yönetme
 
@@ -40,7 +40,7 @@ Her incelemede üç noktalı **Eylemler** düğmesi İnceleme ekranına gitmeniz
 Gözden geçirme durumu, Etiketler, içerik türü, alt takımlar, atanan kullanıcılar ve oluşturulma/değiştirilme tarihi gibi çeşitli kategorilere göre İncelemeleri sıralamak için **arama** araç çubuğunu kullanın.
 
 > [!div class="mx-imgBorder"]
-> ![Inceleme sekmesi seçiliyken araç sitesini gözden geçir](./Review-Tool-user-Guide/images/review-search.png)
+> ![Arama araç çubuğu görüntülenir. Inceleme durumu ve etiketleri gibi arama ölçütlerini girmeye yönelik çeşitli Birleşik giriş kutularına sahiptir.](./Review-Tool-user-Guide/images/review-search.png)
 
 İncelemeleri oluşturmaya başlamak için [İnceleme aracı kılavuzuna](./review-tool-user-guide/review-moderated-images.md) bakın veya bunu programlı olarak nasıl yapacağınızı öğrenmek için [REST API kılavuzuna](./try-review-api-review.md) bakın.
 
@@ -50,7 +50,7 @@ Bir iş akışı, içerik için bulut tabanlı özelleştirilmiş bir filtredir.
 
 ### <a name="view-workflows"></a>İş akışlarını görüntüle
 
-Mevcut iş akışlarınızı görüntülemek için [İnceleme aracına](https://contentmoderator.cognitive.microsoft.com/) gidin ve **yönetici**  >  **iş akışları** ' nı seçin.
+Mevcut iş akışlarınızı görüntülemek için [İnceleme aracına](https://contentmoderator.cognitive.microsoft.com/) gidin ve **yönetici**  >  **iş akışları**' nı seçin.
 
 > [!div class="mx-imgBorder"]
 > ![Varsayılan iş akışı](images/default-workflow-list.png)

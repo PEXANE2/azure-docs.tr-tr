@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: 0361ba7bc67948c25b842a3fb7406d2999fdd725
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87d7d4676c604ca7219b7580eb3ce585282a7f11
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530621"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327249"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Işlevleri dağıtım Yuvaları
 
@@ -57,7 +57,38 @@ Aşağıdaki noktaları göz önünde bulundurun:
 
 ## <a name="manage-settings"></a>Ayarları yönetme
 
-[!INCLUDE [app-service-deployment-slots-settings](../../includes/app-service-deployment-slots-settings.md)]
+Bazı yapılandırma ayarları yuvaya özeldir. Aşağıdaki listede, yuvaları takas ettiğinizde hangi ayarların değiştirileceği ve aynı kaldığı listelenmiştir.
+
+**Yuvaya özgü ayarlar**:
+
+* Yayımlama uç noktaları
+* Özel etki alanı adları
+* Genel olmayan sertifikalar ve TLS/SSL ayarları
+* Ölçek ayarları
+* WebJobs zamanlayıcılar
+* IP kısıtlamaları
+* Her zaman açık
+* Tanılama ayarları
+* Çıkış noktaları arası kaynak paylaşımı (CORS)
+
+**Yuvaya özgü olmayan ayarlar**:
+
+* Çerçeve sürümü, 32/64 bit, Web Yuvaları gibi genel ayarlar
+* Uygulama ayarları (bir yuvayı kontrol etmek için yapılandırılabilir)
+* Bağlantı dizeleri (bir yuvayı kontrol etmek için yapılandırılabilir)
+* İşleyici eşlemeleri
+* Ortak sertifikalar
+* WebJobs içeriği
+* Karma bağlantılar *
+* Sanal Ağ tümleştirmesi *
+* Hizmet uç noktaları *
+* Azure Content Delivery Network *
+
+Yıldız işareti (*) ile işaretlenen özellikler, takas edilmemiş olarak planlanmaktadır. 
+
+> [!NOTE]
+> Takas edilmemiş ayarlara uygulanan bazı uygulama ayarları da takas edilmez. Örneğin, Tanılama ayarları değiştirilmediğinden, ve gibi ilgili uygulama ayarları, `WEBSITE_HTTPLOGGING_RETENTION_DAYS` `DIAGNOSTICS_AZUREBLOBRETENTIONDAYS` yuva ayarı olarak gösterilmese bile, aynı zamanda takas edilmez.
+>
 
 ### <a name="create-a-deployment-setting"></a>Dağıtım ayarı oluşturma
 
@@ -73,15 +104,15 @@ Bir dağıtım ayarı oluşturmak için aşağıdaki adımları kullanın:
 
 1. **Yapılandırma**' yı seçin ve ardından geçerli yuvaya eklemek istediğiniz ayar adını seçin.
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-configure-deployment-slot.png" alt-text="Azure portal yuvaları bulun." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-configure-deployment-slot.png" alt-text="Azure portal bir yuva için uygulama ayarını yapılandırın." border="true":::
 
 1. **Dağıtım yuvası ayarı**' nı seçin ve ardından **Tamam**' ı seçin.
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slot-setting.png" alt-text="Azure portal yuvaları bulun." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slot-setting.png" alt-text="Dağıtım yuvası ayarını yapılandırın." border="true":::
 
 1. Ayar bölümü kaybolduktan sonra değişiklikleri tutmak için **Kaydet** ' i seçin
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-save-deployment-slot-setting.png" alt-text="Azure portal yuvaları bulun." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-save-deployment-slot-setting.png" alt-text="Dağıtım yuvası ayarını kaydedin." border="true":::
 
 ## <a name="deployment"></a>Dağıtım
 
@@ -102,11 +133,11 @@ Tüm yuvalar, üretim yuvasında aynı çalışan sayısına göre ölçeklenir.
 
 1. **Dağıtım yuvaları**' nı seçin ve **+ yuva Ekle**' yi seçin.
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slots-add.png" alt-text="Azure portal yuvaları bulun." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slots-add.png" alt-text="Azure Işlevleri dağıtım yuvası ekleyin." border="true":::
 
 1. Yuvanın adını yazın ve **Ekle**' yi seçin.
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slots-add-name.png" alt-text="Azure portal yuvaları bulun." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slots-add-name.png" alt-text="Azure Işlevleri dağıtım yuvasını adlandırın." border="true":::
 
 ## <a name="swap-slots"></a>Takas Yuvaları
 
@@ -115,11 +146,11 @@ Yuvaları [CLI](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-
 1. İşlev uygulamasına gidin.
 1. **Dağıtım yuvaları**' nı seçin ve ardından **Değiştir**' i seçin.
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-swap-deployment-slot.png" alt-text="Azure portal yuvaları bulun." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-swap-deployment-slot.png" alt-text="' Yuva Ekle ' eylemi seçiliyken ' dağıtım yuvası ' sayfasını gösteren ekran görüntüsü." border="true":::
 
 1. Değiştirme için yapılandırma ayarlarını doğrulayın ve **değiştirme** 'yi seçin
     
-    :::image type="content" source="./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png" alt-text="Azure portal yuvaları bulun." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png" alt-text="Dağıtım yuvasını değiştirin." border="true":::
 
 Değiştirme işlemi yürütülürken işlem biraz zaman alabilir.
 
@@ -137,15 +168,15 @@ Bir yuvayı [CLI](/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#a
 
 1. **Sil**’i seçin.
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot.png" alt-text="Azure portal yuvaları bulun." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot.png" alt-text="' Sil ' eylemi seçiliyken ' genel bakış ' sayfasını gösteren ekran görüntüsü." border="true":::
 
 1. Silmek istediğiniz dağıtım yuvasının adını yazın ve ardından **Sil**' i seçin.
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot-details.png" alt-text="Azure portal yuvaları bulun." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot-details.png" alt-text="Azure portal dağıtım yuvasını silin." border="true":::
 
 1. Silme onayı bölmesini kapatın.
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slot-deleted.png" alt-text="Azure portal yuvaları bulun." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slot-deleted.png" alt-text="Dağıtım yuvası silme onayı." border="true":::
 
 ## <a name="automate-slot-management"></a>Yuva yönetimini otomatikleştirin
 
@@ -170,11 +201,11 @@ Bir yuvanın App Service planını değiştirmek için aşağıdaki adımları k
 
     :::image type="content" source="./media/functions-deployment-slots/functions-navigate-slots.png" alt-text="Azure portal yuvaları bulun." border="true":::
 
-1. **App Service planı**altında **App Service planı değiştir**' i seçin.
+1. **App Service planı** altında **App Service planı değiştir**' i seçin.
 
 1. Yükseltmek istediğiniz planı seçin veya yeni bir plan oluşturun.
 
-    :::image type="content" source="./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-apply.png" alt-text="Azure portal yuvaları bulun." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-apply.png" alt-text="Azure portal App Service planını değiştirin." border="true":::
 
 1. **Tamam**’ı seçin.
 

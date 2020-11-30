@@ -3,12 +3,12 @@ title: Azure VM yedeklemesi hakkında
 description: Bu makalede, Azure Backup hizmetinin Azure sanal makinelerini nasıl yedeklediği ve en iyi yöntemleri nasıl izledikleri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 30d27f3f9c559fd149bd45f303127e0eec40b878
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 7fa47b83eb8fa06c028079cf47ea0cb46df31860
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173846"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325239"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM yedeklemesine genel bakış
 
@@ -51,7 +51,7 @@ Azure Backup ile Azure VM 'Leri yedeklerken, sanal makineler Depolama Hizmeti Ş
 
 **Şifreleme** | **Ayrıntılar** | **Destek**
 --- | --- | ---
-**SSE** | SSE ile Azure Storage, verileri depolamadan önce otomatik olarak şifreleyerek, bekleyen şifreleme sağlar. Azure Storage, verileri almadan önce de verilerin şifresini çözer. Azure Backup iki tür Depolama Hizmeti Şifrelemesi sahip VM 'lerin yedeklerini destekler:<li> **Anahtar, platform tarafından yönetilen anahtarlarla SSE**: Bu şifreleme, sanal makinelerinizdeki tüm diskler için varsayılan olarak kullanılır. Daha fazla bilgi için [buraya](../virtual-machines/windows/disk-encryption.md#platform-managed-keys)bakın.<li> **Müşteri tarafından yönetilen anahtarlarla SSE**. CMK ile diskleri şifrelemek için kullanılan anahtarları yönetirsiniz. Daha fazla bilgi için [buraya](../virtual-machines/windows/disk-encryption.md#customer-managed-keys)bakın. | Azure Backup, Azure VM 'lerinin Rest şifrelemesi için SSE kullanır.
+**SSE** | SSE ile Azure Storage, verileri depolamadan önce otomatik olarak şifreleyerek, bekleyen şifreleme sağlar. Azure Storage, verileri almadan önce de verilerin şifresini çözer. Azure Backup iki tür Depolama Hizmeti Şifrelemesi sahip VM 'lerin yedeklerini destekler:<li> **Anahtar, platform tarafından yönetilen anahtarlarla SSE**: Bu şifreleme, sanal makinelerinizdeki tüm diskler için varsayılan olarak kullanılır. Daha fazla bilgi için [buraya](../virtual-machines/disk-encryption.md#platform-managed-keys)bakın.<li> **Müşteri tarafından yönetilen anahtarlarla SSE**. CMK ile diskleri şifrelemek için kullanılan anahtarları yönetirsiniz. Daha fazla bilgi için [buraya](../virtual-machines/disk-encryption.md#customer-managed-keys)bakın. | Azure Backup, Azure VM 'lerinin Rest şifrelemesi için SSE kullanır.
 **Azure Disk Şifrelemesi** | Azure disk şifrelemesi, hem işletim sistemini hem de Azure VM 'Leri için veri disklerini şifreler.<br/><br/> Azure disk şifrelemesi, bir anahtar kasasında gizli dizi olarak korunmuş olan BitLocker şifreleme anahtarları (BEKs) ile tümleşir. Azure disk şifrelemesi Ayrıca Azure Key Vault anahtar şifreleme anahtarları (KEKs) ile tümleşir. | Azure Backup, yalnızca BEKs ile şifrelenen yönetilen ve yönetilmeyen Azure VM 'lerinin yedeklenmesini destekler, ya da KEKs ile birlikte BEKs.<br/><br/> Hem BEKs hem de KEKs yedeklenir ve şifrelenir.<br/><br/> KEKs ve BEKs yedeklendiği için, gerekli izinlere sahip kullanıcılar anahtarları ve gizli dizileri gerekirse anahtar kasasına geri yükleyebilir. Bu kullanıcılar şifreli VM 'yi de kurtarabilir.<br/><br/> Şifrelenmiş anahtarlar ve gizlilikler yetkisiz kullanıcılar veya Azure tarafından okunamaz.
 
 Yönetilen ve yönetilmeyen Azure VM 'Leri için yedekleme, yalnızca BEKs ile şifrelenen VM 'Leri veya KEKs ile birlikte BEKs ile şifrelenmiş VM 'Leri destekler.
@@ -76,20 +76,20 @@ Azure Backup, anlık görüntüleri yedekleme zamanlamalarına göre alır.
 
 Aşağıdaki tabloda farklı türde anlık görüntü tutarlılığı açıklanmaktadır:
 
-**Anlık Görüntü** | **Ayrıntılar** | **Kurtarma** | **Dikkate Alınacak Nokta**
+**Görüntüye** | **Ayrıntılar** | **Kurtarma** | **Dikkate Alınacak Nokta**
 --- | --- | --- | ---
 **Uygulamayla tutarlı** | Uygulamayla tutarlı yedeklemeler bellek içeriğini ve bekleyen g/ç işlemlerini yakalar. Uygulamayla tutarlı anlık görüntüler, bir yedekleme gerçekleşmeden önce uygulama verilerinin tutarlılığını sağlamak için bir VSS yazıcısı (veya Linux için ön betikler öncesi) kullanır. | VM 'yi uygulamayla tutarlı bir anlık görüntüyle kurtarırken, VM önyüklenir. Veri bozulması veya kaybı yok. Uygulamalar tutarlı bir durumda başlar. | Windows: tüm VSS yazıcıları başarılı oldu<br/><br/> Linux: ön/son betik yapılandırma ve başarılı
 **Dosya sistemiyle tutarlı** | Dosya sistemiyle tutarlı yedeklemeler, tüm dosyaların bir anlık görüntüsünü aynı anda alarak tutarlılık sağlar.<br/><br/> | Bir sanal makineyi dosya sistemiyle tutarlı bir anlık görüntüyle kurtarırken, VM önyüklenir. Veri bozulması veya kaybı yok. Geri yüklenen verilerin tutarlı olduğundan emin olmak için uygulamaların kendi "düzeltilmesi" mekanizmasını uygulaması gerekir. | Windows: bazı VSS yazıcıları başarısız oldu <br/><br/> Linux: varsayılan (ön/sonrası betikler yapılandırılmamışsa veya başarısız olursa)
 **Kilitlenme ile tutarlı** | Kilitlenme tutarlı anlık görüntüler genellikle bir Azure VM yedekleme sırasında kapatılırsa oluşur. Yalnızca yedekleme sırasında diskte bulunan veriler yakalanır ve yedeklenir. | , Bozulma hatalarını gidermeye yönelik bir disk denetimi tarafından sanal makine önyükleme işlemiyle başlar. Kilitlenme kaybolmadan önce diske aktarılmayan bellek içi veriler veya yazma işlemleri kaybedilir. Uygulamalar kendi veri doğrulamasını uygular. Örneğin, bir veritabanı uygulaması doğrulama için işlem günlüğünü kullanabilir. İşlem günlüğünde veritabanında bulunmayan girişler varsa, veritabanı yazılımı veriler tutarlı olana kadar işlemleri geri kaydeder. | VM kapalı (durdurulmuş/serbest bırakıldı) durumunda.
 
 >[!NOTE]
-> Sağlama durumu **başarılı**olursa, Azure Backup dosya sistemine tutarlı yedeklemeler alır. Sağlama durumu **kullanılamıyorsa** veya **başarısız**olursa, kilitlenmeyle tutarlı yedeklemeler alınır. Sağlama durumu **oluşturuyor** veya **silinirse**, Azure Backup işlemleri yeniden deniyor demektir.
+> Sağlama durumu **başarılı** olursa, Azure Backup dosya sistemine tutarlı yedeklemeler alır. Sağlama durumu **kullanılamıyorsa** veya **başarısız** olursa, kilitlenmeyle tutarlı yedeklemeler alınır. Sağlama durumu **oluşturuyor** veya **silinirse**, Azure Backup işlemleri yeniden deniyor demektir.
 
 ## <a name="backup-and-restore-considerations"></a>Yedekleme ve geri yükleme konusunda dikkat edilmesi gerekenler
 
 **Dikkate Alınacak Nokta** | **Ayrıntılar**
 --- | ---
-**Disk** | VM disklerinin yedeklenmesi paralel. Örneğin, bir VM 'nin dört diski varsa, yedekleme hizmeti dört diski paralel olarak yedeklemeye çalışır. Yedekleme artımlı (yalnızca değiştirilen veriler).
+**Dis** | VM disklerinin yedeklenmesi paralel. Örneğin, bir VM 'nin dört diski varsa, yedekleme hizmeti dört diski paralel olarak yedeklemeye çalışır. Yedekleme artımlı (yalnızca değiştirilen veriler).
 **Zamanlama** |  Yedekleme trafiğini azaltmak için günün farklı saatlerinde farklı VM 'Leri yedekleyin ve zamanların çakışmadığından emin olun. VM'lerin aynı anda yedeklenmesi trafik yoğunluğuna neden olur.
 **Yedeklemeler hazırlanıyor** | Yedeklemenin hazırlanması için gereken süreyi göz önünde bulundurun. Hazırlık süresi, yedekleme uzantısının yüklenmesi veya güncelleştirilmesi ve yedekleme zamanlamasına göre bir anlık görüntünün tetiklenmesi adımlarını kapsar.
 **Veri aktarımı** | Önceki yedeklemeden artımlı değişiklikleri belirlemek için Azure Backup gereken süreyi göz önünde bulundurun.<br/><br/> Azure Backup, artımlı yedekleme sırasında değişiklikleri belirlemek için bloğun sağlama toplamını hesaplar. Değiştirilen bloklar kasaya aktarılmak üzere işaretlenir. Hizmet, aktarılacak veri miktarını en aza indirmek için belirlenen blokları analiz eder. Azure Backup, değiştirilen tüm blokları değerlendirdikten sonra değişiklikleri kasaya aktarır.<br/><br/> Anlık görüntünün alınması ile kasaya kopyalanması arasında bir gecikme olabilir. Yoğun zamanlarda, anlık görüntülerin kasaya aktarılması sekiz saate kadar sürebilir. Günlük yedeklemeler için bir VM'nin yedeklenme süresi 24 saatten kısa olacaktır.
@@ -136,7 +136,7 @@ Benzer şekilde, yedekleme depolama alanı faturanız, her kurtarma noktasındak
 
 Örneğin, her biri en fazla 32 TB boyutunda iki ek veri diskine sahip olan a2 standart boyutlu bir VM alın. Aşağıdaki tabloda, bu disklerin her birinde depolanan gerçek veriler gösterilmektedir:
 
-**Disk** | **En büyük boyut** | **Gerçek veriler var**
+**Dis** | **En büyük boyut** | **Gerçek veriler var**
 --- | --- | ---
 İşletim sistemi diski | 32 TB | 17 GB
 Yerel/geçici disk | 135 GB | 5 GB (yedeklemeye dahil değil)

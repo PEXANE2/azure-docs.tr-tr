@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 97cdc4ad0b1d5e7dfb6642fa0163f810be5d7171
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: ad990f10c611c5ca5bb8a8d053ee4d59b6f05c83
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966930"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327007"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>IoT Edge dağıtımlarından günlükleri alma
 
@@ -50,10 +50,10 @@ Bu yöntem, aşağıdaki şemaya sahip bir JSON yükünü kabul eder:
           {
              "id": "regex string",
              "filter": {
-                "tail": int,
-                "since": int,
-                "until": int,
-                "loglevel": int,
+                "tail": "int",
+                "since": "int",
+                "until": "int",
+                "loglevel": "int",
                 "regex": "regex string"
              }
           }
@@ -63,7 +63,7 @@ Bu yöntem, aşağıdaki şemaya sahip bir JSON yükünü kabul eder:
     }
 ```
 
-| Ad | Tür | Description |
+| Ad | Tür | Açıklama |
 |-|-|-|
 | schemaVersion | string | Ayarla `1.0` |
 | öğeler | JSON dizisi | `id`Ve tanımlama gruplarını içeren bir dizi `filter` . |
@@ -82,7 +82,7 @@ Bu yöntem, aşağıdaki şemaya sahip bir JSON yükünü kabul eder:
 
 Günlüklerin başarılı bir şekilde alınması bir **"Status": 200** ve ardından, isteğiniz içinde belirttiğiniz ayarlara göre filtrelenmiş, modülünden alınan günlükleri içeren bir yük izler.
 
-Örnek:
+Örneğin:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'GetModuleLogs' -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \
@@ -123,7 +123,7 @@ Azure portal Yöntem adı `GetModuleLogs` ve AŞAĞıDAKI JSON yüküyle yöntem
 
 ![Azure portal ' GetModuleLogs ' doğrudan metodunu çağır](./media/how-to-retrieve-iot-edge-logs/invoke-get-module-logs.png)
 
-Ayrıca, sıkıştırılmış bir yanıtı işlemek için, CLı çıkışını [gzip](https://en.wikipedia.org/wiki/Gzip)gibi Linux yardımcı programlarına de kanal oluşturarak yapabilirsiniz. Örnek:
+Ayrıca, sıkıştırılmış bir yanıtı işlemek için, CLı çıkışını [gzip](https://en.wikipedia.org/wiki/Gzip)gibi Linux yardımcı programlarına de kanal oluşturarak yapabilirsiniz. Örneğin:
 
 ```azurecli
 az iot hub invoke-module-method \
@@ -159,10 +159,10 @@ Bu yöntem, "sasUrl" anahtarının eklenmesiyle **GetModuleLogs** ile benzer bir
           {
              "id": "regex string",
              "filter": {
-                "tail": int,
-                "since": int,
-                "until": int,
-                "loglevel": int,
+                "tail": "int",
+                "since": "int",
+                "until": "int",
+                "loglevel": "int",
                 "regex": "regex string"
              }
           }
@@ -172,7 +172,7 @@ Bu yöntem, "sasUrl" anahtarının eklenmesiyle **GetModuleLogs** ile benzer bir
     }
 ```
 
-| Ad | Tür | Description |
+| Ad | Tür | Açıklama |
 |-|-|-|
 | sasURL | dize (URI) | [Azure Blob depolama kapsayıcısına yazma erişimi olan paylaşılan erişim imzası URL 'si](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer). |
 
@@ -186,13 +186,13 @@ Günlükleri karşıya yükleme başarılı bir isteği, **"durum": 200** ve ard
     }
 ```
 
-| Ad | Tür | Description |
+| Ad | Tür | Açıklama |
 |-|-|-|
 | durum | string | Bunlardan biri,,, `NotStarted` `Running` `Completed` `Failed` veya `Unknown` . |
 | message | string | Hata olduğunda ileti, aksi halde boş dize. |
 | correlationId | string   | Karşıya yükleme isteğinin durumunu sorgulama KIMLIĞI. |
 
-Örnek:
+Örneğin:
 
 Aşağıdaki çağrı, sıkıştırılmış JSON biçiminde tüm modüllerden son 100 günlük satırını karşıya yükler:
 
@@ -289,7 +289,7 @@ Bu yöntem, aşağıdaki şemaya sahip bir JSON yükünü kabul eder:
     }
 ```
 
-| Ad | Tür | Description |
+| Ad | Tür | Açıklama |
 |-|-|-|
 | schemaVersion | string | Ayarla `1.0` |
 | sasURL | dize (URI) | [Azure Blob depolama kapsayıcısına yazma erişimi olan paylaşılan erişim Imzası URL 'SI](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |
@@ -310,13 +310,13 @@ Günlükleri karşıya yükleme başarılı olan bir istek, **"durum": 200** ve 
     }
 ```
 
-| Ad | Tür | Description |
+| Ad | Tür | Açıklama |
 |-|-|-|
 | durum | string | Bunlardan biri,,, `NotStarted` `Running` `Completed` `Failed` veya `Unknown` . |
 | message | string | Hata olduğunda ileti, aksi halde boş dize. |
 | correlationId | string   | Karşıya yükleme isteğinin durumunu sorgulama KIMLIĞI. |
 
-Örnek:
+Örneğin:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'UploadSupportBundle' -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \
@@ -368,13 +368,13 @@ Günlükleri karşıya yükleme başarılı olan bir istek, **"durum": 200** ve 
     }
 ```
 
-| Ad | Tür | Description |
+| Ad | Tür | Açıklama |
 |-|-|-|
 | durum | string | Bunlardan biri,,, `NotStarted` `Running` `Completed` `Failed` veya `Unknown` . |
 | message | string | Hata olduğunda ileti, aksi halde boş dize. |
 | correlationId | string   | Karşıya yükleme isteğinin durumunu sorgulama KIMLIĞI. |
 
-Örnek:
+Örneğin:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'GetTaskStatus' -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \

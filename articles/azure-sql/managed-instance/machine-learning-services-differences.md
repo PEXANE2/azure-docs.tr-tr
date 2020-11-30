@@ -12,12 +12,12 @@ ms.author: garye
 ms.reviewer: sstein, davidph
 manager: cgronlun
 ms.date: 10/26/2020
-ms.openlocfilehash: adf454ac697f8cabf4256ebfc5baa5d0d1c76264
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c806c0a13f9f5f13588b780054d1f285beb44802
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782476"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324542"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-managed-instance-and-sql-server"></a>Azure SQL Yönetilen Örneği ve SQL Server içindeki Machine Learning Services özellikleri arasındaki temel farklar
 
@@ -39,7 +39,7 @@ Hizmet düzeyi hedefi (SLO) güncelleştirmesi söz konusu olduğunda, SLO 'yu g
 
 ## <a name="language-support"></a>Dil desteği
 
-SQL yönetilen örneği 'nde Machine Learning Services ve hem Python hem de R [genişletilebilirlik çerçevesini](/sql/advanced-analytics/concepts/extensibility-framework)destekler SQL Server. Temel farklılıklar şunlardır:
+SQL yönetilen örneği 'nde Machine Learning Services ve hem Python hem de R [genişletilebilirlik çerçevesini](/sql/advanced-analytics/concepts/extensibility-framework)destekler SQL Server. En önemli farklar şunlardır:
 
 - Python ve R 'nin ilk sürümleri, SQL yönetilen örneği ve SQL Server Machine Learning Services arasında farklıdır:
 
@@ -55,7 +55,7 @@ SQL yönetilen örneği 'nde Machine Learning Services ve hem Python hem de R [g
 Python ve R paketi yönetimi, SQL yönetilen örneği ve SQL Server arasında farklı şekilde çalışır. Bu farklılıklar şunlardır:
 
 - Dış çalışma zamanları (Java gibi) bağlı olan veya yükleme ya da kullanım için işletim sistemi API 'Lerine erişime ihtiyacı olan paketler için destek yoktur.
-- Paketler, giden ağ çağrılarını gerçekleştirebilir (önizlemede daha önce değişiklik). Giden ağ çağrılarını etkinleştirmek için [ağ güvenlik grubu](/azure/virtual-network/network-security-groups-overview) düzeyinde doğru giden güvenlik kurallarını ayarlayabilirsiniz.
+- Paketler, giden ağ çağrılarını gerçekleştirebilir (önizlemede daha önce değişiklik). Giden ağ çağrılarını etkinleştirmek için [ağ güvenlik grubu](../../virtual-network/network-security-groups-overview.md) düzeyinde doğru giden güvenlik kurallarını ayarlayabilirsiniz.
 
 Python ve R paketlerinin yönetilmesi hakkında daha fazla bilgi için bkz.:
 

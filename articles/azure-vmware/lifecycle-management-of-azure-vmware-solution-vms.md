@@ -3,12 +3,12 @@ title: Azure VMware Çözüm VM 'lerinin yaşam döngüsü yönetimi
 description: Azure VMware Çözüm sanal makinelerinizin yaşam döngüsünün tüm yönlerini Microsoft Azure yerel araçlarla yönetmeyi öğrenin.
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: 5280d362c1e7b1bf33579d051c4cc11adb1b7e59
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ff1032900fa936895f3adfcb0d8a872f24948aca
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545777"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326820"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Azure VMware Çözüm VM 'lerinin yaşam döngüsü yönetimi
 
@@ -61,7 +61,7 @@ Azure Otomasyonu 'ndaki Azure Güncelleştirme Yönetimi, karma bir ortamda Wind
 
 2. **Log Analytics çalışma alanı** , Log Analytics Aracısı veya uzantıları kullanılarak günlük toplama ve performans sayacı toplamayı mümkün. Log Analytics çalışma alanınızı oluşturmak için, bkz. [Azure portal Log Analytics çalışma alanı oluşturma](../azure-monitor/learn/quick-create-workspace.md). İsterseniz, [CLI](../azure-monitor/learn/quick-create-workspace-cli.md), [PowerShell](../azure-monitor/platform/powershell-workspace-configuration.md)veya [Azure Resource Manager şablonu](../azure-monitor/samples/resource-manager-workspace.md)aracılığıyla da bir çalışma alanı oluşturabilirsiniz.
 
-3. Sanal makinelerinize yönelik Azure Güncelleştirme Yönetimi etkinleştirmek için bkz. [Otomasyon hesabından güncelleştirme yönetimi etkinleştirme](../automation/update-management/update-mgmt-enable-automation-account.md). İşlemde, Log Analytics çalışma alanınızı Otomasyon hesabınızla bağlayacaksınız. 
+3. Sanal makinelerinize yönelik Azure Güncelleştirme Yönetimi etkinleştirmek için bkz. [Otomasyon hesabından güncelleştirme yönetimi etkinleştirme](../automation/update-management/enable-from-automation-account.md). İşlemde, Log Analytics çalışma alanınızı Otomasyon hesabınızla bağlayacaksınız. 
  
 4. Azure Güncelleştirme Yönetimi VM 'Leri ekledikten sonra, [güncelleştirmeleri sanal makinelere dağıtabilir ve sonuçları gözden](../automation/update-management/deploy-updates.md)geçirebilirsiniz. 
 

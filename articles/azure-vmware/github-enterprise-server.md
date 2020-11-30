@@ -3,12 +3,12 @@ title: Azure VMware çözümünüz özel bulutunuzda GitHub Enterprise Server '�
 description: Azure VMware Çözüm özel bulutunuzda GitHub Enterprise Server 'ı ayarlamayı öğrenin.
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: afce212416c7c12631a7f8d388dc991ed957736f
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 00b3acf721dd7f7a1a15bcd0d24eccf3ca27ff58
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91949318"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326922"
 ---
 # <a name="set-up-github-enterprise-server-on-your-azure-vmware-solution-private-cloud"></a>Azure VMware çözümünüz özel bulutunuzda GitHub Enterprise Server 'ı ayarlama
 
@@ -24,7 +24,13 @@ VMware ESXi/vSphere (OVA) için [GitHub Enterprise Server 'ın geçerli sürüm�
 
 :::image type="content" source="media/github-enterprise-server/github-options.png" alt-text="GitHub 'ı şirket içinde veya bulutta çalıştırmayı seçin.":::  
 
-:::image type="content" source="media/github-enterprise-server/deploy-ova-template.png" alt-text="GitHub 'ı şirket içinde veya bulutta çalıştırmayı seçin." (Eylemler) |
+:::image type="content" source="media/github-enterprise-server/deploy-ova-template.png" alt-text="OVA şablonunu dağıtın.":::  
+
+Yeni sanal makineniz için GitHubEnterpriseServer gibi tanınabilir bir ad sağlayın. Örnek yükseltildiğinde, bu ayrıntılar eski hale geldiğinde, sürüm ayrıntılarını VM adına eklemeniz gerekmez. Şimdilik tüm Varsayılanları seçin (bu ayrıntıları kısa süre içinde düzenleyeceğiz) ve OVA 'nın içeri aktarılmasını bekleyin.
+
+İçeri aktarıldıktan sonra, gereksinimlerinize göre [donanım yapılandırmasını ayarlayın](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#creating-the-github-enterprise-server-instance) . Örnek Senaryomuzda aşağıdaki yapılandırmaya ihtiyacımız olacak.
+
+| Kaynak | Standart Kurulum | Standart Kurulum + "Beta Özellikleri" (Eylemler) |
 | --- | --- | --- |
 | Sanal çekirdek | 4 | 8 |
 | Bellek | 32 GB | 61 GB |
@@ -35,11 +41,11 @@ Ancak gereksinimleriniz farklılık gösterebilir. [VMware 'de GitHub Enterprise
 
 ## <a name="configuring-the-github-enterprise-server-instance"></a>GitHub Enterprise Server örneğini yapılandırma
 
-:::image type="content" source="media/github-enterprise-server/install-github-enterprise.png" alt-text="GitHub 'ı şirket içinde veya bulutta çalıştırmayı seçin.":::  
+:::image type="content" source="media/github-enterprise-server/install-github-enterprise.png" alt-text="GitHub Enterprise 'ı yükler.":::  
 
 Yeni sağlanan sanal makine (VM) açık olduktan sonra, [tarayıcınızı kullanarak yapılandırın](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#configuring-the-github-enterprise-server-instance). Lisans dosyanızı karşıya yüklemeniz ve bir yönetim konsolu parolası ayarlamanız gerekir. Bu parolayı güvenli bir yerde yazdığınızdan emin olun.
 
-:::image type="content" source="media/github-enterprise-server/ssh-access.png" alt-text="GitHub 'ı şirket içinde veya bulutta çalıştırmayı seçin.":::    
+:::image type="content" source="media/github-enterprise-server/ssh-access.png" alt-text="Yönetim Kabuğu SSH aracılığıyla erişin.":::    
 
 En azından aşağıdaki adımları gerçekleştirmeniz önerilir:
 
@@ -47,11 +53,11 @@ En azından aşağıdaki adımları gerçekleştirmeniz önerilir:
 
 2. Güvenilen bir sertifika yetkilisi tarafından imzalanmış bir sertifikayı kullanabilmeniz için, [örneğiniz ÜZERINDEKI TLS 'Yi yapılandırın](https://docs.github.com/en/enterprise/admin/configuration/configuring-tls) .
 
-:::image type="content" source="media/github-enterprise-server/configuring-your-instance.png" alt-text="GitHub 'ı şirket içinde veya bulutta çalıştırmayı seçin.":::
+:::image type="content" source="media/github-enterprise-server/configuring-your-instance.png" alt-text="Örneğinizi yapılandırma.":::
 
-Ayarlarınızı uygulayın.  Örnek yeniden başlatıldıktan sonra, bir sonraki adımla devam ederek **GitHub işlemleri Için blob depolamayı**yapılandırabilirsiniz.
+Ayarlarınızı uygulayın.  Örnek yeniden başlatıldıktan sonra, bir sonraki adımla devam ederek **GitHub işlemleri Için blob depolamayı** yapılandırabilirsiniz.
 
-:::image type="content" source="media/github-enterprise-server/create-admin-account.png" alt-text="GitHub 'ı şirket içinde veya bulutta çalıştırmayı seçin.":::
+:::image type="content" source="media/github-enterprise-server/create-admin-account.png" alt-text="Yönetici hesabınızı oluşturun.":::
 
 Örnek yeniden başlatıldıktan sonra örnekte yeni bir yönetici hesabı oluşturun. Bu kullanıcının parolasını da bir yere göz önünde olduğunuzdan emin olun.
 
@@ -74,9 +80,9 @@ Ayarlarınızı uygulayın.  Örnek yeniden başlatıldıktan sonra, bir sonraki
 > [!NOTE]
 > GitHub eylemleri, [GitHub Enterprise Server sürüm 2,22 ' de şu anda sınırlı bir beta olarak sunulmaktadır](https://docs.github.com/en/enterprise/admin/github-actions).
 
-GitHub Enterprise Server 'da GitHub eylemlerini etkinleştirmek için dış BLOB depolama alanı gereklidir (Şu anda bir "Beta" özelliği olarak kullanılabilir). Bu dış BLOB depolama, yapıtları ve günlükleri depolamak için eylemler tarafından kullanılır. GitHub Enterprise Server 'daki eylemler, [Azure Blob depolamayı bir depolama sağlayıcısı](https://docs.github.com/en/enterprise/admin/github-actions/enabling-github-actions-and-configuring-storage#about-external-storage-requirements) (ve diğerlerinin bazıları) olarak destekler. Bu nedenle, BlobStorage [depolama hesabı türüne](../storage/common/storage-account-overview.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json#types-of-storage-accounts) sahip yeni bir Azure depolama hesabı sağlayacağız:
+GitHub Enterprise Server 'da GitHub eylemlerini etkinleştirmek için dış BLOB depolama alanı gereklidir (Şu anda bir "Beta" özelliği olarak kullanılabilir). Bu dış BLOB depolama, yapıtları ve günlükleri depolamak için eylemler tarafından kullanılır. GitHub Enterprise Server 'daki eylemler, [Azure Blob depolamayı bir depolama sağlayıcısı](https://docs.github.com/en/enterprise/admin/github-actions/enabling-github-actions-and-configuring-storage#about-external-storage-requirements) (ve diğerlerinin bazıları) olarak destekler. Bu nedenle, BlobStorage [depolama hesabı türüne](../storage/common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-storage-accounts) sahip yeni bir Azure depolama hesabı sağlayacağız:
 
-:::image type="content" source="media/github-enterprise-server/storage-account.png" alt-text="GitHub 'ı şirket içinde veya bulutta çalıştırmayı seçin.":::
+:::image type="content" source="media/github-enterprise-server/storage-account.png" alt-text="Azure Blob depolama hesabı sağlayın.":::
 
 Yeni BlobStorage kaynağının dağıtımı tamamlandıktan sonra, bağlantı dizesini kopyalayın ve (erişim anahtarları altında kullanılabilir) bir yere göz önünde yapın. Kısa süre içinde bu dizeye ihtiyacımız olacak.
 
@@ -91,9 +97,9 @@ Bu noktada, bir yönetici hesabıyla oluşturulmuş bir GitHub Enterprise Server
 
 İlk olarak, kümede yeni bir VM sağlayalim. [En son Ubuntu Server sürümünde](http://releases.ubuntu.com/20.04.1/)VM 'imizi temel alacağız.
 
-:::image type="content" source="media/github-enterprise-server/provision-new-vm.png" alt-text="GitHub 'ı şirket içinde veya bulutta çalıştırmayı seçin.":::
+:::image type="content" source="media/github-enterprise-server/provision-new-vm.png" alt-text="Yeni bir sanal makine sağlayın.":::
 
-:::image type="content" source="media/github-enterprise-server/provision-new-vm-2.png" alt-text="GitHub 'ı şirket içinde veya bulutta çalıştırmayı seçin.":::
+:::image type="content" source="media/github-enterprise-server/provision-new-vm-2.png" alt-text="Yeni bir VM sağlama adımı 2.":::
 
 VM oluşturulduktan sonra, BT 'yi kapatıp SSH aracılığıyla bağlayın.
 
@@ -152,7 +158,7 @@ Sonraki çalıştırma:
 
 Çıktıyı görmeniz gerekir: "blob depolama sağlıklı".
 
-GitHub eylemleri yapılandırıldığına göre, kullanıcılarınız için etkinleştirin. GitHub Enterprise Server Örneğiniz için yönetici olarak oturum açın ve ![ roket simgesini seçin.](media/github-enterprise-server/rocket-icon.png) herhangi bir sayfanın sağ üst köşesinde. Sol kenar çubuğunda **Kurumsal Genel Bakış**' ı, ardından **ilkeler**, **Eylemler**' i seçin ve **tüm kuruluşlar için eylemleri etkinleştirme**seçeneğini belirleyin.
+GitHub eylemleri yapılandırıldığına göre, kullanıcılarınız için etkinleştirin. GitHub Enterprise Server Örneğiniz için yönetici olarak oturum açın ve ![ roket simgesini seçin.](media/github-enterprise-server/rocket-icon.png) herhangi bir sayfanın sağ üst köşesinde. Sol kenar çubuğunda **Kurumsal Genel Bakış**' ı, ardından **ilkeler**, **Eylemler**' i seçin ve **tüm kuruluşlar için eylemleri etkinleştirme** seçeneğini belirleyin.
 
 Ardından, **kendi şirket içinde barındırılan** çalışma sekmesinden çalıştırıcı 'yı yapılandırın. Açılan listeden **Yeni Ekle** ' yi ve ardından **Yeni Çalıştırıcısı** ' nı seçin.
 
@@ -162,15 +168,15 @@ Bir sonraki sayfada, çalıştırılacak bir komut kümesi sunulur, örneğin, �
 
 Komutu kopyalayın `config.sh` ve eylemler Çalıştırıcısı (daha önce oluşturulmuş) üzerindeki bir oturuma yapıştırın.
 
-:::image type="content" source="media/github-enterprise-server/actions-runner.png" alt-text="GitHub 'ı şirket içinde veya bulutta çalıştırmayı seçin.":::
+:::image type="content" source="media/github-enterprise-server/actions-runner.png" alt-text="Eylem Çalıştırıcısı.":::
 
 Çalıştırıcısı *çalıştırmak* için Run.sh komutunu kullanın:
 
-:::image type="content" source="media/github-enterprise-server/run-runner.png" alt-text="GitHub 'ı şirket içinde veya bulutta çalıştırmayı seçin.":::
+:::image type="content" source="media/github-enterprise-server/run-runner.png" alt-text="Çalıştırıcısı 'nı çalıştırın.":::
 
 Bu Çalıştırıcısı kuruluşunuzdaki kuruluşlar için kullanılabilir hale getirmek için kuruluş erişimini düzenleyin:
 
-:::image type="content" source="media/github-enterprise-server/edit-runner-access.png" alt-text="GitHub 'ı şirket içinde veya bulutta çalıştırmayı seçin.":::
+:::image type="content" source="media/github-enterprise-server/edit-runner-access.png" alt-text="Çalıştırıcısı erişimini düzenleyin.":::
 
 Burada tüm kuruluşların kullanımına sunacağız, ancak aynı zamanda bir kuruluş alt kümesine erişimi ve hatta belirli depolara erişimi de sınırlayabilirsiniz.
 
@@ -182,7 +188,7 @@ GitHub Connect 'i etkinleştirmek için [GitHub Connect kullanarak GitHub.com ey
 
 GitHub Connect etkinleştirildikten sonra, **iş akışı çalıştırmaları seçeneğinde GitHub.com öğesinden eylemleri kullanacak sunucuyu** seçin.
 
-:::image type="content" source="media/github-enterprise-server/enable-using-actions.png" alt-text="GitHub 'ı şirket içinde veya bulutta çalıştırmayı seçin.":::
+:::image type="content" source="media/github-enterprise-server/enable-using-actions.png" alt-text="İş akışı çalışmalarından GitHub.com 'dan eylemleri kullanmayı etkinleştirin.":::
 
 ## <a name="setting-up-and-running-your-first-workflow"></a>İlk iş akışınızı ayarlama ve çalıştırma
 
@@ -190,28 +196,30 @@ Artık eylemler ve GitHub Connect ayarlanmış olduğuna göre, tüm bu işleri 
 
 Bu temel iş akışında, `octokit/request-action` API 'yi kullanarak yalnızca GitHub 'daki bir sorunu açmak için kullanacağız.
 
-:::image type="content" source="media/github-enterprise-server/workflow-example.png" alt-text="GitHub 'ı şirket içinde veya bulutta çalıştırmayı seçin.":::
+:::image type="content" source="media/github-enterprise-server/workflow-example.png" alt-text="Örnek iş akışı.":::
 
 >[!NOTE]
 >GitHub.com eylemi barındırır, ancak GitHub Enterprise Server üzerinde çalıştırıldığında *otomatik olarak* GitHub ENTERPRISE Server API 'sini kullanır.
 
 GitHub bağlantısını etkinleştirememeyi seçerseniz, aşağıdaki alternatif iş akışını kullanabilirsiniz.
 
-:::image type="content" source="media/github-enterprise-server/workflow-example-2.png" alt-text="GitHub 'ı şirket içinde veya bulutta çalıştırmayı seçin.":::
+:::image type="content" source="media/github-enterprise-server/workflow-example-2.png" alt-text="Alternatif örnek iş akışı.":::
 
 Örneğiniz üzerindeki bir depoya gidin ve yukarıdaki iş akışını şu şekilde ekleyin: `.github/workflows/hello-world.yml`
 
-:::image type="content" source="media/github-enterprise-server/workflow-example-3.png" alt-text="GitHub 'ı şirket içinde veya bulutta çalıştırmayı seçin.":::
+:::image type="content" source="media/github-enterprise-server/workflow-example-3.png" alt-text="Başka bir örnek iş akışı.":::
 
 Deponuzdaki **Eylemler** sekmesinde iş akışının yürütülmesi için bekleyin.
 
-:::image type="content" source="media/github-enterprise-server/executed-example-workflow.png" alt-text="GitHub 'ı şirket içinde veya bulutta çalıştırmayı seçin.":::
+:::image type="content" source="media/github-enterprise-server/executed-example-workflow.png" alt-text="Örnek iş akışı yürütüldü.":::
 
 Ayrıca, Çalıştırıcısı tarafından işlenmekte olan izlemeyi da izleyebilirsiniz.
 
-:::image type="content" source="media/github-enterprise-server/workflow-processed-by-runner.png" alt-text="GitHub 'ı şirket içinde veya bulutta çalıştırmayı seçin." adlı yeni bir sorun görmeniz gerekir.
+:::image type="content" source="media/github-enterprise-server/workflow-processed-by-runner.png" alt-text="Çalıştırıcısı tarafından işlenen iş akışı.":::
 
-:::image type="content" source="media/github-enterprise-server/example-in-repo.png" alt-text="GitHub 'ı şirket içinde veya bulutta çalıştırmayı seçin.":::
+Her şey başarıyla çalıştırıldıysa, deponuzda "Merhaba Dünya" adlı yeni bir sorun görmeniz gerekir.
+
+:::image type="content" source="media/github-enterprise-server/example-in-repo.png" alt-text="Depoda bir örnek.":::
 
 Tebrikler! Azure VMware Çözüm özel bulutunuzda çalışan GitHub Enterprise Server 'daki ilk eylemler iş akışınızı az önce tamamladınız.
 

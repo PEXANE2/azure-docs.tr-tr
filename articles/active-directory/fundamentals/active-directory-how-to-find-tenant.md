@@ -11,14 +11,14 @@ ms.topic: how-to
 ms.date: 10/30/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
-ms.custom: it-pro
+ms.custom: it-pro, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32526a31a9d52fbfac57f1d384b25e0939b5e297
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 910e68e5b8933875f252faf65fb58e514dee8254
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96172882"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326599"
 ---
 # <a name="how-to-find-your-azure-active-directory-tenant-id"></a>Azure Active Directory kiracı KIMLIĞINIZI bulma
 
@@ -26,7 +26,7 @@ Azure aboneliklerinin Azure Active Directory (Azure AD) ile bir güven ilişkisi
 
 ## <a name="find-tenant-id-through-the-azure-portal"></a>Azure portal aracılığıyla kiracı KIMLIĞINI bulun
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
  
 1. **Azure Active Directory** seçin.
 

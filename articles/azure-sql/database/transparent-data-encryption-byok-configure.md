@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 8881dc3f67ac1c9f699bd2bf7bcf1dbbcd5e9c0c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 40572d50f7653539758ff892019e7e65b0ffa6dd
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95905336"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324899"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell ve Azure CLı: Saydam Veri Şifrelemesi Azure Key Vault müşteri tarafından yönetilen anahtarla etkinleştirin
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -46,7 +46,7 @@ Bu makalede, Azure SQL veritabanı veya Azure SYNAPSE Analytics (eski adıyla SQ
 
 Az modülü yükleme yönergeleri için bkz. [Azure PowerShell'i yükleme](/powershell/azure/install-az-ps). Belirli cmdlet 'ler için bkz. [Azurerd. SQL](/powershell/module/AzureRM.Sql/).
 
-Key Vault hakkında daha fazla bilgi için bkz. [Key Vault PowerShell yönergeleri](../../key-vault/secrets/quick-create-powershell.md) ve [PowerShell ile geçici silme Key Vault kullanma](../../key-vault/general/soft-delete-powershell.md).
+Key Vault hakkında daha fazla bilgi için bkz. [Key Vault PowerShell yönergeleri](../../key-vault/secrets/quick-create-powershell.md) ve [PowerShell ile geçici silme Key Vault kullanma](../../key-vault/general/key-vault-recovery.md).
 
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager (RM) modülü hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. AzureRM modülü, en az Aralık 2020 ' e kadar hata düzeltmeleri almaya devam edecektir.  Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır. Uyumluluklarını hakkında daha fazla bilgi için bkz. [new Azure PowerShell konusuna giriş az Module](/powershell/azure/new-azureps-module-az).
@@ -136,7 +136,7 @@ Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName <SQLDataba
 
 Azure CLı 'nın gerekli sürümünü (sürüm 2,0 veya üzeri) yüklemek ve Azure aboneliğinize bağlanmak için bkz. [Azure platformlar arası Command-Line arabirimi 2,0 ' ni yükleyip yapılandırma](/cli/azure/install-azure-cli).
 
-Key Vault hakkında daha fazla bilgi için bkz. [clı 2,0 kullanarak Key Vault yönetme](../../key-vault/general/manage-with-cli2.md) ve [CLI ile geçici silme Key Vault kullanma](../../key-vault/general/soft-delete-cli.md).
+Key Vault hakkında daha fazla bilgi için bkz. [clı 2,0 kullanarak Key Vault yönetme](../../key-vault/general/manage-with-cli2.md) ve [CLI ile geçici silme Key Vault kullanma](../../key-vault/general/key-vault-recovery.md).
 
 ## <a name="assign-an-azure-ad-identity-to-your-server"></a>Sunucunuza bir Azure AD kimliği atama
 

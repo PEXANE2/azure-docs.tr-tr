@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 3827fa7a98cef9358db0ee102925586bce97fae6
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: cf0703406b71cb56bdd75a04746dfce7db6af471
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188692"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327143"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>SAP NetWeaver için SUSE Linux Enterprise Server Azure VM 'lerde yüksek kullanılabilirlik çoklu SID Kılavuzu
 
@@ -94,7 +94,7 @@ Kümede yer alan sanal makinelerin tüm kaynakları çalıştırabilmeleri için
 
 SAP NetWeaver yüksek kullanılabilirlik elde etmek için yüksek oranda kullanılabilir NFS paylaşımları gerektirir. Bu örnekte, SAP NFS paylaşımlarının, birden fazla SAP sistemi tarafından kullanılabilen, yüksek oranda kullanılabilir [NFS dosya sunucusu](./high-availability-guide-suse-nfs.md)üzerinde barındırıldığını varsayıyoruz. Ya da paylaşımlar [Azure NetApp FILES NFS birimlerinde](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)dağıtılır.  
 
-![SAP NetWeaver yüksek kullanılabilirliğe genel bakış](./media/high-availability-guide-suse/ha-suse-multi-sid.png)
+![Paceyapıcısı kümesi, iki adet çok düzeyli küme, msidcl1 ve msidcl2 hakkında ayrıntılı bilgi gösterir.](./media/high-availability-guide-suse/ha-suse-multi-sid.png)
 
 > [!IMPORTANT]
 > Azure VM 'lerinde, Konuk işletim sistemi olarak SUSE Linux ile çok düzeyli SAP yoks/ERS desteği, aynı kümede **beş** SAP SID ile sınırlıdır. Her yeni SID karmaşıklığı artırır. Aynı kümedeki SAP sıraya alma çoğaltma sunucusu 1 ve sıraya alma çoğaltma sunucusu 2 ' nin bir karışımı **desteklenmez**. Çoklu SID Kümelemesi, tek bir Paceoluşturucu kümesinde farklı SID 'Leri olan birden fazla SAP ASCS/ERS örneğinin yüklenmesini açıklar. Şu anda çoklu SID Kümelemesi yalnızca yoks/ERS için desteklenir.  
@@ -179,7 +179,7 @@ Bu örnekte, sistem **NW1** zaten kümede dağıtıldığını varsaydık. Küme
 
 Şu öğeler, **[A]** ön eki olan tüm düğümlere uygulanabilir, **[1]** -yalnızca düğüm 1 veya **[2]** için geçerlidir-yalnızca node 2 için geçerlidir.
 
-### <a name="prerequisites"></a>Ön koşullar 
+### <a name="prerequisites"></a>Önkoşullar 
 
 > [!IMPORTANT]
 > Kümeye ek SAP sistemleri dağıtmaya yönelik yönergeleri izlemeden önce, ilk sistem dağıtımı sırasında yalnızca gerekli adımlar olduğundan, kümedeki ilk SAP sistemini dağıtmak için yönergeleri izleyin.  

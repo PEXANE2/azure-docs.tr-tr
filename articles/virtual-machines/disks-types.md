@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 0a6b6196888aedfd6aa60c9395ff27611907661a
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: ef481b73b6dc42bc35252c08ae8d63b9de95b2ba
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413164"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325103"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Azure'da hangi disk türleri kullanılabilir?
 
@@ -82,7 +82,7 @@ Standart depolamanın aksine bir Premium Depolama diski sağladığınızda, bu 
 
 ## <a name="bursting"></a>Patlaması
 
-P30 ' den küçük Premium SSD boyutları artık disk patlaması sunar ve disk başına ıOPS 'yi 3.500 ve bant genişliğine kadar en fazla 170 Mbps olacak şekilde alabilir. Burdıya otomatik ve bir kredi sistemine göre çalışır. Krediler, disk trafiği sağlanan performans hedefinin altındaysa otomatik olarak bir patlama demetini içinde biriktirilir ve trafik hedefin ötesinde en fazla patlama sınırına kadar, krediler otomatik olarak tüketilir. En fazla patlama sınırı, ' den tüketmek üzere patlama kredileriniz olsa bile, disk ıOPS & bant genişliği üst sınırını tanımlar. Disk patlaması, GÇ desenlerinin öngörülemeyen değişikliklerinde daha iyi tolerans sağlar. Çıkmanız gerekirse trafiği olan işletim sistemi diski önyüklemesi ve uygulamaları için en iyi şekilde yararlanabilirsiniz.    
+P30 ' den küçük Premium SSD boyutları artık disk patlaması sunar ve disk başına ıOPS 'yi 3.500 ' e kadar ve bant genişliğine MB/sn 170 'ye kadar alabilir. Burdıya otomatik ve bir kredi sistemine göre çalışır. Krediler, disk trafiği sağlanan performans hedefinin altındaysa otomatik olarak bir patlama demetini içinde biriktirilir ve trafik hedefin ötesinde en fazla patlama sınırına kadar, krediler otomatik olarak tüketilir. En fazla patlama sınırı, ' den tüketmek üzere patlama kredileriniz olsa bile, disk ıOPS & bant genişliği üst sınırını tanımlar. Disk patlaması, GÇ desenlerinin öngörülemeyen değişikliklerinde daha iyi tolerans sağlar. Çıkmanız gerekirse trafiği olan işletim sistemi diski önyüklemesi ve uygulamaları için en iyi şekilde yararlanabilirsiniz.    
 
 Bir kullanıcı eylemi gerekmeden, varsayılan olarak geçerli disk boyutlarının yeni dağıtımları üzerinde, disk patlaması desteği etkinleştirilecek. Geçerli boyutlardaki mevcut diskler için, iki seçenekten birini kullanarak gereksiz bir şekilde etkinleştirebilirsiniz: diski ayırma ve yeniden bağlama ya da bağlı VM 'yi durdurup yeniden başlatma. Disk, en yüksek veri bloğu sınırı olan 30 dakikalık bir sanal makineye eklendiğinde, tüm veri bloğu uygulanabilir disk boyutları tam bir patlama kredisi demeti ile başlar. Azure disklerinde ne kadar iş çalıştığı hakkında daha fazla bilgi edinmek için bkz. [Premium SSD burdımı](linux/disk-bursting.md). 
 
@@ -114,7 +114,7 @@ Azure Standart HDD 'Ler, gecikme süresine duyarlı iş yükleri çalıştıran 
 
 Standart HDD 'Ler için, her GÇ işlemi, g/ç boyutundan bağımsız olarak tek bir işlem olarak değerlendirilir. Bu işlemlerin bir faturalandırma etkisi vardır.
 
-## <a name="billing"></a>Faturalama
+## <a name="billing"></a>Faturalandırma
 
 Yönetilen diskler kullanılırken, aşağıdaki faturalandırma konuları geçerlidir:
 
@@ -124,15 +124,15 @@ Yönetilen diskler kullanılırken, aşağıdaki faturalandırma konuları geçe
 - Giden veri aktarımları
 - İşlem sayısı
 
-**Yönetilen disk boyutu** : yönetilen diskler sağlanan boyutta faturalandırılır. Azure sağlanan boyutu (yuvarlanır) en yakın sunulan disk boyutuna eşler. Sunulan disk boyutlarının ayrıntıları için bkz. önceki tablolar. Her disk desteklenen bir sağlanan disk boyutu teklifiyle eşlenir ve buna göre faturalandırılır. Örneğin, bir 200 GiB Standart SSD sağladıysanız, E15 (256 GiB) disk boyutu teklifiyle eşlenir. Sağlanan tüm diskler için faturalandırma, depolama teklifi için aylık fiyat kullanılarak günlere eşit olarak dağıtılır. Örneğin, bir E10 diski sağladıysanız ve 20 saat sonra sildiyseniz, E10 teklifi için 20 saate göre faturalandırılırsınız. Bu, diske yazılan gerçek veri miktarına bakılmaksızın olur.
+**Yönetilen disk boyutu**: yönetilen diskler sağlanan boyutta faturalandırılır. Azure sağlanan boyutu (yuvarlanır) en yakın sunulan disk boyutuna eşler. Sunulan disk boyutlarının ayrıntıları için bkz. önceki tablolar. Her disk desteklenen bir sağlanan disk boyutu teklifiyle eşlenir ve buna göre faturalandırılır. Örneğin, bir 200 GiB Standart SSD sağladıysanız, E15 (256 GiB) disk boyutu teklifiyle eşlenir. Sağlanan tüm diskler için faturalandırma, depolama teklifi için aylık fiyat kullanılarak günlere eşit olarak dağıtılır. Örneğin, bir E10 diski sağladıysanız ve 20 saat sonra sildiyseniz, E10 teklifi için 20 saate göre faturalandırılırsınız. Bu, diske yazılan gerçek veri miktarına bakılmaksızın olur.
 
-**Anlık görüntüler** : anlık görüntüler kullanılan boyuta göre faturalandırılır. Örneğin, sağlanan 64 GiB kapasitesine sahip bir yönetilen diskin anlık görüntüsünü ve 10 GiB 'nin gerçek kullanılan veri boyutunu oluşturursanız, anlık görüntü yalnızca 10 GiB 'nin kullanılan veri boyutu için faturalandırılır.
+**Anlık görüntüler**: anlık görüntüler kullanılan boyuta göre faturalandırılır. Örneğin, sağlanan 64 GiB kapasitesine sahip bir yönetilen diskin anlık görüntüsünü ve 10 GiB 'nin gerçek kullanılan veri boyutunu oluşturursanız, anlık görüntü yalnızca 10 GiB 'nin kullanılan veri boyutu için faturalandırılır.
 
 Anlık görüntüler hakkında daha fazla bilgi için [yönetilen diske genel bakış](managed-disks-overview.md)' daki anlık görüntüler bölümüne bakın.
 
-**Giden veri aktarımları** : [giden veri aktarımları](https://azure.microsoft.com/pricing/details/bandwidth/) (Azure veri merkezlerinden çıkan veriler) bant genişliği kullanımı için faturalandırılır.
+**Giden veri aktarımları**: [giden veri aktarımları](https://azure.microsoft.com/pricing/details/bandwidth/) (Azure veri merkezlerinden çıkan veriler) bant genişliği kullanımı için faturalandırılır.
 
-**İşlemler** : Standart yönetilen bir diskte gerçekleştirdiğiniz işlem sayısı için faturalandırılırsınız. Standart SSD 'Ler için, 256 kıb aktarım hızına eşit veya daha küçük olan her g/ç işlemi tek bir g/ç işlemi olarak kabul edilir. 256 Kigb 'den büyük g/ç işlemleri, 256 KiB boyutundaki birden fazla g/ç işlemi olarak kabul edilir. Standart HDD 'Ler için, her GÇ işlemi, g/ç boyutundan bağımsız olarak tek bir işlem olarak değerlendirilir.
+**İşlemler**: Standart yönetilen bir diskte gerçekleştirdiğiniz işlem sayısı için faturalandırılırsınız. Standart SSD 'Ler için, 256 kıb aktarım hızına eşit veya daha küçük olan her g/ç işlemi tek bir g/ç işlemi olarak kabul edilir. 256 Kigb 'den büyük g/ç işlemleri, 256 KiB boyutundaki birden fazla g/ç işlemi olarak kabul edilir. Standart HDD 'Ler için, her GÇ işlemi, g/ç boyutundan bağımsız olarak tek bir işlem olarak değerlendirilir.
 
 İşlem maliyetleri dahil olmak üzere yönetilen disklere yönelik fiyatlandırma hakkında ayrıntılı bilgi için bkz. [yönetilen diskler fiyatlandırması](https://azure.microsoft.com/pricing/details/managed-disks).
 

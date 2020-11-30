@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: pafarley
-ms.openlocfilehash: 392cc06c6e0bce7ec2304da61033fc508d940bbb
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 079d5ea0259a436100b81489043b71a81ec1a330
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93143816"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327228"
 ---
 # <a name="video-moderation-with-the-review-tool"></a>Inceleme aracı ile video denetleme
 
@@ -26,7 +26,7 @@ ms.locfileid: "93143816"
 Panoda, video içerik türü içinde gözden geçirme kuyrukları ' nı seçin. Bu, bir gözden geçirme başlatır ve video içerik denetleme sayfasını açar.
 
 > [!div class="mx-imgBorder"]
-> ![Inceleme aracında video denetleme ayrıntılı görünümü](./Review-Tool-User-Guide/images/video-moderation-detailed.png)
+> ![Content Moderator (Önizleme) üzerinde kaydırıcı vurgulanır ve 4 İnceleme olarak ayarlanır. Tümünü ve siyah beyaz anahtarları bulanıklaştırma vurgulanır ve her ikisi de ayarlanır.](./Review-Tool-User-Guide/images/video-moderation-detailed.png)
 
 ### <a name="review-count"></a>Gözden geçirme sayısı
 
@@ -55,7 +55,7 @@ Bu Content-obscuring efektlerini ayarlamak için **Tümünü Bulanıklaştır** 
 * İnceleme geçmişini (oluşturulduğu tarih ve nasıl değiştirildiği gibi) görmek için **Geçmiş** sekmesini seçin.
 
 > [!div class="mx-imgBorder"]
-> ![Video denetleme toplu etiketleri düğmesi](./Review-Tool-User-Guide/images/video-moderation-video-details.png)
+> ![Sağ bölme vurgulanır ve notlar sekmesi seçilidir. Bir test alanı etiketi, bir Note ekleyin.](./Review-Tool-User-Guide/images/video-moderation-video-details.png)
 
 ## <a name="apply-moderation-tags"></a>Denetleme etiketlerini Uygula
 
@@ -63,10 +63,10 @@ Video incelemesinin ana görevi videolarda veya videoların parçaları üzerind
 
 ### <a name="bulk-tagging"></a>Toplu etiketleme
 
-**Toplu Etiketler** araç çubuğu, birden fazla seçili videoya tek seferde Etiketler eklemenize olanak tanır. Bir veya daha fazla video seçip uygulamak istediğiniz etiketleri seçin ve **Gönder** ' e tıklayın. 
+**Toplu Etiketler** araç çubuğu, birden fazla seçili videoya tek seferde Etiketler eklemenize olanak tanır. Bir veya daha fazla video seçip uygulamak istediğiniz etiketleri seçin ve **Gönder**' e tıklayın. 
 
 > [!div class="mx-imgBorder"]
-> ![Video denetleme toplu etiketleri düğmesi](./Review-Tool-User-Guide/images/video-moderation-bulk-tags.png)
+> ![+ Düğmesi toplu Etiketler bölmesinde vurgulanır.](./Review-Tool-User-Guide/images/video-moderation-bulk-tags.png)
 
 
 ### <a name="key-frame-tagging"></a>Anahtar çerçeve etiketleme
@@ -77,7 +77,7 @@ Ayrıca, belirli anahtar çerçevelerine denetleme etiketleri de ekleyebilirsini
 > Hizmet anahtar çerçevelerini ayıklayamadığınızda, anahtar çerçevesi kutucuk bölmesi **kullanılabilir bir çerçeve** göstermez ve anahtar çerçeveler seçme seçeneği gri renkte görünür. Bu durumda, videoya yalnızca bir bütün olarak etiketleri uygulayabilirsiniz ( **video etiketleri +** düğmesini kullanarak).
 
 > [!div class="mx-imgBorder"]
-> ![Inceleme aracında video denetleme ayrıntılı görünümü](./Review-Tool-User-Guide/images/video-moderation-tagging-options.png)
+> ![Kutucuk bölmesi, video oynatıcı, ana kare etiketleri bölmesi ve video etiketleri bölmelerinin hepsi gösteriliyor. Ana kare etiketleri + ve video etiketleri + düğmeleri vurgulanır.](./Review-Tool-User-Guide/images/video-moderation-tagging-options.png)
 
 ## <a name="put-a-review-on-hold"></a>Beklemeye bir gözden geçirme koy
 
@@ -86,7 +86,7 @@ Video bölmesinin alt kısmındaki **tut** düğmesi, geri alma ve daha sonra ta
 Ekranın üst kısmındaki **tut** düğmesine tıklayarak videoları beklemeye alabilirsiniz. Tut bölmesi sağ tarafta görünür. Buradan, bekletme sırasında birden fazla inceleme seçebilir ve bunları kuyruğa geri bırakabilir ya da sona erme süresini ayarlayabilirsiniz. Önceden yapılandırılmış sürenin ardından, bekletme gözden geçirmeleri sıraya geri yayımlanır. Şu anda seçili olan süre sonu zamanından önce saymak için **Kaydet** ' i seçin.
 
 > [!div class="mx-imgBorder"]
-> ![Inceleme aracında video denetleme ayrıntılı görünümü](./Review-Tool-User-Guide/images/video-moderation-hold.png)
+> ![Video bölmesinde, tut düğmesi vurgulanır. Bölmenin en altında, bir saklama zamanı Birleşik giriş kutusu, serbest bırakma ve kaydetme düğmeleriyle birlikte vurgulanır.](./Review-Tool-User-Guide/images/video-moderation-hold.png)
 
 ## <a name="submit-a-review"></a>İnceleme gönder
 

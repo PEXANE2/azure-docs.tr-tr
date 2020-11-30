@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/21/2020
 ms.author: duau
-ms.openlocfilehash: a24c0fdb244f87dbf281bcf59b5e1986a215142a
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: e01b56f88270348167ef1eef9d913e65074d9247
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275615"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327262"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak yüksek oranda kullanılabilir küresel bir Web uygulaması için ön kapı oluşturma
 
@@ -26,7 +26,7 @@ Yüksek oranda kullanılabilir ve yüksek performanslı bir genel Web uygulamas�
 
 Ön kapı, Web trafiğini bir arka uç havuzundaki belirli kaynaklara yönlendirir. Ön uç etki alanını tanımladınız, bir arka uç havuzuna kaynak ekleyecek ve bir yönlendirme kuralı oluşturacaksınız. Bu makalede, iki Web uygulaması kaynağına sahip bir arka uç havuzunun basit bir yapılandırması ve varsayılan yol eşleştirme "/*" kullanılarak tek bir yönlendirme kuralı kullanılmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Azure CLı yerel olarak veya Azure Cloud Shell yüklendi
@@ -66,7 +66,7 @@ Henüz bir Web uygulamanız yoksa, iki örnek Web uygulaması kurmak için aşa�
 
 ### <a name="create-app-service-plans"></a>App Service planları oluşturma
 
-Web uygulamalarını oluşturabilmeniz için, biri *Orta ABD* ve ikincisi *Orta Güney ABD*olmak üzere iki App Service planına ihtiyacınız olacaktır.
+Web uygulamalarını oluşturabilmeniz için, biri *Orta ABD* ve ikincisi *Orta Güney ABD* olmak üzere iki App Service planına ihtiyacınız olacaktır.
 
 [Az appservice plan Create](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create&preserve-view=true)ile App Service planları oluşturun:
 
@@ -77,7 +77,7 @@ az appservice plan create \
 
 az appservice plan create \
 --name myAppServicePlanSouthCentralUS \
--resource-groupg myRGFDSouthCentral
+--resource-group myRGFDSouthCentral
 ```
 
 ### <a name="create-web-apps"></a>Web uygulamaları oluşturma

@@ -4,12 +4,12 @@ description: Varsayılan Azure Batch kotaları, sınırları ve kısıtlamaları
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8ca08d43f07633b58cf6f7067c1a8fcd58350678
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: b2039794a0c8a13070c9d81b83869ca4097bd02e
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107547"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325984"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch hizmet kotaları ve limitleri
 
@@ -23,15 +23,33 @@ Batch 'de üretim iş yüklerini çalıştırmayı planlıyorsanız, varsayılan
 
 ## <a name="resource-quotas"></a>Kaynak kotaları
 
-Kota, kapasite garantisi değil, kredi limiti olur. Büyük ölçekli kapasite gereksinimleriniz varsa lütfen Azure desteğine başvurun.
+Kota, kapasite garantisi değil bir sınıra sahiptir. Büyük ölçekli kapasite gereksinimleriniz varsa lütfen Azure desteğine başvurun.
 
 Ayrıca kotaların garantili değerler olmadığına de unutmayın. Kotalar, Batch hizmetinden değişikliklere göre değişiklik gösterebilir veya bir Kullanıcı isteği kota değerini değiştirebilir.
 
 [!INCLUDE [azure-batch-limits](../../includes/azure-batch-limits.md)]
 
+## <a name="core-quotas"></a>Çekirdek kotalar
+
+### <a name="cores-quotas-in-batch-service-mode"></a>Batch hizmeti modundaki çekirdek kotaları
+
+Adanmış çekirdek kotaları zorlaması, aşamalı olarak kullanılabilir hale getirilmekte olan değişiklikler, Aralık 2020 sonuna kadar tüm Batch hesapları için tamamlanarak geliştirilmiştir.
+
+Toplu Işlem tarafından desteklenen her bir VM Serisi için çekirdek kotalar bulunur ve portalda **Kotalar** sayfasında görüntülenir. VM Serisi kota sınırları, aşağıda açıklandığı gibi bir destek isteğiyle de yapılandırılabilir.
+
+Var olan mekanizmanın kullanıma alınması sırasında, VM Serisi için kota sınırları denetlenmez, yalnızca hesap için toplam kota sınırı uygulanır. Bu, toplam hesap kota sınırına kadar VM Serisi kotası tarafından belirtikten farklı bir VM Serisi için daha fazla çekirdek ayırabileceğiniz anlamına gelir.
+
+Güncelleştirilmiş mekanizma, toplam hesap kotasına ek olarak VM Serisi kotalarını zorunlu tutar. Yeni mekanizmaya geçişin bir parçası olarak, ayırma hatalarından kaçınmak için VM Serisi kota değerleri güncelleştirilemeyebilir; son aylarda kullanılan tüm VM dizileri, VM Serisi kotasının toplam hesap kotasıyla eşleşecek şekilde güncelleştirilmesini sağlar. Bu değişiklik, zaten kullanılabilir olandan daha fazla kapasite kullanımını etkinleştirmez.
+
+Şu onay yoluyla bir Batch hesabı için VM Serisi kotası zorlamasının etkinleştirilip etkinleştirilmediğini tespit etmek mümkündür:
+
+* Batch hesabı [dedicatedCoreQuotaPerVMFamilyEnforced](/rest/api/batchmanagement/batchaccount/get#batchaccount) API özelliği.
+
+* Portalda Batch hesabı **kotaları** sayfasındaki metin.
+
 ### <a name="cores-quotas-in-user-subscription-mode"></a>Kullanıcı abonelik modundaki çekirdek kotaları
 
-Havuz ayırma modu **Kullanıcı aboneliğine**ayarlanmış bir [Batch hesabı](accounts.md) oluşturduysanız, Kotalar farklı şekilde uygulanır. Bu modda, bir havuz oluşturulduğunda Batch VM 'Leri ve diğer kaynaklar doğrudan aboneliğinizde oluşturulur. Azure Batch çekirdekler kotaları, bu modda oluşturulan bir hesaba uygulanmaz. Bunun yerine, bölgesel işlem çekirdekleri ve diğer kaynaklar için aboneliğinizdeki kotalar uygulanır.
+Havuz ayırma modu **Kullanıcı aboneliğine** ayarlanmış bir [Batch hesabı](accounts.md) oluşturduysanız, bir havuz oluşturulduğunda veya yeniden boyutlandırılırken, Batch VM 'leri ve diğer kaynaklar doğrudan aboneliğinizde oluşturulur. Azure Batch çekirdek kotaları, bölgesel işlem çekirdekleri, seri başına bilgi işlem çekirdekleri ve diğer kaynaklar kullanılır ve zorlanır.
 
 Bu kotalar hakkında daha fazla bilgi edinmek için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
@@ -44,7 +62,7 @@ Havuz boyutu sınırları Batch hizmeti tarafından ayarlanır. [Kaynak kotalar�
 | **[Düğüm içi iletişim etkin havuzunda](batch-mpi.md) işlem düğümleri**  ||
 | Batch hizmeti havuz ayırma modu | 100 |
 | Batch abonelik havuzu ayırma modu | 80 |
-| ** [Yönetilen görüntü kaynağı 1 ile oluşturulan havuzdaki](batch-custom-images.md)işlem düğümleri**<sup>1</sup> ||
+| **[Yönetilen görüntü kaynağı 1 ile oluşturulan havuzdaki](batch-custom-images.md)işlem düğümleri**<sup>1</sup> ||
 | Ayrılmış düğümler | 2000 |
 | Düşük öncelikli düğümler | 1000 |
 
@@ -73,7 +91,7 @@ Batch hesabı kotalarınızı [Azure Portal](https://portal.azure.com)görüntü
 1. Batch hesabının menüsünde **Kotalar** ' ı seçin.
 1. Batch hesabına uygulanmış olan kotaları görüntüleyin.
 
-    ![Batch hesabı kotaları][account_quotas]
+:::image type="content" source="./media/batch-quota-limit/account-quota-portal.png" alt-text="Batch hesabı kotaları":::
 
 ## <a name="increase-a-quota"></a>Kotayı artırma
 
@@ -93,7 +111,7 @@ Batch hesabı kotalarınızı [Azure Portal](https://portal.azure.com)görüntü
     
 1. **Ayrıntılar** bölümünde:
       
-    1. **Ayrıntıları sağla**bölümünde konumu, kota türünü ve Batch hesabını belirtin.
+    1. **Ayrıntıları sağla** bölümünde konumu, kota türünü ve Batch hesabını belirtin.
     
        ![Toplu kota artışı][quota_increase]
 
@@ -113,7 +131,7 @@ Batch hesabı kotalarınızı [Azure Portal](https://portal.azure.com)görüntü
 
 1. **İletişim bilgileri**:
    
-    1. **Tercih edilen bir iletişim yöntemi**seçin.
+    1. **Tercih edilen bir iletişim yöntemi** seçin.
    
     1. Gerekli iletişim ayrıntılarını doğrulayın ve girin.
    

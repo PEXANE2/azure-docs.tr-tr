@@ -4,12 +4,12 @@ description: Azure Backup ' deki şifreleme özelliklerinin, yedekleme verilerin
 ms.topic: conceptual
 ms.date: 08/04/2020
 ms.custom: references_regions
-ms.openlocfilehash: 47ecf5c16682691bd9ff7014400ea6e8ab658a92
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: c9b1b2782a34285ae194f2998a7cd053cf3c0c70
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173935"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325697"
 ---
 # <a name="encryption-in-azure-backup"></a>Azure Backup'ta şifreleme
 
@@ -24,7 +24,7 @@ Azure Backup iki düzeyde şifreleme içerir:
   - **Müşteri tarafından yönetilen anahtarları kullanma**: Azure sanal makinelerinizi yedeklerken, size ait olan ve yönetilen şifreleme anahtarlarını kullanarak verilerinizi şifrelemeyi seçebilirsiniz. Azure Backup, yedeklemelerinizi şifrelemek için Azure Key Vault depolanan RSA anahtarlarınızı kullanmanıza olanak sağlar. Yedeklemeleri şifrelemek için kullanılan şifreleme anahtarı, kaynak için kullanılan birinden farklı olabilir. Veriler, sırasıyla anahtarlarınız kullanılarak korunan bir AES 256 tabanlı veri şifreleme anahtarı (DEK) kullanılarak korunur. Bu sayede veriler ve anahtarlar üzerinde tam denetim elde edersiniz. Şifrelemeye izin vermek için, kurtarma hizmetleri kasasını Azure Key Vault şifreleme anahtarına vermeniz gerekir. Her gerektiğinde anahtarı devre dışı bırakabilir veya erişimi iptal edebilirsiniz. Ancak, kasadaki herhangi bir öğeyi korumayı denemeden önce anahtarlarınızı kullanarak şifrelemeyi etkinleştirmeniz gerekir. [Daha fazla bilgi edinin](encryption-at-rest-with-cmk.md).
   - **Altyapı düzeyinde şifreleme**: müşteri tarafından yönetilen anahtarları kullanarak kurtarma hizmetleri kasasındaki verilerinizi şifrelemeye ek olarak, depolama altyapısında yapılandırılmış ek bir şifreleme katmanına sahip olmasını da tercih edebilirsiniz. Bu altyapı şifrelemesi platform tarafından yönetiliyor. Müşteri tarafından yönetilen anahtarlar kullanılarak, bekleyen şifrelemeyle birlikte, yedekleme verilerinizin iki katmanlı şifrelemesine izin verir. Altyapı şifrelemesi, yalnızca, bekleyen şifreleme için kendi anahtarlarınızı kullanmayı seçerseniz yapılandırılabilir. Altyapı şifrelemesi, verileri şifrelemek için platform tarafından yönetilen anahtarları kullanır.
 - **Yedeklenmekte olan iş yüküne özgü şifreleme**  
-  - **Azure sanal makine yedeklemesi**: Azure Backup [platform tarafından yönetilen anahtarlar](../virtual-machines/windows/disk-encryption.md#platform-managed-keys)kullanılarak şifrelenmiş disklere sahip VM 'lerin yedeklenmesini ve size ait ve sizin tarafınızdan yönetilen [müşteri tarafından yönetilen anahtarları](../virtual-machines/windows/disk-encryption.md#customer-managed-keys) destekler. Ayrıca, işletim sistemi veya veri disklerinin [Azure disk şifrelemesi](backup-azure-vms-encryption.md#encryption-support-using-ade)kullanılarak şifrelendiği Azure sanal makinelerinizi da yedekleyebilirsiniz. ADE, Konuk içi şifrelemeyi gerçekleştirmek için Windows VM 'Leri için BitLocker ve Linux VM 'Leri için DM-Crypt kullanır.
+  - **Azure sanal makine yedeklemesi**: Azure Backup [platform tarafından yönetilen anahtarlar](../virtual-machines/disk-encryption.md#platform-managed-keys)kullanılarak şifrelenmiş disklere sahip VM 'lerin yedeklenmesini ve size ait ve sizin tarafınızdan yönetilen [müşteri tarafından yönetilen anahtarları](../virtual-machines/disk-encryption.md#customer-managed-keys) destekler. Ayrıca, işletim sistemi veya veri disklerinin [Azure disk şifrelemesi](backup-azure-vms-encryption.md#encryption-support-using-ade)kullanılarak şifrelendiği Azure sanal makinelerinizi da yedekleyebilirsiniz. ADE, Konuk içi şifrelemeyi gerçekleştirmek için Windows VM 'Leri için BitLocker ve Linux VM 'Leri için DM-Crypt kullanır.
 
 >[!NOTE]
 >Altyapı şifrelemesi Şu anda sınırlı önizlemededir ve yalnızca ABD Doğu, US West2, ABD Orta Güney, US Gov Arizona ve ABD GOV Virginia bölgelerinde kullanılabilir. Bu bölgelerin herhangi birinde özelliğini kullanmak istiyorsanız, [Bu formu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapUN0VHNEpJS0ZUWklUNVdJSTEzR0hIOVRMVC4u) doldurun ve bize e-posta gönderin [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .

@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 30481fee949df16c70718d0a9cbc6df9ca54d11e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: af63eb68ec82a0725befed723298c079e82bdfdb
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182555"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327109"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Linux üzerinde özel kapsayıcı kullanarak bir işlev oluşturma
 
@@ -20,7 +20,7 @@ Bu öğreticide, bir Linux temel görüntüsü kullanarak kodunuzu oluşturup Az
 
 [Linux üzerinde barındırılan ilk işlevinizi oluşturma](./create-first-function-cli-csharp.md?pivots=programming-language-python)konusunda açıklandığı gibi varsayılan bir Azure App Service kapsayıcısını de kullanabilirsiniz. Azure Işlevleri için desteklenen temel görüntüler, [Azure işlevleri temel görüntüler](https://hub.docker.com/_/microsoft-azure-functions-base)deposunda bulunur.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure Functions Core Tools kullanarak bir işlev uygulaması ve Dockerfile oluşturun.
@@ -54,27 +54,27 @@ Bu öğreticiyi Windows, macOS veya Linux çalıştıran herhangi bir bilgisayar
 Bir Terminal veya komut isteminde, adlı bir klasörde işlev uygulaması projesi oluşturmak için seçtiğiniz dil için aşağıdaki komutu çalıştırın `LocalFunctionsProject` .  
 ::: zone-end  
 ::: zone pivot="programming-language-csharp"  
-```
+```console
 func init LocalFunctionsProject --worker-runtime dotnet --docker
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-javascript"  
-```
+```console
 func init LocalFunctionsProject --worker-runtime node --language javascript --docker
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-powershell"  
-```
+```console
 func init LocalFunctionsProject --worker-runtime powershell --docker
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-python"  
-```
+```console
 func init LocalFunctionsProject --worker-runtime python --docker
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-typescript"  
-```
+```console
 func init LocalFunctionsProject --worker-runtime node --language typescript --docker
 ```
 ::: zone-end
@@ -118,41 +118,41 @@ Maven, proje dosyalarını, bu örnekte olduğu gibi, _ArtifactId_ adında yeni 
 
 Proje klasörüne gidin:
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
-```
+```console
 cd LocalFunctionsProject
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-java"  
-```
+```console
 cd fabrikam-functions
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python" 
 Aşağıdaki komutu kullanarak projenize bir işlev ekleyin; burada `--name` bağımsız değişken işlevinizin benzersiz adıdır ve `--template` bağımsız değişken işlevin tetikleyicisini belirtir. `func new` Projenin seçtiği dile uygun bir kod dosyası ve *üzerindefunction.js* adlı bir yapılandırma dosyası içeren işlev adıyla eşleşen bir alt klasör oluşturun.
 
-```
+```console
 func new --name HttpExample --template "HTTP trigger"
 ```
 ::: zone-end  
 İşlevi yerel olarak test etmek için, proje klasörünün kökündeki yerel Azure Işlevleri çalışma zamanı konağını başlatın: 
 ::: zone pivot="programming-language-csharp"  
-```
+```console
 func start --build  
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-javascript,programming-language-powershell,programming-language-python"   
-```
+```console
 func start  
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-typescript"  
-```
+```console
 npm install
 npm start
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-java"  
-```
+```console
 mvn clean package  
 mvn azure-functions:run
 ```
@@ -167,7 +167,7 @@ Seçim Proje klasörünün kökündeki *Dockerfile dosyasını* inceleyin. Docke
     
 Kök proje klasöründe [Docker Build](https://docs.docker.com/engine/reference/commandline/build/) komutunu çalıştırın ve bir ad, `azurefunctionsimage` , ve etiketi belirtin `v1.0.0` . `<DOCKER_ID>` değerini Docker Hub hesabınızın kimliğiyle değiştirin. Bu komut, kapsayıcı için Docker görüntüsünü derler.
 
-```
+```console
 docker build --tag <DOCKER_ID>/azurefunctionsimage:v1.0.0 .
 ```
 
@@ -175,7 +175,7 @@ Komut tamamlandığında, yeni kapsayıcıyı yerel olarak çalıştırabilirsin
     
 Derlemeyi test etmek için [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanarak görüntüyü yerel bir kapsayıcıda çalıştırın, `<DOCKER_ID` Docker Kimliğiniz ile yeniden değiştirin ve bağlantı noktası bağımsız değişkenini ekleyin `-p 8080:80` :
 
-```
+```console
 docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
 ```
 
@@ -197,13 +197,13 @@ Docker Hub, görüntüleri barındıran ve görüntü ve kapsayıcı hizmetleri 
 
 1. Docker 'da henüz oturum açmadıysanız [, DOCKER](https://docs.docker.com/engine/reference/commandline/login/) ID ile değiştirin `<docker_id>` . Bu komut sizden Kullanıcı adı ve parola girmenizi ister. "Oturum açma başarılı oldu" iletisi oturum açtığınızdan emin olur.
 
-    ```
+    ```console
     docker login
     ```
     
 1. Oturum açtıktan sonra Docker [Push](https://docs.docker.com/engine/reference/commandline/push/) komutunu kullanarak görüntüyü Docker Hub 'a gönderin, yeniden `<docker_id>` Docker Kimliğiniz ile değiştirin.
 
-    ```
+    ```console
     docker push <docker_id>/azurefunctionsimage:v1.0.0
     ```
 
@@ -419,13 +419,13 @@ SSH, kapsayıcı ile istemci arasında güvenli iletişime olanak tanır. SSH et
     
 1. `docker build`Komutu tekrar kullanarak, `<docker_id>` DOCKER Kimliğiniz ile değiştirerek görüntüyü yeniden oluşturun:
 
-    ```
+    ```console
     docker build --tag <docker_id>/azurefunctionsimage:v1.0.0 .
     ```
     
 1. Güncelleştirilmiş görüntüyü Docker Hub 'a gönderin. Bu, ilk gönderiden yalnızca görüntünün güncelleştirilmiş segmentlerinin karşıya yüklenmesi gereken zamandan çok daha az zaman alır.
 
-    ```
+    ```console
     docker push <docker_id>/azurefunctionsimage:v1.0.0
     ```
     
@@ -492,13 +492,13 @@ Sıra bağlaması tanımlı ile, artık işlevinizi, `msg` Çıkış parametresi
 
 1. Kök klasörde, `docker build` yeniden çalıştırın ve bu kez etiketteki sürümü olarak güncelleştirin `v1.0.1` . Daha önce olduğu gibi, `<docker_id>` Docker Hub HESABı Kimliğinizle değiştirin:
 
-    ```
+    ```console
     docker build --tag <docker_id>/azurefunctionsimage:v1.0.1 .
     ```
     
 1. Güncelleştirilmiş görüntüyü şu ile depoya geri gönderin `docker push` :
 
-    ```
+    ```console
     docker push <docker_id>/azurefunctionsimage:v1.0.1
     ```
 

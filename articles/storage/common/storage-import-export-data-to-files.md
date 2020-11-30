@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 10/29/2020
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 859325bffe1db9cd6a7afc7e5013681c88209eff
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 9d1d0f4b615bbf4cc7faf82d70a4de0b0157ed82
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491792"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326361"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Azure Dosyaları'na veri aktarmak için Azure İçeri/Dışarı Aktarma hizmetini kullanma
 
@@ -51,14 +51,14 @@ Sürücüleri hazırlamak için aşağıdaki adımları gerçekleştirin.
 2. Her sürücüde tek bir NTFS birimi oluşturun. Birime bir sürücü harfi atayın. Bağlama noktalarını kullanmayın.
 3. Aracın bulunduğu kök klasördeki *dataset.csv* dosyasını değiştirin. Bir dosyayı veya klasörü veya her ikisini de içeri aktarmak istediğinize bağlı olarak, *dataset.csv* dosyasına aşağıdaki örneklere benzer girdiler ekleyin.
 
-   - **Bir dosyayı içeri aktarmak için** : aşağıdaki örnekte kopyalanacak veriler F: sürücüsünde yer alır. Dosya *MyFile1.txt*  , *MyAzureFileshare1* köküne kopyalanır. *MyAzureFileshare1* yoksa, Azure depolama hesabında oluşturulur. Klasör yapısı korunur.
+   - **Bir dosyayı içeri aktarmak için**: aşağıdaki örnekte kopyalanacak veriler F: sürücüsünde yer alır. Dosya *MyFile1.txt*  , *MyAzureFileshare1* köküne kopyalanır. *MyAzureFileshare1* yoksa, Azure depolama hesabında oluşturulur. Klasör yapısı korunur.
 
        ```
            BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
            "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
 
        ```
-   - **Bir klasörü içeri aktarmak için** : *MyFolder2* altındaki tüm dosyalar ve klasörler yinelemeli olarak FileShare 'e kopyalanır. Klasör yapısı korunur.
+   - **Bir klasörü içeri aktarmak için**: *MyFolder2* altındaki tüm dosyalar ve klasörler yinelemeli olarak FileShare 'e kopyalanır. Klasör yapısı korunur.
 
        ```
            "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None
@@ -78,14 +78,14 @@ Sürücüleri hazırlamak için aşağıdaki adımları gerçekleştirin.
 
     Bu örnek, iki diskin bağlı olduğunu ve temel NTFS birimlerinin G:\ olduğunu varsayar. ve H:\ oluşturulur. G: zaten şifrelenirken h:\şifrelenmez. Araç, H:\ barındıran diski biçimlendirir ve şifreler yalnızca (ve değil: \) .
 
-   - **Şifrelenmeyen bir disk için** : diskte BitLocker şifrelemesini etkinleştirmek üzere *şifrelemeyi* belirtin.
+   - **Şifrelenmeyen bir disk için**: diskte BitLocker şifrelemesini etkinleştirmek üzere *şifrelemeyi* belirtin.
 
        ```
        DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
        H,Format,SilentMode,Encrypt,
        ```
 
-   - **Zaten şifrelenmiş bir disk için** : *Alreadyencrypted* belirtip BitLocker anahtarını sağlayın.
+   - **Zaten şifrelenmiş bir disk için**: *Alreadyencrypted* belirtip BitLocker anahtarını sağlayın.
 
        ```
        DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
@@ -123,13 +123,13 @@ Azure portal bir içeri aktarma işi oluşturmak için aşağıdaki adımları g
 
     ![Içeri/dışarı aktarmaya git](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
 
-3. **İçeri/dışarı aktarma Işi oluştur** ' a tıklayın.
+3. **İçeri/dışarı aktarma Işi oluştur**' a tıklayın.
 
     ![Içeri/dışarı aktarma işi ' ne tıklayın](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
 
-4. **Temel bilgiler** :
+4. **Temel bilgiler**:
 
-    - **Azure 'A aktar** ' ı seçin.
+    - **Azure 'A aktar**' ı seçin.
     - İçeri aktarma işi için açıklayıcı bir ad girin. Bu adı, işleri devam ederken ve tamamlandıktan sonra izlemek için kullanın.
         -  Bu ad yalnızca küçük harf, sayı, kısa çizgi ve alt çizgi içerebilir.
         -  Ad bir harfle başlamalı ve boşluk içermemelidir.
@@ -138,7 +138,7 @@ Azure portal bir içeri aktarma işi oluşturmak için aşağıdaki adımları g
 
         ![İçeri aktarma işi oluşturma-1. adım](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
 
-3. **İş için Ayrıntılar** :
+3. **İş için Ayrıntılar**:
 
     - Yukarıdaki [Adım 1: sürücüleri hazırlama](#step-1-prepare-the-drives)sırasında oluşturduğunuz günlük dosyalarını karşıya yükleyin.
     - Verilerin aktarılacağı depolama hesabını seçin.
@@ -146,7 +146,7 @@ Azure portal bir içeri aktarma işi oluşturmak için aşağıdaki adımları g
 
        ![İçeri aktarma işi oluşturma-2. adım](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
 
-4. **İade gönderimi bilgileri** :
+4. **İade gönderimi bilgileri**:
 
     - Açılır listeden taşıyıcısı seçin. FedEx/DHL dışında bir taşıyıcı kullanmak istiyorsanız, açılan listeden varolan bir seçeneği belirleyin. `adbops@microsoft.com`Kullanmayı planladığınız taşıyıcı ile ilgili bilgilerle birlikte Azure Data Box işlemler ekibine başvurun.
     - Bu taşıyıcı ile oluşturduğunuz geçerli bir taşıyıcı hesap numarası girin. Microsoft, içeri aktarma işiniz tamamlandıktan sonra sürücüleri size geri göndermek için bu hesabı kullanır.
@@ -158,7 +158,7 @@ Azure portal bir içeri aktarma işi oluşturmak için aşağıdaki adımları g
        ![İçeri aktarma işi oluşturma-3. adım](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
 
 
-5. **Özet** :
+5. **Özet**:
 
     - Disklerin Azure 'a geri sevk edilmesi için Azure veri merkezi teslimat adresini sağlayın. İş adının ve tam adresin Sevkiyat Etiketi üzerinde belirtildiğinden emin olun.
     - İçeri aktarma işi oluşturmayı gerçekleştirmek için **Tamam** ' ı tıklatın.
@@ -171,7 +171,7 @@ Azure CLı 'de bir içeri aktarma işi oluşturmak için aşağıdaki adımları
 
 [!INCLUDE [azure-cli-prepare-your-environment-h3.md](../../../includes/azure-cli-prepare-your-environment-h3.md)]
 
-### <a name="create-a-job"></a>İş oluşturma
+### <a name="create-a-job"></a>Bir iş oluşturma
 
 1. [Az Import-Export](/cli/azure/ext/import-export/import-export) uzantısını eklemek için [az Extension Add](/cli/azure/extension#az_extension_add) komutunu kullanın:
 
@@ -179,7 +179,7 @@ Azure CLı 'de bir içeri aktarma işi oluşturmak için aşağıdaki adımları
     az extension add --name import-export
     ```
 
-1. Var olan bir kaynak grubunu kullanabilir veya bir tane oluşturabilirsiniz. Bir kaynak grubu oluşturmak için [az Group Create](/cli/azure/group#az_group_create) komutunu çalıştırın:
+1. Var olan bir kaynak grubunu kullanabilir veya bir tane oluşturabilirsiniz. Kaynak grubu oluşturmak için [az group create](/cli/azure/group#az_group_create) komutunu çalıştırın:
 
     ```azurecli
     az group create --name myierg --location "West US"
@@ -256,7 +256,7 @@ Azure PowerShell içinde bir içeri aktarma işi oluşturmak için aşağıdaki 
 Install-Module -Name Az.ImportExport
 ```
 
-### <a name="create-a-job"></a>İş oluşturma
+### <a name="create-a-job"></a>Bir iş oluşturma
 
 1. Var olan bir kaynak grubunu kullanabilir veya bir tane oluşturabilirsiniz. Bir kaynak grubu oluşturmak için [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) cmdlet 'ini çalıştırın:
 

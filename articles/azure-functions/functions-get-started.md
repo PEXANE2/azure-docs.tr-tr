@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 11/19/2020
 ms.author: cshoe
 zone_pivot_groups: programming-languages-set-functions-lang-workers
-ms.openlocfilehash: d988bb7ef31df518d50ab9e2e8ffc1dcad4454da
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 78fd13825becfa186960a0dfd3dee83c312c9bcf
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96168058"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326956"
 ---
 # <a name="getting-started-with-azure-functions"></a>Azure İşlevleri’ni kullanmaya başlama
 
@@ -25,7 +25,7 @@ Başlamak için aşağıdaki kaynakları kullanın.
 
 | Eylem | Kaynaklar |
 | --- | --- |
-| **İlk uygulamanızı oluşturma** | Aşağıdaki araçlardan birini kullanarak:<br><br><li>[Visual Studio Code](./functions-create-your-first-function-visual-studio.md)<li>[Visual Studio](./create-first-function-vs-code-csharp.md)<li>[Komut satırı](./create-first-function-cli-csharp.md) |
+| **İlk uygulamanızı oluşturma** | Aşağıdaki araçlardan birini kullanarak:<br><br><li>[Visual Studio](./functions-create-your-first-function-visual-studio.md)<li>[Visual Studio Code](./create-first-function-vs-code-csharp.md)<li>[Komut satırı](./create-first-function-cli-csharp.md) |
 | **Çalışan bir işlev görüntüle** | <li>[Azure örnekleri tarayıcısı](/samples/browse/?expanded=azure&languages=csharp&products=azure-functions)<li>[Azure Community kitaplığı](https://www.serverlesslibrary.net/?technology=Functions%202.x&language=C%23) |
 | **Etkileşimli öğreticiyi keşfet**| <li>[İş senaryonuz için en uygun Azure sunucusuz teknolojisini seçme](/learn/modules/serverless-fundamentals/)<li>[İyi tasarlanmış çerçeve-performans verimliliği](/learn/modules/azure-well-architected-performance-efficiency/)<li>[Tetikleyicilerle bir Azure işlevi yürütme](/learn/modules/execute-azure-function-with-triggers/) <br><br>[Etkileşimli öğreticilerin tam listesi](/learn/browse/?expanded=azure&products=azure-functions)için bkz. Microsoft Learn.|
 | **Daha ayrıntılı bilgi edinin** | <li>İşlevlerin talebe uyacak şekilde örnekleri [otomatik olarak nasıl artıracağınızı veya azalmasını](./functions-scale.md) öğrenin<li>Kullanılabilir farklı [dağıtım yöntemlerini](./functions-deployment-technologies.md) keşfet<li>İşlevlerinizi çözümlemeye yardımcı olması için yerleşik [izleme araçlarını](./functions-monitoring.md) kullanın<li>[C# dil başvurusunu](./functions-dotnet-class-library.md) okuyun|

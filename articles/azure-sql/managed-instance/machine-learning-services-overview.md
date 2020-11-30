@@ -12,12 +12,12 @@ ms.author: garye
 ms.reviewer: sstein, davidph
 manager: cgronlun
 ms.date: 06/03/2020
-ms.openlocfilehash: c5392c822c42c2e0ee3f6ce9edffc6229d572165
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c805bacbd4a2219fb79168ad6426efd8b0a390df
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782426"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324525"
 ---
 # <a name="machine-learning-services-in-azure-sql-managed-instance-preview"></a>Azure SQL yönetilen örneği 'nde Machine Learning Services (Önizleme)
 
@@ -54,11 +54,11 @@ Bu sınırlı genel önizleme, [Azure önizleme koşullarına](https://azure.mic
 
 Önizleme programını birleştirmek ve bu koşulları kabul etmek istiyorsanız, konumunda bir Azure destek bileti oluşturarak kayıt isteğinde bulunabilir [**https://azure.microsoft.com/support/create-ticket/**](https://azure.microsoft.com/support/create-ticket/) . 
 
-1. **Destek bileti oluştur** sayfasında, **olay oluştur** ' a tıklayın.
+1. **Destek bileti oluştur** sayfasında, **olay oluştur**' a tıklayın.
 
 1. **Yardım + Destek** sayfasında yeni **destek isteği** ' ne tıklayarak yeni bir bilet oluşturun.
 
-1. Aşağıdaki seçenekleri belirleyin:
+1. Aşağıdaki seçenekleri belirtin:
    - Sorun türü- **Teknik**
    - Abonelik- *aboneliğinizi seçin*
    - Hizmet- **SQL yönetilen örneği**
@@ -67,16 +67,16 @@ Bu sınırlı genel önizleme, [Azure önizleme koşullarına](https://azure.mic
    - Sorun türü- **SQL yönetilen örneği için Machine Learning Services (Önizleme)**
    - Sorun alt türü- **diğer sorun veya "nasıl yapılır" soruları**
 
-1. **İleri: çözümler** ' e tıklayın.
+1. **İleri: çözümler**' e tıklayın.
 
-1. Önizleme hakkındaki bilgileri okuyun ve ardından **İleri** ' ye tıklayın.
+1. Önizleme hakkındaki bilgileri okuyun ve ardından **İleri**' ye tıklayın.
 
 1. Bu sayfada:
-   - **Önizleme için kaydolmaya çalışıyorsunuz?** , **Evet** ' i seçin. 
+   - **Önizleme için kaydolmaya çalışıyorsunuz?**, **Evet**' i seçin. 
    - **Açıklama** için, önizlemeye kaydetmek istediğiniz mantıksal sunucu adı, bölge ve abonelik kimliği dahil olmak üzere isteğinizin ayrıntılarını girin. Diğer ayrıntıları uygun şekilde girin.
    - Tercih ettiğiniz iletişim yönteminizi seçin. 
 
-1. İşiniz bittiğinde **İleri** ' ye tıklayın ve ardından Oluştur ' a tıklayın ve ardından **Oluştur** ' a tıklayın.
+1. İşiniz bittiğinde **İleri**' ye tıklayın ve ardından Oluştur ' a tıklayın ve ardından **Oluştur**' a tıklayın.
 
 Programa kaydınız yapıldıktan sonra Microsoft sizi genel önizleme sürümüne alacak ve var olan veya yeni veritabanınız için Machine Learning Services işlevini etkinleştirecektir.
 
@@ -85,6 +85,6 @@ Genel önizleme sırasında SQL Yönetilen Örneği için Machine Learning Servi
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [SQL Server Machine Learning Services arasındaki önemli farklılıkları](machine-learning-services-differences.md)inceleyin.
-- Machine Learning Services 'de Python kullanmayı öğrenmek için bkz. [Python betiklerini çalıştırma](/sql/machine-learning/tutorials/quickstart-python-create-script?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&view=sql-server-ver15).
-- Machine Learning Services 'de R 'yi nasıl kullanacağınızı öğrenmek için bkz. [Run r Scripts](/sql/machine-learning/tutorials/quickstart-r-create-script?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&view=sql-server-ver15).
+- Machine Learning Services 'de Python kullanmayı öğrenmek için bkz. [Python betiklerini çalıştırma](/sql/machine-learning/tutorials/quickstart-python-create-script?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&view=sql-server-ver15).
+- Machine Learning Services 'de R 'yi nasıl kullanacağınızı öğrenmek için bkz. [Run r Scripts](/sql/machine-learning/tutorials/quickstart-r-create-script?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&view=sql-server-ver15).
 - Diğer SQL platformlarında makine öğrenimi hakkında daha fazla bilgi için bkz. [SQL Machine Learning belgeleri](/sql/machine-learning/).

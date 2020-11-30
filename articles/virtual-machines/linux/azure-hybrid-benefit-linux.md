@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 1459c80c857a436c8369d3ebe89794e0b69c33b1
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 35bed58f95deebb78d8e787c8bc3f522ce7004df
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980890"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326978"
 ---
 # <a name="azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Azure Hibrit Avantajı: Linux Sanal Makineleri için nasıl uygulanır
 
-## <a name="overview"></a>Genel bakış
+## <a name="overview"></a>Genel Bakış
 
 Azure Hibrit Avantajı, önceden var olan Red hat veya SUSE yazılım aboneliğinizi kullanarak şirket içi Red Hat Enterprise Linux (RHEL) ve SUSE Linux Enterprise Server (SLES) sanal makinelerinizi (VM) Azure 'a daha kolay bir şekilde geçirebilmesini sağlar. Bu avantajla, yazılım ücreti RHEL veya SLES Aboneliğiniz kapsamında olduğu için yalnızca sanal makinenizin altyapı maliyetleri için ödeme yaparsınız. Bu avantaj, tüm RHEL ve SLES Market (PAYG) görüntüleri için geçerlidir.
 
@@ -155,9 +155,13 @@ Y: Hayır. Azure Hibrit Avantajı yalnızca Kullandıkça Öde görüntülerinde
 
 Y: Hayır. Azure Hibrit Avantajı yalnızca Kullandıkça Öde görüntülerinde dönüştürmeyi destekler.
 
-*S: kendi RHEL görüntüsünden on-Prem görüntüsünden (ASR veya başka türlü) Azure 'a yükledim. Bu görüntülerin faturalandırmasını BYOS 'den PAYG 'ye dönüştürebilir miyim?*
+*S: kendi RHEL görüntüsünden şirket içi (Azure geçişi, ASR veya başka bir şekilde) Azure 'a yükleme. Bu görüntülerin faturalandırmasını BYOS 'den PAYG 'ye dönüştürebilir miyim?*
 
 Y: Hayır. Azure Hibrit Avantajı özelliği, günümüzde yalnızca RHEL ve SLES Market görüntüleri için kullanılabilir. 
+
+*S: kendi RHEL görüntüsünden şirket içi (Azure geçişi, ASR veya başka bir şekilde) Azure 'a yükleme. Azure Hibrit Avantajı avantajına bir şey yapmam gerekiyor mu?*
+
+Y: Hayır. Karşıya yüklediğiniz RHEL görüntüleri zaten BYOS olarak kabul edilir ve yalnızca Azure altyapı maliyetlerinden ücretlendirilirsiniz. RHEL abonelikleri maliyetlerinden yalnızca şirket içi ortamlarınızla yaptığınız gibi siz sorumlusunuz. 
 
 *S: market RHEL ve SLES SAP görüntülerinden dağıtılan VM 'lerde Azure Hibrit Avantajı kullanabilir miyim?*
 

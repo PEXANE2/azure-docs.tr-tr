@@ -4,12 +4,12 @@ description: Bu makalede, Azure VM 'Leri Azure Backup hizmetiyle yedekleme hakk�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: e6e14209a8df7160d103cb036d38c9fee29b34dd
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 0f4f990654cc23fde7cf1ad2e37ba1ada76d94e3
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296072"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324797"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Sık sorulan sorular-Azure VM 'lerini yedekleme
 
@@ -83,7 +83,7 @@ Azure Backup `AzureBackupRG_<geo>_<number>` ResourcePointCollections nesnelerini
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disks"></a>, SSD tarafından yönetilen standart diskleri Azure Backup destekler mi?
 
-Evet, Azure Backup [Standart SSD yönetilen diskleri](https://docs.microsoft.com/azure/virtual-machines/disks-types#standard-ssd)destekler.
+Evet, Azure Backup [Standart SSD yönetilen diskleri](../virtual-machines/disks-types.md#standard-ssd)destekler.
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>Yazma Hızlandırıcısı (WA) özellikli bir diskle VM 'yi yedekleyebiliriz?
 

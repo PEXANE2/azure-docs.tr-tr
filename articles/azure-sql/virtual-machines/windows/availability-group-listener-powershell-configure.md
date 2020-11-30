@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: cb55274800b239cf0e1e942647ae0c65b321b862
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 147c507cde9abf2ef97098c6b41fbbd4d67f02d2
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790058"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324814"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Bir veya daha fazla Always on kullanılabilirlik grubu dinleyicisi yapılandırma-Kaynak Yöneticisi
 
@@ -64,7 +64,7 @@ Azure ağ güvenlik grubuyla erişimi kısıtladığınız takdirde, izin ver ku
 Bir kullanılabilirlik grubu için geçerli [Microsoft şablonu](./availability-group-quickstart-template-configure.md) , temel IP adresleriyle temel bir yük dengeleyici kullanır.
 
    > [!NOTE]
-   > Bulut tanığı için standart yük dengeleyici ve Azure Storage kullanıyorsanız, bir [hizmet uç noktası](../../../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#grant-access-from-a-virtual-network) yapılandırmanız gerekir. 
+   > Bulut tanığı için standart yük dengeleyici ve Azure Storage kullanıyorsanız, bir [hizmet uç noktası](../../../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network) yapılandırmanız gerekir. 
    > 
 
 Bu makaledeki örneklerde standart yük dengeleyici verilmiştir. Örneklerde, komut dosyası içerir `-sku Standard` .
@@ -195,11 +195,11 @@ $ILB | Add-AzLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfigura
 
 1. SQL Server Management Studio başlatın ve birincil çoğaltmaya bağlanın.
 
-1. **AlwaysOn yüksek kullanılabilirlik**  >  **kullanılabilirlik grupları**  >  **kullanılabilirlik grubu dinleyicileri** ' ne gidin. 
+1. **AlwaysOn yüksek kullanılabilirlik**  >  **kullanılabilirlik grupları**  >  **kullanılabilirlik grubu dinleyicileri**' ne gidin. 
 
-1. Artık Yük Devretme Kümesi Yöneticisi oluşturduğunuz dinleyici adını görmeniz gerekir. Dinleyici adına sağ tıklayın ve **Özellikler** ' i seçin.
+1. Artık Yük Devretme Kümesi Yöneticisi oluşturduğunuz dinleyici adını görmeniz gerekir. Dinleyici adına sağ tıklayın ve **Özellikler**' i seçin.
 
-1. **Bağlantı noktası** kutusunda, daha önce kullandığınız $EndpointPort kullanarak kullanılabilirlik grubu dinleyicisinin bağlantı noktası numarasını belirtin (1433 varsayılandır) ve ardından **Tamam** ' ı seçin.
+1. **Bağlantı noktası** kutusunda, daha önce kullandığınız $EndpointPort kullanarak kullanılabilirlik grubu dinleyicisinin bağlantı noktası numarasını belirtin (1433 varsayılandır) ve ardından **Tamam**' ı seçin.
 
 ## <a name="test-the-connection-to-the-listener"></a>Dinleyiciyle bağlantıyı test etme
 
@@ -236,7 +236,7 @@ SQLCMD bağlantısı, birincil çoğaltmayı barındıran SQL Server her örneğ
   - AG dinleyicisi için yük dengeleyici kayan IP adresleri
   - Varsa, küme çekirdek IP adresi.
 
-* Bulut tanığı için Azure depolama ile standart yük dengeleyici kullanırken bir hizmet uç noktası oluşturun. Daha fazla bilgi için bkz. [sanal ağdan erişim verme](../../../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#grant-access-from-a-virtual-network).
+* Bulut tanığı için Azure depolama ile standart yük dengeleyici kullanırken bir hizmet uç noktası oluşturun. Daha fazla bilgi için bkz. [sanal ağdan erişim verme](../../../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network).
 
 ## <a name="for-more-information"></a>Daha fazla bilgi edinmek için
 

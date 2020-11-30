@@ -14,12 +14,12 @@ ms.date: 11/07/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 347948734da439691bced01cf3693d0990567748
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: ca632a643215b689a9bbb825959e5c5c052d73cb
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146237"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326073"
 ---
 # <a name="how-to-use-the-azure-portal-to-provision-a-windows-virtual-machine-with-sql-server"></a>SQL Server ile bir Windows sanal makinesi sağlamak için Azure portal kullanma
 
@@ -38,11 +38,11 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 SQL Server bir sanal makine oluşturduğunuzda, sanal makine galerisindeki önceden yapılandırılmış birkaç görüntüden birini seçebilirsiniz. Aşağıdaki adımlarda SQL Server 2017 görüntülerinden birini seçme gösterilmektedir.
 
-1. Azure portal sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler** ' i seçin ve arama kutusuna *Azure SQL* yazın. 
+1. Azure portal sol taraftaki menüden **Azure SQL** ' i seçin. **Azure SQL** listede yoksa, **tüm hizmetler**' i seçin ve arama kutusuna *Azure SQL* yazın. 
 
    Ayrıca, **Azure SQL** ' in yanındaki yıldızı, sık kullanılan olarak kaydetmek ve sol gezinti bölmesinde bir öğe olarak eklemek için de seçebilirsiniz. 
 
-1. **+ Ekle** ' yı seçerek **SQL dağıtım seçeneğini seçin** sayfasını açın. **Ayrıntıları göster** ' i seçerek ek bilgileri görüntüleyebilirsiniz. 
+1. **+ Ekle** ' yı seçerek **SQL dağıtım seçeneğini seçin** sayfasını açın. **Ayrıntıları göster**' i seçerek ek bilgileri görüntüleyebilirsiniz. 
 1. **SQL sanal makineler** kutucuğunda SQL Server resim arama kutusuna *2017* yazın ve ardından açılır listeden **Ücretsiz SQL Server Lisans: Windows Server 2016 üzerinde SQL Server 2017 Developer** ' ı seçin. 
 
    ![SQL VM görüntüsünü seçin](./media/create-sql-vm-portal/select-sql-vm-image-portal.png)
@@ -56,14 +56,14 @@ SQL Server bir sanal makine oluşturduğunuzda, sanal makine galerisindeki önce
    > Bu seçeneklerle ilgili daha fazla bilgi için bkz. [SQL Server Azure VM’leri için fiyatlandırma kılavuzu](pricing-guidance.md).
 
 
-1. **Oluştur** ’u seçin.
+1. **Oluştur**’u seçin.
 
 
 ## <a name="1-configure-basic-settings"></a>1. temel ayarları Yapılandır
 
 **Temel bilgiler** sekmesinde, aşağıdaki bilgileri sağlayın:
 
-* **Proje ayrıntıları** ' nın altında, doğru aboneliğin seçildiğinden emin olun. 
+* **Proje ayrıntıları**' nın altında, doğru aboneliğin seçildiğinden emin olun. 
 * **Kaynak grubu** bölümünde, listeden var olan bir kaynak grubunu seçin veya yeni bir kaynak grubu oluşturmak Için **Yeni oluştur** ' u seçin. Bir kaynak grubu, Azure’daki ilgili kaynakların bir koleksiyonudur (sanal makineler, depolama hesapları, sanal ağlar, vb.). 
 
   ![Abonelik](./media/create-sql-vm-portal/basics-project-details.png)
@@ -72,18 +72,18 @@ SQL Server bir sanal makine oluşturduğunuzda, sanal makine galerisindeki önce
   > Yalnızca Azure’daki SQL Server dağıtımlarını test ediyor veya öğreniyorsanız, yeni bir kaynak grubu kullanmak faydalıdır. Test işleminizi tamamladıktan sonra, sanal makineyi ve bu kaynak grubu ile ilişkili tüm kaynakları otomatik olarak silmek için kaynak grubunu silin. Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure Resource Manager genel bakış](../../../active-directory-b2c/overview.md).
 
 
-* **Örnek ayrıntıları** :
+* **Örnek ayrıntıları**:
 
     1. Benzersiz bir **sanal makine adı** girin.  
     1. **Bölgeniz** için bir konum seçin. 
     1. Bu kılavuzun amacı doğrultusunda, **kullanılabilirlik seçeneklerini** _altyapı yedekliliği olmadan_ ayarlayın. Kullanılabilirlik seçenekleri hakkında daha fazla bilgi edinmek için bkz. [kullanılabilirlik](../../../virtual-machines/availability.md). 
-    1. **Görüntü** listesinde _Ücretsiz SQL Server Lisansı: Windows Server 2016 üzerinde SQL Server 2017 Developer_ ' ı seçin.  
+    1. **Görüntü** listesinde _Ücretsiz SQL Server Lisansı: Windows Server 2016 üzerinde SQL Server 2017 Developer_' ı seçin.  
     1. Sanal makine **boyutunun** **boyutunu değiştirmeyi** seçin ve **a2 temel** teklifini seçin. Beklenmedik ücretleri engellemek için, bu kaynaklarla işiniz bittiğinde kaynaklarınızı temizlediğinizden emin olun. Üretim iş yükleri için [Azure Virtual Machines'de SQL Server için en iyi performans uygulamaları](performance-guidelines-best-practices.md)’nda önerilen makine boyutlarına ve yapılandırmalara bakın.
 
     ![Örnek ayrıntıları](./media/create-sql-vm-portal/basics-instance-details.png)
 
 > [!IMPORTANT]
-> **Boyut seçin** penceresinde gösterilen tahmini aylık maliyet, SQL Server lisans maliyetlerini içermez. Bu tahmin VM 'nin tek başına maliyetidir. SQL Server Express ve Developer sürümleri için bu tahmin toplam tahmini maliyettir. Diğer sürümler için [Windows Sanal Makineler fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) bakın ve hedef SQL Server sürümünüzü seçin. Ayrıca bkz. [Azure VM 'leri Için fiyatlandırma Kılavuzu](pricing-guidance.md) ve [sanal makineler için Boyutlar](../../../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json)SQL Server.
+> **Boyut seçin** penceresinde gösterilen tahmini aylık maliyet, SQL Server lisans maliyetlerini içermez. Bu tahmin VM 'nin tek başına maliyetidir. SQL Server Express ve Developer sürümleri için bu tahmin toplam tahmini maliyettir. Diğer sürümler için [Windows Sanal Makineler fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) bakın ve hedef SQL Server sürümünüzü seçin. Ayrıca bkz. [Azure VM 'leri Için fiyatlandırma Kılavuzu](pricing-guidance.md) ve [sanal makineler için Boyutlar](../../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)SQL Server.
 
 * **Yönetici hesabı** altında, bir Kullanıcı adı ve parola sağlayın. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)karşılamalıdır.
 
@@ -101,7 +101,7 @@ SQL Server bir sanal makine oluşturduğunuzda, sanal makine galerisindeki önce
 **Diskler** sekmesinde disk seçeneklerinizi yapılandırın. 
 
 * **Işletim sistemi disk türü** altında, işletim sistemi için istediğiniz disk türünü seçin. Premium, üretim sistemleri için önerilir, ancak temel bir VM için kullanılamaz. Premium SSD kullanmak için sanal makine boyutunu değiştirin. 
-* **Gelişmiş** ' in altında, **yönetilen diskleri** kullan altında **Evet** ' i seçin.
+* **Gelişmiş**' in altında, **yönetilen diskleri** kullan altında **Evet** ' i seçin.
 
    > [!NOTE]
    > Microsoft, SQL Server için Yönetilen Diskleri önerir. Yönetilen Diskler, depolama alanını arka planda yönetir. Ayrıca, Yönetilen Disklere sahip sanal makineler aynı kullanılabilirlik kümesinde olduğunda Azure uygun artıklık düzeyini sağlamak için depolama kaynaklarını dağıtır. Daha fazla bilgi için bkz. [Azure yönetilen disklere genel bakış](../../../virtual-machines/managed-disks-overview.md). Bir kullanılabilirlik kümesindeki yönetilen diskler hakkında daha fazla ayrıntı için bkz. [Kullanılabilirlik kümesindeki VM’ler için yönetilen diskleri kullanma](../../../virtual-machines/manage-availability.md).
@@ -137,7 +137,7 @@ SQL Server bir sanal makine oluşturduğunuzda, sanal makine galerisindeki önce
 
 - [Bağlantı](#connectivity)
 - [Kimlik Doğrulaması](#authentication)
-- [Azure Anahtar Kasası tümleştirme](#azure-key-vault-integration)
+- [Azure Key Vault tümleştirme](#azure-key-vault-integration)
 - [Depolama yapılandırması](#storage-configuration)
 - [Otomatik düzeltme eki uygulama](#automated-patching)
 - [Otomatik yedekleme](#automated-backup)
@@ -177,7 +177,7 @@ SQL Server kimlik doğrulamasını etkinleştirmemeyi tercih ediyorsanız, SQL S
 
 ### <a name="azure-key-vault-integration"></a>Azure Anahtar Kasası tümleştirme
 
-Şifreleme için Azure 'da güvenlik gizli dizileri depolamak için **SQL Server ayarları** ' nı seçin ve  **Azure Anahtar Kasası tümleştirmesi** ' ne gidin. **Etkinleştir** ' i seçin ve istenen bilgileri girin. 
+Şifreleme için Azure 'da güvenlik gizli dizileri depolamak için **SQL Server ayarları**' nı seçin ve  **Azure Anahtar Kasası tümleştirmesi**' ne gidin. **Etkinleştir** ' i seçin ve istenen bilgileri girin. 
 
 ![Azure Anahtar Kasası tümleştirme](./media/create-sql-vm-portal/azure-sqlvm-akv.png)
 
@@ -188,7 +188,7 @@ Aşağıdaki tabloda Azure Key Vault (AKV) tümleştirmesini yapılandırmak iç
 | **Anahtar Kasası URL'si** |Anahtar kasası konumu. |`https://contosokeyvault.vault.azure.net/` |
 | **Asıl ad** |Azure Active Directory hizmet asıl adı. Bu ad İstemci Kimliği olarak da bilinir. |`fde2b411-33d5-4e11-af04eb07b669ccf2` |
 | **Asıl gizli anahtar** |Azure Active Directory hizmet asıl gizli anahtarı. Bu gizli anahtar İstemci Gizli Anahtarı olarak da bilinir. |`9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM=` |
-| **Kimlik bilgisi adı** |**Kimlik bilgisi adı** : Akv tümleştirmesi SQL Server içinde bir kimlik bilgisi oluşturur ve VM 'nin anahtar kasasına erişmesine izin verir. Bu kimlik bilgisi için bir ad seçin. |`mycred1` |
+| **Kimlik bilgisi adı** |**Kimlik bilgisi adı**: Akv tümleştirmesi SQL Server içinde bir kimlik bilgisi oluşturur ve VM 'nin anahtar kasasına erişmesine izin verir. Bu kimlik bilgisi için bir ad seçin. |`mycred1` |
 
 Daha fazla bilgi için bkz. [Azure VM’lerde SQL Server için Azure Anahtar Kasası Tümleştirmeyi Yapılandırma](azure-key-vault-integration-configure.md).
 
@@ -200,9 +200,9 @@ Daha fazla bilgi için bkz. [Azure VM’lerde SQL Server için Azure Anahtar Kas
 
 **Depolama iyileştirme seçimi** altında aşağıdaki seçeneklerden birini seçin:
 
-* **Genel** , varsayılan ayardır ve çoğu iş yükünü destekler.
+* **Genel**, varsayılan ayardır ve çoğu iş yükünü destekler.
 * **İşlemsel işleme** , geleneksel veritabanı OLTP iş yükleri için depolamayı iyileştirir.
-* **Veri depolama** , depolamayı çözümleme ve raporlama iş yükleri için iyileştirir.
+* **Veri depolama**, depolamayı çözümleme ve raporlama iş yükleri için iyileştirir.
 
 ![SQL VM depolama yapılandırması](./media/create-sql-vm-portal/sql-vm-storage-configuration.png)
 
@@ -216,7 +216,7 @@ Yazılım Güvencesi müşterisi iseniz, kendi SQL Server lisansınızı getirme
 
 ### <a name="automated-patching"></a>Otomatik düzeltme eki uygulama
 
-**Otomatik düzeltme eki uygulama** varsayılan olarak etkindir. Otomatik düzeltme eki uygulama Azure’un SQL Server’a ve işletim sistemine otomatik olarak düzeltme eki uygulamasını sağlar. Bakım penceresi için haftanın gününü, saati ve süreyi belirtin. Azure düzeltme eki uygulamayı bu bakım penceresinde gerçekleştirir. Bakım penceresi zamanlaması VM yerel ayarını kullanır. Azure 'un SQL Server ve işletim sistemi tarafından otomatik olarak düzeltme ekini almak istemiyorsanız, **devre dışı bırak** ' ı seçin.  
+**Otomatik düzeltme eki uygulama** varsayılan olarak etkindir. Otomatik düzeltme eki uygulama Azure’un SQL Server’a ve işletim sistemine otomatik olarak düzeltme eki uygulamasını sağlar. Bakım penceresi için haftanın gününü, saati ve süreyi belirtin. Azure düzeltme eki uygulamayı bu bakım penceresinde gerçekleştirir. Bakım penceresi zamanlaması VM yerel ayarını kullanır. Azure 'un SQL Server ve işletim sistemi tarafından otomatik olarak düzeltme ekini almak istemiyorsanız, **devre dışı bırak**' ı seçin.  
 
 ![SQL VM otomatik düzeltme eki uygulama](./media/create-sql-vm-portal/azure-sqlvm-automated-patching.png)
 
@@ -234,7 +234,7 @@ SQL otomatik yedeklemeyi etkinleştirdiğinizde aşağıdaki ayarları yapıland
 * Backup sistem veritabanları
 * Yedekleme zamanlamasını yapılandırma
 
-Yedeklemeyi şifrelemek için **Etkinleştir** ' i seçin. Ardından **Parola** ’yı belirtin. Azure yedeklemeleri şifrelemek için bir sertifika oluşturur ve bu sertifikayı korumak için belirtilen parolayı kullanır. Zamanlama varsayılan olarak otomatik olarak ayarlanır, ancak **el ile** ' yi seçerek el ile zamanlama oluşturabilirsiniz. 
+Yedeklemeyi şifrelemek için **Etkinleştir**' i seçin. Ardından **Parola**’yı belirtin. Azure yedeklemeleri şifrelemek için bir sertifika oluşturur ve bu sertifikayı korumak için belirtilen parolayı kullanır. Zamanlama varsayılan olarak otomatik olarak ayarlanır, ancak **el ile**' yi seçerek el ile zamanlama oluşturabilirsiniz. 
 
 ![SQL VM otomatik yedeklemeleri](./media/create-sql-vm-portal/automated-backup.png)
 

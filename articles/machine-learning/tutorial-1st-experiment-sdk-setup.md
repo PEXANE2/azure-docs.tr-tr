@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 6eb76c9d8cc8447755e045972a7aceddefd1604a
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: ebde8048c26364d77d95b9c7b34f9d1d7a4a20ee
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94532979"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326292"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-jupyter-notebooks"></a>Öğretici: Jupyter not defterlerinde Azure Machine Learning kullanmaya başlayın
 
@@ -59,7 +59,7 @@ Aşağıdaki deneme kurulumunu tamamlayıp Azure Machine Learning Studio 'da ad�
 
 1. Aboneliğinizi ve oluşturduğunuz çalışma alanını seçin.
 
-1. Sol tarafta, **Not defterleri** ' ni seçin.
+1. Sol tarafta, **Not defterleri**' ni seçin.
 
 1. En üstteki **örnekler** sekmesini seçin.
 
@@ -67,7 +67,7 @@ Aşağıdaki deneme kurulumunu tamamlayıp Azure Machine Learning Studio 'da ad�
 
 1. Klasörü üzerinde bir sürüm numarasıyla açın. Bu sayı, Python SDK 'sının geçerli sürümünü temsil eder.
 
-1. **Öğreticiler** klasörünün sağ tarafındaki **...** düğmesini seçin ve ardından **Kopyala** ' yı seçin.
+1. **Öğreticiler** klasörünün sağ tarafındaki **...** düğmesini seçin ve ardından **Kopyala**' yı seçin.
 
     :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png" alt-text="Klonlama öğreticileri klasörünü gösteren ekran görüntüsü.":::
 
@@ -80,7 +80,7 @@ Aşağıdaki deneme kurulumunu tamamlayıp Azure Machine Learning Studio 'da ad�
     > [!IMPORTANT]
     > Not defterlerini **örnekler** klasöründe görüntüleyebilirsiniz, ancak buradan bir not defteri çalıştıramazsınız. Bir not defteri çalıştırmak için, **Kullanıcı dosyaları** bölümünde Not defterinin kopyalanmış sürümünü çalıştırdığınızdan emin olun.
     
-1. **Öğreticiler/Image-Classification-mnist-Data** klasörünüzdeki **öğretici-1-deneme-SDK-eğitme. ipynb** dosyasını seçin.
+1. **Öğreticiler/Image-Classification-mnist-Data** klasörünüzdeki **img-Classification-part1-eğitim. ipynb** dosyasını seçin.
 
     :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="Açık öğreticiler klasörünü gösteren ekran görüntüsü.":::
 
@@ -99,7 +99,7 @@ Aşağıdaki deneme kurulumunu tamamlayıp Azure Machine Learning Studio 'da ad�
 
     1. Kullanılabilir seçeneklerden VM boyutunu seçin. Öğreticiler için, varsayılan VM iyi bir seçimdir.
 
-    1. Ardından **Oluştur** ’u seçin. SANAL makinenizin ayarlanması yaklaşık beş dakika sürebilir.
+    1. Ardından **Oluştur**’u seçin. SANAL makinenizin ayarlanması yaklaşık beş dakika sürebilir.
 
 1. VM kullanılabilir olduğunda, üstteki araç çubuğunda görüntülenir. Artık Not defteri 'ni araç çubuğunda **Çalıştır** ' a veya Not defteri 'nin kod hücrelerinde **SHIFT + enter** ' a tıklayarak çalıştırabilirsiniz.
 

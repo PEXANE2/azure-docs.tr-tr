@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: b138b3eb52a0bfb6dca2ec6fdf0b855223bab698
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 1f4d0d5c2d5442d14d68922c4d0c27b45b2b841e
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984456"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324729"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Etiketleme projesindeki resimleri etiketleme 
 
@@ -119,7 +119,7 @@ Varolan bir sınırlayıcı kutunun etiketini değiştiremezsiniz. Etiket atama 
 
 Varsayılan olarak, varolan sınırlayıcı kutuları düzenleyebilirsiniz. **Kilitleme/kilit açma bölgesi** aracı ![ kilitleme/kilit açma bölgesi aracı ](./media/how-to-label-images/lock-bounding-boxes-tool.png) veya "L" Bu davranışa geçiş yapar. Bölgeler kilitliyse, yalnızca yeni bir sınırlayıcı kutunun şeklini veya konumunu değiştirebilirsiniz.
 
-**Regions manipulation** ![ ](./media/how-to-label-images/regions-tool.png) Mevcut bir sınırlayıcı kutuyu ayarlamak için bölge işleme aracı bölgeleri Işleme aracını veya "d" kullanın. Şekli ayarlamak için kenarları veya köşeleri sürükleyin. Tüm sınırlayıcı kutusunu sürüklemek için iç öğesine tıklayın. Bir bölgeyi düzenleyemezsiniz, büyük olasılıkla bir bölgeyi **Kilitle/kilidini aç** aracını atlayabilirsiniz.
+**Bölge işleme** aracını kullanın ![ Bu bölge işleme aracı simgelerdir. merkezden, yukarı, sağa, aşağı ve sola doğru işaret eden dört ok.](./media/how-to-label-images/regions-tool.png) ya da "e", varolan bir sınırlayıcı kutuyu ayarlamak için. Şekli ayarlamak için kenarları veya köşeleri sürükleyin. Tüm sınırlayıcı kutusunu sürüklemek için iç öğesine tıklayın. Bir bölgeyi düzenleyemezsiniz, büyük olasılıkla bir bölgeyi **Kilitle/kilidini aç** aracını atlayabilirsiniz.
 
 **Template-based box** ![ ](./media/how-to-label-images/template-box-tool.png) Aynı boyutta birden fazla sınırlayıcı kutu oluşturmak için şablon tabanlı kutu aracı şablon kutusu aracını veya "T" kullanın. Görüntüde hiçbir sınırlayıcı kutu yoksa ve şablon tabanlı kutuları etkinleştirirseniz, araç 50-50 piksel kutu üretir. Bir sınırlayıcı kutusu oluşturup şablon tabanlı kutuları etkinleştirirseniz, yeni sınırlama kutuları oluşturduğunuz son kutunun boyutu olur. Şablon tabanlı kutular, yerleştirme sonrasında yeniden boyutlandırılabilir. Şablon tabanlı bir kutunun yeniden boyutlandırılması yalnızca belirli bir kutuyu yeniden boyutlandırır.
 
@@ -143,7 +143,7 @@ Bir çokgenin etiketini değiştirmek istiyorsanız, **bölgeyi taşı** aracın
 
 Mevcut poligonları düzenleyebilirsiniz. **Kilitleme/kilit açma bölgesi** Aracı, ![ poligonları kilitle/kilidini aç aracı ](./media/how-to-label-images/lock-bounding-boxes-tool.png) veya "L" olan düzenleme, bu davranışa geçiş yapar. Bölgeler kilitliyse, yalnızca yeni bir çokgenin şeklini veya konumunu değiştirebilirsiniz.
 
-Çokgen noktaları **Ekle veya Kaldır** aracını kullanın ![ varolan çokgeni ayarlamak için Çokgen noktaları Ekle veya Kaldır aracını ](./media/how-to-label-images/add-remove-points-tool.png) veya "U". Bir nokta eklemek veya kaldırmak için Çokgen ' e tıklayın. Bir bölgeyi düzenleyemezsiniz, büyük olasılıkla bir bölgeyi **Kilitle/kilidini aç** aracını atlayabilirsiniz.
+**Çokgen noktaları Ekle** veya Kaldır aracını kullanma ![ Bu, çokgen noktaları Ekle veya Kaldır araç simgedir.](./media/how-to-label-images/add-remove-points-tool.png) veya var olan bir çokgeni ayarlamak için "U". Bir nokta eklemek veya kaldırmak için Çokgen ' e tıklayın. Bir bölgeyi düzenleyemezsiniz, büyük olasılıkla bir bölgeyi **Kilitle/kilidini aç** aracını atlayabilirsiniz.
 
 Geçerli görüntüdeki *Tüm* poligonları silmek için **tüm bölgeleri Sil** araç ![ tüm bölgeleri Sil aracını seçin ](./media/how-to-label-images/delete-regions-tool.png) .
 

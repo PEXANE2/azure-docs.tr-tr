@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e6f6d1960c07dc23c584dec5bb424f91630fc1bb
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 92cd20f9e636c50416a72ec974a33c87da1ae2cb
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785077"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327279"
 ---
 # <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Azure Sanal Makineler üzerinde SQL Server için güvenlikle ilgili dikkat edilmesi gerekenler
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,7 +41,7 @@ Aşağıdaki bölümler, bu noktalarda düşünce hakkında öneriler sağlar.
 
 ## <a name="secure-connections"></a>Güvenli bağlantılar
 
-Galeri görüntüsüne sahip SQL Server bir sanal makine oluşturduğunuzda, **SQL Server bağlantı** seçeneği size **Yerel (VM içinde)** , **özel (sanal ağ Içinde)** veya **Genel (Internet)** seçimi sağlar.
+Galeri görüntüsüne sahip SQL Server bir sanal makine oluşturduğunuzda, **SQL Server bağlantı** seçeneği size **Yerel (VM içinde)**, **özel (sanal ağ Içinde)** veya **Genel (Internet)** seçimi sağlar.
 
 ![SQL Server bağlantısı](./media/security-considerations-best-practices/sql-vm-connectivity-option.png)
 
@@ -59,7 +59,7 @@ Son olarak, Azure sanal makinenizde SQL Server veritabanı altyapısının örne
 
 ## <a name="encryption"></a>Şifreleme
 
-Yönetilen diskler Server-Side şifreleme ve Azure disk şifrelemesi sunmaktadır. [Sunucu tarafı şifreleme](../../../virtual-machines/windows/disk-encryption.md) , bekleyen şifreleme sağlar ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamak için verilerinizi korur. [Azure disk şifrelemesi](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md) , Bitlocker veya DM-Crypt teknolojisini kullanır ve hem işletim sistemi hem de veri disklerini şifrelemek için Azure Key Vault ile tümleşir. 
+Yönetilen diskler Server-Side şifreleme ve Azure disk şifrelemesi sunmaktadır. [Sunucu tarafı şifreleme](../../../virtual-machines/disk-encryption.md) , bekleyen şifreleme sağlar ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamak için verilerinizi korur. [Azure disk şifrelemesi](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md) , Bitlocker veya DM-Crypt teknolojisini kullanır ve hem işletim sistemi hem de veri disklerini şifrelemek için Azure Key Vault ile tümleşir. 
 
 ## <a name="use-a-non-default-port"></a>Varsayılan olmayan bir bağlantı noktası kullan
 

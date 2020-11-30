@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 484a44a7a9840409e3f5770c743e5cd62e0cef66
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 824ae8d39d934ebc58fc75185e36f5faa11109a9
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910313"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325375"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory kodu örnekleri (v 1.0 uç noktası)
 
@@ -69,7 +69,7 @@ Platform | Örnek |
 
 ## <a name="desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api"></a>Microsoft Graph veya bir Web API 'sini çağıran masaüstü ve mobil ortak istemci uygulamaları
 
-Aşağıdaki örneklerde, bir kullanıcı adına Microsoft Graph veya bir Web API 'sine erişen ortak istemci uygulamaları (deskto/pmobile uygulamaları) gösterilmektedir. Uygulamalar, cihazlara ve platformlara bağlı olarak, kullanıcılar tarafından farklı yollarla oturum açabilirler (akışlar/izin verir):
+Aşağıdaki örneklerde, bir kullanıcı adına Microsoft Graph veya bir Web API 'sine erişen ortak istemci uygulamaları (masaüstü/mobil uygulamalar) gösterilmektedir. Uygulamalar, cihazlara ve platformlara bağlı olarak, kullanıcılar tarafından farklı yollarla oturum açabilirler (akışlar/izin verir):
 
 - Biriyle
 - Sessizce (Windows üzerinde tümleşik Windows kimlik doğrulaması veya Kullanıcı adı/parola ile)

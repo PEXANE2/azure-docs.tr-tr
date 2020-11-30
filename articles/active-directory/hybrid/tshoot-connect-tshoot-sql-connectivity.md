@@ -10,16 +10,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 05/14/2018
+ms.date: 11/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5f8b87684847089a05341a5a68f6ad3e2ac86b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c29087ee1f74e2abed8c9fb2449a222469c82848
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85355871"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325136"
 ---
 # <a name="troubleshoot-sql-connectivity-issues-with-azure-ad-connect"></a>Azure AD Connect ile ilgili SQL bağlantı sorunlarını giderme
 Bu makalede Azure AD Connect ve SQL Server arasındaki bağlantı sorunlarının nasıl giderileceği açıklanmaktadır. 
@@ -32,7 +32,9 @@ Aşağıdaki ekran görüntüsünde, SQL Server bulunamazsa tipik bir hata göst
 Bir PowerShell penceresi açın ve ADSyncTools PowerShell modülünü Içeri aktarın
 
 ``` powershell
-Import-Module "C:\Program Files\Microsoft Azure Active Directory Connect\Tools\AdSyncTools.psm1" 
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+Install-PackageProvider -Name NuGet -MinimumVersion2.8.5.201 -Force
+Import-module -Name "C:\Program Files\Microsoft Azure Active Directory Connect\Tools\AdSyncTools"
 ```
 
 >[!NOTE]
@@ -43,7 +45,7 @@ Ya da [PackageManagement PowerShell modülleri Için önizleme-PowerShell 3.0/4.
 - Aşağıdaki parametrelerle **PowerShell Işlevini yürütün**: `Connect-ADSyncDatabase`
     - Server. SQL Server adı.
     - Instance. Seçim Kullanmak istediğiniz SQL Server örnek adı ve isteğe bağlı olarak bağlantı noktası numarası. Varsayılan örneği kullanmak için bu parametreyi belirtmeyin.
-    - Nitelen. Seçim Bağlanılacak Kullanıcı hesabı. Boş bırakılırsa, şu anda oturum açmış olan kullanıcının kullanılması gerekir. Uzak bir SQL Server bağlanıyorsanız, bu, Azure AD Connect SQL bağlantısı için oluşturduğunuz özel hizmet hesabı olmalıdır. Azure AD Connect, uzak bir SQL Server 'da kimlik doğrulamak için Azure AD Connect eşitleme hizmeti hesabını kullanır.
+    - Nitelen. Seçim Bağlanılacak Kullanıcı hesabı. Boş bırakılırsa, şu anda oturum açmış olan kullanıcının kullanılması gerekir. Uzak bir SQL Server bağlanıyorsanız bu, Azure AD Connect SQL bağlantısı için oluşturduğunuz özel hizmet hesabı olmalıdır. Azure AD Connect, uzak bir SQL Server 'da kimlik doğrulamak için Azure AD Connect eşitleme hizmeti hesabını kullanır.
     - Parolayı. Seçim Belirtilen Kullanıcı adı için parola.
 
 Bu PowerShell işlevi, geçirilen kimlik bilgilerini kullanarak belirtilen SQL Server ve örneğe bağlamayı dener veya geçerli kullanıcının kimlik bilgilerini kullanır. SQL Server bulunamıyorsa, komut dosyası, etkin protokolleri ve bağlantı noktalarını belirleyebilmek için SQL Browser hizmetine bağlanmaya çalışacaktır.

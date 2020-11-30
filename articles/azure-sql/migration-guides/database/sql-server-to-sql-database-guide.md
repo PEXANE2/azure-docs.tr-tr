@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 55ce3747aaf105c7e2cbb830b1175769a658fd72
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: ee4abaf3c9f6aa70ba14920711c8917994254649
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94497047"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326990"
 ---
 # <a name="migration-guide-sql-server-to-sql-database"></a>Geçiş Kılavuzu: SQL veritabanı 'na SQL Server
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -69,13 +69,13 @@ Veri kaynakları bulunduktan sonra, geçiş engelleyicileri veya uyumluluk sorun
 Veritabanı geçiş değerlendirmesini kullanarak ortamınızı değerlendirmek için aşağıdaki adımları izleyin: 
 
 1. [Data Migration Yardımcısı (DMA)](https://www.microsoft.com/download/details.aspx?id=53595)öğesini açın. 
-1. **Dosya** ' yı ve ardından **Yeni değerlendirme** ' yı seçin. 
+1. **Dosya** ' yı ve ardından **Yeni değerlendirme**' yı seçin. 
 1. Bir proje adı belirtin, kaynak sunucu türü olarak SQL Server öğesini seçin ve ardından hedef sunucu türü olarak Azure SQL veritabanı ' nı seçin. 
 1. Oluşturmak istediğiniz değerlendirme raporlarının türlerini seçin. Örneğin, veritabanı uyumluluğu ve özellik eşliği. Değerlendirme türüne göre, kaynak SQL Server gereken izinler farklı olabilir.  DMA, değerlendirmeyi çalıştırmadan önce, seçilen Advisor için gereken izinleri vurgulayacaktır.
     - **Özellik eşlik** kategorisi, Azure 'da kullanılabilen kapsamlı bir öneriler kümesi sağlar ve geçiş projenizi planlamada size yardımcı olacak adımları ortadan bir şekilde sunar. (sysadmin izinleri gereklidir)
     - **Uyumluluk sorunları** kategorisi, geçişi engelleyebilen kısmen desteklenen veya desteklenmeyen özellik uyumluluğu sorunlarını ( `CONNECT SQL` , `VIEW SERVER STATE` ve `VIEW ANY DEFINITION` gerekli izinleri) belirler.
 1. SQL Server için kaynak bağlantısı ayrıntılarını belirtin ve kaynak veritabanına bağlanın.
-1. **Değerlendirmeyi Başlat** ' ı seçin. 
+1. **Değerlendirmeyi Başlat**' ı seçin. 
 1. İşlem tamamlandıktan sonra, geçiş engelleme ve özellik eşlik sorunları için değerlendirme raporlarını seçin ve gözden geçirin. Değerlendirme raporu, kuruluşunuzdaki diğer ekiplerle veya personelle paylaşılabilen bir dosyaya da aktarılabilir. 
 1. Geçiş sonrası çabalarını en aza indiren veritabanı uyumluluk düzeyini belirleme.  
 1. Şirket içi iş yükünüz için en iyi Azure SQL veritabanı SKU 'sunu belirler. 
@@ -114,7 +114,7 @@ DMA kullanarak bir veritabanını Azure SQL veritabanı 'na SQL Server geçirmek
 
 1. Veritabanını indirin ve yükleyin [Geçiş Yardımcısı](https://www.microsoft.com/download/details.aspx?id=53595).
 1. Yeni bir proje oluşturun ve proje türü olarak **geçişi** seçin.
-1. Kaynak sunucu türünü **SQL Server** ve hedef sunucu türünü **Azure SQL veritabanı** olarak ayarlayın, geçiş kapsamını **şema ve veri** olarak seçin ve **Oluştur** ' u seçin.
+1. Kaynak sunucu türünü **SQL Server** ve hedef sunucu türünü **Azure SQL veritabanı** olarak ayarlayın, geçiş kapsamını **şema ve veri** olarak seçin ve **Oluştur**' u seçin.
 1. Geçiş projesinde sunucu adı, sunucuya bağlanmak için kimlik bilgileri ve geçirilecek kaynak veritabanı gibi kaynak sunucu ayrıntılarını belirtin.
 1. Hedef sunucu ayrıntılarında, Azure SQL veritabanı sunucu adını, sunucuya bağlanmak için kimlik bilgilerini ve geçirilecek hedef veritabanını belirtin.
 1. Şema nesnelerini seçin ve hedef Azure SQL veritabanı 'na dağıtın.
@@ -137,7 +137,7 @@ DMS kullanarak SQL Server veritabanlarını Azure SQL veritabanı 'na geçirmek 
 1. DMS örneğiniz oluşturulduktan sonra yeni bir geçiş projesi oluşturun ve kaynak sunucu türünü **SQL Server** ve hedef sunucu türünü **Azure SQL veritabanı** olarak belirtin. Geçiş projesi oluşturma dikey penceresinde etkinlik türü olarak **çevrimdışı veri geçişi** ' ni seçin.
 1. Geçiş **kaynağı** ayrıntıları sayfasında kaynak SQL Server ayrıntılarını ve hedef Azure SQL veritabanı ayrıntılarını **geçiş hedefi** ayrıntıları sayfasında belirtin.
 1. Geçiş için kaynak ve hedef veritabanlarını eşleyin ve ardından geçirmek istediğiniz tabloları seçin.
-1. Geçiş özetini gözden geçirin ve **geçişi Çalıştır** ' ı seçin. Daha sonra geçiş etkinliğini izleyebilir ve veritabanı geçişinizin ilerlemesini denetleyebilirsiniz.
+1. Geçiş özetini gözden geçirin ve **geçişi Çalıştır**' ı seçin. Daha sonra geçiş etkinliğini izleyebilir ve veritabanı geçişinizin ilerlemesini denetleyebilirsiniz.
 
 Ayrıntılı bir öğretici için bkz. [DMS kullanarak Azure SQL veritabanına SQL Server geçirme](../../../dms/tutorial-sql-server-to-azure-sql.md). 
 
@@ -165,10 +165,10 @@ Veriler hedef ortama geçirildikten sonra, daha önce kaynağı tüketen tüm uy
 
 Veritabanı geçişi için test yaklaşımı aşağıdaki etkinliklerden oluşur:
 
-1. **Doğrulama testleri geliştirme** : veritabanı geçişini test etmek için SQL sorguları kullanmanız gerekir. Kaynak ve hedef veritabanlarında çalıştırmak için doğrulama sorguları oluşturmanız gerekir. Doğrulama sorgularınız tanımladığınız kapsamı kapsamalıdır.
-1. **Test ortamını ayarlama** : test ortamı, kaynak veritabanının ve hedef veritabanının bir kopyasını içermelidir. Test ortamını yalıtdığınızdan emin olun.
-1. **Doğrulama testlerini Çalıştır** : doğrulama testlerini kaynak ve hedefe göre çalıştırın ve ardından sonuçları çözümleyin.
-1. **Performans testlerini Çalıştır** : kaynak ve hedefte performans testi çalıştırın ve ardından sonuçları çözümleyip karşılaştırın.
+1. **Doğrulama testleri geliştirme**: veritabanı geçişini test etmek için SQL sorguları kullanmanız gerekir. Kaynak ve hedef veritabanlarında çalıştırmak için doğrulama sorguları oluşturmanız gerekir. Doğrulama sorgularınız tanımladığınız kapsamı kapsamalıdır.
+1. **Test ortamını ayarlama**: test ortamı, kaynak veritabanının ve hedef veritabanının bir kopyasını içermelidir. Test ortamını yalıtdığınızdan emin olun.
+1. **Doğrulama testlerini Çalıştır**: doğrulama testlerini kaynak ve hedefe göre çalıştırın ve ardından sonuçları çözümleyin.
+1. **Performans testlerini Çalıştır**: kaynak ve hedefte performans testi çalıştırın ve ardından sonuçları çözümleyip karşılaştırın.
 
    > [!NOTE]
    > Geçiş sonrası doğrulama testlerini geliştirmeye ve çalıştırmaya yönelik yardım için iş ortağı [Querysurge](https://www.querysurge.com/company/partners/microsoft)tarafından kullanılabilen veri kalitesi çözümünü göz önünde bulundurun. 
@@ -176,7 +176,7 @@ Veritabanı geçişi için test yaklaşımı aşağıdaki etkinliklerden oluşur
 
 ## <a name="leverage-advanced-features"></a>Gelişmiş özelliklerden yararlanın 
 
-[Yerleşik yüksek kullanılabilirlik](../../database/high-availability-sla.md), [tehdit algılama](../../database/advanced-data-security.md)ve [iş yükünüzü Izleme ve ayarlama](../../database/monitor-tune-overview.md)gibi SQL veritabanı tarafından sunulan gelişmiş bulut tabanlı özelliklerden faydalandığınızdan emin olun. 
+[Yerleşik yüksek kullanılabilirlik](../../database/high-availability-sla.md), [tehdit algılama](../../database/azure-defender-for-sql.md)ve [iş yükünüzü Izleme ve ayarlama](../../database/monitor-tune-overview.md)gibi SQL veritabanı tarafından sunulan gelişmiş bulut tabanlı özelliklerden faydalandığınızdan emin olun. 
 
 Bazı SQL Server özellikleri yalnızca [veritabanı uyumluluk düzeyi](/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database) en son uyumluluk düzeyine (150) değiştirildiğinde kullanılabilir. 
 

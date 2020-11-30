@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 2c143c299cec1d48dd5438d5350c818d5cc93800
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2241049e5c3cb5039a73c0f7637f7e3553d2e227
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023727"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326888"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Geçişe genel bakış: SQL yönetilen örneğine SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -63,7 +63,7 @@ SQL Server 'larınızı SQL yönetilen örneği 'ne geçirmenin önemli avantajl
 Dağıtım sırasında işlem ve depolama kaynakları ' nı seçebilir ve sonra uygulamanız için kapalı kalma süresi olmadan [Azure Portal](../../database/scale-resources.md) kullanarak bunları değiştirebilirsiniz. 
 
 > [!IMPORTANT]
-> [Yönetilen örnek sanal ağ gereksinimlerindeki](/azure/azure-sql/managed-instance/connectivity-architecture-overview#network-requirements) herhangi bir tutarsızlık, yeni örnekler oluşturmanızı veya var olanları kullanmanızı engelleyebilir.  [Yeni oluşturma](/azure/azure-sql/managed-instance/virtual-network-subnet-create-arm-template?branch=release-ignite-arc-data)   ve [Mevcut ağları yapılandırma](/azure/azure-sql/managed-instance/vnet-existing-add-subnet?branch=release-ignite-arc-data)hakkında daha fazla bilgi edinin   . 
+> [Yönetilen örnek sanal ağ gereksinimlerindeki](../../managed-instance/connectivity-architecture-overview.md#network-requirements) herhangi bir tutarsızlık, yeni örnekler oluşturmanızı veya var olanları kullanmanızı engelleyebilir.  [Yeni oluşturma](../../managed-instance/virtual-network-subnet-create-arm-template.md?branch=release-ignite-arc-data)   ve [Mevcut ağları yapılandırma](../../managed-instance/vnet-existing-add-subnet.md?branch=release-ignite-arc-data)hakkında daha fazla bilgi edinin   . 
 
 ### <a name="sql-server-vm-alternative"></a>SQL Server VM alternatifi
 
@@ -88,7 +88,7 @@ Aşağıdaki tabloda önerilen geçiş araçları listelenmektedir:
 
 |Teknoloji | Açıklama|
 |---------|---------|
-|[Azure Veritabanı Geçiş Hizmeti (DMS)](/azure/dms/tutorial-sql-server-to-managed-instance)  | Geçiş işlemi sırasında kesinti süresini karşılayabilen uygulamalar için çevrimdışı modda geçişi destekleyen ilk taraf Azure hizmeti. Çevrimiçi modda sürekli geçişin aksine, çevrimdışı mod geçişi kaynaktan hedefe tam bir veritabanı yedeklemesi için tek seferlik bir geri yükleme çalıştırır. | 
+|[Azure Veritabanı Geçiş Hizmeti (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md)  | Geçiş işlemi sırasında kesinti süresini karşılayabilen uygulamalar için çevrimdışı modda geçişi destekleyen ilk taraf Azure hizmeti. Çevrimiçi modda sürekli geçişin aksine, çevrimdışı mod geçişi kaynaktan hedefe tam bir veritabanı yedeklemesi için tek seferlik bir geri yükleme çalıştırır. | 
 |[Yerel yedekleme ve geri yükleme](../../managed-instance/restore-sample-database-quickstart.md) | SQL yönetilen örneği, yerel SQL Server veritabanı yedeklerinin (. bak dosyaları) geri yüklenmesini destekler, böylece Azure depolama 'ya tam veritabanı yedeklemeleri sağlayabilen müşteriler için en kolay geçiş seçeneği sağlanır. Tam ve fark yedeklemeleri, bu makalenin ilerleyen bölümlerinde yer alarak [geçiş varlıkları bölümünde](#migration-assets) de desteklenir ve belgelenmiştir.| 
 | | |
 
@@ -100,8 +100,8 @@ Aşağıdaki tabloda alternatif geçiş araçları listelenmektedir:
 |---------|---------|
 |[İşlem çoğaltması](../../managed-instance/replication-transactional-overview.md) | İşlem tutarlılığını koruyarak bir yayımcı-abone türü geçiş seçeneği sunarak, kaynak SQL Server veritabanı tabloları ile SQL yönetilen örneği arasında veri çoğaltın. |  |
 |[Toplu kopyalama](/sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server)| [Toplu kopyalama programı (bcp) yardımcı programı](/sql/tools/bcp-utility) , verileri bir SQL Server örneğinden bir veri dosyasına kopyalar. Kaynaktaki verileri dışarı aktarmak ve veri dosyasını hedef SQL yönetilen örneğine aktarmak için BCP yardımcı programını kullanın.</br></br> Verileri Azure SQL veritabanına taşımaya yönelik yüksek hızlı toplu kopyalama işlemleri için [akıllı toplu kopyalama aracı](/samples/azure-samples/smartbulkcopy/smart-bulk-copy/) , paralel kopyalama görevlerinden yararlanarak aktarım hızlarını en üst düzeye çıkarmak için kullanılabilir. | 
-|[İçeri aktarma Verme Sihirbazı/BACPAC](/azure/azure-sql/database/database-import?tabs=azure-powershell)| [Bacpac](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) , bir `.bacpac` veritabanının şemasını ve verilerini kapsülleyen bir uzantıya sahip bir Windows dosyasıdır. BACPAC, kaynak SQL Server verileri dışarı aktarmak ve dosyayı Azure SQL yönetilen örneği 'ne geri aktarmak için kullanılabilir.  |  
-|[Azure Data Factory (ADF)](/azure/data-factory/connector-azure-sql-managed-instance)| Azure Data Factory [kopyalama etkinliği](/azure/data-factory/copy-activity-overview) , yerleşik bağlayıcılar ve bir [Integration Runtime](/azure/data-factory/concepts-integration-runtime)kullanarak VERILERI kaynak SQL Server veritabanından SQL yönetilen örneğine geçirir.</br> </br> ADF, verileri SQL Server kaynaklarından SQL yönetilen örneğine taşımak için çok sayıda [bağlayıcı](/azure/data-factory/connector-overview) destekler. |
+|[İçeri aktarma Verme Sihirbazı/BACPAC](../../database/database-import.md?tabs=azure-powershell)| [Bacpac](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) , bir `.bacpac` veritabanının şemasını ve verilerini kapsülleyen bir uzantıya sahip bir Windows dosyasıdır. BACPAC, kaynak SQL Server verileri dışarı aktarmak ve dosyayı Azure SQL yönetilen örneği 'ne geri aktarmak için kullanılabilir.  |  
+|[Azure Data Factory (ADF)](../../../data-factory/connector-azure-sql-managed-instance.md)| Azure Data Factory [kopyalama etkinliği](../../../data-factory/copy-activity-overview.md) , yerleşik bağlayıcılar ve bir [Integration Runtime](../../../data-factory/concepts-integration-runtime.md)kullanarak VERILERI kaynak SQL Server veritabanından SQL yönetilen örneğine geçirir.</br> </br> ADF, verileri SQL Server kaynaklarından SQL yönetilen örneğine taşımak için çok sayıda [bağlayıcı](../../../data-factory/connector-overview.md) destekler. |
 | | |
 
 ## <a name="compare-migration-options"></a>Geçiş seçeneklerini karşılaştırma
@@ -114,7 +114,7 @@ Aşağıdaki tabloda önerilen geçiş seçenekleri karşılaştırılmaktadır:
 
 |Geçiş seçeneği  |Kullanılması gereken durumlar  |Dikkat edilmesi gerekenler  |
 |---------|---------|---------|
-|[Azure Veritabanı Geçiş Hizmeti (DMS)](/azure/dms/tutorial-sql-server-to-managed-instance) | -Tek veritabanlarını veya birden çok veritabanını ölçeklendirmeye geçirin. </br> -Geçiş işlemi sırasında kapalı kalma süresine uyum sağlayabilir. </br> </br> Desteklenen kaynaklar: </br> -SQL Server (2005-2019) Şirket içi veya Azure VM </br> -AWS EC2 </br> -AWS RDS </br> -GCP Işlem SQL Server VM |  -Ölçekte geçişler, [PowerShell](/azure/dms/howto-sql-server-to-azure-sql-mi-powershell)aracılığıyla otomatikleştirilebilir. </br> -Geçişin tamamlanma süresi veritabanı boyutuna bağımlıdır ve yedekleme ve geri yükleme zamanından etkilenir. </br> -Yeterli kapalı kalma süresi gerekebilir. |
+|[Azure Veritabanı Geçiş Hizmeti (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md) | -Tek veritabanlarını veya birden çok veritabanını ölçeklendirmeye geçirin. </br> -Geçiş işlemi sırasında kapalı kalma süresine uyum sağlayabilir. </br> </br> Desteklenen kaynaklar: </br> -SQL Server (2005-2019) Şirket içi veya Azure VM </br> -AWS EC2 </br> -AWS RDS </br> -GCP Işlem SQL Server VM |  -Ölçekte geçişler, [PowerShell](../../../dms/howto-sql-server-to-azure-sql-mi-powershell.md)aracılığıyla otomatikleştirilebilir. </br> -Geçişin tamamlanma süresi veritabanı boyutuna bağımlıdır ve yedekleme ve geri yükleme zamanından etkilenir. </br> -Yeterli kapalı kalma süresi gerekebilir. |
 |[Yerel yedekleme ve geri yükleme](../../managed-instance/restore-sample-database-quickstart.md) | -Bireysel iş kolu uygulama veritabanlarını geçirin.  </br> -Ayrı bir geçiş hizmeti veya aracı olmadan hızlı ve kolay geçiş.  </br> </br> Desteklenen kaynaklar: </br> -SQL Server (2005-2019) Şirket içi veya Azure VM </br> -AWS EC2 </br> -AWS RDS </br> -GCP Işlem SQL Server VM | -Veritabanı yedeklemesi, Azure Blob depolama alanına veri aktarımını iyileştirmek için birden çok iş parçacığı kullanır, ancak ISV bant genişliği ve veritabanı boyutu aktarım hızını etkileyebilir. </br> -Kapalı kalma süresi, tam yedekleme ve geri yükleme (veri boyutu) için gereken süreyi içermelidir.| 
 | | | |
 
@@ -126,8 +126,8 @@ Aşağıdaki tabloda alternatif geçiş seçenekleri karşılaştırılmaktadır
 |---------|---------|---------|
 |[İşlem çoğaltması](../../managed-instance/replication-transactional-overview.md) | -Değişiklikleri kaynak veritabanı tablolarından hedef SQL yönetilen örnek veritabanı tablolarına sürekli olarak yayımlayarak geçirin. </br> -Seçili tabloların (veritabanı alt kümesi) tam veya kısmi veritabanı geçişleri.  </br> </br> Desteklenen kaynaklar: </br> -SQL Server (2012-2019) bazı sınırlamalar </br> -AWS EC2  </br> -GCP Işlem SQL Server VM | </br> -Kurulum diğer geçiş seçeneklerine kıyasla görece karmaşıktır.   </br> -Verileri geçirmek için (veritabanlarını çevrimdışına almadan) sürekli bir çoğaltma seçeneği sağlar.</br> -İşlemsel çoğaltmanın, kaynak SQL Server yayımcıyı ayarlarken dikkate alınması gereken birkaç sınırlama vardır. Daha fazla bilgi için bkz. [nesneleri yayımlamayla Ilgili sınırlamalar](/sql/relational-databases/replication/publish/publish-data-and-database-objects#limitations-on-publishing-objects) .  </br> - [Çoğaltma etkinliğini izleme](/sql/relational-databases/replication/monitor/monitoring-replication) özelliği kullanılabilir.    |
 |[Toplu kopyalama](/sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server)| -Tam veya kısmi veri geçişleri geçiriliyor. </br> -Kapalı kalma süresine uyum sağlayabilir. </br> </br> Desteklenen kaynaklar: </br> -SQL Server (2005-2019) Şirket içi veya Azure VM </br> -AWS EC2 </br> -AWS RDS </br> -GCP Işlem SQL Server VM   | -Verileri kaynaktan dışarı aktarmak ve hedefe içeri aktarmak için kapalı kalma süresi gerektirir. </br> -Dışarı aktarma/içeri aktarma işleminde kullanılan dosya biçimlerinin ve veri türlerinin tablo şemaları ile tutarlı olması gerekir. |
-|[İçeri aktarma Verme Sihirbazı/BACPAC](/azure/azure-sql/database/database-import)| -Bireysel iş kolu uygulama veritabanlarını geçirin. </br>-Daha küçük veritabanları için uygundur.  </br>  Ayrı bir geçiş hizmeti veya aracı gerektirmez. </br> </br> Desteklenen kaynaklar: </br> -SQL Server (2005-2019) Şirket içi veya Azure VM </br> -AWS EC2 </br> -AWS RDS </br> -GCP Işlem SQL Server VM  |   </br> -Verilerin kaynakta aktarılması ve hedefte içeri aktarılması gerektiğinden kesinti olması gerekir.   </br> -Dışarı aktarma/içeri aktarma işleminde kullanılan dosya biçimlerinin ve veri türlerinin, kesme/veri türü uyuşmazlığı hatalarından kaçınmak için tablo şemaları ile tutarlı olması gerekir. </br> -Çok sayıda nesne içeren bir veritabanını dışarı aktarmak için geçen süre önemli ölçüde daha yüksek olabilir. |
-|[Azure Data Factory (ADF)](/azure/data-factory/connector-azure-sql-managed-instance)| -Kaynak SQL Server veritabanından veri geçiriliyor ve/veya dönüştürülüyor.</br> -Birden çok veri kaynağından verileri, genellikle Iş zekası (BI) iş yükleri için Azure SQL yönetilen örneği ile birleştirme.   </br> -Verileri kaynaktan hedefe taşımak için ADF 'de veri taşıma işlem hatları oluşturulması gerekir.   </br> - [Maliyet](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/) önemli bir konudur ve işlem hattı tetikleyicilerine, etkinlik çalışmasına, veri taşıma süresine vb. göre belirlenir. |
+|[İçeri aktarma Verme Sihirbazı/BACPAC](../../database/database-import.md)| -Bireysel iş kolu uygulama veritabanlarını geçirin. </br>-Daha küçük veritabanları için uygundur.  </br>  Ayrı bir geçiş hizmeti veya aracı gerektirmez. </br> </br> Desteklenen kaynaklar: </br> -SQL Server (2005-2019) Şirket içi veya Azure VM </br> -AWS EC2 </br> -AWS RDS </br> -GCP Işlem SQL Server VM  |   </br> -Verilerin kaynakta aktarılması ve hedefte içeri aktarılması gerektiğinden kesinti olması gerekir.   </br> -Dışarı aktarma/içeri aktarma işleminde kullanılan dosya biçimlerinin ve veri türlerinin, kesme/veri türü uyuşmazlığı hatalarından kaçınmak için tablo şemaları ile tutarlı olması gerekir. </br> -Çok sayıda nesne içeren bir veritabanını dışarı aktarmak için geçen süre önemli ölçüde daha yüksek olabilir. |
+|[Azure Data Factory (ADF)](../../../data-factory/connector-azure-sql-managed-instance.md)| -Kaynak SQL Server veritabanından veri geçiriliyor ve/veya dönüştürülüyor.</br> -Birden çok veri kaynağından verileri, genellikle Iş zekası (BI) iş yükleri için Azure SQL yönetilen örneği ile birleştirme.   </br> -Verileri kaynaktan hedefe taşımak için ADF 'de veri taşıma işlem hatları oluşturulması gerekir.   </br> - [Maliyet](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/) önemli bir konudur ve işlem hattı tetikleyicilerine, etkinlik çalışmasına, veri taşıma süresine vb. göre belirlenir. |
 | | | |
 
 ## <a name="feature-interoperability"></a>Özellik birlikte çalışabilirliği 
@@ -136,7 +136,7 @@ Diğer SQL Server özelliklerine dayanan iş yüklerini geçirirken ek konular v
 
 #### <a name="sql-server-integration-services"></a>SQL Server Integration Services
 
-SSSıSDB 'deki SQL Server Integration Services (SSIS) paketlerini ve projelerini [Azure veritabanı geçiş hizmeti 'ni (DMS)](/azure/dms/how-to-migrate-ssis-packages-managed-instance)kullanarak Azure SQL yönetilen örneği 'ne geçirin. 
+SSSıSDB 'deki SQL Server Integration Services (SSIS) paketlerini ve projelerini [Azure veritabanı geçiş hizmeti 'ni (DMS)](../../../dms/how-to-migrate-ssis-packages-managed-instance.md)kullanarak Azure SQL yönetilen örneği 'ne geçirin. 
 
 Yalnızca SSSıSDB içindeki SSIS paketleri SQL Server 2012 ile başlayarak geçiş için desteklenir. Geçişten önce eski SSIS paketlerini dönüştürün. Daha fazla bilgi için bkz. [Proje dönüştürme öğreticisi](/sql/integration-services/lesson-6-2-converting-the-project-to-the-project-deployment-model) . 
 
@@ -149,7 +149,7 @@ SQL Server Reporting Services (SSRS) raporları, Power BI sayfalandırılmış r
 
 SQL Server 2012 ve üzeri SQL Server Analysis Services tablosal modeller, Azure 'da Analysis Services tablolu model için bir PaaS dağıtım modeli olan Azure Analysis Services 'e geçirilebilir. Bu [video öğreticisindeki](https://azure.microsoft.com/resources/videos/azure-analysis-services-moving-models/)Azure Analysis Services şirket içi modelleri geçirme hakkında daha fazla bilgi edinebilirsiniz.
 
-Alternatif olarak, [yenı XMLA okuma/yazma uç noktalarını kullanarak](https://docs.microsoft.com/power-bi/admin/service-premium-connect-tools)şirket Içi Analysis Services tablolu modellerinizi Power BI Premium taşımaya de göz önüne alabilirsiniz. 
+Alternatif olarak, [yenı XMLA okuma/yazma uç noktalarını kullanarak](/power-bi/admin/service-premium-connect-tools)şirket Içi Analysis Services tablolu modellerinizi Power BI Premium taşımaya de göz önüne alabilirsiniz. 
 > [!NOTE]
 > Power BI XMLA okuma/yazma uç noktaları işlevselliği Şu anda genel önizleme aşamasındadır ve işlevler genel kullanıma sunuluncaya kadar üretim iş yükleri için düşünülmemelidir.
 
@@ -161,7 +161,7 @@ SQL yönetilen örneği 'ne dahil olan yüksek oranda kullanılabilir mimarinin 
 
 #### <a name="sql-agent-jobs"></a>SQL Aracısı işleri
 
-[SQL Agent işlerini](/azure/dms/howto-sql-server-to-azure-sql-mi-powershell#offline-migrations)geçirmek Için çevrimdışı Azure veritabanı geçiş HIZMETI (DMS) seçeneğini kullanın. Aksi takdirde, SQL Server Management Studio kullanarak Transact-SQL (T-SQL) içindeki işleri betikten sonra hedef SQL yönetilen örneği üzerinde el ile yeniden oluşturun. 
+[SQL Agent işlerini](../../../dms/howto-sql-server-to-azure-sql-mi-powershell.md#offline-migrations)geçirmek Için çevrimdışı Azure veritabanı geçiş HIZMETI (DMS) seçeneğini kullanın. Aksi takdirde, SQL Server Management Studio kullanarak Transact-SQL (T-SQL) içindeki işleri betikten sonra hedef SQL yönetilen örneği üzerinde el ile yeniden oluşturun. 
 
 > [!IMPORTANT]
 > Şu anda Azure DMS yalnızca T-SQL alt sistemi adımlarıyla işleri destekliyor. SSIS paketi adımlarının bulunduğu işlerin el ile geçirilmesi gerekecektir. 
@@ -193,7 +193,7 @@ Sistem veritabanlarının geri yüklenmesi desteklenmiyor. Örnek düzeyi nesnel
 
 SQL yönetilen örneği tarafından sunulan gelişmiş bulut tabanlı özelliklerden faydalandığınızdan emin olun. Örneğin, hizmet sizin için yaptığı için yedeklemeleri yönetme konusunda endişelenmenize gerek kalmaz. [Bekletme dönemi içinde](../../database/recovery-using-backups.md#point-in-time-restore)herhangi bir noktaya geri yükleme yapabilirsiniz. Ayrıca, yüksek kullanılabilirlik [yerleşik olarak oluşturulduğu](../../database/high-availability-sla.md)için yüksek kullanılabilirlik ayarlama konusunda endişelenmeniz gerekmez. 
 
-Güvenliği güçlendirmek için [Azure Active Directory kimlik doğrulaması](../../database/authentication-aad-overview.md), [Denetim](../../managed-instance/auditing-configure.md), [tehdit algılama](../../database/advanced-data-security.md), [satır düzeyi güvenlik](/sql/relational-databases/security/row-level-security)ve [dinamik veri maskeleme](/sql/relational-databases/security/dynamic-data-masking)kullanmayı göz önünde bulundurun.
+Güvenliği güçlendirmek için [Azure Active Directory kimlik doğrulaması](../../database/authentication-aad-overview.md), [Denetim](../../managed-instance/auditing-configure.md), [tehdit algılama](../../database/azure-defender-for-sql.md), [satır düzeyi güvenlik](/sql/relational-databases/security/row-level-security)ve [dinamik veri maskeleme](/sql/relational-databases/security/dynamic-data-masking)kullanmayı göz önünde bulundurun.
 
 Gelişmiş Yönetim ve güvenlik özelliklerine ek olarak, SQL yönetilen örneği, [iş yükünüzü izlemenize ve ayarlamanıza](../../database/monitor-tune-overview.md)yardımcı olabilecek bir dizi gelişmiş araç sağlar. [Azure SQL Analytics](../../../azure-monitor/insights/azure-sql.md) , büyük bir yönetilen örnek kümesini merkezi bir şekilde izlemenize olanak sağlar.  [Otomatik ayarlama](/sql/relational-databases/automatic-tuning/automatic-tuning#automatic-plan-correction)   yönetilen örneklerde, SQL planı yürütme istatistiklerinizin performansını sürekli olarak izler ve belirlenen performans sorunlarını otomatik olarak düzeltir. 
 
@@ -203,7 +203,7 @@ Bazı özellikler yalnızca [veritabanı uyumluluk düzeyi](/sql/relational-data
 
 Ek Yardım için, gerçek dünya geçiş projeleri için geliştirilen aşağıdaki kaynaklara bakın.
 
-|Varlık  |Description  |
+|Varlık  |Açıklama  |
 |---------|---------|
 |[Veri iş yükü değerlendirmesi modeli ve aracı](https://github.com/Microsoft/DataMigrationTeam/tree/master/Data%20Workload%20Assessment%20Model%20and%20Tool)| Bu araç, belirli bir iş yükü için önerilen "en uygun" hedef platformları, bulut hazırlığı ve uygulama/veritabanı düzeltme düzeyini sağlar. Basit ve tek tıklamayla bir hesaplama ve rapor oluşturma olanağı sunarak, ve otomatikleştirilmiş ve Tekdüzen hedef platformu karar süreci sağlayarak büyük Emlak değerlendirmelerini hızlandırmaya yardımcı olur.|
 |[DBLoader yardımcı programı](https://github.com/microsoft/DataMigrationTeam/tree/master/DBLoader%20Utility)|DBLoader, sınırlandırılmış metin dosyalarından SQL Server içine veri yüklemek için kullanılabilir. Bu Windows konsol yardımcı programı, Azure SQL MI dahil olmak üzere tüm SQL Server sürümlerinde çalışan SQL Server Native Client BulkLoad arabirimini kullanır.|

@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: 1558c396566b2fcfc098a749407d5e7a28316b6f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3b0fdccd3eaf6e6bd94b595107022f738bdd8382
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019458"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325935"
 ---
 # <a name="migration-guide-sql-server-to-sql-server-on-azure-vms"></a>Geçiş Kılavuzu: Azure VM 'lerinde SQL Server SQL Server 
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -38,8 +38,8 @@ Ek geçiş stratejileri hakkında daha fazla bilgi için [SQL Server VM geçişe
 Azure VM 'lerinde SQL Server 'e geçiş yapmak için şunlar gerekir: 
 
 - [Veritabanı geçiş Yardımcısı (DMA)](https://www.microsoft.com/download/details.aspx?id=53595).
-- Bir [Azure geçişi projesi](/azure/migrate/create-manage-projects).
-- Kaynak SQL Server aynı veya daha fazla sürümü olan [Azure VM 'de](/azure/azure-sql/virtual-machines/windows/create-sql-vm-portal) hazırlanan bir hedef SQL Server.
+- Bir [Azure geçişi projesi](../../../migrate/create-manage-projects.md).
+- Kaynak SQL Server aynı veya daha fazla sürümü olan [Azure VM 'de](../../virtual-machines/windows/create-sql-vm-portal.md) hazırlanan bir hedef SQL Server.
 - [Azure ile şirket içi arasında bağlantı](/azure/architecture/reference-architectures/hybrid-networking).
 - [Uygun bir geçiş stratejisi seçme](sql-server-to-sql-on-azure-vm-migration-overview.md#migrate).
 
@@ -157,8 +157,8 @@ Aşağıdaki tabloda, Kullanıcı veritabanlarınızı geçişten önce veya son
 || FILESTREAM ile kullanıcı veritabanları |  Geçiş için [yedekleme ve geri yükleme](../../virtual-machines/windows/migrate-to-vm-from-sql-server.md#back-up-and-restore) yöntemlerini kullanın. DMA, FILESTREAM ile veritabanlarını desteklemez. |
 | **Güvenlik** | SQL Server ve Windows oturumu açma | [Kullanıcı oturumlarını geçirmek](/sql/dma/dma-migrateserverlogins)için DMA 'yı kullanın. |
 || SQL Server rolleri | SQL Server Management Studio betiği |
-|| Şifreleme sağlayıcıları | [Azure Key Vault hizmeti kullanmak için dönüştürmeyi](../../virtual-machines/windows/azure-key-vault-integration-configure.md)öneririz. Bu yordam, [SQL VM kaynak sağlayıcısını](../../virtual-machines/windows/sql-vm-resource-provider-register.md)kullanır. |
-| **Sunucu nesneleri** | Yedekleme cihazları | [Azure Backup hizmetini](../../../backup/backup-sql-server-database-azure-vms.md) kullanarak veritabanı yedekleme ile değiştirin veya yedeklemeleri [Azure Storage](../../virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md) 'a YAZıN (SQL Server 2012 SP1 CU2 uygulamazsanız +). Bu yordam, [SQL VM kaynak sağlayıcısını](../../virtual-machines/windows/sql-vm-resource-provider-register.md)kullanır.|
+|| Şifreleme sağlayıcıları | [Azure Key Vault hizmeti kullanmak için dönüştürmeyi](../../virtual-machines/windows/azure-key-vault-integration-configure.md)öneririz. Bu yordam, [SQL VM kaynak sağlayıcısını](../../virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md)kullanır. |
+| **Sunucu nesneleri** | Yedekleme cihazları | [Azure Backup hizmetini](../../../backup/backup-sql-server-database-azure-vms.md) kullanarak veritabanı yedekleme ile değiştirin veya yedeklemeleri [Azure Storage](../../virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md) 'a YAZıN (SQL Server 2012 SP1 CU2 uygulamazsanız +). Bu yordam, [SQL VM kaynak sağlayıcısını](../../virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md)kullanır.|
 || Bağlantılı Sunucular | SQL Server Management Studio betiği. |
 || Sunucu Tetikleyicileri | SQL Server Management Studio betiği. |
 | **Çoğaltma** | Yerel yayınlar | SQL Server Management Studio betiği. |

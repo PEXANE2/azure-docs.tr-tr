@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 60f781ddfa5717bbe5bcbb05ec8c236c8594c587
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c6d03c896242d02e147e880a99eb9f1e7bb15da8
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793101"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326884"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure sanal makinelerinde SQL Server nedir (Windows)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -116,11 +116,11 @@ Azure portal, SQL sanal makineleriniz dahil olmak üzere [tüm Azure SQL kaynakl
 > [!NOTE]
 > Azure SQL, tüm Azure SQL veritabanlarına, elastik havuzlarınıza, mantıksal sunuculara, yönetilen örneklere ve sanal makinelere erişmenin hızlı ve kolay bir yolunu sunar. Azure SQL bir hizmet veya kaynak değil. 
 
-Mevcut kaynakları yönetmek için listeden istediğiniz öğeyi seçin. Yeni Azure SQL kaynakları oluşturmak için **+ Ekle** ' yi seçin. 
+Mevcut kaynakları yönetmek için listeden istediğiniz öğeyi seçin. Yeni Azure SQL kaynakları oluşturmak için **+ Ekle**' yi seçin. 
 
 ![Azure SQL kaynağı oluşturma](./media/sql-server-on-azure-vm-iaas-what-is-overview/create-azure-sql-resource.png)
 
-**+ Ekle** ' yi seçtikten sonra herhangi bir kutucukta **Ayrıntıları göster** ' i seçerek farklı seçeneklerle ilgili ek bilgileri görüntüleyin.
+**+ Ekle**' yi seçtikten sonra herhangi bir kutucukta **Ayrıntıları göster** ' i seçerek farklı seçeneklerle ilgili ek bilgileri görüntüleyin.
 
 ![veritabanları kutucuk ayrıntıları](./media/sql-server-on-azure-vm-iaas-what-is-overview/sql-vm-details.png)
 
@@ -147,7 +147,7 @@ Müşteri Deneyimini Geliştirme Programı (CEIP) varsayılan olarak etkindir. B
 ### <a name="networking"></a>Ağ
 * [Sanal ağa genel bakış](../../../virtual-network/virtual-networks-overview.md)
 * [Azure'da IP adresleri](../../../virtual-network/public-ip-addresses.md)
-* [Azure portalda Tam Etki Alanı Adı oluşturma](../../../virtual-machines/linux/portal-create-fqdn.md)
+* [Azure portalda Tam Etki Alanı Adı oluşturma](../../../virtual-machines/create-fqdn.md)
 
 ### <a name="sql"></a>SQL
 * [SQL Server belgeleri](/sql/index)

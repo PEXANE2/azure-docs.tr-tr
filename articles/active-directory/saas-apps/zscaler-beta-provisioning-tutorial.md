@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: de42230639351c0dc1e7986156a33b178386d1a4
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 59784b6e618e875a6eedc947ce75afdf3bd1df74
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357751"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327415"
 ---
 # <a name="tutorial-configure-zscaler-beta-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Zscaler Beta 'yı yapılandırma
 
@@ -83,73 +83,73 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı 
 
 ### <a name="to-configure-automatic-user-provisioning-for-zscaler-beta-in-azure-ad"></a>Azure AD 'de Zscaler Beta için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın ve **Kurumsal uygulamalar** ' ı seçin, **tüm uygulamalar** ' ı seçin ve ardından **Zscaler Beta** ' yı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın ve **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **Zscaler Beta**' yı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Zscaler Beta** ' yı seçin.
+2. Uygulamalar listesinde **Zscaler Beta**' yı seçin.
 
     ![Uygulamalar listesindeki Zscaler Beta bağlantısı](common/all-applications.png)
 
 3. **Hazırlama** sekmesini seçin.
 
-    ![Zscaler Beta sağlaması](./media/zscaler-beta-provisioning-tutorial/provisioning-tab.png)
+    ![Kategoriler halinde düzenlenmiş sekmelerin listesi ve ZScaler Beta hazırlama/kuruluş uygulaması başlıklı bir liste vardır. Yönet kategorisinin sağlama sekmesi seçilidir.](./media/zscaler-beta-provisioning-tutorial/provisioning-tab.png)
 
-4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
-    ![Zscaler Beta sağlaması](./media/zscaler-beta-provisioning-tutorial/provisioning-credentials.png)
+    ![Otomatik mod, sağlama modu açılır listesinden seçildi. Yönetim kimlik bilgileri için, Zscaler Beta 'un API 'sine bağlanmak için kullanılan alanlar bulunur ve bir test bağlantısı düğmesi vardır.](./media/zscaler-beta-provisioning-tutorial/provisioning-credentials.png)
 
 5. **Yönetici kimlik bilgileri** bölümünde, 6. adımda açıklanan şekilde Zscaler Beta hesabınızın **kiracı URL 'Sini** ve **gizli belirtecini** girin.
 
 6. **Kiracı URL 'sini** ve **gizli anahtarı** almak Için, Zscaler Beta portalı Kullanıcı arabirimindeki **Yönetim > kimlik doğrulama ayarları** ' na gidin ve **kimlik doğrulaması türü** altında **SAML** ' ye tıklayın.
 
-    ![Zscaler Beta sağlaması](./media/zscaler-beta-provisioning-tutorial/secret-token-1.png)
+    ![Kimlik doğrulama ayarlarındaki kimlik doğrulama profilinde, seçili dizin türü barındırılan VERITABANı ve seçilen kimlik doğrulama türü SAML ' dir.](./media/zscaler-beta-provisioning-tutorial/secret-token-1.png)
 
     **Yapılandırma SAML** seçeneklerini açmak için **SAML** yapılandırması ' na tıklayın.
 
-    ![Zscaler Beta sağlaması](./media/zscaler-beta-provisioning-tutorial/secret-token-2.png)
+    ![SAML Yapılandır sayfasında SAML otomatik sağlamayı etkinleştir ve SCIM-Based sağlama seçeneklerini etkinleştir seçeneği seçilidir. Temel URL ve taşıyıcı belirteci metin kutuları vurgulanır.](./media/zscaler-beta-provisioning-tutorial/secret-token-2.png)
 
-    **Temel URL** ve **taşıyıcı belirtecini** almak için **SCIM-Based sağlamayı etkinleştir** ' i seçin, sonra ayarları kaydedin. **Temel URL** 'YI **kiracı URL** 'sine ve **taşıyıcı belirtecini** Azure Portal **gizli belirtece** kopyalayın.
+    **Temel URL** ve **taşıyıcı belirtecini** almak için **SCIM-Based sağlamayı etkinleştir** ' i seçin, sonra ayarları kaydedin. **Temel URL** 'YI **kiracı URL**'sine ve **taşıyıcı belirtecini** Azure Portal **gizli belirtece** kopyalayın.
 
 7. 5. adımda gösterilen alanları doldurarak Azure AD 'nin Zscaler Beta 'ya bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Zscaler Beta hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![Zscaler Beta sağlaması](./media/zscaler-beta-provisioning-tutorial/test-connection.png)
+    ![Yönetici kimlik bilgileri ' nde, kiracı URL 'SI ve gizli dizi belirteci alanlarında değerler vardır ve Bağlantıyı Sına düğmesi vurgulanır.](./media/zscaler-beta-provisioning-tutorial/test-connection.png)
 
 8. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken kişinin veya grubun e-posta adresini girin ve **bir hata oluştuğunda e-posta bildirimi gönder** onay kutusunu işaretleyin.
 
-    ![Zscaler Beta sağlaması](./media/zscaler-beta-provisioning-tutorial/notification.png)
+    ![Bildirim e-postası metin kutusu boştur ve bir hata oluştuğunda e-posta bildirimi gönder onay kutusu temizlenir.](./media/zscaler-beta-provisioning-tutorial/notification.png)
 
-9. **Kaydet** ’e tıklayın.
+9. **Kaydet**’e tıklayın.
 
-10. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Zscaler Beta olarak eşitler** ' ı seçin.
+10. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Zscaler Beta olarak eşitler**' ı seçin.
 
-    ![Zscaler Beta sağlaması](./media/zscaler-beta-provisioning-tutorial/user-mappings.png)
+    ![Azure Active Directory Kullanıcıları ZScalerBeta ile eşitler ve etkinleştirilir.](./media/zscaler-beta-provisioning-tutorial/user-mappings.png)
 
 11. **Öznitelik eşleme** bölümünde Azure AD 'Den Zscaler Beta sürümüne eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Zscaler Beta 'daki Kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![Zscaler Beta sağlaması](./media/zscaler-beta-provisioning-tutorial/user-attribute-mappings.png)
+    ![Kullanıcı özniteliklerinin öznitelik eşlemeleri bölümünde, Active Directory öznitelikleri, eşitlendikleri Zskaler Beta özniteliklerinin yanında gösterilir. Bir çift öznitelik eşleşme olarak gösterilir.](./media/zscaler-beta-provisioning-tutorial/user-attribute-mappings.png)
 
-12. **Eşlemeler** bölümünde **Azure Active Directory gruplarını Zscaler Beta olarak eşitler** ' ı seçin.
+12. **Eşlemeler** bölümünde **Azure Active Directory gruplarını Zscaler Beta olarak eşitler**' ı seçin.
 
-    ![Zscaler Beta sağlaması](./media/zscaler-beta-provisioning-tutorial/group-mappings.png)
+    ![Azure Active Directory gruplarını ZScalerBeta olarak eşitler ve etkinleştirilir.](./media/zscaler-beta-provisioning-tutorial/group-mappings.png)
 
-13. **Öznitelik eşleme** bölümünde Azure AD 'Den Zscaler Beta sürümüne eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Zscaler Beta 'daki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+13. **Öznitelik eşlemeleri** bölümünde Azure AD 'Den Zscaler Beta sürümüne eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Zscaler Beta 'daki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-    ![Zscaler Beta sağlaması](./media/zscaler-beta-provisioning-tutorial/group-attribute-mappings.png)
+    ![Grup özniteliklerinin öznitelik eşlemeleri bölümünde Active Directory öznitelikleri, eşitlendikleri Zskaler Beta özniteliklerinin yanında gösterilir. Bir çift öznitelik eşleşme olarak gösterilir.](./media/zscaler-beta-provisioning-tutorial/group-attribute-mappings.png)
 
 14. Kapsam belirleme filtrelerini yapılandırmak için [Kapsam belirleme filtresi öğreticisi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) ile sunulan yönergeleri izleyin.
 
 15. Zscaler Beta için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Zscaler Beta sağlaması](./media/zscaler-beta-provisioning-tutorial/provisioning-status.png)
+    ![Sağlama durumu gösterilir ve açık olarak ayarlanır.](./media/zscaler-beta-provisioning-tutorial/provisioning-status.png)
 
 16. **Ayarlar** bölümünde **kapsam** Içinde Istenen değerleri seçerek Zscaler Beta sürümüne sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Zscaler Beta sağlaması](./media/zscaler-beta-provisioning-tutorial/scoping.png)
+    ![Kapsam açılan listesi gösterilir ve eşitleme yalnızca atanan kullanıcılar ve gruplar seçilidir. Diğer kullanılabilir değer tüm kullanıcıları ve grupları eşitler.](./media/zscaler-beta-provisioning-tutorial/scoping.png)
 
-17. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
+17. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
-    ![Zscaler Beta sağlaması](./media/zscaler-beta-provisioning-tutorial/save-provisioning.png)
+    ![Zscaler Beta sürümü sağlamanın en üstündeki Kaydet düğmesi vurgulanır. Ayrıca bir atma düğmesi de vardır.](./media/zscaler-beta-provisioning-tutorial/save-provisioning.png)
 
 Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. , Zscaler Beta üzerinde Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan, ilerlemeyi izlemek ve sağlama etkinliği raporunu izlemek için **eşitleme ayrıntıları** bölümünü kullanabilirsiniz.
 

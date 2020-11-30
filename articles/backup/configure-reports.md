@@ -3,12 +3,12 @@ title: Azure Backup raporlarını yapılandırma
 description: Log Analytics ve Azure çalışma kitaplarını kullanarak Azure Backup raporlarını yapılandırma ve görüntüleme
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 11893488c59781bb78cf913a30069e920c66bc71
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 2565fa1183635c10e45b247f723788b6fe371c14
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172454"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325256"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup raporlarını yapılandırma
 
@@ -18,7 +18,7 @@ Yedekleme yöneticileri için ortak bir gereksinim, uzun bir süre yayılan veri
 - Yedeklemeler ve geri yüklemeler denetimi.
 - Farklı ayrıntı düzeyi düzeylerinde önemli eğilimleri tanımlama.
 
-Bugün Azure Backup [Azure izleyici günlüklerini](../azure-monitor/log-query/get-started-portal.md) ve [Azure çalışma kitaplarını](../azure-monitor/platform/workbooks-overview.md)kullanan bir raporlama çözümü sağlar. Bu kaynaklar, tüm yedeklemeleriniz genelinde yedeklemeleriniz hakkında zengin Öngörüler elde etmenize yardımcı olur. Bu makalede Azure Backup raporlarının nasıl yapılandırılacağı ve görüntüleneceği açıklanır.
+Bugün Azure Backup [Azure izleyici günlüklerini](../azure-monitor/log-query/log-analytics-tutorial.md) ve [Azure çalışma kitaplarını](../azure-monitor/platform/workbooks-overview.md)kullanan bir raporlama çözümü sağlar. Bu kaynaklar, tüm yedeklemeleriniz genelinde yedeklemeleriniz hakkında zengin Öngörüler elde etmenize yardımcı olur. Bu makalede Azure Backup raporlarının nasıl yapılandırılacağı ve görüntüleneceği açıklanır.
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
 
@@ -33,7 +33,7 @@ Bugün Azure Backup [Azure izleyici günlüklerini](../azure-monitor/log-query/g
 
 [!INCLUDE [backup-center.md](../../includes/backup-center.md)]
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 Raporları kullanmaya başlamak için bu adımları izleyin.
 
@@ -157,7 +157,7 @@ Pencere öğesini Azure portal panonuza sabitlemek için her pencere öğesinin 
 - Filtreler, her sekmede soldan sağa ve yukarıdan aşağıya doğru çalışır. Diğer bir deyişle, tüm filtreler yalnızca bu filtrenin sağına veya bu filtrenin altına konumlandırılmış olan tüm pencere öğeleri için geçerlidir.
 - Renkli bir kutucuk seçilmesi, kutucuğun altındaki pencere öğelerini, bu döşemenin değerine ait olan kayıtlar için filtreler. Örneğin, **yedekleme öğeleri** sekmesindeki **koruma durduruldu** kutucuğunun seçilmesi, aşağıdaki kılavuzların ve grafiklerin koruma durdurulmuş durumda yedekleme öğelerinin verilerini göstermesi için filtre uygular.
 - Renksiz olmayan kutucuklar seçilebilir değildir.
-- Geçerli kısmi güne ait veriler raporlarda gösterilmez. Bu nedenle, **saat aralığının** seçili değeri **son 7 gün**olduğunda, rapor son yedi gün için kayıtları gösterir. Geçerli gün dahil değildir.
+- Geçerli kısmi güne ait veriler raporlarda gösterilmez. Bu nedenle, **saat aralığının** seçili değeri **son 7 gün** olduğunda, rapor son yedi gün için kayıtları gösterir. Geçerli gün dahil değildir.
 - Rapor, seçilen zaman aralığında *tetiklenen* işlerin ayrıntılarını (günlük işlerden ayrı olarak) gösterir.
 - **Bulut depolama** ve **korumalı örnekler** için gösterilen değerler seçili zaman aralığının *sonunda* .
 - Raporlarda görüntülenen yedekleme öğeleri, seçili zaman aralığının *sonunda* bulunan öğelerdir. Seçilen zaman aralığının ortasında silinen yedekleme öğeleri gösterilmez. Aynı kural yedekleme ilkeleri için de geçerlidir.

@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 5c20fbbe25b51160f42f233d30c39ccaec0f5cac
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 5d5404537ad107a54bd32110727e5a7d0f74ebea
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026070"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326905"
 ---
 # <a name="migration-guide-sql-server-to-sql-managed-instance"></a>Geçiş Kılavuzu: SQL yönetilen örneğine SQL Server
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -99,7 +99,7 @@ Bir SQL yönetilen örneği üzerinde iş yükünüzün performansını SQL Serv
 
 ### <a name="create-sql-managed-instance"></a>SQL Yönetilen Örnek oluşturma 
 
-Bulma ve değerlendirme aşamasındaki bilgilere bağlı olarak, uygun boyutta bir hedef SQL yönetilen örneği oluşturun. [Azure Portal](../../managed-instance/instance-create-quickstart.md), [PowerShell](../../managed-instance/scripts/create-configure-managed-instance-powershell.md)veya bir [Azure Resource Manager (ARM) şablonu](/azure/azure-sql/managed-instance/create-template-quickstart)kullanarak bunu yapabilirsiniz. 
+Bulma ve değerlendirme aşamasındaki bilgilere bağlı olarak, uygun boyutta bir hedef SQL yönetilen örneği oluşturun. [Azure Portal](../../managed-instance/instance-create-quickstart.md), [PowerShell](../../managed-instance/scripts/create-configure-managed-instance-powershell.md)veya bir [Azure Resource Manager (ARM) şablonu](../../managed-instance/create-template-quickstart.md)kullanarak bunu yapabilirsiniz. 
 
 
 ## <a name="migrate"></a>Geçiş
@@ -124,7 +124,7 @@ DMS kullanarak geçişler gerçekleştirmek için aşağıdaki adımları izleyi
 1. Veritabanı geri yüklendikten sonra **tam geçişi Başlat**' ı seçin. Geçiş işlemi, SMB ağ paylaşımında kullanılabilir duruma getirildikten sonra kuyruk günlüğü yedeklemesini kopyalar ve hedefe geri yükler. 
 1. Kaynak veritabanınıza gelen tüm trafiği durdurun ve bağlantı dizesini yeni Azure SQL yönetilen örnek veritabanına güncelleştirin. 
 
-Bu geçiş seçeneğinin ayrıntılı bir adım adım öğretici için bkz. [DMS kullanarak Azure SQL yönetilen örneği 'ne çevrimiçi SQL Server geçirme](/azure/dms/tutorial-sql-server-managed-instance-online). 
+Bu geçiş seçeneğinin ayrıntılı bir adım adım öğretici için bkz. [DMS kullanarak Azure SQL yönetilen örneği 'ne çevrimiçi SQL Server geçirme](../../../dms/tutorial-sql-server-managed-instance-online.md). 
    
 
 
@@ -144,14 +144,14 @@ Yedekleme ve geri yükleme kullanarak geçiş yapmak için şu adımları izleyi
 
 1. Veritabanınızı Azure Blob depolama alanına yedekleyin. Örneğin [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)içindeki [URL 'ye yedekleme](/sql/relational-databases/backup-restore/sql-server-backup-to-url) kullanın. SQL Server 2012 SP1 CU2 UYGULAMAZSANıZ ' den önceki veritabanlarını desteklemek için [Microsoft Azure aracını](https://go.microsoft.com/fwlink/?LinkID=324399) kullanın. 
 1. SQL Server Management Studio kullanarak Azure SQL yönetilen örneğinizi bağlayın. 
-1. Veritabanı yedeklemelerinizle Azure Blob depolama hesabınıza erişmek için paylaşılan erişim Imzasını kullanarak bir kimlik bilgisi oluşturun. Örnek:
+1. Veritabanı yedeklemelerinizle Azure Blob depolama hesabınıza erişmek için paylaşılan erişim Imzasını kullanarak bir kimlik bilgisi oluşturun. Örneğin:
 
    ```sql
    CREATE CREDENTIAL [https://mitutorials.blob.core.windows.net/databases]
    WITH IDENTITY = 'SHARED ACCESS SIGNATURE'
    , SECRET = 'sv=2017-11-09&ss=bfqt&srt=sco&sp=rwdlacup&se=2028-09-06T02:52:55Z&st=2018-09-04T18:52:55Z&spr=https&sig=WOTiM%2FS4GVF%2FEEs9DGQR9Im0W%2BwndxW2CQ7%2B5fHd7Is%3D'
    ```
-1. Azure Storage blob kapsayıcısından yedeklemeyi geri yükleyin. Örnek: 
+1. Azure Storage blob kapsayıcısından yedeklemeyi geri yükleyin. Örneğin: 
 
     ```sql
    RESTORE DATABASE [TargetDatabaseName] FROM URL =
@@ -160,7 +160,7 @@ Yedekleme ve geri yükleme kullanarak geçiş yapmak için şu adımları izleyi
 
 1. Geri yükleme tamamlandıktan sonra, SQL Server Management Studio içindeki **Nesne Gezgini** veritabanını görüntüleyin. 
 
-Bu geçiş seçeneği hakkında daha fazla bilgi edinmek için bkz. [SSMS ile bir veritabanını Azure SQL yönetilen örneği 'Ne geri yükleme](https://docs.microsoft.com/azure/azure-sql/managed-instance/restore-sample-database-quickstart).
+Bu geçiş seçeneği hakkında daha fazla bilgi edinmek için bkz. [SSMS ile bir veritabanını Azure SQL yönetilen örneği 'Ne geri yükleme](../../managed-instance/restore-sample-database-quickstart.md).
 
 > [!NOTE]
 > Bir veritabanı geri yükleme işlemi zaman uyumsuzdur ve yeniden denenebilir. Bağlantı kesmeleri veya zaman aşımı süresi dolarsa SQL Server Management Studio bir hata alabilirsiniz. Azure SQL veritabanı, arka planda veritabanını geri yüklemeye çalışmaya devam eder ve [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) ve [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) görünümlerini kullanarak geri yüklemenin ilerlemesini izleyebilirsiniz.
@@ -203,7 +203,7 @@ Veritabanı geçişi için test yaklaşımı aşağıdaki etkinliklerden oluşur
 
 ## <a name="leverage-advanced-features"></a>Gelişmiş özelliklerden yararlanın 
 
-[Yerleşik yüksek kullanılabilirlik](../../database/high-availability-sla.md), [tehdit algılama](../../database/advanced-data-security.md)ve [iş yükünüzü Izleme ve ayarlama](../../database/monitor-tune-overview.md)gibi SQL yönetilen örneği tarafından sunulan gelişmiş bulut tabanlı özelliklerden faydalandığınızdan emin olun. 
+[Yerleşik yüksek kullanılabilirlik](../../database/high-availability-sla.md), [tehdit algılama](../../database/azure-defender-for-sql.md)ve [iş yükünüzü Izleme ve ayarlama](../../database/monitor-tune-overview.md)gibi SQL yönetilen örneği tarafından sunulan gelişmiş bulut tabanlı özelliklerden faydalandığınızdan emin olun. 
 
 [Azure SQL Analytics](../../../azure-monitor/insights/azure-sql.md) , büyük bir yönetilen örnek kümesini merkezi bir şekilde izlemenize olanak sağlar.
 

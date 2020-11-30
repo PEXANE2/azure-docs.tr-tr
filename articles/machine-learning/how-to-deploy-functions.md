@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 03/06/2020
 ms.topic: conceptual
 ms.custom: how-to, racking-python, devx-track-azurecli
-ms.openlocfilehash: d17967c24fbbb127c1d3eaee5acd5b78c3e3b902
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 901e4d458cc2d77d4e7f13c1782b86c8532ca499
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630354"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327177"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Azure Işlevlerine makine öğrenme modeli dağıtma (Önizleme)
 
@@ -28,7 +28,7 @@ Azure Işlevlerinde bir işlev uygulaması olarak Azure Machine Learning bir mod
 
 Azure Machine Learning, eğitilen makine öğrenimi modellerinden Docker görüntüleri oluşturabilirsiniz. Artık Azure Machine Learning, bu makine öğrenimi modellerini [Azure işlevlerine dağıtılabilecek](../azure-functions/functions-deployment-technologies.md#docker-container)işlev uygulamalarına derlemek için Önizleme işlevselliğine sahiptir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure Machine Learning çalışma alanı. Daha fazla bilgi için [çalışma alanı oluşturma](how-to-manage-workspace.md) makalesine bakın.
 * [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
@@ -277,7 +277,7 @@ Görüntü yüklendikten ve uygulama kullanılabilir olduğunda, uygulamayı tet
     }
     ```
 
-3. İşlev tarafından üretilen çıktıyı görüntülemek için, oluşturulan çıkış dosyalarını listelemek için aşağıdaki komutu kullanın. `<triggerConnectionString>`Daha önce döndürülen bağlantı dizesiyle değiştirin. Bu örnekte, `output` daha önce oluşturulan çıkış kapsayıcısının adıdır. Farklı bir ad kullandıysanız şu değeri değiştirin::
+3. İşlev tarafından üretilen çıktıyı görüntülemek için, oluşturulan çıkış dosyalarını listelemek için aşağıdaki komutu kullanın. `<triggerConnectionString>`Daha önce döndürülen bağlantı dizesiyle değiştirin. Bu örnekte, `output` daha önce oluşturulan çıkış kapsayıcısının adıdır. Farklı bir ad kullandıysanız şu değeri değiştirin:
 
     ```azurecli-interactive
     az storage blob list --container-name output --connection-string <triggerConnectionString> --query '[].name' --output tsv

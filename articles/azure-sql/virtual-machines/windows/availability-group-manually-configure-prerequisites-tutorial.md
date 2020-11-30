@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 59eae5303d9eca48fa4cec30fe622faf19ffba1f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 8572a73586b01967c8aef7f6c4947b5ce96146b4
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94961898"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324866"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Öğretici: Azure sanal makinelerinde SQL Server üzerinde kullanılabilirlik grupları oluşturmaya yönelik önkoşullar
 
@@ -144,7 +144,7 @@ Aşağıdaki tabloda ağ yapılandırma ayarları özetlenmektedir:
 
 ## <a name="create-availability-sets"></a>Kullanılabilirlik kümeleri oluşturma
 
-Sanal makineler oluşturmadan önce kullanılabilirlik kümeleri oluşturmanız gerekir. Kullanılabilirlik kümeleri, planlı veya planlanmamış bakım olayları için kapalı kalma süresini azaltır. Azure kullanılabilirlik kümesi, Azure 'un fiziksel hata etki alanlarına ve güncelleştirme etki alanlarına yerleştirdiği mantıksal bir kaynak grubudur. Bir hata etki alanı, kullanılabilirlik kümesi üyelerinin ayrı güç ve ağ kaynaklarına sahip olmasını sağlar. Bir güncelleştirme etki alanı, kullanılabilirlik kümesi üyelerinin bakım için aynı anda kullanılmamasını sağlar. Daha fazla bilgi için bkz. [sanal makinelerin kullanılabilirliğini yönetme](../../../virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json).
+Sanal makineler oluşturmadan önce kullanılabilirlik kümeleri oluşturmanız gerekir. Kullanılabilirlik kümeleri, planlı veya planlanmamış bakım olayları için kapalı kalma süresini azaltır. Azure kullanılabilirlik kümesi, Azure 'un fiziksel hata etki alanlarına ve güncelleştirme etki alanlarına yerleştirdiği mantıksal bir kaynak grubudur. Bir hata etki alanı, kullanılabilirlik kümesi üyelerinin ayrı güç ve ağ kaynaklarına sahip olmasını sağlar. Bir güncelleştirme etki alanı, kullanılabilirlik kümesi üyelerinin bakım için aynı anda kullanılmamasını sağlar. Daha fazla bilgi için bkz. [sanal makinelerin kullanılabilirliğini yönetme](../../../virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 İki kullanılabilirlik kümesine ihtiyacınız vardır. Biri etki alanı denetleyicileri içindir. İkincisi SQL Server sanal makineler içindir.
 
@@ -169,7 +169,7 @@ Ağı, alt ağları ve kullanılabilirlik kümelerini oluşturduktan sonra, etki
 
 Etki alanı denetleyicileri oluşturup yapılandırmak için, **SQL-ha-RG** kaynak grubuna dönün.
 
-1. **Ekle**’yi seçin. 
+1. **Add (Ekle)** seçeneğini belirleyin. 
 2. **Windows Server 2016 Datacenter** yazın.
 3. **Windows Server 2016 Datacenter** öğesini seçin. **Windows Server 2016 Datacenter**'da dağıtım modelinin **Kaynak Yöneticisi** olduğundan emin olun ve ardından **Oluştur**' u seçin. 
 
@@ -313,7 +313,7 @@ Birincil etki alanı denetleyicisi yeniden başlatıldıktan sonra, ikinci etki 
 
     ![Dağıtım yapılandırması](./media/availability-group-manually-configure-prerequisites-tutorial-/28-deploymentconfig.png)
 
-18. **Seç**’e tıklayın.
+18. **Seç**'e tıklayın.
 19. Yönetici hesabını kullanarak bağlanın (**corp. CONTOSO. COM\domainadmin**) ve parola (**contoso! 0000**).
 20. **Ormandan bir etki alanı seçin** bölümünde, etki alanınızı seçin ve ardından **Tamam**' ı seçin.
 21. **Etki alanı denetleyicisi seçenekleri**' nde, varsayılan değerleri kullanın ve DSRM parolasını ayarlayın.

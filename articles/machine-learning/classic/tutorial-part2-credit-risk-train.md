@@ -9,17 +9,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 59567cf2dc03952a78852f3288e78ba06aa769ee
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 557c624b6ed683f701b6a8d38854cd8604e05b31
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325686"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325273"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio-classic"></a>Öğretici 2: Kredi risk modellerini eğitme-Azure Machine Learning Studio (klasik)
 
-**Uygulama hedefi:** ![ Evet ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik) ![ ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) yok  
-
+**Uygulama hedefi:** ![ Bu bir onay işaretidir ve bu makalenin Machine Learning Studio (klasik) için geçerli olduğu anlamına gelir.  ](../../../includes/media/aml-applies-to-skus/yes.png) Machine Learning Studio (klasik)   ![ Bu bir X ' dir ve bu makalenin Azure Machine Learning için geçerli olduğu anlamına gelir.](../../../includes/media/aml-applies-to-skus/no.png)[ Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 Bu öğreticide, tahmine dayalı bir analiz çözümü geliştirme sürecinde genişletilmiş bir görünüm elde edersiniz. Machine Learning Studio (klasik) içinde basit bir model geliştirirsiniz.  Daha sonra modeli bir Azure Machine Learning Web hizmeti olarak dağıtabilirsiniz.  Bu dağıtılan model yeni verileri kullanarak tahminleri yapabilir. Bu öğretici, **üç bölümden oluşan bir öğretici serisinin ikinci bölümüdür**.
 
@@ -82,7 +81,7 @@ Denemenin bu bölümü artık şuna benzer:
 
 Şimdi, modelin kredi riski değerini tahmin etmek istediğiniz modeli [eğitme][train-model] modülüne bildirmeniz gerekir.
 
-1. [Model eğitme][train-model] modülünü seçin. **Özellikler** bölmesinde, **sütun seçiciyi Başlat** ' ı tıklatın.
+1. [Model eğitme][train-model] modülünü seçin. **Özellikler** bölmesinde, **sütun seçiciyi Başlat**' ı tıklatın.
 
 1. **Tek bir sütun seçin** iletişim kutusunda, **kullanılabilir sütunlar** altındaki ara alanına "kredi riski" yazın, aşağıdaki "kredi riski" ni seçin ve sağ ok düğmesine ( **>** ) tıklayarak "kredi riski" nu **Seçili sütunlara** taşıyın. 
 
@@ -100,7 +99,7 @@ SVM modelini ayarlamak için şunları yapın:
 
 1. Modül paletinde [Iki sınıf destek vektör makinesi][two-class-support-vector-machine] modülünü bulun ve tuvale sürükleyin.
 
-1. [Modeli eğitme][train-model] modülüne sağ tıklayın, **Kopyala** ' yı seçin ve ardından tuvale sağ tıklayıp **Yapıştır** ' ı seçin. [Tren modeli][train-model] modülünün kopyası, orijinalle aynı sütun seçimine sahiptir.
+1. [Modeli eğitme][train-model] modülüne sağ tıklayın, **Kopyala**' yı seçin ve ardından tuvale sağ tıklayıp **Yapıştır**' ı seçin. [Tren modeli][train-model] modülünün kopyası, orijinalle aynı sütun seçimine sahiptir.
 
 1. [Iki sınıf destek vektör makinesi][two-class-support-vector-machine] modülünün çıkışını Ikinci [eğitim modeli][train-model] modülünün sol giriş bağlantı noktasına bağlayın.
 
@@ -118,7 +117,7 @@ Denemenizin bu bölümü şu şekilde görünmelidir:
 
 1. [Verileri Normalleştir][normalize-data] modülünü seçmek için tıklayın. **Özellikler** bölmesinde, **dönüşüm yöntemi** parametresi için **tanh** ' yi seçin.
 
-1. **Sütun seçiciyi Başlat** ' a tıklayın, **Başlangıç** için "sütun yok" u seçin, ilk açılan menüde **Ekle** ' yi seçin, ikinci açılan menüde **sütun türü** ' nü seçin ve üçüncü açılan menüde **sayısal** ' i seçin. Bu, tüm sayısal sütunların (ve yalnızca sayısal) dönüştürüldüğünü belirtir.
+1. **Sütun seçiciyi Başlat**' a tıklayın, **Başlangıç** için "sütun yok" u seçin, ilk açılan menüde **Ekle** ' yi seçin, ikinci açılan menüde **sütun türü** ' nü seçin ve üçüncü açılan menüde **sayısal** ' i seçin. Bu, tüm sayısal sütunların (ve yalnızca sayısal) dönüştürüldüğünü belirtir.
 
 1. Bu satırın sağ tarafındaki artı işaretine (+) tıklayın. Bu, açılan bir satır oluşturur. İlk açılan menüde **hariç tut** ' u seçin, ikinci açılan menüde **sütun adları** ' nı seçin ve metin alanına "kredi riski" yazın. Bu, kredi riski sütununun yoksayılıp sayılmayacağını belirtir (Bu sütun sayısal olduğu için bunu yapmanız gerekir, aksi takdirde onu dışmadıysanız dönüştürüleirdi).
 
@@ -179,7 +178,7 @@ Deneme şimdi şuna benzer görünmelidir:
 ![Her iki modeli değerlendirme](./media/tutorial-part2-credit-risk-train/final-experiment.png)
 
 
-Sonuçları denetlemek için [modeli değerlendir][evaluate-model] modülünün çıkış bağlantı noktasına tıklayın ve **Görselleştir** ' i seçin.  
+Sonuçları denetlemek için [modeli değerlendir][evaluate-model] modülünün çıkış bağlantı noktasına tıklayın ve **Görselleştir**' i seçin.  
 
 [Modeli değerlendir][evaluate-model] modülü, iki puanlanmış modelin sonuçlarını karşılaştırmanıza imkan tanıyan bir çift eğri ve ölçüm oluşturur. Sonuçları alıcı Işleci özelliği (ROC) eğrileri, duyarlık/geri çağırma eğrileri veya eğrileri Yükselt olarak görüntüleyebilirsiniz. Görünen ek veriler, bir karışıklık matrisi, eğri (AUC) ve diğer ölçümler altında bulunan alanın birikmeli değerlerini içerir. Kaydırıcıyı sola veya sağa taşıyarak eşik değerini değiştirebilir ve ölçüm kümesini nasıl etkileyeceğini görebilirsiniz.  
 

@@ -3,12 +3,12 @@ title: Şablonlara genel bakış
 description: Kaynak dağıtımı için Azure Resource Manager şablonları kullanma avantajlarını açıklar.
 ms.topic: conceptual
 ms.date: 06/22/2020
-ms.openlocfilehash: 1873c737d17fc8774ddd1276d1375799ca2da35e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 188fd5782795a4fb5456978a2a596cabc6dfd874
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92280047"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325069"
 ---
 # <a name="what-are-arm-templates"></a>ARM şablonları nelerdir?
 
@@ -38,7 +38,7 @@ ARM şablonlarını kullanma ve kod hizmetleri olarak diğer altyapılardan biri
 
 * **Test etme**: Bu şablonu ARM şablon aracı seti (ARM-TTK) ile test ederek, şablonunuzun önerilen kurallara uyduğundan emin olabilirsiniz. Bu test kiti, [GitHub](https://github.com/Azure/arm-ttk)'dan indirebileceğiniz bir PowerShell betiğine sahiptir. Araç seti, şablon dilini kullanarak uzmanlık geliştirmenizi kolaylaştırır.
 
-* **Değişiklikleri Önizle**: şablonu dağıtmadan önce değişikliklerin önizlemesini almak için [ne yapılır işlemini](template-deploy-what-if.md) kullanabilirsiniz. Hangi kaynakların oluşturulacağını, güncelleştirileceğini veya silineceğini ve değiştirecek kaynak özelliklerini görürsünüz. Durum işlemi ortamınızın geçerli durumunu denetler ve durumu yönetme ihtiyacını ortadan kaldırır.
+* **Değişiklikleri Önizle**: şablonu dağıtmadan önce değişikliklerin önizlemesini almak için [ne yapılır işlemini](template-deploy-what-if.md) kullanabilirsiniz. Bununla birlikte, hangi kaynakların oluşturulacağını, güncelleştirileceğini veya silineceğini ve değiştirilecek kaynak özelliklerini görürsünüz. Durum işlemi ortamınızın geçerli durumunu denetler ve durumu yönetme ihtiyacını ortadan kaldırır.
 
 * **Yerleşik doğrulama**: şablonunuz yalnızca doğrulama işlemi yapıldıktan sonra dağıtılır. Kaynak Yöneticisi dağıtımın başarılı olduğundan emin olmak için dağıtımı başlatmadan önce şablonu denetler. Dağıtımınız, yarı tamamlanmış bir durumda durmak daha az olabilir.
 

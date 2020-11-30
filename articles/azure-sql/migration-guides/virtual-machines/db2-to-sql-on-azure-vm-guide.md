@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: 0522f677c731aa1cd218a14429791db14179686a
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 5312ee08bad9d0b84e13c53fe4b1de59fad896f1
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94497070"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326055"
 ---
 # <a name="migration-guide-db2-to-sql-server-on-azure-vms"></a>Geçiş Kılavuzu: DB2 Azure VM 'lerinde SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -46,8 +46,8 @@ SQL Server Geçiş Yardımcısı (SSMA) kullanarak bir değerlendirme oluşturun
 Bir değerlendirme oluşturmak için aşağıdaki adımları izleyin:
 
 1. DB2 için SQL Server Geçiş Yardımcısı (SSMA) açın. 
-1. **Dosya** ' yı ve ardından **Yeni proje** ' yi seçin. 
-1. Projenizin kaydedileceği bir konum belirtin ve ardından açılır listeden bir SQL Server geçiş hedefi seçin. **Tamam** ’ı seçin. 
+1. **Dosya** ' yı ve ardından **Yeni proje**' yi seçin. 
+1. Projenizin kaydedileceği bir konum belirtin ve ardından açılır listeden bir SQL Server geçiş hedefi seçin. **Tamam**’ı seçin. 
 
    :::image type="content" source="media/db2-to-sql-on-azure-vm-guide/new-project.png" alt-text="Proje ayrıntılarını girip kaydetmek için Tamam ' ı seçin.":::
 
@@ -57,7 +57,7 @@ Bir değerlendirme oluşturmak için aşağıdaki adımları izleyin:
    :::image type="content" source="media/db2-to-sql-on-azure-vm-guide/connect-to-db2.png" alt-text="DB2 örneğinize bağlanma":::
 
 
-1. Geçirmek istediğiniz DB2 şemasını sağ tıklatın ve ardından **rapor oluştur** ' u seçin. Bu, bir HTML raporu oluşturur. Alternatif olarak, şemayı seçtikten sonra gezinti çubuğundan **rapor oluştur** ' u seçebilirsiniz. 
+1. Geçirmek istediğiniz DB2 şemasını sağ tıklatın ve ardından **rapor oluştur**' u seçin. Bu, bir HTML raporu oluşturur. Alternatif olarak, şemayı seçtikten sonra gezinti çubuğundan **rapor oluştur** ' u seçebilirsiniz. 
 
    :::image type="content" source="media/db2-to-sql-on-azure-vm-guide/create-report.png" alt-text="Şemaya sağ tıklayıp rapor oluştur ' u seçin.":::
 
@@ -73,27 +73,27 @@ Bir değerlendirme oluşturmak için aşağıdaki adımları izleyin:
 Varsayılan veri türü eşlemelerini doğrulayın ve gerekirse gereksinimlere göre değiştirin. Bunu yapmak için aşağıdaki adımları izleyin: 
 
 1. Menüden **Araçlar** ' ı seçin. 
-1. **Proje ayarları** ' nı seçin. 
+1. **Proje ayarları**' nı seçin. 
 1. **Tür eşlemeleri** sekmesini seçin. 
 
    :::image type="content" source="media/db2-to-sql-on-azure-vm-guide/type-mapping.png" alt-text="Şemayı seçin ve sonra tür eşleme":::
 
-1. Her tablo için tür eşlemesini, **DB2 meta veri Gezgini** 'nde tabloyu seçerek değiştirebilirsiniz. 
+1. Her tablo için tür eşlemesini, **DB2 meta veri Gezgini**'nde tabloyu seçerek değiştirebilirsiniz. 
 
 ### <a name="convert-schema"></a>Şemayı Dönüştür 
 
 Şemayı dönüştürmek için aşağıdaki adımları izleyin:
 
-1. Seçim Deyimlere dinamik veya geçici sorgular ekleyin. Düğüme sağ tıklayın ve ardından **deyim Ekle** ' yi seçin. 
-1. **SQL Server Bağlan** ' ı seçin. 
+1. Seçim Deyimlere dinamik veya geçici sorgular ekleyin. Düğüme sağ tıklayın ve ardından **deyim Ekle**' yi seçin. 
+1. **SQL Server Bağlan**' ı seçin. 
     1. Azure sanal makinenizde SQL Server örneğinize bağlanmak için bağlantı ayrıntılarını girin. 
     1. Hedef sunucuda var olan bir veritabanına bağlanmayı seçin veya hedef sunucuda yeni bir veritabanı oluşturmak için yeni bir ad sağlayın. 
-    1. **Bağlan** ’ı seçin. 
+    1. **Bağlan**’ı seçin. 
 
     :::image type="content" source="../../../../includes/media/virtual-machines-sql-server-connection-steps/rm-ssms-connect.png" alt-text="Azure VM 'de SQL Server bağlanma":::
 
 
-1. Şemaya sağ tıklayıp **Şemayı Dönüştür** ' ü seçin. Alternatif olarak, şemanızı seçtikten sonra üst gezinti çubuğundan **Şemayı Dönüştür** ' i de seçebilirsiniz. 
+1. Şemaya sağ tıklayıp **Şemayı Dönüştür**' ü seçin. Alternatif olarak, şemanızı seçtikten sonra üst gezinti çubuğundan **Şemayı Dönüştür** ' i de seçebilirsiniz. 
 
    :::image type="content" source="media/db2-to-sql-on-azure-vm-guide/convert-schema.png" alt-text="Şemaya sağ tıklayıp şemayı Dönüştür ' ü seçin.":::
 
@@ -110,11 +110,11 @@ Veritabanlarınızı değerlendirmek ve tutarsızlıkları doğruladıktan sonra
 
 Şemanızı yayımlamak ve verilerinizi geçirmek için şu adımları izleyin:
 
-1. Şemayı yayımlama: **SQL Server meta veri Gezgini** ' nde **veritabanları** düğümünden veritabanına sağ tıklayın ve **veritabanıyla Synchronize** ' ı seçin.
+1. Şemayı yayımlama: **SQL Server meta veri Gezgini** ' nde **veritabanları** düğümünden veritabanına sağ tıklayın ve **veritabanıyla Synchronize**' ı seçin.
 
    :::image type="content" source="media/db2-to-sql-on-azure-vm-guide/synchronize-with-database.png" alt-text="Veritabanına sağ tıklayın ve veritabanıyla Synchronize ' ı seçin.":::
 
-1. Verileri geçirme: **DB2 meta veri Gezgini** ' nden şemaya sağ tıklayın ve **veri geçişi** ' ni seçin. 
+1. Verileri geçirme: **DB2 meta veri Gezgini** ' nden şemaya sağ tıklayın ve **veri geçişi**' ni seçin. 
 
    :::image type="content" source="media/db2-to-sql-on-azure-vm-guide/migrate-data.png" alt-text="Şemaya sağ tıklayıp verileri geçir ' i seçin":::
 
@@ -139,10 +139,10 @@ Veriler hedef ortama geçirildikten sonra, daha önce kaynağı tüketen tüm uy
 
 Veritabanı geçişi için test yaklaşımı aşağıdaki etkinliklerden oluşur:
 
-1. **Doğrulama testleri geliştirme** : veritabanı geçişini test etmek için SQL sorguları kullanmanız gerekir. Kaynak ve hedef veritabanlarında çalıştırmak için doğrulama sorguları oluşturmanız gerekir. Doğrulama sorgularınız tanımladığınız kapsamı kapsamalıdır.
-1. **Test ortamını ayarlama** : test ortamı, kaynak veritabanının ve hedef veritabanının bir kopyasını içermelidir. Test ortamını yalıtdığınızdan emin olun.
-1. **Doğrulama testlerini Çalıştır** : doğrulama testlerini kaynak ve hedefe göre çalıştırın ve ardından sonuçları çözümleyin.
-1. **Performans testlerini Çalıştır** : kaynak ve hedefte performans testi çalıştırın ve ardından sonuçları çözümleyip karşılaştırın.
+1. **Doğrulama testleri geliştirme**: veritabanı geçişini test etmek için SQL sorguları kullanmanız gerekir. Kaynak ve hedef veritabanlarında çalıştırmak için doğrulama sorguları oluşturmanız gerekir. Doğrulama sorgularınız tanımladığınız kapsamı kapsamalıdır.
+1. **Test ortamını ayarlama**: test ortamı, kaynak veritabanının ve hedef veritabanının bir kopyasını içermelidir. Test ortamını yalıtdığınızdan emin olun.
+1. **Doğrulama testlerini Çalıştır**: doğrulama testlerini kaynak ve hedefe göre çalıştırın ve ardından sonuçları çözümleyin.
+1. **Performans testlerini Çalıştır**: kaynak ve hedefte performans testi çalıştırın ve ardından sonuçları çözümleyip karşılaştırın.
 
    > [!NOTE]
    > Geçiş sonrası doğrulama testlerini geliştirmeye ve çalıştırmaya yönelik yardım için iş ortağı [Querysurge](https://www.querysurge.com/company/partners/microsoft)tarafından kullanılabilen veri kalitesi çözümünü göz önünde bulundurun. 
@@ -164,7 +164,7 @@ Bu kaynaklar, Azure veri grubu Mühendisliği ekibi tarafından sponsorlu Data S
 
 Geçişten sonra, [geçiş sonrası doğrulama ve iyileştirme kılavuzunu](/sql/relational-databases/post-migration-validation-and-optimization-guide)gözden geçirin. 
 
-Çeşitli veritabanı ve veri geçişi senaryolarında size yardımcı olmak üzere sunulan Microsoft ve üçüncü taraf hizmet ve araçların bir matrisi ve özel görevleri için bkz. [veri geçiş Hizmetleri ve araçları](/azure/dms/dms-tools-matrix).
+Çeşitli veritabanı ve veri geçişi senaryolarında size yardımcı olmak üzere sunulan Microsoft ve üçüncü taraf hizmet ve araçların bir matrisi ve özel görevleri için bkz. [veri geçiş Hizmetleri ve araçları](../../../dms/dms-tools-matrix.md).
 
 Diğer geçiş kılavuzlarında, bkz. [Veritabanı geçişi](https://datamigration.microsoft.com/). 
 

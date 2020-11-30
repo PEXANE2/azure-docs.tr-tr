@@ -4,12 +4,12 @@ description: Java ile işlevleri geliştirmeyi anlayın.
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 9679f6030ac889ac442a40cd852f5cc17f505756
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 1ffbd760ae75605d75652b29d379420d6946aa8f
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422527"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326463"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Işlevleri Java geliştirici kılavuzu
 
@@ -17,7 +17,7 @@ Bu kılavuz, Java kullanarak Azure Işlevleri geliştirmeye yardımcı olacak ay
 
 Bir Java geliştiricisi olarak, Azure Işlevleri 'ne yeni başladıysanız, lütfen önce aşağıdaki makalelerden birini okuyun:
 
-| Başlarken | Kavramlar| 
+| Kullanmaya başlama | Kavramlar| 
 | -- | -- |  
 | <ul><li>[Visual Studio Code kullanarak Java işlevi](./create-first-function-vs-code-java.md)</li><li>[Terminal/komut istemiyle Java/Maven işlevi](./create-first-function-cli-java.md)</li><li>[Gradle kullanarak Java işlevi](functions-create-first-java-gradle.md)</li><li>[Çakışan Küreler kullanan Java işlevi](functions-create-maven-eclipse.md)</li><li>[IntelliJ FIKRINI kullanarak Java işlevi](functions-create-maven-intellij.md)</li></ul> | <ul><li>[Geliştirici kılavuzu](functions-reference.md)</li><li>[Barındırma seçenekleri](functions-scale.md)</li><li>[Performans &nbsp; konuları](functions-best-practices.md)</li></ul> |
 
@@ -45,15 +45,27 @@ Yukarıdaki makale bağlantılarında, tercih ettiğiniz IDE 'yi kullanarak ilk 
 
 ### <a name="project-scaffolding"></a>Proje yapı Iskelesi
 
-Terminalden komut satırı geliştirmeyi tercih ediyorsanız, Java tabanlı işlev projelerini dolandırmanın en kolay yolu, arşiv `Apache Maven` türleri kullanmaktır. Azure Işlevleri için Java Maven arşiv ETYPE şu _GroupID_ altında yayımlanır: _ArtifactId_ : [com. Microsoft. Azure: Azure-Functions-arşiv ETYPE](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/). 
+Terminalden komut satırı geliştirmeyi tercih ediyorsanız, Java tabanlı işlev projelerini dolandırmanın en kolay yolu, arşiv `Apache Maven` türleri kullanmaktır. Azure Işlevleri için Java Maven arşiv ETYPE şu _GroupID_ altında yayımlanır:_ArtifactId_: [com. Microsoft. Azure: Azure-Functions-arşiv ETYPE](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/). 
 
 Aşağıdaki komut, bu arşiv ETYPE kullanarak yeni bir Java işlev projesi oluşturur:
+
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```bash
 mvn archetype:generate \
     -DarchetypeGroupId=com.microsoft.azure \
-    -DarchetypeArtifactId=azure-functions-archetype 
+    -DarchetypeArtifactId=azure-functions-archetype
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+mvn archetype:generate ^
+    -DarchetypeGroupId=com.microsoft.azure ^
+    -DarchetypeArtifactId=azure-functions-archetype
+```
+
+---
 
 Bu arşiv ETYPE kullanmaya başlamak için bkz. [Java hızlı başlangıç](./create-first-function-cli-java.md).
 
@@ -202,7 +214,7 @@ Adlı bir uygulama ayarında ek bağımsız değişkenler sağlayabilirsiniz `JA
 > [!IMPORTANT]  
 > Tüketim planında, özelleştirmenin çalışması için değeri 0 olan WEBSITE_USE_PLACEHOLDER ayarını da eklemeniz gerekir. Bu ayar, Java işlevleri için soğuk başlangıç sürelerini artırır.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 [Azure Portal](https://portal.azure.com), ayarı eklemek Için [uygulama ayarları sekmesini](functions-how-to-use-azure-function-app-settings.md#settings) kullanın `JAVA_OPTS` .
 
@@ -210,19 +222,40 @@ Adlı bir uygulama ayarında ek bağımsız değişkenler sağlayabilirsiniz `JA
 
 Aşağıdaki örnekte olduğu gibi, ayarlamak için [az functionapp config appSettings set](/cli/azure/functionapp/config/appsettings) komutunu kullanabilirsiniz `JAVA_OPTS` :
 
-#### <a name="consumption-plan"></a>[Tüketim planı](#tab/consumption)
+# <a name="consumption-plan"></a>[Tüketim planı](#tab/consumption/bash)
+
 ```azurecli-interactive
 az functionapp config appsettings set \
---settings "JAVA_OPTS=-Djava.awt.headless=true" \
-"WEBSITE_USE_PLACEHOLDER=0" \
---name <APP_NAME> --resource-group <RESOURCE_GROUP>
+    --settings "JAVA_OPTS=-Djava.awt.headless=true" \
+    "WEBSITE_USE_PLACEHOLDER=0" \
+    --name <APP_NAME> --resource-group <RESOURCE_GROUP>
 ```
-#### <a name="dedicated-plan--premium-plan"></a>[Adanmış plan/Premium plan](#tab/dedicated+premium)
+
+# <a name="consumption-plan"></a>[Tüketim planı](#tab/consumption/cmd)
+
+```azurecli-interactive
+az functionapp config appsettings set ^
+    --settings "JAVA_OPTS=-Djava.awt.headless=true" ^
+    "WEBSITE_USE_PLACEHOLDER=0" ^
+    --name <APP_NAME> --resource-group <RESOURCE_GROUP>
+```
+
+# <a name="dedicated-plan--premium-plan"></a>[Adanmış plan/Premium plan](#tab/dedicated+premium/bash)
+
 ```azurecli-interactive
 az functionapp config appsettings set \
---settings "JAVA_OPTS=-Djava.awt.headless=true" \
---name <APP_NAME> --resource-group <RESOURCE_GROUP>
+    --settings "JAVA_OPTS=-Djava.awt.headless=true" \
+    --name <APP_NAME> --resource-group <RESOURCE_GROUP>
 ```
+
+# <a name="dedicated-plan--premium-plan"></a>[Adanmış plan/Premium plan](#tab/dedicated+premium/cmd)
+
+```azurecli-interactive
+az functionapp config appsettings set ^
+    --settings "JAVA_OPTS=-Djava.awt.headless=true" ^
+    --name <APP_NAME> --resource-group <RESOURCE_GROUP>
+```
+
 ---
 
 Bu örnek, gözetimsiz moda izin vermez. `<APP_NAME>`İşlev uygulamanızın adıyla ve `<RESOURCE_GROUP>` kaynak grubuyla değiştirin. 
@@ -460,15 +493,36 @@ Azure CLı 'yi kullanarak Java stdout ve stderr günlük kaydını ve diğer uyg
 
 Azure CLı kullanarak uygulama günlüğü yazmak için işlev uygulamanızı yapılandırma:
 
+# <a name="bash"></a>[Bash](#tab/bash)
+
 ```azurecli-interactive
 az webapp log config --name functionname --resource-group myResourceGroup --application-logging true
 ```
 
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli-interactive
+az webapp log config --name functionname --resource-group myResourceGroup --application-logging true
+```
+
+---
+
 Azure CLı kullanarak işlev uygulamanıza ait günlük çıktısını akışa almak için yeni bir komut istemi, bash veya terminal oturumu açın ve aşağıdaki komutu girin:
+
+# <a name="bash"></a>[Bash](#tab/bash)
 
 ```azurecli-interactive
 az webapp log tail --name webappname --resource-group myResourceGroup
 ```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```azurecli-interactive
+az webapp log tail --name webappname --resource-group myResourceGroup
+```
+
+---
+
 [Az WebApp log tail](/cli/azure/webapp/log) komutu, seçeneğini kullanarak çıktıyı filtrelemeye yönelik seçeneklere sahiptir `--provider` . 
 
 Azure CLı kullanarak günlük dosyalarını tek bir ZIP dosyası olarak indirmek için yeni bir komut istemi, bash veya terminal oturumu açın ve aşağıdaki komutu girin:

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 1826b66b0548b7567af59de64549c7eb700025c3
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 7e2826221bd9d15472467c4dd8676d3d0538e0d6
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130910"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326582"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Azure Stream Analytics işi için bir SQL veritabanındaki başvuru verilerini kullanma
 
@@ -32,21 +32,21 @@ Azure portal kullanarak Azure SQL veritabanını başvuru giriş kaynağı olara
 
 ### <a name="define-sql-database-reference-data-input"></a>SQL veritabanı başvuru verileri girişini tanımlayın
 
-1. Stream Analytics işte, **iş topolojisi** altında **girişler** ' i seçin. **Başvuru girişi Ekle** ' ye tıklayın ve **SQL veritabanı** ' nı seçin.
+1. Stream Analytics işte, **iş topolojisi** altında **girişler** ' i seçin. **Başvuru girişi Ekle** ' ye tıklayın ve **SQL veritabanı**' nı seçin.
 
-   ![Stream Analytics iş girişi](./media/sql-reference-data/stream-analytics-inputs.png)
+   ![Sol gezinti bölmesinde girişler seçilidir. Girişler ' de + başvuru girişi Ekle seçilidir ve BLOB depolama ve SQL veritabanı değerlerini gösteren bir açılan liste görüntülenir.](./media/sql-reference-data/stream-analytics-inputs.png)
 
 2. Stream Analytics giriş yapılandırmasını doldurun. Veritabanı adı, sunucu adı, Kullanıcı adı ve parola ' yı seçin. Başvuru verileri girişinizi düzenli aralıklarla yenilemeyi istiyorsanız, "açık" seçeneğini seçerek yenileme oranını gg: ss: dd olarak belirleyin. Kısa yenileme hızına sahip büyük veri kümeleriniz varsa, bir [Delta sorgu](sql-reference-data.md#delta-query)kullanabilirsiniz.
 
-   ![SQL veritabanı başvuru yapılandırması](./media/sql-reference-data/sql-input-config.png)
+   ![SQL veritabanı seçildiğinde SQL veritabanı yeni giriş sayfası görüntülenir. Sol bölmede bir yapılandırma formu ve sağ bölmedeki bir anlık görüntü sorgusu bulunur.](./media/sql-reference-data/sql-input-config.png)
 
 3. SQL sorgu Düzenleyicisi 'nde anlık görüntü sorgusunu test edin. Daha fazla bilgi için bkz [. Azure Portal SQL sorgu düzenleyicisini kullanarak bağlanma ve veri sorgulama](../azure-sql/database/connect-query-portal.md)
 
 ### <a name="specify-storage-account-in-job-config"></a>Iş yapılandırmasında depolama hesabı belirtin
 
-**Yapılandır** altında **depolama hesabı ayarları** ' na gidin ve **depolama hesabı ekle** ' yi seçin.
+**Yapılandır** altında **depolama hesabı ayarları** ' na gidin ve **depolama hesabı ekle**' yi seçin.
 
-   ![Stream Analytics depolama hesabı ayarları](./media/sql-reference-data/storage-account-settings.png)
+   ![Sol bölmede depolama hesabı ayarları seçilidir. Sağ bölmede bir depolama hesabı Ekle düğmesi bulunur.](./media/sql-reference-data/storage-account-settings.png)
 
 ### <a name="start-the-job"></a>İşi başlatma
 
@@ -79,49 +79,49 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 ### <a name="choose-your-subscription"></a>Aboneliğinizi seçin
 
-1. Visual Studio'nun **Görünüm** menüsünde **Sunucu Gezgini** 'ni seçin.
+1. Visual Studio'nun **Görünüm** menüsünde **Sunucu Gezgini**'ni seçin.
 
-2. **Azure** ' a sağ tıklayın, **Microsoft Azure aboneliğine Bağlan** ' ı seçin ve Azure hesabınızla oturum açın.
+2. **Azure**' a sağ tıklayın, **Microsoft Azure aboneliğine Bağlan**' ı seçin ve Azure hesabınızla oturum açın.
 
 ### <a name="create-a-stream-analytics-project"></a>Stream Analytics projesi oluşturma
 
-1. **Dosya > Yeni Proje** 'yi seçin. 
+1. **Dosya > Yeni Proje**'yi seçin. 
 
-2. Sol taraftaki şablon listesinden **Stream Analytics** 'i ve ardından **Azure Stream Analytics Uygulaması** 'nı seçin. 
+2. Sol taraftaki şablon listesinden **Stream Analytics**'i ve ardından **Azure Stream Analytics Uygulaması**'nı seçin. 
 
-3. Proje **adı** , **konum** ve **çözüm adını** girip **Tamam** ' ı seçin.
+3. Proje **adı**, **konum** ve **çözüm adını** girip **Tamam**' ı seçin.
 
-   ![Visual Studio 'da yeni Stream Analytics projesi](./media/sql-reference-data/stream-analytics-vs-new-project.png)
+   ![Stream Analytics şablonu seçilidir, Azure Stream Analytics Uygulama seçilidir ve ad, konum ve çözüm adları kutuları vurgulanır.](./media/sql-reference-data/stream-analytics-vs-new-project.png)
 
 ### <a name="define-sql-database-reference-data-input"></a>SQL veritabanı başvuru verileri girişini tanımlayın
 
 1. Yeni bir giriş oluşturun.
 
-   ![Visual Studio 'da yeni Stream Analytics girişi](./media/sql-reference-data/stream-analytics-vs-input.png)
+   ![Yeni öğe Ekle ' de giriş seçilidir.](./media/sql-reference-data/stream-analytics-vs-input.png)
 
 2. **Çözüm Gezgini** **Input.js** çift tıklayın.
 
 3. **Stream Analytics giriş yapılandırmasını** doldurun. Veritabanı adını, sunucu adını, yenileme türünü ve yenileme hızını seçin. Yenileme hızını biçimde belirtin `DD:HH:MM` .
 
-   ![Visual Studio 'da Stream Analytics giriş yapılandırması](./media/sql-reference-data/stream-analytics-vs-input-config.png)
+   ![Stream Analytics girişi yapılandırması ' nda, açılan listelerden değerler girilir veya seçilir.](./media/sql-reference-data/stream-analytics-vs-input-config.png)
 
    "Yalnızca bir kez Yürüt" veya "düzenli aralıklarla Yürüt" seçeneğini belirlerseniz, **[Input Alias]** ADLı bir SQL codebehind dosyası, dosya düğümündeki **Input.js** altında projede oluşturulur.
 
-   ![Visual Studio 'da giriş kodu](./media/sql-reference-data/once-or-periodically-codebehind.png)
+   ![SQL CodeBehind dosyası Chemicals. Snapshot. SQL vurgulanır.](./media/sql-reference-data/once-or-periodically-codebehind.png)
 
-   "Delta ile düzenli aralıklarla Yenile" seçeneğini belirlerseniz iki SQL CodeBehind dosyası oluşturulur: **[Input Alias]. Snapshot. SQL** ve **[Input Alias]. Delta. SQL** .
+   "Delta ile düzenli aralıklarla Yenile" seçeneğini belirlerseniz iki SQL CodeBehind dosyası oluşturulur: **[Input Alias]. Snapshot. SQL** ve **[Input Alias]. Delta. SQL**.
 
-   ![Çözüm Gezgini 'nde arka plan kodu](./media/sql-reference-data/periodically-delta-codebehind.png)
+   ![SQL CodeBehind dosyaları Chemicals. Delta. SQL ve Chemicals. Snapshot. SQL vurgulanır.](./media/sql-reference-data/periodically-delta-codebehind.png)
 
 4. SQL dosyasını düzenleyicide açın ve SQL sorgusunu yazın.
 
-5. Visual Studio 2019 kullanıyorsanız ve SQL Server veri Araçları ' nı yüklediyseniz, **Çalıştır** ' a tıklayarak sorguyu test edebilirsiniz. SQL veritabanına bağlanmanıza yardımcı olacak bir sihirbaz penceresi açılır ve sorgu sonucu alt kısımdaki pencerede görüntülenir.
+5. Visual Studio 2019 kullanıyorsanız ve SQL Server veri Araçları ' nı yüklediyseniz, **Çalıştır**' a tıklayarak sorguyu test edebilirsiniz. SQL veritabanına bağlanmanıza yardımcı olacak bir sihirbaz penceresi açılır ve sorgu sonucu alt kısımdaki pencerede görüntülenir.
 
 ### <a name="specify-storage-account"></a>Depolama hesabı belirtin
 
 SQL başvuru anlık görüntülerini depolamaya yönelik depolama hesabını belirtmek için **üzerindeJobConfig.js** açın.
 
-   ![Visual Studio 'da Stream Analytics iş yapılandırması](./media/sql-reference-data/stream-analytics-job-config.png)
+   ![Stream Analytics Işi yapılandırma yapılandırması varsayılan değerlerle gösterilir. Genel depolama ayarları vurgulanır.](./media/sql-reference-data/stream-analytics-job-config.png)
 
 ### <a name="test-locally-and-deploy-to-azure"></a>Yerel olarak test edin ve Azure 'a dağıtın
 
@@ -181,27 +181,27 @@ Delta sorgu kullanılırken, [Azure SQL veritabanı 'nda](../azure-sql/temporal-
 
 1. SQL Reference veri girişinizi yapılandırın.
    
-   ![SQL başvuru verileri girişini yapılandırma](./media/sql-reference-data/configure-sql-reference-data-input.png)
+   ![Visual Studio Code Düzenleyicisi (Tab) üzerinde ReferenceSQLDatabase.jsgösterir.](./media/sql-reference-data/configure-sql-reference-data-input.png)
 
-2. SQL Server simgesini seçin ve **bağlantı ekle** ' ye tıklayın.
+2. SQL Server simgesini seçin ve **bağlantı ekle**' ye tıklayın.
    
-   ![SQL Server simgesine tıklayın ve bağlantı Ekle ' ye tıklayın.](./media/sql-reference-data/add-sql-connection.png)
+   ![+ Bağlantı Ekle sol bölmede görünür ve vurgulanır.](./media/sql-reference-data/add-sql-connection.png)
 
 3. Bağlantı bilgilerini girin.
    
-   ![Visual Studio 'da Stream Analytics giriş yapılandırması](./media/sql-reference-data/fill-connection-information.png)
+   ![Veritabanı ve sunucu bilgileri için iki kutu vurgulanır.](./media/sql-reference-data/fill-connection-information.png)
 
-4. SQL Başvurusu ' na sağ tıklayın ve **sorguyu Yürüt** ' ü seçin.
+4. SQL Başvurusu ' na sağ tıklayın ve **sorguyu Yürüt**' ü seçin.
    
-   ![Visual Studio 'da Stream Analytics giriş yapılandırması](./media/sql-reference-data/execute-query.png)
+   ![Execute sorgusu, bağlam menüsünde vurgulanır.](./media/sql-reference-data/execute-query.png)
 
 5. Bağlantınızı seçin.
    
-   ![Visual Studio 'da Stream Analytics giriş yapılandırması](./media/sql-reference-data/choose-connection.png)
+   ![İletişim kutusunda "aşağıdaki listeden bir bağlantı profili oluşturma" ve listenin bir girişi vardır ve bu, üst sınır anlamına gelir.](./media/sql-reference-data/choose-connection.png)
 
 6. Sorgu sonucunu gözden geçirin ve doğrulayın.
    
-   ![Visual Studio 'da Stream Analytics giriş yapılandırması](./media/sql-reference-data/verify-result.png)
+   ![Sorgu arama sonuçları VS Code düzenleyici sekmesindedir.](./media/sql-reference-data/verify-result.png)
 
 
 ## <a name="faqs"></a>SSS

@@ -3,12 +3,12 @@ title: SQL Server Azure 'a DPM iş yükü olarak yedekleme
 description: Azure Backup hizmetini kullanarak SQL Server veritabanlarını yedeklemeye giriş
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 8130990f86311221ae6d097137a66a6e9b81be73
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 592a51051a0d02a6c1d491db0fe559e2e62babb2
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92218094"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327058"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>SQL Server Azure 'a DPM iş yükü olarak yedekleme
 
@@ -24,7 +24,7 @@ SQL Server bir veritabanını Azure 'a yedeklemek ve Azure 'dan kurtarmak için:
 
 >[!NOTE]
 >DPM 2019 UR2, küme paylaşılan birimleri 'ni (CSV) kullanarak SQL Server yük devretme kümesi örneklerini (FCı) destekler.<br><br>
->[SQL Server yük devretme kümesi örneğinin Azure 'da depolama alanları doğrudan](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure) ve [SQL Server yük devretme kümesi örneği ile Azure Paylaşılan disklerle](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure) korunması bu özellikle desteklenir. Azure VM 'lerinde dağıtılan SQL FCı örneğini korumak için DPM sunucusunun Azure sanal makinesine dağıtılması gerekir. 
+>[SQL Server yük devretme kümesi örneğinin Azure 'da depolama alanları doğrudan](../azure-sql/virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md) ve [SQL Server yük devretme kümesi örneği ile Azure Paylaşılan disklerle](../azure-sql/virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md) korunması bu özellikle desteklenir. Azure VM 'lerinde dağıtılan SQL FCı örneğini korumak için DPM sunucusunun Azure sanal makinesine dağıtılması gerekir. 
 
 ## <a name="prerequisites-and-limitations"></a>Önkoşullar ve sınırlamalar
 
@@ -78,17 +78,17 @@ Azure 'da SQL Server veritabanlarını korumak için önce bir yedekleme ilkesi 
 1. Yedeklemek istediğiniz veritabanlarının bulunduğu SQL Server sanal makineyi genişletin. Bu sunucudan yedeklenebileceği veri kaynaklarını görürsünüz. **Tüm SQL paylaşımlarını** genişletin ve ardından yedeklemek istediğiniz veritabanlarını seçin. Bu örnekte, ReportServer $ MSDPM2012 ve ReportServer $ MSDPM2012TempDB ' ı seçeceğiz. Sonra **İleri**’yi seçin.
 
     ![SQL Server veritabanı seçin](./media/backup-azure-backup-sql/pg-databases.png)
-1. Koruma grubunu adlandırın ve **çevrimiçi koruma**istiyorum ' u seçin.
+1. Koruma grubunu adlandırın ve **çevrimiçi koruma** istiyorum ' u seçin.
 
     ![Veri koruma yöntemi seçin-kısa vadeli disk koruması veya çevrimiçi Azure koruması](./media/backup-azure-backup-sql/pg-name.png)
 1. **Short-Term hedeflerini belirtin** sayfasında, diske yedekleme noktaları oluşturmak için gerekli girişleri ekleyin.
 
-    Bu örnekte, **bekletme aralığı** *5 güne*ayarlanır. Yedekleme **eşitleme sıklığı** her *15 dakikada*bir olarak ayarlanır. **Hızlı tam yedekleme** *8:00 PM*olarak ayarlanmıştır.
+    Bu örnekte, **bekletme aralığı** *5 güne* ayarlanır. Yedekleme **eşitleme sıklığı** her *15 dakikada* bir olarak ayarlanır. **Hızlı tam yedekleme** *8:00 PM* olarak ayarlanmıştır.
 
     ![Yedekleme koruması için kısa vadeli hedefler ayarlama](./media/backup-azure-backup-sql/pg-shortterm.png)
 
    > [!NOTE]
-   > Bu örnekte, her gün 8:00 PM 'de bir yedekleme noktası oluşturulur. Önceki güne ait 8:00 PM yedekleme noktası aktarıldıktan sonra değiştirilen veriler. Bu işlem **Hızlı tam yedekleme**olarak adlandırılır. İşlem günlükleri 15 dakikada bir eşitlense de veritabanını 9:00 PM 'de kurtarmamız gerekiyorsa, bu örnekte bu durumda 8:00 PM olan son hızlı tam yedekleme noktasından Günlükler yeniden çalıştırılarak oluşturulur.
+   > Bu örnekte, her gün 8:00 PM 'de bir yedekleme noktası oluşturulur. Önceki güne ait 8:00 PM yedekleme noktası aktarıldıktan sonra değiştirilen veriler. Bu işlem **Hızlı tam yedekleme** olarak adlandırılır. İşlem günlükleri 15 dakikada bir eşitlense de veritabanını 9:00 PM 'de kurtarmamız gerekiyorsa, bu örnekte bu durumda 8:00 PM olan son hızlı tam yedekleme noktasından Günlükler yeniden çalıştırılarak oluşturulur.
    >
    >
 
@@ -104,7 +104,7 @@ Azure 'da SQL Server veritabanlarını korumak için önce bir yedekleme ilkesi 
 
     ![Çoğaltma oluşturma yöntemi seçin](./media/backup-azure-backup-sql/pg-manual.png)
 
-    İlk yedekleme kopyası, tüm veri kaynağının (SQL Server veritabanı) aktarılmasını gerektirir. Yedekleme verileri, üretim sunucusundan (SQL Server bilgisayardan) DPM sunucusuna gider. Bu yedekleme büyükse, verilerin ağ üzerinden aktarılması bant genişliği tıkanıklığı sağlayabilir. Bu nedenle, Yöneticiler ilk yedeklemenin **el ile**aktarılması için çıkarılabilir medya kullanmayı seçebilir. Ya da verileri belirli bir zamanda **ağ üzerinden otomatik olarak** aktarabilirler.
+    İlk yedekleme kopyası, tüm veri kaynağının (SQL Server veritabanı) aktarılmasını gerektirir. Yedekleme verileri, üretim sunucusundan (SQL Server bilgisayardan) DPM sunucusuna gider. Bu yedekleme büyükse, verilerin ağ üzerinden aktarılması bant genişliği tıkanıklığı sağlayabilir. Bu nedenle, Yöneticiler ilk yedeklemenin **el ile** aktarılması için çıkarılabilir medya kullanmayı seçebilir. Ya da verileri belirli bir zamanda **ağ üzerinden otomatik olarak** aktarabilirler.
 
     İlk yedekleme tamamlandıktan sonra yedeklemeler ilk yedekleme kopyasında artımlı olarak devam eder. Artımlı yedeklemeler küçük olma eğilimindedir ve ağ üzerinden kolayca aktarılır.
 
@@ -145,7 +145,7 @@ Azure 'da SQL Server veritabanlarını korumak için önce bir yedekleme ilkesi 
 1. İlk yedekleme kopyasının Azure 'a nasıl aktarılacağı seçin.
 
     * **Ağ üzerinden otomatik olarak** seçeneği, verileri Azure 'a aktarmak için yedekleme zamanlamanızı izler.
-    * **Çevrimdışı yedekleme**hakkında daha fazla bilgi için bkz. [çevrimdışı yedeklemeye genel bakış](offline-backup-overview.md).
+    * **Çevrimdışı yedekleme** hakkında daha fazla bilgi için bkz. [çevrimdışı yedeklemeye genel bakış](offline-backup-overview.md).
 
     Bir aktarım mekanizması seçtikten sonra **İleri**' yi seçin.
 
@@ -157,7 +157,7 @@ Azure 'da SQL Server veritabanlarını korumak için önce bir yedekleme ilkesi 
 
 İlk yedekleme gerçekleştiğinde bir kurtarma noktası oluşturulur. Zamanlamanın çalışmasını beklemek yerine, bir kurtarma noktasının oluşturulmasını el ile tetikleyebilirsiniz:
 
-1. Koruma grubunda, veritabanının durumunun **Tamam**olduğundan emin olun.
+1. Koruma grubunda, veritabanının durumunun **Tamam** olduğundan emin olun.
 
     ![Veritabanı durumunu gösteren bir koruma grubu](./media/backup-azure-backup-sql/sqlbackup-recoverypoint.png)
 1. Veritabanına sağ tıklayın ve ardından **Kurtarma noktası oluştur**' u seçin.
@@ -174,13 +174,13 @@ Azure 'da SQL Server veritabanlarını korumak için önce bir yedekleme ilkesi 
 
 Azure 'dan SQL Server veritabanı gibi korumalı bir varlığı kurtarmak için:
 
-1. DPM sunucusu yönetim konsolunu açın. DPM 'nin yedeklediği sunucuları görmek için **Kurtarma** çalışma alanına gidin. Veritabanını seçin (Bu örnekte ReportServer $ MSDPM2012). **Çevrimiçi**ile biten bir **Kurtarma süresi** seçin.
+1. DPM sunucusu yönetim konsolunu açın. DPM 'nin yedeklediği sunucuları görmek için **Kurtarma** çalışma alanına gidin. Veritabanını seçin (Bu örnekte ReportServer $ MSDPM2012). **Çevrimiçi** ile biten bir **Kurtarma süresi** seçin.
 
     ![Bir kurtarma noktası seçme](./media/backup-azure-backup-sql/sqlbackup-restorepoint.png)
 1. Veritabanı adına sağ tıklayın ve **kurtar**' ı seçin.
 
     ![Azure 'dan bir veritabanını kurtarma](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-1. DPM, kurtarma noktasının ayrıntılarını gösterir. **İleri**’yi seçin. Veritabanının üzerine yazmak için, **SQL Server özgün örneğine kurtar**kurtarma türünü seçin. Sonra **İleri**’yi seçin.
+1. DPM, kurtarma noktasının ayrıntılarını gösterir. **İleri**’yi seçin. Veritabanının üzerine yazmak için, **SQL Server özgün örneğine kurtar** kurtarma türünü seçin. Sonra **İleri**’yi seçin.
 
     ![Veritabanını özgün konumuna kurtar](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 

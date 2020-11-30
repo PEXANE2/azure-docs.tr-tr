@@ -3,12 +3,12 @@ title: Yaygın soruların yanıtları
 description: 'Kurtarma Hizmetleri kasaları, neleri yedekleyebilir, nasıl çalışır, şifreleme ve limitlerin dahil olduğu Azure Backup özellikleriyle ilgili yaygın soruların yanıtları. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 72a4f805b34ba8a536cd398efd5e6809bd66f0d4
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: d85866e490b2c56abb7de1e94cd0ffaa8f714615
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92096632"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327160"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - Sık sorulan sorular
 
@@ -60,7 +60,7 @@ Yedeklemeyi zaten yapılandırdıysanız ve GRS 'den LRS 'ye geçiş yapmanız g
 
 ### <a name="how-can-i-move-data-from-the-recovery-services-vault-to-on-premises"></a>Verileri kurtarma hizmetleri kasasından şirket içine nasıl taşıyabilirim?
 
-Data Box kullanarak doğrudan kurtarma hizmetleri kasasından şirket içine veri aktarmak desteklenmez. Veriler bir depolama hesabına geri yüklenmelidir ve sonra [Data Box](https://docs.microsoft.com/azure/databox/data-box-overview) veya [Içeri/dışarı aktarma](https://docs.microsoft.com/azure/storage/common/storage-import-export-service)aracılığıyla şirket içine taşınabilir.
+Data Box kullanarak doğrudan kurtarma hizmetleri kasasından şirket içine veri aktarmak desteklenmez. Veriler bir depolama hesabına geri yüklenmelidir ve sonra [Data Box](../databox/data-box-overview.md) veya [Içeri/dışarı aktarma](../storage/common/storage-import-export-service.md)aracılığıyla şirket içine taşınabilir.
 
 ## <a name="azure-backup-agent"></a>Azure Backup aracısı
 

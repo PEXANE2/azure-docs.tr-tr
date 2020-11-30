@@ -8,12 +8,12 @@ author: ShaneBala-keyvault
 ms.author: sudbalas
 manager: ravijan
 ms.date: 09/30/2020
-ms.openlocfilehash: fbeb6f5f223642c09183c149188c6717c1f33a8e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 86190fa307133360c411aafc070412e7d527039e
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748491"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324967"
 ---
 # <a name="how-to-enable-soft-delete-and-purge-protection"></a>Geçici silme ve Temizleme korumasını etkinleştirme
 
@@ -23,7 +23,7 @@ Bu makalede Azure Key Vault, geçici silme ve Temizleme korumasının iki kurtar
 
 Geçici silme ve Temizleme koruması iki farklı Anahtar Kasası kurtarma özellikleridir.
 > [!IMPORTANT]
-> Tüm Anahtar kasaları üzerinde etkin olması için geçici silme koruması gerekir. Geçici silme korumasını devre dışı bırakma özelliği, Aralık 2020 ' den kullanım dışı olacaktır. Lütfen tam ayrıntılara bakın [ **here** .](soft-delete-change.md)
+> Tüm Anahtar kasaları üzerinde etkin olması için geçici silme koruması gerekir. Geçici silme korumasını devre dışı bırakma özelliği, Aralık 2020 ' den kullanım dışı olacaktır. Lütfen tam ayrıntılara bakın [ **here**.](soft-delete-change.md)
 
 **Geçici silme** , Anahtar Kasası içinde depolanan anahtar kasası ve anahtarlarınızın, Sırlarınızın ve sertifikaların yanlışlıkla silinmesini engellemek için tasarlanmıştır. Geri dönüşüm kutusu gibi geçici silme düşünün. Bir anahtar kasasını veya bir Anahtar Kasası nesnesini sildiğinizde, kullanıcı yapılandırılabilir bir saklama süresi veya varsayılan 90 gün için kurtarılabilir olarak kalır. Geçici olarak silinen durumdaki Anahtar kasaları **de silinebilir, bu da** kalıcı olarak silinir. Bu, anahtar kasalarını ve Anahtar Kasası nesnelerini aynı adla yeniden oluşturmanızı sağlar. Anahtar kasalarını ve nesneleri kurtarmak ve silmek, yükseltilmiş erişim ilkesi izinleri gerektirir. **Geçici silme etkinleştirildikten sonra devre dışı bırakılamaz.**
 
@@ -44,7 +44,7 @@ Geçici silme ve Temizleme koruması iki farklı Anahtar Kasası kurtarma özell
 1. Geçici düğmenin yanındaki radyo düğmesinin "kurtarmayı etkinleştir" olarak ayarlandığını doğrulayın.
 1. Anahtar kasasında geçici silme etkinleştirilmemişse radyo düğmesine tıklayarak geçici silme özelliğini etkinleştirin ve "Kaydet" e tıklayın.
 
-:::image type="content" source="../media/key-vault-recovery-1.png" alt-text=" Azure portal ekran görüntüsünü<>":::
+:::image type="content" source="../media/key-vault-recovery-1.png" alt-text="Özellikler sayfasında, geçici silme, etkinleştirmek için değer olduğu gibi vurgulanır.":::
 
 ## <a name="grant-access-to-a-service-principal-to-purge-and-recover-deleted-secrets"></a>Silinen gizli dizileri temizlemek ve kurtarmak için bir hizmet sorumlusuna erişim izni verme
 
@@ -56,7 +56,7 @@ Geçici silme ve Temizleme koruması iki farklı Anahtar Kasası kurtarma özell
 1. Açılan pencerenin alt kısmına ilerleyin ve "kurtar" ve "Temizle" seçeneğine tıklayın
 1. Güvenlik sorumluları, çoğu işlemi gerçekleştirmek için Get ve List işlevselliğine de ihtiyaç duyar.
 
-:::image type="content" source="../media/key-vault-recovery-2.png" alt-text=" Azure portal ekran görüntüsünü<>":::
+:::image type="content" source="../media/key-vault-recovery-2.png" alt-text="Sol gezinti bölmesinde, erişim ilkeleri vurgulanır. Erişim ilkelerinde, gizli pozisyonlar açılan listesi gösterilir ve dört öğe seçilir: get, List, Recover ve temizle.":::
 
 ## <a name="list-recover-or-purge-a-soft-deleted-key-vault"></a>Geçici olarak silinen bir anahtar kasasını listeleme, kurtarma veya temizleme
 
@@ -72,9 +72,9 @@ Geçici silme ve Temizleme koruması iki farklı Anahtar Kasası kurtarma özell
 1. Anahtar kasasını kurtarmak istiyorsanız bağlam bölmesinin alt kısmındaki kurtar seçeneğini belirleyin.
 1. Anahtar kasasını kalıcı olarak silmek istiyorsanız Temizleme seçeneğini belirleyin.
 
-:::image type="content" source="../media/key-vault-recovery-3.png" alt-text=" Azure portal ekran görüntüsünü<>":::
+:::image type="content" source="../media/key-vault-recovery-3.png" alt-text="Anahtar kasalarında, silinen kasaları Yönet seçeneği vurgulanır.":::
 
-:::image type="content" source="../media/key-vault-recovery-4.png" alt-text=" Azure portal ekran görüntüsünü<>":::
+:::image type="content" source="../media/key-vault-recovery-4.png" alt-text="Silinen anahtar kasalarını Yönet sayfasında, yalnızca listelenen Anahtar Kasası vurgulanır ve seçilir ve kurtar düğmesi vurgulanır.":::
 
 ## <a name="list-recover-or-purge-soft-deleted-secrets-keys-and-certificates"></a>Geçici silinen gizli dizileri, anahtarları ve sertifikaları listeleme, kurtarma veya temizleme
 
@@ -87,7 +87,7 @@ Geçici silme ve Temizleme koruması iki farklı Anahtar Kasası kurtarma özell
 1. Yönetmek istediğiniz gizli dizi, anahtar veya sertifikayı seçin.
 1. Bağlam bölmesinin alt kısmındaki kurtarma veya Temizleme seçeneğini belirleyin.
 
-:::image type="content" source="../media/key-vault-recovery-5.png" alt-text=" Azure portal ekran görüntüsünü<>":::
+:::image type="content" source="../media/key-vault-recovery-5.png" alt-text="Anahtarlar üzerinde, silinen anahtarları Yönet seçeneği vurgulanır.":::
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

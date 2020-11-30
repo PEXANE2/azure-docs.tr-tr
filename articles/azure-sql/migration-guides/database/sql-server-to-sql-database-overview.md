@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: cafb32e5bd91c6b7f3cfef4641828963e0731797
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 46216fe06e3d3425d5b237cdbb7326eed596945a
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94497383"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326939"
 ---
 # <a name="migration-overview-sql-server-to-sql-database"></a>Geçişe genel bakış: SQL veritabanı 'na SQL Server
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -61,18 +61,18 @@ Farklı iş yükleri ve Kullanıcı tercihleri için farklı araçlar mevcuttur.
 Azure SQL veritabanı 'nın doğru dağıtım modelini ve hizmet katmanını seçmenize yardımcı olacak genel yönergeleri göz önünde bulundurun. Dağıtım sırasında işlem ve depolama kaynaklarını seçebilir ve sonra uygulamanız için kapalı kalma süresi olmadan  [Azure Portal](../../database/scale-resources.md)  kullanarak bunları daha sonra değiştirebilirsiniz.
 
 
-**Dağıtım modelleri** : tek bir veritabanı veya elastik havuz arasında karar vermek için uygulama iş yükünüzü ve kullanım modelini anlayın. 
+**Dağıtım modelleri**: tek bir veritabanı veya elastik havuz arasında karar vermek için uygulama iş yükünüzü ve kullanım modelini anlayın. 
 
 - [Tek bir veritabanı](../../database/single-database-overview.md) , en modern bulut uygulamaları ve mikro hizmetler için uygun olan tam olarak yönetilen bir veritabanını temsil eder.
 - [Elastik havuz](../../database/elastic-pool-overview.md) , CPU veya bellek gibi paylaşılan bir kaynak kümesiyle tek bir veritabanı koleksiyonudur ve aynı kaynak kümesini etkin bir şekilde paylaşabilen öngörülebilir kullanım desenleriyle bir havuzdaki veritabanlarını birleştirmek için uygundur.
 
-**Model satın alma** : Vcore, DTU veya sunucusuz satın alma modeli arasında seçim yapın. 
+**Model satın alma**: Vcore, DTU veya sunucusuz satın alma modeli arasında seçim yapın. 
 
 - [Vcore modeli](../../database/service-tiers-vcore.md) , Azure SQL veritabanınızın sanal çekirdekleri sayısını seçmenizi sağlar ve şirket içi SQL Server çevrilirken en kolay seçim yapar. Bu, [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)ile lisans maliyetinde kaydetmeyi destekleyen tek seçenektir. 
 - [DTU modeli](../../database/service-tiers-dtu.md) , KARıŞTıRıLAN bir DTU sağlamak için temeldeki işlem, bellek ve GÇ kaynaklarını soyutlar. 
 - [Sunucusuz model](../../database/serverless-tier-overview.md) , kullanım için saniyede faturalandırılan işlem kaynaklarıyla otomatik olarak isteğe bağlı ölçeklendirme gerektiren iş yükleri için tasarlanmıştır. Sunucusuz işlem katmanı, etkin olmayan dönemler (yalnızca depolamanın faturalandırılması) sırasında veritabanlarını otomatik olarak duraklatır ve etkinlik döndüğünde veritabanlarını otomatik olarak sürdürür. 
 
-**Hizmet katmanları** : farklı uygulama türleri için tasarlanan üç hizmet katmanı arasından seçim yapın.
+**Hizmet katmanları**: farklı uygulama türleri için tasarlanan üç hizmet katmanı arasından seçim yapın.
 
 - [Genel amaçlı/standart hizmet katmanı](../../database/service-tier-general-purpose.md) , yoğun bir işlem ve depolama alanı ile, depolama katmanında yerleşik olarak bulunan artıklardan kurtarmak için depolama katmanında bulunan yedeklerle birlikte, dengeli bir bütçe yönelimli seçenek sunar. Çoğu veritabanı iş yükleri için tasarlanmıştır. 
 - [İş açısından kritik/Premium hizmet katmanı](../../database/service-tier-business-critical.md) , yüksek işlem hızları, düşük gecikmeli GÇ ve ikincil çoğaltmalarla hem yük devretmede hem de okuma iş yüklerinin yükünü boşaltarak yüksek düzeyde dayanıklılık gerektiren yüksek katmanlı uygulamalardır.
@@ -183,7 +183,7 @@ Azure SQL veritabanı için, yalnızca geçerli sistem veritabanları [ana](/sql
 
 SQL veritabanı tarafından sunulan gelişmiş bulut tabanlı özelliklerden faydalandığınızdan emin olun. Örneğin, hizmet sizin için yaptığı için yedeklemeleri yönetme konusunda endişelenmenize gerek kalmaz. [Bekletme dönemi içinde](../../database/recovery-using-backups.md#point-in-time-restore)herhangi bir noktaya geri yükleme yapabilirsiniz. 
 
-Güvenliği güçlendirmek için [Azure Active Directory kimlik doğrulaması](../../database/authentication-aad-overview.md), [Denetim](../../database/auditing-overview.md), [tehdit algılama](../../database/advanced-data-security.md), [satır düzeyi güvenlik](/sql/relational-databases/security/row-level-security)ve [dinamik veri maskeleme](/sql/relational-databases/security/dynamic-data-masking)kullanmayı göz önünde bulundurun.
+Güvenliği güçlendirmek için [Azure Active Directory kimlik doğrulaması](../../database/authentication-aad-overview.md), [Denetim](../../database/auditing-overview.md), [tehdit algılama](../../database/azure-defender-for-sql.md), [satır düzeyi güvenlik](/sql/relational-databases/security/row-level-security)ve [dinamik veri maskeleme](/sql/relational-databases/security/dynamic-data-masking)kullanmayı göz önünde bulundurun.
 
 Gelişmiş Yönetim ve güvenlik özelliklerine ek olarak SQL veritabanı, [iş yükünüzü izlemenize ve ayarlamanıza](../../database/monitor-tune-overview.md)yardımcı olabilecek bir dizi gelişmiş araç sağlar. [Azure SQL Analytics (Önizleme)](../../../azure-monitor/insights/azure-sql.md) , tek bir GÖRÜNÜMDEKI Azure SQL veritabanı 'ndaki tüm veritabanlarınızın ve birden çok aboneliğin performansını izlemeye yönelik gelişmiş bir bulut izleme çözümüdür. Azure SQL Analytics performans sorunlarını gidermek için yerleşik zeka ile önemli performans ölçümlerini toplayıp görselleştirir.
 
