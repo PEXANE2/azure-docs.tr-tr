@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: f58fe342d66c328bdadf41fc965c2952605aea8e
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 5f149dd6db82b66b45a4c995e2004936481af786
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376594"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352431"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>Bilgi bankanız hakkında analizler alma
 
@@ -44,7 +44,7 @@ Soru-Cevap Oluşturma, [soru-cevap oluşturma hizmetinizin oluşturulması](./se
     | project timestamp, resultCode, duration, id, question, answer, score, performanceBucket,KbId
     ```
 
-    Sorguyu çalıştırmak için **Çalıştır** 'ı seçin.
+    Sorguyu çalıştırmak için **Çalıştır**'ı seçin.
 
     [![Kullanıcılardan gelen soruları, yanıtları ve puanı öğrenmek için sorguyu çalıştırın](../media/qnamaker-how-to-analytics-kb/run-query.png)](../media/qnamaker-how-to-analytics-kb/run-query.png#lightbox)
 
@@ -52,7 +52,7 @@ Soru-Cevap Oluşturma, [soru-cevap oluşturma hizmetinizin oluşturulması](./se
 
 Soru-Cevap Oluşturma yönetilen (Önizleme), telemetri verilerini ve sohbet günlüklerini depolamak için Azure tanılama günlüğünü kullanır. Soru-Cevap Oluşturma bilgi tabanınızın kullanımıyla ilgili analizler almak için örnek sorgular çalıştırmak için aşağıdaki adımları izleyin.
 
-1. Soru-Cevap Oluşturma yönetilen (Önizleme) hizmetiniz için [Tanılama günlüğünü etkinleştirin](https://docs.microsoft.com/azure/cognitive-services/diagnostic-logging) .
+1. Soru-Cevap Oluşturma yönetilen (Önizleme) hizmetiniz için [Tanılama günlüğünü etkinleştirin](../../diagnostic-logging.md) .
 
 2. Önceki adımda, günlük kaydı için **Denetim, RequestResponse ve Allölçümlerini** ek olarak **Trace** ' i seçin
 

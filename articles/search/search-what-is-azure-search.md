@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/24/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 19be1155476ca7c295e2d0311e8285bc2128dd1d
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 1e0294e3d0ec727b8e6a11c5443d413aadca9184
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030773"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352533"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Azure Bilişsel Arama nedir?
 
@@ -70,7 +70,7 @@ Temel arama özelliklerinin uçtan uca incelenmesi, dört adımda elde edilebili
 1. Portal, [REST API](search-get-started-rest.md), [.NET SDK](/dotnet/api/azure.search.documents.searchclient.search)veya başka bir SDK 'daki [Arama Gezgini](search-explorer.md) 'ni kullanarak [**bir dizini sorgulayın**](search-query-overview.md) .
 
 > [!TIP]
-> Birkaç dakika içinde bir dizin oluşturmak, yüklemek ve sorgulamak için [**veri alma Sihirbazı**](search-get-started-portal.md) ve bir Azure veri kaynağı ile başlayarak adımları birleştirin.
+> Birkaç dakika içinde bir dizin oluşturmak, yüklemek ve sorgulamak için [**veri alma Sihirbazı 'nı**](search-get-started-portal.md) ve bir Azure veri kaynağını kullanmaya başlayarak adımları en aza indirin.
 
 ## <a name="how-it-compares"></a>Karşılaştırma
 

@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 10/15/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 510ff971c5d5924f2266dc93035f42e545906761
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 5d3c73bdc107ce1971e2958073ad5c100c6bf6bd
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93076248"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349206"
 ---
 # <a name="quickstart-build-a-net-web-app-using-azure-cosmos-dbs-api-for-mongodb"></a>Hızlı başlangıç: Azure Cosmos DB MongoDB için API 'sini kullanarak .NET Web uygulaması oluşturma 
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -132,7 +132,7 @@ Bir görev oluşturun ve koleksiyona ekleyin
 
 Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp uygulamaya ekleyin.
 
-1. [Azure Portal](https://portal.azure.com/), Cosmos hesabınızda, sol gezinti **bağlantı dizesi** ' ne tıklayın ve ardından **okuma-yazma anahtarları** ' na tıklayın. Sonraki adımda ekranın sağ tarafındaki kopyalama düğmelerini kullanarak Kullanıcı Adı, Parola ve Ana Bilgisayar değerlerini Dal.cs dosyasına kopyalayacaksınız.
+1. [Azure Portal](https://portal.azure.com/), Cosmos hesabınızda, sol gezinti **bağlantı dizesi**' ne tıklayın ve ardından **okuma-yazma anahtarları**' na tıklayın. Sonraki adımda ekranın sağ tarafındaki kopyalama düğmelerini kullanarak Kullanıcı Adı, Parola ve Ana Bilgisayar değerlerini Dal.cs dosyasına kopyalayacaksınız.
 
 2. **DAL** dizinindeki **Dal.cs** dosyasını açın. 
 
@@ -146,7 +146,7 @@ Artık uygulamanızı Cosmos DB ile iletişim kurması için gereken tüm bilgil
     
 ## <a name="run-the-web-app"></a>Web uygulamasını çalıştırma
 
-1. Visual Studio'nun **Çözüm Gezgini** bölümünde projeye sağ tıklayın ve ardından **NuGet Paketlerini Yönet** 'e tıklayın. 
+1. Visual Studio'nun **Çözüm Gezgini** bölümünde projeye sağ tıklayın ve ardından **NuGet Paketlerini Yönet**'e tıklayın. 
 
 2. NuGet **Gözat** kutusuna *MongoDB* yazın.
 
@@ -169,4 +169,4 @@ Artık uygulamanızı Cosmos DB ile iletişim kurması için gereken tüm bilgil
 Bu hızlı başlangıçta, Cosmos hesabı oluşturmayı, bir koleksiyon oluşturmayı ve bir konsol uygulamasını çalıştırmayı öğrendiniz. Artık Cosmos veritabanınıza ek veri aktarabilirsiniz. 
 
 > [!div class="nextstepaction"]
-> [Azure Cosmos DB’ye MongoDB verileri aktarma](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)
+> [Azure Cosmos DB’ye MongoDB verileri aktarma](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)

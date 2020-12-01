@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: aeb5bceca11f595c1582596aeea401fe5f9b239f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64fe65019a66013323b1c6d27055051badb47cee
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883472"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350322"
 ---
 # <a name="tutorial-transfer-data-with-azure-stack-edge-pro"></a>Öğretici: Azure Stack Edge Pro ile veri aktarma
 
@@ -55,19 +55,19 @@ Bir paylaşma oluşturmak için aşağıdaki yordamı uygulayın:
     a. **Ad** kutusunda, paylaşımınız için benzersiz bir ad sağlayın.  
     Paylaşma adı yalnızca küçük harf, sayı ve kısa çizgi içerebilir. 3 ila 63 karakter arasında olmalıdır ve bir harf veya rakam ile başlamalıdır. Kısa çizgilerden önce ve ardından bir harf ya da rakam gelmelidir.
     
-    b. Paylaşım için **Tür** seçin.  
+    b. Paylaşma için bir **tür** seçin.  
     Bu tür SMB veya **NFS**, SMB 'nin varsayılan olarak **olması olabilir.** SMB Windows istemcilerinin standardıdır ve NFS de Linux istemcilerinde kullanılır.  
     SMB veya NFS paylaşımlarını seçmenize bağlı olarak, seçeneklerin geri kalanı biraz farklılık gösterir. 
 
-    c. Paylaşımın bulunacağı bir depolama hesabı sağlayın. 
+    c. Paylaşımın duracağı depolama hesabını sağlayın. 
 
     > [!IMPORTANT]
-    > Kullandığınız Azure depolama hesabının, bir Azure Stack Edge Pro veya Data Box Gateway cihazından yararlanarak bu sunucuda ayarlanmış bir değişiklik olmadığından emin olun. Daha fazla bilgi için bkz. [BLOB depolama için dengesde kullanılabilirlik Ilkelerini ayarlama ve yönetme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
+    > Kullandığınız Azure depolama hesabının, bir Azure Stack Edge Pro veya Data Box Gateway cihazından yararlanarak bu sunucuda ayarlanmış bir değişiklik olmadığından emin olun. Daha fazla bilgi için bkz. [BLOB depolama için dengesde kullanılabilirlik Ilkelerini ayarlama ve yönetme](../storage/blobs/storage-blob-immutability-policies-manage.md).
     
-    d. **Depolama hizmeti** açılan listesinde, **Blok Blobu**, **Sayfa Blobu**veya **dosyalar**' ı seçin.  
-    Seçtiğiniz hizmetin türü, verilerin Azure 'da kullanmasını istediğiniz biçime bağlıdır. Bu örnekte, verileri Azure 'da blok Blobları olarak depolamak istiyoruz, **Blok Blobu**seçtik. **Sayfa Blobu**' nı seçerseniz, verilerinizin 512 bayt hizalı olduğundan emin olun. Örneğin VHDX her zaman 512 bayt hizalıdır.
+    d. **Depolama hizmeti** açılan listesinde, **Blok Blobu**, **Sayfa Blobu** veya **dosyalar**' ı seçin.  
+    Seçtiğiniz hizmetin türü, verilerin Azure 'da kullanmasını istediğiniz biçime bağlıdır. Bu örnekte, verileri Azure 'da blok Blobları olarak depolamak istiyoruz, **Blok Blobu** seçtik. **Sayfa Blobu**' nı seçerseniz, verilerinizin 512 bayt hizalı olduğundan emin olun. Örneğin VHDX her zaman 512 bayt hizalıdır.
 
-    e. Yeni bir blob kapsayıcısı oluşturun veya açılan listeden mevcut bir tane kullanın. Blob kapsayıcısı oluşturuyorsanız bir kapsayıcı adı sağlayın. Zaten bir kapsayıcı yoksa, depolama hesabında yeni oluşturulan paylaşma adıyla oluşturulur.
+    e. Yeni bir blob kapsayıcısı oluşturun veya açılan listeden mevcut bir tane kullanın. Blob kapsayıcısı oluşturuyorsanız bir kapsayıcı adı sağlayın. Henüz kapsayıcı yoksa, yeni oluşturulan paylaşım adıyla depolama hesabında oluşturulur.
    
     f. Bir SMB veya NFS paylaşımının oluşturulup oluşturulmayacağını bağlı olarak, aşağıdaki adımlardan birini yapın: 
      
@@ -95,7 +95,7 @@ Artık son adımda oluşturduğunuz bir veya daha fazla paylaşıma bağlanabili
 Azure Stack Edge Pro cihazınıza bağlı Windows Server istemcisinde şu komutları girerek bir SMB paylaşımıyla bağlantı edin:
 
 
-1. Bir komut penceresinde, şunu yazın:
+1. Komut penceresinde şunu yazın: 
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
@@ -162,5 +162,3 @@ Azure Stack Edge Pro 'Yu kullanarak verilerinizi nasıl dönüştürebileceğini
 
 > [!div class="nextstepaction"]
 > [Azure Stack Edge Pro ile veri dönüştürme](./azure-stack-edge-deploy-configure-compute.md)
-
-

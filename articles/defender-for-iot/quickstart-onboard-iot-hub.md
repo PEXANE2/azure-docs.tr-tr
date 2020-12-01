@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2020
 ms.author: mlottner
-ms.openlocfilehash: 3f84f3121d9982205ecf51ec64cfe332b6a5ad42
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 786fcd1a0c6d7df2c38a086a830a63f7179d7d40
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90948288"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352516"
 ---
 # <a name="quickstart-onboard-azure-defender-for-iot-service-in-iot-hub"></a>Hızlı başlangıç: IoT Hub 'da IoT hizmeti için Azure Defender 'ı ekleme
 
-Bu makalede, mevcut IoT Hub IoT hizmeti için Defender 'ın nasıl etkinleştirileceği hakkında bir açıklama sunulmaktadır. Şu anda bir IoT Hub yoksa, kullanmaya başlamak için [Azure Portal kullanarak IoT Hub oluşturma](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal) makalesine bakın.
+Bu makalede, mevcut IoT Hub IoT hizmeti için Defender 'ın nasıl etkinleştirileceği hakkında bir açıklama sunulmaktadır. Şu anda bir IoT Hub yoksa, kullanmaya başlamak için [Azure Portal kullanarak IoT Hub oluşturma](../iot-hub/iot-hub-create-through-portal.md) makalesine bakın.
 
 > [!NOTE]
 > IoT için Defender Şu anda yalnızca Standart katman IoT Hub 'Larını desteklemektedir.
@@ -31,7 +31,7 @@ Bu makalede, mevcut IoT Hub IoT hizmeti için Defender 'ın nasıl etkinleştiri
 
 - Log Analytics çalışma alanı
   - İki tür bilgi, IoT için Defender tarafından Log Analytics çalışma alanınızda varsayılan olarak saklanır; **güvenlik uyarıları** ve **önerileri**.
-  - Ek bilgi türü, **Ham olaylar**için depolama alanını eklemeyi seçebilirsiniz. **Ham olayların** Log Analytics daha fazla depolama maliyeti taşıdığına göz önünde unutmayın.
+  - Ek bilgi türü, **Ham olaylar** için depolama alanını eklemeyi seçebilirsiniz. **Ham olayların** Log Analytics daha fazla depolama maliyeti taşıdığına göz önünde unutmayın.
 - IoT Hub (Standart katman)
 - Tüm [hizmet önkoşullarını](service-prerequisites.md) karşılayın
 

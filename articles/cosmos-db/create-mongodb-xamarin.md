@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/09/2020
 ms.author: masoucou
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 94cf54e689f845f77c54d1d3c7710e079594f556
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 339c6177de6e83f463efbc97e88a36ed4c52d97b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098952"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349104"
 ---
 # <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>Hızlı başlangıç: .NET SDK ve Azure Cosmos DB MongoDB için API 'SI ile bir Xamarin. Forms uygulaması oluşturma
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -164,7 +164,7 @@ Aşağıdaki kod parçacıkları, şu `MongoService` yolda bulunan sınıfından
 
 Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp uygulamaya ekleyin.
 
-1. [Azure portalında](https://portal.azure.com/), Azure Cosmos DB hesabınızın sol taraftaki gezinti menüsünden **Bağlantı Dizesi** 'ne ve ardından **Okuma-Yazma Anahtarları** 'na tıklayın. Ekranın sağ tarafındaki kopyala düğmesini kullanarak sonraki adımlarda bulunan Birincil Bağlantı Dizesini kopyalayın.
+1. [Azure portalında](https://portal.azure.com/), Azure Cosmos DB hesabınızın sol taraftaki gezinti menüsünden **Bağlantı Dizesi**'ne ve ardından **Okuma-Yazma Anahtarları**'na tıklayın. Ekranın sağ tarafındaki kopyala düğmesini kullanarak sonraki adımlarda bulunan Birincil Bağlantı Dizesini kopyalayın.
 
 2. **TaskList.Core** projesinin **Helpers** dizinindeki **APIKeys.cs** dosyasını açın.
 
@@ -181,12 +181,12 @@ Bu adımlarla uygulamanıza Azure Cosmos DB ile iletişim kurması için gereken
 
 ### <a name="visual-studio-2019"></a>Visual Studio 2019
 
-1. Visual Studio'nun **Çözüm Gezgini** bölümünde her bir projeye sağ tıklayın ve ardından **NuGet Paketlerini Yönet** 'e tıklayın.
-2. **Tüm NuGet paketlerini geri yükle** 'ye tıklayın.
-3. **TaskList.Android** 'e sağ tıklayın ve **Başlangıç projesi olarak ayarla** 'yı seçin.
+1. Visual Studio'nun **Çözüm Gezgini** bölümünde her bir projeye sağ tıklayın ve ardından **NuGet Paketlerini Yönet**'e tıklayın.
+2. **Tüm NuGet paketlerini geri yükle**'ye tıklayın.
+3. **TaskList.Android**'e sağ tıklayın ve **Başlangıç projesi olarak ayarla**'yı seçin.
 4. Uygulamada hata ayıklamaya başlamak için F5'e basın.
 5. iOS üzerinde çalıştırmak istiyorsanız ilk olarak makinenizin bir Mac'e bağlı olduğundan ([talimatlara](/xamarin/ios/get-started/installation/windows/introduction-to-xamarin-ios-for-visual-studio) buradan ulaşabilirsiniz) emin olun.
-6. **TaskList.iOS** projesine sağ tıklayın ve **Başlangıç projesi olarak ayarla** 'yı seçin.
+6. **TaskList.iOS** projesine sağ tıklayın ve **Başlangıç projesi olarak ayarla**'yı seçin.
 7. Uygulamada hata ayıklamaya başlamak için F5'e basın.
 
 ### <a name="visual-studio-for-mac"></a>Mac için Visual Studio
@@ -207,4 +207,4 @@ Bu adımlarla uygulamanıza Azure Cosmos DB ile iletişim kurması için gereken
 Bu hızlı başlangıçta Azure Cosmos DB hesabı oluşturmayı ve MongoDB API’sini kullanarak bir Xamarin.Forms uygulamasını çalıştırmayı öğrendiniz. Şimdi Cosmos DB hesabınıza ek veri aktarabilirsiniz.
 
 > [!div class="nextstepaction"]
-> [MongoDB için Azure Cosmos DB API 'siyle yapılandırılan Azure Cosmos DB verileri içeri aktarın](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)
+> [MongoDB için Azure Cosmos DB API 'siyle yapılandırılan Azure Cosmos DB verileri içeri aktarın](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)

@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 01/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 0da4127960450a13b64ec23908b4a4fd4c69bd7e
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 921c88f4771fedb910dc41983d559987a8cdfb0c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542023"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349342"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Python 'da eğitim çalıştırmalarını başlatın, izleyin ve iptal edin
 
@@ -34,7 +34,7 @@ Bu makalede aşağıdaki görevlerin örnekleri gösterilmektedir:
 > Azure Machine Learning hizmeti ve ilişkili Azure hizmetlerini izleme hakkında bilgi arıyorsanız bkz. [nasıl yapılır Azure Machine Learning](monitor-azure-machine-learning.md).
 > Web Hizmetleri veya IoT Edge modülleri olarak dağıtılan izleme modelleri hakkında bilgi arıyorsanız, bkz. [model verilerini toplama](how-to-enable-data-collection.md) ve [Application Insights ile izleme](how-to-enable-app-insights.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki öğeler gerekir:
 
@@ -278,7 +278,7 @@ with exp.start_logging() as parent_run:
 
 ### <a name="submit-child-runs"></a>Alt çalıştırmaları gönder
 
-Alt çalıştırmalar da bir üst çalışmadan gönderilebilir. Bu, üst ve alt çalıştırmaların hiyerarşilerini oluşturmanızı sağlar. 
+Alt çalıştırmalar da bir üst çalışmadan gönderilebilir. Bu, üst ve alt çalıştırmaların hiyerarşilerini oluşturmanızı sağlar. Parentdaha az alt çalışma oluşturamazsınız: üst çalıştırma Nothing olsa da alt çalıştırmaları çalıştırsa bile, hiyerarşinin oluşturulması hala gereklidir. Tüm çalıştırmaların durumu bağımsızdır: bir `"Completed"` veya daha fazla alt çalışma iptal edildiyse veya başarısız olsa bile üst öğe başarılı durumunda olabilir.  
 
 Çocuğunuzun, üst çalışmadan farklı bir çalıştırma yapılandırması kullanmasını isteyebilirsiniz. Örneğin, çocuklarınız için GPU tabanlı yapılandırmalar kullanırken üst için daha az güçlü ve CPU tabanlı bir yapılandırma kullanabilirsiniz. Diğer bir yaygın, her bir alt öğenin farklı bağımsız değişkenlerini ve verileri geçirmektir. Alt çalışmayı özelleştirmek için `ScriptRunConfig` alt çalıştırma için bir nesne oluşturun. Aşağıdaki kod aşağıdakileri yapar:
 
@@ -327,6 +327,24 @@ Belirli bir üst öğenin alt çalıştırmalarını sorgulamak için [`get_chil
 ```python
 print(parent_run.get_children())
 ```
+
+### <a name="log-to-parent-or-root-run"></a>Üst veya kök çalıştırmada günlüğe kaydet
+
+`Run.parent`Alanı, geçerli alt çalışmayı başlatan çalıştırmaya erişmek için kullanabilirsiniz. Bunun için genel kullanım örneği, günlük sonuçlarını tek bir yerde birleştirmek istediğinizde kullanılır. Alt çalıştırmanın zaman uyumsuz olarak yürütüleceğini ve üst öğenin alt çalıştırmanın tamamlanmasını bekleyebilme özelliğinden daha fazla bir sıralama veya eşitleme garantisi bulunmadığını unutmayın.
+
+```python
+# in child (or even grandchild) run
+
+def root_run(self : Run) -> Run :
+    if self.parent is None : 
+        return self
+    return root_run(self.parent)
+
+current_child_run = Run.get_context()
+root_run(current_child_run).log("MyMetric", f"Data from child run {current_child_run.id}")
+
+```
+
 
 ## <a name="tag-and-find-runs"></a>Etiket ve bulma çalıştırmaları
 

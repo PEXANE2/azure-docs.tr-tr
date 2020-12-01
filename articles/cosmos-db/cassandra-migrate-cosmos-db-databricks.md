@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: thvankra
 ms.reviewer: thvankra
-ms.openlocfilehash: 877aa96b189de47d158721df6585cb94ace4a855
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 827abcdb9eb2eb8b7328eb3e3a78f49d51e87e6b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94932920"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349189"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-azure-databricks"></a>Cassandra 'dan verileri Azure Cosmos DB Cassandra API hesabına Azure Databricks kullanarak geçirin
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -28,7 +28,7 @@ Azure Cosmos DB Cassandra API, Apache Cassandra üzerinde çalışan kurumsal i�
 
 Veritabanı iş yüklerini bir platformdan diğerine geçirmek için çeşitli yollar vardır. [Azure Databricks](https://azure.microsoft.com/services/databricks/) , büyük ölçekte çevrimdışı geçişler gerçekleştirmeye yönelik bir yol sunan [Apache Spark](https://spark.apache.org/) hizmet olarak kullanılan bir platformdur. Bu makalede, yerel Apache Cassandra keyspaces/tablolarından Azure Databricks kullanarak Cassandra API Azure Cosmos DB için gereken adımlar açıklanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Azure Cosmos DB Cassandra API hesabı sağlama](create-cassandra-dotnet.md#create-a-database-account)
 
@@ -114,7 +114,7 @@ DFfromNativeCassandra
 ```
 
 > [!NOTE]
-> `spark.cassandra.output.concurrent.writes`Ve `connections_per_executor_max` konfigürasyonları, Cosmos DB istekleri sağlanan aktarım hızını ([İstek birimleri](https://docs.microsoft.com/azure/cosmos-db/request-units)) aştığında gerçekleşen [hız sınırlamasını](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-cassandra-java-retry-sample/azure-cosmos-db-cassandra-java-retry-sample/)önleme için önemlidir. Bu ayarları Spark kümesindeki yürüticilere sayısına ve hedef tablolara yazılmakta olan her kaydın boyutunu (ve dolayısıyla RU maliyeti) bağlı olarak ayarlamanız gerekebilir.
+> `spark.cassandra.output.concurrent.writes`Ve `connections_per_executor_max` konfigürasyonları, Cosmos DB istekleri sağlanan aktarım hızını ([İstek birimleri](./request-units.md)) aştığında gerçekleşen [hız sınırlamasını](/samples/azure-samples/azure-cosmos-cassandra-java-retry-sample/azure-cosmos-db-cassandra-java-retry-sample/)önleme için önemlidir. Bu ayarları Spark kümesindeki yürüticilere sayısına ve hedef tablolara yazılmakta olan her kaydın boyutunu (ve dolayısıyla RU maliyeti) bağlı olarak ayarlamanız gerekebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -6,18 +6,18 @@ author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 11/22/2020
-ms.openlocfilehash: 1a68cea423678dd8582d65b839d57076e84de940
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 288b7463098b1c63b816f5544581e6222c7548c9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029549"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351563"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Hızlı başlangıç: Java Web projesinde Application Insights ile çalışmaya başlama
 
 
 > [!CAUTION]
-> 2020 Kasım itibariyle, Java uygulamalarını izlemek için Azure Izleyici Application Insights 3,0 aracısını kullanarak otomatik izleme önerilir. Kullanmaya başlama hakkında daha fazla bilgi için bkz. [Application Insights Java 3,0 Aracısı](./java-in-process-agent.md).
+> 2020 Kasım itibariyle, Java uygulamalarını izlemek için Azure Izleyici Application Insights Java 3,0 Aracısı 'nı kullanarak otomatik izleme önerilir. Kullanmaya başlama hakkında daha fazla bilgi için bkz. [Application Insights Java 3,0 Aracısı](./java-in-process-agent.md).
 
 Bu hızlı başlangıçta, isteği işaretlemek, bağımlılıkları izlemek ve performans sayaçlarını toplamak, performans sorunlarını ve özel durumları tanılamak ve uygulamanızdaki kullanıcıların neler yaptığını izlemek için kod yazmak üzere Application Insights SDK 'sını kullanırsınız.
 

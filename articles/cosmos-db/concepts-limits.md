@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/19/2020
-ms.openlocfilehash: de74d7e3cf854f36d122be6a32c7fb4d449c5fe5
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f591a9781cb81ec735d22f4f687f8d413923dc93
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175925"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349138"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB hizmet kotaları
 
@@ -78,8 +78,8 @@ Paylaşılan bir üretilen iş veritabanının el ile üretilen iş için gereke
 
 | Kaynak | Varsayılan limit |
 | --- | --- |
-| Kapsayıcı başına en az ru ([özel üretilen iş işleme modu](databases-containers-items.md#azure-cosmos-containers)) | 400 |
-| Veritabanı başına en az ru ([paylaşılan verimlilik sağlanmış mod](databases-containers-items.md#azure-cosmos-containers)) | ilk 25 kapsayıcı için 400 RU/sn. Daha sonra her bir kapsayıcı için ek 100 RU/sn. |
+| Kapsayıcı başına en az ru ([özel üretilen iş işleme modu](./account-databases-containers-items.md#azure-cosmos-containers)) | 400 |
+| Veritabanı başına en az ru ([paylaşılan verimlilik sağlanmış mod](./account-databases-containers-items.md#azure-cosmos-containers)) | ilk 25 kapsayıcı için 400 RU/sn. Daha sonra her bir kapsayıcı için ek 100 RU/sn. |
 
 Cosmos DB, SDK veya Portal aracılığıyla kapsayıcı veya veritabanı başına üretilen iş (RU/sn) için programlı ölçeklendirmeyi destekler.    
 

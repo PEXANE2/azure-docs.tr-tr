@@ -10,12 +10,12 @@ ms.date: 09/05/2018
 ms.author: jopapa
 ms.reviewer: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: cdb8612bb04d52df3603aa4520cad4cbacb661da
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1425b89e42450123c1696ddcee4458e1f69b8a6c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074089"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348577"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>React ve Azure Cosmos DB ile bir MongoDB uygulaması oluşturma  
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -91,8 +91,8 @@ Bu video, uygulamayı tamamlamayı ve kullanıcı arabirimini arka uç API'siyle
 
 Bu uygulamayı kullanmaya devam etmeyecekseniz aşağıdaki adımları kullanarak Azure portalında bu öğretici tarafından oluşturulan tüm kaynakları silin: 
 
-1. Azure portalında sol taraftaki menüden, **Kaynak grupları** 'na ve ardından oluşturduğunuz kaynağın adına tıklayın. 
-2. Kaynak grubu sayfanızda, **Sil** 'e tıklayın, metin kutusuna silinecek kaynağın adını yazın ve ardından **Sil** 'e tıklayın.
+1. Azure portalında sol taraftaki menüden, **Kaynak grupları**'na ve ardından oluşturduğunuz kaynağın adına tıklayın. 
+2. Kaynak grubu sayfanızda, **Sil**'e tıklayın, metin kutusuna silinecek kaynağın adını yazın ve ardından **Sil**'e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -108,4 +108,4 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 Bir sonraki öğreticiye geçip MongoDB verilerini Azure Cosmos DB’de içeri aktarmayı öğrenin.  
 
 > [!div class="nextstepaction"]
-> [Azure Cosmos DB’ye MongoDB verileri aktarma](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)
+> [Azure Cosmos DB’ye MongoDB verileri aktarma](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)

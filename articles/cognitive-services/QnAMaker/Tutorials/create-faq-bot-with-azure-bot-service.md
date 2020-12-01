@@ -5,17 +5,17 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 08/31/2020
-ms.openlocfilehash: aa2530f817bf20af40ab2913df9f16e7d1974ef3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 356b954c65086ff65264ce7a62b038cd7a8eac3d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187145"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350968"
 ---
 # <a name="tutorial-create-an-faq-bot-with-azure-bot-service"></a>Öğretici: Azure bot hizmeti ile bir SSS bot oluşturma
 Kod içermeyen Soru-Cevap Oluşturma ve Azure [bot hizmeti](https://azure.microsoft.com/services/bot-service/) Ile bir SSS bot oluşturun.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -80,4 +80,4 @@ Bilgi bankasında değişiklikler yaptığınızda ve yeniden yayımladığını
     Sohbet bot, bilgi tabanınızdan bir cevap vererek yanıt verir.
 
     :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-web-chat.png" alt-text="Test Web sohbetine bir Kullanıcı sorgusu girin.":::
-1. Ek [desteklenen kanallarda](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels?view=azure-bot-service-4.0&preserve-view=true)bot 'ı aydınlatın.
+1. Ek [desteklenen kanallarda](/azure/bot-service/bot-service-manage-channels?preserve-view=true&view=azure-bot-service-4.0)bot 'ı aydınlatın.

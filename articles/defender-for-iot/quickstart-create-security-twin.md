@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: 822e9dc237dd6f4d73e1860c6a0b240fb94c3105
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 74e0e8daa662f4dd49f1886972236b5b0a3b100a
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90948071"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348866"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Hızlı başlangıç: azureiotsecurity modülü oluşturma ikizi
 
@@ -31,7 +31,7 @@ Azure 'da oluşturulan IoT çözümleri için, cihaz ikis, hem cihaz yönetimi h
 IoT için Defender, mevcut IoT cihaz yönetimi Platformunuzla tam tümleştirme sunarak cihaz güvenlik durumunuzu yönetmenize ve mevcut cihaz denetimi yeteneklerini kullanmanıza olanak sağlar.
 IoT tümleştirmesi için Defender, IoT Hub ikizi mekanizması kullanılarak elde edilir.
 
-Azure IoT Hub modül TWINS 'in genel kavramı hakkında daha fazla bilgi edinmek için bkz. [IoT Hub Module TWINS](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins) .
+Azure IoT Hub modül TWINS 'in genel kavramı hakkında daha fazla bilgi edinmek için bkz. [IoT Hub Module TWINS](../iot-hub/iot-hub-devguide-module-twins.md) .
 
 IoT için Defender, Module ikizi mekanizmasını kullanır ve cihazlarınızın her biri için _azureiotsecurity_ adlı bir güvenlik modülünü ikizi.
 
@@ -55,7 +55,7 @@ Bir cihaz için el ile yeni bir _azureiotsecurity_ Module ikizi oluşturmak içi
 
 1. IoT Hub, için güvenlik modülü ikizi oluşturmak istediğiniz cihazı bulun ve seçin.
 1. Cihazınıza ve ardından **modül kimliği Ekle**' ye tıklayın.
-1. **Modül kimliği adı** alanına **azureiotsecurity**girin.
+1. **Modül kimliği adı** alanına **azureiotsecurity** girin.
 
 1. **Kaydet**’e tıklayın.
 

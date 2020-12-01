@@ -11,19 +11,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: scottwhi
-ms.openlocfilehash: f4f001cdeb37ff760a01ac48d7efb41c0437fe5f
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 571314009b6f58e5c2ab6aac02cfebc82c53f42f
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380260"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351870"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>Arama yanıtının içerdiği yanıtları filtreleme  
 
 > [!WARNING]
-> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](/bing/search-apis/bing-web-search/create-bing-search-service-resource)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
 > Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
-> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
+> Geçiş yönergeleri için bkz. [Bing arama Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Web 'i sorguladığınızda, Bing arama için bulduğu tüm ilgili içeriği döndürür. Örneğin, arama sorgusu "karmaşık + Dinghies" ise, yanıt aşağıdaki yanıtları içerebilir:
 
@@ -136,7 +136,7 @@ Sonuçlar, Bing filtre ölçütlerinizle eşleşen Web sayfası sayısı istedi�
 
 ## <a name="limiting-the-number-of-answers-in-the-response"></a>Yanıttaki yanıt sayısını sınırlandırma
 
-Bing, JSON yanıtında birden çok yanıt türü döndürebilir. Örneğin, *yelkenler + Dinghies* 'yi sorgulayıp Bing,,, `webpages` `images` ve döndürebilir `videos` `relatedSearches` .
+Bing, JSON yanıtında birden çok yanıt türü döndürebilir. Örneğin, *yelkenler + Dinghies*'yi sorgulayıp Bing,,, `webpages` `images` ve döndürebilir `videos` `relatedSearches` .
 
 ```json
 {

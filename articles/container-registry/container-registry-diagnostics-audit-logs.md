@@ -3,16 +3,16 @@ title: Kaynak günlüklerini toplama & analiz etme
 description: Kimlik doğrulama, görüntü gönderme ve resim çekme gibi Azure Container Registry kaynak günlüğü olaylarını kaydedin ve çözümleyin.
 ms.topic: article
 ms.date: 06/01/2020
-ms.openlocfilehash: 63ccb944b9c3de9941acf55ca5ea85fda70a7008
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b05d34e6c50fea3760e30d28f59e55d8c5f211a
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87553385"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348594"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Tanılama değerlendirmesi ve denetimi için Azure Container Registry günlükleri
 
-Bu makalede, Azure [izleyici](../azure-monitor/overview.md)'nin özellikleri kullanılarak Azure Container Registry için günlük verilerinin nasıl toplanacağı açıklanır. Azure Izleyici, kayıt defterinizde Kullanıcı odaklı olaylar için [kaynak günlüklerini](../azure-monitor/platform/platform-logs-overview.md) (eski adıyla *tanılama günlükleri*olarak adlandırılır) toplar. Bu verileri toplayın ve aşağıdaki gibi gereksinimlerinizi karşılayacak şekilde kullanın:
+Bu makalede, Azure [izleyici](../azure-monitor/overview.md)'nin özellikleri kullanılarak Azure Container Registry için günlük verilerinin nasıl toplanacağı açıklanır. Azure Izleyici, kayıt defterinizde Kullanıcı odaklı olaylar için [kaynak günlüklerini](../azure-monitor/platform/platform-logs-overview.md) (eski adıyla *tanılama günlükleri* olarak adlandırılır) toplar. Bu verileri toplayın ve aşağıdaki gibi gereksinimlerinizi karşılayacak şekilde kullanın:
 
 * Güvenlik ve uyumluluk sağlamak için kayıt defteri kimlik doğrulama olaylarını denetleme 
 
@@ -81,7 +81,7 @@ Aşağıdaki görüntüde örnek çıkış gösterilmektedir:
 
 ![Günlük verilerini sorgulama](media/container-registry-diagnostics-audit-logs/azure-monitor-query.png)
 
-Azure portal Log Analytics kullanmaya yönelik bir öğretici için bkz. [Azure izleyici 'yi kullanmaya başlama Log Analytics](../azure-monitor/log-query/get-started-portal.md)veya Log Analytics [demo ortamını](https://portal.loganalytics.io/demo)deneme. 
+Azure portal Log Analytics kullanmaya yönelik bir öğretici için bkz. [Azure izleyici 'yi kullanmaya başlama Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)veya Log Analytics [demo ortamını](https://portal.loganalytics.io/demo)deneme. 
 
 Günlük sorguları hakkında daha fazla bilgi için bkz. [Azure izleyici 'de günlük sorgularına genel bakış](../azure-monitor/log-query/log-query-overview.md).
 
@@ -146,5 +146,5 @@ Ayrıca, tanılama günlüğü olaylarını bir [Azure Olay Hub 'ına](../event-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Log Analytics](../azure-monitor/log-query/get-started-portal.md) kullanma ve [günlük sorguları](../azure-monitor/log-query/get-started-queries.md)oluşturma hakkında daha fazla bilgi edinin.
+* [Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md) kullanma ve [günlük sorguları](../azure-monitor/log-query/get-started-queries.md)oluşturma hakkında daha fazla bilgi edinin.
 * Azure 'un farklı katmanlarında kullanılabilen platform günlükleri hakkında bilgi edinmek için bkz. [Azure platform günlüklerine genel bakış](../azure-monitor/platform/platform-logs-overview.md) .

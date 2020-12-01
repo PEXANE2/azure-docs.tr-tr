@@ -6,12 +6,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: dcf912f431d578a6e678801d3dc8f4e11484ea78
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a77083c721328a8df9facd2f4b320b863aa03c68
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997027"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352414"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Bilgi Bankası 'nda önerilen etkin öğrenme sorularını kabul edin
 
@@ -22,7 +22,7 @@ Etkin öğrenme, öneriyi onayladıktan sonra bilgi bankasını veya Arama Hizme
 
 ## <a name="turn-on-active-learning"></a>Etkin öğrenmeyi açma
 
-Önerilen soruları görmek için Soru-Cevap Oluşturma kaynağınız için [etkin öğrenmeyi açmanız](https://docs.microsoft.com/azure/cognitive-services/qnamaker/concepts/active-learning-suggestions) gerekir.
+Önerilen soruları görmek için Soru-Cevap Oluşturma kaynağınız için [etkin öğrenmeyi açmanız](../concepts/active-learning-suggestions.md) gerekir.
 
 ## <a name="view-suggested-questions"></a>Önerilen soruları görüntüleyin
 

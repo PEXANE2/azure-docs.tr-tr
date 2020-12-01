@@ -2,13 +2,13 @@
 title: Öğretici-VMware HCX 'i dağıtma ve yapılandırma
 description: Azure VMware çözümünüz özel bulutunuz için bir VMware HCX çözümünü dağıtmayı ve yapılandırmayı öğrenin.
 ms.topic: tutorial
-ms.date: 11/18/2020
-ms.openlocfilehash: afb5c653ce7c4b4a453a4031c5664042357de6c0
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.date: 11/25/2020
+ms.openlocfilehash: e50454c2299ed0f7e249563eecac1935a29a9c47
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95999645"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352481"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>VMware HCX’i dağıtma ve yapılandırma
 
@@ -16,8 +16,8 @@ Bu makalede, Azure VMware çözümünüz özel bulutunuz için şirket içi VMwa
 
 VMware HCX gelişmiş Bağlayıcısı, Azure VMware çözümünde önceden dağıtılır. En fazla üç site bağlantısını (Şirket içi buluta veya buluta buluta) destekler. Üçten fazla site bağlantısına ihtiyacınız varsa [VMware HCX kurumsal](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) eklentisini etkinleştirmek için bir [destek isteği](https://portal.azure.com/#create/Microsoft.Support) gönderebilirsiniz. Eklenti şu anda önizleme aşamasındadır. 
 
->[!Note]
->VMware yapılandırma en yüksek Aracı, şirket içi bağlayıcı ve bulut Yöneticisi arasında en yüksek site çiftlerini 25 olacak şekilde tanımlıyor olsa da, lisans bu işlemi daha gelişmiş ve 10 Enterprise Edition için 3 ile sınırlandırır.
+>[!TIP]
+>VMware yapılandırma en yüksek Aracı, şirket içi bağlayıcı ile bulut Yöneticisi arasında en yüksek site çiftlerini 25 olacak şekilde tanımlıyor olsa da, lisans bu değeri Advanced ve for Enterprise Edition için üç ile sınırlandırır.
 
 >[!NOTE]
 >VMware HCX Enterprise, Önizleme hizmeti olarak Azure VMware çözümü ile kullanılabilir. Bu ücretsizdir ve bir önizleme hizmeti için hüküm ve koşullara tabidir. VMware HCX Enterprise hizmeti genel kullanıma sunulduğunda, faturalandırmaya geçiş yapılacak 30 günlük bir bildirim alırsınız. Ayrıca hizmeti kapatma veya devre dışı bırakma seçeneğiniz de vardır. VMware HCX Enterprise 'tan VMware HCX gelişmiş 'e basit bir düşürme yolu yoktur. Düşürme kararı verirseniz, kapalı kalma süresini yeniden dağıtmanız gerekir.
@@ -79,7 +79,7 @@ Sanal Gereci şirket içi vCenter 'ınıza dağıtmadan önce, VMware HCX bağla
 1. **Manage**  >  Parolayı tanımlamak için **kimliği** Yönet ' i ve **vCenter yönetici parolası** ' nı seçin.
 
    > [!TIP]
-   > VCenter parolası, özel bulutu ayarlarken tanımlanmıştır, Azure VMware Solution HCX Manager 'da oturum açmak için kullandığınız parola aynı olur.
+   > VCenter parolası, özel bulutu ayarlarken tanımlanmıştır. Azure VMware Solution HCX Manager 'da oturum açmak için kullandığınız parola aynı.
 
    :::image type="content" source="media/tutorial-vmware-hcx/hcx-admin-password.png" alt-text="HCX parolasını bulun." lightbox="media/tutorial-vmware-hcx/hcx-admin-password.png":::
 
@@ -91,7 +91,7 @@ Sanal Gereci şirket içi vCenter 'ınıza dağıtmadan önce, VMware HCX bağla
 
 ## <a name="deploy-the-vmware-hcx-connector-ova-on-premises"></a>VMware HCX bağlayıcı OVA 'yı şirket içinde dağıtma
 
-1. Şirket içi vCenter 'ağınızda, HCX bağlayıcısını şirket içi vCenter 'ınıza dağıtmak için bir [ovf şablonu](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-17BEDA21-43F6-41F4-8FB2-E01D275FE9B4.html) seçin. 
+1. Şirket içi vCenter 'ağınızda, VMware HCX bağlayıcısını şirket içi vCenter 'nize dağıtmak için bir [ovf şablonu](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-17BEDA21-43F6-41F4-8FB2-E01D275FE9B4.html) seçin. 
 
    > [!TIP]
    > Önceki bölümde indirdiğiniz OVA dosyasını seçersiniz.  
@@ -111,12 +111,12 @@ Sanal Gereci şirket içi vCenter 'ınıza dağıtmadan önce, VMware HCX bağla
 
    :::image type="content" source="media/tutorial-vmware-hcx/customize-template.png" alt-text="Bir şablonu özelleştirmeye yönelik kutuların ekran görüntüsü." lightbox="media/tutorial-vmware-hcx/customize-template.png":::
 
-1. Yapılandırmayı doğrulayın ve sonra HCX bağlayıcı OVA 'yı dağıtmak için **son** ' u seçin.
+1. Yapılandırmayı doğrulayın ve sonra VMware HCX bağlayıcı OVA 'yı dağıtmak için **son** ' u seçin.
    
    > [!IMPORTANT]
    > Sanal Gereci el ile açmanız gerekir.  Etkinleştirildikten sonra, sonraki adıma geçmeden önce 10-15 dakika bekleyin.
 
-Bu yordama uçtan uca genel bakış için [Azure VMware çözümü: HCX gereç dağıtımı](https://www.youtube.com/embed/BwSnQeefnso) videosunu görüntüleyin. 
+Bu yordama uçtan uca genel bakış için [Azure VMware çözümü: HCX gereç dağıtımı](https://www.youtube.com/embed/UKmSTYrL6AY) videosunu görüntüleyin. 
 
 
 ## <a name="activate-vmware-hcx"></a>VMware HCX 'i etkinleştir
@@ -152,7 +152,7 @@ VMware HCX bağlayıcısını şirket içinde dağıttıktan sonra gereci başla
 1. **SSO/PSC yapılandırma** bölümünde, platform HIZMETLERI denetleyicinizin FQDN 'SINI veya IP adresini girip **devam**' ı seçin.
    
    > [!NOTE]
-   > Genellikle, bu giriş vCenter FQDN 'niz veya IP adresiniz ile aynıdır.
+   > Genellikle, vCenter FQDN 'niz veya IP adresiniz ile aynıdır.
 
 1. Girilen bilgilerin doğru olduğundan emin olun ve **Yeniden Başlat**' ı seçin.
     
@@ -163,7 +163,7 @@ Hizmetler yeniden başlatıldıktan sonra, vCenter görüntülenen ekranda yeşi
 
 :::image type="content" source="media/tutorial-vmware-hcx/activation-done.png" alt-text="Yeşil vCenter durumu içeren panonun ekran görüntüsü." lightbox="media/tutorial-vmware-hcx/activation-done.png":::  
 
-Bu yordama uçtan uca genel bakış için [Azure VMware çözümünü görüntüleyin: HCX videosunu etkinleştirin](https://www.youtube.com/embed/BkAV_TNYxdE) .
+Bu yordama uçtan uca genel bakış için [Azure VMware çözümünü görüntüleyin: HCX videosunu etkinleştirin](https://www.youtube.com/embed/jzQZawslF8w) .
 
    > [!IMPORTANT]
    > VMware HCX Advanced veya VMware HCX Enterprise kullanıyor olabilirsiniz, düzeltme ekini VMware 'in [KB makalesi 81558](https://kb.vmware.com/s/article/81558)' den yüklemeniz gerekebilir. 
@@ -174,7 +174,7 @@ Artık bir site eşleştirme eklemeye, bir ağ ve bilgi işlem profili oluşturm
 
 ### <a name="add-a-site-pairing"></a>Site eşleştirmesi ekleme
 
-Azure VMware çözümünde VMware HCX bulut yöneticisini, veri merkezinizdeki VMware HCX Bağlayıcısı ile bağlayabilirsiniz (eşleştirin). 
+Azure VMware çözümünde VMware HCX bulut yöneticisini, veri merkezinizdeki VMware HCX Bağlayıcısı ile bağlanabilir veya eşleştirin. 
 
 1. Şirket içi vCenter oturumunuzu açın ve **giriş** bölümünde **HCX**' i seçin.
 
@@ -183,15 +183,16 @@ Azure VMware çözümünde VMware HCX bulut yöneticisini, veri merkezinizdeki V
 1. Daha önce not ettiğiniz Azure VMware Solution HCX Cloud Manager URL 'sini veya IP adresini `https://x.x.x.9` , Azure VMware Çözüm cloudadmin@vsphere.local Kullanıcı adı ' nı ve parolayı girin. Ardından **Bağlan**'ı seçin.
 
    > [!NOTE]
-   > Bir site çiftini başarıyla oluşturmak için, HCX bağlayıcısının 443 numaralı bağlantı noktası üzerinden HCX Cloud Manager IP 'nize yönlendirilebilmesi gerekir.
+   > Bir site çiftini başarıyla oluşturmak için:
+   > * VMware HCX Bağlayıcınız, 443 numaralı bağlantı noktası üzerinden HCX Cloud Manager IP 'nize yönlendiribilmelidir.
    >
-   > Parola, vCenter 'da oturum açmak için kullandığınız parolayla aynıdır. Bu parolayı ilk dağıtım ekranında tanımladınız.
+   > * VCenter 'da oturum açmak için kullandığınız parolayı kullanın. Bu parolayı ilk dağıtım ekranında tanımladınız.
 
-   Azure VMware çözümünde HCX bulut yöneticinizin ve şirket içi HCX bağlayıcısının bağlı (eşleştirilmiş) olduğunu gösteren bir ekran görürsünüz.
+   Azure VMware çözümünde VMware HCX bulut yöneticinizin ve şirket içi VMware HCX bağlayıcısının bağlı (eşleştirilmiş) olduğunu gösteren bir ekran görürsünüz.
 
-   :::image type="content" source="media/tutorial-vmware-hcx/site-pairing-complete.png" alt-text="Azure VMware çözümünde HCX yöneticisinin ve HCX bağlayıcısının eşleştirmesinin gösterildiği ekran görüntüsü.":::
+   :::image type="content" source="media/tutorial-vmware-hcx/site-pairing-complete.png" alt-text="Azure VMware çözümünde HCX yöneticisinin ve VMware HCX bağlayıcısının eşleştirmesinin gösterildiği ekran görüntüsü.":::
 
-Bu yordama uçtan uca genel bakış için [Azure VMware çözümü: HCX site eşleştirme](https://www.youtube.com/embed/sKizDCRHOko) videosunu görüntüleyin.
+Bu yordama uçtan uca genel bakış için [Azure VMware çözümü: HCX site eşleştirme](https://www.youtube.com/embed/iTJtjbiwvsw) videosunu görüntüleyin.
 
 ### <a name="create-network-profiles"></a>Ağ profilleri oluşturma
 
@@ -212,7 +213,7 @@ Dört ağ profili oluşturacaksınız:
 
    :::image type="content" source="media/tutorial-vmware-hcx/example-configurations-network-profile.png" alt-text="Yeni bir ağ profili için ayrıntıların ekran görüntüsü.":::
 
-Bu yordama uçtan uca genel bakış için [Azure VMware çözümü: HCX ağ profili](https://www.youtube.com/embed/NhyEcLco4JY) videosunu görüntüleyin.
+Bu yordama uçtan uca genel bakış için [Azure VMware çözümü: HCX ağ profili](https://www.youtube.com/embed/O0rU4jtXUxc) videosunu görüntüleyin.
 
 
 ### <a name="create-a-compute-profile"></a>İşlem profili oluşturma
@@ -274,18 +275,20 @@ Bu yordama uçtan uca genel bakış için [Azure VMware çözümü: HCX ağ prof
 
    :::image type="content" source="media/tutorial-vmware-hcx/compute-profile-done.png" alt-text="İşlem profili bilgilerini gösteren ekran görüntüsü." lightbox="media/tutorial-vmware-hcx/compute-profile-done.png":::
 
-Bu yordama uçtan uca genel bakış için [Azure VMware çözümü: Işlem profili](https://www.youtube.com/embed/qASXi5xrFzM) videosu ' nı görüntüleyin.
+Bu yordama uçtan uca genel bakış için [Azure VMware çözümü: Işlem profili](https://www.youtube.com/embed/e02hsChI3b8) videosu ' nı görüntüleyin.
 
 ### <a name="create-a-service-mesh"></a>Hizmet ağı oluşturma
 
 Artık şirket içi ve Azure VMware Çözüm SDDC arasında bir hizmet ağı yapılandırma zamanı.
 
-   > [!NOTE]
-   > Azure VMware çözümü ile başarılı bir şekilde hizmet ağı kurmak için:
-   >
-   > UDP 500/4500 bağlantı noktaları, şirket içi HCX bağlayıcı tanımlı ' yukarı bağlantı ' ağ profili adresiniz ve Azure VMware çözümü HCX bulutu ' yukarı ağ profili adresleri arasında açıktır.
-   >
-   > [HCX gereken bağlantı noktalarını](https://ports.vmware.com/home/VMware-HCX)gözden geçirdiğinizden emin olun.
+
+
+> [!NOTE]
+> Azure VMware çözümü ile başarılı bir şekilde hizmet ağı kurmak için:
+>
+> * UDP 500/4500 bağlantı noktaları, şirket içi VMware HCX bağlayıcısının ' yukarı bağlantı ' ağ profili adresiniz ve Azure VMware çözümü HCX bulutu ' yukarı bağlantı ağı profili adresleri arasında açıktır.
+>
+> * [VMware HCX gereken bağlantı noktalarını](https://ports.vmware.com/home/VMware-HCX)gözden geçirdiğinizden emin olun.
 
 1. **Altyapı** altında, **Interconnect**  >  **Service kafesi**  >  **hizmet ağı oluştur**' u seçin.    
 
@@ -312,6 +315,10 @@ Artık şirket içi ve Azure VMware Çözüm SDDC arasında bir hizmet ağı yap
   
 1. **Gelişmiş yapılandırma-ağ uzantısı gereç ölçeği ölçeğini** Inceleyin ve **devam**' ı seçin. 
 
+   Her gereç için en fazla sekiz VLAN olabilir, ancak başka bir gereci daha fazla sekiz VLAN eklemek üzere dağıtabilirsiniz. Ayrıca, ek gereçlere yönelik olarak bir IP alanınız olmalıdır ve bu, Gereç başına bir IP olur.  Daha fazla bilgi için bkz. [VMware HCX yapılandırma sınırları](https://configmax.vmware.com/guest?vmwareproduct=VMware%20HCX&release=VMware%20HCX&categories=41-0,42-0,43-0,44-0,45-0).
+   
+   :::image type="content" source="media/tutorial-vmware-hcx/extend-networks-increase-vlan.png" alt-text="VLAN sayısının nerede artırması gerektiğini gösteren ekran görüntüsü." lightbox="media/tutorial-vmware-hcx/extend-networks-increase-vlan.png":::
+
 1. **Gelişmiş yapılandırma-Trafik Mühendisliği**' nda, gereken tüm değişiklikleri gözden geçirin ve yapın ve ardından **devam**' ı seçin.
 
 1. Topoloji önizlemesini inceleyin ve **devam**' ı seçin.
@@ -332,7 +339,7 @@ Artık şirket içi ve Azure VMware Çözüm SDDC arasında bir hizmet ağı yap
 
    :::image type="content" source="media/tutorial-vmware-hcx/interconnect-appliance-state.png" alt-text="Gereç durumunu denetlemeye yönelik seçimleri gösteren ekran görüntüsü." lightbox="media/tutorial-vmware-hcx/interconnect-appliance-state.png":::
 
-Bu yordama uçtan uca genel bakış için [Azure VMware çözümü: hizmet ağı](https://www.youtube.com/embed/FyZ0d3P_T24) videosu ' nı görüntüleyin.
+Bu yordama uçtan uca genel bakış için [Azure VMware çözümü: hizmet ağı](https://www.youtube.com/embed/COY3oIws108) videosu ' nı görüntüleyin.
 
 ### <a name="optional-create-a-network-extension"></a>Seçim Ağ uzantısı oluşturma
 
@@ -354,7 +361,7 @@ Bu yordama uçtan uca genel bakış için [Azure VMware çözümü: hizmet ağı
 
    :::image type="content" source="media/tutorial-vmware-hcx/extension-complete.png" alt-text="Uzantı durumunun tamamlandığını gösteren ekran görüntüsü." lightbox="media/tutorial-vmware-hcx/extension-complete.png":::
 
-Bu yordama uçtan uca genel bakış için [Azure VMware çözümü: ağ uzantısı](https://www.youtube.com/embed/cNlp0f_tTr0) videosunu görüntüleyin.
+Bu yordama uçtan uca genel bakış için [Azure VMware çözümü: ağ uzantısı](https://www.youtube.com/embed/gYR0nftKui0) videosunu görüntüleyin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -364,5 +371,5 @@ Gereç bağlantısı tünel durumu **Açık** ve yeşil Ise, VMware HCX kullanar
 HCX kullanma hakkında daha fazla bilgi için VMware teknik belgelerine gidin:
 
 * [VMware HCX belgeleri](https://docs.vmware.com/en/VMware-HCX/index.html)
-* [VMware HCX Ile sanal makineler geçiriliyor](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g).
+* [VMware HCX ile sanal makineleri geçirme](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g)
 * [HCX gereken bağlantı noktaları](https://ports.vmware.com/home/VMware-HCX)

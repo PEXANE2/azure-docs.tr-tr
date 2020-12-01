@@ -4,12 +4,12 @@ description: Azure Batch kullanarak Key Vault kimlik bilgilerinizin programlama 
 ms.topic: how-to
 ms.date: 10/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 25cb05374fc0667306e2b1004b3cd237413b4409
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: b8b3d2655e79862c068aa48c29c7e89b7df85482
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337500"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350696"
 ---
 # <a name="securely-access-key-vault-with-batch"></a>Batch ile Key Vault’a güvenli erişim
 
@@ -67,7 +67,7 @@ Yalnızca Key Vault erişim için kullandığımızdan, uygulamanın URL 'Leri �
 
 ## <a name="grant-rights-to-key-vault"></a>Key Vault haklar verme
 
-Önceki adımda oluşturulan hizmet sorumlusunun Key Vault gizli dizileri alma izni vardır. İzin, [Azure Portal](/azure/key-vault/general/assign-access-policy-portal) veya aşağıdaki PowerShell komutu ile verilebilir.
+Önceki adımda oluşturulan hizmet sorumlusunun Key Vault gizli dizileri alma izni vardır. İzin, [Azure Portal](../key-vault/general/assign-access-policy-portal.md) veya aşağıdaki PowerShell komutu ile verilebilir.
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'BatchVault' -ServicePrincipalName '"https://batch.mydomain.com' -PermissionsToSecrets 'Get'
@@ -77,7 +77,7 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName 'BatchVault' -ServicePrincipalName '"
 
 Bir Batch havuzu oluşturun, ardından havuzdaki sertifika sekmesine gidin ve oluşturduğunuz sertifikayı atayın. Sertifika artık tüm Batch düğümlerinde bulunur.
 
-Ardından, sertifikayı Batch hesabına atayın. Sertifikanın hesaba atanması, toplu Iş tarafından havuzlara ve sonra düğümlere atanmasına izin verir. Bunu yapmanın en kolay yolu, portalda Batch hesabınıza gidip **Sertifikalar** ' a gidip **Ekle** ' yi seçmelidirler. `.pfx`Daha önce oluşturduğunuz dosyayı karşıya yükleyin ve parolayı sağlayın. Tamamlandıktan sonra sertifika listeye eklenir ve parmak izini doğrulayabilirsiniz.
+Ardından, sertifikayı Batch hesabına atayın. Sertifikanın hesaba atanması, toplu Iş tarafından havuzlara ve sonra düğümlere atanmasına izin verir. Bunu yapmanın en kolay yolu, portalda Batch hesabınıza gidip **Sertifikalar**' a gidip **Ekle**' yi seçmelidirler. `.pfx`Daha önce oluşturduğunuz dosyayı karşıya yükleyin ve parolayı sağlayın. Tamamlandıktan sonra sertifika listeye eklenir ve parmak izini doğrulayabilirsiniz.
 
 Artık bir Batch havuzu oluşturduğunuzda, havuz içindeki **sertifikalara** gidebilir ve oluşturduğunuz sertifikayı bu havuza atayabilirsiniz. Bunu yaptığınızda, depolama konumu için **LocalMachine** 'yi seçtiğinizden emin olun. Sertifika, havuzdaki tüm Batch düğümlerine yüklenir.
 
@@ -94,7 +94,7 @@ if($psModuleCheck.count -eq 0) {
 
 ## <a name="access-key-vault"></a>Key Vault'a Erişim
 
-Artık Batch düğümlerinizde çalışan betiklerdeki Key Vault erişmeye hazır olursunuz. Bir betikten Key Vault erişmek için, Azure AD 'de sertifikayı kullanarak kimlik doğrulaması yapmak üzere betiğinizin olması gerekir. Bunu PowerShell 'de yapmak için aşağıdaki örnek komutları kullanın. **Parmak izi** , **uygulama kimliği** (hizmet sorumlunuz KIMLIĞI) ve **Kiracı kimliği** (hizmet sorumlunun bulunduğu kiracı) için uygun GUID 'yi belirtin.
+Artık Batch düğümlerinizde çalışan betiklerdeki Key Vault erişmeye hazır olursunuz. Bir betikten Key Vault erişmek için, Azure AD 'de sertifikayı kullanarak kimlik doğrulaması yapmak üzere betiğinizin olması gerekir. Bunu PowerShell 'de yapmak için aşağıdaki örnek komutları kullanın. **Parmak izi**, **uygulama kimliği** (hizmet sorumlunuz KIMLIĞI) ve **Kiracı kimliği** (hizmet sorumlunun bulunduğu kiracı) için uygun GUID 'yi belirtin.
 
 ```powershell
 Add-AzureRmAccount -ServicePrincipal -CertificateThumbprint -ApplicationId

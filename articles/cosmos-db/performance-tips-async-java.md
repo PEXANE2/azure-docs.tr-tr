@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java, contperfq2
-ms.openlocfilehash: 4285571ead30f74f9136ad81687e52d92fdd1c47
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 1f57e14893e6f43b98b0e45cc2bd2d49e31271d0
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341768"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350356"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-async-java-sdk-v2"></a>Azure Cosmos DB zaman uyumsuz Java SDK v2 için performans ipuçları
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -41,7 +41,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
 * **Bağlantı modu: doğrudan modu kullan**
     
-  İstemcinin Azure Cosmos DB 'e bağlanması, özellikle de istemci tarafı gecikme süresi bakımından performans açısından önemli etkileri vardır. *Connectionmode* , Istemci *connectionpolicy* 'yi yapılandırmak için kullanılabilen bir anahtar yapılandırma ayarıdır. Azure Cosmos DB zaman uyumsuz Java SDK v2 için, kullanılabilir iki Connectionmode şunlardır:  
+  İstemcinin Azure Cosmos DB 'e bağlanması, özellikle de istemci tarafı gecikme süresi bakımından performans açısından önemli etkileri vardır. *Connectionmode* , Istemci *connectionpolicy*'yi yapılandırmak için kullanılabilen bir anahtar yapılandırma ayarıdır. Azure Cosmos DB zaman uyumsuz Java SDK v2 için, kullanılabilir iki Connectionmode şunlardır:  
       
   * [Ağ Geçidi (varsayılan)](/java/api/com.microsoft.azure.cosmosdb.connectionmode)  
   * [Direct](/java/api/com.microsoft.azure.cosmosdb.connectionmode)
@@ -90,7 +90,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
   :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Doğrudan mod mimarisinin çizimi" border="false":::
   
-  Doğrudan modda çalışan istemci tarafı mimarisi, tahmin edilebilir ağ kullanımı ve Azure Cosmos DB çoğaltmaya çoğullanmış erişim sağlar. Yukarıdaki diyagramda, doğrudan modunun Cosmos DB arka uçtaki çoğaltmalara istemci isteklerini nasıl yönlendirdiğini gösterir. Doğrudan mod mimarisi, VERITABANı çoğaltması başına istemci tarafında en fazla 10 _ *Kanal* * ayırır. Kanal, 30 istekten oluşan bir istek arabelleğinin önünde yer aldığı bir TCP bağlantısıdır. Bir çoğaltmaya ait olan kanallar, çoğaltmanın **hizmet uç noktası** tarafından gerektiği şekilde dinamik olarak ayrılır. Kullanıcı doğrudan modda bir istek verdiği zaman, **Transportclient** , isteği bölüm anahtarına göre uygun hizmet uç noktasına yönlendirir. **Istek kuyruğu** , hizmet uç noktasından önceki istekleri arabelleğe alır.
+  Doğrudan modda çalışan istemci tarafı mimarisi, tahmin edilebilir ağ kullanımı ve Azure Cosmos DB çoğaltmaya çoğullanmış erişim sağlar. Yukarıdaki diyagramda, doğrudan modunun Cosmos DB arka uçtaki çoğaltmalara istemci isteklerini nasıl yönlendirdiğini gösterir. Doğrudan mod mimarisi, VERITABANı çoğaltması başına istemci tarafında en fazla 10 _ *Kanal** ayırır. Kanal, 30 istekten oluşan bir istek arabelleğinin önünde yer aldığı bir TCP bağlantısıdır. Bir çoğaltmaya ait olan kanallar, çoğaltmanın **hizmet uç noktası** tarafından gerektiği şekilde dinamik olarak ayrılır. Kullanıcı doğrudan modda bir istek verdiği zaman, **Transportclient** , isteği bölüm anahtarına göre uygun hizmet uç noktasına yönlendirir. **Istek kuyruğu** , hizmet uç noktasından önceki istekleri arabelleğe alır.
 
   * ***Doğrudan mod _ Için Connectionpolicy yapılandırma seçenekleri**
 
@@ -139,7 +139,7 @@ Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz A
 
     Verilerin sorguya göre tüm bölümler arasında eşit bir şekilde dağıtılması halinde paralel sorguların en iyi avantajları ürettiğine dikkat edin. Bölümlenmiş koleksiyon, bir sorgu tarafından döndürülen verilerin tümünün veya çoğunluğunun birkaç bölümde (en kötü durumda bir bölüm) yoğunlaşarak bir şekilde bölümlenmişse, sorgunun performansı bu bölümler tarafından bottlenecked olacaktır.
 
-  _ * **Ayarlama setMaxBufferedItemCount \:** _
+  _ ***Ayarlama setMaxBufferedItemCount \:** _
     
     Paralel sorgu, geçerli sonuç toplu işi istemci tarafından işlendiği sırada sonuçları önceden getirmek üzere tasarlanmıştır. Önceden getirme, bir sorgunun genel gecikme artışında yardımcı olur. setMaxBufferedItemCount, önceden getirilen sonuçların sayısını sınırlar. SetMaxBufferedItemCount değeri döndürülen beklenen sonuç sayısına (veya daha yüksek bir sayıya) ayarlandığında sorgunun ön alma işleminden en fazla avantaj almasına olanak sağlar.
 
@@ -260,7 +260,7 @@ _ **GetRetryAfterInMilliseconds aralıklarında geri alma Uygula**
     collectionDefinition.setIndexingPolicy(indexingPolicy);
     ```
 
-    Daha fazla bilgi için bkz. [Azure Cosmos DB Dizin oluşturma ilkeleri](/azure/cosmos-db/index-policy).
+    Daha fazla bilgi için bkz. [Azure Cosmos DB Dizin oluşturma ilkeleri](./index-policy.md).
 
 ## <a name="throughput"></a><a id="measure-rus"></a>Aktarım hızı
 

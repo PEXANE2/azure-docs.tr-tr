@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: chez
 ms.reviewer: mariozi
-ms.openlocfilehash: c7d3dae2b7da2fcc14e86eb4965ebd99fd7bf681
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f1a7bffc05d83b30fe9e5bcd6e17bf6bc0192e1d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88650595"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348951"
 ---
 # <a name="encrypt-azure-data-factory-with-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarlarla Azure Data Factory şifreleyin
 
@@ -45,10 +45,10 @@ Aşağıdaki listede, diyagramdaki numaralandırılmış adımlar açıklanmakta
 
 ### <a name="enable-soft-delete-and-do-not-purge-on-azure-key-vault"></a>Azure Key Vault geçici silme özelliğini etkinleştirme ve Temizleme
 
-Data Factory ile müşteri tarafından yönetilen anahtarların kullanılması Key Vault, __geçici silme__ ve __Temizleme__için iki özellik ayarlanmasını gerektirir. Bu özellikler, yeni veya mevcut bir anahtar kasasında PowerShell veya Azure CLı kullanılarak etkinleştirilebilir. Mevcut bir anahtar kasasında bu özellikleri etkinleştirmeyi öğrenmek için aşağıdaki makalelerden birinde _geçici silme özelliğini etkinleştirme_ ve _Temizleme korumasını etkinleştirme_ başlıklı bölümlere bakın:
+Data Factory ile müşteri tarafından yönetilen anahtarların kullanılması Key Vault, __geçici silme__ ve __Temizleme__ için iki özellik ayarlanmasını gerektirir. Bu özellikler, yeni veya mevcut bir anahtar kasasında PowerShell veya Azure CLı kullanılarak etkinleştirilebilir. Mevcut bir anahtar kasasında bu özellikleri etkinleştirmeyi öğrenmek için aşağıdaki makalelerden birinde _geçici silme özelliğini etkinleştirme_ ve _Temizleme korumasını etkinleştirme_ başlıklı bölümlere bakın:
 
-- [PowerShell ile geçici silmeyi kullanma](../key-vault/general/soft-delete-powershell.md)
-- [CLı ile geçici silmeyi kullanma](../key-vault/general/soft-delete-cli.md)
+- [PowerShell ile geçici silmeyi kullanma](../key-vault/general/key-vault-recovery.md)
+- [CLı ile geçici silmeyi kullanma](../key-vault/general/key-vault-recovery.md)
 
 Azure portal aracılığıyla yeni bir Azure Key Vault oluşturuyorsanız, __geçici silme__ ve __Temizleme işlemi__ şu şekilde etkinleştirilebilir:
 
@@ -56,7 +56,7 @@ Azure portal aracılığıyla yeni bir Azure Key Vault oluşturuyorsanız, __ge�
 
 ### <a name="grant-data-factory-access-to-azure-key-vault"></a>Azure Key Vault Data Factory erişim izni verin
 
-Azure Key Vault ve Azure Data Factory aynı Azure Active Directory (Azure AD) kiracısında ve _aynı bölgede_bulunduğundan emin olun. Azure Key Vault Access Control 'tan, Data Factory 'nin Yönetilen Hizmet Kimliği (MSI) izinlerini şu izinlerle verin: _alma_, _sarmalama_ve _sarmalama tuşu_. Bu izinler, Data Factory ' de müşteri tarafından yönetilen anahtarları etkinleştirmek için gereklidir.
+Azure Key Vault ve Azure Data Factory aynı Azure Active Directory (Azure AD) kiracısında ve _aynı bölgede_ bulunduğundan emin olun. Azure Key Vault Access Control 'tan, Data Factory 'nin Yönetilen Hizmet Kimliği (MSI) izinlerini şu izinlerle verin: _alma_, _sarmalama_ ve _sarmalama tuşu_. Bu izinler, Data Factory ' de müşteri tarafından yönetilen anahtarları etkinleştirmek için gereklidir.
 
   ![Ekran görüntüsü Key Vault Data Factory erişimi etkinleştirir](media/enable-customer-managed-key/02-access-policy-factory-managed-identities.png)
 
@@ -88,7 +88,7 @@ Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında sakla
 
 ## <a name="update-key-version"></a>Anahtar sürümünü Güncelleştir
 
-Bir anahtarın yeni bir sürümünü oluşturduğunuzda, Data Factory 'yi yeni sürümü kullanacak şekilde güncelleştirin. Aşağıdakiler dahil olmak üzere, _müşteri tarafından yönetilen anahtarları etkinleştirme_bölümünde açıklandığı gibi benzer adımları izleyin:
+Bir anahtarın yeni bir sürümünü oluşturduğunuzda, Data Factory 'yi yeni sürümü kullanacak şekilde güncelleştirin. Aşağıdakiler de dahil olmak üzere _Customer-Managed anahtarları etkinleştir_ bölümünde açıklanan benzer adımları izleyin:
 
 1. Yeni anahtar sürümünün URI 'sini Azure Key Vault portalından bulun
 
@@ -100,7 +100,7 @@ Bir anahtarın yeni bir sürümünü oluşturduğunuzda, Data Factory 'yi yeni s
 
 ## <a name="use-a-different-key"></a>Farklı bir anahtar kullanın
 
-Data Factory şifreleme için kullanılan anahtarı değiştirmek için, Data Factory ayarları el ile güncelleştirmeniz gerekir. Aşağıdakiler dahil olmak üzere, _müşteri tarafından yönetilen anahtarları etkinleştirme_bölümünde açıklandığı gibi benzer adımları izleyin:
+Data Factory şifreleme için kullanılan anahtarı değiştirmek için, Data Factory ayarları el ile güncelleştirmeniz gerekir. Aşağıdakiler de dahil olmak üzere _Customer-Managed anahtarları etkinleştir_ bölümünde açıklanan benzer adımları izleyin:
 
 1. Azure Key Vault Portal aracılığıyla yeni anahtar için URI 'yi bulma
 
@@ -110,7 +110,7 @@ Data Factory şifreleme için kullanılan anahtarı değiştirmek için, Data Fa
 
 1. __Kaydet__ ' e tıklayın ve Data Factory şimdi yeni anahtarla şifreleyeceksiniz
 
-## <a name="disable-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları devre dışı bırak
+## <a name="disable-customer-managed-keys"></a>Customer-Managed anahtarlarını devre dışı bırak
 
 Tasarıma göre, müşteri tarafından yönetilen anahtar özelliği etkinleştirildikten sonra, ek güvenlik adımını kaldıramazsınız. Fabrika ve verileri şifrelemek için her zaman bir müşteri tarafından sağlanmış anahtar beklenir.
 

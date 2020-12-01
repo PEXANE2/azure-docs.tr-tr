@@ -11,19 +11,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: 39848bcaded1669c6a6efd5b649ecf8e8343a596
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: d930543671a5328d76a38aa7e1b421c111e89e39
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381125"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349529"
 ---
 # <a name="upgrade-from-bing-web-search-api-v5-to-v7"></a>Bing Web Araması API'si v5 'ten v7 'ye yükseltme
 
 > [!WARNING]
-> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](/bing/search-apis/bing-web-search/create-bing-search-service-resource)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
 > Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
-> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
+> Geçiş yönergeleri için bkz. [Bing arama Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Bu yükseltme Kılavuzu, sürüm 5 ve Bing Web Araması API'si sürüm 7 arasındaki değişiklikleri tanımlar. Uygulamanızın 7 sürümünü kullanmak için güncelleştirmeniz gereken parçalarını belirlemenize yardımcı olması için bu kılavuzu kullanın.
 
@@ -31,7 +31,7 @@ Bu yükseltme Kılavuzu, sürüm 5 ve Bing Web Araması API'si sürüm 7 arasın
 
 ### <a name="endpoints"></a>Uç Noktalar
 
-- Uç noktanın sürüm numarası, V5 'ten v7 'e değişti. Örneğin, https: \/ \/ api.Cognitive.Microsoft.com/Bing/ **v 7.0** /Search.
+- Uç noktanın sürüm numarası, V5 'ten v7 'e değişti. Örneğin, https: \/ \/ api.Cognitive.Microsoft.com/Bing/**v 7.0**/Search.
 
 ### <a name="error-response-objects-and-error-codes"></a>Hata yanıtı nesneleri ve hata kodları
 

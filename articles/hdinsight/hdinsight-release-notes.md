@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 03874f76772d8722c7161ef43a2297c2e01b7da9
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: d4983ecd1b8afe1ec6bd3cc31df8b711cebaddf1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95748844"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350271"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight sürüm notları
 
@@ -31,17 +31,17 @@ Bu sürüm hem HDInsight 3,6 hem de HDInsight 4,0 için geçerlidir. HDInsight y
 
 ## <a name="new-features"></a>Yeni özellikler
 ### <a name="auto-key-rotation-for-customer-managed-key-encryption-at-rest"></a>Müşteri tarafından yönetilen anahtar şifrelemesi için bekleyen otomatik anahtar döndürme
-Müşteriler, bu sürümden itibaren, bekleyen müşteri tarafından yönetilen anahtar şifrelemesi için Azure KeyValut sürümü-Less şifreleme anahtarı URL 'Lerini kullanabilir. HDInsight, süreleri sona erdiğinde veya yeni sürümlerle değiştirildikleri zaman otomatik olarak bu anahtarları döndürür. Ayrıntılar hakkında daha [fazla bilgi edinin](https://docs.microsoft.com/azure/hdinsight/disk-encryption).
+Müşteriler, bu sürümden itibaren, bekleyen müşteri tarafından yönetilen anahtar şifrelemesi için Azure KeyValut sürümü-Less şifreleme anahtarı URL 'Lerini kullanabilir. HDInsight, süreleri sona erdiğinde veya yeni sürümlerle değiştirildikleri zaman otomatik olarak bu anahtarları döndürür. Ayrıntılar hakkında daha [fazla bilgi edinin](./disk-encryption.md).
 
 ### <a name="ability-to-select-different-zookeeper-virtual-machine-sizes-for-spark-hadoop-and-ml-services"></a>Spark, Hadoop ve ML Hizmetleri için farklı Zookeeper sanal makine boyutları seçme olanağı
 HDInsight daha önce Spark, Hadoop ve ML Hizmetleri küme türleri için Zookeeper düğüm boyutunu özelleştirmeyi desteklememektedir. Bu, ücretsiz olarak sunulan A2_v2/a2 sanal makine boyutlarını varsayılan olarak alır. Bu sürümden, senaryonuza en uygun Zookeeper sanal makine boyutunu seçebilirsiniz. Sanal makine boyutu A2_v2/a2 dışındaki Zookeeper düğümleri ücretlendirilecektir. A2_v2 ve a2 sanal makineler ücretsiz olarak sunulur.
 
 ### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümelerine geçme
-HDInsight artık kümeyi sağlamak için Azure sanal makinelerini kullanır. Bu sürümden itibaren, hizmet giderek [Azure sanal makine ölçek kümelerine](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)geçiş yapar. İşlemin tamamı ayda sürebilir. Bölgelerinizden ve abonelikleriniz geçirildikten sonra, yeni oluşturulan HDInsight kümeleri, müşteri eylemleri olmadan sanal makine ölçek kümelerinde çalışır. Hiçbir bölme değişikliği beklenmez.
+HDInsight artık kümeyi sağlamak için Azure sanal makinelerini kullanır. Bu sürümden itibaren, hizmet giderek [Azure sanal makine ölçek kümelerine](../virtual-machine-scale-sets/overview.md)geçiş yapar. İşlemin tamamı ayda sürebilir. Bölgelerinizden ve abonelikleriniz geçirildikten sonra, yeni oluşturulan HDInsight kümeleri, müşteri eylemleri olmadan sanal makine ölçek kümelerinde çalışır. Hiçbir bölme değişikliği beklenmez.
 
 ## <a name="deprecation"></a>Kullanımdan kaldırma
 ### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>HDInsight 3,6 ML Hizmetleri kümesinin kullanımdan kaldırılması
-HDInsight 3,6 ML Hizmetleri küme türü 31 2020 Aralık 'Ta destek bitişi olacak. Müşteriler, 31 2020 Aralık 'tan sonra yeni 3,6 ML Hizmetleri kümeleri oluşturmaz. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. HDInsight sürümleri için destek süre sonunu ve [küme türlerini kontrol](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#available-versions)edin.
+HDInsight 3,6 ML Hizmetleri küme türü 31 2020 Aralık 'Ta destek bitişi olacak. Müşteriler, 31 2020 Aralık 'tan sonra yeni 3,6 ML Hizmetleri kümeleri oluşturmaz. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. HDInsight sürümleri için destek süre sonunu ve [küme türlerini kontrol](./hdinsight-component-versioning.md#available-versions)edin.
 
 ### <a name="disabled-vm-sizes"></a>Devre dışı VM boyutları
 HDInsight, 16 2020 Kasım 'dan başlayarak standand_A8, standand_A9, standand_A10 ve standand_A11 VM boyutlarını kullanarak kümeler oluşturan yeni müşterileri engelleyecek. Son üç ay içinde bu VM boyutlarını kullanmış olan mevcut müşteriler etkilenmez. HDInsight, 9 2021 Ocak 'Tan başlayarak standand_A8, standand_A9, standand_A10 ve standand_A11 VM boyutlarını kullanarak küme oluşturan tüm müşterileri engelleyecek. Mevcut kümeler olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için HDInsight 4,0 ' ye geçmeyi düşünün.
@@ -53,7 +53,7 @@ Bu yayın için davranış değişikliği yok.
 Gelecek sürümlerde aşağıdaki değişiklikler olur.
 
 ### <a name="default-cluster-version-will-be-changed-to-40"></a>Varsayılan küme sürümü 4,0 olarak değiştirilecek
-2021 Şubat tarihinden itibaren, HDInsight kümesinin varsayılan sürümü 3,6 ' den 4,0 ' ye değiştirilecek. Kullanılabilir sürümler hakkında daha fazla bilgi için bkz. [kullanılabilir sürümler](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#available-versions). [Hdınsight 4,0](https://docs.microsoft.com/azure/hdinsight/hdinsight-version-release) ' deki yenilikler hakkında daha fazla bilgi edinin
+2021 Şubat tarihinden itibaren, HDInsight kümesinin varsayılan sürümü 3,6 ' den 4,0 ' ye değiştirilecek. Kullanılabilir sürümler hakkında daha fazla bilgi için bkz. [kullanılabilir sürümler](./hdinsight-component-versioning.md#available-versions). [Hdınsight 4,0](./hdinsight-version-release.md) ' deki yenilikler hakkında daha fazla bilgi edinin
 
 ### <a name="hdinsight-36-end-of-support-on-june-30-2021"></a>HDInsight 3,6 30 2021 Haziran 'da destek bitişi
 HDInsight 3,6, destek sonu olacaktır. Form Haziran 30 2021 ' den itibaren, müşteriler yeni HDInsight 3,6 kümeleri oluşturamaz. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için HDInsight 4,0 ' ye geçmeyi düşünün.

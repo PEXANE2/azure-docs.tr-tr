@@ -10,19 +10,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: a982c150349ca31fdf93a38b38910c3572b14d2f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 72b4755c6f01a10851e79cf274842f1599bc2c55
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078773"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349546"
 ---
 # <a name="what-are-the-bing-search-apis"></a>Bing Arama API'leri nedir?
 
 > [!WARNING]
-> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](/bing/search-apis/bing-web-search/create-bing-search-service-resource)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
 > Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
-> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
+> Geçiş yönergeleri için bkz. [Bing arama Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Bing Arama API'leri, web sayfalarını, resimleri, haberleri, konumları ve daha fazlasını reklamlar olmadan bulan web bağlantılı uygulamalar ve hizmetler oluşturmanıza olanak sağlar. Bing Arama REST API 'Lerini veya SDK 'Larını kullanarak arama istekleri göndererek, Web aramalarında ilgili bilgileri ve içerikleri alabilirsiniz. Farklı Bing arama API 'Leri ve bilişsel aramaları uygulama ve hizmetlerinizle nasıl tümleştirebileceğinizi öğrenmek için bu makaleyi kullanın. Fiyatlandırma ve oran limitleri API 'Ler arasında farklılık gösterebilir.
 

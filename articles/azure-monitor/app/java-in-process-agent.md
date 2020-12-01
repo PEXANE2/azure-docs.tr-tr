@@ -3,12 +3,12 @@ title: Azure Izleyici Application Insights Java
 description: Kod değişikliğine gerek duymadan herhangi bir ortamda çalışan Java uygulamaları için uygulama performansı izleme. Dağıtılmış izleme ve uygulama eşlemesi.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 8423443abac90b87349a4a80fce0ec33a8b686da
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 36e2b419da2bccdf2f5f13227457172cf644994c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444750"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351546"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Java kodsuz kullanacaksınız uygulama izleme Azure izleyici Application Insights
 
@@ -228,17 +228,3 @@ Ya da Java SDK 'Sı 2. x Application Insights de kullanabilirsiniz:
       telemetryClient.trackException(e);
   }
 ```
-
-## <a name="upgrading-from-application-insights-java-sdk-2x"></a>Application Insights Java SDK 2. x sürümünden yükseltme
-
-Uygulamanızda zaten Application Insights Java SDK 'Sı 2. x kullanıyorsanız, kaldırmanız gerekmez.
-Java 3,0 Aracısı bu dosyayı algılar ve Java SDK 'Sı 2. x aracılığıyla gönderdiğiniz herhangi bir özel Telemetriyi yakalayıp, yinelenen telemetrinin önlenmesi için Java SDK 2. x tarafından gerçekleştirilen herhangi bir otomatik koleksiyonu engeller.
-
-Application Insights 2. x Aracısı kullanıyorsanız, `-javaagent:` 2. x aracısına işaret eden JVM bağımsız değişken 'i kaldırmanız gerekir.
-
-> [!NOTE]
-> Java SDK 2. x TelemetryInitializers ve TelemetryProcessors, 3,0 Aracısı kullanılırken çalıştırılmayacak.
-> Bu, daha önce gerekli olan kullanım örneklerinin birçoğu, [özel boyutları](./java-standalone-config.md#custom-dimensions) yapılandırarak veya [telemetri işlemcileri](./java-standalone-telemetry-processors.md)yapılandırarak 3,0 'de çözülebilir.
-
-> [!NOTE]
-> 3,0, henüz tek bir JVM 'de birden çok izleme anahtarını desteklemez.

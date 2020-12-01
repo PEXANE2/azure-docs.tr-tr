@@ -4,26 +4,28 @@ description: Bu makalede, Azure portal, PowerShell veya REST API 'Lerini kullana
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 11/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8c876e27165eba30b17874eca600ba81be2e9354
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 9fdd6b6a195d0c6d4c4bf0489a037cb138a23a42
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019452"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351733"
 ---
 # <a name="manage-server-administrators"></a>Sunucu yöneticilerini yönetme
 
 Sunucu yöneticileri, sunucunun bulunduğu kiracı için Azure Active Directory (Azure AD) içinde geçerli bir Kullanıcı, hizmet sorumlusu veya güvenlik grubu olmalıdır. Sunucu yöneticileri 'ni yönetmek için sunucu Azure portal, SSMS, PowerShell veya REST API sunucu özellikleri ' nde sunucunuz için **Analysis Services yöneticileri** kullanabilirsiniz. 
 
-Bir **güvenlik grubu**eklerken kullanın `obj:groupid@tenantid` . Hizmet sorumluları, sunucu yöneticisi rolüne eklenen güvenlik gruplarında desteklenmez.
+Bir **güvenlik grubu** eklerken kullanın `obj:groupid@tenantid` . Hizmet sorumluları, sunucu yöneticisi rolüne eklenen güvenlik gruplarında desteklenmez.
+
+Sunucu Güvenlik Duvarı etkinse, Sunucu Yöneticisi istemci bilgisayar IP adresleri bir güvenlik duvarı kuralına dahil olmalıdır. Daha fazla bilgi için bkz. [sunucu güvenlik duvarını yapılandırma](analysis-services-qs-firewall.md).
 
 ## <a name="to-add-server-administrators-by-using-azure-portal"></a>Azure portal kullanarak sunucu yöneticileri eklemek için
 
 1. Portalda, sunucunuz için **Analysis Services Yöneticiler**' e tıklayın.
-2. ** \<servername> Analysis Services Yöneticiler**, **Ekle**' ye tıklayın.
+2. **\<servername> Analysis Services Yöneticiler**, **Ekle**' ye tıklayın.
 3. **Sunucu yöneticileri Ekle**' de Azure AD 'nizden Kullanıcı hesapları ' nı seçin veya dış kullanıcıları e-posta adresine davet edin.
 
     ![Azure portal 'de sunucu yöneticileri](./media/analysis-services-server-admins/aas-manage-users-admins.png)

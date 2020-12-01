@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: how-to
 ms.date: 02/26/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: 3d21aadd8174bf933e55320c8596c57274140582
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3c78ad6605e927015d35df12cadf0347dd0337cf
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096402"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349053"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB MongoDB için API 'sini kullanarak genel olarak okuma dağıtımı
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -146,7 +146,7 @@ MongoDB protokolü, okuma tercih moduna ek olarak, okuma işlemlerini yönlendir
       }
 ```
 
-Bu nedenle, MongoClient, `region` okuma işlemlerini belirli bölgelere yönlendirmek için bölge adıyla birlikte etiketini kullanabilir. Cosmos hesapları için, bölge adları, sol taraftaki ayarlar ' ın altında Azure portal, **genel olarak çoğaltma verileri >** ' nde bulunabilir. Bu ayar, istemci uygulamanın okuma işlemlerini yalnızca belirli bir bölgeye yönlendirmek istediği **okuma yalıtımına** ulaşmak için yararlıdır. Bu ayar, arka planda çalıştırılan ve üretim açısından kritik hizmetler olmayan, üretim dışı/analiz türü senaryolar için idealdir.
+Bu nedenle, MongoClient, `region` okuma işlemlerini belirli bölgelere yönlendirmek için bölge adıyla birlikte etiketini kullanabilir. Cosmos hesapları için, bölge adları, sol taraftaki ayarlar ' ın altında Azure portal, **genel olarak çoğaltma verileri >**' nde bulunabilir. Bu ayar, istemci uygulamanın okuma işlemlerini yalnızca belirli bir bölgeye yönlendirmek istediği **okuma yalıtımına** ulaşmak için yararlıdır. Bu ayar, arka planda çalıştırılan ve üretim açısından kritik hizmetler olmayan, üretim dışı/analiz türü senaryolar için idealdir.
 
 Örnek uygulamadaki aşağıdaki kod parçacığında, NodeJS içindeki etiketlerle oku tercihinin nasıl yapılandırılacağı gösterilmektedir:
 
@@ -167,11 +167,11 @@ Bu makalede, MongoDB için Azure Cosmos DB API 'SI ile okuma tercihini kullanara
 
 Bu uygulamayı kullanmaya devam edemeyecekiz aşağıdaki adımlarla Azure portal Bu makalede oluşturulan tüm kaynakları silin:
 
-1. Azure portalında sol taraftaki menüden, **Kaynak grupları** 'na ve ardından oluşturduğunuz kaynağın adına tıklayın. 
-2. Kaynak grubu sayfanızda, **Sil** 'e tıklayın, metin kutusuna silinecek kaynağın adını yazın ve ardından **Sil** 'e tıklayın.
+1. Azure portalında sol taraftaki menüden, **Kaynak grupları**'na ve ardından oluşturduğunuz kaynağın adına tıklayın. 
+2. Kaynak grubu sayfanızda, **Sil**'e tıklayın, metin kutusuna silinecek kaynağın adını yazın ve ardından **Sil**'e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Cosmos DB’ye MongoDB verileri aktarma](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)
+* [Azure Cosmos DB’ye MongoDB verileri aktarma](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)
 * [MongoDB için Azure Cosmos DB API 'SI ile küresel olarak dağıtılmış bir veritabanı kurma](tutorial-global-distribution-mongodb.md)
 * [Azure Cosmos DB öykünücüsü ile yerel olarak geliştirme](local-emulator.md)

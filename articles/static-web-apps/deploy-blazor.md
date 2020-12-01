@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: cshoe
-ms.openlocfilehash: 80a48a948c70db7344ac9cbc20474177309bd909
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 0086f7f68fd05d6925d19c7ab457fbc125e36be4
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024237"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350237"
 ---
 # <a name="tutorial-building-a-static-web-app-with-blazor-in-azure-static-web-apps"></a>Öğretici: Azure static Web Apps 'de Blazor ile statik bir Web uygulaması oluşturma
 
@@ -64,7 +64,7 @@ Yukarıdaki yapılandırma, uygulamadaki herhangi bir yola yönelik isteklerin _
 Bu makalede, başlamanızı kolaylaştırmak için bir GitHub şablon deposu kullanılmaktadır. Şablon, Azure statik Web Apps dağıtılan bir başlangıç uygulamasını sunar.
 
 1. GitHub 'da oturum açtığınızdan emin olun ve yeni bir depo oluşturmak için aşağıdaki konuma gidin:
-    - https://github.com/staticwebdev/blazor-starter/generate
+    - [https://github.com/staticwebdev/blazor-starter/generate](https://github.com/login?return_to=/staticwebdev/blazor-starter/generate)
 1. Deponuzu **-First-static-blazor-App** olarak adlandırın
 
 ## <a name="create-a-static-web-app"></a>Statik web uygulaması oluşturma
@@ -103,7 +103,7 @@ GitHub ile oturum açtıktan sonra depo bilgilerini girin.
 
     - _Derleme ön ayarları_ açılır listesinden **Blazor** ' ı seçin ve tüm varsayılan değerleri saklayın.
 
-1. **Gözden geçir + oluştur**’u seçin.
+1. **Gözden geçir ve oluştur**’u seçin.
 
     :::image type="content" source="media/deploy-blazor/review-create.png" alt-text="İnceleme oluştur düğmesi":::
 

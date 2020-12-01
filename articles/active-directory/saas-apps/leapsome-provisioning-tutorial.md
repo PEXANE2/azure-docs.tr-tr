@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: jeedes
-ms.openlocfilehash: a0165e5191a8cd499b42c14704fdf4f0d79b3f6b
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: b7c1c995ead9a8d66cd11fb4579cc49e12b487df
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358550"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351597"
 ---
 # <a name="tutorial-configure-leapsome-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Leapsome 'ı yapılandırma
 
@@ -52,7 +52,7 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
 ## <a name="setup-leapsome-for-provisioning"></a>Sağlama için kurulum Leapsome
 
-1. [LEAP, yönetim konsolunuza](https://www.Leapsome.com/app/#/login)oturum açın. **Ayarlar > yönetici ayarları** ' na gidin.
+1. [LEAP, yönetim konsolunuza](https://www.Leapsome.com/app/#/login)oturum açın. **Ayarlar > yönetici ayarları**' na gidin.
 
     ![Leapsome Yönetim Konsolu](media/Leapsome-provisioning-tutorial/leapsome-admin-console.png)
 
@@ -70,11 +70,11 @@ Leapsome 'ı Azure AD ile otomatik Kullanıcı sağlaması için yapılandırmad
 
 **Azure AD uygulama galerisinden Leapsome eklemek için aşağıdaki adımları uygulayın:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** ' i seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -95,11 +95,11 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı 
 
 ### <a name="to-configure-automatic-user-provisioning-for-leapsome-in-azure-ad"></a>Azure AD 'de Leapsome için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Leapsome** ' ı seçin.
+2. Uygulamalar listesinde **Leapsome**' ı seçin.
 
     ![Uygulamalar listesindeki Leapsome bağlantısı](common/all-applications.png)
 
@@ -107,7 +107,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı 
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
@@ -115,13 +115,13 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı 
 
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder** ' i işaretleyin.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet** ’e tıklayın.
+7. **Kaydet**’e tıklayın.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Leapsome olarak eşitler** ' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Leapsome olarak eşitler**' ı seçin.
 
     ![Leapbazı Kullanıcı eşlemeleri](media/Leapsome-provisioning-tutorial/Leapsome-user-mappings.png)
 
@@ -129,7 +129,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı 
 
     ![Leapsome Kullanıcı öznitelikleri](media/Leapsome-provisioning-tutorial/Leapsome-user-attributes.png)
 
-10. **Eşlemeler** bölümünde **Azure Active Directory gruplarını Leapsome olarak eşitler** ' ı seçin.
+10. **Eşlemeler** bölümünde **Azure Active Directory gruplarını Leapsome olarak eşitler**' ı seçin.
 
     ![Leapsome grup eşlemeleri](media/Leapsome-provisioning-tutorial/Leapsome-group-mappings.png)
 
@@ -147,7 +147,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak, Azure AD 'de Kullanıcı 
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-15. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

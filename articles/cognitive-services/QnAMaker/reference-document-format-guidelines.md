@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 04/06/2020
-ms.openlocfilehash: d35ea57a68e500deffa99033b83114ec518dd5e3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1bf6eebcfc43452dd9a62e4a49f9aacbcd517ffc
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993814"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352244"
 ---
 # <a name="format-guidelines-for-imported-documents-and-urls"></a>İçeri aktarılan belgeler ve URL 'Ler için biçimlendirme yönergeleri
 
@@ -22,7 +22,7 @@ Bir dosya veya URL 'YI içeri aktardıktan sonra Soru-Cevap Oluşturma, içeriğ
 
 İçeriğinizi doğrudan bilgi tabanınız içinde ekler veya düzenlersiniz, zengin metin içeriği oluşturmak veya zaten yanıtdaki markaşağı biçim içeriğini değiştirmek için **markı biçimlendirme** kullanın. Soru-Cevap Oluşturma, içeriğinize zengin metin özellikleri getirmek için markaşağı biçiminin çoğunu destekler. Ancak, bir sohbet bot gibi istemci uygulaması aynı markı biçimleri kümesini desteklemiyor olabilir. İstemci uygulamanın yanıt görüntüsünü test etmek önemlidir.
 
-[İçerik türlerinin tam listesi ve örnekleri](./Concepts/content-types.md#file-and-url-data-types)için bkz..
+[İçerik türlerinin tam listesi ve örnekleri](./concepts/data-sources-and-content.md#content-types-of-documents-you-can-add-to-a-knowledge-base)için bkz..
 
 ## <a name="basic-document-formatting"></a>Temel belge biçimlendirmesi
 
@@ -118,4 +118,4 @@ Bilgi bankasını içeri aktarmak, mevcut bilgi bankasındaki içeriğin yerini 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[İçerik türlerinin tam listesi ve örnekleri](./Concepts/content-types.md#file-and-url-data-types) için bkz.
+[İçerik türlerinin tam listesi ve örnekleri](./concepts/data-sources-and-content.md#content-types-of-documents-you-can-add-to-a-knowledge-base) için bkz.

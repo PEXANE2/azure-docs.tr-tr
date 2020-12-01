@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 728dda7c702d7fc52c9285c7cb15fc4b6dc3003c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: aef85b263a142c001d47bac4aed7a71066e26dae
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182072"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350458"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory sürekli tümleştirme ve teslim
 
@@ -639,7 +639,7 @@ Ortamlarınızı nasıl sık düzelceğiniz hakkında ayrıntılı bir video ö�
 
 ## <a name="exposure-control-and-feature-flags"></a>Pozlama denetimi ve özellik bayrakları
 
-Bir ekip üzerinde çalışırken, değişiklikleri birleştirebileceğiniz ancak ÜRETIM ve QA gibi yükseltilmiş ortamlarda çalıştırılmasını istemediğiniz örnekler vardır. ADF ekibi, bu senaryoyu işlemek için [özellik bayraklarını kullanma DevOps kavramını](https://docs.microsoft.com/azure/devops/migrate/phase-features-with-feature-flags?view=azure-devops)önerir. ADF 'de, bu ortam bayraklarını temel alan mantık kümelerini gizlemek için [genel parametreleri](author-global-parameters.md) ve [If koşulu etkinliğini](control-flow-if-condition-activity.md) birleştirebilirsiniz.
+Bir ekip üzerinde çalışırken, değişiklikleri birleştirebileceğiniz ancak ÜRETIM ve QA gibi yükseltilmiş ortamlarda çalıştırılmalarını istemediğiniz örnekler vardır. ADF ekibi, bu senaryoyu işlemek için [özellik bayraklarını kullanma DevOps kavramını](/azure/devops/migrate/phase-features-with-feature-flags?view=azure-devops)önerir. ADF 'de, bu ortam bayraklarını temel alan mantık kümelerini gizlemek için [genel parametreleri](author-global-parameters.md) ve [If koşulu etkinliğini](control-flow-if-condition-activity.md) birleştirebilirsiniz.
 
 Bir özellik bayrağını ayarlamayı öğrenmek için aşağıdaki video öğreticisine bakın:
 

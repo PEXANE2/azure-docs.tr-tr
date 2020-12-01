@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: kenwith
 ms.reviewer: paulgarn
-ms.openlocfilehash: 6e7e4dd6383b1f264ff2da7893d9f86a3708217d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47b036f558628d51242a78c00d2ee17332816d25
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89227925"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348768"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft Identity platform ve OAuth 2,0 SAML taşıyıcı onaylama akışı
 OAuth 2,0 SAML taşıyıcı onaylama akışı, bir istemcinin var olan bir güven ilişkisini kullanması gerektiğinde bir SAML onaylama işlemi kullanarak bir OAuth erişim belirteci istemesini sağlar. SAML onaylaması 'na uygulanan imza, yetkili uygulamanın kimlik doğrulamasını sağlar. SAML onaylama, bir kimlik sağlayıcısı tarafından verilen ve bir hizmet sağlayıcısı tarafından tüketilen bir XML güvenlik belirtecidir. Hizmet sağlayıcı, güvenlikle ilgili amaçlar için onay konusunun konusunu belirlemek üzere içeriğine bağımlıdır.
@@ -32,15 +32,15 @@ OAuth SAML taşıyıcı onaylama akışı yalnızca Azure Active Directory Feder
 ![OAuth akışı](./media/v2-saml-bearer-assertion/1.png)
 
 ## <a name="call-graph-using-saml-bearer-assertion"></a>SAML taşıyıcı onaylama kullanarak Graph çağırma
-Artık SAML onaylama program aracılığıyla 'ı gerçekten nasıl getirdiğimiz hakkında anladık. Bu yaklaşım, ADFS ile test edilmiştir. Ancak, bu, SAML onaylama program aracılığıyla dönüşü destekleyen herhangi bir kimlik sağlayıcısıyla birlikte kullanılır. Temel süreç: bir SAML onaylama işlemi alın, erişim belirteci alın ve Microsoft Graph erişin.
+Artık SAML onaylama işlemlerini programlı bir şekilde nasıl getireceğiz hakkında anladık. Bu yaklaşım, ADFS ile test edilmiştir. Ancak, bu, SAML onaylama 'yı programlı olarak döndürmeyi destekleyen tüm kimlik sağlayıcıları ile birlikte kullanılır. Temel süreç: bir SAML onaylama işlemi alın, erişim belirteci alın ve Microsoft Graph erişin.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Yetkilendirme sunucusu/ortam (Microsoft 365) ile kimlik sağlayıcısı ya da SAML 2,0 taşıyıcı onaylama (ADFS) veren arasında bir güven ilişkisi oluşturun. ADFS 'yi çoklu oturum açma ve kimlik sağlayıcısı olarak yapılandırmak için [Bu makaleye](/archive/blogs/canitpro/step-by-step-setting-up-ad-fs-and-enabling-single-sign-on-to-office-365)başvurabilirsiniz.
 
 Uygulamayı [portala](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)kaydedin:
 1. [Portalın uygulama kaydı dikey penceresinde](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) oturum açın (lütfen Graph API için v 2.0 uç noktalarını kullandığınızı ve bu nedenle uygulamayı Bu portalda kaydetmesi gerektiğini unutmayın. Aksi halde Azure Active Directory 'de kayıtları kullandık. 
-1. **Yeni kayıt**seçeneğini belirleyin.
+1. **Yeni kayıt** seçeneğini belirleyin.
 1. **Bir uygulamayı kaydet** sayfası göründüğünde, uygulamanızın kayıt bilgilerini girin: 
     1. **Ad** - Uygulama kullanıcılarına gösterilecek anlamlı bir uygulama adı girin.
     1. **Desteklenen hesap türleri** - Uygulamanızın desteklemesini istediğiniz hesapları seçin.
@@ -48,7 +48,7 @@ Uygulamayı [portala](https://ms.portal.azure.com/#blade/Microsoft_AAD_Registere
     1. Bittiğinde **Kaydet**’i seçin.
 1. Uygulama (istemci) KIMLIĞINI bir yere getirin.
 1. Sol bölmede **sertifikalar & gizlilikler**' ı seçin. **İstemci** gizli dizileri bölümünde **yeni istemci parolası** ' na tıklayın. Yeni istemci parolasını kopyalayarak dikey pencereyi bıraktığınızda alamazsınız.
-1. Sol bölmede, **API izinleri** ' ni seçin ve **izin ekleyin**. **Microsoft Graph**ve ardından **temsilci izinleri**' ni seçin ve ardından **Görevler. read** ' i seçerek Outlook Graph API kullanmayı planladık. 
+1. Sol bölmede, **API izinleri** ' ni seçin ve **izin ekleyin**. **Microsoft Graph** ve ardından **temsilci izinleri**' ni seçin ve ardından **Görevler. read** ' i seçerek Outlook Graph API kullanmayı planladık. 
 
 Örnek istekleri test etmek için gereken bir araç olan [Postman](https://www.getpostman.com/)'ı yükleme.  Daha sonra, istekleri koda dönüştürebilirsiniz.
 
@@ -73,7 +73,7 @@ Bu adımda, ADFS onaylama yanıtını kullanarak bir OAuth2 belirteci getirin.
 1. Aşağıda gösterildiği gibi, üst bilgi değerleriyle bir POST isteği oluşturun:
 
     ![POST isteği](./media/v2-saml-bearer-assertion/5.png)
-1. İsteğin gövdesinde, **client_id**, **client_secret**ve **onaylama** 'yı (Base64 kodlamalı SAML onaylaması önceki adımı aldı) değiştirin:
+1. İsteğin gövdesinde, **client_id**, **client_secret** ve **onaylama** 'yı (Base64 kodlamalı SAML onaylaması önceki adımı aldı) değiştirin:
 
     ![İstek gövdesi](./media/v2-saml-bearer-assertion/6.png)
 1. İstek başarıyla tamamlandığında, Azure Active Directory 'den bir erişim belirteci alacaksınız.

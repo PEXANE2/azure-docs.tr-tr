@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 111b2b5b660133c20afdb3c56e1c3e3ed607398c
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: b6cadbf5c3a33c1a954a47f37b33ad8703f40b69
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96297072"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350747"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Azure SYNAPSE Studio 'da kaynak denetimi
 
@@ -192,7 +192,7 @@ Geçerli depoyla ilişkilendirmeyi kaldırdıktan sonra, git ayarlarınızı far
 
 ## <a name="best-practices-for-git-integration"></a>Git tümleştirmesi için en iyi uygulamalar
 
--   **İzinler**. Çalışma alanınıza bağlı bir git deposu olduktan sonra, çalışma alanınızdaki herhangi bir rolle git deponuza erişebilen herkes, git modundaki SQL betiği, Not defteri, Spark iş tanımı, veri kümesi, veri akışı ve işlem hattı gibi yapıtları güncelleştirebilir. Genellikle her takım üyesinin çalışma alanını güncelleştirme izinlerine sahip olmasını istemezsiniz. Yalnızca SYNAPSE çalışma alanı yapıt yazarları için Git deposu izni verin. 
+-   **İzinler**. Çalışma alanınıza bağlı bir git deposu olduktan sonra, çalışma alanınızdaki herhangi bir rolle git deponuza erişimi olan herkes, git modundaki SQL betiği, Not defteri, Spark iş tanımı, veri kümesi, veri akışı ve işlem hattı gibi yapıtları güncelleştirebilecektir. Genellikle her takım üyesinin çalışma alanını güncelleştirme izinlerine sahip olmasını istemezsiniz. Yalnızca SYNAPSE çalışma alanı yapıt yazarları için Git deposu izni verin. 
 -   **İşbirliği** yapın. İşbirliği dalında doğrudan iadelere izin vermeniz önerilir. Bu kısıtlama, her iade etme işleminin [özellik dalları oluşturma](source-control.md#creating-feature-branches)bölümünde açıklanan bir çekme isteği gözden geçirme süreci boyunca ilerlemesinin önlenmesi için hataları önlemeye yardımcı olabilir.
 -   **SYNAPSE canlı modu**. Git modunda yayımladıktan sonra tüm değişiklikler SYNAPSE canlı modda yansıtılır. SYNAPSE Live modunda yayımlama devre dışıdır. Ve doğru izin verdiyseniz yapıtları canlı modda görüntüleyebilirsiniz. 
 -   **Studio 'da yapıtları düzenleyin**. SYNAPSE Studio, çalışma alanı kaynak denetimini etkinleştirebileceğiniz ve değişiklikleri otomatik olarak git 'e eşitleyebileceğiniz tek yerdir. SDK, PowerShell ile yapılan herhangi bir değişiklik git ile eşitlenmez. Git etkinleştirildiğinde Studio 'daki yapıtları her zaman düzenlemenizi öneririz.
@@ -215,7 +215,7 @@ Yayımla dalı işbirliği dalında eşitlenmemiş ve yeni bir yayımlamaya rağ
 
 1. Git 'i aynı ayarlarla yeniden yapılandırın, ancak **mevcut kaynakları depoya Içeri aktarma** işleminin işaretli olduğundan emin olun ve aynı dalı seçin.  
 
-1. İşbirliği dalında yapılan değişiklikleri birleştirmek için bir çekme isteği oluşturun 
+1. Değişiklikleri işbirliği dalıyla birleştirmek için çekme isteği oluşturun 
 
 ## <a name="unsupported-features"></a>Desteklenmeyen özellikler
 

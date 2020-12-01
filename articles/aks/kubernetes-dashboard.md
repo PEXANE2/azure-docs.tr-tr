@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
-ms.openlocfilehash: a80082ac524a4777b3b5ee32d946e9db8ec6e7f5
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 85f0a42cdfcbea2223d202a9dc35f58746580e85
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681627"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350135"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) ile Kubernetes web panosuna erişme
 
@@ -41,6 +41,10 @@ az aks disable-addons -g myRG -n myAKScluster -a kube-dashboard
 ```
 
 ## <a name="start-the-kubernetes-dashboard"></a>Kubernetes panosunu başlatma
+
+> [!WARNING]
+> AKS panosu eklentisi, 1.19 + sürümleri için kullanım dışıdır. Lütfen bunun yerine [Azure Portal (Önizleme) Içindeki Kubernetes kaynak görünümünü][kubernetes-portal] kullanın. 
+> * Aşağıdaki komut artık 1,19 ve üzeri sürümler için Kubernetes panosu yerine Azure Portal kaynak görünümünü açacak.
 
 Bir kümede Kubernetes panosunu başlatmak için [az aks zat][az-aks-browse] komutunu kullanın. Bu komut, Kubernetes 1,18 ' den eski herhangi bir sürümü çalıştıran kümeler üzerinde varsayılan olarak bulunan kuin-Dashboard eklenti yüklemesini gerektirir.
 

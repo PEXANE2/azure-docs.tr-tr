@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 08/04/2020
-ms.openlocfilehash: 3674c6a0579eb901cc490d08bb8a4893296884c4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0041779abcd97901fb9315125a287a1d45cff133
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020662"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350118"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>Öğretici: DMS kullanarak Azure SQL yönetilen örneği 'ne çevrimiçi SQL Server geçirme
 
@@ -25,7 +25,7 @@ Azure veritabanı geçiş hizmeti 'ni kullanarak veritabanlarını bir SQL Serve
 
 Bu öğreticide, Azure veritabanı geçiş hizmeti 'ni kullanarak bir SQL Server şirket içi örneğinden bir SQL yönetilen örneğine **Adventureworks2012** veritabanını geçirmiş olursunuz.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 >
 > * Azure Veritabanı Geçiş Hizmeti örneği oluşturun.
@@ -170,7 +170,7 @@ Hizmetin bir örneği oluşturulduktan sonra Azure portaldan bulun, açın ve ye
 
    ![Kaynak Ayrıntıları](media/tutorial-sql-server-to-managed-instance-online/dms-source-details2.png)
 
-3. **Kaydet**'i seçin.
+3. **Kaydet**’i seçin.
 
 4. **Kaynak veritabanlarını seçin** ekranında geçiş için **Adventureworks2012** veritabanını seçin.
 
@@ -179,7 +179,7 @@ Hizmetin bir örneği oluşturulduktan sonra Azure portaldan bulun, açın ve ye
     > [!IMPORTANT]
     > SQL Server Integration Services (SSIS) kullanıyorsanız, DMS Şu anda SSIS projeleriniz/paketleriniz (SSıSDB) için katalog veritabanını SQL Server SQL yönetilen örneğine geçirmeyi desteklememektedir. Ancak, SSIS 'yi Azure Data Factory (ADF) olarak temin edebilir ve SSIS projelerinizi/paketlerinizi SQL yönetilen örneği tarafından barındırılan hedef SSıSDB 'ye yeniden dağıtabilirsiniz. SSIS paketlerini geçirme hakkında daha fazla bilgi için [SQL Server Integration Services paketlerini Azure 'A geçirme](./how-to-migrate-ssis-packages.md)makalesine bakın.
 
-5. **Kaydet**'i seçin.
+5. **Kaydet**’i seçin.
 
 ## <a name="specify-target-details"></a>Hedef ayrıntılarını belirtme
 
@@ -195,7 +195,7 @@ Hizmetin bir örneği oluşturulduktan sonra Azure portaldan bulun, açın ve ye
 
     ![Hedef seçme](media/tutorial-sql-server-to-managed-instance-online/dms-target-details3.png)
 
-4. **Kaydet**'i seçin.
+4. **Kaydet**’i seçin.
 
 ## <a name="select-source-databases"></a>Kaynak veritabanlarını seçme
 
@@ -203,7 +203,7 @@ Hizmetin bir örneği oluşturulduktan sonra Azure portaldan bulun, açın ve ye
 
     ![Kaynak veritabanlarını seçme](media/tutorial-sql-server-to-managed-instance-online/dms-select-source-databases2.png)
 
-2. **Kaydet**'i seçin.
+2. **Kaydet**’i seçin.
 
 ## <a name="configure-migration-settings"></a>Geçiş ayarlarını yapılandırma
 
@@ -220,12 +220,12 @@ Hizmetin bir örneği oluşturulduktan sonra Azure portaldan bulun, açın ve ye
     ![Geçiş Ayarlarını Yapılandırma](media/tutorial-sql-server-to-managed-instance-online/dms-configure-migration-settings4.png)
 
     > [!NOTE]
-    > Azure veritabanı geçiş hizmeti hata ' sistem hatası 53 ' veya ' sistem hatası 57 ' gösteriyorsa, neden Azure veritabanı geçiş hizmeti 'nin Azure dosya paylaşımında erişime neden olabilir. Bu hatalardan biriyle karşılaşırsanız lütfen [buradaki](../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#grant-access-from-a-virtual-network)yönergeleri kullanarak sanal ağdan depolama hesabına erişim izni verin.
+    > Azure veritabanı geçiş hizmeti hata ' sistem hatası 53 ' veya ' sistem hatası 57 ' gösteriyorsa, neden Azure veritabanı geçiş hizmeti 'nin Azure dosya paylaşımında erişime neden olabilir. Bu hatalardan biriyle karşılaşırsanız lütfen [buradaki](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)yönergeleri kullanarak sanal ağdan depolama hesabına erişim izni verin.
 
     > [!IMPORTANT]
     > Geri döngü denetimi işlevselliği etkinse ve kaynak SQL Server ile dosya paylaşımı aynı bilgisayarındaysa, kaynak FQDN kullanılarak paylaşım dosyalarına erişemez. Bu sorunu onarmak için [buradaki](https://support.microsoft.com/help/926642/error-message-when-you-try-to-access-a-server-locally-by-using-its-fqd)yönergeleri kullanarak geri döngü denetim işlevlerini devre dışı bırakın.
 
-2. **Kaydet**'i seçin.
+2. **Kaydet**’i seçin.
 
 ## <a name="review-the-migration-summary"></a>Geçiş özetini gözden geçirme
 

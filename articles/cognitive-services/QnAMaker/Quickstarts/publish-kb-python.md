@@ -7,21 +7,21 @@ ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-python
 ms.topic: how-to
-ms.openlocfilehash: 5c28eac20b0bf2fab01312223ca2d5daef1d316d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3900d817de55795539dd3f16d33896626ebda2d8
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777480"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351138"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-python"></a>Hızlı başlangıç: Python kullanarak Soru-Cevap Oluşturma’da bilgi bankası yayımlama
 
 Bu REST tabanlı hızlı başlangıç, bilgi bankanızı (KB) programlı bir şekilde yayımlama konusunda size yol gösterir. Yayımlama, bilgi tabanının en son sürümünü adanmış bir Azure Bilişsel Arama dizinine gönderir ve uygulamanızda veya sohbet bot 'ta çağrılabilecek bir uç nokta oluşturur.
 
 Bu hızlı başlangıçta Soru-Cevap Oluşturma REST API 'Leri çağrıları yapılır:
-* [Publish](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish): Bu API için istek gövdesinde herhangi bir bilgi iletilmesi gerekmez.
+* [Publish](/rest/api/cognitiveservices/qnamaker/knowledgebase/publish): Bu API için istek gövdesinde herhangi bir bilgi iletilmesi gerekmez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Python 3.7](https://www.python.org/downloads/)
 * Bir [soru-cevap oluşturma hizmetiniz](../How-To/set-up-qnamaker-service-azure.md)olmalıdır. Anahtarınızı ve uç noktanızı (kaynak adını da içerir) almak için Azure portal kaynağınız için **hızlı başlangıç** ' ı seçin.
@@ -29,7 +29,7 @@ Bu hızlı başlangıçta Soru-Cevap Oluşturma REST API 'Leri çağrıları yap
 
     ![Soru-Cevap Oluşturma bilgi bankası kimliği](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
-    Henüz bir bilgi bankanız yoksa, bu hızlı başlangıçta kullanmak için bir örneğini oluşturabilirsiniz: [Yeni bilgi bankası oluşturma](../how-to/create-knowledge-base.md).
+    Henüz bir bilgi bankanız yoksa, bu hızlı başlangıçta kullanmak için bir örneğini oluşturabilirsiniz: [Yeni bilgi bankası oluşturma](./create-publish-knowledge-base.md).
 
 > [!NOTE]
 > Tam çözüm dosyası (ler) [ **Azure-Samples/bilişsel hizmetler-qnamaker-Python** GitHub deposunda](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/tree/master/documentation-samples/quickstarts/publish-knowledge-base)bulunur.
@@ -75,6 +75,6 @@ python publish-kb-3x.py
 Bilgi Bankası yayımlandıktan sonra, [bir yanıt oluşturmak için uç nokta URL 'sine](./get-answer-from-knowledge-base-python.md)ihtiyacınız vardır.
 
 > [!div class="nextstepaction"]
-> [Soru-Cevap Oluşturma (V4) REST API Başvurusu](https://go.microsoft.com/fwlink/?linkid=2092179)
+> [Soru-Cevap Oluşturma (V4) REST API Başvurusu](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)
 
 [Soru-Cevap Oluşturma’ya genel bakış](../Overview/overview.md)

@@ -11,19 +11,19 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: c47a4fbf51b14d9a13237f77c75dbf2839fb5f80
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: ff54d605fd81fa640314d99359f1aabacf7a469e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381295"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350390"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Öğretici: Bing Web Araması API’sini kullanarak tek sayfalı uygulama oluşturma
 
 > [!WARNING]
-> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](/bing/search-apis/bing-web-search/create-bing-search-service-resource)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
 > Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
-> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
+> Geçiş yönergeleri için bkz. [Bing arama Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Bu tek sayfalı uygulama Bing Web Araması API'sinden arama sonuçlarını almayı, ayrıştırmayı ve görüntülemeyi gösterir. Öğretici standart HTML ile CSS kullanır ve JavaScript koduna odaklanır. HTML, CSS ve JS dosyaları, hızlı başlangıç yönergeleriyle birlikte [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Web-Search)'da sağlanır.
 

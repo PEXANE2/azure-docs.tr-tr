@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: how-to
 ms.date: 11/09/2020
-ms.openlocfilehash: 4378a648b8b7a545c9e4b638d08592aa32fff3aa
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: c89ab375cb02824a08ff57e6b5278dd9299126ff
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427675"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350934"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Dışarı aktarma kullanarak Bilgi Bankası geçirme
 
@@ -34,7 +34,7 @@ Bilgi bankasını geçirmek, mevcut bir bilgi bankasından dışa aktarma ve son
 1. [Soru-cevap oluşturma portalında](https://qnamaker.ai)oturum açın.
 1. Geçirmek istediğiniz kaynak Bilgi Bankası ' nı seçin.
 
-1. **Ayarlar** sayfasında, kaynak Bilgi Bankası 'nizin içeriğini içeren bir. tsv dosyasını indirmek için **Bilgi Bankası 'nı dışarı aktar** ' ı seçin-sorular, yanıtlar, meta veriler, izleme istemleri ve ayıklanan veri kaynağı adları. Sorular ve yanıtlarla birlikte verilen QnA kimlikleri, [güncelleştirme API 'si](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update)kullanılarak belirli bir QNA çiftini güncelleştirmek için kullanılabilir. Belirli bir QnA çiftinin QnA KIMLIĞI, birden çok dışa aktarma işlemi arasında değişmeden kalır.
+1. **Ayarlar** sayfasında, kaynak Bilgi Bankası 'nizin içeriğini içeren bir. tsv dosyasını indirmek için **Bilgi Bankası 'nı dışarı aktar** ' ı seçin-sorular, yanıtlar, meta veriler, izleme istemleri ve ayıklanan veri kaynağı adları. Sorular ve yanıtlarla birlikte verilen QnA kimlikleri, [güncelleştirme API 'si](/rest/api/cognitiveservices/qnamaker/knowledgebase/update)kullanılarak belirli bir QNA çiftini güncelleştirmek için kullanılabilir. Belirli bir QnA çiftinin QnA KIMLIĞI, birden çok dışa aktarma işlemi arasında değişmeden kalır.
 
 1. Üstteki menüden **Bilgi Bankası oluştur** ' u seçin ve _boş_ bir Bilgi Bankası oluşturun. Bu, siz oluşturduğunuzda boş bir URL veya dosya ekleyemeyeceklerdir. Bunlar, oluşturulduktan sonra içeri aktarma adımı sırasında eklenir.
 
@@ -42,9 +42,9 @@ Bilgi bankasını geçirmek, mevcut bir bilgi bankasından dışa aktarma ve son
 
     Dosyayı içeri aktardığınızda değerlerin üzerine yazılacağı için 4. adımdan herhangi bir şey seçmeyin.
 
-1. 5. adımda **Oluştur** ' u seçin.
+1. 5. adımda **Oluştur**' u seçin.
 
-1. Bu yeni Bilgi Bankası 'nda **Ayarlar** sekmesini açın ve **Bilgi Bankası 'nı içeri aktar** ' ı seçin. Bu, soruları, yanıtları, meta verileri, izleme istemlerini içeri aktarır ve ayıklanan veri kaynağı adlarını korur. **Yeni Bilgi Bankası 'nda oluşturulan QNA çiftleri, içe aktarılmış dosyada bulunan aynı QNA kimliğine sahip olacaktır**. Bu, Bilgi Bankası 'nın tam bir çoğaltmasını oluşturmanıza yardımcı olur.
+1. Bu yeni Bilgi Bankası 'nda **Ayarlar** sekmesini açın ve **Bilgi Bankası 'nı içeri aktar**' ı seçin. Bu, soruları, yanıtları, meta verileri, izleme istemlerini içeri aktarır ve ayıklanan veri kaynağı adlarını korur. **Yeni Bilgi Bankası 'nda oluşturulan QNA çiftleri, içe aktarılmış dosyada bulunan aynı QNA kimliğine sahip olacaktır**. Bu, Bilgi Bankası 'nın tam bir çoğaltmasını oluşturmanıza yardımcı olur.
 
    > [!div class="mx-imgBorder"]
    > [![Bilgi bankasını içeri aktar](../media/qnamaker-how-to-migrate-kb/Import.png)](../media/qnamaker-how-to-migrate-kb/Import.png#lightbox)
@@ -59,16 +59,16 @@ Geçiş işlemi, aşağıdaki REST API 'Leri kullanılarak programlı olarak kul
 
 **Dışarı Aktarma**
 
-* [Bilgi Bankası API 'sini indirin](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/knowledgebase/download)
+* [Bilgi Bankası API 'sini indirin](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase/download)
 
 **İçeri Aktar**
 
-* [API değiştirme (aynı Bilgi Bankası KIMLIĞIYLE yeniden yükle)](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/knowledgebase/replace)
-* [API oluştur (yeni Bilgi Bankası KIMLIĞIYLE yükle)](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/knowledgebase/create)
+* [API değiştirme (aynı Bilgi Bankası KIMLIĞIYLE yeniden yükle)](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase/replace)
+* [API oluştur (yeni Bilgi Bankası KIMLIĞIYLE yükle)](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase/create)
 
 
 ## <a name="chat-logs-and-alterations"></a>Sohbet günlükleri ve değişiklikleri
-Büyük/küçük harf duyarsız değişiklikleri (eş anlamlılar) otomatik olarak içeri aktarılmaz. Yeni Bilgi Bankası 'ndaki değişiklikleri taşımak için [v4 API 'lerini](https://go.microsoft.com/fwlink/?linkid=2092179) kullanın.
+Büyük/küçük harf duyarsız değişiklikleri (eş anlamlılar) otomatik olarak içeri aktarılmaz. Yeni Bilgi Bankası 'ndaki değişiklikleri taşımak için [v4 API 'lerini](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase) kullanın.
 
 Yeni Bilgi Bankası, sohbet günlüklerini depolamak için Application Insights kullandığından, sohbet günlüklerini geçirme yolu yoktur.
 

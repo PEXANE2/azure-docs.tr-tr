@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: allensu
-ms.openlocfilehash: befd0658c79ac6b395b82b65b935a7bc4c735c2d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ac00491a34e6e7d18c74827afc6647358794a8be
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778677"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351699"
 ---
 # <a name="azure-cdn-ddos-protection"></a>DDoS koruması Azure CDN
 
@@ -27,7 +27,7 @@ Bir içerik teslim ağı, tasarıma göre DDoS koruması sağlar. Artışların�
 
 ## <a name="azure-cdn-from-microsoft"></a>Microsoft 'tan Azure CDN
 
-Microsoft 'tan Azure CDN [Azure temel DDoS](../virtual-network/ddos-protection-overview.md)tarafından korunmaktadır. Varsayılan olarak ve ek bir ücret ödemeden Microsoft platformundan Azure CDN tümleşiktir. Microsoft 'un küresel olarak dağıtılan ağ Azure CDN tam ölçeği ve kapasitesi, her zaman açık trafik izleme ve gerçek zamanlı risk azaltma aracılığıyla ortak ağ katmanı saldırılarına karşı savunma sağlar. Temel DDoS koruması Ayrıca, CDN uç noktalarını hedefleyen en yaygın, sık karşılaşılan katman 7 DNS sorgu floods ve katman 3 ve 4 Volumetric saldırılarına karşı savunma gerçekleştirebilir. Bu hizmette ayrıca Microsoft 'un kurumsal ve tüketici hizmetlerini büyük ölçekli saldırılara karşı koruyan kanıtlanmış bir izleme kaydı vardır.
+Microsoft 'tan Azure CDN [Azure temel DDoS](../ddos-protection/ddos-protection-overview.md)tarafından korunmaktadır. Varsayılan olarak ve ek bir ücret ödemeden Microsoft platformundan Azure CDN tümleşiktir. Microsoft 'un küresel olarak dağıtılan ağ Azure CDN tam ölçeği ve kapasitesi, her zaman açık trafik izleme ve gerçek zamanlı risk azaltma aracılığıyla ortak ağ katmanı saldırılarına karşı savunma sağlar. Temel DDoS koruması Ayrıca, CDN uç noktalarını hedefleyen en yaygın, sık karşılaşılan katman 7 DNS sorgu floods ve katman 3 ve 4 Volumetric saldırılarına karşı savunma gerçekleştirebilir. Bu hizmette ayrıca Microsoft 'un kurumsal ve tüketici hizmetlerini büyük ölçekli saldırılara karşı koruyan kanıtlanmış bir izleme kaydı vardır.
 
 ## <a name="azure-cdn-from-verizon"></a>Verizon 'dan Azure CDN
 
@@ -39,4 +39,4 @@ Akamai ' dan Azure CDN, Akamai 'ın özel DDoS risk azaltma platformu tarafında
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure DDoS](../virtual-network/ddos-protection-overview.md)hakkında daha fazla bilgi edinin.
+[Azure DDoS](../ddos-protection/ddos-protection-overview.md)hakkında daha fazla bilgi edinin.

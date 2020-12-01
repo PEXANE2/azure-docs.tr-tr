@@ -7,16 +7,16 @@ ms.date: 11/09/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: quickstart
-ms.openlocfilehash: 021628b92f1068743b097a455306df742f308f86
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 7592b9fb509f39504ad2399d0e939ceca1156221
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427692"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351104"
 ---
 # <a name="quickstart-use-curl-and-rest-to-manage-knowledge-base"></a>Hızlı başlangıç: Bilgi Bankası 'Nı yönetmek için kıvrımlı ve REST kullanma
 
-Bu hızlı başlangıçta bilgi bankasını oluşturma, yayımlama ve sorgulama işlemleri adım adım gösterilmektedir. Soru-Cevap Oluşturma, [veri kaynaklarından](../Concepts/knowledge-base.md) ve SSS gibi yarı yapılandırılmış içerikten soru ve cevapları otomatik olarak ayıklar. JSON ile tanımlanan bilgi bankası modeli API isteğinin gövdesinde gönderilir.
+Bu hızlı başlangıçta bilgi bankasını oluşturma, yayımlama ve sorgulama işlemleri adım adım gösterilmektedir. Soru-Cevap Oluşturma, [veri kaynaklarından](../index.yml) ve SSS gibi yarı yapılandırılmış içerikten soru ve cevapları otomatik olarak ayıklar. JSON ile tanımlanan bilgi bankası modeli API isteğinin gövdesinde gönderilir.
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -54,7 +54,7 @@ REST API 'Leri ve kıvrımlı bir Bilgi Bankası oluşturmak için aşağıdaki 
 |--|--|--|
 |Soru-Cevap Oluşturma kaynak adı|URL|URL oluşturmak için kullanılır|
 |Soru-Cevap Oluşturma kaynak anahtarı|`-h``Ocp-Apim-Subscription-Key`üst bilgi için parametre|Soru-Cevap Oluşturma Hizmeti için kimlik doğrulama|
-|Bilgi bankasını açıklayan JSON|`-d` larına|JSON [örnekleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create#examples)|
+|Bilgi bankasını açıklayan JSON|`-d` larına|JSON [örnekleri](/rest/api/cognitiveservices/qnamaker/knowledgebase/create#examples)|
 |JSON boyutunun bayt cinsinden boyutu|`-h``Content-Size`üst bilgi için parametre||
 
 Kıvral komutu bir BASH kabuğundan yürütülür. Bu komutu kendi kaynak adınızla, kaynak anahtarınızla, JSON değerlerinizle ve JSON boyutunda düzenleyin.
@@ -89,7 +89,7 @@ REST API 'Leri ve kıvrımlı bir Bilgi Bankası oluşturmak için aşağıdaki 
 |--|--|--|
 |Soru-Cevap Oluşturma kaynak adı|URL|URL oluşturmak için kullanılır|
 |Soru-Cevap Oluşturma kaynak anahtarı|`-h``Ocp-Apim-Subscription-Key`üst bilgi için parametre|Soru-Cevap Oluşturma Hizmeti için kimlik doğrulama|
-|Bilgi bankasını açıklayan JSON|`-d` larına|JSON [örnekleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create#examples)|
+|Bilgi bankasını açıklayan JSON|`-d` larına|JSON [örnekleri](/rest/api/cognitiveservices/qnamaker/knowledgebase/create#examples)|
 |JSON boyutunun bayt cinsinden boyutu|`-h``Content-Size`üst bilgi için parametre||
 
 Kıvral komutu bir BASH kabuğundan yürütülür. Bu komutu kendi kaynak adınızla, kaynak anahtarınızla, JSON değerlerinizle ve JSON boyutunda düzenleyin.
@@ -322,7 +322,7 @@ Bilgilerden bir yanıt almak, bilgi bankasını yönetmeden ayrı bir çalışma
 |Soru-Cevap Oluşturma kaynak adı|URL|URL oluşturmak için kullanılır|
 |Soru-Cevap Oluşturma çalışma zamanı anahtarı|`-h``Authorization`üst bilgi için parametre|Anahtar, sözcüğünü içeren bir dizenin parçasıdır `Endpointkey ` . Soru-Cevap Oluşturma Hizmeti için kimlik doğrulama|
 |Bilgi Bankası kimliği|URL yolu|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
-|Sorguyu açıklayan JSON|`-d` larına|[İstek gövdesi parametreleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#request-body) ve JSON [örnekleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#examples)|
+|Sorguyu açıklayan JSON|`-d` larına|[İstek gövdesi parametreleri](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#request-body) ve JSON [örnekleri](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#examples)|
 |JSON boyutunun bayt cinsinden boyutu|`-h``Content-Size`üst bilgi için parametre||
 
 Kıvral komutu bir BASH kabuğundan yürütülür. Bu komutu kendi kaynak adınızla, kaynak anahtarınızla ve Bilgi Bankası KIMLIĞINIZLE düzenleyin.
@@ -347,7 +347,7 @@ Bilgilerden bir yanıt almak, bilgi bankasını yönetmeden ayrı bir çalışma
 |Soru-Cevap Oluşturma kaynak adı|URL|URL oluşturmak için kullanılır|
 |Soru-Cevap Oluşturma kaynak anahtarı|`-h``Ocp-Apim-Subscription-Key`üst bilgi için parametre|Soru-Cevap Oluşturma Hizmeti için kimlik doğrulama|
 |Bilgi Bankası kimliği|URL yolu|`/knowledgebases/REPLACE-WITH-YOUR-KNOWLEDGE-BASE-ID`|
-|Sorguyu açıklayan JSON|`-d` larına|[İstek gövdesi parametreleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#request-body) ve JSON [örnekleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#examples)|
+|Sorguyu açıklayan JSON|`-d` larına|[İstek gövdesi parametreleri](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#request-body) ve JSON [örnekleri](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer#examples)|
 |JSON boyutunun bayt cinsinden boyutu|`-h``Content-Size`üst bilgi için parametre||
 
 Kıvral komutu bir BASH kabuğundan yürütülür. Bu komutu kendi kaynak adınızla, kaynak anahtarınızla ve Bilgi Bankası KIMLIĞINIZLE düzenleyin.
@@ -414,11 +414,11 @@ Yanıt durumu, sonuç olmadan 204 ' dir. `-v`Kıvrımlı komutuna ilişkin ayrı
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Yazma](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/knowledgebase) Başvuru belgeleri
-* [Çalışma zamanı](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/runtime) Başvuru belgeleri
+* [Yazma](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase) Başvuru belgeleri
+* [Çalışma zamanı](/rest/api/cognitiveservices/qnamaker4.0/runtime) Başvuru belgeleri
 * [Kıvrımlı kullanarak örnek BASH betikleri](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/curl/QnAMaker)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Soru-Cevap Oluşturma (V4) REST API Başvurusu](https://go.microsoft.com/fwlink/?linkid=2092179)
+> [Soru-Cevap Oluşturma (V4) REST API Başvurusu](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)

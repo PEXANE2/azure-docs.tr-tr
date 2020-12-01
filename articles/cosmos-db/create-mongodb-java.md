@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 12/26/2018
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 2dcd72f9231726d5a2f473dbbfa4d8fd81e64b97
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 8a8fa9e15630aea3fb92571fd88a0ce01d3c9211
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098998"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349121"
 ---
 # <a name="quickstart-create-a-console-app-with-java-and-the-mongodb-api-in-azure-cosmos-db"></a>Hızlı başlangıç: Azure Cosmos DB 'de Java ve MongoDB API 'SI ile bir konsol uygulaması oluşturma
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -112,7 +112,7 @@ Bu konsol uygulaması [MongoDB Java sürücüsünü](https://docs.mongodb.com/ec
 
 Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp uygulamaya ekleyin.
 
-1. Azure Cosmos DB hesabınızda **hızlı başlangıç** ' i seçin, **Java** ' yı seçin, sonra bağlantı dizesini panonuza kopyalayın.
+1. Azure Cosmos DB hesabınızda **hızlı başlangıç**' i seçin, **Java**' yı seçin, sonra bağlantı dizesini panonuza kopyalayın.
 
 2. *Program. Java* dosyasını açın, MongoClientURI oluşturucusuna bağımsız değişkenini bağlantı dizesiyle değiştirin. Bu adımlarla uygulamanıza Azure Cosmos DB ile iletişim kurması için gereken tüm bilgileri eklemiş oldunuz. 
     
@@ -137,4 +137,4 @@ Artık [Robomongo](mongodb-robomongo.md)  /  Bu yeni verileri sorgulamak, deği�
 Bu hızlı başlangıçta, Mongo DB hesabı için Azure Cosmos DB API oluşturma, Veri Gezgini kullanarak bir veritabanı ve kapsayıcı ekleme ve Java konsol uygulaması kullanarak veri ekleme hakkında öğrendiniz. Artık Cosmos veritabanınıza ek veri aktarabilirsiniz. 
 
 > [!div class="nextstepaction"]
-> [Azure Cosmos DB’ye MongoDB verileri aktarma](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)
+> [Azure Cosmos DB’ye MongoDB verileri aktarma](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)

@@ -3,12 +3,12 @@ title: Azure Batch havuzu oluşturma olayı
 description: Bir havuz oluşturulduktan sonra yayılan Batch havuzu oluşturma olayı için başvuru. Günlüğün içeriği, havuz hakkındaki genel bilgileri açığa çıkarır.
 ms.topic: reference
 ms.date: 10/08/2020
-ms.openlocfilehash: db7440df4303857d4c4a6533bc06b5f248c75da3
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 03c656ea2698ee0e61c1ddb903fcc10df9d3044b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102957"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352397"
 ---
 # <a name="pool-create-event"></a>Havuz oluşturma olayı
 
@@ -53,7 +53,7 @@ ms.locfileid: "92102957"
 |-------------|----------|-----------|
 |`id`|Dize|Havuzun KIMLIĞI.|
 |`displayName`|Dize|Havuzun görünen adı.|
-|`vmSize`|Dize|Havuzdaki sanal makinelerin boyutu. Bir havuzdaki tüm sanal makineler aynı boyutta. <br/><br/> Cloud Services havuzlara yönelik sanal makinelerin kullanılabilir boyutları (cloudServiceConfiguration ile oluşturulan havuzlar) hakkında daha fazla bilgi için bkz. [Cloud Services boyutları](../cloud-services/cloud-services-sizes-specs.md). Batch, hariç tüm Cloud Services VM boyutlarını destekler `ExtraSmall` .<br/><br/> Sanal makineler Market 'teki görüntüleri kullanan Havuzların kullanılabilir VM boyutları hakkında bilgi için (virtualMachineConfiguration ile oluşturulan havuzlar [) bkz. sanal makinelerin (](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) Linux) veya [boyutlarının](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) (Windows) boyutları. Batch `STANDARD_A0` ve premium depolama alanına sahip olanlar (`STANDARD_GS`, `STANDARD_DS` ve `STANDARD_DSV2` serisi) dışında tüm Azure sanal makinelerini destekler.|
+|`vmSize`|Dize|Havuzdaki sanal makinelerin boyutu. Bir havuzdaki tüm sanal makineler aynı boyutta. <br/><br/> Cloud Services havuzlara yönelik sanal makinelerin kullanılabilir boyutları (cloudServiceConfiguration ile oluşturulan havuzlar) hakkında daha fazla bilgi için bkz. [Cloud Services boyutları](../cloud-services/cloud-services-sizes-specs.md). Batch, hariç tüm Cloud Services VM boyutlarını destekler `ExtraSmall` .<br/><br/> Sanal makineler Market 'teki görüntüleri kullanan Havuzların kullanılabilir VM boyutları hakkında bilgi için (virtualMachineConfiguration ile oluşturulan havuzlar [) bkz. sanal makinelerin (](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Linux) veya [boyutlarının](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows) boyutları. Batch `STANDARD_A0` ve premium depolama alanına sahip olanlar (`STANDARD_GS`, `STANDARD_DS` ve `STANDARD_DSV2` serisi) dışında tüm Azure sanal makinelerini destekler.|
 |`imageType`|Dize|Görüntü için dağıtım yöntemi. Desteklenen değerler `virtualMachineConfiguration` veya `cloudServiceConfiguration`|
 |[`cloudServiceConfiguration`](#bk_csconf)|Karmaşık Tür|Havuzun bulut hizmeti yapılandırması.|
 |[`virtualMachineConfiguration`](#bk_vmconf)|Karmaşık Tür|Havuzun sanal makine yapılandırması.|

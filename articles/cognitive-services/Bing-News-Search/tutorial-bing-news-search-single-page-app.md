@@ -11,19 +11,19 @@ ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: aahi
 ms.custom: seodec2018, devx-track-js
-ms.openlocfilehash: 0eef6f424c0360ba1378bafa738cbec7dbf05776
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c3d486a32f4a926ed42f3d67a1fa96d3da397beb
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098374"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351223"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>Öğretici: tek sayfalı Web uygulaması oluşturma
 
 > [!WARNING]
-> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](/bing/search-apis/bing-web-search/create-bing-search-service-resource)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
 > Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
-> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
+> Geçiş yönergeleri için bkz. [Bing arama Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Bing Haber Arama API'si Web'de arama yapmanızı ve arama sorgusuna uyan haber türündeki sonuçları almanızı sağlar. Bu öğreticide, Bing Haber Arama API'sini kullanarak sayfada arama sonuçlarını görüntüleyen tek sayfalı bir Web uygulaması oluşturuyoruz. Uygulama HTML, CSS ve JavaScript bileşenlerini içeriyor. Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingNewsSearchApp.html)' da kullanılabilir.
 
@@ -280,7 +280,7 @@ function handleBingResponse() {
 ```
 
 > [!IMPORTANT]
-> Başarılı bir HTTP isteği, aramanın kendisinin başarılı olduğu anlamına *gelmeyebilir* . Arama işleminde hata oluşursa, Bing Haber Arama API'si 200 olmayan bir HTTP durum kodu döndürür ve JSON yanıtına hata bilgilerini ekler. Buna ek olarak, istekte hız sınırlaması varsa API boş yanıt döndürür.
+> Başarılı bir HTTP isteği, aramanın kendisinin başarılı olduğu anlamına *gelmeyebilir*. Arama işleminde hata oluşursa, Bing Haber Arama API'si 200 olmayan bir HTTP durum kodu döndürür ve JSON yanıtına hata bilgilerini ekler. Buna ek olarak, istekte hız sınırlaması varsa API boş yanıt döndürür.
 
 Önceki işlevlerin ikisinde de kodun büyük bölümü hata işlemeye ayrılmıştır. Şu aşamalarda hata oluşabilir:
 

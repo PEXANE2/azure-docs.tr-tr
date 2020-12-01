@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de255836cb269f5077a417a203e136f9e903f05d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d121e6280b83265a742736f9b8dd3aee96a8b32e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441683"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351768"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>Kullanıcı akışına API Bağlayıcısı ekleme
 
@@ -25,7 +25,7 @@ Bir [API bağlayıcısını](api-connectors-overview.md)kullanmak IÇIN önce AP
 ## <a name="create-an-api-connector"></a>API Bağlayıcısı oluşturma
 
 1. [Azure portalda](https://portal.azure.com/) Azure AD yöneticisi olarak oturum açın.
-2. **Azure hizmetleri**altında **Azure Active Directory**' yi seçin.
+2. **Azure hizmetleri** altında **Azure Active Directory**' yi seçin.
 3. Sol taraftaki menüden **dış kimlikler**' i seçin.
 4. **Tüm API bağlayıcıları (Önizleme)** öğesini seçin ve ardından **yeni API Bağlayıcısı**' nı seçin.
 
@@ -35,7 +35,7 @@ Bir [API bağlayıcısını](api-connectors-overview.md)kullanmak IÇIN önce AP
 6. API çağrısının **uç nokta URL 'sini** sağlayın.
 7. API için kimlik doğrulama bilgilerini sağlayın.
 
-   - Şu anda yalnızca temel kimlik doğrulaması destekleniyor. Geliştirme amacıyla temel kimlik doğrulaması olmadan bir API kullanmak istiyorsanız, API 'nizin yoksaymasına yönelik bir kukla **Kullanıcı adı** ve **parola** girmeniz yeterlidir. API anahtarı olan bir Azure Işleviyle birlikte kullanmak için, kodu **uç nokta URL 'sine** bir sorgu parametresi olarak ekleyebilirsiniz (örneğin, https []() ://contoso.azurewebsites.net/api/Endpoint<b>? Code = 0123456789</b>).
+   - Şu anda yalnızca temel kimlik doğrulaması destekleniyor. Geliştirme amacıyla temel kimlik doğrulaması olmadan bir API kullanmak istiyorsanız, API 'nizin yoksaymasına yönelik bir kukla **Kullanıcı adı** ve **parola** girmeniz yeterlidir. API anahtarı olan bir Azure Işleviyle birlikte kullanmak için, kodu **uç nokta URL 'sine** bir sorgu parametresi olarak ekleyebilirsiniz (örneğin, https []() ://contoso.azurewebsites.net/api/Endpoint <b>? Code = 0123456789</b>).
 
    ![Yeni bir API Bağlayıcısı yapılandırma](./media/self-service-sign-up-add-api-connector/api-connector-config.png)
 8. **Kaydet**’i seçin.
@@ -92,7 +92,7 @@ Ayrıca, **Kullanıcı arabirimi yerel ayarları (' ui_locales ')** talebi tüm 
 Self Servis kaydolma Kullanıcı akışına bir API Bağlayıcısı eklemek için bu adımları izleyin.
 
 1. [Azure portalda](https://portal.azure.com/) Azure AD yöneticisi olarak oturum açın.
-2. **Azure hizmetleri**altında **Azure Active Directory**' yi seçin.
+2. **Azure hizmetleri** altında **Azure Active Directory**' yi seçin.
 3. Sol taraftaki menüden **dış kimlikler**' i seçin.
 4. **Kullanıcı akışları ' nı (Önizleme)** seçin ve ardından API bağlayıcısını eklemek istediğiniz kullanıcı akışını seçin.
 5. **API bağlayıcıları**' nı seçin ve ardından Kullanıcı akışında aşağıdaki adımlarda ÇAĞıRMAK istediğiniz API uç noktalarını seçin:
@@ -248,8 +248,8 @@ Content-type: application/json
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | sürüm                                            | Dize            | Yes      | API sürümü.                                                                                                                                                                                                                                                                |
 | eylem                                             | Dize            | Yes      | Değer olmalıdır `Continue` .                                                                                                                                                                                                                                                              |
-| \<builtInUserAttribute>                            | \<attribute-type> | No       | API Bağlayıcısı yapılandırmasında ve bir Kullanıcı akışı için **Kullanıcı özniteliklerinde** bir _*talebi*olarak seçilirse değerler dizinde depolanabilir. Bir **uygulama talebi**olarak seçilirse, belirteçte değerler döndürülür.                                              |
-| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | No       | Döndürülen talebin içermesi gerekmez `_<extensions-app-id>_` . Bir Kullanıcı akışı için API Bağlayıcısı yapılandırmasında ve **Kullanıcı özniteliğinde** **alma talebi** olarak seçilirse değerler dizinde depolanır. Özel öznitelikler belirtece geri gönderilemez. |
+| \<builtInUserAttribute>                            | \<attribute-type> | Hayır       | API Bağlayıcısı yapılandırmasında ve bir Kullanıcı akışı için **Kullanıcı özniteliklerinde** bir _ *talebi* olarak seçilirse değerler dizinde depolanabilir. Bir **uygulama talebi** olarak seçilirse, belirteçte değerler döndürülür.                                              |
+| \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Hayır       | Döndürülen talebin içermesi gerekmez `_<extensions-app-id>_` . Bir Kullanıcı akışı için API Bağlayıcısı yapılandırmasında ve **Kullanıcı özniteliğinde** **alma talebi** olarak seçilirse değerler dizinde depolanır. Özel öznitelikler belirtece geri gönderilemez. |
 
 ### <a name="example-of-a-blocking-response"></a>Engelleme yanıtı örneği
 
@@ -271,7 +271,7 @@ Content-type: application/json
 | sürüm     | Dize | Yes      | API sürümü.                                                    |
 | eylem      | Dize | Yes      | Değer olmalıdır `ShowBlockPage`                                              |
 | userMessage | Dize | Yes      | Kullanıcıya görüntülenecek ileti.                                            |
-| kod        | Dize | No       | Hata kodu. Hata ayıklama amacıyla kullanılabilir. Kullanıcıya gösterilmez. |
+| kod        | Dize | Hayır       | Hata kodu. Hata ayıklama amacıyla kullanılabilir. Kullanıcıya gösterilmez. |
 
 **Engelleyici bir Yanıt ile son kullanıcı deneyimi**
 
@@ -298,7 +298,7 @@ Content-type: application/json
 | eylem      | Dize  | Yes      | Değer olmalıdır `ValidationError` .                                           |
 | durum      | Tamsayı | Yes      | `400`Bir ValidationError yanıtı için değer olmalıdır.                        |
 | userMessage | Dize  | Yes      | Kullanıcıya görüntülenecek ileti.                                            |
-| kod        | Dize  | No       | Hata kodu. Hata ayıklama amacıyla kullanılabilir. Kullanıcıya gösterilmez. |
+| kod        | Dize  | Hayır       | Hata kodu. Hata ayıklama amacıyla kullanılabilir. Kullanıcıya gösterilmez. |
 
 **Doğrulama hatası yanıtıyla Son Kullanıcı deneyimi**
 
@@ -310,7 +310,7 @@ Content-type: application/json
 ### <a name="using-serverless-cloud-functions"></a>Sunucusuz bulut işlevlerini kullanma
 Azure Işlevlerinde HTTP Tetikleyicileri gibi sunucusuz işlevler, API Bağlayıcısı ile kullanmak üzere API uç noktaları oluşturma basit bir yol sağlar. [Örneğin](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts), doğrulama mantığını gerçekleştirmek ve kayıt pencerelerini belirli etki alanlarına kısıtlamak için sunucusuz bulut işlevini kullanabilirsiniz. Sunucusuz bulut işlevi ayrıca daha karmaşık senaryolar için diğer Web API 'Lerini, Kullanıcı depolarını ve diğer bulut hizmetlerini çağırıp çağırabilir.
 
-### <a name="best-practices"></a>Önerilen uygulamalar
+### <a name="best-practices"></a>En iyi uygulamalar
 Aşağıdakileri doğrulayın:
 * API 'niz, yukarıda özetlenen API isteği ve yanıt sözleşmelerini takip eden bir. 
 * API bağlayıcısının **uç nokta URL 'si** doğru API uç noktasını işaret eder.

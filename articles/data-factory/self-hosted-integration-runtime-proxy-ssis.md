@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 11/19/2020
-ms.openlocfilehash: a79055a77ec73ce2b267bb4f16fa91f37e22ea75
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 82cc58d46061ec7b623d062ab0b0e5a1fdae7ddd
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94916789"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352227"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Azure Data Factory içinde Azure-SSIS IR için otomatik olarak barındırılan bir IR ara sunucu olarak yapılandırma
 
@@ -70,7 +70,7 @@ Daha önce yapmadıysanız, Azure-SSIS IR ayarlandığı veri fabrikasında bir 
 - **Kimlik doğrulama yöntemi** için **hesap anahtarı**, **SAS URI 'Si**, **hizmet sorumlusu** veya **yönetilen kimlik**' i seçin.  
 
 >[!TIP]
->**Hizmet sorumlusu** yöntemini seçerseniz, hizmet sorumlusuna en az bir *Depolama Blobu veri katılımcısı* rolü verin. Daha fazla bilgi için bkz. [Azure Blob Storage Bağlayıcısı](connector-azure-blob-storage.md#linked-service-properties). **Yönetilen kimlik** yöntemini seçerseniz, Azure Blob depolamaya erışmek için ADF ile yönetilen kimlik uygun rollerinizi verin. Daha fazla bilgi için bkz. [ADF ile yönetilen kimlikle Azure Active Directory kimlik doğrulaması kullanarak Azure Blob depolamaya erişme](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication).
+>**Hizmet sorumlusu** yöntemini seçerseniz, hizmet sorumlusuna en az bir *Depolama Blobu veri katılımcısı* rolü verin. Daha fazla bilgi için bkz. [Azure Blob Storage Bağlayıcısı](connector-azure-blob-storage.md#linked-service-properties). **Yönetilen kimlik** yöntemini seçerseniz, Azure Blob depolamaya erışmek için ADF ile yönetilen kimlik uygun rollerinizi verin. Daha fazla bilgi için bkz. [ADF ile yönetilen kimlikle Azure Active Directory kimlik doğrulaması kullanarak Azure Blob depolamaya erişme](/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication).
 
 ![Azure Blob depolama ile bağlantılı hizmeti hazırlama için hazırlama](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 
@@ -157,7 +157,7 @@ Bu özelliği, var olan paketleri çalıştırdığınızda, bunları bir tane i
 
 ## <a name="debug-the-on-premises-and-cloud-staging-tasks"></a>Şirket içi ve bulut hazırlama görevlerinde hata ayıklayın
 
-Şirket içinde barındırılan IR 'de, çalışma zamanı günlüklerini *C:\ProgramData\SSISTelemetry* klasöründe ve şirket içi hazırlama görevlerinin yürütme günlüklerinde *C:\ProgramData\SSISTelemetry\ExecutionLog* klasöründe bulabilirsiniz.  Bulut hazırlama görevlerinin yürütme günlüklerini SSıSDB 'de, belirtilen günlük dosyası yolunuzda veya Azure Izleyici 'de paketlerinizi SSSıSDB 'de depoladığınıza, [Azure izleyici tümleştirmesine](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#monitor-ssis-operations-with-azure-monitor), vb. bir şekilde bulabilirsiniz. Ayrıca, bulut hazırlama görevlerinin yürütme günlüklerinde şirket içi hazırlama görevlerinin benzersiz kimliklerini de bulabilirsiniz. 
+Şirket içinde barındırılan IR 'de, çalışma zamanı günlüklerini *C:\ProgramData\SSISTelemetry* klasöründe ve şirket içi hazırlama görevlerinin yürütme günlüklerinde *C:\ProgramData\SSISTelemetry\ExecutionLog* klasöründe bulabilirsiniz.  Bulut hazırlama görevlerinin yürütme günlüklerini SSıSDB 'de, belirtilen günlük dosyası yolunuzda veya Azure Izleyici 'de paketlerinizi SSSıSDB 'de depoladığınıza, [Azure izleyici tümleştirmesine](./monitor-using-azure-monitor.md#monitor-ssis-operations-with-azure-monitor), vb. bir şekilde bulabilirsiniz. Ayrıca, bulut hazırlama görevlerinin yürütme günlüklerinde şirket içi hazırlama görevlerinin benzersiz kimliklerini de bulabilirsiniz. 
 
 ![İlk hazırlama görevinin benzersiz KIMLIĞI](media/self-hosted-integration-runtime-proxy-ssis/shir-first-staging-task-guid.png)
 
@@ -173,7 +173,7 @@ Azure-SSIS IR çalışan bulut hazırlama görevleri ayrı olarak faturalandır�
 
 Özel/üçüncü taraf bileşenlerinizin, Azure-SSIS IR için proxy olarak şirket içinde barındırılan IR kullanarak şirket içi verilere erişmesini sağlamak için aşağıdaki yönergeleri izleyin:
 
-1. [Standart/Express özel kurulumları](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup)aracılığıyla Azure-SSIS IR SQL Server 2017 hedefleyen özel/3. taraf bileşenlerinizi yükler.
+1. [Standart/Express özel kurulumları](./how-to-configure-azure-ssis-ir-custom-setup.md)aracılığıyla Azure-SSIS IR SQL Server 2017 hedefleyen özel/3. taraf bileşenlerinizi yükler.
 
 1. Zaten mevcut değilse, şirket içinde barındırılan IR 'de aşağıdaki DTSPath kayıt defteri anahtarlarını oluşturun:
    1. `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` ayarla `C:\Program Files\Microsoft SQL Server\140\DTS\`
@@ -197,7 +197,7 @@ Güçlü şifreleme/daha güvenli ağ protokolü (TLS 1,2) kullanmanız ve şirk
 
 ## <a name="current-limitations"></a>Geçerli sınırlamalar
 
-- Yalnızca Hadoop/,/DQS bileşenleri hariç Azure-SSIS IR Standard sürümünde yerleşik/önceden yüklenmiş olan veri akışı bileşenleri Şu anda desteklenmektedir: [Azure-SSIS IR üzerinde tüm yerleşik/önceden yüklenmiş bileşenler](https://docs.microsoft.com/azure/data-factory/built-in-preinstalled-components-ssis-integration-runtime).
+- Yalnızca Hadoop/,/DQS bileşenleri hariç Azure-SSIS IR Standard sürümünde yerleşik/önceden yüklenmiş olan veri akışı bileşenleri Şu anda desteklenmektedir: [Azure-SSIS IR üzerinde tüm yerleşik/önceden yüklenmiş bileşenler](./built-in-preinstalled-components-ssis-integration-runtime.md).
 - Yalnızca yönetilen kodda (.NET Framework) yazılan özel/3. taraf veri akışı bileşenleri Şu anda desteklenmektedir-yerel kodda (C++) yazılmış olanlar şu anda desteklenmemektedir.
 - Hem şirket içi hem de bulut hazırlama görevlerinde değişken değerlerini değiştirmek Şu anda desteklenmemektedir.
 - Şirket içi hazırlama görevlerinde tür nesnesinin değişken değerlerini değiştirmek diğer görevlere yansıtılmaz.

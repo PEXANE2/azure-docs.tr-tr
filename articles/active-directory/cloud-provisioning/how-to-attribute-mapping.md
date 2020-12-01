@@ -11,14 +11,14 @@ ms.date: 09/22/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58b7aa0bf8c82990a00b4e41041145a67ee2f02b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e272c402cac803d10d9998298ce6d3370d0e000
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91637366"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348812"
 ---
-# <a name="azure-ad-connect-cloud-provisioning-attibute-mapping"></a>Azure AD Connect bulut sağlama parentid kimliğiyle eşleme
+# <a name="azure-ad-connect-cloud-provisioning-attribute-mapping"></a>Azure AD Connect bulut sağlama özniteliği eşleme
 
 Azure AD Connect bulut sağlaması, şirket içi Kullanıcı/Grup nesneleriniz ile Azure AD içindeki nesneler arasındaki öznitelikleri kolayca eşlemenizi sağlayacak yeni bir özellik getirmiştir.  Bu özellik, bulut sağlama yapılandırmasına eklenmiştir.
 
@@ -54,21 +54,21 @@ Bu özellik ile birlikte, öznitelik eşlemeleri de aşağıdaki öznitelikleri 
 ## <a name="using-attribute-mapping"></a>Öznitelik eşlemesini kullanma
 Yeni özelliği kullanmak için aşağıdaki adımları izleyin.
 
- 1.  Azure portal **Azure Active Directory**' ni seçin.
- 2.  **Azure AD Connect**seçin.
+ 1.  Azure portalında **Azure Active Directory** seçeneğini belirleyin.
+ 2.  **Azure AD Connect** seçin.
  3.  **Sağlamayı Yönet**' i seçin.
 
    ![Sağlamayı Yönet](media/how-to-configure/manage1.png)
  
- 4. **Yapılandırma**altında yapılandırmanızı seçin.
- 5. **Eşlemeleri düzenlemek Için tıklayın ' ı**seçin.  Bu işlem öznitelik eşleme ekranını açar.
+ 4. **Yapılandırma** altında yapılandırmanızı seçin.
+ 5. **Eşlemeleri düzenlemek Için tıklayın ' ı** seçin.  Bu işlem öznitelik eşleme ekranını açar.
 
  ![Öznitelik ekleme](media/how-to-attribute-mapping/mapping6.png)
  6.  **Öznitelik Ekle**' ye tıklayın.
 
  ![Eşleme türü](media/how-to-attribute-mapping/mapping1.png)
  
- 7. **Eşleme türünü**seçin.  Bu örnekte Ifadesi kullanıyoruz.
+ 7. **Eşleme türünü** seçin.  Bu örnekte Ifadesi kullanıyoruz.
  8.  Kutuya ifadeyi girin.  Bu örnekte şunu kullanıyoruz: `Replace([mail], "@contoso.com", , ,"", ,).`
  9.  Target özniteliğini girin.  Bu örnekte ExtensionAttribute15 kullanacağız.
  10. Bunun ne zaman uygulanacağını seçin ve ardından **Uygula** ' ya tıklayın.
@@ -82,10 +82,10 @@ Yeni özelliği kullanmak için aşağıdaki adımları izleyin.
 ## <a name="test-your-attribute-mapping"></a>Öznitelik eşlemenizi test etme
 Öznitelik eşlemenizi test etmek için [isteğe bağlı sağlama](how-to-on-demand-provision.md)seçeneğini kullanabilirsiniz.  Öğesinden 
 
-1.  Azure portal **Azure Active Directory**' ni seçin.
-2.  **Azure AD Connect**seçin.
+1.  Azure portalında **Azure Active Directory** seçeneğini belirleyin.
+2.  **Azure AD Connect** seçin.
 3.  **Sağlamayı Yönet**' i seçin.
-4. **Yapılandırma**altında yapılandırmanızı seçin.
+4. **Yapılandırma** altında yapılandırmanızı seçin.
 5. **Doğrula** altında **Kullanıcı sağla** düğmesine tıklayın. 
 6. İsteğe bağlı sağlama ekranında.  Bir kullanıcının veya grubun **ayırt edici adını** girin ve **sağla** düğmesine tıklayın.  
 7. Tamamlandıktan sonra, başarılı bir ekran ve başarıyla sağlandığını belirten 4 yeşil onay kutusu görmeniz gerekir.  

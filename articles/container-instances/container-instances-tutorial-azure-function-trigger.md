@@ -4,12 +4,12 @@ description: Azure Container Instances oluşturmayı otomatikleştirmek için HT
 ms.topic: tutorial
 ms.date: 06/10/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ec4b2273f6be6ea4aabed2b660e0b7553f861d0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b94d583ca26b88d093810528d3193f20d765f1d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89072052"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349257"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Öğretici: bir kapsayıcı grubu oluşturmak için HTTP ile tetiklenen bir Azure işlevi kullanın
 
@@ -27,15 +27,15 @@ Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-İşletim sisteminde Azure Işlevleri Uzantısı ile Visual Studio Code yüklemek ve kullanmak üzere önkoşulları [Visual Studio Code kullanarak Azure 'da ilk Işlevinizi oluşturma](../azure-functions/functions-create-first-function-vs-code.md?pivots=programming-language-powershell#configure-your-environment) konusuna bakın.
+İşletim sisteminde Azure Işlevleri Uzantısı ile Visual Studio Code yüklemek ve kullanmak üzere önkoşulları [Visual Studio Code kullanarak Azure 'da ilk Işlevinizi oluşturma](../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-powershell#configure-your-environment) konusuna bakın.
 
 Bu makaledeki ek adımlar Azure PowerShell kullanır. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure PowerShell yüklemesi][azure-powershell-install] ve [Azure 'da oturum açma](/powershell/azure/get-started-azureps#sign-in-to-azure).
 
 ## <a name="create-a-basic-powershell-function"></a>Temel PowerShell işlevi oluşturma
 
-HTTP tetikleyici şablonunu kullanarak bir PowerShell işlevi oluşturmak için [Azure 'da Ilk PowerShell işlevinizi oluşturma](../azure-functions/functions-create-first-function-vs-code.md?pivots=programming-language-powershell) bölümündeki adımları izleyin. Varsayılan Azure işlevi adı **Httptrigger**' i kullanın. Hızlı başlangıçta gösterildiği gibi, işlevi yerel olarak test edin ve projeyi Azure 'da bir işlev uygulamasında yayımlayın. Bu örnek, bir metin dizesi döndüren temel bir HTTP ile tetiklenen işlevdir. Bu makaledeki sonraki adımlarda, işlevi bir kapsayıcı grubu oluşturacak şekilde değiştirirsiniz.
+HTTP tetikleyici şablonunu kullanarak bir PowerShell işlevi oluşturmak için [Azure 'da Ilk PowerShell işlevinizi oluşturma](../azure-functions/create-first-function-vs-code-csharp.md?pivots=programming-language-powershell) bölümündeki adımları izleyin. Varsayılan Azure işlevi adı **Httptrigger**' i kullanın. Hızlı başlangıçta gösterildiği gibi, işlevi yerel olarak test edin ve projeyi Azure 'da bir işlev uygulamasında yayımlayın. Bu örnek, bir metin dizesi döndüren temel bir HTTP ile tetiklenen işlevdir. Bu makaledeki sonraki adımlarda, işlevi bir kapsayıcı grubu oluşturacak şekilde değiştirirsiniz.
 
-Bu makalede, projeyi, işlev uygulaması adına (Ayrıca *myfunctionapp*) göre otomatik olarak adlandırılan bir Azure Kaynak grubundaki *myfunctionapp*adını kullanarak yayımladığınızı varsaymaktadır. Daha sonraki adımlarda benzersiz işlev uygulamanızın adını ve kaynak grubu adını değiştirin.
+Bu makalede, projeyi, işlev uygulaması adına (Ayrıca *myfunctionapp*) göre otomatik olarak adlandırılan bir Azure Kaynak grubundaki *myfunctionapp* adını kullanarak yayımladığınızı varsaymaktadır. Daha sonraki adımlarda benzersiz işlev uygulamanızın adını ve kaynak grubu adını değiştirin.
 
 ## <a name="enable-an-azure-managed-identity-in-the-function-app"></a>İşlev uygulamasında Azure tarafından yönetilen bir kimliği etkinleştirme
 
@@ -97,7 +97,7 @@ Bu örnek, görüntüyü çalıştıran tek bir kapsayıcı örneğinden oluşan
 
 İşlevin yerel olarak çalıştığını doğruladıktan sonra, projeyi Azure 'da var olan işlev uygulamasına yeniden yayımlayın.
 
-1. Visual Studio Code ' de, komut paleti ' ni açın. Araması yapın ve seçin `Azure Functions: Deploy to Function App...` .
+1. Visual Studio Code’da Komut Paleti’ni açın. Araması yapın ve seçin `Azure Functions: Deploy to Function App...` .
 1. Zip ve dağıtım için geçerli çalışma klasörünü seçin.
 1. Aboneliği ve ardından mevcut işlev uygulamasının adını (*myfunctionapp*) seçin. Önceki dağıtımın üzerine yazmak istediğinizi onaylayın.
 

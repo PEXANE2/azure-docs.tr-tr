@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/23/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 61ae446d180a86b42bc52ac3244b96b7b347b68f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5b09ce48226b3c31efce4966ec776c10931cc391
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010580"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348662"
 ---
 # <a name="manage-azure-cosmos-db-resources-by-using-azure-storage-explorer"></a>Azure Depolama Gezgini kullanarak Azure Cosmos DB kaynaklarını yönetme
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -22,7 +22,7 @@ Azure Cosmos DB bağlanmak için Azure Depolama Gezgini 'ni kullanabilirsiniz. W
 Farklı Azure varlıklarınızı tek bir yerde yönetmek için aynı aracı kullanın. Depolama Blobları ve kuyrukları gibi diğer Azure varlıklarıyla birlikte Azure Cosmos DB varlıklarını yönetebilir, verileri işleyebilir, saklı yordamları ve Tetikleyicileri güncelleştirebilirsiniz. Azure Depolama Gezgini, SQL, MongoDB, Graph ve tablo API 'Leri için yapılandırılmış Cosmos hesaplarını destekler.
 
 > [!NOTE]
-> Depolama Gezgini ile Azure Cosmos DB tümleştirmesi kullanımdan kaldırıldı. Bu sürümden itibaren en az 1 yıl boyunca mevcut işlevler kaldırılmayacaktır. Bunun yerine [Azure Portal](https://portal.azure.com/), [Azure Portal masaüstü uygulaması](https://portal.azure.com/App/Download) veya tek başına [Azure Cosmos gezginini](data-explorer.md) kullanın. Alternatif seçenekler arasında, şu anda Depolama Gezgini’nde desteklenmeyen çok sayıda yeni özellik yer alır.
+> Depolama Gezgini ile Azure Cosmos DB tümleştirmesi kullanımdan kaldırıldı. Bu sürümden itibaren en az 1 yıl boyunca mevcut işlevler kaldırılmayacaktır. Bunun yerine [Azure portalını](https://portal.azure.com/), [Azure Portal Desktop uygulamasını](https://portal.azure.com/App/Download) veya tek başına [Azure Cosmos DB Gezginini](data-explorer.md) kullanmanız gerekir. Alternatif seçenekler arasında, şu anda Depolama Gezgini’nde desteklenmeyen çok sayıda yeni özellik yer alır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

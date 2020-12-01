@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
-ms.openlocfilehash: f07aaa3b1d133d8011b7e98df5c36a8bac1b5f29
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b9a85c7093d0f42ac97c4a548ba6f0feebae8b89
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92506913"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350730"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>Öğretici: NetDocuments ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -54,7 +54,7 @@ NetDocuments 'un Azure AD ile tümleştirilmesini yapılandırmak için, galerid
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-netdocuments"></a>NetDocuments için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu NetDocuments ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve NetDocuments içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu NetDocuments ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve NetDocuments içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu NetDocuments ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -86,7 +86,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve yanıt URL 'SI ile güncelleştirin. Depo KIMLIĞI, **CA 'dan** ve ardından NetDocuments deponuz ile ilişkili 8 karakter kodundan başlayan bir değerdir. Daha fazla bilgi için [NetDocuments federal kimlik desteği belgesine](https://support.netdocuments.com/hc/en-us/articles/205220410-Federated-Identity-Login) bakabilirsiniz. Alternatif olarak, yukarıdaki bilgileri kullanarak yapılandırma zorluklarla karşılaşıyorsanız, bu değerleri almak için [NetDocuments istemci destek ekibine](https://support.netdocuments.com/hc/) başvurabilirsiniz. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. NetDocuments uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde, **NameIdentifier** 'ın **User. UserPrincipalName**ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir. NetDocuments uygulaması, **NameIdentifier** 'ın **EmployeeID** ile veya **NameIdentifier**olarak kuruluşunuz için geçerli olan başka bir taleple eşlenmesini bekler, bu nedenle, **Düzenle** simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
+1. NetDocuments uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde, **NameIdentifier** 'ın **User. UserPrincipalName** ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir. NetDocuments uygulaması, **NameIdentifier** 'ın **EmployeeID** ile veya **NameIdentifier** olarak kuruluşunuz için geçerli olan başka bir taleple eşlenmesini bekler, bu nedenle, **Düzenle** simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
 
     ![image](common/edit-attribute.png)
 
@@ -108,7 +108,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -132,7 +132,7 @@ Bu bölümde, NetDocuments 'e erişim vererek Azure çoklu oturum açma özelli�
 
 1. Farklı bir Web tarayıcısı penceresinde, NetDocuments şirket sitenizde yönetici olarak oturum açın.
 
-2. Sağ üst köşede, adınızı>**yöneticinizle**seçin.
+2. Sağ üst köşede, adınızı>**yöneticinizle** seçin.
 
 3. **Güvenlik Merkezi**'ni seçin.
    
@@ -146,7 +146,7 @@ Bu bölümde, NetDocuments 'e erişim vererek Azure çoklu oturum açma özelli�
    
     ![Federal Kimlik](./media/netdocuments-tutorial/federated-id.png "Federal Kimlik")
    
-    a. **Federal Kimlik sunucu türü**olarak **Active Directory Federasyon Hizmetleri (AD FS)**' yi seçin.
+    a. **Federal Kimlik sunucu türü** olarak **Active Directory Federasyon Hizmetleri (AD FS)**' yi seçin.
     
     b.  Azure portal ' den indirdiğiniz indirilen meta veri dosyasını karşıya yüklemek için **Dosya Seç**' i seçin.
     
@@ -160,11 +160,11 @@ Azure AD kullanıcılarının NetDocuments 'ta oturum açmasını sağlamak içi
 
 1. **NetDocuments** şirket sitenizde yönetici olarak oturum açın.
 
-2. Sağ üst köşede, adınızı>**yöneticinizle**seçin.
+2. Sağ üst köşede, adınızı>**yöneticinizle** seçin.
    
     ![Yönetici](./media/netdocuments-tutorial/user-admin.png "Yönetici")
 
-3. **Kullanıcılar ve gruplar ' ı**seçin.
+3. **Kullanıcılar ve gruplar ' ı** seçin.
    
     ![Ekran görüntüsü, kullanıcılar & yasal belgelerden seçilen grupları gösterir.](./media/netdocuments-tutorial/users-groups.png "Depo")
 

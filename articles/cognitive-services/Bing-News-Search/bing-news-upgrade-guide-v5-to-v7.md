@@ -10,19 +10,19 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: scottwhi
-ms.openlocfilehash: fe9511df5fb290853dbd6cb8d39fed4e289fca4d
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: a114cb24d79189f9e370fae1962f60ca97241d90
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366426"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351376"
 ---
 # <a name="news-search-api-upgrade-guide"></a>Haber Arama API Yükseltme Kılavuzu
 
 > [!WARNING]
-> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](/bing/search-apis/bing-web-search/create-bing-search-service-resource)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
 > Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
-> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
+> Geçiş yönergeleri için bkz. [Bing arama Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Bu yükseltme Kılavuzu, sürüm 5 ve Bing Haber Arama API'si sürüm 7 arasındaki değişiklikleri tanımlar. Uygulamanızın 7 sürümünü kullanmak için güncelleştirmeniz gereken parçalarını belirlemenize yardımcı olması için bu kılavuzu kullanın.
 
@@ -42,7 +42,7 @@ Bu yükseltme Kılavuzu, sürüm 5 ve Bing Haber Arama API'si sürüm 7 arasınd
 
 - V5 hata kodları aşağıdaki olası `code` ve `subCode` değerlerle değiştirilmiştir.
 
-|Kod|Alt|Description
+|Kod|Alt|Açıklama
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|Bing, alt kod koşullarından herhangi biri gerçekleştiğinde ServerError döndürür. HTTP durum kodu 500 ise yanıt bu hataları içerir.
 |Invalidrequest|ParameterMissing<br/>Parameterınvalidvalue<br/>HttpNotAllowed<br/>Engellendi|İsteğin herhangi bir bölümü geçerli değilse Bing, ınvalidrequest döndürüyor. Örneğin, gerekli bir parametre eksik veya bir parametre değeri geçerli değil.<br/><br/>Hata ParameterMissing veya Parameterınvalidvalue ise, HTTP durum kodu 400 ' dir.<br/><br/>Hataya HttpNotAllowed varsa, HTTP durum kodu 410 ' dir.
@@ -95,4 +95,4 @@ Engellendi|Invalidrequest. engellendi
 
 - `sort`Alan [haber](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#news) nesnesine eklendi. `sort`Alan, makalelerin sıralama sırasını gösterir. Örneğin, makaleler ilgiye (varsayılan) veya tarihe göre sıralanır.
 
-- Sıralama düzenini tanımlayan [Sortvalue](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortvalue) nesnesi eklendi. `isSelected`Alan, yanıtın sıralama düzenini kullanıp kullanmadığını belirtir. **Doğru** ise, yanıt sıralama düzenini kullandı. `isSelected` **Yanlışsa** , `url` farklı bir sıralama düzeni istemek için alanındaki URL 'yi kullanabilirsiniz.
+- Sıralama düzenini tanımlayan [Sortvalue](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#sortvalue) nesnesi eklendi. `isSelected`Alan, yanıtın sıralama düzenini kullanıp kullanmadığını belirtir. **Doğru** ise, yanıt sıralama düzenini kullandı. `isSelected` **Yanlışsa**, `url` farklı bir sıralama düzeni istemek için alanındaki URL 'yi kullanabilirsiniz.

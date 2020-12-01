@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: 19137f3384a1b97ae1ae7e3faeb4dc2e0e4fd3bd
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 550418761e91a8292761d7595ff32d939c0d542e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96017806"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350407"
 ---
 # <a name="monitor-azure-cosmos-db"></a>Azure Cosmos DB'yi izleme
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -93,7 +93,7 @@ Tüm Azure Cosmos DB ölçümleri **Standart ölçümlerde Cosmos DB** ad alanı
 * Region
 * Durum
 
-Başvuru için, [Azure izleyici 'de desteklenen tüm kaynak ölçümlerinin](/azure/azure-monitor/platform/metrics-supported)bir listesini görebilirsiniz.
+Başvuru için, [Azure izleyici 'de desteklenen tüm kaynak ölçümlerinin](../azure-monitor/platform/metrics-supported.md)bir listesini görebilirsiniz.
 
 ### <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>Azure Cosmos DB için işlem düzeyi ölçümlerini görüntüleyin
 
@@ -127,7 +127,7 @@ Ayrıca ölçümleri ve belirli bir **CollectionName**, **DatabaseName**, **Oper
 
 Azure Izleyici günlüklerindeki veriler, her tablonun kendine ait benzersiz özellikler kümesine sahip olduğu tablolarda depolanır.
 
-Azure Izleyici 'deki tüm kaynak günlüklerine aynı alanlar ve hizmete özgü alanlar gelir. Ortak şema, [Azure izleyici kaynak günlüğü şemasında](../azure-monitor/platform/diagnostic-logs-schema.md#top-level-resource-logs-schema)özetlenmiştir. Azure Cosmos DB için toplanan kaynak günlüklerinin türlerinin listesi için, bkz. [Izleme Azure Cosmos DB veri başvurusu] ((Monitor-Cosmos-DB-Reference. MD # Resource-logs)  
+Azure Izleyici 'deki tüm kaynak günlüklerine aynı alanlar ve hizmete özgü alanlar gelir. Ortak şema, [Azure izleyici kaynak günlüğü şemasında](../azure-monitor/platform/resource-logs-schema.md#top-level-common-schema)özetlenmiştir. Azure Cosmos DB için toplanan kaynak günlüklerinin türlerinin listesi için bkz. [izleme Azure Cosmos DB veri başvurusu](monitor-cosmos-db-reference.md#resource-logs).
 
 [Etkinlik günlüğü](/azure/azure-monitor/platform/activity-log) , abonelik düzeyindeki olaylara ilişkin Öngörüler sağlayan bir Azure platformu oturum açma işlemi. Bunu bağımsız olarak görüntüleyebilir veya Azure Izleyici günlüklerine yönlendirebilirsiniz, burada Log Analytics kullanarak çok daha karmaşık sorgular yapabilirsiniz.  
 
@@ -172,11 +172,11 @@ Azure Cosmos kaynaklarınızı izlemenize yardımcı olması için **günlük ar
 
 ## <a name="alerts"></a>Uyarılar
 
-İzleme verilerinizde önemli koşullar bulunduğunda Azure Izleyici uyarıları size önceden bildirimde bulunur. Bunlar, müşterilerinizin sorunları fark etmeden önce sisteminizdeki sorunları tanımlamanızı ve ele belirlemenizi sağlar. [Ölçümler](/azure/azure-monitor/platform/alerts-metric-overview), [Günlükler](/azure/azure-monitor/platform/alerts-unified-log)ve [etkinlik günlüğü](/azure/azure-monitor/platform/activity-log-alerts)hakkında uyarı ayarlayabilirsiniz. Farklı uyarı türlerinin avantajları ve dezavantajları vardır
+İzleme verilerinizde önemli koşullar bulunduğunda Azure Izleyici uyarıları size önceden bildirimde bulunur. Bunlar, müşterilerinizin sorunları fark etmeden önce sisteminizdeki sorunları tanımlamanızı ve ele belirlemenizi sağlar. [Ölçümler](../azure-monitor/platform/alerts-metric-overview.md), [Günlükler](../azure-monitor/platform/alerts-unified-log.md)ve [etkinlik günlüğü](../azure-monitor/platform/activity-log-alerts.md)hakkında uyarı ayarlayabilirsiniz. Farklı uyarı türlerinin avantajları ve dezavantajları vardır
 
 Örneğin, aşağıdaki tabloda kaynaklarınız için birkaç uyarı kuralı listelenmektedir. Azure portal uyarı kurallarının ayrıntılı bir listesini bulabilirsiniz. Daha fazla bilgi için bkz. [Uyarıları yapılandırma](create-alerts.md) makalesi.  
 
-| Uyarı türü | Koşul | Description  |
+| Uyarı türü | Koşul | Açıklama  |
 |:---|:---|:---|
 |İstek birimlerindeki hız sınırlaması (ölçüm uyarısı) |Boyut adı: StatusCode, Işleç: Equals, boyut değerleri: 429  | Kapsayıcı veya veritabanı sağlanan aktarım hızı sınırını aşarsa uyarır. |
 |Yük devredilen bölge |İşleç: büyüktür, toplama türü: Count, eşik değeri: 1 | Tek bir bölgenin yük devretme durumunda. Otomatik yük devretmeyi etkinleştirmezseniz bu uyarı yararlı olur. |

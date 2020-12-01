@@ -11,19 +11,19 @@ ms.topic: tutorial
 ms.date: 02/03/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: b6d9ec0760cc8d95f712cfc7a5478de1a99465ef
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 76d7f4e31934480be57cd5ac133c1c7e6a9dd364
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94379880"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349614"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>Öğretici: Tek sayfalı Video Arama uygulaması
 
 > [!WARNING]
-> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](/bing/search-apis/bing-web-search/create-bing-search-service-resource)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
 > Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
-> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
+> Geçiş yönergeleri için bkz. [Bing arama Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 Bing Video Arama API'si Web'de arama yapmanızı ve arama sorgusuna uyan video sonuçları almanızı sağlar. Bu öğreticide, Bing arama API'sini kullanarak sayfada arama sonuçlarını görüntüleyen tek sayfalı bir Web uygulaması oluşturuyoruz. Uygulama HTML, CSS ve JavaScript bileşenlerini içeriyor.
 
 <!-- Remove until it can be replaced with a sanitized version.

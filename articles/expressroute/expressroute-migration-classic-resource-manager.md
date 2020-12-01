@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: duau
-ms.openlocfilehash: ac6fe619fc1c65b9ced18227d08cde50997eb7d7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57c439cf8ac52d93d231d6ff33f72a5a942dec6a
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89395290"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351614"
 ---
 # <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>ExpressRoute ile ilişkili sanal ağları klasik 'ten Kaynak Yöneticisi geçirme
 
@@ -29,10 +29,10 @@ Bu makalede, ExpressRoute bağlantı hattınızı taşıdıktan sonra ExpressRou
 * Kaynak Yöneticisi dağıtım modelinde oluşturulmuş bir kaynak grubuna sahip olduğunuzdan emin olun.
 * Aşağıdaki kaynak geçiş belgelerini gözden geçirin:
 
-    * [IaaS kaynaklarının klasik modelden Azure Resource Manager’a platform destekli geçişi](../virtual-machines/windows/migration-classic-resource-manager-overview.md)
+    * [IaaS kaynaklarının klasik modelden Azure Resource Manager’a platform destekli geçişi](../virtual-machines/migration-classic-resource-manager-overview.md)
     * [Klasik modelden Azure Resource Manager’a platform destekli geçişe ayrıntılı teknik bakış](../virtual-machines/migration-classic-resource-manager-deep-dive.md)
     * [SSS: IaaS kaynaklarının klasik 'ten Azure Resource Manager geçişi desteklenir](../virtual-machines/migration-classic-resource-manager-faq.md)
-    * [En yaygın geçiş hatalarını ve azaltmaları gözden geçirin](../virtual-machines/windows/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+    * [En yaygın geçiş hatalarını ve azaltmaları gözden geçirin](../virtual-machines/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="supported-and-unsupported-scenarios"></a>Desteklenen ve desteklenmeyen senaryolar
 
@@ -82,7 +82,7 @@ Bu bölümde, ExpressRoute devresi ile aynı abonelikte bir sanal ağ, ağ geçi
    ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [IaaS kaynaklarının klasik modelden Azure Resource Manager’a platform destekli geçişi](../virtual-machines/windows/migration-classic-resource-manager-overview.md)
+* [IaaS kaynaklarının klasik modelden Azure Resource Manager’a platform destekli geçişi](../virtual-machines/migration-classic-resource-manager-overview.md)
 * [Klasik modelden Azure Resource Manager’a platform destekli geçişe ayrıntılı teknik bakış](../virtual-machines/migration-classic-resource-manager-deep-dive.md)
 * [SSS: IaaS kaynaklarının klasik 'ten Azure Resource Manager geçişi desteklenir](../virtual-machines/migration-classic-resource-manager-faq.md)
-* [En yaygın geçiş hatalarını ve azaltmaları gözden geçirin](../virtual-machines/windows/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [En yaygın geçiş hatalarını ve azaltmaları gözden geçirin](../virtual-machines/migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

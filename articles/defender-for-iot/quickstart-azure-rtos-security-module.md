@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2020
 ms.author: rkarlin
-ms.openlocfilehash: 38e78b80fd14aec7557b563b2b33faf7d51bd114
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 321c8d2b9e58aba943c5bf19adf54d6359c5be96
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91759741"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351785"
 ---
 # <a name="quickstart-security-module-for-azure-rtos-preview"></a>Hızlı başlangıç: Azure RTOS için güvenlik modülü (Önizleme)
 
-Bu makalede, başlamadan önce önkoşulların açıklaması sağlanmaktadır ve bir IoT Hub Azure RTOS hizmeti için güvenlik modülünün nasıl etkinleştirileceği açıklanır. Şu anda bir IoT Hub yoksa, kullanmaya başlamak için [Azure Portal kullanarak IoT Hub oluşturma](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal) makalesine bakın.
+Bu makalede, başlamadan önce önkoşulların açıklaması sağlanmaktadır ve bir IoT Hub Azure RTOS hizmeti için güvenlik modülünün nasıl etkinleştirileceği açıklanır. Şu anda bir IoT Hub yoksa, kullanmaya başlamak için [Azure Portal kullanarak IoT Hub oluşturma](../iot-hub/iot-hub-create-through-portal.md) makalesine bakın.
 
 > [!NOTE]
 > Azure RTOS için güvenlik modülü yalnızca Standart katman IoT Hub 'Larında desteklenir.
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 ### <a name="supported-devices"></a>Desteklenen cihazlar
 
@@ -49,7 +49,7 @@ Başlamak için bir IoT Hub bağlantısı gerekir.
 1. IoT bağlantı dizesini [yapılandırma dosyasına](how-to-azure-rtos-security-module.md)kopyalayın.
 
 
-Bağlantı kimlik bilgileri, Kullanıcı uygulama yapılandırmasından **host_name**, **DEVICE_ID**ve **DEVICE_SYMMETRIC_KEY**alınır.
+Bağlantı kimlik bilgileri, Kullanıcı uygulama yapılandırmasından **host_name**, **DEVICE_ID** ve **DEVICE_SYMMETRIC_KEY** alınır.
 
 Azure RTOS için güvenlik modülü, **MQTT** protokolüne göre Azure IoT ara yazılım bağlantılarını kullanır.
 
@@ -60,13 +60,13 @@ IoT Hub Log Analytics alma, IoT çözümü için varsayılan Defender tarafında
 1. Azure portal IoT Hub gidin.
 1. **Güvenlik** menüsündeki **Ayarlar** ' ı seçin.
    :::image type="content" source="media/quickstart/azure-rtos-hub-settings.png" alt-text="Azure RTOS için veri toplama seçeneğine erişme"::: 
-1. **Veri toplamayı**seçin. 
-1. **Çalışma alanı yapılandırma** seçeneğinde, geçişi **Açık**olarak değiştirin. 
+1. **Veri toplamayı** seçin. 
+1. **Çalışma alanı yapılandırma** seçeneğinde, geçişi **Açık** olarak değiştirin. 
 1. Yeni bir Log Analytics çalışma alanı oluşturun veya var olan bir çalışma alanını ekleyin. **Ham güvenlik verilerine erişim** seçeneğinin seçildiğinden emin olun. 
- :::image type="content" source="media/quickstart/azure-rtos-data-collection-on.png" alt-text="Azure RTOS için veri toplama seçeneğine erişme":::
+ :::image type="content" source="media/quickstart/azure-rtos-data-collection-on.png" alt-text="Veri toplama seçeneğini gösteren Azure RTOS yapılandırması ve her ikisi de seçili olan RAW güvenlik verileri seçenekleri":::
 1. **Kaydet**’i seçin
 1. Azure kaynakları listenize dönün ve oluşturduğunuz Log Analytics çalışma alanının IoT Hub için etkinleştirildiğini doğrulayın.
-    :::image type="content" source="media/quickstart/verify-azure-resource-list.png" alt-text="Azure RTOS için veri toplama seçeneğine erişme"::: 
+    :::image type="content" source="media/quickstart/verify-azure-resource-list.png" alt-text="IoT Hub için eklenen doğru Log Analytics çalışma alanının eklenmesini onaylamak için Azure Kaynak listenizi denetleyin"::: 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

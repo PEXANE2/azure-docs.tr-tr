@@ -8,12 +8,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 4eaa33778287bfcda45547c24e6abe0606b6baa7
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: a952bfa45515b9d35549d03d18fd94103679344d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368806"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349478"
 ---
 # <a name="cognitive-services-development-options"></a>Bilişsel Hizmetler dağıtım seçenekleri
 
@@ -35,7 +35,7 @@ Bilişsel hizmetler dört kategoride düzenlenmiştir: karar, dil, konuşma ve v
 
 ## <a name="development-options-for-prediction-and-analysis"></a>Tahmin ve analiz için geliştirme seçenekleri 
 
-Modelleri özelleştirmek ve yapılandırmak için kullanacağınız araçlar, bilişsel hizmetler 'i çağırmak için kullanabileenlerden farklıdır. Çoğu bilişsel hizmetler, tüm özelleştirmeler olmadan veri göndermenizi ve Öngörüler almanızı sağlar. Örnek: 
+Modelleri özelleştirmek ve yapılandırmak için kullanacağınız araçlar, bilişsel hizmetler 'i çağırmak için kullanabileenlerden farklıdır. Çoğu bilişsel hizmetler, tüm özelleştirmeler olmadan veri göndermenizi ve Öngörüler almanızı sağlar. Örneğin: 
 
 * Sözcükleri ve tümceleri algılamak veya çerçevedeki kişilerin sayısını saymak için Görüntü İşleme hizmetine görüntü gönderebilirsiniz
 * Konuşma hizmetine bir ses dosyası gönderebilir ve sonra da konuşmayı aynı anda metne çevirebilirsiniz
@@ -49,10 +49,10 @@ Bilişsel hizmetlerle çalışabilmeniz için kullanabileceğiniz farklı yönte
 
 Bilişsel hizmetler istemci kitaplıkları ve REST API 'Leri hizmetinize doğrudan erişim sağlar. Bu araçlar bilişsel hizmetler 'e, taban çizgisi modellerine programlı erişim sağlar ve birçok durumda, modellerinizi ve çözümlerinizi programlı bir şekilde özelleştirmenize olanak tanır. 
 
-* **Hedef Kullanıcı (ler)** : geliştiriciler ve veri bilimcileri
-* **Avantajlar** : Hizmetleri herhangi bir dil ve ortamdan çağırmak için en büyük esnekliği sağlar. 
-* **UI** : yok-yalnızca kod
-* **Abonelik (ler)** : Azure hesabı + bilişsel hizmetler kaynakları
+* **Hedef Kullanıcı (ler)**: geliştiriciler ve veri bilimcileri
+* **Avantajlar**: Hizmetleri herhangi bir dil ve ortamdan çağırmak için en büyük esnekliği sağlar. 
+* **UI**: yok-yalnızca kod
+* **Abonelik (ler)**: Azure hesabı + bilişsel hizmetler kaynakları
 
 Kullanılabilir istemci kitaplıkları ve REST API 'Ler hakkında daha fazla bilgi edinmek istiyorsanız, bilişsel [Hizmetler genel bakımızı](index.yml) kullanarak çekme, karar verme, dil ve konuşmaya yönelik hızlı başlangıçlardan birini kullanmaya başlayın.
 
@@ -60,10 +60,10 @@ Kullanılabilir istemci kitaplıkları ve REST API 'Ler hakkında daha fazla bil
 
 Büyük veriler için bilişsel hizmetler sayesinde, akıllı modellerinizi doğrudan Apache Spark &trade; ve SQL hesaplamaları içine ekleyebilirsiniz. Bu araçlar, geliştiricilerin akıllı ve dağıtılmış uygulamalar oluşturmaya odaklanabilmeleri için düşük düzeyli ağ ayrıntılarından kurtulmasını sağlayabilir. Büyük veriler için bilişsel hizmetler aşağıdaki platformları ve bağlayıcıları destekler: Azure Databricks, Azure SYNAPSE, Azure Kubernetes hizmeti ve veri bağlayıcıları.
 
-* **Hedef Kullanıcı** : veri bilimcileri ve veri mühendisleri
-* **Avantajlar** : büyük veriler için Azure bilişsel hizmetler, kullanıcıların bilişsel hizmetler aracılığıyla Apache Spark kullanarak veri sanallaştırmasını sağlar &trade; . Herhangi bir veri deposu ile büyük ölçekli akıllı uygulamalar oluşturmak kolaydır.
-* **UI** : yok-yalnızca kod
-* **Abonelik (ler)** : Azure hesabı + bilişsel hizmetler kaynakları
+* **Hedef Kullanıcı**: veri bilimcileri ve veri mühendisleri
+* **Avantajlar**: büyük veriler için Azure bilişsel hizmetler, kullanıcıların bilişsel hizmetler aracılığıyla Apache Spark kullanarak veri sanallaştırmasını sağlar &trade; . Herhangi bir veri deposu ile büyük ölçekli akıllı uygulamalar oluşturmak kolaydır.
+* **UI**: yok-yalnızca kod
+* **Abonelik (ler)**: Azure hesabı + bilişsel hizmetler kaynakları
 
 Bilişsel hizmetler için büyük veriler hakkında daha fazla bilgi edinmek istiyorsanız, başlamak için iyi bir yere [genel bakış sunulmaktadır](./big-data/cognitive-services-for-big-data.md). Oluşturmaya başlamaya hazırsanız [Python](./big-data/samples-python.md) veya [Scala](./big-data/samples-scala.md) örneklerimizi deneyin.
 
@@ -71,50 +71,50 @@ Bilişsel hizmetler için büyük veriler hakkında daha fazla bilgi edinmek ist
 
 [Azure işlevleri](../azure-functions/index.yml) ve [Azure App Service Web işleri](../app-service/index.yml) , geliştiriciler Için tasarlanan ve [Azure Uygulama Hizmetleri](../app-service/index.yml)üzerine inşa edilen kod ilk Tümleştirme Hizmetleri sağlar. Bu ürünler, kod yazmak için sunucusuz altyapı sağlar. Bu kod içinde, istemci kitaplıklarımızı ve REST API 'lerimizi kullanarak hizmetlerimize çağrı yapabilirsiniz. 
 
-* **Hedef Kullanıcı (ler)** : geliştiriciler ve veri bilimcileri
-* **Avantajlar** : olay tarafından tetiklenen kodu çalıştırmanıza olanak sağlayan sunucusuz işlem hizmeti. 
-* **UI** : Evet
-* **Abonelik (ler)** : Azure hesabı + bilişsel hizmetler kaynağı + Azure işlevleri aboneliği
+* **Hedef Kullanıcı (ler)**: geliştiriciler ve veri bilimcileri
+* **Avantajlar**: olay tarafından tetiklenen kodu çalıştırmanıza olanak sağlayan sunucusuz işlem hizmeti. 
+* **UI**: Evet
+* **Abonelik (ler)**: Azure hesabı + bilişsel hizmetler kaynağı + Azure işlevleri aboneliği
 
 ### <a name="azure-logic-apps"></a>Azure Logic Apps 
 
 [Azure Logic Apps](../logic-apps/index.yml) aynı iş akışı tasarımcısını ve bağlayıcıları Power otomatikleştir olarak paylaşmak, ancak Visual Studio ve DevOps ile tümleştirmeler dahil daha gelişmiş ve denetim sağlar. Güç otomatikleştirme, API 'Lerde bir ara sunucu veya sarmalayıcı sağlayan hizmete özel bağlayıcılar aracılığıyla bilişsel hizmetler kaynaklarınızla tümleştirmeyi kolaylaştırır. Bunlar, güç otomatikleştirmede kullanılabilen bağlayıcılardır. 
 
-* **Hedef Kullanıcı** : geliştiriciler, TÜMLEŞTIRICILER, BT uzmanları, DevOps
-* **Avantajlar** : bir düşük kod çözümünde gelişmiş seçenekler ve tümleştirme sağlayan tasarımcı-ilk (bildirim temelli) geliştirme modeli
-* **UI** : Evet
-* **Abonelikler** : Azure hesabı + bilişsel hizmetler kaynağı + Logic Apps dağıtımı
+* **Hedef Kullanıcı**: geliştiriciler, TÜMLEŞTIRICILER, BT uzmanları, DevOps
+* **Avantajlar**: bir düşük kod çözümünde gelişmiş seçenekler ve tümleştirme sağlayan tasarımcı-ilk (bildirim temelli) geliştirme modeli
+* **UI**: Evet
+* **Abonelikler**: Azure hesabı + bilişsel hizmetler kaynağı + Logic Apps dağıtımı
 
 ### <a name="power-automate"></a>Power Automate 
 
 Güç otomatikleştirin, kod yazmadan uygulamalar ve hizmetler arasında otomatik iş akışları oluşturmanıza yardımcı olan bir hizmet olan güç [platformudur](/power-platform/) . Bir Power otomatikleştir çözümünde bilişsel hizmetler kaynağınız ile etkileşim kurmayı kolaylaştırmak için birkaç bağlayıcı sunuyoruz. Güç otomatikleştirme, Logic Apps üzerine kurulmuştur. 
 
-* **Hedef Kullanıcı (ler** ): iş kullanıcıları (analistleri) ve SharePoint yöneticileri
-* **Avantajlar** : fare tıklamalarını kaydederek yinelenen el ile gerçekleştirilen görevleri otomatikleştirin, masaüstünüzdeki tuşları ve kopyalama adımları yapıştırın!
-* **UI araçları** : Evet-yalnızca kullanıcı arabirimi
-* **Abonelik (ler)** : Azure hesabı + bilişsel hizmetler kaynağı + Power otomatikleştir aboneliği + Office 365 aboneliği
+* **Hedef Kullanıcı (ler**): iş kullanıcıları (analistleri) ve SharePoint yöneticileri
+* **Avantajlar**: fare tıklamalarını kaydederek yinelenen el ile gerçekleştirilen görevleri otomatikleştirin, masaüstünüzdeki tuşları ve kopyalama adımları yapıştırın!
+* **UI araçları**: Evet-yalnızca kullanıcı arabirimi
+* **Abonelik (ler)**: Azure hesabı + bilişsel hizmetler kaynağı + Power otomatikleştir aboneliği + Office 365 aboneliği
 
 ### <a name="ai-builder"></a>AI Builder 
 
 [AI Oluşturucu](/ai-builder/overview) , işleri otomatikleştirerek ve sonuçları tahmin ederek iş performansını geliştirmek için kullanabileceğiniz bir Microsoft güç platformu özelliğidir. AI Oluşturucu, bir nokta tıklama deneyimi aracılığıyla AI 'nin gücünü çözümlerinize getirir. Form tanıyıcı, Metin Analizi ve Görüntü İşleme gibi birçok bilişsel hizmet, burada doğrudan tümleşiktir ve kendi bilişsel hizmetlerinizi oluşturmanız gerekmez. 
 
-* **Hedef Kullanıcı (ler** ): iş kullanıcıları (analistleri) ve SharePoint yöneticileri
-* **Avantajlar** : bir nokta ve tıklama DENEYIMI aracılığıyla AI 'nin gücünü getiren bir anahtar oluşturma çözümüdür. Kodlama veya veri bilimi becerileri gerekmez.
-* **UI araçları** : Evet-yalnızca kullanıcı arabirimi
-* **Abonelik (ler)** : AI Oluşturucu
+* **Hedef Kullanıcı (ler**): iş kullanıcıları (analistleri) ve SharePoint yöneticileri
+* **Avantajlar**: bir nokta ve tıklama DENEYIMI aracılığıyla AI 'nin gücünü getiren bir anahtar oluşturma çözümüdür. Kodlama veya veri bilimi becerileri gerekmez.
+* **UI araçları**: Evet-yalnızca kullanıcı arabirimi
+* **Abonelik (ler)**: AI Oluşturucu
 
 ### <a name="continuous-integration-and-deployment"></a>Sürekli tümleştirme ve dağıtım
 
 Dağıtımlarınızı yönetmek için Azure DevOps ve GitHub eylemlerini kullanabilirsiniz. [Aşağıdaki bölümde](#continuous-integration-and-delivery-with-devops-and-github-actions) , konuşma ve Language UNDERSTANDING (Luu) hizmeti için özel modeller eğitmek ve DAĞıTMAK üzere CI/CD tümleştirmelerine yönelik iki örnek vardır. 
 
-* **Hedef Kullanıcı** : geliştiriciler, veri bilimcileri ve veri mühendisleri
-* **Avantajlar** : uygulamaları ve modelleri program aracılığıyla sürekli olarak ayarlamanıza, güncelleştirmenize ve dağıtmanıza olanak tanır. Verileri düzenli olarak kullanarak konuşma, görme, dil ve kararların modellerini geliştirme ve güncelleştirme için önemli bir avantaj vardır. 
-* **UI araçları** : yok-yalnızca kod 
-* **Abonelik (ler)** : Azure hesabı + bilişsel hizmetler kaynağı + GitHub hesabı
+* **Hedef Kullanıcı**: geliştiriciler, veri bilimcileri ve veri mühendisleri
+* **Avantajlar**: uygulamaları ve modelleri program aracılığıyla sürekli olarak ayarlamanıza, güncelleştirmenize ve dağıtmanıza olanak tanır. Verileri düzenli olarak kullanarak konuşma, görme, dil ve kararların modellerini geliştirme ve güncelleştirme için önemli bir avantaj vardır. 
+* **UI araçları**: yok-yalnızca kod 
+* **Abonelik (ler)**: Azure hesabı + bilişsel hizmetler kaynağı + GitHub hesabı
 
 ## <a name="tools-to-customize-and-configure-models"></a>Modelleri özelleştirmeye ve yapılandırmaya yönelik araçlar
 
-Bilişsel hizmetlerle bir uygulama veya iş akışı oluşturan yolculukta ilerlemeniz sayesinde, istenen performansı elde etmek için modeli özelleştirmeniz gerektiğini fark edebilirsiniz. Hizmetlerimizin birçoğu, belirli iş gereksinimlerinizi karşılamak için önceden oluşturulmuş modellerin üzerine derlemenize olanak tanır. Tüm özelleştirilebilir hizmetlerimiz için hem işlem boyunca hem de kod odaklı eğitimlere yönelik API 'Ler için Kullanıcı arabirimi odaklı bir deneyim sağlıyoruz. Örnek:
+Bilişsel hizmetlerle bir uygulama veya iş akışı oluşturan yolculukta ilerlemeniz sayesinde, istenen performansı elde etmek için modeli özelleştirmeniz gerektiğini fark edebilirsiniz. Hizmetlerimizin birçoğu, belirli iş gereksinimlerinizi karşılamak için önceden oluşturulmuş modellerin üzerine derlemenize olanak tanır. Tüm özelleştirilebilir hizmetlerimiz için hem işlem boyunca hem de kod odaklı eğitimlere yönelik API 'Ler için Kullanıcı arabirimi odaklı bir deneyim sağlıyoruz. Örneğin:
 
 * Bir Özel Konuşma Tanıma modelini, bir sözcük hata oranı (WER) ile tıp koşullarını doğru bir şekilde tanıyacak şekilde eğitebilmek istiyorsunuz %3
 * Coniferous ve yaprak döken ağaçlar arasındaki farkı söyleyebilir Özel Görüntü İşleme bir görüntü Sınıflandırıcısı oluşturmak istiyorsunuz
@@ -133,7 +133,7 @@ Modelleri eğitmek ve yapılandırmak için kullanacağınız araçlar, bilişse
 | Dil | Soru-Cevap Oluşturucu | https://www.qnamaker.ai/ | [Hızlı Başlangıç](./qnamaker/quickstarts/create-publish-knowledge-base.md) |
 | Dil | Translator/özel çevirici | https://portal.customtranslator.azure.ai/ | [Hızlı Başlangıç](./translator/custom-translator/quickstart-build-deploy-custom-model.md) |
 | Konuşma | Özel Komutlar | https://speech.microsoft.com/ | [Hızlı Başlangıç](./speech-service/custom-commands.md) |
-| Konuşma | Özel Konuşma Tanıma | https://speech.microsoft.com/ | [Hızlı Başlangıç](./speech-service/how-to-custom-speech.md) |
+| Konuşma | Özel Konuşma Tanıma | https://speech.microsoft.com/ | [Hızlı Başlangıç](./speech-service/custom-speech-overview.md) |
 | Konuşma | Özel ses | https://speech.microsoft.com/ | [Hızlı Başlangıç](./speech-service/how-to-custom-voice.md) |  
 
 ### <a name="continuous-integration-and-delivery-with-devops-and-github-actions"></a>DevOps ve GitHub eylemleriyle sürekli tümleştirme ve teslim

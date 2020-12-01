@@ -3,12 +3,12 @@ title: Yenilikler Sürüm notları-Azure Event Grid
 description: En son sürüm notları, bilinen sorunlar, hata düzeltmeleri, kullanım dışı işlevler ve yaklaşan değişiklikler gibi Azure Event Grid yenilikleri öğrenin.
 ms.topic: overview
 ms.date: 07/23/2020
-ms.openlocfilehash: 1edfa3e2bc4c8adae113b2215b7fb0483fba4c02
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7528cef7007704bbf434f16622707da8920eec2b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87172792"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350016"
 ---
 # <a name="whats-new-in-azure-event-grid"></a>Azure Event Grid yenilikler nelerdir?
 
@@ -40,7 +40,7 @@ Azure Event Grid iyileştirmeleri sürekli olarak alır. En son gelişmelerden h
 - Bu sürüm, kaliteyi iyileştirmek için ek hata düzeltmeleri içerir.
 - Sürüm 5.3.1-Preview olarak, bu sürüm aşağıdaki yeni işlevleri içeren 2020-04-01-Preview API sürümüne karşılık gelir: 
     - [Etki alanları ve konular için olayları yayımlarken IP filtreleme desteği](configure-firewall.md)
-    - [İş ortağı konuları](partner-topics-overview.md)
+    - [İş ortağı konuları](./partner-events-overview.md)
     - [Azure portal 'da izlenen kaynaklar olarak sistem konuları](system-topics.md)
     - [Yönetilen hizmet kimliğiyle olay teslimi](managed-service-identity.md) 
     - [Özel bağlantı hizmeti desteği](configure-private-endpoints.md)
@@ -49,7 +49,7 @@ Azure Event Grid iyileştirmeleri sürekli olarak alır. En son gelişmelerden h
 - Bu sürüm, kaliteyi artırmak için çeşitli hata düzeltmeleri içerir.
 - Sürüm 5.3.0-Preview olarak, bu sürüm aşağıdaki yeni işlevleri içeren 2020-04-01-Preview API sürümüne karşılık gelir: 
     - [Etki alanları ve konular için olayları yayımlarken IP filtreleme desteği](configure-firewall.md)
-    - [İş ortağı konuları](partner-topics-overview.md)
+    - [İş ortağı konuları](./partner-events-overview.md)
     - [Azure portal 'da izlenen kaynaklar olarak sistem konuları](system-topics.md)
     - [Yönetilen hizmet kimliğiyle olay teslimi](managed-service-identity.md) 
     - [Özel bağlantı hizmeti desteği](configure-private-endpoints.md)
@@ -59,7 +59,7 @@ Azure Event Grid iyileştirmeleri sürekli olarak alır. En son gelişmelerden h
 - Sürüm 5.2.0-Preview olarak, bu sürüm 2020-04-01-Preview API sürümüne karşılık gelir.
 - Aşağıdaki yeni işlevlere destekler: 
     - [Etki alanları ve konular için olayları yayımlarken IP filtreleme desteği](configure-firewall.md)
-    - [İş ortağı konuları](partner-topics-overview.md)
+    - [İş ortağı konuları](./partner-events-overview.md)
     - [Azure portal 'da izlenen kaynaklar olarak sistem konuları](system-topics.md)
     - [Yönetilen hizmet kimliğiyle olay teslimi](managed-service-identity.md) 
     - [Özel bağlantı hizmeti desteği](configure-private-endpoints.md)

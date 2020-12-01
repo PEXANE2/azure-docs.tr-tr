@@ -10,19 +10,19 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: maheshb
-ms.openlocfilehash: aba990914ea193a7246a24b1502522f6144a0a9c
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 986a7c8f1282b76c2ae94eebcc2c31dc3b3e7cad
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94367599"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352023"
 ---
 # <a name="configure-your-custom-autosuggest-experience"></a>Özel otomatik öneri deneyiminizi yapılandırın
 
 > [!WARNING]
-> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](/bing/search-apis/bing-web-search/create-bing-search-service-resource)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
 > Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
-> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
+> Geçiş yönergeleri için bkz. [Bing arama Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Özel otomatik öneri, arama deneyiminiz ile ilgili önerilen arama sorgu dizelerinin bir listesini döndürür. Önerilen sorgu dizeleri, kullanıcının arama kutusunda sağladığı kısmi bir sorgu dizesini temel alır. Listede en fazla 10 öneri yer alacak. 
 
@@ -53,7 +53,7 @@ Bir sorgu dizesi önerisini kaldırmak için kaldırmak istediğiniz önerinin y
 
 ## <a name="block-suggestions"></a>Engelleme önerileri
 
-Bing önerilerini eklerseniz, Bing 'in döndürmesini istemediğiniz bir arama sorgu dizeleri listesi ekleyebilirsiniz. Engellenen sorgu dizeleri eklemek için **Engellenen önerileri göster** ' e tıklayın. Sorgu dizesini listeye ekleyin ve ENTER tuşuna basın veya **+** simgeye tıklayın. En fazla 50 engellenen sorgu dizesi ekleyebilirsiniz.
+Bing önerilerini eklerseniz, Bing 'in döndürmesini istemediğiniz bir arama sorgu dizeleri listesi ekleyebilirsiniz. Engellenen sorgu dizeleri eklemek için **Engellenen önerileri göster**' e tıklayın. Sorgu dizesini listeye ekleyin ve ENTER tuşuna basın veya **+** simgeye tıklayın. En fazla 50 engellenen sorgu dizesi ekleyebilirsiniz.
 
 
 
@@ -65,7 +65,7 @@ Bing önerilerini eklerseniz, Bing 'in döndürmesini istemediğiniz bir arama s
 
 ## <a name="enabling-autosuggest-in-hosted-ui"></a>Barındırılan Kullanıcı arabiriminde otomatik öneri etkinleştiriliyor
 
-Barındırılan Kullanıcı arabiriminiz için sorgu dizesi önerilerini etkinleştirmek üzere **barındırılan Kullanıcı arabirimi** ' ne tıklayın. **Ek yapılandırma** bölümüne gidin. **Web araması** altında **otomatik öneri** ' i etkinleştirmek için **Açık** ' ı seçin. Otomatik öneri özelliğini etkinleştirmek için, arama kutusu içeren bir düzen seçmeniz gerekir.
+Barındırılan Kullanıcı arabiriminiz için sorgu dizesi önerilerini etkinleştirmek üzere **barındırılan Kullanıcı arabirimi**' ne tıklayın. **Ek yapılandırma** bölümüne gidin. **Web araması** altında **otomatik öneri**' i etkinleştirmek için **Açık** ' ı seçin. Otomatik öneri özelliğini etkinleştirmek için, arama kutusu içeren bir düzen seçmeniz gerekir.
 
 
 ## <a name="calling-the-autosuggest-api"></a>Otomatik öneri API 'sini çağırma

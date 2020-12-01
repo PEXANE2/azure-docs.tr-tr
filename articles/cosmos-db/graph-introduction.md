@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 11/25/2020
 ms.author: chrande
-ms.openlocfilehash: 56ed1e653547b3c0e3469f820eb33155aedb1bcb
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c2165ea6273ad90cfb95242dfe72538c0a5ef64c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187213"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350067"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>Azure Cosmos DB Gremlin API 'sine giriş
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -56,7 +56,7 @@ Azure Cosmos DB Gremlin API 'nin sunduğu farklı özellikler şunlardır:
 
 * **Otomatik dizin oluşturma**
 
-  Varsayılan olarak, Azure Cosmos DB düğümlerin içindeki tüm özellikleri (köşeler olarak da anılır) ve grafikteki kenarları otomatik olarak dizine ekler ve herhangi bir şemayı ya da ikincil dizinlerin oluşturulmasını beklemez veya gerektirmez. [Azure Cosmos DB 'de dizin oluşturma](/azure/cosmos-db/index-overview)hakkında daha fazla bilgi edinin.
+  Varsayılan olarak, Azure Cosmos DB düğümlerin içindeki tüm özellikleri (köşeler olarak da anılır) ve grafikteki kenarları otomatik olarak dizine ekler ve herhangi bir şemayı ya da ikincil dizinlerin oluşturulmasını beklemez veya gerektirmez. [Azure Cosmos DB 'de dizin oluşturma](./index-overview.md)hakkında daha fazla bilgi edinin.
 
 * **Apache TinkerPop ile uyumluluk**
 

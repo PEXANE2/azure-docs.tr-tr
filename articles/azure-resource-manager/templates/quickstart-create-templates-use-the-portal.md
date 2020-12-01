@@ -1,20 +1,20 @@
 ---
 title: Şablon dağıtma-Azure portal
-description: Azure portalı kullanarak ilk Azure Resource Manager şablonunuzu oluşturmayı ve dağıtmayı öğrenin.
+description: Azure portal kullanarak ilk Azure Resource Manager şablonunuzu (ARM şablonu) oluşturmayı ve nasıl dağıtılacağını öğrenin.
 author: mumian
 ms.date: 06/29/2020
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: c132d8337ccb46824b32ab4a6bcfc73bf5d0818b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bdbcecc247a4b5318ba44b92befa7e90ac47aa8c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95978565"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349631"
 ---
 # <a name="quickstart-create-and-deploy-arm-templates-by-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak ARM şablonları oluşturma ve dağıtma
 
-Azure portal kullanarak bir Azure Resource Manager (ARM) şablonu oluşturmayı ve portaldan şablonu düzenlemenin ve dağıtmanın işlemini öğrenin. ARM şablonları, çözümünüz için dağıtmanız gereken kaynakları tanımlayan JSON dosyalarıdır. Azure çözümlerinizi dağıtma ve yönetme ile ilgili kavramları anlamak için bkz. [şablon dağıtımına genel bakış](overview.md).
+Azure portal kullanarak Azure Resource Manager şablonu (ARM şablonu) oluşturmayı ve şablonu nasıl düzenleyip dağıtacağınızı öğrenin. ARM şablonları, çözümünüz için dağıtmanız gereken kaynakları tanımlayan JSON dosyalarıdır. Azure çözümlerinizi dağıtma ve yönetme ile ilgili kavramları anlamak için bkz. [şablon dağıtımına genel bakış](overview.md).
 
 ![Kaynak Yöneticisi şablonu hızlı başlangıç portalı diyagramı](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
 
@@ -157,7 +157,7 @@ Azure'daki her Azure hizmetinin adının benzersiz olması gerekir. Zaten var ol
      }
      ```
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 1. Aşağıdaki değerleri girin:
 
     |Name|Değer|

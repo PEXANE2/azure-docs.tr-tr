@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: quickstart
 ms.date: 09/30/2020
 ms.author: mbullwin
-ms.openlocfilehash: 0afd8fab6072e1563d2b2f277e8a53b56a8161c2
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 5dbf98d363429e6d22a0b7719cdc669deebd21a0
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048245"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348645"
 ---
 # <a name="quickstart-monitor-your-first-metric-using-the-web-portal"></a>Hızlı başlangıç: Web portalını kullanarak ilk ölçümünüzün Izlenmesi
 
@@ -70,7 +70,7 @@ Veri akışını, zaman serisi veri kaynağınıza bağlanarak ekleyin. Aşağı
 * **Veri alma (UTC)**: ilk zaman damgasına alınacak başlangıç saati. 
 
 
-Sonra, **bağlantı dizesini** veri kaynağınız için kimlik bilgileriyle ve özel bir **sorgu**belirtin. Sorgu, alınacak verileri belirtmek ve gerekli şemaya dönüştürmek için kullanılır.
+Sonra, **bağlantı dizesini** veri kaynağınız için kimlik bilgileriyle ve özel bir **sorgu** belirtin. Sorgu, alınacak verileri belirtmek ve gerekli şemaya dönüştürmek için kullanılır.
 
 [!INCLUDE [query requirements](../includes/query-requirements.md)]
 
@@ -94,10 +94,10 @@ Veri şeması yüklenip aşağıda gösterildiği gibi, uygun alanları seçin.
 |**Zaman damgası**     | Bir veri noktasının zaman damgası. Atlanırsa, ölçüm Danışmanı veri noktasının yerine kullanıldığı zaman damgasını kullanır. Her veri akışı için zaman damgası olarak en fazla bir sütun belirtebilirsiniz.        | İsteğe bağlı. En fazla bir sütun ile belirtilmelidir.       |
 |**Measure**     |  Veri akışındaki sayısal değerler. Her veri akışı için birden çok ölçü belirtebilirsiniz, ancak en az bir sütun ölçü olarak seçilmelidir.        | En az bir sütunla belirtilmelidir.        |
 |**Boyut**     | Kategorik değerler. Farklı değerlerin bir birleşimi belirli bir tek boyutlu zaman serisini tanımlar, örneğin: ülke, dil, kiracı. Boyut olarak hiçbiri veya rastgele sütun sayısını seçebilirsiniz. Note: dize olmayan bir sütunu boyut olarak seçiyorsanız boyut açılımına karşı dikkatli olun. | İsteğe bağlı.        |
-|**Yoksay**     | Seçili sütunu yoksayın.        |         |
+|**Yoksayma**     | Seçili sütunu yoksayın.        |         |
 
 
-:::image type="content" source="../media/schema-configuration.png" alt-text="Bağlantı ayarları" lightbox="../media/schema-configuration.png":::
+:::image type="content" source="../media/schema-configuration.png" alt-text="Şema yapılandırması" lightbox="../media/schema-configuration.png":::
 
 ### <a name="automatic-roll-up-settings"></a>Otomatik toplama ayarları
 
@@ -117,7 +117,7 @@ Algılama uygulandığında, **ölçüm ayrıntısı sayfasını** bulmak için 
 - Güncelleştirme, beklenen sonuçları karşılayacak şekilde yapılandırmayı algılıyor
 - Algılanan bozukluklar için bildirim ayarlayın
 
-:::image type="content" source="../media/metric-details.png" alt-text="Bağlantı ayarları" lightbox="../media/metric-details.png":::
+:::image type="content" source="../media/metric-details.png" alt-text="Ölçüm ayrıntıları" lightbox="../media/metric-details.png":::
 
 ## <a name="view-the-diagnostic-insights"></a>Tanılama öngörülerini görüntüleme
 
@@ -125,13 +125,13 @@ Algılama yapılandırmasını ayarladıktan sonra, bulunan bozukluklar verileri
 
 Tanılama öngörülerini görüntülemek için, algılanan bozuklukları temsil eden zaman serisi görselleştirmelerinde kırmızı noktalara tıklayın. Bir pencere, olay Analizi sayfasına bağlantı ile görüntülenir. 
 
-:::image type="content" source="../media/incident-link.png" alt-text="Bağlantı ayarları" lightbox="../media/incident-link.png":::
+:::image type="content" source="../media/incident-link.png" alt-text="Olay bağlantısı" lightbox="../media/incident-link.png":::
 
-Bağlantıya tıkladıktan sonra, bir grup tanılama öngörüleri ile ilgili anomali üzerinde analiz olan olay Analizi sayfasına göre özetlendirilecektir. En üstte, olayla ilgili olarak **önem derecesi**, **bozukluklar**ve etkilenen **Başlangıç saati** ile **bitiş saati**gibi istatistikler olacaktır. 
+Bağlantıya tıkladıktan sonra, bir grup tanılama öngörüleri ile ilgili anomali üzerinde analiz olan olay Analizi sayfasına göre özetlendirilecektir. En üstte, olayla ilgili olarak **önem derecesi**, **bozukluklar** ve etkilenen **Başlangıç saati** ile **bitiş saati** gibi istatistikler olacaktır. 
 
 Daha sonra olayın üst anomali durumunu ve otomatik kök nedeni önerisi görürsünüz. Bu otomatik kök neden, ilgili tüm anormalilerin olay ağacı analiz edilirken (sapma, dağıtım ve üst bozukluklar dahil) oluşturulur. 
 
-:::image type="content" source="../media/incident-diagnostic.png" alt-text="Bağlantı ayarları" lightbox="../media/incident-diagnostic.png":::
+:::image type="content" source="../media/incident-diagnostic.png" alt-text="Olay tanılama" lightbox="../media/incident-diagnostic.png":::
 
 Bunlara göre, ne olduğunu ve olayın etkisini ve en olası temel nedeni daha kolay bir şekilde görebilirsiniz. Bu nedenle, olayı en kısa sürede çözümlemek için hemen eyleme alınamaz. 
 
@@ -155,5 +155,5 @@ Bir kanca oluşturduktan sonra bir uyarı ayarı nasıl ve hangi uyarı bildirim
 - [Veri akışlarınızı ekleme](../how-tos/onboard-your-data.md)
     - [Veri akışlarını yönetme](../how-tos/manage-data-feeds.md)
     - [Farklı veri kaynakları için yapılandırma](../data-feeds-from-different-sources.md)
-- [REST API veya Istemci kitaplıklarını kullanma](rest-api.md)
+- [REST API veya Istemci kitaplıklarını kullanma](./rest-api-and-client-library.md)
 - [Ölçümleri yapılandırma ve ince ayar algılama yapılandırması](../how-tos/configure-metrics.md)

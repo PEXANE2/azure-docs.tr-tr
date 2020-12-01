@@ -7,12 +7,12 @@ ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-js
 ms.topic: how-to
-ms.openlocfilehash: ef17f08677d715292a8ee49621156d130e2f5a6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 645f9ffb1d907eb576f5414b593ef57679d26daa
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777497"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351155"
 ---
 # <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>Hızlı başlangıç: Node.js için REST API 'Leri Soru-Cevap Oluşturma
 
@@ -27,11 +27,11 @@ Node.js için Soru-Cevap Oluşturma REST API 'Lerini kullanın:
 * Bilgi Bankası indirin
 * İşlemin durumunu al
 
-[Başvuru belgeleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)  |  [Node.js örnekleri](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
+[Başvuru belgeleri](/rest/api/cognitiveservices/qnamaker/knowledgebase)  |  [Node.js örnekleri](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * [Node.js](https://nodejs.org)geçerli sürümü.
@@ -41,9 +41,9 @@ Node.js için Soru-Cevap Oluşturma REST API 'Lerini kullanın:
 
 ### <a name="create-a-qna-maker-azure-resource"></a>Soru-Cevap Oluşturma Azure kaynağı oluşturma
 
-Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil edilir. Yerel makinenizde [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) veya [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) kullanarak soru-cevap oluşturma için bir kaynak oluşturun.
+Azure bilişsel hizmetler, abone olduğunuz Azure kaynakları tarafından temsil edilir. Yerel makinenizde [Azure Portal](../../cognitive-services-apis-create-account.md) veya [Azure CLI](../../cognitive-services-apis-create-account-cli.md) kullanarak soru-cevap oluşturma için bir kaynak oluşturun.
 
-Kaynağından bir anahtar aldıktan sonra, ve adlı kaynak için [ortam değişkenleri oluşturun](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) `QNAMAKER_RESOURCE_KEY` `QNAMAKER_AUTHORING_ENDPOINT` . Azure portal kaynağın **hızlı başlangıç** sayfasında bulunan anahtar ve uç nokta değerlerini kullanın.
+Kaynağından bir anahtar aldıktan sonra, ve adlı kaynak için [ortam değişkenleri oluşturun](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) `QNAMAKER_RESOURCE_KEY` `QNAMAKER_AUTHORING_ENDPOINT` . Azure portal kaynağın **hızlı başlangıç** sayfasında bulunan anahtar ve uç nokta değerlerini kullanın.
 
 ### <a name="create-a-new-nodejs-application"></a>Yeni bir Node.js uygulaması oluşturma
 
@@ -95,7 +95,7 @@ Kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturun.
 Aşağıdaki ortam değerlerini ayarlayın:
 
 * `QNAMAKER_RESOURCE_KEY` - **Anahtar** bir 32 karakter dizesidir ve **hızlı başlangıç** sayfasında soru-cevap oluşturma kaynağında Azure Portal kullanılabilir. Bu, tahmin uç noktası anahtarıyla aynı değildir.
-* `QNAMAKER_AUTHORING_ENDPOINT` -Kendi biçimindeki yazma uç noktanız, `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` **kaynak adınızı**içerir. Bu, tahmin uç noktasını sorgulamak için kullanılan URL 'nin aynı değildir.
+* `QNAMAKER_AUTHORING_ENDPOINT` -Kendi biçimindeki yazma uç noktanız, `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` **kaynak adınızı** içerir. Bu, tahmin uç noktasını sorgulamak için kullanılan URL 'nin aynı değildir.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="authorization":::
 
@@ -107,13 +107,13 @@ Bilgi Bankası, bir JSON nesnesinden oluşturulan soru ve yanıt çiftlerini dep
 * **Dosyalar** -herhangi bir izin gerektirmeyen yerel dosyalar.
 * **URL 'ler** -genel olarak kullanılabilir URL 'ler.
 
-[Bilgi Bankası oluşturmak için REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)kullanın.
+[Bilgi Bankası oluşturmak için REST API](/rest/api/cognitiveservices/qnamaker/knowledgebase/create)kullanın.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="createKb":::
 
 ## <a name="replace-a-knowledge-base"></a>Bilgi bankasını değiştirme
 
-[Bilgi bankasını değiştirmek için REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/replace)kullanın.
+[Bilgi bankasını değiştirmek için REST API](/rest/api/cognitiveservices/qnamaker/knowledgebase/replace)kullanın.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="replaceKb":::
 
@@ -121,13 +121,13 @@ Bilgi Bankası, bir JSON nesnesinden oluşturulan soru ve yanıt çiftlerini dep
 
 Bilgi Bankası 'nı yayımlayın. Bu işlem, bilgi bankasını bir HTTP sorgu tahmin uç noktasından kullanılabilir hale getirir.
 
-[Bilgi Bankası yayımlamak için REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish)kullanın.
+[Bilgi Bankası yayımlamak için REST API](/rest/api/cognitiveservices/qnamaker/knowledgebase/publish)kullanın.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="publishKb":::
 
 ## <a name="download-the-knowledge-base"></a>Bilgi Bankası 'nı indirin
 
-[Bilgi Bankası indirmek için REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/download)kullanın.
+[Bilgi Bankası indirmek için REST API](/rest/api/cognitiveservices/qnamaker/knowledgebase/download)kullanın.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="downloadKb":::
 
@@ -135,7 +135,7 @@ Bilgi Bankası 'nı yayımlayın. Bu işlem, bilgi bankasını bir HTTP sorgu ta
 
 Bilgi Bankası 'nı kullanarak işiniz bittiğinde silin.
 
-[Bilgi Bankası 'nı silmek için REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/delete)kullanın.
+[Bilgi Bankası 'nı silmek için REST API](/rest/api/cognitiveservices/qnamaker/knowledgebase/delete)kullanın.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="deleteKb":::
 
@@ -143,7 +143,7 @@ Bilgi Bankası 'nı kullanarak işiniz bittiğinde silin.
 
 Oluşturma işlemi gibi uzun süre çalışan işlemler, ayrı bir REST API çağrısıyla denetlenmesi gereken bir işlem KIMLIĞI döndürür. Bu işlev, oluşturma yanıtının gövdesini alır. Önemli anahtar, `operationState` yoklamaya devam etmeniz gerektiğini belirleyen ' dır.
 
-[Bilgi Bankası 'ndaki işlemleri izlemek için REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)kullanın.
+[Bilgi Bankası 'ndaki işlemleri izlemek için REST API](/rest/api/cognitiveservices/qnamaker/operations/getdetails)kullanın.
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/create-publish-kb.js" id="operationDetails":::
 
@@ -171,7 +171,7 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
->[Öğretici: bir KB oluşturun ve yanıtlayın](../tutorials/create-publish-query-in-portal.md)
+>[Öğretici: bir KB oluşturun ve yanıtlayın](./create-publish-knowledge-base.md)
 
 * [Soru-Cevap Oluşturma API'si nedir?](../Overview/overview.md)
 * [Bilgi bankası düzenleme](../how-to/edit-knowledge-base.md)

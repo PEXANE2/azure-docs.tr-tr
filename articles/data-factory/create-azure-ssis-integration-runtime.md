@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: effa0d3ba9f7098b691605bfbd76bff9ea3d5e66
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7936699832a09f535729c42b12fec2d5c49a11a0
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023440"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350951"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Data Factory 'de bir Azure-SSIS tümleştirme çalışma zamanı oluşturma
 
@@ -167,7 +167,7 @@ Onay kutusunu seçerseniz, kendi adınıza oluşturacağınız ve yönetecağım
 Uygun olduğunda **Bağlantıyı Sına** ' yı seçin ve başarılı olursa **İleri**' yi seçin.
 
 > [!NOTE]
-   > SSıSDB barındırmak için Azure SQL veritabanı sunucusu kullanıyorsanız, verileriniz varsayılan olarak, yedeklemeler için coğrafi olarak yedekli depolama alanında depolanır. Verilerinizin diğer bölgelerde çoğaltılmasını istemiyorsanız, [PowerShell kullanarak yedekleme depolama yedekliliği yapılandırma](https://docs.microsoft.com/azure/azure-sql/database/automated-backups-overview?tabs=single-database#configure-backup-storage-redundancy-by-using-powershell)yönergelerini izleyin.
+   > SSıSDB barındırmak için Azure SQL veritabanı sunucusu kullanıyorsanız, verileriniz varsayılan olarak, yedeklemeler için coğrafi olarak yedekli depolama alanında depolanır. Verilerinizin diğer bölgelerde çoğaltılmasını istemiyorsanız, [PowerShell kullanarak yedekleme depolama yedekliliği yapılandırma](../azure-sql/database/automated-backups-overview.md?tabs=single-database#configure-backup-storage-redundancy-by-using-powershell)yönergelerini izleyin.
    
 ##### <a name="creating-azure-ssis-ir-package-stores"></a>Azure-SSIS IR paket depoları oluşturma
 

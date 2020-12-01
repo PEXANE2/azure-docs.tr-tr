@@ -3,12 +3,12 @@ title: Kayıt defteri ile ağ sorunlarını giderme
 description: Bir sanal ağda veya bir güvenlik duvarının arkasındaki bir Azure Container Registry 'ye erişirken oluşan belirtiler, nedenler ve çözümler
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: 5f2cf2d72e6641d4871b7acccdbd7cc37c653f74
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 95b32b839d1b3b804a2035b797e1146a09d5236a
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148463"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351802"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Kayıt defteri ile ağ sorunlarını giderme
 
@@ -103,7 +103,7 @@ Ağda Azure Güvenlik Duvarı veya benzer bir çözüm yapılandırılmışsa, b
 
 ### <a name="configure-service-access"></a>Hizmet erişimini yapılandırma
 
-Şu anda Azure Güvenlik Merkezi, Özel uç noktalara, seçili alt ağlara veya IP adreslerine erişimi kısıtlayan bir kayıt defterinde [görüntü güvenlik açığı taraması](../security-center/defender-for-container-registries-introduction.md?bc=%252fazure%252fcontainer-registry%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fcontainer-registry%252ftoc.json) gerçekleştiremez. Ayrıca, aşağıdaki hizmetlerin kaynakları ağ kısıtlamalarına sahip bir kapsayıcı kayıt defterine erişemez:
+Şu anda Azure Güvenlik Merkezi, Özel uç noktalara, seçili alt ağlara veya IP adreslerine erişimi kısıtlayan bir kayıt defterinde [görüntü güvenlik açığı taraması](../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json) gerçekleştiremez. Ayrıca, aşağıdaki hizmetlerin kaynakları ağ kısıtlamalarına sahip bir kapsayıcı kayıt defterine erişemez:
 
 * Azure DevOps Services 
 * Azure Container Instances

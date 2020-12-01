@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: ab729460a676bb5daa8860b3b4a837ec276fc5db
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5894a57e6495ca02002c8f32b893e696c7f5679b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182350"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350713"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için ServiceNow 'ı yapılandırma
 
@@ -31,7 +31,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Servic
 > * ServiceNow 'da grupları ve grup üyeliklerini sağlama
 > * ServiceNow ['Da çoklu oturum açma](servicenow-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 

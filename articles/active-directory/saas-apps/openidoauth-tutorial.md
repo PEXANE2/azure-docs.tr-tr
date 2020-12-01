@@ -12,20 +12,20 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
 ms.custom: has-adal-ref
-ms.openlocfilehash: ce4cccba678a934780dc987f1441ea658a70f8eb
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 17d78b4d6db9e65868995d8ea7835a0d911e8589
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996618"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348712"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Azure AD uygulama galerisinden bir OpenID/OAuth uygulaması yapılandırma
 
 ## <a name="process-of-adding-an-openid-application-from-the-gallery"></a>Galeriden bir OpenID uygulaması ekleme işlemi
 
-1. [Azure Portal](https://portal.azure.com)sol bölmedeki **Azure Active Directory**' ı seçin.
+1. [Azure portalda](https://portal.azure.com)**Azure Active Directory**'yi seçin.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png))
+    ![Azure Active Directory düğmesi](common/select-azuread.png)
 
 2. **Kurumsal uygulamalar**  >  **tüm uygulamalar**' a gidin.
 
@@ -39,17 +39,23 @@ ms.locfileid: "91996618"
 
     ![Sonuç listesinde OpenID](common/search-new-app.png)
 
-    > [!NOTE]
-    > OpenID Connect ve OAuth uygulamaları için, **Ekle** düğmesi varsayılan olarak devre dışıdır. Burada, kiracı yöneticisi kaydolma düğmesini seçip uygulamaya onay vermenizi sağlamalıdır. Uygulama daha sonra, konfigürasyonları yapabileceğiniz, müşteri kiracısına eklenir. Uygulamayı açıkça eklemeniz gerekmez.
+
+1. Uygulama adı sayfasında, **Kaydol** düğmesine tıklayın.
 
     ![Ekle düğmesi](./media/openidoauth-tutorial/addbutton.png)
 
-5. Kaydolma bağlantısını seçtiğinizde, oturum açma kimlik bilgileri için Azure Active Directory (Azure AD) sayfasına yönlendirilirsiniz.
+    > [!NOTE]
+    > Burada, kiracı yöneticisi kaydolma düğmesini seçip uygulamaya onay vermenizi sağlamalıdır. Uygulama daha sonra, konfigürasyonları yapabileceğiniz, müşteri kiracısına eklenir. Uygulamayı açıkça eklemeniz gerekmez.
+
+5. Uygulama oturum açma sayfası veya Azure Active Directory (Azure AD) sayfasına yönlendiriliyorsunuz, oturum açma kimlik bilgileri için.
 
 6. Başarılı kimlik doğrulamasından sonra onay sayfasından onay kabul etmiş olursunuz. Bundan sonra uygulama giriş sayfası görüntülenir.
 
     > [!NOTE]
     > Uygulamanın yalnızca bir örneğini ekleyebilirsiniz. Zaten bir tane eklediyseniz ve yeniden onay sağlamaya çalıştıysanız, kiracıya yeniden eklenmeyecektir. Mantıksal olarak, kiracıda yalnızca bir uygulama örneği kullanabilirsiniz.
+
+1. Galeriden bir OpenID uygulaması eklemek için aşağıdaki videoyu izleyin.
+    >[!VIDEO https://www.microsoft.com/videoplayer/embed/RE4HoNI]
 
 ## <a name="authentication-flow-using-openid-connect"></a>OpenID Connect kullanarak kimlik doğrulama akışı
 
@@ -113,7 +119,7 @@ Aşağıdaki adımlarda, uygulama geliştiricisi ve Kullanıcı için onay deney
 
     !["Microsoft A P I" sekmesi ve "Microsoft Graph" kutucuğu seçiliyken "P I izinleri ıste" sayfasını gösteren ekran görüntüsü.](./media/openidoauth-tutorial/microsoft-graph.png)
 
-    e. **Temsilci izinleri** ve **uygulama izinlerinden**gerekli seçenekleri belirleyin.
+    e. **Temsilci izinleri** ve **uygulama izinlerinden** gerekli seçenekleri belirleyin.
 
     ![Graph API](./media/openidoauth-tutorial/graphapi.png)
 
@@ -146,8 +152,12 @@ Uygulamanız yönetici onayı gerektiren izinler kullanıyorsa, yöneticinin eyl
 
 Yönetici onaylı olduktan ve hizmet sorumlusu müşterinin kiracısında oluşturulduktan sonra, sonraki oturum açma istekleri *Prompt = admin_consent* parametresine gerek kalmaz. Yönetici İstenen izinlerin kabul edilebilir olduğunu karardığı için, kiracıya başka hiçbir Kullanıcı o noktadan sonra onay istenmez.
 
-Bir kiracı yöneticisi, normal kullanıcıların uygulamaları kabul etme yeteneğini devre dışı bırakabilir. Bu yetenek devre dışıysa, uygulamanın kiracıya kullanılması için yönetici izni her zaman gereklidir. Uygulamanızı son kullanıcı onayı devre dışı olmadan test etmek istiyorsanız, [Azure Portal](https://portal.azure.com/)yapılandırma anahtarını bulabilirsiniz. Bu, **Kurumsal uygulamalar**altındaki [Kullanıcı ayarları](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) bölümünde yer alabilir.
+Bir kiracı yöneticisi, normal kullanıcıların uygulamaları kabul etme yeteneğini devre dışı bırakabilir. Bu yetenek devre dışıysa, uygulamanın kiracıya kullanılması için yönetici izni her zaman gereklidir. Uygulamanızı son kullanıcı onayı devre dışı olmadan test etmek istiyorsanız, [Azure Portal](https://portal.azure.com/)yapılandırma anahtarını bulabilirsiniz. Bu, **Kurumsal uygulamalar** altındaki [Kullanıcı ayarları](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) bölümünde yer alabilir.
 
 *Prompt = admin_consent* parametresi, yönetici onayı gerektirmeyen izinler isteyen uygulamalar tarafından da kullanılabilir. Bir örnek, kiracı yöneticisinin "bir kez kaydolması" ve bu noktadan onay istenmediği bir deneyim gerektiren bir uygulamadır.
 
 Bir uygulamanın yönetici onayı gerektirdiğini ve bir yönetici, *Prompt = admin_consent* parametresi olmadan oturum açmakta olduğunu düşünün. Yönetici uygulamaya başarıyla katıldıysa, yalnızca kendi Kullanıcı hesapları için geçerlidir. Normal kullanıcılar hala uygulamayı oturum açamıyor veya uygulamayı onaylayamayacak. Bu özellik, kiracı yöneticisine diğer kullanıcıların erişimine izin vermeden önce uygulamanızı keşfetmenizi sağlamak istiyorsanız yararlıdır.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+[Azure Active Directory (Azure AD) kiracınızdaki bir uygulama için OıDC tabanlı çoklu oturum açma (SSO) ayarlama](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal-setup-oidc-sso)

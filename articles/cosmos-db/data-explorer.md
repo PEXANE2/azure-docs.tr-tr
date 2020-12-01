@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: dech
-ms.openlocfilehash: 691a2e56230d312416aed3d68bffd361f1d63558
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d4baa92fe4aa2ed402c394198684c4deec2bf9f1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008591"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348611"
 ---
-# <a name="work-with-data-using-azure-cosmos-explorer"></a>Azure Cosmos gezginini kullanarak verilerle çalışma 
+# <a name="work-with-data-using-azure-cosmos-db-explorer"></a>Azure Cosmos DB gezginini kullanarak verilerle çalışma 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB Explorer, Azure Cosmos DB depolanan verileri görüntülemenize ve yönetmenize olanak tanıyan tek başına bir Web tabanlı arabirimdir. Azure Cosmos DB gezgin, Azure Cosmos DB bir hesap oluştururken Azure portal kullanılabilen mevcut **Veri Gezgini** sekmeye eşdeğerdir. Azure Cosmos DB Explorer 'ın mevcut veri Gezgini üzerinde başlıca avantajları şunlardır:
@@ -42,7 +42,7 @@ Azure Cosmos DB Explorer, Azure Cosmos DB depolanan verileri görüntülemenize 
 
    Hesabı açmak istediğiniz erişim türünü seçin ve **Aç**' a tıklayın. Gezgin 'i açtıktan sonra, deneyim, Azure portal Veri Gezgini sekmesi ile aynı olur.
 
-   :::image type="content" source="./media/data-explorer/open-data-explorer-with-access-url.png" alt-text="Azure Cosmos DB Gezginini aç":::
+   :::image type="content" source="./media/data-explorer/open-data-explorer-with-access-url.png" alt-text="Azure Cosmos DB Gezgini'ni açın":::
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 

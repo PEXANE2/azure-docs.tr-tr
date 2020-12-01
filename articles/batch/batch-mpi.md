@@ -4,12 +4,12 @@ description: Ileti geçirme arabirimi (MPı) uygulamalarını Azure Batch ' deki
 ms.topic: how-to
 ms.date: 10/08/2020
 ms.custom: H1Hack27Feb2017, devx-track-csharp
-ms.openlocfilehash: 3dc52d13cf41347e7382872e887d87fc9b25a95b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 6aa6a910dd57a255d9ec9292119bc692edf4946f
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108091"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351529"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Batch 'de Ileti geçirme arabirimi (MPı) uygulamalarını çalıştırmak için çok örnekli görevleri kullanma
 
@@ -21,25 +21,25 @@ ms.locfileid: "92108091"
 >
 
 ## <a name="multi-instance-task-overview"></a>Çok örnekli göreve genel bakış
-Batch 'de, her görev normalde tek bir işlem düğümünde yürütülür. bir işe birden çok görev gönderirseniz ve Batch hizmeti her görevi bir düğümde yürütmeye göre zamanlar. Ancak, bir görevin **Çoklu örnek ayarlarını**yapılandırarak, toplu olarak tek bir birincil görev ve daha sonra birden çok düğümde yürütülen birkaç alt görev oluşturmayı öğreneceksiniz.
+Batch 'de, her görev normalde tek bir işlem düğümünde yürütülür. bir işe birden çok görev gönderirseniz ve Batch hizmeti her görevi bir düğümde yürütmeye göre zamanlar. Ancak, bir görevin **Çoklu örnek ayarlarını** yapılandırarak, toplu olarak tek bir birincil görev ve daha sonra birden çok düğümde yürütülen birkaç alt görev oluşturmayı öğreneceksiniz.
 
 ![Çok örnekli göreve genel bakış][1]
 
 Bir iş için çok örnekli ayarlarla bir görev gönderdiğinizde toplu Işlem, çok örnekli görevlere özgü birkaç adımı gerçekleştirir:
 
 1. Batch hizmeti, çoklu örnek ayarlarına bağlı olarak bir **birincil** ve birkaç **alt görev** oluşturur. Toplam görev sayısı (birincil ve tüm alt görevler), çok örnekli ayarlarda belirttiğiniz **örnek** sayısıyla (işlem düğümleri) eşleşir.
-2. Batch, işlem düğümlerinden birini **ana öğe**olarak belirler ve birincil görevi ana bilgisayarda yürütülecek şekilde zamanlar. Alt görevleri, çok örnekli göreve ayrılan işlem düğümlerinin geri kalanı üzerinde yürütülecek şekilde zamanlar, düğüm başına bir alt görev.
+2. Batch, işlem düğümlerinden birini **ana öğe** olarak belirler ve birincil görevi ana bilgisayarda yürütülecek şekilde zamanlar. Alt görevleri, çok örnekli göreve ayrılan işlem düğümlerinin geri kalanı üzerinde yürütülecek şekilde zamanlar, düğüm başına bir alt görev.
 3. Birincil ve tüm alt görevler, çok örnekli ayarlarda belirttiğiniz **ortak kaynak dosyalarını** indirir.
 4. Ortak kaynak dosyaları indirildikten sonra, birincil ve alt görevler, çoklu örnek ayarlarında belirttiğiniz **koordinasyon komutunu** yürütür. Düzenleme komutu genellikle, görevi yürütmek için düğüm hazırlamak üzere kullanılır. Bu, arka plan hizmetlerinin (örneğin, [Microsoft MPI][msmpi_msdn]) başlamasını `smpd.exe` ve düğümlerin düğümler arası iletileri işlemeye hazırlandığının doğrulanması olabilir.
 5. Birincil görev, düzenleme komutu birincil ve tüm alt görevler tarafından başarıyla tamamlandıktan *sonra* ana düğümde **uygulama komutunu** yürütür. Uygulama komutu, çok örnekli görevin kendisi için komut satırı olur ve yalnızca birincil görev tarafından yürütülür. [MS-MPı][msmpi_msdn]tabanlı bir çözümde, bu, kullanarak MPI özellikli uygulamanızı yürütebileceğiniz yerdir `mpiexec.exe` .
 
 > [!NOTE]
-> İşlevsel farklı olsa da, "Çoklu örnek görevi" [startTask][net_starttask] veya [JobPreparationTask][net_jobprep]gibi benzersiz bir görev türü değildir. Çok örnekli görev, çok örnekli ayarları yapılandırılmış standart bir Batch görevi (Batch .NET 'te[cloudtask][net_task] ) olur. Bu makalede, buna **Çoklu örnek görevi**olarak değineceğiz.
+> İşlevsel farklı olsa da, "Çoklu örnek görevi" [startTask][net_starttask] veya [JobPreparationTask][net_jobprep]gibi benzersiz bir görev türü değildir. Çok örnekli görev, çok örnekli ayarları yapılandırılmış standart bir Batch görevi (Batch .NET 'te[cloudtask][net_task] ) olur. Bu makalede, buna **Çoklu örnek görevi** olarak değineceğiz.
 >
 >
 
 ## <a name="requirements-for-multi-instance-tasks"></a>Çok örnekli görevler için gereksinimler
-Çok örnekli görevler, **düğüm içi iletişimin etkin**olduğu bir havuz gerektirir ve **eşzamanlı görev yürütme devre dışı bırakılır**. Eşzamanlı görev yürütmeyi devre dışı bırakmak için [Cloudpool. TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) özelliğini 1 olarak ayarlayın.
+Çok örnekli görevler, **düğüm içi iletişimin etkin** olduğu bir havuz gerektirir ve **eşzamanlı görev yürütme devre dışı bırakılır**. Eşzamanlı görev yürütmeyi devre dışı bırakmak için [Cloudpool. TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) özelliğini 1 olarak ayarlayın.
 
 > [!NOTE]
 > Batch, düğüm içi iletişim etkin olan bir havuzun boyutunu [sınırlar](batch-quota-limit.md#pool-size-limits) .
@@ -95,8 +95,8 @@ Aşağıdaki makalelerde "RDMA özellikli" olarak belirtilen boyutları arayın:
   * [Cloud Services Için boyutlar](../cloud-services/cloud-services-sizes-specs.md) (yalnızca Windows)
 * **Virtualmachineconfiguration** havuzları
 
-  * [Azure 'daki sanal makinelerin boyutları](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) (Linux)
-  * [Azure 'daki sanal makinelerin boyutları](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) (Windows)
+  * [Azure 'daki sanal makinelerin boyutları](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux)
+  * [Azure 'daki sanal makinelerin boyutları](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows)
 
 > [!NOTE]
 > [Linux işlem DÜĞÜMLERINDE](batch-linux-nodes.md)RDMA 'nin avantajlarından yararlanmak Için düğümlerde **Intel MPI** kullanmanız gerekir.
@@ -153,7 +153,7 @@ cmd /c start cmd /c ""%MSMPI_BIN%\smpd.exe"" -d
 Bu koordinasyon komutunda kullanılması gerektiğini aklınızda edin `start` . `smpd.exe`Uygulama yürütmeden hemen sonra dönmediğinden bu gereklidir. [Start][cmd_start] komutunun kullanımı olmadan, bu koordinasyon komutu dönmez ve bu nedenle uygulama komutunun çalışmasını engeller.
 
 ## <a name="application-command"></a>Uygulama komutu
-Birincil görev ve tüm alt görevler koordinasyon komutunu yürütmeyi tamamladığında, çok örnekli görevin komut satırı *yalnızca*birincil görev tarafından yürütülür. Bu **uygulama komutunu** , koordinasyon komutundan ayırt etmek için çağırıyoruz.
+Birincil görev ve tüm alt görevler koordinasyon komutunu yürütmeyi tamamladığında, çok örnekli görevin komut satırı *yalnızca* birincil görev tarafından yürütülür. Bu **uygulama komutunu** , koordinasyon komutundan ayırt etmek için çağırıyoruz.
 
 MS-MPı uygulamalarında, MPı özellikli uygulamanızı ile yürütmek için uygulama komutunu kullanın `mpiexec.exe` . Örneğin, MS-MPı sürüm 7 kullanan bir çözüm için uygulama komutu aşağıda verilmiştir:
 

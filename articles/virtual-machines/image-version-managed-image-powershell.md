@@ -1,6 +1,6 @@
 ---
-title: Yönetilen bir görüntüyü paylaşılan görüntü galerisine geçirme
-description: Yönetilen bir görüntüyü paylaşılan görüntü galerisindeki görüntü sürümüne geçirmek için Azure PowerShell nasıl kullanacağınızı öğrenin.
+title: Yönetilen bir görüntüyü paylaşılan görüntü galerisine kopyalama
+description: Yönetilen bir görüntüyü paylaşılan görüntü galerisindeki görüntü sürümüne kopyalamak için Azure PowerShell nasıl kullanacağınızı öğrenin.
 author: cynthn
 ms.topic: how-to
 ms.service: virtual-machines
@@ -9,16 +9,16 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 1c57d9d283714da6905335fd3167c4f8a69292f8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 92cae59978b172993c779e9a486ff67d82309800
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964890"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349931"
 ---
-# <a name="migrate-from-a-managed-image-to-a-shared-image-gallery-image"></a>Yönetilen görüntüden paylaşılan görüntü Galerisi görüntüsüne geçiş
+# <a name="clone-a-managed-image-to-a-shared-image-gallery-image"></a>Yönetilen bir görüntüyü paylaşılan görüntü Galerisi görüntüsüne kopyalama
 
-Paylaşılan görüntü galerisine geçirmek istediğiniz mevcut bir yönetilen görüntünüz varsa, doğrudan yönetilen görüntüden paylaşılan bir görüntü Galerisi görüntüsü oluşturabilirsiniz. Yeni görüntünüzü sınadıktan sonra, kaynak yönetilen görüntüyü silebilirsiniz. Ayrıca, [Azure CLI](image-version-managed-image-cli.md)kullanarak yönetilen bir görüntüden paylaşılan görüntü galerisine geçiş yapabilirsiniz.
+Kopyalamak ve paylaşılan bir görüntü galerisine taşımak istediğiniz mevcut bir yönetilen görüntünüz varsa, doğrudan yönetilen görüntüden paylaşılan bir görüntü Galerisi görüntüsü oluşturabilirsiniz. Yeni görüntünüzü sınadıktan sonra, kaynak yönetilen görüntüyü silebilirsiniz. Ayrıca, [Azure CLI](image-version-managed-image-cli.md)kullanarak yönetilen bir görüntüden paylaşılan görüntü galerisine geçiş yapabilirsiniz.
 
 Görüntü galerisindeki görüntülerin iki bileşeni vardır ve bu örnekte oluşturacağız:
 - **Görüntü tanımı** , görüntü ve kullanma gereksinimleri hakkında bilgi taşır. Bu, görüntünün Windows veya Linux, özelleştirilmiş veya Genelleştirilmiş, sürüm notları ve en düşük ve en yüksek bellek gereksinimlerini içerir. Bu, bir görüntü türünün tanımıdır. 

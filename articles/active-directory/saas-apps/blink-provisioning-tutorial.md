@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: 717500050aff89964ff959a4741aed01533ada70
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 886d6ff1d3437a9d45bdabc68b2bf3ab8cdaa3ef
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357139"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349999"
 ---
 # <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için yanıp sönme 'yi yapılandırma
 
@@ -60,11 +60,11 @@ Azure AD ile otomatik Kullanıcı sağlama için yanıp sönme yapılandırmadan
 
 **Azure AD uygulama galerisinden yanıp sönme eklemek için aşağıdaki adımları uygulayın:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** ' i seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -85,11 +85,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve/veya grup 
 
 ### <a name="to-configure-automatic-user-provisioning-for-blink-in-azure-ad"></a>Azure AD 'de yanıp sönmek üzere otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **yanıp sönme** ' yi seçin.
+2. Uygulamalar listesinde, **yanıp sönme**' yi seçin.
 
     ![Uygulamalar listesindeki yanıp sönen bağlantı](common/all-applications.png)
 
@@ -97,7 +97,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve/veya grup 
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
@@ -105,11 +105,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve/veya grup 
 
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder** ' i işaretleyin.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet** ’e tıklayın.
+7. **Kaydet**’e tıklayın.
 
 8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları, yanıp sönmek üzere eşitlemeyi** seçin.
 
@@ -129,7 +129,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve/veya grup 
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-15. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

@@ -10,19 +10,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
-ms.openlocfilehash: 93be72f2afcda90dde1b74c5ee317a7ad3350be1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4300860039b76bd076f19acfc252f59ef10d462b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075696"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351853"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>Bing Arama API’si kullanım ve görüntüleme gereksinimleri
 
 > [!WARNING]
-> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](/bing/search-apis/bing-web-search/create-bing-search-service-resource)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
 > Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
-> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
+> Geçiş yönergeleri için bkz. [Bing arama Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Bu kullanım ve görüntüleme gereksinimleri, ilişki, meta veriler ve diğer sinyaller dahil olmak üzere aşağıdaki Bing Arama API'leri tüm içerik ve ilgili bilgilerin uygulanması için geçerlidir.
 
@@ -39,7 +39,7 @@ Bu kullanım ve görüntüleme gereksinimleri, ilişki, meta veriler ve diğer s
 ## <a name="definitions"></a>Tanımlar
 
 
-|Terim  |Açıklama  |
+|Süre  |Açıklama  |
 |---------|---------|
 |Yanıt     | Bir yanıtta döndürülen sonuç kategorisi. Örneğin, Bing Web Araması API'si bir yanıt, Web sayfası sonuçları, görüntü, video, görsel ve haber kategorilerine yanıt içerebilir. |
 |Yanıt     | Bir arama API 'sine yapılan tek bir çağrıya yanıt olarak alınan tüm yanıtlar ve ilgili veriler. |
@@ -104,7 +104,7 @@ Yapma:
 ### <a name="notices-and-branding"></a>Bildirimler ve marka 
 Gösterme
 
-- Göze çarpacak, kullanıcı deneyiminin (UX) bir kullanıcıya bir arama sorgusu girişi olanağı sunan her noktaya yakın bir [Microsoft gizlilik bildirimine](https://go.microsoft.com/fwlink/?LinkId=521839)yönelik işlevsel köprü içerir. Köprü **Microsoft gizlilik bildirimi** ' ni etiketleyin.
+- Göze çarpacak, kullanıcı deneyiminin (UX) bir kullanıcıya bir arama sorgusu girişi olanağı sunan her noktaya yakın bir [Microsoft gizlilik bildirimine](https://go.microsoft.com/fwlink/?LinkId=521839)yönelik işlevsel köprü içerir. Köprü **Microsoft gizlilik bildirimi**' ni etiketleyin.
 
 - Belirgin bir şekilde, bir kullanıcıya arama sorgusu girişi olanağı sunan, UX 'teki her bir noktaya yakın olan [Bing marka kullanım yönergeleriyle](https://go.microsoft.com/fwlink/?linkid=833278)tutarlı Bing markalaması görüntüleyin. Bu marka, Microsoft 'un Internet arama deneyimini güçleme kullanıcısına açık bir durum vermelidir.
 
@@ -172,5 +172,4 @@ Arama API 'lerinin önceki bölümlerinde ve görüntüleme gereksinimlerinin ku
 
 ## <a name="gdpr-compliance"></a>GDPR uyumluluğu  
 
-Avrupa Birliği Genel Veri Koruma Yönetmeliği (GDPR) ile ilgili herhangi bir kişisel veri konusuyla ilgili ve arama API 'Leri, Bing Yazım Denetimi API'si veya Bing Otomatik Öneri API'si çağrılarıyla bağlantılı olarak işlenen, siz ve Microsoft 'un GDPR altında bağımsız veri denetleyicileri olduğunu anlamış olursunuz. GDPR ile uyumluluktan bağımsız olarak sorumlusunuz.  
-
+Avrupa Birliği Genel Veri Koruma Yönetmeliği (GDPR) ile ilgili herhangi bir kişisel veri konusuyla ilgili ve arama API 'Leri, Bing Yazım Denetimi API'si veya Bing Otomatik Öneri API'si çağrılarıyla bağlantılı olarak işlenen, siz ve Microsoft 'un GDPR altında bağımsız veri denetleyicileri olduğunu anlamış olursunuz. GDPR ile uyumluluktan bağımsız olarak sorumlusunuz.

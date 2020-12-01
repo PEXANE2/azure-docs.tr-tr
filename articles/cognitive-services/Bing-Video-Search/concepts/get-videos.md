@@ -10,19 +10,19 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: 2fab4a57a939f9516140562cb8b8508b2ba69dc0
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 10277efe1f06de3633b2d614e2ee5ec0cc351c76
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94379897"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351938"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>Bing Video Arama API'si videoları arayın
 
 > [!WARNING]
-> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](/bing/search-apis/bing-web-search/create-bing-search-service-resource)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
 > Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
-> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
+> Geçiş yönergeleri için bkz. [Bing arama Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Bing Video Arama API'si, Bing 'in bilişsel haber arama yeteneklerini uygulamalarınıza tümleştirmeyi kolaylaştırır. API birincil olarak Web 'den ilgili videoları bulur ve geri döndürürse, Web 'de akıllı ve odaklanmış video alımı için çeşitli özellikler sağlar.
 
@@ -149,7 +149,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="expanding-the-query"></a>Sorguyu genişletme
 
-Bing özgün aramayı daraltmak için sorguyu genişletebiliyorsa [Videos](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) nesnesi `queryExpansions` alanını içerir. Örneğin, sorgu *Boşluk Temizleme* ise, genişletilmiş sorgular şunlar olabilir: Boşluk Temizleme **Araçları** , **Sıfırdan** Boşluk Temizleme, Boşluk Temizleme **Makinesi** ve **Kolay** Boşluk Temizleme.
+Bing özgün aramayı daraltmak için sorguyu genişletebiliyorsa [Videos](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) nesnesi `queryExpansions` alanını içerir. Örneğin, sorgu *Boşluk Temizleme* ise, genişletilmiş sorgular şunlar olabilir: Boşluk Temizleme **Araçları**, **Sıfırdan** Boşluk Temizleme, Boşluk Temizleme **Makinesi** ve **Kolay** Boşluk Temizleme.
 
 Aşağıdaki örnekte *Boşluk Temizleme* için genişletilmiş sorgular gösterilmektedir.
 

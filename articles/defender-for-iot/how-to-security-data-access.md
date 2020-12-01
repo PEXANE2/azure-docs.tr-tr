@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: e56cf54e1bf1483309cb7aac8519bb281ca2bc06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 677ab3327f2357ce7b242c314b44702370779def
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941399"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351682"
 ---
 # <a name="access-your-security-data"></a>Güvenlik verilerinize erişin
 
@@ -37,7 +37,7 @@ Yapılandırma sonrasında Log Analytics çalışma alanınızdaki uyarıların�
 1. IoT için Defender 'da bir uyarı veya öneri seçin.
 1. **Daha fazla araştırma**' ya tıklayın, ardından **Bu uyarıya hangi cihazların olduğunu görmek için tıklayın ve ardından DeviceID sütununu görüntüleyin**.
 
-Log Analytics verileri sorgulama hakkında daha fazla bilgi için bkz. [Log Analytics sorguları kullanmaya başlama](https://docs.microsoft.com//azure/log-analytics/query-language/get-started-queries).
+Log Analytics verileri sorgulama hakkında daha fazla bilgi için bkz. [Log Analytics sorguları kullanmaya başlama](//azure/log-analytics/query-language/get-started-queries).
 
 ## <a name="security-alerts"></a>Güvenlik uyarıları
 
@@ -87,7 +87,7 @@ SecurityAlert
     DisplayName
 ```
 
-| Iothubıd                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | Sayı |
+| Iothubıd                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | Count |
 |----------------------------------------------------------------------------------------------------------------|---------------|---------------|---------------------------------------|-----|
 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Yüksek          | Deneme yanılma saldırısı başarılı           | 9   |
 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Orta        | Cihazda yerel oturum açma denemesi başarısız  | 242 |
@@ -164,7 +164,7 @@ SecurityRecommendation
 | summarize Cnt=count() by IoTHubId, DeviceId, RecommendationSeverity
 ```
 
-| Iothubıd                                                                                                       | DeviceId      | RecommendationSeverity | Sayı |
+| Iothubıd                                                                                                       | DeviceId      | RecommendationSeverity | Count |
 |----------------------------------------------------------------------------------------------------------------|---------------|------------------------|-----|
 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Yüksek          | 2   |
 | /Subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | Orta        | 1 |

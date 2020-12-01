@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 10/22/2020
 ms.author: clschott
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7f28ab0d81daaedeec83994fcebc3eb430023bbc
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 24e172edd47bd859e530536671b5e8df7e0d4c8f
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93315849"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352567"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-c"></a>Hızlı başlangıç: Bing Video Arama REST API ve C kullanarak video arayın #
 
 > [!WARNING]
-> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](/bing/search-apis/bing-web-search/create-bing-search-service-resource)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
 > Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
-> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
+> Geçiş yönergeleri için bkz. [Bing arama Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Bing Video Arama API'si ilk çağrısını yapmak için bu hızlı başlangıcı kullanın. Bu basit C# uygulaması, API 'ye bir HTTP video arama sorgusu gönderir ve JSON yanıtını görüntüler. Bu uygulama C# dilinde yazılsa da, API birçok programlama dili ile uyumlu olan bir yeniden sorun Web hizmetidir.
 

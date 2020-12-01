@@ -12,19 +12,19 @@ ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c6b6aea6a3b0856b3db345e20b87d2a12ad055e1
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 077c715616e377d8b296e53fdd5a861f944ab940
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380339"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349512"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>C 'de konsol uygulama arama istemcisi oluşturma #
 
 > [!WARNING]
-> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](/bing/search-apis/bing-web-search/create-bing-search-service-resource)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
 > Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
-> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
+> Geçiş yönergeleri için bkz. [Bing arama Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Bu öğreticide, kullanıcıların Bing Web Araması API'si sorgulamasını ve derecelendirilen sonuçları görüntülemesini sağlayan basit bir .NET Core konsol uygulamasının nasıl oluşturulacağı gösterilmektedir.
 
@@ -47,14 +47,14 @@ Visual Studio’da `Ctrl`+`Shift`+`N` ile yeni bir proje oluşturun.
 
 **Yeni proje** iletişim kutusunda, **Visual C# > Windows Klasik Masaüstü > konsol uygulaması (.NET Framework)** seçeneğine tıklayın.
 
-Uygulamayı **Myconsolesearchapp** olarak adlandırın ve ardından **Tamam** ' a tıklayın.
+Uygulamayı **Myconsolesearchapp** olarak adlandırın ve ardından **Tamam**' a tıklayın.
 
 ## <a name="add-the-jsonnet-nuget-package-to-the-project"></a>JSON.net NuGet paketini projeye ekleyin
 
 JSON.net, API tarafından döndürülen JSON yanıtları ile çalışmanıza olanak sağlar. NuGet paketini projenize ekleyin:
 
 - **Çözüm Gezgini** projeye sağ tıklayıp **NuGet Paketlerini Yönet...** seçeneğini belirleyin.
-- **Araştır** sekmesinde için arama yapın `Newtonsoft.Json` . En son sürümü seçin ve ardından **Install** ' a tıklayın.
+- **Araştır** sekmesinde için arama yapın `Newtonsoft.Json` . En son sürümü seçin ve ardından **Install**' a tıklayın.
 - **Değişiklikleri gözden geçir** penceresinde **Tamam** düğmesine tıklayın.
 - **NuGet: MyConsoleSearchApp** başlıklı Visual Studio sekmesini kapatın.
 
@@ -62,13 +62,13 @@ JSON.net, API tarafından döndürülen JSON yanıtları ile çalışmanıza ola
 
 Bu öğretici derlemeyi temel alır `System.Web` . Projenize bu derlemeye bir başvuru ekleyin:
 
-- **Çözüm Gezgini** , **Başvurular** ' a sağ tıklayın ve **Başvuru Ekle...** öğesini seçin.
-- **Derlemeler > Framework** ' ü seçin, ardından aşağı kaydırın ve **System. Web** ' i denetleyin
-- **Tamam** 'ı seçin
+- **Çözüm Gezgini**, **Başvurular** ' a sağ tıklayın ve **Başvuru Ekle...** öğesini seçin.
+- **Derlemeler > Framework**' ü seçin, ardından aşağı kaydırın ve **System. Web** ' i denetleyin
+- **Tamam**'ı seçin
 
 ## <a name="add-some-necessary-using-statements"></a>Bazı gerekli using deyimlerini ekleyin
 
-Bu öğreticideki kod, üç ek using deyimi gerektirir. Bu deyimleri, `using` **program.cs** 'in en üstündeki mevcut deyimlerinin altına ekleyin:
+Bu öğreticideki kod, üç ek using deyimi gerektirir. Bu deyimleri, `using` **program.cs**'in en üstündeki mevcut deyimlerinin altına ekleyin:
 
 ```csharp
 using System.Web;
@@ -77,7 +77,7 @@ using System.Net.Http;
 
 ## <a name="ask-the-user-for-a-query"></a>Kullanıcıdan bir sorgu isteyin
 
-**Çözüm Gezgini** ' de, **program.cs** ' yi açın. Yöntemi güncelleştirin `Main()` :
+**Çözüm Gezgini**' de, **program.cs**' yi açın. Yöntemi güncelleştirin `Main()` :
 
 ```csharp
 static void Main()
@@ -236,7 +236,7 @@ Sonuçları derecelendirildi sırada görüntülemeyi göstermeden önce, örnek
 
 Sıralama yanıtı JSON, bir veya daha fazla gruptan birini içerebilir.
 
-**Program.cs** ' de, sonuçları düzgün bir şekilde derecelendirilen sırada göstermek için aşağıdaki yöntemi ekleyin:
+**Program.cs**' de, sonuçları düzgün bir şekilde derecelendirilen sırada göstermek için aşağıdaki yöntemi ekleyin:
 
 ```csharp
 static void DisplayAllRankedResults(Newtonsoft.Json.Linq.JObject responseObjects)

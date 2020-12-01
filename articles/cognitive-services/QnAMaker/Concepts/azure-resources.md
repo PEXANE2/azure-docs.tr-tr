@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 46b1cf2681ab5d804035c98d458600de5081c77d
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: cd64c19e7e9af05becd7a6978ceb4d0306112170
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376815"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351904"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Soru-Cevap Oluşturma için Azure kaynakları
 
@@ -48,17 +48,17 @@ Projenin geliştirme aşamasına geçtiğinizde şunları göz önünde bulundur
 
 Genellikle göz önünde bulundurmanız gereken üç parametre vardır:
 
-* **Hizmetten ihtiyacınız olan aktarım hızı** :
-    * Gereksinimlerinize göre App Service için uygun [uygulama planını](https://azure.microsoft.com/pricing/details/app-service/plans/) seçin. Uygulamanın [ölçeğini](https://docs.microsoft.com/azure/app-service/manage-scale-up) değiştirebilir veya azaltabilirsiniz.
-    * Bunun yanı sıra Azure **bilişsel arama** SKU seçiminizi de etkilemelidir, daha fazla ayrıntı için [buradaki](https://docs.microsoft.com/azure/search/search-sku-tier)ayrıntıları inceleyin. Ayrıca, çoğaltmalarla Bilişsel Arama [kapasiteyi](../../../search/search-capacity-planning.md) ayarlamanız gerekebilir.
+* **Hizmetten ihtiyacınız olan aktarım hızı**:
+    * Gereksinimlerinize göre App Service için uygun [uygulama planını](https://azure.microsoft.com/pricing/details/app-service/plans/) seçin. Uygulamanın [ölçeğini](../../../app-service/manage-scale-up.md) değiştirebilir veya azaltabilirsiniz.
+    * Bunun yanı sıra Azure **bilişsel arama** SKU seçiminizi de etkilemelidir, daha fazla ayrıntı için [buradaki](../../../search/search-sku-tier.md)ayrıntıları inceleyin. Ayrıca, çoğaltmalarla Bilişsel Arama [kapasiteyi](../../../search/search-capacity-planning.md) ayarlamanız gerekebilir.
 
-* **Bilgi bankalarının boyutu ve sayısı** : senaryonuz Için uygun [Azure Search SKU](https://azure.microsoft.com/pricing/details/search/) 'sunu seçin. Genellikle, farklı konu etki alanlarının sayısına göre ihtiyacınız olan bilgi tabanı sayısına karar verirsiniz. Konu etki alanı (tek bir dil için) bir bilgi tabanında olmalıdır.
+* **Bilgi bankalarının boyutu ve sayısı**: senaryonuz Için uygun [Azure Search SKU](https://azure.microsoft.com/pricing/details/search/) 'sunu seçin. Genellikle, farklı konu etki alanlarının sayısına göre ihtiyacınız olan bilgi tabanı sayısına karar verirsiniz. Konu etki alanı (tek bir dil için) bir bilgi tabanında olmalıdır.
 
     N-1 bilgi bankasını belirli bir katmanda yayımlayabilirsiniz; burada N, katmanda izin verilen en fazla dizin olabilir. Ayrıca, katman başına izin verilen maksimum boyut ve belge sayısını kontrol edin.
 
     Örneğin, katmanınızda 15 ' in izin verilen dizini varsa, 14 bilgi tabanı (yayımlanan Bilgi Bankası başına 1 Dizin) yayımlayabilirsiniz. On beşinci Dizin, yazma ve test için tüm bilgi tabanları için kullanılır.
 
-* **Kaynak olarak belge sayısı** : soru-cevap oluşturma yönetim hizmetinin ücretsiz SKU 'su, Portal ve API 'ler aracılığıyla (her bırı 1 MB boyutunda) yönetebileceğiniz belge sayısını sınırlar. Standart SKU, yönetebileceğiniz belge sayısıyla sınırlı değildir. Daha fazla ayrıntı için [buraya](https://aka.ms/qnamaker-pricing)bakın.
+* **Kaynak olarak belge sayısı**: soru-cevap oluşturma yönetim hizmetinin ücretsiz SKU 'su, Portal ve API 'ler aracılığıyla (her bırı 1 MB boyutunda) yönetebileceğiniz belge sayısını sınırlar. Standart SKU, yönetebileceğiniz belge sayısıyla sınırlı değildir. Daha fazla ayrıntı için [buraya](https://aka.ms/qnamaker-pricing)bakın.
 
 Aşağıdaki tabloda bazı üst düzey yönergeler sunulmaktadır.
 
@@ -72,11 +72,11 @@ Aşağıdaki tabloda bazı üst düzey yönergeler sunulmaktadır.
 
 Genellikle göz önünde bulundurmanız gereken üç parametre vardır:
 
-* **Hizmetten ihtiyacınız olan aktarım hızı** :
+* **Hizmetten ihtiyacınız olan aktarım hızı**:
     * Soru-Cevap Oluşturma yönetilen (Önizleme), ücretsiz bir hizmettir ve aktarım hızı şu anda hem yönetim API 'Leri hem de tahmin API 'Leri için 10 TPS 'ye atlar.
-    * Bunun yanı sıra Azure **bilişsel arama** SKU seçiminizi de etkilemelidir, daha fazla ayrıntı için [buradaki](https://docs.microsoft.com/azure/search/search-sku-tier)ayrıntıları inceleyin. Ayrıca, çoğaltmalarla Bilişsel Arama [kapasiteyi](../../../search/search-capacity-planning.md) ayarlamanız gerekebilir.
+    * Bunun yanı sıra Azure **bilişsel arama** SKU seçiminizi de etkilemelidir, daha fazla ayrıntı için [buradaki](../../../search/search-sku-tier.md)ayrıntıları inceleyin. Ayrıca, çoğaltmalarla Bilişsel Arama [kapasiteyi](../../../search/search-capacity-planning.md) ayarlamanız gerekebilir.
 
-* **Bilgi bankalarının boyutu ve sayısı** : senaryonuz Için uygun [Azure Search SKU](https://azure.microsoft.com/pricing/details/search/) 'sunu seçin. Genellikle, farklı konu etki alanlarının sayısına göre ihtiyacınız olan bilgi tabanı sayısına karar verirsiniz. Konu etki alanı (tek bir dil için) bir bilgi tabanında olmalıdır.
+* **Bilgi bankalarının boyutu ve sayısı**: senaryonuz Için uygun [Azure Search SKU](https://azure.microsoft.com/pricing/details/search/) 'sunu seçin. Genellikle, farklı konu etki alanlarının sayısına göre ihtiyacınız olan bilgi tabanı sayısına karar verirsiniz. Konu etki alanı (tek bir dil için) bir bilgi tabanında olmalıdır.
 
     Soru-Cevap Oluşturma yönetilen (Önizleme) ile, Soru-Cevap Oluşturma hizmetinizi tek bir dilde veya birden çok dilde KBs için ayarlama seçeneğiniz vardır. Soru-Cevap Oluşturma yönetilen (Önizleme) hizmetinize ilk bilgi bankasını oluştururken bu seçimi yapabilirsiniz.
 
@@ -86,7 +86,7 @@ Genellikle göz önünde bulundurmanız gereken üç parametre vardır:
 
     Örneğin, katmanınızda 15 ' in izin verilen dizini varsa, aynı dilin 14 bilgi esaslarını yayımlayabilirsiniz (yayımlanan Bilgi Bankası başına 1 Dizin). On beşinci Dizin, yazma ve test için tüm bilgi tabanları için kullanılır. Bilgi tabanlarının farklı dillerde olmasını seçerseniz, yalnızca 7 bilgi bankasını yayımlayabilirsiniz.
 
-* **Kaynak olarak belge sayısı** : soru-cevap oluşturma yönetilen (Önizleme), ücretsiz bir hizmettir ve kaynak olarak ekleyebileceğiniz belge sayısında bir sınır yoktur. Daha fazla ayrıntı için [buraya](https://aka.ms/qnamaker-pricing)bakın.
+* **Kaynak olarak belge sayısı**: soru-cevap oluşturma yönetilen (Önizleme), ücretsiz bir hizmettir ve kaynak olarak ekleyebileceğiniz belge sayısında bir sınır yoktur. Daha fazla ayrıntı için [buraya](https://aka.ms/qnamaker-pricing)bakın.
 
 Aşağıdaki tabloda bazı üst düzey yönergeler sunulmaktadır.
 
@@ -120,7 +120,7 @@ Soru-Cevap Oluşturma yönetilen ücretsiz bir hizmettir ve aktarım hızı şu 
 
 # <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
 
-|Upgrade|Nedeni|
+|Yükseltme|Nedeni|
 |--|--|
 |[Yükseltme](../How-to/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku) Soru-Cevap Oluşturma Management SKU 'SU|Bilgi bankalarınızda daha fazla QnA çifti veya belge kaynağı olmasını istiyorsunuz.|
 |[Yükseltme](../How-to/set-up-qnamaker-service-azure.md#upgrade-app-service) SKU 'YU App Service ve Bilişsel Arama katmanını denetleyin ve [bilişsel arama çoğaltmaları oluşturun](../../../search/search-capacity-planning.md)|Bilgi tabanınız, bir sohbet bot gibi istemci uygulamanızdan daha fazla istek sunması gerekir.|
@@ -240,7 +240,7 @@ API aracılığıyla hizmete istek yaparken bu anahtarları kullanın.
 
 |Ad|Konum|Amaç|
 |--|--|--|
-|Yazma anahtarı|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|Bu anahtarlar [soru-cevap oluşturma Management Service API 'lerine](https://go.microsoft.com/fwlink/?linkid=2092179)erişmek için kullanılır. Bu API 'Ler, bilgi bankasındaki soruları ve yanıtları düzenlemenize ve bilgi tabanınızı yayımlamanıza olanak sağlar. Yeni bir Soru-Cevap Oluşturma hizmeti oluşturduğunuzda bu anahtarlar oluşturulur.<br><br>Bu anahtarları **anahtarlar** sayfasındaki bilişsel **Hizmetler** kaynağında bulabilirsiniz.|
+|Yazma anahtarı|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|Bu anahtarlar [soru-cevap oluşturma Management Service API 'lerine](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)erişmek için kullanılır. Bu API 'Ler, bilgi bankasındaki soruları ve yanıtları düzenlemenize ve bilgi tabanınızı yayımlamanıza olanak sağlar. Yeni bir Soru-Cevap Oluşturma hizmeti oluşturduğunuzda bu anahtarlar oluşturulur.<br><br>Bu anahtarları **anahtarlar** sayfasındaki bilişsel **Hizmetler** kaynağında bulabilirsiniz.|
 |Sorgu uç noktası anahtarı|[Soru-Cevap Oluşturma portalı](https://www.qnamaker.ai)|Bu anahtarlar, bir Kullanıcı sorusu için yanıt almak üzere yayımlanmış bilgi tabanı uç noktasını sorgulamak için kullanılır. Bu sorgu uç noktasını genellikle sohbet bot 'inizdeki veya Soru-Cevap Oluşturma hizmetine bağlanan istemci uygulama kodunda kullanırsınız. Bu anahtarlar Soru-Cevap Oluşturma bilgi bankasını yayımladığınızda oluşturulur.<br><br>Bu anahtarları **hizmet ayarları** sayfasında bulabilirsiniz. Bu sayfayı, açılan menüdeki sayfanın sağ üst kısmındaki kullanıcının menüsünden bulabilirsiniz.|
 
 ### <a name="subscription-keys"></a>Abonelik anahtarları
@@ -251,11 +251,11 @@ Hangi anahtarı bulmanız gerektiğini öğrenmek için, anahtarın ne eriştiğ
 
 ### <a name="recommended-settings-for-network-isolation"></a>Ağ yalıtımı için önerilen ayarlar
 
-* [Sanal ağı yapılandırarak](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)bilişsel hizmet kaynağını ortak erişime karşı koruyun.
+* [Sanal ağı yapılandırarak](../../cognitive-services-virtual-networks.md?tabs=portal)bilişsel hizmet kaynağını ortak erişime karşı koruyun.
 * App Service (QnA Runtime) ortak erişime karşı koruma:
     * Yalnızca bilişsel hizmet IP 'lerinden gelen trafiğe izin verin. Bunlar, "Biliveservicesmanagement" hizmet etiketinde zaten yer almaktadır. Bu, App Service 'i çağırmak ve Azure Search hizmeti 'ni uygun şekilde güncelleştirmek için API 'Leri yazma (oluşturma/güncelleştirme KB) için gereklidir.
     * Ayrıca, bot hizmeti, Soru-Cevap Oluşturma Portal (Corpnet olabilir) gibi diğer giriş noktalarına da izin verdiğinizden emin olun. tahmin için "GenerateAnswer" API erişimi.
-    * [Hizmet etiketleri hakkında daha fazla bilgi edinin.](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
+    * [Hizmet etiketleri hakkında daha fazla bilgi edinin.](../../../virtual-network/service-tags-overview.md)
 
 # <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
 
@@ -317,8 +317,8 @@ API aracılığıyla hizmete istek yaparken bu anahtarları kullanın.
 
 |Ad|Konum|Amaç|
 |--|--|--|
-|Yazma anahtarı|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|Bu anahtarlar [soru-cevap oluşturma Management Service API 'lerine](https://go.microsoft.com/fwlink/?linkid=2092179)erişmek için kullanılır. Bu API 'Ler, bilgi bankasındaki soruları ve yanıtları düzenlemenize ve bilgi tabanınızı yayımlamanıza olanak sağlar. Yeni bir Soru-Cevap Oluşturma hizmeti oluşturduğunuzda bu anahtarlar oluşturulur.<br><br>Bu anahtarları **anahtarlar** sayfasındaki bilişsel **Hizmetler** kaynağında bulabilirsiniz.|
-|Azure Bilişsel Arama yönetici anahtarı|[Azure Portal](https://docs.microsoft.com/azure/search/search-security-api-keys)|Bu anahtarlar, kullanıcının Azure aboneliğinde dağıtılan Azure bilişsel arama hizmeti ile iletişim kurmak için kullanılır. Soru-Cevap Oluşturma yönetilen (Önizleme) hizmeti ile bir Azure bilişsel aramayı ilişkilendirdiğinizde, yönetici anahtarı otomatik olarak Soru-Cevap Oluşturma hizmetine geçirilir. <br><br>Bu anahtarları **anahtarlar** sayfasında **Azure bilişsel arama** kaynağında bulabilirsiniz.|
+|Yazma anahtarı|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|Bu anahtarlar [soru-cevap oluşturma Management Service API 'lerine](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)erişmek için kullanılır. Bu API 'Ler, bilgi bankasındaki soruları ve yanıtları düzenlemenize ve bilgi tabanınızı yayımlamanıza olanak sağlar. Yeni bir Soru-Cevap Oluşturma hizmeti oluşturduğunuzda bu anahtarlar oluşturulur.<br><br>Bu anahtarları **anahtarlar** sayfasındaki bilişsel **Hizmetler** kaynağında bulabilirsiniz.|
+|Azure Bilişsel Arama yönetici anahtarı|[Azure Portal](../../../search/search-security-api-keys.md)|Bu anahtarlar, kullanıcının Azure aboneliğinde dağıtılan Azure bilişsel arama hizmeti ile iletişim kurmak için kullanılır. Soru-Cevap Oluşturma yönetilen (Önizleme) hizmeti ile bir Azure bilişsel aramayı ilişkilendirdiğinizde, yönetici anahtarı otomatik olarak Soru-Cevap Oluşturma hizmetine geçirilir. <br><br>Bu anahtarları **anahtarlar** sayfasında **Azure bilişsel arama** kaynağında bulabilirsiniz.|
 
 ### <a name="subscription-keys"></a>Abonelik anahtarları
 
@@ -328,13 +328,12 @@ Hangi anahtarı bulmanız gerektiğini öğrenmek için, anahtarın ne eriştiğ
 
 ### <a name="recommended-settings-for-network-isolation"></a>Ağ yalıtımı için önerilen ayarlar 
 
-[Sanal ağı yapılandırarak](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)bilişsel hizmet kaynağını ortak erişime karşı koruyun.
+[Sanal ağı yapılandırarak](../../cognitive-services-virtual-networks.md?tabs=portal)bilişsel hizmet kaynağını ortak erişime karşı koruyun.
 
 ---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Soru-Cevap Oluşturma [Bilgi Bankası](knowledge-base.md) hakkında bilgi edinin
+* Soru-Cevap Oluşturma [Bilgi Bankası](../index.yml) hakkında bilgi edinin
 * [Bilgi Bankası yaşam döngüsünü](development-lifecycle-knowledge-base.md) anlama
 * Hizmeti ve Bilgi Bankası [sınırlarını](../limits.md) gözden geçirin
-

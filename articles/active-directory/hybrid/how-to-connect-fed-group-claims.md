@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: cb828eeb408a170b93ffc73b58f14b3f7a883cc4
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: bef5942707c1ded22ba82bdb0d945b9fdb23fffa
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95247243"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349359"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>Azure Active Directory olan uygulamalar için grup taleplerini yapılandırma
 
@@ -58,7 +58,7 @@ Ancak, var olan bir uygulama talepler aracılığıyla grup bilgilerini tüketme
 
 - Uygulama içi yetkilendirme amacıyla Grup üyeliği kullanılırken, ObjectID grubunu kullanmak tercih edilir. Azure Active Directory Grup ObjectID sabit ve benzersiz ve tüm gruplar için kullanılabilir.
 - Yetkilendirme için şirket içi grup sAMAccountName kullanılıyorsa, etki alanı nitelikli adlar kullanın;  ad çakışması daha az olabilir. sAMAccountName bir Active Directory etki alanı içinde benzersiz olabilir, ancak birden fazla Active Directory etki alanı bir Azure Active Directory kiracısıyla eşitlenirse, birden fazla grubun aynı ada sahip olması mümkün olur.
-- Grup üyeliği ve uygulama arasında bir yöneltme katmanı sağlamak için [uygulama rollerini](../../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md) kullanmayı düşünün.   Daha sonra uygulama, belirteçte rol çakışması temelinde iç yetkilendirme kararları verir.
+- Grup üyeliği ve uygulama arasında bir yöneltme katmanı sağlamak için [uygulama rollerini](../../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md) kullanmayı düşünün.   Daha sonra uygulama, belirteçteki rol taleplerini temel alarak iç yetkilendirme kararları verir.
 - Uygulama, Active Directory eşitlenen grup özniteliklerini almak üzere yapılandırıldıysa ve bir grup bu öznitelikleri içermiyorsa, taleplere dahil değildir.
 - Belirteçlerdeki grup talepleri, grup taleplerini uygulamaya atanan gruplarla sınırlamak için seçeneğinin kullanılması dışında iç içe gruplar içerir.  Bir Kullanıcı GroupB üyesiyse ve GroupB bir GroupA üyesiyse, Kullanıcı için Grup talepleri hem GroupA hem de GroupB 'yi içerecektir. Bir kuruluşun kullanıcıları çok sayıda grup üyeliğine sahip olduğunda, belirteçte listelenen grup sayısı belirteç boyutunu büyütebilir.  Azure Active Directory, SAML onaylamaları için 150 'e ve JWT için 200 ' e yayalacak grup sayısını sınırlar.  Bir Kullanıcı daha fazla sayıda grubun üyesiyse, gruplar atlanır ve bunun yerine grup bilgilerini almak için grafik uç noktasına bir bağlantı eklenir.
 
@@ -148,7 +148,7 @@ Geçerli değerler:
 | **ApplicationGroup** | Yalnızca uygulamaya açıkça atanmış olan grupları yayar ve Kullanıcı |
 | **Seçim** | Hiçbir grup döndürülmedi. (Büyük/küçük harf olmaması bu nedenle, hiçbiri de işe yarar ve doğrudan uygulama bildiriminde ayarlanabilir.) |
 
-   Örnek:
+   Örneğin:
 
    ```json
    "groupMembershipClaims": "SecurityGroup"

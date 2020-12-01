@@ -3,12 +3,12 @@ title: Azure portal kullanarak Azure Event Grid iş ortağı olarak ekleme
 description: Bir Azure Event Grid iş ortağı eklemek için Azure portal kullanın.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 36fab35923b8a536a9054e5dc4bfa4c5b82172a7
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 8344fcd822bfcdc67e2c27b200d97fa70dfefdf2
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93103049"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349395"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner-using-the-azure-portal"></a>Azure portal kullanarak Azure Event Grid iş ortağı olarak ekleme
 Bu makalede, olay yayımcıları veya iş ortakları olarak da bilinen üçüncü taraf SaaS sağlayıcılarının, hizmetlerinden olayları yayımlayabilmesi ve bu olayların son kullanıcılar tarafından nasıl tüketildiği Event Grid açıklanmaktadır.
@@ -62,16 +62,16 @@ Kalan adımları tamamlayabilmeniz için, şunları yaptığınızdan emin olun:
         3. **Kaynak türü için bir açıklama** girin. 
         4. **Senaryo için bir açıklama** girin. Kaynaklarınızın iş ortağı konularının kullanılabileceği yolları veya senaryoları açıklamalıdır.  
 
-            :::image type="content" source="./media/onboard-partner/create-partner-registration-page.png" alt-text="İş ortağı kayıt bağlantısı ekle":::            
+            :::image type="content" source="./media/onboard-partner/create-partner-registration-page.png" alt-text="İş ortağı kaydı oluştur":::            
 1. Ileri ' yi seçin. sayfanın en altındaki **özel hizmet** . **Iş ortağı kaydı oluştur** sayfasının **müşteri hizmeti** sekmesinde, abone kullanıcıların Olay kaynağıyla ilgili bir sorun olması durumunda sizinle iletişim kurmak için kullanacağı bilgileri girin:
     1. **Telefon numarasını** girin.
     1. Telefon numarası için **uzantı** girin.
     1. Bir destek web sitesi **URL 'si** girin. 
     
-        :::image type="content" source="./media/onboard-partner/create-partner-registration-customer-service.png" alt-text="İş ortağı kayıt bağlantısı ekle":::        
+        :::image type="content" source="./media/onboard-partner/create-partner-registration-customer-service.png" alt-text="İş ortağı kaydı oluşturma-müşteri hizmeti":::        
 1. **İleri:** sayfanın en altındaki Etiketler ' i seçin. 
 1. **Etiketler** sayfasında, aşağıdaki değerleri yapılandırın. 
-    1. Eklemek istediğiniz etiket için bir **ad** ve bir **değer** girin. Bu adım **isteğe bağlıdır** . 
+    1. Eklemek istediğiniz etiket için bir **ad** ve bir **değer** girin. Bu adım **isteğe bağlıdır**. 
     1. Kayıt (iş ortağı konu türü) oluşturmak için sayfanın altındaki **gözden geçir + oluştur** ' u seçin.
 
 ## <a name="create-a-partner-namespace"></a>İş ortağı ad alanı oluşturma
@@ -79,7 +79,7 @@ Kalan adımları tamamlayabilmeniz için, şunları yaptığınızdan emin olun:
 1. Azure portal sol gezinti menüsünde **tüm hizmetler** ' i seçin, sonra arama çubuğuna **Event Grid Iş ortağı ad alanlarını** yazın ve ardından listeden seçin. 
 1. **Event Grid Iş ortağı ad alanları** sayfasında, araç çubuğunda **+ Ekle** ' yi seçin. 
     
-    :::image type="content" source="./media/onboard-partner/add-partner-namespace-link.png" alt-text="İş ortağı kayıt bağlantısı ekle":::
+    :::image type="content" source="./media/onboard-partner/add-partner-namespace-link.png" alt-text="İş ortağı ad alanları-bağlantı ekle":::
 1. **Iş ortağı ad alanı oluşturma-temel bilgiler** sayfasında aşağıdaki bilgileri belirtin.
     1. **Proje ayrıntıları** bölümünde aşağıdaki adımları uygulayın: 
         1. Bir Azure **aboneliği** seçin.
@@ -93,11 +93,11 @@ Kalan adımları tamamlayabilmeniz için, şunları yaptığınızdan emin olun:
         1. Aşağı açılan listeden **iş ortağı kaydını** seçin.
     1. **İleri:** sayfanın en altındaki Etiketler ' i seçin.
 
-        :::image type="content" source="./media/onboard-partner/create-partner-namespace-basics-page.png" alt-text="İş ortağı kayıt bağlantısı ekle":::
+        :::image type="content" source="./media/onboard-partner/create-partner-namespace-basics-page.png" alt-text="İş ortağı ad alanı oluşturma-temel bilgiler sayfası":::
 1. **Etiketler** sayfasında Etiketler ekleyin (isteğe bağlı).
-    1. Eklemek istediğiniz etiket için bir **ad** ve bir **değer** girin. Bu adım **isteğe bağlıdır** .
+    1. Eklemek istediğiniz etiket için bir **ad** ve bir **değer** girin. Bu adım **isteğe bağlıdır**.
     1. Sayfanın alt kısmındaki **gözden geçir + oluştur** ' u seçin.         
-1. **Gözden geçir + oluştur** sayfasında, ayrıntıları gözden geçirin ve **Oluştur** ' u seçin. 
+1. **Gözden geçir + oluştur** sayfasında, ayrıntıları gözden geçirin ve **Oluştur**' u seçin. 
 
 ## <a name="create-an-event-channel"></a>Olay kanalı oluşturma
 > [!IMPORTANT]
@@ -105,7 +105,7 @@ Kalan adımları tamamlayabilmeniz için, şunları yaptığınızdan emin olun:
 
 1. Oluşturduğunuz ad alanının **genel bakış** sayfasına gidin. 
 
-    :::image type="content" source="./media/onboard-partner/partner-namespace-overview.png" alt-text="İş ortağı kayıt bağlantısı ekle":::
+    :::image type="content" source="./media/onboard-partner/partner-namespace-overview.png" alt-text="İş ortağı ad alanı-genel bakış sayfası":::
     partner-namespace-overview.png
 1. Araç çubuğunda **+ olay kanalı** ' nı seçin. 
 1. **Olay kanalı oluşturma-temel bilgiler** sayfasında, aşağıdaki bilgileri belirtin. 
@@ -119,23 +119,23 @@ Kalan adımları tamamlayabilmeniz için, şunları yaptığınızdan emin olun:
         1. **İş ortağı konusu için bir ad** girin. 
     1. **İleri:** sayfanın en altındaki filtreler ' i seçin. 
     
-        :::image type="content" source="./media/onboard-partner/create-event-channel-basics-page.png" alt-text="İş ortağı kayıt bağlantısı ekle":::
+        :::image type="content" source="./media/onboard-partner/create-event-channel-basics-page.png" alt-text="Olay kanalı oluşturma-temel bilgiler sayfası":::
 1. **Filtreler** sayfasında filtre ekleyin. aşağıdaki adımları uygulayın:
     1. Her olayın özniteliklerini filtreleyin. Yalnızca tüm filtrelerle eşleşen olaylar alınır. En fazla 25 filtre belirlenebilir. Karşılaştırmalar büyük/küçük harfe duyarlıdır. Filtreler için kullanılan geçerli anahtarlar olay şemasına göre farklılık gösterir. Aşağıdaki örnekte,,, `eventid` `source` `eventtype` ve `eventtypeversioin` anahtarlar için kullanılabilir. Ayrıca, `.` iç içe geçme işleci olarak kullanarak veri yükünün içinde özel özellikler de kullanabilirsiniz. Örneğin: `data` , `data.key` , `data.key1.key2` .
     1. Ileri ' yi seçin: sayfanın en altındaki **ek özellikler** . 
     
-        :::image type="content" source="./media/onboard-partner/create-event-channel-filters-page.png" alt-text="İş ortağı kayıt bağlantısı ekle":::
+        :::image type="content" source="./media/onboard-partner/create-event-channel-filters-page.png" alt-text="Olay kanalı oluşturma-Filtreler sayfası":::
         create-event-channel-filters-page.png
 1. **Ek özellikler** sayfasında, **iş ortağı konusu için** bir **sona erme süresi** ve açıklama ayarlayabilirsiniz. 
     1. **Sona erme zamanı** , konunun ve ilişkili olay kanalının müşteri tarafından etkinleştirilmediğinde otomatik olarak silineceği süredir. Bir zaman sağlanmazsa varsayılan yedi gün kullanılır. Kendi sona erme süresini belirtmek için onay kutusunu seçin. 
     1. Bu konu, Kullanıcı tarafından oluşturulmamış bir kaynak olduğundan, bir **Açıklama** kullanıcının bu konunun yapısını anlamasına yardımcı olabilir. Hiçbiri ayarlanmamışsa genel bir açıklama sağlanacaktır. Kendi iş ortağı konu açıklamanızı ayarlamak için onay kutusunu seçin. 
-    1. **Sonraki: Gözden geçirme ve oluşturma** ’yı seçin. 
+    1. **Sonraki: Gözden geçirme ve oluşturma**’yı seçin. 
     
-        :::image type="content" source="./media/onboard-partner/create-event-channel-additional-features-page.png" alt-text="İş ortağı kayıt bağlantısı ekle":::
+        :::image type="content" source="./media/onboard-partner/create-event-channel-additional-features-page.png" alt-text="Olay kanalı oluşturma-ek özellikler sayfası":::
 1. **Gözden geçir + oluştur** sayfasında ayarları gözden geçirin ve **Oluştur** ' u seçerek olay kanalını oluşturun. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [İş ortağı konularına genel bakış](partner-topics-overview.md)
+- [İş ortağı konularına genel bakış](./partner-events-overview.md)
 - [İş ortağı konuları ekleme formu](https://aka.ms/gridpartnerform)
 - [Auth0 iş ortağı konusu](auth0-overview.md)
 - [Auth0 iş ortağı konusunu kullanma](auth0-how-to.md)

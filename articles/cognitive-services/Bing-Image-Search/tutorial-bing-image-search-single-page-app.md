@@ -11,19 +11,19 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: a9dba9222816ef2cc7891ff7f803e6a7409802a4
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: bcb82ffcf4c4ad861c6523f507c816c666a71772
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593459"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351393"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Öğretici: Bing Resim Arama API’sini kullanarak tek sayfalı uygulama oluşturma
 
 > [!WARNING]
-> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](/bing/search-apis/bing-web-search/create-bing-search-service-resource)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
 > Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
-> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
+> Geçiş yönergeleri için bkz. [Bing arama Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Bing Resim Arama API’si, web’de yüksek kaliteli, alakalı görüntüleri aramanıza olanak sağlar. API’ye arama sorguları gönderebilen ve sonuçları web sayfasında görüntüleyebilen tek sayfalı bir web uygulaması derlemek için bu öğreticiyi kullanın. Bu öğretici, Bing Web Araması’nın [ilgili öğreticisine](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md) benzerdir.
 
@@ -37,7 +37,7 @@ Bing Resim Arama API’si, web’de yüksek kaliteli, alakalı görüntüleri ar
 
 Bu öğreticinin tam kaynak kodu, [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Image-Search)’da mevcuttur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Node.js](https://nodejs.org/)'in en son sürümü.
 * Node.js için [Express.js](https://expressjs.com/) çerçevesi. Kaynak koda ilişkin yükleme yönergeleri GitHub örnek Benioku dosyasında bulunabilir.
@@ -322,7 +322,7 @@ function renderImageResults(items) {
 
 Bing Resim Arama API’si, kullanıcıların arama deneyimlerine yol göstermesi için dört tür arama önerisi döndürebilir; bunların her biri kendi üst düzey nesnesinde yer alır:
 
-| Öneri         | Description                                                                                                                                                                                                         |
+| Öneri         | Açıklama                                                                                                                                                                                                         |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `pivotSuggestions` | Özgün aramadaki asıl sözcüğü başka bir sözcükle değiştiren sorgular. Örneğin, "kırmızı çiçekler" araması yaparsanız pivot sözcüğü "kırmızı" ve pivot öneri de "sarı çiçekler" olabilir. |
 | `queryExpansions`  | Daha fazla terim ekleyerek özgün aramayı daraltan sorgular. Örneğin, "Microsoft Surface" araması yaparsanız genişletilmiş sorgu "Microsoft Surface Pro" olabilir.                                   |

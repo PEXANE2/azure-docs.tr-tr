@@ -12,12 +12,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9a082270e2c113bcdf31ed6bd6db3d38a7117500
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62bfc528886767bc09159ca2a2696c8c9264b307
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89279304"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349948"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: AD DS Bağlayıcı Hesabı İzinlerini Yapılandırma 
 
@@ -41,7 +41,7 @@ Aşağıdaki tabloda AD nesnelerinde gerekli izinlerin özeti verilmiştir:
 | Exchange posta genel klasörü |Ortak klasörler için [Exchange posta ortak klasöründe](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder) belgelenen özniteliklere yönelik okuma izinleri. | 
 | Parola geri yazma |Kullanıcılar için [parola yönetimine](../authentication/tutorial-enable-sspr-writeback.md) Başlarken bölümünde belgelenen özniteliklere yönelik okuma ve yazma izinleri. |
 | Cihaz geri yazma |Cihaz nesnelerine ve [cihaz geri yazma](how-to-connect-device-writeback.md)bölümünde belgelenen kapsayıcılara yönelik okuma ve yazma izinleri. |
-| Grup geri yazma |Eşitlenmiş **Office 365 grupları**için Grup nesnelerini okuyun, oluşturun, güncelleştirin ve silin.|
+| Grup geri yazma |Eşitlenmiş **Office 365 grupları** için Grup nesnelerini okuyun, oluşturun, güncelleştirin ve silin.|
 
 ## <a name="using-the-adsyncconfig-powershell-module"></a>ADSyncConfig PowerShell modülünü kullanma 
 ADSyncConfig modülü AD DS PowerShell modülüne ve araçlarına bağlı olduğundan, [AD DS için uzak sunucu yönetim araçları (RSAT)](/windows-server/remote/remote-server-administration-tools) gerektirir. AD DS için RSAT 'yi yüklemek için, ' yönetici olarak Çalıştır ' ile bir Windows PowerShell penceresi açın ve yürütün: 
@@ -137,7 +137,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <Stri
 Bu cmdlet aşağıdaki izinleri ayarlar: 
  
 
-|Tür |Adı |Access |Uygulanan Öğe| 
+|Tür |Name |Access |Uygulanan Öğe| 
 |-----|-----|-----|-----|
 |İzin Ver |AD DS bağlayıcı hesabı |Tüm özellikleri oku |Alt cihaz nesneleri| 
 |İzin Ver |AD DS bağlayıcı hesabı|Tüm özellikleri oku |Alt InetOrgPerson nesneleri| 
@@ -163,7 +163,7 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobje
 
 Bu cmdlet aşağıdaki izinleri ayarlar: 
 
-|Tür |Adı |Access |Uygulanan Öğe|
+|Tür |Name |Access |Uygulanan Öğe|
 |-----|-----|-----|-----| 
 |İzin Ver|AD DS bağlayıcı hesabı|Okuma/yazma özelliği|Alt Kullanıcı nesneleri|
 
@@ -183,7 +183,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [<CommonPar
 
 Bu cmdlet aşağıdaki izinleri ayarlar: 
 
-|Tür |Adı |Access |Uygulanan Öğe|
+|Tür |Name |Access |Uygulanan Öğe|
 |-----|-----|-----|-----| 
 |İzin Ver |AD DS bağlayıcı hesabı |Dizin değişikliklerini çoğaltma |Yalnızca bu nesne (etki alanı kökü)| 
 |İzin Ver |AD DS bağlayıcı hesabı |Dizin değişikliklerini çoğaltma |Yalnızca bu nesne (etki alanı kökü)| 
@@ -203,7 +203,7 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobject
 ```
 Bu cmdlet aşağıdaki izinleri ayarlar: 
 
-|Tür |Adı |Access |Uygulanan Öğe|
+|Tür |Name |Access |Uygulanan Öğe|
 |-----|-----|-----|-----| 
 |İzin Ver |AD DS bağlayıcı hesabı |Parola Sıfırlama |Alt Kullanıcı nesneleri| 
 |İzin Ver |AD DS bağlayıcı hesabı |Write özelliği lockoutTime |Alt Kullanıcı nesneleri| 
@@ -223,7 +223,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADob
  
 Bu cmdlet aşağıdaki izinleri ayarlar: 
 
-|Tür |Adı |Access |Uygulanan Öğe|
+|Tür |Name |Access |Uygulanan Öğe|
 |-----|-----|-----|-----| 
 |İzin Ver |AD DS bağlayıcı hesabı |Genel okuma/yazma |Nesne türü grubu ve alt nesnelerin tüm öznitelikleri| 
 |İzin Ver |AD DS bağlayıcı hesabı |Alt nesne Oluştur/Sil |Nesne türü grubu ve alt nesnelerin tüm öznitelikleri| 
@@ -246,7 +246,7 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN 
 Bu cmdlet aşağıdaki izinleri ayarlar:  
  
 
-|Tür |Adı |Access |Uygulanan Öğe|
+|Tür |Name |Access |Uygulanan Öğe|
 |-----|-----|-----|-----| 
 |İzin Ver |AD DS bağlayıcı hesabı |Tüm özellikleri oku/yaz |Alt Kullanıcı nesneleri| 
 |İzin Ver |AD DS bağlayıcı hesabı |Tüm özellikleri oku/yaz |Alt InetOrgPerson nesneleri| 
@@ -268,7 +268,7 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-A
 ```
 Bu cmdlet aşağıdaki izinleri ayarlar: 
 
-|Tür |Adı |Access |Uygulanan Öğe|
+|Tür |Name |Access |Uygulanan Öğe|
 |-----|-----|-----|-----| 
 |İzin Ver |AD DS bağlayıcı hesabı |Tüm özellikleri oku |Descendant PublicFolder nesneleri| 
 
@@ -293,7 +293,7 @@ Set-ADSyncRestrictedPermissions -ADConnectorAccountDN'CN=ADConnectorAccount,CN=U
 
 Bu cmdlet aşağıdaki izinleri ayarlar: 
 
-|Tür |Adı |Access |Uygulanan Öğe|
+|Tür |Name |Access |Uygulanan Öğe|
 |-----|-----|-----|-----| 
 |İzin Ver |SİSTEM |Tam Denetim |Bu nesne 
 |İzin Ver |Enterprise Admins |Tam Denetim |Bu nesne 

@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 1933e60892430b907e070ea04f39d8acc86ddac2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f6d9f670a1b85e55ccc8f6cb18645b92927221a
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941160"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351648"
 ---
 # <a name="azure-defender-for-iot-edge-security-module"></a>IoT Edge güvenlik modülü için Azure Defender
 
-[Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) kenarda iş akışlarını yönetmek ve gerçekleştirmek için güçlü özellikler sunar.
+[Azure IoT Edge](../iot-edge/index.yml) kenarda iş akışlarını yönetmek ve gerçekleştirmek için güçlü özellikler sunar.
 IoT ortamlarında IoT Edge oynadığı anahtar bölüm, kötü amaçlı aktörler için özellikle çekici hale gelir.
 
 IoT güvenlik modülü için Defender, IoT Edge cihazlarınız için kapsamlı bir güvenlik çözümü sağlar.
@@ -39,7 +39,7 @@ IoT Edge IoT güvenlik modülü için Defender aşağıdaki özellikleri sunmakt
 
 - IoT Edge dağıtım bildirimlerinin analizi.
 
-- [IoT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)aracılığıyla gönderilen iletilere ham güvenlik olayları toplar.
+- [IoT Edge hub](../iot-edge/iot-edge-runtime.md#iot-edge-hub)aracılığıyla gönderilen iletilere ham güvenlik olayları toplar.
 
 - İkizi güvenlik modülünün kullanımıyla yapılandırmayı kaldırın.
 

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 10/08/2020
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: 55a7e117ebd49f268d4b075d58791df4e9223fdf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a61e87c660bf2d2f0f4c8d02bd1699c58f8da667
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91849271"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350679"
 ---
 # <a name="create-a-pool-with-disk-encryption-enabled"></a>Disk şifrelemesi etkinleştirilmiş havuz oluşturma
 
@@ -25,26 +25,26 @@ Bir Batch havuzu ile, işlem düğümünün işletim sistemi ve geçici diskleri
 
 Batch, havuz yapılandırmasına ve bölgesel desteklenebilirine göre işlem düğümlerinde bu disk şifreleme teknolojilerinden birini uygular.
 
-- [Platform tarafından yönetilen anahtarlarla bekleyen yönetilen disk şifrelemesi](../virtual-machines/windows/disk-encryption.md#platform-managed-keys)
-- [Platform tarafından yönetilen anahtar kullanarak konakta şifreleme](../virtual-machines/windows/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)
+- [Platform tarafından yönetilen anahtarlarla bekleyen yönetilen disk şifrelemesi](../virtual-machines/disk-encryption.md#platform-managed-keys)
+- [Platform tarafından yönetilen anahtar kullanarak konakta şifreleme](../virtual-machines/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)
 - [Azure Disk Şifrelemesi](../security/fundamentals/azure-disk-encryption-vms-vmss.md)
 
 > [!IMPORTANT]
 > Azure Batch ' de platform tarafından yönetilen anahtar kullanılarak konakta şifreleme desteği şu anda Doğu ABD, Batı ABD 2, Orta Güney ABD, US Gov Virginia ve US Gov Arizona bölgeleri için genel önizlemededir.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Havuzunuzdaki düğümlere hangi şifreleme yönteminin uygulanacağını belirleyemeyeceksiniz. Bunun yerine, düğümlerinde şifrelemek istediğiniz hedef diskleri sağlarsınız ve toplu Işlem, belirtilen disklerin işlem düğümünde şifrelendiğinden emin olmak için uygun şifreleme yöntemini seçebilirler.
 
 ## <a name="azure-portal"></a>Azure portal
 
-Azure portal bir Batch havuzu oluştururken, **disk şifreleme yapılandırması**altında **TemporaryDisk** veya **OsAndTemporaryDisk** seçeneklerinden birini belirleyin.
+Azure portal bir Batch havuzu oluştururken, **disk şifreleme yapılandırması** altında **TemporaryDisk** veya **OsAndTemporaryDisk** seçeneklerinden birini belirleyin.
 
 :::image type="content" source="media/disk-encryption/portal-view.png" alt-text="Azure portal disk şifrelemesi yapılandırma seçeneğinin ekran görüntüsü.":::
 
 Havuz oluşturulduktan sonra, havuzun **Özellikler** bölümünde disk şifrelemesi yapılandırma hedeflerini görebilirsiniz.
 
-:::image type="content" source="media/disk-encryption/configuration-target.png" alt-text="Azure portal disk şifrelemesi yapılandırma seçeneğinin ekran görüntüsü.":::
+:::image type="content" source="media/disk-encryption/configuration-target.png" alt-text="Azure portal disk şifrelemesi yapılandırma hedeflerini gösteren ekran görüntüsü.":::
 
 ## <a name="examples"></a>Örnekler
 
@@ -107,5 +107,5 @@ az batch pool create \
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure disk depolama sunucu tarafı şifrelemesi](../virtual-machines/windows/disk-encryption.md)hakkında daha fazla bilgi edinin.
+- [Azure disk depolama sunucu tarafı şifrelemesi](../virtual-machines/disk-encryption.md)hakkında daha fazla bilgi edinin.
 - Toplu Iş hakkında ayrıntılı genel bakış için bkz. [Batch hizmeti iş akışı ve kaynaklar](batch-service-workflow-features.md).

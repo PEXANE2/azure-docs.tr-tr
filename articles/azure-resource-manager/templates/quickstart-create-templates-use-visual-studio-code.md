@@ -1,20 +1,20 @@
 ---
 title: Şablon oluşturma-Visual Studio Code
-description: Resource Manager şablonları üzerinde çalışmak için Visual Studio Code ve Azure Resource Manager araçları eklentisini kullanın.
+description: Azure Resource Manager şablonları üzerinde çalışmak için Visual Studio Code ve Azure Resource Manager araçları uzantısını kullanın (ARM şablonları).
 author: neilpeterson
 ms.date: 08/09/2020
 ms.topic: quickstart
 ms.author: nepeters
-ms.openlocfilehash: 5375fedcd05aefa5d23ee872325373ce631d43bb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d8fd44a1e4c1ddfd78b2afa3280bb05c8fde91e3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88034999"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350152"
 ---
-# <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>Hızlı başlangıç: Visual Studio Code Azure Resource Manager şablonlar oluşturma
+# <a name="quickstart-create-arm-templates-with-visual-studio-code"></a>Hızlı başlangıç: Visual Studio Code ARM şablonları oluşturma
 
-Visual Studio Code için Azure Resource Manager araçları dil desteği, kaynak parçacıkları ve kaynak otomatik tamamlama sağlar. Bu araçlar Azure Resource Manager şablonları oluşturma ve doğrulamaya yardımcı olur. Bu hızlı başlangıçta uzantıyı, sıfırdan bir Azure Resource Manager şablonu oluşturmak için kullanırsınız. Bunu yaparken ARM şablon parçacıkları, doğrulama, tamamlama ve parametre dosyası desteği gibi uzantı özelliklerine sahip olursunuz.
+Visual Studio Code için Azure Resource Manager araçları dil desteği, kaynak parçacıkları ve kaynak otomatik tamamlama sağlar. Bu araçlar Azure Resource Manager şablonları (ARM şablonları) oluşturma ve doğrulamaya yardımcı olur. Bu hızlı başlangıçta, uzantıyı sıfırdan bir ARM şablonu oluşturmak için kullanırsınız. Bunu yaparken ARM şablon parçacıkları, doğrulama, tamamlama ve parametre dosyası desteği gibi uzantı özelliklerine sahip olursunuz.
 
 Bu hızlı başlangıcı tamamlayabilmeniz için, [Azure Resource Manager araçları uzantısı](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) yüklüyken [Visual Studio Code](https://code.visualstudio.com/)gerekir. Ayrıca, [Azure CLI](/cli/azure/?view=azure-cli-latest) veya [Azure PowerShell modülünün](/powershell/azure/new-azureps-module-az?view=azps-3.7.0) yüklü ve kimliği doğrulanmış olması gerekir.
 
@@ -22,7 +22,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 ## <a name="create-an-arm-template"></a>ARM şablonunu oluşturma
 
-*Üzerindeazuredeploy.js*adlı yeni bir dosya Visual Studio Code oluşturun ve açın. `arm`ARM şablonuna yönelik yapı iskelesi için Azure Resource Manager parçacıkları başlatan kod düzenleyicisine girin.
+*Üzerindeazuredeploy.js* adlı yeni bir dosya Visual Studio Code oluşturun ve açın. `arm`ARM şablonuna yönelik yapı iskelesi için Azure Resource Manager parçacıkları başlatan kod düzenleyicisine girin.
 
 `arm!`Azure Kaynak grubu dağıtımı için kapsamı belirlenmiş bir şablon oluşturmayı seçin.
 
@@ -32,7 +32,7 @@ Bu kod parçacığı bir ARM şablonu için temel yapı taşlarını oluşturur.
 
 ![Tam yapı iskelesi bir ARM şablonunu gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/2.png)
 
-Visual Studio Code dil modunun *JSON* olarak *Azure Resource Manager şablonuna*değiştiği hakkında dikkat edin. Uzantı, ARM şablonlarına özgü, ARM şablonuna özgü doğrulama, tamamlama ve diğer dil hizmetleri sağlayan bir dil sunucusu içerir.
+Visual Studio Code dil modunun *JSON* olarak *Azure Resource Manager şablonuna* değiştiği hakkında dikkat edin. Uzantı, ARM şablonlarına özgü, ARM şablonuna özgü doğrulama, tamamlama ve diğer dil hizmetleri sağlayan bir dil sunucusu içerir.
 
 ![Visual Studio Code dil modu olarak Azure Resource Manager gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/3.png)
 
@@ -54,7 +54,7 @@ Bu eylem, şablona bir depolama kaynağı ekler.
 
 ## <a name="completion-and-validation"></a>Tamamlama ve doğrulama
 
-Uzantının en güçlü özelliklerinden biri, Azure şemalarıyla tümleştirmedir. Azure şemaları, bir uzantıyı doğrulama ve kaynak kullanan tamamlama özellikleri sağlar. Doğrulama ve tamamlama eylemini görmek için depolama hesabını değiştirelim. 
+Uzantının en güçlü özelliklerinden biri, Azure şemalarıyla tümleştirmedir. Azure şemaları, bir uzantıyı doğrulama ve kaynak kullanan tamamlama özellikleri sağlar. Doğrulama ve tamamlama eylemini görmek için depolama hesabını değiştirelim.
 
 İlk olarak, depolama hesabı türünü gibi geçersiz bir değere güncelleştirin `megaStorage` . Bu eylemin geçerli bir değer olmadığını belirten bir uyarı ürettiğine dikkat edin `megaStorage` .
 
@@ -80,7 +80,7 @@ Azure depolama hesabı adlarında en az 3 karakter uzunluğunda ve en fazla 24 t
 
 ![ARM Şablon parametresine eklenen minLength ve maxLength gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/11.png)
 
-Şimdi, depolama kaynağında, parametresini kullanmak için Name özelliğini güncelleştirin. Bunu yapmak için geçerli adı kaldırın. Bir çift tırnak ve bir sol köşeli ayraç girerek `[` ARM şablon işlevlerinin bir listesini oluşturur. Listeden *Parametreler* ' i seçin. 
+Şimdi, depolama kaynağında, parametresini kullanmak için Name özelliğini güncelleştirin. Bunu yapmak için geçerli adı kaldırın. Bir çift tırnak ve bir sol köşeli ayraç girerek `[` ARM şablon işlevlerinin bir listesini oluşturur. Listeden *Parametreler* ' i seçin.
 
 ![ARM şablon kaynaklarında parametreler kullanılırken otomatik tamamlamayı gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/12.png)
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: jodowns
-ms.openlocfilehash: 58efeaebcc9f643c725cde54fcbda6f65c4bd700
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 24a8a559d72eae4dab0b6e740b34890f1d7ff114
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94415368"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350792"
 ---
 # <a name="ddos-protection-on-front-door"></a>Ön kapıda DDoS koruması
 
@@ -36,7 +36,7 @@ Azure ön kapısında dağıtılmış hizmet reddi (DDoS) saldırılarını önl
 
 ## <a name="caching"></a>Önbelleğe Alma
 
-[Ön kapıların önbelleğe alma özellikleri](./front-door-caching.md) , bir saldırı tarafından oluşturulan büyük trafik birimlerinden arka uçları korumak için kullanılabilir. Önbelleğe alınan kaynaklar, arka ucunuza iletilmemesi için ön kapı kenar düğümlerinden döndürülür. Dinamik yanıtlara yönelik kısa önbellek süre sonu süreleri (saniye veya dakika), arka uç hizmetlerindeki yükü büyük ölçüde azaltabilir. Kavramları ve desenleri önbelleğe alma hakkında daha fazla bilgi için bkz. [önbelleğe alma konuları](https://docs.microsoft.com/azure/architecture/best-practices/caching) ve [önbelleğe alma düzeni](https://docs.microsoft.com/azure/architecture/patterns/cache-aside).
+[Ön kapıların önbelleğe alma özellikleri](./front-door-caching.md) , bir saldırı tarafından oluşturulan büyük trafik birimlerinden arka uçları korumak için kullanılabilir. Önbelleğe alınan kaynaklar, arka ucunuza iletilmemesi için ön kapı kenar düğümlerinden döndürülür. Dinamik yanıtlara yönelik kısa önbellek süre sonu süreleri (saniye veya dakika), arka uç hizmetlerindeki yükü büyük ölçüde azaltabilir. Kavramları ve desenleri önbelleğe alma hakkında daha fazla bilgi için bkz. [önbelleğe alma konuları](/azure/architecture/best-practices/caching) ve [önbelleğe alma düzeni](/azure/architecture/patterns/cache-aside).
 
 ## <a name="web-application-firewall-waf"></a>Web Uygulaması Güvenlik Duvarı (WAF)
 

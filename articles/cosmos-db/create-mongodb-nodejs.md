@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.custom: seo-javascript-september2019, seo-javascript-october2019, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 5c0de1ccf4b6d2db44b1e315e73a84dd712b3f6c
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: cfeb19fa36bf65021fadc7ac3bc60a9f3a620602
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564030"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349087"
 ---
 # <a name="quickstart-migrate-an-existing-mongodb-nodejs-web-app-to-azure-cosmos-db"></a>Hızlı başlangıç: mevcut bir MongoDB Node.js Web uygulamasını Azure Cosmos DB geçirme 
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "94564030"
 
 Bu hızlı başlangıçta, Azure Cloud Shell ve GitHub 'dan kopyalanmış bir ortalama (MongoDB, Express, angular ve Node.js) uygulaması ile Mongo DB API hesabı için bir Azure Cosmos DB oluşturup yönetirsiniz. Azure Cosmos DB, genel dağıtım ve yatay ölçeklendirme özellikleri ile belge, tablo, anahtar değer ve grafik veritabanlarını hızlıca oluşturmanıza ve sorgulamanızı sağlayan çok modelli bir veritabanı hizmetidir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] Veya Azure aboneliği olmadan [ücretsiz Azure Cosmos DB deneyin](https://azure.microsoft.com/try/cosmosdb/) . [Azure Cosmos DB öykünücüsünü](https://aka.ms/cosmosdb-emulator) bağlantı dizesiyle de kullanabilirsiniz `.mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true` .
 
@@ -98,7 +98,7 @@ Yüklenen bir Azure CLI kullanıyorsanız `az` komutunu çalıştırarak `cosmos
 
 Aşağıdaki örnekte Batı Avrupa bölgesinde bir kaynak grubu oluşturulmaktadır. Kaynak grubu için benzersiz bir ad seçin.
 
-Azure Cloud Shell kullanıyorsanız, **deneyin** ' i seçin, oturum açmak için ekrandaki istemleri izleyin, sonra komutu komut istemine kopyalayın.
+Azure Cloud Shell kullanıyorsanız, **deneyin**' i seçin, oturum açmak için ekrandaki istemleri izleyin, sonra komutu komut istemine kopyalayın.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "West Europe"
@@ -214,7 +214,7 @@ Cosmos veritabanında depolanan veriler, Azure portal görüntülemek ve sorgula
 
 Önceki adımda oluşturulan verileri görüntülemek, sorgulamak ve üzerinde çalışmak için web tarayıcınızda [Azure portalı](https://portal.azure.com) oturumunu açın.
 
-Üst arama kutusuna **Azure Cosmos DB** girin. Cosmos hesabı dikey penceresi açıldığında, Cosmos hesabınızı seçin. Sol gezinti bölmesinde **Veri Gezgini** ' yi seçin. Koleksiyonlar bölmesinde koleksiyonunuzu genişletin; bundan sonra koleksiyondaki belgeleri görüntüleyebilir, verileri sorgulayabilir ve hatta saklı yordam, tetikleyici ve UDF’ler oluşturup çalıştırabilirsiniz. 
+Üst arama kutusuna **Azure Cosmos DB** girin. Cosmos hesabı dikey penceresi açıldığında, Cosmos hesabınızı seçin. Sol gezinti bölmesinde **Veri Gezgini**' yi seçin. Koleksiyonlar bölmesinde koleksiyonunuzu genişletin; bundan sonra koleksiyondaki belgeleri görüntüleyebilir, verileri sorgulayabilir ve hatta saklı yordam, tetikleyici ve UDF’ler oluşturup çalıştırabilirsiniz. 
 
 :::image type="content" source="./media/create-mongodb-nodejs/cosmosdb-connect-mongodb-data-explorer.png" alt-text="Azure portalında Veri Gezgini":::
 
@@ -253,4 +253,4 @@ git commit -m "configured MongoDB connection string"
 Bu hızlı başlangıçta, Azure Cloud Shell kullanarak Azure Cosmos DB MongoDB API hesabı oluşturmayı ve hesaba kullanıcı eklemek için bir MEAN.js uygulaması oluşturup çalıştırmayı öğrendiniz. Şimdi Azure Cosmos DB hesabınıza ek veriler aktarabilirsiniz.
 
 > [!div class="nextstepaction"]
-> [Azure Cosmos DB’ye MongoDB verileri aktarma](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)
+> [Azure Cosmos DB’ye MongoDB verileri aktarma](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)

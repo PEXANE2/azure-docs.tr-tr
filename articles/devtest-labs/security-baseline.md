@@ -3,12 +3,12 @@ title: Azure DevTest Labs için Azure Güvenlik temeli
 description: Azure DevTest Labs için Azure Güvenlik temeli
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 64e5ac46fbeb71706f7b1ae2d3682260e3cbc651
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4ae3886e1c47b1d6835dc348b474e3d9e82a8f41
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993661"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348832"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs için Azure Güvenlik temeli
 
@@ -172,7 +172,7 @@ Ayrıca, özel yönetim hesaplarını izlemenize yardımcı olmak için Azure G�
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: tüm Azure Active Directory tabanlı erişim için Multi-Factor Authentication kullanın
 **Rehberlik:** Azure Active Directory (AD) Multi-Factor Authentication (MFA) etkinleştirin ve Azure Güvenlik Merkezi kimlik ve erişim yönetimi önerilerini izleyin.
 
-- [Azure 'da MFA 'yı etkinleştirme](../active-directory/authentication/howto-mfa-getstarted.md)  
+- [Azure'da çok faktörlü kimlik doğrulamasını etkinleştirme](../active-directory/authentication/howto-mfa-getstarted.md)  
 - [Azure Güvenlik Merkezi 'nde kimliği ve erişimi izleme](../security-center/security-center-identity-access.md)
 
 **Azure Güvenlik Merkezi izleme:** _ Evet
@@ -184,7 +184,7 @@ _ *Sorumluluğu:** müşteri
 **Rehberlik:** Azure kaynaklarında oturum açmak ve bunları yapılandırmak için yapılandırılmış MFA ile ayrıcalıklı erişim iş istasyonları (Paw) kullanın.
 
 - [Ayrıcalıklı erişim Iş Istasyonları hakkında bilgi edinin](/windows-server/identity/securing-privileged-access/privileged-access-workstations)  
-- [Azure 'da MFA 'yı etkinleştirme](../active-directory/authentication/howto-mfa-getstarted.md)  
+- [Azure'da çok faktörlü kimlik doğrulamasını etkinleştirme](../active-directory/authentication/howto-mfa-getstarted.md)  
 
 **Azure Güvenlik Merkezi izleme:** yok
 
@@ -193,8 +193,8 @@ _ *Sorumluluğu:** müşteri
 ### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3,7: yönetim hesaplarından şüpheli etkinlikte günlüğe kaydet ve uyar
 **Rehberlik:** Ortamda şüpheli veya güvenli olmayan bir etkinlik olduğunda günlüklerin ve uyarıların oluşturulması için Azure Active Directory (Azure AD) güvenlik raporları kullanın. Kimlik ve erişim etkinliğini izlemek için Azure Güvenlik Merkezi 'ni kullanın.
 
-- [Riskli etkinlik için işaretlenen Azure AD kullanıcılarını belirleme](../active-directory/identity-protection/overview-identity-protection.md)  
-- [Azure Güvenlik Merkezi 'nde kullanıcıların kimlik ve erişim etkinliğini izleme](../security-center/security-center-identity-access.md)  
+- [Riskli etkinlik bayrağıyla işaretlenen Azure AD kullanıcılarını belirleme](../active-directory/identity-protection/overview-identity-protection.md)  
+- [Azure Güvenlik Merkezi’nde kullanıcıların kimliğini ve erişim etkinliğini izleme](../security-center/security-center-identity-access.md)  
 
 **Azure Güvenlik Merkezi izleme:** Şu anda kullanılamıyor
 
@@ -233,7 +233,7 @@ _ *Sorumluluğu:** müşteri
 
 Azure Active Directory Kullanıcı hesapları için Tanılama ayarları oluşturarak ve denetim günlüklerini ve oturum açma günlüklerini bir Log Analytics çalışma alanına göndererek bu işlemi kolaylaştırabilirsiniz. Log Analytics çalışma alanı içinde uyarıları yapılandırabilirsiniz.
 
-- [Azure etkinlik günlüklerini Azure Izleyici ile tümleştirme](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)  
+- [Azure Etkinlik Günlüklerini Azure İzleyici ile tümleştirme](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)  
 
 **Azure Güvenlik Merkezi izleme:** Şu anda kullanılamıyor
 
@@ -288,7 +288,7 @@ Azure Active Directory Kullanıcı hesapları için Tanılama ayarları oluştur
 
 Microsoft, Azure DevTest Labs için temel altyapıyı yönetir ve müşteri verilerinin kaybını veya açıklanmasını engellemek için katı denetimler uygulamıştır.
 
-- [Azure 'da müşteri veri korumasını anlama](../security/fundamentals/protection-customer-data.md)
+- [Azure’da müşteri verilerinin korunmasını anlama](../security/fundamentals/protection-customer-data.md)
 
 **Azure Güvenlik Merkezi izleme:** Şu anda kullanılamıyor
 
@@ -308,7 +308,7 @@ Microsoft, Azure DevTest Labs için temel altyapıyı yönetir ve müşteri veri
 
 Microsoft tarafından yönetilen temel platform için, Microsoft tüm müşteri içeriklerini gizli olarak değerlendirir ve müşteri veri kaybına ve açığa çıkmasına karşı koruma sağlamak için harika uzunluklara gider. Azure 'daki müşteri verilerinin güvende kalmasını sağlamak için Microsoft, bir dizi güçlü veri koruma denetimi ve özelliği uygulamıştır ve bakımını yapar.
 
-- [Azure 'da müşteri veri korumasını anlama](../security/fundamentals/protection-customer-data.md)
+- [Azure’da müşteri verilerinin korunmasını anlama](../security/fundamentals/protection-customer-data.md)
 
 **Azure Güvenlik Merkezi izleme:** Şu anda kullanılamıyor
 
@@ -329,7 +329,7 @@ Microsoft tarafından yönetilen temel platform için, Microsoft tüm müşteri 
 
 Microsoft tarafından yönetilen temel platform için, Microsoft tüm müşteri içeriklerini gizli olarak değerlendirir ve müşteri veri kaybına ve açığa çıkmasına karşı koruma sağlamak için harika uzunluklara gider. Azure 'daki müşteri verilerinin güvende kalmasını sağlamak için Microsoft, bir dizi güçlü veri koruma denetimi ve özelliği uygulamıştır ve bakımını yapar.
 
-- [Azure 'da müşteri veri korumasını anlama](../security/fundamentals/protection-customer-data.md)
+- [Azure’da müşteri verilerinin korunmasını anlama](../security/fundamentals/protection-customer-data.md)
 
 **Azure Güvenlik Merkezi izleme:** Uygulanamaz
 
@@ -379,7 +379,7 @@ Microsoft, Azure DevTest Labs destekleyen temel kaynaklarda güvenlik açığı 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5,2: otomatik işletim sistemi düzeltme eki yönetimi çözümünü dağıtma
 **Rehberlik:** DevTest Labs içinde barındırılan Windows ve Linux sanal makinelerinize en son güvenlik güncelleştirmelerinin yüklendiğinden emin olmak için Azure Güncelleştirme Yönetimi kullanın. Windows VM 'Leri için Windows Update etkinleştirildiğinden ve otomatik olarak güncelleştirilecek şekilde ayarlandığından emin olun. Bu ayar şu anda DevTest Labs aracılığıyla yapılandırma için kullanılamaz, ancak Laboratuvar Yöneticisi/abonelik Yöneticisi bu ayarı aboneliklerindeki temel alınan işlem VM 'lerinde yapılandırabilir. 
 
-- [Azure 'da VM 'Ler için Güncelleştirme Yönetimi Yapılandırma](../automation/update-management/update-mgmt-overview.md)
+- [Azure 'da VM 'Ler için Güncelleştirme Yönetimi Yapılandırma](../automation/update-management/overview.md)
 - [Güvenlik Merkezi tarafından izlenen Azure Güvenlik ilkelerini anlama](../security-center/policy-reference.md)
 
 **Azure Güvenlik Merkezi izleme:** Uygulanamaz
@@ -393,8 +393,8 @@ Tüm istenen yapılandırmalara göre düzenli olarak görüntü oluşturup dağ
 
 Abonelik Yöneticisi olarak, DevTest Labs VM 'Leri için güncelleştirmeleri ve düzeltme eklerini yönetmek üzere Azure Güncelleştirme Yönetimi çözümünü de kullanabilirsiniz. Güncelleştirme Yönetimi, desteklenen Windows sistemlerine yama yapmak için yerel olarak yapılandırılmış güncelleştirme deposuna bağımlıdır. System Center Updates Publisher (Updates Publisher) gibi araçlar, Windows Server Update Services (WSUS) içinde özel güncelleştirmeler yayımlamanıza olanak sağlar. Bu senaryo Güncelleştirme Yönetimi, üçüncü taraf yazılımlarla güncelleştirme deposu olarak Configuration Manager kullanan makinelere yaması sağlar.
 
-- [Azure 'da Güncelleştirme Yönetimi çözümü](../automation/update-management/update-mgmt-overview.md)
-- [VM 'niz için güncelleştirmeleri ve düzeltme eklerini yönetme](../automation/update-management/update-mgmt-overview.md)
+- [Azure 'da Güncelleştirme Yönetimi çözümü](../automation/update-management/overview.md)
+- [VM 'niz için güncelleştirmeleri ve düzeltme eklerini yönetme](../automation/update-management/overview.md)
 
 _ *Azure Güvenlik Merkezi izleme:** uygulanamaz
 
@@ -468,7 +468,7 @@ _ *Azure Güvenlik Merkezi izleme:** uygulanamaz
 
 Ayrıca, Azure Kaynak grafiğini kullanarak abonelikler içindeki kaynakları sorgular/bulur. Depolama hesapları gibi yüksek güvenlik tabanlı ortamlarda yardımcı olabilir.
 
-- [Azure Ilkesini yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
+- [Azure İlkesi'ni yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 - [Azure Graph ile sorgu oluşturma](../governance/resource-graph/first-query-portal.md)
 
 **Azure Güvenlik Merkezi izleme:** Uygulanamaz
@@ -516,7 +516,7 @@ Yazılım uygulamalarının izlenmesi için Değişiklik İzleme kullanmanın ya
 - İzin verilen kaynak türleri
 
 Aşağıdaki makalelere bakın: 
-- [Azure Ilkesini yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
+- [Azure İlkesi'ni yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 - [Azure Ilkesiyle belirli bir kaynak türünü reddetme](../governance/policy/samples/index.md)
 
 **Azure Güvenlik Merkezi izleme:** Yes
@@ -652,7 +652,7 @@ Ayrıca, Microsoft tarafından yayımlanan Azure Market sanal makine görüntül
 ### <a name="77-deploy-system-configuration-management-tools"></a>7,7: sistem yapılandırma yönetimi araçlarını dağıtma
 **Rehberlik:** Azure Ilkesi 'ni kullanarak Azure kaynakları için standart güvenlik yapılandırması tanımlayın ve uygulayın. DevTest Labs altında oluşturulan Azure kaynaklarınızın ağ yapılandırmasını denetlemek veya zorlamak için özel ilkeler oluşturmak üzere Azure Ilke diğer adlarını kullanın. Ayrıca, belirli kaynaklarınızla ilgili yerleşik ilke tanımlarından da yararlanabilirsiniz. Ayrıca, Azure Otomasyonu ' nu yapılandırma değişikliklerini dağıtmak için de kullanabilirsiniz.
 
-- [Azure Ilkesini yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
+- [Azure İlkesi'ni yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 - [Diğer adları kullanma](../governance/policy/concepts/definition-structure.md#aliases)
 
 **Azure Güvenlik Merkezi izleme:** Uygulanamaz
@@ -711,7 +711,7 @@ Ayrıca, Microsoft tarafından yayımlanan Azure Market sanal makine görüntül
 **Sorumluluk:** Müşterisi
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: istenmeyen kimlik bilgisi pozlamasını ortadan kaldırın
-**Rehberlik:** Kod içinde kimlik bilgilerini tanımlamak için kimlik bilgisi tarayıcısı uygulayın. Kimlik bilgisi tarayıcısı, bulunan kimlik bilgilerini Azure Key Vault gibi daha güvenli konumlara taşımayı de teşvik eder.
+**Rehberlik:** Kod içinde kimlik bilgilerini tanımlamak için kimlik bilgisi tarayıcısı uygulayın. Kimlik Bilgisi Tarayıcısı ayrıca bulunan kimlik bilgilerinin Azure Key Vault gibi daha güvenlik konumlara aktarılmasını sağlar.
 
 - Kimlik bilgisi tarayıcısını ayarlama
 
@@ -825,7 +825,7 @@ Azure Disk Şifrelemesi kullanıyorsanız, Azure VM 'yi disk şifreleme anahtarl
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: olay Puanlama ve öncelik belirlemesi prosedürü oluşturma
 **Rehberlik:** Azure Güvenlik Merkezi, ilk olarak hangi uyarıların araştırılması gerektiğini önceliklendirmenize yardımcı olmak için her bir uyarıya önem derecesi atar. Önem derecesi, güvenlik merkezi 'nin uyarıyı vermek için kullanılan bulma veya analizte ne kadar önemli olduğunu ve uyarıya yönelik etkinliğin arkasında kötü amaçlı bir amaç olduğunu bilmenin yanı sıra güven düzeyini temel alır.
 
-Ayrıca, abonelikleri açıkça işaretleyin (örn. üretim, üretim dışı) etiketleri kullanarak Azure kaynaklarını açıkça tanımlamak ve kategorilere ayırmak için özellikle de hassas verileri işleyen bir adlandırma sistemi oluşturun. Olayın gerçekleştiği Azure kaynakları ve ortamının önem derecesine bağlı olarak, uyarıların düzeltilmesine öncelik vermek sizin sorumluluğunuzdadır.
+Ayrıca, abonelikleri açıkça işaretleyin (örn. üretim, üretim dışı) etiketleri kullanarak Azure kaynaklarını açıkça tanımlamak ve kategorilere ayırmak için özellikle de hassas verileri işleyen bir adlandırma sistemi oluşturun. Azure kaynaklarının önem düzeyine ve olayın oluştuğu ortama bağlı olarak uyarıların çözümünde önceliği belirlemek sizin sorumluluğunuzdadır.
 
 - [Azure Güvenlik Merkezi'nde güvenlik uyarıları](../security-center/security-center-alerts-overview.md)
 - [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](../azure-resource-manager/management/tag-resources.md)
@@ -835,7 +835,7 @@ Ayrıca, abonelikleri açıkça işaretleyin (örn. üretim, üretim dışı) et
 **Sorumluluk:** Müşterisi
 
 ### <a name="103-test-security-response-procedures"></a>10,3: test Güvenliği Yanıt yordamları
-**Rehberlik:** Azure kaynaklarınızın korunmasına yardımcı olmak için, sistem olay yanıtı yeteneklerini düzenli bir temposunda test etmek üzere alıştırmaları gerçekleştirin. Zayıf noktaları ve boşlukları belirleyip planı gerektiği şekilde gözden geçirin.
+**Rehberlik:** Azure kaynaklarınızın korunmasına yardımcı olmak için, sistem olay yanıtı yeteneklerini düzenli bir temposunda test etmek üzere alıştırmaları gerçekleştirin. Zayıf noktaları ve açıkları belirleyip planı gerektiği şekilde gözden geçirin.
 
 - [NıST 'nin Yayımlama Kılavuzu, BT planları ve becerileri için programları test etme, eğitim ve alıştırma Kılavuzu](https://csrc.nist.gov/publications/detail/sp/800-84/final)
 
@@ -856,7 +856,7 @@ Ayrıca, abonelikleri açıkça işaretleyin (örn. üretim, üretim dışı) et
 **Rehberlik:** Azure kaynaklarına yönelik riskleri belirlemenize yardımcı olmak için sürekli dışarı aktarma özelliğini kullanarak Azure Güvenlik Merkezi uyarılarınızı ve önerilerinizi dışarı aktarın. Sürekli dışa aktarma, uyarıları ve önerileri el ile veya devam eden sürekli bir biçimde dışa aktarmanız sağlar. Azure Güvenlik Merkezi veri bağlayıcısını kullanarak uyarıları Azure Sentinel 'e akışını sağlayabilirsiniz.
 
 - [Sürekli dışarı aktarmayı yapılandırma](../security-center/continuous-export.md)
-- [Uyarıları Azure Sentinel 'e akış](../sentinel/connect-azure-security-center.md)
+- [Uyarıların Azure Sentinel’e akışını yapma](../sentinel/connect-azure-security-center.md)
 
 **Azure Güvenlik Merkezi izleme:** Uygulanamaz
 
@@ -877,7 +877,7 @@ Azure Güvenlik Merkezi izleme: * * * * uygulanamaz
 
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11,1: Azure kaynaklarınızın düzenli olarak sızma testini gerçekleştirin ve 60 gün içinde tüm kritik güvenlik bulgularını düzeltmeye dikkat edin
-**Rehberlik:** Sızma testlerinizin Microsoft ilkelerini ihlal etmemesini sağlamak için Microsoft katılım kurallarını izleyin. Microsoft 'un, Microsoft tarafından yönetilen bulut altyapısına, hizmetlerine ve uygulamalarına karşı kırmızı ekip oluşturma ve canlı site sızma testi stratejisini kullanın.
+**Rehberlik:** Sızma testlerinizin Microsoft ilkelerini ihlal etmemesini sağlamak için Microsoft katılım kurallarını izleyin. Microsoft tarafından yönetilen bulut altyapısına, hizmetlere ve uygulamalara yönelik kırmızı takım ve canlı site sızma testi gerçekleştirmek için Microsoft'un stratejisini ve yürütme sürecini kullanın.
 
 - [Katılım test kurallarını oyma](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 - [Microsoft bulutu kırmızı ekip oluşturma](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)

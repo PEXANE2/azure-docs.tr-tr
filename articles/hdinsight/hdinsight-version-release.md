@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 2716f037de533e14ae8e57706134c8a2b135b440
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2fd7a3e512b79651fdcf6a6ac0c14822361fc263
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322378"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350203"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4,0 genel bakış
 
@@ -102,9 +102,9 @@ HDInsight 'ın önceki sürümlerinden HDInsight 4,0 sürümüne desteklenen bir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [HBase geçiş kılavuzu](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-migrate-new-version)
-* [Hive geçiş kılavuzu](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-hive-migrate-workloads)
-* [Kafka geçiş kılavuzu](https://docs.microsoft.com/azure/hdinsight/kafka/migrate-versions)
-* [Spark geçiş kılavuzu](https://docs.microsoft.com/azure/hdinsight/spark/migrate-versions)
+* [HBase geçiş kılavuzu](./hbase/apache-hbase-migrate-new-version.md)
+* [Hive geçiş kılavuzu](./interactive-query/apache-hive-migrate-workloads.md)
+* [Kafka geçiş kılavuzu](./kafka/migrate-versions.md)
+* [Spark geçiş kılavuzu](./spark/migrate-versions.md)
 * [Azure HDInsight belgeleri](index.yml)
 * [Sürüm Notları](hdinsight-release-notes.md)

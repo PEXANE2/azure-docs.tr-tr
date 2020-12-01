@@ -7,12 +7,12 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: 96cca89b1206aaa7890648def694074a18b2aa17
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 4ab32cd37d732cd9f177363da547edd22bd5af77
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368874"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349274"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Bilişsel Hizmetler ve makine öğrenmesi
 
@@ -23,8 +23,8 @@ Bilişsel [Hizmetler](./what-are-cognitive-services.md) , her biri farklı, gene
 |Hizmet kategorisi|Amaç|
 |--|--|
 |[Karar](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|Bilgiye dayalı ve verimli kararlar almak için öneriler sunan uygulamalar derleyin.|
-|[Dil](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Önceden oluşturulmuş betiklerle uygulamalarınızın doğal dil işlemesine, duyguları değerlendirmesine ve kullanıcıların ne istediğini tanımayı öğrenmesine imkan sağlayın.|
-|[Ara](https://azure.microsoft.com/services/cognitive-services/directory/search/)|Uygulamalarınıza Bing Arama API'leri ekleyin ve tek bir API çağrısıyla milyarlarca web sayfası, resim, video ve haberi tarama imkanından yararlanın.|
+|[Dil](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Önceden oluşturulmuş betiklerle uygulamalarınıza doğal dil işleme özelliği kazandırabilir, yaklaşım analizi gerçekleştirebilir ve kullanıcılarınızın isteklerini anlamayı öğrenebilirsiniz.|
+|[Ara](https://azure.microsoft.com/services/cognitive-services/directory/search/)|Uygulamalarınıza Bing Arama API'lerini ekleyerek tek bir API çağrısıyla milyarlarca web sayfasını, görüntüyü, videoyu ve haberi tarayabilirsiniz.|
 |[Konuşma](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|Konuşmaları metne, metinleri kulağa doğal gelen konuşmalara dönüştürün. Bir dilden başka bir dile çeviri yapın, konuşmacı doğrulama ve tanıma özelliğini etkinleştirin.|
 |[Görsel](https://azure.microsoft.com/services/cognitive-services/directory/vision/)|Resimlerinizi, videolarınızı ve dijital mürekkep içeriğinizi tanıyın, tanımlayın, altyazı ekleyin, dizine alın ve yönetin.|
 ||||
@@ -44,7 +44,7 @@ Makine öğrenimi, belirli bir ihtiyacı çözümlemek için verileri ve algorit
 
 Machine Learning sistemi oluşturma işlemi, Machine Learning veya veri bilimi hakkında bazı bilgiler gerektirir.
 
-Makine öğrenimi, [Azure Machine Learning (AML) ürünleri ve Hizmetleri](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure%252fmachine-learning%252fstudio%252fcontext%252fml-context)kullanılarak sağlanır.
+Makine öğrenimi, [Azure Machine Learning (AML) ürünleri ve Hizmetleri](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure%2fmachine-learning%2fstudio%2fcontext%2fml-context)kullanılarak sağlanır.
 
 ## <a name="what-is-a-cognitive-service"></a>Bilişsel hizmet nedir?
 
@@ -104,9 +104,9 @@ Aşağıdaki veriler her hizmeti, izin verdiği veya gerektirdiği veri türüne
 |[Konuşmacı tanıyıcı](./speech-service/speaker-recognition-overview.md)||x||
 |[Konuşma metni okuma (TTS)](speech-service/text-to-speech.md)|x|x||
 |[Konuşmayı metne dönüştürme (STT)](speech-service/speech-to-text.md)|x|x||
-|[Konuşma çevirisi](speech-service/speech-translation.md)|x|||
+|[Konuşma Çevirisi](speech-service/speech-translation.md)|x|||
 |[Metin Analizi](./text-analytics/overview.md)|x|||
-|[Çevirmen](./translator/translator-info-overview.md)|x|||
+|[Translator](./translator/translator-info-overview.md)|x|||
 |[Translator-özel çevirici](./translator/custom-translator/overview.md)||x||
 
 * Kişiselleştirici, ilkenizi ve verilerinizi değerlendirmek için yalnızca hizmet tarafından toplanan eğitim verilerine (gerçek zamanlı olarak çalışırken) ihtiyaç duyuyor. Kişiselleştirici, ön veya Batch eğitimi için büyük geçmiş veri kümelerine gerek duyuyor. 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-js
-ms.openlocfilehash: 20a3337ab054ca1feefc2f5f08f8e6398417fb9e
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 6f96b74726684d37795c94be74e48611b4145402
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441622"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350220"
 ---
 # <a name="deploy-static-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemede statik işlenmiş Next.js Web siteleri dağıtma
 
@@ -29,9 +29,9 @@ Bu öğreticide, [Next.js](https://nextjs.org) üretilmiş bir statik Web sitesi
 
 Bir uygulama oluşturmak için Next.js CLı kullanmak yerine, var olan bir Next.js uygulamasını içeren bir başlangıç deposu kullanabilirsiniz. Bu depo, ortak bir dağıtım sorununu vurgulayan dinamik yollarla Next.js bir uygulama sunar. Dinamik yollara, bir süre içinde daha fazla bilgi edineceğinizi sağlayan ek bir dağıtım yapılandırması gerekir.
 
-Başlamak için, bir şablon deposundan GitHub hesabınızda yeni bir depo oluşturun. 
+Başlamak için, bir şablon deposundan GitHub hesabınızda yeni bir depo oluşturun.
 
-1. <http://github.com/staticwebdev/nextjs-starter/generate> sayfasına gidin
+1. Şuraya gidin [https://github.com/staticwebdev/nextjs-starter/generate](https://github.com/login?return_to=/staticwebdev/nextjs-starter/generate)
 1. Depoyu **nextjs-Starter** olarak adlandırın
 1. Sonra, yeni depoyu makinenize kopyalayın. Hesap adınızla değiştirdiğinizden emin olun `<YOUR_GITHUB_ACCOUNT_NAME>` .
 
@@ -84,7 +84,7 @@ Kullanarak bir Next.js sitesi oluşturduğunuzda `npm run build` , uygulama stat
     
       Bu yapılandırma `/` `/` , yol için sunulan ve sayfa _/index.js_ sayfa dosyası olan Next.js sayfasıyla eşlenir.
 
-1. Derleme betiği _üzerindepackage.js_ , komutunu kullanarak derlemeden sonra da statik bir site oluşturmak için güncelleştirin `next export` . `export`Komut bir statik site oluşturur.
+1. Derleme betiği _üzerindepackage.js_, komutunu kullanarak derlemeden sonra da statik bir site oluşturmak için güncelleştirin `next export` . `export`Komut bir statik site oluşturur.
 
     ```json
     "scripts": {
@@ -141,7 +141,7 @@ Aşağıdaki adımlarda, az önce GitHub 'a gönderdiğiniz uygulamayı Azure st
 1. **Oluştur** seçeneğine tıklayın
 
 1. *Abonelik* açılan listesinden bir abonelik seçin veya varsayılan değeri kullanın.
-1. *Kaynak grubu açılır grubunun* altındaki **Yeni** bağlantıya tıklayın. *Yeni kaynak grubu adı* ' nda **mystaticsite** yazın ve **Tamam** ' a tıklayın.
+1. *Kaynak grubu açılır grubunun* altındaki **Yeni** bağlantıya tıklayın. *Yeni kaynak grubu adı*' nda **mystaticsite** yazın ve **Tamam** ' a tıklayın.
 1. **Ad** metin kutusuna uygulamanız için genel olarak benzersiz bir ad sağlayın. Geçerli karakterler, `a-z` , `A-Z` `0-9` ve içerir `-` . Bu değer, statik uygulamanız için biçiminde URL öneki olarak kullanılır `https://<APP_NAME>.azurestaticapps.net` .
 1. *Bölge* açılır penceresinde, size en yakın bölgeyi seçin.
 1. SKU açılır listesinden **ücretsiz** ' ı seçin.

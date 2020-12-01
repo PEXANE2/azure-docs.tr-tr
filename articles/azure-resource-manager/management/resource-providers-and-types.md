@@ -2,14 +2,14 @@
 title: Kaynak sağlayıcıları ve kaynak türleri
 description: Azure Resource Manager destekleyen kaynak sağlayıcılarını açıklar. Şemaları, kullanılabilir API sürümlerini ve kaynakları barındırabildiğiniz bölgeleri açıklar.
 ms.topic: conceptual
-ms.date: 11/09/2020
+ms.date: 11/30/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 702836e0dc98b06ccf6e0eeb0d0f373374c4e783
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a8adbce80d5e8f9ee9df2050d8f43363cbf57dc3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95972547"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352108"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure kaynak sağlayıcıları ve türleri
 
@@ -36,6 +36,9 @@ Kaynak sağlayıcısını kullanmadan önce, Azure aboneliğinizin kaynak sağla
 
 Bu makalede, bir kaynak sağlayıcısının kayıt durumunu denetleme ve gerektiğinde kaydetme işlemlerinin nasıl yapılacağı gösterilir. Kaynak sağlayıcısı için işlem yapmak için izninizin olması gerekir `/register/action` . İzin katkıda bulunan ve sahip rollerine dahildir.
 
+> [!IMPORTANT]
+> Yalnızca bir kaynak sağlayıcısını kullanmaya hazırsanız kaydolun. Kayıt adımı, aboneliğinizde en az ayrıcalıkları korumanıza olanak sağlar. Kötü amaçlı bir Kullanıcı kayıtlı olmayan kaynak sağlayıcılarını kullanamaz.
+
 Uygulama kodunuz, **kayıt** durumunda olan bir kaynak sağlayıcısı için kaynak oluşturulmasını engellemez. Kaynak sağlayıcısını kaydettiğinizde, her desteklenen bölge için işlem ayrı ayrı yapılır. Bir bölgede kaynak oluşturmak için kaydın yalnızca o bölgede tamamlanması gerekir. Kayıt durumundaki kaynak sağlayıcısını engellemeden, uygulamanız tüm bölgelerin tamamlanmasını beklerken çok daha erken devam edebilir.
 
 Aboneliğinizde kaynak sağlayıcınızdan hala kaynak türleri varsa, bir kaynak sağlayıcısının kaydını silemezsiniz.
@@ -55,7 +58,7 @@ Tüm kaynak sağlayıcılarını ve aboneliğiniz için kayıt durumunu görmek 
 
     ![Kaynak sağlayıcılarını göster](./media/resource-providers-and-types/show-resource-providers.png)
 
-6. Bir kaynak sağlayıcısını kaydetmek için **Kaydet**' i seçin. Önceki ekran görüntüsünde, **kayıt** bağlantısı **Microsoft. Blueprint** için vurgulanır.
+6. Bir kaynak sağlayıcısını kaydetmek için **Kaydet**' i seçin. Önceki ekran görüntüsünde, **kayıt** bağlantısı **Microsoft. Blueprint** için vurgulanır. Aboneliğinizde en düşük ayrıcalıklara sahip olmak için, yalnızca kullanmaya hazırsınız kaynak sağlayıcılarını kaydedin.
 
 Belirli bir kaynak sağlayıcısına ilişkin bilgileri görmek için:
 
@@ -107,7 +110,7 @@ Aboneliğiniz için tüm kayıtlı kaynak sağlayıcılarını görmek için şu
  Get-AzResourceProvider -ListAvailable | Where-Object RegistrationState -eq "Registered" | Select-Object ProviderNamespace, RegistrationState | Sort-Object ProviderNamespace
 ```
 
-Bir kaynak sağlayıcısını kaydetmek için şunu kullanın:
+Aboneliğinizde en düşük ayrıcalıklara sahip olmak için, yalnızca kullanmaya hazırsınız kaynak sağlayıcılarını kaydedin. Bir kaynak sağlayıcısını kaydetmek için şunu kullanın:
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
@@ -190,7 +193,7 @@ West US
 ...
 ```
 
-## <a name="azure-cli"></a>Azure CLI’si
+## <a name="azure-cli"></a>Azure CLI
 
 Azure 'daki tüm kaynak sağlayıcılarını ve aboneliğinizin kayıt durumunu görmek için şunu kullanın:
 
@@ -216,7 +219,7 @@ Aboneliğiniz için tüm kayıtlı kaynak sağlayıcılarını görmek için şu
 az provider list --query "sort_by([?registrationState=='Registered'].{Provider:namespace, Status:registrationState}, &Provider)" --out table
 ```
 
-Bir kaynak sağlayıcısını kaydetmek için şunu kullanın:
+Aboneliğinizde en düşük ayrıcalıklara sahip olmak için, yalnızca kullanmaya hazırsınız kaynak sağlayıcılarını kaydedin. Bir kaynak sağlayıcısını kaydetmek için şunu kullanın:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Batch

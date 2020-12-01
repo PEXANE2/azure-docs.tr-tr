@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: pafarley
-ms.openlocfilehash: bd2032d565f5bd1fb430449be8b8c08e222f531d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 085dd18214f795566669fb862bba63b67eb9115d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025842"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350373"
 ---
 # <a name="build-an-enrollment-app-for-android-with-react"></a>Tepki vererek Android için bir kayıt uygulaması oluşturun
 
@@ -74,7 +74,7 @@ Uygulamanın işlevselliğini tam kayıt deneyimini kapsayacak şekilde genişle
 
 ### <a name="android"></a>Android
 
-İlk olarak, uygulamanızın üretim dağıtımı için uygun olduğundan emin olun: uygulama kodundan tüm anahtarları veya parolaları kaldırın ve [en iyi güvenlik uygulamalarını](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp)takip ettiğinizden emin olun.
+İlk olarak, uygulamanızın üretim dağıtımı için uygun olduğundan emin olun: uygulama kodundan tüm anahtarları veya parolaları kaldırın ve [en iyi güvenlik uygulamalarını](../cognitive-services-security.md?tabs=command-line%2ccsharp)takip ettiğinizden emin olun.
 
 Uygulamanızı üretime bırakmaya hazırsanız, Android uygulamaları için paket dosyası biçimi olan, serbest kullanıma uygun bir APK dosyası oluşturacaksınız. Bu APK dosyası bir özel anahtarla imzalanmalıdır. Bu yayın derlemesi ile uygulamayı doğrudan cihazlarınıza dağıtmaya başlayabilirsiniz. 
 

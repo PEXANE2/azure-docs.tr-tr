@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 890b555703f922168a820a0535296b9f55218752
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8c13dc0854fb29467b0fe8a1ce5f2dfc1c19bd78
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011056"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352346"
 ---
 # <a name="create-knowledge-base-and-manage-settings"></a>Bilgi Bankası oluşturma ve ayarları yönetme
 
@@ -107,7 +107,7 @@ Bilgi bankaınızı ortak çalışanlarla paylaşıyorsanız,] (işbirliği-bilg
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir kaynaktaki tüm bilgi tabanlarının [dilini yönetme](language-knowledge-base.md) hakkında bilgi edinin.
+Bir kaynaktaki tüm bilgi tabanlarının [dilini yönetme](../index.yml) hakkında bilgi edinin.
 
 * QnA çiftlerini Düzenle
 * Soru-Cevap Oluşturma tarafından kullanılan Azure kaynaklarını yönetme

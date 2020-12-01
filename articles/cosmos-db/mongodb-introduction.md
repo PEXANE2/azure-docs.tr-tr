@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/25/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 8ae8108c52e150625540c8b13fa66a03f985ba5a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8205ecab3abfc7a944c12db1aca2bf594f6cd98f
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184629"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349461"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API'si
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -56,7 +56,7 @@ Hızlı Başlangıç ' i izleyerek bir Azure Cosmos hesabı oluşturun ve mevcut
 
 * Hesap bağlantı dizesi bilgilerinizi alma hakkında bilgi edinmek için [MongoDB uygulamasını Azure Cosmos DB](connect-mongodb-account.md) öğreticiye bağlama öğreticisini izleyin.
 * Studio 3T 'de Cosmos veritabanınız ve MongoDB uygulamanız arasında bağlantı oluşturmayı öğrenmek için [Azure Cosmos DB öğreticisi Ile Studio 3T kullanın](mongodb-mongochef.md) .
-* Verilerinizi Cosmos veritabanına aktarmak için [MongoDB verilerini Içeri aktarma Azure Cosmos DB](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json) öğreticisine uygulayın.
+* Verilerinizi Cosmos veritabanına aktarmak için [MongoDB verilerini Içeri aktarma Azure Cosmos DB](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json) öğreticisine uygulayın.
 * [Robo 3T](mongodb-robomongo.md)kullanarak Cosmos hesabına bağlanın.
 * [Küresel olarak dağıtılan uygulamalar için okuma tercihlerini yapılandırmayı](../cosmos-db/tutorial-global-distribution-mongodb.md)öğrenin.
 * [Sorun giderme kılavuzumuzdaki](mongodb-troubleshoot.md) yaygın olarak bulunan hataların çözümlerini bulun

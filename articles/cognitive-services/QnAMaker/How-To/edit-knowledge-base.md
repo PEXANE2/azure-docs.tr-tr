@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.openlocfilehash: 3940f060209ea5ba55957a3673020656d45de9e4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9541320f65060a0b1f2b5c84a131c08e92554e9e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000105"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351716"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>Bilgi bankasındaki QnA çiftlerini düzenleme
 
@@ -59,7 +59,7 @@ Yanıt metninizi zengin metin düzenlemesi, basit bir araç çubuğundan Markin 
     |Zengin metin düzenleyici özellikleri|Klavye kısayolu|
     |--|--|
     |Zengin metin düzenleyici ve markaşağı arasında geçiş yapın. `</>`|CTRL+M|
-    |Kalın. **B**|MRK + LB|
+    |Kalın. **Kenarı**|MRK + LB|
     |İtalik, italik ı ile gösterilir **_I_**|CTRL + ı|
     |Sırasız liste||
     |Sıralı liste||
@@ -128,11 +128,11 @@ Değişiklikleri kaybetmemek için düzenleme yaptıktan sonra düzenli olarak *
 
 Yanıtları [zengin metin düzenlemesi](#add-an-editorial-qna-set) , yazar olarak, metni hızlıca seçip biçimlendirmek için bir biçimlendirme araç çubuğu kullanmanıza olanak sağlar.
 
-Bir CI/CD [işlem](../Quickstarts/batch-testing.md)hattının parçası olarak içeri aktarılmak üzere bilgi tabanları oluşturmak için içerik oluşturmanız gerektiğinde [markaşağı](../reference-markdown-format.md) , daha iyi bir araçtır.
+Bir CI/CD [işlem](../index.yml)hattının parçası olarak içeri aktarılmak üzere bilgi tabanları oluşturmak için içerik oluşturmanız gerektiğinde [markaşağı](../reference-markdown-format.md) , daha iyi bir araçtır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Bilgi bankası üzerinde birlikte çalışma](./collaborate-knowledge-base.md)
+> [Bilgi bankası üzerinde birlikte çalışma](../index.yml)
 
 * [Soru-Cevap Oluşturma tarafından kullanılan Azure kaynaklarını yönetme](set-up-qnamaker-service-azure.md)

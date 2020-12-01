@@ -7,26 +7,26 @@ ms.date: 12/16/2019
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-java
 ms.topic: how-to
-ms.openlocfilehash: 275b1976e51789d4a458e7bd9f7cfa3240cc81d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50433ee1e5a575ab671d562bfc3fe549b26fe00c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777664"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352312"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Hızlı başlangıç: Java kullanarak Soru-Cevap Oluşturma’da bilgi bankası oluşturma
 
-Bu hızlı başlangıçta program aracılığıyla örnek bir Soru-Cevap Oluşturma bilgi bankası (KB) oluşturma adımları gösterilmektedir. Soru-Cevap Oluşturma, [veri kaynaklarından](../Concepts/knowledge-base.md) ve SSS gibi yarı yapılandırılmış içerikten soru ve cevapları otomatik olarak ayıklar. JSON ile tanımlanan bilgi bankası modeli API isteğinin gövdesinde gönderilir.
+Bu hızlı başlangıçta program aracılığıyla örnek bir Soru-Cevap Oluşturma bilgi bankası (KB) oluşturma adımları gösterilmektedir. Soru-Cevap Oluşturma, [veri kaynaklarından](../index.yml) ve SSS gibi yarı yapılandırılmış içerikten soru ve cevapları otomatik olarak ayıklar. JSON ile tanımlanan bilgi bankası modeli API isteğinin gövdesinde gönderilir.
 
 Bu hızlı başlangıç şu Soru-Cevap Oluşturma API'lerini çağırır:
-* [KB Oluşturma](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
-* [İşlem Ayrıntılarını Alma](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails)
+* [KB Oluşturma](/rest/api/cognitiveservices/qnamaker/knowledgebase/create)
+* [İşlem Ayrıntılarını Alma](/rest/api/cognitiveservices/qnamaker/operations/getdetails)
 
-[Başvuru belgeleri](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)  |  [Java örneği](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java)
+[Başvuru belgeleri](/rest/api/cognitiveservices/qnamaker/knowledgebase)  |  [Java örneği](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/blob/master/documentation-samples/quickstarts/create-knowledge-base/CreateKB.java)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Go 1.10.1](https://golang.org/dl/)
 * Bir [soru-cevap oluşturma hizmetiniz](../How-To/set-up-qnamaker-service-azure.md)olmalıdır. Anahtarınızı ve uç noktanızı (kaynak adını da içerir) almak için Azure portal kaynağınız için **hızlı başlangıç** ' ı seçin.
@@ -119,7 +119,7 @@ Başarılı veya başarısız bir sonuç alana kadar çağrıyı tekrarlayın:
 ```
 
 ## <a name="add-a-main-method"></a>Main yöntemi ekleme
-Main yöntemi KB'yi oluşturur, sonra da durum için yoklama yapar. İşlem KIMLIĞI, yanıt gönder üst bilgisi alan **konumunda**döndürülür, ardından Get isteğindeki yolun bir parçası olarak kullanılır. `while`Tamamlandıysa, döngü durumu yeniden dener.
+Main yöntemi KB'yi oluşturur, sonra da durum için yoklama yapar. İşlem KIMLIĞI, yanıt gönder üst bilgisi alan **konumunda** döndürülür, ardından Get isteğindeki yolun bir parçası olarak kullanılır. `while`Tamamlandıysa, döngü durumu yeniden dener.
 
 :::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/CreateKB.java" id="main":::
 
@@ -144,4 +144,4 @@ Bilgi bankanız oluşturulduktan sonra Soru-Cevap Oluşturma Portalı’nızdaki
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Soru-Cevap Oluşturma (V4) REST API Başvurusu](https://go.microsoft.com/fwlink/?linkid=2092179)
+> [Soru-Cevap Oluşturma (V4) REST API Başvurusu](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)
