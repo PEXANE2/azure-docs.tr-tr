@@ -122,11 +122,11 @@
 - name: Kaynaklar
   items:
     - name: Microsoft Learn ile güvenlik becerilerinizi geliştirme
-      href: 'https://docs.microsoft.com/learn/browse/?term=securityS&terms=securityS'
+      href: /learn/browse/?term=securityS&terms=securityS
     - name: Azure Güvenlik Merkezi belgeleri
-      href: 'https://docs.microsoft.com/azure/security-center/'
+      href: ../security-center/index.yml
     - name: Azure güvenlik belgeleri
-      href: 'https://docs.microsoft.com/azure/security/'
+      href: ../security/index.yml
     - name: Stack Overflow’da Azure RTOS güvenlik modülü
       href: 'https://stackoverflow.com/questions/tagged/azure-rtos+azure-iot-security-module'
     - name: 'Azure IoT Güvenlik, Gizlilik ve Uyumluluk blogu'

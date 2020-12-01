@@ -120,15 +120,15 @@
     - name: REST API Başvurusu
       items:
         - name: Soru-Cevap Oluşturma 4.0
-          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/alterations'
+          href: /rest/api/cognitiveservices/qnamaker4.0/alterations
         - name: Soru-Cevap Oluşturma 5.0 Önizleme 1
-          href: 'https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerv5.0-preview.1/alterations'
+          href: /rest/api/cognitiveservices/qnamakerv5.0-preview.1/alterations
     - name: SDK’lar
       items:
         - name: C#
           items:
             - name: Başvuru Belgeleri
-              href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet'
+              href: /dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet
             - name: NuGet paketi
               href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker/'
             - name: Örnekler
@@ -144,7 +144,7 @@
         - name: JavaScript
           items:
             - name: Başvuru Belgeleri
-              href: 'https://docs.microsoft.com/javascript/api/%40azure/cognitiveservices-qnamaker/index?view=azure-node-latest'
+              href: /javascript/api/%40azure/cognitiveservices-qnamaker/index?view=azure-node-latest
             - name: NPM - Yazma
               href: 'https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker'
             - name: NPM - Sorgu çalışma zamanı
@@ -154,7 +154,7 @@
         - name: Python
           items:
             - name: Başvuru Belgeleri
-              href: 'https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker?view=azure-python'
+              href: /python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker?view=azure-python
             - name: Pip
               href: 'https://pypi.org/project/azure-cognitiveservices-knowledge-qnamaker/'
             - name: Örnekler
@@ -176,7 +176,7 @@
     - name: Fiyatlandırma ve limitler
       href: 'https://aka.ms/qnamaker-pricing'
     - name: Arama
-      href: 'https://docs.microsoft.com/search/index?search=QnAMaker'
+      href: /search/index?search=QnAMaker
     - name: Blog
       href: 'https://blog.botframework.com/category/QnAMaker/'
 - name: Soru-Cevap Oluşturma portalı

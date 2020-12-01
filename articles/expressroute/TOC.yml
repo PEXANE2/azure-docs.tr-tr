@@ -101,7 +101,7 @@
         - name: Güvenlik temeli
           href: security-baseline.md
     - name: Güvenlik öznitelikleri
-      href: expressroute-security-controls.md
+      href: ./security-baseline.md
     - name: ExpressRoute üzerinden BFD
       href: expressroute-bfd.md
     - name: QoS gereksinimleri
