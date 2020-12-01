@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 02/10/2020
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: d54c939f0ecc78d7734345b23fd2b75f150243c1
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: b5c81d8b2e6d7eac2dcd9070bf1f448340ea1a18
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148490"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341274"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Azure'da özel Docker kapsayıcısı kayıt defterlerine giriş
 
@@ -45,7 +45,7 @@ Azure, Azure Container kayıt zincirlerinizi yönetmek için Azure Command-Line 
 
   Bir Azure kimliği, Azure Active Directory ile desteklenen bir [hizmet sorumlusu](../active-directory/develop/app-objects-and-service-principals.md)veya sağlanmış bir yönetici hesabı kullanarak bir kapsayıcı kayıt defterine [erişimi kontrol](container-registry-authentication.md) edersiniz. Kullanıcıları veya sistemleri bir kayıt defterine ayrıntılı izinler atamak için Azure rol tabanlı erişim denetimi 'ni (Azure RBAC) kullanın.
 
-  Premium hizmet katmanının güvenlik özellikleri, kayıt defterine erişimi kısıtlamak için görüntü etiketi imzalama ve [güvenlik duvarları ve sanal ağlar (Önizleme)](container-registry-vnet.md) için [içerik güveni](container-registry-content-trust.md) içerir. Azure Güvenlik Merkezi, bir görüntü kayıt defterine gönderildiğinde [görüntüleri taramak](../security-center/defender-for-container-registries-introduction.md?bc=%252fazure%252fcontainer-registry%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fcontainer-registry%252ftoc.json) için isteğe bağlı olarak Azure Container Registry tümleştirilir.
+  Premium hizmet katmanının güvenlik özellikleri, kayıt defterine erişimi kısıtlamak için görüntü etiketi imzalama ve [güvenlik duvarları ve sanal ağlar (Önizleme)](container-registry-vnet.md) için [içerik güveni](container-registry-content-trust.md) içerir. Azure Güvenlik Merkezi, bir görüntü kayıt defterine gönderildiğinde [görüntüleri taramak](../security-center/defender-for-container-registries-introduction.md?bc=%2fazure%2fcontainer-registry%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fcontainer-registry%2ftoc.json) için isteğe bağlı olarak Azure Container Registry tümleştirilir.
 
 * **Desteklenen görüntüler ve yapıtlar** -bir depoda gruplandırılır, her görüntü Docker uyumlu kapsayıcının salt okunurdur. Azure kapsayıcısı kayıt defterleri hem Windows hem de Linux görüntüleri içerebilir. Tüm kapsayıcı dağıtımlarınız için görüntü adlarını siz denetlersiniz. Bir depoya görüntü itmek ya da bir depodan görüntü çekmek için standart [Docker komutlarını](https://docs.docker.com/engine/reference/commandline/) kullanın. Docker kapsayıcı görüntülerine ek olarak, Azure Container Registry, [Held grafikleri](container-registry-helm-repos.md) ve [Açık KAPSAYıCı girişimi (OCI) görüntü biçimi belirtimine](https://github.com/opencontainers/image-spec/blob/master/spec.md)göre oluşturulan görüntüler gibi [ilgili içerik biçimlerini](container-registry-image-formats.md) depolar.
 

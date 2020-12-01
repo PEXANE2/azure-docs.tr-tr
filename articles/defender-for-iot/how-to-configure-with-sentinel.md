@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 12f65d0e7f9c380f77fe4189d26fdeafd426295b
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: c5c0f74ed8a5688b20eea4e74f747d3ff6dd0e63
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090803"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340008"
 ---
 # <a name="connect-your-data-from-defender-for-iot-to-azure-sentinel-preview"></a>IoT için Defender 'daki verilerinizi Azure Sentinel 'e bağlama (Önizleme)
 
-Azure Sentinel 'de IoT için Azure Defender verileri Bağlayıcısı Şu anda genel önizlemededir. Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/).
+Azure Sentinel 'de IoT için Azure Defender verileri Bağlayıcısı Şu anda genel önizlemededir. Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/en-us/support/legal/preview-supplemental-terms/).
 
 Bu kılavuzda, Azure Sentinel 'e IoT verileri için Defender 'ı nasıl bağlayacağınızı öğrenin.
 
@@ -57,7 +57,7 @@ Azure Sentinel ile IoT için Azure Defender 'ı daha sıkı bir şekilde tümle�
 
 Log Analytics bölümünde ilgili şemayı, IoT uyarıları için Defender 'ı göstermek üzere kullanmak için:
 
-1. **Günlükleri**  >  **securityınsights**  >  **securityalert**olarak açın veya **securityalert**araması yapın.
+1. **Günlükleri**  >  **securityınsights**  >  **securityalert** olarak açın veya **securityalert** araması yapın.
 1. Aşağıdaki KQL filtresini kullanarak yalnızca IoT tarafından oluşturulan uyarılar için Defender 'ı görmek üzere filtreleyin:
 
 ```kusto
@@ -72,6 +72,6 @@ Bir IoT Hub bağlandıktan sonra merkez verileri yaklaşık 15 dakika sonra Azur
 
 Bu belgede, IoT için Defender 'ı Azure Sentinel 'e bağlamayı öğrendiniz. Tehdit algılama ve güvenlik verileri erişimi hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
-- Azure Sentinel kullanarak [verilerinize ilişkin görünürlük ve potansiyel tehditler alma](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)hakkında bilgi edinin.
+- Azure Sentinel kullanarak [verilerinize ilişkin görünürlük ve potansiyel tehditler alma](../sentinel/quickstart-get-visibility.md)hakkında bilgi edinin.
 
 - [IoT güvenlik verilerinize erişme](how-to-security-data-access.md) hakkında bilgi edinin

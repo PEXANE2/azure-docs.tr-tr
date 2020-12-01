@@ -3,12 +3,12 @@ title: Özelliklere genel bakış-Azure Event Hubs | Microsoft Docs
 description: Bu makalede, Azure Event Hubs özellikleri ve terminolojisi hakkında ayrıntılar sağlanmaktadır.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: db7c0244fd4e9e04f9cfbcbba8748ec8190fc5c5
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: a38cf4ba6a06dc6e977f9ea168fcf67ce83ff5de
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96007451"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339991"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure Event Hubs'ın özellikleri ve terminolojisi
 
@@ -33,7 +33,7 @@ Bir olay hub 'ına veri gönderen herhangi bir varlık bir olay üreticisi veya 
 
 ### <a name="publishing-an-event"></a>Olay yayımlama
 
-AMQP 1,0, Kafka 1,0 (ve üzeri) veya HTTPS aracılığıyla bir olay yayımlayabilirsiniz. Event Hubs hizmeti, olayları bir olay hub 'ına yayımlamak için [REST API](https://docs.microsoft.com/rest/api/eventhub/) ve [.net](event-hubs-dotnet-standard-getstarted-send.md), [Java](event-hubs-java-get-started-send.md), [Python](event-hubs-python-get-started-send.md), [JavaScript](event-hubs-node-get-started-send.md)ve [Go](event-hubs-go-get-started-send.md) istemci kitaplıkları sağlar. Diğer çalışma zamanları ve platformlar için [Apache Qpid](https://qpid.apache.org/) gibi herhangi bir AMQP 1.0 istemcisi kullanabilirsiniz. 
+AMQP 1,0, Kafka 1,0 (ve üzeri) veya HTTPS aracılığıyla bir olay yayımlayabilirsiniz. Event Hubs hizmeti, olayları bir olay hub 'ına yayımlamak için [REST API](/rest/api/eventhub/) ve [.net](event-hubs-dotnet-standard-getstarted-send.md), [Java](event-hubs-java-get-started-send.md), [Python](event-hubs-python-get-started-send.md), [JavaScript](event-hubs-node-get-started-send.md)ve [Go](event-hubs-go-get-started-send.md) istemci kitaplıkları sağlar. Diğer çalışma zamanları ve platformlar için [Apache Qpid](https://qpid.apache.org/) gibi herhangi bir AMQP 1.0 istemcisi kullanabilirsiniz. 
 
 Olayları ayrı ayrı veya toplu olarak yayımlayabilirsiniz. Tek bir yayın (olay verileri örneği), tek bir olay veya toplu iş olmasına bakılmaksızın 1 MB 'lik bir sınıra sahiptir. Bu eşikten daha büyük yayımlama olayları hata ile sonuçlanır. Yayımcıların olay hub'ındaki bölümleri bilmemesi ve yalnızca bir *bölüm anahtarı* (sonraki bölümde açıklanmıştır) ya da kimliklerini SAS belirteci üzerinden belirtmeleri en iyi yöntemdir.
 

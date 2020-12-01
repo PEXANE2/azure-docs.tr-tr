@@ -10,19 +10,19 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: b3ce1fdc0b52db2706f81950fff735cf7f95e52b
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 6de01d2c12454f43a2802b4a7a979b5f74b46f0e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94379689"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340280"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>Bing Web Araması API'si için dil ve bölge desteği
 
 > [!WARNING]
-> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](/bing/search-apis/bing-web-search/create-bing-search-service-resource)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
 > Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
-> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
+> Geçiş yönergeleri için bkz. [Bing arama Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Bing Web Araması API'si, üç düzine ülke veya bölgeyi destekler ve birden çok dili vardır. Bir ülkeyi veya bölgeyi bir sorgu ile belirtmek, bu ülkeye veya bölgelere ilgi alanları temelinde arama sonuçlarının iyileştirmesine yardımcı olur. Sonuçlar Bing bağlantıları içerebilir ve bu bağlantılar, belirtilen ülkeye/bölgeye veya dile göre Bing Kullanıcı deneyimini yerelleştiremeyebilir.
 
@@ -69,13 +69,13 @@ Alternatif olarak, bir Pazar, `mkt` sorgu parametresi ve **pazarlar** tablosunda
 |Tayvan|TW|
 |Türkiye|TR|
 |Birleşik Krallık|GB|
-|Amerika Birleşik Devletleri|ABD|
+|Birleşik Devletler|ABD|
 
 ## <a name="markets"></a>Pazar
 
 |Ülke/bölge|Dil|Pazar kodu|
 |-------|--------|-----------|
-|Arjantin|Spanish|es-AR|
+|Arjantin|İspanyolca|es-AR|
 |Avustralya|İngilizce|En-AU|
 |Avusturya|Almanca|de|
 |Belçika|Felemenkçe|nl-|
@@ -83,7 +83,7 @@ Alternatif olarak, bir Pazar, `mkt` sorgu parametresi ve **pazarlar** tablosunda
 |Brezilya|Portekizce|pt-BR|
 |Kanada|İngilizce|en-CA|
 |Kanada|Fransızca|fr-CA|
-|Şili|Spanish|es-CL|
+|Şili|İspanyolca|es-CL|
 |Danimarka|Danca|da-DK|
 |Finlandiya|Fince|fi-FI|
 |Fransa|Fransızca|fr-FR|
@@ -95,7 +95,7 @@ Alternatif olarak, bir Pazar, `mkt` sorgu parametresi ve **pazarlar** tablosunda
 |Japonya|Japonca|ja-JP|
 |Güney Kore|Korece|ko-KR|
 |Malezya|İngilizce|En-MY|
-|Meksika|Spanish|es-MX|
+|Meksika|İspanyolca|es-MX|
 |Hollanda|Felemenkçe|nl-NL|
 |Yeni Zelanda|İngilizce|En-NZ|
 |Norveç|Norveççe|Hayır-Hayır|
@@ -106,15 +106,15 @@ Alternatif olarak, bir Pazar, `mkt` sorgu parametresi ve **pazarlar** tablosunda
 |Rusya|Rusça|ru-RU|
 |Suudi Arabistan|Arapça|ar-SA|
 |Güney Afrika|İngilizce|En-ZA|
-|İspanya|Spanish|es-ES|
+|İspanya|İspanyolca|es-ES|
 |İsveç|İsveççe|sv-SE|
 |İsviçre|Fransızca|fr-CH|
 |İsviçre|Almanca|devre dışı|
 |Tayvan|Geleneksel Çince|zh-TW|
 |Türkiye|Türkçe|tr-TR|
 |Birleşik Krallık|İngilizce|en-GB|
-|Amerika Birleşik Devletleri|İngilizce|en-US|
-|Amerika Birleşik Devletleri|Spanish|es-US|
+|Birleşik Devletler|İngilizce|en-US|
+|Birleşik Devletler|İspanyolca|es-US|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

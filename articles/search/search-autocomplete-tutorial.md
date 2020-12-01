@@ -1,5 +1,5 @@
 ---
-title: Arama kutusuna otomatik tamamlama ve öneriler ekleme
+title: Arama kutusuna otomatik tamamlama ekleme
 titleSuffix: Azure Cognitive Search
 description: Öneri araçları oluşturarak ve bir arama kutusunu tamamlanmış koşullara veya tümceciklere göre otomatik hale getirerek oluşan istekleri formülleyerek Azure Bilişsel Arama 'de arama yaparken arama eylemlerini etkinleştirin. Ayrıca, önerilen eşleşmeleri de döndürebilirsiniz.
 manager: nitinme
@@ -9,14 +9,14 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 5b498b8f49f2f0636b010e3c4d86f13ad44ac090
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 25c87971455ed3c5f59c92748794720d61e599e3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029022"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339617"
 ---
-# <a name="add-autocomplete-and-suggestions-to-client-apps"></a>İstemci uygulamalarına otomatik tamamlama ve öneriler ekleme
+# <a name="add-autocomplete-and-suggestions-to-client-apps-using-azure-cognitive-search"></a>Azure Bilişsel Arama kullanarak istemci uygulamalarına otomatik tamamlama ve öneriler ekleme
 
 Yazarken ara, Kullanıcı tarafından başlatılan sorguların üretkenliğini iyileştirmeye yönelik ortak bir tekniktir. Azure Bilişsel Arama, bu deneyim kısmi girişe dayalı bir terimi veya tümceciği tamamlayan *AutoComplete* aracılığıyla desteklenir ("Micro" ile "Microsoft" arasında tamamlanır). İkinci bir kullanıcı deneyimi, *öneriler* veya eşleşen belgelerin kısa bir listesidir (Bu kitapta bir ayrıntı sayfasına bağlantı yapabilmeniz IÇIN bir kimliğe sahip kitap başlıkları döndürülüyor). Hem otomatik tamamlama hem de öneriler dizindeki bir eşleşmeden tahmin edilir. Hizmet, sıfır sonuç döndüren sorgular sunmaz.
 

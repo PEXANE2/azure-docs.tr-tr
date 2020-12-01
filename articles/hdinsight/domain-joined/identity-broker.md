@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: 8a4f9a5df8def928c06fe95a53c7be0d93ec76c4
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: c6bc5ca748a35b17c61d314e96f7284d30e7fc3b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302668"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338138"
 ---
 # <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight KIMLIK Aracısı (HIB)
 
@@ -146,7 +146,7 @@ Her küme için, üçüncü taraf bir uygulama, ıdentifieruri (gibi) olarak kü
 AAD 'de, kullanıcıların kimliğini doğrulayabilmesi veya verilere erişim izni vermeden önce tüm üçüncü taraf uygulamalar için izin gerekir.
 
 ### <a name="can-the-consent-be-approved-programatically"></a>Onay program aracılığıyla onaylansın mı?
-Microsoft Graph API, onayı otomatik hale getirmenizi sağlar. [API belgelerine](https://docs.microsoft.com/graph/api/resources/oauth2permissiongrant?view=graph-rest-1.0) , onayı otomatik hale getirmeye yönelik dizi:
+Microsoft Graph API, onayı otomatik hale getirmenizi sağlar. [API belgelerine](/graph/api/resources/oauth2permissiongrant?view=graph-rest-1.0) , onayı otomatik hale getirmeye yönelik dizi:
 
 * Bir uygulamayı kaydedin ve App. ReadWrite verin. Microsoft Graph erişmek için uygulamaya tüm izinler verin
 * Bir küme oluşturulduktan sonra, küme uygulamasını tanımlayıcı URI 'sine göre sorgulama

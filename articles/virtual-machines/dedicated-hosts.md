@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 07/28/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 0b0e198075455f697c87ad48741a770e6f78b5a5
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: a42b07254deaf19d253f7523631018bfe7166a57
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542159"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339600"
 ---
 # <a name="azure-dedicated-hosts"></a>Azure ayrılmış Konakları
 
@@ -165,6 +165,8 @@ Bir konak için bir SKU tanımlanmıştır ve VM boyut serisini ve türünü tem
 
 Boyutlar ve donanım türleri bölgeye göre farklılık gösterir. Daha fazla bilgi edinmek için konak [fiyatlandırma sayfasına](https://aka.ms/ADHPricing) bakın.
 
+> [!NOTE]
+> Adanmış bir ana bilgisayar yeniden kurulduktan sonra, boyutunu veya türünü değiştiremezsiniz. Farklı türde bir boyut gerekiyorsa, yeni bir konak oluşturmanız gerekir.  
 
 ## <a name="host-life-cycle"></a>Ana bilgisayar yaşam döngüsü
 

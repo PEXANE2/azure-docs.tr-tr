@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: e901009063afa81c98dd86268ac8c9c6de725e5d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 666b39e2a600fe6ca004798ed4f8371cdd1dfe5f
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521025"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340263"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>Azure portal kullanarak Azure Data Lake Storage 1. ile HDInsight kümeleri oluşturma
 
@@ -56,7 +56,7 @@ Varsayılan depolama hesabı olarak Data Lake Storage 1. bir HDInsight kümesi o
     * **Data Lake Store erişim**: Data Lake Storage 1. hesabı ve HDInsight kümesi arasında erişimi yapılandırın. Yönergeler için bkz. [Data Lake Storage 1. erişimi yapılandırma](#configure-data-lake-storage-gen1-access).
     * **Ek depolama hesapları**: Azure depolama hesaplarını küme için ek depolama hesapları olarak ekleyin. Ek Data Lake Storage 1. hesapları eklemek için, birincil depolama türü olarak bir Data Lake Storage 1. hesabı yapılandırılırken daha fazla Data Lake Storage 1. hesabında verilere küme izinleri vererek yapılır. Bkz. [Data Lake Storage 1. erişimi yapılandırma](#configure-data-lake-storage-gen1-access).
 
-4. **Data Lake Store erişimi**için **Seç**' e tıklayın ve ardından [HDInsight 'ta Hadoop kümeleri oluşturma](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md)bölümünde açıklandığı gibi küme oluşturmaya devam edin.
+4. **Data Lake Store erişimi** için **Seç**' e tıklayın ve ardından [HDInsight 'ta Hadoop kümeleri oluşturma](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md)bölümünde açıklandığı gibi küme oluşturmaya devam edin.
 
 ### <a name="create-a-cluster-with-data-lake-storage-gen1-as-additional-storage"></a>Ek depolama alanı olarak Data Lake Storage 1. bir küme oluşturma
 
@@ -66,7 +66,7 @@ Ek depolama hesabı olarak Data Lake Storage 1. bir HDInsight kümesi oluşturma
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. HDInsight kümeleri oluşturma hakkında genel bilgi için [küme oluşturma](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md#create-clusters) ' yı izleyin.
-3. **Depolama** dikey penceresinde, **birincil depolama türü**altında **Azure Storage**' ı seçin ve ardından aşağıdaki bilgileri girin:
+3. **Depolama** dikey penceresinde, **birincil depolama türü** altında **Azure Storage**' ı seçin ve ardından aşağıdaki bilgileri girin:
 
     ![HDInsight depolama hesabı ayarları ek depolama](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.png)
 
@@ -85,7 +85,7 @@ Bu bölümde, bir Azure Active Directory hizmet sorumlusu kullanarak HDInsight k
 Azure portal, var olan bir hizmet sorumlusunu kullanabilir veya yeni bir tane oluşturabilirsiniz.
 
 Azure portal bir hizmet sorumlusu oluşturmak için:
-1. Bkz. Azure Active Directory kullanarak [hizmet sorumlusu ve sertifikaları oluşturma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) .
+1. Bkz. Azure Active Directory kullanarak [hizmet sorumlusu ve sertifikaları oluşturma](../active-directory/develop/howto-create-service-principal-portal.md) .
 
 Azure portal mevcut bir hizmet sorumlusunu kullanmak için:
 
@@ -123,11 +123,11 @@ Depolama hesabındaki Data Lake Storage 1. kök düzeyinde izin atamak için:
 
     ![Dosya izinlerini seçin](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.3.png)
 
-   Varsayılan olarak, __okuma__, __yazma__ve __yürütme__ tümü seçilidir.
+   Varsayılan olarak, __okuma__, __yazma__ ve __yürütme__ tümü seçilidir.
 
 1. Sayfanın alt kısmındaki **Seç** ' e tıklayın.
 1. İzin atamak için **Çalıştır** ' ı seçin.
-1. **Bitti** seçeneğini belirleyin.
+1. **Bitti**'yi seçin.
 
 HDInsight kümesi kök düzeyinde izin atamak için:
 
@@ -137,7 +137,7 @@ HDInsight kümesi kök düzeyinde izin atamak için:
 1. Klasör üzerindeki izinleri ayarlayın.  Varsayılan olarak, okuma, yazma ve yürütme tümü seçilidir.
 1. Sayfanın alt kısmındaki **Seç** ' e tıklayın.
 1. **Çalıştır**'ı seçin.
-1. **Bitti** seçeneğini belirleyin.
+1. **Bitti**'yi seçin.
 
 Ek depolama alanı olarak Data Lake Storage 1. kullanıyorsanız, yalnızca HDInsight kümesinden erişmek istediğiniz klasörlere izin atamanız gerekir. Örneğin, aşağıdaki ekran görüntüsünde yalnızca Data Lake Storage 1. olan bir depolama hesabındaki **myNewFolder** klasörüne erişim sağlarsınız.
 
@@ -200,4 +200,4 @@ Bir fırtınası topolojisinden veri yazmak için Data Lake Storage 1. ile depol
 * [PowerShell: kullanmak için bir HDInsight kümesi oluşturma Data Lake Storage 1.](data-lake-store-hdinsight-hadoop-use-powershell.md)
 
 [makecert]: /windows-hardware/drivers/devtest/makecert
-[pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx
+[pvk2pfx]: /windows-hardware/drivers/devtest/pvk2pfx

@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: d5caa9b4168307bb27022b59415e43b37f30bf67
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: ca3f9da681c60608b5b196b17191f0b4d549f305
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94367395"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338376"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>Barındırılan kullanıcı arabirimi deneyiminizi yapılandırma
 
 > [!WARNING]
-> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](/bing/search-apis/bing-web-search/create-bing-search-service-resource)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
 > Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
-> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
+> Geçiş yönergeleri için bkz. [Bing arama Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Bing Özel Arama, Web sayfalarınızı ve Web uygulamalarınızı JavaScript kod parçacığı olarak kolayca tümleştirebileceğinizi barındırılan bir kullanıcı arabirimi sağlar. Bing Özel Arama portalını kullanarak, Kullanıcı arabiriminin düzen, renk ve arama seçeneklerini yapılandırabilirsiniz.
 
@@ -45,14 +45,14 @@ Web uygulamalarınız için barındırılan bir kullanıcı arabirimi yapıland�
     - Yalnızca sonuçlar: arama kutusu olmadan yalnızca arama sonuçlarını görüntüler. Bu düzeni kullanırken, arama sorgusu () sağlamanız gerekir `&q=<query string>` . Sorgu parametresini JavaScript kod parçacığındaki istek URL 'sine veya HTML uç nokta bağlantısını ekleyin.
     - Açılır pencere: bir arama kutusu sağlar ve arama sonuçlarını kayan bir kaplama içinde görüntüler.
 
-5. Bir renk teması seçin. **Temayı Özelleştir** ' e tıklayarak renkleri uygulamanıza uyacak şekilde özelleştirebilirsiniz. Bir rengi değiştirmek için, rengin RGB ONALTıLıK değerini girin (örneğin, `#366eb8` ) veya renk önizlemeye tıklayın.
+5. Bir renk teması seçin. **Temayı Özelleştir**' e tıklayarak renkleri uygulamanıza uyacak şekilde özelleştirebilirsiniz. Bir rengi değiştirmek için, rengin RGB ONALTıLıK değerini girin (örneğin, `#366eb8` ) veya renk önizlemeye tıklayın.
 
    Portalın sağ tarafında yaptığınız değişikliklerin önizlemesini yapabilirsiniz. **Varsayılana sıfırla** ' ya tıkladığınızda seçili temanın varsayılan renkleriyle yaptığınız değişiklikler geri alınır.
 
    > [!NOTE]
    > Renk seçerken erişilebilirliği göz önünde bulundurun.
 
-6. **Ek konfigürasyonlar** ' ın altında, uygulamanız için uygun değerleri sağlayın. Bu ayarlar isteğe bağlıdır. Uygulama veya kaldırma etkisini görmek için sağdaki önizleme bölmesine bakın. Kullanılabilir yapılandırma seçenekleri şunlardır:  
+6. **Ek konfigürasyonlar**' ın altında, uygulamanız için uygun değerleri sağlayın. Bu ayarlar isteğe bağlıdır. Uygulama veya kaldırma etkisini görmek için sağdaki önizleme bölmesine bakın. Kullanılabilir yapılandırma seçenekleri şunlardır:  
 
 7. Arama aboneliği anahtarını girin veya açılan listeden bir tane seçin. Açılan liste, Azure hesabınızın aboneliklerinizdeki anahtarlarla doldurulur. Bilişsel [HIZMETLER API hesabı](../cognitive-services-apis-create-account.md)' na bakın.  
 
@@ -96,7 +96,7 @@ Barındırılan Kullanıcı arabirimini kullanmak için şunlardan birini yapın
 
 ## <a name="configuration-options"></a>Yapılandırma seçenekleri
 
-**Ek konfigürasyonlar** ' a tıklayarak ve değer sağlayarak barındırılan Kullanıcı arabiriminin davranışını yapılandırabilirsiniz. Bu ayarlar isteğe bağlıdır. Uygulama veya kaldırma etkisini görmek için sağdaki önizleme bölmesine bakın. 
+**Ek konfigürasyonlar**' a tıklayarak ve değer sağlayarak barındırılan Kullanıcı arabiriminin davranışını yapılandırabilirsiniz. Bu ayarlar isteğe bağlıdır. Uygulama veya kaldırma etkisini görmek için sağdaki önizleme bölmesine bakın. 
 
 ### <a name="web-search-configurations"></a>Web araması yapılandırması
 
@@ -105,7 +105,7 @@ Barındırılan Kullanıcı arabirimini kullanmak için şunlardan birini yapın
 - Sayfa başına Web sonucu: tek seferde görüntülenecek web araması sonuçlarının sayısı (sayfa başına en fazla 50 sonuç).
 - Resim başlığı: görüntülerin arama sonuçlarıyla görüntülenip görüntülenmediğini belirler.
 
-**Gelişmiş yapılandırma göster** ' e tıklarsanız aşağıdaki konfigürasyonlar gösterilir:
+**Gelişmiş yapılandırma göster**' e tıklarsanız aşağıdaki konfigürasyonlar gösterilir:
 
 - Sözcükleri vurgula: sonuçların, arama terimleriyle kalın olarak gösterilip gösterilmeyeceğini belirler.
 - Bağlantı hedefi: Kullanıcı bir arama sonucuna tıkladığında, Web sayfasının yeni bir tarayıcı sekmesinde (boş) veya aynı tarayıcı sekmesinde (kendi) açılıp açılamayacağını belirler.
@@ -115,7 +115,7 @@ Barındırılan Kullanıcı arabirimini kullanmak için şunlardan birini yapın
 - Görüntü sonuçları etkin: görüntü aramasının etkinleştirilip etkinleştirilmediğini belirler (sayfanın üst kısmında bir görüntüler sekmesi görürsünüz).
 - Sayfa başına görüntü sonucu: tek seferde görüntülenecek görüntü arama sonuçlarının sayısı (sayfa başına en fazla 150 sonuç).
 
-**Gelişmiş yapılandırmaları göster** ' e tıkladığınızda aşağıdaki yapılandırma gösterilir.  
+**Gelişmiş yapılandırmaları göster**' e tıkladığınızda aşağıdaki yapılandırma gösterilir.  
   
 - Filtreleri etkinleştir: kullanıcının Bing tarafından döndürülen görüntüleri filtrelemek için kullanabileceği filtreleri ekler. Örneğin, Kullanıcı yalnızca animasyonlu GIF 'Ler için sonuçlara filtre uygulayabilir.
 
@@ -124,7 +124,7 @@ Barındırılan Kullanıcı arabirimini kullanmak için şunlardan birini yapın
 - Video sonuçları etkin: video aramasının etkinleştirilip etkinleştirilmediğini belirler (sayfanın üst kısmında bir videolar sekmesi görürsünüz).
 - Sayfa başına video sonucu: tek seferde görüntülenecek video arama sonuçlarının sayısı (sayfa başına en fazla 150 sonuç).
 
-**Gelişmiş yapılandırmaları göster** ' e tıkladığınızda aşağıdaki yapılandırma gösterilir.  
+**Gelişmiş yapılandırmaları göster**' e tıkladığınızda aşağıdaki yapılandırma gösterilir.  
   
 - Filtreleri etkinleştir: kullanıcının, Bing tarafından döndürülen videoları filtrelemek için kullanabileceği filtreleri ekler. Örneğin Kullanıcı, son 24 saat içinde bulunan belirli bir çözünürlük veya videoların bulunduğu videoların sonuçlarını filtreleyebilir.
 
@@ -133,7 +133,7 @@ Barındırılan Kullanıcı arabirimini kullanmak için şunlardan birini yapın
 - Sayfa başlığı: arama sonuçları sayfasının başlık alanında görüntülenen metin (açılır düzen için değil).
 - Toolbar teması: arama sonuçları sayfasının başlık alanının arka plan rengini belirler.
 
-**Gelişmiş yapılandırma göster** ' e tıklarsanız aşağıdaki konfigürasyonlar gösterilir.  
+**Gelişmiş yapılandırma göster**' e tıklarsanız aşağıdaki konfigürasyonlar gösterilir.  
 
 |Sütun1  |Sütun2  |
 |---------|---------|

@@ -3,12 +3,12 @@ title: Azure Event Hubs özel durumlar (eski)
 description: Bu makale, Azure Event Hubs mesajlaşma özel durumlarının ve önerilen eylemlerin bir listesini sağlar.
 ms.topic: article
 ms.date: 11/02/2020
-ms.openlocfilehash: adaf7242530727a1f77a9662110a43341e57e80a
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 357a87c53023962dd9195a616bd9ce9e01c55bf9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289337"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340976"
 ---
 # <a name="event-hubs-messaging-exceptions---net-legacy"></a>Event Hubs mesajlaşma özel durumları-.NET (eski)
 Bu bölümde, .NET Framework API 'Leri tarafından oluşturulan .NET özel durumları listelenmektedir. 
@@ -107,11 +107,11 @@ Bu hata, iki nedenden biri nedeniyle oluşabilir:
 
 - Yük, Olay Hub 'ındaki tüm bölümler arasında eşit olarak dağıtılmaz ve bir bölüm yerel üretilen iş birimi sınırlamasını aşmaktadır.
     
-    **Çözüm** : Bölüm dağıtım stratejisini düzeltme ya da [Eventhubclient. Send (eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) yardımcı olabilecek.
+    **Çözüm**: Bölüm dağıtım stratejisini düzeltme ya da [Eventhubclient. Send (eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) yardımcı olabilecek.
 
 - Event Hubs ad alanı yeterli işleme birimi içermiyor (onaylamak için [Azure portal](https://portal.azure.com) Event Hubs ad alanı penceresinde **ölçümler** ekranını kontrol edebilirsiniz). Portal toplanmış (1 dakikalık) bilgileri gösterir, ancak aktarım hızını gerçek zamanlı olarak ölçyoruz; bu nedenle yalnızca bir tahmindir.
 
-    **Çözüm** : ad alanındaki üretilen iş birimlerinin artırılması yardımcı olabilir. 
+    **Çözüm**: ad alanındaki üretilen iş birimlerinin artırılması yardımcı olabilir. 
 
     İşleme birimlerini, Azure portal **Event Hubs ad alanı** sayfanızın **Ölçek** sayfasında veya **genel bakış** sayfasında yapılandırabilirsiniz. Ya da, kullanım ihtiyaçlarını karşılamak için üretilen iş birimi sayısını artırarak otomatik olarak ölçeklendirilen [Otomatik Şişir](event-hubs-auto-inflate.md)kullanabilirsiniz.
 
@@ -123,13 +123,13 @@ Bu hata, iki nedenden biri nedeniyle oluşabilir:
     
     **Genel bakış** sayfasında **ölçümleri göster** bölümünde, **üretilen iş** sekmesine geçin. X ekseninde 1 dakikalık aralıklar içeren daha büyük bir pencerede açmak için grafiği seçin. En yüksek değerlere bakın ve gelen bayt/saniye veya giden bayt/saniye almak için bunları 60 göre bölün. **İstekler** sekmesinde, saniye başına istek sayısını hesaplamak için benzer bir yaklaşım kullanın. 
 
-    İzleme Sayısı * limitinden (giriş/saniye için 1000 saniyede 1 MB) daha yüksek değerler görürseniz (çıkış için saniyede 2 MB), daha yüksek bir şekilde ölçeklendirilmesi veya Event Hubs [Otomatik](event-hubs-auto-inflate.md) olarak ölçeklendirmek için bir Event Hubs ad alanının **Ölçek** (sol menü) sayfasını kullanarak, DTU sayısını artırın. Otomatik olarak Şişir yalnızca 20 ' ye kadar artış olabileceğini unutmayın. Bunu tam 40 bir şekilde yükseltmek için bir [destek isteği](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)gönderebilirsiniz.
+    İzleme Sayısı * limitinden (giriş/saniye için 1000 saniyede 1 MB) daha yüksek değerler görürseniz (çıkış için saniyede 2 MB), daha yüksek bir şekilde ölçeklendirilmesi veya Event Hubs [Otomatik](event-hubs-auto-inflate.md) olarak ölçeklendirmek için bir Event Hubs ad alanının **Ölçek** (sol menü) sayfasını kullanarak, DTU sayısını artırın. Otomatik olarak Şişir yalnızca 20 ' ye kadar artış olabileceğini unutmayın. Bunu tam 40 bir şekilde yükseltmek için bir [destek isteği](../azure-portal/supportability/how-to-create-azure-support-request.md)gönderebilirsiniz.
 
 ### <a name="error-code-50001"></a>Hata kodu 50001
 
 Bu hata nadiren gerçekleşmelidir. Ad alanınız için kodu çalıştıran kapsayıcı, Event Hubs yük dengeleyici başlamadan önce birkaç saniyeden daha fazla değil, CPU üzerinde düşük olduğunda gerçekleşir.
 
-**Çözüm** : GetRuntimeInformation metodu çağrılarında sınırlayın. Azure Event Hubs, saniye başına Getruntimeınfo 'ya saniyede en fazla 50 çağrı destekler. Sınıra ulaşıldığında aşağıdakine benzer bir özel durum alabilirsiniz:
+**Çözüm**: GetRuntimeInformation metodu çağrılarında sınırlayın. Azure Event Hubs, saniye başına Getruntimeınfo 'ya saniyede en fazla 50 çağrı destekler. Sınıra ulaşıldığında aşağıdakine benzer bir özel durum alabilirsiniz:
 
 ```
 ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The request was terminated because the namespace 75248:aaa-default-eventhub-ns-prodb2b is being throttled. Error code : 50001. Please wait 10 seconds and try again.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: e3de253ee6f45f9296d6b09189fe4bc488be36ad
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 6aa525fd7f2d82194baa2e2a0c910cb71509c2d5
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92090072"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340025"
 ---
 # <a name="getting-started-with-azure-defender-for-iot"></a>IoT için Azure Defender ile çalışmaya başlama
 
@@ -30,9 +30,9 @@ IoT için Azure Defender 'ı çalışır duruma getirmek için aşağıdaki adı
 
 ## <a name="1-set-up-azure"></a>1. Azure 'ı ayarlama
 
-- Bir Azure hesabı ayarlayın. Daha fazla bilgi için bkz. [Azure hesabı oluşturma](https://docs.microsoft.com/learn/modules/create-an-azure-account/).
+- Bir Azure hesabı ayarlayın. Daha fazla bilgi için bkz. [Azure hesabı oluşturma](/learn/modules/create-an-azure-account/).
 
-- Güvenlik duvarı veya proxy: belirli bağlantılara izin vermek üzere yapılandırılmış bir güvenlik duvarınız veya benzer bir araya giren ağ cihazınız varsa, *. azure-devices.net:443 ' nin güvenlik duvarı veya proxy 'ye açıldığını doğrulayın. Joker karakterler desteklenmiyorsa veya daha fazla denetim istiyorsanız, belirli IoT Hub FQDN 'SI ILT veya proxy 'niz içinde açılmalıdır. Daha fazla bilgi için bkz. [Reference-IoT Hub uç noktaları](/azure/iot-hub/iot-hub-devguide-endpoints).
+- Güvenlik duvarı veya proxy: belirli bağlantılara izin vermek üzere yapılandırılmış bir güvenlik duvarınız veya benzer bir araya giren ağ cihazınız varsa, *. azure-devices.net:443 ' nin güvenlik duvarı veya proxy 'ye açıldığını doğrulayın. Joker karakterler desteklenmiyorsa veya daha fazla denetim istiyorsanız, belirli IoT Hub FQDN 'SI ILT veya proxy 'niz içinde açılmalıdır. Daha fazla bilgi için bkz. [Reference-IoT Hub uç noktaları](../iot-hub/iot-hub-devguide-endpoints.md).
 
 ## <a name="2-deploy-hardware-software-and-onboard-to-sensor"></a>2. donanım, yazılım dağıtma ve sensöre ekleme
 

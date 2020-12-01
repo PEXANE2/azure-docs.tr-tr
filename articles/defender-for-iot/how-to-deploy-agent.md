@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 8e18b79cc14fe98879ec97361f6e275d8fd918bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2634ed819b8818632c58b9e471b0f26190e5f16b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90942191"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339974"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>IoT cihazınızda bir güvenlik Aracısı seçin ve dağıtın
 
@@ -44,28 +44,28 @@ C tabanlı güvenlik aracısının daha düşük bir bellek parmak izi vardır v
 | --- | ----------- | --------- |
 | **Açık kaynak** | [GitHub](https://aka.ms/iot-security-github-c) 'da [MIT Lisansı](https://en.wikipedia.org/wiki/MIT_License) altında kullanılabilir | [GitHub](https://aka.ms/iot-security-github-cs) 'da [MIT Lisansı](https://en.wikipedia.org/wiki/MIT_License) altında kullanılabilir |
 | **Geliştirme dili**    | C | C# |
-| **Desteklenen Windows platformları?** | Hayır | Evet |
-| **Windows önkoşulları** | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
+| **Desteklenen Windows platformları?** | Hayır | Yes |
+| **Windows önkoşulları** | --- | [WMI](/windows/desktop/wmisdk/) |
 | **Desteklenen Linux platformları?** | Evet, x64 ve x86 | Evet, yalnızca x64 |
 | **Linux önkoşulları** | libunwind8, libcurl3, UUID-Runtime, auditd, audispd-eklentiler | libunwind8, libcurl3, UUID-Runtime, auditd, audispd-Eklentiler, sudo, netstat, Iptables |
 | **Disk ayak izi** | 10,5 MB | 90 MB |
 | **Bellek ayak izi (Ortalama)** | 5,5 MB | 33 MB |
-| **IoT Hub için [kimlik doğrulaması](concept-security-agent-authentication-methods.md)** | Evet | Evet |
-| **Güvenlik verileri [toplama](how-to-agent-configuration.md#supported-security-events)** | Evet | Evet |
-| **Olay toplama** | Evet | Evet |
-| **[Güvenlik modülü ikizi](concept-security-module.md) aracılığıyla uzaktan yapılandırma** | Evet | Evet |
+| **IoT Hub için [kimlik doğrulaması](concept-security-agent-authentication-methods.md)** | Yes | Yes |
+| **Güvenlik verileri [toplama](how-to-agent-configuration.md#supported-security-events)** | Yes | Yes |
+| **Olay toplama** | Yes | Yes |
+| **[Güvenlik modülü ikizi](concept-security-module.md) aracılığıyla uzaktan yapılandırma** | Yes | Yes |
 
 ## <a name="security-agent-installation-guidelines"></a>Güvenlik Aracısı yükleme yönergeleri
 
-**Windows**Için: Install SecurityAgent.ps1 betiğinin bir yönetici PowerShell penceresinden yürütülmesi gerekir.
+**Windows** Için: Install SecurityAgent.ps1 betiğinin bir yönetici PowerShell penceresinden yürütülmesi gerekir.
 
-**Linux**için: InstallSecurityAgent.sh, süper kullanıcı olarak çalıştırılmalıdır. "Sudo" ile yükleme komutunun önek olarak önerilmenizi öneririz.
+**Linux** için: InstallSecurityAgent.sh, süper kullanıcı olarak çalıştırılmalıdır. "Sudo" ile yükleme komutunun önek olarak önerilmenizi öneririz.
 
 ## <a name="choose-an-agent-flavor"></a>Bir aracı türü seçin
 
 Doğru aracıyı seçmek için IoT cihazlarınızla ilgili aşağıdaki soruları yanıtlayın:
 
-- _Windows Server_ veya _Windows IoT Core_kullanıyor musunuz?
+- _Windows Server_ veya _Windows IoT Core_ kullanıyor musunuz?
 
     [Windows Için C# tabanlı bir güvenlik Aracısı dağıtın](how-to-deploy-windows-cs.md).
 

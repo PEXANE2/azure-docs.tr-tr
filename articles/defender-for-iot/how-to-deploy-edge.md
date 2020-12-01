@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: dd68fd79d25e839876180ff25cacfa1ddf64eb2b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 75a9d1267a8824801e3c24fc25c687f29a808187
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368817"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339940"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>IoT Edge cihazınızda bir güvenlik modülü dağıtma
 
@@ -32,9 +32,9 @@ Bu makalede, IoT Edge cihazınızda bir güvenlik modülünü dağıtmayı öğr
 
 IoT Edge için bir Defender for IoT güvenlik modülünü dağıtmak üzere aşağıdaki adımları kullanın.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
-1. IoT Hub, cihazınızın [bir IoT Edge cihaz olarak kaydedildiğinden](https://docs.microsoft.com/azure/iot-edge/how-to-manual-provision-symmetric-key#register-a-new-device)emin olun.
+1. IoT Hub, cihazınızın [bir IoT Edge cihaz olarak kaydedildiğinden](../iot-edge/how-to-manual-provision-symmetric-key.md#register-a-new-device)emin olun.
 
 1. IoT Edge modülü için Defender, IoT Edge cihazında [Auditd çerçevesinin](https://linux.die.net/man/8/auditd) yüklü olmasını gerektirir.
 
@@ -51,13 +51,13 @@ IoT Edge için bir Defender for IoT güvenlik modülünü dağıtmak üzere aşa
 
 1. Azure portal **Market**' i açın.
 
-1. **Nesnelerin interneti**seçip **IoT için Defender** araması yapın ve seçin.
+1. **Nesnelerin interneti** seçip **IoT için Defender** araması yapın ve seçin.
 
    ![IoT için Defender 'ı seçin](media/howto/edge-onboarding-8.png)
 
 1. Dağıtımı yapılandırmak için **Oluştur** ' a tıklayın.
 
-1. IoT Hub Azure **aboneliğini** seçin ve ardından **IoT Hub**seçin.<br>Tek bir cihazı hedeflemek için **cihaza dağıt** ' ı seçin veya birden çok cihazı hedeflemek Için **ölçeğe dağıt** ' ı seçin ve **Oluştur**' a tıklayın. Ölçekli dağıtım hakkında daha fazla bilgi için bkz. [nasıl dağıtılır](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-monitor).
+1. IoT Hub Azure **aboneliğini** seçin ve ardından **IoT Hub** seçin.<br>Tek bir cihazı hedeflemek için **cihaza dağıt** ' ı seçin veya birden çok cihazı hedeflemek Için **ölçeğe dağıt** ' ı seçin ve **Oluştur**' a tıklayın. Ölçekli dağıtım hakkında daha fazla bilgi için bkz. [nasıl dağıtılır](../iot-edge/how-to-deploy-at-scale.md).
 
     >[!Note]
     >**Aynı ölçekte dağıt**' ı seçtiyseniz aşağıdaki yönergelerde **Modül Ekle** sekmesine geçmeden önce cihaz adını ve ayrıntılarını ekleyin.
@@ -67,7 +67,7 @@ IoT için Defender için IoT Edge dağıtımınızı tamamlamaya yönelik her ad
 #### <a name="step-1-modules"></a>1. Adım: modüller
 
 1. **AzureSecurityCenterforIoT** modülünü seçin.
-1. **Modül ayarları** sekmesinde **adı** **azureiotsecurity**olarak değiştirin.
+1. **Modül ayarları** sekmesinde **adı** **azureiotsecurity** olarak değiştirin.
 1. **Çalıştırılmaları değişkenleri** sekmesinde, gerekirse bir değişken ekleyin (örneğin, hata ayıklama düzeyi).
 1. **Kapsayıcı oluşturma seçenekleri** sekmesinde aşağıdaki yapılandırmayı ekleyin:
 
@@ -105,14 +105,14 @@ IoT için Defender için IoT Edge dağıtımınızı tamamlamaya yönelik her ad
      }
    ```
     
-   Aracıyı yapılandırma hakkında daha fazla bilgi için bkz. [güvenlik aracılarını yapılandırma](https://docs.microsoft.com/azure/defender-for-iot/how-to-agent-configuration).
+   Aracıyı yapılandırma hakkında daha fazla bilgi için bkz. [güvenlik aracılarını yapılandırma](./how-to-agent-configuration.md).
 
 1. **Güncelleştir**’i seçin.
 
 #### <a name="step-2-runtime-settings"></a>2. Adım: çalışma zamanı ayarları
 
 1. **Çalışma zamanı ayarları**' nı seçin.
-1. **Edge hub**'ı altında, **görüntüyü** **MCR.Microsoft.com/azureiotedge-Hub:1.0.8.3**olarak değiştirin.
+1. **Edge hub**'ı altında, **görüntüyü** **MCR.Microsoft.com/azureiotedge-Hub:1.0.8.3** olarak değiştirin.
 1. **Oluşturma seçeneklerini** doğrulama aşağıdaki yapılandırmaya ayarlanır:
 
     ``` json

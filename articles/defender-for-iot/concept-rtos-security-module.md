@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 9f816b35fd79d3f158ea12fd2c7e1d811823dc8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f521bd593369509fd520831f90ce9c601227f09
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941715"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340059"
 ---
 # <a name="security-module-for-azure-rtos-preview"></a>Azure RTOS için güvenlik modülü (Önizleme)
 
@@ -32,7 +32,7 @@ Azure RTOS için güvenlik modülü arka planda çalışır ve her bir müşteri
 
 ## <a name="azure-rtos-netx-duo"></a>Azure RTOS NetX Duo
 
-Azure RTOS NetX Duo, özellikle de gömülü gerçek zamanlı ve IoT uygulamaları için özel olarak tasarlanmış gelişmiş, endüstriyel düzeyde bir TCP/IP ağ yığını. Azure RTOS NetX Duo, güvenlik ve bulut dahil olmak üzere zengin bir protokoller kümesi sağlayan çift IPv4 ve IPv6 ağ yığınıdır. [Azure RTOS NetX Duo](https://aka.ms/netxduo) çözümleri hakkında daha fazla bilgi edinin.
+Azure RTOS NetX Duo, özellikle de gömülü gerçek zamanlı ve IoT uygulamaları için özel olarak tasarlanmış gelişmiş, endüstriyel düzeyde bir TCP/IP ağ yığını. Azure RTOS NetX Duo, güvenlik ve bulut dahil olmak üzere zengin bir protokoller kümesi sağlayan çift IPv4 ve IPv6 ağ yığınıdır. [Azure RTOS NetX Duo](/azure/rtos/netx-duo/) çözümleri hakkında daha fazla bilgi edinin.
 
 Modül aşağıdaki özellikleri sunar:
 
@@ -47,11 +47,11 @@ Azure RTOS için güvenlik modülü, Azure IoT ara yazılımı platformu tarafı
 :::image type="content" source="media/architecture/security-module-state-diagram.png" alt-text="Azure IoT güvenlik modülü durum diyagramı ve bilgi akışı":::
 
 Azure RTOS için güvenlik modülü, aşağıdaki cihaz etkinliğini ve üç toplayıcıyı kullanarak bilgileri izler:
-- Cihaz ağı etkinliği **TCP**, **UDP**ve **ICM**
+- Cihaz ağı etkinliği **TCP**, **UDP** ve **ICM**
 - **Threadx** ve **NETX Duo** sürümleri olarak sistem bilgileri
 - Sinyal olayları
 
-Her toplayıcı bir öncelik grubuna bağlanır ve her bir öncelik grubu, olası **düşük**, **Orta**ve **yüksek**değerlerle kendi aralığına sahiptir. Aralıklar, verilerin toplandığı ve gönderildiği zaman aralığını etkiler.
+Her toplayıcı bir öncelik grubuna bağlanır ve her bir öncelik grubu, olası **düşük**, **Orta** ve **yüksek** değerlerle kendi aralığına sahiptir. Aralıklar, verilerin toplandığı ve gönderildiği zaman aralığını etkiler.
 
 Her zaman aralığı yapılandırılabilir ve çözümünüzü daha fazla [özelleştirmek](how-to-azure-rtos-security-module.md)için IoT bağlayıcıları etkinleştirilebilir ve devre dışı bırakılabilir. 
 
@@ -68,4 +68,3 @@ Azure RTOS için güvenlik modülü, IoT cihazlarınız için ücretsiz bir indi
 - Azure RTOS [Önkoşulları ve kurulumu](quickstart-azure-rtos-security-module.md)Için güvenlik modülünü kullanmaya başlayın.
 - Azure RTOS [güvenlik uyarıları ve öneri desteği](concept-rtos-security-alerts-recommendations.md)Için güvenlik modülü hakkında daha fazla bilgi edinin. 
 - Azure RTOS [başvuru API 'si](azure-rtos-security-module-api.md)Için güvenlik modülünü kullanın.
-

@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 779b29c8d31dffa495926a7f2ca5e1f77870078c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4b9b73e30094ed7d07e19f4b93f2fe8ab8f6af3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319920"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339430"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect Sync v2 Endpoint API (Genel Önizleme) 
 Microsoft, Azure Active Directory için eşitleme hizmeti işlemlerinin performansını geliştiren Azure AD Connect için yeni bir uç nokta (API) dağıttı. Yeni v2 uç noktasından yararlanarak, Azure AD 'ye dışarı ve içeri aktarma sırasında dikkat çekici performans kazanımları yaşarsınız. Bu yeni uç nokta şunları destekler:
@@ -54,7 +54,7 @@ Aşağıdaki adımlar, v2 uç noktasını dağıtım sırasında esnek yöntemi 
 2. Doğrulama tamamlandıktan sonra, **v2 sunucusunu** , hazırlama sunucusu olacak şekilde etkin sunucu ve **v1 sunucusu** olacak şekilde değiştirin. Şu anda, kapsamdaki kapsamdaki büyük grupların Azure AD 'ye sağlanması ve ayrıca grup geri yazma özelliği etkinse büyük Microsoft 365 Birleşik grupların AD 'ye sağlanması gerekir.
 3. **V2 sunucusunun** , büyük grupları başarıyla gerçekleştirdiğinden ve işlediğini doğrulayın. Bu adımda kalmak ve bir dönem için eşitleme işlemini izlemek isteyebilirsiniz.
   >[!NOTE]
-  > Önceki yapılandırmanıza geri geçiş yapmanız gerekirse, **v2 sunucusundan** **v1 sunucusuna**geri dönüşümlü geçiş yapabilirsiniz. V1 uç noktası 50.000 üyesi olan grupları desteklemediğinden, Azure AD 'de veya şirket içi ad 'de Azure AD Connect tarafından sağlanan tüm büyük gruplar daha sonra silinir. 
+  > Önceki yapılandırmanıza geri geçiş yapmanız gerekirse, **v2 sunucusundan** **v1 sunucusuna** geri dönüşümlü geçiş yapabilirsiniz. V1 uç noktası 50.000 üyesi olan grupları desteklemediğinden, Azure AD 'de veya şirket içi ad 'de Azure AD Connect tarafından sağlanan tüm büyük gruplar daha sonra silinir. 
 4. V2 uç noktasını kullanarak emin olduktan sonra, v2 uç noktasını kullanmaya başlamak için **v1 sunucusunu** yükseltin. 
  
 
@@ -155,7 +155,7 @@ Yeni v2 uç noktası kodu, bazı dışarı aktarma hatalarının türlerini v1 k
 >[!NOTE]
 > 50 ' den fazla üye içeren Microsoft 365 Birleşik gruplarınız varsa, gruplar Azure AD Connect okunacak ve grup geri yazma etkinse, şirket içi AD 'nize yazılır. 
 
-## <a name="rollback"></a>Etkin 
+## <a name="rollback"></a>Geri alma 
 V2 uç noktasını etkinleştirdiyseniz ve geri almanız gerekiyorsa, şu adımları izleyin: 
 
 1. Azure AD Connect sunucusu: a. Seçim Veritabanı yedeklemesini al 

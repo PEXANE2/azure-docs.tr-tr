@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cb0223b338457ad5eeea0b0bb40593f57a0d3aa
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: a23056445331c82aded878a77d1e0e730e4e2ceb
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442091"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339481"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Konuk kullanıcılar için AD FS ve üçüncü taraf sağlayıcılarla doğrudan Federasyon (Önizleme)
 
@@ -45,7 +45,7 @@ Doğrudan Federasyon sayesinde, Konuk kullanıcılar kendi kurumsal hesapların�
 ## <a name="limitations"></a>Sınırlamalar
 
 ### <a name="dns-verified-domains-in-azure-ad"></a>Azure AD 'de DNS tarafından doğrulanan etki alanları
-Federasyona eklemek istediğiniz etki alanı, Azure AD 'de ***değil**_ ile DNS doğrulanmalıdır. DNS doğrulanmadığı için, yönetilmeyen (e-posta doğrulandı veya "viral") Azure AD kiracılarıyla doğrudan Federasyon ayarlama iznine sahip olursunuz.
+Federasyona eklemek istediğiniz etki alanı, Azure AD 'de ***değil** _ ile DNS doğrulanmalıdır. DNS doğrulanmadığı için, yönetilmeyen (e-posta doğrulandı veya "viral") Azure AD kiracılarıyla doğrudan Federasyon ayarlama iznine sahip olursunuz.
 
 ### <a name="authentication-url"></a>Kimlik doğrulama URL 'SI
 Doğrudan federasyona yalnızca kimlik doğrulama URL 'sinin hedef etki alanı ile eşleştiği veya kimlik doğrulama URL 'sinin izin verilen kimlik sağlayıcılarından biri olduğu ilkeler için izin verilir (Bu liste değişebilir):
@@ -150,7 +150,7 @@ Daha sonra, Azure AD 'de adım 1 ' de yapılandırılan kimlik sağlayıcısıyl
 
     ![Yeni bir SAML veya WS-Fed IDP ekleme düğmesini gösteren ekran görüntüsü](media/direct-federation/new-saml-wsfed-idp.png)
 
-4. **Yenı SAML/WS-beslik** kimliği sayfasında, **kimlik sağlayıcısı Protokolü**altında **SAML** veya **WS-beslik**' i seçin.
+4. **Yenı SAML/WS-beslik** kimliği sayfasında, **kimlik sağlayıcısı Protokolü** altında **SAML** veya **WS-beslik**' i seçin.
 
     ![SAML veya WS-Fed IDP sayfasında ayrıştırma düğmesini gösteren ekran görüntüsü](media/direct-federation/new-saml-wsfed-idp-parse.png)
 
@@ -195,7 +195,7 @@ Daha sonra, Azure AD 'de adım 1 ' de yapılandırılan kimlik sağlayıcısıyl
 1. [Azure portalına](https://portal.azure.com/) gidin. Sol bölmede **Azure Active Directory**’yi seçin. 
 2. **Dış kimlikler**' i seçin.
 3. **Tüm kimlik sağlayıcılarını** Seç
-4. **SAML/WS-beslik kimlik sağlayıcıları**altında sağlayıcıyı seçin.
+4. **SAML/WS-beslik kimlik sağlayıcıları** altında sağlayıcıyı seçin.
 5. Kimlik sağlayıcısı ayrıntıları bölmesinde değerleri güncelleştirin.
 6. **Kaydet**’i seçin.
 
@@ -205,7 +205,7 @@ Doğrudan Federasyon kurulumunuzu kaldırabilirsiniz. Bunu yaparsanız, doğruda
 
 1. [Azure portalına](https://portal.azure.com/) gidin. Sol bölmede **Azure Active Directory**’yi seçin. 
 2. **Dış kimlikler**' i seçin.
-3. **Tüm kimlik sağlayıcılarını**seçin.
+3. **Tüm kimlik sağlayıcılarını** seçin.
 4. Kimlik sağlayıcısını seçin ve **Sil**' i seçin. 
 5. Silmeyi onaylamak için **Evet** ' i seçin. 
 

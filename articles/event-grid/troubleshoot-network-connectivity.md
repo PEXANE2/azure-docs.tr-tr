@@ -5,12 +5,12 @@ author: batrived
 ms.topic: article
 ms.date: 06/21/2020
 ms.author: batrived
-ms.openlocfilehash: 7b93d7a110889192bb5be6fffa56a73758d6faa2
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: fa119784715b8c88ef3c9f2700b2cac1cc467234
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92892324"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339754"
 ---
 # <a name="troubleshoot-connectivity-issues---azure-event-grid"></a>Bağlantı sorunlarını giderme-Azure Event Grid
 
@@ -50,7 +50,7 @@ telnet {sampletopicname}.{region}-{suffix}.eventgrid.azure.net 443
 
 Azure ile çalışırken, bazı durumlarda kurumsal güvenlik duvarınızdaki veya ara ortamınızdaki belirli IP adresi aralıklarına veya URL 'Lerine, kullanmakta olduğunuz veya kullanmaya çalıştığınız tüm Azure hizmetlerine erişim izni vermeniz gerekir. Event Grid tarafından kullanılan IP adreslerinde trafiğe izin verildiğini doğrulayın. Azure Event Grid tarafından kullanılan IP adresleri için: bkz. [Azure IP aralıkları ve hizmet etiketleri-genel bulut](https://www.microsoft.com/download/details.aspx?id=56519) ve [hizmet etiketi-AzureEventGrid](network-security.md#service-tags).
 
-[Azure IP aralıkları ve hizmet etiketleri-genel bulut](https://www.microsoft.com/download/details.aspx?id=56519) belgesi ayrıca **bölgeye göre** IP adreslerini listeler. **Konunun bölgesi** ve şirket güvenlik duvarınız veya ara sunucunuzda **eşleştirilmiş bölge** için adres aralıklarına izin verebilirsiniz. Bölgenin eşleştirilmiş bir bölgesi için bkz. [iş sürekliliği ve olağanüstü durum kurtarma (BCDR): Azure eşleştirilmiş bölgeleri](/azure/best-practices-availability-paired-regions). 
+[Azure IP aralıkları ve hizmet etiketleri-genel bulut](https://www.microsoft.com/download/details.aspx?id=56519) belgesi ayrıca **bölgeye göre** IP adreslerini listeler. **Konunun bölgesi** ve şirket güvenlik duvarınız veya ara sunucunuzda **eşleştirilmiş bölge** için adres aralıklarına izin verebilirsiniz. Bölgenin eşleştirilmiş bir bölgesi için bkz. [iş sürekliliği ve olağanüstü durum kurtarma (BCDR): Azure eşleştirilmiş bölgeleri](../best-practices-availability-paired-regions.md). 
 
 > [!NOTE]
 > Yeni IP adresleri AzureEventGrid Service etiketine eklenebilse de, her zamanki gibi. Bu nedenle, hizmet etiketlerinde haftalık bir denetim yapmanız iyi olur.
