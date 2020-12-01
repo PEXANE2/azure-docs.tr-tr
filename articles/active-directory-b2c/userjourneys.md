@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 10/13/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fda57ae152efbb04a793c6acf63465fe8d406a1a
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 5b89126b837f9c197a8babf81abb17bfd98002e4
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91998654"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345006"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -92,7 +92,7 @@ Düzenleme adımlarının sıralı listesini belirtmek için, ilkenin bir parça
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| `Type` | Evet | Bu ön koşul için gerçekleştirilecek denetim veya sorgu türü. Bu değer, belirtilen talepler varsa ve bu değerin belirtilen değere eşit olması halinde, eylemlerin gerçekleştirilmesi gerektiğini belirten, eylemlerin, kullanıcının geçerli talep kümesinde bulunması veya **Claımequals**olması gerektiğini belirten **claimsexist**olabilir. |
+| `Type` | Evet | Bu ön koşul için gerçekleştirilecek denetim veya sorgu türü. Bu değer, belirtilen talepler varsa ve bu değerin belirtilen değere eşit olması halinde, eylemlerin gerçekleştirilmesi gerektiğini belirten, eylemlerin, kullanıcının geçerli talep kümesinde bulunması veya **Claımequals** olması gerektiğini belirten **claimsexist** olabilir. |
 | `ExecuteActionsIf` | Yes | Önkoşuldaki eylemlerin gerçekleştirilip gerçekleştirilmeyeceğine karar vermek için doğru veya yanlış test kullanın. |
 
 **Önkoşul** öğeleri aşağıdaki öğeleri içerir:
@@ -172,7 +172,7 @@ Türünde bir düzenleme adımı `ClaimsProviderSelection` veya `CombinedSignInA
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| DisplayOption| Hayır | Tek bir talep sağlayıcı seçiminin kullanılabildiği bir durumun davranışını denetler. Olası değerler:  `DoNotShowSingleProvider`   (varsayılan), kullanıcı federe kimlik sağlayıcısına anında yönlendirilir. Veya  `ShowSingleProvider`   Azure AD B2C, oturum açma sayfasını tek kimlik sağlayıcı seçimiyle gösterir. Bu özniteliği kullanmak için, [İçerik tanımı sürümü](page-layout.md)  `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` ve üzeri olmalıdır.|
+| DisplayOption| Hayır | Tek bir talep sağlayıcı seçiminin kullanılabildiği bir durumun davranışını denetler. Olası değerler: `DoNotShowSingleProvider` (varsayılan), kullanıcı federe kimlik sağlayıcısına anında yönlendirilir. Veya `ShowSingleProvider` Azure AD B2C, oturum açma sayfasını tek kimlik sağlayıcı seçimiyle gösterir. Bu özniteliği kullanmak için, [İçerik tanımı sürümü](page-layout.md) `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` ve üzeri olmalıdır.|
 
 **Claimsproviderselection** öğesi aşağıdaki öznitelikleri içerir:
 

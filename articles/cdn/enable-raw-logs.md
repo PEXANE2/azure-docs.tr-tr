@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/25/2020
 ms.author: allensu
-ms.openlocfilehash: 2fbefd3b7761976cffbd6be8714cb849e1253aec
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e73b4b2eefeb26dad4d028f617cbe453dbd1870d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92778031"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96342473"
 ---
 # <a name="monitoring-metrics-and-raw-logs-for-azure-cdn-from-microsoft"></a>Microsoft 'tan Azure CDN yönelik ölçümleri ve ham günlükleri izleme
 Microsoft 'tan Azure CDN, sorunları gidermenize, izlemenize ve hata ayıklamanıza yardımcı olmak için aşağıdaki yollarla kaynakları izleyebilirsiniz. 
@@ -38,18 +38,18 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Microsoft profilinden Azure CDN ham günlüklerini yapılandırmak için: 
 
-1. Azure portal menüsünde **tüm kaynaklar** ' ı seçin  >>  **\<your-CDN-profile>** .
+1. Azure portal menüsünde **tüm kaynaklar**' ı seçin  >>  **\<your-CDN-profile>** .
 
-2. **İzleme** altında **Tanılama ayarları** ' nı seçin.
+2. **İzleme** bölümünde **Tanılama ayarları**’nı seçin.
 
-3. **+ Tanılama ayarı Ekle** ' yi seçin.
+3. **+ Tanılama ayarı Ekle**' yi seçin.
 
     :::image type="content" source="./media/cdn-raw-logs/raw-logs-01.png" alt-text="CDN profili için tanılama ayarı ekleyin." border="true":::
     
     > [!IMPORTANT]
     > Ham Günlükler yalnızca profil düzeyinde kullanılabilir, ancak toplu http durum kodu günlükleri uç nokta düzeyinde kullanılabilir.
 
-4. **Tanılama ayarları** ' nın altında, tanılama **ayarları adı** altında tanılama ayarı için bir ad girin.
+4. **Tanılama ayarları**' nın altında, tanılama **ayarları adı** altında tanılama ayarı için bir ad girin.
 
 5. **Azurecdnaccesslog** öğesini seçin ve bekletme süresini gün olarak ayarlayın.
 
@@ -58,12 +58,12 @@ Microsoft profilinden Azure CDN ham günlüklerini yapılandırmak için:
         * **Aboneliği** ve **Log Analytics çalışma alanını** seçin.
     * **Bir depolama hesabına Arşivle**
         * **Aboneliği** ve **Depolama hesabını** seçin.
-    * **Bir olay hub 'ına akış**
-        * **Abonelik** , **Olay Hub 'ı ad alanı** , **Olay Hub 'ı adı (isteğe bağlı)** ve **Olay Hub 'ı ilke adı** ' nı seçin.
+    * **Olay hub’ına akış yapma**
+        * **Abonelik**, **Olay Hub 'ı ad alanı**, **Olay Hub 'ı adı (isteğe bağlı)** ve **Olay Hub 'ı ilke adı**' nı seçin.
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-02.png" alt-text="CDN profili için tanılama ayarı ekleyin." border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-02.png" alt-text="Günlük ayarları için hedefi yapılandırın." border="true":::
 
-7. **Kaydet** ’i seçin.
+7. **Kaydet**’i seçin.
 
 ## <a name="configuration---azure-powershell"></a>Yapılandırma-Azure PowerShell
 
@@ -201,7 +201,7 @@ AzureDiagnostics
 ```
 
 > [!IMPORTANT]
-> HTTP ham günlükleri özelliği, **25 şubat 2020** ' den sonra oluşturulan veya güncellenen tüm profiller için otomatik olarak kullanılabilir. Daha önce oluşturulan CDN profilleri için, bir tane, günlüğü ayarladıktan sonra CDN uç noktasını güncelleştirmelidir. Örneğin, bir tane, CDN uç noktaları altında coğrafi filtrelemeye gidebilir ve iş yüküyle ilgili olmayan herhangi bir ülkeyi/bölgeyi engelleyebilir ve Kaydet ' i ziyaret edebilir.
+> HTTP ham günlükleri özelliği, **25 şubat 2020**' den sonra oluşturulan veya güncellenen tüm profiller için otomatik olarak kullanılabilir. Daha önce oluşturulan CDN profilleri için, bir tane, günlüğü ayarladıktan sonra CDN uç noktasını güncelleştirmelidir. Örneğin, bir tane, CDN uç noktaları altında coğrafi filtrelemeye gidebilir ve iş yüküyle ilgili olmayan herhangi bir ülkeyi/bölgeyi engelleyebilir ve Kaydet ' i ziyaret edebilir.
 
 
 ## <a name="metrics"></a>Ölçümler
@@ -231,35 +231,35 @@ Bayt isabet oranı hesaplamasında dışlanan senaryolar:
 
 ### <a name="metrics-configuration"></a>Ölçüm yapılandırması
 
-1. Azure portal menüsünde **tüm kaynaklar** ' ı seçin  >>  **\<your-CDN-profile>** .
+1. Azure portal menüsünde **tüm kaynaklar**' ı seçin  >>  **\<your-CDN-profile>** .
 
-2. **İzleme** altında **ölçümler** ' i seçin:
+2. **İzleme** altında **ölçümler**' i seçin:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-03.png" alt-text="CDN profili için tanılama ayarı ekleyin." border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-03.png" alt-text="CDN profili ölçümleri." border="true":::
 
-3. **Ölçüm Ekle** ' yi seçin, eklenecek ölçümü seçin:
+3. **Ölçüm Ekle**' yi seçin, eklenecek ölçümü seçin:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-04.png" alt-text="CDN profili için tanılama ayarı ekleyin." border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-04.png" alt-text="CDN profili için ölçüm ekleyin ve seçin." border="true":::
 
 4. Filtre eklemek için **Filtre Ekle** ' yi seçin:
     
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-05.png" alt-text="CDN profili için tanılama ayarı ekleyin." border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-05.png" alt-text="Ölçüme filtre uygulayın." border="true":::
 
 5. Farklı boyutlara göre eğilimi görmek için bölmeyi **Uygula** ' yı seçin:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-06.png" alt-text="CDN profili için tanılama ayarı ekleyin." border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-06.png" alt-text="Ölçüme bölme uygulayın." border="true":::
 
 6. Yeni **grafik ' i seçerek** yeni bir grafik ekleyin:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-07.png" alt-text="CDN profili için tanılama ayarı ekleyin." border="true":::
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-07.png" alt-text="Ölçüm görünümüne yeni grafik ekleyin." border="true":::
 
 ### <a name="alerts"></a>Uyarılar
 
-**İzleme** uyarıları ' nı seçerek Microsoft CDN 'de uyarılar ayarlayabilirsiniz  >>  **Alerts** .
+**İzleme** uyarıları ' nı seçerek Microsoft CDN 'de uyarılar ayarlayabilirsiniz  >>  **Alerts**.
 
 Ölçümler bölümünde listelenen ölçümler için **Yeni uyarı kuralı** seçin:
 
-:::image type="content" source="./media/cdn-raw-logs/raw-logs-08.png" alt-text="CDN profili için tanılama ayarı ekleyin." border="true":::
+:::image type="content" source="./media/cdn-raw-logs/raw-logs-08.png" alt-text="CDN uç noktası için uyarıları yapılandırın." border="true":::
 
 Uyarı, Azure Izleyici 'ye göre ücretlendirilir. Uyarılar hakkında daha fazla bilgi için bkz. [Azure izleyici uyarıları](../azure-monitor/platform/alerts-overview.md).
 
@@ -270,21 +270,21 @@ Ek bir maliyet için Azure Log Analytics ve ham günlükleri kullanarak ek ölç
 
 2. Oluşturduğunuz Log Analytics çalışma alanını seçin:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-09.png" alt-text="CDN profili için tanılama ayarı ekleyin." border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-09.png" alt-text="Log Analytics çalışma alanını seçin" border="true":::   
 
 3. Log Analytics çalışma alanında **genel** altında **Günlükler** ' i seçin.  Sonra **kullanmaya** başlayın ' ı seçin:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-10.png" alt-text="CDN profili için tanılama ayarı ekleyin." border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-10.png" alt-text="Log Analytics kaynak çalışma alanı." border="true":::   
  
 4. **CDN profillerini** seçin.  Özel bir sorgu girmek için ÇALıŞTıRıLACAK örnek bir sorgu seçin veya örnek ekranı kapatın:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-11.png" alt-text="CDN profili için tanılama ayarı ekleyin." border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-11.png" alt-text="Örnek sorgu ekranı." border="true":::   
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-12.png" alt-text="CDN profili için tanılama ayarı ekleyin." border="true":::   
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-12.png" alt-text="Sorgu yürütme." border="true":::   
 
-4. Verileri grafiğe göre görüntülemek için **grafik** ' i seçin.  Grafiği Azure panosuna sabitlemek için **panoya sabitle** ' yi seçin:
+4. Verileri grafiğe göre görüntülemek için **grafik**' i seçin.  Grafiği Azure panosuna sabitlemek için **panoya sabitle** ' yi seçin:
 
-    :::image type="content" source="./media/cdn-raw-logs/raw-logs-13.png" alt-text="CDN profili için tanılama ayarı ekleyin." border="true"::: 
+    :::image type="content" source="./media/cdn-raw-logs/raw-logs-13.png" alt-text="Grafiği panoya sabitle." border="true"::: 
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 Bu makalede, Microsoft CDN hizmeti için HTTP RAW günlüklerini etkinleştirdiniz.
@@ -295,4 +295,4 @@ Azure CDN ve bu makalede bahsedilen diğer Azure hizmetleri hakkında daha fazla
 
 * [Azure izleyici](../azure-monitor/overview.md)hakkında daha fazla bilgi edinin.
 
-* [Azure izleyici 'de Log Analytics](../azure-monitor/log-query/get-started-portal.md)yapılandırın.
+* [Azure izleyici 'de Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)yapılandırın.

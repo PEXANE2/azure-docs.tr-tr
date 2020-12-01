@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: db81f8b60cf4883223f6fc084c19c8da1d07bc9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 282d60b1894ffa186a6b5b6b5630aefa9e961572
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388111"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345142"
 ---
 # <a name="set-up-sign-in-with-a-microsoft-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C içindeki özel ilkeleri kullanarak Microsoft hesabı oturum açma ayarlama
 
@@ -29,22 +29,22 @@ Bu makalede, Azure Active Directory B2C (Azure AD B2C) [özel ilkelerini](custom
 - [Azure Active Directory B2C özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın.
 - Zaten bir Microsoft hesabı yoksa bir tane oluşturun [https://www.live.com/](https://www.live.com/) .
 
-## <a name="register-an-application"></a>Bir uygulamayı kaydetme
+## <a name="register-an-application"></a>Uygulamaları kaydetme
 
 Microsoft hesabı kullanıcıların oturum açma özelliğini etkinleştirmek için Azure AD kiracısı içinde bir uygulamayı kaydetmeniz gerekir. Azure AD kiracısı Azure AD B2C kiracınızla aynı değildir.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüdeki **Dizin + abonelik** filtresini SEÇIP Azure AD kiracınızı içeren dizini seçerek Azure AD kiracınızı içeren dizini kullandığınızdan emin olun.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **uygulama kayıtları**' i arayıp seçin.
-1. **Yeni kayıt**seçeneğini belirleyin.
+1. **Yeni kayıt** seçeneğini belirleyin.
 1. Uygulamanız için bir **ad** girin. Örneğin, *MSAapp1*.
-1. **Desteklenen hesap türleri**altında **herhangi bir kuruluş dizininde (HERHANGI bir Azure ad dizini-çoklu kiracı) ve kişisel Microsoft hesaplarından (örn. Skype, Xbox) hesaplar**' ı seçin.
+1. **Desteklenen hesap türleri** altında **herhangi bir kuruluş dizininde (HERHANGI bir Azure ad dizini-çoklu kiracı) ve kişisel Microsoft hesaplarından (örn. Skype, Xbox) hesaplar**' ı seçin.
 1. **Yeniden yönlendirme URI 'si (isteğe bağlı)** altında **Web** ' i seçin ve `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/oauth2/authresp` metin kutusuna girin. `<tenant-name>`Azure AD B2C kiracı adınızla değiştirin.
 1. **Kaydol** ' u seçin
 1. Uygulamaya Genel Bakış sayfasında gösterilen **uygulama (istemci) kimliğini** kaydedin. Daha sonraki bir bölümde talep sağlayıcıyı yapılandırırken buna ihtiyacınız vardır.
 1. **Sertifikaları & parolaları** seçin
 1. **Yeni istemci gizli dizisine** tıklayın.
-1. Gizli anahtar için bir **Açıklama** girin, örneğin *MSA uygulama istemci parolası*ve ardından **Ekle**' ye tıklayın.
+1. Gizli anahtar için bir **Açıklama** girin, örneğin *MSA uygulama istemci parolası* ve ardından **Ekle**' ye tıklayın.
 1. **Değer** sütununda gösterilen uygulama parolasını kaydedin. Sonraki bölümde bu değeri kullanırsınız.
 
 ## <a name="configuring-optional-claims"></a>İsteğe bağlı talepler yapılandırılıyor
@@ -64,16 +64,16 @@ Microsoft hesabı kullanıcıların oturum açma özelliğini etkinleştirmek i�
 
 Uygulamayı Azure AD kiracınızda oluşturduğunuza göre, bu uygulamanın istemci gizliliğini Azure AD B2C kiracınızda depolamanız gerekir.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve kiracınızı içeren dizini seçin.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 1. Genel Bakış sayfasında **kimlik deneyimi çerçevesi**' ni seçin.
 1. **Ilke anahtarlarını** seçin ve ardından **Ekle**' yi seçin.
-1. **Seçenekler**için öğesini seçin `Manual` .
+1. **Seçenekler** için öğesini seçin `Manual` .
 1. İlke anahtarı için bir **ad** girin. Örneğin, `MSASecret`. Ön ek, `B2C_1A_` anahtarınızın adına otomatik olarak eklenir.
-1. **Gizli**dizi ' da, önceki bölümde kaydettiğiniz istemci gizli anahtarını girin.
-1. **Anahtar kullanımı**için öğesini seçin `Signature` .
-1. **Oluştur**’a tıklayın.
+1. **Gizli** dizi ' da, önceki bölümde kaydettiğiniz istemci gizli anahtarını girin.
+1. **Anahtar kullanımı** için öğesini seçin `Signature` .
+1. **Oluştur**'a tıklayın.
 
 ## <a name="add-a-claims-provider"></a>Talep sağlayıcısı ekleme
 
@@ -100,7 +100,7 @@ Azure AD 'yi, ilkenizin uzantı dosyasına **ClaimsProvider** öğesini ekleyere
             <Item Key="response_mode">form_post</Item>
             <Item Key="scope">openid profile email</Item>
             <Item Key="HttpBinding">POST</Item>
-            <Item Key="UsePolicyInRedirectUri">0</Item>
+            <Item Key="UsePolicyInRedirectUri">false</Item>
             <Item Key="client_id">Your Microsoft application client ID</Item>
           </Metadata>
           <CryptographicKeys>
@@ -138,7 +138,7 @@ Devam etmeden önce, şu ana kadar herhangi bir sorun olmadığını doğrulamak
 
 1. Azure portal Azure AD B2C kiracınıza giderek **kimlik deneyimi çerçevesi**' ni seçin.
 1. **Özel ilkeler** sayfasında, **özel ilkeyi karşıya yükle**' yi seçin.
-1. Varsa **Ilkenin üzerine yazmayı**etkinleştirin ve sonra *TrustFrameworkExtensions.xml* dosyasına gidip seçin.
+1. Varsa **Ilkenin üzerine yazmayı** etkinleştirin ve sonra *TrustFrameworkExtensions.xml* dosyasına gidip seçin.
 1. **Karşıya Yükle**'ye tıklayın.
 
 Portalda herhangi bir hata görüntülenmiyorsa, sonraki bölüme geçin.
@@ -158,7 +158,7 @@ Bu noktada, kimlik sağlayıcısını ayarlamış olursunuz, ancak kaydolma veya
 **Claimsproviderselection** öğesi, kaydolma veya oturum açma ekranındaki bir kimlik sağlayıcısı düğmesine benzer. Bir Microsoft hesabı için bir **Claimsproviderselection** öğesi eklerseniz, bir Kullanıcı sayfada yer alıyorsa yeni bir düğme görüntülenir.
 
 1. *TrustFrameworkExtensions.xml* dosyasında, oluşturduğunuz Kullanıcı yolculuğuna dahil olan **orchestrationstep** öğesini bulun `Order="1"` .
-1. **Claimsproviderseçilir**altında aşağıdaki öğeyi ekleyin. **Targetclaimsexchangeıd** değerini uygun bir değere ayarlayın, örneğin `MicrosoftAccountExchange` :
+1. **Claimsproviderseçilir** altında aşağıdaki öğeyi ekleyin. **Targetclaimsexchangeıd** değerini uygun bir değere ayarlayın, örneğin `MicrosoftAccountExchange` :
 
     ```xml
     <ClaimsProviderSelection TargetClaimsExchangeId="MicrosoftAccountExchange" />
@@ -169,7 +169,7 @@ Bu noktada, kimlik sağlayıcısını ayarlamış olursunuz, ancak kaydolma veya
 Artık bir düğmeye sahip olduğunuza göre, bunu bir eyleme bağlamanız gerekir. Bu durumda, Azure AD B2C bir belirteci almak için Microsoft hesabı ile iletişim kurmak için kullanılır.
 
 1. Kullanıcı yolculuğu ' nda yer alan **Orchestrationstep** ' i bulun `Order="2"` .
-1. **Targetclaimsexchangeıd**IÇIN kullandığınız kimlik için aynı değeri kullandığınızdan emin olmak Için aşağıdaki **claimsexchange** öğesini ekleyin:
+1. **Targetclaimsexchangeıd** IÇIN kullandığınız kimlik için aynı değeri kullandığınızdan emin olmak Için aşağıdaki **claimsexchange** öğesini ekleyin:
 
     ```xml
     <ClaimsExchange Id="MicrosoftAccountExchange" TechnicalProfileReferenceId="MSA-OIDC" />
@@ -189,7 +189,7 @@ Azure AD B2C ile iletişim, B2C kiracınıza kaydolmanızı sağlayan bir uygula
 
 Oluşturduğunuz Kullanıcı yolculuğunu başlatan bağlı olan taraf (RP) dosyasını güncelleştirin.
 
-1. Çalışma dizininizde *SignUpOrSignIn.xml* bir kopyasını oluşturun ve yeniden adlandırın. Örneğin, *SignUpSignInMSA.xml*olarak yeniden adlandırın.
+1. Çalışma dizininizde *SignUpOrSignIn.xml* bir kopyasını oluşturun ve yeniden adlandırın. Örneğin, *SignUpSignInMSA.xml* olarak yeniden adlandırın.
 1. Yeni dosyayı açın ve **TrustFrameworkPolicy** Için **PolicyId** özniteliğinin değerini benzersiz bir değerle güncelleştirin. Örneğin, `SignUpSignInMSA`.
 1. **Publicpolicyuri** DEĞERINI ilke URI 'siyle güncelleştirin. Örneğin,`http://contoso.com/B2C_1A_signup_signin_msa`
 1. **Defaultuseryolculuney** Içindeki **referenceıd** özniteliğinin değerini, daha önce oluşturduğunuz Kullanıcı yolculuğunun kimliğiyle eşleşecek şekilde güncelleştirin (Signupsignınmsa).

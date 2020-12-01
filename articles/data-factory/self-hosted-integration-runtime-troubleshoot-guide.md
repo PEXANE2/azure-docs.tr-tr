@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 11/17/2020
 ms.author: lle
-ms.openlocfilehash: 8195c4d072acce5345fa9752f97713aed22d962f
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 635178999398287649d8630fc5262a385afc48b2
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296963"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341793"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı sorunlarını giderme
 
@@ -752,7 +752,7 @@ Bu sorunun iki olası nedeni:
 - 1. nedenden dolayı, ADF sunucu sertifikasının ve Sertifika zincirinin, SHıR 'nin yüklü olduğu makine tarafından güvenilir olduğundan emin olun.
 - 2. nedenden dolayı, SHıR makinesindeki değiştirilmiş kök CA 'ya güvenin veya proxy 'yi ADF sunucu sertifikasını değiştirmek üzere yapılandırın.
 
-Windows 'daki bir sertifikaya güvenmek için Ayrıntılar için [Bu makaleye](https://docs.microsoft.com/skype-sdk/sdn/articles/installing-the-trusted-root-certificate) bakın.
+Windows 'daki bir sertifikaya güvenmek için Ayrıntılar için [Bu makaleye](/skype-sdk/sdn/articles/installing-the-trusted-root-certificate) bakın.
 
 #### <a name="additional-info"></a>Ek bilgiler
 DigiCert tarafından imzalanmış yeni bir SSL sertifikası kullanıma sunuyoruz, lütfen DigiCert genel kök G2 'nin güvenilir kök CA 'da olup olmadığını denetleyin.

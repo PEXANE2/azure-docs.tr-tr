@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c14f406e5671e1eefb43f0208044f9945e446267
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a775ce6b7c560783a22697c5dd92288c5d5b7d4
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89226582"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96343714"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Azure Active Directory öznitelik eşlemeleri için ifadeler yazma
 Bulut sağlamayı yapılandırdığınızda, belirtebileceğiniz öznitelik eşlemelerinin türlerinden biri bir ifade eşlemedir. 
@@ -47,7 +47,7 @@ Aşağıdaki belge, verileri dönüştürmek için kullanılan betiğe benzer if
 |[ConvertFromBase64](#convertfrombase64)|ConvertFromBase64 işlevi, belirtilen Base64 kodlamalı değeri normal bir dizeye dönüştürür.|
 |[ConvertToBase64](#converttobase64)|ConvertToBase64 işlevi bir dizeyi Unicode Base64 dizesine dönüştürür. |
 |[ConvertToUTF8Hex](#converttoutf8hex)|ConvertToUTF8Hex işlevi bir dizeyi UTF8 onaltılık kodlanmış bir değere dönüştürür.|
-|[Biriktirme](#count)|Count işlevi, birden çok değerli bir öznitelikteki öğelerin sayısını döndürür|
+|[Count](#count)|Count işlevi, birden çok değerli bir öznitelikteki öğelerin sayısını döndürür|
 |[CStr](#cstr)|CStr işlevi bir dize veri türüne dönüştürür.|
 |[Tarih Fromnum](#datefromnum)|DateFromNum işlevi, AD 'nin tarih biçimindeki bir değeri bir tarih saat türüne dönüştürür.|
 |[DNComponent](#dncomponent)|DNComponent işlevi, soldan bir belirtilen DN bileşeninin değerini döndürür.|
@@ -65,7 +65,7 @@ Aşağıdaki belge, verileri dönüştürmek için kullanılan betiğe benzer if
 |[Tarafta](#left)|Left işlevi bir dizenin sol tarafında belirtilen sayıda karakteri döndürür.|
 |[Orta](#mid) |Kaynak değerin alt dizesini döndürür. Alt dize, kaynak dizeden yalnızca bazı karakterleri içeren bir dizedir.|
 |[Normalizediacritika](#normalizediacritics)|Bir dize bağımsız değişkeni gerektirir. Dizeyi döndürür, ancak tüm aksanlı karakterlerle eşdeğer, aksanlı olmayan karakterler konur.|
-|[Başlatılmadı](#not) |**Kaynağın**Boole değerini çevirir. **Kaynak** değer "*true*" ise, "*false*" döndürür. Aksi takdirde "*true*" döndürür.| 
+|[Not](#not) |**Kaynağın** Boole değerini çevirir. **Kaynak** değer "*true*" ise, "*false*" döndürür. Aksi takdirde "*true*" döndürür.| 
 |[RemoveDuplicates](#removeduplicates)|Removeyinelemelerini işlevi, birden çok değerli dizeyi alır ve her değerin benzersiz olduğundan emin olur.| 
 |[Değiştirin](#replace) |Dize içindeki değerleri değiştirir. | 
 |[SelectUniqueValue](#selectuniquevalue)|İfadeler kullanılarak tanımlanan benzersiz değer oluşturma kuralları olan en az iki bağımsız değişken gerektirir. İşlevi her kuralı değerlendirir ve hedef uygulamada/dizinde benzersizlik için oluşturulan değeri denetler.| 
@@ -73,21 +73,21 @@ Aşağıdaki belge, verileri dönüştürmek için kullanılan betiğe benzer if
 |[Ayırmayı](#split)|Belirtilen sınırlayıcı karakteri kullanarak bir dizeyi çok değerli bir diziye böler.|
 |[StringFromSID](#stringfromsid)|StringFromSid işlevi, bir güvenlik tanımlayıcısı içeren bir bayt dizisini dizeye dönüştürür.| 
 |[StripSpaces](#stripspaces) |Kaynak dizeden tüm boşluk ("") karakterlerini kaldırır.| 
-|[Değiştirebilirsiniz](#switch)|**Kaynak** değeri bir **anahtarla**eşleştiğinde, bu **anahtar**için **değer** döndürür. | 
+|[Değiştirebilirsiniz](#switch)|**Kaynak** değeri bir **anahtarla** eşleştiğinde, bu **anahtar** için **değer** döndürür. | 
 |[ToLower](#tolower)|Bir *kaynak* dize değeri alır ve belirtilen kültür kurallarını kullanarak küçük harfe dönüştürür.| 
 |[ToUpper](#toupper)|Bir *kaynak* dize değeri alır ve belirtilen kültür kurallarını kullanarak büyük harfe dönüştürür.|
 |[Kırpma](#trim)|Trim işlevi bir dizeden baştaki ve sondaki boşlukları kaldırır.|
 |[Word](#word)|Word işlevi, kullanılacak sınırlayıcıları ve döndürülecek sözcük numarasını açıklayan parametrelere göre dize içinde içerilen bir sözcük döndürür.|
 
 ---
-### <a name="append"></a>Ekleme
+### <a name="append"></a>Ekle
 **Çalışmayacaktır**<br> Append (kaynak, sonek)
 
 **Açıklama:**<br> Bir kaynak dize değeri alır ve son eki bunun sonuna ekler.
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Name | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı. |
    | **önekini** |Gerekli |Dize |Kaynak değerin sonuna eklemek istediğiniz dize. |
@@ -179,7 +179,7 @@ Bu işlevin çıkış biçimi Azure Active Directory tarafından, DN öznitelik 
 48656C6C6F20776F726C6421 döndürür
 
 ---
-### <a name="count"></a>Sayı
+### <a name="count"></a>Count
 **Açıklama:**  
 Count işlevi, birden çok değerli bir öznitelikteki öğelerin sayısını döndürür
 
@@ -250,7 +250,7 @@ AccountName özniteliği yoksa, nesne üzerinde bir hata oluşturur.
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Name | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı. |
    | **InPutFormat** |Gerekli |Dize |Kaynak değerinin biçimi bekleniyordu. Desteklenen biçimler için bkz. [/DotNet/Standard/Base-Types/Custom-Date-and-Time-Format-Strings](/dotnet/standard/base-types/custom-date-and-time-format-strings). |
@@ -289,7 +289,7 @@ InStr işlevi bir dizedeki alt dizenin ilk oluşumunu bulur
 
 `num InStr(str stringcheck, str stringmatch)`  
 `num InStr(str stringcheck, str stringmatch, num start)`  
-`num InStr(str stringcheck, str stringmatch, num start , enum compare)`
+`num InStr(str stringcheck, str stringmatch, num start, enum compare)`
 
 * stringcheck: Aranacak dize
 * stringmatch: bulunan dize
@@ -392,7 +392,7 @@ Kaynak değerlerinden biri çok değerli bir öznitelik ise, bu öznitelikteki h
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Name | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **ayırıcı** |Gerekli |Dize |Tek bir dizede bitiştirildiği zaman kaynak değerlerini ayırmak için kullanılan dize. Hiçbir ayırıcı gerekmiyorsa "" olabilir. |
    | **source1 ... Kaynakcen** |Gerekli, değişken sayısı |Dize |Birlikte birleştirilecek dize değerleri. |
@@ -429,10 +429,10 @@ Dize Numchar 'lar içinde belirtilen sayıdan daha az karakter içeriyorsa, dize
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Name | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **kaynaktaki** |Gerekli |Dize |Genellikle özniteliğin adı. |
-   | **start** |Gerekli |tamsayı |Alt dizenin başlaması gereken **kaynak** dizedeki dizin. Dizedeki ilk karakter 1 dizinine sahip olacak, ikinci karakter dizin 2 ' ye sahip olur ve bu şekilde devam eder. |
+   | **başından** |Gerekli |tamsayı |Alt dizenin başlaması gereken **kaynak** dizedeki dizin. Dizedeki ilk karakter 1 dizinine sahip olacak, ikinci karakter dizin 2 ' ye sahip olur ve bu şekilde devam eder. |
    | **length** |Gerekli |tamsayı |Alt dizenin uzunluğu. Uzunluk **kaynak** dizenin dışında biterse, işlev **Başlangıç** dizininden **kaynak** dizenin sonuna kadar alt dize döndürür. |
 
 ---
@@ -443,7 +443,7 @@ Dize Numchar 'lar içinde belirtilen sayıdan daha az karakter içeriyorsa, dize
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Name | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **kaynaktaki** |Gerekli |Dize | Genellikle ad veya soyadı özniteliği. |
 
@@ -451,11 +451,11 @@ Dize Numchar 'lar içinde belirtilen sayıdan daha az karakter içeriyorsa, dize
 ### <a name="not"></a>Not
 **Çalışmayacaktır**<br> Not (kaynak)
 
-**Açıklama:**<br> **Kaynağın**Boole değerini çevirir. **Kaynak** değer "*true*" ise, "*false*" döndürür. Aksi takdirde "*true*" döndürür.
+**Açıklama:**<br> **Kaynağın** Boole değerini çevirir. **Kaynak** değer "*true*" ise, "*false*" döndürür. Aksi takdirde "*true*" döndürür.
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Name | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **kaynaktaki** |Gerekli |Boole dizesi |Beklenen **kaynak** değerleri "true" veya "false" şeklindedir. |
 
@@ -497,12 +497,12 @@ Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı �
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Name | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **kaynaktaki** |Gerekli |Dize |Genellikle **kaynak** nesneden özniteliğin adı. |
-   | **oldValue** |İsteğe Bağlı |Dize |**Kaynak** veya **şablonda**değiştirilmekte olan değer. |
-   | **Regexmodel** |İsteğe Bağlı |Dize |**Kaynakta**değiştirilmekte olan değer için Regex stili. Ya da **Replacementpropertyname** kullanıldığında, **replacementpropertyname**öğesinden değer çıkarmak için bir model. |
-   | **regexGroupName** |İsteğe Bağlı |Dize |**Regexmodel**içindeki grubun adı. Yalnızca **Replacementpropertyname** kullanıldığında, bu grubun değerini **replacementpropertyname**öğesinden **replacementvalue** olarak ayıklayacağız. |
+   | **oldValue** |İsteğe Bağlı |Dize |**Kaynak** veya **şablonda** değiştirilmekte olan değer. |
+   | **Regexmodel** |İsteğe Bağlı |Dize |**Kaynakta** değiştirilmekte olan değer için Regex stili. Ya da **Replacementpropertyname** kullanıldığında, **replacementpropertyname** öğesinden değer çıkarmak için bir model. |
+   | **regexGroupName** |İsteğe Bağlı |Dize |**Regexmodel** içindeki grubun adı. Yalnızca **Replacementpropertyname** kullanıldığında, bu grubun değerini **replacementpropertyname** öğesinden **replacementvalue** olarak ayıklayacağız. |
    | **replacementValue** |İsteğe Bağlı |Dize |Yenisiyle eskisinin yerini alacak yeni değer. |
    | **replacementAttributeName** |İsteğe Bağlı |Dize |Değiştirme değeri için kullanılacak özniteliğin adı |
    | **şablonlarını** |İsteğe Bağlı |Dize |**Şablon** değeri sağlandığında, şablon içinde **OldValue** aranacağı ve bunu **kaynak** değerle değiştirecek. |
@@ -516,13 +516,13 @@ Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı �
 > [!NOTE]
 > - Bu, üst düzey bir işlevdir, iç içe geçirilemez.
 > - Bu işlev, eşleşen önceliği olan özniteliklere uygulanamaz.  
-> - Bu işlev yalnızca giriş oluşturmaları için kullanılmak üzere tasarlanmıştır. Bir özniteliğiyle birlikte kullanıldığında, **uygulamayı Uygula** özelliğini **yalnızca nesne oluşturma sırasında**olarak ayarlayın.
+> - Bu işlev yalnızca giriş oluşturmaları için kullanılmak üzere tasarlanmıştır. Bir özniteliğiyle birlikte kullanıldığında, **uygulamayı Uygula** özelliğini **yalnızca nesne oluşturma sırasında** olarak ayarlayın.
 > - Bu işlev şu anda yalnızca "Workday for User sağlamasını Active Directory" için desteklenir. Diğer sağlama uygulamalarıyla birlikte kullanılamaz. 
 
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Name | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **uniqueValueRule1 ... uniqueValueRuleN** |En az 2 gerekir, üst sınır yoktur |Dize | Değerlendirilecek benzersiz değer oluşturma kurallarının listesi. |
 
@@ -535,7 +535,7 @@ Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı �
 
 **Parametrelere**<br> 
 
-  | Adı | Gerekli/yinelenen | Tür | Notlar |
+  | Name | Gerekli/yinelenen | Tür | Notlar |
   |--- | --- | --- | --- |
   | **AppRoleAssignments** |Gerekli |Dize |**[Approtaatamalar]** nesnesi. |
 
@@ -547,7 +547,7 @@ Dize içindeki değerleri değiştirir. Belirtilen parametrelere göre farklı �
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Name | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **kaynaktaki** |Gerekli |Dize |Güncelleştirilecek **kaynak** değeri. |
    | **sınırlayıcı** |Gerekli |Dize |Dizeyi ayırmak için kullanılacak karakteri belirtir (örneğin: ",") |
@@ -568,7 +568,7 @@ StringFromSid işlevi, bir güvenlik tanımlayıcısı içeren bir bayt dizisini
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Name | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **kaynaktaki** |Gerekli |Dize |Güncelleştirilecek **kaynak** değeri. |
 
@@ -576,11 +576,11 @@ StringFromSid işlevi, bir güvenlik tanımlayıcısı içeren bir bayt dizisini
 ### <a name="switch"></a>Anahtar
 **Çalışmayacaktır**<br> Anahtar (kaynak, defaultValue, KEY1, değer1, key2, değer2,...)
 
-**Açıklama:**<br> **Kaynak** değeri bir **anahtarla**eşleştiğinde, bu **anahtar**için **değer** döndürür. **Kaynak** değeri herhangi bir anahtara eşleşmezse, **DefaultValue**döndürür.  **Anahtar** ve **değer** parametrelerinin her zaman çiftler halinde gelmesi gerekir. İşlev her zaman çift sayıda parametre bekler.
+**Açıklama:**<br> **Kaynak** değeri bir **anahtarla** eşleştiğinde, bu **anahtar** için **değer** döndürür. **Kaynak** değeri herhangi bir anahtara eşleşmezse, **DefaultValue** döndürür.  **Anahtar** ve **değer** parametrelerinin her zaman çiftler halinde gelmesi gerekir. İşlev her zaman çift sayıda parametre bekler.
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Name | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **kaynaktaki** |Gerekli |Dize |Denetlenecek **kaynak** değeri. |
    | **Değerinin** |İsteğe Bağlı |Dize |Kaynak herhangi bir anahtara eşleşmezse kullanılacak varsayılan değer. Boş dize ("") olabilir. |
@@ -595,7 +595,7 @@ StringFromSid işlevi, bir güvenlik tanımlayıcısı içeren bir bayt dizisini
 
 **Parametrelere**<br> 
 
-   | Adı | Gerekli/yinelenen | Tür | Notlar |
+   | Name | Gerekli/yinelenen | Tür | Notlar |
    | --- | --- | --- | --- |
    | **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı |
    | **ayarı** |İsteğe Bağlı |Dize |RFC 4646 ' i temel alan kültür adı biçimi *languagecode2-Country/regioncode2*, burada *languagecode2* iki harfli dil kodu ve *Ülke/regioncode2* ise iki harfli alt kültür kodudur. Japonca (Japonya) için ja-JP ve Ingilizce (Birleşik Devletler) için en-US sayılabilir. İki harfli dil kodunun kullanılamadığı durumlarda ISO 639-2 ' den türetilen üç harfli bir kod kullanılır.|
@@ -609,7 +609,7 @@ StringFromSid işlevi, bir güvenlik tanımlayıcısı içeren bir bayt dizisini
 
 **Parametrelere**<br> 
 
-  | Adı | Gerekli/yinelenen | Tür | Notlar |
+  | Name | Gerekli/yinelenen | Tür | Notlar |
   | --- | --- | --- | --- |
   | **kaynaktaki** |Gerekli |Dize |Genellikle kaynak nesneden özniteliğin adı. |
   | **ayarı** |İsteğe Bağlı |Dize |RFC 4646 ' i temel alan kültür adı biçimi *languagecode2-Country/regioncode2*, burada *languagecode2* iki harfli dil kodu ve *Ülke/regioncode2* ise iki harfli alt kültür kodudur. Japonca (Japonya) için ja-JP ve Ingilizce (Birleşik Devletler) için en-US sayılabilir. İki harfli dil kodunun kullanılamadığı durumlarda ISO 639-2 ' den türetilen üç harfli bir kod kullanılır.|
@@ -712,7 +712,7 @@ Böl ([extensionAttribute5], ",")
 
 **Örnek giriş/çıkış:** <br>
 
-* **Giriş** (extensionAttribute5): "PermissionSetOne, Izinleri Izinionsettingwo"
+* **Giriş** (extensionAttribute5): "PermissionSetOne, Permissionsettingwo"
 * **Çıkış**: ["Permissionsetone", "Permissionsettingwo"]
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>Belirli bir biçimde bir dize olarak çıkış tarihi

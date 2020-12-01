@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: tutorial
 ms.date: 10/23/2020
 ms.author: dech
-ms.openlocfilehash: 7823c63cf618808cb1ab4400c39f4bc64b7af338
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 1cee4d2ad1bc7f362a045a5991624ec43521b8d2
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427590"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341657"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Öğretici: Verilerinizi Azure Cosmos DB'ye geçirmek için Veri Geçiş Aracı'nı kullanma
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -24,7 +24,7 @@ Bu öğreticide, çeşitli kaynaklardan Azure Cosmos kapsayıcılarına ve tablo
 
 * **[SQL API](./introduction.md)** -verileri küçük bir ölçekte içeri aktarmak Için veri geçiş aracında sunulan kaynak seçeneklerden herhangi birini kullanabilirsiniz. [Büyük ölçekte verilerin içeri aktarılması için geçiş seçenekleri hakkında bilgi edinin](cosmosdb-migrationchoices.md).
 * **[Tablo API'si](table-introduction.md)** veri geçiş aracını veya [AzCopy](table-import.md#migrate-data-by-using-azcopy) komutunu kullanarak verileri içeri aktarabilirsiniz. Daha fazla bilgi için bkz. [Azure Cosmos DB Tablo API’si ile kullanılmak üzere verileri içeri aktarma](table-import.md).
-* **[MongoDB IÇIN apı Azure Cosmos DB](mongodb-introduction.md)** -veri geçiş aracı, mongodb için Azure Cosmos DB API 'sini kaynak veya hedef olarak desteklemez. Azure Cosmos DB, verileri koleksiyonlar içinde veya dışına geçirmek istiyorsanız, yönergeler için MongoDB [için Azure Cosmos DB API 'sine sahip MongoDB verilerini Cosmos veritabanına geçirme](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json) konusuna bakın. SQL API’si ile kullanılmak üzere MongoDB’den Azure Cosmos DB SQL API koleksiyonlarına verileri dışarı aktarmak için Veri Geçişi aracını kullanmaya devam edebilirsiniz.
+* **[MongoDB IÇIN apı Azure Cosmos DB](mongodb-introduction.md)** -veri geçiş aracı, mongodb için Azure Cosmos DB API 'sini kaynak veya hedef olarak desteklemez. Azure Cosmos DB, verileri koleksiyonlar içinde veya dışına geçirmek istiyorsanız, yönergeler için MongoDB [için Azure Cosmos DB API 'sine sahip MongoDB verilerini Cosmos veritabanına geçirme](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json) konusuna bakın. SQL API’si ile kullanılmak üzere MongoDB’den Azure Cosmos DB SQL API koleksiyonlarına verileri dışarı aktarmak için Veri Geçişi aracını kullanmaya devam edebilirsiniz.
 * **[Cassandra API](graph-introduction.md)** -veri geçiş aracı, Cassandra API hesapları için desteklenen bir içeri aktarma aracı değildir. [Cassandra API içine veri aktarmaya yönelik geçiş seçenekleri hakkında bilgi edinin](cosmosdb-migrationchoices.md#azure-cosmos-db-cassandra-api)
 * **[GREMLIN API](graph-introduction.md)** -veri geçiş aracı şu anda Gremlin API hesapları için desteklenen bir içeri aktarma aracı değil. [Gremlin API 'sine veri aktarmaya yönelik geçiş seçenekleri hakkında bilgi edinin](cosmosdb-migrationchoices.md#other-apis) 
 
@@ -70,8 +70,8 @@ Veri Geçişi aracı, aşağıda örnekleri verilen çeşitli kaynaklardan Azure
 
 Geçiş aracı kaynak koduna GitHub’da [bu depodan](https://github.com/azure/azure-documentdb-datamigrationtool) erişilebilir. Çözümü yerel olarak indirip derleyebilir veya [önceden derlenmiş bir ikiliyi indirip](https://aka.ms/csdmtool) daha sonra aşağıdakilerden birini çalıştırabilirsiniz:
 
-* **Dtui.exe** : Aracın grafiksel arabirim sürümü
-* **Dt.exe** : Aracın komut satırı sürümü
+* **Dtui.exe**: Aracın grafiksel arabirim sürümü
+* **Dt.exe**: Aracın komut satırı sürümü
 
 ## <a name="select-data-source"></a>Veri kaynağı seçme
 
@@ -131,7 +131,7 @@ dt.exe /s:JsonFile /s.Files:D:\\CompanyData\\Companies.json /t:DocumentDBBulk /t
 ## <a name="import-from-mongodb"></a><a id="MongoDB"></a>MongoDB’den içeri aktarma
 
 > [!IMPORTANT]
-> MongoDB için Azure Cosmos DB API 'SI ile yapılandırılmış bir Cosmos hesabına aktarıyorsanız, bu [yönergeleri](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)izleyin.
+> MongoDB için Azure Cosmos DB API 'SI ile yapılandırılmış bir Cosmos hesabına aktarıyorsanız, bu [yönergeleri](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)izleyin.
 
 MongoDB kaynak alma seçeneği ile, tek bir MongoDB koleksiyonundan içeri aktarabilir, isteğe bağlı olarak belgeleri bir sorgu kullanarak filtreleyebilir ve bir projeksiyon kullanarak belge yapısını değiştirebilirsiniz.  
 
@@ -159,7 +159,7 @@ dt.exe /s:MongoDB /s.ConnectionString:mongodb://<dbuser>:<dbpassword>@<host>:<po
 ## <a name="import-mongodb-export-files"></a><a id="MongoDBExport"></a>MongoDB dışarı aktarma dosyalarını içeri aktarma
 
 > [!IMPORTANT]
-> MongoDB desteğiyle Azure Cosmos DB bir hesaba aktarıyorsanız, bu [yönergeleri](../dms/tutorial-mongodb-cosmos-db.md?toc=%252fazure%252fcosmos-db%252ftoc.json%253ftoc%253d%252fazure%252fcosmos-db%252ftoc.json)izleyin.
+> MongoDB desteğiyle Azure Cosmos DB bir hesaba aktarıyorsanız, bu [yönergeleri](../dms/tutorial-mongodb-cosmos-db.md?toc=%2fazure%2fcosmos-db%2ftoc.json%253ftoc%253d%2fazure%2fcosmos-db%2ftoc.json)izleyin.
 
 MongoDB dışarı aktarma JSON dosyası kaynak içeri aktarıcı seçeneği, mongoexport yardımcı programından üretilen bir veya daha fazla JSON dosyasını içeri aktarmanıza olanak sağlar.  
 
@@ -386,7 +386,7 @@ Azure Cosmos DB bağlantı dizesinin biçimi şöyledir:
 > [!NOTE]
 > Bağlantı dizesi alanında belirtilen Azure Cosmos DB örneğinin erişilebilir olduğundan emin olmak için Doğrula komutunu kullanın.
 
-Tek bir koleksiyona içeri aktarmak için, içinden verilerin içeri aktarılacağı koleksiyonun adını girin ve Ekle düğmesine tıklayın. Birden fazla koleksiyona içeri aktarmak için her bir koleksiyon adını tek tek girin veya birden fazla koleksiyon belirtmek için şu sözdizimini kullanın: *collection_prefix* [Dizin sonu dizinini Başlat]. Belirtilen sözdizimini kullanarak birden fazla koleksiyon belirtirken aşağıdaki yönergeleri aklınızda bulundurun:
+Tek bir koleksiyona içeri aktarmak için, içinden verilerin içeri aktarılacağı koleksiyonun adını girin ve Ekle düğmesine tıklayın. Birden fazla koleksiyona içeri aktarmak için her bir koleksiyon adını tek tek girin veya birden fazla koleksiyon belirtmek için şu sözdizimini kullanın: *collection_prefix*[Dizin sonu dizinini Başlat]. Belirtilen sözdizimini kullanarak birden fazla koleksiyon belirtirken aşağıdaki yönergeleri aklınızda bulundurun:
 
 1. Yalnızca tamsayı aralığı adı desenleri desteklenir. Örneğin, collection[0-3] belirtildiğinde şu koleksiyonlar oluşturulur: collection0, collection1, collection2, collection3.
 2. Kısaltılmış bir sözdizimi kullanabilirsiniz: collection[3], 1. adımda belirtilen aynı koleksiyon kümesini oluşturur.
@@ -445,7 +445,7 @@ Azure Cosmos DB bağlantı dizesinin biçimi şöyledir:
 > [!NOTE]
 > Bağlantı dizesi alanında belirtilen Azure Cosmos DB örneğinin erişilebilir olduğundan emin olmak için Doğrula komutunu kullanın.
 
-Tek bir koleksiyona aktarmak için, verilerin içe aktarılacağı koleksiyonun adını girin ve ardından Ekle düğmesine tıklayın. Birden fazla koleksiyona içeri aktarmak için her koleksiyon adını tek tek girin. Ayrıca, birden fazla koleksiyon belirtmek için şu sözdizimini kullanabilirsiniz: *collection_prefix* [Dizin bitiş dizinini Başlat]. Belirtilen sözdizimi aracılığıyla birden fazla koleksiyon belirtirken aşağıdaki yönergeleri aklınızda bulundurun:
+Tek bir koleksiyona aktarmak için, verilerin içe aktarılacağı koleksiyonun adını girin ve ardından Ekle düğmesine tıklayın. Birden fazla koleksiyona içeri aktarmak için her koleksiyon adını tek tek girin. Ayrıca, birden fazla koleksiyon belirtmek için şu sözdizimini kullanabilirsiniz: *collection_prefix*[Dizin bitiş dizinini Başlat]. Belirtilen sözdizimi aracılığıyla birden fazla koleksiyon belirtirken aşağıdaki yönergeleri aklınızda bulundurun:
 
 1. Yalnızca tamsayı aralığı adı desenleri desteklenir. Örneğin, collection[0-3] belirtildiğinde şu koleksiyonlar oluşturulur: collection0, collection1, collection2, collection3.
 2. Kısaltılmış bir sözdizimi kullanabilirsiniz: collection[3], 1. adımda belirtilen aynı koleksiyon kümesini oluşturur.
@@ -573,7 +573,7 @@ Gelişmiş yapılandırma ekranında, hataların yazılmasını istediğiniz gü
 
     :::image type="content" source="./media/import-data/summarycommand.png" alt-text="Komut satırı önizlemesiyle Özet ekranının ekran görüntüsü.":::
 
-2. Kaynak ve hedef seçeneklerden memnun kaldığınızda **İçeri Aktar** ’a tıklayın. İçeri aktarma devam ettikçe, geçen süre, aktarılan sayı ve hata bilgileri (Gelişmiş yapılandırma bölümünde bir dosya adı sağlamadıysanız) güncelleştirilir. Tamamlandıktan sonra, sonuçları dışarı aktarabilirsiniz (örneğin, içeri aktarma hatalarıyla ilgilenmek için).
+2. Kaynak ve hedef seçeneklerden memnun kaldığınızda **İçeri Aktar**’a tıklayın. İçeri aktarma devam ettikçe, geçen süre, aktarılan sayı ve hata bilgileri (Gelişmiş yapılandırma bölümünde bir dosya adı sağlamadıysanız) güncelleştirilir. Tamamlandıktan sonra, sonuçları dışarı aktarabilirsiniz (örneğin, içeri aktarma hatalarıyla ilgilenmek için).
 
     :::image type="content" source="./media/import-data/viewresults.png" alt-text="JSON dışarı aktarma seçeneğinin Azure Cosmos DB ekran görüntüsü.":::
 

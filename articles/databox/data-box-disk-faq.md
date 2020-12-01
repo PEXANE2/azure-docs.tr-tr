@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 9305ff5904588241ff8319f28eab2ce20ad77876
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 483ae81f22358e41f252dd8090c01d5b4cad7fb1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125124"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344173"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: sık sorulan sorular
 
@@ -66,7 +66,7 @@ A. Data Box Disk, yalnızca hedef olarak aynı ülke/bölge dahilinde veri alım
 
 ### <a name="option-1"></a>1. Seçenek: 
 
-[Azure içeri/dışarı aktarma hizmeti](../storage/common/storage-import-export-service.md) 'Ni kullanarak Kanada 'daki kaynak konumundan Azure WestUS veri merkezine kadar verileri içeren [desteklenen bir disk](../storage/common/storage-import-export-requirements.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json#supported-disks) gönderin.
+[Azure içeri/dışarı aktarma hizmeti](../storage/common/storage-import-export-service.md) 'Ni kullanarak Kanada 'daki kaynak konumundan Azure WestUS veri merkezine kadar verileri içeren [desteklenen bir disk](../storage/common/storage-import-export-requirements.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#supported-disks) gönderin.
 
 ### <a name="option-2"></a>2. Seçenek:
 

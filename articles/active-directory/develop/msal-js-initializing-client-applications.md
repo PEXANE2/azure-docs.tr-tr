@@ -13,12 +13,12 @@ ms.date: 07/17/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: ea8629e53ec793b4a63c817b6ec83278a2d23871
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 6b5093c5a1a45aed3493fabd7a362b0579998171
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674089"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96343595"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>MSAL.js kullanarak istemci uygulamalarını başlatma
 
@@ -28,7 +28,7 @@ Kullanıcı Aracısı uygulaması, istemci kodunun web tarayıcısı gibi bir Ku
 
 İstemci uygulama türleri ve uygulama yapılandırma seçenekleri hakkında daha fazla bilgi edinmek için bkz. [msal 'de ortak ve gizli istemci uygulamaları](msal-client-applications.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir uygulamayı başlatmadan önce, uygulamanız ile Microsoft Identity platformu arasında bir güven ilişkisi kurarak, ilk olarak [Azure Portal kaydetmeniz](scenario-spa-app-registration.md)gerekir.
 
@@ -37,9 +37,9 @@ Uygulamanızı kaydettikten sonra, Azure portal bulunan aşağıdaki değerlerin
 | Değer | Gerekli | Açıklama |
 |:----- | :------: | :---------- |
 | Uygulama (istemci) kimliği | Gerekli | Uygulamanızı Microsoft Identity platform içinde benzersiz bir şekilde tanımlayan GUID. |
-| Yetkili | İsteğe bağlı | Uygulamanız için kimlik sağlayıcısı URL 'SI ( *örnek* ) ve *oturum açma hedef kitlesi* . Örnek ve oturum açma hedef kitlesi, birleştirilmiş olduğunda *yetkiyi* yapar. |
-| Dizin (kiracı) kimliği | İsteğe bağlı | Yalnızca kuruluşunuz için bir iş kolu uygulaması oluşturuyorsanız, genellikle *tek kiracılı uygulama* olarak adlandırılan bunu belirtin. |
-| Yeniden Yönlendirme URI'si | İsteğe bağlı | Bir Web uygulaması oluşturuyorsanız, `redirectUri` kimlik sağlayıcısının (Microsoft Identity Platform) verdiği güvenlik belirteçlerini döndürmesi gerektiğini belirtir. |
+| Yetkili | İsteğe Bağlı | Uygulamanız için kimlik sağlayıcısı URL 'SI ( *örnek*) ve *oturum açma hedef kitlesi* . Örnek ve oturum açma hedef kitlesi, birleştirilmiş olduğunda *yetkiyi* yapar. |
+| Dizin (kiracı) kimliği | İsteğe Bağlı | Yalnızca kuruluşunuz için bir iş kolu uygulaması oluşturuyorsanız, genellikle *tek kiracılı uygulama* olarak adlandırılan bunu belirtin. |
+| Yeniden Yönlendirme URI'si | İsteğe Bağlı | Bir Web uygulaması oluşturuyorsanız, `redirectUri` kimlik sağlayıcısının (Microsoft Identity Platform) verdiği güvenlik belirteçlerini döndürmesi gerektiğini belirtir. |
 
 ## <a name="initialize-msaljs-2x-apps"></a>MSAL.js 2. x uygulamalarını başlatın
 
@@ -108,7 +108,7 @@ Uygulamanız yeniden yönlendirme akışlarını kullandığında [Handleredirec
 Taahhüdden üç olası sonuç vardır:
 
 - `.then` çağrıldı ve `tokenResponse` Bu işlem başarılı oldu: uygulama başarılı bir yeniden yönlendirme işleminden döndürülüyor.
-- `.then` çağrıldı ve `tokenResponse` falsey ( `null` ): uygulama bir yeniden yönlendirme işleminden dönmedi.
+- `.then` çağrıldı ve `tokenResponse` falsy ( `null` ): uygulama bir yeniden yönlendirme işleminden dönmedi.
 - `.catch` çağrıldı: uygulama bir yeniden yönlendirme işleminden döndürülüyor ve bir hata oluştu.
 
 ## <a name="initialize-msaljs-1x-apps"></a>MSAL.js 1. x uygulamalarını başlatın

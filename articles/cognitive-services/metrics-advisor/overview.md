@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: overview
 ms.date: 09/14/2020
 ms.author: mbullwin
-ms.openlocfilehash: 1a57660733b7257b224c38a55059f1bf069495a0
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 0de93eff0fc422bc28fe7b2c42c295c8d8b1acc4
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890264"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344479"
 ---
 # <a name="what-is-metrics-advisor-preview"></a>Ölçüm Danışmanı (Önizleme) nedir? 
 
@@ -63,4 +63,4 @@ Anomali algılandığında, ölçüm Danışmanı, e-posta kancaları, Web kanca
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Hızlı başlangıcı keşfet: [Web 'de ilk ölçümünüzün izlenmesi](quickstarts/web-portal.md).
-* Hızlı başlangıcı keşfet: [çözümünüzü özelleştirmek IÇIN REST API 'Lerini kullanın](quickstarts/rest-api.md).
+* Hızlı başlangıcı keşfet: [çözümünüzü özelleştirmek IÇIN REST API 'Lerini kullanın](./quickstarts/rest-api-and-client-library.md).

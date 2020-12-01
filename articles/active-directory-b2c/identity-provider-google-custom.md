@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/20/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 91a55782492c1b2612652b147e0aca37941bf4db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 635e33223b054aafb1d91c217a44fdd6d9b369b9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388213"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345176"
 ---
 # <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeleri kullanarak bir Google hesabı ile oturum açmayı ayarlama
 
@@ -34,30 +34,30 @@ Bu makalede, Azure Active Directory B2C (Azure AD B2C) içinde [özel ilkeler](c
 Kullanıcıların bir Google hesabından oturum açmasını etkinleştirmek için bir Google Application projesi oluşturmanız gerekir.
 
 1. [Google Developers konsolunda](https://console.developers.google.com/) hesap kimlik bilgilerinizle oturum açın.
-2. Bir **Proje adı**girin, **Oluştur**' a tıklayın ve ardından yeni projeyi kullandığınızdan emin olun.
+2. Bir **Proje adı** girin, **Oluştur**' a tıklayın ve ardından yeni projeyi kullandığınızdan emin olun.
 3. Sol menüden **kimlik** bilgileri ' ni seçin ve ardından **Oauth istemci kimliği > kimlik bilgileri oluştur**' u seçin.
 4. **Onay ekranını Yapılandır**' ı seçin.
-5. Geçerli bir **e-posta adresi**seçin veya belirtin, kullanıcılara gösterilen bir **ürün adı** sağlayın, `b2clogin.com` **yetkili etki alanları**' na girin ve ardından **Kaydet**' e tıklayın.
-6. **Uygulama türü**altında **Web uygulaması**' nı seçin.
+5. Geçerli bir **e-posta adresi** seçin veya belirtin, kullanıcılara gösterilen bir **ürün adı** sağlayın, `b2clogin.com` **yetkili etki alanları**' na girin ve ardından **Kaydet**' e tıklayın.
+6. **Uygulama türü** altında **Web uygulaması**' nı seçin.
 7. Uygulamanız için bir **ad** girin.
-8. **Yetkili JavaScript kaynakları**' nda, `https://your-tenant-name.b2clogin.com` **Yetkilendirme yeniden yönlendirme URI 'leri**girin, girin `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Kiracı adınızı kiracınızın adıyla değiştirin. Kiracı, Azure AD B2C büyük harfle tanımlansa bile kiracı adınızı girerken tüm küçük harfleri kullanmanız gerekir.
-8. **Oluştur**’a tıklayın.
-9. **ISTEMCI kimliği** ve **istemci parolası**değerlerini kopyalayın. Google 'ı kiracınızda bir kimlik sağlayıcısı olarak yapılandırmak için her ikisine de ihtiyacınız olacak. İstemci parolası önemli bir güvenlik kimlik bilgileridir.
+8. **Yetkili JavaScript kaynakları**' nda, `https://your-tenant-name.b2clogin.com` **Yetkilendirme yeniden yönlendirme URI 'leri** girin, girin `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Kiracı adınızı kiracınızın adıyla değiştirin. Kiracı, Azure AD B2C büyük harfle tanımlansa bile kiracı adınızı girerken tüm küçük harfleri kullanmanız gerekir.
+8. **Oluştur**'a tıklayın.
+9. **ISTEMCI kimliği** ve **istemci parolası** değerlerini kopyalayın. Google 'ı kiracınızda bir kimlik sağlayıcısı olarak yapılandırmak için her ikisine de ihtiyacınız olacak. İstemci parolası önemli bir güvenlik kimlik bilgileridir.
 
 ## <a name="create-a-policy-key"></a>İlke anahtarı oluşturma
 
 Daha önce Azure AD B2C kiracınızda kaydettiğiniz istemci gizli anahtarını depolamanız gerekir.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve kiracınızı içeren dizini seçin.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. Genel Bakış sayfasında **kimlik deneyimi çerçevesi**' ni seçin.
 5. **Ilke anahtarlarını** seçin ve ardından **Ekle**' yi seçin.
-6. **Seçenekler**için öğesini seçin `Manual` .
+6. **Seçenekler** için öğesini seçin `Manual` .
 7. İlke anahtarı için bir **ad** girin. Örneğin, `GoogleSecret`. Ön ek, `B2C_1A_` anahtarınızın adına otomatik olarak eklenir.
 8. **Gizli**, daha önce kaydettiğiniz istemci gizli anahtarını girin.
-9. **Anahtar kullanımı**için öğesini seçin `Signature` .
-10. **Oluştur**’a tıklayın.
+9. **Anahtar kullanımı** için öğesini seçin `Signature` .
+10. **Oluştur**'a tıklayın.
 
 ## <a name="add-a-claims-provider"></a>Talep sağlayıcısı ekleme
 
@@ -65,7 +65,7 @@ Kullanıcıların bir Google hesabı kullanarak oturum açmasını istiyorsanız
 
 Bir Google hesabını, ilkenizin uzantı dosyasındaki **Claimsproviders** öğesine ekleyerek bir talep sağlayıcı olarak tanımlayabilirsiniz.
 
-1. *TrustFrameworkExtensions.xml*açın.
+1. *TrustFrameworkExtensions.xml* açın.
 2. **Claimsproviders** öğesini bulun. Yoksa, kök öğenin altına ekleyin.
 3. Yeni bir **ClaimsProvider** 'ı aşağıdaki şekilde ekleyin:
 
@@ -84,7 +84,7 @@ Bir Google hesabını, ilkenizin uzantı dosyasındaki **Claimsproviders** öğe
             <Item Key="ClaimsEndpoint">https://www.googleapis.com/oauth2/v1/userinfo</Item>
             <Item Key="scope">email profile</Item>
             <Item Key="HttpBinding">POST</Item>
-            <Item Key="UsePolicyInRedirectUri">0</Item>
+            <Item Key="UsePolicyInRedirectUri">false</Item>
             <Item Key="client_id">Your Google application ID</Item>
           </Metadata>
           <CryptographicKeys>
@@ -119,7 +119,7 @@ Bir Google hesabını, ilkenizin uzantı dosyasındaki **Claimsproviders** öğe
 Şimdi, ilkenizi Azure AD dizininizle nasıl iletişim kuracağını öğrenmek için Azure AD B2C ilkenizi yapılandırdınız. Şu ana kadar herhangi bir sorun olmadığını doğrulamak için, ilkenizin uzantı dosyasını karşıya yüklemeyi deneyin.
 
 1. Azure AD B2C kiracınızdaki **özel ilkeler** sayfasında, **ilkeyi karşıya yükle**' yi seçin.
-2. Varsa **Ilkenin üzerine yazmayı**etkinleştirin ve sonra *TrustFrameworkExtensions.xml* dosyasına gidip seçin.
+2. Varsa **Ilkenin üzerine yazmayı** etkinleştirin ve sonra *TrustFrameworkExtensions.xml* dosyasına gidip seçin.
 3. **Karşıya Yükle**'ye tıklayın.
 
 ## <a name="register-the-claims-provider"></a>Talep sağlayıcısını Kaydet
@@ -137,7 +137,7 @@ Bu noktada, kimlik sağlayıcısı ayarlanmıştır, ancak kaydolma/oturum açma
 **Claimsproviderselection** öğesi, kaydolma/oturum açma ekranındaki bir kimlik sağlayıcısı düğmesine benzer. Bir Google hesabı için bir **Claimsproviderselection** öğesi eklerseniz, bir Kullanıcı sayfada yer alıyorsa yeni bir düğme görüntülenir.
 
 1. Oluşturduğunuz Kullanıcı yolculuğuna dahil olan **Orchestrationstep** öğesini bulun `Order="1"` .
-2. **Claimsproviderseçilir**altında aşağıdaki öğeyi ekleyin. **Targetclaimsexchangeıd** değerini uygun bir değere ayarlayın, örneğin `GoogleExchange` :
+2. **Claimsproviderseçilir** altında aşağıdaki öğeyi ekleyin. **Targetclaimsexchangeıd** değerini uygun bir değere ayarlayın, örneğin `GoogleExchange` :
 
     ```xml
     <ClaimsProviderSelection TargetClaimsExchangeId="GoogleExchange" />
@@ -148,7 +148,7 @@ Bu noktada, kimlik sağlayıcısı ayarlanmıştır, ancak kaydolma/oturum açma
 Artık bir düğmeye sahip olduğunuza göre, bunu bir eyleme bağlamanız gerekir. Bu durumda, bir belirteç almak için bir Google hesabıyla iletişim kurmak Azure AD B2C.
 
 1. Kullanıcı yolculuğu ' nda yer alan **Orchestrationstep** ' i bulun `Order="2"` .
-2. **Targetclaimsexchangeıd**IÇIN kullandığınız ID için aynı değeri kullandığınızdan emin olmak Için aşağıdaki **claimsexchange** öğesini ekleyin:
+2. **Targetclaimsexchangeıd** IÇIN kullandığınız ID için aynı değeri kullandığınızdan emin olmak Için aşağıdaki **claimsexchange** öğesini ekleyin:
 
     ```xml
     <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAuth" />
@@ -168,7 +168,7 @@ Azure AD B2C ile iletişim, B2C kiracınıza kaydolmanızı sağlayan bir uygula
 
 Oluşturduğunuz Kullanıcı yolculuğunu başlatan bağlı olan taraf (RP) dosyasını güncelleştirin.
 
-1. Çalışma dizininizde *SignUpOrSignIn.xml* bir kopyasını oluşturun ve yeniden adlandırın. Örneğin, *SignUpSignInGoogle.xml*olarak yeniden adlandırın.
+1. Çalışma dizininizde *SignUpOrSignIn.xml* bir kopyasını oluşturun ve yeniden adlandırın. Örneğin, *SignUpSignInGoogle.xml* olarak yeniden adlandırın.
 2. Yeni dosyayı açın ve **TrustFrameworkPolicy** Için **PolicyId** özniteliğinin değerini benzersiz bir değerle güncelleştirin. Örneğin, `SignUpSignInGoogle`.
 3. **Publicpolicyuri** DEĞERINI ilke URI 'siyle güncelleştirin. Örneğin,`http://contoso.com/B2C_1A_signup_signin_google`
 4. **Defaultuseryolculuney** Içindeki **referenceıd** özniteliğinin değerini, oluşturduğunuz yeni Kullanıcı yolculuğu (signupsigngoogle) kimliğiyle eşleşecek şekilde güncelleştirin.

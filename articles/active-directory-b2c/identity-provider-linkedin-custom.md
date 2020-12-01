@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/25/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5cbedad360e5270238225503e7802d571820c871
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 084a8e247ab8bb3e6e6c75cf8cfe8e204384f549
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388162"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345159"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeler kullanarak LinkedIn hesabı ile oturum açmayı ayarlama
 
@@ -38,21 +38,21 @@ LinkedIn 'i Azure AD B2C bir kimlik sağlayıcısı olarak kullanmak için bir L
 
 1. LinkedIn hesabı kimlik bilgilerinizle [LinkedIn uygulama yönetimi](https://www.linkedin.com/secure/developer?newapp=) Web sitesinde oturum açın.
 1. **Uygulama oluştur**'u seçin.
-1. Bir **uygulama adı**girin.
+1. Bir **uygulama adı** girin.
 1. LinkedIn sayfa adına karşılık gelen bir **Şirket** adı girin. Henüz yoksa bir LinkedIn sayfası oluşturun.
-1. Seçim **Gizlilik ilkesi URL 'si**girin. Geçerli bir URL olmalıdır, ancak ulaşılabilir bir uç nokta olması gerekmez.
-1. Bir **iş e-postası**girin.
+1. Seçim **Gizlilik ilkesi URL 'si** girin. Geçerli bir URL olmalıdır, ancak ulaşılabilir bir uç nokta olması gerekmez.
+1. Bir **iş e-postası** girin.
 1. **Uygulama logosu** görüntüsünü karşıya yükleyin. Logo resminin kare olması ve boyutlarının en az 100x100 piksel olması gerekir.
 1. **Ürünler** bölümünde varsayılan ayarları bırakın.
-1. **Yasal koşullarda**sunulan bilgileri gözden geçirin. Koşulları kabul ediyorsanız, kutuyu işaretleyin.
+1. **Yasal koşullarda** sunulan bilgileri gözden geçirin. Koşulları kabul ediyorsanız, kutuyu işaretleyin.
 1. **Uygulama oluştur**'u seçin.
 
 ### <a name="configure-auth"></a>Kimlik doğrulamasını yapılandırma
 
 1. **AUTH** sekmesini seçin.
-1. **ISTEMCI kimliğini**kaydedin.
-1. **Istemci gizliliğini**açığa çıkar ve kaydedin.
-1. **OAuth 2,0 ayarları**altında aşağıdaki **yeniden yönlendirme URL 'sini**ekleyin. `your-tenant`Kiracınızın adıyla değiştirin. Azure AD B2C büyük harfle tanımlansa bile kiracı adı için **tüm küçük harfleri** kullanın.
+1. **ISTEMCI kimliğini** kaydedin.
+1. **Istemci gizliliğini** açığa çıkar ve kaydedin.
+1. **OAuth 2,0 ayarları** altında aşağıdaki **yeniden yönlendirme URL 'sini** ekleyin. `your-tenant`Kiracınızın adıyla değiştirin. Azure AD B2C büyük harfle tanımlansa bile kiracı adı için **tüm küçük harfleri** kullanın.
 
     `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/oauth2/authresp`
 
@@ -60,16 +60,16 @@ LinkedIn 'i Azure AD B2C bir kimlik sağlayıcısı olarak kullanmak için bir L
 
 Daha önce Azure AD B2C kiracınızda kaydettiğiniz istemci gizli anahtarını depolamanız gerekir.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve kiracınızı içeren dizini seçin.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 4. Genel Bakış sayfasında **kimlik deneyimi çerçevesi**' ni seçin.
 5. **İlke anahtarlarını** seçin ve ardından **Ekle**' yi seçin.
-6. **Seçenekler**için öğesini seçin `Manual` .
+6. **Seçenekler** için öğesini seçin `Manual` .
 7. İlke anahtarı için bir **ad** girin. Örneğin, `LinkedInSecret`. *B2C_1A_* ön eki, anahtarınızın adına otomatik olarak eklenir.
 8. **Gizli**, daha önce kaydettiğiniz istemci gizli anahtarını girin.
-9. **Anahtar kullanımı**için öğesini seçin `Signature` .
-10. **Oluştur**’a tıklayın.
+9. **Anahtar kullanımı** için öğesini seçin `Signature` .
+10. **Oluştur**'a tıklayın.
 
 ## <a name="add-a-claims-provider"></a>Talep sağlayıcısı ekleme
 
@@ -77,8 +77,8 @@ Kullanıcıların bir LinkedIn hesabı kullanarak oturum açmasını istiyorsan�
 
 Bir LinkedIn hesabını, ilkenizin uzantısı dosyasındaki **Claimsproviders** öğesine ekleyerek bir talep sağlayıcı olarak tanımlayın.
 
-1. Düzenleyicinizde *SocialAndLocalAccounts/* * TrustFrameworkExtensions.xml** * dosyasını açın. Bu dosya, önkoşullardan birinin bir parçası olarak indirdiğiniz [özel ilke başlangıç paketidir][starter-pack] .
-1. **Claimsproviders** öğesini bulun. Yoksa, kök öğenin altına ekleyin.
+1. Düzenleyicinizde * SocialAndLocalAccounts/**TrustFrameworkExtensions.xml** _ dosyasını açın. Bu dosya, önkoşullardan birinin bir parçası olarak indirdiğiniz [özel ilke başlangıç paketidir][starter-pack] .
+1. _ *Claimsproviders** öğesini bulun. Yoksa, kök öğenin altına ekleyin.
 1. Yeni bir **ClaimsProvider** 'ı aşağıdaki şekilde ekleyin:
 
     ```xml
@@ -99,7 +99,7 @@ Bir LinkedIn hesabını, ilkenizin uzantısı dosyasındaki **Claimsproviders** 
             <Item Key="external_user_identity_claim_id">id</Item>
             <Item Key="BearerTokenTransmissionMethod">AuthorizationHeader</Item>
             <Item Key="ResolveJsonPathsInJsonTokens">true</Item>
-            <Item Key="UsePolicyInRedirectUri">0</Item>
+            <Item Key="UsePolicyInRedirectUri">false</Item>
             <Item Key="client_id">Your LinkedIn application client ID</Item>
           </Metadata>
           <CryptographicKeys>
@@ -132,7 +132,7 @@ Bir LinkedIn hesabını, ilkenizin uzantısı dosyasındaki **Claimsproviders** 
 
 ### <a name="add-the-claims-transformations"></a>Talep dönüşümlerini ekleyin
 
-LinkedIn Technical profile, **ExtractGivenNameFromLinkedInResponse** ve **ExtractSurNameFromLinkedInResponse** talep dönüştürmelerinin claimstransformaler listesine eklenmesini gerektirir. Dosyanızda tanımlanmış bir **Claimstransformations** öğesi yoksa, üst XML öğelerini aşağıda gösterildiği gibi ekleyin. Talep dönüştürmelerinin Ayrıca **Nullstringclaim**adlı yeni bir talep türü tanımlanmış olması gerekir.
+LinkedIn Technical profile, **ExtractGivenNameFromLinkedInResponse** ve **ExtractSurNameFromLinkedInResponse** talep dönüştürmelerinin claimstransformaler listesine eklenmesini gerektirir. Dosyanızda tanımlanmış bir **Claimstransformations** öğesi yoksa, üst XML öğelerini aşağıda gösterildiği gibi ekleyin. Talep dönüştürmelerinin Ayrıca **Nullstringclaim** adlı yeni bir talep türü tanımlanmış olması gerekir.
 
 *TrustFrameworkExtensions.xml* dosyasının en üstüne yakın olan **buildingblocks** öğesini ekleyin. Bir örnek için bkz. *TrustFrameworkBase.xml* .
 
@@ -177,7 +177,7 @@ LinkedIn Technical profile, **ExtractGivenNameFromLinkedInResponse** ve **Extrac
 Artık Azure AD B2C LinkedIn hesabınızla nasıl iletişim kuracağını bilmesi için bir ilke yapılandırdınız. Şimdiye kadar herhangi bir sorun olmadığını doğrulamak için ilkenizin uzantı dosyasını karşıya yüklemeyi deneyin.
 
 1. Azure AD B2C kiracınızdaki **özel ilkeler** sayfasında, **ilkeyi karşıya yükle**' yi seçin.
-2. Varsa **Ilkenin üzerine yazmayı**etkinleştirin ve sonra *TrustFrameworkExtensions.xml* dosyasına gidip seçin.
+2. Varsa **Ilkenin üzerine yazmayı** etkinleştirin ve sonra *TrustFrameworkExtensions.xml* dosyasına gidip seçin.
 3. **Karşıya Yükle**'ye tıklayın.
 
 ## <a name="register-the-claims-provider"></a>Talep sağlayıcısını Kaydet
@@ -195,7 +195,7 @@ Bu noktada, kimlik sağlayıcısı ayarlanmıştır, ancak kaydolma veya oturum 
 **Claimsproviderselection** öğesi, kaydolma veya oturum açma ekranındaki bir kimlik sağlayıcısı düğmesine benzer. LinkedIn hesabı için bir **Claimsproviderselection** öğesi eklerseniz, bir Kullanıcı sayfada yer alıyorsa yeni bir düğme görüntülenir.
 
 1. Oluşturduğunuz Kullanıcı yolculuğuna dahil olan **Orchestrationstep** öğesini bulun `Order="1"` .
-2. **Claimsproviderseçimleri**altında aşağıdaki öğeyi ekleyin. **Targetclaimsexchangeıd** değerini uygun bir değere ayarlayın, örneğin `LinkedInExchange` :
+2. **Claimsproviderseçimleri** altında aşağıdaki öğeyi ekleyin. **Targetclaimsexchangeıd** değerini uygun bir değere ayarlayın, örneğin `LinkedInExchange` :
 
     ```xml
     <ClaimsProviderSelection TargetClaimsExchangeId="LinkedInExchange" />
@@ -206,7 +206,7 @@ Bu noktada, kimlik sağlayıcısı ayarlanmıştır, ancak kaydolma veya oturum 
 Artık bir düğmeye sahip olduğunuza göre, bunu bir eyleme bağlamanız gerekir. Bu durumda, Azure AD B2C bir, belirteç almak üzere bir LinkedIn hesabıyla iletişim kurmak için kullanılır.
 
 1. Kullanıcı yolculuğu ' nda yer alan **Orchestrationstep** ' i bulun `Order="2"` .
-2. **Targetclaimsexchangeıd**IÇIN kullandığınız kimlik için aynı değeri kullandığınızdan emin olmak Için aşağıdaki **claimsexchange** öğesini ekleyin:
+2. **Targetclaimsexchangeıd** IÇIN kullandığınız kimlik için aynı değeri kullandığınızdan emin olmak Için aşağıdaki **claimsexchange** öğesini ekleyin:
 
     ```xml
     <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAUTH" />
@@ -226,7 +226,7 @@ Azure AD B2C ile iletişim, B2C kiracınıza kaydolmanızı sağlayan bir uygula
 
 Oluşturduğunuz Kullanıcı yolculuğunu başlatan bağlı olan taraf (RP) dosyasını güncelleştirin.
 
-1. Çalışma dizininizde *SignUpOrSignIn.xml* bir kopyasını oluşturun ve yeniden adlandırın. Örneğin, *SignUpSignInLinkedIn.xml*olarak yeniden adlandırın.
+1. Çalışma dizininizde *SignUpOrSignIn.xml* bir kopyasını oluşturun ve yeniden adlandırın. Örneğin, *SignUpSignInLinkedIn.xml* olarak yeniden adlandırın.
 2. Yeni dosyayı açın ve **TrustFrameworkPolicy** Için **PolicyId** özniteliğinin değerini benzersiz bir değerle güncelleştirin. Örneğin, `SignUpSignInLinkedIn`.
 3. **Publicpolicyuri** DEĞERINI ilke URI 'siyle güncelleştirin. Örneğin,`http://contoso.com/B2C_1A_signup_signin_linkedin`
 4. **Defaultuseryolculuney** Içindeki **referenceıd** özniteliğinin değerini, oluşturduğunuz yeni Kullanıcı yolculuğu (signupsignlinkedın) kimliğiyle eşleşecek şekilde güncelleştirin.
@@ -281,7 +281,7 @@ Hedef:
 
 ### <a name="add-new-outputclaimstransformation-elements"></a>Yeni Outputclaimstrans, öğeleri ekle
 
-**Teknisyen**tarafından belirlenen **Outputclaimsformations** öğelerini aşağıdaki **outputclaimstranssize** öğelerini ekleyin:
+**Teknisyen** tarafından belirlenen **Outputclaimsformations** öğelerini aşağıdaki **outputclaimstranssize** öğelerini ekleyin:
 
 ```xml
 <OutputClaimsTransformation ReferenceId="ExtractGivenNameFromLinkedInResponse" />
@@ -290,7 +290,7 @@ Hedef:
 
 ### <a name="define-the-new-claims-transformations-and-claim-type"></a>Yeni talep dönüştürmelerini ve talep türünü tanımlayın
 
-Son adımda, tanımlanması gereken yeni talep dönüşümleri eklediniz. Talep dönüşümlerini tanımlamak için bunları **Claimstransformations**listesine ekleyin. Dosyanızda tanımlanmış bir **Claimstransformations** öğesi yoksa, üst XML öğelerini aşağıda gösterildiği gibi ekleyin. Talep dönüştürmelerinin Ayrıca **Nullstringclaim**adlı yeni bir talep türü tanımlanmış olması gerekir.
+Son adımda, tanımlanması gereken yeni talep dönüşümleri eklediniz. Talep dönüşümlerini tanımlamak için bunları **Claimstransformations** listesine ekleyin. Dosyanızda tanımlanmış bir **Claimstransformations** öğesi yoksa, üst XML öğelerini aşağıda gösterildiği gibi ekleyin. Talep dönüştürmelerinin Ayrıca **Nullstringclaim** adlı yeni bir talep türü tanımlanmış olması gerekir.
 
 **Buildingblocks** öğesi dosyanın en üstüne eklenmelidir. Örnek olarak *TrustframeworkBase.xml* bakın.
 

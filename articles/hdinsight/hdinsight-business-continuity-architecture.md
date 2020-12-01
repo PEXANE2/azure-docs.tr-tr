@@ -8,12 +8,12 @@ keywords: Hadoop yüksek kullanılabilirlik
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: c322380d6a41e69baa8f753b84c0bc074f334647
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0275fa4cc46dff8781d73563fd250b1ec62ddd56
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547036"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344122"
 ---
 # <a name="azure-hdinsight-business-continuity-architectures"></a>Azure HDInsight iş sürekliliği mimarileri
 
@@ -50,13 +50,13 @@ Hive olay tabanlı çoğaltma, birincil ve ikincil kümeler arasında yapıland�
 
 İsteğe bağlı *İkincil mimariye sahip etkin bir birincil* sürümünde, uygulamalar, normal işlemler sırasında ikincil bölgede hiçbir küme sağlanana sırada etkin birincil bölgeye yazılır. İkincil bölgedeki SQL meta veri deposu ve depolama kalıcıdır, ancak HDInsight kümesi betikleştirilmiş ve yalnızca zamanlanan Hive çoğaltması çalıştırılmadan önce isteğe bağlı olarak dağıtılır.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-on-demand-secondary.png" alt-text="Hive ve etkileşimli sorgu mimarisi":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-on-demand-secondary.png" alt-text="isteğe bağlı ikincil ile etkin birincil":::
 
 #### <a name="hive-active-primary-with-standby-secondary"></a>Hive etkin birincil, bekleme ikincili
 
 Etkin bir *birincil durumda, bekleme ikincili olan* uygulamalar etkin birincil bölgeye yazılır, ancak bekleyen bir ikincil küme, normal işlemler sırasında salt okunurdur. Normal işlemler sırasında, bölgeye özgü okuma işlemlerinin ikinciye yük devretme işlemini seçebilirsiniz.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary.png" alt-text="Hive ve etkileşimli sorgu mimarisi":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary.png" alt-text="Etkin ikincil ile etkin birincil":::
 
 Hive çoğaltma ve kod örnekleri hakkında daha fazla bilgi için [Azure HDInsight kümelerinde Apache Hive çoğaltmaya](./interactive-query/apache-hive-replication.md) başvurabilirsiniz
 
@@ -85,13 +85,13 @@ HDInsight 'ın yerel olarak sağladığı daha fazla müşterinin özel kitaplı
 
 Uygulamalar birincil bölgedeki Spark ve Hive kümelerini okur ve yazar ve normal işlemler sırasında ikincil bölgede hiçbir küme sağlanmamıştır. SQL meta veri deposu, Hive depolaması ve Spark Storage, ikincil bölgede kalıcıdır. Spark ve Hive kümeleri betikleştirilmiş ve isteğe bağlı olarak dağıtılır. Hive çoğaltması, Hive depolama ve Hive meta veri `DistCP` deposu, tek başına Spark depolamayı kopyalamak için kullanılabilir Azure Data Factory. Bağımlılık işlem nedeniyle, Hive kümelerinin her Hive çoğaltma çalıştırılmadan önce dağıtılması gerekir `DistCp` .
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-on-demand-secondary-spark.png" alt-text="Hive ve etkileşimli sorgu mimarisi":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-on-demand-secondary-spark.png" alt-text="isteğe bağlı ikincil Apache Spark mimarisi ile etkin birincil":::
 
 #### <a name="spark-active-primary-with-standby-secondary"></a>Hazır olan ikincil ile Spark etkin birincil
 
 Uygulamalar, birincil bölgedeki Spark ve Hive kümelerini okur ve yazar. Bu arada, bekleyen ölçekli Hive ve Spark kümeleri, normal işlemler sırasında ikincil bölgede çalışır. Normal işlemler sırasında bölgeye özgü Hive ve Spark okuma işlemlerini ikincil için boşaltmasını seçebilirsiniz.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary-spark.png" alt-text="Hive ve etkileşimli sorgu mimarisi":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/active-primary-standby-secondary-spark.png" alt-text="etkin birincil bekleme ikincil Apache Spark ":::
 
 ## <a name="apache-hbase"></a>Apache HBase
 
@@ -131,19 +131,19 @@ Bu çapraz bölge kümesinde, çoğaltma birincil bölgeden ikincil bölgeye tek
 
 İkincil küme, kendi tablolarını barındırabilirler ve bölgesel uygulamalardan okuma ve yazma işlemleri için bir normal HBase kümesi olarak çalışır. Ancak, çoğaltılan tablolara veya ikincil için yerel tablolara yazma işlemleri birincil diske geri çoğaltılmaz.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-leader-follower.png" alt-text="Hive ve etkileşimli sorgu mimarisi":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-leader-follower.png" alt-text="HBase öncü izleyici modeli":::
 
 #### <a name="hbase-replication--leader--leader-model"></a>HBase çoğaltma: öncü – öncü model
 
 Bu çapraz bölge kümesi, çoğaltmanın birincil bölge ve ikincil bölge arasında bir arada olması dışında tek yönlü ayarlamaya çok benzer. Uygulamalar, okuma yazma modlarında her iki kümeyi de kullanabilir ve güncelleştirmeler aralarında zaman uyumsuz olarak güncelleştirilir.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-leader-leader.png" alt-text="Hive ve etkileşimli sorgu mimarisi":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-leader-leader.png" alt-text="HBase öncü öncü modeli":::
 
 #### <a name="hbase-replication-multi-region-or-cyclic"></a>HBase çoğaltma: çok bölgeli veya döngüsel
 
 Çok bölgeli/döngüsel çoğaltma modeli bir HBase çoğaltma uzantısıdır ve bölgeye özgü HBase kümelerini okuyan ve yazan birden çok uygulamayla küresel olarak yedekli bir HBase mimarisi oluşturmak için kullanılabilir. Kümeler, iş gereksinimlerine bağlı olarak, öncü/öncü veya öncü/Izleyici 'nin çeşitli birleşimlerinde ayarlanabilir.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-cyclic.png" alt-text="Hive ve etkileşimli sorgu mimarisi":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/hbase-cyclic.png" alt-text="HBase döngüsel modeli":::
 
 ## <a name="apache-kafka"></a>Apache Kafka
 
@@ -151,7 +151,7 @@ Bölgeler arası kullanılabilirliği etkinleştirmek için HDInsight 4,0, farkl
 
 Çoğaltma başlatıldığında konu ömrü ne olduğuna bağlı olarak, MirrorMaker konu çoğaltma, kaynak ve çoğaltma konuları arasında farklı uzaklıklara yol açabilir. HDInsight Kafka kümeleri, tek küme düzeyinde yüksek kullanılabilirlik özelliği olan konu Bölüm çoğaltmasını da destekler.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-replication.png" alt-text="Hive ve etkileşimli sorgu mimarisi":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-replication.png" alt-text="Apache Kafka çoğaltma":::
 
 ### <a name="apache-kafka-architectures"></a>Apache Kafka mimarileri
 
@@ -172,7 +172,7 @@ Eksileri:
 * Etkin ve pasif kümeler arasındaki konular arasında nihai tutarlılık.
 * Birincil öğesine geri dönme, konu başlığı altında ileti tutarsızlığına neden olabilir.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-active-passive.png" alt-text="Hive ve etkileşimli sorgu mimarisi":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-active-passive.png" alt-text="Etkin Pasif model Apache Kafka":::
 
 #### <a name="kafka-replication-active--active"></a>Kafka çoğaltma: etkin – etkin
 
@@ -188,7 +188,7 @@ Eksileri:
 * Döngüsel çoğaltmanın sorunu giderilmesi gerekir.  
 * Çift yönlü çoğaltma, bölgesel veri çıkış maliyetlerinin daha yüksek olmasına yol açar.
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-active-active.png" alt-text="Hive ve etkileşimli sorgu mimarisi":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/kafka-active-active.png" alt-text="Etkin etkin modeli Apache Kafka":::
 
 ## <a name="hdinsight-enterprise-security-package"></a>HDInsight Kurumsal Güvenlik Paketi
 
@@ -198,11 +198,11 @@ Ranger meta veri deposu çoğaltma:
 
 Ranger meta verileri, veri yetkilendirmesini denetlemek için bir Ranger ilkelerini kalıcı olarak depolamak ve çalıştırmak için kullanılır. Birincil ve ikincil içinde bağımsız Ranger ilkelerini korumanızı ve ikincil kopyayı bir okuma çoğaltması olarak korumanızı öneririz.
   
-Eğer gereksinim, birincil ve ikincil arasında Ranger ilkelerini eşit tutmaya devam ediyorsanız, zaman içinde [içeri ve dışarı aktarma](https://cwiki.apache.org/confluence/display/RANGER/User+Guide+For+Import-Export#:~:text=Ranger%20has%20introduced%20a%20new,can%20import%20and%20export%20policies.&text=Also%20can%20export%2Fimport%20a,repositories\)%20via%20Ranger%20Admin%20UI) kullanarak Ranger ilkelerini birincili ikinciye içeri aktarın.
+Eğer gereksinim, birincil ve ikincil arasında Ranger ilkelerini eşit tutmaya devam ediyorsanız, zaman içinde [içeri ve dışarı aktarma](https://cwiki.apache.org/confluence/display/RANGER/User+Guide+For+Import-Export) kullanarak Ranger ilkelerini birincili ikinciye içeri aktarın.
 
 Ranger ilkelerini birincil ve ikincil arasında çoğaltmak, ikincörün yazma özelliğinin etkin hale gelmesine neden olabilir ve bu da ikincil lider üzerinde veri tutarsızlıklarına yanlışlıkla yazma yapılmasına yol açabilir.  
 
-:::image type="content" source="./media/hdinsight-business-continuity-architecture/hdinsight-enterprise-security-package.png" alt-text="Hive ve etkileşimli sorgu mimarisi":::
+:::image type="content" source="./media/hdinsight-business-continuity-architecture/hdinsight-enterprise-security-package.png" alt-text="HDInsight Kurumsal Güvenlik Paketi mimarisi":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

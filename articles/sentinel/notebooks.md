@@ -10,14 +10,14 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
-ms.openlocfilehash: ded332813a840892f640aa6f6e48debbfe381b4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5d182276cd77493be5184503a1afc47934bf8ea
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90889240"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344202"
 ---
-# <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Güvenlik tehditleri aramak için Jupyıter not defterlerini kullanma
+# <a name="use-jupyter-notebook-to-hunt-for-security-threats"></a>Güvenlik tehditleri aramak için Jupyter Notebook kullanın
 
 Azure Sentinel 'in temeli veri deposudur; yüksek performanslı sorgulamayı, dinamik şemayı birleştirir ve çok büyük veri birimlerine ölçeklendirir. Azure portal ve tüm Azure Sentinel araçları, bu veri deposuna erişmek için ortak bir API kullanır. Aynı API, [jupi](https://jupyter.org/) Not defterleri ve Python gibi dış araçlar için de kullanılabilir. Portalda birçok ortak görev gerçekleştirilebilirken, Jupyıter bu verilerle yapabileceklerinizi kapsamını genişletir. Makine öğrenimi, görselleştirme ve veri analizi için çok büyük bir kitaplık koleksiyonuyla tam programlama ile birleşir. Bu öznitelikler, Jupa 'nın güvenlik araştırması ve araştırma için etkileyici bir araç haline getirir.
 
@@ -54,7 +54,7 @@ Not defterlerini kullanmak için, önce bir Azure Machine Learning (ML) çalış
     > [!div class="mx-imgBorder"]
     > ![Azure ML çalışma alanını başlatmak için Not defterini Başlat](./media/notebooks/sentinel-notebooks-launch.png)
 
-1. **AzureML çalışma alanı**altında **Yeni oluştur**' u seçin.
+1. **AzureML çalışma alanı** altında **Yeni oluştur**' u seçin.
 
     > [!div class="mx-imgBorder"]
     > ![çalışma alanı oluştur](./media/notebooks/sentinel-notebooks-azureml-create.png)
@@ -64,9 +64,9 @@ Not defterlerini kullanmak için, önce bir Azure Machine Learning (ML) çalış
     |Alan|Açıklama|
     |--|--|
     |Abonelik|Kullanmak istediğiniz Azure aboneliğini seçin.|
-    |Kaynak grubu|Aboneliğinizde mevcut kaynak gruplarından birini seçin veya bir ad girerek yeni bir kaynak grubu oluşturun. Kaynak grubu, bir Azure çözümü için ilgili kaynakları barındırır. Bu örnekte, **AzureMLRG**kullanacağız.|
-    |Çalışma alanı adı|Çalışma alanınızı tanımlayan benzersiz bir ad girin. Bu örnekte, **testworkspace1**kullanacağız. Adlar, kaynak grubu genelinde benzersiz olmalıdır. Başkaları tarafından oluşturulan çalışma alanlarını birbirinden ayırmak ve geri çekmek için kolay bir ad kullanın.|
-    |Bölge|Çalışma alanınızı oluşturmak için kullanıcılarınıza en yakın konumu ve veri kaynaklarını seçin.|
+    |Kaynak grubu|Aboneliğinizde mevcut kaynak gruplarından birini seçin veya bir ad girerek yeni bir kaynak grubu oluşturun. Kaynak grubu, bir Azure çözümü için ilgili kaynakları barındırır. Bu örnekte, **AzureMLRG** kullanacağız.|
+    |Çalışma alanı adı|Çalışma alanınızı tanımlayan benzersiz bir ad girin. Bu örnekte, **testworkspace1** kullanacağız. Adlar, kaynak grubu genelinde benzersiz olmalıdır. Başkaları tarafından oluşturulan çalışma alanlarını birbirinden ayırmak ve geri çekmek için kolay bir ad kullanın.|
+    |Region|Çalışma alanınızı oluşturmak için kullanıcılarınıza en yakın konumu ve veri kaynaklarını seçin.|
     |Çalışma alanı sürümü|Bu örnekte, çalışma alanı türü olarak **temel** ' yı seçin. Çalışma alanı türü (temel & kurumsal), erişim ve fiyatlandırmaya sahip olduğunuz özellikleri belirler.|
 
     > [!div class="mx-imgBorder"]
@@ -140,7 +140,7 @@ Sağlanan Not defterleri, kendi Not defterlerinizin geliştirilmesinde kullanabi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Azure Sentinel 'de Jupyıter not defterlerini kullanmaya nasıl başlacağınız hakkında daha fazla öğrenirsiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+Bu makalede, Azure Sentinel 'de Jupyter Notebook kullanmaya başlama hakkında daha fazla öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
 - [Tehditler için proaktif araya](hunting.md)
 - [Avlarken ilginç bilgileri kaydetmek için yer işaretlerini kullanın](bookmarks.md)

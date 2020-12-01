@@ -10,19 +10,19 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: 25d716513c7ceb9311588b75b0fad1c68bf71bfd
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a789cb3fde05d12a8793196043f1c246bbab6559
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93081119"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96342422"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Öğretici: Özel Arama web sayfası oluşturma
 
 > [!WARNING]
-> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](/bing/search-apis/bing-web-search/create-bing-search-service-resource)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
 > Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
-> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
+> Geçiş yönergeleri için bkz. [Bing arama Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Bing Özel Arama API’si, önemsediğiniz konulara özel olarak uyarlanmış arama deneyimleri oluşturmanızı sağlar. Örneğin, bir arama deneyimi sağlayan bir savaş sanat Web siteniz varsa, Bing tarafından aradığı etki alanlarını, alt siteleri ve Web sayfalarını belirtebilirsiniz. Kullanıcılarınız, arama sonucu sayfalarındaki alakasız olabilecek içeriği ayıklamak zorunda kalmadan içeriğe göre oluşturulan arama sonuçlarını görebilir. 
 
@@ -50,9 +50,9 @@ Bing Özel Arama örneği oluşturmak için:
   
 2. Özel arama [portalına](https://customsearch.ai) gidin.  
   
-3. Bir Microsoft hesabı (MSA) kullanarak portalda oturum açın. Bir MSA yoksa **Microsoft hesabı oluştur ' a** tıklayın. Portalı ilk kez kullanıyorsanız, verilerinize erişmek için izin ister. **Evet** 'e tıklayın.  
+3. Bir Microsoft hesabı (MSA) kullanarak portalda oturum açın. Bir MSA yoksa **Microsoft hesabı oluştur ' a** tıklayın. Portalı ilk kez kullanıyorsanız, verilerinize erişmek için izin ister. **Evet**'e tıklayın.  
   
-4. Oturum açtıktan sonra **Yeni özel arama** 'ya tıklayın. **Yeni bir özel arama örneği oluştur** penceresinde, anlamlı bir ad girin ve aramanın döndürdüğü içerik türünü açıklar. Adı dilediğiniz zaman değiştirebilirsiniz.  
+4. Oturum açtıktan sonra **Yeni özel arama**'ya tıklayın. **Yeni bir özel arama örneği oluştur** penceresinde, anlamlı bir ad girin ve aramanın döndürdüğü içerik türünü açıklar. Adı dilediğiniz zaman değiştirebilirsiniz.  
   
    ![Yeni özel arama örneği oluştur kutusunun ekran görüntüsü](../media/newCustomSrch.png)  
   
@@ -108,7 +108,7 @@ Belirli bir Web sayfasını arama sonuçlarının en üstüne sabitlemek için, 
   
    ![Barındırılan kullanıcı arabirimi renk teması seçme adımı ekran görüntüsü](./media/custom-search-hosted-ui-select-color-theme.png)  
 
-   Web uygulamanıza uygun hale getirmek için renk temasında ayarlama yapmanız gerekiyorsa **Temayı özelleştir** 'e tıklayın. Tüm renk yapılandırmaları her düzen temasıyla kullanılamaz. Bir rengi değiştirmek için rengin RGB HEX değerini (örneğin, #366eb8) ilgili metin kutusuna girin. Veya renk düğmesine tıklayarak istediğiniz tonu seçin. Renkleri seçerken mutlaka erişilebilirlik özelliklerini göz önünde bulundurun.
+   Web uygulamanıza uygun hale getirmek için renk temasında ayarlama yapmanız gerekiyorsa **Temayı özelleştir**'e tıklayın. Tüm renk yapılandırmaları her düzen temasıyla kullanılamaz. Bir rengi değiştirmek için rengin RGB HEX değerini (örneğin, #366eb8) ilgili metin kutusuna girin. Veya renk düğmesine tıklayarak istediğiniz tonu seçin. Renkleri seçerken mutlaka erişilebilirlik özelliklerini göz önünde bulundurun.
   
    ![Barındırılan kullanıcı arabirimi renk teması özelleştirme adımı ekran görüntüsü](./media/custom-search-hosted-ui-customize-color-theme.png)  
 
@@ -117,7 +117,7 @@ Belirli bir Web sayfasını arama sonuçlarının en üstüne sabitlemek için, 
   
    ![Barındırılan kullanıcı arabirimi ek yapılandırma adımı](./media/custom-search-hosted-ui-additional-configurations.png)  
   
-   Gelişmiş yapılandırmalara erişmek için **Gelişmiş yapılandırmaları göster** 'e tıklayın. Bunu yaptığınızda Web arama seçeneklerine *Bağlantı hedefi* , Görüntü ve Video seçeneklerine *Filtreleri etkinleştir* , Diğer seçeneklere ise *Arama kutusu yer tutucu metni* gibi yapılandırma ayarları eklenir.
+   Gelişmiş yapılandırmalara erişmek için **Gelişmiş yapılandırmaları göster**'e tıklayın. Bunu yaptığınızda Web arama seçeneklerine *Bağlantı hedefi*, Görüntü ve Video seçeneklerine *Filtreleri etkinleştir*, Diğer seçeneklere ise *Arama kutusu yer tutucu metni* gibi yapılandırma ayarları eklenir.
 
    ![Barındırılan kullanıcı arabirimi gelişmiş yapılandırma adımı](./media/custom-search-hosted-ui-advanced-configurations.png)  
   
@@ -139,21 +139,21 @@ Bu öğreticinin geri kalanında **seçenek 1: JavaScript kod parçacığı** g�
 
 ## <a name="set-up-your-visual-studio-solution"></a>Visual Studio çözümünüzü kurma
 
-1. Bilgisayarınızda **Visual Studio** 'yu açın.  
+1. Bilgisayarınızda **Visual Studio**'yu açın.  
   
-2. **Dosya** menüsünde **Yeni** 'yi seçin ve ardından **Proje** 'yi seçin.  
+2. **Dosya** menüsünde **Yeni**'yi seçin ve ardından **Proje**'yi seçin.  
   
-3. **Yeni Proje** penceresinde **Visual C#/Web/ASP.NET Core Web Uygulaması** 'nı seçin, projenize bir ad verin ve **Tamam** 'a tıklayın.  
+3. **Yeni Proje** penceresinde **Visual C#/Web/ASP.NET Core Web Uygulaması**'nı seçin, projenize bir ad verin ve **Tamam**'a tıklayın.  
   
    ![Yeni proje penceresinin ekran görüntüsü](./media/custom-search-new-project.png)  
   
-4. **Yeni ASP.NET Core Web Uygulaması** penceresinde **Web Uygulaması** 'nı seçip **Tamam** 'a tıklayın.  
+4. **Yeni ASP.NET Core Web Uygulaması** penceresinde **Web Uygulaması**'nı seçip **Tamam**'a tıklayın.  
   
    ![Yeni WebApp penceresinin ekran görüntüsü](./media/custom-search-new-webapp.png)  
 
 ## <a name="edit-indexcshtml"></a>index.cshtml dosyasını düzenleme
 
-1. **Çözüm Gezgini** 'nde **Sayfalar** 'ı genişletin ve **index.cshtml** dosyasına çift tıklayarak açın.  
+1. **Çözüm Gezgini**'nde **Sayfalar**'ı genişletin ve **index.cshtml** dosyasına çift tıklayarak açın.  
   
    ![Sayfalar genişletilmiş ve index.cshtml dosyası seçilmiş şekilde Çözüm Gezgini'nin ekran görüntüsü](./media/custom-search-visual-studio-webapp-solution-explorer-index.png)  
   
@@ -179,7 +179,7 @@ Bu öğreticinin geri kalanında **seçenek 1: JavaScript kod parçacığı** g�
    <div id="customSearch"></div>
    ```  
   
-4. **Barındırılan kullanıcı arabirimi** sayfasında **Kullanıcı arabirimini kullanma** bölümüne inin. JavaScript kod parçacığına erişmek için *Uç noktalar* 'a tıklayın. Kod parçacığını **Üretim** 'e ve ardından **Barındırılan kullanıcı arabirimi** sekmesine tıklayarak da alabilirsiniz.
+4. **Barındırılan kullanıcı arabirimi** sayfasında **Kullanıcı arabirimini kullanma** bölümüne inin. JavaScript kod parçacığına erişmek için *Uç noktalar*'a tıklayın. Kod parçacığını **Üretim**'e ve ardından **Barındırılan kullanıcı arabirimi** sekmesine tıklayarak da alabilirsiniz.
   
    <!-- Get new screenshot after prod gets new bits
    ![Screenshot of the Hosted UI save button](./media/custom-search-hosted-ui-consuming-ui.png)  
@@ -202,7 +202,7 @@ Bu öğreticinin geri kalanında **seçenek 1: JavaScript kod parçacığı** g�
    </div>
    ```  
   
-6. **Çözüm Gezgini** 'nde **wwwroot** öğesine sağ tıklayıp **Tarayıcıda Görüntüle** 'ye tıklayın.  
+6. **Çözüm Gezgini**'nde **wwwroot** öğesine sağ tıklayıp **Tarayıcıda Görüntüle**'ye tıklayın.  
   
    ![wwwroot bağlam menüsünden Tarayıcıda Görüntüle'nin seçilmesini gösteren Çözüm Gezgini ekran görüntüsü](./media/custom-search-webapp-view-in-browser.png)  
 
