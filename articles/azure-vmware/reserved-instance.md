@@ -3,12 +3,12 @@ title: Azure VMware çözümü ayrılmış örneği ile maliyetleri kaydetme
 description: Azure VMware çözümü için ayrılmış bir örnek satın almayı öğrenin.
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: b57e985068adabccecbbdb43dd11bcf6596bf422
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 80780e9718001893b6960220b5004c1c29b2fec5
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578974"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327406"
 ---
 # <a name="save-costs-with-azure-vmware-solution"></a>Azure VMware çözümü ile maliyetleri kaydetme
 
@@ -22,7 +22,7 @@ Ayrılmış örnekler bazı özel durumlarla birlikte kullanılabilir.
 
 -   **Yetersiz kota** -tek/paylaşılan bir aboneliğe kapsamlı bir ayırma, yeni ayrılmış örnek için abonelikte kullanılabilir Konaklar kotasına sahip olmalıdır. Bu sorunu çözmek için [Kota artışı isteği oluşturabilirsiniz](enable-azure-vmware-solution.md) .
 
--   **Teklif uygunluğu** -Microsoft Ile bir [Azure Kurumsal Anlaşma (EA)](../cost-management-billing/manage/ea-portal-agreements.md) gerekir.
+-   **Teklif uygunluğu**-Microsoft Ile bir [Azure Kurumsal Anlaşma (EA)](../cost-management-billing/manage/ea-portal-agreements.md) gerekir.
 
 -   **Kapasite kısıtlamaları** -nadir koşullarda Azure, bir bölgedeki düşük kapasiteden dolayı Azure VMware Çözüm Konağı SKU 'ları için yeni rezervasyonların satın alınmasını sınırlandırır.
 
@@ -44,7 +44,7 @@ Bu gereksinimler ayrılmış bir ayrılmış ana bilgisayar örneği satın alma
 
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
-2. **Tüm hizmetler** > **Rezervasyonlar** ’ı seçin.
+2. **Tüm hizmetler** > **Rezervasyonlar**’ı seçin.
 
 3. **Şimdi satın al** ' ı seçin ve ardından **Azure VMware çözümünü** seçin.
 
@@ -58,22 +58,22 @@ Bu gereksinimler ayrılmış bir ayrılmış ana bilgisayar örneği satın alma
    | Kapsam        | Ayırma kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir. Şunları seçerseniz:<br><ul><li><b>Tek kaynak grubu kapsamı</b> -rezervasyon iskontosunu yalnızca seçili kaynak grubundaki eşleşen kaynaklara uygular.</li><li><b>Tek abonelik kapsamı</b> -rezervasyon iskontosunu seçili abonelikteki eşleşen kaynaklara uygular.</li><li><b>Paylaşılan kapsam</b> -fatura bağlamındaki uygun aboneliklerde bulunan kaynaklara karşılık gelen rezervasyon iskontosunu uygular. EA müşterileri için, faturalandırma bağlamı kayıt olur. Kullandıkça öde fiyatlarına tabi bireysel abonelikler için faturalama kapsamı, hesap yöneticisi tarafından oluşturulan tüm uygun aboneliklerdir.</li></ul>       |
    | Region       | Ayırma kapsamındaki Azure bölgesi.   |
    | Ana bilgisayar boyutu    | AV36    |
-   | Terim         | Bir yıl veya üç yıl.  |
+   | Süre         | Bir yıl veya üç yıl.  |
    | Miktar     | Ayırma içinde satın alınabilecek örneklerin sayısı. Bu miktar, fatura iskontosunu elde eden, çalışan Azure VMware Çözüm ana bilgisayarlarının sayısıdır.    |
 
 ### <a name="buy-reserved-instances-for-a-csp-subscription"></a>CSP aboneliği için ayrılmış örnekler satın alın
 
-Müşterileri için ayrılmış örnekler satın almak isteyen CSP 'Ler [Iş Ortağı Merkezi belgelerinden](https://docs.microsoft.com/partner-center/azure-plan-manage) **yönetici adına** (Aobo) yordamını kullanmalıdır. Daha fazla bilgi için [yönetici adına (AOBO)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) videoyu görüntüleyin.
+Müşterileri için ayrılmış örnekler satın almak isteyen CSP 'Ler [Iş Ortağı Merkezi belgelerinden](/partner-center/azure-plan-manage) **yönetici adına** (Aobo) yordamını kullanmalıdır. Daha fazla bilgi için [yönetici adına (AOBO)](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) videoyu görüntüleyin.
 
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com)' nde oturum açın.
 
 2. **Müşteriler** alanına erişmek için **CSP** 'yi seçin.
 
-3. Müşteri ayrıntıları ' nı genişletin ve **Microsoft Azure yönetim portalı** ' yi seçin. 
+3. Müşteri ayrıntıları ' nı genişletin ve **Microsoft Azure yönetim portalı**' yi seçin. 
 
    :::image type="content" source="media/reserved-instances/csp-partner-center-aobo.png" alt-text="Microsoft Iş ortağı merkezi müşterileri alanı" lightbox="media/reserved-instances/csp-partner-center-aobo.png":::
 
-4. Azure Portal, **tüm hizmetler**  >  **ayırmaları** ' ni seçin.
+4. Azure Portal, **tüm hizmetler**  >  **ayırmaları**' ni seçin.
 
 5. **Şimdi satın al** ' ı seçin ve ardından **Azure VMware çözümünü** seçin.
 
@@ -87,7 +87,7 @@ Müşterileri için ayrılmış örnekler satın almak isteyen CSP 'Ler [Iş Ort
    | Kapsam        | Ayırma kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir. Şunları seçerseniz:<br><ul><li><b>Tek kaynak grubu kapsamı</b> -rezervasyon iskontosunu yalnızca seçili kaynak grubundaki eşleşen kaynaklara uygular.</li><li><b>Tek abonelik kapsamı</b> -rezervasyon iskontosunu seçili abonelikteki eşleşen kaynaklara uygular.</li><li><b>Paylaşılan kapsam</b> -fatura bağlamındaki uygun aboneliklerde bulunan kaynaklara karşılık gelen rezervasyon iskontosunu uygular. EA müşterileri için, faturalandırma bağlamı kayıt olur. Kullandıkça öde fiyatlarına tabi bireysel abonelikler için faturalama kapsamı, hesap yöneticisi tarafından oluşturulan tüm uygun aboneliklerdir.</li></ul>       |
    | Region       | Ayırma kapsamındaki Azure bölgesi.   |
    | Ana bilgisayar boyutu    | AV36    |
-   | Terim         | Bir yıl veya üç yıl.  |
+   | Süre         | Bir yıl veya üç yıl.  |
    | Miktar     | Ayırma içinde satın alınabilecek örneklerin sayısı. Bu miktar, fatura iskontosunu elde eden, çalışan Azure VMware Çözüm ana bilgisayarlarının sayısıdır.     |
 
 Müşteriniz için satın alınan rezervasyonları görüntüleme hakkında daha fazla bilgi edinmek için bkz. [Azure ayırmalarını bulut çözümü sağlayıcısı (CSP) olarak görüntüleme](../cost-management-billing/reservations/how-to-view-csp-reservations.md) .
@@ -113,7 +113,7 @@ Satın alma işleminden sonra bu değişiklikleri bir rezervasyona yapabilirsini
 
 Ayrıca, bir ayırmayı daha küçük parçalara bölebilir veya rezervasyonları birleştirebilirsiniz. Değişikliklerden hiçbiri yeni bir ticari işleme neden olmaz ya da ayırmanın bitiş tarihini değiştirmez.
 
-CSP ile yönetilen rezervasyonlar hakkında daha fazla bilgi için bkz. [Iş Ortağı Merkezi, Azure Portal veya API 'leri kullanarak müşterilere Microsoft Azure ayırmaları satma](https://docs.microsoft.com/partner-center/azure-reservations).
+CSP ile yönetilen rezervasyonlar hakkında daha fazla bilgi için bkz. [Iş Ortağı Merkezi, Azure Portal veya API 'leri kullanarak müşterilere Microsoft Azure ayırmaları satma](/partner-center/azure-reservations).
 
 
 
@@ -131,4 +131,4 @@ CSP ile yönetilen rezervasyonlar hakkında daha fazla bilgi için bkz. [Iş Ort
 
 Belirli sınırlamalarla rezervasyonları iptal edebilir, değiştirebilir veya para iadesi alabilirsiniz. Daha fazla bilgi için bkz. [Azure Ayrılmış Sanal Makine Örnekleri için self servis değişimler ve para iadeleri](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
-CSP 'Ler, müşterileri için satın alınan belirli sınırlamalar sayesinde rezervasyonları iptal edebilir, değiştirebilir veya iade edebilir. Daha fazla bilgi için bkz. [müşterilere yönelik ayırmaları yönetme, iptal etme, Exchange veya para iadesi Microsoft Azure](https://docs.microsoft.com/partner-center/azure-reservations-manage).
+CSP 'Ler, müşterileri için satın alınan belirli sınırlamalar sayesinde rezervasyonları iptal edebilir, değiştirebilir veya iade edebilir. Daha fazla bilgi için bkz. [müşterilere yönelik ayırmaları yönetme, iptal etme, Exchange veya para iadesi Microsoft Azure](/partner-center/azure-reservations-manage).

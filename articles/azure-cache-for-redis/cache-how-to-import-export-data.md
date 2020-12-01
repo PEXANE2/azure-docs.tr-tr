@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: e8bb1457bbf5d610518c3bc84768186972734099
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 9ee3b447b2b5f6dfa8972749c3c46ae01f79bfdc
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536870"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327517"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Redsıs için Azure önbelleğindeki verileri içeri ve dışarı aktarma
 İçeri/dışarı aktarma, redsıs veri yönetimi işlemi için bir Azure önbelleğidir. Bu, redsıs veritabanı (RDB) anlık görüntüsü için bir Azure önbelleğini bir Azure depolama hesabındaki bir Blobun içeri aktarıp dışarı aktararak redsıs için Azure Cache 'e içeri aktarıp dışarı aktarmanıza olanak tanır.
@@ -45,7 +45,7 @@ Bu makalede, Reda için Azure önbelleğiyle verileri içeri ve dışarı aktarm
 3. İçeri aktarılacak verileri içeren kapsayıcıya tıklayın.
 
     ![Kapsayıcı seçin](./media/cache-how-to-import-export-data/cache-import-choose-container.png)
-4. Blob adının solundaki alana tıklayarak içeri aktarılacak bir veya daha fazla BLOB seçin ve ardından **Seç** ' e tıklayın.
+4. Blob adının solundaki alana tıklayarak içeri aktarılacak bir veya daha fazla BLOB seçin ve ardından **Seç**' e tıklayın.
 
     ![Blob seçme](./media/cache-how-to-import-export-data/cache-import-choose-blobs.png)
 5. İçeri aktarma işlemine başlamak için **Içeri aktar** ' a tıklayın.
@@ -66,7 +66,7 @@ Dışarı aktarma, redin için Azure önbelleğinde depolanan verileri Redsıs u
 
 1. Önbelleğin geçerli içeriğini depolama alanına aktarmak için Azure portal [önbelleğinize gidin](cache-configure.md#configure-azure-cache-for-redis-settings) ve **Kaynak menüsünden** **verileri dışarı aktar** ' a tıklayın.
 
-    ![Depolama kapsayıcısını seçin](./media/cache-how-to-import-export-data/cache-export-data-choose-storage-container.png)
+    ![Contoso5premium için gezinti bölmesinde, yönetim listesindeki verileri dışarı aktar seçeneği vurgulanır.](./media/cache-how-to-import-export-data/cache-export-data-choose-storage-container.png)
 2. **Depolama kapsayıcısını Seç** ' e tıklayın ve istenen depolama hesabını seçin. Depolama hesabının önbelleğiniz ile aynı abonelikte ve bölgede olması gerekir.
 
    > [!IMPORTANT]
@@ -74,9 +74,9 @@ Dışarı aktarma, redin için Azure önbelleğinde depolanan verileri Redsıs u
    >
 
     ![Depolama hesabı](./media/cache-how-to-import-export-data/cache-export-data-choose-account.png)
-3. İstediğiniz blob kapsayıcısını seçip **Seç** ' e tıklayın. Yeni bir kapsayıcı kullanmak için önce **kapsayıcı Ekle** ' ye tıklayın, ardından bunu ekleyin ve listeden seçin.
+3. İstediğiniz blob kapsayıcısını seçip **Seç**' e tıklayın. Yeni bir kapsayıcı kullanmak için önce **kapsayıcı Ekle** ' ye tıklayın, ardından bunu ekleyin ve listeden seçin.
 
-    ![Depolama kapsayıcısını seçin](./media/cache-how-to-import-export-data/cache-export-data-container.png)
+    ![Contoso55 için kapsayıcılarda + kapsayıcı seçeneği vurgulanır. Listede bir kapsayıcı bulunur, cachekaydedilir ve seçilir ve vurgulanır. Seçim seçeneği seçilidir ve vurgulanır.](./media/cache-how-to-import-export-data/cache-export-data-container.png)
 4. Dışarı aktarma işlemini başlatmak için bir **BLOB adı ön eki** yazın ve **dışarı aktar** ' a tıklayın. Blob adı ön eki, bu dışarı aktarma işlemi tarafından oluşturulan dosyaların adlarına önek atamak için kullanılır.
 
     ![Dışarı Aktarma](./media/cache-how-to-import-export-data/cache-export-data.png)

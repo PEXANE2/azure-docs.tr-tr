@@ -3,14 +3,14 @@ title: Azure Otomasyonu Güncelleştirme Yönetimi Genel Bakış
 description: Bu makalede, Windows ve Linux makineleriniz için güncelleştirmeleri uygulayan Güncelleştirme Yönetimi özelliğine bir genel bakış sunulmaktadır.
 services: automation
 ms.subservice: update-management
-ms.date: 11/23/2020
+ms.date: 11/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: eadceb17d01b40deab656bdd6223cb8f0844f54f
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 37ab05ce7e963ab7fdc4d2b02e254adaa205446c
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95528253"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327500"
 ---
 # <a name="update-management-overview"></a>Güncelleştirme Yönetimine genel bakış
 
@@ -79,7 +79,7 @@ Aşağıdaki tabloda güncelleştirme değerlendirmeleri ve düzeltme eki uygula
 |CentOS 6 ve 7 (x64)      | Linux aracılarının bir güncelleştirme deposuna erişmesi gerekir. Sınıflandırma tabanlı düzeltme eki `yum` , CentOS 'ıN RTM sürümlerindeki güvenlik verilerini döndürmesini gerektirir. CentOS üzerinde sınıflandırma tabanlı düzeltme eki uygulama hakkında daha fazla bilgi için bkz. [Linux üzerinde sınıflandırmaları güncelleştirme](view-update-assessments.md#linux).          |
 |Red Hat Enterprise 6 ve 7 (x64)     | Linux aracılarının bir güncelleştirme deposuna erişmesi gerekir.        |
 |SUSE Linux Enterprise Server 12 (x64)     | Linux aracılarının bir güncelleştirme deposuna erişmesi gerekir.        |
-|Ubuntu 14,04 LTS, 16,04 LTS ve 18,04 (x64)      |Linux aracılarının bir güncelleştirme deposuna erişmesi gerekir.         |
+|Ubuntu 14,04 LTS, 16,04 LTS ve 18,04 LTS (x64)      |Linux aracılarının bir güncelleştirme deposuna erişmesi gerekir.         |
 
 > [!NOTE]
 > Azure sanal makine ölçek kümeleri, Güncelleştirme Yönetimi aracılığıyla yönetilebilir. Güncelleştirme Yönetimi, temel görüntüde değil örneklerin kendileri üzerinde işe yarar. Tüm sanal makine örneklerinin aynı anda güncelleştirilebilmesi için güncelleştirmeleri artımlı bir şekilde zamanlamanız gerekir. [Değişiklik izleme ve stoğa Azure dışı bir makine ekleme](../automation-tutorial-installed-software.md#add-a-non-azure-machine-to-change-tracking-and-inventory)altındaki adımları izleyerek sanal makine ölçek kümeleri için düğüm ekleyebilirsiniz.
@@ -158,11 +158,11 @@ Yönetim paketlerine yönelik güncelleştirmeler hakkında daha fazla bilgi iç
 
 Aşağıdaki tabloda Güncelleştirme Yönetimi tarafından desteklenen bağlı kaynaklar açıklanmaktadır:
 
-| Bağlı kaynak | Desteklenir | Description |
+| Bağlı kaynak | Desteklenir | Açıklama |
 | --- | --- | --- |
-| Windows aracıları |Evet |Güncelleştirme Yönetimi, Windows aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve gerekli güncelleştirmelerin yüklemesini başlatır. |
-| Linux aracıları |Evet |Güncelleştirme Yönetimi, Linux aracılarından sistem güncelleştirmeleriyle ilgili bilgileri toplar ve ardından desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |
-| Operations Manager yönetim grubu |Evet |Güncelleştirme Yönetimi bağlı bir yönetim grubundaki aracılardan sistem güncelleştirmeleri hakkında bilgi toplar.<br/><br/>Operations Manager aracısından Azure Izleyici günlüklerine doğrudan bağlantı gerekli değildir. Veriler, yönetim grubundan Log Analytics çalışma alanına iletilir. |
+| Windows aracıları |Yes |Güncelleştirme Yönetimi, Windows aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve gerekli güncelleştirmelerin yüklemesini başlatır. |
+| Linux aracıları |Yes |Güncelleştirme Yönetimi, Linux aracılarından sistem güncelleştirmeleriyle ilgili bilgileri toplar ve ardından desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |
+| Operations Manager yönetim grubu |Yes |Güncelleştirme Yönetimi bağlı bir yönetim grubundaki aracılardan sistem güncelleştirmeleri hakkında bilgi toplar.<br/><br/>Operations Manager aracısından Azure Izleyici günlüklerine doğrudan bağlantı gerekli değildir. Veriler, yönetim grubundan Log Analytics çalışma alanına iletilir. |
 
 ### <a name="collection-frequency"></a>Toplama sıklığı
 
