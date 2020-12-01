@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 93d9cc871d1cb114f7f08b68eb8ae9d597e228b9
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 9c042d044f5ceba5a64d6bd7dfefa34bbc69b107
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376494"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353213"
 ---
 # <a name="manage-qna-maker-app"></a>Soru-Cevap Oluşturma uygulamayı yönetme
 
@@ -23,7 +23,7 @@ Bilgi tabanınız otomatik olarak değişmez. Değişikliklerin etkili olabilmes
 
 ## <a name="add-azure-role-based-access-control-azure-rbac"></a>Azure rol tabanlı erişim denetimi (Azure RBAC) ekleme
 
-Soru-Cevap Oluşturma, birden fazla kişinin aynı Soru-Cevap Oluşturma kaynaktaki tüm bilgi tabanlarında işbirliği yapmasına izin verir. Bu özellik [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../../active-directory/role-based-access-control-configure.md)ile birlikte sağlanır.
+Soru-Cevap Oluşturma, birden fazla kişinin aynı Soru-Cevap Oluşturma kaynaktaki tüm bilgi tabanlarında işbirliği yapmasına izin verir. Bu özellik [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../../role-based-access-control/role-assignments-portal.md)ile birlikte sağlanır.
 
 ## <a name="access-at-the-qna-maker-resource-level"></a>Soru-Cevap Oluşturma kaynak düzeyinde erişim
 
@@ -43,7 +43,7 @@ Aşağıdaki adımlarda ortak çalışan rolü kullanılır, ancak bu adımlar k
 
     ![Soru-Cevap Oluşturma ıAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.png)
 
-1. **Ekle** ’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
     ![Soru-Cevap Oluşturma ıAM ekleme](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.png)
 
@@ -59,7 +59,7 @@ Aşağıdaki adımlarda ortak çalışan rolü kullanılır, ancak bu adımlar k
 
     :::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-add-role-iam.png" alt-text="Soru-Cevap Oluşturma ıAM rol Ekle.":::
 
-1. Kullanıcının e-posta adresini girin ve **Kaydet** ' e basın.
+1. Kullanıcının e-posta adresini girin ve **Kaydet**' e basın.
 
     ![Soru-Cevap Oluşturma ıAM e-posta Ekle](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-email.png)
 

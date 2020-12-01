@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: 930acbd3bbdb8f63b6aa888b292025a76435b289
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: e56d718892d9cfdbfda9068ecd68ef31f7f2ea46
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776757"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353081"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Hızlı başlangıç: Soru-Cevap Oluşturma portalı ile soru ve yanıt ekleme
 
@@ -18,9 +18,9 @@ Bilgi Bankası oluşturulduktan sonra, yanıtı filtrelemek için meta verilerle
 
 <a name="qna-table"></a>
 
-|Çifti|Sorular|Yanıt|Meta veri|
+|Çifti|Sorular|Yanıt|Meta Veriler|
 |--|--|--|--|
-|1|`How large a knowledge base can I create?`<br><br>`What is the max size of a knowledge base?`<br><br>`How many GB of data can a knowledge base hold?` |`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`|`service=qna_maker`<br>`link_in_answer=true`|
+|1|`How large a knowledge base can I create?`<br><br>`What is the max size of a knowledge base?`<br><br>`How many GB of data can a knowledge base hold?` |`The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](../concepts/azure-resources.md) for more details.`|`service=qna_maker`<br>`link_in_answer=true`|
 |2|`How many knowledge bases can I have for my QnA Maker service?`<br><br>`I selected a Azure Cognitive Search tier that holds 15 knowledge bases, but I can only create 14 - what is going on?`<br><br>`What is the connection between the number of knowledge bases in my QnA Maker service and the Azure Cognitive Search service size?` |`Each knowledge base uses 1 index, and all the knowledge bases share a test index. You can have N-1 knowledge bases where N is the number of indexes your Azure Cognitive Search tier supports.`|`service=search`<br>`link_in_answer=false`|
 
 Bir QnA çiftine meta veriler eklendikten sonra istemci uygulama şunları yapabilir:
@@ -29,7 +29,7 @@ Bir QnA çiftine meta veriler eklendikten sonra istemci uygulama şunları yapab
 * Tüm yanıtları al, ancak her yanıt için meta verilere bağlı olarak yanıtları son işle.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Önceki hızlı](./create-publish-knowledge-base.md) başlangıcı doldurun
 
@@ -37,7 +37,7 @@ Bir QnA çiftine meta veriler eklendikten sonra istemci uygulama şunları yapab
 
 1. [Soru-cevap oluşturma portalında](https://www.qnamaker.ai)oturum açın.
 
-1. [Önceki hızlı](../how-to/create-knowledge-base.md)başlangıçta mevcut bilgi bankasını seçin.
+1. [Önceki hızlı](./create-publish-knowledge-base.md)başlangıçta mevcut bilgi bankasını seçin.
 
 ## <a name="add-additional-alternatively-phrased-questions"></a>Ek alternatif olarak phrased soruları ekleyin
 
@@ -62,7 +62,7 @@ Bu URL içeri aktarıldığında, yalnızca bir yanıtla birlikte tek bir soru o
 
     Doğru yanıt markaşağı biçiminde döndürülür:
 
-    `The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`
+    `The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](../concepts/azure-resources.md) for more details.`
 
     Döndürülen yanıtın altında **İncele** ' yi seçerseniz, soruyu karşılayan daha fazla yanıt görebilirsiniz, ancak aynı yüksek düzeyde güvenle bilgi alabilirsiniz.
 
@@ -76,7 +76,7 @@ Bir soru ve yanıt çiftinin meta verilerini eklemek, istemci uygulamanızın fi
 
 1. İkinci soruyu ve yanıt çiftini, [Bu hızlı başlangıçtaki ilk tablodan](#qna-table)meta veriler olmadan ekleyin, ardından aşağıdaki adımlarla devam edin.
 
-1. **Görünüm seçeneklerini**belirleyin ve **meta verileri göster**' i seçin.
+1. **Görünüm seçeneklerini** belirleyin ve **meta verileri göster**' i seçin.
 
 1. Az önce eklediğiniz QnA çifti için, **meta veri etiketleri Ekle**' yi seçin, sonra adını `service` ve değerini ekleyin `search` . Şöyle görünür: `service:search` .
 

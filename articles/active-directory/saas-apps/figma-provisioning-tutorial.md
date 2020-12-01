@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: 789dafc61c89515f4b2ef64933262252d1232f16
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: ec509cc04db87602b3e29230253d9b363a5e30d5
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357037"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353927"
 ---
 # <a name="tutorial-configure-figma-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için figma yapılandırma
 
@@ -63,7 +63,7 @@ Azure AD ile otomatik Kullanıcı sağlaması için figma 'yi yapılandırmadan 
 
     :::image type="content" source="media/Figma-provisioning-tutorial/figma-tenantid.png" alt-text="Figma yönetim konsolundaki S A M L s S O bölümünün ekran görüntüsü. Bir kiracı KIMLIĞI etiketi ve kopyayı yazan bitişik bir bağlantı vurgulanır." border="false":::
 
-4. Aşağı kaydırın ve **API belirteci oluştur** ' a tıklayın.
+4. Aşağı kaydırın ve **API belirteci oluştur**' a tıklayın.
 
     :::image type="content" source="media/Figma-provisioning-tutorial/token.png" alt-text="Figma yönetim konsolundaki S C I M sağlama bölümünün ekran görüntüsü. P I belirteci oluştur etiketli bir bağlantı vurgulanır." border="false":::
 
@@ -75,11 +75,11 @@ Azure AD ile otomatik Kullanıcı sağlaması için figma 'yi yapılandırmadan 
 
 Azure AD ile otomatik Kullanıcı sağlaması için figma 'yi yapılandırmak için Azure AD uygulama galerisindeki figma 'yi yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** ' i seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -100,11 +100,11 @@ Bu bölümde, Azure AD sağlama hizmetini kullanarak figma 'teki kullanıcılar�
 
 ### <a name="to-configure-automatic-user-provisioning-for-figma--in-azure-ad"></a>Azure AD 'de figma için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **figma** ' i seçin.
+2. Uygulamalar listesinde **figma**' i seçin.
 
     ![Uygulamalar listesindeki figma bağlantısı](common/all-applications.png)
 
@@ -112,7 +112,7 @@ Bu bölümde, Azure AD sağlama hizmetini kullanarak figma 'teki kullanıcılar�
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
@@ -120,13 +120,13 @@ Bu bölümde, Azure AD sağlama hizmetini kullanarak figma 'teki kullanıcılar�
 
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-8. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder** ' i işaretleyin.
+8. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-9. **Kaydet** ’e tıklayın.
+9. **Kaydet**’e tıklayın.
 
-10. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları figma olarak eşitler** ' ı seçin.
+10. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları figma olarak eşitler**' ı seçin.
 
     ![Figma Kullanıcı eşlemeleri](media/Figma-provisioning-tutorial/figma05.png)
 
@@ -144,7 +144,7 @@ Bu bölümde, Azure AD sağlama hizmetini kullanarak figma 'teki kullanıcılar�
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-15. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

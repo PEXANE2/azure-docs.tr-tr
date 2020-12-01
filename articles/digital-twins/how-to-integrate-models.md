@@ -1,5 +1,5 @@
 ---
-title: Sektör standardı modellerini tümleştirme
+title: Sektör standardı modelleri tümleştirme
 titleSuffix: Azure Digital Twins
 description: Sektör standardı modellerini Azure dijital TWINS için özel DTDL ontololomi kullanarak ya da mevcut ontoloor 'leri dönüştürerek DTDL ile nasıl tümleştirileceğini anlayın
 author: baanders
@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1866e9b233a1379474c061779ada09fd6d119107
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: f5bfe128ddc04e8048bb89a8e39035434dfd2b92
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94338405"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352890"
 ---
 # <a name="integrate-industry-standard-models-with-dtdl-for-azure-digital-twins"></a>Azure dijital TWINS için, sektör standardı modellerini DTDL ile tümleştirme
 
@@ -21,9 +21,9 @@ Endüstri standartlarına dayalı modelleri kullanma veya RDF veya OWL gibi stan
 Azure dijital TWINS ile kullanılmak üzere, JSON-LD tabanlı [**dijital TWINS tanım dili (DTDL)**](concepts-models.md)içinde bir model temsil etmelidir. Bu nedenle, bu makalede, Azure Digital TWINS 'in kullanabilmesi için, mevcut sektör kavramlarını dtdl semantiğinin tümleştirilmesine yönelik DTDL 'de sektör standardı modellerinizi nasıl temsil ettiğini açıklanmaktadır. DTDL modeli daha sonra Azure dijital TWINS içindeki modelin gerçeği kaynağı olarak görev yapar.
 
 Sektör standardı modellerini DTDL ile tümleştirmenin üç olası yolu vardır:
-* **Benimseme** : çözümünüzü, yaygın olarak benimsenen endüstri standartlarına göre geliştirilen açık kaynaklı bir dtdl ontology ile başlatabilirsiniz. 
-* **Dönüştür** : zaten mevcut modelleriniz varsa bunları dtdl 'e dönüştürmeniz gerekir.
-* **Yazar** : [*nasıl yapılır: özel modelleri yönetme*](how-to-manage-model.md)bölümünde açıklandığı gıbı, kendi özel dtdl modellerinizi her zaman sıfırdan geliştirebilirsiniz.
+* **Benimseme**: çözümünüzü, yaygın olarak benimsenen endüstri standartlarına göre geliştirilen açık kaynaklı bir dtdl ontology ile başlatabilirsiniz. 
+* **Dönüştür**: zaten mevcut modelleriniz varsa bunları dtdl 'e dönüştürmeniz gerekir.
+* **Yazar**: [*nasıl yapılır: özel modelleri yönetme*](how-to-manage-model.md)bölümünde açıklandığı gıbı, kendi özel dtdl modellerinizi her zaman sıfırdan geliştirebilirsiniz.
 
 ## <a name="adopt-an-open-source-dtdl-ontology"></a>Açık kaynaklı bir DTDL ontology benimseyin
 
@@ -111,7 +111,7 @@ Azure dijital TWINS hizmeti tarafından kullanılmak üzere RDF tabanlı model d
 
 Örnek, **Rdftodtdlconverter** adlı bir .NET Core komut satırı uygulamasıdır.
 
-Örneği buradan edinebilirsiniz: [**Rdftodtdlconverter**](https://docs.microsoft.com/samples/azure-samples/rdftodtdlconverter/digital-twins-model-conversion-samples/). 
+Örneği buradan edinebilirsiniz: [**Rdftodtdlconverter**](/samples/azure-samples/rdftodtdlconverter/digital-twins-model-conversion-samples/). 
 
 Kodu makinenize indirmek için, örnek giriş sayfasındaki başlığın altındaki *ZIP 'ı indir* düğmesine basın. Bu işlem, daha sonra unzip ve keşfedebileceğiniz *RdfToDtdlConverter_sample_application_to_convert_RDF_to_DTDL.zip* adı altında bir *ZIP* dosyası indirir.
 

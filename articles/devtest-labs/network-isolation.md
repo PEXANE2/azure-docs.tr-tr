@@ -3,12 +3,12 @@ title: Azure DevTest Labs ağ yalıtımı
 description: Azure DevTest Labs 'de ağ yalıtımı hakkında bilgi edinin.
 ms.topic: article
 ms.date: 08/25/2020
-ms.openlocfilehash: aafa6bf94c7963d69bfb67a28a520b811c4fbacf
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 28bfa048a8a6666deb58a8ecfff38779c91d95b8
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149158"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352941"
 ---
 # <a name="network-isolation-in-devtest-labs"></a>DevTest Labs 'de ağ yalıtımı
 
@@ -74,7 +74,7 @@ Bu şekilde, Azure depolama, eklenen sanal ağdan gelen bağlantılara izin veri
 
 Bu ayarı birden çok laboratuvarda yapılandırmak için bu adımları otomatik hale getirmeyi seçebilirsiniz. 
 
-[PowerShell ve CLı kullanarak Azure depolama için varsayılan ağ erişim kurallarını yönetme hakkında daha fazla bilgi edinin](../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#powershell)
+[PowerShell ve CLı kullanarak Azure depolama için varsayılan ağ erişim kurallarını yönetme hakkında daha fazla bilgi edinin](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#powershell)
 
 ## <a name="things-to-remember-while-using-a-lab-in-a-network-isolated-mode"></a>Ağ yalıtımlı modda laboratuvar kullanırken hatırlamaları gerekenler
 

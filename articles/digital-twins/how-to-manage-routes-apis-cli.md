@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b836038aa2f8f60e25c51d1d5674d22497b3ce44
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 6b767a2cf4739a0b36b9f5c5c960e3e3ead58262
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "96018978"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353094"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Azure dijital TWINS 'te uç noktaları ve yolları yönetme (API 'Ler ve CLı)
 
@@ -94,7 +94,7 @@ Etkin olmayan bir uç nokta oluşturmak için, uç noktanızı oluşturmak için
 
 Atılacak mektup konumunu ayarlamadan önce, kapsayıcısı olan bir depolama hesabınız olmalıdır. Uç nokta oluştururken bu kapsayıcının URL 'sini sağlarsınız. Atılacak mektup, bir SAS belirtecine sahip kapsayıcı URL 'SI olarak sağlanır. Bu belirteç yalnızca `write` depolama hesabındaki hedef kapsayıcı için izne ihtiyaç duyuyor. Tamamen oluşturulmuş URL şu biçimde olacaktır: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
 
-SAS belirteçleri hakkında daha fazla bilgi edinmek için bkz. [paylaşılan erişim imzaları (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme](/azure/storage/common/storage-sas-overview)
+SAS belirteçleri hakkında daha fazla bilgi edinmek için bkz. [paylaşılan erişim imzaları (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme](../storage/common/storage-sas-overview.md)
 
 Atılacak alma hakkında daha fazla bilgi edinmek için bkz. [*Kavramlar: olay yolları*](concepts-route-events.md#dead-letter-events).
 

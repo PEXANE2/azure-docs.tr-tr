@@ -12,12 +12,12 @@ ms.date: 11/17/2020
 ms.author: aahi
 keywords: metin araştırma, yaklaşım analizi, metin analizi
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 14dfa6111bbda8750b175c8c9b2a96321e1af2c5
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 68f892fea01582b16dad5efd8c86dbf0b578e50f
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95519413"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353060"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Metin Analizi API'si nedir?
 
@@ -82,11 +82,11 @@ Programlamada çok fazla deneyim olmasa bile, işlemlerinizde Metin Analizi API'
 
 * Gereken minimum programlama:
     * [Metin Analizi ve güç otomatikleştirme kullanarak Excel 'de bilgi Ayıkla](tutorials/extract-excel-information.md)
-    * [Bir Yammer grubundaki yorumların yaklaşımını belirlemek için Metin Analizi API'si ve MS akışını kullanın](/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
+    * [Bir Yammer grubundaki yorumların yaklaşımını belirlemek için Metin Analizi API'si ve MS akışını kullanın](/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?bc=%2f%2fazure%2fbread%2ftoc.json&toc=%2f%2fazure%2fcognitive-services%2ftext-analytics%2ftoc.json)
     * [Müşteri geri bildirimini çözümlemek için Power BI Metin Analizi API'si tümleştirin](tutorials/tutorial-power-bi-key-phrases.md)
 * Programlama deneyimi önerilir:
-    * [Azure Databricks kullanarak akış verileri üzerinde yaklaşım analizi](/azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
-    * [Metin çevirmek, yaklaşımı çözümlemek ve konuşmayı sentezleştirmek için bir Flask uygulaması oluşturun](../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
+    * [Azure Databricks kullanarak akış verileri üzerinde yaklaşım analizi](/azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services?bc=%2f%2fazure%2fbread%2ftoc.json&toc=%2f%2fazure%2fcognitive-services%2ftext-analytics%2ftoc.json)
+    * [Metin çevirmek, yaklaşımı çözümlemek ve konuşmayı sentezleştirmek için bir Flask uygulaması oluşturun](../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%2f%2fazure%2fbread%2ftoc.json&toc=%2f%2fazure%2fcognitive-services%2ftext-analytics%2ftoc.json)
 
 
 <a name="supported-languages"></a>

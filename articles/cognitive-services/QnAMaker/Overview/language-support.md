@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2019
-ms.openlocfilehash: dc910c01c401468a3dae392a6318344bee25efb7
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 5035a81838ace0678f0cbb68ad2b9325de498003
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94375659"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353128"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>Soru-Cevap Oluşturma bir kaynak ve bilgi tabanı için dil desteği
 
@@ -48,7 +48,7 @@ Aşağıdaki topluluklara bir göz atın:
 # <a name="qnamaker-managed-preview"></a>[Yönetilen QnAMaker (Önizleme)](#tab/v2)
 ![Soru-Cevap Oluşturma yönetilen dil ayarı](../media/language-support/language-setting-managed.png)
 
-**Bilgi Bankası başına dil ayarını etkinleştirmek için onay kutusunu işaretlemezseniz** , aşağıdakileri göz önünde bulundurun: 
+**Bilgi Bankası başına dil ayarını etkinleştirmek için onay kutusunu işaretlemezseniz**, aşağıdakileri göz önünde bulundurun: 
 * Bir Soru-Cevap Oluşturma Hizmeti ve tüm bilgi tabanları, yalnızca bir dili destekleyecektir.
 * Hizmetin ilk bilgi tabanı oluşturulduğunda dil açıkça ayarlanır
 * Dil, Bilgi Bankası oluşturulduğunda eklenen dosyalardan ve URL 'lerden belirlenir
@@ -140,7 +140,7 @@ Aşağıdaki liste, bir Soru-Cevap Oluşturma kaynağı için desteklenen diller
 |Vietnamca|
 
 ## <a name="query-matching-and-relevance"></a>Sorgu eşleştirme ve ilgisi
-Soru-Cevap Oluşturma, sonuçları sağlamak için [Azure bilişsel arama dil Çözümleyicileri](https://docs.microsoft.com/rest/api/searchservice/language-support) 'ne bağlıdır.
+Soru-Cevap Oluşturma, sonuçları sağlamak için [Azure bilişsel arama dil Çözümleyicileri](/rest/api/searchservice/language-support) 'ne bağlıdır.
 
 Azure bilişsel arama özellikleri desteklenen diller için eşit olsa da, soru-cevap oluşturma Azure Arama sonuçlarının üzerinde yer alan ek bir derecelendiricisini vardır. Bu derecelendiricisini modelinde, aşağıdaki dillerde bazı özel semantik ve Word tabanlı özellikleri kullanırız.
 
@@ -166,4 +166,4 @@ Bu ek derecelendirme, Soru-Cevap Oluşturma Ranker 'ın iç çalışmadır.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Dil seçimi](../how-to/language-knowledge-base.md)
+> [Dil seçimi](../index.yml)

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: e00fd3d1dac0a18ac7f7377e08ae8d20ae132c56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa0d78d52ec13c91b82e6a8d10720269076f59a1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91652644"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353553"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure İşlevleri tetikleyicileri ve bağlama kavramları
 
@@ -18,7 +18,7 @@ Bu makalede, işlev Tetikleyicileri ve bağlamaları çevreleyen üst düzey kav
 
 Tetikleyiciler, bir işlevin çalışmasına neden olur. Bir tetikleyici, bir işlevin nasıl çağrılacağını ve bir işlevin tam olarak bir tetikleyicisine sahip olması gerektiğini tanımlar. Tetikleyiciler, genellikle işlevin yükü olarak sağlanan ilgili verilere sahiptir. 
 
-İşleve bağlama, başka bir kaynağı işleve bildirimli olarak bağlama yöntemidir; bağlamalar, *Giriş bağlamaları*, *Çıkış bağlamaları*veya her ikisi için de bağlanabilir. Bağlamalardan alınan veriler işleve parametre olarak sağlanır.
+İşleve bağlama, başka bir kaynağı işleve bildirimli olarak bağlama yöntemidir; bağlamalar, *Giriş bağlamaları*, *Çıkış bağlamaları* veya her ikisi için de bağlanabilir. Bağlamalardan alınan veriler işleve parametre olarak sağlanır.
 
 İhtiyaçlarınıza göre farklı bağlama türlerini bir arada kullanabilirsiniz. Bağlamalar isteğe bağlıdır ve bir işlevde bir veya daha fazla giriş ve/veya çıkış bağlaması bulunabilir.
 
@@ -88,6 +88,10 @@ Giriş veya çıkış bağlamalarını kullanarak işlevinizi diğer hizmetlere 
 İşlevlerinizin bağlamalarıyla nasıl çalışabileceğinizi gösteren belirli bağlama türlerinin örneklerini bulmak için aşağıdaki tabloyu kullanın. İlk olarak, projenize karşılık gelen dil sekmesini seçin. 
 
 [!INCLUDE [functions-bindings-code-example-chooser](../../includes/functions-bindings-code-example-chooser.md)]
+
+## <a name="custom-bindings"></a>Özel Bağlamalar
+
+Özel giriş ve çıkış bağlamaları oluşturabilirsiniz. Bağlamalar .NET dilinde yazılmalıdır, ancak desteklenen herhangi bir dilden tüketilebilir. Özel Bağlamalar Oluşturma hakkında daha fazla bilgi için bkz. [özel giriş ve çıkış bağlamaları oluşturma](https://github.com/Azure/azure-webjobs-sdk/wiki/Creating-custom-input-and-output-bindings).
 
 ## <a name="resources"></a>Kaynaklar
 - [Bağlama ifadeleri ve desenleri](./functions-bindings-expressions-patterns.md)

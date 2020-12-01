@@ -1,18 +1,18 @@
 ---
 title: Şablonlardaki parametreler
-description: Azure Resource Manager şablonunda parametrelerin nasıl tanımlanacağını açıklar.
+description: Azure Resource Manager şablonunda parametrelerin nasıl tanımlanacağını açıklar (ARM şablonu).
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 8cdc95037967a32c2d8464f4dc39b1e7369102bb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4ac1aeb579040b35b2a9b4cb90fb5687f91ebd3b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95911422"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353519"
 ---
-# <a name="parameters-in-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarında parametreler
+# <a name="parameters-in-arm-templates"></a>ARM şablonlarındaki parametreler
 
-Bu makalede Azure Resource Manager şablonunuzda parametrelerin nasıl tanımlanacağı ve kullanılacağı açıklanmaktadır. Parametreler için farklı değerler sunarak, farklı ortamlar için bir şablonu yeniden kullanabilirsiniz.
+Bu makalede, Azure Resource Manager şablonunuzda (ARM şablonunda) parametrelerin nasıl tanımlanacağı ve kullanılacağı açıklanmaktadır. Parametreler için farklı değerler sunarak, farklı ortamlar için bir şablonu yeniden kullanabilirsiniz.
 
 Kaynak Yöneticisi, dağıtım işlemlerini başlatmadan önce parametre değerlerini çözer. Parametrenin şablonda kullanıldığı her yerde, Kaynak Yöneticisi çözümlenme değeriyle değiştirilir.
 
@@ -154,14 +154,13 @@ Nokta işlecini kullanarak nesnesinin özelliklerine başvurun.
 
 Aşağıdaki örneklerde, parametreleri kullanmaya yönelik senaryolar gösterilmektedir.
 
-|Şablon  |Description  |
+|Şablon  |Açıklama  |
 |---------|---------|
 |[Varsayılan değerler için işlevlere sahip parametreler](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | Parametreler için varsayılan değerleri tanımlarken şablon işlevlerinin nasıl kullanılacağını gösterir. Şablon hiçbir kaynak dağıtmaz. Parametre değerlerini oluşturur ve bu değerleri döndürür. |
 |[Parameter nesnesi](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | Bir parametre için bir nesne kullanmayı gösterir. Şablon hiçbir kaynak dağıtmaz. Parametre değerlerini oluşturur ve bu değerleri döndürür. |
 
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Parametrelerin kullanılabilir özellikleri hakkında bilgi edinmek için bkz. [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
+* Parametrelerin kullanılabilir özellikleri hakkında bilgi edinmek için bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
 * Parametre değerlerini bir dosya olarak geçirme hakkında bilgi edinmek için bkz. [Kaynak Yöneticisi parametre dosyası oluşturma](parameter-files.md).
 * Parametreleri oluşturma hakkında öneriler için bkz. [en iyi yöntemler-parametreler](template-best-practices.md#parameters).

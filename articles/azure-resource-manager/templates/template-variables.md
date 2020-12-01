@@ -1,18 +1,18 @@
 ---
 title: Şablonlarda değişkenler
-description: Azure Resource Manager şablonunda değişkenlerin nasıl tanımlanacağını açıklar.
+description: Azure Resource Manager şablonunda değişkenlerin nasıl tanımlanacağını açıklar (ARM şablonu).
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 7758451747503cb8c42566dc081a91f84bafa375
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5d9b58d63e96656c45d3494d24099bbeadc46b11
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95916012"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353468"
 ---
-# <a name="variables-in-azure-resource-manager-template"></a>Azure Resource Manager şablonundaki değişkenler
+# <a name="variables-in-arm-template"></a>ARM şablonundaki değişkenler
 
-Bu makalede Azure Resource Manager şablonunuzda değişkenlerin nasıl tanımlanacağı ve kullanılacağı açıklanmaktadır. Şablonunuzu basitleştirmek için değişkenler kullanırsınız. Şablonunuz genelinde karmaşık ifadeler yinelemek yerine, karmaşık ifadeyi içeren bir değişken tanımlarsınız. Daha sonra, bu değişkene şablonunuz için gereken şekilde başvurmanız gerekir.
+Bu makalede Azure Resource Manager şablonunuzda (ARM şablonu) değişkenlerin nasıl tanımlanacağı ve kullanılacağı açıklanmaktadır. Şablonunuzu basitleştirmek için değişkenler kullanırsınız. Şablonunuz genelinde karmaşık ifadeler yinelemek yerine, karmaşık ifadeyi içeren bir değişken tanımlarsınız. Daha sonra, bu değişkene şablonunuz için gereken şekilde başvurmanız gerekir.
 
 Kaynak Yöneticisi, dağıtım işlemlerini başlatmadan önce değişkenleri çözer. Değişken şablonun herhangi bir yerinde kullanıldığında Resource Manager bu değişkenin yerine çözümlenen değeri koyar.
 
@@ -87,7 +87,7 @@ Belirtilen ortamın ayarlarını almak için değişkeni ve parametresini birlik
 
 Aşağıdaki örneklerde, değişkenlerini kullanma senaryoları gösterilmektedir.
 
-|Şablon  |Description  |
+|Şablon  |Açıklama  |
 |---------|---------|
 | [değişken tanımları](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | Farklı değişken türlerini gösterir. Şablon hiçbir kaynak dağıtmaz. Değişken değerleri oluşturur ve bu değerleri döndürür. |
 | [Yapılandırma değişkeni](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | Yapılandırma değerlerini tanımlayan bir değişkenin kullanımını gösterir. Şablon hiçbir kaynak dağıtmaz. Değişken değerleri oluşturur ve bu değerleri döndürür. |
@@ -95,5 +95,5 @@ Aşağıdaki örneklerde, değişkenlerini kullanma senaryoları gösterilmekted
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Değişkenlerin kullanılabilir özellikleri hakkında bilgi edinmek için bkz. [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
+* Değişkenlerin kullanılabilir özellikleri hakkında bilgi edinmek için bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
 * Değişken oluşturma hakkında öneriler için bkz. [en iyi yöntemler-değişkenler](template-best-practices.md#variables).

@@ -1,20 +1,20 @@
 ---
 title: Şablonlarda Kullanıcı tanımlı işlevler
-description: Bir Azure Resource Manager şablonunda Kullanıcı tanımlı işlevlerin nasıl tanımlanacağını ve kullanılacağını açıklar.
+description: Bir Azure Resource Manager şablonunda (ARM şablonu) Kullanıcı tanımlı işlevlerin nasıl tanımlanacağını ve kullanılacağını açıklar.
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 69f4e98d389cc8dbe5cd3f4b628189676c501106
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0d62abb5362d51a77db872c11416b04dcfb3f97
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84672944"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353485"
 ---
-# <a name="user-defined-functions-in-azure-resource-manager-template"></a>Azure Resource Manager şablondaki Kullanıcı tanımlı işlevler
+# <a name="user-defined-functions-in-arm-template"></a>ARM şablonunda Kullanıcı tanımlı işlevler
 
 Şablonunuz içinde kendi işlevlerinizi oluşturabilirsiniz. Bu işlevler, şablonunuzda kullanıma sunulmuştur. Kullanıcı tanımlı işlevler, şablonunuzda otomatik olarak kullanılabilen [Standart şablon işlevlerinden](template-functions.md) ayrıdır. Şablonunuzda tekrar tekrar kullanılan karmaşık deyimleriniz varsa kendi işlevlerinizi oluşturun.
 
-Bu makalede, Azure Resource Manager şablonunuzda Kullanıcı tanımlı işlevlerin nasıl ekleneceği açıklanmaktadır.
+Bu makalede, Azure Resource Manager şablonunuzda (ARM şablonu) Kullanıcı tanımlı işlevlerin nasıl ekleneceği açıklanmaktadır.
 
 ## <a name="define-the-function"></a>İşlevi tanımlayın
 

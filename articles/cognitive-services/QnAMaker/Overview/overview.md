@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 05/26/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: soru-cevap Oluşturucu, düşük kod sohbeti botları, çok yönlü konuşmalar
-ms.openlocfilehash: 6a5ea51086e3ab532966c9cea9eb866334494bba
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 9655f64da455fb7a7124a97e6dc2d1d8437d05b7
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874433"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353145"
 ---
 # <a name="what-is-qna-maker"></a>Soru-Cevap Oluşturma nedir?
 
@@ -22,14 +22,14 @@ Soru-Cevap Oluşturma, sosyal medya uygulamaları, sohbet botları ve konuşma �
 
 ## <a name="when-to-use-qna-maker"></a>Ne zaman kullanılacağı Soru-Cevap Oluşturma
 
-* **Statik bilgileriniz varsa** -bilgi yanıtlarınızın bilgi bankasında statik bilgileriniz varsa soru-cevap oluşturma kullanın. Bu Bilgi Bankası, [PDF 'ler ve URL 'ler](../concepts/content-types.md)gibi belgelerle oluşturduğunuz gereksinimlerinize göre özel olarak tasarlanmıştır.
+* **Statik bilgileriniz varsa** -bilgi yanıtlarınızın bilgi bankasında statik bilgileriniz varsa soru-cevap oluşturma kullanın. Bu Bilgi Bankası, [PDF 'ler ve URL 'ler](../index.yml)gibi belgelerle oluşturduğunuz gereksinimlerinize göre özel olarak tasarlanmıştır.
 * **Bir istek, soru veya komuta aynı yanıtı sağlamak istediğinizde** , farklı kullanıcılar aynı soruyu gönderdiğinde aynı yanıt döndürülür.
 * **Meta bilgilere göre statik bilgileri filtrelemek istediğinizde,** istemci uygulamanızın kullanıcılarına ve bilgilerine uygun ek filtreleme seçenekleri sağlamak için [meta veri](../how-to/metadata-generateanswer-usage.md) etiketleri ekleyin. Ortak meta veri bilgileri, [CHIT-chat](../how-to/chit-chat-knowledge-base.md), içerik türü veya biçimi, içerik amacı ve içerik yeniliği içerir.
 * **Statik bilgiler içeren bir bot iletişimini yönetmek istediğinizde,** bilgi tabanınız bir kullanıcının konuşma metin veya komutunu alır ve yanıt verir. Yanıt, bilgi bankasında [Çoklu oturum açma](../how-to/multiturn-conversation.md)ile temsil edilen önceden belirlenmiş bir konuşma akışının parçasıysa, bu akışı kolayca sağlayabilir.
 
 ## <a name="what-is-a-knowledge-base"></a>Bilgi Bankası nedir?
 
-Soru-Cevap Oluşturma [içeriğinizi](../concepts/knowledge-base.md) bir soru-cevap çifti bilgi tabanına aktarır. İçeri aktarma işlemi, soru ve yanıt çiftleri arasındaki ilişkileri öğrenmek için yapılandırılmış ve yarı yapılandırılmış içeriğinizin kısımları arasındaki ilişki hakkındaki bilgileri ayıklar. Bu soruyu ve yanıt çiftlerini düzenleyebilir veya yeni çiftler ekleyebilirsiniz.
+Soru-Cevap Oluşturma [içeriğinizi](../index.yml) bir soru-cevap çifti bilgi tabanına aktarır. İçeri aktarma işlemi, soru ve yanıt çiftleri arasındaki ilişkileri öğrenmek için yapılandırılmış ve yarı yapılandırılmış içeriğinizin kısımları arasındaki ilişki hakkındaki bilgileri ayıklar. Bu soruyu ve yanıt çiftlerini düzenleyebilir veya yeni çiftler ekleyebilirsiniz.
 
 Soru ve yanıt çiftinin içeriği şunları içerir:
 * Sorunun tüm alternatif formları

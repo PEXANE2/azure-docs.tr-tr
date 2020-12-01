@@ -10,19 +10,19 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: scottwhi
-ms.openlocfilehash: a42b282ac2c42480473186f90a542e33781c8a68
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: dd845c0fb877afa76b84eb5c2d86392f763eccf7
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364046"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353400"
 ---
 # <a name="sending-requests-to-the-bing-autosuggest-api"></a>İstekleri Bing Otomatik Öneri API'si gönderiliyor.
 
 > [!WARNING]
-> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](https://aka.ms/cogsvcs/bingmove)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
+> Bing Arama API'leri bilişsel hizmetlerden Bing Arama hizmetlere taşınıyor. **30 ekim 2020 ' den** itibaren, [burada](/bing/search-apis/bing-web-search/create-bing-search-service-resource)belgelenen işlem sonrasında Bing arama yeni örneklerin sağlanması gerekir.
 > Bilişsel hizmetler kullanılarak sağlanan Bing Arama API'leri, sonraki üç yıl boyunca veya Kurumsal Anlaşma sonuna kadar, hangisi önce gerçekleşene kadar desteklenecektir.
-> Geçiş yönergeleri için bkz. [Bing arama Services](https://aka.ms/cogsvcs/bingmigration).
+> Geçiş yönergeleri için bkz. [Bing arama Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Uygulamanız Bing Arama API'leri herhangi birine sorgu gönderiyorsa, kullanıcılarınızın arama deneyimini geliştirmek için Bing Otomatik Öneri API'si kullanabilirsiniz. Bing Otomatik Öneri API'si, arama kutusundaki kısmi sorgu dizesine göre önerilen sorguların bir listesini döndürür. Uygulamanızdaki bir arama kutusuna karakterler girildiğinde, önerileri bir açılan listede görüntüleyebilirsiniz. Bu API 'ye istek gönderme hakkında daha fazla bilgi edinmek için bu makaleyi kullanın. 
 
@@ -110,7 +110,7 @@ Aşağıdaki Web önerisi grubu, yukarıdaki isteğin bir yanıtı. Grup, her ö
 
 `displayText` alanı, arama kutunuzun açılır listesini doldurmak için kullandığınız önerilen sorguyu içerir. Yanıtın içerdiği tüm önerileri, verilen sırada görüntülemeniz gerekir.  
 
-Kullanıcı aşağı açılan listeden bir sorgu seçerse, [Bing Arama API'leri](../../bing-web-search/bing-api-comparison.md?bc=%252fen-us%252fazure%252fbread%252ftoc.json&toc=%252fen-us%252fazure%252fcognitive-services%252fbing-autosuggest%252ftoc.json) birini çağırmak ve sonuçları kendiniz göstermek veya döndürülen alanı kullanarak kullanıcıyı Bing sonuçları sayfasına göndermek için kullanabilirsiniz `url` .
+Kullanıcı aşağı açılan listeden bir sorgu seçerse, [Bing Arama API'leri](../../bing-web-search/bing-api-comparison.md?bc=%2fen-us%2fazure%2fbread%2ftoc.json&toc=%2fen-us%2fazure%2fcognitive-services%2fbing-autosuggest%2ftoc.json) birini çağırmak ve sonuçları kendiniz göstermek veya döndürülen alanı kullanarak kullanıcıyı Bing sonuçları sayfasına göndermek için kullanabilirsiniz `url` .
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
 

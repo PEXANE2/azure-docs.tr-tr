@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 10/16/2020
 ms.custom: devx-track-java, cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: 6f5d1fd8a179f88677ddd6d7b1875f60836ade51
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 30360253c0b1aa34c4af1e5efdf3cf9b4d8baaa0
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92924963"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356503"
 ---
 Java için Azure Content Moderator istemci kitaplığı 'nı kullanmaya başlayın. Maven paketini yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. 
 
@@ -54,7 +54,7 @@ mkdir myapp && cd myapp
 gradle init --type basic
 ```
 
-Bir **DSL** seçmeniz Istendiğinde, **Kotlin** ' ı seçin.
+Bir **DSL** seçmeniz Istendiğinde, **Kotlin**' ı seçin.
 
 ## <a name="install-the-client-library"></a>İstemci kitaplığını yükler
 
@@ -103,7 +103,7 @@ Uygulamanın **Contentmoderatorquickstart** sınıfında, kaynağınızın anaht
 > [!IMPORTANT]
 > Azure portala gidin. **Önkoşullar** bölümünde oluşturduğunuz [ürün adı] kaynağı başarıyla dağıtılırsa, **sonraki adımlar** altında **Kaynağa Git** düğmesine tıklayın. Anahtar ve uç noktanızı kaynağın **anahtar ve uç nokta** sayfasında, **kaynak yönetimi** altında bulabilirsiniz. 
 >
-> İşiniz bittiğinde kodu koddan kaldırmayı unutmayın ve hiçbir zaman herkese açık bir şekilde nakletmeyin. Üretim için, kimlik bilgilerinizi depolamak ve bunlara erişmek için güvenli bir yol kullanmayı düşünün. Daha fazla bilgi için bilişsel Hizmetler [güvenlik](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) makalesine bakın.
+> İşiniz bittiğinde kodu koddan kaldırmayı unutmayın ve hiçbir zaman herkese açık bir şekilde nakletmeyin. Üretim için, kimlik bilgilerinizi depolamak ve bunlara erişmek için güvenli bir yol kullanmayı düşünün. Daha fazla bilgi için bilişsel Hizmetler [güvenlik](../../../cognitive-services-security.md) makalesine bakın.
 
 Uygulamanın **Main** yönteminde, bu hızlı başlangıçta kullanılan yöntemlere çağrılar ekleyin. Bunları daha sonra tanımlayacaksınız.
 
@@ -173,7 +173,7 @@ Son olarak, döndürülen bilgileri `EvaluationData` listede depolayın.
 
 ### <a name="print-results"></a>Sonuçları Yazdır
 
-`while`Döngüden sonra, sonuçları konsola ve bir çıkış dosyasına ( *src/Main/resources/ModerationOutput.js* ) yazdıran aşağıdaki kodu ekleyin.
+`while`Döngüden sonra, sonuçları konsola ve bir çıkış dosyasına ( *src/Main/resources/ModerationOutput.js*) yazdıran aşağıdaki kodu ekleyin.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_printdata)]
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 0f49621d44b99412b9a6ab0360c30c894a71e5d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c231ac95841043e5576f064e683dd86d9695b108
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776876"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353196"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Bilgi tabanınız için güvenli bir SharePoint veri kaynağı ekleme
 
@@ -20,14 +20,14 @@ Bilgi tabanınızı Soru-Cevap Oluşturma Yöneticisi olarak güvenli bir ShareP
 
 Soru-Cevap Oluşturma Bilgi Bankası Yöneticisi Active Directory yöneticisi değilse, bu işlemi tamamlaması için Active Directory Manager ile iletişim kurması gerekir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bulut tabanlı SharePoint-Soru-Cevap Oluşturma izinler için Microsoft Graph kullanır. SharePoint şirket içi ise, Microsoft Graph izinleri belirleyemeyeceği için SharePoint 'ten ayıklanamaz.
 * URL biçimi-Soru-Cevap Oluşturma yalnızca paylaşım için oluşturulan ve biçimdeki SharePoint URL 'lerini destekler `https://\*.sharepoint.com`
 
 ## <a name="add-supported-file-types-to-knowledge-base"></a>Bilgi Bankası 'nda desteklenen dosya türlerini ekleme
 
-Soru-Cevap Oluşturma tarafından desteklenen tüm [dosya türlerini](../Concepts/content-types.md) , bir SharePoint sitesinden bilgi tabanınızdan ekleyebilirsiniz. Dosya kaynağının güvenliği varsa, [izin](#permissions) vermeniz gerekebilir.
+Soru-Cevap Oluşturma tarafından desteklenen tüm [dosya türlerini](../index.yml) , bir SharePoint sitesinden bilgi tabanınızdan ekleyebilirsiniz. Dosya kaynağının güvenliği varsa, [izin](#permissions) vermeniz gerekebilir.
 
 1. SharePoint sitesindeki kitaplıktan, dosyanın üç nokta menüsünü seçin `...` .
 1. Dosyanın URL 'sini kopyalayın.
@@ -119,7 +119,7 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 
     [![Kurumsal uygulamalar listesinde QnAMakerPortalSharePoint araması yapın](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png)](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png#lightbox)
 
-1. **Güvenlik**altında **izinler**' e gidin. **Kuruluş için yönetici onayı ver**' i seçin.
+1. **Güvenlik** altında **izinler**' e gidin. **Kuruluş için yönetici onayı ver**' i seçin.
 
     [![Active Directory Yöneticisi için kimliği doğrulanmış kullanıcı seçin](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png)](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png#lightbox)
 
@@ -156,7 +156,7 @@ Use the following steps to transform the SharePoint URL into a sharing token.
 
 ### Add or update a SharePoint File URI to your knowledge base
 
-Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileuri` in the QnA Maker API for [adding a knowledge base](https://go.microsoft.com/fwlink/?linkid=2092179) or [updating a knowledge base](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update). The following fields are mandatory: name, fileuri, filename, source.
+Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileuri` in the QnA Maker API for [adding a knowledge base](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase) or [updating a knowledge base](/rest/api/cognitiveservices/qnamaker/knowledgebase/update). The following fields are mandatory: name, fileuri, filename, source.
 
 ```
 {
@@ -188,4 +188,4 @@ Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileu
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Bilgi bankasında işbirliği yapın](collaborate-knowledge-base.md)
+> [Bilgi bankasında işbirliği yapın](../index.yml)

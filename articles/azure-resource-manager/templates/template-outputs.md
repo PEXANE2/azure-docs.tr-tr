@@ -1,18 +1,18 @@
 ---
 title: Şablonlarda çıkış çıkışları
-description: Azure Resource Manager şablonunda çıkış değerlerinin nasıl tanımlanacağını açıklar.
+description: Azure Resource Manager şablonunda çıkış değerlerinin nasıl tanımlanacağını açıklar (ARM şablonu).
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 8f782a78e523ebc55faac98344643982172476fa
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6a375dfbc767bcbbfd8ec6b7f8cb9e942e275582
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95911439"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353536"
 ---
-# <a name="outputs-in-azure-resource-manager-template"></a>Azure Resource Manager şablondaki çıktılar
+# <a name="outputs-in-arm-templates"></a>ARM şablonlarındaki çıktılar
 
-Bu makalede, Azure Resource Manager şablonunuzda çıkış değerlerinin nasıl tanımlanacağı açıklanmaktadır. Dağıtılan kaynaklardan değer döndürihtiyacınız olduğunda çıktıları kullanırsınız.
+Bu makalede, Azure Resource Manager şablonunuzda (ARM şablonu) çıkış değerlerinin nasıl tanımlanacağı açıklanmaktadır. Dağıtılan kaynaklardan değer döndürihtiyacınız olduğunda çıktıları kullanırsınız.
 
 Her bir çıkış değerinin biçimi, [veri türlerinden](template-syntax.md#data-types)biriyle aynı olmalıdır.
 
@@ -112,7 +112,7 @@ az deployment group show \
 
 Aşağıdaki örneklerde, çıkışları kullanmaya yönelik senaryolar gösterilmektedir.
 
-|Şablon  |Description  |
+|Şablon  |Açıklama  |
 |---------|---------|
 |[Değişkenleri Kopyala](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Karmaşık değişkenler oluşturur ve bu değerleri verir. Hiçbir kaynak dağıtmaz. |
 |[Genel IP adresi](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Genel bir IP adresi oluşturur ve kaynak KIMLIĞINI verir. |
@@ -120,4 +120,4 @@ Aşağıdaki örneklerde, çıkışları kullanmaya yönelik senaryolar gösteri
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Çıktılar için kullanılabilen özellikler hakkında bilgi edinmek için bkz. [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
+* Çıktılar için kullanılabilen özellikler hakkında bilgi edinmek için bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).

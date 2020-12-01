@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 0be2fecfad4d2a2b829266fa1d9574bcc4c50eee
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 048b53186aa0be388d9d801cd6590d4295a4faa7
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376696"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353179"
 ---
 # <a name="plan-your-qna-maker-app"></a>Soru-Cevap Oluşturma Uygulamanızı planlayın
 
@@ -94,13 +94,13 @@ Artık aynı Soru-Cevap Oluşturma kaynağı dahilinde farklı dillerde bilgi es
 
 ### <a name="ingest-data-sources"></a>Alma veri kaynakları
 
-Bilgi Bankası oluşturmak için aşağıdaki [veri kaynaklarından](knowledge-base.md) birini kullanabilirsiniz:
+Bilgi Bankası oluşturmak için aşağıdaki [veri kaynaklarından](../index.yml) birini kullanabilirsiniz:
 
 * Genel URL
 * Özel SharePoint URL 'SI
 * Dosya
 
-Alma işlemi, [desteklenen içerik türlerini](content-types.md) markaşağı dönüştürür. *Yanıtın* daha fazla düzenlemesi markın ile yapılır. Bilgi Bankası oluşturduktan sonra, Soru-Cevap Oluşturma portalında [QNA çiftlerini](question-answer-set.md) [zengin metin yazma](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer)ile düzenleyebilirsiniz.
+Alma işlemi, [desteklenen içerik türlerini](../index.yml) markaşağı dönüştürür. *Yanıtın* daha fazla düzenlemesi markın ile yapılır. Bilgi Bankası oluşturduktan sonra, Soru-Cevap Oluşturma portalında [QNA çiftlerini](question-answer-set.md) [zengin metin yazma](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer)ile düzenleyebilirsiniz.
 
 ### <a name="data-format-considerations"></a>Veri biçimi konuları
 
@@ -124,17 +124,17 @@ Bir kullanıcının botunuzu nasıl kullanacağınızı bilmesi ve konuşmada bo
 
 Ortak çalışanlar, Bilgi Bankası uygulamasının tam geliştirme yığınını paylaşan diğer geliştiriciler olabilir veya yalnızca Bilgi Bankası yazma ile sınırlı olabilir.
 
-Bilgi Bankası yazma, ortak çalışan becerileri kapsamını sınırlandırmak için Azure portal uyguladığınız çeşitli [rol tabanlı erişim izinlerini](../how-to/collaborate-knowledge-base.md) destekler.
+Bilgi Bankası yazma, ortak çalışan becerileri kapsamını sınırlandırmak için Azure portal uyguladığınız çeşitli [rol tabanlı erişim izinlerini](../index.yml) destekler.
 
 ## <a name="integration-with-client-applications"></a>İstemci uygulamalarıyla tümleştirme
 
-[İstemci uygulamalarıyla](integration-with-other-applications.md) tümleştirme, tahmin çalışma zamanı uç noktasına bir sorgu gönderilerek gerçekleştirilir. Bir sorgu, Soru-Cevap Oluşturma Web uygulaması uç noktasına SDK veya REST tabanlı bir istek ile özel bilgi tabanıza gönderilir.
+[İstemci uygulamalarıyla](../index.yml) tümleştirme, tahmin çalışma zamanı uç noktasına bir sorgu gönderilerek gerçekleştirilir. Bir sorgu, Soru-Cevap Oluşturma Web uygulaması uç noktasına SDK veya REST tabanlı bir istek ile özel bilgi tabanıza gönderilir.
 
 İstemci isteğinin doğru şekilde doğrulanması için, istemci uygulamanın doğru kimlik bilgilerini ve Bilgi Bankası KIMLIĞINI gönderebilmesi gerekir. Bir Azure bot hizmeti kullanıyorsanız, bu ayarları Azure portal bot yapılandırmasının bir parçası olarak yapılandırın.
 
 ### <a name="conversation-flow-in-a-client-application"></a>İstemci uygulamasında konuşma akışı
 
-Azure bot gibi bir [istemci uygulamasındaki](integration-with-other-applications.md)konuşma akışı, Bilgi Bankası ile etkileşime girmeden önce ve sonra işlevselliği gerektirebilir.
+Azure bot gibi bir [istemci uygulamasındaki](../index.yml)konuşma akışı, Bilgi Bankası ile etkileşime girmeden önce ve sonra işlevselliği gerektirebilir.
 
 İstemci uygulamanız konuşma akışını, izleme istemlerini işlemek için alternatif bir yol sunarak veya Chit-CHIT dahil olmak üzere destekliyor mu? Bu durumda, bunları erken tasarlayın ve istemci uygulama sorgusunun başka bir hizmet tarafından veya bilgi tabanınıza gönderildiğinde doğru şekilde işlendiğinden emin olun.
 
@@ -152,7 +152,7 @@ Soru-Cevap Oluşturma, yanıt için alternatif sorular önererek bilgi bankasın
 
 ### <a name="providing-a-default-answer"></a>Varsayılan bir yanıt sağlama
 
-Bilgi tabanınız bir yanıt bulamazsa, _varsayılan yanıtı_ döndürür. Bu yanıt, Soru-Cevap Oluşturma portalındaki veya [API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#request-body)'lerde **Ayarlar** sayfasında yapılandırılabilir.
+Bilgi tabanınız bir yanıt bulamazsa, _varsayılan yanıtı_ döndürür. Bu yanıt, Soru-Cevap Oluşturma portalındaki veya [API](/rest/api/cognitiveservices/qnamaker/knowledgebase/update#request-body)'lerde **Ayarlar** sayfasında yapılandırılabilir.
 
 Bu varsayılan yanıt, Azure bot varsayılan cevabı 'ndan farklıdır. Azure portal Azure bot için varsayılan yanıtı yapılandırma ayarlarının bir parçası olarak yapılandırırsınız. Puan eşiğine uyulmazsa döndürülür.
 
@@ -197,7 +197,7 @@ Bilgi bankalarınıza yönelik tüm sorgular Application Insights depolanır. Ö
 
 # <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
 
-Yönetilen dağıtımda, telemetri [Azure İzleyici hizmeti](https://docs.microsoft.com/azure/azure-monitor/)aracılığıyla sunulur. Ölçümlerinizi anlamak için [en iyi sorguları](../how-to/get-analytics-knowledge-base.md) kullanın.
+Yönetilen dağıtımda, telemetri [Azure İzleyici hizmeti](../../../azure-monitor/index.yml)aracılığıyla sunulur. Ölçümlerinizi anlamak için [en iyi sorguları](../how-to/get-analytics-knowledge-base.md) kullanın.
 
 
 ---
@@ -217,7 +217,7 @@ Her bir çift şunları içerebilir:
 
 ### <a name="devops-development"></a>DevOps geliştirme
 
-Bir DevOps ardışık düzenine eklemek için Bilgi Bankası geliştirme işlemi, bilgi bankasını [toplu test](../quickstarts/batch-testing.md)sırasında yalıtıyor olması gerekir.
+Bir DevOps ardışık düzenine eklemek için Bilgi Bankası geliştirme işlemi, bilgi bankasını [toplu test](../index.yml)sırasında yalıtıyor olması gerekir.
 
 Bilgi Bankası, Bilişsel Arama dizinini Soru-Cevap Oluşturma kaynaktaki diğer tüm bilgi bankalarıyla paylaşır. Bilgi Bankası, Bölüm tarafından yalıtılırken, Dizin paylaşımı, yayımlanan bilgi tabanı ile karşılaştırıldığında puanta farklılık oluşmasına neden olabilir.
 

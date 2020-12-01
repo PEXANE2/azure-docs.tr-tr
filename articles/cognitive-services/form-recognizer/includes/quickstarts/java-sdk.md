@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 48162609c27372937337be87d4b8f78af35a46d5
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: d53863ccf71970cca3900707c844a2e5add050fa
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95869317"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356520"
 ---
 > [!IMPORTANT]
 > Bu makaledeki kod, basitlik nedenlerle zaman uyumlu Yöntemler ve güvenli olmayan kimlik bilgileri depolaması kullanır.
@@ -116,7 +116,7 @@ Uygulamanın **Formtanıyıcı** sınıfında, kaynağınızın anahtarı ve uç
 > [!IMPORTANT]
 > Azure portala gidin. **Önkoşullar** bölümünde oluşturduğunuz [ürün adı] kaynağı başarıyla dağıtılırsa, **sonraki adımlar** altında **Kaynağa Git** düğmesine tıklayın. Anahtar ve uç noktanızı kaynağın **anahtar ve uç nokta** sayfasında, **kaynak yönetimi** altında bulabilirsiniz. 
 >
-> İşiniz bittiğinde kodu koddan kaldırmayı unutmayın ve hiçbir zaman herkese açık bir şekilde nakletmeyin. Üretim için, kimlik bilgilerinizi depolamak ve bunlara erişmek için güvenli bir yol kullanmayı düşünün. Daha fazla bilgi için bilişsel Hizmetler [güvenlik](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security) makalesine bakın.
+> İşiniz bittiğinde kodu koddan kaldırmayı unutmayın ve hiçbir zaman herkese açık bir şekilde nakletmeyin. Üretim için, kimlik bilgilerinizi depolamak ve bunlara erişmek için güvenli bir yol kullanmayı düşünün. Daha fazla bilgi için bilişsel Hizmetler [güvenlik](../../../cognitive-services-security.md) makalesine bakın.
 
 Uygulamanın **Main** yönteminde, bu hızlı başlangıçta kullanılan yöntemlere çağrılar ekleyin. Bunları daha sonra tanımlayacaksınız. Ayrıca, eğitim ve test verileriniz için URL 'lere başvurular eklemeniz gerekecektir.
 
@@ -199,7 +199,7 @@ Verilen bir URL 'deki bir dosyanın içeriğini tanımak için **Beginrecognizec
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_getcontent_call)]
 
 > [!TIP]
-> Ayrıca, yerel bir dosyadan içerik alabilirsiniz. **Beginrecognizecontent** gibi [Formrecognizerclient](https://docs.microsoft.com/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 'daki örnek koda bakın.
+> Ayrıca, yerel bir dosyadan içerik alabilirsiniz. **Beginrecognizecontent** gibi [Formrecognizerclient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 'daki örnek koda bakın.
 
 Döndürülen değer bir **Formpage** nesneleri koleksiyonudur: gönderilen belgedeki her sayfa için bir tane. Aşağıdaki kod bu nesneler boyunca yinelenir ve ayıklanan anahtar/değer çiftlerini ve tablo verilerini yazdırır.
 
@@ -232,7 +232,7 @@ Bir URI 'den alındıları tanımak için **beginRecognizeReceiptsFromUrl** yön
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_call)]
 
 > [!TIP]
-> Ayrıca, yerel alındı görüntülerini da tanıyabilirsiniz. **BeginRecognizeReceipts** gibi [Formrecognizerclient](https://docs.microsoft.com/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 'daki örnek koda bakın.
+> Ayrıca, yerel alındı görüntülerini da tanıyabilirsiniz. **BeginRecognizeReceipts** gibi [Formrecognizerclient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 'daki örnek koda bakın.
 
 Döndürülen değer, gönderilen belgedeki her sayfa için bir tane olan bir **Recognizedmakbuz** nesneleri koleksiyonudur: Sonraki kod bloğu, alındılar boyunca yinelenir ve ayrıntılarını konsola yazdırır.
 
@@ -272,7 +272,7 @@ Bir URL 'den iş kartlarını tanımak için `beginRecognizeBusinessCardsFromUrl
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_bc_call)]
 
 > [!TIP]
-> Ayrıca, yerel iş kartı görüntülerini da tanıyabilirsiniz. Bkz. **Beginrecognizebusinesscarlar** gibi [Formrecognizerclient](https://docs.microsoft.com/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) yöntemleri. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 'daki örnek koda bakın.
+> Ayrıca, yerel iş kartı görüntülerini da tanıyabilirsiniz. Bkz. **Beginrecognizebusinesscarlar** gibi [Formrecognizerclient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) yöntemleri. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 'daki örnek koda bakın.
 
 Döndürülen değer, **Recognizedform** nesnelerinin bir koleksiyonudur: belgedeki her kart için bir tane. Aşağıdaki kod, belirtilen URI 'de iş kartını işler ve ana alanları ve değerleri konsola yazdırır.
 
@@ -287,7 +287,7 @@ Bir URL 'den iş kartlarını tanımak için `beginRecognizeInvoicesFromUrl` yö
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer-preview.java?name=snippet_invoice_call)]
 
 > [!TIP]
-> Ayrıca, yerel faturaları da tanıyabilirsiniz. Bkz. **Beginrecognizeınices** gibi [Formrecognizerclient](https://docs.microsoft.com/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) yöntemleri. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 'daki örnek koda bakın.
+> Ayrıca, yerel faturaları da tanıyabilirsiniz. Bkz. **Beginrecognizeınices** gibi [Formrecognizerclient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) yöntemleri. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 'daki örnek koda bakın.
 
 Döndürülen değer, **Recognizedform** nesnelerinin bir koleksiyonudur: belgedeki her fatura için bir tane. Aşağıdaki kod, belirtilen URI 'de iş kartını işler ve ana alanları ve değerleri konsola yazdırır.
 
@@ -384,7 +384,7 @@ Bu bölümde, kendi formlarınız ile eğitilen modeller kullanılarak özel for
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_analyze_call)]
 
 > [!TIP]
-> Yerel bir dosyayı da analiz edebilirsiniz. **Beginrecognizeccustomforms** gibi [Formrecognizerclient](https://docs.microsoft.com/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 'daki örnek koda bakın.
+> Yerel bir dosyayı da analiz edebilirsiniz. **Beginrecognizeccustomforms** gibi [Formrecognizerclient](/java/api/com.azure.ai.formrecognizer.formrecognizerclient?view=azure-java-stable) yöntemlerine bakın. Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md) 'daki örnek koda bakın.
 
 Döndürülen değer, gönderilen belgedeki her sayfa için bir tane olan **Recognizedform** nesnelerinin bir koleksiyonudur: Aşağıdaki kod, analiz sonuçlarını konsola yazdırır. Her tanınan alanı ve karşılık gelen değeri, Güvenirlik puanı ile birlikte yazdırır.
 

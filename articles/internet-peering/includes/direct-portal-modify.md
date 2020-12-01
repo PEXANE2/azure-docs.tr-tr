@@ -1,26 +1,26 @@
 ---
-title: dosya dahil etme
+title: include dosyası
 titleSuffix: Azure
-description: dosya dahil etme
+description: include dosyası
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 3894bf046ed4ee3f068e43dbc5bc5b7f2a1002b4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3212acd5015edbb639b8904b885c718d654e5b4
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81681053"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356270"
 ---
 Bu bölümde, doğrudan eşleme için aşağıdaki değişiklik işlemlerinin nasıl gerçekleştirileceği açıklanmaktadır.
 
 ### <a name="add-direct-peering-connections"></a>Doğrudan eşleme bağlantıları Ekle
 1. **+ Bağlantı ekle** düğmesini seçin ve yeni bir eşleme bağlantısı yapılandırın.
     > [!div class="mx-imgBorder"]
-    > ![Eşleme kaynağı görünümü](../media/setup-direct-modify-addconnection.png)
+    > ![AshburnPeering-Connections sayfası bağlantıları listeler. + Bağlantı Ekle düğmesi vurgulanır.](../media/setup-direct-modify-addconnection.png)
 
 1. **Doğrudan eşleme bağlantısı** formunu doldurun ve **Kaydet**' i seçin. Eşleme bağlantısı yapılandırmaya yönelik yardım için "doğrudan eşleme oluşturma ve sağlama" bölümündeki adımları gözden geçirin.
     > [!div class="mx-imgBorder"]

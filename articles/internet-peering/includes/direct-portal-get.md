@@ -1,19 +1,19 @@
 ---
-title: dosya dahil etme
+title: include dosyası
 titleSuffix: Azure
-description: dosya dahil etme
+description: include dosyası
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: e50f53c65c330265d3d9ec1b1804a7910b632b1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3507aacc68de25f7368cbe3cda917077564c56eb
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81678845"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356253"
 ---
 1. **Kaynak grupları**' na gidin ve **eşleme** kaynağını oluştururken seçtiğiniz kaynak grubunu seçin. Çok fazla kaynak grubunuz varsa **filtre** kutusunu kullanın.
 
@@ -23,7 +23,7 @@ ms.locfileid: "81678845"
 1. Oluşturduğunuz **eşleme** kaynağını seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![Eşleme kaynağı görünümü](../media/setup-direct-get-open.png)
+    > ![Sol bölmede Genel Bakış sayfası seçilidir. PeeringResourceGroup hakkında bilgi gösterir. Eşleme listesinde, AshburnPeering vurgulanır.](../media/setup-direct-get-open.png)
 
 1. **Genel bakış** sayfası, burada gösterildiği gibi üst düzey bilgileri gösterir.
 
@@ -42,4 +42,4 @@ ms.locfileid: "81678845"
 
     * **Bağlantı durumu** , eşleme bağlantısı kurulumunun durumuna karşılık gelir. Bu alanda gösterilen durumlar [doğrudan eşleme gözden geçirmede](../walkthrough-direct-all.md)gösterilen durum diyagramını izler.
     * **IPv4 oturum durumu** ve **IPv6 oturum durumu** SıRASıYLA IPv4 ve IPv6 BGP oturum durumlarına karşılık gelir. 
-    * Ekranın üst kısmında bir satır seçtiğinizde, alt taraftaki **bağlantı** bölümünde her bağlantı için ayrıntılar gösterilir. **Yapılandırma**, **IPv4 adresi**ve **IPv6 adresini**genişletmek için okları seçin.
+    * Ekranın üst kısmında bir satır seçtiğinizde, alt taraftaki **bağlantı** bölümünde her bağlantı için ayrıntılar gösterilir. **Yapılandırma**, **IPv4 adresi** ve **IPv6 adresini** genişletmek için okları seçin.

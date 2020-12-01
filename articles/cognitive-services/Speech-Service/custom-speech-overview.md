@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: 6dbe97d615753f0a90c8ba80aa7afa6dafa15eb2
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 7f8fb0488c863868b1076ad5b3fa7868d1880a6b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658477"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353791"
 ---
 # <a name="what-is-custom-speech"></a>Özel Konuşma Tanıma nedir?
 
@@ -31,7 +31,7 @@ Bu diyagramda [özel konuşma tanıma portalını](https://aka.ms/customspeech)o
 
 1. [Abone olun ve proje oluşturun](#set-up-your-azure-account) -bir Azure hesabı oluşturun ve konuşma hizmetine abone olun. Bu Birleşik abonelik, konuşmadan metne, metinden konuşmaya, konuşma çevirisine ve [özel konuşma tanıma portalına](https://speech.microsoft.com/customspeech)erişmenizi sağlar. Ardından, konuşma hizmeti aboneliğinizi kullanarak ilk Özel Konuşma Tanıma projenizi oluşturun.
 
-1. [Test verilerini karşıya yükleme](how-to-custom-speech-test-data.md) -Microsoft 'un uygulamalarınız, araçları ve ürünleriniz için konuşma-metin tekliflerini değerlendirmek için test verilerini (ses dosyaları) karşıya yükleyin.
+1. [Test verilerini karşıya yükleme](./how-to-custom-speech-test-and-train.md) -Microsoft 'un uygulamalarınız, araçları ve ürünleriniz için konuşma-metin tekliflerini değerlendirmek için test verilerini (ses dosyaları) karşıya yükleyin.
 
 1. [Tanıma kalitesini inceleme](how-to-custom-speech-inspect-data.md) -karşıya yüklenen ses çalmak ve test verilerinizin konuşma tanıma kalitesini incelemek için [özel konuşma tanıma portalını](https://speech.microsoft.com/customspeech) kullanın. Nicel ölçümleri için bkz. [verileri İnceleme](how-to-custom-speech-inspect-data.md).
 
@@ -101,7 +101,7 @@ Ayrıca, [`GetModel`](https://westus.dev.cognitive.microsoft.com/docs/services/s
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Verilerinizi hazırlayın ve test edin](how-to-custom-speech-test-data.md)
+* [Verilerinizi hazırlayın ve test edin](./how-to-custom-speech-test-and-train.md)
 * [Verilerinizi inceleyin](how-to-custom-speech-inspect-data.md)
 * [Model doğruluğunu değerlendirin ve geliştirebilirsiniz](how-to-custom-speech-evaluate-data.md)
 * [Modeli eğitme ve dağıtma](how-to-custom-speech-train-model.md)

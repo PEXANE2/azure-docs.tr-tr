@@ -8,12 +8,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/22/2020
 ms.author: makromer
-ms.openlocfilehash: 49d11dfe3d42d99c610fae9fa64079a5fd87501f
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: c8b0ae7058aecc1813d720a3fbb2a1a1f967cf40
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96006805"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352618"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>Data Factory eşleme veri akışlarında SQL kesme hatası satırlarını işle
 
@@ -23,7 +23,7 @@ Veri akışlarını eşleme kullanılırken Data Factory ortak bir senaryo, dön
 
 ADF veri akışlarında veritabanı havuzlarınıza veri yazarken hataları düzgün bir şekilde işlemek için iki birincil yöntem vardır:
 
-* Veritabanı verilerini işlerken havuz [hata satırı işlemesini](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#error-row-handling) "hata durumunda devam et" olarak ayarlayın. Bu, veri akışınız için özel mantık gerektirmeyen otomatik bir catch-all yöntemidir.
+* Veritabanı verilerini işlerken havuz [hata satırı işlemesini](./connector-azure-sql-database.md#error-row-handling) "hata durumunda devam et" olarak ayarlayın. Bu, veri akışınız için özel mantık gerektirmeyen otomatik bir catch-all yöntemidir.
 * Alternatif olarak, bir hedef dize sütununa sığmayan sütunların günlüğe kaydedilmesini sağlamak için aşağıdaki adımları izleyin, böylece veri akışınız devam edebilir.
 
 > [!NOTE]

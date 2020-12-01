@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: b489964e5ef8ea483cbe203be1ff665078a6d66a
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 60ef490bbba4dca4f01b82967ad6ea8636e7bd4e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95741738"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353706"
 ---
 # <a name="form-recognizer-layout-service"></a>Form tanıyıcı düzen hizmeti
 
-Azure form tanıyıcı, düzen hizmetini kullanarak belgelerden metin, tablo, seçim işareti ve yapı bilgilerini ayıklayabilir. Düzen API 'SI, müşterilerin belgeleri çeşitli biçimlerde almasını ve yapılandırılmış verileri ve belgenin temsilini döndürmesini sağlar. Güçlü [optik karakter tanıma (OCR)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) olanaklarımızın metin, tablo, seçim işaretlerini ve belge yapısını ayıklamak için derin öğrenme modellerini anlama başlıklı belge ile birleştirir. 
+Azure form tanıyıcı, düzen hizmetini kullanarak belgelerden metin, tablo, seçim işareti ve yapı bilgilerini ayıklayabilir. Düzen API 'SI, müşterilerin belgeleri çeşitli biçimlerde almasını ve yapılandırılmış verileri ve belgenin temsilini döndürmesini sağlar. Güçlü [optik karakter tanıma (OCR)](../computer-vision/concept-recognizing-text.md) olanaklarımızın metin, tablo, seçim işaretlerini ve belge yapısını ayıklamak için derin öğrenme modellerini anlama başlıklı belge ile birleştirir. 
 
 ## <a name="what-does-the-layout-service-do"></a>Düzen hizmeti ne yapar?
 
@@ -96,7 +96,3 @@ Düzen Ayrıca belgelerden seçim işaretlerini de ayıklar. Ayıklanan seçim i
 
 * [Form Tanıma nedir?](./overview.md)
 * [REST API başvuru belgeleri](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeLayoutAsync)
-
-
-
-

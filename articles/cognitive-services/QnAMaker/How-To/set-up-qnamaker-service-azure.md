@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 5185e7d0bd60eec239f1233db7f9789cbefc2c10
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 83917214705546b21553e997ccab11a7511f77fd
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006175"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353315"
 ---
 # <a name="manage-qna-maker-resources"></a>Soru-Cevap Oluşturma kaynaklarını yönetme
 
@@ -81,7 +81,7 @@ Soru-Cevap Oluşturma yönetim SKU 'sunu yükseltmek için:
 
  Bilgi tabanınızın istemci uygulamanızdan daha fazla istek sunması gerektiğinde App Service fiyatlandırma katmanınızı yükseltin.
 
-App Service [ölçeklendirebilir](https://docs.microsoft.com/azure/app-service/manage-scale-up) veya ölçeklendirebilirsiniz.
+App Service [ölçeklendirebilir](../../../app-service/manage-scale-up.md) veya ölçeklendirebilirsiniz.
 
 Azure portal App Service kaynağına gidin ve gereken kadar **ölçeği yukarı** veya **genişletme** seçeneğini belirleyin.
 
@@ -154,13 +154,13 @@ Ayrıca, App Service için aynı olacak otomatikleştirilmiş bir betiğimiz de 
 
 Yukarıda gösterilen üst düzey fikir aşağıdaki gibidir:
 
-1. [Azure eşlenmiş bölgelerde](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)iki paralel [soru-cevap oluşturma hizmeti](set-up-qnamaker-service-azure.md) ayarlayın.
+1. [Azure eşlenmiş bölgelerde](../../../best-practices-availability-paired-regions.md)iki paralel [soru-cevap oluşturma hizmeti](set-up-qnamaker-service-azure.md) ayarlayın.
 
 1. Birincil Soru-Cevap Oluşturma App Service 'i [yedekleyin](../../../app-service/manage-backup.md) ve ikincil kuruluma [geri yükleyin](../../../app-service/web-sites-restore.md) . Bu, her iki kurulum 'un aynı ana bilgisayar adı ve anahtarlarla çalışmasını sağlayacaktır.
 
 1. Birincil ve ikincil Azure arama dizinlerini eşitlenmiş halde tutun. Azure dizinlerini yedekleme ve geri yükleme işlemlerinin nasıl yapılacağını görmek için [burada](https://github.com/pchoudhari/QnAMakerBackupRestore) GitHub örneğini kullanın.
 
-1. Application Insights [sürekli dışarı aktarma](../../../application-insights/app-insights-export-telemetry.md)kullanarak yedekleyin.
+1. Application Insights [sürekli dışarı aktarma](../../../azure-monitor/app/export-telemetry.md)kullanarak yedekleyin.
 
 1. Birincil ve ikincil yığınlar kurulduktan sonra, iki uç noktayı yapılandırmak ve bir yönlendirme yöntemi ayarlamak için [Traffic Manager](../../../traffic-manager/traffic-manager-overview.md) 'ı kullanın.
 
@@ -386,4 +386,4 @@ Soru-Cevap Oluşturma bilgi tabanlarınız için kullanılan Azure kaynaklarınd
 [Uygulama hizmeti](../../../app-service/index.yml) ve [Arama hizmeti](../../../search/index.yml)hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
-> [Başkalarıyla nasıl yazarla ilgili bilgi edinin](../how-to/collaborate-knowledge-base.md)
+> [Başkalarıyla nasıl yazarla ilgili bilgi edinin](../index.yml)

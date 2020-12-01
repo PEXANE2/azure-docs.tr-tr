@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 94dc70d184de27b1c44f9817686630e04da830f9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 9a62576b65be04414580b42377398e27c4aa389c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521671"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353570"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-web-cargo-air"></a>Öğretici: Web Cargo AIR ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -54,7 +54,7 @@ Web Cargo AIR 'in Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeri
 
 ## <a name="configure-and-test-azure-ad-sso-for-web-cargo-air"></a>Web Cargo hava için Azure AD SSO 'Yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Web Cargo AIR Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Web Cargo AIR içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Web Cargo AIR Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Web Cargo AIR içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Web Cargo AIR ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
@@ -86,9 +86,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek oturum açma URL 'SI, tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [Web Cargo AIR istemci destek ekibine](mailto:support@webcargonet.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-1. . **SAML ile çoklu oturum açmayı ayarla** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML ile çoklu oturum açmayı ayarla** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
-    ![Sertifika indirme bağlantısı](common/certificatebase64.png)
+    ![The Certificate download link](common/certificatebase64.png)
 
 1. **Ayarlama Web Cargo AIR** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
@@ -104,7 +104,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

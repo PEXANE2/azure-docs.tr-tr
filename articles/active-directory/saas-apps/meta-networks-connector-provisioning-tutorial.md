@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/01/2019
 ms.author: Zhchia
-ms.openlocfilehash: ac41fb5ed6fd1e46719fcc39ccaf5b29375e7410
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: b6a8f192cd26639431cc9fcb6b43e1bc5e8e2843
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359910"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353638"
 ---
 # <a name="tutorial-configure-meta-networks-connector-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için meta Networks bağlayıcısını yapılandırma
 
@@ -66,11 +66,11 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
     ![Meta Networks bağlayıcı ayrıcalıkları](media/meta-networks-connector-provisioning-tutorial/privileges.png)
 
-5.  **Ekle** 'ye tıklayın. **Gizli anahtarı** kopyalayın ve tek bir zaman görüntüleyebilmeniz için kaydedin. Bu değer, Azure portal meta Networks bağlayıcı uygulamanızın sağlama sekmesindeki gizli belirteç alanına girilir.
+5.  **Ekle**'ye tıklayın. **Gizli anahtarı** kopyalayın ve tek bir zaman görüntüleyebilmeniz için kaydedin. Bu değer, Azure portal meta Networks bağlayıcı uygulamanızın sağlama sekmesindeki gizli belirteç alanına girilir.
 
     :::image type="content" source="media/meta-networks-connector-provisioning-tutorial/token.png" alt-text="Kullanıcılara bir P ı tuşunun eklendiğini söyleyen pencerenin ekran görüntüsü. Gizli dizi kutusu, şifresi ayrılabilir bir değer içerir ve vurgulanır." border="false":::
 
-6.  **Yönetim > ayarları > ıdp > Yeni oluştur** ' a giderek IDP ekleyin.
+6.  **Yönetim > ayarları > ıdp > Yeni oluştur**' a giderek IDP ekleyin.
 
     ![Meta Networks Bağlayıcısı IDP ekleme](media/meta-networks-connector-provisioning-tutorial/newidp.png)
 
@@ -80,7 +80,7 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
     ![Meta Networks Bağlayıcısı IDP simgesi](media/meta-networks-connector-provisioning-tutorial/icon.png)
 
-8.  **SCıM Yapılandır** altında, önceki ADıMLARDA oluşturulan API anahtarı adını seçin. **Kaydet** 'e tıklayın.
+8.  **SCıM Yapılandır** altında, önceki ADıMLARDA oluşturulan API anahtarı adını seçin. **Kaydet**'e tıklayın.
 
     ![Meta Networks Bağlayıcısı SCıM 'yi yapılandırma](media/meta-networks-connector-provisioning-tutorial/configure.png)
 
@@ -94,11 +94,11 @@ Azure AD ile otomatik Kullanıcı sağlaması için meta Networks bağlayıcıs�
 
 **Azure AD uygulama galerisinden meta Networks Bağlayıcısı eklemek için aşağıdaki adımları uygulayın:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** ' i seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -106,7 +106,7 @@ Azure AD ile otomatik Kullanıcı sağlaması için meta Networks bağlayıcıs�
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **meta ağlar Bağlayıcısı** ' nı girin, sonuçlar panelinde **meta ağlar Bağlayıcısı** ' nı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **meta ağlar Bağlayıcısı**' nı girin, sonuçlar panelinde **meta ağlar Bağlayıcısı** ' nı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
     ![Sonuçlar listesindeki meta ağlar Bağlayıcısı](common/search-new-app.png)
 
@@ -119,11 +119,11 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak Azure AD 'de Kullanıcı v
 
 ### <a name="to-configure-automatic-user-provisioning-for-meta-networks-connector-in-azure-ad"></a>Azure AD 'de meta ağlar Bağlayıcısı için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **meta ağlar Bağlayıcısı** ' nı seçin.
+2. Uygulamalar listesinde **meta ağlar Bağlayıcısı**' nı seçin.
 
     ![Uygulamalar listesindeki meta ağları bağlayıcı bağlantısı](common/all-applications.png)
 
@@ -131,7 +131,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak Azure AD 'de Kullanıcı v
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
@@ -139,13 +139,13 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak Azure AD 'de Kullanıcı v
 
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder** ' i işaretleyin.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet** ’e tıklayın.
+7. **Kaydet**’e tıklayın.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları meta ağlar Bağlayıcısı ile eşitler** ' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları meta ağlar Bağlayıcısı ile eşitler**' ı seçin.
 
     ![Meta Networks Bağlayıcısı Kullanıcı eşlemeleri](media/meta-networks-connector-provisioning-tutorial/usermappings.png)
 
@@ -153,7 +153,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak Azure AD 'de Kullanıcı v
 
     ![Meta Networks Bağlayıcısı Kullanıcı öznitelikleri](media/meta-networks-connector-provisioning-tutorial/userattributes.png)
 
-10. **Eşlemeler** bölümünde, **Azure Active Directory gruplarını meta Networks Bağlayıcısı olarak eşitler** ' ı seçin.
+10. **Eşlemeler** bölümünde, **Azure Active Directory gruplarını meta Networks Bağlayıcısı olarak eşitler**' ı seçin.
 
     ![Meta Networks bağlayıcı grubu eşlemeleri](media/meta-networks-connector-provisioning-tutorial/groupmappings.png)
 
@@ -171,7 +171,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni kullanarak Azure AD 'de Kullanıcı v
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-15. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

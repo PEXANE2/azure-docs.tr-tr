@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: Zhchia
-ms.openlocfilehash: a62afa9469caa886d86814036017427c0cc0d193
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 8fdd2c8a326fbdc68d1aec65377f4c465c5ee4c1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357445"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353910"
 ---
 # <a name="tutorial-configure-infor-cloudsuite-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Infor CloudSuite 'i yapılandırma
 
@@ -50,11 +50,11 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
 ## <a name="set-up-infor-cloudsuite-for-provisioning"></a>Sağlama için Infor CloudSuite 'i ayarlama
 
-1. [Infor CloudSuite yönetici konsolunda](https://www.infor.com/customer-center)oturum açın. Kullanıcı simgesine tıklayın ve ardından **Kullanıcı yönetimi** ' ne gidin.
+1. [Infor CloudSuite yönetici konsolunda](https://www.infor.com/customer-center)oturum açın. Kullanıcı simgesine tıklayın ve ardından **Kullanıcı yönetimi**' ne gidin.
 
     ![Infor CloudSuite Yönetici Konsolu](media/infor-cloudsuite-provisioning-tutorial/admin.png)
 
-2.  Ekranın sol üst köşesindeki menü simgesine tıklayın. **Yönet** ' e tıklayın.
+2.  Ekranın sol üst köşesindeki menü simgesine tıklayın. **Yönet**' e tıklayın.
 
     ![Infor CloudSuite SCıM Ekle](media/infor-cloudsuite-provisioning-tutorial/manage.png)
 
@@ -62,7 +62,7 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
     ![Cloudsuite Scim hesabı için ın](media/infor-cloudsuite-provisioning-tutorial/scim.png)
 
-4.  Artı simgesine tıklayarak bir yönetici kullanıcı ekleyin. Bir **SCIM parolası** sağlayın ve **Parolayı Onayla** ' nın altında aynı parolayı yazın. Parolayı kaydetmek için klasör simgesine tıklayın. Daha sonra yönetici kullanıcı için oluşturulan bir **Kullanıcı tanımlayıcısı** görürsünüz.
+4.  Artı simgesine tıklayarak bir yönetici kullanıcı ekleyin. Bir **SCIM parolası** sağlayın ve **Parolayı Onayla**' nın altında aynı parolayı yazın. Parolayı kaydetmek için klasör simgesine tıklayın. Daha sonra yönetici kullanıcı için oluşturulan bir **Kullanıcı tanımlayıcısı** görürsünüz.
 
     ![Cloudsuite Yönetici kullanıcısı için in](media/infor-cloudsuite-provisioning-tutorial/newuser.png)
     
@@ -70,7 +70,7 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
     :::image type="content" source="media/infor-cloudsuite-provisioning-tutorial/identifier.png" alt-text="Bir vurgulanan tablo satırını gösteren CloudSuite yönetici konsolunun ekran görüntüsü. Bu satır bir kullanıcı tanımlayıcısı, parolalar ve bir zaman damgası içerir." border="false":::
 
-5. Taşıyıcı belirtecini oluşturmak için **Kullanıcı tanımlayıcısı** ve **SCIM parolasını** kopyalayın. Bunları, iki nokta üst üste ile ayırarak Not defteri + + içine yapıştırın. **Eklenti > MIME araçları > Basic64 kodlama** ' ya giderek dize değerini kodlayın. 
+5. Taşıyıcı belirtecini oluşturmak için **Kullanıcı tanımlayıcısı** ve **SCIM parolasını** kopyalayın. Bunları, iki nokta üst üste ile ayırarak Not defteri + + içine yapıştırın. **Eklenti > MIME araçları > Basic64 kodlama**' ya giderek dize değerini kodlayın. 
 
     :::image type="content" source="media/infor-cloudsuite-provisioning-tutorial/token.png" alt-text="Bir not defteri + + belgesinin ekran görüntüsü. Eklentiler menüsünde, MIME araçları vurgulanır. MIME araçları menüsünde, Base64 kodlaması vurgulanır." border="false":::
 
@@ -82,11 +82,11 @@ Azure AD ile otomatik Kullanıcı sağlama için Infor CloudSuite 'i yapılandı
 
 **Azure AD Uygulama Galerisi 'nden CloudSuite Için Infor CloudSuite eklemek için aşağıdaki adımları uygulayın:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** ' i seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -110,7 +110,7 @@ Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan Clo
 
 ### <a name="to-configure-automatic-user-provisioning-for-infor-cloudsuite-in-azure-ad"></a>Azure AD 'de Infor CloudSuite için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -122,7 +122,7 @@ Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan Clo
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
@@ -130,13 +130,13 @@ Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan Clo
 
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder** ' i işaretleyin.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet** ’e tıklayın.
+7. **Kaydet**’e tıklayın.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları cloudsuite ' e eşitler** ' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları cloudsuite ' e eşitler**' ı seçin.
 
     ![Cloudsuite Kullanıcı eşlemeleri için ın](media/infor-cloudsuite-provisioning-tutorial/usermappings.png)
 
@@ -144,7 +144,7 @@ Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan Clo
 
     ![CloudSuite Kullanıcı öznitelikleri için Infor](media/infor-cloudsuite-provisioning-tutorial/userattributes.png)
 
-10. **Eşlemeler** bölümünde, **Azure Active Directory gruplarını Cloudsuite için ınsınıgt** ' yi seçin.
+10. **Eşlemeler** bölümünde, **Azure Active Directory gruplarını Cloudsuite için ınsınıgt**' yi seçin.
 
     ![CloudSuite Grup eşlemelerini geçersiz](media/infor-cloudsuite-provisioning-tutorial/groupmappings.png)
 
@@ -162,7 +162,7 @@ Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan Clo
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-15. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

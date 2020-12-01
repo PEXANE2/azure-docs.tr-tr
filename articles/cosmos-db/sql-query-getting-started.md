@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.author: tisande
-ms.openlocfilehash: 9176205b93519f0afac0c57f5da8593df6673c0f
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: c78e15a0656abd510bbc241d39ffd026afddfd96
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356629"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353672"
 ---
 # <a name="getting-started-with-sql-queries"></a>SQL sorgularını kullanmaya başlama
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -34,16 +34,16 @@ Azure Cosmos DB çoğu okuma ağır iş yükü, her iki nokta okuma ve SQL sorgu
 
 Her SDK ile **SQL sorgularının** nasıl yapılacağı hakkında bazı örnekler şunlardır:
 
-- [.NET SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-dotnet-v3sdk-samples#query-examples)
-- [Java SDK](https://docs.microsoft.com/azure/cosmos-db/sql-api-java-sdk-samples#query-examples)
-- [Node.js SDK’sı](https://docs.microsoft.com/azure/cosmos-db/sql-api-nodejs-samples#item-examples)
-- [Python SDK'sı](https://docs.microsoft.com/azure/cosmos-db/sql-api-python-samples#item-examples)
+- [.NET SDK](./sql-api-dotnet-v3sdk-samples.md#query-examples)
+- [Java SDK](./sql-api-java-sdk-samples.md#query-examples)
+- [Node.js SDK’sı](./sql-api-nodejs-samples.md#item-examples)
+- [Python SDK'sı](./sql-api-python-samples.md#item-examples)
 
 Bu belge geri kalanında Azure Cosmos DB SQL sorguları yazmaya nasıl başlacağınız gösterilmektedir. SQL sorguları, SDK veya Azure portal aracılığıyla çalıştırılabilir.
 
 ## <a name="upload-sample-data"></a>Örnek verileri karşıya yükle
 
-SQL API Cosmos DB hesabınızda, adlı bir kapsayıcı oluşturmak için [Veri Gezgini](https://docs.microsoft.com/azure/cosmos-db/data-explorer) açın `Families` . Oluşturulduktan sonra, bulmak ve açmak için veri yapıları tarayıcısını kullanın. `Families`Kapsayıcıda `Items` kapsayıcının adının hemen altında seçeneğini görürsünüz. Bu seçeneği açtığınızda, ' yeni öğe ' oluşturmak için ekranın ortasında menü çubuğunda bir düğme görürsünüz. Bu özelliği, aşağıdaki JSON öğelerini oluşturmak için kullanacaksınız.
+SQL API Cosmos DB hesabınızda, adlı bir kapsayıcı oluşturmak için [Veri Gezgini](./data-explorer.md) açın `Families` . Oluşturulduktan sonra, bulmak ve açmak için veri yapıları tarayıcısını kullanın. `Families`Kapsayıcıda `Items` kapsayıcının adının hemen altında seçeneğini görürsünüz. Bu seçeneği açtığınızda, ' yeni öğe ' oluşturmak için ekranın ortasında menü çubuğunda bir düğme görürsünüz. Bu özelliği, aşağıdaki JSON öğelerini oluşturmak için kullanacaksınız.
 
 ### <a name="create-json-items"></a>JSON öğeleri oluşturma
 

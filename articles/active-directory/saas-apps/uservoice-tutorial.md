@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 8e9739b705848edd721c9ebe0d36c25dd5b8d80c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 39b3104f9d6cbc004383bf2c50d07c4dd345fa3c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517795"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353615"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uservoice"></a>Öğretici: UserVoice ile Azure Active Directory tümleştirme
 
@@ -61,13 +61,13 @@ UserVoice 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için Galeri 'de
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **UserVoice**yazın, sonuç panelinden **UserVoice** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **UserVoice** yazın, sonuç panelinden **UserVoice** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuç listesinde UserVoice](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açma 'yı, **Britta Simon**adlı bir test kullanıcısına göre UserVoice ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma 'yı, **Britta Simon** adlı bir test kullanıcısına göre UserVoice ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve UserVoice 'daki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açmayı UserVoice ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -146,7 +146,7 @@ Azure AD çoklu oturum açmayı UserVoice ile yapılandırmak için aşağıdaki
  
     b. Azure portal kopyaladığınız **oturum açma URL 'si** değerini **SSO uzaktan oturum açma** metin kutusuna yapıştırın.
 
-    c. Azure portal kopyaladığınız **Logout URL** değerini, **SSO uzak Sign-Out metin kutusuna**yapıştırın.
+    c. Azure portal kopyaladığınız **Logout URL** değerini, **SSO uzak Sign-Out metin kutusuna** yapıştırın.
  
     d. Azure portal 'tan kopyaladığınız **parmak izi** değerini **geçerli sertifika SHA1 parmak izi** metin kutusuna yapıştırın.
     
@@ -168,13 +168,13 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension . Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

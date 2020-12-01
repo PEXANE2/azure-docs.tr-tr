@@ -1,6 +1,6 @@
 ---
-title: Azure CLı ile yönetilen bir görüntüden görüntü sürümüne geçiş
-description: Yönetilen bir görüntüden Azure CLı kullanarak paylaşılan görüntü galerisindeki görüntü sürümüne geçiş yapmayı öğrenin.
+title: Azure CLı ile bir görüntü sürümüne yönetilen görüntü kopyalama
+description: Azure CLı kullanarak paylaşılan görüntü galerisindeki bir görüntü sürümüne yönetilen bir görüntü kopyalamayı öğrenin.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
@@ -10,15 +10,15 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8631a411b26f91bc72e23ac7ff9fb2278f61168c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e53bebf9cdb8c0fc084d04550c7444c1c01be50
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87502894"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352873"
 ---
-# <a name="migrate-from-a-managed-image-to-an-image-version-using-the-azure-cli"></a>Azure CLı kullanarak yönetilen görüntüden görüntü sürümüne geçiş
-Paylaşılan görüntü galerisine geçirmek istediğiniz mevcut bir yönetilen görüntünüz varsa, doğrudan yönetilen görüntüden paylaşılan bir görüntü Galerisi görüntüsü oluşturabilirsiniz. Yeni görüntünüzü sınadıktan sonra, kaynak yönetilen görüntüyü silebilirsiniz. Ayrıca, [PowerShell](image-version-managed-image-powershell.md)kullanarak yönetilen bir görüntüden paylaşılan görüntü galerisine geçiş yapabilirsiniz.
+# <a name="clone-a-managed-image-to-an-image-version-using-the-azure-cli"></a>Azure CLı kullanarak bir görüntü sürümüne yönetilen görüntü kopyalama
+Paylaşılan görüntü galerisine kopyalamak istediğiniz mevcut bir yönetilen görüntünüz varsa, doğrudan yönetilen görüntüden paylaşılan bir görüntü Galerisi görüntüsü oluşturabilirsiniz. Yeni görüntünüzü sınadıktan sonra, kaynak yönetilen görüntüyü silebilirsiniz. Ayrıca, [PowerShell](image-version-managed-image-powershell.md)kullanarak yönetilen bir görüntüden paylaşılan görüntü galerisine geçiş yapabilirsiniz.
 
 Görüntü galerisindeki görüntülerin iki bileşeni vardır ve bu örnekte oluşturacağız:
 - **Görüntü tanımı** , görüntü ve kullanma gereksinimleri hakkında bilgi taşır. Bu, görüntünün Windows veya Linux, özelleştirilmiş veya Genelleştirilmiş, sürüm notları ve en düşük ve en yüksek bellek gereksinimlerini içerir. Bu, bir görüntü türünün tanımıdır. 
@@ -45,7 +45,7 @@ Bir görüntü tanımı için belirtebileceğiniz değerler hakkında daha fazla
 
 Galeride [az Sig Image-Definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create)kullanarak bir görüntü tanımı oluşturun.
 
-Bu örnekte, görüntü tanımı *Myımagedefinition*olarak adlandırılır ve [Genelleştirilmiş](./linux/shared-image-galleries.md#generalized-and-specialized-images) bir Linux işletim sistemi görüntüsü içindir. Windows işletim sistemi kullanan görüntülerin tanımını oluşturmak için kullanın `--os-type Windows` . 
+Bu örnekte, görüntü tanımı *Myımagedefinition* olarak adlandırılır ve [Genelleştirilmiş](./linux/shared-image-galleries.md#generalized-and-specialized-images) bir Linux işletim sistemi görüntüsü içindir. Windows işletim sistemi kullanan görüntülerin tanımını oluşturmak için kullanın `--os-type Windows` . 
 
 ```azurecli-interactive 
 resourceGroup=myGalleryRG

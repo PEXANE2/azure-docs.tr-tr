@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: af3935bab5cd4d6a2aa4a9e3250f6beec19a8ea4
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 5c8af8ddb7a0870de37b73cbe09965ee63c88ba1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95736688"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353757"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Form tanıyıcı önceden oluşturulmuş fatura modeli
 
-Azure form tanıyıcı, önceden oluşturulmuş fatura modellerini kullanarak satış faturalarından bilgileri çözümleyebilir ve ayıklayabilir. Fatura API 'SI, müşterilerin çeşitli biçimlerde faturalar almasını sağlar ve fatura işlemini otomatikleştirmek için yapılandırılmış verileri döndürür. Güçlü [optik karakter tanıma (OCR)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) olanaklarımızı, fatura ile ilgili ayrıntılı öğrenme modellerini anlamak için, gelişmiş bir deyişle, önemli bilgileri İngilizce olarak birleştirir. Metin, tablo ve müşteri, satıcı, fatura KIMLIĞI, fatura son tarihi, toplam, fatura tutarı, ödenecek vergi tutarı, sevk edilecek, fatura vb. gibi bilgileri ayıklar. Önceden oluşturulmuş fatura API 'SI, tanıyıcı v 2.1 Preview biçiminde herkese açık bir şekilde sunulmaktadır.
+Azure form tanıyıcı, önceden oluşturulmuş fatura modellerini kullanarak satış faturalarından bilgileri çözümleyebilir ve ayıklayabilir. Fatura API 'SI, müşterilerin çeşitli biçimlerde faturalar almasını sağlar ve fatura işlemini otomatikleştirmek için yapılandırılmış verileri döndürür. Güçlü [optik karakter tanıma (OCR)](../computer-vision/concept-recognizing-text.md) olanaklarımızı, fatura ile ilgili ayrıntılı öğrenme modellerini anlamak için, gelişmiş bir deyişle, önemli bilgileri İngilizce olarak birleştirir. Metin, tablo ve müşteri, satıcı, fatura KIMLIĞI, fatura son tarihi, toplam, fatura tutarı, ödenecek vergi tutarı, sevk edilecek, fatura vb. gibi bilgileri ayıklar. Önceden oluşturulmuş fatura API 'SI, tanıyıcı v 2.1 Preview biçiminde herkese açık bir şekilde sunulmaktadır.
 
 ## <a name="what-does-the-invoice-service-do"></a>Fatura hizmeti ne yapar?
 
@@ -80,8 +80,8 @@ Fatura hizmeti metin, tablolar ve 26 fatura alanlarını ayıklar. JSON çıkı�
 | CustomerId | string | Müşterinin başvuru KIMLIĞI | CıD-12345 |  |
 | PurchaseOrder | string | Bir satınalma siparişi başvuru numarası | PO-3333 | |  |
 | InvoiceId | string | Bu belirli faturaya ait kimlik (genellikle "fatura numarası") | INV-100 | |  |
-| InvoiceDate | tarih | Faturanın verildiği tarih | 11/15/2019 | 
-| DueDate | tarih | Bu faturaya ait tarih ödemesi vadesi | 12/15/2019 | 2019-12-15 | 2019-11-15 |
+| InvoiceDate | date | Faturanın verildiği tarih | 11/15/2019 | 
+| DueDate | date | Bu faturaya ait tarih ödemesi vadesi | 12/15/2019 | 2019-12-15 | 2019-11-15 |
 | SatıcıAdı | string | Bu faturayı oluşturan satıcı | CONTOSO LTD. | |
 | VendorAddress | string | Satıcının posta adresi | 123 456th St New York, NY, 10001 | |
 | VendorAddressRecipient | string | VendorAddress ile ilişkili ad | Contoso yönetim merkezleri | |
@@ -99,8 +99,8 @@ Fatura hizmeti metin, tablolar ve 26 fatura alanlarını ayıklar. JSON çıkı�
 | ServiceAddressRecipient | string | ServiceAddress ile ilişkili ad | Microsoft Hizmetleri | |
 | Havaletanceaddress | string | Müşteri için açık havale veya ödeme adresi | 123 New York, NY, 10001 havale |  |
 | Havaletanceaddressrecipient | string | Havaletanceaddress ile ilişkili ad | Contoso faturalandırma |  |
-| ServiceStartDate | tarih | Hizmet döneminin ilk tarihi (örneğin, bir yardımcı program fatura hizmeti dönemi) | 14.10.2019 | 2019-10-14 |
-| ServiceEndDate | tarih | Hizmet döneminin bitiş tarihi (örneğin, bir yardımcı program fatura hizmeti dönemi) | 11/14/2019 | 2019-11-14 |
+| ServiceStartDate | date | Hizmet döneminin ilk tarihi (örneğin, bir yardımcı program fatura hizmeti dönemi) | 14.10.2019 | 2019-10-14 |
+| ServiceEndDate | date | Hizmet döneminin bitiş tarihi (örneğin, bir yardımcı program fatura hizmeti dönemi) | 11/14/2019 | 2019-11-14 |
 | Previousunpaıdbakiye | sayı | Açık önceden Ödenmemiş bakiye | 500,00 ABD doları | 500 |
 
 
@@ -113,4 +113,3 @@ Fatura hizmeti metin, tablolar ve 26 fatura alanlarını ayıklar. JSON çıkı�
 
 * [Form Tanıma nedir?](./overview.md)
 * [REST API başvuru belgeleri](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeInvoiceAsync)
-

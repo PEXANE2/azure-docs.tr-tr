@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/20/2020
 ms.author: encorona
-ms.openlocfilehash: a24f1337a68f38db273688e9a91c65ac2f4736b4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 737b6e0534111924a31204d4548dfa59805c2fe5
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94963615"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352584"
 ---
 # <a name="update-a-command-from-a-web-endpoint"></a>Web uç noktasından bir komutu güncelleştirme
 
@@ -23,13 +23,13 @@ ms.locfileid: "94963615"
 
 Bu makalede, bir Web uç noktasından devam eden bir komutun nasıl güncelleştireceğinizi öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 > [!div class = "checklist"]
 > * Önceden oluşturulmuş [Özel Komutlar uygulaması](quickstart-custom-commands-application.md)
 
 ## <a name="create-an-azure-function"></a>Azure işlevi oluşturma 
 
-Bu örnekte, aşağıdaki girişi (veya bu girişin bir alt kümesini) destekleyen HTTP ile tetiklenen bir [Azure işlevi](https://docs.microsoft.com/azure/azure-functions/) gerekir:
+Bu örnekte, aşağıdaki girişi (veya bu girişin bir alt kümesini) destekleyen HTTP ile tetiklenen bir [Azure işlevi](../../azure-functions/index.yml) gerekir:
 
 ```JSON
 {
