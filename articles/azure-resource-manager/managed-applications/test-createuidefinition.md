@@ -5,18 +5,18 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: f45e8435ea26e575398801471904b5038a518a44
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: f76d3b81c2d5425f7bb91c5c86a79faa097794e3
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948842"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435010"
 ---
 # <a name="test-your-portal-interface-for-azure-managed-applications"></a>Azure yönetilen uygulamalar için Portal arabiriminizi test etme
 
 Yönetilen uygulamanız için [dosyada createUiDefinition.js](create-uidefinition-overview.md) oluşturduktan sonra, Kullanıcı deneyimini test etmeniz gerekir. Sınamayı basitleştirmek için, dosyanızı portala yükleyen bir korumalı alan ortamı kullanın. Yönetilen uygulamanızı gerçekten dağıtmanız gerekmez. Korumalı alan, Kullanıcı arabiriminizi geçerli, tam ekran portalı deneyiminde gösterir. Ya da, arabirimi test etmek için bir komut dosyası kullanabilirsiniz. Her iki yaklaşım da bu makalede gösterilmektedir. Korumalı alan, arabirimi önizlemek için önerilen yoldur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Dosyadaki bir **createUiDefinition.js** . Bu dosyaya sahip değilseniz [örnek dosyayı](https://github.com/Azure/azure-quickstart-templates/blob/master/100-marketplace-sample/createUiDefinition.json)kopyalayın.
 
@@ -38,7 +38,7 @@ Yönetilen uygulamanız için [dosyada createUiDefinition.js](create-uidefinitio
 
 ### <a name="troubleshooting"></a>Sorun giderme
 
-**Önizleme**seçildikten sonra formunuz görünmezse, bir sözdizimi hatası olabilir. Sağ kaydırma çubuğunda kırmızı göstergeyi bulun ve üzerine gelin.
+**Önizleme** seçildikten sonra formunuz görünmezse, bir sözdizimi hatası olabilir. Sağ kaydırma çubuğunda kırmızı göstergeyi bulun ve üzerine gelin.
 
 ![Sözdizimi göster hatası](./media/test-createuidefinition/show-syntax-error.png)
 
@@ -104,4 +104,4 @@ Portal Arabiriminizin beklendiği gibi çalıştığını doğruladığınıza g
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Portal arabiriminizi doğruladıktan sonra [Azure yönetilen uygulamanızı Market 'te kullanılabilir](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)hale getirme hakkında bilgi edinin.
+Portal arabiriminizi doğruladıktan sonra [Azure yönetilen uygulamanızı Market 'te kullanılabilir](../../marketplace/create-new-azure-apps-offer.md)hale getirme hakkında bilgi edinin.

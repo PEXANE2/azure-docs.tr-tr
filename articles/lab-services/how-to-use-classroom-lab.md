@@ -3,12 +3,12 @@ title: Azure Lab Services’teki bir sınıf laboratuvarına erişme | Microsoft
 description: Bir sınıf laboratuvarına kaydolma, erişebileceğiniz tüm laboratuvarları görüntüleme, laboratuvardaki bir VM 'yi başlatma/durdurma ve VM 'ye bağlanma hakkında bilgi edinin.
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 0c2f0ba5e6a47e00f47a31e08c036ea17ff2507a
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 6d5585082473a363df5f25f331475536544ae828
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946119"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433147"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Azure Lab Services’teki bir sınıf laboratuvarına erişme
 Bu makalede bir derslik laboratuvarına kaydolma, erişebileceğiniz tüm laboratuvarları görüntüleme, laboratuvardaki bir VM 'yi başlatma/durdurma ve VM 'ye bağlanma işlemlerinin nasıl yapılacağı açıklanır. 
@@ -26,10 +26,10 @@ Bu makalede bir derslik laboratuvarına kaydolma, erişebileceğiniz tüm labora
 
     ![Erişilebilir VM 'Ler](./media/tutorial-connect-vm-in-classroom-lab/accessible-vms.png)
 1. Sanal makine hazırlanana kadar bekleyin. VM kutucuğunda aşağıdaki alanlara dikkat edin:
-    1. Kutucuğun en üstünde, **laboratuvarın adını**görürsünüz.
+    1. Kutucuğun en üstünde, **laboratuvarın adını** görürsünüz.
     1. Sağ tarafta, VM 'nin **işletim sistemini (OS)** temsil eden simgeyi görürsünüz. Bu örnekte, Windows işletim sistemi. 
     1. Sanal makineyi başlatmak/durdurmak ve sanal makineye bağlanmak için kutucuğun altında simgeler/düğmeler görürsünüz. 
-    1. Düğmelerin sağında VM 'nin durumunu görürsünüz. VM 'nin durumunun **durdurulmuş**olduğunu görtığınızdan emin olun.
+    1. Düğmelerin sağında VM 'nin durumunu görürsünüz. VM 'nin durumunun **durdurulmuş** olduğunu görtığınızdan emin olun.
 
         ![Durdurulmuş durumda VM](./media/tutorial-connect-vm-in-classroom-lab/vm-in-stopped-state.png)
 
@@ -37,7 +37,7 @@ Bu makalede bir derslik laboratuvarına kaydolma, erişebileceğiniz tüm labora
 1. Aşağıdaki görüntüde gösterildiği gibi ilk düğmeyi seçerek VM 'yi **başlatın** . Bu işlem biraz zaman alır.  
 
     ![VM’yi başlatma](./media/tutorial-connect-vm-in-classroom-lab/start-vm.png)
-4. VM durumunun **çalışıyor**olarak ayarlandığını onaylayın. 
+4. VM durumunun **çalışıyor** olarak ayarlandığını onaylayın. 
 
     ![Çalışır durumda VM](./media/tutorial-connect-vm-in-classroom-lab/vm-running.png)
 
@@ -62,7 +62,7 @@ Kutucukta ilerleme çubuğu, size atanan [Kota saati](how-to-configure-student-u
 - Bir kota atanmamışsa (sıfır saat), **sınıflar sırasında kullanılabilen metin yalnızca** ilerleme çubuğunun yerine gösterilir. 
     
     ![Hiçbir kota ayarlanmamışsa durum](./media/tutorial-connect-vm-in-classroom-lab/available-during-class.png)
-- **Kotanın**tükendiğinden, ilerleme çubuğunun rengi **kırmızı**olur. 
+- **Kotanın** tükendiğinden, ilerleme çubuğunun rengi **kırmızı** olur. 
 
     ![Kırmızı renkte ilerleme çubuğu](./media/tutorial-connect-vm-in-classroom-lab/progress-bar-red-color.png)
 - İlerleme çubuğunun rengi, laboratuvar için zamanlanan sürenin dışındaysa **mavi** , bazı kota süresi kullanılır. 
@@ -70,8 +70,8 @@ Kutucukta ilerleme çubuğu, size atanan [Kota saati](how-to-configure-student-u
     ![Mavi renkte ilerleme çubuğu](./media/tutorial-connect-vm-in-classroom-lab/progress-bar-blue-color.png)
 
 
-## <a name="view-all-the-classroom-labs"></a>Tüm sınıf laboratuvarlarını görüntüleme
-Laboratuvarlara kaydolduktan sonra, aşağıdaki adımları uygulayarak tüm sınıf laboratuvarlarını görüntüleyebilirsiniz: 
+## <a name="view-all-the-labs"></a>Tüm laboratuvarları görüntüleyin
+Laboratuvarlara kaydolduktan sonra, aşağıdaki adımları uygulayarak tüm laboratuvarları görüntüleyebilirsiniz: 
 
 1. Öğesine gidin [https://labs.azure.com](https://labs.azure.com) . Internet Explorer 11 henüz desteklenmiyor. 
 2. Laboratuvara kaydolmak için kullandığınız kullanıcı hesabını kullanarak hizmette oturum açın. 

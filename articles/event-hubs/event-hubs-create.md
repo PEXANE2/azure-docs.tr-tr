@@ -1,21 +1,21 @@
 ---
 title: Azure hızlı başlangıç-Azure portal kullanarak bir olay hub 'ı oluşturma
-description: Bu hızlı başlangıçta Azure portalı kullanarak Azure olay hub'ı oluşturmayı ve .NET Standard SDK kullanarak olay gönderip almayı öğreneceksiniz.
+description: Bu hızlı başlangıçta Azure portal kullanarak bir Azure Olay Hub 'ı oluşturmayı öğreneceksiniz.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 84cafcc86142cb9b97639c023971e7d290fc79fc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c1244317655815da91429585eff9ffbcc16662d4
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88927893"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435510"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>Hızlı başlangıç: Azure portalı kullanarak olay hub'ı oluşturma
-Azure Event Hubs saniyede milyonlarca olay alıp işleme kapasitesine sahip olan bir Büyük Veri akış platformu ve olay alma hizmetidir. Event Hubs dağıtılan yazılımlar ve cihazlar tarafından oluşturulan olayları, verileri ve telemetrileri işleyebilir ve depolayabilir. Bir olay hub’ına gönderilen veriler, herhangi bir gerçek zamanlı analiz sağlayıcısı ve işlem grubu oluşturma/depolama bağdaştırıcıları kullanılarak dönüştürülüp depolanabilir. Olay Hub’larının ayrıntılı genel bakışı için bkz. [Olay Hub’larına genel bakış](event-hubs-about.md) ve [Olay Hub’ları özellikleri](event-hubs-features.md).
+Azure Event Hubs, saniye başına milyonlarca olayı alabilen ve işleyesağlayan büyük bir veri akışı platformu ve olay alma hizmetidir. Event Hubs dağıtılan yazılımlar ve cihazlar tarafından oluşturulan olayları, verileri ve telemetrileri işleyebilir ve depolayabilir. Bir olay hub’ına gönderilen veriler, herhangi bir gerçek zamanlı analiz sağlayıcısı ve işlem grubu oluşturma/depolama bağdaştırıcıları kullanılarak dönüştürülüp depolanabilir. Olay Hub’larının ayrıntılı genel bakışı için bkz. [Olay Hub’larına genel bakış](event-hubs-about.md) ve [Olay Hub’ları özellikleri](event-hubs-features.md).
 
 Bu hızlı başlangıçta [Azure portalı](https://portal.azure.com) kullanarak olay hub'ı oluşturacaksınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emin olun:
 
@@ -26,12 +26,12 @@ Bu hızlı başlangıcı tamamlamak için aşağıdakileri yaptığınızdan emi
 Kaynak grubu, Azure kaynakları için mantıksal bir koleksiyondur. Tüm kaynaklar bir kaynak grubuna dağıtılır ve buradan yönetilir. Kaynak grubu oluşturmak için:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. Soldaki menüden **Kaynak grupları**'na tıklayın. Daha sonra **Ekle**'ye tıklayın.
+1. Sol gezinti bölmesinde **kaynak grupları**' nı seçin. Ardından **Ekle**'yi seçin.
 
    ![Kaynak grupları - Ekle düğmesi](./media/event-hubs-quickstart-portal/resource-groups1.png)
 
-1. **Abonelik**için, kaynak grubunu oluşturmak istediğiniz Azure aboneliğinin adını seçin.
-1. **Kaynak grubu için**benzersiz bir ad yazın. Sistem, adın seçili Azure aboneliğinde var olup olmadığını kontrol eder.
+1. **Abonelik** için, kaynak grubunu oluşturmak istediğiniz Azure aboneliğinin adını seçin.
+1. **Kaynak grubu için** benzersiz bir ad yazın. Sistem, adın seçili Azure aboneliğinde var olup olmadığını kontrol eder.
 1. Kaynak grubu için bir **bölge** seçin.
 1. **Gözden geçir + oluştur**' u seçin.
 
@@ -40,9 +40,9 @@ Kaynak grubu, Azure kaynakları için mantıksal bir koleksiyondur. Tüm kaynakl
 
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs ad alanı oluşturma
 
-Event Hubs ad alanı, tam etki alanı adının başvurduğu, içinde bir veya daha fazla olay hub'ı oluşturduğunuz benzersiz bir kapsam kapsayıcısı sağlar. Portalı kullanarak kaynak grubunuzda bir ad alanı oluşturmak için aşağıdaki eylemleri gerçekleştirin:
+Bir Event Hubs ad alanı, bir veya daha fazla olay hub 'ı oluşturduğunuz benzersiz bir kapsam kapsayıcısı sağlar. Portalı kullanarak kaynak grubunuzda bir ad alanı oluşturmak için aşağıdaki eylemleri gerçekleştirin:
 
-1. Azure portalda ekranın sol üst köşesindeki **Kaynak oluştur**'a tıklayın.
+1. Azure portalda ekranın sol üst köşesindeki **Kaynak oluştur**'u seçin.
 1. Sol taraftaki menüden **tüm hizmetler** ' i seçin ve **analiz** kategorisinde **Event Hubs** ' ın yanındaki **yıldız ( `*` )** seçeneğini belirleyin. **Event Hubs** sol gezinti menüsünde **Sık kullanılanlara** eklendiğini doğrulayın. 
     
    ![Event Hubs arayın](./media/event-hubs-quickstart-portal/select-event-hubs-menu.png)
@@ -53,9 +53,9 @@ Event Hubs ad alanı, tam etki alanı adının başvurduğu, içinde bir veya da
    1. Ad alanını oluşturmak istediğiniz **aboneliği** seçin.  
    1. Önceki adımda oluşturduğunuz **kaynak grubunu** seçin.   
    1. Ad alanı için bir **ad** girin. Adın kullanılabilirliği sistem tarafından hemen kontrol edilir.  
-   1. Ad alanı için bir **konum** seçin.      
-   1. **Fiyatlandırma katmanını** (temel veya standart) seçin.    
-   1. **Verimlilik birimleri** ayarlarını olduğu gibi bırakın. İşleme birimleri hakkında bilgi edinmek için bkz. [Event Hubs ölçeklenebilirlik](event-hubs-scalability.md#throughput-units).  
+   1. Ad alanı için bir **konum** seçin.
+   1. **Fiyatlandırma katmanını** (temel veya standart) seçin. Temel ve standart Katmanlar arasındaki farklılıklar hakkında bilgi edinmek için bkz. [Event Hubs fiyatlandırması](https://azure.microsoft.com/pricing/details/event-hubs/), Katmanlar [ve kotalar ile sınırlamalar](event-hubs-quotas.md) [arasındaki farklar](event-hubs-faq.md#what-is-the-difference-between-event-hubs-basic-and-standard-tiers). 
+   1. **Verimlilik birimleri** ayarlarını olduğu gibi bırakın. İşleme birimleri önceden satın alınan kapasite birimleridir. İşleme birimleri hakkında bilgi edinmek için bkz. [Event Hubs ölçeklenebilirlik](event-hubs-scalability.md#throughput-units).  
    1. Sayfanın alt kısmındaki **gözden geçir + oluştur** ' u seçin.
       
       ![Olay hub’ı ad alanı oluşturma](./media/event-hubs-quickstart-portal/create-event-hub1.png)
@@ -78,19 +78,23 @@ Event Hubs ad alanı, tam etki alanı adının başvurduğu, içinde bir veya da
 Ad alanında bir olay hub'ı oluşturmak için aşağıdaki eylemleri gerçekleştirin:
 
 1. Event Hubs ad alanı sayfasında, soldaki menüden **Event Hubs** ' i seçin.
-1. Pencerenin en üstündeki **+ Olay Hub’ı** seçeneğine tıklayın.
+1. Pencerenin üst kısmında **+ Event hub**' ı seçin.
    
     ![Olay Hub'ı Ekle - düğme](./media/event-hubs-quickstart-portal/create-event-hub4.png)
-1. Olay hub'ınız için bir ad yazın, ardından **Oluştur**’a tıklayın.
+1. Olay Hub 'ınız için bir ad yazın ve **Oluştur**' u seçin.
    
     ![Olay hub'ı oluşturma](./media/event-hubs-quickstart-portal/create-event-hub5.png)
-1. Uyarı ' da Olay Hub 'ı oluşturma durumunu kontrol edebilirsiniz. Olay Hub 'ı oluşturulduktan sonra, aşağıdaki görüntüde gösterildiği gibi Olay Hub 'ları listesinde görürsünüz:
+
+    **Bölüm sayısı** ayarı, birçok tüketici genelinde tüketim paralel hale getirmek sağlar. Daha fazla bilgi için bkz. [bölümler](event-hubs-scalability.md#partitions).
+
+    **İleti bekletme** ayarı, Event Hubs hizmetinin verileri ne kadar süreyle tutacağını belirtir. Bu ayar için en fazla sınır için bkz. [Kotalar ve sınırlar](event-hubs-quotas.md).
+1. Uyarı ' da Olay Hub 'ı oluşturma durumunu kontrol edebilirsiniz. Olay Hub 'ı oluşturulduktan sonra, bunu Olay Hub 'ları listesinde görürsünüz.
 
     ![Olay Hub 'ı oluşturuldu](./media/event-hubs-quickstart-portal/event-hub-created.png)
-
+    
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede bir kaynak grubu, bir Event Hubs ad alanı ve bir olay hub'ı oluşturdunuz. Olay Hub 'ından olay alma (veya) olayları gönderme hakkında adım adım yönergeler için, bkz. **olayları gönderme ve alma** öğreticileri: 
+Bu makalede bir kaynak grubu, bir Event Hubs ad alanı ve bir olay hub'ı oluşturdunuz. Olay Hub 'ından olay alma (veya) olaylarını gönderme hakkında adım adım yönergeler için şu öğreticilere bakın: 
 
 - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
 - [Java](event-hubs-java-get-started-send.md)

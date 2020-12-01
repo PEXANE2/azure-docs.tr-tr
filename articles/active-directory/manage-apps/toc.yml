@@ -192,8 +192,16 @@
           href: application-proxy-remove-personal-data.md
         - name: Özel etki alanı yapılandırma
           href: application-proxy-configure-custom-domain.md
-        - name: Uygulama teslim denetleyicileri veya ağlarla eski uygulamaları güvenli hale getirme
-          href: secure-hybrid-access.md
+        - name: Eski uygulamaların güvenliğini sağlama
+          items:
+            - name: Azure AD ile hibrit erişimin güvenliğini sağlama
+              href: secure-hybrid-access.md
+            - name: F5 ve Azure AD tümleştirmesi
+              href: f5-aad-integration.md
+            - name: Azure IaaS üzerinde F5 BIG-IP VE dağıtımı
+              href: f5-bigip-deployment-guide.md
+            - name: Parolasız VPN için Azure AD ile F5 Big-IP
+              href: f5-aad-password-less-vpn.md
         - name: Adım adım kılavuzlar yayımlama
           items:
             - name: NDES sunucusunda Uygulama Proxy’si ile tümleştirme

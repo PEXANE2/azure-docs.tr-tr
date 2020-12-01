@@ -3,19 +3,19 @@ title: Azure Lab Services ' de laboratuvar için sanal makinelerin otomatik olar
 description: Uzak Masaüstü bağlantısı kesildiğinde sanal makinelerin otomatik olarak kapatılmasını etkinleştirmeyi veya devre dışı bırakmayı öğrenin.
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: 67b51941207fdd4913df9a92362959bbd468d336
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f9080f3b7b762d3b9fa448a903a4167cd2cec4a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91649890"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433941"
 ---
 # <a name="configure-automatic-shutdown-of-vms-for-a-lab"></a>Laboratuvar için sanal makinelerin otomatik olarak kapatılmasını yapılandırma
 
 Bu makalede, bir laboratuvar için sanal makinelerin otomatik olarak kapatılmasını nasıl yapılandırabileceğiniz gösterilmektedir.
 
 Sanal makineler etkin bir şekilde kullanılmadığınızda, ek maliyetleri önceden engellemek için birkaç otomatik kapalı maliyet denetimi özelliği etkinleştirebilirsiniz. Aşağıdaki üç otomatik kapatılma ve bağlantı kesme özelliğinin birleşimi, kullanıcıların sanal makinelerini yanlışlıkla bırakması için gereken durumların çoğunu yakalar:
- 
+ 
 * İşletim sisteminin boşta kaldığı sanal makinelerle kullanıcıların bağlantısını otomatik olarak keser.
 * Kullanıcıların bağlantısı kesildiğinde sanal makineleri otomatik olarak kapat.
 * Başlatılan ancak kullanıcılar bağlanmadığında sanal makineleri otomatik olarak kapat.
@@ -29,7 +29,7 @@ Laboratuvar hesabı Yöneticisi, laboratuvarları oluşturduğunuz laboratuvar h
 [Azure Lab Services](https://labs.azure.com/)otomatik kapatılma ayarını yapılandırabilirsiniz.
 
 * Laboratuvar oluştururken ( **Laboratuvar ilkelerinde**) veya
-* Laboratuvar oluşturulduktan sonra ( **Ayarlar**halinde)
+* Laboratuvar oluşturulduktan sonra ( **Ayarlar** halinde)
 
 > [!div class="mx-imgBorder"]
 > ![Laboratuvar oluşturma sırasında yapılandırma](./media/how-to-enable-shutdown-disconnect/configure-lab-creation.png)
@@ -40,4 +40,4 @@ Otomatik [kapanmayla ilgili ayrıntıları otomatik kapatmalar ayarları Ile en 
 > Bir sanal makineye bir RDP oturumunun bağlantısını kesmeden önce Linux veya Windows işletim sistemini (OS) kapatırsanız, oto kapatma özelliği düzgün çalışmaz.  
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Sınıf laboratuvarları panosu](use-dashboard.md)
+[Labs için Pano](use-dashboard.md)

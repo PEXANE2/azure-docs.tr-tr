@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/21/2020
+ms.date: 11/10/2020
 ms.author: memildin
-ms.openlocfilehash: b7c4c0565d17e62226a518bc443223df8339faec
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0e853a4ce1e3891ddffd2f9fb1315da49a896933
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949386"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433231"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenlik puanı
 
@@ -70,8 +70,6 @@ Daha sonra, güvenli puanınız Güvenlik Merkezi 'nin Portal sayfalarında aşa
 
     :::image type="content" source="./media/secure-score-security-controls/score-on-recommendations-page.png" alt-text="Güvenlik Merkezi 'nin öneriler sayfasında güvenli puan":::
 
-
-
 ### <a name="get-your-secure-score-from-the-rest-api"></a>REST API güvenli puanınızı alın
 
 Puanınızı güvenli Puanlama API 'SI (Şu anda önizleme aşamasında) aracılığıyla erişebilirsiniz. API yöntemleri, verileri sorgulama ve zaman içinde güvenli Puanlarınızın kendi raporlama mekanizmanızı oluşturma esnekliğini sağlar. Örneğin, belirli bir aboneliğin Puanını almak için [güvenli puanlar API](/rest/api/securitycenter/securescores) 'sini kullanabilirsiniz. Ayrıca, güvenlik denetimlerini ve aboneliklerinizin geçerli Puanını listelemek için [güvenli puan DENETIMLERI API](/rest/api/securitycenter/securescorecontrols) 'sini de kullanabilirsiniz.
@@ -79,8 +77,6 @@ Puanınızı güvenli Puanlama API 'SI (Şu anda önizleme aşamasında) aracıl
 ![API aracılığıyla tek bir güvenli puan alma](media/secure-score-security-controls/single-secure-score-via-api.png)
 
 Güvenli Puanlama API 'sinin üzerine inşa eden araçların örnekleri için bkz. [GitHub topluluğumuz güvenli Puanlama alanı](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score). 
-
-
 
 ### <a name="get-your-secure-score-from-azure-resource-graph-arg"></a>Azure Kaynak Grafınızdan (ARG) güvenli puanınızı alın
 
@@ -114,13 +110,34 @@ Bağımsız değişken ile birden çok aboneliğin güvenli puanına erişmek i�
 
 1. **Sorguyu Çalıştır**' ı seçin.
 
+
+
+
+## <a name="tracking-your-secure-score-over-time"></a>Zaman içinde güvenli puanınızı izleme
+
+Pro hesabıyla Power BI bir Kullanıcı kullanıyorsanız, zaman içinde güvenli puanı izlemek ve tüm değişiklikleri araştırmak için **zaman Içinde güvenli puan** Power BI panosunu kullanabilirsiniz.
+
+> [!TIP]
+> GitHub 'daki Azure Güvenlik Merkezi topluluğunun ayrılmış alanında bu panoyu ve güvenli Puanlama ile program aracılığıyla çalışmaya yönelik diğer araçları bulabilirsiniz: https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score
+
+Pano, güvenlik durumunuzu çözümlemenize yardımcı olacak aşağıdaki iki raporu içerir:
+
+- **Kaynaklar Özeti** -kaynaklarınızın sistem durumuyla ilgili özetlenen verileri sağlar.
+- **Güvenli puan özeti** -puanınızın ilerleme durumuyla ilgili özetlenmiş veriler sağlar. Puandaki değişiklikleri görüntülemek için "abonelik başına süre içinde güvenli puan" grafiğini kullanın. Puanınızın önemli bir değişikliği fark ederseniz, değişikliğe neden olabilecek değişiklikler için "güvenli puanınızı etkileyebilecek algılanan değişiklikler" tablosunu kontrol edin. Bu tablo, önerilerden biri için silinen kaynakları, yeni dağıtılan kaynakları veya güvenlik durumunun değiştiği kaynakları gösterir.
+
+:::image type="content" source="./media/secure-score-security-controls/power-bi-secure-score-dashboard.png" alt-text="Zaman içinde güvenli puanınızı izlemek ve değişiklikleri araştırmak için zaman Içinde isteğe bağlı güvenli puan":::
+
+
+
+
+
 ## <a name="how-your-secure-score-is-calculated"></a>Güvenli puanınızın hesaplanması 
 
 Her güvenlik denetiminin genel güvenli puana doğru katkısı, öneriler sayfasında net bir şekilde gösterilir.
 
 [![Gelişmiş güvenli skor güvenlik denetimlerini tanıtır](media/secure-score-security-controls/security-controls.png)](media/secure-score-security-controls/security-controls.png#lightbox)
 
-Bir güvenlik denetimine yönelik tüm olası noktaları almak için, tüm kaynaklarınızın güvenlik denetimindeki tüm güvenlik önerilerine uyması gerekir. Örneğin, güvenlik merkezi 'nin Yönetim bağlantı noktalarınızı güvenli hale getirmeye yönelik birden çok önerisi vardır. Geçmişte, diğer sorunları çözbırakırken ve güvenli puanınızın iyileştirecağından ilgili ve birbirine bağlı önerilerin bazılarını düzeltebilirsiniz. Objecas 'e baktığı zaman, güvenlerinizin tümünü çözümlene kadar iyileştirildiğinden emin olmak çok kolay. Şimdi, güvenli puanınız için fark yapmak üzere tümünü düzeltmeniz gerekir.
+Bir güvenlik denetimine yönelik tüm olası noktaları almak için, tüm kaynaklarınızın güvenlik denetimindeki tüm güvenlik önerilerine uyması gerekir. Örneğin, güvenlik merkezi 'nin Yönetim bağlantı noktalarınızı güvenli hale getirmeye yönelik birden çok önerisi vardır. Güvenli puanınız için fark yapmak üzere tümünü düzeltmeniz gerekir.
 
 Örneğin, "sistem güncelleştirmelerini Uygula" adlı güvenlik denetiminde en fazla altı puan bulunur ve bu, denetimin olası artış değerindeki araç ipucunda görebileceğiniz şekilde:
 
@@ -137,9 +154,9 @@ Bu denetim için en yüksek puan, sistem güncelleştirmelerini Uygula, her zama
 
 |Ölçüm|Formül ve örnek|
 |-|-|
-|**Güvenlik denetiminin geçerli puanı**|<br>![Güvenlik denetiminin geçerli Puanını hesaplama denklemi](media/secure-score-security-controls/security-control-scoring-equation.png)<br><br>Her bireysel güvenlik denetimi güvenlik puanına katkıda bulunur. Denetim içindeki bir öneriden etkilenen her kaynak, denetimin geçerli puanına doğru katkıda bulunur. Her denetim için geçerli *puan, denetimdeki kaynakların durumunun* ölçüsüdür.<br>![Güvenlik denetiminin geçerli puanı hesaplanırken kullanılan değerleri gösteren araç ipuçları](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>Bu örnekte, sağlıklı ve sağlıksız kaynakların toplamı olduğundan, 6 ' nın en fazla puanı 78 olarak bölünür.<br>6/78 = 0,0769<br>Sağlıklı kaynak sayısına (4) göre çarpılması geçerli puanın sonucunu elde ediyor:<br>0,0769 * 4 = **0,31**<br><br>|
-|**Güvenlik puanı**<br>Tek abonelik|<br>![Geçerli güvenli puanı hesaplama denklemi](media/secure-score-security-controls/secure-score-equation.png)<br><br>![Tüm denetimler etkin olan tek abonelik güvenli puanı](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>Bu örnekte, kullanılabilen tüm güvenlik denetimlerine sahip tek bir abonelik vardır (en fazla 60 punto puanı). Puan, olası bir 60 28 noktayı gösterir ve kalan 32 noktaları, güvenlik denetimlerinin "potansiyel puan artışı" biçiminde yansıtılır.<br>![Denetimlerin listesi ve olası puan artışı](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|
-|**Güvenlik puanı**<br>Birden çok abonelik|<br>Tüm aboneliklerdeki tüm kaynakların geçerli puanları eklenir ve hesaplama daha sonra tek bir abonelikle aynı olur<br><br>Birden çok abonelik görüntülenirken, güvenli puan tüm etkin ilkelerin içindeki tüm kaynakları değerlendirir ve her bir güvenlik denetiminin en fazla puanı üzerinde Birleşik etkileri gruplandırır.<br>![Tüm denetimler etkin olan birden çok abonelik için güvenli puan](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>Birleşik puan bir ortalama **değil** ; Bunun yerine, tüm aboneliklerdeki tüm kaynakların durumunun değerlendirilmiş bir şekilde olduğunu gösterir.<br>Burada, öneriler sayfasına giderseniz ve kullanılabilir olası noktaları eklerseniz, geçerli puan (24) ile kullanılabilir maksimum puan (60) arasındaki fark olduğunu göreceksiniz.|
+|**Güvenlik denetiminin geçerli puanı**|<br>![Güvenlik denetiminin Puanını hesaplama denklemi](media/secure-score-security-controls/secure-score-equation-single-control.png)<br><br>Her bireysel güvenlik denetimi güvenlik puanına katkıda bulunur. Denetim içindeki bir öneriden etkilenen her kaynak, denetimin geçerli puanına doğru katkıda bulunur. Her denetim için geçerli *puan, denetimdeki kaynakların durumunun* ölçüsüdür.<br>![Güvenlik denetiminin geçerli puanı hesaplanırken kullanılan değerleri gösteren araç ipuçları](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>Bu örnekte, sağlıklı ve sağlıksız kaynakların toplamı olduğundan, 6 ' nın en fazla puanı 78 olarak bölünür.<br>6/78 = 0,0769<br>Sağlıklı kaynak sayısına (4) göre çarpılması geçerli puanın sonucunu elde ediyor:<br>0,0769 * 4 = **0,31**<br><br>|
+|**Güvenlik puanı**<br>Tek abonelik|<br>![Aboneliğin güvenli Puanını hesaplama denklemi](media/secure-score-security-controls/secure-score-equation-single-sub.png)<br><br>![Tüm denetimler etkin olan tek abonelik güvenli puanı](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>Bu örnekte, kullanılabilen tüm güvenlik denetimlerine sahip tek bir abonelik vardır (en fazla 60 punto puanı). Puan, olası bir 60 28 noktayı gösterir ve kalan 32 noktaları, güvenlik denetimlerinin "potansiyel puan artışı" biçiminde yansıtılır.<br>![Denetimlerin listesi ve olası puan artışı](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|
+|**Güvenlik puanı**<br>Birden çok abonelik|<br>![Birden çok abonelik için güvenli puanı hesaplama denklemi](media/secure-score-security-controls/secure-score-equation-multiple-subs.png)<br><br>Birden çok abonelik için Birleşik puanı hesaplarken, güvenlik merkezi her abonelik için bir *Ağırlık* içerir. Abonelikleriniz için göreli ağırlıklar, Güvenlik Merkezi tarafından, kaynak sayısı gibi faktörlere göre belirlenir.<br>Her aboneliğin geçerli puanı, tek bir abonelikle aynı şekilde hesaplanır, ancak daha sonra ağırlığa, denklemde gösterildiği gibi uygulanır.<br>Birden çok abonelik görüntülenirken, güvenli puan tüm etkin ilkelerin içindeki tüm kaynakları değerlendirir ve her bir güvenlik denetiminin en fazla puanı üzerinde Birleşik etkileri gruplandırır.<br>![Tüm denetimler etkin olan birden çok abonelik için güvenli puan](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>Birleşik puan bir ortalama **değil** ; Bunun yerine, tüm aboneliklerdeki tüm kaynakların durumunun değerlendirilmiş bir şekilde olduğunu gösterir.<br>Burada, öneriler sayfasına giderseniz ve kullanılabilir olası noktaları eklerseniz, geçerli puan (24) ile kullanılabilir maksimum puan (60) arasındaki fark olduğunu göreceksiniz.|
 ||||
 
 ### <a name="which-recommendations-are-included-in-the-secure-score-calculations"></a>Hangi öneriler, güvenli puan hesaplamalarına dahildir?
@@ -271,3 +288,4 @@ Bu makalede, güvenli puanı ve tarafından sunulan güvenlik denetimleri açık
 
 - [Önerinin farklı öğeleri hakkında bilgi edinin](security-center-recommendations.md)
 - [Önerileri nasıl düzelteceğinizi öğrenin](security-center-remediate-recommendations.md)
+- [Güvenli puanla programlama yoluyla çalışmaya yönelik GitHub tabanlı araçları görüntüleyin](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)

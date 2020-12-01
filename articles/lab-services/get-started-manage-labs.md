@@ -3,12 +3,12 @@ title: Azure Lab Services kullanmaya başlayın
 description: Bu makalede Azure Lab Services ile çalışmaya başlama açıklanmaktadır.
 ms.topic: article
 ms.date: 11/18/2020
-ms.openlocfilehash: bdc4f4af06d70a1798e7409b78f6b47530ddd7f4
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 6fb0da7f91e0eecdeefecdb6635b657245fda9af
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917112"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434439"
 ---
 # <a name="get-started-with-lab-services"></a>Laboratuvar Hizmetleri 'ni kullanmaya başlama 
 
@@ -48,7 +48,7 @@ VM 'Leri yönetirken dikkat edilmesi gereken en önemli şey, makinenin her zama
 
 ### <a name="overview"></a>Genel Bakış
 
-Azure Lab Services sınıf laboratuvarları için panolar, VM bilgileri, atanan ve atanmamış VM sayısı, kayıtlı ve kaydedilmemiş Kullanıcı sayısı ve laboratuvar zamanlamalarıyla ilgili bilgiler dahil olmak üzere belirli bir laboratuvarın farklı yönlerinin bir anlık görüntüsünü sağlar. 
+Azure Lab Services laboratuvarlara yönelik panolar, VM bilgileri, atanan ve atanmamış VM sayısı, kayıtlı ve kaydedilmemiş Kullanıcı sayısı ve laboratuvar zamanlamalarıyla ilgili bilgiler dahil olmak üzere belirli bir laboratuvarın farklı yönlerinin bir anlık görüntüsünü sağlar. 
 
 > [!NOTE]
 > Panonun ve [Azure Lab Services Web sitesinin](https://labs.azure.com/) yönetim yönlerinin çoğu öğretmenler tarafından görülüp, rolünüze özgü izinler panodaki belirli ölçütleri değiştirme yeteneğinizi etkileyebilir. Belirli bir laboratuvar kurulumu ile ilgili bir sorunla karşılaşırsanız CTE yöneticinize ulaşın.

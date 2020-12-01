@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8dfc34699bb973dc1f5b74807043e9f208d64f4c
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 9de4a4534551c4a41b2c81c1d10fecf6118ff868
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242156"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434524"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı için veri şifreleme
 
@@ -34,23 +34,35 @@ MySQL için Azure veritabanınız için veri şifrelemeyi ayarlamak ve yönetmek
     ```azurecli-interactive
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
     ```
+  * Bekletme günleri 90 gün olarak ayarlanır
+  
+    ```azurecli-interactive
+    az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --retention-days 90
+    ```
 
 * Anahtar, müşteri tarafından yönetilen anahtar olarak kullanmak için aşağıdaki özniteliklere sahip olmalıdır:
   * Sona erme tarihi yok
   * Devre dışı değil
-  * Al, sarmalama tuşu, anahtar sarmalama işlemini geri alabilir
+  * **Al**, **sarmalama**, **geri** alınamaz işlemleri gerçekleştirin
+  * recoverylevel özniteliği **kurtarılabilir** olarak ayarlandı.
+
+Aşağıdaki komutu kullanarak anahtarın yukarıdaki özniteliklerini doğrulayabilirsiniz:
+
+```azurecli-interactive
+az keyvault key show --vault-name <key_vault_name> -n <key_name>
+```
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>Anahtar işlemleri için doğru izinleri ayarla
 
-1. Key Vault ' de erişim **ilkeleri**  >  **erişim ilkesi Ekle** ' yi seçin.
+1. Key Vault ' de erişim **ilkeleri**  >  **erişim ilkesi Ekle**' yi seçin.
 
    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png" alt-text="Erişim ilkeleriyle Key Vault ekran görüntüsü ve erişim Ilkesi vurgulandı":::
 
-2. **Anahtar izinleri** ' ni seçin ve MySQL sunucusunun adı olan Al, **sarmalama** , **geri** **Al** ve **asıl** ' ı seçin. Sunucu sorumlunuz mevcut sorumlular listesinde bulunamazsa, kaydolmanız gerekir. Veri şifrelemeyi ilk kez ayarlamaya çalıştığınızda sunucu sorumlunuzu kaydetmeniz istenir ve başarısız olur.
+2. **Anahtar izinleri**' ni seçin ve MySQL sunucusunun adı olan Al, **sarmalama**, **geri** **Al** ve **asıl**' ı seçin. Sunucu sorumlunuz mevcut sorumlular listesinde bulunamazsa, kaydolmanız gerekir. Veri şifrelemeyi ilk kez ayarlamaya çalıştığınızda sunucu sorumlunuzu kaydetmeniz istenir ve başarısız olur.
 
    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png" alt-text="Erişim ilkesine genel bakış":::
 
-3. **Kaydet** ’i seçin.
+3. **Kaydet**’i seçin.
 
 ## <a name="set-data-encryption-for-azure-database-for-mysql"></a>MySQL için Azure veritabanı için veri şifrelemeyi ayarlama
 
@@ -62,7 +74,7 @@ MySQL için Azure veritabanınız için veri şifrelemeyi ayarlamak ve yönetmek
 
    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png" alt-text="Veri şifreleme seçenekleri vurgulanmış olan MySQL için Azure veritabanı 'nın ekran görüntüsü":::
 
-3. **Kaydet** ’i seçin.
+3. **Kaydet**’i seçin.
 
 4. Tüm dosyaların (geçici dosyalar dahil) tamamen şifrelendiğinden emin olmak için sunucuyu yeniden başlatın.
 
@@ -70,11 +82,11 @@ MySQL için Azure veritabanınız için veri şifrelemeyi ayarlamak ve yönetmek
 
 MySQL için Azure veritabanı, Key Vault ' de depolanan bir müşterinin yönetilen anahtarıyla şifrelendikten sonra, sunucunun yeni oluşturulan kopyası da şifrelenir. Bu yeni kopyayı yerel veya coğrafi geri yükleme işlemi aracılığıyla ya da bir çoğaltma (yerel/bölge) işlemi aracılığıyla yapabilirsiniz. Bu nedenle, şifrelenmiş bir MySQL sunucusu için, şifrelenmiş bir geri yüklenmiş sunucu oluşturmak için aşağıdaki adımları kullanabilirsiniz.
 
-1. Sunucunuzda **genel bakış**  >  **geri yükleme** ' yi seçin.
+1. Sunucunuzda **genel bakış**  >  **geri yükleme**' yi seçin.
 
    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-restore.png" alt-text="MySQL için Azure veritabanı 'Na genel bakış ve geri yükleme vurgulanmış ekran görüntüsü":::
 
-   Ya da çoğaltma özellikli bir sunucu için, **Ayarlar** başlığı altında **çoğaltma** ' yı seçin.
+   Ya da çoğaltma özellikli bir sunucu için, **Ayarlar** başlığı altında **çoğaltma**' yı seçin.
 
    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/mysql-replica.png" alt-text="Çoğaltma vurgulanmış şekilde, MySQL için Azure veritabanı ekran görüntüsü":::
 
@@ -85,7 +97,7 @@ MySQL için Azure veritabanı, Key Vault ' de depolanan bir müşterinin yöneti
 3. Sunucuyu erişilebilir hale getirmek için geri yüklenen sunucuda anahtarı yeniden doğrulayın. **Veri şifrelemeyi**  >  **yeniden doğrula anahtarını** seçin.
 
    > [!NOTE]
-   > Yeni sunucunun hizmet sorumlusunun anahtar kasasına erişim izni verilmesi gerektiğinden, ilk yeniden doğrulama denemesi başarısız olur. Hizmet sorumlusunu oluşturmak için **anahtarı yeniden doğrula** ' yı seçin, bu, bir hatayı gösterir, ancak hizmet sorumlusu oluşturur. Bundan sonra bu makalede daha önce bahsedilen [adımlara](#set-the-right-permissions-for-key-operations) bakın.
+   > Yeni sunucunun hizmet sorumlusunun anahtar kasasına erişim izni verilmesi gerektiğinden, ilk yeniden doğrulama denemesi başarısız olur. Hizmet sorumlusunu oluşturmak için **anahtarı yeniden doğrula**' yı seçin, bu, bir hatayı gösterir, ancak hizmet sorumlusu oluşturur. Bundan sonra bu makalede daha önce bahsedilen [adımlara](#set-the-right-permissions-for-key-operations) bakın.
 
    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png" alt-text="Yeniden doğrulama adımıyla MySQL için Azure veritabanı 'nın ekran görüntüsü":::
 

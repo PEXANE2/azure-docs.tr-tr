@@ -1,19 +1,19 @@
 ---
-title: Azure Lab Services sınıf laboratuvarları hakkında | Microsoft Docs
+title: Azure Lab Services 'de Labs hakkında | Microsoft Docs
 description: Bulutta bir derslik laboratuvar ortamını hızlıca ayarlamayı öğrenin-sınıf için gereken yazılımla bir şablon VM 'si ile laboratuvar yapılandırma ve sınıftaki her öğrenci için kullanılabilir VM 'nin bir kopyasını oluşturma hakkında bilgi edinin.
 ms.topic: overview
 ms.date: 06/26/2020
-ms.openlocfilehash: e6ff56a831282c3abf5eec644573b9a3e88c6543
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 79d6f1cc9f2a6d8d8be872359a4677b36602eea5
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85445636"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434813"
 ---
-# <a name="introduction-to-classroom-labs"></a>Sınıf laboratuvarlarına giriş
+# <a name="introduction-to-labs"></a>Laboratuvarlara giriş
 Azure Lab Services, bulutta hızla bir sınıf laboratuvarı ortamı oluşturmanıza imkan tanır. Eğitimci sınıf laboratuvarını oluşturur, Windows veya Linux sanal makinelerini sağlar, sınıfta gerekli yazılım ve araç laboratuvarlarını yükler ve öğrenciler için kullanılabilir hale getirir. Sınıftaki öğrenciler, laboratuvardaki sanal makinelere (VM) bağlanır ve bunları projeleri, ödevleri, sınıf egzersizleri için kullanır. 
 
-Derslik Labs, Azure tarafından yönetilen, yönetilen laboratuvar türleridir. Hizmet, sanal makinelerin (VM 'Ler) hata işleme ve altyapıyı ölçeklendirmesinin ardından, yönetilen bir laboratuvar türü için tüm altyapı yönetimini işler. Ne tür bir altyapıya ihtiyacınız olduğunu siz belirlersiniz ve sınıf için gereken tüm araçları ve yazılımları yüklersiniz. 
+Laboratuvarlar, Azure tarafından yönetilen, yönetilen laboratuvar türleridir. Hizmet, sanal makinelerin (VM 'Ler) hata işleme ve altyapıyı ölçeklendirmesinin ardından, yönetilen bir laboratuvar türü için tüm altyapı yönetimini işler. Ne tür bir altyapıya ihtiyacınız olduğunu siz belirlersiniz ve sınıf için gereken tüm araçları ve yazılımları yüklersiniz. 
 
 ## <a name="automatic-management-of-azure-infrastructure-and-scale"></a>Azure altyapısının ve ölçeğin otomatik yönetimi 
 Azure Lab Services yönetilen bir hizmettir, bu, bir laboratuvarın temel alınan altyapısının sağlanması ve yönetiminin hizmet tarafından otomatik olarak işleneceğini gösterir. Kullanıcılarınız için yalnızca doğru laboratuvar deneyimini hazırlamaya odaklanırsınız. Hizmetin geri kalanını işlemesini ve laboratuvarınızın sanal makinelerini hedef kitlenize geri oluşturmasını sağlayın. Laboratuvarınızı tek bir tıklama ile yüzlerce sanal makineye ölçeklendirin.

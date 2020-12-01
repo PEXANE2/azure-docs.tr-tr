@@ -3,12 +3,12 @@ title: Azure Lab Services kullanarak sınıf laboratuvarı ayarlama | Microsoft 
 description: Bu öğreticide, sınıfınızda öğrenciler tarafından kullanılan sanal makinelerle bir derslik Laboratuvarı kurmak için Azure Lab Services kullanırsınız.
 ms.topic: tutorial
 ms.date: 06/26/2020
-ms.openlocfilehash: 1155646d31ddb8a0a3abce025acde5c4cb645f54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8981a03b53b1cfb67b03d89f8a1468511d9b1b93
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336743"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434864"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Öğretici: Bir sınıf laboratuvarı ayarlama 
 Bu öğreticide, sınıftaki öğrenciler tarafından kullanılan sanal makinelerle bir sınıf laboratuvarı ayarlayacaksınız.  
@@ -92,7 +92,7 @@ Laboratuvardaki VM 'Lerin belirli zamanlarda otomatik olarak başlatılması/dur
 
     !["Zamanlamalar" sayfasında "zamanlanmış olay Ekle" düğmesini gösteren ekran görüntüsü.](./media/how-to-create-schedules/add-schedule-button.png)
 2. **Zamanlanmış olay Ekle** sayfasında, aşağıdaki adımları uygulayın:
-    1. **Standart** **olay türünün**seçili olduğunu onaylayın.  
+    1. **Standart** **olay türünün** seçili olduğunu onaylayın.  
     2. Sınıf için **başlangıç tarihini** seçin. 
     4. VM 'Lerin **başlamasını istediğiniz başlangıç saatini** seçin.
     5. VM 'Lerin kapatılmakta olduğu **durdurma saatini** seçin. 
@@ -116,7 +116,7 @@ Laboratuvardaki VM 'Lerin belirli zamanlarda otomatik olarak başlatılması/dur
     
     ![Takvimde zamanla](./media/how-to-create-schedules/schedule-calendar.png)
 
-    Bir sınıfa yönelik zamanlamalar oluşturma ve yönetme hakkında daha fazla bilgi için bkz. sınıf [laboratuvarları için zamanlama oluşturma ve yönetme](how-to-create-schedules.md).
+    Bir sınıfa yönelik zamanlamalar oluşturma ve yönetme hakkında daha fazla bilgi için bkz. [Labs için zamanlama oluşturma ve yönetme](how-to-create-schedules.md).
 
 
 ## <a name="add-users-to-the-lab"></a>Laboratuvara Kullanıcı ekleme
@@ -143,7 +143,7 @@ Laboratuvardaki VM 'Lerin belirli zamanlarda otomatik olarak başlatılması/dur
 1. **E-postaya davet gönder** sayfasında, isteğe bağlı bir ileti girin ve ardından **Gönder**' i seçin. E-posta otomatik olarak kayıt bağlantısını içerir. Bu kayıt bağlantısını,... öğesini seçerek alabilirsiniz **. (üç nokta)** araç çubuğunda ve **kayıt bağlantısı**. 
 
     ![Kayıt bağlantısını e-posta ile gönder](./media/tutorial-setup-classroom-lab/send-email.png)
-4. **Kullanıcı** listesindeki **davetin** durumunu görürsünüz. Durum, **tarihinde gönderilmek üzere ve sonrasında** **gönderilmesi &lt; &gt; **için değişmelidir. 
+4. **Kullanıcı** listesindeki **davetin** durumunu görürsünüz. Durum, **tarihinde gönderilmek üzere ve sonrasında** **gönderilmesi &lt; &gt;** için değişmelidir. 
 
     Bir sınıfa öğrenci ekleme ve laboratuvarın kullanımını yönetme hakkında daha fazla bilgi için bkz. [öğrenci kullanımını yapılandırma](how-to-configure-student-usage.md).
 

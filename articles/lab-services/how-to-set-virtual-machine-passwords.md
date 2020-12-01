@@ -1,14 +1,14 @@
 ---
 title: Azure Lab Services VM 'Leri için parola ayarlama | Microsoft Docs
-description: Azure Lab Services derslik laboratuvarlarında sanal makineler (VM) için parolaları ayarlamayı ve sıfırlamayı öğrenin.
+description: Azure Lab Services laboratuvarlarında sanal makineler (VM) için parolaları ayarlamayı ve sıfırlamayı öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: e24fee26670a664012ec5f0216b0638d6149453f
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 6ae577ee4c0c7e31760e0fb12afeaeac1ef8b7e2
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379698"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434235"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>Sanal makine havuzunu ayarlama ve yönetme 
 Bu makalede aşağıdaki görevlerin nasıl yapılacağı gösterilmektedir:
@@ -20,9 +20,9 @@ Bu makalede aşağıdaki görevlerin nasıl yapılacağı gösterilmektedir:
 ## <a name="update-the-lab-capacity"></a>Laboratuvar kapasitesini güncelleştirme
 Laboratuvar kapasitesini artırmak veya azaltmak için (bir laboratuvardaki sanal makinelerin sayısı), aşağıdaki adımları uygulayın:
 
-1. **Sanal makine havuzu** sayfasında, **Laboratuvar kapasitesi: &lt; numara &gt; makineleri** ' ni seçin.
+1. **Sanal makine havuzu** sayfasında, **Laboratuvar kapasitesi: &lt; numara &gt; makineleri**' ni seçin.
 2. Laboratuvarda istediğiniz yeni **VM sayısını** girin. Bu sayı, laboratuvarda kayıtlı Kullanıcı sayısından büyük veya buna eşit olmalıdır. 
-3. Sonra **Kaydet** ' i seçin. 
+3. Sonra **Kaydet**' i seçin. 
 
     !["Laboratuvar için en fazla makine" ve "Kaydet" düğmesinin seçili olduğu "Laboratuvar kapasitesi" penceresini gösteren ekran görüntüsü.](./media/how-to-set-virtual-machine-passwords/number-of-vms-in-lab.png)
 4. Kapasiteyi arttırdıysanız, oluşturulmakta olan sanal makineyi veya VM 'Leri görebilirsiniz. Listede yeni VM 'yi görmüyorsanız, sayfayı yenileyin. 
@@ -58,7 +58,7 @@ Bir veya daha fazla VM 'yi sıfırlamak için listeden bunları seçin ve ardın
 
 ![Seçili VM 'Leri Sıfırla](./media/how-to-set-virtual-machine-passwords/reset-vm-button.png)
 
-**Sanal makineleri Sıfırla** Iletişim kutusunda **Sıfırla** ' yı seçin. 
+**Sanal makineleri Sıfırla** Iletişim kutusunda **Sıfırla**' yı seçin. 
 
 ![VM 'yi Sıfırla iletişim kutusu](./media/how-to-set-virtual-machine-passwords/reset-vms-dialog.png)
 
@@ -75,7 +75,7 @@ Bu sayfadaki **tüm sanal makineler için aynı parolayı kullan** seçeneğini 
 ### <a name="reset-password-later"></a>Parolayı daha sonra Sıfırla
 
 1. Laboratuvarın **şablon** sayfasında, araç çubuğunda **Parolayı Sıfırla** ' yı seçin. 
-1. **Parolayı Sıfırla** iletişim kutusunda bir parola girin ve **Parolayı Sıfırla** ' yı seçin.
+1. **Parolayı Sıfırla** iletişim kutusunda bir parola girin ve **Parolayı Sıfırla**' yı seçin.
     
     ![Parolayı ayarla iletişim kutusu](./media/how-to-set-virtual-machine-passwords/set-password.png)
 
@@ -95,11 +95,11 @@ Aşağıdaki koşullar karşılandığında laboratuvar Oluşturucu (eğiticator
 ## <a name="export-list-of-virtual-machines-to-a-csv-file"></a>Sanal makinelerin listesini bir CSV dosyasına aktar
 
 1. **Sanal makine havuzu** sekmesine geçin.
-2. Araç çubuğunda **..** . (üç nokta) simgesini seçin ve ardından **CSV 'yi dışarı aktar** ' ı seçin. 
+2. Araç çubuğunda **..** . (üç nokta) simgesini seçin ve ardından **CSV 'yi dışarı aktar**' ı seçin. 
 
     ![Sanal makinelerin listesini dışarı aktar](./media/how-to-export-users-virtual-machines-csv/virtual-machines-export-csv.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Sizin (Laboratuvar sahibi olarak) yapılandırabileceğiniz diğer öğrenci kullanım seçenekleri hakkında bilgi edinmek için şu makaleye bakın: [öğrenci kullanımını yapılandırma](how-to-configure-student-usage.md).
 
-Öğrencilerin VM 'lerinin parolalarını nasıl sıfırlayacaklarını öğrenmek için bkz. [sınıf laboratuvarlarında sanal makineler için parola ayarlama veya sıfırlama (öğrenciler)](how-to-set-virtual-machine-passwords-student.md).
+Öğrencilerin VM 'lerinin parolalarını nasıl sıfırlayacaklarını öğrenmek için bkz. [Labs 'de sanal makineler için parola ayarlama veya sıfırlama (öğrenciler)](how-to-set-virtual-machine-passwords-student.md).

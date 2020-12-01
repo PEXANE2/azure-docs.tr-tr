@@ -8,18 +8,18 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3a3518ba68c9474fc4a34390e6fd9a7d1e88f6c6
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: f261db8d40e1a1cc1737ff6a3f5c50da661b73e6
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959603"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433485"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Öğretici: IoT Edge makine öğrenimi için bir ortam ayarlama
 
 Bu makalede, ortamınız geliştirme ve dağıtım için hazırlanmanıza yardımcı olur. İlk olarak, ihtiyacınız olan tüm araçlarla bir geliştirme makinesi ayarlayın. Daha sonra, Azure 'da gerekli bulut kaynaklarını oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makale, IoT Edge Azure Machine Learning kullanımı hakkında öğretici için bir serinin bir parçasıdır. Serideki her makale, önceki makaledeki iş üzerinde oluşturulur. Bu makaleye doğrudan ulaşdıysanız, serideki [ilk makaleyi](tutorial-machine-learning-edge-01-intro.md) ziyaret edin.
 
@@ -39,7 +39,7 @@ Geliştirme sanal makinesi şu şekilde ayarlanır:
 * [.NET Core SDK](https://dotnet.microsoft.com/)
 * [Python 3 karşılaştırması](https://www.python.org/)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Azure PowerShell](/powershell/azure/?view=azps-1.1.0)
+* [Azure PowerShell](/powershell/azure/)
 * [VS Code uzantıları](https://marketplace.visualstudio.com/search?target=VSCode)
   * [Azure IoT Araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
   * [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
@@ -83,7 +83,7 @@ Sanal makineyi oluşturmak ve yapılandırmak yaklaşık 30 dakika sürer.
 
    Komut dosyası aşağıdaki adımları yürüttüğünde birkaç dakika çalışır:
 
-    1. [Azure PowerShell az Module 'ü](/powershell/azure/new-azureps-module-az?view=azps-1.1.0)yüklüyor.
+    1. [Azure PowerShell az Module 'ü](/powershell/azure/new-azureps-module-az)yüklüyor.
     1. Azure 'da oturum açmanızı ister.
     1. VM 'nizin oluşturulmasıyla ilgili bilgileri onaylar. Devam etmek için **y** veya **ENTER** tuşuna basın.
     1. Mevcut değilse kaynak grubunu oluşturur.

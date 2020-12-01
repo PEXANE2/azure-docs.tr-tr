@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: memildin
-ms.openlocfilehash: 033f06aa61baf04b5c74fbbe9cc8f925d5d4e3d3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c1406e6a1f2f36c5d42544c52ade3f991fe2ba0a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182317"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433028"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenlik uyarıları
 
@@ -91,11 +91,11 @@ Uyarıları Güvenlik Merkezi dışında görüntülemek için kullanabileceğin
 
 - Uyarı panosunda **CSV raporu indir** , CSV 'ye bir kerelik dışarı aktarma sağlar.
 - Fiyatlandırma & ayarlarından **sürekli dışarı aktarma** , güvenlik uyarıları ve önerilerin akışlarını Log Analytics çalışma alanları ve Event Hubs için yapılandırmanıza olanak tanır. [Sürekli dışarı aktarma hakkında daha fazla bilgi edinin](continuous-export.md)
-- Azure **Sentinel Bağlayıcısı** Azure Defender uyarılarını Azure Güvenlik Merkezi 'Nden Azure Sentinel 'e akışlar. [Azure Güvenlik Merkezi 'Ni Sentinel ile bağlama hakkında daha fazla bilgi edinin](../sentinel/connect-azure-security-center.md)
+- **Azure Sentinel Bağlayıcısı** , Azure Güvenlik Merkezi 'ndeki güvenlik uyarılarını Azure Sentinel 'e akışlar. [Azure Güvenlik Merkezi 'Ni Sentinel ile bağlama hakkında daha fazla bilgi edinin](../sentinel/connect-azure-security-center.md)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, güvenlik merkezi 'nde bulunan farklı Uyarı türleri hakkında bilgi edindiniz. Daha fazla bilgi için bkz:
+Bu makalede, güvenlik merkezi 'nde bulunan farklı Uyarı türleri hakkında bilgi edindiniz. Daha fazla bilgi için bkz.
 
 - **Azure etkinlik günlüğündeki güvenlik uyarıları** -Azure Portal veya programlı olarak, güvenlik uyarıları ve olayları [Azure etkinlik günlüğünde](../azure-monitor/platform/activity-log.md#view-the-activity-log)olay olarak denetlenir. Olay şeması hakkında daha fazla bilgi için bkz. [Azure etkinlik günlüğündeki güvenlik uyarıları](https://go.microsoft.com/fwlink/?linkid=2114113)

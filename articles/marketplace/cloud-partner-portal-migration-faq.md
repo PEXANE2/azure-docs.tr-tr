@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 8bedecd4a050c445af0ab0ae0250197369b9173b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f0546a76974e429b625ba03fdf4598da7d32c990
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131420"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433368"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Bulut İş Ortağı Portalı Iş ortağı merkezine geçiş hakkında sık sorulan sorular
 
@@ -58,16 +58,16 @@ Bunlar, kullanımdan kaldırılan Bulut İş Ortağı Portalı ve geçerli Iş o
 
 | Bulut İş Ortağı Portalı | İş Ortağı Merkezi |
 | --- | --- |
-| **Bağlantı** : https://cloudpartner.azure.com/ | **Bağlantı** : https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory ve https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
-| **Gezinti** : Öngörüler ödemede sunulan ödeme raporlaması | **Gezinti** : Iş Ortağı Merkezi – ödeme simgesi içinde sunulan ödeme raporlaması |
-| **Kapsam** :<ul><li>Her satır öğesi için işlem görünür, koleksiyon devam ediyor, toplandı ve ücretli olur.</li><li>Raporlama – bir satınalma siparişi oluşturulduktan sonra, devam eden koleksiyon ve devam eden faturalama dahil olmak üzere tüm satır öğelerini ve henüz ödenmeyen koleksiyon durumu ve satır öğelerini gösterir.</li></ul> | **Kapsam** :<ul><li>Uygun kazanç olarak kabul edildikten sonra satır öğelerini gösterir.</li><li>Müşteriler ilk olarak Microsoft 'a ödeme yapar ve ardından ISV 'Ler ödeme raporunu görebilir.</li><li>Ödeme raporu, devam eden ve faturalandırma aşamasında koleksiyonu göstermez.</li></ul> |
-| **İşlem ödeme için hazır değil** : Faturalandırma sürüyor | **İşlem ödeme için hazır değil** : sonraki tahmini ödeme: ödeme durumu işlenmemiş durumda. |
-| **Ödeme durumu** : yok | **Ödeme durumu** :<ul><li>İşlenmemiş: kazanç ödeme için uygun.</li><li>Yakında: kazanç, yayımcıya bir sonraki aylık ödeyde gönderilir.</li><li>Gönderildi: ödeme, bankanızla gönderilmiştir.</li></ul> |
+| **Bağlantı**: https://cloudpartner.azure.com/ | **Bağlantı**: https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory ve https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments |
+| **Gezinti**: Öngörüler ödemede sunulan ödeme raporlaması | **Gezinti**: Iş Ortağı Merkezi – ödeme simgesi içinde sunulan ödeme raporlaması |
+| **Kapsam**:<ul><li>Her satır öğesi için işlem görünür, koleksiyon devam ediyor, toplandı ve ücretli olur.</li><li>Raporlama – bir satınalma siparişi oluşturulduktan sonra, devam eden koleksiyon ve devam eden faturalama dahil olmak üzere tüm satır öğelerini ve henüz ödenmeyen koleksiyon durumu ve satır öğelerini gösterir.</li></ul> | **Kapsam**:<ul><li>Uygun kazanç olarak kabul edildikten sonra satır öğelerini gösterir.</li><li>Müşteriler ilk olarak Microsoft 'a ödeme yapar ve ardından ISV 'Ler ödeme raporunu görebilir.</li><li>Ödeme raporu, devam eden ve faturalandırma aşamasında koleksiyonu göstermez.</li></ul> |
+| **İşlem ödeme için hazır değil**: Faturalandırma sürüyor | **İşlem ödeme için hazır değil**: sonraki tahmini ödeme: ödeme durumu işlenmemiş durumda. |
+| **Ödeme durumu**: yok | **Ödeme durumu**:<ul><li>İşlenmemiş: kazanç ödeme için uygun.</li><li>Yakında: kazanç, yayımcıya bir sonraki aylık ödeyde gönderilir.</li><li>Gönderildi: ödeme, bankanızla gönderilmiştir.</li></ul> |
 |||
 
 ## <a name="what-about-offers-i-published-in-the-cloud-partner-portal"></a>Bulut İş Ortağı Portalı hangi teklifleri yayımladım?
 
-Teklifler Iş Ortağı Merkezi 'ne taşındı ve, Iş Ortağı Merkezi 'nde oturum açtıktan sonra, Dynamics NAV yönetilen hizmeti ve Cortana Intelligence teklifleri dışında, size erişilebilecektir. Teklifinizin ticari Market 'te canlı olması durumunda canlı olmaya devam eder ve müşterileriniz kesintiye girmeden bu uygulamayı satın alıp dağıtabmaya devam eder. Daha fazla ayrıntı için bkz. bir sonraki soru, **Iş Ortağı Merkezi 'Ne ne tür öneriler taşındı?** .
+Teklifler Iş Ortağı Merkezi 'ne taşındı ve, Iş Ortağı Merkezi 'nde oturum açtıktan sonra, Dynamics NAV yönetilen hizmeti ve Cortana Intelligence teklifleri dışında, size erişilebilecektir. Teklifinizin ticari Market 'te canlı olması durumunda canlı olmaya devam eder ve müşterileriniz kesintiye girmeden bu uygulamayı satın alıp dağıtabmaya devam eder. Daha fazla ayrıntı için bkz. bir sonraki soru, **Iş Ortağı Merkezi 'Ne ne tür öneriler taşındı?**.
 
 ## <a name="what-offers-were-moved-to-partner-center"></a>Iş Ortağı Merkezi 'ne hangi teklifler taşındı?
 
@@ -77,17 +77,17 @@ Iş Ortağı Merkezi 'nde desteklenen teklif türleri için tüm teklifler, duru
 
 | Teklif türü <img src="" width=150px>| Iş Ortağı Merkezi 'ne taşındı mi? <img src="" width=100px>| Sonraki adımlar |
 | --- | --- | --- |
-| SaaS | Yes | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Ticari Market için bir SaaS teklifi planlayın](plan-saas-offer.md)hakkında daha fazla bilgi edinin. |
-| Sanal Makine | Yes | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Bir sanal makine teklifi planlayın](marketplace-virtual-machines.md)hakkında daha fazla bilgi edinin. |
-| Azure uygulaması | Yes | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Azure Uygulama teklifi oluşturma](partner-center-portal/create-new-azure-apps-offer.md)hakkında daha fazla bilgi edinin. |
+| SaaS | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Ticari Market için bir SaaS teklifi planlayın](plan-saas-offer.md)hakkında daha fazla bilgi edinin. |
+| Sanal Makine | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Bir sanal makine teklifi planlayın](marketplace-virtual-machines.md)hakkında daha fazla bilgi edinin. |
+| Azure uygulaması | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Azure Uygulama teklifi oluşturma](create-new-azure-apps-offer.md)hakkında daha fazla bilgi edinin. |
 | Dynamics 365 Business Central | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Dynamics 365 Iş Merkezi teklifi oluşturma](partner-center-portal/create-new-business-central-offer.md)hakkında daha fazla bilgi edinin. |
-| PowerApps & müşteri katılımı için Dynamics 365 | Yes | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. Daha fazla bilgi edinmek [Için Dynamics 365 for Customer Engagement & PowerApps teklifini oluşturun](partner-center-portal/create-new-customer-engagement-offer.md). |
-| Dynamics 365 for Operations | Yes | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Dynamics 365 for Operations teklifini oluşturma](partner-center-portal/create-new-operations-offer.md)hakkında daha fazla bilgi edinin. |
-| Power BI App | Yes | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [AppSource için Power BI uygulaması oluşturma](partner-center-portal/create-power-bi-app-offer.md)hakkında daha fazla bilgi edinin. |
-| IoT Edge modülü | Yes | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Azure Marketi 'nde IoT Edge modül teklifi oluşturma, yapılandırma ve yayımlama](partner-center-portal/azure-iot-edge-module-creation.md)hakkında daha fazla bilgi edinin. |
-| Kapsayıcı | Yes | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Azure Container teklifi oluşturma](partner-center-portal/create-azure-container-offer.md)hakkında daha fazla bilgi edinin. |
-| Danışmanlık Hizmetleri | Yes | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Danışmanlık hizmeti teklifi oluşturma](partner-center-portal/create-consulting-service-offer.md)hakkında daha fazla bilgi edinin. |
-| Yönetilen hizmet | Yes | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Yönetilen hizmet teklifi oluşturma](partner-center-portal/create-new-managed-service-offer.md)hakkında daha fazla bilgi edinin. |
+| PowerApps & müşteri katılımı için Dynamics 365 | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. Daha fazla bilgi edinmek [Için Dynamics 365 for Customer Engagement & PowerApps teklifini oluşturun](partner-center-portal/create-new-customer-engagement-offer.md). |
+| Dynamics 365 for Operations | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Dynamics 365 for Operations teklifini oluşturma](partner-center-portal/create-new-operations-offer.md)hakkında daha fazla bilgi edinin. |
+| Power BI App | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [AppSource için Power BI uygulaması oluşturma](partner-center-portal/create-power-bi-app-offer.md)hakkında daha fazla bilgi edinin. |
+| IoT Edge modülü | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Azure Marketi 'nde IoT Edge modül teklifi oluşturma, yapılandırma ve yayımlama](partner-center-portal/azure-iot-edge-module-creation.md)hakkında daha fazla bilgi edinin. |
+| Kapsayıcı | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Azure Container teklifi oluşturma](partner-center-portal/create-azure-container-offer.md)hakkında daha fazla bilgi edinin. |
+| Danışmanlık Hizmetleri | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Danışmanlık hizmeti teklifi oluşturma](partner-center-portal/create-consulting-service-offer.md)hakkında daha fazla bilgi edinin. |
+| Yönetilen hizmet | Evet | Yeni teklifler oluşturmak ve Bulut İş Ortağı Portalı oluşturulan teklifleri yönetmek için Iş Ortağı Merkezi ' nde oturum açın. [Yönetilen hizmet teklifi oluşturma](partner-center-portal/create-new-managed-service-offer.md)hakkında daha fazla bilgi edinin. |
 | Dynamics NAV yönetilen hizmeti | Hayır | Microsoft Dynamics NAV yönetilen hizmetini [dynamics 365 Business Central](/dynamics365/business-central/)'a geliştirmiştir. bu nedenle, appsource 'TAN Dynamics NAV yönetilen hizmet canlı teklifleri de listelenmiştir. Bu teklifler artık müşteriler tarafından keşfedilemez ve Iş Ortağı Merkezi 'ne taşınmadı. Tekliflerinizi AppSource 'ta kullanılabilir hale getirmek için bunları Dynamics 365 Iş Merkezi teklifleridir ve [Iş Ortağı Merkezi](https://partner.microsoft.com/)'nde gönderebilirsiniz. [Dynamics 365 Iş Merkezi teklifi oluşturma](partner-center-portal/create-new-business-central-offer.md)hakkında daha fazla bilgi edinin. |
 | Cortana Intelligence | Hayır | Microsoft, Cortana Intelligence için ürün yol haritasını geliştirmiştir, bu nedenle AppSource 'tan canlı tekliflerle Cortana Intelligence listeliyoruz. Bu teklifler artık müşteriler tarafından keşfedilemez ve Iş Ortağı Merkezi 'ne taşınmadı. Tekliflerinizi ticari Market 'te kullanılabilir hale getirmek için, tekliflerinizi hizmet olarak yazılım (SaaS) teklifleri ile uyarlayın ve [Iş Ortağı Merkezi](https://partner.microsoft.com/)'ne gönderebilirsiniz. [Iş Ortağı Merkezi 'Nde SaaS teklifi oluşturma denetim listesi](./plan-saas-offer.md)hakkında daha fazla bilgi edinin. |
 
@@ -117,7 +117,7 @@ Birden çok hesabın parçasıysa, Iş Ortağı Merkezi ' nde, sol taraftaki gez
 
 ## <a name="how-do-i-create-new-offers"></a>Nasıl yaparım? yeni teklifler mi oluşturulsun?
 
-Yeni teklifler oluşturmak için [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) ' nde ticari Market programına erişin. Genel Bakış sayfasında **+ yeni teklif** ' i seçin.
+Yeni teklifler oluşturmak için [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) ' nde ticari Market programına erişin. Genel Bakış sayfasında **+ yeni teklif**' i seçin.
 
 [![Ekran görüntüsü Iş Ortağı Merkezi 'Ne genel bakış menüsünü gösterir.](media/cpp-pc-faq/new-offer.png "Iş Ortağı Merkezi 'Ne genel bakış menüsünü gösterir")](media/cpp-pc-faq/new-offer.png#lightbox)
 
@@ -127,7 +127,7 @@ Hesabınızda oturum açamazsınız, burada bir [destek bileti](https://partner.
 
 ## <a name="where-are-instructions-for-using-partner-center"></a>Iş ortağı merkezi kullanımı için yönergeler nerede?
 
-[Ticari Market belgelerine](index.yml)gidin ve ardından **iş ortağı Merkezi ' nde ticari Market portalı** ' nı genişletin. Iş Ortağı Merkezi 'nde teklif oluşturmaya yönelik yardım makalelerini görmek için **yeni teklif oluştur** ' u genişletin.
+[Ticari Market belgelerine](index.yml)gidin ve ardından **iş ortağı Merkezi ' nde ticari Market portalı**' nı genişletin. Iş Ortağı Merkezi 'nde teklif oluşturmaya yönelik yardım makalelerini görmek için **yeni teklif oluştur**' u genişletin.
 
 ## <a name="what-are-the-publishing-and-offer-management-differences"></a>Yayımlama ve teklif yönetimi farkları nelerdir?
 

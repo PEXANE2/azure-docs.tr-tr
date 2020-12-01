@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 10/30/2020
+ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 7eedb9ce30be236e8d47152f0e114b7bc5ae2304
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e71ab0293dade56c14dce7318fc96021a040b102
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348101"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433311"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Nasıl yapılır: uygulamanıza isteğe bağlı talepler sağlama
 
@@ -58,7 +58,7 @@ Varsayılan olarak, uygulamaların kullanması için kullanılabilen isteğe ba�
 | `verified_secondary_email` | Kullanıcının SecondaryAuthoritativeEmail kaynağı   | JWT        |           |        |
 | `vnet`                     | VNET tanımlayıcı bilgileri. | JWT        |           |      |
 | `fwd`                      | IP adresi.| JWT    |   | İstek sunan istemcinin özgün IPv4 adresini ekler (sanal ağ içinde) |
-| `ctry`                     | Kullanıcının ülkesi/bölgesi | JWT, SAML |  | Azure AD, varsa `ctry` isteğe bağlı talebi döndürür ve alanın DEĞERI fr, JP, SZ gibi standart bir iki harfli ülke/bölge kodudur. |
+| `ctry`                     | Kullanıcının ülkesi/bölgesi | JWT |  | Azure AD, varsa `ctry` isteğe bağlı talebi döndürür ve alanın DEĞERI fr, JP, SZ gibi standart bir iki harfli ülke/bölge kodudur. |
 | `tenant_ctry`              | Kaynak kiracının ülkesi | JWT | | Bir `ctry` yönetici tarafından kiracı düzeyinde ayarlananların dışında.  Ayrıca, standart iki harfli bir değer olmalıdır. |
 | `xms_pdl`             | Tercih edilen veri konumu   | JWT | | Çoklu coğrafi kiracılar için, tercih edilen veri konumu, kullanıcının bulunduğu coğrafi bölgeyi gösteren üç harfli koddur. Daha fazla bilgi için, [tercih edilen veri konumu hakkında Azure AD Connect belgelerine](../hybrid/how-to-connect-sync-feature-preferreddatalocation.md)bakın.<br/>Örneğin: `APC` Asya Pasifik için. |
 | `xms_pl`                   | Kullanıcı tarafından tercih edilen dil  | JWT ||Ayarlanmışsa kullanıcının tercih ettiği dil. Konuk erişim senaryolarında, ana kiracılarından kaynaklıdır. Biçimlendirilen LL-CC ("en-US"). |
@@ -136,7 +136,7 @@ Kullanıcı arabirimi veya uygulama bildirimi aracılığıyla uygulamanız içi
 1. **İsteğe bağlı talep Ekle**' yi seçin.
 1. Yapılandırmak istediğiniz belirteç türünü seçin.
 1. Eklenecek isteğe bağlı talepler ' i seçin.
-1. **Add (Ekle)** seçeneğini belirleyin.
+1. **Ekle**’yi seçin.
 
 > [!NOTE]
 > UI seçeneği **belirteci yapılandırma** dikey penceresi, şu anda Azure AD B2C kiracısında kayıtlı olan uygulamalar için kullanılamaz. B2C kiracısında kayıtlı olan uygulamalar için, isteğe bağlı talepler uygulama bildirimi değiştirilerek yapılandırılabilir. Daha fazla bilgi için bkz. [Azure Active Directory B2C talepler ekleme ve Kullanıcı girişini özelleştirme, özel ilkeleri kullanma](../../active-directory-b2c/custom-policy-configure-user-input.md) 

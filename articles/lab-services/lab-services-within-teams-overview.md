@@ -3,12 +3,12 @@ title: Microsoft ekipleri dahilinde Azure Lab Services
 description: Microsoft ekipleri dahilinde Azure Lab Services kullanımına ilişkin bir genel bakış sağlar.
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 0c7defdb6f801a10c5fadfdca805381a31f39378
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: f39613427ed174dfca80d4a48be9473ab7025e79
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047837"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433914"
 ---
 # <a name="azure-lab-services-within-microsoft-teams"></a>Microsoft ekipleri dahilinde Azure Lab Services
 
@@ -23,7 +23,7 @@ Bu makalede, takımlar dahilinde Azure Lab Services kullanmanın avantajları ö
 
 Microsoft ekipleriyle Azure Lab Services Tümleştirme, eğitimciler bir sınıf ortamı ayarlamaya ve Team (class) içinde sanal Laboratuvar ortamları sağlamanıza yardımcı olur: 
 
-* Eğitimciler, derslerden ayrılmadan ve [Azure Lab Services Web sitesine](https://labs.azure.com)gitmek zorunda kalmadan, öğrencilerin VM 'lerine takımlarına erişebilmeleri için ders laboratuvarları ayarlayabilir.
+* Eğitimciler, laboratuvarları ekiplerden çıkmadan ve [Azure Lab Services Web sitesine](https://labs.azure.com)gitmek zorunda kalmadan ekiplerine ait sanal makinelere erişebilecek şekilde ayarlayabilir.
 * Ekiplerden Azure Lab Services için çoklu oturum açma (SSO).
 * Takım ve laboratuvar sahipleri iki farklı sistemde sınıf rostaları bulundurmamalıdır-laboratuvar Kullanıcı listesi takım üyeliğinden otomatik olarak doldurulur ve her 24 saatte bir eşitleme gerçekleştirilir. 
 * Şablon VM 'nin ilk yayımlandıktan sonra, laboratuvar kapasitesi (diğer bir deyişle, laboratuvardaki VM sayısı), takım üyeliğinden Kullanıcı ekleme/silme işlemini temel alarak otomatik olarak ayarlanır. 

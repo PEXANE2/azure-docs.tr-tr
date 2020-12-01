@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2020
+ms.date: 11/30/2020
 ms.author: memildin
-ms.openlocfilehash: 9b715ea890c7c85161a9e360bc16f9a2a608d64b
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: f26fffe8e6b2be6ede064b4750d012b3e4535c66
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95320984"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433342"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -41,6 +41,7 @@ Kasım 'daki güncelleştirmeler şunlardır:
 - [Otomatik sağlama deneyimi geliştirildi ve genişletildi](#auto-provisioning-experience-improved-and-expanded)
 - [Güvenli puan, sürekli dışarı aktarma (Önizleme) ile kullanılabilir](#secure-score-is-now-available-in-continuous-export-preview)
 - ["Makinelerinizde sistem güncelleştirmeleri yüklenmelidir" önerisi artık alt öneriler içeriyor](#system-updates-should-be-installed-on-your-machines-recommendation-now-includes-sub-recommendations)
+- [Azure portal ilke yönetimi sayfasında artık varsayılan ilke atamalarının durumu gösterilmektedir](#policy-management-page-in-the-azure-portal-now-shows-status-of-default-policy-assignments)
 
 ### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>Azure Güvenlik kıyaslamasının kapsamını artırmak için 29 önizleme önerileri eklenmiştir
 
@@ -139,7 +140,11 @@ Güvenli puanı sürekli dışa aktarma ile Azure Event Hubs veya bir Log Analyt
     | where properties.status.code == "Unhealthy"
     ```
 
+### <a name="policy-management-page-in-the-azure-portal-now-shows-status-of-default-policy-assignments"></a>Azure portal ilke yönetimi sayfasında artık varsayılan ilke atamalarının durumu gösterilmektedir
 
+Artık abonelikleriniz için, Azure portal Güvenlik Merkezi 'nin **güvenlik ilkesi** sayfasında, aboneliklerinizde varsayılan güvenlik merkezi ilkesi atanmış olup olmadığını görebilirsiniz.
+
+:::image type="content" source="media/release-notes/policy-assignment-info-per-subscription.png" alt-text="Azure Güvenlik Merkezi 'nin varsayılan ilke atamalarını gösteren ilke yönetimi sayfası":::
 
 ## <a name="october-2020"></a>Ekim 2020
 
@@ -289,7 +294,7 @@ extract("^(.+)/providers/Microsoft.Security/assessments/.+$",1,id)))))
 ```
 
 Aşağıdaki bağlantılardan daha fazla bilgi edinin:
-- [Azure Kaynak Grafiği Gezgini ile sorgu oluşturma](../governance/resource-graph/first-query-portal.md)
+- [Azure Kaynak Grafı Gezgini ile sorgu oluşturma](../governance/resource-graph/first-query-portal.md)
 - [Kusto Sorgu Dili (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/)
 
 

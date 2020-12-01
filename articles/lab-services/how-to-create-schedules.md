@@ -1,16 +1,16 @@
 ---
-title: Azure Lab Services sınıf laboratuvarları için zamanlama oluşturma | Microsoft Docs
-description: Laboratuvardaki VM 'Lerin belirli bir zamanda başlamasını ve kapatılmasını sağlamak üzere Azure Lab Services sınıfta derslik Labs için zamanlamalar oluşturmayı öğrenin.
+title: Azure Lab Services 'de Labs için zamanlama oluştur | Microsoft Docs
+description: Laboratuvardaki VM 'Lerin belirli bir zamanda başlamasını ve kapatılmasını sağlamak üzere Azure Lab Services laboratuvarlara yönelik zamanlamalar oluşturmayı öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 4eb4e2459069b61990f51f8d8de76522b736723e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a827c3d9f3022cb7d27ee43c9c95227c44f97e7
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326448"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434045"
 ---
-# <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Azure Lab Services sınıf laboratuvarları için zamanlamalar oluşturma ve yönetme 
+# <a name="create-and-manage-schedules-for-labs-in-azure-lab-services"></a>Azure Lab Services Labs için zamanlamalar oluşturma ve yönetme 
 Zamanlamalar, laboratuvardaki VM 'Lerin otomatik olarak başlamasını ve belirli bir zamanda kapatılmasını sağlamak için bir derslik Laboratuvarı yapılandırmanıza olanak tanır. Tek seferlik bir zamanlama veya yinelenen bir zamanlama tanımlayabilirsiniz. Aşağıdaki yordamlar, bir derslik Laboratuvarı için zamanlama oluşturma ve yönetme adımları sunar: 
 
 > [!IMPORTANT]
@@ -28,13 +28,13 @@ Laboratuvardaki VM 'Lerin belirli zamanlarda otomatik olarak başlatılması/dur
 1. **Zamanlamalar** sayfasına geçin ve araç çubuğunda **Zamanlanmış olay Ekle** ' yi seçin. 
 
     ![Zamanlamayı Ekle düğmesi seçili olan Azure Lab Services "Schedule" sayfasını gösteren ekran görüntüsü.](./media/how-to-create-schedules/add-schedule-button.png)
-2. **Standart** **olay türünün**seçili olduğunu onaylayın. Yalnızca VM 'Lerin başlangıç saatini belirtmek için **Başlat** ' ı seçin. Yalnızca VM 'Ler için durma saatini belirtmek üzere **Durdur** ' u seçin. 
+2. **Standart** **olay türünün** seçili olduğunu onaylayın. Yalnızca VM 'Lerin başlangıç saatini belirtmek için **Başlat** ' ı seçin. Yalnızca VM 'Ler için durma saatini belirtmek üzere **Durdur** ' u seçin. 
 7. **Yinele** bölümünde geçerli zamanlamayı seçin. 
 
     ![Zamanlamalar sayfasında zamanlama Ekle düğmesi](./media/how-to-create-schedules/select-current-schedule.png)
 5. **Yinele** iletişim kutusunda, aşağıdaki adımları uygulayın:
     1. **Yineleme** alanı için **Her haftanın** ayarlandığını onaylayın. 
-    3. **Başlangıç tarihini**belirtin.
+    3. **Başlangıç tarihini** belirtin.
     4. VM 'Lerin **başlamasını istediğiniz başlangıç saatini** belirtin.
     5. VM 'Lerin kapatıldığı **bitiş saatini** belirtin. 
     6. Belirttiğiniz başlangıç ve durdurma zamanları için **saat dilimini** belirtin. 
@@ -77,4 +77,4 @@ Aşağıdaki makalelere bakın:
 - [Yönetici olarak, laboratuvar hesapları oluşturun ve yönetin](how-to-manage-lab-accounts.md)
 - [Laboratuvar sahibi olarak, Labs oluşturma ve yönetme](how-to-manage-classroom-labs.md)
 - [Laboratuvar sahibi olarak, bir laboratuvarın kullanımını yapılandırma ve denetleme](how-to-configure-student-usage.md)
-- [Laboratuvar kullanıcısı olarak, sınıf laboratuvarlarına erişin](how-to-use-classroom-lab.md)
+- [Laboratuvar kullanıcısı olarak, erişim laboratuvarları](how-to-use-classroom-lab.md)

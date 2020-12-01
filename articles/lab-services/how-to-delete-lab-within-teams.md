@@ -3,12 +3,12 @@ title: Ekiplerden Azure Lab Services Laboratuvarı silme
 description: Ekiplerden Azure Lab Services Laboratuvarı silmeyi öğrenin.
 ms.topic: article
 ms.date: 10/12/2020
-ms.openlocfilehash: 1d2fe73d33a88e595f42b47c1e7122dcbdfe1063
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 8d1e20f8f676eb9863187b550a3c0400871d670c
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094565"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433963"
 ---
 # <a name="delete-labs-within-teams"></a>Takımlar içindeki laboratuvarları silme
 
@@ -19,9 +19,9 @@ Bu makalede, **Azure Lab Services** uygulamasından bir laboratuvarın nasıl si
 * Azure portal [bir laboratuvar hizmetleri hesabı oluşturun](tutorial-setup-lab-account.md#create-a-lab-account) .
 * [Kullanmaya başlayın ve takımlar Içinde Laboratuvar Hizmetleri Laboratuvarı oluşturun](how-to-get-started-create-lab-within-teams.md).
 
-## <a name="delete-labs"></a>Laboratuvarları Sil
+## <a name="delete-labs"></a>Laboratuvarları silme
 
-Takımlar içinde oluşturulan bir laboratuvar, laboratuvar [Hizmetleri Web sitesinde](https://labs.azure.com) , [Azure Lab Services yerleşik sınıf laboratuvarları yönetme](how-to-manage-classroom-labs.md)bölümünde açıklandığı gibi doğrudan laboratuvar silinerek silinebilir. 
+Takımlar içinde oluşturulan bir laboratuvar, laboratuvar [Hizmetleri Web sitesinde](https://labs.azure.com) , [Azure Lab Services laboratuvarları yönetme](how-to-manage-classroom-labs.md)bölümünde açıklandığı gibi doğrudan laboratuvar silinerek silinebilir. 
 
 Laboratuvar silme, takım silindiğinde de tetiklenir. Laboratuvarın oluşturulduğu takım silinirse, otomatik kullanıcı listesi eşitleme tetiklendikten sonra laboratuvar 24 saat sonra otomatik olarak silinir. 
 

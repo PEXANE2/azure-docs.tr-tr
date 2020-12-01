@@ -124,6 +124,8 @@
           href: concepts-supported-versions.md
         - name: Sınırlamalar
           href: concepts-limits.md
+        - name: Operasyonel en iyi uygulamalar
+          href: concept-operation-excellence-best-practices.md
         - name: Fiyatlandırma Katmanları
           items:
             - name: Fiyatlandırma katmanları
@@ -195,6 +197,10 @@
             - name: Performans önerileri
               href: concepts-performance-recommendations.md
               displayName: recommendation
+            - name: İzleme konusunda en iyi deneyimler
+              href: concept-monitoring-best-practices.md
+            - name: Performans için en iyi yöntemler
+              href: concept-performance-best-practices.md
         - name: Uygulama geliştirme
           items:
             - name: Uygulama geliştirmeye genel bakış
@@ -202,7 +208,7 @@
             - name: Sürücü ve araç uyumluluğu
               href: concepts-compatibility.md
               displayName: 'drivers, tools'
-            - name: Uygulama en iyi deneyimleri
+            - name: Uygulama konusunda en iyi deneyimler
               href: app-development-best-practices.md
               displayName: application
             - name: Bağlantı dayanıklılığı

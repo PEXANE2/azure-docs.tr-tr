@@ -676,6 +676,8 @@
                       href: app/java-standalone-telemetry-processors.md
                     - name: JVM bağımsız değişkenleri kurulumu
                       href: app/java-standalone-arguments.md
+                    - name: 2.x sürümünden yükseltme
+                      href: app/java-standalone-upgrade-from-2x.md
             - name: Şirket içi sunucular
               items:
                 - name: ASP.NET

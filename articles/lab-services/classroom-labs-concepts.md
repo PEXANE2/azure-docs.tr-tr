@@ -1,16 +1,16 @@
 ---
-title: Derslik Labs kavramları-Azure Lab Services | Microsoft Docs
+title: Labs kavramları-Azure Lab Services | Microsoft Docs
 description: Laboratuvar hizmetlerinin temel kavramlarını ve laboratuvarların oluşturulmasını ve yönetilmesini nasıl kolaylaştırabileceğinizi öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 38dd77df7a80ad252b553b6afa8b52d7fee753a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa3a8dad195b4b3cbf0786c8923c8b330d148898
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85443715"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435527"
 ---
-# <a name="classroom-labs-concepts"></a>Sınıf Laboratuvarları kavramları
+# <a name="labs-concepts"></a>Labs kavramları
 
 Aşağıdaki liste, Temel Laboratuvar Hizmetleri kavramlarını ve tanımlarını içerir:
 
@@ -48,7 +48,7 @@ Genellikle, kuruluşun Azure aboneliğinin sahibi olan bulut kaynakları için B
 
 ### <a name="educator"></a>Eğitimci
 
-Normalde, öğretmen veya çevrimiçi eğitimci gibi kullanıcılar sınıf laboratuvarlarını bir laboratuvar hesabı altında oluşturur. Eğitimci aşağıdaki görevleri yerine getirir:
+Genellikle, öğretmen veya çevrimiçi bir eğitimci gibi kullanıcılar Laboratuvar hesabı altında laboratuvarlar oluşturur. Eğitimci aşağıdaki görevleri yerine getirir:
 
 - Sınıf laboratuvarı oluşturur.
 - Laboratuvarda sanal makineler oluşturur.

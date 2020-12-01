@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6b767a2cf4739a0b36b9f5c5c960e3e3ead58262
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: fc260736a740362db2c19730afc93dd4f3d22c2e
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353094"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435426"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Azure dijital TWINS 'te uç noktaları ve yolları yönetme (API 'Ler ve CLı)
 
@@ -24,7 +24,7 @@ Bu makalede, [olay yolları API 'leri](/rest/api/digital-twins/dataplane/eventro
 
 Alternatif olarak, [Azure Portal](https://portal.azure.com)uç noktalarını ve yolları da yönetebilirsiniz. Bunun yerine portalı kullanan Bu makalenin bir sürümü için bkz. [*nasıl yapılır: uç noktaları ve yolları yönetme (portal)*](how-to-manage-routes-portal.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Bir **Azure hesabınızın** olması gerekir ( [buradan](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)birini ücretsiz olarak ayarlayabilirsiniz)
 * Azure aboneliğinizde bir **Azure dijital TWINS örneği** gerekir. Zaten bir örneğiniz yoksa, [*nasıl yapılır: örnek ve kimlik doğrulaması ayarlama*](how-to-set-up-instance-cli.md)bölümündeki adımları kullanarak bir tane oluşturabilirsiniz. Bu makalede daha sonra kullanmak için kurulum 'un aşağıdaki değerlerini kullanın:
@@ -90,18 +90,31 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 
 Bir uç nokta belirli bir süre içinde bir olayı teslim edimezse veya olayı belirli bir sayıda sunmaya çalıştıktan sonra, teslim edilmemiş olayı bir depolama hesabına gönderebilir. Bu işlem, **atılacak** olarak bilinir.
 
-Etkin olmayan bir uç nokta oluşturmak için, uç noktanızı oluşturmak için [ARM API 'lerini](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) kullanmanız gerekir. 
-
-Atılacak mektup konumunu ayarlamadan önce, kapsayıcısı olan bir depolama hesabınız olmalıdır. Uç nokta oluştururken bu kapsayıcının URL 'sini sağlarsınız. Atılacak mektup, bir SAS belirtecine sahip kapsayıcı URL 'SI olarak sağlanır. Bu belirteç yalnızca `write` depolama hesabındaki hedef kapsayıcı için izne ihtiyaç duyuyor. Tamamen oluşturulmuş URL şu biçimde olacaktır: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
-
-SAS belirteçleri hakkında daha fazla bilgi edinmek için bkz. [paylaşılan erişim imzaları (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme](../storage/common/storage-sas-overview.md)
-
 Atılacak alma hakkında daha fazla bilgi edinmek için bkz. [*Kavramlar: olay yolları*](concepts-route-events.md#dead-letter-events).
 
-#### <a name="configuring-the-endpoint"></a>Uç noktayı yapılandırma
+#### <a name="set-up-storage-resources"></a>Depolama kaynaklarını ayarlama
 
-Uç nokta oluştururken, `deadLetterSecret` `properties` isteğin gövdesinde bir kapsayıcı URL 'si ve depolama HESABıNıZ için SAS belirteci içeren nesnesine bir ekleyin.
+Atılacak mektup konumunu ayarlamadan önce, Azure hesabınızda ayarlanmış bir [kapsayıcı](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container) içeren bir [depolama hesabınız](../storage/common/storage-account-create.md?tabs=azure-portal) olmalıdır. Uç noktayı daha sonra oluştururken bu kapsayıcının URL 'sini sağlarsınız.
+Atılacak mektup, bir [SAS belirtecine](../storage/common/storage-sas-overview.md)sahip kapsayıcı URL 'si olarak sağlanır. Bu belirteç yalnızca `write` depolama hesabındaki hedef kapsayıcı için izne ihtiyaç duyuyor. Tamamen oluşturulmuş URL şu biçimde olacaktır: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
 
+Sonraki bölümde uç nokta bağlantısını ayarlamaya hazırlanmak için Azure hesabınızda bu depolama kaynaklarını ayarlamak üzere aşağıdaki adımları izleyin.
+
+1. Depolama hesabı oluşturmak ve depolama hesabı adını daha sonra kullanmak üzere kaydetmek için [Bu makaleyi](../storage/common/storage-account-create.md?tabs=azure-portal) izleyin.
+2. [Bu makaleyi](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container) kullanarak bir kapsayıcı oluşturun ve kapsayıcının uç noktası arasındaki bağlantıyı ayarlarken daha sonra kullanmak üzere kapsayıcı adını kaydedin.
+3. Ardından, depolama hesabınız için bir SAS belirteci oluşturun. [Azure Portal](https://ms.portal.azure.com/#home) depolama hesabınıza giderek başlayın (portal arama çubuğu ile adı ile bulabilirsiniz).
+4. Depolama hesabı sayfasında, SAS belirteci oluşturmak için doğru izinleri seçmek üzere sol gezinti çubuğundaki _paylaşılan erişim imzası_ bağlantısı ' nı seçin.
+5. _Izin verilen hizmetler_ ve _izin verilen kaynak türleri_ için istediğiniz ayarları seçin. Her kategoride en az bir kutu seçmeniz gerekir. Izin verilen izinler için, **yaz** ' ı seçin (isterseniz diğer izinleri de seçebilirsiniz).
+Diğer ayarları istediğiniz şekilde ayarlayın.
+6. Sonra SAS belirtecini oluşturmak için _SAS ve bağlantı dizesi oluştur_ düğmesini seçin. Bu işlem, ayar seçimlerinin altında, aynı sayfanın alt kısmında birkaç SAS ve bağlantı dizesi değeri oluşturur. Değerleri görüntülemek için aşağı kaydırın ve **SAS belirteç** değerini kopyalamak için Panoya Kopyala simgesini kullanın. Daha sonra kullanmak üzere kaydedin.
+
+:::image type="content" source="./media/how-to-manage-routes-apis-cli/generate-sas-token.png" alt-text="Azure portal bir SAS belirteci oluşturmak için tüm ayar seçimini gösteren depolama hesabı sayfası." lightbox="./media/how-to-manage-routes-apis-cli/generate-sas-token.png":::
+
+:::image type="content" source="./media/how-to-manage-routes-apis-cli/copy-sas-token.png" alt-text="Kullanılmayan harf gizli dosyasında kullanmak için SAS belirtecini kopyalayın." lightbox="./media/how-to-manage-routes-apis-cli/copy-sas-token.png":::
+
+#### <a name="configure-the-endpoint"></a>Uç noktayı yapılandırma
+
+Atılacak mektup uç noktaları, Azure Resource Manager API 'Leri kullanılarak oluşturulur. Uç nokta oluştururken, gerekli istek parametrelerini dolduracak [Azure Resource Manager API 'leri belgelerini](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) kullanın. Ayrıca, `deadLetterSecret` Depolama Hesabınıza yönelik bir kapsayıcı URL 'si ve SAS belirteci içeren, istek **gövdesinde** Özellikler nesnesine de ekleyin.
+      
 ```json
 {
   "properties": {
@@ -113,8 +126,7 @@ Uç nokta oluştururken, `deadLetterSecret` `properties` isteğin gövdesinde bi
   }
 }
 ```
-
-Daha fazla bilgi için bkz. Azure Digital TWINS REST API belgeleri: [uç noktalar-DigitalTwinsEndpoint CreateOrUpdate](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate).
+Bu isteği yapılandırma hakkında daha fazla bilgi için bkz. Azure Digital TWINS REST API belgeleri: [uç noktalar-DigitalTwinsEndpoint CreateOrUpdate](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate).
 
 ### <a name="message-storage-schema"></a>İleti depolama şeması
 

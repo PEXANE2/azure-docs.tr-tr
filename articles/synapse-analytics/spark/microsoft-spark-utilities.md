@@ -1,6 +1,6 @@
 ---
 title: Microsoft Spark yardımcı programlarına giriş
-description: Azure SYNAPSE Analytics not defterlerinde Msmini yardımcı programları kullanma öğreticisi.
+description: 'Öğretici: Azure SYNAPSE Analytics not defterlerinde Msmini yardımcı programları'
 author: ruxu
 services: synapse-analytics
 ms.service: synapse-analytics
@@ -10,14 +10,14 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 3c4e062393f9d75d478720041436c2e0f54485a3
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: ff294c0227bb6a830a5aef2379248714a7f2f64a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95795081"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435204"
 ---
-# <a name="introduction-of-microsoft-spark-utilities"></a>Microsoft Spark yardımcı programlarına giriş
+# <a name="introduction-to-microsoft-spark-utilities"></a>Microsoft Spark yardımcı programlarına giriş
 
 Microsoft Spark Utilities (Msparlak utils), ortak görevleri kolayca gerçekleştirmenize yardımcı olan yerleşik bir pakettir. Msmini yardımcı programları kullanarak dosya sistemleriyle çalışabilir, ortam değişkenlerini alabilir ve gizli dosyalarla çalışabilirsiniz. Msmini yardımcı programları,, `PySpark (Python)` `Scala` , ve `.NET Spark (C#)` dizüstü bilgisayarlarda ve SYNAPSE işlem hatları 'nda mevcuttur.
 
@@ -33,7 +33,7 @@ Azure AD ve çalışma alanı MSI ADLS 2. hesabına erişimi olduğundan emin ol
 1. [Azure Portal](https://portal.azure.com/) ve erişmek istediğiniz depolama hesabını açın. Erişmek istediğiniz belirli bir kapsayıcıya gidebilirsiniz.
 2. Sol paneldeki **erişim denetimini (IAM)** seçin.
 3. **Azure AD hesabınızı** ve **çalışma alanı kimliğinizi** (çalışma alanı adınızla aynı), henüz atanmamışsa depolama hesabındaki **Depolama Blobu veri katılımcısı** rolüne atayın. 
-4. **Kaydet**'i seçin.
+4. **Kaydet**’i seçin.
 
 ADLS 2. verilerine aşağıdaki URL aracılığıyla SYNAPSE Spark ile erişebilirsiniz:
 

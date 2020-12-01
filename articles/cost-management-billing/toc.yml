@@ -50,6 +50,8 @@
           href: costs/manage-automation.md
         - name: İş ortakları için Maliyet Yönetimi
           href: costs/get-started-partners.md
+        - name: EA raporlamasından Azure Resource Manager API’lerine geçiş
+          href: costs/migrate-from-enterprise-reporting-to-azure-resource-manager-apis.md
     - name: Rezervasyonlar
       items:
         - name: Azure Ayırmaları nedir?
@@ -327,7 +329,7 @@
             - name: Azure Synapse Analytics
               href: reservations/prepay-sql-data-warehouse-charges.md?toc=/azure/cost-management-billing/toc.json
             - name: Sanal makineler
-              href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/cost-management-billing/toc.json
+              href: ../virtual-machines/prepay-reserved-vm-instances.md?toc=%2fazure%2fcost-management-billing%2ftoc.json
         - name: 'Satın aldıktan sonra Görüntüleme, Yönetme ve İyileştirme'
           items:
             - name: Rezervasyonları ve kullanımı görüntüleme

@@ -47,6 +47,8 @@
           href: how-to-legacy-device-symm-key.md
         - name: Özel ayırma ilkeleri kullanma
           href: tutorial-custom-allocation-policies.md
+        - name: Birden fazla X.509 cihazı sağlama
+          href: tutorial-custom-hsm-enrollment-group-x509.md
     - name: 2 - Birden çok merkeze cihaz sağlama
       items:
         - name: Birden çok merkezi DPS’ye bağlama

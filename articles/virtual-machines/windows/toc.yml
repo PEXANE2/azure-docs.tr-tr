@@ -453,7 +453,7 @@
                       href: ../image-version-vm-powershell.md
                     - name: Yönetilen Disk’ten veya anlık görüntüden
                       href: ../image-version-snapshot-powershell.md
-                    - name: Yönetilen görüntüden geçiş yapma
+                    - name: Yönetilen bir görüntüyü klonlama
                       href: ../image-version-managed-image-powershell.md
                     - name: Başka bir galeriden kopyalama
                       href: ../image-version-another-gallery-powershell.md
@@ -475,7 +475,7 @@
                       href: ../image-version-vm-cli.md
                     - name: Yönetilen Disk’ten veya anlık görüntüden
                       href: ../image-version-snapshot-cli.md
-                    - name: Yönetilen görüntüden geçiş yapma
+                    - name: Yönetilen bir görüntüyü klonlama
                       href: ../image-version-managed-image-cli.md
                     - name: Başka bir galeriden kopyalama
                       href: ../image-version-another-gallery-cli.md
@@ -1069,7 +1069,7 @@
   href: ../troubleshooting/index.yml
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/vm
     - name: Azure PowerShell
       href: /powershell/azure/

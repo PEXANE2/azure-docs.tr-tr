@@ -3,12 +3,12 @@ title: Azure Lab Services bir eş ağa bağlan | Microsoft Docs
 description: Laboratuvar ağınızı bir eş olarak başka bir ağla bağlamayı öğrenin. Örneğin, şirket içi kuruluşunuzu/üniversite ağını Azure 'daki sanal ağ ile birlikte, laboratuvar için bağlayın.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 169160005b27f6ab9575749e4a72a26d2df4000b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 99ea72f11c8f389a15171a1fe3b376646494903a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647996"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434252"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Laboratuvarınızın ağını Azure Lab Services içindeki bir eş sanal ağla bağlayın
 
@@ -26,7 +26,7 @@ Laboratuvar ağınızı, bazı senaryolarda aşağıdakiler de dahil olmak üzer
 Belirli şirket içi ağlar, [ExpressRoute](../expressroute/expressroute-introduction.md) veya [sanal ağ geçidi](../vpn-gateway/vpn-gateway-about-vpngateways.md)aracılığıyla Azure sanal ağı 'na bağlanır. Bu hizmetlerin Azure Lab Services dışında ayarlanması gerekir. ExpressRoute kullanarak şirket içi bir ağı Azure 'a bağlama hakkında daha fazla bilgi edinmek için bkz. [ExpressRoute 'a genel bakış](../expressroute/expressroute-introduction.md). Bir sanal ağ geçidini kullanarak şirket içi bağlantı için, ağ geçidinin, belirtilen sanal ağın ve laboratuar hesabının hepsi aynı bölgede olmalıdır.
 
 > [!NOTE]
-> Laboratuvar hesabıyla eşlenmeyecek bir Azure sanal ağı oluştururken, sanal ağın bölgesinin, derslik laboratuvarlarının nerede oluşturulduğunu anlamak önemlidir.  Daha fazla bilgi için, [regions\locations](./administrator-guide.md#regionslocations)içindeki Yönetici Kılavuzu bölümüne bakın.
+> Laboratuvar hesabıyla eşlenmeyecek bir Azure sanal ağı oluştururken, sanal ağın bölgesinin laboratuvarların nerede oluşturulduğunu nasıl etkilediğini anlamak önemlidir.  Daha fazla bilgi için, [regions\locations](./administrator-guide.md#regionslocations)içindeki Yönetici Kılavuzu bölümüne bakın.
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>Laboratuvar hesabı oluşturma sırasında yapılandırma
 

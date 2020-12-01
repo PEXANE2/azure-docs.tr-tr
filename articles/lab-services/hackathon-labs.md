@@ -3,12 +3,12 @@ title: Hackathon için Azure Lab Services kullanma
 description: Bu makalede, hack maratonları çalıştırmak için kullanabileceğiniz Labs oluşturmak için Azure Lab Services nasıl kullanılacağı açıklanır.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 8727fad6f37d1365983127a1a514e87e3a5003b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 561351636a37c2cd5c3070dbfef2a3122e5c29b0
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85445891"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434269"
 ---
 # <a name="use-azure-lab-services-for-your-next-hackathon"></a>Sonraki Hackathon için Azure Lab Services kullanın
 Azure Lab Services, Hackathon için yeni bir sanal makine Laboratuvarı (VM) hızlı bir şekilde çalıştırabilmeniz için hafif ve kullanımı kolay olacak şekilde tasarlanmıştır.  Hackathon 'nizin mümkün olduğunca sorunsuz bir şekilde gitmemesini sağlamak için aşağıdaki denetim listesini kullanın. Bu denetim listesi, Hackathon laboratuvarınızı oluşturmaktan ve yönetmekten sorumlu BT departmanınız veya fakülte tamamlanmalıdır. 
@@ -86,4 +86,4 @@ Bu bölümde, Hackathon gününü tamamlamaya yönelik adımlar özetlenmektedir
         Daha fazla bilgi için bkz. [nasıl yapılır kılavuzu kullanıcılara davetiye gönderme](how-to-configure-student-usage.md?branch=master#send-invitations-to-users) ve [Linux VM 'lerine bağlanma](how-to-use-remote-desktop-linux-student.md?branch=master). 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Aşağıdaki makaledeki yönergeleri izleyerek ders laboratuvarlarında bir laboratuvar hesabı oluşturmaya başlayın: [öğretici: Azure Lab Services bir laboratuvar hesabı kurma](tutorial-setup-lab-account.md).
+Laboratuarda laboratuvar hesabı oluşturmaya başlayın: [öğreticideki yönergeleri izleyerek Azure Lab Services bir laboratuvar hesabı kurun](tutorial-setup-lab-account.md).

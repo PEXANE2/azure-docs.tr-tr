@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 53130e395995b3533a45a96f897a0c6bcf1e4c71
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 2b4710fec43e27235ef6c05abb6018e1af4310d3
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187196"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434949"
 ---
 # <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>Azure Güvenlik Merkezi 'nden aracıları ve uzantıları otomatik sağlama
 
@@ -138,7 +138,7 @@ Windows Güvenlik olay verilerini depolamak için Azure Defender gereklidir. [Az
 Log Analytics veri depolama, veri depolama için ek ücretler gerektirebilir. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
 
 ### <a name="information-for-azure-sentinel-users"></a>Azure Sentinel kullanıcıları için bilgiler 
-Azure Sentinel kullanıcıları: tek bir çalışma alanı bağlamı içindeki güvenlik olayları koleksiyonunun Azure Güvenlik Merkezi 'nden veya Azure Sentinel 'ten yapılandırılabileceğini, ancak her ikisiyle de kullanılamayacağını unutmayın. Azure Güvenlik Merkezi 'nden Azure Defender uyarılarını zaten alan bir çalışma alanına Azure Sentinel eklemek istiyorsanız ve güvenlik olaylarını toplayacak şekilde ayarlanırsa, iki seçeneğiniz vardır:
+Azure Sentinel kullanıcıları: tek bir çalışma alanı bağlamı içindeki güvenlik olayları koleksiyonunun Azure Güvenlik Merkezi 'nden veya Azure Sentinel 'ten yapılandırılabileceğini, ancak her ikisiyle de kullanılamayacağını unutmayın. Azure Güvenlik Merkezi 'nde zaten uyarı alan bir çalışma alanına Azure Sentinel eklemek istiyorsanız ve güvenlik olaylarını toplamak üzere ayarlanırsa, iki seçeneğiniz vardır:
 - Azure Güvenlik Merkezi 'nde güvenlik olayları koleksiyonunu olduğu gibi bırakın. Bu olayları Azure Sentinel 'de ve Azure Defender 'da sorgulayabilir ve analiz edebilirsiniz. Bununla birlikte, bağlayıcının bağlantı durumunu izleyebilmeyecek veya Azure Sentinel 'de yapılandırmasını değiştiremeyeceksiniz. Bu sizin için önemliyse ikinci seçeneği göz önünde bulundurun.
 - Azure Güvenlik Merkezi 'nde güvenlik olayları koleksiyonunu devre dışı bırakın (Log Analytics aracınızın yapılandırmasında **Windows Güvenlik olaylarını** **none** olarak ayarlayarak). Ardından Azure Sentinel 'de güvenlik olayları bağlayıcısını ekleyin. İlk seçenekte olduğu gibi, hem Azure Sentinel hem de Azure Defender/ASC içindeki olayları sorgulayabilir ve çözümleyebilirsiniz, ancak artık bağlayıcının bağlantı durumunu izleyebilir ya da yalnızca Azure Sentinel 'de ve yapılandırmasını değiştirebilirsiniz.
 

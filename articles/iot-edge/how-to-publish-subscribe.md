@@ -10,16 +10,16 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 1ace40098e1d53c6199accea755ffb6969781663
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: ecb034ae621c935c3ebcd5b480e116c2cb1d864f
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015672"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435544"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>Azure IoT Edge yayımlayın ve abone olun
 
-İletileri yayımlamak ve abone olmak için MQTT Broker Azure IoT Edge kullanabilirsiniz. Bu makalede, bu aracıya nasıl bağlanacağınız, Kullanıcı tanımlı konular üzerinde iletileri nasıl yayımlayacağınız ve abone olabileceğiniz ve IoT Hub mesajlaşma temelleri kullanabileceğiniz gösterilmektedir. IoT Edge MQTT Aracısı, IoT Edge hub 'ında yerleşik olarak bulunur. Daha fazla bilgi için [IoT Edge hub 'ının aracı özelliklerine](iot-edge-runtime.md)bakın.
+İletileri yayımlamak ve abone olmak için MQTT Broker Azure IoT Edge kullanabilirsiniz. Bu makalede, bu aracıya nasıl bağlanacağınız, Kullanıcı tanımlı konular üzerinden iletileri yayımlayıp abone olabileceğiniz ve IoT Hub mesajlaşma temelleri kullanabileceğiniz gösterilmektedir. IoT Edge MQTT Aracısı, IoT Edge hub 'ında yerleşik olarak bulunur. Daha fazla bilgi için [IoT Edge hub 'ının aracı özelliklerine](iot-edge-runtime.md)bakın.
 
 > [!NOTE]
 > IoT Edge MQTT Aracısı Şu anda genel önizlemede.
@@ -27,16 +27,16 @@ ms.locfileid: "95015672"
 ## <a name="pre-requisites"></a>Ön koşullar
 
 - Geçerli aboneliği olan bir Azure hesabı
-- CLI uzantısı yüklü olan [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest&preserve-view=true) `azure-iot` . Daha fazla bilgi için bkz. Azure [Azure CLI Için Azure IoT uzantısı yükleme adımları](https://docs.microsoft.com/cli/azure/azure-cli-reference-for-iot).
-- SKU 'nun **IoT Hub** F1, S1, S2 veya S3 olmalıdır.
+- CLI uzantısı yüklü olan [Azure CLI](/cli/azure/) `azure-iot` . Daha fazla bilgi için bkz. Azure [Azure CLI Için Azure IoT uzantısı yükleme adımları](/cli/azure/azure-cli-reference-for-iot).
+- SKU 'nun **IoT Hub** F1, S1, S2 veya S3.
 - **Sürüm 1,2 veya üzeri bir IoT Edge cihazına** sahip olmanız gerekir. MQTT Aracısı Şu anda genel önizleme aşamasında olduğundan, MQTT Aracısı 'nı etkinleştirmek için aşağıdaki ortam değişkenlerini edgeHub kapsayıcısında doğru olarak ayarlayın: IoT Edge
 
-   | Name | Değer |
+   | Ad | Değer |
    | - | - |
    | `experimentalFeatures__enabled` | `true` |
    | `experimentalFeatures__mqttBrokerEnabled` | `true` |
 
-- IoT Edge cihazda yüklü olan **istemciler** . Bu makale, [MOSQUITTO_PUB](https://mosquitto.org/man/mosquitto_pub-1.html) ve [MOSQUITTO_SUB](https://mosquitto.org/man/mosquitto_sub-1.html)Içeren popüler mosquıto istemcilerini kullanır. Bunun yerine diğer MQTT istemcileri kullanılabilir. Bir Ubuntu cihazına mosquıto istemcilerini yüklemek için şu komutu çalıştırın:
+- IoT Edge cihazda yüklü olan **istemciler** . Bu makalede, popüler mosquıto istemcileri [MOSQUITTO_PUB](https://mosquitto.org/man/mosquitto_pub-1.html) ve [MOSQUITTO_SUB](https://mosquitto.org/man/mosquitto_sub-1.html)kullanılmaktadır. Bunun yerine diğer MQTT istemcileri kullanılabilir. Bir Ubuntu cihazına mosquıto istemcilerini yüklemek için şu komutu çalıştırın:
 
     ```cmd
     sudo apt-get update && sudo apt-get install mosquitto-clients
@@ -62,28 +62,28 @@ TLS 'yi etkinleştirmek için, istemci bağlantı noktası 8883 ' de (MQTTS) MQT
 
 ### <a name="authentication"></a>Kimlik Doğrulaması
 
-Bir MQTT istemcisinin kendi kimliğini doğrulamak için, öncelikle bir bağlantı paketini MQTT aracısına göndermelidir, bu dosyanın adında bir bağlantı başlatması gerekir. Bu paket üç kimlik doğrulama bilgisi parçası sağlar: a `client identifier` , a `username` ve `password` :
+Bir MQTT istemcisinin kendi kimliğini doğrulamak için, öncelikle bir bağlantı paketini MQTT aracısına göndermelidir, bu dosyanın adında bir bağlantı başlatması gerekir. Bu paket üç kimlik doğrulama bilgisi sağlar: a `client identifier` , a `username` ve a `password` :
 
--   `client identifier`Alan, IoT Hub içindeki cihazın veya modül adının adıdır. Aşağıdaki sözdizimini kullanır:
+- `client identifier`Alan, IoT Hub içindeki cihazın veya modül adının adıdır. Aşağıdaki sözdizimini kullanır:
 
-    - Bir cihaz için: `<device_name>`
+  - Bir cihaz için: `<device_name>`
 
-    - Bir modül için: `<device_name>/<module_name>`
+  - Bir modül için: `<device_name>/<module_name>`
 
    MQTT aracısına bağlanmak için bir cihazın veya modülün IoT Hub kayıtlı olması gerekir.
 
-   Aracının aynı kimlik bilgilerini kullanarak iki istemcinin bağlanmasına izin vermediğini unutmayın. İkinci istemci aynı kimlik bilgilerini kullanarak bağlanırsa, aracı zaten bağlı olan istemcinin bağlantısını keser.
+   Aracı, aynı kimlik bilgilerini kullanarak birden çok istemciden gelen bağlantılara izin vermez. İkinci istemci aynı kimlik bilgilerini kullanarak bağlanırsa, aracı zaten bağlı olan istemcinin bağlantısını keser.
 
 - `username`Alan, cihaz veya modül adından türetilir ve cihazın aşağıdaki sözdizimini kullanarak ait olduğu ıothub adıdır:
 
-    - Bir cihaz için: `<iot_hub_name>.azure-devices.net/<device_name>/?api-version=2018-06-30`
+  - Bir cihaz için: `<iot_hub_name>.azure-devices.net/<device_name>/?api-version=2018-06-30`
 
-    - Bir modül için: `<iot_hub_name>.azure-devices.net/<device_name>/<module_name>/?api-version=2018-06-30`
+  - Bir modül için: `<iot_hub_name>.azure-devices.net/<device_name>/<module_name>/?api-version=2018-06-30`
 
 - `password`Bağlantı paketinin alanı kimlik doğrulama moduna bağlıdır:
 
-    - [Simetrik anahtar kimlik doğrulaması](how-to-authenticate-downstream-device.md#symmetric-key-authentication)söz konusu olduğunda, `password` alan bir SAS belirtecidir.
-    - [X. 509.440 otomatik imzalı kimlik doğrulaması](how-to-authenticate-downstream-device.md#x509-self-signed-authentication)durumunda, `password` alan mevcut değildir. Bu kimlik doğrulama modunda bir TLS kanalı gereklidir. Bir TLS bağlantısı kurmak için istemcinin 8883 numaralı bağlantı noktasına bağlanması gerekir. TLS anlaşması sırasında MQTT Aracısı bir istemci sertifikası ister. Bu sertifika, istemcinin kimliğini doğrulamak için kullanılır ve bu nedenle, `password` daha sonra bağlantı paketi gönderildiğinde alanı gerekli değildir. Hem bir istemci sertifikası hem de parola alanı gönderilmesi bir hataya yol açacağından bağlantı kapatılır. MQTT kitaplıkları ve TLS istemci kitaplıkları genellikle bir bağlantı başlatırken istemci sertifikası göndermenin bir yoludur. [İstemci kimlik doğrulaması Için x509 sertifikası](how-to-authenticate-downstream-device.md#x509-self-signed-authentication)' nı kullanarak bölümde adım adım bir örnek görebilirsiniz.
+  - [Simetrik anahtar kimlik doğrulaması](how-to-authenticate-downstream-device.md#symmetric-key-authentication)kullanılırken, `password` alan bir SAS belirtecidir.
+  - [X. 509.440 otomatik imzalı kimlik doğrulaması](how-to-authenticate-downstream-device.md#x509-self-signed-authentication)kullanılırken `password` alan yok. Bu kimlik doğrulama modunda bir TLS kanalı gereklidir. Bir TLS bağlantısı kurmak için istemcinin 8883 numaralı bağlantı noktasına bağlanması gerekir. TLS anlaşması sırasında MQTT Aracısı bir istemci sertifikası ister. Bu sertifika, istemcinin kimliğini doğrulamak için kullanılır ve bu nedenle, `password` daha sonra bağlantı paketi gönderildiğinde alanı gerekli değildir. Hem bir istemci sertifikası hem de parola alanı gönderilmesi bir hataya yol açacağından bağlantı kapatılır. MQTT kitaplıkları ve TLS istemci kitaplıkları genellikle bir bağlantı başlatırken istemci sertifikası göndermenin bir yoludur. [İstemci kimlik doğrulaması Için x509 sertifikası](how-to-authenticate-downstream-device.md#x509-self-signed-authentication)' nı kullanarak bölümde adım adım bir örnek görebilirsiniz.
 
 IoT Edge tarafından dağıtılan modüller, [simetrik anahtar kimlik doğrulaması](how-to-authenticate-downstream-device.md#symmetric-key-authentication) kullanır ve çevrimdışı olduğunda bıle bir SAS belirtecini programlı bir şekilde almak için yerel [IoT Edge iş yükü API](https://github.com/Azure/iotedge/blob/40f10950dc65dd955e20f51f35d69dd4882e1618/edgelet/workload/README.md) 'sini çağırabilir.
 
@@ -94,10 +94,10 @@ MQTT istemcisinin kimliği IoT Edge hub 'a doğrulandıktan sonra, bağlanmak i�
 > [!NOTE]
 > Genel önizleme için, MQTT aracısının yetkilendirme ilkelerinin düzenlenmesine yalnızca Visual Studio, Visual Studio Code veya Azure CLı aracılığıyla ulaşılabilir. Azure portal Şu anda IoT Edge hub ikizi ve yetkilendirme ilkesini düzenlemenizi desteklemiyor.
 
-Her yetkilendirme ilkesi beyanı `identities` , `allow` veya efektinin birleşiminden oluşur `deny` `operations` `resources` :
+Her yetkilendirme ilkesi beyanı,, ve ' nin birleşiminden oluşur `identities` `allow` `deny` `operations` `resources` :
 
 - `identities` ilkenin konusunu açıkla. Bu, `client identifier` Connect paketindeki istemcileri tarafından gönderilen istemcilerle eşleşmelidir.
-- `allow` ya da `deny` etkiyi işlemlere izin verip vermeyeceğinizi tanımlar.
+- `allow` ya da `deny` efektler işlemlere izin verip vermeyeceğinizi tanımlar.
 - `operations` yetkilendirmede kullanılacak eylemleri tanımlayın. `mqtt:connect`, `mqtt:publish` ve `mqtt:subscribe` bugün üç adet desteklenen eylemlerdir.
 - `resources` ilkenin nesnesini tanımlayın. [MQTT joker karakterlerle](https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718107)tanımlanmış bir konu veya konu başlığı olabilir.
 
@@ -163,16 +163,18 @@ Aşağıda, "rogue_client" istemcisinin bağlanmasına izin veren bir yetkilendi
 ```
 
 Yetkilendirme ilkenizi yazarken göz önünde bulundurmanız gereken birkaç nokta vardır:
+
 - `$edgeHub`İkizi şema sürümü 1,2 gerektirir
 - Varsayılan olarak, tüm işlemler reddedilir.
-- Yetkilendirme deyimleri, JSON tanımında görünenden sonra sırayla değerlendirilir. `identities`' A bakarak ve sonra istekle eşleşen ilk izin verme veya reddetme deyimlerini seçerek başlar. İzin verme ve reddetme deyimleri arasındaki çakışmalar durumunda reddetme deyimi kazanır.
+- Yetkilendirme deyimleri, JSON tanımında göründükleri sırayla değerlendirilir. `identities`' A bakarak ve sonra istekle eşleşen ilk izin verme veya reddetme deyimlerini seçerek başlar. İzin verme ve reddetme deyimleri arasındaki çakışmalar durumunda reddetme deyimi kazanır.
 - Yetkilendirme ilkesinde çeşitli değişkenler (örneğin, değişimler) kullanılabilir:
-    - `{{iot:identity}}` o anda bağlı olan istemcinin kimliğini temsil eder. Örneğin `myDevice` , bir cihaz söz konusu olduğunda bir `myEdgeDevice/SampleModule` Modül olması durumunda.
-    - `{{iot:device_id}}` o anda bağlı olan aygıtın kimliğini temsil eder. Örneğin `myDevice` , bir cihaz söz konusu olduğunda bir `myEdgeDevice` Modül olması durumunda.
-    - `{{iot:module_id}}` o anda bağlı olan modülün kimliğini temsil eder. Örneğin, bir modül söz konusu olduğunda bir cihaz durumunda ' ' için `SampleModule` .
+    - `{{iot:identity}}` o anda bağlı olan istemcinin kimliğini temsil eder. Örneğin, gibi bir cihaz kimliği `myDevice` veya gibi bir modül kimliği `myEdgeDevice/SampleModule` .
+    - `{{iot:device_id}}` o anda bağlı olan aygıtın kimliğini temsil eder. Örneğin, gibi bir cihaz kimliği `myDevice` veya bir modülün çalıştığı cihaz kimliği `myEdgeDevice` .
+    - `{{iot:module_id}}` o anda bağlı olan modülün kimliğini temsil eder. Bu değişken bağlı cihazlar veya gibi bir modül kimliği için boştur `SampleModule` .
     - `{{iot:this_device_id}}` yetkilendirme ilkesini çalıştıran IoT Edge cihazının kimliğini temsil eder. Örneğin, `myIoTEdgeDevice`.
 
-IoT Hub konuları için yetkilendirme, Kullanıcı tanımlı konulardan biraz farklı şekilde işlenir. Anımsanması gereken önemli noktaları aşağıda bulabilirsiniz:
+IoT Hub konuları için yetkilendirmeler, Kullanıcı tanımlı konulardan biraz farklı şekilde işlenir. Anımsanması gereken önemli noktaları aşağıda bulabilirsiniz:
+
 - Azure IoT cihazlarının veya modüllerinin IoT Edge hub MQTT aracısına bağlanmak için açık bir yetkilendirme kuralı gerekir. Varsayılan bir bağlantı yetkilendirme ilkesi aşağıda verilmiştir.
 - Azure IoT cihazları veya modülleri, herhangi bir açık yetkilendirme kuralı olmadan kendi IoT Hub konularına varsayılan olarak erişebilir. Ancak, bu durumda üst/alt ilişkilerden oluşan yetkilendirmeler ve bu ilişkilerin ayarlanması gerekir. IoT Edge modüller otomatik olarak IoT Edge cihazlarının alt öğeleri olarak ayarlanır ancak cihazların IoT Edge ağ geçitlerinde açıkça bir alt öğe olarak ayarlanması gerekir.
 - Azure IoT cihazları veya modülleri, uygun açık yetkilendirme kurallarının tanımlanmasını sağlayan diğer cihazların veya modüllerin IoT Hub konuları dahil olmak üzere konulara erişebilir.
@@ -230,7 +232,7 @@ IoT Hub iki IoT cihazı oluşturun ve parolalarını alın. Terminalinizden Azur
        az iot hub generate-sas-token -n <iot_hub_name> -d <device_name> --key-type primary --du 3600
        ```
     
-       Burada 3600, SAS belirtecinin saniye cinsinden süresi (ör. 3600 = 1 saat).
+       Burada 3600, SAS belirtecinin saniye cinsinden süresi (örneğin, 3600 = 1 saat).
     
     - Bir modül için:
     
@@ -238,7 +240,7 @@ IoT Hub iki IoT cihazı oluşturun ve parolalarını alın. Terminalinizden Azur
        az iot hub generate-sas-token -n <iot_hub_name> -d <device_name> -m <module_name> --key-type primary --du 3600
        ```
     
-       Burada 3600, SAS belirtecinin saniye cinsinden süresi (ör. 3600 = 1 saat).
+       Burada 3600, SAS belirtecinin saniye cinsinden süresi (örneğin, 3600 = 1 saat).
 
 3. Çıktıdan "SAS" anahtarına karşılık gelen değer olan SAS belirtecini kopyalayın. Yukarıdaki Azure CLı komutundan bir örnek çıktı aşağıda verilmiştir:
 
@@ -310,7 +312,7 @@ Yayımcıyı ve aboneyi yetkilendirmek için, Azure CLı, Visual Studio veya Vis
 
 ### <a name="symmetric-keys-authentication-without-tls"></a>TLS olmadan simetrik anahtarlar kimlik doğrulaması
 
-#### <a name="subscribe"></a>Abonelik
+#### <a name="subscribe"></a>Abone olma
 
 **Sub_client** MQTT ISTEMCINIZI MQTT aracısına bağlayın ve `test_topic` IoT Edge cihazınızda aşağıdaki komutu çalıştırarak hizmetine abone olun:
 
@@ -327,7 +329,7 @@ mosquitto_sub \
 
 `<edge_device_address>`  =  `localhost` Bu örnekte, istemcinin IoT Edge ile aynı cihazda çalıştığından bu yana.
 
-1883 (MQTT) numaralı bağlantı noktasını (örneğin, TLS olmadan) Bu ilk örnekte kullanıldığını unutmayın. 8883 (MQTTS) numaralı bağlantı noktasına (örneğin, TLS etkin) sahip başka bir örnek, sonraki bölümde gösterilmiştir.
+Bu ilk örnekte, TLS olmadan bağlantı noktası 1883 (MQTT) kullanıldığını unutmayın. TLS etkinleştirilmiş bağlantı noktası 8883 (MQTTS) ile başka bir örnek, sonraki bölümde gösterilmiştir.
 
 MQTT istemcisi **sub_client** artık başlatılmış ve üzerinde gelen iletileri bekliyor `test_topic` .
 
@@ -384,7 +386,7 @@ Abonelik yapıldıktan sonra istemci, `$iothub/twin/GET/?rid=<request_id>/#` ras
 
 ### <a name="receive-direct-methods"></a>Doğrudan Yöntemler al
 
-Doğrudan bir yöntemi almak, istemcinin çağrıyı aldığını doğrulamak için gereken ek ile tam TWINS almaya çok benzer. İlk olarak istemci IoT Hub 'a abone olur özel konusuna bakın `$iothub/methods/POST/#` . Bu konuda doğrudan bir yöntem alındıktan sonra, istemcinin `rid` doğrudan yöntemin alındığı alt konudan istek tanımlayıcısını ayıklayıp, son olarak IoT Hub özel konusunda bir onay iletisi yayımlaması gerekir `$iothub/methods/res/200/<request_id>` .
+Doğrudan bir yöntem alınması, istemcinin çağrıyı aldığını doğrulamak için gereken ek ile tam TWINS almaya benzer. İlk olarak istemci IoT Hub 'ı özel konusuna abone olur `$iothub/methods/POST/#` . Bu konuda doğrudan bir yöntem alındıktan sonra, istemcinin `rid` doğrudan yöntemin alındığı alt konudan istek tanımlayıcısını ayıklayıp, son olarak IoT Hub özel konusunda bir onay iletisi yayımlaması gerekir `$iothub/methods/res/200/<request_id>` .
 
 ### <a name="send-direct-methods"></a>Doğrudan Yöntemler gönder
 

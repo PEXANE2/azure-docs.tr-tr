@@ -3,12 +3,12 @@ title: Kullanmaya başlayın ve takımlar içinde Azure Lab Services Laboratuvar
 description: Nasıl başlacağınızı ve takımlar içinde Azure Lab Services Laboratuvarı oluşturmayı öğrenin.
 ms.topic: article
 ms.date: 10/08/2020
-ms.openlocfilehash: e17b0be223a1630402fc4f32c692d7ecfe184783
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: cc4ad604bdf250cc6e4ba2c50c2f7143c921e906
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217091"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96433980"
 ---
 # <a name="get-started-and-create-a-lab-services-lab-within-teams"></a>Kullanmaya başlayın ve takımlar içinde Laboratuvar Hizmetleri Laboratuvarı oluşturun
 
@@ -40,18 +40,18 @@ Ekip sahibi olarak, doğrudan takımlar kanallarınızda **Azure Lab Services** 
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/integrate-with-teams/add.png" alt-text="Sekme ekle":::
-1. Bu takımda sınıf laboratuvarları oluşturmak için kullanmak istediğiniz bir laboratuvar hizmetleri hesabı seçin. 
+1. Bu takımda Labs oluşturmak için kullanmak istediğiniz bir laboratuvar hizmetleri hesabı seçin. 
 
     Azure Lab Services, [Azure Lab Services Web sitesinde](https://labs.azure.com) çoklu oturum açma kullanır ve erişiminiz olan tüm Laboratuvar hesaplarını çeker. 
 
-    Ekiplerle aynı kiracıda bulunan ve **sahibi**, **katılımcısı**veya **oluşturan** erişimi olan hesaplar görüntülenir. 
+    Ekiplerle aynı kiracıda bulunan ve **sahibi**, **katılımcısı** veya **oluşturan** erişimi olan hesaplar görüntülenir. 
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/integrate-with-teams/welcome.png" alt-text="Sekme ekle":::
+    > :::image type="content" source="./media/integrate-with-teams/welcome.png" alt-text="ALS 'e hoş geldiniz":::
 1. **Kaydet** ' e basın ve sekme kanala eklenir.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/integrate-with-teams/created.png" alt-text="Sekme ekle":::
+    > :::image type="content" source="./media/integrate-with-teams/created.png" alt-text="ALS sekmesi oluşturuldu":::
 
     Artık, kanalınızdan **Azure Lab Services** sekmesini seçebilir ve aşağıdaki makalelerde açıklandığı gibi laboratuvarları yönetmeye başlayabilirsiniz.
 

@@ -7,15 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/09/2020
+ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: 4125a4493b72fa60203067f3eba1ccebdc820b02
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.custom: azureday1
+ms.openlocfilehash: e07ec17a4e14f0099d82bd444f2ee8d37abe9908
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182980"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435017"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-user"></a>Öğretici: Kullanıcı olarak güvenli bir uygulamadan Microsoft Graph erişim
 
@@ -25,7 +26,7 @@ Azure App Service çalıştıran bir Web uygulamasından Microsoft Graph erişme
 
 Web uygulamanızdan Microsoft Graph erişim eklemek ve oturum açmış kullanıcı olarak bazı eylemler gerçekleştirmek istiyorsunuz. Bu bölümde, Web uygulamasına temsilci izinleri verme ve oturum açan kullanıcının Azure Active Directory (Azure AD) üzerinden profil bilgileri alma açıklanmaktadır.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -34,7 +35,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [App Service kimlik doğrulama/yetkilendirme modülü etkinleştirilmiş](scenario-secure-app-authentication-app-service.md)Azure App Service üzerinde çalışan bir Web uygulaması.
 
@@ -74,6 +75,8 @@ Sol tarayıcıda, **config**  >  **authsettings öğesine tıklayın** öğesine
 ## <a name="call-microsoft-graph-net"></a>Microsoft Graph çağrısı (.NET)
 
 Web uygulamanız artık gerekli izinlere sahiptir ve ayrıca Microsoft Graph istemci KIMLIĞINI oturum açma parametrelerine ekler. Web uygulaması, [Microsoft. Identity. Web kitaplığı](https://github.com/AzureAD/microsoft-identity-web/)kullanarak Microsoft Graph kimlik doğrulaması için bir erişim belirteci alır. Sürüm 1.2.0 ve sonraki sürümlerde, Microsoft. Identity. Web kitaplığı ile tümleşir ve App Service kimlik doğrulaması/yetkilendirme modülü ile birlikte çalışabilir. Microsoft. Identity. Web, Web uygulamasının App Service ' de barındırıldığını algılar ve App Service kimlik doğrulama/yetkilendirme modülünden erişim belirtecini alır. Erişim belirteci daha sonra Microsoft Graph API 'SI ile kimliği doğrulanmış isteklere iletilir.
+
+Bu kodu örnek bir uygulamanın parçası olarak görmek için [GitHub 'daki örneğe](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/2-WebApp-graphapi-on-behalf)bakın.
 
 > [!NOTE]
 > Microsoft. Identity. Web kitaplığı, temel kimlik doğrulaması/yetkilendirme için Web uygulamanızda gerekli değildir veya Microsoft Graph ile isteklerin kimliğini doğrular. Yalnızca App Service kimlik doğrulaması/yetkilendirme modülü etkin olan [aşağı akış API 'lerini güvenli](tutorial-auth-aad.md#call-api-securely-from-server-code) bir şekilde çağırmak mümkündür.

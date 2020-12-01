@@ -6,65 +6,94 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/17/2020
+ms.date: 11/20/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 6c6ac3e6ab6a27e0aca1aa2bebecb86cc1eb3f87
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: cc3a2a1ee28ad3c1fdefad08c8ec133ad45cb408
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792982"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435085"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Paylaşılan erişim imzalarını (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme
 
-Paylaşılan erişim imzası (SAS), verilerinizin güvenliğine ödün vermeden Depolama hesabınızdaki kaynaklara güvenli yetki verilen erişim sağlar. SAS ile, bir istemcinin verilerinize nasıl erişe, üzerinde ayrıntılı denetim sahibi olursunuz. İstemcinin erişebileceği kaynakları, bu kaynaklarda sahip oldukları izinleri ve SAS 'ın ne kadar süreyle geçerli olduğunu (diğer parametreler arasında) denetleyebilirsiniz.
+Paylaşılan erişim imzası (SAS) Depolama hesabınızdaki kaynaklara güvenli temsilci erişimi sağlar. SAS ile, bir istemcinin verilerinize nasıl erişe, üzerinde ayrıntılı denetim sahibi olursunuz. Örnek:
+ 
+- İstemcinin erişebileceği kaynaklar.
+
+- Bu kaynaklara sahip oldukları izinler.
+
+- SAS 'ın geçerli olduğu süre.
 
 ## <a name="types-of-shared-access-signatures"></a>Paylaşılan erişim imzası türleri
 
 Azure depolama, üç tür paylaşılan erişim imzasını destekler:
 
-- **Kullanıcı temsili SAS.** Kullanıcı temsili SAS, Azure Active Directory (Azure AD) kimlik bilgileriyle ve SAS için belirtilen izinlerle korunmaktadır. Kullanıcı temsili SAS yalnızca BLOB depolama için geçerlidir.
+- Kullanıcı temsili SAS
 
-    Kullanıcı temsili SAS hakkında daha fazla bilgi için bkz. [Kullanıcı temsilcileri oluşturma SAS (REST API)](/rest/api/storageservices/create-user-delegation-sas).
+- Hizmet SAS
 
-- **Hizmet SAS.** Hizmet SAS, depolama hesabı anahtarıyla güvenli hale getirilir. Hizmet SAS, Azure depolama hizmetlerinden yalnızca birindeki bir kaynağa erişim temsilcisi seçer: BLOB depolama, kuyruk depolama, tablo depolama veya Azure dosyaları.
+- Hesap SAS
 
-    Hizmet SAS hakkında daha fazla bilgi için bkz. [HIZMET SAS oluşturma (REST API)](/rest/api/storageservices/create-service-sas).
+### <a name="user-delegation-sas"></a>Kullanıcı temsili SAS
 
-- **Hesap SAS.** Bir hesap SAS, depolama hesabı anahtarıyla güvenli hale getirilir. Hesap SAS ise bir veya daha fazla depolama hizmetindeki kaynaklara erişim atar. Bir hizmet veya Kullanıcı temsili SAS aracılığıyla kullanılabilen tüm işlemler, hesap SAS 'si aracılığıyla da kullanılabilir. Ayrıca, hesap SAS ile hizmet **Özellikleri al/ayarla** ve **hizmet istatistikleri işlemlerini al** gibi hizmet düzeyinde uygulanan işlemlere erişim yetkisi verebilirsiniz. Bununla birlikte hizmet SAS ile izin verilmeyen blob kapsayıcılar, tablolar kuyruklar ve dosya paylaşımları üzerinde okuma, yazma ve silme işlemleri için yetkilendirme yapabilirsiniz. 
+Kullanıcı temsili SAS, Azure Active Directory (Azure AD) kimlik bilgileriyle ve SAS için belirtilen izinlerle korunmaktadır. Kullanıcı temsili SAS yalnızca BLOB depolama için geçerlidir.
 
-    Hesap SAS 'si hakkında daha fazla bilgi için [bir hesap SAS (REST API) oluşturun](/rest/api/storageservices/create-account-sas).
+Kullanıcı temsili SAS hakkında daha fazla bilgi için bkz. [Kullanıcı temsilcileri oluşturma SAS (REST API)](/rest/api/storageservices/create-user-delegation-sas).
+
+### <a name="service-sas"></a>Hizmet SAS
+
+Hizmet SAS, depolama hesabı anahtarıyla güvenli hale getirilir. Hizmet SAS, Azure depolama hizmetlerinden yalnızca birindeki bir kaynağa erişim temsilcisi seçer: BLOB depolama, kuyruk depolama, tablo depolama veya Azure dosyaları.
+
+Hizmet SAS hakkında daha fazla bilgi için bkz. [HIZMET SAS oluşturma (REST API)](/rest/api/storageservices/create-service-sas).
+
+### <a name="account-sas"></a>Hesap SAS
+
+Bir hesap SAS, depolama hesabı anahtarıyla güvenli hale getirilir. Hesap SAS ise bir veya daha fazla depolama hizmetindeki kaynaklara erişim atar. Bir hizmet veya Kullanıcı temsili SAS aracılığıyla kullanılabilen tüm işlemler, hesap SAS 'si aracılığıyla da kullanılabilir. 
+
+Ayrıca aşağıdakilere erişim temsilciliğini de sağlayabilirsiniz:
+
+- Hizmet düzeyi işlemleri (örneğin, **hizmet özelliklerini al/ayarla** ve **hizmet istatistikleri al** işlemleri). 
+
+- Hizmet SAS ile izin verilmeyen okuma, yazma ve silme işlemleri. 
+
+Hesap SAS 'si hakkında daha fazla bilgi için [bir hesap SAS (REST API) oluşturun](/rest/api/storageservices/create-account-sas).
 
 > [!NOTE]
 > Microsoft, Azure AD kimlik bilgilerini, daha kolay tehlikeye giren hesap anahtarını kullanmak yerine en iyi güvenlik uygulaması olarak mümkün olduğunca kullanmanızı önerir. Uygulama tasarımınız blob depolamaya erişim için paylaşılan erişim imzaları gerektirdiğinde, üstün güvenlik için mümkün olduğunda bir Kullanıcı temsili SAS oluşturmak için Azure AD kimlik bilgilerini kullanın. Daha fazla bilgi için bkz. [Azure Active Directory kullanarak bloblara ve kuyruklara erişim yetkisi verme](storage-auth-aad.md).
 
-Paylaşılan erişim imzası, iki formdan birini alabilir:
+Paylaşılan erişim imzası aşağıdaki iki formdan birini alabilir:
 
-- Geçici **SAS:** Bir geçici SAS oluşturduğunuzda, sa 'lar için başlangıç zamanı, süre sonu zamanı ve izin izinleri SAS URI 'sinde belirtilmiştir (veya başlangıç saati atlanırsa ima edilir). Her tür SAS bir geçici SAS olabilir.
-- **Depolanan erişim Ilkesiyle HIZMET SAS:** Depolanan erişim ilkesi, bir blob kapsayıcısı, tablo, kuyruk veya dosya paylaşma olabilecek bir kaynak kapsayıcısında tanımlanır. Depolanan erişim ilkesi, bir veya daha fazla hizmet paylaşılan erişim imzalarının kısıtlamalarını yönetmek için kullanılabilir. Bir hizmet SAS 'sini depolanan bir erişim ilkesiyle ilişkilendirdiğinizde, SAS, &mdash; &mdash; depolama erişim ilkesi için tanımlanan başlangıç zamanı, süre sonu zamanı ve izinleri devralır.
+- Geçici **SAS**. Geçici SAS oluşturduğunuzda başlangıç saati, süre sonu zamanı ve izinler SAS URI 'sinde belirtilir. Her tür SAS bir geçici SAS olabilir.
+
+- **Depolanan erişim Ilkesiyle HIZMET SAS**. Depolanan erişim ilkesi, bir blob kapsayıcısı, tablo, kuyruk veya dosya paylaşma olabilecek bir kaynak kapsayıcısında tanımlanır. Depolanan erişim ilkesi, bir veya daha fazla hizmet paylaşılan erişim imzalarının kısıtlamalarını yönetmek için kullanılabilir. Bir hizmet SAS 'sini depolanan bir erişim ilkesiyle ilişkilendirdiğinizde, SAS, &mdash; &mdash; depolama erişim ilkesi için tanımlanan başlangıç zamanı, süre sonu zamanı ve izinleri devralır.
 
 > [!NOTE]
 > Kullanıcı temsili SAS veya hesap SA 'ları bir geçici SAS olmalıdır. Depolanan erişim ilkeleri, Kullanıcı temsili SAS veya hesap SAS 'ları için desteklenmez.
 
 ## <a name="how-a-shared-access-signature-works"></a>Paylaşılan erişim imzasının nasıl çalıştığı
 
-Paylaşılan erişim imzası, bir veya daha fazla depolama kaynağını işaret eden ve özel bir sorgu parametreleri kümesi içeren bir belirteç içeren imzalı bir URI 'dir. Belirteç, kaynaklara istemci tarafından nasıl erişildiğini gösterir. Sorgu parametrelerinden biri olan imza SAS parametrelerinden oluşturulur ve SAS oluşturmak için kullanılan anahtarla imzalanır. Bu imza, depolama kaynağına erişimi yetkilendirmek için Azure depolama tarafından kullanılır.
+Paylaşılan erişim imzası, bir veya daha fazla depolama kaynağına işaret eden imzalı bir URI 'dir. URI, özel bir sorgu parametreleri kümesi içeren bir belirteç içerir. Belirteç, kaynaklara istemci tarafından nasıl erişildiğini gösterir. Sorgu parametrelerinden biri olan imza SAS parametrelerinden oluşturulur ve SAS oluşturmak için kullanılan anahtarla imzalanır. Bu imza, depolama kaynağına erişimi yetkilendirmek için Azure depolama tarafından kullanılır.
 
 ### <a name="sas-signature-and-authorization"></a>SAS imzası ve yetkilendirme
 
-SAS belirtecini iki şekilde imzalayabilirsiniz:
+Bir SAS belirtecini Kullanıcı temsili anahtarıyla veya depolama hesabı anahtarı (paylaşılan anahtar) ile imzalayabilirsiniz. 
 
-- Azure Active Directory (Azure AD) kimlik bilgileri kullanılarak oluşturulan bir *Kullanıcı temsili anahtarıyla* . Kullanıcı temsili SAS, Kullanıcı temsili anahtarıyla imzalanır.
+#### <a name="signing-a-sas-token-with-a-user-delegation-key"></a>Bir Kullanıcı temsili anahtarıyla SAS belirtecini imzalama
 
-    Kullanıcı temsilci anahtarını almak ve SAS oluşturmak için, bir Azure AD güvenlik sorumlusuna **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** eylemini Içeren bir Azure rolü atanmalıdır. Kullanıcı temsilciliğini almaya yönelik izinlere sahip Azure rolleri hakkında ayrıntılı bilgi için bkz. [Kullanıcı temsilcileri oluşturma SAS (REST API)](/rest/api/storageservices/create-user-delegation-sas).
+Bir SAS belirtecini, Azure Active Directory (Azure AD) kimlik bilgileri kullanılarak oluşturulan bir *Kullanıcı temsili anahtarı* kullanarak imzalayabilirsiniz. Kullanıcı temsili SAS, Kullanıcı temsili anahtarıyla imzalanır.
 
-- Depolama hesabı anahtarı (paylaşılan anahtar) ile. Depolama hesabı anahtarıyla bir hizmet SAS ve hesap SAS 'si imzalanır. Hesap anahtarı ile imzalanmış bir SAS oluşturmak için, bir uygulamanın hesap anahtarına erişimi olması gerekir.
+Anahtarı almak ve daha sonra SAS oluşturmak için, bir Azure AD güvenlik sorumlusu, eylemi içeren bir Azure rolü atanmalıdır `Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey` . Daha fazla bilgi için bkz. [Kullanıcı TEMSILI SAS (REST API) oluşturma](/rest/api/storageservices/create-user-delegation-sas).
+
+#### <a name="signing-a-sas-token-with-an-account-key"></a>Bir SAS belirtecini hesap anahtarıyla imzalama
+
+Depolama hesabı anahtarıyla bir hizmet SAS ve hesap SAS 'si imzalanır. Hesap anahtarı ile imzalanmış bir SAS oluşturmak için, bir uygulamanın hesap anahtarına erişimi olması gerekir.
 
 Bir istek bir SAS belirteci içerdiğinde, bu istek, SAS belirtecinin nasıl imzalandığını temel alarak yetkilendirilir. SAS belirteci oluşturmak için kullandığınız erişim anahtarı veya kimlik bilgileri, SAS sahibi olan bir istemciye erişim sağlamak için Azure depolama tarafından da kullanılır.
 
-Aşağıdaki tabloda, Azure depolama 'ya yönelik bir isteğe dahil edildiğinde her bir SAS belirteci türünün nasıl yetkilendirildiği özetlenmektedir:
+Aşağıdaki tabloda her bir SAS belirteci türünün nasıl yetkilendirildiği özetlenmektedir.
 
 | SAS türü | Yetkilendirme türü |
 |-|-|
@@ -78,7 +107,7 @@ Microsoft, üstün güvenlik için mümkün olduğunda Kullanıcı temsili SAS k
 
 SAS belirteci, örneğin Azure depolama istemci kitaplıklarından birini kullanarak istemci tarafında oluşturduğunuz bir dizedir. SAS belirteci, Azure depolama tarafından herhangi bir şekilde izlenmez. İstemci tarafında sınırsız sayıda SAS belirteci oluşturabilirsiniz. SAS oluşturduktan sonra, Depolama hesabınızdaki kaynaklara erişmesi gereken istemci uygulamalarına dağıtabilirsiniz.
 
-Bir istemci uygulaması, bir isteğin parçası olarak Azure depolama 'ya SAS URI 'SI sağlıyorsa, hizmet, isteği yetkilendirmek için geçerli olduğunu doğrulamak üzere SAS parametrelerini ve imzasını denetler. Hizmet imzanın geçerli olduğunu doğruladığında, istek yetkilendirilir. Aksi takdirde, istek 403 (yasak) hata koduyla reddedilir.
+İstemci uygulamaları, bir isteğin parçası olarak Azure depolama 'ya SAS URI 'SI sağlar. Daha sonra hizmet, geçerli olduğunu doğrulamak için SAS parametrelerini ve imzasını denetler. Hizmet imzanın geçerli olduğunu doğruladığında, istek yetkilendirilir. Aksi takdirde, istek 403 (yasak) hata koduyla reddedilir.
 
 Aşağıda kaynak URI'sini ve SAS belirtecini gösteren bir hizmet SAS URI'si örneği gösterilmiştir:
 
@@ -86,48 +115,69 @@ Aşağıda kaynak URI'sini ve SAS belirtecini gösteren bir hizmet SAS URI'si ö
 
 ## <a name="when-to-use-a-shared-access-signature"></a>Paylaşılan erişim imzası ne zaman kullanılır?
 
-Depolama hesabınızdaki kaynaklara güvenli erişim sağlamak istediğinizde bir SAS kullanın, aksi takdirde bu kaynaklar için izinleri olmayan herhangi bir istemciye.
+Depolama hesabınızdaki kaynaklara güvenli erişim sağlamak için bir SAS kullanın, aksi takdirde bu kaynaklar için izinleri olmayan herhangi bir istemciye.
 
 SAS 'ın yararlı olduğu yaygın bir senaryo, kullanıcıların depolama hesabınıza kendi verilerini okuacağı ve yazdıkları bir hizmettir. Depolama hesabının kullanıcı verilerini depoladığı bir senaryoda iki tipik tasarım deseni vardır:
 
-1. İstemciler, kimlik doğrulamasını yapan ön uç ara sunucu hizmeti üzerinden verileri karşıya yükleyip indirirler. Bu ön uç proxy hizmeti, iş kurallarının doğrulanmasına izin vermenin avantajlarından yararlanır, ancak büyük miktarlarda veri veya yüksek hacimli işlemler için, talebe uyacak şekilde ölçeklenebilen bir hizmet oluşturmak pahalı veya zor olabilir.
+1. İstemciler, kimlik doğrulamasını yapan ön uç ara sunucu hizmeti üzerinden verileri karşıya yükleyip indirirler. Bu ön uç proxy hizmeti, iş kurallarının doğrulanmasına izin verir. Ancak büyük miktarlarda veri veya yüksek hacimli işlemler için, talebe uyacak şekilde ölçeklenebilen bir hizmet oluşturmak pahalı veya zor olabilir.
 
    ![Senaryo diyagramı: ön uç proxy hizmeti](./media/storage-sas-overview/sas-storage-fe-proxy-service.png)
 
-1. Basit bir hizmet gerektiğinde istemcinin kimliğini doğrular ve ardından bir SAS oluşturur. İstemci uygulaması SAS aldıktan sonra, SAS tarafından tanımlanan izinlerle ve SAS tarafından izin verilen aralığa göre depolama hesabı kaynaklarına doğrudan erişebilirler. SAS tüm verileri ön uç ara sunucu hizmetiyle yönlendirme gereksinimini azaltır.
+2. Basit bir hizmet gerektiğinde istemcinin kimliğini doğrular ve ardından bir SAS oluşturur. İstemci uygulaması SAS aldıktan sonra, depolama hesabı kaynaklarına doğrudan erişebilir. Erişim izinleri SAS tarafından ve SAS tarafından izin verilen aralığa göre tanımlanır. SAS tüm verileri ön uç ara sunucu hizmetiyle yönlendirme gereksinimini azaltır.
 
    ![Senaryo diyagramı: SAS sağlayıcı hizmeti](./media/storage-sas-overview/sas-storage-provider-service.png)
 
-Birçok gerçek dünya hizmeti, bu iki yaklaşımdan oluşan karma bir karma kullanabilir. Örneğin, bazı veriler ön uç proxy 'si aracılığıyla işlenebilir ve doğrulanabilir, diğer veriler kaydedilir ve/veya doğrudan SAS kullanılarak okunabilir.
+Birçok gerçek dünya hizmeti, bu iki yaklaşımdan oluşan karma bir karma kullanabilir. Örneğin, bazı veriler ön uç proxy 'si aracılığıyla işlenebilir ve doğrulanabilir. Diğer veriler, SAS kullanılarak kaydedilir ve/veya doğrudan okunurdur.
 
 Ayrıca, belirli senaryolarda bir kopyalama işleminde kaynak nesnesine erişim yetkisi vermek için SAS gerekir:
 
-- Bir blobu farklı bir depolama hesabında bulunan başka bir bloba kopyaladığınızda, kaynak Blobun erişimi yetkilendirmek için bir SAS kullanmanız gerekir. İsteğe bağlı olarak, hedef Blobun erişimi yetkilendirmek için bir SAS kullanabilirsiniz.
-- Farklı bir depolama hesabında bulunan başka bir dosyaya bir dosya kopyaladığınızda, kaynak dosyaya erişim yetkisi vermek için bir SAS kullanmanız gerekir. İsteğe bağlı olarak, hedef dosyaya erişim yetkisi vermek için bir SAS kullanabilirsiniz.
-- Bir Blobun bir dosyaya veya bir dosyaya bir blob 'u kopyaladığınızda, kaynak ve hedef nesneler aynı depolama hesabı içinde bulunsa bile, kaynak nesneye erişim yetkisi vermek için SAS kullanmanız gerekir.
+- Bir blobu farklı bir depolama hesabında bulunan başka bir bloba kopyaladığınızda. 
+  
+  İsteğe bağlı olarak, hedef Blobun erişimi yetkilendirmek için bir SAS kullanabilirsiniz.
+
+- Farklı bir depolama hesabında bulunan başka bir dosyaya bir dosya kopyaladığınızda. 
+
+  İsteğe bağlı olarak, hedef dosyaya erişim yetkisi vermek için bir SAS kullanabilirsiniz.
+
+- Bir blobu bir dosyaya veya bir blob dosyasına kopyaladığınızda. 
+
+  Kaynak ve hedef nesneler aynı depolama hesabı içinde bulunsa bile SAS kullanmanız gerekir.
 
 ## <a name="best-practices-when-using-sas"></a>SAS kullanırken en iyi uygulamalar
 
 Uygulamalarınızda paylaşılan erişim imzaları kullandığınızda, iki olası riski bilmeniz gerekir:
 
 - SAS sızsa, onu alan herkes tarafından kullanılabilir ve bu da depolama hesabınızı tehlikeye atabilir.
+
 - Bir istemci uygulaması için belirtilen bir SAS süresinin dolmasını ve uygulamanın hizmetinizden yeni bir SAS alamadıysa, uygulamanın işlevselliği hinalınmayabilir.
 
 Paylaşılan erişim imzalarını kullanmaya yönelik aşağıdaki öneriler, bu riskleri azaltmaya yardımcı olabilir:
 
-- **Her zaman** bir SAS oluşturmak veya DAĞıTMAK için HTTPS kullanın. Bir SAS HTTP üzerinden geçirilirse ve ele geçirilirse, bir saldırgan bir saldırgan, SAS 'yi okuyabilir ve bunu amaçlanan kullanıcının sahip olduğu gibi kullanabilir ve duyarlı verilerin güvenliğini sağlayabilir veya kötü amaçlı kullanıcı tarafından verilerin bozulmasına izin verebilir.
+- **Her zaman** bir SAS oluşturmak veya DAĞıTMAK için HTTPS kullanın. Bir SAS HTTP üzerinden geçirilmezse ve ele geçirilirse, bir saldırgan orta noktadan adam saldırısı gerçekleştirerek SAS 'yi okuyabilir. Daha sonra, söz konusu SAS 'yi amaçlanan kullanıcının sahip olduğu gibi kullanabilirler. Bu, hassas verilere zarar verebilir veya kötü amaçlı kullanıcı tarafından verilerin bozulmasına izin verebilir.
+
 - **Mümkün olduğunda bir Kullanıcı temsili SAS kullanın.** Bir Kullanıcı temsili SAS, bir hizmet SAS veya hesap SAS 'si için üstün güvenlik sağlar. Hesap anahtarınızı kodunuzla depolamanız gerekmiyorsa, bir Kullanıcı temsili SAS, Azure AD kimlik bilgileriyle korunmaktadır.
+
 - **SAS için bir iptal planı vardır.** SAS tehlikede olursa yanıt vermeye hazır olduğunuzdan emin olun.
+
 - **Hizmet SAS için depolanan bir erişim ilkesi tanımlayın.** Saklı erişim ilkeleri, depolama hesabı anahtarlarını yeniden oluşturmanız gerekmeden bir hizmet SAS için izinleri iptal etme seçeneği sunar. Bu süre sonu süresini ileride (veya sonsuz) olarak ayarlayın ve gelecekte bir süre içinde ilerlemek için düzenli olarak güncelleştirildiğinden emin olun.
+
 - **Geçici SAS hizmeti SAS veya hesap SAS 'si üzerinde neredeyse vadeli süre sonu zamanlarını kullanın.** Bu şekilde, SAS tehlikede olsa bile, yalnızca kısa bir süre için geçerlidir. Bu uygulama, saklı erişim ilkesine başvurmamak için özellikle önemlidir. Yakın dönem süre sonu süreleri Ayrıca, kendisine karşıya yükleme için kullanılabilir süreyi sınırlayarak bir bloba yazılabilen veri miktarını da sınırlar.
-- **Gerektiğinde istemcilerin SAS 'yi otomatik olarak yenilemesini sağlayabilirsiniz.** SAS sağlayan hizmet kullanılamıyorsa istemciler, yeniden denemeler için zaman tanımak üzere süre sonundan önce SAS 'yi yenilemelidir. SAS 'nizin, sona erme döneminde tamamlanması beklenen kısa süreli, kısa süreli işlemler için kullanılması gerekiyorsa, SAS 'nin yenilenmesi beklenmediği için bu işlem gereksizdir. Ancak, SAS üzerinden düzenli olarak istek yapan bir istemciniz varsa, süre sonu olma olasılığı oynatma olur. Temel olarak, istemcinin yenilemeyi yeterince erken istediğini güvence altına almak için (daha önce belirtildiği gibi), istemcinin yenileme gereksinimini yeterince erken (daha önce belirtildiği gibi) dengelenmesi gerekir (başarılı yenilemeden önce SAS süresinin dolmasını önlemek için).
-- **SAS başlangıç zamanına dikkat edin.** Bir SAS için başlangıç saatini geçerli saate ayarlarsanız, farklı makinelerin biraz farklı bir şekilde geçerli süreleriyle (saat eğriltme olarak bilinir) dolayı ilk birkaç dakika boyunca zaman zaman meydana gelen sorunları gözlemleyebilirsiniz. Genel olarak, başlangıç saatini geçmişte en az 15 dakika olacak şekilde ayarlayın. Ya da, hiç ayarlama yapmayın, bu, tüm durumlarda hemen geçerli hale gelir. Aynı genellikle süre sonu zamanı için geçerlidir ve herhangi bir isteğe bağlı olarak, 15 dakikaya kadar saatin ölçeğini gözlemleyebilirsiniz. 2012-02-12 ' dan önceki bir REST sürümünü kullanan istemciler için, depolanan bir erişim ilkesine başvurmayan SAS için en uzun süre 1 saattir ve daha uzun vadeyi belirten herhangi bir ilke başarısız olur.
-- **SAS tarih saat biçimiyle dikkatli olun.** Bir SAS için başlangıç saatini ve/veya süre sonunu ayarlarsanız, bazı yardımcı programlar için (örneğin, komut satırı yardımcı programı AzCopy), tarih saat biçiminin ' +% Y-% d-% dT% H:%D:% SZ ' olması gerekir, bu da özellikle SAS belirtecini kullanarak çalışması için saniyeler dahil olur.
+
+- **Gerektiğinde istemcilerin SAS 'yi otomatik olarak yenilemesini sağlayabilirsiniz.** SAS sağlayan hizmet kullanılamıyorsa istemciler, yeniden denemeler için zaman tanımak üzere süre sonundan önce SAS 'yi yenilemelidir. Bu, bazı durumlarda gereksiz olabilir. Örneğin, SAS 'ın kısa bir süre boyunca kısa süreli işlemler için kullanılmasını isteyebilirsiniz. Bu işlemlerin, sona erme dönemi içinde tamamlanması beklenmektedir. Sonuç olarak, SAS 'nin yenilenmesini beklemeiyorduk. Ancak, SAS üzerinden düzenli olarak istek yapan bir istemciniz varsa, süre sonu olma olasılığı oynatma olur. 
+
+- **SAS başlangıç zamanına dikkat edin.** Bir SAS için başlangıç saatini geçerli saate ayarlarsanız, ilk birkaç dakika boyunca zaman aralıklı olarak meydana gelebilir. Bunun nedeni farklı makinelerin geçerli süreleriyle (saat eğriltme olarak bilinir) kaynaklanmaktadır. Genel olarak, başlangıç saatini geçmişte en az 15 dakika olacak şekilde ayarlayın. Ya da, hiç ayarlama yapmayın, bu, tüm durumlarda hemen geçerli hale gelir. Aynı genellikle süre sonu zamanı için geçerlidir ve herhangi bir isteğe bağlı olarak, 15 dakikaya kadar saatin ölçeğini gözlemleyebilirsiniz. 2012-02-12 ' dan önceki REST sürümünü kullanan istemciler için, depolanan bir erişim ilkesine başvurmayan SAS için en uzun süre 1 saattir. 1 saatten daha uzun bir dönem belirten herhangi bir ilke başarısız olur.
+
+- **SAS tarih saat biçimiyle dikkatli olun.** Bazı yardımcı programlar (AzCopy gibi) için, DateTime biçimlerinin ' +% Y-% d-% dT% H:%D:% SZ ' olması gerekir. Bu biçim, saniyeler içinde özel olarak dahildir. 
+
 - **Erişilecek kaynağa özel olun.** En iyi güvenlik uygulaması, gerekli en düşük ayrıcalıklara sahip bir kullanıcı sağlamaktır. Bir kullanıcının yalnızca tek bir varlığa okuma erişimi olması gerekiyorsa, tüm varlıklara okuma/yazma/silme erişimi değil, onlara bu tek varlığa yönelik okuma erişimi izni verin. Bu, SAS 'nin bir saldırgan içinde daha az gücü olduğundan, SAS tehlikeye atılırsa hasar azaltır.
+
 - **Hesabınızın bir SAS aracılığıyla da dahil olmak üzere herhangi bir kullanım için faturalandırılacağını anlayın.** Blob 'a yazma erişimi sağlarsanız, bir Kullanıcı bir 200 GB blobu karşıya yüklemeyi tercih edebilir. Bunlara yönelik okuma erişimi de aldıysanız, çıkış maliyetlerinde 2 TB 'a sahip olmak üzere 10 kez indirmeyi seçebilirler. Bu, kötü amaçlı kullanıcıların olası eylemlerini azaltmaya yardımcı olmak için sınırlı izinler sağlar. Bu tehdidi azaltmak için kısa süreli SAS kullanın (ancak bitiş saati üzerinde geçen saat çarpıklığı).
-- **SAS kullanarak yazılan verileri doğrulayın.** Bir istemci uygulaması depolama hesabınıza veri yazdığında, bu verilerle ilgili sorunlar olabileceğini aklınızda bulundurun. Uygulamanız, kullanıma hazırlanmadan önce verilerin doğrulanmasını veya yetkilendirilmesini gerektiriyorsa, veriler yazıldıktan sonra ve uygulamanız tarafından kullanılmadan önce Bu doğrulamayı gerçekleştirmelisiniz. Bu yöntem ayrıca, ister bir kullanıcı tarafından, hem de bir veya sızdırılan SAS kullanan bir kullanıcı tarafından hesabınıza yazılan bozuk veya kötü amaçlı verilere karşı koruma sağlar.
+
+- **SAS kullanarak yazılan verileri doğrulayın.** Bir istemci uygulaması depolama hesabınıza veri yazdığında, bu verilerle ilgili sorunlar olabileceğini aklınızda bulundurun. Verileri doğrulamayı planlıyorsanız, veriler yazıldıktan sonra ve uygulamanız tarafından kullanılmadan önce Bu doğrulamayı gerçekleştirin. Bu yöntem ayrıca, ister bir kullanıcı tarafından, hem de bir veya sızdırılan SAS kullanan bir kullanıcı tarafından hesabınıza yazılan bozuk veya kötü amaçlı verilere karşı koruma sağlar.
+
 - **SAS ne zaman kullanacağınızı öğrenin.** Bazen, depolama hesabınıza yönelik belirli bir işlemle ilişkili riskler, SAS kullanmanın avantajlarından yararlanır. Bu gibi işlemler için, iş kuralı doğrulama, kimlik doğrulama ve denetim gerçekleştirdikten sonra depolama hesabınıza yazan bir orta katman hizmeti oluşturun. Ayrıca, bazen erişimi başka yollarla yönetmek daha basittir. Örneğin, bir kapsayıcıdaki tüm Blobları herkese açık bir şekilde okunabilir hale getirmek istiyorsanız, her istemciye erişim için bir SAS sağlamak yerine kapsayıcıyı ortak hale getirebilirsiniz.
-- **Uygulamanızı izlemek için Azure Izleyici ve Azure depolama günlüklerini kullanın.** SAS sağlayıcısı hizmetinizdeki bir kesinti veya depolanmış bir erişim ilkesinin yanlışlıkla kaldırılması nedeniyle, yetkilendirme hatalarında ani değişiklikleri gözlemlemek için Azure Izleyici ve depolama Analizi günlüğünü kullanabilirsiniz. Daha fazla bilgi için bkz. Azure [izleyici 'de Azure depolama ölçümleri](../blobs/monitor-blob-storage.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) ve [günlüğe kaydetme Azure depolama Analizi](storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+
+- **Uygulamanızı izlemek için Azure Izleyici ve Azure depolama günlüklerini kullanın.** SAS sağlayıcısı hizmetinizdeki bir kesinti nedeniyle yetkilendirme hatalarının oluşması olabilir. Ayrıca, depolanan bir erişim ilkesinin yanlışlıkla kaldırılmasından de oluşabilir. Bu yetkilendirme hatalarının türlerindeki herhangi bir ani artış gözlemlemek için Azure Izleyici ve depolama Analizi günlüğünü de kullanabilirsiniz. Daha fazla bilgi için bkz. Azure [izleyici 'de Azure depolama ölçümleri](../blobs/monitor-blob-storage.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) ve [günlüğe kaydetme Azure depolama Analizi](storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ## <a name="get-started-with-sas"></a>SAS ile çalışmaya başlama
 

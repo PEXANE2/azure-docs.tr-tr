@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: ilahat
 author: ilahat
 ms.date: 11/01/2019
-ms.openlocfilehash: 3632a34678c7a0f0e6fa93e5ce8000b07bb413a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cec17b98daa8eca31cda076921288e2838960511
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86054534"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434541"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>Bildirimleri olan Azure yönetilen uygulamalar
 
@@ -61,7 +61,7 @@ Başlamak için bkz. [Azure Portal bir hizmet kataloğu uygulaması yayımlama](
 
 ```
 ## <a name="add-azure-marketplace-managed-application-notifications"></a>Azure Marketi yönetilen uygulama bildirimleri ekleme
-Daha fazla bilgi için bkz. [Azure Uygulama teklifi oluşturma](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md).
+Daha fazla bilgi için bkz. [Azure Uygulama teklifi oluşturma](../../marketplace/create-new-azure-apps-offer.md).
 
 ![Azure portal Azure Marketi yönetilen uygulama bildirimleri](./media/publish-notifications/marketplace-notifications.png)
 ## <a name="event-triggers"></a>Olay tetikleyicileri

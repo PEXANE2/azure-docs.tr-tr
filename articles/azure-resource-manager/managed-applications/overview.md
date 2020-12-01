@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: overview
 ms.date: 07/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7641c1e3bc3620b294c2953b993e9179a4875536
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 65b8c21251f092311150a50480f5abecb1ad7c17
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951817"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434575"
 ---
 # <a name="azure-managed-applications-overview"></a>Azure yönetilen uygulamalarına genel bakış
 
@@ -49,7 +49,7 @@ Bir Hizmet Kataloğu yönetilen uygulaması yayımlama hakkında bilgi için bkz
 
 Hizmetlerini faturalandırmak isteyen satıcılar, Azure market aracılığıyla bir yönetilen uygulamayı kullanılabilir hale getirebilir. Satıcı bir uygulamayı yayımladıktan sonra, uygulama kuruluşun dışındaki kullanıcıların kullanımına sunulur. Bu yaklaşımla, yönetilen hizmet sağlayıcıları (MSP), bağımsız yazılım satıcıları (ISV) ve sistem tümleştiricileri (SI) tüm Azure müşterilerine çözümlerini sunabilir.
 
-Market'te yönetilen uygulama yayımlama hakkında daha fazla bilgi için [Market uygulaması oluşturma](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md) konusunu inceleyin.
+Market'te yönetilen uygulama yayımlama hakkında daha fazla bilgi için [Market uygulaması oluşturma](../../marketplace/create-new-azure-apps-offer.md) konusunu inceleyin.
 
 ## <a name="resource-groups-for-managed-applications"></a>Yönetilen uygulamalar için kaynak grupları
 
@@ -71,7 +71,7 @@ Tüketici, kaynak grubuna tam erişime sahiptir ve yönetilen uygulamanın yaşa
 
 Bu kaynak grubu, yönetilen uygulamanın gerektirdiği tüm kaynakları tutar. Örneğin, bu kaynak grubu, çözümün sanal makinelerini, depolama hesaplarını ve sanal ağlarını içerir. Tüketici, yönetilen uygulamanın kaynaklarını tek tek yönetmediği için bu kaynak grubuna sınırlı erişime sahiptir. Yayımcının bu kaynak grubuna erişimi, yönetilen uygulama tanımında belirtilen role karşılık gelir. Örneğin, yayımcı bu kaynak grubu için Sahip veya Katkıda Bulunan rolünü isteyebilir. Erişim kalıcı veya belirli bir zaman ile sınırlıdır.
 
-[Yönetilen uygulamayı Market](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)'te yayımlarken, yayımcı tüketicilere yönetilen kaynak grubundaki kaynaklar üzerinde belirli eylemleri gerçekleştirme yeteneği verebilir. Örneğin, Yayımcı, tüketicilerin sanal makineleri yeniden başlatabileceği belirtebilir. Okuma eylemlerinin ötesinde diğer tüm eylemler yine de reddedilir. Bir tüketici tarafından yönetilen bir kaynak grubundaki kaynaklarda yapılan değişiklikler, yönetilen kaynak grubu dahil olmak üzere tüketiciler kiracı kapsamındaki [Azure ilke](../../governance/policy/overview.md) atamalarına tabidir.
+[Yönetilen uygulamayı Market](../../marketplace/create-new-azure-apps-offer.md)'te yayımlarken, yayımcı tüketicilere yönetilen kaynak grubundaki kaynaklar üzerinde belirli eylemleri gerçekleştirme yeteneği verebilir. Örneğin, Yayımcı, tüketicilerin sanal makineleri yeniden başlatabileceği belirtebilir. Okuma eylemlerinin ötesinde diğer tüm eylemler yine de reddedilir. Bir tüketici tarafından yönetilen bir kaynak grubundaki kaynaklarda yapılan değişiklikler, yönetilen kaynak grubu dahil olmak üzere tüketiciler kiracı kapsamındaki [Azure ilke](../../governance/policy/overview.md) atamalarına tabidir.
 
 Tüketici yönetilen uygulamayı sildiğinde, yönetilen kaynak grubu da silinir.
 

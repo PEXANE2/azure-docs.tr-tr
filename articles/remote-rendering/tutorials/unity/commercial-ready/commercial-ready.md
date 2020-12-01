@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 0ff6d064b6bfabbd8a648c23b5648aae9b12a11d
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 8c037d35c2df4572800d2519347aa113a86cde36
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207504"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434847"
 ---
 # <a name="tutorial-creating-a-commercial-ready-azure-remote-rendering-application"></a>Öğretici: ticari özellikli bir Azure uzaktan Işleme uygulaması oluşturma
 
@@ -98,7 +98,7 @@ Bu seçenek, insanların her ikisi de bir 3B modeli yükleyebilecekleri ve gelec
 
 En zorlu koşullarda, bir veya daha fazla oturumun her zaman oluşturulduğu ve başlatıldığı başka bir seçenek de oturum havuzdur. Bu işlem, isteyen bir kullanıcı tarafından hemen kullanılmak üzere bir oturum havuzu oluşturur. Bu yaklaşımın aşağı tarafında, VM başlatıldıktan sonra hizmet için faturalandırma başlatılır. Bir oturum havuzunu her zaman çalışır durumda tutmak, ancak analizler temel alınarak, en yüksek yükleri tahmin etmek ve oturum gerektiğinde tahmin etmek ve oturum havuzunu uygun şekilde artırma ve azaltma olanağı sağlamak için yukarıdaki zamanlama stratejisiyle birleştirilebilir.
 
-Bu strateji aynı zamanda *Standart* ve *Premium* oturumlardaki iki tür arasında geçiş yapmak için çok daha hızlı bir şekilde bir *Premium* karmaşıklık modelinin görüntülendiği, ardından bir *Standart*içinde çalışıdığı durumlar gibi tek bir kullanıcı oturumunda bu seçimi iyileştirmenize yardımcı olur. Bu Kullanıcı oturumları oldukça uzunsa, önemli maliyet tasarrufları olabilir.
+Bu strateji aynı zamanda *Standart* ve *Premium* oturumlardaki iki tür arasında geçiş yapmak için çok daha hızlı bir şekilde bir *Premium* karmaşıklık modelinin görüntülendiği, ardından bir *Standart* içinde çalışıdığı durumlar gibi tek bir kullanıcı oturumunda bu seçimi iyileştirmenize yardımcı olur. Bu Kullanıcı oturumları oldukça uzunsa, önemli maliyet tasarrufları olabilir.
 
 Azure uzaktan Işleme oturumları hakkında daha fazla bilgi için şu işlemleri inceleyin:
 
@@ -112,17 +112,17 @@ Burada, oturum seçimlerini yönetme isteğini ele almak için birkaç seçeneğ
 
 ### <a name="use-only-standard-or-premium"></a>Yalnızca standart veya Premium kullanın
 
-Gereksinimleriniz *her zaman* *Standart* ve *Premium*arasındaki eşiğin altına düşecek şekilde, bu, kararınızı önemli ölçüde basitleştirir. Yalnızca *Standart*kullanın. Yüklenen varlıkların toplam karmaşıklığı, *Standart* bir oturum için çok karmaşık olarak reddedildiğinde, kullanıcı deneyiminin etkisinin önemli olmasına dikkat edin.
+Gereksinimleriniz *her zaman* *Standart* ve *Premium* arasındaki eşiğin altına düşecek şekilde, bu, kararınızı önemli ölçüde basitleştirir. Yalnızca *Standart* kullanın. Yüklenen varlıkların toplam karmaşıklığı, *Standart* bir oturum için çok karmaşık olarak reddedildiğinde, kullanıcı deneyiminin etkisinin önemli olmasına dikkat edin.
 
-Benzer şekilde, *Standart* ve *Premium*arasındaki eşiği aşmamak için kullanılan büyük bir bölümü beklediğinizi veya maliyet kullanım ihtimalinde bir anahtar faktörü değilse, her zaman *Premium* ' u seçerek basit tutma seçeneği de vardır.
+Benzer şekilde, *Standart* ve *Premium* arasındaki eşiği aşmamak için kullanılan büyük bir bölümü beklediğinizi veya maliyet kullanım ihtimalinde bir anahtar faktörü değilse, her zaman *Premium* ' u seçerek basit tutma seçeneği de vardır.
 
 ### <a name="ask-the-user"></a>Kullanıcıdan sorun
 
-Hem *Standart* hem de *Premium*desteklemek istiyorsanız, hangi tür bir oturum örneklendirileyeceğini belirlemenin en kolay yolu kullanıcıdan görüntülenecek 3D varlıkları seçtiğinde bunu istemesi yöntemidir. Bu yaklaşımdaki zorluk, kullanıcının 3B varlığın karmaşıklığını ve hatta görüntülenecek birden çok varlığı anlamasına gerek duyduğu bir sorundur. Genellikle, bu nedenle önerilmez. Kullanıcı yanlış seçerse ve *Standart*seçerse, sonuçta elde edilen kullanıcı deneyimi inopportune bir anda tehlikeye girebilir.
+Hem *Standart* hem de *Premium* desteklemek istiyorsanız, hangi tür bir oturum örneklendirileyeceğini belirlemenin en kolay yolu kullanıcıdan görüntülenecek 3D varlıkları seçtiğinde bunu istemesi yöntemidir. Bu yaklaşımdaki zorluk, kullanıcının 3B varlığın karmaşıklığını ve hatta görüntülenecek birden çok varlığı anlamasına gerek duyduğu bir sorundur. Genellikle, bu nedenle önerilmez. Kullanıcı yanlış seçerse ve *Standart* seçerse, sonuçta elde edilen kullanıcı deneyimi inopportune bir anda tehlikeye girebilir.
 
 ### <a name="analyze-the-3d-model"></a>3B modeli çözümle
 
-Başka bir görece basit yaklaşım, seçili 3B varlıkların karmaşıklığını analiz etmek değildir. Model karmaşıklığı *Standart*için eşiğin altındaysa *Standart* bir oturum başlatın, aksi takdirde *Premium* oturumu başlatın. Burada, sınama, bir *Standart* oturumun karmaşıklık eşiğini aşabileceğinden birden çok modeli görüntülemek için son kullanılan bir oturum, farklı bir 3B varlık sırası için aynı oturumu sorunsuz bir şekilde kullanmayabilir.
+Başka bir görece basit yaklaşım, seçili 3B varlıkların karmaşıklığını analiz etmek değildir. Model karmaşıklığı *Standart* için eşiğin altındaysa *Standart* bir oturum başlatın, aksi takdirde *Premium* oturumu başlatın. Burada, sınama, bir *Standart* oturumun karmaşıklık eşiğini aşabileceğinden birden çok modeli görüntülemek için son kullanılan bir oturum, farklı bir 3B varlık sırası için aynı oturumu sorunsuz bir şekilde kullanmayabilir.
 
 ### <a name="automatic-switching"></a>Otomatik anahtarlama
 
@@ -255,7 +255,7 @@ Birçok kurumsal istemci, Azure Stack güvenlik nedenleriyle kendi Azure hesapla
 Daha fazla bilgi için:
 
 * [Azure Market](https://azure.microsoft.com/marketplace/)
-* [Öğretici: market 'te Azure yönetilen uygulamaları yayımlama](../../../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)
+* [Öğretici: market 'te Azure yönetilen uygulamaları yayımlama](../../../../marketplace/create-new-azure-apps-offer.md)
 
 ### <a name="security"></a>Güvenlik
 
@@ -279,4 +279,4 @@ Daha fazla bilgi için:
 
 * [Azure AD hizmeti kimlik doğrulaması](../../../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-service-authentication)
 * [Azure ile güvenlik duruşunuzu güçlendirin](https://azure.microsoft.com/overview/security/)
-* [Bulut güvenliği](https://azure.microsoft.com/product-categories/security/)
+* [Bulut Güvenliği](https://azure.microsoft.com/product-categories/security/)
