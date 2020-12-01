@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d8ec8eec28d66cf93608393ddca45f78460d831
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6c8be064ade8182355c320e948b3b60b846033d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89279780"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348067"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect Sync: Işlevler başvurusu
 Azure AD Connect, işlevler eşitleme sırasında bir öznitelik değerini işlemek için kullanılır.  
@@ -48,7 +48,7 @@ Türler aşağıdaki sözdizimiyle ifade edilir:
 * **var** : (neredeyse) diğer tür bir değişken
 * **void** – değer döndürmez
 
-**Mvbin**, **mvstr**ve **mvref** türlerine sahip işlevler yalnızca çok değerli özniteliklerde çalışabilir. **Bin**, **Str**ve **ref** içeren işlevler hem tek değerli hem de birden çok değerli özniteliklerde çalışır.
+**Mvbin**, **mvstr** ve **mvref** türlerine sahip işlevler yalnızca çok değerli özniteliklerde çalışabilir. **Bin**, **Str** ve **ref** içeren işlevler hem tek değerli hem de birden çok değerli özniteliklerde çalışır.
 
 ## <a name="functions-reference"></a>İşlevler Başvurusu
 
@@ -94,7 +94,7 @@ Türler aşağıdaki sözdizimiyle ifade edilir:
   * [FormatDateTime](#formatdatetime)
   * [Sunuldu](#now)
   * [NumFromDate](#numfromdate)
-* **Dizinden**
+* **Dizin**
   * [DNComponent](#dncomponent)
   * [DNComponentRev](#dncomponentrev)
   * [Çıkar Edncomponent](#escapedncomponent)
@@ -114,7 +114,7 @@ Türler aşağıdaki sözdizimiyle ifade edilir:
   * [Rasgelenum](#randomnum)
 * **Çoklu * değerli**
   * [Vardır](#contains)
-  * [Biriktirme](#count)
+  * [Count](#count)
   * [Öğe](#item)
   * [Imornull](#itemornull)
   * [Join](#join)
@@ -125,7 +125,7 @@ Türler aşağıdaki sözdizimiyle ifade edilir:
   * [Mayan](#iif)
   * [Seç](#select)
   * [Değiştirebilirsiniz](#switch)
-  * [Olmadığı](#where)
+  * [Konum](#where)
   * [Kullanılarak](#with)
 * **Metin**
   * ['INI](#guid)
@@ -509,7 +509,7 @@ Bu işlevin çıkış biçimi Azure Active Directory tarafından, DN öznitelik 
 48656C6C6F20776F726C6421 döndürür
 
 ---
-### <a name="count"></a>Sayı
+### <a name="count"></a>Count
 **Açıklama:**  
 Count işlevi, birden çok değerli bir öznitelikteki öğelerin sayısını döndürür
 
@@ -703,7 +703,7 @@ InStr işlevi bir dizedeki alt dizenin ilk oluşumunu bulur
 
 `num InStr(str stringcheck, str stringmatch)`  
 `num InStr(str stringcheck, str stringmatch, num start)`  
-`num InStr(str stringcheck, str stringmatch, num start , enum compare)`
+`num InStr(str stringcheck, str stringmatch, num start, enum compare)`
 
 * stringcheck: Aranacak dize
 * stringmatch: bulunan dize
@@ -1224,7 +1224,7 @@ RTrim işlevi bir dizeden sondaki boşlukları kaldırır.
 "Test" döndürür.
 
 ---
-### <a name="select"></a>Seç
+### <a name="select"></a>Şunu seçin:
 **Açıklama:**  
 Belirtilen işleve bağlı olarak, birden çok değerli bir öznitelik (veya bir ifadenin çıktısı) içindeki tüm değerleri işleyin.
 

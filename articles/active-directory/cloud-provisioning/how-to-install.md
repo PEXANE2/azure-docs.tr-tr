@@ -11,12 +11,12 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3960b8afeb9d7ecc80aa49fc13eee4977fa5494
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4c4ba11dabc8e805f3604afc2fc4388840ac67cf
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173979"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348543"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>Azure AD Connect bulut sağlama aracısını yükleme
 Bu belgede Azure Active Directory (Azure AD) Connect sağlama aracısının yükleme işleminde ve bu dosyayı ilk olarak Azure portal nasıl yapılandıracağınız açıklanmaktadır.
@@ -57,12 +57,12 @@ Aracıyı yüklemek için aşağıdaki adımları izleyin.
  10. Aracı hizmetini çalıştırmak için kullanılacak grup tarafından yönetilen hizmet hesabını oluşturmak için etki alanı yöneticisi kimlik bilgilerini girin. **İleri**’ye tıklayın.  
    ![GMSA oluştur](media/how-to-install/install-12.png)</br>
  11. **Bağlan Active Directory** ekranında **Dizin Ekle**' yi seçin. Ardından Active Directory Yönetici hesabınızla oturum açın. Bu işlem, şirket içi dizininizi ekler. 
- 12. İsteğe bağlı olarak, etki alanı **denetleyicisi önceliğini Seç** ' i seçerek ve etki alanı denetleyicilerinin listesini sipariş ederek aracının kullanacağı etki alanı denetleyicileri tercihini yönetebilirsiniz.   **Tamam** düğmesine tıklayın.
-  ![Etki alanı denetilicileri siparişi](media/how-to-install/install-2a.png)</br>
+ 12. İsteğe bağlı olarak, etki alanı **denetleyicisi önceliğini Seç** ' i seçerek ve etki alanı denetleyicilerinin listesini sipariş ederek aracının kullanacağı etki alanı denetleyicileri tercihini yönetebilirsiniz.   **Tamam**'a tıklayın.
+  ![Etki alanı denetleyicilerini sıralama](media/how-to-install/install-2a.png)</br>
  13. **İleri**’yi seçin.
   ![Active Directory ekranına Bağlan](media/how-to-install/install-3a.png)</br>
  14.  **Aracı yükleme** ekranında ayarları ve oluşturulacak hesabı onaylayın ve **Onayla**' ya tıklayın.
-  ![Settngs doğrulayın](media/how-to-install/install-11.png)</br>
+  ![Ayarları Onayla](media/how-to-install/install-11.png)</br>
  15. Bu işlem tamamlandıktan sonra, **Aracı yüklemenizin tamamlandığını** görmeniz gerekir. **Çıkış**' ı seçin.
   ![Yapılandırma tamamlanma ekranı](media/how-to-install/install-4a.png)</br>
 1. Hala ilk **Microsoft Azure AD Connect sağlama Aracısı paketi** ekranını görüyorsanız, **Kapat**' ı seçin.

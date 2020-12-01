@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7caeefb741e6916d69894ede3a7c64eb2e8f623f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: b79eb842105734f0f6c145884d73f886a02dbbbc
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174505"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348167"
 ---
 # <a name="self-service-password-reset-frequently-asked-questions"></a>Self servis parola sıfırlama sık sorulan sorular
 
@@ -263,7 +263,7 @@ Bu SSS aşağıdaki bölümlere ayrılır:
   >
 * **S: parola geri yazma ne tür hesaplar çalışır?**
 
-  > Y **:** Parola geri yazma, şirket içi Active Directory, Federasyon, Parola karması eşitlenmiş ve Pass-Through autentication kullanıcıları dahil olmak üzere Azure AD 'ye eşitlenen Kullanıcı hesapları için geçerlidir.
+  > Y **:** Parola geri yazma, şirket içi Active Directory, Federasyon, Parola karması eşitlenmiş ve Pass-Through kimlik doğrulama kullanıcıları dahil olmak üzere Azure AD 'ye eşitlenen Kullanıcı hesapları için geçerlidir.
   >
   >
 * **S: parola geri yazma, etki alanım 'ın parola ilkeleriyle zorlanır mi?**

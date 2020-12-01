@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 zone_pivot_groups: URL-test-interface
 ms.topic: quickstart
 ms.date: 07/16/2020
-ms.openlocfilehash: 6d03870a24e25327b43c14e57715cdaea23e700d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c934aca046ada07e0d6cda44221cc81a8eb4e57d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87132915"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345758"
 ---
 # <a name="quickstart-get-an-answer-from-knowledge-base"></a>Hızlı başlangıç: Bilgi Bankası 'ndan bir yanıt alın
 
@@ -35,7 +35,7 @@ ms.locfileid: "87132915"
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Toplu iş dosyasıyla test bilgi tabanı](batch-testing.md)
+> [Toplu iş dosyasıyla test bilgi tabanı](../index.yml)
 
 Meta veriler hakkında daha fazla bilgi edinin:
 * [Yazma-meta verileri QnA çiftine ekleyin](../How-To/edit-knowledge-base.md#add-metadata)

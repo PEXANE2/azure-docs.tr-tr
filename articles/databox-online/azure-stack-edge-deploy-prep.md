@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/22/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 224131d1b17c4ed34ee847638633a5a1a494ccaf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12879b22e255384701b0cd265b50ed34d5e198c9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90894130"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345551"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro"></a>Öğretici: Azure Stack Edge Pro 'Yu dağıtmaya hazırlanma  
 
@@ -31,7 +31,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 Azure Stack Edge Pro 'Yu dağıtmak için, önceden tanımlanmış sırada aşağıdaki öğreticilere bakın.
 
@@ -53,18 +53,18 @@ Azure Stack Edge kaynağınız, Azure Stack Edge Pro cihazınız ve veri merkezi
 
 Başlamadan önce aşağıdakilerden emin olun:
 
-* Microsoft Azure aboneliğiniz Azure Stack Edge kaynağı için etkinleştirildi. [Microsoft kurumsal anlaşma (EA)](https://azure.microsoft.com/overview/sales-number/), [bulut çözümü sağlayıcısı (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp)veya [Microsoft Azure sponsorluğu](https://azure.microsoft.com/offers/ms-azr-0036p/)gibi desteklenen bir abonelik kullandığınızdan emin olun. Kullandıkça öde abonelikleri desteklenmez.
+* Microsoft Azure aboneliğiniz Azure Stack Edge kaynağı için etkinleştirildi. [Microsoft kurumsal anlaşma (EA)](https://azure.microsoft.com/overview/sales-number/), [bulut çözümü sağlayıcısı (CSP)](/partner-center/azure-plan-lp)veya [Microsoft Azure sponsorluğu](https://azure.microsoft.com/offers/ms-azr-0036p/)gibi desteklenen bir abonelik kullandığınızdan emin olun. Kullandıkça öde abonelikleri desteklenmez.
 
 * Azure Stack Edge/Data Box Gateway, IoT Hub ve Azure depolama kaynakları için kaynak grubu düzeyinde sahip veya katkıda bulunan erişiminiz var.
 
-  * Katkıda bulunan erişimi sağlamak için abonelik düzeyinde bir **sahip** olmanız gerekir. Başka birine katkıda bulunan erişim sağlamak için, Azure Portal, **tüm hizmetler**  >  **abonelikleri**  >  **erişim denetimi (IAM)**  >  **+**  >  **Rol Ekle ataması**Ekle ' ye gidin. Daha fazla bilgi için bkz. [öğretici: Azure Portal kullanarak Azure kaynaklarına Kullanıcı erişimi verme](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal).
+  * Katkıda bulunan erişimi sağlamak için abonelik düzeyinde bir **sahip** olmanız gerekir. Başka birine katkıda bulunan erişim sağlamak için, Azure Portal, **tüm hizmetler**  >  **abonelikleri**  >  **erişim denetimi (IAM)**  >  **+**  >  **Rol Ekle ataması** Ekle ' ye gidin. Daha fazla bilgi için bkz. [öğretici: Azure Portal kullanarak Azure kaynaklarına Kullanıcı erişimi verme](../role-based-access-control/quickstart-assign-role-user-portal.md).
 
   * Azure Stack Edge/Data Box Gateway kaynağı oluşturmak için, kaynak grubu düzeyinde katkıda bulunan (veya üzeri) izinlere sahip olmanız gerekir. Ayrıca, kaynak sağlayıcısının kayıtlı olduğundan emin olmanız gerekir `Microsoft.DataBoxEdge` . Kaynak sağlayıcısını kaydetme hakkında daha fazla bilgi için bkz. [kayıt kaynak sağlayıcısı](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers).
   * Herhangi bir IoT Hub kaynağı oluşturmak için Microsoft. Devices sağlayıcısının kayıtlı olduğundan emin olun. Nasıl kaydedileceği hakkında bilgi için [Kaynak sağlayıcısını kaydetme](azure-stack-edge-manage-access-power-connectivity-mode.md#register-resource-providers) bölümüne gidin.
   * Bir depolama hesabı kaynağı oluşturmak için, kaynak grubu düzeyinde katkıda bulunan veya daha yüksek erişim kapsamına ihtiyacınız vardır. Azure depolama, varsayılan olarak kayıtlı bir kaynak sağlayıcısıdır.
-* Azure Active Directory Graph API için yönetici veya Kullanıcı erişiminiz var. Daha fazla bilgi için bkz. [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
+* Azure Active Directory Graph API için yönetici veya Kullanıcı erişiminiz var. Daha fazla bilgi için bkz. [Azure Active Directory Graph API](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
 * Erişim kimlik bilgilerine sahip bir Microsoft Azure Storage hesabınız var.
-* Sistem yöneticiniz tarafından ayarlanan herhangi bir Azure ilkesi tarafından engellenmiyor. İlkeler hakkında daha fazla bilgi için bkz. [hızlı başlangıç: uyumlu olmayan kaynakları belirlemek için bir ilke ataması oluşturma](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal).
+* Sistem yöneticiniz tarafından ayarlanan herhangi bir Azure ilkesi tarafından engellenmiyor. İlkeler hakkında daha fazla bilgi için bkz. [hızlı başlangıç: uyumlu olmayan kaynakları belirlemek için bir ilke ataması oluşturma](../governance/policy/assign-policy-portal.md).
 
 ### <a name="for-the-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro cihazı için
 
@@ -96,9 +96,9 @@ Azure Stack Edge kaynağı oluşturmak için Azure portal aşağıdaki adımlar�
 1. Oturum açmak için Microsoft Azure kimlik bilgilerinizi kullanın 
 
     - Bu URL 'de Azure portal: [https://portal.azure.com](https://portal.azure.com) .
-    - Ya da bu URL 'de Azure Kamu Portalı: [https://portal.azure.us](https://portal.azure.us) . Daha fazla ayrıntı için [portalı kullanarak Azure Kamu 'Ya bağlanma](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal)konusuna gidin.
+    - Ya da bu URL 'de Azure Kamu Portalı: [https://portal.azure.us](https://portal.azure.us) . Daha fazla ayrıntı için [portalı kullanarak Azure Kamu 'Ya bağlanma](../azure-government/documentation-government-get-started-connect-with-portal.md)konusuna gidin.
 
-2. Sol bölmede **+ kaynak oluştur**' u seçin. **Azure Stack Edge/Data Box Gateway**için arama yapın ve seçin. **Oluştur**’u seçin.
+2. Sol bölmede **+ kaynak oluştur**' u seçin. **Azure Stack Edge/Data Box Gateway** için arama yapın ve seçin. **Oluştur**’u seçin.
 3. Azure Stack Edge Pro cihazı için kullanmak istediğiniz aboneliği seçin. Azure Stack Edge kaynağını dağıtmak istediğiniz bölgeyi seçin. Azure Stack Edge kaynağının kullanılabildiği tüm bölgelerin listesi için bkz. [bölgeye göre kullanılabilir Azure ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all).
 
     Cihazınızı dağıtmak istediğiniz coğrafi bölgeye yakın bir konum seçin. Bölge yalnızca cihaz yönetimi için meta verileri depolar. Gerçek veriler herhangi bir depolama hesabında depolanabilir.
@@ -107,14 +107,14 @@ Azure Stack Edge kaynağı oluşturmak için Azure portal aşağıdaki adımlar�
 
     ![Azure Stack Edge hizmeti ara](media/azure-stack-edge-deploy-prep/data-box-edge-sku.png)
 
-3. **Temel bilgiler** sekmesinde, aşağıdaki **proje ayrıntılarını**girin veya seçin.
+3. **Temel bilgiler** sekmesinde, aşağıdaki **proje ayrıntılarını** girin veya seçin.
     
     |Ayar  |Değer  |
     |---------|---------|
     |Abonelik    |Bu, önceki seçime göre otomatik olarak doldurulur. Abonelik fatura hesabınıza bağlıdır. |
-    |Kaynak grubu  |Mevcut grubu seçin veya yeni bir grup oluşturun.<br>[Azure Kaynak Grupları](../azure-resource-manager/resource-group-overview.md) hakkında daha fazla bilgi edinin.     |
+    |Kaynak grubu  |Mevcut grubu seçin veya yeni bir grup oluşturun.<br>[Azure Kaynak Grupları](../azure-resource-manager/management/overview.md) hakkında daha fazla bilgi edinin.     |
 
-4. Aşağıdaki **örnek ayrıntılarını**girin veya seçin.
+4. Aşağıdaki **örnek ayrıntılarını** girin veya seçin.
 
     |Ayar  |Değer  |
     |---------|---------|
@@ -125,14 +125,14 @@ Azure Stack Edge kaynağı oluşturmak için Azure portal aşağıdaki adımlar�
 
 5. **İleri ' yi seçin: sevkiyat adresi**.
 
-    - Zaten bir cihazınız varsa, **Azure Stack Edge Pro cihazım**için Birleşik giriş kutusunu seçin.
+    - Zaten bir cihazınız varsa, **Azure Stack Edge Pro cihazım** için Birleşik giriş kutusunu seçin.
     - Bu, sipariş ettiğiniz yeni bir cihaz ise, kişi adını, şirketi, cihazı sevk etmek için adresi ve iletişim bilgilerini girin.
 
     ![Yeni cihaz için sevkiyat adresi](media/azure-stack-edge-deploy-prep/data-box-edge-resource1.png)
 
 6. **Sonraki: Gözden geçirme ve oluşturma**’yı seçin.
 
-7. **Gözden geçir + oluştur** sekmesinde, **fiyatlandırma ayrıntılarını**, **kullanım koşulları**ve kaynağınızın ayrıntılarını gözden geçirin. **Gizlilik koşullarını Incelediğim**Birleşik giriş kutusunu seçin.
+7. **Gözden geçir + oluştur** sekmesinde, **fiyatlandırma ayrıntılarını**, **kullanım koşulları** ve kaynağınızın ayrıntılarını gözden geçirin. **Gizlilik koşullarını Incelediğim** Birleşik giriş kutusunu seçin.
 
     ![Azure Stack Edge kaynak ayrıntılarını ve gizlilik koşullarını gözden geçirin](media/azure-stack-edge-deploy-prep/data-box-edge-resource2.png)
 

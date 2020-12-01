@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.author: egeaney
-ms.openlocfilehash: 1ee3c3942ee7d01fa174947f5d9c278cddaf0424
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 19dc0f3a676d5373b28e4b7055050477c426f847
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376934"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345789"
 ---
 # <a name="qna-maker-encryption-of-data-at-rest"></a>Bekleyen verilerin şifrelenmesi Soru-Cevap Oluşturma
 
@@ -26,11 +26,11 @@ Aboneliğiniz varsayılan olarak Microsoft tarafından yönetilen şifreleme ana
 
 # <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
 
-Soru-Cevap Oluşturma Azure Search 'ten CMK desteği kullanır. [Azure Search Azure Key Vault kullanarak CMK](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys)'ı yapılandırın. Bu Azure örneği, CMK 'ın etkinleştirilmesini sağlamak için Soru-Cevap Oluşturma Hizmeti ile ilişkilendirilmelidir.
+Soru-Cevap Oluşturma Azure Search 'ten CMK desteği kullanır. [Azure Search Azure Key Vault kullanarak CMK](../../search/search-security-manage-encryption-keys.md)'ı yapılandırın. Bu Azure örneği, CMK 'ın etkinleştirilmesini sağlamak için Soru-Cevap Oluşturma Hizmeti ile ilişkilendirilmelidir.
 
 # <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
 
-Soru-Cevap Oluşturma [Azure Search 'Ten CMK desteğini](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys)kullanır ve Azure Search dizininde depolanan verileri şifrelemek için belirtilen CMK 'yi otomatik olarak ilişkilendirir.
+Soru-Cevap Oluşturma [Azure Search 'Ten CMK desteğini](../../search/search-security-manage-encryption-keys.md)kullanır ve Azure Search dizininde depolanan verileri şifrelemek için belirtilen CMK 'yi otomatik olarak ilişkilendirir.
 
 ---
 
@@ -43,7 +43,7 @@ Soru-Cevap Oluşturma hizmeti Azure Search hizmetinden CMK kullanır. CMKs 'i et
 
 # <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
 
-1. Yeni bir Azure Search örneği oluşturun ve [Azure bilişsel arama için müşteri tarafından yönetilen anahtar önkoşulları](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys#prerequisites)bölümünde bahsedilen önkoşulları etkinleştirin.
+1. Yeni bir Azure Search örneği oluşturun ve [Azure bilişsel arama için müşteri tarafından yönetilen anahtar önkoşulları](../../search/search-security-manage-encryption-keys.md#prerequisites)bölümünde bahsedilen önkoşulları etkinleştirin.
 
    ![Şifreleme ayarlarını görüntüleyin 1](../media/cognitive-services-encryption/qna-encryption-1.png)
 
@@ -52,8 +52,8 @@ Soru-Cevap Oluşturma hizmeti Azure Search hizmetinden CMK kullanır. CMKs 'i et
    ![Şifreleme ayarlarını görüntüle 2](../media/cognitive-services-encryption/qna-encryption-2.png)
 
 3. Sonra, yeni bir uygulama ayarı oluşturun:
-   * **Ad** : ayarla `CustomerManagedEncryptionKeyUrl`
-   * **Değer** : Azure Search örneğinizi oluştururken 1. adımda aldığınız değeri kullanın.
+   * **Ad**: ayarla `CustomerManagedEncryptionKeyUrl`
+   * **Değer**: Azure Search örneğinizi oluştururken 1. adımda aldığınız değeri kullanın.
 
    ![Şifreleme ayarlarını görüntüleme 3](../media/cognitive-services-encryption/qna-encryption-3.png)
 
@@ -62,14 +62,14 @@ Soru-Cevap Oluşturma hizmeti Azure Search hizmetinden CMK kullanır. CMKs 'i et
 # <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
 
 1.  Soru-Cevap Oluşturma yönetilen (Önizleme) hizmetinizin **şifreleme** sekmesine gidin.
-2.  **Müşteri tarafından yönetilen anahtarlar** seçeneğini belirleyin. [Müşteri tarafından yönetilen anahtarlarınızın](https://docs.microsoft.com/azure/storage/common/customer-managed-keys-configure-key-vault?tabs=portal) ayrıntılarını sağlayın ve **Kaydet** ' e tıklayın.
+2.  **Müşteri tarafından yönetilen anahtarlar** seçeneğini belirleyin. [Müşteri tarafından yönetilen anahtarlarınızın](../../storage/common/customer-managed-keys-configure-key-vault.md?tabs=portal) ayrıntılarını sağlayın ve **Kaydet**' e tıklayın.
 
      :::image type="content" source="../media/cognitive-services-encryption/qnamaker-v2-encryption-cmk.png" alt-text="Soru-Cevap Oluşturma yönetilen (Önizleme) CMK ayarı" lightbox="../media/cognitive-services-encryption/qnamaker-v2-encryption-cmk.png":::
 
 3.  Başarılı bir kaydetme işlemi sırasında CMK, Azure Search dizininde depolanan verileri şifrelemek için kullanılacaktır.
 
 > [!IMPORTANT]
-> Herhangi bir bilgi tabanı oluşturulmadan önce CMK 'nizi yeni bir Azure Bilişsel Arama hizmetinde ayarlamanız önerilir. CMK 'yi, mevcut bilgi temellerine sahip bir Soru-Cevap Oluşturma hizmetinde ayarlarsanız, bunlara erişiminizi kaybedebilirsiniz. Azure bilişsel arama 'da [şifrelenmiş içerikle çalışma](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys#work-with-encrypted-content) hakkında daha fazla bilgi edinin.
+> Herhangi bir bilgi tabanı oluşturulmadan önce CMK 'nizi yeni bir Azure Bilişsel Arama hizmetinde ayarlamanız önerilir. CMK 'yi, mevcut bilgi temellerine sahip bir Soru-Cevap Oluşturma hizmetinde ayarlarsanız, bunlara erişiminizi kaybedebilirsiniz. Azure bilişsel arama 'da [şifrelenmiş içerikle çalışma](../../search/search-security-manage-encryption-keys.md#work-with-encrypted-content) hakkında daha fazla bilgi edinin.
 
 > [!NOTE]
 > Müşteri tarafından yönetilen anahtarları kullanma olanağı istemek için bilişsel [hizmetler Customer-Managed anahtar Isteği formunu](https://aka.ms/cogsvc-cmk)doldurun ve iletin.
@@ -87,6 +87,6 @@ Ancak, Soru-Cevap Oluşturma Portal hizmeti Batı ABD 'de barındırıldığınd
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Key Vault 'de CMKs kullanarak Azure Search şifreleme](https://docs.microsoft.com/azure/search/search-security-manage-encryption-keys)
-* [Bekleme sırasında veri şifrelemesi](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
-* [Azure Key Vault hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+* [Azure Key Vault 'de CMKs kullanarak Azure Search şifreleme](../../search/search-security-manage-encryption-keys.md)
+* [Bekleme sırasında veri şifrelemesi](../../security/fundamentals/encryption-atrest.md)
+* [Azure Key Vault hakkında daha fazla bilgi edinin](../../key-vault/general/overview.md)

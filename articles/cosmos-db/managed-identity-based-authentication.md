@@ -9,12 +9,12 @@ ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b3bd6a71898576ac23cdd10c1eb52e1ef3a39b95
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: cfef6ce0fb38f074f854d5ceb77677843e44b91b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336597"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345738"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Azure Cosmos DB verilerine erişmek için sistem tarafından atanan Yönetilen kimlikler kullanın
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -35,7 +35,7 @@ Bu adımda, işlev uygulamanıza sistem tarafından atanmış bir yönetilen kim
 
    :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-selection.png" alt-text="İşlev uygulaması için platform özelliklerini ve kimlik seçeneklerini gösteren ekran görüntüsü.":::
 
-1. **Kimlik** sekmesinde, sistem kimliği durumunu **açın ve** **Kaydet** ' **Status** i seçin. **Kimlik** bölmesi aşağıdaki gibi görünmelidir:  
+1. **Kimlik** sekmesinde, sistem kimliği durumunu **açın ve** **Kaydet**' **Status** i seçin. **Kimlik** bölmesi aşağıdaki gibi görünmelidir:  
 
    :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-system-managed-on.png" alt-text="Sistem kimliği durumunun açık olarak ayarlandığını gösteren ekran görüntüsü.":::
 
@@ -62,19 +62,19 @@ Bu senaryoda, işlev uygulaması Aquarium 'un sıcaklığını okur ve sonra bu 
 
    :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab.png" alt-text="Erişim denetim bölmesini ve rol atamaları sekmesini gösteren ekran görüntüsü.":::
 
-1. **+ Ekle** > **Rol ataması ekle** ’yi seçin.
+1. **+ Ekle** > **Rol ataması ekle**’yi seçin.
 
 1. **Rol ataması Ekle** paneli sağ tarafta açılır:
 
    :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png" alt-text="Rol ataması Ekle bölmesini gösteren ekran görüntüsü.":::
 
-   * **Rol** : **DocumentDB hesabı katılımcısı** seçin
-   * **Erişim ata** : **sistem tarafından atanan yönetilen kimlik Seç** alt bölümünün altında **işlev uygulaması** ' yi seçin.
-   * **Seç** : bölmesi, aboneliğinizdeki **yönetilen sistem kimliğine** sahip tüm işlev uygulamalarıyla doldurulur. Bu durumda **FishTankTemperatureService** işlev uygulamasını seçin: 
+   * **Rol**: **DocumentDB hesabı katılımcısı** seçin
+   * **Erişim ata**: **sistem tarafından atanan yönetilen kimlik Seç** alt bölümünün altında **işlev uygulaması**' yi seçin.
+   * **Seç**: bölmesi, aboneliğinizdeki **yönetilen sistem kimliğine** sahip tüm işlev uygulamalarıyla doldurulur. Bu durumda **FishTankTemperatureService** işlev uygulamasını seçin: 
 
       :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="Örnek ile doldurulmuş rol atama Ekle bölmesini gösteren ekran görüntüsü.":::
 
-1. İşlev uygulamanızı seçtikten sonra **Kaydet** ' i seçin.
+1. İşlev uygulamanızı seçtikten sonra **Kaydet**' i seçin.
 
 ### <a name="assign-the-role-using-azure-cli"></a>Azure CLı kullanarak rol atama
 
@@ -214,7 +214,7 @@ namespace Monitor
 }
 ```
 
-Artık [işlev uygulamanızı dağıtmaya](../azure-functions/functions-create-first-function-vs-code.md)hazırsınız.
+Artık [işlev uygulamanızı dağıtmaya](../azure-functions/create-first-function-vs-code-csharp.md)hazırsınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

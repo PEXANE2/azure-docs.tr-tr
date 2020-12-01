@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 2f87f5c7e43757db476153db93d6ecc5082dde89
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: ee8d838ba315c2e261a61699948b71a710341165
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376766"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96346367"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Soru-Cevap Oluşturma Bilgi Bankası 'nın en iyi yöntemleri
 
@@ -18,7 +18,7 @@ ms.locfileid: "94376766"
 
 ## <a name="extraction"></a>Ayıklama
 
-Soru-Cevap Oluşturma hizmet, içerikten QnAs çıkaran ve desteklenen dosya ve HTML biçimlerinin listesini genişlettirecek algoritmaları sürekli olarak geliştirir. Belge türüne göre veri ayıklama [yönergelerini](../Concepts/content-types.md) izleyin.
+Soru-Cevap Oluşturma hizmet, içerikten QnAs çıkaran ve desteklenen dosya ve HTML biçimlerinin listesini genişlettirecek algoritmaları sürekli olarak geliştirir. Belge türüne göre veri ayıklama [yönergelerini](../index.yml) izleyin.
 
 Genel olarak, SSS sayfaları tek başına olmalıdır ve diğer bilgilerle birleştirilmemelidir. Ürün kılavuzları, açık başlıklar ve tercihen bir dizin sayfası içermelidir.
 
@@ -71,7 +71,7 @@ CHIT-chat veri kümesinin parçası olan ve genel yanıtlarla doldurulmuş bazı
 
 Aşağıdaki CHIT-chat QnAs ' i daha belirgin yapmanızı öneririz:
 
-* Kimsin?
+* Kimsiniz?
 * Ne yapabilirsiniz?
 * Kaç yaşındasın?
 * Kim oluşturdunuz?
@@ -117,10 +117,10 @@ Varsayılan olarak, Soru-Cevap Oluşturma sorular ve yanıtlar arasında arama y
 
 ### <a name="use-synonyms"></a>Eş anlamlıları kullan
 # <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
-Ingilizce dilde eş anlamlı sözcükler için bazı destek olsa da, farklı formlar kullanan anahtar sözcüklere eş anlamlılar eklemek için [alterler API 'si](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) aracılığıyla büyük/küçük harf duyarsız sözcük değişikliklerini kullanın. Eş anlamlılar Soru-Cevap Oluşturma hizmet düzeyinde eklenir ve hizmetteki **tüm bilgi tabanları tarafından paylaşılır**.
+Ingilizce dilde eş anlamlı sözcükler için bazı destek olsa da, farklı formlar kullanan anahtar sözcüklere eş anlamlılar eklemek için [alterler API 'si](/rest/api/cognitiveservices/qnamaker/alterations/replace) aracılığıyla büyük/küçük harf duyarsız sözcük değişikliklerini kullanın. Eş anlamlılar Soru-Cevap Oluşturma hizmet düzeyinde eklenir ve hizmetteki **tüm bilgi tabanları tarafından paylaşılır**.
 
 # <a name="qna-maker-managed-preview-release"></a>[Soru-Cevap Oluşturma Managed (Önizleme sürümü)](#tab/v2)
-Ingilizce dilde eş anlamlı sözcükler için bazı destek olsa da, farklı formlar kullanan anahtar sözcüklere eş anlamlılar eklemek için [alterler API 'si](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) aracılığıyla büyük/küçük harf duyarsız sözcük değişikliklerini kullanın. Soru-Cevap Oluşturma yönetilen (Önizleme) eş anlamlılar **bilgileri her Bilgi Bankası için eklenmiştir**.
+Ingilizce dilde eş anlamlı sözcükler için bazı destek olsa da, farklı formlar kullanan anahtar sözcüklere eş anlamlılar eklemek için [alterler API 'si](/rest/api/cognitiveservices/qnamaker/alterations/replace) aracılığıyla büyük/küçük harf duyarsız sözcük değişikliklerini kullanın. Soru-Cevap Oluşturma yönetilen (Önizleme) eş anlamlılar **bilgileri her Bilgi Bankası için eklenmiştir**.
 
 |Özgün sözcük|Eş anlamlılar|
 |--|--|
@@ -140,8 +140,8 @@ Bilgi bankasındaki bir soru ile bir kullanıcı sorgusuyla eşleşen derecelend
 
 Bu iki QnAs, çok benzer sözcüklerle phrased olduğundan, bu benzerlik,  *"konum olduğu yer `<x>` "* gibi phrased çok sayıda kullanıcı sorgusunun çok benzer puanlarını oluşmasına neden olabilir. Bunun yerine, KB 'unuzda birçok soruda olabilecek "konum" gibi kelimeleri önleyerek "  *Park partisi olan* " ve *"ATM* olduğu" gibi sorguları açıkça ayırt etmeye çalışın.
 
-## <a name="collaborate"></a>İşbirliği yapma
-Soru-Cevap Oluşturma, kullanıcıların Bilgi Bankası 'nda [işbirliği](../How-to/collaborate-knowledge-base.md) yapmasına olanak sağlar. Kullanıcıların bilgi tabanlara erişebilmesi için Azure Soru-Cevap Oluşturma kaynak grubuna erişmesi gerekir. Bazı kuruluşlar Bilgi Bankası düzenlemesini ve bakımını dış olarak almak isteyebilir ve yine de Azure kaynaklarına erişimi koruyabilecek. Bu düzenleyici-onaylayan modeli, farklı aboneliklerde iki özdeş [soru-cevap oluşturma hizmeti](../How-to/set-up-qnamaker-service-azure.md) ayarlanarak ve düzenleme testi döngüsüne yönelik bir seçim yaparak yapılır. Sınama tamamlandıktan sonra Bilgi Bankası içerikleri, son olarak Bilgi Bankası 'nı yayımlayacak ve uç noktayı güncelleştiren, onaylayanın Soru-Cevap Oluşturma hizmetine bir [içeri aktarma](../Tutorials/migrate-knowledge-base.md) işlemi ile aktarılır.
+## <a name="collaborate"></a>İşbirliği
+Soru-Cevap Oluşturma, kullanıcıların Bilgi Bankası 'nda [işbirliği](../index.yml) yapmasına olanak sağlar. Kullanıcıların bilgi tabanlara erişebilmesi için Azure Soru-Cevap Oluşturma kaynak grubuna erişmesi gerekir. Bazı kuruluşlar Bilgi Bankası düzenlemesini ve bakımını dış olarak almak isteyebilir ve yine de Azure kaynaklarına erişimi koruyabilecek. Bu düzenleyici-onaylayan modeli, farklı aboneliklerde iki özdeş [soru-cevap oluşturma hizmeti](../How-to/set-up-qnamaker-service-azure.md) ayarlanarak ve düzenleme testi döngüsüne yönelik bir seçim yaparak yapılır. Sınama tamamlandıktan sonra Bilgi Bankası içerikleri, son olarak Bilgi Bankası 'nı yayımlayacak ve uç noktayı güncelleştiren, onaylayanın Soru-Cevap Oluşturma hizmetine bir [içeri aktarma](../Tutorials/migrate-knowledge-base.md) işlemi ile aktarılır.
 
 
 

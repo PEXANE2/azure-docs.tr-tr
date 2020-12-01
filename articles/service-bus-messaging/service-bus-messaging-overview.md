@@ -1,49 +1,83 @@
 ---
 title: Azure Service Bus mesajlaşmasına genel bakış | Microsoft Belgeleri
-description: Bu makalede, tam olarak yönetilen bir kurumsal tümleştirme ileti Aracısı olan Azure Service Bus yüksek düzeyde bir genel bakış sunulmaktadır.
+description: Bu makalede, tam olarak yönetilen bir kurumsal tümleştirme ileti Aracısı olan Azure Service Bus üst düzey bir genel bakış sunulmaktadır.
 ms.topic: overview
 ms.date: 11/20/2020
-ms.openlocfilehash: febb25474f84819b0afc9ab1f9af96e93489ab54
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.openlocfilehash: bb894800482cb2b7b4e5d699ab050bd5c93ad038
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95415295"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345312"
 ---
 # <a name="what-is-azure-service-bus"></a>Azure Service Bus nedir?
+Microsoft Azure Service Bus, ileti kuyrukları ve genel abone olma konuları içeren, tam olarak yönetilen bir kurumsal ileti aracısıdır. Service Bus, uygulamaları ve hizmetleri birbirinden ayırmak için kullanılır ve aşağıdaki avantajları sağlar:
 
-Microsoft Azure Service Bus tam olarak yönetilen bir kurumsal tümleştirme ileti aracısıdır. Service Bus, uygulamaları ve Hizmetleri ayrışırlar. Service Bus, verilerin ve durumun zaman uyumsuz aktarımı için güvenilir ve güvenli bir platform sunar.
+- Rekabet çalışanları arasında yük dengeleme çalışması
+- Hizmet ve uygulama sınırları genelinde verileri ve denetimi güvenle yönlendirme ve aktarma
+- Yüksek derecede güvenilirlik gerektiren işlem işlerini koordine etme 
 
-Veriler, farklı uygulamalar ve hizmetler arasında *iletiler* kullanılarak aktarılır. Bir ileti ikili biçimdedir ve JSON, XML veya yalnızca metin içerebilir. Daha fazla bilgi için bkz. [Integration Services](https://azure.com/integration).
+## <a name="overview"></a>Genel Bakış
+Veriler, farklı uygulamalar ve hizmetler arasında *iletiler* kullanılarak aktarılır. İleti, meta verilerle düzenlenmiş ve veri içeren bir kapsayıcıdır. Veriler, aşağıdakiler gibi ortak biçimlerin kodlandığı yapılandırılmış veriler de dahil olmak üzere herhangi bir tür bilgi olabilir: JSON, XML, Apache avro, düz metin.
 
 Yaygın olarak kullanılan bazı mesajlaşma senaryoları:
 
 * *Mesajlaşma*. Satış veya satın alma siparişleri, Günlükler veya stok hareketleri gibi iş verilerini aktarın.
-* *Uygulamaları ayrıştı*. Uygulama ve hizmetlerin güvenilirliğini ve ölçeklenebilirliğini geliştirme. İstemci ve hizmetin aynı anda çevrimiçi olması gerekmez.
-* *Konular ve abonelikler*. Yayımcılar ve aboneler arasındaki 1:*n* ilişkilerini etkinleştirin.
-* *İleti oturumları*. İleti sıralaması veya ileti ertelemeyi gerektiren iş akışlarını uygulayın.
+* *Uygulamaları ayrıştı*. Uygulama ve hizmetlerin güvenilirliğini ve ölçeklenebilirliğini geliştirme. Üretici ve tüketicinin aynı anda çevrimiçi veya kullanıma hazır olması gerekmez. Yük, trafik yoğunluğu bir hizmetin [yükünü fazla değil olarak seviyelendirilir](https://docs.microsoft.com/azure/architecture/patterns/queue-based-load-leveling) . 
+* *Yük Dengeleme*. Birden çok [rekabet tüketicilerinin](https://docs.microsoft.com/azure/architecture/patterns/competing-consumers) aynı anda bir kuyruktan okumasına izin verin, her biri belirli iletilere güvenli bir şekilde özel sahiplik elde edin. 
+* *Konular ve abonelikler*. [Yayımcılar ve aboneler](https://docs.microsoft.com/azure/architecture/patterns/publisher-subscriber)arasındaki 1:*n* ilişkilerini etkinleştirerek abonelerin yayınlanmış bir ileti akışından gelen belirli iletileri seçmesini sağlar.
+* *İşlemler*. Atomik bir işlemin kapsamındaki birkaç işlemi yapmanıza olanak sağlar. Örneğin, aşağıdaki işlemler bir işlem kapsamında yapılabilir.  
 
-## <a name="namespaces"></a>Ad Alanları
+    1. Bir kuyruktan bir ileti alın.
+    2. İşleme sonuçlarını bir veya daha fazla farklı kuyruğa gönderin.
+    3. Giriş iletisini özgün kuyruktan taşıyın. 
+    
+    Sonuçlar, yalnızca bir kez işleme semantiklerine izin veren, başarıyla giriş iletisinin başarıyla kapatılması dahil olmak üzere, yalnızca başarılı olduğunda aşağı akış tüketicilerine görünür hale gelir. Bu işlem modeli, daha fazla çözüm bağlamındaki [telafi işlemleri](https://docs.microsoft.com/azure/architecture/patterns/compensating-transaction.md) deseninin sağlam bir temelidir. 
+* *İleti oturumları*. Katı ileti sıralaması veya ileti erteleme gerektiren iş akışlarının ve çoklu aktarımların yüksek ölçekli bir şekilde koordine edilmesini uygulayın.
 
-Ad alanı, tüm mesajlaşma bileşenleri için bir kapsayıcıdır. Tek bir ad alanında birden fazla kuyruk ve konu bulunabilir ve ad alanları genellikle uygulama kapsayıcıları olarak görev yapar.
+Apache ActiveMQ gibi diğer ileti aracıları hakkında bilginiz varsa Service Bus kavramlar, bildiğiniz işe benzer. Service Bus bir hizmet olarak platform (PaaS) teklifi olduğundan, önemli bir farklılık aşağıdaki eylemler hakkında endişelenmenize gerek kalmaz. Azure, sizin için bu ilgili bu nesnelerin kullanımını üstlenir. 
 
-## <a name="queues"></a>Kuyruklar
+- Günlükleri yerleştirme ve disk alanını yönetme
+- Yedeklemeleri işleme
+- İşletim sistemlerini veya ürünleri düzeltme eki uygulanmış olarak tutma
+- Donanım arızaları hakkında endişelenme 
+- Yedek makineye yük devrediliyor
 
+## <a name="compliance-with-standards-and-protocols"></a>Standartlarla ve protokollerle uyumluluk
+
+Service Bus için birincil hat protokolü, açık bir ISO/ıEC standardı olan [Gelişmiş mesajlaşma sıraya alma Protokolü (AMQP) 1,0](service-bus-amqp-overview.md)' dir. Müşterilerin Service Bus ve ActiveMQ ya da Kbbitmq gibi şirket içi aracılarından dolayı çalışan uygulamalar yazmasını sağlar. [AMQP protokol Kılavuzu](service-bus-amqp-protocol-guide.md) , böyle bir soyutlama oluşturmak istediğiniz durumlarda ayrıntılı bilgiler sağlar.
+
+[Service Bus Premium](service-bus-premium-messaging.md) , Java/Jakarta Ee [Java ileti hizmeti (jms) 2,0](how-to-use-java-message-service-20.md) API 'siyle tamamen uyumludur. Ve, Service Bus standart sıralara odaklanan JMS 1,1 alt kümesini destekler. JMS, ileti aracıları için ortak bir soyutlamadır ve popüler yay çerçevesi dahil olmak üzere birçok uygulama ve çerçeve ile tümleşir. Diğer aracılardan Azure Service Bus geçiş yapmak için, yalnızca sıraların ve konuların topolojisini yeniden oluşturmanız ve istemci sağlayıcısı bağımlılıklarını ve yapılandırmasını değiştirmeniz gerekir. Örneğin, [ActiveMQ geçiş kılavuzu](migrate-jms-activemq-to-servicebus.md)' na bakın.
+
+## <a name="concepts-and-terminology"></a>Kavramlar ve terminoloji 
+Bu bölümde Service Bus kavramlar ve terminoloji açıklanmaktadır.
+
+### <a name="namespaces"></a>Ad alanları
+Ad alanı, tüm mesajlaşma bileşenleri için bir kapsayıcıdır. Tek bir ad alanında birden fazla kuyruk ve konu bulunabilir ve ad alanları genellikle uygulama kapsayıcıları olarak görev yapar. 
+
+Bir ad alanı diğer aracıların terminolojisinde bir "sunucu" ile karşılaştırılabilir, ancak kavramlar doğrudan eşdeğer değildir. Service Bus ad alanı, her türlü onlarca etkin sanal makineden oluşan büyük bir kümenin kendi kapasite dilim'unuzda bulunur. İsteğe bağlı olarak üç [Azure kullanılabilirlik bölgesine](../availability-zones/az-overview.md)yayılabilir. Bu nedenle, ileti aracısını en büyük ölçekte çalıştırmanın tüm kullanılabilirlik ve sağlamlık avantajlarını elde edersiniz. Ve temel karmaşıklık konusunda endişelenmeniz gerekmez. "Sunucusuz" mesajlaşması Service Bus.
+
+### <a name="queues"></a>Kuyruklar
 İletiler *kuyruklara* gönderilir ve bunlardan alınır. Kuyruklar, alıcı uygulama tarafından alınması ve işlenmesi için kullanılabilir olana kadar iletileri depolar.
 
 ![Kuyruk](./media/service-bus-messaging-overview/about-service-bus-queue.png)
 
-Kuyruklarda bulunan iletiler, varış noktasında sıralanır ve zaman damgalanır. Kabul edildikten sonra ileti yedekli depolama alanında güvenli bir şekilde tutulur. İletiler *çekme* moduna alınır ve yalnızca istendiğinde iletileri teslim edilir.
+Kuyruklarda bulunan iletiler, varış noktasında sıralanır ve zaman damgalanır. Aracı tarafından kabul edildiğinde, ileti her zaman üçlü olarak yedekli depolamada tutulur, ad alanı bölge özellikli ise kullanılabilirlik bölgelerine yayılır. Service Bus istemciye, kabul edildiği şekilde bildirildikten sonra iletileri bellekte veya geçici depolamada hiçbir şekilde terk etmez.
 
-## <a name="topics"></a>Konu başlıkları
+İletiler *çekme* moduna alınır ve yalnızca istendiğinde iletileri teslim edilir. Diğer bazı bulut sıralarının meşgul yoklama modelinden farklı olarak, çekme işlemi uzun süreli olabilir ve yalnızca bir ileti kullanılabilir olduğunda tamamlanabilir. 
+
+### <a name="topics"></a>Konu başlıkları
 
 İleti göndermek ve almak için *konu başlıklarını* da kullanabilirsiniz. Bir kuyruk genellikle noktadan noktaya iletişim için kullanılır, buna karşın konu başlıkları yayımlama/abone olma senaryolarında yararlıdır.
 
 ![Konu](./media/service-bus-messaging-overview/about-service-bus-topic.png)
 
-Konuların birden fazla ve bağımsız abonesi olabilir. Bir konu başlığının bir abonesi konu başlığına gönderilen her iletinin bir kopyasını alabilir. Abonelikler, varlıklar olarak adlandırılır. Abonelikler devam edebilir, ancak süreleri dolacak veya oto silebilir.
+Konular, konuya iliştirilecek ve başka bir şekilde alıcı tarafındaki kuyruklar gibi çalışan birden fazla bağımsız aboneliğe sahip olabilir. Bir konu başlığının bir abonesi konu başlığına gönderilen her iletinin bir kopyasını alabilir. Abonelikler, varlıklar olarak adlandırılır. Abonelikler varsayılan olarak dayanıklı olur, ancak sona ermek üzere yapılandırılabilir ve sonra otomatik olarak silinir. JMS API 'SI aracılığıyla Service Bus Premium, bağlantı süresince mevcut olan geçici abonelikler oluşturmanıza de olanak tanır.
 
-Tek tek aboneliklerin, bir konuya gönderilen tüm iletileri almasını istemeyebilirsiniz. Bu durumda, isteğe bağlı *eylemleri* tetikleyen koşulları tanımlamak için *kurallar* ve *Filtreler* kullanabilirsiniz. Belirtilen iletileri filtreleyebilir ve ileti özelliklerini ayarlayabilir ya da değiştirebilirsiniz. Daha fazla bilgi için bkz. [Konu filtreleri ve eylemleri](topic-filters.md).
+Bir abonelikte kurallar tanımlayabilirsiniz. Abonelik kuralında, ileti için aboneliğe kopyalanacak bir koşul ve ileti meta verilerini değiştirebilecek isteğe bağlı bir *eylem* tanımlamak için bir *filtre* vardır. Daha fazla bilgi için bkz. [Konu filtreleri ve eylemleri](topic-filters.md). Bu özellik aşağıdaki senaryolarda faydalıdır:
+
+- Bir aboneliğin bir konuya gönderilen tüm iletileri almasını istemezsiniz.
+- Bir abonelikten geçediklerinde iletileri ek meta verilerle işaretlemek istiyorsunuz.
 
 ## <a name="advanced-features"></a>Gelişmiş özellikler
 
@@ -51,53 +85,54 @@ Service Bus, daha karmaşık Mesajlaşma sorunlarını çözmenize olanak sağla
 
 ### <a name="message-sessions"></a>İleti oturumları
 
-Service Bus ' de ilk kez ilk çıkar (FıFO) garantisi oluşturmak için oturumları kullanın. İleti oturumları, sınırsız sayıda birbiriyle ilgili iletinin birlikte ve düzenli olarak işlenmesini sağlar. Daha fazla bilgi için bkz. [ileti oturumları: ilk gelen, ilk çıkar (FIFO)](message-sessions.md).
+Service Bus ' de ilk kez ilk çıkar (FıFO) garantisi oluşturmak için oturumları kullanın. İleti oturumları, sınırlandırılmamış ilişkili ileti sıralarının özel ve sıralı işlenmesini etkinleştirir. Yüksek ölçekli, yüksek kullanılabilirliğe sahip sistemlerde oturum işleme izni vermek için oturum özelliği, oturumların işleyiciler arasında güvenle hareket etmesine olanak tanıyan oturum durumunu depolamayı da sağlar. Daha fazla bilgi için bkz. [ileti oturumları: ilk gelen, ilk çıkar (FIFO)](message-sessions.md).
 
 ### <a name="autoforwarding"></a>Oto iletme
 
-Oto iletme özelliği bir kuyruk veya aboneliği başka bir kuyruğa veya konuya zincirler. Aynı ad alanının parçası olmaları gerekir. Otomatik iletme ile, Service Bus iletileri kuyruktan veya abonelikten otomatik olarak kaldırır ve farklı bir kuyruğa veya konuya koyar. Daha fazla bilgi için bkz. [Service Bus varlıklarını oto iletme Ile zincirleme](service-bus-auto-forwarding.md).
+Oto iletme özelliği bir kuyruğu veya aboneliği aynı ad alanı içindeki başka bir kuyruğa veya konuya zincirler. Bu özelliği kullandığınızda Service Bus, iletileri bir kuyruktan veya abonelikten hedef kuyruğa veya konuya otomatik olarak taşıtir. Tüm bu taşınmaların işlem temelli olarak yapılır. Daha fazla bilgi için bkz. [Service Bus varlıklarını oto iletme Ile zincirleme](service-bus-auto-forwarding.md).
 
 ### <a name="dead-letter-queue"></a>Atılacak ileti sırası
 
-Service Bus, atılacak bir sırayı (DLQ) destekler. Bir DLCı, hiçbir alıcıya teslim edilemediğinden iletileri barındırır. İşlenemeyen iletileri barındırır. Service Bus, DLCı 'lerden gelen iletileri kaldırmanızı ve bunları incelemenizi sağlar. Daha fazla bilgi için bkz. [Service Bus atılacak ileti sıralarına genel bakış](service-bus-dead-letter-queues.md).
+Tüm Service Bus kuyrukları ve konu abonelikleri, ilişkili bir atılacak ileti kuyruğuna (DLQ) sahiptir. Bir DLQ aşağıdaki ölçütlere uyan iletileri barındırır: 
+
+- Bunlar herhangi bir alıcıya başarıyla teslim ediamazlar.
+- Zaman aşımına uğrar.
+- Alıcı uygulama tarafından açıkça bir şekilde hizalanırlar. 
+
+Atılacak ileti sırasındaki iletiler, neden yerleştirildikleri nedene göre açıklanırlar. Atılacak ileti sırası özel bir uç noktaya sahiptir, aksi takdirde normal sıra gibi davranır. Bir uygulama veya araç, bir DLCı 'ye veya sıradan bir sıradan çıkar. Ayrıca, bir atılacak ileti sırasının dışına da ileri sarabilirsiniz. Daha fazla bilgi için bkz. [Service Bus atılacak ileti sıralarına genel bakış](service-bus-dead-letter-queues.md).
 
 ### <a name="scheduled-delivery"></a>Zamanlanmış teslim
 
-Gecikmeli işleme için bir kuyruğa veya konuya iletiler gönderebilirsiniz. Bir işi belirli bir zamanda sistem tarafından işlenmek üzere kullanılabilir hale gelecek şekilde zamanlayabilirsiniz. Daha fazla bilgi için bkz. [zamanlanmış iletiler](message-sequencing.md#scheduled-messages).
+Gecikmeli işleme için iletileri bir kuyruğa veya konuya gönderebilirsiniz ve ileti tüketim için kullanılabilir hale gelir. Zamanlanmış iletiler de iptal edilebilir. Daha fazla bilgi için bkz. [zamanlanmış iletiler](message-sequencing.md#scheduled-messages).
 
 ### <a name="message-deferral"></a>İleti erteleme
 
-Bir kuyruk veya abonelik istemcisi daha sonra bir ileti almayı erteleyebilirsiniz. Bu erteleme, uygulamadaki özel koşullardan kaynaklanabilir. İleti kuyrukta veya abonelikte kalır, ancak bu şekilde ayarlanır. Daha fazla bilgi için bkz. [ileti erteleme](message-deferral.md).
+Bir kuyruk veya abonelik istemcisi daha sonra alınan bir iletinin alınmasını erteedebilir. İleti beklenen bir siparişten alınmış olabilir ve istemcinin başka bir ileti almasını beklemek istiyor. Ertelenmiş iletiler kuyrukta veya abonelikte kalır ve hizmet tarafından atanan sıra numarası kullanılarak açık bir şekilde yeniden etkinleştirilmelidir. Daha fazla bilgi için bkz. [ileti erteleme](message-deferral.md).
 
 ### <a name="batching"></a>Toplu İşleme
 
-İstemci tarafında toplu iş, bir kuyruk veya konu başlığı istemcisinin bir iletiyi göndermeyi belirli bir süre için ertelemesini sağlar. İstemci bu süre içinde başka iletiler gönderirse, iletileri tek bir toplu iş olarak gönderir. Daha fazla bilgi için bkz. [istemci tarafı toplu işleme](service-bus-performance-improvements.md#client-side-batching).
+İstemci tarafı toplu işlem, bir kuyruk veya konu istemcisinin bir ileti kümesini birikmesini ve bunları birlikte aktarmasını sağlar. Bant genişliğini kaydetmek veya aktarım hızını artırmak için genellikle yapılır. Daha fazla bilgi için bkz. [istemci tarafı toplu işleme](service-bus-performance-improvements.md#client-side-batching).
 
 ### <a name="transactions"></a>İşlemler
 
-İşlem iki veya daha fazla işlemi bir *yürütme kapsamında* gruplandırır. Service Bus, tek bir işlemin kapsamındaki tek bir mesajlaşma varlığına karşı işlemleri gruplamayı destekler. İleti varlığı bir kuyruk, konu veya abonelik olabilir. Daha fazla bilgi için bkz. [Service Bus işlem Işlemeye genel bakış](service-bus-transactions.md).
-
-### <a name="filtering-and-actions"></a>Filtreleme ve eylemler
-
-Aboneler, bir konu başlığından hangi iletileri almak istediklerini tanımlayabilir. Bu iletiler, bir veya daha fazla adlandırılmış abonelik kuralı biçiminde belirtilir. Her eşleşen kural koşulu için abonelik, her eşleşen kural için farklı şekilde açıklanabileceği iletinin bir kopyasını oluşturur. Daha fazla bilgi için bkz. [Konu filtreleri ve eylemleri](topic-filters.md).
+İşlem iki veya daha fazla işlemi bir *yürütme kapsamında* gruplandırır. Service Bus, tek bir işlemin kapsamındaki birden çok mesajlaşma varlıklarına karşı işlemleri gruplamaya olanak sağlar. İleti varlığı bir kuyruk, konu veya abonelik olabilir. Daha fazla bilgi için bkz. [Service Bus işlem Işlemeye genel bakış](service-bus-transactions.md).
 
 ### <a name="autodelete-on-idle"></a>Boşta üzerinde oto silme
 
-Boştayken otomatik silme, bir kuyruğun otomatik olarak silineceği bir boşta kalma aralığı belirtmenize olanak sağlar. En düşük süre 5 dakikadır. Daha fazla bilgi için, bkz. [Queuedescription. oto Deleteonıdle özelliği](/dotnet/api/microsoft.servicebus.messaging.queuedescription.autodeleteonidle).
+Boştayken otomatik silme, bir kuyruk veya konu aboneliğinin otomatik olarak silineceği bir boşta kalma aralığı belirtmenize olanak sağlar. En düşük süre 5 dakikadır. Daha fazla bilgi için, bkz. [Queuedescription. oto Deleteonıdle özelliği](/dotnet/api/microsoft.servicebus.messaging.queuedescription.autodeleteonidle).
 
 ### <a name="duplicate-detection"></a>Yineleme algılama
-
-Bir hata, istemcinin bir gönderme işleminin sonucu hakkında şüpheli olmasına neden olabilir. Yinelenen algılama, gönderenin aynı iletiyi yeniden göndermesini sağlar. Başka bir seçenek de sıranın veya konunun yinelenen kopyaları atmaları için kullanılır. Daha fazla bilgi için bkz. [yinelenen algılama](duplicate-detection.md).
+Yinelenen saptama özelliği, gönderenin aynı iletiyi yeniden göndermesini ve aracının olası bir yinelemeyi bırakması için izin sağlar. Yinelenen algılama, `message-id` bir iletinin özelliğinin izlenmesini temel alır, yani uygulamanın iletiyi yeniden gönderirken aynı değeri kullanması gerekir ve bu da uygulamaya özgü bazı bağlamdan doğrudan türetilebilir. Daha fazla bilgi için bkz. [yinelenen algılama](duplicate-detection.md).
 
 ### <a name="geo-disaster-recovery"></a>Coğrafi olağanüstü durum kurtarma
 
-Azure bölgeleri veya veri merkezleri kapalı kalma süresi yaşdığında, coğrafi olarak dağıtılmış olağanüstü durum kurtarma özelliği veri işlemenin farklı bir bölgede veya veri merkezinde çalışmaya devam etmesine olanak sağlar. Daha fazla bilgi için bkz. [Azure Service Bus coğrafi olağanüstü durum kurtarma](service-bus-geo-dr.md).
+Bir Azure bölgesi kesinti yaşdığında, olağanüstü durum kurtarma özelliği veri işlemenin farklı bir bölgede veya veri merkezinde çalışmaya devam etmesine olanak sağlar. Özelliği, ikincil bölgede bulunan bir ad alanının yapısal yansıtmasını tutar ve ad alanı kimliğinin ikincil ad alanına geçiş yapmasına olanak tanır. Önceden gönderilmiş iletiler, kullanılabilirlik bölümü alt taraflarından sonra kurtarma için önceki birincil ad alanında kalır. Daha fazla bilgi için bkz. [Azure Service Bus coğrafi olağanüstü durum kurtarma](service-bus-geo-dr.md).
 
 ### <a name="security"></a>Güvenlik
 
-Service Bus, standart [AMQP 1,0](service-bus-amqp-overview.md) ve [http/Rest](/rest/api/servicebus/) protokollerini ve aktarım düzeyi güvenliği (TLS) dahil olmak üzere ilgili güvenlik tesislerini destekler. İstemciler, Service Bus yerel [paylaşılan erişim imza](service-bus-sas.md) modeli veya [Azure Active Directory](service-bus-authentication-and-authorization.md) rol tabanlı güvenlik ile, normal hizmet hesapları ya da Azure tarafından yönetilen kimlikler kullanılarak erişim için yetkilendirilir. 
+Service Bus, standart [AMQP 1,0](service-bus-amqp-overview.md) ve [http ya da rest](/rest/api/servicebus/) protokollerini ve aktarım düzeyi güvenlik (TLS) dahil olmak üzere ilgili güvenlik tesislerini destekler. İstemciler, [paylaşılan erişim imzası](service-bus-sas.md) veya rol tabanlı güvenlik [Azure Active Directory](service-bus-authentication-and-authorization.md) kullanarak erişim için yetkilendirilir. 
 
-İstenmeyen trafiğe karşı koruma için Service Bus, bir IP filtreleme güvenlik duvarı ve Azure ile şirket içi sanal ağlarla tümleştirme dahil olmak üzere bir dizi [ağ güvenlik özelliği](network-security.md)sağlar.
+İstenmeyen trafiğe karşı koruma için Service Bus, IP güvenlik duvarı ve sanal ağlarla tümleştirme gibi [güvenlik özellikleri](network-security.md) sağlar. 
 
 ## <a name="client-libraries"></a>İstemci kitaplıkları
 
@@ -109,18 +144,9 @@ Tam olarak desteklenen Service Bus istemci kitaplıkları Azure SDK ile kullanı
 - [JavaScript ve TypeScript için Azure Service Bus modülleri](https://docs.microsoft.com/javascript/api/overview/azure/service-bus?view=azure-node-latest&preserve-view=true)
 - [Python için Azure Service Bus kitaplıkları](https://docs.microsoft.com/python/api/overview/azure/servicebus?view=azure-python&preserve-view=true)
 
-[Azure Service Bus ' birincil protokol amqp 1,0](service-bus-amqp-overview.md) ve herhangi bir amqp 1,0 uyumlu protokol istemcisinden kullanılabilir. Çeşitli açık kaynaklı AMQP istemcilerinin, Service Bus birlikte çalışabilirliği açıkça gösteren örnekleri vardır. Lütfen AMQP 1,0 istemcileri ile Service Bus ' özelliklerinin nasıl kullanılacağını anlamak için [amqp 1,0 protokol kılavuzunu](service-bus-amqp-protocol-guide.md) gözden geçirin.
+[Azure Service Bus ' birincil protokol amqp 1,0](service-bus-amqp-overview.md) ve herhangi bir amqp 1,0 uyumlu protokol istemcisinden kullanılabilir. Çeşitli açık kaynaklı AMQP istemcilerinin, Service Bus birlikte çalışabilirliği açıkça gösteren örnekleri vardır. AMQP 1,0 istemcilerinin doğrudan Service Bus ' özelliklerini kullanmayı öğrenmek için [amqp 1,0 protokol kılavuzunu](service-bus-amqp-protocol-guide.md) gözden geçirin.
 
-| Dil | Kitaplık |
-| --- | --- |
-| Java | [Apache Qpid proton-J](https://qpid.apache.org/proton/index.html) |
-| C/C++ |[Azure uAMQP C](https://github.com/azure/azure-uamqp-c/), [Apache Qpid proton-C](https://qpid.apache.org/proton/index.html) |
-| Python |[Python Için Azure uAMQP](https://github.com/azure/azure-uamqp-python/), [Apache Qpid proton Python](https://qpid.apache.org/releases/qpid-proton-0.32.0/proton/python/docs/overview.html) |
-| PHP | [PHP için Azure uAMQP](https://github.com/vsouz4/azure-uamqp-php/) |
-| Ruby | [Apache Qpid proton Ruby](https://github.com/apache/qpid-proton/tree/master/ruby) |
-| Başlayın | [Azure go AMQP](https://github.com/Azure/go-amqp), [Apache Qpıd proton go](https://github.com/apache/qpid-proton/tree/master/go/examples)
-| C#/F #/VB | [AMQP .net Lite](https://github.com/Azure/amqpnetlite), [Apache NMS AMQP](https://github.com/apache/activemq-nms-amqp)|
-| JavaScript/Node | [Rhea](https://github.com/grs/rhea) |
+[!INCLUDE [messaging-oss-amqp-stacks.md](../../includes/messaging-oss-amqp-stacks.md)]
 
 ## <a name="integration"></a>Tümleştirme
 
@@ -129,7 +155,7 @@ Service Bus, birçok Microsoft ve Azure hizmeti ile tam olarak tümleştirilir, 
 * [Event Grid](https://azure.microsoft.com/services/event-grid/)
 * [Logic Apps](https://azure.microsoft.com/services/logic-apps/)
 * [Azure İşlevleri](https://azure.microsoft.com/services/functions/)
-* [Power Platformu](https://powerplatform.microsoft.com/)
+* [Power Platform](https://powerplatform.microsoft.com/)
 * [Dynamics 365](https://dynamics.microsoft.com)
 * [Azure Akış Analizi](https://azure.microsoft.com/services/stream-analytics/)
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: Zhchia
-ms.openlocfilehash: 1b992150f6013fd597a3e56b243bd6236289b710
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 5c42102c0704d7212411d6b86f4210ad8ecd885c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358006"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96347523"
 ---
 # <a name="tutorial-configure-soloinsight-cloudgate-sso-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Soloinsight-CloudGate SSO 'yu yapılandırma
 
@@ -50,11 +50,11 @@ Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, A
 
 ## <a name="set-up-soloinsight-cloudgate-sso-for-provisioning"></a>Sağlama için Soloinsight-CloudGate SSO 'yu ayarlama
 
-1. [Soloinsight-CloudGate SSO Yönetici konsolunuza](https://soloinsight.sigateway.com/login)oturum açın. **Yönetim > sistem ayarları** ' na gidin.
+1. [Soloinsight-CloudGate SSO Yönetici konsolunuza](https://soloinsight.sigateway.com/login)oturum açın. **Yönetim > sistem ayarları**' na gidin.
 
     ![Soloinsight-CloudGate SSO Yönetici Konsolu](media/soloinsight-cloudgate-sso-provisioning-tutorial/admin.png)
 
-2.  **Genel** ' e gidin.
+2.  **Genel**' e gidin.
 
     ![Soloinsight-CloudGate SSO SCıM Ekle](media/soloinsight-cloudgate-sso-provisioning-tutorial/config.png)
 
@@ -68,11 +68,11 @@ Azure AD ile otomatik Kullanıcı sağlama için Soloinsight-CloudGate SSO 'yu y
 
 **Azure AD Uygulama Galerisi 'nden Soloinsight-CloudGate SSO eklemek için aşağıdaki adımları uygulayın:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** ' i seçin.
+1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
 
     ![Azure Active Directory düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** ' ı seçin.
+2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -93,11 +93,11 @@ Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarına göre Soloinsig
 
 ### <a name="to-configure-automatic-user-provisioning-for-soloinsight-cloudgate-sso-in-azure-ad"></a>Azure AD 'de Soloinsight-CloudGate SSO için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar** 'ı ve ardından **Tüm uygulamalar** 'ı seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Soloinsight-CloudGate SSO** ' yı seçin.
+2. Uygulamalar listesinde **Soloinsight-CloudGate SSO**' yı seçin.
 
     ![Uygulamalar listesindeki Soloinsight-CloudGate SSO bağlantısı](common/all-applications.png)
 
@@ -105,7 +105,7 @@ Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarına göre Soloinsig
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu** 'nu **Otomatik** olarak ayarlayın.
+4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
@@ -113,13 +113,13 @@ Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarına göre Soloinsig
 
     ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder** ' i işaretleyin.
+6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
 
     ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet** ’e tıklayın.
+7. **Kaydet**’e tıklayın.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları SSO Soloinsight-CloudGate olarak eşitler** ' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları SSO Soloinsight-CloudGate olarak eşitler**' ı seçin.
 
     ![Soloinsight-CloudGate SSO Kullanıcı eşlemeleri](media/soloinsight-cloudgate-sso-provisioning-tutorial/usermappings.png)
 
@@ -127,7 +127,7 @@ Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarına göre Soloinsig
 
     ![Soloinsight-CloudGate SSO Kullanıcı öznitelikleri](media/soloinsight-cloudgate-sso-provisioning-tutorial/userattributes.png)
 
-10. **Eşlemeler** bölümünde **Azure ACTIVE DIRECTORY gruplarını Soloinsight-CloudGate SSO ile eşitler** ' ı seçin.
+10. **Eşlemeler** bölümünde **Azure ACTIVE DIRECTORY gruplarını Soloinsight-CloudGate SSO ile eşitler**' ı seçin.
 
     ![Soloinsight-CloudGate SSO grubu eşlemeleri](media/soloinsight-cloudgate-sso-provisioning-tutorial/groupmappings.png)
 
@@ -145,7 +145,7 @@ Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarına göre Soloinsig
 
     ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
-15. Hazırlama işlemini başlatmak için **Kaydet** 'e tıklayın.
+15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
     ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 

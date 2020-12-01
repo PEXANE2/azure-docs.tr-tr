@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/22/2020
+ms.date: 11/30/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 03e89b0da25a915a00c70a9a87bd0f675b8e12d6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bfa9367e06c099e21a54ad8c03f8d5ab853aaafb
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997537"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348084"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Azure Active Directory Uygulama Ara Sunucusu ile Uzak Masaüstünü yayımlama
 
@@ -130,7 +130,7 @@ Bu makalede özetlenen yapılandırma RD Web veya RD Web Istemcisi aracılığı
 
 | Kimlik doğrulama yöntemi | Desteklenen istemci yapılandırması |
 | --------------------- | ------------------------------ |
-| Ön kimlik doğrulama    | Internet Explorer veya [Edge berkum IE modu](/deployedge/edge-ie-mode) + RDS ActiveX EKLENTISI kullanılarak RD Web-Windows 7/10 |
+| Ön kimlik doğrulama    | Internet Explorer veya [Edge berkum IE modu](/deployedge/edge-ie-mode) + RDS ActiveX EKLENTISI kullanılarak RD Web-Windows 7/10 <br /> *Uygulamalarım portalının yalnızca Edge 'i desteklediğini göz önünde kalmaz.* |
 | Ön kimlik doğrulama    | Microsoft Edge, Internet Explorer 11, Google Chrome, Safari veya Mozilla Firefox gibi RD Web Istemcisi-HTML5 uyumlu Web tarayıcısı (v 55.0 ve üzeri) |
 | Doğrudan geçiş | Microsoft Uzak Masaüstü uygulamasını destekleyen diğer tüm işletim sistemleri |
 

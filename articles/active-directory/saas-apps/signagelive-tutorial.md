@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/11/2019
 ms.author: jeedes
-ms.openlocfilehash: ad6a4d075ea861068ad0c929d92cd2f12efa6121
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 78324cfa58a8ac015b085052bdec7e3793befc1b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516117"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348458"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signagelive"></a>Öğretici: Signagelive ile tümleştirme Azure Active Directory
 
@@ -60,7 +60,7 @@ Galeriden Signagelive eklemek için aşağıdaki adımları uygulayın:
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Signagelive**girin. 
+4. Arama kutusuna **Signagelive** girin. 
 
      ![Sonuç listesinde Signagelive](common/search-new-app.png)
 
@@ -68,7 +68,7 @@ Galeriden Signagelive eklemek için aşağıdaki adımları uygulayın:
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre Signagelive ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre Signagelive ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, Signagelive içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı kurmanız gerekir.
 
 Azure AD çoklu oturum açmayı Signagelive ile yapılandırmak ve test etmek için önce aşağıdaki yapı taşlarını doldurun:
@@ -105,7 +105,7 @@ Azure AD çoklu oturum açmayı Signagelive ile yapılandırmak için aşağıda
     **Oturum açma URL 'si** kutusunda, aşağıdaki kalıbı kullanan bir URL girin:`https://login.signagelive.com/sso/<ORGANIZATIONALUNITNAME>`
 
     > [!NOTE]
-    > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [Signagelive istemci destek ekibine](mailto:support@signagelive.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [Signagelive istemci destek ekibine](mailto:support@signagelive.com)başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 5. **SAML Ile tekli Sign-On ayarlama** sayfasında, ihtiyaç verdiğiniz seçenekten **sertifikayı (ham)** Indirmek Için, **SAML imzalama sertifikası** bölümünde **İndir** ' i seçin. Ardından bu dosyayı bilgisayarınıza kaydedin.
 
@@ -141,7 +141,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**yazın.
+    a. **Ad** alanına **Brittasıon** yazın.
   
     b. **Kullanıcı adı** alanına " brittasimon@yourcompanydomain.extension " yazın. Örneğin, bu durumda " BrittaSimon@contoso.com " girebilirsiniz.
 

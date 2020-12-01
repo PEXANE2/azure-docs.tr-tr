@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 07/16/2020
-ms.openlocfilehash: 2016d6dfedef68c334758660e9affa0ad9b9d4a3
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 2c159e25195c5f144187268b4355c1078695e809
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505249"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345534"
 ---
 # <a name="whats-new-in-qna-maker"></a>Soru-Cevap Oluşturma yenilikleri
 
@@ -56,17 +56,17 @@ Soru-Cevap Oluşturma yenilikleri öğrenin.
 
 ### <a name="november-2019"></a>Kasım 2019
 
-* Soru-Cevap Oluşturma için [ABD kamu bulut desteği](https://docs.microsoft.com/azure/azure-government/documentation-government-services-aiandcognitiveservices#qna-maker)
-* GA 'de [Çoklu açma](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/multiturn-conversation) özelliği
-* Katman-1 dillerde kullanılabilen [sohbet desteği](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/chit-chat-knowledge-base#language-support)
+* Soru-Cevap Oluşturma için [ABD kamu bulut desteği](../../azure-government/compare-azure-government-global-azure.md#guidance-for-developers)
+* GA 'de [Çoklu açma](./how-to/multiturn-conversation.md) özelliği
+* Katman-1 dillerde kullanılabilen [sohbet desteği](./how-to/chit-chat-knowledge-base.md#language-support)
 
 ### <a name="october-2019"></a>Ekim 2019
 
-* Soru-Cevap Oluşturma hizmetindeki tüm bilgi tabanları için [dili açıkça ayarlama](./how-to/language-knowledge-base.md#select-language-when-creating-first-knowledge-base) .
+* Soru-Cevap Oluşturma hizmetindeki tüm bilgi tabanları için [dili açıkça ayarlama](./index.yml) .
 
 ### <a name="september-2019"></a>Eylül 2019
 
-* [Xls dosya biçimiyle](concepts/content-types.md) içeri ve dışarı aktarma
+* [Xls dosya biçimiyle](./index.yml) içeri ve dışarı aktarma
 
 ### <a name="june-2019"></a>Haziran 2019
 

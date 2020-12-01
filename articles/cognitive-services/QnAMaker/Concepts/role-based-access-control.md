@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: c3d6e21b45bccbdaeeee350bac79be680783eb24
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: ecf81152605d77e1036c9fbf5d3308af2b1fb988
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147532"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96346164"
 ---
 # <a name="collaborate-with-other-authors-and-editors"></a>Diğer yazarlarla ve düzenleyicilerle işbirliği yapın
 
@@ -42,11 +42,11 @@ Aşağıdaki diyagramda, Soru-Cevap Oluşturma portalında oturum açmak ve yazm
 |3|Soru-Cevap Oluşturma API'si belirteci doğrular.|
 |4 |Soru-Cevap Oluşturma API'si QnAMaker hizmetini çağırır.|
 
-[Yazma API 'lerini](../How-To/collaborate-knowledge-base.md)çağırmak istiyorsanız, kimlik doğrulamasının nasıl ayarlanacağı hakkında daha fazla bilgi edinin.
+[Yazma API 'lerini](../index.yml)çağırmak istiyorsanız, kimlik doğrulamasının nasıl ayarlanacağı hakkında daha fazla bilgi edinin.
 
 ## <a name="authenticate-by-qna-maker-portal"></a>Soru-Cevap Oluşturma portalına göre kimlik doğrulaması
 
-Soru-Cevap Oluşturma portalını kullanarak yazar ve işbirliği yaparsanız, [ortak çalışan için kaynağa uygun rolü](../How-To/collaborate-knowledge-base.md)ekledikten sonra, soru-cevap oluşturma portalı tüm erişim izinlerini yönetir.
+Soru-Cevap Oluşturma portalını kullanarak yazar ve işbirliği yaparsanız, [ortak çalışan için kaynağa uygun rolü](../index.yml)ekledikten sonra, soru-cevap oluşturma portalı tüm erişim izinlerini yönetir.
 
 ## <a name="authenticate-by-qna-maker-apis-and-sdks"></a>Soru-Cevap Oluşturma API 'Ler ve SDK 'Lar tarafından kimlik doğrulama
 
@@ -54,4 +54,4 @@ API 'Leri kullanarak, REST veya SDK 'Lar aracılığıyla yazar ve işbirliği y
 
 ## <a name="next-step"></a>Sonraki adım
 
-* [Diller](design-language-culture.md) ve [istemci uygulamaları](integration-with-other-applications.md) için Bilgi Bankası tasarlama
+* [Diller](../index.yml) ve [istemci uygulamaları](../index.yml) için Bilgi Bankası tasarlama

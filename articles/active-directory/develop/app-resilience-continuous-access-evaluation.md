@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/06/2020
 ms.author: nichola
 ms.reviewer: ''
-ms.openlocfilehash: 975c92256ea0993badde0faf840a939f42901059
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: cf5a7a5902484536d0cf2a1844be469f29e15f4b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95753706"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348475"
 ---
 # <a name="how-to-use-continuous-access-evaluation-enabled-apis-in-your-applications"></a>Uygulamalarınızda sürekli erişim değerlendirmesi etkin API 'Leri kullanma
 
@@ -35,7 +35,7 @@ Bir kaynak API 'SI, CAE uygular ve uygulamanız CAE 'nin işlemesini bildirirse,
 
 İlk adım, kaynak API 'sinden bir yanıtı işleyecek şekilde, CAE nedeniyle çağrıyı reddetmeden kod eklemektir. CAE ile, erişim belirteci iptal edildiğinde veya API kullanılan IP adresinde bir değişiklik algıladığında API 'Ler 401 durumunu ve bir WWW-Authenticate üst bilgisini döndürür. WWW-Authenticate üst bilgisi, uygulamanın yeni bir erişim belirteci almak için kullanabileceği bir talep zorluğu içerir.
 
-Örnek:
+Örneğin:
 
 ```console
 HTTP 401; Unauthorized
@@ -57,7 +57,7 @@ Bu koşullar karşılandığında, uygulama talep sınamasını ayıklayabilir v
 ```csharp
 if (APIresponse.IsSuccessStatusCode)
 {
-    // . . .
+    // ...
 }
 else
 {
@@ -99,7 +99,7 @@ catch (MsalUiRequiredException)
             .ExecuteAsync()
             .ConfigureAwait(false);
     }
-    // . . .
+    // ...
 ```
 
 Uygulamanız bir CAE etkin kaynak tarafından döndürülen talep sınamasını işlemeye hazırsa, Microsoft kimliğine uygulamanızın izin VERMIŞ olduğunu söyleyebilirsiniz. Bunu MSAL uygulamanızda yapmak için, "CP1" Istemci yeteneklerini kullanarak genel Istemcinizi oluşturun.

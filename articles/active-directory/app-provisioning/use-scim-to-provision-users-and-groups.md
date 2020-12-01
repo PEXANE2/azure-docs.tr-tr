@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperfq2
-ms.openlocfilehash: 19942e5400be63dfde48b9653282fb93bcb1ec42
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f524eae791ab3944fb326b867e5f6823a35b432c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174824"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348203"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Öğretici-Azure AD ile bir SCıM uç noktası oluşturun ve Kullanıcı sağlamayı yapılandırın
 
@@ -199,29 +199,21 @@ Bu bölümde, Azure AD SCıM istemcisi tarafından yayılan örnek SCıM istekle
   - [Kullanıcı oluştur](#create-user) ([istek](#request)  /  [yanıtı](#response))
   - [Kullanıcı al](#get-user) ([istek](#request-1)  /  [yanıtı](#response-1))
   - [Sorguya göre Kullanıcı al](#get-user-by-query) ([istek](#request-2)  /  [yanıtı](#response-2))
-  - [Sorgu sıfır sonuçları](#get-user-by-query---zero-results) ([istek](#request-3) 
-/  [yanıtı](#response-3)) ile Kullanıcı al
-  - [Kullanıcı güncelleştirme [çok değerli özellikler]](#update-user-multi-valued-properties) ([istek](#request-4)  /   [yanıtı](#response-4))
-  - [Kullanıcı güncelleştirme [tek değerli özellikler]](#update-user-single-valued-properties) ([istek](#request-5) 
-/  [yanıtı](#response-5)) 
-  - [Kullanıcıyı devre dışı bırak](#disable-user) ([istek](#request-14)  / 
- [yanıtı](#response-14))
-  - [Kullanıcı silme](#delete-user) ([istek](#request-6)  / 
- [yanıtı](#response-6))
+  - [Sorgu sıfır sonuçları](#get-user-by-query---zero-results) ([istek](#request-3)  /  [yanıtı](#response-3)) ile Kullanıcı al
+  - [Kullanıcı güncelleştirme [çok değerli özellikler]](#update-user-multi-valued-properties) ([istek](#request-4)  /  [yanıtı](#response-4))
+  - [Kullanıcı güncelleştirme [tek değerli özellikler]](#update-user-single-valued-properties) ([istek](#request-5)  /  [yanıtı](#response-5)) 
+  - [Kullanıcıyı devre dışı bırak](#disable-user) ([istek](#request-14)  /  [yanıtı](#response-14))
+  - [Kullanıcı silme](#delete-user) ([istek](#request-6)  /  [yanıtı](#response-6))
 
 
 [Grup Işlemleri](#group-operations)
-  - [Grup Oluştur](#create-group) ( [istek](#request-7)  /  [yanıtı](#response-7))
-  - [Grup Al](#get-group) ( [istek](#request-8)  /  [yanıtı](#response-8))
+  - [Grup Oluştur](#create-group) ([istek](#request-7)  /  [yanıtı](#response-7))
+  - [Grup Al](#get-group) ([istek](#request-8)  /  [yanıtı](#response-8))
   - [Group By DisplayName 'e göre Al](#get-group-by-displayname) ([istek](#request-9)  /  [yanıtı](#response-9))
-  - [Güncelleştirme grubu [Üye olmayan öznitelikler]](#update-group-non-member-attributes) ([istek](#request-10) /
-  [yanıtı](#response-10))
-  - [Güncelleştirme grubu [Üye Ekleme]](#update-group-add-members) ( [istek](#request-11)  /
- [yanıtı](#response-11))
-  - [Güncelleştirme grubu [üyeleri kaldır]](#update-group-remove-members) ( [istek](#request-12)  /
- [yanıtı](#response-12))
-  - [Grup silme](#delete-group) ([istek](#request-13)  /
- [yanıtı](#response-13))
+  - [Güncelleştirme grubu [Üye olmayan öznitelikler]](#update-group-non-member-attributes) ([istek](#request-10)  /  [yanıtı](#response-10))
+  - [Güncelleştirme grubu [Üye Ekleme]](#update-group-add-members) ([istek](#request-11)  /  [yanıtı](#response-11))
+  - [Güncelleştirme grubu [üyeleri kaldır]](#update-group-remove-members) ([istek](#request-12)  /  [yanıtı](#response-12))
+  - [Grup silme](#delete-group) ([istek](#request-13)  /  [yanıtı](#response-13))
 
 ### <a name="user-operations"></a>Kullanıcı Işlemleri
 
@@ -750,7 +742,7 @@ TLS 1,2 şifre paketleri minimum çubuğu:
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
 ### <a name="ip-ranges"></a>IP aralıkları
-Azure AD sağlama hizmeti şu anda [burada](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all)listelenen AZUREACTIVEDIRECTORY Için IP aralıkları altında çalışır. Azure AD sağlama hizmeti 'nin uygulamanıza bağlanmasına izin vermek için AzureActiveDirectory etiketinin altına listelenen IP aralıklarını ekleyebilirsiniz. Hesaplanan adresler için IP aralığı listesini dikkatle gözden geçirmeniz gerekeceğini unutmayın. ' 40.126.25.32 ' gibi bir adres, IP aralığı listesinde ' 40.126.0.0/18 ' olarak temsil edilebilir. Ayrıca, aşağıdaki [API 'yi](/rest/api/virtualnetwork/servicetags/list)kullanarak IP aralığı listesini de program aracılığıyla alabilirsiniz.
+Azure AD sağlama hizmeti şu anda [burada](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all)listelenen AZUREACTIVEDIRECTORY Için IP aralıkları altında çalışır. Azure AD sağlama hizmeti 'nin uygulamanıza bağlanmasına izin vermek için AzureActiveDirectory etiketinin altına listelenen IP aralıklarını ekleyebilirsiniz. Hesaplanan adresler için IP aralığı listesini dikkatle gözden geçirmeniz gerekeceğini unutmayın. ' 40.126.25.32 ' gibi bir adres, IP aralığı listesinde ' 40.126.0.0/18 ' olarak temsil edilebilir. Ayrıca, aşağıdaki [API 'yi](/rest/api/virtualnetwork/servicetags/list)kullanarak IP aralığı listesini programlı bir şekilde alabilirsiniz.
 
 ## <a name="step-3-build-a-scim-endpoint"></a>3. Adım: SCıM uç noktası oluşturma
 
@@ -1126,7 +1118,7 @@ Bu gereksinimlerle uyumluluk bildirimleri için uygulama sağlayıcınıza veya 
 > [!IMPORTANT]
 > Azure AD SCıM uygulaması, Azure AD Kullanıcı sağlama hizmeti 'nin üzerine kurulmuştur. Bu, kullanıcıların Azure AD ile hedef uygulama arasında sürekli olarak eşitlenmesi için tasarlanan ve çok özel bir standart işlem kümesi uyguladığı şekilde tasarlanmıştır. Azure AD SCıM istemcisinin davranışını anlamak için bu davranışları anlamak önemlidir. Daha fazla bilgi için bkz. sağlama [döngüleri: başlangıç ve artımlı](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) , [sağlama nasıl?](how-provisioning-works.md).
 
-### <a name="getting-started"></a>Başlarken
+### <a name="getting-started"></a>Kullanmaya başlama
 
 Bu makalede açıklanan SCıM profilini destekleyen uygulamalar, Azure AD uygulama galerisinde "Galeri dışı uygulama" özelliği kullanılarak Azure Active Directory bağlanabilir. Bağlantı kurulduktan sonra Azure AD, her 40 dakikada bir eşitleme işlemi çalıştırarak, atanan kullanıcılar ve gruplar için uygulamanın SCıM uç noktasını sorgular ve atama ayrıntılarına göre bunları oluşturur veya değiştirir.
 
@@ -1176,7 +1168,7 @@ Başlangıç çevrimi başladıktan sonra, uygulamanızdaki sağlama hizmeti tar
 Birden fazla kiracı tarafından kullanılacak bir uygulama oluşturuyorsanız, Azure AD uygulama galerisinde kullanılabilir hale getirebilirsiniz. Bu, kuruluşların uygulamayı keşfetmesini ve sağlamayı yapılandırmasını kolaylaştırır. Uygulamanızı Azure AD galerisinde yayımlama ve sağlama sağlamak kolaydır. [Buradaki](../develop/v2-howto-app-gallery-listing.md)adımlara göz atın. Microsoft, uygulamanızı galerimize tümleştirme, uç noktanızı test etme ve müşterilerin kullanması için ekleme [belgelerini](../saas-apps/tutorial-list.md) yayınlama konusunda sizinle birlikte çalışacaktır.
 
 ### <a name="gallery-onboarding-checklist"></a>Galeri ekleme denetim listesi
-Uygulamanızın eklendi Quicky olduğundan ve müşterilerin sorunsuz bir dağıtım deneyimine sahip olduğundan emin olmak için aşağıdaki denetim listesini izleyin. Bu bilgiler, galeriye ekleme sırasında sizin için toplanacaktır. 
+Uygulamanızın hızla eklendi ve müşterilerin sorunsuz bir dağıtım deneyimine sahip olduğundan emin olmak için aşağıdaki denetim listesini izleyin. Bu bilgiler, galeriye ekleme sırasında sizin için toplanacaktır. 
 > [!div class="checklist"]
 > * [SCIM 2,0](#step-2-understand-the-azure-ad-scim-implementation) Kullanıcı ve grup uç noktasını destekleme (yalnızca bir tane gereklidir ancak her ikisi de önerilir)
 > * Kullanıcıların ve grupların gecikme süresi olmadan sağlanması ve sağlanması için her kiracı için saniyede en az 25 istek desteklenir (gerekli)

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 93678735237c25b19d04b7d901583ba785d7f594
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9c6247f021b7af4cfdd899ffd4b6bd178f2256c
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613552"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345602"
 ---
 # <a name="manage-an-azure-stack-edge-pro-fpga-device-via-windows-powershell"></a>Windows PowerShell aracılığıyla Azure Stack Edge Pro FPGA cihazını yönetme
 
@@ -56,7 +56,7 @@ Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cer
 ```
 Bu cmdlet 'i çalıştırdığınızda, ağ paylaşımının parolasını girmeniz istenir.
 
-Sertifikalar hakkında daha fazla bilgi için [Azure IoT Edge sertifikalara](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) gidin veya [bir ağ geçidine sertifika yüklemeyi](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway)yapın.
+Sertifikalar hakkında daha fazla bilgi için [Azure IoT Edge sertifikalara](../iot-edge/iot-edge-certs.md) gidin veya [bir ağ geçidine sertifika yüklemeyi](../iot-edge/how-to-create-transparent-gateway.md)yapın.
 
 ## <a name="view-device-information"></a>Cihaz bilgilerini görüntüle
  

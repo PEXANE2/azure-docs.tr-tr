@@ -3,12 +3,12 @@ title: Azure Event Grid teslimi ve yeniden dene
 description: Azure Event Grid olayların nasıl teslim edildiğini ve teslim edilmemiş iletileri nasıl işlediğini açıklar.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 7bf8fd3a647e28d18a7ca1e658761f9226d1153a
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 9a7bde33e322183f86c3c51d30bb004d06fa1406
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981111"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345362"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>İleti teslimini Event Grid ve yeniden deneyin
 
@@ -54,6 +54,22 @@ az eventgrid event-subscription create \
 Azure CLı 'yı Event Grid kullanma hakkında daha fazla bilgi için bkz. [Azure CLI ile Depolama olaylarını Web uç noktasına yönlendirme](../storage/blobs/storage-blob-event-quickstart.md).
 
 ## <a name="retry-schedule-and-duration"></a>Zamanlamayı ve süreyi yeniden dene
+
+EventGrid bir olay teslim girişimi için bir hata aldığında, EventGrid teslim mi yoksa atılacak harfi mi yeniden denemeli ya da hatanın türüne göre olayı bırakmaya karar verir. 
+
+Abone olunan uç nokta tarafından döndürülen hata, yeniden denemeler ile çözülebilecek yapılandırma ile ilgili hata (örneğin, uç nokta silinirse), EventGrid ise ölü olay gerçekleştirir veya atılacak harf yapılandırılmamışsa olayı bırakır.
+
+Yeniden deneme gerçekleşmeyen uç nokta türleri aşağıda verilmiştir:
+
+| Uç nokta türü | Hata kodları |
+| --------------| -----------|
+| Azure Kaynakları | 400 Hatalı Istek, 413 Istek varlığı çok büyük, 403 Yasak | 
+| Web Kancası | 400 Hatalı Istek, 413 Istek varlığı çok büyük, 403 Yasak, 404 bulunamadı, 401 yetkilendirilmemiş |
+ 
+> [!NOTE]
+> Uç nokta için Dead-Letter yapılandırılmamışsa, yukarıdaki hatalar gerçekleştiğinde olaylar bırakılır, bu nedenle bu tür olayların kesilmesini istemiyorsanız, atılacak mektubu yapılandırmayı düşünün.
+
+Abone olunan uç nokta tarafından döndürülen hata yukarıdaki listede değilse, EventGrid aşağıda açıklanan ilkeleri kullanarak yeniden denemeyi gerçekleştirir:
 
 Event Grid bir ileti teslim ettikten sonra yanıt için 30 saniye bekler. 30 saniye sonra, uç nokta yanıt vermediyse ileti yeniden denenmek üzere sıraya alınır. Event Grid, olay teslimi için bir üstel geri alma yeniden deneme İlkesi kullanır. En iyi çaba temelinde aşağıdaki zamanlamaya göre teslimi yeniden Event Grid:
 
@@ -256,16 +272,16 @@ Event Grid, **yalnızca** aşağıdaki http yanıt kodlarını başarılı tesli
 
 ### <a name="failure-codes"></a>Hata kodları
 
-Yukarıdaki küme içinde olmayan diğer tüm kodlar (200-204) başarısızlık olarak kabul edilir ve yeniden denenecek. Bazıları aşağıda özetlenen özel yeniden deneme ilkelerine sahiptir ve tüm diğerleri standart üstel geri ödeme modelini izler. Event Grid mimarisinin mimarisinden kaynaklanan, yeniden deneme davranışının belirleyici olmadığından emin olmak önemlidir. 
+Yukarıdaki küme içinde olmayan diğer tüm kodlar (200-204) başarısızlık olarak değerlendirilir ve (gerekirse) yeniden denenir. Bazıları aşağıda özetlenen özel yeniden deneme ilkelerine sahiptir ve tüm diğerleri standart üstel geri ödeme modelini izler. Event Grid mimarisinin mimarisinden kaynaklanan, yeniden deneme davranışının belirleyici olmadığından emin olmak önemlidir. 
 
 | Durum kodu | Yeniden deneme davranışı |
 | ------------|----------------|
-| 400 Hatalı İstek | 5 dakika veya daha uzun bir süre sonra yeniden dene (sahipsiz ayarla ayarı varsa hemen |
-| 401 Yetkisiz | 5 dakika veya daha uzun bir süre sonra yeniden deneyin |
-| 403 Yasak | 5 dakika veya daha uzun bir süre sonra yeniden deneyin |
-| 404 Bulunamadı | 5 dakika veya daha uzun bir süre sonra yeniden deneyin |
+| 400 Hatalı İstek | Yeniden denenmedi |
+| 401 Yetkisiz | Azure kaynakları uç noktaları için 5 dakika veya daha fazla süre sonra yeniden deneyin |
+| 403 Yasak | Yeniden denenmedi |
+| 404 Bulunamadı | Azure kaynakları uç noktaları için 5 dakika veya daha fazla süre sonra yeniden deneyin |
 | 408 İstek Zaman Aşımı | 2 dakika veya daha uzun bir süre sonra yeniden deneyin |
-| 413 istek varlığı çok büyük | 10 saniye veya daha kısa bir süre sonra yeniden dene (sahipsiz kurulum yoksa hemen |
+| 413 istek varlığı çok büyük | Yeniden denenmedi |
 | 503 Hizmet Kullanılamıyor | 30 saniye veya daha uzun bir süre sonra yeniden deneyin |
 | Tüm diğerleri | 10 saniye veya daha fazla süre sonra yeniden deneyin |
 

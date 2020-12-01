@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: abae83cee106feb553e8ced404d23ba5619ba416
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 489592fcbc779685728b120f18e5e923ee34d655
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327162"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96346384"
 ---
 # <a name="the-confidence-score-of-an-answer"></a>Bir yanıtın Güvenirlik puanı
 Bir Kullanıcı sorgusu bir Bilgi Bankası ile eşleştiğinde, Soru-Cevap Oluşturma ilgili yanıtları, Güvenirlik puanı ile birlikte döndürür. Bu puan, yanıtın verilen kullanıcı sorgusuyla doğru eşleşme olduğunu belirtir.
@@ -48,9 +48,9 @@ Yukarıdaki tabloda, en fazla KBs üzerinde beklenen puanlar gösterilmektedir. 
 
 Eşikinizi seçerken doğruluk ve kapsam arasındaki dengeyi göz önünde bulundurun ve gereksinimlerinize göre eşikinizi ince ayar edin.
 
-- Eğer senaryonuz için **doğruluk** (veya duyarlık) daha önemliyse, daha sonra eşiği artırın. Bu şekilde, bir cevap her geri döndüğünüzde, çok daha duyarlı bir durumdur ve kullanıcıların aradıklarından çok daha büyük bir durum olacaktır. Bu durumda, yanıtlanmayan daha fazla soru bırakabilir. *Örneğin:* **70**eşiğini yaparsanız, "Kaydet ve eğitme nedir?" gibi bazı belirsiz örnekleri kaçırırdınız.
+- Eğer senaryonuz için **doğruluk** (veya duyarlık) daha önemliyse, daha sonra eşiği artırın. Bu şekilde, bir cevap her geri döndüğünüzde, çok daha duyarlı bir durumdur ve kullanıcıların aradıklarından çok daha büyük bir durum olacaktır. Bu durumda, yanıtlanmayan daha fazla soru bırakabilir. *Örneğin:* **70** eşiğini yaparsanız, "Kaydet ve eğitme nedir?" gibi bazı belirsiz örnekleri kaçırırdınız.
 
-- **Kapsam** (veya geri çekme) daha önemliyse ve kullanıcının sorusuna yalnızca kısmi bir ilişki olsa bıle eşiği düşürmek için mümkün olduğunca fazla soru yanıtlamak istiyorsanız. Bu, yanıtın kullanıcının gerçek sorgusuna yanıt içermediği ancak biraz ilgili başka bir yanıt verdiği durumlarda daha fazla durum olabileceği anlamına gelir. *Örneğin:* **30**EŞIĞINI yaparsanız, "KB 'umu düzenleyebilirim?" gibi sorgular için yanıt verebilirsiniz.
+- **Kapsam** (veya geri çekme) daha önemliyse ve kullanıcının sorusuna yalnızca kısmi bir ilişki olsa bıle eşiği düşürmek için mümkün olduğunca fazla soru yanıtlamak istiyorsanız. Bu, yanıtın kullanıcının gerçek sorgusuna yanıt içermediği ancak biraz ilgili başka bir yanıt verdiği durumlarda daha fazla durum olabileceği anlamına gelir. *Örneğin:* **30** EŞIĞINI yaparsanız, "KB 'umu düzenleyebilirim?" gibi sorgular için yanıt verebilirsiniz.
 
 > [!NOTE]
 > Soru-Cevap Oluşturma yeni sürümleri, Puanlama mantığına yönelik iyileştirmeler içerir ve eşikinizi etkileyebilir. Hizmeti her güncelleştirdiğinizde, gerekirse eşiğin test ve ince ayar olduğundan emin olun. [Burada](https://www.qnamaker.ai/UserSettings)QNA hizmeti sürümünüzü denetleyebilir ve en son güncelleştirmeleri [buradan](../How-To/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)nasıl alacağınız hakkında bilgi edinebilirsiniz.
@@ -62,7 +62,7 @@ Eşik Puanını [Generateanswer API JSON gövdesinin](../how-to/metadata-generat
 Bot çerçevesinden, bir puan, [C#](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c) veya [Node.js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs)seçenek nesnesinin bir parçası olarak ayarlayın.
 
 ## <a name="improve-confidence-scores"></a>Güven puanlarını geliştirme
-Bir Kullanıcı sorgusuna belirli bir yanıtın güvenilirlik Puanını artırmak için, bu yanıta alternatif bir soru olarak Kullanıcı sorgusunu Bilgi Bankası 'na ekleyebilirsiniz. Büyük/küçük harf duyarsız [sözcük değişikliklerini](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) , KB 'inizdeki anahtar sözcüklere eşanlamlı eklemek için de kullanabilirsiniz.
+Bir Kullanıcı sorgusuna belirli bir yanıtın güvenilirlik Puanını artırmak için, bu yanıta alternatif bir soru olarak Kullanıcı sorgusunu Bilgi Bankası 'na ekleyebilirsiniz. Büyük/küçük harf duyarsız [sözcük değişikliklerini](/rest/api/cognitiveservices/qnamaker/alterations/replace) , KB 'inizdeki anahtar sözcüklere eşanlamlı eklemek için de kullanabilirsiniz.
 
 
 ## <a name="similar-confidence-scores"></a>Benzer güven puanları
@@ -89,4 +89,3 @@ Ranker tarafından herhangi bir iyi eşleşme bulunmazsa, 0,0 veya "none" güven
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]
 > [En iyi uygulamalar](./best-practices.md)
-

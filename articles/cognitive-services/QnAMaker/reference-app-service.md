@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/9/2020
-ms.openlocfilehash: 1dfe14d96efd37e3dec7faeae1dfff21122958bc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e7dfc6db50432b19d515671fabe26edf9cfb45ef
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95894210"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345677"
 ---
 # <a name="service-configuration"></a>Hizmet yapılandırması
 
@@ -20,7 +20,7 @@ Soru-Cevap Oluşturma her sürümü farklı bir Azure kaynakları kümesi (Hizme
 
 # <a name="qna-maker-ga-stable-release"></a>[Soru-Cevap Oluşturma GA (kararlı sürüm)](#tab/v1)
 
-Soru-Cevap Oluşturma, [Generateanswer API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/runtime/generateanswer)tarafından kullanılan sorgu çalışma zamanını sağlamak için App Service kullanır.
+Soru-Cevap Oluşturma, [Generateanswer API](/rest/api/cognitiveservices/qnamaker4.0/runtime/generateanswer)tarafından kullanılan sorgu çalışma zamanını sağlamak için App Service kullanır.
 
 Bu ayarlar, App Service için Azure portal kullanılabilir. **Ayarlar ' ı** ve ardından **yapılandırma**' yı seçerek ayarlar kullanılabilir.
 
