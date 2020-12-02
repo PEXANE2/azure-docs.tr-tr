@@ -4,12 +4,12 @@ description: Azure Container Instances bir kapsayıcı görüntüsü oluşturma,
 ms.topic: article
 ms.date: 08/20/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 221ecbe5fbe2cdea4105362c43a5765bcc298d46
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 0068b9869e5ef7a3b6c0fd21c1b69cdae1d4ab4b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843664"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454824"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>Kapsayıcı örneği oluşturmak için bir GitHub eylemi yapılandırma
 
@@ -31,7 +31,7 @@ Bu makalede, iş akışını kurmanın iki yolu gösterilmektedir:
 > [!IMPORTANT]
 > Azure Container Instances için GitHub eylemi şu anda önizlemededir. Önizlemeler, [ek kullanım koşullarını][terms-of-use] kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **GitHub hesabı** -henüz yoksa bir hesap oluşturun https://github.com .
 * **Azure CLI** -Azure CLI adımlarını tamamlayabilmeniz için Azure Cloud Shell veya yerel BIR Azure CLI yüklemesi kullanabilirsiniz. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].
@@ -56,7 +56,7 @@ GitHub iş akışında Azure CLı kimlik doğrulaması için Azure kimlik bilgil
 İlk olarak, kaynak grubunuzun kaynak KIMLIĞINI alın. Aşağıdaki [az Group Show][az-group-show] komutunda grubunuzun adını değiştirin:
 
 ```azurecli
-groupId=$(az group show \
+$groupId=$(az group show \
   --name <resource-group-name> \
   --query id --output tsv)
 ```

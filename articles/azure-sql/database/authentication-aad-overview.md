@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory kimlik doğrulaması
-description: Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE Analytics ile kimlik doğrulaması için Azure Active Directory kullanma hakkında bilgi edinin
+description: Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE Analytics 'te SYNAPSE SQL ile kimlik doğrulaması için Azure Active Directory kullanma hakkında bilgi edinin
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: security
@@ -11,18 +11,18 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 04/23/2020
-ms.openlocfilehash: a57de3d6beda5336f480f20137a9ccaa014b012d
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a636c0e2a41b636f30ada14d4f16a022f2890b71
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675090"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454303"
 ---
 # <a name="use-azure-active-directory-authentication"></a>Azure Active Directory kimlik doğrulaması kullan
 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Azure Active Directory (Azure AD) kimlik doğrulaması, Azure [SQL veritabanı](sql-database-paas-overview.md), [Azure SQL yönetilen örneği](../managed-instance/sql-managed-instance-paas-overview.md)ve Azure [SYNAPSE ANALYTICS 'e (eski adıyla SQL veri AMBARı)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) bağlanmak için Azure AD 'de kimlikleri kullanarak bir mekanizmadır.
+Azure Active Directory (Azure AD) kimlik doğrulaması, Azure AD 'deki kimlikleri kullanarak Azure [SQL veritabanı](sql-database-paas-overview.md), [Azure SQL yönetilen ÖRNEĞI](../managed-instance/sql-managed-instance-paas-overview.md)ve [SYNAPSE SQL](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 'e bağlanmak için kullanılan bir mekanizmadır.
 
 > [!NOTE]
 > Bu makale Azure SQL veritabanı, SQL yönetilen örneği ve Azure SYNAPSE Analytics için geçerlidir.
@@ -61,7 +61,7 @@ Yapılandırma adımları Azure Active Directory kimlik doğrulaması yapıland�
 6. Azure AD kimliklerini kullanarak veritabanınıza bağlanın.
 
 > [!NOTE]
-> Azure AD 'yi oluşturma ve doldurma hakkında bilgi edinmek ve Azure AD 'yi Azure SQL veritabanı, SQL yönetilen örneği ve Azure SYNAPSE ile yapılandırma hakkında bilgi edinmek için bkz. Azure [ad 'Yi Azure SQL veritabanı Ile yapılandırma](authentication-aad-configure.md).
+> Azure AD 'yi oluşturma ve doldurma hakkında bilgi edinmek ve Azure SYNAPSE Analytics 'te Azure SQL veritabanı, SQL yönetilen örneği ve SYNAPSE SQL ile Azure AD 'yi yapılandırmak için bkz. Azure [ad 'Yi Azure SQL veritabanı Ile yapılandırma](authentication-aad-configure.md).
 
 ## <a name="trust-architecture"></a>Güven mimarisi
 

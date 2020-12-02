@@ -9,16 +9,16 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
 ms.date: 10/16/2020
-ms.openlocfilehash: b20f2ce88695cb68de496d126c5e3cd52f9eb6c8
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 38b0f23a44a16125726e7810b2045d244a2e6b06
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316145"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454656"
 ---
 # <a name="quickstart-create-a-serverless-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>Hızlı başlangıç: Web araçlarını kullanarak Azure SYNAPSE Analytics 'te sunucusuz Apache Spark havuzu oluşturma
 
-Bu hızlı başlangıçta, Web araçlarını kullanarak Azure SYNAPSE 'da sunucusuz Apache Spark Havuzu (Önizleme) oluşturmayı öğreneceksiniz. Daha sonra Apache Spark havuzuna bağlanmayı ve dosyalar ve tablolar için Spark SQL sorguları çalıştırmayı öğreneceksiniz. Apache Spark, bellek içi işleme kullanarak hızlı veri analizi ve küme hesaplama sağlar. Azure SYNAPSE Spark hakkında daha fazla bilgi için bkz. [genel bakış: Azure SYNAPSE üzerinde Apache Spark](./spark/apache-spark-overview.md).
+Bu hızlı başlangıçta, Web araçlarını kullanarak Azure SYNAPSE 'da sunucusuz Apache Spark havuzu oluşturmayı öğreneceksiniz. Daha sonra Apache Spark havuzuna bağlanmayı ve dosyalar ve tablolar için Spark SQL sorguları çalıştırmayı öğreneceksiniz. Apache Spark, bellek içi işleme kullanarak hızlı veri analizi ve küme hesaplama sağlar. Azure SYNAPSE Spark hakkında daha fazla bilgi için bkz. [genel bakış: Azure SYNAPSE üzerinde Apache Spark](./spark/apache-spark-overview.md).
 
 > [!IMPORTANT]
 > Spark örnekleri için faturalandırma, bunları kullanıp kullanmayacağınızı de dakika başına eşit olarak dağıtılır. Kullanmayı bitirdikten sonra Spark örneğinizi kapattığınızdan emin olun veya kısa bir zaman aşımı ayarlayın. Daha fazla bilgi için bu makalenin **Kaynakları temizleme** bölümüne bakın.
@@ -33,7 +33,7 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/) oturum açın.
+[Azure portalında](https://portal.azure.com/) oturum açın.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
@@ -41,16 +41,16 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 Not defteri, çeşitli programlama dillerini destekleyen etkileşimli bir ortamdır. Not defteri verilerinizle etkileşim kurmanıza, kodu Marku, metinle birleştirmeye ve basit görselleştirmeler gerçekleştirmenize olanak tanır.
 
-1. Kullanmak istediğiniz Azure SYNAPSE çalışma alanının Azure portal görünümünde, **SYNAPSE Studio 'Yu Başlat** ' ı seçin.
-2. SYNAPSE Studio başlatıldıktan sonra **Geliştir** ' i seçin. Ardından, **+** Yeni bir kaynak eklemek için "" simgesini seçin.
-3. Buradan, **Not defteri** ' ni seçin. Otomatik olarak oluşturulan bir adla yeni bir not defteri oluşturulur ve açılır.
+1. Kullanmak istediğiniz Azure SYNAPSE çalışma alanının Azure portal görünümünde, **SYNAPSE Studio 'Yu Başlat**' ı seçin.
+2. SYNAPSE Studio başlatıldıktan sonra **Geliştir**' i seçin. Ardından, **+** Yeni bir kaynak eklemek için "" simgesini seçin.
+3. Buradan, **Not defteri**' ni seçin. Otomatik olarak oluşturulan bir adla yeni bir not defteri oluşturulur ve açılır.
  
      ![Yeni Not defteri](./media/quickstart-apache-spark-notebook/spark-get-started-new-notebook.png "Yeni Not defteri")
 
 4. **Özellikler** penceresinde, Not defteri için bir ad sağlayın.
-5. Araç çubuğunda **Yayımla** ' ya tıklayın.
+5. Araç çubuğunda **Yayımla**' ya tıklayın.
 6. Çalışma alanınızda yalnızca bir Apache Spark havuzu varsa, varsayılan olarak seçilidir. Hiçbiri seçili değilse, doğru Apache Spark havuzunu seçmek için açılan eklentiyi kullanın.
-7. **Kod Ekle** ' ye tıklayın. Varsayılan dil `Pyspark` . Pyspark ve Spark SQL karışımını kullanacaksınız, bu nedenle varsayılan seçenek iyi bir seçimdir. Desteklenen diğer diller Spark için Scala ve .NET ' dir.
+7. **Kod Ekle**' ye tıklayın. Varsayılan dil `Pyspark` . Pyspark ve Spark SQL karışımını kullanacaksınız, bu nedenle varsayılan seçenek iyi bir seçimdir. Desteklenen diğer diller Spark için Scala ve .NET ' dir.
 8. Daha sonra, işlemek için basit bir Spark DataFrame nesnesi oluşturursunuz. Bu durumda, kodu koddan oluşturursunuz. Üç satır ve üç sütun vardır:
 
    ```python
@@ -114,13 +114,13 @@ Yapılandırılmış Sorgu Dili (SQL), verileri sorgulamak ve tanımlamak için 
 
     ![Azure SYNAPSE Spark 'da sorgu çıkışı](./media/quickstart-apache-spark-notebook/spark-get-started-query.png "Azure SYNAPSE Spark 'da sorgu çıkışı")
 
-3. **Görünüm** değiştiricisinde **grafik** ' i seçin.
+3. **Görünüm** değiştiricisinde **grafik**' i seçin.
 4. En sağdaki taraftaki **Görünüm seçenekleri** simgesini seçin.
 5. **Grafik türü** alanında "çubuk grafik" i seçin.
 6. X ekseni sütun alanında "durum" ı seçin.
 7. Y ekseni sütun alanında "ücret" i seçin.
 8. **Toplama** alanında "Ort" seçeneğini belirleyin.
-9. **Apply** (Uygula) seçeneğini belirleyin.
+9. **Uygula**’yı seçin.
 
    ![Azure SYNAPSE Spark 'da grafik çıkışı](./media/quickstart-apache-spark-notebook/spark-get-started-query-chart-output.png "Azure SYNAPSE Spark 'da grafik çıkışı")
 

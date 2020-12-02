@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 8fbf765168fd848a2ae349badf4017289b5a4380
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 413a93a145ae063a3aab4066ed62365e154d744a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952276"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454101"
 ---
 # <a name="use-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>Azure Stack Edge Pro 'unuzdaki paylaşımları yönetmek için Azure portal kullanma
 
@@ -45,10 +45,10 @@ Paylaşım oluşturmak için Azure portalda aşağıdaki adımları gerçekleşt
 
 4. Paylaşımın duracağı **Depolama hesabını** sağlamanız gerekir. Henüz kapsayıcı yoksa, depolama hesabında paylaşım adıyla bir kapsayıcı oluşturulur. Kapsayıcı zaten varsa, bu var olan kapsayıcı kullanılır.
 
-5. Açılan listeden, Blok Blobu, Sayfa Blobu veya dosyalardan **Depolama hizmetini** seçin. Seçilen hizmetin türü, verilerin Azure'da hangi biçimde tutulmasını istediğinize bağlıdır. Örneğin, bu örnekte, verilerin Azure 'da blok Blobları olarak bulunmasını istiyoruz, bu nedenle **Blok Blobu**seçiyoruz. **Sayfa Blobu**seçilirse, verilerinizin 512 bayt hizalı olduğundan emin olmanız gerekir. Her zaman 512 bayt hizalı VHD veya VHDX için **Sayfa Blobu** kullanın.
+5. Açılan listeden, Blok Blobu, Sayfa Blobu veya dosyalardan **Depolama hizmetini** seçin. Seçilen hizmetin türü, verilerin Azure'da hangi biçimde tutulmasını istediğinize bağlıdır. Örneğin, bu örnekte, verilerin Azure 'da blok Blobları olarak bulunmasını istiyoruz, bu nedenle **Blok Blobu** seçiyoruz. **Sayfa Blobu** seçilirse, verilerinizin 512 bayt hizalı olduğundan emin olmanız gerekir. Her zaman 512 bayt hizalı VHD veya VHDX için **Sayfa Blobu** kullanın.
 
 6. Bu adım SMB paylaşımı mı yoksa NFS paylaşımı mı oluşturduğunuza bağlıdır.
-    - **BIR SMB paylaşımıyla karşılaşırsanız** , **tüm ayrıcalık Yerel Kullanıcı** alanında **Yeni oluştur** ' u seçin veya **var olanı kullanın**. Yeni bir yerel kullanıcı oluşturuyorsanız, **Kullanıcı adı**, **parola**ve parolayı onaylayın ' i belirtin. Bu, yerel kullanıcıya izinleri atar. Burada izinleri atadıktan sonra, Dosya Gezgini'ni kullanarak bu izinlerde değişiklik yapabilirsiniz.
+    - **BIR SMB paylaşımıyla karşılaşırsanız** , **tüm ayrıcalık Yerel Kullanıcı** alanında **Yeni oluştur** ' u seçin veya **var olanı kullanın**. Yeni bir yerel kullanıcı oluşturuyorsanız, **Kullanıcı adı**, **parola** ve parolayı onaylayın ' i belirtin. Bu, yerel kullanıcıya izinleri atar. Burada izinleri atadıktan sonra, Dosya Gezgini'ni kullanarak bu izinlerde değişiklik yapabilirsiniz.
 
         ![SMB paylaşımı ekleme](media/azure-stack-edge-j-series-manage-shares/add-smb-share.png)
 
@@ -74,7 +74,7 @@ Paylaşım oluşturmak için Azure portalda aşağıdaki adımları gerçekleşt
 3. Paylaşma için bir **tür** seçin. Bu tür SMB veya **NFS**, SMB 'nin varsayılan olarak **olması olabilir.** SMB Windows istemcilerinin standardıdır ve NFS de Linux istemcilerinde kullanılır. SMB paylaşımları mı yoksa NFS paylaşımları mı seçtiğinize bağlı olarak, gösterilen seçenekler biraz farklı olur.
 
    > [!IMPORTANT]
-   > Kullandığınız Azure depolama hesabının, bir Azure Stack Edge Pro veya Data Box Gateway cihazından yararlanarak bu sunucuda ayarlanmış bir değişiklik olmadığından emin olun. Daha fazla bilgi için bkz. [BLOB depolama için dengesde kullanılabilirlik Ilkelerini ayarlama ve yönetme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
+   > Kullandığınız Azure depolama hesabının, bir Azure Stack Edge Pro veya Data Box Gateway cihazından yararlanarak bu sunucuda ayarlanmış bir değişiklik olmadığından emin olun. Daha fazla bilgi için bkz. [BLOB depolama için dengesde kullanılabilirlik Ilkelerini ayarlama ve yönetme](../storage/blobs/storage-blob-immutability-policies-manage.md).
 
 4. Sınır işlem modüllerindeki paylaşımlara kolayca erişmek için yerel bağlama noktasını kullanın. Sınır modülünün yerel bağlama noktasıyla işlem kullanabilmesi için **Edge COMPUTE ile paylaşma kullan** ' ı seçin.
 
@@ -111,7 +111,7 @@ Azure Stack Edge Pro cihazınızda işlem yapılandırmadan önce bir paylaşma 
 
     ![Bağlama Onayla](media/azure-stack-edge-j-series-manage-shares/mount-share-3.png)
 
-4. Paylaşım bağlandıktan sonra paylaşımlar listesine gidin. **İşlem Için kullanılan** sütununda, paylaşımın durumunu **etkin**olarak gösteren bir görürsünüz.
+4. Paylaşım bağlandıktan sonra paylaşımlar listesine gidin. **İşlem Için kullanılan** sütununda, paylaşımın durumunu **etkin** olarak gösteren bir görürsünüz.
 
     ![Bağlı paylaşıma](media/azure-stack-edge-j-series-manage-shares/mount-share-4.png)
 
@@ -135,7 +135,7 @@ Bir paylaşımın bağlantısını kesmek için Azure portal aşağıdaki adıml
 
     ![Çıkarma bağlantısını onayla](media/azure-stack-edge-j-series-manage-shares/unmount-share-3.png)
 
-4. Paylaşım kaldırıldıktan sonra paylaşımlar listesine gidin. **İşlem sütunu Için kullanılan** ' ın, paylaşma durumunu **devre dışı**olarak gösterdiğini görürsünüz.
+4. Paylaşım kaldırıldıktan sonra paylaşımlar listesine gidin. **İşlem sütunu Için kullanılan** ' ın, paylaşma durumunu **devre dışı** olarak gösterdiğini görürsünüz.
 
     ![Kaldırılan paylaşma](media/azure-stack-edge-j-series-manage-shares/unmount-share-4.png)
 
@@ -193,7 +193,7 @@ Sabitlenmiş dosyaları otomatik olarak eşitlemek için Azure portal aşağıda
  
 1. Mevcut bir Azure depolama hesabı seçin. 
 
-2. **Kapsayıcılar** ' a gidin ve bir kapsayıcı oluşturmak Için **+ kapsayıcı** ' yı seçin. Bu kapsayıcıyı *newcontainer*olarak adlandırın. **Ortak erişim düzeyini** kapsayıcı olarak ayarlayın.
+2. **Kapsayıcılar** ' a gidin ve bir kapsayıcı oluşturmak Için **+ kapsayıcı** ' yı seçin. Bu kapsayıcıyı *newcontainer* olarak adlandırın. **Ortak erişim düzeyini** kapsayıcı olarak ayarlayın.
 
     ![Sabitlenmiş dosyalar için otomatik eşitleme 1](media/azure-stack-edge-j-series-manage-shares/image-1.png)
 

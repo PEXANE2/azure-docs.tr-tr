@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 11ed87f8cf5aabb86f709d938acc4c31b737ca91
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d95c4bb0345051cc79dadca5fa7cc11932a9512a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91318610"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454042"
 ---
 # <a name="what-is-the-azure-stack-edge-pro-r"></a>Azure Stack Edge Pro R nedir?
 
@@ -45,7 +45,7 @@ Azure Stack Edge Pro R aşağıdaki yeteneklere sahiptir:
 
 Azure Stack Edge Pro R 'nin, Edge 'de hızlı Machine Learning (ML) için kullanılabileceği ve verileri Azure 'a göndermeden önce ön işlemesi için kullanabileceğiniz çeşitli senaryolar aşağıda verilmiştir.
 
-- **Azure Machine Learning Ile çıkarım** -Azure Stack Edge Pro R ile, veri buluta gönderilmeden önce üzerinde işlem yapılabilir hızlı sonuçlar almak için ml modellerini çalıştırabilirsiniz. Tam veri kümesi, ML modellerinizi yeniden eğitmeye ve artırmaya devam etmek için isteğe bağlı olarak aktarılabilir. Azure Stack Edge Pro R cihazında Azure ML donanım hızlandırılmış modellerini kullanma hakkında daha fazla bilgi için, bkz. [Azure Stack Edge Pro r üzerinde Azure ML donanım hızlandırılmış modellerini dağıtma](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server).
+- **Azure Machine Learning Ile çıkarım** -Azure Stack Edge Pro R ile, veri buluta gönderilmeden önce üzerinde işlem yapılabilir hızlı sonuçlar almak için ml modellerini çalıştırabilirsiniz. Tam veri kümesi, ML modellerinizi yeniden eğitmeye ve artırmaya devam etmek için isteğe bağlı olarak aktarılabilir. Azure Stack Edge Pro R cihazında Azure ML donanım hızlandırılmış modellerini kullanma hakkında daha fazla bilgi için, bkz. [Azure Stack Edge Pro r üzerinde Azure ML donanım hızlandırılmış modellerini dağıtma](../machine-learning/how-to-deploy-fpga-web-service.md#deploy-to-a-local-edge-server).
 
 - **Önceden işlem** yapılabilir bir veri kümesi oluşturmak Için verileri Azure 'a göndermeden önce veri dönüştürme. Önceden işleme şu amaçlarla kullanılabilir:
 
@@ -83,4 +83,3 @@ Azure Stack Edge Pro R fiziksel cihazı, Azure kaynağı ve veri aktarımı yapt
 
 - [Azure Stack Edge Pro R sistem gereksinimlerini](azure-stack-edge-gpu-system-requirements.md)gözden geçirin.
 <!--- Understand the [Azure Stack Edge Pro R limits](azure-stack-edge-limits.md).-->
-

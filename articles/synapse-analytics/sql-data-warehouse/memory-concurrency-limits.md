@@ -1,6 +1,6 @@
 ---
 title: Bellek ve eşzamanlılık sınırları
-description: Azure SYNAPSE Analytics 'te çeşitli performans düzeylerine ve kaynak sınıflarına ayrılan bellek ve eşzamanlılık sınırlarını görüntüleyin.
+description: Azure SYNAPSE Analytics 'te adanmış SQL havuzu için çeşitli performans düzeylerine ve kaynak sınıflarına ayrılan bellek ve eşzamanlılık sınırlarını görüntüleyin.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 5b72694f93ed5b712a0f684887df5b69a7b35c72
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb0ad93fb4a1269b4cca02b114c0427f0c44a31b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441689"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455353"
 ---
-# <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Azure SYNAPSE Analytics için bellek ve eşzamanlılık sınırları
+# <a name="memory-and-concurrency-limits-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu için bellek ve eşzamanlılık sınırları
 
 Azure SYNAPSE Analytics 'te çeşitli performans düzeylerine ve kaynak sınıflarına ayrılan bellek ve eşzamanlılık sınırlarını görüntüleyin.  
 

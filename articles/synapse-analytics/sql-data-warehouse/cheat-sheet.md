@@ -1,6 +1,6 @@
 ---
-title: Azure SYNAPSE Analytics için bir sayfa sayfası (eski adıyla SQL DW)
-description: Azure SYNAPSE Analytics (eski adıyla SQL DW) çözümlerinizi hızlıca oluşturmak için bağlantıları ve en iyi uygulamaları bulun.
+title: Adanmış SQL havuzu için bir sayfa (eski adıyla SQL DW)
+description: Azure SYNAPSE Analytics 'te adanmış SQL havuzunuzu (eski adıyla SQL DW) hızlı bir şekilde oluşturmak için bağlantıları ve en iyi uygulamaları bulun.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -10,18 +10,18 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 648f06ef1af5d6dce9fa3583c6358d3bd173f209
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a236cf99d3131e83619cfab06e8ec028938a87ba
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319670"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454599"
 ---
-# <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Azure SYNAPSE Analytics için bir sayfa sayfası (eski adıyla SQL DW)
+# <a name="cheat-sheet-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytic"></a>Azure SYNAPSE analitik 'da adanmış SQL Havuzu (eski adıyla SQL DW) için bir sayfa sayfası
 
-Bu görsel sayfa, Azure SYNAPSE çözümleri oluşturmak için yardımcı ipuçları ve en iyi uygulamalar sağlar.
+Bu görsel sayfa, adanmış SQL Havuzu (eski adıyla SQL DW) çözümleri oluşturmak için yardımcı ipuçları ve en iyi uygulamalar sağlar.
 
-Aşağıdaki grafikte, veri ambarı tasarlama işlemi gösterilmektedir:
+Aşağıdaki grafik adanmış SQL Havuzu (eski adıyla SQL DW) ile bir veri ambarı tasarlama sürecini göstermektedir:
 
 ![Taslak](./media/cheat-sheet/picture-flow.png)
 
@@ -121,13 +121,13 @@ Kaynak grupları, sorgulara bellek ayırmak için bir yol olarak kullanılır. S
 
 Sorguların çok uzun sürdüğünü fark ederseniz, kullanıcılarınızın büyük kaynak sınıflarında çalışmadığından emin olun. Büyük kaynak sınıfları birçok eşzamanlı yuva kullanır. Bunlar diğer sorguların kuyruğa alınmasına neden olabilir.
 
-Son olarak, [SQL havuzu](sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse)Gen2 kullanarak her kaynak sınıfı, Gen1 'den daha fazla bellek 2,5 alır.
+Son olarak, [ADANMıŞ SQL havuzu Gen2 (eski ADıYLA SQL DW)](sql-data-warehouse-overview-what-is.md)kullanarak her kaynak sınıfı 2,5 kat daha fazla bellek alır.
 
 [Kaynak sınıfları ve eşzamanlılık](resource-classes-for-workload-management.md) ile çalışma hakkında daha fazla bilgi edinin.
 
 ## <a name="lower-your-cost"></a>Maliyetinizi düşürme
 
-Azure SYNAPSE 'ın temel bir özelliği, [işlem kaynaklarını yönetme](sql-data-warehouse-manage-compute-overview.md)olanağıdır. SQL havuzunu kullanmadığınız sırada duraklatabilirsiniz, bu da işlem kaynaklarının faturalandırmasını sonlandırır. Performans taleplerinizi karşılamak için kaynakları ölçeklendirebilirsiniz. Duraklatmak için [Azure portalını](pause-and-resume-compute-portal.md) veya [PowerShell](pause-and-resume-compute-powershell.md)’i kullanın. Ölçeklendirmek için [Azure portalını](quickstart-scale-compute-portal.md), [Powershell](quickstart-scale-compute-powershell.md)’i, [T-SQL](quickstart-scale-compute-tsql.md)’i veya [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute)’sini kullanın.
+Azure SYNAPSE 'ın temel bir özelliği, [işlem kaynaklarını yönetme](sql-data-warehouse-manage-compute-overview.md)olanağıdır. Adanmış SQL havuzunuzu (eski adıyla SQL DW), kullanmadığınız durumlarda duraklatabilir, bu da işlem kaynaklarının faturalandırmasını engeller. Performans taleplerinizi karşılamak için kaynakları ölçeklendirebilirsiniz. Duraklatmak için [Azure portalını](pause-and-resume-compute-portal.md) veya [PowerShell](pause-and-resume-compute-powershell.md)’i kullanın. Ölçeklendirmek için [Azure Portal](quickstart-scale-compute-portal.md), [PowerShell](quickstart-scale-compute-powershell.md), [T-SQL](quickstart-scale-compute-tsql.md)veya bir [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute)kullanın.
 
 Azure İşlevleri ile istediğiniz anda otomatik ölçeklendirme yapın:
 
@@ -137,8 +137,8 @@ Azure İşlevleri ile istediğiniz anda otomatik ölçeklendirme yapın:
 
 Hub ve bağlı bileşen mimarisindeki SQL Database ve Azure Analysis Services’in dikkate alınmasını öneririz. Bu çözüm, bir yandan SQL Database ve Azure Analysis Services’teki gelişmiş güvenlik özelliklerini kullanırken diğer yandan farklı kullanıcı grupları arasında iş yükü yalıtımı sağlayabilir. Bu, kullanıcılarınıza sınırsız eşzamanlılık sağlamanın da bir yoludur.
 
-[Azure SYNAPSE 'ın avantajlarından yararlanan tipik mimariler](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/)hakkında daha fazla bilgi edinin.
+[Azure SYNAPSE Analytics 'te ADANMıŞ SQL havuzundan (eski ADıYLA SQL DW) faydalanan tipik mimariler](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/)hakkında daha fazla bilgi edinin.
 
-SQL havuzundaki SQL veritabanlarındaki bağlı uçlarınıza tek bir tıklama ile dağıtın:
+Adanmış SQL havuzundan (eski adıyla SQL DW) SQL veritabanlarındaki bağlı uçlarınıza tek bir tıklama ile dağıtın:
 
 [!["Azure 'a dağıt" etiketli bir düğmeyi gösteren resim.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwSpokeDbTemplate%2Fazuredeploy.json)

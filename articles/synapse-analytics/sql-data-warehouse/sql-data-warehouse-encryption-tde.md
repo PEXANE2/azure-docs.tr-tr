@@ -1,6 +1,6 @@
 ---
-title: Saydam Veri Şifrelemesi (portal)
-description: Azure SYNAPSE Analytics 'te Saydam Veri Şifrelemesi (TDE)
+title: Adanmış SQL havuzu için Saydam Veri Şifrelemesi (portal) (eski adıyla SQL DW)
+description: Azure SYNAPSE Analytics 'te adanmış SQL Havuzu (eski adıyla SQL DW) için Saydam Veri Şifrelemesi (TDE)
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 04/30/2019
 ms.author: jrasnick
 ms.reviewer: rortloff
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b530b3a049f41a54ab98cc7d1454018cfc990f75
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45c7b53d3bbe0c57e96fc5435650c4e86b0cb032
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86495678"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455259"
 ---
-# <a name="get-started-with-transparent-data-encryption-tde-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te Saydam Veri Şifrelemesi (TDE) kullanmaya başlama
+# <a name="get-started-with-transparent-data-encryption-tde-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL Havuzu (eski adıyla SQL DW) için Saydam Veri Şifrelemesi (TDE) ile çalışmaya başlama
 
 > [!div class="op_single_selector"]
 >
@@ -50,7 +50,7 @@ TDE ' yi devre dışı bırakmak için aşağıdaki adımları izleyin:
 2. Veritabanı dikey penceresinde **Ayarlar** düğmesine tıklayın.
 3. **Saydam veri şifreleme** seçeneği ![ Portal ayarlarını seçin](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings.png)
 4. **Devre dışı bırakma** ![ portalı ayarlarını seçin](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-off.png)
-5. Portalın **kaydedileceği ilkeyi kaydet**seçeneğini belirleyin 
+5. Portalın **kaydedileceği ilkeyi kaydet** seçeneğini belirleyin 
     ![ 2](./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings-save2.png)  
 
 ## <a name="encryption-dmvs"></a>Şifreleme DMVs

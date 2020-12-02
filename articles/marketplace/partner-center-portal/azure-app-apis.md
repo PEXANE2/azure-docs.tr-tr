@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 87f27f316914f3efce5a750f50471c65dceca84e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9863ed24da9e427f885a4794bda7e103b0c1cc8e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127850"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455452"
 ---
 # <a name="partner-center-submission-api-to-onboard-azure-apps-in-partner-center"></a>İş Ortağı Merkezi 'ne Azure uygulamaları eklemek için iş ortağı merkezi gönderme API 'SI
 
@@ -43,7 +43,7 @@ Microsoft Store gönderimi API 'sini kullanmak için, Iş Ortağı Merkezi hesab
 1. Iş Ortağı Merkezi 'nde [kuruluşunuzun Iş Ortağı Merkezi hesabını kuruluşunuzun Azure AD diziniyle ilişkilendirin](/windows/uwp/publish/associate-azure-ad-with-partner-center).
 1. Ardından, Iş Ortağı Merkezi 'nin **Hesap ayarları** bölümündeki **Kullanıcılar** sayfasında, iş ortağı merkezi hesabınıza yönelik Gönderimlere erişmek için kullanacağınız uygulamayı veya HIZMETI temsil eden [Azure AD uygulamasını ekleyin](/windows/uwp/publish/add-users-groups-and-azure-ad-applications#add-azure-ad-applications-to-your-partner-center-account) . Bu uygulamayı **yönetici** rolüne atadığınızdan emin olun. Uygulama henüz Azure AD dizininizde yoksa, [Iş Ortağı Merkezi 'nde yeni bir Azure AD uygulaması oluşturabilirsiniz](/windows/uwp/publish/add-users-groups-and-azure-ad-applications#create-a-new-azure-ad-application-account-in-your-organizations-directory-and-add-it-to-your-partner-center-account).
 1. **Kullanıcılar** sayfasına dönün, uygulama ayarlarına gitmek IÇIN Azure AD uygulamanızın adına tıklayın ve **kiracı KIMLIĞI** ile **istemci kimliği** değerlerini kopyalayın.
-1. **Yeni anahtar Ekle** ' ye tıklayın. Aşağıdaki ekranda, **anahtar** değerini kopyalayın. Bu sayfadan ayrıldıktan sonra bu bilgilere bir daha erişemeyeceksiniz. Daha fazla bilgi için bkz. [Azure AD uygulaması için anahtarları yönetme](/windows/uwp/publish/add-users-groups-and-azure-ad-applications#manage-keys).
+1. **Yeni anahtar Ekle**' ye tıklayın. Aşağıdaki ekranda, **anahtar** değerini kopyalayın. Bu sayfadan ayrıldıktan sonra bu bilgilere bir daha erişemeyeceksiniz. Daha fazla bilgi için bkz. [Azure AD uygulaması için anahtarları yönetme](/windows/uwp/publish/add-users-groups-and-azure-ad-applications#manage-keys).
 
 ### <a name="step-2-obtain-an-azure-ad-access-token"></a>2. Adım: Azure AD erişim belirteci alma
 
@@ -73,5 +73,5 @@ https://apidocs.microsoft.com/services/partneringestion/
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure VM oluşturma teknik varlığı](create-azure-container-technical-assets.md) oluşturma hakkında bilgi edinin
-* [Azure Container teklifi](create-azure-container-offer.md) oluşturmayı öğrenin
+* [Azure VM oluşturma teknik varlığı](../create-azure-container-technical-assets.md) oluşturma hakkında bilgi edinin
+* [Azure Container teklifi](../create-azure-container-offer.md) oluşturmayı öğrenin

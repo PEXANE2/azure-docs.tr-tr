@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 4bae9e28a22a99d092db2bf887f0cd790e04c52a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 23ec79b7e3989c9749edf98d930ad8305324c9da
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91318577"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454004"
 ---
 # <a name="what-is-the-azure-stack-edge-mini-r"></a>Azure Stack Edge Mini R nedir?
 
@@ -45,7 +45,7 @@ Azure Stack Edge Mini R aşağıdaki yeteneklere sahiptir:
 
 Azure Stack Edge Mini R 'nin, en uçta hızlı Machine Learning (ML) için kullanılabileceği ve verileri Azure 'a göndermeden önce ön işlemesi için kullanabileceğiniz çeşitli senaryolar aşağıda verilmiştir.
 
-- **Azure Machine Learning Ile çıkarım** -Azure Stack Edge Mini R ile, veri buluta gönderilmeden önce üzerinde işlem yapılabilir hızlı sonuçlar almak için ml modellerini çalıştırabilirsiniz. Tam veri kümesi, ML modellerinizi yeniden eğitmeye ve artırmaya devam etmek için isteğe bağlı olarak aktarılabilir. Azure Stack Edge Mini R cihazında Azure ML donanım hızlandırılmış modellerini kullanma hakkında daha fazla bilgi için bkz. [Azure Stack Edge Mini r üzerinde Azure ML donanım hızlandırılmış modellerini dağıtma](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server).
+- **Azure Machine Learning Ile çıkarım** -Azure Stack Edge Mini R ile, veri buluta gönderilmeden önce üzerinde işlem yapılabilir hızlı sonuçlar almak için ml modellerini çalıştırabilirsiniz. Tam veri kümesi, ML modellerinizi yeniden eğitmeye ve artırmaya devam etmek için isteğe bağlı olarak aktarılabilir. Azure Stack Edge Mini R cihazında Azure ML donanım hızlandırılmış modellerini kullanma hakkında daha fazla bilgi için bkz. [Azure Stack Edge Mini r üzerinde Azure ML donanım hızlandırılmış modellerini dağıtma](../machine-learning/how-to-deploy-fpga-web-service.md#deploy-to-a-local-edge-server).
 
 - Daha önceden uygulanabilir bir veri kümesi oluşturmak üzere **verileri** Azure 'a göndermeden önce kapsayıcılar veya sanal makineler gibi işlem seçenekleri aracılığıyla veri dönüştürme. Önceden işleme şu amaçlarla kullanılabilir:
 
@@ -83,5 +83,3 @@ Azure Stack Edge Mini R fiziksel cihazı, Azure kaynağı ve veri aktarımı yap
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Stack Edge Mini R sistem gereksinimlerini](azure-stack-edge-gpu-system-requirements.md)gözden geçirin.
-
-

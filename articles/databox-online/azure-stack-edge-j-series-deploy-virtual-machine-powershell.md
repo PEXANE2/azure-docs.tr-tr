@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: aa492acdedc2d131d28c894031de2181e87a2f3e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed6b77f77c9df0bb69edeb7451022605f1633aa3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890700"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454321"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell"></a>Azure PowerShell aracılığıyla Azure Stack Edge Pro GPU cihazınızda VM 'Leri dağıtma
 
@@ -27,7 +27,7 @@ Dağıtım iş akışı aşağıdaki diyagramda gösterilmiştir.
 
 ![VM dağıtımı iş akışı](media/azure-stack-edge-j-series-deploy-virtual-machine-powershell/vm-workflow_r.svg)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [azure-stack-edge-gateway-deploy-vm-prerequisites](../../includes/azure-stack-edge-gateway-deploy-virtual-machine-prerequisites.md)]
 
@@ -103,10 +103,10 @@ Bu abonelik, VM 'Leri dağıtmak için kullanılacaktır.
     
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-[New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) ile yeni bir Azure kaynak grubu oluşturun. Kaynak grubu, depolama hesabı, disk, yönetilen disk gibi Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
+[New-AzureRmResourceGroup](/powershell/module/az.resources/new-azresourcegroup) ile yeni bir Azure kaynak grubu oluşturun. Kaynak grubu, depolama hesabı, disk, yönetilen disk gibi Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
 > [!IMPORTANT]
-> Tüm kaynaklar cihazla aynı konumda oluşturulur ve konum **Dbelocal**olarak ayarlanır.
+> Tüm kaynaklar cihazla aynı konumda oluşturulur ve konum **Dbelocal** olarak ayarlanır.
 
 ```powershell
 New-AzureRmResourceGroup -Name <Resource group name> -Location DBELocal
@@ -187,7 +187,7 @@ Blob URI 'sini, [uç nokta adı çözümlemesi için konak dosyası değiştirme
 
 ## <a name="install-certificates"></a>Sertifikaları yükleme
 
-*Https*kullanıyorsanız, cihazınıza uygun sertifikaları yüklemeniz gerekir. Bu durumda, blob uç noktası sertifikasını yükler. Daha fazla bilgi için bkz. [sertifikaları yönetme](azure-stack-edge-j-series-manage-certificates.md)bölümünde sertifika oluşturma ve karşıya yükleme.
+*Https* kullanıyorsanız, cihazınıza uygun sertifikaları yüklemeniz gerekir. Bu durumda, blob uç noktası sertifikasını yükler. Daha fazla bilgi için bkz. [sertifikaları yönetme](azure-stack-edge-j-series-manage-certificates.md)bölümünde sertifika oluşturma ve karşıya yükleme.
 
 ## <a name="upload-a-vhd"></a>VHD’yi karşıya yükleme
 
@@ -227,7 +227,7 @@ $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import –S
 New-AzureRMDisk -ResourceGroupName <Resource group name> -DiskName <Disk name> -Disk $DiskConfig
 ```
 
-Örnek çıktı aşağıda gösterilmiştir. Bu cmdlet hakkında daha fazla bilgi için [New-AzureRmDisk](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermdisk?view=azurermps-6.13.0)sayfasına gidin.
+Örnek çıktı aşağıda gösterilmiştir. Bu cmdlet hakkında daha fazla bilgi için [New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk?view=azurermps-6.13.0)sayfasına gidin.
 
 ```powershell
 Tags               :
@@ -267,7 +267,7 @@ Set-AzureRmImageOsDisk -Image $imageConfig -OsType 'Linux' -OsState 'Generalized
 New-AzureRmImage -Image $imageConfig -ImageName <Image name>  -ResourceGroupName <Resource group name>
 ```
 
-Örnek çıktı aşağıda gösterilmiştir. Bu cmdlet hakkında daha fazla bilgi için [New-Azurermımage](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermimage?view=azurermps-6.13.0)sayfasına gidin.
+Örnek çıktı aşağıda gösterilmiştir. Bu cmdlet hakkında daha fazla bilgi için [New-Azurermımage](/powershell/module/azurerm.compute/new-azurermimage?view=azurermps-6.13.0)sayfasına gidin.
 
 ```powershell
 New-AzureRmImage -Image Microsoft.Azure.Commands.Compute.Automation.Models.PSImage -ImageName ig191113014333  -ResourceGroupName rg191113014333
@@ -463,11 +463,11 @@ Cihazınızda çalışan bir sanal makineyi açmak için aşağıdaki cmdlet 'i 
 `Start-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>`
 
 
-Bu cmdlet hakkında daha fazla bilgi için [Start-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0)' ye gidin.
+Bu cmdlet hakkında daha fazla bilgi için [Start-AzureRmVM](/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0)' ye gidin.
 
 ### <a name="suspend-or-shut-down-the-vm"></a>VM 'yi askıya alma veya kapatma
 
-Cihazınızda çalışan bir sanal makineyi durdurmak veya kapatmak için aşağıdaki cmdlet 'i çalıştırın:
+Cihazınızda çalışan bir sanal makineyi durdurmak veya kapatmak için aşağıdaki cmdlet'i çalıştırın:
 
 
 ```powershell
@@ -475,7 +475,7 @@ Stop-AzureRmVM [-Name] <String> [-StayProvisioned] [-ResourceGroupName] <String>
 ```
 
 
-Bu cmdlet hakkında daha fazla bilgi için [stop-AzureRmVM cmdlet 'ine](https://docs.microsoft.com/powershell/module/azurerm.compute/stop-azurermvm?view=azurermps-6.13.0)gidin.
+Bu cmdlet hakkında daha fazla bilgi için [stop-AzureRmVM cmdlet 'ine](/powershell/module/azurerm.compute/stop-azurermvm?view=azurermps-6.13.0)gidin.
 
 ### <a name="add-a-data-disk"></a>Veri diski ekleme
 
@@ -489,13 +489,13 @@ Update-AzureRmVM -ResourceGroupName "<Resource Group Name string>" -VM $VirtualM
 
 ### <a name="delete-the-vm"></a>VM’yi silin
 
-Bir sanal makineyi cihazınızdan kaldırmak için aşağıdaki cmdlet 'i çalıştırın:
+Cihazınızdan bir sanal makineyi kaldırmak için aşağıdaki cmdlet'i kullanın:
 
 ```powershell
 Remove-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>
 ```
 
-Bu cmdlet hakkında daha fazla bilgi için [Remove-AzureRmVm cmdlet 'ine](https://docs.microsoft.com/powershell/module/azurerm.compute/remove-azurermvm?view=azurermps-6.13.0)gidin.
+Bu cmdlet hakkında daha fazla bilgi için [Remove-AzureRmVm cmdlet 'ine](/powershell/module/azurerm.compute/remove-azurermvm?view=azurermps-6.13.0)gidin.
 
 
 ## <a name="supported-vm-sizes"></a>Desteklenen VM boyutları
@@ -553,7 +553,7 @@ Azure Stack Edge Pro cihazınıza erişmek için kullanılan istemcide, BLOB dep
 
 ### <a name="on-windows-client"></a>Windows istemcisinde 
 
-`$Env:AZCOPY_DEFAULT_SERVICE_API_VERSION = "2017-11-09"`
+`$Env:AZCOPY_DEFAULT_SERVICE_API_VERSION = "2017-11-09"`
 
 ### <a name="on-linux-client"></a>Linux istemcisinde
 
@@ -567,4 +567,4 @@ AzCopy ortam değişkeninin doğru şekilde ayarlandığından emin olmak için 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Resource Manager cmdlet 'leri](https://docs.microsoft.com/powershell/module/azurerm.resources/?view=azurermps-6.13.0)
+[Azure Resource Manager cmdlet 'leri](/powershell/module/azurerm.resources/?view=azurermps-6.13.0)

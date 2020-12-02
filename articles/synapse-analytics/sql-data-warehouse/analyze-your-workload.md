@@ -1,6 +1,6 @@
 ---
-title: İş yükünüzü çözümleme
-description: Azure SYNAPSE Analytics 'teki iş yükünüz için sorgu önceliklendirmesini çözümleme teknikleri.
+title: Adanmış SQL havuzu için iş yükünüzü çözümleme
+description: Azure SYNAPSE Analytics 'te adanmış SQL havuzu için sorgu önceliklendirmesini çözümleme teknikleri.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,20 +11,20 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: c547263be8c61d75491d1517b58c03b6365ef929
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14c3ad30bac7cec4c11822d825323bb9db2ba440
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85208408"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454533"
 ---
-# <a name="analyze-your-workload-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te iş yükünüzü çözümleyin
+# <a name="analyze-your-workload-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu için iş yükünüzü çözümleme
 
-Azure SYNAPSE Analytics 'te SYNAPSE SQL iş yükünüzü çözümleme teknikleri. 
+Azure SYNAPSE Analytics 'te adanmış SQL havuzu iş yükünüzü çözümleme teknikleri. 
 
 ## <a name="resource-classes"></a>Kaynak Sınıfları
 
-SYNAPSE SQL, sorgulara sistem kaynakları atamak için kaynak sınıfları sağlar.  Kaynak sınıfları hakkında daha fazla bilgi için bkz. [kaynak sınıfları & iş yükü yönetimi](resource-classes-for-workload-management.md).  Sorguya atanan kaynak sınıfının şu anda kullanılabilir olandan daha fazla kaynak ihtiyacı varsa sorgular bekleyecektir.
+Adanmış SQL havuzu, sorgulara sistem kaynakları atamak için kaynak sınıfları sağlar.  Kaynak sınıfları hakkında daha fazla bilgi için bkz. [kaynak sınıfları & iş yükü yönetimi](resource-classes-for-workload-management.md).  Sorguya atanan kaynak sınıfının şu anda kullanılabilir olandan daha fazla kaynak ihtiyacı varsa sorgular bekleyecektir.
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>Sıraya alınan sorgu algılama ve diğer DMVs 'ler
 
@@ -63,7 +63,7 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 ;
 ```
 
-SYNAPSE SQL aşağıdaki bekleme türlerini içerir:
+Adanmış SQL havuzu aşağıdaki bekleme türlerine sahiptir:
 
 * **LocalQueriesConcurrencyResourceType**: eşzamanlılık yuva çerçevesinin dışında oturlan sorgular. DMV sorguları ve gibi sistem işlevleri `SELECT @@VERSION` , yerel sorguların örnekleridir.
 * **UserConcurrencyResourceType**: eşzamanlılık yuva çerçevesinin içinde yer alan sorgular. Son Kullanıcı tablolarına yönelik sorgular, bu kaynak türünü kullanacak örnekleri temsil eder.
@@ -153,4 +153,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Veritabanı kullanıcılarını ve güvenliğini yönetme hakkında daha fazla bilgi için bkz. [SYNAPSE SQL 'de veritabanını güvenli hale getirme](sql-data-warehouse-overview-manage-security.md). Daha büyük kaynak sınıflarının kümelenmiş columnstore dizini kalitesini nasıl iyileştirebilecek hakkında daha fazla bilgi için bkz. [segment kalitesini artırmak için dizinleri yeniden oluşturma](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
+Veritabanı kullanıcılarını ve güvenliğini yönetme hakkında daha fazla bilgi için bkz. [Özel BIR SQL havuzunun güvenliğini sağlama (eski ADıYLA SQL DW)](sql-data-warehouse-overview-manage-security.md). Daha büyük kaynak sınıflarının kümelenmiş columnstore dizini kalitesini nasıl iyileştirebilecek hakkında daha fazla bilgi için bkz. [segment kalitesini artırmak için dizinleri yeniden oluşturma](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).

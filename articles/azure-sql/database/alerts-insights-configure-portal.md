@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, sstein
 ms.date: 05/04/2020
-ms.openlocfilehash: 64bef8a1cd4353ed9602c36cf728a0d727458251
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 512f6044e46fba49ea1c63a89d11135751e7ce43
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675133"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455973"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-using-the-azure-portal"></a>Azure portal kullanarak Azure SQL veritabanı ve Azure SYNAPSE Analytics için uyarı oluşturma
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "92675133"
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu makalede, Azure portal kullanarak Azure SQL veritabanı ve Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) veritabanları için uyarıların nasıl ayarlanacağı gösterilmektedir. Uyarılar bir e-posta gönderebilir veya bazı bir ölçüm (örneğin, veritabanı boyutu veya CPU kullanımı) eşiğe ulaştığında bir Web kancası çağırabilir.
+Bu makalede, Azure SQL veritabanı ve Azure SYNAPSE Analytics 'teki veritabanları için Azure portal kullanarak nasıl uyarı ayarlanacağı gösterilmektedir. Uyarılar bir e-posta gönderebilir veya bazı bir ölçüm (örneğin, veritabanı boyutu veya CPU kullanımı) eşiğe ulaştığında bir Web kancası çağırabilir.
 
 > [!NOTE]
 > Azure SQL yönetilen örneğe özgü yönergeler için bkz. [Azure SQL yönetilen örneği için uyarı oluşturma](../managed-instance/alerts-create.md).
@@ -57,14 +57,14 @@ Kullanarak uyarı kuralları hakkında bilgi alabilir ve bunları alabilirsiniz
 3. **Kural oluştur** sayfasını açmak için **Yeni uyarı kuralı** düğmesini seçin.
   ![Kural Oluştur](./media/alerts-insights-configure-portal/create-rule.png)
 
-4. **Koşul** bölümünde **Ekle** ' ye tıklayın.
+4. **Koşul** bölümünde **Ekle**' ye tıklayın.
   ![Koşulu tanımla](./media/alerts-insights-configure-portal/create-rule.png)
 5. **Sinyal mantığını Yapılandır** sayfasında bir sinyal seçin.
   ![Sinyal Seç](./media/alerts-insights-configure-portal/select-signal.png)
 6. **CPU yüzdesi** gibi bir sinyal seçtikten sonra **sinyal mantığını Yapılandır** sayfası görünür.
   ![Sinyal mantığını yapılandırma](./media/alerts-insights-configure-portal/configure-signal-logic.png)
-7. Bu sayfada, bu eşik türü, işleç, toplama türü, eşik değeri, toplama ayrıntı düzeyi ve değerlendirme sıklığını yapılandırın. Sonra da **Bitti** ’ye tıklayın.
-8. **Oluşturma kuralında** , var olan bir **Eylem grubunu** seçin veya yeni bir grup oluşturun. Bir eylem grubu, bir uyarı koşulu oluştuğunda gerçekleştirilecek eylemi tanımlamanızı sağlar.
+7. Bu sayfada, bu eşik türü, işleç, toplama türü, eşik değeri, toplama ayrıntı düzeyi ve değerlendirme sıklığını yapılandırın. Sonra da **Bitti**’ye tıklayın.
+8. **Oluşturma kuralında**, var olan bir **Eylem grubunu** seçin veya yeni bir grup oluşturun. Bir eylem grubu, bir uyarı koşulu oluştuğunda gerçekleştirilecek eylemi tanımlamanızı sağlar.
   ![Eylem grubunu tanımla](./media/alerts-insights-configure-portal/action-group.png)
 
 9. Kural için bir ad tanımlayın, isteğe bağlı bir açıklama sağlayın, kural için bir önem düzeyi seçin, kural oluşturulduktan sonra kuralın etkinleştirilip etkinleştirilmeyeceğini seçin ve ardından ölçüm kuralı uyarısı oluşturmak için **kural uyarısı oluştur** ' a tıklayın.

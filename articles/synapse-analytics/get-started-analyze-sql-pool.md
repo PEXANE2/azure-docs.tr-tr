@@ -10,16 +10,16 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 11/17/2020
-ms.openlocfilehash: ae7b15bf2e2efd72184110a105f68815516569ab
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 9014469ca063ca52be0965ecbd4e8b21709d10a0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843919"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455160"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>Adanmış SQL havuzları ile verileri analiz etme
 
-Azure SYNAPSE Analytics, özel bir SQL havuzu ile verileri analiz etme yeteneği sağlar. Bu öğreticide, ayrılmış bir SQL havuzunun yeteneklerini araştırmak için NYC TAXI verilerini kullanacaksınız.
+Azure SYNAPSE Analytics, özel bir SQL havuzu ile verileri analiz etme yeteneği sağlar. Bu öğreticide, özel bir SQL havuzunun yeteneklerini araştırmak için NYC TAXI verilerini kullanacaksınız.
 
 ## <a name="load-the-nyc-taxi-data-into-sqlpool1"></a>NYC TAXI verilerini SQLPOOL1 'e yükleme
 
@@ -94,8 +94,9 @@ Azure SYNAPSE Analytics, özel bir SQL havuzu ile verileri analiz etme yeteneği
 
     Bu sorgu, toplam seyahat mesafeleri ve ortalama seyahat mesafesinin, pascların sayısıyla ilişkisini gösterir.
 1. SQL komut dosyası sonucu penceresinde, sonuçların bir çizgi grafik olarak görselliğini görmek için **görünümü** **grafik** olarak değiştirin.
-
-
+    
+    > [!NOTE]
+    > Çalışma alanı etkinleştirilmiş adanmış bir SQL Havuzu (eski adıyla SQL DW) veri merkezindeki araç ipucu aracılığıyla tanımlanabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1143,6 +1143,8 @@
               href: platform/workbooks-tree-visualizations.md
             - name: Graf
               href: platform/workbooks-graph-visualizations.md
+            - name: Harita
+              href: platform/workbooks-map-visualizations.md
             - name: Bal peteği
               href: platform/workbooks-honey-comb.md
             - name: Bileşik çubuk

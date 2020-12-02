@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7dfd51b0ed43badbc6a4882f619cb718952b0e85
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 39021fecb79f6b8e7536daad592378ed998760a7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919877"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454355"
 ---
 # <a name="building-resilience-into-identity-and-access-management-with-azure-active-directory"></a>Azure Active Directory ile kimlik ve erişim yönetimine esnekliği oluşturma
 
@@ -48,4 +48,4 @@ Sistemlerinizde daha fazla esnekliği oluşturmak için aşağıdaki makaleleri 
 
 * [Uygulamalarınızda ıAM esnekliği oluşturma](resilience-app-development-overview.md)
 
-* [CıHAR sistemlerinizde derleme esnekliği](resilience-b2c.md)
+* [Müşteri kimlik ve erişim yönetimi (CıHAR) sistemlerinizde esnekliği oluşturma](resilience-b2c.md)

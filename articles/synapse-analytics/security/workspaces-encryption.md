@@ -8,17 +8,17 @@ ms.subservice: security
 ms.date: 11/19/2020
 ms.author: nanditav
 ms.reviewer: jrasnick
-ms.openlocfilehash: 17dbdbbef45e0068601835197a1177ee20d98ca3
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: a6ea3925f3b6bc786be6a4855b2f3bfb6b402d70
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296795"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455188"
 ---
-# <a name="encryption-for-azure-synapse-analytics-workspaces-preview"></a>Azure SYNAPSE Analytics için şifreleme (çalışma alanları önizlemesi)
+# <a name="encryption-for-azure-synapse-analytics-workspaces"></a>Azure SYNAPSE Analytics çalışma alanları için şifreleme
 
 Bu makalede şunları anlayacaksınız:
-* Azure SYNAPSE Analytics çalışma alanlarında bekleyen verilerin şifrelenmesi.
+* SYNAPSE Analytics çalışma alanlarında bekleyen verilerin şifrelenmesi.
 * Müşteri tarafından yönetilen anahtarla şifrelemeyi etkinleştirmek için SYNAPSE çalışma alanlarının yapılandırması.
 * Çalışma alanlarındaki verileri şifrelemek için kullanılan anahtarları yönetme.
 
