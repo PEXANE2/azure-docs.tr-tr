@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: c1d21d88ed49cb14aa9f964791154f001a40fbe2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 10dff18f7b9db7273fcd6ec92bcca5970bb83b08
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499586"
+ms.locfileid: "96510378"
 ---
 # <a name="java-code-samples-for-azure-cognitive-search"></a>Azure Bilişsel Arama için Java kod örnekleri
 
@@ -25,7 +25,7 @@ Azure Bilişsel Arama özelliklerini ve işlevselliğini gösteren Java kod örn
 | [Azure-Samples/Azure-Search-Java-Samples](https://github.com/Azure-Samples/azure-search-java-samples) | Nasıl yapılır makalelerine eşlik eden kod örnekleri. **Bu depodaki örnekler henüz Java Için Azure SDK 'sını kullanacak şekilde güncelleştirilmedi**. Şu anda bu örnekler, Java kodundaki REST API 'Lerini çağırır.|
 
 > [!Tip]
-> GitHub 'da ürün, hizmet ve dile göre filtrelenmiş Microsoft kod örneklerini aramak için [örnekler tarayıcısını](/samples/browse/?languages=csharp&products=azure-cognitive-search) deneyin.
+> GitHub 'da ürün, hizmet ve dile göre filtrelenmiş Microsoft kod örneklerini aramak için [örnekler tarayıcısını](/samples/browse/?languages=java&products=azure-cognitive-search) deneyin.
 
 ## <a name="java-sdk-samples"></a>Java SDK örnekleri
 

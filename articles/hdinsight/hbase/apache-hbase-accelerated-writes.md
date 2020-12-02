@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/24/2020
-ms.openlocfilehash: 99253aa2e7e2e1f3f58f2ab7d5c40a695c2b9690
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c7a2373f0cf7005e465c2d3bd42817b3394a84de
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88654863"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96510289"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Apache HBase için Azure HDInsight Hızlandırılmış Yazma İşlemleri
 
@@ -20,15 +20,15 @@ Bu makalede, Azure HDInsight 'ta Apache HBase için **hızlandırılmamış yazm
 
 ## <a name="overview-of-hbase-architecture"></a>HBase mimarisine genel bakış
 
-HBase 'de, bir **satır** bir veya daha fazla **sütundan** oluşur ve bir **satır anahtarı**tarafından tanımlanır. Birden çok satır bir **tablo**yapar. Sütunlar, bu sütundaki değerin zaman damgamış sürümleri olan **hücreler**içerir. Sütunlar **sütun aileleri**halinde gruplandırılır ve bir sütun ailesindeki tüm sütunlar, **hfiles**adlı depolama dosyalarında birlikte depolanır.
+HBase 'de, bir **satır** bir veya daha fazla **sütundan** oluşur ve bir **satır anahtarı** tarafından tanımlanır. Birden çok satır bir **tablo** yapar. Sütunlar, bu sütundaki değerin zaman damgamış sürümleri olan **hücreler** içerir. Sütunlar **sütun aileleri** halinde gruplandırılır ve bir sütun ailesindeki tüm sütunlar, **hfiles** adlı depolama dosyalarında birlikte depolanır.
 
 HBase **bölgeleri** , veri işleme yükünü dengelemek için kullanılır. HBase öncelikle bir tablonun satırlarını tek bir bölgede depolar. Tablodaki veri miktarı arttıkça, satırlar birden çok bölgeye yayılır. **Bölge sunucuları** , birden çok bölgeye yönelik istekleri işleyebilir.
 
 ## <a name="write-ahead-log-for-apache-hbase"></a>Apache HBase için önceden yazma günlüğü
 
-HBase önce veri güncelleştirmelerini yazma öncesinde günlük (WAL) olarak adlandırılan bir işleme günlüğü türüne yazar. Güncelleştirme WAL 'de depolandıktan sonra, bellek içi **Memstore**'e yazılır. Bellekteki veriler en yüksek kapasiteye ulaştığında, bir **hfile**olarak diske yazılır.
+HBase önce veri güncelleştirmelerini yazma öncesinde günlük (WAL) olarak adlandırılan bir işleme günlüğü türüne yazar. Güncelleştirme WAL 'de depolandıktan sonra, bellek içi **Memstore**'e yazılır. Bellekteki veriler en yüksek kapasiteye ulaştığında, bir **hfile** olarak diske yazılır.
 
-Bir **Regionserver** , memstore temizlenmeden önce kilitlenirse veya kullanılamaz hale gelirse, güncelleştirmeleri yeniden oynatmak Için önceden yazma günlüğü kullanılabilir. WAL olmadan, bir **Regionserver** bir **hfile**güncelleştirmelerini reçeteye göre kilitlenirse, tüm bu güncelleştirmeler kaybedilir.
+Bir **Regionserver** , memstore temizlenmeden önce kilitlenirse veya kullanılamaz hale gelirse, güncelleştirmeleri yeniden oynatmak Için önceden yazma günlüğü kullanılabilir. WAL olmadan, bir **Regionserver** bir **hfile** güncelleştirmelerini reçeteye göre kilitlenirse, tüm bu güncelleştirmeler kaybedilir.
 
 ## <a name="accelerated-writes-feature-in-azure-hdinsight-for-apache-hbase"></a>Apache HBase için Azure HDInsight 'ta hızlandırılmış yazma özelliği
 
@@ -36,9 +36,9 @@ Hızlandırılmış yazma özelliği, bulut depolamadaki ön yazma günlüklerin
 
 ## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>HDInsight 'ta HBase için hızlandırılmış yazma Işlemleri nasıl etkinleştirilir
 
-Hızlandırılmış yazma özelliği ile yeni bir HBase kümesi oluşturmak için, **3. adıma**ulaşana kadar [HDInsight 'ta kümeleri ayarlama](../hdinsight-hadoop-provision-linux-clusters.md) bölümündeki adımları izleyin. **Meta veri deposu ayarları**altında **HBase hızlandırılmış yazmaları etkinleştir**' in yanındaki onay kutusunu işaretleyin. Ardından, küme oluşturma için kalan adımlara devam edin.
+Hızlandırılmış yazma özelliği ile yeni bir HBase kümesi oluşturmak için, **3. adıma** ulaşana kadar [HDInsight 'ta kümeleri ayarlama](../hdinsight-hadoop-provision-linux-clusters.md) bölümündeki adımları izleyin. **Meta veri deposu ayarları** altında **HBase hızlandırılmış yazmaları etkinleştir**' in yanındaki onay kutusunu işaretleyin. Ardından, küme oluşturma için kalan adımlara devam edin.
 
-![HDInsight Apache HBase için hızlandırılmış yazma seçeneğini etkinleştirme](./media/apache-hbase-accelerated-writes/azure-portal-cluster-storage-hbase.png)
+![HDInsight Apache HBase için hızlandırılmış yazma seçeneğini etkinleştirme](./media/apache-hbase-accelerated-writes/azure-portal-create-hbase-wals.png)
 
 ## <a name="other-considerations"></a>Diğer önemli noktalar
 

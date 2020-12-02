@@ -1,14 +1,14 @@
 ---
 title: Sık karşılaşılan hataları giderme
 description: İlke tanımları, çeşitli SDK ve Kubernetes için eklenti oluşturma sorunlarını giderme hakkında bilgi edinin.
-ms.date: 10/30/2020
+ms.date: 12/01/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 74b622dd41fb28e845a35780e5d06588189ec029
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: f3667988d527100507d308887338278e1200d454
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146288"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511007"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Azure Ilkesini kullanarak hatalarda sorun giderme
 
@@ -88,14 +88,14 @@ Azure Ilkesi tarafından işlem yapılması beklenen bir kaynak değildir ve [Az
 
 #### <a name="cause"></a>Nedeni
 
-İlke ataması, _Disabled_ 'ın [Enforcementmode](../concepts/assignment-structure.md#enforcement-mode) için yapılandırılmış. Zorlama modu devre dışı olsa da, ilke efekti zorlanmaz ve etkinlik günlüğünde giriş yoktur.
+İlke ataması, _Disabled_'ın [Enforcementmode](../concepts/assignment-structure.md#enforcement-mode) için yapılandırılmış. Zorlama modu devre dışı olsa da, ilke efekti zorlanmaz ve etkinlik günlüğünde giriş yoktur.
 
 #### <a name="resolution"></a>Çözüm
 
 İlke atamalarınızın zorlanmasıyla ilgili sorunları gidermek için aşağıdaki adımları izleyin:
 
 1. İlk olarak, bir değerlendirmenin tamamlanmasını ve uyumluluk sonuçlarının Azure portal veya SDK 'da kullanılabilir hale gelmesi için uygun süreyi bekleyin. Azure PowerShell veya REST API ile yeni bir değerlendirme taraması başlatmak için bkz. [isteğe bağlı değerlendirme taraması](../how-to/get-compliance-data.md#on-demand-evaluation-scan).
-1. Atama parametrelerinin ve atama kapsamının doğru ayarlandığından ve **Enforcementmode** 'un _etkin_ olduğundan emin olun. 
+1. Atama parametrelerinin ve atama kapsamının doğru ayarlandığından ve **Enforcementmode** 'un _etkin_ olduğundan emin olun.
 1. [İlke tanımı modunu](../concepts/definition-structure.md#mode) denetleyin:
    - Tüm kaynak türleri için ' All ' modu.
    - İlke tanımı etiketleri veya konumu denetlediğinde ' dizinli ' modu.
@@ -190,24 +190,6 @@ Ayrıntılı bir anlatım için aşağıdaki blog gönderisine bakın:
 
 ## <a name="add-on-for-kubernetes-general-errors"></a>Kubernetes genel hataları için eklenti
 
-### <a name="scenario-add-on-doesnt-work-with-aks-clusters-on-version-119-preview"></a>Senaryo: eklenti 1,19 sürümündeki AKS kümeleriyle birlikte çalışmıyor (Önizleme)
-
-#### <a name="issue"></a>Sorun
-
-Sürüm 1,19 kümeleri, ağ geçidi denetleyicisi ve ilke Web kancası pods aracılığıyla bu hatayı döndürür:
-
-```
-2020/09/22 20:06:55 http: TLS handshake error from 10.244.1.14:44282: remote error: tls: bad certificate
-```
-
-#### <a name="cause"></a>Nedeni
-
-1,19 (Önizleme) sürümündeki AKS clusers henüz Azure Ilke eklentisi ile uyumlu değil.
-
-#### <a name="resolution"></a>Çözüm
-
-Azure Ilke eklentisi ile Kubernetes 1,19 (Önizleme) kullanmaktan kaçının. Eklenti, 1,16, 1,17 veya 1,18 gibi desteklenen herhangi bir genel kullanıma sunulan sürümle birlikte kullanılabilir.
-
 ### <a name="scenario-add-on-is-unable-to-reach-the-azure-policy-service-endpoint-due-to-egress-restrictions"></a>Senaryo: eklenti, çıkış kısıtlamaları nedeniyle Azure Ilke hizmeti uç noktasına ulaşamıyor
 
 #### <a name="issue"></a>Sorun
@@ -239,7 +221,7 @@ Eklenti Azure Ilke hizmeti uç noktasına ulaşamıyor ve aşağıdaki hatalarda
 
 #### <a name="cause"></a>Nedeni
 
-Bu hata, kümeye _Add-Pod kimliği_ yüklendiğinde ve _Kuto-System_ 'ların _AAD-Pod kimliği_ 'nde dışlanmadığı durumlarda oluşur.
+Bu hata, kümeye _Add-Pod kimliği_ yüklendiğinde ve _Kuto-System_ 'ların _AAD-Pod kimliği_'nde dışlanmadığı durumlarda oluşur.
 
 _AAD-Pod kimliği_ bileşen düğümü yönetilen kimliği (NMI) Pod, Azure örnek meta veri uç noktası çağrılarını ele almak için düğümlerin Iptables 'larını değiştirir. Bu kurulum, Pod 'ın _AAD-Pod kimliği_ kullanmasa bile meta veri uç noktasına yapılan tüm istekler nmi tarafından ele getirilir anlamına gelir.
 **AzurePodIdentityException** CRD, _AAD_ 'de tanımlanan etiketlerle eşleşen bir pod 'dan kaynaklanan meta veri uç noktası isteklerinin, NMI içinde herhangi bir işlem yapılmadan proxy olması gerektiğini bildirmek üzere yapılandırılabilir.
@@ -277,10 +259,19 @@ spec:
 
 #### <a name="issue"></a>Sorun
 
-Eklenti Azure Ilke hizmeti uç noktasına ulaşabilir, ancak şu hatayı görür:
+Eklenti Azure Ilke hizmeti uç noktasına ulaşabilir, ancak eklenti günlüklerinde aşağıdaki hatalardan birini görür:
 
 ```
-The resource provider 'Microsoft.PolicyInsights' is not registered in subscription '{subId}'. See https://aka.ms/policy-register-subscription for how to register subscriptions.
+The resource provider 'Microsoft.PolicyInsights' is not registered in subscription '{subId}'. See
+https://aka.ms/policy-register-subscription for how to register subscriptions.
+```
+
+veya
+
+```
+policyinsightsdataplane.BaseClient#CheckDataPolicyCompliance: Failure responding to request:
+StatusCode=500 -- Original Error: autorest/azure: Service returned an error. Status=500
+Code="InternalServerError" Message="Encountered an internal server error."
 ```
 
 #### <a name="cause"></a>Nedeni
@@ -289,9 +280,9 @@ The resource provider 'Microsoft.PolicyInsights' is not registered in subscripti
 
 #### <a name="resolution"></a>Çözüm
 
-`Microsoft.PolicyInsights`Kaynak sağlayıcısını kaydedin. Yönergeler için bkz. [kaynak sağlayıcısını kaydetme](../../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
+`Microsoft.PolicyInsights`Kaynak sağlayıcısını küme aboneliğine kaydedin. Yönergeler için bkz. [kaynak sağlayıcısını kaydetme](../../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
 
-### <a name="scenario-the-subscript-is-disabled"></a>Senaryo: alt simge devre dışı
+### <a name="scenario-the-subscription-is-disabled"></a>Senaryo: abonelik devre dışı
 
 #### <a name="issue"></a>Sorun
 
@@ -307,7 +298,7 @@ Bu hata, aboneliğin sorunlu olduğu belirlenen ve aboneliği engelleyecek Özel
 
 #### <a name="resolution"></a>Çözüm
 
-`azuredg@microsoft.com`Bu sorunu araştırmak ve çözmek için özellik ekibine başvurun. 
+`azuredg@microsoft.com`Bu sorunu araştırmak ve çözmek için özellik ekibine başvurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -315,4 +306,4 @@ Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek 
 
 - [Microsoft Q&A](/answers/topics/azure-policy.html)aracılığıyla uzmanlardan yanıt alın.
 - [@AzureSupport](https://twitter.com/azuresupport)Azure Community 'yi doğru kaynaklara bağlayarak müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabı ile bağlanın: yanıtlar, destek ve uzmanlar.
-- Daha fazla yardıma ihtiyacınız varsa, bir Azure destek olayı dosyası gönderebilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al** ' ı seçin.
+- Daha fazla yardıma ihtiyacınız varsa, bir Azure destek olayı dosyası gönderebilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al**' ı seçin.

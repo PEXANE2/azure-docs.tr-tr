@@ -11,12 +11,12 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
 ms.custom: devx-track-python, automl
-ms.openlocfilehash: 4f6e194f04789fbcaf24d69965dfa8ac61b20a38
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: e1a5370501fe73fb783db9a039d9f060acdb0a35
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886337"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511041"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Öğretici: Taksi ücretlerini tahmin etmek için otomatik makine öğrenmesini kullanma
 
@@ -34,7 +34,7 @@ Bu öğreticide aşağıdaki görevleri öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. Azure Machine Learning [ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Zaten bir Azure Machine Learning çalışma alanınız veya Not defteri sanal makineniz yoksa [Kurulum öğreticisini](tutorial-1st-experiment-sdk-setup.md) doldurun.
 * Kurulum öğreticisini tamamladıktan sonra, aynı not defteri sunucusunu kullanarak *öğreticiler/Regression-automl-NYC-Taxi-Data/Regression-Automated-ml. ipynb* Not defterini açın.
@@ -210,7 +210,7 @@ Eğitim için deneme parametresi ve model ayarlarını tanımlayın. [Ayarların
 
 |Özellik| Bu öğreticideki değer |Açıklama|
 |----|----|---|
-|**iteration_timeout_minutes**|2|Her yineleme için dakika cinsinden zaman sınırı. Toplam çalışma zamanını azaltmak için bu değeri küçültün.|
+|**iteration_timeout_minutes**|10|Her yineleme için dakika cinsinden zaman sınırı. Her yineleme için daha fazla zaman gerektiren daha büyük veri kümeleri için bu değeri arttırın.|
 |**experiment_timeout_hours**|0.3|Deneme sona ermeden önce tüm yinelemelerin birleştirilebilmesi için en fazla saat cinsinden süre.|
 |**enable_early_stopping**|Doğru|Puan, kısa vadede iyileştirilmediğinden erken sonlandırmayı etkinleştirmek için bayrak.|
 |**primary_metric**| spearman_correlation | İyileştirmek istediğiniz ölçüm. En uygun model bu ölçüme göre seçilecek.|
@@ -222,7 +222,7 @@ Eğitim için deneme parametresi ve model ayarlarını tanımlayın. [Ayarların
 import logging
 
 automl_settings = {
-    "iteration_timeout_minutes": 2,
+    "iteration_timeout_minutes": 10,
     "experiment_timeout_hours": 0.3,
     "enable_early_stopping": True,
     "primary_metric": 'spearman_correlation',

@@ -3,15 +3,15 @@ title: Bekleyen verileri şifrelemek için müşteri tarafından yönetilen anah
 description: Azure Logic Apps içindeki tümleştirme hizmeti ortamları (sesleri) için bekleyen verileri güvenli hale getirmek üzere kendi şifreleme anahtarlarınızı oluşturun ve yönetin
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, rarayudu, logicappspm
+ms.reviewer: mijos, rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 03/11/2020
-ms.openlocfilehash: 30b09d43cbe510318ac4f48e0655d5483491c215
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.date: 11/20/2020
+ms.openlocfilehash: 59c60c876058f8664b38411b562e57c2d5cdc2a8
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682783"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96510633"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Azure Logic Apps içindeki tümleştirme hizmeti ortamları (sesleri) için bekleyen verileri şifrelemek üzere müşteri tarafından yönetilen anahtarlar ayarlayın
 
@@ -27,13 +27,17 @@ Bu konuda, Logic Apps REST API kullanarak ıSE oluştururken kullanmak üzere ke
 
 * Müşteri tarafından yönetilen bir anahtarı, daha sonra değil *yalnızca Ise 'nizi oluşturduğunuz zaman* belirtebilirsiniz. ISE oluşturulduktan sonra bu anahtarı devre dışı bırakabilirsiniz. Şu anda, bir ıSE için müşteri tarafından yönetilen bir anahtarı döndürmek için destek yok.
 
-* Müşteri tarafından yönetilen anahtarları desteklemek için, ıSE 'niz, [sistem tarafından atanan yönetilen kimliğin](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) etkinleştirilmesini gerektirir. Bu kimlik, ıSE, kimlik bilgilerinizle oturum açmanıza gerek kalmaması için diğer Azure Active Directory (Azure AD) kiracılarındaki kaynaklara erişimi kimlik doğrulamasını sağlar.
+* Müşteri tarafından yönetilen anahtarları desteklemek için, ıSE, [sistem tarafından atanan veya Kullanıcı tarafından atanan yönetilen kimlik](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)seçeneklerinden birini etkinleştirmenizi gerektirir. Bu kimlik, ıSE 'nin sanal makineler ve bir Azure sanal ağı 'nda bulunan ya da bağlı olan sanal makineler ve diğer sistemler veya hizmetler gibi güvenli kaynaklara erişimi kimlik doğrulamasına olanak tanır. Bu şekilde, kimlik bilgilerinizle oturum açmanız gerekmez.
 
-* Şu anda, müşteri tarafından yönetilen anahtarları destekleyen ve sistem tarafından atanan kimliği etkin olan bir ıSE oluşturmak için, HTTPS PUT isteği kullanarak Logic Apps REST API çağırmanız gerekir.
+* Şu anda, müşteri tarafından yönetilen anahtarları destekleyen ve yönetilen kimlik türü etkinleştirilmiş bir ıSE oluşturmak için, HTTPS PUT isteği kullanarak Logic Apps REST API çağırmanız gerekir.
 
-* ISE 'yi oluşturan HTTPS PUT isteğini gönderdikten sonra *30 dakika* içinde, [Ise 'nin sistem tarafından atanan kimliğe Anahtar Kasası erişimi vermeniz](#identity-access-to-key-vault)gerekir. Aksi takdirde, ıSE oluşturma işlemi başarısız olur ve bir izin hatası oluşturur.
+* [Ise 'nin yönetilen kimliğine Anahtar Kasası erişimi vermeniz](#identity-access-to-key-vault)gerekir, ancak zamanlama kullandığınız yönetilen kimliğe bağlıdır.
 
-## <a name="prerequisites"></a>Ön koşullar
+  * **Sistem tarafından atanan yönetilen kimlik**: Ise 'YI oluşturan https put isteğini gönderdikten *sonra* , [Ise 'nin yönetilen kimliğine Anahtar Kasası erişimi sağlamanız](#identity-access-to-key-vault)gerekir. Aksi takdirde, ıSE oluşturma işlemi başarısız olur ve bir izin hatası alırsınız.
+
+  * **Kullanıcı tarafından atanan yönetilen kimlik**: Ise 'YI oluşturan https put isteğini göndermeden önce, [Ise 'nin yönetilen kimliğine Anahtar Kasası erişimi verin](#identity-access-to-key-vault).
+
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure portal bir ıSE oluşturduğunuzda, [Ise için erişimi etkinleştirmek için](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access) aynı [Önkoşullar](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites) ve gereksinimler
 
@@ -47,7 +51,7 @@ Bu konuda, Logic Apps REST API kullanarak ıSE oluştururken kullanmak üzere ke
   |----------|-------|
   | **Anahtar türü** | RSA |
   | **RSA anahtar boyutu** | 2048 |
-  | **Etkin** | Yes |
+  | **Etkin** | Evet |
   |||
 
   ![Müşteri tarafından yönetilen şifreleme anahtarınızı oluşturma](./media/customer-managed-keys-integration-service-environment/create-customer-managed-key-for-encryption.png)
@@ -56,7 +60,7 @@ Bu konuda, Logic Apps REST API kullanarak ıSE oluştururken kullanmak üzere ke
 
 * HTTPS PUT isteğiyle Logic Apps REST API çağırarak ıSE oluşturmak için kullanabileceğiniz bir araç. Örneğin [Postman](https://www.getpostman.com/downloads/)'ı kullanabilir veya bu görevi gerçekleştiren bir mantıksal uygulama oluşturabilirsiniz.
 
-<a name="enable-support-key-system-identity"></a>
+<a name="enable-support-key-managed-identity"></a>
 
 ## <a name="create-ise-with-key-vault-and-managed-identity-support"></a>Anahtar Kasası ve yönetilen kimlik desteği ile ıSE oluşturma
 
@@ -65,7 +69,7 @@ Logic Apps REST API çağırarak ıSE oluşturmak için, bu HTTPS PUT isteğini 
 `PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01`
 
 > [!IMPORTANT]
-> Logic Apps REST API 2019-05-01 sürümü, ıSE bağlayıcıları için kendi HTTP PUT isteğinizi yapmanızı gerektirir.
+> Logic Apps REST API 2019-05-01 sürümü, ıSE bağlayıcıları için kendi HTTPS PUT isteğinizi yapmanızı gerektirir.
 
 Dağıtımın tamamlanabilmesi için genellikle iki saat içinde sürer. Bazen dağıtım dört saate kadar sürebilir. Dağıtım durumunu denetlemek için, Azure araç çubuğinizdeki [Azure Portal](https://portal.azure.com)bildirimler bölmesini açan Bildirimler simgesini seçin.
 
@@ -88,7 +92,7 @@ Dağıtımın tamamlanabilmesi için genellikle iki saat içinde sürer. Bazen d
 
 İstek gövdesinde, bilgileri ıSE tanımınızda bilgilerini sağlayarak bu ek öğelere yönelik desteği etkinleştirin:
 
-* ISE 'nizin anahtar kasanıza erişmek için kullandığı, sistem tarafından atanan yönetilen kimlik
+* ISE 'nizin anahtar kasanıza erişmek için kullandığı yönetilen kimlik
 * Anahtar kasanızın ve kullanmak istediğiniz müşteri tarafından yönetilen anahtar
 
 #### <a name="request-body-syntax"></a>İstek gövdesi sözdizimi
@@ -106,7 +110,14 @@ Dağıtımın tamamlanabilmesi için genellikle iki saat içinde sürer. Bazen d
       "capacity": 1
    },
    "identity": {
-      "type": "SystemAssigned"
+      "type": <"SystemAssigned" | "UserAssigned">,
+      // When type is "UserAssigned", include the following "userAssignedIdentities" object:
+      "userAssignedIdentities": {
+         "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{user-assigned-managed-identity-object-ID}": {
+            "principalId": "{principal-ID}",
+            "clientId": "{client-ID}"
+         }
+      }
    },
    "properties": {
       "networkConfiguration": {
@@ -153,7 +164,13 @@ Bu örnek istek gövdesinde örnek değerler gösterilmektedir:
    "type": "Microsoft.Logic/integrationServiceEnvironments",
    "location": "WestUS2",
    "identity": {
-      "type": "SystemAssigned"
+      "type": "UserAssigned",
+      "userAssignedIdentities": {
+         "/subscriptions/********************/resourceGroups/Fabrikam-RG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/*********************************": {
+            "principalId": "*********************************",
+            "clientId": "*********************************"
+         }
+      }
    },
    "sku": {
       "name": "Premium",
@@ -197,7 +214,11 @@ Bu örnek istek gövdesinde örnek değerler gösterilmektedir:
 
 ## <a name="grant-access-to-your-key-vault"></a>Anahtar kasanıza erişim izni verin
 
-ISE 'yi oluşturmak için HTTP PUT isteğini gönderdikten sonra *30 dakika* içinde, Ise 'nin sistem tarafından atanan kimlik için anahtar kasanıza bir erişim ilkesi eklemeniz gerekir. Aksi takdirde, ıSE 'niz için oluşturma işlemi başarısız olur ve bir izin hatası alırsınız. 
+Zamanlama, kullandığınız yönetilen kimliğe göre farklılık gösterir, ancak [Ise 'nin yönetilen kimliğine Anahtar Kasası erişimi sağlamanız](#identity-access-to-key-vault)gerekir.
+
+* **Sistem tarafından atanan yönetilen kimlik**: Ise 'YI oluşturan https put isteğini gönderdikten *sonra 30 dakika* içinde, Ise 'nin sistem tarafından atanan yönetilen kimliği için anahtar kasanıza bir erişim ilkesi eklemeniz gerekir. Aksi takdirde, ıSE 'niz için oluşturma işlemi başarısız olur ve bir izin hatası alırsınız.
+
+* **Kullanıcı tarafından atanan yönetilen kimlik**: Ise 'YI oluşturan https put isteğini göndermeden önce, Ise 'nin Kullanıcı tarafından atanan yönetilen kimliği için anahtar kasanıza bir erişim ilkesi ekleyin.
 
 Bu görev için Azure PowerShell [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) komutunu kullanabilir ya da Azure Portal aşağıdaki adımları izleyebilirsiniz:
 

@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 05fef320d558de30830f76031d3b96262ae29f07
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 838276c47085a3c7ad0f7c0a35a2578b13eb5026
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445789"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511279"
 ---
 # <a name="azure-synapse-analytics-frequently-asked-questions"></a>Azure SYNAPSE Analytics hakkında sık sorulan sorular
 
@@ -28,13 +28,13 @@ Y: Azure SYNAPSE, çalışma alanınızın güvenliğini basitleştirecek bir di
 
 SYNAPSE RBAC rolleri:
 * SYNAPSE Yöneticisi
-* SYNAPSE Katılımcısı
-* SYNAPSE yapıt yazarı
-* SYNAPSE yapıt okuyucu
-* SYNAPSE Işlem yöneticisi
-* SYNAPSE kimlik bilgisi kullanıcısı
-* SYNAPSE yönetilen özel uç nokta Yöneticisi
-* SYNAPSE okuyucu
+* SYNAPSE SQL Yöneticisi
+* SYNAPSE Spark Yöneticisi
+* SYNAPSE katkıda bulunan (Önizleme)
+* SYNAPSE yapıt yayımcısı (Önizleme)
+* SYNAPSE yapıt kullanıcısı (Önizleme)
+* SYNAPSE Işlem Işleci (Önizleme)
+* SYNAPSE kimlik bilgileri kullanıcısı (Önizleme)
 
 SYNAPSE RBAC kapsamları:
 * Çalışma alanı 

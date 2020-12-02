@@ -5,13 +5,13 @@ author: cherylmc
 ms.author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 10/23/2020
-ms.openlocfilehash: 74000322372652b90e0d0db07d687f8e57c4f88e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.date: 12/01/2020
+ms.openlocfilehash: e2df34b7897ee2543d967d147317859ab26971e9
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518254"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96510494"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-azure-portal"></a>Öğretici: Azure portal kullanarak bir VPN ağ geçidi oluşturma ve yönetme
 
@@ -74,7 +74,7 @@ Aşağıdaki değerleri kullanarak bir sanal ağ geçidi oluşturun:
 
 Ağ Geçidi genel IP adresini ağ geçidinizin **genel bakış** sayfasında görüntüleyebilirsiniz.
 
-:::image type="content" source="./media/tutorial-create-gateway-portal/address.png" alt-text="VNet ve VPN Gateway diyagramı":::
+:::image type="content" source="./media/tutorial-create-gateway-portal/address.png" alt-text="Genel Bakış sayfası":::
 
 Genel IP adresi nesnesiyle ilgili ek bilgileri görmek için **genel IP adresi**' nin yanındaki ad/IP adresi bağlantısına tıklayın.
 

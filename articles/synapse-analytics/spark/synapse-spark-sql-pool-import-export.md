@@ -6,25 +6,28 @@ author: euangMS
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: spark
-ms.date: 04/15/2020
+ms.date: 11/19/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: 178fc12fe8e8e20af8deb40c62990c279af4ab64
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e0bdfa4a451269e82b73194e921f9067d848868e
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452833"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511092"
 ---
 # <a name="introduction"></a>Giriş
 
-Azure SYNAPSE Apache Spark to SYNAPSE SQL Connector, Azure SYNAPSE 'deki sunucusuz Apache Spark havuzlar ve SQL havuzları arasında verileri verimli bir şekilde aktarmak için tasarlanmıştır. Azure SYNAPSE Apache Spark to SYNAPSE SQL Connector yalnızca adanmış SQL havuzları üzerinde çalışır, sunucusuz SQL havuzu ile çalışmaz.
+Azure SYNAPSE Apache Spark to SYNAPSE SQL Connector, Azure SYNAPSE 'deki sunucusuz Apache Spark havuzlar ve adanmış SQL havuzları arasında verileri verimli bir şekilde aktarmak için tasarlanmıştır. Azure SYNAPSE Apache Spark to SYNAPSE SQL Connector yalnızca adanmış SQL havuzları üzerinde çalışır, sunucusuz SQL havuzu ile çalışmaz.
+
+> [!WARNING]
+> **Sqlanalytics ()** işlev adı **synapsesql ()** olarak değiştirildi. Sqlanalytics işlevi çalışmaya devam eder, ancak kullanım dışı olacaktır.  Gelecekte herhangi bir kesinti oluşmasını önlemek için lütfen **sqlanalytics ()** ile **synapsesql ()** arasındaki başvuruyu değiştirin.
 
 ## <a name="design"></a>Tasarım
 
 Spark havuzları ve SQL havuzları arasında veri aktarımı, JDBC kullanılarak yapılabilir. Bununla birlikte, Spark ve SQL havuzları gibi iki Dağıtılmış Sistem, JDBC, seri veri aktarımı ile ilgili bir performans sorunu olduğunu eğilimi gösterir.
 
-Azure SYNAPSE Apache Spark havuzu SYNAPSE SQL Bağlayıcısı Apache Spark için bir veri kaynağı uygulamasıdır. Spark kümesi ve SYNAPSE SQL örneği arasında verileri verimli bir şekilde aktarmak için adanmış SQL havuzlarında Azure Data Lake Storage 2. ve PolyBase 'i kullanır.
+Azure SYNAPSE Apache Spark havuzu SYNAPSE SQL Bağlayıcısı Apache Spark için bir veri kaynağı uygulamasıdır. Spark kümesi ve SYNAPSE adanmış SQL örneği arasında verimli bir şekilde veri aktarmak için adanmış SQL havuzlarında Azure Data Lake Storage 2. ve PolyBase 'i kullanır.
 
 ![Bağlayıcı mimarisi](./media/synapse-spark-sqlpool-import-export/arch1.png)
 
@@ -37,6 +40,8 @@ Bu nedenle, Azure AD-Auth depolama hesabında ve veri ambarı sunucusunda yapıl
 ## <a name="constraints"></a>Kısıtlamalar
 
 - Bu bağlayıcı yalnızca Scala 'da kullanılabilir.
+- PySpark için bkz. [Python kullanma](#use-pyspark-with-the-connector) bölümündeki ayrıntılar.
+- Bu bağlayıcı SQL görünümlerinin sorgulanmasını desteklemez.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -80,7 +85,7 @@ EXEC sp_addrolemember 'db_exporter',[mike@contoso.com]
 #### <a name="read-api"></a>API 'YI oku
 
 ```scala
-val df = spark.read.sqlanalytics("<DBName>.<Schema>.<TableName>")
+val df = spark.read.synapsesql("<DBName>.<Schema>.<TableName>")
 ```
 
 Yukarıdaki API, hem Iç (yönetilen) hem de SQL havuzundaki dış tablolar için çalışacaktır.
@@ -88,7 +93,7 @@ Yukarıdaki API, hem Iç (yönetilen) hem de SQL havuzundaki dış tablolar içi
 #### <a name="write-api"></a>Yazma API 'SI
 
 ```scala
-df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
+df.write.synapsesql("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
 Yazma API 'SI, tabloyu adanmış SQL havuzunda oluşturur ve sonra verileri yüklemek için PolyBase 'i çağırır.  Tablo adanmış SQL havuzunda bulunmamalıdır veya "zaten adlı bir nesne var..." şeklinde bir hata döndürülür.
@@ -101,7 +106,7 @@ TableType değerleri
 SQL havuzu tarafından yönetilen tablo
 
 ```scala
-df.write.sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
+df.write.synapsesql("<DBName>.<Schema>.<TableName>", Constants.INTERNAL)
 ```
 
 SQL havuzu dış tablosu
@@ -130,7 +135,7 @@ Depolama hesabına Azure Active Directory geçişli kimlik doğrulaması kullan�
 df.write.
     option(Constants.DATA_SOURCE, <DataSourceName>).
     option(Constants.FILE_FORMAT, <FileFormatName>).
-    sqlanalytics("<DBName>.<Schema>.<TableName>", Constants.EXTERNAL)
+    synapsesql("<DBName>.<Schema>.<TableName>", Constants.EXTERNAL)
 
 ```
 
@@ -149,7 +154,7 @@ df.write.
 ```scala
 val df = spark.read.
 option(Constants.SERVER, "samplews.database.windows.net").
-sqlanalytics("<DBName>.<Schema>.<TableName>")
+synapsesql("<DBName>.<Schema>.<TableName>")
 ```
 
 #### <a name="write-api"></a>Yazma API 'SI
@@ -157,7 +162,7 @@ sqlanalytics("<DBName>.<Schema>.<TableName>")
 ```scala
 df.write.
 option(Constants.SERVER, "samplews.database.windows.net").
-sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
+synapsesql("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
 ### <a name="use-sql-auth-instead-of-azure-ad"></a>Azure AD yerine SQL auth kullanın
@@ -171,7 +176,7 @@ val df = spark.read.
 option(Constants.SERVER, "samplews.database.windows.net").
 option(Constants.USER, <SQLServer Login UserName>).
 option(Constants.PASSWORD, <SQLServer Login Password>).
-sqlanalytics("<DBName>.<Schema>.<TableName>")
+synapsesql("<DBName>.<Schema>.<TableName>")
 ```
 
 #### <a name="write-api"></a>Yazma API 'SI
@@ -181,10 +186,10 @@ df.write.
 option(Constants.SERVER, "samplews.database.windows.net").
 option(Constants.USER, <SQLServer Login UserName>).
 option(Constants.PASSWORD, <SQLServer Login Password>).
-sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
+synapsesql("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-### <a name="use-the-pyspark-connector"></a>PySpark bağlayıcısını kullanma
+### <a name="use-pyspark-with-the-connector"></a>Bağlayıcıyla PySpark kullanma
 
 > [!NOTE]
 > Bu örnek yalnızca akılda tutulan Not defteri deneyimiyle verilmiştir.
@@ -203,7 +208,7 @@ Mıknatıccs kullanarak PySpark not defterinde bir Scala hücresi çalıştırı
 %%spark
 val scala_df = spark.sqlContext.sql ("select * from pysparkdftemptable")
 
-scala_df.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTERNAL)
+scala_df.write.synapsesql("sqlpool.dbo.PySparkTable", Constants.INTERNAL)
 ```
 
 Benzer şekilde, okuma senaryosunda, Scala kullanarak verileri okuyun ve geçici bir tabloya yazın ve geçici tabloyu bir veri çerçevesinde sorgulamak için PySpark içinde Spark SQL kullanın.
@@ -234,6 +239,7 @@ Diğer kullanıcıların eksik izinlerini değiştirmek için, çalışma alanı
 
 > [!IMPORTANT]
 > ' Yi planlamıyorsanız "varsayılan" seçeneğini belirlediğinizden emin olun.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

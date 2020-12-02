@@ -5,14 +5,14 @@ services: virtual-wan
 author: skishen525
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 12/01/2020
 ms.author: sukishen
-ms.openlocfilehash: 6b2595eaf1e373c3a15014d0bc684d6e3914a665
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: a92dafe6237d0f061f837f07c5dcf2686b1a8a7e
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566648"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96510749"
 ---
 # <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>Azure sanal WAN ve güvenli hub kullanarak Çin ile bağlantı
 
@@ -22,7 +22,7 @@ Ortak bir oto, üretim, lojistik sektörlere veya emeltes gibi diğer Kurumsal S
 
 Bu bir nedenden dolayı, Internet 'in Çince bölümünü koruyan ve trafiği Çin 'e filtreleyen "Çin güvenlik duvarı 'nın" harika güvenlik duvarıdır. Çin Mainland ile Çin dışında çalışan neredeyse tüm trafik, Hong Kong ve Macau gibi özel yönetim bölgeleri haricinde harika güvenlik duvarını geçirir. Hong Kong ve Macau aracılığıyla çalışan trafik, eksiksiz güvenlik duvarında harika güvenlik duvarının bir alt kümesi tarafından işlenir.
 
-![Sağlayıcı bağlantısı](./media/interconnect-china/provider.png)
+:::image type="content" source="./media/interconnect-china/provider.png" alt-text="Diyagramda sağlayıcı bağlantısı gösterilmektedir.":::
 
 Bir müşteri, sanal WAN 'ı kullanarak, Microsoft Bulut hizmetlere daha fazla performans ve kararlı bir bağlantı kurabilir ve bu, Çince siber güvenlik yasasını bozmadan kurumsal ağıyla bağlantı kurabilir.
 
@@ -71,11 +71,17 @@ Aşağıdaki listede, Hong Kong 'da olası Internet değişimleri gösterilmekte
 
 Bu Connect kullanılırken, Microsoft hizmetlerine yönelik bir sonraki BGP atlayağınızın Microsoft otonom sistem numarası (AS #) 8075 olması gerekir. Tek bir konum veya SDWAN çözümü kullanıyorsanız, bu bağlantı seçimi olacaktır.
 
-Her iki durumda da, Çince ana kara 'nin ikinci ve normal bir Internet ayırıcıya sahip olmasını öneririz. Bu, kurumsal trafik arasındaki trafiği Microsoft 365 ve Azure gibi bulut hizmetleri ve yasalar tarafından düzenlenen Internet trafiği arasında bölecektir.
+Ana kara Çin ve Hong Kong arasında birbirine bağlı bağlantılar ile ilgili geçerli değişikliklerle, bu ağ sağlayıcılarının çoğu ana kara Çin ve Hong Kong arasında bir MPLS Köprüsü oluşturur.
+
+Çin içinde siteden siteye VPN bağlantılarına izin verildiğini ve bunların büyük ölçüde kararlı olduğunu görebilirsiniz. Aynı, dünyanın geri kalanında bulunan dallar arasındaki siteden siteye bağlantılar için de geçerlidir. Sağlayıcılar artık her iki tarafta bir VPN/SDWAN toplama ve aralarında MPLS aracılığıyla köprü oluşturur.
+
+:::image type="content" source="./media/interconnect-china/china-mpls-bridge.png" alt-text="Diyagramda Çin MPLS Köprüsü görüntülenir.":::
+
+Her iki durumda da, Çince ana kara 'nin ikinci ve normal bir internet ayırıcıya sahip olmasını öneririz. Bu, kurumsal trafik arasındaki trafiği Microsoft 365 ve Azure gibi bulut hizmetleri ve yasalar tarafından düzenlenen Internet trafiği arasında bölecektir.
 
 Çin 'de uyumlu bir ağ mimarisi aşağıdaki örnekteki gibi görünebilir:
 
-![Birden çok dal](./media/interconnect-china/multi-branch.png)
+:::image type="content" source="./media/interconnect-china/multi-branch.png" alt-text="Diyagramda birden çok dal gösterilmektedir.":::
 
 Bu örnekte, Microsoft Global Ağa gelen Hong Kong ile Interconnect 'e sahip olmak için artık [Azure sanal WAN küresel aktarım mimarisinden](virtual-wan-global-transit-network-architecture.md) ve Azure GÜVENLI sanal WAN hub 'ı gibi ek hizmetlerden yararlanarak, Çin ve veri merkezinize yönelik hizmetleri ve bağlantı merkezini kullanabilirsiniz.
 
@@ -85,7 +91,7 @@ Bu bölümde, Interconnect 'e yönelik sanal WAN hub-hub iletişimini kullanır�
 
 Örnek bir mimari aşağıdaki örnekteki gibi görünebilir:
 
-![Örnek WAN](./media/interconnect-china/sample.png)
+:::image type="content" source="./media/interconnect-china/sample.png" alt-text="Diyagramda örnek WAN gösterilmektedir.":::
 
 Bu örnekte, Çin dalları VPN veya MPLS bağlantıları kullanarak Azure bulutu Çin ve birbirlerine bağlanır. Küresel hizmetlere bağlanması gereken dallar, doğrudan Hong Kong 'a bağlı olan MPLS veya Internet tabanlı Hizmetleri kullanır. ExpressRoute 'u Hong Kong 'da ve diğer bölgede kullanmak istiyorsanız ExpressRoute [Global Reach](../expressroute/expressroute-global-reach.md) her Iki ExpressRoute devresine de bağlamak üzere yapılandırmanız gerekir.
 
@@ -93,7 +99,7 @@ ExpressRoute Global Reach bazı bölgelerde kullanılamıyor. Örneğin, Brezily
 
 Aşağıdaki şekilde, bu senaryoya ilişkin örneklerin her ikisi de gösterilmektedir.
 
-![Global Reach](./media/interconnect-china/global.png)
+:::image type="content" source="./media/interconnect-china/global.png" alt-text="Diyagramda Global Reach gösterilmektedir.":::
 
 ## <a name="secure-internet-breakout-for-microsoft-365"></a><a name="secure"></a>Microsoft 365 için güvenli Internet kırılımı
 
@@ -103,7 +109,7 @@ Sanal WAN ile her iki senaryo için de [Azure sanal WAN güvenli hub 'dan](../fi
 
 Aşağıdaki şekilde bu senaryonun bir örneği gösterilmektedir:
 
-![Web ve Microsoft Hizmetleri trafiği için Internet kırılımı](./media/interconnect-china/internet.png)
+:::image type="content" source="./media/interconnect-china/internet.png" alt-text="Diyagramda Web ve Microsoft Hizmetleri trafiği için Internet kırılımı gösterilmektedir.":::
 
 ## <a name="architecture-and-traffic-flows"></a><a name="traffic"></a>Mimari ve trafik akışları
 
@@ -117,7 +123,7 @@ Azure sanal WAN 'ı Internet bağlantılarıyla birlikte kullanırken, her bağl
 
 Bu bölümde, SDWAN veya VPN 'yi Hong Kong ve diğer dallara kullanan bir tasarım açıklanmaktadır. Bu seçenek, sanal WAN omurgasını her iki sitesinde de saf Internet bağlantısı kullanırken kullanım ve trafik akışını gösterir. Bu durumda bağlantı, adanmış Internet erişimi veya bir ıCP sağlayıcısı SDWAN çözümü kullanılarak Hong Kong 'ye getirilir. Diğer dallar da saf Internet veya SDWAN çözümlerini kullanıyor.
 
-![Çin-Hong Kong trafiği](./media/interconnect-china/china-traffic.png)
+:::image type="content" source="./media/interconnect-china/china-traffic.png" alt-text="Diyagramda Çin-Hong Kong trafiği gösterilmektedir.":::
 
 Bu mimaride, her site, VPN ve Azure sanal WAN kullanılarak Microsoft küresel ağa bağlanır. Siteler ve Hong Kong arasındaki trafik, Microsoft ağı Trough iletilir ve yalnızca son mil üzerinde normal Internet bağlantısı kullanır.
 
@@ -125,7 +131,7 @@ Bu mimaride, her site, VPN ve Azure sanal WAN kullanılarak Microsoft küresel a
 
 Bu bölümde, Hong Kong ve diğer dallardaki VPN/SDWAN dallarıyla ExpressRoute kullanan bir tasarım açıklanmaktadır. Bu seçenek, Hong Kong ve SDWAN veya VPN aracılığıyla bağlı diğer dallarda sonlandırılan ve ExpressRoute kullanımını gösterir. Hong Kong 'daki ExpressRoute Şu anda [hızlı rota Iş ortakları](../expressroute/expressroute-locations-providers.md#global-commercial-azure)listesinde bulabileceğiniz kısa bir sağlayıcı listesiyle sınırlıdır.
 
-![Çin-Hong Kong trafik ExpressRoute](./media/interconnect-china/expressroute.png)
+:::image type="content" source="./media/interconnect-china/expressroute.png" alt-text="Diyagramda Çin-Hong Kong trafik-ExpressRoute gösterilmektedir.":::
 
 Ayrıca, Çin 'den ExpressRoute 'u (örneğin, Güney Kore veya Japonya) sonlandırma seçenekleri de vardır. Ancak, uyumluluk, düzenleme ve gecikme süresi, Hong Kong Şu anda en iyi seçimdir.
 
@@ -135,7 +141,7 @@ Bu bölümde, ExpressRoute 'un Hong Kong ve diğer dallar için kullanıldığı
 
 Birbirine bağlı dallara veya bunlardan, Çin 'deki konumlara giden trafik, Bu mimaride farklı bir yaklaşıma uyar. Şu anda sanal WAN, ExpressRoute ulaşım 'e ExpressRoute 'ı desteklemiyor. Trafik, sanal WAN hub 'ını geçirmeden ExpressRoute Global Reach veya üçüncü taraf Interconnect 'ten yararlanır. Doğrudan bir Microsoft Enterprise Edge (MSEE) ' den diğerine akacaktır.
 
-![ExpressRoute Global Reach hakkında](./media/interconnect-china/expressroute-virtual.png)
+:::image type="content" source="./media/interconnect-china/expressroute-virtual.png" alt-text="Diyagramda ExpressRoute Global Reach gösterilmektedir.":::
 
 Şu anda ExpressRoute Global Reach her ülkede/bölgede kullanılamaz, ancak Azure sanal WAN kullanarak bir çözüm yapılandırabilirsiniz.
 

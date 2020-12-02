@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/21/2020
-ms.openlocfilehash: 1e71d3883b8dacefa9b501ee3a9a0533d5c7d515
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.date: 12/02/2020
+ms.openlocfilehash: 57b4b6f3f49e9b82ada4b37c8e2de0697781e063
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592677"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96510599"
 ---
 # <a name="execute-r-script-module"></a>R betik modülünü Yürüt
 
@@ -78,25 +78,27 @@ azureml_main <- function(dataframe1, dataframe2){
  > [!NOTE]
  > Bir paketi yüklemeden önce, bir yükleme tekrarlamanız için zaten mevcut olup olmadığını denetleyin. Yineleme yüklemeleri, Web hizmeti isteklerinin zaman aşımına gelmesine neden olabilir.     
 
+## <a name="access-to-registered-dataset"></a>Kayıtlı veri kümesine erişim
+
+Çalışma alanınızdaki [kayıtlı veri kümelerine](../how-to-create-register-datasets.md) erişmek için aşağıdaki örnek koda başvurabilirsiniz:
+
+```R
+azureml_main <- function(dataframe1, dataframe2){
+  print("R script run.")
+  run = get_current_run()
+  ws = run$experiment$workspace
+  dataset = azureml$core$dataset$Dataset$get_by_name(ws, "YOUR DATASET NAME")
+  dataframe2 <- dataset$to_pandas_dataframe()
+  # Return datasets as a Named List
+  return(list(dataset1=dataframe1, dataset2=dataframe2))
+}
+```
+
 ## <a name="uploading-files"></a>Karşıya dosya yükleme
 Execute R betiği modülü, Azure Machine Learning R SDK kullanarak dosyaları karşıya yüklemeyi destekler.
 
 Aşağıdaki örnek, R betiğindeki bir görüntü dosyasının nasıl karşıya yükleneceğini göstermektedir:
 ```R
-
-# R version: 3.5.1
-# The script MUST contain a function named azureml_main,
-# which is the entry point for this module.
-
-# Note that functions dependent on the X11 library,
-# such as "View," are not supported because the X11 library
-# is not preinstalled.
-
-# The entry point function MUST have two input arguments.
-# If the input port is not connected, the corresponding
-# dataframe argument will be null.
-#   Param<dataframe1>: a R DataFrame
-#   Param<dataframe2>: a R DataFrame
 azureml_main <- function(dataframe1, dataframe2){
   print("R script run.")
 
@@ -119,22 +121,6 @@ azureml_main <- function(dataframe1, dataframe2){
 > [!div class="mx-imgBorder"]
 > ![Karşıya yüklenen görüntünün önizlemesi](media/module/upload-image-in-r-script.png)
 
-## <a name="access-to-registered-dataset"></a>Kayıtlı veri kümesine erişim
-
-Çalışma alanınızdaki [kayıtlı veri kümelerine](../how-to-create-register-datasets.md) erişmek için aşağıdaki örnek koda başvurabilirsiniz:
-
-```R
-    azureml_main <- function(dataframe1, dataframe2){
-  print("R script run.")
-  run = get_current_run()
-  ws = run$experiment$workspace
-  dataset = azureml$core$dataset$Dataset$get_by_name(ws, "YOUR DATASET NAME")
-  dataframe2 <- dataset$to_pandas_dataframe()
-  # Return datasets as a Named List
-  return(list(dataset1=dataframe1, dataset2=dataframe2))
-}
-```
-
 ## <a name="how-to-configure-execute-r-script"></a>Execute R betiğini yapılandırma
 
 Execute R betiği modülü, başlangıç noktası olarak örnek kod içerir.
@@ -147,11 +133,11 @@ Tasarımcıda depolanan veri kümeleri, bu modülle yüklendiğinde otomatik ola
 
 1. Betikte gereken tüm girdileri bağlayın. Girişler isteğe bağlıdır ve veri ve ek R kodu içerebilir.
 
-    * **DataSet1** : ilk girişe olarak başvuru yapın `dataframe1` . Giriş veri kümesi, CSV, TSV veya ARFF dosyası olarak biçimlendirilmelidir. Ya da bir Azure Machine Learning veri kümesini bağlayabilirsiniz.
+    * **DataSet1**: ilk girişe olarak başvuru yapın `dataframe1` . Giriş veri kümesi, CSV, TSV veya ARFF dosyası olarak biçimlendirilmelidir. Ya da bir Azure Machine Learning veri kümesini bağlayabilirsiniz.
 
-    * **DataSet2** : ikinci girişe olarak başvuru yapın `dataframe2` . Bu veri kümesi aynı zamanda CSV, TSV veya ARFF dosyası ya da bir Azure Machine Learning veri kümesi olarak biçimlendirilmelidir.
+    * **DataSet2**: ikinci girişe olarak başvuru yapın `dataframe2` . Bu veri kümesi aynı zamanda CSV, TSV veya ARFF dosyası ya da bir Azure Machine Learning veri kümesi olarak biçimlendirilmelidir.
 
-    * **Betik paketi** : Üçüncü giriş. zip dosyalarını kabul eder. Daraltılmış bir dosya, birden çok dosya ve birden çok dosya türü içerebilir.
+    * **Betik paketi**: Üçüncü giriş. zip dosyalarını kabul eder. Daraltılmış bir dosya, birden çok dosya ve birden çok dosya türü içerebilir.
 
 1. **R betiği** metin kutusuna geçerli R betiği yazın veya yapıştırın.
 
@@ -237,7 +223,7 @@ Sonuçları R betiğine yazdırmanız gerekirse, yazdırılan sonuçları modül
 
 Execute R betiği modülü, giriş olarak rastgele R betik dosyalarını destekler. Bunları kullanmak için,. zip dosyasının bir parçası olarak çalışma alanınıza yüklemeniz gerekir.
 
-1. R kodu içeren bir. zip dosyasını çalışma alanınıza yüklemek için **veri kümeleri** varlık sayfasına gidin. **Veri kümesi oluştur** ' u seçin ve ardından **yerel dosya** ve **Dosya** veri kümesi türü seçeneğini belirleyin.  
+1. R kodu içeren bir. zip dosyasını çalışma alanınıza yüklemek için **veri kümeleri** varlık sayfasına gidin. **Veri kümesi oluştur**' u seçin ve ardından **yerel dosya** ve **Dosya** veri kümesi türü seçeneğini belirleyin.  
 
 1. Daraltılmış dosyanın, sol modül ağacındaki **veri kümeleri** kategorisi altındaki **veri kümelerinde** göründüğünü doğrulayın.
 

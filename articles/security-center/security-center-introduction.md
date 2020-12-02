@@ -1,6 +1,6 @@
 ---
 title: Azure Güvenlik Merkezi nedir?| Microsoft Docs
-description: Bu sayfada Güvenlik Merkezi 'nin başlıca avantajları açıklanır. güvenlik durumunuzun keşfedilmesinin yanı sıra bulut ve şirket içi kaynakların kapsamı ile geliştiriyoruz.
+description: Bu sayfa, güvenlik merkezi 'nin temel avantajlarını açıklar. güvenlik durumunuzun keşfedilmesinin yanı sıra bulut ve şirket içi kaynakların kapsamı ile geliştiriyoruz.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: d62ed31a68d9469a1bd1fc66e479b0f91db2f916
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 0a1cac0fe61ea13a18224ea5992b5c7c1ba69d8a
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372277"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96510344"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Güvenlik Merkezi nedir?
 
@@ -37,11 +37,11 @@ Azure Güvenlik Merkezi en acil üç güvenlik sorununu giderir:
 
 Bu güçlüklere karşı kendinizi korumanıza yardımcı olmak için, Güvenlik Merkezi aşağıdakileri sağlayan araçlar sunar:
 
--   **Güvenliği güçlendirin** : Güvenlik Merkezi ortamınıza değerlendirir ve kaynaklarınızın durumunu anlamanıza ve güvenli olup olmadığınıza olanak sağlar.
+-   **Güvenliği güçlendirin**: Güvenlik Merkezi ortamınıza değerlendirir ve kaynaklarınızın durumunu anlamanıza ve güvenli olup olmadığınıza olanak sağlar.
 
--   **Tehditlere karşı koruma** : güvenlik merkezi iş yüklerinizi değerlendirir ve tehdit önleme önerilerini ve güvenlik uyarılarını yükseltir.
+-   **Tehditlere karşı koruma**: güvenlik merkezi iş yüklerinizi değerlendirir ve tehdit önleme önerilerini ve güvenlik uyarılarını yükseltir.
 
--   **Daha hızlı güvenlik sağlama** : Güvenlik Merkezi'nde her şey bulut hızında yapılır. Yerel olarak tümleşik olduğundan, Güvenlik Merkezi dağıtımı kolaydır ve Azure hizmetleriyle otomatik sağlama ve koruma olanağı tanır.
+-   **Daha hızlı güvenlik sağlama**: Güvenlik Merkezi'nde her şey bulut hızında yapılır. Yerel olarak tümleşik olduğundan, Güvenlik Merkezi dağıtımı kolaydır ve Azure hizmetleriyle otomatik sağlama ve koruma olanağı tanır.
 
 > [!NOTE]
 > Bu hizmet, müşterilerin Temsilcili abonelikleri ve kaynak gruplarını yönetmek için hizmet sağlayıcılarının kendi kiracılarında oturum açmasını sağlayan [Azure Mathouse](../lighthouse/overview.md)hizmetini destekler. Azure Güvenlik Merkezi senaryolarında, bir aboneliğin ayrı kaynak grupları yerine temsilci seçilmiş olması gerekir.
