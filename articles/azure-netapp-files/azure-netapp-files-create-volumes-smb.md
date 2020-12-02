@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 12/01/2020
 ms.author: b-juche
-ms.openlocfilehash: 9740506da2c03996db756175551867ed43575a7c
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 682a97738e94c2a8188b4976a229d6a850a5b6ac
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94488188"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512010"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files için SMB birimi oluşturma
 
@@ -31,7 +31,7 @@ Zaten bir kapasite havuzu ayarlamış olmalısınız.
 Azure NetApp Files için bir alt ağ atanmış olmalıdır.  
 [Azure NetApp Files için bir alt ağı temsilci olarak belirleme](azure-netapp-files-delegate-subnet.md)
 
-## <a name="requirements-for-active-directory-connections"></a>Active Directory bağlantıları için gereksinimler
+## <a name="requirements-for-active-directory-connections"></a>Active Directory bağlantılarının gereksinimleri
 
  SMB birimi oluşturmadan önce Active Directory bağlantı oluşturmanız gerekir. Active Directory bağlantıları için gereksinimler şunlardır: 
 
@@ -45,7 +45,7 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
     |    AD Web Hizmetleri    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    Icmpv4             |    YOK       |    Yankı yanıtı    |
+    |    Icmpv4             |    Yok       |    Yankı yanıtı    |
     |    Kerberos           |    464       |    TCP           |
     |    Kerberos           |    464       |    UDP           |
     |    Kerberos           |    88        |    TCP           |
@@ -84,7 +84,7 @@ Azure NetApp Files için bir alt ağ atanmış olmalıdır.
 
 * Azure NetApp Files, Azure NetApp Files hizmeti ve hedeflenen [Active Directory etki alanı denetleyicileri](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)arasında LDAP trafiğinin güvenli aktarımını sağlayan [LDAP imzalamayı](/troubleshoot/windows-server/identity/enable-ldap-signing-in-windows-server)destekler. LDAP imzalama için Microsoft Danışmanlık [ADV190023](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023) ' nin kılavuzunu takip ediyorsanız, [Birleştir Active Directory](#create-an-active-directory-connection) penceresindeki **LDAP imzalama** kutusunu işaretleyerek Azure NetApp Files ' de LDAP imzalama özelliğini etkinleştirmeniz gerekir. 
 
-    [LDAP kanalı bağlama](https://support.microsoft.com/help/4034879/how-to-add-the-ldapenforcechannelbinding-registry-entry) yapılandırmasının Azure NetApp Files hizmeti üzerinde hiçbir etkisi yoktur. 
+    [LDAP kanalı bağlama](https://support.microsoft.com/help/4034879/how-to-add-the-ldapenforcechannelbinding-registry-entry) yapılandırması tek başına Azure NetApp Files hizmeti üzerinde hiçbir etkiye sahip değildir. Ancak, hem LDAP kanalı bağlamayı hem de Güvenli LDAP 'yi (örneğin, LDAPS veya) kullanırsanız `start_tls` , SMB birimi oluşturma işlemi başarısız olur.
 
 Ek AD bilgileri hakkında Azure NetApp Files [SMB SSS](./azure-netapp-files-faqs.md#smb-faqs) bölümüne bakın. 
 
@@ -119,7 +119,7 @@ Azure NetApp Files için ek AEKLEYEN konular geçerlidir:
 
 Bir Active Directory bağlantısı oluşturduğunuzda, AEKLEMELERI için aşağıdaki özellikleri aklınızda bulabilirsiniz:
 
-* **BIRINCIL DNS** , **Ikincil DNS** ve **ad DNS etki alanı ADıNA** ilişkin bilgileri, aeklemeleri menüsünde bulabilirsiniz.  
+* **BIRINCIL DNS**, **Ikincil DNS** ve **ad DNS etki alanı ADıNA** ilişkin bilgileri, aeklemeleri menüsünde bulabilirsiniz.  
 DNS sunucuları için, Active Directory bağlantısını yapılandırmak için iki IP adresi kullanılacaktır. 
 * **Kuruluş birimi yolu** `OU=AADDC Computers` .  
 Bu ayar, **NetApp hesabı** altındaki **Active Directory bağlantılarında** yapılandırılır:
@@ -131,7 +131,7 @@ Bu ayar, **NetApp hesabı** altındaki **Active Directory bağlantılarında** y
 
 ## <a name="create-an-active-directory-connection"></a>Active Directory bağlantısı oluşturma
 
-1. NetApp hesabınızdan **Active Directory bağlantılar** ' a ve ardından **Birleştir** ' e tıklayın.  
+1. NetApp hesabınızdan **Active Directory bağlantılar**' a ve ardından **Birleştir**' e tıklayın.  
 
     ![Active Directory bağlantıları](../media/azure-netapp-files/azure-netapp-files-active-directory-connections.png)
 
@@ -234,7 +234,7 @@ Bu ayar, **NetApp hesabı** altındaki **Active Directory bağlantılarında** y
 
         ![Active Directory kimlik bilgileri](../media/azure-netapp-files/active-directory-credentials.png)
 
-3. **Katıl** ’a tıklayın.  
+3. **Katıl**’a tıklayın.  
 
     Oluşturduğunuz Active Directory bağlantı görüntülenir.
 
@@ -246,7 +246,7 @@ Bu ayar, **NetApp hesabı** altındaki **Active Directory bağlantılarında** y
 
     ![Birimlere git](../media/azure-netapp-files/azure-netapp-files-navigate-to-volumes.png)
 
-2. Birim oluşturmak için **+ Birim ekle** 'ye tıklayın.  
+2. Birim oluşturmak için **+ Birim ekle**'ye tıklayın.  
     Birim oluştur penceresi görüntülenir.
 
 3. Birim Oluştur penceresinde **Oluştur** ' a tıklayın ve temel bilgiler sekmesinde aşağıdaki alanlar için bilgi sağlayın:   
@@ -294,7 +294,7 @@ Bu ayar, **NetApp hesabı** altındaki **Active Directory bağlantılarında** y
 4. **Protokol** ' e tıklayın ve aşağıdaki bilgileri doldurun:  
     * Birimin protokol türü olarak **SMB** ' yi seçin. 
     * Açılır listeden **Active Directory** bağlantınızı seçin.
-    * **Paylaşım adı** ' nda paylaşılan birimin adını belirtin.
+    * **Paylaşım adı**' nda paylaşılan birimin adını belirtin.
 
     ![SMB protokolünü belirtin](../media/azure-netapp-files/azure-netapp-files-protocol-smb.png)
 

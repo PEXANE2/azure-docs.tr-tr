@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/14/2020
+ms.date: 12/01/2020
 ms.author: b-juche
-ms.openlocfilehash: 6963a1f39534573bca39431febe391e89d462875
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: aaffc63690894f43329763064ae89a105274953c
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072790"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511942"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files için kaynak sınırları
 
@@ -29,31 +29,31 @@ Azure NetApp Files için kaynak sınırlarını anlamak, birimlerinizi yönetmen
 
 Aşağıdaki tabloda Azure NetApp Files için kaynak sınırları açıklanmaktadır:
 
-|  Kaynak  |  Varsayılan limit  |  Destek isteği aracılığıyla ayarlanabilir  |
+|  Resource  |  Varsayılan limit  |  Destek isteği aracılığıyla ayarlanabilir  |
 |----------------|---------------------|--------------------------------------|
-|  Azure bölgesi başına NetApp hesabı sayısı   |  10    |  Yes   |
-|  NetApp hesabı başına kapasite havuzlarının sayısı   |    25     |   Yes   |
-|  Abonelik başına birim sayısı   |    500     |   Yes   |
-|  Kapasite havuzu başına birim sayısı     |    500   |    Yes     |
-|  Birim başına anlık görüntü sayısı       |    255     |    No        |
-|  Azure sanal ağı başına Azure NetApp Files (Microsoft. NetApp/birimler) için temsilci seçilen alt ağ sayısı    |   1   |    No    |
-|  Bir VNet 'te kullanılan IP sayısı (anında eşlenen sanal ağlar dahil) Azure NetApp Files   |    1000   |    No   |
-|  Tek bir kapasite havuzunun en küçük boyutu   |  4 TiB     |    No  |
-|  Tek bir kapasite havuzunun en büyük boyutu    |  500 TiB   |   No   |
-|  Tek bir birimin en küçük boyutu    |    100 GiB    |    No    |
-|  Tek bir birimin en büyük boyutu     |    100 TiB    |    No    |
-|  Tek bir dosyanın en büyük boyutu     |    16 TiB    |    No    |    
-|  Tek bir dizindeki dizin meta verilerinin en büyük boyutu      |    320 MB    |    No    |    
-|  Birim başına en fazla dosya sayısı ([maxfiles](#maxfiles))     |    100.000.000    |    Yes    |    
-|  El ile QoS birimi için atanan en düşük aktarım hızı     |    1 MIB/sn   |    No    |    
-|  El ile QoS birimi için atanan en yüksek aktarım hızı     |    4.500 MIB/sn    |    No    |    
-|  Çapraz bölge çoğaltma verileri koruma birimlerinin sayısı (hedef birimler)     |    5    |    Yes    |     
+|  Abonelik başına Azure bölgesi başına NetApp hesabı sayısı  |  10    |  Evet   |
+|  NetApp hesabı başına kapasite havuzlarının sayısı   |    25     |   Evet   |
+|  Abonelik başına birim sayısı   |    500     |   Evet   |
+|  Kapasite havuzu başına birim sayısı     |    500   |    Evet     |
+|  Birim başına anlık görüntü sayısı       |    255     |    Hayır        |
+|  Azure sanal ağı başına Azure NetApp Files (Microsoft. NetApp/birimler) için temsilci seçilen alt ağ sayısı    |   1   |    Hayır    |
+|  Bir VNet 'te kullanılan IP sayısı (anında eşlenen sanal ağlar dahil) Azure NetApp Files   |    1000   |    Hayır   |
+|  Tek bir kapasite havuzunun en küçük boyutu   |  4 TiB     |    Hayır  |
+|  Tek bir kapasite havuzunun en büyük boyutu    |  500 TiB   |   Hayır   |
+|  Tek bir birimin en küçük boyutu    |    100 GiB    |    Hayır    |
+|  Tek bir birimin en büyük boyutu     |    100 TiB    |    Hayır    |
+|  Tek bir dosyanın en büyük boyutu     |    16 TiB    |    Hayır    |    
+|  Tek bir dizindeki dizin meta verilerinin en büyük boyutu      |    320 MB    |    Hayır    |    
+|  Birim başına en fazla dosya sayısı ([maxfiles](#maxfiles))     |    100.000.000    |    Evet    |    
+|  El ile QoS birimi için atanan en düşük aktarım hızı     |    1 MIB/sn   |    Hayır    |    
+|  El ile QoS birimi için atanan en yüksek aktarım hızı     |    4.500 MIB/sn    |    Hayır    |    
+|  Çapraz bölge çoğaltma verileri koruma birimlerinin sayısı (hedef birimler)     |    5    |    Evet    |     
 
 Daha fazla bilgi için bkz. [Kapasite Yönetimi SSS](azure-netapp-files-faqs.md#capacity-management-faqs).
 
 ## <a name="maxfiles-limits"></a>Maxfiles limitleri <a name="maxfiles"></a> 
 
-Azure NetApp Files birimlerde *maxfiles*adlı bir sınır vardır. Maxfiles sınırı, bir birimin içerebileceği dosya sayısıdır. Bir Azure NetApp Files birimi için maxfiles limiti, birimin boyutuna (Kota) göre dizinlenir. Bir birim için maxfiles sınırı, sağlanan birim boyutu başına 20.000.000 dosya hızında artar veya azalır. 
+Azure NetApp Files birimlerde *maxfiles* adlı bir sınır vardır. Maxfiles sınırı, bir birimin içerebileceği dosya sayısıdır. Bir Azure NetApp Files birimi için maxfiles limiti, birimin boyutuna (Kota) göre dizinlenir. Bir birim için maxfiles sınırı, sağlanan birim boyutu başına 20.000.000 dosya hızında artar veya azalır. 
 
 Hizmet, bir birimin sağlanan boyutuna bağlı olarak maxfiles sınırını dinamik olarak ayarlar. Örneğin, başlangıçta 1 TiB boyutuyla yapılandırılan bir birimin maxfiles sınırı 20.000.000 olur. Birimin boyutuyla ilgili sonraki değişiklikler, aşağıdaki kurallara göre maxfiles sınırının otomatik olarak yeniden okundu olarak oluşmasına neden olur: 
 
@@ -78,18 +78,18 @@ Azure portal gezinti düzleminden:
 3. Temel bilgiler sekmesinde, aşağıdaki bilgileri sağlayın: 
     1. Sorun türü: **hizmet ve abonelik sınırlarını (kotalar)** seçin.
     2. Abonelikler: kotanın artması gereken kaynak için aboneliği seçin.
-    3. Kota türü: **Depolama: Azure NetApp Files sınırlarını**seçin.
+    3. Kota türü: **Depolama: Azure NetApp Files sınırlarını** seçin.
     4. **İleri: çözümler**' e tıklayın.
 4. Ayrıntılar sekmesinde:
     1. Açıklama kutusunda, ilgili kaynak türü için aşağıdaki bilgileri sağlayın:
 
-        |  Kaynak  |    Üst kaynaklar      |    İstenen yeni sınırlar     |    Kota artışının nedeni       |
+        |  Resource  |    Üst kaynaklar      |    İstenen yeni sınırlar     |    Kota artışının nedeni       |
         |----------------|------------------------------|---------------------------------|------------------------------------------|
         |  Hesap |  *Abonelik kimliği*   |  *İstenen yeni en büyük **Hesap** numarası*    |  *İstekte hangi senaryo veya kullanım örneği istendi?*  |
         |  Havuz    |  *Abonelik KIMLIĞI, NetApp hesap URI 'SI*  |  *İstenen yeni en büyük **Havuz** numarası*   |  *İstekte hangi senaryo veya kullanım örneği istendi?*  |
         |  Birim  |  *Abonelik KIMLIĞI, NetApp hesap URI 'SI, kapasite havuzu URI 'SI*   |  *İstenen yeni en yüksek **birim** numarası*     |  *İstekte hangi senaryo veya kullanım örneği istendi?*  |
         |  Maxfiles  |  *Abonelik KIMLIĞI, NetApp hesap URI 'SI, kapasite havuzu URI 'SI, birim URI 'SI*   |  *İstenen yeni en yüksek **maxfiles** numarası*     |  *İstekte hangi senaryo veya kullanım örneği istendi?*  |    
-        |  Bölgeler arası çoğaltma veri koruma birimleri  |  *Abonelik KIMLIĞI, hedef NetApp hesap URI 'si, hedef kapasite havuzu URI 'SI, kaynak NetApp hesap URI 'si, kaynak kapasitesi havuzu URI 'SI, kaynak birim URI 'si*   |  *Çok sayıda **çapraz bölge çoğaltma verileri koruma birimi istendi (hedef birimler)***     |  *İstekte hangi senaryo veya kullanım örneği istendi?*  |    
+        |  Bölgeler arası çoğaltma veri koruma birimleri  |  *Abonelik KIMLIĞI, hedef NetApp hesap URI 'si, hedef kapasite havuzu URI 'SI, kaynak NetApp hesap URI 'si, kaynak kapasitesi havuzu URI 'SI, kaynak birim URI 'si*   |  * Yeni çok sayıda **çapraz bölge çoğaltma verileri koruma birimi (hedef birim)** için istenen     |  _What senaryo veya kullanım örneği istekte istendi mi? *  |    
 
     2. Uygun destek yöntemini belirtin ve sözleşme bilgilerinizi sağlayın.
 

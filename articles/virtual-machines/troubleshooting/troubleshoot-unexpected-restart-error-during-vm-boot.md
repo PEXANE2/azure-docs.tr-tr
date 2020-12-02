@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/22/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 186b1c46303be59e191a1754361e07a2003b997a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cfeb040893ae2be5842959ed8458bd713bebe6ee
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87036191"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512146"
 ---
 # <a name="os-start-up--computer-restarted-unexpectedly-or-encountered-an-unexpected-error"></a>İşletim sistemi başlatma – bilgisayar beklenmedik şekilde yeniden başlatıldı veya beklenmeyen bir hatayla karşılaşıldı
 
@@ -37,31 +37,27 @@ VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](
 
 ## <a name="cause"></a>Nedeni
 
-Makine [genelleştirilmiş bir görüntünün](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation)ilk önyüklemesini gerçekleştirmeye çalışıyor, ancak işlenmekte olan özel yanıt dosyası (unattend.xml) nedeniyle sorunlarla karşılaşıyor. Özel yanıt dosyaları Azure'da desteklenmez. 
+Makine [genelleştirilmiş bir görüntünün](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation)ilk önyüklemesini gerçekleştirmeye çalışıyor, ancak işlenmekte olan özel yanıt dosyası (Unattend.xml) nedeniyle sorunlarla karşılaşıyor. **Özel yanıt dosyaları Azure 'da desteklenmez**. 
 
 Yanıt dosyası, bir Windows Server işletim sistemi yüklemesi sırasında otomatikleştirmek istediğiniz yapılandırma ayarları için tanımları ve değerleri içeren özel bir XML dosyasıdır. Yapılandırma seçenekleri, disklerin nasıl bölümleyeceğinize, yüklenecek Windows görüntüsünün nerede bulunacağını, uygulanacak ürün anahtarlarını ve çalıştırmak istediğiniz diğer komutları içerir.
 
-Azure 'da özel yanıt dosyaları desteklenmez. Seçeneğini kullanarak özel bir **Unattend.xml** dosyası belirttiyseniz `sysprep /unattend:<your file’s name>` Bu hata oluşabilir.
+Bu durumda, özel yanıt dosyaları Azure 'da desteklenmez. Bu nedenle, bir görüntü Azure 'da kullanıma hazır olduğunda bu durum oluşur, ancak **Sysprep** kullanarak aşağıdaki komuta benzer bir bayrağıyla özel bir Unattend.xml dosyası belirttiniz:
 
-Azure 'da, Unattend.xml dosyası yerine **Sysprep.exe**veya kullanın ' daki **sistem içi çalıştırma deneyimi (OOBE)** seçeneğini kullanın `sysprep /oobe` .
+`sysprep /oobe /generalize /unattend:<your file’s name> /shutdown`
 
-Bu sorun, en sık, genelleştirilmiş bir VM 'yi Azure 'a yüklemek için şirket içi VM ile **Sysprep.exe** kullanırken oluşturulur. Bu durumda, genelleştirilmiş bir VM 'yi düzgün bir şekilde karşıya yükleme hakkında da ilgileniyor olabilirsiniz.
+Azure 'da, **sistem hazırlığı Aracı GUI**'sindeki **sistem çalıştırma deneyimi (OOBE) seçeneğini girin** veya `sysprep /oobe` Unattend.xml dosyası yerine kullanın.
+
+Bu sorun, en sık, genelleştirilmiş bir VM 'yi Azure 'a yüklemek için bir şirket içi VM ile Sysprep kullanırken oluşturulmuştur. Bu durumda, genelleştirilmiş bir VM 'yi düzgün bir şekilde karşıya yükleme hakkında da ilgileniyor olabilirsiniz.
 
 ## <a name="solution"></a>Çözüm
 
-### <a name="replace-unattended-answer-file-option"></a>Katılımsız yanıt dosyası seçeneğini değiştir
+### <a name="do-not-use-unattendxml"></a>Unattend.xml kullanma
 
-Bu durum, bir görüntü Azure 'da kullanıma hazır olduğunda, ancak Azure 'da desteklenmeyen özel bir yanıt dosyası kullanmışsa ve **Sysprep** 'i aşağıdaki komuta benzer bir bayrağıyla kullandıysanız, bu durum oluşur:
-
-`sysprep /oobe /generalize /unattend:<NameOfYourAnswerFile.XML> /shutdown`
-
-- Önceki komutta, değerini `<NameOfYourAnswerFile.XML>` dosyanızın adıyla değiştirin.
-
-Bu sorunu giderecek [bir görüntü hazırlama/yakalama](../windows/upload-generalized-managed.md) ve yeni bir Genelleştirilmiş görüntü hazırlama hakkında Azure kılavuzunu izleyin. Sysprep sırasında `/unattend:<answerfile>` bayrak kullanmayın. Bunun yerine yalnızca aşağıdaki bayrakları kullanın:
+Bu sorunu giderecek [bir görüntü hazırlama/yakalama](../windows/upload-generalized-managed.md) ve yeni bir Genelleştirilmiş görüntü hazırlama hakkında Azure kılavuzunu izleyin. Sysprep sırasında **`/unattend:<your file’s name>` bayrak kullanmayın**. Bunun yerine yalnızca aşağıdaki bayrakları kullanın:
 
 `sysprep /oobe /generalize /shutdown`
 
-- **Kullanıma hazır deneyim** (OOBE), Azure VM 'leri için desteklenen ayardır.
+- Kullanıma hazır deneyim (OOBE), Azure VM 'Leri için desteklenen ayardır.
 
 Aşağıda gösterilen seçenekleri belirleyerek, yukarıdaki komutla aynı görevi gerçekleştirmek için **Sistem Hazırlama Aracı GUI** 'sini de kullanabilirsiniz:
 

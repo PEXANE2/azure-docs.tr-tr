@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 11/30/2020
 ms.author: memildin
-ms.openlocfilehash: a80747a88087e1ad3a70f198a260e41a6848e34f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 07a94685fb3655aa5aa21a8658b9d975c764daff
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445661"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512287"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Makinelerdeki SQL sunucuları için Azure Defender 
 
@@ -30,7 +30,7 @@ Bu Azure Defender planı, veritabanlarına erişmek veya veritabanına yararlanm
 
 |Görünüş|Ayrıntılar|
 |----|:----|
-|Yayın durumu:|Önizleme<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
+|Yayın durumu:|Genel olarak kullanılabilir (GA)|
 |Fiyat|**MAKINELERDEKI SQL Server 'lar Için Azure Defender** , [fiyatlandırma sayfasında](security-center-pricing.md) gösterildiği gibi faturalandırılır|
 |Korumalı SQL sürümleri:|Azure SQL Server (Microsoft desteği kapsamında tüm sürümler)|
 |Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Evet](./media/icons/yes-icon.png) US Gov<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov|
@@ -68,7 +68,7 @@ Bunların her ikisi de aşağıda açıklanmıştır.
 
         ![Varsayılan olmayan çalışma alanınızı başlığa göre bulma](./media/security-center-advanced-iaas-data/pricing-and-settings-workspaces.png)
 
-1. **MAKINELERDEKI SQL Server 'lar (Önizleme) planı Için Azure Defender** seçeneğini **Açık** olarak ayarlayın. 
+1. **MAKINELERDEKI SQL Server 'lar Için Azure Defender** seçeneğini **ayarlayın.** 
 
     ![İsteğe bağlı planlar içeren güvenlik merkezi fiyatlandırma sayfası](media/security-center-advanced-iaas-data/sql-servers-on-vms-in-pricing-small.png)
 
@@ -79,7 +79,7 @@ Bunların her ikisi de aşağıda açıklanmıştır.
 
 
 1. İsteğe bağlı olarak, güvenlik uyarıları için e-posta bildirimini yapılandırın. 
-    Güvenlik Merkezi uyarıları oluşturulduğunda, bir e-posta bildirimi almak için alıcıların listesini ayarlayabilirsiniz. E-posta, Azure Güvenlik Merkezi 'ndeki tüm ilgili ayrıntıların bulunduğu uyarıya doğrudan bir bağlantı içerir. Daha fazla bilgi için bkz. [güvenlik uyarıları için e-posta bildirimleri ayarlama](security-center-provide-security-contact-details.md).
+    Güvenlik Merkezi uyarıları oluşturulduğunda, bir e-posta bildirimi almak için alıcıların listesini ayarlayabilirsiniz. E-posta, Azure Güvenlik Merkezi 'ndeki uyarıya yönelik bir doğrudan SK 'yi tüm ilgili ayrıntılarla birlikte içerir. Daha fazla bilgi için bkz. [güvenlik uyarıları için e-posta bildirimleri ayarlama](security-center-provide-security-contact-details.md).
 
 
 

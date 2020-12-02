@@ -8,16 +8,16 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: memildin
-ms.openlocfilehash: 36f519ce41ccfbfb48ca696ed2a61c6131a75998
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca3dd410474af0a42a3cd5b4217c3bba90b8ff1a
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906336"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511993"
 ---
 # <a name="protect-windows-admin-center-resources-with-security-center"></a>Güvenlik Merkezi ile Windows Yönetim Merkezi kaynaklarını koruma
 
-Windows Yönetim Merkezi, Windows sunucularınız için bir yönetim aracıdır. Sistem yöneticilerinin en sık kullanılan yönetim araçlarının çoğunluğuna erişebilmeleri için tek bir konumdur. Windows Yönetim Merkezi 'nin içinden, şirket içi sunucularınızı doğrudan Azure Güvenlik Merkezi 'ne ekleyebilirsiniz. Daha sonra, güvenlik önerilerinizi ve uyarılarınızı bir Özet olarak doğrudan Windows Yönetim Merkezi deneyimi ' nde görüntüleyebilirsiniz.
+Windows Yönetim Merkezi, Windows sunucularınız için bir yönetim aracıdır. Sistem yöneticilerinin en sık kullanılan yönetim araçlarının çoğunluğuna erişebilmeleri için tek bir konumdur. Windows Yönetim Merkezi 'nin içinden şirket içi sunucularınızı doğrudan Azure Güvenlik Merkezi 'ne ekleyebilirsiniz. Daha sonra, güvenlik önerilerinizi ve uyarılarınızı bir Özet olarak doğrudan Windows Yönetim Merkezi deneyimi ' nde görüntüleyebilirsiniz.
 
 > [!NOTE]
 > Windows Yönetim Merkezi tümleştirmesini etkinleştirmek için Azure aboneliğiniz ve ilişkili Log Analytics çalışma alanının her ikisi de Azure Defender 'ın etkinleştirilmiş olması gerekir.
@@ -29,7 +29,7 @@ Windows Yönetim Merkezi 'nden Azure Güvenlik Merkezi 'ne bir sunucu başarıyl
 * Windows Yönetim Merkezi 'nde Güvenlik Merkezi uzantısının içindeki güvenlik uyarılarını ve önerilerini görüntüleme
 * Güvenlik duruşunu görüntüleyin ve Azure portal (veya bir API aracılığıyla) Güvenlik Merkezi 'nde Windows Yönetim Merkezi tarafından yönetilen sunucularınızın ek ayrıntılı bilgilerini alın
 
-Bu iki aracı birleştirerek Güvenlik Merkezi, kaynak: Windows Yönetim Merkezi 'nde yönetilen şirket içi sunucuları, VM 'lerinizi ve ek PaaS iş yüklerinizi koruyan tüm güvenlik bilgilerinizi görüntülemek için tek bir cam bölmesidir.
+Güvenlik Merkezi, bu iki aracı birleştirerek tüm güvenlik bilgilerinizi, kaynak: Windows yönetici merkezinizi yönetilen şirket içi sunucularınızı, VM 'lerinizi ve diğer PaaS iş yüklerini korumak için tek bir cam bölmesinizde olur.
 
 ## <a name="onboard-windows-admin-center-managed-servers-into-security-center"></a>Windows Yönetim Merkezi tarafından yönetilen sunucuları güvenlik merkezi 'ne ekleme
 
@@ -65,6 +65,6 @@ Azure Güvenlik Merkezi 'nden:
 
 * Tüm Windows Yönetim Merkezi sunucularınızın güvenlik önerilerini görüntülemek için [varlık envanterini](asset-inventory.md) açın ve araştırmak istediğiniz makine türüne filtre uygulayın. **VM 'ler ve bilgisayarlar** sekmesini seçin.
 
-* Tüm Windows Yönetim Merkezi sunucularınızın güvenlik uyarılarını görüntülemek için **güvenlik uyarılarını**açın. **Filtre** ' ye tıklayın ve **yalnızca** "Azure dışı" ' ın seçili olduğundan emin olun:
+* Tüm Windows Yönetim Merkezi sunucularınızın güvenlik uyarılarını görüntülemek için **güvenlik uyarılarını** açın. **Filtre** ' ye tıklayın ve **yalnızca** "Azure dışı" ' ın seçili olduğundan emin olun:
 
     :::image type="content" source="./media/windows-admin-center-integration/filtering-alerts-by-environment.png" alt-text="Windows Yönetim Merkezi tarafından yönetilen sunucular için güvenlik uyarılarını filtreleme" lightbox="./media/windows-admin-center-integration/filtering-alerts-by-environment.png":::

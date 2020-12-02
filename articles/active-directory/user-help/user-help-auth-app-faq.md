@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 10/20/2020
+ms.date: 12/01/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 65bd5a89d132a575817480d0609109a3f379e969
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: f0cb7d4ebe428da4a370433b3e90a829f30489db
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833971"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512214"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulaması hakkında sık sorulan sorular (SSS)
 
@@ -32,6 +32,14 @@ Microsoft Authenticator uygulama Azure Authenticator uygulamasını değiştirdi
 **S**: şirket veya hizmet cihazımın erişimine izin vermek için bir cihaz kabul etmiş kaydediyor mu?
 
 Y **: bir** cihazı kaydetmek, cihazınızın kuruluşunuzun hizmetlerine erişmesini sağlar ve kuruluşunuzun cihazınıza erişmesine izin vermez.
+
+## <a name="too-many-app-permissions"></a>Çok fazla uygulama izni
+
+**S**: uygulama neden çok sayıda izin istiyor?
+
+**A**: burada, İstenen izinlerin tam listesi ve uygulama tarafından nasıl kullanıldıkları açıklanmaktadır. Gördüğünüz belirli izinler, sahip olduğunuz telefonun türüne bağlıdır.
+
+- **Konum**. Bazen kuruluşunuz, belirli kaynaklara erişmenize izin vermeden önce konumunuzu bilmek istiyor. Uygulama bu izni yalnızca, kuruluşunuzun konum gerektiren bir ilke varsa ister. 
 
 ### <a name="legacy-apns-support-deprecated"></a>Eski APNs desteği kullanım dışı
 

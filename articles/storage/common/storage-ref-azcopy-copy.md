@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: a5c0d8bb47b337b0415565a0b6dad5c6822d0b94
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: fd71f4eb56974b93637c23eddc81e5f33ce788b8
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781745"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512163"
 ---
 # <a name="azcopy-copy"></a>azcopy kopya
 
@@ -107,6 +107,14 @@ Bir SAS belirteci ve joker karakter (*) kullanarak dosyaları ve dizinleri karş
 ```azcopy
 azcopy cp "/path/*foo/*bar*" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --recursive
 ```
+
+Dosyaları ve dizinleri Azure Storage hesabına yükleyin ve BLOB üzerinde sorgu dizesi kodlamalı Etiketler ayarlayın. 
+
+- {Key = "bla bla", Val = "foo"} ve {Key = "bla bla 2", Val = "Bar"} etiketlerini ayarlamak için aşağıdaki sözdizimini kullanın: `azcopy cp "/path/*foo/*bar*" "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" --blob-tags="bla%20bla=foo&bla%20bla%202=bar"`
+    
+- Anahtarlar ve değerler URL kodlamalı ve anahtar-değer çiftleri bir ve işareti (' & ') ile ayrılır
+
+- Bloblarda Etiketler ayarlanırken, SAS 'de hizmetin yetkilendirme hatası geri vermeksizin ek izinler (yani, Etiketler için 't) vardır.
 
 OAuth kimlik doğrulaması kullanarak tek bir dosyayı indirin. AzCopy oturumu Henüz açmadıysanız, `azcopy login` aşağıdaki komutu çalıştırmadan önce komutunu çalıştırın.
 
@@ -214,9 +222,19 @@ Demet adında bir joker karakter simgesi (*) kullanarak demetlerin bir alt küme
 - azcopy cp "https://s3.amazonaws.com/[bucket*name]/" "https://[destaccount].blob.core.windows.net?[SAS]" --recursive
 ```
 
+Dosya ve dizinleri Azure depolama hesabına aktarın ve BLOB üzerinde verilen sorgu dizesi kodlamalı etiketleri ayarlayın. 
+
+- {Key = "bla bla", Val = "foo"} ve {Key = "bla bla 2", Val = "Bar"} etiketlerini ayarlamak için aşağıdaki sözdizimini kullanın: `azcopy cp "https://[account].blob.core.windows.net/[source_container]/[path/to/directory]?[SAS]" "https://[account].blob.core.windows.net/[destination_container]/[path/to/directory]?[SAS]" --blob-tags="bla%20bla=foo&bla%20bla%202=bar"`
+        
+- Anahtarlar ve değerler URL kodlamalı ve anahtar-değer çiftleri bir ve işareti (' & ') ile ayrılır
+    
+- Bloblarda Etiketler ayarlanırken, SAS 'de hizmetin yetkilendirme hatası geri vermeksizin ek izinler (yani, Etiketler için 't) vardır.
+
 ## <a name="options"></a>Seçenekler
 
 **--yedekleme** AzCopy 'in, dosya sistemi izinlerinden bağımsız olarak tüm dosyaları görüp okumasına ve tüm izinleri geri yüklemelerine izin vermek için, yüklemeler için Windows ' SeBackupPrivilege ' veya indirme işlemleri için SeRestorePrivilege ' ı etkinleştirir. AzCopy çalıştıran hesabın bu izinlere zaten sahip olması gerekir (örneğin, yönetici haklarına sahip veya grubun üyesi olan `Backup Operators` ). Bu bayrak, hesabın zaten sahip olduğu ayrıcalıkları etkinleştirir.
+
+**--BLOB-Etiketler** dize, Depolama hesabınızdaki verileri kategorilere ayırmak için Bloblarda Etiketler kümesi.
 
 **--BLOB türü** dize, hedefteki blob türünü tanımlar. Bu, Blobları karşıya yüklemek için ve hesaplar arasında kopyalama sırasında kullanılır (varsayılan `Detect` ). Geçerli değerler,,, `Detect` `BlockBlob` ve içerir `PageBlob` `AppendBlob` . Hesaplar arasında kopyalama yaparken değeri, `Detect` AzCopy 'in hedef Blobun türünü belirlemekte kaynak Blobun türünü kullanmasına neden olur. Bir dosya karşıya yüklenirken, dosyanın `Detect` dosya uzantısına bağlı olarak BIR VHD veya vhdx dosyası olup olmadığını belirler. Dosya bir VHD veya VHDX dosyası ile karşılaşırsanız AzCopy dosyayı bir Sayfa Blobu olarak değerlendirir. (varsayılan "Algıla")
 

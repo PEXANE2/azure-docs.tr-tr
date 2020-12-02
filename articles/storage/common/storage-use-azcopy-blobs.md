@@ -4,16 +4,16 @@ description: Bu makale, kapsayıcılar oluşturmanıza, dosyaları kopyalamaya v
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 12/01/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 294adce3dc312003d72336bd0752ba3aba5eaace
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 1c9c271fed094bf4777af73d588551f66f4db6f5
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792863"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512129"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>AzCopy ve BLOB Storage ile veri aktarma
 
@@ -22,7 +22,7 @@ AzCopy, depolama hesaplarına veri kopyalamak için kullanabileceğiniz bir komu
 > [!TIP]
 > Bu makaledeki örneklerde, tek tırnak (' ') ile yol bağımsız değişkenleri yer alınmalıdır. Windows komut kabuğu (cmd.exe) hariç tüm komut kabukta tek tırnak işaretleri kullanın. Bir Windows komut kabuğu (cmd.exe) kullanıyorsanız, yol bağımsız değişkenlerini tek tırnak (' ') yerine çift tırnak işareti ("") içine alın.
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 AzCopy ['i indirmek Için AzCopy ile çalışmaya başlama](storage-use-azcopy-v10.md) makalesini inceleyin ve depolama hizmetine yetkilendirme kimlik bilgilerini nasıl sağlayabileceğiniz yolları hakkında bilgi edinin.
 
@@ -56,6 +56,7 @@ Bu bölüm aşağıdaki örnekleri içerir:
 > * Bir dizini karşıya yükle
 > * Bir dizinin içeriğini karşıya yükleme 
 > * Belirli dosyaları karşıya yükle
+> * Dizin etiketleriyle dosya yükleme
 
 > [!TIP]
 > İsteğe bağlı bayraklar kullanarak karşıya yükleme işleminizi ince ayar yapabilirsiniz. İşte birkaç örnek.
@@ -153,6 +154,27 @@ Seçeneğiyle [AzCopy kopyalama](storage-ref-azcopy-copy.md) komutunu kullanın 
 
 Ayrıntılı başvuru için bkz. [AzCopy kopyası](storage-ref-azcopy-copy.md) başvuru belgeleri.
 
+### <a name="upload-a-file-with-index-tags"></a>Dizin etiketleriyle dosya yükleme
+
+Hedef bloba bir dosyayı karşıya yükleyebilir ve [BLOB dizin etiketleri (Önizleme)](../blobs/storage-manage-find-blobs.md) ekleyebilirsiniz.  
+
+Azure AD yetkilendirmesi kullanıyorsanız, güvenlik sorumlusuna [Depolama Blobu veri sahibi](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) rolü atanmalıdır veya `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [Azure Kaynak sağlayıcısı işlemine](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) özel bir Azure rolü aracılığıyla izin verilmelidir. Paylaşılan erişim Imzası (SAS) belirteci kullanıyorsanız, bu belirtecin SAS izni aracılığıyla Blobun etiketlerine erişim sağlaması gerekir `t` .
+
+Etiketler eklemek için, `--blob-tags` URL kodlamalı anahtar-değer çiftiyle birlikte seçeneğini kullanın. Örneğin, bir anahtar ve bir değer eklemek için `my tag` `my tag value` , `--blob-tags='my%20tag=my%20tag%20value'` hedef parametreye eklersiniz. 
+
+Bir ampersan () kullanarak birden çok dizin etiketini ayırın `&` .  Örneğin, bir anahtar `my second tag` ve değer eklemek istiyorsanız `my second tag value` , tüm seçenek dizesi olur `--blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'` .
+
+Aşağıdaki örneklerde seçeneğinin nasıl kullanılacağı gösterilmektedir `--blob-tags` .
+
+|    |     |
+|--------|-----------|
+| **Karşıya dosya yükleme** | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt' --blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'` |
+| **Bir dizini karşıya yükle** | `azcopy copy 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive --blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'`|
+| **Dizin içeriğini karşıya yükle** | `azcopy copy 'C:\myDirectory\*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory' --blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'` |
+
+> [!NOTE]
+> Kaynak için bir dizin belirtirseniz, hedefe kopyalanmış olan tüm Bloblar komutta belirttiğiniz etiketlere sahip olur.
+
 ## <a name="download-files"></a>Dosyaları indirme
 
 Blob, dizin ve kapsayıcıları yerel bilgisayarınıza indirmek için [AzCopy kopyalama](storage-ref-azcopy-copy.md) komutunu kullanabilirsiniz.
@@ -199,7 +221,7 @@ Bu örnek `C:\myDirectory\myBlobDirectory` , indirilen tüm dosyaları içeren a
 
 ### <a name="download-the-contents-of-a-directory"></a>Bir dizinin içeriğini indirin
 
-Joker karakter sembolünü (*) kullanarak, bir dizinin içeriğini içeren dizini kopyalamadan indirebilirsiniz.
+Joker karakter simgesini (*) kullanarak dizinin kendisini kopyalamadan içeriğini indirebilirsiniz.
 
 > [!NOTE]
 > Şu anda, bu senaryo yalnızca hiyerarşik bir ad alanına sahip olmayan hesaplar için desteklenir.
@@ -260,7 +282,7 @@ Ayrıntılı başvuru için bkz. [AzCopy kopyası](storage-ref-azcopy-copy.md) b
 
 [BLOB sürüm oluşturmayı](../blobs/versioning-enable.md)etkinleştirdiyseniz, bir Blobun bir veya daha fazla önceki sürümünü indirebilirsiniz. 
 
-İlk olarak, [Sürüm kimliklerinin](../blobs/versioning-overview.md)bir listesini içeren bir metin dosyası oluşturun. Her sürüm KIMLIĞI ayrı bir satırda görünmelidir. Örneğin: 
+İlk olarak, [Sürüm kimliklerinin](../blobs/versioning-overview.md)bir listesini içeren bir metin dosyası oluşturun. Her sürüm KIMLIĞI ayrı bir satırda görünmelidir. Örnek: 
 
 ```
 2020-08-17T05:50:34.2199403Z
@@ -297,6 +319,7 @@ Bu bölüm aşağıdaki örnekleri içerir:
 > * Bir dizini başka bir depolama hesabına kopyalama
 > * Kapsayıcıyı başka bir depolama hesabına kopyalama
 > * Tüm kapsayıcıları, dizinleri ve dosyaları başka bir depolama hesabına Kopyala
+> * Blob 'ları Dizin etiketlerine sahip başka bir depolama hesabına kopyalama
 
 Bu örnekler, hiyerarşik bir ad alanı olan hesaplarla de çalışır. [Data Lake Storage çoklu protokol erişimi](../blobs/data-lake-storage-multi-protocol-access.md) , bu HESAPLARDA aynı URL sözdizimini () kullanmanıza olanak sağlar `blob.core.windows.net` .
 
@@ -321,6 +344,9 @@ Bu örnekler, hiyerarşik bir ad alanı olan hesaplarla de çalışır. [Data La
 | **Örnek** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myTextFile.txt'` |
 | **Örnek** (hiyerarşik ad alanı) | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myTextFile.txt'` |
 
+> [!NOTE]
+> Kaynak Blobların dizin etiketleri varsa ve bu etiketleri sürdürmek istiyorsanız, bunları hedef bloblara yeniden uygulamanız gerekir. Dizin etiketlerinin nasıl ayarlanacağı hakkında daha fazla bilgi için, bu makalenin [Dizin etiketleriyle blob 'ları başka bir depolama hesabına kopyalama](#copy-between-accounts-and-add-index-tags) bölümüne bakın.  
+
 ### <a name="copy-a-directory-to-another-storage-account"></a>Bir dizini başka bir depolama hesabına kopyalama
 
 `blob.core.windows.net`Hiyerarşik bir ad alanı olan hesaplar için aynı URL söz dizimini () kullanın.
@@ -341,6 +367,9 @@ Bu örnekler, hiyerarşik bir ad alanı olan hesaplarla de çalışır. [Data La
 | **Örnek** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
 | **Örnek** (hiyerarşik ad alanı)| `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
 
+> [!NOTE]
+> Kaynak Blobların dizin etiketleri varsa ve bu etiketleri sürdürmek istiyorsanız, bunları hedef bloblara yeniden uygulamanız gerekir. Dizin etiketlerinin nasıl ayarlanacağı hakkında daha fazla bilgi için, bu makalenin [Dizin etiketleriyle blob 'ları başka bir depolama hesabına kopyalama](#copy-between-accounts-and-add-index-tags) bölümüne bakın. 
+
 ### <a name="copy-all-containers-directories-and-blobs-to-another-storage-account"></a>Tüm kapsayıcıları, dizinleri ve Blobları başka bir depolama hesabına Kopyala
 
 `blob.core.windows.net`Hiyerarşik bir ad alanı olan hesaplar için aynı URL söz dizimini () kullanın.
@@ -350,6 +379,36 @@ Bu örnekler, hiyerarşik bir ad alanı olan hesaplarla de çalışır. [Data La
 | **Syntax** | `azcopy copy 'https://<source-storage-account-name>.blob.core.windows.net/<SAS-token>' 'https://<destination-storage-account-name>.blob.core.windows.net/' --recursive` |
 | **Örnek** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net' --recursive` |
 | **Örnek** (hiyerarşik ad alanı)| `azcopy copy 'https://mysourceaccount.blob.core.windows.net/?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net' --recursive` |
+
+> [!NOTE]
+> Kaynak Blobların dizin etiketleri varsa ve bu etiketleri sürdürmek istiyorsanız, bunları hedef bloblara yeniden uygulamanız gerekir. Dizin etiketlerini ayarlama hakkında daha fazla bilgi için, aşağıdaki **Dizin etiketleriyle blob 'ları farklı bir depolama hesabına Kopyala** bölümüne bakın. 
+
+<a id="copy-between-accounts-and-add-index-tags"></a>
+
+### <a name="copy-blobs-to-another-storage-account-with-index-tags"></a>Blob 'ları Dizin etiketlerine sahip başka bir depolama hesabına kopyalama
+
+Blobları başka bir depolama hesabına kopyalayabilir ve hedef [Blobun blob dizin etiketleri (Önizleme)](../blobs/storage-manage-find-blobs.md) ekleyebilirsiniz.
+
+Azure AD yetkilendirmesi kullanıyorsanız, güvenlik sorumlusuna [Depolama Blobu veri sahibi](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) rolü atanmalıdır veya `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` [Azure Kaynak sağlayıcısı işlemine](../../role-based-access-control/resource-provider-operations.md#microsoftstorage) özel bir Azure rolü aracılığıyla izin verilmelidir. Paylaşılan erişim Imzası (SAS) belirteci kullanıyorsanız, bu belirtecin SAS izni aracılığıyla Blobun etiketlerine erişim sağlaması gerekir `t` .
+
+Etiketler eklemek için, `--blob-tags` URL kodlamalı anahtar-değer çiftiyle birlikte seçeneğini kullanın. 
+
+Örneğin, bir anahtar ve bir değer eklemek için `my tag` `my tag value` , `--blob-tags='my%20tag=my%20tag%20value'` hedef parametreye eklersiniz. 
+
+Bir ampersan () kullanarak birden çok dizin etiketini ayırın `&` .  Örneğin, bir anahtar `my second tag` ve değer eklemek istiyorsanız `my second tag value` , tüm seçenek dizesi olur `--blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'` .
+
+Aşağıdaki örneklerde seçeneğinin nasıl kullanılacağı gösterilmektedir `--blob-tags` .
+
+|    |     |
+|--------|-----------|
+| **Blob** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myTextFile.txt' --blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'` |
+| **Dizin** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive --blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'` |
+| **Kapsayıcı** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive --blob-tags="--blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'` |
+| **Hesabı** | `azcopy copy 'https://mysourceaccount.blob.core.windows.net/?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.blob.core.windows.net' --recursive --blob-tags="--blob-tags='my%20tag=my%20tag%20value&my%20second%20tag=my%20second%20tag%20value'` |
+
+> [!NOTE]
+> Kaynak için bir dizin, kapsayıcı veya hesap belirtirseniz, hedefe kopyalanmış tüm Bloblar komutta belirttiğiniz etiketlere sahip olur. 
+
 
 ## <a name="synchronize-files"></a>Dosyaları eşitler
 

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/24/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 1d5047a9be6b4cf53304858d12a0cb7b49b575ca
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c36a88317f71d08094b43d06cc7ba86985a73ca0
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499926"
+ms.locfileid: "96511857"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Azure Bilişsel Arama nedir?
 
@@ -23,9 +23,10 @@ Azure Bilişsel Arama ([eskiden "Azure Search" olarak bilinirdi](whats-new.md#ne
 Bir Bilişsel Arama hizmeti oluşturduğunuzda şunları alırsınız:
 
 + Dizin oluşturma ve sorgu yürütmeyi gerçekleştiren bir arama altyapısı
-+ Dizin oluşturma sırasında görüntülerin ve ayırt edilmemiş metnin AI-ortalanmış Analizi ve dönüştürmesi
-+ oluşturduğunuz ve yönettiğiniz arama dizinlerinin kalıcı depolaması
-+ karmaşık sorguları basit sorgular oluşturmak için bir sorgu dili
++ Oluşturduğunuz ve yönettiğiniz arama dizinlerinin kalıcı depolaması
++ Karmaşık sorguları basit sorgular oluşturmak için bir sorgu dili
++ AI ortalanmış analiz, görüntülerin, ham metinden, uygulama dosyalarından aranabilir içerik oluşturma
++ Arama Dizin oluşturucular aracılığıyla Azure verileriyle tümleştirme, verileri içeri aktarmayı ve yenilemeyi otomatikleştirme
 
 Mimari türsel olarak, bir arama hizmeti, dizini oluşturulmamış verilerinizi içeren dış veri depoları arasında ve bir arama dizinine sorgu istekleri gönderen ve yanıtı işleyen bir istemci uygulaması arasında yer alır.
 

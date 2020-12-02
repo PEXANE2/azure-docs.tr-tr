@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: c21b4d746d763f41f4360cf93f67939bcd6dc49f
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 8d28a1f2040cfec7b81081754a6abd3bc3e14439
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632694"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511483"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Data Factory için Azure özel bağlantısı
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-xxx-md.md)]
 
-Azure özel bağlantısını kullanarak, özel bir uç nokta aracılığıyla Azure 'daki çeşitli hizmet olarak platform (PaaS) dağıtımlarını bağlayabilirsiniz. Özel uç nokta, belirli bir sanal ağ ve alt ağ içindeki özel bir IP adresidir. Özel bağlantı işlevselliğini destekleyen PaaS dağıtımlarının bir listesi için bkz. [özel bağlantı belgeleri](../private-link/index.yml). 
+Azure özel bağlantısı ' nı kullanarak, özel bir uç nokta aracılığıyla Azure 'daki çeşitli platformlar hizmet (PaaS) dağıtımlarını bağlayabilirsiniz. Özel uç nokta, belirli bir sanal ağ ve alt ağ içindeki özel bir IP adresidir. Özel bağlantı işlevselliğini destekleyen PaaS dağıtımlarının bir listesi için bkz. [özel bağlantı belgeleri](../private-link/index.yml). 
 
 ## <a name="secure-communication-between-customer-networks-and-azure-data-factory"></a>Müşteri ağları ve Azure Data Factory arasında güvenli iletişim 
 Azure sanal ağını, bulutta ağınızın mantıksal temsili olarak ayarlayabilirsiniz. Bunun yapılması aşağıdaki avantajları sağlar:
@@ -53,18 +53,45 @@ Azure Data Factory hizmetine yönelik iletişimler özel bağlantı üzerinden g
 ![Azure Data Factory mimarisine yönelik özel bağlantı diyagramı.](./media/data-factory-private-link/private-link-architecture.png)
 
 Önceki iletişim kanallarının her biri için özel bağlantı hizmetinin etkinleştirilmesi aşağıdaki işlevleri sunar:
-- **Desteklenen** :
+- **Desteklenen**:
    - Tüm giden iletişimleri engelleseniz bile, sanal ağınızda veri fabrikasını yazabilir ve izleyebilirsiniz.
    - Şirket içinde barındırılan tümleştirme çalışma zamanı ve Azure Data Factory hizmeti arasındaki komut iletişimleri, özel bir ağ ortamında güvenli bir şekilde gerçekleştirilebilir. Şirket içinde barındırılan tümleştirme çalışma zamanı ve Azure Data Factory hizmeti arasındaki trafik özel bağlantı aracılığıyla gider. 
-- **Şu anda desteklenmiyor** :
+- **Şu anda desteklenmiyor**:
    - Sağ barındırılan bir tümleştirme çalışma zamanı kullanan etkileşimli yazma, test bağlantısı, klasör listesi ve tablo listesi, şema al ve veri önizleme gibi özel bağlantı üzerinden ilerler.
-   - Otomatik olarak barındırılan tümleştirme çalışma zamanının yeni sürümü, otomatik güncelleştirme 'yi etkinleştirirseniz Microsoft Indirme merkezi 'nden otomatik olarak indirilebilir.
+   - Otomatik güncelleştirme 'yi etkinleştirirseniz, şirket içinde barındırılan tümleştirme çalışma zamanının yeni sürümü Microsoft Indirme merkezi 'nden otomatik olarak indirilebilir.
 
    > [!NOTE]
    > Şu anda desteklenmeyen işlevler için, sanal ağda veya şirket güvenlik duvarında daha önce bahsedilen etki alanını ve bağlantı noktasını yapılandırmanız gerekir. 
 
 > [!WARNING]
 > Bağlı bir hizmet oluşturduğunuzda, kimlik bilgilerinizin bir Azure Anahtar Kasası 'nda depolandığından emin olun. Aksi takdirde, Azure Data Factory özel bağlantıyı etkinleştirdiğinizde kimlik bilgileri çalışmayacaktır.
+
+## <a name="dns-changes-for-private-endpoints"></a>Özel uç noktalar için DNS değişiklikleri
+Özel bir uç nokta oluşturduğunuzda, Data Factory için DNS CNAME kaynak kaydı, ' Privatelink ' önekine sahip bir alt etki alanındaki diğer ada güncelleştirilir. Varsayılan olarak, Özel uç noktalar için DNS A kaynak kayıtları ile ' Privatelink ' alt etki alanına karşılık gelen [Özel BIR DNS bölgesi](https://docs.microsoft.com/azure/dns/private-dns-overview)de oluşturacağız.
+
+Veri Fabrikası uç noktası URL 'sini VNet dışından özel uç noktayla çözümlediğinizde, Data Factory hizmetinin genel uç noktasına dönüşür. Özel uç noktayı barındıran VNet 'ten çözümlendiğinde, depolama uç noktası URL 'SI özel uç noktanın IP adresine çözümlenir.
+
+Yukarıdaki gösterilen örnek için, Özel uç noktayı barındıran VNet dışından çözümlendiğinde ' DataFactoryA ' Data Factory DNS kaynak kayıtları şu şekilde olur:
+
+| Ad | Tür | Değer |
+| ---------- | -------- | --------------- |
+| DataFactoryA. {Region}. DataFactory. Azure. net | CNAME   | DataFactoryA. {Region}. Privatelink. DataFactory. Azure. net |
+| DataFactoryA. {Region}. Privatelink. DataFactory. Azure. net | CNAME   | < Data Factory hizmeti genel uç noktası > |
+| < Data Factory hizmeti genel uç noktası >  | A | < Data Factory hizmeti genel IP adresi > |
+
+Özel uç noktasını barındıran VNet 'te çözümlendiğinde, DataFactoryA için DNS kaynak kayıtları şu şekilde olur:
+
+| Ad | Tür | Değer |
+| ---------- | -------- | --------------- |
+| DataFactoryA. {Region}. DataFactory. Azure. net | CNAME   | DataFactoryA. {Region}. Privatelink. DataFactory. Azure. net |
+| DataFactoryA. {Region}. Privatelink. DataFactory. Azure. net   | A | Özel uç nokta IP adresi < > |
+
+Ağınızda özel bir DNS sunucusu kullanıyorsanız, istemciler Data Factory uç noktası için FQDN 'yi özel uç nokta IP adresine çözümleyebilmelidir. DNS sunucunuzu özel bağlantı alt etki alanınızı, sanal ağın özel DNS bölgesine devretmek veya ' DataFactoryA ' için bir kayıt yapılandırmak üzere yapılandırmalısınız. Özel uç nokta IP adresine sahip {Region}. Privatelink. DataFactory. Azure. net '.
+
+Kendi DNS sunucunuzu özel uç noktaları destekleyecek şekilde yapılandırma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
+- [Azure sanal ağlarındaki kaynaklar için ad çözümlemesi](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
+- [Özel uç noktalar için DNS yapılandırması](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)
+
 
 ## <a name="set-up-private-link-for-azure-data-factory"></a>Azure Data Factory için özel bağlantı ayarlama
 [Azure Portal](../private-link/create-private-endpoint-portal.md)kullanarak özel uç noktalar oluşturabilirsiniz.

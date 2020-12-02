@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 046cca4e683a8f14893bf48ac8601b138a7c28a7
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: daa7c657a47414b01197bed3644caefeda98af1c
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630286"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512180"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 ve 8600 Azure Dosya Eşitleme 'e geçiş
 
@@ -56,7 +56,7 @@ Azure dosya paylaşımları, öznitelikler, izinler ve zaman damgaları gibi dep
 
 Bu makalede geçiş adımları ele alınmaktadır. Geçirmeden önce Azure Dosya Eşitleme hakkında daha fazla bilgi edinmek istiyorsanız, aşağıdaki makalelere bakın:
 
-* [Azure Dosya Eşitleme genel bakış](./storage-sync-files-planning.md "Genel Bakış")
+* [Azure Dosya Eşitleme genel bakış](./storage-sync-files-planning.md "Genel bakış")
 * [Azure Dosya Eşitleme dağıtım kılavuzu](storage-sync-files-deployment-guide.md)
 
 ### <a name="storsimple-service-data-encryption-key"></a>StorSimple hizmeti veri şifreleme anahtarı
@@ -166,7 +166,7 @@ Hala emin değil misiniz?
 #### <a name="account-kind"></a>Hesap türü
 
 * Standart depolama için *StorageV2 (genel amaçlı v2)* öğesini seçin.
-* Premium dosya paylaşımları için *FileStorage* ' ı seçin.
+* Premium dosya paylaşımları için *FileStorage*' ı seçin.
 
 #### <a name="replication"></a>Çoğaltma
 
@@ -175,7 +175,7 @@ Kullanılabilir birkaç çoğaltma ayarı vardır. Farklı çoğaltma türleri h
 Yalnızca aşağıdaki iki seçenekten birini seçin:
 
 * *Yerel olarak yedekli depolama (LRS)*.
-* Bölgesel olarak *yedekli depolama (ZRS)* , tüm Azure bölgelerinde kullanılamaz.
+* Bölgesel olarak *yedekli depolama (ZRS)*, tüm Azure bölgelerinde kullanılamaz.
 
 > [!NOTE]
 > Yalnızca LRS ve ZRS artıklık türleri, büyük 100-TiB kapasiteli Azure dosya paylaşımları ile uyumludur.
@@ -215,7 +215,7 @@ Depolama hesaplarınız oluşturulduktan sonra depolama hesabının **dosya payl
 
 ### <a name="storsimple-data-manager"></a>StorSimple Data Manager
 
-Geçiş işlerinizi tutacak Azure kaynağına **StorSimple veri Yöneticisi** denir. **Yeni kaynak** ' ı seçin ve arama yapın. Ardından **Oluştur** ’u seçin.
+Geçiş işlerinizi tutacak Azure kaynağına **StorSimple veri Yöneticisi** denir. **Yeni kaynak**' ı seçin ve arama yapın. Ardından **Oluştur**’u seçin.
 
 Bu geçici kaynak düzenleme için kullanılır. Geçiş işlemi tamamlandıktan sonra bunu siz temin edersiniz. StorSimple depolama hesabınızla aynı abonelikte, kaynak grubunda ve bölgede dağıtılmalıdır.
 
@@ -232,7 +232,7 @@ Azure Dosya Eşitleme ile, en sık erişilen dosyaları şirket içi önbelleğe
 
 ## <a name="phase-3-create-and-run-a-migration-job"></a>3. Aşama: geçiş işi oluşturma ve çalıştırma
 
-Bu bölümde, bir geçiş işinin nasıl ayarlanacağı ve seçtiğiniz hedef Azure dosya paylaşımında kopyalanması gereken bir StorSimple birimindeki dizinlerin dikkatle nasıl eşlenileceği açıklanmaktadır. Başlamak için StorSimple Veri Yöneticisi gidin, menüdeki **iş tanımlarını** bulun ve **+ iş tanımı** ' nı seçin. Hedef depolama türü, varsayılan **Azure dosya paylaşımıdır**.
+Bu bölümde, bir geçiş işinin nasıl ayarlanacağı ve seçtiğiniz hedef Azure dosya paylaşımında kopyalanması gereken bir StorSimple birimindeki dizinlerin dikkatle nasıl eşlenileceği açıklanmaktadır. Başlamak için StorSimple Veri Yöneticisi gidin, menüdeki **iş tanımlarını** bulun ve **+ iş tanımı**' nı seçin. Hedef depolama türü, varsayılan **Azure dosya paylaşımıdır**.
 
 ![StorSimple 8000 serisi geçiş işi türleri.](media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-job-type.png "İş tanımlarının bir ekran görüntüsü, iş türünü isteyen yeni bir Iş tanımları iletişim kutusuyla açılır Azure portal: dosya paylaşımında veya blob kapsayıcısına kopyalama.")
 
@@ -320,8 +320,8 @@ Birden çok kaynak konumu yeni bir dizin yapısına sıralar:
 
 Azure dosya paylaşımlarınızın erişimine yönelik iki ana strateji vardır:
 
-* **Azure dosya eşitleme** : [Azure dosya eşitleme](#deploy-azure-file-sync) şirket içi Windows Server örneğine dağıtın. Azure Dosya Eşitleme, tıpkı StorSimple gibi yerel bir önbelleğin tüm avantajlarına sahiptir.
-* **Doğrudan paylaşma-erişim** : [doğrudan paylaşma-erişim dağıtma](#deploy-direct-share-access). Belirli bir Azure dosya paylaşımının erişim senaryonuz yerel önbelleğe alma işleminin avantajına sahip değilse veya şirket içi Windows Server örneğini barındırabilmeniz gerekmiyorsa bu stratejiyi kullanın. Burada, kullanıcılarınız ve uygulamalarınız SMB protokolü üzerinden SMB paylaşımlarına erişmeye devam edecektir. Bu paylaşımlar artık şirket içi bir sunucuda değil, doğrudan bulutta yer alır.
+* **Azure dosya eşitleme**: [Azure dosya eşitleme](#deploy-azure-file-sync) şirket içi Windows Server örneğine dağıtın. Azure Dosya Eşitleme, tıpkı StorSimple gibi yerel bir önbelleğin tüm avantajlarına sahiptir.
+* **Doğrudan paylaşma-erişim**: [doğrudan paylaşma-erişim dağıtma](#deploy-direct-share-access). Belirli bir Azure dosya paylaşımının erişim senaryonuz yerel önbelleğe alma işleminin avantajına sahip değilse veya şirket içi Windows Server örneğini barındırabilmeniz gerekmiyorsa bu stratejiyi kullanın. Burada, kullanıcılarınız ve uygulamalarınız SMB protokolü üzerinden SMB paylaşımlarına erişmeye devam edecektir. Bu paylaşımlar artık şirket içi bir sunucuda değil, doğrudan bulutta yer alır.
 
 Bu kılavuzun [1. aşaması](#phase-1-prepare-for-migration) içinde sizin için en uygun seçeneği zaten kararmış olmanız gerekir.
 
@@ -413,7 +413,7 @@ Bu geçiş yaklaşımı, kullanıcılarınız ve uygulamalarınız için bazı k
 
 Bir Azure dosya paylaşımında Azure Dosya Eşitleme kullandığınızda, herhangi bir yerel RoboCopy başlamadan *önce* tüm ad alanınızı sunucuya indirmeyi tamamladığımıza dikkat etmeniz önemlidir. Ad alanınızı indirmek için gereken süre, Azure dosya paylaşımınızda bulunan öğelerin sayısına bağlıdır. Ad alanınızı sunucuda tam olarak ulaşıp ulaşmadığını belirlemek için iki yöntem vardır.
 
-#### <a name="azure-portal"></a>Azure portal
+#### <a name="azure-portal"></a>Azure portalı
 
 Ad alanınız ne zaman tam olarak geldiğini görmek için Azure portal kullanabilirsiniz.
 
@@ -425,10 +425,10 @@ Bu, her şeye yapılan, ancak **ilk eşitleme** sonrasında, ad alanınız sunuc
 
 Ayrıca, ad alanının tam olarak ulaştığını söylemek için Windows Server örneğinizdeki Olay Görüntüleyicisi de kullanabilirsiniz.
 
-1. **Olay Görüntüleyicisi** açın ve **uygulamalar ve hizmetler** ' e gidin.
-1. ' A gidin ve **Microsoft\filesync\, T\telemetri** ' i açın.
-1. Tamamlanan bir eşitleme oturumuna karşılık gelen en son **olay 9102** ' i arayın.
-1. **Ayrıntılar** ' ı seçin ve **Syncdirection** değerinin **indirileceği** bir olaya baktığınızdan emin olun.
+1. **Olay Görüntüleyicisi** açın ve **uygulamalar ve hizmetler**' e gidin.
+1. ' A gidin ve **Microsoft\filesync\, T\telemetri**' i açın.
+1. Tamamlanan bir eşitleme oturumuna karşılık gelen en son **olay 9102**' i arayın.
+1. **Ayrıntılar**' ı seçin ve **Syncdirection** değerinin **indirileceği** bir olaya baktığınızdan emin olun.
 1. Ad uzayının sunucuya indirmesi tamamlandığında, **senaryoya** sahip tek bir olay, **FullGhostedSync** değeri ve **HRESULT**  =  **0** olur.
 1. Bu olayı kaçırırsanız, **syncdirection** **9102 events**  =  **indirmesi** ve **Scenario**  =  **"RegularSync"** senaryosuyla diğer 9102 olaylarına de bakabilirsiniz. Bu olaylardan birini bulmak için aynı zamanda, ad alanının, eşitleme için ilerlemedi ve eşitleme tamamlandı.
 
@@ -448,7 +448,7 @@ Bu noktada, şirket içi Windows Server Örneğiniz ve StorSimple 8100 ya da 860
 RoboCopy 'nin çeşitli parametreleri vardır. Aşağıdaki örnek, tamamlanmış bir komutu ve bu parametreleri seçme nedenlerinin bir listesini gösterir.
 
 ```console
-Robocopy /MT:16 /UNILOG:<file name> /TEE /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
+Robocopy /MT:16 /UNILOG:<file name> /TEE /NP /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
 ```
 
 Arka plan
@@ -475,6 +475,14 @@ Arka plan
    :::column-end:::
    :::column span="1":::
       Konsol penceresine çıkış. Günlük dosyasına çıktılarla birlikte kullanılır.
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      /NP
+   :::column-end:::
+   :::column span="1":::
+      Günlük okunabilir halde tutulması için ilerleme durumunu atlar.
    :::column-end:::
 :::row-end:::
 :::row:::

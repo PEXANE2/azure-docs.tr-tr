@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/26/2020
-ms.openlocfilehash: b381f2f1871ea7e26950d5b02d5906a50c6129d3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9e34ce05d055e6933ecfbacf672bb8b1eba544bd
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445006"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512316"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure Data Factory veri hareketine yönelik güvenlik konuları
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -32,7 +32,7 @@ Bir Data Factory çözümünde bir veya daha fazla [işlem hattı](concepts-pipe
 
 Data Factory yalnızca birkaç bölgede kullanılabilir olsa da, veri taşıma hizmeti, veri uyumluluğu, verimlilik ve azaltılmış ağ çıkış maliyetlerini sağlamak için [genel olarak kullanılabilir](concepts-integration-runtime.md#integration-runtime-location) . 
 
-Azure Data Factory, sertifikalar kullanılarak şifrelenen bulut veri depoları için bağlı hizmet kimlik bilgileri dışında hiçbir veri depolamaz. Data Factory, verileri [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats)arasında düzenlemek için veri odaklı iş akışları oluşturun ve diğer bölgelerde veya şirket içi bir ortamda [işlem hizmetlerini](compute-linked-services.md) kullanarak verileri işleme. Ayrıca, SDK 'Ları ve Azure Izleyici 'yi kullanarak iş akışlarını izleyebilir ve yönetebilirsiniz.
+Integration Runtime dahil Azure Data Factory, sertifikalar kullanılarak şifrelenen bulut veri depoları için bağlı hizmet kimlik bilgileri dışında hiçbir veri depolamaz. Data Factory, verileri [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats)arasında düzenlemek için veri odaklı iş akışları oluşturun ve diğer bölgelerde veya şirket içi bir ortamda [işlem hizmetlerini](compute-linked-services.md) kullanarak verileri işleme. Ayrıca, SDK 'Ları ve Azure Izleyici 'yi kullanarak iş akışlarını izleyebilir ve yönetebilirsiniz.
 
 Data Factory için sertifikalıdır:
 

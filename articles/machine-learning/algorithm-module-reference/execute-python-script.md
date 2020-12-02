@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
-ms.date: 10/21/2020
-ms.openlocfilehash: e0da478e221fe392135362cd74cbdd8baca101ef
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 12/02/2020
+ms.openlocfilehash: 360f0ce60a35bc96c6dd8e46d636f07124d01255
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421371"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511925"
 ---
 # <a name="execute-python-script-module"></a>Python betik modülünü Yürüt
 
@@ -37,7 +37,7 @@ Azure Machine Learning, Python 'un, veri işleme için birçok yaygın yardımc�
 
 Tüm liste için bkz. [önceden yüklenmiş Python paketleri](#preinstalled-python-packages)bölümü.
 
-Önceden yüklenmiş listede olmayan paketleri yüklemek için (örneğin, *scikit-misc* ), betiğe aşağıdaki kodu ekleyin: 
+Önceden yüklenmiş listede olmayan paketleri yüklemek için (örneğin, *scikit-misc*), betiğe aşağıdaki kodu ekleyin: 
 
 ```python
 import os
@@ -59,6 +59,36 @@ if spec is None:
 
 > [!WARNING]
 > Excute Python betik modülü, Java, PyODBC ve vb. gibi "apt-get" gibi komutla ek yerel kitaplıklara bağlı paketlerin yüklenmesini desteklemez. Bunun nedeni, Bu modülün Python ile önceden yüklenmiş ve yönetici olmayan izinlerle basit bir ortamda yürütüldüğünden oluşur.  
+
+## <a name="access-to-registered-datasets"></a>Kayıtlı veri kümelerine erişim
+
+Çalışma alanınızdaki [kayıtlı veri kümelerine](../how-to-create-register-datasets.md) erişmek için aşağıdaki örnek koda başvurabilirsiniz:
+
+```Python
+def azureml_main(dataframe1 = None, dataframe2 = None):
+
+    # Execution logic goes here
+    print(f'Input pandas.DataFrame #1: {dataframe1}')
+    from azureml.core import Run
+    run = Run.get_context(allow_offline=True)
+    ws = run.experiment.workspace
+
+    from azureml.core import Dataset
+    dataset = Dataset.get_by_name(ws, name='test-register-tabular-in-designer')
+    dataframe1 = dataset.to_pandas_dataframe()
+     
+    # If a zip file is connected to the third input port,
+    # it is unzipped under "./Script Bundle". This directory is added
+    # to sys.path. Therefore, if your zip file contains a Python file
+    # mymodule.py you can import it using:
+    # import mymodule
+
+    # Return value must be of a sequence of pandas.DataFrame
+    # E.g.
+    #   -  Single return value: return dataframe1,
+    #   -  Two return values: return dataframe1, dataframe2
+    return dataframe1,
+```
 
 ## <a name="upload-files"></a>Dosyaları karşıya yükleme
 Execute Python betik modülü, [Azure Machine Learning Python SDK](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#upload-file-name--path-or-stream-)kullanarak dosyaları karşıya yüklemeyi destekler.
@@ -199,7 +229,7 @@ Modül iki veri kümesi döndürür:
   
 + Bir Python betiğinde ilk döndürülen Pandas veri çerçevesi tarafından tanımlanan **sonuçlar veri kümesi 1**.
 
-+ **Sonuç veri kümesi 2** , bir Python betiğinin ikinci döndürülen Pandas veri çerçevesi tarafından tanımlanır.
++ **Sonuç veri kümesi 2**, bir Python betiğinin ikinci döndürülen Pandas veri çerçevesi tarafından tanımlanır.
 
 ## <a name="preinstalled-python-packages"></a>Önceden yüklenmiş Python paketleri
 Önceden yüklenmiş paketler şunlardır:

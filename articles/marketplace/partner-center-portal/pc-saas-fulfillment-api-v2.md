@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: d6449a00886b7366bcd1f6e2fcec910fd3cb38db
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 1ea326cc4537176c0ddcff070f4dc3b3f77f4b58
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461052"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512044"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>Ticari Market 'te SaaS API sürüm 2
 
@@ -20,7 +20,7 @@ Bu makalede, iş ortaklarının, hizmet olarak yazılım (SaaS) tekliflerini Mic
 
 ## <a name="managing-the-saas-subscription-life-cycle"></a>SaaS Abonelik yaşam döngüsünü yönetme
 
-Ticari Market, SaaS aboneliğinin Son Kullanıcı tarafından satın alındıktan sonra tüm yaşam döngüsünü yönetir.  Gerçek SaaS aboneliği etkinleştirme, kullanım, güncelleştirme ve iptali sağlamak için bir mekanizma olarak, giriş sayfasını, API 'Leri, Işlem API 'lerini ve Web kancasını kullanır.  Son kullanıcının faturası, Microsoft 'un koruduğu SaaS aboneliğinin durumuna bağlıdır. 
+Ticari Market, SaaS aboneliğinin Son Kullanıcı tarafından satın alındıktan sonra tüm yaşam döngüsünü yönetir. Gerçek SaaS aboneliği etkinleştirme, kullanım, güncelleştirme ve iptali sağlamak için bir mekanizma olarak, giriş sayfasını, API 'Leri, Işlem API 'lerini ve Web kancasını kullanır. Son kullanıcının faturası, Microsoft 'un koruduğu SaaS aboneliğinin durumuna bağlıdır. 
 
 ### <a name="states-of-a-saas-subscription"></a>SaaS aboneliğinin durumları
 
@@ -44,11 +44,11 @@ Bu tür çağrıya bir örnek `https://contoso.com/signup?token=<blob>` , ancak 
 
 Giriş sayfası URL 'SI her gün, her gün ve Microsoft 'tan her zaman yeni çağrılar almaya hazırlanmalıdır. Giriş sayfası kullanılamaz hale gelirse, müşteriler SaaS hizmetine kaydolayamaz ve kullanmaya başlayabilir.
 
-Ardından Yayımcı, [SaaS Resolve API](#resolve-a-purchased-subscription)'sini çağırarak ve belirteci üstbilgi parametresinin değeri olarak girerek *belirteci* Microsoft 'a geri iletmelidir `x-ms-marketplace-token header` .  Çözümleme API 'SI çağrısının sonucu olarak, belirteç satın alma, satın alınan teklif KIMLIĞI ve satın alınan plan KIMLIĞI gibi SaaS satın alma 'nın ayrıntıları için değiştirilir.
+Ardından Yayımcı, [SaaS Resolve API](#resolve-a-purchased-subscription)'sini çağırarak ve belirteci üstbilgi parametresinin değeri olarak girerek *belirteci* Microsoft 'a geri iletmelidir `x-ms-marketplace-token header` . Çözümleme API 'SI çağrısının sonucu olarak, belirteç satın alma, satın alınan teklif KIMLIĞI ve satın alınan plan KIMLIĞI gibi SaaS satın alma 'nın ayrıntıları için değiştirilir.
 
 Giriş sayfasında, müşteri yeni veya mevcut SaaS hesabında Azure Active Directory (Azure AD) çoklu oturum açma (SSO) yoluyla oturum açmış olmalıdır.
 
-Yayımcı, bu akış için Microsoft 'un gerektirdiği Kullanıcı deneyimini sağlamak üzere SSO 'yu uygulamalıdır. SSO 'yu yapılandırırken çok kiracılı Azure AD uygulamasını kullandığınızdan ve hem iş hem de okul hesaplarına ya da kişisel Microsoft hesaplarına izin verin.  Bu gereksinim, yalnızca Microsoft kimlik bilgileriyle oturum açmış olan SaaS hizmetine yeniden yönlendirilen kullanıcılar için giriş sayfası için geçerlidir. SaaS hizmetinde tüm oturum açma işlemleri için SSO gerekli değildir.
+Yayımcı, bu akış için Microsoft 'un gerektirdiği Kullanıcı deneyimini sağlamak üzere SSO 'yu uygulamalıdır. SSO 'yu yapılandırırken çok kiracılı Azure AD uygulamasını kullandığınızdan ve hem iş hem de okul hesaplarına ya da kişisel Microsoft hesaplarına izin verin. Bu gereksinim, yalnızca Microsoft kimlik bilgileriyle oturum açmış olan SaaS hizmetine yeniden yönlendirilen kullanıcılar için giriş sayfası için geçerlidir. SaaS hizmetinde tüm oturum açma işlemleri için SSO gerekli değildir.
 
 > [!NOTE]
 >SSO bir yöneticinin bir uygulamaya izin vermesini gerektiriyorsa, Iş Ortağı Merkezi 'nde teklifin açıklaması, yönetici düzeyinde erişimin gerekli olduğunu açıklamalıdır. Bu açıklama [ticari Market sertifika ilkeleriyle](/legal/marketplace/certification-policies#10003-authentication-options)uyumlu değildir.
@@ -82,11 +82,11 @@ Yalnızca etkin bir abonelik güncelleştirilebilen olabilir. Abonelik güncelle
 
 ##### <a name="update-initiated-from-the-commercial-marketplace"></a>Ticari Market 'ten başlatılan güncelleştirme
 
-Bu akışta müşteri, Azure portal Microsoft 365 veya Yönetim Merkezi 'nden abonelik planı veya bilgisayar lisansı sayısını değiştirir.  
+Bu akışta müşteri, Azure portal Microsoft 365 veya Yönetim Merkezi 'nden abonelik planı veya bilgisayar lisansı sayısını değiştirir.
 
-1. Güncelleştirme girildikten sonra, Microsoft, Iş Ortağı Merkezi 'nin **bağlantı Web kancası** alanında yapılandırılan, *eylem* için uygun bir değer ve diğer ilgili parametreleri içeren yayımcı Web kancası URL 'sini çağırır.  
+1. Güncelleştirme girildikten sonra, Microsoft, Iş Ortağı Merkezi 'nin **bağlantı Web kancası** alanında yapılandırılan, *eylem* için uygun bir değer ve diğer ilgili parametreleri içeren yayımcı Web kancası URL 'sini çağırır. 
 1. Yayımcı tarafı, SaaS hizmetinde gerekli değişiklikleri yapması ve [Işlem API 'Sinin güncelleştirme durumunu](#update-the-status-of-an-operation)çağırarak Microsoft 'un tamamlandığında bilgilendirmesini sağlar.
-1. Düzeltme Eki *başarısız* durumla gönderilirse, güncelleştirme işlemi Microsoft tarafında tamamlanmaz.  SaaS aboneliği, var olan planı ve bilgisayar lisans miktarını tutacaktır.
+1. Düzeltme Eki *başarısız* durumla gönderilirse, güncelleştirme işlemi Microsoft tarafında tamamlanmaz. SaaS aboneliği, var olan planı ve bilgisayar lisans miktarını tutacaktır.
 
 > [!NOTE]
 > Yayımcı, Web kancası bildirimini aldıktan sonra *10 saniyelik bir zaman penceresinde* bir hata/başarı YANıTıYLA [Işlem API 'sinin durumunu güncelleştirmek](#update-the-status-of-an-operation) için düzeltme ekini çağırmalıdır. İşlem durumunun düzeltme eki 10 saniye içinde alınmıyorsa, değişiklik planı *otomatik olarak başarılı olarak düzeltme eki* yapılır. 
@@ -101,7 +101,7 @@ Bu akışta müşteri, SaaS hizmetinin kendisinden satın alınan abonelik plan�
 
 1. Yayımcı kodu, Yayımcı tarafında istenen değişikliği yapmadan önce [değişiklik planı API](#change-the-plan-on-the-subscription) 'sini ve/veya [Change Quantity API](#change-the-quantity-of-seats-on-the-saas-subscription) 'sini çağırmalıdır. 
 
-1. Microsoft bu değişikliği aboneliğe uygular ve aynı değişikliği uygulamak için yayımcıya **bağlantı Web kancası** üzerinden bildirilir.  
+1. Microsoft bu değişikliği aboneliğe uygular ve aynı değişikliği uygulamak için yayımcıya **bağlantı Web kancası** üzerinden bildirilir.
 
 1. Yalnızca Yayımcı, SaaS aboneliğine gerekli değişikliği yapması ve [Işlem API 'Sinin güncelleştirme durumunu](#update-the-status-of-an-operation)çağırarak Microsoft 'un değişiklik yapıldığında Microsoft 'a bildirmesi gerekir.
 
@@ -113,7 +113,7 @@ Yayımcı tarafında başlatılan bir güncelleştirme senaryosuna yönelik API 
 
 Bu durum müşterinin SaaS hizmeti için ödeme alındığını gösterir. Yayımcı, Microsoft tarafından SaaS Abonelik durumundaki bu değişiklik hakkında bilgilendirilir. Bildirim, *eylem* parametresi *askıya alındı* olarak ayarlanmış bir Web kancası çağrısıyla yapılır.
 
-Yayımcı, Yayımcı tarafında SaaS hizmetinde değişiklik yapabilir veya olmayabilir. Yayımcının bu bilgileri askıya alınmış müşteri tarafından kullanılabilmesini ve müşterinin SaaS hizmetine erişimini kısıtlayıp engellemesini öneririz.  Ödemenin hiçbir şekilde alınmayacağı bir olasılık vardır.
+Yayımcı, Yayımcı tarafında SaaS hizmetinde değişiklik yapabilir veya olmayabilir. Yayımcının bu bilgileri askıya alınmış müşteri tarafından kullanılabilmesini ve müşterinin SaaS hizmetine erişimini kısıtlayıp engellemesini öneririz. Ödemenin hiçbir şekilde alınmayacağı bir olasılık vardır.
 
 Microsoft, aboneliği otomatik olarak iptal etmeden önce müşteriye 30 günlük bir yetkisiz kullanım süresi verir. Abonelik *askıya alındı* durumundaysa:
 
@@ -126,26 +126,26 @@ Yayımcı herhangi bir işlem yapmadan önce, Microsoft tarafında abonelik duru
 
 Bu eylem, müşterinin ödeme aracınızın tekrar geçerli hale geldiğini, SaaS aboneliği için bir ödeme yapıldığını ve aboneliğin yeniden belirtildiğini gösterir. Bu durumda: 
 
-1. Microsoft, bir *eylem* parametresi olan Web kancasını yeniden *devreye* sokma olarak çağırır.  
+1. Microsoft, bir *eylem* parametresi olan Web kancasını yeniden *devreye* sokma olarak çağırır.
 1. Yayımcı, aboneliğin Yayımcı tarafında tamamen çalıştığından emin olmanızı sağlar.
-1. Yayımcı, başarılı durumu olan [yama IŞLEMI API](#update-the-status-of-an-operation) 'sini çağırır.  
+1. Yayımcı, başarılı durumu olan [yama IŞLEMI API](#update-the-status-of-an-operation) 'sini çağırır.
 1. Yeniden devreye sokma işlemi başarılı olur ve müşteri SaaS aboneliği için yeniden faturalandırılır. 
 
 Düzeltme Eki *başarısız* durumuyla gönderilirse,,,, Microsoft tarafında bir i ifade işlemi tamamlanmaz ve abonelik *askıya* alınır.
 
-Yalnızca askıya alınmış bir abonelik tekrar belirtilebilir.  Askıya alınmış SaaS aboneliği, yeniden belirtildiği sırada *askıya alınmış* durumda kalır.  Bu işlem tamamlandıktan sonra aboneliğin durumu *etkin* olur.
+Yalnızca askıya alınmış bir abonelik tekrar belirtilebilir. Askıya alınmış SaaS aboneliği, yeniden belirtildiği sırada *askıya alınmış* durumda kalır. Bu işlem tamamlandıktan sonra aboneliğin durumu *etkin* olur.
 
 #### <a name="renewed-subscribed"></a>Yenilendi (*abone olunan*)
 
-SaaS aboneliği, bir ay veya yıl boyunca abonelik dönemi sonunda Microsoft tarafından otomatik olarak yenilenir.  Otomatik yenileme ayarı için varsayılan değer tüm SaaS abonelikleri için *geçerlidir* . Etkin SaaS abonelikleri, düzenli bir temposunda yenilenmeye devam edecektir. Microsoft, bir abonelik yenilendiğinde yayımcıyı bildirmez. Müşteri, Microsoft 365 Yönetici portalı aracılığıyla veya Azure portal aracılığıyla bir SaaS aboneliği için otomatik yenilemeyi kapatabilir.  Bu durumda, SaaS aboneliği geçerli fatura döneminin sonunda otomatik olarak iptal edilir.  Müşteriler, SaaS aboneliğini dilediğiniz zaman da iptal edebilir.
+SaaS aboneliği, bir ay veya yıl boyunca abonelik dönemi sonunda Microsoft tarafından otomatik olarak yenilenir. Otomatik yenileme ayarı için varsayılan değer tüm SaaS abonelikleri için *geçerlidir* . Etkin SaaS abonelikleri, düzenli bir temposunda yenilenmeye devam edecektir. Microsoft, bir abonelik yenilendiğinde yayımcıyı bildirmez. Müşteri, Microsoft 365 Yönetici portalı aracılığıyla bir SaaS aboneliği için otomatik yenilemeyi kapatabilir. Bu durumda, SaaS aboneliği geçerli fatura döneminin sonunda otomatik olarak iptal edilir. Müşteriler, SaaS aboneliğini dilediğiniz zaman da iptal edebilir.
 
-Yalnızca etkin abonelikler otomatik olarak yenilenir.  Abonelikler, yenileme işlemi sırasında etkin kalır ve otomatik yenileme başarılı olur.  Yenilemeden sonra, abonelik döneminin başlangıç ve bitiş tarihleri yeni dönem tarihlerine güncelleştirilir.
+Yalnızca etkin abonelikler otomatik olarak yenilenir. Abonelikler, yenileme işlemi sırasında etkin kalır ve otomatik yenileme başarılı olur. Yenilemeden sonra, abonelik döneminin başlangıç ve bitiş tarihleri yeni dönem tarihlerine güncelleştirilir.
 
 Bir otomatik yenileme, ödemeyle ilgili bir sorun nedeniyle başarısız olursa, abonelik *askıya* alınır ve yayımcı bilgilendirilir.
 
 #### <a name="canceled-unsubscribed"></a>İptal edildi (*aboneliği kaldırma*) 
 
-Abonelikler, yayımcı sitesinden, Azure portal veya Microsoft 365 Yönetim merkezinden bir aboneliğin iptalinden yararlanarak açık bir müşteriye veya CSP eylemine yanıt olarak bu duruma ulaşabilir.  Abonelik, 30 günlük *askıya alınma* durumunda olduktan sonra, Dues 'nin faturalandırılmasıyla ilgili olarak, örtük olarak da iptal edilebilir.
+Abonelikler, yayımcı sitesinden, Azure portal veya Microsoft 365 Yönetim merkezinden bir aboneliğin iptalinden yararlanarak açık bir müşteriye veya CSP eylemine yanıt olarak bu duruma ulaşabilir. Abonelik, 30 günlük *askıya alınma* durumunda olduktan sonra, Dues 'nin faturalandırılmasıyla ilgili olarak, örtük olarak da iptal edilebilir.
 
 Yayımcı bir iptal Web kancası çağrısını aldıktan sonra, istek üzerine en az yedi gün için müşteri verilerini korumaları gerekir. Yalnızca müşteri verileri silinebilir.
 
@@ -163,7 +163,7 @@ Satın alma işleminden iptale kadar olan SaaS Abonelik yaşam döngüsünü iş
 * Yayımcı tarafından onaylanmayı bekleyen uygulamaların bir listesini alın.
 
 > [!NOTE]
-> TLS sürüm 1,2 sürümü yakında HTTPS iletişimleri için en düşük sürüm olacak şekilde zorlanacak. Kodunuzda bu TLS sürümünü kullandığınızdan emin olun.  1,0 ve 1,1 TLS sürümleri yakında kullanım dışı bırakılacak.
+> TLS sürüm 1,2 sürümü yakında HTTPS iletişimleri için en düşük sürüm olacak şekilde zorlanacak. Kodunuzda bu TLS sürümünü kullandığınızdan emin olun. 1,0 ve 1,1 TLS sürümleri yakında kullanım dışı bırakılacak.
 
 ### <a name="subscription-apis"></a>Abonelik API 'Leri
 

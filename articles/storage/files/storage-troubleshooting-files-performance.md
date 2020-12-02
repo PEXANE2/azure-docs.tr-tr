@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 5a35d939c12639770e25c3096c77f13d31310f85
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 90942e4deebdc65fe26ce94f04a15fe2b8c0684c
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492021"
+ms.locfileid: "96512078"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Azure dosya paylaşımları performans sorunlarını giderme
 
@@ -74,11 +74,12 @@ Kullandığınız uygulama tek iş parçacıklı ise, bu kurulum, sağlanan payl
 
 ### <a name="cause"></a>Nedeni
 
-İstemci sanal makinesi (VM) dosya paylaşımından farklı bir bölgede bulunabilir.
+İstemci sanal makinesi (VM) dosya paylaşımından farklı bir bölgede bulunabilir. İstemci veya ağın neden olduğu gecikme nedeniyle yüksek gecikme süresine yönelik başka bir neden olabilir.
 
 ### <a name="solution"></a>Çözüm
 
 - Uygulamayı dosya paylaşımıyla aynı bölgede bulunan bir VM 'den çalıştırın.
+- Depolama hesabınız için, Azure portal 'de **Azure izleyici** aracılığıyla Işlem ölçümleri **SuccessE2ELatency** ve **başarılı sunucugecikmesi** ' nı gözden geçirin. SuccessE2ELatency ve başarılı Sunucugecikmesi ölçüm değerleri arasında yüksek bir fark, ağ veya istemcinin neden olduğu gecikme süresinin göstergesidir. Bkz. Azure dosyaları Izleme veri başvurusunda [işlem ölçümleri](storage-files-monitoring-reference.md#transaction-metrics) .
 
 ## <a name="client-unable-to-achieve-maximum-throughput-supported-by-the-network"></a>İstemci ağ tarafından desteklenen maksimum üretilen iş elde edemedi
 
