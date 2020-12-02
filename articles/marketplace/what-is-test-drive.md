@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 06/19/2020
-ms.openlocfilehash: 304e1ab475213bde2644c8241905408ade5672ed
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 193e7bd78046a1d73cb55171c15c9cb6a7278297
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489973"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490049"
 ---
 # <a name="what-is-a-test-drive"></a>Test sürüşü nedir?
 
@@ -24,7 +24,7 @@ Müşterileriniz bir test sürücüsünden da faydalanır. İlk olarak ürünün
 
 Test sürücüleri, çözümünüzü veya uygulamanızı isteyen müşterilere talep üzerine Başlatan yönetilen örneklerdir. Bir test sürücü örneği atandıktan sonra, bu müşteri tarafından bir ayarlama dönemi için kullanılabilir. Süre sona erdikten sonra, başka bir müşteri için yer açmak üzere silinir.
 
-Yayımcı olarak, Iş Ortağı Merkezi 'nde test sürücüsü ayarlarını yönetip yapılandırırsınız. Teknik yapılandırma ayrıntıları teklifin türüne göre farklılık gösterir. Ayrıntılı kılavuz için bkz. [sınama sürücüsü teknik yapılandırması](https://docs.microsoft.com/azure/marketplace/test-drive-technical-configuration).
+Yayımcı olarak, Iş Ortağı Merkezi 'nde test sürücüsü ayarlarını yönetip yapılandırırsınız. Teknik yapılandırma ayrıntıları teklifin türüne göre farklılık gösterir. Ayrıntılı kılavuz için bkz. [sınama sürücüsü teknik yapılandırması](./test-drive-technical-configuration.md).
 
 Potansiyel müşteriler, test sürücünüzü [Appsource](https://appsource.microsoft.com/en-US/)'ta teklifinizin bir CTA olarak bulur. Bunlar, iletişim bilgilerini sağlar ve teklifinizin hüküm ve gizlilik ilkesini kabul edebilir ve ardından sabit bir süre denemek için önceden yapılandırılmış ortamınıza erişin. Müşteriler, ürününüzün temel özelliklerine ve avantajlarına yönelik uygulamalı, kendinden destekli bir deneme alır ve değerli bir müşteri adayı elde edersiniz.
 
@@ -43,7 +43,7 @@ Sunmakta olduğunuz ürün, senaryo ve Market türüne bağlı olarak, select te
 - Logic App (yalnızca destek modunda)
 - Power BI
 
-Bu test sürücülerinden birini yapılandırma hakkında ayrıntılı bilgi için bkz. [Test Drive Technical Configuration](https://docs.microsoft.com/azure/marketplace/test-drive-technical-configuration). 
+Bu test sürücülerinden birini yapılandırma hakkında ayrıntılı bilgi için bkz. [Test Drive Technical Configuration](./test-drive-technical-configuration.md). 
 
 ### <a name="azure-resource-manager-test-drive"></a>Test sürüşü Azure Resource Manager
 
@@ -65,7 +65,7 @@ Barındırılan bir test sürücüsü, Microsoft ana bilgisayarına izin vererek
 
 ### <a name="logic-app-test-drive"></a>Mantıksal uygulama sınama sürücüsü
 
-Bu tür test sürücüsü Microsoft tarafından barındırılmamaktadır ve Dynamics AX/CRM teklif türleri için Azure Resource Manager (ARM) şablonları kullanır. Azure aboneliğinizde gerekli kaynakları oluşturmak için ARM şablonunu çalıştırmanız gerekir. Logic app test sürücüsü şu anda yalnızca destek modunda ve Logic app test sürücüsü yapılandırma hakkında ayrıntılı bilgi Için bkz. [sınama sürücüsü teknik yapılandırması](https://docs.microsoft.com/azure/marketplace/test-drive-technical-configuration).
+Bu tür test sürücüsü Microsoft tarafından barındırılmamaktadır ve Dynamics AX/CRM teklif türleri için Azure Resource Manager (ARM) şablonları kullanır. Azure aboneliğinizde gerekli kaynakları oluşturmak için ARM şablonunu çalıştırmanız gerekir. Logic app test sürücüsü şu anda yalnızca destek modunda ve Logic app test sürücüsü yapılandırma hakkında ayrıntılı bilgi Için bkz. [sınama sürücüsü teknik yapılandırması](./test-drive-technical-configuration.md).
 
 ### <a name="power-bi-test-drive"></a>Test sürüşü Power BI
 

@@ -162,6 +162,8 @@
           href: expressroute-howto-coexist-resource-manager.md
         - name: Azure Kullanılabilirlik Alanları arasında yedekli VNet ağ geçidi oluşturma
           href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md?toc=%2fazure%2fexpressroute%2ftoc.json
+    - name: Maliyetleri planlama ve yönetme
+      href: plan-manage-cost.md
     - name: Klasikten Resource Manager’a taşıma
       items:
         - name: Bir devreyi klasikten Resource Manager’a taşıma

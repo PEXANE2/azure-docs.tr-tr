@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/30/2020
 ms.author: memildin
-ms.openlocfilehash: f26fffe8e6b2be6ede064b4750d012b3e4535c66
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 5ac96d703ea646d26b84d6d6486d9ee44ad87cd2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433342"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490134"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -129,7 +129,7 @@ Güvenli puanı sürekli dışa aktarma ile Azure Event Hubs veya bir Log Analyt
 
 - Azure Kaynak grafiğinden (ARG) öneri için verileri zenginleştirir. Bağımsız değişken, verimli kaynak araştırması sağlamak için tasarlanan bir Azure hizmetidir. Ortamınızı etkin bir şekilde yönetebilmeniz için, belirli bir abonelik kümesi genelinde ölçeği sorgulamak için bağımsız değişkeni kullanabilirsiniz. 
 
-    Azure Güvenlik Merkezi için bağımsız değişken ve [kusto sorgu dili (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/) kullanarak çok çeşitli güvenlik sonrası verileri sorgulayabilirsiniz.
+    Azure Güvenlik Merkezi için bağımsız değişken ve [kusto sorgu dili (KQL)](/azure/data-explorer/kusto/query/) kullanarak çok çeşitli güvenlik sonrası verileri sorgulayabilirsiniz.
 
     Daha önce, bu öneriyi bağımsız değişken ' de sorguladıysanız, yalnızca bir makinenin bir makinede düzeltilme ihtiyacı vardır. Aşağıdaki gelişmiş sürümü sorgusu, tüm eksik sistem güncelleştirmelerini makineye göre gruplanmış olarak döndürür.
 
@@ -172,7 +172,7 @@ Ana yetenekler:
 
 [Tümleşik güvenlik açığı tarayıcısını karma makinelerinize dağıtma hakkında daha fazla bilgi edinin](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-scanner-to-your-azure-and-hybrid-machines).
 
-[Azure Arc etkin sunucuları hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/azure-arc/servers/).
+[Azure Arc etkin sunucuları hakkında daha fazla bilgi edinin](../azure-arc/servers/index.yml).
 
 
 ### <a name="azure-firewall-recommendation-added-preview"></a>Azure Güvenlik Duvarı önerisi eklendi (Önizleme)
@@ -206,7 +206,7 @@ Pano, varsayılan bir mevzuat standartları kümesi içerir. Sağlanan standartl
 
 Azure Kaynak Grafiği, ortamınızı etkili bir şekilde yönetebilmeniz için belirli bir abonelik kümesi genelinde ölçeği sorgulama özelliği ile verimli kaynak araştırması sağlamak üzere tasarlanan Azure hizmetidir. 
 
-Azure Güvenlik Merkezi için bağımsız değişken ve [kusto sorgu dili (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/) kullanarak çok çeşitli güvenlik sonrası verileri sorgulayabilirsiniz. Örnek:
+Azure Güvenlik Merkezi için bağımsız değişken ve [kusto sorgu dili (KQL)](/azure/data-explorer/kusto/query/) kullanarak çok çeşitli güvenlik sonrası verileri sorgulayabilirsiniz. Örnek:
 
 - Varlık envanteri kullanır (bağımsız değişken)
 - [Multi-Factor Authentication (MFA) etkin olmayan hesapların nasıl tanımlanacağına](security-center-identity-access.md#identify-accounts-without-multi-factor-authentication-mfa-enabled) yönelik örnek bir bağımsız değişken sorgusu belgeliyoruz
@@ -295,7 +295,7 @@ extract("^(.+)/providers/Microsoft.Security/assessments/.+$",1,id)))))
 
 Aşağıdaki bağlantılardan daha fazla bilgi edinin:
 - [Azure Kaynak Grafı Gezgini ile sorgu oluşturma](../governance/resource-graph/first-query-portal.md)
-- [Kusto Sorgu Dili (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/)
+- [Kusto Sorgu Dili (KQL)](/azure/data-explorer/kusto/query/)
 
 
 ## <a name="september-2020"></a>Eylül 2020

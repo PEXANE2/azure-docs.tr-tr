@@ -5,13 +5,13 @@ author: Rodrigossz
 ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/09/2020
-ms.openlocfilehash: 0791ed6882feedeab47b75eff6a69bf0a49ab7ee
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.date: 11/30/2020
+ms.openlocfilehash: 82133f990c1714276aa13ff22c3f19d0993d16df
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341303"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488723"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Synapse Link hakkında sık sorulan sorular
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -22,7 +22,7 @@ Azure Cosmos DB için Azure SYNAPSE bağlantısı Azure Cosmos DB ile Azure SYNA
 
 ### <a name="is-azure-synapse-link-supported-for-all-azure-cosmos-db-apis"></a>Azure SYNAPSE bağlantısı tüm Azure Cosmos DB API 'Leri için destekleniyor mu?
 
-Genel Önizleme sürümünde Azure SYNAPSE link, Azure Cosmos DB SQL (Core) API 'SI ve MongoDB için Azure Cosmos DB API 'SI için desteklenir. 
+Azure SYNAPSE link, Azure Cosmos DB SQL (Core) API 'SI ve MongoDB için Azure Cosmos DB API 'SI için desteklenir. 
 
 ### <a name="is-azure-synapse-link-supported-for-multi-region-azure-cosmos-db-accounts"></a>Azure SYNAPSE bağlantısı çok bölgeli Azure Cosmos DB hesapları için destekleniyor mu?
 
@@ -32,7 +32,7 @@ Analitik mağaza desteğiyle çok bölgeli bir Azure Cosmos DB hesabını yapıl
 
 ### <a name="can-i-choose-to-enable-azure-synapse-link-for-only-certain-region-and-not-all-regions-in-a-multi-region-account-set-up"></a>Azure SYNAPSE bağlantısını, çok bölgeli bir hesap kümesindeki tüm bölgeler için değil, yalnızca belirli bir bölge için etkinleştirmeyi seçebilir miyim?
 
-Önizleme sürümünde, Azure SYNAPSE link çok bölgeli bir hesap için etkinleştirildiğinde, analitik depo tüm bölgelerde oluşturulur. Temel alınan veriler işlem deposunda işleme ve işlem tutarlılığı için iyileştirilmiştir.
+Çok bölgeli bir hesap için Azure SYNAPSE bağlantısı etkinleştirildiğinde, analitik depo tüm bölgelerde oluşturulur. Temel alınan veriler işlem deposunda işleme ve işlem tutarlılığı için iyileştirilmiştir.
 
 ### <a name="is-backup-and-restore-supported-for-azure-synapse-link-enabled-accounts"></a>Azure SYNAPSE link etkin hesapları için yedekleme ve geri yükleme destekleniyor mu?
 
@@ -42,9 +42,13 @@ Bir veritabanı hesabında SYNAPSE bağlantısı etkinleştirildiğinde Azure Co
 
 ### <a name="can-i-disable-the-azure-synapse-link-feature-for-my-azure-cosmos-db-account"></a>Azure Cosmos DB hesabım için Azure SYNAPSE Link özelliğini devre dışı bırakabilir miyim?
 
-Şu an için Synapse Link özelliğini hesap düzeyinde etkinleştirdikten sonra devre dışı bırakmanız mümkün değildir. Synapse Link özelliği hesap düzeyinde etkin olduğunda ve analiz deposu kullanan kapsayıcı bulunmadığında herhangi bir şekilde faturalandırma gerçekleştirilmeyeceğini unutmayın. 
+Şu an için Synapse Link özelliğini hesap düzeyinde etkinleştirdikten sonra devre dışı bırakmanız mümkün değildir. Synapse Link özelliği hesap düzeyinde etkin olduğunda ve analiz deposu kullanan kapsayıcı bulunmadığında herhangi bir şekilde faturalandırma gerçekleştirilmeyeceğini unutmayın.
 
 Özelliği kapatmanız gerekiyorsa iki seçeneğiniz vardır. Birincisi, Azure Cosmos DB hesabını silip yeniden oluşturmak ve gerekirse verileri geçirmektir. İkinci seçenek, başka bir hesaba veri geçirme konusunda yardım almak için bir destek bileti açmaktır.
+
+### <a name="does-analytical-store-have-any-impact-on-cosmos-db-transactional-slas"></a>Analitik deponun Cosmos DB işlem SLA 'Ları üzerinde herhangi bir etkisi var mı?
+
+Hayır, hiçbir etkisi yoktur.
 
 ## <a name="azure-cosmos-db-analytical-store"></a>Analitik depo Azure Cosmos DB
 
@@ -73,7 +77,7 @@ Evet, işlem deposundaki verilerin silmeleri ve güncelleştirmeleri analitik de
 Analiz deposuna erişmek ve sorgu çalıştırmak için Azure Synapse Analytics tarafından sağlanan çeşitli çalışma zamanlarını kullanmanız gerekir. Analiz deposunu sorgulamak ve analiz etmek için şu bileşenleri kullanabilirsiniz:
 
 * Scala, Python, Mini SQL ve C# için tam destekle SYNAPSE spark. Synapse Spark, veri mühendisliği ve veri bilimi senaryolarında temel bir rol oynar.
-* T-SQL dili ve bilindik BI araçları (Power BI Premium gibi) desteğiyle sunucusuz SQL
+* T-SQL diline sahip sunucusuz SQL havuzu ve tanıdık BI araçları desteği (örneğin, Power BI Premium vb.)
 
 ### <a name="can-i-connect-to-analytical-store-from-synapse-sql-provisioned"></a>SYNAPSE SQL tarafından sağlanan analitik depoya bağlanabilir miyim?
 
@@ -117,11 +121,16 @@ Evet, analitik TTL geçerli herhangi bir değere güncelleştirilebilen olabilir
 
 Tüm işlem güncelleştirmeleri ve silmeleri analitik depoya kopyalanır ancak öğe, işlem deposundan temizlendiyse, analitik depoda güncelleştirilemez. Daha fazla bilgi için bkz. [ANALITIK TTL](analytical-store-introduction.md#analytical-ttl) makalesi.
 
-## <a name="billing"></a>Faturalama
+## <a name="billing"></a>Faturalandırma
 
 ### <a name="what-is-the-billing-model-of-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure SYNAPSE bağlantısının faturalandırma modeli nedir?
 
-[Azure Cosmos DB analitik mağaza](analytical-store-introduction.md) , 30 Ağustos 2020 ' a kadar analitik mağaza ücreti olmadan genel önizlemede kullanılabilir. SYNAPSE Spark ve SYNAPSE SQL, [SYNAPSE hizmet tüketimine](https://azure.microsoft.com/pricing/details/synapse-analytics/)göre faturalandırılır.
+Azure SYNAPSE bağlantısının faturalandırma modeli, Azure Cosmos DB analitik mağaza ve SYNAPSE çalışma zamanını kullanarak tahakkuk eden maliyetleri içerir. Daha fazla bilgi edinmek için bkz. [analitik mağaza fiyatlandırması](analytical-store-introduction.md#analytical-store-pricing) ve [Azure SYNAPSE Analytics fiyatlandırma](https://azure.microsoft.com/pricing/details/synapse-analytics/) makaleleri Azure Cosmos DB.
+
+### <a name="what-is-the-billing-impact-if-i-enable-synapse-link-in-my-azure-cosmos-db-database-account"></a>Azure Cosmos DB veritabanı hesabmda SYNAPSE bağlantısını etkinleştirdiğimde faturalandırma etkisi nedir?
+
+Yok. Yalnızca bir analitik mağaza etkin kapsayıcısını oluşturduğunuzda ve verileri yüklemeye başladığınızda ücretlendirilirsiniz.
+
 
 ## <a name="security"></a>Güvenlik
 
@@ -136,10 +145,10 @@ Analitik depo ile kimlik doğrulaması, bir işlem deposuyla aynıdır. Belirli 
 |Azure SYNAPSE çalışma zamanı |Geçerli destek |
 |---------|---------|
 |Azure SYNAPSE Spark havuzları | Okuma, yazma (işlem deposu aracılığıyla), tablo, geçici görünüm |
-|Azure SYNAPSE SQL sunucusuz havuzları    | Okuma, görüntüleme |
+|Azure SYNAPSE sunucusuz SQL havuzu    | Okuma, görüntüleme |
 |Azure SYNAPSE SQL sağlandı   |  Kullanılamaz |
 
-### <a name="do-my-azure-synapse-spark-tables-sync-with-my-azure-synapse-sql-serverless-tables-the-same-way-they-do-with-azure-data-lake"></a>Azure SYNAPSE Spark tablolarım, Azure Data Lake ile aynı şekilde Azure SYNAPSE SQL sunucusuz tablolarım ile eşitlensin mi?
+### <a name="do-my-azure-synapse-spark-tables-sync-with-my-azure-synapse-serverless-sql-pool-tables-the-same-way-they-do-with-azure-data-lake"></a>Azure SYNAPSE Spark tablolarım, Azure Data Lake ile aynı şekilde Azure SYNAPSE sunucusuz SQL havuzu tablolarım ile eşitlensin mi?
 
 Şu anda bu özellik kullanılamıyor.
 

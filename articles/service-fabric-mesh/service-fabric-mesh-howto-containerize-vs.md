@@ -5,12 +5,12 @@ author: georgewallace
 ms.author: gwallace
 ms.date: 11/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0f236292fff0d0e806e6eec32e1e058cbf67545c
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 2fb6aa7d7c655a1ba4b44dabc33e32ce04ae458f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93144486"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489284"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>Mevcut bir .NET uygulamasını Service Fabric Mesh için kapsayıcılı hale getirme
 
@@ -45,16 +45,16 @@ Yüklendikten sonra Visual Studio 2017 Open **Containerssflab\eshoplegacywebform
  
 Service Fabric kafes araçlarını kullanarak mevcut bir ASP.NET veya konsol projesine kapsayıcı düzenleme desteğini aşağıdaki gibi ekleyin:
 
-Visual Studio Çözüm Gezgini 'nde, proje adına (örneğin, **eshoplegacywebforms** ) sağ tıklayın ve ardından **Add**  >  **kapsayıcı Orchestrator desteği** Ekle ' yi seçin.
+Visual Studio Çözüm Gezgini 'nde, proje adına (örneğin, **eshoplegacywebforms**) sağ tıklayın ve ardından **Add**  >  **kapsayıcı Orchestrator desteği** Ekle ' yi seçin.
 **Kapsayıcı Orchestrator desteği ekle** iletişim kutusu görünür.
 
 ![Visual Studio kapsayıcı Orchestrator iletişim kutusu Ekle](./media/service-fabric-mesh-howto-containerize-vs/add-container-orchestration-support.png)
 
-Açılan listeden **Service Fabric kafes** ' i seçin ve ardından **Tamam** ' a tıklayın.
+Açılan listeden **Service Fabric kafes** ' i seçin ve ardından **Tamam**' a tıklayın.
 
 
 >[!NOTE]
-> 2 Kasım 2020 ' den itibaren geçerli olan Docker Hub 'a yönelik anonim ve kimliği doğrulanmış istekler, Docker Ücretsiz plan hesaplarından [uygulanır](https://docs.docker.com/docker-hub/download-rate-limit/) ve IP adresi tarafından zorlanır. Daha ayrıntılı bilgi için bkz. [Docker Hub Ile kimlik doğrulama](https://docs.microsoft.com/azure/container-registry/buffer-gate-public-content#authenticate-with-docker-hub).
+> 2 Kasım 2020 ' den itibaren geçerli olan Docker Hub 'a yönelik anonim ve kimliği doğrulanmış istekler, Docker Ücretsiz plan hesaplarından [uygulanır](https://docs.docker.com/docker-hub/download-rate-limit/) ve IP adresi tarafından zorlanır. Daha ayrıntılı bilgi için bkz. [Docker Hub Ile kimlik doğrulama](../container-registry/buffer-gate-public-content.md#authenticate-with-docker-hub).
 >
 > Oran sınırlı olmamak için, `FROM microsoft/aspnet:4.7.2-windowsservercore-1803 AS base` Dockerfile dosyanızdaki varsayılan değer ile değiştirildiğinden emin olun `FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-1803 AS base`
 

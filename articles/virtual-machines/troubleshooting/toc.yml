@@ -342,7 +342,7 @@
 - name: Geçiş ve Taşıma sorunları
   items:
     - name: Azure Resource Manager geçişi (ASM’den ARM’ye) hakkında SSS
-      href: ../windows/migration-classic-resource-manager-overview.md
+      href: ../migration-classic-resource-manager-overview.md
 - name: Planlı Bakım
   items:
     - name: Genel Bakış

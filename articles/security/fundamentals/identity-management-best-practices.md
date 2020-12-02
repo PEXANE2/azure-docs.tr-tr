@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 94cb40522a9e463fea2efae329daf910b5386cdd
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: bf593eab54233ab65435585485dd8e3940f5addb
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832611"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489828"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure kimlik yönetimi ve erişim denetimi en iyi güvenlik uygulamaları
 
@@ -229,12 +229,12 @@ Ayrıcalıklı erişimin güvenliğini sağlamak, iş varlıklarını korumak i�
 
 Ayrıcalıklı hesaplar, BT sistemlerini yöneten ve yöneten hesaplardır. Cyber saldırganlar, bir kuruluşun verilerine ve sistemlerine erişim kazanmak için bu hesapları hedefleyin. Ayrıcalıklı erişimin güvenliğini sağlamak için, hesabı ve sistemleri kötü niyetli bir kullanıcıya açık olma riskini yalıtmanız gerekir.
 
-Siber saldırganlarına karşı ayrıcalıklı erişimin güvenliğini sağlamak için bir yol haritası geliştirmenizi ve izlemenizi öneririz. Azure AD, Microsoft Azure, Microsoft 365 ve diğer bulut hizmetlerinde yönetilen veya bildirilen kimliklerin ve erişimin güvenliğini sağlamak için ayrıntılı bir yol haritası oluşturma hakkında daha fazla bilgi için [Azure AD 'de karma ve bulut dağıtımları için ayrıcalıklı erişim güvenliğini](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)gözden geçirin.
+Siber saldırganlarına karşı ayrıcalıklı erişimin güvenliğini sağlamak için bir yol haritası geliştirmenizi ve izlemenizi öneririz. Azure AD, Microsoft Azure, Microsoft 365 ve diğer bulut hizmetlerinde yönetilen veya bildirilen kimliklerin ve erişimin güvenliğini sağlamak için ayrıntılı bir yol haritası oluşturma hakkında daha fazla bilgi için [Azure AD 'de karma ve bulut dağıtımları için ayrıcalıklı erişim güvenliğini](../../active-directory/roles/security-planning.md)gözden geçirin.
 
-Aşağıda, [Azure AD 'de karma ve bulut dağıtımları için ayrıcalıklı erişimin güvenliğini sağlama](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)konusunda bulunan en iyi yöntemler özetlenmektedir:
+Aşağıda, [Azure AD 'de karma ve bulut dağıtımları için ayrıcalıklı erişimin güvenliğini sağlama](../../active-directory/roles/security-planning.md)konusunda bulunan en iyi yöntemler özetlenmektedir:
 
 **En iyi yöntem**: ayrıcalıklı hesaplara erişimi yönetin, denetleyin ve izleyin.   
-**Ayrıntı**: [Azure AD Privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)açın. Privileged Identity Management açtıktan sonra, ayrıcalıklı erişim rolü değişiklikleri için bildirim e-posta iletilerini alacaksınız. Bu bildirimler, dizininizde son derece ayrıcalıklı rollere ek kullanıcılar eklendiğinde erken uyarı sağlar.
+**Ayrıntı**: [Azure AD Privileged Identity Management](../../active-directory/roles/security-planning.md)açın. Privileged Identity Management açtıktan sonra, ayrıcalıklı erişim rolü değişiklikleri için bildirim e-posta iletilerini alacaksınız. Bu bildirimler, dizininizde son derece ayrıcalıklı rollere ek kullanıcılar eklendiğinde erken uyarı sağlar.
 
 **En iyi yöntem**: tüm kritik yönetici HESAPLARıNıN Azure AD hesapları olarak yönetildiğinden emin olun.
 **Ayrıntı**: herhangi bir tüketici hesabını kritik yönetici rolünden kaldırın (örneğin, hotmail.com, live.com ve Outlook.com gibi Microsoft hesapları).
@@ -261,10 +261,10 @@ Aşağıda, [Azure AD 'de karma ve bulut dağıtımları için ayrıcalıklı er
 **En iyi yöntem**: en az iki acil durum erişim hesabı tanımlayın.   
 **Ayrıntı**: acil erişim hesapları, kuruluşların mevcut bir Azure Active Directory ortamında ayrıcalıklı erişimi kısıtlamalarına yardımcı olur. Bu hesaplar son derece ayrıcalıklı ve belirli kişilere atanmamıştır. Acil durum erişim hesapları, normal yönetim hesaplarının kullanılabileceği senaryolarla sınırlıdır. Kuruluşların acil durum hesabının kullanımını yalnızca gerekli süre ile sınırlandırmalıdır.
 
-Genel yönetici rolü için atanan veya uygun olan hesapları değerlendirin. `*.onmicrosoft.com`Etki alanını (acil erişim için tasarlanan) kullanarak yalnızca herhangi bir bulut hesabı görmüyorsanız, bunları oluşturun. Daha fazla bilgi için bkz. [Azure AD 'de acil durum erişimi yönetim hesaplarını yönetme](../../active-directory/users-groups-roles/directory-emergency-access.md).
+Genel yönetici rolü için atanan veya uygun olan hesapları değerlendirin. `*.onmicrosoft.com`Etki alanını (acil erişim için tasarlanan) kullanarak yalnızca herhangi bir bulut hesabı görmüyorsanız, bunları oluşturun. Daha fazla bilgi için bkz. [Azure AD 'de acil durum erişimi yönetim hesaplarını yönetme](../../active-directory/roles/security-emergency-access.md).
 
 **En iyi yöntem**: acil durumda bir "cam" işlemine sahiptir.
-**Ayrıntı**: [Azure AD 'de karma ve bulut dağıtımları Için ayrıcalıklı erişimin güvenliğini sağlama konusundaki](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)adımları izleyin.
+**Ayrıntı**: [Azure AD 'de karma ve bulut dağıtımları Için ayrıcalıklı erişimin güvenliğini sağlama konusundaki](../../active-directory/roles/security-planning.md)adımları izleyin.
 
 **En iyi yöntem**: tüm kritik yönetici hesaplarının parola-daha az (tercih edilen) olmasını veya Multi-Factor Authentication gerektirmesini gerektirir.
 **Ayrıntı**: herhangi BIR Azure AD hesabında parola kullanmadan oturum açmak için [Microsoft Authenticator uygulamasını](../../active-directory/authentication/howto-authentication-passwordless-phone.md) kullanın. [İş Için Windows Hello](/windows/security/identity-protection/hello-for-business/hello-identity-verification)gibi Microsoft Authenticator, bir cihaza bağlı bir kullanıcı kimlik bilgisini etkinleştirmek ve biyometrik kimlik doğrulaması veya PIN 'i kullanması için anahtar tabanlı kimlik doğrulaması kullanır.
@@ -284,25 +284,25 @@ Azure AD yönetici rollerine bir veya daha fazla kalıcı olarak atanan her bire
 **Ayrıntı**: kuruluşunuzda gerçekçi saldırı senaryoları çalıştırmak Için Microsoft 365 saldırı simülatörü veya bir üçüncü taraf teklifi kullanın. Bu, gerçek bir saldırı gerçekleşmeden önce savunmasız kullanıcıları bulmanıza yardımcı olabilir.
 
 **En iyi yöntem**: en sık kullanılan saldırıya uğrayan teknikleri azaltmaya yönelik adımları uygulayın.  
-**Ayrıntı**: [Yönetim rollerinde iş veya okul hesaplarına geçiş yapması gereken Microsoft hesaplarını belirler](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts)  
+**Ayrıntı**: [Yönetim rollerinde iş veya okul hesaplarına geçiş yapması gereken Microsoft hesaplarını belirler](../../active-directory/roles/security-planning.md#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts)  
 
-[Genel yönetici hesapları için ayrı kullanıcı hesapları ve posta iletimi sağlayın](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)  
+[Genel yönetici hesapları için ayrı kullanıcı hesapları ve posta iletimi sağlayın](../../active-directory/roles/security-planning.md)  
 
-[Yönetim hesaplarının parolalarının yakın zamanda değiştiğinden emin olun](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#ensure-the-passwords-of-administrative-accounts-have-recently-changed)  
+[Yönetim hesaplarının parolalarının yakın zamanda değiştiğinden emin olun](../../active-directory/roles/security-planning.md#ensure-the-passwords-of-administrative-accounts-have-recently-changed)  
 
-[Parola karması eşitlemesini aç](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#turn-on-password-hash-synchronization)  
+[Parola karması eşitlemesini aç](../../active-directory/roles/security-planning.md#turn-on-password-hash-synchronization)  
 
-[Tüm ayrıcalıklı rollerdeki kullanıcıların yanı sıra sunulan kullanıcılar için Multi-Factor Authentication gerektir](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users)  
+[Tüm ayrıcalıklı rollerdeki kullanıcıların yanı sıra sunulan kullanıcılar için Multi-Factor Authentication gerektir](../../active-directory/roles/security-planning.md#require-multi-factor-authentication-for-users-in-privileged-roles-and-exposed-users)  
 
-[Microsoft 365 güvenli puanınızı edinin (Microsoft 365 kullanıyorsanız)](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#obtain-your-office-365-secure-score-if-using-office-365)  
+[Microsoft 365 güvenli puanınızı edinin (Microsoft 365 kullanıyorsanız)](../../active-directory/roles/security-planning.md#obtain-your-microsoft-365-secure-score-if-using-microsoft-365)  
 
-[Microsoft 365 güvenlik kılavuzunu gözden geçirin (Microsoft 365 kullanıyorsanız)](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#review-the-office-365-security-and-compliance-guidance-if-using-office-365)  
+[Microsoft 365 güvenlik kılavuzunu gözden geçirin (Microsoft 365 kullanıyorsanız)](../../active-directory/roles/security-planning.md#review-the-microsoft-365-security-and-compliance-guidance-if-using-microsoft-365)  
 
-[Microsoft 365 etkinlik Izlemeyi yapılandırın (Microsoft 365 kullanılıyorsa)](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#configure-office-365-activity-monitoring-if-using-office-365)  
+[Microsoft 365 etkinlik Izlemeyi yapılandırın (Microsoft 365 kullanılıyorsa)](../../active-directory/roles/security-planning.md#configure-microsoft-365-activity-monitoring-if-using-microsoft-365)  
 
-[Olay/acil durum yanıt planı sahipleri oluşturma](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#establish-incidentemergency-response-plan-owners)  
+[Olay/acil durum yanıt planı sahipleri oluşturma](../../active-directory/roles/security-planning.md#establish-incidentemergency-response-plan-owners)  
 
-[Şirket içi ayrıcalıklı yönetim hesaplarının güvenliğini sağlama](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#turn-on-password-hash-synchronization)
+[Şirket içi ayrıcalıklı yönetim hesaplarının güvenliğini sağlama](../../active-directory/roles/security-planning.md#turn-on-password-hash-synchronization)
 
 Ayrıcalıklı erişimi güvenli hale getiremezseniz, yüksek ayrıcalıklı rollerde çok fazla kullanıcınız olduğunu ve saldırılara karşı daha savunmasız olduğunu fark edebilirsiniz. Siber saldırganlar de dahil olmak üzere kötü amaçlı aktörler, genellikle kimlik bilgileri hırsızlığı kullanarak hassas verilere ve sistemlere erişim kazanmak için yönetici hesaplarını ve ayrıcalıklı erişim 'in diğer öğelerini hedefleyin.
 

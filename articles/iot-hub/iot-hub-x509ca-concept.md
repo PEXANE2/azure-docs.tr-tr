@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: c707f6108c73a268bcac18c45afb70ae17185bb8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 877200cbafbe68fa6161025572abfddad651e172
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91308121"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490729"
 ---
 # <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>IoT sektöründe X. 509.440 CA sertifikalarının kavramsal olarak anlaşılmasına
 
@@ -40,6 +40,8 @@ X. 509.440 CA kimlik doğrulamasının ayırt edici özniteliği bir CA sertifik
 X. 509.440 CA kimlik doğrulamasının diğer önemli bir özniteliği, tedarik zinciri lojistik 'nın basitleştiridir. Cihazların güvenli kimlik doğrulaması, her cihazın güven için temel olarak bir anahtar gibi benzersiz bir gizli dizi bulundurmayı gerektirir. Sertifika tabanlı kimlik doğrulaması ' nda, bu gizli anahtar özel bir anahtardır. Tipik bir cihaz üretim akışı, birden çok adım ve custodıans içerir. Cihaz özel anahtarlarının birden çok koruyucu genelinde güvenli bir şekilde yönetilmesi ve güvenin sürdürülmesi zor ve pahalıdır. Sertifika yetkililerini kullanmak bu sorunu, her bir koruyucu, cihaz özel anahtarlarıyla güvenmek yerine güven zincirine imzalayarak çözer. İçindeki her bir koruyucu, cihazları üretim akışının ilgili işlem adımından kapatır. Genel sonuç, şifreleme zincirinin kullanılmasıyla birlikte yerleşik sorumluluire sahip en iyi tedarik zinciridir. Bu işlem, cihazlar benzersiz özel anahtarlarını koruduğu sırada bu işlemin en çok güvenliği oluştuğunu belirtmekte de yararlıdır. Bu uçta, günün ışığını hiçbir şekilde görmeyecek özel anahtarlar oluşturma yeteneğine sahip donanım güvenli modülleri 'nin (HSM) kullanımını inceleyeceğiz.
 
 Bu makalede, sağlama zinciri kurulumundan cihaz bağlantısına kadar X. 509.952 CA kimlik doğrulamasını kullanmanın uçtan uca bir görünümü sunulmaktadır. Bu arada, anlamak için gerçek bir dünya örneğini kullanabilirsiniz.
+
+Cihazların hub 'lara hazırlanmasını idare etmek için Azure IoT Hub cihaz sağlama hizmeti (DPS) ile kayıt grupları da kullanabilirsiniz. X. 509.440 sertifika cihazlarını sağlamak için DPS kullanma hakkında daha fazla bilgi için bkz. [öğretici: kayıt grupları kullanarak birden çok X. 509.440 cihazı sağlama](../iot-dps/tutorial-custom-hsm-enrollment-group-x509.md).
 
 ## <a name="introduction"></a>Giriş
 
@@ -75,7 +77,7 @@ Bir Self-Signed X. 509.952 CA sertifikası oluşturma işlemi, kök sertifika ye
 
 ## <a name="register-the-x509-certificate-to-iot-hub"></a>X. 509.440 sertifikasını kaydedin IoT Hub
 
-Şirket-X ' e, bağlandıkları gibi akıllı X Pencere öğelerinin kimliğini doğrulamak için kullanacağı IoT Hub, X. 509.440 CA 'sını kaydetmesi gerekir. Bu, herhangi bir sayıda akıllı X-pencere öğesi cihazını kimlik doğrulaması ve yönetme olanağı sağlayan tek seferlik bir işlemdir. Bu işlem, yetkili sertifika ve cihazlar arasındaki bire çok ilişki nedeniyle tek seferlik ve ayrıca X. 509.440 CA kimlik doğrulama yöntemini kullanmanın başlıca avantajlarından birini oluşturur. Diğer bir deyişle, her bir ve her akıllı X pencere öğesi için tek tek sertifika parmak izlerini karşıya yükleme işlemi, böylece işletimsel maliyetlere ekleniyor.
+Şirket-X ' e, bağlandıkları gibi akıllı X Pencere öğelerinin kimliğini doğrulamak için kullanacağı IoT Hub, X. 509.440 CA 'sını kaydetmesi gerekir. Bu, herhangi bir sayıda akıllı X-pencere öğesi cihazını kimlik doğrulaması ve yönetme olanağı sağlayan tek seferlik bir işlemdir. Bu, CA sertifikası ile CA sertifikası veya ara sertifika tarafından imzalanan cihaz sertifikaları arasındaki bire çok ilişki nedeniyle tek seferlik bir işlemdir. Bu ilişki, X. 509.440 CA kimlik doğrulama yöntemini kullanmanın başlıca avantajlarından birini oluşturur. Diğer bir deyişle, her bir ve her akıllı X pencere öğesi için tek tek sertifika parmak izlerini karşıya yükleme işlemi, böylece işletimsel maliyetlere ekleniyor.
 
 X. 509.440 CA sertifikasını kaydetmek, iki adımlı bir işlemdir, sertifika karşıya yükleme ve sertifika geçirmez.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2020
 ms.author: terrylan
-ms.openlocfilehash: dfacf124f8db0e5323c9abff56c4a78f85f6f014
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af61b6ee1e69d175f47170df30f75832033d61d5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816142"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489726"
 ---
 # <a name="penetration-testing"></a>Sızma testi
 
@@ -46,7 +46,7 @@ Gerçekleştirebileceğiniz standart testler şunlardır:
 Gerçekleştiremiyoruz bir tür kalem testi, herhangi bir [hizmet reddi (DOS)](https://en.wikipedia.org/wiki/Denial-of-service_attack) saldırısı türüdür. Bu test, bir DoS saldırılarının kendisini başlatmayı veya herhangi bir DoS saldırısı türünü tespit edebilir, gösterebilir veya benzetim yaparak ilgili testlerin gerçekleştirilmesini içerir.
 
 >[!Note]
->Microsoft, simülasyon için DDoS koruması etkinleştirilmiş genel IP adreslerine karşı trafik oluşturabileceğiniz bir arabirim oluşturmak üzere BreakingPoint bulutu ile işbirliği yaptı. Kesme noktası bulut simülasyonu hakkında daha fazla bilgi edinmek için bkz. [DDoS algılamayı doğrulama](../../virtual-network/manage-ddos-protection.md#validate-ddos-detection).
+>Microsoft, simülasyon için DDoS koruması etkinleştirilmiş genel IP adreslerine karşı trafik oluşturabileceğiniz bir arabirim oluşturmak üzere BreakingPoint bulutu ile işbirliği yaptı. Kesme noktası bulut simülasyonu hakkında daha fazla bilgi edinmek için bkz. [DDoS algılamayı doğrulama](../../ddos-protection/manage-ddos-protection.md#validate-and-test).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

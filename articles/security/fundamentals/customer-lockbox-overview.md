@@ -8,17 +8,17 @@ ms.topic: article
 ms.author: terrylan
 manager: rkarlin
 ms.date: 09/15/2020
-ms.openlocfilehash: 52cb5ac5423aac0599ba2827667ee670dde286a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01232aa101e2964354acfbeb6cea341a0da33ca6
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331667"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489910"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Microsoft Azure için Müşteri Kasası
 
 > [!NOTE]
-> Bu özelliği kullanmak için, kuruluşunuzda en az **Geliştirici**düzeyi olan bir [Azure Destek planına](https://azure.microsoft.com/support/plans/) sahip olmanız gerekir.
+> Bu özelliği kullanmak için, kuruluşunuzda en az **Geliştirici** düzeyi olan bir [Azure Destek planına](https://azure.microsoft.com/support/plans/) sahip olmanız gerekir.
 
 Microsoft Azure için Müşteri Kasası müşterilerin, müşteri verilerine yönelik erişim isteklerini gözden geçirmesi ve onaylaması için arabirim sağlar. Bu arabirim Microsoft mühendisinin destek isteği sırasında müşterinin verilerine erişmesi gerektiğinde kullanılır.
 
@@ -64,7 +64,7 @@ Müşteri Kasası şu anda sanal makinelere uzaktan masaüstü erişimi istekler
 - Sanal makine ölçek kümesi - Windows ve Linux
 
 > [!NOTE]
-> IaaS klasik örnekleri Müşteri Kasası tarafından desteklenmez. IaaS klasik örneklerinde çalışan iş yükleriniz varsa, bunları klasik 'dan Kaynak Yöneticisi dağıtım modellerine geçirmeniz önerilir. Yönergeler için bkz. [IaaS kaynaklarının klasik modelden Azure Resource Manager’a platform destekli geçişi](../../virtual-machines/windows/migration-classic-resource-manager-overview.md).
+> IaaS klasik örnekleri Müşteri Kasası tarafından desteklenmez. IaaS klasik örneklerinde çalışan iş yükleriniz varsa, bunları klasik 'dan Kaynak Yöneticisi dağıtım modellerine geçirmeniz önerilir. Yönergeler için bkz. [IaaS kaynaklarının klasik modelden Azure Resource Manager’a platform destekli geçişi](../../virtual-machines/migration-classic-resource-manager-overview.md).
 
 #### <a name="detailed-audit-logs"></a>Ayrıntılı denetim günlükleri
 
@@ -105,11 +105,11 @@ Aşağıdaki adımlarda Müşteri Kasası isteği için tipik bir iş akışı a
 
    İstek, dört gün boyunca müşteri kuyruğunda kalır. Bu süreden sonra, erişim isteği otomatik olarak sona erer ve Microsoft mühendislerine erişim sağlanmaz.
 
-9. Bekleyen isteğin ayrıntılarını almak için, belirlenen onaylayan, **bekleyen isteklerden**gelen kasa isteğini seçebilir:
+9. Bekleyen isteğin ayrıntılarını almak için, belirlenen onaylayan, **bekleyen isteklerden** gelen kasa isteğini seçebilir:
 
     ![Azure Müşteri Kasası-bekleyen isteği görüntüleme](./media/customer-lockbox-overview/customer-lockbox-pending-requests.png)
 
-10. Belirlenen onaylayan, özgün kullanıcı tarafından oluşturulan destek bileti isteğini görüntülemek için **HIZMET ISTEğI kimliğini** de seçebilir. Bu bilgiler, Microsoft Desteği neden bağlı olduğuna ve bildirilen sorunun geçmişine yönelik bağlam sağlar. Örneğin:
+10. Belirlenen onaylayan, özgün kullanıcı tarafından oluşturulan destek bileti isteğini görüntülemek için **HIZMET ISTEğI kimliğini** de seçebilir. Bu bilgiler, Microsoft Desteği neden bağlı olduğuna ve bildirilen sorunun geçmişine yönelik bağlam sağlar. Örnek:
 
     ![Azure Müşteri Kasası-destek bileti isteğini görüntüleme](./media/customer-lockbox-overview/customer-lockbox-support-ticket.png)
 
@@ -149,6 +149,6 @@ Aşağıdaki mühendislik desteği senaryolarında Müşteri Kasası istekleri t
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Müşteri Kasası, en az **Geliştirici**düzeyi olan bir [Azure Destek planına](https://azure.microsoft.com/support/plans/) sahip tüm müşteriler için otomatik olarak kullanılabilir.
+Müşteri Kasası, en az **Geliştirici** düzeyi olan bir [Azure Destek planına](https://azure.microsoft.com/support/plans/) sahip tüm müşteriler için otomatik olarak kullanılabilir.
 
 Uygun bir destek planınız varsa, Müşteri Kasası etkinleştirmeniz için herhangi bir işlem yapmanız gerekmez. Müşteri Kasası istekleri, kuruluşunuzdaki bir bilgisayardan dosyalanan bir destek biletini devam etmek için gerekliyse, bu işlem bir Microsoft mühendisi tarafından başlatılır.

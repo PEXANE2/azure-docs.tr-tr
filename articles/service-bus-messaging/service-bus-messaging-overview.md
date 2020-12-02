@@ -3,12 +3,12 @@ title: Azure Service Bus mesajlaşmasına genel bakış | Microsoft Belgeleri
 description: Bu makalede, tam olarak yönetilen bir kurumsal tümleştirme ileti Aracısı olan Azure Service Bus üst düzey bir genel bakış sunulmaktadır.
 ms.topic: overview
 ms.date: 11/20/2020
-ms.openlocfilehash: bb894800482cb2b7b4e5d699ab050bd5c93ad038
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ca04b4a41489fba61e7c0ee2bb3f4f7f0b8b80f4
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345312"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489488"
 ---
 # <a name="what-is-azure-service-bus"></a>Azure Service Bus nedir?
 Microsoft Azure Service Bus, ileti kuyrukları ve genel abone olma konuları içeren, tam olarak yönetilen bir kurumsal ileti aracısıdır. Service Bus, uygulamaları ve hizmetleri birbirinden ayırmak için kullanılır ve aşağıdaki avantajları sağlar:
@@ -23,9 +23,9 @@ Veriler, farklı uygulamalar ve hizmetler arasında *iletiler* kullanılarak akt
 Yaygın olarak kullanılan bazı mesajlaşma senaryoları:
 
 * *Mesajlaşma*. Satış veya satın alma siparişleri, Günlükler veya stok hareketleri gibi iş verilerini aktarın.
-* *Uygulamaları ayrıştı*. Uygulama ve hizmetlerin güvenilirliğini ve ölçeklenebilirliğini geliştirme. Üretici ve tüketicinin aynı anda çevrimiçi veya kullanıma hazır olması gerekmez. Yük, trafik yoğunluğu bir hizmetin [yükünü fazla değil olarak seviyelendirilir](https://docs.microsoft.com/azure/architecture/patterns/queue-based-load-leveling) . 
-* *Yük Dengeleme*. Birden çok [rekabet tüketicilerinin](https://docs.microsoft.com/azure/architecture/patterns/competing-consumers) aynı anda bir kuyruktan okumasına izin verin, her biri belirli iletilere güvenli bir şekilde özel sahiplik elde edin. 
-* *Konular ve abonelikler*. [Yayımcılar ve aboneler](https://docs.microsoft.com/azure/architecture/patterns/publisher-subscriber)arasındaki 1:*n* ilişkilerini etkinleştirerek abonelerin yayınlanmış bir ileti akışından gelen belirli iletileri seçmesini sağlar.
+* *Uygulamaları ayrıştı*. Uygulama ve hizmetlerin güvenilirliğini ve ölçeklenebilirliğini geliştirme. Üretici ve tüketicinin aynı anda çevrimiçi veya kullanıma hazır olması gerekmez. Yük, trafik yoğunluğu bir hizmetin [yükünü fazla değil olarak seviyelendirilir](/azure/architecture/patterns/queue-based-load-leveling) . 
+* *Yük Dengeleme*. Birden çok [rekabet tüketicilerinin](/azure/architecture/patterns/competing-consumers) aynı anda bir kuyruktan okumasına izin verin, her biri belirli iletilere güvenli bir şekilde özel sahiplik elde edin. 
+* *Konular ve abonelikler*. [Yayımcılar ve aboneler](/azure/architecture/patterns/publisher-subscriber)arasındaki 1:*n* ilişkilerini etkinleştirerek abonelerin yayınlanmış bir ileti akışından gelen belirli iletileri seçmesini sağlar.
 * *İşlemler*. Atomik bir işlemin kapsamındaki birkaç işlemi yapmanıza olanak sağlar. Örneğin, aşağıdaki işlemler bir işlem kapsamında yapılabilir.  
 
     1. Bir kuyruktan bir ileti alın.
@@ -138,11 +138,11 @@ Service Bus, standart [AMQP 1,0](service-bus-amqp-overview.md) ve [http ya da re
 
 Tam olarak desteklenen Service Bus istemci kitaplıkları Azure SDK ile kullanılabilir.
 
-- [.NET için Azure Service Bus](https://docs.microsoft.com/dotnet/api/overview/azure/service-bus?view=azure-dotnet&preserve-view=true)
-- [Java için Azure Service Bus kitaplıkları](https://docs.microsoft.com/java/api/overview/azure/servicebus?view=azure-java-stable&preserve-view=true)
+- [.NET için Azure Service Bus](/dotnet/api/overview/azure/service-bus?preserve-view=true&view=azure-dotnet)
+- [Java için Azure Service Bus kitaplıkları](/java/api/overview/azure/servicebus?preserve-view=true&view=azure-java-stable)
 - [Java JMS 2,0 için Azure Service Bus sağlayıcısı](how-to-use-java-message-service-20.md)
-- [JavaScript ve TypeScript için Azure Service Bus modülleri](https://docs.microsoft.com/javascript/api/overview/azure/service-bus?view=azure-node-latest&preserve-view=true)
-- [Python için Azure Service Bus kitaplıkları](https://docs.microsoft.com/python/api/overview/azure/servicebus?view=azure-python&preserve-view=true)
+- [JavaScript ve TypeScript için Azure Service Bus modülleri](/javascript/api/overview/azure/service-bus?preserve-view=true&view=azure-node-latest)
+- [Python için Azure Service Bus kitaplıkları](/python/api/overview/azure/servicebus?preserve-view=true&view=azure-python)
 
 [Azure Service Bus ' birincil protokol amqp 1,0](service-bus-amqp-overview.md) ve herhangi bir amqp 1,0 uyumlu protokol istemcisinden kullanılabilir. Çeşitli açık kaynaklı AMQP istemcilerinin, Service Bus birlikte çalışabilirliği açıkça gösteren örnekleri vardır. AMQP 1,0 istemcilerinin doğrudan Service Bus ' özelliklerini kullanmayı öğrenmek için [amqp 1,0 protokol kılavuzunu](service-bus-amqp-protocol-guide.md) gözden geçirin.
 

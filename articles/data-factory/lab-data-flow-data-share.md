@@ -1,18 +1,18 @@
 ---
 title: Azure Data Factory ve Azure veri paylaşma kullanarak veri tümleştirme
 description: Azure Data Factory ve Azure veri paylaşma kullanarak verileri kopyalama, dönüştürme ve paylaşma
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: 11f4e7c50acc8256722949a50760c574d3b9d9e9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 0a578f1edb51efd5f0905e663d42bf5a6fbfc783
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318251"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489063"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Azure Data Factory ve Azure veri paylaşma kullanarak veri tümleştirme
 
@@ -22,23 +22,23 @@ Müşteriler modern veri ambarı ve analiz projelerini önemli ölçüde daha fa
 
 Veri üzerinde kapsamlı bir görünüm oluşturmak için Code-Free ETL/ELT etkinleştirildikten sonra, Azure Data Factory iyileştirmeler veri mühendislerinizi daha fazla veri almak ve bu nedenle kuruluşunuza daha fazla değer getirmek için güçlendirilecek. Azure veri paylaşımı, iş paylaşımını yönetilen bir şekilde yapmanıza olanak sağlar.
 
-Bu atölyde Azure Data Factory (ADF) kullanarak Azure SQL veritabanındaki verileri (ADLS 2.) Azure Data Lake Storage 2.. Verileri Gölü 'a ilettikten sonra veri akışlarını, Data Factory 'nin yerel dönüşüm hizmetini eşleyerek ve bunu Azure SYNAPSE Analytics 'e (eski adıyla SQL DW) kullanarak dönüştürebilirsiniz. Daha sonra, Azure veri paylaşımının kullanıldığı bazı ek verilerle birlikte dönüştürülmüş verilerle tabloyu paylaşabilirsiniz. 
+Bu atölyde Azure Data Factory (ADF) kullanarak Azure SQL veritabanındaki verileri (ADLS 2.) Azure Data Lake Storage 2.. Verileri Gölü 'a ilettikten sonra veri akışlarını, Data Factory 'nin yerel dönüşüm hizmetini eşleyerek ve bunu Azure SYNAPSE Analytics 'e havuza alarak dönüştürebilirsiniz. Daha sonra, Azure veri paylaşımının kullanıldığı bazı ek verilerle birlikte dönüştürülmüş verilerle tabloyu paylaşabilirsiniz. 
 
 Bu laboratuvarda kullanılan veriler New York City TAXI verileri. SQL veritabanı 'nda veritabanınıza içeri aktarmak için, [TAXI-Data bacpac dosyasını](https://github.com/djpmsft/ADF_Labs/blob/master/sample-data/taxi-data.bacpac)indirin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* **Azure aboneliği** : Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+* **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-* **Azure SQL veritabanı** : SQL DB yoksa, [bir SQL DB hesabı oluşturmayı](../azure-sql/database/single-database-create-quickstart.md?tabs=azure-portal) öğrenin
+* **Azure SQL veritabanı**: SQL DB yoksa, [bir SQL DB hesabı oluşturmayı](../azure-sql/database/single-database-create-quickstart.md?tabs=azure-portal) öğrenin
 
-* **Azure Data Lake Storage 2. depolama hesabı** : ADLS 2. depolama hesabınız yoksa [ADLS 2. depolama hesabı oluşturmayı](../storage/common/storage-account-create.md)öğrenin.
+* **Azure Data Lake Storage 2. depolama hesabı**: ADLS 2. depolama hesabınız yoksa [ADLS 2. depolama hesabı oluşturmayı](../storage/common/storage-account-create.md)öğrenin.
 
-* **Azure SYNAPSE Analytics (eski ADıYLA SQL DW)** : bir Azure SYNAPSE analizinizde (eskı ADıYLA SQL DW) yoksa, [Azure SYNAPSE Analytics örneği oluşturmayı](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)öğrenin.
+* **Azure SYNAPSE Analytics (eski ADıYLA SQL DW)**: bir Azure SYNAPSE analizinizde (eskı ADıYLA SQL DW) yoksa, [Azure SYNAPSE Analytics örneği oluşturmayı](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)öğrenin.
 
-* **Azure Data Factory** : bir veri fabrikası oluşturmadıysanız, bkz. [Veri Fabrikası oluşturma](./quickstart-create-data-factory-portal.md).
+* **Azure Data Factory**: bir veri fabrikası oluşturmadıysanız, bkz. [Veri Fabrikası oluşturma](./quickstart-create-data-factory-portal.md).
 
-* **Azure veri paylaşma** : bir veri paylaşma oluşturmadıysanız, bkz. [veri paylaşma oluşturma](../data-share/share-your-data.md#create-a-data-share-account).
+* **Azure veri paylaşma**: bir veri paylaşma oluşturmadıysanız, bkz. [veri paylaşma oluşturma](../data-share/share-your-data.md#create-a-data-share-account).
 
 ## <a name="set-up-your-azure-data-factory-environment"></a>Azure Data Factory ortamınızı ayarlama
 
@@ -73,25 +73,25 @@ Azure Data Factory bağlı hizmetler, dış kaynaklara yönelik bağlantı bilgi
 1. Yapılandıracağınız ilk bağlantılı hizmet bir Azure SQL DB 'dir. Veri deposu listesini filtrelemek için arama çubuğunu kullanabilirsiniz. **Azure SQL veritabanı** kutucuğuna tıklayın ve devam ' a tıklayın.
 
     ![Portal yapılandırma 4](media/lab-data-flow-data-share/configure4.png)
-1. SQL DB Yapılandırma bölmesinde, bağlı hizmet adınız olarak ' SQLDB ' girin. Data Factory 'nin veritabanınıza bağlanmasına izin vermek için kimlik bilgilerinizi girin. SQL kimlik doğrulaması kullanıyorsanız sunucu adı, veritabanı, Kullanıcı adı ve parolanızı girin. Bağlantıyı **Sına** ' ya tıklayarak bağlantı bilgilerinizin doğru olduğunu doğrulayabilirsiniz. İşiniz bittiğinde **Oluştur** ' a tıklayın.
+1. SQL DB Yapılandırma bölmesinde, bağlı hizmet adınız olarak ' SQLDB ' girin. Data Factory 'nin veritabanınıza bağlanmasına izin vermek için kimlik bilgilerinizi girin. SQL kimlik doğrulaması kullanıyorsanız sunucu adı, veritabanı, Kullanıcı adı ve parolanızı girin. Bağlantıyı **Sına**' ya tıklayarak bağlantı bilgilerinizin doğru olduğunu doğrulayabilirsiniz. İşiniz bittiğinde **Oluştur** ' a tıklayın.
 
     ![Portal yapılandırma 5](media/lab-data-flow-data-share/configure5.png)
 
 ### <a name="create-an-azure-synapse-analytics-linked-service"></a>Azure SYNAPSE Analytics bağlı hizmeti oluşturma
 
-1. Azure SYNAPSE Analytics bağlantılı hizmetini eklemek için aynı işlemi tekrarlayın. Bağlantılar sekmesinde **Yeni** ' ye tıklayın. **Azure SYNAPSE Analytics (eski ADıYLA SQL DW)** kutucuğunu seçin ve devam ' a tıklayın.
+1. Azure SYNAPSE Analytics bağlantılı hizmetini eklemek için aynı işlemi tekrarlayın. Bağlantılar sekmesinde **Yeni**' ye tıklayın. **Azure SYNAPSE Analytics (eski ADıYLA SQL DW)** kutucuğunu seçin ve devam ' a tıklayın.
 
     ![Portal yapılandırma 6](media/lab-data-flow-data-share/configure6.png)
-1. Bağlı hizmet yapılandırması bölmesinde, bağlı hizmet adınız olarak ' SQLDW ' girin. Data Factory 'nin veritabanınıza bağlanmasına izin vermek için kimlik bilgilerinizi girin. SQL kimlik doğrulaması kullanıyorsanız sunucu adı, veritabanı, Kullanıcı adı ve parolanızı girin. Bağlantıyı **Sına** ' ya tıklayarak bağlantı bilgilerinizin doğru olduğunu doğrulayabilirsiniz. İşiniz bittiğinde **Oluştur** ' a tıklayın.
+1. Bağlı hizmet yapılandırması bölmesinde, bağlı hizmet adınız olarak ' SQLDW ' girin. Data Factory 'nin veritabanınıza bağlanmasına izin vermek için kimlik bilgilerinizi girin. SQL kimlik doğrulaması kullanıyorsanız sunucu adı, veritabanı, Kullanıcı adı ve parolanızı girin. Bağlantıyı **Sına**' ya tıklayarak bağlantı bilgilerinizin doğru olduğunu doğrulayabilirsiniz. İşiniz bittiğinde **Oluştur** ' a tıklayın.
 
     ![Portal yapılandırma 7](media/lab-data-flow-data-share/configure7.png)
 
 ### <a name="create-an-azure-data-lake-storage-gen2-linked-service"></a>Azure Data Lake Storage 2. bağlı hizmeti oluşturma
 
-1. Bu laboratuvar için gereken son bağlantılı hizmet bir Azure Data Lake Storage Gen2.  Bağlantılar sekmesinde **Yeni** ' ye tıklayın. **Azure Data Lake Storage 2.** kutucuğunu seçin ve devam ' a tıklayın.
+1. Bu laboratuvar için gereken son bağlantılı hizmet bir Azure Data Lake Storage Gen2.  Bağlantılar sekmesinde **Yeni**' ye tıklayın. **Azure Data Lake Storage 2.** kutucuğunu seçin ve devam ' a tıklayın.
 
     ![Portal yapılandırma 8](media/lab-data-flow-data-share/configure8.png)
-1. Bağlı hizmet yapılandırması bölmesinde, bağlı hizmet adı olarak ' ADLSGen2 ' girin. Hesap anahtarı kimlik doğrulaması kullanıyorsanız, **depolama hesabı adı** açılır listesinden ADLS 2. depolama hesabınızı seçin. Bağlantıyı **Sına** ' ya tıklayarak bağlantı bilgilerinizin doğru olduğunu doğrulayabilirsiniz. İşiniz bittiğinde **Oluştur** ' a tıklayın.
+1. Bağlı hizmet yapılandırması bölmesinde, bağlı hizmet adı olarak ' ADLSGen2 ' girin. Hesap anahtarı kimlik doğrulaması kullanıyorsanız, **depolama hesabı adı** açılır listesinden ADLS 2. depolama hesabınızı seçin. Bağlantıyı **Sına**' ya tıklayarak bağlantı bilgilerinizin doğru olduğunu doğrulayabilirsiniz. İşiniz bittiğinde **Oluştur** ' a tıklayın.
 
     ![Portal yapılandırma 9](media/lab-data-flow-data-share/configure9.png)
 
@@ -111,7 +111,7 @@ Azure Data Factory işlem hattı, birlikte bir görevi gerçekleştiren etkinlik
 
 ### <a name="create-a-pipeline-with-a-copy-activity"></a>Kopyalama etkinliği ile işlem hattı oluşturma
 
-1. Fabrika kaynakları bölmesinde, artı simgesine tıklayarak yeni kaynak menüsünü açın. İşlem **hattı** ' nı seçin.
+1. Fabrika kaynakları bölmesinde, artı simgesine tıklayarak yeni kaynak menüsünü açın. İşlem **hattı**' nı seçin.
 
     ![Portal kopyası 1](media/lab-data-flow-data-share/copy1.png)
 1. İşlem hattı tuvalinin **genel** sekmesinde, işlem hattınızı ' ıngestandtransformtaxıdata ' gibi açıklayıcı bir şekilde adlandırın.
@@ -123,7 +123,7 @@ Azure Data Factory işlem hattı, birlikte bir görevi gerçekleştiren etkinlik
 
 ### <a name="configure-azure-sql-db-source-dataset"></a>Azure SQL DB kaynak veri kümesini yapılandırma
 
-1. Kopyalama etkinliğinin **kaynak** sekmesine tıklayın. Yeni bir veri kümesi oluşturmak için **Yeni** ' ye tıklayın. Kaynağınız ' dbo ' tablosu olacak. ' SQLDB ' bağlı hizmetinde bulunan Üçlü verileri daha önce yapılandırıldı.
+1. Kopyalama etkinliğinin **kaynak** sekmesine tıklayın. Yeni bir veri kümesi oluşturmak için **Yeni**' ye tıklayın. Kaynağınız ' dbo ' tablosu olacak. ' SQLDB ' bağlı hizmetinde bulunan Üçlü verileri daha önce yapılandırıldı.
 
     ![Portal kopyası 4](media/lab-data-flow-data-share/copy4.png)
 1. **Azure SQL veritabanı** 'nı arayın ve devam ' a tıklayın.
@@ -137,7 +137,7 @@ Kaynak veri kümenizi başarıyla oluşturdunuz. Kaynak ayarlarında, varsayıla
 
 ### <a name="configure-adls-gen2-sink-dataset"></a>ADLS 2. havuz veri kümesini yapılandırma
 
-1. Kopyalama etkinliğinin **Havuz** sekmesine tıklayın. Yeni bir veri kümesi oluşturmak için **Yeni** ' ye tıklayın.
+1. Kopyalama etkinliğinin **Havuz** sekmesine tıklayın. Yeni bir veri kümesi oluşturmak için **Yeni**' ye tıklayın.
 
     ![Portal kopyası 7](media/lab-data-flow-data-share/copy7.png)
 1. **Azure Data Lake Storage 2.** arayın ve devam ' a tıklayın.
@@ -176,7 +176,7 @@ Bu adımda oluşturulan veri akışı, önceki bölümde oluşturulan ' "Üçlü
 1. İşlem hattı tuvalinin Etkinlikler bölmesinde **taşıma ve dönüştürme** Accordion ' ı açın ve **veri akışı** etkinliğini tuvale sürükleyin.
 
     ![Portal veri akışı 1](media/lab-data-flow-data-share/dataflow1.png)
-1. Açılan yan bölmede **Yeni veri akışı oluştur** ' u seçin ve **veri akışını eşleme** ' yi seçin. **Tamam** ’a tıklayın.
+1. Açılan yan bölmede **Yeni veri akışı oluştur** ' u seçin ve **veri akışını eşleme**' yi seçin. **Tamam**'a tıklayın.
 
     ![Portal veri akışı 2](media/lab-data-flow-data-share/dataflow2.png)
 1. Dönüştürme mantığınızı oluşturacağınız veri akışı tuvaline yönlendirilirsiniz. Genel sekmesinde, veri akışınızı ' Joinandadggregatedata ' olarak adlandırın.
@@ -191,7 +191,7 @@ Bu adımda oluşturulan veri akışı, önceki bölümde oluşturulan ' "Üçlü
 1. Kaynağınızı ' Üçlü CSV ' olarak adlandırın ve kaynak açılan listesinden ' Üçlü Datacsv ' veri kümesini seçin. Hatırlamanız durumunda bu veri kümesini oluştururken başlangıçta bir şemayı içeri aktarmadınız. `trip-data.csv`Şimdi mevcut olduğundan, veri kümesi ayarları sekmesine gitmek Için **Düzenle** ' ye tıklayın.
 
     ![Portal veri akışı 5](media/lab-data-flow-data-share/dataflow5.png)
-1. Sekme **şemasına** gidin ve **şemayı içeri aktar** ' a tıklayın. Doğrudan dosya deposundan içeri aktarmak için **bağlantı/depolama alanından** seçim yapın. dize türünde 14 sütun görünmelidir.
+1. Sekme **şemasına** gidin ve **şemayı içeri aktar**' a tıklayın. Doğrudan dosya deposundan içeri aktarmak için **bağlantı/depolama alanından** seçim yapın. dize türünde 14 sütun görünmelidir.
 
     ![Portal veri akışı 6](media/lab-data-flow-data-share/dataflow6.png)
 1. ' Joinandadggregatedata ' veri akışına geri dönün. Hata ayıklama kümeniz başlatıldıysa (hata ayıklama kaydırıcısının yanında yeşil bir daire ile belirtilir), veri **Önizleme** sekmesindeki verilerin anlık görüntüsünü alabilirsiniz. Veri önizlemesi getirmek için **Yenile** ' ye tıklayın.
@@ -221,7 +221,7 @@ Bu adımda oluşturulan veri akışı, önceki bölümde oluşturulan ' "Üçlü
 
 ### <a name="inner-join-tripdatacsv-and-tripfaressql"></a>INNER JOIN, Üçlü CSV ve üçlü Faressql
 
-1. Yeni bir dönüşüm eklemek için, ' Üçlü Veri CSV ' öğesinin sağ alt köşesindeki artı simgesine tıklayın. **Birden çok giriş/çıkış** altında, **Birleştir** ' i seçin.
+1. Yeni bir dönüşüm eklemek için, ' Üçlü Veri CSV ' öğesinin sağ alt köşesindeki artı simgesine tıklayın. **Birden çok giriş/çıkış** altında, **Birleştir**' i seçin.
 
     ![Portal katılımı 1](media/lab-data-flow-data-share/join1.png)
 1. ' Innerjoinwithüçlü Fares ' JOIN dönüşümünüzü adlandırın. Sağ Akış açılan menüsünde ' Üçlü Faressql ' seçeneğini belirleyin. Birleşim türü olarak **iç** öğesini seçin. Eşleme veri akışı 'nda farklı JOIN türleri hakkında daha fazla bilgi edinmek için bkz. [JOIN Types](./data-flow-join.md#join-types).
@@ -253,7 +253,7 @@ Bu adımda oluşturulan veri akışı, önceki bölümde oluşturulan ' "Üçlü
     Ortalama tarifeli havayolu almak için `avg()` toplama işlevini kullanarak `total_amount` sütun için bir tamsayıya dönüştürme toplamını toplayın `toInteger()` . Veri akışı ifade dilinde, bu olarak tanımlanmıştır `avg(toInteger(total_amount))` . İşiniz bittiğinde Kaydet ' e tıklayın **ve son** ' a tıklayın.
 
     ![Portal AGG 4](media/lab-data-flow-data-share/agg4.png)
-1. Ek toplama ifadesi eklemek için yanındaki artı simgesine tıklayın `average_fare` . **Sütun Ekle** ' yi seçin.
+1. Ek toplama ifadesi eklemek için yanındaki artı simgesine tıklayın `average_fare` . **Sütun Ekle**' yi seçin.
 
     ![Portal AGG 5](media/lab-data-flow-data-share/agg5.png)
 1. **Sütun Ekle veya Seç** etiketli metin kutusunda ' total_trip_distance ' girin. Son adımda olduğu gibi, ifadeye girmek için ifade oluşturucuyu açın.
@@ -308,7 +308,7 @@ Artık bu laboratuvarın Data Factory bölümünü tamamladınız. Bunları teti
 
 ## <a name="share-data-using-azure-data-share"></a>Azure veri paylaşma kullanarak veri paylaşma
 
-Bu bölümde, Azure portal kullanarak yeni bir veri paylaşımının nasıl ayarlanacağını öğreneceksiniz. Bu, Azure Data Lake Store Gen2 ve Azure SYNAPSE Analytics 'te (eski adıyla SQL veri ambarı) veri kümeleri içerecek yeni bir veri paylaşımının oluşturulmasını kapsar. Böylece, veri tüketicilerine kendileriyle paylaşılan verileri otomatik olarak yenileme seçeneği veren bir anlık görüntü zamanlaması yapılandıracaksınız. Ardından, alıcıları veri paylaşımınıza davet edeceksiniz. 
+Bu bölümde, Azure portal kullanarak yeni bir veri paylaşımının nasıl ayarlanacağını öğreneceksiniz. Bu, Azure Data Lake Store Gen2 ve Azure SYNAPSE Analytics 'te veri kümeleri içerecek yeni bir veri paylaşımının oluşturulmasını kapsar. Böylece, veri tüketicilerine kendileriyle paylaşılan verileri otomatik olarak yenileme seçeneği veren bir anlık görüntü zamanlaması yapılandıracaksınız. Ardından, alıcıları veri paylaşımınıza davet edeceksiniz. 
 
 Bir veri paylaşımının oluşturulduktan sonra, HATS 'yi değiştireceksiniz ve *veri tüketicisi* olacak. Veri TÜKETİCİSİNDE, verilerin alınmasını ve veri kümelerini farklı depolama konumlarına eşlemenizi yapılandırmak için bir veri paylaşma davetini kabul etme akışında adım adım ilerleyebileceksiniz. Ardından, sizinle paylaşılan verileri belirtilen hedefle kopyalayacak bir anlık görüntü tetikleyeceksiniz. 
 
@@ -330,19 +330,19 @@ Bir veri paylaşımının oluşturulduktan sonra, HATS 'yi değiştireceksiniz v
 
 1. **Paylaşma adı** altında, tercih ettiğiniz bir ad belirtin. Bu, veri tüketicinizin görebilmesi için, bu adı TaxiData gibi açıklayıcı bir ad eklediğinizden emin olmanızı sağlar.
 
-1. **Açıklama** ' nın altında, veri paylaşımının içeriğini açıklayan bir cümle koyun. Veri paylaşımında, Azure SYNAPSE Analytics ve Azure Data Lake Store dahil olmak üzere çeşitli depolarda depolanan dünya genelindeki TAXI seyahat verileri yer alacak. 
+1. **Açıklama**' nın altında, veri paylaşımının içeriğini açıklayan bir cümle koyun. Veri paylaşımında, Azure SYNAPSE Analytics ve Azure Data Lake Store dahil olmak üzere çeşitli depolarda depolanan dünya genelindeki TAXI seyahat verileri yer alacak. 
 
 1. **Kullanım koşulları** altında, veri tüketicinizin bağlı olmasını istediğiniz bir terim kümesi belirtin. Bazı örneklerde "Bu verileri kuruluşunuz dışında dağıtma" veya "yasal sözleşmeye başvurma" sayılabilir. 
 
     ![Ayrıntıları paylaşma](media/lab-data-flow-data-share/ads-details.png)
 
-1. **Devam** ’ı seçin. 
+1. **Devam**’ı seçin. 
 
 1. **Veri kümesi Ekle** 'yi seçin 
 
     ![Veri kümesi 1 ekle](media/lab-data-flow-data-share/add-dataset.png)
 
-1. ADF dönüştürmelerinizin bulunduğu Azure SYNAPSE Analytics 'ten bir tablo seçmek için **Azure SYNAPSE Analytics** (eskı adıyla SQL veri ambarı) seçeneğini belirleyin.
+1. ADF dönüştürmelerinizin bulunduğu Azure SYNAPSE Analytics 'ten bir tablo seçmek için **Azure SYNAPSE Analytics** ' i seçin.
 
     ![Veri kümesi SQL ekleme](media/lab-data-flow-data-share/add-dataset-sql.png)
 
@@ -360,7 +360,7 @@ Bir veri paylaşımının oluşturulduktan sonra, HATS 'yi değiştireceksiniz v
     
 1. Veri paylaşımınıza veri kümeleri eklediğiniz yerde Azure veri paylaşımında geri dönün. 
 
-1. **EDW** ' ı seçin ve ardından tablo Için **Aggregısedata** öğesini seçin. 
+1. **EDW**' ı seçin ve ardından tablo Için **Aggregısedata** öğesini seçin. 
 
 1. **Veri kümesi Ekle** 'yi seçin
 
@@ -370,9 +370,9 @@ Bir veri paylaşımının oluşturulduktan sonra, HATS 'yi değiştireceksiniz v
 
     ![ADLS veri kümesi Ekle](media/lab-data-flow-data-share/add-dataset-adls.png)
 
-1. **İleri** ’yi seçin
+1. **İleri**’yi seçin
 
-1. *Wwtaxidata* öğesini genişletin. *Boston vergi verileri* ' ni genişletin. Dosya düzeyinde paylaşılacağını fark edebilirsiniz. 
+1. *Wwtaxidata* öğesini genişletin. *Boston vergi verileri*' ni genişletin. Dosya düzeyinde paylaşılacağını fark edebilirsiniz. 
 
 1. Tüm klasörü veri paylaşımınıza eklemek için *Boston. Data* klasörünü seçin. 
 
@@ -380,7 +380,7 @@ Bir veri paylaşımının oluşturulduktan sonra, HATS 'yi değiştireceksiniz v
 
 1. Eklenmiş veri kümelerini gözden geçirin. Veri paylaşımınıza eklenmiş bir SQL tablonuz ve bir ADLS 2. klasörünüz olmalıdır. 
 
-1. **Devam** 'ı seçin
+1. **Devam**'ı seçin
 
 1. Bu ekranda, veri paylaşımınıza alıcı ekleyebilirsiniz. Eklediğiniz alıcılara veri paylaşımınıza davetiye gönderilir. Bu laboratuvarın amacı için 2 e-posta adresi eklemeniz gerekir:
 
@@ -394,7 +394,7 @@ Bir veri paylaşımının oluşturulduktan sonra, HATS 'yi değiştireceksiniz v
 
 1. *Yinelenme* açılan listesini kullanarak **anlık görüntü zamanlamasını** denetleyin ve verilerinizin saatlik olarak yenilenmesini yapılandırın.  
 
-1. **Oluştur** ’u seçin.
+1. **Oluştur**’u seçin.
 
     Artık etkin bir veri paylaşımınız var. Veri paylaşma oluştururken veri sağlayıcısı olarak neleri görebileceğinize ilişkin incelemeye izin verir. 
 
@@ -432,9 +432,9 @@ Bir abonelik seçmeniz istenebilir. Bu laboratuvar için çalıştığınız abo
 
 1. Laboratuvarınız için zaten mevcut olan aboneliği ve kaynak grubunu seçin. 
 
-1. **Veri paylaşma hesabı** Için **dataconsumer** ' ı seçin. Ayrıca, yeni bir veri paylaşma hesabı da oluşturabilirsiniz. 
+1. **Veri paylaşma hesabı** Için **dataconsumer**' ı seçin. Ayrıca, yeni bir veri paylaşma hesabı da oluşturabilirsiniz. 
 
-1. **Alınan paylaşma adı** ' nın yanında, varsayılan paylaşımın adının veri sağlayıcısı tarafından belirtilen ad olduğunu fark edeceksiniz. Paylaşıma, almak üzere olduğunuz verileri açıklayan kolay bir ad verin, örneğin, **Taxıdatashare**.
+1. **Alınan paylaşma adı**' nın yanında, varsayılan paylaşımın adının veri sağlayıcısı tarafından belirtilen ad olduğunu fark edeceksiniz. Paylaşıma, almak üzere olduğunuz verileri açıklayan kolay bir ad verin, örneğin, **Taxıdatashare**.
 
     ![Davet kabul eder](media/lab-data-flow-data-share/consumer-accept.png)
 
@@ -454,7 +454,7 @@ Bir abonelik seçmeniz istenebilir. Bu laboratuvar için çalıştığınız abo
 
     ![eşlenmemiş veri kümeleri](media/lab-data-flow-data-share/unmapped.png)
 
-1. Azure SYNAPSE Analytics tablosunu seçin ve **+ hedefe eşle** ' yi seçin.
+1. Azure SYNAPSE Analytics tablosunu seçin ve **+ hedefe eşle**' yi seçin.
 
 1. Ekranın sağ tarafında, **hedef veri türü** açılan listesini seçin. 
 
@@ -468,7 +468,7 @@ Bir abonelik seçmeniz istenebilir. Bu laboratuvar için çalıştığınız abo
     
     Seçim Verileri Data Lake 'e CSV veya Parquet biçiminde almayı tercih edebilirsiniz. 
 
-1. **Hedef veri türü** ' nün YANıNDAKI Azure SQL veritabanı ' nı seçin. 
+1. **Hedef veri türü**' nün YANıNDAKI Azure SQL veritabanı ' nı seçin. 
 
 1. Üzerinde çalıştığınız aboneliği, kaynak grubunu ve depolama hesabını seçin. 
 
@@ -478,7 +478,7 @@ Bir abonelik seçmeniz istenebilir. Bu laboratuvar için çalıştığınız abo
 
 1. Yeni bir Azure portal sekmesi açın. Bir süre içinde geri dönebilmeniz için mevcut sekmelerinizi kapatmayın. 
 
-1. Açtığınız yeni sekmede **SQL veritabanları** ' na gidin.
+1. Açtığınız yeni sekmede **SQL veritabanları**' na gidin.
 
 1. SQL veritabanını seçin (yalnızca aboneliğinizde bir tane olmalıdır). Veri ambarını seçmemeye dikkat edin. 
 
@@ -490,7 +490,7 @@ Bir abonelik seçmeniz istenebilir. Bu laboratuvar için çalıştığınız abo
 
     Bu komut, Azure veri paylaşma hizmeti 'nin, verileri içine kopyalayabilmesi için SQL Server kimlik doğrulaması yapmak üzere Azure hizmetleri için Yönetilen kimlikler kullanmasına izin verir. 
 
-1. Özgün sekmesine dönüp **hedefe eşle** ' yi seçin.
+1. Özgün sekmesine dönüp **hedefe eşle**' yi seçin.
 
 1. Sonra, veri kümesinin parçası olan Azure Data Lake Gen2 klasörünü seçin ve bunu bir Azure Blob depolama hesabıyla eşleyin. 
 
@@ -500,7 +500,7 @@ Bir abonelik seçmeniz istenebilir. Bu laboratuvar için çalıştığınız abo
 
     ![eşlendiği](media/lab-data-flow-data-share/all-mapped.png)
     
-1. **Ayrıntılar** ' ı seçin. 
+1. **Ayrıntılar**' ı seçin. 
 
     Veri paylaşımının içine kopyalanacak hedefleri olduğundan, **tetikleyici anlık görüntüsünün** artık gri olmadığına dikkat edin.
 

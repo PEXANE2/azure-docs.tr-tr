@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 12/01/2020
 ms.author: victorh
-ms.openlocfilehash: 3c09e75a98e5342ab54710e05466755d86705b2a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 923c6b685d20ff68788e7d9cfcb45ebaecb535e3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399440"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490117"
 ---
 # <a name="what-are-security-partner-providers"></a>Güvenlik iş ortağı sağlayıcıları nedir?
 
@@ -22,7 +22,7 @@ Hızlı yapılandırmayla, desteklenen bir güvenlik ortağıyla bir hub 'ı gü
 
 Kullanıcılarınızın bu bölgelerdeki dünya genelinde her yerde bağlantı ve güvenlik sağlamak için birden fazla Azure bölgesinde tercih ettiğiniz güvenlik ortağıyla yapılandırılmış güvenli hub 'ları dağıtabilirsiniz. Güvenlik iş ortağının Internet/SaaS uygulama trafiği ve güvenli hub 'larda özel trafik için Azure Güvenlik Duvarı tekliflerini kullanma olanağı sayesinde, artık Azure 'da, genel olarak dağıtılmış kullanıcılarınıza ve uygulamalarınıza yakın olan güvenlik ucunu oluşturmaya başlayabilirsiniz.
 
-Desteklenen güvenlik iş ortakları **Zscaler**, **Check Point** (Preview) ve **ıpatron** (Önizleme).
+Desteklenen güvenlik iş ortakları **Zscaler**, **[Check Point](check-point-overview.md)** ve **ıpatron**.
 
 ![Güvenlik iş ortağı sağlayıcıları](media/trusted-security-partners/trusted-security-partners.png)
 

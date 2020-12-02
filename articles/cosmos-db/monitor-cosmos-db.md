@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: 550418761e91a8292761d7595ff32d939c0d542e
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9410a38f7bc7a787fc439b5ad51f4a49f76771f8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350407"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488791"
 ---
 # <a name="monitor-azure-cosmos-db"></a>Azure Cosmos DB'yi izleme
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -83,14 +83,14 @@ Toplayacağınız ölçümler ve Günlükler aşağıdaki bölümlerde ele alın
 
 Azure Cosmos DB ölçümler ile çalışmak için özel bir deneyim sağlar. **Azure izleyici** menüsünden **ölçümler** ' i açarak Ölçüm Gezgini 'ni kullanarak diğer Azure hizmetlerinden ölçümlerle Azure Cosmos DB için ölçümleri çözümleyebilirsiniz. Bu aracı kullanma hakkında ayrıntılı bilgi için bkz. [Azure Ölçüm Gezgini](../azure-monitor/platform/metrics-getting-started.md) kullanmaya başlama. Ayrıca, Azure Cosmos DB kaynaklarınız için [sunucu tarafı gecikme süresinin](monitor-server-side-latency.md), [istek birimi kullanımının](monitor-request-unit-usage.md)ve [normalleştirilmiş istek birimi kullanımının](monitor-normalized-request-units.md) nasıl izleneceğini de kullanıma alabilirsiniz.
 
-Azure Cosmos DB için toplanan platform ölçümlerinin bir listesi için, bkz. [Izleme Azure Cosmos DB veri başvuru ölçümleri] Monitor-Cosmos-DB-Reference. MD # ölçümler) makalesi.
+Azure Cosmos DB için toplanan platform ölçümlerinin bir listesi için bkz. [Azure Cosmos DB veri başvuru ölçümleri izleme](monitor-cosmos-db-reference.md#metrics) makalesi.
 
 Tüm Azure Cosmos DB ölçümleri **Standart ölçümlerde Cosmos DB** ad alanıdır. Bir grafiğe filtre eklerken bu ölçümler ile aşağıdaki boyutları kullanabilirsiniz:
 
 * CollectionName
 * DatabaseName
 * OperationType
-* Region
+* Bölge
 * Durum
 
 Başvuru için, [Azure izleyici 'de desteklenen tüm kaynak ölçümlerinin](../azure-monitor/platform/metrics-supported.md)bir listesini görebilirsiniz.
