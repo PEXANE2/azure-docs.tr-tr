@@ -8,12 +8,12 @@ ms.date: 10/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: d8c7965a1d77d443b538392a4c190a8f578d8e18
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 496b2ea7272be96774d4bd0900fc35c6de8cf9eb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183218"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457783"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services nedir?
 
@@ -41,7 +41,7 @@ Azure Analysis Services **Geliştirici**, **temel** ve **Standart** katmanlarda 
 
 Bu katman değerlendirme, geliştirme ve test senaryoları için önerilir. Tek bir plan, standart katman ile sunulan aynı işlevleri içerir ancak işlemci gücü, QPU ve bellek boyutu bakımından sınırlıdır. Bu katmanda sorgu çoğaltma ölçeği genişletme *kullanılamıyor* . Bu katman bir SLA sunmaz.
 
-|Planlama  |QPU’lar  |Bellek (GB)  |
+|Plan  |QPU’lar  |Bellek (GB)  |
 |---------|---------|---------|
 |D1    |    20     |    3     |
 
@@ -50,7 +50,7 @@ Bu katman değerlendirme, geliştirme ve test senaryoları için önerilir. Tek 
 
 Bu katman, daha küçük tablo modelleriyle, sınırlı Kullanıcı eşzamanlılığa ve basit veri yenileme gereksinimlerine sahip üretim çözümleri için önerilir. Bu katmanda sorgu çoğaltma ölçeği genişletme *kullanılamıyor* . Perspektifler, çoklu bölümler ve DirectQuery tablolu model özellikleri bu katmanda *desteklenmez*.  
 
-|Planlama  |QPU’lar  |Bellek (GB)  |
+|Plan  |QPU’lar  |Bellek (GB)  |
 |---------|---------|---------|
 |B1    |    40     |    10     |
 |B2    |    80     |    16     |
@@ -59,7 +59,7 @@ Bu katman, daha küçük tablo modelleriyle, sınırlı Kullanıcı eşzamanlıl
 
 Bu katman, kullanıcı eşzamanlılığının elastik olmasını gerektiren ve hızla büyüyen veri modellerine sahip olan görev açısından kritik üretim uygulamalarına yöneliktir. Neredeyse gerçek zamanlı veri modeli güncelleştirmeleri için gelişmiş veri yenilemeyi ve tüm tablo modelleme özelliklerini destekler.
 
-|Planlama  |QPU’lar  |Bellek (GB)  |
+|Plan  |QPU’lar  |Bellek (GB)  |
 |---------|---------|---------|
 |S0    |    40     |    10     |
 |S1    |    100     |    25     |
@@ -79,7 +79,7 @@ Azure Analysis Services, dünyanın dört bir yanındaki bölgelerde desteklenir
 
 ### <a name="americas"></a>Kuzey ve Güney Amerika
 
-|Region  | Desteklenen planlar | Sorgu çoğaltmaları (yalnızca Standart planlar) |
+|Bölge  | Desteklenen planlar | Sorgu çoğaltmaları (yalnızca Standart planlar) |
 |---------|---------|:---------:|
 |Brezilya Güney     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
 |Orta Kanada    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
@@ -88,8 +88,8 @@ Azure Analysis Services, dünyanın dört bir yanındaki bölgelerde desteklenir
 |Doğu ABD 2     |     S8v2, S9v2   |    1    |
 |Orta Kuzey ABD     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
 |Orta Kuzey ABD     |     S8v2, S9v2    |    1     |
-|Orta ABD     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
-|Orta ABD     |    S8v2, S9v2     |    1     |
+|Central US     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|Central US     |    S8v2, S9v2     |    1     |
 |Orta Güney ABD     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |Orta Batı ABD   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |Batı ABD     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
@@ -99,7 +99,7 @@ Azure Analysis Services, dünyanın dört bir yanındaki bölgelerde desteklenir
 
 ### <a name="europe"></a>Europe
 
-|Region  | Desteklenen planlar | Sorgu çoğaltmaları (yalnızca Standart planlar) |
+|Bölge  | Desteklenen planlar | Sorgu çoğaltmaları (yalnızca Standart planlar) |
 |---------|---------|:---------:|
 |Kuzey Avrupa     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
 |Kuzey Avrupa     |    S8v2, S9v2      |    3     |
@@ -109,7 +109,7 @@ Azure Analysis Services, dünyanın dört bir yanındaki bölgelerde desteklenir
 
 ### <a name="asia-pacific"></a>Asya Pasifik 
 
-|Region  | Desteklenen planlar | Sorgu çoğaltmaları (yalnızca Standart planlar) |
+|Bölge  | Desteklenen planlar | Sorgu çoğaltmaları (yalnızca Standart planlar) |
 |---------|---------|:---------:|
 |Doğu Avustralya     |    B1, B2, S0, S1, S2, S4     |    3     |
 |Doğu Avustralya     |    S8v2, S9v2    |    1     |
@@ -145,7 +145,7 @@ Hem bellek içi hem de DirectQuery modlarında tablolu modeller desteklenir. Bel
 
 Bölümleme, artımlı yükleri etkinleştirir, paralelleştirmeyi artırır ve bellek tüketimini azaltır. Hesaplanmış tablolar gibi diğer gelişmiş veri modelleme özellikleri ve tüm DAX işlevleri desteklenir. Veri kaynaklarından önbelleğe alınmış verileri güncelleştirmek için bellek içi modeller yenilenmelidir (işlenmelidir). Azure hizmet sorumlusu desteği sayesinde, PowerShell, TOM, TMSL ve REST kullanan katılımsız yenileme işlemleri, model verilerinizin her zaman güncel olduğundan emin olmanızı sağlar. 
 
-DirectQuery modu*, depolama ve sorgu yürütme için arka uç ilişkisel veritabanından yararlanır. Tek SQL Server çok büyük veri kümeleri, SQL Server veri ambarı, Azure SQL veritabanı, Azure SYNAPSE Analytics (eskiden SQL veri ambarı), Oracle ve Teradata veri kaynakları desteklenmektedir. Arka uç veri kümeleri, kullanılabilir sunucu kaynak belleğini aşabilir. Karmaşık veri modeli yenileme senaryoları gerekli değildir. Ayrıca, sınırlı veri kaynağı türleri, DAX formülü sınırlamaları gibi bazı kısıtlamalar vardır ve bazı gelişmiş veri modelleme özellikleri desteklenmez. Sizin için en iyi modu belirlemeden önce bkz. [Direct Query modu](/analysis-services/tabular-models/directquery-mode-ssas-tabular).
+DirectQuery modu*, depolama ve sorgu yürütme için arka uç ilişkisel veritabanından yararlanır. Tek SQL Server çok büyük veri kümeleri, SQL Server veri ambarı, Azure SQL veritabanı, Azure SYNAPSE Analytics, Oracle ve Teradata veri kaynakları desteklenmektedir. Arka uç veri kümeleri, kullanılabilir sunucu kaynak belleğini aşabilir. Karmaşık veri modeli yenileme senaryoları gerekli değildir. Ayrıca, sınırlı veri kaynağı türleri, DAX formülü sınırlamaları gibi bazı kısıtlamalar vardır ve bazı gelişmiş veri modelleme özellikleri desteklenmez. Sizin için en iyi modu belirlemeden önce bkz. [Direct Query modu](/analysis-services/tabular-models/directquery-mode-ssas-tabular).
 
 \* Özellik kullanılabilirliği katmana bağlıdır.
 
@@ -164,7 +164,7 @@ Azure Analysis Services, birden fazla düzeyde hassas verileriniz için güvenli
 
 Sunucu düzeyinde Analysis Services, güvenlik duvarı, Azure kimlik doğrulaması, sunucu yöneticisi rolleri ve Server-Side şifreleme sağlar. Veri modeli düzeyinde, Kullanıcı rolleri, satır düzeyi ve nesne düzeyinde güvenlik, verilerinizin güvende olduğundan ve yalnızca bunu gördüğü kullanıcılar tarafından görülendiğinden emin olmanızı sağlar.
 
-### <a name="firewall"></a>Güvenlik Duvarı
+### <a name="firewall"></a>Güvenlik duvarı
 
 Azure Analysis Services Güvenlik Duvarı, kurallarda belirtilen IP adresleri dışındaki tüm istemci bağlantılarını engeller. Varsayılan olarak, güvenlik duvarı koruması yeni sunucular için etkin değildir. Önerilen güvenlik duvarı koruması etkinleştirilir ve kurallar sunucu sağlama komut dosyasının bir parçası olarak veya sunucu oluşturulduktan hemen sonra portalda yapılandırılır. İstemci IP’lerine veya aralığa göre izin verilen IP adreslerini belirten kuralları yapılandırın. Power BI (hizmet) bağlantılarına da izin verilebilir veya bağlantılar engellenebilir. Güvenlik duvarı ve kuralları portaldan ya da PowerShell kullanarak yapılandırın. Daha fazla bilgi için bkz. [Sunucu güvenlik duvarı yapılandırma](analysis-services-qs-firewall.md).
 

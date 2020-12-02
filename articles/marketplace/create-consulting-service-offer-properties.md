@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 10/27/2020
-ms.openlocfilehash: 0267d09bc23f9aa5c1f5981ddf9386f3827c75d3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b40144079304b6981ff8faf251a345dbb163ecac
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92754607"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459303"
 ---
 # <a name="how-to-configure-your-consulting-service-offer-properties"></a>Danışmanlık hizmeti teklif özelliklerinizi yapılandırma
 
@@ -32,11 +32,11 @@ Iş Ortağı Merkezi ' nde teklifinizin **Özellikler** sekmesinde birincil ür�
 
 **Danışmanlık hizmeti türü** açılan menüsünde müşterilere sunduğunuz danışmanlık hizmeti türünü seçin. Kullanılabilir türler şunlardır:
 
-* **Değerlendirme** : bir çözümün uygulanabilirliğini tespit etmek ve uygulamasının maliyetini ve zaman çizelgesini tahmin etmek için bir müşterinin ortamının değerlendirmesi.
-* **Briing** : çerçeveler, tanıtımlar ve müşteri örnekleri kullanarak bir çözüme veya hizmete giriş.
-* **Uygulama** : tam olarak çalışan bir çözüme neden olan tam bir yükleme.
-* **Kavram kanıtı** : bir çözümün müşterinin gereksinimlerini karşılayıp karşılamadığını tespit etmek için sınırlı kapsamlı bir uygulama.
-* **Workshop** : müşterinin şirket içinde etkileşimli bir katılım yapılmıştır. Müşterinin verileri veya ortamında oluşturulan eğitim, briler, değerlendirmeler veya tanıtımlar içerebilir.
+* **Değerlendirme**: bir çözümün uygulanabilirliğini tespit etmek ve uygulamasının maliyetini ve zaman çizelgesini tahmin etmek için bir müşterinin ortamının değerlendirmesi.
+* **Briing**: çerçeveler, tanıtımlar ve müşteri örnekleri kullanarak bir çözüme veya hizmete giriş.
+* **Uygulama**: tam olarak çalışan bir çözüme neden olan tam bir yükleme.
+* **Kavram kanıtı**: bir çözümün müşterinin gereksinimlerini karşılayıp karşılamadığını tespit etmek için sınırlı kapsamlı bir uygulama.
+* **Workshop**: müşterinin şirket içinde etkileşimli bir katılım yapılmıştır. Müşterinin verileri veya ortamında oluşturulan eğitim, briler, değerlendirmeler veya tanıtımlar içerebilir.
 
 ## <a name="select-relevant-industries"></a>İlgili endüstrileri seçin
 
@@ -50,7 +50,7 @@ Bu bölümdeki bilgiler, müşterilerin Microsoft online mağazalarında kolayca
 Teklifinizin hizmet alanı ile ilgili en fazla üç yetenek seçin. Seçiminiz teklif listesinde müşterilere görüntülenecektir.
 
 > [!IMPORTANT]
-> En az bir uzmanlığa sahip olmak, birincil ürüne bağlı olarak teklifinizi yayımlamak için bir gereksinim olabilir. Ayrıntılar için [sertifika ilkelerine](https://docs.microsoft.com/legal/marketplace/certification-policies#800-consulting-services) bakın.
+> En az bir uzmanlığa sahip olmak, birincil ürüne bağlı olarak teklifinizi yayımlamak için bir gereksinim olabilir. Ayrıntılar için [sertifika ilkelerine](/legal/marketplace/certification-policies#800-consulting-services) bakın.
 
 Devam etmeden önce taslağı kaydedin.
 

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 9d5ddb508740cf5fec670d258926419512e3d549
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: ac2c9cb1710c4b4f67ba2aa06707d08cc45d4907
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129839"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459235"
 ---
 # <a name="azure-sql-database-output-from-azure-stream-analytics"></a>Azure Stream Analytics Azure SQL veritabanı çıkışı
 
@@ -35,11 +35,11 @@ Aşağıdaki tabloda, bir SQL veritabanı çıkışı oluşturmak için özellik
 |Bölüm düzenini devralma| Tabloya birden çok yazıcı ile tam paralel topolojiyi etkinleştirmek için önceki sorgu adımlarınızın bölümleme şemasını devralma seçeneği. Daha fazla bilgi için bkz. [Azure SQL veritabanı 'na Azure Stream Analytics çıktısı](stream-analytics-sql-output-perf.md).|
 |En fazla toplu iş sayısı| Her toplu ekleme hareketiyle gönderilen kayıt sayısı için önerilen üst sınır.|
 
-Azure Stream Analytics 'den Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) giden çıktıyı etkinleştiren iki bağdaştırıcı vardır: SQL veritabanı ve Azure SYNAPSE. Aşağıdaki koşullardan herhangi biri doğruysa SQL veritabanı bağdaştırıcısı yerine Azure SYNAPSE Analytics bağdaştırıcısını seçmenizi öneririz:
+Azure Stream Analytics Azure SYNAPSE Analytics: SQL veritabanı ve Azure SYNAPSE 'ye giden çıktıyı etkinleştiren iki bağdaştırıcı vardır. Aşağıdaki koşullardan herhangi biri doğruysa SQL veritabanı bağdaştırıcısı yerine Azure SYNAPSE Analytics bağdaştırıcısını seçmenizi öneririz:
 
-* **Aktarım hızı** : beklenen aktarım hızı, şimdi veya gelecekte 10 MB 'tan fazlaysa, daha iyi performans Için Azure SYNAPSE output seçeneğini kullanın.
+* **Aktarım hızı**: beklenen aktarım hızı, şimdi veya gelecekte 10 MB 'tan fazlaysa, daha iyi performans Için Azure SYNAPSE output seçeneğini kullanın.
 
-* **Giriş bölümleri** : sekiz veya daha fazla giriş bölümü varsa, daha iyi genişleme Için Azure SYNAPSE output seçeneğini kullanın.
+* **Giriş bölümleri**: sekiz veya daha fazla giriş bölümü varsa, daha iyi genişleme Için Azure SYNAPSE output seçeneğini kullanın.
 
 ## <a name="partitioning"></a>Bölümleme
 

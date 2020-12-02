@@ -2,13 +2,13 @@
 title: Azure VM 'lerini yeni aboneliğe veya kaynak grubuna taşıma
 description: Sanal makineleri yeni bir kaynak grubuna veya aboneliğe taşımak için Azure Resource Manager kullanın.
 ms.topic: conceptual
-ms.date: 11/25/2020
-ms.openlocfilehash: ace1fb6bf3944df539ec8f7301357e67d2b315a9
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 12/01/2020
+ms.openlocfilehash: b1032b5a632bcac82cb9ae1f1b3df7b49f5463f5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184085"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456320"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>Sanal makineler için taşıma Kılavuzu
 
@@ -20,6 +20,7 @@ Aşağıdaki senaryolar henüz desteklenmemektedir:
 
 * Standart SKU 'SU Load Balancer veya standart SKU genel IP 'si olan sanal makine ölçek kümeleri taşınamaz.
 * Sanal ağdaki tüm kaynakları taşımadan, var olan bir sanal ağdaki sanal makineler yeni bir aboneliğe taşınamaz.
+* Planların eklendiği Market kaynaklarından oluşturulan sanal makineler abonelikler arasında taşınamaz. Olası bir geçici çözüm için bkz. [Market planlarına sahip sanal makineler](#virtual-machines-with-marketplace-plans).
 * Düşük öncelikli sanal makineler ve düşük öncelikli sanal makine ölçek kümeleri kaynak grupları veya abonelikler arasında taşınamaz.
 * Bir kullanılabilirlik kümesindeki sanal makineler tek tek taşınamaz.
 

@@ -1,30 +1,30 @@
 ---
 title: Değişken atama
-description: Bu makalede, SQL havuzunda T-SQL değişkenlerini atamaya yönelik temel ipuçları bulacaksınız.
+description: Bu makalede, Azure SYNAPSE Analytics 'te adanmış SQL havuzları için T-SQL değişkenleri atamaya yönelik gerekli ipuçları bulacaksınız.
 services: synapse-analytics
-author: XiaoyuMSFT
+author: MSTehrani
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 04/17/2018
-ms.author: xiaoyul
+ms.author: emtehran
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 0cbadc10fb817c70bd259397c840aae68abc2d54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 87448ea737c11af13a52632e5bf4f67dc54d9ae3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85213338"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459225"
 ---
-# <a name="assign-variables-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda değişken atama
+# <a name="assign-variables-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzları için değişkenler atama
 
-Bu makalede, SQL havuzunda T-SQL değişkenlerini atamaya yönelik temel ipuçları bulacaksınız.
+Bu makalede, adanmış SQL havuzunda T-SQL değişkenlerini atamaya yönelik gerekli ipuçları bulacaksınız.
 
 ## <a name="set-variables-with-declare"></a>DECLARE ile değişkenleri ayarla
 
-SQL havuzundaki değişkenler, `DECLARE` ifadesini veya ifadesini kullanarak ayarlanır `SET` . Değişkenleri DECLARE ile başlatmak, SQL havuzunda değişken değer ayarlamak için en esnek yollarla biridir.
+Adanmış SQL havuzundaki değişkenler, veya ifadesini kullanarak ayarlanır `DECLARE` `SET` . Değişkenleri DECLARE ile başlatmak, SQL havuzunda değişken değer ayarlamak için en esnek yollarla biridir.
 
 ```sql
 DECLARE @v  int = 0

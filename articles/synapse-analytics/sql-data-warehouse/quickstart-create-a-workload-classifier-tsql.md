@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 65a77dfaab0bf99207fd27a35d67a12532056476
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a63cd95fdcee7c9ed0c49ba41b4d7e7e6de8f4bf
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89442948"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458739"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Hızlı başlangıç: T-SQL kullanarak iş yükü Sınıflandırıcısı oluşturma
 
@@ -25,13 +25,13 @@ Bu hızlı başlangıçta, kuruluşunuzun CEO 'SU için yüksek önem derecesine
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 > [!NOTE]
-> Azure SYNAPSE Analytics 'te SYNAPSE SQL havuzu örneği oluşturmak, yeni bir faturalanabilir hizmetle sonuçlanabilir.  Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+> Azure SYNAPSE Analytics 'te adanmış bir SQL havuzu örneği oluşturmak, yeni bir faturalanabilir hizmetle sonuçlanabilir.  Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 >
 >
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu hızlı başlangıç, Azure SYNAPSE Analytics 'te zaten bir Synapse SQL havuzu sağladığınızı ve DENETIM VERITABANı izinlerine sahip olduğunuzu varsayar. Gerekiyorsa **mySampleDataWarehouse** adlı bir veri ambarı oluşturmak için [Oluşturma ve Bağlanma - portal](create-data-warehouse-portal.md) bölümünü kullanabilirsiniz.
+Bu hızlı başlangıç, Azure SYNAPSE Analytics 'te ayrılmış bir SQL havuzu sağladığınızı ve DENETIM VERITABANı izinlerine sahip olduğunuzu varsayar. Bir tane oluşturmanız gerekiyorsa, **Mysampledatawarehouse** adlı özel bir SQL havuzu oluşturmak için [Oluştur ve Bağlan-Portal](create-data-warehouse-portal.md) ' ı kullanın.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
@@ -87,27 +87,23 @@ DROP USER [TheCEO]
 ;
 ```
 
-Veri ambarı birimleri ve veri Ambarınızda depolanan veriler için ücret ödersiniz. Bu işlem ve depolama alanı kaynakları ayrı ayrı faturalandırılır.
+Veri ambarı birimleri ve adanmış SQL havuzunuzdaki depolanan veriler için ücretlendiriliyorsunuz. Bu işlem ve depolama alanı kaynakları ayrı ayrı faturalandırılır.
 
-- Verileri depoda tutmak istiyorsanız, veri ambarını kullanmadığınız zamanlarda işlemi duraklatabilirsiniz. İşlem duraklatıldığında yalnızca veri depolama alanı için ücret ödersiniz. Verilerle çalışmaya hazırsanız, işlem işlemini sürdürmeniz gerekir.
-- Gelecekteki ücretlendirmeleri kaldırmak istiyorsanız, veri ambarını silebilirsiniz.
+- Verileri depolama alanında tutmak istiyorsanız, adanmış SQL havuzunu kullanmadığınız zaman, işlem duraklatabilirsiniz. İşlem duraklatıldığında yalnızca veri depolama alanı için ücret ödersiniz. Verilerle çalışmaya hazırsanız, işlem işlemini sürdürmeniz gerekir.
+- Gelecekteki ücretleri kaldırmak istiyorsanız adanmış SQL havuzunu silebilirsiniz.
 
 Kaynakları temizlemek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com)oturum açın, veri Ambarınızda öğesini seçin.
+1. [Azure Portal](https://portal.azure.com)oturum açın, adanmış SQL havuzunuzu seçin.
 
     ![Kaynakları temizleme](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. İşlem duraklatmak için **Duraklat** düğmesini seçin. Veri ambarı duraklatıldığında, bir **Başlat** düğmesi görürsünüz.  İşlem işlemini sürdürmesini sağlamak için **Başlat**' ı seçin.
+2. İşlem duraklatmak için **Duraklat** düğmesini seçin. Adanmış SQL havuzu duraklatıldığında, bir **Başlat** düğmesi görürsünüz.  İşlem işlemini sürdürmesini sağlamak için **Başlat**' ı seçin.
 
-3. İşlem veya depolama için ücretlendirilmemek üzere veri ambarını kaldırmak için **Sil**' i seçin.
-
-4. Oluşturduğunuz SQL Server 'ı kaldırmak için önceki görüntüde **MyNewServer-20180430.Database.Windows.net** ' ı seçin ve **Sil**' i seçin.  Sunucuyu silmek sunucuyla ilişkili tüm veritabanlarını da sileceğinden bu silme işlemini gerçekleştirirken dikkatli olun.
-
-5. Kaynak grubunu kaldırmak için **Myresourcegroup**' ı seçin ve **kaynak grubunu sil**' i seçin.
+3. İşlem veya depolama için ücretlendirilmemek üzere adanmış SQL havuzunu kaldırmak için **Sil**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Artık bir iş yükü Sınıflandırıcısı oluşturdunuz. Nasıl çalıştığını görmek için birkaç sorguyu TheCEO olarak çalıştırın. Sorguları ve atanan önemi görüntülemek için [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) bakın.
-- SYNAPSE SQL iş yükü yönetimi hakkında daha fazla bilgi için bkz. [Iş yükü önemi](sql-data-warehouse-workload-importance.md) ve [iş yükü sınıflandırması](sql-data-warehouse-workload-classification.md).
+- Adanmış SQL havuzu iş yükü yönetimi hakkında daha fazla bilgi için bkz. [Iş yükü önemi](sql-data-warehouse-workload-importance.md) ve [iş yükü sınıflandırması](sql-data-warehouse-workload-classification.md).
 - [Iş yükü önemini yapılandırmak](sql-data-warehouse-how-to-configure-workload-importance.md) ve [Iş yükü yönetimini yönetmek ve izlemek](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)için nasıl yapılır makalelerine bakın.

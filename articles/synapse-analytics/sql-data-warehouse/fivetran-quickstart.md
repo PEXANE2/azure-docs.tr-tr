@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: Fivetran ve veri ambarı'
-description: Fivetran ve bir Azure SYNAPSE Analytics veri ambarı ile çalışmaya başlayın.
+title: 'Hızlı başlangıç: Fivetran ve adanmış SQL Havuzu (eski adıyla SQL DW)'
+description: Azure SYNAPSE Analytics 'te Fivetran ve adanmış SQL Havuzu (eski adıyla SQL DW) ile çalışmaya başlayın.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,22 +11,22 @@ ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 96e679c0b284cc649dbde3fba1b640f4e09df05e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f332c3b0bd53d80d4a8471f53c56ecab611787c1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001856"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456372"
 ---
-# <a name="quickstart-fivetran-with-data-warehouse"></a>Hızlı başlangıç: Fivetle veri ambarı ile çalıştırıldı 
+# <a name="quickstart-fivetran-with-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Hızlı başlangıç: Azure SYNAPSE Analytics 'te özel SQL Havuzu (eskiden SQL DW) ile Fivetran 
 
-Bu hızlı başlangıçta, bir SQL havuzuyla sağlanan bir Azure SYNAPSE Analytics veri ambarı ile çalışmak üzere yeni bir Fivetran kullanıcısının nasıl ayarlanacağı açıklanır. Makalesinde, mevcut bir veri ambarınız olduğunu varsaymaktadır.
+Bu hızlı başlangıçta, yeni bir Fivetran kullanıcısının adanmış bir SQL Havuzu (eski adıyla SQL DW) ile çalışması için nasıl ayarlanacağı açıklanmaktadır. Makalesinde, ayrılmış bir SQL havuzuna (eski adıyla SQL DW) sahip olduğunuz varsayılır.
 
 ## <a name="set-up-a-connection"></a>Bağlantı kurma
 
-1. Veri ambarınıza bağlanmak için kullandığınız tam sunucu adını ve veritabanı adını bulun.
+1. Adanmış SQL havuzunuza (eski adıyla SQL DW) bağlanmak için kullandığınız tam sunucu adını ve veritabanı adını bulun.
     
-    Bu bilgileri bulmak için yardıma ihtiyacınız varsa bkz. [veri ambarınıza bağlanma](../sql/connect-overview.md).
+    Bu bilgileri bulmak için yardıma ihtiyacınız varsa, bkz. [ADANMıŞ SQL havuzunuza bağlanma (eski ADıYLA SQL DW)](sql-data-warehouse-connection-strings.md).
 
 2. Kurulum sihirbazında, veritabanınıza doğrudan veya bir SSH tüneli kullanarak bağlanıp bağlanmayacağını seçin.
 
@@ -34,13 +34,13 @@ Bu hızlı başlangıçta, bir SQL havuzuyla sağlanan bir Azure SYNAPSE Analyti
 
    Bir SSH tüneli kullanarak bağlanmayı seçerseniz, Fivetran, ağınızdaki ayrı bir sunucuya bağlanır. Sunucu, veritabanınıza bir SSH tüneli sağlar. Veritabanınız bir sanal ağ üzerinde erişilemeyen bir alt ağdaysa bu yöntemi kullanmanız gerekir.
 
-3. Fivetran 'dan veri ambarı örneğinize gelen bağlantılara izin vermek için **52.0.2.4** IP adresini sunucu düzeyi güvenlik duvarınıza ekleyin.
+3. **52.0.2.4** IP adresini sunucu düzeyi güvenlik duvarınızdan, Özel SQL Havuzu (eskı ADıYLA SQL DW) örneğine gelen bağlantılara izin verecek şekilde ekleyin.
 
    Daha fazla bilgi için bkz. [sunucu düzeyinde güvenlik duvarı kuralı oluşturma](create-data-warehouse-portal.md#create-a-server-level-firewall-rule).
 
 ## <a name="set-up-user-credentials"></a>Kullanıcı kimlik bilgilerini ayarlama
 
-1. SQL Server Management Studio (SSMS) veya tercih ettiğiniz aracı kullanarak veri ambarınıza bağlanın. Sunucu Yöneticisi kullanıcısı olarak oturum açın. Ardından, aşağıdaki SQL komutlarını çalıştırarak Fivetran için bir kullanıcı oluşturun:
+1. SQL Server Management Studio (SSMS) veya tercih ettiğiniz aracı kullanarak adanmış SQL havuzunuza (eski adıyla SQL DW) bağlanın. Sunucu Yöneticisi kullanıcısı olarak oturum açın. Ardından, aşağıdaki SQL komutlarını çalıştırarak Fivetran için bir kullanıcı oluşturun:
 
     - Ana veritabanında: 
     
@@ -48,7 +48,7 @@ Bu hızlı başlangıçta, bir SQL havuzuyla sağlanan bir Azure SYNAPSE Analyti
       CREATE LOGIN fivetran WITH PASSWORD = '<password>'; 
       ```
 
-    - Veri ambarı veritabanında:
+    - Adanmış SQL Havuzu (eski adıyla SQL DW) veritabanında:
 
       ```sql
       CREATE USER fivetran_user_without_login without login;
@@ -56,7 +56,7 @@ Bu hızlı başlangıçta, bir SQL havuzuyla sağlanan bir Azure SYNAPSE Analyti
       GRANT IMPERSONATE on USER::fivetran_user_without_login to fivetran;
       ```
 
-2. Fivetran kullanıcısına veri ambarınıza aşağıdaki izinleri verin:
+2. Fivetran kullanıcısına adanmış SQL havuzunuza (eski adıyla SQL DW) aşağıdaki izinleri verin:
 
     ```sql
     GRANT CONTROL to fivetran;
@@ -77,7 +77,7 @@ Bu hızlı başlangıçta, bir SQL havuzuyla sağlanan bir Azure SYNAPSE Analyti
 
 ## <a name="connect-from-fivetran"></a>Fivetran 'dan Bağlan
 
-Fivetran hesabınızdan veri ambarınıza bağlanmak için, veri ambarınıza erişmek için kullandığınız kimlik bilgilerini girin: 
+Fivetran hesabınızdan adanmış SQL havuzunuza (eski adıyla SQL DW) bağlanmak için, adanmış SQL havuzunuza erişmek için kullandığınız kimlik bilgilerini girin (eski adıyla SQL DW): 
 
 * Ana bilgisayar (sunucunuzun adı).
 * Bağ.

@@ -9,14 +9,14 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2e06f0918ce23beded7475f644e7cc6019facacc
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 28af603c0969419cd2e7b8683373faf3838e2242
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322586"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458943"
 ---
-# <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link-preview"></a>Azure SYNAPSE link 'te Apache Spark kullanarak Azure Cosmos DB ile etkileşim kurma (Önizleme)
+# <a name="interact-with-azure-cosmos-db-using-apache-spark-in-azure-synapse-link"></a>Azure SYNAPSE link 'te Apache Spark kullanarak Azure Cosmos DB etkileşim kurma
 
 Bu makalede, SYNAPSE Apache Spark kullanarak Azure Cosmos DB nasıl etkileşim kuracağınızı öğreneceksiniz. Scala, Python, Mini SQL ve C# için tam destek sayesinde SYNAPSE Apache Spark, [Azure Cosmos DB Için Azure SYNAPSE bağlantısı](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)'ndaki analiz, veri Mühendisliği, veri bilimi ve veri araştırma senaryolarına yönelik olarak tasarlanmıştır.
 

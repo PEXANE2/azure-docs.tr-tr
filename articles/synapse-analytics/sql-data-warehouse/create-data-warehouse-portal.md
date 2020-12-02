@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: SYNAPSE SQL havuzu oluşturma ve sorgulama (Azure portal)'
-description: Azure portal kullanarak bir Synapse SQL havuzu oluşturma ve sorgulama
+title: 'Hızlı başlangıç: adanmış bir SQL havuzu oluşturma ve sorgulama (Azure portal)'
+description: Azure portal kullanarak adanmış bir SQL havuzu oluşturma ve sorgulama
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 05/28/2019
 ms.author: pimorano
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 470892aa46d3f75ce8e17200f7d0549ae14b0e86
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3d4884fd64c773647f78a98dc7aeb1063d539edf
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023795"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456745"
 ---
-# <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak bir Synapse SQL havuzu oluşturma ve sorgulama
+# <a name="quickstart-create-and-query-a-dedicated-sql-pool-in-azure-synapse-analytics-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Azure SYNAPSE Analytics 'te adanmış bir SQL havuzu oluşturma ve sorgulama
 
-Azure portal kullanarak Azure SYNAPSE Analytics 'te (eski adıyla SQL DW) bir Synapse SQL havuzunu (veri ambarı) hızlıca oluşturun ve sorgulayın.
+Azure portal kullanarak Azure SYNAPSE Analytics 'te hızlı bir şekilde bir Synapse SQL Havuzu (veri ambarı) oluşturun ve sorgulayın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
 ms.date: 10/28/2020
-ms.openlocfilehash: 2a648b4f4c614fc64fa7817102215720e51abe7f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d303a5d5b9779a2003b12d063c97c36a90576dd3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095610"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456629"
 ---
 # <a name="co-sell-option-in-partner-center"></a>İş Ortağı Merkezi’nde ortak satış seçeneği
 
@@ -83,10 +83,10 @@ Iş Ortağı Merkezi 'nden CSV şablonunu indirerek, her satırı ilgili bilgile
 
 Ayrıca, bir teklifin mevcut kişi listesini dışarı aktarabilir ve ardından bu dosyada değişiklik yapabilirsiniz.
 
-* *Ad (gerekli)* : kişinin adı.
-* *E-posta adresi (gerekli)* : kişinin e-posta adresi.
-* *İş unvanı (gerekli)* : iş unvanı.
-* *Rol (zorunlu)* : aşağıdaki rollerden birini kullanın.
+* *Ad (gerekli)*: kişinin adı.
+* *E-posta adresi (gerekli)*: kişinin e-posta adresi.
+* *İş unvanı (gerekli)*: iş unvanı.
+* *Rol (zorunlu)*: aşağıdaki rollerden birini kullanın.
 
     | **Role**    | **Açıklama**  |
     | :------------------- | :-------------------|
@@ -108,7 +108,7 @@ Başvuru mimarisi diyagramı, teklifinizin temel aldığı altyapıyı temsil ed
 
 Belge birden çok araç aracılığıyla oluşturulabilir. Azure mimari modellerini belirleyen birden çok kalıbı içerdiğinden, Microsoft Visio 'yu öneririz.
 
-Başvuru mimarisi diyagramları oluşturmak için faydalı bir başlangıç noktası, [Azure mimarisi modellerinden](https://docs.microsoft.com/azure/architecture/browse/)faydalanır.
+Başvuru mimarisi diyagramları oluşturmak için faydalı bir başlangıç noktası, [Azure mimarisi modellerinden](/azure/architecture/browse/)faydalanır.
 
 ### <a name="typical-components-of-a-reference-architecture-diagram"></a>Başvuru mimarisi diyagramının tipik bileşenleri
 - Azure kullanımını oluşturan ve teklifinizle etkileşime geçen bulut Hizmetleri

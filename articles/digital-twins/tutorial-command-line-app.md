@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: d7c95317667999ac17803f08575e68641100b967
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a9d8c42432d619ab120afd0bd5734f6fa269b514
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023287"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458094"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Öğretici: örnek bir istemci uygulamasıyla Azure dijital TWINS 'i araştırma
 
@@ -47,9 +47,9 @@ _**AdtE2ESample**_ projesinin açık olduğu Visual Studio pencerenizde, *AdtSam
 
 Düzenle penceresinde açmak için *Room.js* seçin ve aşağıdaki yollarla değiştirin:
 
-* Bu modelin daha güncel bir sürümünü sağladıklarını belirtmek için **sürüm numarasını güncelleştirin**. Değerin sonundaki *1* `@id` değerini *2* olarak değiştirerek bunu yapın. Geçerli sürüm numarasından daha büyük bir sayı de çalışacaktır.
-* **Bir özelliği düzenleyin**. `Humidity`Özelliğin adını *Humidtylevel* (veya isterseniz farklı bir şey) olarak değiştirin. *Humidtylevel*' dan farklı bir şey kullanırsanız, kullandığınız şeyi hatırlayın ve öğretici genelinde *Humidtylevel* yerine bunu kullanmaya devam edin).
-* **Özellik ekleyin**. 15. `HumidityLevel` satırda sonlanan özelliğin altında, Odaya bir özellik eklemek için aşağıdaki kodu yapıştırın `RoomName` :
+1. Bu modelin daha güncel bir sürümünü sağladıklarını belirtmek için **sürüm numarasını güncelleştirin**. Değerin sonundaki *1* `@id` değerini *2* olarak değiştirerek bunu yapın. Geçerli sürüm numarasından daha büyük bir sayı de çalışacaktır.
+1. **Bir özelliği düzenleyin**. `Humidity`Özelliğin adını *Humidtylevel* (veya isterseniz farklı bir şey) olarak değiştirin. *Humidtylevel*' dan farklı bir şey kullanırsanız, kullandığınız şeyi hatırlayın ve öğretici genelinde *Humidtylevel* yerine bunu kullanmaya devam edin).
+1. **Özellik ekleyin**. 15. `HumidityLevel` satırda sonlanan özelliğin altında, Odaya bir özellik eklemek için aşağıdaki kodu yapıştırın `RoomName` :
 
     ```json
     ,
@@ -59,13 +59,13 @@ Düzenle penceresinde açmak için *Room.js* seçin ve aşağıdaki yollarla de�
       "schema": "string"
     }
     ```
-* **Ilişki ekleyin**. `RoomName`Az önce eklediğiniz özelliğin altında, bu tür bir ikizi oluşturmak için aşağıdaki kodu yapıştırın. *contains*
+1. **Ilişki ekleyin**. `RoomName`Az önce eklediğiniz özelliğin altında, bu tür bir ikizi oluşturmak için aşağıdaki kodu yapıştırın. *contains*
 
     ```json
     ,
     {
       "@type": "Relationship",
-      "name": "contains",
+      "name": "contains"
     }
     ```
 

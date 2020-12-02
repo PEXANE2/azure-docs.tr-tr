@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 11/09/2020
 ms.custom: how-to, seodec18, devx-track-azurecli, contperfq2
-ms.openlocfilehash: 8af3da5d04f9aaafc18299f4837660694ee34b51
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 0719f2d9200741798c798aca4b4196812f1229c9
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345278"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458442"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanına erişimi yönetme
 
@@ -27,7 +27,7 @@ Bu makalede, erişimi (yetkilendirme) bir Azure Machine Learning çalışma alan
 >
 > * [Azure Kubernetes küme kaynaklarına erişimi denetleme](../aks/azure-ad-rbac.md)
 > * [Kubernetes yetkilendirmesi için Azure RBAC kullanma](../aks/manage-azure-rbac.md)
-> * [Blob verilerine erişmek için Azure RBAC kullanma](/azure/storage/common/storage-auth-aad-rbac-portal)
+> * [Blob verilerine erişmek için Azure RBAC kullanma](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!WARNING]
 > Bazı rollerin uygulanması, diğer kullanıcılar için Azure Machine Learning Studio 'daki UI işlevselliğini sınırlayabilir. Örneğin, bir kullanıcının rolü bir işlem örneği oluşturma yeteneğine sahip değilse, bir işlem örneği oluşturma seçeneği Studio 'da kullanılamaz. Bu davranış beklenmektedir ve kullanıcının erişim reddedildi hatası döndürecek işlemler gerçekleştirmeye engel olur.
@@ -36,7 +36,7 @@ Bu makalede, erişimi (yetkilendirme) bir Azure Machine Learning çalışma alan
 
 Azure Machine Learning çalışma alanı bir Azure kaynağıdır. Diğer Azure kaynaklarında olduğu gibi yeni bir Azure Machine Learning çalışma alanı da oluşturulduğunda üç varsayılan role sahip olur. Çalışma alanına kullanıcı ekleyebilir ve bunları bu yerleşik rollerden birine atayabilirsiniz.
 
-| Rol | Erişim düzeyi |
+| Role | Erişim düzeyi |
 | --- | --- |
 | **Okuyucu** | Çalışma alanındaki salt okuma eylemleri. Okuyucular, bir çalışma alanında [veri deposu](how-to-access-data.md) kimlik bilgileri de dahil olmak üzere varlıkları listeleyebilir ve görüntüleyebilir. Okuyucular bu varlıkları oluşturamaz veya güncelleştiremez. |
 | **Katkıda Bulunan** | Çalışma alanındaki varlıkları görüntüleyin, oluşturun, düzenleyin veya silin (uygulanabilir). Örneğin katkıda bulunanlar bir deneme oluşturabilir, işlem kümesi oluşturabilir veya ekleyebilir, çalıştırma gönderebilir ve bir web hizmeti dağıtabilir. |

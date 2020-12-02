@@ -10,18 +10,18 @@ ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 09/22/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 1a6708214eadb2f5d0d66d72f5db5cb4a195d206
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 43b03abb2aac13358a2187a0a5dc570c1e45934e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324876"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458494"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Derin öğrenme ile Machine Learning Azure Machine Learning
 
 Bu makalede, derin öğrenme ve makine öğrenimi ve yapay zeka 'nın daha geniş kategorisine nasıl uyduğunu açıklanmaktadır. Sahtekarlık algılama, ses ve yüz tanıma, yaklaşım Analizi ve zaman serisi tahmin gibi Azure Machine Learning oluşturabileceğiniz derin öğrenme çözümleri hakkında bilgi edinin.
 
-Çözümleriniz için algoritmalar seçme konusunda rehberlik için, [Machine Learning algoritması](https://docs.microsoft.com/azure/machine-learning/algorithm-cheat-sheet?WT.mc_id=docs-article-lazzeri)bir başvuru sayfasına bakın.
+Çözümleriniz için algoritmalar seçme konusunda rehberlik için, [Machine Learning algoritması](./algorithm-cheat-sheet.md?WT.mc_id=docs-article-lazzeri)bir başvuru sayfasına bakın.
 
 ## <a name="deep-learning-machine-learning-and-ai"></a>Derin öğrenme, makine öğrenimi ve AI
 

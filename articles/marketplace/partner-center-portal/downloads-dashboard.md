@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/21/2020
 author: shganesh-dev
 ms.author: shganesh
-ms.openlocfilehash: f426b0466046b366655c183a9372b2468937565b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d36043d74da1aa75b32867d4efeebc9729f4a119
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88750309"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457762"
 ---
 # <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>Ticari Market Analytics 'te panoyu indirir
 
@@ -21,7 +21,7 @@ Bu makalede, Iş Ortağı Merkezi 'nde Indirmeler panosu hakkında bilgi sağlan
 Indirmeler panosuna erişmek için ticari Market altında **[analiz](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** panosunu açın.
 
 >[!NOTE]
-> Analiz terminolojisi hakkında ayrıntılı tanımlamalar için bkz. [ticari Market Analizi Için sık sorulan sorular ve terminoloji](./faq-terminology.md).
+> Analiz terminolojisi hakkında ayrıntılı tanımlamalar için bkz. [ticari Market Analizi Için sık sorulan sorular ve terminoloji](../analytics-faq.md).
 
 ## <a name="downloads-dashboard"></a>İndirmeler panosu
 
@@ -54,9 +54,9 @@ Kullanıcılar Indirmeler bölümünde raporların zaman uyumsuz indirilerini za
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Iş ortağı merkezi ticari marketi 'nde bulunan analiz raporlarına genel bakış için bkz. [Iş Ortağı Merkezi 'nde ticari Market Için analiz](./analytics.md).
-- Teklifinizin Market etkinliklerini özetleyen grafikler, eğilimler ve veri değerleri için bkz. [ticari Market Analytics 'Te Özet Panosu](./summary-dashboard.md).
-- Grafik ve indirilebilir biçimdeki Siparişleriniz hakkında daha fazla bilgi için bkz. [Orders Dashboard in The Commercial Market Analytics](./orders-dashboard.md).
-- Sanal makine (VM) için kullanım ve ölçümlenen faturalandırma ölçümleri, bkz. [ticari Market Analytics 'Te kullanım panosu](./usage-dashboard.md).
-- Büyüme eğilimleri dahil olmak üzere müşterileriniz hakkında ayrıntılı bilgi için bkz. [ticari Market Analytics 'Te müşteri panosu](./customer-dashboard.md).
+- Teklifinizin Market etkinliklerini özetleyen grafikler, eğilimler ve veri değerleri için bkz. [ticari Market Analytics 'Te Özet Panosu](../summary-dashboard.md).
+- Grafik ve indirilebilir biçimdeki Siparişleriniz hakkında daha fazla bilgi için bkz. [Orders Dashboard in The Commercial Market Analytics](../orders-dashboard.md).
+- Sanal makine (VM) için kullanım ve ölçümlenen faturalandırma ölçümleri, bkz. [ticari Market Analytics 'Te kullanım panosu](../usage-dashboard.md).
+- Büyüme eğilimleri dahil olmak üzere müşterileriniz hakkında ayrıntılı bilgi için bkz. [ticari Market Analytics 'Te müşteri panosu](../customer-dashboard.md).
 - Azure Market ve AppSource 'ta teklifler için müşteri geri bildirimlerinin birleştirilmiş bir görünümünü görmek için bkz. [ticari Market Analytics 'Te derecelendirmeler ve İncelemeler panosu](./ratings-reviews.md).
-- Ticari Market Analizi ve kapsamlı veri koşulları sözlüğü hakkında sık sorulan sorular için bkz. [ticari Market Analytics Için sık sorulan sorular ve terminoloji](./faq-terminology.md).
+- Ticari Market Analizi ve kapsamlı veri koşulları sözlüğü hakkında sık sorulan sorular için bkz. [ticari Market Analytics Için sık sorulan sorular ve terminoloji](../analytics-faq.md).

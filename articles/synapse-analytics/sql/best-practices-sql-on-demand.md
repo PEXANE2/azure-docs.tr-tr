@@ -1,6 +1,6 @@
 ---
-title: Sunucusuz SQL havuzu için en iyi uygulamalar (Önizleme)
-description: Sunucusuz SQL Havuzu (Önizleme) ile çalışmaya yönelik öneriler ve en iyi uygulamalar.
+title: Sunucusuz SQL havuzu için en iyi yöntemler
+description: Sunucusuz SQL havuzu ile çalışmaya yönelik öneriler ve en iyi uygulamalar.
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: ddf9d689316d3c95c322aa3a967af53621a2e00f
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: b8b93471b6d7f2555cfd71e524718ed0ea1ee191
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638878"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457894"
 ---
-# <a name="best-practices-for-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) için en iyi yöntemler
+# <a name="best-practices-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu için en iyi yöntemler
 
-Bu makalede sunucusuz SQL Havuzu (Önizleme) kullanmak için en iyi yöntemler koleksiyonunu bulacaksınız. Sunucusuz SQL havuzu, Azure SYNAPSE Analytics 'teki bir kaynaktır.
+Bu makalede sunucusuz SQL havuzu kullanmak için en iyi yöntemler koleksiyonunu bulacaksınız. Sunucusuz SQL havuzu, Azure SYNAPSE Analytics 'teki bir kaynaktır.
 
 ## <a name="general-considerations"></a>Dikkat edilmesi gereken temel noktalar
 
@@ -129,7 +129,7 @@ CSV dosyalarını sorguladığınızda performans için iyileştirilmiş bir Ayr
 
 ## <a name="manually-create-statistics-for-csv-files"></a>CSV dosyaları için el ile istatistikleri oluşturma
 
-Sunucusuz SQL havuzu, en iyi sorgu yürütme planlarını oluşturmak için istatistiklere bağımlıdır. İstatistikler, gerektiğinde Parquet dosyalarındaki sütunlar için otomatik olarak oluşturulur. Şu anda, otomatik olarak CSV dosyalarındaki sütunlar için istatistikler oluşturulmaz ve sorgularda kullandığınız sütunlar, özellikle de DISTINCT, JOIN, WHERE, ORDER BY ve GROUP BY olarak kullanılanlar için el ile istatistikler oluşturmalısınız. Ayrıntılar için [sunucusuz SQL havuzundaki istatistikleri](develop-tables-statistics.md#statistics-in-serverless-sql-pool-preview) kontrol edin.
+Sunucusuz SQL havuzu, en iyi sorgu yürütme planlarını oluşturmak için istatistiklere bağımlıdır. İstatistikler, gerektiğinde Parquet dosyalarındaki sütunlar için otomatik olarak oluşturulur. Şu anda, otomatik olarak CSV dosyalarındaki sütunlar için istatistikler oluşturulmaz ve sorgularda kullandığınız sütunlar, özellikle de DISTINCT, JOIN, WHERE, ORDER BY ve GROUP BY olarak kullanılanlar için el ile istatistikler oluşturmalısınız. Ayrıntılar için bkz. [sunucusuz SQL havuzundaki istatistikler] (geliştirme-tablolar-istatistikler. MD # istatistikler-sunucusuz-SQL-Pool.
 
 ## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>Sorgu performansını ve birleştirmeleri geliştirmek için CETAS kullanın
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 10/20/2020
 ms.author: midesa
-ms.openlocfilehash: 820dd8b607f5ec2fdc44d25063e0a941f76237ad
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8735514b639cb0322a83ffb19d661027327c0f73
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95920166"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458767"
 ---
 # <a name="analyze-data-with-apache-spark"></a>Apache Spark ile verileri analiz etme
 
@@ -99,7 +99,7 @@ Yerleşik Not defteri grafik seçeneklerine ek olarak, kendi görselleştirmeler
 
 > [!Note]
 > 
-> Varsayılan olarak, her Azure SYNAPSE Analytics Apache Spark havuzu, yaygın olarak kullanılan ve varsayılan kitaplıkların bir kümesini içerir. Kitaplıkların tam listesini [Azure SYNAPSE çalışma zamanı](../spark/apache-spark-version-support.md)' nda görüntüleyebilirsiniz. belgelerle. Ayrıca, üçüncü tarafa veya yerel olarak oluşturulmuş bir kodu uygulamalarınız için kullanılabilir hale getirmek için, Spark Havuzlarınızdan birine (Önizleme) [bir kitaplık yükleyebilirsiniz](../spark/apache-spark-azure-portal-add-libraries.md) .
+> Varsayılan olarak, her Azure SYNAPSE Analytics Apache Spark havuzu, yaygın olarak kullanılan ve varsayılan kitaplıkların bir kümesini içerir. Kitaplıkların tam listesini [Azure SYNAPSE çalışma zamanı](../spark/apache-spark-version-support.md)' nda görüntüleyebilirsiniz. belgelerle. Ayrıca, üçüncü tarafa veya yerel olarak oluşturulmuş bir kodu uygulamalarınız için kullanılabilir hale getirmek için, Spark Havuzlarınızdan birine [bir kitaplık yükleyebilirsiniz](../spark/apache-spark-azure-portal-add-libraries.md) .
 >
 
 1. Geliştirmeyi daha kolay ve daha ucuz hale getirmek için veri kümesini örnekliyoruz. Yerleşik Apache Spark örnekleme özelliğini kullanacağız. Ayrıca, hem Seaborn hem de Matplotlib bir Pandas dataframe veya bir sayısal tuş takımı dizisi gerektirir. Bir Pandas dataframe almak için, ```toPandas()``` komutunu kullanarak veri çerçevemizi dönüştürmeniz gerekir.

@@ -1,5 +1,5 @@
 ---
-title: SYNAPSE çalışma alanınızın güvenliğini sağlama (Önizleme)
+title: Synapse çalışma alanınızın güvenliğini sağlama
 description: Bu makale, SYNAPSE çalışma alanındaki etkinliklere ve verilere erişimi denetlemek için rolleri ve erişim denetimini nasıl kullanacağınızı öğretir.
 services: synapse-analytics
 author: matt1883
@@ -9,20 +9,20 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 79a4db1f7d4be88260ea41ce1090007bc66cc7c8
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 25e191af919c5880045a6c4c7c79b675cf02520e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556038"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458716"
 ---
-# <a name="secure-your-synapse-workspace-preview"></a>SYNAPSE çalışma alanınızın güvenliğini sağlama (Önizleme) 
+# <a name="secure-your-synapse-workspace"></a>Synapse çalışma alanınızın güvenliğini sağlama 
 
 Bu makalede, etkinlikleri denetlemek ve verilere erişmek için rolleri ve erişim denetimini nasıl kullanacağınızı öğretir. Bu yönergeleri izleyerek, Azure SYNAPSE Analytics 'teki erişim denetimi basitleştirilmiştir. Yalnızca üç güvenlik grubundan birine Kullanıcı ekleyip kaldırmanız gerekir.
 
 ## <a name="overview"></a>Genel Bakış
 
-Bir Synapse çalışma alanını (Önizleme) güvenli hale getirmek için, aşağıdaki öğeleri yapılandırma düzenine uyun:
+Bir Synapse çalışma alanının güvenliğini sağlamak için, aşağıdaki öğeleri yapılandırma düzeniyle karşılaşırsınız:
 
 - Azure rolleri (örneğin, sahibi, katkıda bulunanlar vb. gibi yerleşik olanlar)
 - SYNAPSE rolleri – bu roller SYNAPSE için benzersizdir ve Azure rollerine dayalı değildir. Şu rollerin üçü vardır:
@@ -36,7 +36,7 @@ Bir Synapse çalışma alanını (Önizleme) güvenli hale getirmek için, aşa�
 
 Bu belge yönergeleri basitleştirmek için standart adları kullanır. Bunları dilediğiniz adlarla değiştirin.
 
-|Ayar | Örnek değer | Description |
+|Ayar | Örnek değer | Açıklama |
 | :------ | :-------------- | :---------- |
 | **SYNAPSE çalışma alanı** | WS1 |  SYNAPSE çalışma alanının sahip olacağı ad. |
 | **ADLSGEN2 hesabı** | STG1 | Çalışma alanınız ile kullanılacak ADLS hesabı. |

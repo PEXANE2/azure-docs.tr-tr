@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 5c8af8ddb7a0870de37b73cbe09965ee63c88ba1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: eb1be4c78be0eb7fb943700b168fa82ede4d3861
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353757"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458391"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Form tanıyıcı önceden oluşturulmuş fatura modeli
 
@@ -45,7 +45,7 @@ Form tanıyıcı fatura hizmetini denemek için bir Azure aboneliğine ([ücrets
 
 ## <a name="the-analyze-invoice-operation"></a>Fatura çözümleme işlemi
 
-[Faturayı çözümle](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeInvoiceAsync) işlemi, giriş olarak bir faturanın GÖRÜNTÜSÜNÜ veya PDF 'sini alır ve ilgilendiğiniz değerleri ayıklar. Çağrı, adlı bir yanıt üst bilgisi alanı döndürüyor `Operation-Location` . `Operation-Location`Değer, bir sonraki adımda kullanılacak sonuç kimliğini içeren BIR URL 'dir.
+[Faturayı çözümle](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9843c2794cbb1a96291) işlemi, giriş olarak bir faturanın GÖRÜNTÜSÜNÜ veya PDF 'sini alır ve ilgilendiğiniz değerleri ayıklar. Çağrı, adlı bir yanıt üst bilgisi alanı döndürüyor `Operation-Location` . `Operation-Location`Değer, bir sonraki adımda kullanılacak sonuç kimliğini içeren BIR URL 'dir.
 
 |Yanıt üst bilgisi| Sonuç URL 'SI |
 |:-----|:----|
@@ -53,7 +53,7 @@ Form tanıyıcı fatura hizmetini denemek için bir Azure aboneliğine ([ücrets
 
 ## <a name="the-get-analyze-invoice-result-operation"></a>Fatura sonuçlarını çözümlemeyi al işlemi
 
-İkinci adım, [Fatura sonuçlarını al işlemini çağıracaktır](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeInvoiceResult) . Bu işlem, faturayı çözümle işlemi tarafından oluşturulan sonuç KIMLIĞINI giriş olarak alır. Aşağıdaki olası değerlere sahip bir **durum** alanı IÇEREN bir JSON yanıtı döndürür. **Başarılı** değerle döndürülünceye kadar bu işlemi tekrarlayarak çağırın. Saniye başına istek (RPS) oranını aşmamak için 3 ile 5 saniye arasında bir Aralık kullanın.
+İkinci adım, [Fatura sonuçlarını al işlemini çağıracaktır](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9acb78c40a2533aee83) . Bu işlem, faturayı çözümle işlemi tarafından oluşturulan sonuç KIMLIĞINI giriş olarak alır. Aşağıdaki olası değerlere sahip bir **durum** alanı IÇEREN bir JSON yanıtı döndürür. **Başarılı** değerle döndürülünceye kadar bu işlemi tekrarlayarak çağırın. Saniye başına istek (RPS) oranını aşmamak için 3 ile 5 saniye arasında bir Aralık kullanın.
 
 |Alan| Tür | Olası değerler |
 |:-----|:----:|:----|

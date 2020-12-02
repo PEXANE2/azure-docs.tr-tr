@@ -1,30 +1,30 @@
 ---
-title: SYNAPSE SQL havuzu için veri yükleme en iyi yöntemleri
-description: SYNAPSE SQL havuzu kullanılarak veri yüklemeye yönelik öneriler ve performans iyileştirmeleri.
+title: Adanmış SQL havuzları için veri yükleme en iyi uygulamaları
+description: Azure SYNAPSE Analytics 'te adanmış SQL havuzları kullanarak veri yüklemeye yönelik öneriler ve performans iyileştirmeleri.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 02/04/2020
+ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 34a536ea535fa222340bd004253ee54b9c13bea9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39625914f179dfc8d5511b9a3d386cc8332b7efa
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441230"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456295"
 ---
-# <a name="best-practices-for-loading-data-using-synapse-sql-pool"></a>SYNAPSE SQL havuzu kullanarak veri yüklemeye yönelik en iyi uygulamalar
+# <a name="best-practices-for-loading-data-using-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzları kullanarak veri yüklemeye yönelik en iyi uygulamalar
 
-Bu makalede, SQL havuzunu kullanarak veri yüklemeye yönelik öneriler ve performans iyileştirmeleri öğreneceksiniz.
+Bu makalede adanmış SQL havuzu kullanarak verileri yüklemeye yönelik öneriler ve performans iyileştirmeleri öğreneceksiniz.
 
 ## <a name="preparing-data-in-azure-storage"></a>Azure Depolama’da verileri hazırlama
 
-Gecikme süresini en aza indirmek için depolama katmanınızı ve SQL havuzunuzu birlikte bulundurma.
+Gecikme süresini en aza indirmek için depolama katmanınızı ve adanmış SQL havuzunuzu birlikte bulundurma.
 
 Verileri ORC Dosya Biçimi’ne aktarırken, verilerde büyük metin sütunları varsa Java belleği yetersiz hatası gibi hatalar alabilirsiniz. Bu sınırlama için bir geçici çözüm olarak, sütunların yalnızca bir alt kümesini dışarı aktarın.
 
@@ -34,7 +34,7 @@ Büyük sıkıştırılmış dosyaları daha küçük sıkıştırılmış dosya
 
 ## <a name="running-loads-with-enough-compute"></a>Yükleri yeterli işlemle çalıştırma
 
-En yüksek yükleme hızı için aynı anda yalnızca bir yük işi çalıştırın. Bu uygun değilse, eşzamanlı olarak en az sayıda yük çalıştırın. Büyük bir yükleme işi bekleliyorsanız, yüklemeden önce SQL havuzunuzu ölçeklendirmeniz gerekir.
+En yüksek yükleme hızı için aynı anda yalnızca bir yük işi çalıştırın. Bu uygun değilse, eşzamanlı olarak en az sayıda yük çalıştırın. Büyük bir yükleme işi bekleliyorsanız, yüklemeden önce adanmış SQL havuzunuzu ölçeklendirmeniz gerekir.
 
 Yükleri uygun işlem kaynaklarıyla çalıştırmak için, yükleri çalıştırmaya ayrılmış yükleme kullanıcıları oluşturun. Her yükleme kullanıcısını belirli bir iş yükü grubuna sınıflandırın. Yük çalıştırmak için, yükleme kullanıcılarından biri olarak oturum açın ve sonra yükü çalıştırın. Yük, kullanıcının iş yükü grubuyla çalışır.  
 
@@ -47,10 +47,10 @@ Bu örnek, belirli bir iş yükü grubuna sınıflandırılmış bir yükleme ku
    CREATE LOGIN loader WITH PASSWORD = 'a123STRONGpassword!';
 ```
 
-SQL havuzuna bağlanın ve bir kullanıcı oluşturun. Aşağıdaki kod, mySampleDataWarehouse adlı veritabanına bağlı olduğunuzu varsayar. Yükleyici adlı bir kullanıcının nasıl oluşturulacağını gösterir ve [Copy ifadesini](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)kullanarak tablo oluşturma ve yükleme izinleri verir. Daha sonra kullanıcıyı en fazla kaynakla birlikte DataLoads iş yükü grubuna sınıflandırır. 
+Adanmış SQL havuzuna bağlanın ve bir kullanıcı oluşturun. Aşağıdaki kod, mySampleDataWarehouse adlı veritabanına bağlı olduğunuzu varsayar. Yükleyici adlı bir kullanıcının nasıl oluşturulacağını gösterir ve [Copy ifadesini](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)kullanarak tablo oluşturma ve yükleme izinleri verir. Daha sonra kullanıcıyı en fazla kaynakla birlikte DataLoads iş yükü grubuna sınıflandırır. 
 
 ```sql
-   -- Connect to the SQL pool
+   -- Connect to the dedicated SQL pool
    CREATE USER loader FOR LOGIN loader;
    GRANT ADMINISTER DATABASE BULK OPERATIONS TO loader;
    GRANT INSERT ON <yourtablename> TO loader;
@@ -76,7 +76,7 @@ Yükleme iş yükü grubu için kaynaklarla bir yük çalıştırmak için, yük
 
 ## <a name="allowing-multiple-users-to-load-polybase"></a>Birden çok kullanıcının yüklenmesine izin verme (PolyBase)
 
-Genellikle birden çok kullanıcının bir SQL havuzuna veri yüklemesi gerekir. [Select (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (POLYBASE) olarak Create Table ile yükleme, veritabanının denetim izinlerini gerektirir.  CONTROL izinleri tüm şemalara denetim erişimi verir.
+Genellikle birden çok kullanıcının adanmış bir SQL havuzuna veri yüklemesi gerekir. [Select (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (POLYBASE) olarak Create Table ile yükleme, veritabanının denetim izinlerini gerektirir.  CONTROL izinleri tüm şemalara denetim erişimi verir.
 
 Tüm yükleme kullanıcılarının tüm şemalarda denetim erişimine sahip olmasını istemeyebilirsiniz. İzinleri sınırlandırmak için, DENY CONTROL deyimini kullanabilirsiniz.
 
@@ -91,9 +91,9 @@ User_A ve user_B artık diğer bölüm şemasından kilitlidir.
 
 ## <a name="loading-to-a-staging-table"></a>Hazırlama tablosuna yükleme
 
-Verileri bir SQL havuz tablosuna taşımak için en hızlı yükleme hızına ulaşmak üzere verileri bir hazırlama tablosuna yükleyin.  Hazırlama tablosunu bir yığın olarak tanımlayın ve dağıtım seçeneği için hepsine bir kez yöntemini kullanın.
+Verileri ayrılmış bir SQL havuzu tablosuna taşımak için en hızlı yükleme hızına ulaşmak üzere verileri bir hazırlama tablosuna yükleyin.  Hazırlama tablosunu bir yığın olarak tanımlayın ve dağıtım seçeneği için hepsine bir kez yöntemini kullanın.
 
-Yükleme işleminin genellikle ilk olarak bir hazırlama tablosuna yüklediğiniz ve sonra verileri bir üretim SQL havuzu tablosuna ekleyen iki adımlı bir işlem olduğunu göz önünde bulundurun. Üretim tablosu bir karma dağıtım kullanıyorsa, hazırlama tablosunu karma dağıtımla tanımlamanız durumunda toplam yükleme ve ekleme süresi daha hızlı olabilir.
+Yükleme işleminin genellikle ilk olarak bir hazırlama tablosuna yüklediğiniz ve ardından verileri bir üretime adanmış SQL havuzu tablosuna ekleyen iki adımlı bir işlem olduğunu düşünün. Üretim tablosu bir karma dağıtım kullanıyorsa, hazırlama tablosunu karma dağıtımla tanımlamanız durumunda toplam yükleme ve ekleme süresi daha hızlı olabilir.
 
 Hazırlama tablosuna yükleme işlemi daha uzun sürer, ancak satırları üretim tablosuna eklemeyi içeren ikinci adım, dağıtımlar arasında veri hareketi oluşturmaz.
 
@@ -111,7 +111,7 @@ Bellek baskısı olduğunda, columnstore dizini en yüksek sıkıştırma oranla
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>SqLBulkCopy API veya bcp kullanırken toplu iş boyutunu artır
 
-COPY ifadesiyle yükleme, SQL havuzu ile en yüksek aktarım hızını sağlar. Yüklemek için KOPYAYı kullanamaz ve [SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) veya [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)kullanması gerekiyorsa, daha iyi aktarım hızı için toplu iş boyutunu artırmayı göz önünde bulundurmanız gerekir.
+COPY ifadesiyle yükleme, adanmış SQL havuzlarıyla en yüksek performansı sağlar. Yüklemek için KOPYAYı kullanamaz ve [SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) veya [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)kullanması gerekiyorsa, daha iyi aktarım hızı için toplu iş boyutunu artırmayı göz önünde bulundurmanız gerekir.
 
 > [!TIP]
 > 100 K ila 1M satır arasında bir toplu iş boyutu en iyi toplu iş boyutu kapasitesini belirlemek için önerilen temeldir.

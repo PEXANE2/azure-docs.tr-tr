@@ -9,16 +9,16 @@ ms.date: 10/16/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 27881b048a738d4de2acb57dcc4c2dad1f4d5b24
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 62610e1b86671021e66891ae232bacbd4b3e40ed
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435374"
+ms.locfileid: "96458820"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te Apache Spark için kitaplıkları yönetme
 
-Kitaplıklar, programlarınıza veya projelerinize dahil etmek isteyebileceğiniz yeniden kullanılabilir kod sağlar. Üçüncü tarafa veya yerel olarak oluşturulmuş bir kodu uygulamalarınız için kullanılabilir hale getirmek için, bir kitaplığı sunucusuz Apache Spark Havuzlarınızdan (Önizleme) birine yükleyebilirsiniz. Spark havuzu için bir kitaplık yüklendikten sonra, aynı havuzu kullanan tüm oturumlarda kullanılabilir. 
+Kitaplıklar, programlarınıza veya projelerinize dahil etmek isteyebileceğiniz yeniden kullanılabilir kod sağlar. Üçüncü tarafa veya yerel olarak oluşturulmuş bir koda uygulamalarınızın kullanılabilir olmasını sağlamak için, bir kitaplığı sunucusuz Apache Spark havuzlarınızdan birine yükleyebilirsiniz. Spark havuzu için bir kitaplık yüklendikten sonra, aynı havuzu kullanan tüm oturumlarda kullanılabilir. 
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 - Kitaplıkları yüklemek ve güncelleştirmek için, Azure SYNAPSE Analytics çalışma alanına bağlı birincil Gen2 depolama hesabında **Depolama Blobu veri katılımcısı** veya **Depolama Blobu veri sahibi** izinlerine sahip olmanız gerekir.
@@ -26,11 +26,11 @@ Kitaplıklar, programlarınıza veya projelerinize dahil etmek isteyebileceğini
 ## <a name="default-installation"></a>Varsayılan yükleme
 Azure SYNAPSE Analytics 'teki Apache Spark, tam bir anacondas yüklemesi ve ek kitaplıklar içerir. Tam kitaplıklar listesi, [Apache Spark sürüm desteği](apache-spark-version-support.md)' nde bulunabilir. 
 
-Bir Spark örneği başlatıldığında, bu kitaplıklar otomatik olarak dahil edilir. Spark Havuzu (Önizleme) düzeyinde ek Python ve özel oluşturulmuş paketler eklenebilir.
+Bir Spark örneği başlatıldığında, bu kitaplıklar otomatik olarak dahil edilir. Ek Python ve özel oluşturulmuş paketler Spark havuz düzeyinde eklenebilir.
 
 
 ## <a name="manage-python-packages"></a>Python paketlerini Yönet
-Spark uygulamanız için kullanmak istediğiniz kitaplıkları tanımladıktan sonra, bunları bir Spark havuzuna (Önizleme) yükleyebilirsiniz. 
+Spark uygulamanız için kullanmak istediğiniz kitaplıkları tanımladıktan sonra bunları bir Spark havuzuna yükleyebilirsiniz. 
 
  Sanal ortamı yükseltmek için bir *requirements.txt* dosyası ( `pip freeze` komuttan çıkış) kullanılabilir. Bu dosyada yüklenmek veya yükseltmek üzere listelenen paketler, havuz başlatma sırasında PyPi 'den indirilir. Bu gereksinimler dosyası, bu Spark havuzundan bir Spark örneği oluşturulduğu her seferinde kullanılır.
 
@@ -54,7 +54,7 @@ alabaster==0.7.10
 Spark uygulamanızı geliştirirken, var olan veya yeni kitaplıkları yüklemeniz gerektiğini fark edebilirsiniz. Kitaplıklar, havuz oluşturma sırasında veya sonrasında güncelleştirilemeyebilir.
 
 #### <a name="install-packages-during-pool-creation"></a>Havuz oluşturma sırasında paketleri yükler
-Havuz oluşturma sırasında kitaplıkları Spark havuzuna (Önizleme) yüklemek için:
+Havuz oluşturma sırasında bir Spark havuzuna kitaplık yüklemek için:
    
 1. Azure portal Azure SYNAPSE Analytics çalışma alanınıza gidin.
    
@@ -66,7 +66,7 @@ Havuz oluşturma sırasında kitaplıkları Spark havuzuna (Önizleme) yüklemek
  
 
 #### <a name="install-packages-from-the-synapse-workspace"></a>Paketleri SYNAPSE çalışma alanından yükler
-Azure SYNAPSE Analytics portalından Spark havuzuna (Önizleme) güncelleştirmek veya ek kitaplıklar eklemek için:
+Azure SYNAPSE Analytics portalından bir Spark havuzuna güncelleştirmek veya başka kitaplıklar eklemek için:
 
 1.  Azure portal Azure SYNAPSE Analytics çalışma alanınıza gidin.
    
@@ -79,7 +79,7 @@ Azure SYNAPSE Analytics portalından Spark havuzuna (Önizleme) güncelleştirme
     ![SYNAPSE 'e Python kitaplıkları ekleme](./media/apache-spark-azure-portal-add-libraries/apache-spark-azure-portal-update.png)
    
 #### <a name="install-packages-from-the-azure-portal"></a>Azure portal paketleri yükler
-Bir kitaplığı bir Spark havuzuna (Önizleme) doğrudan Azure portal yüklemek için:
+Bir kitaplığı bir Spark havuzunda doğrudan Azure portal yüklemek için:
    
  1. Azure portal Azure SYNAPSE Analytics çalışma alanınıza gidin.
    

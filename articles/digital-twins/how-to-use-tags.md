@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 59f68909e2f3704fea5c38e3f1535f5996b284ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2620b52c426871b0ec85e3db237be2d373d42f1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87100288"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458694"
 ---
 # <a name="add-tags-to-digital-twins"></a>Dijital TWINS 'e etiket ekleme 
 
@@ -69,13 +69,13 @@ Etiketler dijital TWINS 'e eklendikten sonra, sorgular içindeki TWINS 'leri fil
 "Red" olarak etiketlenen tüm TWINS 'leri almak için bir sorgu aşağıda verilmiştir: 
 
 ```sql
-select * from digitaltwins where is_defined(tags.red) 
+SELECT * FROM digitaltwins WHERE is_defined(tags.red) 
 ```
 
 Ayrıca, daha karmaşık sorgular için etiketleri birleştirebilirsiniz. Kırmızı değil, yuvarlatılmış olan tüm TWINS 'leri almak için bir sorgu aşağıda verilmiştir: 
 
 ```sql
-select * from digitaltwins where not is_defined(tags.red) and is_defined(tags.round) 
+SELECT * FROM digitaltwins WHERE NOT is_defined(tags.red) AND is_defined(tags.round) 
 ```
 
 ## <a name="value-tags"></a>Değer etiketleri 
@@ -127,13 +127,13 @@ entity-03: "tags": { "red": "", "size": "small" }
 Yukarıdaki örnekte, `red` işaret etiketi olarak kullanılıyor. "Red" olarak etiketlenen tüm TWINS 'leri almak için bir sorgu aşağıda verilmiştir: 
 
 ```sql
-select * from digitaltwins where is_defined(tags.red) 
+SELECT * FROM digitaltwins WHERE is_defined(tags.red) 
 ```
 
 Küçük (değer etiketi) ve kırmızı olmayan tüm varlıkları almak için bir sorgu aşağıda verilmiştir: 
 
 ```sql
-select * from digitaltwins where not is_defined(tags.red) and tags.size = 'small' 
+SELECT * FROM digitaltwins WHERE NOT is_defined(tags.red) AND tags.size = 'small' 
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

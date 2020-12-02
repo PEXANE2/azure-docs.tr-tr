@@ -8,12 +8,12 @@ ms.date: 11/02/2020
 author: parthpandyaMSFT
 ms.author: parthp
 ms.custom: contperfq2
-ms.openlocfilehash: ccdc87d03181bad1aba4dd362a651fa42381343a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 39a9b363c847b615bfbe049b4b47628e8688c607
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95542295"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458118"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market hesabı oluşturma
 
@@ -114,7 +114,7 @@ Artık Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturdunuz. [Ticar
 >
 >Bireysel hesaplar kendi kendine çalışan geliştiriciler içindir. Şirket hesapları kuruluşlar ve işletmeler içindir. Şirket hesapları, uygulamaları ek işlevlerle göndermek için erişim sağlar.
 >
-> Şirketiniz için hesap ayarlama yetkiniz olduğunu belirlemek için, kaydolduktan sonra şirket hesaplarının ek doğrulanmasını gerektiririz. Bu doğrulama birkaç günden birkaç haftaya kadar sürebilir ve genellikle şirketiniz için bir telefon araması içerir. Her iki hesap türü de uygulamalar, eklentiler ve hizmetler göndermenize olanak tanır. Daha fazla bilgi için bkz. [hesap türleri, konumlar ve ücretler](https://docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees).
+> Şirketiniz için hesap ayarlama yetkiniz olduğunu belirlemek için, kaydolduktan sonra şirket hesaplarının ek doğrulanmasını gerektiririz. Bu doğrulama birkaç günden birkaç haftaya kadar sürebilir ve genellikle şirketiniz için bir telefon araması içerir. Her iki hesap türü de uygulamalar, eklentiler ve hizmetler göndermenize olanak tanır. Daha fazla bilgi için bkz. [hesap türleri, konumlar ve ücretler](/windows/uwp/publish/account-types-locations-and-fees).
 
 Geliştirici programınızdaki aynı hesapla ticari Market programına kaydoldığınızda, Iş Ortağı Merkezi 'nin sol bölmesinde mevcut olan tüm program kayıtlarını görebilirsiniz.
 

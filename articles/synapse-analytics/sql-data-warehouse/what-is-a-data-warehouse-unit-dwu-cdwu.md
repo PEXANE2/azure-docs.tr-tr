@@ -1,5 +1,5 @@
 ---
-title: Azure SYNAPSE Analytics 'te (eski adıyla SQL DW) veri ambarı birimleri (DWU)
+title: Adanmış SQL Havuzu (eski adıyla SQL DW) için veri ambarı birimleri (DWU)
 description: Fiyat ve performansı iyileştirmek için ideal sayıda veri ambarı birimi (DWU) seçmeye ve birim sayısını değiştirmeye yönelik öneriler.
 services: synapse-analytics
 author: mlee3gsd
@@ -11,20 +11,20 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: bfcd9c6430deea948804ba8c1d37e404b1897c5f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3d9d5d4009ad40eecee26271b726c6a3e9aeb8b6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311894"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459189"
 ---
-# <a name="data-warehouse-units-dwus"></a>Veri ambarı birimleri (DWU 'Lar)
+# <a name="data-warehouse-units-dwus-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL Havuzu (eski adıyla SQL DW) için veri ambarı birimleri (DWU)
 
 Fiyat ve performansı iyileştirmek için ideal sayıda veri ambarı birimi (DWU) seçmeye ve birim sayısını değiştirmeye yönelik öneriler.
 
 ## <a name="what-are-data-warehouse-units"></a>Veri ambarı birimleri nedir?
 
-[SYNAPSE SQL havuzu](sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse) , sağlanmakta olan analitik kaynakların koleksiyonunu temsil eder. Analitik kaynaklar CPU, bellek ve GÇ birleşimi olarak tanımlanır.
+[Adanmış BIR SQL Havuzu (eski ADıYLA SQL DW)](sql-data-warehouse-overview-what-is.md) , sağlanmakta olan analitik kaynakların bir koleksiyonunu temsil eder. Analitik kaynaklar CPU, bellek ve GÇ birleşimi olarak tanımlanır.
 
 Bu üç kaynak, veri ambarı birimleri (DWU) adlı bilgi işlem ölçeği birimlerine paketlenmiştir. DWU, hesaplama kaynakları ve performansının soyut, normalleştirilmiş bir ölçümünü temsil eder.
 
@@ -34,8 +34,8 @@ Daha yüksek performans için, veri ambarı birimlerinin sayısını artırabili
 
 Veri ambarı birimlerinin performansı, bu veri ambarı iş yükü ölçümlerini temel alır:
 
-- Standart adanmış bir SQL havuzu sorgusunun çok sayıda satırı tarayabilmesi ve ardından karmaşık bir toplama işlemi gerçekleştirebilmesi. Bu işlem g/ç ve CPU yoğun.
-- Adanmış SQL havuzunun, verileri Azure depolama Bloblarından veya Azure Data Lake alma işlemi ne kadar hızlı olabilir. Bu işlem ağ ve CPU yoğun.
+- Standart adanmış bir SQL Havuzu (eski adıyla SQL DW) sorgusunun çok sayıda satırı tarayabilmesi ve ardından karmaşık bir toplama işlemi gerçekleştirebilmesi. Bu işlem g/ç ve CPU yoğun.
+- Adanmış SQL havuzunun (eski adıyla SQL DW) Azure depolama Bloblarından veya Azure Data Lake veri alma işlemi ne kadar hızlı olabilir. Bu işlem ağ ve CPU yoğun.
 - [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)T-SQL komutunun bir tabloyu ne kadar hızlı kopyalayabilirler. Bu işlem, depolama alanından veri okumayı, gerecin düğümlerine dağıtmayı ve depolama alanına yeniden yazmayı içerir. Bu işlem CPU, GÇ ve ağ yoğunluğu.
 
 DWUs 'yi artırma:
@@ -48,12 +48,12 @@ DWUs 'yi artırma:
 
 Hizmet düzeyi hedefi (SLO), veri ambarınızın maliyet ve performans düzeyini belirleyen ölçeklenebilirlik ayarıdır. Gen2 için hizmet düzeyleri, işlem verileri ambarı birimlerinde (cDWU) ölçülür (örneğin, DW2000c). Gen1 hizmet düzeyleri DWUs içinde ölçülür, örneğin DW2000.
 
-Hizmet düzeyi hedefi (SLO), adanmış SQL havuzunuzun maliyetini ve performans düzeyini belirleyen ölçeklenebilirlik ayarıdır. Gen2 adanmış SQL havuzu için hizmet düzeyleri veri ambarı birimleri (DWU) ile ölçülür (örneğin, DW2000c).
+Hizmet düzeyi hedefi (SLO), adanmış SQL havuzunuzun maliyet ve performans düzeyini (eski adıyla SQL DW) belirleyen ölçeklenebilirlik ayarıdır. Gen2 adanmış SQL Havuzu (eski adıyla SQL DW) için hizmet düzeyleri, veri ambarı birimlerinde (DWU) ölçülür (örneğin, DW2000c).
 
 > [!NOTE]
-> Azure SYNAPSE Analytics Gen2, en kısa süre önce işlem katmanlarını 100 cDWU olarak destekleyecek şekilde daha fazla ölçek özelliği ekledi. Daha düşük işlem katmanları gerektiren Gen1 üzerinde şu anda mevcut olan veri ambarları artık ek bir ücret ödemeden mevcut olan bölgelerde Gen2 'ye yükseltilebilir.  Bölgeniz henüz desteklenmiyorsa desteklenen bir bölgeye de yükseltme yapabilirsiniz. Daha fazla bilgi için bkz. [Gen2 sürümüne yükseltme](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+> Adanmış SQL Havuzu (eski adıyla SQL DW) Gen2, işlem katmanlarını 100 cDWU olarak düşük olarak desteklemek için son zamanlarda ek ölçek özellikleri ekledi. Daha düşük işlem katmanları gerektiren Gen1 üzerinde şu anda mevcut olan veri ambarları artık ek bir ücret ödemeden mevcut olan bölgelerde Gen2 'ye yükseltilebilir.  Bölgeniz henüz desteklenmiyorsa desteklenen bir bölgeye de yükseltme yapabilirsiniz. Daha fazla bilgi için bkz. [Gen2 sürümüne yükseltme](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
-T-SQL ' de SERVICE_OBJECTIVE ayarı, adanmış SQL havuzunuzun hizmet düzeyini ve performans katmanını belirler.
+T-SQL ' de SERVICE_OBJECTIVE ayarı, adanmış SQL havuzunuzun hizmet düzeyini ve performans katmanını (eski adıyla SQL DW) belirler.
 
 ```sql
 CREATE DATABASE mySQLDW
@@ -88,7 +88,7 @@ Her SQL Server (örneğin, myserver.database.windows.net), belirli sayıda veri 
 2. Veri yüklerini sisteme test ettiğiniz için uygulama performansınızı izleyin ve seçilen DWU sayısını gözlemlediğiniz performansa göre gözlemleyin.
 3. Dönemsel etkinlik dönemlerine yönelik tüm ek gereksinimleri belirler. Etkinliğin önemli ve Troughs bir şekilde gösterilmesi için iş yüklerinin sık ölçeklendirilmesi gerekebilir.
 
-Adanmış SQL havuzu, büyük miktarlarda işlem ve sorgu boyutlandırılabilir veri miktarları sağlayabilen bir genişleme sistemidir.
+Adanmış SQL Havuzu (eski adıyla SQL DW), büyük miktarlarda işlem ve sorgu boyutlandırılabilir veri miktarları sağlayabilen bir genişleme sistemidir.
 
 Özellikle de daha büyük DWU 'Larda ölçeklendirmeye yönelik doğru özellikleri görmek için, CPU 'Ları akışa almak için yeterli veriniz olduğundan emin olmak üzere ölçeği ölçeklendirirken veri kümesini ölçeklendirmeniz önerilir. Ölçek testi için en az 1 TB kullanmanızı öneririz.
 
@@ -121,15 +121,15 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 ## <a name="change-data-warehouse-units"></a>Veri ambarı birimlerini değiştirme
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 DWUs 'yi değiştirmek için:
 
-1. [Azure Portal](https://portal.azure.com)açın, veritabanınızı açın ve **Ölçek** ' e tıklayın.
+1. [Azure Portal](https://portal.azure.com)açın, veritabanınızı açın ve **Ölçek**' e tıklayın.
 
 2. **Ölçek** altında, DWU ayarını değiştirmek için kaydırıcıyı sola veya sağa taşıyın.
 
-3. **Kaydet** ’e tıklayın. Bir onay iletisi görüntülenir. Onaylamak için **evet** ’e, iptal etmek için **hayır** ’a tıklayın.
+3. **Kaydet**’e tıklayın. Bir onay iletisi görüntülenir. Onaylamak için **evet**’e, iptal etmek için **hayır**’a tıklayın.
 
 #### <a name="powershell"></a>PowerShell
 
@@ -141,7 +141,7 @@ DWU 'ları değiştirmek için [set-AzSqlDatabase](/powershell/module/az.sql/set
 Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000c"
 ```
 
-Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics Için PowerShell cmdlet 'leri](../sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+Daha fazla bilgi için bkz. [ADANMıŞ SQL havuzu Için PowerShell cmdlet 'leri (eski ADıYLA SQL DW)](../sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
 ### <a name="t-sql"></a>T-SQL
 
@@ -173,7 +173,7 @@ Content-Type: application/json; charset=UTF-8
 }
 ```
 
-Daha fazla REST API örnek için bkz. [Azure SYNAPSE Analytics Için REST API 'leri](../sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Daha fazla REST API örnek için bkz. [ADANMıŞ SQL havuzu Için REST API 'leri (eski ADıYLA SQL DW)](../sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
 ## <a name="check-status-of-dwu-changes"></a>DWU değişikliklerinin durumunu denetle
 
@@ -204,7 +204,7 @@ FROM      sys.databases
     ;
     ```
 
-Bu DMV, işlem gibi özel SQL havuzunuzdaki çeşitli yönetim işlemleri ve IN_PROGRESS ya da tamamlanmış olan işlem durumu hakkında bilgi döndürür.
+Bu DMV, IN_PROGRESS veya tamamlanmış olan işlem ve işlem durumu gibi özel SQL havuzunuzdaki (eski adıyla SQL DW) çeşitli yönetim işlemleri hakkında bilgi döndürür.
 
 ## <a name="the-scaling-workflow"></a>Ölçeklendirme iş akışı
 

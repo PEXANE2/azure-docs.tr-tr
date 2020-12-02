@@ -1,6 +1,6 @@
 ---
-title: İş yükü önem derecesini yönetme ve izleme
-description: Azure SYNAPSE Analytics 'te istek düzeyi önemini yönetme ve izleme hakkında bilgi edinin.
+title: Adanmış SQL havuzunda iş yükü önemini yönetme ve izleme
+description: Azure SYNAPSE Analytics için istek düzeyi önem derecesi adanmış SQL havuzunu yönetme ve izleme hakkında bilgi edinin.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 43006456142728287ddf4adba1fbb9b45f5ccc89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb0a5fbf33b48521882646bf8fb5eb3fe5dacca6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85211978"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459210"
 ---
-# <a name="manage-and-monitor-workload-importance-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te iş yükü önemini yönetme ve izleme
+# <a name="manage-and-monitor-workload-importance-in-dedicated-sql-pool-for-azure-synapse-analytics"></a>Azure SYNAPSE Analytics için adanmış SQL havuzunda iş yükü önemini yönetme ve izleme
 
-DMVs ve katalog görünümlerini kullanarak Azure SYNAPSE 'de SYNAPSE SQL istek düzeyi önem derecesini yönetin ve izleyin.
+DMVs ve katalog görünümlerini kullanarak Azure SYNAPSE 'de adanmış SQL havuzu istek düzeyi önemini yönetin ve izleyin.
 
 ## <a name="monitor-importance"></a>Önemli izleme
 

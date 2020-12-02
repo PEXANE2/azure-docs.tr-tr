@@ -3,17 +3,17 @@ title: Azure IoT Central nedir? | Microsoft Docs
 description: Azure IoT Central, IoT çözümlerinin oluşturulmasını kolaylaştıran ve IoT yönetim işlemlerinin ve geliştirmenin yükünü ve maliyetini azaltmaya yardımcı olan bir IoT uygulama platformudur. Bu makalede Azure IoT Central’ın özelliklerine genel bir bakış sunulmaktadır.
 author: dominicbetts
 ms.author: dobett
-ms.date: 12/10/2019
+ms.date: 11/23/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 41dba796327d7f5857098af6165be996bed226fb
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 55f187781a0f11417b0c918034dcfe3362be4468
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122689"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457663"
 ---
 # <a name="what-is-azure-iot-central"></a>Azure IoT Central nedir?
 
@@ -137,7 +137,7 @@ IoT Central uygulamalar Microsoft tarafından tamamen barındırılır ve uygula
 7 günlük ücretsiz deneme sürümünü kullanarak IoT Central uygulaması oluşturabilir veya standart bir fiyatlandırma planı kullanabilirsiniz.
 
 - *Ücretsiz* planı kullanarak oluşturduğunuz uygulamalar yedi gün boyunca ücretsizdir ve en fazla beş cihaz destekler. Bunları, süresi dolmadan önce istediğiniz zaman standart bir fiyatlandırma planı kullanacak şekilde dönüştürebilirsiniz.
-- *Standart* planı kullanarak oluşturduğunuz uygulamalar cihaz başına alınarak faturalandırılır, ilk iki cihazla ücretsiz olarak **Standart 1** veya **Standart 2** fiyatlandırma planı seçebilirsiniz. [IoT Central fiyatlandırması](https://aka.ms/iotcentral-pricing)hakkında daha fazla bilgi edinin.
+- *Standart* planı kullanarak oluşturduğunuz uygulamalar cihaz başına alınarak faturalandırılır, ilk iki cihazla serbest bırakılmakta olan **Standart 0**, **Standart 1** veya **Standart 2** fiyatlandırma planı arasından seçim yapabilirsiniz. [IoT Central fiyatlandırması](https://aka.ms/iotcentral-pricing)hakkında daha fazla bilgi edinin.
 
 ## <a name="quotas"></a>Kotalar
 

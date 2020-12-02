@@ -1,6 +1,6 @@
 ---
-title: SQL havuzunuzu Gen2 'e geçirin
-description: Var olan bir SQL havuzunu bölgeye göre Gen2 ve geçiş zamanlamalarına geçirmeye yönelik yönergeler.
+title: Adanmış SQL havuzunuzu (eski adıyla SQL DW) Gen2 'e geçirin
+description: Var olan adanmış bir SQL havuzunu (eski adıyla SQL DW) Gen2 ve bölgeye göre geçiş zamanlamalarına geçirmeye yönelik yönergeler.
 services: synapse-analytics
 author: mlee3gsd
 ms.author: anjangsh
@@ -12,16 +12,16 @@ ms.topic: article
 ms.subservice: sql-dw
 ms.date: 01/21/2020
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: eebde4470ba2635a5287cb3b0103fa49e0e243e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 512775369bd7787c6228c6d452be0e236ddf5cc2
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441009"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456332"
 ---
-# <a name="upgrade-your-sql-pool-to-gen2"></a>SQL havuzunuzu Gen2 'ye yükseltme
+# <a name="upgrade-your-dedicated-sql-pool-formerly-sql-dw-to-gen2"></a>Adanmış SQL havuzunuzu (eski adıyla SQL DW) Gen2 'e yükseltin
 
-Microsoft, bir SQL havuzu çalıştırmanın giriş düzeyi maliyetini azaltmaya yardımcı oluyor.  Yoğun sorguları işleyebilen daha düşük işlem katmanları artık SQL havuzu için kullanılabilir. Gen2 için eksiksiz duyuru [daha düşük işlem katmanı desteğini](https://azure.microsoft.com/blog/azure-sql-data-warehouse-gen2-now-supports-lower-compute-tiers/)okuyun. Yeni teklif, aşağıdaki tabloda belirtilen bölgelerde kullanılabilir. Desteklenen bölgeler için, mevcut Gen1 SQL havuzları şu iki şekilde Gen2 'e yükseltilebilir:
+Microsoft, adanmış bir SQL Havuzu (eski adıyla SQL DW) çalıştırmanın giriş düzeyi maliyetini azaltmaya yardımcı oluyor.  Yoğun sorguları işleyebilen daha düşük işlem katmanları artık adanmış SQL Havuzu (eski adıyla SQL DW) için kullanılabilir. Gen2 için eksiksiz duyuru [daha düşük işlem katmanı desteğini](https://azure.microsoft.com/blog/azure-sql-data-warehouse-gen2-now-supports-lower-compute-tiers/)okuyun. Yeni teklif, aşağıdaki tabloda belirtilen bölgelerde kullanılabilir. Desteklenen bölgeler için, var olan Gen1 adanmış SQL Havuzu (eski adıyla SQL DW) şu iki şekilde Gen2 'e yükseltilebilir:
 
 - **Otomatik yükseltme işlemi:** Hizmet bir bölgede kullanılabilir duruma geldiğinde otomatik yükseltmeler başlatılmaz.  Belirli bir bölgede otomatik yükseltmeler başlatıldığında, seçtiğiniz bakım zamanlamasında tek tek veri ambarı yükseltmeleri gerçekleşmeyecektir.
 - [**Gen2 'e kendi kendine yükseltme:**](#self-upgrade-to-gen2) Gen2 'e kendi kendine yükseltme yaparak ne zaman yükselteceğiniz kontrol edebilirsiniz. Bölgeniz henüz desteklenmiyorsa, bir geri yükleme noktasından doğrudan desteklenen bir bölgedeki bir Gen2 örneğine geri yükleyebilirsiniz.
@@ -43,9 +43,9 @@ Aşağıdaki tabloda, alt Gen2 işlem katmanı kullanılabilir olduğunda ve oto
 
 ## <a name="automatic-upgrade-process"></a>Otomatik yükseltme işlemi
 
-Yukarıdaki kullanılabilirlik grafiğine bağlı olarak, Gen1 örneklerinizin otomatik yükseltmelerini planlıyoruz. SQL havuzunun kullanılabilirliğine ilişkin beklenmeyen kesintilere engel olmak için, otomatik yükseltmeler bakım zamanlamanız sırasında zamanlanır. Yeni bir Gen1 örneği oluşturma özelliği, Gen2 'ye otomatik olarak yükseltme yapılmakta olan bölgelerde devre dışı bırakılacak. Otomatik yükseltmeler tamamlandıktan sonra Gen1 kullanımdan kalkacaktır. Zamanlamalar hakkında daha fazla bilgi için bkz. [bakım zamanlaması görüntüleme](maintenance-scheduling.md#view-a-maintenance-schedule)
+Yukarıdaki kullanılabilirlik grafiğine bağlı olarak, Gen1 örneklerinizin otomatik yükseltmelerini planlıyoruz. Adanmış SQL havuzunun (eski adıyla SQL DW) kullanılabilirliğine yönelik herhangi bir beklenmedik kesintiden kaçınmak için, bakım zamanlamanız sırasında otomatik yükseltmeler planlanacaktır. Yeni bir Gen1 örneği oluşturma özelliği, Gen2 'ye otomatik olarak yükseltme yapılmakta olan bölgelerde devre dışı bırakılacak. Otomatik yükseltmeler tamamlandıktan sonra Gen1 kullanımdan kalkacaktır. Zamanlamalar hakkında daha fazla bilgi için bkz. [bakım zamanlaması görüntüleme](maintenance-scheduling.md#view-a-maintenance-schedule)
 
-Yükseltme işlemi, SQL havuzunuzu yeniden başlatdığımızda bağlantı (yaklaşık 5 dakika) ile kısa bir yer içerir.  SQL havuzunuz yeniden başlatıldıktan sonra, tam kullanıma açık olacaktır. Ancak, yükseltme işlemi arka planda veri dosyalarını yükseltmeye devam ederken performans düşüklüğüne karşılaşabilirsiniz. Performans düşüşünün toplam süresi veri dosyalarınızın boyutuna bağlı olarak değişiklik gösterir.
+Özel SQL havuzunuzu (eski adıyla SQL DW) yeniden başlatdığımızda yükseltme işlemi, bağlantı (yaklaşık 5 dakika) ile kısa bir yer içerir.  Adanmış SQL havuzunuz (eski adıyla SQL DW) yeniden başlatıldıktan sonra, kullanım için tam olarak kullanılabilir olacaktır. Ancak, yükseltme işlemi arka planda veri dosyalarını yükseltmeye devam ederken performans düşüklüğüne karşılaşabilirsiniz. Performans düşüşünün toplam süresi veri dosyalarınızın boyutuna bağlı olarak değişiklik gösterir.
 
 Ayrıca, yeniden başlatmanın ardından daha büyük bir SLO ve kaynak sınıfı kullanarak tüm birincil columnstore tablolarında [alter INDEX REBUILD](sql-data-warehouse-tables-index.md) ' i çalıştırarak veri dosyası yükseltme işlemini de hızlandırabilir.
 
@@ -54,12 +54,12 @@ Ayrıca, yeniden başlatmanın ardından daha büyük bir SLO ve kaynak sınıf�
 
 ## <a name="self-upgrade-to-gen2"></a>Gen2 'e kendi kendine yükseltme
 
-Mevcut bir Gen1 SQL havuzunda bu adımları izleyerek kendi kendine yükseltmeyi seçebilirsiniz. Kendi kendine yükseltmeyi seçerseniz, bölgenizde otomatik yükseltme işlemi başlamadan önce bunu tamamlamalısınız. Bunun yapılması, bir çakışmaya neden olan otomatik yükseltmelerin riskini önlemenize olanak sağlar.
+Mevcut bir Gen1 adanmış SQL havuzunda (eski adıyla SQL DW) bu adımları izleyerek kendi kendine yükseltmeyi seçebilirsiniz. Kendi kendine yükseltmeyi seçerseniz, bölgenizde otomatik yükseltme işlemi başlamadan önce bunu tamamlamalısınız. Bunun yapılması, bir çakışmaya neden olan otomatik yükseltmelerin riskini önlemenize olanak sağlar.
 
-Kendi kendine yükseltme yaparken iki seçenek vardır.  Geçerli SQL havuzunuzu yerinde yükseltebilir veya bir Gen1 SQL havuzunu Gen2 örneğine geri yükleyebilirsiniz.
+Kendi kendine yükseltme yaparken iki seçenek vardır.  Geçerli adanmış SQL havuzunuzu (eski adıyla SQL DW) yerinde yükseltebilir veya Gen1 adanmış bir SQL havuzunu (eski adıyla SQL DW) bir Gen2 örneğine geri yükleyebilirsiniz.
 
-- [Yerinde yükseltme](upgrade-to-latest-generation.md) -Bu seçenek, mevcut Gen1 SQL havuzunuzu Gen2 'ye yükseltir. Yükseltme işlemi, SQL havuzunuzu yeniden başlatdığımızda bağlantı (yaklaşık 5 dakika) ile kısa bir yer içerir.  SQL havuzunuz yeniden başlatıldıktan sonra, tam kullanıma açık olacaktır. Yükseltme sırasında sorunlarla karşılaşırsanız, olası neden olarak bir [destek isteği](sql-data-warehouse-get-started-create-support-ticket.md) ve "Gen2 Upgrade" başvurusu açın.
-- [Geri yükleme noktasından Yükselt](sql-data-warehouse-restore-points.md) -GEÇERLI Gen1 SQL havuzunuzdaki Kullanıcı tanımlı bir geri yükleme noktası oluşturun ve ardından doğrudan bir Gen2 örneğine geri yükleyin. Mevcut Gen1 SQL havuzu yerinde kalır. Geri yükleme tamamlandıktan sonra, Gen2 SQL havuzunuz tam kullanıma açık olacaktır.  Geri yüklenen Gen2 örneğinde tüm test ve doğrulama süreçlerini çalıştırdıktan sonra, özgün Gen1 örneği silinebilir.
+- [Yerinde yükseltme](upgrade-to-latest-generation.md) -Bu seçenek, var olan Gen1 adanmış SQL havuzdan (eskı ADıYLA SQL DW) Gen2 'e yükseltilir. Özel SQL havuzunuzu (eski adıyla SQL DW) yeniden başlatdığımızda yükseltme işlemi, bağlantı (yaklaşık 5 dakika) ile kısa bir yer içerir.  Yeniden başlatıldıktan sonra, tam kullanıma açık olacaktır. Yükseltme sırasında sorunlarla karşılaşırsanız, olası neden olarak bir [destek isteği](sql-data-warehouse-get-started-create-support-ticket.md) ve "Gen2 Upgrade" başvurusu açın.
+- [Geri yükleme noktasından Yükselt](sql-data-warehouse-restore-points.md) -geçerli Gen1 adanmış SQL havuzunuza (eskı ADıYLA SQL DW) Kullanıcı tanımlı bir geri yükleme noktası oluşturun ve ardından doğrudan bir Gen2 örneğine geri yükleyin. Mevcut Gen1 adanmış SQL Havuzu (eski adıyla SQL DW) yerinde kalır. Geri yükleme tamamlandıktan sonra, Gen2 adanmış SQL havuzunuz (eski adıyla SQL DW) tam kullanıma açık olacaktır.  Geri yüklenen Gen2 örneğinde tüm test ve doğrulama süreçlerini çalıştırdıktan sonra, özgün Gen1 örneği silinebilir.
 
   - 1. Adım: Azure portal, [Kullanıcı tanımlı bir geri yükleme noktası oluşturun](sql-data-warehouse-restore-active-paused-dw.md).
   - 2. Adım: Kullanıcı tanımlı bir geri yükleme noktasından geri yükleme yaparken, "performans düzeyi" ni tercih ettiğiniz Gen2 katmanına ayarlayın.
@@ -71,7 +71,7 @@ Arka plan veri geçiş sürecini hızlandırmak için, daha büyük bir SLO ve k
 > [!NOTE]
 > Alter INDEX REBUILD çevrimdışı bir işlemdir ve tablolar yeniden oluşturma tamamlanana kadar kullanılamaz.
 
-SQL havuzunuza herhangi bir sorunla karşılaşırsanız, olası neden olarak bir [destek isteği](sql-data-warehouse-get-started-create-support-ticket.md) oluşturun ve "Gen2 Upgrade" başvurusu yapın.
+Adanmış SQL havuzunuz (eski adıyla SQL DW) ile ilgili herhangi bir sorunla karşılaşırsanız, olası neden olarak bir [destek isteği](sql-data-warehouse-get-started-create-support-ticket.md) oluşturun ve "Gen2 Upgrade" başvurusu yapın.
 
 Daha fazla bilgi için bkz. [Gen2 sürümüne yükseltme](upgrade-to-latest-generation.md).
 
@@ -89,12 +89,12 @@ Daha fazla bilgi için bkz. [Gen2 sürümüne yükseltme](upgrade-to-latest-gene
 
 - Y: bir geri yükleme noktasından yerinde yükseltme yapabilir veya yükseltebilirsiniz.
 
-  - Yerinde yükseltme, SQL havuzunuzun geçici olarak duraklamasına ve sürdürülmesine neden olur.  SQL havuzu çevrimiçi olduğunda bir arka plan işlemi devam edecektir.  
+  - Yerinde yükseltme, adanmış SQL havuzunuzun (eski adıyla SQL DW) geçici olarak duraklamasını ve sürdürülmesine neden olur.  Adanmış SQL Havuzu (eski adıyla SQL DW) çevrimiçi olduğu için bir arka plan işlemi devam edecektir.  
   - Bir geri yükleme noktası üzerinden yükseltiyorsanız, yükseltme tam geri yükleme işlemini yapacağı için daha uzun sürer.
 
 **S: otomatik yükseltme ne kadar sürer?**
 
-- Y: yükseltmenin gerçek kapalı kalma süresi yalnızca hizmeti duraklatma ve devam etmek için gereken süredir ve 5 ila 10 dakika arasındadır. Kısa bir kapalı kalma süresinin ardından arka plan işlemi depolama geçişini çalıştırır. Arka plan işlemi için zaman uzunluğu, SQL havuzunuzun boyutuna bağlıdır.
+- Y: yükseltmenin gerçek kapalı kalma süresi yalnızca hizmeti duraklatma ve devam etmek için gereken süredir ve 5 ila 10 dakika arasındadır. Kısa bir kapalı kalma süresinin ardından arka plan işlemi depolama geçişini çalıştırır. Arka plan işlemi için zaman uzunluğu, adanmış SQL havuzunuzun boyutuna bağlıdır (eski adıyla SQL DW).
 
 **S: Bu otomatik yükseltme gerçekleşsin mi?**
 
@@ -110,7 +110,7 @@ Daha fazla bilgi için bkz. [Gen2 sürümüne yükseltme](upgrade-to-latest-gene
 
 **S: coğrafi yedeklemeyi devre dışı bırakabilir miyim?**
 
-- C: Hayır. Coğrafi yedekleme, bir bölgenin kullanılamaz duruma gelmesi durumunda SQL havuzu kullanılabilirliğini koruyabileceğiniz bir kurumsal özelliktir. Daha fazla endişeniz varsa bir [destek isteği](sql-data-warehouse-get-started-create-support-ticket.md) açın.
+- C: Hayır. Coğrafi yedekleme, bir bölge kullanılamaz duruma geldiğinde adanmış SQL havuzunuzu (eski adıyla SQL DW) korumak için bir kurumsal özelliktir. Daha fazla endişeniz varsa bir [destek isteği](sql-data-warehouse-get-started-create-support-ticket.md) açın.
 
 **S: T-SQL sözdiziminde gen1 ve Gen2 arasında bir fark var mı?**
 

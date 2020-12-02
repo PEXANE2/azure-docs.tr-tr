@@ -1,6 +1,6 @@
 ---
-title: Azure Stream Analytics kullan
-description: Gerçek zamanlı çözümler geliştirmek için Azure SYNAPSE 'de veri Ambarınızla Azure Stream Analytics kullanmaya yönelik ipuçları.
+title: Adanmış SQL havuzunda Azure Stream Analytics kullanma
+description: Gerçek zamanlı çözümler geliştirmek için Azure SYNAPSE 'te adanmış SQL havuzu ile Azure Stream Analytics kullanmaya yönelik ipuçları.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,18 +11,18 @@ ms.date: 9/25/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 3ead3393218255808eb67983251fcf9f2561c82c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 8fbe546beb1004214e544f8eb160884c0f64ef9e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020189"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458231"
 ---
-# <a name="use-azure-stream-analytics-with-azure-synapse-analytics"></a>Azure Stream Analytics’i Azure Synapse Analytics ile kullanma
+# <a name="use-azure-stream-analytics-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu ile Azure Stream Analytics kullanma
 
 Azure Stream Analytics, bulutta akış verileri üzerinde düşük gecikmeli, yüksek oranda kullanılabilir ve ölçeklenebilir karmaşık olay işleme sağlayan, tam olarak yönetilen bir hizmettir. [Azure Stream Analytics tanıtım](../../stream-analytics/stream-analytics-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)bilgilerini okuyarak temelleri öğrenebilirsiniz. Daha sonra, Azure Stream Analytics öğreticisini [kullanmaya başlarken](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) ' i izleyerek Stream Analytics ile uçtan uca bir çözüm oluşturmayı öğrenebilirsiniz.
 
-Bu makalede, Azure Stream Analytics işlerle yüksek aktarım hızı verileri alımı için veri Ambarınızı çıkış havuzu olarak kullanmayı öğreneceksiniz.
+Bu makalede, Azure Stream Analytics işlerle yüksek aktarım hızı verileri alımı için adanmış SQL havuzunuzu bir çıkış havuzu olarak kullanmayı öğreneceksiniz.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -32,9 +32,9 @@ Bu makalede, Azure Stream Analytics işlerle yüksek aktarım hızı verileri al
     2. Olay Oluşturucu uygulamasını yapılandırma ve başlatma
     3. Stream Analytics işi sağlama
     4. İş girişi ve sorgu belirtme
-* Veri ambarınız için adanmış SQL havuzu SYNAPSE-yeni bir veri ambarı oluşturmak Için hızlı başlangıçtaki adımları izleyerek [Yeni bir veri ambarı oluşturun](create-data-warehouse-portal.md).
+* Adanmış SQL havuzu-yeni bir adanmış SQL havuzu oluşturmak Için [hızlı başlangıç: adanmış BIR SQL havuzu oluşturma](../quickstart-create-sql-pool-portal.md)' daki adımları izleyin.
 
-## <a name="specify-streaming-output-to-point-to-your-data-warehouse"></a>Veri ambarınıza işaret etmek için akış çıkışı belirtme
+## <a name="specify-streaming-output-to-point-to-your-dedicated-sql-pool"></a>Adanmış SQL havuzunuza işaret etmek için akış çıkışı belirtme
 
 ### <a name="step-1"></a>1. Adım
 
@@ -52,8 +52,8 @@ Aşağıdaki değerleri girin:
 
 * *Çıkış diğer adı*: Bu iş çıktısı için kolay bir ad girin.
 * *Abonelik*:
-  * Veri ambarınız Stream Analytics işle aynı abonelikte yer alıyorsa, ***aboneliklerinizden Azure SYNAPSE Analytics**' i seçin.
-  _ Veri ambarınız farklı bir abonelikte yer alıyorsa, Azure SYNAPSE Analytics ayarlarını el ile sağla ' ya tıklayın.
+  * Adanmış SQL havuzunuz Stream Analytics işle aynı abonelikte yer alıyorsa, ***aboneliklerinizden Azure SYNAPSE Analytics**' i seçin.
+  _ Adanmış SQL havuzunuz farklı bir abonelikte yer alıyorsa, Azure SYNAPSE Analytics ayarlarını el ile sağla ' ya tıklayın.
 * *Veritabanı*: açılan listeden hedef veritabanını seçin.
 * *Kullanıcı adı*: veritabanı için yazma izinlerine sahip olan bir hesabın kullanıcı adını belirtin.
 * *Parola*: belirtilen kullanıcı hesabı için parola belirtin.
@@ -64,7 +64,7 @@ Aşağıdaki değerleri girin:
 
 ### <a name="step-4"></a>4. Adım
 
-Bir testi çalıştırmadan önce, tabloyu veri Ambarınızda oluşturmanız gerekecektir.  SQL Server Management Studio (SSMS) veya istediğiniz sorgu aracını kullanarak aşağıdaki tablo oluşturma betiğini çalıştırın.
+Bir testi çalıştırmadan önce, tabloyu adanmış SQL havuzunuzdaki oluşturmanız gerekir.  SQL Server Management Studio (SSMS) veya istediğiniz sorgu aracını kullanarak aşağıdaki tablo oluşturma betiğini çalıştırın.
 
 ```sql
 CREATE TABLE SensorLog
@@ -123,4 +123,4 @@ Başlangıç işi bölmesindeki _ *_Başlat_** düğmesine tıklayın.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Tümleştirmeye genel bakış için bkz. [diğer hizmetleri tümleştirme](sql-data-warehouse-overview-integrate.md).
-Daha fazla geliştirme ipucu için bkz. [veri ambarları Için tasarım kararları ve kodlama teknikleri](sql-data-warehouse-overview-develop.md).
+Daha fazla geliştirme ipucu için bkz. [ADANMıŞ SQL havuzu Için tasarım kararları ve kodlama teknikleri](sql-data-warehouse-overview-develop.md).

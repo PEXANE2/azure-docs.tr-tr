@@ -3,16 +3,16 @@ title: Azure Advisor 'ı kullanarak hizmet maliyetlerini azaltma
 description: Azure dağıtımlarınızın maliyetini iyileştirmek için Azure Advisor 'ı kullanın.
 ms.topic: article
 ms.date: 09/27/2020
-ms.openlocfilehash: 454ed02c06511b55f9f592bbe6fe5ab08605d752
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 767c82c818535304552c1c98ff50a252acc0d08a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075918"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458508"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>Azure Advisor 'ı kullanarak hizmet maliyetlerini azaltma
 
-Azure Advisor, boşta ve az kullanılan kaynakları tanımlayarak Genel Azure harcamalarınızı iyileştirmenize ve azaltmanıza yardımcı olur.Danışman panosundaki **Maliyet** sekmesinden maliyet önerileri alabilirsiniz.
+Azure Advisor, boşta ve az kullanılan kaynakları tanımlayarak Genel Azure harcamalarınızı iyileştirmenize ve azaltmanıza yardımcı olur. Danışman panosundaki **Maliyet** sekmesinden maliyet önerileri alabilirsiniz.
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>Az kullanılan örnekleri yeniden boyutlandırarak veya kapatarak sanal makineyi harcamalarını iyileştirin 
 
@@ -71,7 +71,7 @@ Advisor, Azure Blob depolama alanınızı analiz eder ve son 30 gün içinde dep
 ### <a name="mariadb-mysql-and-postgresql-reserved-capacity"></a>MariaDB, MySQL ve PostgreSQL ayrılmış kapasitesi
 Danışman, MariaDB için Azure veritabanı, MySQL için Azure veritabanı ve son 30 gün içinde PostgreSQL için Azure veritabanı kullanım modellerinizi analiz eder. Daha sonra maliyetleri en iyileştiren ayrılmış kapasite satın alımları önerir. Ayrılmış kapasiteyi kullanarak, MariaDB, MySQL ve PostgreSQL saatlik kullanımını ön satın alabilir ve geçerli maliyetlerinizi kaydedebilirsiniz. Ayrılmış kapasite bir faturalama avantajıdır ve yeni ve mevcut dağıtımlar için otomatik olarak uygulanır. Danışman, 3 yıllık rezervasyon fiyatlandırmasını ve son 30 gün içinde gözlemlendi kullanım düzenlerini kullanarak ayrı abonelikler için tasarruf tahminleri hesaplar. Paylaşılan kapsam önerileri, ayrılmış kapasite satın alma işlemleri için kullanılabilir ve tasarruf düzeyini artırabilir.
 
-### <a name="azure-synapse-analytics-formerly-sql-data-warehouse-reserved-capacity"></a>Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) ayrılmış kapasitesi
+### <a name="azure-synapse-analytics-reserved-capacity"></a>Azure SYNAPSE Analytics ayrılmış kapasitesi
 Danışman, son 30 gün içinde Azure SYNAPSE Analytics kullanım modellerinizi analiz eder ve maliyetleri en iyileştiren ayrılmış kapasite satın alımları önerir. Ayrılmış kapasiteyi kullanarak, SYNAPSE Analytics saatlik kullanımını ön satın alabilir ve isteğe bağlı maliyetlerinizi kaydedebilirsiniz. Ayrılmış kapasite bir faturalama avantajıdır ve yeni ve mevcut dağıtımlar için otomatik olarak uygulanır. Danışman, 3 yıllık rezervasyon fiyatlandırmasını ve son 30 gün içinde gözlemlendi kullanım düzenlerini kullanarak ayrı abonelikler için tasarruf tahminleri hesaplar. Paylaşılan kapsam önerileri, ayrılmış kapasite satın alma işlemleri için kullanılabilir ve tasarruf düzeyini artırabilir.
 
 ## <a name="delete-unassociated-public-ip-addresses-to-save-money"></a>Paradan tasarruf etmek için ilişkilendirilmemiş genel IP adreslerini silin
@@ -101,7 +101,7 @@ Danışman, Tablo önbelleği ilkesinin azaltılacağı kaynakları tanımlar. B
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Azure Danışmanı 'nda maliyet önerilerine erişme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Herhangi bir sayfadan [**danışman**](https://aka.ms/azureadvisordashboard) arayın ve seçin.
 

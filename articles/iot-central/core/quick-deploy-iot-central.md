@@ -3,17 +3,17 @@ title: Hızlı başlangıç-Azure IoT Central uygulaması oluşturma | Microsoft
 description: Hızlı başlangıç-yeni bir Azure IoT Central uygulaması oluşturun. Ücretsiz fiyatlandırma planı veya standart fiyatlandırma planlarından birini kullanarak uygulamayı oluşturun.
 author: viv-liu
 ms.author: viviali
-ms.date: 11/16/2020
+ms.date: 11/23/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 313826e9e3fb5fd34d42dd735cf66259773084f7
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: a156150c2cd28964658fa8529181a70ef546b78f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122338"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457325"
 ---
 # <a name="quickstart---create-an-azure-iot-central-application"></a>Hızlı başlangıç-Azure IoT Central uygulaması oluşturma
 
@@ -50,7 +50,7 @@ Sektörün hızlı bir şekilde başlamanıza veya **özel bir uygulamalar** şa
 1. 7 günlük ücretsiz deneme fiyatlandırma planını veya standart fiyatlandırma planlarından birini kullanarak bu uygulamayı oluşturmayı seçin:
 
     - *Ücretsiz* planı kullanarak oluşturduğunuz uygulamalar yedi gün boyunca ücretsizdir ve en fazla beş cihaz destekler. Bunları, süresi dolmadan önce istediğiniz zaman standart bir fiyatlandırma planı kullanacak şekilde dönüştürebilirsiniz.
-    - *Standart* bir plan kullanarak oluşturduğunuz uygulamalar cihaz başına alınarak faturalandırılır, ilk iki cihazla ücretsiz olarak **Standart 1** veya **Standart 2** fiyatlandırma planı seçebilirsiniz. [Azure IoT Central fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/iot-central/)ücretsiz ve standart fiyatlandırma planları hakkında daha fazla bilgi edinin. Standart fiyatlandırma planı kullanarak bir uygulama oluşturursanız, *dizininizi*, *Azure aboneliğinizi* ve *konumunu* seçmeniz gerekir:
+    - *Standart* bir plan kullanarak oluşturduğunuz uygulamalar, cihaz başına temelinde faturalandırılır, ilk iki cihazla serbest bırakılmakta olan **Standart 0**, **Standart 1** veya **Standart 2** fiyatlandırma planı arasından seçim yapabilirsiniz. [Azure IoT Central fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/iot-central/)ücretsiz ve standart fiyatlandırma planları hakkında daha fazla bilgi edinin. Standart fiyatlandırma planı kullanarak bir uygulama oluşturursanız, *dizininizi*, *Azure aboneliğinizi* ve *konumunu* seçmeniz gerekir:
         - *Dizin* , uygulamanızı oluşturduğunuz Azure Active Directory. Azure Active Directory Kullanıcı kimliklerini, kimlik bilgilerini ve diğer kuruluş bilgilerini içerir. Bir Azure Active Directory yoksa, bir Azure aboneliği oluşturduğunuzda sizin için bir tane oluşturulur.
         - *Azure Aboneliği*, Azure hizmetlerinin örneklerini oluşturmanıza olanak tanır. IoT Central aboneliğinizdeki kaynakları sağlar. Azure aboneliğiniz yoksa, [Azure kaydolma sayfasında](https://aka.ms/createazuresubscription)ücretsiz olarak bir tane oluşturabilirsiniz. Azure aboneliğini oluşturduktan sonra **Yeni uygulama** sayfasına geri gidin. Yeni aboneliğiniz artık **Azure abonelik** açılır penceresinde görünür.
         - *Konum* , uygulamanızı oluşturmak istediğiniz [Coğrafya](https://azure.microsoft.com/global-infrastructure/geographies/) ' dır. Genellikle en iyi performansı elde etmek için cihazlarınıza fiziksel olarak en yakın konumu seçmeniz gerekir. Bir konum seçtikten sonra uygulamanızı daha sonra farklı bir konuma taşıyamazsınız.

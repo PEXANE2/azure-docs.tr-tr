@@ -9,12 +9,12 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: e6708874fee3e15349b4389f1ecafa3d48a628dd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b2fbc74304cdb71d9cb3e1ea476af8c92eb99b7e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95917246"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458836"
 ---
 # <a name="tutorial-run-experiments-using-azure-automated-ml-and-apache-spark"></a>Öğretici: Azure otomatik ML ve Apache Spark kullanarak denemeleri çalıştırma
 
@@ -72,7 +72,7 @@ df = spark.read.parquet(wasbs_path)
 
 ```
 
-3. Spark havuzunuzun boyutuna (Önizleme) bağlı olarak, ham veriler çok büyük olabilir veya üzerinde çalışmak için çok fazla zaman alabilir. Ve filtrelerini kullanarak bu verileri daha küçük bir değere filtreleyebilirsiniz ```start_date``` ```end_date``` . Bu, veri ayı döndüren bir filtre uygular. Filtrelenmiş veri çerçevesine sahip olduktan sonra, ```describe()``` her bir alanın Özet istatistiklerini görmek için yeni veri çerçevesinde işlevi de çalıştıracağız. 
+3. Spark havuzunuzun boyutuna bağlı olarak, ham veriler çok büyük olabilir veya üzerinde çalışmak için çok fazla zaman alabilir. Ve filtrelerini kullanarak bu verileri daha küçük bir değere filtreleyebilirsiniz ```start_date``` ```end_date``` . Bu, veri ayı döndüren bir filtre uygular. Filtrelenmiş veri çerçevesine sahip olduktan sonra, ```describe()``` her bir alanın Özet istatistiklerini görmek için yeni veri çerçevesinde işlevi de çalıştıracağız. 
 
    Özet istatistiklerine göre veride bazı ırtik ve aykırı değerleri olduğunu görebiliriz. Örneğin, istatistik en düşük seyahat mesafesinin 0 ' dan küçük olduğunu gösterir. Bu düzensiz veri noktalarını filtrelemeniz gerekir.
    

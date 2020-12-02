@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: d29fa6454839b0c34830374282b8abb5fa6e4c51
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 8df7a2ecd2a6732a011267eb0efe00e8eaf2bef4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313408"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458748"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Azure SYNAPSE Analytics temel kavramları Apache Spark
 
@@ -22,15 +22,15 @@ Apache Spark, büyük veri analizi uygulamalarının performansını artırmak �
 
 Azure SYNAPSE, Azure 'da Spark özellikleri oluşturmayı ve yapılandırmayı kolaylaştırır. Azure SYNAPSE, burada belgelenen Bu Spark yeteneklerinin farklı bir uygulamasını sağlar.
 
-## <a name="spark-pools-preview"></a>Spark havuzları (Önizleme)
+## <a name="spark-pools"></a>Spark havuzları
 
-Azure portal bir sunucusuz Apache Spark Havuzu (Önizleme) oluşturulur. Bu, bir Spark havuzunun, verileri işleyen bir Spark örneği oluşturmak için kullanıldığı bir tanımıdır. Bir Spark havuzu oluşturulduğunda, bu yalnızca meta veriler olarak bulunur ve hiçbir kaynak Tüketilmekte, çalışmıyor veya ücretlendirililmez. Spark havuzunda Spark örneğinin özelliklerini denetleyen bir dizi özellik vardır. Bu özellikler, ad, boyut, ölçekleme davranışı ve yaşam süresi ile sınırlı değildir.
+Azure portal bir sunucusuz Apache Spark havuzu oluşturulur. Bu, bir Spark havuzunun, verileri işleyen bir Spark örneği oluşturmak için kullanıldığı bir tanımıdır. Bir Spark havuzu oluşturulduğunda, bu yalnızca meta veriler olarak bulunur ve hiçbir kaynak Tüketilmekte, çalışmıyor veya ücretlendirililmez. Spark havuzunda Spark örneğinin özelliklerini denetleyen bir dizi özellik vardır. Bu özellikler, ad, boyut, ölçekleme davranışı ve yaşam süresi ile sınırlı değildir.
 
 Spark havuzları oluşturmayla ilişkili dolar veya kaynak maliyeti olmadığından, herhangi bir sayıda farklı yapılandırma ile herhangi bir numara oluşturulabilir. İzinler, kullanıcıların yalnızca bazılarına erişime izin veren Spark havuzlarına da uygulanabilir.
 
 En iyi uygulama, geliştirme ve hata ayıklama için kullanılabilecek daha küçük Spark havuzları oluşturmak ve ardından üretim iş yüklerini çalıştırmaya yönelik daha büyük bir uygulamadır.
 
-Spark havuzu oluşturmayı okuyabilir ve bunların tüm özelliklerini nasıl görebileceğiniz [SYNAPSE Analytics 'Te Spark havuzlarıyla çalışmaya başlayın](../quickstart-create-apache-spark-pool-portal.md)
+Spark havuzu oluşturmayı ve tüm özelliklerini buradan görmenizi [Azure SYNAPSE Analytics 'Te Spark havuzlarıyla çalışmaya başlama](../quickstart-create-apache-spark-pool-portal.md) hakkında bilgi edinebilirsiniz
 
 ## <a name="spark-instances"></a>Spark örnekleri
 

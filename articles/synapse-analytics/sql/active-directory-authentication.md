@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7518d6ac8bc0cde515ab8da2f3d9c1496cb93f08
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b8b0ac002cb52acdc043e4e8ca4fa91daae4e665
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311719"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457992"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>SYNAPSE SQL ile kimlik doğrulaması için Azure Active Directory kimlik doğrulaması kullanma
 
@@ -36,7 +36,7 @@ Yapılandırma adımları Azure Active Directory kimlik doğrulaması yapıland�
 
 1. Azure AD 'yi oluşturun ve doldurun.
 2. Azure Active Directory kimliği oluşturma
-3. SYNAPSE çalışma alanında oluşturulan Azure Active Directory kimliğine rol atama (Önizleme)
+3. SYNAPSE çalışma alanında oluşturulan Azure Active Directory kimliğine rol atama
 4. Azure AD kimliklerini kullanarak SYNAPSE Studio 'ya bağlanın.
 
 ## <a name="azure-ad-pass-through-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te Azure AD geçişi
@@ -65,7 +65,7 @@ Azure AD kimlik doğrulaması kullanılırken, SYNAPSE SQL için iki yönetici h
 
 Azure AD yönetici oturumu, bir Azure AD kullanıcısı veya bir Azure AD grubu olabilir. Yönetici bir grup hesabı olduğunda, SYNAPSE SQL örneği için birden çok Azure AD yöneticisini etkinleştirerek herhangi bir grup üyesi tarafından kullanılabilir. 
 
-Grup hesabını yönetici olarak kullanmak, SYNAPSE Analytics çalışma alanındaki kullanıcıları veya izinleri değiştirmeden Azure AD 'de grup üyelerini merkezi olarak eklemenize ve kaldırmanıza olanak tanıyarak yönetilebilirlik geliştirir. Herhangi bir anda yalnızca bir Azure AD Yöneticisi (bir kullanıcı veya grup) yapılandırılabilir.
+Grup hesabını yönetici olarak kullanmak, Azure SYNAPSE Analytics çalışma alanındaki kullanıcıları veya izinleri değiştirmeden Azure AD 'de grup üyelerini merkezi olarak eklemenize ve kaldırmanıza olanak tanıyarak yönetilebilirlik geliştirir. Herhangi bir anda yalnızca bir Azure AD Yöneticisi (bir kullanıcı veya grup) yapılandırılabilir.
 
 ![Yönetici yapısı](./media/aad-authentication/3-admin-structure.png)
 
@@ -109,7 +109,7 @@ Azure Active Directory kimlik doğrulaması, Azure AD kimliklerini kullanarak bi
 - MFA ile evrensel Azure Active Directory
 - Uygulama belirteci kimlik doğrulamasını kullanma
 
-Aşağıdaki kimlik doğrulama yöntemleri Azure AD Server sorumluları (oturum açmalar) için desteklenir ( **genel önizleme** ):
+Aşağıdaki kimlik doğrulama yöntemleri Azure AD Server sorumluları (oturum açmalar) için desteklenir:
 
 - Azure Active Directory parolası
 - Azure Active Directory tümleşik
@@ -119,7 +119,7 @@ Aşağıdaki kimlik doğrulama yöntemleri Azure AD Server sorumluları (oturum 
 
 - Yönetilebilirlik geliştirmek için, bir yönetici olarak adanmış bir Azure AD grubu sağlamanızı öneririz.
 - Yalnızca bir Azure AD Yöneticisi (bir kullanıcı veya grup), SYNAPSE SQL havuzu için dilediğiniz zaman yapılandırılabilir.
-  - SYNAPSE SQL (Önizleme) için Azure AD Server sorumlularını (oturum açma) ekleme, role eklenebilen birden çok Azure AD Server sorumlusu (oturum açma) oluşturma olasılığa izin verir `sysadmin` .
+  - SYNAPSE SQL için Azure AD Server sorumlularını (oturum açma) ekleme, role eklenebilen birden çok Azure AD Server sorumlusu (oturum açma) oluşturma olasılığa izin verir `sysadmin` .
 - Yalnızca SYNAPSE SQL için bir Azure AD yöneticisi, Azure Active Directory bir hesabı kullanarak başlangıçta SYNAPSE SQL 'e bağlanabilir. Active Directory Yöneticisi, sonraki Azure AD veritabanı kullanıcılarını yapılandırabilir.
 - Bağlantı zaman aşımını 30 saniyeye ayarlamayı öneririz.
 - SQL Server 2016 Management Studio ve SQL Server Veri Araçları Visual Studio 2015 için (sürüm 14.0.60311.1 Nisan 2016 veya üzeri) Azure Active Directory kimlik doğrulamasını destekler. (Azure AD kimlik doğrulaması, **SqlServer için .NET Framework veri sağlayıcısı** tarafından desteklenir; en az sürüm .NET Framework 4,6). Bu nedenle, bu araçların ve veri katmanı uygulamalarının en yeni sürümleri (DAC ve. BACPAC), Azure AD kimlik doğrulaması kullanabilir.

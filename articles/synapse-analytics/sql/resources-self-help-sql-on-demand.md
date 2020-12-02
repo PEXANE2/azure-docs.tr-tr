@@ -1,6 +1,6 @@
 ---
-title: Sunucusuz SQL Havuzu (Önizleme) kendi kendine yardım
-description: Bu bölüm sunucusuz SQL Havuzu (Önizleme) ile ilgili sorunları gidermenize yardımcı olabilecek bilgiler içerir.
+title: Sunucusuz SQL havuzu kendi kendine yardım
+description: Bu bölüm sunucusuz SQL havuzuyla ilgili sorunları gidermenize yardımcı olabilecek bilgiler içerir.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,23 +9,23 @@ ms.subservice: sql
 ms.date: 05/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: aefdb90c3e6c8d3abc3924ecebb2aa46739e99ad
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 12ff369cb931eb36014b7c9598b036afdc158750
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682630"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457190"
 ---
-# <a name="self-help-for-serverless-sql-pool-preview"></a>Sunucusuz SQL havuzu için kendi kendine yardım (Önizleme)
+# <a name="self-help-for-serverless-sql-pool"></a>Sunucusuz SQL havuzu için kendi kendine yardım
 
-Bu makale, Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) ile ilgili sık karşılaşılan sorunların nasıl giderileceği hakkında bilgiler içerir.
+Bu makale, Azure SYNAPSE Analytics 'te sunucusuz SQL havuzunda en sık karşılaşılan sorunların nasıl giderileceği hakkında bilgiler içerir.
 
 ## <a name="serverless-sql-pool-is-grayed-out-in-synapse-studio"></a>SYNAPSE Studio 'da sunucusuz SQL havuzu gri renkte
 
 SYNAPSE Studio sunucusuz SQL havuzuyla bağlantı kuramazsa, sunucusuz SQL havuzunun gri olduğunu veya "çevrimdışı" durumunu gösterdiğini fark edeceksiniz. Genellikle, bu sorun aşağıdaki durumlardan biri gerçekleştiğinde oluşur:
 
-1) Ağınız Azure SYNAPSE arka ucu iletişimini engelliyor. En sık karşılaşılan durum 1443 numaralı bağlantı noktasıdır. Sunucusuz SQL havuzunun çalışmasını sağlamak için bu bağlantı noktasının engelini kaldırın. Diğer sorunlar sunucusuz SQL havuzunun de çalışmasını engelleyebilir, [daha fazla bilgi için tam sorun giderme kılavuzu ' nu ziyaret edin](../troubleshoot/troubleshoot-synapse-studio.md).
-2) Sunucusuz SQL havuzunda oturum açma izniniz yok. Erişim kazanmak için, Azure SYNAPSE çalışma alanı yöneticilerinin sizi çalışma alanı yöneticisine veya SQL yöneticisi rolüne eklemesi gerekir. [Daha fazla bilgi için Access Control 'ta tam kılavuzu ziyaret edin](access-control.md).
+1) Ağınız Azure SYNAPSE arka ucu iletişimini engelliyor. En sık karşılaşılan durum 1443 numaralı bağlantı noktasının engellenmesidir. Sunucusuz SQL havuzunun çalışmasını sağlamak için bu bağlantı noktasının engelini kaldırın. Diğer sorunlar sunucusuz SQL havuzunun de çalışmasını engelleyebilir, [daha fazla bilgi için tam sorun giderme kılavuzu ' nu ziyaret edin](../troubleshoot/troubleshoot-synapse-studio.md).
+2) Sunucusuz SQL havuzunda oturum açma izniniz yok. Erişim elde etmeniz için, Azure Synapse çalışma alanı yöneticilerinden birinin sizi çalışma alanı yöneticisi veya SQL yöneticisi rolüne eklemesi gerekir. [Daha fazla bilgi için erişim denetimiyle ilgili kılavuzun tamamını ziyaret edin](access-control.md).
 
 ## <a name="query-fails-because-file-cannot-be-opened"></a>Dosya açılamadığından sorgu başarısız oluyor
 
@@ -37,7 +37,7 @@ Sorgunuz hata iletisiyle başarısız olursa, ' Bu sorgu geçerli kaynak kısıt
 
 - Makul boyutlarda veri türlerinin kullanıldığından emin olun. Ayrıca, varsayılan olarak VARCHAR (8000) olacak şekilde dize sütunları için Parquet dosyaları için şema belirtin. 
 
-- Sorgunuz CSV dosyalarını hedefliyorsa, [istatistik oluşturmayı](develop-tables-statistics.md#statistics-in-serverless-sql-pool-preview)düşünün. 
+- Sorgunuz CSV dosyalarını hedefliyorsa, [istatistik oluşturmayı](develop-tables-statistics.md#statistics-in-serverless-sql-pool)düşünün. 
 
 - Sorguyu iyileştirmek için [sunucusuz SQL havuzu için en iyi performans uygulamalarını](best-practices-sql-on-demand.md) ziyaret edin.  
 

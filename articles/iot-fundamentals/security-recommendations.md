@@ -12,12 +12,12 @@ ms.custom:
 - security-recommendations
 - amqp
 - mqtt
-ms.openlocfilehash: 5a7fc2a5a5a6be7695fa816f28e3cdf61c5839f2
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: a1de3a71253b1a82b4423bff279fbf3f7e378da4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92208286"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457609"
 ---
 # <a name="security-recommendations-for-azure-internet-of-things-iot-deployment"></a>Azure Nesnelerin İnterneti (IoT) dağıtımı için güvenlik önerileri
 
@@ -40,7 +40,7 @@ Bu makaleye eklenen önerilerden bazıları Azure Güvenlik Merkezi tarafından 
 
 | Öneri | Yorumlar | ASC tarafından desteklenir |
 |-|----|--|
-| Hub için erişim denetimi tanımlama | İşlevlere göre her bir bileşenin IoT Hub çözümünüzde sahip olacağı [erişim türünü anlayın ve tanımlayın](iot-security-deployment.md#securing-the-cloud) . İzin verilen izinler *kayıt defteri okuma*, *registryreadwrite*, *serviceconnect*ve *deviceconnect*' dir. [IoT Hub 'ınızdaki varsayılan paylaşılan erişim ilkeleri](../iot-hub/iot-hub-devguide-security.md#access-control-and-permissions) , rolüne göre her bir bileşen için izinleri tanımlamaya da yardımcı olabilir. | - |
+| Hub için erişim denetimi tanımlama | İşlevlere göre her bir bileşenin IoT Hub çözümünüzde sahip olacağı [erişim türünü anlayın ve tanımlayın](iot-security-deployment.md#securing-the-cloud) . İzin verilen izinler *kayıt defteri okuma*, *registryreadwrite*, *serviceconnect* ve *deviceconnect*' dir. [IoT Hub 'ınızdaki varsayılan paylaşılan erişim ilkeleri](../iot-hub/iot-hub-devguide-security.md#access-control-and-permissions) , rolüne göre her bir bileşen için izinleri tanımlamaya da yardımcı olabilir. | - |
 | Arka uç hizmetleri için erişim denetimi tanımlama | IoT Hub çözümünüz tarafından alınan veriler [Cosmos DB](../cosmos-db/index.yml), [Stream Analytics](../stream-analytics/index.yml), [App Service](../app-service/index.yml), [Logic Apps](../logic-apps/index.yml)ve [BLOB depolama](../storage/blobs/storage-blobs-introduction.md)gibi diğer Azure hizmetleri tarafından tüketilebilir. Bu hizmetler için belgelendiği şekilde, uygun erişim izinlerini anladığınızdan ve bunlara izin verdiğinizden emin olun. | - |
 
 ## <a name="data-protection"></a>Veri koruma
@@ -63,8 +63,8 @@ Bu makaleye eklenen önerilerden bazıları Azure Güvenlik Merkezi tarafından 
 | Öneri | Yorumlar | ASC tarafından desteklenir |
 |-|----|--|
 | Cihazlarınıza yetkisiz erişimi izleme |  Cihazın veya bağlantı noktalarından herhangi bir güvenlik ihlallerinin veya fiziksel olarak değiştirilmesini izlemek için cihazınızın işletim sisteminizin günlüğe kaydetme özelliğini kullanın. | - |
-| IoT çözümünüzü buluttan izleyin | [Azure izleyici 'de ölçümleri](../iot-hub/iot-hub-metrics.md)kullanarak IoT Hub çözümünüzün genel durumunu izleyin. | - |
-| Tanılamayı ayarla | Çözümünüzdeki olayları günlüğe kaydederek ve daha sonra performansı Izlemek için tanılama günlüklerini Azure Izleyici 'ye göndererek işlemlerinizi yakından izleyin. Daha fazla bilgi için [, IoT Hub 'ınızdaki sorunları okuyun ve tanılayın](../iot-hub/iot-hub-monitor-resource-health.md) . | - |
+| IoT çözümünüzü buluttan izleyin | [Azure izleyici 'de ölçümleri](../iot-hub/monitor-iot-hub.md)kullanarak IoT Hub çözümünüzün genel durumunu izleyin. | - |
+| Tanılamayı ayarla | Çözümünüzdeki olayları günlüğe kaydederek ve daha sonra performansı Izlemek için tanılama günlüklerini Azure Izleyici 'ye göndererek işlemlerinizi yakından izleyin. Daha fazla bilgi için [, IoT Hub 'ınızdaki sorunları okuyun ve tanılayın](../iot-hub/monitor-iot-hub.md) . | - |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

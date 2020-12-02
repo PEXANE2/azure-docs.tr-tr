@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: ca167a2ae313c29581d40fe921a8742b9b6b61fe
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 983b1a5e024a44733fab418a67375f232e66cfe4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686064"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457162"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) için erişim ve kimlik seçenekleri
 
@@ -46,7 +46,7 @@ Kümerolü, kaynaklara izin vermek için aynı şekilde çalışarak, ancak beli
 
 ### <a name="rolebindings-and-clusterrolebindings"></a>RoleBindings ve ClusterRoleBindings
 
-Roller, kaynaklara izinler vermek üzere tanımlandıktan sonra, bu Kubernetes RBAC izinlerini bir *Rolebinding* ile atarsınız. AKS kümeniz [Azure Active Directory ile tümleşiyorsa](#azure-active-directory-integration), bağlamalar bu Azure AD kullanıcılarının küme içinde eylem gerçekleştirme izinleri verme iznidir, bkz. [Kubernetes rol tabanlı erişim denetimi ve Azure Active Directory kimliklerini kullanarak küme kaynaklarına erişimi denetleme](azure-ad-rbac.md).
+Roller, kaynaklara izinler vermek üzere tanımlandıktan sonra, bu Kubernetes RBAC izinlerini bir *Rolebinding* ile atarsınız. AKS kümeniz [Azure Active Directory (Azure AD) ile tümleşiyorsa](#azure-active-directory-integration), bağlamalar bu Azure AD kullanıcılarının küme içinde eylemleri gerçekleştirmek için izin verme iznidir, bkz. [Kubernetes rol tabanlı erişim denetimi ve Azure Active Directory kimliklerini kullanarak küme kaynaklarına erişimi denetleme](azure-ad-rbac.md).
 
 Rol bağlamaları, belirli bir ad alanı için roller atamak üzere kullanılır. Bu yaklaşım, tek bir AKS kümesini mantıksal olarak ayırt etmenizi sağlar, böylece kullanıcılar yalnızca atanan ad alanındaki uygulama kaynaklarına erişebilir. Rolleri tüm küme genelinde veya belirli bir ad alanı dışındaki küme kaynaklarına bağlamanız gerekiyorsa, *Clusterrolebindings* kullanabilirsiniz.
 
@@ -144,6 +144,22 @@ AKS, aşağıdaki dört yerleşik rolü sağlar. Bunlar, [Kubernetes yerleşik r
 | Azure Kubernetes hizmeti RBAC kümesi Yöneticisi  | Süper Kullanıcı erişiminin herhangi bir kaynak üzerinde herhangi bir işlem gerçekleştirmesine izin verir. Kümedeki her kaynak ve tüm ad alanlarında tam denetim sağlar. |
 
 **Azure RBAC 'i Kubernetes yetkilendirmesi için nasıl etkinleştireceğinizi öğrenmek için [buradan okuyun](manage-azure-rbac.md).**
+
+## <a name="summary"></a>Özet
+
+Bu tabloda, Azure AD tümleştirmesi etkinleştirildiğinde, kullanıcıların Kubernetes kimlik doğrulaması yapabilme yolları özetlenmektedir.  Her durumda, kullanıcının komut dizisi:
+1. `az login`Azure 'da kimlik doğrulaması yapmak için ' i çalıştırın.
+1. `az aks get-credentials`Kümenin kimlik bilgilerini içine indirmek için ' i çalıştırın `.kube/config` .
+1. `kubectl`Komutları çalıştırın (ilki, aşağıdaki tabloda açıklandığı gibi, kümede kimlik doğrulamak için tarayıcı tabanlı kimlik doğrulaması tetiklenebilir).
+
+İkinci sütunda başvurulan rol verme, Azure portal **Access Control** sekmesinde GÖSTERILEN Azure RBAC rolü verlüdür. Küme Yöneticisi Azure AD grubu, portaldaki **yapılandırma** sekmesinde (veya `--aad-admin-group-object-ids` Azure CLI 'de parametre adı ile) gösterilir.
+
+| Açıklama        | Rol verme gerekli| Küme Yöneticisi Azure AD grupları | Kullanılması gereken durumlar |
+| -------------------|------------|----------------------------|-------------|
+| İstemci sertifikası kullanarak eski yönetici oturumu açma| **Azure Kubernetes yönetici rolü**. Bu rol, `az aks get-credentials` `--admin` [eski (Azure dışı ad) küme yönetici sertifikasını](control-kubeconfig-access.md) kullanıcının kullanıcısına indiren bayrağıyla birlikte kullanılmasına izin verir `.kube/config` . Bu, "Azure Kubernetes yönetici rolü" nin tek amacı değildir.|yok|Kalıcı olarak engellendiyse, kümenize erişimi olan geçerli bir Azure AD grubuna erişemez.| 
+| El ile (küme) RoleBindings ile Azure AD| **Azure Kubernetes Kullanıcı rolü**. "Kullanıcı" rolü `az aks get-credentials` bayrak olmadan kullanılmasına izin verir `--admin` . (Bu, "Azure Kubernetes Kullanıcı rolü" öğesinin tek amacı olur.) Sonuç olarak, Azure AD özellikli bir kümede [boş bir girdinin](control-kubeconfig-access.md) indirilmesi, bu, `.kube/config` tarafından ilk kez kullanıldığında tarayıcı tabanlı kimlik doğrulamasını tetikler `kubectl` .| Kullanıcı bu grupların hiçbirinde değil. Kullanıcı herhangi bir Küme Yöneticisi grubunda olmadığından, hakları tamamen küme yöneticileri tarafından ayarlanan herhangi bir RoleBindings veya ClusterRoleBindings tarafından denetlenir. (Küme) RoleBindings, [Azure AD kullanıcılarını veya Azure AD gruplarını](azure-ad-rbac.md) oldukları gibi aday olarak belirler `subjects` . Böyle bir bağlama ayarlanmamışsa, Kullanıcı herhangi bir `kubectl` komutu kullanamaz.|Ayrıntılı erişim denetimi istiyorsanız ve Kubernetes yetkilendirmesi için Azure RBAC kullanmıyorsanız. Bağlamaları ayarlayan kullanıcının bu tabloda listelenen diğer yöntemlerden biriyle oturum açması gerektiğini unutmayın.|
+| Yönetici grubuna üye tarafından Azure AD| Yukarıdakiyle aynı|Kullanıcı burada listelenen gruplardan birinin üyesidir. AKS, listelenen tüm grupları Kubernetes rolüne bağlayan bir ClusterRoleBinding otomatik olarak oluşturur `cluster-admin` . Bu nedenle, bu gruplardaki kullanıcılar tüm `kubectl` komutları olarak çalıştırabilir `cluster-admin` .|Kullanıcılara kolay bir şekilde yönetici hakları vermek istiyorsanız ve Kubernetes yetkilendirmesi için Azure _RBAC kullanmıyorsanız._|
+| Kubernetes yetkilendirmesi için Azure RBAC ile Azure AD|İki rol: Ilk olarak, **Azure Kubernetes Kullanıcı rolü** (yukarıdaki gibi). İkincisi, "Azure Kubernetes Service **RBAC**..." Yukarıda listelenen roller veya kendi özel alternatifi.|Kubernetes yetkilendirmesi için Azure RBAC etkinleştirildiğinde yapılandırma sekmesindeki yönetici rolleri alanı ilgisiz olur.|Kubernetes yetkilendirmesi için Azure RBAC kullanıyorsunuz. Bu yaklaşım, RoleBindings veya ClusterRoleBindings ayarlamanıza gerek kalmadan ayrıntılı denetim sağlar.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

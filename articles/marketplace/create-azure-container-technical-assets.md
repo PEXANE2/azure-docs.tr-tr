@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 11/30/2020
-ms.openlocfilehash: 30f9eac0a0e88092a243b4d9421d2a4f33b07841
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 014bcd6fc519c267cdf17e9e98b850425c25ead6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95759035"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459322"
 ---
 # <a name="prepare-your-azure-container-technical-assets"></a>Azure Container teknik varlıklarınızı hazırlayın
 
@@ -20,7 +20,7 @@ Bu makalede, Azure Marketi 'nde bir kapsayıcı teklifi oluşturmanıza yardımc
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Hızlı başlangıç, öğreticiler ve örnekler için [Azure Container Instances belgelerine](/azure/container-instances/)bakın.
+Hızlı başlangıç, öğreticiler ve örnekler için [Azure Container Instances belgelerine](../container-instances/index.yml)bakın.
 
 ## <a name="fundamental-technical-knowledge"></a>Temel teknik bilgi
 
@@ -43,7 +43,7 @@ Kapsayıcı görüntünüzü yönetmeye yardımcı olması için aşağıdaki ko
 
 Bu araçları geliştirme ortamınıza eklemeniz önerilir:
 
-- [Azure Depolama Gezgini](/azure/vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)
+- [Azure Depolama Gezgini](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)
 - [Visual Studio Code](https://code.visualstudio.com/)
   - Uzantı: [Azure Resource Manager araçları](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
   - Uzantı: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -55,9 +55,9 @@ Bu araçları geliştirme ortamınıza eklemeniz önerilir:
 
 Bir görüntüyü şirket içi kayıt defterinden Azure Container Instances dağıtamazsınız.
 
-- Yerel kayıt defterinizde zaten bir çalışma kapsayıcınız varsa, bir Azure kayıt defteri oluşturun ve kapsayıcı görüntünüzü Azure Container Registry yükleyin. Daha fazla bilgi edinmek için bkz. [öğretici: bulutta kapsayıcı görüntülerini derlemek ve Azure Container Registry görevlerle dağıtmak](/azure/container-registry/container-registry-tutorial-quick-task.md).
+- Yerel kayıt defterinizde zaten bir çalışma kapsayıcınız varsa, bir Azure kayıt defteri oluşturun ve kapsayıcı görüntünüzü Azure Container Registry yükleyin. Daha fazla bilgi edinmek için bkz. [öğretici: bulutta kapsayıcı görüntülerini derlemek ve Azure Container Registry görevlerle dağıtmak](../container-registry/container-registry-tutorial-quick-task.md).
 
-- Henüz bir kapsayıcı görüntüsü yoksa ve var olan uygulamanızı kapsayıcınıza veya yeni bir kapsayıcı tabanlı uygulama oluşturup, uygulama kaynak kodunu GitHub 'dan klonlamanız, uygulama kaynağından bir kapsayıcı görüntüsü oluşturmanız ve görüntüyü yerel bir Docker ortamında test etmeniz gerekir. Daha fazla bilgi edinmek için bkz. [öğretici: Azure Container Instances dağıtım için kapsayıcı görüntüsü oluşturma](/azure/container-instances/container-instances-tutorial-prepare-app.md).
+- Henüz bir kapsayıcı görüntüsü yoksa ve var olan uygulamanızı kapsayıcınıza veya yeni bir kapsayıcı tabanlı uygulama oluşturup, uygulama kaynak kodunu GitHub 'dan klonlamanız, uygulama kaynağından bir kapsayıcı görüntüsü oluşturmanız ve görüntüyü yerel bir Docker ortamında test etmeniz gerekir. Daha fazla bilgi edinmek için bkz. [öğretici: Azure Container Instances dağıtım için kapsayıcı görüntüsü oluşturma](../container-instances/container-instances-tutorial-prepare-app.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

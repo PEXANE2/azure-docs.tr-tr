@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 8f85e9c77cc6fed7e2763f694664332b124d0780
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 9089fee7565633b198043efeed929fc7446437d5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561803"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458299"
 ---
 # <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>Ticari market analizinde Market İçgörüleri
 
@@ -20,7 +20,7 @@ Bu makalede, Iş Ortağı Merkezi 'nde Market öngörüleri panosu hakkında bil
 
 **Market Insights** panosuna iş ortağı merkezi 'ne erişmek için, ticari Market ' in altında **[Analyze](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**  >  **Market öngörülerini** Çözümle ' yi seçin.
 
-Analiz terminolojisi hakkında ayrıntılı tanımlamalar için bkz. [ticari Market Analytics terminolojisi ve sık sorulan sorular](./partner-center-portal/faq-terminology.md).
+Analiz terminolojisi hakkında ayrıntılı tanımlamalar için bkz. [ticari Market Analytics terminolojisi ve sık sorulan sorular](./analytics-faq.md).
 
 ## <a name="marketplace-insights-dashboard"></a>Market İçgörüleri panosu
 
@@ -54,29 +54,29 @@ Her sayfanın sağ üst köşesinde bir ay aralığı seçimi bulabilirsiniz. So
 
 Market Insights **ziyaretçi** çizelgesi, seçilen hesaplama dönemi için _sayfa ziyaretlerinin_ ve _benzersiz ziyaretçilerin_ sayısını görüntüler.
 
-**Sayfa ziyaretleri** : Bu sayı, seçilen bir hesaplama dönemi için teklif listesi sayfasındaki (Ürün Ayrıntısı sayfası) farklı kullanıcı oturumlarının sayısını temsil eder. Kırmızı ve yeşil yüzde göstergeleri, sayfa ziyaretlerinin büyüme yüzdesini temsil eder. Eğilim grafiği, sayfa ziyaretlerinin aya göre ayı sayısını temsil eder.
+**Sayfa ziyaretleri**: Bu sayı, seçilen bir hesaplama dönemi için teklif listesi sayfasındaki (Ürün Ayrıntısı sayfası) farklı kullanıcı oturumlarının sayısını temsil eder. Kırmızı ve yeşil yüzde göstergeleri, sayfa ziyaretlerinin büyüme yüzdesini temsil eder. Eğilim grafiği, sayfa ziyaretlerinin aya göre ayı sayısını temsil eder.
 
-**Benzersiz ziyaretçiler** : Bu sayı, Azure Marketi ve appsource 'taki teklifler için seçilen hesaplama döneminde ayrı ziyaretçi sayısını temsil eder. Bir veya daha fazla ürün ayrıntısı sayfasını ziyaret eden bir ziyaretçi, benzersiz bir ziyaretçi olarak sayılır.
+**Benzersiz ziyaretçiler**: Bu sayı, Azure Marketi ve appsource 'taki teklifler için seçilen hesaplama döneminde ayrı ziyaretçi sayısını temsil eder. Bir veya daha fazla ürün ayrıntısı sayfasını ziyaret eden bir ziyaretçi, benzersiz bir ziyaretçi olarak sayılır.
 
 [![Market öngörüleri panosundaki ziyaretçi grafiğini gösterir.](./media/insights-dashboard/visitors.png)](./media/insights-dashboard/visitors.png#lightbox)
 
 ### <a name="call-to-actions-trend"></a>Eylem eğilimi çağrısı
 
-Bu sayı teklif listesi sayfasında (Ürün Ayrıntısı sayfası) tamamlanan eylem düğmesi tıklamaları **çağrısının** sayısını temsil eder. Kullanıcılar **Şimdi al** , **ücretsiz deneme** , **benimle iletişim** veya **test sürücüsü** düğmelerini seçerken _eyleme yapılan çağrılar_ sayılır.
+Bu sayı teklif listesi sayfasında (Ürün Ayrıntısı sayfası) tamamlanan eylem düğmesi tıklamaları **çağrısının** sayısını temsil eder. Kullanıcılar **Şimdi al**, **ücretsiz deneme**, **benimle iletişim** veya **test sürücüsü** düğmelerini seçerken _eyleme yapılan çağrılar_ sayılır.
 
 [![Market öngörüleri panosundaki eylem grafiği çağrısını gösterir.](./media/insights-dashboard/call-to-actions-trend.png)](./media/insights-dashboard/call-to-actions-trend.png#lightbox)
 
 ### <a name="page-visits-and-call-to-actions-against-offers-referral-domains-and-campaign-ids"></a>Sayfa ziyaretleri ve tekliflere, başvuru etki alanlarına ve kampanya kimliklerine karşı eylem çağrısı
 
-**Başvuru etki alanları** : belirli bir başvuru etki alanı seçildiğinde, sayfa ziyaretlerinin aylık eğilimi ve sağdaki grafik üzerindeki eyleme yapılan çağrılar gösterilir.
+**Başvuru etki alanları**: belirli bir başvuru etki alanı seçildiğinde, sayfa ziyaretlerinin aylık eğilimi ve sağdaki grafik üzerindeki eyleme yapılan çağrılar gösterilir.
 
 :::image type="content" source="./media/insights-dashboard/referral-domain.png" alt-text="Market Insights panosundaki başvuru etki alanı grafiğini gösterir.":::
 
-**Teklifler** : sayfa ziyaretlerinin aylık eğilimini ve sağdaki grafik üzerindeki eyleme yapılan çağrıları görmek için belirli bir teklifi seçin.
+**Teklifler**: sayfa ziyaretlerinin aylık eğilimini ve sağdaki grafik üzerindeki eyleme yapılan çağrıları görmek için belirli bir teklifi seçin.
 
 :::image type="content" source="./media/insights-dashboard/offer-alias.png" alt-text="Market öngörüleri panosunda teklif diğer adı grafiğini gösterir.":::
 
-**Kampanya kimlikleri** : belirli BIR kampanya kimliğini seçerek kampanyanın başarısını anlayabilmeniz gerekir. Her kampanya için, sayfa ziyaretlerinin aylık eğilimini ve sağ taraftaki grafik üzerinde yapılacak çağrıları görmeniz gerekir.
+**Kampanya kimlikleri**: belirli BIR kampanya kimliğini seçerek kampanyanın başarısını anlayabilmeniz gerekir. Her kampanya için, sayfa ziyaretlerinin aylık eğilimini ve sağ taraftaki grafik üzerinde yapılacak çağrıları görmeniz gerekir.
 
 :::image type="content" source="./media/insights-dashboard/campaign.png" alt-text="Market Insights panosundaki kampanya grafiğini gösterir.":::
 
@@ -112,4 +112,4 @@ Bu tabloda, sayfa ziyaretlerinin bir liste görünümü ve seçili teklifleriniz
 - Büyüme eğilimleri dahil olmak üzere müşterileriniz hakkında ayrıntılı bilgi için bkz. [ticari Market Analytics 'Te müşteri panosu](./customer-dashboard.md).
 - Son 30 güne ait indirme isteklerinizin listesi için bkz. [Commercial Market Analytics 'te panoyu indirme](./partner-center-portal/downloads-dashboard.md).
 - Azure Market ve AppSource 'ta teklifler için müşteri geri bildirimlerinin birleştirilmiş bir görünümünü görmek için bkz. [Iş Ortağı Merkezi 'Nde derecelendirmeler & İncelemeleri analiz panosu](./partner-center-portal/ratings-reviews.md).
-- Ticari Market Analytics hakkında sık sorulan sorular ve veri koşullarının kapsamlı bir sözlüğü için bkz. [ticari Market Analytics terminolojisi ve sık sorulan sorular](./partner-center-portal/faq-terminology.md).
+- Ticari Market Analytics hakkında sık sorulan sorular ve veri koşullarının kapsamlı bir sözlüğü için bkz. [ticari Market Analytics terminolojisi ve sık sorulan sorular](./analytics-faq.md).

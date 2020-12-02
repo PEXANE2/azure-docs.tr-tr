@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 0da49a6f5299ef4e53b06acd5ce3fb838915a661
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e995cd8f300787a19934e9b9eeae1dea73e8576c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92633935"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457077"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory-veri hareketine yönelik güvenlik konuları
 
@@ -28,7 +28,7 @@ Bu makalede, veri taşıma hizmetlerinin Azure Data Factory verileri güvenli ha
 
 Bir Data Factory çözümünde bir veya daha fazla [işlem hattı](data-factory-create-pipelines.md) oluşturursunuz. İşlem hattı, bir görevi gerçekleştiren etkinliklerden oluşan mantıksal gruptur. Bu işlem hatları, Data Factory 'nin oluşturulduğu bölgede bulunur. 
 
-Data Factory yalnızca **Batı ABD** , **Doğu ABD** ve **Kuzey Avrupa** bölgelerinde kullanılabilir olsa da, veri taşıma hizmeti [küresel olarak birkaç bölgede](data-factory-data-movement-activities.md#global)kullanılabilir. Data Factory hizmeti, veri taşıma hizmeti henüz o bölgeye dağıtılmamışsa, hizmeti açık bir şekilde bir alternatif bölge kullanmaya yönlendirmediğiniz müddetçe verilerin coğrafi bir alana/bölgeye ayrılmamasını sağlar. 
+Data Factory yalnızca **Batı ABD**, **Doğu ABD** ve **Kuzey Avrupa** bölgelerinde kullanılabilir olsa da, veri taşıma hizmeti [küresel olarak birkaç bölgede](data-factory-data-movement-activities.md#global)kullanılabilir. Data Factory hizmeti, veri taşıma hizmeti henüz o bölgeye dağıtılmamışsa, hizmeti açık bir şekilde bir alternatif bölge kullanmaya yönlendirmediğiniz müddetçe verilerin coğrafi bir alana/bölgeye ayrılmamasını sağlar. 
 
 Azure Data Factory kendisi, sertifikalar kullanılarak şifrelenen bulut veri depoları için bağlı hizmet kimlik bilgileri dışında hiçbir veri depolamaz. Veri hareketini [desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats) arasında, verilerin işlenmesini de başka bölgelerde veya şirket içi bir ortamda [işlem hizmetleri](data-factory-compute-linked-services.md) kullanarak düzenlemek için veri temelinde iş akışları oluşturmanızı sağlar. Hem programlama, hem de kullanıcı arabirimi mekanizmalarını kullanarak [iş akışlarını izlemenizi ve yönetmenizi](data-factory-monitor-manage-pipelines.md) de sağlar.
 
@@ -42,8 +42,8 @@ Azure uyumluluğu ile ilgileniyorsanız ve Azure 'un kendi altyapısını nasıl
 
 Bu makalede, aşağıdaki iki veri taşıma senaryosunda güvenlik konularını gözden geçiririz: 
 
-- **Bulut senaryosu** -Bu senaryoda, hem kaynak hem de hedef Internet üzerinden herkese açık bir şekilde erişilebilir. Bunlar Azure Storage, Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı), Azure SQL veritabanı, Azure Data Lake Store, Amazon S3, Amazon Redshift, Salesforce gibi SaaS Hizmetleri ve FTP ve OData gibi web protokolleri gibi yönetilen bulut depolama hizmetlerini içerir. Desteklenen veri kaynaklarının tüm listesini [burada](data-factory-data-movement-activities.md#supported-data-stores-and-formats)bulabilirsiniz.
-- **Karma senaryo** -Bu senaryoda, kaynak veya hedef bir güvenlik duvarının arkasında veya şirket içi bir şirket ağında yer alır ya da veri deposu özel bir ağ/sanal ağda (genellikle kaynak) ve genel olarak erişilebilir değildir. Sanal makinelerde barındırılan veritabanı sunucuları da bu senaryonun altına düşmektedir.
+- **Bulut senaryosu**-Bu senaryoda, hem kaynak hem de hedef Internet üzerinden herkese açık bir şekilde erişilebilir. Bunlar Azure Storage, Azure SYNAPSE Analytics, Azure SQL veritabanı, Azure Data Lake Store, Amazon S3, Amazon Redshift, Salesforce gibi SaaS Hizmetleri ve FTP ve OData gibi web protokolleri gibi yönetilen bulut depolama hizmetlerini içerir. Desteklenen veri kaynaklarının tüm listesini [burada](data-factory-data-movement-activities.md#supported-data-stores-and-formats)bulabilirsiniz.
+- **Karma senaryo**-Bu senaryoda, kaynak veya hedef bir güvenlik duvarının arkasında veya şirket içi bir şirket ağında yer alır ya da veri deposu özel bir ağ/sanal ağda (genellikle kaynak) ve genel olarak erişilebilir değildir. Sanal makinelerde barındırılan veritabanı sunucuları da bu senaryonun altına düşmektedir.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -61,7 +61,7 @@ Bulut veri deposu HTTPS veya TLS 'yi destekliyorsa, Data Factory ve bulut veri d
 Bazı veri depoları, bekleyen verilerin şifrelenmesini destekler. Bu veri depoları için veri şifreleme mekanizmasını etkinleştirmenizi öneririz. 
 
 #### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
-Azure SYNAPSE Analytics 'te Saydam Veri Şifrelemesi (TDE), bekleyen verilerinizin gerçek zamanlı olarak şifrelenmesini ve şifresinin çözülmesini gerçekleştirerek kötü amaçlı etkinlik tehditlerine karşı korumaya yardımcı olur. Bu davranış, istemci için saydamdır. Daha fazla bilgi için bkz. [SYNAPSE Analytics 'te veritabanını güvenli hale getirme](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md).
+Azure SYNAPSE Analytics 'te Saydam Veri Şifrelemesi (TDE), bekleyen verilerinizin gerçek zamanlı olarak şifrelenmesini ve şifresinin çözülmesini gerçekleştirerek kötü amaçlı etkinlik tehditlerine karşı korumaya yardımcı olur. Bu davranış, istemci için saydamdır. Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics 'te veritabanını güvenli hale getirme](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md).
 
 #### <a name="azure-sql-database"></a>Azure SQL Veritabanı
 Azure SQL veritabanı Ayrıca, uygulamada değişiklik yapılmasına gerek kalmadan gerçek zamanlı şifreleme ve veri şifre çözme işlemleri gerçekleştirerek kötü amaçlı etkinlik tehditlerine karşı korumaya yardımcı olan saydam veri şifrelemesini (TDE) destekler. Bu davranış, istemci için saydamdır. Daha fazla bilgi için bkz. [Azure SQL veritabanı ile saydam veri şifrelemesi](/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database). 

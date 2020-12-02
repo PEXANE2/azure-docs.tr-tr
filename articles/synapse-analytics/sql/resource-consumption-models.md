@@ -9,16 +9,16 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1a78142ded7be46bdc06c49d6e0a26ef8b266300
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 0e3bbb2532340664d0fc54b29bea3ef3af75f9b6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318392"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459155"
 ---
 # <a name="synapse-sql-resource-consumption"></a>SYNAPSE SQL kaynak tüketimi
 
-Bu makalede, SYNAPSE SQL (Önizleme) kaynak tüketim modelleri açıklanmaktadır.
+Bu makalede SYNAPSE SQL kaynak tüketim modelleri açıklanmaktadır.
 
 ## <a name="serverless-sql-pool"></a>Sunucusuz SQL havuzu
 
@@ -121,15 +121,15 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 ### <a name="change-data-warehouse-units"></a>Veri ambarı birimlerini değiştirme
 
-#### <a name="azure-portal"></a>Azure portal
+#### <a name="azure-portal"></a>Azure portalı
 
 DWUs 'yi değiştirmek için:
 
-1. [Azure Portal](https://portal.azure.com)açın, veritabanınızı açın ve **Ölçek** ' i seçin.
+1. [Azure Portal](https://portal.azure.com)açın, veritabanınızı açın ve **Ölçek**' i seçin.
 
 2. **Ölçek** altında, DWU ayarını değiştirmek için kaydırıcıyı sola veya sağa taşıyın.
 
-3. **Kaydet** ’i seçin. Bir onay iletisi görüntülenir. Onaylamak için **Evet** ' i, iptal etmek için **Hayır** 'ı seçin.
+3. **Kaydet**’i seçin. Bir onay iletisi görüntülenir. Onaylamak için **Evet** ' i, iptal etmek için **Hayır** 'ı seçin.
 
 #### <a name="powershell"></a>PowerShell
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 10476544e513b52567eb0ca0182039f2c5f482c3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cd0f389615c95ef9b9bc8280b6486740ddba4fb4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441638"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456827"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Azure Data Factory tekrarlanabilir kopya
 
@@ -104,7 +104,7 @@ Kopyalama etkinliği, bu dilim için karşılık gelen verileri silmek üzere Te
 
 ### <a name="mechanism-2-using-sliceidentifiercolumnname"></a>Mekanizma 2: Daeıdentifiercolumnname kullanma
 > [!IMPORTANT]
-> Şu anda, Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) için Feeıdentifiercolumnname desteklenmez. 
+> Şu anda, Azure SYNAPSE Analytics için Feeıdentifiercolumnname desteklenmez. 
 
 Yinelenebilirlik elde etmek için ikinci mekanizma, hedef tabloda ayrılmış bir sütuna (bir Dacıdentifiercolumnname) sahip olur. Bu sütun, kaynak ve hedefin eşitlenmiş kalmasını sağlamak için Azure Data Factory tarafından kullanılır. Bu yaklaşım, hedef SQL tablo şemasını değiştirme veya tanımlama konusunda esneklik olduğunda işe yarar. 
 

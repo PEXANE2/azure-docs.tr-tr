@@ -5,22 +5,36 @@ description: Microsoft Identity platformu için yeni ve güncelleştirilmiş bel
 services: active-directory
 author: mmacy
 manager: CelesteDG
-ms.date: 11/03/2020
+ms.date: 12/01/2020
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: d5865810dafef9ce2bb525a8f1b6cdbdb1a86566
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 108cd5f74b7b560534baf8f55f7d07ebb6557e7f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322571"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457159"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft Identity platform belgeleri: yenilikler
 
 Microsoft Identity platform belgelerindeki yenilikler ' e hoş geldiniz. Bu makalede, eklenen ve son üç ay içinde önemli güncelleştirmeleri olan yeni belgeler listelenir.
+
+## <a name="november-2020"></a>Kasım 2020
+
+### <a name="new-articles"></a>Yeni makaleler
+
+- [Uygulamalarınızda sürekli erişim değerlendirmesi etkin API 'Leri kullanma](app-resilience-continuous-access-evaluation.md)
+
+### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
+
+- [Microsoft Identity platform erişim belirteçleri](access-tokens.md)
+- [Uygulama yapılandırma seçenekleri (MSAL)](msal-client-application-configuration.md)
+- [Nasıl yapılır: uygulamanıza isteğe bağlı talepler sağlama](active-directory-optional-claims.md)
+- [Uygulamanızı Azure AD uygulama galerisine yayımlayın](v2-howto-app-gallery-listing.md)
+- [Nasıl yapılır: uygulamanıza uygulama rolleri ekleme ve bunları belirtece alma](howto-add-app-roles-in-azure-ad-apps.md)
 
 ## <a name="october-2020"></a>Ekim 2020
 
@@ -67,23 +81,3 @@ Microsoft Identity platform belgelerindeki yenilikler ' e hoş geldiniz. Bu maka
 - [Hızlı başlangıç: bir istemci uygulamasını bir Web API 'sine erişmek için yapılandırma](quickstart-configure-app-access-web-apis.md)
 - [Hızlı başlangıç: bir uygulamayı bir Web API 'SI göstermek üzere yapılandırma](quickstart-configure-app-expose-web-apis.md)
 - [Hızlı başlangıç: Microsoft Identity platformu ile uygulama kaydetme](quickstart-register-app.md)
-
-## <a name="august-2020"></a>Ağustos 2020
-
-### <a name="new-articles"></a>Yeni makaleler
-
-- [ADAL.NET 'den MSAL.NET 'e aracı kullanan Android uygulamalarını geçirme](msal-net-migration-android-broker.md)
-- [Android için MSAL 'te özel durumları ve hataları işleme](msal-android-handling-exceptions.md)
-
-### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
-
-- [ADAL.NET 'den MSAL.NET 'ye Microsoft Authenticator kullanan iOS uygulamalarını geçirme](msal-net-migration-ios-broker.md)
-- [Xamarin uygulamalarında Microsoft Authenticator veya Intune Şirket Portalı kullanma](msal-net-use-brokers-with-xamarin-apps.md)
-- [MSAL.NET ile Xamarin Android için yapılandırma gereksinimleri ve sorun giderme ipuçları](msal-net-xamarin-android-considerations.md)
-- [Web API 'Lerini çağıran bir mobil uygulama yapılandırma](scenario-mobile-app-configuration.md)
-- [Nasıl yapılır: bir Kiracıdaki belirli bir uygulama için belirteçlerde yayılan talepleri özelleştirme (Önizleme)](active-directory-claims-mapping.md)
-- [Microsoft Identity Platform uygulaması kimlik doğrulama sertifikası kimlik bilgileri](active-directory-certificate-credentials.md)
-- [Yeniden yönlendirme URI 'SI (yanıt URL 'SI) kısıtlamaları ve sınırlamaları](reply-url.md)
-- [Hızlı başlangıç: bir uygulamayı bir Web API 'SI göstermek üzere yapılandırma](quickstart-configure-app-expose-web-apis.md)
-- [Microsoft kimlik platformu videoları](identity-videos.md)
-- [Hızlı başlangıç: Microsoft Identity platform tarafından korunan bir ASP.NET Web API 'SI çağırma](quickstart-v2-dotnet-native-aspnet.md)

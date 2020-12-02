@@ -11,12 +11,12 @@ ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 036cb15cf16b5f90dc17ccdce378a073a398d403
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0cf40990d59aff984226244f520e6f8f937713fd
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86181344"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456496"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda çoğaltılan tabloları kullanmaya yönelik tasarım kılavuzu
 
@@ -26,19 +26,19 @@ Bu makale, SYNAPSE SQL havuzu şemanızda çoğaltılan tabloları tasarlamaya y
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu makalede, SQL havuzundaki veri dağıtımı ve veri taşıma kavramlarıyla ilgili bilgi sahibi olduğunuz varsayılır.Daha fazla bilgi için bkz. [mimari](massively-parallel-processing-mpp-architecture.md) makalesi.
+Bu makalede, SQL havuzundaki veri dağıtımı ve veri taşıma kavramlarıyla ilgili bilgi sahibi olduğunuz varsayılır.  Daha fazla bilgi için bkz. [mimari](massively-parallel-processing-mpp-architecture.md) makalesi.
 
-Tablo tasarımının bir parçası olarak, verileriniz ve verilerin nasıl sorgulandığı hakkında mümkün olduğunca fazla bilgi edinin.Örneğin, bu soruları göz önünde bulundurun:
+Tablo tasarımının bir parçası olarak, verileriniz ve verilerin nasıl sorgulandığı hakkında mümkün olduğunca fazla bilgi edinin.  Örneğin, bu soruları göz önünde bulundurun:
 
 - Tablo ne kadar büyük?
 - Tablo ne sıklıkta yenilenir?
-- SQL havuzu veritabanında olgu ve boyut tabloları var mı?
+- SQL havuzunda olgu ve boyut tabloları var mı?
 
 ## <a name="what-is-a-replicated-table"></a>Çoğaltılan tablo nedir?
 
 Çoğaltılan bir tablo, her Işlem düğümü üzerinde erişilebilir olan tablonun tam kopyasına sahiptir. Tablo çoğaltıldığında bir birleştirme veya toplama öncesinde İşlem düğümleri arasında verileri aktarma gereksinimi ortadan kalkar. Tabloda birden fazla kopya olduğundan, çoğaltılan tablolar tablo boyutu 2 GB 'tan az sıkıştırıldığında en iyi şekilde çalışır.  2 GB sabit bir sınır değildir.  Veriler statikse ve değişmezse, daha büyük tabloları çoğaltabilirsiniz.
 
-Aşağıdaki diyagramda, her bir Işlem düğümündeki erişilebilir bir çoğaltılan tablo gösterilmektedir. SQL havuzunda, çoğaltılan tablo her Işlem düğümündeki bir dağıtım veritabanına tamamen kopyalanır.
+Aşağıdaki diyagramda, her bir Işlem düğümündeki erişilebilir bir çoğaltılan tablo gösterilmektedir. SQL havuzunda, çoğaltılan tablo her işlem düğümündeki bir dağıtım veritabanına tamamen kopyalanır.
 
 ![Çoğaltılmış tablo](./media/design-guidance-for-replicated-tables/replicated-table.png "Çoğaltılmış tablo")  
 
@@ -51,8 +51,8 @@ Aşağıdaki diyagramda, her bir Işlem düğümündeki erişilebilir bir çoğa
 
 Çoğaltılan tablolar şu durumlarda en iyi sorgu performansını vermeyebilir:
 
-- Tabloda, sık kullanılan ekleme, güncelleştirme ve silme işlemleri bulunur.Veri işleme dili (DML) işlemleri, çoğaltılan tablonun yeniden derlenmesini gerektirir.Sık sık yeniden oluşturmak daha yavaş performansa neden olabilir.
-- SQL havuzu veritabanı sıklıkla ölçeklenir. Bir SQL havuzu veritabanının ölçeklendirilmesi, çoğaltılan tabloyu yeniden inşa eden Işlem düğümlerinin sayısını değiştirir.
+- Tabloda, sık kullanılan ekleme, güncelleştirme ve silme işlemleri bulunur. Veri işleme dili (DML) işlemleri, çoğaltılan tablonun yeniden derlenmesini gerektirir. Sık sık yeniden oluşturmak daha yavaş performansa neden olabilir.
+- SQL havuzu sıklıkla ölçeklenir. Bir SQL havuzunun ölçeklendirilmesi, çoğaltılan tabloyu yeniden inşa eden Işlem düğümlerinin sayısını değiştirir.
 - Tabloda çok sayıda sütun bulunur, ancak veri işlemleri genellikle yalnızca az sayıda sütuna erişir. Bu senaryoda, tüm tabloyu çoğaltmak yerine tabloyu dağıtmak daha etkili olabilir ve ardından sık erişilen sütunlarda bir dizin oluşturabilirsiniz. Bir sorgu veri hareketi gerektirdiğinde, SQL havuzu yalnızca istenen sütunlar için verileri taşılar.
 
 ## <a name="use-replicated-tables-with-simple-query-predicates"></a>Basit sorgu koşullarına sahip çoğaltılan tabloları kullanma
@@ -174,8 +174,8 @@ Bu sorgu, değiştirilmiş ancak yeniden derlenmemişse çoğaltılan tabloları
 
 ```sql
 SELECT [ReplicatedTable] = t.[name]
-  FROM sys.tables t  
-  JOIN sys.pdw_replicated_table_cache_state c  
+  FROM sys.tables t  
+  JOIN sys.pdw_replicated_table_cache_state c  
     ON c.object_id = t.object_id
   JOIN sys.pdw_table_distribution_properties p
     ON p.object_id = t.object_id

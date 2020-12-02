@@ -5,14 +5,14 @@ manager: evansma
 author: rayne-wiselman
 ms.service: resource-move
 ms.topic: how-to
-ms.date: 09/08/2020
+ms.date: 11/30/2020
 ms.author: raynew
-ms.openlocfilehash: 38a633a7a11ac29271231679e7075920e1f33a70
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 63548e2bf470c012e0dd8a5f879a51eeb631f453
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945952"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459277"
 ---
 # <a name="manage-move-collections-and-resource-groups"></a>Taşıma koleksiyonlarını ve kaynak gruplarını yönetme
 
@@ -43,12 +43,11 @@ PowerShell kullanarak bir kaynağı (bizim örneğimizde PSDemoVM makineleri) a�
 
 ```azurepowershell-interactive
 # Remove a resource using the resource ID
-Remove-AzResourceMoverMoveResource -SubscriptionId  <subscription-id> -ResourceGroupName RegionMoveRG-centralus-westcentralus  -MoveCollectionName MoveCollection-centralus-westcentralus - Name PSDemoVM
+Remove-AzResourceMoverMoveResource -SubscriptionId  <subscription-id> -ResourceGroupName RegionMoveRG-centralus-westcentralus  -MoveCollectionName MoveCollection-centralus-westcentralus -Name PSDemoVM
 ```
-**Beklenen çıkış** 
- ![ Taşıma koleksiyonundan kaynak kaldırıldıktan sonra çıkış metni](./media/remove-move-resources/remove-resource.png)
+**Beklenen çıkış**
 
-
+![Taşıma koleksiyonundan kaynak kaldırıldıktan sonra çıkış metni](./media/remove-move-resources/remove-resource.png)
 
 ## <a name="remove-a-collection-powershell"></a>Bir koleksiyonu kaldırma (PowerShell)
 
@@ -59,16 +58,18 @@ PowerShell kullanarak tüm taşıma koleksiyonunu aşağıdaki gibi kaldırın:
 
     ```azurepowershell-interactive
     # Remove a resource using the resource ID
-    Remove-AzResourceMoverMoveResource -SubscriptionId  <subscription-id> -ResourceGroupName RegionMoveRG-centralus-westcentralus  -MoveCollectionName MoveCollection-centralus-westcentralus 
+    Remove-AzResourceMoverMoveCollection -SubscriptionId <subscription-id> -ResourceGroupName RegionMoveRG-centralus-westcentralus -MoveCollectionName MoveCollection-centralus-westcentralus
     ```
-    **Beklenen çıkış** ![ Taşıma koleksiyonu kaldırıldıktan sonra çıkış metni](./media/remove-move-resources/remove-collection.png)
+    **Beklenen çıkış**
+    
+    ![Taşıma koleksiyonu kaldırıldıktan sonra çıkış metni](./media/remove-move-resources/remove-collection.png)
 
 ## <a name="vm-resource-state-after-removing"></a>Kaldırdıktan sonra VM kaynağı durumu
 
 Bir taşıma koleksiyonundan bir VM kaynağını kaldırdığınızda ne olacağı, tabloda özetlenen kaynak durumuna bağlıdır.
 
 ###  <a name="remove-vm-state"></a>VM durumunu kaldır
-**Kaynak durumu** | **'Nın** | **Ağ**
+**Kaynak durumu** | **VM** | **Ağ**
 --- | --- | --- 
 **Taşıma koleksiyonuna eklendi** | Taşıma koleksiyonundan Sil. | Taşıma koleksiyonundan Sil. 
 **Bağımlılıklar çözümlendi/hazırlık bekliyor** | Taşıma koleksiyonundan Sil  | Taşıma koleksiyonundan Sil. 

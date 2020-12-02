@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: Azure PowerShell ile SYNAPSE SQL havuzu oluşturma'
-description: Azure PowerShell kullanarak sunucu düzeyinde bir güvenlik duvarı kuralıyla hızlıca bir Synapse SQL havuzu oluşturun.
+title: 'Hızlı başlangıç: Azure PowerShell ile adanmış bir SQL Havuzu (eski adıyla SQL DW) oluşturma'
+description: Azure PowerShell kullanarak sunucu düzeyinde güvenlik duvarı kuralına sahip adanmış bir SQL havuzunu (eski adıyla SQL DW) hızlıca oluşturun.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,23 +11,23 @@ ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse    , devx-track-azurepowershell
-ms.openlocfilehash: 5408944f16509f83c30b9ee066d6f0a93dab95f0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0ce94b62d67048896cdf7355043ec2dde7f2df79
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91567664"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456584"
 ---
-# <a name="quickstart-create-a-synapse-sql-pool-with-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell ile SYNAPSE SQL havuzu oluşturma
+# <a name="quickstart-create-a-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell ile adanmış bir SQL Havuzu (eski adıyla SQL DW) oluşturma
 
-Azure PowerShell kullanarak Azure SYNAPSE Analytics 'te bir Synapse SQL Havuzu (veri ambarı) oluşturun.
+Azure PowerShell kullanarak Azure SYNAPSE Analytics 'te adanmış bir SQL Havuzu (eski adıyla SQL DW) oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 > [!IMPORTANT]
-> SQL havuzu oluşturmak, yeni bir faturalanabilir hizmetle sonuçlanabilir.  Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+> Adanmış bir SQL Havuzu (eski adıyla SQL DW) oluşturmak, yeni bir faturalanabilir hizmetle sonuçlanabilir.  Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -93,7 +93,7 @@ New-AzSqlServer -ResourceGroupName $resourcegroupname `
 
 ## <a name="configure-a-server-level-firewall-rule"></a>Sunucu düzeyinde güvenlik duvarı kuralı oluşturma
 
-[New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) komutunu kullanarak [sunucu düzeyinde bir güvenlik duvarı kuralı](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) oluşturun. Sunucu düzeyinde bir güvenlik duvarı kuralı, SQL havuzu hizmeti güvenlik duvarı aracılığıyla SQL Server Management Studio veya SQLCMD yardımcı programı gibi bir SQL havuzuna bağlanmak için bir dış uygulamaya izin verir.
+[New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) komutunu kullanarak [sunucu düzeyinde bir güvenlik duvarı kuralı](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) oluşturun. Sunucu düzeyinde bir güvenlik duvarı kuralı, SQL Server Management Studio veya SQLCMD yardımcı programının adanmış SQL havuzu hizmet güvenlik duvarı aracılığıyla adanmış bir SQL havuzuna (eski adıyla SQL DW) bağlanmasını sağlar.
 
 Aşağıdaki örnekte, güvenlik duvarı yalnızca diğer Azure kaynakları için açılır. Dışarıdan bağlantı kurulabilmesi için IP adresini ortamınız için uygun bir adres olarak değiştirin. Tüm IP adreslerini açmak için başlangıç IP adresi olarak 0.0.0.0’ı, bitiş adresi olaraksa 255.255.255.255’i kullanın.
 
@@ -107,9 +107,9 @@ New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 > SQL uç noktaları 1433 bağlantı noktası üzerinden iletişim kurar. Bir kurumsal ağ içinden bağlanmaya çalışıyorsanız, ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, BT departmanınız 1433 numaralı bağlantı noktasını açmadığı müddetçe sunucunuza bağlanamazsınız.
 >
 
-## <a name="create-a-sql-pool"></a>SQL havuzu oluşturma
+## <a name="create-a-dedicated-sql-pool-formerly-sql-dw"></a>Adanmış bir SQL havuzu oluştur (eski adıyla SQL DW)
 
-Aşağıdaki örnek, daha önce tanımlanmış değişkenleri kullanarak bir SQL havuzu oluşturur.  Hizmet hedefini, SQL havuzunuz için daha düşük maliyetli bir başlangıç noktası olan DW100c olarak belirtir.
+Aşağıdaki örnek, önceden tanımlanmış değişkenleri kullanarak adanmış bir SQL Havuzu (eski adıyla SQL DW) oluşturur.  Adanmış SQL havuzunuz (eski adıyla SQL DW) için daha düşük maliyetli bir başlangıç noktası olan DW100c olarak hizmet hedefini belirtir.
 
 ```Powershell
 New-AzSqlDatabase `
@@ -125,10 +125,10 @@ New-AzSqlDatabase `
 Gerekli Parametreler şunlardır:
 
 * **Requestedserviceobjectivename**: istediğiniz [veri ambarı birimlerinin](what-is-a-data-warehouse-unit-dwu-cdwu.md) miktarı. Bu miktarı artırmak, işlem maliyetini artırır. Desteklenen değerlerin bir listesi için bkz. [bellek ve eşzamanlılık sınırları](memory-concurrency-limits.md).
-* **DatabaseName**: oluşturmakta olduğunuz SQL havuzunun adı.
+* **DatabaseName**: oluşturmakta olduğunuz adanmış SQL havuzunun adı (eskı ADıYLA SQL DW).
 * **ServerName**: oluşturma için kullanmakta olduğunuz sunucunun adı.
 * **Resourcegroupname**: kullandığınız kaynak grubu. Aboneliğinizdeki kullanılabilir kaynak gruplarını bulmak için Get-AzureResource komutunu kullanın.
-* **Sürüm**: bir SQL havuzu oluşturmak Için "DataWarehouse" olmalıdır.
+* **Sürüm**: ADANMıŞ bir SQL Havuzu (eskı ADıYLA SQL DW) oluşturmak Için "DataWarehouse" olmalıdır.
 
 İsteğe Bağlı Parametreler şunlardır:
 
@@ -151,4 +151,4 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık bir SQL havuzu oluşturdunuz, bir güvenlik duvarı kuralı oluşturdunuz ve SQL havuzunuza bağladınız. Daha fazla bilgi edinmek için [VERILERI SQL havuzu 'Na yükleme](load-data-from-azure-blob-storage-using-polybase.md) makalesine ilerleyin.
+Artık adanmış bir SQL Havuzu (eski adıyla SQL DW) oluşturdunuz, bir güvenlik duvarı kuralı oluşturdunuz ve adanmış SQL havuzunuza bağlı. Daha fazla bilgi edinmek için [verileri özel BIR SQL havuzunda yükleme](load-data-from-azure-blob-storage-using-polybase.md) makalesine geçin.
