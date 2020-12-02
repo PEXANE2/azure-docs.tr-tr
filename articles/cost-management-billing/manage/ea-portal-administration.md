@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperfq1
-ms.openlocfilehash: f18f1184f921aca4f2c1e33ac00dcf14c63b24eb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bb8a52a2258143e1c68ca46ac31a8c986b1bcfe7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95893367"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457135"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA portalı yönetimi
 
@@ -282,13 +282,13 @@ Azure EA portalı, Azure EA maliyetlerinizi ve kullanımınızı yönetmenize ya
 
 Her rolün farklı bir erişim düzeyi ve yetkisi vardır.
 
-Kullanıcı rolleri hakkında daha fazla bilgi için bkz. [Kurumsal kullanıcı rolleri](/azure/cost-management-billing/manage/understand-ea-roles#enterprise-user-roles).
+Kullanıcı rolleri hakkında daha fazla bilgi için bkz. [Kurumsal kullanıcı rolleri](./understand-ea-roles.md#enterprise-user-roles).
 
 ## <a name="add-an-azure-ea-account"></a>Azure EA hesabı ekleme
 
 Azure EA hesabı, Azure EA portalındaki bir kuruluş birimidir. Hem abonelikleri yönetmek için hem de raporlama amacıyla kullanılır. Azure hizmetlerine erişmek için bir hesap oluşturmanız ve sizin için oluşturulmuş bir hesap olması gerekir.
 
-Azure hesapları hakkında daha fazla bilgi için bkz. [Hesap ekleme](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-administration#add-an-account).
+Azure hesapları hakkında daha fazla bilgi için bkz. [Hesap ekleme](#add-an-account).
 
 ## <a name="enterprise-devtest-offer"></a>Kurumsal Geliştirme ve Test Teklifi
 
@@ -361,7 +361,7 @@ Hesap sahibi olduğunuz bir aboneliği silmek için:
 
 Abonelikleri yalnızca hesap yöneticileri iptal edebilir.
 
-Daha fazla bilgi için bkz. [Aboneliğimi iptal edersem ne olur?](cancel-azure-subscription.md#what-happens-after-i-cancel-my-subscription)
+Daha fazla bilgi için bkz. [Aboneliğimi iptal edersem ne olur?](cancel-azure-subscription.md#what-happens-after-subscription-cancellation)
 
 ## <a name="delete-an-account"></a>Hesap silme
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/28/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: 15e45143d1da5ac405b3e408df197ab04b4dea39
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 0f4f4d934361f1e59eceaaccca680f0cf155bb04
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412281"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348968"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Azure Enterprise Portal'ı kullanmaya başlama
 
@@ -44,33 +44,33 @@ Kuruluşunuzun kullanım ve harcamasının yönetilmesine yardımcı olmak için
 - Bölüm Yöneticisi (salt okunur)
 - Hesap Sahibi
 
-Her rolün farklı derecede kullanıcı sınırları ve izinleri vardır. Daha fazla bilgi için bkz. [Role göre kuruluş yapısı ve izinleri](https://docs.microsoft.com/azure/cost-management-billing/manage/understand-ea-roles#organization-structure-and-permissions-by-role).
+Her rolün farklı derecede kullanıcı sınırları ve izinleri vardır. Daha fazla bilgi için bkz. [Role göre kuruluş yapısı ve izinleri](./understand-ea-roles.md#organization-structure-and-permissions-by-role).
 
 ## <a name="activate-your-enrollment-create-a-subscription-and-other-administrative-tasks"></a>Kaydınızı etkinleştirme, abonelik oluşturma ve diğer yönetim görevleri
 
-Kaydınızı etkinleştirme, departman veya abonelik oluşturma, yöneticileri ve hesap sahiplerini ekleme ve diğer yönetim görevleri hakkında daha fazla bilgi için bkz. [Azure EA portalı yönetim](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-administration).
+Kaydınızı etkinleştirme, departman veya abonelik oluşturma, yöneticileri ve hesap sahiplerini ekleme ve diğer yönetim görevleri hakkında daha fazla bilgi için bkz. [Azure EA portalı yönetim](./ea-portal-administration.md).
 
-Kurumsal aboneliğini Kullandıkça Öde aboneliğine aktarma hakkında daha fazla bilgi edinmek istiyorsanız bkz. [Azure Kurumsal aktarımları](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-transfers).
+Kurumsal aboneliğini Kullandıkça Öde aboneliğine aktarma hakkında daha fazla bilgi edinmek istiyorsanız bkz. [Azure Kurumsal aktarımları](./ea-transfers.md).
 
 ## <a name="view-usage-summary-and-download-reports"></a>Kullanım özetini görüntüleme ve raporları indirme
 
 Azure EA faturanızı yönetebilir ve bununla ilgili işlem yapabilirsiniz. Faturanız ücretlerinizin gösterimidir ve doğru olup olmadığı incelenmelidir.
 
-Kullanım özetini görüntülemek, raporları indirmek ve kayıt faturalarını yönetmek için bkz. [Azure Kurumsal kayıt faturaları](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-enrollment-invoices).
+Kullanım özetini görüntülemek, raporları indirmek ve kayıt faturalarını yönetmek için bkz. [Azure Kurumsal kayıt faturaları](./ea-portal-enrollment-invoices.md).
 
 ## <a name="now-that-youre-familiar-with-the-basics-here-are-some-additional-links-to-help-you-get-onboarded"></a>Temel bilgileri öğrendiğinize göre, katılmanıza yardımcı olacak bazı ek bağlantıları aşağıda bulabilirsiniz
 
-[Azure EA fiyatlandırması](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-pricing-overview) kullanımın nasıl hesaplandığına ilişkin ayrıntılar sağlar ve hesaplamaların daha karmaşık olduğu Kurumsal Anlaşma’daki çeşitli Azure hizmetlerini gözden geçirir.
+[Azure EA fiyatlandırması](./ea-pricing-overview.md) kullanımın nasıl hesaplandığına ilişkin ayrıntılar sağlar ve hesaplamaların daha karmaşık olduğu Kurumsal Anlaşma’daki çeşitli Azure hizmetlerini gözden geçirir.
 
-Sanal makine ayrılmış örnekleri için Azure rezervasyonlarının, kurumsal kaydınızla para tasarrufu yapmanıza nasıl yardımcı olabileceği hakkında daha fazla bilgi edinmek istiyorsanız bkz. [Azure EA sanal makine ayrılmış örnekleri](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-vm-reservations).
+Sanal makine ayrılmış örnekleri için Azure rezervasyonlarının, kurumsal kaydınızla para tasarrufu yapmanıza nasıl yardımcı olabileceği hakkında daha fazla bilgi edinmek istiyorsanız bkz. [Azure EA sanal makine ayrılmış örnekleri](./ea-portal-vm-reservations.md).
 
-Azure kurumsal kaydınızla birlikte kullanacağınız REST API’ler hakkında daha fazla bilgi ve REST API’leri kullanarak çözebileceğiniz yaygın sorunlara ilişkin açıklamalar için bkz. [Azure Kurumsal REST API’leri](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis).
+Azure kurumsal kaydınızla birlikte kullanacağınız REST API’ler hakkında daha fazla bilgi ve REST API’leri kullanarak çözebileceğiniz yaygın sorunlara ilişkin açıklamalar için bkz. [Azure Kurumsal REST API’leri](./ea-portal-rest-apis.md).
 
-[Azure EA sözleşmeleri ve düzeltmeleri](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-agreements) adlı makalede, Azure EA sözleşmeleri ve düzeltmelerinin Azure hizmetleri erişiminizi, kullanımınızı ve ödemelerinizi nasıl etkileyebileceği açıklanır.
+[Azure EA sözleşmeleri ve düzeltmeleri](./ea-portal-agreements.md) adlı makalede, Azure EA sözleşmeleri ve düzeltmelerinin Azure hizmetleri erişiminizi, kullanımınızı ve ödemelerinizi nasıl etkileyebileceği açıklanır.
 
-[Azure Market](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-azure-marketplace)’te, EA müşterilerinin ve iş ortaklarının market ücretlerini nasıl görüntüleyecekleri ve Azure Market satın alımlarını nasıl etkinleştirecekleri açıklanmaktadır.
+[Azure Market](./ea-azure-marketplace.md)’te, EA müşterilerinin ve iş ortaklarının market ücretlerini nasıl görüntüleyecekleri ve Azure Market satın alımlarını nasıl etkinleştirecekleri açıklanmaktadır.
 
-Bir iş ortağı EA yöneticisinin Azure EA portalında yaptığı yaygın görevler hakkındaki açıklamalar için bkz. [Azure EA portalı iş ortakları için yönetim](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-partner-portal-administration).
+Bir iş ortağı EA yöneticisinin Azure EA portalında yaptığı yaygın görevler hakkındaki açıklamalar için bkz. [Azure EA portalı iş ortakları için yönetim](./ea-partner-portal-administration.md).
 
 ## <a name="get-started-on-azure-ea---faq"></a>Azure EA ile çalışmaya başlama hakkında SSS
 
@@ -132,19 +132,19 @@ Azure EA kaydı çerçevesinde istediğiniz kadar bölüm oluşturabilirsiniz. K
 
 Departmanları ve abonelikleri oluşturduktan sonra verileri kullanım raporunda görebilirsiniz. Bu bilgiler, departman düzeyinde kullanımı izlemenize ve maliyet ile harcama yönetimi gerçekleştirmenize yardımcı olabilir.
 
-Kullanım verilerine raporlama API'si aracılığıyla da erişebilirsiniz. Ayrıntılı bilgi ve örnek kod için bkz. [Azure Kurumsal REST API’leri](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis).
+Kullanım verilerine raporlama API'si aracılığıyla da erişebilirsiniz. Ayrıntılı bilgi ve örnek kod için bkz. [Azure Kurumsal REST API’leri](./ea-portal-rest-apis.md).
 
 ### <a name="can-i-set-a-spending-quota-and-get-alerts-as-i-approach-my-limit"></a>Harcama kotası ayarlayabilir ve belirlediğim limite yaklaştığımda uyarı gönderilmesini sağlayabilir miyim?
 
 Bölüm düzeyinde harcama kotası ayarlayabilirsiniz. Harcama limitleriniz tanımladığınız kotanın %50, %75, %90 ve %100'üne ulaştığında sistem otomatik bildirim gönderir.
 
-Harcama kotanızı tanımlamak için bir departman seçin ve ardından düzenle simgesini seçin. Harcama limiti ayrıntılarını düzenledikten sonra **Kaydet** 'i seçin.
+Harcama kotanızı tanımlamak için bir departman seçin ve ardından düzenle simgesini seçin. Harcama limiti ayrıntılarını düzenledikten sonra **Kaydet**'i seçin.
 
 ### <a name="i-used-resource-groups-to-implement-rbac-and-track-usage-how-can-i-view-the-associated-usage-details"></a>RBAC uygulamak ve kullanımı izlemek için kaynak gruplarını kullandım. İlgili kullanım ayrıntılarını nasıl görüntüleyebilirim?
 
 _Kaynak grupları_ ve _etiketler_ kullandıysanız bu bilgiler hizmet düzeyinde izlenir ve erişmek için ayrıntılı kullanım dosyasını (CSV) indirebilirsiniz. Azure Enterprise Portal'da [kullanım raporunu indirme](https://ea.azure.com/report/downloadusage) sayfasını inceleyin.
 
-Ayrıca API aracılığıyla da erişebilirsiniz. Ayrıntılı bilgi ve örnek kod için bkz. [Azure Kurumsal REST API’leri](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-rest-apis).
+Ayrıca API aracılığıyla da erişebilirsiniz. Ayrıntılı bilgi ve örnek kod için bkz. [Azure Kurumsal REST API’leri](./ea-portal-rest-apis.md).
 
 > [!NOTE]
 > Etiketleri yalnızca Azure Resource Manager işlemlerini destekleyen kaynaklara uygulayabilirsiniz. Klasik dağıtım modeli (klasik portal gibi) ile oluşturduğunuz sanal makine, sanal ağ veya depolama alanı gibi kaynaklara etiket uygulayamazsınız. Etiketleme desteği eklemek için bu kaynakları Resource Manager üzerinden yeniden dağıtmanız gerekir. Diğer tüm kaynaklar etiketlemeyi destekler.
@@ -164,15 +164,15 @@ Power BI'ı kullanmak için:
 1. Geçerli bir iş veya okul hesabıyla oturum açın.
 
    Bu iş veya okul hesabı, Azure Enterprise Portal üzerinden kayda erişmek için kullanılan hesapla aynı veya ondan farklı olabilir.
-1. Hizmet panosunda Microsoft Azure Kurumsal'ı seçin ve ardından **Bağlan** 'ı seçin.
+1. Hizmet panosunda Microsoft Azure Kurumsal'ı seçin ve ardından **Bağlan**'ı seçin.
 1. **Azure Enterprise'a Bağlan** ekranında şunu girin:
     - Azure Ortamı URL'si: [https://ea.azure.com](https://ea.azure.com)
     - Ay Sayısı: 1 ile 36 arasında bir değer
     - Kayıt Numarası: kayıt numaranızı girin
-1. **İleri** ’yi seçin.
+1. **İleri**’yi seçin.
 1. **Hesap Anahtarı** kutusuna API Anahtarını girin.
 
-   API anahtarını Azure Enterprise Portal'da bulabilirsiniz. **Kullanımı İndir** sekmesine bakın ve **API Erişim Anahtarı** 'nı seçin. Anahtarı kopyalayıp Power BI'daki **Hesap Anahtarı** kutusuna yapıştırın.
+   API anahtarını Azure Enterprise Portal'da bulabilirsiniz. **Kullanımı İndir** sekmesine bakın ve **API Erişim Anahtarı**'nı seçin. Anahtarı kopyalayıp Power BI'daki **Hesap Anahtarı** kutusuna yapıştırın.
 
 Veri kümesinin boyutuna bağlı olarak verilerin Power BI'a yüklenmesi 5-30 dakika arasında sürebilir.
 

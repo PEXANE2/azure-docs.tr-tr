@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: f22a8f085938f5a3cc3e7a748391a9048129296c
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: b03db9632f5f47a7600c5b9037d16b1cff6ccf69
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888377"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344258"
 ---
 # <a name="buy-a-reservation"></a>Ayırma satın alma
 
@@ -81,7 +81,7 @@ Azure portalından, API’lerden, PowerShell’den ve CLI’dan rezervasyon sat�
 - [MySQL için Azure Veritabanı](../../mysql/concept-reserved-pricing.md)
 - [MariaDB için Azure Veritabanı](../../mariadb/concept-reserved-pricing.md)
 - [Azure Synapse Analytics](prepay-sql-data-warehouse-charges.md)
-- [Sanal makineler](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Sanal makineler](../../virtual-machines/prepay-reserved-vm-instances.md)
 
 ## <a name="buy-reservations-with-monthly-payments"></a>Aylık ödemelerle rezervasyonlar satın alma
 

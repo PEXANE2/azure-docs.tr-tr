@@ -8,12 +8,12 @@ ms.subservice: reservations
 ms.topic: overview
 ms.date: 11/18/2020
 ms.author: banders
-ms.openlocfilehash: eef19a6c421a64c3951d35eea78ea84f7e7d97b2
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 0ef3f833d1bac4f26f49ace2b366cdfcf5ef3e35
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94887221"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352992"
 ---
 # <a name="what-are-azure-reservations"></a>Azure Ayırmaları nedir?
 
@@ -125,7 +125,7 @@ Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği olu�
     - [İş Ortağı Merkezi Bulut Çözümü Sağlayıcısı (CSP) programındaki Azure Ayrılmış Sanal Makine Örnekleri](/partner-center/azure-reservations)
 
 - Hizmet planları için rezervasyonlar hakkında daha fazla bilgi edinin:
-    - [Azure Ayrılmış VM Örnekleri ile Sanal Makineler](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+    - [Azure Ayrılmış VM Örnekleri ile Sanal Makineler](../../virtual-machines/prepay-reserved-vm-instances.md)
     - [Azure Cosmos DB ayrılmış kapasitesine sahip Azure Cosmos DB kaynakları](../../cosmos-db/cosmos-db-reserved-capacity.md)
     - [Azure SQL Veritabanı ayrılmış kapasitesi ile SQL Veritabanı işlem kaynakları](../../azure-sql/database/reserved-capacity-overview.md)
     - [Redis için Azure Cache ayrılmış kapasite ile Redis için Azure Cache kaynakları](../../azure-cache-for-redis/cache-reserved-pricing.md) Yazılım planlarına yönelik rezervasyonlar hakkında daha fazla bilgi edinin:
