@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: bfa9367e06c099e21a54ad8c03f8d5ab853aaafb
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: bfe8af8c30bbc2bc66c363fbd85f6764a48c28a1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348084"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488077"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Azure Active Directory Uygulama Ara Sunucusu ile Uzak Masaüstünü yayımlama
 
@@ -96,7 +96,7 @@ RDS dağıtımına yönetici olarak bağlanın ve dağıtım için RD Ağ Geçid
    Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s:<proxyfrontendurl>`nrequire pre-authentication:i:1"
    ```
 
-   **Örneğin:**
+   **Örnek:**
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "QuickSessionCollection" -CustomRdpProperty "pre-authentication server address:s:https://remotedesktoptest-aadapdemo.msappproxy.net/`nrequire pre-authentication:i:1"
    ```
@@ -130,9 +130,11 @@ Bu makalede özetlenen yapılandırma RD Web veya RD Web Istemcisi aracılığı
 
 | Kimlik doğrulama yöntemi | Desteklenen istemci yapılandırması |
 | --------------------- | ------------------------------ |
-| Ön kimlik doğrulama    | Internet Explorer veya [Edge berkum IE modu](/deployedge/edge-ie-mode) + RDS ActiveX EKLENTISI kullanılarak RD Web-Windows 7/10 <br /> *Uygulamalarım portalının yalnızca Edge 'i desteklediğini göz önünde kalmaz.* |
+| Ön kimlik doğrulama    | Internet Explorer * veya [Edge BERKUM IE modu](/deployedge/edge-ie-mode) + RDS ActiveX EKLENTISI kullanılarak RD Web-Windows 7/10 |
 | Ön kimlik doğrulama    | Microsoft Edge, Internet Explorer 11, Google Chrome, Safari veya Mozilla Firefox gibi RD Web Istemcisi-HTML5 uyumlu Web tarayıcısı (v 55.0 ve üzeri) |
 | Doğrudan geçiş | Microsoft Uzak Masaüstü uygulamasını destekleyen diğer tüm işletim sistemleri |
+
+* My Apps Portal, uzak masaüstü uygulamasına erişmek için kullanıldığında Edge Bermıum IE modu gereklidir.  
 
 Ön kimlik doğrulama akışı, geçiş akışından daha fazla güvenlik avantajı sunar. Ön kimlik doğrulaması sayesinde, çoklu oturum açma, koşullu erişim ve şirket içi kaynaklarınız için iki aşamalı doğrulama gibi Azure AD kimlik doğrulama özelliklerini kullanabilirsiniz. Ayrıca, yalnızca kimliği doğrulanmış trafiğin ağınıza ulaşmasını de güvence altına alırsınız.
 

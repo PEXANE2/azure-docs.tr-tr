@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 3f90ccbc98dac957fcb9fb81cd24c7ae6c9ac664
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 4175069a21fd568af46a9f7d5aefc73f1574ac0c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657559"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488196"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>Sanal ağ eşlemesi için VPN ağ geçidi aktarımını yapılandırma
 
@@ -57,14 +57,14 @@ Yönergeler için aşağıdaki belgelere bakın:
 
 Sanal ağ eşlemesi için kullandığınız hesaplar gerekli rol veya izinlere sahip olmalıdır. Aşağıdaki örnekte, Merkez-RM ve Uç-Klasik adlı iki sanal ağ eşliyorsanız hesabınız her sanal ağ için aşağıdaki rol veya izinlere sahip olmalıdır:
     
-|Sanal ağ|Dağıtım modeli|Rol|İzinler|
+|Sanal ağ|Dağıtım modeli|Role|İzinler|
 |---|---|---|---|
 |Merkez-RM|Resource Manager|[Ağ Katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
-| |Klasik|[Klasik Ağ Katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|YOK|
+| |Klasik|[Klasik Ağ Katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Yok|
 |Uç-Klasik|Resource Manager|[Ağ Katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/peer|
 ||Klasik|[Klasik Ağ Katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Microsoft.ClassicNetwork/virtualNetworks/peer|
 
-[Yerleşik roller](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) ve [özel rollere](../role-based-access-control/custom-roles.md?toc=%252fazure%252fvirtual-network%252ftoc.json) (yalnızca Resource Manager) belirli izinlerin atanması hakkında daha fazla bilgi edinin.
+[Yerleşik roller](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) ve [özel rollere](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (yalnızca Resource Manager) belirli izinlerin atanması hakkında daha fazla bilgi edinin.
 
 ## <a name="resource-manager-to-resource-manager-peering-with-gateway-transit"></a>Ağ geçidi aktarımı ile Resource Manager’dan Resource Manager’a eşleme
 

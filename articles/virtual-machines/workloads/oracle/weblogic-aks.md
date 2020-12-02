@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 10/28/2020
 ms.author: rezar
 ms.reviewer: cynthn
-ms.openlocfilehash: a57d5a00fad9a17e01b96ebdf395fb7a4b857935
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: cf44ad8d81656248329d993d86e9922dc4985258
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968698"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486683"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-the-azure-kubernetes-service"></a>Azure Kubernetes hizmetinde Oracle WebLogic Server çalıştırmaya yönelik çözümler nelerdir?
 
 Bu sayfada, Azure Kubernetes Service (AKS) üzerinde Oracle WebLogic Server (WLS) çalıştırmaya yönelik çözümler açıklanmaktadır. Bu çözümler, Oracle ve Microsoft tarafından ortaklaşa geliştirilmiştir ve desteklenir.
 
-Web Logic Server 'ı Azure sanal makinelerinde çalıştırmak da mümkündür. Bunu yapmak için çözümler [Bu Microsoft makalesinde](/azure/virtual-machines/workloads/oracle/oracle-weblogic)açıklanmaktadır.
+Web Logic Server 'ı Azure sanal makinelerinde çalıştırmak da mümkündür. Bunu yapmak için çözümler [Bu Microsoft makalesinde](./oracle-weblogic.md)açıklanmaktadır.
 
 WebLogic Server, dünyanın dört bir yanında en çok görev açısından kritik kurumsal Java uygulamalarından bazılarını çalıştıran önde gelen bir Java uygulama sunucusudur. Web Logic Server, Oracle yazılım paketi için ara yazılım temelini oluşturur. Oracle ve Microsoft, Azure 'da iş yüklerini önde gelen bulut platformu olarak çalıştırmak için Web Logic Server müşterilerinin tercih ve esnekliğe sahip olmasını sağlar.
 

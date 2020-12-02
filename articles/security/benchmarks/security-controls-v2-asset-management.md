@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: c553652d4d8abd16b4e5fd4ff896e42bdba103ad
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 8602450ef7df7f728fc5bdcda4f46ae30058fc94
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408983"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487805"
 ---
 # <a name="security-control-v2-asset-management"></a>Güvenlik denetimi v2: varlık yönetimi
 
 Varlık yönetimi, Azure kaynakları üzerinde güvenlik görünürlüğü ve idare sağlamak için denetimleri ele alır. Bu, güvenlik personeli izinleri, varlık envanterine güvenlik erişimi ve hizmet ve kaynaklar için onayları yönetme (envanter, izleme ve düzeltme) konularında öneriler içerir.
 
-## <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>ÖÖ-1: güvenlik ekibinin, varlıklar için riskleri görebilirliği sağlayın
+## <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1: Güvenlik ekibinin varlıklarla ilgili riskleri görebildiğinden emin olun
 
 | Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
 |--|--|--|--|
@@ -26,87 +26,87 @@ Varlık yönetimi, Azure kaynakları üzerinde güvenlik görünürlüğü ve id
 
 Azure Güvenlik Merkezi 'ni kullanarak güvenlik risklerini izleyebilmek için güvenlik Ekiplerinizde Azure kiracınızda ve aboneliklerinizde güvenlik okuyucusu izinleri verildiğinden emin olun. 
 
-Güvenlik ekibinin sorumluluklarına bağlı olarak, güvenlik risklerini izlemek, merkezi bir güvenlik ekibinin veya yerel ekibin sorumluluğunda olabilir. Bu şekilde, güvenlik öngörüleri ve riskler her zaman bir kuruluş içinde toplanmalıdır. 
+Güvenlik ekibi sorumluluklarının yapılandırmasına bağlı olarak, güvenlik risklerinin izlenmesi merkezi güvenlik ekibinin veya yerel bir ekibin sorumluluğunda olabilir. Gerçi güvenlik içgörüleri ve risklerinin kuruluş içinde her zaman merkezi bir konumda toplanması gerekir. 
 
-Güvenlik okuyucusu izinleri bir kiracının tamamına (kök yönetim grubu) veya yönetim gruplarına veya belirli aboneliklere göre uygulanabilir. 
+Güvenlik Okuyucusu izinleri kiracının tamamına (Kök Yönetim Grubu) geniş kapsamlı olarak uygulanabileceği gibi, izinlerin kapsamı yönetim gruplarıyla veya belirli aboneliklerle de sınırlanabilir. 
 
-Note: iş yüklerinin ve hizmetlerin görünürlüğünü almak için ek izinler gerekebilir. 
+Not: İş yükleri ve hizmetlerin görünürlüğünü elde etmek için ek izinler gerekebilir. 
 
-- [Güvenlik okuyucusu rolüne genel bakış](../../role-based-access-control/built-in-roles.md#security-reader)
+- [Güvenlik Okuyucusu Rolüne Genel Bakış](../../role-based-access-control/built-in-roles.md#security-reader)
 
-- [Azure Yönetim Grupları 'ye Genel Bakış](../../governance/management-groups/overview.md)
+- [Azure Yönetim Gruplarına Genel Bakış](../../governance/management-groups/overview.md)
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: Müşteri
 
-**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Altyapı ve uç nokta güvenliği](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
 - [Güvenlik Uyumluluk Yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-## <a name="am-2-ensure-security-team-has-access-to-asset-inventory-and-metadata"></a>-2: güvenlik ekibinin varlık envanterini ve meta verileri erişimine sahip olduğundan emin olun
+## <a name="am-2-ensure-security-team-has-access-to-asset-inventory-and-metadata"></a>AM-2: Güvenlik ekibinin varlık envanterine ve meta verilerine erişebildiğinden emin olun
 
 | Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
 |--|--|--|--|
 | ÖÖ-2 | 1,1, 1,2, 1,4, 1,5, 9,1, 12,1 | CM-8, PM-5 |
 
-Güvenlik ekiplerinin Azure 'daki varlıkların sürekli güncelleştirilmiş envanterini erişimi olduğundan emin olun. Güvenlik ekipleri genellikle bu envanterin, kuruluşlarının riskli olma olasılığını değerlendirmek ve sürekli güvenlik geliştirmeleri için bir girdi olarak gereklidir. 
+Güvenlik ekiplerinin Azure 'daki varlıkların sürekli güncelleştirilmiş envanterini erişimi olduğundan emin olun. Güvenlik ekipleri genellikle kuruluşlarının ortaya çıkabilecek risklerden olası etkilenme durumunu değerlendirmek ve sürekli güvenlik geliştirmelerine yönelik giriş sağlamak için bu envantere ihtiyaç duyar. 
 
 Azure Güvenlik Merkezi envanter özelliği ve Azure Kaynak Grafiği, aboneliklerinizde Azure Hizmetleri, uygulamalar ve ağ kaynakları dahil tüm kaynakları sorgulayabilir ve bulabilir.  
 
-Etiketleri ve Azure 'daki diğer meta verileri (ad, açıklama ve kategori) kullanarak kuruluşunuzun sınıflandırışına göre mantıksal olarak düzenleyin.  
+Azure'daki etiketleri ve diğer meta verileri (ad, açıklama ve kategori) kullanarak varlıkları kuruluşunuzun sınıflandırma uygulamalarına göre mantıksal olarak düzenleyin.  
 
-- [Azure Kaynak Grafiği Gezgini ile sorgu oluşturma](../../governance/resource-graph/first-query-portal.md)
+- [Azure Kaynak Grafı Gezgini ile sorgu oluşturma](../../governance/resource-graph/first-query-portal.md)
 
 - [Azure Güvenlik Merkezi varlık envanteri yönetimi](../../security-center/asset-inventory.md)
 
-- [Varlıkları etiketleme hakkında daha fazla bilgi için bkz. Kaynak adlandırma ve etiketleme karar Kılavuzu](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%252fazure%252fazure-resource-manager%252fmanagement%252ftoc.json)
+- [Varlıkları etiketleme hakkında daha fazla bilgi için bkz. Kaynak adlandırma ve etiketleme karar Kılavuzu](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure%2fazure-resource-manager%2fmanagement%2ftoc.json)
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: Müşteri
 
-**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Altyapı ve uç nokta güvenliği](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
 - [Güvenlik Uyumluluk Yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-## <a name="am-3-use-only-approved-azure-services"></a>HAR-3: yalnızca onaylanan Azure hizmetlerini kullanma
+## <a name="am-3-use-only-approved-azure-services"></a>AM-3: Yalnızca onaylı Azure hizmetlerini kullanın
 
 | Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
 |--|--|--|--|
 | ÖÖ-3 | 2,3, 2,4 | CM-7, CM-8 |
 
-Kullanıcıların ortamınızda hangi hizmetleri sağlayabileceğini denetlemek ve kısıtlamak için Azure Ilkesi ' ni kullanın. Azure Kaynak Grafiği 'ni kullanarak aboneliklerindeki kaynakları sorgulama ve bulma.  Onaylanmamış bir hizmet algılandığında uyarıları tetiklemeye yönelik kurallar oluşturmak için Azure Izleyici 'yi de kullanabilirsiniz.
+Kullanıcılarınızın ortamınızda sağlayabileceği hizmetleri denetlemek ve kısıtlamak için Azure İlkesi'ni kullanın. Abonelikler içindeki kaynakları sorgulamak ve bulmak için Azure Kaynak Grafı'nı kullanın.  Ayrıca Azure İzleyici'yi kullanarak onaylanmamış hizmetler algılandığında uyarı tetikleme amacıyla kurallar oluşturabilirsiniz.
 
 - [Azure Ilkesini yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Azure Ilkesiyle belirli bir kaynak türünü reddetme](../../governance/policy/samples/index.md)
 
-- [Azure Kaynak Grafiği Gezgini ile sorgu oluşturma](../../governance/resource-graph/first-query-portal.md)
+- [Azure Kaynak Grafı Gezgini ile sorgu oluşturma](../../governance/resource-graph/first-query-portal.md)
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: Müşteri
 
-**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik Uyumluluk Yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
 - [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
 
-## <a name="am-4-ensure-security-of-asset-lifecycle-management"></a>ÖÖ-4: varlık yaşam döngüsü yönetiminin güvenliğinin yapıldığından emin olun
+## <a name="am-4-ensure-security-of-asset-lifecycle-management"></a>VY-4: Varlık yaşam döngüsü yönetiminin güvenliğini sağlama
 
 | Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
 |--|--|--|--|
 | ÖÖ-4 | 2,3, 2,4, 2,5 | CM-7, CM-8, CM-10, CM-11 |
 
-Potansiyel olarak yüksek etkili değişiklikler için varlık yaşam döngüsü yönetimi işlemlerine yönelik güvenlik ilkeleri oluşturun veya güncelleştirin. Bu değişiklikler: kimlik sağlayıcıları ve erişim, veri duyarlılığı, ağ yapılandırması ve yönetim ayrıcalıkları atama değişiklikleri içerir.
+Potansiyel olarak yüksek etkili değişiklikler için varlık yaşam döngüsü yönetimi işlemlerine yönelik güvenlik ilkeleri oluşturun veya güncelleştirin. Bu değişiklikler kimlik sağlayıcıları ve erişim, veri duyarlılığı, ağ yapılandırması ve yönetici ayrıcalığı ataması ile ilgili değişikliklerdir.
 
-Artık gerekli olmadığında Azure kaynaklarını kaldırın.
+Artık gerekmeyen Azure kaynaklarını kaldırın.
 
-- [Azure kaynak grubunu ve kaynağını Sil](../../azure-resource-manager/management/delete-resource-group.md)
+- [Azure kaynak grubunu ve kaynağını silme](../../azure-resource-manager/management/delete-resource-group.md)
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: Müşteri
 
-**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Altyapı ve uç nokta güvenliği](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -124,9 +124,9 @@ Artık gerekli olmadığında Azure kaynaklarını kaldırın.
 
 - [Azure Kaynak Yöneticisi 'ne erişimi engellemek için koşullu erişimi yapılandırma](../../role-based-access-control/conditional-access-azure-management.md)
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: Müşteri
 
-**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
 
@@ -154,9 +154,9 @@ Onaylanmamış yazılımları bulup belirlemek için bir üçüncü taraf çöz�
 
 - [Windows ortamlarında PowerShell betiği yürütmeyi denetleme](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: Müşteri
 
-**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Altyapı ve uç nokta güvenliği](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 

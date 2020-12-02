@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 09/23/2020
 ms.author: rezar
 ms.reviewer: cynthn
-ms.openlocfilehash: 51f0e68b3e07a157a5222a4374f9e1b74ef7e403
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 277e9049d2069190a68dd98c22acd60212c1b99d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968715"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486700"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>Azure Sanal Makineler’de çalışan Oracle WebLogic Server’a yönelik çözümler nelerdir?
 
 Bu sayfada, Azure sanal makinelerinde Oracle WebLogic Server (WLS) çalıştırmaya yönelik çözümler açıklanmaktadır. Bu çözümler, Oracle ve Microsoft tarafından ortaklaşa geliştirilmiştir ve desteklenir.
 
-Azure Kubernetes hizmetinde WLS çalıştırmak da mümkündür. Bunu yapmak için çözümler [Bu Microsoft makalesinde](/azure/virtual-machines/workloads/oracle/weblogic-aks)açıklanmaktadır.
+Azure Kubernetes hizmetinde WLS çalıştırmak da mümkündür. Bunu yapmak için çözümler [Bu Microsoft makalesinde](./weblogic-aks.md)açıklanmaktadır.
 
 WLS, dünyanın dört bir yanında en çok iş açısından kritik kurumsal Java uygulamalarından bazılarını çalıştıran önde gelen bir Java uygulama sunucusudur. WLS, Oracle yazılım paketi için ara yazılım temelini oluşturur. Oracle ve Microsoft, Azure 'da iş yüklerini önde gelen bir bulut platformu olarak çalıştırmak için, WLS müşterilerinin seçim ve esneklik ile güçlendirin.
 

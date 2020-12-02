@@ -10,12 +10,12 @@ ms.workload: azure-vs
 ms.topic: how-to
 ms.date: 11/03/2017
 ms.author: ghogen
-ms.openlocfilehash: bdc03e8c136606ab7768705b0c8dbcc97782966f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7cf2474c9ca005d85cea28f2b8fa1e23836b191f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008897"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487567"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Visual Studio 'dan bir Azure VM 'de ASP.NET Web uygulaması yayımlama
 
@@ -26,7 +26,7 @@ Bir ASP.NET projesini bir Azure sanal makinesine yayımlamak için Visual Studio
 
 - Makinenin bir ASP.NET Web uygulaması çalıştıracak şekilde yapılandırılması ve WebDeploy 'nin yüklü olması gerekir. Daha fazla bilgi için bkz. [WebDeploy ile ASP.net VM oluşturma](https://github.com/aspnet/Tooling/blob/AspNetVMs/docs/create-asp-net-vm-with-webdeploy.md).
 
-- VM 'nin yapılandırılmış bir DNS adı olmalıdır. Daha fazla bilgi için bkz. [WINDOWS VM için Azure Portal tam etki alanı adı oluşturma](portal-create-fqdn.md).
+- VM 'nin yapılandırılmış bir DNS adı olmalıdır. Daha fazla bilgi için bkz. [WINDOWS VM için Azure Portal tam etki alanı adı oluşturma](../create-fqdn.md).
 
 ## <a name="publish-your-aspnet-web-app-to-the-azure-vm-using-visual-studio"></a>Visual Studio 'Yu kullanarak ASP.NET Web uygulamanızı Azure VM 'de yayımlayın
 Aşağıdaki bölümde, mevcut bir ASP.NET Web uygulamasının bir Azure sanal makinesine nasıl yayımlanacağı açıklanmaktadır.

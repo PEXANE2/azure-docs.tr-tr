@@ -72,7 +72,7 @@
     - name: En iyi uygulamalar
       href: network-best-practices.md
     - name: DDoS Koruması en iyi yöntemleri
-      href: 'https://docs.microsoft.com/azure/ddos-protection/fundamental-best-practices'
+      href: ../../ddos-protection/fundamental-best-practices.md
     - name: DDoS Koruması güvenlik temeli
       href: ddos-protection-security-baseline.md
     - name: Sarkan DNS ve alt etki alanı adı ele geçirme

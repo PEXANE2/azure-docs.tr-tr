@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 6ddce9bd8eaa57571cd3c3eac660806340db4b74
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: b6aaad9cce330d755fb69f8be48737f9a8f6c4a7
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408677"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487754"
 ---
 # <a name="security-control-v2-network-security"></a>Güvenlik denetimi v2: ağ güvenliği
 
@@ -40,9 +40,9 @@ SSL/TLSv1, SMBv1, LM/NTLMv1, wDigest, Imzasız LDAP bağlamaları ve zayıf şif
 
 - [Azure Sentinel güvenli olmayan protokoller çalışma kitabı](../../sentinel/quickstart-get-visibility.md#use-built-in-workbooks)
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: Müşteri
 
-**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -54,7 +54,7 @@ SSL/TLSv1, SMBv1, LM/NTLMv1, wDigest, Imzasız LDAP bağlamaları ve zayıf şif
 
 | Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
 |--|--|--|--|
-| NS-2 | YOK | CA-3, AC-17, MA-4 |
+| NS-2 | Yok | CA-3, AC-17, MA-4 |
 
 Azure veri merkezleri ile şirket içi altyapı arasında özel bağlantılar oluşturmak için Azure ExpressRoute veya Azure sanal özel ağ (VPN) kullanın. ExpressRoute bağlantıları, genel İnternet üzerinden geçmez ve tipik İnternet bağlantılarına göre daha fazla güvenilirlik, daha hızlı hız ve daha düşük gecikme süresi sunar. Noktadan siteye VPN ve siteden siteye VPN için, bu VPN seçeneklerinin ve Azure ExpressRoute 'un herhangi bir birleşimini kullanarak şirket içi cihazları veya ağları bir sanal ağa bağlayabilirsiniz.
 
@@ -68,9 +68,9 @@ Azure veri merkezleri ile şirket içi altyapı arasında özel bağlantılar ol
 
 - [Azure Özel Bağlantı](../../private-link/private-link-service-overview.md)
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: Müşteri
 
-**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -78,7 +78,7 @@ Azure veri merkezleri ile şirket içi altyapı arasında özel bağlantılar ol
 
 - [Uygulama güvenliği ve DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
-## <a name="ns-3-establish-private-network-access-to-azure-services"></a>NS-3: Azure hizmetlerine özel ağ erişimi oluşturma
+## <a name="ns-3-establish-private-network-access-to-azure-services"></a>NS-3: Azure hizmetlerine özel ağ erişimi sağlayın
 
 | Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
 |--|--|--|--|
@@ -92,9 +92,9 @@ Azure veri merkezleri ile şirket içi altyapı arasında özel bağlantılar ol
 
 - [Sanal ağ hizmeti uç noktalarını anlama](../../virtual-network/virtual-network-service-endpoints-overview.md)
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: Müşteri
 
-**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -120,11 +120,11 @@ Dağıtılmış hizmet reddi (DDoS) saldırıları, uygulamaya özgü saldırıl
 
 - [Azure WAF dağıtma](../../web-application-firewall/overview.md)
 
-- [Azure portal kullanarak Azure DDoS koruması standardını yönetme](../../virtual-network/manage-ddos-protection.md)
+- [Azure portal kullanarak Azure DDoS koruması standardını yönetme](../../ddos-protection/manage-ddos-protection.md)
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: Müşteri
 
-**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 Yok
 
@@ -144,9 +144,9 @@ Note: KIMLIKLER/IP 'ler için bir yasal veya diğer gereksinimleriniz varsa, Sı
 
 - [Microsoft Defender ATP EDR özelliği](/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: Müşteri
 
-**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -170,9 +170,9 @@ Ayrıca, karmaşık güvenlik yapılandırmasını basitleştirmeye yardımcı o
 
 - [Uygulama güvenlik gruplarını anlama ve kullanma](../../virtual-network/network-security-groups-overview.md#application-security-groups)
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: Müşteri
 
-**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -184,7 +184,7 @@ Ayrıca, karmaşık güvenlik yapılandırmasını basitleştirmeye yardımcı o
 
 | Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
 |--|--|--|--|
-| NS-7 | YOK | SC-20, SC-21 |
+| NS-7 | Yok | SC-20, SC-21 |
 
 DNS güvenliği, DNS yükseltme saldırıları, DNS kirletme ve aldatmacası gibi yaygın saldırılara karşı hafifletmek için DNS güvenliği için en iyi uygulamaları izleyin. 
 
@@ -196,9 +196,9 @@ Yetkili DNS hizmetiniz olarak Azure DNS kullanıldığında, DNS bölgelerinin v
 
 - [DNS girişlerinin tehlikini önleyin ve alt etki alanı devralmayı önleyin](../fundamentals/subdomain-takeover.md)
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: Müşteri
 
-**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

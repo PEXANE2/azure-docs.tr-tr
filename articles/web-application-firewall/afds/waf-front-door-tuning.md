@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/11/2020
 ms.author: mohitku
 ms.reviewer: tyao
-ms.openlocfilehash: a24f9e78de34b17977a1876cbefb473cc2610db0
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 4c710792dd7966fad76b33954fdf7c2253cf18f0
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95550133"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488247"
 ---
 # <a name="tuning-web-application-firewall-waf-for-azure-front-door"></a>Azure ön kapısının Web uygulaması güvenlik duvarını (WAF) ayarlama
  
@@ -136,7 +136,7 @@ Dışlama listesi kullanmanın bir avantajı, yalnızca dışlamak üzere seçti
  
 Dışlamaları genel bir ayar olduğunu göz önünde bulundurmanız önemlidir. Bu, yapılandırılan dışlamanın yalnızca belirli bir Web uygulaması veya URI değil WAF 'niz aracılığıyla geçen tüm trafiğe uygulanacağını gösterir. Örneğin, bu bir sorun olabilir, çünkü *1 = 1* belirli bir Web uygulamasının gövdesinde geçerli bir istek ise, ancak aynı WAF ilkesi altında diğerleri için değildir. Farklı uygulamalar için farklı dışlama listeleri kullanmak mantıklı olursa, her bir uygulama için farklı bir WAF ilkesi kullanmayı ve bunları her bir uygulamanın ön ucunda uygulamayı düşünün.
  
-Yönetilen kuralların dışlama listelerini yapılandırırken, bir kural kümesi içindeki tüm kuralları, bir kural grubundaki tüm kuralları veya tek bir kuralı hariç bırakmayı seçebilirsiniz. Dışlama listesi [PowerShell](https://docs.microsoft.com/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-4.7.0&viewFallbackFrom=azps-3.5.0), [Azure CLı](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion?view=azure-cli-latest#ext_front_door_az_network_front_door_waf_policy_managed_rules_exclusion_add), [REST API](https://docs.microsoft.com/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)veya Azure Portal kullanılarak yapılandırılabilir.
+Yönetilen kuralların dışlama listelerini yapılandırırken, bir kural kümesi içindeki tüm kuralları, bir kural grubundaki tüm kuralları veya tek bir kuralı hariç bırakmayı seçebilirsiniz. Dışlama listesi [PowerShell](/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-4.7.0&viewFallbackFrom=azps-3.5.0), [Azure CLı](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion?view=azure-cli-latest#ext_front_door_az_network_front_door_waf_policy_managed_rules_exclusion_add), [REST API](/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)veya Azure Portal kullanılarak yapılandırılabilir.
 
 * Kural düzeyinde dışlamaları
   * Kural düzeyinde dışlamaları uygulamak, belirtilen dışlamaların yalnızca bu kurala göre çözümlenmeyeceği anlamına gelir, ancak hala kural kümesindeki diğer tüm kurallara göre çözümlenmeyecektir. Bu, Dışlamalar için en ayrıntılı düzeydir ve bir olayda sorun giderirken WAF günlüklerinde bulduğunuz bilgilere göre yönetilen kural kümesini ince ayar yapmak için kullanılabilir.
@@ -193,7 +193,7 @@ Bir kuralı devre dışı bırakmak, belirli bir koşulu karşılayan tüm istek
  
 Ancak, bir kuralı devre dışı bırakmak WAF ilkesiyle ilişkili tüm ön uç konakları için geçerli olan genel bir ayardır. Bir kuralı devre dışı bırakmayı seçtiğinizde, WAF ilkesiyle ilişkili diğer ön uç konakları için koruma veya algılama olmadan açığa çıkan güvenlik açıklarını terk edebilirsiniz.
  
-Yönetilen bir kuralı devre dışı bırakmak için Azure PowerShell kullanmak istiyorsanız, [`PSAzureManagedRuleOverride`](https://docs.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorwafmanagedruleoverrideobject?view=azps-4.7.0&preserve-view=true) nesne belgelerine bakın. Azure CLı kullanmak istiyorsanız [`az network front-door waf-policy managed-rules override`](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/override?view=azure-cli-latest&preserve-view=true) belgelere bakın.
+Yönetilen bir kuralı devre dışı bırakmak için Azure PowerShell kullanmak istiyorsanız, [`PSAzureManagedRuleOverride`](/powershell/module/az.frontdoor/new-azfrontdoorwafmanagedruleoverrideobject?preserve-view=true&view=azps-4.7.0) nesne belgelerine bakın. Azure CLı kullanmak istiyorsanız [`az network front-door waf-policy managed-rules override`](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/override?preserve-view=true&view=azure-cli-latest) belgelere bakın.
 
 ![WAF kuralları](../media/waf-front-door-tuning/waf-rules.png)
 

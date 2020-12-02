@@ -14,21 +14,20 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 06/16/2020
+ms.date: 12/01/2020
 ms.author: radeltch
-ms.openlocfilehash: a6b62e9c894c25b2c3cd064524881ae5db51ec5a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9c9979699b5bcb3636adc0f9b58331568ea9cad1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968545"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486311"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>SAP yüksek kullanılabilirlik senaryolarında Azure Standart Load Balancer kullanan sanal makineler için genel uç nokta bağlantısı
 
 Bu makalenin kapsamı, genel uç noktaları için giden bağlantıyı etkinleştiren yapılandırmaların tanımlanmasında kullanılır. Konfigürasyonlar, genellikle SUSE/RHEL için pacemaker ile yüksek kullanılabilirlik bağlamıdır.  
 
-Yüksek kullanılabilirlik çözümünüzde Azure sınır Aracısı ile Pacemaker kullanıyorsanız, VM 'Lerin Azure Yönetim API 'sine giden bağlantısı olması gerekir.  
-Makalesinde senaryonuz için en uygun seçeneği seçmenizi sağlayan çeşitli seçenekler sunulmaktadır.  
+Yüksek kullanılabilirlik çözümünüzde Azure sınır Aracısı ile Pacemaker kullanıyorsanız, VM 'Lerin Azure Yönetim API 'sine giden bağlantısı olması gerekir. Makalesinde senaryonuz için en uygun seçeneği seçmenizi sağlayan çeşitli seçenekler sunulmaktadır.  
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -42,12 +41,12 @@ Ortak IP adresleri olmayan VM 'Ler, iç (genel IP adresi olmayan) standart Azure
 
 Bir VM 'ye genel bir IP adresi atanırsa veya VM ortak IP adresi olan bir yük dengeleyicinin arka uç havuzudur, genel uç noktalarına giden bağlantılara sahip olur.  
 
-SAP sistemleri genellikle hassas iş verileri içerir. SAP sistemlerini barındıran VM 'Lerde genel IP adresleri olması nadiren kabul edilebilir. Aynı zamanda, VM 'den ortak uç noktalara giden bağlantı gerektiren senaryolar da vardır.  
+SAP sistemleri genellikle hassas iş verileri içerir. SAP sistemlerini barındıran VM 'Ler için genel IP adresleri aracılığıyla erişilebilmesi nadiren kabul edilebilir. Aynı zamanda, VM 'den ortak uç noktalara giden bağlantı gerektiren senaryolar da vardır.  
 
 Azure genel uç noktasına erişim gerektiren senaryolara örnek olarak şunlar verilebilir:  
-- Pacemaker kümelerinde Azure sınır aracısını bir sınırlama mekanizması olarak kullanma
-- Azure Backup
-- Azure Site Recovery  
+- Azure çit Aracısı, **Management.Azure.com** ve **login.microsoftonline.com** için erişim gerektirir  
+- [Azure Backup](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#set-up-network-connectivity)
+- [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-urls)  
 - Işletim sisteminde düzeltme eki uygulama için ortak depoyu kullanma
 - SAP uygulama veri akışı, genel uç noktasına giden bağlantı gerektirebilir
 
@@ -70,7 +69,7 @@ SAP dağıtımınız ortak uç noktalara giden bağlantı gerektirmiyorsa, ek ya
 * [Sanal ağlar-Kullanıcı tanımlı kurallar](../../../virtual-network/virtual-networks-udr-overview.md#user-defined) -Azure yönlendirme kavramları ve kuralları  
 * [Güvenlik grupları hizmet etiketleri](../../../virtual-network/network-security-groups-overview.md#service-tags) -hizmet etiketleriyle ağ güvenlik gruplarınızı ve güvenlik duvarı yapılandırmanızı basitleştirme
 
-## <a name="additional-external-azure-standard-load-balancer-for-outbound-connections-to-internet"></a>İnternet 'e giden bağlantılar için ek dış Azure Standart Load Balancer
+## <a name="option-1-additional-external-azure-standard-load-balancer-for-outbound-connections-to-internet"></a>Seçenek 1: internet 'e giden bağlantılar için ek dış Azure Standart Load Balancer
 
 Ortak uç noktalara giden bağlantılara izin vermeden, genel uç noktalarına giden bağlantı sağlamak için bir seçenek, genel IP adresine sahip ikinci bir yük dengeleyici oluşturmak, VM 'Leri ikinci yük dengeleyicinin arka uç havuzuna eklemek ve yalnızca [giden kuralları](../../../load-balancer/load-balancer-outbound-connections.md#outboundrules)tanımlamak.  
 VM 'den giden çağrılar için erişilebilen genel uç noktalarını denetlemek için [ağ güvenlik grupları](../../../virtual-network/network-security-groups-overview.md) 'nı kullanın.  
@@ -120,7 +119,7 @@ Yapılandırma şöyle görünür:
 
    Azure ağ güvenlik grupları hakkında daha fazla bilgi için bkz. [güvenlik grupları ](../../../virtual-network/network-security-groups-overview.md). 
 
-## <a name="azure-firewall-for-outbound-connections-to-internet"></a>İnternet 'e giden bağlantılar için Azure Güvenlik Duvarı
+## <a name="option-2-azure-firewall-for-outbound-connections-to-internet"></a>Seçenek 2: internet 'e giden bağlantılar için Azure Güvenlik Duvarı
 
 Ortak uç noktalara giden bağlantılara izin vermeden, genel uç noktalarına giden bağlantı sağlamak için başka bir seçenek de Azure güvenlik duvarıdır. Azure Güvenlik Duvarı, yerleşik yüksek kullanılabilirliğe sahip ve birden çok Kullanılabilirlik Alanları yayılabilen bir yönetilen hizmettir.  
 Ayrıca, Azure Güvenlik Duvarı üzerinden trafiği yönlendirmek için VM 'Lerin ve Azure Yük dengeleyicinin dağıtıldığı alt ağla ilişkili [Kullanıcı tanımlı yolu](../../../virtual-network/virtual-networks-udr-overview.md#custom-routes)da dağıtmanız gerekir.  
@@ -170,7 +169,7 @@ Mimari şöyle görünür:
    1. Yol adı: ToMyAzureFirewall, adres ön eki: **0.0.0.0/0**. Sonraki atlama türü: Sanal Gereç seçin. Sonraki atlama adresi: yapılandırdığınız güvenlik duvarının özel IP adresini girin: **11.97.1.4**.  
    1. Kaydet
 
-## <a name="using-proxy-for-pacemaker-calls-to-azure-management-api"></a>Azure Yönetim API 'sine pacemaker çağrıları için proxy kullanma
+## <a name="option-3-using-proxy-for-pacemaker-calls-to-azure-management-api"></a>Seçenek 3: Azure Yönetim API 'sine pacemaker çağrıları için proxy kullanma
 
 Azure Yönetim API 'SI genel uç noktasına pacemaker çağrılarına izin vermek için proxy kullanabilirsiniz.  
 
@@ -221,9 +220,9 @@ Pacemaker 'ın Azure Yönetim API 'siyle iletişim kurmasına izin vermek için 
      sudo pcs property set maintenance-mode=false
      ```
 
-## <a name="other-solutions"></a>Diğer çözümler
+## <a name="other-options"></a>Diğer seçenekler
 
-Giden trafik üçüncü taraf güvenlik duvarı aracılığıyla yönlendirilmemişse:
+Giden trafik üçüncü taraf ile yönlendirilmemişse, URL tabanlı güvenlik duvarı proxy 'SI:
 
 - Azure sınır Aracısı 'nı kullanıyorsanız, Güvenlik Duvarı yapılandırmasının Azure Yönetim API 'sine giden bağlantıya izin verdiğinden emin olun: `https://management.azure.com` ve `https://login.microsoftonline.com`   
 - SUSE 'un güncelleştirmeleri ve düzeltme eklerini uygulamak için Azure genel bulut güncelleştirme altyapısını kullanıyorsanız bkz. [Azure genel bulut güncelleştirme altyapısı 101](https://suse.com/c/azure-public-cloud-update-infrastructure-101/)

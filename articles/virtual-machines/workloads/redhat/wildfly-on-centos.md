@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.assetid: 7aa21ef8-9cfb-43e0-bfda-3f10a2a2f3ef
 ms.date: 10/23/2020
-ms.openlocfilehash: 842913b8e9f83ff3b188976da55aef7c909518ca
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: ddd6f277bc71467060aa2279d93f9410a1327dde
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359927"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486615"
 ---
 # <a name="quickstart-wildfly-on-centos-8"></a>Hızlı başlangıç: CentOS 8 ' de
 
@@ -63,7 +63,7 @@ Azure CentOS 8 görüntüsü, Kullandıkça Öde (PAYG) sanal makinesi görünt�
 
 Şablonu aşağıdaki üç şekilde dağıtabilirsiniz:
 
-- Aşağıdaki komutları çalıştırarak PowerShell 'i kullanın-şablonu dağıtın: (Azure PowerShell yükleme ve yapılandırma hakkında bilgi için [Azure PowerShell](https://docs.microsoft.com/powershell/azure/) kullanıma alma).
+- Aşağıdaki komutları çalıştırarak PowerShell 'i kullanın-şablonu dağıtın: (Azure PowerShell yükleme ve yapılandırma hakkında bilgi için [Azure PowerShell](/powershell/azure/) kullanıma alma).
 
     ```
     New-AzResourceGroup -Name <resource-group-name> -Location <resource-group-location> #use this command when you need to create a new Resource Group for your deployment
@@ -73,7 +73,7 @@ Azure CentOS 8 görüntüsü, Kullandıkça Öde (PAYG) sanal makinesi görünt�
     New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wildfly-standalone-centos8/azuredeploy.json
     ```
     
-- Azure CLı 'yi kullanma-aşağıdaki komutları çalıştırarak şablonu dağıtın: (Azure platformlar arası Command-Line arabirimini yükleme ve yapılandırma hakkında ayrıntılı bilgi için [Azure platformlar arası komut satırını](https://docs.microsoft.com/cli/azure/install-azure-cli) inceleyin).
+- Azure CLı 'yi kullanma-aşağıdaki komutları çalıştırarak şablonu dağıtın: (Azure platformlar arası Command-Line arabirimini yükleme ve yapılandırma hakkında ayrıntılı bilgi için [Azure platformlar arası komut satırını](/cli/azure/install-azure-cli) inceleyin).
 
     ```
     az group create --name <resource-group-name> --location <resource-group-location> #use this command when you need to create a new Resource Group for your deployment
@@ -92,7 +92,7 @@ Azure CentOS 8 görüntüsü, Kullandıkça Öde (PAYG) sanal makinesi görünt�
 ## <a name="resource-links"></a>Kaynak bağlantıları
 
 * Bu konuda daha fazla bilgi edinin [18](https://docs.wildfly.org/18/)
-* [Azure 'Da Linux dağıtımları](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) hakkında daha fazla bilgi edinin
+* [Azure 'Da Linux dağıtımları](../../linux/endorsed-distros.md) hakkında daha fazla bilgi edinin
 * [Java geliştiricileri için Azure belgeleri](https://github.com/JasonFreeberg/jboss-on-app-service)
 
 ## <a name="next-steps"></a>Sonraki adımlar

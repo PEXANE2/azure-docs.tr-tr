@@ -4,16 +4,16 @@ description: Bulutta kurumsal düzeyde veri modelleri sağlayan, tam olarak yön
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 10/19/2020
+ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 496b2ea7272be96774d4bd0900fc35c6de8cf9eb
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e70d02c02ba9a3f14d1659851919fbccf71776d1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457783"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487363"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services nedir?
 
@@ -243,7 +243,7 @@ Azure Analysis Services ayrıca [Dynamic Management Görünümleri (DMV)](/analy
 
 Azure Analysis Services’e özgü belgeler buraya eklenir. Makaleleri bulmak için tarayıcı ekranınızın sol tarafındaki içindekiler bölümünü kullanın. 
 
-Azure Analysis Services 'daki tablo modelleri SQL Server Analysis Services ve Power BI Premium veri kümelerinde tablolu modellerle aynı olduğundan, [Analysis Services belgelerinde](/analysis-services/?view=azure-analysis-services-current)paylaşılan veri modelleme öğreticileri, kavramsal, yordamsal, geliştirici ve başvuru makaleleriyle ilgili kapsamlı bir kitaplık vardır. Paylaşılan Analysis Services belgelerindeki makaleler, başlığın altındaki bir başlık IÇIN GEÇERLI olan Azure Analysis Services için de geçerli olup olmadığını gösterir. Yalnızca kullandığınız platforma uygulanan makaleleri görmek için içindekiler tablosunun üzerindeki sürüm seçiciyi de kullanabilirsiniz.
+Azure Analysis Services 'daki tablo modelleri SQL Server Analysis Services ve Power BI Premium veri kümelerinde tablolu modellerle aynı olduğundan, [Analysis Services belgelerinde](/analysis-services/?view=azure-analysis-services-current&preserve-view=true)paylaşılan veri modelleme öğreticileri, kavramsal, yordamsal, geliştirici ve başvuru makaleleriyle ilgili kapsamlı bir kitaplık vardır. Paylaşılan Analysis Services belgelerindeki makaleler, başlığın altındaki bir başlık IÇIN GEÇERLI olan Azure Analysis Services için de geçerli olup olmadığını gösterir. Yalnızca kullandığınız platforma uygulanan makaleleri görmek için içindekiler tablosunun üzerindeki sürüm seçiciyi de kullanabilirsiniz.
 
 ![Paylaşılan belgeler](./media/analysis-services-overview/aas-overview-applies-to.png)
 

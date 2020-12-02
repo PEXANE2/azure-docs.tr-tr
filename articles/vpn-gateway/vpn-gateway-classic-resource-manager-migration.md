@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/06/2020
 ms.author: amsriva
-ms.openlocfilehash: b9154b124f89a8b672c58d5e7bce28c0833e8a8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9d7fb8be1894ffa5f8c35e16e1ed3aa0949b3ff
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84988035"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488213"
 ---
 # <a name="vpn-gateway-classic-to-resource-manager-migration"></a>VPN Gateway klasik Kaynak Yöneticisi geçişe
 VPN ağ geçitleri artık klasik 'dan Kaynak Yöneticisi dağıtım modeline geçirilebilir. Azure Resource Manager [özellikleri ve avantajları](../azure-resource-manager/management/overview.md)hakkında daha fazla bilgi edinebilirsiniz. Bu makalede, klasik dağıtımlardan daha yeni Kaynak Yöneticisi tabanlı modele nasıl geçirileceğiyle ayrıntılıyoruz. 
 
-VPN ağ geçitleri, klasik bilgisayardan Kaynak Yöneticisi arasında VNet geçişinin parçası olarak geçirilir. Bu geçiş tek seferde bir sanal ağ yapılır. Geçiş için araçlar veya Önkoşullar bakımından ek gereksinim yoktur. Geçiş adımları var olan VNet [geçişiyle aynıdır ve IaaS kaynakları geçiş sayfasında](../virtual-machines/windows/migration-classic-resource-manager-ps.md)belgelenmiştir. Geçiş sırasında veri yolu kapalı kalma süresi yoktur ve bu nedenle mevcut iş yükleri geçiş sırasında şirket içi bağlantı kaybı olmadan çalışmaya devam eder. VPN Gateway ile ilişkili genel IP adresi, geçiş işlemi sırasında değişmez. Bu, geçiş işlemi tamamlandıktan sonra şirket içi yönlendiricinizi yeniden yapılandırmanız gerekeceği anlamına gelir.  
+VPN ağ geçitleri, klasik bilgisayardan Kaynak Yöneticisi arasında VNet geçişinin parçası olarak geçirilir. Bu geçiş tek seferde bir sanal ağ yapılır. Geçiş için araçlar veya Önkoşullar bakımından ek gereksinim yoktur. Geçiş adımları var olan VNet [geçişiyle aynıdır ve IaaS kaynakları geçiş sayfasında](../virtual-machines/migration-classic-resource-manager-ps.md)belgelenmiştir. Geçiş sırasında veri yolu kapalı kalma süresi yoktur ve bu nedenle mevcut iş yükleri geçiş sırasında şirket içi bağlantı kaybı olmadan çalışmaya devam eder. VPN Gateway ile ilişkili genel IP adresi, geçiş işlemi sırasında değişmez. Bu, geçiş işlemi tamamlandıktan sonra şirket içi yönlendiricinizi yeniden yapılandırmanız gerekeceği anlamına gelir.  
 
 Kaynak Yöneticisi modeli, klasik modelden farklıdır ve sanal ağ geçitleri, yerel ağ geçitleri ve bağlantı kaynaklarından oluşur. Bunlar, şirket içi adres alanını temsil eden yerel-site ve sırasıyla iki arasındaki bağlantıyı temsil eden VPN ağ geçidinin kendisini temsil eder. Geçiş işlemi tamamlandıktan sonra, ağ geçitleriniz Klasik modelde kullanılamaz ve sanal ağ geçitleri, yerel ağ geçitleri ve bağlantı nesnelerinde tüm yönetim işlemleri Kaynak Yöneticisi modeli kullanılarak gerçekleştirilmelidir.
 
@@ -66,5 +66,4 @@ Sanal ağı yerel siteler gerekmeden VNet bağlantısına dönüştürtiğimiz i
 * Etkilenen VNet 'ten şirket içi konumu temsil eden yerel ağ geçidine açık bir bağlantı kurun. Ayrıca, IPSec tüneli oluşturmak ve yapılandırmak için şirket içi yönlendiricide yapılandırma değiştirilmesini de gerektirir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-VPN Gateway geçiş desteğini öğrendikten sonra, kullanmaya başlamak için [Klasik 'Ten IaaS kaynaklarının, klasik 'ten Kaynak Yöneticisi geçişine](../virtual-machines/windows/migration-classic-resource-manager-ps.md) gidin.
-
+VPN Gateway geçiş desteğini öğrendikten sonra, kullanmaya başlamak için [Klasik 'Ten IaaS kaynaklarının, klasik 'ten Kaynak Yöneticisi geçişine](../virtual-machines/migration-classic-resource-manager-ps.md) gidin.

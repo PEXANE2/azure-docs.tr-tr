@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2ce9ab371c0ed1e81cf1dfb53fca7e359e1aeb35
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9a907f2a6fc54c96dbef9f2091a91cac50bbd4ca
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967508"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486530"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure'da SAP HANA altyapı yapılandırmaları ve işlemleri
 Bu belgede, Azure yerel sanal makinelerinde (VM 'Ler) dağıtılan Azure altyapısını ve işletim SAP HANA sistemlerini yapılandırmaya yönelik yönergeler sağlanmaktadır. Belge ayrıca, M128s VM SKU 'SU için SAP HANA genişleme için yapılandırma bilgilerini içerir. Bu belge, aşağıdaki içeriği içeren standart SAP belgelerinin yerine geçecek şekilde tasarlanmamıştır:
@@ -30,7 +30,7 @@ Bu belgede, Azure yerel sanal makinelerinde (VM 'Ler) dağıtılan Azure altyap�
 - [SAP Yükleme Kılavuzu](https://service.sap.com/instguides)
 - [SAP notları](https://service.sap.com/notes)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu kılavuzu kullanmak için aşağıdaki Azure bileşenleriyle temel bilgilere ihtiyacınız vardır:
 
 - [Azure sanal makineleri](../../linux/tutorial-manage-vm.md)
@@ -245,8 +245,8 @@ DT 2,0 en iyi uygulama yönergelerine göre disk GÇ verimlilik, fiziksel çekir
 Birden çok Azure diskini DT 2,0 sanal makinesine iliştirmek ve VM başına disk aktarım hızı üst sınırına ulaşmak için işletim sistemi düzeyinde bir yazılım RAID (dizme) oluşturmak gerekir. Tek bir Azure diski, bu şekilde en fazla VM sınırına ulaşmak için üretilen iş miktarını sağlayamaz. Azure Premium Storage, DT 2,0 ' i çalıştırmak için zorunludur. 
 
 - Kullanılabilir Azure disk türleriyle ilgili ayrıntılar [burada](../../disks-types.md) bulunabilir
-- Mdaddm aracılığıyla yazılım RAID oluşturma hakkında ayrıntılı bilgi için [burada](../../linux/configure-raid.md) bulunabilir
-- En fazla üretilen iş için bir şeritli birim oluşturmak üzere LVM yapılandırma ayrıntıları [burada](../../linux/configure-lvm.md) bulunabilir
+- Mdaddm aracılığıyla yazılım RAID oluşturma hakkında ayrıntılı bilgi için [burada](/previous-versions/azure/virtual-machines/linux/configure-raid) bulunabilir
+- En fazla üretilen iş için bir şeritli birim oluşturmak üzere LVM yapılandırma ayrıntıları [burada](/previous-versions/azure/virtual-machines/linux/configure-lvm) bulunabilir
 
 Boyut gereksinimlerine bağlı olarak, bir VM 'nin en fazla üretilen iş hızına ulaşmak için farklı seçenekler vardır. Her DT 2,0 sanal makine türü için, üst VM aktarım hızı sınırına ulaşmak üzere olası veri hacmi disk konfigürasyonları aşağıda verilmiştir. E32sv3 VM, daha küçük iş yükleri için bir giriş düzeyi olarak değerlendirilmelidir. Bu durumda yeterince hızlı olmadığından, VM 'nin M64-32ms olarak yeniden boyutlandırılması gerekebilir.
 M64-32ms VM 'nin belleği çok fazlaysa, GÇ yükü özellikle okuma yoğunluklu iş yükleri için sınıra ulaşmayabilir. Bu nedenle, Stripe kümesindeki daha az disk, müşterinin özel iş yüküne bağlı olarak yeterli olabilir. Ancak, aşağıdaki Disk yapılandırmalarının en yüksek aktarım hızını garanti etmek için aşağıda verilmiştir:
@@ -271,7 +271,7 @@ Günlük birimini boyutlandırma hakkında birkaç örnek aşağıda verilmişti
 | 6 x P15-> 1,5 TB | 4 x P6-> 256 GB | 1 x P15-> 256 GB |
 
 
-SAP HANA ölçeği genişletme gibi,/Hana/Shared Directory SAP HANA VM ile DT 2,0 VM arasında paylaşılmalıdır. Yüksek oranda kullanılabilir bir NFS sunucusu işlevi gören adanmış VM 'Ler kullanılarak SAP HANA ölçek genişletme için aynı mimari önerilir. Paylaşılan yedekleme birimi sağlamak için, aynı tasarım kullanılabilir. Ancak, HA gerekli olacaksa veya bir yedekleme sunucusu işlevi görecek şekilde yeterli depolama kapasitesine sahip ayrılmış bir VM kullanmak için yeterli olup olmadığı müşteriye ait olur.
+SAP HANA ölçeği genişletme gibi,/Hana/paylaşılan dizin, SAP HANA VM ile DT 2,0 VM arasında paylaşılmalıdır. Yüksek oranda kullanılabilir bir NFS sunucusu işlevi gören adanmış VM 'Ler kullanılarak SAP HANA ölçek genişletme için aynı mimari önerilir. Paylaşılan yedekleme birimi sağlamak için, aynı tasarım kullanılabilir. Ancak, HA gerekli olacaksa veya bir yedekleme sunucusu işlevi görecek şekilde yeterli depolama kapasitesine sahip ayrılmış bir VM kullanmak için yeterli olup olmadığı müşteriye ait olur.
 
 
 
@@ -324,4 +324,3 @@ Listelenen makaleleri hakkında bilgi edinin
 - [Red Hat Enterprise Linux Azure NetApp Files kullanarak Azure VM 'lerinde bekleme düğümüne sahip bir SAP HANA genişleme sistemi dağıtma](./sap-hana-scale-out-standby-netapp-files-rhel.md)
 - [SUSE Linux Enterprise Server üzerinde Azure VM 'lerinde SAP HANA yüksek kullanılabilirliği](./sap-hana-high-availability.md)
 - [Red Hat Enterprise Linux üzerinde Azure VM 'lerinde SAP HANA yüksek kullanılabilirliği](./sap-hana-high-availability-rhel.md)
-

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/07/2020
+ms.date: 12/01/2020
 ms.author: memildin
-ms.openlocfilehash: 6b54f02b39e233dcf35f0d18682ca102883d76c3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 85dffd4d96a78bab9dd890d9ad37572f3e524f06
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791877"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487941"
 ---
 # <a name="configure-email-notifications-for-security-alerts"></a>Güvenlik uyarıları için e-posta bildirimlerini yapılandırma 
 
@@ -31,9 +31,9 @@ Bildirim e-postalarınız için kendi tercihlerinizi tanımlamak üzere Azure G�
 
 Uyarı fatıg ' y i önlemek için, güvenlik merkezi giden e-posta hacminin miktarını sınırlandırır. Güvenlik Merkezi, her abonelik için şunu gönderir:
 
-- **yüksek öneme sahip** uyarılar için günde en fazla **dört** e-posta
-- **Orta önem derecesine** sahip uyarılar için günde en fazla **iki** e-posta
-- **düşük önem derecesi** uyarıları için günde en fazla **bir** e-posta
+- **yüksek öneme sahip** uyarılar için **6 saat** başına en fazla bir e-posta (günde 4 e-posta)
+- **Orta öneme sahip** uyarılar için **12 saat** başına en fazla bir e-posta (günde 2 e-posta)
+- **düşük önem derecesine** sahip uyarılar için **24 saat** başına en fazla bir e-posta
 
 :::image type="content" source="./media/security-center-provide-security-contacts/email-notification-settings.png" alt-text="Güvenlik uyarıları hakkında e-posta alacak kişinin ayrıntılarını yapılandırma." :::
  
@@ -52,20 +52,19 @@ Uyarı fatıg ' y i önlemek için, güvenlik merkezi giden e-posta hacminin mik
 
 Kişilere veya belirli Azure rollerine sahip tüm kullanıcılara e-posta bildirimleri gönderebilirsiniz.
 
-1. Güvenlik Merkezi 'nin **fiyatlandırma & ayarları** alanından ilgili aboneliği seçin ve **e-posta bildirimleri** ' ni seçin.
+1. Güvenlik Merkezi 'nin **fiyatlandırma & ayarları** alanından ilgili aboneliği seçin ve **e-posta bildirimleri**' ni seçin.
 
 1. Bildirimlerin alıcılarını, bu seçeneklerden birini veya her ikisini de tanımlayın:
 
     - Açılan listeden, kullanılabilir roller ' i seçin.
     - Virgülle ayrılmış belirli e-posta adreslerini girin. Girebilmeniz gereken e-posta adresi sayısı için bir sınır yoktur.
 
-1. Güvenlik iletişim bilgilerini aboneliğinize uygulamak için **Kaydet** ' i seçin.
+1. Güvenlik iletişim bilgilerini aboneliğinize uygulamak için **Kaydet**' i seçin.
 
 
-## <a name="next-steps"></a>Sonraki adımlar
-
+## <a name="see-also"></a>Ayrıca bkz.
 Güvenlik uyarıları hakkında daha fazla bilgi edinmek için aşağıdaki sayfalara bakın:
 
 - [Güvenlik uyarıları-bir başvuru kılavuzu](alerts-reference.md)-Azure Güvenlik Merkezi 'Nin tehdit koruması modülünde görebileceğiniz güvenlik uyarılarını öğrenin
 - [Azure Güvenlik Merkezi 'nde güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md)--güvenlik uyarılarını yönetme ve yanıtlama hakkında bilgi edinin
-- [Güvenlik Merkezi tetikleyicilerine yönelik yanıtları otomatikleştirin](workflow-automation.md)--özel bildirim mantığı Ile Güvenlik Merkezi tetikleyicilerine yanıt vermek için Otomasyon kullanın
+- [Iş akışı Otomasyonu](workflow-automation.md)--özel bildirim mantığı ile uyarılara olan yanıtları otomatikleştirin

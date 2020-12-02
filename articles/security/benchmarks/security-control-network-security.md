@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: bd69f239a1c65040c44da776186ab8d955f5e333
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3a232f8e8c35e265a8243ac79e465c03f6b9650e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94693214"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487873"
 ---
 # <a name="security-control-network-security"></a>Güvenlik denetimi: ağ güvenliği
 
@@ -76,7 +76,7 @@ NSG 'leri, sınırlı bir süre için bitiş noktaları onaylı IP adresleriyle 
 
 Bağlantı noktalarını ve kaynak IP 'Leri gerçek trafik ve tehdit zeka göre sınırlayan NSG yapılandırmalarının kullanılması için Azure Güvenlik Merkezi Uyarlamalı ağ sağlamlaştırma kullanın.
 
-- [DDoS korumasını yapılandırma](../../virtual-network/manage-ddos-protection.md)
+- [DDoS korumasını yapılandırma](../../ddos-protection/manage-ddos-protection.md)
 
 - [Azure Güvenlik duvarını dağıtma](../../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -150,7 +150,7 @@ Azure Ilkesiyle ağ kaynakları için standart güvenlik yapılandırması tanı
 
 Azure şemaları, Azure kaynakları Yöneticisi şablonları, Azure RBAC denetimleri ve ilkeleri gibi tek bir şema tanımında paket ortam yapıtları sunarak büyük ölçekli Azure dağıtımlarını basitleştirecek şekilde de kullanabilirsiniz. Şema 'i yeni aboneliklere uygulayabilir ve sürüm oluşturma aracılığıyla denetim ve yönetimi ayarlayabilirsiniz.
 
-- [Azure Ilkesini yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
+- [Azure İlkesi'ni yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Ağ için Azure Ilke örnekleri](../../governance/policy/samples/built-in-policies.md#network)
 

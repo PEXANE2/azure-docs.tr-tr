@@ -6,24 +6,23 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: d261640dfdb59b2b06cfe3066fca26640a0bed54
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: a68501bd1189993b4dd0c2acdecaa7434fa51dcc
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874653"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488043"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Izleyici, ayrılmış kümeleri günlüğe kaydeder
 
-Azure Izleyici günlükleri adanmış kümeler, yüksek hacimli müşterilere daha iyi hizmeti sağlamak için kullanılabilen bir dağıtım seçeneğidir. Günde 4 TB 'den fazla veri alan müşteriler adanmış kümeler kullanacaktır. Adanmış kümelere sahip müşteriler bu kümelerde barındırılacak çalışma alanlarını seçebilirler.
+Azure Izleyici günlükleri adanmış kümeler, Azure Izleyici günlük müşterileri için gelişmiş yetenek sağlayan bir dağıtım seçeneğidir. Adanmış kümelere sahip müşteriler bu kümelerde barındırılacak çalışma alanlarını seçebilirler.
 
-Yüksek hacimli destek dışında, adanmış kümeler kullanmanın başka avantajları da vardır:
+Adanmış kümeler gerektiren yetenekler şunlardır:
 
-- **Hız limiti** -müşteri, yalnızca adanmış kümede daha yüksek alım [oranı sınırlarına](../service-limits.md#data-ingestion-volume-rate) sahip olabilir.
-- **Özellikler** -belirli kurumsal özellikler yalnızca özel kümeler üzerinde mevcuttur-özellikle müşteri tarafından yönetilen anahtarlar (CMK) ve kasa desteği. 
-- **Tutarlılık** -müşteriler kendi özel kaynaklarına sahiptir ve bu nedenle aynı paylaşılan altyapıda çalışan diğer müşterilerin hiçbir etkisi yoktur.
-- **Maliyet verimliliği** -atanan kapasite rezervasyon katmanları tüm küme alımını hesaba alcağından ve bu, bazıları küçük ve kapasite rezervasyon indirimlerine uygun olmasa bile, tüm çalışma alanları için geçerli olduğundan adanmış küme kullanımı daha uygun maliyetli olabilir.
-- Tüm çalışma alanları aynı kümede ise, **çoklu çalışma** alanları sorguları daha hızlı çalışır.
+- **[Müşteri tarafından yönetilen anahtarlar](../platform/customer-managed-keys.md)** -müşteri tarafından sunulan ve denetlenen anahtarları kullanarak küme verilerini şifreleyin.
+- **[Kasa](../platform/customer-managed-keys.md#customer-lockbox-preview)** -müşteriler, Microsoft Destek mühendislerinin verilere yönelik erişim isteklerini denetleyebilir.
+- **[Çift şifreleme](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)** , şifreleme algoritmalarından veya anahtarlardan birinin tehlikeye girdiği bir senaryoya karşı koruma sağlar. Bu durumda, ek şifreleme katmanı verilerinizi korumaya devam eder.
+- **[Çoklu çalışma alanı](../log-query/cross-workspace-query.md)** -bir müşteri üretim için birden fazla çalışma alanı kullanıyorsa, adanmış kümeyi kullanmak mantıklı olabilir. Tüm çalışma alanları aynı kümede ise, çoklu çalışma alanları sorguları daha hızlı çalışır. Atanan kapasite rezervasyon katmanları tüm küme alımını hesaba alcağından ve bu, bazıları küçük ve kapasite rezervasyon indirimlerine uygun olmasa bile, tüm çalışma alanları için geçerli olan adanmış kümeyi kullanmak daha uygun maliyetli olabilir.
 
 Adanmış kümeler, müşterilerin gün başına en az 1 TB veri alma kapasitesi kullanarak işlemesini gerektirir. Adanmış bir kümeye geçiş basittir. Veri kaybı veya hizmet kesintisi yok. 
 
@@ -76,7 +75,7 @@ Aşağıdaki özellikler belirtilmelidir:
 
 Kümeleri oluşturan kullanıcı hesabının standart Azure kaynak oluşturma izni: `Microsoft.Resources/deployments/*` ve küme yazma iznine sahip olması gerekir `(Microsoft.OperationalInsights/clusters/write)` .
 
-### <a name="create"></a>Oluşturma 
+### <a name="create"></a>Oluştur 
 
 **PowerShell**
 

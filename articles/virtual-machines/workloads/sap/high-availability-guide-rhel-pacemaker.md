@@ -13,14 +13,14 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 09/29/2020
+ms.date: 12/01/2020
 ms.author: radeltch
-ms.openlocfilehash: 6e906e6c86d615852191e2fd65a2b1a58695ed34
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b111dae035e7a055628642fe7c460734199ff608
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968562"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486351"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Azure 'da Red Hat Enterprise Linux Paceyapıcısı ayarlama
 
@@ -69,6 +69,7 @@ ms.locfileid: "94968562"
   * [Microsoft Azure Red Hat Enterprise Linux 7,4 (ve üzeri) High-Availability kümesini yükleme ve yapılandırma](https://access.redhat.com/articles/3252491)
   * [RHEL 8 ' i benimseme ile ilgili konular-yüksek kullanılabilirlik ve kümeler](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/considerations_in_adopting_rhel_8/high-availability-and-clusters_considerations-in-adopting-rhel-8)
   * [RHEL 7,6 üzerinde pacemaker 'da tek başına sıraya alma sunucu 2 (ENSA2) ile SAP S/4HANA yoks/ERS yapılandırma](https://access.redhat.com/articles/3974941)
+  * [Azure 'da SAP teklifleri için RHEL](https://access.redhat.com/articles/5456301)
 
 ## <a name="cluster-installation"></a>Küme yüklemesi
 
@@ -80,7 +81,7 @@ ms.locfileid: "94968562"
 
 Şu öğeler, **[A]** ön eki olan tüm düğümlere uygulanabilir, **[1]** -yalnızca düğüm 1 veya **[2]** için geçerlidir-yalnızca node 2 için geçerlidir.
 
-1. **[A]** kayıt. RHEL 8. x HA özellikli görüntüler kullanılıyorsa bu adım gerekli değildir.  
+1. **[A]** kayıt. RHEL SAP HA özellikli görüntüler kullanılıyorsa bu adım gerekli değildir.  
 
    Sanal makinelerinizi kaydedin ve RHEL 7 için depoları içeren bir havuza bağlayın.
 
@@ -90,9 +91,9 @@ ms.locfileid: "94968562"
    sudo subscription-manager attach --pool=&lt;pool id&gt;
    </code></pre>
 
-   Bir Azure Marketi PAYG RHEL görüntüsüne bir havuz iliştirerek, RHEL kullanımınız için etkin bir şekilde iki faturalandırılır: PAYG görüntüsü için bir kez ve eklediğiniz havuzdaki RHEL yetkilendirmelerinin bir kez. Bunu azaltmak için, Azure artık KCG RHEL görüntüleri sağlamaktadır. [Burada](../redhat/byos.md) daha fazla bilgi bulabilirsiniz.
+   Bir Azure Marketi PAYG RHEL görüntüsüne bir havuz iliştirerek, RHEL kullanımınız için etkin bir şekilde iki faturalandırılır: PAYG görüntüsü için bir kez ve eklediğiniz havuzdaki RHEL yetkilendirmelerinin bir kez. Bunu azaltmak için, Azure artık KCG RHEL görüntüleri sağlamaktadır. [Burada](../redhat/byos.md) daha fazla bilgi bulabilirsiniz.  
 
-1. **[A]** SAP depoları için RHEL 'yi etkinleştirin. RHEL 8. x HA özellikli görüntüler kullanılıyorsa bu adım gerekli değildir.  
+1. **[A]** SAP depoları için RHEL 'yi etkinleştirin. RHEL SAP HA özellikli görüntüler kullanılıyorsa bu adım gerekli değildir.  
 
    Gerekli paketleri yüklemek için aşağıdaki depoları etkinleştirin.
 

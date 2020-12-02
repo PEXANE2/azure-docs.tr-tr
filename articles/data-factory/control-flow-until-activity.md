@@ -3,27 +3,27 @@ title: Azure Data Factory etkinlik tarihine kadar
 description: Until etkinliği, etkinlik ile ilişkili koşul doğru olarak değerlendirilene veya zaman aşımına uğrayana kadar bir dizi etkinliği yürütür.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 63873a4f8301d3cb20488b02b32200f476922276
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ab3644b11273017ea6e4e5a395a7d3cc3a201217
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417955"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486037"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Azure Data Factory etkinlik tarihine kadar
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Until etkinliği, programlama dillerindeki do-until döngü yapısıyla aynı işlevselliği sağlar. Etkinlikle ilişkilendirilmiş olan koşul doğru sonucunu verene kadar bir dizi etkinliği döngüsel olarak yürütür. Data Factory'de bitiş etkinliği için bir zaman aşımı değeri belirtebilirsiniz. 
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -56,7 +56,7 @@ Until etkinliği, programlama dillerindeki do-until döngü yapısıyla aynı i�
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
 name | `Until`Etkinliğin adı. | Dize | Evet
-tür | To **until**olarak ayarlanmalıdır. | Dize | Evet
+tür | To **until** olarak ayarlanmalıdır. | Dize | Evet
 ifade | True veya false sonucunu vermesi gereken ifade | İfadesini.  | Evet
 timeout | Do-Until döngüsü, belirtilen süreden sonra zaman aşımına uğrar. | Dize. `d.hh:mm:ss` (veya) `hh:mm:ss` . Varsayılan değer 7 gündür. Maksimum değer: 90 gün. | Hayır
 Etkinlikler | İfadesi olarak değerlendirilene kadar yürütülen etkinlik kümesi `true` . | Etkinlik dizisi. |  Evet

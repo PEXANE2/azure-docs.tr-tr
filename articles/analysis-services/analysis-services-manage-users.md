@@ -4,15 +4,15 @@ description: Bu makalede, Azure Analysis Services kimlik yönetimi ve Kullanıc�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b40be802f30bac8438f10c4ab60e1c196c9f7164
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 551bae56565140da3754e74a23b1cc18087f1171
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833801"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487448"
 ---
 # <a name="authentication-and-user-permissions"></a>Kimlik doğrulaması ve kullanıcı izinleri
 
@@ -24,7 +24,7 @@ Azure Analysis Services [Azure AD B2B işbirliğini](../active-directory/externa
 
 ## <a name="authentication"></a>Kimlik Doğrulaması
 
-Tüm istemci uygulamaları ve araçları bir sunucuya bağlanmak için bir veya daha fazla Analysis Services [istemci kitaplığı](/analysis-services/client-libraries?view=azure-analysis-services-current) (amo, MSOLAP, ADOMD) kullanır. 
+Tüm istemci uygulamaları ve araçları bir sunucuya bağlanmak için bir veya daha fazla Analysis Services [istemci kitaplığı](/analysis-services/client-libraries?view=azure-analysis-services-current&preserve-view=true) (amo, MSOLAP, ADOMD) kullanır. 
 
 Üç istemci kitaplığı da Azure AD etkileşimli akışını ve etkileşimli olmayan kimlik doğrulama yöntemlerini destekler. Etkileşimli olmayan iki yöntem, Active Directory parola ve Active Directory tümleşik kimlik doğrulama yöntemleri, AMOMD ve MSOLAP kullanan uygulamalarda kullanılabilir. Bu iki yöntem hiçbir koşulda açılan iletişim kutularında sonuç vermez.
 

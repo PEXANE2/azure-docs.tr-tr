@@ -31,6 +31,10 @@
       href: concepts-built-in-policy.md
     - name: Rol tanımı yapıtı
       href: concepts-custom-role-definition.md
+    - name: Güvenlik
+      items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Yayımcılar
@@ -40,7 +44,7 @@
         - name: Portal arabirimini test etme
           href: test-createuidefinition.md
         - name: Azure uygulama teklifi oluşturma
-          href: ../../marketplace/partner-center-portal/create-new-azure-apps-offer.md?toc=/azure/azure-resource-manager/managed-applications/toc.json
+          href: ../../marketplace/create-new-azure-apps-offer.md?toc=/azure/azure-resource-manager/managed-applications/toc.json
         - name: Tam zamanında erişim isteme
           href: request-just-in-time-access.md
         - name: Mevcut sanal ağı ekleme

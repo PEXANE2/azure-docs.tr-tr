@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 17b978d3f4faebd3870868bceeea4572288ecb07
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 647009854ef5a0c0811fc303914f724272f1a3f5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965366"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486666"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Azure’da Linux için SAP BusinessObjects İş Zekası platformu dağıtım kılavuzu
 
@@ -37,7 +37,7 @@ Bu örnekte, ürün sürümü ve dosya sistemi düzeninin altında kullanılır
 - MySQL için Azure veritabanı (sürüm: 8.0.15)
 - MySQL C API Bağlayıcısı-libmysqlclient (sürüm: 6.1.11)
 
-| Dosya Sistemi        | Description                                                                                                               | Boyut (GB)             | Sahip  | Grup  | Depolama                    |
+| Dosya Sistemi        | Açıklama                                                                                                               | Boyut (GB)             | Sahip  | Grup  | Depolama                    |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------|-----------------------|--------|--------|----------------------------|
 | /usr/SAP           | SAP BOBI örneği, varsayılan Tomcat Web uygulaması ve veritabanı sürücüleri (gerekliyse) yüklemek için dosya sistemi | SAP boyutlandırma yönergeleri | bl1adm | sapsys | Yönetilen Premium disk-SSD |
 | /usr/SAP/frsinput  | Bağlama dizini, giriş dosyası deposu dizini olarak kullanılacak tüm BOBI konaklarındaki paylaşılan dosyalara yöneliktir  | İşletme gereksinimi         | bl1adm | sapsys | Azure NetApp Files         |
@@ -615,7 +615,7 @@ CMS veritabanına yönelik diğer DBMS dağıtımı için, farklı DBMS dağıt�
 
 Dosya deposu sunucusu (FRS), raporlar, evrenler ve bağlantılar gibi içeriklerin depolandığı disk dizinlerine başvurur. Bu, bu sistemin tüm uygulama sunucuları arasında paylaşılıyor. Bu nedenle, yüksek oranda kullanılabilir olduğundan emin olmanız gerekir.
 
-Azure 'da, yüksek oranda kullanılabilir ve yüksek oranda dayanıklı olacak şekilde tasarlanan dosya paylaşımının [Azure Premium dosyalarını](../../../storage/files/storage-files-introduction.md) veya [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) seçebilirsiniz. Daha fazla bilgi için bkz. Azure dosyaları için [Artıklık](https://docs.microsoft.com/azure/storage/files/storage-files-planning#redundancy) bölümü.
+Azure 'da, yüksek oranda kullanılabilir ve yüksek oranda dayanıklı olacak şekilde tasarlanan dosya paylaşımının [Azure Premium dosyalarını](../../../storage/files/storage-files-introduction.md) veya [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) seçebilirsiniz. Daha fazla bilgi için bkz. Azure dosyaları için [Artıklık](../../../storage/files/storage-files-planning.md#redundancy) bölümü.
 
 > [!NOTE]
 > Azure dosyaları için SMB protokolü genel kullanıma sunulmuştur, ancak Azure dosyaları için NFS protokol desteği şu anda önizleme aşamasındadır. Daha fazla bilgi için bkz. [Azure dosyaları Için NFS 4,1 desteği artık önizlemededir](https://azure.microsoft.com/en-us/blog/nfs-41-support-for-azure-files-is-now-in-preview/)
@@ -667,7 +667,7 @@ Azure Site Recovery hizmeti, ikincil bölgede Web ve bı uygulama sunucularını
 
   Şu anda NetApp anlık görüntü® teknolojisini kullanan [önizlemede](https://azure.microsoft.com/en-us/blog/azure-netapp-files-cross-region-replication-and-new-enhancements-in-preview/) olan Azure NetApp Files çapraz bölge çoğaltmasını kullanabilirsiniz. Bu nedenle, yalnızca değiştirilen bloklar ağ üzerinden sıkıştırılmış, etkili bir biçimde gönderilir. Bu özel teknoloji, bölge genelinde çoğaltmak için gereken veri miktarını en aza indirir ve veri aktarımı maliyetlerini kaydeder. Ayrıca, daha küçük bir geri yükleme noktası hedefine (RPO) ulaşmak için çoğaltma süresini kısaltır. Daha fazla bilgi için [çapraz bölge çoğaltmasını kullanma gereksinimleri ve konuları](../../../azure-netapp-files/cross-region-replication-requirements-considerations.md) bölümüne bakın.
 
-- **Azure Premium dosyaları** yalnızca yerel olarak yedekli (LRS) ve bölgesel olarak yedekli depolamayı (ZRS) destekler. Azure Premium dosyaları DR stratejisi için [AzCopy](../../../storage/common/storage-use-azcopy-v10.md) veya [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.storage/) kullanarak dosyalarınızı farklı bir bölgedeki başka bir depolama hesabına kopyalayabilirsiniz. Daha fazla bilgi için bkz. [olağanüstü durum kurtarma ve depolama hesabı yük devretme](../../../storage/common/storage-disaster-recovery-guidance.md)
+- **Azure Premium dosyaları** yalnızca yerel olarak yedekli (LRS) ve bölgesel olarak yedekli depolamayı (ZRS) destekler. Azure Premium dosyaları DR stratejisi için [AzCopy](../../../storage/common/storage-use-azcopy-v10.md) veya [Azure PowerShell](/powershell/module/az.storage/) kullanarak dosyalarınızı farklı bir bölgedeki başka bir depolama hesabına kopyalayabilirsiniz. Daha fazla bilgi için bkz. [olağanüstü durum kurtarma ve depolama hesabı yük devretme](../../../storage/common/storage-disaster-recovery-guidance.md)
 
 #### <a name="cms-database"></a>CMS veritabanı
 
@@ -695,4 +695,4 @@ Bu örnekte kullanılan her bir katmanın olağanüstü durum kurtarma önerisi 
 - [Çok katmanlı SAP uygulaması dağıtımı için olağanüstü durum kurtarmayı ayarlama](../../../site-recovery/site-recovery-sap.md)
 - [SAP için Azure sanal makineleri planlama ve uygulama](planning-guide.md)
 - [SAP için Azure sanal makineleri dağıtımı](deployment-guide.md)
-- [SAP için Azure sanal makineleri DBMS dağıtımı](dbms-guide.md)
+- [SAP için Azure sanal makineleri DBMS dağıtımı](./dbms_guide_general.md)

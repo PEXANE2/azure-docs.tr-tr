@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 11/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05b2747dc21e2aedf16c6ca6e6c31af03b38c81f
-ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
+ms.openlocfilehash: e07876f9e28e7f3245f2524b5ef5da08de085ec1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96299522"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486479"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -80,12 +80,12 @@ Bu bölümde, PowerBI tümleştirmesiyle ilgili belgeleri SAP veri kaynaklarına
 
 ## <a name="change-log"></a>Değişiklik Günlüğü
 
-- 11/26/2020: [SAP iş yükü için](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) Azure [sanal makine depolama yapılandırmalarının](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) ve Azure depolama türlerini tek [VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines) 'larını değiştirdi SAP HANA uyarlayın
-- 11/05/2020: [Azure sanal makine depolama yapılandırmalarında SAP HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) desteklenen dosya sistemi türleri hakkında yeni SAP notuna yönelik bağlantıyı değiştirme 
-- 10/26/2020: Azure Premium Depolama yapılandırması için bazı tabloları değiştirme [SAP HANA Azure sanal makine depolama yapılandırmalarında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) sağlanan ve veri bloğu aktarım hızını açıklığa kavuşturacak
+- 11/26/2020: [SAP iş yükü için](./planning-guide-storage.md) Azure [sanal makine depolama yapılandırmalarının](./hana-vm-operations-storage.md) ve Azure depolama türlerini tek [VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines) 'larını değiştirdi SAP HANA uyarlayın
+- 11/05/2020: [Azure sanal makine depolama yapılandırmalarında SAP HANA](./hana-vm-operations-storage.md) desteklenen dosya sistemi türleri hakkında yeni SAP notuna yönelik bağlantıyı değiştirme 
+- 10/26/2020: Azure Premium Depolama yapılandırması için bazı tabloları değiştirme [SAP HANA Azure sanal makine depolama yapılandırmalarında](./hana-vm-operations-storage.md) sağlanan ve veri bloğu aktarım hızını açıklığa kavuşturacak
 - 10/22/2020: [SLES for SAP uygulamaları üzerindeki Azure VM](./high-availability-guide-suse.md)'lerinde SAP NW için ha 'DA, [ANF ile SLES](./high-availability-guide-suse-netapp-files.md)'deki Azure VM 'lerinde SAP NW 'de [sap NW için ha, net.IPv4.TCP_KEEPALIVE_TIME](./high-availability-guide-rhel.md) [Khel ile RHEL](./high-availability-guide-rhel-netapp-files.md) 'nin Azure VM 'lerinde  
 - 10/16/2020: [SLES 'In pacemaker Ile Azure VM 'LERINDE IBM DB2 LUW 'ın ha](./dbms-guide-ha-ibm.md)'de değiştirilmesi [Azure VM 'lerinde SAP NW için, RHEL 'nin SAP uygulamaları için](./high-availability-guide-rhel.md)ha, RHEL ÜZERINDEKI Azure VM 'lerinde [IBM DB2 LUW](./high-availability-guide-rhel-ibm-db2-luw.md), RHEL 'de Azure VM 'lerinde SAP NW [için ha](./high-availability-guide-rhel-multi-sid.md), [ANF Ile RHEL üzerindeki Azure VM 'lerinde SAP NW](./high-availability-guide-rhel-netapp-files.md)için ha [SLES for SAP UYGULAMALARı üzerinde SAP NW için ha](./high-availability-guide-suse.md), SLES [Multi-SID kılavuzundaki Azure VM 'LERINDE SAP](./high-availability-guide-suse-multi-sid.md)'ye yönelik ha, [SLES 'de Azure VM 'Lerinde SAP NW için ha SAP uygulamaları için ANF](./high-availability-guide-suse-netapp-files.md), [SLES 'de Azure VM 'lerinde NFS için ha](./high-availability-guide-suse-nfs.md), [SLES üzerinde Azure VM 'lerinde SAP HANA ha](./sap-hana-high-availability.md), [RHEL üzerinde ANF ile SAP HANA ölçeği artırma](./sap-hana-high-availability-netapp-files-red-hat.md) , [RHEL üzerinde Azure VM 'lerinde SAP HANA ha](./sap-hana-high-availability-rhel.md), [RHEL üzerindeki Azure VM 'Lerinde pacemaker Ile genişleme HSR SAP HANA](./sap-hana-high-availability-scale-out-hsr-rhel.md)wsfc ve [paylaşılan disk Ile](./sap-high-availability-infrastructure-wsfc-shared-disk.md)SAP yoks/SCS, wsfc ve [Azure Paylaşılan](./sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md) disk ile SAP yoks/SCS için çok düzeyli ha Kılavuzu ve IKINCIL IP 'lerde Yük Dengeleme senaryolarında, kayan IP 'nin desteklenmeyen bir Ifade eklemek için çok [düzeyli ha Kılavuzu](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md) için Azure altyapısını hazırlama 
-- 10/16/2020: HANA büyük örneklerde [SAP HANA yedekleme ve geri yükleme](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore) sırasında Hana büyük örneklerinin depolama anlık görüntülerini denetlemek için belgeler ekleme
+- 10/16/2020: HANA büyük örneklerde [SAP HANA yedekleme ve geri yükleme](./hana-backup-restore.md) sırasında Hana büyük örneklerinin depolama anlık görüntülerini denetlemek için belgeler ekleme
 - 10/15/2020: Azure 'da SAP BusinessObjects bı platformu, Azure 'da SAP BusinessObjects [bı platformu planlama ve uygulama kılavuzu](businessobjects-deployment-guide.md) , Azure 'da [Linux Için Azure ve SAP BusinessObjects bı platform dağıtım kılavuzu](businessobjects-deployment-guide-linux.md) ' na bakın
 - 10/05/2020: [RHEL yapılandırma kılavuzunda Azure VM 'Lerinde pacemaker ile SAP HANA genişleme HSR](./sap-hana-high-availability-scale-out-hsr-rhel.md) sürümü
 - 09/30/2020: [RHEL üzerinde Azure VM 'lerinde SAP HANA yüksek kullanılabilirlik](./sap-hana-high-availability-rhel.md), ha, RHEL [üzerinde anf ile SAP HANA ölçeği artırma](./sap-hana-high-availability-netapp-files-red-hat.md) ve RHEL 8,1 yönergelerini uyarlamak için [Azure 'Da RHEL üzerinde paceyapıcısı ayarlama](./high-availability-guide-rhel-pacemaker.md)

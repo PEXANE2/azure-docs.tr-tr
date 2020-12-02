@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/16/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: 0cd1458c90970e219f2929e26423e455ba647a28
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 01f02efd36c51f3969ee53e9efc78fbe1664b187
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015120"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486547"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>Pacemaker ile SUSE Linux Enterprise Server üzerinde Azure VM 'lerinde IBM DB2 LUW 'ın yüksek kullanılabilirliği
 
@@ -27,7 +27,7 @@ Desteklenen IBM DB2 sürümleri, SAP Note [1928533]' de belgelendiği gibi 10,5 
 
 Yüklemeye başlamadan önce, aşağıdaki SAP notları ve belgelerine bakın:
 
-| SAP Note | Description |
+| SAP Note | Açıklama |
 | --- | --- |
 | [1928533] | Azure 'da SAP uygulamaları: Desteklenen Ürünler ve Azure VM türleri |
 | [2015553] | Azure üzerinde SAP: destek önkoşulları |
@@ -396,7 +396,7 @@ Azure Load Balancer yapılandırmak için, [Azure Standart Load Balancer SKU](..
 > Standart Load Balancer SKU 'SU, Load Balancer altındaki düğümlerden ortak IP adreslerine erişen kısıtlamalara sahiptir. [SAP yüksek kullanılabilirlik senaryolarında Azure Standart Load Balancer kullanan sanal makineler Için genel uç nokta bağlantısı](./high-availability-guide-standard-load-balancer-outbound-connections.md) makalesi, bu DÜĞÜMLERIN genel IP adreslerine erişmesini sağlama yollarını açıklayarak
 
 > [!IMPORTANT]
-> Kayan IP, Yük Dengeleme senaryolarında NIC ikincil IP yapılandırmasında desteklenmez. Ayrıntılar için bkz. [Azure yük dengeleyici sınırlamaları](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations). VM için ek IP adresine ihtiyacınız varsa ikinci bir NIC dağıtın.  
+> Kayan IP, Yük Dengeleme senaryolarında NIC ikincil IP yapılandırmasında desteklenmez. Ayrıntılar için bkz. [Azure yük dengeleyici sınırlamaları](../../../load-balancer/load-balancer-multivip-overview.md#limitations). VM için ek IP adresine ihtiyacınız varsa ikinci bir NIC dağıtın.  
 
 1. Ön uç IP havuzu oluşturun:
 

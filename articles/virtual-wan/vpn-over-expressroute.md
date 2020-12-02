@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6c6f71277c276bed603989774637bd95999de333
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b8dde3ed76587e2343edaec8626287853ec6ef9b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023542"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487516"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute şifrelemesi: sanal WAN için ExpressRoute üzerinden IPSec
 
@@ -95,7 +95,7 @@ Site kaynağı, sanal bir WAN için ExpressRoute VPN siteleri ile aynıdır. Şi
 
    BGP etkinse, Azure 'da bu site için oluşturulan tüm bağlantılara uygulanır. Sanal WAN üzerinde BGP 'yi yapılandırmak, Azure VPN ağ geçidinde BGP 'yi yapılandırmaya eşdeğerdir. 
    
-   Şirket içi BGP eş adresiniz, cihazdaki VPN 'nizin IP adresi veya VPN sitesinin sanal ağ adresi alanı ile *aynı olmamalıdır.* BGP eşi IP 'niz için VPN cihazında farklı bir IP adresi kullanın. Bu aygıttaki geri döngü arabirimine atanmış bir adres olabilir. Ancak, bir APIPA (169,254 *) olamaz.* *x*. *x*) adresi. Bu adresi, konumu temsil eden karşılık gelen yerel ağ geçidinde belirtin. BGP önkoşulları için bkz. [Azure VPN Gateway Ile BGP hakkında](../vpn-gateway/vpn-gateway-bgp-overview.md).
+   Şirket içi BGP eş adresiniz, cihazdaki VPN 'nizin IP adresi veya VPN sitesinin sanal ağ adresi alanı ile *aynı olmamalıdır.* BGP eşi IP 'niz için VPN cihazında farklı bir IP adresi kullanın. Bu aygıttaki geri döngü arabirimine atanmış bir adres olabilir. Ancak, bir APIPA (169,254 *) olamaz.* *x*. *x*) adresi. Bu adresi, konumu temsil eden ilgili VPN sitesinde belirtin. BGP önkoşulları için bkz. [Azure VPN Gateway Ile BGP hakkında](../vpn-gateway/vpn-gateway-bgp-overview.md).
 
 1. Ileri ' yi seçin: ayar değerlerini denetlemek ve VPN sitesini oluşturmak için **>+ oluştur** ' u seçin. Bağlanacak **hub 'ları** seçtiyseniz, şirket içi ağ ve Merkez VPN ağ geçidi arasında bağlantı kurulacaktır.
 
@@ -115,7 +115,7 @@ VPN sitesini oluşturup hub 'a bağlandıktan sonra, bağlantıyı ExpressRoute 
 1. **Azure özel IP adresini kullan** için **Evet**' i seçin. Bu ayar, hub VPN ağ geçidini, genel IP adresleri yerine, bu bağlantı için ağ geçidinde bulunan hub adres aralığı içinde özel IP adresleri kullanacak şekilde yapılandırır. Bu, şirket içi ağdan gelen trafiğin bu VPN bağlantısı için genel internet kullanmak yerine ExpressRoute özel eşleme yollarından geçeceğini güvence altına alır. Aşağıdaki ekran görüntüsünde Bu ayar gösterilmektedir:
 
    :::image type="content" source="./media/vpn-over-expressroute/vpn-link-configuration.png" alt-text="VPN bağlantısı için özel IP adresi kullanma ayarı" border="false":::
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 Değişikliklerinizi kaydettikten sonra, Merkez VPN ağ geçidi, ExpressRoute üzerinden şirket içi VPN cihazıyla IPSec/ıKE bağlantıları kurmak için VPN ağ geçidinde özel IP adreslerini kullanır.
 

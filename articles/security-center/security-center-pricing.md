@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/24/2020
 ms.author: memildin
-ms.openlocfilehash: ee2582d25477d9b9f4fe0bac6b230132a797fd0f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6c0e92c566dd69cdea14c9c7d346a5ec65f892bf
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95896603"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487958"
 ---
 # <a name="pricing-of-azure-security-center"></a>Azure Güvenlik Merkezi fiyatlandırması
 Azure Güvenlik Merkezi, Azure’da, şirket içinde ve diğer bulutlarda çalışan iş yükleri için birleşik güvenlik yönetimi ve gelişmiş tehdit koruması sağlar. Karma bulut iş yükleri, tehditlere maruz kalma olasılığını azaltan etkin savunmaları ve hızlı gelişen siber risklerle hızlanmanıza yardımcı olacak akıllı algılama üzerinde görünürlük ve denetim sağlar.
@@ -50,7 +50,7 @@ Azure Defender 'ı etkinleştirmek için:
 1. Güvenlik Merkezi 'nin ana menüsünde, **fiyatlandırma & ayarları**' nı seçin.
 1. Yükseltmek istediğiniz aboneliği seçin.
 1. Yükseltmek için **Azure Defender '** ı seçin.
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 Örnek abonelik için fiyatlandırma sayfası aşağıda verilmiştir. Azure Defender 'daki her planın ayrı olarak fiyatlandırıldığını ve tek tek açık veya kapalı olduğunu fark edeceksiniz.
 
@@ -86,9 +86,9 @@ Aboneliğiniz için Azure Defender 'ı etkinleştirmek üzere aşağıdaki yolla
 |Yöntem  |Yönergeler  |
 |---------|---------|
 |Azure portal Azure Güvenlik Merkezi sayfaları|[Azure Defender’ı etkinleştirme](#enable-azure-defender)|
-|REST API|[Prmerler API 'SI](https://docs.microsoft.com/rest/api/securitycenter/pricings)|
-|Azure CLI’si|[az Security fiyatlandırması](https://docs.microsoft.com/cli/azure/security/pricing)|
-|PowerShell|[Set-Azsecurityprsosu](https://docs.microsoft.com/powershell/module/az.security/set-azsecuritypricing)|
+|REST API|[Prmerler API 'SI](/rest/api/securitycenter/pricings)|
+|Azure CLI|[az Security fiyatlandırması](/cli/azure/security/pricing)|
+|PowerShell|[Set-Azsecurityprsosu](/powershell/module/az.security/set-azsecuritypricing)|
 |Azure İlkesi|[Paket ları](https://github.com/Azure/Azure-Security-Center/tree/master/Pricing%20%26%20Settings/Azure%20Policy%20definitions/Bundle%20Pricings)|
 |||
 
