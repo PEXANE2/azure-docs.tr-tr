@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 11/25/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: e919db24a70b0ed69aca6977865cc76c0c9c5845
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: dd7616bdc07aee86ac56a2f2fe0ac282838c58b4
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182470"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518864"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager şablonu özellikleri (Önizleme)
 
@@ -21,7 +21,7 @@ ms.locfileid: "96182470"
 Şablon belirtimini dağıtmak için PowerShell, Azure CLı, Azure portal, REST ve diğer desteklenen SDK 'lar ve istemciler gibi standart Azure araçlarını kullanırsınız. Şablonla aynı komutları kullanın.
 
 > [!NOTE]
-> Şablon özellikleri şu anda önizleme aşamasındadır. Bunu kullanmak için PowerShell veya Azure CLı 'nin en son sürümünü yüklemelisiniz. Azure PowerShell için, [5.0.0 veya üzeri sürümünü](/powershell/azure/install-az-ps)kullanın. Azure CLı için [sürüm 2.14.2 veya üstünü](/cli/azure/install-azure-cli)kullanın.
+> Şablon özellikleri şu anda önizleme aşamasındadır. Azure PowerShell ile kullanmak için, [5.0.0 veya üzeri sürümünü](/powershell/azure/install-az-ps)yüklemelisiniz. Azure CLı ile kullanmak için, [Version 2.14.2 veya üstünü](/cli/azure/install-azure-cli)kullanın.
 
 ## <a name="why-use-template-specs"></a>Şablon özellikleri neden kullanılmalıdır?
 
@@ -332,7 +332,7 @@ Aşağıdaki örnek, önceki örneğe benzerdir, ancak `id` özelliğini kullana
 
 Şablon özelliklerinin bağlanması hakkında daha fazla bilgi için bkz. [öğretici: şablon belirtimini bağlantılı şablon olarak dağıtma](template-specs-deploy-linked-template.md).
 
-## <a name="versioning"></a>Sürüm Oluşturma
+## <a name="versioning"></a>Sürüm oluşturma
 
 Bir şablon belirtimi oluşturduğunuzda, bunun için bir sürüm adı sağlarsınız. Şablon kodu üzerinde yineleme yaparken, var olan bir sürümü güncelleştirebilir (düzeltmeler için) veya yeni bir sürüm yayımlayabilirsiniz. Sürüm bir metin dizesidir. Anlamsal sürüm oluşturma da dahil olmak üzere tüm sürüm oluşturma sistemini izlemeyi tercih edebilirsiniz. Şablon belirtiminin kullanıcıları, dağıtma sırasında kullanmak istedikleri sürüm adını sağlayabilir.
 

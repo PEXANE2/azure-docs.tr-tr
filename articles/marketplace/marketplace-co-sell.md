@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
-ms.date: 11/20/2020
-ms.openlocfilehash: 9d6970331024ea0cd08e890cc62507d9eb230678
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 12/2/2020
+ms.openlocfilehash: 99b5e7bee93ffee14585f048506104ec313b9bff
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016342"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518544"
 ---
 # <a name="co-sell-partner-engagement"></a>Ortak satış iş ortağı etkileşimi
 
@@ -24,7 +24,7 @@ Ortak satış programı, **fikri mülkiyet (IP) ile birlikte,** **Microsoft Tech
 
     ![Satış müşteri adayları paylaşıldığında, kabul edildiğinde ve Microsoft tarafından yönetilen müşterilere karşı kazanıldığında ortak satışın nasıl olacağını gösteren diyagram.](./media/marketplace-publishers-guide/marketplace-co-sell-v2.png)
 
-- **Ortak satış incentivized** IP çözümleri, aşağıda listelenen Market avantajlarına ek olarak Microsoft satış ekipleriyle işbirliği halinde satılan Microsoft alanı satıcıları için teşvikleri kazanılabilir.</li></ul>
+- **Ortak satış incentivized** IP teklifleri, aşağıda listelenen Market avantajlarına ek olarak Microsoft satış ekipleriyle işbirliği halinde satılan Microsoft alanı satıcıları için teşvikleri kazanılabilir.</li></ul>
 
 ## <a name="marketplace-benefits-for-incentivized-offers"></a>İncentivized teklifleri için Market avantajları
 
@@ -67,7 +67,7 @@ Ortak satış yolculuğunu aşağıdaki adımları izleyerek doğrudan Iş Orta�
 
     :::image type="content" source="media/co-sell/co-sell-listing-section.png" alt-text="Bu görüntüde ortak Satış sekmesinin listeleme bölümü gösterilmektedir.":::  
 
-1. Teklifinizle ilgili ayrıntıları sağlayın ve **Belgeler** bölümündeki yardımcı malzemeleri yükleyin. Microsoft satıcıları, bu bilgileri teklifinizi önermek ve satmak için kullanacaktır. (*Gerekli: müşteri tek sayfalayıcı ve müşteri sunum destesi.*)
+1. Teklifinizle ilgili ayrıntıları sağlayın ve **Belgeler** bölümündeki yardımcı malzemeleri yükleyin. Microsoft satıcıları, bu bilgileri teklifinizi önermek ve satmak için kullanacaktır. *(Gerekli: çözüm/teklif tek sayfalayıcı ve çözüm/teklif sıklık destesi. Azure IP ortak satışı incentivized durumu: başvuru mimarisi diyagramına ulaşmak için gereklidir.)*
 
     :::image type="content" source="media/co-sell/co-sell-documents-section.png" alt-text="Bu görüntüde ortak satış sekmesindeki belgeler bölümü gösterilmektedir.":::
 

@@ -2,15 +2,15 @@
 title: Şablon belirtimini oluşturma ve dağıtma
 description: ARM şablonundan bir şablon belirtimi oluşturmayı öğrenin. Ardından, şablon belirtimini aboneliğinizdeki bir kaynak grubuna dağıtın.
 author: tfitzmac
-ms.date: 11/17/2020
+ms.date: 12/01/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: 8439b1de5a69b3e5bfc22e10f089938da921c1cb
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 03cf2013f1cec9722af5d7e72285d9f11d8a6bc1
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94747511"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518966"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>Hızlı başlangıç: şablon belirtimini oluşturma ve dağıtma (Önizleme)
 
@@ -21,15 +21,37 @@ Bu hızlı başlangıçta, bir Azure Resource Manager şablonu (ARM şablonu) bi
 Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
-> Şablon özellikleri şu anda önizleme aşamasındadır. Bunu kullanmak için PowerShell veya Azure CLı 'nin en son sürümünü yüklemelisiniz. Azure PowerShell için, [5.0.0 veya üzeri sürümünü](/powershell/azure/install-az-ps)kullanın. Azure CLı için [sürüm 2.14.2 veya üstünü](/cli/azure/install-azure-cli)kullanın.
+> Şablon özellikleri şu anda önizleme aşamasındadır. Azure PowerShell ile kullanmak için, [5.0.0 veya üzeri sürümünü](/powershell/azure/install-az-ps)yüklemelisiniz. Azure CLı ile kullanmak için, [Version 2.14.2 veya üstünü](/cli/azure/install-azure-cli)kullanın.
 
 ## <a name="create-template-spec"></a>Şablon belirtimi oluşturma
 
-Şablon belirtimi, **Microsoft. resources/Templatespec** adlı bir kaynak türüdür. Şablon belirtimini oluşturmak için Azure PowerShell, Azure CLı veya ARM şablonunu kullanabilirsiniz. Tüm seçeneklerde, şablon belirtimi içinde paketlenmiş bir ARM şablonuna ihtiyacınız vardır.
+Şablon belirtimi, **Microsoft. resources/Templatespec** adlı bir kaynak türüdür. Şablon belirtimini oluşturmak için Azure portal, Azure PowerShell, Azure CLı veya ARM şablonunu kullanabilirsiniz. Tüm seçeneklerde, şablon belirtimi içinde paketlenmiş bir ARM şablonuna ihtiyacınız vardır.
 
 PowerShell ve CLı ile ARM şablonu komutuna bir parametre olarak geçirilir. ARM şablonuyla, şablon belirtimi içinde paketlenecek ARM şablonu, şablon belirtimi tanımına katıştırılır.
 
 Bu seçenekler aşağıda gösterilmiştir.
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. Ekranın en üstünden, **arama kaynakları, hizmetler ve docs**' de **Şablon Özellikleri**' ni girin ve ardından **Şablon Özellikleri**' ni seçin.
+1. **Şablon Oluştur belirtimini** seçin.
+1. Aşağıdaki değerleri seçin veya girin:
+
+    - **Ad**: şablon belirtimi için bir ad girin.  Örneğin, **storageSpec**
+    - **Abonelik**: şablon belirtimini oluşturmak için kullanılan bir Azure aboneliği seçin.
+    - **Kaynak grubu**: **Yeni oluştur**' u seçin ve ardından yeni bir kaynak grubu adı girin.  Örneğin, **Templatespecrg**.
+    - **Konum**: kaynak grubu için bir konum seçin. Örneğin,  **Batı ABD 2**.
+    - **Sürüm**: şablon belirtimi için bir sürüm girin. Örneğin, **1,0** veya **v 1.0**.
+
+1. **İleri ' yi seçin: şablonu Düzenle**.
+1. Şablon içeriğini aşağıdaki JSON ile değiştirin:
+
+    :::code language="json" source="~/quickstart-templates/101-storage-account-create/azuredeploy.json":::
+
+    Bu şablon spec içinde paketlenecektir.
+1. **Gözden geçir + oluştur**' u seçin.
+1. **Oluştur**’u seçin.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -203,7 +225,23 @@ Bu seçenekler aşağıda gösterilmiştir.
 
 ## <a name="deploy-template-spec"></a>Şablon belirtimini dağıt
 
-Artık şablon belirtimini dağıtabilirsiniz. Şablon belirtiminin dağıtım, şablon belirtiminin kaynak KIMLIĞI ' ni geçirmeniz dışında, içerdiği şablonu dağıtmaktan benzer. Aynı dağıtım komutlarını kullanırsınız ve gerekirse, şablon belirtiminin parametre değerlerini geçirin.
+Artık şablon belirtimini dağıtabilirsiniz. Şablon belirtiminin dağıtımı, Azure PowerShell veya Azure CLı içindeki şablon belirtiminin kaynak KIMLIĞINI geçirmeniz dışında, içerdiği şablonu dağıtmaya benzer. Aynı dağıtım komutlarını kullanırsınız ve gerekirse, şablon belirtiminin parametre değerlerini geçirin.
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+1. Azure portal, son yordamda oluşturduğunuz kaynak grubunu açın.  Örneğin **Templatespecrg**.
+1. Oluşturduğunuz şablon belirtimini seçin. Örneğin, **storageSpec**.
+1. **Dağıt**'ı seçin.
+1. Aşağıdaki değerleri seçin veya girin:
+
+    - **Abonelik**: kaynağı oluşturmak Için bir Azure aboneliği seçin.
+    - **Kaynak grubu**: **Yeni oluştur** ' u seçin ve ardından **storagerg** yazın.
+    - **Depolama hesabı türü**: **Standard_GRS** seçin.
+
+    Yeni bir kaynak grubu oluşturur ve şablonu şablon spec içinde yeni kaynak grubuna dağıtırsınız.
+
+1. **Gözden geçir ve oluştur**’u seçin.
+1. **Oluştur**’u seçin.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

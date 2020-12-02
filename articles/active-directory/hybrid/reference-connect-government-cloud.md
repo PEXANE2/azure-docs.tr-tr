@@ -11,19 +11,19 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 219893859d05eb419bc862484a9083abf8c26db7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bbb4298d0d9a9d7589c4a2055b4d55a0b852f951
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997724"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518218"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Azure Kamu Bulutu için karma kimlik konuları
 
 Bu makalede, karma bir ortamı Microsoft Azure Kamu bulutu ile tümleştirmeyle ilgili konular açıklanmaktadır. Bu bilgiler, Azure Kamu bulutuyla çalışan yöneticiler ve Mimarlar için bir başvuru olarak sağlanır.
 
 > [!NOTE]
-> Şirket içi Microsoft Azure Active Directory (Azure AD) ortamını Azure Kamu bulutu ile bütünleştirmek için en son [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)sürümüne yükseltmeniz gerekir.
+> Azure Kamu bulutu ile bir Microsoft Active Directory ortamını (Şirket içinde veya aynı bulut örneğinin parçası olan bir IaaS 'de barındırılan) bütünleştirmek için, en son [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594)sürümüne yükseltmeniz gerekir.
 
 Savunma uç noktalarının Birleşik Devletler kamu departmanı tam listesi için [belgelere](/office365/enterprise/office-365-u-s-government-dod-endpoints)bakın.
 

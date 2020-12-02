@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9de4a4534551c4a41b2c81c1d10fecf6118ff868
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 00670746c1686bca354adc989ddce6c9dd336491
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96434524"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96519068"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı için veri şifreleme
 
@@ -44,7 +44,8 @@ MySQL için Azure veritabanınız için veri şifrelemeyi ayarlamak ve yönetmek
   * Sona erme tarihi yok
   * Devre dışı değil
   * **Al**, **sarmalama**, **geri** alınamaz işlemleri gerçekleştirin
-  * recoverylevel özniteliği **kurtarılabilir** olarak ayarlandı.
+  * recoverylevel özniteliği **kurtarılabilir** olarak ayarlandı (Bu, bekletme süresi 90 gün olarak ayarlanan geçici silme gerektirir)
+  * Temizleme koruması etkin
 
 Aşağıdaki komutu kullanarak anahtarın yukarıdaki özniteliklerini doğrulayabilirsiniz:
 

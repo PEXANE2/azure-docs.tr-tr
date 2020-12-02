@@ -1,6 +1,6 @@
 ---
 title: Jupyıter 'ı yerel olarak yükleyip Azure HDInsight 'ta Spark 'a bağlanma
-description: Jupyter Not defterini bilgisayarınıza yerel olarak yüklemeyi ve bir Apache Spark kümesine bağlamayı öğrenin.
+description: Jupyter Notebook bilgisayara yerel olarak yüklemeyi ve bir Apache Spark kümesine bağlamayı öğrenin.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,21 +8,21 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-python
 ms.date: 04/23/2020
-ms.openlocfilehash: 96b2e7deff464f00ced4457a514ac833a90bd42d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 16cb8a9c2a951c9f60640248ef74757d1e5ee200
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999901"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518932"
 ---
-# <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Jupyter Not defterini bilgisayarınıza yükleyip HDInsight üzerinde Apache Spark bağlanın
+# <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Jupyter Notebook bilgisayarınıza yükleyip HDInsight üzerinde Apache Spark bağlanın
 
-Bu makalede, Jupyter Not defterini özel PySpark (Python için) ve Apache Spark (Scala için) Spark Magic ile birlikte nasıl yükleyeceğinizi öğreneceksiniz. Ardından, Not defterini bir HDInsight kümesine bağlayabilirsiniz.
+Bu makalede, Spark Magic ile özel PySpark (Python için) ve Apache Spark (Scala için) Jupyter Notebook yüklemeyi öğreneceksiniz. Ardından, Not defterini bir HDInsight kümesine bağlayabilirsiniz.
 
 Jupyıter yükleme ve HDInsight üzerinde Apache Spark bağlanma konusunda dört temel adım vardır.
 
 * Spark kümesini yapılandırın.
-* Jupyter Not defterini yükler.
+* Jupyter Notebook 'i yükler.
 * Spark Magic ile pyspark ve Spark çekirdekler 'i yükler.
 * Spark Magic 'i HDInsight 'ta Spark kümesine erişecek şekilde yapılandırın.
 
@@ -34,7 +34,7 @@ Jupyıter yükleme ve HDInsight üzerinde Apache Spark bağlanma konusunda dört
 
 * HDInsight üzerinde Spark ile Jupyter Notebook kullanma bilgisi.
 
-## <a name="install-jupyter-notebook-on-your-computer"></a>Jupyter Not defterini bilgisayarınıza yükler
+## <a name="install-jupyter-notebook-on-your-computer"></a>Jupyter Notebook bilgisayarınıza yükleyip
 
 Jupyıter not defterlerini yüklemeden önce Python 'u yükleyebilirsiniz. [Anaconda dağıtımı](https://www.anaconda.com/download/) , hem Python hem de Jupyter Notebook yükler.
 
@@ -150,7 +150,7 @@ Bu bölümde, daha önce yüklediğiniz Spark Magic 'i bir Apache Spark kümesin
 
     a. Yeni bir not defteri oluşturun. Sağ köşedeki **Yeni**' yi seçin. Varsayılan Çekirdek **Python 2** veya **Python 3 ' ü** ve yüklediğiniz çekirdekleri görmeniz gerekir. Gerçek değerler, yükleme seçimlerinize bağlı olarak farklılık gösterebilir.  **Pyspark** seçin.
 
-    ![Jupyter not defterinde kullanılabilir çekirdekler](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels-notebook.png "Jupyter not defterinde kernels")
+    ![Jupyter Notebook 'de kullanılabilir çekirdekler](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels-notebook.png "Jupyter Notebook kernels")
 
     > [!IMPORTANT]  
     > **Yeni** seçildikten sonra, herhangi bir hata için kabuğunuz gözden geçirin.  Hatayı görürseniz, `TypeError: __init__() got an unexpected keyword argument 'io_loop'` belirli bir Tornado sürümü ile ilgili bilinen bir sorunla karşılaşmış olabilirsiniz.  Bu durumda, çekirdeği durdurun ve ardından aşağıdaki komutla Tornado yüklemenizi indirgemeniz gerekir: `pip install tornado==4.5.3` .
@@ -170,7 +170,7 @@ Bu bölümde, daha önce yüklediğiniz Spark Magic 'i bir Apache Spark kümesin
 
 Bilgisayarınıza Jupyter 'yı yüklemeye ve sonra HDInsight 'ta bir Apache Spark kümesine bağlamaya neden olan nedenler:
 
-* , Not defterlerinizi yerel olarak oluşturma, uygulamanızı çalışan bir kümede test etme ve sonra not defterlerini kümeye yükleme seçeneği sunar. Not defterlerini kümeye yüklemek için, veya kümesi çalıştıran Jupyter Not defterini kullanarak bunları karşıya yükleyebilir ya da onları `/HdiNotebooks` kümeyle ilişkili depolama hesabındaki klasöre kaydedebilirsiniz. Not defterlerinin kümede nasıl depolandığı hakkında daha fazla bilgi için bkz. [nerede jupi Not defteri depolanıyor](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)?
+* , Not defterlerinizi yerel olarak oluşturma, uygulamanızı çalışan bir kümede test etme ve sonra not defterlerini kümeye yükleme seçeneği sunar. Not defterlerini kümeye yüklemek için, veya kümesi çalıştıran Jupyter Notebook kullanarak bunları karşıya yükleyebilir ya da onları `/HdiNotebooks` kümeyle ilişkili depolama hesabındaki klasöre kaydedebilirsiniz. Not defterlerinin kümede nasıl depolandığı hakkında daha fazla bilgi için bkz. [nerede jupi Not defteri depolanıyor](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)?
 * Yerel olarak kullanılabilir olan Not defterleri sayesinde, uygulama gereksiniminize göre farklı Spark kümelerine bağlanabilirsiniz.
 * GitHub kullanarak bir kaynak denetim sistemi uygulayabilir ve Not defterleri için sürüm denetimine sahip olabilirsiniz. Aynı zamanda birden çok kullanıcının aynı not defteriyle çalışılabilecek işbirliği ortamınıza sahip olabilirsiniz.
 * Bir kümeye sahip olmaksızın, Not defterlerle yerel olarak çalışabilirsiniz. Not defterlerinizi veya bir geliştirme ortamını el ile yönetmek için not defterlerinizi test etmek üzere bir kümeye ihtiyacınız vardır.
@@ -182,5 +182,5 @@ Bilgisayarınıza Jupyter 'yı yüklemeye ve sonra HDInsight 'ta bir Apache Spar
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Genel Bakış: Azure HDInsight’ta Apache Spark](apache-spark-overview.md)
-* [Apache Spark Jupyter Not defteri için kernels](apache-spark-jupyter-notebook-kernels.md)
+* [Apache Spark Jupyter Notebook için kernels](apache-spark-jupyter-notebook-kernels.md)
 * [Apache Spark 'de jupi Notebook ile dış paketleri kullanma](apache-spark-jupyter-notebook-use-external-packages.md)

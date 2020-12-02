@@ -13,12 +13,12 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: 9ecac482c138447a3a9dc99193fb131b688993e4
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 28bacb923578fa0c631aa7b5092e0d11f98b1dcf
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556616"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518422"
 ---
 # <a name="use-azure-portal-to-configure-an-availability-group-preview-for-sql-server-on-azure-vm"></a>Azure VM 'de SQL Server için bir kullanılabilirlik grubu (Önizleme) yapılandırmak üzere Azure portal kullanma 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -32,7 +32,7 @@ Bu özellik şu anda önizleme sürümündedir.
 Bu makalede kullanılabilirlik grubu ortamını yapılandırmak için Azure portal kullanılırken, [PowerShell veya Azure CLI](availability-group-az-commandline-configure.md), [Azure hızlı başlangıç şablonları](availability-group-quickstart-template-configure.md)veya [el ile](availability-group-manually-configure-tutorial.md) de yapılabilir. 
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure portal kullanarak her zaman açık kullanılabilirlik grubu yapılandırmak için aşağıdaki önkoşullara sahip olmanız gerekir: 
 
@@ -100,9 +100,6 @@ Bunu yapmak için aşağıdaki adımları izleyin:
 1. Kümenizin ayarlarını gözden geçirin. 
 1. Kümenizi eklemek için **Uygula** ' yı seçin ve sonra devam etmek Için sorulduğunda **Evet** ' i seçin.
 
-
-
-
 ## <a name="create-availability-group"></a>Kullanılabilirlik grubu oluştur
 
 Kümeniz oluşturulduktan veya eklendi olduktan sonra, Azure portal kullanarak kullanılabilirlik grubunu oluşturun. Bunu yapmak için aşağıdaki adımları izleyin:
@@ -145,8 +142,8 @@ SQL Server Management Studio kullanarak kullanılabilirlik grubunuza veritabanla
 1. Uzak Masaüstü Bağlantısı (RDP) gibi tercih ettiğiniz yöntemi kullanarak SQL Server sanal makinelerinizdeki birine bağlanın. 
 1. SQL Server Management Studio (SSMS) açın.
 1. SQL Server örneğine bağlanın. 
-1. **Nesne Gezgini** ' de **her zaman yüksek kullanılabilirlik '** i genişletin.
-1. **Kullanılabilirlik grupları** ' nı genişletin, kullanılabilirlik grubunuza sağ tıklayıp **veritabanı eklemeyi seçin...**.
+1. **Nesne Gezgini**' de **her zaman yüksek kullanılabilirlik '** i genişletin.
+1. **Kullanılabilirlik grupları**' nı genişletin, kullanılabilirlik grubunuza sağ tıklayıp **veritabanı eklemeyi seçin...**.
 
    :::image type="content" source="media/availability-group-az-portal-configure/add-database.png" alt-text="Nesne Gezgini 'nde kullanılabilirlik grubuna sağ tıklayın ve veritabanı Ekle ' yi seçin":::
 
@@ -171,7 +168,7 @@ Kümeye daha fazla SQL Server VM eklemek için şu adımları izleyin:
 
 1. **Windows Server yük devretme kümesi kimlik bilgilerini** genişletin ve SQL Server hizmeti, küme operatörü ve küme önyükleme hesapları için kullanılan hesaplara girin. 
 1. Kümeye eklemek istediğiniz SQL Server VM 'Leri seçin. 
-1. **Apply** (Uygula) seçeneğini belirleyin. 
+1. **Uygula**’yı seçin. 
 
 Üst gezinti çubuğundaki zil simgesinden erişilebilen **etkinlik günlüğünde** dağıtımınızın durumunu kontrol edebilirsiniz. 
 
@@ -207,7 +204,7 @@ Sonra, SQL IaaS Aracısı uzantısından küme meta verilerini kaldırın:
 # Remove the cluster from the SQL VM RP metadata
 # example: az sql vm group delete --name Cluster --resource-group SQLVM-RG
 
-az sql vm group delete --name <cluster name> Cluster --resource-group <resource group name>
+az sql vm group delete --name <cluster name> --resource-group <resource group name>
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -235,7 +232,7 @@ Sonra, SQL IaaS Aracısı uzantısından küme meta verilerini kaldırın:
 # Remove the cluster metadata
 # example: Remove-AzSqlVMGroup -ResourceGroupName "SQLVM-RG" -Name "Cluster"
 
-Remove-AzSqlVMGroup -ResourceGroupName "<resource group name>" -Name "<cluster name> "
+Remove-AzSqlVMGroup -ResourceGroupName "<resource group name>" -Name "<cluster name>"
 ```
 
 ---

@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 02/08/2020
 ms.author: victorh
-ms.openlocfilehash: 5705eedfb919c792c558384f6309325dcded4b43
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26078c3757e42c3e290a5f4122461b287582fb80
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86146613"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518830"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Application Gateway için Web uygulaması güvenlik duvarı ilkeleri oluşturma
 
@@ -23,8 +23,6 @@ Bir WAF ilkesinin dinleyiciyle ilişkilendirilmesi, tek bir WAF arkasındaki bir
 Application Gateway bir ilke uygulanmışsa ve sonra bu Application Gateway üzerindeki bir dinleyiciye farklı bir ilke uygularsanız, dinleyicinin ilkesi geçerli olur, ancak yalnızca atandığı dinleyicilerden yararlanabilir. Application Gateway ilkesi, kendisine atanmış belirli bir ilke olmayan tüm diğer dinleyiciler için de geçerlidir. 
 
    > [!NOTE]
-   > URI başına WAF Ilkeleri genel önizlemede. Bu, bu özelliğin Microsoft 'un ek kullanım koşulları 'na tabi olduğu anlamına gelir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-   > [!NOTE]
    > Bir güvenlik duvarı Ilkesi bir WAF ile ilişkilendirildikten sonra, bu WAF ile ilişkili bir ilke olmalıdır. Bu ilkenin üzerine yazabilir, ancak bir ilkenin WAF ile tamamen ilişkisi desteklenmez. 
 
 Tüm yeni Web uygulaması güvenlik duvarı WAF ayarları (özel kurallar, yönetilen kural kümesi yapılandırması, dışlamaları vb.) bir WAF Ilkesi içinde canlı. Var olan bir WAF 'niz varsa, bu ayarlar WAF yapılandırması 'nda hala mevcut olabilir. Yeni WAF Ilkesine geçme adımları için, bu makalenin ilerleyen kısımlarında [WAF config DOSYANıZı WAF Ilkesine geçirme](#migrate) bölümüne bakın. 
@@ -33,7 +31,7 @@ Tüm yeni Web uygulaması güvenlik duvarı WAF ayarları (özel kurallar, yöne
 
 İlk olarak, Azure portal kullanarak, yönetilen varsayılan kural kümesi (DRS) ile temel bir WAF ilkesi oluşturun.
 
-1. Portalın sol üst kısmında **kaynak oluştur**' u seçin. **WAF**araması yapın, **Web uygulaması güvenlik duvarı**' nı seçin ve **Oluştur**' u seçin.
+1. Portalın sol üst kısmında **kaynak oluştur**' u seçin. **WAF** araması yapın, **Web uygulaması güvenlik duvarı**' nı seçin ve **Oluştur**' u seçin.
 2. **BIR WAF Ilkesi oluştur** sayfasında, **temel** bilgiler sekmesinde, aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve ardından **gözden geçir + oluştur**' u seçin:
 
    |Ayar  |Değer  |
@@ -57,7 +55,7 @@ Tüm yeni Web uygulaması güvenlik duvarı WAF ayarları (özel kurallar, yöne
 
 ## <a name="configure-waf-rules-optional"></a>WAF kurallarını yapılandırma (isteğe bağlı)
 
-Bir WAF ilkesi oluşturduğunuzda, varsayılan olarak *algılama* modundadır. Algılama modunda WAF hiçbir isteği engellemez. Bunun yerine, eşleşen WAF kuralları WAF günlüklerine kaydedilir. WAF 'yi eylemde görmek için mod ayarlarını *önleme*olarak değiştirebilirsiniz. Önleme modunda, seçtiğiniz sp_configure kural kümesinde tanımlanan eşleşen kurallar engellenir ve/veya WAF günlüklerinde günlüğe kaydedilir.
+Bir WAF ilkesi oluşturduğunuzda, varsayılan olarak *algılama* modundadır. Algılama modunda WAF hiçbir isteği engellemez. Bunun yerine, eşleşen WAF kuralları WAF günlüklerine kaydedilir. WAF 'yi eylemde görmek için mod ayarlarını *önleme* olarak değiştirebilirsiniz. Önleme modunda, seçtiğiniz sp_configure kural kümesinde tanımlanan eşleşen kurallar engellenir ve/veya WAF günlüklerinde günlüğe kaydedilir.
 
 ## <a name="managed-rules"></a>Yönetilen kurallar
 
@@ -67,7 +65,7 @@ Azure tarafından yönetilen OWASP kuralları varsayılan olarak etkinleştirilm
 
 ## <a name="custom-rules"></a>Özel kurallar
 
-Özel kural oluşturmak için özel **kurallar** sekmesinin altında **özel kural ekle** ' yi seçin. Bu, özel kural yapılandırma sayfasını açar. Aşağıdaki ekran görüntüsünde, sorgu dizesinde *blok metni varsa*bir isteği engellemek için yapılandırılmış örnek bir özel kural gösterilmektedir.
+Özel kural oluşturmak için özel **kurallar** sekmesinin altında **özel kural ekle** ' yi seçin. Bu, özel kural yapılandırma sayfasını açar. Aşağıdaki ekran görüntüsünde, sorgu dizesinde *blok metni varsa* bir isteği engellemek için yapılandırılmış örnek bir özel kural gösterilmektedir.
 
 [![Özel kuralı ](../media/create-waf-policy-ag/edit-custom-rule.png) Düzenle](../media/create-waf-policy-ag/edit-custom-rule-lrg.png#lightbox)
 

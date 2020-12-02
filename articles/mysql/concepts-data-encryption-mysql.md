@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 87dff3bbb4a7ff5e40a06d1b63bdc38987d727fe
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f9b9681b08f5864dc34bbf1c35dc6919129c24cb
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492701"
+ms.locfileid: "96518813"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Müşteri tarafından yönetilen bir anahtarla MySQL için Azure veritabanı veri şifrelemesi
 
@@ -61,7 +61,7 @@ Sunucu, anahtar kasasında depolanan müşteri tarafından yönetilen anahtarı 
 Key Vault yapılandırmaya yönelik gereksinimler aşağıda verilmiştir:
 
 * MySQL için Azure veritabanı Key Vault ve aynı Azure Active Directory (Azure AD) kiracısına ait olmalıdır. Çapraz kiracı Key Vault ve sunucu etkileşimleri desteklenmez. Key Vault kaynağı taşıma daha sonra veri şifrelemeyi yeniden yapılandırmanız gerekir.
-* [Geçici-silme] ((..) öğesini etkinleştirin. /Key-Vault/General/Soft-Delete-overviewormd), yanlışlıkla bir anahtar (veya Key Vault) silme işlemi gerçekleşdiğinde veri kaybını korumak için bekletme süresi **90 gün** olarak ayarlanan anahtar kasasındaki özelliği. Saklama süresi açıkça <= 90 gün olarak ayarlanmadığı takdirde, geçici olarak silinen kaynaklar varsayılan olarak 90 gün boyunca tutulur. Kurtarma ve Temizleme eylemlerinin Key Vault erişim ilkesiyle ilişkili kendi izinleri vardır. Geçici silme özelliği varsayılan olarak kapalıdır, ancak PowerShell veya Azure CLı aracılığıyla etkinleştirebilir (Azure portal aracılığıyla etkinleştirebileceğinizi unutmayın).
+* Yanlışlıkla bir anahtar (veya Key Vault) silme işlemi gerçekleşdiğinde veri kaybını korumak için, saklama süresi **90 gün** olarak ayarlanan anahtar kasasındaki [geçici silme](../key-vault/general/soft-delete-overview.md) özelliğini etkinleştirin. Saklama süresi açıkça <= 90 gün olarak ayarlanmadığı takdirde, geçici olarak silinen kaynaklar varsayılan olarak 90 gün boyunca tutulur. Kurtarma ve Temizleme eylemlerinin Key Vault erişim ilkesiyle ilişkili kendi izinleri vardır. Geçici silme özelliği varsayılan olarak kapalıdır, ancak PowerShell veya Azure CLı aracılığıyla etkinleştirebilir (Azure portal aracılığıyla etkinleştirebileceğinizi unutmayın).
 * Anahtar kasasında saklama süresi **90 gün** olarak ayarlanan [korumayı temizle](../key-vault/general/soft-delete-overview.md#purge-protection) özelliğini etkinleştirin. Temizleme koruması, yalnızca geçici silme etkin olduğunda etkinleştirilebilir. Azure CLı veya PowerShell aracılığıyla etkinleştirilebilir. Temizleme koruması açık olduğunda, saklama süresi geçene kadar bir kasa veya silinen durumdaki bir nesne temizlenemiyor. Geçici olarak silinen kasalar ve nesneler kurtarılabilir ve bu da bekletme ilkesinin izlenmeyeceğinden emin olur. 
 * MySQL için Azure veritabanı 'na, benzersiz yönetilen kimliğini kullanarak Get, wrapKey ve unwrapKey izinleriyle anahtar kasasına erişim izni verin. Azure portal, MySQL üzerinde veri şifrelemesi etkinleştirildiğinde benzersiz ' hizmet ' kimliği otomatik olarak oluşturulur. Azure portal kullanırken, ayrıntılı, adım adım yönergeler için bkz. [MySQL için veri şifrelemeyi yapılandırma](howto-data-encryption-portal.md) .
 
@@ -70,8 +70,8 @@ Aşağıda, müşteri tarafından yönetilen anahtarı yapılandırmaya yönelik
 * DEK şifrelemek için kullanılan müşteri tarafından yönetilen anahtar yalnızca asimetrik, RSA 2048 olabilir.
 * Anahtar etkinleştirme tarihi (ayarlandıysa), geçmişteki bir tarih ve saat olmalıdır. Sona erme tarihi ayarlanmadı.
 * Anahtar *etkin* durumda olmalıdır.
-* Anahtarın, bekletme süresi **90 gün** olarak ayarlanan [geçici silme](../key-vault/general/soft-delete-overview.md) işlemi yapılmalıdır.
-* Kay 'ın [Temizleme koruması etkin](../key-vault/general/soft-delete-overview.md#purge-protection)olmalıdır.
+* Anahtarın, bekletme süresi **90 gün** olarak ayarlanan [geçici silme](../key-vault/general/soft-delete-overview.md) işlemi yapılmalıdır. Bu, gerekli anahtar özniteliği recoveryLevel ' a örtük olarak ayarlanır: "kurtarılabilir". Bekletme < 90 gün, recoveryLevel: "CustomizedRecoverable" olarak ayarlanırsa, saklama süresi ayarı **90 gün** olarak ayarlanmalıdır.
+* Anahtarın [Temizleme koruması etkin](../key-vault/general/soft-delete-overview.md#purge-protection)olmalıdır.
 * Anahtar kasasında [mevcut bir anahtarı içeri](/rest/api/keyvault/ImportKey/ImportKey) aktarıyorsanız, bunu desteklenen dosya biçimlerinde ( `.pfx` , `.byok` ,) sağladığınızdan emin olun `.backup` .
 
 ## <a name="recommendations"></a>Öneriler

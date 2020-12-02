@@ -13,12 +13,12 @@ ms.date: 10/27/2020
 ms.author: hirsin
 ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: b1ce076befc325fef7717c0404b31dadff952af6
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 909c8910a86734b0a34787f75c233975cd3503c3
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433300"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518252"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity platform erişim belirteçleri
 
@@ -75,7 +75,7 @@ JWTs (JSON Web belirteçleri) üç parçaya ayrılır:
 
 Her parça bir noktayla ( `.` ) ayrılır ve ayrı olarak Base64 kodlamalı olarak kodlanır.
 
-Talepler yalnızca, doldurulması için bir değer varsa vardır. Uygulamanız, var olan bir talep üzerinde bir bağımlılık alamaz. Örnekler arasında `pwd_exp` (her kiracı parolaların kullanım için süre sonu gerekmez) ve `family_name` ([istemci kimlik bilgileri] (v2-OAuth2-Client-creds-Grant-Flow.MD) akışları adları olmayan uygulamalar adına dahil değildir. Erişim belirteci doğrulama için kullanılan talepler her zaman mevcut olacaktır.
+Talepler yalnızca, doldurulması için bir değer varsa vardır. Uygulamanız, var olan bir talep üzerinde bir bağımlılık alamaz. Örnekler arasında `pwd_exp` (her kiracı parolaların kullanım süresini dolacak) ve `family_name` ([istemci kimlik bilgisi](v2-oauth2-client-creds-grant-flow.md) akışları, adları olmayan uygulamalar adına). Erişim belirteci doğrulama için kullanılan talepler her zaman mevcut olacaktır.
 
 Bazı talepler, Azure AD güvenli belirteçlerinin yeniden kullanım durumunda kullanılmasına yardımcı olmak için kullanılır. Bunlar, açıklamada "donuk" olarak genel tüketim için değil olarak işaretlenir. Bu talepler bir belirteçte görünebilir veya görünmeyebilir ve bildirimde bulunulmadan yenilerini eklenebilir.
 

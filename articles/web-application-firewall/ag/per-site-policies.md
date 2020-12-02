@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 09/16/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 3ac0540856d8cb8ccba6f1d176292d634d2dc80f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc15c8deb7aea3256cc0077fbdc3ce1a2492b1b2
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856611"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96519034"
 ---
 # <a name="configure-per-site-waf-policies-using-azure-powershell"></a>Azure PowerShell kullanarak site başına WAF ilkelerini yapılandırma
 
@@ -28,7 +28,7 @@ Bu makalede şunları öğreneceksiniz:
 * Ağı ayarlama
 * WAF ilkesi oluşturma
 * WAF etkinken bir uygulama ağ geçidi oluşturma
-* WAF ilkesini genel, site başına ve URI başına (Önizleme) uygulama
+* WAF ilkesini genel, site başına ve URI başına uygulama 
 * Sanal makine ölçek kümesi oluşturma
 * Bir depolama hesabı oluşturma ve tanılamaları yapılandırma
 * Uygulama ağ geçidini test etme
@@ -249,7 +249,7 @@ $appgw = New-AzApplicationGateway `
   -FirewallPolicy $wafPolicyGlobal
 ```
 
-### <a name="apply-a-per-uri-policy-preview"></a>URI başına ilke uygulama (Önizleme)
+### <a name="apply-a-per-uri-policy"></a>URI başına ilke uygulama
 
 URI başına ilke uygulamak için yeni bir ilke oluşturmanız ve bunu yol kuralı yapılandırmasına uygulamanız yeterlidir. 
 

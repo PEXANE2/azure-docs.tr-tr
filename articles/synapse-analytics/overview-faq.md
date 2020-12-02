@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 838276c47085a3c7ad0f7c0a35a2578b13eb5026
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 57948cf705d2a58b4f8e19e56121115ba33362ad
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511279"
+ms.locfileid: "96518643"
 ---
 # <a name="azure-synapse-analytics-frequently-asked-questions"></a>Azure SYNAPSE Analytics hakkında sık sorulan sorular
 
@@ -22,7 +22,7 @@ Bu kılavuzda, Azure SYNAPSE Analytics için en sık sorulan soruları bulacaks�
 
 ## <a name="general"></a>Genel
 
-### <a name="q-what-rbac-roles-exist-and-how-do-i-use-them-to-secure-a-synapse-workspace"></a>S: RBAC rolleri var ve bir Synapse çalışma alanının güvenliğini sağlamak için bunları nasıl kullanabilirim?
+### <a name="q-how-can-i-use-rbac-roles-to-secure-my-workspace"></a>S: çalışma alanım 'ı güvenli hale getirmek için RBAC rollerini nasıl kullanabilirim?
 
 Y: Azure SYNAPSE, çalışma alanınızın güvenliğini basitleştirecek bir dizi rol ve kapsamı kullanıma sunacaktır.
 
@@ -36,16 +36,16 @@ SYNAPSE RBAC rolleri:
 * SYNAPSE Işlem Işleci (Önizleme)
 * SYNAPSE kimlik bilgileri kullanıcısı (Önizleme)
 
-SYNAPSE RBAC kapsamları:
-* Çalışma alanı 
-* Spark havuzu
-* Tümleştirme çalışma zamanı
-* Bağlı hizmet
-* Kimlik Bilgisi
+SYNAPSE çalışma alanınızı güvenli hale getirmek için RBAC rollerini şu RBAC kapsamlarına atayın:
+* Çalışma Alanları
+* Spark havuzları
+* Tümleştirme çalışma zamanları
+* Bağlı hizmetler
+* Kimlik bilgileri
 
 Ayrıca, adanmış SQL havuzları ile bildiğiniz ve sevdiğiniz tüm güvenlik özelliklerine sahip olursunuz.
 
-### <a name="q-how-can-i-cost-control-for-the-capabilities-inside-a-synapse-workspace-such-as-dedicated-sql-pools-serverless-spark-pools-and-serverless-sql-pools"></a>S: adanmış SQL havuzları, sunucusuz Spark havuzları ve sunucusuz SQL havuzları gibi bir Synapse çalışma alanı içindeki yetenekler için nasıl ücret gönderebilirim?
+### <a name="q-how-do-i-control-cont-dedicated-sql-pools-serverless-sql-pools-and-serverless-spark-pools"></a>S: denetim devam eden adanmış SQL havuzları, sunucusuz SQL havuzları ve sunucusuz Spark havuzları Nasıl yaparım?.
 
 Y: başlangıç noktası olarak Azure SYNAPSE, Azure abonelik düzeyinde sunulan yerleşik maliyet analizi ve maliyet uyarıları ile birlikte çalışarak.
 

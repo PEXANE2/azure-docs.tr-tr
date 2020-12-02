@@ -4,12 +4,12 @@ description: Azure 'da kaynak Web uygulamanızı, bulut hizmetinizi, sanal makin
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 5af60befeda9f0ed4ed76f7ab8449e94950352fb
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: dbfffd98cd05e3ab2efbbe33e05da208fdc05600
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186584"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518711"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure 'da otomatik ölçeklendirme ile çalışmaya başlama
 Bu makalede, Microsoft Azure portal kaynağınız için otomatik ölçeklendirme ayarlarınızı nasıl ayarlayabileceğinizi açıklar.
@@ -136,7 +136,7 @@ Sistem durumu denetim yolu sağlandığında, App Service tüm örneklerdeki yol
 > [!NOTE]
 > App Service planınızın, yük dengeleyici dışlamanın gerçekleşmesi için 2 veya daha fazla örneğe ölçeklendirilmesi gerektiğini unutmayın. Yalnızca 1 örnek varsa, sağlıksız olsa bile yük dengeleyiciden kaldırılmaz. 
 
-Kalan sağlıklı örnekler daha fazla yük yaşayabilir. Kalan örneklerin aşırı bir kısmını ortadan kaldırmak için, örneklerinizin yarısını hariç tutulamayacak. Örneğin, bir App Service planı 4 örneğe ölçeklenirse ve 3 ' ü sağlıksız olan 3 tanesi, yük dengeleyici dönüşüyle dışarıda bırakılır. Diğer 2 örnek (1 sağlıklı ve 1 sağlıksız) istekleri almaya devam edecektir. Tüm örneklerin sağlıksız olduğu en kötü durum senaryosunda, hiçbiri dışlanacaktır. Bu davranışı geçersiz kılmak istiyorsanız, `WEBSITE_HEALTHCHECK_MAXUNHEALTYWORKERPERCENT` uygulama ayarını ve arasında bir değer olarak ayarlayabilirsiniz `0` `100` . Bunun daha yüksek bir değere ayarlanması, sağlıksız örneklerin kaldırıldığı anlamına gelir (varsayılan değer 50 ' dir).
+Kalan sağlıklı örnekler daha fazla yük yaşayabilir. Kalan örneklerin aşırı bir kısmını ortadan kaldırmak için, örneklerinizin yarısını hariç tutulamayacak. Örneğin, bir App Service planı 4 örneğe ölçeklenirse ve 3 ' ü sağlıksız olan 3 tanesi, yük dengeleyici dönüşüyle dışarıda bırakılır. Diğer 2 örnek (1 sağlıklı ve 1 sağlıksız) istekleri almaya devam edecektir. Tüm örneklerin sağlıksız olduğu en kötü durum senaryosunda, hiçbiri dışlanacaktır. Bu davranışı geçersiz kılmak istiyorsanız, `WEBSITE_HEALTHCHECK_MAXUNHEALTHYWORKERPERCENT` uygulama ayarını ve arasında bir değer olarak ayarlayabilirsiniz `0` `100` . Bunun daha yüksek bir değere ayarlanması, sağlıksız örneklerin kaldırıldığı anlamına gelir (varsayılan değer 50 ' dir).
 
 Bir örnek bir saat için sağlıksız kalırsa, yeni örnekle birlikte değişir. En fazla bir örnek, App Service plan başına günde en fazla üç örnek olacak şekilde saat başına değiştirilmeyecektir.
 

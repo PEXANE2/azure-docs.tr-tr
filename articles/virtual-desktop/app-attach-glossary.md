@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6107ffea4fe4d615a42973ab1b231ca9f6b5241f
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 7132eae073f3d53a104536076ae801ec9ff93e5f
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674960"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518677"
 ---
 # <a name="msix-app-attach-glossary"></a>MSIX uygulama iliştirme sözlüğü
 
@@ -109,6 +109,18 @@ Kaldırma işlemi, işletim sistemini, şu anda çalışmayan bir MALTıYA da uy
 ## <a name="cim"></a>CıM
 
 . CıM, bileşik görüntü dosyaları sistemi (CimFS) ile ilişkili yeni bir dosya uzantısıdır. CıM dosyalarının bağlanması ve kaldırılması, VHD dosyalarının daha hızlıdır. CıM aynı zamanda VHD 'den daha az CPU ve bellek kullanır.
+
+CıM dosyası, içeren bir dosyadır. Meta veriler ve gerçek verileri içeren en az altı ek dosya içeren CıM uzantısı. CıM dosyasındaki dosyaların uzantıları yok. Aşağıdaki tabloda, CıM içinde bulduğunuz örnek dosyaların listesi verilmiştir:
+
+| Dosya adı | Uzantı | Boyut |
+|-----------|-----------|------|
+| VSC | CıM | 1 KB |
+| objectid_b5742e0b-1b98-40B3-94a6-9cb96f497e56_0 | NA | 27 KB |
+| objectid_b5742e0b-1b98-40B3-94a6-9cb96f497e56_1 | NA | 20 KB |
+| objectid_b5742e0b-1b98-40B3-94a6-9cb96f497e56_2 | NA | 42 KB |
+| region_b5742e0b-1b98-40B3-94a6-9cb96f497e56_0 | NA | 428 KB |
+| region_b5742e0b-1b98-40B3-94a6-9cb96f497e56_1 | NA | 217 KB |
+| region_b5742e0b-1b98-40B3-94a6-9cb96f497e56_2 | NA | 264.132 KB |
 
 Aşağıdaki tablo, VHD ve CimFS arasında bir performans karşılaştırmasına sahiptir. Bu sayılar, bir DSv4 makinesinde çalıştırılan her biçimdeki 500 300 MB dosya içeren bir test çalıştırmasının sonucudur.
 

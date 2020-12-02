@@ -7,21 +7,16 @@ author: winthrop28
 ms.service: web-application-firewall
 ms.date: 11/20/2020
 ms.author: victorh
-ms.openlocfilehash: b546b043b856fd6ec69acd63fd69a01c48d0553b
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 59ca0b85ba2aff29bdb2ad3379c1054041d2b4cb
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94990134"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518745"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Azure Web uygulaması güvenlik duvarı (WAF) ilkesine genel bakış
 
 Web uygulaması güvenlik duvarı Ilkeleri tüm WAF ayarlarını ve yapılandırmasını içerir. Bu, dışlamaları, özel kuralları, yönetilen kuralları vb. içerir. Bu ilkeler daha sonra bir uygulama ağ geçidi (genel), bir dinleyici (site başına) veya yol tabanlı bir kural (URI başına), etkili olması için ilişkilendirilir.
-
-> [!NOTE]
-> Azure Web uygulaması güvenlik duvarı (WAF) URI başına ilkeler genel önizlemede.
-> 
-> Bu genel önizleme bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılmamalıdır. Belirli özellikler desteklenmiyor olabilir, kısıtlı yeteneklere sahip olabilir veya tüm Azure konumlarında mevcut olmayabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Oluşturabileceğiniz ilke sayısı için bir sınır yoktur. Bir ilke oluşturduğunuzda, etkili olması için bir uygulama ağ geçidi ile ilişkilendirilmesi gerekir. Uygulama ağ geçitleri, dinleyicileri ve yol tabanlı kuralların herhangi bir birleşimiyle ilişkilendirilebilir.
 

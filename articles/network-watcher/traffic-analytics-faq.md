@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
-ms.openlocfilehash: 25f4ae0dbfd7827a36dede6a889c342ea490e273
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: f27f2a6319bf2648546a62c2566d938db657738f
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94948485"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518473"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Trafik Analizi sık sorulan sorular
 
@@ -401,3 +401,6 @@ Sanal alt ağlar topolojisi sayfası iki ana bölüm içerir:
 - Topoloji görünümünde vurgulanan diğer düğümlere geçmek için, `Shift+Right arrow` iletme hareketi anahtarını kullanın. 
 - Vurgulanan düğümlerde, odak düğüm için **bilgi araç kutusuna** taşınır. Varsayılan olarak, odak **bilgi araç kutusundaki** **diğer ayrıntılar** düğmesine taşınır. **Kutu** görünümü içinde daha fazla hareket etmek için `Right arrow` ve `Left arrow` tuşlarını sırasıyla ileri ve geri taşımak için kullanın. ' Ye basmak, `Enter` **bilgi araç kutusunda** odaklanmış düğmesini seçerek aynı etkiye sahiptir.
 - Bu tür düğümlerin seçimi üzerinde, bir diğeri olan tüm bağlantılarını, bir, bir, tuşuna basarak ziyaret edebilirsiniz `Shift+Left arrow` . Odak, bu bağlantının **bilgi araç kutusuna** taşınır. Herhangi bir noktada, odak yeniden basılarak düğüme geri dönebilir `Shift+Right arrow` .
+
+## <a name="are-classic-nsgs-supported"></a>Klasik NSG 'ler destekleniyor mu?
+Hayır, Trafik Analizi klasik NSG 'yi desteklemez. Klasik kaynaklar [kullanım dışı](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation)kalacak şekilde, IaaS kaynaklarının klasik 'ten Azure Resource Manager geçirilmesi önerilir. [Nasıl geçiş yapılacağını](https://docs.microsoft.com/azure/virtual-machines/migration-classic-resource-manager-overview)öğrenmek için bu makaleye bakın.

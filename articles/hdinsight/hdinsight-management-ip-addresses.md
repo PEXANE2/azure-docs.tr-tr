@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: 35f2f82b4fe6862f0d023a70b32c964698b0c0eb
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 682db0ef52e624a23d95aa18a007f05a78f39677
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547818"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518796"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight yönetim IP adresleri
 
@@ -32,7 +32,7 @@ Aşağıdaki bölümlerde, izin verilmesi gereken belirli IP adresleri ele alın
 
 ## <a name="azure-dns-service"></a>Azure DNS hizmeti
 
-Azure tarafından belirtilen DNS hizmetini kullanıyorsanız, 53 numaralı bağlantı noktasında __168.63.129.16__ adresinden erişime izin verin. Daha fazla bilgi için bkz. [VM 'ler ve rol örnekleri Için ad çözümlemesi](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) belgesi. Özel DNS kullanıyorsanız, bu adımı atlayın.
+Azure tarafından belirtilen DNS hizmetini kullanıyorsanız, TCP ve UDP için 53 numaralı bağlantı noktasında __168.63.129.16__ erişimine izin verin. Daha fazla bilgi için bkz. [VM 'ler ve rol örnekleri Için ad çözümlemesi](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) belgesi. Özel DNS kullanıyorsanız, bu adımı atlayın.
 
 ## <a name="health-and-management-services-all-regions"></a>Sistem durumu ve Yönetim Hizmetleri: tüm bölgeler
 
@@ -57,7 +57,7 @@ Kaynaklarınızın bulunduğu belirli bir Azure bölgesindeki Azure HDInsight si
 | Asya | Doğu Asya | 23.102.235.122</br>52.175.38.134 | \*: 443 | Gelen |
 | &nbsp; | Güneydoğu Asya | 13.76.245.160</br>13.76.136.249 | \*: 443 | Gelen |
 | Avustralya | Doğu Avustralya | 104.210.84.115</br>13.75.152.195 | \*: 443 | Gelen |
-| &nbsp; | Güneydoğu Avustralya | 13.77.2.56</br>13.77.2.94 | \*: 443 | Gelen |
+| &nbsp; | Avustralya Güneydoğu | 13.77.2.56</br>13.77.2.94 | \*: 443 | Gelen |
 | Brezilya | Brezilya Güney | 191.235.84.104</br>191.235.87.113 | \*: 443 | Gelen |
 | Kanada | Doğu Kanada | 52.229.127.96</br>52.229.123.172 | \*: 443 | Gelen |
 | &nbsp; | Orta Kanada | 52.228.37.66</br>52.228.45.222 |\*: 443 | Gelen |

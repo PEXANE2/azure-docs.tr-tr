@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ac87e8394eaa609f7c57eaf9d83fe11a2bdb04f6
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 6d9abc67035b4581a028d8e59ef080b4f1ffa5b9
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435833"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96519051"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>Azure CLı kullanarak MySQL için Azure veritabanı için veri şifreleme
 
@@ -24,7 +24,7 @@ Azure CLı kullanarak MySQL için Azure veritabanı için veri şifrelemeyi ayar
 * Bir anahtar kasası ve müşterinin yönettiği anahtar için kullanılacak bir anahtar oluşturun. Ayrıca, anahtar kasasında Temizleme korumasını ve geçici silmeyi etkinleştirin.
 
   ```azurecli-interactive
-  az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true -enable-purge-protection true
+  az keyvault create -g <resource_group> -n <vault_name> --enable-soft-delete true --enable-purge-protection true
   ```
 
 * Oluşturulan Azure Key Vault, MySQL için Azure veritabanı 'nın veri şifrelemesi için kullanılacak anahtarı oluşturun.
@@ -55,7 +55,8 @@ Azure CLı kullanarak MySQL için Azure veritabanı için veri şifrelemeyi ayar
   * Sona erme tarihi yok
   * Devre dışı değil
   * **Al**, **sarmalama**, **geri** alınamaz işlemleri gerçekleştirin
-  * recoverylevel özniteliği **kurtarılabilir** olarak ayarlandı.
+  * recoverylevel özniteliği **kurtarılabilir** olarak ayarlandı (Bu, bekletme süresi 90 gün olarak ayarlanan geçici silme gerektirir)
+  * Temizleme koruması etkin
 
 Aşağıdaki komutu kullanarak anahtarın yukarıdaki özniteliklerini doğrulayabilirsiniz:
 

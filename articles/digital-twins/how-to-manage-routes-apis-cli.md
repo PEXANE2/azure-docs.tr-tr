@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3db475b5eb0c584f86c8810e9c993e4d5d7b497e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7016abc9d52aa12b497d29f605fe351ee3f6a2dd
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452899"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96519122"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Azure dijital TWINS 'te uç noktaları ve yolları yönetme (API 'Ler ve CLı)
 
@@ -90,47 +90,59 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 
 Bir uç nokta belirli bir süre içinde bir olayı teslim edimezse veya olayı belirli bir sayıda sunmaya çalıştıktan sonra, teslim edilmemiş olayı bir depolama hesabına gönderebilir. Bu işlem, **atılacak** olarak bilinir.
 
-Atılacak alma hakkında daha fazla bilgi edinmek için bkz. [*Kavramlar: olay yolları*](concepts-route-events.md#dead-letter-events).
+Atılacak alma hakkında daha fazla bilgi edinmek için bkz. [*Kavramlar: olay yolları*](concepts-route-events.md#dead-letter-events). Bir uç noktanın etkin olmayan bir şekilde nasıl ayarlanacağı hakkında yönergeler için, bu bölümün geri kalanında devam edin.
 
 #### <a name="set-up-storage-resources"></a>Depolama kaynaklarını ayarlama
 
-Atılacak mektup konumunu ayarlamadan önce, Azure hesabınızda ayarlanmış bir [kapsayıcı](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container) içeren bir [depolama hesabınız](../storage/common/storage-account-create.md?tabs=azure-portal) olmalıdır. Uç noktayı daha sonra oluştururken bu kapsayıcının URL 'sini sağlarsınız.
-Atılacak mektup, bir [SAS belirtecine](../storage/common/storage-sas-overview.md)sahip kapsayıcı URL 'si olarak sağlanır. Bu belirteç yalnızca `write` depolama hesabındaki hedef kapsayıcı için izne ihtiyaç duyuyor. Tamamen oluşturulmuş URL şu biçimde olacaktır: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
+Atılacak mektup konumunu ayarlamadan önce, Azure hesabınızda ayarlanmış bir [kapsayıcı](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container) içeren bir [depolama hesabınız](../storage/common/storage-account-create.md?tabs=azure-portal) olmalıdır. 
+
+Uç noktayı daha sonra oluştururken bu kapsayıcının URL 'sini sağlarsınız. Atılacak harf konumu, uç noktaya bir [SAS belirtecine](../storage/common/storage-sas-overview.md)sahip kapsayıcı URL 'si olarak sunulacaktır. Bu belirteç `write` , depolama hesabındaki hedef kapsayıcı için izin istiyor. Tamamen oluşturulmuş URL şu biçimde olacaktır: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>` .
 
 Sonraki bölümde uç nokta bağlantısını ayarlamaya hazırlanmak için Azure hesabınızda bu depolama kaynaklarını ayarlamak üzere aşağıdaki adımları izleyin.
 
-1. Depolama hesabı oluşturmak ve depolama hesabı adını daha sonra kullanmak üzere kaydetmek için [Bu makaleyi](../storage/common/storage-account-create.md?tabs=azure-portal) izleyin.
-2. [Bu makaleyi](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container) kullanarak bir kapsayıcı oluşturun ve kapsayıcının uç noktası arasındaki bağlantıyı ayarlarken daha sonra kullanmak üzere kapsayıcı adını kaydedin.
-3. Ardından, depolama hesabınız için bir SAS belirteci oluşturun. [Azure Portal](https://ms.portal.azure.com/#home) depolama hesabınıza giderek başlayın (portal arama çubuğu ile adı ile bulabilirsiniz).
-4. Depolama hesabı sayfasında, SAS belirteci oluşturmak için doğru izinleri seçmek üzere sol gezinti çubuğundaki _paylaşılan erişim imzası_ bağlantısı ' nı seçin.
-5. _Izin verilen hizmetler_ ve _izin verilen kaynak türleri_ için istediğiniz ayarları seçin. Her kategoride en az bir kutu seçmeniz gerekir. Izin verilen izinler için, **yaz** ' ı seçin (isterseniz diğer izinleri de seçebilirsiniz).
-Diğer ayarları istediğiniz şekilde ayarlayın.
-6. Sonra SAS belirtecini oluşturmak için _SAS ve bağlantı dizesi oluştur_ düğmesini seçin. Bu işlem, ayar seçimlerinin altında, aynı sayfanın alt kısmında birkaç SAS ve bağlantı dizesi değeri oluşturur. Değerleri görüntülemek için aşağı kaydırın ve **SAS belirteç** değerini kopyalamak için Panoya Kopyala simgesini kullanın. Daha sonra kullanmak üzere kaydedin.
+1. Azure aboneliğinizde bir **depolama hesabı** oluşturmak için [*depolama hesabı oluşturma*](../storage/common/storage-account-create.md?tabs=azure-portal) bölümündeki adımları izleyin. Daha sonra kullanmak için depolama hesabı adını bir yere göz önüne alın.
+2. Yeni depolama hesabı içinde **kapsayıcı** oluşturmak Için [*kapsayıcı oluşturma*](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container) bölümündeki adımları izleyin. Daha sonra kullanmak için kapsayıcı adı ' nı bir yere getirin.
+3. Daha sonra, depolama hesabınız için bitiş noktasının bu noktaya erişmek için kullanabileceği bir **SAS belirteci** oluşturun. [Azure Portal](https://ms.portal.azure.com/#home) depolama hesabınıza giderek başlayın (portal arama çubuğu ile adı ile bulabilirsiniz).
+4. Depolama hesabı sayfasında, SAS belirtecini ayarlamaya başlamak için sol gezinti çubuğundaki _paylaşılan erişim imzası_ bağlantısını seçin.
 
-:::image type="content" source="./media/how-to-manage-routes-apis-cli/generate-sas-token.png" alt-text="Azure portal bir SAS belirteci oluşturmak için tüm ayar seçimini gösteren depolama hesabı sayfası." lightbox="./media/how-to-manage-routes-apis-cli/generate-sas-token.png":::
+    :::image type="content" source="./media/how-to-manage-routes-apis-cli/generate-sas-token-1.png" alt-text="Azure portal depolama hesabı sayfası" lightbox="./media/how-to-manage-routes-apis-cli/generate-sas-token-1.png":::
 
-:::image type="content" source="./media/how-to-manage-routes-apis-cli/copy-sas-token.png" alt-text="Kullanılmayan harf gizli dosyasında kullanmak için SAS belirtecini kopyalayın." lightbox="./media/how-to-manage-routes-apis-cli/copy-sas-token.png":::
+1. *Paylaşılan erişim imzası sayfasında*, *izin verilen hizmetler* ve *izin verilen kaynak türleri* altında istediğiniz ayarları seçin. Her kategoride en az bir kutu seçmeniz gerekir. *Izin verilen izinler* altında, **yaz** ' ı seçin (isterseniz diğer izinleri de seçebilirsiniz).
+1. Geri kalan ayarlar için istediğiniz değerleri ayarlayın.
+1. İşiniz bittiğinde SAS belirtecini oluşturmak için _SAS ve bağlantı dizesi oluştur_ düğmesini seçin. 
 
+    :::image type="content" source="./media/how-to-manage-routes-apis-cli/generate-sas-token-2.png" alt-text="Azure portal bir SAS belirteci oluşturmak için tüm ayar seçimini gösteren ve ' SA ve bağlantı dizesi oluştur ' düğmesini vurgulamadaki depolama hesabı sayfası" lightbox="./media/how-to-manage-routes-apis-cli/generate-sas-token-2.png"::: 
+
+1. Bu işlem, ayar seçimlerinin altında, aynı sayfanın alt kısmında birkaç SAS ve bağlantı dizesi değeri oluşturur. Değerleri görüntülemek için aşağı kaydırın ve **SAS belirteç** değerini kopyalamak Için *Panoya Kopyala* simgesini kullanın. Daha sonra kullanmak üzere kaydedin.
+
+    :::image type="content" source="./media/how-to-manage-routes-apis-cli/copy-sas-token.png" alt-text="Kullanılmayan harf gizli dosyasında kullanmak için SAS belirtecini kopyalayın." lightbox="./media/how-to-manage-routes-apis-cli/copy-sas-token.png":::
+    
 #### <a name="configure-the-endpoint"></a>Uç noktayı yapılandırma
 
-Atılacak mektup uç noktaları, Azure Resource Manager API 'Leri kullanılarak oluşturulur. Uç nokta oluştururken, gerekli istek parametrelerini dolduracak [Azure Resource Manager API 'leri belgelerini](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) kullanın. Ayrıca, `deadLetterSecret` Depolama Hesabınıza yönelik bir kapsayıcı URL 'si ve SAS belirteci içeren, istek **gövdesinde** Özellikler nesnesine de ekleyin.
+Etkin olmayan bir uç nokta oluşturmak için Azure Resource Manager API 'Lerini kullanarak uç noktası oluşturmanız gerekir. 
+
+1. İlk olarak, bir uç nokta oluşturma isteği ayarlamak için [Azure Resource Manager API 'leri belgelerini](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) kullanın ve gerekli istek parametrelerini girin. 
+
+1. Sonra, `deadLetterSecret` istek **gövdesinde** Özellikler nesnesine bir alan ekleyin. Bu değeri aşağıdaki şablona göre ayarlayın, bu, [önceki bölümde](#set-up-storage-resources)topladığınız depolama hesabı adı, kapsayıcı adı ve SAS belirteci DEĞERINDEN bir URL öğelerini.
       
-```json
-{
-  "properties": {
-    "endpointType": "EventGrid",
-    "TopicEndpoint": "https://contosoGrid.westus2-1.eventgrid.azure.net/api/events",
-    "accessKey1": "xxxxxxxxxxx",
-    "accessKey2": "xxxxxxxxxxx",
-    "deadLetterSecret":"https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>"
-  }
-}
-```
+    ```json
+    {
+      "properties": {
+        "endpointType": "EventGrid",
+        "TopicEndpoint": "https://contosoGrid.westus2-1.eventgrid.azure.net/api/events",
+        "accessKey1": "xxxxxxxxxxx",
+        "accessKey2": "xxxxxxxxxxx",
+        "deadLetterSecret":"https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>"
+      }
+    }
+    ```
+1. Uç noktayı oluşturmak için isteği gönderin.
+
 Bu isteği yapılandırma hakkında daha fazla bilgi için bkz. Azure Digital TWINS REST API belgeleri: [uç noktalar-DigitalTwinsEndpoint CreateOrUpdate](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate).
 
 ### <a name="message-storage-schema"></a>İleti depolama şeması
 
-Kullanılmayan iletiler depolama hesabınızda aşağıdaki biçimde depolanır:
+Etkin olmayan uç nokta ayarlandıktan sonra, kullanılmayan iletiler depolama hesabınızda aşağıdaki biçimde depolanır:
 
 `{container}/{endpointName}/{year}/{month}/{day}/{hour}/{eventId}.json`
 

@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: sudbalas
-ms.openlocfilehash: aea5f0428fe55c0dae3734e196008cbc26a974b9
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: d66fe736936963e601aad7cba7bdaa94f0c3ec3f
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576233"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518456"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure Key Vault kullanılabilirliği ve yedekliliği
 
@@ -23,11 +23,13 @@ ms.locfileid: "94576233"
 > [!NOTE]
 > Bu kılavuz, kasaların için geçerlidir. Yönetilen HSM havuzları, farklı bir yüksek kullanılabilirlik ve olağanüstü durum kurtarma modeli kullanır. Daha fazla bilgi için bkz. [YÖNETILEN HSM olağanüstü durum kurtarma Kılavuzu](../managed-hsm/disaster-recovery-guide.md) .
 
-Anahtar kasanızın içeriği bölge içinde ve bir ikincil bölgeye en az 150 mil uzakta, ancak anahtarlarınızın ve gizli dizilerlerinizin yüksek dayanıklılığını sürdürmek için aynı coğrafya dahilinde çoğaltılır. Belirli bölge çiftleri hakkında daha fazla bilgi için bkz. [Azure eşleştirilmiş bölgeler](../../best-practices-availability-paired-regions.md). Eşleştirilmiş bölge modelinin özel durumu Brezilya Güney, yalnızca Brezilya Güney içinde verileri güncel tutma seçeneğinin kullanılmasına izin verir. Brezilya Güney, verilerinizi tek bir konum/bölge içinde üç kez çoğaltmak için yerel olarak yedekli depolama (LRS) kullanır.   
+Anahtar kasanızın içeriği bölge içinde ve bir ikincil bölgeye en az 150 mil uzakta, ancak anahtarlarınızın ve gizli dizilerlerinizin yüksek dayanıklılığını sürdürmek için aynı coğrafya dahilinde çoğaltılır. Belirli bölge çiftleri hakkında daha fazla bilgi için bkz. [Azure eşleştirilmiş bölgeler](../../best-practices-availability-paired-regions.md). Eşleştirilmiş bölge modelinin özel durumu Brezilya Güney, yalnızca Brezilya Güney içinde verileri güncel tutma seçeneğinin kullanılmasına izin verir. Brezilya Güney, tek konum/bölge içinde verilerinizi üç kez çoğaltmak için bölge yedekli depolama (ZRS) kullanır.   
 
 Anahtar Kasası hizmetindeki tek tek bileşenler başarısız olursa, işlevselliğe bir azalma olmadığından emin olmak için, içindeki bölge adımındaki alternatif bileşenler. Bu işlemi başlatmak için herhangi bir işlem yapmanız gerekmez, otomatik olarak gerçekleşir ve sizin için saydam hale gelir.
 
-Tüm Azure bölgesinin kullanılamadığı nadir bir olayda, bu bölgedeki Azure Key Vault yaptığınız istekler otomatik olarak ikincil bir bölgeye yönlendirilir ( *Yük devredildi* ). Birincil bölge yeniden kullanılabilir olduğunda, istekler birincil bölgeye geri yönlendirilir ( *başarısız* olur). Yine de, bu otomatik olarak gerçekleştiğinden herhangi bir işlem yapmanız gerekmez.
+Tüm Azure bölgesinin kullanılamadığı nadir bir olayda, bu bölgedeki Azure Key Vault yaptığınız istekler, Brezilya Güney bölgesinin olması dışında ikincil bir bölgeye otomatik olarak yönlendirilir (*Yük devredildi*). Birincil bölge yeniden kullanılabilir olduğunda, istekler birincil bölgeye geri yönlendirilir (*başarısız* olur). Yine de, bu otomatik olarak gerçekleştiğinden herhangi bir işlem yapmanız gerekmez.
+
+Brezilya Güney bölgesinde, Azure anahtar kasalarınızın bir bölge hatası senaryosunda kurtarılmasını planlamalısınız. Azure anahtar kasanızı yedeklemek ve seçtiğiniz bir bölgeye geri yüklemek için [Azure Key Vault yedekleme](backup.md)'de ayrıntılı adımları uygulayın. 
 
 Bu yüksek kullanılabilirlik tasarımı aracılığıyla Azure Key Vault bakım etkinlikleri için kapalı kalma süresi gerektirmez.
 

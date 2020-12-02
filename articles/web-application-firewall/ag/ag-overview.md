@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 09/16/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: d3e38de191557f0602d1b544c6590018f98405b0
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: f15a739904c28361a60210a0cc4606c7048d0f53
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94560800"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518983"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Azure Application Gateway Azure Web uygulaması güvenlik duvarı nedir?
 
@@ -22,9 +22,6 @@ Azure Application Gateway Azure Web uygulaması güvenlik duvarı (WAF), Web uyg
 Application Gateway WAF, açık Web uygulaması güvenlik projesinden (OWASP) [çekirdek kural kümesi (sp_configure)](https://owasp.org/www-project-modsecurity-core-rule-set/) 3,1, 3,0 veya 2.2.9 tabanlıdır. WAF, ek yapılandırma gerekmeden yeni güvenlik açıklarına karşı koruma içerecek şekilde otomatik olarak güncelleştirilir. 
 
 Aşağıda listelenen tüm WAF özellikleri bir WAF Ilkesi içinde mevcuttur. Birden çok ilke oluşturabilirsiniz ve bir Application Gateway, tek tek dinleyiciler veya bir Application Gateway yol tabanlı yönlendirme kuralları ile ilişkilendirilebilen. Bu şekilde, gerekirse Application Gateway ardındaki her bir site için ayrı ilkelere sahip olabilirsiniz. WAF Ilkeleri hakkında daha fazla bilgi için bkz. [WAF Ilkesi oluşturma](create-waf-policy-ag.md).
-
-   > [!NOTE]
-   > URI başına WAF Ilkeleri genel önizlemede. Bu, bu özelliğin Microsoft 'un ek kullanım koşulları 'na tabi olduğu anlamına gelir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ![Application Gateway WAF diyagramı](../media/ag-overview/waf1.png)
 
@@ -122,8 +119,8 @@ Bot koruması etkinleştirilirse, kötü amaçlı bir bot 'ın istemci IP 'Leri 
 
 Application Gateway WAF aşağıdaki iki modda çalışacak şekilde yapılandırılabilir:
 
-* **Algılama modu** : tüm tehdit uyarılarını izler ve günlüğe kaydeder. **Tanılama** bölümünde Application Gateway için günlük tanılamayı açın. Ayrıca, WAF günlüğünün seçili ve açık olduğundan emin olmanız gerekir. Web uygulaması güvenlik duvarı, algılama modunda çalışırken gelen istekleri engellemez.
-* **Önleme modu** : kuralların algılamadığı yetkisiz ve saldırıları engeller. Saldırgan bir "403 yetkisiz erişim" özel durumu alır ve bağlantı kapatılır. Önleme modu WAF günlüklerinde bu tür saldırıları kaydeder.
+* **Algılama modu**: tüm tehdit uyarılarını izler ve günlüğe kaydeder. **Tanılama** bölümünde Application Gateway için günlük tanılamayı açın. Ayrıca, WAF günlüğünün seçili ve açık olduğundan emin olmanız gerekir. Web uygulaması güvenlik duvarı, algılama modunda çalışırken gelen istekleri engellemez.
+* **Önleme modu**: kuralların algılamadığı yetkisiz ve saldırıları engeller. Saldırgan bir "403 yetkisiz erişim" özel durumu alır ve bağlantı kapatılır. Önleme modu WAF günlüklerinde bu tür saldırıları kaydeder.
 
 > [!NOTE]
 > Bir üretim ortamında kısa bir süre için yeni dağıtılan bir WAF algılama modunda çalıştırmanız önerilir. Bu, Önleme moduna geçişten önce [güvenlik duvarı günlüklerini](../../application-gateway/application-gateway-diagnostics.md#firewall-log) alma ve tüm özel durumları ya da [özel kuralları](./custom-waf-rules-overview.md) güncelleştirme fırsatını sağlar. Bu, beklenmeyen engellenen trafiğin oluşmasını azaltmaya yardımcı olabilir.
@@ -134,7 +131,7 @@ OWASP 'nin trafiğin engellenip engellenmeyeceğini belirleyerek iki modu vardı
 
 Geleneksel modda, herhangi bir kuralla eşleşen trafik diğer kural eşleştirmelerinin bağımsız olarak değerlendirilir. Bu modun anlaşılması kolaydır. Ancak belirli bir istekle eşleşen kuralların sayısı ile ilgili bilgi olmaması bir kısıtlamadır. Bu nedenle, anomali Puanlama modu sunuldu. OWASP 3 için varsayılandır. *x*.
 
-Anomali Puanlama modunda, güvenlik duvarı önleme modundayken, herhangi bir kuralla eşleşen trafik hemen engellenmez. Kurallar belirli bir önem derecesine sahiptir: *kritik* , *hata* , *Uyarı* veya *bildirim*. Bu önem derecesi, istek için anomali puanı olarak adlandırılan sayısal bir değeri etkiler. Örneğin, bir *Uyarı* kuralı eşleşmesi 3 ' e katkıda bulunur. Bir *kritik* kural eşleşmesi 5. katkıda bulunur.
+Anomali Puanlama modunda, güvenlik duvarı önleme modundayken, herhangi bir kuralla eşleşen trafik hemen engellenmez. Kurallar belirli bir önem derecesine sahiptir: *kritik*, *hata*, *Uyarı* veya *bildirim*. Bu önem derecesi, istek için anomali puanı olarak adlandırılan sayısal bir değeri etkiler. Örneğin, bir *Uyarı* kuralı eşleşmesi 3 ' e katkıda bulunur. Bir *kritik* kural eşleşmesi 5. katkıda bulunur.
 
 |Önem derecesi  |Değer  |
 |---------|---------|

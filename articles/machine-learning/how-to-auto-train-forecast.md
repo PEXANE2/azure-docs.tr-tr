@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 8c6a27f0cfaafe7e6c1181651e672d0e828af855
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 605e8cd57ab5863c1011082f0f2dbd93d078980b
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444495"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518949"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Zaman serisi tahmin modelini otomatik eğitme
 
@@ -286,19 +286,19 @@ Tablo, pencere toplama uygulandığında ortaya çıkan özellik mühendisliğin
 
 ### <a name="short-series-handling"></a>Kısa seri işleme
 
-Model geliştirmenin eğitim ve doğrulama aşamalarını yürütmek için yeterli veri noktası yoksa otomatik ML bir zaman serisini bir **kısa seriler** olarak değerlendirir. Veri noktalarının sayısı her bir denemeye göre farklılık gösterir ve max_horizon, çapraz doğrulama sayısını ve modelin geri elde ettiği, zaman serisi özelliklerinin oluşturulması için gereken en fazla geçmişin uzunluğunu bağlıdır. Tam hesaplama için [short_series_handling_config başvuru belgelerine](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py#short-series-handling-configuration)bakın.
+Model geliştirmenin eğitim ve doğrulama aşamalarını yürütmek için yeterli veri noktası yoksa otomatik ML bir zaman serisini bir **kısa seriler** olarak değerlendirir. Veri noktalarının sayısı her bir denemeye göre farklılık gösterir ve max_horizon, çapraz doğrulama sayısını ve modelin geri elde ettiği, zaman serisi özelliklerinin oluşturulması için gereken en fazla geçmişin uzunluğunu bağlıdır. Tam hesaplama için [short_series_handling_configuration başvuru belgelerine](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py#short-series-handling-configuration)bakın.
 
-Otomatik ML `short_series_handling_config` , nesne içindeki parametresiyle varsayılan olarak kısa seri işleme sağlar `ForecastingParameters` . 
+Otomatik ML `short_series_handling_configuration` , nesne içindeki parametresiyle varsayılan olarak kısa seri işleme sağlar `ForecastingParameters` . 
 
-Kısa seri işlemeyi etkinleştirmek için `freq` parametresinin de tanımlanması gerekir. Varsayılan davranışı değiştirmek için `short_series_handling_config = auto` , `short_series_handling_config` nesnenizin parametresini güncelleştirin `ForecastingParameter` .  
+Kısa seri işlemeyi etkinleştirmek için `freq` parametresinin de tanımlanması gerekir. Saatlik sıklık tanımlamak için ayarlayacağız `freq='H'` . Sıklık dizesi seçeneklerini [burada](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects)görüntüleyin. Varsayılan davranışı değiştirmek için `short_series_handling_configuration = 'auto'` , `short_series_handling_configuration` nesnenizin parametresini güncelleştirin `ForecastingParameter` .  
 
 ```python
 from azureml.automl.core.forecasting_parameters import ForecastingParameters
 
 forecast_parameters = ForecastingParameters(time_column_name='day_datetime', 
                                             forecast_horizon=50,
-                                            short_series_handling_config='auto',
-                                            freq = '7',
+                                            short_series_handling_configuration='auto',
+                                            freq = 'H',
                                             target_lags='auto')
 ```
 Aşağıdaki tablo, için kullanılabilir ayarları özetler `short_series_handling_config` .
@@ -306,7 +306,7 @@ Aşağıdaki tablo, için kullanılabilir ayarları özetler `short_series_handl
 |Ayar|Açıklama
 |---|---
 |`auto`| Kısa seri işleme için varsayılan davranış aşağıda verilmiştir <li> *Tüm seriler kısaysa*, verileri doldurur. <br> <li> *Tüm seriler kısaysa*, kısa seriyi bırakın. 
-|`pad`| `short_series_handling_config = pad`Daha sonra OTOMATIK ml, bulunan her kısa serinin işlevsiz değerler ekler. Aşağıda sütun türleri ve bunların nasıl doldurulmuş oldukları listelenmiştir: <li>NaNs içeren nesne sütunları <li> 0 ile sayısal sütunlar <li> False ile Boole/mantık sütunları <li> Hedef sütun, sıfır ortalaması ve standart sapması 1 olan rastgele değerlerle doldurulur. 
+|`pad`| `short_series_handling_config = pad`Daha sonra OTOMATIK ml, bulunan her kısa serinin rastgele değerleri ekler. Aşağıda sütun türleri ve bunların nasıl doldurulmuş oldukları listelenmiştir: <li>NaNs içeren nesne sütunları <li> 0 ile sayısal sütunlar <li> False ile Boole/mantık sütunları <li> Hedef sütun, sıfır ortalaması ve standart sapması 1 olan rastgele değerlerle doldurulur. 
 |`drop`| `short_series_handling_config = drop`Daha sonra OTOMATIK ml, kısa serileri bırakır ve eğitim veya tahmin için kullanılmaz. Bu serinin tahminleri NaN olarak döndürülür.
 |`None`| Doldurulmuş veya bırakılan seri yok
 
