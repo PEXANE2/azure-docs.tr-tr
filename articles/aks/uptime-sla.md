@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/24/2020
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: dd1836220b5fd5a0af2d4ece3d9bc3932f1ae554
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: f8ec80d178af274c285371b4f53820eb9e41ccf7
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748878"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96519170"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes hizmeti (AKS) çalışma süresi SLA 'Sı
 
@@ -27,11 +27,14 @@ Müşteriler, bir hizmet düzeyi hedefi (SLO 99,5) olan sınırsız sayıda ücr
 
 Çalışma süresi SLA 'Sı, [aks 'in desteklendiği](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)Genel bölgelerde ve Azure Kamu bölgelerinde kullanılabilir.
 
-* Azure Çin 21Vianet Şu anda desteklenmemektedir.
-
 ## <a name="limitations"></a>Sınırlamalar
 
-* Özel kümeler Şu anda desteklenmiyor.
+Özel kümeler yalnızca aşağıdaki bölgelerde desteklenir:
+ *  Doğu ABD
+ *  Batı ABD
+ *  Batı ABD 2
+ *  Orta Kuzey ABD
+ *  Orta Batı ABD
 
 ## <a name="sla-terms-and-conditions"></a>SLA hüküm ve koşulları
 

@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight 'ta Jupyter Not defteri oluşturulamıyor
+title: Azure HDInsight 'ta Jupyter Notebook oluşturulamıyor
 description: Sorun giderme adımları ve Azure HDInsight kümeleriyle etkileşim kurarken sorunlara yönelik olası çözümler hakkında bilgi edinin.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,20 +7,20 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/11/2020
-ms.openlocfilehash: 50a77e240315796d0d4c98fc8fba8edfc9cd2b7d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 41eefd18419969c6e8c54ba68ce6c0d1eeb7832b
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545540"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96519204"
 ---
-# <a name="unable-to-create-jupyter-notebook-in-azure-hdinsight"></a>Azure HDInsight 'ta Jupyter Not defteri oluşturulamıyor
+# <a name="unable-to-create-jupyter-notebook-in-azure-hdinsight"></a>Azure HDInsight 'ta Jupyter Notebook oluşturulamıyor
 
 Bu makalede, Azure HDInsight kümeleriyle etkileşim kurarken sorun giderme adımları ve olası çözümleri açıklanmaktadır.
 
 ## <a name="issue"></a>Sorun
 
-Jupyter Not defterini başlatırken şunu içeren bir hata iletisi alırsınız:
+Bir Jupyter Notebook başlatırken şunu içeren bir hata iletisi alırsınız:
 
 ```error
 Cannot convert notebook to v5 because that version doesn't exist
@@ -50,7 +50,7 @@ Sürüm uyumsuzluğu.
     version_info = (4, 0, 3)
     ```
 
-    **CTRL + X** , **Y** , **ENTER** tuşlarına basarak değişiklikleri kaydedin.
+    **CTRL + X**, **Y**, **ENTER** tuşlarına basarak değişiklikleri kaydedin.
 
 1. Bir Web tarayıcısından, `https://CLUSTERNAME.azurehdinsight.net/#/main/services/JUPYTER` , `CLUSTERNAME` Kümenizin adı olan ' a gidin.
 

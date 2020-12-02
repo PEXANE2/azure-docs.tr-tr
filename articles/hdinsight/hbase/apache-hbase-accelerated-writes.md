@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/24/2020
-ms.openlocfilehash: c7a2373f0cf7005e465c2d3bd42817b3394a84de
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 27b0485fdd7b3c352a85fe7eb39fba33c53bf727
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510289"
+ms.locfileid: "96519221"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Apache HBase için Azure HDInsight Hızlandırılmış Yazma İşlemleri
 
@@ -36,7 +36,7 @@ Hızlandırılmış yazma özelliği, bulut depolamadaki ön yazma günlüklerin
 
 ## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>HDInsight 'ta HBase için hızlandırılmış yazma Işlemleri nasıl etkinleştirilir
 
-Hızlandırılmış yazma özelliği ile yeni bir HBase kümesi oluşturmak için, **3. adıma** ulaşana kadar [HDInsight 'ta kümeleri ayarlama](../hdinsight-hadoop-provision-linux-clusters.md) bölümündeki adımları izleyin. **Meta veri deposu ayarları** altında **HBase hızlandırılmış yazmaları etkinleştir**' in yanındaki onay kutusunu işaretleyin. Ardından, küme oluşturma için kalan adımlara devam edin.
+Hızlandırılmış yazma özelliği ile yeni bir HBase kümesi oluşturmak için [HDInsight 'ta kümeleri ayarlama](../hdinsight-hadoop-provision-linux-clusters.md)bölümündeki adımları izleyin. **Temel bilgiler** sekmesinde, HBase olarak küme türünü seçin, bir bileşen sürümü belirtin ve ardından **HBase hızlandırılmış yazmaları etkinleştir ' in** yanındaki onay kutusuna tıklayın. Ardından, küme oluşturma için kalan adımlara devam edin.
 
 ![HDInsight Apache HBase için hızlandırılmış yazma seçeneğini etkinleştirme](./media/apache-hbase-accelerated-writes/azure-portal-create-hbase-wals.png)
 
