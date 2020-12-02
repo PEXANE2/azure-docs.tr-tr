@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 7098744fe012c994e311696a376cd7ed0dc9ac53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9520196c8dce9ea511c2f3b799bd12b34c6f988f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89076625"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499756"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Linux VM'ye disk ekleme
 
@@ -34,7 +34,7 @@ az vm disk attach \
 
 ## <a name="attach-an-existing-disk"></a>Var olan bir diski ekleme
 
-Var olan bir diski eklemek için disk KIMLIĞINI bulup KIMLIĞI [az VM disk Attach](/cli/azure/vm/disk?view=azure-cli-latest) komutuna geçirin. Aşağıdaki örnek, *Myresourcegroup*Içinde *mydatadisk* adlı bir disk Için sorgular ve *myvm*adlı VM 'ye iliştirir:
+Var olan bir diski eklemek için disk KIMLIĞINI bulup KIMLIĞI [az VM disk Attach](/cli/azure/vm/disk?view=azure-cli-latest) komutuna geçirin. Aşağıdaki örnek, *Myresourcegroup* Içinde *mydatadisk* adlı bir disk Için sorgular ve *myvm* adlı VM 'ye iliştirir:
 
 ```azurecli
 diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
@@ -70,7 +70,7 @@ sdb     1:0:1:0      14G
 sdc     3:0:0:0      50G
 ```
 
-`sdc`50G olduğundan, istediğimiz disk burada. Tek başına boyutu temel alan diskte emin değilseniz, portalda VM sayfasına gidebilir, **diskler**' i seçebilir ve **veri diskleri**altındaki disk için LUN numarasını kontrol edebilirsiniz. 
+`sdc`50G olduğundan, istediğimiz disk burada. Tek başına boyutu temel alan diskte emin değilseniz, portalda VM sayfasına gidebilir, **diskler**' i seçebilir ve **veri diskleri** altındaki disk için LUN numarasını kontrol edebilirsiniz. 
 
 
 ### <a name="format-the-disk"></a>Diski biçimlendirme
@@ -154,7 +154,7 @@ Bazı Linux çekirdekler, diskteki kullanılmayan blokları atmak için kesme/e�
 
 Linux sanal makinenizde KıRPMA desteğini etkinleştirmenin iki yolu vardır. Her zamanki gibi, önerilen yaklaşım için dağıtıma başvurun:
 
-* `discard` */Etc/fstab*içindeki bağlama seçeneğini kullanın, örneğin:
+* `discard` */Etc/fstab* içindeki bağlama seçeneğini kullanın, örneğin:
 
     ```bash
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   xfs   defaults,discard   1   2
@@ -182,4 +182,4 @@ Linux sanal makinenizde KıRPMA desteğini etkinleştirmenin iki yolu vardır. H
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Linux sanal makinenizin doğru bir şekilde yapılandırıldığından emin olmak için [Linux makinenizin performans önerilerinizi iyileştirin](optimization.md) ' i gözden geçirin.
-* Ek diskler ekleyerek depolama kapasitenizi genişletin ve ek performans için [RAID 'i yapılandırın](configure-raid.md) .
+* Ek diskler ekleyerek depolama kapasitenizi genişletin ve ek performans için [RAID 'i yapılandırın](/previous-versions/azure/virtual-machines/linux/configure-raid) .

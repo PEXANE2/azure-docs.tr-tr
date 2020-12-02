@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 7d11fa8605d9cd5f335b6be56097caf7a5222bbd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3d3ce8218030bc8ba6c59b26b7360bf2299e02a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89006950"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499824"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Azure İzleyici Günlükleriyle Site Recovery’yi izleme
 
@@ -36,7 +36,7 @@ Azure Izleyici günlüklerini Site Recovery ile Azure 'da Azure **'a** çoğaltm
 
 - Bir kurtarma hizmetleri kasasında korunan en az bir makine.
 - Site Recovery günlüklerini depolamak için bir Log Analytics çalışma alanı. Çalışma alanı ayarlama [hakkında bilgi edinin](../azure-monitor/learn/quick-create-workspace.md) .
-- Log Analytics 'de günlük sorgularının nasıl yazılacağı, çalıştırılacağı ve analiz edileceği hakkında temel bir anlama. [Daha fazla bilgi edinin](../azure-monitor/log-query/get-started-portal.md).
+- Log Analytics 'de günlük sorgularının nasıl yazılacağı, çalıştırılacağı ve analiz edileceği hakkında temel bir anlama. [Daha fazla bilgi edinin](../azure-monitor/log-query/log-analytics-tutorial.md).
 
 Başlamadan önce [yaygın izleme sorularını](monitoring-common-questions.md) incelemenizi öneririz.
 
@@ -49,7 +49,7 @@ Başlamadan önce [yaygın izleme sorularını](monitoring-common-questions.md) 
 2. **Tanılama ayarları**' nda bir ad belirtin ve kutuyu **Log Analytics gönder**' i işaretleyin.
 3. Azure Izleyici günlük aboneliğini ve Log Analytics çalışma alanını seçin.
 4. Geçiş **Azure tanılama** seçin.
-5. Günlük listesinden, **Azuresterecovery**ön ekine sahip tüm günlükleri seçin. Daha sonra, **Tamam**'a tıklayın.
+5. Günlük listesinden, **Azuresterecovery** ön ekine sahip tüm günlükleri seçin. Daha sonra, **Tamam**'a tıklayın.
 
     ![Tanılama ayarı ekranının ekran görüntüsü.](./media/monitoring-log-analytics/select-workspace.png)
 
@@ -79,7 +79,7 @@ Dalgalanma ve karşıya yükleme hızı verileri, çalışma alanına beslemeyi 
 [Kusto sorgu diliyle](../azure-monitor/log-query/get-started-queries.md)yazılmış günlük sorgularını kullanarak günlüklerden veri alırsınız. Bu bölümde, Site Recovery izlemek için kullanabileceğiniz yaygın sorgulara yönelik birkaç örnek verilmiştir.
 
 > [!NOTE]
-> Örneklerden bazıları **A2A**olarak ayarlanmış **replicationProviderName_s** kullanır. Bu, Site Recovery kullanılarak ikincil bir Azure bölgesine çoğaltılan Azure VM 'lerini alır. Bu örneklerde, Site Recovery kullanarak Azure 'a çoğaltılan şirket içi VMware VM 'lerini veya fiziksel sunucuları almak istiyorsanız **A2A** ile **InMageAzureV2**değiştirebilirsiniz.
+> Örneklerden bazıları **A2A** olarak ayarlanmış **replicationProviderName_s** kullanır. Bu, Site Recovery kullanılarak ikincil bir Azure bölgesine çoğaltılan Azure VM 'lerini alır. Bu örneklerde, Site Recovery kullanarak Azure 'a çoğaltılan şirket içi VMware VM 'lerini veya fiziksel sunucuları almak istiyorsanız **A2A** ile **InMageAzureV2** değiştirebilirsiniz.
 
 
 ### <a name="query-replication-health"></a>Sorgu çoğaltma durumu
@@ -214,7 +214,7 @@ Category contains "Upload", "UploadRate", "none") 
 > [!Note]
 > Bu günlükleri getirmek için Işlem sunucusunda izleme aracısını oluşturduğunuzdan emin olun. [İzleme aracısını yapılandırma adımları](#configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs)bölümüne bakın.
 
-Bu sorgu, veri değişim oranını (saniye başına yazılan bayt) ve veri yükleme oranını temsil eden **Win-9r7sfh9enru**öğesinin çoğaltılan bir öğesi **Disk0** için bir eğilim grafiği çizer. Disk adını, kurtarma hizmetleri kasasındaki çoğaltılan öğenin **diskler** dikey penceresinde bulabilirsiniz. Sorguda kullanılacak örnek adı, makinenin DNS adıdır ve ardından _ ve disk adı bu örnekte olur.
+Bu sorgu, veri değişim oranını (saniye başına yazılan bayt) ve veri yükleme oranını temsil eden **Win-9r7sfh9enru** öğesinin çoğaltılan bir öğesi **Disk0** için bir eğilim grafiği çizer. Disk adını, kurtarma hizmetleri kasasındaki çoğaltılan öğenin **diskler** dikey penceresinde bulabilirsiniz. Sorguda kullanılacak örnek adı, makinenin DNS adıdır ve ardından _ ve disk adı bu örnekte olur.
 
 ```
 Perf
@@ -255,7 +255,7 @@ AzureDiagnostics 
 Azure Izleyici verilerine göre Site Recovery uyarıları ayarlayabilirsiniz. Günlük uyarılarını ayarlama hakkında [daha fazla bilgi edinin](../azure-monitor/platform/alerts-log.md#create-a-log-alert-rule-with-the-azure-portal) . 
 
 > [!NOTE]
-> Örneklerden bazıları **A2A**olarak ayarlanmış **replicationProviderName_s** kullanır. Bu, ikincil bir Azure bölgesine çoğaltılan Azure VM 'Leri için uyarıları ayarlar. Bu örneklerde, Azure 'a çoğaltılan şirket içi VMware VM 'Leri veya fiziksel sunucular için uyarılar ayarlamak istiyorsanız **A2A** ile **InMageAzureV2** değiştirebilirsiniz.
+> Örneklerden bazıları **A2A** olarak ayarlanmış **replicationProviderName_s** kullanır. Bu, ikincil bir Azure bölgesine çoğaltılan Azure VM 'Leri için uyarıları ayarlar. Bu örneklerde, Azure 'a çoğaltılan şirket içi VMware VM 'Leri veya fiziksel sunucular için uyarılar ayarlamak istiyorsanız **A2A** ile **InMageAzureV2** değiştirebilirsiniz.
 
 ### <a name="multiple-machines-in-a-critical-state"></a>Kritik durumdaki birden çok makine
 

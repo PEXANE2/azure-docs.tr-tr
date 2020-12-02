@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: d068365cc8197a579c0b043d3fff2da3d54eb803
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: ab6408621616a4be62631391456f73e90fced752
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94687210"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499008"
 ---
 # <a name="net-c-code-samples-for-azure-cognitive-search"></a>.NET (C#) Azure Bilişsel Arama için kod örnekleri
 
 Azure Bilişsel Arama özelliklerini ve işlevselliğini gösteren C# kod örnekleri hakkında bilgi edinin. Birincil depolar aşağıdaki gibidir:
 
-| Depo | Description |
+| Depo | Açıklama |
 |------------|-------------|
 | [Azure-SDK-for-NET/SDK/Search/Azure.Search.Documstaları/örnekleri/](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/search/Azure.Search.Documents/samples) | Azure SDK ekibi tarafından oluşturulan ve SDK 'daki Azure.Search.Documstalar istemci kitaplığı ile birlikte gelen örnekler. Ayrıca, çeşitli API 'Lerin nasıl çağrıldığını görmek için istemci kitaplığı için [birim testlerini](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/search/Azure.Search.Documents/tests) gözden geçirebilirsiniz. |
 | [Azure-Samples/Azure-Search-DotNet-Samples](https://github.com/Azure-Samples/azure-search-dotnet-samples) | [.NET istemci kitaplığının nasıl kullanılacağı](search-howto-dotnet-sdk.md)da dahil olmak üzere belgelerde nasıl yapılır makalelerine eşlik eden örnekler.|
@@ -32,7 +32,7 @@ Azure Bilişsel Arama özelliklerini ve işlevselliğini gösteren C# kod örnek
 
 .NET için Azure SDK 'Sı birçok örnek ve her birini açıklayan bir [örnek Benioku dosyası](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/samples/README.md) içerir. Bu liste kolaylık sağlaması için aşağıda verilmiştir.
 
-| Örnekler | Description |
+| Örnekler | Açıklama |
 |---------|-------------|
 | ["Merhaba Dünya", zaman uyumlu](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/samples/Sample01a_HelloWorld.md) | Zaman uyumlu yöntemleri kullanarak bir istemci oluşturma, kimlik doğrulama ve hata işleme işlemlerinin nasıl yapılacağını gösterir.|
 | ["Merhaba Dünya", zaman uyumsuz](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/samples/Sample01b_HelloWorldAsync.md) | Zaman uyumsuz yöntemler kullanarak istemci oluşturma, kimlik doğrulama ve hata işleme işlemlerinin nasıl yapılacağını gösterir.  |
@@ -44,9 +44,9 @@ Azure Bilişsel Arama özelliklerini ve işlevselliğini gösteren C# kod örnek
 
 ## <a name="documentation-samples"></a>Belge örnekleri
 
-Aşağıdaki örneklerde [Azure bilişsel arama belgelerinde](https://docs.microsoft.com/azure/search/)ilişkili bir makale bulunur.
+Aşağıdaki örneklerde [Azure bilişsel arama belgelerinde](./index.yml)ilişkili bir makale bulunur.
 
-| Örnekler | Description |
+| Örnekler | Açıklama |
 |---------|-------------|
 | [hızlı başlangıç](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart) | Hızlı başlangıç için kaynak kodu [: arama dizini oluşturun ](search-get-started-dotnet.md).  |
 | [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)  | [.NET istemci kitaplığının kullanımı](search-howto-dotnet-sdk.md) için kaynak kodu |
@@ -60,9 +60,9 @@ Aşağıdaki örneklerde [Azure bilişsel arama belgelerinde](https://docs.micro
 
 ## <a name="standalone-samples-and-solutions"></a>Tek başına örnekler ve çözümler
 
-| Örnekler | Description |
+| Örnekler | Açıklama |
 |---------|-------------|
 | [Azure-Arama-güç-beceriler](https://github.com/Azure-Samples/azure-search-power-skills)  | Kazanılmış çözümlerinizde birleştirebileceğiniz, tüketilebilir özel yetenekler için kaynak kodu.  |
-| [Bilgi Madenciliği Çözüm Hızlandırıcısı](https://docs.microsoft.com/samples/azure-samples/azure-search-knowledge-mining/azure-search-knowledge-mining/) | , Bir uçtan uca bilgi araştırma çözümü prototipinizde yardımcı olacak şablonlar, destek dosyaları ve analitik raporlar içerir.  |
+| [Bilgi Madenciliği Çözüm Hızlandırıcısı](/samples/azure-samples/azure-search-knowledge-mining/azure-search-knowledge-mining/) | , Bir uçtan uca bilgi araştırma çözümü prototipinizde yardımcı olacak şablonlar, destek dosyaları ve analitik raporlar içerir.  |
 | [Covıd-19 uygulama deposunu ara](https://github.com/liamca/covid19search) | Bilişsel Arama tabanlı [Covıd-19 arama uygulaması](https://covid19search.azurewebsites.net/) için kaynak kodu deposu |
 | [JFK](https://github.com/Microsoft/AzureSearch_JFK_Files) | [JFK çözümü](https://www.microsoft.com/ai/ai-lab-jfk-files)hakkında daha fazla bilgi edinin. |

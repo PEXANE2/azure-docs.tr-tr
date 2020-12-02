@@ -3,20 +3,20 @@ title: Azure Data Factory koşul etkinliği
 description: If koşulu etkinliği, işleme akışını bir koşula göre denetlemenizi sağlar.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9f65ffc9ef24b18ce0f18571c1f3fc91e7ca7fdf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 150efe87565b1949dc1ed29b03af69c26f84a896
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96024240"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499484"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Azure Data Factory koşul etkinliği
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -67,11 +67,11 @@ If Koşulu etkinliği, programlama dilerindeki If deyimiyle aynı işlevselliği
 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
-name | If-Condition etkinliğinin adı. | Dize | Yes
-tür | **Ifcondition** olarak ayarlanmalıdır | Dize | Yes
-ifade | True veya false sonucunu vermesi gereken ifade | Sonuç türü Boole olan ifade | Yes
-ifTrueActivities | İfade olarak değerlendirildiğinde yürütülen etkinlik kümesi `true` . | Dizi | Yes
-Ifyanlışa etkinlikleri | İfade olarak değerlendirildiğinde yürütülen etkinlik kümesi `false` . | Dizi | Yes
+name | If-Condition etkinliğinin adı. | Dize | Evet
+tür | **Ifcondition** olarak ayarlanmalıdır | Dize | Evet
+ifade | True veya false sonucunu vermesi gereken ifade | Sonuç türü Boole olan ifade | Evet
+ifTrueActivities | İfade olarak değerlendirildiğinde yürütülen etkinlik kümesi `true` . | Dizi | Evet
+Ifyanlışa etkinlikleri | İfade olarak değerlendirildiğinde yürütülen etkinlik kümesi `false` . | Dizi | Evet
 
 ## <a name="example"></a>Örnek
 Bu örnekteki işlem hattı, verileri bir giriş klasöründen çıkış klasörüne kopyalar. Çıkış klasörü, işlem hattı parametresinin değeri tarafından belirlenir: routeSelection. RouteSelection değeri true ise, veriler outputPath1 ' e kopyalanır. Ve eğer routeSelection değeri false ise, veriler outputPath2 ' e kopyalanır. 

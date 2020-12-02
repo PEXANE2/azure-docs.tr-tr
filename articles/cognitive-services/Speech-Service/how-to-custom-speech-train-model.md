@@ -1,7 +1,7 @@
 ---
 title: Özel Konuşma Tanıma modelini eğitme ve dağıtma-konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Bu makalede Özel Konuşma Tanıma modellerini eğitme ve dağıtmayı öğreneceksiniz. Konuşmaya metin modeli eğitimi, Microsoft 'un temel modeli veya özel bir model için tanıma doğruluğunu iyileştirebilir. Model, insan etiketli döküm ve ilgili metin kullanılarak eğitilir.
+description: Özel Konuşma Tanıma modellerini eğitme ve dağıtmayı öğrenin. Konuşmayı metne dönüştürme eğitimi, Microsoft Baseline model veya özel bir model için tanıma doğruluğunu iyileştirebilir.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -10,70 +10,70 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: 9193da2f3841bb94aa395399c31d7fe826c395e0
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 130cd643856b38471eac6d6869cdc1ed8b0bcd2e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025608"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499161"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>Özel Konuşma Tanıma modeli eğitme ve dağıtma
 
-Bu makalede Özel Konuşma Tanıma modellerini eğitme ve dağıtmayı öğreneceksiniz. Konuşmaya metin modeli eğitimi, Microsoft 'un temel modeli için tanıma doğruluğunu iyileştirebilir. Model, insan etiketli döküm ve ilgili metin kullanılarak eğitilir. Bu veri kümeleri, daha önce karşıya yüklenen ses verileriyle birlikte, konuşma-metin modelini iyileştirmek ve eğleştirmek için kullanılır.
+Bu makalede Özel Konuşma Tanıma modellerini eğitme ve dağıtmayı öğreneceksiniz. Konuşmaya metin modeli eğitimi, Microsoft Baseline model için tanıma doğruluğunu iyileştirebilir. Bir modeli eğitebilmeniz için insan etiketli döküm ve ilgili metin kullanırsınız. Bu veri kümeleri, daha önce karşıya yüklenen ses verileriyle birlikte, konuşma-metin modelini iyileştirmek ve eğleştirmek için kullanılır.
 
-## <a name="use-training-to-resolve-accuracy-issues"></a>Doğruluk sorunlarını gidermek için eğitim kullanma
+## <a name="use-training-to-resolve-accuracy-problems"></a>Doğruluk sorunlarını gidermek için eğitim kullanma
 
-Bir temel modelde tanınma sorunlarıyla karşılaşırsanız, özel bir modeli eğtirecek şekilde, insan etiketli döküm ve ilgili verilerin kullanılması doğruluğu artırmaya yardımcı olabilir. Bu tabloyu kullanarak, sorununuzu gidermek için hangi veri kümesinin kullanılacağını saptayın:
+Bir temel modelle ilgili tanıma sorunlarıyla karşılaşırsanız, özel bir modeli eğitmek ve doğruluğu artırmaya yardımcı olmak için insan etiketli döküm dosyalarını ve ilgili verileri kullanabilirsiniz. Sorunlarınızı gidermek için hangi veri kümesinin kullanılacağını öğrenmek için bu tabloyu kullanın:
 
 | Kullanım örneği | Veri türü |
 | -------- | --------- |
-| Sektöre özgü sözlük ve dilbilgisinde tıp terminolojisi veya It jarggibi tanıma doğruluğunu geliştirir. | İlgili metin (cümleler/utterer) |
-| Ürün adları veya kısaltmalar gibi standart olmayan telaffuz içeren bir sözcüğün veya bir terimin fonetik ve görüntülenen formunu tanımlayın. | İlgili metin (telaffuz) |
-| Konuşma stillerinde, aksanların veya belirli arka plan noseslerdeki tanıma doğruluğunu geliştirir. | Ses + insan etiketli yazılı betikler |
+| Tıbbi Terminoloji veya It jarggibi sektöre özgü sözlük ve dilbilgisinde tanıma doğruluğunu geliştirme | İlgili metin (cümleler/utterer) |
+| Ürün adları veya kısaltmalar gibi standart olmayan telaffuz içeren bir sözcüğün veya bir terimin fonetik ve görüntülenen formunu tanımlayın | İlgili metin (telaffuz) |
+| Konuşma stillerinde, aksanların veya belirli arka plan noseslerdeki tanıma doğruluğunu geliştirme | Ses + insan etiketli yazılı betikler |
 
 ## <a name="train-and-evaluate-a-model"></a>Modeli eğitme ve değerlendirme
 
-Bir modeli eğiten ilk adım eğitim verilerini karşıya yüklemedir. İnsan etiketli onayları ve ilgili metinleri (dıklılık ve söylenişleri) hazırlamak için [verilerinizi hazırlama ve test](./how-to-custom-speech-test-and-train.md) etme adımları için adım adım yönergeler kullanın. Eğitim verilerini karşıya yükledikten sonra modelinize eğitime başlamak için aşağıdaki yönergeleri izleyin:
+Bir modeli eğiten ilk adım eğitim verilerini karşıya yüklemedir. Bkz. insanlar etiketli onayları ve ilgili metinleri (utde ve söylenişleri) hazırlamak için [verilerinizi hazırlama ve test](./how-to-custom-speech-test-and-train.md) etme adımları. Eğitim verilerini karşıya yükledikten sonra modelinize eğitime başlamak için aşağıdaki yönergeleri izleyin:
 
 1. [Özel konuşma tanıma portalında](https://speech.microsoft.com/customspeech)oturum açın.
-2. **Konuşmayı metne > Özel Konuşma Tanıma > [proje adı] eğitim >**.
-3. **Modeli eğitme**' ye tıklayın.
-4. Ardından, eğitime bir **ad** ve **Açıklama** sağlayın.
-5. **Senaryo ve taban çizgisi modeli** açılan menüsünde, etki alanına en uygun senaryoyu seçin. Hangi senaryonun seçeceğinizden emin değilseniz, **genel**' i seçin. Temel model, eğitimin başlangıç noktasıdır. En son model genellikle en iyi seçenektir.
+2. **Konuşmayı metne**  >  **özel konuşma tanıma**  >  **[proje adı]**  >  **eğitimi**' ne gidin.
+3. **Modeli eğitme**' yi seçin.
+4. Eğitimle bir **ad** ve **Açıklama** sağlayın.
+5. **Senaryo ve temel model** listesinde, etki alanına en uygun senaryoyu seçin. Hangi senaryonun seçeceğiniz konusunda emin değilseniz, **genel**' i seçin. Temel model, eğitimin başlangıç noktasıdır. En son model genellikle en iyi seçenektir.
 6. **Eğitim verilerini seçin** sayfasında, eğitim için kullanmak istediğiniz bir veya daha fazla ses + insan etiketli döküm veri kümesi seçin.
-7. Eğitim tamamlandıktan sonra, yeni eğitilen modelde doğruluk testi gerçekleştirmeyi tercih edebilirsiniz. Bu adım isteğe bağlıdır.
+7. Eğitim tamamlandıktan sonra, yeni eğitilen modelde doğruluk testi yapabilirsiniz. Bu adım isteğe bağlıdır.
 8. Özel modelinizi derlemek için **Oluştur** ' u seçin.
 
-Eğitim tablosu, bu yeni oluşturulan modele karşılık gelen yeni bir giriş görüntüler. Tabloda Ayrıca durum görüntülenir: Işlem, başarılı, başarısız.
+**Eğitim** tablosu yeni modele karşılık gelen yeni bir giriş görüntüler. Tabloda Ayrıca durum görüntülenir: **işlem**, **başarılı** veya **başarısız**.
 
-Özel Konuşma Tanıma modeli doğruluğunu değerlendirmek ve iyileştirmek için bkz. [nasıl yapılır](how-to-custom-speech-evaluate-data.md) . Doğruluk sınamasını yapmayı seçerseniz, modelin performansını gerçekçi bir şekilde anlamak için modelinizden farklı bir akustik veri kümesi seçmeniz önemlidir.
+Özel Konuşma Tanıma modeli doğruluğunu değerlendirmek ve iyileştirmek için bkz. [nasıl yapılır](how-to-custom-speech-evaluate-data.md) . Doğruluk sınamasını tercih ederseniz, modelin performansını gerçekçi bir şekilde anlamak için modelinizle birlikte kullandığınız bir akustik veri kümesini seçmeniz önemlidir.
 
 ## <a name="deploy-a-custom-model"></a>Özel bir modeli dağıtma
 
-Verileri karşıya yükledikten ve inceledikten, doğruluğu değerlendirdikten ve özel bir model eğitilene kadar, uygulamalarınız, araçlarınızla ve ürünlerinizle kullanmak üzere özel bir uç nokta dağıtabilirsiniz. 
+Verileri yükleyip İnceleme, doğruluğu değerlendirin ve özel bir model eğdikten sonra, uygulamalarınız, araçları ve ürünleriniz ile kullanmak üzere özel bir uç nokta dağıtabilirsiniz. 
 
-Yeni bir özel uç nokta oluşturmak için [özel konuşma tanıma portalında](https://speech.microsoft.com/customspeech) oturum açın ve sayfanın üst kısmındaki özel konuşma tanıma menüsünden **dağıtım** ' yi seçin. İlk kez çalıştırıldıysanız tabloda listelenen bitiş noktaları olmadığını fark edeceksiniz. Bir uç nokta oluşturduktan sonra, dağıtılan her bitiş noktasını izlemek için bu sayfayı kullanırsınız.
+Özel bir uç nokta oluşturmak için [özel konuşma tanıma portalında](https://speech.microsoft.com/customspeech)oturum açın. Sayfanın üst kısmındaki **özel konuşma tanıma** menüsünde **dağıtım** ' ı seçin. İlk kez çalıştırıldıysanız tabloda listelenen bitiş noktaları olmadığını fark edeceksiniz. Uç nokta oluşturduktan sonra, dağıtılan her bitiş noktasını izlemek için bu sayfayı kullanırsınız.
 
-Sonra, **uç nokta Ekle** ' yi seçin ve özel uç noktanız Için bir **ad** ve **Açıklama** girin. Ardından, bu uç nokta ile ilişkilendirmek istediğiniz özel modeli seçin. Bu sayfadan günlüğe kaydetmeyi de etkinleştirebilirsiniz. Günlüğe kaydetme, uç nokta trafiğini izlemenizi sağlar. Devre dışı bırakılırsa trafik depolanmaz.
+Sonra, **uç nokta Ekle** ' yi seçin ve özel uç noktanız Için bir **ad** ve **Açıklama** girin. Ardından uç noktayla ilişkilendirmek istediğiniz özel modeli seçin.  Bu sayfadan günlüğe kaydetmeyi de etkinleştirebilirsiniz. Günlüğe kaydetme, uç nokta trafiğini izlemenizi sağlar. Günlüğe kaydetme devre dışıysa, trafik depolanmaz.
 
-![Model dağıtma](./media/custom-speech/custom-speech-deploy-model.png)
+![Yeni uç nokta sayfasını gösteren ekran görüntüsü.](./media/custom-speech/custom-speech-deploy-model.png)
 
 > [!NOTE]
 > Kullanım koşullarını ve fiyatlandırma ayrıntılarını kabul etmek zorunda kalmazsınız.
 
 Sonra **Oluştur**' u seçin. Bu eylem sizi **dağıtım** sayfasına döndürür. Tablo artık özel uç noktanıza karşılık gelen bir giriş içerir. Uç noktanın durumu geçerli durumunu gösterir. Özel modellerinizi kullanarak yeni bir uç noktanın örneklendirilecek 30 dakikaya kadar zaman alabilir. Dağıtımın durumu **tamamlandığında**, uç nokta kullanıma kullanılır.
 
-Uç noktanız dağıtıldıktan sonra, uç nokta adı bir bağlantı olarak görünür. Uç nokta anahtarı, uç nokta URL 'SI ve örnek kod gibi uç noktanıza özgü bilgileri göstermek için bağlantıya tıklayın.
+Uç noktanız dağıtıldıktan sonra, uç nokta adı bir bağlantı olarak görünür. Uç nokta anahtarı, uç nokta URL 'SI ve örnek kod gibi uç noktanıza özgü bilgileri görmek için bağlantıyı seçin.
 
 ## <a name="view-logging-data"></a>Günlük verilerini görüntüleme
 
-Günlüğe kaydetme verileri, **uç nokta > ayrıntıları** altında indirilebilir.
+Günlüğe kaydetme verileri, **uç nokta**  >  **ayrıntıları** altında indirilebilir.
 > [!NOTE]
->Günlüğe kaydetme verileri Microsoft 'un sahip olduğu depolamada 30 gün boyunca kullanılabilir ve daha sonra kaldırılacaktır. Müşterinin sahip olduğu bir depolama hesabının bilişsel hizmetler aboneliğine bağlı olması durumunda günlüğe kaydetme verileri otomatik olarak silinmez.
+>Günlüğe kaydetme verileri, Microsoft 'a ait depolamada 30 gün boyunca kullanılabilir. Daha sonra kaldırılacaktır. Müşterinin sahip olduğu bir depolama hesabı bilişsel hizmetler aboneliğine bağlanmışsa, günlüğe kaydetme verileri otomatik olarak silinmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Özel modelinizi nasıl kullanacağınızı](how-to-specify-source-language.md)öğrenin.
+* [Özel modelinizi nasıl kullanacağınızı öğrenin](how-to-specify-source-language.md)
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

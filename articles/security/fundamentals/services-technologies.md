@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
-ms.openlocfilehash: a4cc6e31e49243af8fa52ac568bcbba660bcde7e
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 8a33e9d462f3105bfee295ac82384a38325f7c7c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842745"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498804"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure 'da kullanılabilen güvenlik hizmetleri ve teknolojileri
 
@@ -91,5 +91,5 @@ Zaman içinde, bu liste Azure 'un yaptığı gibi değişir ve büyür. Güvenli
 | [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md)| Küresel bir DNS yük dengeleyici.|
 | [Azure uygulama proxy 'Si](../../active-directory/manage-apps/application-proxy.md)| Şirket içinde barındırılan Web uygulamalarına yönelik uzaktan erişimin güvenliğini sağlamak için kullanılan kimlik doğrulaması ön ucu. |
 |[Azure Güvenlik Duvarı](../../firewall/overview.md)|Azure sanal ağ kaynaklarınızı koruyan, yönetilen, bulut tabanlı bir ağ güvenlik hizmeti.|
-|[Azure DDoS koruması](../../virtual-network/ddos-protection-overview.md)|Uygulama tasarımı en iyi uygulamaları ile birlikte, DDoS saldırılarına karşı savunma sağlar.|
+|[Azure DDoS koruması](../../ddos-protection/ddos-protection-overview.md)|Uygulama tasarımı en iyi uygulamaları ile birlikte, DDoS saldırılarına karşı savunma sağlar.|
 |[Sanal ağ hizmeti uç noktaları](../../virtual-network/virtual-network-service-endpoints-overview.md)|Sanal ağ özel adres alanınızı ve VNet 'iniz kimliğini doğrudan bir bağlantı üzerinden Azure hizmetlerine genişletir.|

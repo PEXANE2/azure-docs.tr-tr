@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 06a84621c4d6abbf361eba232c776c167dc46265
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 9d62195759de2d43e863c1cb2c4c3ef911bb52c6
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970618"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498532"
 ---
 # <a name="azure-disk-encryption-for-linux-virtual-machines-faq"></a>Linux sanal makineleri için Azure disk şifrelemesi hakkında SSS
 
@@ -57,14 +57,14 @@ Hayır, Azure disk şifrelemesi yalnızca bağlı birimleri şifreler.
 
 ## <a name="what-is-storage-server-side-encryption"></a>Depolama sunucu tarafı şifrelemesi nedir?
 
-Depolama sunucu tarafı şifrelemesi, Azure depolama 'da Azure yönetilen disklerini şifreler. Yönetilen diskler, platform tarafından yönetilen bir anahtarla sunucu tarafı şifreleme (10 Haziran 2017 itibariyle) ile varsayılan olarak şifrelenir. Yönetilen disklerin şifrelemesini, kendi anahtarlarınız ile, müşteri tarafından yönetilen bir anahtar belirterek yönetebilirsiniz. Daha fazla bilgi için bkz. [Azure yönetilen disklerin sunucu tarafı şifrelemesi](disk-encryption.md).
+Depolama sunucu tarafı şifrelemesi, Azure depolama 'da Azure yönetilen disklerini şifreler. Yönetilen diskler, platform tarafından yönetilen bir anahtarla sunucu tarafı şifreleme (10 Haziran 2017 itibariyle) ile varsayılan olarak şifrelenir. Yönetilen disklerin şifrelemesini, kendi anahtarlarınız ile, müşteri tarafından yönetilen bir anahtar belirterek yönetebilirsiniz. Daha fazla bilgi için bkz. [Azure yönetilen disklerin sunucu tarafı şifrelemesi](../disk-encryption.md).
  
 ## <a name="how-is-azure-disk-encryption-different-from-storage-server-side-encryption-with-customer-managed-key-and-when-should-i-use-each-solution"></a>Azure disk şifrelemesi, müşteri tarafından yönetilen anahtarla depolama sunucusu tarafı şifrelemeden farklı ve her çözümü ne zaman kullanmalıyım?
 
 Azure disk şifrelemesi, müşteri tarafından yönetilen anahtar kullanarak işletim sistemi diski, veri diskleri ve geçici disk için uçtan uca şifreleme sağlar.
 - Gereksinimleriniz yukarıdaki ve uçtan uca şifrelemeyi şifrelemeyi içeriyorsa, Azure disk şifrelemesi ' ni kullanın. 
-- Gereksinimleriniz, müşteri tarafından yönetilen anahtarla yalnızca bekleyen verileri şifrelemeyi içeriyorsa, [müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifrelemeyi](disk-encryption.md)kullanın. Müşteri tarafından yönetilen anahtarlarla hem Azure disk şifrelemesi hem de depolama sunucu tarafı şifrelemesi ile bir disk şifrelenemez. 
-- Linux oturumunuz [Azure disk şifrelemesi için desteklenen işletim sistemleri](disk-encryption-overview.md#supported-operating-systems) altında listelenmiyorsa veya [Windows için desteklenmeyen senaryolarda](disk-encryption-linux.md#unsupported-scenarios)adlı bir senaryo kullanıyorsanız, [müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifrelemeyi](disk-encryption.md)göz önünde bulundurun.
+- Gereksinimleriniz, müşteri tarafından yönetilen anahtarla yalnızca bekleyen verileri şifrelemeyi içeriyorsa, [müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifrelemeyi](../disk-encryption.md)kullanın. Müşteri tarafından yönetilen anahtarlarla hem Azure disk şifrelemesi hem de depolama sunucu tarafı şifrelemesi ile bir disk şifrelenemez. 
+- Linux oturumunuz [Azure disk şifrelemesi için desteklenen işletim sistemleri](disk-encryption-overview.md#supported-operating-systems) altında listelenmiyorsa veya [Windows için desteklenmeyen senaryolarda](disk-encryption-linux.md#unsupported-scenarios)adlı bir senaryo kullanıyorsanız, [müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifrelemeyi](../disk-encryption.md)göz önünde bulundurun.
 - Kuruluşunuzun ilkesi, Azure tarafından yönetilen bir anahtarla Rest içeriğini şifrelemenize izin veriyorsa, hiçbir eylemde bulunmanız gerekmez; içerik varsayılan olarak şifrelenir. Yönetilen diskler için, depolama içindeki içerikler, platform tarafından yönetilen anahtarla sunucu tarafı şifreleme ile varsayılan olarak şifrelenir. Anahtar, Azure depolama hizmeti tarafından yönetilir. 
 
 

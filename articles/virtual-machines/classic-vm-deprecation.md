@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 730a29ff579ce6a1970ceafad5891611b52c059d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 7ed2a672f0f7149240e799b5529a7a3a6836a702
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972297"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499314"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>IaaS kaynaklarınızı 1 Mart 2023 ' e kadar Azure Resource Manager geçirin 
 
@@ -45,12 +45,12 @@ Azure Resource Manager için geçişinizi planlamaya hemen başlayın.
    - Ayrıca, seçili abonelikler için işaretlenen tüm VM 'lerin (klasik) ve ilgili bilgilerin listesini görüntülemek için [Portal](https://portal.azure.com/#blade/HubsExtension/ArgQueryBlade/query/resources%0A%7C%20where%20type%20%3D%3D%20%22microsoft.classiccompute%2Fvirtualmachines%22) veya [PowerShell](../governance/resource-graph/concepts/work-with-data.md) kullanarak Azure Kaynak grafiğini de sorgulayabilirsiniz. 
    - 8 Şubat 2020 tarihinde ve 2 Eylül ' de, bu VM 'Leri içeren tüm aboneliklerin bir listesi ile abonelik sahiplerine e-postalar gönderdik (klasik). Bu listeyi oluşturmak için lütfen bunları kullanın. 
 
-1. [Linux](./linux/migration-classic-resource-manager-plan.md) ve [Windows](./windows/migration-classic-resource-manager-plan.md) VM 'lerinizi (klasik) Azure Resource Manager 'ye geçirme hakkında [daha fazla bilgi edinin](./windows/migration-classic-resource-manager-overview.md) . Daha fazla bilgi için bkz. [Azure Resource Manager geçişe yönelik sık sorulan sorular](./migration-classic-resource-manager-faq.md).
+1. [Linux](./migration-classic-resource-manager-plan.md) ve [Windows](./migration-classic-resource-manager-plan.md) VM 'lerinizi (klasik) Azure Resource Manager 'ye geçirme hakkında [daha fazla bilgi edinin](./migration-classic-resource-manager-overview.md) . Daha fazla bilgi için bkz. [Azure Resource Manager geçişe yönelik sık sorulan sorular](./migration-classic-resource-manager-faq.md).
 
-1. Mevcut VM 'lerinizi üç kolay adımla geçirmek için [Platform desteği geçiş aracı](./windows/migration-classic-resource-manager-overview.md) 'nı kullanarak planlamanın başlamasını öneririz: doğrulama, hazırlama ve tamamlama. Araç, VM 'lerinizi en düşük düzeyde kapalı kalma süresi olmadan geçirmek için tasarlanmıştır. 
+1. Mevcut VM 'lerinizi üç kolay adımla geçirmek için [Platform desteği geçiş aracı](./migration-classic-resource-manager-overview.md) 'nı kullanarak planlamanın başlamasını öneririz: doğrulama, hazırlama ve tamamlama. Araç, VM 'lerinizi en düşük düzeyde kapalı kalma süresi olmadan geçirmek için tasarlanmıştır. 
 
    1. İlk adım, Validate, mevcut dağıtımınız üzerinde hiçbir etkiye sahip değildir ve geçiş için desteklenmeyen tüm senaryoların bir listesini sağlar. 
-   1. Dağıtımınızı onarmak ve geçişe hazırlamak için [geçici çözümler listesine](./windows/migration-classic-resource-manager-overview.md#unsupported-features-and-configurations) gidin. 
+   1. Dağıtımınızı onarmak ve geçişe hazırlamak için [geçici çözümler listesine](./migration-classic-resource-manager-overview.md#unsupported-features-and-configurations) gidin. 
    1. İdeal olarak, tüm doğrulama hataları düzeltildikten sonra hazırlama ve tamamlama adımları sırasında herhangi bir sorunla karşılaşmamanız gerekir. Tamamlama başarılı olduktan sonra, dağıtımınız Azure Resource Manager 'ye dinamik olarak geçirilir ve daha sonra Azure Resource Manager tarafından sunulan yeni API 'Ler aracılığıyla yönetilebilir. 
 
    Geçiş Aracı geçişiniz için uygun değilse, geçişe yönelik [diğer işlem tekliflerini](/azure/architecture/guide/technology-choices/compute-decision-tree) inceleyebilirsiniz. Birçok Azure işlem teklifi olduğundan ve bunlar diğerinden farklı olduğundan, bunlara platform tarafından desteklenen bir geçiş yolu sağlayamıyoruz.  

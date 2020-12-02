@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/30/2017
 ms.author: vikdesai
-ms.openlocfilehash: 5df56b304463ab981026fbe0c82d831d83d702c3
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: f23d1fb0162abf05fba97c2f6fb02be9238fabd2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93380263"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500368"
 ---
 # <a name="save-costs-with-azure-reserved-vm-instances-linux"></a>Azure ayrılmış VM örnekleri (Linux) ile maliyetleri kaydetme
 
@@ -86,7 +86,7 @@ Ayrılmış VM örnekleri, bazı özel durumlarla birçok VM boyutu için kullan
 
 ## <a name="buy-a-reserved-vm-instance"></a>Ayrılmış VM Örneği Satın Alma
 
-[Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D)ayrılmış bir sanal makine örneği satın alabilirsiniz. [Peşin olarak veya aylık ödemelerle](../cost-management-billing/reservations/monthly-payments-reservations.md) rezervasyon ödemesi yapın.
+[Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D)ayrılmış bir sanal makine örneği satın alabilirsiniz. [Peşin olarak veya aylık ödemelerle](../cost-management-billing/reservations/prepare-buy-reservation.md) rezervasyon ödemesi yapın.
 Bu gereksinimler ayrılmış bir sanal makine örneği satın almak için geçerlidir:
 
 - En az bir EA aboneliği veya Kullandıkça Öde tarifesine sahip bir abonelik için sahip rolünde olmanız gerekir.
@@ -95,9 +95,9 @@ Bu gereksinimler ayrılmış bir sanal makine örneği satın almak için geçer
 
 Örnek satın almak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. **Tüm hizmetler** > **Rezervasyonlar** ’ı seçin.
-1. Yeni rezervasyon satın almak için **Ekle** 'yi seçin ve ardından **Sanal makine** 'ye tıklayın.
+1. [Azure portalda](https://portal.azure.com) oturum açın.
+1. **Tüm hizmetler** > **Rezervasyonlar**’ı seçin.
+1. Yeni rezervasyon satın almak için **Ekle**'yi seçin ve ardından **Sanal makine**'ye tıklayın.
 1. Gerekli alanları doldurun. Seçtiğiniz özniteliklerle eşleşen VM örneklerinin çalıştırılması, rezervasyon indirimi almaya uygundur. İndirim alan VM örneklerinizin gerçek sayısı, seçilen kapsama ve miktara bağlıdır.
 
 EA sözleşmeniz varsa, daha fazla örnek eklemek için **daha fazla ek ekle seçeneğini** kullanabilirsiniz. Bu seçenek diğer abonelik türleri için kullanılamaz.
@@ -106,8 +106,8 @@ EA sözleşmeniz varsa, daha fazla örnek eklemek için **daha fazla ek ekle se�
 | Alan      | Açıklama|
 |------------|--------------|
 |Abonelik|Ayırma için ödeme yapmak üzere kullanılan abonelik. Rezervasyon maliyetleri, aboneliğin ödeme yöntemiyle ücretlendirilir. Abonelik türü bir kurumsal anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya Microsoft Müşteri Sözleşmesi ya da Kullandıkça Öde tarifesine sahip tek bir abonelik olmalıdır (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P). Ücretler, parasal taahhüt bakiyesinden düşülür veya varsa fazla kullanım olarak ücretlendirilir. Kullandıkça Öde tarifesine sahip bir abonelik için ücretler, abonelik üzerindeki kredi kartına veya fatura ödeme yöntemine faturalandırılır.|    
-|Kapsam       |Ayırma kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir. Şunları seçerseniz: <ul><li>**Tek kaynak grubu kapsamı** : Yalnızca seçilen kaynak grubunda eşleşen kaynaklara rezervasyon indirimini uygular.</li><li>**Tek abonelik kapsamı** : Yalnızca seçilen abonelikte eşleşen kaynaklara rezervasyon indirimini uygular.</li><li>**Paylaşılan kapsam** : Faturalama bağlamında bulunan uygun aboneliklerdeki eşleşen kaynaklara rezervasyon indirimini uygular. EA müşterileri için, faturalandırma bağlamı kayıt olur. Kullandıkça öde fiyatlarına tabi bireysel abonelikler için faturalama kapsamı, hesap yöneticisi tarafından oluşturulan tüm uygun aboneliklerdir.</li></ul>|
-|Region    |Ayırma kapsamındaki Azure bölgesi.|    
+|Kapsam       |Ayırma kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir. Şunları seçerseniz: <ul><li>**Tek kaynak grubu kapsamı**: Yalnızca seçilen kaynak grubunda eşleşen kaynaklara rezervasyon indirimini uygular.</li><li>**Tek abonelik kapsamı**: Yalnızca seçilen abonelikte eşleşen kaynaklara rezervasyon indirimini uygular.</li><li>**Paylaşılan kapsam**: Faturalama bağlamında bulunan uygun aboneliklerdeki eşleşen kaynaklara rezervasyon indirimini uygular. EA müşterileri için, faturalandırma bağlamı kayıt olur. Kullandıkça öde fiyatlarına tabi bireysel abonelikler için faturalama kapsamı, hesap yöneticisi tarafından oluşturulan tüm uygun aboneliklerdir.</li></ul>|
+|Bölge    |Ayırma kapsamındaki Azure bölgesi.|    
 |VM Boyutu     |Sanal makine örneklerinin boyutu.|
 |İçin iyileştirin     |VM örnek boyutu esnekliği varsayılan olarak seçilidir. Aynı [VM Boyut grubundaki](reserved-vm-instance-size-flexibility.md)diğer VM 'lere rezervasyon iskontosunu uygulamak için örnek boyutu esneklik değerini değiştirmek için **Gelişmiş ayarlar** ' a tıklayın. Kapasite önceliği dağıtımlarınızda veri merkezi kapasitesine öncelik verir. İhtiyaç duyduğunuzda sanal makine örneklerini başlatma yeteneizin daha fazla güvenilirlik sağlar. Kapasite önceliği yalnızca rezervasyon kapsamı tek abonelik olduğunda kullanılabilir. |
 |Terim        |Bir yıl veya üç yıl. Ayrıca, yalnızca HBv2 VM 'Leri için kullanılabilir 5 yıllık bir terim vardır.|
@@ -158,6 +158,4 @@ Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği olu�
     - [Kullandıkça öde fiyatlarına tabi bir abonelik için rezervasyon kullanımını anlama](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
     - [Kurumsal kaydınız için rezervasyon kullanımını anlama](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
     - [Rezervasyonlara dahil olmayan Windows yazılımı maliyetleri](../cost-management-billing/reservations/reserved-instance-windows-software-costs.md)
-    - [İş Ortağı Merkezi Bulut Çözümü Sağlayıcısı (CSP) programındaki Azure Ayrılmış Sanal Makine Örnekleri](https://docs.microsoft.com/partner-center/azure-reservations)
-
-
+    - [İş Ortağı Merkezi Bulut Çözümü Sağlayıcısı (CSP) programındaki Azure Ayrılmış Sanal Makine Örnekleri](/partner-center/azure-reservations)

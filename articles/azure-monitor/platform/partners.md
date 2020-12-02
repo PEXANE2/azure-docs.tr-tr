@@ -4,12 +4,12 @@ description: Azure Izleyici iş ortakları ve bunlarla tümleştirme için belge
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: d603e130d4e65667edb34121a4c89b7b0e02b819
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 6e707e77f4618d71cb2fa3f32b05895b97658f76
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636750"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500249"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure İzleyici iş ortağı tümleştirmeleri
 
@@ -263,7 +263,7 @@ Gürültü ortadan kaldırmak, önceliklendirmesini sağlamak, ML 'yi kullanarak
 
 ![SignalFX logosu](./media/partners/signalfx.png)
 
-SignalFx, veri odaklı DevOps için gerçek zamanlı operasyonel zeka 'nın lideridir. Hizmet, buluttaki her bileşen genelinde ölçümleri bulur ve toplar. Geleneksel nokta araçlarının yerini alır ve bugünün dinamik ortamlarında gerçek zamanlı görünürlük sağlar. Yüksek düzeyde ölçeklenebilir SignalFx platformunu kullanarak, SaaS platformu kapsayıcı ve mikro hizmet tabanlı mimariler için iyileştirilmiştir ve her boyuttaki kuruluşlar genelinde güçlü görselleştirme, proaktif uyarı ve işbirliğine dayalı önceliklendirme olanakları sağlar. Signalfx, doğrudan Azure izleyici ile tümleşir ve *telegraf* , *statsd* ve *toplanan* gibi açık kaynaklı bağlayıcılar aracılığıyla Azure için en iyi sınıf panoları, analizlerini ve uyarıları sağlar.
+SignalFx, veri odaklı DevOps için gerçek zamanlı operasyonel zeka 'nın lideridir. Hizmet, buluttaki her bileşen genelinde ölçümleri bulur ve toplar. Geleneksel nokta araçlarının yerini alır ve bugünün dinamik ortamlarında gerçek zamanlı görünürlük sağlar. Yüksek düzeyde ölçeklenebilir SignalFx platformunu kullanarak, SaaS platformu kapsayıcı ve mikro hizmet tabanlı mimariler için iyileştirilmiştir ve her boyuttaki kuruluşlar genelinde güçlü görselleştirme, proaktif uyarı ve işbirliğine dayalı önceliklendirme olanakları sağlar. Signalfx, doğrudan Azure izleyici ile tümleşir ve *telegraf*, *statsd* ve *toplanan* gibi açık kaynaklı bağlayıcılar aracılığıyla Azure için en iyi sınıf panoları, analizlerini ve uyarıları sağlar.
 
 [signalfx belgeleri](https://docs.signalfx.com/en/latest/getting-started/send-data.html#connect-to-azure)
 
@@ -310,6 +310,20 @@ Sumo Logic, tüm uygulama yaşam döngüsü ve yığını genelinde yapılandır
 Turbonomic, gerçek zamanlı performans, maliyet ve uyumluluğu eşzamanlı olarak iyileştirerek karma bulutları için iş yükü otomasyonu sağlar. Turbonomic, kuruluşların Azure 'da elastik olarak iyileştirerek, uygulamaların SLA 'Sı için ihtiyaç duydukları kaynakları sürekli aldığından ve IaaS ve PaaS katmanının işlem, depolama ve ağ üzerinden daha fazla şey almasını sağlar. Kuruluşlar, geçişlerin benzetimini yapabilir, iş yüklerinin düzgün şekilde ölçeklendirilmesine ve veri merkezi kaynaklarını devre dışı bırakabilirler. Bu arada, hem performans hem de uyumluluğun yanı sıra bütçe dahilinde Azure 'a geçiş Turbonomic, API odaklı ve Azure 'da ve şirket içinde aracısız bir VM olarak çalışır.
 
 [Turbonomic tanıtımı](https://turbonomic.com/)
+
+## <a name="partner-tools-with-event-hub-integration"></a>Olay Hub 'ı tümleştirmeyle iş ortağı araçları
+
+Azure Izleyici 'yi Azure Olay Hub 'ına yönlendirmek için Azure Izleyici 'yi kullanarak, bazı dış SıEM ve izleme araçlarıyla kolayca tümleştirmenize olanak tanır. Aşağıdaki iş ortaklarının, Olay Hub 'ı aracılığıyla tümleştirilmesi bilinmektedir. 
+
+| Araç | Azure 'da barındırılıyor | Açıklama |
+|:---|:---| :---|
+|  IBM QRadar | Hayır | Microsoft Azure DSM ve Microsoft Azure Olay Hub 'ı Protokolü [IBM Support Web sitesinden](https://www.ibm.com/support)indirilebilir. Azure ile tümleştirme hakkında daha fazla bilgi için bkz. [QRadar DSM yapılandırması](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0). |
+| Splunk | Hayır | [Splunk için Microsoft Azure Add-On](https://splunkbase.splunk.com/app/3757/) , Splunkbase 'de kullanılabilen açık kaynaklı bir projem. <br><br> Splunk örneğiniz için bir eklenti yükleyemezseniz, örneğin bir ara sunucu kullanıyorsanız veya splunk bulutu üzerinde çalıştırıyorsanız, bu olayları splunk [Için Azure işlevini](https://github.com/Microsoft/AzureFunctionforSplunkVS)kullanarak splunk http olay toplayıcısına iletebilir. Bu, Olay Hub 'ında yeni iletiler tarafından tetiklenir. |
+| SumoLogic | Hayır | Olay Hub 'ından veri tüketmek üzere SumoLogic ayarlamaya yönelik yönergeler [, Olay Hub 'ından Azure denetim uygulamasının günlüklerini toplar](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub). |
+| ArcSight | Hayır | Arcgörüş Azure Olay Hub 'ı akıllı Bağlayıcısı, [arcgözetimi akıllı bağlayıcı koleksiyonunun](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)bir parçası olarak kullanılabilir. |
+| Syslog sunucusu | Hayır | Azure Izleyici verilerini doğrudan bir Syslog sunucusuna akışını istiyorsanız, bir [Azure işlevine dayalı bir çözüm](https://github.com/miguelangelopereira/azuremonitor2syslog/)kullanabilirsiniz.
+| Logrhythd | Hayır| Bir olay hub 'ından günlükleri toplamak için Logrhythd ayarlamaya yönelik yönergeler [burada](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)bulunabilir. 
+|Logz.io | Evet | Daha fazla bilgi için bkz. [Azure 'da çalışan Java uygulamaları için Logz.io kullanarak izleme ve günlüğe kaydetme ile çalışmaya](/azure/developer/java/fundamentals/java-get-started-with-logzio) başlama
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

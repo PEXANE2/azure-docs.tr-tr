@@ -3,20 +3,20 @@ title: Azure Data Factory'de bağlı hizmetler
 description: Data Factory 'de bağlı hizmetler hakkında bilgi edinin. Bağlı hizmetler işlem/veri depolarını Data Factory 'ye bağlar.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: anandsub
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 3d49422af01e38884b5d8ff871fbe84254938944
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 172694363b482edf6d463aa74b85e81c91fa6a9c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89434131"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500113"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Azure Data Factory'de bağlı hizmetler
 
@@ -32,7 +32,7 @@ Data Factory yeni başladıysanız, bkz. genel bakış için [Azure Data Factory
 
 ## <a name="overview"></a>Genel Bakış
 
-Bir veri fabrikasında bir veya daha fazla işlem hattı olabilir. İşlem **hattı** , birlikte bir görevi gerçekleştiren **etkinliklerin** mantıksal gruplandırmasıdır. İşlem hattındaki etkinlikler, verilerinizde gerçekleştirilecek eylemleri tanımlar. Örneğin, SQL Server verilerini Azure Blob depolama alanına kopyalamak için bir kopyalama etkinliği kullanabilirsiniz. Daha sonra, çıktı verileri üretmek üzere blob depolamadan veri işlemek için bir Azure HDInsight kümesinde Hive betiği çalıştıran bir Hive etkinliği kullanabilirsiniz. Son olarak, çıkış verilerini Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) kopyalamak için ikinci bir kopyalama etkinliği kullanarak iş zekası (BI) raporlama çözümlerinin üzerine inşa edebilirsiniz. İşlem hatları ve etkinlikler hakkında daha fazla bilgi için bkz. Azure Data Factory işlem [hatları ve etkinlikleri](concepts-pipelines-activities.md) .
+Bir veri fabrikasında bir veya daha fazla işlem hattı olabilir. İşlem **hattı** , birlikte bir görevi gerçekleştiren **etkinliklerin** mantıksal gruplandırmasıdır. İşlem hattındaki etkinlikler, verilerinizde gerçekleştirilecek eylemleri tanımlar. Örneğin, SQL Server verilerini Azure Blob depolama alanına kopyalamak için bir kopyalama etkinliği kullanabilirsiniz. Daha sonra, çıktı verileri üretmek üzere blob depolamadan veri işlemek için bir Azure HDInsight kümesinde Hive betiği çalıştıran bir Hive etkinliği kullanabilirsiniz. Son olarak, çıkış verilerini Azure SYNAPSE Analytics 'e kopyalamak için ikinci bir kopyalama etkinliği kullanabilirsiniz. Bu işlem, en üst kısımdaki iş zekası (BI) raporlama çözümlerini oluşturulmuştur. İşlem hatları ve etkinlikler hakkında daha fazla bilgi için bkz. Azure Data Factory işlem [hatları ve etkinlikleri](concepts-pipelines-activities.md) .
 
 Şimdi, veri **kümesi** , **etkinliklerde** giriş ve çıkış olarak kullanmak istediğiniz verilere işaret eden veya başvuruda bulunan verilerin adlandırılmış bir görünümüdür.
 

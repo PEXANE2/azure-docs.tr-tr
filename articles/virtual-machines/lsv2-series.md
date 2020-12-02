@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: dd755e1bc220d61aa540a0e7da9e3f174bde9d76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba971919037230cb6c09e627fde448647063b5b9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91652933"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498430"
 ---
 # <a name="lsv2-series"></a>Lsv2 serisi
 
@@ -51,7 +51,7 @@ Burdımı: destekleniyor<br>
 
 <sup>4</sup> Lsv2 serisi VM 'Ler, Lsv2 iş yüklerini avantajına sahip olmadığından veri diski için konak önbelleği sunmaz.
 
-<sup>5</sup> Lsv2 serisi VM 'ler, disk performansını aynı anda en fazla 30 dakika boyunca [aşırı](linux/disk-bursting.md) alabilir. 
+<sup>5</sup> Lsv2 serisi VM 'ler, disk performansını aynı anda en fazla 30 dakika boyunca [aşırı](./disk-bursting.md) alabilir. 
 
 64 ' den fazla vCPU içeren <sup>6</sup> VM, desteklenen bu konuk işletim sistemlerinden birini gerektirir:
 

@@ -3,20 +3,20 @@ title: Azure Data Factory içinde işlem hattı etkinliğini yürütme
 description: Başka bir Data Factory işlem hattından bir Data Factory işlem hattını çağırmak için ardışık düzen yürütme etkinliğini nasıl kullanabileceğinizi öğrenin.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 4bd667a2302136b5e12d2e4e548c9e8863715621
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7df636bbdc85b9fcdcbfef260daca905f9949d8c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81415271"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500062"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Azure Data Factory içinde işlem hattı etkinliğini yürütme
 
@@ -26,7 +26,7 @@ ms.locfileid: "81415271"
 
 
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -67,7 +67,7 @@ ms.locfileid: "81415271"
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
 name | İşlem hattının yürütülmesi etkinliğinin adı. | Dize | Evet
-tür | : **Executepipeline**olarak ayarlanmalıdır. | Dize | Evet
+tür | : **Executepipeline** olarak ayarlanmalıdır. | Dize | Evet
 konfigüre | Bu işlem hattının çağırdığı bağımlı işlem hattına işlem hattı başvurusu. İşlem hattı başvuru nesnesi iki özelliğe sahiptir: **ReferenceName** ve **Type**. ReferenceName özelliği, başvuru işlem hattının adını belirtir. Type özelliği PipelineReference olarak ayarlanmalıdır. | PipelineReference | Evet
 parameters | Çağrılan işlem hattına geçirilecek parametreler | Parametre adlarını bağımsız değişken değerleriyle eşleyen bir JSON nesnesi | Hayır
 waitOnCompletion | Etkinlik yürütmenin bağımlı işlem hattı yürütmenin bitmesini bekleyip beklemediğini tanımlar. Varsayılan değer false’tur. | Boole | Hayır

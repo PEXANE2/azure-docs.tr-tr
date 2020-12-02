@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 88bbd83d7ac5b834255c9b4d46d7cef4394f15d3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a3016900b6265bfd56ad1a5a71f70efc01181af5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968676"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499263"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>Azure görüntü Oluşturucu hizmeti DevOps görevi
 
@@ -26,7 +26,7 @@ Bu makalede, uygulamanızı ve işletim sistemini yükleyip yapılandırmak içi
 
 * [' Kararsız ' bir görev](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder-canary), bu, en son güncelleştirmeleri ve özellikleri koymamızı sağlar, bu sayede müşterilerin bunları ' kararlı ' göreve yükseltmeden önce test etmesine izin verir. Bildirilen bir sorun yoksa ve telemetrimiz bir sorun olmadığını gösteriyorsa, yaklaşık 1 hafta sonra görev kodunu ' Stable ' olarak yükseltecektir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Visual Studio Market ' [den kararlı DevOps görevini](https://marketplace.visualstudio.com/items?itemName=AzureImageBuilder.devOps-task-for-azure-image-builder)yükler.
 * Bir VSTS DevOps hesabınız ve derleme işlem hattının oluşturulması gerekir
@@ -139,7 +139,7 @@ Görüntüye yerleştirilmesini istediğiniz yapı klasörünü seçmek için **
 
 Aşağıdaki örnek bunun nasıl çalıştığını açıklar:
 
-:::image type="content" source="./media/image-builder-devops-task/build-artifacts.png" alt-text="Yayın ardışık düzeninde yapıt Ekle ' ye seçme.":::
+:::image type="content" source="./media/image-builder-devops-task/build-artifacts.png" alt-text="Hiyerarşiyi gösteren bir dizin yapısı.":::
 
 
 * Windows-dosyaları içinde bulunur `C:\` . Dizinini içeren adlı bir dizin `buildArtifacts` oluşturulur `webapp` .
@@ -194,7 +194,7 @@ Aşağıdaki örnek bunun nasıl çalıştığını açıklar:
     
 #### <a name="total-length-of-image-build"></a>Görüntü derlemesinin toplam uzunluğu
 
-Henüz DevOps ardışık düzen görevinde Toplam uzunluk değiştirilemez. Varsayılan değer olan 240 dakika kullanılır. [Buildtimeoutınminutes](./image-builder-json.md?bc=%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json#properties-buildtimeoutinminutes)değerini artırmak Istiyorsanız, sürüm ARDıŞıK DÜZENINDE az CLI görevi kullanabilirsiniz. Görevi bir şablonu kopyalamak ve gönderecek şekilde yapılandırın. Bir örnek için, bu [çözüme](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder)bakın veya az PowerShell kullanın.
+Henüz DevOps ardışık düzen görevinde Toplam uzunluk değiştirilemez. Varsayılan değer olan 240 dakika kullanılır. [Buildtimeoutınminutes](./image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#properties-buildtimeoutinminutes)değerini artırmak Istiyorsanız, sürüm ARDıŞıK DÜZENINDE az CLI görevi kullanabilirsiniz. Görevi bir şablonu kopyalamak ve gönderecek şekilde yapılandırın. Bir örnek için, bu [çözüme](https://github.com/danielsollondon/azvmimagebuilder/tree/master/solutions/4_Using_ENV_Variables#using-environment-variables-and-parameters-with-image-builder)bakın veya az PowerShell kullanın.
 
 
 #### <a name="storage-account"></a>Depolama Hesabı
@@ -237,11 +237,11 @@ Bu değere bir değer geçiremezsiniz, görüntü Oluşturucu VHD 'yi VHD kapsay
 
 ### <a name="optional-settings"></a>İsteğe bağlı ayarlar
 
-* [VM boyutu](image-builder-json.md#vmprofile) -VM boyutunu varsayılan *Standard_D1_v2*geçersiz kılabilirsiniz. Toplam özelleştirme süresini azaltmak için veya GPU/HPC gibi belirli sanal makine boyutlarına bağlı olan görüntüleri oluşturmak istiyorsanız geçersiz kılabilirsiniz.
+* [VM boyutu](image-builder-json.md#vmprofile) -VM boyutunu varsayılan *Standard_D1_v2* geçersiz kılabilirsiniz. Toplam özelleştirme süresini azaltmak için veya GPU/HPC gibi belirli sanal makine boyutlarına bağlı olan görüntüleri oluşturmak istiyorsanız geçersiz kılabilirsiniz.
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
-Yayını oluşturduğunuzda, görev, depolama hesabında *ımagebuilder-vststask*adlı bir kapsayıcı oluşturur. It 'ler, derleme yapıtlarını yükler ve ZIP dosyası için bir SAS belirteci oluşturur.
+Yayını oluşturduğunuzda, görev, depolama hesabında *ımagebuilder-vststask* adlı bir kapsayıcı oluşturur. It 'ler, derleme yapıtlarını yükler ve ZIP dosyası için bir SAS belirteci oluşturur.
 
 Görev, görüntü Oluşturucu şablonu yapıtı oluşturmak için göreve geçirilen özellikleri kullanır. Görev şunları yapar:
 * Derleme yapıtı ZIP dosyasını ve diğer ilişkili betikleri indirir. Dosyalar, geçici görüntü Oluşturucu kaynak grubundaki bir depolama hesabına kaydedilir `IT_<DestinationResourceGroup>_<TemplateName>` .
@@ -314,7 +314,7 @@ Bir yapı hatası varsa, DevOps görevi hazırlama kaynak grubunu silmez. Yapı 
 
 Sanal makine görüntüsü Oluşturucu görevi için DevOps günlüğünde bir hata görürsünüz ve özelleştirme. log konumunu görürsünüz. Örnek:
 
-:::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="Yayın ardışık düzeninde yapıt Ekle ' ye seçme.":::
+:::image type="content" source="./media/image-builder-devops-task/devops-task-error.png" alt-text="Hata gösteren örnek DevOps görev hatası.":::
 
 Sorun giderme hakkında daha fazla bilgi için bkz. [Azure Image Builder hizmetinde sorun giderme](image-builder-troubleshoot.md). 
 

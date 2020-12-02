@@ -7,15 +7,15 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: edd9898580c60199b761b24b172a366069f09cb2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 0c0b3bd81e0f73a7879382e28516378bd722bc17
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516197"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498651"
 ---
 # <a name="how-to-use-permissions-in-azure-spring-cloud"></a>Azure Spring Cloud 'daki izinleri kullanma
-Bu makalede, Azure yay bulut kaynakları için izinleri temsil eden özel roller oluşturma konusu gösterilmektedir. Özel roller, çeşitli stok izinleriyle [Azure yerleşik rollerini](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) genişletir.
+Bu makalede, Azure yay bulut kaynakları için izinleri temsil eden özel roller oluşturma konusu gösterilmektedir. Özel roller, çeşitli stok izinleriyle [Azure yerleşik rollerini](../role-based-access-control/built-in-roles.md) genişletir.
 
 Aşağıdaki özel rolleri uygulayacağız:
 
@@ -43,7 +43,7 @@ Rol tanımlamaya başlamak için bu adımları izleyin.
 
 1. Azure portal, özel rolün atanabilir olmasını istediğiniz aboneliği ve kaynak grubunu açın.
 2. **Access Control (IAM)** öğesini açın.
-3. **+ Ekle**’ye tıklayın.
+3. **+ Ekle**'ye tıklayın.
 4. **Özel rol Ekle**' ye tıklayın.
 5. **İleri**’ye tıklayın.
 
@@ -140,7 +140,7 @@ Bu yordam, Azure yay bulut uygulamalarını dağıtma, test etme ve yeniden baş
 **Microsoft. AppPlatform/yay/uygulamalar/dağıtımlar/SKU**'lardan şunları seçin:
 * Okuma: uygulama dağıtımı kullanılabilir SKU 'larını listeleyin
 
-**Microsoft. AppPlatform/konumlardan**şunları seçin:
+**Microsoft. AppPlatform/konumlardan** şunları seçin:
 * Diğer: ad kullanılabilirliğini denetle
 
 Microsoft. AppPlatform/Locations/operationResults/yay Select: Read: okuma işlemi sonucu
@@ -235,7 +235,7 @@ Bu Jenkins/GitHub eylemleri rolü, Azure Spring Cloud ve bir hizmet örneği ile
 **Microsoft. AppPlatform/SKU**'lardan şunları seçin:
 * Okuma: kullanılabilir SKU 'ları listeleme
 
-**Microsoft. AppPlatform/konumlardan**şunları seçin:
+**Microsoft. AppPlatform/konumlardan** şunları seçin:
 * Diğer: ad kullanılabilirliğini denetle
 
 **Microsoft. AppPlatform/Locations/operationResults/Spring**' den şunları seçin:
@@ -257,9 +257,9 @@ Bu Jenkins/GitHub eylemleri rolü, Azure Spring Cloud ve bir hizmet örneği ile
 
 
 ## <a name="see-also"></a>Ayrıca bkz.
-* [Azure portalı kullanarak özel Azure rolleri oluşturma veya güncelleştirme](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-portal)
+* [Azure portalı kullanarak özel Azure rolleri oluşturma veya güncelleştirme](../role-based-access-control/custom-roles-portal.md)
 
 Özel izinleri tanımlayan üç yöntem hakkında daha fazla bilgi için bkz.:
-* [Rolü kopyalama](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-portal#clone-a-role)
-* [Sıfırdan başlama](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-portal#start-from-scratch)
-* [JSON 'dan Başlat](https://docs.microsoft.com/azure/role-based-access-control/custom-roles-portal#start-from-json)
+* [Rolü kopyalama](../role-based-access-control/custom-roles-portal.md#clone-a-role)
+* [Sıfırdan başlama](../role-based-access-control/custom-roles-portal.md#start-from-scratch)
+* [JSON 'dan Başlat](../role-based-access-control/custom-roles-portal.md#start-from-json)

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 98ba7c63e057e1f6b1f37a6529b6e94e2f514d6d
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 86874a60d48ddcbdaca5ae779ad554ee58cc233b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701040"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498855"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure operasyonel güvenlik en iyi uygulamaları
 Bu makalede, Azure 'daki verilerinizi, uygulamalarınızı ve diğer varlıkları korumaya yönelik işlemsel en iyi uygulamalar sağlanır.
@@ -195,7 +195,7 @@ Mümkün olduğunda Azure hizmetlerini bir [Sanal ağda](../../virtual-network/v
 
 Müşterilerin Şirket içi kaynaklarını Azure 'daki kaynaklarıyla birlikte saldırıya uğradığını görtik. Şirket içi bir ortamı Azure 'a bağlıyorsanız, şirket içi kaynakların genel İnternet 'e yönelik olma olasılığını en aza indirin.
 
-Azure 'da ağ saldırılarına karşı koruma sağlayan iki DDoS [hizmeti teklifi](../../virtual-network/ddos-protection-overview.md) vardır:
+Azure 'da ağ saldırılarına karşı koruma sağlayan iki DDoS [hizmeti teklifi](../../ddos-protection/ddos-protection-overview.md) vardır:
 
 - Temel koruma, hiçbir ek ücret ödemeden varsayılan olarak Azure ile tümleşiktir. Küresel olarak dağıtılan Azure ağının ölçeği ve kapasitesi, her zaman açık trafik izleme ve gerçek zamanlı risk azaltma aracılığıyla ortak ağ katmanı saldırılarına karşı savunma sağlar. Temel, Kullanıcı Yapılandırması veya uygulama değişikliği gerektirmez ve Azure DNS gibi PaaS hizmetleri de dahil olmak üzere tüm Azure hizmetlerini korumanıza yardımcı olur.
 - Standart koruma, ağ saldırılarına karşı gelişmiş DDoS azaltma özellikleri sağlar. Belirli Azure kaynaklarınızı korumak için otomatik olarak ayarlanır. Sanal ağların oluşturulması sırasında korumanın etkinleştirilmesi basittir. Ayrıca, oluşturulduktan sonra yapılabilir ve uygulama ya da kaynak değişikliği gerektirmez.

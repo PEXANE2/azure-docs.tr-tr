@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ad97a822aaa6477616a6661a579df6c4ec82729
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f65ab02e06319519548eaa2c02120691a0ceef02
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919890"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498566"
 ---
 # <a name="build-resilience-in-your-identity-and-access-management-infrastructure"></a>Kimlik ve erişim yönetimi altyapınızda esnekliği oluşturma
 
@@ -40,11 +40,11 @@ Kimlik altyapınızın bağlamında, esnekliği kimlik doğrulaması ve yetkilen
 
 ## <a name="why-worry-about-disruption"></a>Neden kesintiye uğramayın?
 
-Azure AD çağrısı zincirindeki herhangi bir bileşen başarısız olursa, kimlik doğrulama sistemine yapılan her türlü çağrı kesintiye uğrar. Bu, altyapınızın herhangi bir bölümünün bir sorun olması durumunda kullanıcıların ihtiyaç duydukları uygulamalara erişemeyeceği anlamına gelir. Bu nedenle, kimlik doğrulama çağrılarının sayısını ve bu çağrılarındaki bağımlılıkların sayısını azaltmak, esnekliği için önemlidir. Uygulama geliştiricileri, belirteçlerin ne sıklıkta istendiğine ilişkin bir denetim sağlayabilir. Örneğin, geliştiricilerle birlikte çalışarak uygulamalar için mümkün olan yerlerde Azure AD yönetilen kimliklerini kullandığından emin olun. 
+Her bir çağrının bileşeni başarısız olursa, kimlik doğrulama sistemine yapılan her çağrı kesintiye uğraar. Kimlik doğrulaması kesintiye uğradığında, temeldeki bileşen hatalarından dolayı kullanıcılarınız uygulamalarına erişemez. Bu nedenle, kimlik doğrulama çağrılarının sayısını ve bu çağrılarındaki bağımlılıkların sayısını azaltmak, esnekliği için önemlidir. Uygulama geliştiricileri, belirteçlerin ne sıklıkta istendiğine ilişkin bir denetim sağlayabilir. Örneğin, geliştiricilerle birlikte çalışarak uygulamalar için mümkün olan yerlerde Azure AD yönetilen kimliklerini kullandığından emin olun. 
 
 Azure AD gibi belirteç tabanlı bir kimlik doğrulama sisteminde, bir kullanıcının uygulaması (istemci) bir uygulamaya veya başka bir kaynağa erişmeden önce kimlik sisteminden bir güvenlik belirteci almalıdır. Geçerlilik süresi boyunca, bir istemci uygulamaya erişmek için aynı belirteci birden çok kez sunabilir.
 
-Uygulamaya sunulan belirtecin süresi dolarsa, uygulama belirteci reddeder ve istemcinin Azure AD 'den yeni bir belirteç edinmesi gerekir. Yeni belirteç alma, potansiyel olarak kimlik bilgileri istemleri gibi kullanıcı etkileşimi gerektirir. Daha uzun süreli belirteçlere sahip kimlik doğrulama çağrılarının sıklığını azaltmak bu riski azaltır. Ancak, belirteç ömrünü daha az ilke değerlendirmesi tarafından oluşturulan riske göre dengeetmeniz gerekir. Belirteç yaşam sürelerini yönetme hakkında daha fazla bilgi için, bu makaleye bkz. yeniden [kimlik doğrulama istemlerini iyileştirme](https://docs.microsoft.com/azure/active-directory/authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime).
+Uygulamaya sunulan belirtecin süresi dolarsa, uygulama belirteci reddeder ve istemcinin Azure AD 'den yeni bir belirteç edinmesi gerekir. Yeni bir belirteç almak, kimlik bilgileri istemleri gibi kullanıcı etkileşimini veya kimlik doğrulama sisteminin diğer gereksinimlerini karşılamayı gerektirir. Daha uzun süreli belirteçlerle yapılan kimlik doğrulama çağrılarının sıklığını azaltmak gereksiz etkileşimleri azaltır. Ancak, belirteç ömrünü daha az ilke değerlendirmesi tarafından oluşturulan riske göre dengeetmeniz gerekir. Belirteç yaşam sürelerini yönetme hakkında daha fazla bilgi için, bu makaleye bkz. yeniden [kimlik doğrulama istemlerini iyileştirme](https://docs.microsoft.com/azure/active-directory/authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime).
 
 ## <a name="ways-to-increase-resilience"></a>Esnekliği artırma yolları
 Aşağıdaki diyagramda esnekliği artırabileceğiniz altı somut yol gösterilmektedir. Her yöntem, bu makalenin sonraki adımlar bölümünde bağlantılı makalelerdeki ayrıntılı olarak açıklanır.

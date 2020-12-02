@@ -7,15 +7,15 @@ ms.service: data-factory
 services: data-factory
 documentationcenter: ''
 ms.workload: data-services
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: anandsub
-ms.openlocfilehash: 40fa6bce67aa6c5643e4a153da610dce65907b56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70be8d8be48f2b1e1cc275c06e4abff09e3e62f6
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88036360"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498600"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure Data Factory için roller ve izinler
 
@@ -59,7 +59,7 @@ Azure Repos ve GitHub üzerindeki izinler Data Factory izinlerinden bağımsızd
 
 ### <a name="custom-scenarios-and-custom-roles"></a>Özel senaryolar ve özel roller
 
-Bazen farklı veri fabrikası kullanıcıları için farklı erişim düzeyleri vermeniz gerekebilir. Örneğin:
+Bazen farklı veri fabrikası kullanıcıları için farklı erişim düzeyleri vermeniz gerekebilir. Örnek:
 - Kullanıcıların yalnızca belirli bir veri fabrikası üzerinde izinlere sahip olduğu bir gruba ihtiyacınız olabilir.
 - Veya kullanıcıların yalnızca bir veri fabrikasını (veya fabrikaları) izleyebileceği ancak değiştiremeyeceğiniz bir gruba ihtiyacınız olabilir.
 

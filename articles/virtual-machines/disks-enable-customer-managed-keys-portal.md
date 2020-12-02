@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 1b40eef0a4cae8fa68631426ff72003db43d7530
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5452b1e2ffc3ca8a11f3acb591c6288806445e1b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88817878"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499399"
 ---
 # <a name="use-the-azure-portal-to-enable-server-side-encryption-with-customer-managed-keys-for-managed-disks"></a>Yönetilen diskler için müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifrelemeyi etkinleştirmek için Azure portal kullanın
 
 Azure Disk Depolama, ' yi seçerseniz yönetilen diskler için sunucu tarafı şifreleme (SSE) kullanırken kendi anahtarlarınızı yönetmenizi sağlar. Müşteri tarafından yönetilen anahtarlar ve diğer yönetilen disk şifreleme türleri ile SSE hakkında kavramsal bilgiler için, disk şifreleme makalemize ait **müşteri tarafından yönetilen anahtarlar** bölümüne bakın:
 
-- Linux için: [müşteri tarafından yönetilen anahtarlar](./linux/disk-encryption.md#customer-managed-keys)
-- Windows için: [müşteri tarafından yönetilen anahtarlar](./windows/disk-encryption.md#customer-managed-keys)
+- Linux için: [müşteri tarafından yönetilen anahtarlar](./disk-encryption.md#customer-managed-keys)
+- Windows için: [müşteri tarafından yönetilen anahtarlar](./disk-encryption.md#customer-managed-keys)
 
 ## <a name="restrictions"></a>Kısıtlamalar
 

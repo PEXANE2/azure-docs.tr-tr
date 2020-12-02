@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 95e4ac884e0eda3b4f469484226962e3fd2e2eea
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 54982189a5da584c7daf66855ffb655e403a455a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94375389"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500521"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Azure’da Linux sanal makineleri
 
@@ -47,7 +47,7 @@ Bu tabloda, kullanılabilen konumların listesini edinme yöntemlerinden bazıla
 
 | Yöntem | Açıklama |
 | --- | --- |
-| Azure portal |VM oluştururken listeden konum seçin. |
+| Azure portalı |VM oluştururken listeden konum seçin. |
 | Azure PowerShell |[Get-AzLocation](/powershell/module/az.resources/get-azlocation) komutunu kullanın. |
 | REST API |[List locations](/rest/api/resources/subscriptions) işlemini kullanın. |
 | Azure CLI |[az account list-locations](/cli/azure/account?view=azure-cli-latest) işlemini kullanın. |
@@ -114,7 +114,7 @@ Azure, en çok Linux destekleri tarafından desteklenen [bulutta init](https://c
 * [Sanal ağa genel bakış](../../virtual-network/virtual-networks-overview.md)
 * [Azure'da IP adresleri](../../virtual-network/public-ip-addresses.md)
 * [Azure'da Linux VM'sine bağlantı noktalarını açma](nsg-quickstart.md)
-* [Azure portalda Tam Etki Alanı Adı oluşturma](portal-create-fqdn.md)
+* [Azure portalda Tam Etki Alanı Adı oluşturma](../create-fqdn.md)
 
 
 ## <a name="data-residency"></a>Veri yerleşimi

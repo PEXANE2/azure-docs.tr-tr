@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: dc6706d4ec9090c59d4dd668d2ae1dd3ce7d188a
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 819654ef88584cb91d6032e46256258aaed524fd
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92928051"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500317"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B serisi Burstable sanal makine boyutları
 
@@ -21,7 +21,7 @@ B serisi VM 'Ler, Web sunucuları, kavram kanıtı, küçük veritabanları ve g
 
 B serisi aşağıdaki VM boyutlarında gelir:
 
-[Azure Işlem birimi (ACU)](./acu.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json): farklılık gösterir *<br>
+[Azure Işlem birimi (ACU)](./acu.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json): farklılık gösterir *<br>
 [Premium Depolama](premium-storage-performance.md): desteklenir<br>
 [Premium depolama önbelleği](premium-storage-performance.md): desteklenmiyor<br>
 [Dinamik geçiş](maintenance-and-updates.md): destekleniyor<br>
@@ -110,7 +110,7 @@ Azure için ölçüm verilerine erişme hakkında daha fazla bilgi için, bkz. [
 
 Y **: VM** birikmesi ve tüketim ücretleri, tam olarak kendi temel performans düzeyinde çalışan bir VM 'nin net birikmesi veya ücretsiz kredi tüketimine sahip olacağı şekilde ayarlanır.  Bir VM, temel performans düzeyinin altında çalıştığında kredilerin net artışına sahip olur ve VM CPU 'YU temel performans düzeyinden daha fazla kullandığında kredilerin net bir düşüş olur.
 
-**Örnek** : küçük zaman ve katılımcı veritabanı uygulamamın B1ms boyutunu kullanarak bir VM dağıttım. Bu boyut, uygulamamın bir vCPU 'nun en fazla %20 ' sini kullanmasına izin verir. Bu, dakikada 0,2 kredi kullanabilir miyim veya banka.
+**Örnek**: küçük zaman ve katılımcı veritabanı uygulamamın B1ms boyutunu kullanarak bir VM dağıttım. Bu boyut, uygulamamın bir vCPU 'nun en fazla %20 ' sini kullanmasına izin verir. Bu, dakikada 0,2 kredi kullanabilir miyim veya banka.
 
 Uygulamam, çalışanlarınızın iş günlerimin başında ve sonunda meşgul, 7:00-9:00 ile 4:00-6 arasında: 00PM. Günün 20 saati boyunca Uygulamam genellikle yalnızca vCPU 'nun %10 ' u kullanılarak boşta kalır. Yoğun olmayan saatler için, dakikada 0,2 kredileri kazandım, ancak dakikada yalnızca 0. m kredisi elde ediyorum. bu nedenle, VM 'im her saat için 0,1 x 60 = 6 kredilerini kullanır.  Yoğun olmadığım 20 saat boyunca 120 kredi olarak sunulacaktır.  
 
@@ -128,7 +128,7 @@ Y **: aşağıdaki** formülü kullanabilirsiniz:
 
 ### <a name="q-does-the-b-series-support-premium-storage-data-disks"></a>S: B serisi Premium depolama veri disklerini destekliyor mu?
 
-Y **: Evet** , tüm B serisi boyutlar Premium depolama veri disklerini destekler.
+Y **: Evet**, tüm B serisi boyutlar Premium depolama veri disklerini destekler.
 
 ### <a name="q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart"></a>S: yeniden dağıtma veya durdurma/başlatma sonrasında neden kalan kredim 0 olarak ayarlandı?
 

@@ -3,20 +3,20 @@ title: Azure Data Factory 'de Azure Işlevi etkinliği
 description: Azure işlevi etkinliğini kullanarak bir Azure Işlevini Data Factory işlem hattında çalıştırma hakkında bilgi edinin
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.openlocfilehash: ee2e59e794cf34a8fd5043a56867a81c2537f1ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7c8f1e5ae0da9e7c404a942fcb4f554281486a7
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81415318"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500059"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Azure Data Factory 'de Azure Işlevi etkinliği
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -32,31 +32,31 @@ Azure işlevinin dönüş türü geçerli bir olmalıdır `JObject` . ( [Jarray]
 
 | **Özellik** | **Açıklama** | **Gerekli** |
 | --- | --- | --- |
-| tür   | Type özelliği: **AzureFunction** olarak ayarlanmalıdır | evet |
-| işlev uygulaması URL 'si | Azure İşlev Uygulaması URL 'SI. Biçim `https://<accountname>.azurewebsites.net` . Bu URL, Azure portal İşlev Uygulaması görüntülenirken **URL** bölümündeki değerdir  | evet |
-| işlev anahtarı | Azure Işlevi için erişim anahtarı. İlgili işlevin **Yönet** bölümüne tıklayın ve **işlev anahtarını** ya da **ana bilgisayar anahtarını**kopyalayın. Buradan daha fazla bilgi edinebilirsiniz: [Azure IŞLEVLERI http Tetikleyicileri ve bağlamaları](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) | evet |
+| tür   | Type özelliği: **AzureFunction** olarak ayarlanmalıdır | yes |
+| işlev uygulaması URL 'si | Azure İşlev Uygulaması URL 'SI. Biçim `https://<accountname>.azurewebsites.net` . Bu URL, Azure portal İşlev Uygulaması görüntülenirken **URL** bölümündeki değerdir  | yes |
+| işlev anahtarı | Azure Işlevi için erişim anahtarı. İlgili işlevin **Yönet** bölümüne tıklayın ve **işlev anahtarını** ya da **ana bilgisayar anahtarını** kopyalayın. Buradan daha fazla bilgi edinebilirsiniz: [Azure IŞLEVLERI http Tetikleyicileri ve bağlamaları](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) | yes |
 |   |   |   |
 
 ## <a name="azure-function-activity"></a>Azure Işlevi etkinliği
 
 | **Özellik**  | **Açıklama** | **İzin verilen değerler** | **Gerekli** |
 | --- | --- | --- | --- |
-| name  | İşlem hattındaki etkinliğin adı  | Dize | evet |
-| tür  | Etkinliğin türü ' AzureFunctionActivity ' | Dize | evet |
-| bağlı hizmet | Karşılık gelen Azure İşlev Uygulaması için Azure Işlevi bağlı hizmeti  | Bağlı hizmet başvurusu | evet |
-| işlev adı  | Bu etkinliğin çağırdığı Azure İşlev Uygulaması işlevin adı | Dize | evet |
-| method  | İşlev çağrısı için REST API yöntemi | Dize desteklenen türler: "GET", "POST", "PUT"   | evet |
+| name  | İşlem hattındaki etkinliğin adı  | Dize | yes |
+| tür  | Etkinliğin türü ' AzureFunctionActivity ' | Dize | yes |
+| bağlı hizmet | Karşılık gelen Azure İşlev Uygulaması için Azure Işlevi bağlı hizmeti  | Bağlı hizmet başvurusu | yes |
+| işlev adı  | Bu etkinliğin çağırdığı Azure İşlev Uygulaması işlevin adı | Dize | yes |
+| method  | İşlev çağrısı için REST API yöntemi | Dize desteklenen türler: "GET", "POST", "PUT"   | yes |
 | üst bilgi  | İsteğe gönderilen üst bilgiler. Örneğin, bir istek için dili ve türü ayarlamak için: "üstbilgiler": {"Accept-Language": "en-US", "Content-Type": "Application/JSON"} | Dize (veya dize resultType 'ı olan ifade) | Hayır |
-| body  | işlevin API metoduna isteğiyle birlikte gönderilen gövde  | Dize (veya dize resultType 'ı olan ifade) veya nesne.   | PUT/POST yöntemleri için gereklidir |
+| body  | işlevin API metoduna isteğiyle birlikte gönderilen gövde  | Dize (veya dize resultType 'ı olan ifade) veya nesne.   | PUT/POST yöntemleri için gereklidir |
 |   |   |   | |
 
-İstek [yükü şeması](control-flow-web-activity.md#request-payload-schema)'nda istek yükü şeması   bölümüne bakın.
+İstek [yükü şeması](control-flow-web-activity.md#request-payload-schema) 'nda istek yükü şeması bölümüne bakın.
 
 ## <a name="routing-and-queries"></a>Yönlendirme ve sorgular
 
-Azure Işlevi etkinliği **yönlendirmeyi**destekler. Örneğin, Azure işlevinizin uç noktası varsa,  `https://functionAPP.azurewebsites.net/api/<functionName>/<value>?code=<secret>` `functionName` Azure işlevi etkinliğinde kullanmak için `<functionName>/<value>` . Çalışma zamanında istenen işlemi sağlamak için bu işlevi parametreleştirebilirsiniz `functionName` .
+Azure Işlevi etkinliği **yönlendirmeyi** destekler. Örneğin, Azure işlevinizin uç noktası varsa,  `https://functionAPP.azurewebsites.net/api/<functionName>/<value>?code=<secret>` `functionName` Azure işlevi etkinliğinde kullanmak için `<functionName>/<value>` . Çalışma zamanında istenen işlemi sağlamak için bu işlevi parametreleştirebilirsiniz `functionName` .
 
-Azure Işlevi etkinliği **sorguları**da destekler. Bir sorgu öğesinin bir parçası olarak eklenmelidir `functionName` . Örneğin, işlev adı `HttpTriggerCSharp` ve dahil etmek istediğiniz sorgu ise, `name=hello` bunu `functionName` olarak Azure işlevi etkinliğinde oluşturabilirsiniz `HttpTriggerCSharp?name=hello` . Değerin çalışma zamanında belirlenebilmesi için bu işlev parametreleştirilenebilir.
+Azure Işlevi etkinliği **sorguları** da destekler. Bir sorgu öğesinin bir parçası olarak eklenmelidir `functionName` . Örneğin, işlev adı `HttpTriggerCSharp` ve dahil etmek istediğiniz sorgu ise, `name=hello` bunu `functionName` olarak Azure işlevi etkinliğinde oluşturabilirsiniz `HttpTriggerCSharp?name=hello` . Değerin çalışma zamanında belirlenebilmesi için bu işlev parametreleştirilenebilir.
 
 ## <a name="timeout-and-long-running-functions"></a>Zaman aşımı ve uzun süre çalışan işlevler
 

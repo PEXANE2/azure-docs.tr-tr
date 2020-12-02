@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: gwallace
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: b02c16c63d83fc33be5512d26eafb0ca0d6c9b98
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 54ac7b27ada62a969dd40428fd9a753bb5a99530
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145897"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499841"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Öğretici: Şablon kullanarak Service Fabric Mesh’e uygulama dağıtma
 
@@ -107,7 +107,7 @@ ACR örneğine görüntü gönderebilmeniz için önce bir kapsayıcı görünt�
 >[!NOTE]
 > 2 Kasım 2020 ' den itibaren geçerli olan Docker Hub 'a yönelik anonim ve kimliği doğrulanmış istekler, Docker Ücretsiz plan hesaplarından [uygulanır](https://docs.docker.com/docker-hub/download-rate-limit/) ve IP adresi tarafından zorlanır. 
 > 
-> Bu komutlar Docker Hub 'ından ortak görüntüleri kullanır. Oran sınırlı olabileceğini lütfen unutmayın. Daha ayrıntılı bilgi için bkz. [Docker Hub Ile kimlik doğrulama](https://docs.microsoft.com/azure/container-registry/buffer-gate-public-content#authenticate-with-docker-hub).
+> Bu komutlar Docker Hub 'ından ortak görüntüleri kullanır. Oran sınırlı olabileceğini lütfen unutmayın. Daha ayrıntılı bilgi için bkz. [Docker Hub Ile kimlik doğrulama](../container-registry/buffer-gate-public-content.md#authenticate-with-docker-hub).
 
 Şu Windows görüntülerini çekin:
 
@@ -201,7 +201,7 @@ Service Fabric Mesh uygulaması, Azure Resource Manager (RM) şablonlarını kul
 Bu öğreticide örnek olarak Yapılacaklar Listesi örneği kullanılmıştır.  Yeni şablon ve parametre dosyası oluşturmak yerine [mesh_rp.windows.json deployment template](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json) ve [mesh_rp.windows.parameter.json parameters](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json) dosyalarını indirin.
 
 ### <a name="parameters"></a>Parametreler
-Şablonunuzda, uygulama dağıtıldıktan sonra değişeceğini tahmin ettiğiniz değerler olduğunda veya dağıtım bazında değiştirme seçeneğine sahip olmak istediğinizde (diğer dağıtımlar için bu şablonu yeniden kullanmayı planlıyorsanız) en iyi uygulama, değerlerin parametrelerini oluşturmaktır. Bunu yapmanın yolu, dağıtım şablonunuzun en üst kısmında bir "parametreler" bölümü oluşturmak ve dağıtım şablonunun sonraki bölümlerinde başvurulacak parametre adlarını ve özelliklerini burada belirtmektir. Her parametre tanımı *type* , *defaultValue* ve isteğe bağlı *description* içeren bir *metadata* bölümüne sahiptir.
+Şablonunuzda, uygulama dağıtıldıktan sonra değişeceğini tahmin ettiğiniz değerler olduğunda veya dağıtım bazında değiştirme seçeneğine sahip olmak istediğinizde (diğer dağıtımlar için bu şablonu yeniden kullanmayı planlıyorsanız) en iyi uygulama, değerlerin parametrelerini oluşturmaktır. Bunu yapmanın yolu, dağıtım şablonunuzun en üst kısmında bir "parametreler" bölümü oluşturmak ve dağıtım şablonunun sonraki bölümlerinde başvurulacak parametre adlarını ve özelliklerini burada belirtmektir. Her parametre tanımı *type*, *defaultValue* ve isteğe bağlı *description* içeren bir *metadata* bölümüne sahiptir.
 
 Parametreler bölümü dağıtım şablonunuzun en üstünde, *resources* bölümünün hemen öncesinde tanımlanır:
 

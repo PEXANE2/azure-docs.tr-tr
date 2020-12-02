@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: 3de630552f7ad2cc941fe23369398c10ffce5870
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 244408cc512a51683ecb3c062113170b1c7f4781
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94687105"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499569"
 ---
 # <a name="python-code-samples-for-azure-cognitive-search"></a>Azure Bilişsel Arama için Python kod örnekleri
 
@@ -45,7 +45,7 @@ Python için Azure SDK, çok sayıda örnek ve önkoşulları ve paket yüklemes
 
 ## <a name="documentation-samples"></a>Belge örnekleri
 
-Aşağıdaki örneklerde [Azure bilişsel arama belgelerinde](https://docs.microsoft.com/azure/search/)ilişkili bir makale bulunur.
+Aşağıdaki örneklerde [Azure bilişsel arama belgelerinde](./index.yml)ilişkili bir makale bulunur.
 
 | Örnekler | Açıklama | 
 |---------|-------------|

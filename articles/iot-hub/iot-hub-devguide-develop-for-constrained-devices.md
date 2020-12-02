@@ -10,12 +10,12 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 9010ff582f05e81e17e280e20f180ceccf0e746f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a43eb2537ebc09ffcb524a4426d7a8c9bec560b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81733196"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500011"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>Azure IoT C SDK kullanarak kısıtlı cihazlar için geliştirme
 
@@ -29,6 +29,9 @@ C SDK, apt-get, NuGet ve MBED 'den paket biçiminde kullanılabilir. Kısıtlanm
 ## <a name="building-the-c-sdk-for-constrained-devices"></a>Kısıtlanmış cihazlar için C SDK 'Sı oluşturma
 
 Kısıtlanmış cihazlar için C SDK 'Yı derleyin.
+
+> [!NOTE]
+> Katıştırılmış C SDK 'Sı, kendi ağını getir (BYON) yaklaşımını destekleyen kısıtlı cihazlara bir alternatiftir. IoT geliştiricileri, bir cihaz çözümü oluşturmak için MQTT istemcisini, TLS ve tercih ettikleri yuvayı bir araya getirir. [Katıştırılmış C SDK 'sı hakkında daha fazla bilgi edinin](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot).
 
 ### <a name="prerequisites"></a>Önkoşullar
 

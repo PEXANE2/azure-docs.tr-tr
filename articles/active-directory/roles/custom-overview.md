@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory 'de özel yönetici rolleri | Microsoft Docs
-description: Rol tabanlı erişim denetimi ve kaynak kapsamları ile Azure Active Directory (Azure AD) içinde Azure AD özel rollerini nasıl anlayacağınızı öğrenin.
+title: Rol tabanlı erişim denetimine (RBAC) Azure Active Directory genel bakış
+description: Azure Active Directory bir rol atamasının ve kısıtlanmış kapsamın parçalarını nasıl anlayacağınızı öğrenin.
 services: active-directory
 author: curtand
 manager: daveba
@@ -8,25 +8,26 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: overview
-ms.date: 11/05/2020
+ms.date: 11/20/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0785d8070a60ae7594ea0b182a0238bf6b4b6a58
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4f694a46fddbc84968b3267842aa19108d051590
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95899471"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499246"
 ---
-# <a name="custom-administrator-roles-in-azure-active-directory-preview"></a>Azure Active Directory 'de özel yönetici rolleri (Önizleme)
+# <a name="overview-of-role-based-access-control-in-azure-active-directory"></a>Azure Active Directory içindeki rol tabanlı erişim denetimine genel bakış
 
-Bu makalede, rol tabanlı erişim denetimi ve kaynak kapsamları ile Azure Active Directory (Azure AD) içinde Azure AD özel rollerinin nasıl anlaşılması açıklanmaktadır. Özel Azure AD rolleri, [yerleşik rollerin](permissions-reference.md)temel alınan izinlerini yüzeye koyarak kendi özel rollerinizi oluşturabilir ve düzenleyebilirsiniz. Bu yaklaşım, gerektiğinde yerleşik rollerden daha ayrıntılı bir şekilde erişim vermenize olanak tanır. Azure AD özel rollerinin bu ilk sürümü, uygulama kayıtlarının yönetilmesi için izin atamak üzere bir rol oluşturma özelliğini içerir. Zamanla, kurumsal uygulamalar, kullanıcılar ve cihazlar gibi kuruluş kaynakları için ek izinler eklenecektir.  
+Bu makalede Azure Active Directory (Azure AD) rol tabanlı erişim denetiminin nasıl anlaşılması açıklanmaktadır. Azure AD rolleri, yöneticilerinize en az ayrıcalık ilkesine göre ayrıntılı izinler vermenize olanak tanır. Azure AD yerleşik ve özel rolleri [, Azure kaynakları için rol tabanlı erişim denetimi sisteminde](../../role-based-access-control/overview.md) bulacağınız olanlarla benzer kavramlar üzerinde çalışır (Azure rolleri). [Bu iki rol tabanlı erişim denetimi sistemi arasındaki fark](../../role-based-access-control/rbac-and-directory-admin-roles.md) şudur:
 
-Ayrıca, Azure AD özel rolleri, daha geleneksel kuruluş genelinde atamalara ek olarak, atamaları Kaynak temelinde destekler. Bu yaklaşım, tüm kaynaklara (tüm uygulama kayıtları) erişim vermeden bazı kaynakları (örneğin, bir uygulama kaydı) yönetmek için erişim izni vermenizi sağlar.
+- Azure AD rolleri, Graph API kullanarak kullanıcılar, gruplar ve uygulamalar gibi Azure AD kaynaklarına erişimi denetler
+- Azure rolleri, Azure Kaynak yönetimini kullanarak sanal makineler veya depolama gibi Azure kaynaklarına erişimi denetler
 
-Azure AD rol tabanlı erişim denetimi, Azure AD 'nin genel önizleme özelliğidir ve ücretli Azure AD lisans planıyla birlikte kullanılabilir. Önizlemeler hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Her iki sistem de benzer şekilde kullanılan rol tanımlarını ve rol atamalarını içerir. Ancak Azure AD rol izinleri Azure özel rollerinde kullanılamaz ve tam tersi de geçerlidir.
 
 ## <a name="understand-azure-ad-role-based-access-control"></a>Azure AD rol tabanlı erişim denetimini anlama
 
@@ -41,22 +42,18 @@ Azure AD yerleşik ve özel rolleri, [Azure rol tabanlı erişim denetimi (Azure
 Aşağıda, Azure AD 'nin bir yönetim kaynağına erişiminizin olup olmadığını belirlemede kullandığı üst düzey adımlar verilmiştir. Erişim sorunlarını gidermek için bu bilgileri kullanın.
 
 1. Bir Kullanıcı (veya hizmet sorumlusu) Microsoft Graph veya Azure AD Graph uç noktası için bir belirteç alır.
-
 1. Kullanıcı, verilen belirteci kullanarak Microsoft Graph veya Azure AD Graph aracılığıyla Azure Active Directory (Azure AD) için bir API çağrısı yapar.
-
 1. Durumunuza bağlı olarak, Azure AD aşağıdaki eylemlerden birini alır:
-
-    - Kullanıcının erişim belirtecindeki [wids talebine](../../active-directory-b2c/access-tokens.md) göre Kullanıcı rolü üyeliklerini değerlendirir.
-    - Kullanıcı için, doğrudan veya grup üyeliği aracılığıyla, eylemin alındığı kaynağa uygulanan tüm rol atamalarını alır.
-
+   - Kullanıcının erişim belirtecindeki [wids talebine](../../active-directory-b2c/access-tokens.md) göre Kullanıcı rolü üyeliklerini değerlendirir.
+   - Kullanıcı için, doğrudan veya grup üyeliği aracılığıyla, eylemin alındığı kaynağa uygulanan tüm rol atamalarını alır.
 1. Azure AD, API çağrısındaki eylemin kullanıcının bu kaynak için sahip olduğu rollere dahil edilip edilmediğini belirler.
 1. Kullanıcının istenen kapsamda eyleme sahip bir rolü yoksa erişime izin verilmez. Aksi takdirde erişim izni verilir.
 
-### <a name="role-assignments"></a>Rol atamaları
+## <a name="role-assignment"></a>Rol ataması
 
-Rol ataması, Azure AD kaynak erişimi sağlamak için belirli bir kapsamdaki bir kullanıcıya rol tanımı ekleyen nesnedir. Erişim, rol ataması oluşturularak sağlanır ve rol ataması kaldırıldığında iptal edilir. Bir rol ataması, temel tarafında üç öğeden oluşur:
+Rol ataması, Azure AD kaynaklarına erişim izni vermek için belirli bir *kapsamdaki* *kullanıcıya* *rol tanımı* ekleyen bir Azure AD kaynağıdır. Erişim, rol ataması oluşturularak sağlanır ve rol ataması kaldırıldığında iptal edilir. Bir rol ataması, temel tarafında üç öğeden oluşur:
 
-- Kullanıcı (Azure Active Directory bir kullanıcı profiline sahip olan kişi)
+- Azure AD kullanıcısı
 - Rol tanımı
 - Kaynak kapsamı
 
@@ -68,9 +65,9 @@ Aşağıdaki diyagramda rol ataması örneği gösterilmektedir. Bu örnekte, Ch
 
 ### <a name="security-principal"></a>Güvenlik sorumlusu
 
-Güvenlik sorumlusu, Azure AD kaynaklarına erişim atanacak kullanıcıyı temsil eder. *Kullanıcı* , Azure Active Directory bir kullanıcı profiline sahip kişidir.
+Güvenlik sorumlusu, Azure AD kaynaklarına erişim atanacak kullanıcıyı temsil eder. Kullanıcı, Azure Active Directory bir kullanıcı profiline sahip kişidir.
 
-### <a name="role"></a>Rol
+### <a name="role"></a>Role
 
 Rol tanımı veya rol, izin koleksiyonudur. Rol tanımı, oluşturma, okuma, güncelleştirme ve silme gibi Azure AD kaynaklarında gerçekleştirilebilecek işlemleri listeler. Azure AD 'de iki tür rol vardır:
 
@@ -81,15 +78,12 @@ Rol tanımı veya rol, izin koleksiyonudur. Rol tanımı, oluşturma, okuma, gü
 
 Kapsam, rol atamasının bir parçası olarak belirli bir Azure AD kaynağına izin verilen eylemlerin kısıtlamasıdır. Bir rol atadığınızda, yöneticinin belirli bir kaynağa erişimini sınırlayan bir kapsam belirtebilirsiniz. Örneğin, bir geliştiriciye özel bir rol vermek istiyorsanız, ancak yalnızca belirli bir uygulama kaydını yönetmek için, belirli uygulama kaydını rol atamasında kapsam olarak dahil edebilirsiniz.
 
-  > [!Note]
-  > Özel roller, dizin kapsamı ve kaynak kapsamlı olarak atanabilir. Bunlar henüz yönetim birimi kapsamında atanamaz.
-  > Yerleşik roller dizin kapsamında, bazı durumlarda ise yönetim birimi kapsamında atanabilir. Henüz Azure AD kaynak kapsamında atanamazlar.
-
 ## <a name="required-license-plan"></a>Gerekli lisans planı
 
 [!INCLUDE [License requirement for using custom roles in Azure AD](../../../includes/active-directory-p1-license.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+- [Azure AD rollerini anlama](concept-understand-roles.md)
 - [Azure Portal, Azure AD PowerShell ve Graph API](custom-create.md) kullanarak özel rol atamaları oluşturun
 - [Özel bir rol için atamaları görüntüleme](custom-view-assignments.md)

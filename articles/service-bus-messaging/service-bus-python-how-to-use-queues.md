@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 11/18/2020
 ms.author: spelluru
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 2b54b167413b0fcbe7022eab4bbbf34b37225be5
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 7275e33e44c20ece6eb7d620e2c1e8032be41a7b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95810602"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498668"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-python"></a>Azure Service Bus kuyruklarından ileti gönderme ve iletileri alma (Python)
 Bu makalede, Python kullanarak Azure Service Bus kuyruklardan ileti gönderme ve iletileri alma işlemlerinin nasıl yapılacağı gösterilir. 
@@ -208,5 +208,4 @@ Aşağıdaki belgelere ve örneklere bakın:
 - [Örnekler](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus/samples). 
     - **Sync_samples** klasörü, Service Bus ile zaman uyumlu şekilde nasıl etkileşim kuracağınızı gösteren örneklere sahiptir. Bu hızlı başlangıç bölümünde bu yöntemi kullandınız. 
     - **Async_samples** klasörü, zaman uyumsuz bir şekilde Service Bus ile nasıl etkileşim kuracağınızı gösteren örneklere sahiptir. 
-- [Azure-ServiceBus başvuru belgeleri](https://docs.microsoft.com/python/api/azure-servicebus/azure.servicebus?view=azure-python-preview&preserve-view=true)
-
+- [Azure-ServiceBus başvuru belgeleri](/python/api/azure-servicebus/azure.servicebus?preserve-view=true&view=azure-python-preview)

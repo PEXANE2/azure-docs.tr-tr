@@ -4,16 +4,16 @@ description: Azure 'da bir Analysis Services sunucusuna bağlanmayı ve bu sunuc
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/04/2020
+ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 93b1e9a2ea052a39e891cf9084b632f434c341df
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 4abe1e9c6f9d7b62792936f816b9c46a937be41a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92013704"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499433"
 ---
 # <a name="connecting-to-servers"></a>Sunuculara bağlanma
 
@@ -21,7 +21,7 @@ Bu makalede, SQL Server Management Studio (SSMS) veya Visual Studio gibi Analysi
 
 ## <a name="client-libraries"></a>İstemci kitaplıkları
 
-[En son Istemci kitaplıklarını al](/analysis-services/client-libraries?view=azure-analysis-services-current)
+[En son Istemci kitaplıklarını al](/analysis-services/client-libraries?view=azure-analysis-services-current&preserve-view=true)
 
 Türüne bakılmaksızın sunucuya yapılan tüm bağlantılar, bir Analysis Services sunucusuyla bağlantı kurmak için güncelleştirilmiş AMO, ADOMD.NET ve OLEDB istemci kitaplıklarını gerektirir. SSMS, Visual Studio, Excel 2016 ve üzeri ve Power BI için en son istemci kitaplıkları, aylık yayınlar yüklenir veya güncelleştirilir. Ancak bazı durumlarda, bir uygulamanın en son sürümü bulunmayabilir. Örneğin, ilkelerin güncelleştirmeleri ertelenmesi veya Microsoft 365 güncelleştirmeleri ertelenmiş kanaldır.
 
@@ -35,7 +35,7 @@ Azure 'da bir Analysis Services sunucusu oluşturduğunuzda, benzersiz bir ad ve
 ```
 <protocol>://<region>/<servername>
 ```
- Protokol, bir dize **asazure**olduğunda, bölgesi sunucunun oluşturulduğu URI 'dir (örneğin, westus.asazure.Windows.net) ve ServerName bölge içindeki benzersiz sunucunuzun adıdır.
+ Protokol, bir dize **asazure** olduğunda, bölgesi sunucunun oluşturulduğu URI 'dir (örneğin, westus.asazure.Windows.net) ve ServerName bölge içindeki benzersiz sunucunuzun adıdır.
 
 ### <a name="get-the-server-name"></a>Sunucu adını al
 
@@ -79,9 +79,9 @@ Excel 'in daha eski sürümleriyle, kullanıcılar bir Office veri bağlantısı
 
 ## <a name="connect-as-a-linked-server-from-sql-server"></a>SQL Server bağlı sunucu olarak bağlanma
 
-SQL Server, veri kaynağı sağlayıcısı olarak MSOLAP belirterek, bir Azure Analysis Services kaynağına [bağlı sunucu](/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine) olarak bağlanabilir. Bağlı bir sunucu bağlantısını yapılandırmadan önce, en son [MSOLAP istemci kitaplığını](/analysis-services/client-libraries?view=azure-analysis-services-current) (sağlayıcı) yüklediğinizden emin olun. 
+SQL Server, veri kaynağı sağlayıcısı olarak MSOLAP belirterek, bir Azure Analysis Services kaynağına [bağlı sunucu](/sql/relational-databases/linked-servers/create-linked-servers-sql-server-database-engine) olarak bağlanabilir. Bağlı bir sunucu bağlantısını yapılandırmadan önce, en son [MSOLAP istemci kitaplığını](/analysis-services/client-libraries?view=azure-analysis-services-current&preserve-view=true) (sağlayıcı) yüklediğinizden emin olun. 
 
-Azure Analysis Services bağlı sunucu bağlantıları için, MSOLAP sağlayıcısı SQL Server işleminin dışında oluşturulmalıdır. Bağlı sunucu seçeneklerini yapılandırırken, **InProcess 'e Izin ver** seçeneğinin **Seçili**olmadığından emin olun.
+Azure Analysis Services bağlı sunucu bağlantıları için, MSOLAP sağlayıcısı SQL Server işleminin dışında oluşturulmalıdır. Bağlı sunucu seçeneklerini yapılandırırken, **InProcess 'e Izin ver** seçeneğinin **Seçili** olmadığından emin olun.
 
 **InProcess 'e Izin ver** seçilirse ve sağlayıcı SQL Server işlemde örneklenmiştir, aşağıdaki hata döndürülür:
 

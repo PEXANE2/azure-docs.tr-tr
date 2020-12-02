@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 952fbcac27e1d44c9417066549261d878d02b6b7
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 219fe2d9d8ac46ba3dbeebe6aaae9dddc0883aa0
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94904808"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500419"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-linux"></a>Linux 'ta IaaS kaynaklarının klasik 'ten Azure Resource Manager geçişi desteklenir
 
@@ -47,7 +47,7 @@ Bu klasik IaaS kaynakları geçiş sırasında desteklenir
 
 | Hizmet | Yapılandırma |
 | --- | --- |
-| Azure AD Domain Services | [Azure AD etki alanı Hizmetleri 'ni içeren sanal ağlar](https://docs.microsoft.com/azure/active-directory-domain-services/migrate-from-classic-vnet) |
+| Azure AD Domain Services | [Azure AD etki alanı Hizmetleri 'ni içeren sanal ağlar](../active-directory-domain-services/migrate-from-classic-vnet.md) |
 
 ## <a name="supported-scopes-of-migration"></a>Desteklenen geçiş kapsamları
 İşlem, ağ ve depolama kaynaklarının geçişini tamamlamaya yönelik dört farklı yol vardır:
@@ -114,7 +114,7 @@ Bazı özellikler ve Konfigürasyonlar Şu anda desteklenmiyor; Aşağıdaki bö
 ### <a name="unsupported-features"></a>Desteklenmeyen özellikler
 Aşağıdaki özellikler Şu anda desteklenmemektedir. İsteğe bağlı olarak bu ayarları kaldırabilir, VM 'Leri geçirebilir ve sonra Kaynak Yöneticisi dağıtım modelindeki ayarları yeniden etkinleştirebilirsiniz.
 
-| Kaynak sağlayıcısı | Öne çıkan özelliği | Öneri |
+| Kaynak sağlayıcısı | Özellik | Öneri |
 | --- | --- | --- |
 | İşlem | İlişkilendirilmemiş sanal makine diskleri. | Depolama hesabı geçirildiğinde bu disklerin arkasındaki VHD blob 'ları geçirilir |
 | İşlem | Sanal makine görüntüleri. | Depolama hesabı geçirildiğinde bu disklerin arkasındaki VHD blob 'ları geçirilir |
@@ -136,7 +136,7 @@ Aşağıdaki yapılandırma Şu anda desteklenmiyor.
 | İşlem | Web/çalışan rollerini içeren bulut Hizmetleri | Bu şu anda desteklenmiyor. |
 | İşlem | Birden fazla kullanılabilirlik kümesi veya birden çok kullanılabilirlik kümesi içeren bulut hizmetleri. |Bu şu anda desteklenmiyor. Lütfen geçirmeden önce sanal makineleri aynı Kullanılabilirlik kümesine taşıyın. |
 | İşlem | Azure Güvenlik Merkezi uzantısı olan VM | Azure Güvenlik Merkezi, güvenliğini izlemek ve uyarıları yükseltmek için sanal makinelerinizdeki uzantıları otomatik olarak kurar. Bu uzantılar genellikle abonelikte Azure Güvenlik Merkezi ilkesi etkinse otomatik olarak yüklenir. Sanal makineleri geçirmek için, abonelikteki Güvenlik Merkezi ilkesini devre dışı bırakın ve bu, güvenlik merkezi izleme uzantısını sanal makinelerden kaldırır. |
-| İşlem | Yedekleme veya anlık görüntü uzantısına sahip VM | Bu uzantılar Azure Backup hizmetiyle yapılandırılmış bir sanal makineye yüklenir. Bu VM 'lerin geçişi desteklenirken, geçişten önce alınmış yedeklemeleri tutmak için [buradaki](/azure/virtual-machines/windows/migration-classic-resource-manager-faq#i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault) yönergeleri izleyin.  |
+| İşlem | Yedekleme veya anlık görüntü uzantısına sahip VM | Bu uzantılar Azure Backup hizmetiyle yapılandırılmış bir sanal makineye yüklenir. Bu VM 'lerin geçişi desteklenirken, geçişten önce alınmış yedeklemeleri tutmak için [buradaki](./migration-classic-resource-manager-faq.md#i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault) yönergeleri izleyin.  |
 | İşlem | Azure Site Recovery uzantılı VM | Bu uzantılar Azure Site Recovery hizmetiyle yapılandırılmış bir sanal makineye yüklenir. Site Recovery ile kullanılan depolama alanı geçişi çalışır, ancak geçerli çoğaltma etkilenecek. Depolama geçişten sonra VM çoğaltmasını devre dışı bırakıp etkinleştirmeniz gerekir. |
 | Ağ |Sanal makineler ve web/çalışan rolleri içeren sanal ağlar |Bu şu anda desteklenmiyor. Lütfen geçirmeden önce web/çalışan rollerini kendi sanal ağına taşıyın. Klasik sanal ağ geçirildikten sonra geçirilmiş Azure Resource Manager sanal ağı, daha önce olduğu gibi benzer yapılandırmalar elde etmek için klasik sanal ağla eşlenebilir.|
 | Ağ | Klasik Express Route devreleri |Bu şu anda desteklenmiyor. IaaS geçişine başlamadan önce bu devrelerin Azure Resource Manager geçirilmesi gerekir. Daha fazla bilgi edinmek için bkz. [ExpressRoute devreleri klasik 'dan Kaynak Yöneticisi dağıtım modeline taşıma](../expressroute/expressroute-move.md).|

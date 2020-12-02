@@ -3,19 +3,19 @@ title: Azure Data Factory ifade ve işlevler
 description: Bu makalede, Data Factory varlıkları oluştururken kullanabileceğiniz ifadeler ve işlevler hakkında bilgi sağlanır.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/25/2019
-ms.openlocfilehash: 24347d86a99251d0bf02d5ea5cb6985df5814b29
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 3c966f0efc51a3b2fa8908e060b4031ae1ad1e50
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635193"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500028"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure Data Factory’deki ifadeler ve işlevler
 
@@ -28,7 +28,7 @@ Bu makale, Azure Data Factory tarafından desteklenen ifadeler ve işlevlerle il
 
 ## <a name="expressions"></a>İfadeler
 
-Tanımdaki JSON değerleri, çalışma zamanında değerlendirilen bir sabit değer veya ifadeler olabilir. Örneğin:  
+Tanımdaki JSON değerleri, çalışma zamanında değerlendirilen bir sabit değer veya ifadeler olabilir. Örnek:  
   
 ```json
 "name": "value"
@@ -42,7 +42,7 @@ Tanımdaki JSON değerleri, çalışma zamanında değerlendirilen bir sabit de�
 
 İfadeler JSON dize değerinde herhangi bir yerde görünebilir ve her zaman başka bir JSON değerine neden olabilir. JSON değeri bir ifadesiyse, ifadenin gövdesi at-Sign () kaldırılarak ayıklanır \@ . İle başlayan bir sabit değer dizesi gerekliyse \@ , kullanılarak kaçışlı olması gerekir \@ \@ . Aşağıdaki örneklerde ifadelerin nasıl değerlendirildiği gösterilmektedir.  
   
-|JSON değeri|Sonuç|  
+|JSON değeri|Result|  
 |----------------|------------|  
 |parametrelere|' Parameters ' karakterleri döndürülür.|  
 |"parametreler [1]"|' Parameters [1] ' karakterleri döndürülür.|  
@@ -53,7 +53,7 @@ Tanımdaki JSON değerleri, çalışma zamanında değerlendirilen bir sabit de�
   
  Dize ilişkilendirmeyi kullanarak, sonuç her zaman bir dizedir. Şu şekilde tanımladım `myNumber` `42`  `myString`  `foo` :  
   
-|JSON değeri|Sonuç|  
+|JSON değeri|Result|  
 |----------------|------------|  
 |" \@ Pipeline (). Parameters. myString"| `foo`Bir dize olarak döndürür.|  
 |" \@ {Pipeline (). Parameters. myString}"| `foo`Bir dize olarak döndürür.|  
@@ -68,7 +68,7 @@ Tanımdaki JSON değerleri, çalışma zamanında değerlendirilen bir sabit de�
 ### <a name="complex-expression-example"></a>Karmaşık ifade örneği
 Aşağıdaki örnek, etkinlik çıktısının derin alt alanına başvuran karmaşık bir örnek gösterir. Bir alt alan olarak değerlendirilen bir işlem hattı parametresine başvurmak için, nokta (.) işleci yerine [] sözdizimini kullanın (subfield1 ve subfield2 durumunda olduğu gibi)
 
-@activity(' *ActivityName* '). Output. *subfield1* . *subfield2* [Pipeline (). Parameters. *subfield3* ]. *subfield4*
+@activity('*ActivityName*'). Output. *subfield1*. *subfield2*[Pipeline (). Parameters.*subfield3*]. *subfield4*
 
 ### <a name="a-dataset-with-a-parameter"></a>Parametresi olan bir veri kümesi
 Aşağıdaki örnekte, BlobDataset, **Path** adlı bir parametre alır. Değeri, şu ifadeyi kullanarak **FolderPath** özelliği için bir değer ayarlamak için kullanılır: `dataset().path` . 
@@ -144,7 +144,7 @@ Aşağıdaki örnekte, işlem hattı **inputPath** ve **OutputPath** parametrele
     }
 }
 ```
-### <a name="tutorial"></a>Öğretici
+### <a name="tutorial"></a>Eğitmen
 Bu [öğreticide](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-factory-passing-parameters/Azure%20data%20Factory-Whitepaper-PassingParameters.pdf) , bir işlem hattı ve etkinlik arasında ve Etkinlikler arasında parametrelerin nasıl geçirileceğini adım adım gösterilmektedir.
 
   
@@ -196,7 +196,7 @@ Bu işlevler, koşullar içinde yararlı olduğundan, her türlü mantığı de�
 | Mantıksal karşılaştırma işlevi | Görev |
 | --------------------------- | ---- |
 | [and](control-flow-expression-language-functions.md#and) | Tüm ifadelerin doğru olup olmadığını denetleyin. |
-| [eşittir](control-flow-expression-language-functions.md#equals) | Her iki değerin de eşdeğer olup olmadığını denetleyin. |
+| [equals](control-flow-expression-language-functions.md#equals) | Her iki değerin de eşdeğer olup olmadığını denetleyin. |
 | [büyüktür](control-flow-expression-language-functions.md#greater) | İlk değerin ikinci değerden büyük olup olmadığını kontrol edin. |
 | [greaterOrEquals](control-flow-expression-language-functions.md#greaterOrEquals) | İlk değerin ikinci değere eşit veya ondan büyük olup olmadığını kontrol edin. |
 | [if](control-flow-expression-language-functions.md#if) | İfadenin true veya false olduğunu denetleyin. Sonuca göre belirtilen değeri döndürün. |
@@ -221,7 +221,7 @@ Bu işlevler, koşullar içinde yararlı olduğundan, her türlü mantığı de�
 | [base64](control-flow-expression-language-functions.md#base64) | Bir dize için Base64 kodlamalı sürüm döndürün. |
 | [base64ToBinary](control-flow-expression-language-functions.md#base64ToBinary) | Base64 ile kodlanmış bir dize için ikili sürümü döndürün. |
 | [base64ToString](control-flow-expression-language-functions.md#base64ToString) | Base64 ile kodlanmış bir dize için dize sürümünü döndürün. |
-| [ý](control-flow-expression-language-functions.md#binary) | Bir giriş değeri için ikili sürümü döndürün. |
+| [ikili](control-flow-expression-language-functions.md#binary) | Bir giriş değeri için ikili sürümü döndürün. |
 | [bool](control-flow-expression-language-functions.md#bool) | Bir giriş değeri için Boole sürümü döndürün. |
 | [Coalesce](control-flow-expression-language-functions.md#coalesce) | Bir veya daha fazla parametreden null olmayan ilk değeri döndürün. |
 | [createArray](control-flow-expression-language-functions.md#createArray) | Birden çok girişe bir dizi döndürün. |
@@ -235,7 +235,7 @@ Bu işlevler, koşullar içinde yararlı olduğundan, her türlü mantığı de�
 | [float](control-flow-expression-language-functions.md#float) | Giriş değeri için bir kayan nokta numarası döndürür. |
 | [int](control-flow-expression-language-functions.md#int) | Bir dize için tamsayı sürümünü döndürün. |
 | [nesnesinde](control-flow-expression-language-functions.md#json) | Bir dize veya XML için JavaScript Nesne Gösterimi (JSON) türü değerini veya nesnesini döndürün. |
-| [string](control-flow-expression-language-functions.md#string) | Bir giriş değeri için dize sürümünü döndürün. |
+| [dizisinde](control-flow-expression-language-functions.md#string) | Bir giriş değeri için dize sürümünü döndürün. |
 | [URIComponent](control-flow-expression-language-functions.md#uriComponent) | URL-güvenli olmayan karakterleri kaçış karakterleriyle değiştirerek, bir giriş değeri için URI kodlu sürümü döndürün. |
 | [Urıonenttobinary](control-flow-expression-language-functions.md#uriComponentToBinary) | URI kodlamalı dize için ikili sürümü döndürün. |
 | [Urıonenttostring](control-flow-expression-language-functions.md#uriComponentToString) | URI kodlamalı dize için dize sürümünü döndürün. |
@@ -243,7 +243,7 @@ Bu işlevler, koşullar içinde yararlı olduğundan, her türlü mantığı de�
 | [XPath](control-flow-expression-language-functions.md#xpath) | XML 'yi bir XPath (XML Path Language) ifadesiyle eşleşen düğümler veya değerler için denetleyin ve eşleşen düğümleri veya değerleri döndürün. |
 
 ## <a name="math-functions"></a>Matematik işlevleri  
- Bu işlevler, iki tür numara için kullanılabilir: **tamsayılar** ve **float** .  
+ Bu işlevler, iki tür numara için kullanılabilir: **tamsayılar** ve **float**.  
 
 | Math işlevi | Görev |
 | ------------- | ---- |
@@ -298,7 +298,7 @@ add(<summand_1>, <summand_2>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*summand_1* >, < *summand_2*> | Evet | Integer, float veya Mixed | Eklenecek numaralar |
+| <*summand_1*>, <*summand_2*> | Evet | Integer, float veya Mixed | Eklenecek numaralar |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -541,7 +541,7 @@ and(<expression1>, <expression2>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ifade1* >, < *İfade2*> | Evet | Boole | Denetlenecek ifadeler |
+| <*ifade1*>, <*İfade2*> | Evet | Boole | Denetlenecek ifadeler |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -599,7 +599,7 @@ array('<value>')
 
 | Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| [< *değeri* >] | Dizi | Belirtilen tek girişi içeren bir dizi |
+| [<*değeri*>] | Dizi | Belirtilen tek girişi içeren bir dizi |
 ||||
 
 *Örnek*
@@ -750,7 +750,7 @@ bool(<value>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*deeri*> | Evet | Herhangi biri | Dönüştürülecek değer |
+| <*deeri*> | Evet | Herhangi bir | Dönüştürülecek değer |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -785,12 +785,12 @@ coalesce(<object_1>, <object_2>, ...)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*object_1* >, < *object_2* >,... | Evet | Herhangi biri, türleri karıştırabilirler | Null denetlenecek bir veya daha fazla öğe |
+| <*object_1*>, <*object_2*>,... | Evet | Herhangi biri, türleri karıştırabilirler | Null denetlenecek bir veya daha fazla öğe |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*ilk-null olmayan öğe*> | Herhangi biri | Null olmayan ilk öğe veya değer. Tüm parametreler null ise, bu işlev null değerini döndürür. |
+| <*ilk-null olmayan öğe*> | Herhangi bir | Null olmayan ilk öğe veya değer. Tüm parametreler null ise, bu işlev null değerini döndürür. |
 ||||
 
 *Örnek*
@@ -821,7 +821,7 @@ concat('<text1>', '<text2>', ...)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*metin1* >, < *Metin2* >,... | Evet | Dize | Birleştirilecek en az iki dize |
+| <*metin1*>, <*Metin2*>,... | Evet | Dize | Birleştirilecek en az iki dize |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -841,7 +841,7 @@ Ve şu sonucu döndürür: `"HelloWorld"`
 
 <a name="contains"></a>
 
-### <a name="contains"></a>contains
+### <a name="contains"></a>şunu içerir
 
 Bir koleksiyonun belirli bir öğeye sahip olup olmadığını denetleyin.
 Öğe bulunduğunda true, bulunamazsa false döndürün.
@@ -1025,12 +1025,12 @@ createArray('<object1>', '<object2>', ...)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*object1* >, < *object2* >,... | Evet | Any, ancak karışık değil | Diziyi oluşturmak için en az iki öğe |
+| <*object1*>, <*object2*>,... | Evet | Any, ancak karışık değil | Diziyi oluşturmak için en az iki öğe |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| [< *object1* >, < *object2* >,...] | Dizi | Tüm giriş öğelerinden oluşturulan dizi |
+| [<*object1*>, <*object2*>,...] | Dizi | Tüm giriş öğelerinden oluşturulan dizi |
 ||||
 
 *Örnek*
@@ -1475,7 +1475,7 @@ Ve şu sonucu döndürür: `false`
 
 <a name="equals"></a>
 
-### <a name="equals"></a>eşittir
+### <a name="equals"></a>equals
 
 Değerlerin, ifadelerin veya nesnelerin eşit olup olmadığını denetleyin.
 Her ikisi de eşdeğer olduğunda true, eşdeğer olmadığında false döndürün.
@@ -1486,7 +1486,7 @@ equals('<object1>', '<object2>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*object1* >, < *object2*> | Evet | Türlerini | Karşılaştırılacak değerler, ifadeler veya nesneler |
+| <*object1*>, <*object2*> | Evet | Türlerini | Karşılaştırılacak değerler, ifadeler veya nesneler |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -1526,7 +1526,7 @@ first([<collection>])
 
 | Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*Birinci koleksiyon-öğe*> | Herhangi biri | Koleksiyondaki ilk öğe |
+| <*Birinci koleksiyon-öğe*> | Herhangi bir | Koleksiyondaki ilk öğe |
 ||||
 
 *Örnek*
@@ -1816,13 +1816,13 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
 | <*ifadesini*> | Evet | Boole | Denetlenecek ifade |
-| <*valueIfTrue*> | Evet | Herhangi biri | İfade true olduğunda döndürülecek değer |
-| <*valueIfFalse*> | Evet | Herhangi biri | İfade false olduğunda döndürülecek değer |
+| <*valueIfTrue*> | Evet | Herhangi bir | İfade true olduğunda döndürülecek değer |
+| <*valueIfFalse*> | Evet | Herhangi bir | İfade false olduğunda döndürülecek değer |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*Belirtilen-Return-Value*> | Herhangi biri | İfadenin true veya false olup olmadığına göre döndürülen belirtilen değer |
+| <*Belirtilen-Return-Value*> | Herhangi bir | İfadenin true veya false olup olmadığına göre döndürülen belirtilen değer |
 ||||
 
 *Örnek*
@@ -1980,7 +1980,7 @@ intersection('<collection1>', '<collection2>', ...)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*collection1* >, < *Collection2* >,... | Evet | Dizi veya nesne, ancak her ikisi birden değil | *Yalnızca* ortak öğelerin olmasını istediğiniz Koleksiyonlar |
+| <*collection1*>, <*Collection2*>,... | Evet | Dizi veya nesne, ancak her ikisi birden değil | *Yalnızca* ortak öğelerin olmasını istediğiniz Koleksiyonlar |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -2016,7 +2016,7 @@ join([<collection>], '<delimiter>')
 
 | Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*CHAR1* >< *sınırlayıcı* >< *CHAR2* >< *sınırlayıcı* >... | Dize | Belirtilen dizideki tüm öğelerden oluşturulan elde edilen dize |
+| <*CHAR1* >< *sınırlayıcı* >< *CHAR2* >< *sınırlayıcı*>... | Dize | Belirtilen dizideki tüm öğelerden oluşturulan elde edilen dize |
 ||||
 
 *Örnek*
@@ -2215,8 +2215,8 @@ max([<number1>, <number2>, ...])
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*sayı1* >, < *sayı2* >,... | Evet | Integer, float veya both | En yüksek değeri istediğiniz sayı kümesi |
-| [< *sayı1* >, < *sayı2* >,...] | Evet | Dizi-tamsayı, kayan veya her ikisi | En yüksek değeri istediğiniz sayı dizisi |
+| <*sayı1*>, <*sayı2*>,... | Evet | Integer, float veya both | En yüksek değeri istediğiniz sayı kümesi |
+| [<*sayı1*>, <*sayı2*>,...] | Evet | Dizi-tamsayı, kayan veya her ikisi | En yüksek değeri istediğiniz sayı dizisi |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -2248,8 +2248,8 @@ min([<number1>, <number2>, ...])
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*sayı1* >, < *sayı2* >,... | Evet | Integer, float veya both | En düşük değeri istediğiniz sayı kümesi |
-| [< *sayı1* >, < *sayı2* >,...] | Evet | Dizi-tamsayı, kayan veya her ikisi | En düşük değeri istediğiniz sayı dizisi |
+| <*sayı1*>, <*sayı2*>,... | Evet | Integer, float veya both | En düşük değeri istediğiniz sayı kümesi |
+| [<*sayı1*>, <*sayı2*>,...] | Evet | Dizi-tamsayı, kayan veya her ikisi | En düşük değeri istediğiniz sayı dizisi |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -2397,7 +2397,7 @@ or(<expression1>, <expression2>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*ifade1* >, < *İfade2*> | Evet | Boole | Denetlenecek ifadeler |
+| <*ifade1*>, <*İfade2*> | Evet | Boole | Denetlenecek ifadeler |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -2482,7 +2482,7 @@ range(<startIndex>, <count>)
 
 | Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| [< *Range-sonuç* >] | Dizi | Belirtilen dizinden başlayan tamsayılar içeren dizi |
+| [<*Range-sonuç*>] | Dizi | Belirtilen dizinden başlayan tamsayılar içeren dizi |
 ||||
 
 *Örnek*
@@ -2545,7 +2545,7 @@ skip([<collection>], <count>)
 
 | Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| [< *güncelleştirilmiş-koleksiyon* >] | Dizi | Belirtilen öğeler kaldırıldıktan sonra güncelleştirilmiş koleksiyon |
+| [<*güncelleştirilmiş-koleksiyon*>] | Dizi | Belirtilen öğeler kaldırıldıktan sonra güncelleştirilmiş koleksiyon |
 ||||
 
 *Örnek*
@@ -2576,7 +2576,7 @@ split('<text>', '<delimiter>')
 
 | Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| [< *substring1* >, < *substring2* >,...] | Dizi | Virgülle ayırarak orijinal dizeden alt dizeler içeren bir dizi |
+| [<*substring1*>, <*substring2*>,...] | Dizi | Virgülle ayırarak orijinal dizeden alt dizeler içeren bir dizi |
 ||||
 
 *Örnek*
@@ -2737,7 +2737,7 @@ string(<value>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*deeri*> | Evet | Herhangi biri | Dönüştürülecek değer |
+| <*deeri*> | Evet | Herhangi bir | Dönüştürülecek değer |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -2892,7 +2892,7 @@ take([<collection>], <count>)
 
 | Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*alt küme* > veya [< *alt kümesi* >] | Sırasıyla dize veya dizi | Özgün koleksiyonun önünden belirtilen sayıda öğe içeren bir dize veya dizi |
+| <*alt küme*> veya [<*alt kümesi*>] | Sırasıyla dize veya dizi | Özgün koleksiyonun önünden belirtilen sayıda öğe içeren bir dize veya dizi |
 ||||
 
 *Örnek*
@@ -3034,7 +3034,7 @@ union([<collection1>], [<collection2>], ...)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*collection1* >, < *Collection2* >,...  | Evet | Dizi veya nesne, ancak her ikisi birden değil | *Tüm* öğeleri istediğiniz yerdeki Koleksiyonlar |
+| <*collection1*>, <*Collection2*>,...  | Evet | Dizi veya nesne, ancak her ikisi birden değil | *Tüm* öğeleri istediğiniz yerdeki Koleksiyonlar |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -3159,7 +3159,7 @@ Geçerli zaman damgasını döndürür.
 utcNow('<format>')
 ```
 
-İsteğe bağlı olarak, < *format* > parametresiyle farklı bir biçim belirtebilirsiniz.
+İsteğe bağlı olarak, <*format*> parametresiyle farklı bir biçim belirtebilirsiniz.
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
@@ -3263,15 +3263,15 @@ xpath('<xml>', '<xpath>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*'sini*> | Evet | Herhangi biri | Bir XPath ifadesi değeriyle eşleşen düğümleri veya değerleri aramak için XML dizesi |
-| <*XPath*> | Evet | Herhangi biri | Eşleşen XML düğümlerini veya değerlerini bulmak için kullanılan XPath ifadesi |
+| <*'sini*> | Evet | Herhangi bir | Bir XPath ifadesi değeriyle eşleşen düğümleri veya değerleri aramak için XML dizesi |
+| <*XPath*> | Evet | Herhangi bir | Eşleşen XML düğümlerini veya değerlerini bulmak için kullanılan XPath ifadesi |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
 | <*XML düğümü*> | XML | Belirtilen XPath ifadesiyle yalnızca tek bir düğüm eşleştiğinde bir XML düğümü |
-| <*deeri*> | Herhangi biri | Belirtilen XPath ifadesiyle yalnızca tek bir değer eşleştiğinde bir XML düğümündeki değer |
-| [< *XML-düğüm1* >, < *xml-Düğüm2* >,...] </br>-veya- </br>[< *değer1* >, < *değer2* >,...] | Dizi | XML düğümleri veya belirtilen XPath ifadesiyle eşleşen değerler içeren bir dizi |
+| <*deeri*> | Herhangi bir | Belirtilen XPath ifadesiyle yalnızca tek bir değer eşleştiğinde bir XML düğümündeki değer |
+| [<*XML-düğüm1*>, <*xml-Düğüm2*>,...] </br>-veya- </br>[<*değer1*>, <*değer2*>,...] | Dizi | XML düğümleri veya belirtilen XPath ifadesiyle eşleşen değerler içeren bir dizi |
 ||||
 
 *Örnek 1*

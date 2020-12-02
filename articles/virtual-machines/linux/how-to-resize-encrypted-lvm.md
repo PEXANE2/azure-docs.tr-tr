@@ -7,12 +7,12 @@ ms.subservice: security
 ms.topic: article
 ms.author: jofrance
 ms.date: 09/21/2020
-ms.openlocfilehash: ddd6097fffbc02c9b7b027bcb712e20cc47f2f96
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 732a2ef3c6c33d0b17deaf3b9bdc5d1ac5e5934c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487968"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498923"
 ---
 # <a name="how-to-resize-logical-volume-management-devices-that-use-azure-disk-encryption"></a>Azure disk şifrelemesi kullanan mantıksal birim yönetimi cihazlarını yeniden boyutlandırma
 
@@ -32,7 +32,7 @@ Bu yeniden boyutlandırma işlemini aşağıdaki ortamlarda kullanabilirsiniz:
 
 Bu makalede sahip olduğunuz varsayılır:
 
-- Mevcut bir LVM yapılandırması. Daha fazla bilgi için bkz. [LINUX VM 'de LVM yapılandırma](configure-lvm.md).
+- Mevcut bir LVM yapılandırması. Daha fazla bilgi için bkz. [LINUX VM 'de LVM yapılandırma](/previous-versions/azure/virtual-machines/linux/configure-lvm).
 
 - Azure Disk Şifrelemesi tarafından zaten şifrelenmiş diskler. Daha fazla bilgi için bkz. [şifrelenmiş cihazlarda LVM ve RAID yapılandırma](how-to-configure-lvm-raid-on-crypt.md).
 
@@ -573,7 +573,7 @@ Bu yöntemi, var olan bir LV 'ye alan eklemek için kullanabilirsiniz. Ya da yen
     >
     >Daha fazla bilgi için bkz. [şifrelenmiş cihazlarda LVM ve RAID yapılandırma](how-to-configure-lvm-raid-on-crypt.md).
 
-    İşte bir örnek:
+    Aşağıda bir örnek verilmiştir:
 
     ``` bash
     az vm encryption enable \

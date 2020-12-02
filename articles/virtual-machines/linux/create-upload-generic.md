@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: guybo
-ms.openlocfilehash: a80cc29f318cff8e5a4c665cd07ba1829d25d66d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ef4175d24cfd02bb5cb6470b6334fea190b5bec2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016344"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500606"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Onaylı olmayan dağıtımlar için bilgi
 
@@ -38,7 +38,7 @@ Bu makalede, Azure 'da Linux dağıtımınızı çalıştırmaya yönelik genel 
 * Hyper-V sanal sabit disk (VHDX) biçimi Azure 'da desteklenmiyor, yalnızca *sabıt VHD*.  Hyper-V Yöneticisi 'Ni veya [Convert-VHD](/powershell/module/hyper-v/convert-vhd) cmdlet 'ini kullanarak diski vhd biçimine dönüştürebilirsiniz. VirtualBox kullanıyorsanız, disk oluştururken varsayılan (dinamik olarak ayrılan) yerine **sabit boyut** ' u seçin.
 * Azure, Gen1 (BIOS önyükleme) & Gen2 (UEFı önyüklemesi) sanal makinelerini destekler.
 * VHD için izin verilen en büyük boyut 1.023 GB 'dir.
-* Linux sistemini yüklerken, çoğu yükleme için varsayılan olan mantıksal birim Yöneticisi (LVM) yerine standart bölümleri kullanmanızı öneririz. Standart bölümlerin kullanılması, özellikle de sorun giderme için bir işletim sistemi diski başka bir özdeş VM 'ye iliştirilmişse, kopyalanmış VM 'lerle LVM adı çakışmalarını önler. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) veya [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) veri disklerinde kullanılıyor olabilir.
+* Linux sistemini yüklerken, çoğu yükleme için varsayılan olan mantıksal birim Yöneticisi (LVM) yerine standart bölümleri kullanmanızı öneririz. Standart bölümlerin kullanılması, özellikle de sorun giderme için bir işletim sistemi diski başka bir özdeş VM 'ye iliştirilmişse, kopyalanmış VM 'lerle LVM adı çakışmalarını önler. [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) veya [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) veri disklerinde kullanılıyor olabilir.
 * UDF dosya sistemlerini bağlamak için çekirdek desteği gereklidir. Azure 'da ilk önyüklemede sağlama yapılandırması, konuğa bağlı olan UDF biçimli medya kullanılarak Linux VM 'ye geçirilir. Azure Linux Aracısı, yapılandırmasını okumak ve VM 'yi sağlamak için UDF dosya sistemini takmalıdır.
 * 2.6.37 ' den önceki Linux çekirdek sürümleri, Hyper-V üzerinde NUMA 'yı daha büyük VM boyutları ile desteklemez. Bu sorun öncelikle yukarı akış Red Hat 2.6.32 çekirdeğini kullanarak eski dağıtımları etkiler ve Red Hat Enterprise Linux (RHEL) 6,6 (Kernel-2.6.32-504) içinde düzeltilmiştir. 2.6.37 'den eski olan özel çekirdekler çalıştıran sistemler veya 2.6.32-504 ' den daha eski RHEL tabanlı çekirdekler, `numa=off` grub. conf içindeki çekirdek komut satırında önyükleme parametresini ayarlamış olmalıdır. Daha fazla bilgi için bkz. [Red Hat KB 436883](https://access.redhat.com/solutions/436883).
 * İşletim sistemi diski üzerinde takas bölümü yapılandırmayın. Linux Aracısı, aşağıdaki adımlarda açıklandığı gibi geçici kaynak diskinde bir takas dosyası oluşturmak için yapılandırılabilir.

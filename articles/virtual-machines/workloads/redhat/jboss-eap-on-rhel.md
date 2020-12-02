@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.assetid: 8a4df7bf-be49-4198-800e-db381cda98f5
 ms.date: 10/30/2020
-ms.openlocfilehash: ce07a0667b1fd4b439f061966e4ee0b1112578c4
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: bab84b12c871c621b5a317ba8b47f9b18c91bff3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413216"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500198"
 ---
 # <a name="deploy-enterprise-java-applications-to-azure-with-jboss-eap-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 'de Jpatron EAP ile Kurumsal Java uygulamalarını Azure 'a dağıtma
 
@@ -31,7 +31,7 @@ Jpatron EAP ve RHEL her türlü ortamda kurumsal Java uygulamaları oluşturmak,
 
   EAP yetkilendirmeleri yoksa, başlamadan önce bir [Jpatron EAP değerlendirme aboneliği](https://access.redhat.com/products/red-hat-jboss-enterprise-application-platform/evaluation) alın. Yeni bir Red Hat aboneliği oluşturmak için [Red Hat müşteri portalı](https://access.redhat.com/) ' na gidin ve bir hesap ayarlayın.
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/overview).
+* [Azure CLI](/cli/azure/overview).
 
 * RHEL seçenekleri. Kullandıkça Öde (PAYG) veya kendi aboneliğinizi getir (KCG) seçeneğini belirleyin. KCG sayesinde, hızlı başlangıç şablonunu dağıtmadan önce [Red Hat bulut erişimi](https://access.redhat.com/) RHEL Gold görüntünüzü etkinleştirmeniz gerekir.
 
@@ -123,7 +123,7 @@ Bu başlangıç betiği, JVM seçenekleri gibi bazı varsayılan tercihleri ayar
 
 Kullanılabilir tek başına yapılandırma dosyaları ve bunların nasıl kullanılacağı hakkında ayrıntılı bilgi için bkz. EAP [7,2 Için tek başına sunucu yapılandırma dosyaları](https://access.redhat.com/documentation/en/red_hat_jboss_enterprise_application_platform/7.2/html/configuration_guide/jboss_eap_management#standalone_server_configuration_files) veya [EAP 7,3 Için tek başına sunucu yapılandırma dosyaları](https://access.redhat.com/documentation/en/red_hat_jboss_enterprise_application_platform/7.3/html/configuration_guide/jboss_eap_management#standalone_server_configuration_files). 
 
-Jpatron EAP 'yi farklı bir yapılandırmayla başlatmak için `--server-config` bağımsız değişkenini kullanın. Örneğin:
+Jpatron EAP 'yi farklı bir yapılandırmayla başlatmak için `--server-config` bağımsız değişkenini kullanın. Örnek:
     
  ```
  $EAP_HOME/bin/standalone.sh --server-config=standalone-full.xml
@@ -164,9 +164,9 @@ RHEL işletim sistemi için KCG 'yi kullanmak için Azure 'da RHEL OS kullanma y
 
    1. Azure aboneliğinizde Red Hat Gold görüntülerinin kullanılabilir olmasını bekleyin. Bu görüntüler genellikle üç saatlik gönderim dahilinde kullanılabilir.
     
-3. RHEL BYOS görüntüleri için Azure Marketi hüküm ve koşullarını kabul edin. Aşağıdaki Azure CLı komutlarını çalıştırarak bu işlemi tamamlayabilirsiniz. Daha fazla bilgi için bkz. [Azure 'Da RHEL BYOS Gold görüntüleri](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/byos) . En son Azure CLı sürümünü çalıştırıyor olmanız önemlidir.
+3. RHEL BYOS görüntüleri için Azure Marketi hüküm ve koşullarını kabul edin. Aşağıdaki Azure CLı komutlarını çalıştırarak bu işlemi tamamlayabilirsiniz. Daha fazla bilgi için bkz. [Azure 'Da RHEL BYOS Gold görüntüleri](./byos.md) . En son Azure CLı sürümünü çalıştırıyor olmanız önemlidir.
 
-   1. Azure CLı oturumu açın ve Azure hesabınızla kimlik doğrulaması yapın. Yardım için bkz. [Azure CLI Ile oturum açma](https://docs.microsoft.com/cli/azure/authenticate-azure-cli).
+   1. Azure CLı oturumu açın ve Azure hesabınızla kimlik doğrulaması yapın. Yardım için bkz. [Azure CLI Ile oturum açma](/cli/azure/authenticate-azure-cli).
 
    1. Aşağıdaki CLı komutunu çalıştırarak RHEL BYOS görüntülerinin aboneliğinizde kullanılabilir olduğunu doğrulayın. Burada herhangi bir sonuç alamazsanız, RHEL BYOS görüntüleri için Azure aboneliğinizin etkinleştirildiğinden emin olun.
    
@@ -203,7 +203,7 @@ Jpatron EAP yalnızca KCG modeli aracılığıyla Azure 'da kullanılabilir. Bu 
   New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateUri <raw link to the template which can be obtained from github>
   ```
  
-  Azure PowerShell yükleme ve yapılandırma hakkında bilgi için bkz. [PowerShell belgeleri](https://docs.microsoft.com/powershell/azure/).  
+  Azure PowerShell yükleme ve yapılandırma hakkında bilgi için bkz. [PowerShell belgeleri](/powershell/azure/).  
 
 - **Azure CLI**. Aşağıdaki komutları çalıştırarak şablonu dağıtın:
 
@@ -215,7 +215,7 @@ Jpatron EAP yalnızca KCG modeli aracılığıyla Azure 'da kullanılabilir. Bu 
   az group deployment create --resource-group <my-resource-group> --template-uri <raw link to the template which can be obtained from github>
   ```
 
-  Azure CLı 'yi yükleme ve yapılandırma hakkında ayrıntılı bilgi için bkz. [CLI 'Yı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli).
+  Azure CLı 'yi yükleme ve yapılandırma hakkında ayrıntılı bilgi için bkz. [CLI 'Yı yükleme](/cli/azure/install-azure-cli).
 
 - **Azure portalı**. Sonraki bölümde belirtildiği gibi Azure hızlı başlangıç şablonlarına giderek Azure portal dağıtabilirsiniz. Hızlı başlangıç adımlarını tamamladıktan sonra **Azure 'A dağıt** veya **GitHub 'da araştır** düğmesini seçin.
 
@@ -231,10 +231,10 @@ Dağıtım hedefini karşılayan RHEL üzerinde Jpatron EAP için aşağıdaki h
 
 ## <a name="resource-links"></a>Kaynak bağlantıları
 
-* [Azure Hibrit Avantajı](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)
-* [Azure App Service için bir Java uygulaması yapılandırma](https://docs.microsoft.com/azure/app-service/configure-language-java)
+* [Azure Hibrit Avantajı](../../windows/hybrid-use-benefit-licensing.md)
+* [Azure App Service için bir Java uygulaması yapılandırma](../../../app-service/configure-language-java.md)
 * [Azure Red Hat OpenShift üzerinde Jpatron EAP](https://azure.microsoft.com/services/openshift/)
-* [Azure App Service Linux üzerinde Jpatron EAP](https://docs.microsoft.com/azure/app-service/quickstart-java)
+* [Azure App Service Linux üzerinde Jpatron EAP](../../../app-service/quickstart-java.md)
 * [Azure App Service Jpatron EAP dağıtma](https://github.com/JasonFreeberg/jboss-on-app-service)
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -242,6 +242,6 @@ Dağıtım hedefini karşılayan RHEL üzerinde Jpatron EAP için aşağıdaki h
 * [Jpatron EAP 7,2](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.2/)hakkında daha fazla bilgi edinin.
 * [Jpatron EAP 7,3](https://access.redhat.com/documentation/red_hat_jboss_enterprise_application_platform/7.3/)hakkında daha fazla bilgi edinin.
 * [Red Hat abonelik yönetimi](https://access.redhat.com/products/red-hat-subscription-management)hakkında daha fazla bilgi edinin.
-* [Azure 'Da Red hat iş yükleri](https://aka.ms/rhel-docs)hakkında bilgi edinin.
+* [Azure 'Da Red hat iş yükleri](./overview.md)hakkında bilgi edinin.
 * [Jpatron EAP 'yi BIR RHEL VM 'ye veya Azure Marketi 'ndeki sanal makine ölçek kümesine](https://aka.ms/AMP-JBoss-EAP)dağıtın.
 * [Jpatron EAP 'yi BIR RHEL VM 'ye veya Azure hızlı başlangıç şablonlarından sanal makine ölçek kümesine](https://aka.ms/Quickstart-JBoss-EAP)dağıtın.

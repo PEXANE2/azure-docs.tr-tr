@@ -9,16 +9,16 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 10/02/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 5fe8bf70374a2eec639a0a9365f7d227cf259d06
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a55a330f6f4fefb86f2c056cd0ca3b2ba5f4b29
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667257"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499603"
 ---
 # <a name="tutorial-order-search-results-using-the-net-sdk"></a>Öğretici: .NET SDK kullanarak arama sonuçlarını sıralama
 
-Bu öğretici serisinin tamamında, sonuçlar döndürülür ve [varsayılan sırada](index-add-scoring-profiles.md#what-is-default-scoring)gösterilir. Bu öğreticide, birincil ve ikincil sıralama ölçütlerini ekleyeceksiniz. Sayısal değerlere göre sıralamaya alternatif olarak, nihai örnek, sonuçların özel bir Puanlama profiline göre nasıl gösterileceğini gösterir. Ayrıca _karmaşık türlerin_görüntüsüne daha ayrıntılı bir şekilde gidecağız.
+Bu öğretici serisinin tamamında, sonuçlar döndürülür ve [varsayılan sırada](index-add-scoring-profiles.md#what-is-default-scoring)gösterilir. Bu öğreticide, birincil ve ikincil sıralama ölçütlerini ekleyeceksiniz. Sayısal değerlere göre sıralamaya alternatif olarak, nihai örnek, sonuçların özel bir Puanlama profiline göre nasıl gösterileceğini gösterir. Ayrıca _karmaşık türlerin_ görüntüsüne daha ayrıntılı bir şekilde gidecağız.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
@@ -58,7 +58,7 @@ Sıralamayı etkinleştirmek için modellerden herhangi birini değiştirmenize 
     ```
 
     >[!Note]
-    > Varsayılan sıra artan, ancak bunu açık hale getirmek için özelliğine **ASC** ekleyebilirsiniz. Azalan sıra, **DESC**eklenerek belirtilir.
+    > Varsayılan sıra artan, ancak bunu açık hale getirmek için özelliğine **ASC** ekleyebilirsiniz. Azalan sıra, **DESC** eklenerek belirtilir.
 
 1. Şimdi uygulamayı çalıştırın ve tüm ortak arama terimini girin. Sonuçlar doğru sırada olmayabilir veya olmayabilir, bu, kullanıcının değil geliştirici olarak, sonuçları doğrulayan kolay bir yolu vardır!
 
@@ -121,7 +121,7 @@ Sıralamayı etkinleştirmek için modellerden herhangi birini değiştirmenize 
     ```
 
     > [!Tip]
-    > Tarayıcılar genellikle CSS dosyalarını önbelleğe alabilir ve bu, eski bir CSS dosyasının kullanılmasına yol açabilir ve düzenlemeleriniz yok sayılır. Bunun iyi bir yolu, bağlantıya sürüm parametresi olan bir sorgu dizesi eklemektir. Örneğin:
+    > Tarayıcılar genellikle CSS dosyalarını önbelleğe alabilir ve bu, eski bir CSS dosyasının kullanılmasına yol açabilir ve düzenlemeleriniz yok sayılır. Bunun iyi bir yolu, bağlantıya sürüm parametresi olan bir sorgu dizesi eklemektir. Örnek:
     >
     >```html
     >   <link rel="stylesheet" href="~/css/hotels.css?v1.1" />
@@ -135,7 +135,7 @@ Sıralamayı etkinleştirmek için modellerden herhangi birini değiştirmenize 
     Select = new[] { "HotelName", "Description", "Rating"},
     ```
 
-1. Görünümü (index. cshtml) açın ve oluşturma döngüsünü (** &lt; !--otel verilerini göster.-- &gt; **) aşağıdaki kodla değiştirin.
+1. Görünümü (index. cshtml) açın ve oluşturma döngüsünü (**&lt; !--otel verilerini göster.-- &gt;**) aşağıdaki kodla değiştirin.
 
     ```cs
                 <!-- Show the hotel data. -->
@@ -206,7 +206,7 @@ Sıralamayı etkinleştirmek için modellerden herhangi birini değiştirmenize 
 
     Birkaç otelde aynı dereceye sahip olduğunu fark edeceksiniz ve bu nedenle, ekranda görüntülenen görünüşünün verilerin bulunduğu sıra, rastgele olan bir sıra olduğunu fark edersiniz.
 
-    İkinci bir sıralama düzeyi eklemeye bakmadan önce, Oda tarifelerinin aralığını görüntülemesi için bazı kodlar ekleyelim. Bu kodu hem _karmaşık bir türden_veri ayıklayarak hem de ayrıca, fiyata göre sıralama sonuçlarını (Belki de ilk olarak) temel alarak tartışacağız.
+    İkinci bir sıralama düzeyi eklemeye bakmadan önce, Oda tarifelerinin aralığını görüntülemesi için bazı kodlar ekleyelim. Bu kodu hem _karmaşık bir türden_ veri ayıklayarak hem de ayrıca, fiyata göre sıralama sonuçlarını (Belki de ilk olarak) temel alarak tartışacağız.
 
 ### <a name="add-the-range-of-room-rates-to-the-view"></a>Görünüme Oda oranları aralığını ekleyin
 
@@ -473,7 +473,7 @@ Sonuçları coğrafi mesafeye göre göstermek için birkaç adım gereklidir.
 
 ## <a name="order-results-based-on-a-scoring-profile"></a>Puanlama profili temelinde sonuçları sıralama
 
-Öğreticide verilen örnekler, _tam_ olarak sıralı bir işlem sağlayan sayısal değerleri (derecelendirme, yeniden oluşturma tarihi, coğrafi uzaklık) nasıl sıralayarak göstermektedir. Ancak bazı aramalar ve bazı veriler, bu iki veri öğesi arasında kolay bir karşılaştırmaya kendisini hiçbir şekilde vermez. Azure Bilişsel Arama _Puanlama_kavramını içerir. _Puanlama profilleri_ , daha karmaşık ve nitel karşılaştırmaları sağlamak için kullanılabilen bir veri kümesi için belirtilebilir. Bu, ne zaman en değerli olması gerekir, örneğin, ilk olarak görüntülenmek üzere metin tabanlı verileri karşılaştırma.
+Öğreticide verilen örnekler, _tam_ olarak sıralı bir işlem sağlayan sayısal değerleri (derecelendirme, yeniden oluşturma tarihi, coğrafi uzaklık) nasıl sıralayarak göstermektedir. Ancak bazı aramalar ve bazı veriler, bu iki veri öğesi arasında kolay bir karşılaştırmaya kendisini hiçbir şekilde vermez. Azure Bilişsel Arama _Puanlama_ kavramını içerir. _Puanlama profilleri_ , daha karmaşık ve nitel karşılaştırmaları sağlamak için kullanılabilen bir veri kümesi için belirtilebilir. Bu, ne zaman en değerli olması gerekir, örneğin, ilk olarak görüntülenmek üzere metin tabanlı verileri karşılaştırma.
 
 Puanlama profilleri kullanıcılar tarafından, genellikle bir veri kümesinin yöneticileri tarafından tanımlanmamıştır. Otel verilerinde çeşitli Puanlama profilleri ayarlanmış. Puanlama profilinin nasıl tanımlandığını inceleyelim, sonra da bunları aramak için kod yazmayı deneyin.
 
@@ -965,7 +965,7 @@ Puanlama profillerinin üç örneğini inceleyelim ve bunların _her birinin son
 
 ### <a name="resources"></a>Kaynaklar
 
-Daha fazla bilgi için bkz. [Azure bilişsel arama dizinine Puanlama profilleri ekleme](/azure/search/index-add-scoring-profiles).
+Daha fazla bilgi için bkz. [Azure bilişsel arama dizinine Puanlama profilleri ekleme](./index-add-scoring-profiles.md).
 
 ## <a name="takeaways"></a>Paketler
 

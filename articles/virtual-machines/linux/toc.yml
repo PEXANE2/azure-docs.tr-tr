@@ -421,7 +421,7 @@
         - name: CLI kullanarak geçirme
           href: ../migration-classic-resource-manager-cli.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Sık karşılaşılan geçiş hataları
-          href: migration-classic-resource-manager-errors.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+          href: ../migration-classic-resource-manager-errors.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Geçiş için topluluk araçları
           href: ../migration-classic-resource-manager-community-tools.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: SSS
@@ -594,7 +594,7 @@
             - name: Güçlendirilmiş erişim konağı oluşturma
               items:
                 - name: Portal
-                  href: ../../bastion/bastion-create-host-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                  href: ../../bastion/tutorial-create-host-portal.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
                 - name: PowerShell
                   href: ../../bastion/bastion-create-host-powershell.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
                 - name: CLI
@@ -971,7 +971,7 @@
           items:
             - name: Azure CLI
               href: add-disk.md
-            - name: Azure portal
+            - name: Azure portalı
               href: attach-disk-portal.md
         - name: Disk katmanını değiştirme - PowerShell/CLI
           href: ../disks-performance-tiers.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json

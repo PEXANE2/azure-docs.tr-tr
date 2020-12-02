@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fde2052078e0131e720411f91aa8ae7484338252
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40d77f4ebb897884f03377e6d9f1243a6d436766
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91295045"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500215"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Kesintisiz çoklu oturum açma Azure Active Directory: hızlı başlangıç
 
@@ -37,7 +37,7 @@ Aşağıdaki önkoşulların yerinde olduğundan emin olun:
 
 * **Azure AD Connect sunucunuzu ayarlama**: [geçiş kimlik doğrulamasını](how-to-connect-pta.md) oturum açma yönteminiz olarak kullanırsanız, ek önkoşul denetimi gerekli değildir. Oturum açma yönteminiz olarak [Parola karması eşitlemesi](how-to-connect-password-hash-synchronization.md) kullanıyorsanız ve Azure AD Connect Ile Azure AD arasında bir güvenlik duvarı varsa, aşağıdakileri doğrulayın:
    - Azure AD Connect sürüm 1.1.644.0 veya üstünü kullanıyorsunuz. 
-   - Güvenlik duvarınız veya ara sunucunuz izin veriyorsa, bağlantı noktası 443 üzerinden ** \* . Msappproxy.net** URL 'leri için izin verilen listeye bağlantı ekleyin. Aksi takdirde, haftalık olarak güncellenen [Azure veri MERKEZI IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)erişime izin verin. Bu önkoşul yalnızca özelliği etkinleştirdiğinizde geçerlidir. Bu, gerçek Kullanıcı oturum açma işlemleri için gerekli değildir.
+   - Güvenlik duvarınız veya ara sunucunuz izin veriyorsa, bağlantı noktası 443 üzerinden **\* . Msappproxy.net** URL 'leri için izin verilen listeye bağlantı ekleyin. Aksi takdirde, haftalık olarak güncellenen [Azure veri MERKEZI IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)erişime izin verin. Bu önkoşul yalnızca özelliği etkinleştirdiğinizde geçerlidir. Bu, gerçek Kullanıcı oturum açma işlemleri için gerekli değildir.
 
     >[!NOTE]
     >Azure AD Connect sürümleri 1.1.557.0, 1.1.558.0, 1.1.561.0 ve 1.1.614.0, Parola karması eşitlemeyle ilgili bir sorun var. Parola karması eşitlemesini doğrudan kimlik doğrulamasıyla birlikte _kullanmayı düşünmüyorsanız,_ daha fazla bilgi edinmek için [Azure AD Connect sürüm notlarını](./reference-connect-version-history.md) okuyun.
@@ -65,7 +65,7 @@ Aşağıdaki önkoşulların yerinde olduğundan emin olun:
 Azure AD Connect yeni bir yüklemesini gerçekleştiriyorsanız, [özel yükleme yolunu](how-to-connect-install-custom.md)seçin. **Kullanıcı oturum açma** sayfasında **Çoklu oturum açmayı etkinleştir** seçeneğini belirleyin.
 
 >[!NOTE]
-> Seçenek yalnızca oturum açma yöntemi **Parola karması eşitleme** veya **geçişli kimlik doğrulama**olduğunda seçilebilir.
+> Seçenek yalnızca oturum açma yöntemi **Parola karması eşitleme** veya **geçişli kimlik doğrulama** olduğunda seçilebilir.
 
 ![Azure AD Connect: Kullanıcı oturumu açma](./media/how-to-connect-sso-quick-start/sso8.png)
 
@@ -87,8 +87,8 @@ Sorunsuz SSO 'yu doğru şekilde etkinleştirdiğinizi doğrulamak için aşağ�
 
 1. [Azure Active Directory Yönetim merkezinde](https://aad.portal.azure.com) kiracınızın genel yönetici kimlik bilgileriyle oturum açın.
 2. Sol bölmedeki **Azure Active Directory** seçin.
-3. **Azure AD Connect**seçin.
-4. **Sorunsuz çoklu oturum açma** özelliğinin **etkin**olarak göründüğünü doğrulayın.
+3. **Azure AD Connect** seçin.
+4. **Sorunsuz çoklu oturum açma** özelliğinin **etkin** olarak göründüğünü doğrulayın.
 
 ![Azure portal: Azure AD Connect bölmesi](./media/how-to-connect-sso-quick-start/sso10.png)
 
@@ -107,7 +107,7 @@ Aşağıda belirtilen yönergeleri kullanarak kullanıcılarınıza sorunsuz SSO
 Ayrıca, grup ilkesi aracılığıyla **betik aracılığıyla durum çubuğuna güncelleştirmelere Izin ver** adlı bir Intranet bölgesi ilkesi ayarını etkinleştirmeniz gerekir. 
 
 >[!NOTE]
-> Aşağıdaki yönergeler yalnızca Windows 'da Internet Explorer ve Google Chrome için geçerlidir (Internet Explorer ile bir güvenilen site URL 'si kümesini paylaşıyorsa). MacOS 'ta Mozilla Firefox ve Google Chrome ayarlama yönergeleri için sonraki bölümü okuyun.
+> Aşağıdaki yönergeler yalnızca Windows 'da Internet Explorer, Microsoft Edge ve Google Chrome için geçerlidir (Internet Explorer ile bir güvenilen site URL 'si kümesini paylaşıyorsa). MacOS 'ta Mozilla Firefox ve Google Chrome ayarlama yönergeleri için sonraki bölümü okuyun.
 
 ### <a name="why-do-you-need-to-modify-users-intranet-zone-settings"></a>Kullanıcıların Intranet bölgesi ayarlarını neden değiştirmeniz gerekiyor?
 
@@ -123,8 +123,8 @@ Kullanıcıların Intranet bölgesi ayarlarını değiştirmek için iki yol var
 ### <a name="group-policy-option---detailed-steps"></a>"Grup İlkesi" seçeneği-ayrıntılı adımlar
 
 1. Grup İlkesi Yönetimi Düzenleyicisi aracını açın.
-2. Kullanıcılarınıza veya tümüne uygulanan Grup ilkesini düzenleyin. Bu örnek **varsayılan etki alanı ilkesi**kullanır.
-3. **User Configuration**  >  **Policy**  >  **Administrative Templates**  >  **Windows bileşenleri**  >  **Internet Explorer**  >  **Internet Denetim Masası**  >  **Güvenlik sayfası**Yönetim Şablonları Kullanıcı yapılandırma ilkesi ' ne gidin. Ardından **siteden bölgeye atama listesi**' ni seçin.
+2. Kullanıcılarınıza veya tümüne uygulanan Grup ilkesini düzenleyin. Bu örnek **varsayılan etki alanı ilkesi** kullanır.
+3. **User Configuration**  >  **Policies**  >  **Administrative Templates**  >  **Windows bileşenleri**  >  **Internet Explorer**  >  **Internet Denetim Masası**  >  **Güvenlik sayfası** Yönetim Şablonları Kullanıcı yapılandırma ilkelerine gidin. Ardından **siteden bölgeye atama listesi**' ni seçin.
     !["Güvenlik sayfası" nı "Site-bölge atama listesi" seçiliyken gösteren ekran görüntüsü.](./media/how-to-connect-sso-quick-start/sso6.png)
 4. İlkeyi etkinleştirin ve iletişim kutusuna aşağıdaki değerleri girin:
    - **Değer adı**: Kerberos biletleri Iletileceği Azure AD URL 'si.
@@ -137,14 +137,14 @@ Kullanıcıların Intranet bölgesi ayarlarını değiştirmek için iki yol var
      Değer (veri): 1
 
    >[!NOTE]
-   > Bazı kullanıcıların sorunsuz SSO 'yu kullanmasını engellemek istiyorsanız (örneğin, bu kullanıcılar paylaşılan kiler 'de oturum açtığında), önceki değerleri **4**olarak ayarlayın. Bu eylem, Azure AD URL 'sini kısıtlanmış bölgeye ekler ve her seferinde sorunsuz SSO başarısız olur.
+   > Bazı kullanıcıların sorunsuz SSO 'yu kullanmasını engellemek istiyorsanız (örneğin, bu kullanıcılar paylaşılan kiler 'de oturum açtığında), önceki değerleri **4** olarak ayarlayın. Bu eylem, Azure AD URL 'sini kısıtlanmış bölgeye ekler ve her seferinde sorunsuz SSO başarısız olur.
    >
 
 5. **Tamam**’ı ve ardından tekrar **Tamam**’ı seçin.
 
     ![Bir bölge atamasının seçili olduğu "Içeriği göster" penceresini gösteren ekran görüntüsü.](./media/how-to-connect-sso-quick-start/sso7.png)
 
-6. **User Configuration**  >  **Policy**  >  **Administrative Templates**  >  **Windows bileşenleri**  >  **Internet Explorer**  >  **Internet Denetim Masası**  >  **Güvenlik sayfası**  >  **Intranet bölgesi**Yönetim Şablonları Kullanıcı yapılandırma ilkesi ' ne gidin. Ardından **betik aracılığıyla durum çubuğunda güncelleştirmelere Izin ver**' i seçin.
+6. **User Configuration**  >  **Policies**  >  **Administrative Templates**  >  **Windows bileşenleri**  >  **Internet Explorer**  >  **Internet Denetim Masası**  >  **Güvenlik sayfası**  >  **Intranet bölgesi** Yönetim Şablonları Kullanıcı yapılandırma ilkelerine gidin. Ardından **betik aracılığıyla durum çubuğunda güncelleştirmelere Izin ver**' i seçin.
 
     !["Intranet bölgesi" sayfasını, "komut dosyası aracılığıyla durum çubuğuna güncelleştirmeler Izin ver" seçiliyken gösteren ekran görüntüsü.](./media/how-to-connect-sso-quick-start/sso11.png)
 
@@ -155,16 +155,16 @@ Kullanıcıların Intranet bölgesi ayarlarını değiştirmek için iki yol var
 ### <a name="group-policy-preference-option---detailed-steps"></a>"Grup İlkesi tercihi" seçeneği-ayrıntılı adımlar
 
 1. Grup İlkesi Yönetimi Düzenleyicisi aracını açın.
-2. Kullanıcılarınıza veya tümüne uygulanan Grup ilkesini düzenleyin. Bu örnek **varsayılan etki alanı ilkesi**kullanır.
-3. **Kullanıcı yapılandırma**  >  **tercihleri**  >  **Windows ayarları**  >  **kayıt defteri**  >  **Yeni**  >  **kayıt defteri öğesine**gidin.
+2. Kullanıcılarınıza veya tümüne uygulanan Grup ilkesini düzenleyin. Bu örnek **varsayılan etki alanı ilkesi** kullanır.
+3. **Kullanıcı yapılandırma**  >  **tercihleri**  >  **Windows ayarları**  >  **kayıt defteri**  >  **Yeni**  >  **kayıt defteri öğesine** gidin.
 
     !["Kayıt defteri" ve "kayıt defteri öğesi" öğesinin seçili olduğunu gösteren ekran görüntüsü.](./media/how-to-connect-sso-quick-start/sso15.png)
 
 4. Uygun alanlara aşağıdaki değerleri girin ve **Tamam**' a tıklayın.
-   - **Anahtar yolu**: ***Software\microsoft\windows\currentversion\ınternet Settings\ZoneMap\Domains\microsoftazuread-SSO.com\autologon***
-   - **Değer adı**: ***https***
-   - **Değer türü**: ***REG_DWORD***
-   - **Değer verisi**: ***00000001***
+   - **Anahtar yolu**: **_Software\microsoft\windows\currentversion\ınternet Settings\ZoneMap\Domains\microsoftazuread-SSO.com\autologon_* _
+   - _* Değer adı * *: **_https_*_
+   - _* Değer türü * *: **_REG_DWORD_*_
+   - _* Değer verisi * *: **_00000001_*_
  
      !["Yeni kayıt defteri özellikleri" penceresini gösteren ekran görüntüsü.](./media/how-to-connect-sso-quick-start/sso16.png)
  
@@ -176,7 +176,7 @@ Kullanıcıların Intranet bölgesi ayarlarını değiştirmek için iki yol var
 
 Mozilla Firefox, Kerberos kimlik doğrulamasını otomatik olarak kullanmaz. Her kullanıcının aşağıdaki adımları kullanarak, Azure AD URL 'sini Firefox ayarlarına el ile eklemesi gerekir:
 1. Firefox 'u çalıştırın ve `about:config` Adres çubuğuna girin. Gördüğünüz tüm bildirimleri kapatın.
-2. **Network. Negotiate-Auth. Trusted-uris** tercihini arayın. Bu tercih edilecek Kerberos kimlik doğrulaması için Firefox 'un güvenilen siteleri listelenir.
+2. _ *Network. Negotiate-Auth. Trusted-uris** tercihini arayın. Bu tercih edilecek Kerberos kimlik doğrulaması için Firefox 'un güvenilen siteleri listelenir.
 3. Sağ tıklayın ve **Değiştir**' i seçin.
 4. `https://autologon.microsoftazuread-sso.com`Alana girin.
 5. **Tamam** ' ı seçin ve ardından tarayıcıyı yeniden açın.

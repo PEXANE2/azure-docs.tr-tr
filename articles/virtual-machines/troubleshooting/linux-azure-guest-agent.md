@@ -11,16 +11,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/17/2020
 ms.author: axelg
-ms.openlocfilehash: 9e3b376cfaf5379acaf92713c42509471200d066
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: fc609b60c9d5d4d4734c3d73cbda87935b533caf
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95550117"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500266"
 ---
 # <a name="troubleshooting-azure-linux-guest-agent"></a>Azure Linux Konuk Aracısı sorunlarını giderme
 
-[Azure Linux Konuk Aracısı](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) , bir sanal makıne (VM) aracısıdır. Bu, sanal makinenin 168.63.129.16 IP adresinde doku denetleyicisi (VM 'nin barındırıldığı temeldeki fiziksel sunucu) ile iletişim kurmasını sağlar. Bu IP adresi, iletişimi kolaylaştıran bir sanal genel IP adresidir. Daha fazla bilgi için bkz. [IP adresi 168.63.129.16 nedir](../../virtual-network/what-is-ip-address-168-63-129-16.md).
+[Azure Linux Konuk Aracısı](../extensions/agent-linux.md) , bir sanal makıne (VM) aracısıdır. Bu, sanal makinenin 168.63.129.16 IP adresinde doku denetleyicisi (VM 'nin barındırıldığı temeldeki fiziksel sunucu) ile iletişim kurmasını sağlar. Bu IP adresi, iletişimi kolaylaştıran bir sanal genel IP adresidir. Daha fazla bilgi için bkz. [IP adresi 168.63.129.16 nedir](../../virtual-network/what-is-ip-address-168-63-129-16.md).
 
 ## <a name="checking-agent-status-and-version"></a>Aracı durumu ve sürümü denetleniyor
 

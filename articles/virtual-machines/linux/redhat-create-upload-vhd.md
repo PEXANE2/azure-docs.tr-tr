@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: guybo
-ms.openlocfilehash: cc8d4458de5f3bbf1eaf111aa10f1377f3c9d46a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c352b9e6b067724fbfc00bf5b0338baf8514421
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87292301"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500504"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Azure'da Red Hat tabanlı bir sanal makine hazırlama
 Bu makalede, Azure 'da kullanmak üzere bir Red Hat Enterprise Linux (RHEL) sanal makinesinin nasıl hazırlanacağını öğreneceksiniz. Bu makalede ele alınan RHEL 'nin sürümleri 6.7 + ve 7.1 + ' dir. Bu makalede ele alınan hazırlıklar için hiper yönetici, Hyper-V, çekirdek tabanlı sanal makine (KVM) ve VMware ' dir. Red Hat 'in bulut erişim programına katılma uygunluk gereksinimleri hakkında daha fazla bilgi için bkz. [Red Hat 'In bulut erişimi Web sitesi](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) ve [Azure 'da RHEL çalıştırma](https://access.redhat.com/ecosystem/ccsp/microsoft-azure). RHEL görüntülerini oluşturmayı otomatikleştirebileceğiniz yollar için bkz. [Azure görüntü Oluşturucu](./image-builder-overview.md).
@@ -28,7 +28,7 @@ Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL gör
 * Azure, VHDX biçimini desteklemez. Azure yalnızca sabit VHD 'YI destekler. Hyper-V Yöneticisi 'Ni kullanarak diski VHD biçimine dönüştürebilir veya Convert-VHD cmdlet 'ini kullanabilirsiniz. VirtualBox kullanırsanız, diski oluştururken varsayılan dinamik olarak ayrılan seçeneğe karşılık olarak **sabit boyut** ' u seçin.
 * Azure, Gen1 (BIOS önyükleme) & Gen2 (UEFı önyüklemesi) sanal makinelerini destekler.
 * VHD için izin verilen en büyük boyut 1.023 GB 'dir.
-* Mantıksal birim Yöneticisi (LVM) desteklenir ve Azure sanal makinelerde işletim sistemi diskinde veya veri disklerinde kullanılabilir. Ancak genel olarak, LVM yerine işletim sistemi diskinde standart bölümlerin kullanılması önerilir. Bu uygulama, özellikle de sorun giderme için bir işletim sistemi diskini başka bir özdeş sanal makineye iliştirmeniz gerekiyorsa, kopyalanmış sanal makinelerle LVM adı çakışmalarını önler. Ayrıca bkz.  [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ve [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) belgeleri.
+* Mantıksal birim Yöneticisi (LVM) desteklenir ve Azure sanal makinelerde işletim sistemi diskinde veya veri disklerinde kullanılabilir. Ancak genel olarak, LVM yerine işletim sistemi diskinde standart bölümlerin kullanılması önerilir. Bu uygulama, özellikle de sorun giderme için bir işletim sistemi diskini başka bir özdeş sanal makineye iliştirmeniz gerekiyorsa, kopyalanmış sanal makinelerle LVM adı çakışmalarını önler. Ayrıca bkz.  [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ve [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) belgeleri.
 * Evrensel Disk Biçimi (UDF) dosya sistemlerini bağlamak için çekirdek desteği gereklidir. Azure 'da ilk önyüklemede, konuğa bağlı olan UDF biçimli medya, sağlama yapılandırmasını Linux sanal makinesine geçirir. Azure Linux Aracısı, yapılandırmasını okumak ve sanal makineyi sağlamak için UDF dosya sistemini bağlayabilmelidir.
 * İşletim sistemi diskinde bir takas bölümü yapılandırmayın. Linux Aracısı, geçici kaynak diskinde bir takas dosyası oluşturmak için yapılandırılabilir.  Bu konuda daha fazla bilgi aşağıdaki adımlarda bulunabilir.
 * Azure 'daki tüm VHD 'ler, 1 MB 'a hizalanmış bir sanal boyuta sahip olmalıdır. Bir ham diskten VHD 'ye dönüştürme yaparken,, dönüştürmeden önce ham disk boyutunun 1 MB 'ın katı olduğundan emin olmanız gerekir. Aşağıdaki adımlarda daha fazla ayrıntı bulabilirsiniz. Daha fazla bilgi için Ayrıca bkz. [Linux yükleme notları](create-upload-generic.md#general-linux-installation-notes) .
@@ -153,7 +153,7 @@ Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL gör
     # logout
     ```
 
-1. **Action**  >  Hyper-V Yöneticisi 'nde eylem**Kapat** ' a tıklayın. Linux VHD 'niz artık Azure 'a yüklenmeye hazırdır.
+1. **Action**  >  Hyper-V Yöneticisi 'nde eylem **Kapat** ' a tıklayın. Linux VHD 'niz artık Azure 'a yüklenmeye hazırdır.
 
 
 ### <a name="prepare-a-rhel-7-virtual-machine-from-hyper-v-manager"></a>Hyper-V Yöneticisi 'nden bir RHEL 7 sanal makinesi hazırlama
@@ -195,7 +195,7 @@ Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL gör
     # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
     ```
 
-1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bu değişikliği yapmak için, `/etc/default/grub` bir metin düzenleyicisinde açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin. Örneğin:
+1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bu değişikliği yapmak için, `/etc/default/grub` bir metin düzenleyicisinde açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin. Örnek:
 
     ```config-grub
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
@@ -265,7 +265,7 @@ Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL gör
     # logout
     ```
 
-1. **Action**  >  Hyper-V Yöneticisi 'nde eylem**Kapat** ' a tıklayın. Linux VHD 'niz artık Azure 'a yüklenmeye hazırdır.
+1. **Action**  >  Hyper-V Yöneticisi 'nde eylem **Kapat** ' a tıklayın. Linux VHD 'niz artık Azure 'a yüklenmeye hazırdır.
 
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-kvm"></a>KVM 'den Red Hat tabanlı bir sanal makine hazırlama
@@ -294,7 +294,7 @@ Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL gör
 
    Kök kullanıcının ikinci alanını "!!" olarak değiştir şifrelenmiş parolaya.
 
-1. QCOW2 görüntüsünden KVM 'de bir sanal makine oluşturun. Disk türünü **QCOW2**olarak ayarlayın ve sanal ağ arabirimi cihaz modelini **Virtio**olarak ayarlayın. Ardından, sanal makineyi başlatın ve kök olarak oturum açın.
+1. QCOW2 görüntüsünden KVM 'de bir sanal makine oluşturun. Disk türünü **QCOW2** olarak ayarlayın ve sanal ağ arabirimi cihaz modelini **Virtio** olarak ayarlayın. Ardından, sanal makineyi başlatın ve kök olarak oturum açın.
 
 1. Dosyayı oluşturun veya düzenleyin `/etc/sysconfig/network` ve aşağıdaki metni ekleyin:
 
@@ -490,7 +490,7 @@ Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL gör
 
    Kök kullanıcının ikinci alanını "!!" olarak değiştirin şifrelenmiş parolaya.
 
-1. QCOW2 görüntüsünden KVM 'de bir sanal makine oluşturun. Disk türünü **QCOW2**olarak ayarlayın ve sanal ağ arabirimi cihaz modelini **Virtio**olarak ayarlayın. Ardından, sanal makineyi başlatın ve kök olarak oturum açın.
+1. QCOW2 görüntüsünden KVM 'de bir sanal makine oluşturun. Disk türünü **QCOW2** olarak ayarlayın ve sanal ağ arabirimi cihaz modelini **Virtio** olarak ayarlayın. Ardından, sanal makineyi başlatın ve kök olarak oturum açın.
 
 1. Dosyayı oluşturun veya düzenleyin `/etc/sysconfig/network` ve aşağıdaki metni ekleyin:
 
@@ -525,7 +525,7 @@ Bu bölümde, Red Hat Web sitesinden bir ISO dosyası edindiğinizi ve RHEL gör
     # subscription-manager register --auto-attach --username=XXX --password=XXX
     ```
 
-1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bu yapılandırmayı yapmak için `/etc/default/grub` bir metin düzenleyicisinde açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin. Örneğin:
+1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bu yapılandırmayı yapmak için `/etc/default/grub` bir metin düzenleyicisinde açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin. Örnek:
 
     ```config-grub
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
@@ -723,7 +723,7 @@ Bu bölümde, VMware 'de zaten bir RHEL sanal makinesini yüklemiş olduğunuz v
     # subscription-manager repos --enable=rhel-6-server-extras-rpms
     ```
 
-1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bunu yapmak için `/etc/default/grub` bir metin düzenleyicisinde açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin. Örneğin:
+1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bunu yapmak için `/etc/default/grub` bir metin düzenleyicisinde açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin. Örnek:
 
     ```config-grub
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0"
@@ -864,7 +864,7 @@ Bu bölümde, VMware 'de zaten bir RHEL sanal makinesini yüklemiş olduğunuz v
     # sudo subscription-manager register --auto-attach --username=XXX --password=XXX
     ```
 
-1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bu değişikliği yapmak için, `/etc/default/grub` bir metin düzenleyicisinde açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin. Örneğin:
+1. Grub yapılandırmanızda çekirdek önyükleme satırını, Azure için ek çekirdek parametreleri içerecek şekilde değiştirin. Bu değişikliği yapmak için, `/etc/default/grub` bir metin düzenleyicisinde açın ve `GRUB_CMDLINE_LINUX` parametresini düzenleyin. Örnek:
 
     ```config-grub
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
@@ -1116,7 +1116,7 @@ Bu bölümde, VMware 'de zaten bir RHEL sanal makinesini yüklemiş olduğunuz v
 
 1. Sanal makine ayarlarını açın:
 
-    a.  Sanal makineye yeni bir sanal sabit disk ekleyin. **VHD biçimini** ve **sabit boyutu**seçtiğinizden emin olun.
+    a.  Sanal makineye yeni bir sanal sabit disk ekleyin. **VHD biçimini** ve **sabit boyutu** seçtiğinizden emin olun.
 
     b.  Yükleme ISO dosyasını DVD sürücüsüne ekleyin.
 
@@ -1124,7 +1124,7 @@ Bu bölümde, VMware 'de zaten bir RHEL sanal makinesini yüklemiş olduğunuz v
 
 1. Sanal makineyi başlatın. Yükleme Kılavuzu göründüğünde, önyükleme seçeneklerini yapılandırmak için **Tab** tuşuna basın.
 
-1. `inst.ks=<the location of the kickstart file>`Önyükleme seçeneklerinin sonuna yazın ve **ENTER**tuşuna basın.
+1. `inst.ks=<the location of the kickstart file>`Önyükleme seçeneklerinin sonuna yazın ve **ENTER** tuşuna basın.
 
 1. Yüklemenin bitmesini bekleyin. İşlem tamamlandığında, sanal makine otomatik olarak kapatılır. Linux VHD 'niz artık Azure 'a yüklenmeye hazırdır.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: d6cf0ba06293a073fc8fbe26e2386f1852429002
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: dcfef81f2d7f3413489490d97c143fdec7e11bed
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844004"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499331"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM diskleri ile yönetilen ve yönetilmeyen premium diskler hakkında sık sorulan sorular
 
@@ -151,7 +151,7 @@ Azure disk ayırma, bir yıllık dönem için P30 (1 TiB) ile P80 (32 TiB) aras�
 Ayırmalar, kapasite değil, diskler biçiminde yapılır. Diğer bir deyişle, bir P80 (32 TiB) diski ayırdığınızda tek bir P80 diski alırsınız, daha sonra söz konusu ayırmayı iki küçük P70 (16 TiB) diske bölemez. Kuşkusuz, iki ayrı P70 (16 TiB) disk dahil olmak üzere istediğiniz kadar çok sayıda disk ayırabilirsiniz.
 
 **Azure disk ayırması nasıl uygulanır?**    
-Diskler ayırması, ayrılmış sanal makine (VM) örneklerine benzer bir model izler. Bir sanal makine örneği, bir disk rezervasyonunun farklı SKU 'Lara uygulanamadığından farklılık gösteren fark. VM örnekleri hakkında daha fazla bilgi için bkz. [Azure ayrılmış VM örnekleri ile maliyetleri kaydetme](./linux/prepay-reserved-vm-instances.md) .     
+Diskler ayırması, ayrılmış sanal makine (VM) örneklerine benzer bir model izler. Bir sanal makine örneği, bir disk rezervasyonunun farklı SKU 'Lara uygulanamadığından farklılık gösteren fark. VM örnekleri hakkında daha fazla bilgi için bkz. [Azure ayrılmış VM örnekleri ile maliyetleri kaydetme](./prepay-reserved-vm-instances.md) .     
 
 **Birden çok bölgede Azure diskleri ayırması aracılığıyla satın alınan veri depolama alanını kullanabilir miyim?**    
 Azure diskleri ayırması belirli bir bölge ve SKU (Doğu ABD 2 içinde P30 gibi) için satın alınır ve bu nedenle bu yapılar dışında kullanılamaz. Diğer bölgelerde veya SKU 'Larda disk depolama gereksinimleriniz için her zaman ek bir Azure diskleri ayırması satın alabilirsiniz.    
@@ -304,7 +304,7 @@ Hayır. Yönetilen disklere sahip VM 'Ler için Azure 'dan Azure 'a koruma Azure
 
 **VM 'Leri, yönetilen disklere daha önce şifrelenmiş olan veya daha önce şifrelenen depolama hesaplarında bulunan yönetilmeyen disklere geçirebilir miyim?**
 
-Yes
+Evet
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Yönetilen diskler ve Depolama Hizmeti Şifrelemesi
 
@@ -342,7 +342,7 @@ Evet. Tüm yönetilen anlık görüntüler ve görüntüler otomatik olarak şif
 
 **VM 'Leri daha önce yönetilen disklere şifrelenmiş depolama hesaplarında bulunan yönetilmeyen disklere dönüştürebilir miyim?**
 
-Yes
+Evet
 
 **Yönetilen bir diskten ya da bir anlık görüntüden dışarıya aktarılmış bir VHD mi olacak?**
 

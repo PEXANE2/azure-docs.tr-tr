@@ -8,16 +8,16 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 6b523ac306feef2e4c82b3739096b26158c55fc3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 5c0336b80bee1cd5eb76d0ce3d5f99c7296a8467
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741755"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499773"
 ---
 # <a name="use-the-azure-cli-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Konakta şifrelemeyi kullanarak uçtan uca şifrelemeyi etkinleştirmek için Azure CLı 'yi kullanma
 
-Konakta şifrelemeyi etkinleştirdiğinizde, VM konağında depolanan veriler, REST ve depolama hizmetine şifrelenen akışlara şifrelenir. Konakta şifreleme ve diğer yönetilen disk şifreleme türleri hakkında kavramsal bilgiler için bkz. [VM verileriniz için konak-uçtan uca şifreleme](disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data).
+Konakta şifrelemeyi etkinleştirdiğinizde, VM konağında depolanan veriler, REST ve depolama hizmetine şifrelenen akışlara şifrelenir. Konakta şifreleme ve diğer yönetilen disk şifreleme türleri hakkında kavramsal bilgiler için bkz. [VM verileriniz için konak-uçtan uca şifreleme](../disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data).
 
 ## <a name="restrictions"></a>Kısıtlamalar
 
@@ -33,7 +33,7 @@ Konakta şifrelemeyi etkinleştirdiğinizde, VM konağında depolanan veriler, R
 
 Ayrıca, VM boyutlarını programlı bir şekilde bulabilirsiniz. Programlı olarak nasıl alınacağını öğrenmek için [desteklenen VM boyutlarını bulma](#finding-supported-vm-sizes) bölümüne bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 VM 'niz veya sanal makine ölçek kümeleriniz için konakta şifrelemeyi kullanabilmeniz için, özelliği aboneliğinizde etkinleştirilmiş olarak almanız gerekir. encryptionAtHost@microsoft.comAbonelikleriniz için etkin özelliği sağlamak üzere abonelik kimliklerinizle e-posta gönderin.
 

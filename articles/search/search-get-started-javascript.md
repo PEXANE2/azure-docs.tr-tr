@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 10/26/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 0e1b7aa0eb56d5668b6561b36a0f63e719974573
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 69cef4c17fd17219f0221c509775ad3fd6a80a27
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698905"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498991"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-using-the-javascript-sdk"></a>Hızlı başlangıç: JavaScript SDK 'sını kullanarak Azure Bilişsel Arama dizini oluşturma
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "94698905"
 > * [REST](search-get-started-rest.md)
 
 
-JavaScript 'te bir arama dizini oluşturan, yükleyen ve sorgulayan bir Node.js uygulaması oluşturmak için [Azure bilişsel arama JavaScript/Typscript SDK 'sını](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme) kullanın.
+JavaScript 'te bir arama dizini oluşturan, yükleyen ve sorgulayan bir Node.js uygulaması oluşturmak için [Azure bilişsel arama JavaScript/Typscript SDK 'sını](/javascript/api/overview/azure/search-documents-readme) kullanın.
 
 Bu makalede, uygulamanın adım adım nasıl oluşturulacağı gösterilir. Alternatif olarak, [kaynak kodu ve verileri indirebilir](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/v11) ve uygulamayı komut satırından çalıştırabilirsiniz.
 
@@ -80,7 +80,7 @@ VS Code ve [Tümleşik terminalini](https://code.visualstudio.com/docs/editor/in
     ```
      Lisans dışında, "MıT" olarak ayarlamanız gereken varsayılan değerleri kabul edin. 
 
-3. `@azure/search-documents` [Azure bilişsel arama için JavaScript/TYPSCRIPT SDK](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme)'yı yükler.
+3. `@azure/search-documents` [Azure bilişsel arama için JavaScript/TYPSCRIPT SDK](/javascript/api/overview/azure/search-documents-readme)'yı yükler.
 
     ```cmd
     npm install @azure/search-documents

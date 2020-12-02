@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: konuşmayı metne dönüştürme, konuşmayı metne dönüştürme
-ms.openlocfilehash: f26d896397a950bc2c5f5d1f66dca6a01da045d7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 102289fd233a744952f37568abf77a753953637e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015231"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499654"
 ---
 # <a name="what-is-speech-to-text"></a>Konuşmayı metne dönüştürme nedir?
 
@@ -34,7 +34,7 @@ Giriş olarak ek başvuru metniyle birlikte, konuşmadan metne hizmet, konuşma 
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 Konuşmayı metne kullanmaya başlamak için [hızlı](get-started-speech-to-text.md) başlangıca bakın. Hizmet, [konuşma SDK 'sı](speech-sdk.md), [REST API](rest-speech-to-text.md#pronunciation-assessment-parameters)ve [konuşma CLI](spx-overview.md)aracılığıyla kullanılabilir.
 
@@ -48,7 +48,7 @@ Konuşma SDK 'Sı için örnek kod GitHub ' da kullanılabilir. Bu örnekler, bi
 
 ## <a name="customization"></a>Özelleştirme
 
-Standart konuşma hizmeti modelinin yanı sıra özel modeller de oluşturabilirsiniz. Özelleştirme, konuşma stili, sözlük ve arka plan gürültüsü gibi konuşma tanıma engellerinin üstesinden gelmenize yardımcı olur. [özel konuşma tanıma](how-to-custom-speech.md). Özelleştirme seçenekleri dile/yerel ayara göre farklılık gösterir. desteği doğrulamak için [desteklenen diller](./language-support.md) bölümüne bakın.
+Standart konuşma hizmeti modelinin yanı sıra özel modeller de oluşturabilirsiniz. Özelleştirme, konuşma stili, sözlük ve arka plan gürültüsü gibi konuşma tanıma engellerinin üstesinden gelmenize yardımcı olur. [özel konuşma tanıma](./custom-speech-overview.md). Özelleştirme seçenekleri dile/yerel ayara göre farklılık gösterir. desteği doğrulamak için [desteklenen diller](./language-support.md) bölümüne bakın.
 
 ## <a name="batch-transcription"></a>Toplu iş transkripsiyonu
 

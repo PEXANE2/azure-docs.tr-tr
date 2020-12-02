@@ -5,12 +5,12 @@ author: georgewallace
 ms.author: gwallace
 ms.date: 11/27/2018
 ms.topic: quickstart
-ms.openlocfilehash: 0c6bb8ba680612acbd497598b3e56efa5c28244a
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: c81b53b68c689f4b890d2ff628f38b734aea63dc
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146254"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499892"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>Hızlı başlangıç: Merhaba Dünya uygulamasını Service Fabric Mesh’e dağıtma
 
@@ -45,7 +45,7 @@ az group create --name myResourceGroup --location eastus
 >[!NOTE]
 > 2 Kasım 2020 ' den itibaren geçerli olan Docker Hub 'a yönelik anonim ve kimliği doğrulanmış istekler, Docker Ücretsiz plan hesaplarından [uygulanır](https://docs.docker.com/docker-hub/download-rate-limit/) ve IP adresi tarafından zorlanır. 
 > 
-> Bu şablonlar Docker Hub 'ından ortak görüntüleri kullanır. Oran sınırlı olabileceğini lütfen unutmayın. Daha ayrıntılı bilgi için bkz. [Docker Hub Ile kimlik doğrulama](https://docs.microsoft.com/azure/container-registry/buffer-gate-public-content#authenticate-with-docker-hub).
+> Bu şablonlar Docker Hub 'ından ortak görüntüleri kullanır. Oran sınırlı olabileceğini lütfen unutmayın. Daha ayrıntılı bilgi için bkz. [Docker Hub Ile kimlik doğrulama](../container-registry/buffer-gate-public-content.md#authenticate-with-docker-hub).
 
 `az mesh deployment create` komutunu kullanarak kaynak grubunda uygulamanızı oluşturun.  Aşağıdakileri çalıştırın:
 

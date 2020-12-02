@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: a53f947eb2a44cc8773be8ee2b2bd03ca899be22
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 7c250f1351d83d213c5c7af5b00d7a648c5d8bc6
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95521011"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499671"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure Depolama Gezgini sürüm notları
 
@@ -559,7 +559,7 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
         
 ### <a name="new"></a>Yeni
 
-* Artık Depolama Gezgini, [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json)aracılığıyla blob verilerinize erişmek için kullanabilirsiniz. Oturum açtıysanız ve Depolama Gezgini depolama hesabınız için anahtarları alamadıysanız, verilerinizle etkileşim kurarken kimlik doğrulamak için bir OAuth belirteci kullanılır.
+* Artık Depolama Gezgini, [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)aracılığıyla blob verilerinize erişmek için kullanabilirsiniz. Oturum açtıysanız ve Depolama Gezgini depolama hesabınız için anahtarları alamadıysanız, verilerinizle etkileşim kurarken kimlik doğrulamak için bir OAuth belirteci kullanılır.
 * Depolama Gezgini artık ADLS 2. Storage hesaplarını desteklemektedir. Depolama Gezgini, bir depolama hesabı için hiyerarşik ad alanının etkinleştirildiğini algıladığında, depolama hesabınızın adının yanında "(ADLS 2. Önizleme)" görürsünüz. Depolama Gezgini, oturum açtığınızda hiyerarşik ad alanının etkinleştirilip etkinleştirilmeyeceğini algılayabilir veya depolama hesabınızı ad ve anahtar ile iliştiriyor demektir. ADLS 2. depolama hesapları için Depolama Gezgini şu şekilde kullanabilirsiniz:
   * Kapsayıcılar oluşturma ve silme
   * Kapsayıcı özelliklerini ve izinlerini yönetme (sol taraftaki)
@@ -628,7 +628,7 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
         
 ### <a name="new"></a>Yeni
 
-* Artık Depolama Gezgini, [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json)aracılığıyla blob verilerinize erişmek için kullanabilirsiniz. Oturum açtıysanız ve Depolama Gezgini depolama hesabınız için anahtarları alamadıysanız, verilerinizle etkileşim kurarken kimlik doğrulamak için bir OAuth belirteci kullanılır.
+* Artık Depolama Gezgini, [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)aracılığıyla blob verilerinize erişmek için kullanabilirsiniz. Oturum açtıysanız ve Depolama Gezgini depolama hesabınız için anahtarları alamadıysanız, verilerinizle etkileşim kurarken kimlik doğrulamak için bir OAuth belirteci kullanılır.
 * Depolama Gezgini artık ADLS 2. Storage hesaplarını desteklemektedir. Depolama Gezgini, bir depolama hesabı için hiyerarşik ad alanının etkinleştirildiğini algıladığında, depolama hesabınızın adının yanında "(ADLS 2. Önizleme)" görürsünüz. Depolama Gezgini, oturum açtığınızda hiyerarşik ad alanının etkinleştirilip etkinleştirilmeyeceğini algılayabilir veya depolama hesabınızı ad ve anahtar ile iliştiriyor demektir. ADLS 2. depolama hesapları için Depolama Gezgini şu şekilde kullanabilirsiniz:
   * Kapsayıcılar oluşturma ve silme
   * Kapsayıcı özelliklerini ve izinlerini yönetme (sol taraftaki)
@@ -683,7 +683,7 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
 
 ### <a name="new"></a>Yeni
 
-* Artık Depolama Gezgini, [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json)aracılığıyla blob verilerinize erişmek için kullanabilirsiniz. Oturum açtıysanız ve Depolama Gezgini depolama hesabınız için anahtarları alamadıysanız, verilerinizle etkileşim kurarken kimlik doğrulamak için bir OAuth belirteci kullanılır.
+* Artık Depolama Gezgini, [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)aracılığıyla blob verilerinize erişmek için kullanabilirsiniz. Oturum açtıysanız ve Depolama Gezgini depolama hesabınız için anahtarları alamadıysanız, verilerinizle etkileşim kurarken kimlik doğrulamak için bir OAuth belirteci kullanılır.
 * Depolama Gezgini artık ADLS 2. Storage hesaplarını desteklemektedir. Depolama Gezgini, bir depolama hesabı için hiyerarşik ad alanının etkinleştirildiğini algıladığında, depolama hesabınızın adının yanında "(ADLS 2. Önizleme)" görürsünüz. Depolama Gezgini, oturum açtığınızda hiyerarşik ad alanının etkinleştirilip etkinleştirilmeyeceğini algılayabilir veya depolama hesabınızı ad ve anahtar ile iliştiriyor demektir. ADLS 2. depolama hesapları için Depolama Gezgini şu şekilde kullanabilirsiniz:
   * Kapsayıcılar oluşturma ve silme
   * Kapsayıcı özelliklerini ve izinlerini yönetme (sol taraftaki)

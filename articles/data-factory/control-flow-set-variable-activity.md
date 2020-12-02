@@ -7,16 +7,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/07/2020
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
-ms.openlocfilehash: a0b5fa16658d3e354bcb4f90ad998997fc844a84
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3c1fae2cbf2a1ba8b71dcbc8f6639bda4765f5c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83832801"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498413"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Azure Data Factory değişken etkinliğini ayarla
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -27,11 +27,11 @@ Bir Data Factory işlem hattında tanımlanmış dize, bool veya dizi türünde 
 
 Özellik | Açıklama | Gerekli
 -------- | ----------- | --------
-name | İşlem hattının etkinlik adı | evet
+name | İşlem hattının etkinlik adı | yes
 açıklama | Etkinliğin ne yaptığını açıklayan metin | hayır
-tür | **SetVariable** olarak ayarlanmalıdır | evet
-değer | Değişkenin atandığı dize sabiti veya ifade nesnesi değeri | evet
-variableName | Bu etkinlik tarafından ayarlanan değişkenin adı | evet
+tür | **SetVariable** olarak ayarlanmalıdır | yes
+değer | Değişkenin atandığı dize sabiti veya ifade nesnesi değeri | yes
+variableName | Bu etkinlik tarafından ayarlanan değişkenin adı | yes
 
 ## <a name="incrementing-a-variable"></a>Bir değişkeni artırma
 

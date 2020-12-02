@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: 8b3212dd7e1544d734c0f409bd4bcdf8ec22fbc2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 4e914b7b49393964f17cc6d9515cb2f4a3bebd2e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147606"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499994"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Azure IoT Hub SDK'larını anlama ve kullanma
 
@@ -53,6 +53,14 @@ Microsoft Azure IoT cihaz SDK 'Ları, Azure IoT Hub hizmetleri tarafından yöne
 * [Kaynak kod](https://github.com/Azure/azure-iot-sdk-csharp)
 * [API başvurusu](/dotnet/api/microsoft.azure.devices?view=azure-dotnet)
 * [Modül başvurusu](/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)
+
+
+Katıştırılmış C için Azure IoT Hub cihaz SDK 'Sı (ANSI C-C99):
+* [Katıştırılmış C SDK 'sını oluşturma](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot#build)
+* [Kaynak kod](https://github.com/Azure/azure-sdk-for-c)
+* Kısıtlanmış cihazlar için [Boyut grafiği](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot#size-chart) .
+* [API başvurusu](https://azuresdkdocs.blob.core.windows.net/$web/c/docs/1.0.0/index.html)
+
 
 C için Azure IoT Hub cihaz SDK 'Sı (ANSI C-C99):
 

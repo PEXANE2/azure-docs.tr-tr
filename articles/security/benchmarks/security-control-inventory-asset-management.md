@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7a5cd7a6019451b27b509aa7f486540c04c29ee2
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 464439516ee86d2fb6f900c3fcaf179095192acf
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412655"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498889"
 ---
 # <a name="security-control-inventory-and-asset-management"></a>Güvenlik denetimi: envanter ve varlık yönetimi
 
@@ -76,7 +76,7 @@ Abonelikleriniz içinde oluşturulabilecek kaynak türlerine kısıtlamalar koym
 
 Azure Kaynak Grafiği 'ni kullanarak aboneliklerinde kaynakları sorgulama/bulma.  Ortamda bulunan tüm Azure kaynaklarının onaylandığından emin olun.
 
-- [Azure Ilkesini yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
+- [Azure İlkesi'ni yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Azure Graph ile sorgu oluşturma](../../governance/resource-graph/first-query-portal.md)
 
@@ -100,7 +100,7 @@ Sanal makinelerde yüklü olan tüm yazılımları belirlemek için Azure Güven
 
 - [Dosya bütünlüğü Izlemeyi kullanma](../../security-center/security-center-file-integrity-monitoring.md)
 
-- [Azure Değişiklik İzleme anlama](../../automation/change-tracking.md)
+- [Azure Değişiklik İzleme anlama](../../automation/change-tracking/overview.md)
 
 - [Azure sanal makine envanterini etkinleştirme](../../automation/automation-tutorial-installed-software.md)
 
@@ -122,7 +122,7 @@ Azure Güvenlik Merkezi Uyarlamalı uygulama denetimlerini kullanarak yalnızca 
 
 Ortamınızda sağlayabileceğiniz hizmetleri kısıtlamak için Azure Ilkesini kullanın.
 
-- [Azure Ilkesini yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
+- [Azure İlkesi'ni yapılandırma ve yönetme](../../governance/policy/tutorials/create-and-manage.md)
 
 - [Azure Ilkesiyle belirli bir kaynak türünü reddetme](../../governance/policy/samples/index.md)
 

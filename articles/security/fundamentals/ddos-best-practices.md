@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
-ms.openlocfilehash: 435cb1d52b5505f4f29bd0c31986a1f7f72208fd
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: e298cb0d1a2c510a096f8ead03f8af7e39c206a8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412876"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498940"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS koruması-dayanıklı çözümler tasarlama
 
@@ -54,7 +54,7 @@ Bir uygulamanın, uygulamanın kendisi için hedeflenen bir hizmet reddine yetec
 
 Derinlemesine savunma 'nın arkasındaki fikir, farklı savunma stratejileri kullanarak riskleri yönetmenizde yarar vardır. Bir uygulamadaki güvenlik savunmaları katmanlama, başarılı bir saldırı olasılığını azaltır. Azure platformunun yerleşik yeteneklerini kullanarak uygulamalarınız için güvenli tasarımlar uygulamanızı öneririz.
 
-Örneğin, saldırı riski uygulamanın boyutuyla ( *yüzey alanı* ) artar. Açık IP adresi alanını ve yük dengeleyiciler üzerinde gerekli olmayan dinleme bağlantı noktalarını ([Azure Load Balancer](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) ve [Azure Application Gateway](../../application-gateway/application-gateway-create-probe-portal.md)) kapatmak için bir onay listesi kullanarak yüzey alanını azaltabilirsiniz. [Ağ güvenlik grupları (NSG 'ler)](../../virtual-network/network-security-groups-overview.md) , saldırı yüzeyini azaltmak için başka bir yoldur.
+Örneğin, saldırı riski uygulamanın boyutuyla (*yüzey alanı*) artar. Açık IP adresi alanını ve yük dengeleyiciler üzerinde gerekli olmayan dinleme bağlantı noktalarını ([Azure Load Balancer](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) ve [Azure Application Gateway](../../application-gateway/application-gateway-create-probe-portal.md)) kapatmak için bir onay listesi kullanarak yüzey alanını azaltabilirsiniz. [Ağ güvenlik grupları (NSG 'ler)](../../virtual-network/network-security-groups-overview.md) , saldırı yüzeyini azaltmak için başka bir yoldur.
 Uygulama yapısının doğal bir uzantısı olarak güvenlik kuralları oluşturma ve ağ güvenliğini yapılandırma karmaşıklığını en aza indirmek için [hizmet etiketlerini](../../virtual-network/network-security-groups-overview.md#service-tags) ve [uygulama güvenlik gruplarını](../../virtual-network/network-security-groups-overview.md#application-security-groups) kullanabilirsiniz.
 
 Mümkün olduğunda Azure hizmetlerini bir [Sanal ağda](../../virtual-network/virtual-networks-overview.md) dağıtmanız gerekir. Bu uygulama, hizmet kaynaklarının özel IP adresleri üzerinden iletişim kurmasına izin verir. Bir sanal ağdan gelen Azure hizmet trafiği, varsayılan olarak kaynak IP adresleri olarak genel IP adreslerini kullanır. [Hizmet uç noktalarının](../../virtual-network/virtual-network-service-endpoints-overview.md) kullanılması, hizmet trafiğini bir sanal ağdan Azure hizmetine ERIŞIRKEN kaynak IP adresleri olarak sanal ağ özel adreslerini kullanacak şekilde geçer.
@@ -97,7 +97,7 @@ DDoS koruma standardı, DDoS saldırısı süresince [Azure izleyici](../../azur
 
 ##### <a name="ddos-mitigation-policies"></a>DDoS risk azaltma ilkeleri
 
-Azure Portal ölçümleri **İzle** ' yi seçin  >  **Metrics**. **Ölçümler** bölmesinde, kaynak grubunu seçin, **ortak IP adresi** kaynak türünü SEÇIN ve Azure genel IP adresinizi seçin. DDoS ölçümleri **kullanılabilir ölçümler** bölmesinde görünür.
+Azure Portal ölçümleri **İzle**' yi seçin  >  **Metrics**. **Ölçümler** bölmesinde, kaynak grubunu seçin, **ortak IP adresi** kaynak türünü SEÇIN ve Azure genel IP adresinizi seçin. DDoS ölçümleri **kullanılabilir ölçümler** bölmesinde görünür.
 
 DDoS koruması standardı, korumalı kaynağın her genel IP 'si için, DDoS özellikli olan sanal ağdaki üç etkin Azaltma ilkesi (TCP SYN, TCP ve UDP) uygular. **DDoS risk azaltma tetiklenecek ölçüm gelen paketleri** seçerek ilke eşiklerini görüntüleyebilirsiniz.
 
@@ -113,7 +113,7 @@ Genel IP adresi saldırı altındaysa, DDoS koruması için **DDoS saldırısın
 
 Bu ölçüm üzerinde bir uyarı yapılandırmanızı öneririz. Daha sonra, genel IP adresiniz üzerinde gerçekleştirilen etkin bir DDoS risk azaltma olduğunda size bildirim verilecektir.
 
-Daha fazla bilgi için, [Azure Portal kullanarak Azure DDoS koruması standardını yönetme](../../virtual-network/manage-ddos-protection.md)makalesine bakın.
+Daha fazla bilgi için, [Azure Portal kullanarak Azure DDoS koruması standardını yönetme](../../ddos-protection/manage-ddos-protection.md)makalesine bakın.
 
 #### <a name="web-application-firewall-for-resource-attacks"></a>Kaynak saldırıları için Web uygulaması güvenlik duvarı
 
@@ -179,7 +179,7 @@ DDoS yanıt ekibiniz için, hizmet kullanılabilirliği ve süreklilik planlaman
 
 ### <a name="alerts-during-an-attack"></a>Saldırı sırasında uyarılar
 
-Azure DDoS koruması standardı, herhangi bir kullanıcı müdahalesi olmadan DDoS saldırılarını tanımlar ve azaltır. Korunan genel IP için etkin bir risk azaltma olduğunda bildirim almak için **DDoS saldırısının altındaki** ölçüm üzerinde [bir uyarı yapılandırabilirsiniz](../../virtual-network/manage-ddos-protection.md) . Saldırının ölçeğini, bırakılmakta olan trafiği ve diğer ayrıntıları anlamak için diğer DDoS ölçümleri için uyarı oluşturmayı tercih edebilirsiniz.
+Azure DDoS koruması standardı, herhangi bir kullanıcı müdahalesi olmadan DDoS saldırılarını tanımlar ve azaltır. Korunan genel IP için etkin bir risk azaltma olduğunda bildirim almak için **DDoS saldırısının altındaki** ölçüm üzerinde [bir uyarı yapılandırabilirsiniz](../../ddos-protection/manage-ddos-protection.md) . Saldırının ölçeğini, bırakılmakta olan trafiği ve diğer ayrıntıları anlamak için diğer DDoS ölçümleri için uyarı oluşturmayı tercih edebilirsiniz.
 
 #### <a name="when-to-contact-microsoft-support"></a>Microsoft desteği 'ne ne zaman iletişim kura
 
@@ -260,7 +260,7 @@ Bu başvuru mimarisinde, [Azure HDInsight kümesi](../../hdinsight/index.yml)Iç
 
 Bu mimaride, Internet 'ten HDInsight kümesine giden trafik, HDInsight ağ geçidi yük dengeleyicisiyle ilişkili genel IP 'ye yönlendirilir. Ağ Geçidi yük dengeleyici daha sonra trafiği baş düğümlere veya çalışan düğümlerine doğrudan gönderir. HDInsight sanal ağında DDoS koruması standardı etkinleştirildiğinden, sanal ağdaki tüm genel IP 'Ler 3. ve 4. katman için DDoS koruması 'nı alır. Bu başvuru mimarisi, N katmanlı ve çok bölgeli başvuru mimarileri ile birleştirilebilir.
 
-Bu başvuru mimarisi hakkında daha fazla bilgi için Azure [sanal ağ kullanarak Azure HDInsight 'ı genişletme](../../hdinsight/hdinsight-plan-virtual-network-deployment.md?toc=%252fazure%252fvirtual-network%252ftoc.json) bölümüne bakın.
+Bu başvuru mimarisi hakkında daha fazla bilgi için Azure [sanal ağ kullanarak Azure HDInsight 'ı genişletme](../../hdinsight/hdinsight-plan-virtual-network-deployment.md?toc=%2fazure%2fvirtual-network%2ftoc.json) bölümüne bakın.
 
 
 > [!NOTE]
@@ -270,4 +270,4 @@ Bu başvuru mimarisi hakkında daha fazla bilgi için Azure [sanal ağ kullanara
 
 * [Bulutta paylaşılan sorumluluk](shared-responsibility.md)
 * [Azure DDoS koruması ürün sayfası](https://azure.microsoft.com/services/ddos-protection/)
-* [Azure DDoS koruması belgeleri](../../virtual-network/ddos-protection-overview.md)
+* [Azure DDoS koruması belgeleri](../../ddos-protection/ddos-protection-overview.md)

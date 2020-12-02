@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 565b781b5015f82cafe4e47be2170f2327660821
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8f60c83417e9c614ca30f140e6acbbf08e5643cf
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91971600"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500657"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Bir Linux VM 'sine veri diski eklemek için portalı kullanma 
 Bu makalede, Azure portal aracılığıyla bir Linux sanal makinesine hem yeni hem de mevcut diskleri nasıl ekleyebileceğiniz gösterilmektedir. Ayrıca [, Azure Portal bir WINDOWS sanal makinesine veri diski ekleyebilirsiniz](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -20,19 +20,19 @@ Bu makalede, Azure portal aracılığıyla bir Linux sanal makinesine hem yeni h
 VM 'nize disk iliştirmadan önce şu ipuçlarını gözden geçirin:
 
 * Sanal makinenin boyutu, ekleyebileceğiniz veri disklerinin sayısını denetler. Ayrıntılar için bkz. [sanal makineler Için boyutlar](../sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-* Sanal makinelere eklenen diskler aslında. vhd dosyaları Azure 'da depolanır. Ayrıntılar için bkz. [yönetilen disklere giriş](../managed-disks-overview.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json).
+* Sanal makinelere eklenen diskler aslında. vhd dosyaları Azure 'da depolanır. Ayrıntılar için bkz. [yönetilen disklere giriş](../managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * Diski iliştirdikten sonra, [Yeni diski bağlamak Için LINUX VM 'ye bağlanmanız](#connect-to-the-linux-vm-to-mount-the-new-disk)gerekir.
 
 
 ## <a name="find-the-virtual-machine"></a>Sanal makineyi bul
-1. VM 'yi bulmak için [Azure Portal](https://portal.azure.com/) gidin. **Sanal makineleri**arayın ve seçin.
+1. VM 'yi bulmak için [Azure Portal](https://portal.azure.com/) gidin. **Sanal makineleri** arayın ve seçin.
 2. Listeden VM 'yi seçin.
-3. **Sanal makineler** sayfasında, **Ayarlar**altında **diskler**' i seçin.
+3. **Sanal makineler** sayfasında, **Ayarlar** altında **diskler**' i seçin.
 
 
 ## <a name="attach-a-new-disk"></a>Yeni Disk Ekle
 
-1. **Diskler** bölmesinde, **veri diskleri**altında **Yeni bir disk oluştur ve Ekle**' yi seçin.
+1. **Diskler** bölmesinde, **veri diskleri** altında **Yeni bir disk oluştur ve Ekle**' yi seçin.
 
 1. Yönetilen diskiniz için bir ad girin. Varsayılan ayarları gözden geçirin ve **depolama türü**, **Boyut (gib)**, **şifreleme** ve **ana bilgisayar önbelleğe almayı** gerektiği şekilde güncelleştirin.
    
@@ -43,7 +43,7 @@ VM 'nize disk iliştirmadan önce şu ipuçlarını gözden geçirin:
 
 
 ## <a name="attach-an-existing-disk"></a>Var olan bir diski ekleme
-1. **Diskler** bölmesinde, **veri diskleri**altında, **var olan diskleri Ekle**' yi seçin.
+1. **Diskler** bölmesinde, **veri diskleri** altında, **var olan diskleri Ekle**' yi seçin.
 1. **Disk adı** ' nın açılan menüsüne tıklayın ve kullanılabilir yönetilen diskler listesinden bir disk seçin. 
 
 1. Mevcut yönetilen diski eklemek ve VM yapılandırmasını güncelleştirmek için **Kaydet** ' e tıklayın:
@@ -203,7 +203,7 @@ Bazı Linux çekirdekler, diskteki kullanılmayan blokları atmak için kesme/e�
 
 Linux sanal makinenizde KıRPMA desteğini etkinleştirmenin iki yolu vardır. Her zamanki gibi, önerilen yaklaşım için dağıtıma başvurun:
 
-* `discard` */Etc/fstab*içindeki bağlama seçeneğini kullanın, örneğin:
+* `discard` */Etc/fstab* içindeki bağlama seçeneğini kullanın, örneğin:
 
     ```bash
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   xfs   defaults,discard   1   2

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: b0871b6365d78129cd6fdaec82fee14e2b0a7a4b
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 4fb20b221858c4717d67e0777afbe5c067c00a69
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94693452"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499620"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Azure Bilişsel Arama veri şifrelemesi için müşteri tarafından yönetilen anahtarları yapılandırma
 
@@ -66,7 +66,7 @@ Portal, PowerShell veya Azure CLı komutlarını kullanarak her iki özelliği d
 
 1. **Genel bakış** sayfasında, **temel parçalar** altında, **geçici silme** ve **Temizleme korumasını** etkinleştirin.
 
-### <a name="using-powershell"></a>PowerShell’i kullanma
+### <a name="using-powershell"></a>PowerShell'i kullanma
 
 1. `Connect-AzAccount`Azure kimlik bilgilerinizi kurmak için ' i çalıştırın.
 
@@ -96,7 +96,7 @@ Portal, PowerShell veya Azure CLı komutlarını kullanarak her iki özelliği d
 
 ### <a name="using-azure-cli"></a>Azure CLI’yı kullanma
 
-+ [Azure CLI yüklemeniz](https://docs.microsoft.com/cli/azure/install-azure-cli)varsa, gerekli özellikleri etkinleştirmek için aşağıdaki komutu çalıştırabilirsiniz.
++ [Azure CLI yüklemeniz](/cli/azure/install-azure-cli)varsa, gerekli özellikleri etkinleştirmek için aşağıdaki komutu çalıştırabilirsiniz.
 
    ```azurecli-interactive
    az keyvault update -n <vault_name> -g <resource_group> --enable-soft-delete --enable-purge-protection
@@ -173,7 +173,7 @@ Erişim izinleri belirli bir zamanda iptal edilebilir. Bu Anahtar Kasası 'nı k
 
 ## <a name="5---encrypt-content"></a>5-içerik şifreleyin
 
-Bir dizin, veri kaynağı, Beceri, Dizin Oluşturucu veya eş anlamlı eşleme üzerinde müşteri tarafından yönetilen bir anahtar eklemek için [arama REST API](https://docs.microsoft.com/rest/api/searchservice/) veya SDK 'sını kullanmanız gerekir. Portal, eş anlamlı haritalar veya şifreleme özellikleri sunmaz. Geçerli bir API dizinleri kullandığınızda, veri kaynakları, becerileri, Dizin oluşturucular ve eş anlamlı eşlemeler en üst düzey bir **encryptionKey** özelliğini destekler.
+Bir dizin, veri kaynağı, Beceri, Dizin Oluşturucu veya eş anlamlı eşleme üzerinde müşteri tarafından yönetilen bir anahtar eklemek için [arama REST API](/rest/api/searchservice/) veya SDK 'sını kullanmanız gerekir. Portal, eş anlamlı haritalar veya şifreleme özellikleri sunmaz. Geçerli bir API dizinleri kullandığınızda, veri kaynakları, becerileri, Dizin oluşturucular ve eş anlamlı eşlemeler en üst düzey bir **encryptionKey** özelliğini destekler.
 
 Bu örnek, Azure Key Vault ve Azure Active Directory değerleri ile REST API kullanır:
 
@@ -196,7 +196,7 @@ Bu örnek, Azure Key Vault ve Azure Active Directory değerleri ile REST API kul
 
 ## <a name="example-index-encryption"></a>Örnek: Dizin şifreleme
 
-[Create INDEX Azure Bilişsel Arama REST API](https://docs.microsoft.com/rest/api/searchservice/create-index)kullanarak şifrelenmiş bir dizin oluşturun. `encryptionKey`Kullanılacak şifreleme anahtarını belirtmek için özelliğini kullanın.
+[Create INDEX Azure Bilişsel Arama REST API](/rest/api/searchservice/create-index)kullanarak şifrelenmiş bir dizin oluşturun. `encryptionKey`Kullanılacak şifreleme anahtarını belirtmek için özelliğini kullanın.
 > [!Note]
 > Bu Anahtar Kasası ayrıntılarının hiçbiri gizli kabul edilmez ve Azure portal ' deki ilgili Azure Key Vault anahtarı sayfasına göz atarak kolayca alınabilir.
 
@@ -239,7 +239,7 @@ Artık dizin oluşturma isteğini gönderebilir ve sonra dizini normal olarak ku
 
 ### <a name="synonym-map-encryption"></a>Eş anlamlı eşleme şifrelemesi
 
-[Eş anlamlı eşleme oluşturma Azure Bilişsel Arama REST API](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map)kullanarak şifrelenmiş bir eş anlamlı eşleme oluşturun. `encryptionKey`Kullanılacak şifreleme anahtarını belirtmek için özelliğini kullanın.
+[Eş anlamlı eşleme oluşturma Azure Bilişsel Arama REST API](/rest/api/searchservice/create-synonym-map)kullanarak şifrelenmiş bir eş anlamlı eşleme oluşturun. `encryptionKey`Kullanılacak şifreleme anahtarını belirtmek için özelliğini kullanın.
 
 ```json
 {
@@ -263,7 +263,7 @@ Artık eş anlamlı harita oluşturma isteğini gönderebilir ve normal olarak k
 
 ## <a name="example-data-source-encryption"></a>Örnek: veri kaynağı şifrelemesi
 
-[Veri kaynağını oluştur (Azure Bilişsel Arama REST API)](https://docs.microsoft.com/rest/api/searchservice/create-data-source)kullanarak şifrelenmiş bir veri kaynağı oluşturun. `encryptionKey`Kullanılacak şifreleme anahtarını belirtmek için özelliğini kullanın.
+[Veri kaynağını oluştur (Azure Bilişsel Arama REST API)](/rest/api/searchservice/create-data-source)kullanarak şifrelenmiş bir veri kaynağı oluşturun. `encryptionKey`Kullanılacak şifreleme anahtarını belirtmek için özelliğini kullanın.
 
 ```json
 {
@@ -289,7 +289,7 @@ Artık veri kaynağı oluşturma isteğini gönderebilir ve normal olarak kullan
 
 ## <a name="example-skillset-encryption"></a>Örnek: beceri şifreleme
 
-[Create beceri Azure Bilişsel Arama REST API](https://docs.microsoft.com/rest/api/searchservice/create-skillset)kullanarak şifrelenmiş bir beceri oluşturun. `encryptionKey`Kullanılacak şifreleme anahtarını belirtmek için özelliğini kullanın.
+[Create beceri Azure Bilişsel Arama REST API](/rest/api/searchservice/create-skillset)kullanarak şifrelenmiş bir beceri oluşturun. `encryptionKey`Kullanılacak şifreleme anahtarını belirtmek için özelliğini kullanın.
 
 ```json
 {
@@ -315,7 +315,7 @@ Artık beceri oluşturma isteğini gönderebilir ve normal olarak kullanmaya ba�
 
 ## <a name="example-indexer-encryption"></a>Örnek: Dizin Oluşturucu şifreleme
 
-[Create Indexer Create Azure Bilişsel Arama REST API](https://docs.microsoft.com/rest/api/searchservice/create-indexer)kullanarak şifrelenmiş bir Dizin Oluşturucu oluşturun. `encryptionKey`Kullanılacak şifreleme anahtarını belirtmek için özelliğini kullanın.
+[Create Indexer Create Azure Bilişsel Arama REST API](/rest/api/searchservice/create-indexer)kullanarak şifrelenmiş bir Dizin Oluşturucu oluşturun. `encryptionKey`Kullanılacak şifreleme anahtarını belirtmek için özelliğini kullanın.
 
 ```json
 {

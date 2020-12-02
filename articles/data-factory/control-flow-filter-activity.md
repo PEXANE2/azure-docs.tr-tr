@@ -3,26 +3,26 @@ title: Azure Data Factory etkinliği filtrele
 description: Filtre etkinliği girdileri filtreler.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/04/2018
-ms.openlocfilehash: 2c8ada22b4492bef0239b6f811d5a7bd58e58510
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 650d55ede8e6099252858c9118c8705f59ab6780
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417217"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498549"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Azure Data Factory etkinliği filtrele
 Bir giriş dizisine filtre ifadesi uygulamak için bir işlem hattındaki filtre etkinliklerini kullanabilirsiniz. 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 ```json
 {
@@ -40,9 +40,9 @@ Bir giriş dizisine filtre ifadesi uygulamak için bir işlem hattındaki filtre
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
 name | `Filter`Etkinliğin adı. | Dize | Evet
-tür | **Filter**olarak ayarlanmalıdır. | Dize | Evet
-koşul | Girişi filtrelemek için kullanılacak koşul. | Expression | Evet
-öğeler | Filtrenin uygulanması gereken giriş dizisi. | Expression | Evet
+tür | **Filter** olarak ayarlanmalıdır. | Dize | Evet
+koşul | Girişi filtrelemek için kullanılacak koşul. | İfade | Evet
+öğeler | Filtrenin uygulanması gereken giriş dizisi. | İfade | Evet
 
 ## <a name="example"></a>Örnek
 

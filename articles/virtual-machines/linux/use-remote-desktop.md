@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: how-to
 ms.date: 09/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 05241715663ac2cbb90e16f345398f863541e6ed
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: efcfb2fd431dd9626ddcf918127964672b0e5ce0
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972212"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500487"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Azure 'da bir Linux VM 'sine bağlanmak için Uzak Masaüstü 'Nü yüklemek ve yapılandırmak
 Azure 'daki Linux sanal makineleri (VM 'Ler), genellikle güvenli bir kabuk (SSH) bağlantısı kullanılarak komut satırından yönetilir. Linux 'ta yeni veya hızlı sorun giderme senaryolarında, uzak masaüstü kullanımı daha kolay olabilir. Bu makalede, Kaynak Yöneticisi dağıtım modelini kullanarak Linux sanal ağınız için masaüstü ortamının ([Xfce](https://www.xfce.org)) ve uzak masaüstü 'nün ([xrdp](http://xrdp.org)) nasıl yükleneceği ve yapılandırılacağı açıklanır.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu makalede, Azure 'da mevcut bir Ubuntu 18,04 LTS sanal makinesi gereklidir. Bir VM oluşturmanız gerekiyorsa aşağıdaki yöntemlerden birini kullanın:
 
 - [Azure CLI](quick-create-cli.md)
@@ -36,7 +36,7 @@ Azure 'daki Linux VM 'lerinin çoğunda varsayılan olarak bir masaüstü ortam�
 
 Aşağıdaki örnek, bir Ubuntu 18,04 LTS sanal makinesine basit [Xfce4](https://www.xfce.org/) masaüstü ortamı 'nı yükleme. Diğer dağıtımlara yönelik komutlar biraz farklılık gösterir ( `yum` Örneğin, Red Hat Enterprise Linux yüklemek ve uygun `selinux` kuralları yapılandırmak ya da `zypper` SUSE 'e yüklemek için kullanmak için kullanın).
 
-İlk olarak, sanal makinenize SSH. Aşağıdaki örnek, *azureuser*Kullanıcı adı ile *myvm.westus.cloudapp.Azure.com* adlı sanal makineye bağlanır. Kendi değerlerinizi kullanın:
+İlk olarak, sanal makinenize SSH. Aşağıdaki örnek, *azureuser* Kullanıcı adı ile *myvm.westus.cloudapp.Azure.com* adlı sanal makineye bağlanır. Kendi değerlerinizi kullanın:
 
 ```bash
 ssh azureuser@myvm.westus.cloudapp.azure.com
@@ -73,7 +73,7 @@ sudo service xrdp restart
 
 
 ## <a name="set-a-local-user-account-password"></a>Yerel Kullanıcı hesabı parolası ayarlama
-VM 'nizi oluştururken Kullanıcı hesabınız için bir parola oluşturduysanız, bu adımı atlayın. Yalnızca SSH anahtarı kimlik doğrulaması kullanıyorsanız ve yerel hesap parolası ayarlanmamışsa, sanal makinenizde oturum açmak için xrdp kullanmadan önce bir parola belirtin. xrdp, kimlik doğrulaması için SSH anahtarlarını kabul edemez. Aşağıdaki örnek, *azureuser*Kullanıcı hesabı için bir parola belirtir:
+VM 'nizi oluştururken Kullanıcı hesabınız için bir parola oluşturduysanız, bu adımı atlayın. Yalnızca SSH anahtarı kimlik doğrulaması kullanıyorsanız ve yerel hesap parolası ayarlanmamışsa, sanal makinenizde oturum açmak için xrdp kullanmadan önce bir parola belirtin. xrdp, kimlik doğrulaması için SSH anahtarlarını kabul edemez. Aşağıdaki örnek, *azureuser* Kullanıcı hesabı için bir parola belirtir:
 
 ```bash
 sudo passwd azureuser
@@ -84,9 +84,9 @@ sudo passwd azureuser
 
 
 ## <a name="create-a-network-security-group-rule-for-remote-desktop-traffic"></a>Uzak Masaüstü trafiği için bir ağ güvenlik grubu kuralı oluşturma
-Uzak Masaüstü trafiğinin Linux VM 'nize erişmesine izin vermek için, 3389 numaralı bağlantı noktasında sanal makinenize ulaşmasını sağlayan bir ağ güvenlik grubu kuralı oluşturulması gerekir. Ağ güvenlik grubu kuralları hakkında daha fazla bilgi için bkz. [ağ güvenlik grubu nedir?](../../virtual-network/network-security-groups-overview.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) Ayrıca [, bir ağ güvenlik grubu kuralı oluşturmak için Azure Portal de kullanabilirsiniz](../windows/nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Uzak Masaüstü trafiğinin Linux VM 'nize erişmesine izin vermek için, 3389 numaralı bağlantı noktasında sanal makinenize ulaşmasını sağlayan bir ağ güvenlik grubu kuralı oluşturulması gerekir. Ağ güvenlik grubu kuralları hakkında daha fazla bilgi için bkz. [ağ güvenlik grubu nedir?](../../virtual-network/network-security-groups-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Ayrıca [, bir ağ güvenlik grubu kuralı oluşturmak için Azure Portal de kullanabilirsiniz](../windows/nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Aşağıdaki örnek, *3389*numaralı bağlantı noktasında [az VM Open-Port](/cli/azure/vm#az-vm-open-port) ile bir ağ güvenlik grubu kuralı oluşturur. Sanal makinenize SSH oturumundan değil, Azure CLı 'dan aşağıdaki ağ güvenlik grubu kuralını açın:
+Aşağıdaki örnek, *3389* numaralı bağlantı noktasında [az VM Open-Port](/cli/azure/vm#az-vm-open-port) ile bir ağ güvenlik grubu kuralı oluşturur. Sanal makinenize SSH oturumundan değil, Azure CLı 'dan aşağıdaki ağ güvenlik grubu kuralını açın:
 
 ```azurecli
 az vm open-port --resource-group myResourceGroup --name myVM --port 3389

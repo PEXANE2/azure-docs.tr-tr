@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e6e3e1769b6043599d606b84b531ec908519d4c7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9377a21415c22e7b68d850ca1a95f931e62fe573
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955574"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499739"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Linux için sanal makine uzantısı Key Vault
 
@@ -35,9 +35,9 @@ Key Vault VM Uzantısı şu Linux dağıtımlarını destekler:
 - PEM
 
 ## <a name="prerequisities"></a>Ön koşullarını sağlarken
-  - Sertifikayı içeren Key Vault örneği. Bkz. [Key Vault oluşturma](https://docs.microsoft.com/azure/key-vault/general/quick-create-portal)
-  - VM/VMSS 'nin [yönetilen kimliği](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) atanmış olması gerekir
-  - Key Vault erişim Ilkesi, parolaların `get` `list` sertifikanın bir bölümünü almak için VM/VMSS yönetilen kimlik ile gizli dizi ve izinle ayarlanmalıdır. [Key Vault Için kimlik doğrulama](/azure/key-vault/general/authentication) ve [Key Vault erişim ilkesi atama](/azure/key-vault/general/assign-access-policy-cli)konusuna bakın.
+  - Sertifikayı içeren Key Vault örneği. Bkz. [Key Vault oluşturma](../../key-vault/general/quick-create-portal.md)
+  - VM/VMSS 'nin [yönetilen kimliği](../../active-directory/managed-identities-azure-resources/overview.md) atanmış olması gerekir
+  - Key Vault erişim Ilkesi, parolaların `get` `list` sertifikanın bir bölümünü almak için VM/VMSS yönetilen kimlik ile gizli dizi ve izinle ayarlanmalıdır. [Key Vault Için kimlik doğrulama](../../key-vault/general/authentication.md) ve [Key Vault erişim ilkesi atama](../../key-vault/general/assign-access-policy-cli.md)konusuna bakın.
 
 ## <a name="extension-schema"></a>Uzantı şeması
 
@@ -86,9 +86,9 @@ Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı kor
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Name | Değer/örnek | Veri Türü |
+| Ad | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
-| apiVersion | 2019-07-01 | tarih |
+| apiVersion | 2019-07-01 | date |
 | yayımcı | Microsoft.Azure.KeyVault | string |
 | tür | KeyVaultForLinux | string |
 | typeHandlerVersion | 1,0 | int |
@@ -109,7 +109,7 @@ Azure VM uzantıları, Azure Resource Manager şablonlarıyla dağıtılabilir. 
 Bir sanal makine uzantısının JSON yapılandırması, şablonun sanal makine kaynak parçasının içinde, özellikle de `"resources": []` sanal makine şablonu için nesne ve nesne altında sanal makine ölçek kümesi olması halinde iç içe olmalıdır `"virtualMachineProfile":"extensionProfile":{"extensions" :[]` .
 
  > [!NOTE]
-> VM uzantısı, Anahtar Kasası kimlik doğrulaması için sistem veya Kullanıcı tarafından yönetilen kimliğin atanmasını gerektirir.  [Key Vault için kimlik doğrulama ve Key Vault erişim ilkesi atama](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm) konusuna bakın.
+> VM uzantısı, Anahtar Kasası kimlik doğrulaması için sistem veya Kullanıcı tarafından yönetilen kimliğin atanmasını gerektirir.  [Key Vault için kimlik doğrulama ve Key Vault erişim ilkesi atama](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md) konusuna bakın.
 > 
 
 ```json

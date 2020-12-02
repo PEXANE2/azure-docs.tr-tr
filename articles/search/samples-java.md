@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: 26e30b42906a3d8d7a3fcdc013537104a85f32fe
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: c1d21d88ed49cb14aa9f964791154f001a40fbe2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701866"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499586"
 ---
 # <a name="java-code-samples-for-azure-cognitive-search"></a>Azure Bilişsel Arama için Java kod örnekleri
 
 Azure Bilişsel Arama özelliklerini ve işlevselliğini gösteren Java kod örnekleri hakkında bilgi edinin. Birincil depolar aşağıdaki gibidir:
 
-| Depo | Description |
+| Depo | Açıklama |
 |------------|-------------|
 | [Azure-SDK-for-Java/Tree/Master/SDK/arama/Azure-Arama-belgeler/src/Samples](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/search/azure-search-documents/src/samples) | Azure SDK ekibi tarafından oluşturulan ve SDK 'daki Azure.Search.Documstalar istemci kitaplığı ile birlikte gelen örnekler. Ayrıca, çeşitli API 'Lerin nasıl çağrıldığını görmek için istemci kitaplığı için [birim testlerini](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/search/azure-search-documents/src/test) gözden geçirebilirsiniz. |
 | [Azure-Samples/Azure-Search-Java-Samples](https://github.com/Azure-Samples/azure-search-java-samples) | Nasıl yapılır makalelerine eşlik eden kod örnekleri. **Bu depodaki örnekler henüz Java Için Azure SDK 'sını kullanacak şekilde güncelleştirilmedi**. Şu anda bu örnekler, Java kodundaki REST API 'Lerini çağırır.|
@@ -31,7 +31,7 @@ Azure Bilişsel Arama özelliklerini ve işlevselliğini gösteren Java kod örn
 
 Java için Azure SDK, çok sayıda örnek ve paket yüklemesini kapsayan bir başlangıç [sayfası](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/search/azure-search-documents/src/samples) içerir. Sayfada Ayrıca çok sayıda örnek listelenir. Daha yaygın işlemlerden bazıları aşağıda verilmiştir.
 
-| Örnekler | Description |
+| Örnekler | Açıklama |
 |---------|-------------|
 | [Arama dizini oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/search/azure-search-documents/src/samples/java/com/azure/search/documents/indexes/CreateIndexExample.java) | [Arama dizinlerinin](search-what-is-an-index.md)nasıl oluşturulacağını gösterir. |
 | [Eş anlamlı oluşturma](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/search/azure-search-documents/src/samples/java/com/azure/search/documents/SynonymMapsCreateExample.java) | [Eş anlamlı eşlemelerin](search-synonyms.md)nasıl oluşturulacağını gösterir.  |
@@ -43,9 +43,9 @@ Java için Azure SDK, çok sayıda örnek ve paket yüklemesini kapsayan bir ba�
 
 ## <a name="documentation-samples"></a>Belge örnekleri
 
-Aşağıdaki örneklerde [Azure bilişsel arama belgelerinde](https://docs.microsoft.com/azure/search/)ilişkili bir makale bulunur.
+Aşağıdaki örneklerde [Azure bilişsel arama belgelerinde](./index.yml)ilişkili bir makale bulunur.
 
-| Örnekler | Description | 
+| Örnekler | Açıklama | 
 |---------|-------------|
 | [hızlı başlangıç](https://github.com/Azure-Samples/azure-search-java-samples/tree/master/quickstart) | Hızlı başlangıç için kaynak kodu [: Java 'da bir arama dizini oluşturun](search-get-started-java.md). Bu örnek REST API 'Lerini çağırır. |
 | [Search-Java-Indexer-demo](https://github.com/Azure-Samples/azure-search-java-samples/tree/master/search-java-indexer-demo) | Java 'da bir Azure Cosmos DB Dizin Oluşturucu gösterir. Bu örnek REST API 'Lerini çağırır. |

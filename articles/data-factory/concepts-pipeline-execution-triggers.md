@@ -3,20 +3,20 @@ title: Azure Data Factory'de işlem hattı çalıştırma ve tetikleyiciler
 description: Bu makalede Azure Data Factory'de istek üzerine veya tetikleyici oluşturarak işlem hattı yürütme konusunda bilgi sağlanır.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/05/2018
-ms.openlocfilehash: e090b4c3b4ecc3870f060aba4b03be3abe2942ec
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c72538de8aba60ce7ed880561b55773c22737f97
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180719"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498634"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure Data Factory'de işlem hattı çalıştırma ve tetikleyiciler
 

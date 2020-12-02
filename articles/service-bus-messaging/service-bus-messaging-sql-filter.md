@@ -3,16 +3,16 @@ title: Azure Service Bus abonelik kuralı SQL filtresi sözdizimi | Microsoft Do
 description: Bu makalede SQL filtresi dilbilgisinde ayrıntılar sağlanmaktadır. SQL filtresi, SQL-92 standardının bir alt kümesini destekler.
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: bd263e8177652165376d4f6fe9e231af71ebdcbe
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 9bff18b2161e419d728c360c9ed950ac2867fea8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95805627"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498685"
 ---
 # <a name="subscription-rule-sql-filter-syntax"></a>Abonelik kuralı SQL filtresi sözdizimi
 
-*SQL filtresi* , Service Bus konu abonelikleri için kullanılabilir filtre türlerinden biridir. Bu, SQL-92 standardının bir alt kümesini içeren bir metin deyimidir. Filtre ifadeleri, bir `sqlExpression` Azure Resource Manager şablonundaki bir Service Bus ' sqlFilter ' özelliğinin öğesi `Rule` veya Azure CLI [Azure Resource Manager template](service-bus-resource-manager-namespace-topic-with-rule.md) `az servicebus topic subscription rule create` komutunun [`--filter-sql-expression`](https://docs.microsoft.com/cli/azure/servicebus/topic/subscription/rule?view=azure-cli-latest&preserve-view=true#az_servicebus_topic_subscription_rule_create) bağımsız değişkeni ve ABONELIK kurallarının yönetilmesine izin veren çeşitli SDK işlevleri ile birlikte kullanılır.
+*SQL filtresi* , Service Bus konu abonelikleri için kullanılabilir filtre türlerinden biridir. Bu, SQL-92 standardının bir alt kümesini içeren bir metin deyimidir. Filtre ifadeleri, bir `sqlExpression` Azure Resource Manager şablonundaki bir Service Bus ' sqlFilter ' özelliğinin öğesi `Rule` veya Azure CLI [Azure Resource Manager template](service-bus-resource-manager-namespace-topic-with-rule.md) `az servicebus topic subscription rule create` komutunun [`--filter-sql-expression`](/cli/azure/servicebus/topic/subscription/rule?preserve-view=true&view=azure-cli-latest#az_servicebus_topic_subscription_rule_create) bağımsız değişkeni ve ABONELIK kurallarının yönetilmesine izin veren çeşitli SDK işlevleri ile birlikte kullanılır.
 
 Service Bus Premium, JMS 2,0 API 'SI aracılığıyla [JMS SQL ileti seçici söz dizimini](https://docs.oracle.com/javaee/7/api/javax/jms/Message.html) da destekler.
 

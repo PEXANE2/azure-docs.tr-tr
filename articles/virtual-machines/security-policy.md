@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 83d291ae72e79ec3600015fac07ee4ab80fe5df4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b7f6d30ffa849f78b0f7baa2d84e4fb01f3bf192
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843562"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500351"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Azure'daki sanal makinelerde ilkeleri güvenli hale getirme ve kullanma
 
@@ -41,7 +41,7 @@ Azure yönetilen diskler, buluta kalıcı hale geldiğinde verilerinizi varsayı
 
 Yönetilen diskinizin şifrelenmesi için platform tarafından yönetilen anahtarları kullanabilir veya kendi anahtarlarınızı kullanarak şifrelemeyi yönetebilirsiniz. Şifrelemeyi kendi anahtarlarınız ile yönetmeyi seçerseniz, yönetilen disklerdeki tüm verileri şifrelemek ve şifrelerini çözmek için kullanılacak *müşteri tarafından yönetilen bir anahtar* belirtebilirsiniz. 
 
-Sunucu tarafı şifreleme hakkında daha fazla bilgi edinmek için, [Windows](windows/disk-encryption.md) veya [Linux](linux/disk-encryption.md)makalelerine bakın.
+Sunucu tarafı şifreleme hakkında daha fazla bilgi edinmek için, [Windows](./disk-encryption.md) veya [Linux](./disk-encryption.md)makalelerine bakın.
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Şifrelemesi
 
@@ -73,4 +73,4 @@ Azure Active Directory (Azure AD) hizmetindeki Azure kaynakları yönetilen hizm
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Linux](../security/fundamentals/overview.md) veya [Windows](windows/tutorial-azure-security.md)için Azure Güvenlik Merkezi 'ni kullanarak sanal makine güvenliğini izleme adımlarını adım adım inceleyin.
+- [Linux](../security/fundamentals/overview.md) veya [Windows](./tutorial-azure-security.md)için Azure Güvenlik Merkezi 'ni kullanarak sanal makine güvenliğini izleme adımlarını adım adım inceleyin.

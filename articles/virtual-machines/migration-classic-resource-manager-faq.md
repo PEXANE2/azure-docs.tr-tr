@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 5734e028f7a735a48e49f4e6c582682bcd7cbd97
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 24e52f517f46de06fef8aa52e889185826c20d44
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888394"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498404"
 ---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>Klasik modelden Azure Resource Manager’a geçişle ilgili sık sorulan sorular
 
@@ -126,7 +126,7 @@ Bu ileti, VM’nin giden İnternet bağlantısı olmadığında alınır. VM ara
 
 Linux için:
 
-* [IaaS kaynaklarının klasik ile Azure Resource Manager geçişine genel bakış](./linux/migration-classic-resource-manager-overview.md)
+* [IaaS kaynaklarının klasik ile Azure Resource Manager geçişine genel bakış](./migration-classic-resource-manager-overview.md)
 * [Klasik modelden Azure Resource Manager’a platform destekli geçişe ayrıntılı teknik bakış](migration-classic-resource-manager-deep-dive.md)
 * [IaaS kaynaklarının Klasik’ten Azure Resource Manager’a geçişini planlama](migration-classic-resource-manager-plan.md)
 * [IaaS kaynaklarını klasik 'ten Azure Resource Manager geçirmek için PowerShell 'i kullanma](migration-classic-resource-manager-ps.md)

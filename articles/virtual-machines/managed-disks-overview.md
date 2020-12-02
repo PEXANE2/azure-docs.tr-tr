@@ -8,12 +8,12 @@ ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperfq1
-ms.openlocfilehash: 839ba1f8a5215c9059cfeff6e2158165b154f1f7
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 3b0acd683309ceb105c49dc5b0bd493ce2e461b9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289356"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500436"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Azure yönetilen disklerine giriş
 
@@ -71,7 +71,7 @@ Yönetilen diskler iki farklı şifreleme türü sunar. Birincisi, depolama hizm
 
 Sunucu tarafı şifreleme, bekleyen şifreleme sağlar ve kurumsal güvenlik ve uyumluluk taahhütlerinizi karşılamak için verilerinizi korur. Yönetilen disklerin kullanılabildiği tüm bölgelerde tüm yönetilen diskler, anlık görüntüler ve görüntüler için sunucu tarafı şifreleme varsayılan olarak etkindir. (Konakta şifrelemeyi etkinleştirmediğiniz takdirde, diğer yandan geçici diskler sunucu tarafı şifreleme tarafından şifrelenmez; bkz. [disk rolleri: geçici diskler](#temporary-disk)).
 
-Azure 'un anahtarlarınızı sizin için yönetmesine izin verebilir, bunlar platform tarafından yönetilen anahtarlardır ya da anahtarları kendiniz yönetebilirsiniz. Bunlar, müşteri tarafından yönetilen anahtarlardır. Ayrıntılar için [Azure disk depolama makalesinin sunucu tarafı şifrelemesini](windows/disk-encryption.md) ziyaret edin.
+Azure 'un anahtarlarınızı sizin için yönetmesine izin verebilir, bunlar platform tarafından yönetilen anahtarlardır ya da anahtarları kendiniz yönetebilirsiniz. Bunlar, müşteri tarafından yönetilen anahtarlardır. Ayrıntılar için [Azure disk depolama makalesinin sunucu tarafı şifrelemesini](./disk-encryption.md) ziyaret edin.
 
 
 #### <a name="azure-disk-encryption"></a>Azure Disk Şifrelemesi
@@ -96,7 +96,7 @@ Bu diskin en fazla 4.095 GiB kapasitesi vardır.
 
 ### <a name="temporary-disk"></a>Geçici disk
 
-Çoğu VM, yönetilen bir disk olmayan geçici bir disk içerir. Geçici disk, uygulamalar ve süreçler için kısa vadeli depolama sağlar ve yalnızca sayfa veya takas dosyaları gibi verileri depolamak için tasarlanmıştır. Geçici diskteki veriler, [bakım olayı](./manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json#understand-vm-reboots---maintenance-vs-downtime) sırasında veya [bir VM 'yi](troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json)yeniden dağıttığınızda kaybolabilir. Sanal makinenin başarılı bir standart yeniden başlatması sırasında, geçici diskteki veriler devam edecektir. Geçici diskler olmadan VM 'Ler hakkında daha fazla bilgi için, bkz. [Yerel geçici disk Içermeyen Azure VM boyutları](azure-vms-no-temp-disk.md).
+Çoğu VM, yönetilen bir disk olmayan geçici bir disk içerir. Geçici disk, uygulamalar ve süreçler için kısa vadeli depolama sağlar ve yalnızca sayfa veya takas dosyaları gibi verileri depolamak için tasarlanmıştır. Geçici diskteki veriler, [bakım olayı](./manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) sırasında veya [bir VM 'yi](troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json)yeniden dağıttığınızda kaybolabilir. Sanal makinenin başarılı bir standart yeniden başlatması sırasında, geçici diskteki veriler devam edecektir. Geçici diskler olmadan VM 'Ler hakkında daha fazla bilgi için, bkz. [Yerel geçici disk Içermeyen Azure VM boyutları](azure-vms-no-temp-disk.md).
 
 Azure Linux VM 'lerinde geçici disk genellikle/dev/sdb ve Windows VM 'lerinde geçici disk D: varsayılan olarak olur. Konakta şifrelemeyi etkinleştirmediğiniz takdirde geçici disk sunucu tarafı şifrelemesi tarafından şifrelenmez.
 

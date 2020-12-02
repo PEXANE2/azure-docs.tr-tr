@@ -8,19 +8,19 @@ ms.topic: article
 ms.author: terrylan
 manager: rkarlin
 ms.date: 11/10/2020
-ms.openlocfilehash: 73ae811c17a578cafc557b0cda9e98b101dd5c03
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: f4906d4e0590df047bac4ee15cb0e996a59c3d5b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94558007"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498872"
 ---
 # <a name="measured-boot-and-host-attestation"></a>Ölçülen önyükleme ve konak kanıtlama
 Bu makalede, Microsoft 'un ölçülen önyükleme ve konak kanıtlama aracılığıyla konakların bütünlüğünü ve güvenliğini nasıl sağladığını nasıl sağladığını anlatmaktadır.
 
 ## <a name="measured-boot"></a>Ölçülen önyükleme
 
-[Güvenilir Platform Modülü](https://docs.microsoft.com/windows/security/information-protection/tpm/trusted-platform-module-top-node) (TPM), güvenilir bir üçüncü taraf tarafından sağlanan üretici yazılımına sahip, yetkisiz bir güvenli denetim bileşenidir. Önyükleme yapılandırma günlüğü, ana bilgisayar önyükleme sırasını son kez gerçekleştirdiğinde, bu platform yapılandırma kayıtları 'nda (PCR) kaydedilen karma zincirleme ölçümleri içerir. Aşağıdaki şekilde bu kayıt işlemi gösterilmektedir. Daha önceden karma hale getirilmiş bir ölçüyü sonraki ölçümün karmasından artımlı olarak ekleme ve birleştirme karma zinciri oluşturma üzerinde karma algoritmasını çalıştırma.
+[Güvenilir Platform Modülü](/windows/security/information-protection/tpm/trusted-platform-module-top-node) (TPM), güvenilir bir üçüncü taraf tarafından sağlanan üretici yazılımına sahip, yetkisiz bir güvenli denetim bileşenidir. Önyükleme yapılandırma günlüğü, ana bilgisayar önyükleme sırasını son kez gerçekleştirdiğinde, bu platform yapılandırma kayıtları 'nda (PCR) kaydedilen karma zincirleme ölçümleri içerir. Aşağıdaki şekilde bu kayıt işlemi gösterilmektedir. Daha önceden karma hale getirilmiş bir ölçüyü sonraki ölçümün karmasından artımlı olarak ekleme ve birleştirme karma zinciri oluşturma üzerinde karma algoritmasını çalıştırma.
 
 ![Konak kanıtlama hizmeti karma zinciri gösteren diyagram.](./media/measured-boot-host-attestation/hash-chaining.png)
 
@@ -54,8 +54,8 @@ UEFı [Güvenli önyükleme](secure-boot.md) , önyükleme sırası sırasında 
 ## <a name="next-steps"></a>Sonraki adımlar
 Platform bütünlüğünü ve güvenliğini sağlamak için yaptığımız hakkında daha fazla bilgi edinmek için bkz.:
 
-- [Bellenim güvenliği](firmware.md)
+- [Üretici yazılımı güvenliği](firmware.md)
 - [Güvenli önyükleme](secure-boot.md)
-- [Proje Cerberus](project-cerberus.md)
+- [Project Cerberus](project-cerberus.md)
 - [Bekleme sırasında şifreleme](encryption-atrest.md)
 - [Hiper yönetici güvenliği](hypervisor.md)

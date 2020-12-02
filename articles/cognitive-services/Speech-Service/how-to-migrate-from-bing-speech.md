@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: nitinme
-ms.openlocfilehash: 4b7950759914724234ec89e6eaee13b48e735ec9
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: d0ffd786d3fb6bb5f0d70095d947c81caa070518
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024328"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499144"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Bing Konuşma konuşma hizmetine geçirme
 
@@ -37,7 +37,7 @@ Tek bir konuşma hizmeti abonelik anahtarı aşağıdaki özelliklere erişim ve
 
 Konuşma hizmeti, aşağıdaki farklılıklarla büyük ölçüde Bing Konuşma benzerdir.
 
-| Öne çıkan özelliği | Bing Konuşma | Konuşma hizmeti | Ayrıntılar |
+| Özellik | Bing Konuşma | Konuşma hizmeti | Ayrıntılar |
 |--|--|--|--|
 | C# SDK’sı | :heavy_check_mark: | :heavy_check_mark: | Konuşma hizmeti, Windows 10, Evrensel Windows Platformu (UWP) ve .NET Standard 2,0 'yi destekler. |
 | C++ SDK | : heavy_minus_sign: | :heavy_check_mark: | Konuşma hizmeti Windows ve Linux 'u destekler. |
@@ -79,7 +79,7 @@ Konuşma SDK 'sını kullanmaya başlamak için:
 
 Bing Konuşma müşterilerin bir [destek bileti](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)açarak müşteri desteğiyle iletişim kurabilmesi gerekir. Destek gereksinimlerinizin [Teknik destek planı](https://azure.microsoft.com/support/plans/)gerektirmesi durumunda bize de başvurabilirsiniz.
 
-Konuşma hizmeti, SDK ve API desteği için konuşma hizmeti [desteği sayfasını](../cognitive-services-support-options.md?context=%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext%253fcontext%253d%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext)ziyaret edin.
+Konuşma hizmeti, SDK ve API desteği için konuşma hizmeti [desteği sayfasını](../cognitive-services-support-options.md?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext%253fcontext%253d%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext)ziyaret edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

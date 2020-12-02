@@ -3,12 +3,12 @@ title: Azure portal Service Bus ad alanı oluşturma
 description: Bu makalede Azure portal bir Azure Service Bus ad alanı oluşturmaya yönelik yönergeler sağlanmaktadır.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: debca75d29d688bc01296d56d0e58f91a6128fc3
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: c0844ca144b4303631a0015c06a9b37f3538875b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95794326"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498821"
 ---
 # <a name="create-a-service-bus-namespace-using-the-azure-portal"></a>Azure portalı ile Service Bus ad alanı oluşturma
 
@@ -19,6 +19,6 @@ Ad alanı, tüm mesajlaşma bileşenlerini kapsayan bir kapsayıcıdır. Tek bir
 Tebrikler! Bir Service Bus Mesajlaşması ad alanı oluşturdunuz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Service Bus örneklerine](https://docs.microsoft.com/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/)göz atın.
+[Service Bus örneklerine](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/)göz atın.
 
 [create-namespace-using-arm]: service-bus-resource-manager-overview.md

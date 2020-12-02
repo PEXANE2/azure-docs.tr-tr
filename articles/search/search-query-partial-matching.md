@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 357f44149cb17976556c1e4609f6f2af531b80ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f36502eb464f051cd50b51245db69fa76daa915
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935781"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499552"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Kısmi terim arama ve özel karakterlerle desenler (joker karakter, Regex, desenler)
 
@@ -160,7 +160,7 @@ Birlikte çalışmak için doldurulmuş bir dizininiz olmalıdır. Var olan bir 
 
 Yerleşik veya önceden tanımlanmış çözümleyiciler `analyzer` , dizinde ek yapılandırma gerekmeden, bir alan tanımının bir özelliğinde ad ile belirtilebilir. Aşağıdaki örnek, `whitespace` bir alanı üzerinde çözümleyiciyi nasıl ayarlayabileceğinizi gösterir. 
 
-Diğer senaryolar ve diğer yerleşik çözümleyiciler hakkında daha fazla bilgi edinmek için bkz. [önceden tanımlanmış çözümleyiciler listesi](/azure/search/index-add-custom-analyzers#predefined-analyzers-reference). 
+Diğer senaryolar ve diğer yerleşik çözümleyiciler hakkında daha fazla bilgi edinmek için bkz. [önceden tanımlanmış çözümleyiciler listesi](./index-add-custom-analyzers.md#predefined-analyzers-reference). 
 
 ```json
     {

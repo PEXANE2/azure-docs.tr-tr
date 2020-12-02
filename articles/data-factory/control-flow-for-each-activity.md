@@ -3,27 +3,27 @@ title: Azure Data Factory 'de ForEach etkinliği
 description: Her etkinlik Için, işlem hattınızda yinelenen bir denetim akışını tanımlar. Bir koleksiyon üzerinde yineleme yapmak ve belirtilen etkinlikleri yürütmek için kullanılır.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: 35d61e896a395c3044a51780fef72d54c211a31f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71e96e6245d4cf922b82162e01a972264699f3ac
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417189"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499518"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Azure Data Factory 'de ForEach etkinliği
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 ForEach etkinliği, işlem hattınızda yinelenen bir denetim akışını tanımlar. Bu etkinlik bir koleksiyon üzerinde yinelemek için kullanılır ve bir döngüde belirtilen etkinlikleri yürütür. Bu etkinliğin döngü uygulaması, programlama dillerindeki Foreach döngü yapısına benzer.
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 Bu makalenin ilerleyen bölümlerinde özellikler açıklanmaktadır. Items özelliği, koleksiyondur ve koleksiyondaki her öğe, `@item()` aşağıdaki sözdiziminde gösterildiği gibi kullanılarak adlandırılır:  
 
 ```json
@@ -83,7 +83,7 @@ Etkinlikler | Yürütülecek etkinlikler. | Etkinlikler Listesi | Evet
 **Issequential** , false olarak ayarlandıysa, etkinlik en fazla 20 eşzamanlı yineleme ile paralel olarak yinelenir. Bu ayar dikkatli kullanılmalıdır. Eşzamanlı yinelemeler aynı klasöre ancak farklı dosyalara yazıyorsanız, bu yaklaşım iyidir. Eşzamanlı yinelemeler aynı dosyaya aynı anda yazıyorsanız, bu yaklaşım büyük olasılıkla hataya neden olur. 
 
 ## <a name="iteration-expression-language"></a>Yineleme ifadesi dili
-ForEach etkinliğinde, özellik **öğeleri**için tekrarlandırılmış bir dizi sağlayın. " `@item()`Foreach etkinliğinde tek bir sabit listesi üzerinden yinelemek için kullanın. Örneğin, **öğeler** bir diziyse: [1, 2, 3], `@item()` ilk yinelemede 1, ikinci yinelemede 2 ve üçüncü yinelemede 3 döndürür.
+ForEach etkinliğinde, özellik **öğeleri** için tekrarlandırılmış bir dizi sağlayın. " `@item()`Foreach etkinliğinde tek bir sabit listesi üzerinden yinelemek için kullanın. Örneğin, **öğeler** bir diziyse: [1, 2, 3], `@item()` ilk yinelemede 1, ikinci yinelemede 2 ve üçüncü yinelemede 3 döndürür.
 
 ## <a name="iterating-over-a-single-activity"></a>Tek bir etkinliğin üzerinde yineleme yapma
 **Senaryo:** Azure Blob 'daki aynı kaynak dosyasından Azure Blob 'daki birden çok hedef dosyasına kopyalama.
@@ -195,7 +195,7 @@ ForEach etkinliğinde, özellik **öğeleri**için tekrarlandırılmış bir diz
 Bir ForEach etkinliğinde birden çok etkinliği yinelemek (örneğin: kopyalama ve Web etkinlikleri) mümkündür. Bu senaryoda, birden çok etkinliği ayrı bir işlem hattına soyutlanmasını öneririz. Daha sonra, birden çok etkinlikle ayrı işlem hattını çağırmak için ForEach etkinliğindeki işlem hattındaki [executepipeline etkinliğini](control-flow-execute-pipeline-activity.md) kullanabilirsiniz. 
 
 
-### <a name="syntax"></a>Sözdizimi
+### <a name="syntax"></a>Syntax
 
 ```json
 {

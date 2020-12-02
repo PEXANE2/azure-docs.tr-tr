@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/3/2020
 ms.author: cynthn
-ms.openlocfilehash: b19dab8dffaa0c9c888e8a9974a43cbb48006fd7
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 0f5eb6a2964cdb679c2a83bd9d9b6296e3e962ed
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504331"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499297"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Önizleme: görüntüleri şifrelemek için müşteri tarafından yönetilen anahtarları kullanın
 
@@ -23,7 +23,7 @@ Görüntülerinizin şifrelenmesi için platform tarafından yönetilen anahtarl
 
 Müşteri tarafından yönetilen anahtarlar aracılığıyla sunucu tarafı şifreleme Azure Key Vault kullanır. [RSA anahtarlarınızı](../key-vault/keys/hsm-protected-keys.md) anahtar kasanıza aktarabilir ya da Azure Key Vault yeni RSA anahtarları oluşturabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makale, görüntünüzü çoğaltmak istediğiniz her bölgede zaten bir disk şifrelemesi ayarlamış olmanızı gerektirir:
 
@@ -211,7 +211,7 @@ Portalda görüntü sürümünüzü oluşturduğunuzda, depolama şifreleme küm
 
 
 1. **Görüntü sürümü oluştur** sayfasında **şifreleme** sekmesini seçin.
-2. **Şifreleme türü** ' nde, **müşteri tarafından yönetilen bir anahtarla** veya **platform tarafından yönetilen ve müşteri tarafından yönetilen anahtarlarla çift Şifrelemeli** şifreleme ' yi seçin. 
+2. **Şifreleme türü**' nde, **müşteri tarafından yönetilen bir anahtarla** veya **platform tarafından yönetilen ve müşteri tarafından yönetilen anahtarlarla çift Şifrelemeli** şifreleme ' yi seçin. 
 3. Görüntüdeki her disk için, **disk şifreleme kümesi** açılan listesinden bir şifreleme kümesi seçin. 
 
 ### <a name="create-the-vm"></a>Sanal makineyi oluşturma
@@ -220,6 +220,6 @@ Bir görüntü sürümünden bir VM oluşturabilir ve diskleri şifrelemek için
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Sunucu tarafı disk şifrelemesi](./windows/disk-encryption.md)hakkında daha fazla bilgi edinin.
+[Sunucu tarafı disk şifrelemesi](./disk-encryption.md)hakkında daha fazla bilgi edinin.
 
 Satın alma planı bilgilerini sağlama hakkında daha fazla bilgi için bkz. [görüntü oluştururken Azure Marketi satın alma planı bilgilerini sağlama](marketplace-images.md).

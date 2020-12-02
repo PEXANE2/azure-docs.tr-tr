@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: 6bcdb4a48f71e28514229116c10bd25747b55616
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 234c70fffb6f353c670d23624cc446fdaf6bd886
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701832"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498974"
 ---
 # <a name="javascript-code-samples-for-azure-cognitive-search"></a>Azure Bilişsel Arama için JavaScript kod örnekleri
 
 Azure Bilişsel Arama özelliklerini ve işlevselliğini gösteren JavaScript kod örnekleri hakkında bilgi edinin. Birincil depolar aşağıdaki gibidir:
 
-| Depo | Description |
+| Depo | Açıklama |
 |------------|-------------|
 | [Azure-SDK-for-js/Tree/Master/SDK/arama/arama-belgeler](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents) | Azure SDK ekibi tarafından oluşturulan ve SDK 'daki Azure.Search.Documstalar istemci kitaplığı ile birlikte gelen örnekler. Ayrıca, çeşitli API 'Lerin nasıl çağrıldığını görmek için istemci kitaplığı için [birim testlerini](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/test) gözden geçirebilirsiniz. |
 | [Azure-Samples/Azure-Search-JavaScript-Samples](https://github.com/Azure-Samples/azure-search-javascript-samples) | [Hızlı başlangıç: JavaScript 'te bir arama dizini oluşturma](search-get-started-javascript.md)da dahil olmak üzere nasıl yapılır makalelerine eşlik eden kod örnekleri.|
@@ -31,7 +31,7 @@ Azure Bilişsel Arama özelliklerini ve işlevselliğini gösteren JavaScript ko
 
 Java için Azure SDK 'Sı, paket yükleme, istemci kurulumu ve sorun gidermeyi kapsayan çok sayıda örnek ve [Başlarken sayfası](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/search/azure-search-documents/README.md#getting-started) içerir. Bu sayfada, sizin rahatınız için aşağıda listelenen aşağıdaki örnek kategoriler de açıklanmaktadır.
 
-| Örnekler | Description |
+| Örnekler | Açıklama |
 |---------|-------------|
 | [dizinlerde](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/indexes) | [Arama dizinlerini](search-what-is-an-index.md)oluşturma, güncelleştirme, alma, listeleme ve silme işlemlerinin nasıl yapılacağını gösterir. Bu örnek kategori Ayrıca bir hizmet istatistiği örneği içerir. |
 | [dataSourceConnections (Dizin oluşturucular için)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/javascript/src/dataSourceConnections) | [Desteklenen Azure veri kaynaklarının](search-indexer-overview.md#supported-data-sources)Dizin Oluşturucu tabanlı dizin oluşturma için gerekli olan Dizin Oluşturucu veri kaynaklarını oluşturma, güncelleştirme, alma, listeleme ve silme işlemlerinin nasıl yapılacağını gösterir. |
@@ -44,7 +44,7 @@ Java için Azure SDK 'Sı, paket yükleme, istemci kurulumu ve sorun gidermeyi k
 
 Ayrıca, SDK size kolaylık sağlaması için aşağıda listelenen TypeScript örnekleri de sağlar.
 
-| Örnekler | Description |
+| Örnekler | Açıklama |
 |---------|-------------|
 | [dizinlerde](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/indexes) | [Arama dizinlerini](search-what-is-an-index.md)oluşturma, güncelleştirme, alma, listeleme ve silme işlemlerinin nasıl yapılacağını gösterir. Bu örnek kategori Ayrıca bir hizmet istatistiği örneği içerir. |
 | [dataSourceConnections (Dizin oluşturucular için)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/search/search-documents/samples/typescript/src/dataSourceConnections) | [Desteklenen Azure veri kaynaklarının](search-indexer-overview.md#supported-data-sources)Dizin Oluşturucu tabanlı dizin oluşturma için gerekli olan Dizin Oluşturucu veri kaynaklarını oluşturma, güncelleştirme, alma, listeleme ve silme işlemlerinin nasıl yapılacağını gösterir. |
@@ -55,14 +55,14 @@ Ayrıca, SDK size kolaylık sağlaması için aşağıda listelenen TypeScript �
 
 ## <a name="documentation-samples"></a>Belge örnekleri
 
-Aşağıdaki örneklerde [Azure bilişsel arama belgelerinde](https://docs.microsoft.com/azure/search/)ilişkili bir makale bulunur.
+Aşağıdaki örneklerde [Azure bilişsel arama belgelerinde](./index.yml)ilişkili bir makale bulunur.
 
-| Örnekler | Description | 
+| Örnekler | Açıklama | 
 |---------|-------------|
 | [hızlı başlangıç](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/v11) | Hızlı başlangıç için kaynak kodu [: JavaScript 'te bir arama dizini oluşturun](search-get-started-javascript.md).  |
 
 ## <a name="standalone-samples"></a>Tek başına örnekler
 
-| Örnekler | Description |
+| Örnekler | Açıklama |
 |---------|-------------|
 | [Azure-Arama-tepki-şablon](https://github.com/dereklegenzoff/azure-search-react-template) | Azure Bilişsel Arama için tepki şablonu (github.com) |

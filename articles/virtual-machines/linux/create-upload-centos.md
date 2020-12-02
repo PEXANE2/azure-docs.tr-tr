@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 11/25/2019
 ms.author: guybo
-ms.openlocfilehash: 90b29944315b8a72a4ef95adbfc681a0ab276b00
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aefad880d788502ece0e3ba246a06a7529a3cab9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91533067"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499705"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Azure'da CentOS tabanlı bir sanal makine hazırlama
 
@@ -21,7 +21,7 @@ CentOS tabanlı bir Linux işletim sistemi içeren bir Azure sanal sabit diski (
 * [Azure için CentOS 7.0 + sanal makinesi hazırlama](#centos-70)
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede, bir sanal sabit diske bir CentOS (veya benzer türev) Linux işletim sistemini zaten yüklemiş olduğunuz varsayılmaktadır. . Vhd dosyaları, örneğin Hyper-V gibi bir sanallaştırma çözümü oluşturmak için birden çok araç vardır. Yönergeler için bkz. [Hyper-V rolünü yükleyip sanal makineyi yapılandırma](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh846766(v=ws.11)).
 
@@ -29,7 +29,7 @@ Bu makalede, bir sanal sabit diske bir CentOS (veya benzer türev) Linux işleti
 
 * Lütfen Azure için Linux hazırlama hakkında daha fazla ipucu için bkz. [Genel Linux yükleme notları](create-upload-generic.md#general-linux-installation-notes) .
 * VHDX biçimi Azure 'da desteklenmiyor, yalnızca **sabıt VHD**.  Hyper-V Yöneticisi 'Ni veya Convert-VHD cmdlet 'ini kullanarak diski VHD biçimine dönüştürebilirsiniz. VirtualBox kullanıyorsanız, disk oluştururken dinamik olarak ayrılan varsayılan değer tersine, **sabit boyutun** seçilmesi anlamına gelir.
-* Linux sistemini yüklerken, LVM yerine standart bölümler kullanmanız *önerilir* (genellikle çoğu yükleme için varsayılan değer). Bu, özellikle de bir işletim sistemi diskinin sorun giderme için başka bir özdeş VM 'ye bağlanması gerekiyorsa, kopyalanmış VM 'lerle LVM adı çakışmalarını önler. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) veya [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) veri disklerinde kullanılıyor olabilir.
+* Linux sistemini yüklerken, LVM yerine standart bölümler kullanmanız *önerilir* (genellikle çoğu yükleme için varsayılan değer). Bu, özellikle de bir işletim sistemi diskinin sorun giderme için başka bir özdeş VM 'ye bağlanması gerekiyorsa, kopyalanmış VM 'lerle LVM adı çakışmalarını önler. [LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) veya [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) veri disklerinde kullanılıyor olabilir.
 * UDF dosya sistemlerini bağlamak için çekirdek desteği gereklidir. Azure 'da ilk önyüklemede sağlama yapılandırması, konuğa bağlı olan UDF biçimli medya aracılığıyla Linux VM 'ye geçirilir. Azure Linux Aracısı, yapılandırmasını okumak ve VM 'yi sağlamak için UDF dosya sistemini bağlayabilmelidir.
 * Linux çekirdek sürümleri 2.6.37, Hyper-V üzerinde daha büyük VM boyutlarına sahip NUMA 'yı desteklemez. Bu sorun öncelikle yukarı akış Red Hat 2.6.32 çekirdeğini kullanarak eski dağıtımları etkiler ve RHEL 6,6 (Kernel-2.6.32-504) içinde düzeltilmiştir. 2.6.37 'den eski olan özel çekirdekler çalıştıran sistemler veya 2.6.32-504 ' den eski RHEL tabanlı çekirdekler, `numa=off` grub. conf içindeki çekirdek komut satırında önyükleme parametresini ayarlanmalıdır. Daha fazla bilgi için bkz. Red hat [KB 436883](https://access.redhat.com/solutions/436883).
 * İşletim sistemi diski üzerinde takas bölümü yapılandırmayın. Linux Aracısı, geçici kaynak diskinde bir takas dosyası oluşturmak için yapılandırılabilir.  Bunun hakkında daha fazla bilgiyi aşağıdaki adımlarda bulabilirsiniz.
@@ -231,7 +231,7 @@ Azure için bir CentOS 7 sanal makinesinin hazırlanması, CentOS 6 ' ya çok be
 * GRUB2 artık varsayılan önyükleme yükleyicisi olarak kullanıldığından, çekirdek parametrelerini düzenlemeyle ilgili yordam değişmiştir (aşağıya bakın).
 * XFS artık varsayılan dosya sistemidir. İsterseniz ext4 dosya sistemi hala kullanılabilir.
 
-**Yapılandırma Adımları**
+**Yapılandırma adımları**
 
 1. Hyper-V Yöneticisi 'nde sanal makineyi seçin.
 

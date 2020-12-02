@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 6519f9d549c513e03400366447812a170f9ab41c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: acdddcd95883d13393838a47281fb888ac2f9274
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978671"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500402"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Depolama: yüksek performans için tasarım
 
@@ -50,7 +50,7 @@ Bu bölümde, genel performans göstergelerini Premium Depolama bağlamında tar
 
 ## <a name="iops"></a>IOPS
 
-IOPS veya saniye başına giriş/çıkış Işlemi, uygulamanızın bir saniye içinde depolama disklerine gönderdiği isteklerin sayısıdır. Bir giriş/çıkış işlemi okunabilir veya yazılabilir, sıralı veya rastgele olabilir. Çevrimiçi bir perakende Web sitesi gibi çevrimiçi Işlem Işleme (OLTP) uygulamalarının pek çok eşzamanlı kullanıcı isteğini hemen işlemesi gerekir. Kullanıcı istekleri, uygulamanın hızla işlemesi gereken yoğun veritabanı işlemlerini ekleme ve güncelleştirme işlemidir. Bu nedenle, OLTP uygulamaları çok yüksek ıOPS gerektirir. Bu tür uygulamalar milyonlarca küçük ve rastgele GÇ isteğini işler. Böyle bir uygulamanız varsa, ıOPS 'yi iyileştirmek için uygulama altyapısını tasarlamanız gerekir. Sonraki bölümde, *uygulama performansını En Iyi duruma getirmek*için, yüksek IOPS 'yi almak için göz önünde bulundurmanız gereken tüm faktörlerin ayrıntısıyla tartışıyoruz.
+IOPS veya saniye başına giriş/çıkış Işlemi, uygulamanızın bir saniye içinde depolama disklerine gönderdiği isteklerin sayısıdır. Bir giriş/çıkış işlemi okunabilir veya yazılabilir, sıralı veya rastgele olabilir. Çevrimiçi bir perakende Web sitesi gibi çevrimiçi Işlem Işleme (OLTP) uygulamalarının pek çok eşzamanlı kullanıcı isteğini hemen işlemesi gerekir. Kullanıcı istekleri, uygulamanın hızla işlemesi gereken yoğun veritabanı işlemlerini ekleme ve güncelleştirme işlemidir. Bu nedenle, OLTP uygulamaları çok yüksek ıOPS gerektirir. Bu tür uygulamalar milyonlarca küçük ve rastgele GÇ isteğini işler. Böyle bir uygulamanız varsa, ıOPS 'yi iyileştirmek için uygulama altyapısını tasarlamanız gerekir. Sonraki bölümde, *uygulama performansını En Iyi duruma getirmek* için, yüksek IOPS 'yi almak için göz önünde bulundurmanız gereken tüm faktörlerin ayrıntısıyla tartışıyoruz.
 
 Yüksek ölçekli VM'nize bir premium depolama diski eklediğinizde, Azure disk belirtimlerine göre size bir IOPS sayısı garantisi sağlar. Örneğin, bir P50 diski 7500 IOPS sağlar. Yüksek ölçekli her VM boyutunun sürdürebileceği belirli bir IOPS sınırı da vardır. Örneğin, standart bir GS5 VM 80.000 ıOPS sınırına sahiptir.
 
@@ -64,11 +64,11 @@ Aşağıdaki formülde gösterildiği gibi, üretilen iş ve ıOPS arasında bir
 
 ![IOPS ve aktarım hızı ilişkisi](linux/media/premium-storage-performance/image1.png)
 
-Bu nedenle, uygulamanızın gerektirdiği en iyi aktarım hızı ve ıOPS değerlerini belirlenmesi önemlidir. Bir diğerini iyileştirmenize çalıştığınızda, diğeri de etkilenir. Daha sonraki bir bölümde, *uygulama performansını en*iyi duruma GETIRMEK için IOPS ve aktarım hızını iyileştirme hakkında daha fazla ayrıntı inceleyeceğiz.
+Bu nedenle, uygulamanızın gerektirdiği en iyi aktarım hızı ve ıOPS değerlerini belirlenmesi önemlidir. Bir diğerini iyileştirmenize çalıştığınızda, diğeri de etkilenir. Daha sonraki bir bölümde, *uygulama performansını en* iyi duruma GETIRMEK için IOPS ve aktarım hızını iyileştirme hakkında daha fazla ayrıntı inceleyeceğiz.
 
 ## <a name="latency"></a>Gecikme süresi
 
-Gecikme süresi, bir uygulamanın tek bir istek alması, depolama disklerine gönderilmesi ve yanıtı istemciye gönderilmesi için gereken süredir. Bu, ıOPS ve aktarım hızına ek olarak uygulamanın performansına yönelik kritik bir ölçüdür. Premium Depolama diskinin gecikmesi, bir istek için bilgilerin alınması ve uygulamanıza geri iletişim kurması için gereken süredir. Premium Depolama, düşük gecikme süreleri sağlar. Premium diskler, çoğu GÇ işlemi için tek basamaklı milisaniyelik gecikme süreleri sağlamak üzere tasarlanmıştır. Premium Depolama disklerinde ReadOnly ana bilgisayar önbelleğe almayı etkinleştirirseniz çok daha düşük okuma gecikmesi sağlayabilirsiniz. Daha sonra *uygulama performansını En Iyi duruma getirme*bölümünde daha ayrıntılı bilgi Için disk önbelleğe alma ele alınacaktır.
+Gecikme süresi, bir uygulamanın tek bir istek alması, depolama disklerine gönderilmesi ve yanıtı istemciye gönderilmesi için gereken süredir. Bu, ıOPS ve aktarım hızına ek olarak uygulamanın performansına yönelik kritik bir ölçüdür. Premium Depolama diskinin gecikmesi, bir istek için bilgilerin alınması ve uygulamanıza geri iletişim kurması için gereken süredir. Premium Depolama, düşük gecikme süreleri sağlar. Premium diskler, çoğu GÇ işlemi için tek basamaklı milisaniyelik gecikme süreleri sağlamak üzere tasarlanmıştır. Premium Depolama disklerinde ReadOnly ana bilgisayar önbelleğe almayı etkinleştirirseniz çok daha düşük okuma gecikmesi sağlayabilirsiniz. Daha sonra *uygulama performansını En Iyi duruma getirme* bölümünde daha ayrıntılı bilgi Için disk önbelleğe alma ele alınacaktır.
 
 Uygulamanızı daha yüksek ıOPS ve aktarım hızı almak üzere iyileştirirken uygulamanızın gecikme süresini etkiler. Uygulama performansını ayarladıktan sonra, beklenmedik yüksek gecikme süresine engel olmak için her zaman uygulamanın gecikmesini değerlendirin.
 
@@ -293,7 +293,7 @@ Premium depolama veri disklerinde ReadOnly önbelleğe alma yapılandırarak, d�
 Varsayılan olarak, işletim sistemi disklerinin ReadWrite önbelleği etkindir. Kısa süre önce veri disklerinde de ReadWrite önbelleği desteği ekledik. Okuma önbelleği kullanıyorsanız, verileri önbellekten kalıcı disklere yazmak için uygun bir yola sahip olmanız gerekir. Örneğin, SQL Server önbelleğe alınan verileri kendi kendine kalıcı depolama disklerine yazmayı işler. Gerekli verileri kalıcı olarak işlemeyen bir uygulamayla ReadWrite önbelleği kullanmak, VM kilitlenirse veri kaybına yol açabilir.
 
 *Hiçbiri*  
-Şu anda **hiçbiri** yalnızca veri disklerinde desteklenir. İşletim sistemi disklerinde desteklenmez. Bir işletim sistemi diskinde **hiçbiri** ayarlarsanız, bunu dahili olarak geçersiz kılar ve **salt okunur**olarak ayarlar.
+Şu anda **hiçbiri** yalnızca veri disklerinde desteklenir. İşletim sistemi disklerinde desteklenmez. Bir işletim sistemi diskinde **hiçbiri** ayarlarsanız, bunu dahili olarak geçersiz kılar ve **salt okunur** olarak ayarlar.
 
 Örnek olarak, aşağıdaki işlemleri yaparak Premium depolamada çalışan SQL Server için bu yönergeleri uygulayabilirsiniz.
 
@@ -307,9 +307,9 @@ Varsayılan olarak, işletim sistemi disklerinin ReadWrite önbelleği etkindir.
 
 Tüm Premium SSD 'Ler veya ultra diskler için, verilerin kaybedilmediği bir önbellek olmadığı bilindiğinde performansı artırmak için disk üzerindeki dosya sistemleri için "engelleri" devre dışı bırakabilirsiniz.  Azure disk önbelleği ReadOnly veya None olarak ayarlandıysa, engelleri devre dışı bırakabilirsiniz.  Ancak önbelleğe alma, okuma olarak ayarlandıysa, yazma dayanıklılığı sağlamak için engelleri etkin kalmalıdır.  Engelleri genellikle varsayılan olarak etkindir, ancak dosya sistemi türüne bağlı olarak aşağıdaki yöntemlerden birini kullanarak engelleri devre dışı bırakabilirsiniz:
 
-* **Reıfs**için, engelleri devre dışı bırakmak için engel = None Mount seçeneğini kullanın.  Engelleri açık bir şekilde etkinleştirmek için, engel = Flush kullanın.
-* **Ext3/ext4**için engel = 0 Mount seçeneğini kullanarak engelleri devre dışı bırakın.  Engelleri açıkça etkinleştirmek için engel = 1 kullanın.
-* **XFS**için, engelleri devre dışı bırakmak için nobariyer bağlama seçeneğini kullanın.  Engelleri açık bir şekilde etkinleştirmek için, engeli kullanın.  Daha sonraki Linux çekirdek sürümlerinde, XFS dosya sisteminin tasarımının her zaman dayanıklılık sağlar ve engellerinin devre dışı bırakılmasını etkilemez.  
+* **Reıfs** için, engelleri devre dışı bırakmak için engel = None Mount seçeneğini kullanın.  Engelleri açık bir şekilde etkinleştirmek için, engel = Flush kullanın.
+* **Ext3/ext4** için engel = 0 Mount seçeneğini kullanarak engelleri devre dışı bırakın.  Engelleri açıkça etkinleştirmek için engel = 1 kullanın.
+* **XFS** için, engelleri devre dışı bırakmak için nobariyer bağlama seçeneğini kullanın.  Engelleri açık bir şekilde etkinleştirmek için, engeli kullanın.  Daha sonraki Linux çekirdek sürümlerinde, XFS dosya sisteminin tasarımının her zaman dayanıklılık sağlar ve engellerinin devre dışı bırakılmasını etkilemez.  
 
 ## <a name="disk-striping"></a>Disk şeridi
 
@@ -319,7 +319,7 @@ Windows 'ta, diskleri birleştirmek için depolama alanlarını kullanabilirsini
 
 Önemli: Sunucu Yöneticisi Kullanıcı arabirimini kullanarak, şeritli bir birim için toplam sütun sayısını 8 ' e kadar ayarlayabilirsiniz. Sekiz ' dan fazla disk iliştirirken, birimi oluşturmak için PowerShell kullanın. PowerShell 'i kullanarak, sütun sayısını disk sayısına eşit olarak ayarlayabilirsiniz. Örneğin, tek bir Stripe kümesinde 16 disk varsa; *New-VirtualDisk* PowerShell cmdlet 'Inin *numberofcolumns* parametresinde 16 sütun belirtin.
 
-Linux 'ta, disk birleştirmek için MDADDM yardımcı programını kullanın. Linux 'ta diskleri şeritleme hakkında ayrıntılı adımlar için [bkz. Linux 'Ta yazılım RAID yapılandırma](linux/configure-raid.md).
+Linux 'ta, disk birleştirmek için MDADDM yardımcı programını kullanın. Linux 'ta diskleri şeritleme hakkında ayrıntılı adımlar için [bkz. Linux 'Ta yazılım RAID yapılandırma](/previous-versions/azure/virtual-machines/linux/configure-raid).
 
 *Şerit boyutu*  
 Disk şeridi oluşturma bölümünde önemli bir yapılandırma, şerit boyutudur. Şerit boyutu veya blok boyutu, uygulamanın dizili bir birimde adresebilen en küçük veri öbektir. Yapılandırdığınız Stripe boyutu, uygulamanın türüne ve istek düzenine bağlıdır. Yanlış Stripe boyutunu seçerseniz, GÇ hizalanmasına neden olabilir ve bu da uygulamanızın performansının düşmesine yol açar.

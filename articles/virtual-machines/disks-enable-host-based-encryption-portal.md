@@ -8,20 +8,20 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 4498e78b408f64ab5bc00b9f8730559b90c95d57
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd74872bc1c46f3dddda1b6d15f14f26dc2187cb
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88817910"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499382"
 ---
 # <a name="use-the-azure-portal-to-enable-end-to-end-encryption-using-encryption-at-host"></a>Konakta şifrelemeyi kullanarak uçtan uca şifrelemeyi etkinleştirmek için Azure portal kullanma
 
 Konakta şifrelemeyi etkinleştirdiğinizde, VM konağında depolanan veriler, REST ve depolama hizmetine şifrelenen akışlara şifrelenir. Konakta şifreleme ve diğer yönetilen disk şifreleme türleri hakkında kavramsal bilgiler için bkz.:
 
-* Linux: [VM verileriniz için ana bilgisayardan uca şifreleme](./linux/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data).
+* Linux: [VM verileriniz için ana bilgisayardan uca şifreleme](./disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data).
 
-* Windows: [VM verileriniz için ana bilgisayardan uca şifreleme Ile şifreleme](./windows/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data).
+* Windows: [VM verileriniz için ana bilgisayardan uca şifreleme Ile şifreleme](./disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data).
 
 ## <a name="restrictions"></a>Kısıtlamalar
 
@@ -35,7 +35,7 @@ Konakta şifrelemeyi etkinleştirdiğinizde, VM konağında depolanan veriler, R
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-suported-sizes](../../includes/virtual-machines-disks-encryption-at-host-suported-sizes.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 VM 'niz veya sanal makine ölçek kümeleriniz için konakta şifrelemeyi kullanabilmeniz için, özelliği aboneliğinizde etkinleştirilmiş olarak almanız gerekir. encryptionAtHost@microsoft adresine e-posta gönderin. abonelik Kimliklerinizle birlikte, özelliği abonelikleriniz için etkin olarak alın.
 
@@ -60,10 +60,10 @@ Konakta şifrelemeyi etkinleştirmek için yeni bir VM dağıtmanız gerekir, bu
 
     :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-basic-blade.png" alt-text="Sanal makine oluşturma temelleri dikey penceresinin ekran görüntüsü, bölge ve V d boyutu vurgulanır.":::
 
-1. **Diskler** dikey penceresinde, **konakta şifreleme**için **Evet** ' i seçin.
+1. **Diskler** dikey penceresinde, **konakta şifreleme** için **Evet** ' i seçin.
 1. Diğer seçimleri istediğiniz gibi yapın.
 
-    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-disk-blade.png" alt-text="Sanal makine oluşturma temelleri dikey penceresinin ekran görüntüsü, bölge ve V d boyutu vurgulanır.":::
+    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-disk-blade.png" alt-text="Sanal makine oluşturma diskleri dikey penceresinin ekran görüntüsü, konaktaki şifreleme vurgulanır.":::
 
 1. VM dağıtım işlemini tamamlayın ortamınıza uyan seçimler yapın.
 
