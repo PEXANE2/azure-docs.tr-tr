@@ -1,21 +1,21 @@
 ---
-title: Windows sanal masaüstü güvenli URL listesi-Azure
+title: Windows sanal masaüstü gerekli URL listesi-Azure
 description: Windows sanal masaüstü dağıtımınızın istendiği gibi çalıştığından emin olmak için engellemesini kaldırmanız gereken URL 'lerin bir listesi.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 12/02/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3d19a60fd6a22eb9245722c6ff69d3b39c05d29e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 6b3fdc18a04dadf4bf1cf380c7bb51d21f826633
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023182"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512350"
 ---
-# <a name="safe-url-list"></a>Güvenli URL listesi
+# <a name="required-url-list"></a>Gerekli URL listesi
 
-Windows sanal masaüstü dağıtımınızın düzgün çalışması için bazı URL 'Lerin engellemesini kaldırmanız gerekir. Bu makalede, hangilerinin güvenli olduğunu bilmeniz için bu URL 'Ler listelenir.
+Windows sanal masaüstü 'Nü dağıtmak ve kullanmak için, sanal makinelerinizin (VM 'Ler) dilediğiniz zaman erişebilmeleri için belirli URL 'Lerin engellemesini kaldırmanız gerekir. Bu makalede, engellemesini kaldırmanız gereken URL 'Ler listelenir.
 
 ## <a name="virtual-machines"></a>Sanal makineler
 
@@ -33,8 +33,8 @@ Windows sanal masaüstü için oluşturduğunuz Azure sanal makineleri, Azure ti
 |kms.core.windows.net|1688|Windows etkinleştirme|İnternet|
 |mrsglobalsteus2prod.blob.core.windows.net|443|Aracı ve SXS yığın güncelleştirmeleri|AzureCloud|
 |wvdportalstorageblob.blob.core.windows.net|443|Azure portal desteği|AzureCloud|
-| 169.254.169.254 | 80 | [Azure örnek meta veri hizmeti uç noktası](../virtual-machines/windows/instance-metadata-service.md) | YOK |
-| 168.63.129.16 | 80 | [Oturum konak durumu izleme](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | YOK |
+| 169.254.169.254 | 80 | [Azure örnek meta veri hizmeti uç noktası](../virtual-machines/windows/instance-metadata-service.md) | Yok |
+| 168.63.129.16 | 80 | [Oturum konak durumu izleme](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | Yok |
 
 >[!IMPORTANT]
 >Windows sanal masaüstü artık FQDN etiketini destekliyor. Daha fazla bilgi için bkz. [Azure Güvenlik Duvarı 'Nı kullanarak Windows sanal masaüstü dağıtımlarını koruma](../firewall/protect-windows-virtual-desktop.md).
@@ -53,10 +53,10 @@ Windows sanal masaüstü için oluşturduğunuz Azure sanal makineleri, Azure Ka
 |*. servicebus.usgovcloudapi.net|443|Aracı trafiği|AzureCloud|
 |* xt.table.core.usgovcloudapi.net|443|Aracı trafiği|AzureCloud|
 |Kms.core.usgovcloudapi.net|1688|Windows etkinleştirme|İnternet|
-|mrsglobalstugviffx.core.usgovcloudapi.net|443|Aracı ve SXS yığın güncelleştirmeleri|AzureCloud|
+|mrsglobalstugviffx.blob.core.usgovcloudapi.net|443|Aracı ve SXS yığın güncelleştirmeleri|AzureCloud|
 |wvdportalstorageblob.blob.core.usgovcloudapi.net|443|Azure portal desteği|AzureCloud|
-| 169.254.169.254 | 80 | [Azure örnek meta veri hizmeti uç noktası](../virtual-machines/windows/instance-metadata-service.md) | YOK |
-| 168.63.129.16 | 80 | [Oturum konak durumu izleme](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | YOK |
+| 169.254.169.254 | 80 | [Azure örnek meta veri hizmeti uç noktası](../virtual-machines/windows/instance-metadata-service.md) | Yok |
+| 168.63.129.16 | 80 | [Oturum konak durumu izleme](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | Yok |
 
 Aşağıdaki tabloda, Azure sanal makinelerinizin erişebileceği isteğe bağlı URL 'Ler listelenmektedir:
 
@@ -69,9 +69,13 @@ Aşağıdaki tabloda, Azure sanal makinelerinizin erişebileceği isteğe bağl�
 |login.windows.net|443|Microsoft Online Services 'da oturum açın Microsoft 365|login.microsoftonline.us|
 |*. sfx.ms|443|OneDrive istemci yazılımı güncelleştirmeleri|oneclient.sfx.ms|
 |*. digicert.com|443|Sertifika iptal denetimi|Yok|
+|*. azure-dns.com|443|Azure DNS çözümleme|Yok|
+|*. azure-dns.net|443|Azure DNS çözümleme|Yok|
 
 >[!NOTE]
 >Windows sanal masaüstü 'nde, ağ trafiğine izin vermek için engelbir IP adresi aralığı listesi yoktur. Şu anda yalnızca belirli URL 'Lerin engellenmesini destekliyoruz.
+>
+>Yeni nesil güvenlik duvarı (NGFW) kullanıyorsanız, bağlanabildiğinizden emin olmak için Azure IP 'Leri için özel olarak oluşturulmuş dinamik bir liste kullanmanız gerekir.
 >
 >Gerekli Azure Active Directory ilgili URL 'ler de dahil olmak üzere, Office ile ilgili güvenli URL 'Lerin bir listesi için bkz. [office 365 URL 'leri ve IP adresi aralıkları](/office365/enterprise/urls-and-ip-address-ranges).
 >

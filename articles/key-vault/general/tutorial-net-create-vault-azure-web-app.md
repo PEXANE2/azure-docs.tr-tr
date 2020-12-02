@@ -10,18 +10,18 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 278c842d6e6f73bff5468f601eea77f8b140a07c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 473ed1f14d77470e31c2f14665a12542a70a2a98
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444440"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512307"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-in-net"></a>Öğretici: .NET 'teki bir Azure Web uygulamasına Key Vault bağlamak için yönetilen bir kimlik kullanın
 
 [Azure Key Vault](./overview.md) , artırılmış güvenlik ile kimlik bilgilerini ve diğer gizli dizileri depolamanın bir yolunu sağlar. Ancak kodunuzun bunları alabilmesi için Key Vault kimlik doğrulaması gerekir. [Azure kaynakları Için Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md) , azure hizmetlerine Azure Active Directory (Azure AD) içinde otomatik olarak yönetilen bir kimlik vererek bu sorunu çözmeye yardımcı olur. Kodunuzda kimlik bilgilerini görüntülemesi gerekmeden Key Vault dahil olmak üzere Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmak için bu kimliği kullanabilirsiniz.
 
-Bu öğreticide, Azure Anahtar Kasası ile bir Azure Web uygulamasının kimliğini doğrulamak için yönetilen bir kimlik kullanacaksınız. .NET ve [Azure CLI](/cli/azure/get-started-with-azure-cli) [için Azure Key Vault sürüm 4 istemci kitaplığı](/dotnet/api/overview/azure/key-vault) 'nı kullanacaksınız. Tercih ettiğiniz geliştirme dilini, Azure PowerShell ve/veya Azure portal kullandığınızda aynı temel ilkeler geçerlidir.
+Bu öğreticide, Azure Anahtar Kasası ile bir Azure Web uygulamasının kimliğini doğrulamak için yönetilen bir kimlik kullanacaksınız. [.NET için Azure Key Vault gizli istemci kitaplığını](/dotnet/api/overview/azure/key-vault) ve [Azure CLI](/cli/azure/get-started-with-azure-cli)'yi kullanacaksınız. Tercih ettiğiniz geliştirme dilini, Azure PowerShell ve/veya Azure portal kullandığınızda aynı temel ilkeler geçerlidir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -253,9 +253,11 @@ Ayrıca, [Azure Portal](./assign-access-policy-portal.md) veya [PowerShell](./as
 
 ### <a name="modify-the-app-to-access-your-key-vault"></a>Anahtar kasanıza erişmek için uygulamayı değiştirin
 
+Bu öğreticide, tanıtım amacıyla [Azure Key Vault gizli istemci kitaplığı](https://docs.microsoft.com/dotnet/api/overview/azure/security.keyvault.secrets-readme) kullanacaksınız. [Azure Key Vault sertifikası istemci kitaplığı](https://docs.microsoft.com/dotnet/api/overview/azure/security.keyvault.certificates-readme)'nı veya [Azure Key Vault anahtar istemci kitaplığı](https://docs.microsoft.com/dotnet/api/overview/azure/security.keyvault.keys-readme)' nı da kullanabilirsiniz.
+
 #### <a name="install-the-packages"></a>Paketleri yükler
 
-Terminal penceresinde, .NET paketleri için Azure Key Vault istemci Kitaplığı ' nı yükledikten sonra:
+Terminal penceresinde, .NET ve Azure Identity istemci kitaplığı paketleri için Azure Key Vault gizli istemci Kitaplığı ' nı yükledikten sonra:
 
 ```console
 dotnet add package Azure.Identity
@@ -318,12 +320,11 @@ git push azure master
 http://<your-webapp-name>.azurewebsites.net
 ```
 
-"Merhaba Dünya!" öğesini gördüğünüzü nereden önce gizli anahtar değerinin görüntülendiğini görmeniz gerekir: "başarılı!"
+"Merhaba Dünya!" öğesini gördüğünüz, artık gizli anahtar değerinin görüntülendiğini görmeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [.NET 'teki bir sanal makineye dağıtılan uygulamalarla Azure Key Vault kullanma](./tutorial-net-virtual-machine.md)
 - [Azure kaynakları için Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md) hakkında daha fazla bilgi edinin
-- [App Service için Yönetilen kimlikler](../../app-service/overview-managed-identity.md?tabs=dotnet) hakkında daha fazla bilgi edinin
 - [Geliştirici kılavuzunu](./developers-guide.md) görüntüleme
 - [Anahtar kasasına güvenli erişim](./secure-your-key-vault.md)

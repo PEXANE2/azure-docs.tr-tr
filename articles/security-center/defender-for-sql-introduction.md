@@ -3,29 +3,31 @@ title: SQL için Azure Defender-avantajlar ve Özellikler
 description: SQL için Azure Defender 'ın avantajları ve özellikleri hakkında bilgi edinin.
 author: memildin
 ms.author: memildin
-ms.date: 11/22/2020
+ms.date: 11/30/2020
 ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 102d4916caf9dcae577006b6b847979f98ab3673
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c2fc1bf065bce3ca844c5284168d8ff96fa065bf
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499909"
+ms.locfileid: "96512248"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>SQL için Azure Defender 'a giriş
 
 SQL için Azure Defender, Azure Güvenlik Merkezi 'nin [veri güvenlik paketini](../azure-sql/database/azure-defender-for-sql.md) genişlettikleri her yerde veritabanlarınızı ve bunların verilerini güvenli hale getirmek için genişleten Iki Azure Defender planı içerir. 
 
+> [!VIDEO https://www.youtube.com/embed/V7RdB6RSVpc]
+
 ## <a name="availability"></a>Kullanılabilirlik
 
 |Görünüş|Ayrıntılar|
 |----|:----|
-|Yayın durumu:|**Azure SQL veritabanı sunucuları Için Azure Defender** -genel kullanıma sunuldu (GA)<br>**MAKINELERDE SQL Server 'lar Için Azure Defender** -Önizleme<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
+|Yayın durumu:|**Azure SQL veritabanı sunucuları Için Azure Defender** -genel kullanıma sunuldu (GA)<br>**MAKINELERDE SQL sunucuları Için Azure Defender** -genel kullanıma sunuldu (GA) |
 |Fiyat|**SQL Için Azure Defender 'ı** oluşturan iki plan, [fiyatlandırma sayfasında](security-center-pricing.md) gösterildiği gibi faturalandırılır|
-|Korumalı SQL sürümleri:|Azure sanal makineler üzerinde SQL- [Windows](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) ve [Linux](../azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md)<br>[Arc ETKIN SQL Server 'lar](/sql/sql-server/azure-arc/overview) (ŞIRKET içi SQL Server 'lar dahil)<br>Azure SQL [tek veritabanları](../azure-sql/database/single-database-overview.md) ve [elastik havuzlar](../azure-sql/database/elastic-pool-overview.md)<br>[Azure SQL Yönetilen Örnek](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Azure SYNAPSE Analytics adanmış SQL havuzu](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)|
+|Korumalı SQL sürümleri:|[Azure sanal makineler üzerinde SQL](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)<br>[Azure Arc etkin SQL sunucuları](https://docs.microsoft.com/sql/sql-server/azure-arc/overview)<br>Azure Arc olmadan Windows makinelerde şirket içi SQL Server 'lar<br>Azure SQL [tek veritabanları](../azure-sql/database/single-database-overview.md) ve [elastik havuzlar](../azure-sql/database/elastic-pool-overview.md)<br>[Azure SQL Yönetilen Örnek](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Azure SYNAPSE Analytics (eski adıyla SQL DW) adanmış SQL havuzu](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)|
 |Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Evet](./media/icons/yes-icon.png) US Gov<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov|
 |||
 
@@ -34,11 +36,15 @@ SQL için Azure Defender, Azure Güvenlik Merkezi 'nin [veri güvenlik paketini]
 **SQL Için Azure Defender** , Iki ayrı Azure Defender planı içerir:
 
 - **Azure SQL veritabanı sunucuları Için Azure Defender** şunları korur:
-  - [Azure SQL Veritabanı](../azure-sql/database/sql-database-paas-overview.md)
-  - [Azure SQL Yönetilen Örnek](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)
-  - [Azure 'da adanmış SQL havuzu SYNAPSE](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+    - [Azure SQL Veritabanı](../azure-sql/database/sql-database-paas-overview.md)
+    - [Azure SQL Yönetilen Örnek](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)
+    - [Azure 'da adanmış SQL havuzu SYNAPSE](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
-- **MAKINELERDEKI SQL sunucuları Için Azure Defender (Önizleme)** , Azure Native SQL Server 'larınıza yönelik korumalar genişleterek karma ortamları tamamen destekler ve Azure, diğer bulut ortamlarında ve hatta şirket içi MAKINELERDE barındırılan SQL sunucularını (desteklenen tüm sürümleri) korur
+- **MAKINELERDEKI SQL Server 'lar Için Azure Defender** , karma ortamları tamamen desteklemek ve Azure 'DA barındırılan SQL sunucularını (desteklenen tüm sürümleri) ve hatta şirket içi makineleri korumak için Azure Native SQL Server 'larınızın korumalarını uzatır:
+    - [Sanal Makinelerde SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/)
+    - Şirket içi SQL Server 'lar:
+        - [Azure Arc özellikli SQL Server (önizleme)](https://docs.microsoft.com/sql/sql-server/azure-arc/overview)
+        - [Azure Arc olmadan Windows makinelerde çalışan SQL Server](../azure-monitor/platform/agent-windows.md)
 
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-sql"></a>SQL için Azure Defender 'ın avantajları nelerdir?
@@ -52,11 +58,11 @@ Bu iki plan, olası veritabanı güvenlik açıklarını belirleme ve azaltıcı
 
 ## <a name="what-kind-of-alerts-does-azure-defender-for-sql-provide"></a>SQL için Azure Defender ne tür uyarılar sağlar?
 
-Güvenlik uyarıları şunları yaparken tetiklenir:
+Tehdit zekası zenginleştirilmiş güvenlik uyarıları şu durumlarda tetiklenir:
 
 - Uygulamalar veritabanında hatalı bir SQL beyanı oluştururken oluşan güvenlik açıkları dahil **OLASı SQL ekleme saldırıları**
 - Anormal **veritabanı erişimi ve sorgu desenleri** ; Örneğin, farklı kimlik bilgileri (bir deneme yanılma denemesi) sayesinde anormal yüksek sayıda başarısız oturum açma denemesi vardır
-- **Şüpheli veritabanı etkinliği** -Örneğin, bir SQL içeri aktarma ve dışarı aktarma işlemi için depolama hedefindeki bir değişiklik
+- **Şüpheli veritabanı etkinliği** ; Örneğin, bir şifreleme madenciliği C&c sunucusuyla iletişim kurulan ihlal bir bilgisayardan SQL Server erişen yasal bir Kullanıcı
 
 Uyarılar, bunları tetikleyen olayın ayrıntılarını ve tehditleri İnceleme ve düzeltme önerilerini içerir.
 
@@ -66,8 +72,10 @@ Uyarılar, bunları tetikleyen olayın ayrıntılarını ve tehditleri İnceleme
 
 Bu makalede, SQL için Azure Defender hakkında bilgi edindiniz.
 
+> [!div class="nextstepaction"]
+> [Azure Defender ile SQL Server 'larınızı güvenlik açıklarına karşı tarayın](defender-for-sql-usage.md)
+
 İlgili malzemeler için aşağıdaki makalelere bakın: 
 
-- [Makinelerde SQL Server 'lar için Azure Defender 'ı etkinleştirme](defender-for-sql-usage.md)
 - [SQL veritabanı sunucuları için Azure Defender 'ı etkinleştirme](../azure-sql/database/azure-defender-for-sql.md)
-- [SQL için Azure Defender uyarıları listesi](alerts-reference.md#alerts-sql-db-and-warehouse)
+- [SQL sunucuları için güvenlik uyarıları listesi](alerts-reference.md#alerts-sql-db-and-warehouse)

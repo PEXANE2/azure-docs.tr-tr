@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: a68501bd1189993b4dd0c2acdecaa7434fa51dcc
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d2446e866c0e12d50a0759373682f4f62bc4bba0
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488043"
+ms.locfileid: "96512231"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Azure Izleyici, ayrılmış kümeleri günlüğe kaydeder
 
-Azure Izleyici günlükleri adanmış kümeler, Azure Izleyici günlük müşterileri için gelişmiş yetenek sağlayan bir dağıtım seçeneğidir. Adanmış kümelere sahip müşteriler bu kümelerde barındırılacak çalışma alanlarını seçebilirler.
+Azure Izleyici günlükleri adanmış kümeler, Azure Izleyici günlükleri müşterilerine yönelik gelişmiş özellikleri sağlayan bir dağıtım seçeneğidir. Adanmış kümelere sahip müşteriler bu kümelerde barındırılacak çalışma alanlarını seçebilirler.
 
 Adanmış kümeler gerektiren yetenekler şunlardır:
 
@@ -52,7 +52,7 @@ Bir kümede kullanıma yönelik iki faturalandırma modu vardır. Bu, `billingTy
 
 2. **Çalışma alanları**: kümenizin kapasite ayırma maliyeti, kümedeki çalışma alanlarıyla orantılı olarak atanır (her çalışma alanı Için [Azure Güvenlik Merkezi](../../security-center/index.yml) 'nden düğüm başına ayırmalar için hesap oluşturulduktan sonra).
 
-Çalışma alanınız düğüm başına eski fiyatlandırma katmanını kullanıyorsa, bir kümeye bağlandığında kümenin kapasite rezervasyonuna ve düğüm başına artık olmayan verilere göre faturalandırılır. Azure Güvenlik Merkezi 'nden düğüm başına veri ayırmaları uygulanmasına devam edilecek.
+Çalışma alanınız, düğüm başına eski fiyatlandırma katmanını kullanıyorsa, bir kümeye bağlandığında kümenin kapasite rezervasyonuna ve düğüm başına artık olmayan verilere göre faturalandırılır. Azure Güvenlik Merkezi 'nden düğüm başına veri ayırmaları uygulanmasına devam edilecek.
 
 Log Analytics adanmış kümeler için daha fazla ayrıntı faturalandırılır. [here]( https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters)
 

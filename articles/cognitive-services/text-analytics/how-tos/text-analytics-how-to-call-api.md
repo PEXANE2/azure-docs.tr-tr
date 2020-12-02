@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: aahi
-ms.openlocfilehash: 2977946b2e1f37aa356ee075d2caac237170df0f
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 90a4da2aadbbdf07d851e4407d2d417fc76d32af
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "95993340"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512333"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Metin Analizi nasıl çağrılacağını REST API
 
@@ -31,7 +31,7 @@ V 3.1-Preview. 3 ' den başlayarak Metin Analizi API'si iki zaman uyumsuz uç no
 
 Hangi özelliklerin zaman uyumsuz olarak kullanılabileceğini görmek için aşağıdaki tabloya bakın. Uç noktadan yalnızca birkaç özelliğin çağrılabilecek olduğunu unutmayın `/analyze` . 
 
-| Özellik | Zaman Uyumlu | Zaman uyumsuz |
+| Öne çıkan özelliği | Zaman Uyumlu | Zaman uyumsuz |
 |--|--|--|
 | Dil algılama | ✔ |  |
 | Yaklaşım analizi | ✔ |  |
@@ -54,9 +54,9 @@ Hangi özelliklerin zaman uyumsuz olarak kullanılabileceğini görmek için aş
 > [!NOTE]
 > Veya uç noktalarını kullanmak istiyorsanız, standart (S) [fiyatlandırma katmanını](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) kullanarak bir metin analizi kaynağına ihtiyacınız olacaktır `/analyze` `/health` .
 
-1.  İlk olarak, [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) gidin ve henüz yoksa yeni bir metin analizi kaynağı oluşturun. `/analyze`Veya uç noktalarını kullanmak istiyorsanız, standart fiyatlandırma katmanını seçin `/health` .
+1.  İlk olarak, [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) gidin ve henüz yoksa yeni bir metin analizi kaynağı oluşturun. Veya uç noktalarını kullanmak istiyorsanız, **Standart fiyatlandırma katmanını** seçin `/analyze` `/health` .
 
-2.  Uç noktanızı kullanmak için kullanmak istediğiniz bölgeyi seçin.
+2.  Uç noktanız için kullanmak istediğiniz bölgeyi seçin.  Lütfen `/analyze` ve `/health` uç noktaların yalnızca şu bölgelerde kullanılabilir olduğunu unutmayın: Batı ABD 2, Doğu ABD 2, Orta ABD, Kuzey Avrupa ve Batı Avrupa.
 
 3.  Metin Analizi kaynağını oluşturun ve sayfanın solundaki "anahtarlar ve uç nokta dikey penceresine" gidin. Daha sonra API 'Leri çağırdığınızda kullanılacak anahtarı kopyalayın. Bunu daha sonra üst bilgi için bir değer olarak eklersiniz `Ocp-Apim-Subscription-Key` .
 
@@ -194,7 +194,7 @@ Postman 'da (veya başka bir Web API test aracında) kullanmak istediğiniz öze
 
 #### <a name="synchronous"></a>[Zaman Uyumlu](#tab/synchronous)
 
-| Özellik | İstek türü | Kaynak uç noktaları |
+| Öne çıkan özelliği | İstek türü | Kaynak uç noktaları |
 |--|--|--|
 | Dil algılama | POST | `<your-text-analytics-resource>/text/analytics/v3.0/languages` |
 | Yaklaşım analizi | POST | `<your-text-analytics-resource>/text/analytics/v3.0/sentiment` |
@@ -206,14 +206,14 @@ Postman 'da (veya başka bir Web API test aracında) kullanmak istediğiniz öze
 
 #### <a name="analyze"></a>[Analiz](#tab/analyze)
 
-| Özellik | İstek türü | Kaynak uç noktaları |
+| Öne çıkan özelliği | İstek türü | Kaynak uç noktaları |
 |--|--|--|
 | Analiz işini gönder | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze` |
 | Çözümleme durumunu ve sonuçlarını al | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze/jobs/<Operation-Location>` |
 
 #### <a name="text-analytics-for-health"></a>[Sistem durumu için Metin Analizi](#tab/health)
 
-| Özellik | İstek türü | Kaynak uç noktaları |
+| Öne çıkan özelliği | İstek türü | Kaynak uç noktaları |
 |--|--|--|
 | Sistem durumu işi için Metin Analizi gönder  | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs` |
 | İş durumunu ve sonuçları al | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs/<Operation-Location>` |
