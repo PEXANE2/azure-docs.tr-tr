@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: alkohli
-ms.openlocfilehash: 3087c209b844d691173edbbd8a993c1d0aae319b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be7d477d08b025fd450bfa859e8eb677ba680143
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903633"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446369"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-pro-ordering-issues"></a>Azure Stack Edge Pro sipariş sorunlarını giderme
 
@@ -33,7 +33,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ![Desteklenmeyen abonelik veya bölge](media/azure-stack-edge-troubleshoot-ordering/azure-stack-edge-troubleshoot-ordering-01.png)
 
-**Önerilen çözüm:**  [Microsoft kurumsal anlaşma (EA)](https://azure.microsoft.com/overview/sales-number/), [bulut çözümü sağlayıcısı (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp)veya [Microsoft Azure sponsorluğu](https://azure.microsoft.com/offers/ms-azr-0036p/)gibi desteklenen bir abonelik kullandığınızdan emin olun. Kullandıkça Öde abonelikleri desteklenmez. Daha fazla bilgi için [Azure Stack Edge kaynak önkoşulları](azure-stack-edge-deploy-prep.md#prerequisites)bölümüne bakın.
+**Önerilen çözüm:**  [Microsoft kurumsal anlaşma (EA)](https://azure.microsoft.com/overview/sales-number/), [bulut çözümü sağlayıcısı (CSP)](/partner-center/azure-plan-lp)veya [Microsoft Azure sponsorluğu](https://azure.microsoft.com/offers/ms-azr-0036p/)gibi desteklenen bir abonelik kullandığınızdan emin olun. Kullandıkça Öde abonelikleri desteklenmez. Daha fazla bilgi için [Azure Stack Edge kaynak önkoşulları](azure-stack-edge-deploy-prep.md#prerequisites)bölümüne bakın.
 
 Microsoft 'un, büyük/küçük harfe göre abonelik türü yükseltmesine izin verme ihtimali vardır. İhtiyaçlarınızı anlayabilmeleri ve bu limitleri uygun şekilde ayarlayabilmeleri için [Microsoft desteğine](https://azure.microsoft.com/support/options/) başvurun.
 
@@ -49,7 +49,7 @@ Microsoft 'un, büyük/küçük harfe göre abonelik türü yükseltmesine izin 
 
 2. Cihazınızı sıralamak için kullanacağınız aboneliği seçin.
 
-3. **Kaynak sağlayıcıları** ' nı seçin ve ardından **Microsoft. databoxedge**için arama yapın.
+3. **Kaynak sağlayıcıları** ' nı seçin ve ardından **Microsoft. databoxedge** için arama yapın.
 
     ![Kaynak sağlayıcısını kaydetme](media/azure-stack-edge-troubleshoot-ordering/azure-stack-edge-troubleshoot-ordering-02.png)
 
@@ -61,7 +61,7 @@ Daha fazla bilgi için bkz. [kaynak sağlayıcılarını kaydetme](azure-stack-e
 
 **Hata:** Azure portal, Azure Stack Edge Pro veya Data Box Gateway için kullanılacak bir abonelik seçersiniz ve şu hatayı alırsınız:
 
-*Kaynak sağlayıcıları: Microsoft. DataBoxEdge abonelik abonelik adı için kayıtlı değil &lt; &gt; ve abonelik &lt; abonelik adı &gt; için bir kaynak sağlayıcısı kaydetme izniniz*yok.
+*Kaynak sağlayıcıları: Microsoft. DataBoxEdge abonelik abonelik adı için kayıtlı değil &lt; &gt; ve abonelik &lt; abonelik adı &gt; için bir kaynak sağlayıcısı kaydetme izniniz* yok.
 
 **Önerilen çözüm:** Abonelik erişiminizi yükseltin veya kaynak sağlayıcısını kaydetmek için sahip veya katkıda bulunan erişimi olan birini bulun.
 

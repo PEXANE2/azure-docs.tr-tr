@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 9524577d40c3b6b65bb3c3c8ff9e257b015ed90d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 4425fdf488665ad555c73c59682041cb23a9ca66
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95012945"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447325"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Azure Machine Learning çalışma alanları oluşturma ve yönetme 
 
@@ -30,7 +30,7 @@ Gereksinimleriniz değiştikçe veya Otomasyon artışı için gereksinimler de�
 
 ## <a name="limitations"></a>Sınırlamalar
 
-* Yeni bir çalışma alanı oluştururken, çalışma alanının otomatik olarak gerektirdiği Azure hizmetlerini oluşturmasına izin verebilir veya mevcut hizmetleri sağlayabilirsiniz. Mevcut hizmetleri sağlarken, bu hizmetlerin hepsi çalışma alanıyla aynı Azure aboneliğinde olmalıdır.
+[!INCLUDE [register-namespace](../../includes/machine-learning-register-namespace.md)]
 
 ## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
 
@@ -134,7 +134,7 @@ Aboneliğinize erişim konusunda sorun yaşıyorsanız, bkz. [Azure Machine Lear
    Çalışma alanı adı |Çalışma alanınızı tanımlayan benzersiz bir ad girin. Bu örnekte **docs-WS** kullanıyoruz. Adlar, kaynak grubu genelinde benzersiz olmalıdır. Başkaları tarafından oluşturulan çalışma alanlarını birbirinden ayırmak ve geri çekmek için kolay bir ad kullanın. Çalışma alanı adı büyük/küçük harfe duyarlıdır.
    Abonelik |Kullanmak istediğiniz Azure aboneliğini seçin.
    Kaynak grubu | Aboneliğinizde mevcut kaynak gruplarından birini seçin veya bir ad girerek yeni bir kaynak grubu oluşturun. Kaynak grubu, bir Azure çözümü için ilgili kaynakları barındırır. Bu örnekte **docs-AML** kullanılır. Mevcut bir kaynak grubunu kullanmak için *katkıda bulunan* veya *sahip* rolünün olması gerekir.  Erişim hakkında daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanına erişimi yönetme](how-to-assign-roles.md).
-   Region | Çalışma alanınızı oluşturmak için kullanıcılarınıza en yakın Azure bölgesini ve veri kaynaklarını seçin.
+   Bölge | Çalışma alanınızı oluşturmak için kullanıcılarınıza en yakın Azure bölgesini ve veri kaynaklarını seçin.
    | Depolama hesabı | Çalışma alanı için varsayılan depolama hesabı. Varsayılan olarak, yeni bir tane oluşturulur. |
    | Key Vault | Çalışma alanı tarafından kullanılan Azure Key Vault. Varsayılan olarak, yeni bir tane oluşturulur. |
    | Application Insights | Çalışma alanı için Application Insights örneği. Varsayılan olarak, yeni bir tane oluşturulur. |

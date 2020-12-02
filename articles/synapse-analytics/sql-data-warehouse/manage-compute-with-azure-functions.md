@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici: Azure Işlevleri ile işlem yönetme'
-description: Azure Işlevleri 'ni kullanarak Azure SYNAPSE Analytics 'te SQL havuzunuzun işlem yönetimini yönetin.
+description: Azure Işlevleri 'ni kullanarak, Azure SYNAPSE Analytics 'te adanmış SQL havuzunuzun (eski adıyla SQL DW) işlem yönetimi.
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -11,26 +11,26 @@ ms.date: 04/27/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: bc615322c11a456699d2364cf44cad40e086e851
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f0731f0deaf46ec419cfe43037804e10f2b73fd4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022488"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448386"
 ---
-# <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>Azure SYNAPSE Analytics SQL havuzundaki işlem kaynaklarını yönetmek için Azure Işlevleri 'ni kullanma
+# <a name="use-azure-functions-to-manage-compute-resources-for-your-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzunuzun (eski adıyla SQL DW) işlem kaynaklarını yönetmek için Azure Işlevleri 'ni kullanma
 
-Bu öğretici, Azure SYNAPSE Analytics 'teki bir SQL havuzunun işlem kaynaklarını yönetmek için Azure Işlevleri 'ni kullanır.
+Bu öğretici, Azure SYNAPSE Analytics 'te adanmış bir SQL havuzunun (eski adıyla SQL DW) işlem kaynaklarını yönetmek için Azure Işlevleri 'ni kullanır.
 
-Azure İşlev Uygulaması 'yi SQL havuzuyla kullanabilmek için, SQL havuzu örneğinizle aynı abonelik altında katkıda bulunan erişimine sahip bir [hizmet sorumlusu hesabı](../../active-directory/develop/howto-create-service-principal-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) oluşturmanız gerekir.
+Bir Azure İşlev Uygulaması adanmış bir SQL Havuzu (eski adıyla SQL DW) ile kullanmak için bir [hizmet sorumlusu hesabı](../../active-directory/develop/howto-create-service-principal-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)oluşturmanız gerekir. Hizmet sorumlusu hesabının, Özel SQL havuzunuz (eski adıyla SQL DW) örneği ile aynı abonelik altında katkıda bulunan erişimine ihtiyacı vardır.
 
 ## <a name="deploy-timer-based-scaling-with-an-azure-resource-manager-template"></a>Azure Resource Manager şablonuyla Zamanlayıcı tabanlı ölçeklendirmeyi dağıtma
 
 Şablonu dağıtmak için aşağıdaki bilgilere ihtiyacınız vardır:
 
-- SQL havuzu örneğinizin bulunduğu kaynak grubunun adı
-- SQL havuzu örneğinizin bulunduğu sunucunun adı
-- SQL havuzu örneğinizin adı
+- Adanmış SQL havuzunuzun adı (eskiden SQL DW) örneğinin bulunduğu kaynak grubunun adı
+- Adanmış SQL havuzunuzun (eskiden SQL DW) örneğinin bulunduğu sunucunun adı
+- Adanmış SQL havuzunuzun adı (eski adıyla SQL DW) örneği
 - Azure Active Directory'nizin Kiracı Kimliği (Dizin Kimliği)
 - Abonelik Kimliği
 - Hizmet Sorumlusu Uygulama Kimliği
@@ -48,13 +48,13 @@ Yukarıdaki bilgilere sahip olduktan sonra bu şablonu dağıtın:
 
    ![Şablonla dağıtılan işlevler](./media/manage-compute-with-azure-functions/five-functions.png)
 
-2. Zaman ölçeğini artırmak mı yoksa azaltmak mı istediğinize bağlı olarak, *DWScaleDownTrigger*'ı veya *DWScaleUpTrigger*'ı seçin. Açılan menüde tümleştirin ' ı seçin.
+2. Ölçeği azaltmak veya ölçeklendirmek için *Dwscaledowntrigger* veya *dwscaleuptrigger* seçeneklerinden birini belirleyin. Açılan menüde tümleştirin ' ı seçin.
 
    ![İşlev için Tümleştir'i seçme](./media/manage-compute-with-azure-functions/select-integrate.png)
 
 3. Şu anda görüntülenen değer *%ScaleDownTime%* veya *%ScaleUpTime%* olmalıdır. Bu değerler, zamanlamanın [Uygulama Ayarları](../../azure-functions/functions-how-to-use-azure-function-app-settings.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) altında tanımlanmış değerleri temel alacağını gösterir. Şimdilik, bu değeri yoksayabilir ve sonraki adımlara göre zamanlamayı tercih ettiğiniz zamana dönüştürebilirsiniz.
 
-4. Zamanlama alanında, Azure SYNAPSE Analytics 'in ölçeğini ne sıklıkta ölçeklendirmek istediğinizi yansıtmak istediğiniz CRON ifadesinin süresini ekleyin.
+4. Zamanlama alanında, Azure SYNAPSE Analytics 'in ölçeğini ne sıklıkta ölçeklendirmek istediğinizi yansıtmak istediğiniz CRON ifadesini ekleyin.
 
    ![İşlev zamanlamasını değiştirme](./media/manage-compute-with-azure-functions/change-schedule.png)
 
@@ -70,11 +70,11 @@ Yukarıdaki bilgilere sahip olduktan sonra bu şablonu dağıtın:
 
 1. İşlev Uygulaması hizmetinize gidin. Şablonu varsayılan değerlerle dağıttıysanız, bu hizmetin adı *DWOperations* olacaktır. İşlev Uygulamanız açıldığında, İşlev Uygulaması Hizmetinize beş işlevin dağıtılmış olduğunu görürsünüz.
 
-2. İşlem değeri ölçeğini artırmak mı yoksa azaltmak mı istediğinize bağlı olarak, *DWScaleDownTrigger*'ı veya *DWScaleUpTrigger*'ı seçin. İşlevleri seçtikten sonra, bölmenizde *index.js* dosyası gösterilmelidir.
+2. İşlem değerinin ölçeğini artırmak veya azaltmak için *Dwscaledowntrigger* veya *dwscaleuptrigger* seçeneklerinden birini belirleyin. İşlevleri seçtikten sonra, bölmenizde *index.js* dosyası gösterilmelidir.
 
    ![İşlev tetikleyicisi işlem düzeyini değiştirme](././media/manage-compute-with-azure-functions/index-js.png)
 
-3. *ServiceLevelObjective*'in değerini istediğiniz düzeyle değiştirin ve Kaydet'e tıklayın. Bu değer, veri ambarı örneğinizin tümleştirin bölümünde tanımlanan zamanlamaya göre ölçeklendirileceği işlem düzeyidir.
+3. *Servicelevelamacın* değerini istediğiniz düzeye değiştirip Kaydet ' i seçin. *Servicelevelamaç* , veri ambarı örneğinizin tümleştirin bölümünde tanımlanan zamanlamaya göre ölçeklendirileceği işlem düzeyidir.
 
 ## <a name="use-pause-or-resume-instead-of-scale"></a>Ölçek yerine duraklatma veya sürdürme kullanma
 
@@ -84,7 +84,7 @@ Yukarıdaki bilgilere sahip olduktan sonra bu şablonu dağıtın:
 
    ![İşlevler bölmesi](./media/manage-compute-with-azure-functions/functions-pane.png)
 
-2. Etkinleştirmek istediğiniz tetikleyicilere karşılık gelen kayan düğmeye tıklayın.
+2. Etkinleştirmek istediğiniz ilgili tetikleyicilerle ilgili kayan geçişli geçiş seçeneğini belirleyin.
 
 3. Zamanlamalarını değiştirmek için ilgili tetikleyicilerin *Tümleştir* sekmelerine gidin.
 
@@ -114,17 +114,17 @@ Yukarıdaki bilgilere sahip olduktan sonra bu şablonu dağıtın:
 5. İşlem değişkeninizi istenen davranışa aşağıdaki şekilde ayarlayın:
 
    ```JavaScript
-   // Resume the SQL pool instance
+   // Resume the dedicated SQL pool (formerly SQL DW) instance
    var operation = {
        "operationType": "ResumeDw"
    }
 
-   // Pause the SQL pool instance
+   // Pause the dedicated SQL pool (formerly SQL DW) instance
    var operation = {
        "operationType": "PauseDw"
    }
 
-   // Scale the SQL pool instance to DW600c
+   // Scale the dedicated SQL pool (formerly SQL DW)l instance to DW600c
    var operation = {
        "operationType": "ScaleDw",
        "ServiceLevelObjective": "DW600c"
@@ -169,4 +169,4 @@ Günlük ölçeği, 10:00 ' da DW1000c ' ye kadar bir kez ölçeklendirin, 4pm '
 
 [Zamanlayıcı tetikleyicisi](../../azure-functions/functions-create-scheduled-function.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Azure işlevleri hakkında daha fazla bilgi edinin.
 
-SQL havuzu [örnekleri deposunu](https://github.com/Microsoft/sql-data-warehouse-samples)kullanıma alın.
+Bkz. adanmış SQL Havuzu (eski adıyla SQL DW) [örnekleri deposu](https://github.com/Microsoft/sql-data-warehouse-samples).

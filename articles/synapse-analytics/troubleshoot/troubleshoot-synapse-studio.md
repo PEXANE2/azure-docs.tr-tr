@@ -1,5 +1,5 @@
 ---
-title: SYNAPSE Studio sorunlarını giderme (Önizleme)
+title: Synapse Studio sorunlarını giderme
 description: Azure SYNAPSE Studio sorunlarını giderme
 author: julieMSFT
 ms.service: synapse-analytics
@@ -8,18 +8,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3fe31f83ccc0dcbd2d61a7c70d40a64da08d13a1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a96709c7538bda6d6b338c29dc512902e9ca2c87
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321031"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445842"
 ---
-# <a name="azure-synapse-studio-preview-troubleshooting"></a>Azure SYNAPSE Studio (Önizleme) sorunlarını giderme
+# <a name="azure-synapse-studio-troubleshooting"></a>Azure SYNAPSE Studio sorunlarını giderme
 
 Bu sorun giderme kılavuzu, ağ bağlantısı sorunları üzerinde bir destek bileti açılırken hangi bilgilerin sağlanmasında yönergeler sağlar. Uygun bilgilerle sorunu daha çabuk çözebiliriz.
 
-## <a name="serverless-sql-pool-preview-service-connectivity-issue"></a>Sunucusuz SQL Havuzu (Önizleme) hizmeti bağlantı sorunu
+## <a name="serverless-sql-pool-service-connectivity-issue"></a>Sunucusuz SQL havuzu hizmet bağlantısı sorunu
 
 ### <a name="symptom-1"></a>Belirti 1
 
@@ -61,7 +61,7 @@ URL sütunu aşağıdaki Düzenle eşleşen öğeyi bul:
 
 `https://[*A*]-ondemand.database.windows.net:1443/databases/[*B*]/query?api-version=2018-08-01-preview&application=ArcadiaSqlOnDemandExplorer`
 
-Burada [ *A* ] çalışma alanınızın adıdır ve "-OnDemand" "-sqlod" olabilir ve burada [ *B* ], "ana" gibi bir veritabanı adı olmalıdır. Aynı URL değerine ancak farklı yöntem değerlerine sahip en fazla iki öğe olmalıdır; Seçenekler ve GÖNDERI. Bu iki öğenin durum sütunu altında "200" veya "20X" olup olmadığını kontrol edin; burada "x" herhangi bir tek basamak olabilir.
+Burada [*A*] çalışma alanınızın adıdır ve "-OnDemand" "-sqlod" olabilir ve burada [*B*], "ana" gibi bir veritabanı adı olmalıdır. Aynı URL değerine ancak farklı yöntem değerlerine sahip en fazla iki öğe olmalıdır; Seçenekler ve GÖNDERI. Bu iki öğenin durum sütunu altında "200" veya "20X" olup olmadığını kontrol edin; burada "x" herhangi bir tek basamak olabilir.
 
 Bunlardan birinin "20X" ve dışında bir şey varsa:
 

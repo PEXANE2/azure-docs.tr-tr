@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 11/04/2020
 ms.author: alkohli
-ms.openlocfilehash: ff2a473ca008e9b283d03ebb05f35122473d778a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34165071238ca3edf78ab9cca43639c23ce5ed2a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899260"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448711"
 ---
 # <a name="kubernetes-storage-management-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazınızda Kubernetes depolama yönetimi
 
@@ -41,9 +41,9 @@ Depolama alanının Kubernetes için nasıl yönetildiğini anlamak için, bir i
 
 Depolama sağlama statik veya dinamik olabilir. Sağlama türlerinin her biri, aşağıdaki bölümlerde ele alınmıştır.
 
-## <a name="staticprovisioning"></a>Statik sağlama
+## <a name="static-provisioning"></a>Statik sağlama
 
-Kubernetes küme yöneticileri, depolamayı statik olarak sağlayabilir. Bunu yapmak için, SMB/NFS dosya sistemlerine göre depolama arka ucu kullanabilir veya şirket içi bir ortamda ağ üzerinden yerel olarak eklenen Iscsı disklerini kullanabilir ya da Bulutta Azure dosyalarını veya Azure disklerini kullanabilirsiniz. Bu depolama türü varsayılan olarak sağlanmaz ve Cluster Admins 'in bu sağlamayı planlayıp yönetmesi gerekir. 
+Kubernetes kümesi yöneticileri depolama alanını statik olarak sağlayabilir. Bunu yapmak için, SMB/NFS dosya sistemlerine göre depolama arka ucu kullanabilir veya şirket içi bir ortamda ağ üzerinden yerel olarak eklenen Iscsı disklerini kullanabilir ya da Bulutta Azure dosyalarını veya Azure disklerini kullanabilirsiniz. Bu depolama türü varsayılan olarak sağlanmaz ve Cluster Admins 'in bu sağlamayı planlayıp yönetmesi gerekir. 
  
 İşte, Kubernetes 'de statik olarak sağlanan depolamanın nasıl tüketildiğini gösteren bir diyagram. 
 
@@ -58,7 +58,7 @@ Aşağıdaki adımlar oluşur:
 1. **PVC 'yi kapsayıcıya bağlama**: PVC, BD 'e bağlandıktan sonra, bu PVC 'yi kapsayıcıda bir yola bağlayabilirsiniz. Kapsayıcıdaki uygulama mantığı bu yoldan/içine okurken/yazarken, veriler SMB deposuna yazılır.
  
 
-## <a name="dynamicprovisioning"></a>Dinamik sağlama
+## <a name="dynamic-provisioning"></a>Dinamik sağlama
 
 İşte, Kubernetes 'de statik olarak sağlanan depolamanın nasıl tüketildiğini gösteren bir diyagram. 
 
@@ -104,6 +104,26 @@ spec:
 ```
 
 Daha fazla bilgi için bkz. [Azure Stack Edge Pro 'da, kubectl aracılığıyla statik sağlama aracılığıyla durum bilgisi olan bir uygulamayı dağıtma](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md).
+
+Statik olarak sağlanan depolama alanına erişmek için IoT için depolama bağlamaları için karşılık gelen birim bağlama seçenekleri aşağıdaki gibidir. , `/home/input` Birimin kapsayıcı içinde erişilebilir olduğu yoldur.
+
+```
+{
+"HostConfig": {
+"Mounts": [
+{
+"Target": "/home/input",
+"Source": "<nfs-or-smb-share-name-here>",
+"Type": "volume"
+},
+{
+"Target": "/home/output",
+"Source": "<nfs-or-smb-share-name-here>",
+"Type": "volume"
+}]
+}
+}
+```
 
 Azure Stack Edge Pro `StorageClass` `ase-node-local` , Kubernetes düğümüne iliştirilmiş bir veri diski depolaması kullanan bir yerleşik olarak da bulunur. Bu, `StorageClass` dinamik sağlamayı destekler. `StorageClass`Pod uygulamalarında bir başvuru yapabilirsiniz ve bır BD sizin için otomatik olarak oluşturulur. Daha fazla bilgi için bkz. sorgu için [Kubernetes panosu](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md) `ase-node-local StorageClass` .
 

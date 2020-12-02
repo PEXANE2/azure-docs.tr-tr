@@ -8,16 +8,16 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
-ms.openlocfilehash: f5d816b3d44a6fadd8dd462a14e62de4cdac2a00
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6585718a549c0e0a6eac1ab50788798e1021fef9
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995939"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446824"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>Çözüm hızlandırıcıyı dağıtmak için azureiotsolutions.com sitesini kullanın
 
-Azure IoT çözüm hızlandırıcılarına [AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators)adresinden Azure aboneliğinize dağıtım yapabilirsiniz. AzureIoTSolutions.com, hem Microsoft açık kaynak hem de iş ortağı çözüm hızlandırıcılarını barındırır. Bu çözüm Hızlandırıcılar, [Azure IoT başvuru mimarisi](https://aka.ms/iotrefarchitecture)ile hizalanır. Siteyi kullanarak bir çözüm hızlandırıcıyı tanıtım veya üretim ortamı olarak hızlı bir şekilde dağıtabilirsiniz.
+Azure IoT çözüm hızlandırıcılarına [AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators)adresinden Azure aboneliğinize dağıtım yapabilirsiniz. AzureIoTSolutions.com, hem Microsoft açık kaynak hem de iş ortağı çözüm hızlandırıcılarını barındırır. Bu çözüm Hızlandırıcılar, [Azure IoT başvuru mimarisi](/azure/architecture/reference-architectures/iot)ile hizalanır. Siteyi kullanarak bir çözüm hızlandırıcıyı tanıtım veya üretim ortamı olarak hızlı bir şekilde dağıtabilirsiniz.
 
 ![AzureIoTSolutions.com](media/iot-accelerators-permissions/iotsolutionscom.png)
 

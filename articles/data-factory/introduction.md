@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: 730141d22b318d79c8c2b7d995b98ee1c311aaf5
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 77420939c25401c170007d3971d63ca9c5b2d04c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491282"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446206"
 ---
 # <a name="what-is-azure-data-factory"></a>Azure Data Factory nedir?
 
@@ -28,7 +28,7 @@ Büyük veriler, ham verilerin bu zenginleştirme mağazalarını uygulanabilir 
 
 Bu günlükleri analiz etmek için, şirketin şirket içi veri deposunda bulunan müşteri bilgileri, oyun bilgileri ve pazarlama kampanyası bilgileri gibi başvuru verilerini kullanması gerekir. Şirket bu verileri şirket içi veri deposundan bir bulut veri deposunda sahip olduğu ek günlük verileriyle bir arada kullanmak istemektedir. 
 
-Öngörüleri ayıklamak için, bulutta (Azure HDInsight) bir Spark kümesi kullanarak birleştirilmiş verileri işlemeyi ve dönüştürülen verileri Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) gibi bir bulut veri ambarında yayımlamayı ve bu raporun üzerine kolayca bir rapor oluşturmayı planlamaktadır. Bu iş akışını otomatikleştirmek ve bunu günlük olarak izleyip yönetmek istiyor. Ayrıca bu iş akışını blob deposu kapsayıcısına dosyalar ulaştığında yürütmek istiyor.
+Öngörüleri ayıklamak için, bulutta (Azure HDInsight) bir Spark kümesi kullanarak birleştirilmiş verileri işlemeyi ve bu verilerin üzerine kolayca bir rapor oluşturmak için dönüştürülen verileri Azure SYNAPSE Analytics gibi bir bulut veri ambarında yayımlamayı planlamaktadır. Bu iş akışını otomatikleştirmek ve bunu günlük olarak izleyip yönetmek istiyor. Ayrıca bu iş akışını blob deposu kapsayıcısına dosyalar ulaştığında yürütmek istiyor.
 
 Azure Data Factory, bu tür veri senaryolarını çözen platformdur. Veri *hareketini düzenlemek ve verileri ölçeklendirmeye dönüştürmek için veri odaklı iş akışları oluşturmanıza olanak sağlayan bulut tabanlı ETL ve veri tümleştirme hizmetidir*. Azure Data Factory platformunu kullanarak farklı veri depolarından veri alabilen veri odaklı iş akışları (işlem hattı olarak adlandırılır) oluşturabilir ve zamanlayabilirsiniz. Verileri görsel olarak veri akışları ile veya Azure HDInsight Hadoop, Azure Databricks ve Azure SQL veritabanı gibi işlem hizmetlerini kullanarak dönüştüren karmaşık ETL işlemleri oluşturabilirsiniz. 
 
@@ -58,7 +58,7 @@ Dönüştürmeleri el ile kodlayarak, ADF, HDInsight Hadoop, Spark, Data Lake An
 ### <a name="cicd-and-publish"></a>CI/CD ve yayımlama
 Data Factory, Azure DevOps ve GitHub kullanarak veri işlem hatlarınızın CI/CD 'si için tam destek sunar. Bu, tamamlanmış ürünü yayımlamadan önce ETL işlemlerinizi artımlı olarak geliştirmenize ve sunmanıza olanak tanır. Ham veriler iş için kullanılabilir biçime getirildikten sonra, verileri Azure Veri Ambarı, Azure SQL Veritabanı, Azure CosmosDB'ye veya şirket kullanıcılarınızın iş zekası araçlarından işaret edebildiği herhangi bir analiz altyapısına yükleyebilirsiniz.
 
-### <a name="monitor"></a>İzleyici
+### <a name="monitor"></a>İzleme
 Veri tümleştirme işlem hattınızı başarıyla oluşturup dağıtarak iyileştirilmiş verilerden iş değeri elde ettikten sonra, başarı ve hata oranları için zamanlanmış etkinlikleri ve işlem hatlarını izleyin. Azure Data Factory, Azure Izleyici, API, PowerShell, Azure Izleyici günlükleri ve Azure portal sistem durumu bölmeleri aracılığıyla işlem hattı izleme için yerleşik desteğe sahiptir.
 
 ## <a name="top-level-concepts"></a>Üst düzey kavramlar

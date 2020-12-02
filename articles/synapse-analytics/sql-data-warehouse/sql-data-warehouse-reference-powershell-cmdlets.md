@@ -1,6 +1,6 @@
 ---
-title: PowerShell & REST API 'Leri
-description: Bir veritabanının nasıl duraklatılacağını ve sürdürüleceği dahil olmak üzere Azure SYNAPSE Analytics SQL havuzu için en iyi PowerShell cmdlet 'lerini bulun.
+title: Adanmış SQL Havuzu (eski adıyla SQL DW) için PowerShell & REST API 'Leri
+description: Bir veritabanının nasıl duraklatılacağı ve sürdürüleceği dahil, Azure SYNAPSE Analytics 'te adanmış SQL Havuzu (eskiden SQL DW) için en iyi PowerShell cmdlet 'leri.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.openlocfilehash: aaf290fac71fec0ff4106e3f8a1895dd65b94e09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bb26ac0071a50095f8e93ce0cc25da0055bdbac8
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89072902"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448224"
 ---
-# <a name="powershell--rest-apis-for-azure-synapse-analytics-sql-pool"></a>Azure SYNAPSE Analytics SQL havuzu için PowerShell & REST API 'Leri
+# <a name="powershell--rest-apis-for-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL Havuzu (eski adıyla SQL DW) için PowerShell & REST API 'Leri 
 
-Birçok Azure SYNAPSE Analytics SQL havuzu yönetim görevi Azure PowerShell cmdlet 'leri ya da REST API 'Leri kullanılarak yönetilebilir.  Aşağıda, SQL havuzunuzdaki ortak görevleri otomatikleştirmek için PowerShell komutlarının nasıl kullanılacağına ilişkin bazı örnekler verilmiştir.  Bazı iyi REST örnekleri için, [rest ile ölçeklenebilirliği yönetme](sql-data-warehouse-manage-compute-rest-api.md)makalesine bakın.
+Birçok adanmış SQL havuzu yönetim görevi Azure PowerShell cmdlet 'leri ya da REST API 'Leri kullanılarak yönetilebilir.  Aşağıda, adanmış SQL havuzunuzdaki (eski adıyla SQL DW) ortak görevleri otomatikleştirmek için PowerShell komutlarının nasıl kullanılacağına ilişkin bazı örnekler verilmiştir.  Bazı iyi REST örnekleri için, [rest ile ölçeklenebilirliği yönetme](sql-data-warehouse-manage-compute-rest-api.md)makalesine bakın.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

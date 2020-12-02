@@ -6,18 +6,21 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/09/2020
+ms.date: 11/04/2020
 ms.author: alkohli
-ms.openlocfilehash: b66a184abce53c31fade19fc9e10ffe4c7ff8415
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 38dcb32b2993838f8c3f13334e0bc44e9146f113
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94532452"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448555"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU 'SU için erişimi, güç ve bağlantı modunu yönetme
 
 Bu makalede, GPU cihazınızla Azure Stack Edge Pro için erişim, güç ve bağlantı modunun nasıl yönetileceği açıklanır. Bu işlemler yerel Web Kullanıcı arabirimi veya Azure portal aracılığıyla gerçekleştirilir.
+
+Bu makale Azure Stack Edge Pro GPU, Azure Stack Edge Pro R ve Azure Stack Edge Mini R cihazları için geçerlidir.
+
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -32,27 +35,63 @@ Bu makalede şunları öğreneceksiniz:
 
 Azure Stack Edge Pro cihazınıza erişim, bir cihaz parolasının kullanımı ile denetlenir. Parolayı yerel Web Kullanıcı arabirimi aracılığıyla değiştirebilirsiniz. Ayrıca Azure portal cihaz parolasını sıfırlayabilirsiniz.
 
+Cihaz disklerindeki verilere erişim, bekleyen şifreleme anahtarları tarafından da denetlenir.
+
 ### <a name="change-device-password"></a>Cihaz parolasını değiştirme
 
 Cihaz parolasını değiştirmek için yerel kullanıcı arabirimindeki adımları izleyin.
 
-1. Yerel Web Kullanıcı arabiriminde **bakım > parolası** ' na gidin.
+1. Yerel Web Kullanıcı arabiriminde **bakım > parolası**' na gidin.
 2. Geçerli parolayı ve ardından yeni parolayı girin. Sağlanan parola 8 ile 16 karakter arasında olmalıdır. Parola şu karakterlerden 3 ' i içermelidir: büyük harf, küçük harf, sayısal ve özel karakterler. Yeni parolayı onaylayın.
 
     ![Parolayı değiştir](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/change-password-1.png)
 
-3. **Parolayı Değiştir** ' i seçin.
+3. **Parolayı Değiştir**' i seçin.
  
 ### <a name="reset-device-password"></a>Cihaz parolasını sıfırla
 
 Sıfırlama iş akışı, kullanıcının eski parolayı geri çekemesini gerektirmez ve parola kaybolduğunda faydalıdır. Bu iş akışı Azure portal gerçekleştirilir.
 
-1. Azure portal, **genel bakış > yönetici parolasını sıfırla** ' ya gidin.
+1. Azure portal, **genel bakış > yönetici parolasını sıfırla**' ya gidin.
 
     ![Ekran görüntüsü cihaz parolasını sıfırla seçiliyken cihazı gösterir.](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-1.png)
 
 
-2. Yeni parolayı girip onaylayın. Sağlanan parola 8 ile 16 karakter arasında olmalıdır. Parola şu karakterlerden 3 ' i içermelidir: büyük harf, küçük harf, sayısal ve özel karakterler. **Sıfırla** ’yı seçin.
+2. Yeni parolayı girip onaylayın. Sağlanan parola 8 ile 16 karakter arasında olmalıdır. Parola şu karakterlerden 3 ' i içermelidir: büyük harf, küçük harf, sayısal ve özel karakterler. **Sıfırla**’yı seçin.
+
+    ![Parolayı Sıfırla 2](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
+
+### <a name="manage-access-to-device-data"></a>Cihaz verilerine erişimi yönetme
+
+Azure Stack Edge Pro R ve Azure Stack Edge Mini R cihazlarında, cihaz verilerine erişim, cihaz sürücüleri için bekleyen şifreleme anahtarları kullanılarak denetlenir. Cihaz, bekleyen şifreleme için başarıyla yapılandırıldıktan sonra, bekleyen şifreleme anahtarlarını döndür seçeneği cihazın yerel kullanıcı arabiriminde kullanılabilir hale gelir. 
+
+Bu işlem, BitLocker birimlerinin ve `HcsData` `HcsInternal` cihazınızdaki tüm otomatik şifreli sürücülerin anahtarlarını değiştirmenize olanak sağlar.
+
+Rest ile şifreleme anahtarlarını döndürmek için aşağıdaki adımları izleyin.
+
+1. Cihazın yerel kullanıcı arabiriminde **Başlarken sayfasına gidin** . **Güvenlik** kutucuğunda, **bekleyen şifreleme: anahtarları Döndür** seçeneğini belirleyin. Bu seçenek yalnızca, bekleyen şifreleme anahtarlarını başarıyla yapılandırdıktan sonra kullanılabilir.
+
+    ![Başlarken sayfasında bekleyen şifreleme için anahtarları Döndür ' i seçin](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/rotate-encryption-keys-1.png)
+
+1. Kendi BitLocker anahtarlarınızı kullanabilir veya sistem tarafından oluşturulan anahtarları kullanabilirsiniz.  
+
+    Kendi anahtarınızı sağlamak için, bir 32 karakterli uzun Base-64 kodlu dize girin. Bu giriş, geri kalan şifrelemeyi ilk kez yapılandırırken sağlayacaklarınız ile benzerdir.
+
+    ![Kendi şifrelemeye sahip-Rest anahtarınızı getir](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/rotate-encryption-keys-2.png)
+
+    Ayrıca, sistem tarafından oluşturulan bir anahtar kullanmayı da seçebilirsiniz.
+
+    ![Sistem tarafından oluşturulan şifreleme kullan-Rest anahtarı](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/rotate-encryption-keys-3.png)
+
+1. **Uygula**’yı seçin. Anahtar koruyucuları döndürülür.
+
+    ![Yeni şifreleme-Rest anahtarını Uygula](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/rotate-encryption-keys-4.png)
+
+1. Anahtar dosyasını indirip kaydetmeniz istendiğinde **indir ve devam et**' i seçin. 
+
+    ![Anahtar dosyasını indirin ve devam edin](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/rotate-encryption-keys-5.png)
+
+    `.json`Anahtar dosyasını güvenli bir konuma kaydedin. Bu dosya, cihazın gelecekte kurtarılmasına yardımcı olmak için kullanılır.
 
     ![Ekran görüntüsü, cihaz parolasını Sıfırla iletişim kutusunu gösterir.](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
 
@@ -69,7 +108,7 @@ Azure Stack Edge Pro cihazı için etkinleştirme anahtarını oluştururken vey
 
 `User`Active Directory kiracısında yapabilmeniz için bir erişiminizin olması gerekir `Read all directory objects` . Bir Konuk Kullanıcı, izinleri olmadığı için bu kullanıcı olamaz `Read all directory objects` . Bir konuğunuzda, bir etkinleştirme anahtarı oluşturma, Azure Stack Edge Pro cihazınızda bir paylaşımın oluşturulması, bir kullanıcının oluşturulması, sınır hesaplama rolü yapılandırması, cihaz parolasının tümünün başarısız olması gibi işlemler başarısız olur.
 
-API Microsoft Graph için kullanıcılara erişim sağlama hakkında daha fazla bilgi için, bkz. [Microsoft Graph izinleri başvurusu](https://docs.microsoft.com/graph/permissions-reference).
+API Microsoft Graph için kullanıcılara erişim sağlama hakkında daha fazla bilgi için, bkz. [Microsoft Graph izinleri başvurusu](/graph/permissions-reference).
 
 ### <a name="register-resource-providers"></a>Kaynak sağlayıcılarını kaydetme
 
@@ -114,15 +153,15 @@ Varsayılan tam bağlı moddan ayrı olarak, cihazınız kısmen bağlı veya ta
 
 Cihaz modunu değiştirmek için şu adımları izleyin:
 
-1. Cihazınızın yerel Web Kullanıcı arabiriminde **yapılandırma > bulut** ' a gidin.
-2. Açılan listeden, cihazı çalıştırmak istediğiniz modu seçin. **Tam bağlı** , **kısmen bağlı** ve **tamamen bağlantısı kesilen** ' ı seçebilirsiniz. Cihazı kısmen bağlantısı kesik modda çalıştırmak için **Azure Portal yönetimini** etkinleştirin.
+1. Cihazınızın yerel Web Kullanıcı arabiriminde **yapılandırma > bulut**' a gidin.
+2. Açılan listeden, cihazı çalıştırmak istediğiniz modu seçin. **Tam bağlı**, **kısmen bağlı** ve **tamamen bağlantısı kesilen**' ı seçebilirsiniz. Cihazı kısmen bağlantısı kesik modda çalıştırmak için **Azure Portal yönetimini** etkinleştirin.
 
  
 ## <a name="manage-power"></a>Güç yönetimi
 
 Fiziksel cihazınızı yerel web kullanıcı arabirimini kullanarak kapatabilir ya da yeniden başlatabilirsiniz. Cihazı yeniden başlatmadan önce veri sunucusundaki paylaşımları sonra da cihazı çevrimdışına almanız önerilir. Bu eylem veri bozulması olasılığını en aza indirir.
 
-1. Yerel Web Kullanıcı arabiriminde **bakım > gücü** ' ne gidin.
+1. Yerel Web Kullanıcı arabiriminde **bakım > gücü**' ne gidin.
 2. Ne yapmak istediğinize bağlı olarak, **kapanıyor** ' u veya **Yeniden Başlat** ' ı seçin.
 
     ![Güç ayarları](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/shut-down-restart-1.png)

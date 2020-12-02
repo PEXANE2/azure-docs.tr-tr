@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 3abfffcfb47a9530b6a04762624eee9d6ee9bc81
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 09651ed5c7472c12d82108fdbd450cca6e84349f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780470"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447095"
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Azure SQL veritabanı ile kiracı başına veritabanı modelini kullanan çok kiracılı bir SaaS uygulamasına giriş
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -37,10 +37,10 @@ Wingtip SaaS uygulaması, kiracı başına veritabanı modelini kullanır. Verim
 
 ## <a name="sql-database-wingtip-saas-tutorials"></a>SQL veritabanı Wingtip SaaS öğreticileri
 
-Uygulamayı dağıttıktan sonra, ilk dağıtımda derleme yapan aşağıdaki öğreticilere göz atın. Bu öğreticiler, SQL veritabanı, Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) ve diğer Azure hizmetleri 'nin yerleşik özelliklerinden faydalanan yaygın SaaS düzenlerini keşfedebilir. Öğreticiler, ayrıntılı açıklamalar içeren PowerShell betikleri içerir. Açıklamalar, uygulamalarınızda aynı SaaS yönetimi desenlerinin anlaşılmasına ve uygulanmasını basitleştirir.
+Uygulamayı dağıttıktan sonra, ilk dağıtımda derleme yapan aşağıdaki öğreticilere göz atın. Bu öğreticiler, SQL veritabanı, Azure SYNAPSE Analytics ve diğer Azure hizmetlerinin yerleşik özelliklerinden faydalanan yaygın SaaS düzenlerini keşfedebilir. Öğreticiler, ayrıntılı açıklamalar içeren PowerShell betikleri içerir. Açıklamalar, uygulamalarınızda aynı SaaS yönetimi desenlerinin anlaşılmasına ve uygulanmasını basitleştirir.
 
 
-| Öğretici | Açıklama |
+| Eğitmen | Açıklama |
 |:--|:--|
 | [SQL Database çok kiracılı SaaS uygulaması örneği için rehberlik ve ipuçları](saas-tenancy-wingtip-app-guidance-tips.md) | Uygulamanın bölümlerini hazırlamak için PowerShell betiklerini indirip çalıştırın. |
 |[Wingtip SaaS uygulamasını dağıtma ve araştırma](./saas-dbpertenant-get-started-deploy.md)|  Azure aboneliğiniz ile Wingtip SaaS uygulamasını dağıtın ve araştırın. |

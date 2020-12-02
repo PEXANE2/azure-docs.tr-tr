@@ -10,13 +10,13 @@ ms.subservice: sql-dw
 ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: d9349c5d1c4e6255dc0854537bb7e93e3e636ce8
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: e7fc89dcc0e7938ea2958d5c804abe82e20f186d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321070"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447946"
 ---
 # <a name="table-statistics-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu için tablo istatistikleri
 
@@ -72,7 +72,7 @@ Bu deyimler istatistiklerin otomatik olarak oluşturulmasını tetikler:
 > [!NOTE]
 > İstatistik oluşturma, farklı bir kullanıcı bağlamı altında [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) oturum açacaktır.
 
-Otomatik istatistik oluşturulduğunda, şu biçimi alır: _WA_Sys_ <8 basamaklı sütun kimliği onaltılık>_<8 basamaklı tablo kimliği onaltılık>. [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) komutu çalıştırılarak daha önce oluşturulmuş olan istatistikleri görüntüleyebilirsiniz:
+Otomatik istatistik oluşturulduğunda, şu biçimi alır: _WA_Sys_<8 basamaklı sütun kimliği onaltılık>_<8 basamaklı tablo kimliği onaltılık>. [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) komutu çalıştırılarak daha önce oluşturulmuş olan istatistikleri görüntüleyebilirsiniz:
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -101,7 +101,7 @@ Bu soru, verilerin yaşına göre yanıtlanacak bir değildir. Temel alınan ver
 
 Son istatistik güncelleştirildikten sonra tablodaki verilerin değişip değişmediğini tespit etmek için dinamik bir yönetim görünümü yoktur.  Aşağıdaki iki sorgu istatistiklerinizin eski olup olmadığını belirlemenize yardımcı olabilir.
 
-**Sorgu 1:**  İstatistiklerdeki satır sayısı ( **stats_row_count** ) ve gerçek satır sayısı arasındaki farkı ( **actual_row_count** ) öğrenin. 
+**Sorgu 1:**  İstatistiklerdeki satır sayısı (**stats_row_count**) ve gerçek satır sayısı arasındaki farkı (**actual_row_count**) öğrenin. 
 
 ```sql
 select 
@@ -220,7 +220,7 @@ Bu söz dizimi varsayılan seçeneklerin tümünü kullanır. Varsayılan olarak
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]);
 ```
 
-Örneğin:
+Örnek:
 
 ```sql
 CREATE STATISTICS col1_stats ON dbo.table1 (col1);
@@ -236,7 +236,7 @@ Tam tabloyu örneklemek için şu sözdizimini kullanın:
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]) WITH FULLSCAN;
 ```
 
-Örneğin:
+Örnek:
 
 ```sql
 CREATE STATISTICS col1_stats ON dbo.table1 (col1) WITH FULLSCAN;
@@ -312,11 +312,11 @@ CREATE STATISTICS stats_col2 on dbo.table2 (col2);
 CREATE STATISTICS stats_col3 on dbo.table3 (col3);
 ```
 
-### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-database"></a>Bir veritabanındaki tüm sütunlarda istatistik oluşturmak için saklı yordam kullanma
+### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-sql-pool"></a>Bir SQL havuzundaki tüm sütunlarda istatistik oluşturmak için saklı yordam kullanma
 
-Adanmış SQL havuzunda SQL Server sp_create_stats eşdeğer bir sistem saklı yordamı yok. Bu saklı yordam, veritabanının zaten istatistiği olmayan her sütununda tek sütunlu bir istatistik nesnesi oluşturur.
+Adanmış SQL havuzunda SQL Server sp_create_stats eşdeğer bir sistem saklı yordamı yok. Bu saklı yordam, zaten istatistiği olmayan bir SQL havuzundaki her sütunda tek sütunlu bir istatistik nesnesi oluşturur.
 
-Aşağıdaki örnek, veritabanı tasarımınızı kullanmaya başlamanıza yardımcı olur. Gereksinimlerinize uygun hale gelmekten çekinmeyin.
+Aşağıdaki örnek, SQL havuzu tasarımınıza başlamanıza yardımcı olur. Gereksinimlerinize uygun hale gelmekten çekinmeyin.
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_create_stats]
@@ -437,7 +437,7 @@ Belirli bir istatistik nesnesini güncelleştirmek için aşağıdaki sözdizimi
 UPDATE STATISTICS [schema_name].[table_name]([stat_name]);
 ```
 
-Örneğin:
+Örnek:
 
 ```sql
 UPDATE STATISTICS [dbo].[table1] ([stats_col1]);
@@ -453,7 +453,7 @@ Bir tablodaki tüm istatistik nesnelerini güncelleştirmek için basit bir yön
 UPDATE STATISTICS [schema_name].[table_name];
 ```
 
-Örneğin:
+Örnek:
 
 ```sql
 UPDATE STATISTICS dbo.table1;
@@ -556,7 +556,7 @@ Bu basit örnek, bir istatistik nesnesinin üç parçasını gösterir:
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>)
 ```
 
-Örneğin:
+Örnek:
 
 ```sql
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1);
@@ -570,7 +570,7 @@ Yalnızca belirli parçaları görüntülemek istiyorsanız, `WITH` yan tümcesi
 DBCC SHOW_STATISTICS([<schema_name>.<table_name>],<stats_name>) WITH stat_header, histogram, density_vector
 ```
 
-Örneğin:
+Örnek:
 
 ```sql
 DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector

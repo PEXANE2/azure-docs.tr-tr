@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2020
-ms.openlocfilehash: 2bbc57d8ddc004c1926da7e0037efdc1fcf2d76e
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 55e5a587a0ad02fa1f8993027b46162a14a58832
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95318108"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448243"
 ---
 # <a name="configure-monitoring-in-azure-monitor-for-vms-guest-health-using-data-collection-rules-preview"></a>Veri toplama kurallarını kullanarak VM'ler için Azure İzleyici Konuk sistem durumunda izlemeyi yapılandırma (Önizleme)
 [VM'ler için Azure izleyici Konuk sistem durumu](vminsights-health-overview.md) , düzenli aralıklarla örneklendiği bir dizi performans ölçümlerine göre tanımlanan bir sanal makinenin durumunu görüntülemenizi sağlar. Bu makalede, veri toplama kurallarını kullanarak birden çok sanal makine genelinde varsayılan izlemenin nasıl değiştirileceği açıklanır.
@@ -20,7 +20,7 @@ ms.locfileid: "95318108"
 ## <a name="monitors"></a>İzleyiciler
 Bir sanal makinenin sistem durumu, izleyicilerinin her birinden [sistem durumu toplamasına](vminsights-health-overview.md#health-rollup-policy) göre belirlenir. Aşağıdaki tabloda gösterildiği gibi VM'ler için Azure İzleyici Konuk durumunda iki tür izleyici vardır.
 
-| İzleyici | Description |
+| İzleme | Açıklama |
 |:---|:---|
 | Birim izleyicisi | Bir kaynağın veya uygulamanın bazı yönlerini ölçer. Bu, kaynağın performansını veya kullanılabilirliğini belirlemede bir performans sayacı denetleniyor olabilir. |
 | Toplam Izleyici | Tek bir toplu sistem durumu sağlamak için birden çok izleyici gruplandırır. Bir toplam izleyici, bir veya daha fazla birim İzleyicisi ve diğer toplama izleyicileri içerebilir. |
@@ -30,7 +30,7 @@ VM'ler için Azure İzleyici Konuk sistem durumu tarafından kullanılan izleyic
 ## <a name="monitor-properties"></a>İzleme özellikleri
 Aşağıdaki tabloda, her monitörde yapılandırılabilecek özellikler açıklanmaktadır.
 
-| Özellik | İzleyiciler | Description |
+| Özellik | İzleyiciler | Açıklama |
 |:---|:---|:---|
 | Etkin | Toplama<br>Birim | Doğru ise, durum İzleyicisi hesaplanır ve sanal makinenin durumuna katkıda bulunur. Uyarı uyarısının etkin olduğunu tetikleyebilirler. |
 | Uyarı | Toplama<br>Birim | True ise, uygun olmayan bir duruma geçirildiğinde izleyici için bir uyarı tetiklenir. Yanlışsa, izleyicinin durumu yine de bir uyarı tetikleyebilen sanal makinenin sistem durumuna katkıda bulunur. |
@@ -47,11 +47,11 @@ Aşağıdaki tabloda, her monitörde yapılandırılabilecek özellikler açıkl
 Aşağıdaki tabloda her izleyici için varsayılan yapılandırma listelenmektedir. Bu varsayılan yapılandırma doğrudan değiştirilemez, ancak belirli sanal makineler için İzleyici yapılandırmasını değiştirecek [geçersiz kılmalar](#overrides) tanımlayabilirsiniz.
 
 
-| İzleyici | Etkin | Uyarı | Uyarı | Kritik | Değerlendirme sıklığı | Geriye doğru | Değerlendirme türü | Minimum örnek | En fazla örnek |
+| İzleme | Etkin | Uyarı | Uyarı | Kritik | Değerlendirme sıklığı | Geriye doğru | Değerlendirme türü | Minimum örnek | En fazla örnek |
 |:---|:---|:---|:---|:---|:---|:---|:---|:---|:---|
 | CPU kullanımı  | Doğru | Yanlış | Yok | \> %90    | 60 sn | 240 sn | Min | 2 | 3 |
-| Kullanılabilir bellek | Doğru | Yanlış | Yok | \< 100 MB | 60 sn | 240 sn | En yüksek değer | 2 | 3 |
-| Dosya sistemi      | Doğru | Yanlış | Yok | \< 100 MB | 60 sn | 120 sn | En yüksek değer | 1 | 1 |
+| Kullanılabilir bellek | Doğru | Yanlış | Yok | \< 100 MB | 60 sn | 240 sn | Maks | 2 | 3 |
+| Dosya sistemi      | Doğru | Yanlış | Yok | \< 100 MB | 60 sn | 120 sn | Maks | 1 | 1 |
 
 
 ## <a name="overrides"></a>Geçersiz Kılmalar
@@ -103,9 +103,9 @@ Konuk sistem durumu, Azure Izleyici aracısına bir uzantı olarak uygulanır, d
 | Öğe | Gerekli | Açıklama |
 |:---|:---|:---|
 | `name` | Evet | Uzantı için Kullanıcı tanımlı dize. |
-| `streams` | Yes | Konuk sistem durumu verilerinin gönderileceği akışların listesi. Bu, **Microsoft-HealthStateChange** içermelidir.  |
-| `extensionName` | Yes | Uzantının adı. Bu, **Healthextension** olmalıdır. |
-| `extensionSettings` | Yes | `healthRuleOverride`Varsayılan yapılandırmaya uygulanacak öğelerin dizisi. |
+| `streams` | Evet | Konuk sistem durumu verilerinin gönderileceği akışların listesi. Bu, **Microsoft-HealthStateChange** içermelidir.  |
+| `extensionName` | Evet | Uzantının adı. Bu, **Healthextension** olmalıdır. |
+| `extensionSettings` | Evet | `healthRuleOverride`Varsayılan yapılandırmaya uygulanacak öğelerin dizisi. |
 
 
 ## <a name="extensionsettings-element"></a>extensionSettings öğesi
@@ -122,8 +122,8 @@ Uzantı ayarlarını içerir.
 | Öğe | Gerekli | Açıklama |
 |:---|:---|:---|
 | `schemaVersion` | Evet | Microsoft tarafından tanımlanan ve öğenin beklenen şemasını temsil eden dize. Şu anda 1,0 olarak ayarlanması gerekir |
-| `contentVersion` | No | Gerektiğinde, sistem durumu yapılandırmasının farklı sürümlerini izlemek için Kullanıcı tarafından tanımlanan dize. |
-| `healthRuleOverrides` | Yes | `healthRuleOverride`Varsayılan yapılandırmaya uygulanacak öğelerin dizisi. |
+| `contentVersion` | Hayır | Gerektiğinde, sistem durumu yapılandırmasının farklı sürümlerini izlemek için Kullanıcı tarafından tanımlanan dize. |
+| `healthRuleOverrides` | Evet | `healthRuleOverride`Varsayılan yapılandırmaya uygulanacak öğelerin dizisi. |
 
 ## <a name="healthrulesoverrides-element"></a>healthRulesOverrides öğesi
 `healthRuleOverride`Her birinin bir geçersiz kılma tanımlayan bir veya daha fazla öğe içeriyor.
@@ -143,10 +143,10 @@ Uzantı ayarlarını içerir.
 | Öğe | Gerekli | Açıklama |
 |:---|:---|:---|
 | `scopes` | Evet | Bu geçersiz kılmanın geçerli olduğu sanal makineleri belirten bir veya daha fazla kapsam listesi. DCR bir sanal makineyle ilişkili olsa da, sanal makinenin, geçersiz kılmanın uygulanması için bir kapsam içinde olması gerekir. |
-| `monitors` | Yes | Hangi izleyicilerin bu geçersiz kılmayı alacağını tanımlayan bir veya daha fazla dizenin listesi.  |
-| `monitorConfiguration` | No | İzleyici için sistem sağlığı durumları ve nasıl hesaplandıkları gibi yapılandırma. |
-| `alertConfiguration` | No | İzleyici için uyarı yapılandırması. |
-| `isEnabled` | No | İzlemenin etkin olup olmadığını denetler. Devre dışı bırakılan izleyici, yeniden etkinleştirilmediği takdirde devre dışı *bırakılan özel durum* durumuna geçer. Atlanırsa, izleyici hiyerarşideki üst izleyiciden durumunu alır. |
+| `monitors` | Evet | Hangi izleyicilerin bu geçersiz kılmayı alacağını tanımlayan bir veya daha fazla dizenin listesi.  |
+| `monitorConfiguration` | Hayır | İzleyici için sistem sağlığı durumları ve nasıl hesaplandıkları gibi yapılandırma. |
+| `alertConfiguration` | Hayır | İzleyici için uyarı yapılandırması. |
+| `isEnabled` | Hayır | İzlemenin etkin olup olmadığını denetler. Devre dışı bırakılan izleyici, yeniden etkinleştirilmediği takdirde devre dışı *bırakılan özel durum* durumuna geçer. Atlanırsa, izleyici hiyerarşideki üst izleyiciden durumunu alır. |
 
 
 ## <a name="scopes-element"></a>Scopes öğesi
@@ -227,12 +227,12 @@ Geriye doğru geri alma aralığında daha az örnek olması durumunda `minSampl
 | Öğe | Zorunlu | Açıklama | 
 |:---|:---|:---|
 | `evaluationFrequencySecs` | Hayır | Sistem durumu değerlendirmesi için sıklığı tanımlar. Her izleyici, aracının başladığı sırada ve bundan sonra bu parametre tarafından tanımlanan düzenli bir aralıkta değerlendirilir. |
-| `lookbackSecs`   | No | Geriye doğru geri dönme penceresinin boyutu (saniye). |
-| `evaluationType` | No | `min` – Tüm örnek kümesinden en küçük değeri Al<br>`max` -Tüm örnek kümesinden en büyük değeri Al<br>`avg` – örnek kümesi değerlerini ortalama alın<br>`all` – küme içindeki her tek değeri eşiklere göre karşılaştırın. Anahtar durumunu yalnızca, küme içindeki tüm örnekler eşik koşulunu karşıdığında izler. |
-| `minSamples`     | No | Değeri hesaplamak için kullanılacak minimum değer sayısı. |
-| `maxSamples`     | No | Değeri hesaplamak için kullanılacak maksimum değer sayısı. |
-| `warningCondition`  | No | Uyarı koşulu için eşik ve karşılaştırma mantığı. |
-| `criticalCondition` | No | Kritik koşul için eşik ve karşılaştırma mantığı. |
+| `lookbackSecs`   | Hayır | Geriye doğru geri dönme penceresinin boyutu (saniye). |
+| `evaluationType` | Hayır | `min` – Tüm örnek kümesinden en küçük değeri Al<br>`max` -Tüm örnek kümesinden en büyük değeri Al<br>`avg` – örnek kümesi değerlerini ortalama alın<br>`all` – küme içindeki her tek değeri eşiklere göre karşılaştırın. Anahtar durumunu yalnızca, küme içindeki tüm örnekler eşik koşulunu karşıdığında izler. |
+| `minSamples`     | Hayır | Değeri hesaplamak için kullanılacak minimum değer sayısı. |
+| `maxSamples`     | Hayır | Değeri hesaplamak için kullanılacak maksimum değer sayısı. |
+| `warningCondition`  | Hayır | Uyarı koşulu için eşik ve karşılaştırma mantığı. |
+| `criticalCondition` | Hayır | Kritik koşul için eşik ve karşılaştırma mantığı. |
 
 
 ## <a name="warningcondition-element"></a>warningCondition öğesi
@@ -249,8 +249,8 @@ Uyarı koşulunun eşiğini ve karşılaştırma mantığını tanımlar. Bu ö�
 | Özellik | Zorunlu | Açıklama | 
 |:---|:---|:---|
 | `isEnabled` | Hayır | Koşulun etkinleştirilip etkinleştirilmeyeceğini belirtir. **False** olarak ayarlanırsa, eşik ve işleç özellikleri ayarlanmasa bile koşul devre dışı bırakılır. |
-| `threshold` | No | Değerlendirilen değeri karşılaştırmak için eşiği tanımlar. |
-| `operator`  | No | Eşik ifadesinde kullanılacak karşılaştırma işlecini tanımlar. Olası değerler: >, <, >=, <=, = =. |
+| `threshold` | Hayır | Değerlendirilen değeri karşılaştırmak için eşiği tanımlar. |
+| `operator`  | Hayır | Eşik ifadesinde kullanılacak karşılaştırma işlecini tanımlar. Olası değerler: >, <, >=, <=, = =. |
 
 
 ## <a name="criticalcondition-element"></a>Kritikcondition öğesi
@@ -267,110 +267,12 @@ Kritik koşul için eşiği ve karşılaştırma mantığını tanımlar. Bu ö�
 | Özellik | Zorunlu | Açıklama | 
 |:---|:---|:---|
 | `isEnabled` | Hayır | Koşulun etkinleştirilip etkinleştirilmeyeceğini belirtir. **False** olarak ayarlanırsa, eşik ve işleç özellikleri ayarlanmasa bile koşul devre dışı bırakılır. |
-| `threshold` | No | Değerlendirilen değeri karşılaştırmak için eşiği tanımlar. |
-| `operator`  | No | Eşik ifadesinde kullanılacak karşılaştırma işlecini tanımlar. Olası değerler: >, <, >=, <=, = =. |
+| `threshold` | Hayır | Değerlendirilen değeri karşılaştırmak için eşiği tanımlar. |
+| `operator`  | Hayır | Eşik ifadesinde kullanılacak karşılaştırma işlecini tanımlar. Olası değerler: >, <, >=, <=, = =. |
 
 ## <a name="sample-data-collection-rule"></a>Örnek veri toplama kuralı
-Aşağıdaki örnek veri toplama kuralında, izlemeyi yapılandırmak için bir geçersiz kılma örneği gösterilmektedir.
+Konuk izlemeyi etkinleştiren örnek bir veri toplama kuralı için bkz. [Kaynak Yöneticisi şablonu kullanarak sanal makineyi etkinleştirme](vminsights-health-enable.md#enable-a-virtual-machine-using-resource-manager-template).
 
-
-```json
-{
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "defaultHealthDataCollectionRuleName": {
-      "type": "string",
-      "metadata": {
-        "description": "Specifies the name of the data collection rule to create."
-      },
-      "defaultValue": "Microsoft-VMInsights-Health"
-    },
-    "destinationWorkspaceResourceId": {
-      "type": "string",
-      "metadata": {
-        "description": "Specifies the Azure resource ID of the Log Analytics workspace to use to store virtual machine health data."
-      }
-    },
-    "dataCollectionRuleLocation": {
-      "type": "string",
-      "metadata": {
-        "description": "The location code in which the data collection rule should be deployed. Examples: eastus, westeurope, etc"
-      }
-    }
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Insights/dataCollectionRules",
-      "name": "[parameters('defaultHealthDataCollectionRuleName')]",
-      "location": "[parameters('dataCollectionRuleLocation')]",
-      "apiVersion": "2019-11-01-preview",
-      "properties": {
-        "description": "Data collection rule for VM Insights health.",
-        "dataSources": {
-          "performanceCounters": [
-              {
-                  "name": "VMHealthPerfCounters",
-                  "streams": [ "Microsoft-Perf" ],
-                  "scheduledTransferPeriod": "PT1M",
-                  "samplingFrequencyInSeconds": 60,
-                  "counterSpecifiers": [
-                      "\\LogicalDisk(*)\\% Free Space",
-                      "\\Memory\\Available Bytes",
-                      "\\Processor(_Total)\\% Processor Time"
-                  ]
-              }
-          ],
-          "extensions": [
-            {
-              "name": "Microsoft-VMInsights-Health",
-              "streams": [
-                "Microsoft-HealthStateChange"
-              ],
-              "extensionName": "HealthExtension",
-              "extensionSettings": {
-                "schemaVersion": "1.0",
-                "contentVersion": "",
-                "healthRuleOverrides": [
-                  {
-                    "scopes": [ "*" ],
-                    "monitors": ["root"],
-                    "alertConfiguration": {
-                      "isEnabled": true
-                    }
-                  }
-                ]
-              },
-              "inputDataSources": [
-                  "VMHealthPerfCounters"
-              ]
-
-            }
-          ]
-        },
-        "destinations": {
-          "logAnalytics": [
-            {
-              "workspaceResourceId": "[parameters('destinationWorkspaceResourceId')]",
-              "name": "Microsoft-HealthStateChange-Dest"
-            }
-          ]
-        },                  
-        "dataFlows": [
-          {
-            "streams": [
-              "Microsoft-HealthStateChange"
-            ],
-            "destinations": [
-              "Microsoft-HealthStateChange-Dest"
-            ]
-          }
-        ]
-      }
-    }
-  ]
-}
-```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

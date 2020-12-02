@@ -8,18 +8,18 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 5cf406dc0577f477858dd8a6570f7975747112e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 048f2585d8e9ac1b10293083bda0900e7ce468bb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891256"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447598"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro cihazınızda Azure Resource Manager bağlanma
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Azure Resource Manager, Azure aboneliğinizde kaynak oluşturmanıza, güncelleştirmenize ve silmenizi sağlayan bir yönetim katmanı sağlar. Azure Stack Edge Pro cihazı, yerel bir abonelikte VM 'Ler oluşturmak, güncelleştirmek ve silmek için aynı Azure Resource Manager API 'Leri destekler. Bu destek, cihazı bulutla tutarlı bir şekilde yönetmenizi sağlar. 
+Azure Resource Manager, Azure aboneliğinizdeki kaynakları oluşturmanızı, güncelleştirmenizi ve silmenizi sağlayan bir yönetim katmanı sunar. Azure Stack Edge Pro cihazı, yerel bir abonelikte VM 'Ler oluşturmak, güncelleştirmek ve silmek için aynı Azure Resource Manager API 'Leri destekler. Bu destek, cihazı bulutla tutarlı bir şekilde yönetmenizi sağlar. 
 
 Bu öğreticide, Azure PowerShell kullanarak Azure Resource Manager aracılığıyla Azure Stack Edge Pro cihazınızdan yerel API 'lere nasıl bağlanabileceği açıklanmaktadır.
 
@@ -34,7 +34,7 @@ Azure Resource Manager, Azure Stack Edge Pro cihaz API 'sini çağırmak ve VM o
 
 Aşağıdaki tabloda, cihazınızda sunulan çeşitli uç noktalar, desteklenen protokoller ve bu uç noktalara erişmek için bağlantı noktaları özetlenmektedir. Makalenin tamamında, bu uç noktalara yönelik başvuruları bulacaksınız.
 
-| # | Uç Noktası | Desteklenen protokoller | Kullanılan bağlantı noktası | Kullanıldığı yerler |
+| # | Uç Nokta | Desteklenen protokoller | Kullanılan bağlantı noktası | Kullanıldığı yerler |
 | --- | --- | --- | --- | --- |
 | 1. | Azure Resource Manager | https | 443 | Otomasyon için Azure Resource Manager 'e bağlanmak için |
 | 2. | Güvenlik belirteci hizmeti | https | 443 | Erişim ve yenileme belirteçleri aracılığıyla kimlik doğrulaması yapmak için |
@@ -57,7 +57,7 @@ Azure Resource Manager kullanarak cihazın yerel API 'Lerine bağlanma işlemi a
 
 Aşağıdaki bölümler Azure Resource Manager bağlanmada yukarıdaki adımların her birini ayrıntılandırır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, Azure Resource Manager aracılığıyla cihaza bağlanmak için kullanılan istemcinin TLS 1,2 kullanmasını sağlayın. Daha fazla bilgi için [Windows ISTEMCISINDE TLS 1,2 yapılandırma Azure Stack Edge Pro cihazına erişme](azure-stack-edge-j-series-configure-tls-settings.md)bölümüne gidin.
 
@@ -124,7 +124,7 @@ Azure Resource Manager API 'Leri çağırabileceğiniz Windows istemcisi, cihazl
 
 1. *. Cer* UZANTıSıNA sahip der biçimi olarak verdiğiniz kök sertifika, artık Istemci sisteminizdeki güvenilen kök sertifika yetkililerine içeri aktarılmalıdır. Ayrıntılı adımlar için bkz [. sertifikaları Güvenilen kök sertifika yetkilileri deposuna aktarma.](azure-stack-edge-j-series-manage-certificates.md#import-certificates-as-der-format)
 
-2. *. Pfx* olarak verdiğiniz uç nokta sertifikaları *. cer*olarak verilmelidir. Bu *. cer* daha sonra sisteminizdeki **Kişisel** sertifika deposuna aktarılır. Ayrıntılı adımlar için bkz. [sertifikaları Kişisel depoya alma](azure-stack-edge-j-series-manage-certificates.md#import-certificates-as-der-format).
+2. *. Pfx* olarak verdiğiniz uç nokta sertifikaları *. cer* olarak verilmelidir. Bu *. cer* daha sonra sisteminizdeki **Kişisel** sertifika deposuna aktarılır. Ayrıntılı adımlar için bkz. [sertifikaları Kişisel depoya alma](azure-stack-edge-j-series-manage-certificates.md#import-certificates-as-der-format).
 
 ## <a name="step-3-install-powershell-on-the-client"></a>3. Adım: PowerShell 'i istemciye yüklemeyi 
 
@@ -138,9 +138,9 @@ Windows istemcinizin aşağıdaki önkoşulları karşılaması gerekir:
 
     **Ana** sürümü karşılaştırın ve 5,0 veya sonraki bir sürüm olduğundan emin olun.
 
-    Sürümünüz eskiyse bkz. [Windows PowerShell'in mevcut sürümünü yükseltme](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell).
+    Sürümünüz eskiyse bkz. [Windows PowerShell'in mevcut sürümünü yükseltme](/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell).
 
-    \'PowerShell 5,0 ' i yoksa, [Windows PowerShell 'i yükleme](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-6)' yi izleyin.
+    \'PowerShell 5,0 ' i yoksa, [Windows PowerShell 'i yükleme](/powershell/scripting/install/installing-windows-powershell?view=powershell-6)' yi izleyin.
 
     Örnek çıktı aşağıda gösterilmiştir.
 
@@ -175,11 +175,11 @@ Windows istemcinizin aşağıdaki önkoşulları karşılaması gerekir:
     PSGallery                 Trusted              https://www.powershellgallery.com/api/v2
     ```
     
-Deponuzun güvenilir olmaması veya daha fazla bilgiye ihtiyacınız varsa bkz. [PowerShell Galerisi erişilebilirliği doğrulama](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-install?view=azs-1908#2-validate-the-powershell-gallery-accessibility).
+Deponuzun güvenilir olmaması veya daha fazla bilgiye ihtiyacınız varsa bkz. [PowerShell Galerisi erişilebilirliği doğrulama](/azure-stack/operator/azure-stack-powershell-install?view=azs-1908#2-validate-the-powershell-gallery-accessibility).
 
 ## <a name="step-4-set-up-azure-powershell-on-the-client"></a>4. Adım: istemcide Azure PowerShell ayarlama 
 
-<!--1. Verify the API profile of the client and identify which version of the Azure PowerShell modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](https://docs.microsoft.com/azure-stack/user/azure-stack-version-profiles?view=azs-1908#azure-resource-manager-api-profiles).-->
+<!--1. Verify the API profile of the client and identify which version of the Azure PowerShell modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](/azure-stack/user/azure-stack-version-profiles?view=azs-1908#azure-resource-manager-api-profiles).-->
 
 1. Azure PowerShell modüllerini istemciyle birlikte çalışacak şekilde yükleyeceksiniz.
 
@@ -297,9 +297,9 @@ Azure tutarlı VIP 'ye bağlanmak için kullandığınız istemcide uç nokta ad
 Azure Resource Manager ortamını ayarlayın ve cihazınızın Azure Resource Manager aracılığıyla istemci iletişimi için düzgün çalıştığını doğrulayın. Bu doğrulama için aşağıdaki adımları uygulayın:
 
 
-1. `Add-AzureRmEnvironment`Azure Resource Manager aracılığıyla iletişimin düzgün çalıştığından ve API çağrılarının Azure Resource Manager-443 için adanmış bağlantı noktasında gezindiğinden emin olmak için cmdlet 'ini kullanın.
+1. Azure Resource Manager ile doğru şekilde iletişim kurabildiğinizden ve API çağrılarının Azure Resource Manager için ayrılmış olan 443 numaralı bağlantı noktası üzerinden geçtiğinden emin olmak için `Add-AzureRmEnvironment` cmdlet'ini kullanın.
 
-    `Add-AzureRmEnvironment`Cmdlet 'i Azure Resource Manager cmdlet 'lerinin yeni bir Azure Resource Manager örneğiyle bağlanmasını sağlamak için uç noktaları ve meta verileri ekler. 
+    `Add-AzureRmEnvironment` cmdlet'i, Azure Resource Manager cmdlet'lerinin yeni bir Azure Resource Manager örneğiyle bağlantı kurmasını sağlamak için uç noktalar ve meta veriler ekler. 
 
 
     > [!IMPORTANT]
@@ -319,7 +319,7 @@ Azure Resource Manager ortamını ayarlayın ve cihazınızın Azure Resource Ma
     AzDBE https://management.dbe-n6hugc2ra.microsoftdatabox.com https://login.dbe-n6hugc2ra.microsoftdatabox.com/adfs/
     ```
 
-2. Ortamı Azure Stack Edge Pro ve Azure Resource Manager çağrıları için kullanılacak bağlantı noktasını 443 olarak ayarlayın. Ortamı iki şekilde tanımlarsınız:
+2. Ortamı Azure Stack Edge Pro, Azure Resource Manager çağrıları için kullanılacak bağlantı noktasını da 443 olarak ayarlayın. Ortamı iki şekilde tanımlarsınız:
 
     - Ortamı ayarlayın. Aşağıdaki komutu yazın:
 
@@ -327,13 +327,13 @@ Azure Resource Manager ortamını ayarlayın ve cihazınızın Azure Resource Ma
     Set-AzureRMEnvironment -Name <Environment Name>
     ```
     
-    Daha fazla bilgi için [set-AzureRMEnvironment](https://docs.microsoft.com/powershell/module/azurerm.profile/set-azurermenvironment?view=azurermps-6.13.0)adresine gidin.
+    Daha fazla bilgi için [set-AzureRMEnvironment](/powershell/module/azurerm.profile/set-azurermenvironment?view=azurermps-6.13.0)adresine gidin.
 
     - Yürütmeniz gereken her cmdlet için ortamı satır içi olarak tanımlayın. Bu, tüm API çağrılarının doğru ortamda gezinmesini sağlar. Varsayılan olarak, çağrılar Azure genel kullanıma açıktır, ancak bunların Azure Stack Edge Pro cihazı için ayarladığınız ortamda gitmesini istersiniz.
 
     - [Azurerd ortamlarını değiştirme](#switch-environments)hakkında daha fazla bilgi için bkz..
 
-2. Azure Resource Manager bağlantıların kimliğini doğrulamak için yerel cihaz API 'Lerini çağırın. 
+2. Azure Resource Manager bağlantılarının kimliğini doğrulamak için yerel cihaz API'lerini çağırın. 
 
     1. Bu kimlik bilgileri yerel makine hesabına yöneliktir ve yalnızca API erişimi için kullanılır.
 

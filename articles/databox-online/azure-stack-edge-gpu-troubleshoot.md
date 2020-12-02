@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 10/07/2020
 ms.author: alkohli
-ms.openlocfilehash: 413847b7858549dc6130f219829b220b2857c7e2
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: d07d9dccb0aa273f79b251f2ffb4a920f3cac2e7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91938899"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447617"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazındaki sorunları giderme 
 
@@ -115,7 +115,7 @@ Yükleme ve yenileme işlemlerinde karşılaşılan hatalar ilgili hata dosyalar
 1. Hata dosyalarını görüntülemek için paylaşımınıza gidin ve içeriği görüntülemek için paylaşıma seçin. 
 
 
-2. _Microsoft Data Box Edge klasörünü_seçin. Bu klasör iki alt klasör içerir:
+2. _Microsoft Data Box Edge klasörünü_ seçin. Bu klasör iki alt klasör içerir:
 
     - Karşıya yükleme hatalarının bulunduğu Upload klasörü.
     - Yenileme sırasında karşılaşılan hataların bulunduğu Refresh klasörü.
@@ -144,9 +144,9 @@ Cihazınıza erişmek için Azure Resource Manager yapılandırması sırasında
 |------------|-----------------|
 |Genel sorunlar|<li>[Sınır cihazının düzgün şekilde yapılandırıldığını doğrulayın](#verify-the-device-is-configured-properly).<li> [İstemcinin düzgün yapılandırıldığını doğrulama](#verify-the-client-is-configured-properly)|
 |Add-AzureRmEnvironment: istek gönderilirken bir hata oluştu.<br>Şu satırda: 1 char: 1<br>+ Add-AzureRmEnvironment-adı Az3-Ermenistan " https://management.dbe ...|Bu hata, Azure Stack Edge Pro cihazınızın ulaşılamaz veya düzgün şekilde yapılandırılmadığı anlamına gelir. Sınır cihazının ve istemcisinin doğru şekilde yapılandırıldığını doğrulayın. Rehberlik için, bu tablodaki **genel sorunlar** satırına bakın.|
-|Hizmet hata döndürdü. Daha fazla ayrıntı için InnerException öğesine bakın: temel alınan bağlantı kapatıldı: SSL/TLS güvenli kanalı için güven ilişkisi kurulamadı. |   Bu hata, büyük olasılıkla kendi sertifika adımlarınızı bir veya daha fazla getirme işlemi yanlış gerçekleştirdi. Kılavuza [buradan](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-j-series-connect-resource-manager#step-2-create-and-install-certificates)ulaşabilirsiniz. |
+|Hizmet hata döndürdü. Daha fazla ayrıntı için InnerException öğesine bakın: temel alınan bağlantı kapatıldı: SSL/TLS güvenli kanalı için güven ilişkisi kurulamadı. |   Bu hata, büyük olasılıkla kendi sertifika adımlarınızı bir veya daha fazla getirme işlemi yanlış gerçekleştirdi. Kılavuza [buradan](./azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates)ulaşabilirsiniz. |
 |İşlem geçersiz bir durum kodu döndürdü ' ServiceUnavailable ' <br> Yanıt durum kodu başarılı olduğunu göstermiyor: 503 (hizmet kullanılamıyor). | Bu hata, bu koşullardan herhangi birinin sonucu olabilir.<li>ArmStsPool durdurulmuş durumda.</li><li>Azure Resource Manager/güvenlik belirteci Hizmetleri Web sitelerinden biri çalışmıyor.</li><li>Azure Resource Manager küme kaynağı çalışmıyor.</li><br><strong>Note:</strong> Gereci yeniden başlatmak sorunu çözebilir, ancak daha fazla hata ayıklayabilmeniz için destek paketini toplamanız gerekir.|
-|AADSTS50126: Geçersiz Kullanıcı adı veya parola.<br>İzleme KIMLIĞI: 29317dav9-52fc-4ba0-9778-446ae5625e5a<br>Bağıntı KIMLIĞI: 1b9752c4-8cbf-4304-a714-8a16527410f4<br>Zaman damgası: 2019-11-15 09:21:57Z: uzak sunucu bir hata döndürdü: (400) hatalı Istek.<br>Şu satırda: 1 char: 1 |Bu hata, bu koşullardan herhangi birinin sonucu olabilir.<li>Geçersiz Kullanıcı adı ve parola için, [buradaki](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-j-series-set-azure-resource-manager-password) adımları izleyerek ve ardından doğru parolayı kullanarak müşterinin Azure Portal parolayı değiştirdiğini doğrulayın.<li>Geçersiz bir kiracı KIMLIĞI için kiracı KIMLIĞI sabit bir GUID 'dir ve şu şekilde ayarlanmalıdır `c0257de7-538f-415c-993a-1b87a031879d`</li>|
+|AADSTS50126: Geçersiz Kullanıcı adı veya parola.<br>İzleme KIMLIĞI: 29317dav9-52fc-4ba0-9778-446ae5625e5a<br>Bağıntı KIMLIĞI: 1b9752c4-8cbf-4304-a714-8a16527410f4<br>Zaman damgası: 2019-11-15 09:21:57Z: uzak sunucu bir hata döndürdü: (400) hatalı Istek.<br>Şu satırda: 1 char: 1 |Bu hata, bu koşullardan herhangi birinin sonucu olabilir.<li>Geçersiz Kullanıcı adı ve parola için, [buradaki](./azure-stack-edge-j-series-set-azure-resource-manager-password.md) adımları izleyerek ve ardından doğru parolayı kullanarak müşterinin Azure Portal parolayı değiştirdiğini doğrulayın.<li>Geçersiz bir kiracı KIMLIĞI için kiracı KIMLIĞI sabit bir GUID 'dir ve şu şekilde ayarlanmalıdır `c0257de7-538f-415c-993a-1b87a031879d`</li>|
 |Connect-AzureRmAccount: AADSTS90056: kaynak devre dışı veya yok. Erişmeye çalıştığınız kaynağın tam kaynak URL 'sini belirttiğinizden emin olmak için uygulamanızın kodunu kontrol edin.<br>İzleme KIMLIĞI: e19bdbc9-5dc8-4a74-85c3-ac6abdfda115<br>Bağıntı KIMLIĞI: 75c8ef5a-830e-48B5-b039-595a96488ff9 zaman damgası: 2019-11-18 07:00:51Z: uzak sunucu bir hata döndürdü: (400) kötü |Komutta kullanılan kaynak uç noktaları `Add-AzureRmEnvironment` yanlış.|
 |Buluttan uç noktalar alınamıyor.<br>Lütfen ağ bağlantınız olduğundan emin olun. Hata ayrıntısı: HTTPSConnectionPool (Konak = ' Management. dbg-of4k6suvm.microsoftdatabox.com ', bağlantı noktası = 30005): en fazla yeniden deneme URL:/Metadata/endpoints ile aşıldı? api-Version = 2015-01-01 (SSLError ("Hatalı el sıkışma: hata ([(' SSL yordamları ', ' tls_process_server_certificate ', ' sertifika doğrulaması başarısız ')],)",),) |Bu hata çoğunlukla bir Mac/Linux ortamında görünür ve aşağıdaki sorunlardan kaynaklanır:<li>Python sertifika deposuna bir pek biçim sertifikası eklenmedi.</li> |
 
@@ -167,7 +167,7 @@ Cihazınıza erişmek için Azure Resource Manager yapılandırması sırasında
 
 2. Doğru PowerShell modüllerinin [burada](azure-stack-edge-j-series-connect-resource-manager.md#step-4-set-up-azure-powershell-on-the-client)bahsedilen şekilde yüklendiğini doğrulayın.
 
-3. Azure Resource Manager ve oturum açma uç noktalarına erişilebildiğini doğrulayın. Uç noktalara ping yapmayı deneyebilirsiniz. Örneğin:
+3. Azure Resource Manager ve oturum açma uç noktalarına erişilebildiğini doğrulayın. Uç noktalara ping yapmayı deneyebilirsiniz. Örnek:
 
    `ping management.28bmdw2-bb9.microsoftdatabox.com`
    `ping login.28bmdw2-bb9.microsoftdatabox.com`
@@ -188,15 +188,15 @@ Azure Stack Edge Pro/Data Box Gateway cihazında blob depolamayla ilgili hatalar
 |--------------------|-----------------|
 |Alt kaynaklar alınamıyor. HTTP başlıklarındaki bir değer doğru biçimde değil.| **Düzenle** menüsünde **hedef Azure Stack API 'leri**' ni seçin. Sonra Azure Depolama Gezgini yeniden başlatın.|
 |GetAddrInfo ENOTFOUND <accountname> . blob. <serialnumber> microsoftdatabox.com|Uç nokta adının `<accountname>.blob.<serialnumber>.microsoftdatabox.com` Bu yoldaki Hosts dosyasına eklendiğinden emin olun: `C:\Windows\System32\drivers\etc\hosts` Windows veya `/etc/hosts` Linux üzerinde.|
-|Alt kaynaklar alınamıyor.<br> Ayrıntılar: otomatik olarak imzalanan sertifika |Cihazınızın SSL sertifikasını Azure Depolama Gezgini içine aktarın: <ol><li>Azure portal sertifikayı indirin. Daha fazla bilgi için bkz. [sertifikayı indirme](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate).</li><li>**Düzenle** menüsünde SSL sertifikaları ' nı seçin ve ardından **sertifikaları içeri aktar**' ı seçin.</li></ol>|
+|Alt kaynaklar alınamıyor.<br> Ayrıntılar: otomatik olarak imzalanan sertifika |Cihazınızın SSL sertifikasını Azure Depolama Gezgini içine aktarın: <ol><li>Azure portal sertifikayı indirin. Daha fazla bilgi için bkz. [sertifikayı indirme](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate).</li><li>**Düzenle** menüsünde SSL sertifikaları ' nı seçin ve ardından **sertifikaları içeri aktar**' ı seçin.</li></ol>|
 |AzCopy komutu, bu hatayı görüntülemeden önce bir dakika boyunca yanıt vermeyi durdurmuş gibi görünüyor:<br>`Failed to enumerate directory https://… The remote name could not be resolved <accountname>.blob.<serialnumber>.microsoftdatabox.com`|Uç nokta adının `<accountname>.blob.<serialnumber>.microsoftdatabox.com` Şu adreste bulunan Hosts dosyasına eklendiğinden emin olun: `C:\Windows\System32\drivers\etc\hosts` .|
-|AzCopy komutu, bu hatayı görüntülemeden önce bir dakika boyunca yanıt vermeyi durdurmuş gibi görünüyor:<br>`Error parsing source location. The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel`. |Cihazınızın SSL sertifikasını sistemin sertifika deposuna aktarın. Daha fazla bilgi için bkz. [sertifikayı indirme](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate).|
+|AzCopy komutu, bu hatayı görüntülemeden önce bir dakika boyunca yanıt vermeyi durdurmuş gibi görünüyor:<br>`Error parsing source location. The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel`. |Cihazınızın SSL sertifikasını sistemin sertifika deposuna aktarın. Daha fazla bilgi için bkz. [sertifikayı indirme](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate).|
 |AzCopy komutu, bu hatayı görüntülemeden önce 20 dakika boyunca yanıt vermeyi durdurmuş gibi görünüyor:<br>`Error parsing source location https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>. No such device or address`. |Uç nokta adının `<accountname>.blob.<serialnumber>.microsoftdatabox.com` Şu adreste bulunan Hosts dosyasına eklendiğinden emin olun: `/etc/hosts` .|
-|AzCopy komutu, bu hatayı görüntülemeden önce 20 dakika boyunca yanıt vermeyi durdurmuş gibi görünüyor:<br>`Error parsing source location… The SSL connection could not be established`. |Cihazınızın SSL sertifikasını sistemin sertifika deposuna aktarın. Daha fazla bilgi için bkz. [sertifikayı indirme](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate).|
+|AzCopy komutu, bu hatayı görüntülemeden önce 20 dakika boyunca yanıt vermeyi durdurmuş gibi görünüyor:<br>`Error parsing source location… The SSL connection could not be established`. |Cihazınızın SSL sertifikasını sistemin sertifika deposuna aktarın. Daha fazla bilgi için bkz. [sertifikayı indirme](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate).|
 |AzCopy komutu, bu hatayı görüntülemeden önce 20 dakika boyunca yanıt vermeyi durdurmuş gibi görünüyor:<br>`Error parsing source location https://<accountname>.blob.<serialnumber>.microsoftdatabox.com/<cntnr>. No such device or address`|Uç nokta adının `<accountname>.blob.<serialnumber>.microsoftdatabox.com` Şu adreste bulunan Hosts dosyasına eklendiğinden emin olun: `/etc/hosts` .|
-|AzCopy komutu, bu hatayı görüntülemeden önce 20 dakika boyunca yanıt vermeyi durdurmuş gibi görünüyor: `Error parsing source location… The SSL connection could not be established` .|Cihazınızın SSL sertifikasını sistemin sertifika deposuna aktarın. Daha fazla bilgi için bkz. [sertifikayı indirme](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate).|
+|AzCopy komutu, bu hatayı görüntülemeden önce 20 dakika boyunca yanıt vermeyi durdurmuş gibi görünüyor: `Error parsing source location… The SSL connection could not be established` .|Cihazınızın SSL sertifikasını sistemin sertifika deposuna aktarın. Daha fazla bilgi için bkz. [sertifikayı indirme](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate).|
 |HTTP başlıklarındaki bir değer doğru biçimde değil.|Python için Microsoft Azure Depolama kitaplığının yüklü sürümü Data Box tarafından desteklenmiyor. Desteklenen sürümler için Azure Data Box BLOB depolama gereksinimleri bölümüne bakın.|
-|… [SSL: CERTIFICATE_VERIFY_FAILED]...| Python 'u çalıştırmadan önce, REQUESTS_CA_BUNDLE ortam değişkenini Base64 kodlamalı SSL sertifika dosyasının yoluna ayarlayın (bkz. [sertifikayı indirme](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest#download-certificate). Örneğin:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer`<br>`python`<br>Alternatif olarak, sertifikayı sistemin sertifika deposuna ekleyin ve bu ortam değişkenini bu deponun yoluna ayarlayın. Örneğin, Ubuntu üzerinde:<br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt`<br>`python`.|
+|… [SSL: CERTIFICATE_VERIFY_FAILED]...| Python 'u çalıştırmadan önce, REQUESTS_CA_BUNDLE ortam değişkenini Base64 kodlamalı SSL sertifika dosyasının yoluna ayarlayın (bkz. [sertifikayı indirme](../databox/data-box-deploy-copy-data-via-rest.md#download-certificate). Örnek:<br>`export REQUESTS_CA_BUNDLE=/tmp/mycert.cer`<br>`python`<br>Alternatif olarak, sertifikayı sistemin sertifika deposuna ekleyin ve bu ortam değişkenini bu deponun yoluna ayarlayın. Örneğin, Ubuntu üzerinde:<br>`export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt`<br>`python`.|
 |Bağlantı zaman aşımına uğrar.|Azure Stack Edge Pro 'da oturum açın ve sonra kilidinin açık olup olmadığını kontrol edin. Cihaz her yeniden başlatıldığında, birisi oturum açana kadar kilitli kalır.|
 
 

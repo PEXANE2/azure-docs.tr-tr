@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/09/2018
 ms.topic: conceptual
-ms.openlocfilehash: de060be7ace84ea309b71087a50fd572091bed43
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 88d732cc3feaa2c9a528443d4a783227f3d8e641
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004798"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446806"
 ---
 # <a name="add-an-iot-edge-device-to-your-remote-monitoring-solution-accelerator"></a>Uzaktan Izleme çözüm hızlandırıcısına IoT Edge cihaz ekleme
 
@@ -34,9 +34,9 @@ Uzaktan Izleme çözüm hızlandırıcısına IoT Edge bir cihaz eklemek için W
 
 Çözüm hızlandırıcısında bir IoT Edge cihazını doğrudan IoT Hub örneğiyle kaydetmek de mümkündür. Bu nasıl yapılır kılavuzlarından herhangi birini izlemeden önce çözüm hızlandırıcısında IoT Hub 'ın adını bilmeniz gerekir:
 
-- [Azure portal yeni bir Azure IoT Edge cihazı kaydetme](../iot-edge/how-to-register-device.md#register-in-the-azure-portal)
-- [Azure CLı ile yeni bir Azure IoT Edge cihaz kaydetme](../iot-edge/how-to-register-device.md#register-with-the-azure-cli)
-- [Visual Studio Code 'tan yeni bir Azure IoT Edge cihazı kaydetme](../iot-edge/how-to-register-device.md#register-with-visual-studio-code)
+- [Azure portal yeni bir Azure IoT Edge cihazı kaydetme](../iot-edge/how-to-manual-provision-symmetric-key.md?tabs=azure-portal%2Cwindows)
+- [Azure CLı ile yeni bir Azure IoT Edge cihaz kaydetme](../iot-edge/how-to-manual-provision-symmetric-key.md?tabs=azure-cli%2Cwindows)
+- [Visual Studio Code 'tan yeni bir Azure IoT Edge cihazı kaydetme](../iot-edge/how-to-manual-provision-symmetric-key.md?tabs=visual-studio-code%2Cwindows)
 
 Uzaktan Izleme çözüm hızlandırıcısında bir cihazı doğrudan IoT Hub ile kaydettiğinizde, Web Kullanıcı arabirimindeki **Device Explorer** sayfasında listelenir.
 
@@ -44,11 +44,11 @@ Uzaktan Izleme çözüm hızlandırıcısında bir cihazı doğrudan IoT Hub ile
 
 Sınır cihazınıza modül dağıtabilmeniz için önce gerçek cihaza IoT Edge çalışma zamanını yüklemelisiniz. Aşağıdaki nasıl yapılır kılavuzlarında, çalışma zamanının ortak cihaz platformları üzerine nasıl yükleneceği gösterilmektedir:
 
-- [Linux (x64) üzerinde Azure IoT Edge çalışma zamanını yükler](../iot-edge/how-to-install-iot-edge-linux.md)
-- [Linux 'ta Azure IoT Edge çalışma zamanı 'nı (ARM32v7/armhf) yükler](../iot-edge/how-to-install-iot-edge-linux.md)
-- [Windows kapsayıcıları ile kullanmak için Windows üzerinde Azure IoT Edge çalışma zamanı 'nı yüklemek](../iot-edge/how-to-install-iot-edge-windows.md)
-- [Linux kapsayıcılarıyla kullanmak için Windows 'a Azure IoT Edge çalışma zamanını yükler](../iot-edge/how-to-install-iot-edge-windows-with-linux.md)
-- [Windows IoT Core üzerinde IoT Edge çalışma zamanını yükler](../iot-edge/how-to-install-iot-edge-windows.md)
+- [Linux (x64) üzerinde Azure IoT Edge çalışma zamanını yükler](../iot-edge/how-to-install-iot-edge.md)
+- [Linux 'ta Azure IoT Edge çalışma zamanı 'nı (ARM32v7/armhf) yükler](../iot-edge/how-to-install-iot-edge.md)
+- [Windows kapsayıcıları ile kullanmak için Windows üzerinde Azure IoT Edge çalışma zamanı 'nı yüklemek](../iot-edge/how-to-install-iot-edge.md)
+- [Linux kapsayıcılarıyla kullanmak için Windows 'a Azure IoT Edge çalışma zamanını yükler](../iot-edge/how-to-install-iot-edge.md)
+- [Windows IoT Core üzerinde IoT Edge çalışma zamanını yükler](../iot-edge/how-to-install-iot-edge.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

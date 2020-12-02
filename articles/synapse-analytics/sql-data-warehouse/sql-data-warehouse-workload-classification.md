@@ -1,6 +1,6 @@
 ---
-title: İş yükü sınıflandırma
-description: Azure SYNAPSE Analytics 'te sorgulara yönelik eşzamanlılık, önem ve işlem kaynaklarını yönetmek için sınıflandırmayı kullanma kılavuzu.
+title: Adanmış SQL havuzu için iş yükü sınıflandırması
+description: Azure SYNAPSE Analytics 'te adanmış SQL havuzu için sorgu eşzamanlılık, önem ve işlem kaynaklarını yönetmek üzere sınıflandırmayı kullanma kılavuzu.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 6b66b8a9fb3b5eb7dc78c00ba084e8609877dec7
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: bf19e2d1674d0a0c2102280b28b5549505c1dfab
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323870"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447771"
 ---
-# <a name="azure-synapse-analytics-workload-classification"></a>Azure SYNAPSE Analytics iş yükü sınıflandırması
+# <a name="workload-classification-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu için iş yükü sınıflandırması
 
 Bu makalede, Azure SYNAPSE 'de adanmış SQL havuzlarıyla bir iş yükü grubu atamaya ve gelen isteklere önem vermenin iş yükü sınıflandırma süreci açıklanmaktadır.
 
@@ -36,7 +36,7 @@ Tüm deyimler, kaynak gerektirmediğinden veya yürütmeyi etkilemek için önem
 
 ## <a name="classification-process"></a>Sınıflandırma işlemi
 
-Azure SYNAPSE ' de adanmış SQL havuzu sınıflandırması, Kullanıcı [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)kullanılarak kendisine atanmış karşılık gelen bir kaynak sınıfına sahip bir role atanarak bugün elde edilir. Bir kaynak sınıfına bir oturum açma ötesinde istekleri niteleyebilme özelliği bu özellikle sınırlıdır. Artık sınıflandırma için daha zengin bir yöntem [oluşturma Iş yükü sınıflandırıcı](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) sözdizimi ile kullanılabilir.  Bu söz dizimi sayesinde, adanmış SQL havuzu kullanıcıları önem ve parametre aracılığıyla bir isteğe ne kadar sistem kaynağı atandığını atayabilirler `workload_group` .
+Adanmış SQL havuzunun sınıflandırmasına, kullanıcılar [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)kullanılarak kendisine atanmış karşılık gelen bir kaynak sınıfına sahip bir role atanarak bugün elde edilir. Bir kaynak sınıfına bir oturum açma ötesinde istekleri niteleyebilme özelliği bu özellikle sınırlıdır. Artık sınıflandırma için daha zengin bir yöntem [oluşturma Iş yükü sınıflandırıcı](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) sözdizimi ile kullanılabilir.  Bu söz dizimi sayesinde, adanmış SQL havuzu kullanıcıları önem ve parametre aracılığıyla bir isteğe ne kadar sistem kaynağı atandığını atayabilirler `workload_group` .
 
 > [!NOTE]
 > Sınıflandırma, istek başına temelinde değerlendirilir. Tek bir oturumdaki birden çok istek farklı şekilde sınıflandırılabilir.

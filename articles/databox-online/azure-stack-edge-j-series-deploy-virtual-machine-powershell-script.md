@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: cd877a91c7c082ce7845394f2636857f33b7940f
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 957274e6080ab4b77e6528386fe0b24b2d877219
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578765"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447306"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell-script"></a>Azure PowerShell betiği aracılığıyla Azure Stack Edge Pro GPU cihazınızda VM 'Leri dağıtma
 
@@ -21,7 +21,7 @@ ms.locfileid: "94578765"
 
 Bu öğretici, bir Azure PowerShell betiği kullanarak Azure Stack Edge Pro cihazınızda bir sanal makinenin nasıl oluşturulduğunu ve yönetileceğini açıklar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu betiği kullanarak Azure Stack Edge Pro cihazınızda bir VM oluşturmaya ve yönetmeye başlamadan önce, aşağıdaki adımlarda listelenen önkoşulları tamamladığınızdan emin olmanız gerekir:
 
@@ -31,7 +31,7 @@ Bu betiği kullanarak Azure Stack Edge Pro cihazınızda bir VM oluşturmaya ve 
 
 2. İşlem için bir ağ arabirimi etkinleştirildi. Bu ağ arabirimi IP 'si, VM dağıtımı için bir sanal anahtar oluşturmak üzere kullanılır. Aşağıdaki adımlar süreç boyunca size yol gösterir:
 
-    1. **İşlem ayarları** ' na gidin. Sanal anahtar oluşturmak için kullanacağınız ağ arabirimini seçin.
+    1. **İşlem ayarları**' na gidin. Sanal anahtar oluşturmak için kullanacağınız ağ arabirimini seçin.
 
         > [!IMPORTANT] 
         > İşlem için yalnızca bir bağlantı noktası yapılandırabilirsiniz.
@@ -83,7 +83,7 @@ Bu betiği kullanarak Azure Stack Edge Pro cihazınızda bir VM oluşturmaya ve 
 
     `Uninstall-Module -Name Azure.Storage`
 
-5. [AzCopy 10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10#download-azcopy) ' yı Windows istemcisine indirin. Betiği çalıştırırken bir parametre olarak geçitirsiniz, bu konumu unutmayın.
+5. [AzCopy 10](../storage/common/storage-use-azcopy-v10.md#download-azcopy) ' yı Windows istemcisine indirin. Betiği çalıştırırken bir parametre olarak geçitirsiniz, bu konumu unutmayın.
 
 6. Windows istemcinizin TLS 1,2 veya sonraki bir sürümü çalıştırdığından emin olun.
 

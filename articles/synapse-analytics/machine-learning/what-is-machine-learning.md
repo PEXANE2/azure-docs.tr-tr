@@ -9,16 +9,14 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 382ba871f95b3b36c3f819de8d582ba2c5dc358a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 20f095a058434c36373c30ed2a633db12643814d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316090"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448271"
 ---
-# <a name="machine-learning-capabilities-in-azure-synapse-analytics-workspaces-preview"></a>Azure SYNAPSE Analytics 'teki Machine Learning özellikleri (çalışma alanları Önizleme)
-
-[!INCLUDE [preview](../includes/note-preview.md)]
+# <a name="machine-learning-capabilities-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'teki Machine Learning özellikleri
 
 Azure SYNAPSE Analytics çeşitli makine öğrenimi özellikleri sunar. Bu makalede, Azure SYNAPSE bağlamında Machine Learning nasıl uygulayabilmeniz için bir genel bakış sunulmaktadır.
 
@@ -48,11 +46,11 @@ Azure SYNAPSE 'in yerel olarak tümleşik bir parçası olan [Azure Data Factory
 
 Machine Learning işleminin önemli bir bölümü, keşif ve görselleştirmeler ile verileri anlamaktır.
 
-Verilerin nerede depolandığına bağlı olarak, SYNAPSE analiz ve makine öğrenimi için keşfetmeye ve hazırlamaya yönelik bir dizi farklı araç sunar. Veri araştırmasını kullanmaya başlamanın en hızlı yolu, doğrudan veri Gölü verileri üzerinde Apache Spark veya SYNAPSE SQL sunucusuz havuzlarını kullanmaktır.
+Verilerin nerede depolandığına bağlı olarak, SYNAPSE analiz ve makine öğrenimi için keşfetmeye ve hazırlamaya yönelik bir dizi farklı araç sunar. Veri araştırmasını kullanmaya başlamanın en hızlı yolu, doğrudan veri Gölü veriler üzerinde Apache Spark veya sunucusuz SQL havuzları kullanmaktır.
 
 * [Azure SYNAPSE için Apache Spark](../spark/apache-spark-overview.md) , verilerinizi ölçekli olarak dönüştürme, hazırlama ve keşfetmeye yönelik yetenekler sunmaktadır. Bu Spark havuzları, ölçeklendirerek veri işleme için PySpark/Python, Scala ve .NET gibi araçlar sunar. Güçlü görselleştirme kitaplıklarını kullanarak, veri araştırma deneyimi verileri daha iyi anlamanıza yardımcı olacak şekilde geliştirilebilir. [Spark kullanarak SYNAPSE içindeki verileri araştırma ve görselleştirme hakkında daha fazla bilgi edinin](../get-started-analyze-spark.md).
 
-* [SYNAPSE SQL sunucusuz havuzlar](../sql/on-demand-workspace-overview.md) , Veri Gölü ÜZERINDE doğrudan TSQL kullanarak verileri keşfetmeye yönelik bir yol sunar. SYNAPSE SQL sunucusuz havuzlar Ayrıca SYNAPSE Studio 'da bazı yerleşik görselleştirmeler sunmaktadır. [SYNAPSE SQL sunucusuz havuzlarıyla verileri araştırma hakkında daha fazla bilgi edinin](../get-started-analyze-sql-on-demand.md).
+* [Sunucusuz SQL havuzları](../sql/on-demand-workspace-overview.md) , doğrudan veri Gölü üzerinde TSQL kullanarak verileri keşfetmeye yönelik bir yol sunar. Sunucusuz SQL havuzları Ayrıca SYNAPSE Studio 'da bazı yerleşik görselleştirmeler sunar. [Sunucusuz SQL havuzlarıyla verileri araştırma hakkında daha fazla bilgi edinin](../get-started-analyze-sql-on-demand.md).
 
 ### <a name="modeling"></a>Modelleme
 

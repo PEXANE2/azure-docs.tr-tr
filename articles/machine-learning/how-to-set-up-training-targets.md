@@ -11,22 +11,22 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: cb10eb0f89ce37bc484c8570995ebaa098c696f1
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 492d1370a228fc4fc80880102899c9207a514f57
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541309"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447189"
 ---
 # <a name="configure-and-submit-training-runs"></a>Eğitim çalıştırmalarını yapılandırma ve gönderme
 
-Bu makalede, modellerinizi eğitmek için Azure Machine Learning çalıştırmalarını yapılandırmayı ve göndermeyi öğreneceksiniz.
+Bu makalede, modellerinizi eğitmek için Azure Machine Learning çalıştırmalarını yapılandırmayı ve göndermeyi öğreneceksiniz. Kod parçacıkları, bir eğitim betiğinin yapılandırma ve göndermesinin temel kısımlarını açıklamaktadır.  Ardından, uçtan uca tam çalışma örneklerini bulmak için [örnek not defterlerinden](#notebooks) birini kullanın.
 
 Eğitim sırasında, yerel bilgisayarınızda başlamak ve daha sonra bulut tabanlı bir kümeye genişletmek yaygın bir şekilde yapılır. Azure Machine Learning, komut dosyanızı, eğitim betiğinizi değiştirmek zorunda kalmadan çeşitli işlem hedeflerinde çalıştırabilirsiniz.
 
 Yapmanız gereken tek şey, bir **komut dosyası çalıştırma yapılandırması** içindeki her bir işlem hedefi için ortamı tanımlamaktır.  Daha sonra eğitim denemenizi farklı bir işlem hedefinde çalıştırmak istediğinizde, bu işlem için çalıştırma yapılandırmasını belirtin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin
 * [Python için Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (>= 1.13.0)
@@ -38,10 +38,10 @@ Bir deneme kapsamında bir eğitim çalışması göndermek için gereken bilgil
 
 Eğitim denemenizi bir ScriptRunConfig nesnesi ile gönderebilirsiniz.  Bu nesne şunları içerir:
 
-* **source_directory** : eğitim betiğinizi içeren kaynak dizin
-* **betik** : çalıştırılacak eğitim betiği
-* **compute_target** : üzerinde çalıştırılacak işlem hedefi
-* **ortam** : betiği çalıştırırken kullanılacak ortam
+* **source_directory**: eğitim betiğinizi içeren kaynak dizin
+* **betik**: çalıştırılacak eğitim betiği
+* **compute_target**: üzerinde çalıştırılacak işlem hedefi
+* **ortam**: betiği çalıştırırken kullanılacak ortam
 * ve bazı ek yapılandırılabilir seçenekler (daha fazla bilgi için [başvuru belgelerine](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) bakın)
 
 ## <a name="train-your-model"></a><a id="submit"></a>Modelinizi eğitme
@@ -152,7 +152,7 @@ run.wait_for_completion(show_output=True)
 > Anlık görüntüler hakkında daha fazla bilgi için bkz. [anlık görüntüler](concept-azure-machine-learning-architecture.md#snapshots).
 
 > [!IMPORTANT]
-> **Özel klasörler** İki klasör, *Çıkış* ve *günlük* , Azure Machine Learning özel bir işleme alır. Eğitim sırasında, kök dizine (ve sırasıyla) göre olan *çıktılar* ve *Günlükler* adlı klasörlere dosya yazdığınızda `./outputs` `./logs` , çalışma işlemi tamamlandıktan sonra dosyalara erişmeniz için dosyalar otomatik olarak çalıştırma geçmişinize yüklenir.
+> **Özel klasörler** İki klasör, *Çıkış* ve *günlük*, Azure Machine Learning özel bir işleme alır. Eğitim sırasında, kök dizine (ve sırasıyla) göre olan *çıktılar* ve *Günlükler* adlı klasörlere dosya yazdığınızda `./outputs` `./logs` , çalışma işlemi tamamlandıktan sonra dosyalara erişmeniz için dosyalar otomatik olarak çalıştırma geçmişinize yüklenir.
 >
 > Eğitim sırasında (model dosyaları, kontrol noktaları, veri dosyaları veya çizilmiş görüntüler gibi) yapıt oluşturmak için bunları `./outputs` klasörüne yazın.
 >
@@ -164,7 +164,7 @@ run.wait_for_completion(show_output=True)
 
 Kaynak dizinin yerel bir git deposu olduğu bir eğitim çalıştırması başlattığınızda, depo hakkındaki bilgiler çalıştırma geçmişinde depolanır. Daha fazla bilgi için bkz. [Azure Machine Learning Için git tümleştirmesi](concept-train-model-git-integration.md).
 
-## <a name="notebook-examples"></a>Not defteri örnekleri
+## <a name="notebook-examples"></a><a name="notebooks"></a>Not defteri örnekleri
 
 Çeşitli eğitim senaryolarında çalıştırmaları yapılandırma örnekleri için bu not defterlerine bakın:
 * [Çeşitli işlem hedeflerine yönelik eğitim](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)

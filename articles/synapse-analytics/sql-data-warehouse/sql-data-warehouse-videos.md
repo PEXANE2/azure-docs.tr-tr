@@ -11,16 +11,16 @@ ms.date: 02/15/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b0b3a924008d4180c045455aecda8ec109845939
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: eaf41e903f1a55dd85c6b6282617564a32087707
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320992"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447816"
 ---
-# <a name="azure-synapse-analytics---dedicated-sql-pool-videos"></a>Azure SYNAPSE Analytics-adanmış SQL havuzu videoları
+# <a name="azure-synapse-analytics---dedicated-sql-pool--formerly-sql-dw-videos"></a>Azure SYNAPSE Analytics-adanmış SQL Havuzu (eski adıyla SQL DW) videoları
 
-Yeni özellikler ve performans iyileştirmeleri hakkında bilgi edinmek için en son adanmış SQL havuzu videolarını izleyin. 
+Yeni özellikler ve performans iyileştirmeleri hakkında bilgi edinmek için en son adanmış SQL havuzunu (eski adıyla SQL DW) videoları izleyin. 
 
 Başlamak için, aşağıdaki genel bakış videosunu seçerek adanmış SQL havuzu için yeni güncelleştirmeler hakkında bilgi edinin. Ayrıca, modern veri ambarı desenlerinin sicrı gibi gerçek dünyada senaryolar için nasıl kullanılabileceğini öğrenin.
 </br>

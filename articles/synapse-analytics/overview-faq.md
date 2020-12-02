@@ -1,6 +1,6 @@
 ---
-title: SSS-Azure SYNAPSE Analytics (çalışma alanları Önizleme)
-description: Azure SYNAPSE Analytics hakkında SSS (çalışma alanları Önizleme)
+title: SSS-Azure SYNAPSE Analytics
+description: Azure SYNAPSE Analytics hakkında SSS
 services: synapse-analytics
 author: saveenr
 ms.service: synapse-analytics
@@ -9,22 +9,20 @@ ms.subservice: overview
 ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5acfc8c01f375164979e1fb051563fcfb2da3bd3
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 05fef320d558de30830f76031d3b96262ae29f07
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436265"
+ms.locfileid: "96445789"
 ---
-# <a name="azure-synapse-analytics-workspaces-preview-frequently-asked-questions"></a>Azure SYNAPSE Analytics (çalışma alanları önizlemesi) sık sorulan sorular
+# <a name="azure-synapse-analytics-frequently-asked-questions"></a>Azure SYNAPSE Analytics hakkında sık sorulan sorular
 
 Bu kılavuzda, Azure SYNAPSE Analytics için en sık sorulan soruları bulacaksınız.
 
-[!INCLUDE [preview](includes/note-preview.md)]
-
 ## <a name="general"></a>Genel
 
-### <a name="q-what-rbac-roles-exist-and-how-i-use-them-to-secure-a-synapse-workspace"></a>S: RBAC rolleri var ve bir Synapse çalışma alanının güvenliğini sağlamak için bunları nasıl kullanabilirim?
+### <a name="q-what-rbac-roles-exist-and-how-do-i-use-them-to-secure-a-synapse-workspace"></a>S: RBAC rolleri var ve bir Synapse çalışma alanının güvenliğini sağlamak için bunları nasıl kullanabilirim?
 
 Y: Azure SYNAPSE, çalışma alanınızın güvenliğini basitleştirecek bir dizi rol ve kapsamı kullanıma sunacaktır.
 

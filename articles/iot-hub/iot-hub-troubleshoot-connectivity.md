@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: Technical Support'
 - fasttrack-edit
 - iot
-ms.openlocfilehash: b179bb3566cc19b8033a56348db34cd1f05cee10
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 81558526500f3c01e975d9a963b4a6a98ec6d753
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506405"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446400"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Azure IoT Hub bağlantısını izleme, tanılama ve sorun giderme
 
@@ -58,7 +58,7 @@ Event Grid ile cihaz bağlantısı olaylarını izleme hakkında daha fazla bilg
 
 * Cihaz bağlantısı olaylarını sipariş etme hakkında bir öğretici için, bkz. [Azure IoT Hub cihaz bağlantısı olaylarını Azure Cosmos DB kullanarak](iot-hub-how-to-order-connection-state-events.md)sıralama.
 
-* E-posta bildirimleri gönderme hakkında bir öğretici için bkz. Event Grid belgelerindeki [Event Grid ve Logic Apps kullanarak Azure IoT Hub olayları hakkında e-posta bildirimleri gönderme](/azure/event-grid/publish-iot-hub-events-to-logic-apps) .
+* E-posta bildirimleri gönderme hakkında bir öğretici için bkz. Event Grid belgelerindeki [Event Grid ve Logic Apps kullanarak Azure IoT Hub olayları hakkında e-posta bildirimleri gönderme](../event-grid/publish-iot-hub-events-to-logic-apps.md) .
 
 ## <a name="azure-monitor-route-connection-events-to-logs"></a>Azure Izleyici: bağlantı olaylarını günlüklere yönlendir
 
@@ -92,9 +92,9 @@ IoT Hub kaynak günlüklerini Azure Izleyici günlüklerine yönlendirmek için 
 
 1. [Azure Portal](https://portal.azure.com)' de IoT Hub 'ınıza gidin.
 
-1. IoT Hub 'ınızın sol bölmesinde **izleme** ' nin altında **Günlükler** ' i seçin.
+1. IoT Hub 'ınızın sol bölmesinde **izleme** ' nin altında **Günlükler**' i seçin.
 
-1. IoT Hub için bağlantı hata günlüklerini yalıtmak için sorgu Düzenleyicisi 'nde aşağıdaki sorguyu girin ve **Çalıştır** ' ı seçin:
+1. IoT Hub için bağlantı hata günlüklerini yalıtmak için sorgu Düzenleyicisi 'nde aşağıdaki sorguyu girin ve **Çalıştır**' ı seçin:
 
     ```kusto
     AzureDiagnostics

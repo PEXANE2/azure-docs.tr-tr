@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: alkohli
-ms.openlocfilehash: 745d0df07b6d0d01acf0d564df8c242e16f3f56d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b49659f67e779b6eb8079492b47fef9419ca6b1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890989"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447513"
 ---
 # <a name="create-custom-vm-images-for-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro cihazınız için özel VM görüntüleri oluşturma
 
@@ -42,7 +42,7 @@ Bir Windows VM görüntüsü oluşturmak için aşağıdaki adımları uygulayı
     
         `c:\windows\system32\sysprep\sysprep.exe /oobe /generalize /shutdown /mode:vm`
    
-       Ayrıca, [Sysprep (Sistem hazırlama) genel bakış](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)bölümüne de başvurabilirsiniz.
+       Ayrıca, [Sysprep (Sistem hazırlama) genel bakış](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)bölümüne de başvurabilirsiniz.
 
 Şimdi Azure Stack Edge Pro cihazınızda bir VM oluşturup dağıtmak için bu VHD 'yi kullanın.
 
@@ -76,7 +76,7 @@ Bir Linux VM görüntüsü oluşturmak için aşağıdaki adımları uygulayın.
 |[Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.ubuntuserver) |Ubuntu Server, bulut ortamları için dünyanın en popüler Linux ' tur.|Canonical|
 |[Desek8 "Jese"](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.debian) |GNU/Linux, en popüler Linux dağıtımlarından biridir.     |credativ|
 
-Çalışan Azure Marketi görüntülerinin tam listesi için (Şu anda sınanmamıştır), [Azure Stack Hub için kullanılabilir Azure Market öğelerine](https://docs.microsoft.com/azure-stack/operator/azure-stack-marketplace-azure-items?view=azs-1910)gidin.
+Çalışan Azure Marketi görüntülerinin tam listesi için (Şu anda sınanmamıştır), [Azure Stack Hub için kullanılabilir Azure Market öğelerine](/azure-stack/operator/azure-stack-marketplace-azure-items?view=azs-1910)gidin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

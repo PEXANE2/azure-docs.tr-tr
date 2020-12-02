@@ -1,6 +1,6 @@
 ---
-title: Sunucusuz SQL havuzunda (Önizleme) depolama üzerindeki dosyalara erişin
-description: Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) kullanılarak depolama dosyalarının sorgulanmasını açıklar.
+title: Sunucusuz SQL havuzundaki depolamada bulunan dosyalara erişin
+description: Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu kullanılarak depolama dosyalarının sorgulanmasını açıklar.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 64148cd8fd467be6a5f09ee723e230bdc8181d2d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 82a4ded3a64a8a8bbc62f99a8854eb6d2b5f0d0b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685690"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446579"
 ---
-# <a name="access-external-storage-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) kullanarak dış depolamaya erişme
+# <a name="access-external-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu kullanarak dış depolamaya erişme
 
 Bu belgede, kullanıcıların sunucusuz SQL havuzunda Azure Storage 'da depolanan dosyalardan verileri nasıl okuyaabileceği açıklanır. Kullanıcılar depolamaya erişmek için aşağıdaki seçeneklere sahiptir:
 

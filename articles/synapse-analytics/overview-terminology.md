@@ -1,5 +1,5 @@
 ---
-title: Terminoloji-Azure SYNAPSE Analytics (çalışma alanları Önizleme)
+title: Terminoloji-Azure SYNAPSE Analytics
 description: Azure SYNAPSE Analytics aracılığıyla başvuru kılavuzu yürüyen Kullanıcı
 services: synapse-analytics
 author: saveenr
@@ -9,20 +9,18 @@ ms.subservice: overview
 ms.date: 11/18/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 60c3fc6688dc4a25faf5ed94df25055e29d34403
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: 7f0ca83c194aae6f4a8d04d70c2d4f3746ad2ca5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309826"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446715"
 ---
 # <a name="azure-synapse-analytics-terminology"></a>Azure SYNAPSE Analytics terminolojisi
 
-[!INCLUDE [preview](includes/note-preview.md)]
-
 Bu belge, Azure SYNAPSE Analytics 'in temel kavramlarında size rehberlik eder.
 
-## <a name="basics"></a>Temel Bilgiler
+## <a name="basics"></a>Temel bilgiler
 
 **SYNAPSE çalışma alanı** , Azure 'da bulut tabanlı kurumsal analizler gerçekleştirmek için güvenli kılınabilir bir işbirliği sınırıdır. Çalışma alanı belirli bir bölgeye dağıtılır ve ilişkili bir ADLS 2. hesabına ve dosya sistemine sahiptir (geçici verileri depolamak için). Çalışma alanı bir kaynak grubu altında.
 

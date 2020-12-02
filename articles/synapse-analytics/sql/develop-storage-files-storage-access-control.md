@@ -1,6 +1,6 @@
 ---
-title: Sunucusuz SQL Havuzu (Önizleme) için depolama hesabı erişimini denetleme
-description: Sunucusuz SQL havuzunun (Önizleme) Azure Storage 'a nasıl eriştiği ve Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu için depolama erişimini nasıl denetleyebileceğinizi açıklar.
+title: Sunucusuz SQL havuzu için depolama hesabı erişimini denetleme
+description: Sunucusuz SQL havuzunun Azure Storage 'a nasıl eriştiği ve Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu için depolama erişimini nasıl denetleyebileceğinizi açıklar.
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 958f371a0018d20331e73d0eabba9354614d121c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 631aaf3c6a99e093f6ed59089f7ce99803f3f054
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93315729"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446619"
 ---
-# <a name="control-storage-account-access-for-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) için depolama hesabı erişimini denetleme
+# <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu için depolama hesabı erişimini denetleme
 
 Sunucusuz bir SQL havuzu sorgusu, dosyaları doğrudan Azure Storage 'dan okur. Azure Storage 'daki dosyalara erişim izinleri iki düzeyde denetlenir:
 - **Depolama düzeyi** -kullanıcının temeldeki depolama dosyalarına erişim izni olmalıdır. Depolama yöneticiniz, Azure AD Principal 'ın dosyaları okumasına/yazmasına veya depolamaya erişmek için kullanılacak SAS anahtarı oluşturmasına izin verir.
@@ -33,7 +33,7 @@ Sunucusuz SQL havuzunda oturum açan bir kullanıcının, dosyalar herkese açı
 
 ### <a name="user-identity"></a>[Kullanıcı kimliği](#tab/user-identity)
 
-"Azure AD geçişi" olarak da bilinen **Kullanıcı kimliği** , veri erişimini yetkilendirmek için SUNUCUSUZ SQL havuzunda oturum açan Azure AD kullanıcısının kimliğinin kullanıldığı bir yetkilendirme türüdür. Verilere erişmeden önce Azure depolama yöneticisinin Azure AD kullanıcısına izin vermesi gerekir. Aşağıdaki tabloda gösterildiği gibi, SQL kullanıcı türü için de desteklenmez.
+"Azure AD geçişi" olarak da bilinen **Kullanıcı kimliği**, veri erişimini yetkilendirmek için SUNUCUSUZ SQL havuzunda oturum açan Azure AD kullanıcısının kimliğinin kullanıldığı bir yetkilendirme türüdür. Verilere erişmeden önce Azure depolama yöneticisinin Azure AD kullanıcısına izin vermesi gerekir. Aşağıdaki tabloda gösterildiği gibi, SQL kullanıcı türü için de desteklenmez.
 
 > [!IMPORTANT]
 > Verilerinize erişmek için kimliğinizi kullanabilmeniz için bir Depolama Blobu veri sahibi/katkıda bulunan/okuyucu rolüne sahip olmanız gerekir.
@@ -49,7 +49,7 @@ Sunucusuz SQL havuzunda oturum açan bir kullanıcının, dosyalar herkese açı
 **Azure portal > depolama hesabı-> paylaşılan erişim imzası-> Izinleri yapılandırma-> SAS ve bağlantı dizesi oluşturma '** ya gıderek bir SAS belirteci alabilirsiniz.
 
 > [!IMPORTANT]
-> Bir SAS belirteci oluşturulduğunda, belirtecin başlangıcında bir soru işareti ('? ') içerir. Belirteci sunucusuz SQL havuzunda kullanmak için, bir kimlik bilgisi oluştururken soru işaretini ('? ') kaldırmanız gerekir. Örneğin:
+> Bir SAS belirteci oluşturulduğunda, belirtecin başlangıcında bir soru işareti ('? ') içerir. Belirteci sunucusuz SQL havuzunda kullanmak için, bir kimlik bilgisi oluştururken soru işaretini ('? ') kaldırmanız gerekir. Örnek:
 >
 > SAS belirteci:? ZF = 2018-03-28&SS = bfqt&SRT = SCO&SP = rwdlacup&se = 2019-04-18T20:42:12Z&St = 2019-04-18T12:42:12Z&spr = https&SIG = lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78% 3D
 
@@ -81,7 +81,7 @@ Aşağıdaki tabloda kullanılabilir yetkilendirme türlerini bulabilirsiniz:
 
 Aşağıdaki yetkilendirme ve Azure Depolama türleri birleşimlerini kullanabilirsiniz:
 
-| Yetki türü  | Blob Depolama   | ADLS 1.        | ADLS 2. Nesil     |
+| Yetki türü  | Blob Depolama   | ADLS 1. Nesil        | ADLS 2. Nesil     |
 | ------------------- | ------------   | --------------   | -----------   |
 | [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)    | Desteklenir\*      | Desteklenmiyor   | Desteklenir\*     |
 | [Yönetilen Kimlik](?tabs=managed-identity#supported-storage-authorization-types) | Desteklenir      | Desteklenir        | Desteklenir     |
@@ -144,7 +144,7 @@ SQL kullanıcıları depolama alanına erişmek için Azure AD kimlik doğrulama
 
 Aşağıdaki betik, `OPENROWSET` SAS belirtecini kullanarak Azure Storage 'daki herhangi bir dosyaya erişmek için işlev tarafından kullanılabilecek bir sunucu düzeyi kimlik bilgisi oluşturur. Bu kimlik bilgisini, `OPENROWSET` kimlik bilgisi ADıNDAKI URL ile eşleşen Azure depolama 'DA SAS anahtarıyla korunan dosyaları okumak için işlevi yürüten SQL sorumlusunu etkinleştirmek üzere oluşturun.
 
-Gerçek depolama hesabı adınızla birlikte Exchange < *mystorageaccountname* > ve *mystorageaccountcontainername* > gerçek kapsayıcı adıyla <:
+Gerçek depolama hesabı adınızla birlikte Exchange <*mystorageaccountname*> ve *mystorageaccountcontainername*> gerçek kapsayıcı adıyla <:
 
 ```sql
 CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]

@@ -1,16 +1,16 @@
 ---
 title: Bağlı Log Analytics çalışma alanı için desteklenen bölgeler
 description: Bu makalede, bir Otomasyon hesabı ile Log Analytics çalışma alanı arasındaki desteklenen bölge eşlemeleri, Azure Otomasyonu 'nun belirli özellikleriyle ilişkili olarak açıklanmaktadır.
-ms.date: 10/19/2020
+ms.date: 12/01/2020
 services: automation
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 23e5293301a2fc311565d0c1c8ec5fd92bebe9b2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 25ddf562f92ca96a505432a58f137657a2bbc4bd
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183575"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446971"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>Bağlı Log Analytics çalışma alanı için desteklenen bölgeler
 
@@ -31,6 +31,7 @@ Aşağıdaki tabloda desteklenen eşlemeler gösterilmektedir:
 |---|---|
 |**ABD**||
 |EastUS<sup>1</sup>|EastUS2|
+|EastUS2<sup>2</sup>|EastUS|
 |WestUS2|WestUS2|
 |Güneydoğu ABD|Güneydoğu ABD|
 |WestCentralUS|WestCentralUS|
@@ -40,7 +41,7 @@ Aşağıdaki tabloda desteklenen eşlemeler gösterilmektedir:
 |AustraliaSoutheast|AustraliaSoutheast|
 |Güneydoğu|Güneydoğu|
 |Merkezileştirme Hindistan|Merkezileştirme Hindistan|
-|ChinaEast2<sup>2</sup>|ChinaEast2|
+|ChinaEast2<sup>3</sup>|ChinaEast2|
 |JapanEast|JapanEast|
 |**Avrupa**||
 |UKSouth|UKSouth|
@@ -48,11 +49,13 @@ Aşağıdaki tabloda desteklenen eşlemeler gösterilmektedir:
 |Geçiş|Geçiş|
 |**US Gov**||
 |USGovVirginia|USGovVirginia|
-|Usgovarizlon2<sup>2</sup>|USGovArizona|
+|USGovArizona<sup>3</sup>|USGovArizona|
 
 Log Analytics çalışma alanları için <sup>1</sup> EastUS eşlemesi, Otomasyon hesaplarında tam bir bölgeden bölgeye eşleme değildir, ancak doğru eşleme olur.
 
-<sup>2</sup> bu bölgede yalnızca güncelleştirme yönetimi desteklenir ve değişiklik izleme ve envanter gibi diğer özellikler Şu anda kullanılamaz.
+<sup>2</sup> EastUS2 çalışma alanları için Log Analytics, Otomasyon hesaplarında tam bir bölgeden bölgeye eşleme değildir, ancak doğru eşleme olur.
+
+<sup>3</sup> bu bölgede yalnızca güncelleştirme yönetimi desteklenir ve değişiklik izleme ve envanter gibi diğer özellikler Şu anda kullanılamaz.
 
 ## <a name="unlink-a-workspace"></a>Çalışma alanının bağlantısını kaldır
 

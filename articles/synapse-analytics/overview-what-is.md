@@ -9,20 +9,18 @@ ms.subservice: overview
 ms.date: 10/28/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2052e27cde3427986dbf7784dcd5dbb179c5b209
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: c315dae7e5f02f112dfdfbec02e1ebaaa5e48a9f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380938"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445772"
 ---
-# <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Azure SYNAPSE Analytics (çalışma alanları önizlemesi) nedir?
-
-[!INCLUDE [preview](includes/note-preview.md)]
+# <a name="what-is-azure-synapse-analytics"></a>Azure Synapse Analytics nedir?
 
 Kurumsal analizler, ham, iyileştirilmiş veya yüksek düzeyde bir şekilde, her türlü veri için büyük ölçekte çalışmalıdır. Bu, genellikle kuruluşların büyük veri ve veri ambarı teknolojilerini, ilişkisel depolardaki ve veri klarındaki veriler arasında çalışan karmaşık veri işlem hatlarıyla birlikte bulundurmasına gerek duyar. Bu tür çözümlerin oluşturulması, saklanması ve güvende olması zordur. Insight işletmelerin ihtiyacı olan karmaşıklık gecikmeleri.
 
-**Azure SYNAPSE** , veri ambarlarında ve büyük veri sistemlerinde öngörü süresini hızlandıran tümleşik bir analiz hizmetidir. Azure SYNAPSE, kurumsal veri ambarlarında kullanılan **SQL** teknolojilerinin en iyi yanı sıra büyük veriler Için kullanılan **Spark** teknolojilerini ve veri TÜMLEŞTIRME ve etl/ELT için işlem **hatlarını** sunar. **SYNAPSE Studio** , yönetim, izleme, kodlama ve güvenlik için birleştirilmiş bir deneyim sağlar. SYNAPSE, **PowerBI** , **Cosmosdb** ve **AzureML** gibi diğer Azure hizmetleriyle derin tümleştirmeye sahiptir.
+**Azure SYNAPSE** , veri ambarlarında ve büyük veri sistemlerinde öngörü süresini hızlandıran tümleşik bir analiz hizmetidir. Azure SYNAPSE, kurumsal veri ambarlarında kullanılan **SQL** teknolojilerinin en iyi yanı sıra büyük veriler Için kullanılan **Spark** teknolojilerini ve veri TÜMLEŞTIRME ve etl/ELT için işlem **hatlarını** sunar. **SYNAPSE Studio** , yönetim, izleme, kodlama ve güvenlik için birleştirilmiş bir deneyim sağlar. SYNAPSE, **Power BI**, **Cosmosdb** ve **AzureML** gibi diğer Azure hizmetleriyle derin tümleştirmeye sahiptir.
 
 ## <a name="key-features--benefits"></a>Önemli özellikler & avantajları
 
@@ -53,7 +51,7 @@ Azure SYNAPSE, SQL ve Spark ile birlikte kullanma arasındaki geleneksel teknolo
 
 ### <a name="built-in-data-integration-via-pipelines"></a>Ardışık düzen aracılığıyla yerleşik veri tümleştirmesi
 
-Azure SYNAPSE, Azure Data Factory ile aynı veri tümleştirme altyapısı ve deneyimleriyle yerleşik olarak sunulur. böylece, SYNAPSE analizinden çıkmadan zengin ölçekli ETL işlem hatları oluşturabilirsiniz.
+Azure SYNAPSE, Azure SYNAPSE Analytics 'ten çıkmadan zengin ölçekli ETL işlem hatları oluşturmanıza olanak sağlayan aynı veri tümleştirme altyapısı ve deneyimleriyle birlikte yerleşik olarak gelir Azure Data Factory.
 
 * 90 ' dan fazla veri kaynağından veri alma
 * Veri akışı etkinlikleri ile Code-Free ETL

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 9a6b0910fcfd2a632f2520a2fe683b15592017cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 15e2d7a144b54f443b8298b20dbfacf78a50f9e1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891177"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447550"
 ---
 # <a name="configure-tls-12-on-windows-clients-accessing-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro cihazına erişen Windows istemcilerinde TLS 1,2 yapılandırma
 
@@ -38,11 +38,11 @@ Burada sunulan yönergeler, Windows Server 2016 çalıştıran bir istemcide ger
 
 Ortamınız için sistem genelinde TLS 1,2 ayarlamak istiyorsanız, bu belgelerdeki yönergeleri izleyin:
 
-- [Genel-TLS 1,2 nasıl etkinleştirilir](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12)
-- [İstemcilerde TLS 1,2 nasıl etkinleştirilir](https://docs.microsoft.com/configmgr/core/plan-design/security/enable-tls-1-2-client)
-- [Site sunucularında ve uzak site sistemlerinde TLS 1,2 'yi etkinleştirme](https://docs.microsoft.com/configmgr/core/plan-design/security/enable-tls-1-2-server)
-- [TLS/SSL (Schannel SSP) protokolleri](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-ecc-curve-order)
-- [Şifre paketleri](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12): özellikle [TLS şifre paketi sırasını yapılandırma](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order) şu listeden geçerli şifre paketlerinizi listelediğinizden ve yok edin:
+- [Genel-TLS 1,2 nasıl etkinleştirilir](/windows-server/security/tls/tls-registry-settings#tls-12)
+- [İstemcilerde TLS 1,2 nasıl etkinleştirilir](/configmgr/core/plan-design/security/enable-tls-1-2-client)
+- [Site sunucularında ve uzak site sistemlerinde TLS 1,2 'yi etkinleştirme](/configmgr/core/plan-design/security/enable-tls-1-2-server)
+- [TLS/SSL (Schannel SSP) protokolleri](/windows-server/security/tls/manage-tls#configuring-tls-ecc-curve-order)
+- [Şifre paketleri](/windows-server/security/tls/tls-registry-settings#tls-12): özellikle [TLS şifre paketi sırasını yapılandırma](/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order) şu listeden geçerli şifre paketlerinizi listelediğinizden ve yok edin:
 
     - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
     - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
@@ -68,7 +68,7 @@ Ortamınız için sistem genelinde TLS 1,2 ayarlamak istiyorsanız, bu belgelerd
     New-ItemProperty -Path "$HklmSoftwarePath\Policies\Microsoft\Cryptography\Configuration\SSL\00010002" -Name "EccCurves" -PropertyType MultiString -Value @("NistP256", "NistP384")
     ```
     
-    - [MIN RSA anahtar değişim boyutunu 2048 olarak ayarlayın](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#keyexchangealgorithm---client-rsa-key-sizes).
+    - [MIN RSA anahtar değişim boyutunu 2048 olarak ayarlayın](/windows-server/security/tls/tls-registry-settings#keyexchangealgorithm---client-rsa-key-sizes).
 
 
 

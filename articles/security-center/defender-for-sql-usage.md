@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: d37c362da484a2a7e400da8f87dd0a37f0f80d3a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: a80747a88087e1ad3a70f198a260e41a6848e34f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436734"
+ms.locfileid: "96445661"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Makinelerdeki SQL sunucuları için Azure Defender 
 
@@ -108,7 +108,7 @@ Güvenlik açığı değerlendirme sonuçlarını doğrudan güvenlik merkezi 'n
     Her görünümde güvenlik denetimleri **önem derecesine** göre sıralanır. Bir **Açıklama** içeren ayrıntı bölmesini, bunu nasıl **düzeltebileceğiniz** ve **etki** veya **kıyaslama** gibi diğer ilgili bilgileri görmek için belirli bir güvenlik denetimine tıklayın.
 
 ## <a name="azure-defender-for-sql-alerts"></a>SQL için Azure Defender uyarıları
-Uyarılar, SQL makinelerine erişmek veya bu makinelere yararlanmak için olağandışı ve olası zararlı saldırılara göre oluşturulur. Bu olaylar, uyarı [başvurusu SAYFASıNıN SQL veritabanı ve Azure SYNAPSE Analytics (eski ADıYLA SQL veri ambarı) uyarıları bölümünde](alerts-reference.md#alerts-sql-db-and-warehouse)gösterilen uyarıları tetikleyebilirsiniz.
+Uyarılar, SQL makinelerine erişmek veya bu makinelere yararlanmak için olağandışı ve olası zararlı saldırılara göre oluşturulur. Bu olaylar, [Uyarı başvurusu SAYFASıNıN SQL veritabanı ve Azure SYNAPSE Analytics Uyarıları bölümünde](alerts-reference.md#alerts-sql-db-and-warehouse)gösterilen uyarıları tetikleyebilirler.
 
 ## <a name="explore-and-investigate-security-alerts"></a>Güvenlik uyarılarını araştır ve araştır
 
@@ -128,7 +128,7 @@ SQL uyarıları için Azure Defender, güvenlik merkezi 'nin Uyarılar sayfasın
 
 İlgili malzemeler için aşağıdaki makaleye bakın:
 
-- [SQL veritabanı ve Azure SYNAPSE Analytics için güvenlik uyarıları (eski adıyla SQL veri ambarı)](alerts-reference.md#alerts-sql-db-and-warehouse)
+- [SQL veritabanı ve Azure SYNAPSE Analytics için güvenlik uyarıları](alerts-reference.md#alerts-sql-db-and-warehouse)
 - [Güvenlik uyarıları için e-posta bildirimlerini ayarlama](security-center-provide-security-contact-details.md)
 - [Azure Sentinel hakkında daha fazla bilgi edinin](../sentinel/index.yml)
 - [Azure Güvenlik Merkezi 'nin veri güvenliği paketi](../azure-sql/database/azure-defender-for-sql.md)

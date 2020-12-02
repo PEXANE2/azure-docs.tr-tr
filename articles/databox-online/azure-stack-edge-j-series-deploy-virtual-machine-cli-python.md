@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: alkohli
-ms.openlocfilehash: c27f6ef47b8e4db83ceb63e308e318803800f8a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c12935a4b0b9cbbf088ba7b9c5ea804be0ce85a1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890718"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447366"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Azure CLı ve Python kullanarak Azure Stack Edge Pro GPU cihazınızda sanal makineler dağıtma
 
@@ -45,7 +45,7 @@ Dağıtım iş akışının üst düzey özeti aşağıdaki gibidir:
 
 İş akışı diyagramının ayrıntılı açıklaması için, bkz. [Azure PowerShell kullanarak Azure Stack Edge Pro cihazınızda VM dağıtma](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md). Azure Resource Manager bağlanma hakkında daha fazla bilgi için bkz. [Azure PowerShell kullanarak Azure Resource Manager bağlanma](azure-stack-edge-j-series-connect-resource-manager.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure CLı ve Python kullanarak Azure Stack Edge Pro cihazınızda bir VM oluşturmaya ve yönetmeye başlamadan önce, aşağıdaki adımlarda listelenen önkoşulları tamamladığınızdan emin olmanız gerekir:
 
@@ -53,7 +53,7 @@ Azure CLı ve Python kullanarak Azure Stack Edge Pro cihazınızda bir VM oluşt
 
 2. İşlem için bir ağ arabirimi etkinleştirildi. Bu ağ arabirimi IP 'si, VM dağıtımı için bir sanal anahtar oluşturmak üzere kullanılır. Aşağıdaki adımlar süreç boyunca size yol gösterir:
 
-    1. **İşlem**sayfasına gidin. Sanal anahtar oluşturmak için kullanacağınız ağ arabirimini seçin.
+    1. **İşlem** sayfasına gidin. Sanal anahtar oluşturmak için kullanacağınız ağ arabirimini seçin.
 
         > [!IMPORTANT] 
         > İşlem için yalnızca bir bağlantı noktası yapılandırabilirsiniz.
@@ -117,7 +117,7 @@ Azure CLı ve Python kullanarak Azure Stack Edge Pro cihazınızda bir VM oluşt
 
 ### <a name="verify-profile-and-install-azure-cli"></a>Profili doğrulama ve Azure CLı 'yı yüklemeyi
 
-<!--1. Verify the API profile of the client and identify which version of the modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](https://docs.microsoft.com/azure-stack/user/azure-stack-version-profiles?view=azs-1908#azure-resource-manager-api-profiles).-->
+<!--1. Verify the API profile of the client and identify which version of the modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](/azure-stack/user/azure-stack-version-profiles?view=azs-1908#azure-resource-manager-api-profiles).-->
 
 1. Azure CLı 'yi istemcinizi ' ne yüklersiniz. Bu örnekte, Azure CLı 2.0.80 yüklendi. Azure CLı sürümünü doğrulamak için `az --version` komutunu çalıştırın.
 
@@ -147,7 +147,7 @@ Azure CLı ve Python kullanarak Azure Stack Edge Pro cihazınızda bir VM oluşt
     PS C:\windows\system32>
     ```
 
-    Azure CLı yoksa, [Windows 'Da Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest)Indirin ve yükleyin. Windows komut istemi 'ni veya Windows PowerShell 'i kullanarak Azure CLı 'yı çalıştırabilirsiniz.
+    Azure CLı yoksa, [Windows 'Da Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest)Indirin ve yükleyin. Windows komut istemi 'ni veya Windows PowerShell 'i kullanarak Azure CLı 'yı çalıştırabilirsiniz.
 
 2. CLı 'nın Python konumunu bir yere unutmayın. Azure CLı için güvenilen kök sertifika deposunun konumunu belirlemeniz gerekir.
 
@@ -308,9 +308,9 @@ Azure CLı ve Python kullanarak Azure Stack Edge Pro cihazınızda bir VM oluşt
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
     ```
 
-4. Komutunu kullanarak Azure Stack Edge Pro ortamınızda oturum açın `az login` . Azure Stack Edge Pro ortamında Kullanıcı ya da [hizmet sorumlusu](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)olarak oturum açabilirsiniz.
+4. Komutunu kullanarak Azure Stack Edge Pro ortamınızda oturum açın `az login` . Azure Stack Edge Pro ortamında Kullanıcı ya da [hizmet sorumlusu](../active-directory/develop/app-objects-and-service-principals.md)olarak oturum açabilirsiniz.
 
-   *Kullanıcı*olarak oturum açmak için şu adımları izleyin:
+   *Kullanıcı* olarak oturum açmak için şu adımları izleyin:
 
    Kullanıcı adını ve parolayı doğrudan komut içinden belirtebilir `az login` veya bir tarayıcı kullanarak kimlik doğrulaması yapabilirsiniz. Hesabınız Multi-Factor Authentication etkinleştirildiyse, ikincisini yapmanız gerekir.
 
@@ -344,7 +344,7 @@ Azure CLı ve Python kullanarak Azure Stack Edge Pro cihazınızda bir VM oluşt
    ```
    `id` `tenantId` Azure Resource Manager abonelik kimliğiniz ve Azure Resource Manager kiracı kimliğinizi sırasıyla ve sonraki adımda kullanılacak şekilde, ve değerlerini bir yere iade edin.
        
-   Aşağıdaki ortam değişkenlerinin *hizmet sorumlusu*olarak çalışacak şekilde ayarlanması gerekir:
+   Aşağıdaki ortam değişkenlerinin *hizmet sorumlusu* olarak çalışacak şekilde ayarlanması gerekir:
 
    ```
    $ENV:ARM_TENANT_ID = "c0257de7-538f-415c-993a-1b87a031879d"

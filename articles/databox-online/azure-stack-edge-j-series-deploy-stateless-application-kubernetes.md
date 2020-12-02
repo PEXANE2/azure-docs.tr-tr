@@ -8,24 +8,24 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 91a2d08bf9eea2f5af0f6893712515cb2feeab8a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6356089daed02270a14903639afee8001153b195
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90890734"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447372"
 ---
 # <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU cihazınızdan kubectl aracılığıyla bir Kubernetes durum bilgisiz uygulaması dağıtma
 
 Bu makalede, var olan bir Kubernetes kümesinde kubectl komutları kullanılarak durum bilgisiz bir uygulamanın nasıl dağıtılacağı açıklanır. Bu makale ayrıca durum bilgisiz uygulamanızda Pod oluşturma ve ayarlama sürecinde size yol gösterir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir Kubernetes kümesi oluşturabilmeniz ve `kubectl` komut satırı aracını kullanabilmeniz için önce aşağıdakileri yapmanız gerekir:
 
 - 1 düğümlü Azure Stack Edge Pro cihazı için oturum açma kimlik bilgileriniz vardır.
 
-- Windows PowerShell 5,0 veya üzeri bir Windows istemci sisteminde Azure Stack Edge Pro cihazına erişmek için yüklenir. Desteklenen bir işletim sistemine sahip başka bir istemciniz de olabilir. Bu makalede, bir Windows istemcisi kullanılırken yordam açıklanmaktadır. Windows PowerShell 'in en son sürümünü indirmek için [Windows PowerShell 'ı yükleme](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7)bölümüne gidin.
+- Windows PowerShell 5,0 veya üzeri bir Windows istemci sisteminde Azure Stack Edge Pro cihazına erişmek için yüklenir. Desteklenen bir işletim sistemine sahip başka bir istemciniz de olabilir. Bu makalede, bir Windows istemcisi kullanılırken yordam açıklanmaktadır. Windows PowerShell 'in en son sürümünü indirmek için [Windows PowerShell 'ı yükleme](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)bölümüne gidin.
 
 - Azure Stack Edge Pro cihazında işlem etkindir. İşlem ' ı etkinleştirmek için, cihazın yerel kullanıcı arabirimindeki **işlem** sayfasına gidin. Sonra, işlem için etkinleştirmek istediğiniz bir ağ arabirimi seçin. **Etkinleştir**’i seçin. İşlem, bu ağ arabirimindeki cihazınızda sanal anahtar oluşturulmasına neden olur. Daha fazla bilgi için bkz. [Azure Stack Edge Pro 'da işlem ağını etkinleştirme](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md).
 

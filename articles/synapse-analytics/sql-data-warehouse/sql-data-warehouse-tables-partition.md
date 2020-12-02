@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 39a1f41d97b1f4576d5877e4f35c99b3e189e3b2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f65c1d6fda09d7762a59fb5a932a72ad706a767a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314511"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448030"
 ---
 # <a name="partitioning-tables-in-dedicated-sql-pool"></a>Adanmış SQL havuzunda tabloları bölümleme
 
@@ -30,7 +30,7 @@ Bölümlendirme, veri bakımı ve sorgu performansı avantajına sahip olabilir.
 
 ### <a name="benefits-to-loads"></a>Yüklerin avantajları
 
-Ayrılmış SQL havuzunda bölümlemenin birincil avantajı, bölüm silme, değiştirme ve birleştirme kullanarak veri yükleme verimliliğini ve performansını artırmaktır. Çoğu durumda veriler, verilerin veritabanına yüklendiği sıraya yakın bir tarih sütununda bölümlenir. Verilerin bakımını yapmak için bölümleri kullanmanın en büyük avantajlarından biri, işlem günlüğü 'nün engelleme. Yalnızca veri ekleme, güncelleştirme veya silme en kolay yaklaşım olabilir. Bu işlem, kısa bir süre sonra, yükleme işleminiz sırasında bölümlemenin kullanılması performansı önemli ölçüde iyileştirebilir.
+Ayrılmış SQL havuzunda bölümlemenin birincil avantajı, bölüm silme, değiştirme ve birleştirme kullanarak veri yükleme verimliliğini ve performansını artırmaktır. Çoğu durumda veriler, verilerin SQL havuzuna yüklendiği sıraya yakın bir tarih sütununda bölümlenir. Verilerin bakımını yapmak için bölümleri kullanmanın en büyük avantajlarından biri, işlem günlüğü 'nün engelleme. Yalnızca veri ekleme, güncelleştirme veya silme en kolay yaklaşım olabilir. Bu işlem, kısa bir süre sonra, yükleme işleminiz sırasında bölümlemenin kullanılması performansı önemli ölçüde iyileştirebilir.
 
 Bölüm değiştirme, bir tablonun bir bölümünü hızlıca kaldırmak veya değiştirmek için kullanılabilir.  Örneğin, bir Sales olgu tablosu yalnızca son 36 aya ait verileri içerebilir. Her ayın sonunda, satış verilerinin en eski ayı tablodan silinir.  Bu veriler, en eski aya ilişkin verileri silmek için bir Delete ifadesiyle silinebilir. 
 
@@ -355,7 +355,7 @@ Kaynak denetim sisteminizde tablo tanımınızın **rusting** bir engel olmasın
     DROP TABLE #partitions;
     ```
 
-Bu yaklaşımla, kaynak denetimindeki kod statik kalır ve bölümleme sınırı değerlerinin dinamik olmasına izin verilir; veritabanıyla zaman içinde gelişiyor.
+Bu yaklaşımla, kaynak denetimindeki kod statik kalır ve bölümleme sınırı değerlerinin dinamik olmasına izin verilir; zaman içinde SQL havuzu ile gelişiyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

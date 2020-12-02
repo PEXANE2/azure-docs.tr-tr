@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: alkohli
-ms.openlocfilehash: 91efdac9d17e679226f10012bbff9b5b6676ff0e
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: bf4d0a845b7f26c82ba3940d6613a33bcacf9187
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205587"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448323"
 ---
 # <a name="recover-from-a-failed-azure-stack-edge-pro-gpu-device"></a>Başarısız Azure Stack Edge Pro GPU cihazından kurtarma 
 
@@ -81,7 +81,7 @@ Potansiyel bir cihaz hatasına hazırlanmak için, VM 'lerdeki verileri korumak 
 
 | Yedekleme çözümleri        | Desteklenen işletim sistemi   | Başvuru                                                                |
 |-------------------------|----------------|--------------------------------------------------------------------------|
-| Azure Backup için Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı | Windows        | [MARS aracısı hakkında](/azure/backup/backup-azure-about-mars)    |
+| Azure Backup için Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı | Windows        | [MARS aracısı hakkında](../backup/backup-azure-about-mars.md)    |
 | Cohesity                | Windows, Linux | [Microsoft Azure tümleştirme, yedekleme ve kurtarma çözümü kısa](https://www.cohesity.com/solution/cloud/azure) <br>Ayrıntılar için Cohesity başvurun.                          |
 | Commvault               | Windows, Linux | https://www.commvault.com/azure <br> Ayrıntılar için, Commkasaya başvurun.
 | Veritas                 | Windows, Linux | http://veritas.com/azure <br> Ayrıntılar için VERITAS ile iletişim kurun.                    |

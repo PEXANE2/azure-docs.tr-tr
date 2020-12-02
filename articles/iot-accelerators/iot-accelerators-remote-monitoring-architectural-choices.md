@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: 1bd08596a30db7322a72b4269fddfe0b9df19119
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27a65d8a499f6eba130dc9537de3cb2b3dc3abe8
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "61447185"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446759"
 ---
 # <a name="remote-monitoring-architectural-choices"></a>Uzaktan İzleme mimari seçenekleri
 
@@ -23,7 +23,7 @@ Azure IoT uzaktan Izleme çözümü hızlandırıcısı, açık kaynaklı, MıT 
 - Cihaz yönetimi
 - Akış işleme
 
-Uzaktan Izleme çözümü, önerilen [Azure IoT başvuru mimarisini](https://aka.ms/iotrefarchitecture)izler.
+Uzaktan Izleme çözümü, önerilen [Azure IoT başvuru mimarisini](/azure/architecture/reference-architectures/iot)izler.
 
 Bu makalede, uzak Izleme alt sistemlerinde yapılan temel mimari ve teknik seçimler açıklanmaktadır. Ancak, uzaktan izleme çözümünde yapılan Microsoft Teknik seçimleri, uzaktan izleme IoT çözümünü kullanmanın tek yoludur. Teknik uygulamayı başarılı bir uygulama oluşturmaya yönelik bir taban çizgisi olarak görmeniz gerekir ve bunu şöyle değiştirmelisiniz:
 
@@ -86,4 +86,4 @@ Docker alternatifleri, Azure App Service gibi PaaS hizmetlerinde mikro hizmetler
 
 * Uzaktan Izleme çözümünüzü [buraya](https://www.azureiotsolutions.com/)dağıtın.
 * [C#](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/) ve [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java/)'da GitHub kodunu araştırma.  
-* IoT [başvuru mimarisi hakkında](https://aka.ms/iotrefarchitecture)daha fazla bilgi edinin.
+* IoT [başvuru mimarisi hakkında](/azure/architecture/reference-architectures/iot)daha fazla bilgi edinin.

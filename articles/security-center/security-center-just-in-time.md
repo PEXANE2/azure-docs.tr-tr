@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 9a01dabbd0a3e9d76caaead544be655b9505030d
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 55e9d2d1af863084b080c2de7833712413221050
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289203"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445643"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>Tam zamanında erişim ile yönetim bağlantı noktalarınızın güvenliğini sağlama
 
@@ -57,7 +57,7 @@ Bu seçeneklerin her biri aşağıdaki ayrı bir sekmede açıklanmıştır.
 
 Güvenlik Merkezi 'nden JıT VM erişimini etkinleştirebilir ve yapılandırabilirsiniz.
 
-1. Azure Defender panosunu açın ve gelişmiş koruma alanından **tam ZAMANıNDA VM erişimi** ' ni seçin.
+1. Azure Defender panosunu açın ve gelişmiş koruma alanından **tam ZAMANıNDA VM erişimi**' ni seçin.
 
     **Tam ZAMANıNDA VM erişimi** sayfası, VM 'leriniz aşağıdaki sekmelerde gruplandırılarak açılır:
 
@@ -72,7 +72,7 @@ Güvenlik Merkezi 'nden JıT VM erişimini etkinleştirebilir ve yapılandırabi
       - Klasik VM-JıT, ' klasik dağıtım ' değil Azure Resource Manager aracılığıyla dağıtılan VM 'Leri destekler. [Klasik vs Azure Resource Manager dağıtım modelleri hakkında daha fazla bilgi edinin](../azure-resource-manager/management/deployment-models.md).
       - Diğer-VM 'Niz, aboneliğin veya kaynak grubunun güvenlik ilkesinde devre dışı bırakılmışsa Bu sekmede olabilir.
 
-1. **Yapılandırılmadı** SEKMESINDE, JIT Ile korunacak VM 'leri Işaretleyin ve **VM 'Lerde JIT 'i etkinleştir** ' i seçin. 
+1. **Yapılandırılmadı** SEKMESINDE, JIT Ile korunacak VM 'leri Işaretleyin ve **VM 'Lerde JIT 'i etkinleştir**' i seçin. 
 
     Güvenlik Merkezi 'nin korumayı önerdiği bağlantı noktalarını listelemek için JıT VM erişimi sayfası açılır:
     - 22-SSH
@@ -80,7 +80,7 @@ Güvenlik Merkezi 'nden JıT VM erişimini etkinleştirebilir ve yapılandırabi
     - 5985-WinRM 
     - 5986-WinRM
 
-    Varsayılan ayarları kabul etmek için **Kaydet** ' i seçin.
+    Varsayılan ayarları kabul etmek için **Kaydet**' i seçin.
 
 1. JıT seçeneklerini özelleştirmek için:
 
@@ -89,15 +89,15 @@ Güvenlik Merkezi 'nden JıT VM erişimini etkinleştirebilir ve yapılandırabi
 
     Her bağlantı noktası için (özel ve varsayılan) **bağlantı noktası yapılandırması Ekle** bölmesi aşağıdaki seçenekleri sunar:
 
-    - **Protokol** -bir istek onaylandığında bu bağlantı noktasında izin verilen protokol
-    - **Izin verilen kaynak IP 'leri** -bir istek onaylandığında bu bağlantı noktasında ızın verilen IP aralıkları
-    - **En fazla istek süresi** -belirli bir bağlantı noktasının açılabileceği en uzun zaman penceresi
+    - **Protokol**-bir istek onaylandığında bu bağlantı noktasında izin verilen protokol
+    - **Izin verilen kaynak IP 'leri**-bir istek onaylandığında bu bağlantı noktasında ızın verilen IP aralıkları
+    - **En fazla istek süresi**-belirli bir bağlantı noktasının açılabileceği en uzun zaman penceresi
 
      1. Bağlantı noktası güvenliğini gereksinimlerinize göre ayarlayın.
 
-     1. **Tamam** ’ı seçin.
+     1. **Tamam**’ı seçin.
 
-1. **Kaydet** ’i seçin.
+1. **Kaydet**’i seçin.
 
 
 
@@ -107,7 +107,7 @@ Bu VM için koruma için yeni bir bağlantı noktası ekleyip yapılandırarak v
 
 Bir VM için mevcut JıT kurallarını düzenlemek için:
 
-1. Azure Defender panosunu açın ve gelişmiş koruma alanından **Uyarlamalı uygulama denetimleri** ' ni seçin.
+1. Azure Defender panosunu açın ve gelişmiş koruma alanından **Uyarlamalı uygulama denetimleri**' ni seçin.
 
 1. **Yapılandırılmış** sekmesinden, bağlantı noktası eklemek istediğiniz sanal makineye sağ tıklayın ve Düzenle ' yi seçin. 
 
@@ -115,7 +115,7 @@ Bir VM için mevcut JıT kurallarını düzenlemek için:
 
 1. **JıT VM erişimi yapılandırması** altında, zaten korumalı bir bağlantı noktasının var olan ayarlarını düzenleyebilir ya da yeni bir özel bağlantı noktası ekleyebilirsiniz.
 
-1. Bağlantı noktalarını düzenledikten sonra **Kaydet** ' i seçin.
+1. Bağlantı noktalarını düzenledikten sonra **Kaydet**' i seçin.
  
 
 
@@ -134,9 +134,9 @@ Azure portal Azure sanal makineler sayfalarından bir VM 'de JıT 'i etkinleşti
 
 1. JıT ile korumak istediğiniz sanal makineyi seçin.
 
-1. Menüde **yapılandırma** ' yı seçin.
+1. Menüde **yapılandırma**' yı seçin.
 
-1. **Tam zamanında erişim** altında, **tam zamanında etkinleştir** ' i seçin. 
+1. **Tam zamanında erişim** altında, **tam zamanında etkinleştir**' i seçin. 
 
     Bu, aşağıdaki varsayılan ayarları kullanarak VM için tam zamanında erişim imkanı sunar:
 
@@ -151,7 +151,7 @@ Azure portal Azure sanal makineler sayfalarından bir VM 'de JıT 'i etkinleşti
 
 1. Bu değerlerden herhangi birini düzenlemek veya JıT yapılandırmanıza daha fazla bağlantı noktası eklemek için Azure Güvenlik Merkezi 'nin tam zamanında sayfasını kullanın:
 
-    1. Güvenlik Merkezi menüsünde, **tam ZAMANıNDA VM erişimi** ' ni seçin.
+    1. Güvenlik Merkezi menüsünde, **tam ZAMANıNDA VM erişimi**' ni seçin.
 
     1. **Yapılandırılmış** sekmesinden, bağlantı noktası eklemek istediğiniz sanal makineye sağ tıklayın ve Düzenle ' yi seçin. 
 
@@ -159,7 +159,7 @@ Azure portal Azure sanal makineler sayfalarından bir VM 'de JıT 'i etkinleşti
 
     1. **JıT VM erişimi yapılandırması** altında, zaten korumalı bir bağlantı noktasının var olan ayarlarını düzenleyebilir ya da yeni bir özel bağlantı noktası ekleyebilirsiniz.
 
-    1. Bağlantı noktalarını düzenledikten sonra **Kaydet** ' i seçin.
+    1. Bağlantı noktalarını düzenledikten sonra **Kaydet**' i seçin.
 
 
 ### <a name="powershell"></a>[**PowerShell**](#tab/jit-config-powershell)
@@ -251,11 +251,11 @@ Bir sanal makinede JıT etkin olduğunda, bu sunucuya bağlanmak için erişim i
 
     - **Bağlantı ayrıntıları** sütunu, VM 'yi bağlamak için gereken bilgileri ve açık bağlantı noktalarını sağlar.
 
-1. **Erişim iste** ' yi seçin. **Erişim iste** penceresi açılır.
+1. **Erişim iste**' yi seçin. **Erişim iste** penceresi açılır.
 
-1. **Erişim iste** , her VM için, açmak istediğiniz bağlantı noktalarını ve bağlantı noktasının açık olduğu kaynak IP adreslerini ve bağlantı noktasının açılacağı zaman penceresini yapılandırın. Yalnızca yapılandırılan bağlantı noktalarına erişim istemek mümkün olacaktır. Her bağlantı noktasının, oluşturduğunuz JıT yapılandırmasından elde edilen izin verilen en uzun süre vardır.
+1. **Erişim iste**, her VM için, açmak istediğiniz bağlantı noktalarını ve bağlantı noktasının açık olduğu kaynak IP adreslerini ve bağlantı noktasının açılacağı zaman penceresini yapılandırın. Yalnızca yapılandırılan bağlantı noktalarına erişim istemek mümkün olacaktır. Her bağlantı noktasının, oluşturduğunuz JıT yapılandırmasından elde edilen izin verilen en uzun süre vardır.
 
-1. **Açık bağlantı noktaları** ' nı seçin.
+1. **Açık bağlantı noktaları**' nı seçin.
 
 > [!NOTE]
 > Erişim isteyen bir Kullanıcı proxy 'nin arkasındaysa, **alanım** seçeneği çalışmayabilir. Kuruluşun tam IP adres aralığını tanımlamanız gerekebilir.
@@ -300,7 +300,7 @@ PowerShell 'de aşağıdakileri çalıştırın:
 
     ```azurepowershell
     $JitPolicyVm1 = (@{
-        id="/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME";
+        id="/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME";
         ports=(@{
            number=22;
            endTimeUtc="2020-07-15T17:00:00.3658798Z";
@@ -344,7 +344,7 @@ Tam zamanında VM erişimi özelliği Azure Güvenlik Merkezi API 'SI aracılı�
 
 Günlük aramasını kullanarak VM etkinlikleri hakkında öngörüler elde edebilirsiniz. Günlükleri görüntülemek için:
 
-1. **Tam ZAMANıNDA VM erişimi** ' nden **yapılandırılmış** sekmesini seçin.
+1. **Tam ZAMANıNDA VM erişimi**' nden **yapılandırılmış** sekmesini seçin.
 
 1. Denetlemek istediğiniz VM için, satırın sonundaki üç nokta menüsünü açın.
  
@@ -354,7 +354,7 @@ Günlük aramasını kullanarak VM etkinlikleri hakkında öngörüler elde edeb
 
    Etkinlik günlüğü, o VM için zaman, tarih ve abonelikle birlikte önceki işlemlerin filtrelenmiş bir görünümünü sağlar.
 
-1. Günlük bilgilerini indirmek için **CSV olarak indir** ' i seçin.
+1. Günlük bilgilerini indirmek için **CSV olarak indir**' i seçin.
 
 
 

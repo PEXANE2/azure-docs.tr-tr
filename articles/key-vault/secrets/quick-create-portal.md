@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 212e5fb62043c2ffe2b8876249a6aad1d224411d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 3d7e6357fd8f1091509cbf27875c028d3af310cb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685860"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445921"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Hızlı başlangıç: Azure portalı kullanarak Azure Key Vault'tan gizli dizi ayarlama ve alma
 
@@ -26,7 +26,7 @@ Hakkında daha fazla bilgi için bkz.
 - [Key Vault genel bakış](../general/overview.md)
 - [Gizli dizi genel bakış](about-secrets.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Key Vault erişmek için bir Azure aboneliğine ihtiyacınız olacaktır. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
@@ -45,13 +45,13 @@ Kasaya bir gizli dizi eklemek için şu adımları izleyin:
 1. **Oluştur/İçeri Aktar**’a tıklayın.
 1. **Bir gizli dizi oluştur** ekranında aşağıdaki değerleri seçin:
     - **Karşıya yükleme seçenekleri**: El ile.
-    - **Ad**: gizli dizi için bir ad yazın. Gizli dizi adı bir Key Vault içinde benzersiz olmalıdır. Ad, bir harfle başlayan ve yalnızca 0-9, a-z, A-Z ve-içeren bir 1-127 karakter dizesi olmalıdır. Adlandırma hakkında daha fazla bilgi için bkz. [Key Vault nesneleri, tanımlayıcıları ve sürüm oluşturma](https://docs.microsoft.com/azure/key-vault/general/about-keys-secrets-certificates#objects-identifiers-and-versioning)
+    - **Ad**: gizli dizi için bir ad yazın. Gizli dizi adı bir Key Vault içinde benzersiz olmalıdır. Ad, bir harfle başlayan ve yalnızca 0-9, a-z, A-Z ve-içeren bir 1-127 karakter dizesi olmalıdır. Adlandırma hakkında daha fazla bilgi için bkz. [Key Vault nesneleri, tanımlayıcıları ve sürüm oluşturma](../general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning)
     - **Değer**: parola için bir değer yazın. Key Vault API 'Leri, gizli değerleri dizeler olarak kabul eder ve döndürür. 
-    - Diğer değerleri varsayılan değerlerinde bırakın. **Oluştur**’a tıklayın.
+    - Diğer değerleri varsayılan değerlerinde bırakın. **Oluştur**'a tıklayın.
 
 Gizli dizinin başarıyla oluşturulduğunu belirten iletiyi aldıktan sonra listede gizli diziye tıklayabilirsiniz. 
 
-Gizlilikler öznitelikleri hakkında daha fazla bilgi için bkz. [Azure Key Vault gizli](https://docs.microsoft.com/azure/key-vault/secrets/about-secrets) dizileri
+Gizlilikler öznitelikleri hakkında daha fazla bilgi için bkz. [Azure Key Vault gizli](./about-secrets.md) dizileri
 
 ## <a name="retrieve-a-secret-from-key-vault"></a>Key Vault bir gizli dizi alma
 
@@ -75,7 +75,7 @@ Artık gerek kalmadığında kaynak grubunu silin; bunu yaptığınızda Key Vau
 3. **KAYNAK GRUBU ADINI YAZIN:** kutusuna kaynak grubunun adını yazın ve **Sil**’i seçin.
 
 > [!NOTE]
-> Gizli dizi, anahtar, sertifika veya Anahtar Kasası silindikten sonra, yapılandırılabilir bir 90-takvim gününe kadar süreyle kurtarılabilir olarak kalacağını fark etmek önemlidir. Yapılandırma belirtilmemişse, varsayılan kurtarma süresi 90 gün olarak ayarlanır. Bu, kullanıcılara yanlışlıkla gizli dizi silme ve yanıt vermesi için yeterli zaman sağlar. Anahtar kasalarını ve Anahtar Kasası nesnelerini silme ve kurtarma hakkında daha fazla bilgi için bkz. [Azure Key Vault Soft-Delete Overview](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview)
+> Gizli dizi, anahtar, sertifika veya Anahtar Kasası silindikten sonra, yapılandırılabilir bir 90-takvim gününe kadar süreyle kurtarılabilir olarak kalacağını fark etmek önemlidir. Yapılandırma belirtilmemişse, varsayılan kurtarma süresi 90 gün olarak ayarlanır. Bu, kullanıcılara yanlışlıkla gizli dizi silme ve yanıt vermesi için yeterli zaman sağlar. Anahtar kasalarını ve Anahtar Kasası nesnelerini silme ve kurtarma hakkında daha fazla bilgi için bkz. [Azure Key Vault Soft-Delete Overview](../general/soft-delete-overview.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

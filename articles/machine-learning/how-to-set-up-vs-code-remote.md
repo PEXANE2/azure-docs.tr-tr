@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: jmartens
 author: j-martens
 ms.date: 11/16/2020
-ms.openlocfilehash: 2abad31173992a891e908bdbb61c37e905907d69
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 0afbf32f80a3d19f6db457f398a213a634cfa3d4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697587"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447054"
 ---
 # <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>Visual Studio Code bir Azure Machine Learning işlem örneğine bağlanma (Önizleme)
 
@@ -41,7 +41,7 @@ Bir işlem örneğine bağlanmak için:
 1. Tümleşik Not Defteri Deneyimi yüklendiğinde **Jupyter sunucusu**' nu seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![Azure Machine Learning uzak Jupyter Not defteri sunucusu açılan menüsünü Başlat](media/how-to-set-up-vs-code-remote/launch-server-selection-dropdown.png)
+    > ![Azure Machine Learning uzak Jupyter Notebook sunucusu açılır menüsünü Başlat](media/how-to-set-up-vs-code-remote/launch-server-selection-dropdown.png)
 
     Alternatif olarak, komut paletini de kullanabilirsiniz:
 
@@ -58,7 +58,7 @@ Bir işlem örneğine bağlanmak için:
 > [!IMPORTANT]
 > Bağlantıyı kurmak için bir hücre çalıştırmanız **gerekir** .
 
-Bu noktada, Jupyter Not defterinizde hücreleri çalıştırmaya devam edebilirsiniz.
+Bu noktada, Jupyter Notebook hücreleri çalıştırmaya devam edebilirsiniz.
 
 > [!TIP]
 > Ayrıca, Jupyıter benzeri kod hücrelerini içeren Python betik dosyalarıyla (. Kopyala) çalışabilirsiniz. Daha fazla bilgi için bkz. [Python etkileşimli belgelerine Visual Studio Code](https://code.visualstudio.com/docs/python/jupyter-support-py).
@@ -132,10 +132,10 @@ Burada, alanlarla ilgili bazı ayrıntılar verilmiştir:
 
 |Alan|Açıklama|
 |----|---------|
-|Konak|İşlem örneği için istediğiniz toplu şeyi kullanın |
+|Ana bilgisayar|İşlem örneği için istediğiniz toplu şeyi kullanın |
 |HostName|Bu, işlem örneğinin IP adresidir |
 |Bağlantı noktası|Bu, yukarıdaki SSH iletişim kutusunda gösterilen bağlantı noktasıdır |
-|Kullanıcı|Bunun olması gerekir `azureuser` |
+|User|Bunun olması gerekir `azureuser` |
 |Identityfile|Özel anahtarı kaydettiğiniz dosyaya işaret etmelidir |
 
 Şimdi, yukarıda kullandığınız toplu işlemi kullanarak işlem örneğinizi SSH ile sağlayabilmelisiniz `ssh azmlci1` .

@@ -1,6 +1,6 @@
 ---
-title: Sunucusuz SQL havuzunda OPENROWSET kullanma (Önizleme)
-description: Bu makalede sunucusuz SQL havuzundaki (Önizleme) OPENROWSET sözdizimi açıklanmakta ve bağımsız değişkenlerin nasıl kullanılacağı açıklanmaktadır.
+title: Sunucusuz SQL havuzunda OPENROWSET kullanma
+description: Bu makalede sunucusuz SQL havuzundaki OPENROWSET sözdizimi açıklanmakta ve bağımsız değişkenlerin nasıl kullanılacağı açıklanmaktadır.
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 90a5afb19c9ba5061b9304c739914262bcdbee15
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 97ee6c17d62a924686e3e4f4717d7bb7f4375988
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122715"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446680"
 ---
-# <a name="how-to-use-openrowset-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) kullanarak OPENROWSET kullanma
+# <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu kullanarak OPENROWSET kullanma
 
-`OPENROWSET(BULK...)`İşlevi, Azure Storage 'daki dosyalara erişmenizi sağlar. `OPENROWSET` işlev, uzak bir veri kaynağının (örneğin dosya) içeriğini okur ve içeriği bir dizi satır olarak döndürür. Sunucusuz SQL Havuzu (Önizleme) kaynağında, OPENROWSET işlevi çağırarak ve toplu seçenek belirtilerek OPENROWSET toplu satır kümesi sağlayıcısına erişilir.  
+`OPENROWSET(BULK...)`İşlevi, Azure Storage 'daki dosyalara erişmenizi sağlar. `OPENROWSET` işlev, uzak bir veri kaynağının (örneğin dosya) içeriğini okur ve içeriği bir dizi satır olarak döndürür. Sunucusuz SQL havuzu kaynağında, OPENROWSET işlevi çağırarak ve toplu seçenek belirtilerek OPENROWSET toplu satır kümesi sağlayıcısına erişilir.  
 
 İşlevine, bir `OPENROWSET` `FROM` tablo adı gibi bir sorgunun yan tümcesinde başvurulabilir `OPENROWSET` . Bir dosyadaki verilerin bir satır kümesi olarak okunmasını ve döndürülmesini sağlayan yerleşik bir toplu sağlayıcı aracılığıyla toplu işlemleri destekler.
 

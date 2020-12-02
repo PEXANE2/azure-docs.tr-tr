@@ -1,6 +1,6 @@
 ---
-title: Azure SYNAPSE Analytics (eski adıyla SQL DW) mimarisi
-description: Azure SYNAPSE Analytics 'in (eski adıyla SQL DW), yüksek performans ve ölçeklenebilirlik elde etmek için Azure depolama ile dağıtılmış sorgu işleme özelliklerini nasıl birleştirdiğini öğrenin.
+title: Adanmış SQL Havuzu (eski adıyla SQL DW) mimarisi
+description: Azure SYNAPSE Analytics 'te adanmış SQL havuzunun (eski adıyla SQL DW), yüksek performans ve ölçeklenebilirlik elde etmek için Azure depolama ile dağıtılmış sorgu işleme özelliklerini nasıl birleştirdiğini öğrenin.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -10,49 +10,44 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 1d32aa011e9e816f97b050d43f9558af0cf82e90
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 45c7f89f773095a102429c07f7441223de3c2dec
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319661"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448265"
 ---
-# <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure SYNAPSE Analytics (eski adıyla SQL DW) mimarisi
+# <a name="dedicated-sql-pool-formerly-sql-dw-architecture-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL Havuzu (eski adıyla SQL DW) mimarisi
 
-Azure Synapse kurumsal veri ambarı özellikleriyle Büyük Veri analizini bir araya getiren sınırsız bir analiz hizmetidir. Her ölçekte sunucusuz isteğe bağlı veya sağlanmış kaynakları kullanarak, kendi koşullarınızla verileri sorgulama özgürlüğü getirir. Azure Synapse Analytics, anında BI ve makine öğrenmesi gereksinimleri için veri almanızı, hazırlamanızı, yönetmenizi ve sunmanızı sağlayan birleşik bir deneyimle bu iki dünyayı bir araya getirir.
+Azure Synapse Analytics, kurumsal veri ambarı özellikleriyle Büyük Veri analizini bir araya getiren bir analiz hizmetidir. Bu, verileri koşullarınızda sorgulama özgürlüğü sunar.
 
- Azure SYNAPSE dört bileşene sahiptir:
+> [!NOTE]
+>[Azure SYNAPSE Analytics belgelerini](../overview-what-is.md)inceleyin.
+>
 
-- SYNAPSE SQL: tam T-SQL tabanlı analiz
-
-  - Adanmış SQL Havuzu (sağlanan DWU başına ödeme) – genel olarak kullanılabilir
-  - Sunucusuz SQL Havuzu (işlenen TB başına ödeme) – (Önizleme)
-- Spark: derin tümleşik Apache Spark (Önizleme)
-- Veri tümleştirme: karma veri tümleştirmesi (Önizleme)
-- Studio: birleştirilmiş kullanıcı deneyimi.  (Önizleme)
 
 > [!VIDEO https://www.youtube.com/embed/PlyQ8yOb8kc]
 
 ## <a name="synapse-sql-architecture-components"></a>SYNAPSE SQL mimarisi bileşenleri
 
-[SYNAPSE SQL](sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse) , verilerin birden çok düğüm arasında işlem işlemesini dağıtmak için bir genişleme mimarisinden yararlanır. Ölçek birimi, [veri ambarı birimi](what-is-a-data-warehouse-unit-dwu-cdwu.md)olarak bilinen bir işlem gücü soyutlamasıdır. İşlem depolama alanından ayrıdır ve bu işlem, sisteminizi sisteminizdeki verilerden bağımsız olarak ölçeklendirmenizi sağlar.
+[ADANMıŞ SQL Havuzu (eski ADıYLA SQL DW)](sql-data-warehouse-overview-what-is.md) , verilerin birden çok düğüm arasında işlem işlemesini dağıtmak için bir genişleme mimarisinden yararlanır. Ölçek birimi, [veri ambarı birimi](what-is-a-data-warehouse-unit-dwu-cdwu.md)olarak bilinen bir işlem gücü soyutlamasıdır. İşlem depolama alanından ayrıdır ve bu işlem, sisteminizi sisteminizdeki verilerden bağımsız olarak ölçeklendirmenizi sağlar.
 
-![Synapse SQL mimarisi](./media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
+![Adanmış SQL Havuzu (eski adıyla SQL DW) mimarisi](./media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
-SYNAPSE SQL, düğüm tabanlı bir mimari kullanır. Uygulamalar, T-SQL komutlarını, SYNAPSE SQL için tek giriş noktası olan bir denetim düğümüne bağlanır ve bu komutlara verebilir. Denetim düğümü, paralel işleme için sorguları en iyi duruma getirirken dağıtılmış sorgu altyapısını barındırır ve sonra işlerini paralel olarak yapmak üzere işlem düğümlerine geçirir.
+Adanmış SQL Havuzu (eski adıyla SQL DW), düğüm tabanlı bir mimari kullanır. Uygulamalar bir denetim düğümüne bağlanır ve T-SQL komutları verebilir. Denetim düğümü, paralel işleme için sorguları en iyi duruma getirirken dağıtılmış sorgu altyapısını barındırır ve sonra işlerini paralel olarak yapmak üzere işlem düğümlerine geçirir.
 
 İşlem düğümleri tüm kullanıcı verilerini Azure Depolama’da depolar ve paralel sorgular çalıştırır. Veri Taşıma Hizmeti (DMS), sorguları paralel olarak çalıştırmak ve doğru sonuçlar döndürmek için verileri düğümler arasında taşıyan, sistem düzeyindeki bir dahili hizmettir.
 
-Ayrılmış depolama ve işlem ile, SYNAPSE SQL havuzu bir arada kullanıldığında şunları yapabilirsiniz:
+Ayrılmış depolama ve işlem ile ayrılmış bir SQL Havuzu (eski adıyla SQL DW) kullanılırken şunları yapabilirsiniz:
 
 - Depolama gereksinimlerinizin ne olursa olsun bağımsız işlem gücü.
-- Veri taşımadan bir SQL Havuzu (veri ambarı) içinde işlem gücünü büyütün veya küçültün.
+- İşlem gücünü, ayrılmış bir SQL havuzunda (eski adıyla SQL DW), verileri taşımadan büyütün veya küçültün.
 - Verileri olduğu gibi bırakıp işlem kapasitesini duraklatır, böylece yalnızca depolama için ödeme yaparsınız.
 - Çalışma saatleri içinde işlem kapasitesini sürdürme.
 
-### <a name="azure-storage"></a>Azure Storage
+### <a name="azure-storage"></a>Azure Depolama
 
-SYNAPSE SQL, kullanıcı verilerinizi güvende tutmak için Azure Storage 'ı kullanır.  Verileriniz Azure depolama tarafından depolandığından ve yönetildiğinden, depolama tüketiminize yönelik ayrı bir ücret alınır. Veriler, sistem performansını iyileştirmek için **dağıtımlarla** birleştirilir. Tabloyu tanımlarken verileri dağıtmak için kullanılacak parçalama düzeninin arasından seçim yapabilirsiniz. Bu parçalı desenler desteklenir:
+Adanmış SQL havuzu SQL (eski adıyla SQL DW), kullanıcı verilerinizi güvende tutmak için Azure depolama özelliğinden yararlanır.  Verileriniz Azure depolama tarafından depolandığından ve yönetildiğinden, depolama tüketiminize yönelik ayrı bir ücret alınır. Veriler, sistem performansını iyileştirmek için **dağıtımlarla** birleştirilir. Tabloyu tanımlarken verileri dağıtmak için kullanılacak parçalama düzeninin arasından seçim yapabilirsiniz. Bu parçalı desenler desteklenir:
 
 - Karma
 - Hepsini Bir Kez Deneme
@@ -76,7 +71,7 @@ Veri taşıma hizmeti (DMS), Işlem düğümleri arasında veri hareketini koord
 
 Dağıtım, dağıtılmış veriler üzerinde çalışan paralel sorgular için temel depolama ve işleme birimidir. SYNAPSE SQL bir sorgu çalıştırdığında, iş paralel olarak çalışan 60 daha küçük sorguya bölünür.
 
-60 küçük bir sorgu, veri dağıtımlarından birinde çalışır. Her Işlem düğümü bir veya daha fazla 60 dağıtımlarını yönetir. En fazla işlem kaynağına sahip bir SQL havuzunda Işlem düğümü başına bir dağıtım vardır. En düşük işlem kaynaklarına sahip bir SQL havuzunda tek bir işlem düğümündeki tüm dağıtımlar vardır.  
+60 küçük bir sorgu, veri dağıtımlarından birinde çalışır. Her Işlem düğümü bir veya daha fazla 60 dağıtımlarını yönetir. En fazla işlem kaynağına sahip adanmış bir SQL havuzunun (eski adıyla SQL DW) Işlem düğümü başına bir dağıtımı vardır. En düşük işlem kaynaklarıyla ayrılmış bir SQL Havuzu (eski adıyla SQL DW), tek bir işlem düğümündeki tüm dağıtımlarla birlikte bulunur.  
 
 ## <a name="hash-distributed-tables"></a>Karma dağıtılmış tablolar
 
@@ -112,7 +107,7 @@ Aşağıdaki diyagramda, her işlem düğümündeki ilk dağıtım üzerinde ön
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure SYNAPSE hakkında biraz bilgi sahibi olduğunuza göre hızlıca [BIR SQL havuzu oluşturma](create-data-warehouse-portal.md) ve [örnek verileri yükleme](load-data-from-azure-blob-storage-using-polybase.md)hakkında bilgi edinin. Azure’da yeniyseniz yeni terimlerle karşılaşabileceğinizi için [Azure sözlüğünü](../../azure-glossary-cloud-terminology.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) yararlı bulabilirsiniz. Ya da diğer Azure SYNAPSE kaynaklarından bazılarına bakın.  
+Artık Azure SYNAPSE hakkında bir bit öğrenmiş olduğunuza göre, [Özel BIR SQL havuzunun (eski ADıYLA SQL DW)](create-data-warehouse-portal.md) nasıl hızlı bir şekilde oluşturulduğunu ve [örnek verileri yüklemeyi](load-data-from-azure-blob-storage-using-polybase.md)öğrenin. Azure’da yeniyseniz yeni terimlerle karşılaşabileceğinizi için [Azure sözlüğünü](../../azure-glossary-cloud-terminology.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) yararlı bulabilirsiniz. Ya da diğer Azure SYNAPSE kaynaklarından bazılarına bakın.  
 
 - [Başarı hikayeleri](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
 - [Bloglar](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)

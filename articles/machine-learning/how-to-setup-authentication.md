@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 11/05/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperfq2
-ms.openlocfilehash: 7fa6beacf4456145e312494a72dad321dfef3754
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: ca8a36584c09d850ed1daab8cba301b244f76526
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843936"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447028"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning kaynakları ve iş akışları için kimlik doğrulamasını ayarlama
 
@@ -32,7 +32,7 @@ Azure Machine Learning çalışma alanınıza nasıl kimlik doğrulaması ayarla
 > [!IMPORTANT]
 > Kullanılan kimlik doğrulama iş akışından bağımsız olarak, kaynaklara izin verilen erişim düzeyini (yetkilendirme) kapsamı için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanılır. Örneğin, bir yönetici veya Otomasyon işleminin bir işlem örneği oluşturmak için erişimi olabilir, ancak bunu kullanmayabilir, bir veri bilimconu onu kullanabilir ancak silemez veya oluşturamaz. Daha fazla bilgi için bkz. [Azure Machine Learning erişimi yönetme](how-to-assign-roles.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md)oluşturun.
 * Azure Machine Learning SDK 'yı yüklemek için [geliştirme ortamınızı yapılandırın](how-to-configure-environment.md) veya SDK 'nın zaten yüklü olduğu bir [Azure Machine Learning işlem örneği](concept-azure-machine-learning-architecture.md#compute-instance) kullanın.
@@ -67,7 +67,7 @@ SP oluşturmanın en kolay yolu [Azure CLI](/cli/azure/install-azure-cli?preserv
 
     CLI varsayılan tarayıcınızı açabiliyorsa, tarayıcıyı açar ve oturum açma sayfasını yükler. Aksi takdirde, bir tarayıcı açmanız ve komut satırındaki yönergeleri izlemeniz gerekir. Yönergeler, [https://aka.ms/devicelogin](https://aka.ms/devicelogin) bir yetkilendirme koduna göz atmaya ve girmeye yönelik bilgiler içerir.
 
-    Birden çok Azure aboneliğiniz varsa, `az account set -s <subscription name or ID>` aboneliği ayarlamak için komutunu kullanabilirsiniz. Daha fazla bilgi için bkz. [birden çok Azure aboneliği kullanma](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest).
+    Birden çok Azure aboneliğiniz varsa, `az account set -s <subscription name or ID>` aboneliği ayarlamak için komutunu kullanabilirsiniz. Daha fazla bilgi için bkz. [birden çok Azure aboneliği kullanma](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest).
 
     Diğer kimlik doğrulama yöntemleri için bkz. [Azure CLI Ile oturum açma](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest).
 
@@ -184,7 +184,7 @@ Belgelerde ve örneklerde birçok örnek etkileşimli kimlik doğrulaması kulla
 > interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
 > ```
 
-Azure CLı kullanırken, `az login` CLI oturumunun kimliğini doğrulamak için komutu kullanılır. Daha fazla bilgi için bkz. [Azure CLI kullanmaya başlama](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).
+Azure CLı kullanırken, `az login` CLI oturumunun kimliğini doğrulamak için komutu kullanılır. Daha fazla bilgi için bkz. [Azure CLI kullanmaya başlama](/cli/azure/get-started-with-azure-cli).
 
 > [!TIP]
 > Daha önce Azure CLı kullanarak daha önce kimlik doğrulaması yapmış olduğunuz bir ortamdan SDK kullanıyorsanız, `AzureCliAuthentication` CLI tarafından önbelleğe alınan kimlik bilgilerini kullanarak çalışma alanında kimlik doğrulaması yapmak için sınıfını kullanabilirsiniz:
