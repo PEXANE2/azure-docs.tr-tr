@@ -3,12 +3,12 @@ title: Azure Service Fabric hakkında daha fazla bilgi
 description: Azure Service Fabric 'nin temel kavramları ve ana alanlarıyla ilgili bilgi edinin. Service Fabric genişletilmiş bir genel bakış sağlar ve mikro hizmetlerin nasıl oluşturulacağını açıklar.
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 07b41f10430592e6035bfe0179cb717d0bc5c8b0
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 36215dd3419050cf498a749b5caf927c3c4e275a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681746"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485459"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Service Fabric hakkında bilgi edinmek istiyor musunuz?
 Azure Service Fabric; ölçeklenebilir ve güvenilir mikro hizmetleri paketlemeyi, dağıtmayı ve yönetmeyi kolaylaştırmayı sağlayan bir dağıtılmış sistemler platformudur.  Service Fabric, ancak büyük bir yüzey alanına sahiptir ve öğrenilmesi çok önemlidir.  Bu makalede bir Service Fabric Özeti ve temel kavramlar, programlama modelleri, uygulama yaşam döngüsü, test, kümeler ve sistem durumu izleme açıklanmaktadır. Bir giriş ve mikro hizmetler oluşturmak için Service Fabric nasıl kullanılabileceği hakkında [genel bakış](service-fabric-overview.md) ve [mikro hizmetler nelerdir?](service-fabric-overview-microservices.md) makalesini okuyun. Bu makale kapsamlı bir içerik listesi içermez, ancak Service Fabric her alanı için genel bakış ve başlangıç makalelerine bağlantı sağlar. 
@@ -51,7 +51,7 @@ Aşağıdaki diyagramda uygulamalar ve hizmet örnekleri, bölümler ve çoğalt
 
 Her bölümün çoğaltmaları kümenin düğümlerine yayılır, bu da adlandırılmış hizmetin durumunun [ölçeklendirilmesine](service-fabric-concepts-scalability.md)olanak tanır. Verilerin büyümesi, bölümlerin büyümesi ve Service Fabric donanım kaynaklarının verimli bir şekilde kullanılması için bölümleri düğümler arasında yeniden dengeleyebilmesi. Kümeye yeni düğümler eklerseniz Service Fabric, Bölüm çoğaltmalarını artan düğüm sayısı genelinde yeniden dengeleyebilir. Genel uygulama performansı, bellek düşüşlerine erişim için gelişir ve çekişmeyi geliştirir. Kümedeki düğümler verimli bir şekilde kullanılmıyorsa, kümedeki düğümlerin sayısını azaltabilirsiniz. Service Fabric, her düğümdeki donanımın daha iyi kullanılmasını sağlamak için bölüm çoğaltmalarını azalmış düğüm sayısı genelinde yeniden dengeler.
 
-Bir bölüm içinde, durum bilgisi olan adlandırılmış hizmetler, durum bilgisi olan adlandırılmış hizmetler çoğaltmaları olduğu sürece örnekleri vardır. Genellikle, durum bilgisi olmayan adlandırılmış hizmetler, hiçbir zaman [özel durumlar](https://docs.microsoft.com/azure/service-fabric/service-fabric-concepts-partitioning#partition-service-fabric-stateless-services)olmasına rağmen iç durumu olmadığından yalnızca bir bölüme sahiptir. Bölüm örnekleri [kullanılabilirlik](service-fabric-availability-services.md)sağlar. Bir örnek başarısız olursa, diğer örnekler normal şekilde çalışmaya devam eder ve ardından Service Fabric yeni bir örnek oluşturur. Durum bilgisi olan adlandırılmış hizmetler çoğaltmalar içinde durumlarını korur ve her bölüm kendi çoğaltma kümesine sahiptir. Okuma ve yazma işlemleri, bir çoğaltmada (birincil olarak adlandırılır) gerçekleştirilir. Yazma işlemlerinden durum değişikliği, birden fazla kopyaya (etkin Ikincil adı verilir) çoğaltılır. Çoğaltma başarısız olduğunda, Service Fabric var olan çoğaltmalardan yeni bir çoğaltma oluşturur.
+Bir bölüm içinde, durum bilgisi olan adlandırılmış hizmetler, durum bilgisi olan adlandırılmış hizmetler çoğaltmaları olduğu sürece örnekleri vardır. Genellikle, durum bilgisi olmayan adlandırılmış hizmetler, hiçbir zaman [özel durumlar](./service-fabric-concepts-partitioning.md#partition-service-fabric-stateless-services)olmasına rağmen iç durumu olmadığından yalnızca bir bölüme sahiptir. Bölüm örnekleri [kullanılabilirlik](service-fabric-availability-services.md)sağlar. Bir örnek başarısız olursa, diğer örnekler normal şekilde çalışmaya devam eder ve ardından Service Fabric yeni bir örnek oluşturur. Durum bilgisi olan adlandırılmış hizmetler çoğaltmalar içinde durumlarını korur ve her bölüm kendi çoğaltma kümesine sahiptir. Okuma ve yazma işlemleri, bir çoğaltmada (birincil olarak adlandırılır) gerçekleştirilir. Yazma işlemlerinden durum değişikliği, birden fazla kopyaya (etkin Ikincil adı verilir) çoğaltılır. Çoğaltma başarısız olduğunda, Service Fabric var olan çoğaltmalardan yeni bir çoğaltma oluşturur.
 
 ## <a name="stateless-and-stateful-microservices-for-service-fabric"></a>Service Fabric için durum bilgisi olan ve olmayan mikro hizmetler
 Service Fabric, mikro hizmetlerden veya kapsayıcılardan oluşmuş uygulamalar hazırlamanıza olanak tanır. Durum bilgisi olmayan mikro hizmetler (protokol ağ geçitleri ve web ara sunucuları gibi), isteğin veya hizmetten gelen yanıtının dışında değişebilir bir durum bilgisi bulundurmaz. Azure Cloud Services çalışan rolleri, durum bilgisi olmayan hizmet örnekleridir. Durum bilgisi olan mikro hizmetler (kullanıcı hesapları, veritabanları, cihazlar, alışveriş sepetleri ve kuyruklar gibi), isteğin ve yanıtının ötesinde değişebilir, yetkili bir durum bilgisi bulundurur. Günümüzün İnternet ölçeğindeki uygulamaları, durum bilgisi olan ve olmayan mikro hizmetlerin bileşiminden oluşur. 
@@ -75,7 +75,7 @@ Varsayılan olarak, Service Fabric Hizmetleri işlem olarak dağıtır ve etkinl
 ### <a name="reliable-actors"></a>Reliable Actors
 Reliable Services üzerine inşa edilen [güvenilir aktör](service-fabric-reliable-actors-introduction.md) çerçevesi, aktör tasarım düzenine göre sanal aktör modelini uygulayan bir uygulama çerçevesidir. Güvenilir aktör çerçevesi, aktör olarak adlandırılan tek iş parçacıklı yürütme ile bağımsız işlem ve durum birimleri kullanır. Güvenilir aktör çerçevesi, aktörler ve önceden ayarlanmış durum kalıcılığı ve genişleme yapılandırmalarına yönelik yerleşik iletişim sağlar.
 
-### <a name="aspnet-core"></a>ASP.NET Core
+### <a name="aspnet-core"></a>ASP.NET Çekirdeği
 Service Fabric Web ve API uygulamaları oluşturmak için birinci sınıf programlama modeli olarak [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) tümleştirilir.  ASP.NET Core, Service Fabric iki farklı şekilde kullanılabilir:
 
 - Konuk yürütülebilir dosyası olarak barındırılır. Bu, birincil olarak, mevcut ASP.NET Core uygulamalarını kod değişikliği olmadan Service Fabric üzerinde çalıştırmak için kullanılır.

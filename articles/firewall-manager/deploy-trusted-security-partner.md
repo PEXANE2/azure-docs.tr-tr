@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: how-to
-ms.date: 06/30/2020
+ms.date: 12/01/2020
 ms.author: victorh
-ms.openlocfilehash: 3323f73c137905fbe677c68d3830d7f609fa0172
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 906687e08c9f31890a9ecec9154079e704512832
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85611586"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485731"
 ---
 # <a name="deploy-a-security-partner-provider"></a>Güvenlik iş ortağı sağlayıcısı dağıtma
 
@@ -21,14 +21,18 @@ Azure Güvenlik Duvarı Yöneticisi 'ndeki *güvenlik iş ortağı sağlayıcıl
 Desteklenen senaryolar ve en iyi yöntem yönergeleri hakkında daha fazla bilgi edinmek için bkz. [güvenlik iş ortağı sağlayıcıları nelerdir?](trusted-security-partners.md)
 
 
-Hizmet olarak tümleşik üçüncü taraf güvenlik (SECaaS) iş ortakları artık tüm Azure genel bulut bölgelerinde kullanılabilir. **Zscaler** tümleştirmesi, 3 Temmuz 2020 ' de genel kullanıma sunulacaktır. **Check Point** desteklenen bir SECaaS iş ortağıdır ve 3 Temmuz 2020 tarihinde önizlemede olacak. **ıpatron** tümleştirmesi, 31 Temmuz 2020 ' de genel kullanıma sunulacaktır.
+Hizmet olarak tümleşik üçüncü taraf güvenlik (SECaaS) iş ortakları artık kullanılabilir: 
+
+- **Zscaler**
+- **[Denetim Noktası](check-point-overview.md)**
+- **ıpatron**
 
 ## <a name="deploy-a-third-party-security-provider-in-a-new-hub"></a>Yeni bir hub 'da üçüncü taraf güvenlik sağlayıcısı dağıtma
 
 Mevcut bir hub 'a üçüncü taraf bir sağlayıcı dağıtıyorsanız bu bölümü atlayın.
 
 1. https://portal.azure.com adresinden Azure portalında oturum açın.
-2. **Ara**bölümünde **güvenlik duvarı Yöneticisi** yazın ve **Hizmetler**altında seçin.
+2. **Ara** bölümünde **güvenlik duvarı Yöneticisi** yazın ve **Hizmetler** altında seçin.
 3. **Başlarken**' e gidin. **Güvenli sanal hub 'Ları görüntüle**' yi seçin.
 4. **Yeni güvenli sanal hub oluştur**' u seçin.
 5. Aboneliğinizi ve kaynak grubunu girin, desteklenen bir bölge seçin ve hub ve sanal WAN bilgilerinizi ekleyin. 
@@ -38,16 +42,16 @@ Mevcut bir hub 'a üçüncü taraf bir sağlayıcı dağıtıyorsanız bu bölü
    > [!NOTE]
    > Güvenlik ortağı sağlayıcıları VPN Gateway tünellerini kullanarak hub 'ınıza bağlanır. VPN Gateway silerseniz, güvenlik iş ortağı sağlayıcılarınızın bağlantıları kaybedilir.
 9. Internet trafiğini filtrelemek için üçüncü taraf hizmet sağlayıcısıyla birlikte özel trafiği filtrelemek üzere Azure Güvenlik Duvarı dağıtmak istiyorsanız, Azure Güvenlik Duvarı için bir ilke seçin. [Desteklenen senaryolar](trusted-security-partners.md#key-scenarios)bölümüne bakın.
-10. Hub 'da yalnızca bir üçüncü taraf güvenlik sağlayıcısını dağıtmak istiyorsanız, **Azure Güvenlik Duvarı: etkin/devre** **dışı olarak**ayarlamak için devre dışı seçeneğini belirleyin. 
+10. Hub 'da yalnızca bir üçüncü taraf güvenlik sağlayıcısını dağıtmak istiyorsanız, **Azure Güvenlik Duvarı: etkin/devre** **dışı olarak** ayarlamak için devre dışı seçeneğini belirleyin. 
 11. **İleri ' yi seçin: güvenlik Iş ortağı sağlayıcısı**.
-12. **Güvenlik Iş ortağı sağlayıcısını** **etkin**olarak ayarlayın. 
+12. **Güvenlik Iş ortağı sağlayıcısını** **etkin** olarak ayarlayın. 
 13. Bir iş ortağı seçin. 
 14. **Sonraki: Gözden geçirme ve oluşturma**’yı seçin. 
 15. İçeriği gözden geçirin ve ardından **Oluştur**' u seçin.
 
 VPN Gateway dağıtımı 30 dakikadan uzun sürebilir.
 
-Hub 'ın oluşturulduğunu doğrulamak için Azure Güvenlik Duvarı Yöneticisi->güvenli hub 'Lara gidin. İş ortağı adını ve durumu **güvenlik bağlantısı beklemede**olarak göstermek için hub->genel bakış sayfasını seçin.
+Hub 'ın oluşturulduğunu doğrulamak için Azure Güvenlik Duvarı Yöneticisi->güvenli hub 'Lara gidin. İş ortağı adını ve durumu **güvenlik bağlantısı beklemede** olarak göstermek için hub->genel bakış sayfasını seçin.
 
 Hub oluşturulduktan ve güvenlik ortağı kurulduktan sonra, güvenlik sağlayıcısını hub 'a bağlamak için devam edin.
 
@@ -55,7 +59,7 @@ Hub oluşturulduktan ve güvenlik ortağı kurulduktan sonra, güvenlik sağlay�
 
 Ayrıca, bir sanal WAN 'da var olan bir hub 'ı seçip *güvenli bir sanal hub*'a dönüştürebilirsiniz.
 
-1. **Başlarken**bölümünde, **güvenli sanal hub 'ları görüntüle**' yi seçin.
+1. **Başlarken** bölümünde, **güvenli sanal hub 'ları görüntüle**' yi seçin.
 2. **Varolan hub 'Ları Dönüştür**' ü seçin.
 3. Bir abonelik ve var olan bir hub seçin. Yeni bir hub 'da üçüncü taraf bir sağlayıcı dağıtmak için adımların geri kalanını izleyin.
 
@@ -81,27 +85,27 @@ Sanal hub 'ın VPN Gateway tünellerini ayarlamak için, üçüncü taraf sağla
 1. Kurulumu tamamladıktan sonra iş ortağınızdan gelen yönergeleri izleyin. Bu, hubı algılayıp bağlanmak, çıkış ilkelerini güncelleştirmek ve bağlantı durumunu ve günlükleri denetlemek için AAD bilgilerini göndermeyi içerir.
 
    - [Zscaler: Microsoft Azure sanal WAN tümleştirmesini yapılandırın](https://help.zscaler.com/zia/configuring-microsoft-azure-virtual-wan-integration).
-   - [Check Point (Önizleme): Microsoft Azure sanal WAN tümleştirmesini yapılandırın](https://sc1.checkpoint.com/documents/Infinity_Portal/WebAdminGuides/EN/CloudGuard-Connect-Azure-Virtual-WAN/Default.htm).
-   - [ıpatron (Önizleme): Microsoft Azure sanal WAN tümleştirmesini yapılandırın](https://www.iboss.com/blog/securing-microsoft-azure-with-iboss-saas-network-security). 
+   - [Check Point: Microsoft Azure sanal WAN tümleştirmesini yapılandırın](https://sc1.checkpoint.com/documents/Infinity_Portal/WebAdminGuides/EN/CloudGuard-Connect-Azure-Virtual-WAN/Default.htm).
+   - [ıpatron: Microsoft Azure sanal WAN tümleştirmesini yapılandırın](https://www.iboss.com/blog/securing-microsoft-azure-with-iboss-saas-network-security). 
    
 2. Azure 'da Azure sanal WAN portalındaki tünel oluşturma durumuna bakabilirsiniz. Tüneller hem Azure 'da hem de iş ortağı portalında **bağlı** olduktan sonra, hangi dalların ve sanal ağların Iş ortağına Internet trafiği gönderebilmelidir.
 
 ## <a name="configure-route-settings"></a>Yol ayarlarını yapılandırma
 
 1. Azure Güvenlik Duvarı Yöneticisi-> güvenli hub 'Lara gidin. 
-2. Bir hub seçin. Hub durumu artık **güvenlik bağlantısı bekleyen**yerine **sağlanmış** olarak gösterilmelidir.
+2. Bir hub seçin. Hub durumu artık **güvenlik bağlantısı bekleyen** yerine **sağlanmış** olarak gösterilmelidir.
 
    Üçüncü taraf sağlayıcının hub 'a bağlanabildiğinden emin olun. VPN ağ geçidinde bulunan tünellerin **bağlı** durumda olması gerekir. Bu durum, önceki durum ile karşılaştırıldığında merkez ve üçüncü taraf iş ortağı arasındaki bağlantı durumunun daha yansıtısıdır.
 3. Hub ' ı seçin ve **yol ayarları**' na gidin.
 
    Hub 'a bir üçüncü taraf sağlayıcı dağıttığınızda, hub 'ı *güvenli bir sanal hub*'a dönüştürür. Bu, üçüncü taraf sağlayıcının hub 'a bir 0.0.0.0/0 (varsayılan) yolu tanıtmasını sağlar. Ancak, bu varsayılan yolu almak zorunda kalmadığınız müddetçe hub 'a bağlı VNet bağlantıları ve siteleri bu yolu almaz.
-4. **İnternet trafiği**altında, rotalar üçüncü taraf ile **Internet 'e** veya **daldan Internet** ' i veya her ikisini birden seçin.
+4. **İnternet trafiği** altında, rotalar üçüncü taraf ile **Internet 'e** veya **daldan Internet** ' i veya her ikisini birden seçin.
 
    Bu yalnızca, hub 'a hangi trafik türünün yönlendirildiğini gösterir, ancak henüz VNET veya dallardaki yolları etkilemez. Bu yollar, varsayılan olarak hub 'a bağlı tüm sanal ağlara/dallara yayılmaz.
 5. **Güvenli bağlantılar** ' ı seçmeniz ve bu yolların ayarlanması gereken bağlantıları seçmeniz gerekir. Bu, üçüncü taraf sağlayıcıya Internet trafiği göndermeye başlayabileceği sanal ağlar/dallar olduğunu gösterir.
-6. **Yönlendirme ayarları**' ndan Internet trafiği altında **güvenli bağlantılar** ' ı seçin, ardından güvenli hale getirilmekte olan VNET veya dalları (sanal WAN 'da*siteler* ) seçin. **Güvenli Internet trafiği**' ni seçin.
+6. **Yönlendirme ayarları**' ndan Internet trafiği altında **güvenli bağlantılar** ' ı seçin, ardından güvenli hale getirilmekte olan VNET veya dalları (sanal WAN 'da *siteler* ) seçin. **Güvenli Internet trafiği**' ni seçin.
    ![Güvenli Internet trafiği](media/deploy-trusted-security-partner/secure-internet-traffic.png)
-7. Hub 'ları sayfasına geri gidin. Hub 'ın **güvenlik iş ortağı sağlayıcısının** durumu artık  **güvenli**olmalıdır.
+7. Hub 'ları sayfasına geri gidin. Hub 'ın **güvenlik iş ortağı sağlayıcısının** durumu artık  **güvenli** olmalıdır.
 
 ## <a name="branch-or-vnet-internet-traffic-via-third-party-service"></a>Üçüncü taraf hizmet aracılığıyla şube veya VNet Internet trafiği
 
