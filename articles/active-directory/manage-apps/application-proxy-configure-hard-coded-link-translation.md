@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ad45d5f0e313c06619fa9c998515e434de957ea
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 08c4020fc03f89b2c583a2458c70e18ecbbe0ba1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997571"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498073"
 ---
 # <a name="redirect-hard-coded-links-for-apps-published-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu yayımlanan uygulamalar için sabit kodlanmış bağlantıları yeniden yönlendirme
 
@@ -86,28 +86,28 @@ Bağlantı çevirisi özelliği yalnızca bir uygulamanın gövdesinde kod etike
 - Paylaşılan bir kaynağa, gibi yerel bir dosya yapısında işaret eden **göreli iç bağlantılar** `/claims/claims.html` . Bu bağlantılar, uygulama proxy 'Si aracılığıyla yayımlanan uygulamalarda otomatik olarak çalışır ve bağlantı çevirisi ile veya bu olmadan çalışmaya devam eder. 
 - Gibi diğer şirket içi uygulamalara yönelik olarak **sabit kodlanmış iç bağlantılar** `http://expenses` veya gibi yayımlanmış dosyalar `http://expenses/logo.jpg` . Bağlantı çevirisi özelliği, sabit kodlanmış iç bağlantılar üzerinde çalışarak, uzak kullanıcıların gitmesi gereken dış URL 'lere işaret etmek üzere değişiklik halleder.
 
-Uygulama proxy 'Sinin, şunlar için bağlantı çevirisini desteklediği HTML kodu etiketlerinin tamamı listesi:
-* a
-* ses
-* base
-* düğmesini seçin
-* div
-* Katıştır
-* biçim
-* çerçeve
-* başlı
-* html
-* iframe
-* görüntü
-* giriş
-* bağlantı
-* MenuItem
-* bulunduruyor
-* object
-* betik
-* kaynak
-* izle
-* video
+Uygulama proxy 'Sinin, ekleme için bağlantı çevirisini desteklediği HTML kod etiketlerindeki özniteliklerin tamamı listesi:
+* a (href)
+* Ses (src)
+* taban (href)
+* düğme (formaction)
+* div (Data-background, Style, Data-src)
+* Ekle (src)
+* Form (eylem)
+* çerçeve (src)
+* baş (profil)
+* HTML (bildirim)
+* iframe (longdesc, src)
+* img (longdesc, src)
+* Giriş (formaction, src, değer)
+* bağlantı (href)
+* MenuItem (simge)
+* meta (içerik)
+* nesne (Arşiv, veri, kod temeli)
+* betik (src)
+* Kaynak (src)
+* izle (src)
+* video (src, poster)
 
 Ayrıca, CSS içinde URL özniteliği de çevrilir.
 

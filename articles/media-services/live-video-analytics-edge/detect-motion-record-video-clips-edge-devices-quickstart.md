@@ -4,12 +4,12 @@ description: Bu hızlı başlangıçta, (sanal) bir IP kamerasından canlı vide
 ms.topic: quickstart
 ms.date: 04/27/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: e456bb5b8d6d6658158af0c58f05ab38fe4693b8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e4334cdd14242337a2a870f31886606020654685
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88682347"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498362"
 ---
 # <a name="quickstart-detect-motion-and-record-video-on-edge-devices"></a>Hızlı başlangıç: Edge cihazlarındaki hareketi algılama ve video kaydetme
  
@@ -123,4 +123,4 @@ Diğer hızlı başlangıçlarını denemek istiyorsanız, oluşturduğunuz kayn
 * Gelişmiş kullanıcılar için ek güçlükleri gözden geçirin:
 
     * RTSP simülatörü kullanmak yerine RTSP 'yi destekleyen bir [IP kamera](https://en.wikipedia.org/wiki/IP_camera) kullanın. [ONVIF uyumlu ürünler](https://www.onvif.org/conformant-products) sayfasında RTSP 'YI destekleyen IP kameralarını bulabilirsiniz. Profiller G, S veya T ile uyumlu olan cihazları arayın.
-    * Azure 'da Linux VM kullanmak yerine AMD64 veya x64 Linux cihazı kullanın. Bu cihaz, IP kamerası ile aynı ağda olmalıdır. [Linux üzerinde Azure IoT Edge çalışma zamanını Install](../../iot-edge/how-to-install-iot-edge-linux.md)içindeki yönergeleri izleyin. Ardından, cihazı Azure IoT Hub 'a kaydetmek için [ilk IoT Edge modülünüzü bir sanal Linux cihazına dağıtma](../../iot-edge/quickstart-linux.md) bölümündeki yönergeleri izleyin.
+    * Azure 'da Linux VM kullanmak yerine AMD64 veya x64 Linux cihazı kullanın. Bu cihaz, IP kamerası ile aynı ağda olmalıdır. [Linux üzerinde Azure IoT Edge çalışma zamanını Install](../../iot-edge/how-to-install-iot-edge.md)içindeki yönergeleri izleyin. Ardından, cihazı Azure IoT Hub 'a kaydetmek için [ilk IoT Edge modülünüzü bir sanal Linux cihazına dağıtma](../../iot-edge/quickstart-linux.md) bölümündeki yönergeleri izleyin.

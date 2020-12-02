@@ -7,12 +7,12 @@ ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: b51746326c2df81e2dd2bdc72bf2a9ab72b649b5
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 6d9e0e63a3586be139620c154616acfcba2ab10f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790568"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498226"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Geliştirme ve test için Azure depolama öykünücüsünü kullanma
 
@@ -170,7 +170,7 @@ Sürüm 3,1 ' den başlayarak, depolama öykünücüsü Okuma Erişimli Coğrafi
 Sürüm 3,0 ' den başlayarak, depolama öykünücüsünü başlattığınızda bir konsol penceresi görüntülenir. Öykünücüyü başlatmak ve durdurmak için konsol penceresindeki komut satırını kullanın. Ayrıca, durumu sorgulayabilir ve komut satırından başka işlemler yapabilirsiniz.
 
 > [!NOTE]
-> Microsoft Azure işlem öykünücüsü yüklüyse, depolama öykünücüsünü başlattığınızda bir sistem tepsisi simgesi görüntülenir. Depolama öykünücüsünü başlatmak ve durdurmak için grafiksel bir yol sağlayan menüyü açığa çıkarmak için simgeye sağ tıklayın.
+> Microsoft Azure Işlem öykünücüsü yüklüyse, depolama öykünücüsünü başlattığınızda bir sistem tepsisi simgesi görüntülenir. Depolama öykünücüsünü başlatmak ve durdurmak için grafiksel bir yol sağlayan menüyü açığa çıkarmak için simgeye sağ tıklayın.
 >
 >
 
@@ -184,11 +184,11 @@ Seçenek listesini görüntülemek için komut satırına `/help` yazın.
 
 | Seçenek | Açıklama | Komut | Arguments |
 | --- | --- | --- | --- |
-| **Başlangıç** |Depolama öykünücüsünü başlatır. |`AzureStorageEmulator.exe start [-inprocess]` |*-Reprocess* : yeni bir işlem oluşturmak yerine öykünücüyü geçerli işlemde başlatın. |
+| **Başlangıç** |Depolama öykünücüsünü başlatır. |`AzureStorageEmulator.exe start [-inprocess]` |*-Reprocess*: yeni bir işlem oluşturmak yerine öykünücüyü geçerli işlemde başlatın. |
 | **Durdur** |Depolama öykünücüsünü sonlandırır. |`AzureStorageEmulator.exe stop` | |
 | **Durum** |Depolama öykünücüsünün durumunu yazdırır. |`AzureStorageEmulator.exe status` | |
-| **Temizle** |Komut satırında belirtilen tüm hizmetlerde verileri temizler. |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]` |*BLOB* : blob verilerini temizler. <br/>*kuyruk* : kuyruk verilerini temizler. <br/>*tablo* : tablo verilerini temizler. <br/>*Tümü* : tüm hizmetlerde tüm verileri temizler. |
-| **Init** |Öykünücüyü ayarlamak için bir kerelik başlatma işlemi yapar. |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-Server sunucuadi InstanceName* : SQL örneğini barındıran sunucuyu belirtir. <br/>*-SQLInstance InstanceName* : varsayılan sunucu ÖRNEĞINDE kullanılacak SQL örneğinin adını belirtir. <br/>*-forcecoluştur* : zaten mevcut olsa bile SQL veritabanı oluşturmayı zorlar. <br/>*-skipcreate* : SQL veritabanı oluşturmayı atlar. Bu,-forcecoluştur 'a göre önceliklidir.<br/>*-reserveports* : HIZMETLERLE ilişkili http bağlantı noktalarını ayırmaya çalışır.<br/>*-unreserveports* : HIZMETLERLE ilişkili http bağlantı noktaları için ayırmaları kaldırmaya çalışır. Bu,-reserveports üzerinden önceliklidir.<br/>*-InProcess* : yeni bir işlem oluşturmak yerine geçerli işlemde başlatmayı gerçekleştirir. Bağlantı noktası ayırmalarını değiştirmek için geçerli işlem yükseltilmiş izinlerle başlatılmalıdır. |
+| **Temizle** |Komut satırında belirtilen tüm hizmetlerde verileri temizler. |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]` |*BLOB*: blob verilerini temizler. <br/>*kuyruk*: kuyruk verilerini temizler. <br/>*tablo*: tablo verilerini temizler. <br/>*Tümü*: tüm hizmetlerde tüm verileri temizler. |
+| **Dengeleyici** |Öykünücüyü ayarlamak için bir kerelik başlatma işlemi yapar. |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-Server sunucuadi InstanceName*: SQL örneğini barındıran sunucuyu belirtir. <br/>*-SQLInstance InstanceName*: varsayılan sunucu ÖRNEĞINDE kullanılacak SQL örneğinin adını belirtir. <br/>*-forcecoluştur*: zaten mevcut olsa bile SQL veritabanı oluşturmayı zorlar. <br/>*-skipcreate*: SQL veritabanı oluşturmayı atlar. Bu,-forcecoluştur 'a göre önceliklidir.<br/>*-reserveports*: HIZMETLERLE ilişkili http bağlantı noktalarını ayırmaya çalışır.<br/>*-unreserveports*: HIZMETLERLE ilişkili http bağlantı noktaları için ayırmaları kaldırmaya çalışır. Bu,-reserveports üzerinden önceliklidir.<br/>*-InProcess*: yeni bir işlem oluşturmak yerine geçerli işlemde başlatmayı gerçekleştirir. Bağlantı noktası ayırmalarını değiştirmek için geçerli işlem yükseltilmiş izinlerle başlatılmalıdır. |
 
 ## <a name="differences-between-the-storage-emulator-and-azure-storage"></a>Depolama öykünücüsü ile Azure depolama arasındaki farklar
 

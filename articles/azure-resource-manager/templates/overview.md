@@ -2,13 +2,13 @@
 title: Şablonlara genel bakış
 description: Kaynak dağıtımı için Azure Resource Manager şablonları (ARM şablonları) kullanmanın avantajlarını açıklar.
 ms.topic: conceptual
-ms.date: 06/22/2020
-ms.openlocfilehash: e25404fc74456f99a4d41c25786b34b6e1f3edda
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.date: 12/01/2020
+ms.openlocfilehash: da091d09f6d242d4b98903a8dcd76fe305e578b8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96342337"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498005"
 ---
 # <a name="what-are-arm-templates"></a>ARM şablonları nelerdir?
 
@@ -80,13 +80,13 @@ Bir şablonu dağıtırken Kaynak Yöneticisi şablonu REST API işlemlerine dö
 "resources": [
   {
     "type": "Microsoft.Storage/storageAccounts",
-    "apiVersion": "2016-01-01",
+    "apiVersion": "2019-04-01",
     "name": "mystorageaccount",
     "location": "westus",
     "sku": {
       "name": "Standard_LRS"
     },
-    "kind": "Storage",
+    "kind": "StorageV2",
     "properties": {}
   }
 ]
@@ -96,17 +96,19 @@ Tanımı aşağıdaki REST API işlemine dönüştürerek Microsoft.Storage kayn
 
 ```HTTP
 PUT
-https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/mystorageaccount?api-version=2016-01-01
+https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/mystorageaccount?api-version=2019-04-01
 REQUEST BODY
 {
   "location": "westus",
   "sku": {
     "name": "Standard_LRS"
   },
-  "kind": "Storage",
+  "kind": "StorageV2",
   "properties": {}
 }
 ```
+
+Kaynak için şablonda ayarladığınız **Apiversion** 'ın Rest IŞLEMI için API sürümü olarak kullanıldığını unutmayın. Şablonu tekrar tekrar dağıtabilir ve güvenle çalışmaya devam edecektir. Aynı API sürümünü kullanarak, sonraki sürümlerde kullanıma sunulmuş olabilecek son değişiklikler hakkında endişelenmeniz gerekmez.
 
 ## <a name="template-design"></a>Şablon tasarımı
 
@@ -114,7 +116,7 @@ REQUEST BODY
 
 ![üç katmanlı şablon](./media/overview/3-tier-template.png)
 
-Ancak, bütün altyapınızı tek bir şablonda tanımlamak zorunda değilsiniz. Genellikle, en uygun seçenek dağıtım gereksinimlerinizi hedeflenen, amaca yönelik bir dizi şablona bölüştürmektir. Bu şablonları farklı çözümler için kolayca yeniden kullanabilirsiniz. Belirli bir çözümü dağıtmak için gerekli tüm şablonların bağlandığı bir ana şablon oluşturun. Aşağıdaki görüntüde üç katmanlı çözümün iç içe üç şablon içeren ana şablon aracılığıyla nasıl dağıtıldığı gösterilmektedir.
+Ancak, bütün altyapınızı tek bir şablonda tanımlamak zorunda değilsiniz. Genellikle, en uygun seçenek dağıtım gereksinimlerinizi hedeflenen, amaca yönelik bir dizi şablona bölüştürmektir. Bu şablonları farklı çözümler için kolayca yeniden kullanabilirsiniz. Belirli bir çözümü dağıtmak için gerekli tüm şablonları bağlayan bir ana şablon oluşturursunuz. Aşağıdaki görüntüde üç katmanlı çözümün iç içe üç şablon içeren ana şablon aracılığıyla nasıl dağıtıldığı gösterilmektedir.
 
 ![iç içe geçmiş şablon](./media/overview/nested-tiers-template.png)
 

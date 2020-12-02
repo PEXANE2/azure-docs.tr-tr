@@ -2,8 +2,8 @@
 title: Azure Data Factory ardışık düzeninde dallanma
 description: Dallanma ve zincirleme etkinlikleriyle Azure Data Factory'de veri akışını denetleme hakkında bilgi edinin.
 services: data-factory
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: anandsub
 ms.reviewer: maghan
 ms.service: data-factory
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 0a6fc68ddcb86c7ba768f59519cfb4273d381fab
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: ab7d17ee61d733483b6d3573e9bd69b1628c7940
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637709"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496968"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory işlem hattında dallanma ve zincirleme etkinlikleri
 
@@ -44,7 +44,7 @@ Bu öğreticide .NET SDK kullanılır. Azure Data Factory etkileşimde bulunmak 
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure depolama hesabı. BLOB depolama alanını kaynak veri deposu olarak kullanırsınız. Azure depolama hesabınız yoksa, bkz. [depolama hesabı oluşturma](../storage/common/storage-account-create.md).
 * Azure Depolama Gezgini. Bu aracı yüklemek için bkz. [Azure Depolama Gezgini](https://storageexplorer.com/).
@@ -65,22 +65,22 @@ Data Factory Şu anda kullanılabildiği Azure bölgelerinin listesi için bkz. 
    Tamika|Walsh
    ```
 
-1. Azure Depolama Gezgini açın. Depolama hesabınızı genişletin. **Blob Kapsayıcıları** 'na sağ tıklayın ve **Blob Kapsayıcısı Oluştur** 'u seçin.
+1. Azure Depolama Gezgini açın. Depolama hesabınızı genişletin. **Blob Kapsayıcıları**'na sağ tıklayın ve **Blob Kapsayıcısı Oluştur**'u seçin.
 1. Yeni kapsayıcıyı adlandırın *adfv2branch* ve *input.txt* dosyanızı kapsayıcıya eklemek için **karşıya yükle** ' yi seçin.
 
 ## <a name="create-visual-studio-project"></a>Visual Studio projesi oluşturma<a name="create-visual-studio-project"></a>
 
 C# .NET konsol uygulaması oluşturma:
 
-1. Visual Studio 'Yu başlatın ve **Yeni proje oluştur** ' u seçin.
-1. **Yeni proje oluştur** bölümünde C# için **konsol uygulaması (.NET Framework)** öğesini seçin ve **İleri** ' yi seçin.
+1. Visual Studio 'Yu başlatın ve **Yeni proje oluştur**' u seçin.
+1. **Yeni proje oluştur** bölümünde C# için **konsol uygulaması (.NET Framework)** öğesini seçin ve **İleri**' yi seçin.
 1. Projeyi *ADFv2BranchTutorial* olarak adlandırın.
-1. **.NET Version 4.5.2** veya üstünü seçip **Oluştur** ' u seçin.
+1. **.NET Version 4.5.2** veya üstünü seçip **Oluştur**' u seçin.
 
 ### <a name="install-nuget-packages"></a>NuGet paketlerini yükleme
 
-1. **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **Paket Yöneticisi konsolu** ' nu seçin.
-1. **Paket Yöneticisi konsolunda** , paketleri yüklemek için aşağıdaki komutları çalıştırın. Ayrıntılar için [Microsoft. Azure. Management. DataFactory NuGet paketini](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) inceleyin.
+1. **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **Paket Yöneticisi konsolu**' nu seçin.
+1. **Paket Yöneticisi konsolunda**, paketleri yüklemek için aşağıdaki komutları çalıştırın. Ayrıntılar için [Microsoft. Azure. Management. DataFactory NuGet paketini](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) inceleyin.
 
    ```powershell
    Install-Package Microsoft.Azure.Management.DataFactory
@@ -234,7 +234,7 @@ static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient c
 }
 ```
 
-Azure Blob’da kaynak verilerini temsil eden bir veri kümesi tanımlayın. Bu blob veri kümesi, önceki adımda desteklenen Azure depolama bağlı hizmetini ifade eder. Blob veri kümesi, kopyalanacak Blobun konumunu açıklar: *FolderPath* ve *filename* .
+Azure Blob’da kaynak verilerini temsil eden bir veri kümesi tanımlayın. Bu blob veri kümesi, önceki adımda desteklenen Azure depolama bağlı hizmetini ifade eder. Blob veri kümesi, kopyalanacak Blobun konumunu açıklar: *FolderPath* ve *filename*.
 
 *FolderPath* için parametrelerin kullanımına dikkat edin. `sourceBlobContainer` parametrenin adı ve ifadesi işlem hattı çalıştırmasında geçirilen değerlerle değiştirilmiştir. Parametreleri tanımlamaya yönelik söz dizimi `@pipeline().parameters.<parameterName>`
 

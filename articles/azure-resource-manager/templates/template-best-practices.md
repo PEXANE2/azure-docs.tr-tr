@@ -2,13 +2,13 @@
 title: Şablonlar için en iyi uygulamalar
 description: Azure Resource Manager şablonları yazmak için önerilen yaklaşımları açıklar. Şablonları kullanırken yaygın sorunlardan kaçınmak için öneriler sunar.
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: 1121c66e0bcd7de39afd5bea85866fd9ad007ce4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/01/2020
+ms.openlocfilehash: c62bde8fc8cfc79330d13b7b2ff4f778dadf1339
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87809264"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497988"
 ---
 # <a name="arm-template-best-practices"></a>ARM şablonu en iyi uygulamaları
 
@@ -87,11 +87,9 @@ Bu bölümdeki bilgiler, [parametrelerle](template-parameters.md)çalışırken 
    },
    ```
 
-* Bir kaynak türü için API sürümü için bir parametre kullanmayın. Kaynak özellikleri ve değerleri, sürüm numarasına göre farklılık gösterebilir. API sürümü bir parametreye ayarlandığında, bir kod düzenleyicisinde IntelliSense doğru şemayı belirleyemiyor. Bunun yerine, şablondaki API sürümünü sabit kodlayın.
-
 * `allowedValues`Gelişigüzel kullanın. Yalnızca bazı değerlerin izin verilen seçeneklere dahil edilmediğinden emin olmanız gerektiğinde bunu kullanın. `allowedValues`Çok geniş kullanıyorsanız, listenizi güncel tutmayan geçerli dağıtımları engelleyebilirsiniz.
 
-* Şablonunuzda bir parametre adı PowerShell dağıtım komutundaki bir parametreyle eşleştiğinde Kaynak Yöneticisi, bu adlandırma çakışmasını, sonek **FromTemplate** 'i Şablon parametresine ekleyerek çözer. Örneğin, şablonunuza **resourcegroupname** adlı bir parametre eklerseniz, bu, [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) cmdlet 'inin **resourcegroupname** parametresiyle çakışıyor. Dağıtım sırasında, **Resourcegroupnamefromtemplate**için bir değer sağlamanız istenir.
+* Şablonunuzda bir parametre adı PowerShell dağıtım komutundaki bir parametreyle eşleştiğinde Kaynak Yöneticisi, bu adlandırma çakışmasını, sonek **FromTemplate** 'i Şablon parametresine ekleyerek çözer. Örneğin, şablonunuza **resourcegroupname** adlı bir parametre eklerseniz, bu, [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) cmdlet 'inin **resourcegroupname** parametresiyle çakışıyor. Dağıtım sırasında, **Resourcegroupnamefromtemplate** için bir değer sağlamanız istenir.
 
 ### <a name="security-recommendations-for-parameters"></a>Parametreler için güvenlik önerileri
 
@@ -146,8 +144,6 @@ Aşağıdaki bilgiler, [değişkenlerle](template-variables.md)çalışırken ya
 
 * Şablon işlevlerinin karmaşık bir düzenlemesini oluşturduğunuz değerler için değişkenleri kullanın. Karmaşık ifade yalnızca değişkenlerde göründüğünde şablonunuz daha kolay okunabilir.
 
-* Bir kaynakta için değişkenler kullanmayın `apiVersion` . API sürümü, kaynağın şemasını belirler. Genellikle, kaynağın özelliklerini değiştirmeden sürümü değiştiremezsiniz.
-
 * Şablonun **değişkenler** bölümünde [başvuru](template-functions-resource.md#reference) işlevini kullanamazsınız. **Başvuru** işlevi, kaynağın çalışma zamanı durumundan değerini türetir. Ancak, değişkenler, şablonun ilk ayrıştırması sırasında çözümlenir. Şablonun **kaynaklar** veya **çıktılar** bölümünde **başvuru** işlevine ihtiyacı olan değerleri doğrudan oluşturun.
 
 * Benzersiz olması gereken kaynak adları için değişkenleri dahil edin.
@@ -155,6 +151,16 @@ Aşağıdaki bilgiler, [değişkenlerle](template-variables.md)çalışırken ya
 * JSON nesnelerinin tekrarlanmış bir modelini oluşturmak için [değişkenlerde bir kopyalama döngüsü](copy-variables.md) kullanın.
 
 * Kullanılmayan değişkenleri kaldırın.
+
+## <a name="api-version"></a>API sürümü
+
+Özelliği, `apiVersion` kaynak türü için sabit kodlanmış BIR API sürümüne ayarlayın. Yeni bir şablon oluştururken, bir kaynak türü için en son API sürümünü kullanmanızı öneririz. Kullanılabilir değerleri anlamak için bkz. [şablon başvurusu](/azure/templates/).
+
+Şablonunuz beklendiği gibi çalışıyorsa, aynı API sürümünü kullanmaya devam etmenizi öneririz. Aynı API sürümünü kullanarak, sonraki sürümlerde kullanıma sunulmuş olabilecek son değişiklikler hakkında endişelenmeniz gerekmez.
+
+API sürümü için bir parametre kullanmayın. Kaynak özellikleri ve değerler, API sürümüne göre farklılık gösterebilir. API sürümü bir parametreye ayarlandığında, bir kod düzenleyicisinde IntelliSense doğru şemayı belirleyemiyor. Şablonunuzda özelliklerle eşleşmeyen bir API sürümünü geçirirseniz dağıtım başarısız olur.
+
+API sürümü için değişkenler kullanmayın. Özellikle, dağıtım sırasında API sürümlerini dinamik olarak almak için [sağlayıcılar işlevini](template-functions-resource.md#providers) kullanmayın. Dinamik olarak alınan API sürümü şablonunuzda özelliklerle eşleşmeyebilir.
 
 ## <a name="resource-dependencies"></a>Kaynak bağımlılıkları
 

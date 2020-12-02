@@ -3,12 +3,12 @@ title: Bulut öğreticiden buluta ve kayıttan yürütmeye yönelik olay tabanl�
 description: Bu öğreticide, bulutta olay tabanlı bir video kaydı kaydetmek ve buluttan kayıttan yürütmek için Azure Live video analizinin Azure IoT Edge nasıl kullanılacağını öğreneceksiniz.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 03c97854673b369db9fe1cb026161a1e81a6bf31
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 84f6ef813fb1b2cc425e096212010717d0561aef
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346664"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498311"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Öğretici: buluta yönelik olay tabanlı video kaydı ve buluttan kayıttan yürütme
 
@@ -52,7 +52,7 @@ Bu adımların sonunda, Azure aboneliğinizde ilgili Azure kaynaklarınızın da
 * Azure IoT Hub
 * Azure Storage hesabı
 * Azure Media Services hesabı
-* Azure 'da [IoT Edge çalışma zamanı](../../iot-edge/how-to-install-iot-edge-linux.md) yüklü olan Linux VM
+* Azure 'da [IoT Edge çalışma zamanı](../../iot-edge/how-to-install-iot-edge.md) yüklü olan Linux VM
 
 ## <a name="concepts"></a>Kavramlar
 
@@ -86,8 +86,8 @@ Başlamadan önce, [önkoşullardan](#prerequisites)üçüncü madde işaretini 
 
 Bu öğreticide ilgilendiğiniz dosyalar şunlardır:
 
-* **~/CloudDrive/LVA-Sample/Edge-Deployment/.exe** : Visual Studio Code bir uç cihaza modül dağıtmak için kullandığı özellikleri içerir.
-* **~/CloudDrive/LVA-Sample/appsetting.json** : örnek kodu çalıştırmak için Visual Studio Code tarafından kullanılır.
+* **~/CloudDrive/LVA-Sample/Edge-Deployment/.exe**: Visual Studio Code bir uç cihaza modül dağıtmak için kullandığı özellikleri içerir.
+* **~/CloudDrive/LVA-Sample/appsetting.json**: örnek kodu çalıştırmak için Visual Studio Code tarafından kullanılır.
 
 Bu adımlar için dosyalara ihtiyacınız olacaktır.
 
@@ -132,10 +132,10 @@ Visual Studio Code, src/Edge öğesine gidin. Oluşturduğunuz. env dosyası ve 
 
 Src/Edge/deployment.objectCounter.template.jsaçın. **Modüller** bölümünde, önceki "kavramlar" bölümünde listelenen öğelere karşılık gelen dört giriş vardır:
 
-* **Lvaedge** : bu, IoT Edge modülündeki canlı video analizinden.
-* **yolov3** : Bu, Yolo v3 modeli KULLANıLARAK oluşturulan AI modülüdür.
-* **rtspsim** : Bu RTSP simülatör.
-* **Objectcounter** : yolov3 'deki sonuçlarda belirli nesneler için görünen modüldür.
+* **Lvaedge**: bu, IoT Edge modülündeki canlı video analizinden.
+* **yolov3**: Bu, Yolo v3 modeli KULLANıLARAK oluşturulan AI modülüdür.
+* **rtspsim**: Bu RTSP simülatör.
+* **Objectcounter**: yolov3 'deki sonuçlarda belirli nesneler için görünen modüldür.
 
 ObjectCounter modülü için, "görüntü" değeri için kullanılan dizeye ($ {MODULES. objectCounter}) bakın. Bu, IoT Edge modülünü geliştirmeye yönelik [öğreticiye](../../iot-edge/tutorial-develop-for-linux.md) dayanır. Visual Studio Code, objectCounter modülünün kodunun src/Edge/modules/objectCounter altında olduğunu otomatik olarak tanır. 
 
@@ -161,7 +161,7 @@ Bu eylem nesne sayma için objectCounter modülünü oluşturur ve görüntüyü
 
 * Ortam değişkenlerinin. env dosyasında tanımlı CONTAINER_REGISTRY_USERNAME_myacr ve CONTAINER_REGISTRY_PASSWORD_myacr sahip olup olmadığını denetleyin.
 
-Bu adım, üzerinde src/Edge/config/deployment.objectCounter.amd64.jsüzerinde IoT Edge dağıtım bildirimi oluşturur. Bu dosyaya sağ tıklayın ve **tek cihaz Için dağıtım oluştur** ' u seçin.
+Bu adım, üzerinde src/Edge/config/deployment.objectCounter.amd64.jsüzerinde IoT Edge dağıtım bildirimi oluşturur. Bu dosyaya sağ tıklayın ve **tek cihaz Için dağıtım oluştur**' u seçin.
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/quickstarts/create-deployment-single-device.png" alt-text="Tek bir cihaz için dağıtım oluşturma":::
@@ -182,7 +182,7 @@ ObjectCounter modülünün ve IoT Edge modülündeki canlı video analizinden ol
 
 1. Visual Studio Code Gezgin bölmesini açın ve sol alt köşedeki **Azure IoT Hub** arayın.
 1. **Cihazlar** düğümünü genişletin.
-1. LVA-örnek-cihaz dosyasına sağ tıklayın ve **Izlemeyi Başlat yerleşik olay uç noktası** ' nı seçin.
+1. LVA-örnek-cihaz dosyasına sağ tıklayın ve **Izlemeyi Başlat yerleşik olay uç noktası**' nı seçin.
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/quickstarts/start-monitoring-iothub-events.png" alt-text="Yerleşik olay uç noktasını izlemeye başla":::
@@ -190,7 +190,7 @@ ObjectCounter modülünün ve IoT Edge modülündeki canlı video analizinden ol
 ## <a name="run-the-program"></a>Programı çalıştırma
 
 1. Visual Studio Code, **Uzantılar** sekmesini açın (veya CTRL + SHIFT + X tuşlarına basın) ve Azure IoT Hub aratın.
-1. Sağ tıklayıp **uzantı ayarları** ' nı seçin.
+1. Sağ tıklayıp **uzantı ayarları**' nı seçin.
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Uzantı ayarları":::
@@ -207,7 +207,7 @@ ObjectCounter modülünün ve IoT Edge modülündeki canlı video analizinden ol
 
     `"topologyName" : "EVRtoAssetsOnObjDetect"`
 1. F5 ' i seçerek bir hata ayıklama oturumu başlatın. **TERMINAL** penceresinde yazdırılmış bazı iletiler görürsünüz.
-1. operations.jsdosya üzerinde Graphtopologyılist ve Graphınstancelist çağrıları ile başlatılır. Önceki hızlı başlangıçlardan veya öğreticilerden sonra kaynakları temizlediyseniz, bu eylem, gösterildiği gibi, **ENTER** ' u seçmeniz için boş listeler ve duraklamalar döndürür:
+1. operations.jsdosya üzerinde Graphtopologyılist ve Graphınstancelist çağrıları ile başlatılır. Önceki hızlı başlangıçlardan veya öğreticilerden sonra kaynakları temizlediyseniz, bu eylem, gösterildiği gibi, **ENTER**' u seçmeniz için boş listeler ve duraklamalar döndürür:
 
     ```
     --------------------------------------------------------------------------
@@ -260,7 +260,7 @@ ObjectCounter modülünün ve IoT Edge modülündeki canlı video analizinden ol
 1. Artık Visual Studio Code **Çıkış** penceresine geçerseniz, IoT Edge modülündeki canlı video analizi tarafından IoT Hub gönderilen iletileri görürsünüz.
 
    Bu iletiler aşağıdaki bölümde ele alınmıştır.
-1. Grafik örneği çalışmaya devam eder ve videoyu kaydeder. RTSP simülatörü kaynak videoyu döngüye sokmaya devam eder. Aşağıdaki bölümde açıklandığı gibi iletileri gözden geçirin. Ardından, örneği durdurmak için, **TERMINAL** penceresine dönün ve **ENTER** ' u seçin. Bir sonraki çağrı dizisi, kullanarak kaynakları temizlemek için yapılır:
+1. Grafik örneği çalışmaya devam eder ve videoyu kaydeder. RTSP simülatörü kaynak videoyu döngüye sokmaya devam eder. Aşağıdaki bölümde açıklandığı gibi iletileri gözden geçirin. Ardından, örneği durdurmak için, **TERMINAL** penceresine dönün ve **ENTER**' u seçin. Bir sonraki çağrı dizisi, kullanarak kaynakları temizlemek için yapılır:
 
    * Graph örneğini devre dışı bırakmak için Graphınstancedeactivate öğesine bir çağrı.
    * Örneği silmek için Graphınstancedelete öğesine çağrı.
@@ -408,7 +408,7 @@ Grafik tarafından oluşturulan Media Services varlığını, Azure portal oturu
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/continuous-video-recording-tutorial/new-asset.png" alt-text="Yeni varlık":::
-1. Açılan sihirbazda, varsayılan seçenekleri kabul edin ve **Ekle** ' yi seçin. Daha fazla bilgi için bkz. [video kayıttan yürütme](video-playback-concept.md).
+1. Açılan sihirbazda, varsayılan seçenekleri kabul edin ve **Ekle**' yi seçin. Daha fazla bilgi için bkz. [video kayıttan yürütme](video-playback-concept.md).
 
     > [!TIP]
     > [Akış uç noktanızın çalıştığından](../latest/streaming-endpoint-concept.md)emin olun.
@@ -424,4 +424,4 @@ Diğer öğreticileri denemek istiyorsanız, oluşturduğunuz kaynaklara açık 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * RTSP simülatörü kullanmak yerine RTSP desteğiyle bir [IP kamerası](https://en.wikipedia.org/wiki/IP_camera) kullanın. Profiller G, S veya T ile uyumlu cihazlar ' ı arayarak [ONVIF uyumlu ürünler sayfasında](https://www.onvif.org/conformant-products/) , RTSP desteğiyle IP kameralarını arayabilirsiniz.
-* AMD64 veya x64 Linux cihazı kullanın (Azure Linux VM kullanarak). Bu cihaz, IP kamerası ile aynı ağda olmalıdır. [Linux üzerinde Azure IoT Edge çalışma zamanını Install](../../iot-edge/how-to-install-iot-edge-linux.md)içindeki yönergeleri izleyin. Ardından, cihazı Azure IoT Hub 'a kaydetmek için [ilk IoT Edge modülünüzü bir sanal Linux cihaz](../../iot-edge/quickstart-linux.md) hızlı başlangıçlarına dağıtma ' daki yönergeleri izleyin.
+* AMD64 veya x64 Linux cihazı kullanın (Azure Linux VM kullanarak). Bu cihaz, IP kamerası ile aynı ağda olmalıdır. [Linux üzerinde Azure IoT Edge çalışma zamanını Install](../../iot-edge/how-to-install-iot-edge.md)içindeki yönergeleri izleyin. Ardından, cihazı Azure IoT Hub 'a kaydetmek için [ilk IoT Edge modülünüzü bir sanal Linux cihaz](../../iot-edge/quickstart-linux.md) hızlı başlangıçlarına dağıtma ' daki yönergeleri izleyin.

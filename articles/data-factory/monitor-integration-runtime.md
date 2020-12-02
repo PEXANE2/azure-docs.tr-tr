@@ -7,15 +7,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/11/2020
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: anandsub
-ms.openlocfilehash: 3c7765d65b63c9cee83a76a13448506f61aa8472
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 4eb9b0077d1d0591953a40d98a220d7aa0683de7
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637165"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497954"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Azure Data Factory'deki tümleştirme çalışma zamanını izleme
 
@@ -82,8 +82,8 @@ Aşağıdaki tabloda **her düğüm** Için izleme özelliklerinin açıklamalar
 | Kullanılabilir bellek | Şirket içinde barındırılan tümleştirme çalışma zamanı düğümünde kullanılabilir bellek. Bu değer, neredeyse gerçek zamanlı bir anlık görüntüdür. | 
 | CPU kullanımı | Şirket içinde barındırılan tümleştirme çalışma zamanı düğümünün CPU kullanımı. Bu değer, neredeyse gerçek zamanlı bir anlık görüntüdür. |
 | Ağ (ın/out) | Şirket içinde barındırılan tümleştirme çalışma zamanı düğümünün ağ kullanımı. Bu değer, neredeyse gerçek zamanlı bir anlık görüntüdür. | 
-| Eşzamanlı Işler (çalışıyor/limit) | **Çalışıyor** . Her düğümde çalışan iş veya görev sayısı. Bu değer, neredeyse gerçek zamanlı bir anlık görüntüdür. <br/><br/>**Sınır** . Limit her düğüm için en fazla eş zamanlı işi belirtir. Bu değer makine boyutuna göre tanımlanır. CPU, bellek veya ağ kullanımda olsa bile etkinlikler zaman aşımına uğradıkça, Gelişmiş senaryolarda eşzamanlı iş yürütülmesini ölçeklendirmeye yönelik sınırı artırabilirsiniz. Bu yetenek, tek düğümlü bir şirket içinde barındırılan tümleştirme çalışma zamanı ile de kullanılabilir. |
-| Rol | Çok düğümlü bir şirket içinde barındırılan tümleştirme çalışma zamanı – dağıtıcı ve çalışan içinde iki tür rol vardır. Tüm düğümler çalışanlardır, yani işleri yürütmek için hepsi kullanılabilirler. Bulut hizmetlerinden görevleri/işleri çekmek ve bunları farklı çalışan düğümlerine göndermek için kullanılan yalnızca bir dağıtıcı düğümü vardır. Dağıtıcı düğümü de bir çalışan düğümüdür. |
+| Eşzamanlı Işler (çalışıyor/limit) | **Çalışıyor**. Her düğümde çalışan iş veya görev sayısı. Bu değer, neredeyse gerçek zamanlı bir anlık görüntüdür. <br/><br/>**Sınır**. Limit her düğüm için en fazla eş zamanlı işi belirtir. Bu değer makine boyutuna göre tanımlanır. CPU, bellek veya ağ kullanımda olsa bile etkinlikler zaman aşımına uğradıkça, Gelişmiş senaryolarda eşzamanlı iş yürütülmesini ölçeklendirmeye yönelik sınırı artırabilirsiniz. Bu yetenek, tek düğümlü bir şirket içinde barındırılan tümleştirme çalışma zamanı ile de kullanılabilir. |
+| Role | Çok düğümlü bir şirket içinde barındırılan tümleştirme çalışma zamanı – dağıtıcı ve çalışan içinde iki tür rol vardır. Tüm düğümler çalışanlardır, yani işleri yürütmek için hepsi kullanılabilirler. Bulut hizmetlerinden görevleri/işleri çekmek ve bunları farklı çalışan düğümlerine göndermek için kullanılan yalnızca bir dağıtıcı düğümü vardır. Dağıtıcı düğümü de bir çalışan düğümüdür. |
 
 Özelliklerin bazı ayarları, şirket içinde barındırılan tümleştirme çalışma zamanı 'nda (yani, bir genişleme senaryosunda) iki veya daha fazla düğüm olduğunda daha anlamlı hale getirir.
 
@@ -234,7 +234,7 @@ Sonra, izleme sayfasını açmak için Azure-SSIS IR adını seçin; burada, gen
 
 #### <a name="status-tile"></a>DURUM kutucuğu
 
-Azure-SSIS IR izleme sayfanızın **durum** kutucuğunda, genel durumunu (örneğin, **çalışıyor** veya **durduruldu** ) görebilirsiniz. **Çalışma** durumunun seçilmesi, Azure-SSIS IR durdurmak Için canlı **durdurma** düğmesine sahip bir pencere açılır. **Durdurulmuş** durum seçildiğinde Azure-SSIS IR başlatmak Için canlı **Başlat** düğmesini içeren bir pencere açılır. Açılır pencerede, Azure-SSIS IR üzerinde çalışan SSIS paketi yürütme etkinliğine sahip bir ADF işlem hattını otomatik olarak oluşturmak için bir **SSIS paketi yürütme** düğmesi vardır (bkz. ADF işlem hatlarında SSIS [paketi etkinliklerini yürütme](./how-to-invoke-ssis-package-ssis-activity.md)) ve **kaynak kimliği** metin kutusu ile Azure-SSIS IR kaynak kimliğinizi ( `/subscriptions/YourAzureSubscripton/resourcegroups/YourResourceGroup/providers/Microsoft.DataFactory/factories/YourADF/integrationruntimes/YourAzureSSISIR` ) kopyalayabilirsiniz. ADF ve Azure-SSIS IR adlarınızı içeren Azure-SSIS IR kaynak KIMLIĞINIZIN son eki, bağımsız yazılım satıcıları (ISV) için ek Premium/lisanslı SSIS bileşenleri satın almak ve bunları Azure-SSIS IR bağlamak için kullanılabilecek bir küme KIMLIĞI oluşturur (bkz. [Azure-SSIS IR Premium/lisanslı bileşenleri yükleme](./how-to-develop-azure-ssis-ir-licensed-components.md)).
+Azure-SSIS IR izleme sayfanızın **durum** kutucuğunda, genel durumunu (örneğin, **çalışıyor** veya **durduruldu**) görebilirsiniz. **Çalışma** durumunun seçilmesi, Azure-SSIS IR durdurmak Için canlı **durdurma** düğmesine sahip bir pencere açılır. **Durdurulmuş** durum seçildiğinde Azure-SSIS IR başlatmak Için canlı **Başlat** düğmesini içeren bir pencere açılır. Açılır pencerede, Azure-SSIS IR üzerinde çalışan SSIS paketi yürütme etkinliğine sahip bir ADF işlem hattını otomatik olarak oluşturmak için bir **SSIS paketi yürütme** düğmesi vardır (bkz. ADF işlem hatlarında SSIS [paketi etkinliklerini yürütme](./how-to-invoke-ssis-package-ssis-activity.md)) ve **kaynak kimliği** metin kutusu ile Azure-SSIS IR kaynak kimliğinizi ( `/subscriptions/YourAzureSubscripton/resourcegroups/YourResourceGroup/providers/Microsoft.DataFactory/factories/YourADF/integrationruntimes/YourAzureSSISIR` ) kopyalayabilirsiniz. ADF ve Azure-SSIS IR adlarınızı içeren Azure-SSIS IR kaynak KIMLIĞINIZIN son eki, bağımsız yazılım satıcıları (ISV) için ek Premium/lisanslı SSIS bileşenleri satın almak ve bunları Azure-SSIS IR bağlamak için kullanılabilecek bir küme KIMLIĞI oluşturur (bkz. [Azure-SSIS IR Premium/lisanslı bileşenleri yükleme](./how-to-develop-azure-ssis-ir-licensed-components.md)).
 
 ![Azure-SSIS IR durumu Kutucuğunuzu izleyin](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-status.png)
 

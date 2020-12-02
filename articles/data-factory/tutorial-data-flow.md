@@ -1,19 +1,19 @@
 ---
 title: Eşleme veri akışı kullanarak veri dönüştürme
 description: Bu öğretici, veri akışı eşleme ile verileri dönüştürmek için Azure Data Factory kullanmaya yönelik adım adım yönergeler sağlar
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/09/2019
-ms.openlocfilehash: fa516f577254f827a6437697df82010bd9b631ee
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: b0f564f68a638e7efd1cd1ce9116a26f4d19f277
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555919"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497070"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Eşleme veri akışlarını kullanarak verileri dönüştürme
 
@@ -32,7 +32,7 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 > * İşlem hattında test çalıştırması yapma.
 > * Veri akışı etkinliğini izleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 * **Azure depolama hesabı**. ADLS depolamayı *kaynak* ve *Havuz* veri depoları olarak kullanırsınız. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Azure depolama hesabı oluşturma](../storage/common/storage-account-create.md).
 
@@ -42,7 +42,7 @@ Bu öğreticide dönüştürtiğimiz dosya MoviesDB.csv, [burada](https://raw.gi
 
 Bu adımda, bir veri fabrikası oluşturur ve veri fabrikasında bir işlem hattı oluşturmak için Data Factory UX 'i açarsınız.
 
-1. **Microsoft Edge** veya **Google Chrome** 'ı açın. Şu anda Data Factory UI yalnızca Microsoft Edge ve Google Chrome Web tarayıcılarında desteklenir.
+1. **Microsoft Edge** veya **Google Chrome**'ı açın. Şu anda Data Factory UI yalnızca Microsoft Edge ve Google Chrome Web tarayıcılarında desteklenir.
 2. Sol menüde, **kaynak**  >  **tümleştirmesi**  >  **Data Factory** oluştur ' u seçin:
 
    ![“Yeni” bölmesinde Data Factory seçimi](./media/doc-common-process/new-azure-data-factory-menu.png)
@@ -55,16 +55,16 @@ Bu adımda, bir veri fabrikası oluşturur ve veri fabrikasında bir işlem hatt
 4. Veri fabrikasını oluşturmak istediğiniz Azure **aboneliğinizi** seçin.
 5. **Kaynak Grubu** için aşağıdaki adımlardan birini uygulayın:
 
-    a. **Var olanı kullan** ’ı seçin ve ardından açılır listeden var olan bir kaynak grubu belirleyin.
+    a. **Var olanı kullan**’ı seçin ve ardından açılır listeden var olan bir kaynak grubu belirleyin.
 
-    b. **Yeni oluştur** ’u seçin ve bir kaynak grubunun adını girin. 
+    b. **Yeni oluştur**’u seçin ve bir kaynak grubunun adını girin. 
          
     Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md). 
-6. **Sürüm** bölümünde **V2** 'yi seçin.
+6. **Sürüm** bölümünde **V2**'yi seçin.
 7. **Konum** bölümünden veri fabrikası için bir konum seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri Fabrikası tarafından kullanılan veri depoları (örneğin, Azure depolama ve SQL veritabanı) ve işlemler (örneğin, Azure HDInsight) başka bölgelerde olabilir.
-8. **Oluştur** ’u seçin.
+8. **Oluştur**’u seçin.
 9. Oluşturma işlemi tamamlandıktan sonra, Bildirim Merkezi ' nde bildirimi görürsünüz. Data Factory sayfasına gitmek için **Kaynağa Git** ' i seçin.
-10. Data Factory Kullanıcı Arabirimini (UI) ayrı bir sekmede başlatmak için **Geliştir ve İzle** ’yi seçin.
+10. Data Factory Kullanıcı Arabirimini (UI) ayrı bir sekmede başlatmak için **Geliştir ve İzle**’yi seçin.
 
 ## <a name="create-a-pipeline-with-a-data-flow-activity"></a>Veri akışı etkinliği ile işlem hattı oluşturma
 
@@ -101,7 +101,7 @@ Veri akışınızı oluşturduktan sonra otomatik olarak veri akışı tuvaline 
 1. **Delimitedtext** öğesini seçin. Devam’a tıklayın.
 
     ![Delimitedmetin kutucuğunu gösteren ekran görüntüsü.](media/tutorial-data-flow/dataset2.png)
-1. Veri kümenizi **MoviesDB** olarak adlandırın. Bağlı hizmet açılan menüsünde **Yeni** ' yi seçin.
+1. Veri kümenizi **MoviesDB** olarak adlandırın. Bağlı hizmet açılan menüsünde **Yeni**' yi seçin.
 
     ![Bağlı hizmet açılan listesini gösteren ekran görüntüsü.](media/tutorial-data-flow/dataset3.png)
 1. Bağlı hizmet oluşturma ekranında, ADLS Gen2 Linked Service **ADLSGen2** ' yi adlandırın ve kimlik doğrulama yönteminizi belirtin. Ardından bağlantı kimlik bilgilerinizi girin. Bu öğreticide, depolama hesabımızla bağlantı kurmak için hesap anahtarı 'nı kullanıyoruz. Kimlik bilgilerinizin doğru girildiğini doğrulamak için **Bağlantıyı Sına** ' ya tıklayabilirsiniz. İşiniz bittiğinde oluştur ' a tıklayın.

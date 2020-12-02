@@ -2,59 +2,27 @@
 title: Dağıtım planları-Azure Active Directory | Microsoft Docs
 description: Birçok Azure Active Directory özelliği dağıtma hakkında uçtan uca rehberlik.
 services: active-directory
-author: ajburnle
+author: BarbaraSelden
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/20/2019
-ms.author: ajburnle
+ms.date: 12/01/2020
+ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2a7c2813919321227bfcdc4ee43ca15186b89df
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 069cf348bb6d0432d02a8350bc0847c2b155f90a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836827"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498090"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory dağıtım planları
 Azure Active Directory (Azure AD) yeteneklerini dağıtmaya yönelik uçtan uca yönergeler mi arıyorsunuz? Azure AD dağıtım planları, yaygın Azure AD yeteneklerini başarıyla dağıtmak için gereken iş değeri, planlama konuları ve işlem yordamları boyunca size yol gösterir.
 
 Herhangi bir plan sayfasında, belgelerin güncel çevrimdışı bir sürümünü oluşturmak için tarayıcınızın PDF 'ye yazdır özelliğini kullanın.
-## <a name="include-the-right-stakeholders"></a>Doğru paydaşları dahil et
-
-Dağıtım planlamasına yeni bir özellik için Başlarken, kuruluşunuzda önemli paydaşlar eklemek önemlidir. Aşağıdaki rollerin her birini karşılayan kişiyi veya kişileri tanımlamanızı ve belgeleyeceğini ve projede katılımlarını belirlemek için bunlarla çalışmayı öneririz.  
-
-Roller aşağıdaki gibi bulunabilir 
-
-|Rol |Açıklama |
-|-|-|
-|Son Kullanıcı|Özelliği uygulanacak olan temsili Kullanıcı grubu. Genellikle bir pilot programdaki değişikliklere önizleme gösterir.
-|BT Destek Yöneticisi|Bu değişikliğin bir yardım masası perspektifinden desteklenebilirliği hakkında giriş sağlayabilen kuruluş temsilcisini destekler.  
-|Kimlik mimarı veya Azure genel Yöneticisi|Bu değişikliğin kuruluşunuzdaki çekirdek kimlik yönetimi altyapısına nasıl hizalandığını tanımlamaya yönelik kimlik yönetimi ekibi temsilcisi.|
-|Uygulama Iş sahibi |Erişim yönetimi de içerebilen, etkilenen uygulamaların genel iş sahibidir.Ayrıca, son kullanıcının perspektifinden bu değişikliğin kullanıcı deneyiminde ve yararlılığı üzerinde giriş sağlayabilir.
-|Güvenlik sahibi|Güvenlik ekibinden, planın kuruluşunuzun güvenlik gereksinimlerini karşıladığını kapatan bir temsilci.|
-|Uyumluluk Yöneticisi|Kuruluşunuzda kurumsal, sektör veya kamu gereksinimleriyle uyumluluk sağlamaktan sorumlu kişi.|
-
-**Katılma düzeyleri şunları içerebilir:**
-
-- Proje planı ve sonucu uygulamak için **R** esponerişilebilir 
-
-- **A** Proje planının ve sonucunun pproval 'i 
-
-- **C** ontributor-proje planı ve sonucu 
-
-- Proje planı ve sonucu **oluşturdum**
-
-
-## <a name="best-practices-for-a-pilot"></a>Pilot için en iyi uygulamalar
-Pilot, herkes için bir özelliği açmadan önce küçük bir grupla test etmenizi sağlar. Test etmenin bir parçası olarak, kuruluşunuzdaki her kullanım durumunun büyük bir şekilde sınandığından emin olun. Bunu kuruluşunuza bir bütün olarak yapmadan önce belirli bir pilot kullanıcı grubunu hedefleyecek en iyisidir.
-
-İlk dalga uygulamanızda BT 'yi, kullanılabilirliği ve geri bildirim sağlayabilen ve bunları sağlayabilecek diğer uygun kullanıcıları hedefleyebilirsiniz. Bu geri bildirim, kullanıcılarınıza göndereceğiniz iletişimleri ve talimatları daha fazla geliştirmek ve destek personelinizin görebileceği sorun türleri hakkında Öngörüler sağlamak için kullanılmalıdır. 
-
-Daha büyük Kullanıcı gruplarına dağıtım, hedeflenen Grup kapsamı arttırılarak gerçekleştirilmelidir. Bu, [dinamik grup üyeliği](../enterprise-users/groups-dynamic-membership.md)aracılığıyla veya hedeflenen gruplara el ile Kullanıcı ekleyerek yapılabilir.
 
 
 ## <a name="deploy-authentication"></a>Kimlik doğrulaması dağıtma
@@ -98,3 +66,36 @@ Daha büyük Kullanıcı gruplarına dağıtım, hedeflenen Grup kapsamı arttı
 | [Privileged Identity Management](../privileged-identity-management/pim-deployment-plan.md)| Azure AD Privileged Identity Management (PıM), Azure AD, Azure kaynakları ve diğer Microsoft Online Services genelinde ayrıcalıklı yönetim rollerini yönetmenize yardımcı olur. PıM, tam zamanında erişim, onay iş akışları isteme ve tam olarak tümleşik erişim incelemeleri gibi çözümler sağlayarak ayrıcalıklı rollerin kötü amaçlı etkinliklerini belirlemek, açmak ve gerçek zamanlı olarak engellemek için. |
 | [Raporlama ve Izleme](../reports-monitoring/plan-monitoring-and-reporting.md)| Azure AD raporlama ve izleme çözümünüzün tasarımı, yasal, güvenlik ve işletimsel gereksinimlerinize ek olarak mevcut ortamınız ve süreçlerinize bağlıdır. Bu makalede, çeşitli tasarım seçenekleri sunulmakta ve doğru dağıtım stratejisinde size rehberlik sunulmaktadır. |
 | [Erişim Incelemeleri](../governance/deploy-access-reviews.md) | Erişim Incelemeleri, yönetim stratejinizin önemli bir parçasıdır. bu sayede kimlerin erişimi olduğunu ve neleri erişebileceğini bilmenize ve yönetmenize olanak sağlar. Bu makale, istediğiniz güvenlik ve işbirliği sonrası için erişim gözden geçirmeleri planlayıp dağıtmanıza yardımcı olur. |
+
+## <a name="include-the-right-stakeholders"></a>Doğru paydaşları dahil et
+
+Dağıtım planlamasına yeni bir özellik için Başlarken, kuruluşunuzda önemli paydaşlar eklemek önemlidir. Aşağıdaki rollerin her birini karşılayan kişiyi veya kişileri tanımlamanızı ve belgeleyeceğini ve projede katılımlarını belirlemek için bunlarla çalışmayı öneririz.  
+
+Roller aşağıdaki gibi bulunabilir 
+
+|Rol |Açıklama |
+|-|-|
+|Son Kullanıcı|Özelliği uygulanacak olan temsili Kullanıcı grubu. Genellikle bir pilot programdaki değişikliklere önizleme gösterir.
+|BT Destek Yöneticisi|Bu değişikliğin bir yardım masası perspektifinden desteklenebilirliği hakkında giriş sağlayabilen kuruluş temsilcisini destekler.  
+|Kimlik mimarı veya Azure genel Yöneticisi|Bu değişikliğin kuruluşunuzdaki çekirdek kimlik yönetimi altyapısına nasıl hizalandığını tanımlamaya yönelik kimlik yönetimi ekibi temsilcisi.|
+|Uygulama Iş sahibi |Erişim yönetimi de içerebilen, etkilenen uygulamaların genel iş sahibidir.Ayrıca, son kullanıcının perspektifinden bu değişikliğin kullanıcı deneyiminde ve yararlılığı üzerinde giriş sağlayabilir.
+|Güvenlik sahibi|Güvenlik ekibinden, planın kuruluşunuzun güvenlik gereksinimlerini karşıladığını kapatan bir temsilci.|
+|Uyumluluk Yöneticisi|Kuruluşunuzda kurumsal, sektör veya kamu gereksinimleriyle uyumluluk sağlamaktan sorumlu kişi.|
+
+**Katılma düzeyleri şunları içerebilir:**
+
+- Proje planı ve sonucu uygulamak için **R** esponerişilebilir 
+
+- **A** Proje planının ve sonucunun pproval 'i 
+
+- **C** ontributor-proje planı ve sonucu 
+
+- Proje planı ve sonucu **oluşturdum**
+
+
+## <a name="best-practices-for-a-pilot"></a>Pilot için en iyi uygulamalar
+Pilot, herkes için bir özelliği açmadan önce küçük bir grupla test etmenizi sağlar. Test etmenin bir parçası olarak, kuruluşunuzdaki her kullanım durumunun büyük bir şekilde sınandığından emin olun. Bunu kuruluşunuza bir bütün olarak yapmadan önce belirli bir pilot kullanıcı grubunu hedefleyecek en iyisidir.
+
+İlk dalga uygulamanızda BT 'yi, kullanılabilirliği ve geri bildirim sağlayabilen ve bunları sağlayabilecek diğer uygun kullanıcıları hedefleyebilirsiniz. Bu geri bildirim, kullanıcılarınıza göndereceğiniz iletişimleri ve talimatları daha fazla geliştirmek ve destek personelinizin görebileceği sorun türleri hakkında Öngörüler sağlamak için kullanılmalıdır. 
+
+Daha büyük Kullanıcı gruplarına dağıtım, hedeflenen Grup kapsamı arttırılarak gerçekleştirilmelidir. Bu, [dinamik grup üyeliği](../enterprise-users/groups-dynamic-membership.md)aracılığıyla veya hedeflenen gruplara el ile Kullanıcı ekleyerek yapılabilir.

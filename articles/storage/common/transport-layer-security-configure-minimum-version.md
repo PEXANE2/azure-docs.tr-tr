@@ -10,12 +10,12 @@ ms.date: 11/03/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 5f772bd996b126a4cd7182a2ce088c2d3edc8e7d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 683f0e070ad77add62ed76eabd70b42ba15f012e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312025"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498141"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>Depolama hesabına yönelik istekler için gereken en düşük Aktarım Katmanı Güvenliği (TLS) sürümünü zorla
 
@@ -35,7 +35,7 @@ Depolama hesabınız için en düşük TLS sürümünü zorlayarak, daha eski bi
 
 Azure depolama hesabınıza yönelik istekleri günlüğe kaydetmek ve istemci tarafından kullanılan TLS sürümünü öğrenmek için Azure Izleyici 'de (Önizleme) Azure depolama günlüğü 'nü kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Storage 'ı izleme](../blobs/monitor-blob-storage.md).
 
-Azure Izleyici 'de Azure depolama günlüğü, günlük verilerini çözümlemek için günlük sorgularının kullanılmasını destekler. Günlükleri sorgulamak için bir Azure Log Analytics çalışma alanı kullanabilirsiniz. Günlük sorguları hakkında daha fazla bilgi edinmek için bkz. [öğretici: Log Analytics sorguları kullanmaya başlama](../../azure-monitor/log-query/get-started-portal.md).
+Azure Izleyici 'de Azure depolama günlüğü, günlük verilerini çözümlemek için günlük sorgularının kullanılmasını destekler. Günlükleri sorgulamak için bir Azure Log Analytics çalışma alanı kullanabilirsiniz. Günlük sorguları hakkında daha fazla bilgi edinmek için bkz. [öğretici: Log Analytics sorguları kullanmaya başlama](../../azure-monitor/log-query/log-analytics-tutorial.md).
 
 Azure depolama verilerini Azure Izleyici ile günlüğe kaydetmek ve Azure Log Analytics ile analiz etmek için, önce hangi istek türlerinin ve hangi depolama hizmetlerini günlüğe kaydetmek istediğinizi belirten bir tanılama ayarı oluşturmanız gerekir. Azure portal bir tanılama ayarı oluşturmak için aşağıdaki adımları izleyin:
 
@@ -44,10 +44,10 @@ Azure depolama verilerini Azure Izleyici ile günlüğe kaydetmek ve Azure Log A
 1. Azure portalda depolama hesabınıza gidin.
 1. Izleme bölümünde **Tanılama ayarları (Önizleme)** öğesini seçin.
 1. İsteklerini günlüğe kaydetmek istediğiniz Azure Storage hizmetini seçin. Örneğin, istekleri blob depolamaya kaydetmek için **BLOB** ' u seçin.
-1. **Tanılama ayarı Ekle** ' yi seçin.
+1. **Tanılama ayarı ekle**’yi seçin.
 1. Tanılama ayarı için bir ad girin.
-1. **Kategori ayrıntıları** ' nın altında, **günlük** bölümünde günlüğe kaydedilecek istek türlerini seçin. Okuma, yazma ve silme isteklerini günlüğe kaydedebilirsiniz. Örneğin, **Storageread** ve **storagewrite** seçildiğinde, okuma ve yazma istekleri seçili hizmete kaydedilir.
-1. **Hedef ayrıntıları** altında **Log Analytics gönder** ' i seçin. Aşağıdaki görüntüde gösterildiği gibi aboneliğinizi ve daha önce oluşturduğunuz Log Analytics çalışma alanını seçin.
+1. **Kategori ayrıntıları**' nın altında, **günlük** bölümünde günlüğe kaydedilecek istek türlerini seçin. Okuma, yazma ve silme isteklerini günlüğe kaydedebilirsiniz. Örneğin, **Storageread** ve **storagewrite** seçildiğinde, okuma ve yazma istekleri seçili hizmete kaydedilir.
+1. **Hedef ayrıntıları** altında **Log Analytics gönder**' i seçin. Aşağıdaki görüntüde gösterildiği gibi aboneliğinizi ve daha önce oluşturduğunuz Log Analytics çalışma alanını seçin.
 
     :::image type="content" source="media/transport-layer-security-configure-minimum-version/create-diagnostic-setting-logs.png" alt-text="İstekleri günlüğe kaydetmek için bir tanılama ayarı oluşturmayı gösteren ekran görüntüsü":::
 
@@ -171,9 +171,9 @@ az storage account show \
 
 Bir depolama hesabı için en düşük TLS sürümünü şablon ile yapılandırmak için, **Minimumtlsversion** özelliği, veya olarak ayarlanmış bir şablon oluşturun `TLS1_0` `TLS1_1` `TLS1_2` . Aşağıdaki adımlar Azure portal bir şablonun nasıl oluşturulacağını açıklamaktadır.
 
-1. Azure portal **kaynak oluştur** ' u seçin.
-1. **Market 'Te ara** ' te, **şablon dağıtımı** yazın ve ardından **ENTER** tuşuna basın.
-1. **Şablon dağıtımı seçin (özel şablonlar kullanarak dağıtın) (Önizleme)** , **Oluştur** ' u seçin ve ardından **düzenleyicide kendi şablonunuzu oluşturun** ' i seçin.
+1. Azure portal **kaynak oluştur**' u seçin.
+1. **Market 'Te ara**' te, **şablon dağıtımı** yazın ve ardından **ENTER** tuşuna basın.
+1. **Şablon dağıtımı seçin (özel şablonlar kullanarak dağıtın) (Önizleme)**, **Oluştur**' u seçin ve ardından **düzenleyicide kendi şablonunuzu oluşturun**' i seçin.
 1. Şablon Düzenleyicisi 'nde, yeni bir hesap oluşturmak için aşağıdaki JSON 'a yapıştırın ve en düşük TLS sürümünü TLS 1,2 olarak ayarlayın. Açılı ayraçlar içindeki yer tutucuları kendi değerlerinizle değiştirmeyi unutmayın.
 
     ```json
@@ -244,7 +244,7 @@ Azure Ilkesi, bir ilke kuralı bir kaynağa göre değerlendirildiğinde ne olac
 Azure portal en düşük TLS sürümüne yönelik denetim efektli bir ilke oluşturmak için aşağıdaki adımları izleyin:
 
 1. Azure portal Azure Ilke hizmeti ' ne gidin.
-1. **Yazma** bölümünde **tanımlar** ' ı seçin.
+1. **Yazma** bölümünde **tanımlar**' ı seçin.
 1. **İlke tanımı Ekle** ' yi seçerek yeni bir ilke tanımı oluşturun.
 1. **Tanım konumu** alanı için, denetim ilkesi kaynağının nerede olduğunu belirtmek üzere **daha fazla** düğmesini seçin.
 1. İlke için bir ad belirtin. İsteğe bağlı olarak bir açıklama ve kategori belirtebilirsiniz.
@@ -281,7 +281,7 @@ Sonra, ilkeyi bir kaynağa atayın. İlke kapsamı bu kaynağa ve altındaki kay
 İlkeyi Azure portal atamak için aşağıdaki adımları izleyin:
 
 1. Azure portal Azure Ilke hizmeti ' ne gidin.
-1. **Yazma** bölümünde **atamalar** ' ı seçin.
+1. **Yazma** bölümünde **atamalar**' ı seçin.
 1. Yeni ilke ataması oluşturmak için **Ilke ata** ' yı seçin.
 1. **Kapsam** alanı için, ilke atamasının kapsamını seçin.
 1. **İlke tanımı** alanı Için, **daha fazla** düğmesini seçin ve ardından listeden önceki bölümde tanımladığınız ilkeyi seçin.
@@ -298,7 +298,7 @@ Uyumluluk raporunun, ilke ataması oluşturulduktan sonra kullanılabilir olmas�
 Uyumluluk raporunu Azure portal görüntülemek için aşağıdaki adımları izleyin:
 
 1. Azure portal Azure Ilke hizmeti ' ne gidin.
-1. **Uyumluluk** ' i seçin.
+1. **Uyumluluk**' i seçin.
 1. Önceki adımda oluşturduğunuz ilke atamasının adı için sonuçları filtreleyin. Rapor, ilkeyle ilgili olarak kaç kaynağın uyumsuz olduğunu gösterir.
 1. Uyumluluğa sahip olmayan depolama hesaplarının bir listesi de dahil olmak üzere ek ayrıntılar için raporda ayrıntıya gidebilirsiniz.
 

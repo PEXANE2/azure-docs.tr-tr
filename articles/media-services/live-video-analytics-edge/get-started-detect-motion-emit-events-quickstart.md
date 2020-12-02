@@ -3,12 +3,12 @@ title: IoT Edge Azure 'da canlı video analiziyle çalışmaya başlama
 description: Bu hızlı başlangıçta IoT Edge 'da canlı video analiziyle çalışmaya başlama gösterilmektedir. Canlı video akışında hareket algılamayı öğrenin.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 2d426952e92951185c43b68266196a6764f4f601
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: e67c717a4476ab9191471483d9aa8e8f222cd750
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125022"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498277"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Hızlı başlangıç: IoT Edge kullanmaya başlama-canlı video analizi
 
@@ -39,7 +39,7 @@ Bu öğreticide aşağıdaki Azure kaynakları gereklidir:
 * IoT Hub
 * Depolama hesabı
 * Azure Media Services hesabı
-* Azure 'da [IoT Edge çalışma zamanı](../../iot-edge/how-to-install-iot-edge-linux.md) yüklü bir Linux sanal makinesi
+* Azure 'da [IoT Edge çalışma zamanı](../../iot-edge/how-to-install-iot-edge.md) yüklü bir Linux sanal makinesi
 
 Bu hızlı başlangıç için, Azure aboneliğinizde gerekli kaynakları dağıtmak üzere [canlı video analizi kaynakları kurulum betiğini](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) kullanmanızı öneririz. Bunu yapmak için aşağıdaki adımları izleyin:
 
@@ -48,7 +48,11 @@ Bu hızlı başlangıç için, Azure aboneliğinizde gerekli kaynakları dağıt
 1. Cloud Shell penceresinin sol tarafındaki açılan menüde, ortamınız olarak **Bash** ' i seçin.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/quickstarts/env-selector.png" alt-text="Hareket algılamayı temel alan canlı video analizi"
+    > :::image type="content" source="./media/quickstarts/env-selector.png" alt-text="Ortam Seçicisi":::
+1. Aşağıdaki komutu çalıştırın.
+
+    ```
+    bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
 Betik başarıyla tamamlanerdiğinde, aboneliğinizdeki tüm gerekli kaynakları görmeniz gerekir. Betik çıktısında, kaynak tablosu IoT Hub adını listeler. Kaynak türünü bulun `Microsoft.Devices/IotHubs` ve adı aklınızda yazın. Sonraki adımda bu ada ihtiyacınız olacaktır. 
@@ -80,16 +84,17 @@ Azure IoT araçları uzantısını kullanarak IoT Hub 'ınıza bağlanmak için 
 1. Sağ tıklayıp **uzantı ayarları**' nı seçin.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Hareket algılamayı temel alan canlı video analizi" i arayın ve etkinleştirin.
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Uzantı ayarları":::
+1. "Ayrıntılı Iletiyi göster" i arayın ve etkinleştirin.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Hareket algılamayı temel alan canlı video analizi":::
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Ayrıntılı Iletiyi göster":::
 1. **Görünüm**  >  **Gezgini**' ni seçin. Ya da CTRL + SHIFT + E ' yi seçin.
 1. **Gezgin** sekmesinin sol alt köşesinde **Azure IoT Hub**' yi seçin.
 1. Bağlam menüsünü görmek için **diğer seçenekler** simgesini seçin. Sonra **IoT Hub bağlantı dizesi ayarla**' yı seçin.
-1. Bir giriş kutusu göründüğünde IoT Hub bağlantı dizenizi girin. Cloud Shell, bağlantı dizesini *~/CloudDrive/LVA-Sample/appsettings.jstarihinde*alabilirsiniz.
+1. Bir giriş kutusu göründüğünde IoT Hub bağlantı dizenizi girin. Cloud Shell, bağlantı dizesini *~/CloudDrive/LVA-Sample/appsettings.jstarihinde* alabilirsiniz.
 
-Bağlantı başarılı olursa Edge cihazlarının listesi görüntülenir. **LVA-Sample-Device**adlı en az bir cihaz görmeniz gerekir. Artık IoT Edge cihazlarınızı yönetebilir ve bağlam menüsü aracılığıyla Azure IoT Hub etkileşim kurabilirsiniz. Sınır cihazında dağıtılan modülleri görüntülemek için, **LVA-örnek-cihaz**altında **modüller** düğümünü genişletin.
+Bağlantı başarılı olursa Edge cihazlarının listesi görüntülenir. **LVA-Sample-Device** adlı en az bir cihaz görmeniz gerekir. Artık IoT Edge cihazlarınızı yönetebilir ve bağlam menüsü aracılığıyla Azure IoT Hub etkileşim kurabilirsiniz. Sınır cihazında dağıtılan modülleri görüntülemek için, **LVA-örnek-cihaz** altında **modüller** düğümünü genişletin.
 
 ![LVA-örnek-cihaz düğümü](./media/quickstarts/lva-sample-device-node.png)
 
@@ -105,7 +110,7 @@ Doğrudan yöntemleri çağırarak canlı video akışlarını çözümlemek iç
 Modüldeki tüm [grafik topolojilerini](media-graph-concept.md#media-graph-topologies-and-instances) listelemek için:
 
 1. Visual Studio Code, **Lvaedge** modülüne sağ tıklayıp **Modül doğrudan yöntemini çağır**' ı seçin.
-1. Görüntülenen kutuya *Graphtopologyılist*yazın.
+1. Görüntülenen kutuya *Graphtopologyılist* yazın.
 1. Aşağıdaki JSON yükünü kopyalayın ve kutuya yapıştırın. Ardından Enter tuşunu seçin.
 
     ```

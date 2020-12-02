@@ -4,19 +4,19 @@ description: Azure Data Factory 'da kaynak denetimini yapılandırmayı öğreni
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: anandsub
 ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
-ms.openlocfilehash: 37982d1c28d445d40fa9d53a2a1eb076fbbf7f2f
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: d219ff8469c471a37deb47e0f217292d70e8f0f9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566716"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497121"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory kaynak denetimi
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -58,19 +58,19 @@ Hem Azure Repos hem de GitHub için bir Git deposunu veri fabrikanıza bağlanma
 
 ### <a name="configuration-method-1-home-page"></a>Yapılandırma yöntemi 1: giriş sayfası
 
-Azure Data Factory giriş sayfasında **kod deposunu ayarla** ' yı seçin.
+Azure Data Factory giriş sayfasında **kod deposunu ayarla**' yı seçin.
 
 ![Giriş sayfasından bir kod deposu yapılandırma](media/author-visually/configure-repo.png)
 
 ### <a name="configuration-method-2-authoring-canvas"></a>Yapılandırma yöntemi 2: yazı tuvali yazma
 
-Azure Data Factory UX yazma tuvalinde **Data Factory** açılan menüsünü ve ardından **kod deposunu ayarla** ' yı seçin.
+Azure Data Factory UX yazma tuvalinde **Data Factory** açılan menüsünü ve ardından **kod deposunu ayarla**' yı seçin.
 
 ![Kod deposu ayarlarını yazma işleminden yapılandırma](media/author-visually/configure-repo-2.png)
 
 ### <a name="configuration-method-3-management-hub"></a>Yapılandırma yöntemi 3: Yönetim Merkezi
 
-ADF UX 'teki yönetim merkezine gidin. **Kaynak denetimi** bölümünde **Git yapılandırması** ' nı seçin. Bağlı depo yoksa, **kod deposunu ayarla** ' ya tıklayın.
+ADF UX 'teki yönetim merkezine gidin. **Kaynak denetimi** bölümünde **Git yapılandırması** ' nı seçin. Bağlı depo yoksa, **kod deposunu ayarla**' ya tıklayın.
 
 ![Kod deposu ayarlarını yönetim hub 'ından yapılandırma](media/author-visually/configure-repo-3.png)
 
@@ -176,11 +176,11 @@ Bu adımları izledikten sonra, fabrikanızın kuruluşunuzda hem genel hem de �
 
 GitHub 'a zaten bağlandıysanız ve yalnızca kişisel hesaba erişim izni verdiyseniz, bir kuruluşa izin vermek için aşağıdaki adımları izleyin. 
 
-1. GitHub ve açık **Ayarlar** ' a gidin.
+1. GitHub ve açık **Ayarlar**' a gidin.
 
     ![GitHub ayarlarını aç](media/author-visually/github-settings.png)
 
-1. **Uygulamalar** ' ı seçin. **Yetkili OAuth uygulamaları** sekmesinde *AzureDataFactory* görmeniz gerekir.
+1. **Uygulamalar**' ı seçin. **Yetkili OAuth uygulamaları** sekmesinde *AzureDataFactory* görmeniz gerekir.
 
     ![OAuth uygulamalarını seçin](media/author-visually/github-organization-select-application.png)
 
@@ -211,7 +211,7 @@ Bir veri fabrikası ile ilişkili her bir Azure Repos git deposu bir işbirliği
 
 ![Yeni dal oluştur](media/author-visually/new-branch.png)
 
-Özellik dalınızdaki değişiklikleri işbirliği dalınızla birleştirmeye hazırsanız, dal açılan listesine tıklayın ve **çekme Isteği oluştur** ' u seçin. Bu eylem, çekme istekleri oluşturabileceğiniz, kod İncelemeleri yapabileceğiniz ve değişiklikleri işbirliği dalınızda birleştirebileceğiniz git Azure Repos için sizi yönlendirir. ( `master` varsayılan). Yalnızca Data Factory hizmetine işbirliği dalınızdan yayımlama izni verilir. 
+Özellik dalınızdaki değişiklikleri işbirliği dalınızla birleştirmeye hazırsanız, dal açılan listesine tıklayın ve **çekme Isteği oluştur**' u seçin. Bu eylem, çekme istekleri oluşturabileceğiniz, kod İncelemeleri yapabileceğiniz ve değişiklikleri işbirliği dalınızda birleştirebileceğiniz git Azure Repos için sizi yönlendirir. ( `master` varsayılan). Yalnızca Data Factory hizmetine işbirliği dalınızdan yayımlama izni verilir. 
 
 ![Yeni bir çekme isteği oluştur](media/author-visually/create-pull-request.png)
 
@@ -260,7 +260,7 @@ Data Factory bağlı hizmetler için herhangi bir bağlantı dizesini veya parol
 
 Key Vault veya MSI kimlik doğrulamasının kullanılması, Kaynak Yöneticisi Şablon dağıtımı sırasında bu gizli dizileri sağlamanız gerektiği için sürekli tümleştirme ve dağıtımı kolaylaştırır.
 
-## <a name="troubleshooting-git-integration"></a>Git tümleştirmesi sorunlarını giderme
+## <a name="troubleshooting-git-integration"></a>Git tümleştirmesiyle ilgili sorunları giderme
 
 ### <a name="stale-publish-branch"></a>Eski yayımlama dalı
 
@@ -268,7 +268,7 @@ Yayımla dalı ana Dalla eşitlenmemiş ve son bir yayımlamaya rağmen güncel 
 
 1. Geçerli git deponuzu kaldırma
 1. Git 'i aynı ayarlarla yeniden yapılandırın, ancak **mevcut Data Factory kaynaklarını depoya Içeri aktarma** işleminin seçili olduğundan emin olun ve **yeni dal** seçin
-1. İşbirliği dalında yapılan değişiklikleri birleştirmek için bir çekme isteği oluşturun 
+1. Değişiklikleri işbirliği dalıyla birleştirmek için çekme isteği oluşturun 
 
 Aşağıda, eski bir yayımlama dalına neden olabilecek durumlara ilişkin bazı örnekler verilmiştir:
 - Bir kullanıcının birden çok dalı vardır. Tek bir özellik dalında, AKV ile ilişkili olmayan bağlı bir hizmeti sildi (gitmeyen veya olmayan bağlı hizmetler, git ' te olduklarından ve özellik dalından işbirliği dalına birleştirildiğine bakılmaksızın hemen yayımlanır).
@@ -278,7 +278,7 @@ Aşağıda, eski bir yayımlama dalına neden olabilecek durumlara ilişkin baz�
 
 ## <a name="switch-to-a-different-git-repository"></a>Farklı bir git deposuna geçiş yap
 
-Farklı bir git deposuna geçiş yapmak için, **kaynak denetimi** altındaki Yönetim hub 'ındaki git yapılandırma sayfasına gidin. **Bağlantıyı kes** ' i seçin. 
+Farklı bir git deposuna geçiş yapmak için, **kaynak denetimi** altındaki Yönetim hub 'ındaki git yapılandırma sayfasına gidin. **Bağlantıyı kes**' i seçin. 
 
 ![Git simgesi](media/author-visually/remove-repository.png)
 

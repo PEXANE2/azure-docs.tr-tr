@@ -3,19 +3,19 @@ title: Azure Data Factory’yi görsel olarak izleme
 description: Azure veri fabrikalarını görsel olarak izlemeyi öğrenin
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 45ebd793d96ed8cf0edf88d5631353fb6cd6a982
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: f2bf1b1a16660b4e80bc0acc5c6e4201b452098f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96008778"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497920"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Azure Data Factory’yi görsel olarak izleme
 
@@ -72,7 +72,7 @@ Liste görünümü her bir işlem hattı çalıştırmasına karşılık gelen e
 | Çalıştırma başlangıç | Etkinlik çalıştırmasının başlangıç tarihi ve saati (AA/GG/YYYY, ss: DD: SS) |
 | Süre | Çalıştırma süresi (SS: DD: SS) |
 | Durum | **Başarısız**, **başarılı**, **devam ediyor** veya **iptal edildi** |
-| Integration Runtime | Etkinliğin çalıştırıldığı Integration Runtime |
+| Tümleştirme Çalışma Zamanı | Etkinliğin çalıştırıldığı Integration Runtime |
 | Kullanıcı Özellikleri | Etkinliğin Kullanıcı tanımlı özellikleri |
 | Hata | Etkinlik başarısız olursa, çalıştırma hatası |
 | Çalıştırma kimliği | Etkinlik çalıştırmasının KIMLIĞI |

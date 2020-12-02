@@ -4,12 +4,12 @@ description: Azure Özel Görüntü İşleme kullanarak bir oyunsuna algılayan 
 ms.topic: tutorial
 ms.date: 09/08/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 685aab603b2589a97b4c80ef0f8c5860617f1147
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: b4d9f82d99542bde216f0eaa1459d0f6c1a52659
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358324"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498345"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Öğretici: IoT Edge ve Azure Özel Görüntü İşleme canlı video analizi ile canlı videoyu çözümleyin
 
@@ -62,7 +62,7 @@ Başlamadan önce aşağıdaki makaleleri okuyun:
 ## <a name="review-the-sample-video"></a>Örnek videoyu gözden geçirin
 
 
-Bu öğreticide, canlı bir akışın benzetimini yapmak için bir [oyuncar bir video](https://lvamedia.blob.core.windows.net/public/t2.mkv) dosyası kullanılmaktadır. [VLC medya oynatıcı](https://www.videolan.org/vlc/)gibi bir uygulama aracılığıyla videoyu inceleyebilirsiniz. **CTRL + N** ' ı seçin ve ardından kayıttan yürütmeyi başlatmak üzere [oyuncar arabasının videosunu](https://lvamedia.blob.core.windows.net/public/t2.mkv) bir bağlantı yapıştırın. Videoyu izlerken videoda bir oyunçın 36 saniyelik işaretçisi ile ilgili olduğunu unutmayın. Özel model bu oyuncak kamyonu algılamak için eğitildi. Bu öğreticide, bu tür oyunları algılamak ve ilişkili çıkarım olaylarını IoT Edge hub 'ına yayımlamak için IoT Edge üzerinde canlı video analizi kullanacaksınız.
+Bu öğreticide, canlı bir akışın benzetimini yapmak için bir [oyuncar bir video](https://lvamedia.blob.core.windows.net/public/t2.mkv) dosyası kullanılmaktadır. [VLC medya oynatıcı](https://www.videolan.org/vlc/)gibi bir uygulama aracılığıyla videoyu inceleyebilirsiniz. **CTRL + N**' ı seçin ve ardından kayıttan yürütmeyi başlatmak üzere [oyuncar arabasının videosunu](https://lvamedia.blob.core.windows.net/public/t2.mkv) bir bağlantı yapıştırın. Videoyu izlerken videoda bir oyunçın 36 saniyelik işaretçisi ile ilgili olduğunu unutmayın. Özel model bu oyuncak kamyonu algılamak için eğitildi. Bu öğreticide, bu tür oyunları algılamak ve ilişkili çıkarım olaylarını IoT Edge hub 'ına yayımlamak için IoT Edge üzerinde canlı video analizi kullanacaksınız.
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -146,7 +146,7 @@ Ek notlar:
     1. Parametreleri dizisinin en üstüne aşağıdakileri ekleyin: `{"name": "inferencingUrl","value": "http://cv:80/image"},`
     1. `rtspUrl`Parametre değerini olarak değiştirin `"rtsp://rtspsim:554/media/t2.mkv"` .
 1. Altında `GraphTopologyDelete` , emin olun `"name": "InferencingWithHttpExtension"` .
-1. Dosyasında src/Edge/deployment.customvision.template.jsöğesine sağ tıklayın ve **IoT Edge dağıtım bildirimi oluştur** ' u seçin.
+1. Dosyasında src/Edge/deployment.customvision.template.jsöğesine sağ tıklayın ve **IoT Edge dağıtım bildirimi oluştur**' u seçin.
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/custom-vision-tutorial/deployment-template-json.png" alt-text="IoT Edge dağıtım bildirimi oluştur ' u gösteren ekran görüntüsü.":::
@@ -172,7 +172,7 @@ Ek notlar:
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/custom-vision-tutorial/connection-string.png" alt-text="IoT Hub bağlantı dizesi kümesini gösteren ekran görüntüsü.":::
-1. Ardından, kaynak/kenar/yapılandırma/deployment.customvision.amd64.jsüzerinde sağ tıklayın ve **tek cihaz Için dağıtım oluştur** ' u seçin.
+1. Ardından, kaynak/kenar/yapılandırma/deployment.customvision.amd64.jsüzerinde sağ tıklayın ve **tek cihaz Için dağıtım oluştur**' u seçin.
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/custom-vision-tutorial/deployment-amd64-json.png" alt-text="Tek cihaz için dağıtım oluştur ' un gösterildiği ekran görüntüsü.":::
@@ -185,7 +185,7 @@ Ek notlar:
 
 ## <a name="prepare-for-monitoring-events"></a>İzleme olaylarını hazırlama
 
-Canlı video analizi cihazına sağ tıklayın ve **Izlemeyi Başlat yerleşik olay uç noktası** ' nı seçin. Visual Studio Code **Çıkış** penceresinde IoT Hub olaylarını izlemek için bu adıma ihtiyacınız vardır.
+Canlı video analizi cihazına sağ tıklayın ve **Izlemeyi Başlat yerleşik olay uç noktası**' nı seçin. Visual Studio Code **Çıkış** penceresinde IoT Hub olaylarını izlemek için bu adıma ihtiyacınız vardır.
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/custom-vision-tutorial/start-monitoring.png" alt-text="Yerleşik olay uç noktasının başlangıcını Izlemeyi gösteren ekran görüntüsü.":::
@@ -194,12 +194,12 @@ Canlı video analizi cihazına sağ tıklayın ve **Izlemeyi Başlat yerleşik o
 
 Bu öğreticinin grafik topolojisini bir tarayıcıda açarsanız, değerinin `inferencingUrl` olarak ayarlandığını görürsünüz `http://cv:80/image` . Bu ayar, canlı videoda, varsa, çıkarım sunucusunun, varsa oyunpaketleri algılandıktan sonra sonuçlar döndürmeyeceği anlamına gelir.
 
-1. Visual Studio Code, **Uzantılar** sekmesini açın (veya **CTRL + SHIFT + X** ' i seçin) ve Azure IoT Hub aratın.
-1. Sağ tıklayıp **uzantı ayarları** ' nı seçin.
+1. Visual Studio Code, **Uzantılar** sekmesini açın (veya **CTRL + SHIFT + X**' i seçin) ve Azure IoT Hub aratın.
+1. Sağ tıklayıp **uzantı ayarları**' nı seçin.
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Uzantı ayarlarını gösteren ekran görüntüsü.":::
-1. **Ayrıntılı Iletiyi göster** ' i arayın ve etkinleştirin.
+1. **Ayrıntılı Iletiyi göster**' i arayın ve etkinleştirin.
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Ayrıntılı Iletiyi göster ' i gösteren ekran görüntüsü.":::
@@ -245,7 +245,7 @@ Bu öğreticinin grafik topolojisini bir tarayıcıda açarsanız, değerinin `i
     
 1. **TERMINAL** penceresindeki çıktı, bir **ENTER tuşuna basarak komut istemine devam edebilir** . Henüz **ENTER** ' ı seçmeyin. Doğrudan çağrdığınız yöntemler için JSON yanıtı yüklerini görmek üzere yukarı kaydırın.
 1. Visual Studio Code **Çıkış** penceresine geçin. IoT Edge modülündeki canlı video analizinin IoT Hub 'ına gönderdiğini iletiler görürsünüz. Bu öğreticinin aşağıdaki bölümünde bu iletiler ele alınmaktadır.
-1. Medya grafiği çalışmaya devam eder ve sonuçları yazdırır. RTSP simülatörü kaynak videoyu döngüye sokmaya devam eder. Medya grafiğini durdurmak için, **TERMINAL** penceresine dönün ve **ENTER** ' u seçin.
+1. Medya grafiği çalışmaya devam eder ve sonuçları yazdırır. RTSP simülatörü kaynak videoyu döngüye sokmaya devam eder. Medya grafiğini durdurmak için, **TERMINAL** penceresine dönün ve **ENTER**' u seçin.
 Sonraki çağrı dizisi kaynakları temizler:
     
    * `GraphInstanceDeactivate`Grafik örneğini devre dışı bırakmak için bir çağrı.
@@ -391,6 +391,6 @@ Diğer öğreticileri veya hızlı başlangıçlarını denemek istiyorsanız, o
 Gelişmiş kullanıcılar için ek güçlükleri gözden geçirin:
 
 * RTSP simülatörü kullanmak yerine RTSP desteği olan bir [IP kamerası](https://en.wikipedia.org/wiki/IP_camera) kullanın. [ONVIF uyumlu](https://www.onvif.org/conformant-products/) ürünler sayfasında RTSP 'YI destekleyen IP kameralarını arayabilirsiniz. Profiller G, S veya T ile uyumlu olan cihazları arayın.
-* Azure Linux VM yerine AMD64 veya x64 Linux cihazı kullanın. Bu cihaz, IP kamerası ile aynı ağda olmalıdır. [Linux üzerinde Azure IoT Edge çalışma zamanını Install](../../iot-edge/how-to-install-iot-edge-linux.md)bölümündeki yönergeleri izleyebilirsiniz.
+* Azure Linux VM yerine AMD64 veya x64 Linux cihazı kullanın. Bu cihaz, IP kamerası ile aynı ağda olmalıdır. [Linux üzerinde Azure IoT Edge çalışma zamanını Install](../../iot-edge/how-to-install-iot-edge.md)bölümündeki yönergeleri izleyebilirsiniz.
 
 Ardından, [ilk IoT Edge modülünüzü bir sanal Linux cihazına dağıtma](../../iot-edge/quickstart-linux.md)konusundaki yönergeleri Izleyerek cihazı Azure IoT Hub kaydettirin.

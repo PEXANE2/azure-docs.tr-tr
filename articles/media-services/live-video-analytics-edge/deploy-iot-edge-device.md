@@ -3,12 +3,12 @@ title: IoT Edge cihazında canlı video analizi dağıtma-Azure
 description: Bu makalede, IoT Edge cihazınızda canlı video analizlerini dağıtmanıza yardımcı olacak adımlar listelenmektedir. Örneğin, yerel bir Linux makinesine erişiminiz varsa ve/veya daha önce bir Azure Media Services hesabı oluşturduysanız, bunu yapabilirsiniz.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: a64fc11d7afa70d5200fdbd24bd3facdb8a95a7e
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 4fa4a9643976ba513b025706cacec26b2a50afb5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92019588"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498328"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>IoT Edge cihazda canlı video analizi dağıtma
 
@@ -18,13 +18,13 @@ Bu makalede, IoT Edge cihazınızda canlı video analizlerini dağıtmanıza yar
 > ARM64 cihazlarına yönelik destek, IoT Edge yapılar ve daha yeni sürümlerde canlı video analizi 'nde bulunabilir `1.0.4` .
 > ARM64 cihazlarında Azure IoT Edge Runtime çalıştırmaya yönelik destek [genel önizlemededir](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Desteklenen Linux işletim sistemlerinden](../../iot-edge/support.md#operating-systems) birini çalıştıran bir x86-64 veya bir ARM64 cihazı
 * [Sahip olduğunuz ayrıcalıklara](../../role-based-access-control/built-in-roles.md#owner) sahip olduğunuz Azure aboneliği
 * [Oluşturma ve kurulum IoT Hub](../../iot-hub/iot-hub-create-through-portal.md)
-* [IoT Edge cihazı kaydetme](../../iot-edge/how-to-register-device.md)
-* [Debian tabanlı Linux sistemlerine Azure IoT Edge çalışma zamanını yükleme](../../iot-edge/how-to-install-iot-edge-linux.md)
+* [IoT Edge cihazı kaydetme](../../iot-edge/how-to-manual-provision-symmetric-key.md)
+* [Debian tabanlı Linux sistemlerine Azure IoT Edge çalışma zamanını yükleme](../../iot-edge/how-to-install-iot-edge.md)
 * [Azure Media Services hesabı oluşturma](../latest/create-account-howto.md)
 
     * Şu bölgelerden birini kullanın: Doğu ABD 2, Doğu ABD, Orta ABD, Orta Kuzey ABD, Japonya Doğu, Batı ABD, Batı ABD 2, Orta Batı ABD, Kanada Doğu, UK Güney, Fransa orta, Fransa Güney, İsviçre Kuzey, İsviçre Batı ve Japonya Batı.
@@ -99,7 +99,7 @@ Azure portal, dağıtım bildirimi oluşturma ve dağıtımı bir IoT Edge cihaz
 
 #### <a name="configure-a-deployment-manifest"></a>Dağıtım bildirimi yapılandırma
 
-Dağıtım bildirimi, hangi modüllerin dağıtılacağını, modüller arasında verilerin nasıl akacağını ve modül TWINS 'in istenen özelliklerini tanımlayan bir JSON belgesidir. Azure portal, dağıtım bildirimi oluşturma konusunda size yol gösteren bir sihirbaza sahiptir. Sekmelerde düzenlenmiş üç adım vardır: **modüller**, **rotalar**ve **Gözden geçirme + oluştur**.
+Dağıtım bildirimi, hangi modüllerin dağıtılacağını, modüller arasında verilerin nasıl akacağını ve modül TWINS 'in istenen özelliklerini tanımlayan bir JSON belgesidir. Azure portal, dağıtım bildirimi oluşturma konusunda size yol gösteren bir sihirbaza sahiptir. Sekmelerde düzenlenmiş üç adım vardır: **modüller**, **rotalar** ve **Gözden geçirme + oluştur**.
 
 #### <a name="add-modules"></a>Modül ekle
 
@@ -113,7 +113,7 @@ Dağıtım bildirimi, hangi modüllerin dağıtılacağını, modüller arasınd
     ![Ekran görüntüsü modül ayarları sekmesini gösterir.](./media/deploy-iot-edge-device/add.png)
     
     > [!TIP]
-    > Bu yordamda açıklandığı gibi **Modül ayarlarında**, **kapsayıcı oluşturma seçeneklerinde**ve **module ikizi Settings** sekmelerinde değer belirtene kadar **Ekle** ' yi seçmeyin.
+    > Bu yordamda açıklandığı gibi **Modül ayarlarında**, **kapsayıcı oluşturma seçeneklerinde** ve **module ikizi Settings** sekmelerinde değer belirtene kadar **Ekle** ' yi seçmeyin.
     
     > [!WARNING]
     > Modüller için çağrılar yaptığınızda büyük/küçük harfe duyarlıdır Azure IoT Edge. Modül adı olarak kullandığınız tam dizeyi unutmayın. '
@@ -215,7 +215,7 @@ Dağıtım bilgilerinizi gözden geçirin ve ardından Oluştur ' u seçin.
 Dağıtımı oluşturduktan sonra IoT Hub 'ınızın IoT Edge sayfasına dönersiniz.
 
 1. Bilgilerini açmak için dağıtıma hedeflenmiş IoT Edge cihazı seçin.
-2. Cihaz ayrıntılarında, BLOB depolama modülünün hem dağıtım hem de **cihaz tarafından bildirilen**olarak listelendiğini doğrulayın.
+2. Cihaz ayrıntılarında, BLOB depolama modülünün hem dağıtım hem de **cihaz tarafından bildirilen** olarak listelendiğini doğrulayın.
 
 Modülün cihazda başlatılması ve sonra IoT Hub geri bildirilmesi birkaç dakika sürebilir. Güncelleştirilmiş durumu görmek için sayfayı yenileyin.
 Durum kodu: 200 – OK [, IoT Edge çalışma zamanının](../../iot-edge/iot-edge-runtime.md) sağlıklı ve sorunsuz bir şekilde çalıştığı anlamına gelir.

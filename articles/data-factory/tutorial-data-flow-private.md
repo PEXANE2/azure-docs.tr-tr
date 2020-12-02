@@ -1,19 +1,19 @@
 ---
 title: Azure Data Factory yönetilen bir sanal ağ eşleme veri akışı ile veri dönüştürme
 description: Bu öğretici, veri akışları eşleme ile verileri dönüştürmek için Azure Data Factory kullanmaya yönelik adım adım yönergeler sağlar.
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/19/2019
-ms.openlocfilehash: 52e45017643c63937ffc521adfe08d6415460254
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 9a4b57f3813adfeee53891f733dd4d303dbbef8d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637148"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497138"
 ---
 # <a name="transform-data-securely-by-using-mapping-data-flow"></a>Eşleme veri akışını kullanarak verileri güvenli bir şekilde dönüştürme
 
@@ -33,9 +33,9 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 > * İşlem hattında test çalıştırması yapma.
 > * Veri akışı etkinliğini izleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
-* **Azure aboneliği** . Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
-* **Azure depolama hesabı** . Data Lake Storage *kaynak* ve *Havuz* veri depoları olarak kullanırsınız. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Azure depolama hesabı oluşturma](../storage/common/storage-account-create.md?tabs=azure-portal). *Depolama hesabının yalnızca seçili ağlardan erişime izin verdiğinden emin olun.* 
+## <a name="prerequisites"></a>Önkoşullar
+* **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
+* **Azure depolama hesabı**. Data Lake Storage *kaynak* ve *Havuz* veri depoları olarak kullanırsınız. Depolama hesabınız yoksa, oluşturma adımları için bkz. [Azure depolama hesabı oluşturma](../storage/common/storage-account-create.md?tabs=azure-portal). *Depolama hesabının yalnızca seçili ağlardan erişime izin verdiğinden emin olun.* 
 
 Bu öğreticide dönüştürecağımız dosya, bu [GitHub içerik sitesinde](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv)bulunan moviesDB.csv. Dosyayı GitHub 'dan almak için, içeriği bir. csv dosyası olarak yerel olarak kaydetmek üzere seçtiğiniz bir metin düzenleyicisine kopyalayın. Dosyayı depolama hesabınıza yüklemek için bkz. [Azure Portal Blobları karşıya yükleme](../storage/blobs/storage-quickstart-blobs-portal.md). Örnekler **örnek veri** adlı bir kapsayıcıya başvuracaktır.
 
@@ -52,32 +52,32 @@ Bu adımda, bir veri fabrikası oluşturur ve veri fabrikasında bir işlem hatt
 1. Veri fabrikasını oluşturmak istediğiniz Azure **aboneliğinizi** seçin.
 1. **Kaynak Grubu** için aşağıdaki adımlardan birini uygulayın:
 
-    * **Var olanı kullan** ’ı seçin ve ardından açılır listeden var olan bir kaynak grubu belirleyin.
-    * **Yeni oluştur** ’u seçin ve bir kaynak grubunun adını girin. 
+    * **Var olanı kullan**’ı seçin ve ardından açılır listeden var olan bir kaynak grubu belirleyin.
+    * **Yeni oluştur**’u seçin ve bir kaynak grubunun adını girin. 
          
     Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md). 
-1. **Sürüm** bölümünde **V2** 'yi seçin.
+1. **Sürüm** bölümünde **V2**'yi seçin.
 1. **Konum** bölümünden veri fabrikası için bir konum seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri Fabrikası tarafından kullanılan veri depoları (örneğin, Azure depolama ve Azure SQL veritabanı) ve işlemler (örneğin, Azure HDInsight) başka bölgelerde olabilir.
 
-1. **Oluştur** ’u seçin.
+1. **Oluştur**’u seçin.
 1. Oluşturma işlemi tamamlandıktan sonra bildirim merkezinde bildirimi görürsünüz. **Data Factory** sayfasına gitmek Için **Kaynağa Git** ' i seçin.
-1. Data Factory Kullanıcı Arabirimini (UI) ayrı bir sekmede başlatmak için **Geliştir ve İzle** ’yi seçin.
+1. Data Factory Kullanıcı Arabirimini (UI) ayrı bir sekmede başlatmak için **Geliştir ve İzle**’yi seçin.
 
 ## <a name="create-an-azure-ir-in-data-factory-managed-virtual-network"></a>Data Factory yönetilen sanal ağda Azure IR oluşturma
 Bu adımda, bir Azure IR oluşturup Data Factory yönetilen sanal ağı etkinleştirirsiniz.
 
-1. Data Factory portalında **Yönet** ' e gidin ve yeni bir Azure IR oluşturmak için **Yeni** ' yi seçin.
+1. Data Factory portalında **Yönet**' e gidin ve yeni bir Azure IR oluşturmak için **Yeni** ' yi seçin.
 
    ![Yeni Azure IR oluşturmayı gösteren ekran görüntüsü.](./media/tutorial-copy-data-portal-private/create-new-azure-ir.png)
 1. **Azure** IR seçeneğini belirleyin.
 
    ![Yeni bir Azure IR gösteren ekran görüntüsü.](./media/tutorial-copy-data-portal-private/azure-ir.png)
 
-1. **Sanal ağ yapılandırması (Önizleme)** altında **Etkinleştir** ' i seçin.
+1. **Sanal ağ yapılandırması (Önizleme)** altında **Etkinleştir**' i seçin.
 
    ![Yeni bir Azure IR etkinleştirmeyi gösteren ekran görüntüsü.](./media/tutorial-copy-data-portal-private/enable-managed-vnet.png)
 
-1. **Oluştur** ’u seçin.
+1. **Oluştur**’u seçin.
 
 ## <a name="create-a-pipeline-with-a-data-flow-activity"></a>Veri akışı etkinliği ile işlem hattı oluşturma
 
@@ -91,9 +91,9 @@ Bu adımda, bir veri akışı etkinliği içeren bir işlem hattı oluşturacaks
 1. Fabrika üst çubuğunda, **veri akışı hata ayıklama** kaydırıcısını üzerine kaydırın. Hata ayıklama modu, canlı bir Spark kümesine karşı dönüştürme mantığının etkileşimli olarak test edilmesine olanak tanır. Veri akışı kümelerinin ısınma için beş ila yedi dakika sürer. Veri akışı geliştirmeyi yapmak için plan yaparsanız, önce **veri akışı hata ayıklamayı** etkinleştirin. Daha fazla bilgi için bkz. [hata ayıklama modu](./concepts-data-flow-debug-mode.md).
 
     ![Veri akışı hata ayıklama kaydırıcısını gösteren ekran görüntüsü.](media/tutorial-data-flow-private/dataflow-debug.png)
-1. **Etkinlikler** bölmesinde, **Taşı ve Dönüştür** ' ü genişletin. **Veri akışı** etkinliğini bölmeden işlem hattı tuvaline sürükleyin.
+1. **Etkinlikler** bölmesinde, **Taşı ve Dönüştür**' ü genişletin. **Veri akışı** etkinliğini bölmeden işlem hattı tuvaline sürükleyin.
 
-1. **Veri akışı ekleme** açılır penceresinde **Yeni veri akışı oluştur** ' u seçin ve ardından **veri akışını eşleme** ' yi seçin. İşiniz bittiğinde **Tamam ' ı** seçin.
+1. **Veri akışı ekleme** açılır penceresinde **Yeni veri akışı oluştur** ' u seçin ve ardından **veri akışını eşleme**' yi seçin. İşiniz bittiğinde **Tamam ' ı** seçin.
 
     ![Eşleme veri akışını gösteren ekran görüntüsü.](media/tutorial-data-flow-private/mapping-dataflow.png)
 
@@ -111,11 +111,11 @@ Bu adımda, Data Lake Storage 2. kaynak olarak ayarlarsınız.
 
 1. Kaynak **MoviesDB** adlandırın. Yeni bir kaynak veri kümesi oluşturmak için **Yeni** ' yi seçin.
 
-1. **Azure Data Lake Storage 2.** ' yi seçin ve ardından **devam** ' ı seçin.
+1. **Azure Data Lake Storage 2.**' yi seçin ve ardından **devam**' ı seçin.
 
-1. **Delimitedtext** ' i seçin ve ardından **devam** ' ı seçin.
+1. **Delimitedtext**' i seçin ve ardından **devam**' ı seçin.
 
-1. Veri kümenizi **MoviesDB** olarak adlandırın. Bağlı hizmet açılır penceresinde **Yeni** ' yi seçin.
+1. Veri kümenizi **MoviesDB** olarak adlandırın. Bağlı hizmet açılır penceresinde **Yeni**' yi seçin.
 
 1. Bağlı hizmet oluşturma ekranında, Data Lake Storage 2. bağlı hizmetinizi **ADLSGen2** olarak adlandırın ve kimlik doğrulama yönteminizi belirtin. Ardından bağlantı kimlik bilgilerinizi girin. Bu öğreticide, depolama hesabımızla bağlantı kurmak için **hesap anahtarı** 'nı kullanıyoruz. 
 
@@ -123,7 +123,7 @@ Bu adımda, Data Lake Storage 2. kaynak olarak ayarlarsınız.
 
     ![Etkileşimli yazma gösteren ekran görüntüsü.](./media/tutorial-data-flow-private/interactive-authoring.png)
 
-1. **Bağlantıyı sına** ’yı seçin. Depolama hesabı özel bir uç noktanın oluşturulması ve onaylanması gerekmeden bu hesaba erişimi etkinleştirmediğinden başarısız olması gerekir. Hata iletisinde, yönetilen özel uç nokta oluşturmak için izleyebileceğiniz özel bir uç nokta oluşturmak için bir bağlantı görmeniz gerekir. Alternatif olarak, **Yönet** sekmesine doğrudan gitmeniz ve yönetilen özel uç nokta oluşturmak için [Bu bölümdeki](#create-a-managed-private-endpoint) yönergeleri izlemeniz önemlidir.
+1. **Bağlantıyı Sına**' yı seçin. Depolama hesabı özel bir uç noktanın oluşturulması ve onaylanması gerekmeden bu hesaba erişimi etkinleştirmediğinden başarısız olması gerekir. Hata iletisinde, yönetilen özel uç nokta oluşturmak için izleyebileceğiniz özel bir uç nokta oluşturmak için bir bağlantı görmeniz gerekir. Alternatif olarak, **Yönet** sekmesine doğrudan gitmeniz ve yönetilen özel uç nokta oluşturmak için [Bu bölümdeki](#create-a-managed-private-endpoint) yönergeleri izlemeniz önemlidir.
 
 1. İletişim kutusunu açık tutun ve depolama hesabınıza gidin.
 
@@ -146,16 +146,16 @@ Bu adımda, Data Lake Storage 2. kaynak olarak ayarlarsınız.
 1. **Yönet** sekmesine gidin.
 
    > [!NOTE]
-   > **Yönet** sekmesi tüm Data Factory örnekleri için kullanılamayabilir. Bunu görmüyorsanız özel uç noktalara, **Yazar**  >  **bağlantıları**  >  **Özel uç noktası** ' nı seçerek erişebilirsiniz.
+   > **Yönet** sekmesi tüm Data Factory örnekleri için kullanılamayabilir. Bunu görmüyorsanız özel uç noktalara, **Yazar**  >  **bağlantıları**  >  **Özel uç noktası**' nı seçerek erişebilirsiniz.
 
 1. **Yönetilen özel uç noktalar** bölümüne gidin.
 1. **Yönetilen özel uç noktalar** altında **+ Yeni** ' yi seçin.
 
     ![Yönetilen özel uç noktalar Yeni düğmesini gösteren ekran görüntüsü.](./media/tutorial-data-flow-private/new-managed-private-endpoint.png) 
 
-1. Listeden **Azure Data Lake Storage 2.** kutucuğunu seçin ve **devam** ' ı seçin.
+1. Listeden **Azure Data Lake Storage 2.** kutucuğunu seçin ve **devam**' ı seçin.
 1. Oluşturduğunuz depolama hesabının adını girin.
-1. **Oluştur** ’u seçin.
+1. **Oluştur**’u seçin.
 1. Birkaç saniye sonra, oluşturulan özel bağlantının bir onay ihtiyacı olduğunu görmeniz gerekir.
 1. Oluşturduğunuz özel uç noktayı seçin. Özel uç noktayı, depolama hesabı düzeyinde onaylamaya yol açacak bir köprü görebilirsiniz.
 
@@ -165,17 +165,17 @@ Bu adımda, Data Lake Storage 2. kaynak olarak ayarlarsınız.
 
 1. Depolama hesabında, **Ayarlar** bölümü altında **Özel uç nokta bağlantıları** ' na gidin.
 
-1. Oluşturduğunuz özel uç nokta ile onay kutusunu seçin ve **Onayla** ' yı seçin.
+1. Oluşturduğunuz özel uç nokta ile onay kutusunu seçin ve **Onayla**' yı seçin.
 
     ![Özel uç nokta onaylama düğmesini gösteren ekran görüntüsü.](./media/tutorial-data-flow-private/approve-private-endpoint.png)
 
-1. Bir açıklama ekleyin ve **Evet** ' i seçin.
+1. Bir açıklama ekleyin ve **Evet**' i seçin.
 1. Data Factory ' deki **Yönet** sekmesinin **yönetilen özel uç noktalar** bölümüne geri dönün.
 1. Bir dakika sonra, Özel uç noktanız için onay göründüğünü görmeniz gerekir.
 
 ### <a name="add-the-filter-transformation"></a>Filtre dönüşümünü ekleme
 
-1. Veri akışı tuvalindeki kaynak Düğümünüzün yanında, yeni bir dönüşüm eklemek için artı simgesini seçin. Ekleyeceğiniz ilk dönüşüm bir **filtredir** .
+1. Veri akışı tuvalindeki kaynak Düğümünüzün yanında, yeni bir dönüşüm eklemek için artı simgesini seçin. Ekleyeceğiniz ilk dönüşüm bir **filtredir**.
 
     ![Filtre eklemeyi gösteren ekran görüntüsü.](media/tutorial-data-flow-private/add-filter.png)
 1. Filtre dönüştürmesinin **Filtreyıllarınızı** adlandırın. **Filtre Uygula '** nın yanındaki ifade kutusunu seçerek ifade oluşturucuyu açın. Burada filtreleme koşullarınızı belirtirsiniz.
@@ -229,11 +229,11 @@ Bu adımda, Data Lake Storage 2. kaynak olarak ayarlarsınız.
 1. Havuz **havuzunuzu** adlandırın. Havuz veri kümenizi oluşturmak için **Yeni** ' yi seçin.
 
     ![Havuz oluşturmayı gösteren ekran görüntüsü.](media/tutorial-data-flow-private/create-sink.png)
-1. **Yeni veri kümesi** sayfasında **Azure Data Lake Storage 2.** ' yi seçin ve ardından **devam** ' ı seçin.
+1. **Yeni veri kümesi** sayfasında **Azure Data Lake Storage 2.** ' yi seçin ve ardından **devam**' ı seçin.
 
-1. **Biçim Seç** sayfasında, **Delimitedtext** ' i seçin ve ardından **devam** ' ı seçin.
+1. **Biçim Seç** sayfasında, **Delimitedtext** ' i seçin ve ardından **devam**' ı seçin.
 
-1. Havuz veri kümenizi **MoviesSink** olarak adlandırın. Bağlı hizmet için, kaynak dönüştürmesi için oluşturduğunuz **ADLSGen2** bağlı hizmeti seçin. Verilerinizi yazmak için bir çıkış klasörü girin. Bu öğreticide kapsayıcı **örnek verilerinde** klasör **çıkışına** yazıyoruz. Klasörün önceden var olması gerekmez ve dinamik olarak oluşturulabilir. **İlk satırı üst bilgi** onay kutusunu seçin ve **içeri aktarma şeması** için **hiçbiri** ' ni seçin. **Tamam** ’ı seçin.
+1. Havuz veri kümenizi **MoviesSink** olarak adlandırın. Bağlı hizmet için, kaynak dönüştürmesi için oluşturduğunuz **ADLSGen2** bağlı hizmeti seçin. Verilerinizi yazmak için bir çıkış klasörü girin. Bu öğreticide kapsayıcı **örnek verilerinde** klasör **çıkışına** yazıyoruz. Klasörün önceden var olması gerekmez ve dinamik olarak oluşturulabilir. **İlk satırı üst bilgi** onay kutusunu seçin ve **içeri aktarma şeması** için **hiçbiri** ' ni seçin. **Tamam**’ı seçin.
 
     ![Havuz yolunu gösteren ekran görüntüsü.](media/tutorial-data-flow-private/sink-file-path.png)
 

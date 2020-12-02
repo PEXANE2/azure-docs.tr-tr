@@ -80,6 +80,8 @@
       href: observability.md
     - name: ARM şablonlarını kullanarak CI/CD
       href: devops-api-development-templates.md
+    - name: Geçici silme
+      href: soft-delete.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: API’leri tanımlama

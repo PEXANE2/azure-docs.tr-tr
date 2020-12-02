@@ -1,19 +1,19 @@
 ---
-title: Fresnel düşüşünü efekti
+title: Fresnel etkisi
 description: Fresnel düşüşünü malzemesi efektinin Özellik açıklaması sayfası
 author: jumeder
 ms.author: jumeder
 ms.date: 11/09/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0596d118d1f3c09bc295891f023fe9990f3f1e05
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: c8ecd3afc95cf4b8054cd7db3530c15afebea3ce
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94558030"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498243"
 ---
-# <a name="fresnel-effect"></a>Fresnel düşüşünü efekti
+# <a name="fresnel-effect"></a>Fresnel etkisi
 
 Fresnel düşüşünü etkisi malzeme özelliği, fiziksel olmayan doğru, geçici bir etkiye sahiptir. Özelliği, nesnelerin bu açılarda daha fazla yansıtıcı hale gelmesine yönelik fiziksel gözlemye dayanır. Fresnel düşüşünü yansıtılıance, Azure uzaktan Işlemede kullanılan [PBR malzeme modelinde](../../overview/features/pbr-materials.md) zaten fiziksel olarak eklenmiştir. Buna karşılık, Fresnel düşüşünü etkisi malzeme özelliği, [ışıklar](../../overview/features/lights.md) veya [gök ortamı](../../overview/features/sky.md)bağımlılığı olmadan yalnızca bir eklenebilir renk efektine sahiptir.
 
@@ -21,7 +21,7 @@ Fresnel düşüşünü efekti etkilenen nesnelere kenarları etrafında renkli b
 
 ## <a name="enabling-the-fresnel-effect"></a>Fresnel düşüşünü efektini etkinleştirme
 
-Fresnel düşüşünü efekt özelliğini kullanmak için, söz konusu malzemelerde etkin olması gerekir. Bu özelliği, [PBR malzemelerde](../../overview/features/pbr-materials.md) [Pbrmaterialfeatures](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.pbrmaterialfeatures) FresnelEffect bitini ayarlayarak etkinleştirebilirsiniz. Aynı model [Colormaterialfeatures](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering) ve [renk malzemesi](../../overview/features/color-materials.md)için de geçerlidir. Kullanım gösterimi için kod örnekleri bölümüne bakın.
+Fresnel düşüşünü efekt özelliğini kullanmak için, söz konusu malzemelerde etkin olması gerekir. Bu özelliği, [PBR malzemelerde](../../overview/features/pbr-materials.md) [Pbrmaterialfeatures](/dotnet/api/microsoft.azure.remoterendering.pbrmaterialfeatures) FresnelEffect bitini ayarlayarak etkinleştirebilirsiniz. Aynı model [Colormaterialfeatures](/dotnet/api/microsoft.azure.remoterendering) ve [renk malzemesi](../../overview/features/color-materials.md)için de geçerlidir. Kullanım gösterimi için kod örnekleri bölümüne bakın.
 
 Etkinleştirildikten sonra, Fresnel düşüşünü efekti hemen görünür olur. Varsayılan olarak, boşluk beyaz (1, 1, 1, 1) olur ve 1 üssün oluşur. Aşağıdaki parametre ayarlayıcıları ' nı kullanarak bu ayarları özelleştirebilirsiniz.
 
@@ -93,10 +93,10 @@ void SetFresnelEffect(ApiHandle<AzureSession> session, ApiHandle<Material> mater
 
 ## <a name="api-documentation"></a>API belgeleri
 
-* [C# PbrMaterialFeatures](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.pbrmaterialfeatures)
-* [C++ PbrMaterialFeatures](https://docs.microsoft.com/cpp/api/remote-rendering/pbrmaterialfeatures)
-* [C# ColorMaterialFeatures](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.colormaterialfeatures)
-* [C++ ColorMaterialFeatures](https://docs.microsoft.com/cpp/api/remote-rendering/colormaterialfeatures)
+* [C# PbrMaterialFeatures](/dotnet/api/microsoft.azure.remoterendering.pbrmaterialfeatures)
+* [C++ PbrMaterialFeatures](/cpp/api/remote-rendering/pbrmaterialfeatures)
+* [C# ColorMaterialFeatures](/dotnet/api/microsoft.azure.remoterendering.colormaterialfeatures)
+* [C++ ColorMaterialFeatures](/cpp/api/remote-rendering/colormaterialfeatures)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

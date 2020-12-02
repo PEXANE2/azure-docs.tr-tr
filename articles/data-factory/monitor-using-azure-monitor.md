@@ -3,20 +3,20 @@ title: Azure Izleyici 'yi kullanarak veri fabrikalarını izleme
 description: Data Factory bilgi ile tanılama günlüklerini etkinleştirerek/Azure Data Factory işlem hatlarını izlemek için Azure Izleyici 'yi nasıl kullanacağınızı öğrenin.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: af274c9c50b514befb4a3ce5930877edf964d976
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 35d2073dca21b4a0d48a43bed9933bb7549cf8f3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638100"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497903"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak Data Factory izleyin ve uyarır
 
@@ -34,9 +34,9 @@ Daha fazla bilgi için bkz. [Azure izleyiciye genel bakış](../azure-monitor/ov
 
 Data Factory depolar işlem hattı-verileri yalnızca 45 gün boyunca çalıştırın. Bu verileri daha uzun süre tutmak istiyorsanız Azure Izleyici 'yi kullanın. Izleyici ile tanılama günlüklerini analiz için birden çok farklı hedefe yönlendirebilirsiniz.
 
-* **Depolama hesabı** : Tanılama günlüklerinizi denetim veya el ile inceleme için bir depolama hesabına kaydedin. Bekletme süresini gün cinsinden belirtmek için tanılama ayarlarını kullanabilirsiniz.
-* **Olay Hub 'ı** : günlükleri Azure Event Hubs Stream. Günlükler, Power BI gibi bir iş ortağı hizmeti/özel analiz çözümüne giriş haline gelir.
-* **Log Analytics** : günlükleri Log Analytics analiz edin. Azure Izleyici ile Data Factory tümleştirme aşağıdaki senaryolarda kullanışlıdır:
+* **Depolama hesabı**: Tanılama günlüklerinizi denetim veya el ile inceleme için bir depolama hesabına kaydedin. Bekletme süresini gün cinsinden belirtmek için tanılama ayarlarını kullanabilirsiniz.
+* **Olay Hub 'ı**: günlükleri Azure Event Hubs Stream. Günlükler, Power BI gibi bir iş ortağı hizmeti/özel analiz çözümüne giriş haline gelir.
+* **Log Analytics**: günlükleri Log Analytics analiz edin. Azure Izleyici ile Data Factory tümleştirme aşağıdaki senaryolarda kullanışlıdır:
   * Izlemek üzere Data Factory tarafından yayınlanan zengin bir ölçüm kümesine karmaşık sorgular yazmak istiyorsunuz. Bu sorgularda, Izleyici aracılığıyla özel uyarılar oluşturabilirsiniz.
   * Veri fabrikaları genelinde izlemek istiyorsunuz. Birden çok veri fabrikasına ait verileri tek bir Izleyici çalışma alanına yönlendirebilirsiniz.
 
@@ -46,7 +46,7 @@ Ayrıca, günlükleri yayan kaynağın aboneliğinde olmayan bir depolama hesab�
 
 Veri fabrikanızın tanılama ayarlarını oluşturun veya ekleyin.
 
-1. Portalda Izleyici ' ye gidin. **Ayarlar**  >  **Tanılama ayarları** ' nı seçin.
+1. Portalda Izleyici ' ye gidin. **Ayarlar**  >  **Tanılama ayarları**' nı seçin.
 
 1. Tanılama ayarı ayarlamak istediğiniz veri fabrikasını seçin.
 
@@ -54,11 +54,11 @@ Veri fabrikanızın tanılama ayarlarını oluşturun veya ekleyin.
 
    ![Hiçbir ayar yoksa bir tanılama ayarı oluştur](media/data-factory-monitor-oms/monitor-oms-image1.png)
 
-   Data Factory 'de mevcut ayarlar varsa, veri fabrikasında zaten yapılandırılmış ayarların bir listesini görürsünüz. **Tanılama ayarı Ekle** ' yi seçin.
+   Data Factory 'de mevcut ayarlar varsa, veri fabrikasında zaten yapılandırılmış ayarların bir listesini görürsünüz. **Tanılama ayarı ekle**’yi seçin.
 
    ![Ayarlar varsa bir tanılama ayarı ekleyin](media/data-factory-monitor-oms/add-diagnostic-setting.png)
 
-1. Ayarınızı bir ad verin, **Log Analytics gönder** ' i seçin ve sonra **Log Analytics çalışma** alanından bir çalışma alanı seçin.
+1. Ayarınızı bir ad verin, **Log Analytics gönder**' i seçin ve sonra **Log Analytics çalışma** alanından bir çalışma alanı seçin.
 
     * _Azure-Diagnostics_ modunda, tanılama günlükleri _AzureDiagnostics_ tablosuna akar.
 
@@ -75,14 +75,14 @@ Veri fabrikanızın tanılama ayarlarını oluşturun veya ekleyin.
 
       Log Analytics tablolarına göndermek için iş yüklerinize uygun çeşitli Günlükler seçebilirsiniz. Örneğin, SQL Server Integration Services (SSIS) hiç kullanmıyorsanız, herhangi bir SSIS günlüğü seçmeniz gerekir. SSIS Integration Runtime (IR) Başlat/Durdur/bakım işlemlerini günlüğe kaydetmek istiyorsanız SSIS IR günlüklerini seçebilirsiniz. SSIS paket yürütmelerini SQL Server Management Studio (SSMS), SQL Server Agent veya diğer belirlenmiş araçlar aracılığıyla çağırdığınızda, SSIS paket günlükleri ' ni seçebilirsiniz. ADF işlem hatlarında SSIS paketi yürütme etkinliklerini kullanarak SSIS paket yürütmelerini çağırırsanız, tüm Günlükler ' i seçebilirsiniz.
 
-    * _Allölçümler_ ' i SEÇERSENIZ, ADF etkinliğinin ölçümleri, işlem hattı ve tetikleyici ÇALıŞTıRMALARı ve SSIS IR IŞLEMLERI ve SSIS paket yürütmeleri dahil olmak üzere, üzerinde uyarı izlemeniz veya bunları uygulamanız IÇIN çeşitli ADF ölçümleri kullanılabilir hale getirilir.
+    * _Allölçümler_' i SEÇERSENIZ, ADF etkinliğinin ölçümleri, işlem hattı ve tetikleyici ÇALıŞTıRMALARı ve SSIS IR IŞLEMLERI ve SSIS paket yürütmeleri dahil olmak üzere, üzerinde uyarı izlemeniz veya bunları uygulamanız IÇIN çeşitli ADF ölçümleri kullanılabilir hale getirilir.
 
    ![Ayarlarınızı adlandırın ve bir Log Analytics çalışma alanı seçin](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
     > [!NOTE]
-    > Bir Azure günlük tablosunda 500 ' den fazla sütun olabileceğinden _kaynağa özgü mod_ ' u **seçmeniz önerilir.** Daha fazla bilgi için bkz. [Log Analytics bilinen sınırlamalar](../azure-monitor/platform/resource-logs.md#column-limit-in-azurediagnostics).
+    > Bir Azure günlük tablosunda 500 ' den fazla sütun olabileceğinden _kaynağa özgü mod_' u **seçmeniz önerilir.** Daha fazla bilgi için bkz. [Log Analytics bilinen sınırlamalar](../azure-monitor/platform/resource-logs.md#column-limit-in-azurediagnostics).
 
-1. **Kaydet** ’i seçin.
+1. **Kaydet**’i seçin.
 
 Birkaç dakika sonra, bu veri fabrikasının ayarları listenizde yeni ayar görüntülenir. Tanılama günlükleri, yeni olay verileri oluşturulmasıyla hemen bu çalışma alanına akışlardır. Bir olay yayınlandığınızda ve Log Analytics göründüğünde 15 dakikaya kadar zaman çıkabilir.
 
@@ -94,7 +94,7 @@ Bu çözüm, ayrıntıları ayrıntıya gitme ve beklenmeyen davranış desenler
 * Türe göre Veri Fabrikası etkinlik çalıştırmaları ile detaya gitme yeteneği
 * Data Factory üst işlem hattının Özeti, etkinlik hataları
 
-1. **Azure Marketi** ' ne gidin, **analiz** filtresi ' ni seçin ve **Azure Data Factory Analytics 'i arayın (Önizleme)**
+1. **Azure Marketi**' ne gidin, **analiz** filtresi ' ni seçin ve **Azure Data Factory Analytics 'i arayın (Önizleme)**
 
    !["Azure Marketi" ne gidin, "analiz filtresi" yazın ve "Azure Data Factory analiz (Önizleme") seçeneğini belirleyin.](media/data-factory-monitor-oms/monitor-oms-image3.png)
 
@@ -127,7 +127,7 @@ Bu çözümün yüklenmesi, seçilen Log Analytics çalışma alanının çalı�
 ![Veri Fabrikası tarafından çalıştırılan işlem hattının grafik gösterimi "](media/data-factory-monitor-oms/monitor-oms-image8.png)
 
 > [!NOTE]
-> Azure Data Factory Analytics (Önizleme), tanılama günlüklerini _kaynağa özgü_ hedef tablolarına gönderir. Şu tablolara yönelik sorgular yazabilirsiniz: _Adfardışık düzen eylemsizlik_ , _Adftriggerrun_ ve _adfactivityrun_ .
+> Azure Data Factory Analytics (Önizleme), tanılama günlüklerini _kaynağa özgü_ hedef tablolarına gönderir. Şu tablolara yönelik sorgular yazabilirsiniz: _Adfardışık düzen eylemsizlik_, _Adftriggerrun_ ve _adfactivityrun_.
 
 ## <a name="data-factory-metrics"></a>Data Factory ölçümleri
 
@@ -444,14 +444,14 @@ Daha fazla bilgi için bkz. [Tanılama ayarları](/rest/api/monitor/diagnosticse
 
 | Özellik | Tür | Açıklama | Örnek |
 | --- | --- | --- | --- |
-| **Düzeyde** |Dize | Tanılama günlüklerinin düzeyi. Etkinlik çalıştırma günlükleri için özellik değerini 4 olarak ayarlayın. | `4` |
+| **Level** |Dize | Tanılama günlüklerinin düzeyi. Etkinlik çalıştırma günlükleri için özellik değerini 4 olarak ayarlayın. | `4` |
 | **ID** |Dize | Belirli bir isteği izlemeye yönelik benzersiz KIMLIK. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| **time** | Dize | Zaman aralığı UTC biçimindeki olayın saati `YYYY-MM-DDTHH:MM:SS.00000Z` . | `2017-06-28T21:00:27.3534352Z` |
+| **ışınızda** | Dize | Zaman aralığı UTC biçimindeki olayın saati `YYYY-MM-DDTHH:MM:SS.00000Z` . | `2017-06-28T21:00:27.3534352Z` |
 |**Activityrunıd**| Dize| Etkinliğin çalıştırması KIMLIĞI. | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
 |**Ardışık düzen eylemsizlik kimliği**| Dize| İşlem hattı çalıştırmasının KIMLIĞI. | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
 |**RESOURCEID**| Dize | Data Factory kaynağıyla ilişkili KIMLIK. | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |**alan**| Dize | Tanılama günlüklerinin kategorisi. Özellik değerini olarak ayarlayın `ActivityRuns` . | `ActivityRuns` |
-|**düzey**| Dize | Tanılama günlüklerinin düzeyi. Özellik değerini olarak ayarlayın `Informational` . | `Informational` |
+|**düzeyde**| Dize | Tanılama günlüklerinin düzeyi. Özellik değerini olarak ayarlayın `Informational` . | `Informational` |
 |**operationName**| Dize | Etkinliğin durumuyla ilgili ad. Etkinlik başlangıç sinyalinise, özellik değeri olur `MyActivity -` . Etkinlik son sinyaldir ise, özellik değeri olur `MyActivity - Succeeded` . | `MyActivity - Succeeded` |
 |**Ardışık Düzen adı**| Dize | İşlem hattının adı. | `MyPipeline` |
 |**activityName**| Dize | Etkinliğin adı. | `MyActivity` |
@@ -490,13 +490,13 @@ Daha fazla bilgi için bkz. [Tanılama ayarları](/rest/api/monitor/diagnosticse
 
 | Özellik | Tür | Açıklama | Örnek |
 | --- | --- | --- | --- |
-| **Düzeyde** |Dize | Tanılama günlüklerinin düzeyi. Etkinlik çalıştırma günlükleri için özellik değerini 4 olarak ayarlayın. | `4` |
+| **Level** |Dize | Tanılama günlüklerinin düzeyi. Etkinlik çalıştırma günlükleri için özellik değerini 4 olarak ayarlayın. | `4` |
 | **ID** |Dize | Belirli bir isteği izlemeye yönelik benzersiz KIMLIK. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| **time** | Dize | Zaman aralığı UTC biçimindeki olayın saati `YYYY-MM-DDTHH:MM:SS.00000Z` . | `2017-06-28T21:00:27.3534352Z` |
+| **ışınızda** | Dize | Zaman aralığı UTC biçimindeki olayın saati `YYYY-MM-DDTHH:MM:SS.00000Z` . | `2017-06-28T21:00:27.3534352Z` |
 |**RunId**| Dize| İşlem hattı çalıştırmasının KIMLIĞI. | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
 |**RESOURCEID**| Dize | Data Factory kaynağıyla ilişkili KIMLIK. | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |**alan**| Dize | Tanılama günlüklerinin kategorisi. Özellik değerini olarak ayarlayın `PipelineRuns` . | `PipelineRuns` |
-|**düzey**| Dize | Tanılama günlüklerinin düzeyi. Özellik değerini olarak ayarlayın `Informational` . | `Informational` |
+|**düzeyde**| Dize | Tanılama günlüklerinin düzeyi. Özellik değerini olarak ayarlayın `Informational` . | `Informational` |
 |**operationName**| Dize | İşlem hattının, durumu ile birlikte adı. İşlem hattı çalıştırması tamamlandıktan sonra özellik değeri olur `Pipeline - Succeeded` . | `MyPipeline - Succeeded`. |
 |**Ardışık Düzen adı**| Dize | İşlem hattının adı. | `MyPipeline` |
 |**başından**| Dize | Etkinliğin Başlangıç saati, TimeSpan UTC biçiminde çalışır. | `2017-06-26T20:55:29.5007959Z`. |
@@ -533,13 +533,13 @@ Daha fazla bilgi için bkz. [Tanılama ayarları](/rest/api/monitor/diagnosticse
 
 | Özellik | Tür | Açıklama | Örnek |
 | --- | --- | --- | --- |
-| **Düzeyde** |Dize | Tanılama günlüklerinin düzeyi. Etkinlik çalıştırma günlükleri için özellik değerini 4 olarak ayarlayın. | `4` |
+| **Level** |Dize | Tanılama günlüklerinin düzeyi. Etkinlik çalıştırma günlükleri için özellik değerini 4 olarak ayarlayın. | `4` |
 | **ID** |Dize | Belirli bir isteği izlemeye yönelik benzersiz KIMLIK. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| **time** | Dize | Zaman aralığı UTC biçimindeki olayın saati `YYYY-MM-DDTHH:MM:SS.00000Z` . | `2017-06-28T21:00:27.3534352Z` |
+| **ışınızda** | Dize | Zaman aralığı UTC biçimindeki olayın saati `YYYY-MM-DDTHH:MM:SS.00000Z` . | `2017-06-28T21:00:27.3534352Z` |
 |**Triggerıd**| Dize| Tetikleyici çalıştırmasının KIMLIĞI. | `08587023010602533858661257311` |
 |**RESOURCEID**| Dize | Data Factory kaynağıyla ilişkili KIMLIK. | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |**alan**| Dize | Tanılama günlüklerinin kategorisi. Özellik değerini olarak ayarlayın `PipelineRuns` . | `PipelineRuns` |
-|**düzey**| Dize | Tanılama günlüklerinin düzeyi. Özellik değerini olarak ayarlayın `Informational` . | `Informational` |
+|**düzeyde**| Dize | Tanılama günlüklerinin düzeyi. Özellik değerini olarak ayarlayın `Informational` . | `Informational` |
 |**operationName**| Dize | Tetikleyicinin başarıyla tetikleyip tetiklenmediğini belirten, son durumu ile tetikleyicinin adı. Sinyal başarılı olduysa, özellik değeri olur `MyTrigger - Succeeded` . | `MyTrigger - Succeeded` |
 |**triggerName**| Dize | Tetikleyicinin adı. | `MyTrigger` |
 |**triggerType**| Dize | Tetikleyicinin türü. Olası özellik değerleri `Manual Trigger` ve ' dir `Schedule Trigger` . | `ScheduleTrigger` |
@@ -570,13 +570,13 @@ SSIS IR Başlat/Durdur/bakım işlemlerinin günlük öznitelikleri aşağıda v
 
 | Özellik                   | Tür   | Açıklama                                                   | Örnek                        |
 | -------------------------- | ------ | ------------------------------------------------------------- | ------------------------------ |
-| **time**                   | Dize | UTC biçiminde olay saati: `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
+| **ışınızda**                   | Dize | UTC biçiminde olay saati: `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | Dize | SSIS IR işleminizi adı                            | `Start/Stop/Maintenance` |
 | **alan**               | Dize | Tanılama günlükleri kategorisi                               | `SSISIntegrationRuntimeLogs` |
 | **ID**          | Dize | Belirli bir işlemi izlemeye yönelik benzersiz KIMLIK             | `f13b159b-515f-4885-9dfa-a664e949f785Deprovision0059035558` |
 | **dataFactoryName**        | Dize | ADF 'nizin adı                                          | `MyADFv2` |
 | **ıntegrationruntimename** | Dize | SSIS IR 'nizin adı                                      | `MySSISIR` |
-| **düzey**                  | Dize | Tanılama günlüklerinin düzeyi                                  | `Informational` |
+| **düzeyde**                  | Dize | Tanılama günlüklerinin düzeyi                                  | `Informational` |
 | **'ı**             | Dize | SSIS IR işleminin sonucu                          | `Started/InProgress/Succeeded/Failed` |
 | **İleti**                | Dize | SSIS IR işleminizi çıkış iletisi                  | `The stopping of your SSIS integration runtime has succeeded.` |
 | **RESOURCEID**             | Dize | ADF kaynağınızın benzersiz KIMLIĞI                            | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
@@ -610,13 +610,13 @@ SSIS IR 'niz üzerinde SSIS paket yürütmeleri tarafından oluşturulan olay il
 
 | Özellik                   | Tür   | Açıklama                                                          | Örnek                        |
 | -------------------------- | ------ | -------------------------------------------------------------------- | ------------------------------ |
-| **time**                   | Dize | UTC biçiminde olay saati: `YYYY-MM-DDTHH:MM:SS.00000Z`        | `2017-06-28T21:00:27.3534352Z` |
+| **ışınızda**                   | Dize | UTC biçiminde olay saati: `YYYY-MM-DDTHH:MM:SS.00000Z`        | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | Dize | Bu ayarı `YourSSISIRName-SSISPackageEventMessageContext`       | `mysqlmissisir-SSISPackageEventMessageContext` |
 | **alan**               | Dize | Tanılama günlükleri kategorisi                                      | `SSISPackageEventMessageContext` |
 | **ID**          | Dize | Belirli bir işlemi izlemeye yönelik benzersiz KIMLIK                    | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
 | **dataFactoryName**        | Dize | ADF 'nizin adı                                                 | `MyADFv2` |
 | **ıntegrationruntimename** | Dize | SSIS IR 'nizin adı                                             | `MySSISIR` |
-| **düzey**                  | Dize | Tanılama günlüklerinin düzeyi                                         | `Informational` |
+| **düzeyde**                  | Dize | Tanılama günlüklerinin düzeyi                                         | `Informational` |
 | **operationId**            | Dize | SSSıSDB 'de belirli bir işlemi izlemeye yönelik benzersiz KIMLIK          | `1` (1 SSSıSDB 'de **depolanmayan** ve T-SQL aracılığıyla çağrılan paketlerle ilgili işlemleri belirtir) |
 | **contextDepth**           | Dize | Olay iletisi bağlamınızın derinliği                              | `0` (0 paket yürütme başlamadan önce bağlamı belirtir, 1 hata oluştuğunda bağlamı belirtir ve bağlam hatadan daha fazla olduğunda artar) |
 | **packagePath**            | Dize | Olay iletisi bağlam kaynağınız olarak paket nesnesinin yolu      | `\Package` |
@@ -660,13 +660,13 @@ SSIS IR 'niz üzerinde SSIS paket yürütmeleri tarafından oluşturulan olay il
 
 | Özellik                   | Tür   | Açıklama                                                        | Örnek                        |
 | -------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
-| **time**                   | Dize | UTC biçiminde olay saati: `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
+| **ışınızda**                   | Dize | UTC biçiminde olay saati: `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | Dize | Bu ayarı `YourSSISIRName-SSISPackageEventMessages`           | `mysqlmissisir-SSISPackageEventMessages` |
 | **alan**               | Dize | Tanılama günlükleri kategorisi                                    | `SSISPackageEventMessages` |
 | **ID**          | Dize | Belirli bir işlemi izlemeye yönelik benzersiz KIMLIK                  | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
 | **dataFactoryName**        | Dize | ADF 'nizin adı                                               | `MyADFv2` |
 | **ıntegrationruntimename** | Dize | SSIS IR 'nizin adı                                           | `MySSISIR` |
-| **düzey**                  | Dize | Tanılama günlüklerinin düzeyi                                       | `Informational` |
+| **düzeyde**                  | Dize | Tanılama günlüklerinin düzeyi                                       | `Informational` |
 | **operationId**            | Dize | SSSıSDB 'de belirli bir işlemi izlemeye yönelik benzersiz KIMLIK        | `1` (1 SSSıSDB 'de **depolanmayan** ve T-SQL aracılığıyla çağrılan paketlerle ilgili işlemleri belirtir) |
 | **messageTime**            | Dize | Olay iletinizin UTC biçiminde oluşturulduğu zaman          | `2017-06-28T21:00:27.3534352Z` |
 | **messageType**            | Dize | Olay iletinizin türü                                     | `70`( [daha fazla ileti türüne](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)bakın) |
@@ -709,13 +709,13 @@ SSIS IR 'niz üzerinde SSIS paket yürütmeleri tarafından oluşturulan olay il
 
 | Özellik                   | Tür   | Açıklama                                                      | Örnek                        |
 | -------------------------- | ------ | ---------------------------------------------------------------- | ------------------------------ |
-| **time**                   | Dize | UTC biçiminde olay saati: `YYYY-MM-DDTHH:MM:SS.00000Z`    | `2017-06-28T21:00:27.3534352Z` |
+| **ışınızda**                   | Dize | UTC biçiminde olay saati: `YYYY-MM-DDTHH:MM:SS.00000Z`    | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | Dize | Bu ayarı `YourSSISIRName-SSISPackageExecutableStatistics`  | `mysqlmissisir-SSISPackageExecutableStatistics` |
 | **alan**               | Dize | Tanılama günlükleri kategorisi                                  | `SSISPackageExecutableStatistics` |
 | **ID**          | Dize | Belirli bir işlemi izlemeye yönelik benzersiz KIMLIK                | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
 | **dataFactoryName**        | Dize | ADF 'nizin adı                                             | `MyADFv2` |
 | **ıntegrationruntimename** | Dize | SSIS IR 'nizin adı                                         | `MySSISIR` |
-| **düzey**                  | Dize | Tanılama günlüklerinin düzeyi                                     | `Informational` |
+| **düzeyde**                  | Dize | Tanılama günlüklerinin düzeyi                                     | `Informational` |
 | **Yürütme**            | Dize | SSSıSDB 'de belirli bir yürütmeyi izlemeye yönelik benzersiz KIMLIK      | `1` (1 SSSıSDB 'de **depolanmayan** ve T-SQL aracılığıyla çağrılan paketlerle ilgili yürütmeleri belirtir) |
 | **executionPath**          | Dize | Ana paketten yürütülen bileşene tam yol          | `\Transformation\Data Flow Task` (Bu yol bileşen yinelemelerini de yakalar) |
 | **startTime**              | Dize | Yürütülebilir zaman, UTC biçiminde yürütme öncesi aşamasına giriyor  | `2017-06-28T21:00:27.3534352Z` |
@@ -754,13 +754,13 @@ SSIS IR 'niz üzerinde SSIS paket yürütmeleri tarafından oluşturulan veri ak
 
 | Özellik                   | Tür   | Açıklama                                                         | Örnek                        |
 | -------------------------- | ------ | ------------------------------------------------------------------- | ------------------------------ |
-| **time**                   | Dize | UTC biçiminde olay saati: `YYYY-MM-DDTHH:MM:SS.00000Z`       | `2017-06-28T21:00:27.3534352Z` |
+| **ışınızda**                   | Dize | UTC biçiminde olay saati: `YYYY-MM-DDTHH:MM:SS.00000Z`       | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | Dize | Bu ayarı `YourSSISIRName-SSISPackageExecutionComponentPhases` | `mysqlmissisir-SSISPackageExecutionComponentPhases` |
 | **alan**               | Dize | Tanılama günlükleri kategorisi                                     | `SSISPackageExecutionComponentPhases` |
 | **ID**          | Dize | Belirli bir işlemi izlemeye yönelik benzersiz KIMLIK                   | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
 | **dataFactoryName**        | Dize | ADF 'nizin adı                                                | `MyADFv2` |
 | **ıntegrationruntimename** | Dize | SSIS IR 'nizin adı                                            | `MySSISIR` |
-| **düzey**                  | Dize | Tanılama günlüklerinin düzeyi                                        | `Informational` |
+| **düzeyde**                  | Dize | Tanılama günlüklerinin düzeyi                                        | `Informational` |
 | **Yürütme**            | Dize | SSSıSDB 'de belirli bir yürütmeyi izlemeye yönelik benzersiz KIMLIK         | `1` (1 SSSıSDB 'de **depolanmayan** ve T-SQL aracılığıyla çağrılan paketlerle ilgili yürütmeleri belirtir) |
 | **PaketAdı**            | Dize | Yürütülen paket dosyanızın adı                              | `MyPackage.dtsx` |
 | **Silinecek**               | Dize | Yürütülen veri akışı görevinin adı                                 | `Data Flow Task` |
@@ -802,13 +802,13 @@ Veri akışı işlem hatlarında, SSIS IR 'niz üzerinde SSIS paket yürütmeler
 
 | Özellik                     | Tür   | Açıklama                                                        | Örnek                        |
 | ---------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
-| **time**                     | Dize | UTC biçiminde olay saati: `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
+| **ışınızda**                     | Dize | UTC biçiminde olay saati: `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**            | Dize | Bu ayarı `YourSSISIRName-SSISPackageExecutionDataStatistics` | `mysqlmissisir-SSISPackageExecutionDataStatistics` |
 | **alan**                 | Dize | Tanılama günlükleri kategorisi                                    | `SSISPackageExecutionDataStatistics` |
 | **ID**            | Dize | Belirli bir işlemi izlemeye yönelik benzersiz KIMLIK                  | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
 | **dataFactoryName**          | Dize | ADF 'nizin adı                                               | `MyADFv2` |
 | **ıntegrationruntimename**   | Dize | SSIS IR 'nizin adı                                           | `MySSISIR` |
-| **düzey**                    | Dize | Tanılama günlüklerinin düzeyi                                       | `Informational` |
+| **düzeyde**                    | Dize | Tanılama günlüklerinin düzeyi                                       | `Informational` |
 | **Yürütme**              | Dize | SSSıSDB 'de belirli bir yürütmeyi izlemeye yönelik benzersiz KIMLIK        | `1` (1 SSSıSDB 'de **depolanmayan** ve T-SQL aracılığıyla çağrılan paketlerle ilgili yürütmeleri belirtir) |
 | **PaketAdı**              | Dize | Yürütülen paket dosyanızın adı                             | `MyPackage.dtsx` |
 | **Silinecek**                 | Dize | Yürütülen veri akışı görevinin adı                                | `Data Flow Task` |
@@ -834,7 +834,7 @@ Log Analytics şemayı Izleyiciden aşağıdaki özel durumlarla devralır:
     | $. Properties. UserProperties | UserProperties | Dinamik |
     | $. Properties. Açıklamaları | Ek Açıklamalar | Dinamik |
     | $. Properties. Girişinin | Giriş | Dinamik |
-    | $. Properties. Çıktıların | Çıkış | Dinamik |
+    | $. Properties. Çıktıların | Çıktı | Dinamik |
     | $. Properties. Hata. errorCode | ErrorCode | int |
     | $. Properties. Hata. ileti | Hata | string |
     | $. Properties. Hatayla | Hata | Dinamik |

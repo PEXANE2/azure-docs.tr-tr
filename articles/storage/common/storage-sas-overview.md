@@ -10,12 +10,12 @@ ms.date: 11/20/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: cc3a2a1ee28ad3c1fdefad08c8ec133ad45cb408
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 118aaa368f48838a33d130d8dddc89bb8dce3f3e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435085"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498192"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Paylaşılan erişim imzalarını (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme
 
@@ -191,7 +191,7 @@ Paylaşılan erişim imzalarını kullanmaya başlamak için, her SAS türü iç
 
 ### <a name="service-sas"></a>Hizmet SAS
 
-- [.NET ile bir kapsayıcı veya blob için hizmet SAS oluşturma](../blobs/storage-blob-service-sas-create-dotnet.md)
+- [.NET ile bir kapsayıcı veya blob için hizmet SAS oluşturma](../blobs/sas-service-create.md)
 
 ### <a name="account-sas"></a>Hesap SAS
 

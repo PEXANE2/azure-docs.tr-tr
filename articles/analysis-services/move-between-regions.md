@@ -4,16 +4,16 @@ description: Bir Azure Analysis Services kaynağının farklı bir bölgeye nas�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: how-to
-ms.date: 06/09/2020
+ms.date: 12/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 1f7ecf960ae94fae4d829e73daf051b9062e478d
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 049ff6d14c3967481eb73037814082fa261154e3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018203"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497937"
 ---
 # <a name="move-analysis-services-to-a-different-region"></a>Analysis Services farklı bir bölgeye taşıma
 
@@ -48,7 +48,7 @@ Bir sunucuyu farklı bir bölgeye taşımadan önce ayrıntılı bir plan oluşt
 > [!NOTE]
 > Veri kaynaklarına bağlanmak için bir şirket içi veri ağ geçidi kullanıyorsanız, ağ geçidi kaynağını da hedef sunucu bölgesine taşımanız gerekir. Daha fazla bilgi edinmek için bkz. Şirket [içi veri ağ geçidini yükleyip yapılandırma](analysis-services-gateway-install.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - **Azure depolama hesabı**: bir. abf yedekleme dosyasını depolamak için gereklidir.
 - **SQL Server Management Studio (SSMS)**: model veritabanlarını yedeklemek ve geri yüklemek için gereklidir.
@@ -88,7 +88,7 @@ Depolama ayarları yapılandırıldığında, depolama kapsayıcıda bir model v
 
 Bir şablonu PowerShell kullanarak dışarı aktarmak için:
 
-1. [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) komutuyla Azure aboneliğinizde oturum açın ve ekrandaki yönergeleri izleyin:
+1. [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) komutuyla Azure aboneliğinizde oturum açın ve ekrandaki yönergeleri izleyin:
 
    ```azurepowershell-interactive
    Connect-AzAccount
@@ -177,7 +177,7 @@ Verdiğiniz dosyada template.jsdeğiştirmek için bir metin düzenleyicisi kull
 
 #### <a name="regions"></a>Bölgeler
 
-Azure bölgelerini almak için bkz. [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/). PowerShell kullanarak bölgeleri almak için [Get-AzLocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) komutunu çalıştırın.
+Azure bölgelerini almak için bkz. [Azure konumları](https://azure.microsoft.com/global-infrastructure/locations/). PowerShell kullanarak bölgeleri almak için [Get-AzLocation](/powershell/module/az.resources/get-azlocation) komutunu çalıştırın.
 
 ```azurepowershell-interactive
    Get-AzLocation | format-table 
@@ -191,19 +191,19 @@ Farklı bir bölgeye yeni bir sunucu kaynağı dağıtmak için, önceki bölüm
 
 1. Portalda **kaynak oluştur**' u seçin.
 
-2. **Market 'Te ara**' te, **şablon dağıtımı**yazın ve ardından **ENTER**tuşuna basın.
+2. **Market 'Te ara**' te, **şablon dağıtımı** yazın ve ardından **ENTER** tuşuna basın.
 
-3. **Şablon dağıtımı**seçin.
+3. **Şablon dağıtımı** seçin.
 
 4. **Oluştur**’u seçin.
 
-5. **Düzenleyicide kendi şablonunuzu oluşturun öğesini**seçin.
+5. **Düzenleyicide kendi şablonunuzu oluşturun öğesini** seçin.
 
 6. **Dosya Yükle**' yi seçin ve ardından, verdiğiniz ve değiştirdiğiniz dosyaya **template.js** yüklemek için yönergeleri izleyin.
 
 7. Şablon düzenleyicisinin yeni hedef sunucunuz için doğru özellikleri gösterdiğini doğrulayın.
 
-8. **Kaydet**'i seçin.
+8. **Kaydet**’i seçin.
 
 9. Özellik değerlerini girin veya seçin:
 
@@ -264,7 +264,7 @@ Model veritabanı. abf yedeklemesini yeni hedef sunucuya geri yüklemek için [g
 
 1. SSMS 'de model veritabanına > **Işlem veritabanı**' na sağ tıklayın.
 
-2. **Tablolar**' ı genişletin, bir tabloya sağ tıklayın. **İşlem**tabloları ' nda tüm tablolar ' ı seçin ve ardından **Tamam**' ı seçin.
+2. **Tablolar**' ı genişletin, bir tabloya sağ tıklayın. **İşlem** tabloları ' nda tüm tablolar ' ı seçin ve ardından **Tamam**' ı seçin.
 
 ## <a name="verify"></a>Doğrulama
 
@@ -278,7 +278,7 @@ Model veritabanı. abf yedeklemesini yeni hedef sunucuya geri yüklemek için [g
 
 İsteğe bağlı: [ALM araç seti](http://alm-toolkit.com/) , Power BI veri kümelerini karşılaştırmak ve yönetmek için *açık kaynak* bir araçtır *ve* tablosal model veritabanları Analysis Services. Hem kaynak hem de hedef sunucu veritabanlarına bağlanmak ve karşılaştırmak için araç setini kullanın. Veritabanı geçişiniz başarılı olursa model nesneleri aynı tanıma sahip olur. 
 
-:::image type="content" source="media/move-between-regions/alm-toolkit.png" alt-text="SAS alma":::
+:::image type="content" source="media/move-between-regions/alm-toolkit.png" alt-text="ALM Araç Seti":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

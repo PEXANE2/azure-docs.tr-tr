@@ -2,8 +2,8 @@
 title: Azure portal kullanarak bir işlem hattındaki dallanma ve zincirleme etkinlikleri
 description: Azure portal kullanarak Azure Data Factory işlem hattının veri akışını denetlemeyi öğrenin.
 services: data-factory
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: anandsub
 ms.reviewer: maghan
 ms.service: data-factory
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: b1b766e3cb337151c5ca9b35e2040a2a47124151
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc82cfdc4e5a063e7c5cb833b617da58023d1ba6
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91568534"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497461"
 ---
 # <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>Azure portal kullanarak Azure Data Factory işlem hattında dallanan ve zincirleme etkinlikleri
 
@@ -137,12 +137,12 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
      ![Yeni veri fabrikası sayfası](./media/tutorial-control-flow-portal/new-azure-data-factory.png)
 
-   Azure veri fabrikasının adı **genel olarak benzersiz**olmalıdır. Aşağıdaki hatayı alırsanız veri fabrikasının adını değiştirin (örneğin adınızADFTutorialDataFactory) ve oluşturmayı yeniden deneyin. Data Factory yapıtlarını adlandırma kuralları için [Data Factory - Adlandırma Kuralları](naming-rules.md) makalesine bakın.
+   Azure veri fabrikasının adı **genel olarak benzersiz** olmalıdır. Aşağıdaki hatayı alırsanız veri fabrikasının adını değiştirin (örneğin adınızADFTutorialDataFactory) ve oluşturmayı yeniden deneyin. Data Factory yapıtlarını adlandırma kuralları için [Data Factory - Adlandırma Kuralları](naming-rules.md) makalesine bakın.
 
    *"ADFTutorialDataFactory" Veri Fabrikası adı kullanılamıyor.*
 
 3. Veri fabrikasını oluşturmak istediğiniz Azure **aboneliğini** seçin.
-4. **Kaynak grubu**için aşağıdaki adımlardan birini yapın:
+4. **Kaynak grubu** için aşağıdaki adımlardan birini yapın:
 
       - **Var olanı kullan**’ı seçin ve ardından açılır listeden var olan bir kaynak grubu belirleyin.
       - **Yeni oluştur**’u seçin ve bir kaynak grubunun adını girin.   
@@ -151,7 +151,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 4. **Sürüm** için **V2**'yi seçin.
 5. Data factory için **konum** seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
 6. **Panoya sabitle**’yi seçin.     
-7. **Oluştur**’a tıklayın.      
+7. **Oluştur**'a tıklayın.      
 8. Panoda şu kutucuğu ve üzerinde şu durumu görürsünüz: **Veri fabrikası dağıtılıyor**.
 
     ![veri fabrikası dağıtılıyor kutucuğu](media/tutorial-control-flow-portal/deploying-data-factory.png)
@@ -282,7 +282,7 @@ Bu adımda, bir Kopyalama etkinliği ve iki Web etkinliği ile bir işlem hattı
     ![İşlem hattını doğrulama](./media/tutorial-control-flow-portal/validate-pipeline.png)
 24. Varlıkları (veri kümeleri, işlem hatları, vb.) Data Factory hizmetinde yayımlamak için **Tümünü Yayımla**’yı seçin. **Başarıyla yayımlandı** iletisini görene kadar bekleyin.
 
-    ![Yayımla](./media/tutorial-control-flow-portal/publish-button.png)
+    ![Yayımlama](./media/tutorial-control-flow-portal/publish-button.png)
 
 ## <a name="trigger-a-pipeline-run-that-succeeds"></a>Başarılı olan bir işlem hattı çalıştırması tetikleme
 1. Bir işlem hattı çalıştırması **tetiklemek** için araç çubuğunda **Tetikle** ' e tıklayın ve **Şimdi Tetikle**' ye tıklayın.
