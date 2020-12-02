@@ -3,12 +3,12 @@ title: Azure geçişi sunucu değerlendirmesi 'nde aracı tabanlı bağımlılı
 description: Bu makalede, Azure geçişi sunucu değerlendirmesi ' nde aracı tabanlı bağımlılık analizinin nasıl ayarlanacağı açıklanır.
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 58c1aeea00ae033def0f45d220c12d13cc28b4b2
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 1ab5d639d68b5ce2298f907ef8346488e16b4020
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302845"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483479"
 ---
 # <a name="set-up-dependency-visualization"></a>Bağımlılık görselleştirmesini ayarlama
 
@@ -21,7 +21,7 @@ Bu makalede, Azure geçişi: Sunucu değerlendirmesi ' nde aracı tabanlı bağ�
     - [Fiziksel sunucular](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)
     - [Hyper-V VM 'leri](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements).
 - Şunları yaptığınızdan emin olun:
-    - Bir Azure geçişi projesi vardır. Bunu yapmazsanız, şimdi bir tane [oluşturun](how-to-add-tool-first-time.md) .
+    - Bir Azure geçişi projesi vardır. Bunu yapmazsanız, şimdi bir tane [oluşturun](./create-manage-projects.md) .
     - Projeye Azure geçişi: Sunucu değerlendirmesi aracını [eklemişseniz](how-to-assess.md) ' i kontrol edin.
     - Şirket içi makineleri keşfetmeye yönelik bir [Azure geçiş](migrate-appliance.md) gereci ayarlayın. Gereç, şirket içi makineleri bulur ve Azure geçişi: Sunucu değerlendirmesi ' ne meta veri ve performans verileri gönderir. İçin bir gereç ayarlayın:
         - [VMware](how-to-set-up-appliance-vmware.md) VM 'ler.
@@ -147,7 +147,7 @@ Grubu oluşturduktan sonra gruptaki tüm makinelere aracılar yüklemenizi ve so
 Azure geçişi projesiyle ilişkili Log Analytics çalışma alanındaki Hizmet Eşlemesi tarafından yakalanan bağımlılık verilerini sorgulayabilirsiniz. Log Analytics, Azure Izleyici günlük sorgularını yazmak ve çalıştırmak için kullanılır.
 
 - Log Analytics Hizmet Eşlemesi verileri aramanızı [öğrenin](../azure-monitor/insights/service-map.md#log-analytics-records) .
-- [Log Analytics](../azure-monitor/log-query/get-started-portal.md)günlük sorgularının yazılmasına ilişkin [bir genel bakış alın](../azure-monitor/log-query/get-started-queries.md) .
+- [Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md)günlük sorgularının yazılmasına ilişkin [bir genel bakış alın](../azure-monitor/log-query/get-started-queries.md) .
 
 Bağımlılık verileri için aşağıdaki gibi bir sorgu çalıştırın:
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: ee7cc1c81bd35bf2b51c712c3a60a046435ee700
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0c2deb1ae1d41f8daaed8856f97c4b458930c616
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951293"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484388"
 ---
 # <a name="sap-businessobjects-bi-platform-planning-and-implementation-guide-on-azure"></a>Azure’da SAP BusinessObjects İş Zekası platformu planlama ve uygulama kılavuzu
 
@@ -267,4 +267,4 @@ Hizmet olarak veritabanı teklifi için, tüm yeni oluşturulan veritabanları (
 - [Linux üzerinde SAP BusinessObjects bı platform dağıtımı](businessobjects-deployment-guide-linux.md)
 - [SAP için Azure sanal makineleri planlama ve uygulama](planning-guide.md)
 - [SAP için Azure sanal makineleri dağıtımı](deployment-guide.md)
-- [SAP için Azure sanal makineleri DBMS dağıtımı](dbms-guide.md)
+- [SAP için Azure sanal makineleri DBMS dağıtımı](./dbms_guide_general.md)

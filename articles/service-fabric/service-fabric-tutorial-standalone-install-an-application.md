@@ -4,12 +4,12 @@ description: Bu öğreticide, tek başına Service Fabric kümenize bir uygulama
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 0b35bd02af5e1c90cac2e94d31dfca2344f3cc85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ae946321b34f12c816a717db4a3d07f57feefe52
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840634"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485369"
 ---
 # <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>Öğretici: Service Fabric tek başına kümenize uygulama dağıtma
 
@@ -17,7 +17,7 @@ Service Fabric tek başına kümeleri, kendi ortamınızı seçme ve Service Fab
 
 Bu öğretici, bir serinin üçüncü bölümüdür.  Tek başına kümeler Service Fabric kendi ortamınızı seçme ve "tüm işletim sistemi, herhangi bir bulut" Service Fabric yaklaşımızın parçası olarak bir küme oluşturma seçeneğini sunar. Bu öğreticide, bu tek başına kümeyi barındırmak için gereken AWS altyapısını oluşturma işlemi gösterilmektedir.
 
-Bu makalede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
+Bu makalede şunları yapmayı öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Örnek uygulamayı indirme
@@ -50,7 +50,7 @@ Uygulama indirildikten sonra, doğrudan Visual Studio'dan bir kümeye dağıtabi
 
 4. `Voting`Çözüm Gezgini uygulama projesine sağ tıklayın ve **Yayımla** ' yı seçin.
 
-5. **Bağlantı Uç Noktası** açılır listesini seçin ve kümenizdeki düğümlerden birinin genel DNS Adını girin.  Örneğin, `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`. Azure 'da tam etki alanı adı (FQDN) otomatik olarak verilmez, ancak [VM 'ye Genel Bakış sayfasında kolayca ayarlanabilir.](../virtual-machines/linux/portal-create-fqdn.md)
+5. **Bağlantı Uç Noktası** açılır listesini seçin ve kümenizdeki düğümlerden birinin genel DNS Adını girin.  Örneğin, `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`. Azure 'da tam etki alanı adı (FQDN) otomatik olarak verilmez, ancak [VM 'ye Genel Bakış sayfasında kolayca ayarlanabilir.](../virtual-machines/create-fqdn.md)
 
 6. Tercih ettiğiniz tarayıcıyı açın ve küme adresini girin (bu uygulamanın 8080 numaralı bağlantı noktasında dağıttığı bağlantı uç noktası - örneğin, ec2-34-215-183-77.us-west-2.compute.amazonaws.com:8080).
 

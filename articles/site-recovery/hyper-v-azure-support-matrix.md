@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: 53967ab0bec9488691ff60cdabb8fedbb6b9730e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7466f037f0a39b67023b9ebcc27c2e19b27f42ab
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87386716"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485272"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Şirket içi Hyper-V VM 'lerinin Azure 'a olağanüstü durum kurtarması için destek matrisi
 
@@ -124,7 +124,7 @@ Dinamik disk Ekle/Kaldır | Hayır | Hayır
 Diski hariç tutma | Evet | Evet
 Çoklu yol (MPIO) | Evet | Evet
 
-## <a name="azure-storage"></a>Azure Storage
+## <a name="azure-storage"></a>Azure Depolama
 
 **Bileşen** | **Virtual Machine Manager ile Hyper-V** | **Virtual Machine Manager olmadan Hyper-V**
 --- | --- | ---
@@ -136,7 +136,7 @@ Sık erişimli depolama| Hayır | Hayır
 Blok blobları | Hayır | Hayır
 Bekleyen şifreleme (SSE)| Evet | Evet
 Bekleyen şifreleme (CMK) <br></br> (Yalnızca yönetilen disklere yük devretme için)| Evet (PowerShell aracılığıyla az 3.3.0 Module onödüller) | Evet (PowerShell aracılığıyla az 3.3.0 Module onödüller)
-Rest 'te Çift şifreleme <br></br> (Yalnızca yönetilen disklere yük devretme için) <br></br> [Windows](../virtual-machines/windows/disk-encryption.md) ve [Linux](../virtual-machines/linux/disk-encryption.md) için desteklenen bölgeler hakkında daha fazla bilgi edinin | Evet (PowerShell aracılığıyla az 3.3.0 Module onödüller) | Evet (PowerShell aracılığıyla az 3.3.0 Module onödüller)
+Rest 'te Çift şifreleme <br></br> (Yalnızca yönetilen disklere yük devretme için) <br></br> [Windows](../virtual-machines/disk-encryption.md) ve [Linux](../virtual-machines/disk-encryption.md) için desteklenen bölgeler hakkında daha fazla bilgi edinin | Evet (PowerShell aracılığıyla az 3.3.0 Module onödüller) | Evet (PowerShell aracılığıyla az 3.3.0 Module onödüller)
 Premium depolama | Evet | Evet
 Standart depolama | Evet | Evet
 İçeri/dışarı aktarma hizmeti | Hayır | Hayır

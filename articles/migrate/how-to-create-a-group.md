@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: hamusa
-ms.openlocfilehash: 867124a08bbad88b7dac5386ee6bc1c9c4d99c12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 420259929afc50b2884bf075212402d80b6b52f4
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85549908"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483547"
 ---
 # <a name="create-a-group-for-assessment"></a>Değerlendirme için bir grup oluşturma
 
@@ -37,7 +37,7 @@ Bir değerlendirme oluşturma dışında el ile bir grup oluşturmak istiyorsan�
 
 1. Azure geçişi projesi > **genel bakış**' da, **sunucuları değerlendir ve geçir**' e tıklayın. **Azure geçişi: Sunucu değerlendirmesi**' nde, **gruplar** ' a tıklayın.
     - Henüz Azure geçişi: Sunucu değerlendirmesi aracını eklemediyseniz, eklemek için tıklayın. [Daha fazla bilgi edinin](how-to-assess.md).
-    - Henüz bir Azure geçişi projesi oluşturmadıysanız [daha fazla bilgi edinin](how-to-add-tool-first-time.md).
+    - Henüz bir Azure geçişi projesi oluşturmadıysanız [daha fazla bilgi edinin](./create-manage-projects.md).
 
     ![Grupları seçin](./media/how-to-create-a-group/select-groups.png)
 
@@ -89,4 +89,3 @@ Zaten [bağımlılık eşlemeyi ayarladıysanız](how-to-create-group-machine-de
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Yüksek güvenilirlikli gruplar oluşturmak için [bağımlılık eşlemeyi](how-to-create-group-machine-dependencies.md) ayarlamayı ve kullanmayı öğrenin.
-

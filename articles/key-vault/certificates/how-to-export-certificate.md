@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: e7ea3ef16b60e53450436bda66ce3dde091c81c2
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 4339e8217702e9f25877bc8c250b5363e2c59a42
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289553"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483704"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>Sertifikaları Azure Key Vault dışarı aktarma
 
@@ -33,7 +33,7 @@ Bir Key Vault sertifikası oluşturulduğunda, aynı ada sahip bir adreslenebili
 
 Bir Key Vault sertifikası oluşturulduktan sonra, özel anahtarla adreslenebilir gizli alanından alabilirsiniz. PFX veya pek biçimindeki sertifikayı alın.
 
-- **Dışarı aktarılabilir** : sertifikayı oluşturmak için kullanılan ilke, anahtarın dışarı aktarılabilir olduğunu gösterir.
+- **Dışarı aktarılabilir**: sertifikayı oluşturmak için kullanılan ilke, anahtarın dışarı aktarılabilir olduğunu gösterir.
 - **Dışarı aktarılabilir** değil: sertifikayı oluşturmak için kullanılan ilke, anahtarın dışarı aktarılamaz olduğunu gösterir. Bu durumda, özel anahtar bir gizli dizi olarak alındığında değerin bir parçası değildir.
 
 Desteklenen KeyTypes: RSA, RSA-HSM, EC, EC-HSM, Eki ( [burada](/rest/api/keyvault/createcertificate/createcertificate#jsonwebkeytype)listelenen) dışarı AKTARıLABILIR yalnızca RSA, EC ile kullanılabilir. HSM anahtarları dışarı aktarılabilir değildir.
@@ -79,11 +79,11 @@ Daha fazla bilgi için bkz. [parametre tanımları](/cli/azure/keyvault/secret?v
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-**ContosoKV01** adlı anahtar kasasından **TestCert01** adlı sertifikayı almak için Azure PowerShell ' de bu komutu kullanın. Sertifikayı PFX dosyası olarak indirmek için aşağıdaki komutu çalıştırın. Bu komutlar **Secretıd** 'ye erişir ve sonra IÇERIĞI bir PFX dosyası olarak kaydeder.
+**ContosoKV01** adlı anahtar kasasından **TestCert01** adlı sertifikayı almak için Azure PowerShell ' de bu komutu kullanın. Sertifikayı PFX dosyası olarak indirmek için aşağıdaki komutu çalıştırın. Bu komutlar **Secretıd**'ye erişir ve sonra IÇERIĞI bir PFX dosyası olarak kaydeder.
 
 ```azurepowershell
 $cert = Get-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01"
-$secret = Get-AzKeyVaultSecret -VaultName $vaultName -Name $cert.Name
+$secret = Get-AzKeyVaultSecret -VaultName "ContosoKV01" -Name $cert.Name
 $secretValueText = '';
 $ssPtr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($secret.SecretValue)
 try {
@@ -108,7 +108,7 @@ Bu komut, tüm sertifika zincirini özel anahtarla dışa aktarır. Sertifika, p
 
 Azure portal sertifika dikey penceresinde bir sertifikayı oluşturduktan/içeri aktardıktan sonra **, sertifikanın başarıyla** oluşturulduğunu belirten bir bildirim alırsınız. İndirme seçeneğini görmek için sertifikayı ve geçerli sürümü seçin.
 
-Sertifikayı indirmek için, **cer biçiminde indir** veya **PFX/ped biçiminde indir** ' i seçin.
+Sertifikayı indirmek için, **cer biçiminde indir** veya **PFX/ped biçiminde indir**' i seçin.
 
 ![Sertifika indirme](../media/certificates/quick-create-portal/current-version-shown.png)
 

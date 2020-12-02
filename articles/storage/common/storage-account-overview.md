@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: fc44b7a49785a24460ea11f07e5248b266f5dfad
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 7008cfcdeb4615b42839f92a6df71357f9acf911
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793016"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485000"
 ---
 # <a name="storage-account-overview"></a>Depolama hesabına genel bakış
 
@@ -138,7 +138,7 @@ Depolama hesabı, Azure 'da verileriniz için benzersiz bir ad alanı sağlar. A
 > [!NOTE]
 > Blok Blobu ve BLOB depolama hesapları yalnızca blob hizmeti uç noktasını kullanıma sunar.
 
-Depolama hesabındaki nesnenin konumunu uç noktaya ekleyerek bir depolama hesabındaki bir nesneye erişmek için URL oluşturun. Örneğin bir blob adresi şu biçimde olabilir: http:// *mystorageaccount* .blob.core.windows.net/ *mycontainer*/*myblob* .
+Depolama hesabındaki nesnenin konumunu uç noktaya ekleyerek bir depolama hesabındaki bir nesneye erişmek için URL oluşturun. Örneğin bir blob adresi şu biçimde olabilir: http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*.
 
 Ayrıca, depolama hesabınızı Bloblar için özel bir etki alanı kullanacak şekilde yapılandırabilirsiniz. Daha fazla bilgi için bkz. [Azure depolama hesabınız için özel etki alanı adı yapılandırma](../blobs/storage-custom-domain-name.md).  
 
@@ -167,7 +167,7 @@ Genel amaçlı v1 veya blob depolama hesabından genel amaçlı bir v2 hesabına
 
 ### <a name="azcopy"></a>AzCopy
 
-AzCopy, verilerin Azure Storage’a ve Azure Storage’dan yüksek performansla kopyalanması için tasarlanmış bir Windows komut satırı yardımcı programıdır. AzCopy komutunu, mevcut bir genel amaçlı depolama hesabından bir BLOB depolama hesabına kopyalamak veya şirket içi depolama cihazlarından verileri karşıya yüklemek için kullanabilirsiniz. Daha fazla bilgi için bkz. [AzCopy Komut Satırı Yardımcı Programı ile Veri Aktarma](./storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json).
+AzCopy, verilerin Azure Storage’a ve Azure Storage’dan yüksek performansla kopyalanması için tasarlanmış bir Windows komut satırı yardımcı programıdır. AzCopy komutunu, mevcut bir genel amaçlı depolama hesabından bir BLOB depolama hesabına kopyalamak veya şirket içi depolama cihazlarından verileri karşıya yüklemek için kullanabilirsiniz. Daha fazla bilgi için bkz. [AzCopy Komut Satırı Yardımcı Programı ile Veri Aktarma](./storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ### <a name="data-movement-library"></a>Veri hareketi kitaplığı
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 11/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b8b8d100eb2ff16e8f8b7a734ad493ed4faddd33
-ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
+ms.openlocfilehash: 8c4aa608e892867daaf954284a9dfce997a9ae1f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96299539"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484286"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure sanal makine depolama alanı yapılandırmaları
 
@@ -112,7 +112,7 @@ Bir dizi kümesi altındaki birçok Azure VHD birikimini, ıOPS ve depolama alan
 
 
 ### <a name="azure-burst-functionality-for-premium-storage"></a>Premium Depolama için Azure patlama işlevselliği
-Kapasiteye göre 512 GiB 'ye eşit veya daha küçük Azure Premium depolama diskleri için patlama işlevselliği sunulur. Disk patlaması 'nın nasıl çalıştığına tam olarak, [disk buralma](../../linux/disk-bursting.md)makalesinde açıklanmaktadır. Makaleyi okurken, ıOPS ve aktarım hızı için g/ç iş yükünüzün, disklerin nominal ıOPS ve aktarım hızı altında olduğu durumlarda (nominal aktarım hızı ile ilgili ayrıntılar için bkz. [yönetilen disk fiyatlandırması](https://azure.microsoft.com/pricing/details/managed-disks/)) tahakkuk etme kavramını anlamış olursunuz. Geçerli kullanımınız ile diskin nominal değerleri arasındaki ıOPS ve aktarım hızı Delta değerini tahakkuk eteceğiz. Artışlarıyla, en fazla 30 dakika ile sınırlıdır.
+Kapasiteye göre 512 GiB 'ye eşit veya daha küçük Azure Premium depolama diskleri için patlama işlevselliği sunulur. Disk patlaması 'nın nasıl çalıştığına tam olarak, [disk buralma](../../disk-bursting.md)makalesinde açıklanmaktadır. Makaleyi okurken, ıOPS ve aktarım hızı için g/ç iş yükünüzün, disklerin nominal ıOPS ve aktarım hızı altında olduğu durumlarda (nominal aktarım hızı ile ilgili ayrıntılar için bkz. [yönetilen disk fiyatlandırması](https://azure.microsoft.com/pricing/details/managed-disks/)) tahakkuk etme kavramını anlamış olursunuz. Geçerli kullanımınız ile diskin nominal değerleri arasındaki ıOPS ve aktarım hızı Delta değerini tahakkuk eteceğiz. Artışlarıyla, en fazla 30 dakika ile sınırlıdır.
 
 Bu veri bloğu işlevinin planlanabilecek ideal durumlar, büyük olasılıkla farklı DBMS için veri dosyaları içeren birimler veya diskler olacaktır. Özellikle küçük ve orta ölçekli sistemlerle bu birimlere karşı beklenen g/ç iş yükü, şöyle görünmelidir:
 
@@ -134,7 +134,7 @@ Bu veri bloğu işlevinin planlanabilecek ideal durumlar, büyük olasılıkla f
 > Azure n serisi sanal makineler için SAP HANA sertifikası, **/Hana/log** birimi Için yalnızca Azure yazma Hızlandırıcısı. Sonuç olarak, Azure n serisi sanal makinelerdeki dağıtım SAP HANA dağıtımları, **/Hana/log** birimi için Azure yazma hızlandırıcısı ile yapılandırılmalıdır.  
 
 > [!NOTE]
-> Azure Premium Depolama 'yı içeren senaryolarda, yapılandırmaya veri bloğu özelliklerini uygulamamız gerekir. Herhangi bir şekil veya form için depolama testi araçları kullanırken, [Azure Premium disk](../../linux/disk-bursting.md) patlaması 'nın göz önünde bulundurularak çalışmasına dikkat edin. SAP HWCCT veya HCMT aracı aracılığıyla teslim edilen depolama testlerini çalıştırmak, testlerin bazıları birikerek topladığınız kredisi aşacağından tüm testlerin ölçütleri geçitireceğiz. Özellikle, tüm testler kesme olmadan sırayla çalışır.
+> Azure Premium Depolama 'yı içeren senaryolarda, yapılandırmaya veri bloğu özelliklerini uygulamamız gerekir. Herhangi bir şekil veya form için depolama testi araçları kullanırken, [Azure Premium disk](../../disk-bursting.md) patlaması 'nın göz önünde bulundurularak çalışmasına dikkat edin. SAP HWCCT veya HCMT aracı aracılığıyla teslim edilen depolama testlerini çalıştırmak, testlerin bazıları birikerek topladığınız kredisi aşacağından tüm testlerin ölçütleri geçitireceğiz. Özellikle, tüm testler kesme olmadan sırayla çalışır.
 
 
 > [!NOTE]
@@ -311,6 +311,6 @@ SAP ile sertifikalı olmayan ve bu nedenle [SAP HANA donanım dizininde](https:/
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Daha fazla bilgi için bkz:
+Daha fazla bilgi için bkz.
 
 - [Azure sanal makineleri Için yüksek kullanılabilirlik kılavuzu SAP HANA](./sap-hana-availability-overview.md).

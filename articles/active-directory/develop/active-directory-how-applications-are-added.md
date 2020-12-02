@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 11/26/2019
+ms.date: 12/01/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: bccdb830fba4d55266dc9eff8f06c5ac4e3f2a34
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e37065e6fa61f3784d1a6165bd88c515bdfc29f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90706192"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484116"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Azure AD 'ye uygulamaların nasıl ve neden eklendiği
 
@@ -105,7 +105,7 @@ Kendinize eklediğiniz uygulamalar (diyagramda **uygulama (sizinkiler)** olarak 
   * Öznitelik eşlemeleri (Kullanıcı hazırlama)
 * Hizmet sorumlusu ve uygulama nesneleri hakkında daha ayrıntılı bilgi için bkz. Microsoft Graph API başvuru belgeleri:
   * [Uygulama](/graph/api/resources/application?view=graph-rest-1.0)
-  * [Hizmet Sorumlusu](/graph/api/resources/serviceprincipal?view=graph-rest-beta)
+  * [Hizmet sorumlusu](/graph/api/resources/serviceprincipal?view=graph-rest-beta)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>Uygulamalar neden Azure AD ile tümleştirçalışıyor?
 
@@ -118,6 +118,7 @@ Uygulamalar, aşağıdakileri içeren bir veya daha fazla hizmetten yararlanmak 
 * Rol tabanlı erişim denetimi-bir uygulamada rol tabanlı yetkilendirme denetimleri gerçekleştirmek için uygulama rollerini tanımlamak üzere dizini kullanın
 * OAuth yetkilendirme Hizmetleri-API/kaynaklara erişim yetkisi vermek için Microsoft 365 ve diğer Microsoft uygulamaları tarafından kullanılır
 * Uygulama yayımlama ve proxy-özel bir ağdan internet 'e uygulama yayımlama
+* Dizin şeması uzantı öznitelikleri-Azure AD 'de ek verileri depolamak için [hizmet sorumlusu ve Kullanıcı nesnelerinin şemasını genişletme](active-directory-schema-extensions.md) 
 
 ## <a name="who-has-permission-to-add-applications-to-my-azure-ad-instance"></a>Azure AD örneğinize uygulama ekleme izni var mı?
 

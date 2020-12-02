@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 2/1/2019
 ms.author: ripohane
 ms.reviewer: dineshm
-ms.openlocfilehash: 0de8d8d5ff0f14d0268dbcca743f4d06ed877903
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 331ceb6124463604989116ce84bc73acd8cfb22f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544403"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483258"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>Blob depolamayı blobsigortası ile dosya sistemi olarak bağlama
 
@@ -30,7 +30,7 @@ Bu kılavuzda, blobsigortası kullanma ve Linux üzerinde bir BLOB depolama kaps
 ## <a name="install-blobfuse-on-linux"></a>Linux 'ta blobsigortası 'yi yükler
 Blobsigortası ikilileri, Ubuntu ve RHEL dağıtımları için [Linux Için Microsoft yazılım depoları](/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software) 'nda bulunur. Bu dağıtımlara blobsigortası yüklemek için, listeden depolardan birini yapılandırın. Ayrıca, dağıtım için bir ikili dosya yoksa, [Azure depolama yükleme adımlarını](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source) izleyerek kaynak koddan ikili dosyaları da oluşturabilirsiniz.
 
-Blobsigortası, Ubuntu 14,04, 16,04 ve 18,04 üzerine yüklemeyi destekler. Dağıtılan sürümlerden birine sahip olduğunuzdan emin olmak için bu komutu çalıştırın:
+Blobsigortası, Ubuntu 14,04, 16,04, 18,04 ve 20,04 üzerine yüklemeyi destekler. Dağıtılan sürümlerden birine sahip olduğunuzdan emin olmak için bu komutu çalıştırın:
 ```
 lsb_release -a
 ```

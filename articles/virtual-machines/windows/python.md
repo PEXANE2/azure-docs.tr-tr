@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/22/2017
 ms.author: cynthn
 ms.custom: devx-track-python
-ms.openlocfilehash: 402a61b4b5335c19d75cd1182243783453a0e7fa
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a7117d30eb1774753f21e82ad5f812a7309d8386
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91974864"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483105"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Python kullanarak Azure 'da Windows VM 'Leri oluşturma ve yönetme
 
@@ -38,8 +38,8 @@ Bu adımların uygulanması yaklaşık 20 dakika sürer.
 
 ## <a name="install-packages"></a>Paketleri yükler
 
-1. Çözüm Gezgini, *Mypyıthonproject*altında, **Python ortamları**' na sağ tıklayın ve ardından **sanal ortam ekle**' yi seçin.
-2. Sanal ortam ekle ekranında, varsayılan *env*adını kabul edin, temel yorumlayıcı için *Python 3,6 (64-bit)* ' in seçildiğinden emin olun ve ardından **Oluştur**' a tıklayın.
+1. Çözüm Gezgini, *Mypyıthonproject* altında, **Python ortamları**' na sağ tıklayın ve ardından **sanal ortam ekle**' yi seçin.
+2. Sanal ortam ekle ekranında, varsayılan *env* adını kabul edin, temel yorumlayıcı için *Python 3,6 (64-bit)* ' in seçildiğinden emin olun ve ardından **Oluştur**' a tıklayın.
 3. Oluşturduğunuz *env* ortamına sağ tıklayın, **Python paketini yükler**' e tıklayın, arama kutusuna *Azure* girin ve ardından ENTER tuşuna basın.
 
 Çıkış penceresinde Azure paketlerinin başarıyla yüklendiğini görmeniz gerekir. 
@@ -88,7 +88,7 @@ Bu adıma başlamadan önce bir [Active Directory Hizmet sorumlusuna](../../acti
         return credentials
     ```
 
-    **Uygulama kimliği**, **kimlik doğrulama anahtarı**ve **kiracı kimliği** ' ni, Azure Active Directory hizmet sorumlunuzu oluştururken daha önce topladığınız değerlerle değiştirin.
+    **Uygulama kimliği**, **kimlik doğrulama anahtarı** ve **kiracı kimliği** ' ni, Azure Active Directory hizmet sorumlunuzu oluştururken daha önce topladığınız değerlerle değiştirin.
 
 5. Daha önce eklediğiniz işlevi çağırmak için, bu kodu. Kopyala dosyasının sonundaki **IF** ifadesinin altına ekleyin:
 
@@ -492,7 +492,7 @@ Dağıtımın birçok yönü, sanal makineniz için bir boyuta karar verirken g�
 
 ### <a name="add-a-data-disk-to-the-vm"></a>VM’ye veri diski ekleme
 
-Sanal makinelerde VHD olarak depolanan bir veya daha fazla [veri diski](../managed-disks-overview.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) olabilir.
+Sanal makinelerde VHD olarak depolanan bir veya daha fazla [veri diski](../managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) olabilir.
 
 1. Sanal makineye bir veri diski eklemek için,. Kopyala dosyasındaki değişkenlerden sonra bu işlevi ekleyin: 
 
@@ -553,7 +553,7 @@ Azure 'da kullanılan kaynaklar için ücretlendirildiğiniz için, artık gerek
     delete_resources(resource_group_client)
     ```
 
-3. *MyPythonProject.py*Kaydet.
+3. *MyPythonProject.py* Kaydet.
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 

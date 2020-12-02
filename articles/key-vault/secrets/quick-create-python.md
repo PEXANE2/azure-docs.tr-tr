@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 7fe5b8da0b6dfa69d04a5ad152aa34a8686d854f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 68c58769302bbefd29b483a8fda225201d242dd9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786114"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483653"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-python"></a>Hızlı başlangıç: Python için Azure Key Vault gizli istemci kitaplığı
 
@@ -21,7 +21,7 @@ Python için Azure Key Vault gizli istemci kitaplığı ile çalışmaya başlay
 
 [API başvuru belgeleri](/python/api/overview/azure/keyvault-secrets-readme)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-secrets)  |  [Paket (Python paket dizini)](https://pypi.org/project/azure-keyvault-secrets/)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Python 2.7 + veya 3.5.3 +](/azure/developer/python/configure-local-development-environment)
@@ -54,7 +54,7 @@ Bu hızlı başlangıç, Azure 'da kullanıcının kimliğini doğrulamak için 
 1. Azure Active Directory Identity Library 'yi yükler:
 
     ```terminal
-    pip install azure.identity
+    pip install azure-identity
     ```
 
 

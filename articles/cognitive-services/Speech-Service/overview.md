@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 11/23/2020
 ms.author: trbye
-ms.openlocfilehash: 291ac7804109b098b556e38c57ca493ba74f1b14
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3b20773de62f036b507f1612f2b38d613d54ba2f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183115"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485204"
 ---
 # <a name="what-is-the-speech-service"></a>Konuşma tanıma hizmeti nedir?
 
@@ -49,7 +49,7 @@ Aşağıdaki adımlar için hem Microsoft hesabı hem de bir Azure hesabınızı
 Microsoft hesabı aldıktan sonra [Azure kaydolma sayfasına](https://azure.microsoft.com/free/ai/)gidin, **ücretsiz Başlat**' ı seçin ve Microsoft hesabı kullanarak yeni bir Azure hesabı oluşturun. [Azure Ücretsiz hesabına kaydolma hakkında](https://www.youtube.com/watch?v=GWT2R1C_uUU)bir video aşağıda verilmiştir.
 
 > [!NOTE]
-> Ücretsiz bir Azure hesabı için kaydolduğunuzda, 30 güne kadar geçerli olan ücretli bir konuşma hizmeti aboneliğine uygulayabileceğiniz hizmet kredisi $200 ile gelir. Krediniz 30 gün sonunda çalıştırıldığında veya sona erdiğinde Azure hizmetleriniz devre dışı bırakılır. Azure hizmetlerini kullanmaya devam etmek için hesabınızı yükseltmeniz gerekir. Daha fazla bilgi için bkz. [Azure ücretsiz hesabınızı yükseltme](https://docs.microsoft.com/azure/cost-management-billing/manage/upgrade-azure-subscription). 
+> Ücretsiz bir Azure hesabı için kaydolduğunuzda, 30 güne kadar geçerli olan ücretli bir konuşma hizmeti aboneliğine uygulayabileceğiniz hizmet kredisi $200 ile gelir. Krediniz 30 gün sonunda çalıştırıldığında veya sona erdiğinde Azure hizmetleriniz devre dışı bırakılır. Azure hizmetlerini kullanmaya devam etmek için hesabınızı yükseltmeniz gerekir. Daha fazla bilgi için bkz. [Azure ücretsiz hesabınızı yükseltme](../../cost-management-billing/manage/upgrade-azure-subscription.md). 
 >
 > Konuşma hizmetinde iki hizmet katmanı vardır: ücretsiz (F0) ve abonelik (S0), farklı sınırlamalara ve avantajlara sahiptir. Ücretsiz, düşük hacimli konuşma hizmeti katmanını kullanıyorsanız, ücretsiz deneme veya hizmet kredinizin süresi dolduktan sonra bile bu ücretsiz aboneliği koruyabilirsiniz. Daha fazla bilgi için bkz. bilişsel [Hizmetler fiyatlandırması-konuşma hizmeti](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
@@ -70,8 +70,8 @@ Azure hesabınıza bir konuşma hizmeti kaynağı (ücretsiz veya ücretli katma
 1. **Oluştur**' u seçin, sonra:
 
    - Yeni kaynağınız için benzersiz bir ad verin. Ad, aynı hizmete bağlı birden çok abonelik arasında ayrım yapmanıza yardımcı olur.
-   - Ücretlerin nasıl faturalandırıldığını belirlemek için yeni kaynağın ilişkilendirildiği Azure aboneliğini seçin. Azure portal [Azure aboneliğinin nasıl oluşturulacağı hakkında](https://docs.microsoft.com/azure/cost-management-billing/manage/create-subscription#create-a-subscription-in-the-azure-portal) giriş aşağıda verilmiştir.
-   - Kaynağın kullanılacağı [bölgeyi](regions.md) seçin. Azure, dünya çapındaki birçok bölgede genel olarak kullanılabilen küresel bir bulut platformudur. En iyi performansı elde etmek için, size en yakın olan veya uygulamanızın çalıştığı yerde bir bölge seçin. Konuşma hizmeti kullanılabilirliği farklı bölgelerden farklılık gösterir. Kaynağı desteklenen bir bölgede oluşturduğunuzdan emin olun. Bkz. [konuşma Hizmetleri için bölge desteği](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-to-text-text-to-speech-and-translation).
+   - Ücretlerin nasıl faturalandırıldığını belirlemek için yeni kaynağın ilişkilendirildiği Azure aboneliğini seçin. Azure portal [Azure aboneliğinin nasıl oluşturulacağı hakkında](../../cost-management-billing/manage/create-subscription.md#create-a-subscription-in-the-azure-portal) giriş aşağıda verilmiştir.
+   - Kaynağın kullanılacağı [bölgeyi](regions.md) seçin. Azure, dünya çapındaki birçok bölgede genel olarak kullanılabilen küresel bir bulut platformudur. En iyi performansı elde etmek için, size en yakın olan veya uygulamanızın çalıştığı yerde bir bölge seçin. Konuşma hizmeti kullanılabilirliği farklı bölgelerden farklılık gösterir. Kaynağı desteklenen bir bölgede oluşturduğunuzdan emin olun. Bkz. [konuşma Hizmetleri için bölge desteği](./regions.md#speech-to-text-text-to-speech-and-translation).
    - Ücretsiz (F0) ya da ücretli (S0) fiyatlandırma katmanını seçin. Her katmana yönelik fiyatlandırma ve kullanım kotaları hakkında tam bilgi için, **tam fiyatlandırma ayrıntılarını görüntüle** ' yi seçin veya [konuşma Hizmetleri fiyatlandırmasına](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)bakın. Kaynaklarla ilgili sınırlar için bkz. Azure bilişsel [Hizmetler sınırları](../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cognitive-services-limits).
    - Bu konuşma aboneliği için yeni bir kaynak grubu oluşturun veya aboneliği var olan bir kaynak grubuna atayın. Kaynak grupları, çeşitli Azure aboneliklerinizi düzenli halde tutmanıza yardımcı olur.
    - **Oluştur**’u seçin. Bu işlem sizi dağıtıma genel bakış ve dağıtım ilerleme durumu iletilerini görüntüleyecek şekilde götürür.  
@@ -112,7 +112,7 @@ Konuşma hizmetini kullanmaya başlama şansınız olduktan sonra, çeşitli sen
 
 - [Öğretici: konuşma SDK 'Sı ve LUU, C ile konuşma amaçlarını tanıma #](how-to-recognize-intents-from-speech-csharp.md)
 - [Öğretici: konuşma SDK 'Sı ile sesinizi etkinleştirme, C #](tutorial-voice-enable-your-bot-speech-sdk.md)
-- [Öğretici: metin çevirmek, yaklaşımı çözümlemek ve çevrilmiş metni konuşmaya dönüştürmek için bir Flask uygulaması oluşturun, REST](../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%252fazure%252fcognitive-services%252fspeech-service%252fbreadcrumb%252ftoc.json%252c%252fen-us%252fazure%252fbread%252ftoc.json&toc=%252fazure%252fcognitive-services%252fspeech-service%252ftoc.json%252c%252fen-us%252fazure%252fcognitive-services%252fspeech-service%252ftoc.json)
+- [Öğretici: metin çevirmek, yaklaşımı çözümlemek ve çevrilmiş metni konuşmaya dönüştürmek için bir Flask uygulaması oluşturun, REST](../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json%252c%2fen-us%2fazure%2fbread%2ftoc.json&toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json%252c%2fen-us%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json)
 
 ## <a name="get-sample-code"></a>Örnek kodu alma
 

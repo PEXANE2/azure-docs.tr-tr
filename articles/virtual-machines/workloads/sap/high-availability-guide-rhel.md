@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/22/2020
 ms.author: radeltch
-ms.openlocfilehash: 496b78de869cc213af6b79b3e72016bba3da1266
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c275d3fc1bb2372b36a3a29ae3b72f3e5e9b758a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022454"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484235"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux SAP NetWeaver için Azure sanal makineleri yüksek kullanılabilirliği
 
@@ -242,7 +242,7 @@ Azure Marketi, yeni sanal makineler dağıtmak için kullanabileceğiniz Red Hat
          * 33 **02**, 5 **02** 13, 5 **02 14, 5****02** 16 ve TCP bağlantı noktaları için yukarıdaki adımları yineleyin
 
 > [!IMPORTANT]
-> Kayan IP, Yük Dengeleme senaryolarında NIC ikincil IP yapılandırmasında desteklenmez. Ayrıntılar için bkz. [Azure yük dengeleyici sınırlamaları](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations). VM için ek IP adresine ihtiyacınız varsa ikinci bir NIC dağıtın.  
+> Kayan IP, Yük Dengeleme senaryolarında NIC ikincil IP yapılandırmasında desteklenmez. Ayrıntılar için bkz. [Azure yük dengeleyici sınırlamaları](../../../load-balancer/load-balancer-multivip-overview.md#limitations). VM için ek IP adresine ihtiyacınız varsa ikinci bir NIC dağıtın.  
 
 > [!Note]
 > Ortak IP adresleri olmayan VM 'Ler, iç (genel IP adresi olmayan) standart Azure yük dengeleyicisine yerleştirildiğinde, genel uç noktalara yönlendirmeye izin vermek için ek yapılandırma gerçekleştirilmediği takdirde giden internet bağlantısı olmaz. Giden bağlantıyı elde etme hakkında daha fazla bilgi için bkz. [Azure Standart Load Balancer kullanan sanal makineler Için genel uç nokta BAĞLANTıSı SAP yüksek kullanılabilirlik senaryolarında](./high-availability-guide-standard-load-balancer-outbound-connections.md).  

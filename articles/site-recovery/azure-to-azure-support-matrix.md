@@ -4,12 +4,12 @@ description: Azure Site Recovery olan ikincil bir bölgeye Azure VM olağanüst�
 ms.topic: article
 ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: 64e8d4d00efa52b10d4543d36af7874f61dc3455
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: f0aebd09c06677aeba7cddda246e3e37992e0d9e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317546"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485289"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure bölgeleri arasında Azure sanal makinesi olağanüstü durum kurtarma için destek matrisi
 
@@ -196,7 +196,7 @@ Azure galeri görüntüleri-üçüncü taraf yayımlandı | Desteklenir | VM des
 Özel görüntüler-üçüncü taraf yayımlandı | Desteklenir | VM desteklenen bir işletim sisteminde çalışıyorsa desteklenir.
 Site Recovery kullanılarak geçirilen VM 'Ler | Desteklenir | Site Recovery kullanılarak Azure 'a bir VMware VM veya fiziksel makine geçirilirse, makinede çalışan Mobility hizmetinin eski sürümünü kaldırmanız ve makineyi başka bir Azure bölgesine çoğaltmadan önce yeniden başlatmanız gerekir.
 Azure RBAC ilkeleri | Desteklenmez | VM 'lerde Azure rol tabanlı erişim denetimi (Azure RBAC) ilkeleri hedef bölgedeki yük devretme VM 'sine çoğaltılmaz.
-Uzantıları | Desteklenmez | Uzantılar, hedef bölgedeki yük devretme VM 'sine çoğaltılmaz. Yük devretmenin ardından el ile yüklenmesi gerekir.
+Uzantılar | Desteklenmez | Uzantılar, hedef bölgedeki yük devretme VM 'sine çoğaltılmaz. Yük devretmenin ardından el ile yüklenmesi gerekir.
 Yakınlık yerleştirme grupları | Desteklenir | Bir yakınlık yerleşimi grubunda bulunan sanal makineler, Site Recovery kullanılarak korunabilir.
 
 
@@ -234,7 +234,7 @@ Seyrek erişimli ve sık erişimli depolama | Desteklenmez | Seyrek erişimli ve
 Depolama Alanları | Desteklenir |
 Bekleyen şifreleme (SSE) | Desteklenir | SSE, depolama hesaplarında varsayılan ayardır.
 Bekleyen şifreleme (CMK) | Desteklenir | Yönetilen diskler için hem yazılım hem de HSM anahtarları desteklenir
-Rest 'te Çift şifreleme | Desteklenir | [Windows](../virtual-machines/windows/disk-encryption.md) ve [Linux](../virtual-machines/linux/disk-encryption.md) için desteklenen bölgeler hakkında daha fazla bilgi edinin
+Rest 'te Çift şifreleme | Desteklenir | [Windows](../virtual-machines/disk-encryption.md) ve [Linux](../virtual-machines/disk-encryption.md) için desteklenen bölgeler hakkında daha fazla bilgi edinin
 Windows işletim sistemi için Azure disk şifrelemesi (ADE) | Yönetilen disklere sahip VM 'Ler için desteklenir. | Yönetilmeyen diskleri kullanan VM 'Ler desteklenmez. <br/><br/> HSM korumalı anahtarlar desteklenmez. <br/><br/> Tek bir diskte ayrı ayrı birimlerin şifrelenmesi desteklenmez. |
 Linux işletim sistemi için Azure disk şifrelemesi (ADE) | Yönetilen disklere sahip VM 'Ler için desteklenir. | Yönetilmeyen diskleri kullanan VM 'Ler desteklenmez. <br/><br/> HSM korumalı anahtarlar desteklenmez. <br/><br/> Tek bir diskte ayrı ayrı birimlerin şifrelenmesi desteklenmez. <br><br> Çoğaltmayı etkinleştirme ile ilgili bilinen sorun. [Daha fazla bilgi edinin.](./azure-to-azure-troubleshoot-errors.md#enable-protection-failed-as-the-installer-is-unable-to-find-the-root-disk-error-code-151137) |
 SAS anahtarı döndürme | Desteklenmiyor | Depolama hesapları için SAS anahtarı döndürülürse, müşterinin çoğaltmayı devre dışı bırakıp yeniden etkinleştirmeleri gerekir. |

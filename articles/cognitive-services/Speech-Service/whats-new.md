@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: erhopf
-ms.openlocfilehash: 5c4f02eff06c08f1829f9f1c74d1dcb09ee57905
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: a562c28235608d4a2425455b5543a76c99374f80
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024798"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483823"
 ---
 # <a name="speech-service-whats-new-in-docs"></a>Konuşma hizmeti: docs 'taki yenilikler
 
@@ -32,7 +32,7 @@ Konuşma hizmeti, konuşma SDK 'Sı, konuşma cihazları SDK 'Sı, konuşma CLı
 
 ### <a name="new-articles"></a>Yeni makaleler
 
-* [Özel Konuşma Tanıma için bir modeli geliştirme](how-to-custom-speech-improve-accuracy.md)
+* [Özel Konuşma Tanıma için bir modeli geliştirme](./how-to-custom-speech-evaluate-data.md)
 
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 
@@ -44,7 +44,7 @@ Konuşma hizmeti, konuşma SDK 'Sı, konuşma cihazları SDK 'Sı, konuşma CLı
 * [Hızlı başlangıç: Python 'da (Önizleme) uzun biçimli ses Için zaman uyumsuz sen,](./long-audio-api.md) genel sinir sesler ve ilişkili parametreler desteğiyle güncelleştirildi.
 * [Hızlı başlangıç: ses dosyasındaki konuşmayı tanıma](./get-started-speech-to-text.md) -belgelere JavaScript yönergeleri eklendi.
 * [Hızlı başlangıç: mikrofona mikrofona eklenen bir go ve JavaScript yönergelerinden konuşmayı tanıyın](./get-started-speech-to-text.md) .
-* [Hızlı başlangıç: blob depolamada depolanan konuşmayı tanıma](quickstarts/from-blob.md) -belgelere JavaScript yönergeleri eklendi.
+* [Hızlı başlangıç: blob depolamada depolanan konuşmayı tanıma](./batch-transcription.md) -belgelere JavaScript yönergeleri eklendi.
 * [Hızlı başlangıç: Language Understanding (LUU) ile konuşmayı, amaçları ve varlıkları tanıma](quickstarts/intent-recognition.md)
 * [Hızlı başlangıç: geliştirme ortamını ayarlama](quickstarts/setup-platform.md) -belgelere JavaScript yönergeleri eklendi.
 * [Hızlı başlangıç: bir ses dosyasına konuşmayı Sentezleştirme](./get-started-text-to-speech.md) -belgelere JavaScript yönergeleri eklendi.
@@ -58,7 +58,7 @@ Bu sorunlar Mayıs 'ta açılmıştır. Bu tabloda, bu sorunu açan kullanıcı 
 
 Bu tablo aylık olarak güncelleştirilir ve yalnızca Mayıs 'ta açılan sorunları yansıtır.  
 
-|ID|Kullanıcı|Description|Makta|Durum|Tür|
+|ID|User|Açıklama|Makta|Durum|Tür|
 | :--- | :--- | :--- | :--- | :--- | :--- |
 |[56045](https://github.com/MicrosoftDocs/azure-docs/issues/56045)|rhalaly|Bot 'ın uç noktası eksik olduğundan etkinlik bırakıldı|2020-05-31|Kapatıldı|Sorun|
 |[56038](https://github.com/MicrosoftDocs/azure-docs/issues/56038)|rhalaly|Yanlış yayımlama bot adımları|2020-05-31|Aç|Sorun|

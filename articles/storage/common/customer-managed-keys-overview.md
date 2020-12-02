@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 2b474ae184374a2c91dcba15517048556686ec35
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8eaadc031039b22e209db1023c65da39e1e096b1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782238"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483292"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>Azure depolama şifrelemesi için müşteri tarafından yönetilen anahtarlar
 
@@ -113,10 +113,10 @@ Müşteri tarafından yönetilen anahtarlara erişimi iptal etmek için [PowerSh
 
 ## <a name="customer-managed-keys-for-azure-managed-disks"></a>Azure yönetilen diskler için müşteri tarafından yönetilen anahtarlar
 
-Azure yönetilen disklerin şifrelenmesini yönetmek için müşteri tarafından yönetilen anahtarlar da kullanılabilir. Müşteri tarafından yönetilen anahtarlar, yönetilen diskler için Azure depolama kaynaklarından farklı şekilde davranır. Daha fazla bilgi için bkz. Windows için [Azure yönetilen disklerinin sunucu tarafı şifrelemesi](../../virtual-machines/windows/disk-encryption.md) veya Linux için [Azure yönetilen disklerinin sunucu tarafı şifrelemesi](../../virtual-machines/linux/disk-encryption.md) .
+Azure yönetilen disklerin şifrelenmesini yönetmek için müşteri tarafından yönetilen anahtarlar da kullanılabilir. Müşteri tarafından yönetilen anahtarlar, yönetilen diskler için Azure depolama kaynaklarından farklı şekilde davranır. Daha fazla bilgi için bkz. Windows için [Azure yönetilen disklerinin sunucu tarafı şifrelemesi](../../virtual-machines/disk-encryption.md) veya Linux için [Azure yönetilen disklerinin sunucu tarafı şifrelemesi](../../virtual-machines/disk-encryption.md) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Bekleyen veri için Azure Depolama şifrelemesi](storage-service-encryption.md)
-- [Azure Key Vault içinde depolanan müşteri tarafından yönetilen anahtarlarla şifrelemeyi yapılandırma](customer-managed-keys-configure-key-vault.md)
+- [Azure Key Vault’ta depolanan müşteri tarafından yönetilen anahtarlarla şifrelemeyi yapılandırma](customer-managed-keys-configure-key-vault.md)
 - [Azure Key Vault yönetilen HSM 'de depolanan, müşteri tarafından yönetilen anahtarlarla şifrelemeyi yapılandırma (Önizleme)](customer-managed-keys-configure-key-vault-hsm.md)

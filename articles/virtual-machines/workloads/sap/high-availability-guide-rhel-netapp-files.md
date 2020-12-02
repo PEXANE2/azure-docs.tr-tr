@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/22/2020
 ms.author: radeltch
-ms.openlocfilehash: 0c5ebd3f7989458a0966fdc792cd3a8a9ea94acc
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3b33351f840cb590d0adea42f9404917b2f30ca8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965281"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484269"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>SAP NetWeaver için Azure sanal makineler yüksek kullanılabilirlik, SAP uygulamaları için Azure NetApp Files Red Hat Enterprise Linux
 
@@ -252,7 +252,7 @@ Bu örnekte, kaynaklar [Azure Portal](https://portal.azure.com/#home)aracılığ
          * 32 **01**, 33 **01**, 5 **01** 13, 5 **01** 14, 5 **01** 16 ve d/sn için TCP bağlantı noktaları için yukarıdaki adımları yineleyin
 
       > [!IMPORTANT]
-      > Kayan IP, Yük Dengeleme senaryolarında NIC ikincil IP yapılandırmasında desteklenmez. Ayrıntılar için bkz. [Azure yük dengeleyici sınırlamaları](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations). VM için ek IP adresine ihtiyacınız varsa ikinci bir NIC dağıtın.  
+      > Kayan IP, Yük Dengeleme senaryolarında NIC ikincil IP yapılandırmasında desteklenmez. Ayrıntılar için bkz. [Azure yük dengeleyici sınırlamaları](../../../load-balancer/load-balancer-multivip-overview.md#limitations). VM için ek IP adresine ihtiyacınız varsa ikinci bir NIC dağıtın.  
 
       > [!Note]
       > Ortak IP adresleri olmayan VM 'Ler, iç (genel IP adresi olmayan) standart Azure yük dengeleyicisine yerleştirildiğinde, genel uç noktalara yönlendirmeye izin vermek için ek yapılandırma gerçekleştirilmediği takdirde giden internet bağlantısı olmaz. Giden bağlantıyı elde etme hakkında daha fazla bilgi için bkz. [Azure Standart Load Balancer kullanan sanal makineler Için genel uç nokta BAĞLANTıSı SAP yüksek kullanılabilirlik senaryolarında](./high-availability-guide-standard-load-balancer-outbound-connections.md).  

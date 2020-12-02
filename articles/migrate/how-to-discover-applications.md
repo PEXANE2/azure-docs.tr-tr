@@ -3,12 +3,12 @@ title: Azure geçişi ile şirket içi sunuculardaki uygulamaları, rolleri ve �
 description: Azure geçişi sunucu değerlendirmesi ile şirket içi sunuculardaki uygulamaları, rolleri ve özellikleri bulmayı öğrenin.
 ms.topic: article
 ms.date: 06/10/2020
-ms.openlocfilehash: 6bdc26ac3a27026183e889bf258e2e1a5dadebfb
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 960877ac4eab4d8f23b5616dc04628142964b46a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315206"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483462"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Makine uygulamalarını, rolleri ve özellikleri bul
 
@@ -23,14 +23,14 @@ Bu makalede, Azure geçişi: Sunucu değerlendirmesi kullanılarak şirket içi 
 ## <a name="before-you-start"></a>Başlamadan önce
 
 - Şunları yapmayı unutmayın:
-    - Bir Azure geçişi projesi [oluşturdu](how-to-add-tool-first-time.md) .
+    - Bir Azure geçişi projesi [oluşturdu](./create-manage-projects.md) .
     - Azure geçişi: Sunucu değerlendirmesi aracı bir projeye [eklendi](how-to-assess.md) .
 - [Uygulama bulma desteğini ve gereksinimlerini](migrate-support-matrix-vmware.md#vmware-requirements)gözden geçirin.
 - Uygulama bulma 'yı çalıştırdığınız VM 'Lerin PowerShell sürüm 2,0 veya üzeri yüklü olduğundan ve VMware araçlarının (10.2.0 ' den sonraki sürümler) yüklü olduğundan emin olun.
 - Azure geçişi gerecini dağıtmaya yönelik [gereksinimleri](migrate-appliance.md) kontrol edin.
 
 
-## <a name="deploy-the-azure-migrate-appliance"></a>Azure geçişi gereci dağıtma
+## <a name="deploy-the-azure-migrate-appliance"></a>Azure Geçişi aletini dağıtma
 
 1. Azure geçişi gerecini dağıtmaya yönelik gereksinimleri [gözden geçirin](migrate-appliance.md#appliance---vmware) .
 2. Gereçlerin [ortak](migrate-appliance.md#public-cloud-urls) ve [kamu bulutlarında](migrate-appliance.md#government-cloud-urls)erişmesi gereken Azure URL 'lerini gözden geçirin.
@@ -46,7 +46,7 @@ Gereç dağıtıldıktan ve kimlik bilgilerini sağladıysanız, Gereç VM meta 
 
 ## <a name="verify-permissions"></a>İzinleri doğrulama
 
-Bulma ve değerlendirme için [vCenter Server salt okunurdur bir hesap oluşturdunuz](./tutorial-discover-vmware.md#prepare-vmware) . Salt okuma hesabının, **sanal makineler**  >  **Konuk işlemleri**için etkin olması gerekir ve bu, uygulama bulma için VM ile etkileşime geçebilir.
+Bulma ve değerlendirme için [vCenter Server salt okunurdur bir hesap oluşturdunuz](./tutorial-discover-vmware.md#prepare-vmware) . Salt okuma hesabının, **sanal makineler**  >  **Konuk işlemleri** için etkin olması gerekir ve bu, uygulama bulma için VM ile etkileşime geçebilir.
 
 ### <a name="add-the-user-account-to-the-appliance"></a>Kullanıcı hesabını gereç 'e ekleme
 
@@ -54,8 +54,8 @@ Kullanıcı hesabını aşağıdaki şekilde ekleyin:
 
 1. Gereç Yönetimi uygulamasını açın. 
 2. **VCenter ayrıntıları sağla** paneline gidin.
-3. **VM 'lerde uygulama ve bağımlılıkları keşfet**bölümünde **kimlik bilgileri ekle** ' ye tıklayın.
-3. **İşletim sistemini**seçin, hesap için bir kolay ad ve **Kullanıcı adı** / **parolasını** girin
+3. **VM 'lerde uygulama ve bağımlılıkları keşfet** bölümünde **kimlik bilgileri ekle** ' ye tıklayın.
+3. **İşletim sistemini** seçin, hesap için bir kolay ad ve **Kullanıcı adı** / **parolasını** girin
 6. **Kaydet**’e tıklayın.
 7. **Kaydet ve bulmayı Başlat**' a tıklayın.
 

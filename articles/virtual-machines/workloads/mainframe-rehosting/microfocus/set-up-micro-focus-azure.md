@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: bd8da9ae7e31fb60ba0ca553f5aa304ccd3621d2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: d9e5f9b531fc28caf8f3162a70318927d40bb923
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127187"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483071"
 ---
 # <a name="install-micro-focus-enterprise-server-50-and-enterprise-developer-50-on-azure"></a>Azure 'da Micro Focus Enterprise Server 5,0 ve Enterprise Developer 5,0 'yi yükler
 
@@ -42,12 +42,12 @@ Başlamadan önce Şu önkoşullara göz atın:
     > [!Note]
     > Sanal makinelerinize erişimi denetlemek için birkaç seçenek vardır:
     > -   En iyi uygulama, [Azure](https://azure.microsoft.com/services/azure-bastion/)Savunma kurulumu kullanmaktır.
-    > -   [Siteden siteye sanal özel ağ (VPN)](../../../../vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell.md) tüneli.
+    > -   [Siteden siteye sanal özel ağ (VPN)](../../../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md) tüneli.
     > -   Bir sıçrama kutusu VM 'si.
 
 ## <a name="install-enterprise-server"></a>Enterprise Server’ı yükleme
 
-1.  Daha iyi güvenlik ve yönetilebilirlik için, yalnızca bu proje için yeni bir kaynak grubu oluşturmayı düşünün — Örneğin, **Rgmikro Focusentserver** . Bir listede daha kolay olmasını sağlamak üzere kaynak türünü seçmek için Azure 'daki adın ilk kısmını kullanın.
+1.  Daha iyi güvenlik ve yönetilebilirlik için, yalnızca bu proje için yeni bir kaynak grubu oluşturmayı düşünün — Örneğin, **Rgmikro Focusentserver**. Bir listede daha kolay olmasını sağlamak üzere kaynak türünü seçmek için Azure 'daki adın ilk kısmını kullanın.
 
 2.  Sanal makine oluşturur. Azure Marketi 'nden istediğiniz sanal makineyi ve işletim sistemini seçin. Önerilen bir kurulum aşağıda verilmiştir:
 
@@ -87,7 +87,7 @@ Yükleme sonrasında, Microsoft C++ yeniden dağıtılabilir ve .NET Framework g
 
 1.  Micro Focus lisans yönetimini başlatın.
 
-2.  **Start** \> **Micro Focus License Manager** \> **lisans yönetimini** Başlat ' ı seçin ve ardından **Yükle** sekmesine tıklayın. karşıya yüklenecek lisans biçimi türünü seçin: bir lisans dosyası veya 16 karakterlik lisans kodu. Örneğin, bir dosya için, **Lisans dosyasında** , `mflic` daha önce VM 'ye yüklenen * dosyasına gidin ve **Lisansları Yükleme ' yi** seçin.
+2.  **Start** \> **Micro Focus License Manager** \> **lisans yönetimini** Başlat ' ı seçin ve ardından **Yükle** sekmesine tıklayın. karşıya yüklenecek lisans biçimi türünü seçin: bir lisans dosyası veya 16 karakterlik lisans kodu. Örneğin, bir dosya için, **Lisans dosyasında**, `mflic` daha önce VM 'ye yüklenen * dosyasına gidin ve **Lisansları Yükleme ' yi** seçin.
 
     ![Ekran görüntüsü, Lisans yüklemesi ' ni seçebileceğiniz mikro odak lisans yönetimi iletişim kutusunu gösterir.](media/install-image-3.png)
 
@@ -97,9 +97,9 @@ Yükleme sonrasında, Microsoft C++ yeniden dağıtılabilir ve .NET Framework g
 
 ## <a name="install-enterprise-developer-on-the-developer-machine"></a>Geliştirici makinesine Enterprise Developer 'ı yükler
 
-1.  Daha önce oluşturulmuş kaynak grubunu (örneğin, **Rgmikro Focusentserver** ) seçin ve ardından Geliştirici görüntüsünü seçin.
+1.  Daha önce oluşturulmuş kaynak grubunu (örneğin, **Rgmikro Focusentserver**) seçin ve ardından Geliştirici görüntüsünü seçin.
 
-2.  Sanal makinede oturum açmak için **genel bakış** bölümüne gidin ve **Bağlan** ' ı seçin. Bu oturum açma, bir RDP oturumu başlatır. VM için oluşturduğunuz kimlik bilgilerini kullanarak oturum açın.
+2.  Sanal makinede oturum açmak için **genel bakış** bölümüne gidin ve **Bağlan**' ı seçin. Bu oturum açma, bir RDP oturumu başlatır. VM için oluşturduğunuz kimlik bilgilerini kullanarak oturum açın.
 
 3.  RDP oturumunda, aşağıdaki iki dosyayı yükleyin (isterseniz sürükleyip bırakın):
 
@@ -117,7 +117,7 @@ Yükleme sonrasında, Microsoft C++ yeniden dağıtılabilir ve .NET Framework g
 
 6.  Micro Focus lisans yöneticisini, yalnızca kurumsal sunucu için yaptığınız gibi başlatın. **Start** \> **Micro Focus License Manager** \> **lisans yönetimini** Başlat ' ı seçin ve sonra da **Install** sekmesine tıklayın.
 
-7.  Karşıya yüklenecek lisans biçimi türünü seçin: bir lisans dosyası veya 16 karakterlik lisans kodu. Örneğin, bir dosya için, **Lisans dosyasında** , `mflic` daha önce VM 'ye yüklenen dosyaya gidin ve  **Lisansları Yükleme ' yi** seçin.
+7.  Karşıya yüklenecek lisans biçimi türünü seçin: bir lisans dosyası veya 16 karakterlik lisans kodu. Örneğin, bir dosya için, **Lisans dosyasında**, `mflic` daha önce VM 'ye yüklenen dosyaya gidin ve  **Lisansları Yükleme ' yi** seçin.
 
     ![Mikro odaklı lisans yönetimi iletişim kutusu](media/install-image-7.png)
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: 6b7c280d9ff5f4d8a3c35eb11e080bf2f9f287c0
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 5e9ddecd694a9051e746d07cbc1bee4d98bf5829
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959178"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484439"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Azure 'da Oracle veritabanı tasarlama ve uygulama
 
@@ -138,7 +138,7 @@ Ağ bant genişliği gereksinimlerinize göre, aralarından seçim yapabileceği
 - Ağ gecikmesi, şirket içi dağıtıma kıyasla daha yüksektir. Ağ gidiş dönüşlerini düşürmek performansı önemli ölçüde iyileştirebilir.
 - Gidiş-gelişleri azaltmak için, yüksek işlemlere sahip uygulamaları veya aynı sanal makinede "geveze" uygulamalarını birleştirin.
 - Daha iyi ağ performansı için, [hızlandırılmış ağ](../../../virtual-network/create-vm-accelerated-networking-cli.md) Ile sanal makineleri kullanın.
-- Belirli Linux dağıtımları için [kesme/EŞLEMEYI kaldır desteğini](../../linux/configure-lvm.md#trimunmap-support)etkinleştirmeyi düşünün.
+- Belirli Linux dağıtımları için [kesme/EŞLEMEYI kaldır desteğini](/previous-versions/azure/virtual-machines/linux/configure-lvm#trimunmap-support)etkinleştirmeyi düşünün.
 - [Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) 'ı ayrı bir sanal makineye yükler.
 - Çok büyük sayfalar Linux üzerinde varsayılan olarak etkinleştirilmemiştir. Büyük sayfaları etkinleştirmeyi ve Oracle DB ayarlamayı düşünün `use_large_pages = ONLY` . Bu, performansı artırmaya yardımcı olabilir. [Burada](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390)daha fazla bilgi bulabilirsiniz.
 

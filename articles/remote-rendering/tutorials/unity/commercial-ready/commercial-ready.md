@@ -5,12 +5,12 @@ author: FlorianBorn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 8c037d35c2df4572800d2519347aa113a86cde36
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 7258b37c9d92f25227eac678dde77963e644e64b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96434847"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483326"
 ---
 # <a name="tutorial-creating-a-commercial-ready-azure-remote-rendering-application"></a>Öğretici: ticari özellikli bir Azure uzaktan Işleme uygulaması oluşturma
 
@@ -54,7 +54,7 @@ Azure, bunu başarmak için kaynak etiketleme adlı bir hizmet sunarak Azure uza
 
 Kaynak adlandırma ve etiketleme hakkında daha fazla bilgi için başlamak için iyi bir yer vardır:
 
-* [Kaynak adlandırma ve etiketleme karar Kılavuzu](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%252fazure%252fazure-resource-manager%252fmanagement%252ftoc.json)
+* [Kaynak adlandırma ve etiketleme karar Kılavuzu](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure%2fazure-resource-manager%2fmanagement%2ftoc.json)
 
 ### <a name="diagnostics"></a>Tanılama
 

@@ -9,20 +9,20 @@ ms.topic: quickstart
 ms.date: 11/16/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8d70a45b89142f6f9c6990fdbb4b79751c82275f
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 312c57c103bf733bc72c5de1d22ab3239d5b5e96
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95237485"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484714"
 ---
 # <a name="quickstart-bulk-loading-with-synapse-sql"></a>Hızlı başlangıç: SYNAPSE SQL ile toplu yükleme
 
-SYNAPSE Studio 'da toplu yükleme Sihirbazı kullanılırken veri yükleme hiçbir zaman daha kolay olmamıştı. Bu sihirbaz, toplu yükleme verilerine [kopyalama ifadesiyle](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) bir T-SQL betiği oluşturma sırasında size rehberlik edecektir. 
+SYNAPSE Studio 'daki toplu yükleme Sihirbazı ile veri yükleme kolaydır. Toplu Yükleme Sihirbazı, [Copy ifadesiyle](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) bir T-SQL betiği oluştururken toplu yükleme verilerine kılavuzluk eder. 
 
 ## <a name="entry-points-to-the-bulk-load-wizard"></a>Toplu yükleme sihirbazına giriş noktaları
 
-Artık SYNAPSE Studio içindeki aşağıdaki alanlara basit bir sağ tıklama ile adanmış SQL havuzları kullanarak verileri kolayca toplu olarak yükleyebilirsiniz:
+Özel SQL havuzlarını kullanarak verileri kolayca toplu olarak yükleyebilirsiniz ve SYNAPSE Studio içindeki aşağıdaki alanlara basit bir sağ tıklayın.
 
 - Bir ![ depolama hesabındaki bir dosya veya klasöre sağ tıklayarak çalışma alanınıza bağlı bir Azure depolama hesabındaki dosya veya klasör](./sql/media/bulk-load/bulk-load-entry-point-0.png)
 

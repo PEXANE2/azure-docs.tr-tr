@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: aa885b1dcff59ec1b89d9a0bcf4ac5578cb5e8ea
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 09859be61029242e987603e01b5c3fba8dffb2ca
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024917"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483895"
 ---
 # <a name="what-is-a-voice-assistant"></a>Ses yardımcısı nedir?
 
@@ -47,7 +47,7 @@ Yardımcınızın hangi özellikleri işlemesini istediğinizi bilmiyorsanız en
 
 Yardımcı etkileşimlerinizi oluşturmak için [doğrudan hat konuşmayı](direct-line-speech.md) veya [özel komutlar](custom-commands.md) seçin, yardımcınızı marka, ürün ve kişiliğinizi özelleştirmek için zengin bir özelleştirme özellikleri kümesi kullanabilirsiniz.
 
-| Kategori | Özellikler |
+| Category | Özellikler |
 |----------|----------|
 |[Özel anahtar sözcük](./custom-keyword-basics.md) | Kullanıcılar, "Hey contoso" gibi özel bir anahtar sözcükle konuşmaları kullanarak konuşmalar başlatabilir. Uygulama bunu konuşma SDK 'sında özel bir anahtar sözcük altyapısı ile yapar ve [burada oluşturabileceğiniz](./custom-keyword-basics.md)özel bir anahtar sözcükle yapılandırılabilir. Sesli yardımcılar, anahtar sözcük etkinleştirmenin doğruluğunu artırmak için hizmet tarafı anahtar sözcük doğrulamasını kullanabilir (tek başına cihaz).
 |[Konuşmayı metne dönüştürme](speech-to-text.md) | Ses yardımcıları, konuşma hizmetinden [konuşmaya metin](speech-to-text.md) kullanarak gerçek zamanlı sesi tanınan metne dönüştürür. Bu metin, hem yardımcınızın hem de istemci uygulamanızın bulunduğu bir şekilde kullanılabilir.
@@ -72,7 +72,7 @@ Bir ses Yardımcısı oluşturmaya yönelik örnek kod GitHub ' da kullanılabil
 
 Azure konuşma Hizmetleri kullanılarak oluşturulan sesli yardımcılar, özelleştirme seçeneklerinin tam aralığını kullanabilir.
 
-* [Özel Konuşma Tanıma](how-to-custom-speech.md)
+* [Özel Konuşma Tanıma](./custom-speech-overview.md)
 * [Özel ses](how-to-custom-voice.md)
 * [Özel Anahtar Sözcük](custom-keyword-overview.md)
 

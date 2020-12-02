@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: 5631cbdd0b1eae343899be2147720d980e605dbb
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5bd41396cf075f83fd37a4276f7a30223ec8c1f3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452714"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96482952"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Azure 'da çok kiracılı barındırma haklarıyla Windows 10 ' un dağıtımı 
 Windows 10 Enterprise E3/E5 veya Kullanıcı başına Windows sanal masaüstü erişimi (Kullanıcı aboneliği lisansları veya eklenti Kullanıcı aboneliği lisansları) olan müşteriler için, Windows 10 için çok kiracılı barındırma hakları, Windows 10 lisanslarınızı buluta getirmenize ve Azure 'da Windows 10 sanal makinelerini başka bir lisans ödemeksizin çalıştırmanıza olanak sağlar. Daha fazla bilgi için lütfen bkz. [Windows 10 Için çok kiracılı barındırma](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
@@ -36,9 +36,11 @@ PowerShell, CLı ve Azure Resource Manager şablon dağıtımları için, Window
 ## <a name="qualify-for-multi-tenant-hosting-rights"></a>Çok kiracılı barındırma haklarına uygun hale getir 
 Çok kiracılı barındırma haklarını nitelemek ve Azure kullanıcıları üzerinde Windows 10 görüntülerini çalıştırmak için aşağıdaki aboneliklerden birine sahip olması gerekir: 
 
--   Microsoft 365 E3/E5/F3/a3/a5
--   Windows 10 Enterprise E3/E5 
--   Windows 10 eğitim a3/a5
+-   Microsoft 365 E3/E5 
+-   Microsoft 365 F3 
+-   Microsoft 365 a3/a5 
+-   Windows 10 Enterprise E3/E5
+-   Windows 10 eğitim a3/a5 
 -   Windows VDA E3/E5
 
 

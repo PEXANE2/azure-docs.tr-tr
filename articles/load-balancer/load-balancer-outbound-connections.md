@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 5a2d7f9f60253916eae808a7f65bc4b4b289bd67
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3f4791c5cbcf731e118bac4bf692adcad7e9ff44
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94694789"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483598"
 ---
 # <a name="using-snat-for-outbound-connections"></a>Giden bağlantılar için SNAT kullanma
 
@@ -66,7 +66,7 @@ Aşağıdaki [Senaryo 2](#scenario2) yapılandırıldığında, her arka uç ör
  | Ortak yük dengeleyici veya tek başına | [SNAT (kaynak ağ adresi çevirisi)](#snat) </br> kullanılmıyor. | TCP (Iletim Denetim Protokolü) </br> UDP (Kullanıcı Datagram Protokolü) </br> ICMP (Internet Denetim Iletisi Protokolü) </br> ESP (Kapsüllenen Güvenlik Yükü) |
 
 
- #### <a name="description"></a>Description
+ #### <a name="description"></a>Açıklama
 
 
  Azure, tüm giden akışlar için örneğin NIC 'in IP yapılandırmasına atanan genel IP 'yi kullanır. Örnekte, tüm kısa ömürlü bağlantı noktaları kullanılabilir. VM 'nin yük dengeli olup olmadığı önemi yoktur. Bu senaryo diğerlerine göre önceliklidir. 
@@ -83,7 +83,7 @@ Aşağıdaki [Senaryo 2](#scenario2) yapılandırıldığında, her arka uç ör
  | Genel yük dengeleyici | [SNAT](#snat)için yük dengeleyici ön uç IP 'leri kullanımı.| TCP </br> UDP |
 
 
- #### <a name="description"></a>Description
+ #### <a name="description"></a>Açıklama
 
 
  Yük dengeleyici kaynağı bir giden kuralla veya varsayılan SNAT 'yi sağlayan bir yük dengeleme kuralıyla yapılandırılır. Bu kural, arka uç havuzuyla genel IP ön ucu arasında bağlantı oluşturmak için kullanılır. 
@@ -111,7 +111,7 @@ Aşağıdaki [Senaryo 2](#scenario2) yapılandırıldığında, her arka uç ör
  | ------------ | ------ | ------------ |
  |Yok </br> Temel yük dengeleyici | Örnek düzeyinde dinamik IP adresi ile [SNAT](#snat)| TCP </br> UDP | 
 
- #### <a name="description"></a>Description
+ #### <a name="description"></a>Açıklama
 
 
  VM bir giden akış oluşturduğunda, Azure Kaynak IP adresini dinamik olarak ayrılmış bir ortak kaynak IP adresine dönüştürür. Bu genel IP adresi **yapılandırılamaz** ve ayrılamaz. Bu adres, aboneliğin genel IP kaynak sınırına göre sayılmaz. 
@@ -182,8 +182,6 @@ Azure sanal ağ NAT hakkında daha fazla bilgi için bkz. [Azure sanal ağ NAT n
 
 ## <a name="constraints"></a>Kısıtlamalar
 
-*   **TCP RST** alınıp gönderiliyorsa, bağlantı noktaları 15 saniye sonra serbest bırakılır
-*   Bir **Finack** alınmışsa veya gönderilirse 240 saniye sonra bağlantı noktaları serbest bırakılır
 *   Bir bağlantı yeni paket gönderilmeden boşta kaldığında, bağlantı noktaları 4 – 120 dakika sonra serbest bırakılır.
   * Bu eşik, giden kuralları aracılığıyla yapılandırılabilir.
 *   Her IP adresi, SNAT için kullanılabilecek 64.000 bağlantı noktası sağlar.

@@ -4,12 +4,12 @@ description: Bu öğreticide, (benzetimli) bir IP kamerasından canlı video ak�
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: d03737f43ee719b72860e7ffeff076e3f156cade
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a15984917b854a9f3e2dbc80dd0775989c80bf81
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776349"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483687"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Öğretici: OpenVINO™ model sunucusunu kullanarak canlı videoyu çözümleyin – Intel 'ten AI uzantısı 
 
@@ -78,17 +78,17 @@ Bu çıkarım sunucusunun ilk sürümünde aşağıdaki [modellere](https://gith
 
 Önkoşulların bir parçası olarak, örnek kodu bir klasöre indirdiniz. Örnek dosyaları incelemek ve düzenlemek için bu adımları izleyin.
 
-1. Visual Studio Code, *src/Edge*bölümüne gidin. *. Env* dosyanızı ve birkaç dağıtım şablonu dosyasını görürsünüz.
+1. Visual Studio Code, *src/Edge* bölümüne gidin. *. Env* dosyanızı ve birkaç dağıtım şablonu dosyasını görürsünüz.
 
     Dağıtım şablonu, Edge cihazının dağıtım bildirimini ifade eder. Bazı yer tutucu değerleri içerir. *. Env* dosyası bu değişkenlerin değerlerini içerir.
 
 1. *Src/buluttan cihaza-Console-App* klasörüne gidin. Burada dosya ve diğer birkaç dosya *appsettings.js* görürsünüz:
 
-    * ***C2D-Console-App. csproj*** -Visual Studio Code için proje dosyası.
-    * ***operations.js*** , programın çalıştırmasını istediğiniz işlemlerin bir listesi.
-    * ***Program.cs*** -örnek program kodu. Bu kod:
+    * ***C2D-Console-App. csproj** _-Visual Studio Code için proje dosyası.
+    _ ***operations.json** _-programın çalıştırmasını istediğiniz işlemlerin listesi.
+    _ ***Program.cs** _-örnek program kodu. Bu kod:
 
-        * Uygulama ayarlarını yükler.
+        _ Uygulama ayarlarını yükler.
         * IoT Edge modülündeki canlı video analizinin sunduğu doğrudan yöntemleri çağırır. [Doğrudan yöntemlerini](direct-methods.md)çağırarak canlı video akışlarını çözümlemek için modülünü kullanabilirsiniz.
         * Program çıkışını **TERMINAL** penceresinde Incelemenize ve **Çıkış** penceresinde modül tarafından oluşturulan olayları incelemenize olanak tanıyan duraklar.
         * Kaynakları temizlemek için doğrudan yöntemleri çağırır.
@@ -145,10 +145,38 @@ Bu öğreticinin [grafik topolojisini](https://raw.githubusercontent.com/Azure/l
 1. Sağ tıklayıp **uzantı ayarları**' nı seçin.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Genel Bakış" i arayın ve etkinleştirin.
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Uzantı ayarları":::
+1. "Ayrıntılı Iletiyi göster" i arayın ve etkinleştirin.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Genel Bakış"
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Ayrıntılı Iletiyi göster":::
+1. Bir hata ayıklama oturumu başlatmak için F5 tuşunu seçin. **TERMINAL** penceresinde yazdırılan iletileri görürsünüz.
+1. Kod *üzerindekioperations.js* doğrudan yöntemlere ve çağrılarıyla başlatılır `GraphTopologyList` `GraphInstanceList` . Önceki hızlı başlangıçlarını tamamladıktan sonra kaynakları temizledikten sonra bu işlem boş listeleri döndürür ve ardından duraklatılır. Devam etmek için Enter tuşunu seçin.
+
+    **TERMINAL** penceresinde, bir sonraki doğrudan yöntem çağrısı kümesi gösterilir:
+
+     * Daha önce kullanılan bir çağrısı `GraphTopologySet``topologyUrl`
+     * Aşağıdaki gövdesini kullanan öğesine yapılan bir çağrı `GraphInstanceSet` :
+
+         ```
+         {
+           "@apiVersion": "1.0",
+           "name": "Sample-Graph-1",
+           "properties": {
+             "topologyName": "InferencingWithOpenVINO",
+             "description": "Sample graph description",
+             "parameters": [
+               {
+                 "name": "rtspUrl",
+                 "value": "rtsp://rtspsim:554/media/lots_015.mkv"
+               },
+               {
+                 "name": "rtspUserName",
+                 "value": "testuser"
+               },
+               {
+                 "name": "rtspPassword",
+                 "value": "testpassword"
                }
              ]
            }
@@ -364,4 +392,4 @@ Diğer hızlı başlangıç ve öğreticiler denemek istiyorsanız, oluşturduğ
 Gelişmiş kullanıcılar için ek güçlükleri gözden geçirin:
 
 * RTSP simülatörü kullanmak yerine RTSP desteği olan bir [IP kamerası](https://en.wikipedia.org/wiki/IP_camera) kullanın. [ONVIF uyumlu](https://www.onvif.org/conformant-products/) ürünler sayfasında RTSP 'YI destekleyen IP kameralarını arayabilirsiniz. Profiller G, S veya T ile uyumlu olan cihazları arayın.
-* Azure Linux VM yerine AMD64 veya x64 Linux cihazı kullanın. Bu cihaz, IP kamerası ile aynı ağda olmalıdır. [Linux üzerinde Azure IoT Edge çalışma zamanını Install](../../iot-edge/how-to-install-iot-edge-linux.md)bölümündeki yönergeleri izleyebilirsiniz. Ardından, [ilk IoT Edge modülünüzü bir sanal Linux cihazına dağıtma](../../iot-edge/quickstart-linux.md)konusundaki yönergeleri Izleyerek cihazı Azure IoT Hub kaydettirin.
+* Azure Linux VM yerine AMD64 veya x64 Linux cihazı kullanın. Bu cihaz, IP kamerası ile aynı ağda olmalıdır. [Linux üzerinde Azure IoT Edge çalışma zamanını Install](../../iot-edge/how-to-install-iot-edge.md)bölümündeki yönergeleri izleyebilirsiniz. Ardından, [ilk IoT Edge modülünüzü bir sanal Linux cihazına dağıtma](../../iot-edge/quickstart-linux.md)konusundaki yönergeleri Izleyerek cihazı Azure IoT Hub kaydettirin.

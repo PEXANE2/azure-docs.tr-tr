@@ -7,14 +7,14 @@ ms.service: data-factory
 services: data-factory
 documentationcenter: ''
 ms.workload: data-services
-author: djpmsft
-ms.author: daperlov
-ms.openlocfilehash: f1f81af715bc4b2248a24076f3b12a74d0ee73e3
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+author: dcstwh
+ms.author: weetok
+ms.openlocfilehash: 9b28fb24439354e09e5262281a99cd9dc0153a04
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102084"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485255"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Azure Data Factory ile yinelemeli geliştirme ve hata ayıklama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -27,7 +27,7 @@ Bu özelliğin sekiz dakikalık bir girişi ve gösterimi için aşağıdaki vid
 
 ## <a name="debugging-a-pipeline"></a>İşlem hattı hatalarını ayıklama
 
-İşlem hattı tuvali 'ni kullanarak yazarınızda, **hata ayıklama** özelliğini kullanarak etkinliklerinizi test edebilirsiniz. Test çalıştırmalarını gerçekleştirdiğinizde, **Hata Ayıkla** ' yı seçmeden önce veri fabrikasında yaptığınız değişiklikleri yayımlamanız gerekmez. Bu özellik, Data Factory iş akışını güncelleştirmeden önce değişikliklerin beklendiği gibi çalıştığından emin olmak istediğiniz senaryolarda yararlıdır.
+İşlem hattı tuvali 'ni kullanarak yazarınızda, **hata ayıklama** özelliğini kullanarak etkinliklerinizi test edebilirsiniz. Test çalıştırmalarını gerçekleştirdiğinizde, **Hata Ayıkla**' yı seçmeden önce veri fabrikasında yaptığınız değişiklikleri yayımlamanız gerekmez. Bu özellik, Data Factory iş akışını güncelleştirmeden önce değişikliklerin beklendiği gibi çalıştığından emin olmak istediğiniz senaryolarda yararlıdır.
 
 ![İşlem hattı tuvalindeki hata ayıklama özelliği](media/iterative-development-debugging/iterative-development-1.png)
 
@@ -44,7 +44,7 @@ Bir test çalıştırması başarılı olduktan sonra, işlem hattınızda daha 
 
 ### <a name="setting-breakpoints"></a>Kesme noktalarını ayarlama
 
-Azure Data Factory, işlem hattı tuvalindeki belirli bir etkinliğe ulaşana kadar bir işlem hattından hata ayıklamanıza olanak tanır. Test etmek istediğiniz kadar etkinliğe bir kesme noktası koyun ve **Hata Ayıkla** ' yı seçin. Data Factory, testin yalnızca işlem hattı tuvalindeki kesme noktası etkinliğine kadar çalışmasını sağlar. İşlem hattının tamamını test etmek istemediğiniz durumlarda bu *hata ayıklama* işlemi, yalnızca işlem hattının içindeki etkinliklerin bir alt kümesi yararlı olur.
+Azure Data Factory, işlem hattı tuvalindeki belirli bir etkinliğe ulaşana kadar bir işlem hattından hata ayıklamanıza olanak tanır. Test etmek istediğiniz kadar etkinliğe bir kesme noktası koyun ve **Hata Ayıkla**' yı seçin. Data Factory, testin yalnızca işlem hattı tuvalindeki kesme noktası etkinliğine kadar çalışmasını sağlar. İşlem hattının tamamını test etmek istemediğiniz durumlarda bu *hata ayıklama* işlemi, yalnızca işlem hattının içindeki etkinliklerin bir alt kümesi yararlı olur.
 
 ![İşlem hattı tuvalindeki kesme noktaları](media/iterative-development-debugging/iterative-development-3.png)
 

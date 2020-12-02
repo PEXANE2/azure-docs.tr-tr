@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: c8f11f17c9e110509dcbcda291194f9b8d928c50
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 6d66648680aa14baa53372732df52a6c247a0117
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658970"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483772"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>Key Vault 'de CSR oluşturma ve birleştirme
 
@@ -42,12 +42,14 @@ Aşağıdaki adımlar, Key Vault iş ortağı olmayan sertifika yetkililerinden 
 
 
 
-1.  İlk olarak, **sertifika ilkesi oluşturun**. Key Vault, bu senaryoda seçilen CA desteklenmediğinden sertifikayı verenin Kullanıcı adına kaydetmeyecektir veya yenilemez ve bu nedenle IssuerName bilinmiyor olarak ayarlanır.
+1. İlk olarak, **sertifika ilkesi oluşturun**. Key Vault, bu senaryoda seçilen CA desteklenmediğinden sertifikayı verenin Kullanıcı adına kaydetmeyecektir veya yenilemez ve bu nedenle IssuerName bilinmiyor olarak ayarlanır.
 
-    ```azurepowershell
-    $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=www.contosoHRApp.com" -ValidityInMonths 1  -IssuerName Unknown
-    ```
-
+   ```azurepowershell
+   $policy = New-AzKeyVaultCertificatePolicy -SubjectName "CN=www.contosoHRApp.com" -ValidityInMonths 1  -IssuerName Unknown
+   ```
+    
+   > [!NOTE]
+   > Değerde virgül (,) olan bir göreli ayırt edici ad (RDN) kullanıyorsanız tek tırnak kullanın ve özel karakteri içeren değeri çift tırnak içinde sarın. Örnek: `$policy = New-AzKeyVaultCertificatePolicy -SubjectName 'OU="Docs,Contoso",DC=Contoso,CN=www.contosoHRApp.com' -ValidityInMonths 1  -IssuerName Unknown`. Bu örnekte, `OU` değer **Belgeler, contoso** olarak okur. Bu biçim virgül içeren tüm değerler için geçerlidir.
 
 2. **Sertifika imzalama isteği** oluşturma
 
@@ -56,7 +58,7 @@ Aşağıdaki adımlar, Key Vault iş ortağı olmayan sertifika yetkililerinden 
    $csr.CertificateSigningRequest
    ```
 
-3. **CA tarafından Imzalanan CSR isteğini** alma, `$certificateOperation.CertificateSigningRequest` sertifika için base4 kodlu sertifika imzalama isteğidir. Bu Blobun ve dökümünü verenin sertifika isteği Web sitesine alabilirsiniz. Bu adım CA 'dan CA 'ya farklılık gösterir, en iyi yöntem, bu adımın nasıl yürütüleceğini öğrenmek için CA 'nın yönergelerine bakmanız olabilir. Sertifika isteğinin imzalanmasını sağlamak ve sertifika oluşturma işlemini gerçekleştirmek için, CertReq veya OpenSSL gibi araçları da kullanabilirsiniz.
+3. **CA tarafından Imzalanan CSR isteğini** alma, `$csr.CertificateSigningRequest` sertifika için base4 kodlu sertifika imzalama isteğidir. Bu Blobun ve dökümünü verenin sertifika isteği Web sitesine alabilirsiniz. Bu adım CA 'dan CA 'ya farklılık gösterir, en iyi yöntem, bu adımın nasıl yürütüleceğini öğrenmek için CA 'nın yönergelerine bakmanız olabilir. Sertifika isteğinin imzalanmasını sağlamak ve sertifika oluşturma işlemini gerçekleştirmek için, CertReq veya OpenSSL gibi araçları da kullanabilirsiniz.
 
 
 4. Key Vault **imzalı Isteğin birleştirilmesi** , sertifika isteği veren tarafından Imzalandıktan sonra, imzalanmış sertifikayı geri getirip Azure Key Vault oluşturulan ilk özel ortak anahtar çifti ile birleştirebilirsiniz
@@ -77,17 +79,25 @@ Aşağıdaki adımlar, Key Vault iş ortağı olmayan sertifika yetkililerinden 
     - **Sertifika adı:** ContosoManualCSRCertificate.
     - **Sertifika yetkilisinin (CA) türü:** Tümleşik olmayan bir CA tarafından verilen sertifika
     - **Konu:**`"CN=www.contosoHRApp.com"`
-    - İstediğiniz diğer değerleri seçin. **Oluştur**’a tıklayın.
+    - İstediğiniz diğer değerleri seçin. **Oluştur**'a tıklayın.
 
-    ![Sertifika Özellikleri](../media/certificates/create-csr-merge-csr/create-certificate.png)
+    ![Sertifika Özellikleri](../media/certificates/create-csr-merge-csr/create-certificate.png)  
+
+
 6.  Sertifikanın artık sertifikalar listesine eklendiğini görürsünüz. Az önce oluşturduğunuz yeni sertifikayı seçin. Sertifikanın geçerli durumu henüz CA tarafından verilmediğinden ' devre dışı ' olur.
 7. **Sertifika işlemi** sekmesine tıklayın ve CSR 'yi **İndir**' i seçin.
- ![CSR 'yi Indir düğmesini vurgulayan ekran görüntüsü.](../media/certificates/create-csr-merge-csr/download-csr.png)
 
+   ![CSR 'yi Indir düğmesini vurgulayan ekran görüntüsü.](../media/certificates/create-csr-merge-csr/download-csr.png)
+ 
 8.  İmzalanacak istek için. CSR dosyasını CA 'ya alın.
 9.  İstek CA tarafından imzalandıktan sonra, **imzalanmış isteği** aynı sertifika işlemi ekranında birleştirmek için sertifika dosyasını geri getirin.
 
 Sertifika isteği artık başarıyla birleştirildi.
+
+> [!NOTE]
+> RDN değerlerinizin virgül değeri varsa, değerleri adım 4 ' te gösterildiği gibi çift tırnaklı şekilde çevreleyerek **Konu** alanına da ekleyebilirsiniz.
+> "Subject" için örnek giriş: `DC=Contoso,OU="Docs,Contoso",CN=www.contosoHRApp.com` Bu örnekte, RDN `OU` adında virgül olan bir değer içerir. İçin elde edilen çıktı `OU` **docs, contoso**.
+
 
 ## <a name="adding-more-information-to-csr"></a>CSR 'ye daha fazla bilgi ekleme
 
@@ -102,8 +112,8 @@ CSR oluştururken daha fazla bilgi eklemek istiyorsanız, örneğin-
     ```SubjectName="CN = docs.microsoft.com, OU = Microsoft Corporation, O = Microsoft Corporation, L = Redmond, S = WA, C = US"
     ```
 
->[!Note]
->CSR 'deki tüm bu ayrıntıları içeren bir DV sertifikası isteğinde bulunduğunuzu yapılandırırsanız CA isteği reddedebilir çünkü CA, istekteki tüm bilgileri doğrulayamayabilir. OV sertifikası isteğinde bulunduğunuzu, bu bilgileri CSR 'ye eklemek daha uygun olacaktır.
+> [!NOTE]
+> CSR 'deki tüm bu ayrıntıları içeren bir DV sertifikası isteğinde bulunduğsanız, istekte bulunan tüm bilgileri doğrulayamayabilir, CA isteği reddedebilir. OV sertifikası isteğinde bulunduğsanız, tüm bu bilgileri CSR 'ye eklemek daha uygun olacaktır.
 
 
 ## <a name="troubleshoot"></a>Sorun giderme
@@ -116,6 +126,8 @@ CSR oluştururken daha fazla bilgi eklemek istiyorsanız, örneğin-
 - Verilen sertifika, Azure portal ' devre dışı ' durumunda ise, bu sertifikanın hata iletisini gözden geçirmek için **sertifika işlemini** görüntüleme adımına geçin.
 
 Daha fazla bilgi için [Key Vault REST API başvurusu Içindeki sertifika işlemlerine](/rest/api/keyvault)bakın. İzinleri oluşturma hakkında bilgi için bkz. [kasa-oluşturma veya güncelleştirme](/rest/api/keyvault/vaults/createorupdate) ve [kasa-güncelleştirme erişim ilkesi](/rest/api/keyvault/vaults/updateaccesspolicy).
+
+- **Hata türü ' belirtilen konu adı geçerli bir X500 adı değil '** Bu hata, SubjectName değerlerinde "özel karakterler" eklediyseniz ortaya çıkabilir. Sırasıyla Azure portal ve PowerShell yönergelerindeki notlara bakın. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/20/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: 38f6cf039de2404c7b3eeecc74ee33233f4a2058
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 5638b60b60f3952ab40fa000e457082f4748ac35
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965298"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484354"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP iş yükü için Azure sanal makineler DBMS dağıtımına yönelik konular
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -160,8 +160,8 @@ IOPS gereksiniminizi tek bir VHD 'nin sağlayabileceği şekilde aşarsa, verita
 >
 > Linux 'ta yazılım RAID oluşturmak için yalnızca MDADDM ve mantıksal birim Yöneticisi (LVM) desteklenir. Daha fazla bilgi için bkz.
 >
-> - MDADDM kullanarak [Linux 'ta yazılım RAID yapılandırma](../../linux/configure-raid.md)
-> - LVM ['yi kullanarak Azure 'da bir LINUX VM 'de LVM 'Yi yapılandırma](../../linux/configure-lvm.md)
+> - MDADDM kullanarak [Linux 'ta yazılım RAID yapılandırma](/previous-versions/azure/virtual-machines/linux/configure-raid)
+> - LVM ['yi kullanarak Azure 'da bir LINUX VM 'de LVM 'Yi yapılandırma](/previous-versions/azure/virtual-machines/linux/configure-lvm)
 >
 >
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: bc0a556841c3c6ee91ae472087aaaf7c74009b67
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: da1acc6316d7af87ffe35b9560919c324373591a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785791"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484609"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Bekleyen veri için Azure Depolama şifrelemesi
 
@@ -32,7 +32,7 @@ Bir depolama hesabındaki veriler, performans katmanından (Standart veya Premiu
 
 Azure depolama şifrelemesini temel alan şifreleme modülleri hakkında daha fazla bilgi için bkz. [şifreleme API 'si: yeni nesil](/windows/desktop/seccng/cng-portal).
 
-Azure yönetilen diskler için şifreleme ve anahtar yönetimi hakkında daha fazla bilgi için bkz. Windows VM 'ler için [Azure yönetilen disklerin sunucu tarafı şifrelemesi](../../virtual-machines/windows/disk-encryption.md) veya Linux VM 'Leri için [Azure yönetilen disklerinin sunucu tarafı şifrelemesi](../../virtual-machines/linux/disk-encryption.md) .
+Azure yönetilen diskler için şifreleme ve anahtar yönetimi hakkında daha fazla bilgi için bkz. Windows VM 'ler için [Azure yönetilen disklerin sunucu tarafı şifrelemesi](../../virtual-machines/disk-encryption.md) veya Linux VM 'Leri için [Azure yönetilen disklerinin sunucu tarafı şifrelemesi](../../virtual-machines/disk-encryption.md) .
 
 ## <a name="about-encryption-key-management"></a>Şifreleme anahtarı yönetimi hakkında
 

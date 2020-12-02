@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9ff05f2cf9f29ef86a6db9955e7d28c9035e1bf4
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 26905b746efb0bfcc877e0fa8fad797672bb6447
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376970"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483226"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Azure’da Windows sanal makineleri
 
@@ -47,7 +47,7 @@ Bu tabloda, kullanılabilen konumların listesini edinme yöntemlerinden bazıla
 
 | Yöntem | Açıklama |
 | --- | --- |
-| Azure portal |VM oluştururken listeden konum seçin. |
+| Azure portalı |VM oluştururken listeden konum seçin. |
 | Azure PowerShell |[Get-AzLocation](/powershell/module/az.resources/get-azlocation) komutunu kullanın. |
 | REST API |[List locations](/rest/api/resources/subscriptions) işlemini kullanın. |
 | Azure CLI |[az account list-locations](/cli/azure/account?view=azure-cli-latest) işlemini kullanın. |
@@ -69,7 +69,7 @@ Azure, VM 'nin boyut ve işletim sistemine göre [saatlik bir fiyat](https://azu
 Aboneliğinizde, projeniz için birden fazla VM dağıtımını etkileyebilecek varsayılan [kota sınırları](../../azure-resource-manager/management/azure-subscription-service-limits.md) vardır. Geçerli sınırlar abonelik başına her bölge için 20 VM olarak belirlenmiştir. Sınırların [yükseltilmesini talep etmek için destek bileti oluşturabilirsiniz](../../azure-portal/supportability/resource-manager-core-quotas-request.md)
 
 ### <a name="operating-system-disks-and-images"></a>İşletim sistemi diskleri ve görüntüleri
-Sanal makineler, kendi işletim sistemlerini (OS) ve verilerini depolamak için [sanal sabit diskleri (VHD)](../managed-disks-overview.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) kullanır. VHD bir işletim sistemi yüklemek için seçebileceğiniz görüntüler için de kullanılır. 
+Sanal makineler, kendi işletim sistemlerini (OS) ve verilerini depolamak için [sanal sabit diskleri (VHD)](../managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) kullanır. VHD bir işletim sistemi yüklemek için seçebileceğiniz görüntüler için de kullanılır. 
 
 Azure’da Windows Server işletim sistemlerinin farklı sürümleri ve türleri ile birlikte kullanılabilecek birçok [market görüntüsü](https://azuremarketplace.microsoft.com/marketplace/apps?filters=virtual-machine-images%3Bwindows&page=1) bulunmaktadır. Market görüntüleri; görüntü yayımcısı, teklif, sku ve sürüm (genelde sürüm en son belirtilir) bilgileriyle tanımlanır. Yalnızca 64 bit işletim sistemleri desteklenir. Desteklenen konuk işletim sistemleri, roller ve özellikler hakkında daha fazla bilgi için bkz. [Microsoft Azure sanal makineleri için Microsoft sunucu yazılımı desteği](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines).
 
@@ -77,7 +77,7 @@ Bu tabloda bir görüntünün bilgilerine nasıl erişebileceğiniz gösterilmi�
 
 | Yöntem | Açıklama |
 | --- | --- |
-| Azure portal |Bir görüntüyü kullanmak istediğinizde değerler otomatik olarak belirtilir. |
+| Azure portalı |Bir görüntüyü kullanmak istediğinizde değerler otomatik olarak belirtilir. |
 | Azure PowerShell |[Get-Azvmımagepublisher](/powershell/module/az.compute/get-azvmimagepublisher) -Location *konumu*<BR>[Get-Azvmımageteklifinin](/powershell/module/az.compute/get-azvmimageoffer) -Location *konumu* -yayımcı *PublisherName*<BR>[Get-Azvmımagesku](/powershell/module/az.compute/get-azvmimagesku) -Location *konumu* -yayımcı *PublisherName* -bir *offername* sunma |
 | REST API'leri |[Görüntü yayımcılarını listeleme](/rest/api/compute/platformimages/platformimages-list-publishers)<BR>[Görüntü tekliflerini listeleme](/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[Görüntü sku’larını listeleme](/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
 | Azure CLI |[az VM image List-Publishers](/cli/azure/vm/image?view=azure-cli-latest) --Location *Location*<BR>[az VM image List-teklifler](/cli/azure/vm/image?view=azure-cli-latest) --Location *Location* --Publisher *PublisherName*<BR>[az VM image List-SKU 'lar](/cli/azure/vm?view=azure-cli-latest) --konum *konumu* --yayımcı *PublisherName* -- *offername*|
@@ -96,7 +96,7 @@ Uzantıları kullanarak şu genel görevleri gerçekleştirebilirsiniz:
 ### <a name="related-resources"></a>İlgili kaynaklar
 Bu tablodaki kaynaklar VM tarafından kullanılır ve VM oluşturulduğunda mevcut olmaları ya da oluşturulmaları gerekir.
 
-| Kaynak | Gerekli | Açıklama |
+| Resource | Gerekli | Açıklama |
 | --- | --- | --- |
 | [Kaynak grubu](../../azure-resource-manager/management/overview.md) |Evet |VM bir kaynak grubunda yer almalıdır. |
 | [Depolama hesabı](../../storage/common/storage-account-create.md) |Evet |VM, sanal sabit disklerini depolamak için bir depolama hesabına ihtiyaç duyar. |

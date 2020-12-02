@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/06/2020
 ms.author: nichola
 ms.reviewer: ''
-ms.openlocfilehash: cf5a7a5902484536d0cf2a1844be469f29e15f4b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 86c379316737b7718b62165a6feb93ca3a0e9954
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348475"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484048"
 ---
 # <a name="how-to-use-continuous-access-evaluation-enabled-apis-in-your-applications"></a>Uygulamalarınızda sürekli erişim değerlendirmesi etkin API 'Leri kullanma
 
@@ -27,15 +27,15 @@ Bu makalede, uygulamalarınızda CAE özellikli API 'Lerin nasıl kullanılacağ
 
 ## <a name="implementation-considerations"></a>Uygulama konuları
 
-Sürekli erişim değerlendirmesi kullanmak için hem uygulamanız hem de kaynak API 'sinin erişimi CAE etkin olmalıdır. Ancak, kodunuzun etkin bir kaynağı kullanacak şekilde hazırlanması, etkin olmayan API 'Leri kullanmanıza engel olmaz. 
+Sürekli erişim değerlendirmesi kullanmak için hem uygulamanız hem de kaynak API 'sinin erişimi CAE etkin olmalıdır. Ancak, kodunuzun etkin bir kaynağı kullanacak şekilde hazırlanması, etkin olmayan API 'Leri kullanmanıza engel olmaz.
 
-Bir kaynak API 'SI, CAE uygular ve uygulamanız CAE 'nin işlemesini bildirirse, uygulamanız bu kaynak için CAE belirteçlerini alır. Bu nedenle, uygulamanızı daha önce bildirirseniz, uygulamanızın Microsoft Identity Access belirteçlerini kabul eden tüm kaynak API 'Leri için CAE talep sınamasını işlemesi gerekir. Bu API çağrılarında CAE yanıtlarını işlemeyin, uygulamanız bir API çağrısını yeniden denemeye devam edebilir, ancak belirtecin döndürülen ömrü, ancak CAE nedeniyle iptal edildi. 
+Bir kaynak API 'SI, CAE uygular ve uygulamanız CAE 'nin işlemesini bildirirse, uygulamanız bu kaynak için CAE belirteçlerini alır. Bu nedenle, uygulamanızı daha önce bildirirseniz, uygulamanızın Microsoft Identity Access belirteçlerini kabul eden tüm kaynak API 'Leri için CAE talep sınamasını işlemesi gerekir. Bu API çağrılarında CAE yanıtlarını işlemeyin, uygulamanız bir API çağrısını yeniden denemeye devam edebilir, ancak belirtecin döndürülen ömrü, ancak CAE nedeniyle iptal edildi.
 
 ## <a name="the-code"></a>Kod
 
 İlk adım, kaynak API 'sinden bir yanıtı işleyecek şekilde, CAE nedeniyle çağrıyı reddetmeden kod eklemektir. CAE ile, erişim belirteci iptal edildiğinde veya API kullanılan IP adresinde bir değişiklik algıladığında API 'Ler 401 durumunu ve bir WWW-Authenticate üst bilgisini döndürür. WWW-Authenticate üst bilgisi, uygulamanın yeni bir erişim belirteci almak için kullanabileceği bir talep zorluğu içerir.
 
-Örneğin:
+Örnek:
 
 ```console
 HTTP 401; Unauthorized
@@ -116,4 +116,4 @@ Kullanıcı oturumlarını Iptal etmek için Azure portal kullanarak uygulamanı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için bkz. [sürekli erişim değerlendirmesi](/conditional-access/concept-continuous-access-evaluation.md).
+Daha fazla bilgi için bkz. [sürekli erişim değerlendirmesi](../conditional-access/concept-continuous-access-evaluation.md).

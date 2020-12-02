@@ -300,7 +300,7 @@
         - name: Ayrılmış örnekler
           items:
             - name: VM'ler için ön ödeme yapma
-              href: prepay-reserved-vm-instances.md
+              href: ../prepay-reserved-vm-instances.md
             - name: Azure ayırmaları nedir?
               href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md
             - name: Sanal makine örneği boyut esnekliği
@@ -570,7 +570,7 @@
             - name: Güçlendirilmiş erişim konağı oluşturma
               items:
                 - name: Portal
-                  href: ../../bastion/bastion-create-host-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                  href: ../../bastion/tutorial-create-host-portal.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
                 - name: PowerShell
                   href: ../../bastion/bastion-create-host-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                 - name: CLI
@@ -650,6 +650,7 @@
         - name: İşletim sistemi diskini değiştirme
           href: os-disk-swap.md
         - name: Bir VM’yi etiketleme
+          href: time-sync.md
           items:
             - name: Portal
               href: ../tag-portal.md
@@ -660,7 +661,6 @@
             - name: Şablon
               href: ../tag-template.md
             - name: Zaman eşitleme
-          href: time-sync.md
         - name: Bir VM üzerinde betikleri çalıştırma
           href: run-scripts-in-vm.md
           items:
@@ -863,8 +863,6 @@
           href: install-mongodb.md
         - name: Azure’da SAP
           href: ../workloads/sap/get-started.md
-        - name: MATLAB kümesi
-          href: matlab-mdcs-cluster.md
         - name: Visual Studio
           href: using-visual-studio-vm.md
         - name: Yüksek Performanslı Bilgi İşlem (HPC)
@@ -962,7 +960,7 @@
           href: ../../virtual-network/quick-create-portal.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
         - name: Bağlantı noktalarını VM’ye açma
           items:
-            - name: Azure portal
+            - name: Azure portalı
               href: nsg-quickstart-portal.md
             - name: Azure PowerShell
               href: nsg-quickstart-powershell.md

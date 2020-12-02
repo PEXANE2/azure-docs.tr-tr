@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 49a89228afd3b46f38afafb8ff16bc63a40dd35b
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: ce0ea938cac4afa043b8770a4d6a98f08ec145ec
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635220"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484898"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Azure depolama hesabı (Önizleme) için paylaşılan anahtar yetkilendirmesini engelleyin
 
@@ -47,7 +47,7 @@ Bir depolama hesabına yönelik isteklerin nasıl yetkilendirildiğini izlemek i
 
 Paylaşılan anahtar veya SAS ile yapılan istekleri izleyen bir ölçüm oluşturmak için aşağıdaki adımları izleyin:
 
-1. Azure portalda depolama hesabınıza gidin. **İzleme** bölümünde **ölçümler** ' i seçin.
+1. Azure portalda depolama hesabınıza gidin. **İzleme** bölümünde **ölçümler**' i seçin.
 1. **Ölçüm ekle** seçeneğini belirleyin. **Ölçüm** iletişim kutusunda aşağıdaki değerleri belirtin:
     1. **Kapsam** alanını depolama hesabının adı olarak ayarlayın.
     1. **Ölçüm ad alanını** *Hesap* olarak ayarlayın. Bu ölçüm, depolama hesabına yönelik tüm istekleri rapor eder.
@@ -62,7 +62,7 @@ Paylaşılan anahtar veya SAS ile yapılan istekleri izleyen bir ölçüm oluşt
 1. **Filtre** iletişim kutusunda aşağıdaki değerleri belirtin:
     1. **Özellik** değerini *kimlik doğrulama* olarak ayarlayın.
     1. **İşleç** alanını eşittir işareti (=) olarak ayarlayın.
-    1. **Değerler** alanında *hesap anahtarı* ve *SAS* ' ı seçin.
+    1. **Değerler** alanında *hesap anahtarı* ve *SAS*' ı seçin.
 1. Sağ üst köşede, ölçüsünü görüntülemek istediğiniz zaman aralığını seçin. Ayrıca, isteklerin toplanmasının ne kadar ayrıntılı olduğunu, 1 dakikadan 1 aya kadar bir yerde aralıklar belirterek belirtebilirsiniz. Örneğin, son 30 gün içinde güne göre toplanan istekleri görmek için **zaman aralığını** 30 güne ve **zaman parçalı** olarak 1 güne ayarlayın.
 
 Ölçüyü yapılandırdıktan sonra, depolama hesabınıza yönelik istekler grafikte görünmeye başlar. Aşağıdaki görüntüde, paylaşılan anahtarla yetkilendirilmiş veya bir SAS belirteciyle oluşturulan istekler gösterilmektedir. İstekler, son otuz gün içinde gün başına toplanır.
@@ -77,7 +77,7 @@ Azure depolama günlükleri, bir isteğin nasıl yetkilendirildiği de dahil olm
 
 Azure depolama hesabınıza istekleri nasıl yetkilendirdiğini değerlendirmek amacıyla günlüğe kaydetmek için Azure Izleyici 'de Azure depolama günlüğü 'nü (Önizleme) kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Storage 'ı izleme](../blobs/monitor-blob-storage.md).
 
-Azure Izleyici 'de Azure depolama günlüğü, günlük verilerini çözümlemek için günlük sorgularının kullanılmasını destekler. Günlükleri sorgulamak için bir Azure Log Analytics çalışma alanı kullanabilirsiniz. Günlük sorguları hakkında daha fazla bilgi edinmek için bkz. [öğretici: Log Analytics sorguları kullanmaya başlama](../../azure-monitor/log-query/get-started-portal.md).
+Azure Izleyici 'de Azure depolama günlüğü, günlük verilerini çözümlemek için günlük sorgularının kullanılmasını destekler. Günlükleri sorgulamak için bir Azure Log Analytics çalışma alanı kullanabilirsiniz. Günlük sorguları hakkında daha fazla bilgi edinmek için bkz. [öğretici: Log Analytics sorguları kullanmaya başlama](../../azure-monitor/log-query/log-analytics-tutorial.md).
 
 #### <a name="create-a-diagnostic-setting-in-the-azure-portal"></a>Azure portal bir tanılama ayarı oluşturun
 
@@ -88,10 +88,10 @@ Azure depolama verilerini Azure Izleyici ile günlüğe kaydetmek ve Azure Log A
 1. Azure portalda depolama hesabınıza gidin.
 1. Izleme bölümünde **Tanılama ayarları (Önizleme)** öğesini seçin.
 1. İsteklerini günlüğe kaydetmek istediğiniz Azure Storage hizmetini seçin. Örneğin, istekleri blob depolamaya kaydetmek için **BLOB** ' u seçin.
-1. **Tanılama ayarı Ekle** ' yi seçin.
+1. **Tanılama ayarı ekle**’yi seçin.
 1. Tanılama ayarı için bir ad girin.
-1. **Kategori ayrıntıları** ' nın altında, **günlük** bölümünde, tüm veri isteklerini seçili hizmete kaydetmek için **storageread** , **storagewrite** ve **storagedelete** ' i seçin.
-1. **Hedef ayrıntıları** altında **Log Analytics gönder** ' i seçin. Aşağıdaki görüntüde gösterildiği gibi aboneliğinizi ve daha önce oluşturduğunuz Log Analytics çalışma alanını seçin.
+1. **Kategori ayrıntıları**' nın altında, **günlük** bölümünde, tüm veri isteklerini seçili hizmete kaydetmek için **storageread**, **storagewrite** ve **storagedelete** ' i seçin.
+1. **Hedef ayrıntıları** altında **Log Analytics gönder**' i seçin. Aşağıdaki görüntüde gösterildiği gibi aboneliğinizi ve daha önce oluşturduğunuz Log Analytics çalışma alanını seçin.
 
     :::image type="content" source="media/shared-key-authorization-prevent/create-diagnostic-setting-logs.png" alt-text="İstekleri günlüğe kaydetmek için bir tanılama ayarı oluşturmayı gösteren ekran görüntüsü":::
 
@@ -125,12 +125,12 @@ Paylaşılan anahtarla yetkilendirilmiş istekleri güvenli bir şekilde reddede
 > [!WARNING]
 > Herhangi bir istemci şu anda paylaşılan anahtarla Depolama hesabınızdaki verilere erişiyorsa, Microsoft, depolama hesabına paylaşılan anahtar erişimine izin vermeden önce bu istemcileri Azure AD 'ye geçirmenize olanak önerir.
 
-# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Azure portal bir depolama hesabı için paylaşılan anahtar yetkilendirmesi engellemek için şu adımları izleyin:
 
 1. Azure portalda depolama hesabınıza gidin.
-1. **Ayarlar** ' ın altındaki **yapılandırma** ayarını bulun.
+1. **Ayarlar**' ın altındaki **yapılandırma** ayarını bulun.
 1. **Paylaşılan anahtar erişimine Izin ver** ' i **devre dışı** olarak ayarla.
 
     :::image type="content" source="media/shared-key-authorization-prevent/shared-key-access-portal.png" alt-text="Hesap için paylaşılan anahtar erişiminin nasıl engelileceğini gösteren ekran görüntüsü":::
@@ -213,11 +213,11 @@ Bazı Azure Araçları, Azure depolama 'ya erişmek için Azure AD yetkilendirme
 
 | Azure aracı | Azure depolama için Azure AD yetkilendirmesi |
 |-|-|
-| Azure portal | Destekleniyor. Azure portal Azure AD hesabınızla yetkilendirme hakkında daha fazla bilgi için bkz. [Azure Portal blob verilerine erişim yetkisi verme](../blobs/authorize-data-operations-portal.md). |
+| Azure portalı | Destekleniyor. Azure portal Azure AD hesabınızla yetkilendirme hakkında daha fazla bilgi için bkz. [Azure Portal blob verilerine erişim yetkisi verme](../blobs/authorize-data-operations-portal.md). |
 | AzCopy | BLOB depolama için desteklenir. AzCopy işlemlerini yetkilendirme hakkında daha fazla bilgi için bkz. AzCopy belgelerinde [Yetkilendirme kimlik bilgilerini nasıl sağlayacaksınız](storage-use-azcopy-v10.md#choose-how-youll-provide-authorization-credentials) . |
 | Azure Depolama Gezgini | Yalnızca BLOB depolama ve Azure Data Lake Storage 2. için desteklenir. Kuyruk depolamaya Azure AD erişimi desteklenmiyor. Doğru Azure AD kiracısını seçtiğinizden emin olun. Daha fazla bilgi için bkz. [Depolama Gezgini kullanmaya başlama](../../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows#sign-in-to-azure) |
 | Azure PowerShell | Destekleniyor. Azure AD ile blob veya kuyruk işlemleri için PowerShell komutlarının nasıl yetkilendirdiği hakkında daha fazla bilgi için bkz. blob verilerine erişmek için Azure [ad kimlik bilgileriyle PowerShell komutlarını çalıştırma](../blobs/authorize-data-operations-powershell.md) veya [kuyruk verilerine ERIŞIM için Azure AD kimlik bilgileriyle PowerShell komutlarını çalıştırma](../queues/authorize-data-operations-powershell.md). |
-| Azure CLI | Destekleniyor. Blob ve kuyruk verilerine erişim için Azure AD ile Azure CLı komutlarına yetki verme hakkında bilgi için bkz. [BLOB veya kuyruk verilerine erişmek için Azure AD kimlik bilgileriyle Azure CLI komutlarını çalıştırma](authorize-data-operations-cli.md). |
+| Azure CLI | Destekleniyor. Blob ve kuyruk verilerine erişim için Azure AD ile Azure CLı komutlarına yetki verme hakkında bilgi için bkz. [BLOB veya kuyruk verilerine erişmek için Azure AD kimlik bilgileriyle Azure CLI komutlarını çalıştırma](../blobs/authorize-data-operations-cli.md). |
 | Azure IoT Hub | Destekleniyor. Daha fazla bilgi için bkz. [sanal ağlar için IoT Hub desteği](../../iot-hub/virtual-network-support.md). |
 | Azure Cloud Shell | Azure Cloud Shell, Azure portal tümleşik bir kabuktur. Azure Cloud Shell, depolama hesabındaki bir Azure dosya paylaşımında Kalıcılık için dosya barındırır. Bu depolama hesabı için paylaşılan anahtar yetkilendirmesi devre dışı bırakılırsa, bu dosyalar erişilemez duruma getirilir. Daha fazla bilgi için bkz. [Microsoft Azure dosyaları depolama alanınızı bağlama](../../cloud-shell/overview.md#connect-your-microsoft-azure-files-storage). <br /><br /> Paylaşılan anahtar erişimine izin verilmeyen depolama hesaplarını yönetmek için Azure Cloud Shell komutları çalıştırmak için, önce Azure rol tabanlı erişim denetimi (Azure RBAC) aracılığıyla bu hesaplara gerekli izinleri vermiş olduğunuzdan emin olun. Daha fazla bilgi için bkz. [Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?](../../role-based-access-control/overview.md). |
 

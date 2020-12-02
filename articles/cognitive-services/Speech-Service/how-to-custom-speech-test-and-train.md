@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: cd9b85f22866c529b66fa6df07bd524516726086
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: a5457dc94082f089d3adf02c9614d05d2c5db244
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165341"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484014"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Özel Konuşma için verileri hazırlama
 
@@ -46,9 +46,9 @@ Bu tabloda, kabul edilen veri türleri, her veri türü ne zaman kullanılmalı 
 
 | Veri türü | Test için kullanılan | Önerilen miktar | Eğitim için kullanılır | Önerilen miktar |
 |-----------|-----------------|----------|-------------------|----------|
-| [Ses](#audio-data-for-testing) | Yes<br>Görsel inceleme için kullanılır | 5 + ses dosyası | No | YOK |
-| [Ses + ınsan etiketli yazılı betikler](#audio--human-labeled-transcript-data-for-testingtraining) | Yes<br>Doğruluğu değerlendirmek için kullanılır | 0,5-5 saat ses | Yes | 1-1000 saat ses |
-| [İlgili metin](#related-text-data-for-training) | No | Yok | Yes | 1-200 MB ilgili metin |
+| [Ses](#audio-data-for-testing) | Evet<br>Görsel inceleme için kullanılır | 5 + ses dosyası | Hayır | Yok |
+| [Ses + ınsan etiketli yazılı betikler](#audio--human-labeled-transcript-data-for-testingtraining) | Evet<br>Doğruluğu değerlendirmek için kullanılır | 0,5-5 saat ses | Evet | 1-1000 saat ses |
+| [İlgili metin](#related-text-data-for-training) | Hayır | Yok | Evet | 1-200 MB ilgili metin |
 
 Dosyalar bir veri kümesine türlerine göre gruplanmalı ve bir. zip dosyası olarak karşıya yüklenir. Her veri kümesi yalnızca tek bir veri türü içerebilir.
 
@@ -91,7 +91,7 @@ Ses dosyalarınızın Özel Konuşma Tanıma ile kullanım için doğru biçimle
 
 Ses özelliklerini doğrulamak veya var olan sesleri uygun biçimlere dönüştürmek için <a href="http://sox.sourceforge.net" target="_blank" rel="noopener">Sox <span class="docon docon-navigate-external x-hidden-focus"></span> </a> kullanın. Aşağıda, bu etkinliklerin her birinin SoX komut satırı aracılığıyla nasıl yapılabileceği hakkında bazı örnekler verilmiştir:
 
-| Etkinlik | Description | SoX komutu |
+| Etkinlik | Açıklama | SoX komutu |
 |----------|-------------|-------------|
 | Ses biçimini denetle | Denetlemek için bu komutu kullanın<br>ses dosyası biçimi. | `sox --i <filename>` |
 | Ses biçimini Dönüştür | Dönüştürmek için bu komutu kullanın<br>ses dosyasını tek kanala, 16 bit, 16 KHz. | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
@@ -204,4 +204,4 @@ Söylenişleri için ilgili veri dosyanızın doğru biçimlendirildiğinden emi
 * [Verilerinizi inceleyin](how-to-custom-speech-inspect-data.md)
 * [Verilerinizi değerlendirin](how-to-custom-speech-evaluate-data.md)
 * [Modelinizi eğitme](how-to-custom-speech-train-model.md)
-* [Modelinizi dağıtın](how-to-custom-speech-deploy-model.md)
+* [Modelinizi dağıtın](./how-to-custom-speech-train-model.md)

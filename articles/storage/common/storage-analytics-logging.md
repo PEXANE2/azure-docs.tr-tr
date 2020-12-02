@@ -9,14 +9,14 @@ ms.date: 07/23/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 971f0cd74d7ccc6e2b0d8049a4441ba3d465b70a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: eb71de223e2d840e0caa0444b837e16e1f091414
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787678"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484796"
 ---
-# <a name="azure-storage-analytics-logging"></a>Azure Depolama analizini günlüğe kaydetme
+# <a name="azure-storage-analytics-logging"></a>Azure Depolama analizi günlüğü
 
 Depolama Analizi, bir depolama cihazına gönderilen başarılı ve başarısız isteklerle ilgili ayrıntılı bilgileri günlüğe kaydeder. Bu bilgileri kullanarak istekleri ayrı ayrı izleyebilir ve depolama hizmetiyle ilgili sorunları tanılayabilirsiniz. İstekler en iyi çaba temelinde günlüğe kaydedilir.
 
@@ -139,7 +139,7 @@ Günlüğe kaydetmek istediğiniz depolama hizmetlerini ve günlüğe kaydedilen
 
  Geçerli ayarları almak için **Get-AzStorageServiceLoggingProperty** cmdlet 'ini ve geçerli ayarları değiştirmek için **set-AzStorageServiceLoggingProperty** cmdlet 'ini Azure PowerShell kullanarak depolama hesabınızda depolama günlüğü yapılandırmak için yerel makinenizde PowerShell kullanabilirsiniz.  
 
- Depolama günlüğünü denetleyen cmdlet 'ler, günlüğe kaydedilecek istek türleri için virgülle ayrılmış bir liste içeren bir **Loggingoperations** parametresi kullanır. Olası üç istek türü **okuma** , **yazma** ve **silme** . Günlüğe kaydetmeyi devre dışı bırakmak için, **Loggingoperations** parametresi için **none** değerini kullanın.  
+ Depolama günlüğünü denetleyen cmdlet 'ler, günlüğe kaydedilecek istek türleri için virgülle ayrılmış bir liste içeren bir **Loggingoperations** parametresi kullanır. Olası üç istek türü **okuma**, **yazma** ve **silme**. Günlüğe kaydetmeyi devre dışı bırakmak için, **Loggingoperations** parametresi için **none** değerini kullanın.  
 
  Aşağıdaki komut, bekletme için beş güne ayarlanmış varsayılan depolama hesabınızdaki Kuyruk hizmeti okuma, yazma ve silme istekleri için günlüğe kaydetme yapar:  
 
@@ -204,7 +204,7 @@ Aşağıdaki örnek, 15 Mayıs, 10:00 ve 11 Mayıs 2014 Mayıs 'ta başlayan saa
 azcopy copy 'https://mystorageaccount.blob.core.windows.net/$logs/queue' 'C:\Logs\Storage' --include-path '2014/05/20/09;2014/05/20/10;2014/05/20/11' --recursive
 ```
 
-Belirli dosyaları indirme hakkında daha fazla bilgi edinmek için bkz. [belirli dosyaları indirme](./storage-use-azcopy-blobs.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json#download-specific-files).
+Belirli dosyaları indirme hakkında daha fazla bilgi edinmek için bkz. [belirli dosyaları indirme](./storage-use-azcopy-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#download-specific-files).
 
 Günlük verilerinizi indirdiyseniz, dosyalardaki günlük girişlerini görüntüleyebilirsiniz. Bu günlük dosyaları, çok sayıda günlük okuma aracının ayrıştırabildiği sınırlı bir metin biçimi kullanır (daha fazla bilgi için bkz. kılavuz [izleme, tanılama ve sorun giderme Microsoft Azure depolama](storage-monitoring-diagnosing-troubleshooting.md)). Farklı araçların, günlük dosyalarınızın içeriğini biçimlendirmek, filtrelemek, sıralamak ve ad aramak için farklı özellikleri vardır. Depolama günlüğü günlük dosyası biçimi ve içeriği hakkında daha fazla bilgi için bkz. [depolama Analizi günlük biçimi](/rest/api/storageservices/storage-analytics-log-format) ve [depolama Analizi günlüğe kaydedilmiş Işlemler ve durum iletileri](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages).
 

@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: how-to
 ms.date: 11/13/2020
 ms.author: juliako
-ms.openlocfilehash: 7d5108d2c155c7e21f2f94f532bd1aa0a96c5b3f
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: b955c0f494b757fd29c400194ef8b11314a89a03
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "96020553"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483619"
 ---
 # <a name="things-to-consider-when-using-video-indexer-at-scale"></a>Video Indexer ölçekli kullanırken göz önünde bulundurmanız gerekenler
 
@@ -50,7 +50,7 @@ URL 'YI kullanarak videoları karşıya yüklediğinizde, yalnızca bir medya do
 > [!TIP]
 > `videoUrl`Karşıya yükleme VIDEOSU API 'sinin isteğe bağlı parametresini kullanın.
 
-URL kullanarak videoları karşıya yükleme hakkında bir örnek görmek için [Bu örneğe](upload-index-videos.md#code-sample)göz atın. Ya da, verilerinizi [SAS URL 'sini](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)kullanarak video Indexer gönderebileceğiniz bir depolama hesabına alabilmeniz için hızlı ve güvenilir bir yol Için [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10) kullanabilirsiniz.
+URL kullanarak videoları karşıya yükleme hakkında bir örnek görmek için [Bu örneğe](upload-index-videos.md#code-sample)göz atın. Ya da, verilerinizi [SAS URL 'sini](../../storage/common/storage-sas-overview.md)kullanarak video Indexer gönderebileceğiniz bir depolama hesabına alabilmeniz için hızlı ve güvenilir bir yol Için [AzCopy](../../storage/common/storage-use-azcopy-v10.md) kullanabilirsiniz.
 
 ## <a name="increase-media-reserved-units-if-needed"></a>Gerekirse medya ayrılmış birimlerini artır
 

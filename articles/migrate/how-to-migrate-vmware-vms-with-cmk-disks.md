@@ -7,12 +7,12 @@ ms.manager: carmonm
 ms.topic: article
 ms.date: 03/12/2020
 ms.author: raynew
-ms.openlocfilehash: 01f30305529e7f142be0ca6ddffa0f5a12a235bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89b795011460ee2803d07d14b9c2abe9c8ffca55
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260024"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483360"
 ---
 # <a name="migrate-vmware-vms-to-azure-vms-enabled-with-server-side-encryption-and-customer-managed-keys"></a>VMware VM 'lerini, sunucu tarafı şifreleme ve müşteri tarafından yönetilen anahtarlarla etkinleştirilen Azure VM 'lerine geçirin
 
@@ -22,12 +22,12 @@ Azure geçişi sunucusu geçiş portalı deneyimi, [VMware VM 'lerini aracısız
 
 Bu makaledeki örneklerde, Kaynak Yöneticisi şablonu oluşturmak ve dağıtmak için gereken görevleri gerçekleştirmek üzere [Azure PowerShell](/powershell/azure/new-azureps-module-az) kullanılır.
 
-Yönetilen diskler için müşteri tarafından yönetilen anahtarlarla (CMK) sunucu tarafı şifreleme (SSE) hakkında [daha fazla bilgi edinin](../virtual-machines/windows/disk-encryption.md) .
+Yönetilen diskler için müşteri tarafından yönetilen anahtarlarla (CMK) sunucu tarafı şifreleme (SSE) hakkında [daha fazla bilgi edinin](../virtual-machines/disk-encryption.md) .
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Araç gereksinimlerini anlamak üzere aracısız çoğaltma ile VMware VM 'lerini Azure 'a geçirme [öğreticisini gözden geçirin](tutorial-migrate-vmware.md) .
-- Azure geçişi projesi oluşturmak ve projeye **Azure geçişi: sunucu geçiş** aracını eklemek için [Bu yönergeleri izleyin](how-to-add-tool-first-time.md) .
+- Azure geçişi projesi oluşturmak ve projeye **Azure geçişi: sunucu geçiş** aracını eklemek için [Bu yönergeleri izleyin](./create-manage-projects.md) .
 - Şirket içi ortamınızda VMware için Azure geçişi gereci ayarlamak ve bulma işlemini gerçekleştirmek için [Bu yönergeleri izleyin](how-to-set-up-appliance-vmware.md) .
 
 ## <a name="prepare-for-replication"></a>Çoğaltmaya hazırlanma

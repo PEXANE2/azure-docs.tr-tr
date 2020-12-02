@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: a0efc6f6f6d4ae6355fbb42fbc7e13ad7c078cf3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 19a4645e2bde4cf6b9f9a78123b334c290581ac4
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792897"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484541"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>Düzenli aralıklarla veri aktarımına yönelik çözümler
  
@@ -21,28 +21,28 @@ Bu makalede, verileri düzenli aralıklarla aktarırken veri aktarımı çözüm
 
 Tüm kullanılabilir veri aktarımı seçeneklerine genel bir bakış için bkz. [Azure veri aktarımı çözümü seçme](storage-choose-data-transfer-solution.md).
 
-## <a name="recommended-options"></a>Önerilen Seçenekler
+## <a name="recommended-options"></a>Önerilen seçenekler
 
-Düzenli veri aktarımı için önerilen seçenekler, aktarımın yinelenen veya sürekli olmasına bağlı olarak iki kategoriye ayrılır.
+Düzenli aralıklarla veri aktarımı için önerilen seçenekler, aktarımın düzenli veya sürekli olmasına bağlı olarak iki kategoriye ayrılır.
 
-- **Komut dosyalı/programlı araçlar** – düzenli aralıklarla oluşan veri aktarımı Için AzCopy ve Azure Storage REST API 'leri gibi betikleştirilmiş ve programlı araçları kullanın. Bu araçlar BT uzmanlarına ve geliştiricilere yöneliktir.
+- **Komut dosyalı/programlı araçlar** – düzenli aralıklarla oluşan veri aktarımı Için AzCopy ve Azure Storage REST API 'leri gibi betikleştirilmiş ve programlı araçları kullanın. Bu araçlar, BT uzmanları ve geliştiriciler için tasarlanmıştır.
 
-    - **AzCopy** -bu komut satırı aracını, En Iyi performansla Azure Blob 'Larına, dosyalarına ve tablo depolamasına verileri kolayca kopyalamak için kullanın. AzCopy eşzamanlılık ve paralellik destekler ve kesintiye uğradığında kopyalama işlemlerini sürdürülemez.
+    - **AzCopy** -bu komut satırı aracını, En Iyi performansla Azure Blob 'Larına, dosyalarına ve tablo depolamasına verileri kolayca kopyalamak için kullanın. AzCopy eşzamanlılık ve paralellik desteğine ek olarak kesintiye uğrayan kopyalama işlemlerini sürdürme olanağı sunar.
     - **Azure depolama REST API 'leri/SDK 'lar** – bir uygulama oluştururken, uygulamayı Azure Storage REST API 'lerinde geliştirebilir ve birden çok dilde sunulan Azure SDK 'larını kullanabilirsiniz. REST API 'Leri, verilerin Azure 'a ve Azure 'a yüksek performanslı olarak kopyalanması için özellikle tasarlanan Azure Storage veri taşıma kitaplığından da yararlanabilir.
 
-- **Sürekli veri alma araçları** : sürekli ve devam eden veri alımı için Data Box çevrimiçi aktarım cihazından birini veya Azure Data Factory seçebilirsiniz. Bu araçlar BT uzmanları tarafından ayarlanır ve veri aktarımını saydam bir şekilde otomatikleştirebilir.
+- **Sürekli veri alma araçları** : sürekli ve devam eden veri alımı için Data Box çevrimiçi aktarım cihazından birini veya Azure Data Factory seçebilirsiniz. Bu araçlar BT uzmanları tarafından kurulur ve saydam bir şekilde veri aktarımını otomatikleştirebilir.
 
-    - **Azure Data Factory** – Data Factory bir aktarım işleminin ölçeğini genişletmek için ve düzenleme ve kurumsal sınıf izleme özelliklerine ihtiyaç duyuyorsanız kullanılmalıdır. Çeşitli Azure Hizmetleri, şirket içi veya ikisinin bir birleşimi arasında düzenli olarak dosya aktaran bir bulut işlem hattı ayarlamak için Azure Data Factory kullanın. Azure Data Factory, farklı veri mağazalarından veri alan ve veri taşıma ve veri dönüştürme işlemlerini otomatik hale getirmeye yönelik veri odaklı iş akışlarını düzenlemenizi sağlar.
-    - **Çevrimiçi aktarımlar için Azure Data Box ailesi** -Data Box Edge ve Data Box Gateway, verileri Azure 'a ve dışına taşıyabileceği çevrimiçi ağ cihazlarıdır. Data Box Edge, karşıya yüklemeden önce verileri önceden işlemek için yapay zeka (AI) özellikli uç işlem kullanır. Data Box Gateway, aynı veri aktarımı özelliklerine sahip bir cihazın sanal sürümüdür.
+    - **Azure Data Factory** – Data Factory bir aktarım işleminin ölçeğini genişletmek için ve düzenleme ve kurumsal sınıf izleme özelliklerine ihtiyaç duyuyorsanız kullanılmalıdır. Azure Data Factory'yi kullanarak birden çok Azure hizmeti, şirket içi ortam veya ikisinin birleşiminin bulunduğu bir ortamda düzenli dosya aktarımı gerçekleştiren bir bulut işlem hattı ayarlayabilirsiniz. Azure Data Factory, farklı veri depolarında bulunan verileri alan veri temelli iş akışlarını düzenlemenize ve veri taşıma ile veri dönüşüm süreçlerini otomatikleştirmenize olanak tanır.
+    - **Çevrimiçi aktarımlar için Azure Data Box ailesi** -Data Box Edge ve Data Box Gateway, verileri Azure 'a ve dışına taşıyabileceği çevrimiçi ağ cihazlarıdır. Data Box Edge, verileri karşıya yüklemeden önce işlemek için yapay zeka destekli uç işlemini kullanır. Data Box Gateway, cihazın sanal bir sürümüdür ancak aynı veri aktarımı yeteneklerine sahiptir.
 
 
 ## <a name="comparison-of-key-capabilities"></a>Anahtar özellikleri karşılaştırması
 
-Aşağıdaki tabloda, önemli özelliklerde farklılıklar özetlenmektedir.
+Aşağıdaki tabloda, temel özellikler arasındaki farklar özetlenmiştir.
 
 ### <a name="scriptedprogrammatic-network-data-transfer"></a>Betikleştirilmiş/programlı ağ veri aktarımı
 
-| Yetenek                  | AzCopy                                 | Azure depolama REST API 'Leri       |
+| Özellik                  | AzCopy                                 | Azure Depolama REST API'leri       |
 |-----------------------------|----------------------------------------|-------------------------------|
 | Form faktörü                 | Microsoft 'tan komut satırı aracı       | Müşterilere depolamaya yönelik geliştirme <br> Azure istemci kitaplıklarını kullanarak REST API 'Leri |
 | İlk bir kerelik kurulum     | En az                                | Orta, değişken geliştirme çabaları    |
@@ -65,7 +65,7 @@ Aşağıdaki tabloda, önemli özelliklerde farklılıklar özetlenmektedir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [AzCopy ile veri aktarma](./storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ftables%252ftoc.json).
+- [AzCopy ile veri aktarma](./storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json).
 - [Depolama REST API 'leri ile veri aktarımı hakkında daha fazla bilgi](/dotnet/api/overview/azure/storage).
 - Nasıl yapılacağını anlayın:
     - [Data Box Gateway verileri aktarın](../../databox-online/data-box-gateway-deploy-add-shares.md).

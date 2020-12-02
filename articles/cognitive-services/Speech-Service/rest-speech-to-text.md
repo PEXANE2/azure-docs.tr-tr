@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 89e5fa180b011cbedebc25a5e5d555a2190805f8
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: dff7ff0afd6c236645731dc7edd936b0b808716b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015367"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483929"
 ---
 # <a name="speech-to-text-rest-api"></a>Konuşmayı metne dönüştürme REST API'si
 
@@ -58,13 +58,13 @@ Bu parametreler REST isteğinin sorgu dizesine dahil edilebilir.
 | `language` | Tanınmakta olan konuşulan dili tanımlar. [Desteklenen diller](language-support.md#speech-to-text)bölümüne bakın. | Gerekli |
 | `format` | Sonuç biçimini belirtir. Kabul edilen değerler `simple` şunlardır `detailed` . Basit sonuçlar,,, `RecognitionStatus` `DisplayText` ve içerir `Offset` `Duration` . Ayrıntılı yanıtlar, görüntü metninin dört farklı temsilini içerir. Varsayılan ayar `simple` değeridir. | İsteğe Bağlı |
 | `profanity` | Tanıma sonuçlarında küfür nasıl işleneceğini belirtir. Kabul edilen değerler `masked` , küfür ile bir `removed` bütün küfür kaldıran, ya da `raw` sonuçtaki küfür da dahil olmak üzere yıldız işaretiyle değiştirilir. Varsayılan ayar `masked` değeridir. | İsteğe Bağlı |
-| `cid` | Özel modeller oluşturmak için [özel konuşma tanıma portalını](how-to-custom-speech.md) kullanırken, **dağıtım** SAYFASıNDA bulunan **uç nokta kimlikleri** aracılığıyla özel modeller kullanabilirsiniz. Sorgu dizesi parametresinin bağımsız değişkeni olarak **uç nokta kimliğini** kullanın `cid` . | İsteğe Bağlı |
+| `cid` | Özel modeller oluşturmak için [özel konuşma tanıma portalını](./custom-speech-overview.md) kullanırken, **dağıtım** SAYFASıNDA bulunan **uç nokta kimlikleri** aracılığıyla özel modeller kullanabilirsiniz. Sorgu dizesi parametresinin bağımsız değişkeni olarak **uç nokta kimliğini** kullanın `cid` . | İsteğe Bağlı |
 
 ## <a name="request-headers"></a>İstek üst bilgileri
 
 Bu tabloda, konuşma-metin istekleri için gerekli ve isteğe bağlı üstbilgiler listelenmektedir.
 
-|Üst bilgi| Description | Gerekli/Isteğe bağlı |
+|Üst bilgi| Açıklama | Gerekli/Isteğe bağlı |
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | Konuşma hizmeti abonelik anahtarınız. | Bu üst bilgi ya da `Authorization` gerekli. |
 | `Authorization` | Bir yetkilendirme belirteci öncesinde kelimedir `Bearer` . Daha fazla bilgi için bkz. [Kimlik doğrulaması](#authentication). | Bu üst bilgi ya da `Ocp-Apim-Subscription-Key` gerekli. |

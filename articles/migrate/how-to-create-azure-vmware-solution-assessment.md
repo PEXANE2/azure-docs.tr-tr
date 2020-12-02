@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: rajosh
-ms.openlocfilehash: 834fd32d17c4a5ff112dd11a331a59336d7cbcb7
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: f9fdff54cbd795c6aeda1708dcae8d00022a6a43
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315247"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483513"
 ---
 # <a name="create-an-azure-vmware-solution-avs-assessment"></a>Azure VMware çözümü (AVS) değerlendirmesi oluşturma
 
@@ -21,7 +21,7 @@ Bu makalede, Azure geçişi: Sunucu değerlendirmesi ile şirket içi VMware VM 
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-- Bir Azure geçişi projesi [oluşturduğunuzdan](how-to-add-tool-first-time.md) emin olun.
+- Bir Azure geçişi projesi [oluşturduğunuzdan](./create-manage-projects.md) emin olun.
 - Zaten bir proje oluşturduysanız Azure geçişi: Sunucu değerlendirmesi [aracını eklediğinizden emin](how-to-assess.md) olun.
 - Bir değerlendirme oluşturmak için, [VMware](how-to-set-up-appliance-vmware.md)Için bir Azure geçiş gereci ayarlamanız gerekir, bu da şirket içi makineleri bulur ve Azure geçişi: Sunucu değerlendirmesi ' ne meta veri ve performans verileri gönderir. [Daha fazla bilgi edinin](migrate-appliance.md).
 - Ayrıca [, sunucu meta verilerini](./tutorial-discover-import.md) virgülle ayrılmış değerler (CSV) biçiminde de içeri aktarabilirsiniz.
@@ -58,7 +58,7 @@ Azure VMware çözümü (AVS) değerlendirmesi aşağıdaki gibi çalıştırın
 
     ![Ekran görüntüsü değerlendirme araçları altında değerlendirmede Azure geçişi sunucularını gösterir.](./media/how-to-create-assessment/assess.png)
 
-3. **Sunucuları değerlendir**bölümünde, değerlendirme türünü "Azure VMware çözümü (AVS)" olarak seçin, bulma kaynağını seçin ve değerlendirme adını belirtin.
+3. **Sunucuları değerlendir** bölümünde, değerlendirme türünü "Azure VMware çözümü (AVS)" olarak seçin, bulma kaynağını seçin ve değerlendirme adını belirtin.
 
     ![Değerlendirmeyle ilgili temel bilgiler](./media/how-to-create-avs-assessment/assess-servers-avs.png)
 

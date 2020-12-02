@@ -7,18 +7,18 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: 97795b2a693b68d1bd73a00f7b3e5ee3d4679545
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: eefef0eb61df9aa0597206b537f3d58e8b8b3213
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522133"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484830"
 ---
 # <a name="tutorial-connect-to-a-storage-account-using-an-azure-private-endpoint"></a>Öğretici: Azure özel uç noktası kullanarak bir depolama hesabına bağlanma
 
 Azure özel uç noktası, Azure 'da özel bağlantı için temel yapı taşdır. Sanal makineler (VM) gibi Azure kaynaklarının özel olarak özel bağlantı kaynaklarıyla iletişim kurmasını sağlar.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Bir sanal ağ ve savunma ana bilgisayarı oluşturun.
@@ -53,7 +53,7 @@ Savunma Konağı, Özel uç noktasını test etmek üzere sanal makineye güvenl
     | Kaynak Grubu   | **Myresourcegroup** seçin |
     | **Örnek ayrıntıları** |                                                                 |
     | Name             | **Myvnet** girin                                    |
-    | Region           | **Doğu ABD** seçin |
+    | Bölge           | **Doğu ABD** seçin |
 
 3. **IP adresleri** sekmesini seçin veya sayfanın altındaki **Sonraki: IP adresleri** düğmesini seçin.
 
@@ -72,7 +72,7 @@ Savunma Konağı, Özel uç noktasını test etmek üzere sanal makineye güvenl
     | Alt ağ adı | **Mysubnet** girin |
     | Alt ağ adres aralığı | **10.1.0.0/24** girin |
 
-7. **Kaydet**'i seçin.
+7. **Kaydet**’i seçin.
 
 8. **Güvenlik** sekmesini seçin.
 
@@ -105,7 +105,7 @@ Bu bölümde, Özel uç noktayı test etmek için kullanılacak bir sanal makine
     | Kaynak Grubu | **Myresourcegroup** seçin |
     | **Örnek ayrıntıları** |  |
     | Sanal makine adı | **Myvm 'yi** girin |
-    | Region | **Doğu ABD** seçin |
+    | Bölge | **Doğu ABD** seçin |
     | Kullanılabilirlik seçenekleri | **Altyapı yedekliliği gerekli değil** ' i seçin |
     | Görüntü | **Windows Server 2019 Datacenter-Gen1** seçin |
     | Azure Spot örneği | **Hayır** seçin |
@@ -165,7 +165,7 @@ Bu bölümde, bir depolama hesabı oluşturacak ve özel uç noktayı yapıland�
     | Abonelik | Azure aboneliğinizi seçin |
     | Kaynak Grubu | **Myresourcegroup** seçin |
     | Konum | **Doğu ABD** seçin |
-    | Name | **Myprivateendpoint** girin |
+    | Ad | **Myprivateendpoint** girin |
     | Depolama alt kaynağı | Varsayılan **blobu** bırak |
     | **Ağ** |  |
     | Sanal ağ | **Myvnet** seçin |
@@ -222,7 +222,7 @@ Bu bölümde, önceki adımda oluşturduğunuz sanal makineyi kullanarak özel u
 
     Depolama hesabı adı için **10.1.0.5** özel IP adresi döndürülür.  Bu adres, daha önce oluşturduğunuz sanal ağın alt ağıdır.
 
-9. [Microsoft Azure Depolama Gezgini](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows&toc=%252fazure%252fstorage%252fblobs%252ftoc.json) sanal makineye yükler.
+9. [Microsoft Azure Depolama Gezgini](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows&toc=%2fazure%2fstorage%2fblobs%2ftoc.json) sanal makineye yükler.
 
 10. **Microsoft Azure Depolama Gezgini** yüklendikten sonra **son** ' u seçin.  Uygulamayı açmak için kutuyu işaretli bırakın.
 

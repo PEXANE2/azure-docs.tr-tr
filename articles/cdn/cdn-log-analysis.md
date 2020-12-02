@@ -9,14 +9,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/22/2020
+ms.date: 11/30/2020
 ms.author: allensu
-ms.openlocfilehash: 169889dbb87d00fdde44ff72c0d2004c331604ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2c593cda7761ce1defa6bdb31e0dbb528b9e5eca
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87073042"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483997"
 ---
 # <a name="analyze-azure-cdn-usage-patterns"></a>Azure CDN kullanım biçimlerini çözümleme
 
@@ -25,13 +25,13 @@ Uygulamanız için CDN 'yi etkinleştirdikten sonra CDN kullanımını izleyebil
 ## <a name="raw-logs-for-azure-cdn-from-microsoft"></a>Microsoft 'tan Azure CDN için ham Günlükler
 Standart bir Microsoft profiliyle, ham günlükleri etkinleştirebilir ve günlüklerin akışını şu şekilde seçebilirsiniz:
 
-* Azure Storage
+* Azure Depolama
 * Event Hubs
 * Azure Log Analytics
 
 Azure Log Analytics izleme ölçümlerini görüntüleyebilir ve uyarıları ayarlayabilirsiniz. 
 
-Daha fazla bilgi için bkz. [http RAW günlüklerini Azure CDN](enable-raw-logs.md).
+Daha fazla bilgi için bkz. [http RAW günlüklerini Azure CDN](monitoring-and-access-log.md).
 
 
 ## <a name="core-analytics-via-azure-diagnostic-logs"></a>Azure tanılama günlükleri aracılığıyla temel analiz
@@ -50,7 +50,7 @@ Daha fazla bilgi için bkz. [http RAW günlüklerini Azure CDN](enable-raw-logs.
 
 ## <a name="azure-cdn-premium-from-verizon-reports"></a>Verizon raporlarında Premium Azure CDN
 
-**Verizon ' den Azure CDN Premium**ile aşağıdaki raporlara de erişebilirsiniz:
+**Verizon ' den Azure CDN Premium** ile aşağıdaki raporlara de erişebilirsiniz:
    * [Gelişmiş HTTP raporları](cdn-advanced-http-reports.md)
    * [Gerçek zamanlı istatistikler](cdn-real-time-stats.md)
    * [Azure CDN Edge düğümü performansı](cdn-edge-performance.md)
@@ -61,6 +61,4 @@ Bu makalede, Azure CDN analiz raporları için farklı seçenekler hakkında bil
 Azure CDN ve bu makalede bahsedilen diğer Azure hizmetleri hakkında daha fazla bilgi için bkz.:
 
 * [Azure CDN nedir?](cdn-overview.md)
-* [HTTP ham günlüklerini Azure CDN](enable-raw-logs.md)
-
-
+* [HTTP ham günlüklerini Azure CDN](monitoring-and-access-log.md)

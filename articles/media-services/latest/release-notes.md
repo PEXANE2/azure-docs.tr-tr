@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: cdc6cbbea8b222007d94ecac99902bc4498a42fe
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 4ddb02bbcf284566550517f8fa343a728e2275a9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505266"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483636"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 sürüm notları
 
@@ -51,7 +51,7 @@ Temel ses Çözümleyicisi modu hakkında daha fazla bilgi için bkz. [video ve 
 
 Canlı olaylar durdurulduğunda çoğu özelliğe yönelik güncelleştirmelere artık izin verilir. Ayrıca, kullanıcıların canlı etkinliğin giriş ve önizleme URL 'Leri için statik ana bilgisayar adı için bir önek belirtmesinin izni vardır. VanityUrl artık `useStaticHostName` özelliğin amacını daha iyi yansıtacak şekilde çağırılır.
 
-Canlı olaylar artık bekleme durumuna sahiptir.  [Media Services 'Da canlı olaylara ve canlı çıkışlara](https://docs.microsoft.com/azure/media-services/latest/live-events-outputs-concept)bakın.
+Canlı olaylar artık bekleme durumuna sahiptir.  [Media Services 'Da canlı olaylara ve canlı çıkışlara](./live-events-outputs-concept.md)bakın.
 
 Canlı bir olay, çeşitli giriş en boy oranlarını almayı destekler. Esnetme modu, müşterilerin çıkış için uzatma davranışını belirlemesine izin verir.
 
@@ -242,7 +242,7 @@ Media Services artık Kore Orta ve Kore Güney bölgelerinde kullanılabilir.
 
 Daha fazla bilgi için bkz. [Media Services v3 'nin bulunduğu bulutlar ve bölgeler](azure-clouds-regions.md).
 
-### <a name="performance-improvements"></a>Performans geliştirmeleri
+### <a name="performance-improvements"></a>Performans iyileştirmeleri
 
 Media Services performans iyileştirmeleri içeren güncelleştirmeler eklendi.
 
