@@ -4,13 +4,13 @@ description: Bu hızlı başlangıçta, bir uygulamanın, amaçlarınızın ve v
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 05/19/2020
-ms.openlocfilehash: 74866c65111fae9e6fb3b79d9b59819b14b03c16
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.date: 11/30/2020
+ms.openlocfilehash: a5443dce9fc8bc028232f66f45b537a46858f35a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131488"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436683"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Hızlı başlangıç: LUO portalında yeni bir uygulama oluşturma
 
@@ -20,7 +20,7 @@ Bu hızlı başlangıçta, LUı portalında yeni bir uygulama oluşturacaksını
 
 ## <a name="create-an-app"></a>Uygulama oluşturma
 
-Bir uygulama oluşturmak için  **+ Yeni uygulama** ' ya tıklayın. 
+Bir uygulama oluşturmak için **+ Yeni uygulama**' yı seçin. 
 
 Görüntülenen pencerede, aşağıdaki bilgileri girin:
 
@@ -31,7 +31,7 @@ Görüntülenen pencerede, aşağıdaki bilgileri girin:
 |Açıklama | Uygulamanız için bir açıklama. İsteğe bağlı.
 |Tahmin kaynağı | Sorgu alacak tahmin kaynağı. İsteğe bağlı. |
 
-**Bitti** ’yi seçin.
+**Bitti**'yi seçin.
 
 >[!NOTE]
 >Uygulama oluşturduktan sonra kültür değiştirilemez.
@@ -53,11 +53,11 @@ Uygulamanın _iki farklı amacı_ aşağıdaki amaçlar için hizalanacaktır:
 
 Amaç oluşturmak için aşağıdaki adımları izleyin:
 
-1. Uygulama oluşturulduktan sonra, **derleme** bölümünün **amaçlar** sayfasında olduğunuzdan emin olun. **Oluştur** ’u seçin.
+1. Uygulama oluşturulduktan sonra, **derleme** bölümünün **amaçlar** sayfasında olduğunuzdan emin olun. **Oluştur**’u seçin.
 
    [![Yeni amaç oluşturmak için ' oluştur ' seçeneğinin ekran görüntüsü](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
-1. Amaç adını girip `FindForm` **bitti** ' yi seçin.
+1. Amaç adını girip `FindForm` **bitti**' yi seçin.
 
 ## <a name="add-an-example-utterance"></a>Örnek bir mekan ekleyin
 
@@ -102,7 +102,7 @@ Bu örnek, tasarıma göre aşağıdaki yollarla farklılık gösterir:
 
 1. Adı girin `FormNumber` , **Regex** varlık türünü seçin.
 
-1. Normal ifadeyi, `hrf-[0-9]{6}` **Regex** alanına girin. Bu giriş, değişmez karakterlerle eşleşir, `hrf-` tam olarak altı basamak sağlar ve ardından **Oluştur** ' u seçin.
+1. Normal ifadeyi, `hrf-[0-9]{6}` **Regex** alanına girin. Bu giriş, değişmez karakterlerle eşleşir, `hrf-` tam olarak altı basamak sağlar ve ardından **Oluştur**' u seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Normal ifade varlığı oluşturma ekran görüntüsü](./media/get-started-portal-build-app/create-regular-expression-entity.png)

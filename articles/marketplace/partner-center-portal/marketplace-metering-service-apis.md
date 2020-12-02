@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: e29aeb7570ad6daba9d6fc652291471fa246bf0a
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: b75964f8cfc41efc35858284dbffded3aa406eb6
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674630"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436071"
 ---
 # <a name="marketplace-metered-billing-apis"></a>Market ölçülen faturalandırma API 'Leri
 
@@ -20,7 +20,7 @@ Yayımcı, Iş Ortağı Merkezi 'nde yayımlanacak bir teklif için özel ölç�
 
 SaaS için özel ölçüm boyutları oluşturma hakkında daha fazla bilgi için bkz. [SaaS ölçülen faturalandırma](saas-metered-billing.md).
 
-Yönetilen bir uygulama planına sahip bir Azure uygulaması teklifi için özel ölçüm boyutları oluşturma hakkında daha fazla bilgi için, [yeni Azure uygulamaları oluşturma teklifinin teknik yapılandırma bölümüne](create-new-azure-apps-offer.md#technical-configuration)bakın.
+Yönetilen uygulama planına sahip bir Azure uygulaması teklifi için özel ölçüm boyutları oluşturma hakkında daha fazla bilgi için bkz. [Azure uygulamanızı yapılandırma teklif kurulumu ayrıntıları](../create-new-azure-apps-offer.md#configure-your-azure-application-offer-setup-details).
 
 ## <a name="enforcing-tls-12-note"></a>TLS 1,2 zorlama
 
@@ -34,7 +34,7 @@ Takvim gününün her bir saati için yalnızca bir kullanım olayı dağıtıla
 
 Kaynak başına bir takvim gününe ait her saat için yalnızca bir kullanım olayı dağıtılabilir. Bir saat içinde birden fazla birim tüketilirse, saat içinde tüketilen tüm birimleri birikir ve tek bir olayda yayın. Kullanım olayları yalnızca son 24 saat için kullanılabilir. Bir kullanım olayını 8:00 ile 8:59:59 arasında herhangi bir zamanda yayar (ve kabul edilirse) ve aynı gün için 8:00 ve 8:59:59 arasında ek bir olay gönderirseniz, yineleme olarak reddedilir.
 
-**Gönderi** : `https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
+**Gönderi**: `https://marketplaceapi.microsoft.com/api/usageEvent?api-version=<ApiVersion>`
 
 *Sorgu parametreleri:*
 

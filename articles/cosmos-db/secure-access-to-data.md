@@ -6,14 +6,14 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 11/30/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 936e98b3efa27f2d0a85c373ccae0ab223f4fd95
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 7d50185169b22a136ce81bd3aebae235cf49498b
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340915"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436632"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Azure Cosmos DB'de verilere erişimin güvenliğini sağlama
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -111,7 +111,7 @@ User user = await database.CreateUserAsync("User 1");
 > [!NOTE]
 > Her Cosmos DB kullanıcının, kullanıcıyla ilişkili [izin](#permissions) listesini almak için kullanılabilecek bir ReadAsync () yöntemi vardır.
 
-## <a name="permissions"></a>İzinler<a id="permissions"></a>
+## <a name="permissions"></a>İzinleri<a id="permissions"></a>
 
 Bir izin kaynağı, bir kullanıcıyla ilişkilendirilir ve bölüm anahtarı düzeyi olarak kapsayıcıda atanır. Her Kullanıcı sıfır veya daha fazla izin içerebilir. Bir izin kaynağı, belirli bir bölüm anahtarındaki belirli bir kapsayıcıya veya verilere erişmeyi denerken kullanıcının ihtiyacı olan bir güvenlik belirtecine erişim sağlar. Bir izin kaynağı tarafından sağlanarak kullanılabilecek iki erişim düzeyi vardır:
 
@@ -158,18 +158,18 @@ CosmosClient client = new CosmosClient(accountEndpoint: "MyEndpoint", authKeyOrR
 Kullanıcı hesabınıza Azure Cosmos DB hesap okuyucusu erişimi eklemek için bir abonelik sahibine Azure portal aşağıdaki adımları uygulayın.
 
 1. Azure portal açın ve Azure Cosmos DB hesabınızı seçin.
-2. **Erişim denetimi (IAM)** sekmesine tıklayın ve ardından **+ rol ataması Ekle** ' ye tıklayın.
-3. **Rol ataması Ekle** bölmesinde, **rol** kutusunda **Cosmos DB hesap okuyucu rolü** ' nü seçin.
-4. **Erişim ata kutusunda** **Azure AD Kullanıcı, Grup veya uygulama** ' yı seçin.
+2. **Erişim denetimi (IAM)** sekmesine tıklayın ve ardından **+ rol ataması Ekle**' ye tıklayın.
+3. **Rol ataması Ekle** bölmesinde, **rol** kutusunda **Cosmos DB hesap okuyucu rolü**' nü seçin.
+4. **Erişim ata kutusunda** **Azure AD Kullanıcı, Grup veya uygulama**' yı seçin.
 5. Dizininizde erişim vermek istediğiniz kullanıcı, Grup veya uygulamayı seçin.  Dizinde görünen ad, e-posta adresi veya nesne tanımlayıcıları ile arama yapabilirsiniz.
     Seçilen Kullanıcı, Grup veya uygulama seçilen Üyeler listesinde görünür.
-6. **Kaydet** ’e tıklayın.
+6. **Kaydet**’e tıklayın.
 
 Varlık artık Azure Cosmos DB kaynaklarını okuyabilir.
 
 ## <a name="delete-or-export-user-data"></a>Kullanıcı verilerini silme veya dışarı aktarma
 
-Azure Cosmos DB, veritabanı veya koleksiyonlardaki tüm kişisel verileri aramanıza, seçmenize, değiştirmenize ve silmenizi sağlar. Azure Cosmos DB, kişisel verileri bulmak ve silmek için API 'Ler sağlar. Bu, API 'Leri kullanmak ve kişisel verileri silmek için gerekli mantığı tanımlamak sizin sorumluluğunuzdadır. Her bir çok modelli API (SQL, MongoDB, Gremlin, Cassandra, tablo), kişisel verileri aramak ve silmek için yöntemler içeren farklı dil SDK 'leri sağlar. Ayrıca, belirli bir süreden sonra verileri otomatik olarak silmek için [yaşam süresi (TTL)](time-to-live.md) özelliğini de etkinleştirebilirsiniz.
+Bir veritabanı hizmeti olarak Azure Cosmos DB, veritabanınızda veya kapsayıcılarınızdaki verileri aramanıza, seçmenize, değiştirmenize ve silmenizi sağlar. Bununla birlikte, belirtilen API 'Leri kullanmak ve gerekirse kişisel verileri bulmak ve silmek için gereken mantığı tanımlamak sizin sorumluluğunuzdadır. Her bir çok modelli API (SQL, MongoDB, Gremlin, Cassandra, tablo), özel koşullara göre verileri aramak ve silmek için yöntemler içeren farklı dil SDK 'leri sağlar. Ayrıca, belirli bir süreden sonra verileri otomatik olarak silmek için [yaşam süresi (TTL)](time-to-live.md) özelliğini de etkinleştirebilirsiniz.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 

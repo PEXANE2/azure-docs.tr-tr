@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: b82478338603750a76718da956d74e23d242692e
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d015cec30e516541b50c2acfac38fad898965e1b
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896543"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436360"
 ---
 # <a name="managed-application-metered-billing"></a>Yönetilen uygulama ölçümlü faturalandırma 
 
@@ -22,7 +22,7 @@ Market ölçüm hizmeti ile standart olmayan birimlere göre ücretlendirilen Az
 
 Yönetilen bir uygulama planının tarifeli faturalandırma kullanmasını sağlamak için şunları yapmanız gerekir:
 
-* [Azure Uygulama teklifi oluşturma](create-new-azure-apps-offer.md)bölümünde özetlenen tüm teklif gereksinimlerini karşılayın.
+* [Azure Uygulama teklifi oluşturma](../create-new-azure-apps-offer.md)bölümünde özetlenen tüm teklif gereksinimlerini karşılayın.
 * Hizmetiniz için aylık maliyet maliyetini müşterilere doldurma **fiyatlandırmasını** yapılandırın. Sabit bir ücreti ücretlendirmeniz ve bunun yerine tamamen ölçülen faturalandırmaya dayanmasını istemiyorsanız fiyat sıfır olabilir.
 * Müşterinin sabit fiyat üzerinden ödeyolacağı ölçüm olayları için **Fatura boyutlarını** ayarlayın.
 * Microsoft 'un faturalandırılabilir olaylarını bilgilendirmek için [Market ölçüm hizmeti API 'leriyle](./marketplace-metering-service-apis.md) tümleştirin.
@@ -56,18 +56,18 @@ CoA hizmetine abone olan bir Azure müşterisi, seçilen plana göre her ay rapo
 
 Fatura boyutları, yazılımı kullanmak için nasıl faturalandırılabilecekleri müşteriyle iletişim kurmak için kullanılır.  Bu boyutlar, kullanım olaylarını Microsoft 'a iletmek için de kullanılır. Bunlar aşağıdaki gibi tanımlanır:
 
-* **Boyut tanımlayıcısı** : kullanım olaylarını yayırken başvurulan sabit tanımlayıcı.
-* **Boyut adı** : boyutla ilişkili görünen ad (örneğin, "gönderilen metin iletileri").
-* **Ölçü birimi** : Faturalandırma biriminin açıklaması, örneğin "metin başına ileti" veya "100 başına e-posta".
-* **Birim başına fiyat** : boyutun bir birimi için fiyat.
-* **Aylık dönem Için dahil edilen miktar** : yinelenen aylık ücreti ödeyen müşteriler için ayda dahil edilen boyut miktarı, bir tamsayı olmalıdır.
+* **Boyut tanımlayıcısı**: kullanım olaylarını yayırken başvurulan sabit tanımlayıcı.
+* **Boyut adı**: boyutla ilişkili görünen ad (örneğin, "gönderilen metin iletileri").
+* **Ölçü birimi**: Faturalandırma biriminin açıklaması, örneğin "metin başına ileti" veya "100 başına e-posta".
+* **Birim başına fiyat**: boyutun bir birimi için fiyat.
+* **Aylık dönem Için dahil edilen miktar**: yinelenen aylık ücreti ödeyen müşteriler için ayda dahil edilen boyut miktarı, bir tamsayı olmalıdır.
 
 Fatura boyutları, bir teklif için tüm planlar arasında paylaşılır. Bazı öznitelikler, tüm planlar genelinde boyut için geçerlidir ve diğer öznitelikler plana özgüdür.
 
 Boyutun kendisini tanımlayan öznitelikler, bir teklif için tüm planlar arasında paylaşılır. Teklifi yayımlamadan önce, herhangi bir planın bağlamından bu özniteliklerde yapılan bir değişiklik, tüm planlar genelinde boyut tanımını etkiler. Teklifi yayımladıktan sonra bu öznitelikler artık düzenlenemeyecektir. Öznitelikler şunlardır:
 
 * Tanımlayıcı
-* Ad
+* Name
 * Ölçü birimi
 
 Bir boyutun diğer öznitelikleri her plana özeldir ve plandan plana göre farklı değerlere sahip olabilir.  Planı yayımlamadan önce, bu değerleri düzenleyebilirsiniz ve yalnızca bu plan etkilenecektir. Planı yayımladıktan sonra bu öznitelikler artık düzenlenemeyecektir. Öznitelikler şunlardır:
@@ -79,7 +79,7 @@ Bir boyutun diğer öznitelikleri her plana özeldir ve plandan plana göre fark
 Boyutların Ayrıca "etkin" ve "sonsuz" olmak üzere iki özel kavramı vardır:
 
 * **Etkin** , bu planın bu boyutta katıldığını gösterir.  Bu boyuta göre kullanım olayları göndermediği yeni bir plan oluşturuyorsanız, bu seçeneği işaretsiz bırakmak isteyebilirsiniz. Ayrıca, bir plan ilk yayımlandıktan sonra eklenen tüm yeni boyutlar, zaten yayımlanmış planda "etkin değil" olarak görünür.  Devre dışı bırakılan bir boyut, müşteriler tarafından görülen bir plan için boyutların herhangi bir listesinde gösterilmez.
-* Sonsuzluk "∞" simgesiyle temsil edilen **sonsuz** , bu planın bu boyuta göre tarifeli kullanım olmadan bu boyutta katıldığını gösterir. Müşterilerinize bu boyut tarafından temsil edilen işlevlerin plana dahil edildiğini, ancak kullanım sınırlaması olmadığını belirtmek istiyorsanız.  Sonsuz kullanım içeren bir boyut, müşteriler tarafından görülen bir plana ait boyut listelerinde görünür.  Bu plan hiçbir şekilde ücretlendirilmeyecektir.
+* Sonsuzluk "∞" simgesiyle temsil edilen **sonsuz**, bu planın bu boyuta göre tarifeli kullanım olmadan bu boyutta katıldığını gösterir. Müşterilerinize bu boyut tarafından temsil edilen işlevlerin plana dahil edildiğini, ancak kullanım sınırlaması olmadığını belirtmek istiyorsanız.  Sonsuz kullanım içeren bir boyut, müşteriler tarafından görülen bir plana ait boyut listelerinde görünür.  Bu plan hiçbir şekilde ücretlendirilmeyecektir.
 
 >[!Note] 
 >Aşağıdaki senaryolar açıkça desteklenir:  <br> -Yeni bir plana yeni bir boyut ekleyebilirsiniz.  Yeni boyut, zaten yayımlanmış olan herhangi bir plan için etkinleştirilmeyecektir. <br> -Sabit bir aylık ücretle ve herhangi bir boyut olmadan bir plan yayımlayabilir, sonra yeni bir plan ekleyebilir ve bu plan için yeni bir boyut yapılandırabilirsiniz. Yeni boyut, zaten yayımlanmış planlar için etkinleştirilmeyecektir.
@@ -93,7 +93,7 @@ Market ölçüm hizmeti ile kullanılan bir boyut, müşterinin hizmet için nas
 Bir teklif bir boyutla yayımlandıktan sonra, bu boyut için teklif düzeyi ayrıntıları artık değiştirilemez:
 
 * Tanımlayıcı
-* Ad
+* Name
 * Ölçü birimi
 
 Bir plan yayımlandığında, plan düzeyi ayrıntıları artık değiştirilemez:

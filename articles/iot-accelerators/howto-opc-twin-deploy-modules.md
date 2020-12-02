@@ -9,12 +9,12 @@ ms.service: industrial-iot
 ms.custom: devx-track-azurecli
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 075f6f83e5af43cde3886f637a8ee326309e4218
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1c12b1c7fd393227cb22d011f8b88f914cfded59
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015052"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445484"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>OPC Ikizi modülünü ve bağımlılıklarını sıfırdan dağıtma
 
@@ -117,7 +117,7 @@ Azure IoT Edge ağ geçidi cihazına modülleri dağıtmanın en kolay yolu, Azu
 
 1. OPC Ikizi [bağımlılıklarını](howto-opc-twin-deploy-dependencies.md) dağıtın ve elde edilen dosyayı elde edin `.env` . `hub name` `PCS_IOTHUBREACT_HUB_NAME` Değişkenin elde edilen dosyada dağıtıldığını aklınızda edin `.env` .
 
-2. Bir [Linux](../iot-edge/how-to-install-iot-edge-linux.md) veya [Windows](../iot-edge/how-to-install-iot-edge-windows.md) IoT Edge ağ geçidini kaydedin ve başlatın ve konumunu aklınızda yapın `device id` .
+2. Bir [Linux](../iot-edge/how-to-install-iot-edge.md) veya [Windows](../iot-edge/how-to-install-iot-edge.md) IoT Edge ağ geçidini kaydedin ve başlatın ve konumunu aklınızda yapın `device id` .
 
 ### <a name="deploy-to-an-edge-device"></a>Sınır cihazına dağıtma
 

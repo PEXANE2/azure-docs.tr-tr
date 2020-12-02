@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 4d2300e36bd06313cf889f40f37d672d66534db6
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3279150d0cb7b287f0a78581094a51356033596c
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538402"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435748"
 ---
 # <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak MariaDB sunucusu için Azure veritabanı oluşturma
 
@@ -21,9 +21,9 @@ Azure CLI ile komut satırından veya betik içindeki Azure kaynaklarını oluş
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-[!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-CLI'yi yerel olarak yükleyip kullanacaksanız bu hızlı başlangıç için Azure CLI 2.0 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. CLI’yı yüklemeniz veya yükseltmeniz gerekiyorsa bkz. [Azure CLI 2.0’ı yükleme]( /cli/azure/install-azure-cli).
+- Bu makale, Azure CLı 'nin 2,0 veya sonraki bir sürümünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
 
 Birden fazla aboneliğiniz varsa kaynağı içeren aboneliği veya faturalandırıldığınız aboneliği seçin. Hesabınızdaki belirli bir abonelik kimliğini seçmek için [az account set](/cli/azure/account#az-account-set) komutunu kullanın:
 
@@ -45,18 +45,18 @@ az group create --name myresourcegroup --location westus
 
 [az mariadb server create](/cli/azure/mariadb/server#az-mariadb-server-create) komutunu kullanarak MariaDB için Azure Veritabanı sunucusu oluşturun. Bir sunucu birden çok veritabanını yönetebilir. Genellikle her proje veya kullanıcı için farklı bir veritabanı kullanılır.
 
-Ayar | Örnek değer | Açıklama
+Ayar | Örnek değer | Description
 ---|---|---
 name | **mydemoserver** | MariaDB için Azure Veritabanı sunucunuzu tanımlayan benzersiz bir ad girin. Sunucu adı yalnızca küçük harf, sayı ve kısa çizgi (-) karakterini içerebilir. 3 ile 63 arasında karakter içermelidir.
 resource-group | **myresourcegroup** | Azure kaynak grubunun adını girin.
 sku-name | **GP_Gen5_2** | SKU'nun adı. *Fiyatlandırma katmanı* \_ *işlem oluşturma* \_ *sanal çekirdeklerini* toplu olarak izleyin. **sku-name** parametresi hakkında daha fazla bilgi için bu tablonun altındaki bölüme bakın.
 backup-retention | **7** | Yedeklemenin ne kadar süreyle tutulacağı. Birim olarak gün kullanılır. Aralık: 7-35. 
-geo-redundant-backup | **Devre dışı** | Coğrafi olarak yedekli yedeklemelerin bu sunucu için etkinleştirilip etkinleştirilmeyeceği. İzin verilen değerler: **Etkin** , **Devre Dışı**.
+geo-redundant-backup | **Devre dışı** | Coğrafi olarak yedekli yedeklemelerin bu sunucu için etkinleştirilip etkinleştirilmeyeceği. İzin verilen değerler: **Etkin**, **Devre Dışı**.
 location | **westus** | Sunucu için Azure konumu.
-ssl-enforcement | **Etkin** | Bu sunucu için SSL'in etkinleştirilip etkinleştirilmeyeceği. İzin verilen değerler: **Etkin** , **Devre Dışı**.
+ssl-enforcement | **Etkin** | Bu sunucu için SSL'in etkinleştirilip etkinleştirilmeyeceği. İzin verilen değerler: **Etkin**, **Devre Dışı**.
 storage-size | **51200** | Sunucunun depolama kapasitesi (birim olarak megabayt kullanılır). Geçerli depolama boyutları 5.120 MB (minimum) ile başlar ve 1.024 MB artar. Depolama boyutu sınırları hakkında daha fazla bilgi için bkz. [Fiyatlandırma katmanları](./concepts-pricing-tiers.md). 
 sürüm | **10.2** | MariaDB büyük altyapı sürümü.
-admin-user | **myadmin** | Yöneticinin oturum açma kullanıcı adı. **admin-user** parametresi **azure_superuser** , **admin** , **administrator** , **root** , **guest** veya **public** olamaz.
+admin-user | **myadmin** | Yöneticinin oturum açma kullanıcı adı. **admin-user** parametresi **azure_superuser**, **admin**, **administrator**, **root**, **guest** veya **public** olamaz.
 admin-password | *Parolanız* | Yönetici kullanıcının parolası. Parolanız 8 ile 128 arasında karakter içermelidir. Şu üç kategoride yer alan karakterlerden oluşmalıdır: İngilizce büyük ve küçük harfler, sayılar ve alfasayısal olmayan karakterler.
 
 sku-name parametresi değeri aşağıdaki örneklerde gösterildiği gibi {fiyatlandırma katmanı}\_{işlem oluşturma}\_{sanal çekirdek} kuralını kullanır:
@@ -139,7 +139,7 @@ Sonuç JSON biçimindedir. **fullyQualifiedDomainName** ve **administratorLogin*
 
 ## <a name="connect-to-the-server-by-using-the-mysql-command-line-tool"></a>mysql komut satırı aracını kullanarak sunucuya bağlanma
 
-mysql komut satırı aracını kullanarak sunucunuza bağlanın. Komut satırı aracını [indirebilir](https://dev.mysql.com/downloads/) ve bilgisayarınıza yükleyebilirsiniz. Komut satırı aracına erişmek için bu makaledeki kod örneklerinden birinin üzerindeki **Deneyin** düğmesini de seçebilirsiniz. Komut satırı aracına erişmenin bir diğer yolu da Azure portalda sağ üstten **>_** düğmesini seçerek **Azure Cloud Shell** 'i açmaktır.
+mysql komut satırı aracını kullanarak sunucunuza bağlanın. Komut satırı aracını [indirebilir](https://dev.mysql.com/downloads/) ve bilgisayarınıza yükleyebilirsiniz. Komut satırı aracına erişmek için bu makaledeki kod örneklerinden birinin üzerindeki **Deneyin** düğmesini de seçebilirsiniz. Komut satırı aracına erişmenin bir diğer yolu da Azure portalda sağ üstten **>_** düğmesini seçerek **Azure Cloud Shell**'i açmaktır.
 
 mysql komut satırı aracını kullanarak sunucuya bağlanmak için:
 

@@ -12,12 +12,12 @@ ms.date: 09/10/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c7225adcfe970d17f8f86afdd15e36e2ba76de3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: eeea88d8c21ba754fbeadbb24891126b639616c7
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91287024"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437249"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Hızlı başlangıç: Azure Active Directory yeni bir kiracı oluşturun
 Kuruluşunuz için yeni bir kiracı oluşturulması da dahil olmak üzere, Azure Active Directory (Azure AD) portalı kullanarak tüm yönetim görevlerinizi gerçekleştirebilirsiniz. 
@@ -33,37 +33,41 @@ Azure portalda oturum açtıktan sonra kuruluşunuz için yeni bir kiracı oluş
 
 1. Kuruluşunuzun [Azure Portal](https://portal.azure.com/)oturum açın.
 
-1. Azure portalı menüsünden **Kaynak oluştur**'u seçin.  
+1. Azure portal menüsünde **Azure Active Directory**' i seçin.  
 
-    ![Azure Active Directory kaynak sayfası oluştur](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
+    <kbd>![Azure Active Directory-genel bakış sayfası-kiracı oluşturma](media/active-directory-access-create-new-tenant/azure-ad-portal.png)</kbd>  
 
-1. **Azure Active Directory**'yi bulun ve seçin.
+1. **Kiracı oluştur**' u seçin.
 
-    **Dizin oluştur** sayfası görüntülenir.
+1. Temel bilgiler sekmesinde, oluşturmak istediğiniz kiracı türünü ( **Azure Active Directory** veya **Azure Active Directory (B2C)** seçin.
 
-    ![Azure Active Directory Oluştur sayfası](media/active-directory-access-create-new-tenant/azure-ad-create-new-tenant.png)
+1. **İleri ' yi seçin:** yapılandırma sekmesine gitmek için yapılandırma.
 
-1.  **Dizin oluştur** sayfasına aşağıdaki bilgileri girin:
+    <kbd>![Azure Active Directory-kiracı sayfası oluşturma-yapılandırma sekmesi ](media/active-directory-access-create-new-tenant/azure-ad-create-new-tenant.png)</kbd>
+
+1.  Yapılandırma sekmesinde, aşağıdaki bilgileri girin:
     
-    - **Kuruluş adı** kutusuna _Contoso_ yazın.
+    - _Contoso organizasyonu_ ' nu **kuruluş adı** kutusuna yazın.
 
-    - **İlk etki alanı adı** kutusuna _Contoso_ yazın.
+    - **İlk etki alanı adı** kutusuna _contosoorg_ yazın.
 
     - **Ülke veya bölge** kutusunda _Amerika Birleşik Devletleri_ seçeneğini değiştirmeden bırakın.
 
-1. **Oluştur**’u seçin.
+1. **İleri ' yi seçin: gözden geçir + oluştur**. Girdiğiniz bilgileri gözden geçirin ve bilgiler doğru ise **Oluştur**' u seçin.
+
+    <kbd>![Azure Active Directory-kiracı sayfasını gözden geçirin ve oluşturun](media/active-directory-access-create-new-tenant/azure-ad-review.png)</kbd>
 
 contoso.onmicrosoft.com etki alanıyla yeni kiracınız oluşturulur.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 Bu uygulamayı kullanmaya devam etmeyecekecekseniz, aşağıdaki adımları kullanarak kiracıyı silebilirsiniz:
 
-- Azure portalında **Dizin + abonelik** filtresi aracılığıyla silmek istediğiniz dizinde oturum açtığınızdan ve gerekirse hedef dizine geçiş yapıldığından emin olun.
+- Azure portal **Dizin + abonelik** filtresi aracılığıyla silmek istediğiniz dizinde oturum açtığınızdan ve gerekirse hedef dizine geçiş yapıldığından emin olun.
 - **Azure Active Directory** seçeneğini belirleyin ve sonra **Contoso - Genel Bakış** sayfasında **Dizini sil**’i seçin.
 
     Kiracı ve ilişkili bilgileri silinir.
 
-    ![Vurgulanan dizini Sil düğmesi ile genel bakış sayfası](media/active-directory-access-create-new-tenant/azure-ad-delete-new-tenant.png)
+    <kbd>![Vurgulanan dizini Sil düğmesi ile genel bakış sayfası](media/active-directory-access-create-new-tenant/azure-ad-delete-new-tenant.png)</kbd>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Etki alanı adlarını değiştirme veya ekleme; bkz. [Azure Active Directory’ye özel etki alanı adı ekleme](add-custom-domain.md)

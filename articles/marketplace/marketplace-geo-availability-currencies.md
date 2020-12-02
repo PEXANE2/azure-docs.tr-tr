@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: c277525927f7f74f281220bf5e593e98509d8237
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 40bae584e673e8885416bd1ae08dd808071034e7
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126694"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436139"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Ticari Market için coğrafi kullanılabilirlik ve para birimi desteği
 
@@ -20,7 +20,7 @@ ms.locfileid: "93126694"
 
 Ticari Market teklifleri, müşterinin fatura adresi tarafından tanımlanan 141 coğrafi yalarda satın alınabilir ve işlemler 17 para biriminde tamamlanabilir. Aşağıdaki tabloda desteklenen her coğrafi konum, [ıso 3166 2 basamaklı alfa kodu](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)ve atanan para birimi listelenmektedir.
 
-|   Ülke/bölge adı               |   ISO-2   |   Para birimi   |
+|   Ülke/bölge adı               |   ISO-2   |   Para Birimi   |
 |-------------------------------------|-----------|--------------|
 | Afganistan                         | AF        | USD          |
 | Arnavutluk                             | AL        | USD          |
@@ -194,7 +194,7 @@ Ayrı fiyatlar (nasıl ayarlandıklarından bağımsız olarak, kaydedildiği g�
 
 Belirli teklif türleri için fiyat girme hakkında daha fazla bilgi için şu makalelere bakın:
 
-- [Azure uygulama teklifi oluşturma](partner-center-portal/create-new-azure-apps-offer.md)
+- [Azure uygulama teklifi oluşturma](create-new-azure-apps-offer.md)
 - [Azure Container teklifi oluşturma](partner-center-portal/create-azure-container-offer.md)
 - [Azure sanal makine teklifi oluşturma](azure-vm-create.md)
 - [Danışmanlık hizmeti teklifi oluşturma](partner-center-portal/create-consulting-service-offer.md)

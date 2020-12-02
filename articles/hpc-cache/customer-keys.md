@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: v-erkel
-ms.openlocfilehash: 8bce19e384e600e95b8306dcbba38652b4432bc9
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 90af33a01450002c7d36a4ab4cf4a3da647068c5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340538"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444567"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Azure HPC Cache için müşteri tarafından yönetilen şifreleme anahtarlarını kullanma
 
@@ -20,7 +20,7 @@ Azure HPC Cache 'te verilerinizi şifrelemek için kullanılan anahtarların sah
 > [!NOTE]
 > Azure 'da depolanan tüm veriler, önbellek disklerinde de dahil olmak üzere varsayılan olarak Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. Yalnızca verilerinizi şifrelemek için kullanılan anahtarları yönetmek istiyorsanız bu makaledeki adımları izlemeniz gerekir.
 
-Azure HPC önbelleği, önbellek diskleri için bir müşteri anahtarı eklemeseniz bile, önbelleğe alınmış verilerinizi tutan yönetilen disklerde [VM ana bilgisayar şifrelemesi](../virtual-machines/linux/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data) ile de korunur. Çift şifreleme için müşteri tarafından yönetilen bir anahtar eklemek, yüksek güvenlik gereksinimlerine sahip müşteriler için ek bir güvenlik düzeyi sağlar. Ayrıntılar için [Azure disk depolaması 'Nın sunucu tarafı şifrelemesini](../virtual-machines/linux/disk-encryption.md) okuyun.
+Azure HPC önbelleği, önbellek diskleri için bir müşteri anahtarı eklemeseniz bile, önbelleğe alınmış verilerinizi tutan yönetilen disklerde [VM ana bilgisayar şifrelemesi](../virtual-machines/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data) ile de korunur. Çift şifreleme için müşteri tarafından yönetilen bir anahtar eklemek, yüksek güvenlik gereksinimlerine sahip müşteriler için ek bir güvenlik düzeyi sağlar. Ayrıntılar için [Azure disk depolaması 'Nın sunucu tarafı şifrelemesini](../virtual-machines/disk-encryption.md) okuyun.
 
 Bu özellik yalnızca Azure HPC önbelleğinin kullanılabildiği bazı Azure bölgelerinde kullanılabilir. Ayrıntılar için [bölge kullanılabilirliği](hpc-cache-overview.md#region-availability) listesine bakın.
 
@@ -109,7 +109,7 @@ Bu iki adımlı işlem gereklidir çünkü Azure HPC önbellek örneğinin yetki
 > [!NOTE]
 > Önbelleği oluşturduktan sonra 90 dakika içinde şifrelemeyi yetkilendirmelisiniz. Bu adımı tamamlamazsanız, önbellek zaman aşımına uğrar ve başarısız olur. Başarısız bir önbelleğin yeniden oluşturulması gerekir, bu, sabit olamaz.
 
-Önbellek, **anahtar Için bekleyen**durumu gösterir. Önbelleğin belirtilen anahtar kasasına erişmesini sağlamak için sayfanın üst kısmındaki **şifrelemeyi etkinleştir** düğmesine tıklayın.
+Önbellek, **anahtar Için bekleyen** durumu gösterir. Önbelleğin belirtilen anahtar kasasına erişmesini sağlamak için sayfanın üst kısmındaki **şifrelemeyi etkinleştir** düğmesine tıklayın.
 
 ![Portalda önbelleğe Genel Bakış sayfasının ekran görüntüsü, şifrelemeyi etkinleştir düğmesi (üst satır) ve durum: anahtar bekleniyor](media/waiting-for-key.png)
 
@@ -144,7 +144,7 @@ Yeni şifreleme anahtarı değerlerini seçtikten sonra **Seç**' e tıklayın. 
 Bu makaleler, Azure 'da verileri şifrelemek için Azure Key Vault ve müşteri tarafından yönetilen anahtarları kullanma hakkında daha fazla bilgi açıklamaktadır:
 
 * [Azure depolama şifrelemeye genel bakış](../storage/common/storage-service-encryption.md)
-* [Müşteri tarafından yönetilen anahtarlarla disk şifrelemesi](../virtual-machines/linux/disk-encryption.md#customer-managed-keys) -Azure HPC önbelleğine benzer bir senaryo olan yönetilen disklerle Azure Key Vault kullanmaya yönelik belgeler
+* [Müşteri tarafından yönetilen anahtarlarla disk şifrelemesi](../virtual-machines/disk-encryption.md#customer-managed-keys) -Azure HPC önbelleğine benzer bir senaryo olan yönetilen disklerle Azure Key Vault kullanmaya yönelik belgeler
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

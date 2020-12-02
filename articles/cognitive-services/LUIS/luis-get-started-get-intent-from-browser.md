@@ -1,18 +1,18 @@
 ---
-title: 'Hızlı başlangıç: tarayıcı-LUO ile tahmin için sorgu'
-description: Bu hızlı başlangıçta, kullanıcının bir tarayıcıda konuşma metinleriyle aynı olduğunu öğrenmek için kullanılabilir bir genel LUL uygulaması kullanın.
+title: Bir tarayıcı kullanarak tahminleri sorgulama-LUSıS
+description: Bu makalede, kullanıcının bir tarayıcıda konuşma metinleriyle aynı olduğunu öğrenmek için kullanılabilir bir genel LUL uygulaması kullanın.
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: quickstart
-ms.date: 04/21/2020
-ms.openlocfilehash: ce7544bee32586aa4cdeeb7f47a84744194db5da
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.topic: conceptual
+ms.date: 11/30/2020
+ms.openlocfilehash: 6aa681c8ea60cb57ac3e6d143c60cc46bc057719
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91316282"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436921"
 ---
-# <a name="quickstart-query-prediction-runtime-with-user-text"></a>Hızlı başlangıç: Kullanıcı metniyle sorgu tahmini çalışma zamanı
+# <a name="how-to-query-the-prediction-runtime-with-user-text"></a>Tahmin çalışma zamanını Kullanıcı metniyle sorgulama
 
 Bir LUIS tahmin uç noktasının ne döndüğünü anlamak için bir tahmin sonucunu bir Web tarayıcısında görüntüleyin.
 
@@ -97,7 +97,7 @@ Bir ortak uygulamayı sorgulamak için şunlar gerekir:
 
     #### <a name="v3-prediction-endpoint"></a>[V3 tahmin uç noktası](#tab/V3-3-1)
 
-    `show-all-intents=true` **Tüm amaçları göstermek**için QueryString 'in sonuna ekleyin:
+    `show-all-intents=true` **Tüm amaçları göstermek** için QueryString 'in sonuna ekleyin:
 
     `
     https://YOUR-LUIS-ENDPOINT-SUBDOMAIN.api.cognitive.microsoft.com/luis/predict/v3.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?query=turn on all lights&subscription-key=YOUR-LUIS-PREDICTION-KEY&show-all-intents=true
@@ -130,7 +130,7 @@ Bir ortak uygulamayı sorgulamak için şunlar gerekir:
 
     #### <a name="v2-prediction-endpoint"></a>[V2 tahmin uç noktası](#tab/V2)
 
-    `verbose=true` **Tüm amaçları göstermek**için QueryString 'in sonuna ekleyin:
+    `verbose=true` **Tüm amaçları göstermek** için QueryString 'in sonuna ekleyin:
 
     `
     https://YOUR-LUIS-ENDPOINT-SUBDOMAIN.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?q=turn on all lights&subscription-key=YOUR-LUIS-PREDICTION-KEY&verbose=true

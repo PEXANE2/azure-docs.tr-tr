@@ -6,12 +6,12 @@ ms.author: lazinnat
 author: lazinnat
 ms.date: 06/20/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f327749d1bdfb8cf2cba00cf4c5f68b4b2b77999
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 50a65583c41dd94b174a33432afcf42b31e67df0
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379562"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437057"
 ---
 # <a name="tutorial-create-managed-application-with-custom-actions-and-resources"></a>Öğretici: özel eylemler ve kaynaklarla yönetilen uygulama oluşturma
 
@@ -27,7 +27,7 @@ Bu öğretici aşağıdaki adımları içerir:
 > * Yönetilen uygulamanın bir örneğini dağıtma
 > * Özel eylemler gerçekleştirme ve özel kaynaklar oluşturma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için şunları bilmeniz gerekir:
 
@@ -247,28 +247,28 @@ az managedapp definition create \
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Azure portal, **tüm hizmetler** ' i seçin. Kaynak listesinde **yönetilen uygulamalar merkezi** ' ni yazın ve seçin.
-2. **Yönetilen uygulamalar merkezi** 'Nde **Hizmet kataloğu uygulama tanımı** ' nı seçin ve **Ekle** ' ye tıklayın. 
+1. Azure portal, **tüm hizmetler**' i seçin. Kaynak listesinde **yönetilen uygulamalar merkezi**' ni yazın ve seçin.
+2. **Yönetilen uygulamalar merkezi**'Nde **Hizmet kataloğu uygulama tanımı** ' nı seçin ve **Ekle**' ye tıklayın. 
     
     ![Hizmet kataloğu Ekle](./media/tutorial-create-managed-app-with-custom-provider/service-catalog-managed-application.png)
 
 3. Hizmet kataloğu tanımı oluşturmak için değerleri girin:
 
-    * Hizmet kataloğu tanımı, **görünen ad** ve *Açıklama* (isteğe bağlı) için benzersiz bir **ad** sağlayın.
-    * Uygulama tanımının oluşturulacağı **aboneliği** , **kaynak grubunu** ve **konumu** seçin. ZIP paketi için kullanılan aynı kaynak grubunu kullanabilir veya yeni bir kaynak grubu oluşturabilirsiniz.
+    * Hizmet kataloğu tanımı, **görünen ad** ve *Açıklama*(isteğe bağlı) için benzersiz bir **ad** sağlayın.
+    * Uygulama tanımının oluşturulacağı **aboneliği**, **kaynak grubunu** ve **konumu** seçin. ZIP paketi için kullanılan aynı kaynak grubunu kullanabilir veya yeni bir kaynak grubu oluşturabilirsiniz.
     * Bir **paket dosyası URI 'si** için, önceki adımda oluşturduğunuz zip dosyasının yolunu belirtin.
 
     ![Değer sağla](./media/tutorial-create-managed-app-with-custom-provider/add-service-catalog-managed-application.png)
 
-4. Kimlik doğrulama ve kilit düzeyi bölümüne geldiğinizde, **Yetkilendirme Ekle** ' yi seçin.
+4. Kimlik doğrulama ve kilit düzeyi bölümüne geldiğinizde, **Yetkilendirme Ekle**' yi seçin.
 
     ![Yetkilendirme Ekle](./media/tutorial-create-managed-app-with-custom-provider/add-authorization.png)
 
-5. Kaynakları yönetmek için bir Azure Active Directory grubu seçin ve **Tamam** ' ı seçin.
+5. Kaynakları yönetmek için bir Azure Active Directory grubu seçin ve **Tamam**' ı seçin.
 
    ![Yetkilendirme grubu Ekle](./media/tutorial-create-managed-app-with-custom-provider/add-auth-group.png)
 
-6. Tüm değerleri sağladıysanız **Oluştur** ' u seçin.
+6. Tüm değerleri sağladıysanız **Oluştur**' u seçin.
 
    ![Yönetilen uygulama tanımı oluştur](./media/tutorial-create-managed-app-with-custom-provider/create-service-catalog-definition.png)
 
@@ -303,18 +303,18 @@ az managedapp create \
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Azure portal, **tüm hizmetler** ' i seçin. Kaynak listesinde **yönetilen uygulamalar merkezi** ' ni yazın ve seçin.
-2. **Yönetilen uygulamalar merkezi** 'Nde **Hizmet kataloğu uygulamaları** ' nı seçin ve **Ekle** ' ye tıklayın. 
+1. Azure portal, **tüm hizmetler**' i seçin. Kaynak listesinde **yönetilen uygulamalar merkezi**' ni yazın ve seçin.
+2. **Yönetilen uygulamalar merkezi**'Nde **Hizmet kataloğu uygulamaları** ' nı seçin ve **Ekle**' ye tıklayın. 
 
     ![Yönetilen uygulama ekle](./media/tutorial-create-managed-app-with-custom-provider/add-managed-application.png)
 
-3. **Hizmet kataloğu uygulamaları** sayfasında, arama kutusuna hizmet kataloğu tanımı görünen adı yazın. Önceki adımda oluşturulan tanımı seçin ve **Oluştur** ' a tıklayın.
+3. **Hizmet kataloğu uygulamaları** sayfasında, arama kutusuna hizmet kataloğu tanımı görünen adı yazın. Önceki adımda oluşturulan tanımı seçin ve **Oluştur**' a tıklayın.
 
     ![Hizmet kataloğu seçme](./media/tutorial-create-managed-app-with-custom-provider/select-service-catalog-definition.png)
 
 4. Hizmet kataloğu tanımından yönetilen bir uygulama örneği oluşturmak için değerler girin:
 
-    * Uygulama örneğinin oluşturulacağı **aboneliği** , **kaynak grubunu** ve **konumu** seçin.
+    * Uygulama örneğinin oluşturulacağı **aboneliği**, **kaynak grubunu** ve **konumu** seçin.
     * Benzersiz bir Azure Işlevi adı ve Azure depolama hesabı adı sağlayın.
 
     ![Uygulama ayarları](./media/tutorial-create-managed-app-with-custom-provider/application-settings.png)
@@ -353,6 +353,6 @@ Azure yönetilen uygulamalar hakkında sorularınız varsa [Stack Overflow](http
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yönetilen uygulamanızı Azure Market'te yayımlamak için bkz. [Market'teki Azure tarafından yönetilen uygulamalar](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md).
+Yönetilen uygulamanızı Azure Market'te yayımlamak için bkz. [Market'teki Azure tarafından yönetilen uygulamalar](../../marketplace/create-new-azure-apps-offer.md).
 
 [Azure özel sağlayıcılar](../custom-providers/overview.md)hakkında daha fazla bilgi edinin.

@@ -3,16 +3,16 @@ title: Azure Lab Services üzerinde örnek sınıf türleri | Microsoft Docs
 description: ', Azure Lab Services kullanarak laboratuvarları ayarlayabileceğiniz bazı sınıf türlerini sağlar.'
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 1c2caac35125c3f69c2257750bac417971af5dbd
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 7ebc89c040be732c230f0c3f54f68fb91466eb68
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490993"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436411"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>Sınıf türlerine genel bakış-Azure Lab Services
 
-Azure Lab Services, bulutta ders Laboratuvarı ortamlarını hızlıca ayarlamanıza olanak sağlar. Bu bölümdeki makaleler Azure Lab Services kullanarak çeşitli sınıf laboratuvarlarının nasıl ayarlanacağı hakkında rehberlik sağlar.
+Azure Lab Services, bulutta ders Laboratuvarı ortamlarını hızlıca ayarlamanıza olanak sağlar. Bu bölümdeki makalelerde, Azure Lab Services kullanarak birkaç tür laboratuvarın nasıl ayarlanacağı hakkında rehberlik sağlanır.
 
 ## <a name="big-data-analytics"></a>Büyük veri analizi
 Büyük bir veri analizi sınıfı öğretmek için bir GPU Laboratuvarı ayarlayabilirsiniz. Bu tür bir sınıfla, öğrenciler büyük hacimlere yönelik verileri nasıl işleyeceğinizi ve veri öngörüleri türetmede makine ve istatistiksel öğrenme algoritmaları uygulamayı öğreniyor. Öğrenciler için önemli bir amaç, büyük verileri depolamak, yönetmek ve işlemek için araçlar sağlayan Apache Hadoop açık kaynaklı yazılım paketi gibi veri analizi araçlarını kullanmayı öğrenmektir. 

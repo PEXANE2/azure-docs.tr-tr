@@ -1,22 +1,22 @@
 ---
-title: "Hızlı başlangıç: REST API 'Leri ile amaç al-LUıS"
-description: Bu REST API hızlı başlangıçta, kullanıcının konuşma metinleriyle bir amaç olduğunu öğrenmek için kullanılabilir bir genel LUO uygulaması kullanın.
+title: REST API kullanarak amaç alma
+description: Bu makalede, kullanıcının konuşma metinleriyle bir amaç olduğunu öğrenmek için kullanılabilir bir genel LUL uygulaması kullanın.
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: quickstart
-ms.date: 05/18/2020
+ms.topic: conceptual
+ms.date: 11/30/2020
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: d03ebc1ec5730f1905ce1ee5b9c484312f5aeee1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b49d90ffe2a262895727fdd4ef5f8a7950104102
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91316358"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437023"
 ---
-# <a name="quickstart-get-intent-with-rest-apis"></a>Hızlı başlangıç: REST API 'Leri ile amaç alın
+# <a name="how-to-get-an-intent-using-the-rest-apis"></a>REST API 'Leri kullanarak amaç alma
 
-Bu hızlı başlangıçta, bir kullanıcının konuşma metinden bir amaç olduğunu öğrenmek için bir LUO uygulaması kullanacaksınız. Kullanıcının amaç metnini, pizza uygulamasının HTTP tahmin uç noktasına gönderin. Uç noktada, Lu, doğal dil metnini anlam açısından analiz etmek için pizza uygulamasının modelini uygular, bu da genel amaçlı olarak belirlenir ve uygulamanın konu etki alanıyla ilgili verileri ayıklamaktır.
+Bu makalede, bir kullanıcının konuşma metinden bir amaç olduğunu öğrenmek için bir LUO uygulaması kullanacaksınız. Kullanıcının amaç metnini, pizza uygulamasının HTTP tahmin uç noktasına gönderin. Uç noktada, Lu, doğal dil metnini anlam açısından analiz etmek için pizza uygulamasının modelini uygular, bu da genel amaçlı olarak belirlenir ve uygulamanın konu etki alanıyla ilgili verileri ayıklamaktır.
 
 Bu makale için ücretsiz bir [LUIS](https://www.luis.ai) hesabınız olması gerekir.
 

@@ -1,20 +1,20 @@
 ---
 title: Azure Lab Services | sınıf Laboratuvarı VM 'lerinin parolalarını sıfırlama | Microsoft Docs
-description: Azure Lab Services derslik laboratuvarlarında sanal makinelerin (VM) parolalarını sıfırlamayı öğrenin.
+description: Azure Lab Services laboratuvarlarında sanal makinelerin (VM) parolalarını sıfırlamayı öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: d63d14da8859c12fa797a04fa9a3c3230219adab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b0b13862ca4620da15606138c0a80adeac8056a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85445347"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436819"
 ---
-# <a name="set-or-reset-password-for-virtual-machines-in-classroom-labs-students"></a>Sınıf laboratuvarlarında (öğrenciler) sanal makineler için parola ayarlama veya sıfırlama
+# <a name="set-or-reset-password-for-virtual-machines-in-labs-students"></a>Laboratuvarlarda (öğrenciler) sanal makineler için parola ayarlama veya sıfırlama
 Bu makalede, öğrencilerin VM 'Leri için parola ayarlama/sıfırlama işlemlerinin nasıl yapılacağı gösterilir. 
 
 ## <a name="enable-resetting-of-passwords"></a>Parolaların sıfırlanmasını etkinleştir
-Laboratuvarın oluşturulması sırasında, laboratuvar sahibi **tüm sanal makineler için aynı parolayı kullan**seçeneğini etkinleştirebilir veya devre dışı bırakabilir. Bu seçenek etkinleştirilirse, öğrenciler parolayı sıfırlayamaz. Laboratuvardaki tüm VM 'Ler, eğitmen tarafından ayarlanan parolaya sahip olacaktır. 
+Laboratuvarın oluşturulması sırasında, laboratuvar sahibi **tüm sanal makineler için aynı parolayı kullan** seçeneğini etkinleştirebilir veya devre dışı bırakabilir. Bu seçenek etkinleştirilirse, öğrenciler parolayı sıfırlayamaz. Laboratuvardaki tüm VM 'Ler, eğitmen tarafından ayarlanan parolaya sahip olacaktır. 
 
 Bu seçenek devre dışıysa, kullanıcıların VM 'yi ilk kez bağlamaya çalışırken bir parola ayarlaması gerekir. Öğrenciler ayrıca, bu makalenin son bölümünde gösterildiği gibi, parolayı daha sonra istediğiniz zaman sıfırlayabilirler. 
 

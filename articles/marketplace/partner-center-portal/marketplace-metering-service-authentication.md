@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: e8f9a8e1d10e39e37480e06a25fcc0e203a104ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ddcd7e5c3e5651062f88b261e7003fb0dd2ef3b
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378738"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436003"
 ---
 # <a name="marketplace-metering-service-authentication-strategies"></a>Market ölçüm hizmeti kimlik doğrulama stratejileri
 
@@ -46,7 +46,7 @@ Bu belirteçler hakkında daha fazla bilgi için bkz. [Azure Active Directory er
 
 **Yayınla**
 
-#### <a name="request-url"></a>*İstek URL 'SI*
+#### <a name="request-url"></a>*İstek URL’si*
 
 **`https://login.microsoftonline.com/*{tenantId}*/oauth2/token`**
 
@@ -61,7 +61,7 @@ Bu belirteçler hakkında daha fazla bilgi için bkz. [Azure Active Directory er
 
 |  **Üst bilgi adı**    |  **Gerekli**  |  **Açıklama**          |
 |  ------------------ |--------------- | ------------------------  |
-|  `Content-Type`     |   Doğru         | İstekle ilişkilendirilmiş içerik türü. Varsayılan değer: `application/x-www-form-urlencoded`.  |
+|  `Content-Type`     |   Doğru         | İstekle ilişkilendirilmiş içerik türü. `application/x-www-form-urlencoded` varsayılan değerdir.  |
 | | | |
 
 #### <a name="request-body"></a>*İstek gövdesi*
@@ -114,7 +114,7 @@ Yönetilen uygulamanız, sanal makinelerden Azure Işlevlerine kadar farklı kay
     * [Azure portal Kullanıcı arabirimi](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
     * [CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
     * [PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
-    * [Azure Resource Manager şablonu](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+    * [Azure Resource Manager Şablonu](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
     * [Rest](../../active-directory/managed-identities-azure-resources/qs-configure-rest-vm.md#system-assigned-managed-identity))
     * [Azure SDK’ları](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
@@ -155,5 +155,5 @@ Yönetilen uygulamanız, sanal makinelerden Azure Işlevlerine kadar farklı kay
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure uygulama teklifi oluşturma](./create-new-azure-apps-offer.md)
+* [Azure uygulama teklifi oluşturma](../create-new-azure-apps-offer.md)
 * [SaaS teklifi planlama](../plan-saas-offer.md)

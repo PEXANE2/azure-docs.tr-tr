@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: negoe
-ms.reviewer: negoe,celested
+ms.reviewer: marsma, negoe,celested
 ms.custom: aaddev,references_regions
-ms.openlocfilehash: d27498748f03fb101d165351ec80c77d57f78f1a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: da1ea6462d22242d23629bcec192d7760314dfed
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88141508"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444812"
 ---
 # <a name="national-clouds"></a>Ulusal bulutlar
 
@@ -60,8 +60,8 @@ Aşağıdaki tabloda, her bir ulusal bulut için belirteçleri elde etmek üzere
 
 Uygun bölgeye özgü temel URL 'YI kullanarak Azure AD yetkilendirmesi veya belirteç uç noktalarına istek oluşturabilirsiniz. Örneğin, Azure Almanya için:
 
-  - Yetkilendirme ortak uç noktası `https://login.microsoftonline.de/common/oauth2/v2.0/authorize` .
-  - Belirteç ortak uç noktası `https://login.microsoftonline.de/common/oauth2/v2.0/token` .
+- Yetkilendirme ortak uç noktası `https://login.microsoftonline.de/common/oauth2/v2.0/authorize` .
+- Belirteç ortak uç noktası `https://login.microsoftonline.de/common/oauth2/v2.0/token` .
 
 Tek kiracılı uygulamalarda, önceki URL 'Lerdeki "ortak" i kiracı KIMLIĞINIZLE veya adınızla değiştirin. `https://login.microsoftonline.de/contoso.com` bunun bir örneğidir.
 
@@ -76,9 +76,10 @@ Microsoft Identity platformunu kullanarak bir uygulama oluşturmayı öğrenmek 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdakiler hakkında daha fazla bilgi edinin:
+[Microsoft kimlik doğrulama kitaplığı 'nı (msal) ulusal bir bulut ortamında](msal-national-cloud.md)nasıl kullanacağınızı öğrenin.
+
+Ulusal bulut belgeleri:
 
 - [Azure Devlet Kurumları](../../azure-government/index.yml)
 - [Azure China 21Vianet](/azure/china/)
 - [Azure Almanya](../../germany/index.yml)
-- [Azure AD kimlik doğrulaması temelleri](./authentication-vs-authorization.md)

@@ -2,17 +2,17 @@
 title: Application Gateway için Azure Izleyici ölçümleri
 description: Uygulama ağ geçidinin performansını izlemek için ölçümleri nasıl kullanacağınızı öğrenin
 services: application-gateway
-author: abshamsft
+author: surajmb
 ms.service: application-gateway
 ms.topic: article
 ms.date: 06/06/2020
-ms.author: absha
-ms.openlocfilehash: c072e7c1339a2217a3c167be3237029bd71429c2
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.author: surmb
+ms.openlocfilehash: be629d9f8441ad40fe15f005f4aeb0ec5565a7ec
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397748"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437074"
 ---
 # <a name="metrics-for-application-gateway"></a>Application Gateway ölçümleri
 
@@ -52,7 +52,7 @@ Application Gateway, istek ve Yanıtla ilgili, hepsi milisaniye cinsinden ölç�
 
   İstek alma, işleme ve gönderme yanıtı için geçen ortalama süre. 
 
-  Bu, Application Gateway HTTP isteğinin ilk baytını istemciye Son Yanıt baytı gönderilirken geçen zaman olan aralıktır. Bu, Application Gateway tarafından alınan işlem süresini, *arka uç son bayt yanıt süresini* , tüm yanıtı ve *istemci RTT* 'yi göndermek için Application Gateway tarafından alınan süreyi içerir.
+  Bu, Application Gateway HTTP isteğinin ilk baytını istemciye Son Yanıt baytı gönderilirken geçen zaman olan aralıktır. Bu, Application Gateway tarafından alınan işlem süresini, *arka uç son bayt yanıt süresini*, tüm yanıtı ve *istemci RTT*'yi göndermek için Application Gateway tarafından alınan süreyi içerir.
 
 - **İstemci RTT**
 
@@ -162,7 +162,7 @@ Application Gateway için aşağıdaki ölçümler kullanılabilir:
 
 - **Başarısız Istekler**
 
-  Application Gateway 5 xx sunucu hata kodlarıyla birlikte sunulan istek sayısı. Bu, Application Gateway oluşturulan 5xx kodlarını ve arka uçta oluşturulan 5xx kodlarını içerir. İstek sayısı, her/belirli bir arka uç havuzu için sayıyı göstermek üzere daha fazla filtrelenebilir-http ayar birleşimi.
+  Bağlantı sorunları nedeniyle başarısız olan istek sayısı. Bu sayı, uygulama ağ geçidi ile arka uç arasındaki bağlantı sorunları nedeniyle başarısız olan "Istek zaman aşımı" HTTP ayarı ve isteklerin aşılmasından dolayı başarısız olan istekleri içerir. Bu sayı, sağlıklı bir arka uç kullanılamadığından başarısız olan sorunları içermez. arka uçtan 4xx ve 5 xx yanıt, bu ölçümün bir parçası olarak kabul edilmez.
 
 - **Yanıt durumu**
 
@@ -212,13 +212,13 @@ Aşağıdaki örnek, aktarım hızı bir eşiğe ulaştığında bir yöneticiye
 
    !["Ölçüm uyarısı Ekle" düğmesi][6]
 
-2. **Kural Ekle** sayfasında, ad, koşul ve bildirim bölümlerini doldurun ve **Tamam** ' ı seçin.
+2. **Kural Ekle** sayfasında, ad, koşul ve bildirim bölümlerini doldurun ve **Tamam**' ı seçin.
 
-   * **Koşul** seçicide dört değerden birini seçin: **büyüktür** , **büyüktür veya eşittir** , **küçüktür** veya **küçüktür veya eşittir**.
+   * **Koşul** seçicide dört değerden birini seçin: **büyüktür**, **büyüktür veya eşittir**, **küçüktür** veya **küçüktür veya eşittir**.
 
    * **Süre** seçicide beş dakikadan altı saat arasında bir dönem seçin.
 
-   * **E-posta sahipleri, katkıda bulunanlar ve okuyucular** ' ı seçerseniz, e-posta söz konusu kaynağa erişimi olan kullanıcılara göre dinamik olabilir. Aksi takdirde, **ek yönetici e-postaları** kutusunda kullanıcıların virgülle ayrılmış bir listesini sağlayabilirsiniz.
+   * **E-posta sahipleri, katkıda bulunanlar ve okuyucular**' ı seçerseniz, e-posta söz konusu kaynağa erişimi olan kullanıcılara göre dinamik olabilir. Aksi takdirde, **ek yönetici e-postaları** kutusunda kullanıcıların virgülle ayrılmış bir listesini sağlayabilirsiniz.
 
    ![Kural sayfası ekle][7]
 

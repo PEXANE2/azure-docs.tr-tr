@@ -8,12 +8,12 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 11/4/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 3728fdd07172f2402ddb1dc7434ddb1993b984b1
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e9e630f4199e0bfb67509f008f403c0a7a490887
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95999884"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436700"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Ticari Market iş ortağı ve müşteri kullanımı attributıon
 
@@ -32,7 +32,7 @@ Müşteri kullanım attributıon üç dağıtım seçeneğini destekler:
 >
 >- Müşteri kullanım attributıon Yeni dağıtımlar içindir ve zaten dağıtılmış olan mevcut kaynakların etiketlemesini desteklemez.
 >
->- Azure Market 'Te yayımlanan [Azure Uygulama](./partner-center-portal/create-new-azure-apps-offer.md) teklifleri için müşteri kullanım atısyonu gereklidir.
+>- Azure Market 'Te yayımlanan [Azure Uygulama](./create-new-azure-apps-offer.md) teklifleri için müşteri kullanım atısyonu gereklidir.
 >
 >- Tüm Azure Hizmetleri Müşteri kullanımı attribuile uyumlu değildir. Azure Kubernetes Hizmetleri (AKS) ve VM Ölçek kümelerinde, kullanım raporlaması kapsamında neden olan bilinen sorunlar vardır.
 
@@ -64,7 +64,7 @@ GUID 'lerin, müşteri kullanımı atısyonu sağlamak için Iş Ortağı Merkez
 Şablonunuza veya kullanıcı aracısına bir GUID ekleyin ve GUID 'yi Iş Ortağı Merkezi 'ne kaydettikten sonra gelecek dağıtımlar izlenir.
 
 > [!NOTE]
-> [Azure Uygulama](./partner-center-portal/create-new-azure-apps-offer.md) teklifinizi Iş Ortağı Merkezi aracılığıyla Azure Market 'e yayımlıyorsanız, şablonunuz için kullanılan yeni GUID 'ler, şablon karşıya yüklendiğinde otomatik olarak Iş Ortağı Merkezi profilinize kaydedilir.  
+> [Azure Uygulama](./create-new-azure-apps-offer.md) teklifinizi Iş Ortağı Merkezi aracılığıyla Azure Market 'e yayımlıyorsanız, şablonunuz için kullanılan yeni GUID 'ler, şablon karşıya yüklendiğinde otomatik olarak Iş Ortağı Merkezi profilinize kaydedilir.  
 
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard)' nde oturum açın.
 
@@ -82,7 +82,7 @@ GUID 'lerin, müşteri kullanımı atısyonu sağlamak için Iş Ortağı Merkez
 
 1. Birden fazla GUID kaydetmek için, **izleme GUID 'i yeniden Ekle** ' yi seçin. Sayfada ek kutular görüntülenir.
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="use-resource-manager-templates"></a>Resource Manager şablonlarını kullanma
 Birçok iş ortağı çözümü Azure Resource Manager şablonları kullanılarak dağıtılır. Azure Marketi 'nde, GitHub 'da veya hızlı başlangıç olarak kullanılabilen bir Kaynak Yöneticisi şablonunuz varsa, müşteri kullanımı atısyonu 'nı etkinleştirmek için şablonunuzu değiştirme işlemi düz bir işlemdir.
@@ -90,7 +90,7 @@ Birçok iş ortağı çözümü Azure Resource Manager şablonları kullanılara
 > [!NOTE]
 > Çözüm şablonları oluşturma ve yayımlama hakkında daha fazla bilgi için bkz.
 > * [İlk kaynak yöneticisi şablonunuzu oluşturun ve dağıtın](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
->* [Azure Uygulama teklifi](./partner-center-portal/create-new-azure-apps-offer.md).
+>* [Azure Uygulama teklifi](./create-new-azure-apps-offer.md).
 >* Video: [Azure Marketi Için çözüm şablonları ve yönetilen uygulamalar oluşturma](https://channel9.msdn.com/Events/Build/2018/BRK3603).
 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2020
 ms.author: yelevin
-ms.openlocfilehash: e80f7d26fb7ab598651d08b4c1b6478b2ae75e3b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7405824d2477d2d39c45a56ae545e58a090c321
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87563067"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436615"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Azure Sentinel 'i AWS Cloudtrato 'a bağlama
 
@@ -28,7 +28,7 @@ AWS Cloudiziz yönetimi olaylarınızın Azure Sentinel 'e akışını sağlamak
 > [!NOTE]
 > AWS Cloudizinin LookupEvents API 'sinde [yerleşik sınırlamaları](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html) vardır. Hesap başına saniye başına iki işlem (TPS) ve her bir sorgu en fazla 50 kayıt döndürebilir. Sonuç olarak, tek bir kiracının bir bölgede saniyede 100 'den fazla kayıt oluşturması halinde, biriktirme listeleri ve veri alma gecikmelerinin sonucu olur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Sentinel çalışma alanında yazma izninizin olması gerekir.
 
@@ -42,7 +42,7 @@ Azure Sentinel çalışma alanında yazma izninizin olması gerekir.
 
 1. Aşağıdaki adımları kullanarak **yapılandırma** bölümündeki yönergeleri izleyin.
  
-1.  Amazon Web Services konsolunuza **güvenlik, kimlik & uyumluluk**altında **IAM**' i seçin.
+1.  Amazon Web Services konsolunuza **güvenlik, kimlik & uyumluluk** altında **IAM**' i seçin.
 
     ![AWS1](./media/connect-aws/aws-1.png)
 
@@ -78,13 +78,13 @@ Azure Sentinel çalışma alanında yazma izninizin olması gerekir.
 
     ![AWS9](./media/connect-aws/aws-9.png)
 
-1. AWS olayları için Log Analytics ilgili şemayı kullanmak için, **Awscses izi**aratın.
+1. AWS olayları için Log Analytics ilgili şemayı kullanmak için, **Awscses izi** aratın.
 
-
+    > [!IMPORTANT]
+    > 1 Aralık 2020 itibariyle **Awsrequestıd** alanı **AwsRequestId_** alanla değiştirilmiştir (eklenen alt çizgi ' yi aklınızda bulunur). Eski **Awsrequestıd** alanındaki veriler, müşterinin belirtilen veri bekletme döneminin sonuna kadar korunur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu belgede AWS Cloudtraizini Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 - [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
 - [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
 - Verilerinizi izlemek için [çalışma kitaplarını kullanın](tutorial-monitor-your-data.md) .
-

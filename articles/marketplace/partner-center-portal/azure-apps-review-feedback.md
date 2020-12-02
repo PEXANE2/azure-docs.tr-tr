@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 351a9742e9d839a8e217fdea35cad922acc3339f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ede4e5dd781851c781407a8acea640e3e501f259
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095681"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436394"
 ---
 # <a name="handling-review-feedback-for-azure-application-offers"></a>Azure Uygulama teklifleri için gözden geçirme geri bildirimi işleniyor
 
@@ -39,7 +39,7 @@ Iş Ortağı Merkezi 'nde "Geliştirici" rolüne erişimi olan tüm kullanıcıl
     [![Çekme isteği giriş sayfası](./media/pr-home-page-thumb.png)](./media/pr-home-page.png)
     <br/> *Genişletmek için bu resme tıklayın.*
 
-1. Seçim Pencerenin sağ tarafında, bölüm **ilkeleri** ' nde, sorunun alt düzey ayrıntılarını araştırmak için, ilgili günlük dosyaları da dahil olmak üzere, sorun iletisini seçin (Bu örnekte, **ilke doğrulaması başarısız oldu** ). Hatalar genellikle günlük dosyalarının altında görüntülenir.
+1. Seçim Pencerenin sağ tarafında, bölüm **ilkeleri**' nde, sorunun alt düzey ayrıntılarını araştırmak için, ilgili günlük dosyaları da dahil olmak üzere, sorun iletisini seçin (Bu örnekte, **ilke doğrulaması başarısız oldu**). Hatalar genellikle günlük dosyalarının altında görüntülenir.
 
 1. Ana sayfanın sol tarafındaki menüde, bu teklif için teknik varlıkları oluşturan liste dosyalarını göstermek için **dosyalar** ' ı seçin. Microsoft gözden geçirenler, bulunan kritik sorunları açıklayan açıklamalar eklemiş olmalıdır. Aşağıdaki örnekte, iki sorun keşfedilmiştir.
 
@@ -57,4 +57,4 @@ Iş Ortağı Merkezi 'nde "Geliştirici" rolüne erişimi olan tüm kullanıcıl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Gözden geçirme çekme isteği 'nde belgelenen kritik sorunları düzelttikten sonra [Azure uygulama teklifinizi yeniden yayımlamanız](./create-new-azure-apps-offer.md#publish)gerekir.
+Gözden geçirme çekme isteği 'nde belgelenen kritik sorunları düzelttikten sonra [Azure uygulama teklifinizi yeniden yayımlamanız](../create-new-azure-apps-offer.md)gerekir.

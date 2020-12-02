@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: d59e37cdcb6f530b08e980cf75d8834aed332252
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a16dbeedc2362f4a263d59a673dbb4358f7ba034
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93315195"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436496"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>Öğretici: IoT Hub ile ölçümleri ve günlükleri ayarlama ve kullanma
 
@@ -42,9 +42,9 @@ Bu öğreticide, aşağıdaki görevleri gerçekleştireceksiniz:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+- Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-* Geliştirme makinenizde .NET Core SDK 2,1 veya üzeri bir sürümü gerekir. [.NET](https://www.microsoft.com/net/download/all)’ten birden fazla platform için .NET Core SDK’sını indirebilirsiniz.
+- Geliştirme makinenizde .NET Core SDK 2,1 veya üzeri bir sürümü gerekir. [.NET](https://www.microsoft.com/net/download/all)’ten birden fazla platform için .NET Core SDK’sını indirebilirsiniz.
 
   Aşağıdaki komutu kullanarak geliştirme makinenizde geçerli C# sürümünü doğrulayabilirsiniz:
 
@@ -52,11 +52,11 @@ Bu öğreticide, aşağıdaki görevleri gerçekleştireceksiniz:
   dotnet --version
   ```
 
-* Posta alan bir e-posta hesabı.
+- Posta alan bir e-posta hesabı.
 
-* Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu öğreticideki cihaz örneği, 8883 numaralı bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+- Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu öğreticideki cihaz örneği, 8883 numaralı bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="set-up-resources"></a>Kaynakları ayarlama
 
@@ -68,7 +68,7 @@ Gerekli adımlar aşağıda verilmiştir.
 
 2. IoT Hub 'ı oluşturun.
 
-3. Log Analytics çalışma alanı oluşturun.
+3. Log Analytics çalışma alanı oluşturma.
 
 4. IoT Hub 'ınıza ileti gönderen sanal cihaz için bir cihaz kimliği kaydedin. Sanal cihazı yapılandırmak için kullanılacak cihaz bağlantı dizesini kaydedin.
 
@@ -150,19 +150,19 @@ Azure Izleyici günlüklerine IoT Hub kaynak günlükleri göndermek üzere bir 
 
 1. İlk olarak, portalda hub 'ınız yoksa, **kaynak grupları** ' nı seçin ve contosoresources kaynak grubunu seçin. Görünen kaynak listesinden IoT Hub 'ınızı seçin.
 
-1. IoT Hub dikey penceresindeki **izleme** bölümünü arayın. **Tanılama ayarları** ' nı seçin. Ardından **Tanılama ayarı Ekle** ' yi seçin.
+1. IoT Hub dikey penceresindeki **izleme** bölümünü arayın. **Tanılama ayarları**' nı seçin. Ardından **Tanılama ayarı Ekle**' yi seçin.
 
    :::image type="content" source="media/tutorial-use-metrics-and-diags/open-diagnostic-settings.png" alt-text="Izleme bölümündeki tanılama ayarlarını vurgulayan ekran görüntüsü.":::
 
 1. **Tanılama ayarı** bölmesinde, "bağlantıları ve telemetri günlüklere gönder" gibi açıklayıcı bir ad verin.
 
-1. **Kategori ayrıntıları** ' nın altında **Bağlantılar** ve **cihaz telemetrisi** ' ni seçin.
+1. **Kategori ayrıntıları**' nın altında **Bağlantılar** ve **cihaz telemetrisi**' ni seçin.
 
-1. **Hedef ayrıntıları** altında **Log Analytics gönder** ' i seçin ve ardından Log Analytics çalışma alanı seçicisini kullanarak daha önce not ettiğiniz çalışma alanını seçin. İşiniz bittiğinde, tanılama ayarı aşağıdaki ekran görüntüsüne benzer görünmelidir:
+1. **Hedef ayrıntıları** altında **Log Analytics gönder**' i seçin ve ardından Log Analytics çalışma alanı seçicisini kullanarak daha önce not ettiğiniz çalışma alanını seçin. İşiniz bittiğinde, tanılama ayarı aşağıdaki ekran görüntüsüne benzer görünmelidir:
 
    :::image type="content" source="media/tutorial-use-metrics-and-diags/add-diagnostic-setting.png" alt-text="Son tanılama günlüğü ayarlarını gösteren ekran görüntüsü.":::
 
-1. Ayarları kaydetmek için **Kaydet** ’i seçin. **Tanılama ayarı** bölmesini kapatın. Yeni ayarınızı Tanılama ayarları listesinde görebilirsiniz.
+1. Ayarları kaydetmek için **Kaydet**’i seçin. **Tanılama ayarı** bölmesini kapatın. Yeni ayarınızı Tanılama ayarları listesinde görebilirsiniz.
 
 ## <a name="set-up-metrics"></a>Ölçümleri ayarlama
 
@@ -184,7 +184,7 @@ Azure Izleyici günlüklerine IoT Hub kaynak günlükleri göndermek üzere bir 
 
    :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-total-number-of-messages-used.png" alt-text="Grafik için kullanılan ölçüm toplam ileti sayısını gösteren ekran görüntüsü.":::
 
-1. Grafiğin sağ üst kısmında **panoya sabitle** ' yi seçin.
+1. Grafiğin sağ üst kısmında **panoya sabitle**' yi seçin.
 
    :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-total-number-of-messages-used-pin.png" alt-text="Panoya sabitle düğmesini vurgulayan ekran görüntüsü.":::
 
@@ -206,7 +206,7 @@ IoT Hub ile kota ve azaltma limitleri hakkında daha fazla bilgi için bkz. [Kot
 
 1. Azure portal ' de IoT Hub 'ınıza gidin.
 
-1. **İzleme** altında **Uyarılar** ' ı seçin. Ardından **Yeni uyarı kuralı** ' nı seçin.  **Uyarı kuralı oluştur** bölmesi açılır.
+1. **İzleme** altında **Uyarılar**' ı seçin. Ardından **Yeni uyarı kuralı**' nı seçin.  **Uyarı kuralı oluştur** bölmesi açılır.
 
     :::image type="content" source="media/tutorial-use-metrics-and-diags/create-alert-rule-pane.png" alt-text="Uyarı kuralı oluştur bölmesini gösteren ekran görüntüsü.":::
 
@@ -219,23 +219,23 @@ IoT Hub ile kota ve azaltma limitleri hakkında daha fazla bilgi için bkz. [Kot
 
 1. Önce uyarının tetikleyeceği koşulu yapılandırın.
 
-    1. **Koşul** bölümünde **Koşul Seç** ' i seçin. **Sinyal mantığını Yapılandır** bölmesinde, arama kutusuna "Telemetri" yazın ve **gönderilen telemetri iletileri** ' ni seçin.
+    1. **Koşul** bölümünde **Koşul Seç**' i seçin. **Sinyal mantığını Yapılandır** bölmesinde, arama kutusuna "Telemetri" yazın ve **gönderilen telemetri iletileri**' ni seçin.
 
        :::image type="content" source="media/tutorial-use-metrics-and-diags/configure-signal-logic-telemetry-messages-sent.png" alt-text="Ölçüm seçmeyi gösteren ekran görüntüsü.":::
 
     1. **Sinyal mantığını Yapılandır** bölmesinde, **Uyarı mantığı** altında aşağıdaki alanları ayarlayın veya onaylayın (grafiği yoksayabilirsiniz):
 
-       **Eşik** :  *statik*.
+       **Eşik**:  *statik*.
 
-       **İşleç** : *büyüktür*.
+       **İşleç**: *büyüktür*.
 
-       **Toplama türü** : *Toplam*.
+       **Toplama türü**: *Toplam*.
 
-       **Eşik değeri** : 1000.
+       **Eşik değeri**: 1000.
 
-       **Toplama ayrıntı düzeyi (nokta)** : *5 dakika*.
+       **Toplama ayrıntı düzeyi (nokta)**: *5 dakika*.
 
-       **Değerlendirme sıklığı** : *1 dakikada* bir
+       **Değerlendirme sıklığı**: *1 dakikada* bir
 
         :::image type="content" source="media/tutorial-use-metrics-and-diags/configure-signal-logic-set-conditions.png" alt-text="Uyarı koşulları ayarlarını gösteren ekran görüntüsü.":::
 
@@ -245,7 +245,7 @@ IoT Hub ile kota ve azaltma limitleri hakkında daha fazla bilgi için bkz. [Kot
 
 1. Uyarı için eylemi şimdi yapılandırın.
 
-    1. **Uyarı kuralı oluştur** bölmesine geri dönün, **Eylemler** altında **eylem grubu seç** ' i seçin. **Bu uyarı kuralına iliştirilecek bir eylem grubu seçin** sayfasında, **eylem grubu oluştur** ' u seçin.
+    1. **Uyarı kuralı oluştur** bölmesine geri dönün, **Eylemler** altında **eylem grubu seç**' i seçin. **Bu uyarı kuralına iliştirilecek bir eylem grubu seçin** sayfasında, **eylem grubu oluştur**' u seçin.
 
     1. **Eylem grubu oluştur** bölmesindeki **temel bilgiler** sekmesinde, eylem grubunuza bir ad ve görünen ad verin.
 
@@ -253,7 +253,7 @@ IoT Hub ile kota ve azaltma limitleri hakkında daha fazla bilgi için bkz. [Kot
 
     1. **Bildirimler** sekmesini seçin. **Bildirim türü** için, açılan listeden **e-posta/SMS iletisi/gönderim/ses** ' i seçin. **E-posta/SMS ileti/gönderim/ses** bölmesi açılır.
 
-    1. **E-posta/SMS ileti/gönderim/ses** bölmesinde e-posta ' yı seçin ve e-posta adresinizi girip **Tamam** ' ı seçin.
+    1. **E-posta/SMS ileti/gönderim/ses** bölmesinde e-posta ' yı seçin ve e-posta adresinizi girip **Tamam**' ı seçin.
 
         :::image type="content" source="media/tutorial-use-metrics-and-diags/set-email-address.png" alt-text="E-posta adresi ayarını gösteren ekran görüntüsü.":::
 
@@ -265,7 +265,7 @@ IoT Hub ile kota ve azaltma limitleri hakkında daha fazla bilgi için bkz. [Kot
 
         :::image type="content" source="media/tutorial-use-metrics-and-diags/action-types.png" alt-text="Eylemler bölmesinde bulunan eylem türlerini gösteren ekran görüntüsü.":::
 
-    1. **İnceleme ve oluşturma** sekmesini seçin, ayarlarınızı doğrulayın ve **Oluştur** ' u seçin.
+    1. **İnceleme ve oluşturma** sekmesini seçin, ayarlarınızı doğrulayın ve **Oluştur**' u seçin.
 
         :::image type="content" source="media/tutorial-use-metrics-and-diags/create-action-group-review-and-create.png" alt-text="Inceleme ve oluşturma bölmesini gösteren ekran görüntüsü.":::
 
@@ -285,17 +285,17 @@ IoT Hub ile kota ve azaltma limitleri hakkında daha fazla bilgi için bkz. [Kot
 
     * **Sinyal mantığını Yapılandır** bölmesinde, aşağıdaki alanları ayarlayın veya onaylayın (grafiği yoksayabilirsiniz):
 
-       **Eşik** :  *statik*.
+       **Eşik**:  *statik*.
 
-       **İşleç** : *büyüktür*.
+       **İşleç**: *büyüktür*.
 
-       **Toplama türü** : *en fazla*.
+       **Toplama türü**: *en fazla*.
 
-       **Eşik değeri** : 4000.
+       **Eşik değeri**: 4000.
 
-       **Toplama ayrıntı düzeyi (nokta)** : *1 dakika*.
+       **Toplama ayrıntı düzeyi (nokta)**: *1 dakika*.
 
-       **Değerlendirme sıklığı** : *1 dakikada* bir
+       **Değerlendirme sıklığı**: *1 dakikada* bir
 
        Bu ayarlar, ileti sayısı 4000 ' e ulaştığında, sinyali tetikme olarak ayarlar. Ölçüm her dakikada değerlendirilir.
 
@@ -303,7 +303,7 @@ IoT Hub ile kota ve azaltma limitleri hakkında daha fazla bilgi için bkz. [Kot
 
     * Uyarı ayrıntıları için daha önce yaptığından farklı bir ad ve açıklama seçin.
 
-1. IoT Hub 'ınızın sol bölmesinde **izleme** altında **Uyarılar** ' ı seçin. Şimdi **Uyarılar** bölmesinin en üstündeki menüdeki **Uyarı kurallarını yönet** ' i seçin. **Kurallar** bölmesi açılır. Şimdi iki uyarı görmeniz gerekir:
+1. IoT Hub 'ınızın sol bölmesinde **izleme** altında **Uyarılar**' ı seçin. Şimdi **Uyarılar** bölmesinin en üstündeki menüdeki **Uyarı kurallarını yönet** ' i seçin. **Kurallar** bölmesi açılır. Şimdi iki uyarı görmeniz gerekir:
 
    :::image type="content" source="media/tutorial-use-metrics-and-diags/rules-management.png" alt-text="Yeni uyarı kurallarıyla kurallar bölmesini gösteren ekran görüntüsü.":::
 
@@ -333,7 +333,7 @@ Bu ayarlarla bir uyarı tetiklenir ve 5 dakikalık bir zaman dilimi içinde 1000
         await Task.Delay(1);
         ```
 
-    1. Değişikliklerinizi **SimulatedDevice.cs** 'ye kaydedin.
+    1. Değişikliklerinizi **SimulatedDevice.cs**'ye kaydedin.
 
 1. Yerel Terminal penceresinde, sanal cihaz uygulaması için gerekli paketleri yüklemek üzere aşağıdaki komutu çalıştırın:
 
@@ -358,7 +358,7 @@ Uygulamanın en az 10-15 dakika boyunca çalışmasına izin verin. İdeal olara
 
 ## <a name="view-metrics-chart-on-your-dashboard"></a>Panonuzda ölçüm grafiğini görüntüleme
 
-1. Azure portal sol üst köşesinde Portal menüsünü açın ve ardından **Pano** ' yı seçin.
+1. Azure portal sol üst köşesinde Portal menüsünü açın ve ardından **Pano**' yı seçin.
 
    :::image type="content" source="media/tutorial-use-metrics-and-diags/select-dashboard.png" alt-text="Panonuzun nasıl seçdiğinin ekran görüntüsü.":::
 
@@ -392,7 +392,7 @@ Microsoft Azure 'den e-postalar için gelen kutunuzu denetleyin. Konu satırınd
 
 [Bağlantılar ve cihaz telemetri için günlükleri topla](#collect-logs-for-connections-and-device-telemetry) bölümünde, IoT Hub 'ınız tarafından Azure izleyici günlüklerine bağlantı ve cihaz telemetri işlemleri için oluşturulan kaynak günlüklerini göndermek üzere bir tanılama ayarı oluşturdunuz. Bu bölümde, oluşan hataları gözlemlemek için Azure Izleyici günlüklerinde bir kusto sorgusu çalıştıracaksınız.
 
-1. Azure portal ' de IoT Hub 'ınızın sol bölmesindeki **izleme** ' nin altında **Günlükler** ' i seçin. Açılırsa ilk **sorgular** penceresini kapatın.
+1. Azure portal ' de IoT Hub 'ınızın sol bölmesindeki **izleme** ' nin altında **Günlükler**' i seçin. Açılırsa ilk **sorgular** penceresini kapatın.
 
 1. Yeni sorgu bölmesinde **sorgular** sekmesini seçin ve ardından varsayılan sorguların listesini görmek için **IoT Hub** ' ı genişletin.
 
@@ -407,7 +407,7 @@ Microsoft Azure 'den e-postalar için gelen kutunuzu denetleyin. Konu satırınd
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu öğreticide oluşturduğunuz tüm kaynakları kaldırmak için kaynak grubunu silin. Bu eylem grubun içerdiği tüm kaynakları siler. Bu durumda, IoT Hub 'ı, Log Analytics çalışma alanını ve kaynak grubunun kendisini kaldırır. Panoya sabitlenmiş ölçüm grafikleri varsa, her grafiğin sağ üst köşesindeki üç noktaya tıklayarak ve **Kaldır** ' ı seçerek bunları el ile kaldırmanız gerekir. Grafikleri sildikten sonra değişikliklerinizi kaydettiğinizden emin olun.
+Bu öğreticide oluşturduğunuz tüm kaynakları kaldırmak için kaynak grubunu silin. Bu eylem grubun içerdiği tüm kaynakları siler. Bu durumda, IoT Hub 'ı, Log Analytics çalışma alanını ve kaynak grubunun kendisini kaldırır. Panoya sabitlenmiş ölçüm grafikleri varsa, her grafiğin sağ üst köşesindeki üç noktaya tıklayarak ve **Kaldır**' ı seçerek bunları el ile kaldırmanız gerekir. Grafikleri sildikten sonra değişikliklerinizi kaydettiğinizden emin olun.
 
 Kaynak grubunu kaldırmak için [az group delete](/cli/azure/group#az-group-delete) komutunu kullanın.
 

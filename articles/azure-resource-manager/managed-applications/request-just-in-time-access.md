@@ -5,12 +5,12 @@ author: MSEvanhi
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: evanhi
-ms.openlocfilehash: 5e1a929924e2c291e0044da99f3ae5d7d1c3b894
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f839eb04e0c036b5059e35fac16d9c702646cbd7
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91371583"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435697"
 ---
 # <a name="enable-and-request-just-in-time-access-for-azure-managed-applications"></a>Azure yönetilen uygulamalar için tam zamanında erişimi etkinleştirme ve isteme
 
@@ -72,7 +72,7 @@ Iş Ortağı Merkezi 'nde teklifinizi oluştururken JıT erişimini etkinleştir
 
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)'Nde ticari Market portalında oturum açın.
 
-1. Yeni bir yönetilen uygulama oluşturma kılavuzu için [Azure uygulama oluşturma teklifi oluşturma](../../marketplace/partner-center-portal/create-new-azure-apps-offer.md)bölümündeki adımları izleyin.
+1. Yeni bir yönetilen uygulama oluşturma kılavuzu için [Azure uygulama oluşturma teklifi oluşturma](../../marketplace/create-new-azure-apps-offer.md)bölümündeki adımları izleyin.
 
 1. **Teknik yapılandırma** sayfasında, **tam zamanında (JIT) erişimi etkinleştir** onay kutusunu seçin.
 

@@ -7,15 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/09/2020
+ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: c596b0d218c0b935fa1f3e971067160e52d87af1
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.custom: azureday1
+ms.openlocfilehash: 72b1d4fe864c23c0ac065e47d96ab0c78866defa
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183133"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435850"
 ---
 # <a name="tutorial-access-azure-storage-from-a-web-app"></a>Öğretici: bir Web uygulamasından Azure depolama erişimi
 
@@ -27,7 +28,7 @@ Web uygulamanızdan Azure veri düzlemi 'ne (Azure depolama, Azure SQL veritaban
 
 Azure Active Directory (Azure AD) tarafından yönetilen bir kimlik, App Service rol tabanlı erişim denetimi (RBAC) aracılığıyla uygulama kimlik bilgileri gerekmeden kaynaklara erişmesine olanak sağlar. Web uygulamanıza yönetilen bir kimlik atadıktan sonra, Azure bir sertifikanın oluşturulmasını ve dağıtımını gerçekleştirir. Kişilerin gizli dizileri veya uygulama kimlik bilgilerini yönetme konusunda endişelenmek zorunda değildir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -37,7 +38,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [App Service kimlik doğrulama/yetkilendirme modülü etkinleştirilmiş](scenario-secure-app-authentication-app-service.md)Azure App Service üzerinde çalışan bir Web uygulaması.
 
@@ -210,6 +211,8 @@ az role assignment create --assignee $spID --role 'Storage Blob Data Contributor
 ## <a name="access-blob-storage-net"></a>Blob depolamaya erişme (.NET)
 
 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) sınıfı, Azure depolama 'ya istekleri yetkilendirmek üzere kodunuzun belirteç kimlik bilgilerini almak için kullanılır. Belirteçleri getirmek ve bunları hizmet istemcisine eklemek için yönetilen kimliği kullanan [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) sınıfının bir örneğini oluşturun. Aşağıdaki kod örneği, kimliği doğrulanmış belirteç kimlik bilgisini alır ve yeni bir blobu yükleyen bir hizmet istemci nesnesi oluşturmak için onu kullanır.
+
+Bu kodu örnek bir uygulamanın parçası olarak görmek için [GitHub 'daki örneğe](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/1-WebApp-storage-managed-identity)bakın.
 
 ### <a name="install-client-library-packages"></a>İstemci kitaplığı paketlerini yükler
 

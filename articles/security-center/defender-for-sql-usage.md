@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 236a604c2c1cecfb18a2d82c3796a88cc4341a34
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: d37c362da484a2a7e400da8f87dd0a37f0f80d3a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636393"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436734"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Makinelerdeki SQL sunucuları için Azure Defender 
 
@@ -112,7 +112,7 @@ Uyarılar, SQL makinelerine erişmek veya bu makinelere yararlanmak için olağa
 
 ## <a name="explore-and-investigate-security-alerts"></a>Güvenlik uyarılarını araştır ve araştır
 
-Azure Defender uyarıları, güvenlik merkezi 'nin Uyarılar sayfasında, kaynağın Güvenlik sekmesinde, [Azure Defender panosunda](azure-defender-dashboard.md)veya uyarı e-postalarında doğrudan bağlantı aracılığıyla kullanılabilir.
+SQL uyarıları için Azure Defender, güvenlik merkezi 'nin Uyarılar sayfasında, kaynağın Güvenlik sekmesinde, [Azure Defender panosunda](azure-defender-dashboard.md)veya uyarı e-postalarında doğrudan bağlantı aracılığıyla kullanılabilir.
 
 1. Uyarıları görüntülemek için Güvenlik Merkezi menüsünden **güvenlik uyarıları** ' nı seçin ve bir uyarı seçin.
 

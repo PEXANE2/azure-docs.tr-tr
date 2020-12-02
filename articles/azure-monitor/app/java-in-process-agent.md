@@ -3,12 +3,12 @@ title: Azure Izleyici Application Insights Java
 description: Kod değişikliğine gerek duymadan herhangi bir ortamda çalışan Java uygulamaları için uygulama performansı izleme. Dağıtılmış izleme ve uygulama eşlemesi.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 36e2b419da2bccdf2f5f13227457172cf644994c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 7046e4a1aeeda5e537208c79858c95c79e188348
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351546"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437210"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Java kodsuz kullanacaksınız uygulama izleme Azure izleyici Application Insights
 
@@ -127,104 +127,124 @@ Tüm ayrıntılar için bkz. [yapılandırma seçenekleri](./java-standalone-con
 * Mikro ölçer (Spring Boot çalıştırıcı ölçümleri dahil)
 * JMX ölçümleri
 
-## <a name="sending-custom-telemetry-from-your-application"></a>Uygulamanızdan Özel telemetri gönderme
+## <a name="send-custom-telemetry-from-your-application"></a>Uygulamanızdan Özel telemetri gönderin
 
 3.0 + ' da hedefiniz, Standart API 'Leri kullanarak özel telemetrinizi göndermenizi sağlamaktır.
 
-Mikro ölçüm, Opentelemetri API ve popüler günlük çerçevesini destekliyoruz. Application Insights Java 3,0, Telemetriyi otomatik olarak yakalar ve otomatik olarak toplanan telemetriyle birlikte ilişkilendirilecektir.
+Mikro ölçer, popüler günlük çerçeveleri ve Application Insights Java 2. x SDK 'sını şu ana kadar destekliyoruz.
+Application Insights Java 3,0, bu API 'Ler aracılığıyla gönderilen Telemetriyi otomatik olarak yakalar ve otomatik toplanan telemetriyle ilişkilendirir.
 
 ### <a name="supported-custom-telemetry"></a>Desteklenen özel telemetri
 
-Aşağıdaki tablo, Java 3,0 Aracısı 'nı tamamlamak için etkinleştirebileceğiniz, şu anda desteklenen özel telemetri türlerini temsil eder. Özetlemek gerekirse, özel ölçümler mikro ölçüm aracılığıyla desteklenir, özel özel durumlar ve izlemeler günlüğe kaydetme çerçeveleri aracılığıyla etkinleştirilebilir ve tüm özel telemetri türleri [Java 2. x SDK Application Insights](#sending-custom-telemetry-using-application-insights-java-sdk-2x)aracılığıyla desteklenir. 
+Aşağıdaki tablo, Java 3,0 Aracısı 'nı tamamlamak için etkinleştirebileceğiniz, şu anda desteklenen özel telemetri türlerini temsil eder. Özetlemek gerekirse, özel ölçümler mikro ölçüm aracılığıyla desteklenir, özel özel durumlar ve izlemeler günlüğe kaydetme çerçeveleri aracılığıyla etkinleştirilebilir ve tüm özel telemetri türleri [Java 2. x SDK Application Insights](#send-custom-telemetry-using-application-insights-java-2x-sdk)aracılığıyla desteklenir.
 
 |                     | Micrometer | Log4J, logback, Tem | 2. x SDK |
 |---------------------|------------|---------------------|---------|
-| **Özel olaylar**   |            |                     |  Yes    |
-| **Özel ölçümler**  |  Yes       |                     |  Yes    |
-| **Bağımlılıklar**    |            |                     |  Yes    |
-| **Özel durumlar**      |            |  Yes                |  Yes    |
-| **Sayfa Görüntülemeleri**      |            |                     |  Yes    |
-| **İstekler**        |            |                     |  Yes    |
-| **İzlemeler**          |            |  Yes                |  Yes    |
+| **Özel olaylar**   |            |                     |  Evet    |
+| **Özel ölçümler**  |  Evet       |                     |  Evet    |
+| **Bağımlılıklar**    |            |                     |  Evet    |
+| **Özel durumlar**      |            |  Evet                |  Evet    |
+| **Sayfa Görüntülemeleri**      |            |                     |  Evet    |
+| **İstekler**        |            |                     |  Evet    |
+| **İzlemeler**          |            |  Evet                |  Evet    |
 
 Application Insights 3,0 ile bir SDK 'Yı Şu anda serbest bırakmaya planlanıyoruz.
 
-Application Insights Java 3,0, Java SDK 'Sı 2. x Application Insights gönderilen telemetri için zaten dinliyor. Bu işlevsellik, var olan 2. x kullanıcıları için yükseltme hikayesinin önemli bir parçasıdır ve Opentelemetri API 'SI GA olana kadar özel telemetri desteğimize önemli bir boşluk girer.
+Application Insights Java 3,0, Java 2. x SDK Application Insights gönderilen Telemetriyi zaten dinliyor. Bu işlevsellik, var olan 2. x kullanıcıları için yükseltme hikayesinin önemli bir parçasıdır ve Opentelemetri API 'SI GA olana kadar özel telemetri desteğimize önemli bir boşluk girer.
 
-## <a name="sending-custom-telemetry-using-application-insights-java-sdk-2x"></a>Java SDK 2. x Application Insights kullanarak özel telemetri gönderme
+### <a name="send-custom-metrics-using-micrometer"></a>Mikro ölçüm kullanarak özel ölçümleri gönderme
+
+Uygulamanıza mikro ölçüm ekleyin:
+
+```xml
+<dependency>
+  <groupId>io.micrometer</groupId>
+  <artifactId>micrometer-core</artifactId>
+  <version>1.6.1</version>
+</dependency>
+```
+
+Bir ölçüm oluşturmak için mikro ölçüm [genel kayıt defteri](https://micrometer.io/docs/concepts#_global_registry) 'ni kullanın:
+
+```java
+static final Counter counter = Metrics.counter("test_counter");
+```
+
+ve bunları kullanarak ölçümleri kaydedebilirsiniz:
+
+```java
+counter.increment();
+```
+
+### <a name="send-custom-traces-and-exceptions-using-your-favorite-logging-framework"></a>En sevdiğiniz günlük çerçevesini kullanarak özel izlemeler ve özel durumlar gönderin
+
+Log4J, Logback ve Java. util. Logging otomatik olarak işaretlenir ve bu günlüğe kaydetme çerçeveleri aracılığıyla gerçekleştirilen günlüğe kaydetme, izleme ve özel durum telemetrisi olarak otomatik toplanır.
+
+Varsayılan olarak günlük kaydı yalnızca BILGI düzeyinde veya yukarıdaki günlüğe kaydetme gerçekleştirildiğinde toplanır.
+Bu düzeyin nasıl değiştirileceği için [yapılandırma seçeneklerine](./java-standalone-config.md#auto-collected-logging) bakın.
+
+Günlükleriniz için özel boyutlar eklemek istiyorsanız, [Log4J 1 MDC](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/MDC.html), [Log4J 2 MDC](https://logging.apache.org/log4j/2.x/manual/thread-context.html)veya [logback MDC](http://logback.qos.ch/manual/mdc.html)kullanabilirsiniz ve Application Insights Java 3,0, bu MDC özelliklerini, izleme ve özel durum telemetrisi için özel boyutlar olarak otomatik olarak yakalar.
+
+### <a name="send-custom-telemetry-using-application-insights-java-2x-sdk"></a>Java 2. x SDK Application Insights kullanarak özel telemetri gönderme
 
 `applicationinsights-core-2.6.0.jar`Uygulamanıza ekleme (tüm 2. x sürümleri Application Insights Java 3,0 tarafından desteklenir, ancak bir seçiminiz varsa en son kullanımı buna değecektir):
 
 ```xml
-  <dependency>
-    <groupId>com.microsoft.azure</groupId>
-    <artifactId>applicationinsights-core</artifactId>
-    <version>2.6.0</version>
-  </dependency>
+<dependency>
+  <groupId>com.microsoft.azure</groupId>
+  <artifactId>applicationinsights-core</artifactId>
+  <version>2.6.0</version>
+</dependency>
 ```
 
 TelemetryClient oluşturun:
 
   ```java
-private static final TelemetryClient telemetryClient = new TelemetryClient();
+static final TelemetryClient telemetryClient = new TelemetryClient();
 ```
 
-ve bunu özel telemetri göndermek için kullanın.
+ve özel telemetri göndermek için kullanın:
 
-### <a name="events"></a>Ekinlikler
+##### <a name="events"></a>Ekinlikler
 
-  ```java
+```java
 telemetryClient.trackEvent("WinGame");
 ```
-### <a name="metrics"></a>Ölçümler
 
-[Mikro ölçer](https://micrometer.io)aracılığıyla ölçüm telemetrisi gönderebilirsiniz:
+##### <a name="metrics"></a>Ölçümler
 
 ```java
-  Counter counter = Metrics.counter("test_counter");
-  counter.increment();
+telemetryClient.trackMetric("queueLength", 42.0);
 ```
 
-Ya da Java SDK 'Sı 2. x Application Insights de kullanabilirsiniz:
+##### <a name="dependencies"></a>Bağımlılıklar
 
 ```java
-  telemetryClient.trackMetric("queueLength", 42.0);
+boolean success = false;
+long startTime = System.currentTimeMillis();
+try {
+    success = dependency.call();
+} finally {
+    long endTime = System.currentTimeMillis();
+    RemoteDependencyTelemetry telemetry = new RemoteDependencyTelemetry();
+    telemetry.setTimestamp(new Date(startTime));
+    telemetry.setDuration(new Duration(endTime - startTime));
+    telemetryClient.trackDependency(telemetry);
+}
 ```
 
-### <a name="dependencies"></a>Bağımlılıklar
+##### <a name="logs"></a>Günlükler
 
 ```java
-  boolean success = false;
-  long startTime = System.currentTimeMillis();
-  try {
-      success = dependency.call();
-  } finally {
-      long endTime = System.currentTimeMillis();
-      RemoteDependencyTelemetry telemetry = new RemoteDependencyTelemetry();
-      telemetry.setTimestamp(new Date(startTime));
-      telemetry.setDuration(new Duration(endTime - startTime));
-      telemetryClient.trackDependency(telemetry);
-  }
+telemetryClient.trackTrace(message, SeverityLevel.Warning, properties);
 ```
 
-### <a name="logs"></a>Günlükler
-En sevdiğiniz günlük çatısı aracılığıyla özel günlük telemetrisi gönderebilirsiniz.
-
-Ya da Java SDK 'Sı 2. x Application Insights de kullanabilirsiniz:
+##### <a name="exceptions"></a>Özel durumlar
 
 ```java
-  telemetryClient.trackTrace(message, SeverityLevel.Warning, properties);
-```
-
-### <a name="exceptions"></a>Özel durumlar
-En sevdiğiniz günlük çatısı aracılığıyla özel özel durum telemetrisi gönderebilirsiniz.
-
-Ya da Java SDK 'Sı 2. x Application Insights de kullanabilirsiniz:
-
-```java
-  try {
-      ...
-  } catch (Exception e) {
-      telemetryClient.trackException(e);
-  }
+try {
+    ...
+} catch (Exception e) {
+    telemetryClient.trackException(e);
+}
 ```

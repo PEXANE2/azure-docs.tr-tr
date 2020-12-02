@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 38133a63d65e45a4d1c83e9752dcaa01a86da33e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e0736e58983d4c28b8f2f4a20241cd36ac84fdfa
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782901"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445388"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>Azure SQL veritabanı ve Azure SYNAPSE 'de mantıksal SQL Server nedir?
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -26,7 +26,7 @@ Azure SQL veritabanı ve Azure SYNAPSE Analytics 'te, bir sunucu, bir veritaban�
 
 Bu sunucu, şirket içi dünyada bildiğiniz bir SQL Server örneğinden farklıdır. Özellikle, veritabanlarının veya veri ambarı veritabanının, kendilerini yöneten sunucuyla ilişkili olarak konumuyla ilgili garanti yoktur. Ayrıca, Azure SQL veritabanı ve Azure SYNAPSE herhangi bir örnek düzeyi erişim veya özellik sunmaz. Buna karşılık, yönetilen bir örnekteki örnek veritabanlarının hepsi, şirket içi veya sanal makine dünyasında SQL Server bildiğiniz gibi fiziksel olarak birlikte bulunur.
 
-Sunucu oluşturduğunuzda, bu sunucu üzerindeki ana veritabanına ve bu sunucuda oluşturulan tüm veritabanlarına yönetici haklarına sahip bir sunucu oturum açma hesabı ve parolası sağlarsınız. Bu ilk hesap bir SQL oturum açma hesabıdır. Azure SQL veritabanı ve SYNAPSE Analytics kimlik doğrulaması için SQL kimlik doğrulamasını ve Azure Active Directory kimlik doğrulamasını destekler. Oturum açma ve kimlik doğrulama hakkında bilgi için bkz. [Azure SQL veritabanı 'Nda veritabanlarını ve oturum açma Işlemlerini yönetme](logins-create-manage.md). Windows Kimlik Doğrulaması desteklenmez.
+Sunucu oluşturduğunuzda, bu sunucu üzerindeki ana veritabanına ve bu sunucuda oluşturulan tüm veritabanlarına yönetici haklarına sahip bir sunucu oturum açma hesabı ve parolası sağlarsınız. Bu ilk hesap bir SQL oturum açma hesabıdır. Azure SQL veritabanı ve Azure SYNAPSE Analytics kimlik doğrulaması için SQL kimlik doğrulamasını ve Azure Active Directory kimlik doğrulamasını destekler. Oturum açma ve kimlik doğrulama hakkında bilgi için bkz. [Azure SQL veritabanı 'Nda veritabanlarını ve oturum açma Işlemlerini yönetme](logins-create-manage.md). Windows Kimlik Doğrulaması desteklenmez.
 
 SQL veritabanı ve Azure 'da bir sunucu SYNAPSE:
 

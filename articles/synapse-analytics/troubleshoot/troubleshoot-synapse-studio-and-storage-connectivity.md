@@ -1,22 +1,22 @@
 ---
-title: SYNAPSE Studio ve depolama arasındaki bağlantı sorunlarını giderme
-description: SYNAPSE Studio ve depolama arasındaki bağlantı sorunlarını giderme
+title: Synapse Studio ve depolama alanı arasındaki bağlantı sorunlarını giderme
+description: Synapse Studio ve depolama alanı arasındaki bağlantı sorunlarını giderme
 author: saveenr
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0b8a64d24242e6fb34c963b14429fdfee2398f62
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: cee6d030a9639a7203a32a3c0957733cecb1f8b6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94558015"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445315"
 ---
-# <a name="troubleshoot-connectivity-between-azure-synapse-analytics-synapse-studio-and-storage"></a>Azure SYNAPSE Analytics SYNAPSE Studio ve depolama arasında bağlantı sorunlarını giderme
+# <a name="troubleshoot-connectivity-between-azure-synapse-analytics-synapse-studio-and-storage"></a>Azure Synapse Analytics Synapse Studio ile depolama alanı arasındaki bağlantı sorunlarını giderme
 
-SYNAPSE Studio 'da (Önizleme), bağlantılı depolarınızda bulunan veri kaynaklarını keşfedebilirsiniz. Bu kılavuz, veri kaynaklarınıza erişmeye çalışırken bağlantı sorunlarını çözmenize yardımcı olur. 
+SYNAPSE Studio 'da, bağlantılı depolarınızda bulunan veri kaynaklarını keşfedebilirsiniz. Bu kılavuz, veri kaynaklarınıza erişmeye çalışırken bağlantı sorunlarını çözmenize yardımcı olur. 
 
 ## <a name="case-1-storage-account-lacks-proper-permissions"></a>Büyük/küçük harf #1: depolama hesabı uygun izinlere sahip değil
 
@@ -26,7 +26,7 @@ Ayrıntılı hata iletisi değişebilir, ancak hata iletisinin genel anlamı şu
 
 ![Depolama bağlantısı sorunu 1](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue.1.png)
 
-**Çözüm** : hesabınızı uygun role atamak için bkz [. blob ve kuyruk verilerine erişim için Azure rolü atamak üzere Azure Portal kullanma](../../storage/common/storage-auth-aad-rbac-portal.md)
+**Çözüm**: hesabınızı uygun role atamak için bkz [. blob ve kuyruk verilerine erişim için Azure rolü atamak üzere Azure Portal kullanma](../../storage/common/storage-auth-aad-rbac-portal.md)
 
 
 ## <a name="case-2-failed-to-send-the-request-to-storage-server"></a>Büyük/küçük harf #2: istek depolama sunucusuna gönderilemedi
@@ -39,13 +39,13 @@ Bu sorunun arkasında birkaç olası neden olabilir:
 
 ### <a name="the-storage-resource-is-behind-a-vnet-and-a-storage-private-endpoint-needs-to-configure"></a>Depolama kaynağı bir sanal ağın arkasında ve bir depolama özel uç noktasının yapılandırılması gerekiyor
 
-**Çözüm** : Bu durumda, depolama hesabınız için depolama özel uç noktasını yapılandırmanız gerekir. VNet için depolama özel uç noktasının nasıl yapılandırılacağı hakkında bilgi için bkz. [Azure Portal kullanarak blob ve sıra verilerine erişim için bir Azure rolü atama](../security/how-to-connect-to-workspace-from-restricted-network.md).
+**Çözüm**: Bu durumda, depolama hesabınız için depolama özel uç noktasını yapılandırmanız gerekir. VNet için depolama özel uç noktasının nasıl yapılandırılacağı hakkında bilgi için bkz. [Azure Portal kullanarak blob ve sıra verilerine erişim için bir Azure rolü atama](../security/how-to-connect-to-workspace-from-restricted-network.md).
 
 \<storage-account-name\>Depolama özel uç noktasının yapılandırıldıktan sonra bağlantıyı denetlemek için "Nslookup. DFS.Core.Windows.net" komutunu kullanabilirsiniz. Şuna benzer bir dize döndürmelidir: " \<storage-account-name\> . Privatelink.DFS.Core.Windows.net".
 
 ### <a name="the-storage-resource-is-not-behind-a-vnet-but-the-blob-service-azure-ad-endpoint-is-not-accessible-due-to-firewall-configured"></a>Depolama kaynağı vNet 'in arkasında değil, ancak yapılandırılmış güvenlik duvarı nedeniyle blob hizmeti (Azure AD) uç noktasına erişilemiyor
 
-**Çözüm** : Bu durumda, Azure Portal depolama hesabınızı açmanız gerekir. Sol gezinti bölmesinde, **destek + sorun giderme** ' ye gidin ve **BLOB HIZMETI (Azure AD)** bağlantı durumunu denetlemek için **bağlantı denetimi** ' ni seçin. Erişilebilir değilse, depolama hesabınız sayfasında **güvenlik duvarları ve sanal ağlar** yapılandırmasını denetlemek için yükseltilen kılavuzu izleyin. Depolama güvenlik duvarları hakkında daha fazla bilgi için bkz. [Azure Storage güvenlik duvarlarını ve sanal ağları yapılandırma](../../storage/common/storage-network-security.md).
+**Çözüm**: Bu durumda, Azure Portal depolama hesabınızı açmanız gerekir. Sol gezinti bölmesinde, **destek + sorun giderme** ' ye gidin ve **BLOB HIZMETI (Azure AD)** bağlantı durumunu denetlemek için **bağlantı denetimi** ' ni seçin. Erişilebilir değilse, depolama hesabınız sayfasında **güvenlik duvarları ve sanal ağlar** yapılandırmasını denetlemek için yükseltilen kılavuzu izleyin. Depolama güvenlik duvarları hakkında daha fazla bilgi için bkz. [Azure Storage güvenlik duvarlarını ve sanal ağları yapılandırma](../../storage/common/storage-network-security.md).
 
 ### <a name="other-issues-to-check"></a>Denetlenecek diğer sorunlar 
 

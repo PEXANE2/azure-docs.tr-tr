@@ -10,20 +10,20 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: f0121a264c3fcf4cba1de72a1b9b81c1af66e82a
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 278c842d6e6f73bff5468f601eea77f8b140a07c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96297109"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444440"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-in-net"></a>Öğretici: .NET 'teki bir Azure Web uygulamasına Key Vault bağlamak için yönetilen bir kimlik kullanın
 
-[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/overview) , artırılmış güvenlik ile kimlik bilgilerini ve diğer gizli dizileri depolamanın bir yolunu sağlar. Ancak kodunuzun bunları alabilmesi için Key Vault kimlik doğrulaması gerekir. [Azure kaynakları Için Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md) , azure hizmetlerine Azure Active Directory (Azure AD) içinde otomatik olarak yönetilen bir kimlik vererek bu sorunu çözmeye yardımcı olur. Kodunuzda kimlik bilgilerini görüntülemesi gerekmeden Key Vault dahil olmak üzere Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmak için bu kimliği kullanabilirsiniz.
+[Azure Key Vault](./overview.md) , artırılmış güvenlik ile kimlik bilgilerini ve diğer gizli dizileri depolamanın bir yolunu sağlar. Ancak kodunuzun bunları alabilmesi için Key Vault kimlik doğrulaması gerekir. [Azure kaynakları Için Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md) , azure hizmetlerine Azure Active Directory (Azure AD) içinde otomatik olarak yönetilen bir kimlik vererek bu sorunu çözmeye yardımcı olur. Kodunuzda kimlik bilgilerini görüntülemesi gerekmeden Key Vault dahil olmak üzere Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmak için bu kimliği kullanabilirsiniz.
 
 Bu öğreticide, Azure Anahtar Kasası ile bir Azure Web uygulamasının kimliğini doğrulamak için yönetilen bir kimlik kullanacaksınız. .NET ve [Azure CLI](/cli/azure/get-started-with-azure-cli) [için Azure Key Vault sürüm 4 istemci kitaplığı](/dotnet/api/overview/azure/key-vault) 'nı kullanacaksınız. Tercih ettiğiniz geliştirme dilini, Azure PowerShell ve/veya Azure portal kullandığınızda aynı temel ilkeler geçerlidir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlamak için aşağıdakilere ihtiyacınız vardır:
 
@@ -31,8 +31,8 @@ Bu hızlı başlangıcı tamamlamak için aşağıdakilere ihtiyacınız vardır
 * [.NET Core 3,1 SDK (veya üzeri)](https://dotnet.microsoft.com/download/dotnet-core/3.1).
 * [Git](https://www.git-scm.com/downloads) yüklemesi.
 * [Azure CLI](/cli/azure/install-azure-cli) veya [Azure PowerShell](/powershell/azure/).
-* [Azure Key Vault.](https://docs.microsoft.com/azure/key-vault/general/overview) [Azure Portal](quick-create-portal.md), [Azure CLI](quick-create-cli.md)veya [Azure PowerShell](quick-create-powershell.md)kullanarak bir Anahtar Kasası oluşturabilirsiniz.
-* [Gizli](https://docs.microsoft.com/azure/key-vault/secrets/about-secrets)dizi Key Vault. [Azure Portal](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal), [POWERSHELL](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-powershell)veya [Azure CLI](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-cli)kullanarak bir gizli dizi oluşturabilirsiniz.
+* [Azure Key Vault.](./overview.md) [Azure Portal](quick-create-portal.md), [Azure CLI](quick-create-cli.md)veya [Azure PowerShell](quick-create-powershell.md)kullanarak bir Anahtar Kasası oluşturabilirsiniz.
+* [Gizli](../secrets/about-secrets.md)dizi Key Vault. [Azure Portal](../secrets/quick-create-portal.md), [POWERSHELL](../secrets/quick-create-powershell.md)veya [Azure CLI](../secrets/quick-create-cli.md)kullanarak bir gizli dizi oluşturabilirsiniz.
 
 ## <a name="create-a-net-core-app"></a>.NET Core uygulaması oluşturma
 Bu adımda, yerel .NET Core projesini ayarlayacaksınız.
@@ -62,7 +62,7 @@ Uygulamanızdan "Merhaba Dünya!" sayfada görünen örnek uygulamadaki ileti.
 
 ## <a name="deploy-the-app-to-azure"></a>Uygulamayı Azure’da dağıtma
 
-Bu adımda, .NET Core uygulamanızı yerel Git kullanarak Azure App Service dağıtacaksınız. Uygulamaları oluşturma ve dağıtma hakkında daha fazla bilgi için bkz. [Azure 'da ASP.NET Core Web uygulaması oluşturma](https://docs.microsoft.com/azure/app-service/quickstart-dotnetcore).
+Bu adımda, .NET Core uygulamanızı yerel Git kullanarak Azure App Service dağıtacaksınız. Uygulamaları oluşturma ve dağıtma hakkında daha fazla bilgi için bkz. [Azure 'da ASP.NET Core Web uygulaması oluşturma](../../app-service/quickstart-dotnetcore.md).
 
 ### <a name="configure-the-local-git-deployment"></a>Yerel git dağıtımını yapılandırma
 
@@ -99,7 +99,7 @@ az group create --name "myResourceGroup" -l "EastUS"
 
 ### <a name="create-an-app-service-plan"></a>App Service planı oluşturma
 
-Azure CLı [az appservice plan Create](/cli/azure/appservice/plan) komutunu kullanarak bir [App Service planı](https://docs.microsoft.com/azure/app-service/overview-hosting-plans) oluşturun. Aşağıdaki örnek `myAppServicePlan` , fiyatlandırma katmanında adlı bir App Service planı oluşturur `FREE` :
+Azure CLı [az appservice plan Create](/cli/azure/appservice/plan) komutunu kullanarak bir [App Service planı](../../app-service/overview-hosting-plans.md) oluşturun. Aşağıdaki örnek `myAppServicePlan` , fiyatlandırma katmanında adlı bir App Service planı oluşturur `FREE` :
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE
@@ -125,7 +125,7 @@ App Service planı oluşturulduğunda Azure CLı, burada gördüklerinize benzer
 } 
 </pre>
 
-Daha fazla bilgi için bkz. [Azure'da App Service planı yönetme](https://docs.microsoft.com/azure/app-service/app-service-plan-manage).
+Daha fazla bilgi için bkz. [Azure'da App Service planı yönetme](../../app-service/app-service-plan-manage.md).
 
 ### <a name="create-a-web-app"></a>Web uygulaması oluşturma
 
@@ -249,7 +249,7 @@ Web uygulamanıza, anahtar kasanıza yönelik **Get** ve **Listeleme** işlemler
 az keyvault set-policy --name "<your-keyvault-name>" --object-id "<principalId>" --secret-permissions get list
 ```
 
-Ayrıca, [Azure Portal](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal) veya [PowerShell](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-powershell)kullanarak erişim ilkeleri de atayabilirsiniz.
+Ayrıca, [Azure Portal](./assign-access-policy-portal.md) veya [PowerShell](./assign-access-policy-powershell.md)kullanarak erişim ilkeleri de atayabilirsiniz.
 
 ### <a name="modify-the-app-to-access-your-key-vault"></a>Anahtar kasanıza erişmek için uygulamayı değiştirin
 
@@ -274,7 +274,7 @@ using Azure.Security.KeyVault.Secrets;
 using Azure.Core;
 ```
 
-Çağrıdan önce aşağıdaki satırları ekleyin `app.UseEndpoints` , URI 'yi anahtar kasasının yansıtacak şekilde güncelleyerek `vaultUri` . Bu kod, kimlik doğrulaması için yönetilen kimliğin bir belirtecini kullanan Key Vault kimlik doğrulaması yapmak için  [DefaultAzureCredential ()](/dotnet/api/azure.identity.defaultazurecredential) kullanır. Key Vault kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Geliştirici Kılavuzu](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code). Kod, Key Vault kısıtlanmakta olması durumunda yeniden denemeler için üstel geri alma kullanır. Key Vault işlem limitleri hakkında daha fazla bilgi için bkz. [Azure Key Vault azaltma Kılavuzu](https://docs.microsoft.com/azure/key-vault/general/overview-throttling).
+Çağrıdan önce aşağıdaki satırları ekleyin `app.UseEndpoints` , URI 'yi anahtar kasasının yansıtacak şekilde güncelleyerek `vaultUri` . Bu kod, kimlik doğrulaması için yönetilen kimliğin bir belirtecini kullanan Key Vault kimlik doğrulaması yapmak için  [DefaultAzureCredential ()](/dotnet/api/azure.identity.defaultazurecredential) kullanır. Key Vault kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Geliştirici Kılavuzu](./developers-guide.md#authenticate-to-key-vault-in-code). Kod, Key Vault kısıtlanmakta olması durumunda yeniden denemeler için üstel geri alma kullanır. Key Vault işlem limitleri hakkında daha fazla bilgi için bkz. [Azure Key Vault azaltma Kılavuzu](./overview-throttling.md).
 
 ```csharp
 SecretClientOptions options = new SecretClientOptions()
@@ -322,10 +322,8 @@ http://<your-webapp-name>.azurewebsites.net
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [.NET 'teki bir sanal makineye dağıtılan uygulamalarla Azure Key Vault kullanma](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-virtual-machine)
+- [.NET 'teki bir sanal makineye dağıtılan uygulamalarla Azure Key Vault kullanma](./tutorial-net-virtual-machine.md)
 - [Azure kaynakları için Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md) hakkında daha fazla bilgi edinin
 - [App Service için Yönetilen kimlikler](../../app-service/overview-managed-identity.md?tabs=dotnet) hakkında daha fazla bilgi edinin
-- [Geliştirici kılavuzunu](https://docs.microsoft.com/azure/key-vault/general/developers-guide) görüntüleme
-- [Anahtar kasasına güvenli erişim](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault)
-
-
+- [Geliştirici kılavuzunu](./developers-guide.md) görüntüleme
+- [Anahtar kasasına güvenli erişim](./secure-your-key-vault.md)

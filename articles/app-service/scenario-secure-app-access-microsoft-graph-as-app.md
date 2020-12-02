@@ -7,15 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/09/2020
+ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: bdd6dbf790bcf2ec97be33504e51ca3db2eb3ef7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.custom: azureday1
+ms.openlocfilehash: facc6a4ab8344f9f72fc7abc27433c18ab435504
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182997"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436547"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-app"></a>Öğretici: uygulama olarak güvenli bir uygulamadan Microsoft Graph erişin
 
@@ -25,7 +26,7 @@ Azure App Service çalıştıran bir Web uygulamasından Microsoft Graph erişme
 
 Web uygulaması için Microsoft Graph çağırmak istiyorsunuz. Web uygulamanıza verilere erişim sağlamanın güvenli bir yolu, [sistem tarafından atanan yönetilen kimlik](../active-directory/managed-identities-azure-resources/overview.md)kullanmaktır. Azure Active Directory yönetilen bir kimlik, App Service rol tabanlı erişim denetimi (RBAC) aracılığıyla uygulama kimlik bilgileri gerekmeden kaynaklara erişmesini sağlar. Web uygulamanıza yönetilen bir kimlik atadıktan sonra, Azure bir sertifikanın oluşturulmasını ve dağıtımını gerçekleştirir. Gizli dizileri veya uygulama kimlik bilgilerini yönetme konusunda endişelenmeniz gerekmez.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -35,7 +36,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [App Service kimlik doğrulama/yetkilendirme modülü etkinleştirilmiş](scenario-secure-app-authentication-app-service.md)Azure App Service üzerinde çalışan bir Web uygulaması.
 
@@ -120,6 +121,8 @@ Yönetilen kimlik için hizmet sorumlusunu seçin.
 ## <a name="call-microsoft-graph-net"></a>Microsoft Graph çağrısı (.NET)
 
 [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) sınıfı, Microsoft Graph istekleri yetkilendirmek üzere kodunuzun belirteç kimlik bilgilerini almak için kullanılır. Belirteçleri getirmek ve bunları hizmet istemcisine eklemek için yönetilen kimliği kullanan [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) sınıfının bir örneğini oluşturun. Aşağıdaki kod örneği, kimliği doğrulanmış belirteç kimlik bilgisini alır ve onu gruptaki kullanıcıları alan bir hizmet istemci nesnesi oluşturmak için kullanır.
+
+Bu kodu örnek bir uygulamanın parçası olarak görmek için [GitHub 'daki örneğe](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/3-WebApp-graphapi-managed-identity)bakın.
 
 ### <a name="install-the-microsoftgraph-client-library-package"></a>Microsoft. Graph istemci kitaplığı paketini yükler
 

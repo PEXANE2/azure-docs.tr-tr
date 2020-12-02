@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
-ms.openlocfilehash: 02fd0a4c7d931f439ab85af8d90de323105e21f2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c45445415f3eaa7cb0f9069dd5f64b57c19e5836
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096708"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437159"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Azure Cosmos DB’ye yüzlerce terabaytlık verileri geçirme 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -29,9 +29,9 @@ Azure Cosmos DB geçiş stratejileri Şu anda API seçimine ve verilerin boyutun
 
 Azure Cosmos DB veri taşımaya yönelik mevcut araçlar, özellikle büyük ölçeklerde görünen bazı sınırlamalara sahiptir:
 
- * **Sınırlı ölçek genişletme özellikleri** : terabaytlarca veri Azure Cosmos DB, mümkün olduğunca hızlı bir şekilde geçiş yapmak ve sağlanan tüm üretilen iş verimini etkin bir şekilde kullanmak için, geçiş istemcilerinin sonsuza kadar ölçeklendirme yeteneği olmalıdır.  
+ * **Sınırlı ölçek genişletme özellikleri**: terabaytlarca veri Azure Cosmos DB, mümkün olduğunca hızlı bir şekilde geçiş yapmak ve sağlanan tüm üretilen iş verimini etkin bir şekilde kullanmak için, geçiş istemcilerinin sonsuza kadar ölçeklendirme yeteneği olmalıdır.  
 
-* **İlerleme izlemenin ve onay durumunun olmaması** : geçiş işleminin ilerlemesini izlemek ve büyük veri kümelerini geçirirken denetim noktası sağlamak önemlidir. Aksi takdirde, geçiş sırasında oluşan herhangi bir hata geçişi durdurur ve işlemi sıfırdan başlatmanız gerekir. %99 zaten tamamlandığında geçiş işleminin tamamını yeniden başlatmak üretken değildir.  
+* **İlerleme izlemenin ve onay durumunun olmaması**: geçiş işleminin ilerlemesini izlemek ve büyük veri kümelerini geçirirken denetim noktası sağlamak önemlidir. Aksi takdirde, geçiş sırasında oluşan herhangi bir hata geçişi durdurur ve işlemi sıfırdan başlatmanız gerekir. %99 zaten tamamlandığında geçiş işleminin tamamını yeniden başlatmak üretken değildir.  
 
 * **Sahipsiz sıra olmaması** durumunda: büyük veri kümeleri içinde, bazı durumlarda kaynak verilerin bölümleriyle ilgili sorunlar olabilir. Ayrıca, istemci veya ağla ilgili geçici sorunlar da olabilir. Bu durumların herhangi biri, geçişin tamamının başarısız olmasına neden olmamalıdır. Çoğu geçiş aracının aralıklı sorunlara karşı koruma sağlayan güçlü yeniden deneme özellikleri olsa da, her zaman yeterince olmaz. Örneğin, kaynak veri belgelerinin% 0,01 ' sinden azı boyutu 2 MB 'tan fazlaysa, Azure Cosmos DB belge yazma işlemi başarısız olur. En ideal olarak, geçiş aracının bu ' başarısız ' belgelerini başka bir atılacak ileti kuyruğuna kalıcı hale getirmek için, geçiş sonrası işlenebilen yararlı bir seçenektir. 
 
@@ -142,12 +142,6 @@ Geçiş işlemi tamamlandıktan sonra, dizin oluşturmayı güncelleştirebilirs
 6. Bu hatalardan bazıları, kaynak verilerdeki hatalı belgelerden kaynaklanıyor olabilir. Bunlar tanımlanmalıdır ve düzeltilir. Ardından, başarısız olan bölümlerde içeri aktarma adımını yeniden çalıştırmanız gerekir. 
 
 Geçiş tamamlandıktan sonra, Azure Cosmos DB içindeki belge sayısı, kaynak veritabanındaki belge sayısıyla aynı olduğunu doğrulayabilirsiniz. Bu örnekte, Azure Cosmos DB toplam boyut 65 terabayt olarak etkinleştirilir. Geçiş sonrası, dizin oluşturma seçime bağlı olarak açılabilir ve RUs iş yükünün işlemleri için gereken düzeye düşürülemez.
-
-## <a name="contact-the-azure-cosmos-db-team"></a>Azure Cosmos DB ekibine başvurun
-Büyük veri kümelerini Azure Cosmos DB başarılı bir şekilde geçirmek için bu kılavuzu takip edebilir, ancak büyük ölçekli geçişler için, veri modellemeyi ve genel mimari incelemesini doğrulamak üzere Azure Cosmos DB ürün ekibine ulaşmanıza önerilir. Veri kümeniz ve iş yükünüze göre, ürün ekibi sizin için geçerli olabilecek diğer performans ve maliyet iyileştirmeleri de önerebilir. Büyük ölçekli geçişlerle yardım için Azure Cosmos DB ekibine başvurmak için, aşağıda gösterildiği gibi "genel danışmanlık" sorun türü ve "büyük (TB +) geçişleri" sorun alt türü altında bir destek bileti açabilirsiniz.
-
-:::image type="content" source="./media/migrate-cosmosdb-data/supporttopic.png" alt-text="Geçiş Aracı Kurulumu":::
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

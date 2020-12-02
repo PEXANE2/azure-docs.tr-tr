@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
-ms.openlocfilehash: 647256949d1f8f13439a0a5db87f3b02d697d32b
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 20d38e5caee67ca8bb13877d3162401fa245dc2d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95318142"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444769"
 ---
 # <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>Konuk sistem durumunu VM'ler için Azure İzleyici etkinleştirme (Önizleme)
 VM'ler için Azure İzleyici Konuk sistem durumu, düzenli aralıklarla örneklendiği bir dizi performans ölçümlerine göre tanımlanan bir sanal makinenin durumunu görüntülemenizi sağlar. Bu makalede, aboneliğinizde bu özelliğin nasıl etkinleştirileceği ve her sanal makine için konuk izlemenin nasıl etkinleştirileceği açıklanır.
@@ -87,7 +87,7 @@ Azure Resource Manager kullanarak sanal makinelerin etkinleştirilmesi için ger
 > [!NOTE]
 > Bir sanal makineyi Azure portal kullanarak etkinleştirirseniz, burada açıklanan veri toplama kuralı sizin için oluşturulur. Bu durumda, bu adımı gerçekleştirmeniz gerekmez.
 
-VM'ler için Azure İzleyici Konuk durumundaki izleyicilerin yapılandırması, [veri toplama kurallarında (DCR)](../platform/data-collection-rule-overview.md)depolanır. Konuk sistem durumu uzantısına sahip sanal makinelerin tüm izleyicilerini etkinleştirmek için aşağıdaki Kaynak Yöneticisi şablonunda tanımlanan veri toplama kuralını yükler. Konuk sistem durumu uzantısına sahip her sanal makinenin bu kuralla bir ilişkilendirilmesi gerekir.
+VM'ler için Azure İzleyici Konuk durumundaki izleyicilerin yapılandırması, [veri toplama kurallarında (DCR)](../platform/data-collection-rule-overview.md)depolanır. Konuk sistem durumu uzantısına sahip her sanal makinenin bu kuralla bir ilişkilendirilmesi gerekir.
 
 > [!NOTE]
 > İzleyicilerin varsayılan yapılandırmasını, [VM'ler için Azure izleyici Konuk durumunda Izlemeyi yapılandırma (Önizleme)](vminsights-health-configure.md)bölümünde açıklandığı şekilde değiştirmek için ek veri toplama kuralları oluşturabilirsiniz.
@@ -115,7 +115,7 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
 
 ---
 
-
+Aşağıdaki Kaynak Yöneticisi şablonunda tanımlanan veri toplama kuralı, Konuk sistem durumu uzantısına sahip sanal makinelerin tüm izleyicilerini sunar. İzleyiciler tarafından kullanılan performans sayaçlarının her biri için veri kaynakları içermelidir.
 
 ```json
 {
@@ -138,7 +138,7 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
     "dataCollectionRuleLocation": {
       "type": "string",
       "metadata": {
-        "description": "The location code in which the data colleciton rule should be deployed. Examples: eastus, westeurope, etc"
+        "description": "The location code in which the data collection rule should be deployed. Examples: eastus, westeurope, etc"
       }
     }
   },
@@ -151,6 +151,19 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
       "properties": {
         "description": "Data collection rule for VM Insights health.",
         "dataSources": {
+          "performanceCounters": [
+              {
+                  "name": "VMHealthPerfCounters",
+                  "streams": [ "Microsoft-Perf" ],
+                  "scheduledTransferPeriod": "PT1M",
+                  "samplingFrequencyInSeconds": 60,
+                  "counterSpecifiers": [
+                      "\\LogicalDisk(*)\\% Free Space",
+                      "\\Memory\\Available Bytes",
+                      "\\Processor(_Total)\\% Processor Time"
+                  ]
+              }
+          ],
           "extensions": [
             {
               "name": "Microsoft-VMInsights-Health",
@@ -170,7 +183,11 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
                     }
                   }
                 ]
-              }
+              },
+              "inputDataSources": [
+                  "VMHealthPerfCounters"
+              ]
+
             }
           ]
         },
@@ -181,7 +198,7 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
               "name": "Microsoft-HealthStateChange-Dest"
             }
           ]
-        },
+        },                  
         "dataFlows": [
           {
             "streams": [
@@ -205,7 +222,7 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-      "healthDataCollectionRuleResourceId": {
+      "destinationWorkspaceResourceId": {
         "value": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace"
       },
       "dataCollectionRuleLocation": {
@@ -217,7 +234,7 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
 
 
 
-## <a name="install-guest-health-extension-and-associate-with-data-collection-rule"></a>Konuk durum uzantısını yükler ve veri toplama kuralıyla ilişkilendir
+### <a name="install-guest-health-extension-and-associate-with-data-collection-rule"></a>Konuk durum uzantısını yükler ve veri toplama kuralıyla ilişkilendir
 Bir sanal makineyi Konuk sistem durumu için etkinleştirmek üzere aşağıdaki Kaynak Yöneticisi şablonunu kullanın. Bu, Konuk sistem durumu uzantısını yükleyerek, veri toplama kuralıyla ilişki oluşturur. Bu şablonu, [Kaynak Yöneticisi şablonları için herhangi bir dağıtım yöntemi](../../azure-resource-manager/templates/deploy-powershell.md)kullanarak dağıtabilirsiniz.
 
 
@@ -370,9 +387,6 @@ az deployment group create --name GuestHealthDeployment --resource-group my-reso
       },
       "healthDataCollectionRuleResourceId": {
         "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/my-resource-group/providers/Microsoft.Insights/dataCollectionRules/Microsoft-VMInsights-Health"
-      },
-      "healthExtensionVersion": {
-        "value": "private-preview"
       }
   }
 }

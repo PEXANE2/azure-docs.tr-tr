@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: KumudD
 ms.author: kumud
 ms.date: 11/25/2020
-ms.openlocfilehash: 2f262b328efcc341c93f1e5c31cab8cbd3ecbf6b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5a2238f5c1561abb1e11d69aa6d0bfe761097c64
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184646"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437312"
 ---
 # <a name="azure-monitor-for-networks"></a>Ağlar için Azure İzleyici
 Ağlar için Azure Izleyici, tüm dağıtılan ağ kaynakları için herhangi bir yapılandırma gerektirmeden [sistem durumu](../../service-health/resource-health-checks-resource-types.md) ve [ölçümlerinin](../platform/metrics-supported.md) kapsamlı bir görünümünü sağlar. Ayrıca [bağlantı izleyici](../../network-watcher/connection-monitor-preview.md), [ağ güvenlik grupları (NSG 'ler) için akış günlüğü](../../network-watcher/network-watcher-nsg-flow-logging-overview.md)ve [Trafik Analizi](../../network-watcher/traffic-analytics.md)gibi ağ izleme özelliklerine erişim sağlar. Ayrıca, diğer ağ [Tanılama](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) özellikleri sağlar.
@@ -26,7 +26,7 @@ Ağ için Azure Izleyici, izlemenin bu temel bileşenleri etrafında yapılandı
 
 Ağlara yönelik Azure Izleyici **'ye genel bakış** sayfası, kaynak sistem durumu ve uyarılarla birlikte ağ kaynaklarınızın envanterini görselleştirmenin kolay bir yolunu sunar. Dört önemli işlevsel alana bölünmüştür: arama ve filtreleme, kaynak sistem durumu ve ölçümler, uyarılar ve bağımlılık görünümü.
 
-[ ![ Genel bakış sayfasını gösteren ekran görüntüsü](media/network-insights-overview/overview.png)](media/network-insights-overview/overview.png)#lightbox)
+[![Genel bakış sayfasını gösteren ekran görüntüsü](media/network-insights-overview/overview.png)](media/network-insights-overview/overview.png#lightbox)
 
 ### <a name="search-and-filtering"></a>Arama ve filtreleme
 **Abonelik**, **kaynak grubu** ve **tür** gibi filtreleri kullanarak kaynak sistem durumu ve uyarıları görünümünü özelleştirebilirsiniz.

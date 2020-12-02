@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 955e77bc947baed889de24ce34e7acec737164f6
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: f13dfa4221f8f09c24cce3a451f3180d15ee3b99
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097312"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435766"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Nasıl yapılır: karma Azure Active Directory JOIN Uygulamanızı planlayın
 
@@ -106,6 +106,8 @@ Windows 10 etki alanına katılmış cihazlarınız, kiracınıza [kayıtlı Azu
 
 - Windows 10 1903 sürümünden itibaren, TPMs 1,2 karma Azure AD katılımı ile kullanılmaz ve bu TPMs 'Leri içeren cihazlar bir TPM 'ye sahip olmadıkları sürece kabul edilir.
 
+- UPN değişiklikleri yalnızca Windows 10 2004 Güncelleştirmesi ile desteklenir. Windows 10 2004 güncelleştirmesinden önceki cihazlarda, kullanıcıların cihazlarında SSO ve koşullu erişim sorunları olur. Bu sorunu çözmek için, cihazın Azure AD 'den (yükseltilmiş ayrıcalıklarla "dsregcmd/Leave" komutunu çalıştırın) ve yeniden katılmayı (otomatik olarak gerçekleşir) açmanız gerekir. Ancak, Iş için Windows Hello ile oturum açan kullanıcılar bu sorunu etkilemez.
+
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>Karma Azure AD JOIN 'in denetimli doğrulamasını gözden geçirin
 
 Tüm önkoşulların yerine Windows cihazları otomatik olarak Azure AD kiracınızda cihaz olarak kaydedilir. Azure AD 'deki bu cihaz kimliklerinin durumu karma Azure AD katılımı olarak adlandırılır. Bu makalede ele alınan kavramlar hakkında daha fazla bilgi [Azure Active Directory içinde cihaz kimliği yönetimine giriş](overview.md)makalesinde bulabilirsiniz.
@@ -138,7 +140,7 @@ Federasyon ortamında, aşağıdaki gereksinimleri destekleyen bir kimlik sağla
   `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> Hem **ADFS/Service/Trust/2005/windowstransport** ya da **ADFS/Services/Trust/13/windowstransport** , yalnızca intranet 'e yönelik uç noktalar olarak etkinleştirilmelidir ve Web uygulaması ara sunucusu aracılığıyla extranet 'e yönelik uç noktalar olarak gösterilmemelidir. WS-Trust Windows uç noktalarını devre dışı bırakma hakkında daha fazla bilgi için bkz. [proxy üzerinde WS-Trust Windows uç noktalarını devre dışı bırakma](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). **Hizmet**  >  **uç noktaları**altında AD FS Yönetim Konsolu aracılığıyla hangi uç noktaların etkinleştirildiğini görebilirsiniz.
+> Hem **ADFS/Service/Trust/2005/windowstransport** ya da **ADFS/Services/Trust/13/windowstransport** , yalnızca intranet 'e yönelik uç noktalar olarak etkinleştirilmelidir ve Web uygulaması ara sunucusu aracılığıyla extranet 'e yönelik uç noktalar olarak gösterilmemelidir. WS-Trust Windows uç noktalarını devre dışı bırakma hakkında daha fazla bilgi için bkz. [proxy üzerinde WS-Trust Windows uç noktalarını devre dışı bırakma](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). **Hizmet**  >  **uç noktaları** altında AD FS Yönetim Konsolu aracılığıyla hangi uç noktaların etkinleştirildiğini görebilirsiniz.
 
 > [!NOTE]
 > Azure AD, yönetilen etki alanlarında akıllı kartlar veya sertifikaları desteklemez.

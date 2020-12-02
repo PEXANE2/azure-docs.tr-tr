@@ -1,5 +1,5 @@
 ---
-title: Azure Güvenlik Merkezi 'ndeki tüm Azure Defender uyarıları için başvuru tablosu
+title: Azure Güvenlik Merkezi 'ndeki tüm güvenlik uyarıları için başvuru tablosu
 description: Bu makalede, Azure Güvenlik Merkezi 'nin Azure Defender panosunda görünen güvenlik uyarıları listelenmektedir.
 services: security-center
 documentationcenter: na
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2020
 ms.author: memildin
-ms.openlocfilehash: 6d001e638b00cace1dd81d9631f498a911ca19a4
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: c5ee275fb92ff2c3787bef7868665c19fea2109c
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96014610"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436785"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Güvenlik uyarıları - başvuru kılavuzu
 
-Bu makalede, Azure Defender 'dan alabileceğiniz güvenlik uyarıları listelenmektedir. Ortamınızda gösterilen uyarıların yanı sıra, koruduğunuz kaynak ve hizmetlere ve özelleştirilmiş yapılandırmanıza göre değişir.
+Bu makalede, Azure Güvenlik Merkezi 'nden ve etkinleştirdiğiniz tüm Azure Defender planlarından alabileceğiniz güvenlik uyarıları listelenmektedir. Ortamınızda gösterilen uyarıların yanı sıra, koruduğunuz kaynak ve hizmetlere ve özelleştirilmiş yapılandırmanıza göre değişir.
 
 Bu uyarılara nasıl yanıt verileceğini öğrenmek için bkz. [Azure Güvenlik Merkezi 'nde güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md).
 

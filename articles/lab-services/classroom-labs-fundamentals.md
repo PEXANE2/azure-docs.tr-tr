@@ -5,12 +5,12 @@ author: emaher
 ms.topic: overview
 ms.date: 09/16/2020
 ms.author: enewman
-ms.openlocfilehash: ac390fb6624ffc762f77b676c778165e7382f73f
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 71d59e8bcf7b4078255d6b119e9d62f366e46033
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91334047"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437329"
 ---
 # <a name="architecture-fundamentals-in-azure-lab-services"></a>Azure Lab Services mimari temelleri
 
@@ -20,7 +20,7 @@ Azure Lab Services, kendi kaynaklarınızı laboratuvar hizmetleriyle birlikte k
 
 Aşağıda bir sınıf laboratuvarının temel mimarisi verilmiştir.  Laboratuvar hesabı aboneliğinizde barındırılır. Öğrenci VM 'leri, VM 'Leri desteklemek için gereken kaynaklarla birlikte Laboratuvar Hizmetleri 'nin sahip olduğu bir abonelikte barındırılır. Laboratuvar hizmeti aboneliklerinde neler olduğunu daha ayrıntılı bir şekilde konuşalım.
 
-![Sınıf laboratuvarları temel mimarisi](./media/classroom-labs-fundamentals/labservices-basic-architecture.png)
+![Labs temel mimarisi](./media/classroom-labs-fundamentals/labservices-basic-architecture.png)
 
 ## <a name="hosted-resources"></a>Barındırılan kaynaklar
 

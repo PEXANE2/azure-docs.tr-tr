@@ -10,16 +10,16 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 11/17/2020
-ms.openlocfilehash: f55e266b548ea3b43a50d9500a427dfe1199b73f
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: b1339a0ab5be9004643cf2e9f86203eba9a2cc72
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94699772"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445072"
 ---
 # <a name="get-started-with-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'i kullanmaya başlama
 
-Bu öğretici, Azure SYNAPSE Analytics 'in başlıca özellik alanlarında adım adım bir kılavuzdur. Öğretici, Azure SYNAPSE Analytics 'in temel senaryolarında kılavuzlu bir tura katılmak isteyen birisi için ideal bir başlangıç noktasıdır. Öğreticideki adımları uyguladıktan sonra, adanmış SQL havuzu, sunucusuz SQL havuzu veya Apache Spark kullanarak verileri çözümlemeye başlayabilmeniz için tam işlevli bir Synapse çalışma alanına sahip olursunuz.
+Bu öğretici, Azure SYNAPSE Analytics 'in başlıca özellik alanlarında adım adım bir kılavuzdur. Öğretici, Azure SYNAPSE Analytics 'in temel senaryolarında kılavuzlu bir tura katılmak isteyen birisi için ideal bir başlangıç noktasıdır. Öğreticideki adımları uyguladıktan sonra bir Synapse çalışma alanına sahip olursunuz. Bu öğreticide, [ADANMıŞ SQL havuzunuz (eski ADıYLA SQL DW) için bir çalışma alanını etkinleştirme](./sql-data-warehouse/workspace-connected-create.md)adımları da yer almaktadır. Çalışma alanınız oluşturulduktan sonra adanmış SQL havuzunu, sunucusuz SQL havuzunu veya sunucusuz Apache Spark havuzunu kullanarak verileri çözümlemeye başlayabilirsiniz.
 
 Aşağıda *gösterildiği gibi adımları izleyin* ve birçok özelliği kullanarak bir tura katılın ve temel özelliklerini nasıl çalıştıracağınızı öğreneceksiniz.
 

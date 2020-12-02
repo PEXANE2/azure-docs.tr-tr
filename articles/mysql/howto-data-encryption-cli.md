@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 07d2e9fa98c24695a119c651539d4003ecd8524a
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: ac87e8394eaa609f7c57eaf9d83fe11a2bdb04f6
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242101"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435833"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>Azure CLı kullanarak MySQL için Azure veritabanı için veri şifreleme
 
@@ -46,11 +46,22 @@ Azure CLı kullanarak MySQL için Azure veritabanı için veri şifrelemeyi ayar
     ```azurecli-interactive
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
     ```
+  * Bekletme günleri 90 gün olarak ayarlanır
+  ```azurecli-interactive
+    az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --retention-days 90
+    ```
 
 * Anahtar, müşteri tarafından yönetilen anahtar olarak kullanmak için aşağıdaki özniteliklere sahip olmalıdır:
   * Sona erme tarihi yok
   * Devre dışı değil
-  * **Al** , **sarmalama** , **geri** alınamaz işlemleri gerçekleştirin
+  * **Al**, **sarmalama**, **geri** alınamaz işlemleri gerçekleştirin
+  * recoverylevel özniteliği **kurtarılabilir** olarak ayarlandı.
+
+Aşağıdaki komutu kullanarak anahtarın yukarıdaki özniteliklerini doğrulayabilirsiniz:
+
+```azurecli-interactive
+az keyvault key show --vault-name <key_vault_name> -n <key_name>
+```
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>Anahtar işlemleri için doğru izinleri ayarla
 
@@ -68,7 +79,7 @@ Azure CLı kullanarak MySQL için Azure veritabanı için veri şifrelemeyi ayar
    az mysql server update --name  <server name>  -g <resource_group> --assign-identity
    ```
 
-2. MySQL sunucusunun adı olan **asıl öğe** için **anahtar izinlerini** ( **Get** , **Wrap** , **Unwrap** ) ayarlayın.
+2. MySQL sunucusunun adı olan **asıl öğe** için **anahtar izinlerini** (**Get**, **Wrap**, **Unwrap**) ayarlayın.
 
     ```azurecli-interactive
     az keyvault set-policy --name -g <resource_group> --key-permissions get unwrapKey wrapKey --object-id <principal id of the server>

@@ -1,17 +1,17 @@
 ---
-title: Azure Lab Services sınıf laboratuvarları — SSS | Microsoft Docs
-description: Bu makalede, Azure Lab Services içindeki sınıf laboratuvarları hakkında sık sorulan soruların (SSS) yanıtları sunulmaktadır.
+title: Azure Lab Services 'de Labs-SSS | Microsoft Docs
+description: Bu makale, Azure Lab Services Labs hakkında sık sorulan soruların (SSS) yanıtlarını sağlar.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: ca35d70bc1106e46df4e3c68889b03679fd54b86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 757af8f30e9a71a3889d9f625c87a002af2e1302
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85443307"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437193"
 ---
-# <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Azure Lab Services sınıf laboratuvarları — sık sorulan sorular (SSS)
-Azure Lab Services ders laboratuvarları hakkında en sık sorulan soruların yanıtlarını alın. 
+# <a name="labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Azure Lab Services Labs — sıkça sorulan sorular (SSS)
+Azure Lab Services laboratuarlar hakkında en yaygın soruların yanıtlarını alın. 
 
 ## <a name="quotas"></a>Kotalar
 
@@ -29,13 +29,14 @@ Hayır. Tüm VM 'Ler değil. Yalnızca kullanıcılara bir zamanlamaya göre ata
 ## <a name="lab-accounts"></a>Laboratuvar hesapları
 
 ### <a name="why-am-i-not-able-to-create-a-lab-because-of-unavailability-of-the-address-range"></a>Adres aralığının kullanım dışı kalması nedeniyle neden laboratuvar oluşturmdayım? 
-Sınıf laboratuvarları, Azure portal laboratuvar hesabınızı oluştururken belirlediğiniz bir IP adresi aralığı içinde laboratuvar VM 'Leri oluşturabilir. Bir adres aralığı sağlandığında, bu laboratuvar VM 'Ler için 512 IP adresi ayrılır. Laboratuvar hesabı için adres aralığı, laboratuvar hesabı altında oluşturmak istediğiniz tüm laboratuvarlara uyum sağlayacak kadar büyük olmalıdır. 
+
+Labs, Azure portal laboratuvar hesabınızı oluştururken belirlediğiniz bir IP adresi aralığı içinde laboratuvar VM 'Leri oluşturabilir. Bir adres aralığı sağlandığında, bu laboratuvar VM 'Ler için 512 IP adresi ayrılır. Laboratuvar hesabı için adres aralığı, laboratuvar hesabı altında oluşturmak istediğiniz tüm laboratuvarlara uyum sağlayacak kadar büyük olmalıdır. 
 
 Örneğin,/19-10.0.0.0/19 bloğuna sahipseniz, bu adres aralığı 8192 IP adresine ve 16 laboratuvara (8192/512 = 16 Labs) uyum sağlar. Bu durumda, Laboratuvar oluşturma, 17. Laboratuvar oluşturma sırasında başarısız olur.
 
 ### <a name="what-port-ranges-should-i-open-on-my-organizations-firewall-setting-to-connect-to-lab-virtual-machines-via-rdpssh"></a>Laboratuvar sanal makinelerine RDP/SSH aracılığıyla bağlanmak için Kuruluşumun güvenlik duvarı ayarında hangi bağlantı noktası aralıklarının açılmalıyım?
 
-Bağlantı noktaları: 49152 – 65535. Sınıf laboratuvarları bir yük dengeleyicinin arkasına yaslar. Her laboratuvarın tek bir genel IP adresi vardır ve laboratuvardaki her sanal makinenin benzersiz bir bağlantı noktası vardır. 
+Bağlantı noktaları: 49152 – 65535. Labs bir yük dengeleyicinin arkasına yaslar. Her laboratuvarın tek bir genel IP adresi vardır ve laboratuvardaki her sanal makinenin benzersiz bir bağlantı noktası vardır. 
 
 Ayrıca, Azure portal laboratuvar için ana sayfanın **sanal makine havuzu** sekmesinde her bir sanal makınenın özel IP adresini görebilirsiniz. Bir laboratuvarı yeniden yayımlarsanız, laboratuvarın genel IP adresi değişmez, ancak laboratuvardaki her bir sanal makinenin özel IP ve bağlantı noktası numarası değişebilir. Makalesinde daha fazla bilgi edinebilirsiniz: [Azure Lab Services Için güvenlik duvarı ayarları](how-to-configure-firewall-settings.md).
 

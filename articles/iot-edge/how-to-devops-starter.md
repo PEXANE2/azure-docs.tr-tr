@@ -1,18 +1,18 @@
 ---
 title: Azure DevOps Starter ile CI/CD işlem hattı-Azure IoT Edge | Microsoft Docs
 description: Azure DevOps Starter, Azure 'u kullanmaya başlamanızı kolaylaştırır. Birkaç hızlı adımda tercih ettiğiniz bir Azure IoT Edge uygulamasını başlatmanıza yardımcı olur.
-author: shizn
+author: kgremban
 ms.author: kgremban
 ms.date: 08/25/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d57c1828b9456851d37a65b88eb5f8ea860a80fe
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 97dc0fe5a3720a41dd63583c222762d832d636ea
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045865"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437006"
 ---
 # <a name="create-a-cicd-pipeline-for-iot-edge-with-azure-devops-starter"></a>Azure DevOps Starter ile IoT Edge için bir CI/CD işlem hattı oluşturma
 
@@ -26,13 +26,13 @@ DevOps Starter, Azure DevOps 'da bir CI/CD işlem hattı oluşturur. Yeni bir Az
 
 1. [Microsoft Azure portalda](https://portal.azure.com) oturum açın.
 
-1. Sol bölmede, **kaynak oluştur**' u seçin ve ardından **DevOps Starter**için arama yapın.  
+1. Sol bölmede, **kaynak oluştur**' u seçin ve ardından **DevOps Starter** için arama yapın.  
 
 1. **Oluştur**’u seçin.
 
 ## <a name="create-a-new-application-pipeline"></a>Yeni bir uygulama işlem hattı oluşturun
 
-1. Azure IoT Edge modüllerinizi [C#](tutorial-csharp-module.md), [Node.js](tutorial-node-module.md), [Python](tutorial-python-module.md), [C](tutorial-c-module.md) ve [Java](tutorial-java-module.md)'da yazılabilir. Yeni bir uygulamayı başlatmak için tercih ettiğiniz dili seçin: **.net**, **Node.js**, **Python**, **C**veya **Java**. Devam etmek için **İleri** seçeneğini belirleyin.
+1. Azure IoT Edge modüllerinizi [C#](tutorial-csharp-module.md), [Node.js](tutorial-node-module.md), [Python](tutorial-python-module.md), [C](tutorial-c-module.md) ve [Java](tutorial-java-module.md)'da yazılabilir. Yeni bir uygulamayı başlatmak için tercih ettiğiniz dili seçin: **.net**, **Node.js**, **Python**, **C** veya **Java**. Devam etmek için **İleri** seçeneğini belirleyin.
 
    ![Yeni bir uygulama oluşturmak için dil seçin](./media/how-to-devops-starter/select-language.png)
 
@@ -74,14 +74,14 @@ DevOps Starter, Azure Repos projeniz için bir git deposu oluşturdu. Bu bölüm
 
    ![Azure Repos oluşturulan depoyu görüntüle](./media/how-to-devops-starter/view-repositories.png)
 
-> [!NOTE]
-> Aşağıdaki adımlarda, kod değişikliği yapmak için Web tarayıcısının kullanımı gösterilmektedir. Bunun yerine deponuzu yerel olarak kopyalamak istiyorsanız pencerenin sağ üst kısmından **Kopyala** ' yı seçin. Visual Studio Code veya tercih ettiğiniz geliştirme aracında git deponuzu kopyalamak için belirtilen URL 'YI kullanın.
+   > [!NOTE]
+   > Aşağıdaki adımlarda, kod değişikliği yapmak için Web tarayıcısının kullanımı gösterilmektedir. Bunun yerine deponuzu yerel olarak kopyalamak istiyorsanız pencerenin sağ üst kısmından **Kopyala** ' yı seçin. Visual Studio Code veya tercih ettiğiniz geliştirme aracında git deponuzu kopyalamak için belirtilen URL 'YI kullanın.
 
 2. Depo, oluşturma işleminde seçtiğiniz uygulama diline bağlı olarak **filtermodule** adlı bir modülün kodunu zaten içeriyor. Dosya **üzerinde modüller/FilterModule/module.js** açın.
 
    ![Azure Repos dosyasında module.jsaçın](./media/how-to-devops-starter/open-module-json.png)
 
-3. Bu dosyanın **Sürüm** parametresinde [Azure DevOps derleme değişkenlerini](/azure/devops/pipelines/build/variables?view=vsts#build-variables) kullandığından emin olun. Bu yapılandırma, her yeni derleme çalıştırıldığında modülün yeni bir sürümünün oluşturulmasını sağlar.
+3. Bu dosyanın **Sürüm** parametresinde [Azure DevOps derleme değişkenlerini](/azure/devops/pipelines/build/variables#build-variables) kullandığından emin olun. Bu yapılandırma, her yeni derleme çalıştırıldığında modülün yeni bir sürümünün oluşturulmasını sağlar.
 
 ## <a name="examine-the-cicd-pipeline"></a>CI/CD işlem hattını inceleyin
 
@@ -107,9 +107,9 @@ DevOps Starter, Azure Repos projeniz için bir git deposu oluşturdu. Bu bölüm
 
 7. **Saklama**’yı seçin. Sizi bekletme ilkelerinin bulunduğu proje ayarlarına yönlendirmek için bağlantıyı izleyin. Senaryonuza bağlı olarak, belirli sayıda derlemeyi tutmanın veya kaldırabilmeniz için ilkeler belirtebilirsiniz.
 
-8. **Geçmişi**seçin. Geçmiş paneli, derlemede yapılan son değişikliklerin bir denetim izini içerir. Azure Pipelines, derleme ardışık düzeninde yapılan tüm değişiklikleri izler ve sürümleri karşılaştırmanızı sağlar.
+8. **Geçmişi** seçin. Geçmiş paneli, derlemede yapılan son değişikliklerin bir denetim izini içerir. Azure Pipelines, derleme ardışık düzeninde yapılan tüm değişiklikleri izler ve sürümleri karşılaştırmanızı sağlar.
 
-9. Derleme işlem hattını araştırdığınızda, ilgili sürüm ardışık düzenine gidin. İşlem **hatları**altında **yayınlar** ' ı seçin ve işlem hattı ayrıntılarını görüntülemek için **Düzenle** ' yi seçin.
+9. Derleme işlem hattını araştırdığınızda, ilgili sürüm ardışık düzenine gidin. İşlem **hatları** altında **yayınlar** ' ı seçin ve işlem hattı ayrıntılarını görüntülemek için **Düzenle** ' yi seçin.
 
     ![Yayın işlem hattını görüntüle](media/how-to-devops-starter/release-pipeline.png)
 

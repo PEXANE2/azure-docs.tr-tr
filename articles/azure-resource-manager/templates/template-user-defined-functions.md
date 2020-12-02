@@ -3,12 +3,12 @@ title: Şablonlarda Kullanıcı tanımlı işlevler
 description: Bir Azure Resource Manager şablonunda (ARM şablonu) Kullanıcı tanımlı işlevlerin nasıl tanımlanacağını ve kullanılacağını açıklar.
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: c0d62abb5362d51a77db872c11416b04dcfb3f97
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 12199aca788438e4558ed2c607b866f0dc723e2a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353485"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436972"
 ---
 # <a name="user-defined-functions-in-arm-template"></a>ARM şablonunda Kullanıcı tanımlı işlevler
 
@@ -103,8 +103,7 @@ Bir Kullanıcı işlevi tanımlarken bazı kısıtlamalar vardır:
 * İşlev, [başvuru](template-functions-resource.md#reference) işlevini veya [liste](template-functions-resource.md#list) işlevlerinden hiçbirini kullanamaz.
 * İşlevin parametreleri varsayılan değerlere sahip olamaz.
 
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Kullanıcı tanımlı işlevlerin kullanılabilir özellikleri hakkında bilgi edinmek için bkz. [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
-* Kullanılabilir şablon işlevlerinin bir listesi için, bkz. [Azure Resource Manager şablon işlevleri](template-functions.md).
+* Kullanıcı tanımlı işlevlerin kullanılabilir özellikleri hakkında bilgi edinmek için bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
+* Kullanılabilir şablon işlevlerinin bir listesi için bkz. [ARM şablon işlevleri](template-functions.md).

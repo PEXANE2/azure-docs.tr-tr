@@ -6,18 +6,18 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a8d6481bdf3476f8f91c437138f4b6f1ebd1f1de
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 4114dd712028895da03835a2730ebd7a6ab971a4
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92058208"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436887"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>Öğretici: C 'de Language Understanding etkinleştirilmiş bir Web uygulaması bot kullanın #
 
-Dil anlama (LUU) ile tümleştirilmiş bir sohbet bot oluşturmak Için C# kullanın. Bot, Azure [Web App bot](https://docs.microsoft.com/azure/bot-service/) kaynağı ve [bot Framework sürüm](https://github.com/Microsoft/botbuilder-dotnet) v4 ile oluşturulmuştur.
+Dil anlama (LUU) ile tümleştirilmiş bir sohbet bot oluşturmak Için C# kullanın. Bot, Azure [Web App bot](/azure/bot-service/) kaynağı ve [bot Framework sürüm](https://github.com/Microsoft/botbuilder-dotnet) v4 ile oluşturulmuştur.
 
-**Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:**
+**Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:**
 
 > [!div class="checklist"]
 > * Web uygulaması robotu oluşturma. Bu işlem sizin için yeni bir LUIS uygulaması oluşturur.
@@ -25,7 +25,7 @@ Dil anlama (LUU) ile tümleştirilmiş bir sohbet bot oluşturmak Için C# kulla
 > * Robotu ve öykünücüyü bilgisayarınızda yerel olarak başlatma
 > * Robotta konuşma sonuçlarını görüntüleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Bot Framework öykünücüsü](https://aka.ms/abs/build/emulatordownload)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)
@@ -43,7 +43,7 @@ Dil anlama (LUU) ile tümleştirilmiş bir sohbet bot oluşturmak Için C# kulla
     |Bot tutamacı|Kaynak adı|`luis-csharp-bot-` + `<your-name>`, örneğin `luis-csharp-bot-johnsmith`|
     |Abonelik|Robotun oluşturulacağı abonelik.|Birincil aboneliğiniz.
     |Kaynak grubu|Azure kaynaklarının mantıksal grubu|Bu robotla kullanılan tüm kaynakları depolamak için yeni bir grup oluşturun ve grubu `luis-csharp-bot-resource-group` olarak adlandırın.|
-    |Konum|Azure bölgesi - LUIS yazma veya yayımlama bölgesi ile aynı olması gerekmez.|`westus`|
+    |Location|Azure bölgesi - LUIS yazma veya yayımlama bölgesi ile aynı olması gerekmez.|`westus`|
     |Fiyatlandırma katmanı|Hizmet isteği sınırları ve faturalandırma için kullanılır.|`F0` ücretsiz katmanı gösterir.
     |Uygulama adı|Ad, robotunuz buluta dağıtıldığında alt etki alanı olarak kullanılır (örneğin humanresourcesbot.azurewebsites.net).|`luis-csharp-bot-` + `<your-name>`, örneğin `luis-csharp-bot-johnsmith`|
     |Robot şablonu|Bot Framework ayarları - sonraki tabloya bakın|
@@ -98,7 +98,7 @@ Web uygulaması robot kodunu geliştirmek için, yerel bilgisayarınızda kodu i
 
     [![Temel bot için Web uygulaması bot kaynak kodunu indirin](../../../includes/media/cognitive-services-luis/bfv4/download-code.png)](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
 
-1. Açılan iletişim kutusu **indirilen ZIP dosyasında uygulama ayarlarını dahil**Istediğinde, **Evet**' i seçin.
+1. Açılan iletişim kutusu **indirilen ZIP dosyasında uygulama ayarlarını dahil** Istediğinde, **Evet**' i seçin.
 
 1. Kaynak kodu .zip dosyasına sıkıştırılmışsa, bir iletide kodu indirme bağlantısı sağlanır. Bağlantıyı seçin.
 
@@ -318,7 +318,7 @@ Visual Studio 2019 ' de, bot 'ı başlatın. Web uygulaması robotunun `http://l
 
 1. Bot Framework öykünücüsünü başlatın ve **bot 'ı aç**' ı seçin.
 1. **Bir bot** açılır penceresi açın iletişim kutusunda, gıbı bot URL 'nizi girin `http://localhost:3978/api/messages` . `/api/messages`Yol, bot 'ın Web adresidir.
-1. İndirdiğiniz bot kodunun kökündeki dosya **appsettings.js** bulunan **Microsoft uygulama kimliği** ve **Microsoft uygulama parolasını**girin, ardından **Bağlan**' ı seçin.
+1. İndirdiğiniz bot kodunun kökündeki dosya **appsettings.js** bulunan **Microsoft uygulama kimliği** ve **Microsoft uygulama parolasını** girin, ardından **Bağlan**' ı seçin.
 
 1. Bot Framework öykünücüsünde, `Book a flight from Seattle to Berlin tomorrow` önceki bölümde yer alan **Web sohbetinde testte** aldığınız gibi temel bot için aynı yanıtı girin ve alın.
 
@@ -336,4 +336,4 @@ Visual Studio 2019 ' de, bot 'ı başlatın. Web uygulaması robotunun `http://l
 Konuşma botları ile daha fazla [örnek](https://github.com/microsoft/botframework-solutions) görüntüleyin.
 
 > [!div class="nextstepaction"]
-> [Özel konu etki alanı ile Language Understanding uygulaması oluşturma](luis-quickstart-intents-only.md)
+> [Özel konu etki alanı ile Language Understanding uygulaması oluşturma](./tutorial-intents-only.md)

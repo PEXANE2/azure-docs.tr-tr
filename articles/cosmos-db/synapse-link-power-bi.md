@@ -1,26 +1,29 @@
 ---
 title: SYNAPSE bağlantısı ile Azure Cosmos DB verileri çözümlemek için Power BI ve sunucusuz SQL havuzu
-description: Azure Cosmos DB için SYNAPSE SQL sunucusuz veritabanı ve görünümleri oluşturma hakkında bilgi edinin, Azure Cosmos DB kapsayıcıları sorgular ve ardından bu görünümler üzerinde Power BI olan bir model oluşturur.
+description: Azure Cosmos DB için SYNAPSE link üzerinden sunucusuz SQL havuzu veritabanı ve görünümleri oluşturmayı öğrenin, Azure Cosmos DB kapsayıcıları sorgular ve ardından bu görünümler üzerinde Power BI olan bir model oluşturun.
 author: ArnoMicrosoft
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 11/30/2020
 ms.author: acomet
-ms.openlocfilehash: 55a73ada39f4f48aeb22c5482bd85d1092d54c35
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 959070ca431c3397779a2a22c16f03b3adebbb35
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342258"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444497"
 ---
-# <a name="use-power-bi-and-serverless-synapse-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>SYNAPSE bağlantısı ile Azure Cosmos DB verileri çözümlemek için Power BI ve sunucusuz SYNAPSE SQL havuzunu kullanın (Önizleme) 
+# <a name="use-power-bi-and-serverless-synapse-sql-pool-preview-to-analyze-azure-cosmos-db-data-with-synapse-link"></a>SYNAPSE bağlantısı ile Azure Cosmos DB verileri çözümlemek için Power BI ve sunucusuz SYNAPSE SQL Havuzu (Önizleme) kullanın 
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 Bu makalede, Azure Cosmos DB için SYNAPSE link üzerinden sunucusuz bir SQL havuzu veritabanı ve görünümleri oluşturmayı öğreneceksiniz. Azure Cosmos DB kapsayıcıları sorgulayıp, ardından bu görünümler üzerinde Power BI olan ve bu sorguyu yansıtan bir model oluşturacaksınız.
 
 Bu senaryoda, bir iş ortağı perakende deposunda Surface ürün satışları hakkında kukla verileri kullanacaksınız. Her mağaza için gelir, büyük bir evye yakınlık ve belirli bir hafta için tanıtım etkisi doğrultusunda analiz edersiniz. Bu makalede, **RetailSales** ve **storedemographics** adlı iki görünüm ve aralarında bir sorgu oluşturacaksınız. Bu [GitHub](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/RetailData) deposundan örnek ürün verilerini alabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+> [!IMPORTANT]
+> Azure Cosmos DB için Azure SYNAPSE bağlantısı için SYNAPSE sunucusuz SQL havuzu desteği şu anda önizleme aşamasındadır. Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdaki kaynakları oluşturduğunuzdan emin olun:
 
@@ -38,11 +41,11 @@ Başlamadan önce aşağıdaki kaynakları oluşturduğunuzdan emin olun:
 
 ## <a name="create-a-database-and-views"></a>Veritabanı ve görünümler oluşturma
 
-SYNAPSE çalışma alanından **Geliştir** sekmesine gidip **+** simgeyi seçin ve **SQL betiği** ' ni seçin.
+SYNAPSE çalışma alanından **Geliştir** sekmesine gidip **+** simgeyi seçin ve **SQL betiği**' ni seçin.
 
 :::image type="content" source="./media/synapse-link-power-bi/add-sql-script.png" alt-text="SYNAPSE Analytics çalışma alanına bir SQL betiği ekleyin":::
 
-Her çalışma alanı sunucusuz bir SQL uç noktası ile gelir. Bir SQL betiği oluşturduktan sonra, üstteki araç çubuğundan **yerleşik** ' e bağlanın.
+Her çalışma alanı sunucusuz bir SQL uç noktası ile gelir. Bir SQL betiği oluşturduktan sonra, üstteki araç çubuğundan **yerleşik**' e bağlanın.
 
 :::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="SQL betiğini, çalışma alanında sunucusuz SQL uç noktasını kullanacak şekilde etkinleştirin":::
 
@@ -55,7 +58,7 @@ Create database RetailCosmosDB
 
 Daha sonra, farklı SYNAPSE bağlantısı etkin Azure Cosmos kapsayıcıları üzerinde birden çok görünüm oluşturun. Görünümler, farklı kapsayıcılarda oturmuş Azure Cosmos DB verileri birleştirmek ve sorgulamak için T-SQL ' i kullanmanıza imkan tanır.  Görünümleri oluştururken **RetailCosmosDB** veritabanını seçtiğinizden emin olun.
 
-Aşağıdaki betikler her kapsayıcıda görünümlerin nasıl oluşturulacağını göstermektedir. Basitlik için, SYNAPSE SQL Server 'ın [Otomatik Şema çıkarımı](analytical-store-introduction.md#analytical-schema) özelliğini SYNAPSE bağlantısı etkinleştirilmiş kapsayıcılardan kullanalım:
+Aşağıdaki betikler her kapsayıcıda görünümlerin nasıl oluşturulacağını göstermektedir. Basitlik için SYNAPSE bağlantısı etkinleştirilmiş kapsayıcılar üzerinden sunucusuz SQL havuzunun [Otomatik Şema çıkarımı](analytical-store-introduction.md#analytical-schema) özelliğini kullanalım:
 
 
 ### <a name="retailsales-view"></a>RetailSales görünümü:
@@ -114,11 +117,11 @@ Ardından, Power BI Masaüstünü açın ve aşağıdaki adımları kullanarak s
 
 1. Bağlantı seçenekleri listesinden **Azure SYNAPSE Analytics (SQL DW)** öğesini seçin.
 
-1. Veritabanının bulunduğu SQL uç noktasının adını girin. `SynapseLinkBI-ondemand.sql.azuresynapse.net` **Sunucu** alanına girin. Bu örnekte,  **SynapseLinkBI** , çalışma alanının adıdır. Çalışma alanınıza farklı bir ad vermiş olmanız durumunda bunu değiştirin. Veri bağlantısı modu için **doğrudan sorgu** seçeneğini belirleyin ve ardından **Tamam** ' ı seçin.
+1. Veritabanının bulunduğu SQL uç noktasının adını girin. `SynapseLinkBI-ondemand.sql.azuresynapse.net` **Sunucu** alanına girin. Bu örnekte,  **SynapseLinkBI** , çalışma alanının adıdır. Çalışma alanınıza farklı bir ad vermiş olmanız durumunda bunu değiştirin. Veri bağlantısı modu için **doğrudan sorgu** seçeneğini belirleyin ve ardından **Tamam**' ı seçin.
 
 1. Azure AD gibi tercih edilen kimlik doğrulama yöntemini seçin.
 
-1. **RetailCosmosDB** veritabanını ve **RetailSales** , **storedemographics** görünümlerini seçin.
+1. **RetailCosmosDB** veritabanını ve **RetailSales**, **storedemographics** görünümlerini seçin.
 
 1. İki görünümü doğrudan sorgu moduna yüklemek için **Yükle** ' yi seçin.
 
@@ -130,7 +133,7 @@ Ardından, Power BI Masaüstünü açın ve aşağıdaki adımları kullanarak s
 
 Şimdi **rapor** penceresine giderek, ev boyutunun, gelir ve largehh dizininin dağınık gösterimine dayanarak mağaza başına düşen ortalama gelire göre karşılaştırmak için bir rapor oluşturun:
 
-1. **Dağılım grafiği** ' ni seçin.
+1. **Dağılım grafiği**' ni seçin.
 
 1. **Largehh** 'Yi **Storedemographics** görünümünden X eksenine sürükleyip bırakın.
 

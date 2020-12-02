@@ -3,15 +3,15 @@ title: Azure Lab Services bir kullanıcıyı laboratuvar Oluşturucu olarak ekle
 description: Bu makalede, Azure Lab Services ' de laboratuvar hesabı için laboratuvar Oluşturucu rolüne kullanıcı ekleme gösterilmektedir. Laboratuvar oluşturucuları bu laboratuvar hesabı dahilinde Labs oluşturabilir.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 5fdeb33dab60a2fb9f1680295c355e2c7c0e775a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a6c89483744f943926f126701d28988358627a27
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399491"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435969"
 ---
 # <a name="add-lab-creators-to-a-lab-account-in-azure-lab-services"></a>Azure Lab Services 'daki laboratuvar hesabına laboratuvar oluşturucuları ekleme
-Bu makalede, Azure Lab Services ' deki bir laboratuvar hesabına kullanıcıları laboratuvar oluşturucuları olarak nasıl ekleyeceğiniz gösterilir. Bu kullanımlar daha sonra laboratuvar hesabında derslik Labs oluşturabilir. 
+Bu makalede, Azure Lab Services ' deki bir laboratuvar hesabına kullanıcıları laboratuvar oluşturucuları olarak nasıl ekleyeceğiniz gösterilir. Bu kullanımlar daha sonra laboratuvar hesabında Labs oluşturabilir. 
 
 ## <a name="add-microsoft-user-account-to-lab-creator-role"></a>Laboratuvar Oluşturucu rolüne Microsoft Kullanıcı hesabı ekleme
 Bir laboratuvar hesabında sınıf laboratuvarı ayarlamak için kullanıcının ilgili laboratuvar hesabında **Laboratuvar Oluşturan** rolünün üyesi olması gerekir. Laboratuvar hesabını oluşturmak için kullandığınız hesap otomatik olarak bu role eklenir. Sınıf laboratuvarı oluşturmak için aynı kullanıcıyı kullanmayı planlıyorsanız bu adımı atlayabilirsiniz. Sınıf laboratuvarı oluşturmak için başka bir kullanıcı hesabı kullanmak istiyorsanız aşağıdaki adımları uygulayın: 
@@ -21,7 +21,7 @@ Eğitimcilere, sınıfları için laboratuvar oluşturma ve **Laboratuvar Oluşt
 1. **Laboratuvar hesabı** sayfasında, **ERIŞIM denetimi (IAM)** seçeneğini belirleyin ve araç çubuğunda **+ rol ataması Ekle** ' ye tıklayın. 
 
     ![Access Control > rol ataması Ekle düğmesi](./media/tutorial-setup-lab-account/add-role-assignment-button.png)
-1. **Rol ataması Ekle** sayfasında, **rol**için **Laboratuvar Oluşturucu** ' yı seçin, laboratuvar oluşturucuları rolüne eklemek istediğiniz kullanıcıyı seçin ve **Kaydet**' i seçin. 
+1. **Rol ataması Ekle** sayfasında, **rol** için **Laboratuvar Oluşturucu** ' yı seçin, laboratuvar oluşturucuları rolüne eklemek istediğiniz kullanıcıyı seçin ve **Kaydet**' i seçin. 
 
     ![Laboratuvar Oluşturucu Ekle](./media/tutorial-setup-lab-account/add-lab-creator.png)
 
@@ -49,7 +49,7 @@ Microsoft hesabı kaydolmak için, Eğitmenler ' e gitmelidir [http://signup.liv
 
 
 ### <a name="using-a-github-account"></a>GitHub hesabı kullanma
-Eğitmenler, bir sınıf laboratuvarına kaydolmak ve oturum açmak için mevcut bir GitHub hesabı da kullanabilir. Eğitmenin zaten GitHub hesabına bağlı bir Microsoft hesabı varsa, bu kullanıcılar oturum açabilir ve önceki bölümde gösterildiği gibi parolasını sağlayabilir. Henüz GitHub hesabını bir Microsoft hesabı bağlamamış olmaları durumunda, **oturum açma seçeneklerini**seçmeleri gerekir:
+Eğitmenler, bir sınıf laboratuvarına kaydolmak ve oturum açmak için mevcut bir GitHub hesabı da kullanabilir. Eğitmenin zaten GitHub hesabına bağlı bir Microsoft hesabı varsa, bu kullanıcılar oturum açabilir ve önceki bölümde gösterildiği gibi parolasını sağlayabilir. Henüz GitHub hesabını bir Microsoft hesabı bağlamamış olmaları durumunda, **oturum açma seçeneklerini** seçmeleri gerekir:
 
 ![Oturum açma seçenekleri bağlantısı](./media/how-to-configure-student-usage/signin-options.png)
 
@@ -57,7 +57,7 @@ Eğitmenler, bir sınıf laboratuvarına kaydolmak ve oturum açmak için mevcut
 
 ![GitHub bağlantısıyla oturum açın](./media/how-to-configure-student-usage/signin-github.png)
 
-Son olarak, bunlara GitHub hesaplarına bağlı bir Microsoft hesabı oluşturması istenir. Eğitmen **İleri**seçerken otomatik olarak gerçekleşir.  Daha sonra eğitmen hemen oturum açtı ve derslik laboratuvarına bağlanır.
+Son olarak, bunlara GitHub hesaplarına bağlı bir Microsoft hesabı oluşturması istenir. Eğitmen **İleri** seçerken otomatik olarak gerçekleşir.  Daha sonra eğitmen hemen oturum açtı ve derslik laboratuvarına bağlanır.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -66,4 +66,4 @@ Aşağıdaki makalelere bakın:
 - [Laboratuvar sahibi olarak, Labs oluşturma ve yönetme](how-to-manage-classroom-labs.md)
 - [Laboratuvar sahibi olarak, şablonları ayarlama ve yayımlama](how-to-create-manage-template.md)
 - [Laboratuvar sahibi olarak, bir laboratuvarın kullanımını yapılandırma ve denetleme](how-to-configure-student-usage.md)
-- [Laboratuvar kullanıcısı olarak, sınıf laboratuvarlarına erişin](how-to-use-classroom-lab.md)
+- [Laboratuvar kullanıcısı olarak, erişim laboratuvarları](how-to-use-classroom-lab.md)
