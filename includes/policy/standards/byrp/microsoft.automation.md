@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 11/20/2020
+ms.date: 12/01/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: cff4bfd478f8cdd9b51367e33cf317d7516fce65
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: c2385d07ccb81041bd340a8bec0412a8f14cef56
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94991603"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96476832"
 ---
 ## <a name="azure-security-benchmark"></a>Azure Güvenlik Karşılaştırması
 
@@ -22,3 +22,5 @@ Tüm Azure hizmetleri için kullanılabilen Azure Ilkesi 'nin Bu uyumluluk stand
 |---|---|---|---|---|
 |Veri Koruma |4.8 |Bekleyen gizli bilgileri şifreleyin |[Otomasyon hesabı değişkenleri şifrelenmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3657f5a0-770e-44a3-b44e-9431ba1e9735) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Automation/Automation_AuditUnencryptedVars_Audit.json) |
 
+> [!NOTE]
+> Bir Otomasyon hesabı değişkeni oluşturduğunuzda, Azure Otomasyonu tarafından güvenli bir varlık olarak şifrelemeyi ve depolamayı belirtebilirsiniz. Değişkeni oluşturduktan sonra, değişkeni yeniden oluşturmadan şifreleme durumunu değiştiremezsiniz. Önceden şifrelenmeyen hassas verileri depolayan Otomasyon hesabı değişkenleri varsa, bunları silmeniz ve şifrelenmiş değişkenler olarak yeniden oluşturmanız gerekir. Azure Güvenlik Merkezi 'nin önerisi, [Otomasyon hesabı değişkenlerinde](../../../../articles/security-center/recommendations-reference.md#recs-computeapp)açıklandığı şekilde tüm Azure Otomasyonu değişkenlerini şifreleyebilmelidir. Bu güvenlik önerilerinden hariç tutmak istediğiniz şifrelenmemiş değişkenlere sahipseniz, bkz. muafiyet kuralı oluşturmak için [öneriler ve güvenli puandan bir kaynağı muaf](../../../../articles/security-center/exempt-resource.md) tutma.

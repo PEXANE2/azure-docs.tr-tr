@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: 827d571a6545d0aaffb0f96134fcf094eaa5f26b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1b7069cb723bffd758c3603cc957329dd6d2a9b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90980601"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463254"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>Öğretici: akıllı envanter yönetimi uygulama şablonunu dağıtma ve yönetme
 
@@ -35,22 +35,19 @@ Aşağıdaki adımları kullanarak uygulama oluşturabilirsiniz
 
 1. Azure IoT Central uygulama Yöneticisi Web sitesine gidin. Sol taraftaki Gezinti çubuğundan **Oluştur** ' u seçin ve ardından **Perakende** sekmesine tıklayın.
 
-    > [!div class="mx-imgBorder"]
-    > ![Smart Inventory managementapplication şablonunun nasıl seçileceğini gösteren ekran görüntüsü](./media/tutorial-iot-central-smart-inventory-management/iotc_retail_homepage.png)
+    :::image type="content" source="media/tutorial-iot-central-smart-inventory-management/iotc_retail_homepage.png" alt-text="Akıllı envanter yönetimi uygulama şablonunun nasıl seçileceğini gösteren ekran görüntüsü":::
 
 2. **Perakende** sekmesini seçin ve **akıllı envanter yönetimi** altında **uygulama oluştur** ' u seçin.
 
 3. **Uygulama oluştur** yeni uygulama formunu açar ve istenen ayrıntıları aşağıda göster olarak doldurur.
-   **Uygulama adı**: varsayılan önerilen adı kullanabilir veya kolay uygulamanızın adını girebilirsiniz.
-   **URL**: önerilen varsayılan URL 'yi kullanabilir veya kolay eşsiz bir URL 'yi girebilirsiniz. Daha sonra, zaten bir Azure aboneliğiniz varsa varsayılan ayar önerilir. 7 günlük ücretsiz deneme fiyatlandırma planıyla başlayabilir ve ücretsiz izleme süresi dolmadan önce istediğiniz zaman standart bir fiyatlandırma planına dönüştürmeyi tercih edebilirsiniz.
-   **Fatura bilgileri**: kaynakları sağlamak için dizin, Azure aboneliği ve bölge ayrıntıları gereklidir.
-   **Oluştur**: uygulamanızı dağıtmak için sayfanın alt kısmındaki Oluştur ' u seçin.
+    **Uygulama adı**: varsayılan önerilen adı kullanabilir veya kolay uygulamanızın adını girebilirsiniz.
+    **URL**: önerilen varsayılan URL 'yi kullanabilir veya kolay eşsiz bir URL 'yi girebilirsiniz. Daha sonra, zaten bir Azure aboneliğiniz varsa varsayılan ayar önerilir. 7 günlük ücretsiz deneme fiyatlandırma planıyla başlayabilir ve ücretsiz izleme süresi dolmadan önce istediğiniz zaman standart bir fiyatlandırma planına dönüştürmeyi tercih edebilirsiniz.
+    **Fatura bilgileri**: kaynakları sağlamak için dizin, Azure aboneliği ve bölge ayrıntıları gereklidir.
+    **Oluştur**: uygulamanızı dağıtmak için sayfanın alt kısmındaki Oluştur ' u seçin.
 
-    > [!div class="mx-imgBorder"]
-    > ![Akıllı envanter managementapplication şablonundan uygulama oluşturmayı gösteren ekran görüntüsü](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_app_create.png)
+    :::image type="content" source="media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_app_create.png" alt-text="Akıllı envanter yönetimi uygulama şablonundan uygulama oluşturmayı gösteren ekran görüntüsü":::
 
-    > [!div class="mx-imgBorder"]
-    > ![Uygulamayı oluştururken faturalandırma seçeneklerini gösteren ekran görüntüsü](./media/tutorial-iot-central-smart-inventory-management/smart-inventory-management-app-create-billinginfo.png)
+    :::image type="content" source="media/tutorial-iot-central-smart-inventory-management/smart-inventory-management-app-create-billinginfo.png" alt-text="Uygulamayı oluştururken faturalandırma seçeneklerini gösteren ekran görüntüsü":::
 
 ## <a name="walk-through-the-application"></a>Uygulamayı gözden geçir 
 
@@ -107,7 +104,7 @@ Bu uygulama şablonunun bir parçası olarak var olan beş farklı işi görmek 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu uygulamayı kullanmaya devam edemeyecekiniz, **Yönetim**uygulaması ayarlarını ziyaret ederek uygulama şablonunu silin  >  **Application settings** ve **Sil**' e tıklayın.
+Bu uygulamayı kullanmaya devam edemeyecekiniz, **Yönetim** uygulaması ayarlarını ziyaret ederek uygulama şablonunu silin  >  **Application settings** ve **Sil**' e tıklayın.
 
 > [!div class="mx-imgBorder"]
 > ![Uygulamayı tamamladığınızda uygulamanın nasıl silineceğini gösteren ekran görüntüsü](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_cleanup.png)

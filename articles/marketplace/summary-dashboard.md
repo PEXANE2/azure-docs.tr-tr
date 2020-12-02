@@ -7,21 +7,21 @@ ms.topic: conceptual
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 6b59da408ae7c88aaf8b9e7423fe955a861edf0f
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: c02ba12c790d745904d241f121e269aac3ed12f6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565526"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462980"
 ---
 # <a name="summary-dashboard-in-commercial-marketplace-analytics"></a>Ticari market analizinde özet panosu
 
 Bu makalede, Iş Ortağı Merkezi 'ndeki Özet Panosu hakkında bilgi sağlanmaktadır. Bu Pano, tekliflerinizle ilgili Market etkinliklerini özetleyen grafikleri, eğilimleri ve toplam veri değerlerini görüntüler.
 
-İş Ortağı Merkezi ' ndeki Özet panosuna erişmek için, **ticari Market** altında, özeti **[Çözümle](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** ' yi seçin  >  **Summary**.
+İş Ortağı Merkezi ' ndeki Özet panosuna erişmek için, **ticari Market** altında, özeti **[Çözümle](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**' yi seçin  >  **Summary**.
 
 >[!NOTE]
-> Analiz terminolojisi hakkında ayrıntılı tanımlamalar için bkz. [ticari Market Analytics terminolojisi ve sık sorulan sorular](./partner-center-portal/faq-terminology.md).
+> Analiz terminolojisi hakkında ayrıntılı tanımlamalar için bkz. [ticari Market Analytics terminolojisi ve sık sorulan sorular](./analytics-faq.md).
 
 ## <a name="summary-dashboard"></a>Özet panosu
 
@@ -109,4 +109,4 @@ Seçilen hesaplama dönemi için ısı haritasını, Coğrafya boyutuyla ilgili 
 - Büyüme eğilimleri dahil olmak üzere müşterileriniz hakkında ayrıntılı bilgi için bkz. [ticari Market Analytics 'Te müşteri panosu](customer-dashboard.md).
 - Son 30 güne ait indirme isteklerinizin listesi için bkz. [Commercial Market Analytics 'Te panoyu indirme](./partner-center-portal/downloads-dashboard.md).
 - Azure Market ve AppSource 'ta teklifler için müşteri geri bildirimlerinin birleştirilmiş bir görünümünü görmek için bkz. [Iş Ortağı Merkezi 'Nde derecelendirmeler & İncelemeleri analiz panosu](./partner-center-portal/ratings-reviews.md).
-- Ticari Market Analytics hakkında sık sorulan sorular ve veri koşullarının kapsamlı bir sözlüğü için bkz. [ticari Market Analytics terminolojisi ve sık sorulan sorular](./partner-center-portal/faq-terminology.md).
+- Ticari Market Analytics hakkında sık sorulan sorular ve veri koşullarının kapsamlı bir sözlüğü için bkz. [ticari Market Analytics terminolojisi ve sık sorulan sorular](./analytics-faq.md).

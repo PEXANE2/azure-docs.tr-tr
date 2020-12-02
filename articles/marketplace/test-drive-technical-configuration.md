@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: trkeya
 ms.author: trkeya
-ms.openlocfilehash: de85e4eb553f623790b472e79f8f97487ba96b48
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 553eba3898a5ea42e5d478603e35e82c68abcab1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95751122"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462901"
 ---
 # <a name="test-drive-technical-configuration"></a>Test sürüşü teknik yapılandırması
 
@@ -38,9 +38,9 @@ Microsoft, hizmet sağlama ve sağlamayı kaldırma işlemlerini barındırarak 
 
 - **Rol adı** (gerekli) – özel Dynamics 365 test sürücünüzde tanımladığınız güvenlik rolü adını belirtin, bu, test sürücüleri sırasında kullanıcıya atanır (örneğin, test-sürücü-rolü).
 
-Test sürüşü için Dynamics 365 ortamınızı ayarlama ve kiracınızdaki test sürücüsü kullanıcılarını sağlama ve sağlama konusunda AppSource iznini verme hakkında yardım için [Bu yönergeleri](https://docs.microsoft.com/azure/marketplace/test-drive-azure-subscription-setup)izleyin.
+Test sürüşü için Dynamics 365 ortamınızı ayarlama ve kiracınızdaki test sürücüsü kullanıcılarını sağlama ve sağlama konusunda AppSource iznini verme hakkında yardım için [Bu yönergeleri](./test-drive-azure-subscription-setup.md)izleyin.
 
-Barındırılan test sürücünüzü listeleme ve yapılandırmaya yönelik adım adım yönergeler için lütfen [barındırılan test sürücüsü Için ayrıntılı yapılandırma](https://docs.microsoft.com/azure/marketplace/test-drive-hosted-detailed-config) sayfasını ziyaret edin.
+Barındırılan test sürücünüzü listeleme ve yapılandırmaya yönelik adım adım yönergeler için lütfen [barındırılan test sürücüsü Için ayrıntılı yapılandırma](./test-drive-hosted-detailed-config.md) sayfasını ziyaret edin.
 
 ## <a name="logic-app-test-drive"></a>Mantıksal uygulama sınama sürücüsü
 
@@ -95,7 +95,7 @@ Iş Ortağı Merkezi 'nde **Test** sürücüsü sekmesinde bulunan **Test sürü
 
 Şu anda Iş Ortağı Merkezi 'nde test sürücünüzü oluşturuyorsanız, devam etmeden önce **Taslağı kaydet** ' i seçin.
 
-Barındırılan test sürücünüzü listeleme ve yapılandırmaya yönelik adım adım yönergeler için lütfen [barındırılan test sürücüsü Için ayrıntılı yapılandırma](https://docs.microsoft.com/azure/marketplace/test-drive-hosted-detailed-config) sayfasını ziyaret edin.
+Barındırılan test sürücünüzü listeleme ve yapılandırmaya yönelik adım adım yönergeler için lütfen [barındırılan test sürücüsü Için ayrıntılı yapılandırma](./test-drive-hosted-detailed-config.md) sayfasını ziyaret edin.
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 

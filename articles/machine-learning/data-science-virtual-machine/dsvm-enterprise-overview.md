@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 05/08/2018
-ms.openlocfilehash: 538802cc2129a8e8f379c8b569bd1f8696097dab
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 9126dbcfbfe9e3a94514ebf45685bdfc55dd0306
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314188"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463008"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Veri Bilimi Sanal Makinesi tabanlı ekip Analizi ve AI ortamı 
 [Veri bilimi sanal makinesi](overview.md) (dsvm), yapay zeka (AI) ve veri analizi için önceden oluşturulmuş yazılımlarla Azure platformunda zengin bir ortam sağlar.
@@ -38,11 +38,11 @@ Kurumsal ekip Analizi ortamının anahtar yapı taşları şunları içerir:
 Bu seri, yukarıdaki konuların her biri için rehberlik ve işaretçiler sağlar. Büyük ölçekli kurumsal yapılandırmalarda DSVMs dağıtmaya yönelik tüm konuları ve gereksinimleri kapsamaz. Kuruluşunuzda DSVM örnekleri uygulanırken kullanabileceğiniz bazı diğer Azure kaynakları aşağıda verilmiştir:
 
 * [Ağ güvenliği](../../security/fundamentals/network-overview.md)
-* [İzleme](../../azure-monitor/insights/monitor-vm-azure.md) ve [Yönetim](../../virtual-machines/maintenance-and-updates.md?bc=%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json%252c%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json%253ftoc%253d%252fazure%252fvirtual-machines%252fwindows%252ftoc.json)
+* [İzleme](../../azure-monitor/insights/monitor-vm-azure.md) ve [Yönetim](../../virtual-machines/maintenance-and-updates.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json%252c%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json%253ftoc%253d%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Günlük kaydı ve denetim](../../security/fundamentals/log-audit.md)
 * [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md)
 * [İlke ayarı ve zorlaması](../../governance/policy/overview.md)
-* [Korunma](../../security/fundamentals/antimalware.md)
+* [Kötü amaçlı yazılımdan koruma](../../security/fundamentals/antimalware.md)
 * [Şifreleme](../../virtual-machines/windows/disk-encryption-overview.md)
 * [Veri bulma ve idare](../../data-catalog/index.yml)
 

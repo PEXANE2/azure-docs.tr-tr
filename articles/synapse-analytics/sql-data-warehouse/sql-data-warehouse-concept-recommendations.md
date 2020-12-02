@@ -1,5 +1,5 @@
 ---
-title: SYNAPSE SQL önerileri
+title: Adanmış SQL havuzu Azure Advisor önerileri
 description: SYNAPSE SQL önerileri ve bunların nasıl üretildiği hakkında bilgi edinin
 services: synapse-analytics
 author: kevinvngo
@@ -11,18 +11,18 @@ ms.date: 06/26/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e4564005e3b9cc9673cc20596d4114d102174b9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 667629b7f613b11f40528b039c7525339b7a62d0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85482862"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462860"
 ---
-# <a name="synapse-sql-recommendations"></a>SYNAPSE SQL önerileri
+# <a name="azure-advisor-recommendations-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu için Azure Advisor önerileri
 
-Bu makalede, Azure Advisor aracılığıyla sunulan SYNAPSE SQL önerileri açıklanır.  
+Bu makalede, Azure Advisor 'da sunulan adanmış SQL havuzu önerileri açıklanmaktadır.  
 
-SYNAPSE SQL, veri ambarı iş yükünüzün performans için sürekli olarak iyileştirildiğinden emin olmak için öneriler sağlar. Öneriler, doğrudan [Azure Portal](https://aka.ms/Azureadvisor)içinde en iyi uygulamaları sunmak Için [Azure Danışmanı](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) ile sıkı bir şekilde tümleşiktir. SYNAPSE SQL, günlük bir temposunda üzerinde etkin iş yükünüz için telemetri ve yüzey önerilerini toplar. Desteklenen öneri senaryoları, önerilen eylemlerin nasıl uygulanacağı ile birlikte aşağıda özetlenmiştir.
+Adanmış SQL havuzu veri ambarı iş yükünüzün performans için tutarlı bir şekilde iyileştirildiğinden emin olmak için öneriler sağlar Öneriler, doğrudan [Azure Portal](https://aka.ms/Azureadvisor)içinde en iyi uygulamaları sunmak Için [Azure Danışmanı](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) ile sıkı bir şekilde tümleşiktir. Adanmış SQL havuzu, günlük temposunda etkin iş yükünüz için telemetri ve yüzey önerilerini toplar. Desteklenen öneri senaryoları, önerilen eylemlerin nasıl uygulanacağı ile birlikte aşağıda özetlenmiştir.
 
 Önerilerinizi bugün [kontrol](https://aka.ms/Azureadvisor) edebilirsiniz! 
 
@@ -73,4 +73,4 @@ Yüksek tempdb Çekişmesi olduğunda sorgu performansı düşebilir.  Tempdb ç
 
 ## <a name="data-loading-misconfiguration"></a>Veri yükleme yanlış yapılandırma
 
-Gecikme süresini en aza indirmek için SQL havuzunuzun her zaman aynı bölgedeki bir depolama hesabından veri yüklemeniz gerekir. [Yüksek aktarım hızı verileri alımı Için kopyalama ifadesini](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) kullanın ve üretilen dosyalarınızı depolama hesabınızda bölerek üretilen iş üretimini en üst düzeye çıkarın. COPY ifadesini kullanamıyoruz, daha iyi aktarım hızı için SqlBulkCopy API veya bcp 'yi yüksek bir toplu iş boyutuyla birlikte kullanabilirsiniz. Ek veri yükleme kılavuzu için aşağıdaki [belgeleri](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data)ziyaret edin. 
+Gecikmeyi en aza indirmek için, her zaman ayrılmış SQL havuzunuz ile aynı bölgedeki bir depolama hesabındaki verileri yüklemeniz gerekir. [Yüksek aktarım hızı verileri alımı Için kopyalama ifadesini](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) kullanın ve üretilen dosyalarınızı depolama hesabınızda bölerek üretilen iş üretimini en üst düzeye çıkarın. COPY ifadesini kullanamıyoruz, daha iyi aktarım hızı için SqlBulkCopy API veya bcp 'yi yüksek bir toplu iş boyutuyla birlikte kullanabilirsiniz. Ek veri yükleme kılavuzu için aşağıdaki [belgeleri](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data)ziyaret edin. 

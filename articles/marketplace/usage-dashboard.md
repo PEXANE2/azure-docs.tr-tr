@@ -7,21 +7,21 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 5e2bdec8b3c628f1d470acb3e27bb18eabbc71ac
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 563ccdb0633f94acccf3ade9faf1c40c28f108ac
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565547"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462929"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>Ticari market analizinde Kullanım panosu
 
 Bu makalede, Iş Ortağı Merkezi 'ndeki kullanım panosu hakkında bilgi sağlanır. Bu Pano tüm sanal makineleri (VM) üç ayrı sekmede normalleştirilmiş kullanım, ham kullanım ve ölçümlü faturalandırma ölçümleri sunar: VM normalleştirilmiş kullanımı, VM ham kullanımı ve tarifeli faturalandırma kullanımı.
 
-İş Ortağı Merkezi 'ndeki kullanım panosuna erişmek için, **ticari Market** altında kullanımı **[Çözümle](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** ' yi seçin  >  **Usage**.
+İş Ortağı Merkezi 'ndeki kullanım panosuna erişmek için, **ticari Market** altında kullanımı **[Çözümle](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**' yi seçin  >  **Usage**.
 
 >[!NOTE]
-> Analiz terminolojisi hakkında ayrıntılı tanımlamalar için bkz. [ticari Market Analytics terminolojisi ve sık sorulan sorular](./partner-center-portal/faq-terminology.md).
+> Analiz terminolojisi hakkında ayrıntılı tanımlamalar için bkz. [ticari Market Analytics terminolojisi ve sık sorulan sorular](./analytics-faq.md).
 
 ## <a name="usage-dashboard"></a>Kullanım panosu
 
@@ -171,13 +171,13 @@ VM ham kullanımı için pencere öğeleri ve dışarı aktarma raporu, aşağı
 
 **Ölçülen kullanım** sekmesi, kullanımın ölçüm boyutuyla ölçülebileceği teklif türleri için kullanım bilgilerini gösterir. SaaS teklif türü fazla kullanımı Şu anda sunulmuştur. Sekme, SaaS ölçülen faturalama kullanımı için fazla kullanım eğilimlerinin grafiksel sunumlarını sunar:
 
-- **Ölçüm boyutuna göre fazla kullanım eğilimi** : bir teklifin seçili ölçüm boyutu için aylık fazla kullanım eğilimi gösterir. X ekseni ayı temsil eder ve Y ekseni fazla kullanım miktarını temsil eder. Özel ölçerin ölçü birimi Y ekseni üzerinde de görüntülenir.
+- **Ölçüm boyutuna göre fazla kullanım eğilimi**: bir teklifin seçili ölçüm boyutu için aylık fazla kullanım eğilimi gösterir. X ekseni ayı temsil eder ve Y ekseni fazla kullanım miktarını temsil eder. Özel ölçerin ölçü birimi Y ekseni üzerinde de görüntülenir.
 
     :::image type="content" source="./media/usage-dashboard/metered-usage.png" alt-text="Kullanım panosundaki VM normalleştirilmiş kullanım grafiğini gösterir.":::
 
-- **SKU 'ya göre fazla kullanım eğilimi** : seçili ölçüm boyutunun SKU/planlara göre kullanım miktarının eğilimini temsil eder. Seçili teklif için en yüksek kullanım miktarına sahip ilk beş plan görüntülenir.
+- **SKU 'ya göre fazla kullanım eğilimi**: seçili ölçüm boyutunun SKU/planlara göre kullanım miktarının eğilimini temsil eder. Seçili teklif için en yüksek kullanım miktarına sahip ilk beş plan görüntülenir.
 
-- **Müşterilere göre fazla kullanım eğilimi** : müşteri lideri panosu, en yüksek kullanım saatlerine sahip müşterilerin yığın listesini temsil eder ve özel ölçerin en yüksek kullanımıyla derecelendirilen bir _öncü panoda_ görüntülenir. Seçili ölçüm boyutunun fazla kullanım eğilimini görüntülemek için öncü panoda bir müşteri seçin.
+- **Müşterilere göre fazla kullanım eğilimi**: müşteri lideri panosu, en yüksek kullanım saatlerine sahip müşterilerin yığın listesini temsil eder ve özel ölçerin en yüksek kullanımıyla derecelendirilen bir _öncü panoda_ görüntülenir. Seçili ölçüm boyutunun fazla kullanım eğilimini görüntülemek için öncü panoda bir müşteri seçin.
 
     :::image type="content" source="./media/usage-dashboard/metered-usage-by-customers.png" alt-text="Kullanım panosundaki müşterilerin ölçülen kullanım grafiğini gösterir.":::
 
@@ -194,4 +194,4 @@ VM ham kullanımı için pencere öğeleri ve dışarı aktarma raporu, aşağı
 - Sanal makine (VM) için kullanım ve ölçümlenen faturalandırma ölçümleri, bkz. [ticari Market Analytics 'Te kullanım panosu](usage-dashboard.md).
 - Son 30 güne ait indirme isteklerinizin listesi için bkz. [Commercial Market Analytics 'te panoyu indirme](./partner-center-portal/downloads-dashboard.md).
 - Azure Marketi ve Microsoft AppSource tekliflere yönelik müşteri geri bildirimlerinin birleştirilmiş bir görünümünü görmek için bkz. [Iş Ortağı Merkezi 'Nde derecelendirme & gözden geçirme Analizi panosu](./partner-center-portal/ratings-reviews.md).
-- Ticari Market Analytics hakkında sık sorulan sorular ve veri koşullarının kapsamlı bir sözlüğü için bkz. [ticari Market Analytics terminolojisi ve sık sorulan sorular](./partner-center-portal/faq-terminology.md).
+- Ticari Market Analytics hakkında sık sorulan sorular ve veri koşullarının kapsamlı bir sözlüğü için bkz. [ticari Market Analytics terminolojisi ve sık sorulan sorular](./analytics-faq.md).

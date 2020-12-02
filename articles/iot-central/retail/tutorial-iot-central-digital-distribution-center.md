@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: a76df67d1ef9d203d5e5d54cb95bb8fc90f70180
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d19310dbd54c8bd5f9854ff86af051b68c5cd378
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90980748"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463285"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Öğretici: dijital bir dağıtım merkezi uygulama şablonunu dağıtma ve gözden geçir
 
@@ -34,8 +34,7 @@ Aşağıdaki adımları kullanarak uygulama oluşturabilirsiniz
 
 1. Azure IoT Central uygulama Yöneticisi Web sitesine gidin. Sol taraftaki Gezinti çubuğundan **Oluştur** ' u seçin ve ardından **Perakende** sekmesine tıklayın.
 
-    > [!div class="mx-imgBorder"]
-    > ![Dijital dağıtım merkezi uygulama şablonunun nasıl seçileceğini gösteren ekran görüntüsü](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png)
+    :::image type="content" source="media/tutorial-iot-central-ddc/iotc-retail-homepage.png" alt-text="Dijital dağıtım merkezi uygulama şablonu":::
 
 2. **Perakende** sekmesini seçin ve **dijital dağıtım merkezi uygulaması** altında **uygulama oluştur** ' u seçin.
 
@@ -45,11 +44,9 @@ Aşağıdaki adımları kullanarak uygulama oluşturabilirsiniz
    **Fatura bilgileri**: kaynakları sağlamak için dizin, Azure aboneliği ve bölge ayrıntıları gereklidir.
    **Oluştur**: uygulamanızı dağıtmak için sayfanın alt kısmındaki Oluştur ' u seçin.
 
-    > [!div class="mx-imgBorder"]
-    > ![Dijital dağıtım merkezi uygulama şablonundan uygulama oluşturmayı gösteren ekran görüntüsü](./media/tutorial-iot-central-ddc/ddc-create.png)
+   :::image type="content" source="media/tutorial-iot-central-ddc/ddc-create.png" alt-text="Dijital dağıtım merkezi uygulama şablonundan uygulama oluşturmayı gösteren ekran görüntüsü":::
 
-    > [!div class="mx-imgBorder"]
-    > ![Uygulamayı oluştururken faturalandırma seçeneklerini gösteren ekran görüntüsü](./media/tutorial-iot-central-ddc/ddc-create-billinginfo.png)
+   :::image type="content" source="media/tutorial-iot-central-ddc/ddc-create-billinginfo.png" alt-text="Uygulamayı oluştururken faturalandırma seçeneklerini gösteren ekran görüntüsü":::
 
 ## <a name="walk-through-the-application-dashboard"></a>Uygulama panosu üzerinden ilerleme 
 
@@ -108,7 +105,7 @@ Bu uygulama şablonunun bir parçası olarak var olan beş farklı işi görmek 
 > ![Dijital dağıtım merkezi uygulamasındaki işlerin listesini gösteren ekran görüntüsü](./media/tutorial-iot-central-ddc/ddc-jobs.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
-Bu uygulamayı kullanmaya devam edemeyecekiniz, **Yönetim**uygulaması ayarlarını ziyaret ederek uygulama şablonunu silin  >  **Application settings** ve **Sil**' e tıklayın.
+Bu uygulamayı kullanmaya devam edemeyecekiniz, **Yönetim** uygulaması ayarlarını ziyaret ederek uygulama şablonunu silin  >  **Application settings** ve **Sil**' e tıklayın.
 
 > [!div class="mx-imgBorder"]
 > ![Uygulamayı tamamladığınızda uygulamanın nasıl silineceğini gösteren ekran görüntüsü](./media/tutorial-iot-central-ddc/ddc-cleanup.png)

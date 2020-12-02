@@ -11,12 +11,12 @@ author: NilsPohlmann
 ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 452904e18a0910c2dd4781ca978042e0cdd4996d
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 57806ecaf4b0e295457c78faaff6033126ddb2c8
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630133"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463023"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure Machine Learning SDK ile makine öğrenimi işlem hatları oluşturma ve çalıştırma
 
@@ -24,7 +24,7 @@ ms.locfileid: "94630133"
 
 Bu makalede, [Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)kullanarak [makine öğrenimi ardışık düzeni](concept-ml-pipelines.md) oluşturmayı ve çalıştırmayı öğreneceksiniz. Çeşitli ML aşamalarını biraraya uygulayan bir iş akışı oluşturmak için **ml işlem hatlarını** kullanın. Ardından, daha sonra erişmek veya başkalarıyla paylaşmak için bu işlem hattını yayımlayın. Modelinizin gerçek dünyada nasıl çalıştığını görmek ve veri kayması 'nı algılamak için ML işlem hatlarını izleyin. ML işlem hatları, çeşitli hesaplar kullanılarak, yeniden çalıştırmak yerine adımları yeniden kullanarak ve diğer kişilerle ML iş akışlarını paylaşarak Batch Puanlama senaryolarında idealdir.
 
-ML görevlerinin CI/CD otomasyonu için [Azure](/azure/devops/pipelines/targets/azure-machine-learning?context=azure%252fmachine-learning%252fservice%252fcontext%252fml-context&preserve-view=true&tabs=yaml&view=azure-devops) işlem hattı adlı farklı türde bir işlem hattı kullanabilirsiniz, ancak bu işlem hattı türü çalışma alanınızda depolanmaz. [Bu farklı işlem hatlarını karşılaştırın](concept-ml-pipelines.md#which-azure-pipeline-technology-should-i-use).
+ML görevlerinin CI/CD otomasyonu için [Azure](/azure/devops/pipelines/targets/azure-machine-learning?context=azure%2fmachine-learning%2fservice%2fcontext%2fml-context&preserve-view=true&tabs=yaml&view=azure-devops) işlem hattı adlı farklı türde bir işlem hattı kullanabilirsiniz, ancak bu işlem hattı türü çalışma alanınızda depolanmaz. [Bu farklı işlem hatlarını karşılaştırın](concept-ml-pipelines.md#which-azure-pipeline-technology-should-i-use).
 
 Oluşturduğunuz ML ardışık düzenleri Azure Machine Learning [çalışma](how-to-manage-workspace.md)alanınızın üyeleri tarafından görülebilir. 
 
@@ -32,7 +32,7 @@ ML ardışık düzenleri işlem hedefleri üzerinde yürütülür (bkz. [Azure M
 
 Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Tüm işlem hattı kaynaklarınızın tutulacağı bir [Azure Machine Learning çalışma alanı](how-to-manage-workspace.md) oluşturun.
 
@@ -110,7 +110,7 @@ output_data1 = PipelineData(
 ## <a name="set-up-a-compute-target"></a>İşlem hedefi ayarlama
 
 
-Azure Machine Learning, __işlem__ (veya __işlem hedefi__ ) terimi, Machine Learning ardışık düzeninde hesaplama adımlarını gerçekleştiren makinelere veya kümelere başvurur.   İşlem hedeflerinin tam listesi için bkz. [model eğitimi için işlem hedefleri](concept-compute-target.md#train) ve bunları oluşturma ve çalışma alanınıza iliştirme için [işlem hedefleri oluşturma](how-to-create-attach-compute-studio.md) .   Bir işlem hedefi oluşturma ve ekleme işlemi, bir modeli eğitmek veya bir ardışık düzen adımını çalıştırmak için aynıdır. İşlem hedefini oluşturup iliştirdikten sonra işlem `ComputeTarget` [hattı adımınızda](#steps)nesnesini kullanın.
+Azure Machine Learning, __işlem__ (veya __işlem hedefi__) terimi, Machine Learning ardışık düzeninde hesaplama adımlarını gerçekleştiren makinelere veya kümelere başvurur.   İşlem hedeflerinin tam listesi için bkz. [model eğitimi için işlem hedefleri](concept-compute-target.md#train) ve bunları oluşturma ve çalışma alanınıza iliştirme için [işlem hedefleri oluşturma](how-to-create-attach-compute-studio.md) .   Bir işlem hedefi oluşturma ve ekleme işlemi, bir modeli eğitmek veya bir ardışık düzen adımını çalıştırmak için aynıdır. İşlem hedefini oluşturup iliştirdikten sonra işlem `ComputeTarget` [hattı adımınızda](#steps)nesnesini kullanın.
 
 > [!IMPORTANT]
 > İşlem hedeflerinde yönetim işlemleri gerçekleştirmek uzak işlerin içinden desteklenmez. Makine öğrenimi ardışık düzenleri uzak bir iş olarak gönderildiğinden, işlem hedefleri üzerinde yönetim işlemlerini işlem hattı içinden kullanmayın.

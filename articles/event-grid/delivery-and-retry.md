@@ -3,12 +3,12 @@ title: Azure Event Grid teslimi ve yeniden dene
 description: Azure Event Grid olayların nasıl teslim edildiğini ve teslim edilmemiş iletileri nasıl işlediğini açıklar.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 9a7bde33e322183f86c3c51d30bb004d06fa1406
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 51473cf457a1c713e6694edd23c344be8c4d439e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345362"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463231"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>İleti teslimini Event Grid ve yeniden deneyin
 
@@ -57,7 +57,7 @@ Azure CLı 'yı Event Grid kullanma hakkında daha fazla bilgi için bkz. [Azure
 
 EventGrid bir olay teslim girişimi için bir hata aldığında, EventGrid teslim mi yoksa atılacak harfi mi yeniden denemeli ya da hatanın türüne göre olayı bırakmaya karar verir. 
 
-Abone olunan uç nokta tarafından döndürülen hata, yeniden denemeler ile çözülebilecek yapılandırma ile ilgili hata (örneğin, uç nokta silinirse), EventGrid ise ölü olay gerçekleştirir veya atılacak harf yapılandırılmamışsa olayı bırakır.
+Abone olunan uç nokta tarafından döndürülen hata, yeniden denemeler ile çözülebilecek yapılandırma ile ilgili hata ise (örneğin, uç nokta silinirse), EventGrid olayı iptal eder veya eski bir harf yapılandırılmamışsa olayı yapmaz.
 
 Yeniden deneme gerçekleşmeyen uç nokta türleri aşağıda verilmiştir:
 

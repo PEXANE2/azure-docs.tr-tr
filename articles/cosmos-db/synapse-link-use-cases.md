@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: 7621a19b510d302454465f9fcbacec27a14dddf9
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9855a53ebdf7501907b3e1e63d59823d3a0b0209
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340184"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463125"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Cosmos DB için Azure Synapse Link: Gerçek zamanlıya yakın analiz için kullanım örnekleri
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -53,9 +53,9 @@ Aşağıdaki mimaride, tedarik zinciri analizinden Cloud Native işletimsel veri
 
   Azure Cosmos DB için SYNAPSE bağlantısı zengin iş zekası (BI)/Reporting senaryolarına izin verebilir:
 
-  * SYNAPSE SQL sunucusuz ile yerel tümleştirmeyi ve T-SQL dilinin tam ifade düzeyini kullanarak Azure Cosmos DB analitik mağazadan işletimsel verileri sorgulayın.
+  * Sunucusuz SQL havuzuyla yerel tümleştirmeyi ve T-SQL dilinin tam ifade düzeyini kullanarak Azure Cosmos DB analitik mağazadan işletimsel verileri sorgulayın.
 
-  * Tanıdık BI araçları için SYNAPSE SQL sunucusuz desteği aracılığıyla Azure Cosmos DB üzerinden otomatik yenileme bı panolarını modelleme ve yayımlama. Örneğin, Azure Analysis Services, Power BI Premium, vb.
+  * Tanıdık BI araçları için sunucusuz SQL havuzu desteği aracılığıyla Azure Cosmos DB üzerinde otomatik yenileme bı panolarını modelleme ve yayımlama. Örneğin, Azure Analysis Services, Power BI Premium, vb.
 
 Aşağıda toplu iş & akışı verileri Azure Cosmos DB içine veri tümleştirmesi için bazı kılavuzluk verilmiştir:
 
@@ -143,4 +143,4 @@ Daha fazla bilgi için aşağıdaki belgelere bakın:
 
 * [Azure SYNAPSE Analytics 'te Apache Spark](../synapse-analytics/spark/apache-spark-concepts.md)
 
-* [Azure SYNAPSE Analytics 'te SQL sunucusuz çalışma zamanı desteği](../synapse-analytics/sql/on-demand-workspace-overview.md)
+* [Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu çalışma zamanı desteği](../synapse-analytics/sql/on-demand-workspace-overview.md)

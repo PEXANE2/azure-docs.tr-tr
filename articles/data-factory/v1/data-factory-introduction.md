@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
-ms.openlocfilehash: 06f308b4e0b2df0487a351ae38f16f3872961cfb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 17765d89cacfb6083df5ac911d2b24d573fba511
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89436265"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463066"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure Data Factory'ye giriş 
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -35,7 +35,7 @@ Büyük veri dünyasında, işletmede mevcut verilerden nasıl yararlanılır? �
 
 Bu günlükleri analiz etmek için, şirketin şirket içi veri deposunda bulunan müşteri bilgileri, oyun bilgileri ve pazarlama kampanyası bilgileri gibi başvuru verilerini kullanması gerekir. Bu nedenle, şirket bulut veri deposundan günlük verilerini ve şirket içi veri deposundan başvuru verilerini almak istemektedir. 
 
-Şirket sonraki adımda verileri bulutta Hadoop (Azure HDInsight) kullanarak işlemek istemektedir. Sonuç verilerini Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) gibi bir bulut veri ambarında veya SQL Server gibi bir şirket içi veri deposu halinde yayınlamak ister. Şirket bu iş akışının haftada bir çalışmasını istemektedir. 
+Şirket sonraki adımda verileri bulutta Hadoop (Azure HDInsight) kullanarak işlemek istemektedir. Sonuç verilerini Azure SYNAPSE Analytics gibi bir bulut veri ambarında veya SQL Server gibi bir şirket içi veri deposunda yayımlamak ister. Şirket bu iş akışının haftada bir çalışmasını istemektedir. 
 
 Şirketin hem şirket içindeki hem de bulut üzerindeki veri depolarından veri alabilen iş akışları oluşturabileceği bir platforma ihtiyacı vardır. Şirketin aynı zamanda Hadoop gibi var olan işlem hizmetlerini kullanarak verileri dönüştürme veya işlemenin yanı sıra sonuçları BI uygulamalarının kullanması için şirket içindeki veya bulut üzerindeki veri depolarında yayımlamaya ihtiyacı vardır. 
 
@@ -71,7 +71,7 @@ Data Factory ile, veri işlem hattında Kopyalama Etkinliği’ni kullanarak hem
 ### <a name="transform-and-enrich"></a>Dönüştürme ve zenginleştirme
 Veriler buluttaki merkezi bir veri deposuna sunulduktan sonra HDInsight Hadoop, Spark, Data Lake Analytics veya Machine Learning gibi işlem hizmetlerini kullanarak işleyin veya dönüştürün. Üretim ortamlarının güvenilir verilerle beslenmesi için sürdürülebilir ve denetlenebilir bir zamanlamaya göre dönüştürülmüş verileri güvenilir bir şekilde üretmeniz gerekir. 
 
-### <a name="publish"></a>Yayımla 
+### <a name="publish"></a>Yayımlama 
 Dönüştürülen verileri buluttan SQL Server gibi şirket içi kaynaklara gönderebilirsiniz. Alternatif olarak BI analiz araçları ve diğer uygulamalar tarafından kullanılmak üzere bulut depolama kaynaklarınızda tutabilirsiniz.
 
 ## <a name="key-components"></a>Başlıca bileşenler
@@ -140,7 +140,7 @@ Azure Data Factory'de veri işlem hatları oluşturmak için bu araç veya API'l
 
 Veri işlem hatları ile veri fabrikaları oluşturmayı öğrenmek için aşağıdaki öğreticilerde yer alan adım adım yönergeleri izleyin:
 
-| Öğretici | Açıklama |
+| Eğitmen | Açıklama |
 | --- | --- |
 | [İki bulut veri deposu arasında veri taşıma](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) |Blob depolamadan SQL veritabanına veri taşıyan bir işlem hattı ile veri fabrikası oluşturun. |
 | [Hadoop kümesi kullanarak veri dönüştürme](data-factory-build-your-first-pipeline.md) |Bir Azure HDInsight (Hadoop) kümesinde Hive betiği çalıştırarak veri işleyen bir veri işlem hattı ile ilk Azure veri fabrikanızı oluşturun. |

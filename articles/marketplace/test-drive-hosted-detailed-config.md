@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 11/06/2020
-ms.openlocfilehash: 9e8aecfe8b16d8af755d3f4c3c71b875d4e8ec40
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 88779f67a2fa9b18f0177a1459b32c672343bb57
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95751258"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462949"
 ---
 # <a name="detailed-configuration-for-hosted-test-drives"></a>Barındırılan test sürücüleri için ayrıntılı yapılandırma
 
@@ -29,7 +29,7 @@ Bu makalede, Dynamics 365 for Customer Engagement veya Operations için Dynamics
 
     - **Test sürücüsü türü** – **Microsoft hosted (müşteri için Dynamics 365, PowerApps &)** seçeneğini belirleyin. Bu, Microsoft 'un Kullanıcı hazırlama ve sağlamayı kaldırma sınama sürücüsünü gerçekleştiren hizmeti barındırdığını ve bakımını gerçekleştireceğini belirtir.
 
-5. [Bu yönergeleri](https://docs.microsoft.com/azure/marketplace/test-drive-azure-subscription-setup)kullanarak kiracınızdaki test sürücüsü kullanıcılarını sağlama ve sağlamayı kaldırma iznini Microsoft AppSource verin. Bu adımda, aşağıda bahsedilen **Azure AD UYGULAMASı kimliği** ve **Azure AD uygulaması anahtar** değerlerini oluşturacaksınız.
+5. [Bu yönergeleri](./test-drive-azure-subscription-setup.md)kullanarak kiracınızdaki test sürücüsü kullanıcılarını sağlama ve sağlamayı kaldırma iznini Microsoft AppSource verin. Bu adımda, aşağıda bahsedilen **Azure AD UYGULAMASı kimliği** ve **Azure AD uygulaması anahtar** değerlerini oluşturacaksınız.
 6. **Sınama sürücüsü teknik yapılandırma** sayfasında bu alanları doldurun.
 
     [![Sınama sürücüsü teknik yapılandırma sayfası.](media/test-drive/technical-config-details.png)](media/test-drive/technical-config-details.png#lightbox)
@@ -81,7 +81,7 @@ Bu makalede, Dynamics 365 for Customer Engagement veya Operations için Dynamics
     - **Azure Active Directory kiracı adı** : Dynamics 365 örneğiniz Için Azure kiracısı adı. `<tenantname>.onmicrosoft.com` biçimini kullanın. Örnek değer: `testdrive.onmicrosoft.com` .
     - **Azure Active Directory Uygulama kimliği** : 5. adımda oluşturduğunuz Azure ACTIVE DIRECTORY (ad) uygulamanın kimliği. Örnek değer: `53852862-a2ae-4e43-9461-faa49650a096` .
     - **Uygulama istemci gizli anahtarı** – 5. adımda oluşturulan Azure AD uygulaması için gizli anahtar. Azure Active Directory Örnek değer: `IJUgaIOfq9b9LbUjeQmzNBW4VGn6grr1l/n3aMrnfdk=` .
-    - **Deneme tüzel kişiliği** : bir deneme kullanıcısı atamak için yasal bir varlık sağlar. [Yasal bir varlık oluşturma veya değiştirme](https://technet.microsoft.com/library/hh242184.aspx)konusunda yeni bir tane oluşturabilirsiniz.
+    - **Deneme tüzel kişiliği** : bir deneme kullanıcısı atamak için yasal bir varlık sağlar. [Yasal bir varlık oluşturma veya değiştirme](/dynamicsax-2012/appuser-itpro/create-or-modify-a-legal-entity)konusunda yeni bir tane oluşturabilirsiniz.
     - **Rol adı** – test sürücüsü için oluşturduğunuz özel Dynamics 365 GÜVENLIK rolünün AOT adı (uygulama nesnesi ağacı). Bu, kullanıcılara test sürücüleri sırasında atanacak olan roldür.
 
         :::image type="content" source="./media/test-drive/security-config.png" alt-text="Güvenlik Yapılandırması sayfası.":::

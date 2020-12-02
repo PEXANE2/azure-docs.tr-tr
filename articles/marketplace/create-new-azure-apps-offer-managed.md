@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: 85f5beb6188b1f6987934f1c39c579d5a3028a5e
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 61ee0b769664d1f574177e27b5b1fb10e9845035
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579496"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463095"
 ---
 # <a name="configure-a-managed-application-plan"></a>Yönetilen uygulama planını yapılandırma
 
@@ -23,13 +23,13 @@ Bu makale yalnızca bir Azure Uygulama teklifi için yönetilen uygulama planlar
 
 Her plan en az bir pazarda kullanılabilir olmalıdır. **Fiyatlandırma ve kullanılabilirlik** sekmesinde, bu planın kullanılabileceği, Fiyat ve planı herkese açık ya da yalnızca belirli müşterilere (özel bir plan olarak da anılır) görünür hale getirme gibi bir şekilde yapılandırabilirsiniz.
 
-1. **Pazarlar** ' ın altında, **pazarlar Düzenle** bağlantısını seçin.
+1. **Pazarlar**' ın altında, **pazarlar Düzenle** bağlantısını seçin.
 1. Görüntülenen iletişim kutusunda, planınızı kullanılabilir hale getirmek istediğiniz Pazar konumlarını seçin. En az bir adet 141 pazarı seçmeniz gerekir.
 
     > [!NOTE]
     > Bu iletişim kutusu, Microsoft remits Sales ve sizin adınıza vergi üzerinden yalnızca "vergi havalesi" ülkelerine filtre uygulamak için bir arama kutusu ve bir seçenek içerir.
 
-1. İletişim kutusunu kapatmak için **Kaydet** ' i seçin.
+1. İletişim kutusunu kapatmak için **Kaydet**' i seçin.
 
 ## <a name="define-pricing"></a>Fiyatlandırma tanımla
 
@@ -60,7 +60,7 @@ Bir plan yayımlandıktan sonra nelerin değiştirebilecekleri hakkında bazı k
 
 Tek bir pazarda özel fiyatlar ayarlamak için, fiyatlandırma elektronik tablosunu dışarı aktarın, değiştirin ve içeri aktarın. Bu fiyatlandırmayı doğrulamadan ve bu ayarların sahibi olduğunuzdan siz sorumlusunuz. Ayrıntılı bilgi için bkz. [özel fiyatlar](plans-pricing.md#custom-prices).
 
-1. Fiyatlandırma verilerinin dışarı aktarılmasını sağlamak için öncelikle fiyatlandırma değişikliklerinizi kaydetmeniz gerekir. **Fiyatlandırma ve kullanılabilirlik** sekmesinin altındaki **Taslağı kaydet** ' i seçin.
+1. Fiyatlandırma verilerinin dışarı aktarılmasını sağlamak için öncelikle fiyatlandırma değişikliklerinizi kaydetmeniz gerekir. **Fiyatlandırma ve kullanılabilirlik** sekmesinin altındaki **Taslağı kaydet**' i seçin.
 1. **Fiyatlandırma** bölümünde **fiyatlandırma verilerini dışarı aktar** bağlantısını seçin.
 1. exportedPrice.xlsx dosyasını Microsoft Excel 'de açın.
 1. Elektronik tabloda, istediğiniz güncelleştirmeleri Fiyatlandırma bilgileriniz yapın ve ardından dosyayı kaydedin.
@@ -68,8 +68,8 @@ Tek bir pazarda özel fiyatlar ayarlamak için, fiyatlandırma elektronik tablos
    Dosyayı güncelleştirebilmeniz için önce Excel 'de düzenlemesini etkinleştirmeniz gerekebilir.
 
 1. Fiyatlandırma **ve kullanılabilirlik** sekmesindeki **fiyatlandırma** bölümünde **fiyatlandırma verilerini içeri aktar** bağlantısını seçin.
-1. Görüntülenen iletişim kutusunda **Evet** ' e tıklayın.
-1. Güncelleştirdiğiniz exportedPrice.xlsx dosyasını seçin ve ardından **Aç** ' a tıklayın.
+1. Görüntülenen iletişim kutusunda **Evet**' e tıklayın.
+1. Güncelleştirdiğiniz exportedPrice.xlsx dosyasını seçin ve ardından **Aç**' a tıklayın.
 
 ## <a name="choose-who-can-see-your-plan"></a>Planınızı kimlerin görebileceğini seçin
 
@@ -102,8 +102,8 @@ Her planı herkese veya yalnızca belirli bir hedef kitleye görünür olacak ş
 1. Abonelik KIMLIĞI olan her satır için **tür** sütununa "SubscriptionID" ekleyin.
 1. Öğesini kaydedin. CSV dosyası.
 1. **Kullanılabilirlik** sekmesinde, **plan görünürlüğü** altında, **izleyiciyi içeri aktar (CSV)** bağlantısını seçin.
-1. Görüntülenen iletişim kutusunda **Evet** ' i seçin.
-1. Öğesini seçin. CSV dosyası ve sonra **Aç** ' ı seçin. Olduğunu belirten bir ileti görüntülenir. CSV dosyası başarıyla içeri aktarıldı.
+1. Görüntülenen iletişim kutusunda **Evet**' i seçin.
+1. Öğesini seçin. CSV dosyası ve sonra **Aç**' ı seçin. Olduğunu belirten bir ileti görüntülenir. CSV dosyası başarıyla içeri aktarıldı.
 
 ## <a name="define-the-technical-configuration"></a>Teknik yapılandırmayı tanımlama
 
@@ -135,10 +135,10 @@ Bu plan için JıT erişimini etkinleştirmek üzere **tam zamanında (JIT) eri�
 
 **Tamamlanmış** veya **artımlı** Dağıtım modunu seçin.
 
-- **Tüm** modda, kaynak [üzerindemainTemplate.js](/azure/azure-resource-manager/managed-applications/publish-service-catalog-app?tabs=azure-powershell#create-the-arm-template.md)tanımlanmamışsa, uygulamanın müşteri tarafından yeniden dağıtımı, yönetilen kaynak grubundaki kaynakların kaldırılmasına neden olur.
+- **Tüm** modda, kaynak [üzerindemainTemplate.js](../azure-resource-manager/managed-applications/publish-service-catalog-app.md?tabs=azure-powershell#create-the-arm-template)tanımlanmamışsa, uygulamanın müşteri tarafından yeniden dağıtımı, yönetilen kaynak grubundaki kaynakların kaldırılmasına neden olur.
 - **Artımlı** modda, uygulamanın yeniden dağıtımı mevcut kaynakları değişmeden bırakır.
 
-Dağıtım modları hakkında daha fazla bilgi için bkz. [Azure Resource Manager Dağıtım modları](/azure/azure-resource-manager/deployment-modes).
+Dağıtım modları hakkında daha fazla bilgi için bkz. [Azure Resource Manager Dağıtım modları](../azure-resource-manager/templates/deployment-modes.md).
 
 ### <a name="provide-a-notification-endpoint-url"></a>Bildirim uç noktası URL 'SI sağlayın
 
@@ -175,15 +175,15 @@ En fazla beş ilke ve her Ilke seçeneğinin yalnızca bir örneğini yapıland�
 
 ## <a name="view-your-plans"></a>Planlarınızı görüntüleyin
 
-- **Taslağı kaydet** ' i seçin ve sayfanın sol üst **kısmında plana genel** bakış ' ı seçerek **plana genel bakış** sayfasına dönün.
+- **Taslağı kaydet**' i seçin ve sayfanın sol üst **kısmında plana genel** bakış ' ı seçerek **plana genel bakış** sayfasına dönün.
 
 Bir veya daha fazla plan oluşturduktan sonra plan adı, plan KIMLIĞI, plan türü, kullanılabilirliği (genel veya özel), geçerli yayımlama durumu ve **plana genel bakış** sekmesinde tüm kullanılabilir eylemler görüntülenir.
 
 **Plana genel bakış** sekmesinin **eylem** sütununda bulunan Eylemler planınızın durumuna göre farklılık gösterir ve şunları içerebilir:
 
-- Plan durumu **taslak** Ise, **eylem** sütunundaki bağlantı **taslak Sil** ' i söylecektir.
+- Plan durumu **taslak** Ise, **eylem** sütunundaki bağlantı **taslak Sil**' i söylecektir.
 - Plan durumu **canlı** Ise, **eylem** sütunundaki bağlantı, **planı satmaya** veya **özel izleyiciyi eşitlemeye** yönelik olur. **Eşitleme özel hedef kitle** bağlantısı, yalnızca özel izleyicilerinizdeki değişiklikleri, teklifte yapmış olabileceğiniz herhangi bir güncelleştirmeyi yayımlamadan yayımlar.
-- Bu teklif için başka bir plan oluşturmak üzere **plana genel bakış** sekmesinin en üstünde **+ Yeni plan oluştur** ' u seçin. Ardından [Azure Uygulama teklifiniz için plan oluşturma](create-new-azure-apps-offer-plans.md)bölümündeki adımları yineleyin. Aksi takdirde, planlar oluşturmayı bitirdiğinizde sonraki bölüme gidin: sonraki adımlar.
+- Bu teklif için başka bir plan oluşturmak üzere **plana genel bakış** sekmesinin en üstünde **+ Yeni plan oluştur**' u seçin. Ardından [Azure Uygulama teklifiniz için plan oluşturma](create-new-azure-apps-offer-plans.md)bölümündeki adımları yineleyin. Aksi takdirde, planlar oluşturmayı bitirdiğinizde sonraki bölüme gidin: sonraki adımlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

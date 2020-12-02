@@ -1,5 +1,5 @@
 ---
-title: SYNAPSE SQL havuzundaki işlemleri kullanma
+title: Azure SYNAPSE Analytics SQL havuzundaki işlemleri kullanma
 description: Bu makale, SYNAPSE SQL havuzunda işlem gerçekleştirme ve çözüm geliştirmeye yönelik ipuçları içerir.
 services: synapse-analytics
 author: XiaoyuMSFT
@@ -9,17 +9,18 @@ ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 03/22/2019
 ms.author: xiaoyul
+ms.custom: azure-synapse
 ms.reviewer: igorstan
-ms.openlocfilehash: 40a9e5268b7fccc5c01775c10e55eee47f1aaf3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5a3c0863bb35f0988d7928bb9a2857f6aceded6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85213389"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463204"
 ---
-# <a name="use-transactions-in-synapse-sql-pool"></a>SYNAPSE SQL havuzundaki işlemleri kullanma
+# <a name="use-transactions-in-a-sql-pool-in-azure-synapse"></a>Azure 'da SQL havuzunda işlemleri kullanma SYNAPSE 
 
-Bu makale, SQL havuzunda işlem uygulama ve çözüm geliştirmeye yönelik ipuçları içerir.
+Bu makale, işlem uygulamak ve bir SQL havuzunda çözüm geliştirmek için ipuçları içerir.
 
 ## <a name="what-to-expect"></a>Beklentiler
 
@@ -27,7 +28,7 @@ Bekleneceğiniz gibi, SQL havuzu veri ambarı iş yükünün parçası olarak i�
 
 ## <a name="transaction-isolation-levels"></a>İşlem yalıtım düzeyleri
 
-SQL havuzu ACID işlemlerini uygular. İşlem desteğinin yalıtım düzeyi, KAYDEDILMEYEN okuma için varsayılan değer olarak kullanılır.  Ana veritabanına bağlıyken Kullanıcı veritabanı için READ_COMMITTED_SNAPSHOT veritabanı seçeneğini açarak, KAYDEDILMIŞ anlık görüntü YALıTıMıNı okumak için bunu değiştirebilirsiniz.  
+SQL havuzu ACID işlemlerini uygular. İşlem desteğinin yalıtım düzeyi, KAYDEDILMEYEN okuma için varsayılan değer olarak kullanılır.  Ana veritabanına bağlıyken bir kullanıcı SQL havuzu için READ_COMMITTED_SNAPSHOT veritabanı seçeneğini açarak, KAYDEDILMIŞ anlık görüntü YALıTıMıNı okumak için bunu değiştirebilirsiniz.  
 
 Etkinleştirildikten sonra, bu veritabanındaki tüm işlemler okuma tarafından yürütülen anlık görüntü YALıTıMı altında yürütülür ve oturum düzeyinde READ UNCOMMıTTED ayarı dikkate alınmayacak. Ayrıntılar için [alter database set Options (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ' i işaretleyin.
 

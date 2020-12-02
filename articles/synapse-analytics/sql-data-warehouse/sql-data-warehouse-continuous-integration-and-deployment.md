@@ -1,6 +1,6 @@
 ---
-title: Sürekli tümleştirme ve dağıtım
-description: Azure Pipelines kullanarak sürekli tümleştirme ve dağıtım için yerleşik desteğe sahip veri depolamaya yönelik kurumsal sınıf veritabanı DevOps deneyimi.
+title: Adanmış SQL havuzu için sürekli tümleştirme ve dağıtım
+description: Azure Pipelines kullanarak sürekli tümleştirme ve dağıtım için yerleşik destek ile Azure SYNAPSE Analytics 'te adanmış SQL havuzu için kurumsal sınıf veritabanı DevOps deneyimi.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 061be5addd0c236db5d982e6103e3cf455b9c361
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 35f503e7214fa91962c91c35611fc9447302f9fc
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480539"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462820"
 ---
-# <a name="continuous-integration-and-deployment-for-data-warehousing"></a>Veri depolamaya yönelik sürekli tümleştirme ve dağıtım
+# <a name="continuous-integration-and-deployment-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu için sürekli tümleştirme ve dağıtım
 
 Bu basit öğreticide, SQL Server veri araçları (SSDT) veritabanı projenizi Azure DevOps ile tümleştirme ve sürekli tümleştirme ve dağıtım ayarlamak için Azure Pipelines yararlanma özetlenmektedir. Bu öğretici, veri depolamaya yönelik sürekli tümleştirme ve dağıtım işlem hattınızı oluşturmanın ikinci adımıdır.
 
@@ -60,7 +60,7 @@ Bu noktada, kaynak denetimi depo ana dalınızdaki tüm iadelerinizin, veritaban
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [SYNAPSE SQL havuzu mimarisini](massively-parallel-processing-mpp-architecture.md) keşfet
-- Hızlıca [BIR SQL havuzu oluşturun](create-data-warehouse-portal.md)
+- [ADANMıŞ SQL Havuzu (eski ADıYLA SQL DW) mimarisini](massively-parallel-processing-mpp-architecture.md) keşfet
+- [Adanmış BIR SQL havuzunu hızlıca oluşturun (eski ADıYLA SQL DW)](create-data-warehouse-portal.md)
 - [Örnek verileri yükleme](load-data-from-azure-blob-storage-using-polybase.md)
 - [Videoları](sql-data-warehouse-videos.md) keşfet

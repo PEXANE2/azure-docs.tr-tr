@@ -11,18 +11,18 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: 0f2b9476c9b8c0b5164bfbf29d65d260340effe4
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: e773c2db9c7849dd9680f8ae0c600405f422d7e1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94919769"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463195"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesi oluşturma ve iliştirme
 
 Azure Machine Learning, eğitilen makine öğrenimi modellerini Azure Kubernetes hizmetine dağıtabilir. Ancak, önce Azure ML çalışma alanınızdan bir Azure Kubernetes hizmeti (AKS) kümesi __oluşturmanız__ ya da mevcut bir aks kümesini __eklemeniz__ gerekir. Bu makalede, küme oluşturma ve ekleme hakkında bilgi sağlanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 
@@ -221,7 +221,7 @@ Azure aboneliğinizde zaten AKS kümeniz varsa ve sürüm 1,17 veya daha düşü
 
 Azure CLı veya portalını kullanarak bir AKS kümesi oluşturma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-* [AKS kümesi oluşturma (CLI)](/cli/azure/aks?bc=%252fazure%252fbread%252ftoc.json&preserve-view=true&toc=%252fazure%252faks%252fTOC.json&view=azure-cli-latest#az-aks-create)
+* [AKS kümesi oluşturma (CLI)](/cli/azure/aks?bc=%2fazure%2fbread%2ftoc.json&preserve-view=true&toc=%2fazure%2faks%2fTOC.json&view=azure-cli-latest#az-aks-create)
 * [AKS kümesi oluşturma (portal)](../aks/kubernetes-walkthrough-portal.md?preserve-view=true&view=azure-cli-latest)
 * [AKS kümesi oluşturma (Azure hızlı başlangıç şablonlarında ARM şablonu)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aks-azml-targetcompute)
 

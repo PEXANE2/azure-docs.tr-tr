@@ -1,6 +1,6 @@
 ---
-title: Azure SYNAPSE Analytics 'te SYNAPSE SQL havuzu için en iyi Yöntemler (eski adıyla SQL DW)
-description: Azure SYNAPSE Analytics 'te (eski adıyla SQL DW) SQL havuzu için çözüm geliştirmeye yönelik öneriler ve en iyi uygulamalar.
+title: Adanmış SQL havuzu için en iyi uygulamalar (eski adıyla SQL DW)
+description: Azure SYNAPSE Analytics 'te adanmış SQL Havuzu (eski adıyla SQL DW) için çözüm geliştirmeye yönelik öneriler ve en iyi uygulamalar.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: cf841da85dc929366991d6aed8f3d400ab3b31cc
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 9802e6553d553aae4f13194dc9951d1a17af6f66
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489651"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462889"
 ---
-# <a name="best-practices-for-synapse-sql-pool-in-azure-synapse-analytics-formerly-sql-dw"></a>Azure SYNAPSE Analytics 'te SYNAPSE SQL havuzu için en iyi Yöntemler (eski adıyla SQL DW)
+# <a name="best-practices-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL Havuzu (eski adıyla SQL DW) için en iyi uygulamalar
 
-Bu makale, [SQL havuzu](sql-data-warehouse-overview-what-is.md) dağıtımından en iyi performansı elde etmenize yardımcı olmak için en iyi uygulamalardan oluşan bir koleksiyondur.  Bu makalenin amacı, size bazı temel rehberlik sunmak ve odağın önemli bölümlerini vurgulayasağlamaktır.  
+Bu makale, [ADANMıŞ SQL havuzunuzdan (eski ADıYLA SQL DW)](sql-data-warehouse-overview-what-is.md) en iyi performansı elde etmenize yardımcı olmak için en iyi yöntemler koleksiyonudur.  Bu makalenin amacı, size bazı temel rehberlik sunmak ve odağın önemli bölümlerini vurgulayasağlamaktır.  
 
 ## <a name="reduce-cost-with-pause-and-scale"></a>Duraklatma ve ölçeklendirme ile maliyetleri azaltın
 
@@ -27,7 +27,7 @@ Duraklatma ve ölçeklendirme aracılığıyla maliyetleri azaltma hakkında dah
 
 ## <a name="maintain-statistics"></a>İstatistiklerin bakımını yapın
 
-SQL havuzu, sütunlarda istatistikleri otomatik olarak algılayacak ve oluşturulacak şekilde yapılandırılabilir.  İyileştirici tarafından oluşturulan sorgu planları yalnızca kullanılabilir istatistiklerle iyidir.  
+Adanmış SQL Havuzu (eski adıyla SQL DW), sütunlarda istatistikleri otomatik olarak algılayacak ve oluşturulacak şekilde yapılandırılabilir.  İyileştirici tarafından oluşturulan sorgu planları yalnızca kullanılabilir istatistiklerle iyidir.  
 
 Sorgularınızda kullanılan sütunlardaki istatistiklerin her zaman güncel olduğundan emin olmak için, veritabanlarınızda AUTO_CREATE_STATISTICS etkinleştirmenizi ve istatistiklerin her bir yükün her gün veya sonrasında güncelleştirilmesini öneririz.
 
@@ -40,7 +40,7 @@ Ayrıca bkz. [tablo Istatistiklerini yönetme](sql-data-warehouse-tables-statist
 
 ## <a name="use-dmvs-to-monitor-and-optimize-your-queries"></a>Sorgularınızı izlemek ve iyileştirmek için DMV’leri kullanın
 
-SQL havuzunda sorgu yürütmeyi izlemek için kullanılabilecek çeşitli DMVs vardır.  DMVs makalesini kullanarak iş yükünüzü Izleme ayrıntıları yürütülen bir sorgunun ayrıntılarına bakmak için adım adım yönergeler.  
+Adanmış SQL havuzunda (eski adıyla SQL DW), sorgu yürütmeyi izlemek için kullanılabilecek çeşitli DMVs vardır.  [DMVs makalesini kullanarak iş yükünüzü izleme](sql-data-warehouse-manage-monitor.md) ayrıntıları yürütülen bir sorgunun ayrıntılarına bakmak için adım adım yönergeler.  
 
 Bu DMV’lerdeki sorguları hızlıca bulmak için sorgularınızla LABEL seçeneğini kullanabilirsiniz.
 
@@ -62,7 +62,7 @@ Ayrıca bkz. [Insert](/sql/t-sql/statements/insert-transact-sql?toc=/azure/synap
 
 ## <a name="use-polybase-to-load-and-export-data-quickly"></a>Verileri hızlıca yüklemek ve dışarı aktarmak için PolyBase kullanın
 
-SQL havuzu Azure Data Factory, PolyBase ve BCP gibi çeşitli araçlarla verileri yüklemeyi ve vermeyi destekler.  Performansın yüksek öneme sahip olmadığı küçük miktarlardaki veriler için bu araçlardan herhangi birini kullanabilirsiniz.  Ancak, büyük hacimli verileri yüklerken veya dışarı aktarırken ya da yüksek performansa ihtiyaç duyduğunuzda, PolyBase en iyi çözüm olacaktır.  
+Adanmış SQL Havuzu (eski adıyla SQL DW) Azure Data Factory, PolyBase ve BCP gibi çeşitli araçlarla veri yüklemeyi ve dışarı aktarmayı destekler.  Performansın yüksek öneme sahip olmadığı küçük miktarlardaki veriler için bu araçlardan herhangi birini kullanabilirsiniz.  Ancak, büyük hacimli verileri yüklerken veya dışarı aktarırken ya da yüksek performansa ihtiyaç duyduğunuzda, PolyBase en iyi çözüm olacaktır.  
 
 PolyBase, sistemin dağıtılmış yapısını kullanacak şekilde tasarlanmıştır ve veri magnitudes diğer araçlardan daha hızlı yüklenip dışarı aktarır.  PolyBase yükleri CTAS veya INSERT INTO ile çalıştırılabilir.   
 
@@ -74,13 +74,13 @@ Azure Data Factory, PolyBase yüklerini da destekler ve CTAS olarak benzer perfo
 > [!NOTE]
 > Gzip metin dosyalarını kullanırken üretilen işi en üst düzeye çıkarmak için, yüklerinizin paralelliğini en üst düzeye çıkarmak üzere dosyaları 60 veya daha fazla dosyaya bölün.  Toplam hızı artırmak için verilerinizi aynı anda yükleyin.
 
-Ayrıca bkz. [veri yükleme](design-elt-data-loading.md), [PolyBase kullanma kılavuzu](guidance-for-loading-data.md), [SQL havuzu yükleme desenleri ve stratejileri](https://blogs.msdn.microsoft.com/sqlcat/20../../), [Azure Data Factory ile VERI yükleme]( ../../data-factory/load-azure-sql-data-warehouse.md), [Azure Data Factory verileri taşıma](../../data-factory/transform-data-using-machine-learning.md), [dış dosya biçimi oluşturma](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)ve [Create Table as Select (CTAS)](sql-data-warehouse-develop-ctas.md).
+Ayrıca bkz. [veri yükleme](design-elt-data-loading.md), [PolyBase kullanma kılavuzu](guidance-for-loading-data.md), [adanmış SQL havuzu yükleme desenleri ve stratejileri](https://blogs.msdn.microsoft.com/sqlcat/20../../), [Azure Data Factory ile veri yükleme]( ../../data-factory/load-azure-sql-data-warehouse.md), [verileri Azure Data Factory ile taşıma](../../data-factory/transform-data-using-machine-learning.md), [dış dosya biçimi oluşturma](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)ve [Create Table as Select (CTAS)](sql-data-warehouse-develop-ctas.md).
 
 ## <a name="load-then-query-external-tables"></a>Dış tabloları önce yükleyip sonra sorgu çalıştırın
 
 Dış tablolar olarak da bilinen Polybase, veri yüklemenin en hızlı yolu olsa da sorgular için en iyi çözüm değildir. PolyBase tabloları Şu anda yalnızca Azure Blob dosyalarını ve Azure Data Lake depolamayı destekler. Bu dosyaları destekleyen herhangi bir işlem kaynağı yoktur.  
 
-Sonuç olarak, SQL havuzu bu çalışmanın yükünü devretmek ve bu nedenle verileri okumak için tempdb 'ye yükleyerek dosyanın tamamını okumalı olmalıdır.  Sonuç olarak bu veriler için birden fazla sorgunuz varsa, verileri bir kez yükleyip sorguların yerel tabloyu kullanmalarını sağlamak daha iyi olacaktır.
+Sonuç olarak, adanmış SQL havuzu bu işi devrelemez ve bu nedenle verileri okumak için tempdb 'ye yükleyerek dosyanın tamamını okumalı olmalıdır.  Sonuç olarak bu veriler için birden fazla sorgunuz varsa, verileri bir kez yükleyip sorguların yerel tabloyu kullanmalarını sağlamak daha iyi olacaktır.
 
 Ayrıca bkz. [PolyBase kullanma kılavuzu](guidance-for-loading-data.md).
 
@@ -101,9 +101,9 @@ Ayrıca bkz. [tabloya genel bakış](sql-data-warehouse-tables-overview.md), [ta
 
 ## <a name="do-not-over-partition"></a>Aşırı bölümleme yapmayın
 
-Verilerin bölümlenmesi, bölüm değiştirme veya taramayı en iyi duruma getirme ile, bölüm ile verileri korumak için etkili olsa da, çok fazla bölüm olması sorgularınızı yavaşlatabilir.  Genellikle SQL Server en iyi şekilde çalışan yüksek düzeyde ayrıntı veren bir bölümlendirme stratejisi, SQL havuzunda iyi çalışmayabilir.  
+Verilerin bölümlenmesi, bölüm değiştirme veya taramayı en iyi duruma getirme ile, bölüm ile verileri korumak için etkili olsa da, çok fazla bölüm olması sorgularınızı yavaşlatabilir.  Genellikle SQL Server en iyi şekilde çalışan yüksek düzeyde ayrıntı veren bir bölümlendirme stratejisi, adanmış SQL havuzunda (eski adıyla SQL DW) iyi çalışmayabilir.  
 
-Bölüm sayısının çok fazla olması, her bir bölümdeki satır sayısının 1 milyondan az olması halinde kümelenmiş columnstore dizinlerinin verimini de düşürebilir.  Arka planda SQL havuzunun verilerinizi 60 veritabanlarına bölümleyip, 100 bölümden oluşan bir tablo oluşturursanız bu durum, 6000 bölümlerinde sonuçlanır.  
+Bölüm sayısının çok fazla olması, her bir bölümdeki satır sayısının 1 milyondan az olması halinde kümelenmiş columnstore dizinlerinin verimini de düşürebilir.  Arka planda, adanmış SQL havuzunun sizin için verilerinizi 60 veritabanlarına bölümleyip, 100 bölümlü bir tablo oluşturursanız bu durum, 6000 bölümlerinde sonuçlanır.  
 
 Her iş yükü farklı olduğundan, en iyi yöntem deneme yanılma ile iş yükünüze en uygun bölümleme şeklini belirlemektir.  SQL Server’da kullandığınızdan daha az parça kullanmayı deneyin.  Örneğin, günlük bölümler yerine haftalık veya aylık bölümler kullanın.
 
@@ -145,13 +145,13 @@ Ayrıca bkz. [geçici tablolar](sql-data-warehouse-tables-temporary.md), [Create
 
 ## <a name="optimize-clustered-columnstore-tables"></a>Kümelenmiş columnstore tablolarını iyileştirin
 
-Kümelenmiş columnstore dizinleri, verilerinizi SQL havuzunda depolayabilmeniz için en etkili yöntemlerle biridir.  Varsayılan olarak, SQL havuzundaki tablolar kümelenmiş ColumnStore olarak oluşturulur.  Columnstore tablolarında yapılan sorgularda en iyi performansı elde etmek için segment kalitesinin yüksek olması önemlidir.  
+Kümelenmiş columnstore dizinleri, verilerinizi adanmış SQL havuzunda depolayabilmeniz için en etkili yöntemlerle biridir.  Varsayılan olarak, adanmış SQL havuzundaki tablolar kümelenmiş ColumnStore olarak oluşturulur.  Columnstore tablolarında yapılan sorgularda en iyi performansı elde etmek için segment kalitesinin yüksek olması önemlidir.  
 
 Satırlar columnstore tablolarına bellek baskısı altında yazıldığında, segment kalitesi düşebilir.  Segment kalitesi, sıkıştırılmış Satır Grubu içindeki satır sayısıyla ölçülebilir.  Kümelenmiş columnstore tabloları için segment kalitesini algılamaya ve geliştirmeye yönelik adım adım yönergeler için [tablo dizinleri](sql-data-warehouse-tables-index.md) makalesindeki [kötü columnstore dizin kalitesinin nedenleri](sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality) bölümüne bakın.  
 
 Yüksek kaliteli columnstore kesimleri önemli olduğundan, verileri yüklemek için orta veya büyük kaynak sınıfında bulunan Kullanıcı kimliklerini kullanmak iyi bir fikirdir. Daha düşük [veri ambarı birimlerinin](what-is-a-data-warehouse-unit-dwu-cdwu.md) kullanılması, yükleme kullanıcıya daha büyük bir kaynak sınıfı atamak istediğiniz anlamına gelir.
 
-Columnstore tabloları, tablo başına 1.000.000 ' den fazla satır olmadığı ve her bir SQL havuzu tablosu 60 tablo olarak bölümlenene kadar genellikle verileri sıkıştırılmış bir columnstore kesimine yerleştirmediği için, bir Thumb kuralı olarak, tablo 60.000.000 ' den fazla satır içermiyorsa, columnstore tabloları bir sorgu avantajına sahip değildir.  60 milyondan az satıra sahip tablolarda columnstore dizini kullanmaya gerek olmayabilir.  Kullanmanın da bir zararı olmayacaktır.  
+Columnstore tabloları, tablo başına 1.000.000 ' den fazla satır olmadığı ve her adanmış SQL havuzu tablosu 60 tablo olarak bölümlenene kadar genellikle verileri sıkıştırılmış bir columnstore segmentine getirmediği için, tablo, bir Thumb kuralı olarak, tablo 60.000.000 ' den fazla satır içermiyorsa, columnstore tabloları bir sorgu avantajına sahip değildir.  60 milyondan az satıra sahip tablolarda columnstore dizini kullanmaya gerek olmayabilir.  Kullanmanın da bir zararı olmayacaktır.  
 
 Ayrıca, verilerinizi bölümlemeniz halinde her bir bölümün kümelenmiş columnstore dizini kullanabilmesi için en az 1 milyon satıra ihtiyaç duyacağını unutmayın.  Bir tabloda 100 bölüm varsa, kümelenmiş bir sütun deposundan faydalanmak için en az 6.000.000.000 satıra sahip olması gerekir (60 dağıtımları *100 bölümleri* 1.000.000 satırları).  
 
@@ -164,7 +164,7 @@ Ayrıca bkz. [Tablo dizinleri](sql-data-warehouse-tables-index.md), [Columnstore
 
 ## <a name="use-larger-resource-class-to-improve-query-performance"></a>Sorgu performansını artırmak için daha büyük kaynak sınıfı kullanın
 
-SQL havuzu, kaynak gruplarını sorgulara bellek ayırmak için bir yol olarak kullanır.  Kullanıma hazır olan tüm kullanıcılar, dağıtım başına 100 MB bellek veren küçük kaynak sınıfına atanır.  Her zaman 60 dağıtım olduğundan ve her dağıtıma en az 100 MB verildiğinden, sistem genelinde ayrılan bellek toplam 6000 MB (yaklaşık 6 GB) olur.  
+Adanmış SQL havuzu, sorgulara bellek ayırmak için bir yol olarak kaynak gruplarını kullanır.  Kullanıma hazır olan tüm kullanıcılar, dağıtım başına 100 MB bellek veren küçük kaynak sınıfına atanır.  Her zaman 60 dağıtım olduğundan ve her dağıtıma en az 100 MB verildiğinden, sistem genelinde ayrılan bellek toplam 6000 MB (yaklaşık 6 GB) olur.  
 
 Büyük birleştirmeler veya kümelenmiş columnstore tablolarına yapılan yüklemeler gibi belirli sorgulara daha fazla bellek atanır.  Saf taramalar gibi bazı sorgular hiçbir avantaj vermez.  Ancak, daha büyük kaynak sınıfları kullanmak eşzamanlılık azaltır, bu nedenle tüm kullanıcılarınızı büyük bir kaynak sınıfına taşımadan önce bu etkiyi göz önünde bulundurmanız gerekir.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 10/06/2020
-ms.openlocfilehash: 897f16d84a3e1cf0ca747e90ce621a35ff326b2a
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 2191a4df5b319ec16a4a6116aa99cfac50c87d9b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94488987"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462916"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Teklif türüne göre yayımlama kılavuzu
 
@@ -33,7 +33,7 @@ Aşağıdaki tabloda, Iş Ortağı Merkezi 'nde ticari Market teklif türleri g�
 | [**Azure Uygulaması**](plan-azure-application-offer.md) | İki tür Azure uygulama planı vardır: _çözüm şablonu_ ve _yönetilen uygulama_. Her iki plan türü, tek bir sanal makinenin (VM) ötesinde bir çözümün dağıtımını ve yapılandırılmasını otomatik hale getirmeye yönelik destek. IaaS çözümleri gibi karmaşık çözümler sağlamak üzere VM 'Ler, ağ oluşturma ve depolama kaynakları dahil olmak üzere birden çok kaynak sağlama sürecini otomatikleştirebiliriz. Her iki plan türü de dahil olmak üzere, VM 'Lerle sınırlı olmamak üzere birçok farklı türde Azure kaynağı kullanabilir.<ul><li>**Çözüm şablonu** planları, ticari Market 'te çözüm yayımlamanın ana yollarından biridir. Çözüm şablonu planları ticari Market 'te transactable değildir, ancak ticari Market aracılığıyla faturalandırılan ücretli VM tekliflerini dağıtmak için kullanılabilirler. Müşteri çözümü yöneteceği ve işlemler başka bir plan üzerinden faturalandırılırken çözüm şablonu plan türünü kullanın.</li><br><li>**Yönetilen uygulama** planları, müşterileriniz için tam olarak yönetilen, anahtar uygulamaları kolayca oluşturup sunmanıza olanak tanır. Çözüm şablonu planlarıyla aynı yeteneklere sahiptir ve bazı önemli farklılıklar vardır:</li><ul><li> Kaynaklar bir kaynak grubuna dağıtılır ve uygulamanın yayımcısı tarafından yönetilir. Kaynak grubu, tüketicinin aboneliğinde mevcuttur ancak yayımcının kiracısındaki bir kimlik, kaynak grubuna erişime sahiptir.</li><li>Yayımcı olarak, çözümün sürekli desteğinin maliyetini belirtirsiniz ve işlemler ticari Market aracılığıyla desteklenir.</li></ul>Siz veya müşteriniz çözümün bir iş ortağı tarafından yönetilmesini gerektirdiğinde veya abonelik tabanlı bir çözüm dağıtacaksanız, yönetilen uygulama planı türünü kullanın.</ul> |
 | [**Azure kapsayıcısı**](marketplace-containers.md) | Çözümünüz, Kubernetes tabanlı bir Azure Container Service olarak sağlanan bir Docker kapsayıcı görüntüsü olduğunda, Azure Container teklif türünü kullanın. |
 | [**Azure sanal makinesi**](marketplace-virtual-machines.md) | Müşterinizin ilişkili aboneliğine bir Sanal Gereç dağıtırken sanal makine teklif türünü kullanın. |
-| [**Danışmanlık hizmeti**](consulting-services.md) | Danışmanlık Hizmetleri, Azure, Dynamics 365 veya Power Suite hizmetlerinin kullanımını desteklemek ve genişletmek için müşterilerin hizmetleriyle bağlantı sağlanmasına yardımcı olur.|
+| [**Danışmanlık hizmeti**](./plan-consulting-service-offer.md) | Danışmanlık Hizmetleri, Azure, Dynamics 365 veya Power Suite hizmetlerinin kullanımını desteklemek ve genişletmek için müşterilerin hizmetleriyle bağlantı sağlanmasına yardımcı olur.|
 | [**Dynamics 365**](appsource-offer-publishing-guide.md) | Dynamics 365 Iş Merkezi, Dynamics 365 müşteri katılımı, Power Apps ve finans ve operasyon uygulamaları üzerinde yapı veya genişletme için AppSource tekliflerini yayımlayabilirsiniz.|
 | [**IoT Edge modülü**](iot-edge-module.md) | Azure IoT Edge modüller, IoT Edge tarafından yönetilen en düşük hesaplama birimleridir ve Microsoft hizmetlerini (Azure Stream Analytics), 3. taraf hizmetleri veya kendi çözümüne özgü kodunuzu içerebilir. |
 | [**Yönetilen hizmet**](partner-center-portal/create-new-managed-service-offer.md) | Yönetilen hizmet teklifleri oluşturabilir ve [Azure açık Thouse](../lighthouse/overview.md)aracılığıyla müşteri tarafından atanan abonelikleri veya kaynak gruplarını yönetebilirsiniz.|

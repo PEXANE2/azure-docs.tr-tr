@@ -1,5 +1,5 @@
 ---
-title: Sunucusuz SQL Havuzu (Önizleme)
+title: Sunucusuz SQL havuzu
 description: Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu hakkında bilgi edinin.
 services: synapse analytics
 author: filippopovic
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: e0d47567c3bc0b05c47efafa3bdc8b297a7bdbea
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 34ce36f0ff348f896b7c2ea680c113b5e9e4ea09
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93306878"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463166"
 ---
-# <a name="serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) 
+# <a name="serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu 
 
-Her Azure SYNAPSE Analytics çalışma alanı (Önizleme), Gölü verileri sorgulamak için kullanabileceğiniz sunucusuz SQL Havuzu (Önizleme) uç noktalarıyla gelir.
+Her Azure SYNAPSE Analytics çalışma alanı, Gölü verileri sorgulamak için kullanabileceğiniz sunucusuz SQL havuzu uç noktaları ile gelir.
 
 Sunucusuz SQL havuzu, Data Lake 'unuzdaki veriler üzerinde bir sorgu hizmetidir. Verilerinize aşağıdaki işlevleri kullanarak erişmenizi sağlar:
  
@@ -119,11 +119,11 @@ Sunucusuz SQL havuzu, veritabanı kullanıcısı ve diğer Microsoft hizmetlerin
 
 Sunucusuz SQL havuzu kimlik doğrulaması, kullanıcıların uç noktaya bağlanırken kimliklerini nasıl kanıtlayacağına başvurur. İki tür kimlik doğrulaması desteklenir:
 
-- **SQL Kimlik Doğrulaması**
+- **SQL kimlik doğrulaması**
 
   Bu kimlik doğrulama yöntemi bir Kullanıcı adı ve parola kullanır.
 
-- **Azure Active Directory kimlik doğrulaması** :
+- **Azure Active Directory kimlik doğrulaması**:
 
   Bu kimlik doğrulama yöntemi, Azure Active Directory tarafından yönetilen kimlikleri kullanır. Azure AD kullanıcıları için Multi-Factor Authentication etkinleştirilebilir. [Mümkün olan her durumda](/sql/relational-databases/security/choose-an-authentication-mode?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)Active Directory kimlik doğrulaması (tümleşik güvenlik) kullanın.
 

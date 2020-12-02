@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 09/28/2020
 ms.author: jingwang
-ms.openlocfilehash: e8be27eac37a6093cb0518fad9498e50eaafc3b2
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 85ed71708582b783eb5d019cd39f2c429fb8b6c6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95865782"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96477221"
 ---
 | Kategori              | Veri deposu                                                   | [Kopyalama etkinliği](../articles/data-factory/copy-activity-overview.md)  (kaynak/havuz) | [Eşleme veri akışı](../articles/data-factory/concepts-data-flow-overview.md) (kaynak/havuz) | [Arama Etkinliği](../articles/data-factory/control-flow-lookup-activity.md) | [Meta veri Al etkinliği](../articles/data-factory/control-flow-get-metadata-activity.md) / [Doğrulama etkinliği](../articles/data-factory/control-flow-validation-activity.md) | [Etkinliği sil](../articles/data-factory/delete-activity.md) |
 | :-------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | ------------------------------------------------------------ | :----------------------------------------------------------- |
@@ -27,7 +27,7 @@ ms.locfileid: "95865782"
 | &nbsp;                | [Azure Dosya Depolama](../articles/data-factory/connector-azure-file-storage.md) | ✓/✓                                                          |                                                              | ✓                                                            | ✓                                                            | ✓                                                            |
 | &nbsp;                | [Azure SQL Veritabanı](../articles/data-factory/connector-azure-sql-database.md) | ✓/✓                                                          | ✓/✓ <br>                                                     | ✓                                                            | ✓                                                            |                                                              |
 | &nbsp;                | [Azure SQL Yönetilen Örnek](../articles/data-factory/connector-azure-sql-managed-instance.md) | ✓/✓                                          | ✓/✓ <br>            |                                                              | ✓                                                            | ✓                                                            |                                                              |
-| &nbsp;                | [Azure Synapse Analytics (eski adı SQL Veri Ambarı)](../articles/data-factory/connector-azure-sql-data-warehouse.md) | ✓/✓                                                          | ✓/✓                                                          | ✓                                                            | ✓                                                            |                                                              |
+| &nbsp;                | [Azure Synapse Analytics](../articles/data-factory/connector-azure-sql-data-warehouse.md) | ✓/✓                                                          | ✓/✓                                                          | ✓                                                            | ✓                                                            |                                                              |
 | &nbsp;                | [Azure Tablo depolama](../articles/data-factory/connector-azure-table-storage.md) | ✓/✓                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | **Veritabanı**          | [Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |
 | &nbsp;                | [DB2](../articles/data-factory/connector-db2.md)             | ✓/−                                                          |                                                              | ✓                                                            |                                                              |                                                              |

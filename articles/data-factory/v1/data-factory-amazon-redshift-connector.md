@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 290990e312a7f591539686ecce1eec1ac742dd60
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c0dcaec9c8e9a310af1fd6fc319e0784694610e2
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999306"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463079"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Data Factory kullanarak Amazon Redshift 'Tan veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -61,12 +61,12 @@ Aşağıdaki tabloda, Amazon Redshift bağlı hizmetine özgü JSON öğeleri i�
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| **türüyle** |Bu özellik **AmazonRedshift** olarak ayarlanmalıdır. |Yes |
-| **Server** |Amazon Redshift sunucusunun IP adresi veya ana bilgisayar adı. |Yes |
+| **türüyle** |Bu özellik **AmazonRedshift** olarak ayarlanmalıdır. |Evet |
+| **Server** |Amazon Redshift sunucusunun IP adresi veya ana bilgisayar adı. |Evet |
 | **bağ** |Amazon Redshift sunucusunun istemci bağlantılarını dinlemek için kullandığı TCP bağlantı noktası sayısı. |Hayır (varsayılan değer 5439) |
-| **veritabanınızı** |Amazon Redshift veritabanının adı. |Yes |
-| **nitelen** |Veritabanına erişimi olan kullanıcının adı. |Yes |
-| **parola** |Kullanıcı hesabının parolası. |Yes |
+| **veritabanınızı** |Amazon Redshift veritabanının adı. |Evet |
+| **nitelen** |Veritabanına erişimi olan kullanıcının adı. |Evet |
+| **parola** |Kullanıcı hesabının parolası. |Evet |
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
@@ -87,7 +87,7 @@ Kopyalama etkinliği için, kaynak **AmazonRedshiftSource** türünde olduğunda
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
 | **sorgulayamadı** | Verileri okumak için özel sorguyu kullanın. |Hayır (bir veri kümesinin **TableName** özelliği belirtilmişse) |
-| **Redkaydırıcı Tunloadsettings** | Redshift **Unload** komutu kullanılırken Özellik grubunu içerir. | No |
+| **Redkaydırıcı Tunloadsettings** | Redshift **Unload** komutu kullanılırken Özellik grubunu içerir. | Hayır |
 | **s3LinkedServiceName** | Bir ara mağaza olarak kullanmak için Amazon S3. Bağlı hizmet, **Awsaccesskey** türünde bir Azure Data Factory adı kullanılarak belirtilir. | **Redkaydırıcı Tunloadsettings** özelliği kullanılırken gereklidir |
 | **bucketName** | Ara verileri depolamak için kullanılacak Amazon S3 demet öğesini gösterir. Bu özellik sağlanmazsa, kopyalama etkinliği otomatik olarak bir demet oluşturur. | **Redkaydırıcı Tunloadsettings** özelliği kullanılırken gereklidir |
 
@@ -101,7 +101,7 @@ Alternatif olarak, **Typeproperties** bölümünde aşağıdaki özelliği Içer
 
 Amazon Redshift [**Unload**](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) komutu bir sorgunun sonuçlarını Amazon S3 üzerindeki bir veya daha fazla dosyaya kaldırır. Bu komut, Redshift ' den büyük veri kümelerini kopyalamak için Amazon tarafından önerilir.
 
-**Örnek: Amazon Redshift 'tan Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) veri kopyalama**
+**Örnek: Amazon Redshift 'tan Azure SYNAPSE Analytics 'e veri kopyalama**
 
 Bu örnek, Amazon Redshift 'tan Azure SYNAPSE Analytics 'e veri kopyalar. Örnek, Redshift **Unload** komutunu, hazırlanan kopyalama verilerini ve Microsoft PolyBase 'i kullanır.
 

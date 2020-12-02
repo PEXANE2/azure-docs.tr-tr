@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/05/2020
 ms.author: sttsinar
 ms.custom: include file
-ms.openlocfilehash: 3d65b574fc1479d000d347020823166a4d4b968b
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: bd31152c6742271658cf4fd7ac2a5e2957651c84
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410597"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96476939"
 ---
 Azure Işlem, belirli bir donanım türüne yalıtılmış ve tek bir müşteriye adanmış sanal makine boyutları sunar. Yalıtılmış boyutlar canlı ve belirli donanım nesli üzerinde çalışır ve donanım oluşturma kullanımdan kaldırıldığında kullanım dışı kalır.
 
@@ -25,10 +25,13 @@ Ayrıca, yalıtılmış boyut sanal makineleri büyük olduğu için müşterile
 Geçerli yalıtılmış sanal makine teklifleri şunları içerir:
 * Standard_E64is_v3
 * Standard_E64i_v3
+* Standard_E80ids_v4
+* Standard_E80is_v4
 * Standard_M128ms
 * Standard_GS5
 * Standard_G5
 * Standard_F72s_v2
+
 
 > [!NOTE]
 > Yalıtılmış VM boyutları bir donanım sınırlı ömrü vardır. Ayrıntılar için lütfen aşağıya bakın

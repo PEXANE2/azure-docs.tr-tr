@@ -1,30 +1,30 @@
 ---
 title: Gruplandırma ölçütü seçeneklerini kullanma
-description: SYNAPSE SQL havuzunda gruplandırma ölçütü seçeneklerini uygulamaya yönelik ipuçları.
+description: Azure SYNAPSE Analytics 'te adanmış SQL havuzları için Grup seçeneklerini uygulamaya yönelik ipuçları.
 services: synapse-analytics
-author: XiaoyuMSFT
+author: MSTehrani
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 04/17/2018
-ms.author: xiaoyul
+ms.author: emtehran
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 260bd7cc6402a7cb4ed17d004d0f61b7462c51d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: cdac3b1e502a203c272db75eb4345446b0f7c0c8
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85213457"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462769"
 ---
-# <a name="group-by-options-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda gruplandırma ölçütü seçenekleri
+# <a name="group-by-options-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzları için gruplandırma ölçütü seçenekleri
 
-Bu makalede, SQL havuzunda grup seçeneklerini uygulamaya yönelik ipuçları bulacaksınız.
+Bu makalede, adanmış SQL havuzlarında grup seçeneklerini uygulamaya yönelik ipuçları bulacaksınız.
 
 ## <a name="what-does-group-by-do"></a>GROUP BY ne yapar?
 
-[Group By](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL yan tümcesi, verileri bir Özet satır kümesine toplar. GROUP BY, SQL havuzunun desteklemediği bazı seçeneklere sahiptir. Bu seçeneklerde aşağıdaki gibi geçici çözümler bulunur:
+[Group By](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL yan tümcesi, verileri bir Özet satır kümesine toplar. GROUP BY, adanmış SQL havuzunun desteklemediği bazı seçeneklere sahiptir. Bu seçeneklerde aşağıdaki gibi geçici çözümler bulunur:
 
 * TOPLAMASıYLA gruplandırma ölçütü
 * GRUPLANDıRMA KÜMELERI
