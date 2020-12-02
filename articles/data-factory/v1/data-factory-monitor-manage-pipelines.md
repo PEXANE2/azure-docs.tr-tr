@@ -3,20 +3,20 @@ title: Azure portal ve PowerShell kullanarak işlem hatlarını izleme ve yönet
 description: Azure portal ve Azure PowerShell kullanarak oluşturduğunuz Azure veri fabrikalarını ve işlem hatlarını izleyip yönetme hakkında bilgi edinin.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: 4473df318f65c0e0097aed298d0be57e3bca382b
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 2a30c755bc19849ad3a821cbbc75b787a3b0bb98
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636944"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495863"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Azure portal ve PowerShell 'i kullanarak Azure Data Factory işlem hatlarını izleme ve yönetme
 > [!div class="op_single_selector"]
@@ -46,8 +46,8 @@ Azure portal kullanarak şunları yapabilirsiniz:
 Bu bölümde ayrıca bir veri kümesi diliminin bir durumdan başka bir duruma nasıl geçirdiği açıklanmaktadır.   
 
 ### <a name="navigate-to-your-data-factory"></a>Veri fabrikanıza gitme
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-2. Soldaki menüdeki **veri fabrikaları** ' na tıklayın. Bunu görmüyorsanız, **diğer hizmetler >** ' a tıklayın ve ardından **zeka + analiz** kategorisi altında **veri fabrikaları** ' na tıklayın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+2. Soldaki menüdeki **veri fabrikaları** ' na tıklayın. Bunu görmüyorsanız, **diğer hizmetler >**' a tıklayın ve ardından **zeka + analiz** kategorisi altında **veri fabrikaları** ' na tıklayın.
 
    ![Tüm > veri fabrikalarını inceleyin](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
 3. **Veri fabrikaları** dikey penceresinde ilgilendiğiniz veri fabrikasını seçin.
@@ -178,7 +178,7 @@ Azure PowerShell kullanarak işlem hatlarınızı yönetebilirsiniz. Örneğin, 
 ```powershell
 Suspend-AzDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
 ```
-Örneğin:
+Örnek:
 
 ```powershell
 Suspend-AzDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
@@ -189,7 +189,7 @@ Sorun ardışık düzen ile düzeltildikten sonra, aşağıdaki PowerShell komut
 ```powershell
 Resume-AzDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
 ```
-Örneğin:
+Örnek:
 
 ```powershell
 Resume-AzDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
@@ -216,13 +216,13 @@ Etkinlik bir işlem hattında başarısız olursa, işlem hattı tarafından ür
    ![Etkinlik çalıştırma ayrıntıları dikey penceresi hata ile](./media/data-factory-monitor-manage-pipelines/activity-run-details-with-error.png)     
 
 #### <a name="use-powershell-to-debug-an-error"></a>Hata ayıklamak için PowerShell 'i kullanma
-1. **PowerShell** ’i başlatın.
+1. **PowerShell**’i başlatın.
 2. Dilimleri ve bunların durumlarını görmek için **Get-AzDataFactorySlice** komutunu çalıştırın. Durumu **başarısız** olan bir dilim görmeniz gerekir.        
 
     ```powershell   
     Get-AzDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
     ```   
-   Örneğin:
+   Örnek:
 
     ```powershell   
     Get-AzDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
@@ -236,7 +236,7 @@ Etkinlik bir işlem hattında başarısız olursa, işlem hattı tarafından ür
     <DateTime> [-Profile <AzureProfile> ] [ <CommonParameters>]
     ```
 
-    Örneğin:
+    Örnek:
 
     ```powershell   
     Get-AzDataFactoryRun -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime "5/5/2014 12:00:00 AM"

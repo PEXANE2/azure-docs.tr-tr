@@ -3,20 +3,20 @@ title: 'Data Factory öğreticisi: Ilk veri işlem hattı '
 description: Bu Azure Data Factory öğreticide, Hadoop kümesinde Hive betiği kullanarak verileri işleyen bir veri fabrikası oluşturma ve zamanlama işlemi gösterilmektedir.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 80644ed2d655544fa176a7be92aec3c01aa3bf14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a79872c11d76a74932fe232fa3f7818edc58ffcc
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75966083"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496220"
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Öğretici: Hadoop kümesi kullanarak verileri dönüştürmek için ilk işlem hattınızı oluşturma
 > [!div class="op_single_selector"]
@@ -37,16 +37,16 @@ Bu makalede öğretici için genel bakış ve Önkoşullar sunulmaktadır. Önko
 ## <a name="tutorial-overview"></a>Öğreticiye genel bakış
 Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 
-1. Bir **Veri Fabrikası**oluşturun. Veri Fabrikası, verileri taşımak ve dönüştürmek için bir veya daha fazla veri işlem hattı içerebilir.
+1. Bir **Veri Fabrikası** oluşturun. Veri Fabrikası, verileri taşımak ve dönüştürmek için bir veya daha fazla veri işlem hattı içerebilir.
 
     Bu öğreticide, veri fabrikasında bir işlem hattı oluşturacaksınız.
-2. İşlem **hattı**oluşturun. İşlem hattında bir veya daha fazla etkinlik bulunabilir (Örnek: Kopya Etkinliği, HDInsight Hive Etkinliği). Bu örnek, bir HDInsight Hadoop kümesinde Hive betiği çalıştıran HDInsight Hive etkinliğini kullanır. Betik ilk olarak Azure Blob depolamada depolanan ham Web günlüğü verilerine başvuran bir tablo oluşturur ve sonra ham verileri yıla ve aya göre bölümlendirir.
+2. İşlem **hattı** oluşturun. İşlem hattında bir veya daha fazla etkinlik bulunabilir (Örnek: Kopya Etkinliği, HDInsight Hive Etkinliği). Bu örnek, bir HDInsight Hadoop kümesinde Hive betiği çalıştıran HDInsight Hive etkinliğini kullanır. Betik ilk olarak Azure Blob depolamada depolanan ham Web günlüğü verilerine başvuran bir tablo oluşturur ve sonra ham verileri yıla ve aya göre bölümlendirir.
 
     Bu öğreticide, işlem hattı bir Azure HDInsight Hadoop kümesinde Hive sorgusu çalıştırarak verileri dönüştürmek için Hive etkinliğini kullanır.
-3. **Bağlı hizmetler**oluşturun. Bir veri deposunu veya işlem hizmetini, veri fabrikasına bağlamak için bir bağlı hizmet oluşturursunuz. Azure Depolama gibi bir veri deposu, veri işlem hattındaki etkinliklerin giriş/çıkış verilerini tutar. HDInsight Hadoop kümesi gibi bir işlem hizmeti verileri işler/dönüştürür.
+3. **Bağlı hizmetler** oluşturun. Bir veri deposunu veya işlem hizmetini, veri fabrikasına bağlamak için bir bağlı hizmet oluşturursunuz. Azure Depolama gibi bir veri deposu, veri işlem hattındaki etkinliklerin giriş/çıkış verilerini tutar. HDInsight Hadoop kümesi gibi bir işlem hizmeti verileri işler/dönüştürür.
 
     Bu öğreticide, iki bağlı hizmet oluşturacaksınız: **Azure depolama** ve **Azure HDInsight**. Azure depolama bağlı hizmeti, girdi/çıktı verilerini tutan bir Azure Depolama hesabını veri fabrikasına bağlar. Azure HDInsight bağlı hizmeti, verileri veri fabrikasına dönüştürmek için kullanılan bir Azure HDInsight kümesini bağlar.
-3. Giriş ve çıkış **veri kümeleri**oluşturun. Giriş veri kümesi, veri işlem hattındaki bir etkinlik için girişi ve çıktı veri kümesi, etkinliğin çıktısını temsil eder.
+3. Giriş ve çıkış **veri kümeleri** oluşturun. Giriş veri kümesi, veri işlem hattındaki bir etkinlik için girişi ve çıktı veri kümesi, etkinliğin çıktısını temsil eder.
 
     Bu öğreticide, giriş ve çıkış veri kümeleri, Azure Blob depolama alanındaki giriş ve çıkış verilerinin konumlarını belirtir. Azure depolama bağlı hizmeti, hangi Azure Storage hesabının kullanıldığını belirtir. Giriş veri kümesi, giriş dosyalarının nerede olduğunu ve çıkış veri kümesi 'nin çıkış dosyalarının nereye yerleştirileceğini belirtir.
 

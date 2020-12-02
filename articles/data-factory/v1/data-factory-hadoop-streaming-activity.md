@@ -3,8 +3,8 @@ title: Hadoop akış etkinliğini kullanarak verileri dönüştürme-Azure
 description: Bir Azure Data Factory 'de Hadoop akışı programlarını isteğe bağlı/kendi HDInsight kümeniz üzerinde çalıştırarak verileri dönüştürmek için nasıl kullanabileceğinizi öğrenin.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.assetid: 4c3ff8f2-2c00-434e-a416-06dfca2c41ec
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 9c6661a762886140997b9305f88f5c4e25476e57
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 80f78e3d2e7fdcd8fef53ca0412676a37c6486c2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371707"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495608"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Azure Data Factory 'de Hadoop akışı etkinliğini kullanarak verileri dönüştürme
 > [!div class="op_single_selector" title1="Dönüştürme etkinlikleri"]
@@ -26,8 +26,8 @@ ms.locfileid: "92371707"
 > * [MapReduce etkinliği](data-factory-map-reduce.md)
 > * [Hadoop akışı etkinliği](data-factory-hadoop-streaming-activity.md)
 > * [Spark etkinliği](data-factory-spark.md)
-> * [Azure Machine Learning Studio (klasik) Batch yürütme etkinliği](data-factory-azure-ml-batch-execution-activity.md)
-> * [Azure Machine Learning Studio (klasik) kaynak güncelleştirme etkinliği](data-factory-azure-ml-update-resource-activity.md)
+> * [Azure Machine Learning Studio (klasik) Batch Yürütme Etkinliği](data-factory-azure-ml-batch-execution-activity.md)
+> * [Azure Machine Learning Studio (klasik) Kaynak Güncelleştirme Etkinliği](data-factory-azure-ml-update-resource-activity.md)
 > * [Saklı Yordam Etkinliği](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL Etkinliği](data-factory-usql-activity.md)
 > * [.NET özel etkinliği](data-factory-use-custom-activities.md)
@@ -95,7 +95,7 @@ HDInsight kümesi, örnek programlarla (wc.exe ve cat.exe) ve verilerle (davinci
 Aşağıdaki noktalara dikkat edin:
 
 1. **Linkedservicename** ' i, akış MapReduce Işinin çalıştırıldığı HDInsight kümenize işaret eden bağlı hizmetin adı olarak ayarlayın.
-2. Etkinliğin türünü **hdınsightstreaming**olarak ayarlayın.
+2. Etkinliğin türünü **hdınsightstreaming** olarak ayarlayın.
 3. **Eşleyici** özelliği için Eşleyici yürütülebilirinin adını belirtin. Örnekte, cat.exe Eşleyici çalıştırılabilir dosyadır.
 4. **Reducer** özelliği için Reducer yürütülebilir dosyasının adını belirtin. Örnekte, Reducer çalıştırılabilir wc.exe.
 5. **Giriş** türü özelliği için Eşleyici için giriş dosyasını (konum dahil) belirtin. Örnek: `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt` : adfsample blob kapsayıcısıdır, example/Data/Gutenberg klasörüdür ve davinci.txt blob olur.

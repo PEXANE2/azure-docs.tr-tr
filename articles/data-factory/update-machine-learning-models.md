@@ -3,20 +3,20 @@ title: Azure Data Factory kullanarak Azure Machine Learning Studio (klasik) mode
 description: Azure Data Factory ve Azure Machine Learning Studio kullanarak tahmine dayalı işlem hatları oluşturmayı açıklar (klasik)
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.openlocfilehash: 83950c2d3c5439886ff787b69d9da4d0c214de31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bec300414483181617a7aa009157a4c4a332c745
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87092550"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496764"
 ---
 # <a name="update-azure-machine-learning-studio-classic-models-by-using-update-resource-activity"></a>Kaynak güncelleştirme etkinliğini kullanarak Azure Machine Learning Studio (klasik) modellerini güncelleştirme
 
@@ -73,7 +73,7 @@ Aşağıdaki JSON kod parçacığı Azure Machine Learning Studio (klasik) toplu
 
 İşlemin tamamına bir modeli yeniden eğitmek ve tahmine dayalı Web hizmetlerini güncelleştirmek, aşağıdaki adımları içerir:
 
-- **Toplu yürütme etkinliğini**kullanarak **eğitim Web hizmetini** çağırın. Eğitim Web hizmetini çağırmak, [Azure Machine Learning Studio (klasik) ve Data Factory toplu yürütme etkinliğini kullanarak tahmine dayalı işlem hatları oluşturma](transform-data-using-machine-learning.md)bölümünde açıklanan tahmine dayalı bir Web hizmetini çağırmaya benzer. Eğitim Web hizmetinin çıktısı, tahmine dayalı Web hizmetini güncelleştirmek için kullanabileceğiniz bir iLearner dosyasıdır.
+- **Toplu yürütme etkinliğini** kullanarak **eğitim Web hizmetini** çağırın. Eğitim Web hizmetini çağırmak, [Azure Machine Learning Studio (klasik) ve Data Factory toplu yürütme etkinliğini kullanarak tahmine dayalı işlem hatları oluşturma](transform-data-using-machine-learning.md)bölümünde açıklanan tahmine dayalı bir Web hizmetini çağırmaya benzer. Eğitim Web hizmetinin çıktısı, tahmine dayalı Web hizmetini güncelleştirmek için kullanabileceğiniz bir iLearner dosyasıdır.
 - Web hizmetini yeni eğitilen modelle güncelleştirmek için, **Kaynağı Güncelleştir etkinliğini** kullanarak tahmine **dayalı Web hizmetinin** **kaynak güncelleştirme uç noktasını** çağırın.
 
 ## <a name="azure-machine-learning-studio-classic-linked-service"></a>Azure Machine Learning Studio (klasik) bağlı hizmet
@@ -170,7 +170,7 @@ Aşağıdaki JSON kod parçacığı, eğitim Web hizmetinin varsayılan uç nokt
 }
 ```
 
-**Azure Machine Learning Studio (klasik)** Içinde, **MlEndpoint** ve **apikey**değerlerini almak için aşağıdakileri yapın:
+**Azure Machine Learning Studio (klasik)** Içinde, **MlEndpoint** ve **apikey** değerlerini almak için aşağıdakileri yapın:
 
 1. Sol taraftaki menüden **Web Hizmetleri** ' ne tıklayın.
 2. Web hizmetleri listesinde **eğitim Web hizmeti** ' ne tıklayın.

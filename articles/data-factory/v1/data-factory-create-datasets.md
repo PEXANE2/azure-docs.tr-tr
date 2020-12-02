@@ -3,20 +3,20 @@ title: Azure Data Factory veri kümeleri oluşturma
 description: Azure Data Factory ' de, Aralık ve anchorDateTime gibi özellikleri kullanan örneklerle veri kümeleri oluşturmayı öğrenin.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 45150e00db1885a4ca4d083a8a54cbfd4da0bb10
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9bf6ff2971de57338dc299d48e24f6ffebd4b6b5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456924"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495948"
 ---
 # <a name="datasets-in-azure-data-factory-version-1"></a>Azure Data Factory (sürüm 1) veri kümeleri
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]

@@ -3,20 +3,20 @@ title: İlk veri fabrikanızı derleme (Azure portal)
 description: Bu öğreticide, Azure Portal'daki Data Factory Düzenleyiciyi kullanarak örnek bir Azure Data Factory işlem hattı oluşturursunuz.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: e948962a73137f78ec26a01c1d2f54d883e76783
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 360fbc3e1bfe7890f1f3b05899eb95ce7a3a72c2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637454"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496629"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak ilk veri fabrikanızı oluşturma
 > [!div class="op_single_selector"]
@@ -42,7 +42,7 @@ Bu öğreticideki işlem hattı bir etkinlik içerir: Azure HDInsight Hive etkin
 > 
 > Bir işlem hattında birden fazla etkinlik olabilir. Bir etkinliğin çıkış veri kümesini diğer etkinliğin giriş veri kümesi olarak ayarlayarak iki etkinliği zincirleyebilir, yani bir etkinliğin diğerinden sonra çalıştırılmasını sağlayabilirsiniz. Daha fazla bilgi için bkz. [Data Factory'de zamanlama ve yürütme](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 [Öğreticiye genel bakış](data-factory-build-your-first-pipeline.md) bölümünü okuyun ve "Önkoşullar" bölümündeki adımları izleyin.
 
 Bu makale, Data Factory hizmetine kavramsal bir genel bakış sağlamaz. Hizmet hakkında daha fazla bilgi için [Azure Data Factory'ye giriş](data-factory-introduction.md) konusunu okuyun.  
@@ -52,7 +52,7 @@ Bir veri fabrikasında bir veya daha fazla işlem hattı olabilir. İşlem hatt�
 
 Veri fabrikası oluşturmak için bu adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. **Yeni**  >  **veri ve analiz**  >  **Data Factory** seçin.
 
@@ -70,13 +70,13 @@ Veri fabrikası oluşturmak için bu adımları izleyin:
    >
 1. Abonelik bölümünde, veri fabrikasını oluşturmak istediğiniz **Azure aboneliğini** seçin.
 
-1. Mevcut bir kaynak grubunu seçin ya da bir kaynak grubu oluşturun. Öğreticide kullanmak üzere şu ada sahip bir kaynak grubu oluşturun: **ADFGetStartedRG** .
+1. Mevcut bir kaynak grubunu seçin ya da bir kaynak grubu oluşturun. Öğreticide kullanmak üzere şu ada sahip bir kaynak grubu oluşturun: **ADFGetStartedRG**.
 
 1. **Konum** bölümünden veri fabrikası için bir konum seçin. Açılır listede yalnızca Data Factory hizmeti tarafından desteklenen bölgeler gösterilmektedir.
 
 1. **Panoya sabitle** onay kutusunu seçin.
 
-1. **Oluştur** ’u seçin.
+1. **Oluştur**’u seçin.
 
    > [!IMPORTANT]
    > Data Factory örnekleri oluşturmak için abonelik/kaynak grubu düzeyinde [Data Factory katılımcısı](../../role-based-access-control/built-in-roles.md#data-factory-contributor) rolünün üyesi olmanız gerekir.
@@ -98,11 +98,11 @@ Bu adımda, Azure Depolama hesabınızı ve isteğe bağlı HDInsight kümesini 
 ### <a name="create-a-storage-linked-service"></a>Depolama bağlı hizmeti oluşturma
 Bu adımda, depolama hesabınızı veri fabrikanıza bağlarsınız. Bu öğreticide, girdi/çıktı verilerini ve HQL betik dosyasını depolamak için aynı depolama hesabını kullanırsınız.
 
-1. **GetStartedDF** için **Veri fabrikası** dikey penceresinde **Geliştir ve dağıt** ’ı seçin. Data Factory Düzenleyicisi’ni görürsünüz.
+1. **GetStartedDF** için **Veri fabrikası** dikey penceresinde **Geliştir ve dağıt**’ı seçin. Data Factory Düzenleyicisi’ni görürsünüz.
 
    ![Geliştir ve dağıt kutucuğu](./media/data-factory-build-your-first-pipeline-using-editor/data-factory-author-deploy.png)
 
-1. **Yeni veri deposu** ’na tıklayın ve **Azure Depolama** ’yı seçin.
+1. **Yeni veri deposu**’na tıklayın ve **Azure Depolama**’yı seçin.
 
    ![Yeni veri deposu dikey penceresi](./media/data-factory-build-your-first-pipeline-using-editor/new-data-store-azure-storage-menu.png)
 
@@ -112,7 +112,7 @@ Bu adımda, depolama hesabınızı veri fabrikanıza bağlarsınız. Bu öğreti
 
 1. **Hesap adı** değerini depolama hesabınızın adıyla değiştirin. **Hesap anahtarı** değerini depolama hesabının erişim anahtarıyla değiştirin. Depolama erişim anahtarınızı nasıl alabileceğinizi öğrenmek için bkz. [depolama hesabı erişim anahtarlarını yönetme](../../storage/common/storage-account-keys-manage.md).
 
-1. Bağlı hizmeti dağıtmak için komut çubuğunda **Dağıt** ’ı seçin.
+1. Bağlı hizmeti dağıtmak için komut çubuğunda **Dağıt**’ı seçin.
 
     ![Dağıt düğmesi](./media/data-factory-build-your-first-pipeline-using-editor/deploy-button.png)
 
@@ -123,7 +123,7 @@ Bu adımda, depolama hesabınızı veri fabrikanıza bağlarsınız. Bu öğreti
 ### <a name="create-an-hdinsight-linked-service"></a>HDInsight bağlı hizmeti oluşturma
 Bu adımda, isteğe bağlı HDInsight kümesini data factory’nize bağlarsınız. HDInsight kümesi çalışma zamanında otomatik olarak oluşturulur. İşlem tamamlandıktan sonra küme belirtilen süre boyunca boşta kalırsa silinir.
 
-1. Data Factory düzenleyicisinde **daha**  >  **Yeni işlem**  >  **isteğe bağlı HDInsight kümesi** ' ni seçin.
+1. Data Factory düzenleyicisinde **daha**  >  **Yeni işlem**  >  **isteğe bağlı HDInsight kümesi**' ni seçin.
 
     ![Yeni işlem](./media/data-factory-build-your-first-pipeline-using-editor/new-compute-menu.png)
 
@@ -159,17 +159,17 @@ Bu adımda, isteğe bağlı HDInsight kümesini data factory’nize bağlarsın�
 
      b. İsteğe bağlı HDInsight kümesi yerine kendi HDInsight kümenizi kullanabilirsiniz. Daha fazla bilgi için bkz. [HDInsight bağlı hizmeti](data-factory-compute-linked-services.md#azure-hdinsight-linked-service).
 
-     c. HDInsight kümesi JSON özelliğinde ( **linkedServiceName** ) belirttiğiniz blob depolamada bir varsayılan kapsayıcı oluşturur. HDInsight, küme silindiğinde bu kapsayıcıyı silmez. Bu davranış tasarım gereğidir. İsteğe bağlı HDInsight bağlı hizmeti kullanıldığında, mevcut canlı bir küme olmadığı sürece bir dilim her işlendiğinde bir HDInsight kümesi oluşturulur ( **timeToLive** ). İşlem tamamlandığında küme otomatik olarak silinir.
+     c. HDInsight kümesi JSON özelliğinde (**linkedServiceName**) belirttiğiniz blob depolamada bir varsayılan kapsayıcı oluşturur. HDInsight, küme silindiğinde bu kapsayıcıyı silmez. Bu davranış tasarım gereğidir. İsteğe bağlı HDInsight bağlı hizmeti kullanıldığında, mevcut canlı bir küme olmadığı sürece bir dilim her işlendiğinde bir HDInsight kümesi oluşturulur (**timeToLive**). İşlem tamamlandığında küme otomatik olarak silinir.
 
-     Daha fazla dilim işlendikçe, blob depolamanızda çok sayıda kapsayıcı görürsünüz. İşlerin sorunları giderilmesi için bunlara gerek yoksa, depolama maliyetini azaltmak için bunları silmek isteyebilirsiniz. Bu kapsayıcıların adları bir kalıbı izler: "ADF **yourdatafactoryname** - **linkedservicename** -DateTimeStamp." Blob depolamanızdaki kapsayıcıları silmek için [Azure Depolama Gezgini](https://storageexplorer.com/) gibi araçları kullanın.
+     Daha fazla dilim işlendikçe, blob depolamanızda çok sayıda kapsayıcı görürsünüz. İşlerin sorunları giderilmesi için bunlara gerek yoksa, depolama maliyetini azaltmak için bunları silmek isteyebilirsiniz. Bu kapsayıcıların adları bir kalıbı izler: "ADF **yourdatafactoryname** - **linkedservicename**-DateTimeStamp." Blob depolamanızdaki kapsayıcıları silmek için [Azure Depolama Gezgini](https://storageexplorer.com/) gibi araçları kullanın.
 
      Daha fazla bilgi için bkz. [İsteğe bağlı HDInsight bağlı hizmeti](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service).
 
-1. Bağlı hizmeti dağıtmak için komut çubuğunda **Dağıt** ’ı seçin.
+1. Bağlı hizmeti dağıtmak için komut çubuğunda **Dağıt**’ı seçin.
 
     ![Dağıtım seçeneği](./media/data-factory-build-your-first-pipeline-using-editor/ondemand-hdinsight-deploy.png)
 
-1. Hem **AzureStorageLinkedService** , hem de **HDInsightOnDemandLinkedService** öğesinin soldaki ağaç görünümünde olduğunu onaylayın.
+1. Hem **AzureStorageLinkedService**, hem de **HDInsightOnDemandLinkedService** öğesinin soldaki ağaç görünümünde olduğunu onaylayın.
 
     ![AzureStorageLinkedService ve Hdınsightondemandlinkedservice 'in birbirine bağlandığını gösteren ekran görüntüsü.](./media/data-factory-build-your-first-pipeline-using-editor/tree-view-linked-services.png)
 
@@ -177,7 +177,7 @@ Bu adımda, isteğe bağlı HDInsight kümesini data factory’nize bağlarsın�
 Bu adımda, Hive işlenmesi için girdi ve çıktı verilerini temsil edecek veri kümeleri oluşturursunuz. Bu veri kümeleri, bu öğreticide daha önce oluşturduğunuz AzureStorageLinkedService öğesine başvurur. Bağlı hizmet bir depolama hesabını gösterir. Veri kümeleri, girdi ve çıktı verilerini barındıran depolama alanında kapsayıcı, klasör ve dosya adını belirtir.   
 
 ### <a name="create-the-input-dataset"></a>Girdi veri kümesini oluşturma
-1. Data Factory düzenleyicisinde, **daha fazla**  >  **Yeni veri kümesi**  >  **Azure Blob depolama** ' yı seçin.
+1. Data Factory düzenleyicisinde, **daha fazla**  >  **Yeni veri kümesi**  >  **Azure Blob depolama**' yı seçin.
 
     ![Yeni veri kümesi](./media/data-factory-build-your-first-pipeline-using-editor/new-data-set.png)
 
@@ -216,17 +216,17 @@ Bu adımda, Hive işlenmesi için girdi ve çıktı verilerini temsil edecek ver
    | fileName | typeProperties |Bu özellik isteğe bağlıdır. Bu özelliği atarsanız, tüm folderPath dosyaları seçilir. Bu öğreticide yalnızca input.log dosyası işlenir. |
    | tür | biçim |Günlük dosyaları metin biçiminde olduğundan **TextFormat** seçeneğini kullanın. |
    | columnDelimiter | biçim |Günlük dosyalarındaki sütunlar virgül karakteri (`,`) ile ayrılır. |
-   | frequency/interval | availability |Sıklığın **Month** , aralığın **1** olarak ayarlanmış olması, girdi dilimlerinin aylık olarak kullanılabileceği anlamına gelir. |
+   | frequency/interval | availability |Sıklığın **Month**, aralığın **1** olarak ayarlanmış olması, girdi dilimlerinin aylık olarak kullanılabileceği anlamına gelir. |
    | external | properties | Bu özellik, giriş verileri bu işlem hattı tarafından oluşturulmadıysa **true** olarak ayarlanır. Bu öğreticide, input.log dosyası bu işlem hattı tarafından oluşturulmadığından, özelliği **true** olarak ayarlayacağız. |
 
     Bu JSON özellikleri hakkında daha fazla bilgi için bkz. [Azure Blob bağlayıcısı](data-factory-azure-blob-connector.md#dataset-properties).
 
-1. Yeni oluşturulan veri kümesini dağıtmak için komut çubuğundan **Dağıt** ’ı seçin. Soldaki ağaç görünümünde veri kümesini görürsünüz.
+1. Yeni oluşturulan veri kümesini dağıtmak için komut çubuğundan **Dağıt**’ı seçin. Soldaki ağaç görünümünde veri kümesini görürsünüz.
 
 ### <a name="create-the-output-dataset"></a>Çıktı veri kümesini oluşturma
 Şimdi, blob depolamada depolanan çıktı verilerini temsil eden çıktı veri kümesini oluşturursunuz.
 
-1. Data Factory düzenleyicisinde, **daha fazla**  >  **Yeni veri kümesi**  >  **Azure Blob depolama** ' yı seçin.
+1. Data Factory düzenleyicisinde, **daha fazla**  >  **Yeni veri kümesi**  >  **Azure Blob depolama**' yı seçin.
 
 1. Aşağıdaki kod parçacığını kopyalayıp Taslak-1 penceresine yapıştırın. JSON kod parçacığında, **AzureBlobOutput** adlı bir veri kümesi oluşturarak Hive betiğinin oluşturacağı verilerin yapısını belirtirsiniz. Ayrıca, sonuçların **adfgetstarted** adlı blob kapsayıcısında ve **partitioneddata** adlı klasörde depolandığını belirtirsiniz. Burada, **availability** bölümü çıktı veri kümesinin aylık olarak oluşturulduğunu belirtir.
 
@@ -252,7 +252,7 @@ Bu adımda, Hive işlenmesi için girdi ve çıktı verilerini temsil edecek ver
     ```
     Bu özelliklerin açıklamaları için “Girdi veri kümesi oluşturma” bölümüne bakın. Veri kümesi Data Factory hizmeti tarafından oluşturulduğundan, çıktı veri kümesinde dış özellik ayarlamazsınız.
 
-1. Yeni oluşturulan veri kümesini dağıtmak için komut çubuğundan **Dağıt** ’ı seçin.
+1. Yeni oluşturulan veri kümesini dağıtmak için komut çubuğundan **Dağıt**’ı seçin.
 
 1. Veri kümesinin başarıyla oluşturulduğunu doğrulayın.
 
@@ -261,14 +261,14 @@ Bu adımda, Hive işlenmesi için girdi ve çıktı verilerini temsil edecek ver
 ## <a name="create-a-pipeline"></a>İşlem hattı oluşturma
 Bu adımda, bir HDInsightHive etkinliğiyle ilk işlem hattınızı oluşturursunuz. Girdi dilimi aylık olarak kullanılabilir (sıklık Month, aralık ise 1 değerine sahiptir). Çıktı dilimi aylık olarak oluşturulur. Etkinliğin zamanlayıcı özelliği de aylık olarak ayarlanır. Çıktı veri kümesi ve etkinlik zamanlayıcı ayarlarının eşleşmesi gerekir. Şu anda, zamanlama çıktı veri kümesi tarafından yönetildiğinden, etkinlik hiçbir çıktı oluşturmasa bile bir çıktı veri kümesi oluşturmanız gerekir. Etkinlik herhangi bir girdi almazsa, girdi veri kümesi oluşturma işlemini atlayabilirsiniz. Aşağıdaki JSON kod parçacığında kullanılan özellikler bu bölümün sonunda anlatılmaktadır.
 
-1. Data Factory düzenleyicisinde, **daha**  >  **Yeni işlem hattı** ' nı seçin.
+1. Data Factory düzenleyicisinde, **daha**  >  **Yeni işlem hattı**' nı seçin.
 
     ![Yeni işlem hattı seçeneği](./media/data-factory-build-your-first-pipeline-using-editor/new-pipeline-button.png)
 
 1. Aşağıdaki kod parçacığını kopyalayıp Taslak-1 penceresine yapıştırın.
 
    > [!IMPORTANT]
-   > JSON kod parçacığında **storageaccountname** ’i depolama hesabınızın adıyla değiştirin.
+   > JSON kod parçacığında **storageaccountname**’i depolama hesabınızın adıyla değiştirin.
    >
    >
 
@@ -337,9 +337,9 @@ Bu adımda, bir HDInsightHive etkinliğiyle ilk işlem hattınızı oluşturursu
 
    b. Blob depolamada **adfgetstarted** kapsayıcısının **script** klasöründe **partitionweblogs.hql** dosyasının olduğunu. Bu dosyaları göremiyorsanız, [Öğreticiye genel bakış](data-factory-build-your-first-pipeline.md) konusunun "Önkoşullar" bölümündeki adımları izleyin.
 
-   c. **storageaccountname** ’i işlem hattı JSON’undaki adınızla değiştirdiğinizi.
+   c. **storageaccountname**’i işlem hattı JSON’undaki adınızla değiştirdiğinizi.
 
-1. İşlem hattını dağıtmak için komut çubuğundan **Dağıt** ’ı seçin. **start** ve **end** zamanları geçmişe ayarlanmış ve **isPaused** değeri **false** olarak ayarlanmış olduğundan, işlem hattı (işlem hattında etkinlik) dağıtıldıktan hemen sonra çalışır.
+1. İşlem hattını dağıtmak için komut çubuğundan **Dağıt**’ı seçin. **start** ve **end** zamanları geçmişe ayarlanmış ve **isPaused** değeri **false** olarak ayarlanmış olduğundan, işlem hattı (işlem hattında etkinlik) dağıtıldıktan hemen sonra çalışır.
 
 1. İşlem hattını ağaç görünümünde gördüğünüzü onaylayın.
 
@@ -349,7 +349,7 @@ Bu adımda, bir HDInsightHive etkinliğiyle ilk işlem hattınızı oluşturursu
 
 ## <a name="monitor-a-pipeline"></a>İşlem hattını izleme
 ### <a name="monitor-a-pipeline-by-using-the-diagram-view"></a>Diyagram görünümünü kullanarak bir işlem hattını izleme
-1. **Veri fabrikası** dikey penceresinde **Diyagram** ’ı seçin.
+1. **Veri fabrikası** dikey penceresinde **Diyagram**’ı seçin.
 
     ![Diyagram kutucuğu](./media/data-factory-build-your-first-pipeline-using-editor/diagram-tile.png)
 
@@ -357,7 +357,7 @@ Bu adımda, bir HDInsightHive etkinliğiyle ilk işlem hattınızı oluşturursu
 
     ![Diyagram görünümü](./media/data-factory-build-your-first-pipeline-using-editor/diagram-view-2.png)
 
-1. İşlem hattındaki tüm etkinlikleri görüntülemek için diyagramdaki işlem hattına sağ tıklayıp **İşlem hattını aç** ’a tıklayın.
+1. İşlem hattındaki tüm etkinlikleri görüntülemek için diyagramdaki işlem hattına sağ tıklayıp **İşlem hattını aç**’a tıklayın.
 
     ![İşlem hattı menüsünü açma](./media/data-factory-build-your-first-pipeline-using-editor/open-pipeline-menu.png)
 
@@ -365,9 +365,9 @@ Bu adımda, bir HDInsightHive etkinliğiyle ilk işlem hattınızı oluşturursu
 
     ![İşlem hattı görünümünü açma](./media/data-factory-build-your-first-pipeline-using-editor/open-pipeline-view.png)
 
-    Önceki görünüme dönmek için üstteki menüden **Veri fabrikası** ’nı seçin.
+    Önceki görünüme dönmek için üstteki menüden **Veri fabrikası**’nı seçin.
 
-1. **Diyagram** görünümünde **AzureBlobInput** veri kümesine çift tıklayın. Dilimin **Hazır** durumda olduğunu onaylayın. Dilimin **Hazır** olarak görünmesi birkaç dakika alabilir. Bir süre bekledikten sonra dilim görünmüyorsa, girdi dosyasının ( **input.log** ) doğru kapsayıcıda ( **adfgetstarted** ) ve klasörde ( **inputdata** ) olup olmadığına bakın.
+1. **Diyagram** görünümünde **AzureBlobInput** veri kümesine çift tıklayın. Dilimin **Hazır** durumda olduğunu onaylayın. Dilimin **Hazır** olarak görünmesi birkaç dakika alabilir. Bir süre bekledikten sonra dilim görünmüyorsa, girdi dosyasının (**input.log**) doğru kapsayıcıda (**adfgetstarted**) ve klasörde (**inputdata**) olup olmadığına bakın.
 
    ![Girdi dilimi Hazır durumda](./media/data-factory-build-your-first-pipeline-using-editor/input-slice-ready.png)
 
@@ -402,7 +402,7 @@ Bu adımda, bir HDInsightHive etkinliğiyle ilk işlem hattınızı oluşturursu
    Daha fazla bilgi için bkz. [Azure portal dikey pencerelerini kullanarak işlem hatlarını izleme ve yönetme](data-factory-monitor-manage-pipelines.md).
 
 > [!IMPORTANT]
-> Dilim başarıyla işlendiğinde girdi dosyası silinir. Bu nedenle, dilimi yeniden çalıştırmak veya öğreticiyi yapmak istiyorsanız, giriş dosyasını ( **input. log** ) **adfgetstarted** kapsayıcısının **inputdata** klasörüne yükleyin.
+> Dilim başarıyla işlendiğinde girdi dosyası silinir. Bu nedenle, dilimi yeniden çalıştırmak veya öğreticiyi yapmak istiyorsanız, giriş dosyasını (**input. log**) **adfgetstarted** kapsayıcısının **inputdata** klasörüne yükleyin.
 >
 >
 
@@ -413,7 +413,7 @@ Bu adımda, bir HDInsightHive etkinliğiyle ilk işlem hattınızı oluşturursu
 
     ![İzleme ve Yönetme kutucuğu](./media/data-factory-build-your-first-pipeline-using-editor/monitor-and-manage-tile.png)
 
-1. İzleme ve Yönetme uygulamasında **Başlangıç saati** ve **Bitiş saati** değerlerini işlem hattınızın başlangıç ve bitiş saatleriyle eşleşecek şekilde değiştirin. **Apply** (Uygula) seçeneğini belirleyin.
+1. İzleme ve Yönetme uygulamasında **Başlangıç saati** ve **Bitiş saati** değerlerini işlem hattınızın başlangıç ve bitiş saatleriyle eşleşecek şekilde değiştirin. **Uygula**’yı seçin.
 
     ![İzleme ve Yönetme uygulaması](./media/data-factory-build-your-first-pipeline-using-editor/monitor-and-manage-app.png)
 
@@ -437,7 +437,7 @@ Bu makalede, isteğe bağlı HDInsight kümesinde bir Hive betiği çalıştıra
 ## <a name="see-also"></a>Ayrıca bkz.
 | Konu | Açıklama |
 |:--- |:--- |
-| [İşlem hatları](data-factory-create-pipelines.md) |Bu makale, Data Factory’de işlem hatlarını ve etkinliklerini anlamanıza ve senaryonuz ya da işletmeniz için uçtan uca veri odaklı iş akışları oluşturmak amacıyla bunları nasıl kullanacağınızı anlamanıza yardımcı olur. |
+| [Pipelines](data-factory-create-pipelines.md) |Bu makale, Data Factory’de işlem hatlarını ve etkinliklerini anlamanıza ve senaryonuz ya da işletmeniz için uçtan uca veri odaklı iş akışları oluşturmak amacıyla bunları nasıl kullanacağınızı anlamanıza yardımcı olur. |
 | [Veri kümeleri](data-factory-create-datasets.md) |Bu makale, Data Factory’deki veri kümelerini anlamanıza yardımcı olur. |
 | [Zamanlama ve yürütme](data-factory-scheduling-and-execution.md) |Bu makalede Data Factory uygulama modelinin zamanlama ve yürütme yönleri açıklanmaktadır. |
 | [İzleme ve Yönetme uygulamasını kullanılarak işlem hatlarını izleme ve yönetme](data-factory-monitor-manage-app.md) |Bu makalede, İzleme ve Yönetme uygulaması kullanılarak işlem hatlarını izleme, yönetme ve hatalarını ayıklama işlemleri açıklanmaktadır. |

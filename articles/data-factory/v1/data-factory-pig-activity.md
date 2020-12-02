@@ -3,8 +3,8 @@ title: Azure Data Factory Pig etkinliğini kullanarak verileri dönüştürme
 description: Bir isteğe bağlı/kendi HDInsight kümeniz üzerinde Pig betikleri çalıştırmak için Azure Data Factory v1 'de Pig etkinliğini nasıl kullanabileceğinizi öğrenin.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.assetid: 5af07a1a-2087-455e-a67b-a79841b4ada5
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: c94d66bf98645e12a6c603f2b35d229080717734
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 0ad84a0e848abda1b786958947b4081b11b139a7
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616867"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495354"
 ---
 # <a name="transform-data-using-pig-activity-in-azure-data-factory"></a>Azure Data Factory Pig etkinliğini kullanarak verileri dönüştürme
 > [!div class="op_single_selector" title1="Dönüştürme etkinlikleri"]
@@ -123,7 +123,7 @@ Bu Pig betiğini bir Data Factory işlem hattında yürütmek için aşağıdaki
 
 1. [Kendi HDInsight işlem kümenizi](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) kaydetmek veya [isteğe bağlı HDInsight işlem kümesini](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)yapılandırmak için bağlı bir hizmet oluşturun. Bu bağlı hizmeti **HDInsightLinkedService** arayalım.
 2. Verileri barındıran Azure Blob depolama ile bağlantıyı yapılandırmak için [bağlı bir hizmet](data-factory-azure-blob-connector.md) oluşturun. Bu bağlı hizmeti **StorageLinkedService** arayalım.
-3. Girişe ve çıkış verilerine işaret eden veri [kümeleri](data-factory-create-datasets.md) oluşturun. **Pigsamplein** giriş veri kümesini ve çıkış veri kümesi **Pigsampleout** ' ı çağıralım.
+3. Girişe ve çıkış verilerine işaret eden veri [kümeleri](data-factory-create-datasets.md) oluşturun. **Pigsamplein** giriş veri kümesini ve çıkış veri kümesi **Pigsampleout**' ı çağıralım.
 4. Pig sorgusunu, #2 adımında yapılandırılan Azure Blob depolama alanındaki bir dosyaya kopyalayın. Verileri barındıran Azure depolama, sorgu dosyasını barındıran bilgisayardan farklıysa, ayrı bir Azure depolama bağlı hizmeti oluşturun. Etkinlik yapılandırmasındaki bağlantılı hizmete bakın. **ScriptPath** kullanarak Pig betik dosyası ve **scriptlinkedservice** yolunu belirtin. 
    
    > [!NOTE]
@@ -210,7 +210,7 @@ Parametreli Pig betiğini kullanmak için şunları yapın:
       }
     }
     ```
-* Pig komut dosyasında, aşağıdaki örnekte gösterildiği gibi, ' **$ParameterName** ' kullanarak parametrelere başvurun:
+* Pig komut dosyasında, aşağıdaki örnekte gösterildiği gibi, '**$ParameterName**' kullanarak parametrelere başvurun:
 
     ```
     PigSampleIn = LOAD '$Input' USING PigStorage(',') AS (ProfileID:chararray, SessionStart:chararray, Duration:int, SrcIPAddress:chararray, GameType:chararray);

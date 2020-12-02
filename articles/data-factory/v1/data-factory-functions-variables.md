@@ -2,20 +2,20 @@
 title: Data Factory Işlevleri ve sistem değişkenleri
 description: Azure Data Factory işlevlerinin ve sistem değişkenlerinin bir listesini sağlar
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: cbc7fd22915af1c9645d915a9898679a3a7c30d0
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 9b5f91655367e866858a04b941cec4ee61dfe180
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631521"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495659"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory Işlevleri ve sistem değişkenleri
 > [!NOTE]
@@ -75,7 +75,7 @@ Kullanabileceğiniz farklı biçimlendirme seçeneklerini açıklayan [özel tar
 ### <a name="functions"></a>İşlevler
 Aşağıdaki tablolar Azure Data Factory içindeki tüm işlevleri listeler:
 
-| Kategori | İşlev | Parametreler | Açıklama |
+| Category | İşlev | Parametreler | Açıklama |
 | --- | --- | --- | --- |
 | Saat |AddHours (X, Y) |X: DateTime <br/><br/>Y: int |Verilen saat X 'e Y saat ekler. <br/><br/>Örnek: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
 | Saat |AddMinutes (X, Y) |X: DateTime <br/><br/>Y: int |X 'e Y dakika ekler.<br/><br/>Örnek: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |

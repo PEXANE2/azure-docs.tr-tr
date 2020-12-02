@@ -3,8 +3,8 @@ title: Veri işlem hatlarını izleme ve yönetme-Azure
 description: Izleme ve yönetim uygulamasını kullanarak Azure veri fabrikalarını ve işlem hatlarını izleme ve yönetme hakkında bilgi edinin.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.assetid: f3f07bc4-6dc3-4d4d-ac22-0be62189d578
@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: e378c1e25fb434e689eadd91e9e8562ffe7e61fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: afab2b03d31045b9f49f357b49d15368cde898da
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570090"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495710"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>Izleme ve yönetim uygulamasını kullanarak Azure Data Factory işlem hatlarını izleme ve yönetme
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ Izleme ve yönetim uygulamasının ayrı bir pencerede açık olduğunu görmeni
 ![İzleme ve Yönetim uygulaması](./media/data-factory-monitor-manage-app/AppLaunched.png)
 
 > [!NOTE]
-> Web tarayıcısının "yetkilendiriliyor..." konumunda takılı olduğunu görürseniz, **üçüncü taraf tanımlama bilgilerini ve site verilerini engelle** onay kutusunu temizleyin veya seçili durumda tutun, **login.microsoftonline.com**için bir özel durum oluşturun ve ardından uygulamayı yeniden açmayı deneyin.
+> Web tarayıcısının "yetkilendiriliyor..." konumunda takılı olduğunu görürseniz, **üçüncü taraf tanımlama bilgilerini ve site verilerini engelle** onay kutusunu temizleyin veya seçili durumda tutun, **login.microsoftonline.com** için bir özel durum oluşturun ve ardından uygulamayı yeniden açmayı deneyin.
 
 
 Orta bölmedeki etkinlik pencereleri listesinde her bir etkinliğin çalışması için bir etkinlik penceresi görürsünüz. Örneğin, etkinlik beş saat boyunca saatte bir çalışacak şekilde zamanlanırsa, beş veri dilimiyle ilişkili beş etkinlik penceresi görürsünüz. Alttaki listede etkinlik pencerelerini görmüyorsanız şunları yapın:
@@ -58,7 +58,7 @@ Orta bölmedeki etkinlik pencereleri listesinde her bir etkinliğin çalışmas�
 Bu adımları test etmek için bir Data Factory uygulamanız yoksa, [Data Factory kullanarak blob DEPOLAMADAN SQL veritabanına veri kopyalama](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)öğreticisini yapın.
 
 ## <a name="understand-the-monitoring-and-management-app"></a>Izleme ve yönetim uygulamasını anlama
-Sol tarafta üç sekme bulunur: **Kaynak Gezgini**, **Izleme görünümleri**ve **Uyarılar**. İlk sekme (**Kaynak Gezgini**) varsayılan olarak seçilidir.
+Sol tarafta üç sekme bulunur: **Kaynak Gezgini**, **Izleme görünümleri** ve **Uyarılar**. İlk sekme (**Kaynak Gezgini**) varsayılan olarak seçilidir.
 
 ### <a name="resource-explorer"></a>Kaynak Gezgini
 Şunları görürsünüz:
@@ -66,7 +66,7 @@ Sol tarafta üç sekme bulunur: **Kaynak Gezgini**, **Izleme görünümleri**ve 
 * Sol bölmedeki Kaynak Gezgini **ağaç görünümü** .
 * Orta bölmedeki üst kısımdaki **Diyagram görünümü** .
 * Orta bölmedeki alt kısımdaki **etkinlik pencereleri** listesi.
-* Sağ bölmedeki **Özellikler**, **etkinlik penceresi Gezgini**ve **betik** sekmeleri.
+* Sağ bölmedeki **Özellikler**, **etkinlik penceresi Gezgini** ve **betik** sekmeleri.
 
 Kaynak Gezgini, bir ağaç görünümünde veri fabrikasındaki tüm kaynakları (işlem hatları, veri kümeleri, bağlı hizmetler) görürsünüz. Kaynak Gezgini bir nesne seçtiğinizde:
 
@@ -210,7 +210,7 @@ Etkinlik pencereleri aşağıdaki durumlardan birinde olabilir:
 <td>Atlandı</td><td>-</td><td>Etkinlik penceresi işlenmedi.</td>
 </tr>
 <tr>
-<td>Hiçbiri</td><td>-</td><td>Farklı bir durumla mevcut olan, ancak sıfırlanan bir etkinlik penceresi.</td>
+<td>Yok</td><td>-</td><td>Farklı bir durumla mevcut olan, ancak sıfırlanan bir etkinlik penceresi.</td>
 </tr>
 </table>
 
@@ -244,7 +244,7 @@ Seçili Data Factory varlığının (bağlı hizmet, veri kümesi veya işlem ha
 ![Betik sekmesi](./media/data-factory-monitor-manage-app/ScriptTab.png)
 
 ## <a name="use-system-views"></a>Sistem Görünümlerini kullanma
-Izleme ve yönetim uygulaması, veri fabrikanızın son/başarısız/başarısız olan etkinlik pencerelerini görüntülemenize olanak tanıyan önceden oluşturulmuş sistem görünümlerini (**son etkinlik pencereleri**, **başarısız etkinlik pencereleri**, **devam eden etkinlik**pencereleri) içerir.
+Izleme ve yönetim uygulaması, veri fabrikanızın son/başarısız/başarısız olan etkinlik pencerelerini görüntülemenize olanak tanıyan önceden oluşturulmuş sistem görünümlerini (**son etkinlik pencereleri**, **başarısız etkinlik pencereleri**, **devam eden etkinlik** pencereleri) içerir.
 
 Sol taraftaki **Izleme görünümleri** sekmesine tıklayarak bu sekmeye geçin.
 
@@ -252,7 +252,7 @@ Sol taraftaki **Izleme görünümleri** sekmesine tıklayarak bu sekmeye geçin.
 
 Şu anda desteklenen üç sistem görünümü vardır. Etkinlik Windows listesindeki son etkinlik pencerelerini, başarısız etkinlik pencerelerini veya sürmekte olan etkinlik pencerelerini görmek için bir seçenek belirleyin (orta bölmenin altında).
 
-Son **etkinlik Windows** seçeneğini belirlediğinizde, **son deneme süresi**için tüm son etkinlik pencerelerini azalan sırada görürsünüz.
+Son **etkinlik Windows** seçeneğini belirlediğinizde, **son deneme süresi** için tüm son etkinlik pencerelerini azalan sırada görürsünüz.
 
 **Başarısız etkinlik Windows** görünümünü listedeki tüm başarısız etkinlik pencerelerini görmek için kullanabilirsiniz. **Özellikler** penceresinde veya **etkinlik penceresi Gezgini**' nde onunla ilgili ayrıntıları görmek için listede başarısız bir etkinlik penceresi seçin. Ayrıca, başarısız olan etkinlik penceresi için tüm günlükleri indirebilirsiniz.
 
@@ -266,7 +266,7 @@ Etkinlik pencerelerini filtrelemek için Komut çubuğundaki **Başlangıç saat
 >
 >
 
-**Etkinlik pencereleri listesinde**bir sütunun adına tıklayın (örneğin: durum).
+**Etkinlik pencereleri listesinde** bir sütunun adına tıklayın (örneğin: durum).
 
 ![Etkinlik Windows listesi sütun menüsü](./media/data-factory-monitor-manage-app/ActivityWindowsListColumnMenu.png)
 
