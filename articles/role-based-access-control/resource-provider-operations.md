@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 11/18/2020
 ms.custom: generated
-ms.openlocfilehash: ceb1aea1edcc4916fdd802673c3145b12de01801
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 8225d50e9991ff632fb831c63e194551dbe02b31
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980924"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451881"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure Kaynak sağlayıcısı işlemleri
 
@@ -93,7 +93,7 @@ Bu bölümde, yerleşik rollerde kullanılan Azure Kaynak sağlayıcılarının 
 | [Microsoft. ıotcentral](#microsoftiotcentral) |
 | [Microsoft. Notificationhub 'Lar](#microsoftnotificationhubs) |
 | [Microsoft. Timeseriesınsights](#microsofttimeseriesinsights) |
-| **Karma gerçeklik** |
+| **Karma Gerçeklik** |
 | [Microsoft. ıotspaces](#microsoftiotspaces) |
 | [Microsoft. MixedReality](#microsoftmixedreality) |
 | **Tümleştirme** |
@@ -3862,7 +3862,7 @@ Azure hizmeti: [Azure Cosmos DB](../cosmos-db/index.yml)
 
 ### <a name="microsoftsql"></a>Microsoft.Sql
 
-Azure hizmeti: [Azure SQL veritabanı](../azure-sql/database/index.yml), [Azure SQL yönetilen örneği](../azure-sql/managed-instance/index.yml), [Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı)](../synapse-analytics/sql-data-warehouse/index.yml)
+Azure hizmeti: [Azure SQL veritabanı](../azure-sql/database/index.yml), [Azure SQL yönetilen örneği](../azure-sql/managed-instance/index.yml), [Azure SYNAPSE Analytics](../synapse-analytics/index.yml)
 
 > [!div class="mx-tableFixed"]
 > | Eylem | Açıklama |
@@ -4722,7 +4722,7 @@ Azure hizmeti: [Azure blok zinciri hizmeti](../blockchain/workbench/index.yml)
 > | **DataAction** | **Açıklama** |
 > | Microsoft. Blockzincirini/blockchainMembers/transactionNodes/Connect/ACTION | Bir blok zinciri üye Işlem düğümüne bağlanır. |
 
-## <a name="ai--machine-learning"></a>AI + makine öğrenimi
+## <a name="ai--machine-learning"></a>Yapay zeka + makine öğrenmesi
 
 ### <a name="microsoftbotservice"></a>Microsoft. BotService
 

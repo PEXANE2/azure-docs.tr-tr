@@ -1,6 +1,6 @@
 ---
-title: Azure Data Studio ile SYNAPSE SQL 'e bağlanma (Önizleme)
-description: Azure SYNAPSE Analytics 'te SYNAPSE SQL 'e bağlanmak ve sorgulamak için Azure Data Studio (Önizleme) kullanın.
+title: Azure Data Studio ile SYNAPSE SQL 'e bağlanma
+description: Azure SYNAPSE Analytics 'te SYNAPSE SQL 'e bağlanmak ve sorgulamak için Azure Data Studio kullanın.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3af28ef575f770a5b8c3fb73ade1f9c53be66843
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 580dfe779ff0f550524781076d3e27805ffd6689
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685758"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451657"
 ---
-# <a name="connect-to-synapse-sql-with-azure-data-studio-preview"></a>Azure Data Studio ile SYNAPSE SQL 'e bağlanma (Önizleme)
+# <a name="connect-to-synapse-sql-with-azure-data-studio"></a>Azure Data Studio ile SYNAPSE SQL 'e bağlanma
 
 > [!div class="op_single_selector"]
 >
@@ -26,7 +26,7 @@ ms.locfileid: "94685758"
 > * [sqlcmd](get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-Azure SYNAPSE Analytics 'te SYNAPSE SQL 'e bağlanmak ve sorgu eklemek için [Azure Data Studio (Önizleme)](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) kullanabilirsiniz. 
+Azure SYNAPSE Analytics 'te SYNAPSE SQL 'e bağlanmak ve sorgu eklemek için [Azure Data Studio)](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) kullanabilirsiniz. 
 
 ## <a name="connect"></a>Bağlan
 
@@ -42,7 +42,7 @@ Bağlantı aşağıdaki parametreleri gerektirir:
 * **Veritabanı:** Veritabanı adı
 
 > [!NOTE]
-> **Sunucusuz SQL Havuzu (Önizleme)** kullanmak istiyorsanız URL şöyle görünmelidir:
+> **Sunucusuz SQL havuzu** kullanmak istiyorsanız URL şöyle görünmelidir:
 >
 > - `<Azure Synapse workspace name>`-ondemand.sql.azuresynapse.net.
 >

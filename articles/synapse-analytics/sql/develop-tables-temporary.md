@@ -10,18 +10,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: dd285e8029d8e140380b0f90c60081d0e1f8dd56
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 06faa1da71331c299245a93af96166880e7732de
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305039"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451774"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>SYNAPSE SQL 'de geçici tablolar
 
 Bu makale, geçici tabloları kullanmaya yönelik temel bir kılavuz içerir ve SYNAPSE SQL içindeki oturum düzeyi geçici tablolarının ilkelerini vurgular. 
 
-Hem adanmış SQL havuzu hem de sunucusuz SQL Havuzu (Önizleme) kaynakları geçici tabloları kullanabilir. Sunucusuz SQL havuzunda, bu makalenin sonunda ele alınan sınırlamalar vardır. 
+Hem adanmış SQL havuzu hem de sunucusuz SQL havuzu kaynakları geçici tabloları kullanabilir. Sunucusuz SQL havuzunda, bu makalenin sonunda ele alınan sınırlamalar vardır. 
 
 ## <a name="temporary-tables"></a>Geçici tablolar
 
@@ -33,7 +33,7 @@ Adanmış SQL havuzu kaynağında, sonuçları uzak depolama yerine yerel olarak
 
 ### <a name="create-a-temporary-table"></a>Geçici tablo oluşturma
 
-Geçici tablolar, tablo adınızın bir ile önek olarak eklenerek oluşturulur `#` .  Örneğin:
+Geçici tablolar, tablo adınızın bir ile önek olarak eklenerek oluşturulur `#` .  Örnek:
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -226,7 +226,7 @@ Adanmış SQL havuzu geçici tablolar için birkaç uygulama kısıtlamalarına 
 - Görünümler geçici tablolarda oluşturulamaz.
 - Geçici tablolar yalnızca karma veya hepsini bir kez deneme dağıtımı ile oluşturulabilir.  Çoğaltılan geçici tablo dağıtımı desteklenmiyor. 
 
-## <a name="temporary-tables-in-serverless-sql-pool-preview"></a>Sunucusuz SQL havuzundaki geçici tablolar (Önizleme)
+## <a name="temporary-tables-in-serverless-sql-pool"></a>Sunucusuz SQL havuzundaki geçici tablolar
 
 Sunucusuz SQL havuzundaki geçici tablolar desteklenir, ancak kullanımları sınırlıdır. Dosyaları hedef olan sorgularda kullanılamaz. 
 

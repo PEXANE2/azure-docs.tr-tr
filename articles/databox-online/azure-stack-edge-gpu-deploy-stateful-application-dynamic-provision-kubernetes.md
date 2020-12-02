@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: alkohli
-ms.openlocfilehash: d37152f7dec78d5f5db21fdde9a8ec25c36c4e05
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81a52b26c5291f788ac81caeb2ca5416a2f58d36
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899472"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448870"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-storageclass-on-your-azure-stack-edge-pro-gpu-device"></a>Kubectl 'yi kullanarak Azure Stack Edge Pro GPU cihazınızda StorageClass ile Kubernetes durum bilgisi olan bir uygulama çalıştırın
 
@@ -22,7 +22,7 @@ Bu makalede, depolama ve bir dağıtımı dinamik olarak sağlamak için Storage
 Bu yordam, [Azure Stack Edge Pro cihazındaki Kubernetes depolamayı](azure-stack-edge-gpu-kubernetes-storage.md) Inceleyen ve [Kubernetes depolama](https://kubernetes.io/docs/concepts/storage/)kavramlarını bildiğiniz kullanıcılara yöneliktir.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Durum bilgisi olan uygulamayı dağıtabilmeniz için cihazınızda aşağıdaki önkoşulları ve cihaza erişmek için kullanacağınız istemciyi tamamladığınızdan emin olun:
 
@@ -35,7 +35,7 @@ Durum bilgisi olan uygulamayı dağıtabilmeniz için cihazınızda aşağıdaki
 ### <a name="for-client-accessing-the-device"></a>Cihaza erişen istemci için
 
 - Azure Stack Edge Pro cihazına erişmek için kullanılacak bir Windows istemci sisteminiz vardır.
-    - İstemci Windows PowerShell 5,0 veya üstünü çalıştırıyor. Windows PowerShell 'in en son sürümünü indirmek için [Windows PowerShell 'ı yükleme](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7)bölümüne gidin.
+    - İstemci Windows PowerShell 5,0 veya üstünü çalıştırıyor. Windows PowerShell 'in en son sürümünü indirmek için [Windows PowerShell 'ı yükleme](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)bölümüne gidin.
     
     - [Desteklenen bir işletim sistemine](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) sahip başka bir istemciniz de olabilir. Bu makalede, bir Windows istemcisi kullanılırken yordam açıklanmaktadır. 
     

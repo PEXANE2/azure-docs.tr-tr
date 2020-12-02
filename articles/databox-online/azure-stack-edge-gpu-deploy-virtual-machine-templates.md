@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/04/2020
+ms.date: 11/16/2020
 ms.author: alkohli
-ms.openlocfilehash: d0d02532f39d676772e5ee5d6414b802faffba7c
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 93df80cd6fcd6f5553ea509a4778a155299bb057
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505946"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449040"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>Şablonlar aracılığıyla Azure Stack Edge Pro GPU cihazınızda sanal makineler dağıtma
 
@@ -76,7 +76,7 @@ VM oluşturma için gerekli olacak kaynakları oluşturmak için bu önkoşullar
     
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-[New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) ile yeni bir Azure kaynak grubu oluşturun. Kaynak grubu, depolama hesabı, disk, yönetilen disk gibi Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
+[New-AzureRmResourceGroup](/powershell/module/az.resources/new-azresourcegroup) ile yeni bir Azure kaynak grubu oluşturun. Kaynak grubu, depolama hesabı, disk, yönetilen disk gibi Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
 > [!IMPORTANT]
 > Tüm kaynaklar cihazla aynı konumda oluşturulur ve konum **Dbelocal** olarak ayarlanır.
@@ -181,31 +181,31 @@ Sonraki adımda karşıya yüklemek için kullanabileceğiniz bir sanal disk yan
 
     ![Depolama Gezgini yeniden Başlat](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/restart-storage-explorer-1.png)
 
-4. Sol bölmede **depolama hesapları** ' na sağ tıklayın ve **Azure depolama 'ya Bağlan** ' ı seçin. 
+4. Sol bölmede **depolama hesapları** ' na sağ tıklayın ve **Azure depolama 'ya Bağlan**' ı seçin. 
 
     ![Azure depolama 'ya bağlanma 1](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-1.png)
 
-5. **Depolama hesabı adını ve anahtarını kullan** ’ı seçin. **İleri** ’yi seçin.
+5. **Depolama hesabı adını ve anahtarını kullan**’ı seçin. **İleri**’yi seçin.
 
     ![Azure depolama 'ya bağlanma 2](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-2.png)
 
-6. **Ad ve anahtar Ile Bağlan** bölümünde, **görünen ad** , **depolama hesabı adı** , Azure depolama **hesabı anahtarı** ' nı belirtin. **Diğer** depolama etki alanını seçin ve sonra `<device name>.<DNS domain>` bağlantı dizesini belirtin. Depolama Gezgini bir sertifika yüklemediğiniz takdirde, **http kullan** seçeneğini işaretleyin. **İleri** ’yi seçin.
+6. **Ad ve anahtar Ile Bağlan** bölümünde, **görünen ad**, **depolama hesabı adı**, Azure depolama **hesabı anahtarı**' nı belirtin. **Diğer** depolama etki alanını seçin ve sonra `<device name>.<DNS domain>` bağlantı dizesini belirtin. Depolama Gezgini bir sertifika yüklemediğiniz takdirde, **http kullan** seçeneğini işaretleyin. **İleri**’yi seçin.
 
     ![Ad ve anahtarla Bağlan](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-name-key-1.png)
 
-7. **Bağlantı özetini** gözden geçirin ve **Bağlan** ' ı seçin.
+7. **Bağlantı özetini** gözden geçirin ve **Bağlan**' ı seçin.
 
-8. Depolama hesabı sol bölmede görüntülenir. Depolama hesabını seçin ve genişletin. **BLOB kapsayıcıları** ' nı seçin, sağ tıklayın ve **BLOB kapsayıcısı oluştur** ' u seçin. Blob Kapsayıcınız için bir ad sağlayın.
+8. Depolama hesabı sol bölmede görüntülenir. Depolama hesabını seçin ve genişletin. **BLOB kapsayıcıları**' nı seçin, sağ tıklayın ve **BLOB kapsayıcısı oluştur**' u seçin. Blob Kapsayıcınız için bir ad sağlayın.
 
 9. Yeni oluşturduğunuz kapsayıcıyı seçin ve sağ bölmede **karşıya yükle > dosyaları** karşıya yükle ' yi seçin. 
 
     ![VHD dosyasını karşıya yükle 1](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/upload-vhd-file-1.png)
 
-10. **Seçilen dosyalara** yüklemek istediğiniz VHD 'yi inceleyin ve üzerine gelin. **BLOB türünü** **Sayfa Blobu** olarak seçin ve **karşıya yükle** ' yi seçin.
+10. **Seçilen dosyalara** yüklemek istediğiniz VHD 'yi inceleyin ve üzerine gelin. **BLOB türünü** **Sayfa Blobu** olarak seçin ve **karşıya yükle**' yi seçin.
 
     ![VHD dosyasını karşıya yükle 2](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/upload-vhd-file-2.png)
 
-11. VHD blob kapsayıcısına yüklendikten sonra, VHD 'yi seçin, sağ tıklayın ve ardından **Özellikler** ' i seçin. 
+11. VHD blob kapsayıcısına yüklendikten sonra, VHD 'yi seçin, sağ tıklayın ve ardından **Özellikler**' i seçin. 
 
     ![VHD dosyasını karşıya yükle 3](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/upload-vhd-file-3.png)
 
@@ -249,7 +249,7 @@ Dosya `CreateImageAndVnet.parameters.json` aşağıdaki parametreleri alır:
               "value": "<Operating system corresponding to the VHD you upload can be Windows or Linux>"
         },
         "imageName": {
-            "value": "<Name for the VM iamge>"
+            "value": "<Name for the VM image>"
         },
         "imageUri": {
               "value": "<Path to the VHD that you uploaded in the Storage account>"
@@ -441,7 +441,7 @@ Sanal makine oluşturmak için `CreateVM.parameters.json` parametre dosyasını 
 
 1. Benzersiz bir ad, ağ arabirimi adı ve ipconfig adı sağlayın. 
 1. Bir Kullanıcı adı, parola ve desteklenen bir VM boyutu girin.
-1. İçin parametrelerde verilen **Vağadı** , **subnetName** ve **ImageName** için aynı adı verin `CreateImageAndVnet.parameters.json` . Örneğin, Vağadı, subnetName ve GörüntüAdı **vnet1** , **subnet1** ve **image1** olarak verildiyse, bu şablondaki parametreler için bu değerleri de aynı şekilde saklayın.
+1. İçin parametrelerde verilen **Vağadı**, **subnetName** ve **ImageName** için aynı adı verin `CreateImageAndVnet.parameters.json` . Örneğin, Vağadı, subnetName ve GörüntüAdı **vnet1**, **subnet1** ve **image1** olarak verildiyse, bu şablondaki parametreler için bu değerleri de aynı şekilde saklayın.
 1. Artık yukarıda tanımlanan alt ağ ağında bulunan VM 'ye atamak için bir statik IP adresi gerekir. **Privateıpaddress** öğesini parametre dosyasındaki bu adresle değiştirin. VM 'nin yerel DCHP sunucusundan bir IP adresi almasını sağlamak için `privateIPAddress` değeri boş bırakın.  
     
     ```json
@@ -629,4 +629,4 @@ To verify if the environment variable for AzCopy was set correctly, take the fol
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure Resource Manager cmdlet 'leri](https://docs.microsoft.com/powershell/module/azurerm.resources/?view=azurermps-6.13.0)
+[Azure Resource Manager cmdlet 'leri](/powershell/module/azurerm.resources/?view=azurermps-6.13.0)

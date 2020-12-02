@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: 291a5850540ea7d7d24a4a544c1eb65183df8ffb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9a5c5f9a4033b70a664071d6077a69f38c905093
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667750"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452224"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. kullanmak için en iyi uygulamalar
 
@@ -23,7 +23,7 @@ ms.locfileid: "91667750"
 
 Bu makalede, Azure Data Lake Storage 1. ile çalışmaya yönelik en iyi yöntemler ve konular hakkında bilgi edineceksiniz. Bu makalede, Data Lake Storage 1. için güvenlik, performans, dayanıklılık ve izleme hakkında bilgi verilmektedir. Data Lake Storage 1. önce, Azure HDInsight gibi hizmetlerde gerçekten büyük verilerle çalışma karmaşıktır. Birden çok BLOB depolama hesabında verileri parçalara çıkaran ve bu ölçekte en iyi performansı elde etmek zorunda kaldık. Data Lake Storage 1., boyut ve performansa ilişkin sabit limitlerin çoğu kaldırılır. Ancak, Data Lake Storage 1. ile en iyi performansı elde edebilmeniz için bu makalenin kapsamakta olduğu bazı noktalar vardır.
 
-## <a name="security-considerations"></a>Güvenlik konuları
+## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
 
 Azure Data Lake Storage 1., Azure Active Directory (Azure AD) kullanıcıları, grupları ve hizmet sorumluları için POSIX erişim denetimleri ve ayrıntılı denetim sağlar. Bu erişim denetimleri, varolan dosya ve klasörlere ayarlanabilir. Erişim denetimleri, yeni dosyalara veya klasörlere uygulanabilen varsayılanlar oluşturmak için de kullanılabilir. İzinler varolan klasörlere ve alt nesnelere ayarlandığında, izinlerin her bir nesne üzerinde yinelemeli olarak yayılması gerekir. Çok sayıda dosya varsa, bu izinleri yayan uzun sürebilir. Geçen süre, saniye başına işlenen 30-50 nesne arasında değişebilir. Bu nedenle, klasör yapısını ve Kullanıcı gruplarını uygun şekilde planlayın. Aksi takdirde, verilerle çalışırken beklenmeyen gecikmeler ve sorunlara neden olabilir.
 
@@ -37,7 +37,7 @@ Bir güvenlik grubuna izinler atandıktan sonra, gruptan kullanıcı ekleme veya
 
 ### <a name="security-for-groups"></a>Gruplar için güvenlik
 
-Açıklandığı gibi, kullanıcıların Data Lake Storage 1. erişmesi gerektiğinde Azure Active Directory güvenlik grupları kullanmak en iyisidir. İle başlamak için önerilen bazı gruplar, hesabın köküne yönelik olarak **Readonlyusers**, **Writeaccessusers**ve **fullaccessusers** olabilir ve hatta anahtar alt klasörleri için ayrı ayrı olabilir. Daha sonra eklenebilen ancak henüz tanımlanmayan başka bir Kullanıcı grubu varsa, belirli klasörlere erişimi olan kukla güvenlik grupları oluşturmayı düşünebilirsiniz. Güvenlik grubunun kullanılması, daha sonra binlerce dosyaya yeni izinler atamak için uzun bir işlem süresine gerek duymamasını sağlar.
+Açıklandığı gibi, kullanıcıların Data Lake Storage 1. erişmesi gerektiğinde Azure Active Directory güvenlik grupları kullanmak en iyisidir. İle başlamak için önerilen bazı gruplar, hesabın köküne yönelik olarak **Readonlyusers**, **Writeaccessusers** ve **fullaccessusers** olabilir ve hatta anahtar alt klasörleri için ayrı ayrı olabilir. Daha sonra eklenebilen ancak henüz tanımlanmayan başka bir Kullanıcı grubu varsa, belirli klasörlere erişimi olan kukla güvenlik grupları oluşturmayı düşünebilirsiniz. Güvenlik grubunun kullanılması, daha sonra binlerce dosyaya yeni izinler atamak için uzun bir işlem süresine gerek duymamasını sağlar.
 
 ### <a name="security-for-service-principals"></a>Hizmet sorumluları için güvenlik
 
@@ -45,11 +45,11 @@ Azure Active Directory hizmet sorumluları, genellikle Azure HDInsight gibi hizm
 
 ### <a name="enable-the-data-lake-storage-gen1-firewall-with-azure-service-access"></a>Azure hizmet erişimi ile Data Lake Storage 1. güvenlik duvarını etkinleştirme
 
-Data Lake Storage 1., bir güvenlik duvarını açma ve yalnızca Azure hizmetlerine erişimi sınırlandırma seçeneğini destekler, bu da dış yetkisiz erişimlere karşı daha küçük bir saldırı vektörü için önerilir. Güvenlik Duvarı, **Firewall**  >  Azure hizmetleri seçeneklerine erişime izin veren güvenlik duvarı 'nı**Etkinleştir (açık)** güvenlik duvarı aracılığıyla Azure Portal Data Lake Storage 1. hesabında etkinleştirilebilir  >  **Allow access to Azure services** .
+Data Lake Storage 1., bir güvenlik duvarını açma ve yalnızca Azure hizmetlerine erişimi sınırlandırma seçeneğini destekler, bu da dış yetkisiz erişimlere karşı daha küçük bir saldırı vektörü için önerilir. Güvenlik Duvarı, **Firewall**  >  Azure hizmetleri seçeneklerine erişime izin veren güvenlik duvarı 'nı **Etkinleştir (açık)** güvenlik duvarı aracılığıyla Azure Portal Data Lake Storage 1. hesabında etkinleştirilebilir  >  **Allow access to Azure services** .
 
 ![Data Lake Storage 1. güvenlik duvarı ayarları](./media/data-lake-store-best-practices/data-lake-store-firewall-setting.png "Data Lake Storage 1. güvenlik duvarı ayarları")
 
-Güvenlik duvarı etkinleştirildikten sonra yalnızca HDInsight, Data Factory, Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) gibi Azure Hizmetleri Data Lake Storage 1. erişimi vardır. Azure tarafından kullanılan iç ağ adresi çevirisi nedeniyle Data Lake Storage 1. güvenlik duvarı, belirli hizmetlerin IP ile kısıtlanması ve yalnızca Azure dışındaki uç noktalar için şirket içi gibi kısıtlamalar için tasarlanmıştır.
+Güvenlik duvarı etkinleştirildikten sonra yalnızca HDInsight, Data Factory, Azure SYNAPSE Analytics gibi Azure hizmetlerinin Data Lake Storage 1. erişimi vardır. Azure tarafından kullanılan iç ağ adresi çevirisi nedeniyle Data Lake Storage 1. güvenlik duvarı, belirli hizmetlerin IP ile kısıtlanması ve yalnızca Azure dışındaki uç noktalar için şirket içi gibi kısıtlamalar için tasarlanmıştır.
 
 ## <a name="performance-and-scale-considerations"></a>Performans ve ölçek konuları
 
@@ -114,7 +114,7 @@ Kopyalama işleri, Linux cron işlerinin yanı sıra sıklık ve veri Tetikleyic
 
 ### <a name="use-azure-data-factory-to-schedule-copy-jobs"></a>Kopyalama işlerini zamanlamak için Azure Data Factory kullanma
 
-Azure Data Factory kopyalama işlerini bir **kopyalama etkinliği**kullanılarak zamanlamak için de kullanılabilir ve **Kopyalama Sihirbazı**aracılığıyla bir sıklık üzerinde de ayarlanabilir. Azure Data Factory bulut veri taşıma birimi (DMU) sınırının olduğunu ve sonunda büyük veri iş yükleri için üretilen iş/işlem miktarını büyük bir şekilde tutacağını unutmayın. Ayrıca, Azure Data Factory Şu anda Data Lake Storage 1. hesapları arasında Delta güncelleştirmeleri sunmaz, bu nedenle Hive tabloları gibi klasörler çoğaltmak için tam bir kopya gerektirir. Data Factory ile kopyalama hakkında daha fazla bilgi için [kopyalama etkinliği ayarlama kılavuzuna](../data-factory/copy-activity-performance.md) bakın.
+Azure Data Factory kopyalama işlerini bir **kopyalama etkinliği** kullanılarak zamanlamak için de kullanılabilir ve **Kopyalama Sihirbazı** aracılığıyla bir sıklık üzerinde de ayarlanabilir. Azure Data Factory bulut veri taşıma birimi (DMU) sınırının olduğunu ve sonunda büyük veri iş yükleri için üretilen iş/işlem miktarını büyük bir şekilde tutacağını unutmayın. Ayrıca, Azure Data Factory Şu anda Data Lake Storage 1. hesapları arasında Delta güncelleştirmeleri sunmaz, bu nedenle Hive tabloları gibi klasörler çoğaltmak için tam bir kopya gerektirir. Data Factory ile kopyalama hakkında daha fazla bilgi için [kopyalama etkinliği ayarlama kılavuzuna](../data-factory/copy-activity-performance.md) bakın.
 
 ### <a name="adlcopy"></a>AdlCopy
 
@@ -138,7 +138,7 @@ Daha fazla gerçek zamanlı uyarı ve günlüklerin nereye kaydedileceği hakkı
 
 ### <a name="turn-on-debug-level-logging-in-hdinsight"></a>HDInsight 'ta hata ayıklama düzeyinde günlüğe yazmayı aç
 
-Data Lake Storage 1. günlük aktarma açık değilse, Azure HDInsight, Log4J aracılığıyla [Data Lake Storage 1. için istemci tarafı günlüğe yazmayı](data-lake-store-performance-tuning-mapreduce.md) etkinleştirmek için bir yol sağlar. Aşağıdaki özelliği, **ambarı**  >  **Yarn**  >  **yapılandırması**  >  **Gelişmiş Yarn-Log4J yapılandırmalarını**ayarlamanız gerekir:
+Data Lake Storage 1. günlük aktarma açık değilse, Azure HDInsight, Log4J aracılığıyla [Data Lake Storage 1. için istemci tarafı günlüğe yazmayı](data-lake-store-performance-tuning-mapreduce.md) etkinleştirmek için bir yol sağlar. Aşağıdaki özelliği, **ambarı**  >  **Yarn**  >  **yapılandırması**  >  **Gelişmiş Yarn-Log4J yapılandırmalarını** ayarlamanız gerekir:
 
 `log4j.logger.com.microsoft.azure.datalake.store=DEBUG`
 

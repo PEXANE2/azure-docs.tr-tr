@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: d323504a46cd35525c889a94d2d044193c1471ac
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 8637b33ebc4b697ee6f498acb84ee33718c53f6d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535954"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448850"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU 'SU üzerinde Redis, Arc etkin Kubernetes kümesine sahip bir PHP Konuk defteri olmayan uygulaması dağıtma
 
@@ -25,10 +25,10 @@ Bu makalede, Kubernetes ve Azure yay kullanılarak basit, çok katmanlı bir Web
 
 Dağıtım, Azure Stack Edge Pro cihazınızdan yay etkinleştirilmiş Kubernetes kümesinde Gilar kullanılarak yapılır. 
 
-Bu yordam, [Azure Stack Edge Pro cihazındaki Kubernetes iş yüklerini](azure-stack-edge-gpu-kubernetes-workload-management.md) gözden geçirdiklere yöneliktir ve [Azure Arc etkinleştirilmiş Kubernetes (Önizleme)](https://docs.microsoft.com/azure/azure-arc/kubernetes/overview)kavramlarını öğrenir.
+Bu yordam, [Azure Stack Edge Pro cihazındaki Kubernetes iş yüklerini](azure-stack-edge-gpu-kubernetes-workload-management.md) gözden geçirdiklere yöneliktir ve [Azure Arc etkinleştirilmiş Kubernetes (Önizleme)](../azure-arc/kubernetes/overview.md)kavramlarını öğrenir.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Durum bilgisiz uygulamayı dağıtabilmeniz için cihazınızda aşağıdaki önkoşulları ve cihaza erişmek için kullanacağınız istemciyi tamamladığınızdan emin olun:
 
@@ -44,7 +44,7 @@ Durum bilgisiz uygulamayı dağıtabilmeniz için cihazınızda aşağıdaki ön
 
 1. Azure Stack Edge Pro cihazına erişmek için kullanılacak bir Windows istemci sisteminiz vardır.
   
-    - İstemci Windows PowerShell 5,0 veya üstünü çalıştırıyor. Windows PowerShell 'in en son sürümünü indirmek için [Windows PowerShell 'ı yükleme](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7)bölümüne gidin.
+    - İstemci Windows PowerShell 5,0 veya üstünü çalıştırıyor. Windows PowerShell 'in en son sürümünü indirmek için [Windows PowerShell 'ı yükleme](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)bölümüne gidin.
     
     - [Desteklenen bir işletim sistemine](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) sahip başka bir istemciniz de olabilir. Bu makalede, bir Windows istemcisi kullanılırken yordam açıklanmaktadır. 
     
@@ -77,11 +77,11 @@ Azure yay kaynağını, Azure portal bir Gilar yapılandırması dağıtmak üze
 
     ![Azure yay kaynağına git](media/azure-stack-edge-gpu-connect-powershell-interface/verify-azure-arc-enabled-1.png)
 
-1. **Yapılandırmalar** ' a gidin ve **+ yapılandırma Ekle** ' yi seçin.
+1. **Yapılandırmalar** ' a gidin ve **+ yapılandırma Ekle**' yi seçin.
 
     ![Ekran görüntüsü, yapılandırma Ekle seçiliyken Azure Arc etkin Kubernetes kümesini gösterir.](media/azure-stack-edge-gpu-connect-powershell-interface/select-configurations-1.png)
 
-1. **Yapılandırma Ekle** ' de alanlar için uygun değerleri girin ve **Uygula** ' yı seçin.
+1. **Yapılandırma Ekle**' de alanlar için uygun değerleri girin ve **Uygula**' yı seçin.
 
     |Parametre  |Açıklama |
     |---------|---------|
@@ -154,7 +154,7 @@ Gilar yapılandırması aracılığıyla dağıtım, `demotestguestbook` Git dep
 Dağıtımı silmek için Azure portal yapılandırmayı silebilirsiniz. Bu, dağıtımlar ve hizmetler dahil oluşturulan nesneleri silecektir.
 
 1. Azure portal, Azure Arc kaynak > yapılandırma ' ya gidin. 
-1. Silmek istediğiniz yapılandırmayı bulun. Şunu seçin... bağlam menüsünü çağırmak ve **Sil** ' i seçin.
+1. Silmek istediğiniz yapılandırmayı bulun. Şunu seçin... bağlam menüsünü çağırmak ve **Sil**' i seçin.
     ![Yapılandırmayı Sil](media/azure-stack-edge-gpu-connect-powershell-interface/delete-configuration-1.png)
 
 Yapılandırmanın silinmesi birkaç dakika sürebilir.

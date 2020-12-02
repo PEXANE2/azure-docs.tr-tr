@@ -11,16 +11,16 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: b3e1c4b8dec0e62bb2a77939a36e38b61837033a
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: 52e3ea3e07a81495f64f70f72686154a02a654af
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638861"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451805"
 ---
 # <a name="statistics-in-synapse-sql"></a>SYNAPSE SQL istatistikleri
 
-Bu makalede sunulan öneriler ve SYNAPSE SQL kaynakları kullanılarak sorgu iyileştirmesi istatistiklerini oluşturma ve güncelleştirme örnekleri: adanmış SQL havuzu ve sunucusuz SQL Havuzu (Önizleme).
+Bu makalede sunulan öneriler ve SYNAPSE SQL kaynaklarını kullanarak sorgu iyileştirmesi istatistiklerini oluşturma ve güncelleştirme örnekleri: adanmış SQL havuzu ve sunucusuz SQL Havuzu.
 
 ## <a name="statistics-in-dedicated-sql-pool"></a>Adanmış SQL havuzundaki istatistikler
 
@@ -74,7 +74,7 @@ Bu deyimler istatistiklerin otomatik olarak oluşturulmasını tetikler:
 > [!NOTE]
 > Farklı bir kullanıcı bağlamı altında [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) , istatistik oluşturma işlemi günlüğe kaydedilir.
 
-Otomatik istatistikler oluşturulduğunda şu biçimi alır: _WA_Sys_ <8 basamaklı sütun kimliği onaltılık>_<8 basamaklı tablo kimliği onaltılık>. Zaten oluşturulmuş istatistikleri [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) komutunu çalıştırarak görüntüleyebilirsiniz:
+Otomatik istatistikler oluşturulduğunda şu biçimi alır: _WA_Sys_<8 basamaklı sütun kimliği onaltılık>_<8 basamaklı tablo kimliği onaltılık>. Zaten oluşturulmuş istatistikleri [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) komutunu çalıştırarak görüntüleyebilirsiniz:
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -557,7 +557,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
 - Özel hata 2767 desteklenmiyor.
 
 
-## <a name="statistics-in-serverless-sql-pool-preview"></a>Sunucusuz SQL havuzundaki istatistikler (Önizleme)
+## <a name="statistics-in-serverless-sql-pool"></a>Sunucusuz SQL havuzundaki istatistikler
 
 İstatistikler, belirli bir veri kümesi (depolama yolu) için belirli bir sütun başına oluşturulur.
 
@@ -566,7 +566,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
 
 ### <a name="why-use-statistics"></a>İstatistikleri neden kullanılmalıdır?
 
-Daha az sunucusuz SQL Havuzu (Önizleme) verileriniz hakkında bilgi sahibi olur. Bu, daha hızlı sorgu yürütebilir. Verilerinize ilişkin istatistikleri toplamak, sorgularınızı iyileştirmek için yapabileceğiniz en önemli işlemlerden biridir. 
+Daha az sunucusuz SQL havuzu verilerinize göre daha hızlı bir şekilde sorgu yürütebilir. Verilerinize ilişkin istatistikleri toplamak, sorgularınızı iyileştirmek için yapabileceğiniz en önemli işlemlerden biridir. 
 
 Sunucusuz SQL havuzu sorgu iyileştiricisi, maliyet tabanlı bir iyileştiricudur. Çeşitli sorgu planlarının maliyetini karşılaştırır ve en düşük maliyetli planı seçer. Çoğu durumda, en hızlı yürütecektir planı seçer. 
 

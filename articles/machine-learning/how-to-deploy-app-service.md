@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 491fa39bed9e73a41f5a29a9040df052b6945552
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 5f3861d43715ed68116d25206efe4347ea96805c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578034"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452129"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Azure App Service bir makine öğrenimi modeli dağıtma (Önizleme)
 
@@ -29,7 +29,7 @@ Azure Machine Learning bir modeli Azure App Service Web uygulaması olarak nası
 Azure Machine Learning, eğitilen makine öğrenimi modellerinden Docker görüntüleri oluşturabilirsiniz. Bu görüntü, veri alan bir Web hizmeti içerir, bunu modele gönderir ve ardından yanıtı döndürür. Azure App Service görüntüyü dağıtmak için kullanılabilir ve aşağıdaki özellikleri sağlar:
 
 * Gelişmiş güvenlik için Gelişmiş [kimlik doğrulaması](../app-service/configure-authentication-provider-aad.md) . Kimlik doğrulama yöntemleri hem Azure Active Directory hem de Multi-Factor auth içerir.
-* Yeniden dağıtmak zorunda kalmadan [Otomatik ölçeklendirme](../azure-monitor/platform/autoscale-get-started.md?toc=%252fazure%252fapp-service%252ftoc.json) .
+* Yeniden dağıtmak zorunda kalmadan [Otomatik ölçeklendirme](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json) .
 * İstemcilerle hizmet arasında güvenli iletişim için [TLS desteği](../app-service/configure-ssl-certificate-in-code.md) .
 
 Azure App Service tarafından sunulan özellikler hakkında daha fazla bilgi için bkz. [App Service genel bakış](../app-service/overview.md).
@@ -37,7 +37,7 @@ Azure App Service tarafından sunulan özellikler hakkında daha fazla bilgi iç
 > [!IMPORTANT]
 > Dağıtılan modelinizle kullanılan Puanlama verilerini veya Puanlama sonuçlarını günlüğe kaydetmek istiyorsanız, bunun yerine Azure Kubernetes hizmetine dağıtmanız gerekir. Daha fazla bilgi için bkz. [Üretim modellerinizde veri toplama](how-to-enable-data-collection.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure Machine Learning çalışma alanı. Daha fazla bilgi için [çalışma alanı oluşturma](how-to-manage-workspace.md) makalesine bakın.
 * [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
@@ -271,7 +271,7 @@ print(response.json())
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Linux belgelerindeki App Service](/azure/app-service/containers/) Web uygulamanızı yapılandırmayı öğrenin.
-* [Azure 'Da otomatik ölçeklendirme ile çalışmaya başlama](../azure-monitor/platform/autoscale-get-started.md?toc=%252fazure%252fapp-service%252ftoc.json)bölümünde ölçeklendirme hakkında daha fazla bilgi edinin.
+* [Azure 'Da otomatik ölçeklendirme ile çalışmaya başlama](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)bölümünde ölçeklendirme hakkında daha fazla bilgi edinin.
 * [Azure App Service BIR TLS/SSL sertifikası kullanın](../app-service/configure-ssl-certificate-in-code.md).
 * [App Service uygulamanızı Azure Active Directory oturum açma kullanacak şekilde yapılandırın](../app-service/configure-authentication-provider-aad.md).
 * [Web hizmeti olarak dağıtılan bir ML modelini kullanma](how-to-consume-web-service.md)

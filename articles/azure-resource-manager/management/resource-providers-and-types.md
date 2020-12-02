@@ -2,14 +2,14 @@
 title: Kaynak sağlayıcıları ve kaynak türleri
 description: Azure Resource Manager destekleyen kaynak sağlayıcılarını açıklar. Şemaları, kullanılabilir API sürümlerini ve kaynakları barındırabildiğiniz bölgeleri açıklar.
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 12/01/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a8adbce80d5e8f9ee9df2050d8f43363cbf57dc3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 6413a1279c9c7a995bb144097e3db55d5f3a90d2
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352108"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452099"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure kaynak sağlayıcıları ve türleri
 
@@ -32,7 +32,7 @@ Kaynak sağlayıcılarını Azure hizmetleriyle eşleyen bir liste için bkz. [A
 
 ## <a name="register-resource-provider"></a>Kaynak sağlayıcısını kaydetme
 
-Kaynak sağlayıcısını kullanmadan önce, Azure aboneliğinizin kaynak sağlayıcısı için kayıtlı olması gerekir. Kayıt, aboneliğinizi kaynak sağlayıcısıyla çalışacak şekilde yapılandırır. Bazı kaynak sağlayıcıları varsayılan olarak kaydedilir. Diğer kaynak sağlayıcıları, belirli eylemleri gerçekleştirdiğinizde otomatik olarak kaydedilir. Örneğin, Portal üzerinden bir kaynak oluşturduğunuzda, kaynak sağlayıcısı genellikle sizin için kaydedilir. Diğer senaryolarda, bir kaynak sağlayıcısını el ile kaydetmeniz gerekebilir.
+Kaynak sağlayıcısını kullanmadan önce, Azure aboneliğinizin kaynak sağlayıcısı için kayıtlı olması gerekir. Kayıt, aboneliğinizi kaynak sağlayıcısıyla çalışacak şekilde yapılandırır. Bazı kaynak sağlayıcıları varsayılan olarak kaydedilir. Diğer kaynak sağlayıcıları, belirli eylemleri gerçekleştirdiğinizde otomatik olarak kaydedilir. Örneğin, Portal üzerinden bir kaynak oluşturduğunuzda, kaynak sağlayıcısı genellikle sizin için kaydedilir. Diğer senaryolarda, bir kaynak sağlayıcısını el ile kaydetmeniz gerekebilir. Varsayılan olarak kaydedilen kaynak sağlayıcılarının bir listesi için bkz. [Azure hizmetleri Için kaynak sağlayıcıları](azure-services-resource-providers.md).
 
 Bu makalede, bir kaynak sağlayıcısının kayıt durumunu denetleme ve gerektiğinde kaydetme işlemlerinin nasıl yapılacağı gösterilir. Kaynak sağlayıcısı için işlem yapmak için izninizin olması gerekir `/register/action` . İzin katkıda bulunan ve sahip rollerine dahildir.
 
@@ -43,7 +43,7 @@ Uygulama kodunuz, **kayıt** durumunda olan bir kaynak sağlayıcısı için kay
 
 Aboneliğinizde kaynak sağlayıcınızdan hala kaynak türleri varsa, bir kaynak sağlayıcısının kaydını silemezsiniz.
 
-## <a name="azure-portal"></a>Azure portal
+## <a name="azure-portal"></a>Azure portalı
 
 Tüm kaynak sağlayıcılarını ve aboneliğiniz için kayıt durumunu görmek için:
 

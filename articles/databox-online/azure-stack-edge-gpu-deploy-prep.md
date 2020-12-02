@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 46c5271c8ded970442d1ae4022573473997d98af
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: cdfd012d5015e156439a1afa89e818bf82b64dc6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427000"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449332"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>Öğretici: Azure Stack Edge Pro 'YU GPU ile dağıtmaya hazırlanma 
 
@@ -28,13 +28,13 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Yeni kaynak oluşturma
 > * Etkinleştirme anahtarı alma
 
-### <a name="get-started"></a>başlarken
+### <a name="get-started"></a>Kullanmaya başlayın
 
 Azure Stack Edge Pro dağıtımı için öncelikle ortamınızı hazırlamanız gerekir. Ortam çalışmaya başladıktan sonra, cihazı tam olarak dağıtmak için gerekli adımları ve gerekirse isteğe bağlı adımları ve yordamları izleyin. Adım adım dağıtım yönergeleri, bu gerekli ve isteğe bağlı adımların her birini ne zaman gerçekleştirmeniz gerektiğini gösterir.
 
-| Adım | Description |
+| Adım | Açıklama |
 | --- | --- |
-| **Hazırlık** |Bu adımların, yaklaşan dağıtım için hazırlanmasından tamamlanması gerekir. |
+| **Hazırlama** |Bu adımların, yaklaşan dağıtım için hazırlanmasından tamamlanması gerekir. |
 | **[Dağıtım yapılandırma denetim listesi](#deployment-configuration-checklist)** |Dağıtımdan önce ve dağıtım sırasında bilgi toplamak ve bilgileri kaydetmek için bu denetim listesini kullanın. |
 | **[Dağıtım önkoşulları](#prerequisites)** |Bunlar, ortamın dağıtım için hazır olduğunu doğrular. |
 |  | |
@@ -58,7 +58,7 @@ Artık Azure Stack Edge Pro cihazınız için yazılım yapılandırmasıyla ilg
 Cihazınızı dağıtmadan önce, Azure Stack Edge Pro cihazınızda yazılımı yapılandırmak için bilgi toplamanız gerekir. Bu bilgilerin bir bölümünü önceden hazırlamak, cihazı ortamınızda dağıtma işlemini kolaylaştırmaya yardımcı olur. Cihazınızı dağıtırken yapılandırma ayrıntılarını göz önünde bırakmak için [Azure Stack Edge Pro dağıtım yapılandırması denetim listesini](azure-stack-edge-gpu-deploy-checklist.md) kullanın.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Stack Edge kaynağınız, Azure Stack Edge Pro cihazınız ve veri merkezi ağı için yapılandırma önkoşulları aşağıda verilmiştir.
 
@@ -66,7 +66,7 @@ Azure Stack Edge kaynağınız, Azure Stack Edge Pro cihazınız ve veri merkezi
 
 Başlamadan önce aşağıdakilerden emin olun:
 
-- Microsoft Azure aboneliğiniz Azure Stack Edge kaynağı için etkinleştirilir. [Microsoft kurumsal anlaşma (EA)](https://azure.microsoft.com/overview/sales-number/), [bulut çözümü sağlayıcısı (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp)veya [Microsoft Azure sponsorluğu](https://azure.microsoft.com/offers/ms-azr-0036p/)gibi desteklenen bir abonelik kullandığınızdan emin olun. Kullandıkça öde abonelikleri desteklenmez. Sahip olduğunuz Azure aboneliğinin türünü belirlemek için bkz. [Azure teklifi nedir?](../cost-management-billing/manage/switch-azure-offer.md#what-is-an-azure-offer).
+- Microsoft Azure aboneliğiniz Azure Stack Edge kaynağı için etkinleştirilir. [Microsoft kurumsal anlaşma (EA)](https://azure.microsoft.com/overview/sales-number/), [bulut çözümü sağlayıcısı (CSP)](/partner-center/azure-plan-lp)veya [Microsoft Azure sponsorluğu](https://azure.microsoft.com/offers/ms-azr-0036p/)gibi desteklenen bir abonelik kullandığınızdan emin olun. Kullandıkça öde abonelikleri desteklenmez. Sahip olduğunuz Azure aboneliğinin türünü belirlemek için bkz. [Azure teklifi nedir?](../cost-management-billing/manage/switch-azure-offer.md#what-is-an-azure-offer).
 - Azure Stack Edge Pro/Data Box Gateway, IoT Hub ve Azure depolama kaynakları için kaynak grubu düzeyinde sahip veya katkıda bulunan erişiminiz var.
 
     - Azure Stack Edge/Data Box Gateway kaynağı oluşturmak için, kaynak grubu düzeyinde katkıda bulunan (veya üzeri) izinlere sahip olmanız gerekir. 
@@ -74,7 +74,7 @@ Başlamadan önce aşağıdakilerden emin olun:
         - Kaynak sağlayıcısını kaydetmek için Azure portal, **abonelik > kaynak sağlayıcılarına > giriş > abonelikleri**' ne gidin. 
         - Belirli kaynak sağlayıcısını arayın, örneğin, `Microsoft.DataBoxEdge` ve kaynak sağlayıcısını kaydedin. 
     - Bir depolama hesabı kaynağı oluşturmak için, kaynak grubu düzeyinde katkıda bulunan veya daha yüksek erişim kapsamına ihtiyacınız vardır. Azure depolama, varsayılan olarak kayıtlı bir kaynak sağlayıcısıdır.
-- Etkinleştirme anahtarı veya bir depolama hesabı kullanan paylaşma oluşturma gibi kimlik bilgisi işlemleri oluşturmak için Azure Active Directory Graph API yönetici veya Kullanıcı erişimi vardır. Daha fazla bilgi için bkz. [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
+- Etkinleştirme anahtarı veya bir depolama hesabı kullanan paylaşma oluşturma gibi kimlik bilgisi işlemleri oluşturmak için Azure Active Directory Graph API yönetici veya Kullanıcı erişimi vardır. Daha fazla bilgi için bkz. [Azure Active Directory Graph API](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
 
 
 ### <a name="for-the-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro cihazı için
@@ -107,13 +107,13 @@ Azure Stack Edge kaynağı oluşturmak için Azure portal aşağıdaki adımlar�
 
 1. Bu URL 'de Azure portal oturum açmak için Microsoft Azure kimlik bilgilerinizi kullanın: [https://portal.azure.com](https://portal.azure.com) .
 
-2. Sol bölmede **+ kaynak oluştur**' u seçin. **Azure Stack Edge/Data Box Gateway**için arama yapın ve seçin. **Oluştur**’u seçin. 
+2. Sol bölmede **+ kaynak oluştur**' u seçin. **Azure Stack Edge/Data Box Gateway** için arama yapın ve seçin. **Oluştur**’u seçin. 
 
 3. Azure Stack Edge Pro cihazı için kullanmak istediğiniz aboneliği seçin. Bu fiziksel cihazı göndermek istediğiniz ülkeyi seçin. **Cihazları göster**' i seçin.
 
     ![Kaynak oluşturma 1](media/azure-stack-edge-gpu-deploy-prep/create-resource-1.png)
 
-4. Cihaz türü seçin. **Azure Stack Edge Pro**altında **GPU Ile Azure Stack Edge Pro** ' yı seçin ve ardından **Seç**' i seçin. Herhangi bir sorun görürseniz veya cihaz türünü seçmezseniz, [sorun giderme sorunları gider](azure-stack-edge-troubleshoot-ordering.md)bölümüne gidin.
+4. Cihaz türü seçin. **Azure Stack Edge Pro** altında **GPU Ile Azure Stack Edge Pro** ' yı seçin ve ardından **Seç**' i seçin. Herhangi bir sorun görürseniz veya cihaz türünü seçmezseniz, [sorun giderme sorunları gider](azure-stack-edge-troubleshoot-ordering.md)bölümüne gidin.
 
     ![Kaynak oluşturma 3](media/azure-stack-edge-gpu-deploy-prep/create-resource-3.png)
 
@@ -121,14 +121,14 @@ Azure Stack Edge kaynağı oluşturmak için Azure portal aşağıdaki adımlar�
 
     ![Kaynak oluşturma 4](media/azure-stack-edge-gpu-deploy-prep/create-resource-4.png)
 
-6. **Temel bilgiler** sekmesinde, aşağıdaki **proje ayrıntılarını**girin veya seçin.
+6. **Temel bilgiler** sekmesinde, aşağıdaki **proje ayrıntılarını** girin veya seçin.
     
     |Ayar  |Değer  |
     |---------|---------|
     |Abonelik    |Bu, önceki seçime göre otomatik olarak doldurulur. Abonelik fatura hesabınıza bağlıdır. |
-    |Kaynak grubu  |Mevcut grubu seçin veya yeni bir grup oluşturun.<br>[Azure Kaynak Grupları](../azure-resource-manager/resource-group-overview.md) hakkında daha fazla bilgi edinin.     |
+    |Kaynak grubu  |Mevcut grubu seçin veya yeni bir grup oluşturun.<br>[Azure Kaynak Grupları](../azure-resource-manager/management/overview.md) hakkında daha fazla bilgi edinin.     |
 
-7. Aşağıdaki **örnek ayrıntılarını**girin veya seçin.
+7. Aşağıdaki **örnek ayrıntılarını** girin veya seçin.
 
     |Ayar  |Değer  |
     |---------|---------|
@@ -139,7 +139,7 @@ Azure Stack Edge kaynağı oluşturmak için Azure portal aşağıdaki adımlar�
 
 8. **İleri ' yi seçin: sevkiyat adresi**.
 
-    - Zaten bir cihazınız varsa, **Azure Stack Edge Pro cihazım**için Birleşik giriş kutusunu seçin.
+    - Zaten bir cihazınız varsa, **Azure Stack Edge Pro cihazım** için Birleşik giriş kutusunu seçin.
 
         ![Kaynak oluştur 6](media/azure-stack-edge-gpu-deploy-prep/create-resource-6.png)
 
@@ -149,7 +149,7 @@ Azure Stack Edge kaynağı oluşturmak için Azure portal aşağıdaki adımlar�
 
 9. **Sonraki: Etiketler**' i seçin. İsteğe bağlı olarak kaynakları kategorilere ayırarak ve faturalandırmayı birleştirmek için Etiketler sağlayın. **Sonraki: Gözden geçirme ve oluşturma**’yı seçin.
 
-10. **Gözden geçir + oluştur** sekmesinde, **fiyatlandırma ayrıntılarını**, **kullanım koşulları**ve kaynağınızın ayrıntılarını gözden geçirin. **Gizlilik koşullarını Incelediğim**Birleşik giriş kutusunu seçin.
+10. **Gözden geçir + oluştur** sekmesinde, **fiyatlandırma ayrıntılarını**, **kullanım koşulları** ve kaynağınızın ayrıntılarını gözden geçirin. **Gizlilik koşullarını Incelediğim** Birleşik giriş kutusunu seçin.
 
     ![Kaynak oluşturma 8](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png) 
 
@@ -207,6 +207,3 @@ Azure Stack Edge Pro 'Yu nasıl yükleyeceğinizi öğrenmek için bir sonraki �
 
 > [!div class="nextstepaction"]
 > [Azure Stack Edge Pro 'Yu yükler](./azure-stack-edge-gpu-deploy-install.md)
-
-
-

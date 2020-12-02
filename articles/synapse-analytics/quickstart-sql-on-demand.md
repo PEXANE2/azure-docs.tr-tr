@@ -1,6 +1,6 @@
 ---
 title: 'Hızlı başlangıç: sunucusuz SQL havuzu kullanma'
-description: Bu hızlı başlangıçta, sunucusuz SQL Havuzu (Önizleme) kullanarak çeşitli dosya türlerini nasıl sorgulayabileceğinizi göreceksiniz.
+description: Bu hızlı başlangıçta, sunucusuz SQL havuzu kullanarak çeşitli dosya türlerini nasıl sorgulayacağınızı görürsünüz ve öğrenirsiniz.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,22 +9,22 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 270942392e028964c7e9b1c110e4d9f118bd4953
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: e75bab664bdd0d6a4ac898905226c9956f62b4ff
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682987"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450501"
 ---
 # <a name="quickstart-use-serverless-sql-pool"></a>Hızlı başlangıç: sunucusuz SQL havuzu kullanma
 
-SYNAPSE sunucusuz SQL Havuzu (Önizleme), Azure depolama 'ya yerleştirilmiş dosyalarda SQL sorguları çalıştırmanızı sağlayan sunucusuz bir sorgu hizmetidir. Bu hızlı başlangıçta, sunucusuz SQL havuzu kullanarak çeşitli dosya türlerini sorgulamayı öğreneceksiniz. Desteklenen biçimler [OPENROWSET](sql/develop-openrowset.md)'de listelenmiştir.
+SYNAPSE sunucusuz SQL havuzu, Azure depolama 'ya yerleştirilmiş dosyalarda SQL sorguları çalıştırmanızı sağlayan sunucusuz bir sorgu hizmetidir. Bu hızlı başlangıçta, sunucusuz SQL havuzu kullanarak çeşitli dosya türlerini sorgulamayı öğreneceksiniz. Desteklenen biçimler [OPENROWSET](sql/develop-openrowset.md)'de listelenmiştir.
 
 Bu hızlı başlangıçta sorgulama: CSV, Apache Parquet ve JSON dosyaları gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Sorgu vermek için bir SQL istemcisi seçin:
+Sorguların gönderileceği SQL istemcisini seçin:
 
 - [Azure SYNAPSE Studio](quickstart-synapse-studio.md) , depolama alanındaki dosyalara GÖZATıP SQL sorguları oluşturmayı kullanabileceğiniz bir web aracıdır.
 - [Azure Data Studio](sql/get-started-azure-data-studio.md) , isteğe bağlı veritabanınızda SQL sorguları ve Not defterleri çalıştırmanızı sağlayan bir istemci aracıdır.

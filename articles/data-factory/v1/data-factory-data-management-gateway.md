@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: b362e1aecfa2cd4e5677230fcb94113b27a44ec6
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 94c1bed8d94f73bc7794037b307618f4c36c4518
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637471"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450613"
 ---
 # <a name="data-management-gateway"></a>Veri Yönetimi Ağ Geçidi
 > [!NOTE]
@@ -63,15 +63,15 @@ Aşağıda, veri ağ geçidi ile kopyalama adımları için üst düzey veri ak�
 ### <a name="considerations-for-using-gateway"></a>Ağ geçidini kullanma konuları
 * Birden çok şirket içi veri kaynağı için tek bir veri yönetimi ağ geçidi örneği kullanılabilir. Ancak, **tek bir ağ geçidi örneği yalnızca bir Azure Data Factory 'ye bağlıdır** ve başka bir veri fabrikası ile paylaşılamaz.
 * Tek bir makineye **yalnızca bir veri yönetimi ağ geçidi örneği** yüklenmiş olabilir. Şirket içi veri kaynaklarına erişmesi gereken iki veri fabrikası olduğunu varsayalım, ağ geçitlerini iki şirket içi bilgisayara yüklemeniz gerekir. Diğer bir deyişle, bir ağ geçidi belirli bir veri fabrikasına bağlanır
-* **Ağ geçidinin veri kaynağıyla aynı makinede olması gerekmez** . Ancak, veri kaynağında ağ geçidinin daha yakın olması, ağ geçidinin veri kaynağına bağlanması için geçen süreyi azaltır. Ağ geçidini, şirket içi veri kaynağını barındıran bilgisayardan farklı bir makineye yüklemenizi öneririz. Ağ geçidi ve veri kaynağı farklı makinelerinizde, ağ geçidi veri kaynağı olan kaynaklar için rekabet etmez.
+* **Ağ geçidinin veri kaynağıyla aynı makinede olması gerekmez**. Ancak, veri kaynağında ağ geçidinin daha yakın olması, ağ geçidinin veri kaynağına bağlanması için geçen süreyi azaltır. Ağ geçidini, şirket içi veri kaynağını barındıran bilgisayardan farklı bir makineye yüklemenizi öneririz. Ağ geçidi ve veri kaynağı farklı makinelerinizde, ağ geçidi veri kaynağı olan kaynaklar için rekabet etmez.
 * **Aynı şirket içi veri kaynağına bağlanan farklı makinelerde birden fazla ağ** geçidine sahip olabilirsiniz. Örneğin, iki veri fabrikası sunan iki ağ geçidi olabilir, ancak aynı şirket içi veri kaynağı hem veri fabrikaları ile kaydedilir.
 * Bilgisayarınızda **Power BI** senaryoya hizmet eden bir ağ geçidiniz zaten varsa, başka bir makineye **Azure Data Factory için ayrı bir ağ geçidi** yükleyebilirsiniz.
 * **ExpressRoute** kullandığınızda bile ağ geçidinin kullanılması gerekir.
 * **ExpressRoute** kullandığınızda bile veri kaynağınızı şirket içi veri kaynağı (bir güvenlik duvarının arkasında olan) olarak değerlendirin. Hizmet ve veri kaynağı arasında bağlantı kurmak için ağ geçidini kullanın.
-* Veri deposu bir **Azure IaaS VM** 'sinde bulutta olsa bile **ağ geçidini kullanmanız** gerekir.
+* Veri deposu bir **Azure IaaS VM**'sinde bulutta olsa bile **ağ geçidini kullanmanız** gerekir.
 
 ## <a name="installation"></a>Yükleme
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 * Desteklenen **Işletim sistemi** sürümleri şunlardır; Windows 7, Windows 8/8.1, Windows 10, windows Server 2008 R2, windows Server 2012, windows Server 2012 R2. Bir etki alanı denetleyicisine veri yönetimi ağ geçidi yüklemesi şu anda desteklenmiyor.
 * .NET Framework 4.5.1 veya üzeri gereklidir. Windows 7 makinesine ağ geçidi yüklüyorsanız, .NET Framework 4,5 veya sonraki bir sürümü yükleyebilirsiniz. Ayrıntılar için [.NET Framework sistem gereksinimleri](/dotnet/framework/get-started/system-requirements) ' ne bakın.
 * Ağ Geçidi makinesi için önerilen **yapılandırma** en az 2 GHz, 4 çekirdek, 8 GB RAM ve 80 GB disk.
@@ -92,18 +92,18 @@ Veri yönetimi ağ geçidi aşağıdaki yollarla yüklenebilir:
 
 ### <a name="install-the-gateway-from-download-center"></a>Ağ geçidini indirme merkezinden yükleme
 1. [Microsoft veri yönetimi ağ geçidi indirme sayfasına](https://www.microsoft.com/download/details.aspx?id=39717)gidin.
-2. **İndir** ' e tıklayın, **64 bit** sürümünü seçin (32 bit daha desteklenmez) ve **İleri** ' ye tıklayın.
+2. **İndir**' e tıklayın, **64 bit** sürümünü seçin (32 bit daha desteklenmez) ve **İleri**' ye tıklayın.
 3. **MSI** 'yi doğrudan çalıştırın veya sabit diskinize kaydedin ve çalıştırın.
-4. **Hoş geldiniz** sayfasında bir **dil** seçin, **İleri** ' ye tıklayın.
-5. End-User lisans sözleşmesini **kabul edin** ve **İleri** ' ye tıklayın.
-6. Ağ geçidini yüklemek için **klasör** ' i seçin ve **İleri** ' ye tıklayın.
-7. **Yüklenmeye hazır** sayfasında **Yükle** 'ye tıklayın.
+4. **Hoş geldiniz** sayfasında bir **dil** seçin, **İleri**' ye tıklayın.
+5. End-User lisans sözleşmesini **kabul edin** ve **İleri**' ye tıklayın.
+6. Ağ geçidini yüklemek için **klasör** ' i seçin ve **İleri**' ye tıklayın.
+7. **Yüklenmeye hazır** sayfasında **Yükle**'ye tıklayın.
 8. Yüklemeyi tamamlamaya **son** ' a tıklayın.
 9. Azure portal anahtarı alın. Adım adım yönergeler için sonraki bölüme bakın.
 10. Makinenizde çalışan **veri yönetimi ağ geçidi Configuration Manager** **ağ geçidini kaydet** sayfasında, aşağıdaki adımları uygulayın:
     1. Metni metne yapıştırın.
     2. İsteğe bağlı olarak, anahtar metnini görmek için **ağ geçidi anahtarını göster** ' e tıklayın.
-    3. **Kaydet** ’e tıklayın.
+    3. **Kaydet**’e tıklayın.
 
 ### <a name="register-gateway-using-key"></a>Anahtar kullanarak ağ geçidini kaydetme
 #### <a name="if-you-havent-already-created-a-logical-gateway-in-the-portal"></a>Portalda zaten bir mantıksal ağ geçidi oluşturmadıysanız
@@ -116,10 +116,10 @@ Portalda bir ağ geçidi oluşturmak ve **yapılandırma** sayfasından anahtar�
 2. **Bağlı hizmetler** sayfasında, portalda oluşturduğunuz mantıksal **ağ geçidini** seçin.
 
     ![mantıksal ağ geçidi](media/data-factory-data-management-gateway/data-factory-select-gateway.png)
-3. **Veri ağ geçidi** sayfasında, **indir ve veri ağ geçidini yükle** ' ye tıklayın.
+3. **Veri ağ geçidi** sayfasında, **indir ve veri ağ geçidini yükle**' ye tıklayın.
 
     ![Portalda bağlantıyı indirin](media/data-factory-data-management-gateway/download-and-install-link-on-portal.png)
-4. **Yapılandır** sayfasında **anahtarı yeniden oluştur** ' a tıklayın. Dikkatle okuduktan sonra uyarı iletisinde Evet ' e tıklayın.
+4. **Yapılandır** sayfasında **anahtarı yeniden oluştur**' a tıklayın. Dikkatle okuduktan sonra uyarı iletisinde Evet ' e tıklayın.
 
     ![Anahtar düğmesini yeniden oluştur](media/data-factory-data-management-gateway/recreate-key-button.png)
 5. Anahtarın yanındaki Kopyala düğmesine tıklayın. Anahtar panoya kopyalanır.
@@ -158,7 +158,7 @@ Windows güvenlik duvarı düzeyinde, bu giden bağlantı noktaları normalde et
 #### <a name="copy-data-from-a-source-data-store-to-a-sink-data-store"></a>Kaynak veri deposundan havuz veri deposuna veri kopyalama
 Güvenlik Duvarı kurallarının kurumsal güvenlik duvarı, ağ geçidi makinesindeki Windows Güvenlik Duvarı ve veri deposunun kendisi üzerinde düzgün şekilde etkinleştirildiğinden emin olun. Bu kuralların etkinleştirilmesi, ağ geçidinin hem kaynağa hem de havuza başarıyla bağlanmasına izin verir. Kopyalama işleminde yer alan her bir veri deposu için kuralları etkinleştirin.
 
-Örneğin, **Şirket içi bir veri deposundan bir Azure SQL veritabanı havuzuna veya bir Azure SYNAPSE Analytics (eski ADıYLA SQL veri ambarı) havuzuna** kopyalamak için aşağıdaki adımları uygulayın:
+Örneğin, **Şirket içi bir veri deposundan bir Azure SQL veritabanı havuzuna veya bir Azure SYNAPSE Analytics havuzuna** kopyalamak için aşağıdaki adımları uygulayın:
 
 * Windows Güvenlik Duvarı ve kurumsal güvenlik duvarı için **1433** numaralı bağlantı noktasında giden **TCP** iletişimine izin verin.
 * Mantıksal SQL Server 'ın güvenlik duvarı ayarlarını, ağ geçidi makinesinin IP adresini izin verilen IP adresleri listesine ekleyecek şekilde yapılandırın.
@@ -179,9 +179,9 @@ Ağ Geçidi, bulut hizmetine bağlanmak için proxy sunucusunu kullanır. İlk k
 
 Üç yapılandırma seçeneği vardır:
 
-* **Proxy kullanma** : ağ geçidi, bulut hizmetlerine bağlanmak için hiçbir proxy 'yi açık olarak kullanmaz.
-* **Sistem proxy 'Si kullan** : ağ geçidi, diahost.exe.config ve diawp.exe.config yapılandırılan proxy ayarını kullanır. diahost.exe.config ve diawp.exe.config içinde yapılandırılmış bir proxy yoksa, ağ geçidi, proxy 'ye geçmeden doğrudan bulut hizmetine bağlanır.
-* **Özel proxy kullan** : diahost.exe.config ve diawp.exe.config yapılandırma kullanmak yerine, ağ geçidi IÇIN kullanılacak http proxy ayarını yapılandırın. Adres ve bağlantı noktası gereklidir. Kullanıcı adı ve parola, proxy 'nizin kimlik doğrulama ayarına bağlı olarak isteğe bağlıdır. Tüm ayarlar, ağ geçidinin kimlik bilgisi sertifikasıyla şifrelenir ve ağ geçidi ana makinesinde yerel olarak depolanır.
+* **Proxy kullanma**: ağ geçidi, bulut hizmetlerine bağlanmak için hiçbir proxy 'yi açık olarak kullanmaz.
+* **Sistem proxy 'Si kullan**: ağ geçidi, diahost.exe.config ve diawp.exe.config yapılandırılan proxy ayarını kullanır. diahost.exe.config ve diawp.exe.config içinde yapılandırılmış bir proxy yoksa, ağ geçidi, proxy 'ye geçmeden doğrudan bulut hizmetine bağlanır.
+* **Özel proxy kullan**: diahost.exe.config ve diawp.exe.config yapılandırma kullanmak yerine, ağ geçidi IÇIN kullanılacak http proxy ayarını yapılandırın. Adres ve bağlantı noktası gereklidir. Kullanıcı adı ve parola, proxy 'nizin kimlik doğrulama ayarına bağlı olarak isteğe bağlıdır. Tüm ayarlar, ağ geçidinin kimlik bilgisi sertifikasıyla şifrelenir ve ağ geçidi ana makinesinde yerel olarak depolanır.
 
 Güncelleştirilmiş proxy ayarlarını kaydettikten sonra veri yönetimi ağ geçidi konak hizmeti otomatik olarak yeniden başlatılır.
 
@@ -205,7 +205,7 @@ Configuration Manager aracını kullanarak HTTP proxy 'sini görüntüleyebilir 
 HTTP proxy için **sistem proxy ayarını kullan** ' ı seçerseniz, ağ geçidi diahost.exe.config ve diawp.exe.config ara sunucu ayarını kullanır. diahost.exe.config ve diawp.exe.config hiçbir proxy belirtilmemişse, ağ geçidi, proxy 'ye geçmeden doğrudan bulut hizmetine bağlanır. Aşağıdaki yordam diahost.exe.config dosyasını güncelleştirmek için yönergeler sağlar.
 
 1. Dosya Gezgini 'nde, özgün dosyayı yedeklemek için *C: \\ \\ Program Files \\ Microsoft veri yönetimi Gateway \\ 2,0 \\ Shared \\diahost.exe.config* güvenli bir kopyasını oluşturun.
-2. Yönetici olarak çalışan Notepad.exe başlatın ve metin dosyası *C: \\ \\ Program dosyaları \\ Microsoft veri yönetimi Gateway \\ 2,0 \\ Shared \\diahost.exe.config* ' nı açın. Aşağıdaki kodda gösterildiği gibi, system.net için varsayılan etiketi bulabilirsiniz:
+2. Yönetici olarak çalışan Notepad.exe başlatın ve metin dosyası *C: \\ \\ Program dosyaları \\ Microsoft veri yönetimi Gateway \\ 2,0 \\ Shared \\diahost.exe.config*' nı açın. Aşağıdaki kodda gösterildiği gibi, system.net için varsayılan etiketi bulabilirsiniz:
 
     ```
     <system.net>
@@ -311,7 +311,7 @@ Aşağıdaki adımları uygulayarak otomatik güncelleştirme özelliğini devre
 Ağ geçidini yükledikten sonra, aşağıdaki yollarla Veri Yönetimi ağ geçidi Configuration Manager başlatabilirsiniz:
 
 1. **Ara** penceresinde, bu yardımcı programa erişmek Için **veri yönetimi ağ geçidi** yazın.
-2. Yürütülebilir *ConfigManager.exe* şu klasörde çalıştırın: *C: \\ \\ Program Files \\ Microsoft veri yönetimi Gateway \\ 2,0 \\ Shared* .
+2. Yürütülebilir *ConfigManager.exe* şu klasörde çalıştırın: *C: \\ \\ Program Files \\ Microsoft veri yönetimi Gateway \\ 2,0 \\ Shared*.
 
 ### <a name="home-page"></a>Giriş sayfası
 Giriş sayfası aşağıdaki eylemleri yapmanıza olanak sağlar:
@@ -373,7 +373,7 @@ Kullanılabilir bellek | Bir ağ geçidi düğümündeki kullanılabilir bellek.
 CPU kullanımı | Bir ağ geçidi düğümünün CPU kullanımı. Bu değer, neredeyse gerçek zamanlı bir anlık görüntüdür.
 Ağ (ın/out) | Ağ Geçidi düğümünün ağ kullanımı. Bu değer, neredeyse gerçek zamanlı bir anlık görüntüdür.
 Eşzamanlı Işler (çalışıyor/limit) | Her düğümde çalışan iş veya görev sayısı. Bu değer, neredeyse gerçek zamanlı bir anlık görüntüdür. Limit her düğüm için en fazla eş zamanlı işi belirtir. Bu değer makine boyutuna göre tanımlanır. CPU/bellek/ağın kullanıldığı, ancak etkinliklerin zaman aşımına uğramasının gerektiği Gelişmiş senaryolarda, eşzamanlı iş yürütmeyi ölçeklendirmeye yönelik sınırı artırabilirsiniz. Bu özellik, tek düğümlü bir ağ geçidiyle (ölçeklenebilirlik ve kullanılabilirlik özelliği etkinleştirilmediği halde) da kullanılabilir.
-Rol | Çok düğümlü bir ağ geçidi-dağıtıcı ve çalışan üzerinde iki tür rol vardır. Tüm düğümler çalışanlardır, yani işleri yürütmek için hepsi kullanılabilirler. Bulut hizmetlerinden görevler/işler çekmek ve bunları farklı çalışan düğümlerine (kendisi dahil) göndermek için kullanılan yalnızca bir dağıtıcı düğümü vardır.
+Role | Çok düğümlü bir ağ geçidi-dağıtıcı ve çalışan üzerinde iki tür rol vardır. Tüm düğümler çalışanlardır, yani işleri yürütmek için hepsi kullanılabilirler. Bulut hizmetlerinden görevler/işler çekmek ve bunları farklı çalışan düğümlerine (kendisi dahil) göndermek için kullanılan yalnızca bir dağıtıcı düğümü vardır.
 
 Bu sayfada, ağ geçidinde iki veya daha fazla düğüm (genişleme senaryosu) olduğunda daha anlamlı bir ayar görürsünüz. Çok düğümlü bir ağ geçidi kurma hakkında ayrıntılı bilgi için bkz. [veri yönetimi ağ geçidi-yüksek kullanılabilirlik ve ölçeklenebilirlik](data-factory-data-management-gateway-high-availability-scalability.md) .
 
@@ -414,10 +414,10 @@ Bu bölüm, ağ geçidi istemcisini bir makineden başka bir makineye taşımaya
 2. **Bağlı hizmetler** SAYFASıNıN **veri ağ geçitleri** bölümünde ağ geçidinizi seçin.
 
     ![Ağ Geçidi seçiliyken bağlı hizmetler sayfası](./media/data-factory-data-management-gateway/LinkedServiceBladeWithGateway.png)
-3. **Veri ağ geçidi** sayfasında, **indir ve veri ağ geçidini yükle** ' ye tıklayın.
+3. **Veri ağ geçidi** sayfasında, **indir ve veri ağ geçidini yükle**' ye tıklayın.
 
     ![Ağ Geçidi bağlantısını indir](./media/data-factory-data-management-gateway/DownloadGatewayLink.png)
-4. **Yapılandır** sayfasında, **veri ağ geçidini indir ve yükle** ' ye tıklayın ve veri ağ geçidini makineye yüklemek için yönergeleri izleyin.
+4. **Yapılandır** sayfasında, **veri ağ geçidini indir ve yükle**' ye tıklayın ve veri ağ geçidini makineye yüklemek için yönergeleri izleyin.
 
     ![Sayfayı Yapılandır](./media/data-factory-data-management-gateway/ConfigureBlade.png)
 5. **Microsoft veri yönetimi Gateway Configuration Manager** açık tutun.
@@ -430,7 +430,7 @@ Bu bölüm, ağ geçidi istemcisini bir makineden başka bir makineye taşımaya
 
     ![Anahtarı kopyala ve Kaydet](./media/data-factory-data-management-gateway/CopyKeyAndRegister.png)
 8. Ağ geçidini bulut hizmetine kaydetmek için **Kaydet** ' e tıklayın.
-9. **Ayarlar** sekmesinde, eski ağ geçidiyle kullanılan sertifikayı seçmek için **Değiştir** ' e tıklayın, **parolayı** girin ve **son** ' a tıklayın.
+9. **Ayarlar** sekmesinde, eski ağ geçidiyle kullanılan sertifikayı seçmek için **Değiştir** ' e tıklayın, **parolayı** girin ve **son**' a tıklayın.
 
    ![Sertifika belirtin](./media/data-factory-data-management-gateway/SpecifyCertificate.png)
 
@@ -494,7 +494,7 @@ Bu bölümde, Azure PowerShell cmdlet 'lerini kullanarak bir ağ geçidinin nas�
     ```powershell
     $MyDMG = New-AzDataFactoryGateway -Name <gatewayName> -DataFactoryName <dataFactoryName> -ResourceGroupName ADF –Description <desc>
     ```
-    **Örnek komut ve çıkış** :
+    **Örnek komut ve çıkış**:
 
     ```
     PS C:\> $MyDMG = New-AzDataFactoryGateway -Name MyGateway -DataFactoryName $df -ResourceGroupName ADF –Description "gateway for walkthrough"
@@ -512,7 +512,7 @@ Bu bölümde, Azure PowerShell cmdlet 'lerini kullanarak bir ağ geçidinin nas�
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. Azure PowerShell ' de klasöre geçin: *C: \\ \\ Program Files \\ Microsoft Integration Runtime \\ 3,0 \\ powershellscript \\* . Aşağıdaki komutta gösterildiği gibi, yerel değişken **$Key** ilişkili *RegisterGateway.ps1* çalıştırın. Bu betik, makinenizde yüklü olan istemci aracısını daha önce oluşturduğunuz mantıksal ağ geçidine kaydeder.
+1. Azure PowerShell ' de klasöre geçin: *C: \\ \\ Program Files \\ Microsoft Integration Runtime \\ 3,0 \\ powershellscript \\*. Aşağıdaki komutta gösterildiği gibi, yerel değişken **$Key** ilişkili *RegisterGateway.ps1* çalıştırın. Bu betik, makinenizde yüklü olan istemci aracısını daha önce oluşturduğunuz mantıksal ağ geçidine kaydeder.
 
     ```powershell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key

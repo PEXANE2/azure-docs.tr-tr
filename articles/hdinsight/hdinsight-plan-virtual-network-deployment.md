@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 05/04/2020
-ms.openlocfilehash: 60bb16b0a4fd2e710d0d5fddc6cf82916f2f66af
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 750e8cc59f196fda6bf3a816885c3c0b29a69a56
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741422"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451918"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Azure HDInsight için bir sanal ağ planlayın
 
@@ -148,7 +148,7 @@ Birleşik ağlardaki sanal ağ ve kaynaklar arasında ad çözümlemesini etkinl
 
          * Diğer tüm istekleri şirket içi DNS sunucusuna ilet. Şirket içi DNS, diğer tüm ad çözümleme isteklerini, hatta Microsoft.com gibi internet kaynakları için istekleri işler.
 
-     * __Şirket ıçı DNS__ : sanal ağ DNS son eki için ISTEKLERI özel DNS sunucusuna iletir. Özel DNS sunucusu daha sonra Azure özyinelemeli çözümleyiciye iletilir.
+     * __Şirket ıçı DNS__: sanal ağ DNS son eki için ISTEKLERI özel DNS sunucusuna iletir. Özel DNS sunucusu daha sonra Azure özyinelemeli çözümleyiciye iletilir.
 
        Bu yapılandırma, sanal ağın DNS sonekini özel DNS sunucusuna içeren tam etki alanı adları için istekleri yönlendirir. Diğer tüm istekler (genel internet adresleri için bile) Şirket içi DNS sunucusu tarafından işlenir.
 
@@ -212,4 +212,4 @@ Bir HDInsight kümesi oluşturduğunuzda, bir yük dengeleyici de oluşturulur. 
 * Azure sanal ağları hakkında daha fazla bilgi için bkz. [Azure sanal ağına genel bakış](../virtual-network/virtual-networks-overview.md).
 * Ağ güvenlik grupları hakkında daha fazla bilgi için bkz. [ağ güvenlik grupları](../virtual-network/network-security-groups-overview.md).
 * Kullanıcı tanımlı rotalar hakkında daha fazla bilgi için bkz. [Kullanıcı tanımlı rotalar ve IP iletimi](../virtual-network/virtual-networks-udr-overview.md).
-* Trafiği denetleme hakkında daha fazla bilgi için bkz. [ağ trafiğini denetleme](./control-network-traffic.md).
+* Güvenlik Duvarı tümleştirmesi dahil trafiği denetleme hakkında daha fazla bilgi için bkz. [ağ trafiğini denetleme](./control-network-traffic.md).

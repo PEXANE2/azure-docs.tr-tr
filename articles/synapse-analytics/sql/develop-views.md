@@ -1,6 +1,6 @@
 ---
 title: SQL havuzlarını kullanan T-SQL görünümleri
-description: T-SQL görünümlerini kullanma ve Azure SYNAPSE Analytics 'te özel SQL havuzu ve sunucusuz SQL Havuzu (Önizleme) ile çözümler geliştirme ipuçları.
+description: T-SQL görünümlerini kullanma ve Azure SYNAPSE Analytics 'te özel SQL havuzu ve sunucusuz SQL havuzu ile çözümler geliştirme ipuçları.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5097c35d97e33ef2d6fa0be12c796bf7e4e06950
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 6fb75257a86e9e46d6c180a2a38193adecb2b36a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685741"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451680"
 ---
-# <a name="t-sql-views-with-dedicated-sql-pool-and-serverless-sql-pool-preview--in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu ve sunucusuz SQL Havuzu (Önizleme) içeren T-SQL görünümleri
+# <a name="t-sql-views-with-dedicated-sql-pool-and-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu ve sunucusuz SQL havuzu içeren T-SQL görünümleri
 
-Bu makalede, T-SQL görünümlerini kullanma ve Azure SYNAPSE Analytics 'te adanmış SQL havuzu ve sunucusuz SQL Havuzu (Önizleme) ile çözümler geliştirme hakkında ipuçları bulacaksınız.
+Bu makalede, T-SQL görünümlerini kullanma ve Azure SYNAPSE Analytics 'te adanmış SQL havuzu ve sunucusuz SQL havuzu ile çözümler geliştirme hakkında ipuçları bulacaksınız.
 
 ## <a name="why-use-views"></a>Görünümleri neden kullanılmalıdır?
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: dfc812771f0eeb8dcb0d95bdad1e76ed0b12297e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: c56d83e551265f3fb4de106cb8fa77efd6dcbabc
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92754565"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452122"
 ---
 # <a name="how-to-plan-a-consulting-service-offer-in-the-commercial-marketplace"></a>Ticari Market 'te danışmanlık hizmeti teklifi planlaması
 
@@ -36,7 +36,7 @@ AppSource ve Azure Marketi arasındaki farklar hakkında daha fazla bilgi edinme
 
 ## <a name="eligibility-requirements"></a>Uygunluk gereksinimleri
 
-Bir alan içinde uzmanlığınızı göstermek için bir danışmanlık hizmeti teklifi yayımlamadan önce bir uygunluk gereksinimlerini karşılamanız gerekir. Gereksinimler, teklifinizin temel alınarak ürüne bağlıdır. Her birincil ürün için uygunluk gereksinimlerinin tüm listesi [danışmanlık hizmetleri için sertifika ilkelerdir](https://docs.microsoft.com/legal/marketplace/certification-policies#800-consulting-services).
+Bir alan içinde uzmanlığınızı göstermek için bir danışmanlık hizmeti teklifi yayımlamadan önce bir uygunluk gereksinimlerini karşılamanız gerekir. Gereksinimler, teklifinizin temel alınarak ürüne bağlıdır. Her birincil ürün için uygunluk gereksinimlerinin tüm listesi [danışmanlık hizmetleri için sertifika ilkelerdir](/legal/marketplace/certification-policies#800-consulting-services).
 
 > [!NOTE]
 > Bazı birincil ürünler için çözüm bölgenizdeki bir altın veya gümüş Microsoft uzmanlığına sahip olmanız gerekir. Daha fazla bilgi için bkz. [Microsoft iş ortağı ağı yetkinlikleri](https://partner.microsoft.com/membership/competencies).
@@ -45,11 +45,11 @@ Bir alan içinde uzmanlığınızı göstermek için bir danışmanlık hizmeti 
 
 Ticari Market beş tür danışmanlık hizmetini destekler:
 
-* **Değerlendirme** : bir çözümün uygulanabilirliğini tespit etmek ve uygulamasının maliyetini ve zaman çizelgesini tahmin etmek için bir müşterinin ortamının değerlendirmesi.
-* **Briing** : çerçeveler, tanıtımlar ve müşteri örnekleri kullanarak bir çözüme veya hizmete giriş.
-* **Uygulama** : tam olarak çalışan bir çözüme neden olan tam bir yükleme.
-* **Kavram kanıtı** : bir çözümün müşterinin gereksinimlerini karşılayıp karşılamadığını tespit etmek için sınırlı kapsamlı bir uygulama.
-* **Workshop** : müşterinin şirket içinde etkileşimli bir katılım yapılmıştır. Müşterinin verileri veya ortamında oluşturulan eğitim, briler, değerlendirmeler veya tanıtımlar içerebilir.
+* **Değerlendirme**: bir çözümün uygulanabilirliğini tespit etmek ve uygulamasının maliyetini ve zaman çizelgesini tahmin etmek için bir müşterinin ortamının değerlendirmesi.
+* **Briing**: çerçeveler, tanıtımlar ve müşteri örnekleri kullanarak bir çözüme veya hizmete giriş.
+* **Uygulama**: tam olarak çalışan bir çözüme neden olan tam bir yükleme.
+* **Kavram kanıtı**: bir çözümün müşterinin gereksinimlerini karşılayıp karşılamadığını tespit etmek için sınırlı kapsamlı bir uygulama.
+* **Workshop**: müşterinin şirket içinde etkileşimli bir katılım yapılmıştır. Müşterinin verileri veya ortamında oluşturulan eğitim, briler, değerlendirmeler veya tanıtımlar içerebilir.
 
 Hizmetiniz, en fazla 10 haftalık sabit ve önceden belirlenmiş bir süreye sahip olmalıdır. Hizmet süresi teklif listesinde açık yapılmalıdır.
 
@@ -84,7 +84,7 @@ Iş Ortağı Merkezi 'nde danışmanlık hizmeti teklifinizi oluşturduğunuzda 
 
 Teklifinizi daha kolay bir şekilde oluşturmaya yardımcı olmak için bu öğelerin bazılarını zaman önce hazırlayın. Aksi belirtilmediği takdirde, aşağıdaki öğeler gereklidir.
 
-**Ad** : Bu ad, ticari Market 'teki teklif listelerinizin başlığı olarak görünür. Ad trademarked olabilir. Bu, emojıs (ticari marka ve telif hakkı sembolleri olmadığı durumlar dışında) içeremez ve 50 karakterle sınırlı olmalıdır. Ad, arama motoru iyileştirmesini (SEO) en üst düzeye çıkarmak için teklifin süresini ve hizmet türünü içermelidir. Gerekli biçim *ad: Duration + Type* . Aynı zamanda ürün adı olmadığı müddetçe şirket adınızı eklemeyin. İşte bazı örnekler:
+**Ad**: Bu ad, ticari Market 'teki teklif listelerinizin başlığı olarak görünür. Ad trademarked olabilir. Bu, emojıs (ticari marka ve telif hakkı sembolleri olmadığı durumlar dışında) içeremez ve 50 karakterle sınırlı olmalıdır. Ad, arama motoru iyileştirmesini (SEO) en üst düzeye çıkarmak için teklifin süresini ve hizmet türünü içermelidir. Gerekli biçim *ad: Duration + Type*. Aynı zamanda ürün adı olmadığı müddetçe şirket adınızı eklemeyin. İşte bazı örnekler:
 
 |Söyleme | deyin |
 |---|---|
@@ -92,9 +92,9 @@ Teklifinizi daha kolay bir şekilde oluşturmaya yardımcı olmak için bu öğe
 |Akıllı tuvalet 'ler üzerinde Workshop |Akıllı tuvalet: 1 haftalık Workshop |
 |Contoso 'ya göre SQL Server geçiş PoC |SQL geçişi: 3-WK kavram kanıtı |
 
-**Arama sonuçları Özeti** : teklifinizin 200 karakter veya daha az olması için amacını veya hedefini tanıtın. Bu Özet, ticari Market 'te arama sonuçlarını listelemek için kullanılır. Bu, başlıkla aynı olmamalıdır. En iyi SEO anahtar sözcüklerinizi dahil etmeyi göz önünde bulundurun.
+**Arama sonuçları Özeti**: teklifinizin 200 karakter veya daha az olması için amacını veya hedefini tanıtın. Bu Özet, ticari Market 'te arama sonuçlarını listelemek için kullanılır. Bu, başlıkla aynı olmamalıdır. En iyi SEO anahtar sözcüklerinizi dahil etmeyi göz önünde bulundurun.
 
-**Açıklama** : Bu açıklama ticari Market listesinde görüntülenir. Değer teklifi, önemli avantajlar, amaçlanan kullanıcı tabanı ve herhangi bir kategori ya da sektör ilişkilendirmesi dahil etmeyi göz önünde bulundurun.
+**Açıklama**: Bu açıklama ticari Market listesinde görüntülenir. Değer teklifi, önemli avantajlar, amaçlanan kullanıcı tabanı ve herhangi bir kategori ya da sektör ilişkilendirmesi dahil etmeyi göz önünde bulundurun.
 
 Açıklamayı yazarken, hizmet türüne göre aşağıdaki ölçütleri izleyin:
 
@@ -119,13 +119,13 @@ Açıklamanızı biçimlendirmek için HTML etiketlerini kullanabilirsiniz. Bu k
 
 **Anahtar sözcükleri ara** (isteğe bağlı): müşterilerin çevrimiçi mağazalarda teklifinizi bulmak için kullanabileceği en fazla üç arama anahtar sözcüğü sağlayın. Teklif **adı** ve **açıklamasını** eklemeniz gerekmez.
 
-**Süre** : danışmanlık hizmeti teklifinizin en fazla 10 hafta önceden belirlenmiş bir süresi olmalıdır.
+**Süre**: danışmanlık hizmeti teklifinizin en fazla 10 hafta önceden belirlenmiş bir süresi olmalıdır.
 
-**İletişim bilgileri** : Iş Ortağı Merkezi 'nde şirketinizde iki kişinin adını, e-posta adresini ve telefon numarasını sağlamanız istenecektir (iki kişiden biri olabilirsiniz). Teklifiniz hakkında sizinle iletişim kurmak için bu bilgileri kullanacağız. Bu bilgiler müşterilere gösterilmez, ancak bulut çözümü sağlayıcısı (CSP) iş ortaklarına temin edilebilir.
+**İletişim bilgileri**: Iş Ortağı Merkezi 'nde şirketinizde iki kişinin adını, e-posta adresini ve telefon numarasını sağlamanız istenecektir (iki kişiden biri olabilirsiniz). Teklifiniz hakkında sizinle iletişim kurmak için bu bilgileri kullanacağız. Bu bilgiler müşterilere gösterilmez, ancak bulut çözümü sağlayıcısı (CSP) iş ortaklarına temin edilebilir.
 
-**Destekleyici belgeler** : teklifiniz hakkında bilgi sağlayan en az bir ve en fazla üç MÜŞTERIYE yönelik PDF belgesini karşıya yükleyin. Örneğin, bunlar teknik incelemeler veya broşürler olabilir.
+**Destekleyici belgeler**: teklifiniz hakkında bilgi sağlayan en az bir ve en fazla üç MÜŞTERIYE yönelik PDF belgesini karşıya yükleyin. Örneğin, bunlar teknik incelemeler veya broşürler olabilir.
 
-**Market medyası – logolar** : büyük boyutlu amblem IÇIN bir PNG dosyası sağlayın. İş Ortağı Merkezi, küçük bir logo oluşturmak için bunu kullanacaktır. İsterseniz küçük logoyu daha sonra farklı bir görüntüyle değiştirebilirsiniz.
+**Market medyası – logolar**: büyük boyutlu amblem IÇIN bir PNG dosyası sağlayın. İş Ortağı Merkezi, küçük bir logo oluşturmak için bunu kullanacaktır. İsterseniz küçük logoyu daha sonra farklı bir görüntüyle değiştirebilirsiniz.
 
 * Büyük (216 x 216-350 x 350 px, gereklidir)
 * Küçük (48 x 48 piksel, isteğe bağlı)
@@ -139,7 +139,7 @@ Logolarınız için şu yönergeleri izleyin:
 * Saydam bir arka plan kullanıyorsanız logo ve metnin beyaz, siyah ve mavi olmadığından emin olun.
 * Logo veya arka planda degradeleri önleyin. Şirket veya marka adınız dahil olmak üzere logoya metin yerleştirmeyin.
 
-**Market medyası – ekran görüntüleri** : teklifinizi gösteren en az bir ve en fazla beş görüntü ekleyin. Tüm görüntüler 1280 x 720 piksel boyutunda ve içinde olmalıdır. PNG biçimi.
+**Market medyası – ekran görüntüleri**: teklifinizi gösteren en az bir ve en fazla beş görüntü ekleyin. Tüm görüntüler 1280 x 720 piksel boyutunda ve içinde olmalıdır. PNG biçimi.
 
 **Market medyası – videolar** (isteğe bağlı): teklifinizi gösteren dört adede kadar video ekleyebilirsiniz. Videoların YouTube veya Vimeo 'da barındırılması ve küçük bir resme (1280 x 720 PNG dosyası) sahip olması gerekir.
 

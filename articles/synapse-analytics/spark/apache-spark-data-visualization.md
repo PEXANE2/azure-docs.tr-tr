@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: spark
 ms.date: 09/13/2020
-ms.openlocfilehash: 523356947d6d5f93fa8ef2202ad6e7d235c6afdd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 73b18d15ad054f1c485d6f61cdefe54993148bc4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919782"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450547"
 ---
 # <a name="visualize-data"></a>Verileri görselleştirme
 Azure SYNAPSE, veri ambarlarında ve büyük veri analizi sistemlerinde fikir süresini hızlandıran tümleşik bir analiz hizmetidir. Veri görselleştirme, verilerinize ilişkin Öngörüler elde edebilmekte olan bir temel bileşendir. İnsanların anlaşılması büyük ve küçük verilerin daha kolay olmasına yardımcı olur. Ayrıca, veri gruplarındaki desenleri, eğilimleri ve aykırı değerleri algılamayı kolaylaştırır. 
@@ -34,7 +34,7 @@ Grafik seçeneklerine erişmek için:
    ![yerleşik grafikler](./media/apache-spark-development-using-notebooks/synapse-built-in-charts.png#lightbox)
 
 3. Artık görselleştirmenizi aşağıdaki değerleri belirterek özelleştirebilirsiniz:
-   | Yapılandırma | Description |
+   | Yapılandırma | Açıklama |
    |--|--| 
    | Grafik Türü | ```display```İşlevi çubuk grafikler, dağılım çizimleri, çizgi grafikler ve daha fazlası dahil olmak üzere çok çeşitli grafik türlerini destekler |
    | Anahtar | X ekseni için değer aralığını belirtin|
@@ -227,7 +227,7 @@ Kullanılabilir kitaplıklar ve sürümlerle ilgili en güncel bilgiler için Az
 ## <a name="connect-to-power-bi-using-apache-spark--sql-on-demand"></a>Isteğe bağlı SQL Apache Spark & kullanarak Power BI bağlanma
 Azure SYNAPSE Analytics, veri mühendislerinin analiz çözümleri oluşturmasına olanak tanıyan Power BI ile tümleşir.
 
-Azure SYNAPSE Analytics, farklı çalışma alanı hesaplama altyapılarının Spark havuzları (Önizleme) ve SQL isteğe bağlı motoru (Önizleme) arasında veritabanlarını ve tabloları paylaşmasına izin verir. [Paylaşılan meta veri modelini](https://docs.microsoft.com/azure/synapse-analytics/metadata/overview)kullanarak, Apache Spark tablolarınızı SQL isteğe bağlı olarak sorgulama yapabilirsiniz. İşiniz bittiğinde, eşitlenmiş Spark tablolarınızı kolayca sorgulamak için SQL isteğe bağlı uç noktanıza Power BI bağlayabilirsiniz.
+Azure SYNAPSE Analytics, farklı çalışma alanı hesaplama altyapılarının Spark havuzları ve sunucusuz SQL havuzu arasında veritabanlarını ve tabloları paylaşmasına izin verir. [Paylaşılan meta veri modelini](https://docs.microsoft.com/azure/synapse-analytics/metadata/overview)kullanarak, Apache Spark tablolarınızı SQL isteğe bağlı olarak sorgulama yapabilirsiniz. İşiniz bittiğinde, eşitlenmiş Spark tablolarınızı kolayca sorgulamak için SQL isteğe bağlı uç noktanıza Power BI bağlayabilirsiniz.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

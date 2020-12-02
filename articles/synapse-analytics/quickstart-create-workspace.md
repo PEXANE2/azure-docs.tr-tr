@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 09/03/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: b25bae460ff11c3dab84e80524acd2eaf878561c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: fb7672a0d7bdd14415a51f2296c281e92cf5542a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184697"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450655"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>Hızlı başlangıç: SYNAPSE çalışma alanı oluşturma
 Bu hızlı başlangıçta Azure portal kullanarak bir Azure SYNAPSE çalışma alanı oluşturma adımları açıklanmaktadır.
@@ -22,7 +22,7 @@ Bu hızlı başlangıçta Azure portal kullanarak bir Azure SYNAPSE çalışma a
 ## <a name="create-a-synapse-workspace"></a>Synapse çalışma alanı oluşturma
 
 1. [Azure Portal](https://portal.azure.com)açın ve en üstteki **SYNAPSE** için arama yapın.
-1. Arama sonuçlarında **Hizmetler** altında **Azure SYNAPSE Analytics (çalışma alanları Önizleme)** öğesini seçin.
+1. Arama sonuçlarında **Hizmetler**' ın altında **Azure SYNAPSE Analytics**' i seçin.
 1. Çalışma alanı oluşturmak için **Ekle** ' yi seçin.
 1. **Temel bilgiler** sekmesinde, çalışma alanına benzersiz bir ad verin. Bu belgede **Kapsamım çalışma alanını** kullanacağız
 1. Bir çalışma alanı oluşturmak için bir ADLSGEN2 hesabınızın olması gerekir. En basit seçenek yeni bir tane oluşturmaktır. Mevcut bir işlemi yeniden kullanmak istiyorsanız, bazı ek yapılandırmalar gerçekleştirmeniz gerekir. 
@@ -34,7 +34,7 @@ Bu hızlı başlangıçta Azure portal kullanarak bir Azure SYNAPSE çalışma a
 1. **Gözden geçir ve oluştur** > **Oluştur**'u seçin. Çalışma alanınız birkaç dakika içinde hazırlanıyor.
 
 > [!NOTE]
-> Azure SYNAPSE çalışma alanınızı oluşturduktan sonra, çalışma alanını başka bir Azure Active Directory kiracıya taşıyameyeceksiniz. Bunu abonelik geçişi veya başka eylemler aracılığıyla yaparsanız, çalışma alanındaki yapıtlara erişiminizi kaybedebilirsiniz.  
+> Azure SYNAPSE çalışma alanınızı oluşturduktan sonra, çalışma alanını başka bir Azure Active Directory kiracıya taşıyameyeceksiniz. Abonelik geçişiyle veya başka eylemlerle bunu yaparsanız, çalışma alanının içindeki yapıtlara erişimi kaybedebilirsiniz.  
 
 ## <a name="open-synapse-studio"></a>SYNAPSE Studio 'Yu açın
 
@@ -43,7 +43,7 @@ Azure SYNAPSE çalışma alanınız oluşturulduktan sonra, SYNAPSE Studio 'Yu a
 * [Azure Portal](https://portal.azure.com)SYNAPSE çalışma alanınızı açın. **Genel bakış** bölümünün üst kısmında, **SYNAPSE Studio 'yu Başlat**' ı seçin.
 * Adresine gidin `https://web.azuresynapse.net` ve çalışma alanınızda oturum açın.
 
-## <a name="prepare-an-existing-storage-account-for-use-with-synapse-analytics"></a>Mevcut bir depolama hesabını SYNAPSE Analytics ile kullanmak üzere hazırlama
+## <a name="prepare-an-existing-storage-account-for-use-with-azure-synapse-analytics"></a>Mevcut bir depolama hesabını Azure SYNAPSE Analytics ile kullanmak üzere hazırlama
 
 1. [Azure portalını](https://portal.azure.com) açın.
 1. Mevcut bir ADLSGEN2 Storage hesabına git

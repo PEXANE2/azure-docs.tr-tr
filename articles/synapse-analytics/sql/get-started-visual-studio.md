@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: a284e453a621860c0aebf68bef13d30e77971f88
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: ef8e2a3d1a6b78e8f2b6b9a900ed2485c1a4a5d7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686166"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451598"
 ---
-# <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Visual Studio ve SSDT ile SYNAPSE SQL 'e bağlanma
+# <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Visual Studio ve SSDT ile Synapse SQL’e bağlanma
 
 > [!div class="op_single_selector"]
 > * [Azure Data Studio](get-started-azure-data-studio.md)
@@ -30,9 +30,9 @@ ms.locfileid: "94686166"
 Azure SYNAPSE Analytics kullanarak adanmış SQL havuzunu sorgulamak için Visual Studio 'Yu kullanın. Bu yöntem, Visual Studio 2019 ' de SQL Server Veri Araçları (SSDT) uzantısını kullanır. 
 
 > [!NOTE]
-> Sunucusuz SQL Havuzu (Önizleme) SSDT tarafından desteklenmez.
+> Sunucusuz SQL havuzu SSDT tarafından desteklenmez.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi kullanmak için aşağıdaki bileşenlere sahip olmanız gerekir:
 

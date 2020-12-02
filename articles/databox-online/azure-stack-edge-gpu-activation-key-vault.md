@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 10/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 8957d8982a3bfe1da2811dc10d0c3e77a72fc288
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ec7a32739940d53d976e73a7e170df96a0acc245
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367610"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449522"
 ---
 # <a name="azure-key-vault-integration-with-azure-stack-edge"></a>Azure Stack Edge ile tümleştirme Azure Key Vault 
 
@@ -49,7 +49,7 @@ Etkinleştirme anahtarı oluşturma işlemi sırasında Azure Stack Edge kaynağ
 
 - Yanlışlıkla silinmeye engel olmak için anahtar kasasında bir kaynak kilidi etkindir. Yanlışlıkla silme işlemi varsa anahtar kasasının 90 gün içinde geri yüklenmesine izin veren anahtar kasasında geçici silme de etkinleştirilir. Daha fazla bilgi için bkz. [Azure Key Vault geçici genel bakış](../key-vault/general/soft-delete-overview.md)
 
-    Anahtar Kasası yanlışlıkla silinirse ve 90 gün süreyle Temizleme koruma süresi dolmuşsa, [anahtar kasanızı kurtarmak](../key-vault/general/soft-delete-powershell.md#recovering-a-key-vault)için bu adımları izleyin. 
+    Anahtar Kasası yanlışlıkla silinirse ve 90 gün süreyle Temizleme koruma süresi dolmuşsa, [anahtar kasanızı kurtarmak](../key-vault/general/key-vault-recovery.md#list-recover-or-purge-soft-deleted-secrets-keys-and-certificates)için bu adımları izleyin. 
 
 - Azure Key Vault Azure Stack Edge kaynağıyla tümleştirilemeden önce mevcut bir Azure Stack Edge kaynağına sahipseniz, bundan etkilenmezsiniz. Mevcut Azure Stack Edge kaynağını kullanmaya devam edebilirsiniz. 
 
@@ -73,4 +73,3 @@ When you generate an activation key, the following events occur:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Etkinleştirme anahtarı oluşturma](azure-stack-edge-gpu-deploy-prep.md#get-the-activation-key)hakkında daha fazla bilgi edinin.
-

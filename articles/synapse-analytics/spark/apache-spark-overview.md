@@ -9,20 +9,18 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 0ea46122cffe03ffe2e6a4e07afc6995d88a3acb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b31fe5daaa0882dc0927c1340902b20df56eb6b6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93306987"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450430"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te Apache Spark
 
-Apache Spark, büyük veri analizi uygulamalarının performansını artırmak üzere bellek içi işlemeyi destekleyen paralel bir işleme çerçevesidir. Azure SYNAPSE Analytics 'te Apache Spark, Microsoft 'un buluttaki Apache Spark uygulamalarından biridir. Azure SYNAPSE, Azure 'da sunucusuz Apache Spark Havuzu (Önizleme) oluşturmayı ve yapılandırmayı kolaylaştırır. Azure SYNAPSE ' deki Spark havuzları, Azure depolama ve Azure Data Lake 2. nesil depolama ile uyumludur. Böylece, Azure 'da depolanan verilerinizi işlemek için Spark havuzlarını kullanabilirsiniz.
+Apache Spark, büyük veri analizi uygulamalarının performansını artırmak üzere bellek içi işlemeyi destekleyen paralel bir işleme çerçevesidir. Azure SYNAPSE Analytics 'te Apache Spark, Microsoft 'un buluttaki Apache Spark uygulamalarından biridir. Azure SYNAPSE, Azure 'da sunucusuz Apache Spark havuzu oluşturmayı ve yapılandırmayı kolaylaştırır. Azure SYNAPSE ' deki Spark havuzları, Azure depolama ve Azure Data Lake 2. nesil depolama ile uyumludur. Böylece, Azure 'da depolanan verilerinizi işlemek için Spark havuzlarını kullanabilirsiniz.
 
 ![Spark: birleşik çerçeve](./media/apache-spark-overview/spark-overview.png)
-
-[!INCLUDE [preview](../includes/note-preview.md)]
 
 ## <a name="what-is-apache-spark"></a>Apache Spark nedir?
 
@@ -30,14 +28,14 @@ Apache Spark, bellek içi küme bilgi işlem için temel öğeler sağlar. Bir S
 
 ![Geleneksel MapReduce ile Spark](./media/apache-spark-overview/map-reduce-vs-spark.png)
 
-Azure 'daki Spark havuzları, tam olarak yönetilen bir Spark hizmeti sunar. SYNAPSE Analytics 'te Spark havuzu oluşturmanın avantajları burada listelenmiştir.
+Azure 'daki Spark havuzları, tam olarak yönetilen bir Spark hizmeti sunar. Azure SYNAPSE Analytics 'te Spark havuzu oluşturmanın avantajları burada listelenmiştir.
 
 | Özellik | Açıklama |
 | --- | --- |
 | Hız ve verimlilik |Spark örnekleri 60 ' den az düğüm için yaklaşık 2 dakika ve 60 ' den fazla düğüm için yaklaşık 5 dakika içinde başlar. Örnek, varsayılan olarak, son işi bir not defteri bağlantısı tarafından etkin tutulmadığı takdirde 5 dakikada bir kapatır. |
-| Oluşturma kolaylığı |Azure portal, Azure PowerShell veya SYNAPSE Analytics .NET SDK kullanarak dakikalar içinde Azure SYNAPSE 'te yeni bir Spark havuzu oluşturabilirsiniz. Bkz. [SYNAPSE Analytics 'Te Spark havuzlarıyla çalışmaya başlama](../quickstart-create-apache-spark-pool-studio.md). |
+| Oluşturma kolaylığı |Azure portal, Azure PowerShell veya SYNAPSE Analytics .NET SDK kullanarak dakikalar içinde Azure SYNAPSE 'te yeni bir Spark havuzu oluşturabilirsiniz. Bkz. [Azure SYNAPSE Analytics 'Te Spark havuzlarıyla çalışmaya başlama](../quickstart-create-apache-spark-pool-studio.md). |
 | Kullanım kolaylığı |SYNAPSE Analytics, [Nteryasası](https://nteract.io/)'ten türetilmiş özel bir not defteri içerir. Etkileşimli veri işleme ve görselleştirme için bu not defterlerini kullanabilirsiniz.|
-| REST API'leri |SYNAPSE Analytics 'te Spark, işleri uzaktan göndermek ve izlemek için REST API tabanlı bir Spark iş sunucusu olan [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server)'ı içerir. |
+| REST API'leri |Azure SYNAPSE Analytics 'te Spark, işleri uzaktan göndermek ve izlemek için REST API tabanlı bir Spark iş sunucusu olan [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server)içerir. |
 | Azure Data Lake Storage oluşturma için destek 2| Azure SYNAPSE ' deki Spark havuzları, BLOB depolamayı Azure Data Lake Storage oluşturma 2 ' de kullanabilir. Data Lake Storage hakkında daha fazla bilgi için bkz. [Azure Data Lake Storage genel bakış](../../data-lake-store/data-lake-store-overview.md). |
 | Üçüncü taraf IDE’lerle tümleştirme | Azure SYNAPSE, bir Spark havuzunda uygulama oluşturmak ve göndermek için yararlı olan [JetBrains](https://www.jetbrains.com/idea/) IÇIN bir IDE eklentisi sağlar. |
 | Önceden yüklenmiş Anaconda kitaplıkları |Azure 'daki Spark havuzları, önceden yüklenmiş Anaconda kitaplıkları ile gelir. [Anaconda](https://docs.continuum.io/anaconda/) machine learning, veri analizi, görselleştirme vb. için 200’e yakın kitaplık sağlar. |
@@ -45,14 +43,14 @@ Azure 'daki Spark havuzları, tam olarak yönetilen bir Spark hizmeti sunar. SYN
 
 Azure SYNAPSE 'te Spark havuzları, havuzlarda varsayılan olarak bulunan aşağıdaki bileşenleri içerir.
 
-- [Spark Core](https://spark.apache.org/docs/2.4.5/). Spark Core, Spark SQL, GraphX ve MLlib içerir.
+- [Spark Core](https://spark.apache.org/docs/2.4.5/). Spark Core, Spark SQL, GraphX ve MLlib’i içerir.
 - [Anaconda](https://docs.continuum.io/anaconda/)
 - [Apache Livy](https://github.com/cloudera/hue/tree/master/apps/spark/java#welcome-to-livy-the-rest-spark-server)
 - [Nteryasası Not defteri](https://nteract.io/)
 
 ## <a name="spark-pool-architecture"></a>Spark havuzu mimarisi
 
-Spark 'ın SYNAPSE Analytics 'te nasıl çalıştığını anlayarak Spark bileşenlerini anlamak kolaydır.
+Spark 'ın Azure SYNAPSE Analytics 'te nasıl çalıştığını anlayarak Spark bileşenlerini anlamak kolaydır.
 
 Spark uygulamaları, ana programınızdaki (sürücü programı olarak adlandırılır) mini bağlam nesnesi tarafından koordine edilen bir havuzda bağımsız işlem kümesi olarak çalışır.
 
@@ -62,21 +60,21 @@ Mini bağlam, kullanıcının ana işlevini çalıştırır ve düğümlerde çe
 
 Mini bağlam, Spark havuzuna bağlanır ve bir uygulamayı yönlendirilmiş bir Çevrimsiz grafiğine (DAG) dönüştürmekten sorumludur. Grafik, düğümlerde bir yürütücü işlemi içinde yürütülen bireysel görevlerden oluşur. Her uygulama, uygulama süresince devam eden ve görevleri birden fazla iş parçacığında çalıştıran kendi yürütücü işlemine sahiptir.
 
-## <a name="apache-spark-in-synapse-analytics-use-cases"></a>SYNAPSE Analytics kullanım durumlarında Apache Spark
+## <a name="apache-spark-in-azure-synapse-analytics-use-cases"></a>Azure SYNAPSE Analytics kullanım durumlarında Apache Spark
 
-SYNAPSE Analytics 'teki Spark havuzları aşağıdaki önemli senaryoları etkinleştirir:
+Azure SYNAPSE Analytics 'te Spark havuzları aşağıdaki önemli senaryoları etkinleştirir:
 
 ### <a name="data-engineeringdata-preparation"></a>Veri Mühendisliği/veri hazırlığı
 
-Apache Spark, büyük miktardaki verilerin daha değerli hale getirilmesi ve sonrasında Synapse Analytics içindeki diğer hizmetler tarafından kullanılması için bu verilerin hazırlanmasını ve işlenmesini destekleyen çok sayıda dil özelliğine sahiptir. Bu, birden çok dil (C#, Scala, PySpark, Spark SQL) ve işlem ve bağlantı için sağlanan kitaplıklar aracılığıyla etkinleştirilir.
+Apache Spark, büyük hacimlerin hazırlanmasını ve işlenmesini desteklemek için çok sayıda dil özelliği içerir, böylece daha değerli hale getirilebilir ve daha sonra Azure SYNAPSE Analytics içindeki diğer hizmetler tarafından tüketilebilir. Bu, birden çok dil (C#, Scala, PySpark, Spark SQL) ve işlem ve bağlantı için sağlanan kitaplıklar aracılığıyla etkinleştirilir.
 
 ### <a name="machine-learning"></a>Machine Learning
 
-Apache Spark, SYNAPSE Analytics 'te Spark havuzundan kullanabileceğiniz Spark üzerinde oluşturulmuş bir makine öğrenimi kitaplığı olan [Mllib](https://spark.apache.org/mllib/)ile birlikte gelir. Synapse Analytics'teki Spark havuzları, makine öğrenmesi dahil olmak üzere çeşitli veri bilimi paketleri içeren bir Python dağıtımı olan Anaconda'yı da içerir. Yerleşik not defteri desteğiyle birlikte makine öğrenmesi uygulaması oluşturmak için gerekli ortamı sunar.
+Apache Spark, Azure SYNAPSE Analytics 'teki bir Spark havuzundan kullanabileceğiniz Spark üzerinde oluşturulmuş bir makine öğrenimi kitaplığı olan [Mllib](https://spark.apache.org/mllib/)ile birlikte gelir. Azure SYNAPSE Analytics 'teki Spark havuzları, Machine Learning dahil veri bilimi için çeşitli paketlere sahip bir Python dağıtımı olan Anaconda 'yı da içerir. Yerleşik not defteri desteğiyle birlikte makine öğrenmesi uygulaması oluşturmak için gerekli ortamı sunar.
 
 ## <a name="where-do-i-start"></a>Nereden başlayabilirim?
 
-SYNAPSE Analytics 'te Apache Spark hakkında daha fazla bilgi edinmek için aşağıdaki makaleleri kullanın:
+Azure SYNAPSE Analytics 'te Apache Spark hakkında daha fazla bilgi edinmek için aşağıdaki makaleleri kullanın:
 
 - [Hızlı başlangıç: Azure 'da Spark havuzu oluşturma SYNAPSE](../quickstart-create-apache-spark-pool-portal.md)
 - [Hızlı başlangıç: Apache Spark Not defteri oluşturma](../quickstart-apache-spark-notebook.md)

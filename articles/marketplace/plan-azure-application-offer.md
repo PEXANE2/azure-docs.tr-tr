@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 4cb707896aa7874aa2bf287723e8a53d7d6d974c
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: bcb8cc6da3d2fc631058386103575549e376a32c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577796"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452158"
 ---
 # <a name="plan-an-azure-application-offer-for-the-commercial-marketplace"></a>Ticari Market için bir Azure uygulaması teklifi planlayın
 
@@ -33,18 +33,18 @@ Azure Uygulama tekliflerini tasarlama, derleme ve test etme, hem Azure platformu
 
 Ticari Market için Azure uygulama teklifinizi planlarken aşağıdaki kaynakları gözden geçirin.
 
-- [Azure Resource Manager şablonlarını anlama](/azure/azure-resource-manager/templates/template-syntax)
+- [Azure Resource Manager şablonlarını anlama](../azure-resource-manager/templates/template-syntax.md)
 - Hızlı Başlangıçlar:
     - [Azure Hızlı Başlangıç şablonları](https://azure.microsoft.com/documentation/templates/)
     - [Azure şablonları en iyi yöntemler Kılavuzu](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)
-    - [Uygulama tanımını yayımlama](/azure/managed-applications/publish-service-catalog-app)
-    - [Hizmet kataloğu uygulaması dağıtma](/azure/managed-applications/deploy-service-catalog-quickstart)
+    - [Uygulama tanımını yayımlama](../azure-resource-manager/managed-applications/publish-service-catalog-app.md)
+    - [Hizmet kataloğu uygulaması dağıtma](../azure-resource-manager/managed-applications/deploy-service-catalog-quickstart.md)
 - Öğreticiler:
-    - [Tanım dosyaları oluşturma](/azure/managed-applications/publish-service-catalog-app)
+    - [Tanım dosyaları oluşturma](../azure-resource-manager/managed-applications/publish-service-catalog-app.md)
 - Lerinizi
-    - [Azure CLI](/azure/managed-applications/cli-samples)
-    - [Azure PowerShell](/azure/managed-applications/powershell-samples)
-    - [Yönetilen uygulama çözümleri](/azure/managed-applications/sample-projects)
+    - [Azure CLI](../azure-resource-manager/managed-applications/cli-samples.md)
+    - [Azure PowerShell](../azure-resource-manager/managed-applications/powershell-samples.md)
+    - [Yönetilen uygulama çözümleri](../azure-resource-manager/managed-applications/sample-projects.md)
 
 [Azure Market 'e yönelik çözüm şablonları ve yönetilen uygulamalar için](https://channel9.msdn.com/Events/Build/2018/BRK3603) sunulan video, Azure Uygulama teklifi türüne kapsamlı bir giriş sağlar:
 
@@ -59,12 +59,12 @@ Ticari Market için Azure uygulama teklifinizi planlarken aşağıdaki kaynaklar
 
 Azure uygulamanızın yönetilmesine yardımcı olmak için aşağıdaki komut dosyası ortamlarının birini veya her ikisini birden seçin:
 
-- [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)
-- [Azure CLI](https://docs.microsoft.com/cli/azure)
+- [Azure PowerShell](/powershell/azure/)
+- [Azure CLI](/cli/azure)
 
 Geliştirme ortamınıza aşağıdaki araçları eklemeniz önerilir:
 
-- [Azure Depolama Gezgini](/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+- [Azure Depolama Gezgini](../vs-azure-tools-storage-manage-with-storage-explorer.md)
 - Aşağıdaki uzantılara sahip [Visual Studio Code](https://code.visualstudio.com/) :
     - Uzantı: [Azure Resource Manager araçları](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
     - Uzantı: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -121,7 +121,7 @@ Iş Ortağı Merkezi 'nde yeni bir Azure uygulaması teklifi oluşturduğunuzda,
 5. Gizlilik ilkesi adresi (bağlantı)
 6. Teklif adı
 7. Özet
-8. Description
+8. Açıklama
 9. Ekran görüntüleri/videolar
 
 Aşağıdaki ekran görüntüsünde, teklif bilgilerinin Azure portal nasıl göründüğü gösterilmektedir:
@@ -140,21 +140,21 @@ Aşağıdaki ekran görüntüsünde, teklif bilgilerinin Azure portal nasıl gö
 
 Teklifinizi daha kolay bir şekilde oluşturmaya yardımcı olmak için bu öğelerin bazılarını zaman önce hazırlayın. Aksi belirtilmediği takdirde, aşağıdaki öğeler gereklidir.
 
-- **Ad** : Bu ad, ticari Market 'teki teklif listelerinizin başlığı olarak görünür. Ad trademarked olabilir. Bu, emojıs (ticari marka ve telif hakkı sembolleri olmadıkları müddetçe) içeremez ve 50 karakterle sınırlı olmalıdır.
-- **Arama sonuçları Özeti** : teklifinizin amacını veya işlevini tek bir cümle olarak, satır sonu olmayan düz metin olarak, 100 karakter veya daha kısa bir sürede açıklama. Bu Özet, ticari Market listeleme arama sonuçlarında kullanılır.
-- **Kısa açıklama** : en fazla 256 karakter uzunluğunda düz metin sağlar. Bu Özet, teklifinizin ayrıntılar sayfasında görünecektir.
-- **Açıklama** : Bu açıklama Azure Marketi dökümüne genel bakış bölümünde görüntülenecektir. Bir değer teklifi, önemli avantajlar, hedeflenen kullanıcı tabanı, herhangi bir kategori veya sektör ilişkilendirmesi, uygulama içi satın alma fırsatları, müşteri ihtiyacı veya bir sorun, teklif adreslerinin, gerekli kaldırların ve daha fazla bilgi edinmek için bir bağlantı dahil etmeyi göz önünde bulundurun.
+- **Ad**: Bu ad, ticari Market 'teki teklif listelerinizin başlığı olarak görünür. Ad trademarked olabilir. Bu, emojıs (ticari marka ve telif hakkı sembolleri olmadıkları müddetçe) içeremez ve 50 karakterle sınırlı olmalıdır.
+- **Arama sonuçları Özeti**: teklifinizin amacını veya işlevini tek bir cümle olarak, satır sonu olmayan düz metin olarak, 100 karakter veya daha kısa bir sürede açıklama. Bu Özet, ticari Market listeleme arama sonuçlarında kullanılır.
+- **Kısa açıklama**: en fazla 256 karakter uzunluğunda düz metin sağlar. Bu Özet, teklifinizin ayrıntılar sayfasında görünecektir.
+- **Açıklama**: Bu açıklama Azure Marketi dökümüne genel bakış bölümünde görüntülenecektir. Bir değer teklifi, önemli avantajlar, hedeflenen kullanıcı tabanı, herhangi bir kategori veya sektör ilişkilendirmesi, uygulama içi satın alma fırsatları, müşteri ihtiyacı veya bir sorun, teklif adreslerinin, gerekli kaldırların ve daha fazla bilgi edinmek için bir bağlantı dahil etmeyi göz önünde bulundurun.
 
     Bu metin kutusunda, açıklamanızı daha ilgi çekici hale getirmek için kullanabileceğiniz zengin metin düzenleyici denetimleri vardır. Ayrıca, açıklamanızı biçimlendirmek için HTML etiketlerini de kullanabilirsiniz. Bu kutuya, HTML biçimlendirme ve boşluklar içeren en fazla 3.000 karakter yazabilirsiniz. Ek ipuçları için bkz. [ticari Market teklif açıklamalarında](supported-html-tags.md) [harika bir uygulama açıklaması](/windows/uwp/publish/write-a-great-app-description) ve HTML etiketi yazma.
 
 - **Anahtar sözcükleri ara** (isteğe bağlı): müşterilerin teklifinizi çevrimiçi mağazada bulmak için kullanabileceği en fazla üç arama anahtar sözcüğü sağlayın. En iyi sonuçlar için, tanımlarınızda bu anahtar sözcükleri de kullanın. Teklif **adı** ve **açıklamasını** eklemeniz gerekmez. Bu metin, aramaya otomatik olarak eklenir.
-- **Gizlilik ilkesi bağlantısı** : şirketinizin gizlilik ilkesinin URL 'si. Geçerli bir gizlilik ilkesi sağlamanız gerekir ve uygulamanızın gizlilik yasaları ve yönetmeliklerle uyumlu olmasını sağlamaktan sorumludur.
+- **Gizlilik ilkesi bağlantısı**: şirketinizin gizlilik ilkesinin URL 'si. Geçerli bir gizlilik ilkesi sağlamanız gerekir ve uygulamanızın gizlilik yasaları ve yönetmeliklerle uyumlu olmasını sağlamaktan sorumludur.
 - **Faydalı bağlantılar** (isteğe bağlı): teklifinizin kullanıcıları için çeşitli kaynaklara bağlantılar sağlayabilirsiniz. Örneğin, forumlar, SSS ve sürüm notları.
-- **İletişim bilgileri** : aşağıdaki kişileri kuruluşunuzdan atamanız gerekir:
-  - **Destek kişisi** : müşterileriniz sorguları açtıklarında kullanılacak Microsoft iş ortakları için ad, telefon ve e-posta adresi sağlayın. Destek Web sitenizin URL 'sini de eklemeniz gerekir.
-  - **Mühendislik ilgili kişisi** : Teklifinizle ilgili sorunlar olduğunda, Microsoft 'un doğrudan kullanacağı adı, telefonu ve e-postayı belirtin. Bu iletişim bilgileri ticari Market 'te listelenmez.
+- **İletişim bilgileri**: aşağıdaki kişileri kuruluşunuzdan atamanız gerekir:
+  - **Destek kişisi**: müşterileriniz sorguları açtıklarında kullanılacak Microsoft iş ortakları için ad, telefon ve e-posta adresi sağlayın. Destek Web sitenizin URL 'sini de eklemeniz gerekir.
+  - **Mühendislik ilgili kişisi**: Teklifinizle ilgili sorunlar olduğunda, Microsoft 'un doğrudan kullanacağı adı, telefonu ve e-postayı belirtin. Bu iletişim bilgileri ticari Market 'te listelenmez.
   - **CSP program kişisi** (isteğe bağlı): bulut çözümü sağlayıcısı (CSP) programını kabul ediyorsanız, bu iş ortaklarının sizinle iletişim kurabilmesi için ad, telefon ve e-posta sağlayın. Pazarlama malzemelerinize da bir URL ekleyebilirsiniz.
-- **Medya – logolar** : **büyük** boyutlu amblem için bir PNG dosyası sağlayın. İş Ortağı Merkezi, **küçük** ve **Orta ölçekli** bir amblem oluşturmak için bunu kullanacaktır. İsterseniz bunları daha sonra farklı görüntülerle değiştirebilirsiniz.
+- **Medya – logolar**: **büyük** boyutlu amblem için bir PNG dosyası sağlayın. İş Ortağı Merkezi, **küçük** ve **Orta ölçekli** bir amblem oluşturmak için bunu kullanacaktır. İsterseniz bunları daha sonra farklı görüntülerle değiştirebilirsiniz.
   - Büyük (216 x 216-350 x 350 px, gereklidir)
   - Orta (90 x 90 piksel, isteğe bağlı)
   - Küçük (48 x 48 piksel, isteğe bağlı)
@@ -177,7 +177,7 @@ Teklifinizi daha kolay bir şekilde oluşturmaya yardımcı olmak için bu öğe
   - . png dosyası
   - Bir resim yazısı içermelidir
 - **Medya – videolar** (isteğe bağlı): aşağıdaki gereksinimlere sahip en fazla beş video ekleyebilirsiniz, bu da teklifinizi gösterir:
-  - Name
+  - Ad
   - URL: yalnızca YouTube veya Vimeo 'da barındırılmalıdır.
   - Küçük resim: 1280 x 720. png dosyası
 
@@ -197,10 +197,10 @@ Azure abonelik kimliklerini kullanarak önizleme kitleyi, her biri için isteğe
 
 [Market ölçüm hizmeti API 'lerini](partner-center-portal/marketplace-metering-service-apis.md)kullanarak ölçüm olaylarını yayan yönetilen uygulamalar için, hizmetinizin ölçüm olaylarını yayırken kullanacağı kimliği sağlamanız gerekir.
 
-[Toplu kullanım olayını](partner-center-portal/marketplace-metering-service-apis.md#metered-billing-batch-usage-event)kullanmak istiyorsanız bu yapılandırma gereklidir. [Kullanım olayı](partner-center-portal/marketplace-metering-service-apis.md#metered-billing-single-usage-event)göndermek Isterseniz, [JSON Web belirteci (JWT) taşıyıcı belirtecini](partner-center-portal/pc-saas-registration.md#how-to-get-the-publishers-authorization-token)almak için [örnek meta verileri hizmetini](/azure/active-directory/managed-identities-azure-resources/overview) de kullanabilirsiniz.
+[Toplu kullanım olayını](partner-center-portal/marketplace-metering-service-apis.md#metered-billing-batch-usage-event)kullanmak istiyorsanız bu yapılandırma gereklidir. [Kullanım olayı](partner-center-portal/marketplace-metering-service-apis.md#metered-billing-single-usage-event)göndermek Isterseniz, [JSON Web belirteci (JWT) taşıyıcı belirtecini](partner-center-portal/pc-saas-registration.md#how-to-get-the-publishers-authorization-token)almak için [örnek meta verileri hizmetini](../active-directory/managed-identities-azure-resources/overview.md) de kullanabilirsiniz.
 
-- **Azure Active Directory KIRACı kimliği** (gerekli): Azure Portal içinde, iki hizmetimiz arasındaki bağlantının kimliği doğrulanmış bir iletişimin arkasında olduğunu doğrulayabilmemiz için [BIR Azure Active Directory (ad) uygulaması oluşturmanız](/azure/active-directory/develop/howto-create-service-principal-portal) gerekir. Azure Active Directory (Azure AD) uygulamanızın [KIRACı kimliğini](/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-and-app-id-values-for-signing-in) Azure Active Directory [uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) dikey penceresine bulmak için. **Görünen ad** sütununda, uygulamayı seçin. Ardından **Özellikler** ' e ve ardından **Dizin (kiracı) kimliği** için (örneğin `50c464d3-4930-494c-963c-1e951d15360e` ) bakın.
-- **Azure Active Directory Uygulama kimliği** (gerekli): Ayrıca, [Uygulama Kimliğiniz](/azure/active-directory/develop/howto-create-service-principal-portal#get-tenant-and-app-id-values-for-signing-in.md) ve bir kimlik doğrulama anahtarınız olması gerekir. Uygulama KIMLIĞINIZI bulmak için Azure Active Directory olduğunuz [uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) dikey penceresine gidin. **Görünen ad** sütununda, uygulamayı seçin ve ardından **uygulama (istemci) kimliğini** (örneğin `50c464d3-4930-494c-963c-1e951d15360e` ) arayın. Kimlik doğrulama anahtarını bulmak için **Ayarlar** ' a gidin ve **anahtarlar** ' ı seçin. Bir açıklama ve süre sağlamanız gerekir ve ardından bir sayı değeri sağlanacaktır.
+- **Azure Active Directory KIRACı kimliği** (gerekli): Azure Portal içinde, iki hizmetimiz arasındaki bağlantının kimliği doğrulanmış bir iletişimin arkasında olduğunu doğrulayabilmemiz için [BIR Azure Active Directory (ad) uygulaması oluşturmanız](../active-directory/develop/howto-create-service-principal-portal.md) gerekir. Azure Active Directory (Azure AD) uygulamanızın [KIRACı kimliğini](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) Azure Active Directory [uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) dikey penceresine bulmak için. **Görünen ad** sütununda, uygulamayı seçin. Ardından **Özellikler**' e ve ardından **Dizin (kiracı) kimliği** için (örneğin `50c464d3-4930-494c-963c-1e951d15360e` ) bakın.
+- **Azure Active Directory Uygulama kimliği** (gerekli): Ayrıca, [Uygulama Kimliğiniz](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) ve bir kimlik doğrulama anahtarınız olması gerekir. Uygulama KIMLIĞINIZI bulmak için Azure Active Directory olduğunuz [uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) dikey penceresine gidin. **Görünen ad** sütununda, uygulamayı seçin ve ardından **uygulama (istemci) kimliğini** (örneğin `50c464d3-4930-494c-963c-1e951d15360e` ) arayın. Kimlik doğrulama anahtarını bulmak için **Ayarlar** ' a gidin ve **anahtarlar**' ı seçin. Bir açıklama ve süre sağlamanız gerekir ve ardından bir sayı değeri sağlanacaktır.
 
 > [!NOTE]
 > Azure uygulama KIMLIĞI, yayımcı KIMLIĞINIZLE ilişkilendirilecektir ve bu yayımcı hesabında yalnızca yeniden kullanılabilir.
@@ -209,8 +209,8 @@ Azure abonelik kimliklerini kullanarak önizleme kitleyi, her biri için isteğe
 
 Microsoft tarafından desteklenen pazarlama ve satış kanallarını kabul edebilirsiniz. Iş Ortağı Merkezi 'nde teklifinizi oluştururken işlemin sonuna doğru iki sekme görürsünüz:
 
-- **CSP 'ler aracılığıyla yeniden Satım** : Microsoft bulut çözüm SAĞLAYıCıLARıNıN (CSP) iş ortaklarının, çözümünüzü bir paketlenmiş teklifin parçası olarak yeniden satmasına izin vermek için bu seçeneği kullanın. Daha fazla bilgi için bkz. [bulut çözümü sağlayıcısı programı](/azure/marketplace/cloud-solution-providers) .
-- **Microsoft Ile ortak satış** : Bu seçenek, Microsoft satış ekiplerinin, müşterilerinin IHTIYAÇLARıNı değerlendirirken IP ortak satış için uygun çözümünüzü kabul etmenize olanak tanır. Teklifinizi değerlendirme için hazırlama hakkında ayrıntılı bilgi edinmek için [Iş Ortağı Merkezi 'Nde ortak satış seçeneğine](partner-center-portal/commercial-marketplace-co-sell.md) bakın. Teklifinizi Microsoft CSP iş ortağı kanalları aracılığıyla pazarlama hakkında daha fazla bilgi için bkz. [Cloud Solution Providers](cloud-solution-providers.md).
+- **CSP 'ler aracılığıyla yeniden Satım**: Microsoft bulut çözüm SAĞLAYıCıLARıNıN (CSP) iş ortaklarının, çözümünüzü bir paketlenmiş teklifin parçası olarak yeniden satmasına izin vermek için bu seçeneği kullanın. Daha fazla bilgi için bkz. [bulut çözümü sağlayıcısı programı](./cloud-solution-providers.md) .
+- **Microsoft Ile ortak satış**: Bu seçenek, Microsoft satış ekiplerinin, müşterilerinin IHTIYAÇLARıNı değerlendirirken IP ortak satış için uygun çözümünüzü kabul etmenize olanak tanır. Teklifinizi değerlendirme için hazırlama hakkında ayrıntılı bilgi edinmek için [Iş Ortağı Merkezi 'Nde ortak satış seçeneğine](partner-center-portal/commercial-marketplace-co-sell.md) bakın. Teklifinizi Microsoft CSP iş ortağı kanalları aracılığıyla pazarlama hakkında daha fazla bilgi için bkz. [Cloud Solution Providers](cloud-solution-providers.md).
 
 Daha fazla bilgi edinmek için bkz. [Azure Marketi ile bulut Işletmenizi büyütme](https://azuremarketplace.microsoft.com/sell).
 
@@ -224,12 +224,12 @@ Fiyatlandırma modelleri ve özel planlar dahil olmak üzere planlar hakkında g
 
 İki tür Azure uygulama planı vardır: _çözüm şablonu_ ve _yönetilen uygulama_. Her iki plan türü, tek bir sanal makinenin (VM) ötesinde bir çözümün dağıtımını ve yapılandırılmasını otomatik hale getirmeye yönelik destek. IaaS çözümleri gibi karmaşık çözümler sağlamak üzere VM 'Ler, ağ oluşturma ve depolama kaynakları dahil olmak üzere birden çok kaynak sağlama sürecini otomatikleştirebiliriz. Her iki plan türü de dahil olmak üzere, VM 'Lerle sınırlı olmamak üzere birçok farklı türde Azure kaynağı kullanabilir.
 
-- **Çözüm şablonu** planları, ticari Market 'te çözüm yayımlamanın ana yollarından biridir. Çözüm şablonu planları ticari Market 'te transactable değildir, ancak ticari Market aracılığıyla faturalandırılan ücretli VM tekliflerini dağıtmak için kullanılabilirler. Müşteri çözümü yöneteceği ve işlemler başka bir plan üzerinden faturalandırılırken çözüm şablonu plan türünü kullanın. Çözüm şablonları oluşturma hakkında daha fazla bilgi için bkz. [Azure Resource Manager nedir?](/azure/azure-resource-manager/resource-group-overview)
+- **Çözüm şablonu** planları, ticari Market 'te çözüm yayımlamanın ana yollarından biridir. Çözüm şablonu planları ticari Market 'te transactable değildir, ancak ticari Market aracılığıyla faturalandırılan ücretli VM tekliflerini dağıtmak için kullanılabilirler. Müşteri çözümü yöneteceği ve işlemler başka bir plan üzerinden faturalandırılırken çözüm şablonu plan türünü kullanın. Çözüm şablonları oluşturma hakkında daha fazla bilgi için bkz. [Azure Resource Manager nedir?](../azure-resource-manager/management/overview.md)
 - **Yönetilen uygulama** planları, müşterileriniz için tam olarak yönetilen, anahtar uygulamaları kolayca oluşturup sunmanıza olanak tanır. Çözüm şablonu planlarıyla aynı yeteneklere sahiptir ve bazı önemli farklılıklar vardır:
     - Kaynaklar bir kaynak grubuna dağıtılır ve uygulamanın yayımcısı tarafından yönetilir. Kaynak grubu, tüketicinin aboneliğinde mevcuttur ancak yayımcının kiracısındaki bir kimlik, kaynak grubuna erişime sahiptir. 
     - Yayımcı olarak, çözümün sürekli desteğinin maliyetini belirtirsiniz ve işlemler ticari Market aracılığıyla desteklenir.
  
-    Siz veya müşteriniz çözümün bir iş ortağı tarafından yönetilmesini gerektirdiğinde veya abonelik tabanlı bir çözüm dağıtacaksanız, yönetilen uygulama planı türünü kullanın. Yönetilen uygulamaların avantajları ve türleri hakkında daha fazla bilgi için bkz. [Azure yönetilen uygulamalara genel bakış](/azure/managed-applications/overview).
+    Siz veya müşteriniz çözümün bir iş ortağı tarafından yönetilmesini gerektirdiğinde veya abonelik tabanlı bir çözüm dağıtacaksanız, yönetilen uygulama planı türünü kullanın. Yönetilen uygulamaların avantajları ve türleri hakkında daha fazla bilgi için bkz. [Azure yönetilen uygulamalara genel bakış](../azure-resource-manager/managed-applications/overview.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

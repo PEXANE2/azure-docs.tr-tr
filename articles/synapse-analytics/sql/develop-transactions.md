@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: a2597a4bc6c5ed44f0e0050be3f69d7e840665e5
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c4fe512ff6db24498148ffa724c3144a2f61823f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323843"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451706"
 ---
 # <a name="use-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu ile işlemleri kullanma
 
@@ -27,7 +27,7 @@ Tahmin ettiğiniz gibi, adanmış SQL havuzu veri ambarı iş yükünün parças
 
 ## <a name="transaction-isolation-levels"></a>İşlem yalıtım düzeyleri
 
-SQL havuzu ACID işlemlerini uygular. İşlem desteğinin yalıtım düzeyi, KAYDEDILMEYEN okuma için varsayılan değer olarak kullanılır.  Ana veritabanına bağlıyken Kullanıcı veritabanı için READ_COMMITTED_SNAPSHOT veritabanı seçeneğini açarak, KAYDEDILMIŞ anlık görüntü YALıTıMıNı okumak için bunu değiştirebilirsiniz.  
+Adanmış SQL havuzu, ACID işlemlerini uygular. İşlem desteğinin yalıtım düzeyi, KAYDEDILMEYEN okuma için varsayılan değer olarak kullanılır.  Ana veritabanına bağlıyken Kullanıcı veritabanı için READ_COMMITTED_SNAPSHOT veritabanı seçeneğini açarak, KAYDEDILMIŞ anlık görüntü YALıTıMıNı okumak için bunu değiştirebilirsiniz.  
 
 Etkinleştirildikten sonra, bu veritabanındaki tüm işlemler okuma tarafından yürütülen anlık görüntü YALıTıMı altında yürütülür ve oturum düzeyinde READ UNCOMMıTTED ayarı dikkate alınmayacak. Ayrıntılar için [alter database set Options (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest&preserve-view=true) ' i işaretleyin.
 
@@ -89,7 +89,7 @@ Günlüğe yazılan veri miktarını iyileştirmek ve en aza indirmek için [iş
 
 ## <a name="transaction-state"></a>İşlem durumu
 
-SQL havuzu,-2 değerini kullanarak başarısız bir işlemi raporlamak için XACT_STATE () işlevini kullanır. Bu değer, işlemin başarısız olduğu ve yalnızca geri alma için işaretlenen anlamına gelir.
+Adanmış SQL havuzu,-2 değerini kullanarak başarısız bir işlemi raporlamak için XACT_STATE () işlevini kullanır. Bu değer, işlemin başarısız olduğu ve yalnızca geri alma için işaretlenen anlamına gelir.
 
 > [!NOTE]
 > Başarısız bir işlemi göstermek için XACT_STATE işlevi tarafından-2 kullanılması SQL Server farklı davranışları temsil eder. SQL Server, bir uncommittable işlemini göstermek için-1 değerini kullanır. SQL Server, bir işlem içindeki bazı hatalara, uncommittable olarak işaretlenmesi gerekmeden tolerans sağlayabilir. Örneğin, bir `SELECT 1/0` hataya neden olur, ancak bir işlemi committable durumuna zorlamaz. SQL Server ayrıca, komuntable işleminde okuma izni verir. Ancak adanmış SQL havuzu bunu yapmanızı sağlar. Adanmış bir SQL havuzu işleminde hata oluşursa, otomatik olarak-2 durumunu girer ve deyim geri alınana kadar başka bir SELECT deyimi de yapamazsınız. Bu nedenle, kod değişiklikleri yapmanız gerekebilmeniz için uygulama kodunuzun XACT_STATE () kullanıp kullanmadığını denetlemek önemlidir.
@@ -193,7 +193,7 @@ THROW, adanmış SQL havuzunda özel durumları oluşturmak için daha modern bi
 
 ## <a name="limitations"></a>Sınırlamalar
 
-SQL havuzu, işlemlerle ilgili birkaç farklı kısıtlama sağlar. Bunlar şu şekildedir:
+Adanmış SQL havuzu, işlemlerle ilgili birkaç başka kısıtlama sağlar. Bunlar şu şekildedir:
 
 * Dağıtılmış işlem yok
 * İç içe işlem yapılmasına izin verilmez
@@ -204,4 +204,4 @@ SQL havuzu, işlemlerle ilgili birkaç farklı kısıtlama sağlar. Bunlar şu �
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İşlemleri iyileştirme hakkında daha fazla bilgi edinmek için bkz. [işlem en iyi uygulamaları](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). [SQL havuzu](best-practices-sql-pool.md) ve [sunucusuz SQL Havuzu (Önizleme)](best-practices-sql-on-demand.md)için ek en iyi yöntemler kılavuzlarından de yer verilmiştir.
+İşlemleri iyileştirme hakkında daha fazla bilgi edinmek için bkz. [işlem en iyi uygulamaları](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). [ADANMıŞ SQL havuzu](best-practices-sql-pool.md) ve [sunucusuz SQL havuzu](best-practices-sql-on-demand.md)için ek en iyi yöntemler kılavuzları da sağlanır.

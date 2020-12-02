@@ -7,33 +7,33 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 07/12/2019
-ms.author: anjangsh
+ms.date: 11/13/2020
+ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7496cedd127182482bccf97909cc0a0a4a78253f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 4683bd84873506483209f4a0eb3751a1b163ed48
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313418"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449835"
 ---
 # <a name="geo-restore-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış bir SQL havuzunu coğrafi geri yükleme
 
-Bu makalede, adanmış SQL havuzunuzu Azure portal ve PowerShell aracılığıyla bir coğrafi yedeklemeden geri yüklemeyi öğreneceksiniz.
+Bu makalede, adanmış SQL havuzunuzu (eski adıyla SQL DW) Azure portal ve PowerShell aracılığıyla bir coğrafi yedeklemeden geri yüklemeyi öğreneceksiniz.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-**DTU kapasitenizi doğrulayın.** Her adanmış SQL havuzu, varsayılan DTU kotasına sahip bir [MANTıKSAL SQL Server](../../azure-sql/database/logical-servers.md) (örneğin, myserver.Database.Windows.net) tarafından barındırılır. SQL Server 'ın geri yüklenmekte olan veritabanı için yeterli DTU kotasına sahip olduğunu doğrulayın. DTU 'yu nasıl hesaplayacağınızı veya daha fazla DTU isteğinde bulunmanız için bkz. [DTU kota değişikliği isteme](sql-data-warehouse-get-started-create-support-ticket.md).
+**DTU kapasitenizi doğrulayın.** Her adanmış SQL Havuzu (eski adıyla SQL DW), varsayılan DTU kotasına sahip bir [MANTıKSAL SQL Server](../../azure-sql/database/logical-servers.md) (örneğin, myserver.Database.Windows.net) tarafından barındırılır. SQL Server 'ın geri yüklenmekte olan veritabanı için yeterli DTU kotasına sahip olduğunu doğrulayın. DTU 'yu nasıl hesaplayacağınızı veya daha fazla DTU isteğinde bulunmanız için bkz. [DTU kota değişikliği isteme](sql-data-warehouse-get-started-create-support-ticket.md).
 
 ## <a name="restore-from-an-azure-geographical-region-through-powershell"></a>PowerShell aracılığıyla Azure coğrafi bölgesinden geri yükleme
 
 Bir coğrafi yedeklemeden geri yüklemek için [Get-AzSqlDatabaseGeoBackup](/powershell/module/az.sql/get-azsqldatabasegeobackup?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) ve [restore-azsqldatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) cmdlet 'ini kullanın.
 
 > [!NOTE]
-> Gen2 'e coğrafi geri yükleme yapabilirsiniz! Bunu yapmak için, isteğe bağlı bir parametre olarak bir Gen2 ServiceObjectiveName (ör. DW1000 **c** ) belirtin.
+> Gen2 'e coğrafi geri yükleme yapabilirsiniz! Bunu yapmak için, isteğe bağlı bir parametre olarak bir Gen2 ServiceObjectiveName (ör. DW1000 **c**) belirtin.
 >
 
 1. Başlamadan önce [Azure PowerShell](/powershell/azure/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)' yi yüklediğinizden emin olun.
@@ -74,28 +74,24 @@ Kaynak veritabanı TDE etkinse Kurtarılan veritabanı TDE etkinleştirilir.
 
 ## <a name="restore-from-an-azure-geographical-region-through-azure-portal"></a>Azure portal aracılığıyla bir Azure coğrafi bölgesinden geri yükleme
 
-Ayrılmış bir SQL havuzunu coğrafi yedeklemeden geri yüklemek için aşağıda açıklanan adımları izleyin:
+Ayrılmış bir SQL havuzunu (eski adıyla SQL DW) coğrafi yedeklemeden geri yüklemek için aşağıda açıklanan adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com/) hesabınızda oturum açın.
-2. **+ Kaynak oluştur** ’a tıklayın.
+1. **ADANMıŞ SQL havuzları (eskıden SQL DW)** için arama yapın.
 
-   ![Yeni DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
+   ![Yeni DW 2](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
 
-3. **Veritabanları** ve ardından **Azure SYNAPSE Analytics (eskı adıyla SQL DW)** seçeneğine tıklayın.
-
-   ![Yeni DW 2](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new-02.png)
-
-4. **Temel** bilgiler sekmesinde istenen bilgileri doldurun ve **İleri** ' ye tıklayın.
+1. Ekle ' ye tıklayın ve **temel** bilgiler sekmesinde istenen bilgileri doldurun ve **İleri**' ye tıklayın.
 
    ![Temel bilgiler](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
 
-5. **Mevcut veri parametresini kullan** için **Yedekle** ' yi seçin ve aşağı kaydırma seçeneklerinden uygun yedeği seçin. **Gözden Geçir ve Oluştur** ’a tıklayın.
+1. **Mevcut veri parametresini kullan** için **Yedekle** ' yi seçin ve aşağı kaydırma seçeneklerinden uygun yedeği seçin. **Gözden Geçir ve Oluştur**’a tıklayın.
 
    ![yedekleme](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
 
-6. Veri ambarı geri yüklendikten sonra, **durumun** çevrimiçi olup olmadığını denetleyin.
+1. Veri ambarı geri yüklendikten sonra, **durumun** çevrimiçi olup olmadığını denetleyin.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-- [Mevcut ayrılmış bir SQL havuzunu geri yükleme](sql-data-warehouse-restore-active-paused-dw.md)
-- [Silinen ayrılmış bir SQL havuzunu geri yükleme](sql-data-warehouse-restore-deleted-dw.md)
+- [Var olan ayrılmış bir SQL havuzunu geri yükleme (eski adıyla SQL DW)](sql-data-warehouse-restore-active-paused-dw.md)
+- [Silinen ayrılmış bir SQL havuzunu geri yükleme (eski adıyla SQL DW)](sql-data-warehouse-restore-deleted-dw.md)

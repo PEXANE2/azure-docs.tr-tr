@@ -11,17 +11,17 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 97be3bf0ecec20c4bf2e1633f893c9aa0d9ba49d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2ff8f6134f74e0eda355342a7282e8be81a3d8df
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020291"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450240"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Azure SQL veritabanı 'ndaki sunucular için sanal ağ hizmet uç noktalarını ve kurallarını kullanma
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-*Sanal ağ kuralları* , veritabanlarınızı ve [Azure SQL veritabanı](sql-database-paas-overview.md) 'ndaki elastik havuzlarınızın ve [Azure SYNAPSE](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) ' deki veritabanları için sanal ağlardaki belirli alt ağlardan gönderilen iletişimleri kabul edip etmediğini denetleyen bir güvenlik duvarı güvenlik özelliğidir. Bu makalede, Azure SQL veritabanı ve Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) ile veritabanınızın iletişimine güvenli bir şekilde sağlamak için sanal ağ kuralı özelliğinin neden bazen en iyi seçenek olduğu açıklanmaktadır.
+*Sanal ağ kuralları* , veritabanlarınızı ve [Azure SQL veritabanı](sql-database-paas-overview.md) 'ndaki elastik havuzlarınızın ve [Azure SYNAPSE](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) ' deki veritabanları için sanal ağlardaki belirli alt ağlardan gönderilen iletişimleri kabul edip etmediğini denetleyen bir güvenlik duvarı güvenlik özelliğidir. Bu makalede, Azure SQL veritabanı ve Azure SYNAPSE Analytics 'te veritabanınıza yönelik iletişimin güvenli bir şekilde yapılmasına olanak tanımak için sanal ağ kuralı özelliğinin neden bazen en iyi seçenektir.
 
 > [!NOTE]
 > Bu makale hem Azure SQL veritabanı hem de Azure SYNAPSE Analytics için geçerlidir. Basitlik için, ' Database ' terimi, Azure SQL veritabanı ve Azure SYNAPSE Analytics 'te her iki veritabanına başvurur. Benzer şekilde, ' Server ' öğesine yapılan tüm başvurular, Azure SQL veritabanı ve Azure SYNAPSE Analytics 'i barındıran [MANTıKSAL SQL Server](logical-servers.md) 'a başvurmaktadır.

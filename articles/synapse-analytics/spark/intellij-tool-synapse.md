@@ -1,6 +1,6 @@
 ---
 title: Öğretici-Azure Toolkit for IntelliJ (Spark uygulaması)
-description: Öğretici-Scala 'da yazılmış Spark uygulamaları geliştirmek ve bunları sunucusuz bir Apache Spark havuzuna (Önizleme) göndermek için Azure Toolkit for IntelliJ kullanın.
+description: Öğretici-Scala 'da yazılmış Spark uygulamaları geliştirmek ve bunları sunucusuz Apache Spark havuzuna göndermek için Azure Toolkit for IntelliJ kullanın.
 services: synapse-analytics
 author: hrasheed-msft
 ms.author: jejiang
@@ -9,22 +9,22 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: 5a9fcf3e13c2f86a11e9626be486a585ec659044
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 75cc23df41741a95e87ad64d168aea4fa4f45733
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013777"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451052"
 ---
 # <a name="tutorial-create-an-apache-spark-application-with-intellij-using-a-synapse-workspace"></a>Öğretici: SYNAPSE çalışma alanı kullanarak IntelliJ ile Apache Spark uygulaması oluşturma
 
-Bu öğreticide, Azure Toolkit for IntelliJ eklentisinin, [Scala](https://www.scala-lang.org/)'da yazılan Apache Spark uygulamaları geliştirme ve sonra doğrudan IntelliJ tümleşik geliştirme ORTAMı (IDE) üzerinden sunucusuz bir Apache Spark havuzuna (Önizleme) göndermesi için nasıl kullanılacağı gösterilmektedir. Eklentiyi birkaç şekilde kullanabilirsiniz:
+Bu öğreticide, Azure Toolkit for IntelliJ eklentisinin [Scala](https://www.scala-lang.org/)'da yazılmış Apache Spark uygulamalar geliştirme ve sonra doğrudan IntelliJ tümleşik geliştirme ORTAMıNDAN (IDE) daha az bir Apache Spark havuzuna göndermesi gösterilmektedir. Eklentiyi birkaç şekilde kullanabilirsiniz:
 
 - Spark havuzunda bir Scala Spark uygulaması geliştirin ve gönderebilirsiniz.
 - Spark havuzlarınızın kaynaklarına erişin.
 - Yerel olarak bir Scala Spark uygulaması geliştirin ve çalıştırın.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 >
 > - Azure Toolkit for IntelliJ eklentisini kullanma
@@ -67,7 +67,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
     ![Apache Spark SDK 'sını seçme](./media/intellij-tool-synapse/create-synapse-application02.png)
 
-7. **Son**’u seçin. Projenin kullanılabilir hale gelmesi birkaç dakika sürebilir.
+7. **Son**'u seçin. Projenin kullanılabilir hale gelmesi birkaç dakika sürebilir.
 8. Spark projesi sizin için otomatik olarak bir yapı oluşturur. Yapıtı görüntülemek için aşağıdaki işletim sistemlerini yapın:
 
    a. Menü çubuğundan **Dosya**  >  **projesi yapısına git...**.

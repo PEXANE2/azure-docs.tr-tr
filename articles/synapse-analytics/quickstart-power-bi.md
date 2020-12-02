@@ -9,31 +9,31 @@ ms.subservice: business-intelligence
 ms.date: 10/27/2020
 ms.author: jocaplan
 ms.reviewer: jrasnick
-ms.openlocfilehash: 36334142595d4a6bd4865a690f154279967a70d5
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 996233e2526b8b69c13abd4340ead4c5e2175916
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746361"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450671"
 ---
 # <a name="quickstart-linking-a-power-bi-workspace-to-a-synapse-workspace"></a>Hızlı başlangıç: Power BI çalışma alanını bir Synapse çalışma alanına bağlama
 
-Bu hızlı başlangıçta, SYNAPSE Studio 'dan (Önizleme) yeni Power BI raporları ve veri kümeleri oluşturmak için bir Power BI çalışma alanını bir Synapse Analytics çalışma alanına nasıl bağlayacağınızı öğreneceksiniz.
+Bu hızlı başlangıçta, SYNAPSE Studio 'dan yeni Power BI raporları ve veri kümeleri oluşturmak için bir Power BI çalışma alanını Azure SYNAPSE Analytics çalışma alanına nasıl bağlayacağınızı öğreneceksiniz.
 
 Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Azure SYNAPSE çalışma alanı ve ilişkili depolama hesabı oluşturma](quickstart-create-workspace.md)
 - [Power BI Professional veya Premium çalışma alanı](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces)
 
 ## <a name="link-power-bi-workspace-to-your-synapse-workspace"></a>Power BI çalışma alanını SYNAPSE çalışma alanınıza bağlama
 
-1. SYNAPSE Studio 'dan başlayarak **Yönet** ' e tıklayın.
+1. SYNAPSE Studio 'dan başlayarak **Yönet**' e tıklayın.
 
     ![SYNAPSE Studio Yönet ' e tıklayın.](media/quickstart-link-powerbi/synapse-studio-click-manage.png)
 
-2. **Dış bağlantılar** altında **bağlı hizmetler** ' e tıklayın.
+2. **Dış bağlantılar** altında **bağlı hizmetler**' e tıklayın.
 
     ![Bağlı hizmetler vurgulandı.](media/quickstart-link-powerbi/manage-click-linked-services.png)
 
@@ -41,7 +41,7 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 
     ![+ Yeni bağlı hizmetler vurgulanır.](media/quickstart-link-powerbi/new-highlighted.png)
 
-4. **Power BI** ' a tıklayın ve **devam** ' a tıklayın.
+4. **Power BI** ' a tıklayın ve **devam**' a tıklayın.
 
     ![Power BI bağlı hizmetini görüntüleme.](media/quickstart-link-powerbi/powerbi-linked-service.png)
 
@@ -49,13 +49,13 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 
     ![Power BI bağlı hizmet kurulumu görüntüleniyor.](media/quickstart-link-powerbi/workspace-link-dialog.png)
 
-6. **Oluştur** 'a tıklayın.
+6. **Oluştur**'a tıklayın.
 
 ## <a name="view-power-bi-workspace-in-synapse-studio"></a>SYNAPSE Studio 'da Power BI çalışma alanını görüntüleme
 
 Çalışma alanlarınızın bağlantısı kurulduktan sonra, SYNAPSE Studio 'dan Power BI veri kümelerine gözatabilir, yeni Power BI raporları düzenleyebilir/oluşturabilirsiniz.
 
-1. **Geliştirme** ' ye tıklayın.
+1. **Geliştirme**' ye tıklayın.
 
     ![SYNAPSE Studio geliştirme ' ye tıklayın.](media/quickstart-link-powerbi/synapse-studio-click-develop.png)
 

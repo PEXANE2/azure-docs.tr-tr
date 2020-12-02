@@ -1,6 +1,6 @@
 ---
-title: Kimlik Doğrulaması
-description: Azure Active Directory (Azure AD) veya SQL Server kimlik doğrulaması kullanarak Azure SYNAPSE Analytics 'te kimlik doğrulaması yapmayı öğrenin.
+title: Adanmış SQL havuzu için kimlik doğrulaması (eski adıyla SQL DW)
+description: Azure Active Directory (Azure AD) veya SQL Server kimlik doğrulaması kullanarak Azure SYNAPSE Analytics 'te adanmış SQL havuzunda (eski adıyla SQL DW) kimlik doğrulaması yapmayı öğrenin.
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -12,24 +12,24 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-synapse
-ms.openlocfilehash: 29709dc03ee3a06bdf2aec2587909a08ee13504e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2b5ca024046c5bc46fff756c55688d3ff0cfea1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85206742"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451974"
 ---
-# <a name="authenticate-to-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te kimlik doğrulama
+# <a name="authenticate-to-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzunda (eski adıyla SQL DW) kimlik doğrulaması
 
-Azure Active Directory (AAD) veya SQL Server kimlik doğrulaması kullanarak Azure SYNAPSE 'da SQL SYNAPSE için kimlik doğrulaması yapmayı öğrenin.
+Azure Active Directory (Azure AD) veya SQL Server kimlik doğrulaması kullanarak Azure SYNAPSE 'de adanmış SQL Havuzu (eski adıyla SQL DW) için kimlik doğrulaması yapmayı öğrenin.
 
-Bir SQL havuzuna bağlanmak için kimlik doğrulama amacıyla güvenlik kimlik bilgilerini geçirmeniz gerekir. Bir bağlantı kurulduktan sonra, sorgu oturumunuzu oluşturma işleminin parçası olarak belirli bağlantı ayarları yapılandırılır.  
+Adanmış bir SQL havuzuna (eski adıyla SQL DW) bağlanmak için kimlik doğrulama amacıyla güvenlik kimlik bilgilerini geçirmeniz gerekir. Bir bağlantı kurulduktan sonra, sorgu oturumunuzu oluşturma işleminin parçası olarak belirli bağlantı ayarları yapılandırılır.  
 
-Güvenlik ve veri Ambarınızla bağlantıları etkinleştirme hakkında daha fazla bilgi için bkz. [veritabanı belgelerinin güvenliğini sağlama](sql-data-warehouse-overview-manage-security.md).
+Güvenlik hakkında daha fazla bilgi ve adanmış SQL havuzunuza (eski adıyla SQL DW) bağlantıları etkinleştirme hakkında daha fazla bilgi için bkz. [veritabanı belgelerinin güvenliğini sağlama](sql-data-warehouse-overview-manage-security.md).
 
 ## <a name="sql-authentication"></a>SQL kimlik doğrulaması
 
-SQL havuzuna bağlanmak için aşağıdaki bilgileri sağlamanız gerekir:
+Adanmış SQL havuzuna (eski adıyla SQL DW) bağlanmak için aşağıdaki bilgileri sağlamanız gerekir:
 
 * Tam nitelenmiş ServerName
 * SQL kimlik doğrulaması belirtin
@@ -45,9 +45,9 @@ Varsayılan olarak, bağlantınız Kullanıcı veritabanınıza değil *ana* ver
 > [!NOTE]
 > Transact-SQL ifadesinin **MyDatabase; kullanımı** , bir bağlantının veritabanını değiştirmek için desteklenmez. SSDT ile bir SQL havuzuna bağlanma Kılavuzu için, [Visual Studio Ile sorgu](sql-data-warehouse-query-visual-studio.md) makalesini inceleyin.
 
-## <a name="azure-active-directory-aad-authentication"></a>Azure Active Directory (AAD) kimlik doğrulaması
+## <a name="azure-active-directory-authentication"></a>Azure Active Directory kimlik doğrulaması
 
-[Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) kimlik doğrulaması, Azure Active Directory (Azure AD) KIMLIKLERI kullanılarak SQL havuzuna bağlanma mekanizmasıdır. Azure Active Directory kimlik doğrulaması ile, veritabanı kullanıcılarının ve diğer Microsoft hizmetlerinin kimliklerini tek bir merkezi konumda merkezi olarak yönetebilirsiniz. Merkezi KIMLIK yönetimi, Azure SYNAPSE kullanıcılarını yönetmek ve izin yönetimini basitleştireceğinizi sağlayan tek bir yer sağlar.
+[Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) kimlik doğrulaması, Azure Active Directory (Azure AD) KIMLIKLERI kullanılarak SQL havuzuna bağlanma mekanizmasıdır. Azure Active Directory kimlik doğrulaması ile, veritabanı kullanıcılarının ve diğer Microsoft hizmetlerinin kimliklerini tek bir merkezi konumda merkezi olarak yönetebilirsiniz. Merkezi KIMLIK yönetimi, adanmış SQL Havuzu (eski adıyla SQL DW) kullanıcılarını yönetmek ve izin yönetimini basitleştireceğinizi sağlayan tek bir yer sağlar.
 
 ### <a name="benefits"></a>Yararları
 
@@ -57,7 +57,7 @@ Azure Active Directory avantajları şunlardır:
 * Sunucu genelindeki Kullanıcı kimliklerinin uzamasını durdurmaya yardımcı olur.
 * Tek konumda parola dönüşüne olanak sağlar
 * Dış (Azure AD) gruplarını kullanarak veritabanı izinlerini yönetin.
-* Azure Active Directory tarafından desteklenen tümleşik Windows kimlik doğrulaması ve yerleşik kimlik doğrulama biçimlerini etkinleştirerek parolaları depolamayı ortadan kaldırır.
+* Tümleşik Windows kimlik doğrulamasını ve Azure Active Directory tarafından desteklenen diğer kimlik doğrulama biçimlerini etkinleştirerek parolaların depolanmasını ortadan kaldırır.
 * , Veritabanı düzeyinde kimliklerin kimliğini doğrulamak için kapsanan veritabanı kullanıcılarını kullanır.
 * SQL havuzuna bağlanan uygulamalar için belirteç tabanlı kimlik doğrulamasını destekler.
 * [SQL Server Management Studio](../../azure-sql/database/authentication-mfa-ssms-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) ve [SQL Server veri araçları](/sql/ssdt/azure-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)gibi çeşitli araçlar Için Active Directory evrensel kimlik doğrulaması aracılığıyla çok faktörlü kimlik doğrulamasını destekler.

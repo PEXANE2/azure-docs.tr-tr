@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 02/27/2020
-ms.openlocfilehash: 38b4713383368f0c64983738f2ed65f60edb9e67
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e58dcf8206ae9feab4d8a09517bf9efda244dd5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334098"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451575"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Öğretici: Azure Logic Apps, Azure Işlevleri ve Azure Storage kullanarak e-postaları işlemek için görevleri otomatikleştirme
 
@@ -82,7 +82,7 @@ Gelen e-postaları ve ekleri, [Azure depolama kapsayıcısında](../storage/comm
 
    1. Depolama hesabı menünüzde **Ayarlar** bölümünde **Erişim anahtarları**’nı seçin.
 
-   1. Depolama hesabı adınızı ve **KEY1**kopyalayın ve bu değerleri güvenli bir yere kaydedin.
+   1. Depolama hesabı adınızı ve **KEY1** kopyalayın ve bu değerleri güvenli bir yere kaydedin.
 
       ![Depolama hesabı adını ve anahtarını kopyalayıp kaydedin](./media/tutorial-process-email-attachments-workflow/copy-save-storage-name-key.png)
 
@@ -96,7 +96,7 @@ Gelen e-postaları ve ekleri, [Azure depolama kapsayıcısında](../storage/comm
 
    1. **Kapsayıcılar** sayfası açıldıktan sonra araç çubuğunda **Kapsayıcı**'yı seçin.
 
-   1. **Yeni kapsayıcı**' ın altında, `attachments` kapsayıcı adı olarak girin. **Ortak erişim düzeyi**altında **kapsayıcı (kapsayıcılar ve Bloblar için anonim okuma erişimi)**  >  **Tamam**' ı seçin.
+   1. **Yeni kapsayıcı**' ın altında, `attachments` kapsayıcı adı olarak girin. **Ortak erişim düzeyi** altında **kapsayıcı (kapsayıcılar ve Bloblar için anonim okuma erişimi)**  >  **Tamam**' ı seçin.
 
       İşiniz bittiğinde, Azure portalında depolama hesabınızda depolama kapsayıcısını bulabilirsiniz:
 
@@ -121,13 +121,13 @@ Sonra, Depolama Gezgini’ni depolama hesabınıza bağlayın.
    > [!TIP]
    > Hiçbir istem görünürse, Depolama Gezgini araç çubuğunda **Hesap Ekle**' yi seçin.
 
-1. **Görünen ad**' ın altında, bağlantınız için bir kolay ad sağlayın. **Hesap adı** bölümüne depolama hesabınızın adını girin. **Hesap anahtarı**altında, daha önce kaydettiğiniz erişim anahtarını girip **İleri**' yi seçin.
+1. **Görünen ad**' ın altında, bağlantınız için bir kolay ad sağlayın. **Hesap adı** bölümüne depolama hesabınızın adını girin. **Hesap anahtarı** altında, daha önce kaydettiğiniz erişim anahtarını girip **İleri**' yi seçin.
 
 1. Bağlantı bilgilerinizi onaylayın ve sonra **Bağlan**' ı seçin.
 
-   Depolama Gezgini bağlantı oluşturur ve **Yerel & bağlı**  >  **depolama hesapları**altındaki Gezgin penceresinde depolama hesabınızı gösterir.
+   Depolama Gezgini bağlantı oluşturur ve **Yerel & bağlı**  >  **depolama hesapları** altındaki Gezgin penceresinde depolama hesabınızı gösterir.
 
-1. BLOB depolama kapsayıcınızı bulmak için, **depolama hesapları**altında, burada **attachmentstorageacct** olan depolama hesabınızı genişletin ve **ekler** kapsayıcısını bulduğunuz **BLOB kapsayıcılarını** genişletin, örneğin:
+1. BLOB depolama kapsayıcınızı bulmak için, **depolama hesapları** altında, burada **attachmentstorageacct** olan depolama hesabınızı genişletin ve **ekler** kapsayıcısını bulduğunuz **BLOB kapsayıcılarını** genişletin, örneğin:
 
    ![Depolama Gezgini - depolama kapsayıcısını bulma](./media/tutorial-process-email-attachments-workflow/storage-explorer-check-contianer.png)
 
@@ -152,7 +152,7 @@ Sonra, gelen e-postadan HTML’yi kaldıran bir [Azure işlevi](../azure-functio
    | **Uygulama Bilgileri** | Devre Dışı Bırak | [Application Insights](../azure-monitor/app/app-insights-overview.md)ile uygulama izlemeyi etkinleştirir, ancak bu öğretici için Uygula ' yı **devre dışı bırak**' ı seçin  >  **Apply**. |
    ||||
 
-   İşlev uygulamanız dağıtımdan sonra otomatik olarak açılmazsa, [Azure Portal](https://portal.azure.com) arama kutusunda **işlev uygulaması**bulun ve seçin. **İşlev uygulaması**altında, işlev uygulamanızı seçin.
+   İşlev uygulamanız dağıtımdan sonra otomatik olarak açılmazsa, [Azure Portal](https://portal.azure.com) arama kutusunda **işlev uygulaması** bulun ve seçin. **İşlev uygulaması** altında, işlev uygulamanızı seçin.
 
    ![İşlev uygulaması seçme](./media/tutorial-process-email-attachments-workflow/select-function-app.png)
 
@@ -160,7 +160,7 @@ Sonra, gelen e-postadan HTML’yi kaldıran bir [Azure işlevi](../azure-functio
 
    ![Oluşturulan işlev uygulaması](./media/tutorial-process-email-attachments-workflow/function-app-created.png)
 
-   Bir işlev uygulaması oluşturmak için [Azure CLI](../azure-functions/functions-create-first-azure-function-azure-cli.md)veya [PowerShell ve Kaynak Yöneticisi şablonlarını](../azure-resource-manager/templates/deploy-powershell.md)da kullanabilirsiniz.
+   Bir işlev uygulaması oluşturmak için [Azure CLI](../azure-functions/create-first-function-cli-csharp.md)veya [PowerShell ve Kaynak Yöneticisi şablonlarını](../azure-resource-manager/templates/deploy-powershell.md)da kullanabilirsiniz.
 
 1. **Işlev uygulamaları** listesinde, henüz genişletilmemişse, işlev uygulamanızı genişletin. İşlev uygulamanız altında **işlevler**' i seçin. İşlevler araç çubuğunda **Yeni işlev**’i seçin.
 
@@ -172,7 +172,7 @@ Sonra, gelen e-postadan HTML’yi kaldıran bir [Azure işlevi](../azure-functio
 
    Azure, HTTP ile tetiklenen bir işlev için dile özgü bir şablon kullanarak bir işlev oluşturur.
 
-1. **Yeni İşlev** bölmesinin **Ad** alanına `RemoveHTMLFunction` girin. **Yetkilendirme düzeyini** **işlev**olarak ayarlayın ve **Oluştur**' u seçin.
+1. **Yeni İşlev** bölmesinin **Ad** alanına `RemoveHTMLFunction` girin. **Yetkilendirme düzeyini** **işlev** olarak ayarlayın ve **Oluştur**' u seçin.
 
    ![İşlevinizi adlandırma](./media/tutorial-process-email-attachments-workflow/function-provide-name.png)
 
@@ -208,7 +208,7 @@ Sonra, gelen e-postadan HTML’yi kaldıran bir [Azure işlevi](../azure-functio
 
    !["Test" bölmesini açma](./media/tutorial-process-email-attachments-workflow/function-choose-test.png)
 
-1. **Test** bölmesinde, **İstek gövdesi**altında, bu satırı girin ve **Çalıştır**' ı seçin.
+1. **Test** bölmesinde, **İstek gövdesi** altında, bu satırı girin ve **Çalıştır**' ı seçin.
 
    `{"name": "<p><p>Testing my function</br></p></p>"}`
 
@@ -224,7 +224,7 @@ Sonra, gelen e-postadan HTML’yi kaldıran bir [Azure işlevi](../azure-functio
 
 ## <a name="create-your-logic-app"></a>Mantıksal uygulamanızı oluşturma
 
-1. Azure üst düzey arama kutusuna girin `logic apps` ve **Logic Apps**seçin.
+1. Azure üst düzey arama kutusuna girin `logic apps` ve **Logic Apps** seçin.
 
    !["Logic Apps" bul ve Seç](./media/tutorial-process-email-attachments-workflow/find-select-logic-apps.png)
 
@@ -259,7 +259,7 @@ Sonra ek içeren gelen e-postaları dinleyen bir [tetikleyici](../logic-apps/log
 
 1. Arama kutusuna tasarımcıda `when new email arrives` filtreniz olarak yazın. E-posta sağlayıcınız için bu tetikleyiciyi seçin: **Yeni bir e-posta geldiğinde - <*e-posta-sağlayıcınız*>**
 
-   Örneğin:
+   Örnek:
 
    ![E-posta sağlayıcısı için şu tetikleyiciyi seçin: "Yeni bir e-posta geldiğinde"](./media/tutorial-process-email-attachments-workflow/add-trigger-when-email-arrives.png)
 
@@ -309,7 +309,7 @@ Sonra ek içeren gelen e-postaları dinleyen bir [tetikleyici](../logic-apps/log
 
    !["Yeni adım"](./media/tutorial-process-email-attachments-workflow/add-condition-under-trigger.png)
 
-1. **Eylem seçin**altında, arama kutusuna girin `condition` . Şu eylemi seçin: **koşul**
+1. **Eylem seçin** altında, arama kutusuna girin `condition` . Şu eylemi seçin: **koşul**
 
    !["Koşul" ı seçin](./media/tutorial-process-email-attachments-workflow/select-condition.png)
 
@@ -363,7 +363,7 @@ Sonra ek içeren gelen e-postaları dinleyen bir [tetikleyici](../logic-apps/log
 
 1. Kendinize şu ölçütleri karşılayan bir e-posta gönderin:
 
-   * E-postanız, tetikleyicisinin **Konu filtresinde**belirttiğiniz metni içerir: `Business Analyst 2 #423501`
+   * E-postanız, tetikleyicisinin **Konu filtresinde** belirttiğiniz metni içerir: `Business Analyst 2 #423501`
 
    * E-postanız bir ek içerir. Şimdilik boş bir metin dosyası oluşturun ve bu dosyayı e-postanıza ekleyin.
 
@@ -470,7 +470,7 @@ Ardından e-posta gövdesini kaydedebilmek için depolama kapsayıcınızda blob
 
 1. Kendinize şu ölçütleri karşılayan bir e-posta gönderin:
 
-   * E-postanız, tetikleyicisinin **Konu filtresinde**belirttiğiniz metni içerir: `Business Analyst 2 #423501`
+   * E-postanız, tetikleyicisinin **Konu filtresinde** belirttiğiniz metni içerir: `Business Analyst 2 #423501`
 
    * E-postanız en az bir ek içerir. Şimdilik yalnızca bir boş metin dosyası oluşturun ve bu dosyayı e-postanıza ekleyin.
 
@@ -502,7 +502,7 @@ E-postadaki her eki işlemek için mantıksal uygulamanızın iş akışına **h
 
    !["For each" döngüsünü ekleyin](./media/tutorial-process-email-attachments-workflow/add-for-each-loop.png)
 
-1. **Eylem seçin**altında, arama kutusuna `for each` filtreniz olarak girin ve şu eylemi seçin: **her biri için**
+1. **Eylem seçin** altında, arama kutusuna `for each` filtreniz olarak girin ve şu eylemi seçin: **her biri için**
 
    !["Her bir" ı seçin](./media/tutorial-process-email-attachments-workflow/select-for-each.png)
 
@@ -601,7 +601,7 @@ Sonra mantıksal uygulamanızın ekleri gözden geçirmek üzere e-posta gönder
 
    | Ayar | Değer | Notlar |
    | ------- | ----- | ----- |
-   | **Amaç** | <*alıcı-e-posta adresi*> | Test için kendi e-posta adresinizi kullanabilirsiniz. |
+   | **Hedef** | <*alıcı-e-posta adresi*> | Test için kendi e-posta adresinizi kullanabilirsiniz. |
    | **Konu**  | ```ASAP - Review applicant for position:``` **Konu** | Dahil etmek istediğiniz e-posta konusu. Bu kutunun içine tıklayın, örnek metni girin ve dinamik içerik listesinin **Yeni bir e-posta geldiğinde** bölümünde **Konu** alanını seçin. |
    | **Gövde** | ```Please review new applicant:``` <p>```Applicant name:```**Şuradan** <p>```Application file location:``` **Yol** <p>```Application email content:``` **Gövde** | E-posta gövdesinin içeriği. Bu kutunun içine tıklayın, örnek metni girin ve dinamik içerik listesinden şu alanları seçin: <p>- **Yeni bir e-posta geldiğinde** bölümünde **Kimden** alanı </br>- **E-posta gövdesi için blob oluşturma** bölümünde **Yol** alanı </br>- **E-posta gövdesini temizlemek için RemoveHTMLFunction işlevini çağırma** bölümünde **Gövde** alanı |
    ||||

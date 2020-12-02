@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/16/2020
-ms.openlocfilehash: 2e976b895c6aa63b73c55b458668c00b64c6f960
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 705b0f02682b6aa41cb5c8e77d8da39faa5edb1f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91660913"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450125"
 ---
 # <a name="publish-an-integrated-solution"></a>Tümleşik bir çözüm yayımlama
 
-Bu makalede, ticari Market 'e tümleşik bir çözüm yayımlamaya yönelik genel işlem ve gereksinimler açıklanmaktadır. Tek bir paketlenmiş teklifte, tümleşik bir çözüm, yazılım satıcılarından gelen ve hizmet ortağının dağıtımı ve desteğiyle ilgili nokta çözümü teknolojilerini birleştirir. Hizmet ortağı Microsoft AppSource veya Azure Marketi 'nde teklif bir [danışmanlık hizmeti](./consulting-services.md)olarak listelenir.
+Bu makalede, ticari Market 'e tümleşik bir çözüm yayımlamaya yönelik genel işlem ve gereksinimler açıklanmaktadır. Tek bir paketlenmiş teklifte, tümleşik bir çözüm, yazılım satıcılarından gelen ve hizmet ortağının dağıtımı ve desteğiyle ilgili nokta çözümü teknolojilerini birleştirir. Hizmet ortağı Microsoft AppSource veya Azure Marketi 'nde teklif bir [danışmanlık hizmeti](./plan-consulting-service-offer.md)olarak listelenir.
 
 Tümleşik çözümler, belirli bir müşteri ihtiyacı veya senaryosuna yönelik olarak ele hedeflenir. Sağlayıcılar, sektör Challenge veya sorunlu noktaları anlamak için başlar. Daha sonra müşterilere yönelik Birleşik ve yinelenebilir bir dağıtım deneyimi oluşturmak için iki veya daha fazla en iyi sürümü tümleştirirler. Sağlayıcılar müşterileri hızla çalışır duruma alır. İlgili özelleştirme, danışmanlık ve çözüm desteği sunarak müşteriyle tek bir iletişim noktası sunar. Sonuç, teknoloji ve hizmetler de dahil olmak üzere tümleşik bir çözümdür.
 
@@ -104,7 +104,7 @@ Adaylarınız onaylandıktan sonra, tümleşik çözümünüzü geliştirmek iç
 
 ## <a name="publish-your-integrated-solution"></a>Tümleşik çözümünüzü yayımlayın
 
-Teknik tümleştirmeyi ve pazarlama yardımcı malzemeleri tamamladıktan sonra, [Microsoft AppSource ve Azure Marketi Için danışmanlık hizmetleri](./consulting-services.md)yayımcısı Kılavuzu ' na bakın. Çözümünüzün Microsoft AppSource veya Azure Marketi 'nde yayımlanıp yayımlanmayacağını öğrenmek için bu kaynağı kullanın. Ayrıca, yayımlama yapıtlarınızı hazırlama ve Yayımlama sürecini tamamlamaya yönelik kılavuzu kullanın.
+Teknik tümleştirmeyi ve pazarlama yardımcı malzemeleri tamamladıktan sonra, [Microsoft AppSource ve Azure Marketi Için danışmanlık hizmetleri](./plan-consulting-service-offer.md)yayımcısı Kılavuzu ' na bakın. Çözümünüzün Microsoft AppSource veya Azure Marketi 'nde yayımlanıp yayımlanmayacağını öğrenmek için bu kaynağı kullanın. Ayrıca, yayımlama yapıtlarınızı hazırlama ve Yayımlama sürecini tamamlamaya yönelik kılavuzu kullanın.
 
 Danışmanlık hizmeti teklifleri için beş hizmet türü kullanılabilir olsa da, tümleşik bir çözüm kavram kanıtı ya da tam bir uygulama olmalıdır.
 

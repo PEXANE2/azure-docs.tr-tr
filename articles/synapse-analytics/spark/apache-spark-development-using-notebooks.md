@@ -1,6 +1,6 @@
 ---
 title: SYNAPSE Studio Not defterleri
-description: Bu makalede, veri hazırlama ve görselleştirme için Azure SYNAPSE Studio (Önizleme) Not defterleri oluşturmayı ve geliştirmeyi öğreneceksiniz.
+description: Bu makalede, veri hazırlama ve görselleştirme için Azure SYNAPSE Studio Not defterleri oluşturmayı ve geliştirmeyi öğreneceksiniz.
 services: synapse analytics
 author: ruixinxu
 ms.service: synapse-analytics
@@ -10,16 +10,16 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: c35ee7bcdefa5091d9c887430182638f066cb9fa
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bfb822481e00e84fa17bd4b1fcb58c1d4b89a124
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95900916"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450869"
 ---
-# <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SYNAPSE Studio (Önizleme) Not defterleri oluşturma, geliştirme ve bakımını yapma
+# <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SYNAPSE Studio Not defterleri oluşturma, geliştirme ve bakımını yapma
 
-Bir Synapse Studio (Önizleme) Not defteri, canlı kod, görselleştirme ve anlatım metni içeren dosyalar oluşturmanız için bir Web arabirimidir. Not defterleri, fikirlerinizi doğrulamak ve hızlı denemeleri kullanarak verilerinizden Öngörüler elde etmek için iyi bir yerdir. Not defterleri, veri hazırlama, veri görselleştirme, makine öğrenimi ve diğer büyük veri senaryolarında da yaygın olarak kullanılır.
+SYNAPSE Studio Not defteri, canlı kod, görselleştirme ve anlatım metni içeren dosyalar oluşturmanız için bir Web arabirimidir. Not defterleri, fikirlerinizi doğrulamak ve hızlı denemeleri kullanarak verilerinizden Öngörüler elde etmek için iyi bir yerdir. Not defterleri, veri hazırlama, veri görselleştirme, makine öğrenimi ve diğer büyük veri senaryolarında da yaygın olarak kullanılır.
 
 Bir Azure SYNAPSE Studio not defteriyle şunları yapabilirsiniz:
 
@@ -104,7 +104,7 @@ En üstteki komut çubuğundaki açılan listeden yeni eklenen hücreler için b
 
 Bir hücrenin başlangıcında doğru dil Magic komutunu belirterek, bir not defterinde birden çok dil kullanabilirsiniz. Aşağıdaki tabloda, hücre dillerini değiştirmek için Magic komutları listelenmektedir.
 
-|Magic komutu |Dil | Description |  
+|Magic komutu |Dil | Açıklama |  
 |---|------|-----|
 |%% pyspark| Python | Spark bağlamına karşı bir **Python** sorgusu yürütün.  |
 |%% Spark| Scala | Spark bağlamına yönelik bir **Scala** sorgusu yürütün.  |  
@@ -149,10 +149,10 @@ IntelliSense özellikleri farklı diller için farklı ölçü düzeyleridir. De
 
 |Diller| Sözdizimi vurgusu | Söz dizimi hata Işaretleyicisi  | Sözdizimi kodu tamamlama | Değişken kodu tamamlama| Sistem Işlevi kod tamamlama| Kullanıcı Işlevi kod tamamlama| Akıllı Girinti | Kod katlama|
 |--|--|--|--|--|--|--|--|--|
-|PySpark (Python)|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
-|Spark (Scala)|Yes|Yes|Yes|Yes|-|-|-|Yes|
-|Mini SQL|Yes|Yes|-|-|-|-|-|-|
-|Spark için .NET (C#)|Yes|-|-|-|-|-|-|-|
+|PySpark (Python)|Evet|Evet|Evet|Evet|Evet|Evet|Evet|Evet|
+|Spark (Scala)|Evet|Evet|Evet|Evet|-|-|-|Evet|
+|Mini SQL|Evet|Evet|-|-|-|-|-|-|
+|Spark için .NET (C#)|Evet|-|-|-|-|-|-|-|
 
 ### <a name="format-text-cell-with-toolbar-buttons"></a>Araç çubuğu düğmeleriyle metin hücresini Biçimlendir
 
@@ -549,8 +549,8 @@ Aşağıdaki tuş vuruşu kısayollarını kullanarak, düzenleme modundayken Az
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [SYNAPSE örnek not defterlerine göz atın](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks)
-- [Hızlı başlangıç: Web araçlarını kullanarak Azure SYNAPSE Analytics 'te Apache Spark Havuzu (Önizleme) oluşturma](../quickstart-apache-spark-notebook.md)
+- [Hızlı başlangıç: Web araçlarını kullanarak Azure SYNAPSE Analytics 'te Apache Spark havuzu oluşturma](../quickstart-apache-spark-notebook.md)
 - [Azure SYNAPSE Analytics 'te Apache Spark nedir?](apache-spark-overview.md)
-- [Azure SYNAPSE Analytics ile Apache Spark için .NET kullanın](spark-dotnet.md)
+- [Azure Synapse Analytics ile Apache Spark için .NET’i kullanma](spark-dotnet.md)
 - [Apache Spark belgeleri için .NET](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)

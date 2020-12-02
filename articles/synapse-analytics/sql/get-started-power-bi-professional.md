@@ -1,6 +1,6 @@
 ---
 title: Power BI Professional ile SYNAPSE SQL 'e bağlanma
-description: Bu öğreticide, Power BI Desktop 'ı sunucusuz SQL havuzuna (Önizleme) bağlama adımlarını inceleyeceğiz.
+description: Bu öğreticide, Power BI Desktop 'ı sunucusuz SQL havuzuna bağlama adımlarını inceleyeceğiz.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: c26e2bd27c0c3187768252fd922c31a2cc23d735
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: b33edb99109b7516e1792497a936031cf954bc15
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682097"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451603"
 ---
 # <a name="connect-to-serverless-sql-pool-with-power-bi-professional"></a>Power BI Professional ile sunucusuz SQL havuzuna bağlanma
 
@@ -26,9 +26,9 @@ ms.locfileid: "94682097"
 > - [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > - [SSMS](get-started-ssms.md)
 
-Bu öğreticide, Power BI Desktop 'ı sunucusuz SQL havuzuna (Önizleme) bağlama adımlarını inceleyeceğiz.
+Bu öğreticide, Power BI Desktop 'ı sunucusuz SQL havuzuna bağlama adımlarını inceleyeceğiz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Sorgu vermek için aşağıdaki araçlara ihtiyacınız vardır:
 

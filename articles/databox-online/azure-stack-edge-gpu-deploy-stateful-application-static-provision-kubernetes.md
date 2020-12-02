@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: alkohli
-ms.openlocfilehash: 6949b2265e1b22d924b67d0d46e5b2f2bf9c23ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2a14c12baac29d73754bb17e3ca386cc48e1ba0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91330409"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449228"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-pro-device"></a>Kubectl 'yi, Azure Stack Edge Pro cihazınızda bir PersistentVolume ile bir Kubernetes durum bilgisi olan uygulama çalıştırmak için kullanın
 
@@ -24,7 +24,7 @@ Bu yordam, [Azure Stack Edge Pro cihazındaki Kubernetes depolamayı](azure-stac
 Azure Stack Edge Pro, Azure SQL Edge kapsayıcılarını çalıştırmayı da destekler ve bu, MySQL için burada ayrıntılı şekilde dağıtılabilir. Daha fazla bilgi için bkz. [Azure SQL Edge](../azure-sql-edge/overview.md).
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Durum bilgisi olan uygulamayı dağıtabilmeniz için cihazınızda aşağıdaki önkoşulları ve cihaza erişmek için kullanacağınız istemciyi tamamladığınızdan emin olun:
 
@@ -37,7 +37,7 @@ Durum bilgisi olan uygulamayı dağıtabilmeniz için cihazınızda aşağıdaki
 ### <a name="for-client-accessing-the-device"></a>Cihaza erişen istemci için
 
 - Azure Stack Edge Pro cihazına erişmek için kullanılacak bir Windows istemci sisteminiz vardır.
-    - İstemci Windows PowerShell 5,0 veya üstünü çalıştırıyor. Windows PowerShell 'in en son sürümünü indirmek için [Windows PowerShell 'ı yükleme](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7)bölümüne gidin.
+    - İstemci Windows PowerShell 5,0 veya üstünü çalıştırıyor. Windows PowerShell 'in en son sürümünü indirmek için [Windows PowerShell 'ı yükleme](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)bölümüne gidin.
     
     - [Desteklenen bir işletim sistemine](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) sahip başka bir istemciniz de olabilir. Bu makalede, bir Windows istemcisi kullanılırken yordam açıklanmaktadır. 
     
@@ -62,7 +62,7 @@ Statik olarak bir BD sağlamak için cihazınızda bir paylaşma oluşturmanız 
 > [!NOTE]
 > Bu nasıl yapılır makalesinde kullanılan belirli örnek NFS paylaşımları ile çalışmaz. Genellikle, NFS paylaşımları, veritabanı olmayan uygulamalarla Azure Stack Edge cihazınızda sağlanabilir.
 
-1. Kenar paylaşma veya kenar yerel paylaşma oluşturmak isteyip istemediğinizi seçin. Paylaşma oluşturmak için [paylaşma ekleme](azure-stack-edge-manage-shares.md#add-a-share) bölümündeki yönergeleri izleyin. **Edge COMPUTE ile paylaşma kullan**onay kutusunu seçtiğinizden emin olun.
+1. Kenar paylaşma veya kenar yerel paylaşma oluşturmak isteyip istemediğinizi seçin. Paylaşma oluşturmak için [paylaşma ekleme](azure-stack-edge-manage-shares.md#add-a-share) bölümündeki yönergeleri izleyin. **Edge COMPUTE ile paylaşma kullan** onay kutusunu seçtiğinizden emin olun.
 
     ![BD için uç yerel paylaşma](./media/azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes/edge-local-share-static-provision-1.png)
 

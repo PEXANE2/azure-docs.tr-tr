@@ -9,14 +9,14 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: bb64fb3c9e25e629a0bcb36fe60fd5ae2d7fc906
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b94ece73d5f9dc9b8343e45fb1f616599b9a1c1f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368613"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450927"
 ---
-# <a name="optimize-apache-spark-jobs-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te Apache Spark işleri (Önizleme) iyileştirme
+# <a name="optimize-apache-spark-jobs-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te Apache Spark işlerini iyileştirme
 
 Belirli bir iş yükünüz için [Apache Spark](https://spark.apache.org/) kümesi yapılandırmasını nasıl iyileştireceğinizi öğrenin.  En yaygın zorluk hatalı yapılandırmalardan (özellikle yanlış boyutlandırılmış yürütücüler), uzun süre çalışan işlemlerden ve Kartezyen işlemlerle sonuçlanan görevlerden kaynaklanan bellek baskısıdır. Uygun önbelleğe alma ile işleri hızlandırabilir ve [veri eğmaya](#optimize-joins-and-shuffles)izin verebilirsiniz. En iyi performansı elde etmek için, uzun süreli ve kaynak kullanan Spark iş yürütmelerini izleyin ve gözden geçirin.
 
@@ -52,7 +52,7 @@ Aşağıdaki bölümlerde ortak Spark iş iyileştirmeleri ve önerileri açıkl
 
 Spark, CSV, JSON, XML, Parquet, Orc ve avro gibi birçok biçimi destekler. Spark, dış veri kaynaklarıyla çok sayıda daha fazla biçim desteklemek için genişletilebilir. daha fazla bilgi için bkz. [Apache Spark paketleri](https://spark-packages.org).
 
-Performans için en iyi biçim, Spark 2. x içinde varsayılan değer olan *Snappy sıkıştırması*ile birlikte Parquet 'tir. Parquet, verileri sütunlu biçimde depolar ve Spark 'ta çok iyileştirilir. Ayrıca, *Snappy sıkıştırması* , gzip sıkıştırmasından daha büyük dosyalar oluşmasına neden olabilir. Bu dosyaların bölünmüş tablo doğası nedeniyle daha hızlı açılır.
+Performans için en iyi biçim, Spark 2. x içinde varsayılan değer olan *Snappy sıkıştırması* ile birlikte Parquet 'tir. Parquet, verileri sütunlu biçimde depolar ve Spark 'ta çok iyileştirilir. Ayrıca, *Snappy sıkıştırması* , gzip sıkıştırmasından daha büyük dosyalar oluşmasına neden olabilir. Bu dosyaların bölünmüş tablo doğası nedeniyle daha hızlı açılır.
 
 ## <a name="use-the-cache"></a>Önbelleği kullanma
 
@@ -103,7 +103,7 @@ Bölümleme ve demetlenmesidir 'ı aynı anda kullanabilirsiniz.
 
 ## <a name="optimize-joins-and-shuffles"></a>Birleştirmeleri ve karıştırmaları iyileştirme
 
-Bir JOIN veya karıştırma üzerinde işleriniz yavaşsa, neden büyük olasılıkla iş verilerinizde asymmetry olan *veri eğriliği*olur. Örneğin, bir harita işi 20 saniye sürebilir, ancak verilerin katıldığı veya karıştırılmış bir işi çalıştıralsa da saat sürer. Veri eğriliğini onarmak için, anahtarın tamamını tam olarak yapmanız gerekir ya da anahtarların yalnızca bir alt kümesi için *yalıtılmış bir anahtar* kullanırsınız. Yalıtılmış bir güvenlik kullanıyorsanız, eşleme birleştirmelerde sallanan anahtarların alt kümesini yalıtmak için daha fazla filtre uygulamanız gerekir. Diğer bir seçenek de demet sütunu tanıtmak ve öncelikle demetlerde ön toplama işlemi yapmak.
+Bir JOIN veya karıştırma üzerinde işleriniz yavaşsa, neden büyük olasılıkla iş verilerinizde asymmetry olan *veri eğriliği* olur. Örneğin, bir harita işi 20 saniye sürebilir, ancak verilerin katıldığı veya karıştırılmış bir işi çalıştıralsa da saat sürer. Veri eğriliğini onarmak için, anahtarın tamamını tam olarak yapmanız gerekir ya da anahtarların yalnızca bir alt kümesi için *yalıtılmış bir anahtar* kullanırsınız. Yalıtılmış bir güvenlik kullanıyorsanız, eşleme birleştirmelerde sallanan anahtarların alt kümesini yalıtmak için daha fazla filtre uygulamanız gerekir. Diğer bir seçenek de demet sütunu tanıtmak ve öncelikle demetlerde ön toplama işlemi yapmak.
 
 Yavaş birleştirmelere neden olan başka bir faktör birleştirme türü olabilir. Spark, varsayılan olarak, `SortMerge` JOIN türünü kullanır. Bu tür bir birleştirme, büyük veri kümeleri için idealdir, ancak bunları birleştirmeden önce verilerin sol ve sağ tarafını sıralacağından hesaplama açısından pahalıdır.
 

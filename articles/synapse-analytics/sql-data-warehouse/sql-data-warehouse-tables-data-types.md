@@ -1,6 +1,6 @@
 ---
-title: Adanmış SQL havuzundaki tablo veri türleri
-description: Adanmış SQL havuzunda tablo veri türlerini tanımlamaya yönelik öneriler.
+title: Adanmış SQL havuzundaki tablo veri türleri (eski adıyla SQL DW)
+description: Azure SYNAPSE Analytics 'te adanmış SQL Havuzu (eski adıyla SQL DW) için tablo veri türlerini tanımlamaya yönelik öneriler.
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -11,20 +11,20 @@ ms.date: 01/06/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 5bb1d10978171b93ee697b37ee9ac0702d3f898c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 6526ae2c15bd53af69854309632c83fa65af8d85
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313074"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449689"
 ---
-# <a name="table-data-types-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu için tablo veri türleri 
+# <a name="table-data-types-for-dedicated-sql-pool-formerly--sql-dw-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL Havuzu (eski adıyla SQL DW) için tablo veri türleri 
 
 Bu makaleye dahil, adanmış SQL havuzunda tablo veri türlerini tanımlamaya yönelik önerilerdir.
 
 ## <a name="supported-data-types"></a>Desteklenen veri türleri
 
-Adanmış SQL havuzu en yaygın olarak kullanılan veri türlerini destekler. Desteklenen veri türlerinin bir listesi için, bkz. CREATE TABLE deyimindeki [veri türleri](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true#DataTypes) .
+Adanmış SQL Havuzu (eski adıyla SQL DW) en yaygın kullanılan veri türlerini destekler. Desteklenen veri türlerinin bir listesi için, bkz. CREATE TABLE deyimindeki [veri türleri](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true#DataTypes) .
 
 ## <a name="minimize-row-length"></a>Satır uzunluğunu Küçült
 
@@ -51,7 +51,7 @@ WHERE y.[name] IN ('geography','geometry','hierarchyid','image','text','ntext','
 
 ## <a name="workarounds-for-unsupported-data-types"></a><a name="unsupported-data-types"></a>Desteklenmeyen veri türleri için geçici çözümler
 
-Aşağıdaki listede, adanmış SQL havuzunun desteklemediği veri türleri ve desteklenmeyen veri türleri için yararlı alternatifler verilmiştir.
+Aşağıdaki listede, adanmış SQL havuzunun (eski adıyla SQL DW) desteklemediği veri türleri ve desteklenmeyen veri türleri için yararlı alternatifler verilmiştir.
 
 | Desteklenmeyen veri türü | Geçici çözüm |
 | --- | --- |

@@ -1,6 +1,6 @@
 ---
-title: Adanmış SQL havuzu için sistem görünümleri
-description: Azure SYNAPSE Analytics 'te adanmış SQL havuzu için sistem görünümleri belgelerine bağlantılar.
+title: Adanmış SQL havuzu için sistem görünümleri (eski adıyla SQL DW)
+description: Azure SYNAPSE Analytics 'te adanmış SQL Havuzu (eski adıyla SQL DW) için sistem görünümleri belgelerine bağlantılar.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,18 +11,18 @@ ms.date: 01/06/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 81ce875b5ee9baa96fe9aaa9fa4ea99a730d307e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 9149238099704a3567a8d7f34eddbc99ee8f304e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313370"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449911"
 ---
-# <a name="system-views-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu için sistem görünümleri
+# <a name="system-views-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL Havuzu (eski adıyla SQL DW) için sistem görünümleri
 
-Adanmış SQL havuzunda desteklenen T-SQL deyimlerinin belgelerinin bağlantıları.
+Adanmış SQL havuzunda (eski adıyla SQL DW) desteklenen T-SQL deyimlerinin belgelerine bağlantılar.
 
-## <a name="dedicated-sql-pool-catalog-views"></a>Adanmış SQL havuzu Katalog görünümleri
+## <a name="dedicated-sql-pool-formerly-sql-dw-catalog-views"></a>Adanmış SQL Havuzu (eski adıyla SQL DW) Katalog görünümleri
 
 * [sys.pdw_column_distribution_properties](/sql/relational-databases/system-catalog-views/sys-pdw-column-distribution-properties-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.pdw_distributions](/sql/relational-databases/system-catalog-views/sys-pdw-distributions-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -48,7 +48,7 @@ Adanmış SQL havuzunda desteklenen T-SQL deyimlerinin belgelerinin bağlantıla
 * [sys.workload_management_workload_classifiers](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.workload_management_workload_groups](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-groups-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-## <a name="dedicated-sql-pool-dynamic-management-views-dmvs"></a>Adanmış SQL havuzu dinamik yönetim görünümleri (DMVs)
+## <a name="dedicated-sql-pool-formerly-sql-dw-dynamic-management-views-dmvs"></a>Adanmış SQL Havuzu (eski adıyla SQL DW) dinamik yönetim görünümleri (DMVs)
 
 * [sys.dm_pdw_dms_cores](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-cores-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_pdw_dms_external_work](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-external-work-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -70,9 +70,9 @@ Adanmış SQL havuzunda desteklenen T-SQL deyimlerinin belgelerinin bağlantıla
 * [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-## <a name="sql-server-dmvs-applicable-to-dedicated-sql-pool"></a>Özel SQL havuzu için geçerli SQL Server DMVs
+## <a name="sql-server-dmvs-applicable-to-dedicated-sql-pool-formerly-sql-dw"></a>SQL Server DMVs adanmış SQL Havuzu (eski adıyla SQL DW) için geçerlidir
 
-Aşağıdaki DMVs, adanmış SQL havuzu için geçerlidir, ancak **ana** veritabanına bağlanarak yürütülmesi gerekir.
+Aşağıdaki DMVs, adanmış SQL havuzu için geçerlidir (eski adıyla SQL DW), ancak **ana** veritabanına bağlanarak yürütülmesi gerekir.
 
 * [sys.database_service_objectives](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -152,16 +152,16 @@ Aşağıdaki DMVs, adanmış SQL havuzu için geçerlidir, ancak **ana** veritab
 * [sys. Types](/sql/relational-databases/system-catalog-views/sys-types-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys. views](/sql/relational-databases/system-catalog-views/sys-views-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-## <a name="sql-server-dmvs-available-in-dedicated-sql-pool"></a>SQL Server DMVs adanmış SQL havuzunda kullanılabilir
+## <a name="sql-server-dmvs-available-in-dedicated-sql-pool-formerly-sql-dw"></a>SQL Server DMVs, adanmış SQL havuzunda (eski adıyla SQL DW) kullanılabilir
 
-Adanmış SQL havuzu SQL Server dinamik yönetim görünümlerinin çoğunu (DMVs) kullanıma sunar. Adanmış SQL havuzunda sorgulandığında bu görünümler, dağıtımlarda çalışan SQL veritabanlarının durumunu raporluyor.
+Adanmış SQL Havuzu (eski adıyla SQL DW), SQL Server dinamik yönetim görünümlerinin çoğunu (DMVs) gösterir. Adanmış SQL havuzunda (eski adıyla SQL DW) sorgulandığında bu görünümler, dağıtımlarda çalışan SQL veritabanlarının durumunu raporluyor.
 
-Adanmış SQL havuzu ve paralel veri ambarı (PDW) aynı sistem görünümlerini kullanır. Her DMV, Işlem düğümünün tanımlayıcısı olan pdw_node_id adlı bir sütuna sahiptir.
+Adanmış SQL Havuzu (eski adıyla SQL DW) ve paralel veri ambarı (PDW) aynı sistem görünümlerini kullanır. Her DMV, Işlem düğümünün tanımlayıcısı olan pdw_node_id adlı bir sütuna sahiptir.
 
 > [!NOTE]
 > Bu görünümleri kullanmak için, aşağıdaki tabloda gösterildiği gibi ada ' pdw_nodes_ ' ekleyin:
 
-| Adanmış SQL havuzunda DMV adı | SQL Server Transact-SQL makalesi|
+| Özel SQL havuzunda DMV adı (eski adıyla SQL DW) | SQL Server Transact-SQL makalesi|
 |:--- |:--- |
 | sys.dm_pdw_nodes_db_column_store_row_group_physical_stats | [sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)|
 | sys.dm_pdw_nodes_db_column_store_row_group_operational_stats | [sys.dm_db_column_store_row_group_operational_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-operational-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)|
@@ -223,9 +223,9 @@ Adanmış SQL havuzu ve paralel veri ambarı (PDW) aynı sistem görünümlerini
 | sys.dm_pdw_nodes_tran_session_transactions |[sys.dm_tran_session_transactions](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-session-transactions-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |
 | sys.dm_pdw_nodes_tran_top_version_generators |[sys.dm_tran_top_version_generators](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-top-version-generators-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |
 
-## <a name="sql-server-2016-polybase-dmvs-available-in-dedicated-sql-pool"></a>SQL Server 2016 PolyBase DMVs, adanmış SQL havuzunda kullanılabilir
+## <a name="sql-server-2016-polybase-dmvs-available-in-dedicated-sql-pool-formerly-sql-dw"></a>SQL Server 2016 PolyBase DMVs, adanmış SQL havuzunda (eski adıyla SQL DW) kullanılabilir
 
-Aşağıdaki DMVs, adanmış SQL havuzu için geçerlidir, ancak **ana** veritabanına bağlanarak yürütülmesi gerekir.
+Aşağıdaki DMVs, adanmış SQL havuzu için geçerlidir (eski adıyla SQL DW), ancak **ana** veritabanına bağlanarak yürütülmesi gerekir.
 
 * [sys.dm_exec_compute_node_errors](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-compute-node-errors-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 * [sys.dm_exec_compute_node_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-compute-node-status-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -252,4 +252,4 @@ Aşağıdaki DMVs, adanmış SQL havuzu için geçerlidir, ancak **ana** veritab
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla başvuru bilgisi için adanmış SQL havuzundaki [t-SQL deyimlerine](sql-data-warehouse-reference-tsql-statements.md)ve [adanmış SQL HAVUZUNDAKI t-SQL dil öğelerine](sql-data-warehouse-reference-tsql-language-elements.md)bakın.
+Daha fazla başvuru bilgisi için, adanmış SQL havuzundaki [t-SQL deyimlerine (eski ADıYLA SQL DW)](sql-data-warehouse-reference-tsql-statements.md)ve [t-SQL dil öğelerine (eskı adıyla SQL DW)](sql-data-warehouse-reference-tsql-language-elements.md)bakın.

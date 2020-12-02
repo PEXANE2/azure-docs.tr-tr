@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: conceptual
 ms.date: 09/07/2020
 ms.author: raynew
-ms.openlocfilehash: 573d52b836aef36063dd288bf5a5016b98d220ef
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 22a7738c2d4d3cc02c03c233e0821f07b459dd94
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95524139"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452094"
 ---
 # <a name="support-for-moving-azure-sql-resources-between-azure-regions"></a>Azure bölgeleri arasında Azure SQL kaynaklarını taşıma desteği
 
@@ -27,7 +27,7 @@ Gereksinimler aşağıdaki tabloda özetlenmiştir.
 **Azure SQL veritabanı hiper ölçek** | Desteklenmez | Kaynak taşıyıcısı ile Azure SQL hiper ölçek hizmeti katmanında veritabanları taşınamaz.
 **Bölge yedekliliği** | Desteklenir |  Desteklenen taşıma seçenekleri:<br/><br/> -Bölge artıklığı destekleyen bölgeler arasında.<br/><br/> -Bölge yedekliliği desteklemeyen bölgeler arasında.<br/><br/> -Bölge yedekliliği destekleyen bölge arasında bölge yedekliliği desteklemeyen bir bölge arasında.<br/><br/> -Bölge yedekliliği desteklemeyen bir bölge arasında bölge artıklığı destekleyen bir bölge arasında. 
 **Veri eşitleme** | Merkez/eşitleme veritabanı: desteklenmiyor<br/><br/> Eşitleme üyesi: destekleniyor. | Bir eşitleme üyesi taşınmışsa, yeni hedef veritabanına veri eşitlemesi ayarlamanız gerekir.
-**Mevcut coğrafi çoğaltma** | Desteklenir | Mevcut coğrafi çoğaltmalar, hedef bölgedeki yeni birincil ile eşleştirilir.<br/><br/> Taşıma işleminden sonra dengeli dağıtım başlatılmalıdır. [Daha fazla bilgi](../azure-sql/database/active-geo-replication-configure-portal.md)
+**Mevcut coğrafi çoğaltma** | Desteklenir | Mevcut coğrafi çoğaltmalar, hedef bölgedeki yeni birincil ile eşleştirilir.<br/><br/> Taşıma işleminden sonra dengeli dağıtım başlatılmalıdır. [Daha fazla bilgi edinin](../azure-sql/database/active-geo-replication-configure-portal.md)
 **Kendi Anahtarını Getir (BYOK) ile Saydam Veri Şifrelemesi (TDE)** | Desteklenir | Anahtar kasalarını bölgeler arasında taşıma hakkında [daha fazla bilgi edinin](../key-vault/general/move-region.md) .
 **Hizmet tarafından yönetilen anahtarla TDE** | Destekleniyor. |  Anahtar kasalarını bölgeler arasında taşıma hakkında [daha fazla bilgi edinin](../key-vault/general/move-region.md) .
 **Dinamik veri maskeleme kuralları** | Destekleniyor. | Kurallar, taşımanın bir parçası olarak hedef bölgeye otomatik olarak kopyalanır. [Daha fazla bilgi edinin](../azure-sql/database/dynamic-data-masking-configure-portal.md).
@@ -38,7 +38,7 @@ Gereksinimler aşağıdaki tabloda özetlenmiştir.
 **Otomatik ayarlama** | Desteklenmez. | Geçici çözüm: taşıdıktan sonra otomatik ayarlama ayarlarını ayarlayın. [Daha fazla bilgi edinin](../azure-sql/database/automatic-tuning-enable.md).
 **Veritabanı uyarıları** | Desteklenmez. | Geçici çözüm: taşıdıktan sonra uyarıları ayarlayın. [Daha fazla bilgi edinin](../azure-sql/database/alerts-insights-configure-portal.md).
 **Azure SQL Server Esnetme Veritabanı** | Desteklenmiyor | SQL Server Esnetme veritabanlarını kaynak taşıyıcısı ile taşıyamıyor.
-**Azure Synapse Analytics** | Desteklenmiyor | SYNAPSE Analytics (eski adıyla SQL veri ambarı) kaynak taşıyıcısı ile taşınamaz.
+**Azure Synapse Analytics** | Desteklenmiyor | Azure SYNAPSE Analytics, kaynak taşıyıcısı ile taşınamaz.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Azure SQL kaynaklarını](tutorial-move-region-sql.md) kaynak taşıyıcısı ile başka bir bölgeye deneyin.

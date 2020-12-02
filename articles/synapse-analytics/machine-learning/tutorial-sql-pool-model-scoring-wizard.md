@@ -9,14 +9,14 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: f5c5edc067b3f7b525fd129462c48ca50fdafc8f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 605a5f2f74ca6fb46d851c41f60001c48a95be95
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314022"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450880"
 ---
-# <a name="tutorial-machine-learning-model-scoring-wizard-for-dedicated-sql-pools"></a>Öğretici: adanmış SQL havuzları için makine öğrenme modeli Puanlama Sihirbazı
+# <a name="tutorial-machine-learning-model-scoring-wizard-preview-for-dedicated-sql-pools"></a>Öğretici: adanmış SQL havuzları için makine öğrenme modeli Puanlama Sihirbazı (Önizleme)
 
 Tahmine dayalı makine öğrenimi modelleri sayesinde verilerinizi adanmış SQL havuzlarında kolayca zenginleştirme hakkında bilgi edinin.  Veri bilimcilerinin oluşturmakta olduğu modeller artık tahmine dayalı analiz için veri uzmanlarına kolayca erişebilir. SYNAPSE ' deki bir veri uzmanı, yalnızca SYNAPSE SQL havuzlarında dağıtım için Azure Machine Learning modeli kayıt defterinden bir model seçebilir ve verileri zenginleştirmek için tahminleri başlatabilir.
 
@@ -31,8 +31,8 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Varsayılan depolama alanı olarak yapılandırılmış bir ADLS 2. depolama hesabıyla [SYNAPSE Analytics çalışma alanı](../get-started-create-workspace.md) . Birlikte çalıştığınız ADLS 2. FileSystem 'ın **Depolama Blobu veri katılımcısı** olması gerekir.
-- SYNAPSE Analytics çalışma alanınızda adanmış SQL Havuzu. Ayrıntılar için bkz. [adanmış BIR SQL havuzu oluşturma](../quickstart-create-sql-pool-studio.md).
-- SYNAPSE Analytics çalışma alanınızda bağlı hizmeti Azure Machine Learning. Ayrıntılar için bkz. [SYNAPSE içinde Azure Machine Learning bağlantılı hizmet oluşturma](quickstart-integrate-azure-machine-learning.md).
+- Azure SYNAPSE Analytics çalışma alanınızda adanmış SQL Havuzu. Ayrıntılar için bkz. [adanmış BIR SQL havuzu oluşturma](../quickstart-create-sql-pool-studio.md).
+- Azure SYNAPSE Analytics çalışma alanınızda bağlı hizmeti Azure Machine Learning. Ayrıntılar için bkz. [SYNAPSE içinde Azure Machine Learning bağlantılı hizmet oluşturma](quickstart-integrate-azure-machine-learning.md).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
@@ -52,10 +52,10 @@ Not defterindeki tüm hücreleri çalıştırmadan önce, işlem örneğinin ça
 
 1. [Azure Machine Learning Studio](https://ml.azure.com)'da Azure Machine Learning çalışma alanını başlatın.
 
-1. **Not defterleri** ' ne gidin ve **dosyaları karşıya yükle** ' ye tıkladıktan sonra dosyayı indirdiğiniz ve karşıya yüklediğiniz "NYC Taxi Tips. ipynb" öğesini seçin.
+1. **Not defterleri** ' ne gidin ve **dosyaları karşıya yükle**' ye tıkladıktan sonra dosyayı indirdiğiniz ve karşıya yüklediğiniz "NYC Taxi Tips. ipynb" öğesini seçin.
    ![Dosya yükleme](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-train-00a.png)
 
-1. Not defteri karşıya yüklenip açıldıktan sonra **tüm hücreleri Çalıştır** ' a tıklayın.
+1. Not defteri karşıya yüklenip açıldıktan sonra **tüm hücreleri Çalıştır**' a tıklayın.
 
    Hücrelerden biri başarısız olabilir ve Azure 'da kimlik doğrulaması isteyip istemediğinizi sorar. Hücre çıktılarında bunun için bir göz atın ve bağlantıyı izleyerek ve kodu girerek tarayıcınızda kimlik doğrulaması yapın. Ardından, Not defterini yeniden çalıştırın.
 
@@ -128,13 +128,13 @@ Not defterindeki tüm hücreleri çalıştırmadan önce, işlem örneğinin ça
 
 1. Açılan kutuda bağlı bir Azure Machine Learning çalışma alanı seçin. Bu, seçilen Azure Machine Learning çalışma alanının model kayıt defterinden makine öğrenimi modellerinin bir listesini yükler. Şu anda yalnızca ONNX modelleri desteklenir, bu nedenle yalnızca ONNX modellerini görüntüler.
 
-1. Az önce eğitilen modeli seçin, sonra **devam** ' a tıklayın.
+1. Az önce eğitilen modeli seçin, sonra **devam**' a tıklayın.
 
    ![Azure Machine Learning modeli seçin](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00d.png)
 
 1. Sonra, tablo sütunlarını model girişleri ile eşleyin ve model çıkışlarını belirtin. Model MLFlow biçiminde kaydedilirse ve model imzası doldurulduktan sonra, eşleme, adların benzerliğine göre bir mantık kullanarak sizin için otomatik olarak yapılır. Arabirim ayrıca el ile eşlemeyi de destekler.
 
-   **Devam** ’a tıklayın.
+   **Devam**’a tıklayın.
 
    ![Modellemeden tablo eşleme](media/tutorial-sql-pool-model-scoring-wizard/tutorial-sql-scoring-wizard-00e.png)
 
@@ -149,4 +149,4 @@ Not defterindeki tüm hücreleri çalıştırmadan önce, işlem örneğinin ça
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Hızlı başlangıç: SYNAPSE 'de yeni Azure Machine Learning bağlantılı hizmet oluşturma](quickstart-integrate-azure-machine-learning.md)
-- [Azure SYNAPSE Analytics 'teki Machine Learning özellikleri (çalışma alanları Önizleme)](what-is-machine-learning.md)
+- [Azure SYNAPSE Analytics 'teki Machine Learning özellikleri](what-is-machine-learning.md)

@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/21/2020
-ms.openlocfilehash: bf7e99f6e6201afefd316deafe37e38088fb9fae
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 0bd6300f4b9dbcf76b5447a0fb58502b7aebf311
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187128"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451430"
 ---
 # <a name="what-is-azure-sql-database"></a>Azure SQL Veritabanı nedir?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -200,7 +200,7 @@ SQL Veritabanı uygulama oluşturma ve uygulamaların bakımını yapma işlemle
 |[Azure Data Studio](/sql/azure-data-studio/)|Windows, macOS ve Linux üzerinde çalışan platformlar arası bir veritabanı aracı.|
 |[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)|SQL Server SQL veritabanı 'na kadar herhangi bir SQL altyapısını yönetmeye yönelik ücretsiz, indirilebilir bir istemci uygulaması.|
 |[Visual Studio 'da SQL Server Veri Araçları](/sql/ssdt/download-sql-server-data-tools-ssdt)|SQL Server ilişkisel veritabanları, Azure SQL veritabanı 'ndaki veritabanları, Tümleştirme Hizmetleri paketleri, Analysis Services veri modelleri ve Raporlama Hizmetleri raporları geliştirmeye yönelik ücretsiz, indirilebilir bir istemci uygulaması.|
-|[Visual Studio Code](https://code.visualstudio.com/docs)|Windows, macOS ve Linux için ücretsiz, indirilebilir, açık kaynaklı bir kod Düzenleyicisi. Microsoft SQL Server, Azure SQL veritabanı ve Azure Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) sorgulamak için [MSSQL uzantısı](https://aka.ms/mssql-marketplace) dahil olmak üzere uzantıları destekler.|
+|[Visual Studio Code](https://code.visualstudio.com/docs)|Windows, macOS ve Linux için ücretsiz, indirilebilir, açık kaynaklı bir kod Düzenleyicisi. Microsoft SQL Server, Azure SQL veritabanı ve Azure Azure SYNAPSE Analytics 'i sorgulamak için [MSSQL uzantısı](https://aka.ms/mssql-marketplace) dahil olmak üzere uzantıları destekler.|
 
 SQL veritabanı, macOS, Linux ve Windows 'da Python, Java, Node.js, PHP, Ruby ve .NET uygulamaları oluşturmayı destekler. SQL Veritabanı, SQL Server ile aynı [bağlantı kitaplıklarını destekler](connect-query-content-reference-guide.md#libraries).
 

@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: a3715abdebce319979d867d12764a22b4ed16c35
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c452d51018ef3f204cd7281971c07fb6337d39bf
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323617"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449699"
 ---
 # <a name="guidance-for-designing-distributed-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu kullanarak dağıtılmış tablo tasarlama Kılavuzu
 
@@ -44,7 +44,7 @@ Karma olarak dağıtılan bir tablo, her bir satırı bir [dağıtıma](massivel
 
 ![Dağıtılmış tablo](./media/sql-data-warehouse-tables-distribute/hash-distributed-table.png "Dağıtılmış tablo")  
 
-Özdeş değerler her zaman aynı dağıtıma karma olduğundan, veri ambarı satır konumlarına yönelik yerleşik bilgiye sahiptir. Adanmış SQL havuzunda bu bilgi, sorgu performansını artıran sorgular sırasında veri hareketini en aza indirmek için kullanılır.
+Özdeş değerler her zaman aynı dağıtıma karma olduğundan, SQL Analytics 'in satır konumlarına yönelik yerleşik bilgisi vardır. Adanmış SQL havuzunda bu bilgi, sorgu performansını artıran sorgular sırasında veri hareketini en aza indirmek için kullanılır.
 
 Karma Dağıtılmış tablolar, bir yıldız şemasında büyük olgu tabloları için iyi çalışır. Bunlar çok fazla sayıda satıra sahip olabilir ve yine de yüksek performans elde edebilir. Kuşkusuz, dağıtılmış sistemin sağlamak üzere tasarlandığı performansı almanıza yardımcı olacak bazı tasarım konuları vardır. İyi bir dağıtım sütunu seçmek, bu makalede açıklanan bir noktadır.
 

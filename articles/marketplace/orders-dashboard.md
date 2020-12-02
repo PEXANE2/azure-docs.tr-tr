@@ -7,21 +7,21 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: ceecaf88f87a94473011eb48e944db7a011b3acc
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 943f1361a2a9d6bf8d891f8b4f2137b8738f0836
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563792"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450754"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Ticari market analizinde Siparişler panosu
 
 Bu makalede, Iş Ortağı Merkezi 'nde siparişler panosu hakkında bilgi sağlanmaktadır. Bu Pano, bir grafik ve indirilebilir biçimde sunulan büyüme eğilimleri dahil olmak üzere siparişleriniz hakkındaki bilgileri görüntüler.
 
-İş ortağı merkezindeki siparişler panosuna erişmek için **ticari Market** ' in altında siparişleri **[Çözümle](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** ' yi seçin  >  **Orders**.
+İş ortağı merkezindeki siparişler panosuna erişmek için **ticari Market**' in altında siparişleri **[Çözümle](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**' yi seçin  >  **Orders**.
 
 >[!NOTE]
-> Analiz terminolojisi hakkında ayrıntılı tanımlamalar için bkz. [ticari Market Analytics terminolojisi ve sık sorulan sorular](./partner-center-portal/faq-terminology.md).
+> Analiz terminolojisi hakkında ayrıntılı tanımlamalar için bkz. [ticari Market Analytics terminolojisi ve sık sorulan sorular](./analytics-faq.md).
 
 ## <a name="orders-dashboard"></a>Siparişler panosu
 
@@ -70,8 +70,8 @@ Bu bölümde, seçili hesaplama dönemi için etkin ve iptal edilmiş siparişle
 SaaS teklifleri, her plan ile iki fiyatlandırma modelinden birini kullanabilir: sabit fiyat (site tabanlı) veya Kullanıcı başına (bilgisayar tabanlı).
 
 - **Düz** Fiyat: tek bir aylık veya yıllık sabit fiyat fiyatı ile teklifinizin erişimini etkinleştirin. Bu, bazen site tabanlı fiyatlandırma olarak adlandırılır.
-- **Kullanıcı başına** : teklifine erişebilen veya hiç oturmayan kullanıcı sayısına bağlı olarak teklifiniz için fiyata erişimi etkinleştirin. Bu kullanım tabanlı model ile, plan tarafından desteklenen en düşük ve en fazla kullanıcı sayısını ayarlayabilirsiniz. Kullanıcı sayısına göre farklı fiyat noktalarını yapılandırmak için birden çok plan oluşturabilirsiniz. Bu alanlar isteğe bağlıdır. Sol tarafta seçili değilse, Kullanıcı sayısı bir sınıra sahip değildir (en az 1 ve en fazla, hizmetinizin destekleyebiliyor) olarak yorumlanır. Bu alanlar, planınızdaki bir güncelleştirmenin parçası olarak düzenlenebilir.
-- **Ölçülen faturalandırma** : sabit fiyat fiyatlandırmasının üstünde. Bu fiyatlandırma modeliyle isteğe bağlı olarak, sabit fiyat kapsamında olmayan kullanımlar için müşterileri ücretlendirmede Market ölçüm hizmeti API 'sini kullanan tarifeli planlar tanımlayabilirsiniz.
+- **Kullanıcı başına**: teklifine erişebilen veya hiç oturmayan kullanıcı sayısına bağlı olarak teklifiniz için fiyata erişimi etkinleştirin. Bu kullanım tabanlı model ile, plan tarafından desteklenen en düşük ve en fazla kullanıcı sayısını ayarlayabilirsiniz. Kullanıcı sayısına göre farklı fiyat noktalarını yapılandırmak için birden çok plan oluşturabilirsiniz. Bu alanlar isteğe bağlıdır. Sol tarafta seçili değilse, Kullanıcı sayısı bir sınıra sahip değildir (en az 1 ve en fazla, hizmetinizin destekleyebiliyor) olarak yorumlanır. Bu alanlar, planınızdaki bir güncelleştirmenin parçası olarak düzenlenebilir.
+- **Ölçülen faturalandırma**: sabit fiyat fiyatlandırmasının üstünde. Bu fiyatlandırma modeliyle isteğe bağlı olarak, sabit fiyat kapsamında olmayan kullanımlar için müşterileri ücretlendirmede Market ölçüm hizmeti API 'sini kullanan tarifeli planlar tanımlayabilirsiniz.
 
 Bilgisayar, site ve tarifeli tabanlı faturalandırma hakkında daha fazla bilgi için bkz. [ticari Market Için SaaS teklifi planlaması](plan-saas-offer.md).
 
@@ -135,7 +135,7 @@ Sipariş Ayrıntıları tablosu, Alım tarihine göre sıralanan 1.000 üst sipa
 | Teklif Adı | Teklif Adı | Ticari Market sunumunun adı. |
 | Deneme bitiş tarihi | Deneme bitiş tarihi | Bu sipariş için deneme döneminin sona erdiği veya sonlandırmış olacağı tarih. |
 | Müşteri kimliği | Müşteri Kimliği | Müşteriye atanan benzersiz tanımlayıcı. Müşterinin sıfır veya daha fazla Azure Market aboneliği olabilir. |
-| Faturalandırma hesabı kimliği | Faturalandırma hesabı KIMLIĞI | Faturalandırma 'nin oluşturulduğu hesabın tanımlayıcısı. Ödeme Işlem raporunuzu müşteri, sipariş ve kullanım raporlarıyla bağlamak için _ *faturalandırma HESABı kimliği* * ' yi **CustomerID** olarak eşleştirin. |
+| Faturalandırma hesabı kimliği | Faturalandırma hesabı KIMLIĞI | Faturalandırma 'nin oluşturulduğu hesabın tanımlayıcısı. Ödeme Işlem raporunuzu müşteri, sipariş ve kullanım raporlarıyla bağlamak için _ *faturalandırma HESABı kimliği** ' yi **CustomerID** olarak eşleştirin. |
 | AssetCount | Varlık sayısı | Sipariş KIMLIĞIYLE ilişkili varlıkların sayısı. |
 ||||
 
@@ -154,4 +154,4 @@ Sipariş Ayrıntıları tablosu, Alım tarihine göre sıralanan 1.000 üst sipa
 - Sanal makine (VM) için kullanım ve ölçümlenen faturalandırma ölçümleri, bkz. [ticari Market Analytics 'Te kullanım panosu](./usage-dashboard.md).
 - Son 30 güne ait indirme isteklerinizin listesi için bkz. [Commercial Market Analytics 'te panoyu indirme](./partner-center-portal/downloads-dashboard.md).
 - Azure Market ve AppSource 'ta teklifler için müşteri geri bildirimlerinin birleştirilmiş bir görünümünü görmek için bkz. [Iş Ortağı Merkezi 'Nde derecelendirmeler & İncelemeleri analiz panosu](./partner-center-portal/ratings-reviews.md).
-- Ticari Market Analytics hakkında sık sorulan sorular ve veri koşullarının kapsamlı bir sözlüğü için bkz. [ticari Market Analytics terminolojisi ve sık sorulan sorular](./partner-center-portal/faq-terminology.md).
+- Ticari Market Analytics hakkında sık sorulan sorular ve veri koşullarının kapsamlı bir sözlüğü için bkz. [ticari Market Analytics terminolojisi ve sık sorulan sorular](./analytics-faq.md).

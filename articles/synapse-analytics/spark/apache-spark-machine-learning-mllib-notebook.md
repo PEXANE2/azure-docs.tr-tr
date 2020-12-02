@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: 595b3a57594401df6b61db1fcf8ee16be98ef364
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 50429696c4cbe10c4723f6d4bb9c9499d9b775c5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95900438"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450423"
 ---
 # <a name="tutorial-build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Öğretici: Apache Spark MLlib ve Azure SYNAPSE Analytics ile Machine Learning uygulaması derleme
 
@@ -71,7 +71,7 @@ Aşağıdaki adımlarda, belirli bir yolculuğa bir tıp içerip içermediğini 
 
 Ham veriler bir Parquet biçiminde olduğundan, dosyayı doğrudan veri çerçevesi olarak belleğe çekmek için Spark bağlamını kullanabilirsiniz. Aşağıdaki kod varsayılan seçenekleri kullandığından, gerekirse veri türlerinin ve diğer şema özniteliklerinin eşlenmesini zorlamak mümkündür.
 
-1. Kodu yeni bir hücreye yapıştırarak Spark dataframe oluşturmak için aşağıdaki satırları çalıştırın. Bu, verileri açık veri kümeleri API 'SI aracılığıyla alır. Bu verilerin tümünün çekilerek 1.500.000.000 satır hakkında bilgi oluşturulur. Sunucusuz Apache Spark havuzunuzun (Önizleme) boyutuna bağlı olarak, ham veriler çok büyük olabilir veya üzerinde çalışmak için çok fazla zaman alabilir. Bu verileri daha küçük bir değere filtreleyerek azaltabilirsiniz. Aşağıdaki kod örneği, verilerin tek bir ayı döndüren bir filtre uygulamak için start_date ve end_date kullanır.
+1. Kodu yeni bir hücreye yapıştırarak Spark dataframe oluşturmak için aşağıdaki satırları çalıştırın. Bu, verileri açık veri kümeleri API 'SI aracılığıyla alır. Bu verilerin tümünün çekilerek 1.500.000.000 satır hakkında bilgi oluşturulur. Sunucusuz Apache Spark havuzunuzun boyutuna bağlı olarak, ham veriler çok büyük olabilir veya üzerinde çalışmak için çok fazla zaman alabilir. Bu verileri daha küçük bir değere filtreleyerek azaltabilirsiniz. Aşağıdaki kod örneği, verilerin tek bir ayı döndüren bir filtre uygulamak için start_date ve end_date kullanır.
 
     ```python
     from azureml.opendatasets import NycTlcYellow

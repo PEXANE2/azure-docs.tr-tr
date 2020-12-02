@@ -1,6 +1,6 @@
 ---
 title: Paylaşılan veritabanı
-description: Azure SYNAPSE Analytics, sunucusuz Apache Spark havuzundaki bir veritabanı oluşturmak için sunucusuz SQL Havuzu (Önizleme) ve SQL havuzu altyapılarından erişilebilen bir paylaşılan meta veri modeli sağlar.
+description: Azure SYNAPSE Analytics, sunucusuz Apache Spark havuzunda veritabanı oluşturmak için sunucusuz SQL havuzundan ve SQL havuzu altyapılarından erişilebilir hale getirir.
 services: synapse-analytics
 author: MikeRys
 ms.service: synapse-analytics
@@ -10,20 +10,18 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e17eb44a5f4f4aace9ce9d541b8218b35db0f5d3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 14ae8b8670db53761d085bc019711e829633601b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317837"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451806"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Azure SYNAPSE Analytics paylaşılan veritabanı
 
-Azure SYNAPSE Analytics, farklı hesaplama çalışma alanı altyapılarının, sunucusuz Apache Spark havuzları (Önizleme) ve sunucusuz SQL Havuzu (Önizleme) altyapısı arasında veritabanlarını ve tabloları paylaşmasına izin verir.
+Azure SYNAPSE Analytics, farklı hesaplama çalışma alanı altyapılarının, sunucusuz Apache Spark havuzları ve sunucusuz SQL havuzu altyapısı arasında veritabanlarını ve tabloları paylaşmasına izin verir.
 
-[!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
-
-Spark işiyle oluşturulmuş bir veritabanı, sunucusuz SQL havuzu altyapısı dahil, çalışma alanındaki tüm geçerli ve gelecekteki Spark havuzlarıyla (Önizleme) aynı ad ile görünür hale gelir.
+Spark işiyle oluşturulmuş bir veritabanı, sunucusuz SQL havuzu altyapısı dahil, çalışma alanındaki tüm geçerli ve gelecekteki Spark havuzlarıyla aynı ad ile görünür hale gelir.
 
 Adlı Spark varsayılan veritabanı, `default` adlı veritabanı olarak sunucusuz SQL havuzu bağlamında da görünür olacaktır `default` .
 
@@ -48,7 +46,7 @@ Spark veritabanının adı, var olan bir sunucusuz SQL havuzu veritabanının ad
 
 Spark veritabanları ve tabloları, SQL altyapısındaki eşitlenmiş temsillerinin yanı sıra, temel alınan depolama düzeyinde güvenli hale getirilir.
 
-Bir veritabanı oluşturan güvenlik sorumlusu, veritabanının sahibi olarak değerlendirilir ve veritabanı ve nesneleri için tüm haklara sahiptir.
+Veritabanını oluşturan güvenlik sorumlusu o veritabanının sahibi kabul edilir ve veritabanıyla nesneleri üzerinde tüm haklara sahip olur.
 
 Bir kullanıcı veya güvenlik grubu gibi bir güvenlik sorumlusu sağlamak için, bir veritabanına erişim, dizindeki temel klasörler ve dosyalar için uygun POSIX klasörünü ve dosya izinlerini sağlayın `warehouse` . 
 

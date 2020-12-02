@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: ba3cc376edef1e6dc8fbf859e456219a1fd3ca60
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: f65ee85b37e74f0ca16ccf6988eb2117231c3bc5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635771"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452206"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory Hakkında SSS
 
@@ -72,7 +72,7 @@ Azure Data Factory görsel araçları, yinelemeli geliştirme ve hata ayıklamay
 ### <a name="ability-to-deploy-ssis-packages-to-azure"></a>SSIS paketlerini Azure 'a dağıtma olanağı 
 SSIS iş yüklerinizi taşımak istiyorsanız, bir Data Factory oluşturabilir ve bir Azure-SSIS tümleştirme çalışma zamanı sağlayabilirsiniz. Azure-SSIS Integration Runtime, bulutta SSIS paketlerinizi çalıştırmaya ayrılmış Azure VM 'lerin (düğümler) tam yönetilen bir kümesidir. Adım adım yönergeler için bkz. [SSIS paketlerini Azure 'A dağıtma](./tutorial-deploy-ssis-packages-azure.md) öğreticisi. 
  
-### <a name="sdks"></a>SDK’lar
+### <a name="sdks"></a>SDK
 İleri düzey bir kullanıcıysanız ve bir programlama arabirimi arıyorsanız Data Factory, sık kullandığınız IDE 'yi kullanarak işlem hatlarını yazmak, yönetmek veya izlemek için kullanabileceğiniz zengin bir SDK kümesi sağlar. Dil desteği .NET, PowerShell, Python ve REST içerir.
 
 ### <a name="monitoring"></a>İzleme
@@ -95,9 +95,9 @@ Veri fabrikalarınızı PowerShell, SDK veya tarayıcı kullanıcı arabiriminde
 ## <a name="what-is-the-integration-runtime"></a>Tümleştirme çalışma zamanı nedir?
 Integration Runtime, farklı ağ ortamlarında aşağıdaki veri tümleştirme yeteneklerini sağlamak için Azure Data Factory tarafından kullanılan işlem altyapısıdır:
 
-- **Veri taşıma** : veri taşıma için Integration Runtime, verileri kaynak ve hedef veri depoları arasında taşılarken, yerleşik bağlayıcılar, biçim dönüştürme, sütun eşleme, performans ve ölçeklenebilir veri aktarımı için destek sağlar.
-- **Dağıtım etkinlikleri** : dönüştürme için Integration RUNTIME, SSIS paketlerini yerel olarak yürütme yeteneği sağlar.
-- **SSIS paketlerini yürütme** : Integration RUNTIME, SSIS paketlerini yönetilen bir Azure işlem ortamında yerel olarak yürütür. Integration Runtime Ayrıca Azure HDInsight, Azure Machine Learning, SQL veritabanı ve SQL Server gibi çeşitli bilgi işlem hizmetlerinde çalışan dönüştürme etkinliklerinin dağıtımını ve izlenmesini de destekler.
+- **Veri taşıma**: veri taşıma için Integration Runtime, verileri kaynak ve hedef veri depoları arasında taşılarken, yerleşik bağlayıcılar, biçim dönüştürme, sütun eşleme, performans ve ölçeklenebilir veri aktarımı için destek sağlar.
+- **Dağıtım etkinlikleri**: dönüştürme için Integration RUNTIME, SSIS paketlerini yerel olarak yürütme yeteneği sağlar.
+- **SSIS paketlerini yürütme**: Integration RUNTIME, SSIS paketlerini yönetilen bir Azure işlem ortamında yerel olarak yürütür. Integration Runtime Ayrıca Azure HDInsight, Azure Machine Learning, SQL veritabanı ve SQL Server gibi çeşitli bilgi işlem hizmetlerinde çalışan dönüştürme etkinliklerinin dağıtımını ve izlenmesini de destekler.
 
 Tümleştirme çalışma zamanının bir veya daha fazla örneğini verileri taşımak ve dönüştürmek için gerektiği gibi dağıtabilirsiniz. Integration Runtime, Azure genel ağında veya özel bir ağda (Şirket içi, Azure sanal ağı veya Amazon Web Services sanal özel bulut [VPC]) çalıştırılabilir. 
 
@@ -109,7 +109,7 @@ Bir veri fabrikasında sahip olabilirsiniz tümleştirme çalışma zamanı örn
 ## <a name="what-are-the-top-level-concepts-of-azure-data-factory"></a>Azure Data Factory en üst düzey kavramları nelerdir?
 Azure aboneliğinin bir veya birden çok Azure Data Factory örneği (veya veri fabrikası) olabilir. Azure Data Factory, veri taşıma ve dönüştürme adımları ile veri odaklı iş akışları oluşturabileceğiniz bir platform olarak birlikte çalışan dört ana bileşeni içerir.
 
-### <a name="pipelines"></a>İşlem hatları
+### <a name="pipelines"></a>Pipelines
 Bir veri fabrikasında bir veya daha fazla işlem hattı olabilir. İşlem hattı, bir dizi iş gerçekleştirmeye yönelik mantıksal bir etkinlik gruplandırmasıdır. İşlem hattındaki etkinlikler birlikte bir görevi gerçekleştirir. Örneğin, bir işlem hattı Azure blobundan verileri alan ve ardından HDInsight kümesinde verileri bölümlemek için bir Hive sorgusu çalıştıran bir etkinlik grubu içerebilir. Bu avantajda, etkinlikleri her bir etkinliği ayrı ayrı yönetmek yerine bir küme olarak yönetmek için bir işlem hattı kullanabilirsiniz. Etkinlikleri sırayla çalıştırmak için bir işlem hattındaki etkinlikleri birlikte zincirleyebilir veya bunları paralel olarak bağımsız olarak çalıştırabilirsiniz.
 
 ### <a name="data-flows"></a>Veri akışları
@@ -190,7 +190,7 @@ Microsoft, veri akışları ile ilgili yardım veya sorun giderme işlemleri yap
 
 ### <a name="how-do-i-access-data-by-using-the-other-90-dataset-types-in-data-factory"></a>Data Factory Nasıl yaparım? diğer 90 veri kümesi türlerini kullanarak verilere erişin mi?
 
-Veri akışı eşleme özelliği şu anda Azure SQL veritabanı, Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı), Azure Blob depolama veya Azure Data Lake Storage 2. sınırlandırılmış metin dosyaları ve BLOB depolamadan veya kaynak ve havuz için yerel olarak Data Lake Storage 2.. 
+Veri akışı eşleme özelliği şu anda Azure SQL veritabanı, Azure SYNAPSE Analytics, Azure Blob depolama veya Azure Data Lake Storage 2. ile ayrılmış metin dosyaları ve BLOB depolamadan veya kaynak ve havuz için yerel olarak Data Lake Storage 2.. 
 
 Diğer bağlayıcılardan herhangi birinden veri hazırlamak için kopyalama etkinliğini kullanın ve sonra verileri hazırlandıktan sonra dönüştürmek için bir veri akışı etkinliği yürütün. Örneğin, işlem hatlarınız önce BLOB depolama alanına kopyalanacak, sonra veri akışı etkinliği bu verileri dönüştürmek için kaynak içinde bir veri kümesi kullanacaktır.
 

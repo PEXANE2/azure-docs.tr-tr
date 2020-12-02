@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: 02772ff6279ee813b86f92984742ba8301bdf74e
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 78829ae52d74cf6ec58c12779c51bca9a98e0af1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357955"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450801"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Depolama hesabı erişim anahtarlarını yeniden oluştur
 
@@ -27,7 +27,7 @@ Güvenlik nedeniyle, bir Azure depolama hesabının erişim anahtarlarını değ
 
 > [!IMPORTANT]
 
-> Veri depolarıyla kaydedilen kimlik bilgileri, çalışma alanıyla ilişkili Azure Key Vault kaydedilir. Key Vault için [geçici silme](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview) özelliği varsa, bu makalede kimlik bilgilerini güncelleştirmek için yönergeler sağlanmaktadır. Veri deposunun kaydını siler ve aynı adla yeniden kaydetmeyi denerseniz, bu eylem başarısız olur. Bkz. Bu senaryoda geçici silme özelliğini etkinleştirme için [mevcut bir Anahtar Kasası Için geçici silme özelliğini]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault) etkinleştirme.
+> Veri depolarıyla kaydedilen kimlik bilgileri, çalışma alanıyla ilişkili Azure Key Vault kaydedilir. Key Vault için [geçici silme](../key-vault/general/soft-delete-overview.md) özelliği varsa, bu makalede kimlik bilgilerini güncelleştirmek için yönergeler sağlanmaktadır. Veri deposunun kaydını siler ve aynı adla yeniden kaydetmeyi denerseniz, bu eylem başarısız olur. Bkz. Bu senaryoda geçici silme özelliğini etkinleştirme için [mevcut bir Anahtar Kasası Için geçici silme özelliğini]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault) etkinleştirme.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -111,7 +111,7 @@ Yeni anahtarı kullanmak üzere Azure Machine Learning güncelleştirmek için a
         Bu komut, çalışma alanı tarafından kullanılan Azure depolama hesabı için yeni anahtarları otomatik olarak eşitler.
 
 1. Depolama hesabını kullanan veri depolarımı SDK veya [Azure Machine Learning Studio](https://ml.azure.com)aracılığıyla yeniden kaydedebilirsiniz.
-    1. **Veri depolarını Python SDK aracılığıyla yeniden kaydetmek için** , [güncelleştirilmesi gereken](#whattoupdate) Özellikler bölümünde bulunan değerleri ve adım 1 ' deki anahtarı aşağıdaki kodla kullanın. 
+    1. **Veri depolarını Python SDK aracılığıyla yeniden kaydetmek için**, [güncelleştirilmesi gereken](#whattoupdate) Özellikler bölümünde bulunan değerleri ve adım 1 ' deki anahtarı aşağıdaki kodla kullanın. 
     
         `overwrite=True`Belirtildiği için, bu kod var olan kaydın üzerine yazar ve yeni anahtarı kullanacak şekilde günceller.
     
@@ -133,10 +133,10 @@ Yeni anahtarı kullanmak üzere Azure Machine Learning güncelleştirmek için a
         
         ```
     
-    1. **Veri depolarını Studio aracılığıyla yeniden kaydetmek için** , Studio 'nun sol bölmesindeki **veri depoları** ' nı seçin. 
+    1. **Veri depolarını Studio aracılığıyla yeniden kaydetmek için**, Studio 'nun sol bölmesindeki **veri depoları** ' nı seçin. 
         1. Güncelleştirmek istediğiniz veri deposunu seçin.
         1. Sol üstteki **kimlik bilgilerini güncelleştir** düğmesini seçin. 
-        1. Formu doldurmak için adım 1 ' deki yeni erişim anahtarınızı kullanın ve **Kaydet** ' e tıklayın.
+        1. Formu doldurmak için adım 1 ' deki yeni erişim anahtarınızı kullanın ve **Kaydet**' e tıklayın.
         
             **Varsayılan veri deposu** için kimlik bilgilerini güncelleştiriyorsanız, bu adımı tamamlayarak yeni anahtarınızı çalışma alanının varsayılan veri deposu ile yeniden eşitleyin. 
 

@@ -1,6 +1,6 @@
 ---
-title: SSMS ile bağlanma
-description: Azure SYNAPSE Analytics 'te adanmış bir SQL havuzuna bağlanmak ve sorgu eklemek için SQL Server Management Studio (SSMS) kullanın.
+title: SSMS ile adanmış SQL havuzuna (eski adıyla SQL DW) bağlanma
+description: Azure SYNAPSE Analytics 'te adanmış bir SQL havuzuna (eski adıyla SQL DW) bağlanmak ve sorgu eklemek için SQL Server Management Studio (SSMS) kullanın.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c2fab8f02f31897a2e3d38094b9bd365f8e921e9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 950cb4c40a534f252ec8b0daa5a57eb87c098450
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325331"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450469"
 ---
-# <a name="connect-to-a-dedicated-sql-pool-in-azure-synapse-analytics-with-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) ile Azure SYNAPSE Analytics 'te adanmış bir SQL havuzuna bağlanma
+# <a name="connect-to-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-with-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) ile Azure SYNAPSE Analytics 'te adanmış bir SQL havuzuna (eski adıyla SQL DW) bağlanma
 
 > [!div class="op_single_selector"]
 >
@@ -28,20 +28,20 @@ ms.locfileid: "93325331"
 > * [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 
-Azure SYNAPSE içinde bir veri ambarına bağlanmak ve bu ambarı sorgulamak için SQL Server Management Studio (SSMS) kullanın.
+Adanmış bir SQL havuzuna bağlanmak ve (eski adıyla SQL DW) sorgulamak için SQL Server Management Studio (SSMS) kullanın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi kullanmak için şunlar gerekir:
 
-* Mevcut bir adanmış SQL Havuzu. Bir tane oluşturmak için bkz. [adanmış BIR SQL havuzu oluşturma](create-data-warehouse-portal.md).
+* Mevcut bir adanmış SQL Havuzu. Bir tane oluşturmak için bkz. [adanmış BIR SQL havuzu oluşturma (eski ADıYLA SQL DW)](create-data-warehouse-portal.md).
 * SQL Server Management Studio (SSMS) yüklendi. Zaten yoksa [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 'Yi ücretsiz indirin.
-* Tam SQL server adı. Bu bilgileri bulmak için bkz. [ADANMıŞ SQL havuzuna bağlanma](sql-data-warehouse-connect-overview.md).
+* Tam SQL server adı. Bu bilgileri bulmak için bkz. [ADANMıŞ SQL Havuzu (eski ADıYLA SQL DW)](sql-data-warehouse-connect-overview.md).
 
-## <a name="1-connect-to-your-dedicated-sql-pool"></a>1. adanmış SQL havuzunuza bağlanın
+## <a name="1-connect-to-your-dedicated-sql-pool-formerly-sql-dw"></a>1. adanmış SQL havuzunuza bağlanın (eski adıyla SQL DW)
 
 1. SSMS’i açın.
-2. **Dosya**  >  **Connect Nesne Gezgini** ' i seçerek Nesne Gezgini açın.
+2. **Dosya**  >  **Connect Nesne Gezgini**' i seçerek Nesne Gezgini açın.
 
     ![SQL Server Nesne Gezgini](./media/sql-data-warehouse-query-ssms/connect-object-explorer.png)
 3. Sunucuya Bağlan penceresindeki alanları doldurun.
@@ -49,9 +49,9 @@ Bu öğreticiyi kullanmak için şunlar gerekir:
    ![Sunucuya bağlanma](./media/sql-data-warehouse-query-ssms/connect-object-explorer1.png)
 
    * **Sunucu adı**. Önceden tanımlanmış olan **sunucu adını** girin.
-   * **Kimlik doğrulaması**. **SQL Server Kimlik Doğrulaması** 'nı veya **Active Directory Tümleşik Kimlik Doğrulaması** 'nı seçin.
+   * **Kimlik doğrulaması**. **SQL Server Kimlik Doğrulaması**'nı veya **Active Directory Tümleşik Kimlik Doğrulaması**'nı seçin.
    * **Kullanıcı Adı** ve **Parola**. Yukarıda SQL Server Kimlik Doğrulaması seçiliyse kullanıcı adını ve parolayı girin.
-   * **Bağlan** 'a tıklayın.
+   * **Bağlan**'a tıklayın.
 4. Araştırmak için Azure SQL sunucunuzu genişletin. Sunucuyla ilişkili veritabanlarını görüntüleyebilirsiniz. Örnek veritabanınızdaki tabolaları görmek için AdventureWorksDW'yi genişletin.
 
    ![AdventureWorksDW'yi araştırma](./media/sql-data-warehouse-query-ssms/explore-tables.png)
@@ -61,7 +61,7 @@ Bu öğreticiyi kullanmak için şunlar gerekir:
 Artık veritabanınızla bağlantı kurulduğuna göre bir sorgu yazalım.
 
 1. SQL Server Nesne Gezgini'nde veritabanınıza sağ tıklayın.
-2. **Yeni Sorgu** ’yu seçin. Yeni bir sorgu penceresi açılır.
+2. **Yeni Sorgu**’yu seçin. Yeni bir sorgu penceresi açılır.
 
    ![Yeni sorgu](./media/sql-data-warehouse-query-ssms/new-query.png)
 3. Aşağıdaki T-SQL sorgusunu sorgu penceresine kopyalayın:

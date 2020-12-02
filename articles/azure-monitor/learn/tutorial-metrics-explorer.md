@@ -6,12 +6,12 @@ ms.author: bwren
 ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 03/09/2020
-ms.openlocfilehash: 26b155484dafac4a63fe2a6c7ff292ee8bbacbc0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ce9183fad50c43ea7070f5fa09e0d445caf89df
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317217"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451254"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>Öğretici: Azure Izleyici 'de ölçüm grafiği oluşturma
 Ölçüm değerleri, ölçüm değerlerinden grafikler oluşturmanıza, eğilimleri görsel olarak ilişkilendirmenize ve ölçüm değerlerinde ani artışları ve DIP 'leri araştırmanıza olanak tanıyan Azure portal Azure Izleyici 'nin bir özelliğidir. Azure kaynaklarınızın sistem durumunu ve kullanımını araştırmak veya özel ölçülerden grafikler çizmek için ölçüm gezginini kullanın. 
@@ -40,7 +40,7 @@ Bu öğreticiyi tamamlayabilmeniz için izlemeniz gereken bir Azure kaynağını
 
 1. **Azure izleyici** menüsünde veya bir kaynağın menüsünün **izleme** bölümünden **ölçümler** ' i seçin.
 
-1. Ölçümlerini görmek istediğiniz kaynak olan **kapsamı**seçin. Ölçüm Gezginini bir kaynağın menüsünden açtıysanız kapsam zaten doldurulmuştur.
+1. Ölçümlerini görmek istediğiniz kaynak olan **kapsamı** seçin. Ölçüm Gezginini bir kaynağın menüsünden açtıysanız kapsam zaten doldurulmuştur.
 
     ![Kapsam seçin](media/tutorial-metrics-explorer/scope-picker.png)
 
@@ -50,7 +50,7 @@ Bu öğreticiyi tamamlayabilmeniz için izlemeniz gereken bir Azure kaynağını
 
     ![Ölçüm seçin](media/tutorial-metrics-explorer/metric-picker.png)
 
-4. İsteğe bağlı olarak, ölçüm **toplamayı**değiştirin. Bu, ölçüm değerlerinin grafik için zaman parçalı olarak nasıl toplandığını tanımlar. Örneğin, zaman ayrıntı düzeyi 15 dakikaya ayarlanmışsa ve toplama Sum olarak ayarlandıysa, grafikteki her bir nokta, her 15 dakikalık segment üzerinde tüm toplanan değerlerin toplamı olur.
+4. İsteğe bağlı olarak, ölçüm **toplamayı** değiştirin. Bu, ölçüm değerlerinin grafik için zaman parçalı olarak nasıl toplandığını tanımlar. Örneğin, zaman ayrıntı düzeyi 15 dakikaya ayarlanmışsa ve toplama Sum olarak ayarlandıysa, grafikteki her bir nokta, her 15 dakikalık segment üzerinde tüm toplanan değerlerin toplamı olur.
 
     ![Ekran görüntüsü contosoretailweb için Sum girişi başlıklı bir grafik gösterir.](media/tutorial-metrics-explorer/chart.png)
 
@@ -85,5 +85,5 @@ Grafik stilini, başlığı özelleştirebilir ve gelişmiş grafik ayarlarını
 Azure Izleyici 'de ölçümlerle nasıl çalışacağınızı öğrendiğinize göre, öngörülü uyarılar göndermek için ölçümleri nasıl kullanacağınızı öğrenin.
 
 > [!div class="nextstepaction"]
-> [Azure İzleyici'yi kullanarak ölçüm uyarıları oluşturma, görüntüleme ve yönetme](../platform/alerts-metric.md)
+> [Azure İzleyici'yi kullanarak ölçüm uyarıları oluşturma, görüntüleme ve yönetme](../platform/metrics-charts.md#create-alert-rules)
 

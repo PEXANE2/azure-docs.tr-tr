@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4239b5400e919621dfff001ca7e6cb9de1626658
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: da698a1a8d91273321d4633abd683a06cb4cf403
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686217"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451627"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS) ile SYNAPSE SQL 'e bağlanma
 > [!div class="op_single_selector"]
@@ -26,16 +26,16 @@ ms.locfileid: "94686217"
 > 
 > 
 
-[SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) kullanarak, SUNUCUSUZ SQL Havuzu (Önizleme) veya adanmış SQL havuzu kaynakları aracılığıyla Azure SYNAPSE Analytics 'TE SYNAPSE SQL 'e bağlanabilir ve bunları sorgulayabilirsiniz. 
+[SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) kullanarak, SUNUCUSUZ SQL havuzu veya adanmış SQL havuzu kaynakları aracılığıyla Azure SYNAPSE Analytics 'TE SYNAPSE SQL 'e bağlanabilir ve bunları sorgulayabilirsiniz. 
 
-### <a name="supported-tools-for-serverless-sql-pool-preview"></a>Sunucusuz SQL havuzu için desteklenen araçlar (Önizleme)
+### <a name="supported-tools-for-serverless-sql-pool"></a>Sunucusuz SQL havuzu için desteklenen Araçlar
 
 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) , 1.18.0 sürümünden başlayarak tam olarak desteklenmektedir. SSMS, sürüm 18,5 ' den başlayarak kısmen desteklenir, bunu yalnızca bağlanmak ve sorgulamak için kullanabilirsiniz.
 
 > [!NOTE]
 > AAD oturumunun sorgu yürütme sırasında 1 saatten uzun süre açık bağlantısı varsa, AAD 'yi kullanan herhangi bir sorgu başarısız olur. Bu, AAD ile etkileşime geçen AAD geçişli geçiş ve deyimlerini kullanarak depolamayı sorgulamayı içerir (dış sağlayıcı oluşturma gibi). Bu, SSMS ve REKLAMLARı 'nda sorgu Düzenleyicisi gibi bağlantı açık tutan tüm araçları etkiler. Sorgu yürütmek için yeni bağlantı açan araçlar SYNAPSE Studio gibi etkilenmez.
 > Bu sorunu gidermek için SSMS 'yi yeniden başlatabilir veya reklamlar ' a bağlanıp bağlantıyı kesebilirsiniz. .
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, aşağıdaki önkoşullara sahip olduğunuzdan emin olun:  
 
@@ -63,7 +63,7 @@ Adanmış SQL havuzu kullanarak SYNAPSE SQL 'e bağlanmak için şu adımları i
     ![AdventureWorksDW 1 ' i keşfet](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/explore-tables.png)
 
 
-### <a name="serverless-sql-pool-preview"></a>Sunucusuz SQL Havuzu (Önizleme)
+### <a name="serverless-sql-pool"></a>Sunucusuz SQL havuzu
 
 Sunucusuz SQL havuzu kullanarak SYNAPSE SQL 'e bağlanmak için şu adımları izleyin: 
 

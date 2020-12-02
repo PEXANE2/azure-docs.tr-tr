@@ -1,6 +1,6 @@
 ---
 title: Azure SYNAPSE Analytics için Apache Spark bağlı hizmetlerle erişim kimlik bilgilerinin güvenliğini sağlama
-description: Bu makalede, SYNAPSE Analytics için Apache Spark bağlı hizmetleri ve belirteç kitaplığı 'nı kullanarak diğer hizmetlerle güvenli bir şekilde tümleştirme hakkında kavramlar sunulmaktadır
+description: Bu makalede, Azure SYNAPSE Analytics için Apache Spark bağlı hizmetleri ve belirteç kitaplığı 'nı kullanarak diğer hizmetlerle güvenli bir şekilde tümleştirme hakkında kavramlar sunulmaktadır
 services: synapse-analytics
 author: mlee3gsd
 ms.service: synapse-analytics
@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 08/26/2020
 ms.author: martinle
 ms.reviewer: euang
-ms.openlocfilehash: 1cdb010e34674d52ebe2135ad1591a163a078708
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d542e6ef784d763e406aad28231431cbc382fbfd
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324954"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450914"
 ---
 # <a name="securing-your-credentials-through-linked-services-with-the-tokenlibrary"></a>TokenLibrary ile bağlı hizmetler aracılığıyla kimlik bilgilerinizin güvenliğini sağlama
 Dış kaynaklardaki verilere erişmek ortak bir modeldir. Dış veri kaynağı anonim erişime izin veriyorsa, bağlantınızı kimlik bilgileri, gizli anahtar veya bağlantı dizesiyle güvenli hale getirmeniz gerekir.  
