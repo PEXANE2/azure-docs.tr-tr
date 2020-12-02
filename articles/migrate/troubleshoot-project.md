@@ -6,12 +6,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/01/2020
-ms.openlocfilehash: f2245e13f348706f662055408196ea7a26484811
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: af9254bc536dedc425aac53199665ae399e60a5a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314636"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494418"
 ---
 # <a name="troubleshoot-azure-migrate-projects"></a>Azure Geçişi projeleri sorunlarını giderme
 
@@ -19,7 +19,7 @@ Bu makale, [Azure geçişi](migrate-services-overview.md) projelerini oluşturur
 
 ## <a name="how-to-add-new-project"></a>Yeni proje nasıl eklenir?
 
-Bir abonelikte birden çok Azure geçişi projesi oluşturabilirsiniz. İlk kez bir proje oluşturmayı veya [ek projeler eklemeyi](create-manage-projects.md#create-additional-projects) [öğrenin](how-to-add-tool-first-time.md) .
+Bir abonelikte birden çok Azure geçişi projesi oluşturabilirsiniz. İlk kez bir proje oluşturmayı veya [ek projeler eklemeyi](create-manage-projects.md#create-additional-projects) [öğrenin](./create-manage-projects.md) .
 
 ## <a name="what-azure-permissions-are-needed"></a>Hangi Azure izinleri gerekir?
 
@@ -40,7 +40,7 @@ Tek bir projede en fazla 35.000 VMware VM veya en fazla 35.000 Hyper-V VM 'Leri 
 
 ## <a name="can-i-upgrade-old-project"></a>Eski projeyi yükseltebilir miyim?
 
-Azure geçişi 'nin önceki sürümündeki projeler güncelleştirilemiyor. [Yeni bir proje oluşturmanız](how-to-add-tool-first-time.md)ve buna araçlar eklemeniz gerekir.
+Azure geçişi 'nin önceki sürümündeki projeler güncelleştirilemiyor. [Yeni bir proje oluşturmanız](./create-manage-projects.md)ve buna araçlar eklemeniz gerekir.
 
 ## <a name="cant-create-a-project"></a>Proje oluşturulamıyor
 

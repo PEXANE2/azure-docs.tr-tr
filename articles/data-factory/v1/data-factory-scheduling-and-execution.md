@@ -3,20 +3,20 @@ title: Data Factory ile zamanlama ve yürütme
 description: Azure Data Factory uygulama modelinin zamanlama ve yürütme yönlerini öğrenin.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: e0707f9a7694741f54771699f5aeb3b452b11b8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60410eb2a9a5f18abf2daf87646943ffdc944402
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85319729"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495183"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Data Factory zamanlama ve yürütme
 > [!NOTE]
@@ -25,7 +25,7 @@ ms.locfileid: "85319729"
 Bu makalede Azure Data Factory uygulama modelinin zamanlama ve yürütme yönleri açıklanmaktadır. Bu makalede etkinlik, işlem hatları, bağlı hizmetler ve veri kümeleri dahil olmak üzere Data Factory uygulama modeli kavramlarının temelleri anladığınızı varsaymaktadır. Azure Data Factory temel kavramları için aşağıdaki makalelere bakın:
 
 * [Data Factory'ye Giriş](data-factory-introduction.md)
-* [İşlem hatları](data-factory-create-pipelines.md)
+* [Pipelines](data-factory-create-pipelines.md)
 * [Veri kümeleri](data-factory-create-datasets.md) 
 
 ## <a name="start-and-end-times-of-pipeline"></a>İşlem hattının başlangıç ve bitiş zamanları
@@ -50,7 +50,7 @@ Yürütülen işlem hattı değildir. İşlem hattının genel bağlamında yür
 },
 ```
 
-Aşağıdaki diyagramda gösterildiği gibi, bir etkinlik için zamanlama belirtildiğinde işlem hattının başlangıç ve bitiş saatlerinde bir dizi pencere oluşturulur. Atlayan pencereler sabit boyutlu çakışmayan ve bitişik zaman aralıkları dizisidir. Etkinliğe yönelik bu mantıksal olarak verilen bu Windows, **etkinlik pencereleri**olarak adlandırılır.
+Aşağıdaki diyagramda gösterildiği gibi, bir etkinlik için zamanlama belirtildiğinde işlem hattının başlangıç ve bitiş saatlerinde bir dizi pencere oluşturulur. Atlayan pencereler sabit boyutlu çakışmayan ve bitişik zaman aralıkları dizisidir. Etkinliğe yönelik bu mantıksal olarak verilen bu Windows, **etkinlik pencereleri** olarak adlandırılır.
 
 ![Etkinlik zamanlayıcı örneği](media/data-factory-scheduling-and-execution/scheduler-example.png)
 
@@ -115,7 +115,7 @@ Aşağıdaki örnekte, giriş verileri saatlik olarak kullanılabilir ve çıkt�
 }
 ```
 
-Şu anda, **çıktı veri kümesi zamanlamayı**yürütür. Diğer bir deyişle, çıkış veri kümesi için belirtilen zamanlama, çalışma zamanında bir etkinliği çalıştırmak için kullanılır. Bu nedenle, etkinlik herhangi bir çıkış üretmese bile bir çıkış veri kümesi oluşturmanız gerekir. Etkinlik herhangi bir girdi almazsa, girdi veri kümesi oluşturma işlemini atlayabilirsiniz. 
+Şu anda, **çıktı veri kümesi zamanlamayı** yürütür. Diğer bir deyişle, çıkış veri kümesi için belirtilen zamanlama, çalışma zamanında bir etkinliği çalıştırmak için kullanılır. Bu nedenle, etkinlik herhangi bir çıkış üretmese bile bir çıkış veri kümesi oluşturmanız gerekir. Etkinlik herhangi bir girdi almazsa, girdi veri kümesi oluşturma işlemini atlayabilirsiniz. 
 
 Aşağıdaki işlem hattı tanımında **Zamanlayıcı** özelliği, etkinliğin zamanlamasını belirtmek için kullanılır. Bu özellik isteğe bağlıdır. Şu anda etkinlik için zamanlama, çıkış veri kümesi için belirtilen zamanlamaya uymalıdır.
  
@@ -164,7 +164,7 @@ Aşağıdaki işlem hattı tanımında **Zamanlayıcı** özelliği, etkinliğin
 
 Bu örnekte etkinlik, işlem hattının başlangıç ve bitiş zamanları arasında saat başı çalışır. Çıkış verileri üç saatlik pencereler için saatlik olarak üretilir (8, 10:00-10:00, 10:00-10:00 ve 10:00-11). 
 
-Bir etkinlik çalıştırması tarafından tüketilen veya üretilen her veri birimi **veri dilimi**olarak adlandırılır. Aşağıdaki diyagramda bir giriş veri kümesi ve bir çıkış veri kümesi olan bir etkinliğin örneği gösterilmektedir: 
+Bir etkinlik çalıştırması tarafından tüketilen veya üretilen her veri birimi **veri dilimi** olarak adlandırılır. Aşağıdaki diyagramda bir giriş veri kümesi ve bir çıkış veri kümesi olan bir etkinliğin örneği gösterilmektedir: 
 
 ![Kullanılabilirlik Zamanlayıcı](./media/data-factory-scheduling-and-execution/availability-scheduler.png)
 
@@ -172,7 +172,7 @@ Diyagramda giriş ve çıkış veri kümesi için saatlik veri dilimleri göster
 
 JSON veri kümesindeki geçerli dilimle ilişkili zaman aralığına şu değişkenleri kullanarak erişebilirsiniz: [Fedestart](data-factory-functions-variables.md#data-factory-system-variables) ve [Slice Eend](data-factory-functions-variables.md#data-factory-system-variables). Benzer şekilde, WindowStart ve WindowEnd ' i kullanarak bir etkinlik penceresiyle ilişkili zaman aralığına erişebilirsiniz. Etkinliğin zamanlaması, etkinliğin çıkış veri kümesinin zamanlamasıyla eşleşmelidir. Bu nedenle, sınıf, sırasıyla WindowStart ve WindowEnd değerleriyle aynıdır. Bu değişkenler hakkında daha fazla bilgi için bkz. [Data Factory işlevleri ve sistem değişkenleri](data-factory-functions-variables.md#data-factory-system-variables) makaleleri.  
 
-Bu değişkenleri, etkinliğinizin JSON 'inizdeki farklı amaçlar için kullanabilirsiniz. Örneğin, zaman serisi verilerini temsil eden giriş ve çıkış veri kümelerinden verileri seçmek için bunları kullanabilirsiniz (örneğin: 8-9 ' a kadar). Bu örnek ayrıca, bir etkinliğin çalışması için ilgili verileri seçmek üzere **Windowstart** ve **windowend** ' i kullanır ve uygun **FolderPath**ile blob 'a kopyalar. **FolderPath** , her saat için ayrı bir klasöre sahip olacak şekilde parametrelendirilir.  
+Bu değişkenleri, etkinliğinizin JSON 'inizdeki farklı amaçlar için kullanabilirsiniz. Örneğin, zaman serisi verilerini temsil eden giriş ve çıkış veri kümelerinden verileri seçmek için bunları kullanabilirsiniz (örneğin: 8-9 ' a kadar). Bu örnek ayrıca, bir etkinliğin çalışması için ilgili verileri seçmek üzere **Windowstart** ve **windowend** ' i kullanır ve uygun **FolderPath** ile blob 'a kopyalar. **FolderPath** , her saat için ayrı bir klasöre sahip olacak şekilde parametrelendirilir.  
 
 Yukarıdaki örnekte, girdi ve çıktı veri kümeleri için belirtilen zamanlama aynı (saatlik). Etkinliğin giriş veri kümesi farklı bir sıklıkta kullanılabilirse, 15 dakikada bir daha varsa, bu çıktı veri kümesini üreten etkinlik, çıkış veri kümesi, etkinlik zamanlamasını hangi şekilde yürüttüğünde bir saat sonra çalışır. Daha fazla bilgi için bkz. [farklı sıklıklarla model veri kümeleri](#model-datasets-with-different-frequencies).
 
@@ -226,7 +226,7 @@ Aşağıdaki veri kümesi aylık bir veri kümesidir ve 8:00 () adresindeki her 
 ```
 
 ### <a name="dataset-policy"></a>Veri kümesi ilkesi
-Bir veri kümesinde, bir dilim yürütmesi tarafından oluşturulan verilerin tüketimine hazırlanmadan nasıl doğrulanabileceğini belirten bir doğrulama ilkesi tanımlanmış olabilir. Bu gibi durumlarda, dilim yürütmeyi tamamladıktan sonra çıkış dilimi durumu, **doğrulamanın**bir alt durumu ile **bekliyor** olarak değiştirilir. Dilimler doğrulandıktan sonra dilimin durumu **Ready**olarak değişir. Bir veri dilimi üretildiyse ancak doğrulamayı geçirmediyseniz, bu dilime bağlı aşağı akış dilimleri için etkinlik çalıştırmaları işlenmez. İşlem [hatlarını izleyin ve yönetin](data-factory-monitor-manage-pipelines.md) , Data Factory veri dilimlerinin çeşitli durumlarını içerir.
+Bir veri kümesinde, bir dilim yürütmesi tarafından oluşturulan verilerin tüketimine hazırlanmadan nasıl doğrulanabileceğini belirten bir doğrulama ilkesi tanımlanmış olabilir. Bu gibi durumlarda, dilim yürütmeyi tamamladıktan sonra çıkış dilimi durumu, **doğrulamanın** bir alt durumu ile **bekliyor** olarak değiştirilir. Dilimler doğrulandıktan sonra dilimin durumu **Ready** olarak değişir. Bir veri dilimi üretildiyse ancak doğrulamayı geçirmediyseniz, bu dilime bağlı aşağı akış dilimleri için etkinlik çalıştırmaları işlenmez. İşlem [hatlarını izleyin ve yönetin](data-factory-monitor-manage-pipelines.md) , Data Factory veri dilimlerinin çeşitli durumlarını içerir.
 
 DataSet tanımındaki **ilke** bölümü, veri kümesi dilimlerinin yerine getirilmesi gereken ölçütü veya koşulu tanımlar. Aşağıdaki tabloda, **ilke** bölümünde kullanabileceğiniz özellikler açıklanmaktadır:
 
@@ -294,7 +294,7 @@ Diyagramda, en son üç dilim, DataSet2 için 9-10 ÖÖ Slice üretilirken bir h
 
 Data Factory izleme ve yönetim araçları, sorunun kök nedenini kolayca bulmak ve sorunu çözmesi için, başarısız olan dilimin tanılama günlüklerinin detayına gitmenizi sağlar. Sorunu düzelttikten sonra, başarısız olan dilimi oluşturmak için etkinliği çalıştırmayı kolayca başlatabilirsiniz. Veri dilimleri için durum geçişlerini yeniden çalıştırma ve anlama hakkında daha fazla bilgi için, bkz. Azure portal Blade veya [izleme ve yönetim uygulaması](data-factory-monitor-manage-app.md) [kullanarak işlem hatlarını izleme ve yönetme](data-factory-monitor-manage-pipelines.md) .
 
-**DataSet2**için 9-10 ÖÖ dilimini yeniden çalıştırdıktan sonra Data Factory, son veri kümesinde 9-10 ' in bağımlı dilimi için çalıştırmaya başlar.
+**DataSet2** için 9-10 ÖÖ dilimini yeniden çalıştırdıktan sonra Data Factory, son veri kümesinde 9-10 ' in bağımlı dilimi için çalıştırmaya başlar.
 
 ![Başarısız dilimi yeniden çalıştır](./media/data-factory-scheduling-and-execution/rerun-failed-slice.png)
 
@@ -695,7 +695,7 @@ CopyActivity2 yalnızca CopyActivity1 başarıyla çalıştırılmışsa ve Data
 
 Örnekte, ilk kopyalama etkinliğinin çıkış veri kümesinin (DataSet2) ikinci etkinlik için giriş olarak belirtildiğine dikkat edin. Bu nedenle, ikinci etkinlik yalnızca ilk etkinliğin çıkış veri kümesi hazırlanışında çalışır.  
 
-Örnekte, CopyActivity2 gibi farklı bir girişi olabilir, ancak CopyActivity2 'e giriş olarak DataSet2 belirtirseniz, bu nedenle CopyActivity1 bitene kadar etkinlik çalıştırılmaz. Örneğin:
+Örnekte, CopyActivity2 gibi farklı bir girişi olabilir, ancak CopyActivity2 'e giriş olarak DataSet2 belirtirseniz, bu nedenle CopyActivity1 bitene kadar etkinlik çalıştırılmaz. Örnek:
 
 CopyActivity1
 

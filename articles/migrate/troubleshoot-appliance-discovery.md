@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: b6fed24c7de87424bde94b864d4a9db91828a510
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 0d4630cad94a30e0dd53785c512e452d7b4a7d38
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315780"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494452"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure geçişi Gereç ve bulma sorunlarını giderme
 
@@ -56,8 +56,8 @@ Doğru kimlik bilgilerini kullandığınızdan emin olun.
 Tarih ve saat eşitleme (802) ile ilgili bir hata, sunucu saatinin beş dakikadan uzun bir süredir geçerli zamandan eşitlenmemiş olabileceğini gösterir. Toplayıcı VM 'sinin saat saatini Şu anki saatle eşleşecek şekilde değiştirin:
 
 1. VM 'de bir yönetici komut istemi açın.
-2. Saat dilimini denetlemek için **w32tm/tz komutunu**çalıştırın.
-3. Saati eşitleme için **w32tm/resync**komutunu çalıştırın.
+2. Saat dilimini denetlemek için **w32tm/tz komutunu** çalıştırın.
+3. Saati eşitleme için **w32tm/resync** komutunu çalıştırın.
 
 
 ## <a name="unabletoconnecttoserver"></a>"UnableToConnectToServer"
@@ -80,7 +80,7 @@ Bu bağlantı hatası alırsanız, vCenter Server *ServerName*. com: 9443 öğes
     - Gerekli Azure rolleri ve izinleri hakkında [daha fazla bilgi edinin](./migrate-appliance.md#appliance---vmware) .
 - Hata 60039, "gereç, kayıt başarısız olursa, kayıt başarısız olursa, Gereç kayıt işlemi için kullanılan Azure geçişi projesi bulunamadığı için," gereç Azure geçiş projesi 'ne başarıyla kaydettirilmemiş "olabilir
     - Azure portal ve projenin kaynak grubunda mevcut olup olmadığını kontrol edin.
-    - Proje yoksa, kaynak grubunuzda yeni bir Azure geçişi projesi oluşturun ve gereci yeniden kaydedin. Yeni bir proje oluşturmayı [öğrenin](./how-to-add-tool-first-time.md#create-a-project-and-add-a-tool) .
+    - Proje yoksa, kaynak grubunuzda yeni bir Azure geçişi projesi oluşturun ve gereci yeniden kaydedin. Yeni bir proje oluşturmayı [öğrenin](./create-manage-projects.md#create-a-project-for-the-first-time) .
 
 ## <a name="error-6003060031-key-vault-management-operation-failed"></a>Hata 60030/60031: Key Vault Yönetimi işlemi başarısız oldu
 
@@ -158,7 +158,7 @@ Bu işe yaramazsa ve VMware sunucularını keşfederken:
 Bulunan VM 'Ler portalda görünmezse veya VM verileri güncel değilse, birkaç dakika bekleyin. Keşfedilen VM yapılandırma verilerinde yapılan değişikliklerin portalda görünmesi 30 dakika kadar sürer. Uygulama verilerinde değişikliklerin görünmesi birkaç saat sürebilir. Bu süreden sonra veri yoksa yenilemeyi şu şekilde deneyin
 
 1. **Sunucular**  >  **Azure geçişi sunucu değerlendirmesi**' nde, **genel bakış**' ı seçin.
-2. **Yönet**altında **Aracı durumu**' yi seçin.
+2. **Yönet** altında **Aracı durumu**' yi seçin.
 3. **Aracıyı Yenile**' yi seçin.
 4. Yenileme işleminin tamamlanmasını bekleyin. Şimdi güncel bilgileri görmeniz gerekir.
 
@@ -180,7 +180,7 @@ Bu durum, CSV yüklemeniz doğrulama hatası nedeniyle başarısız olduysa gör
 Uygulama bulma her 24 saatte bir çalışır. Ayrıntıları hemen görmek isterseniz aşağıdaki gibi yenileyin. Hayır öğesine bağlı olarak bu işlem birkaç dakika sürebilir. bulunan VM 'Ler.
 
 1. **Sunucular**  >  **Azure geçişi sunucu değerlendirmesi**' nde, **genel bakış**' ı seçin.
-2. **Yönet**altında **Aracı durumu**' yi seçin.
+2. **Yönet** altında **Aracı durumu**' yi seçin.
 3. **Aracıyı Yenile**' yi seçin.
 4. Yenileme işleminin tamamlanmasını bekleyin. Şimdi güncel bilgileri görmeniz gerekir.
 

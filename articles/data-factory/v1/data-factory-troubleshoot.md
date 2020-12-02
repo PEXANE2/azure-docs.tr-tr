@@ -8,17 +8,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 7afc16beaacee5b75d57c4e4216a105734d20a09
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: bd18a26a1c199e1ecc32cfc371d2931b1dee0c3f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637080"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494979"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Data Factory'de sorun giderme
 > [!NOTE]
@@ -97,7 +97,7 @@ Bu özellikle ilgili daha ayrıntılı bilgiler için [Veri kümeleri](data-fact
 }
 ```
 
-Hatayı gidermek için, _ *External* * özelliğini ve Isteğe bağlı **externaldata** bölümünü giriş tablosunun JSON tanımına ekleyin ve tabloyu yeniden oluşturun.
+Hatayı gidermek için, _ *External** özelliğini ve Isteğe bağlı **externaldata** bölümünü giriş tablosunun JSON tanımına ekleyin ve tabloyu yeniden oluşturun.
 
 ### <a name="problem-hybrid-copy-operation-fails"></a>Sorun: karma kopyalama işlemi başarısız oluyor
 Veri Yönetimi ağ geçidini kullanarak şirket içi veri deposuna/üzerinden kopyalama ile ilgili sorunları gidermeye yönelik adımlar için bkz. [ağ geçidi sorunlarını giderme](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) adımları.

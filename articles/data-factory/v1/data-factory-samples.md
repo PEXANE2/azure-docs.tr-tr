@@ -3,20 +3,20 @@ title: Azure Data Factory örnekleri
 description: Azure Data Factory hizmetiyle birlikte gelen örneklerle ilgili ayrıntıları sağlar.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: ed63d148afa6f5674d36cc50c18351b2a06966eb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b373b5c440bf2ef2f50bf323baa2488981cdc775
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019625"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495200"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory örnekleri
 > [!NOTE]
@@ -46,7 +46,7 @@ ms.locfileid: "96019625"
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager şablonları
 GitHub üzerinde Data Factory için aşağıdaki Azure Resource Manager şablonları bulabilirsiniz.
 
-| Şablon | Description |
+| Şablon | Açıklama |
 | --- | --- |
 | [Azure Blob depolama alanından Azure SQL veritabanına kopyalama](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |Bu şablonu dağıtmak, verileri belirtilen Azure Blob depolamadan Azure SQL veritabanı 'na kopyalayan bir işlem hattı ile bir Azure veri fabrikası oluşturur |
 | [Salesforce 'tan Azure Blob depolamaya kopyalama](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |Bu şablonu dağıtmak, belirtilen Salesforce hesabından Azure Blob depolama alanına veri kopyalayan bir işlem hattına sahip bir Azure veri fabrikası oluşturur. |
@@ -90,7 +90,7 @@ Bilgisayarınızda şunların yüklü olması gerekir:
    2. Sağ bölmedeki **Data Factory şablonlar** ' ı seçin.
    3. Proje için bir **ad** girin.
    4. Proje için bir **konum** seçin.
-   5. **Tamam** düğmesine tıklayın.
+   5. **Tamam**'a tıklayın.
 
       ![Yeni proje iletişim kutusu](./media/data-factory-samples/vs-new-project-adf-templates.png)
 3. **Data Factory şablonlar** iletişim kutusunda, **kullanım örneği şablonları** bölümünde örnek şablonu seçin ve **İleri**' ye tıklayın. Aşağıdaki adımlar, **Müşteri profil oluşturma** şablonunu kullanma işleminde size yol gösterir. Adımlar diğer örneklere benzerdir.

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/30/2020
 keywords: Java, jakartaee, JavaEE, mikro profil, açık-Liberty, WebSphere-Liberty, Aro, OpenShift, Red Hat
-ms.openlocfilehash: 41891b58942efbfd705747cc16219185f2a2daa2
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 0c17c911d1eefe646785314a26b6a9b1e964ca67
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018401"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493956"
 ---
 # <a name="deploy-a-java-application-with-open-libertywebsphere-liberty-on-an-azure-red-hat-openshift-4-cluster"></a>Azure Red Hat OpenShift 4 kümesinde açık Liberty/WebSphere özgürlük ile Java uygulaması dağıtma
 
@@ -25,26 +25,26 @@ Bu kılavuzda, açık serbest bir/Web Sphere serbest çalışma zamanında Java,
 Bu kılavuzda başarıyla gezinmek için aşağıdaki önkoşulları doldurun.
 
 > [!NOTE]
-> Azure Red Hat OpenShift, bir OpenShift kümesi oluşturmak ve çalıştırmak için en az 40 çekirdek gerektirir. Yeni bir Azure aboneliği için varsayılan Azure Kaynak kotası bu gereksinimi karşılamıyor. Kaynak sınırınıza bir artış istemek için bkz. [Standart kota: VM serisine göre limitleri artırma](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests). Ücretsiz deneme aboneliğinin bir kota artışı için uygun olmadığını, bir kota artışı istenmeden önce [Kullandıkça Öde aboneliğine yükseldiğini](https://docs.microsoft.com/azure/cost-management-billing/manage/upgrade-azure-subscription) unutmayın.
+> Azure Red Hat OpenShift, bir OpenShift kümesi oluşturmak ve çalıştırmak için en az 40 çekirdek gerektirir. Yeni bir Azure aboneliği için varsayılan Azure Kaynak kotası bu gereksinimi karşılamıyor. Kaynak sınırınıza bir artış istemek için bkz. [Standart kota: VM serisine göre limitleri artırma](../azure-portal/supportability/per-vm-quota-requests.md). Ücretsiz deneme aboneliğinin bir kota artışı için uygun olmadığını, bir kota artışı istenmeden önce [Kullandıkça Öde aboneliğine yükseldiğini](../cost-management-billing/manage/upgrade-azure-subscription.md) unutmayın.
 
 1. UNIX benzeri işletim sistemi yüklü bir yerel makine hazırlayın (örneğin, Ubuntu, macOS).
 1. Bir Java CE uygulamasını (örneğin, [Benimsetopenjdk OpenJDK 8 LTS/OpenJ9](https://adoptopenjdk.net/?variant=openjdk8&jvmVariant=openj9)) yükler.
 1. [Maven](https://maven.apache.org/download.cgi) 3.5.0 veya üstünü yükler.
 1. IŞLETIM sisteminize [Docker](https://docs.docker.com/get-docker/) 'yi yüklemeyin.
-1. [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) 2.0.75 veya üstünü yükler.
+1. [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) 2.0.75 veya üstünü yükler.
 1. [`envsubst`](https://command-not-found.com/envsubst)İşletim sisteminizde önceden yüklenmemişse denetleyin ve yükleme yapın.
 1. Bu örnek için kodu yerel sisteminizde kopyalayın. Örnek [GitHub](https://github.com/Azure-Samples/open-liberty-on-aro)' dır.
-1. [Azure Red Hat OpenShift 4 kümesi oluşturma](/azure/openshift/tutorial-create-cluster)bölümündeki yönergeleri izleyin.
+1. [Azure Red Hat OpenShift 4 kümesi oluşturma](./tutorial-create-cluster.md)bölümündeki yönergeleri izleyin.
 
    "Red hat çekme gizli dizisi al" adımı isteğe bağlı olarak etiketlidir olsa da **Bu makale için gereklidir**.  Çekme gizli dizisi, Azure Red Hat Openshıft kümenizin açık özgürlük Işlecini bulmasını sağlar.
 
    Kümede yoğun bellek gerektiren uygulamalar çalıştırmayı planlıyorsanız, parametresini kullanarak çalışan düğümlerinin doğru sanal makine boyutunu belirtin `--worker-vm-size` . Örneğin, `Standard_E4s_v3` bir kümeye Elaun Search işlecini yüklemek için en düşük sanal makine boyutudur. Daha fazla bilgi için bkz.
 
-   * [Küme oluşturmak için Azure CLı](https://docs.microsoft.com/cli/azure/aro?view=azure-cli-latest&preserve-view=true#az-aro-create)
-   * [Bellek için iyileştirilmiş desteklenen sanal makine boyutları](/azure/openshift/support-policies-v4#memory-optimized)
+   * [Küme oluşturmak için Azure CLı](/cli/azure/aro?preserve-view=true&view=azure-cli-latest#az-aro-create)
+   * [Bellek için iyileştirilmiş desteklenen sanal makine boyutları](./support-policies-v4.md#memory-optimized)
    * [Elaun Search Işlecini yükleme önkoşulları](https://docs.openshift.com/container-platform/4.3/logging/cluster-logging-deploying.html#cluster-logging-deploy-eo-cli_cluster-logging-deploying)
 
-1. [Azure Red Hat OpenShift 4 kümesine bağlanma](/azure/openshift/tutorial-connect-cluster)bölümündeki adımları izleyerek kümeye bağlanın.
+1. [Azure Red Hat OpenShift 4 kümesine bağlanma](./tutorial-connect-cluster.md)bölümündeki adımları izleyerek kümeye bağlanın.
    * Bu makalenin ilerleyen kısımlarında komutunu kullanacağımız için "OpenShift CLı 'yı Install" bölümündeki adımları izlediğinizden emin olun `oc` .
    * Gibi görünen küme konsolu URL 'sini yazın `https://console-openshift-console.apps.<random>.<region>.aroapp.io/` .
    * Kimlik bilgilerini bir yere göz atın `kubeadmin` .
@@ -314,7 +314,7 @@ oc delete -f openlibertyapplication.yaml
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-[Öğretici: Azure Red Hat OpenShift 4 kümesini silme öğreticisindeki](/azure/openshift/tutorial-delete-cluster) adımları IZLEYEREK, Aro kümesini silin
+[Öğretici: Azure Red Hat OpenShift 4 kümesini silme öğreticisindeki](./tutorial-delete-cluster.md) adımları IZLEYEREK, Aro kümesini silin
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 53a10123bf3304ab9c949146d7cad6b904c8323d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: c87290b36ec77e834a0d0fcd99e9a8bdb05675b5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317217"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494707"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Azure geçişi 'nin önceki sürümüyle çalışma
 
@@ -31,7 +31,7 @@ Azure geçişi hizmetinin iki sürümü vardır:
 
 ## <a name="upgrade-between-versions"></a>Sürümler arasında yükseltme
 
-Önceki sürümdeki proje veya bileşenleri yeni sürüme yükseltemezsiniz. [Yeni bir Azure geçişi projesi oluşturmanız](create-manage-projects.md)ve buna [değerlendirme ve geçiş araçları eklemeniz](how-to-add-tool-first-time.md) gerekir. Kullanılabilir değerlendirme ve geçiş araçlarının nasıl kullanılacağını anlamak için öğreticilerini kullanın. Klasik bir projeye eklenmiş bir Log Analytics çalışma alanınız varsa, klasik projeyi sildikten sonra onu geçerli sürümün projesine ekleyebilirsiniz.
+Önceki sürümdeki proje veya bileşenleri yeni sürüme yükseltemezsiniz. [Yeni bir Azure geçişi projesi oluşturmanız](create-manage-projects.md)ve buna [değerlendirme ve geçiş araçları eklemeniz](./create-manage-projects.md) gerekir. Kullanılabilir değerlendirme ve geçiş araçlarının nasıl kullanılacağını anlamak için öğreticilerini kullanın. Klasik bir projeye eklenmiş bir Log Analytics çalışma alanınız varsa, klasik projeyi sildikten sonra onu geçerli sürümün projesine ekleyebilirsiniz.
 
 ## <a name="find-projects-from-previous-version"></a>Önceki sürümden projeler bulun
 
@@ -219,7 +219,7 @@ Bağımlılık görselleştirmesini kullanmak için bir Log Analytics çalışma
 
 Bir çalışma alanını yapılandırdıktan sonra, değerlendirmek istediğiniz her şirket içi makineye aracıları indirip yüklersiniz. Ayrıca, internet bağlantısı olmayan makineleriniz varsa [Log Analytics ağ geçidini](../azure-monitor/platform/gateway.md) indirip yüklemeniz gerekir.
 
-1. Genel olarak, makineleri **Yönet**' **e**tıklayın  >  **Machines**ve gerekli makineyi seçin.
+1. Genel olarak, makineleri **Yönet**' **e** tıklayın  >  **Machines** ve gerekli makineyi seçin.
 2. **Bağımlılıklar** sütununda, **aracıları yüklensin**' e tıklayın.
 3. **Bağımlılıklar** sayfasında, değerlendirmek ISTEDIĞINIZ her VM 'ye Microsoft Monitoring Agent (MMA) ve bağımlılık aracısını indirip yükleyin.
 4. Çalışma alanı kimliğini ve anahtarını kopyalayın. Bu, şirket içi makineye MMA 'yı yüklerken gereklidir.
@@ -272,7 +272,7 @@ System Center Operations Manager 2012 R2 veya üzeriyle izlenen makineler için 
 
 1. Aracıları yükledikten sonra portala gidin ve makineleri **Yönet**' e tıklayın  >  **Machines**.
 2. Aracıları yüklediğiniz makineyi arayın.
-3. Makinenin **Bağımlılıklar** sütunu artık **Görünüm bağımlılıkları**olarak gösterilmelidir. Makinenin bağımlılıklarını görüntülemek için sütuna tıklayın.
+3. Makinenin **Bağımlılıklar** sütunu artık **Görünüm bağımlılıkları** olarak gösterilmelidir. Makinenin bağımlılıklarını görüntülemek için sütuna tıklayın.
 4. Makinenin bağımlılık eşlemesi aşağıdaki ayrıntıları gösterir:
     - Makineden/makineden gelen (Istemciler) ve giden (sunucu) TCP bağlantısı
         - MMA ve bağımlılık aracısının yüklü olmadığı bağımlı makineler, bağlantı noktası numaralarına göre gruplandırılır.
@@ -302,13 +302,13 @@ Hizmet Eşlemesi tarafından yakalanan bağımlılık verileri, Azure geçişi p
 
 Kusto sorgularını çalıştırmak için:
 
-1. Aracıları yükledikten sonra portala gidin ve **Genel Bakış ' a**tıklayın.
-2. **Genel bakış**bölümünde, projenin **temel parçalar** bölümüne gidin ve **OMS çalışma alanının**yanında sunulan çalışma alanı adına tıklayın.
+1. Aracıları yükledikten sonra portala gidin ve **Genel Bakış ' a** tıklayın.
+2. **Genel bakış** bölümünde, projenin **temel parçalar** bölümüne gidin ve **OMS çalışma alanının** yanında sunulan çalışma alanı adına tıklayın.
 3. Log Analytics çalışma alanı sayfasında **genel**  >  **Günlükler**' e tıklayın.
 4. Azure Izleyici günlüklerini kullanarak bağımlılık verilerini toplamak için sorgunuzu yazın. Sonraki bölümde örnek sorgular bulun.
 5. Çalıştır ' a tıklayarak sorgunuzu çalıştırın. 
 
-Kusto sorguları yazma hakkında [daha fazla bilgi edinin](../azure-monitor/log-query/get-started-portal.md) . 
+Kusto sorguları yazma hakkında [daha fazla bilgi edinin](../azure-monitor/log-query/log-analytics-tutorial.md) . 
 
 ### <a name="sample-azure-monitor-logs-queries"></a>Örnek Azure Izleyici günlükleri sorguları
 
