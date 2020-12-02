@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: cavoeg
-ms.openlocfilehash: 3aea2322129c383a385168c54001464da5dae276
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 9a4c331d82695aecb53990fd604ade82f3361959
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95520093"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452926"
 ---
 # <a name="features"></a>Özellikler
 
@@ -49,7 +49,7 @@ Desteklenen en son sürüm: `4.0.1`
 | Sayfalamayı                         | Kısmi   | Kısmi   | Kısmi   | `self` ve `next` desteklenir                     |
 | aracıların                 | Hayır        | Hayır        | Hayır        |                                                     |
 
-## <a name="search"></a>Arayın
+## <a name="search"></a>Arama
 
 Tüm arama parametresi türleri desteklenir. 
 
@@ -135,7 +135,7 @@ FHıR sunucusu, Access Control için [Azure Active Directory](https://azure.micr
 
 ## <a name="service-limits"></a>Hizmet sınırlamaları
 
-* [**Istek birimleri (ru)**](https://docs.microsoft.com/azure/cosmos-db/concepts-limits) -Azure API için Portal 'da fhır için en fazla 10.000 ru yapılandırabilirsiniz. En az 400 RUs veya 10 ru/GB olmak üzere, hangisi daha büyükse gereklidir. 10.000 ' den fazla ru 'ya ihtiyacınız varsa, bu artış için bir destek bileti koyabilirsiniz. Kullanılabilir en yüksek değer 1.000.000 ' dir.
+* [**Istek birimleri (ru)**](../cosmos-db/concepts-limits.md) -Azure API için Portal 'da fhır için en fazla 10.000 ru yapılandırabilirsiniz. En az 400 RUs veya 10 ru/GB olmak üzere, hangisi daha büyükse gereklidir. 10.000 ' den fazla ru 'ya ihtiyacınız varsa, bu artış için bir destek bileti koyabilirsiniz. Kullanılabilir en yüksek değer 1.000.000 ' dir.
 
 * **Eş zamanlı bağlantılar** ve **örnekler** -gün içinde, kümedeki iki örnek üzerinde beş eş zamanlı bağlantınız vardır (Toplam 10 eşzamanlı istek için). Daha fazla eşzamanlı istek gerektiğini düşünüyorsanız, gereksinimlerinize ilişkin ayrıntılarla bir destek bileti açın.
 

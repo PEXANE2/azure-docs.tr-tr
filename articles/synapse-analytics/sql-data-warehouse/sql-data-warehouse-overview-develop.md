@@ -1,6 +1,6 @@
 ---
-title: Azure SYNAPSE Analytics 'te adanmış bir SQL havuzu geliştirmeye yönelik kaynaklar
-description: Azure SYNAPSE Analytics 'te adanmış bir SQL havuzu için geliştirme kavramları, tasarım kararları, öneriler ve kodlama teknikleri.
+title: Azure SYNAPSE Analytics 'te adanmış bir SQL Havuzu (eski adıyla SQL DW) geliştirmeye yönelik kaynaklar
+description: Azure SYNAPSE Analytics 'te adanmış bir SQL Havuzu (eski adıyla SQL DW) için geliştirme kavramları, tasarım kararları, öneriler ve kodlama teknikleri.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,22 +10,22 @@ ms.subservice: sql-dw
 ms.date: 08/29/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: f158655cd7aeba647480325966c7f0cfcf65b13c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 6b34c70b453c26fe27a51e1aa802564864640cb9
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322133"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453688"
 ---
-# <a name="design-decisions-and-coding-techniques-for-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış bir SQL havuzu için tasarım kararları ve kodlama teknikleri 
+# <a name="design-decisions-and-coding-techniques-for-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış bir SQL Havuzu (eski adıyla SQL DW) için tasarım kararları ve kodlama teknikleri 
 
- Bu makalede, Azure SYNAPSE 'de adanmış bir SQL havuzu için önemli tasarım kararlarını, önerileri ve kodlama tekniklerini daha iyi anlamanıza yardımcı olacak ek kaynaklar bulacaksınız.
+ Bu makalede, Azure SYNAPSE 'de adanmış bir SQL Havuzu (eski adıyla SQL DW) için önemli tasarım kararlarını, önerileri ve kodlama tekniklerini daha iyi anlamanıza yardımcı olacak ek kaynaklar bulacaksınız.
 
 ## <a name="key-design-decisions"></a>Anahtar tasarım kararları
 
-Aşağıdaki makalelerde, Azure SYNAPSE ' de adanmış SQL havuzu özelliğini kullanarak dağıtılmış bir veri ambarı geliştirmeye yönelik kavramlar ve tasarım kararları vurgulanacak:
+Aşağıdaki makalelerde, Azure SYNAPSE ' de adanmış SQL Havuzu (eski adıyla SQL DW) özelliğini kullanarak dağıtılmış bir veri ambarı geliştirmeye yönelik kavramlar ve tasarım kararları vurgulanacak:
 
-* [bağlantının](../sql/connect-overview.md)
+* [bağlantının](sql-data-warehouse-connect-overview.md)
 * [zamanlı](resource-classes-for-workload-management.md)
 * [hareket](sql-data-warehouse-develop-transactions.md)
 * [Kullanıcı tanımlı şemalar](sql-data-warehouse-develop-user-defined-schemas.md)
@@ -37,7 +37,7 @@ Aşağıdaki makalelerde, Azure SYNAPSE ' de adanmış SQL havuzu özelliğini k
 
 ## <a name="development-recommendations-and-coding-techniques"></a>Geliştirme önerileri ve kodlama teknikleri
 
-Aşağıdaki makalelerde özel bir SQL havuzu geliştirmeye yönelik belirli kodlama teknikleri, ipuçları ve öneriler verilmektedir:
+Aşağıdaki makalelerde özel bir SQL Havuzu (eski adıyla SQL DW) geliştirmeye yönelik belirli kodlama teknikleri, ipuçları ve öneriler verilmektedir:
 
 * [saklı yordamlar](sql-data-warehouse-develop-stored-procedures.md)
 * [etikete](sql-data-warehouse-develop-label.md)

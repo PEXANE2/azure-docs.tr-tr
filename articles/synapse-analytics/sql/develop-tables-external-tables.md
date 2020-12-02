@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: a9f58a9cdf8dea9631443d499548f2aee61eda69
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c2daef64b110e59da76d8342508c19c7f1b3cd08
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175415"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452781"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>SYNAPSE SQL ile dış tabloları kullanma
 
-Dış tablo, Hadoop, Azure Depolama Blobu veya Azure Data Lake Storage bulunan verilere işaret eder. Dış tablolar, dosyalardaki verileri okumak veya Azure Storage 'daki dosyalara veri yazmak için kullanılır. SYNAPSE SQL ile, dış tabloları kullanarak adanmış SQL havuzu veya sunucusuz SQL Havuzu (Önizleme) ile verileri okuyabilir ve yazabilirsiniz.
+Dış tablo, Hadoop, Azure Depolama Blobu veya Azure Data Lake Storage bulunan verilere işaret eder. Dış tablolar, dosyalardaki verileri okumak veya Azure Storage 'daki dosyalara veri yazmak için kullanılır. SYNAPSE SQL ile, dış tabloları kullanarak adanmış SQL havuzuna veya sunucusuz SQL havuzuna veri okuyabilir ve yazabilirsiniz.
 
 ## <a name="external-tables-in-dedicated-sql-pool-and-serverless-sql-pool"></a>Adanmış SQL havuzunda ve sunucusuz SQL havuzundaki dış tablolar
 
@@ -383,7 +383,7 @@ SELECT TOP 1 * FROM census_external_table
 
 Data Lake keşif yeteneklerini kullanarak artık özel SQL havuzunu veya sunucusuz SQL havuzunu kullanarak bir dış tablo oluşturabilir ve sorgulayabilirsiniz ve bu dosya üzerinde basit bir sağ tıklamayı kullanabilirsiniz.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 - ADLS 2. hesaba en azından Depolama Blobu veri katılımcısı ARM erişim rolüyle çalışma alanına erişiminizin olması gerekir
 

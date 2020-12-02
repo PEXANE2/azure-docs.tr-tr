@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 2250a2565aa4fbab32daed54830fb701a3a2a1ac
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 27210dad3e32d4a308310ff114499ca468c4deac
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636196"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452266"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory-version-1"></a>Azure Data Factory sürüm 1 tarafından desteklenen işlem ortamları
 > [!NOTE]
@@ -49,7 +49,7 @@ Microsoft, desteklenen HDInsight sürümlerinin listesini en son Hadoop ekosiste
 15 Aralık 2017 ' den sonra:
 
 - Artık Data Factory sürüm 1 ' de isteğe bağlı bir HDInsight bağlı hizmetini kullanarak Linux tabanlı HDInsight sürüm 3,3 (veya önceki sürümler) kümeleri oluşturamazsınız. 
-- [ **OSType** ve **Sürüm** özellikleri](#azure-hdinsight-on-demand-linked-service) , mevcut bir Data Factory 1. sürüm 1 Isteğe bağlı HDInsight bağlantılı hizmetine yönelik JSON tanımında açıkça belirtilmemişse, varsayılan değer **sürüm = 3.1, OSType = Windows** to **Version = \<latest HDI default version\> ( https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning) , OSType = Linux** ) olarak değişir.
+- [ **OSType** ve **Sürüm** özellikleri](#azure-hdinsight-on-demand-linked-service) , mevcut bir Data Factory 1. sürüm 1 Isteğe bağlı HDInsight bağlantılı hizmetine yönelik JSON tanımında açıkça belirtilmemişse, varsayılan değer **sürüm = 3.1, OSType = Windows** to **Version = \<latest HDI default version\> ( https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning) , OSType = Linux**) olarak değişir.
 
 31 Temmuz 2018 ' den sonra:
 
@@ -58,7 +58,7 @@ Microsoft, desteklenen HDInsight sürümlerinin listesini en son Hadoop ekosiste
 ### <a name="recommended-actions"></a>Önerilen Eylemler
 
 - En son Hadoop ekosistemi bileşenlerini ve düzeltmeleri kullanabilmeniz için, etkilenen Data Factory 1. sürüm, isteğe bağlı HDInsight bağlı hizmet tanımlarındaki [ **OSType** ve **Sürüm** özelliklerini](#azure-hdinsight-on-demand-linked-service) daha yeni Linux tabanlı HDInsight sürümlerine (HDInsight 3,6) güncelleştirin. 
-- 15 Aralık 2017 ' den önce, test Data Factory sürüm 1 Hive, Pig, MapReduce ve etkilenen bağlı hizmete başvuran Hadoop akış etkinlikleri. Yükseltmekte olduğunuz yeni **OSType** ve **Sürüm** varsayılan değerleri ( **Version = 3.6** , **OSType = Linux** ) veya açık HDInsight sürümü ve işletim sistemi türü ile uyumlu olduklarından emin olun. 
+- 15 Aralık 2017 ' den önce, test Data Factory sürüm 1 Hive, Pig, MapReduce ve etkilenen bağlı hizmete başvuran Hadoop akış etkinlikleri. Yükseltmekte olduğunuz yeni **OSType** ve **Sürüm** varsayılan değerleri (**Version = 3.6**, **OSType = Linux**) veya açık HDInsight sürümü ve işletim sistemi türü ile uyumlu olduklarından emin olun. 
   Uyumluluk hakkında daha fazla bilgi edinmek için bkz. [Windows tabanlı HDInsight kümesinden Linux tabanlı bir kümeye geçirme](../../hdinsight/index.yml) ve [HDInsight ile kullanılabilen Hadoop bileşenleri ve sürümleri nelerdir?](../../hdinsight/hdinsight-component-versioning.md). 
 - Windows tabanlı HDInsight kümeleri oluşturmak için Data Factory sürüm 1 isteğe bağlı HDInsight bağlı hizmetini kullanmaya devam etmek için, **OSType** 'Yi 15 Aralık 2017 ' dan önce açık olarak **Windows** 'a ayarlayın. Linux tabanlı HDInsight kümelerine 31 Temmuz 2018 tarihinden önce geçiş yapmanızı öneririz. 
 - Data Factory sürüm 1 DotNet özel etkinliğini yürütmek için isteğe bağlı bir HDInsight bağlı hizmeti kullanıyorsanız, DotNet özel etkinlik JSON tanımını bunun yerine Azure Batch bağlı bir hizmet kullanacak şekilde güncelleştirin. Daha fazla bilgi için bkz. Data Factory işlem hattında [özel etkinlikler kullanma](./data-factory-use-custom-activities.md). 
@@ -112,7 +112,7 @@ Aşağıdaki JSON, Linux tabanlı isteğe bağlı HDInsight bağlı hizmetini ta
 ```
 
 > [!IMPORTANT]
-> HDInsight kümesi, JSON **Linkedservicename** özelliğinde belirttiğiniz Azure Blob depolamada *varsayılan bir kapsayıcı* oluşturur. Tasarım ile, HDInsight, küme silindiğinde bu kapsayıcıyı silmez. İsteğe bağlı bir HDInsight bağlı hizmetinde, var olan bir canlı küme ( **TimeToLive** ) olmadıkça bir dilim her işlenmek üzere her işlendiği her seferinde bir HDInsight kümesi oluşturulur. İşlem tamamlandığında küme silinir. 
+> HDInsight kümesi, JSON **Linkedservicename** özelliğinde belirttiğiniz Azure Blob depolamada *varsayılan bir kapsayıcı* oluşturur. Tasarım ile, HDInsight, küme silindiğinde bu kapsayıcıyı silmez. İsteğe bağlı bir HDInsight bağlı hizmetinde, var olan bir canlı küme (**TimeToLive**) olmadıkça bir dilim her işlenmek üzere her işlendiği her seferinde bir HDInsight kümesi oluşturulur. İşlem tamamlandığında küme silinir. 
 >
 > Daha fazla dilim işlendikçe, blob depolamada birçok kapsayıcı görürsünüz. İş sorunlarını gidermeye yönelik kapsayıcılara ihtiyacınız yoksa, depolama maliyetini azaltmak için kapsayıcıları silmek isteyebilirsiniz. Bu kapsayıcı adları bir düzene sahiptir: `adf<your Data Factory name>-<linked service name>-<date and time>`. Blob depolamada kapsayıcıları silmek için [Microsoft Azure Depolama Gezgini](https://storageexplorer.com/) gibi bir araç kullanabilirsiniz.
 >
@@ -127,7 +127,7 @@ Aşağıdaki JSON, Linux tabanlı isteğe bağlı HDInsight bağlı hizmetini ta
 | sürüm                      | HDInsight kümesinin sürümü. İzin verilen HDInsight sürümleri için bkz. [desteklenen HDInsight sürümleri](../../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions). Bu değer belirtilmezse, [en son HDI varsayılan sürümü](../../hdinsight/hdinsight-component-versioning.md) kullanılır. | Hayır       |
 | linkedServiceName            | Verileri depolamak ve işlemek için isteğe bağlı küme tarafından kullanılacak Azure depolama bağlı hizmeti. HDInsight kümesi bu depolama hesabı ile aynı bölgede oluşturulur.<p>Şu anda depolama olarak Azure Data Lake Store kullanan isteğe bağlı bir HDInsight kümesi oluşturamazsınız. Data Lake Store 'de HDInsight işlemeden elde edilen sonuç verilerini depolamak istiyorsanız, verileri blob depolamadan Data Lake Store kopyalamak için kopyalama etkinliğini kullanın. </p> | Evet      |
 | additionalLinkedServiceNames | HDInsight bağlı hizmeti için ek depolama hesapları belirtir. Data Factory depolama hesaplarını sizin yerinize kaydeder. Bu depolama hesaplarının, HDInsight kümesiyle aynı bölgede olması gerekir. HDInsight kümesi, **Linkedservicename** özelliği tarafından belirtilen depolama hesabıyla aynı bölgede oluşturulur. | Hayır       |
-| osType                       | İşletim sisteminin türü. İzin verilen değerler **Linux** ve **Windows** . Bu değer belirtilmemişse, **Linux** kullanılır.  <br /><br />Linux tabanlı HDInsight kümelerinin kullanılması önemle önerilir. Windows 'da HDInsight için emeklilik tarihi 31 Temmuz 2018 ' dir. | Hayır       |
+| osType                       | İşletim sisteminin türü. İzin verilen değerler **Linux** ve **Windows**. Bu değer belirtilmemişse, **Linux** kullanılır.  <br /><br />Linux tabanlı HDInsight kümelerinin kullanılması önemle önerilir. Windows 'da HDInsight için emeklilik tarihi 31 Temmuz 2018 ' dir. | Hayır       |
 | hcatalogLinkedServiceName    | HCatalog veritabanına işaret eden Azure SQL bağlı hizmetinin adı. İsteğe bağlı HDInsight kümesi, SQL veritabanı, meta veri deposu olarak kullanılarak oluşturulur. | Hayır       |
 
 #### <a name="example-linkedservicenames-json"></a>Örnek: LinkedServiceNames JSON
@@ -197,9 +197,9 @@ Baş, veri ve ZooKeeper düğümlerinin boyutunu belirtmek için aşağıdaki ö
 
 | Özellik          | Açıklama                              | Gerekli |
 | :---------------- | :--------------------------------------- | :------- |
-| headNodeSize      | Baş düğümün boyutunu ayarlar. Varsayılan değer **Standard_D3** . Ayrıntılar için bkz. [düğüm boyutlarını belirtme](#specify-node-sizes). | Hayır       |
-| Davtanodesize      | Veri düğümünün boyutunu ayarlar. Varsayılan değer **Standard_D3** . | Hayır       |
-| zookeeperNodeSize | ZooKeeper düğümünün boyutunu ayarlar. Varsayılan değer **Standard_D3** . | Hayır       |
+| headNodeSize      | Baş düğümün boyutunu ayarlar. Varsayılan değer **Standard_D3**. Ayrıntılar için bkz. [düğüm boyutlarını belirtme](#specify-node-sizes). | Hayır       |
+| Davtanodesize      | Veri düğümünün boyutunu ayarlar. Varsayılan değer **Standard_D3**. | Hayır       |
+| zookeeperNodeSize | ZooKeeper düğümünün boyutunu ayarlar. Varsayılan değer **Standard_D3**. | Hayır       |
 
 #### <a name="specify-node-sizes"></a>Düğüm boyutlarını belirtin
 Önceki bölümde açıklanan özellikler için belirtmeniz gereken dize değerleri için bkz. [sanal makine boyutları](../../virtual-machines/sizes.md). Değerler, [sanal makine boyutlarında](../../virtual-machines/sizes.md)başvurulan cmdlet 'Ler ve API 'lerle uyumlu olmalıdır. Büyük (varsayılan) veri düğümü boyutunun 7 GB belleği vardır. Bu senaryo için yeterli olmayabilir. 
@@ -232,7 +232,7 @@ Bu yapılandırma türü aşağıdaki işlem ortamları için desteklenir:
 * Azure Batch
 * Azure Machine Learning Studio (klasik)
 * Azure Data Lake Analytics
-* Azure SQL veritabanı, Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı), SQL Server
+* Azure SQL veritabanı, Azure SYNAPSE Analytics, SQL Server
 
 ## <a name="azure-hdinsight-linked-service"></a>Azure HDInsight bağlı hizmeti
 Kendi HDInsight kümenizi Data Factory kaydetmek için bir HDInsight bağlı hizmeti oluşturabilirsiniz.
@@ -289,13 +289,13 @@ Batch hizmetini kullanmaya yeni çalışıyorsanız:
 }
 ```
 
-**AccountName** özelliği için, ekleyin **. \<region name\>** Batch hesabınızın adına. Örneğin:
+**AccountName** özelliği için, ekleyin **. \<region name\>** Batch hesabınızın adına. Örnek:
 
 ```json
 "accountName": "mybatchaccount.eastus"
 ```
 
-Diğer bir seçenek de **Batchuri** uç noktası sağlamaktır. Örneğin:
+Diğer bir seçenek de **Batchuri** uç noktası sağlamaktır. Örnek:
 
 ```json
 "accountName": "adfteam",

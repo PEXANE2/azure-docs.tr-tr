@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 5124e7084a8e878e54e594424ec0926410f002ca
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: eb290b8c154c40388bfb3e7f9cbac7b645aa9609
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682494"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452676"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Sanal makine sertifikası sorunlarını giderme
 
@@ -474,7 +474,7 @@ Azure Marketi 'nden alınan tüm görüntülerin yeniden kullanılabilmesi için
 
 * **Windows** için, kullanarak Windows görüntülerini genelleştirdiğinizde `sysreptool` .
 
-  Araç hakkında daha fazla bilgi için `sysreptool` bkz. [Sistem Hazırlama (Sysprep) genel bakış](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
+  Araç hakkında daha fazla bilgi için `sysreptool` bkz. [Sistem Hazırlama (Sysprep) genel bakış](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
 
 ## <a name="datadisk-errors"></a>Veri diski hataları
 

@@ -1,24 +1,21 @@
 ---
-title: Azure Cosmos DB analitik depo (Önizleme) nedir?
+title: Analitik depo Azure Cosmos DB nedir?
 description: Azure Cosmos DB işlemsel (satır tabanlı) ve analitik (sütun tabanlı) depolama hakkında bilgi edinin. Analitik deponun avantajları, büyük ölçekli iş yükleri için performans etkisi ve verileri işlemsel depodan analitik depoya otomatik olarak eşitleme
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 11/30/2020
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 9cde9586d453632ceaa61de7c095a5f95d1ea2e4
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 5dc233348188791404f826870b235d2bdfa4c202
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337415"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452847"
 ---
-# <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Azure Cosmos DB analitik depo (Önizleme) nedir?
+# <a name="what-is-azure-cosmos-db-analytical-store"></a>Analitik depo Azure Cosmos DB nedir?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
-
-> [!IMPORTANT]
-> Analitik depolama Azure Cosmos DB Şu anda önizleme aşamasındadır. Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Analitik depo Azure Cosmos DB, işlemsel iş yüklerinize herhangi bir etkisi olmadan, Azure Cosmos DB işletimsel verilere karşı büyük ölçekli analizler sağlamak için tam olarak yalıtılmış bir sütun deposudur. 
 
@@ -36,7 +33,7 @@ ETL ardışık düzenleri, işletimsel verilere yapılan güncelleştirmeleri i�
 
 Azure Cosmos DB analitik depo, geleneksel ETL işlem hatları ile oluşan karmaşıklık ve gecikme süreli zorluklara yöneliktir. Azure Cosmos DB analitik depo, işletimsel verilerinizi otomatik olarak ayrı bir sütun deposuna eşitleyebilir. Sütun deposu biçimi, büyük ölçekli analitik sorguların en iyi duruma getirilmiş bir şekilde gerçekleştirilmesi için uygundur, bu da bu sorguların gecikme süresini artırır.
 
-Azure SYNAPSE bağlantısı 'nı kullanarak artık SYNAPSE Analytics 'ten Azure Cosmos DB analitik depoya doğrudan bağlayarak hiçbir ETL HTAP çözümü oluşturabilirsiniz. İşletimsel verilerinizde neredeyse gerçek zamanlı büyük ölçekli analiz çalıştırmanızı sağlar.
+Azure SYNAPSE bağlantısı 'nı kullanarak artık Azure SYNAPSE Analytics 'ten Azure Cosmos DB analitik depoya doğrudan bağlayarak hiçbir ETL HTAP çözümü oluşturabilirsiniz. İşletimsel verilerinizde neredeyse gerçek zamanlı büyük ölçekli analiz çalıştırmanızı sağlar.
 
 ## <a name="features-of-analytical-store"></a>Analitik depo özellikleri 
 
@@ -181,10 +178,10 @@ Analitik depo ile kimlik doğrulaması, belirli bir veritabanı için işlem dep
 
 Analitik depo, işlem çalıştırma sürelerine hiçbir bağımlılığı olmadan analitik iş yükleri için ölçeklenebilirlik, esneklik ve performans sağlamak üzere iyileştirilmiştir. Depolama teknolojisi, el ile gerçekleştirilen çalışmalar olmadan analiz iş yüklerinizi iyileştirmek için kendi kendine yönetilir.
 
-Analitik depolama sistemi analitik işlem sisteminden ayrıldıktan sonra, Azure Cosmos DB analitik depodaki veriler Azure SYNAPSE Analytics tarafından desteklenen farklı analiz çalışma zamanları ile aynı anda sorgulanabilir. SYNAPSE Analytics, bugün Apache Spark ve Azure Cosmos DB analitik depolarla SQL sunucusuz destekler.
+Analitik depolama sistemi analitik işlem sisteminden ayrıldıktan sonra, Azure Cosmos DB analitik depodaki veriler Azure SYNAPSE Analytics tarafından desteklenen farklı analiz çalışma zamanları ile aynı anda sorgulanabilir. Bugün itibariyle Azure SYNAPSE Analytics, Azure Cosmos DB analitik depolama ile Apache Spark ve sunucusuz SQL havuzunu destekler.
 
 > [!NOTE]
-> Yalnızca SYNAPSE Analytics çalışma zamanını kullanarak analitik depodan okuyabilirsiniz. Verileri işlem deponuza bir hizmet katmanı olarak geri yazabilirsiniz.
+> Yalnızca Azure SYNAPSE Analytics çalışma zamanını kullanarak analitik depodan okuyabilirsiniz. Verileri işlem deponuza bir hizmet katmanı olarak geri yazabilirsiniz.
 
 ## <a name="pricing"></a><a id="analytical-store-pricing"></a> Fiyat
 
@@ -194,10 +191,7 @@ Analitik mağaza, ücretlendirilebilen tüketim tabanlı bir fiyatlandırma mode
 
 * Analitik yazma işlemleri: işletimsel veri güncelleştirmelerinin tam olarak yönetilen işlem, işlem deposundan analitik depoya eşitlenmesi (otomatik eşitleme)
 
-* Analitik okuma işlemleri: SYNAPSE Analytics Spark ve SQL sunucusuz çalışma süreleriyle analitik depoya karşı gerçekleştirilen okuma işlemleri.
-
-> [!NOTE]
-> Azure Cosmos DB analitik depolama Şu anda herhangi bir ücretden ücretsiz olarak genel önizlemede kullanılabilir.
+* Analitik okuma işlemleri: Azure SYNAPSE Analytics Spark havuzundan ve sunucusuz SQL havuzu çalışma süreleriyle analitik depoya karşı gerçekleştirilen okuma işlemleri.
 
 Analitik mağaza fiyatlandırması, işlem Mağazası fiyatlandırma modelinden ayrıdır. Analitik depoda sağlanan RUs kavramı yoktur. Analitik mağaza için fiyatlandırma modeliyle ilgili tüm ayrıntılar için bkz. [Azure Cosmos DB fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/cosmos-db/).
 

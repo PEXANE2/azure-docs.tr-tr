@@ -7,16 +7,16 @@ ms.date: 10/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: ca2319a78fb4c0c720a21e97944d5b75ada9d008
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ad5c6f205fc832eb125e52b4135990fc58742e62
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015030"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453237"
 ---
 # <a name="preview-tutorial-create-and-connect-to-time-series-insights-gen2-to-store-visualize-and-analyze-iot-plug-and-play-device-telemetry"></a>Önizleme öğreticisi: IoT Tak ve Kullan cihaz telemetrisini depolamak, görselleştirmek ve çözümlemek için Time Series Insights Gen2 oluşturma ve bağlama
 
-Bu öğreticide, IoT Tak ve Kullan çözümünüz ile tümleştirme için bir [Azure Time Series Insights Gen2](https://docs.microsoft.com/azure/time-series-insights/overview-what-is-tsi) (TSI) ortamı oluşturmayı ve doğru yapılandırmayı öğreneceksiniz. Nesnelerin İnterneti (IoT) ölçeğinde zaman serisi verilerini toplamak, işlemek, depolamak, sorgulamak ve görselleştirmek için TSI 'ı kullanın.
+Bu öğreticide, IoT Tak ve Kullan çözümünüz ile tümleştirme için bir [Azure Time Series Insights Gen2](../time-series-insights/overview-what-is-tsi.md) (TSI) ortamı oluşturmayı ve doğru yapılandırmayı öğreneceksiniz. Nesnelerin İnterneti (IoT) ölçeğinde zaman serisi verilerini toplamak, işlemek, depolamak, sorgulamak ve görselleştirmek için TSI 'ı kullanın.
 
 İlk olarak, bir TSI ortamı sağladığınızda IoT Hub 'ınızı bir akış olay kaynağı olarak bağlayabilirsiniz. Daha sonra, sıcaklık denetleyicisi ve termostat cihazları için kullandığınız [dijital TWINS tanım dili (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) örnek modeli dosyalarını temel alarak [zaman serisi modelinizi](../time-series-insights/concepts-model-overview.md) yazmak üzere model eşitleme üzerinden çalışırsınız.
 
@@ -39,7 +39,7 @@ Azure CLı 'yı yerel olarak kurma gereksinimini ortadan kaldırmak için Azure 
 
 ## <a name="prepare-your-event-source"></a>Olay kaynağınızı hazırlama
 
-Daha önce oluşturduğunuz IoT Hub 'ı, TSI ortamınızın [olay kaynağıdır](https://docs.microsoft.com/azure/time-series-insights/concepts-streaming-ingestion-event-sources).
+Daha önce oluşturduğunuz IoT Hub 'ı, TSI ortamınızın [olay kaynağıdır](../time-series-insights/concepts-streaming-ingestion-event-sources.md).
 
 > [!IMPORTANT]
 > Varolan tüm IoT Hub yollarını devre dışı bırakın. Bir IoT Hub 'ı, [yönlendirme](../iot-hub/iot-hub-devguide-messages-d2c.md#routing-endpoints) YAPıLANDıRıLMıŞ bir TSI olay kaynağı olarak kullanırken bilinen bir sorun vardır. Tüm yönlendirme uç noktalarını geçici olarak devre dışı bırakın ve IoT Hub 'ı TSI 'a bağlıyken yeniden etkinleştirebilirsiniz.
@@ -67,7 +67,7 @@ Bu bölümde, Azure Time Series Insights Gen2 ortamınızın nasıl sağlanacağ
 
 Aşağıdaki komut:
 
-* Ortamınızın [soğuk deposu](https://docs.microsoft.com/azure/time-series-insights/concepts-storage#cold-store)için, uzun süreli saklama ve geçmiş veriler üzerinde analiz için tasarlanan bir Azure depolama hesabı oluşturur.
+* Ortamınızın [soğuk deposu](../time-series-insights/concepts-storage.md#cold-store)için, uzun süreli saklama ve geçmiş veriler üzerinde analiz için tasarlanan bir Azure depolama hesabı oluşturur.
   * `mytsicoldstore`Soğuk depolama hesabınız için benzersiz bir adla değiştirin.
 * Yedi günlük bir saklama süresi ve sonsuz saklama için soğuk depolama dahil olmak üzere, bir Azure Time Series Insights Gen2 ortamı oluşturur.
   * `my-tsi-env`TSI ortamınız için benzersiz bir adla değiştirin.

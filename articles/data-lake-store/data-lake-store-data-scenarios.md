@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: fe911ac8985f9997125eb5149348b50a7fa83222
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 702a59f768bfe978e1a7708d91c6b6b1bb9c92fe
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92109264"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452237"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>Büyük veri gereksinimleri için Azure Data Lake Storage 1. kullanma
 
@@ -130,5 +130,5 @@ Data Lake Storage 1. depolanan verilerin görsel sunumlarını oluşturmak için
 
 ![Data Lake Storage 1. verileri görselleştirme](./media/data-lake-store-data-scenarios/visualize-data.png "Data Lake Storage 1. verileri görselleştirme")
 
-* [Data Lake Storage 1. verileri Azure SYNAPSE Analytics 'e (eski ADıYLA SQL veri ambarı) taşımak için Azure Data Factory](../data-factory/copy-activity-overview.md) kullanarak başlayabilirsiniz
+* [Data Lake Storage 1. verileri Azure SYNAPSE Analytics 'e taşımak için Azure Data Factory](../data-factory/copy-activity-overview.md) kullanarak başlayabilirsiniz
 * Bundan sonra, verilerin görsel temsilini oluşturmak için [Power BI Azure SYNAPSE Analytics ile tümleştirebilirsiniz](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect) .

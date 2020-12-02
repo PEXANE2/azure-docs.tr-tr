@@ -1,26 +1,26 @@
 ---
-title: Contoso perakende verilerini SYNAPSE SQL 'e yükleme
-description: Contoso perakende verilerinden SYNAPSE SQL 'e iki tablo yüklemek için PolyBase ve T-SQL komutlarını kullanın.
+title: Contoso perakende verilerini adanmış SQL havuzlarına yükleme
+description: Contoso perakende verilerinden adanmış SQL havuzlarına iki tablo yüklemek için PolyBase ve T-SQL komutlarını kullanın.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 04/17/2018
+ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 904ce55f376e42156b014056b1226512b2784742
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbe61444404b16a09a1e0d2bdead72ac53a60744
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89461706"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452879"
 ---
-# <a name="load-contoso-retail-data-to-synapse-sql"></a>Contoso perakende verilerini SYNAPSE SQL 'e yükleme 
+# <a name="load-contoso-retail-data-into-dedicated-sql-pools-in-azure-synapse-analytics"></a>Contoso perakende verilerini Azure SYNAPSE Analytics 'te adanmış SQL havuzlarına yükleme
 
-Bu öğreticide, contoso perakende verilerinden SYNAPSE SQL 'e iki tablo yüklemek için PolyBase ve T-SQL komutlarını kullanmayı öğreneceksiniz.
+Bu öğreticide, contoso perakende verilerinden adanmış SQL havuzlarına iki tablo yüklemek için PolyBase ve T-SQL komutlarını kullanmayı öğreneceksiniz.
 
 Bu öğreticide şunları yapmanız gerekir:
 
@@ -30,11 +30,11 @@ Bu öğreticide şunları yapmanız gerekir:
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu öğreticiyi çalıştırmak için, zaten bir Synapse SQL 'e sahip bir Azure hesabınızın olması gerekir. Sağlanmış bir veri ambarınız yoksa, bkz. [veri ambarı oluşturma ve sunucu düzeyinde güvenlik duvarı kuralı ayarlama](create-data-warehouse-portal.md).
+Bu öğreticiyi çalıştırmak için, zaten adanmış bir SQL havuzu olan bir Azure hesabınızın olması gerekir. Sağlanmış bir veri ambarınız yoksa, bkz. [veri ambarı oluşturma ve sunucu düzeyinde güvenlik duvarı kuralı ayarlama](create-data-warehouse-portal.md).
 
 ## <a name="configure-the-data-source"></a>Veri kaynağını yapılandırma
 
-PolyBase, dış verilerin konumunu ve özniteliklerini tanımlamak için T-SQL dış nesnelerini kullanır. Dış nesne tanımları SYNAPSE SQL 'de depolanır. Veriler dışarıdan depolanır.
+PolyBase, dış verilerin konumunu ve özniteliklerini tanımlamak için T-SQL dış nesnelerini kullanır. Dış nesne tanımları, adanmış SQL havuzlarında depolanır. Veriler dışarıdan depolanır.
 
 ## <a name="create-a-credential"></a>Kimlik bilgisi oluşturma
 
@@ -274,7 +274,7 @@ ORDER BY
 
 ## <a name="optimize-columnstore-compression"></a>Columnstore sıkıştırmasını iyileştirme
 
-Varsayılan olarak, SYNAPSE SQL tabloyu kümelenmiş bir columnstore dizini olarak depolar. Yükleme tamamlandıktan sonra, bazı veri satırları columnstore ' de sıkıştırılmayabilir.  Bunun gerçekleşebileceği farklı nedenler vardır. Daha fazla bilgi için bkz. [columnstore dizinlerini yönetme](sql-data-warehouse-tables-index.md).
+Varsayılan olarak, adanmış SQL havuzları tabloyu kümelenmiş bir columnstore dizini olarak depolar. Yükleme tamamlandıktan sonra, bazı veri satırları columnstore ' de sıkıştırılmayabilir.  Bunun gerçekleşebileceği farklı nedenler vardır. Daha fazla bilgi için bkz. [columnstore dizinlerini yönetme](sql-data-warehouse-tables-index.md).
 
 Bir yüklemeden sonra sorgu performansını ve columnstore sıkıştırmasını iyileştirmek için, columnstore dizinini tüm satırları sıkıştırmak üzere zorlamak için tabloyu yeniden derleyin.
 

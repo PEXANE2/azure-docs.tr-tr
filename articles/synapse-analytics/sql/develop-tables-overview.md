@@ -10,22 +10,22 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1c12727e08c6ec9075aa6c1e256279ab7596417b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 33eb5977ecb373a0dba87c26cacea247f541be8f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324528"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452734"
 ---
 # <a name="design-tables-using-synapse-sql-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SYNAPSE SQL kullanarak tablo tasarlama
 
-Bu belgede adanmış SQL havuzu ve sunucusuz SQL Havuzu (Önizleme) içeren tabloları tasarlamaya yönelik temel kavramlar yer almaktadır.  
+Bu belgede adanmış SQL havuzu ve sunucusuz SQL havuzu ile tablo tasarlamaya yönelik temel kavramlar yer almaktadır.  
 
-[Sunucusuz SQL Havuzu (Önizleme)](on-demand-workspace-overview.md) , Data Lake 'unuzdaki veriler üzerinde bir sorgu hizmetidir. Veri alımı için yerel depolama alanı yoktur. [ADANMıŞ SQL havuzu](best-practices-sql-pool.md) , SYNAPSE SQL kullanılırken sağlanmakta olan analitik kaynakların koleksiyonunu temsil eder. Adanmış bir SQL havuzunun boyutu, veri ambarı birimleri (DWU) tarafından belirlenir.
+[Sunucusuz SQL havuzu](on-demand-workspace-overview.md) , Data Lake 'unuzdaki veriler üzerinde bir sorgu hizmetidir. Veri alımı için yerel depolama alanı yoktur. [ADANMıŞ SQL havuzu](best-practices-sql-pool.md) , SYNAPSE SQL kullanılırken sağlanmakta olan analitik kaynakların koleksiyonunu temsil eder. Adanmış bir SQL havuzunun boyutu, veri ambarı birimleri (DWU) tarafından belirlenir.
 
 Aşağıdaki tabloda adanmış SQL havuzu ve sunucusuz SQL havuzu ile ilgili konular listelenmektedir:
 
-| Konu                                                        | adanmış SQL havuzu | Sunucusuz SQL havuzu |
+| Konu                                                        | adanmış SQL havuzu | sunucusuz SQL havuzu |
 | ------------------------------------------------------------ | ------------------ | ----------------------- |
 | [Tablo kategorisini belirleme](#determine-table-category)        | Evet                | Hayır                      |
 | [Şema adları](#schema-names)                                | Evet                | Evet                     |
@@ -76,7 +76,7 @@ CREATE SCHEMA wwi;
 | WideWorldImportersDW tablosu  | Tablo türü | adanmış SQL havuzu |
 |:-----|:-----|:------|:-----|
 | Şehir | Boyut | wwi. DimCity |
-| Sipariş verme | Fact | wwi. FactOrder |
+| Sipariş | Fact | wwi. FactOrder |
 
 ## <a name="table-persistence"></a>Tablo kalıcılığı
 

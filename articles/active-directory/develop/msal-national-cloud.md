@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 11/22/2019
 ms.author: negoe
-ms.reviewer: nacanuma
+ms.reviewer: marsma, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 566c429fc70ae3f0fc18f024b745d8142535932c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2f631ad650b20110084ff902043447f26c2d4ab3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348416"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453599"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>Ulusal bir bulut ortamında MSAL kullanma
 
@@ -150,9 +150,9 @@ MSAL Python uygulamanızı bağımsız bulutlara yönelik olarak etkinleştirmek
     "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
     ```
 
-- Microsoft Graph 'ı çağırmak için, hangi buluta kullandığınıza bağlı olarak belirli bir Graph Endpoint URL gerekir. Tüm ulusal bulutların Microsoft Graph uç noktalarını bulmak için [Microsoft Graph ve Graph Explorer hizmeti kök uç noktaları](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)' na bakın.
+- Microsoft Graph API 'sinin çağrılması, kullanmakta olduğunuz buluta özel bir uç nokta URL 'SI gerektirir. Tüm ulusal bulutların Microsoft Graph uç noktalarını bulmak için [Microsoft Graph ve Graph Explorer hizmeti kök uç noktaları](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)' na bakın.
 
-    Aşağıda kapsam içeren bir grafik uç noktası örneği verilmiştir:
+    Kapsama sahip Microsoft Graph uç noktası örneği aşağıda verilmiştir:
 
     ```json
     "endpoint" : "https://graph.microsoft.us/v1.0/me"
@@ -173,7 +173,7 @@ Bağımsız bulutları için MSAL Java uygulamanızı etkinleştirmek için:
 "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
 ```
 
-- Microsoft Graph 'ı çağırmak için, hangi buluta kullandığınıza bağlı olarak belirli bir Graph Endpoint URL gerekir. Tüm ulusal bulutların Microsoft Graph uç noktalarını bulmak için [Microsoft Graph ve Graph Explorer hizmeti kök uç noktaları](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)' na bakın.
+- Microsoft Graph API 'sinin çağrılması, kullanmakta olduğunuz buluta özel bir uç nokta URL 'SI gerektirir. Tüm ulusal bulutların Microsoft Graph uç noktalarını bulmak için [Microsoft Graph ve Graph Explorer hizmeti kök uç noktaları](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)' na bakın.
 
 Aşağıda kapsam içeren bir grafik uç noktası örneği verilmiştir:
 
@@ -222,9 +222,10 @@ if let application = try? MSALPublicClientApplication(configuration: config) { /
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdakiler hakkında daha fazla bilgi edinin:
+Her bulut için Azure portal URL 'Ler ve belirteç uç noktaları listesi için bkz. [Ulusal bulut kimlik doğrulama uç noktaları](authentication-national-cloud.md) .
 
-- [Ulusal bulutlarda kimlik doğrulama](authentication-national-cloud.md)
+Ulusal bulut belgeleri:
+
 - [Azure Devlet Kurumları](../../azure-government/index.yml)
 - [Azure China 21Vianet](/azure/china/)
 - [Azure Almanya](../../germany/index.yml)

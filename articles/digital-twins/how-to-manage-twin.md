@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9e00e0e5a34eecd6974e8919ce0d0e16f48757f3
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: ba444a497fa4fccab6b8dec1fadb3383420e4d49
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540978"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452965"
 ---
 # <a name="manage-digital-twins"></a>Dijital ikizleri yönetme
 
@@ -23,7 +23,7 @@ Bu makale, dijital TWINS yönetimine odaklanır; ilişkiler ve [ikizi Graf](conc
 > [!TIP]
 > Tüm SDK işlevleri, zaman uyumlu ve zaman uyumsuz sürümlerde gelir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
 
@@ -99,7 +99,7 @@ Aşağıdaki gibi bir yöntemi çağırarak herhangi bir dijital ikizi ayrıntı
 ```csharp
 object result = await client.GetDigitalTwin(id);
 ```
-Bu çağrı, gibi kesin türü belirtilmiş nesne türü olarak ikizi verileri döndürür `BasicDigitalTwin` . Bu, ikizi ayrıntılarını görüntülemek için nasıl kullanılacağına ilişkin bir örnek aşağıda verilmiştir:
+Bu çağrı, gibi kesin türü belirtilmiş nesne türü olarak ikizi verileri döndürür `BasicDigitalTwin` . `BasicDigitalTwin` , SDK 'ya dahil edilen bir serileştirme yardımcı sınıfıdır ve bu, önceden ayrıştırılmış form içindeki Core ikizi meta verilerini ve özelliklerini döndürür. Bu, ikizi ayrıntılarını görüntülemek için nasıl kullanılacağına ilişkin bir örnek aşağıda verilmiştir:
 
 ```csharp
 Response<BasicDigitalTwin> twin = client.GetDigitalTwin("myRoomId");
@@ -176,21 +176,7 @@ Dijital ikizi tanımlı özellikleri, Digital ikizi üzerinde en üst düzey öz
     - Her yazılabilir özellik için eşitleme durumu. Bu, hizmetin ve cihazın ayrılan durumlar (örneğin, bir cihaz çevrimdışı olduğunda) olduğu durumlarda, cihazlar için en yararlı seçenektir. Şu anda bu özellik yalnızca IoT Hub bağlı fiziksel cihazlara uygulanır. Meta veriler bölümündeki verilerle, bir özelliğin tam durumunun yanı sıra son değiştirilme zaman damgalarını anlamak mümkündür. Eşitleme durumu hakkında daha fazla bilgi için bkz. cihaz durumunu eşitlemeye yönelik [bu IoT Hub öğreticisi](../iot-hub/tutorial-device-twins.md) .
     - IoT Hub veya Azure dijital TWINS gibi hizmete özgü meta veriler. 
 
-İkizi için döndürülen JSON 'ı, tercih ettiğiniz bir JSON ayrıştırma kitaplığı kullanarak ayrıştırtırabilirsiniz `System.Text.Json` .
-
-Ayrıca, SDK 'da bulunan serileştirme Yardımcısı sınıfını da kullanabilirsiniz `BasicDigitalTwin` ; Bu, önceden ayrıştırılmış form içindeki Core ikizi meta verilerini ve özelliklerini döndürür. Aşağıda bir örnek verilmiştir:
-
-```csharp
-Response<BasicDigitalTwin> twin = client.GetDigitalTwin(twin_Id);
-Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
-foreach (string prop in twin.Contents.Keys)
-{
-    if (twin.Contents.TryGetValue(prop, out object value))
-        Console.WriteLine($"Property '{prop}': {value}");
-}
-```
-
-Serileştirme yardımcı sınıfları hakkında daha fazla bilgi [*Için bkz. nasıl yapılır: Azure dijital TWINS API 'leri ve SDK 'Larını kullanma*](how-to-use-apis-sdks.md).
+`BasicDigitalTwin` [*Nasıl yapılır: Azure dijital TWINS API 'Leri ve SDK 'larını kullanma*](how-to-use-apis-sdks.md)gibi serileştirme yardımcı sınıfları hakkında daha fazla bilgi edinebilirsiniz.
 
 ## <a name="view-all-digital-twins"></a>Tüm dijital TWINS 'i görüntüle
 

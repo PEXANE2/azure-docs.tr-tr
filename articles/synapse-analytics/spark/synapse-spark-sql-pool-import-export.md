@@ -1,6 +1,6 @@
 ---
-title: Sunucusuz Apache Spark havuzları (Önizleme) ve SQL havuzları arasında veri içeri ve dışarı aktarma
-description: Bu makalede özel bağlayıcının, verileri adanmış SQL havuzları ve sunucusuz Apache Spark havuzları (Önizleme) arasında taşımak için nasıl kullanılacağı hakkında bilgi verilmektedir.
+title: Sunucusuz Apache Spark havuzları ve SQL havuzları arasında verileri içeri ve dışarı aktarma
+description: Bu makalede özel bağlayıcının, verileri adanmış SQL havuzları ve sunucusuz Apache Spark havuzları arasında taşımak için nasıl kullanılacağı hakkında bilgi verilmektedir.
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: ee82fbaa9687e064747908600c7e5c9017f8f1a9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 178fc12fe8e8e20af8deb40c62990c279af4ab64
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323888"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452833"
 ---
 # <a name="introduction"></a>Giriş
 
-Azure SYNAPSE Apache Spark to SYNAPSE SQL Connector, Azure SYNAPSE 'deki sunucusuz Apache Spark havuzları (Önizleme) ve SQL havuzları arasında verileri verimli bir şekilde aktarmak için tasarlanmıştır. Azure SYNAPSE Apache Spark to SYNAPSE SQL Connector yalnızca adanmış SQL havuzları üzerinde çalışır, sunucusuz SQL havuzu ile çalışmaz.
+Azure SYNAPSE Apache Spark to SYNAPSE SQL Connector, Azure SYNAPSE 'deki sunucusuz Apache Spark havuzlar ve SQL havuzları arasında verileri verimli bir şekilde aktarmak için tasarlanmıştır. Azure SYNAPSE Apache Spark to SYNAPSE SQL Connector yalnızca adanmış SQL havuzları üzerinde çalışır, sunucusuz SQL havuzu ile çalışmaz.
 
 ## <a name="design"></a>Tasarım
 

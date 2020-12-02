@@ -1,37 +1,37 @@
 ---
-title: 'Hızlı başlangıç: kayıtlı bir uygulamayı Microsoft Identity platformundan kaldırma | Mavisi'
+title: 'Nasıl yapılır: Microsoft Identity platformundan kayıtlı bir uygulamayı kaldırma | Mavisi'
 titleSuffix: Microsoft identity platform
-description: Bu hızlı başlangıçta, Microsoft Identity platformu ile kaydedilen bir uygulamayı nasıl kaldıracağınızı öğreneceksiniz.
+description: Bu nasıl yapılır, Microsoft Identity platformu ile kaydedilen bir uygulamayı nasıl kaldıracağınızı öğrenirsiniz.
 services: active-directory
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: quickstart
+ms.topic: how-to
 ms.workload: identity
-ms.date: 05/08/2019
+ms.date: 11/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
-ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: aa0662ae0b1caa63938f5e07aea10b9af60661d3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.reviewer: marsma, aragra, lenalepa, sureshja
+ms.openlocfilehash: edfed8ca361d456e622096e23079d5887f96ab30
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173269"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452988"
 ---
-# <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Hızlı başlangıç: Microsoft Identity platformu ile kaydedilmiş bir uygulamayı kaldırma
+# <a name="how-to-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Microsoft Identity platformu ile kaydedilen bir uygulamayı kaldırma
 
 Microsoft kimlik platformuna kayıtlı uygulamaları olan kurumsal geliştiricilerin ve hizmet olarak yazılım (SaaS) sağlayıcılarının bir uygulamanın kaydını kaldırması gerekebilir.
 
-Bu hızlı başlangıçta şunları yapmayı öğreneceksiniz:
+Aşağıdaki bölümlerde, aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 * Kendiniz veya kuruluşunuz tarafından yazılmış bir uygulamayı kaldırma
 * Başka bir kuruluş tarafından yazılmış bir uygulamayı kaldırma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* [Hızlı başlangıç: Microsoft Identity platformu ile bir uygulamayı kaydetme](quickstart-register-app.md)
+* [Azure AD kiracınızda kayıtlı bir uygulama](quickstart-register-app.md)
 
 ## <a name="remove-an-application-authored-by-you-or-your-organization"></a>Kendiniz veya kuruluşunuz tarafından yazılmış bir uygulamayı kaldırma
 
@@ -53,7 +53,4 @@ Bir uygulamanın dizininize olan daha önce onay verdiğiniz erişimini kaldırm
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Microsoft Identity platformunda uygulama ve hizmet sorumlusu nesneleri hakkında daha fazla bilgi edinin:
-
-> [!div class="nextstepaction"]
-> [Azure Active Directory'deki uygulama ve hizmet sorumlusu nesneleri](app-objects-and-service-principals.md)
+Microsoft Identity platformunda [uygulama ve hizmet sorumlusu nesneleri](app-objects-and-service-principals.md) hakkında daha fazla bilgi edinin.

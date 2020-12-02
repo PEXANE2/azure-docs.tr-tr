@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 9636c76caf2302b872a2ecbb8e2e4bacfc1408a6
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 6455e4c9fa9460e47e3be7c860f89be540a514b0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952140"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453070"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro"></a>Azure Stack Edge Pro için erişim, güç ve bağlantı modunu yönetme
 
@@ -68,7 +68,7 @@ Azure Stack Edge Pro cihazı için etkinleştirme anahtarını oluştururken vey
 
 `User`Active Directory kiracısında yapabilmeniz için bir erişiminizin olması gerekir `Read all directory objects` . Bir Konuk Kullanıcı, izinleri olmadığı için bu kullanıcı olamaz `Read all directory objects` . Bir konuğunuzda, bir etkinleştirme anahtarı oluşturma, Azure Stack Edge Pro cihazınızda bir paylaşımın oluşturulması, bir kullanıcının oluşturulması, sınır hesaplama rolü yapılandırması, cihaz parolasının tümünün başarısız olması gibi işlemler başarısız olur.
 
-API Microsoft Graph için kullanıcılara erişim sağlama hakkında daha fazla bilgi için, bkz. [Microsoft Graph izinleri başvurusu](https://docs.microsoft.com/graph/permissions-reference).
+API Microsoft Graph için kullanıcılara erişim sağlama hakkında daha fazla bilgi için, bkz. [Microsoft Graph izinleri başvurusu](/graph/permissions-reference).
 
 ### <a name="register-resource-providers"></a>Kaynak sağlayıcılarını kaydetme
 
@@ -114,7 +114,7 @@ Varsayılan tam bağlı moddan ayrı olarak, cihazınız kısmen bağlı veya ta
 Cihaz modunu değiştirmek için şu adımları izleyin:
 
 1. Cihazınızın yerel Web Kullanıcı arabiriminde, **yapılandırma > bulut ayarları**' na gidin.
-2. Açılan listeden, cihazı çalıştırmak istediğiniz modu seçin. **Tam bağlı**, **kısmen bağlı**ve **tamamen bağlantısı kesilen**' ı seçebilirsiniz. Cihazı kısmen bağlantısı kesik modda çalıştırmak için **Azure Portal yönetimini**etkinleştirin.
+2. Açılan listeden, cihazı çalıştırmak istediğiniz modu seçin. **Tam bağlı**, **kısmen bağlı** ve **tamamen bağlantısı kesilen**' ı seçebilirsiniz. Cihazı kısmen bağlantısı kesik modda çalıştırmak için **Azure Portal yönetimini** etkinleştirin.
 
     ![Bağlantı modu](media/azure-stack-edge-manage-access-power-connectivity-mode/connectivity-mode.png)
  

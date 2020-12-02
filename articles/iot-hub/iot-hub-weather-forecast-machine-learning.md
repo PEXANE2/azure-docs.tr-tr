@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 09/16/2020
 ms.author: robinsh
-ms.openlocfilehash: c53f78702aeb5404bd353274ddb29b9356229fae
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: ab9e122ba0b2b50203a2d66ae14f03f3b6300f96
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145780"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452336"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (klasik) IoT Hub 'ınızdaki algılayıcı verilerini kullanarak hava durumu tahmini
 
@@ -46,7 +46,7 @@ Azure IoT Hub 'ınızdaki sıcaklık ve nem verilerini kullanarak hava durumu ta
   - Aboneliğiniz kapsamındaki bir Azure IoT Hub 'ı.
   - Azure IoT Hub 'ınıza ileti gönderen bir istemci uygulaması.
 - [Azure Machine Learning Studio (klasik)](https://studio.azureml.net/) hesap.
-- Bir [Azure depolama hesabı](../storage/common/storage-account-overview.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json#types-of-storage-accounts)olan **genel amaçlı v2** hesabı tercih edilir, ancak Azure Blob depolamayı destekleyen tüm Azure depolama hesapları da çalışacaktır.
+- Bir [Azure depolama hesabı](../storage/common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-storage-accounts)olan **genel amaçlı v2** hesabı tercih edilir, ancak Azure Blob depolamayı destekleyen tüm Azure depolama hesapları da çalışacaktır.
 
 > [!Note]
 > Bu makale Azure Stream Analytics ve diğer ücretli hizmetleri kullanır. Verilerin Azure bölgeleri arasında aktarılması gerektiğinde Azure Stream Analytics ek ücretler tahakkuk etmelidir. Bu nedenle, kaynak grubunuzun, IoT Hub ve Azure depolama hesabınızın yanı sıra bu öğreticide daha sonra eklenen Machine Learning Studio (klasik) çalışma alanı ve Azure Stream Analytics Işinin aynı Azure bölgesinde yer aldığından emin olmak iyi bir uygulamadır. [Bölgeye göre Azure ürün kullanılabilirliği sayfasında](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-studio&regions=all)Azure Machine Learning Studio (klasik) ve diğer Azure hizmetleri için bölgesel destek ' i kontrol edebilirsiniz.
@@ -106,7 +106,7 @@ Bu bölümde, modeli doğrular, modele göre tahmine dayalı bir Web hizmeti aya
 
    ![Adımları doğrulamak için denemeyi çalıştırın](media/iot-hub-weather-forecast-machine-learning/run-experiment.png)
 
-1. **Web hizmeti**tahmine  >  **dayalı Web hizmeti**ayarla ' yı seçin. Tahmine dayalı deneme diyagramı açılır.
+1. **Web hizmeti** tahmine  >  **dayalı Web hizmeti** ayarla ' yı seçin. Tahmine dayalı deneme diyagramı açılır.
 
    ![Hava durumu tahmin modelini Azure Machine Learning Studio dağıtma (klasik)](media/iot-hub-weather-forecast-machine-learning/predictive-experiment.png)
 
@@ -118,7 +118,7 @@ Bu bölümde, modeli doğrular, modele göre tahmine dayalı bir Web hizmeti aya
 
 1. Modeli bir Web hizmeti olarak dağıtmak için **Web Hizmeti Dağıt** ' ı seçin.
 
-1. Modelin panosunda, **istek/yanıt**için **Excel 2010 veya önceki bir çalışma kitabını** indirin.
+1. Modelin panosunda, **istek/yanıt** için **Excel 2010 veya önceki bir çalışma kitabını** indirin.
 
    > [!Note]
    > Bilgisayarınızda Excel 'in daha yeni bir sürümünü çalıştırıyor olsanız bile **excel 2010 veya önceki bir çalışma kitabını** indirdiğinizden emin olun.
@@ -162,7 +162,7 @@ Bu bölümde, modeli doğrular, modele göre tahmine dayalı bir Web hizmeti aya
 
    **IoT Hub**: aboneliğinizden IoT Hub 'ını seçin.
 
-   **Paylaşılan erişim ilkesi adı**:  **hizmeti**seçin. ( **Iothubowner**da kullanabilirsiniz.)
+   **Paylaşılan erişim ilkesi adı**:  **hizmeti** seçin. ( **Iothubowner** da kullanabilirsiniz.)
 
    **Tüketici grubu**: oluşturduğunuz tüketici grubunu seçin.
 
@@ -193,8 +193,8 @@ Bu bölümde, modeli doğrular, modele göre tahmine dayalı bir Web hizmeti aya
 
 ### <a name="add-a-function-to-the-stream-analytics-job-to-call-the-web-service-you-deployed"></a>Dağıttığınız Web hizmetini çağırmak için Stream Analytics işine bir işlev ekleyin
 
-1. **Iş topolojisi**altında **işlevler**' i seçin.
-1. **İşlevler** bölmesinde **Ekle**' yi seçin ve açılan listeden **Azure ML Studio** ' yi seçin. (Azure **ml hizmeti**değil, **Azure ML Studio**' yi seçtiğinizden emin olun.) **Yeni işlev** bölmesinde **Azure Machine Learning işlev ayarlarını el ile sağlayın** ve aşağıdaki bilgileri girin:
+1. **Iş topolojisi** altında **işlevler**' i seçin.
+1. **İşlevler** bölmesinde **Ekle**' yi seçin ve açılan listeden **Azure ML Studio** ' yi seçin. (Azure **ml hizmeti** değil, **Azure ML Studio**' yi seçtiğinizden emin olun.) **Yeni işlev** bölmesinde **Azure Machine Learning işlev ayarlarını el ile sağlayın** ve aşağıdaki bilgileri girin:
 
    **Işlev diğer adı**: ENTER `machinelearning` .
 
@@ -215,7 +215,7 @@ Bu bölümde, modeli doğrular, modele göre tahmine dayalı bir Web hizmeti aya
    WITH machinelearning AS (
       SELECT EventEnqueuedUtcTime, temperature, humidity, machinelearning(temperature, humidity) as result from [YourInputAlias]
    )
-   Select System.Timestamp time, CAST (result.[temperature] AS FLOAT) AS temperature, CAST (result.[humidity] AS FLOAT) AS humidity, CAST (result.[scored probabilities] AS FLOAT ) AS 'probabalities of rain'
+   Select System.Timestamp time, CAST (result.[temperature] AS FLOAT) AS temperature, CAST (result.[humidity] AS FLOAT) AS humidity, CAST (result.[scored probabilities] AS FLOAT ) AS 'probabalities of rain'
    Into [YourOutputAlias]
    From machinelearning
    ```

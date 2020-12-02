@@ -1,6 +1,6 @@
 ---
-title: Azure SYNAPSE Analytics 'e/verilerine veri kopyalama (eski adıyla SQL veri ambarı)
-description: Azure Data Factory kullanarak Azure SYNAPSE Analytics 'e/uygulamasına (eski adıyla SQL veri ambarı) veri kopyalamayı öğrenin
+title: Azure SYNAPSE Analytics 'e/verilerine veri kopyalama
+description: Azure Data Factory kullanarak Azure SYNAPSE Analytics 'e/verilerine veri kopyalamayı öğrenin
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 55582fb8c4fc80ab005a01ec015035963404e639
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 0d071599b72f6a71bdff815f514311fb87f53d5b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637420"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452358"
 ---
-# <a name="copy-data-to-and-from-azure-synapse-analytics-formerly-sql-data-warehouse-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) veri kopyalama
+# <a name="copy-data-to-and-from-azure-synapse-analytics-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SYNAPSE Analytics 'e ve veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
 > * [Sürüm 1](data-factory-azure-sql-data-warehouse-connector.md)
 > * [Sürüm 2 (geçerli sürüm)](../connector-azure-sql-data-warehouse.md)
@@ -42,7 +42,7 @@ Aşağıdaki veri depolarından verileri **Azure SYNAPSE Analytics 'e** kopyalay
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
 > [!TIP]
-> SQL Server veya Azure SQL veritabanındaki verileri Azure SYNAPSE Analytics 'e kopyalarken, tablo hedef depoda yoksa, Data Factory tabloyu kaynak veri deposundaki tablonun şemasını kullanarak otomatik olarak SYNAPSE Analytics 'te oluşturabilir. Ayrıntılar için bkz. [Otomatik tablo oluşturma](#auto-table-creation) .
+> SQL Server veya Azure SQL veritabanındaki verileri Azure SYNAPSE Analytics 'e kopyalarken, tablo hedef depoda yoksa, Data Factory tabloyu kaynak veri deposundaki tablonun şemasını kullanarak Azure SYNAPSE Analytics 'te otomatik olarak oluşturabilir. Ayrıntılar için bkz. [Otomatik tablo oluşturma](#auto-table-creation) .
 
 ## <a name="supported-authentication-type"></a>Desteklenen kimlik doğrulama türü
 Azure SYNAPSE Analytics Bağlayıcısı temel kimlik doğrulamasını destekler.
@@ -50,9 +50,9 @@ Azure SYNAPSE Analytics Bağlayıcısı temel kimlik doğrulamasını destekler.
 ## <a name="getting-started"></a>Başlarken
 Farklı araçlar/API 'Ler kullanarak Azure SYNAPSE Analytics 'e/verilerine veri taşıyan kopyalama etkinliği ile bir işlem hattı oluşturabilirsiniz.
 
-Azure SYNAPSE Analytics 'e/verilerine veri kopyalayan bir işlem hattı oluşturmanın en kolay yolu, veri kopyalama Sihirbazı 'nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir anlatım için bkz. [öğretici: verileri SYNAPSE Analytics 'e yükleme Data Factory](../load-azure-sql-data-warehouse.md) .
+Azure SYNAPSE Analytics 'e/verilerine veri kopyalayan bir işlem hattı oluşturmanın en kolay yolu, veri kopyalama Sihirbazı 'nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir anlatım için bkz. [öğretici: Azure SYNAPSE Analytics 'e veri yükleme Data Factory](../load-azure-sql-data-warehouse.md) .
 
-İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio** , **Azure PowerShell** , **Azure Resource Manager şablonu** , **.NET API** ve **REST API** . Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API** ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
@@ -193,14 +193,14 @@ Azure SYNAPSE Analytics PolyBase, kaynak olarak ve belirli dosya biçimi gereksi
 
 Gereksinimler karşılanmazsa, Azure Data Factory ayarları denetler ve veri taşıma için otomatik olarak BULKıNSERT mekanizmasına geri döner.
 
-1. **Kaynak bağlı hizmet** , **hizmet sorumlusu kimlik doğrulamasıyla** : **azurestorage** veya AzureDataLakeStore türünde.
-2. **Giriş veri kümesi** : **AzureBlob** veya **AzureDataLakeStore** ve Properties altındaki Biçim türü, `type` aşağıdaki yapılandırmalarda **orcformat** , **parquetformat** veya **TextFormat** ' dir:
+1. **Kaynak bağlı hizmet** , **hizmet sorumlusu kimlik doğrulamasıyla**: **azurestorage** veya AzureDataLakeStore türünde.
+2. **Giriş veri kümesi** : **AzureBlob** veya **AzureDataLakeStore** ve Properties altındaki Biçim türü, `type` aşağıdaki yapılandırmalarda **orcformat**, **parquetformat** veya **TextFormat** ' dir:
 
    1. `rowDelimiter`**\n** olmalıdır.
    2. `nullValue`**boş dizeye** ayarlanır ("") veya `treatEmptyAsNull` **true** olarak ayarlanır.
    3. `encodingName`, **varsayılan** değer olan **UTF-8** olarak ayarlanır.
    4. `escapeChar`, `quoteChar` , `firstRowAsHeader` , ve `skipLineCount` belirtilmedi.
-   5. `compression`**sıkıştırma** , **gzip** veya **söndür** olamaz.
+   5. `compression`**sıkıştırma**, **gzip** veya **söndür** olamaz.
 
       ```JSON
       "typeProperties": {

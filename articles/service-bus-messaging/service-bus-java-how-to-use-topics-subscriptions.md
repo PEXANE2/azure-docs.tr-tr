@@ -4,18 +4,18 @@ description: Bu hızlı başlangıçta, bir Azure Service Bus konuya ileti gönd
 ms.devlang: Java
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: 6a63e907e01174042f679c57e1ef0994ad2a11b9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ab0ba2bb2814ba12a49f4044cbbb7a0ce56f5fc8
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95909586"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452590"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-java"></a>Azure Service Bus konuya ileti gönderme ve aboneliklerden konuya ileti alma (Java)
 Bu hızlı başlangıçta, bir Azure Service Bus konuya ileti göndermek ve sonra bu konuya yönelik aboneliklerden ileti almak için Azure-Messaging-ServiceBus paketini kullanarak Java kodu yazın.
 
 > [!IMPORTANT]
-> Bu hızlı başlangıç, **önizlemede** olan yeni Azure-Messaging-ServiceBus paketini kullanır. Geçerli genel kullanıma açık (GA) Azure-ServiceBus paketini kullanan bir hızlı başlangıç için, [Azure-ServiceBus kullanarak Ileti gönderme ve alma](service-bus-java-how-to-use-topics-subscriptions-legacy.md).
+> Bu hızlı başlangıç, yeni Azure-mesajlaşma-ServiceBus paketini kullanır. Eski Azure-ServiceBus paketini kullanan bir hızlı başlangıç için bkz. [Azure-ServiceBus kullanarak Ileti gönderme ve alma](service-bus-java-how-to-use-topics-subscriptions-legacy.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -37,7 +37,7 @@ Azure Service Bus kitaplığına bir başvuru ekleyin. Service Bus için Java is
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-messaging-servicebus</artifactId>
-    <version>7.0.0-beta.7</version>
+    <version>7.0.0</version>
 </dependency>
 ```
 

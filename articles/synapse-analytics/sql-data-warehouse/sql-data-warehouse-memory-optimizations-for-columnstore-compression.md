@@ -1,6 +1,6 @@
 ---
-title: Columnstore dizin performansını iyileştirme
-description: Her rowgroup içindeki satır sayısını en üst düzeye çıkarmak için bellek gereksinimlerini azaltın veya kullanılabilir belleği artırın.
+title: Adanmış SQL havuzu için columnstore dizin performansını iyileştirme
+description: Adanmış SQL havuzundaki her bir satır grubu içindeki satır sayısını en üst düzeye çıkarmak için bellek gereksinimlerini azaltın veya kullanılabilir belleği artırın.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 5308599f43788b35dbe278ddbbea2253c2f94cb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6984ad41c07f7790a746dbd197c18dce2aa83e2f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797777"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453713"
 ---
-# <a name="maximizing-rowgroup-quality-for-columnstore"></a>Columnstore için satır grubu kalitesini en üst düzeye çıkarma
+# <a name="maximizing-rowgroup-quality-for-columnstore-indexes-in-dedicated-sql-pool"></a>Adanmış SQL havuzundaki columnstore dizinleri için satır grubu kalitesini en üst düzeye çıkarma 
 
 Rowgroup kalitesi bir rowgroup 'taki satır sayısına göre belirlenir. Kullanılabilir belleğin artırılması, bir columnstore dizininin her rowgroup 'ta sıkıştıran satır sayısını en üst düzeye çıkarabilir.  Bu yöntemleri, columnstore dizinleri için sıkıştırma oranlarını ve sorgu performansını geliştirmek için kullanın.
 
@@ -99,7 +99,7 @@ Bir satır grubu 'un sıkıştırılması için gereken en fazla bellek yaklaş�
 
 Uzun dizeler, metin sıkıştırmak için tasarlanan bir sıkıştırma yöntemiyle sıkıştırılır. Bu sıkıştırma yöntemi metin desenleri depolamak için bir *Sözlük* kullanır. Bir sözlüğün en büyük boyutu 16 MB 'tır. Rowgroup 'taki her Long dize sütunu için yalnızca bir sözlük bulunur.
 
-Columnstore bellek gereksinimleriyle ilgili ayrıntılı bir tartışma için bkz. video [SYNAPSE SQL havuzu ölçeklendirme: yapılandırma ve kılavuz](https://channel9.msdn.com/Events/Ignite/2016/BRK3291).
+Columnstore bellek gereksinimleriyle ilgili ayrıntılı bir tartışma için bkz. video [ADANMıŞ SQL havuzu ölçeklendirme: yapılandırma ve kılavuz](https://channel9.msdn.com/Events/Ignite/2016/BRK3291).
 
 ## <a name="ways-to-reduce-memory-requirements"></a>Bellek gereksinimlerini azaltmanın yolları
 
@@ -122,7 +122,7 @@ Dize sıkıştırması için ek bellek gereksinimleri:
 
 ### <a name="avoid-over-partitioning"></a>Aşırı Bölümlendirmeyi önleyin
 
-Columnstore dizinleri bölüm başına bir veya daha fazla RowGroups oluşturur. Azure SYNAPSE Analytics 'te SQL havuzu için, veriler dağıtıldığından ve her bir dağıtım bölümlenmiş olduğundan bölüm sayısı hızla artar.
+Columnstore dizinleri bölüm başına bir veya daha fazla RowGroups oluşturur. Azure SYNAPSE Analytics 'te adanmış SQL havuzu için, veriler dağıtıldığından ve her bir dağıtım bölümlenmiş olduğundan bölüm sayısı hızla artar.
 
 Tabloda çok fazla bölüm varsa, RowGroups doldurmanız için yeterli sayıda satır olmayabilir. Satır eksikliği, sıkıştırma sırasında bellek baskısı oluşturmaz. Ancak, en iyi columnstore sorgu performansına ulaşmayan RowGroups 'a da yol açar.
 
@@ -165,4 +165,4 @@ Bir yük sorgusuna yönelik bellek iznini artırmak için, DWU sayısını artı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-SQL havuzu performansını artırmanın daha fazla yolunu öğrenmek için bkz. [performansa genel bakış](cheat-sheet.md).
+Adanmış SQL havuzunun performansını artırmanın daha fazla yolunu öğrenmek için bkz. [performansa genel bakış](cheat-sheet.md).

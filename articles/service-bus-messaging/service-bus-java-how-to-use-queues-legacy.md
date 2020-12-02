@@ -5,12 +5,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 68d8270c4ca3cff07f3a70c6022b963f750ad4e9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 774f9e485c58712ea8648a148c92b6f9ef6a58c0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022123"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452620"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Hızlı başlangıç: ileti göndermek ve almak için Java ile Azure Service Bus kuyrukları kullanma
 
@@ -18,7 +18,8 @@ ms.locfileid: "96022123"
 Bu öğreticide, Azure Service Bus kuyruğuna ileti göndermek ve ileti almak için Java uygulamaları oluşturmayı öğreneceksiniz. 
 
 > [!WARNING]
->  Bu hızlı başlangıç, genel kullanıma açık (GA) Azure-ServiceBus paketini kullanır. **Önizleme** aşamasında olan yeni Azure-mesajlaşma-ServiceBus paketini kullanan bir hızlı başlangıç için bkz. [Azure-mesajlaşma-ServiceBus kullanarak ileti gönderme ve alma](service-bus-java-how-to-use-queues.md). 
+>  Bu hızlı başlangıçta eski Azure-ServiceBus paketleri kullanılmaktadır. En son Azure-mesajlaşma-ServiceBus paketini kullanan bir hızlı başlangıç için bkz. [Azure-mesajlaşma-ServiceBus kullanarak Ileti gönderme ve alma](service-bus-java-how-to-use-queues.md). 
+
 
 ## <a name="prerequisites"></a>Önkoşullar
 1. Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. [MSDN abone avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)için kaydolabilirsiniz.

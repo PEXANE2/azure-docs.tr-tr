@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: d013af82a862f1bc6b5324e7523aeea5593a4f94
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 31ae5b780bf451e29a97f04202f804db27fc387a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030671"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452939"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>FHıR için Azure API 'SI hakkında sık sorulan sorular
 
@@ -31,7 +31,7 @@ Evet, veriler Azure 'da yönetilen veritabanlarında depolanır. FHıR için Azu
 Şu anda kimlik sağlayıcısı olarak Microsoft Azure Active Directory destekliyoruz.
 
 ### <a name="what-is-the-recovery-point-objective-rpo-for-the-azure-api-for-fhir"></a>FHıR için Azure API 'SI için kurtarma noktası hedefi (RPO) nedir?
-FHıR için Azure API, kalıcılık sağlayıcımız olarak Cosmos DB tarafından desteklenir. Bu nedenle, hizmet için RPO [Cosmos DB (tek bölge)](https://docs.microsoft.com/azure/cosmos-db/consistency-levels) eşittir ve 240 dakika <.
+FHıR için Azure API, kalıcılık sağlayıcımız olarak Cosmos DB tarafından desteklenir. Bu nedenle, hizmet için RPO [Cosmos DB (tek bölge)](../cosmos-db/consistency-levels.md) eşittir ve 240 dakika <.
 
 ### <a name="what-fhir-version-do-you-support"></a>Hangi FHıR sürümünü destekliyoruz?
 

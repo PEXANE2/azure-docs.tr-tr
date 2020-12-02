@@ -8,27 +8,27 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 38c7072472a13d7fe3d529933ca17a51e6a86733
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 3e4d0513808cdc44fc71e182a07fa6b050d182ee
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577813"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452505"
 ---
 # <a name="plan-a-solution-template-for-an-azure-application-offer"></a>Azure Uygulama teklifi için bir çözüm şablonu planlayın
 
 Bu makalede, bir Azure Uygulama teklifi için çözüm şablonu planı yayımlama gereksinimleri açıklanmaktadır. Çözüm şablonu planı, Azure Uygulama teklifleri tarafından desteklenen iki plan türünden biridir. Bu iki plan türü arasındaki fark hakkında daha fazla bilgi için bkz. [plan türleri](plan-azure-application-offer.md#plans). Daha önce yapmadıysanız, [bir Azure Uygulama teklifi planı](plan-azure-application-offer.md)makalesini okuyun.
 
-Çözüm altyapısı plan türü, çözüm altyapınızı otomatik olarak dağıtmak için bir [Azure Resource Manager şablonu (ARM şablonu)](/azure/azure-resource-manager/templates/overview) gerektirir.
+Çözüm altyapısı plan türü, çözüm altyapınızı otomatik olarak dağıtmak için bir [Azure Resource Manager şablonu (ARM şablonu)](../azure-resource-manager/templates/overview.md) gerektirir.
 
 ## <a name="solution-template-requirements"></a>Çözüm şablonu gereksinimleri
 
 | Gereksinimler | Ayrıntılar |
 | ------------ | ------------- |
 | Faturalandırma ve ölçüm | Çözüm şablonu planları transactable değildir, ancak Microsoft ticari Market aracılığıyla faturalandırılan ücretli VM tekliflerini dağıtmak için kullanılabilirler. Çözümün ARM şablonunun dağıttığı kaynaklar müşterinin Azure aboneliğinde ayarlanır. Kullandıkça Öde sanal makineleri, müşteri ile Microsoft aracılığıyla gerçekleştirilir ve müşterinin Azure aboneliği aracılığıyla faturalandırılır. <br><br> Kendi lisansını getir (KLG) faturanızı, Microsoft 'un müşteri aboneliğinde tahakkuk eden altyapı maliyetleri olmasına karşın, yazılım lisans ücretlerinizi müşteriyle doğrudan Transact. |
-| Azure ile uyumlu sanal sabit disk (VHD) | VM 'Ler Windows veya Linux üzerinde oluşturulmalıdır. Daha fazla bilgi için bkz:<ul><li>[Azure VM teknik varlığı oluşturma](/azure/marketplace/partner-center-portal/vm-certification-issues-solutions#how-to-address-a-vulnerability-or-exploit-in-a-vm-offer.md) (Windows VHD 'ler için)</li><li>[Azure 'da desteklenen Linux dağıtımları](/azure/virtual-machines/linux/endorsed-distros) (Linux VHD 'ler için).</li></ul> |
+| Azure ile uyumlu sanal sabit disk (VHD) | VM 'Ler Windows veya Linux üzerinde oluşturulmalıdır. Daha fazla bilgi için bkz.<ul><li>[Azure VM teknik varlığı oluşturma](./azure-vm-create-certification-faq.md#address-a-vulnerability-or-an-exploit-in-a-vm-offer) (Windows VHD 'ler için)</li><li>[Azure 'da desteklenen Linux dağıtımları](../virtual-machines/linux/endorsed-distros.md) (Linux VHD 'ler için).</li></ul> |
 | Müşteri kullanımı ilişkilendirmesi | Azure Market 'te yayımlanan tüm çözüm şablonlarında müşteri kullanım attributıon özelliğinin etkinleştirilmesi gerekir. Müşteri kullanımı atımı ve nasıl etkinleştirileceği hakkında daha fazla bilgi için bkz. [Azure iş ortağı müşteri kullanımı atısyonu](azure-partner-customer-usage-attribution.md). |
-| Yönetilen diskleri kullanma | [Yönetilen diskler](/azure/virtual-machines/windows/managed-disks-overview) , Azure 'da hizmet olarak altyapı (IaaS) VM 'lerinin kalıcı diskleri için varsayılan seçenektir. Çözüm şablonlarında yönetilen diskleri kullanmanız gerekir.<ul><li>Çözüm şablonlarınızı güncelleştirmek için [Azure Resource Manager şablonlarda yönetilen diskleri kullanma](/azure/virtual-machines/using-managed-disks-template-deployments)bölümündeki yönergeleri izleyin ve sağlanan [örnekleri](https://github.com/Azure/azure-quickstart-templates)kullanın.</li><li>VHD 'YI Azure Marketi 'nde bir görüntü olarak yayımlamak için, yönetilen disklerin temel VHD 'sini [Azure PowerShell](/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd) veya [Azure CLI](/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-vhd) kullanarak bir depolama hesabına aktarın.</ul> |
+| Yönetilen diskleri kullanma | [Yönetilen diskler](../virtual-machines/managed-disks-overview.md) , Azure 'da hizmet olarak altyapı (IaaS) VM 'lerinin kalıcı diskleri için varsayılan seçenektir. Çözüm şablonlarında yönetilen diskleri kullanmanız gerekir.<ul><li>Çözüm şablonlarınızı güncelleştirmek için [Azure Resource Manager şablonlarda yönetilen diskleri kullanma](../virtual-machines/using-managed-disks-template-deployments.md)bölümündeki yönergeleri izleyin ve sağlanan [örnekleri](https://github.com/Azure/azure-quickstart-templates)kullanın.</li><li>VHD 'YI Azure Marketi 'nde bir görüntü olarak yayımlamak için, yönetilen disklerin temel VHD 'sini [Azure PowerShell](../virtual-machines/scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd.md) veya [Azure CLI](../virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-vhd.md) kullanarak bir depolama hesabına aktarın.</ul> |
 | Dağıtım paketi | Müşterilerin planınızı dağıtmasını sağlayacak bir dağıtım paketi gerekir. Aynı teknik yapılandırmayı gerektiren birden çok plan oluşturursanız, aynı plan paketini kullanabilirsiniz. Ayrıntılar için bkz. sonraki bölüm: dağıtım paketi. |
 |||
 
@@ -38,8 +38,8 @@ Dağıtım paketi, bu plan için gereken tüm şablon dosyalarını ve aynı zam
 
 Tüm Azure uygulamalarının bu iki dosyayı bir. zip arşivi kök klasörüne eklemesi gerekir:
 
-- [mainTemplate.js](/azure/azure-resource-manager/managed-applications/publish-service-catalog-app?tabs=azure-powershell#create-the-arm-template.md)adlı kaynak yöneticisi şablon dosyası. Bu şablon, müşterinin Azure aboneliğine dağıtılacak kaynakları tanımlar. Kaynak Yöneticisi şablonlarının örnekleri için bkz. [Azure hızlı başlangıç şablonları Galerisi](https://azure.microsoft.com/documentation/templates/) veya ilgili [GitHub: Azure Resource Manager hızlı başlangıç şablonları](https://github.com/azure/azure-quickstart-templates) deposu.
-- Azure uygulama oluşturma deneyimi için [createUiDefinition.js](/azure/azure-resource-manager/managed-application-createuidefinition-overview)adlı bir kullanıcı arabirimi tanımı. Kullanıcı arayüzünde tüketicilerin parametre değerleri sağlamasına olanak tanıyan öğeleri belirlersiniz.
+- [mainTemplate.js](../azure-resource-manager/managed-applications/publish-service-catalog-app.md?tabs=azure-powershell#create-the-arm-template)adlı kaynak yöneticisi şablon dosyası. Bu şablon, müşterinin Azure aboneliğine dağıtılacak kaynakları tanımlar. Kaynak Yöneticisi şablonlarının örnekleri için bkz. [Azure hızlı başlangıç şablonları Galerisi](https://azure.microsoft.com/documentation/templates/) veya ilgili [GitHub: Azure Resource Manager hızlı başlangıç şablonları](https://github.com/azure/azure-quickstart-templates) deposu.
+- Azure uygulama oluşturma deneyimi için [createUiDefinition.js](../azure-resource-manager/managed-applications/create-uidefinition-overview.md)adlı bir kullanıcı arabirimi tanımı. Kullanıcı arayüzünde tüketicilerin parametre değerleri sağlamasına olanak tanıyan öğeleri belirlersiniz.
 
 Desteklenen en büyük dosya boyutu:
 
@@ -50,7 +50,7 @@ Tüm yeni Azure Uygulama teklifleri Ayrıca bir [Azure iş ortağı müşteri ku
 
 ## <a name="azure-regions"></a>Azure bölgeleri
 
-Planınızı Azure ortak bölgesi, Azure Kamu bölgesi veya her ikisine de yayımlayabilirsiniz. [Azure Kamu](/azure/azure-government/documentation-government-manage-marketplace-partners)'da yayımlamadan önce, belirli uç noktalar farklı olabileceğinden planınızı ortamda test edin ve doğrulayın. Planınızı ayarlamak ve test etmek için [Microsoft Azure Kamu deneme](https://azure.microsoft.com/global-infrastructure/government/request/)sürümünden bir deneme hesabı isteyin.
+Planınızı Azure ortak bölgesi, Azure Kamu bölgesi veya her ikisine de yayımlayabilirsiniz. [Azure Kamu](../azure-government/documentation-government-manage-marketplace-partners.md)'da yayımlamadan önce, belirli uç noktalar farklı olabileceğinden planınızı ortamda test edin ve doğrulayın. Planınızı ayarlamak ve test etmek için [Microsoft Azure Kamu deneme](https://azure.microsoft.com/global-infrastructure/government/request/)sürümünden bir deneme hesabı isteyin.
 
 Yayımcı olarak tüm uyumluluk denetimleri, güvenlik ölçüleri ve en iyi uygulamalardan sorumludur. Azure Kamu fiziksel olarak yalıtılmış veri merkezleri ve ağlar (yalnızca ABD 'de bulunur) kullanır.
 

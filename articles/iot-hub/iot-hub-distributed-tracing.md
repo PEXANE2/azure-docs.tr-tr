@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - fasttrack-edit
 - iot
-ms.openlocfilehash: efc4d07e9e3a64a36f2ecf3fa0000379bef380f9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f8d37cf8f23de1d0535c7a9ff4a95ac217eddf74
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538587"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452388"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Dağıtılmış izleme (Önizleme) ile Azure IoT cihazdan buluta iletileri izleme
 
@@ -55,17 +55,17 @@ Bu bölümde, dağıtılmış izleme özniteliklerini (bağıntı kimlikleri ve 
 
 1. [Azure Portal](https://portal.azure.com/)IoT Hub 'ınıza gidin.
 
-1. IoT Hub 'ınızın sol bölmesinde, **izleme** bölümüne gidin ve **Tanılama ayarları** ' na tıklayın.
+1. IoT Hub 'ınızın sol bölmesinde, **izleme** bölümüne gidin ve **Tanılama ayarları**' na tıklayın.
 
-1. **Tanılama ayarı Ekle** ' ye tıklayın.
+1. **Tanılama ayarı Ekle**' ye tıklayın.
 
-1. **Ad** alanına, yeni bir tanılama ayarı için bir ad girin. Örneğin, **Distributedtracingsettings** .
+1. **Ad** alanına, yeni bir tanılama ayarı için bir ad girin. Örneğin, **Distributedtracingsettings**.
 
 1. Günlüğün nereye gönderileceğini belirlemek için aşağıdaki seçeneklerden birini veya daha fazlasını seçin:
 
-    - **Depolama hesabına Arşivle** : bir depolama hesabını günlüğe kaydetme bilgilerini içerecek şekilde yapılandırın.
-    - **Bir olay hub 'ına akış** : Olay Hub 'ını günlüğe kaydetme bilgilerini içerecek şekilde yapılandırın.
-    - **Log Analytics gönder** : Günlük Analizi çalışma alanını günlüğe kaydetme bilgilerini içerecek şekilde yapılandırın.
+    - **Depolama hesabına Arşivle**: bir depolama hesabını günlüğe kaydetme bilgilerini içerecek şekilde yapılandırın.
+    - **Bir olay hub 'ına akış**: Olay Hub 'ını günlüğe kaydetme bilgilerini içerecek şekilde yapılandırın.
+    - **Log Analytics gönder**: Günlük Analizi çalışma alanını günlüğe kaydetme bilgilerini içerecek şekilde yapılandırın.
 
 1. **Günlük** bölümünde, bilgilerini günlüğe kaydetmek istediğiniz işlemleri seçin.
 
@@ -196,19 +196,19 @@ Buluttan izlenecek ileti yüzdesini değiştirmek için cihaz ikizi güncelleşt
 
 ### <a name="update-using-the-portal"></a>Portalı kullanarak güncelleştirme
 
-1. [Azure Portal](https://portal.azure.com/)' de IoT Hub 'ınıza giderek **IoT cihazları** ' na tıklayın.
+1. [Azure Portal](https://portal.azure.com/)' de IoT Hub 'ınıza giderek **IoT cihazları**' na tıklayın.
 
 1. Cihazınıza tıklayın.
 
-1. **Dağıtılmış Izlemeyi etkinleştir (Önizleme)** bölümüne bakın ve **Etkinleştir** ' i seçin.
+1. **Dağıtılmış Izlemeyi etkinleştir (Önizleme)** bölümüne bakın ve **Etkinleştir**' i seçin.
 
     ![Azure portal 'da dağıtılmış izlemeyi etkinleştir](./media/iot-hub-distributed-tracing/azure-portal.png)
 
 1. %0 ile %100 arasında bir **örnekleme oranı** seçin.
 
-1. **Kaydet** ’e tıklayın.
+1. **Kaydet**’e tıklayın.
 
-1. Birkaç saniye bekleyin ve **yenileme** ' ye basın, sonra cihaz tarafından başarıyla onaylandıysanız, onay işareti içeren bir eşitleme simgesi belirir.
+1. Birkaç saniye bekleyin ve **yenileme**' ye basın, sonra cihaz tarafından başarıyla onaylandıysanız, onay işareti içeren bir eşitleme simgesi belirir.
 
 1. Telemetri iletisi uygulamasının konsol penceresine geri dönün. İle gönderilen iletileri `tracestate` uygulama özelliklerinde görürsünüz.
 
@@ -226,7 +226,7 @@ Buluttan izlenecek ileti yüzdesini değiştirmek için cihaz ikizi güncelleşt
 
     ![Azure IoT Hub uzantısı 'nda dağıtılmış izlemeyi etkinleştir](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-1.png)
 
-1. Açılan pencerede **Etkinleştir** ' i seçin ve ardından ENTER tuşuna basarak örnekleme oranı olarak 100 ' i doğrulayın.
+1. Açılan pencerede **Etkinleştir**' i seçin ve ardından ENTER tuşuna basarak örnekleme oranı olarak 100 ' i doğrulayın.
 
     ![Örnekleme modunu Güncelleştir](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-2.png)
 
@@ -272,7 +272,7 @@ AzureDiagnostics
 
 Log Analytics gösterildiği gibi örnek Günlükler:
 
-| TimeGenerated | OperationName | Kategori | Düzey | CorrelationId | DurationMs | Özellikler |
+| TimeGenerated | OperationName | Category | Level | CorrelationId | DurationMs | Özellikler |
 |--------------------------|---------------|--------------------|---------------|---------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | 2018-02-22T03:28:28.633 Z | DiagnosticIoTHubD2C | Distributedizleme | Bilgilendirici | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"DeviceID": "AZ3166", "messageSize": "96", "callerLocalTimeUtc": "2018-02-22T03:27:28.633 Z", "calleeLocalTimeUtc": "2018-02-22T03:27:28.687 Z"} |
 | 2018-02-22T03:28:38.633 Z | DiagnosticIoTHubIngress | Distributedizleme | Bilgilendirici | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled": "false", "Parentspanıd": "0144d2590aacd909"} |
@@ -295,7 +295,7 @@ Aşağıdaki görüntüde, üç yönlendirme uç noktası ile uygulama haritası
 
 ### <a name="context"></a>Bağlam
 
-Kendi [başvuru mimarimiz](https://aka.ms/iotrefarchitecture) (yalnızca İngilizce) dahil olmak üzere birçok IoT çözümü, genellikle [mikro hizmet mimarisinin](/azure/architecture/microservices/)bir türevini izler. IoT çözümü daha karmaşık bir şekilde artdıkça, bir düzine veya daha fazla mikro hizmet kullanarak sonlandırın. Bu mikro hizmetler Azure 'dan gelebilir veya olmayabilir. IoT iletilerinin bırakılmasını veya yavaşlamasını zor hale gelebileceği işaret. Örneğin, 5 farklı Azure hizmeti ve 1500 etkin cihaz kullanan bir IoT çözümünüz vardır. Her cihaz 10 cihazdan buluta ileti/saniye gönderir (Toplam 15.000 ileti/saniye), ancak Web uygulamanızın yalnızca 10.000 mesaj/saniye gördüğü fark edersiniz. Sorun nerede? Fiprimi nasıl bulabilirim?
+Kendi [başvuru mimarimiz](/azure/architecture/reference-architectures/iot) (yalnızca İngilizce) dahil olmak üzere birçok IoT çözümü, genellikle [mikro hizmet mimarisinin](/azure/architecture/microservices/)bir türevini izler. IoT çözümü daha karmaşık bir şekilde artdıkça, bir düzine veya daha fazla mikro hizmet kullanarak sonlandırın. Bu mikro hizmetler Azure 'dan gelebilir veya olmayabilir. IoT iletilerinin bırakılmasını veya yavaşlamasını zor hale gelebileceği işaret. Örneğin, 5 farklı Azure hizmeti ve 1500 etkin cihaz kullanan bir IoT çözümünüz vardır. Her cihaz 10 cihazdan buluta ileti/saniye gönderir (Toplam 15.000 ileti/saniye), ancak Web uygulamanızın yalnızca 10.000 mesaj/saniye gördüğü fark edersiniz. Sorun nerede? Fiprimi nasıl bulabilirim?
 
 ### <a name="distributed-tracing-pattern-in-microservice-architecture"></a>Mikro hizmet mimarisinde dağıtılmış izleme deseninin
 

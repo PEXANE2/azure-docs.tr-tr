@@ -1,26 +1,26 @@
 ---
 title: Eğitim Azure Data Lake Storage verileri yükleme
-description: SYNAPSE SQL için Azure Data Lake Storage 'den veri yüklemek üzere COPY ifadesini kullanın.
+description: Adanmış SQL havuzları için Azure Data Lake Storage verileri yüklemek üzere COPY ifadesini kullanın.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 06/07/2020
+ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 73d19df546f2ff0e9e9180c94567bd334b44bedd
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 4886cf6c24e7e96676b9ca5e74b431685cd5a8bb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92482817"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452867"
 ---
-# <a name="load-data-from-azure-data-lake-storage-for-synapse-sql"></a>SYNAPSE SQL için Azure Data Lake Storage verileri yükleme
+# <a name="load-data-from-azure-data-lake-storage-into-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure Data Lake Storage verileri Azure SYNAPSE Analytics 'te adanmış SQL havuzlarına yükleme
 
-Bu kılavuzda, Azure Data Lake Storage verileri yüklemek için [Copy ifadesinin](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) nasıl kullanılacağı özetlenmektedir. Tüm kimlik doğrulama yöntemlerinde COPY ifadesini kullanmayla ilgili hızlı örnekler için aşağıdaki belgeleri ziyaret edin: [SYNAPSE SQL kullanarak güvenli bir şekilde veri yükleme](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples).
+Bu kılavuzda, Azure Data Lake Storage verileri yüklemek için [Copy ifadesinin](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) nasıl kullanılacağı özetlenmektedir. Tüm kimlik doğrulama yöntemlerinde COPY ifadesini kullanmayla ilgili hızlı örnekler için aşağıdaki belgeleri ziyaret edin: [ADANMıŞ SQL havuzlarını kullanarak verileri güvenli bir şekilde yükleyin](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples).
 
 > [!NOTE]  
 > COPY ifadesinde geri bildirim veya rapor sorunları sağlamak için şu dağıtım listesine bir e-posta gönderin: sqldwcopypreview@service.microsoft.com .
@@ -38,12 +38,12 @@ Bu öğreticiye başlamadan önce, [SQL Server Management Studio](/sql/ssms/down
 
 Bu öğreticiyi çalıştırmak için şunlar gerekir:
 
-* Bir SQL Havuzu. Bkz. [SQL havuzu oluşturma ve verileri sorgulama](create-data-warehouse-portal.md).
+* Adanmış bir SQL Havuzu. Bkz. [adanmış BIR SQL havuzu oluşturma ve verileri sorgulama](create-data-warehouse-portal.md).
 * Data Lake Storage hesabı. Bkz. [Azure Data Lake Storage kullanmaya başlama](../../data-lake-store/data-lake-store-get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Bu depolama hesabında, yüklemek için şu kimlik bilgilerinden birini yapılandırmanız veya belirtmeniz gerekir: depolama hesabı anahtarı, paylaşılan erişim imzası (SAS) anahtarı, bir Azure dizin uygulama kullanıcısı veya depolama hesabına uygun Azure rolüne sahip bir AAD kullanıcısı.
 
 ## <a name="create-the-target-table"></a>Hedef tabloyu oluşturma
 
-SQL havuzunuza bağlanın ve yüklenecek hedef tabloyu oluşturun. Bu örnekte, bir ürün boyut tablosu oluşturacağız.
+Adanmış SQL havuzunuza bağlanın ve yüklenecek hedef tabloyu oluşturun. Bu örnekte, bir ürün boyut tablosu oluşturacağız.
 
 ```sql
 -- A: Create the target table
@@ -65,7 +65,7 @@ WITH
 
 ## <a name="create-the-copy-statement"></a>COPY ifadesini oluşturma
 
-SQL havuzunuza bağlanın ve COPY ifadesini çalıştırın. Örneklerin tüm listesi için aşağıdaki belgeleri ziyaret edin: [SYNAPSE SQL kullanarak güvenli bir şekilde veri yükleme](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples).
+SQL adanmış havuzunuza bağlanın ve COPY ifadesini çalıştırın. Örneklerin tamamen listesi için aşağıdaki belgeleri ziyaret edin: [ADANMıŞ SQL havuzlarını kullanarak verileri güvenli bir şekilde yükleyin](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-bulk-load-copy-tsql-examples).
 
 ```sql
 -- B: Create and execute the COPY statement

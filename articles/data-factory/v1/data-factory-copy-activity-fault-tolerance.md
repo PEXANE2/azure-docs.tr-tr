@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 742c69709eee19a37abdb3e5330cd7fb8ce315b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65584b2a6a3bdfbb863c26dac688b20279c4b54d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89436400"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452288"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>Uyumsuz satırları atlayarak kopyalama etkinliğine hata toleransı ekleyin
 
@@ -48,7 +48,7 @@ Kopyalama etkinliği, uyumsuz verileri saptamak, atlamak ve günlüğe kaydetmek
     Örneğin: bir SQL Server 'dan SQL veritabanı 'na veri kopyalama. Birincil anahtar, havuz SQL veritabanında tanımlanmıştır, ancak kaynak SQL Server 'da böyle bir birincil anahtar tanımlanmamıştır. Kaynakta bulunan yinelenen satırlar havuza kopyalanamıyor. Kopyalama etkinliği yalnızca kaynak verilerin ilk satırını havuza kopyalar. Yinelenen birincil anahtar değerini içeren sonraki kaynak satırlar uyumsuz olarak algılanır ve atlanır.
 
 >[!NOTE]
->Kopyalama etkinliği, [Azure SYNAPSE Analytics (eski ADıYLA SQL veri ambarı) PolyBase](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics) veya [Amazon Redshift Unload](data-factory-amazon-redshift-connector.md#use-unload-to-copy-data-from-amazon-redshift)dahil olmak üzere dış veri yükleme mekanizmasını çağırmak üzere yapılandırıldığında bu özellik uygulanmaz. PolyBase kullanarak Azure SYNAPSE Analytics 'e veri yüklemek için, kopyalama etkinliğinde "[Polybasesettings](data-factory-azure-sql-data-warehouse-connector.md#sqldwsink)" belirterek PolyBase 'in yerel hata toleransı desteğini kullanın.
+>Kopyalama etkinliği, [Azure SYNAPSE Analytics PolyBase](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics) veya [Amazon Redshift Unload](data-factory-amazon-redshift-connector.md#use-unload-to-copy-data-from-amazon-redshift)dahil olmak üzere dış veri yükleme mekanizmasını çağırmak üzere yapılandırıldığında bu özellik uygulanmaz. PolyBase kullanarak Azure SYNAPSE Analytics 'e veri yüklemek için, kopyalama etkinliğinde "[Polybasesettings](data-factory-azure-sql-data-warehouse-connector.md#sqldwsink)" belirterek PolyBase 'in yerel hata toleransı desteğini kullanın.
 
 ## <a name="configuration"></a>Yapılandırma
 Aşağıdaki örnek, kopyalama etkinliğinde uyumsuz satırları atlamayı yapılandırmak için bir JSON tanımı sağlar:

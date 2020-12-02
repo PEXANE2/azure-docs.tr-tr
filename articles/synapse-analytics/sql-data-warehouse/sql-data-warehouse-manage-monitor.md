@@ -1,6 +1,6 @@
 ---
-title: DMVs kullanarak SQL havuzu iş yükünüzü izleme
-description: DMVs kullanarak Azure SYNAPSE Analytics SQL havuzu iş yükünüzü ve sorgu yürütmeyi izlemeyi öğrenin.
+title: DMVs kullanarak adanmış SQL havuzu iş yükünüzü izleme
+description: Azure SYNAPSE Analytics adanmış SQL havuzu iş yükünüzü ve DMVs kullanarak sorgu yürütmeyi izlemeyi öğrenin.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 03/24/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: synapse-analytics
-ms.openlocfilehash: 70ce0d6aada2b03646500720b0eba980a1f2d8f8
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 1992c3d525fc1f5a098e1969887a752233d47990
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515738"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453803"
 ---
-# <a name="monitor-your-azure-synapse-analytics-sql-pool-workload-using-dmvs"></a>DMVs kullanarak Azure SYNAPSE Analytics SQL havuzu iş yükünüzü izleme
+# <a name="monitor-your-azure-synapse-analytics-dedicated-sql-pool-workload-using-dmvs"></a>DMVs kullanarak Azure SYNAPSE Analytics adanmış SQL havuzu iş yükünüzü izleme
 
 Bu makalede, SQL havuzunda sorgu yürütmeyi araştırma dahil olmak üzere iş yükünüzü izlemek için dinamik yönetim görünümlerinin (DMVs) nasıl kullanılacağı açıklanır.
 
@@ -102,8 +102,8 @@ Bir DSQL planı beklenenden uzun sürüyorsa, nedeni çok sayıda DSQL adımı o
 
 Tek bir adım hakkında daha fazla ayrıntı araştırmak için, uzun süreli sorgu adımının *operation_type* sütunu ve **adım dizini**' ni aklınızda koyun:
 
-* **SQL işlemleri**için adım 3 ile devam edin: Onoperation, Remoteoperation, ReturnOperation.
-* **Veri taşıma işlemleri**için 4. adım ile devam edin: karıştırılmış Limoveoperation, Yayınmoveoperation, Kırmoveoperation, Partitionmoveoperation, Moveoperation, CopyOperation.
+* **SQL işlemleri** için adım 3 ile devam edin: Onoperation, Remoteoperation, ReturnOperation.
+* **Veri taşıma işlemleri** için 4. adım ile devam edin: karıştırılmış Limoveoperation, Yayınmoveoperation, Kırmoveoperation, Partitionmoveoperation, Moveoperation, CopyOperation.
 
 ### <a name="step-3-investigate-sql-on-the-distributed-databases"></a>3. Adım: dağıtılmış veritabanlarında SQL 'i araştırın
 
@@ -176,7 +176,7 @@ WHERE waits.request_id = 'QID####'
 ORDER BY waits.object_name, waits.object_type, waits.state;
 ```
 
-Sorgu başka bir sorgudan kaynak üzerinde etkin bir şekilde bekliyorsa, durum **AcquireResources**olur.  Sorgunun tüm gerekli kaynakları varsa, durum **verilecektir**.
+Sorgu başka bir sorgudan kaynak üzerinde etkin bir şekilde bekliyorsa, durum **AcquireResources** olur.  Sorgunun tüm gerekli kaynakları varsa, durum **verilecektir**.
 
 ## <a name="monitor-tempdb"></a>Tempdb 'yi izleme
 

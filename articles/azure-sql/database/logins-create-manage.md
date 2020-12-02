@@ -13,19 +13,19 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 03/23/2020
-ms.openlocfilehash: 940ea0ac471604b22c64dc008eebd8b580121cf7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: d03bce1566d4f56a576c980723571f587296236f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782748"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452420"
 ---
-# <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>SQL veritabanı, SQL yönetilen örneği ve Azure SYNAPSE Analytics 'e veritabanı erişimi verme
+# <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>SQL Veritabanı’na, SQL Yönetilen Örneği’ne ve Azure Synapse Analytics’e veritabanı erişimini yetkilendirme
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Bu makalede şunları öğreneceksiniz:
 
-- Kullanıcıların yönetim görevleri gerçekleştirmesini ve bu veritabanlarında depolanan verilere erişmesini sağlamak için Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) yapılandırma seçenekleri.
+- Kullanıcıların yönetim görevleri gerçekleştirmesini ve bu veritabanlarında depolanan verilere erişmesini sağlamak için Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE Analytics 'i yapılandırma seçenekleri.
 - İlk olarak yeni bir sunucu oluşturulduktan sonra erişim ve yetkilendirme yapılandırması.
 - Ana veritabanına ve Kullanıcı hesaplarına oturum açma bilgileri ve Kullanıcı hesapları ekleme ve ardından bu hesaplara yönetici izinleri verme.
 - Kullanıcı veritabanlarına, oturum açmalar veya dahil edilen kullanıcı hesaplarıyla ilişkili kullanıcı hesapları ekleme.
@@ -46,7 +46,7 @@ Bir Kullanıcı bir veritabanına bağlanmaya çalıştığında, bir kullanıc�
 
   Bu kimlik doğrulama yöntemiyle kullanıcı, bir kullanıcı hesabı adı ve hizmetin Azure Active Directory (Azure AD) ' de depolanan kimlik bilgisi bilgilerini kullandığı istekleri gönderir.
 
-**Oturum açmalar ve kullanıcılar** : bir veritabanındaki bir kullanıcı hesabı, ana veritabanında depolanan bir oturum ile ilişkilendirilebilir veya ayrı bir veritabanında depolanan bir Kullanıcı adı olabilir.
+**Oturum açmalar ve kullanıcılar**: bir veritabanındaki bir kullanıcı hesabı, ana veritabanında depolanan bir oturum ile ilişkilendirilebilir veya ayrı bir veritabanında depolanan bir Kullanıcı adı olabilir.
 
 - **Oturum açma** , ana veritabanında bir veya daha fazla veritabanında bulunan bir kullanıcı hesabının bağlanacağı bireysel bir hesaptır. Oturum açma hesabında, kullanıcı hesabının kimlik bilgileri oturum açma hesabıyla depolanır.
 - **Kullanıcı hesabı** , herhangi bir veritabanında bir oturum açma ile bağlantılı olan, ancak olması gereken tek bir hesaptır. Oturum açmaya bağlantılı olmayan bir kullanıcı hesabında kimlik bilgileri kullanıcı hesabında depolanır.
@@ -68,7 +68,7 @@ Bir veritabanının yönetici hesaplarını belirlemek için, Azure portal açı
 ![Özellikler menü seçeneğini vurgulayan ekran görüntüsü.](./media/logins-create-manage/sql-admins2.png)
 
 > [!IMPORTANT]
-> Yönetici oturum açma adı oluşturulduktan sonra değiştirilemez. Sunucu yöneticisinin parolasını sıfırlamak için [Azure Portal](https://portal.azure.com)gidin, **SQL sunucuları** ' na tıklayın, listeden sunucuyu seçin ve ardından **Parolayı Sıfırla** ' ya tıklayın. SQL yönetilen örneği parolasını sıfırlamak için Azure portal gidin, örneğe tıklayın ve **Parolayı Sıfırla** ' ya tıklayın. PowerShell veya Azure CLı 'yi de kullanabilirsiniz.
+> Yönetici oturum açma adı oluşturulduktan sonra değiştirilemez. Sunucu yöneticisinin parolasını sıfırlamak için [Azure Portal](https://portal.azure.com)gidin, **SQL sunucuları**' na tıklayın, listeden sunucuyu seçin ve ardından **Parolayı Sıfırla**' ya tıklayın. SQL yönetilen örneği parolasını sıfırlamak için Azure portal gidin, örneğe tıklayın ve **Parolayı Sıfırla**' ya tıklayın. PowerShell veya Azure CLı 'yi de kullanabilirsiniz.
 
 ## <a name="create-additional-logins-and-users-having-administrative-permissions"></a>Yönetici izinlerine sahip ek oturumlar ve kullanıcılar oluşturun
 
@@ -137,7 +137,7 @@ Bir veritabanında bir oturum açma ya da kapsanan Kullanıcı olarak bir kullan
 
 - **Düzeltilen veritabanı rolleri**
 
-  Kullanıcı hesabını bir [sabit veritabanı rolüne](/sql/relational-databases/security/authentication-access/database-level-roles)ekleyin. Her biri tanımlanmış bir izin kümesine sahip 9 sabit veritabanı rolü vardır. En yaygın sabit veritabanı rolleri şunlardır: **db_owner** , **db_ddladmin** , **db_datawriter** , **db_datareader** , **db_denydatawriter** ve **db_denydatareader** . Birkaç kullanıcıya tam izin vermek için genelde **db_owner** kullanılır. Diğer sabit veritabanı rolleri, geliştirme aşamasında basit bir veritabanını hızlı bir şekilde kullanıma almak için kullanışlıdır ancak çoğu üretim veritabanı için önerilmez. Örneğin, **db_datareader** sabit veritabanı rolü, veritabanı içindeki her tabloya okuma erişimi verir ve bu, kesinlikle gereklidir.
+  Kullanıcı hesabını bir [sabit veritabanı rolüne](/sql/relational-databases/security/authentication-access/database-level-roles)ekleyin. Her biri tanımlanmış bir izin kümesine sahip 9 sabit veritabanı rolü vardır. En yaygın sabit veritabanı rolleri şunlardır: **db_owner**, **db_ddladmin**, **db_datawriter**, **db_datareader**, **db_denydatawriter** ve **db_denydatareader**. Birkaç kullanıcıya tam izin vermek için genelde **db_owner** kullanılır. Diğer sabit veritabanı rolleri, geliştirme aşamasında basit bir veritabanını hızlı bir şekilde kullanıma almak için kullanışlıdır ancak çoğu üretim veritabanı için önerilmez. Örneğin, **db_datareader** sabit veritabanı rolü, veritabanı içindeki her tabloya okuma erişimi verir ve bu, kesinlikle gereklidir.
 
   - Sabit bir veritabanı rolüne kullanıcı eklemek için:
 

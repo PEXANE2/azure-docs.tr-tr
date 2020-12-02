@@ -12,17 +12,17 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 06/17/2020
-ms.openlocfilehash: 72af066cbff809521c34bb8db88ab0b3e5092fc4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: ce528e268e0ed1e34f53e32196bceef5ad8a2fcb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841147"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452501"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL veritabanı ve Azure SYNAPSE IP güvenlik duvarı kuralları
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-Azure SQL veritabanı veya *te yapılandırılmış MySQLServer* adlı Azure SYNAPSE Analytics 'te yeni bir sunucu oluşturduğunuzda, örneğin, sunucu düzeyinde bir güvenlik duvarı sunucu için genel uç noktaya ( *MySQLServer.Database.Windows.net* adresinden erişilebilen) tüm erişimi engeller. Basitlik için *SQL veritabanı* hem SQL veritabanı hem de Azure SYNAPSE Analytics 'e (eskı adıyla SQL veri ambarı) başvurmak için kullanılır.
+Azure SQL veritabanı veya *te yapılandırılmış MySQLServer* adlı Azure SYNAPSE Analytics 'te yeni bir sunucu oluşturduğunuzda, örneğin, sunucu düzeyinde bir güvenlik duvarı sunucu için genel uç noktaya ( *MySQLServer.Database.Windows.net* adresinden erişilebilen) tüm erişimi engeller. Basitlik için *SQL veritabanı* hem SQL veritabanı hem de Azure SYNAPSE Analytics 'e başvurmak için kullanılır.
 
 > [!IMPORTANT]
 > Bu *Makale,* *Azure SQL yönetilen örneği* için geçerlidir. Ağ yapılandırması hakkında daha fazla bilgi için bkz. [uygulamanızı Azure SQL yönetilen örneğine bağlama](../managed-instance/connect-application-instance.md).
@@ -111,7 +111,7 @@ Azure SQL Server için IP güvenlik duvarı kuralı oluşturmak ve yönetmek ist
 - [SQL Güvenlik Yöneticisi](../../role-based-access-control/built-in-roles.md#sql-security-manager) rolünde
 - Azure SQL Server içeren kaynağın sahibi
 
-## <a name="create-and-manage-ip-firewall-rules"></a>IP güvenlik duvarı kuralları oluşturma ve yönetme
+## <a name="create-and-manage-ip-firewall-rules"></a>IP güvenlik duvarı kurallarını oluşturma ve yönetme
 
 [Azure Portal](https://portal.azure.com/) veya program aracılığıyla [Azure POWERSHELL](/powershell/module/az.sql), [azure CLI](/cli/azure/sql/server/firewall-rule)veya bir Azure [REST API](/rest/api/sql/firewallrules/createorupdate)kullanarak ilk sunucu düzeyi güvenlik duvarı ayarını oluşturursunuz. Bu yöntemleri veya Transact-SQL ' i kullanarak diğer sunucu düzeyi IP güvenlik duvarı kuralları oluşturur ve yönetirsiniz.
 
@@ -152,7 +152,7 @@ Sunucunuzun genel bakış sayfası açılır. Tam sunucu adını (örneğin, *my
 
 ### <a name="use-transact-sql-to-manage-ip-firewall-rules"></a>IP güvenlik duvarı kurallarını yönetmek için Transact-SQL kullanma
 
-| Katalog görünümü veya saklı yordam | Düzey | Açıklama |
+| Katalog görünümü veya saklı yordam | Level | Açıklama |
 | --- | --- | --- |
 | [sys.firewall_rules](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database) |Sunucu |Geçerli sunucu düzeyi IP güvenlik duvarı kurallarını görüntüler |
 | [sp_set_firewall_rule](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database) |Sunucu |Sunucu düzeyi IP güvenlik duvarı kuralları oluşturur veya güncelleştirir |
@@ -186,7 +186,7 @@ EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak tüm geliştirme artık az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](/powershell/module/AzureRM.Sql/). Az ve Azurerd modüllerindeki komutların bağımsız değişkenleri önemli ölçüde aynıdır.
 
-| Cmdlet | Düzey | Açıklama |
+| Cmdlet | Level | Açıklama |
 | --- | --- | --- |
 | [Get-AzSqlServerFirewallRule](/powershell/module/az.sql/get-azsqlserverfirewallrule) |Sunucu |Sunucu düzeyinde geçerli güvenlik duvarı kurallarını döndürür |
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) |Sunucu |Sunucu düzeyinde yeni bir güvenlik duvarı kuralı oluşturur |
@@ -208,7 +208,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 
 ### <a name="use-cli-to-manage-server-level-ip-firewall-rules"></a>Sunucu düzeyinde IP güvenlik duvarı kurallarını yönetmek için CLı kullanma
 
-| Cmdlet | Düzey | Açıklama |
+| Cmdlet | Level | Açıklama |
 | --- | --- | --- |
 |[az SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|Sunucu|Sunucu IP güvenlik duvarı kuralı oluşturur|
 |[az SQL Server Firewall-Rule List](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|Sunucu|Bir sunucudaki IP güvenlik duvarı kurallarını listeler|
@@ -230,7 +230,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 
 ### <a name="use-a-rest-api-to-manage-server-level-ip-firewall-rules"></a>Sunucu düzeyi IP güvenlik duvarı kurallarını yönetmek için REST API kullanma
 
-| API | Düzey | Açıklama |
+| API | Level | Açıklama |
 | --- | --- | --- |
 | [Güvenlik duvarı kurallarını Listele](/rest/api/sql/firewallrules/listbyserver) |Sunucu |Geçerli sunucu düzeyi IP güvenlik duvarı kurallarını görüntüler |
 | [Güvenlik duvarı kuralları oluşturma veya güncelleştirme](/rest/api/sql/firewallrules/createorupdate) |Sunucu |Sunucu düzeyi IP güvenlik duvarı kuralları oluşturur veya güncelleştirir |

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: de4661bcfd7106d515480e39dc4660f44f469a3d
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 81c1b84bff04e62f2dabeb3880f4103112139ee0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631708"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453562"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory-sık sorulan sorular
 > [!NOTE]
@@ -72,7 +72,7 @@ Aşağıdaki tabloda, Data Factory tarafından desteklenen işlem ortamlarının
 | [Azure Batch](data-factory-compute-linked-services.md#azure-batch-linked-service) |[Olmalı](data-factory-use-custom-activities.md) |
 | [Azure Machine Learning Studio (klasik)](data-factory-compute-linked-services.md#azure-machine-learning-studio-classic-linked-service) |[Studio (klasik) etkinlikleri: toplu yürütme ve kaynak güncelleştirme](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](data-factory-compute-linked-services.md#azure-data-lake-analytics-linked-service) |[Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
-| [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service), [Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı)](data-factory-compute-linked-services.md#azure-synapse-analytics-linked-service), [SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[Saklı yordam](data-factory-stored-proc-activity.md) |
+| [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service), [Azure Synapse Analytics](data-factory-compute-linked-services.md#azure-synapse-analytics-linked-service), [SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[Saklı Yordam](data-factory-stored-proc-activity.md) |
 
 ### <a name="how-does-azure-data-factory-compare-with-sql-server-integration-services-ssis"></a>Azure Data Factory SQL Server Integration Services (SSIS) ile nasıl karşılaştırılmaktadır? 
 MVP 'larımızdan (en değerli profesyoneller) [Azure Data Factory vs. SSIS](https://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) sunumuna bakın: Reza Rad. Data Factory yapılan son değişikliklerden bazıları slayt destede listelenmeyebilir. Azure Data Factory için sürekli olarak daha fazla özellik ekliyoruz. Azure Data Factory için sürekli olarak daha fazla özellik ekliyoruz. Bu güncelleştirmeleri Microsoft 'un bu yıldan daha sonra bir süre içinde veri tümleştirme teknolojilerinin karşılaştırmasına dahil edeceğiz.   
