@@ -1,6 +1,6 @@
 ---
-title: Sunucusuz SQL Havuzu (Önizleme) kullanarak sorgu klasörleri ve birden çok dosya
-description: Sunucusuz SQL Havuzu (Önizleme), Windows işletim sisteminde kullanılan Joker karakterlere benzer bir joker karakter kullanarak birden çok dosya/klasör okumayı destekler.
+title: Sunucusuz SQL havuzunu kullanan sorgu klasörleri ve birden çok dosya
+description: Sunucusuz SQL havuzu, Windows işletim sisteminde kullanılan Joker karakterlere benzer bir joker karakter kullanarak birden çok dosya/klasör okumayı destekler.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,20 +9,20 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9d15d681a114b0f364e8e33adc786b4d0ba7df0e
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 83c4d88e1a87f6b546e26dd55da338a36f16ebe4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684568"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462630"
 ---
 # <a name="query-folders-and-multiple-files"></a>Klasörleri ve birden çok dosyayı sorgulama  
 
-Bu makalede, Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) kullanarak bir sorgu yazmayı öğreneceksiniz.
+Bu makalede, Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu kullanarak bir sorgu yazmayı öğreneceksiniz.
 
 Sunucusuz SQL havuzu, Windows işletim sisteminde kullanılan Joker karakterlere benzer bir joker karakter kullanarak birden çok dosya/klasör okumayı destekler. Ancak, birden çok Joker karakterlere izin verildiğinden daha fazla esneklik mevcuttur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 İlk adımınız sorguları yürütebileceğiniz **bir veritabanı oluşturmaktır** . Sonra bu veritabanında [kurulum betiğini](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) yürüterek nesneleri başlatın. Bu kurulum betiği, veri kaynaklarını, veritabanı kapsamlı kimlik bilgilerini ve bu örneklerde kullanılan harici dosya biçimlerini oluşturacaktır.
 

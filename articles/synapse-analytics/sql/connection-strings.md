@@ -1,6 +1,6 @@
 ---
-title: SYNAPSE SQL için bağlantı dizeleri (Önizleme)
-description: SYNAPSE SQL için bağlantı dizeleri (Önizleme)
+title: SYNAPSE SQL için bağlantı dizeleri
+description: SYNAPSE SQL için bağlantı dizeleri
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,16 +10,16 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e34563a312c5a248e97c4aac72d06030a836727b
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 6859d0582997ee861713090ccb4c22ed58ec4ca7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684855"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462331"
 ---
-# <a name="connection-strings-for-synapse-sql-preview"></a>SYNAPSE SQL için bağlantı dizeleri (Önizleme)
+# <a name="connection-strings-for-synapse-sql"></a>SYNAPSE SQL için bağlantı dizeleri
 
-SYNAPSE SQL 'e (Önizleme), [ADO.net](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx), [ODBC](https://msdn.microsoft.com/library/jj730314.aspx), [php](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)ve [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx)gibi birçok farklı uygulama protokolleriyle bağlanabilirsiniz. Her protokol için bazı bağlantı dizesi örnekleri aşağıda verilmiştir. 
+SYNAPSE SQL 'e, [ADO.net](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx), [ODBC](https://msdn.microsoft.com/library/jj730314.aspx), [php](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)ve [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx)gibi çeşitli farklı uygulama protokolleriyle bağlanabilirsiniz. Her protokol için bazı bağlantı dizesi örnekleri aşağıda verilmiştir. 
 
 Bağlantı dizenizi oluşturmak için Azure portal de kullanabilirsiniz.  Bağlantı dizenizi Azure portal kullanarak derlemek için, veritabanı dikey penceresine gidin, *temel parçalar* altında *veritabanı bağlantı dizelerini göster*' i seçin.
 

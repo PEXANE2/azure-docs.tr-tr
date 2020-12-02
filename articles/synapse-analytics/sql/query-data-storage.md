@@ -1,6 +1,6 @@
 ---
-title: Sunucusuz SQL Havuzu (Önizleme) ile veri depolamayı sorgulama
-description: Bu makalede, Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) kaynağını kullanarak Azure Storage 'ın nasıl sorgulanyapılacağı açıklanır.
+title: Sunucusuz SQL havuzu ile veri depolamayı sorgulama
+description: Bu makalede, Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu kaynağını kullanarak Azure Storage 'ın nasıl sorgulanyapılacağı açıklanır.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 81a892b10996686cf58d45867e3d889505b5d3d9
-ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
+ms.openlocfilehash: 967250cf29d1f0248f296cb545a764bd8e611773
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96299590"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462664"
 ---
-# <a name="query-storage-files-with-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) ile depolama dosyalarını sorgulama
+# <a name="query-storage-files-with-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu ile depolama dosyalarını sorgulama
 
-Sunucusuz SQL Havuzu (Önizleme), Data Lake 'unuzdaki verileri sorgulamanızı sağlar. Yarı yapılandırılmış ve yapılandırılmamış veri sorgularına uyum sağlayan bir T-SQL sorgu yüzeyi alanı sunar. Sorgulamak için aşağıdaki T-SQL yönleri desteklenir:
+Sunucusuz SQL havuzu, Data Lake 'unuzdaki verileri sorgulamanızı sağlar. Yarı yapılandırılmış ve yapılandırılmamış veri sorgularına uyum sağlayan bir T-SQL sorgu yüzeyi alanı sunar. Sorgulamak için aşağıdaki T-SQL yönleri desteklenir:
 
 - [SQL işlevlerinin ve işleçlerin](overview-features.md)büyük çoğunluğu dahil olmak üzere tam [seçim](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) yüzeyi alanı.
 - SELECT ([Cetas](develop-tables-cetas.md)) olarak dış tablo oluşturma bir [dış tablo](develop-tables-external-tables.md) oluşturur ve ardından Transact-SQL SELECT ifadesinin sonuçlarını Azure Storage 'a aktarır.
@@ -222,7 +222,7 @@ Aşağıdaki sözdizimi parçasını inceleyin:
 ### <a name="tools"></a>Araçlar
 
 Sorgu vermek için gereken araçlar:
-    - Azure SYNAPSE Studio (Önizleme)
+    - Azure SYNAPSE Studio 
     - Azure Data Studio
     - SQL Server Management Studio
 

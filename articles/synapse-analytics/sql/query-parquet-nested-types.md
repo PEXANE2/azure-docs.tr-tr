@@ -1,6 +1,6 @@
 ---
-title: Sunucusuz SQL Havuzu (Önizleme) kullanarak iç içe geçmiş türleri sorgulama
-description: Bu makalede, sunucusuz SQL Havuzu (Önizleme) kullanarak Parquet iç içe türlerini sorgulamayı öğreneceksiniz.
+title: Sunucusuz SQL havuzu kullanarak iç içe geçmiş türleri sorgulama
+description: Bu makalede, sunucusuz SQL havuzu kullanarak Parquet iç içe türlerini sorgulamayı öğreneceksiniz.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 426c95638422fa4260508aa81bb47a7c9565e6eb
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 91f612ba7f19deb739dbb6004e275ea044a5a3d3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685724"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462552"
 ---
-# <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) kullanarak iç içe türleri ve JSON dosyalarını sorgulama
+# <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu kullanarak Parquet ve JSON dosyalarındaki iç içe türleri sorgulama
 
-Bu makalede, Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) kullanarak bir sorgu yazmayı öğreneceksiniz. Sorgu, Parquet iç içe geçmiş türlerini okur.
+Bu makalede, Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu kullanarak bir sorgu yazmayı öğreneceksiniz. Sorgu, Parquet iç içe geçmiş türlerini okur.
 İç içe türler, nesneleri veya dizileri temsil eden karmaşık yapılardır. İç içe türler, içinde depolanabilir: 
 - [Parquet](query-parquet-files.md), diziler ve nesneler içeren birden çok karmaşık sütunlarınız olabilir.
 - Karmaşık bir JSON belgesini tek bir sütun olarak okuyabileceğiniz hiyerarşik [JSON dosyaları](query-json-files.md).

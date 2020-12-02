@@ -9,35 +9,35 @@ ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
-ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 0e807a01f575615967a039d360505a4f090cd1fd
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.reviewer: nibruno; jrasnick; azure-synapse
+ms.openlocfilehash: 902f0ac96349cf3e30ec12aeda02130afc2b800c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92478329"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460758"
 ---
 # <a name="performance-tune-with-materialized-views"></a>Gerçekleştirilmiş görünümlerle performans ayarı
 
-SYNAPSE SQL havuzundaki gerçekleştirilmiş görünümler, herhangi bir sorgu değişikliği yapmadan hızlı performans sağlamak üzere karmaşık analitik sorgular için düşük bakım yöntemi sağlar. Bu makalede gerçekleştirilmiş görünümleri kullanma hakkında genel yönergeler ele alınmaktadır.
+Azure SYNAPSE SQL havuzundaki gerçekleştirilmiş görünümler, herhangi bir sorgu değişikliği yapmadan hızlı performans sağlamak üzere karmaşık analitik sorgular için düşük bakım yöntemi sağlar. Bu makalede gerçekleştirilmiş görünümleri kullanma hakkında genel yönergeler ele alınmaktadır.
 
 ## <a name="materialized-views-vs-standard-views"></a>Gerçekleştirilmiş görünümler ve standart görünümler karşılaştırması
 
-SQL havuzu standart ve gerçekleştirilmiş görünümleri destekler.  Her ikisi de SELECT ifadelerle oluşturulmuş ve sorguları Mantıksal tablolar olarak sunulan sanal tablolardır.  Görünümler ortak veri hesaplamasının karmaşıklığını yalıtır ve değişiklikleri hesaplama için bir soyutlama katmanı ekler. böylece sorguları yeniden yazmaya gerek kalmaz.  
+Azure SYNAPSE 'deki SQL havuzu standart ve gerçekleştirilmiş görünümleri destekler.  Her ikisi de SELECT ifadelerle oluşturulmuş ve sorguları Mantıksal tablolar olarak sunulan sanal tablolardır.  Görünümler ortak veri hesaplamasının karmaşıklığını yalıtır ve değişiklikleri hesaplama için bir soyutlama katmanı ekler. böylece sorguları yeniden yazmaya gerek kalmaz.  
 
-Standart Görünüm, görünümün her seferinde verilerini hesaplar.  Diskte depolanan veri yok. İnsanlar genellikle standart görünümleri, bir veritabanındaki mantıksal nesneleri ve sorguları düzenlemeye yardımcı olan bir araç olarak kullanır.  Standart bir görünüm kullanmak için bir sorgunun kendisine doğrudan başvuru yapması gerekir.
+Standart Görünüm, görünümün her seferinde verilerini hesaplar.  Diskte depolanan veri yok. İnsanlar genellikle standart görünümleri bir SQL havuzundaki mantıksal nesneleri ve sorguları düzenlemeye yardımcı olan bir araç olarak kullanır.  Standart bir görünüm kullanmak için bir sorgunun kendisine doğrudan başvuru yapması gerekir.
 
 Gerçekleştirilmiş bir görünüm, verileri SQL havuzunda tıpkı bir tablo gibi önceden hesaplar, depolar ve korur.  Gerçekleştirilmiş bir görünüm kullanıldığında her seferinde yeniden hesaplama gerekmez.  Bu, gerçekleştirilmiş görünümlerde verilerin tümünü veya alt kümesini kullanan sorguların neden daha hızlı bir performans alabilir.  Daha da iyisi, sorgular kendisine doğrudan başvuru yapmadan gerçekleştirilmiş bir görünüm kullanabilir, bu nedenle uygulama kodunu değiştirmeniz gerekmez.  
 
 Standart görünümde gereksinimlerin çoğu, gerçekleştirilmiş bir görünüm için de geçerlidir. Gerçekleştirilmiş görünüm sözdizimi ve diğer gereksinimler hakkında daha fazla bilgi için bkz. [Select olarak GERÇEKLEŞTIRILMIŞ görünüm oluşturma](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-| Karşılaştırma                     | Görüntüle                                         | Gerçekleştirilmiş Görünüm
+| Karşılaştırma                     | Görünüm                                         | Gerçekleştirilmiş Görünüm
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
 |Tanımı görüntüleme                 | SQL havuzunda depolanır.              | SQL havuzunda depolanır.
 |İçeriği görüntüleme                    | Görünüm her kullanıldığında oluşturulur.   | Görünüm oluşturma sırasında SQL havuzunda ön işleme ve depolama. Temel tablolara veri eklendikçe güncelleştirildi.
 |Veri yenileme                    | Her zaman güncelleştiriliyor                               | Her zaman güncelleştiriliyor
 |Karmaşık sorgulardan Görünüm verilerini alma hızı     | Yavaş                                         | Hızlı  
-|Ek depolama                   | Hayır                                           | Yes
+|Ek depolama                   | Hayır                                           | Evet
 |Syntax                          | CREATE VIEW                                  | GERÇEKLEŞTIRILMIŞ GÖRÜNÜMÜ SEÇ
 
 ## <a name="benefits-of-using-materialized-views"></a>Gerçekleştirilmiş görünümleri kullanmanın avantajları
@@ -79,7 +79,7 @@ SQL havuzlarındaki şema ve sorgu değişiklikleri, normal ETL işlemlerini ve 
 
 **Daha hızlı sorgu performansı için farklı veri dağıtımı stratejisi gerekir**
 
-SYNAPSE SQL, dağıtılmış bir sorgu işleme sistemidir.  SQL tablosundaki veriler, üç [dağıtım stratejisinden](sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (karma, round_robin veya çoğaltılan) biri kullanılarak 60 düğüm arasında dağıtılır.   
+Azure SYNAPSE Analytics, dağıtılmış bir sorgu işleme sistemidir.  SQL tablosundaki veriler, üç [dağıtım stratejisinden](sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (karma, round_robin veya çoğaltılan) biri kullanılarak 60 düğüm arasında dağıtılır.   
 
 Veri dağıtımı tablo oluşturma zamanında belirtilir ve tablo bırakılana kadar değişmeden kalır. Gerçekleştirilmiş görünüm, karma ve round_robin veri dağıtımlarını destekler.  Kullanıcılar, temel tablolardan farklı olan, ancak en çok görünümleri kullanan sorguların performansı için en uygun olan veri dağıtımını seçebilirler.  
 
@@ -97,11 +97,11 @@ Kullanıcılar, sorgu iyileştiricisi tarafından önerilen gerçekleştirilmiş
 
 **Daha hızlı sorgular ve maliyet arasındaki zorunluluğunu getirir farkında olun**
 
-Gerçekleştirilmiş her bir görünüm için bir veri depolama maliyeti ve görünümün sürdürülmesi için bir maliyet vardır.  Temel tablolarda veri değişiklikleri yapıldığında, gerçekleştirilmiş görünümün boyutu artar ve fiziksel yapısı da değişir.  Sorgu performansı düşüşünü önlemek için, gerçekleştirilmiş her görünüm SQL havuzu altyapısı tarafından ayrı tutulur.  
+Gerçekleştirilmiş her bir görünüm için bir veri depolama maliyeti ve görünümün sürdürülmesi için bir maliyet vardır.  Temel tablolarda veri değişiklikleri yapıldığında, gerçekleştirilmiş görünümün boyutu artar ve fiziksel yapısı da değişir.  Sorgu performansı düşüşünü önlemek için, gerçekleştirilmiş her görünüm SQL Analytics altyapısı tarafından ayrı tutulur.  
 
 Gerçekleştirilmiş görünümler ve temel tablo değişikliklerinin sayısı arttıkça bakım iş yükü artar.   Kullanıcılar, gerçekleştirilmiş tüm görünümlerden tahakkuk eden maliyetin sorgu performans kazancı tarafından kaydırılarak yer olup olmadığını denetlemelidir.  
 
-Veritabanında gerçekleştirilmiş görünüm listesi için bu sorguyu çalıştırabilirsiniz:
+Bu sorguyu, bir SQL havuzundaki gerçekleştirilmiş görünüm listesi için çalıştırabilirsiniz:
 
 ```sql
 SELECT V.name as materialized_view, V.object_id
@@ -115,7 +115,7 @@ Gerçekleştirilmiş görünümlerin sayısını azaltma seçenekleri:
 
 - Az kullanım veya artık gerekli olmayan gerçekleştirilmiş görünümleri bırakın.  Devre dışı gerçekleştirilmiş bir görünüm korunmaz, ancak depolama maliyeti hala buna neden olur.  
 
-- Verileri örtüşmese de aynı veya benzer temel tablolarda oluşturulan gerçekleştirilmiş görünümleri birleştirin.  Gerçekleştirilmiş görünümleri birleştirmek, farklı görünümlerin toplamından daha büyük bir görünüm oluşmasına neden olabilir, ancak görünüm bakım maliyeti azaltılmalıdır.  Örneğin:
+- Verileri örtüşmese de aynı veya benzer temel tablolarda oluşturulan gerçekleştirilmiş görünümleri birleştirin.  Gerçekleştirilmiş görünümleri birleştirmek, farklı görünümlerin toplamından daha büyük bir görünüm oluşmasına neden olabilir, ancak görünüm bakım maliyeti azaltılmalıdır.  Örnek:
 
 ```sql
 
@@ -141,7 +141,7 @@ GROUP BY A, C
 
 **Tüm performans ayarları sorgu değişikliğini gerektirmez**
 
-SQL havuzu iyileştirici, sorgu performansını artırmak için dağıtılmış gerçekleştirilmiş görünümleri otomatik olarak kullanabilir.  Bu destek, gerçekleştirilmiş görünümler oluşturmada desteklenmeyen toplamalar kullanan, görünümlere ve sorgulara başvurmayan sorgulara şeffaf bir şekilde uygulanır.  Sorgu değişikliğine gerek yoktur. Gerçekleştirilmiş bir görünümün kullanıldığını onaylamak için bir sorgunun tahmini yürütme planını kontrol edebilirsiniz.  
+SQL Analytics iyileştirici, sorgu performansını artırmak için dağıtılmış gerçekleştirilmiş görünümleri otomatik olarak kullanabilir.  Bu destek, gerçekleştirilmiş görünümler oluşturmada desteklenmeyen toplamalar kullanan, görünümlere ve sorgulara başvurmayan sorgulara şeffaf bir şekilde uygulanır.  Sorgu değişikliğine gerek yoktur. Gerçekleştirilmiş bir görünümün kullanıldığını onaylamak için bir sorgunun tahmini yürütme planını kontrol edebilirsiniz.  
 
 **Gerçekleştirilmiş görünümleri izle**
 
@@ -151,7 +151,7 @@ Sorgu performansı düşüşünü önlemek için, görünümün overhead_ratio (
 
 **Gerçekleştirilmiş görünüm ve sonuç kümesi önbelleğe alma**
 
-Bu iki özellik SQL havuzunda sorgu performansı ayarlama için aynı anda tanıtılmıştır.  Sonuç kümesi önbelleğe alma, yinelenen sorgulardan statik verilere karşı yüksek eşzamanlılık ve hızlı yanıt almak için kullanılır.  
+Bu iki özellik, SQL Analytics 'te sorgu performansı ayarlama için aynı anda tanıtılmıştır.  Sonuç kümesi önbelleğe alma, yinelenen sorgulardan statik verilere karşı yüksek eşzamanlılık ve hızlı yanıt almak için kullanılır.  
 
 Önbelleğe alınan sonucu kullanmak için, sorgu isteyen önbelleğin formu, önbelleği üreten sorguyla eşleşmelidir.  Ayrıca, önbelleğe alınan sonuç tüm sorguya uygulanır.  
 

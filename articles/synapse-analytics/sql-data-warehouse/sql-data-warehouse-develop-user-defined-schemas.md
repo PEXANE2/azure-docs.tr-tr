@@ -1,25 +1,25 @@
 ---
 title: Kullanıcı tanımlı şemaları kullanma
-description: SYNAPSE SQL havuzunda çözüm geliştirmek için T-SQL Kullanıcı tanımlı şemaları kullanma ipuçları.
+description: Azure SYNAPSE Analytics 'te adanmış SQL havuzları için çözümler geliştirmek üzere T-SQL Kullanıcı tanımlı şemaları kullanma ipuçları.
 services: synapse-analytics
-author: XiaoyuMSFT
+author: MSTehrani
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 04/17/2018
-ms.author: xiaoyul
+ms.author: emtehran
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: fc5e035215e7cabd02861c6ee2498cadd1ef0534
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 3204c77dd076d9aac6eb5a60b489280caefcbf4b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85213372"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460455"
 ---
-# <a name="user-defined-schemas-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda Kullanıcı tanımlı şemalar
-Bu makale, SYNAPSE SQL havuzunda çözüm geliştirmek için T-SQL Kullanıcı tanımlı şemaları kullanmaya yönelik birkaç ipucu sağlamaya odaklanır.
+# <a name="user-defined-schemas-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzları için Kullanıcı tanımlı şemalar
+Bu makale, adanmış SQL havuzunda çözüm geliştirmek için T-SQL Kullanıcı tanımlı şemaları kullanmaya yönelik birkaç ipucu sağlamaya odaklanır.
 
 ## <a name="schemas-for-application-boundaries"></a>Uygulama sınırları şemaları
 
@@ -27,7 +27,7 @@ Geleneksel veri ambarları genellikle iş yüküne, etki alanına veya güvenli�
 
 Örnek olarak, geleneksel bir SQL Server veri ambarı hazırlama veritabanı, veri ambarı veritabanı ve bazı Data Mart veritabanlarını içerebilir. Bu topolojide, her veritabanı mimaride bir iş yükü ve güvenlik sınırı olarak çalışır.
 
-Bunun aksine, SQL havuzu tüm veri ambarı iş yükünü tek bir veritabanı içinde çalıştırır. Çapraz veritabanı birleştirmelerine izin verilmez. SQL havuzu, ambarın tarafından kullanılan tüm tabloların tek bir veritabanı içinde depolanmasını bekler.
+Buna karşılık, adanmış bir SQL havuzu tüm veri ambarı iş yükünü tek bir veritabanı içinde çalıştırır. Çapraz veritabanı birleştirmelerine izin verilmez. Adanmış SQL havuzu, ambarın tarafından kullanılan tüm tabloların tek bir veritabanı içinde depolanmasını bekler.
 
 > [!NOTE]
 > SQL havuzu herhangi bir türdeki çapraz veritabanı sorgularını desteklemez. Sonuç olarak, bu düzenin faydalarından yararlanan veri ambarı uygulamalarının yeniden gözden geçirilmesi gerekir.
@@ -37,11 +37,11 @@ Bunun aksine, SQL havuzu tüm veri ambarı iş yükünü tek bir veritabanı iç
 ## <a name="recommendations"></a>Öneriler
 Aşağıda, Kullanıcı tanımlı şemaları kullanarak iş yüklerini, güvenliği, etki alanını ve işlevsel sınırları birleştirme önerileri verilmiştir:
 
-- Tüm veri ambarı iş yükünüzü çalıştırmak için bir SQL havuzu veritabanı kullanın.
-- Mevcut veri ambarı ortamınızı bir SQL havuzu veritabanını kullanacak şekilde birleştirin.
+- Tüm veri ambarı iş yükünüzü çalıştırmak için adanmış bir SQL havuzundaki bir veritabanını kullanın.
+- Ayrılmış bir SQL havuzu veritabanı kullanmak için mevcut veri ambarı ortamınızı birleştirin.
 - Daha önce veritabanları kullanılarak uygulanan sınırı sağlamak için **Kullanıcı tanımlı şemalardan** yararlanın.
 
-Daha önce Kullanıcı tanımlı şemalar kullanılmazsa, temiz bir tablet görürsünüz. SQL havuzu veritabanındaki kullanıcı tanımlı şemalarınızın temeli olarak eski veritabanı adını kullanın.
+Daha önce Kullanıcı tanımlı şemalar kullanılmazsa, temiz bir tablet görürsünüz. Adanmış SQL havuzu veritabanında kullanıcı tanımlı şemalarınızın temeli olarak eski veritabanı adını kullanın.
 
 Şemalar zaten kullanıldıysa, birkaç seçeneğiniz vardır:
 
@@ -50,7 +50,7 @@ Daha önce Kullanıcı tanımlı şemalar kullanılmazsa, temiz bir tablet gör�
 - Eski şema yapısını yeniden oluşturmak için ek bir şemadaki tablo üzerinde görünümler uygulayarak eski şema adlarını koruyun.
 
 > [!NOTE]
-> İlk denetleme seçeneği 3 en çekici seçenek gibi görünebilir. Ancak, DEVIL ayrıntılandırıyor. Görünümler, SQL havuzunda salt okunurdur. Herhangi bir veri veya tablo değişikliğini temel tabloya karşı gerçekleştirilmesi gerekir. Seçenek 3 Ayrıca sisteminizde bir görünüm katmanı da sunar. Mimarinizdeki görünümleri zaten kullanıyorsanız, buna ek bir fikir vermek isteyebilirsiniz.
+> İlk denetleme seçeneği 3 en çekici seçenek gibi görünebilir. Ancak, DEVIL ayrıntılandırıyor. Görünümler, adanmış SQL havuzunda salt okunurdur. Herhangi bir veri veya tablo değişikliğini temel tabloya karşı gerçekleştirilmesi gerekir. Seçenek 3 Ayrıca sisteminizde bir görünüm katmanı da sunar. Mimarinizdeki görünümleri zaten kullanıyorsanız, buna ek bir fikir vermek isteyebilirsiniz.
 > 
 > 
 

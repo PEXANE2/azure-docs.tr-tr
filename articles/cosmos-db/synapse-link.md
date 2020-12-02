@@ -5,20 +5,20 @@ author: Rodrigossz
 ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/12/2020
+ms.date: 11/30/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 1e78a7ff806cbd6a7f30c68786e62f8508c850ac
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: d083bc0b7726a284dcfd03e49d47c2a342db023c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340694"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461807"
 ---
-# <a name="what-is-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure Cosmos DB (Önizleme) için Azure SYNAPSE bağlantısı nedir?
+# <a name="what-is-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Synapse Link nedir?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 > [!IMPORTANT]
-> Azure Cosmos DB için Azure SYNAPSE bağlantısı şu anda önizleme aşamasındadır. Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Azure Cosmos DB için Azure SYNAPSE bağlantısı için SYNAPSE sunucusuz SQL havuzu desteği şu anda önizleme aşamasındadır. Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Azure Cosmos DB için Azure SYNAPSE bağlantısı, Azure Cosmos DB ' de işletimsel veriler üzerinde neredeyse gerçek zamanlı analizler çalıştırmanıza olanak tanıyan, bulut tabanlı bir karma işlem ve analitik işleme (HTAP) özelliğidir. Azure SYNAPSE link, Azure Cosmos DB ile Azure SYNAPSE Analytics arasında sıkı bir şekilde sorunsuz bir tümleştirme oluşturur.
 
@@ -36,7 +36,7 @@ Azure Cosmos DB için Azure SYNAPSE bağlantısı, geleneksel ETL tabanlı çöz
 
 ### <a name="reduced-complexity-with-no-etl-jobs-to-manage"></a>Yönetilecek ETL işi olmayan Azaltılan karmaşıklık
 
-Azure SYNAPSE bağlantısı, karmaşık veri hareketi olmadan Azure SYNAPSE Analytics kullanarak analitik depoya doğrudan Azure Cosmos DB erişmenizi sağlar. İşletimsel verilere yapılan tüm güncelleştirmeler, bir ETL veya değişiklik akışı işleri olmadan neredeyse gerçek zamanlı olarak analitik depoda görünür. SYNAPSE Analytics 'ten gelen ve ek veri dönüştürmesi olmadan büyük ölçekli analiz, analitik depoya karşı çalıştırabilirsiniz.
+Azure SYNAPSE bağlantısı, karmaşık veri hareketi olmadan Azure SYNAPSE Analytics kullanarak analitik depoya doğrudan Azure Cosmos DB erişmenizi sağlar. İşletimsel verilere yapılan tüm güncelleştirmeler, bir ETL veya değişiklik akışı işleri olmadan neredeyse gerçek zamanlı olarak analitik depoda görünür. Azure SYNAPSE Analytics 'ten, ek veri dönüştürmesi olmadan büyük ölçekli analiz, analitik depoya karşı çalıştırabilirsiniz.
 
 ### <a name="near-real-time-insights-into-your-operational-data"></a>İşletimsel verileriniz hakkında neredeyse gerçek zamanlı Öngörüler
 
@@ -75,13 +75,13 @@ Küresel olarak dağıtılmış bir Azure Cosmos DB hesabınız varsa, bir kapsa
 
 ### <a name="integration-with-azure-synapse-analytics"></a><a id="synapse-link-integration"></a>Azure SYNAPSE Analytics ile tümleştirme
 
-SYNAPSE bağlantısı ile artık Azure SYNAPSE Analytics 'ten Azure Cosmos DB kapsayıcılarınıza doğrudan bağlanabilir ve analitik depoya ayrı bağlayıcı olmadan erişebilirsiniz. Azure SYNAPSE Analytics Şu anda [Synapse Apache Spark](../synapse-analytics/spark/apache-spark-concepts.md) ve [SQL sunucusuz SYNAPSE](../synapse-analytics/sql/on-demand-workspace-overview.md)ile SYNAPSE bağlantısını desteklemektedir.
+SYNAPSE bağlantısı ile artık Azure SYNAPSE Analytics 'ten Azure Cosmos DB kapsayıcılarınıza doğrudan bağlanabilir ve analitik depoya ayrı bağlayıcı olmadan erişebilirsiniz. Azure SYNAPSE Analytics Şu anda [Synapse Apache Spark](../synapse-analytics/spark/apache-spark-concepts.md) ve [sunucusuz SQL havuzuyla](../synapse-analytics/sql/on-demand-workspace-overview.md)SYNAPSE bağlantısını desteklemektedir.
 
 Azure SYNAPSE Analytics tarafından desteklenen farklı analiz çalışma zamanları genelinde birlikte çalışabilirliğine sahip Azure Cosmos DB analitik mağazadan verileri eşzamanlı olarak sorgulayabilirsiniz. İşletimsel verileri çözümlemek için ek veri dönüştürmeleri gerekmez. Analitik depo verilerini kullanarak sorgulayabilir ve analiz edebilirsiniz:
 
 * Scala, Python, Mini SQL ve C# için tam destek içeren SYNAPSE Apache Spark. SYNAPSE Spark, veri Mühendisliği ve veri bilimi senaryolarına orta
 
-* T-SQL diliyle SQL sunucusuz ve tanıdık BI araçları desteği (örneğin, Power BI Premium vb.)
+* T-SQL diline sahip sunucusuz SQL havuzu ve tanıdık BI araçları desteği (örneğin, Power BI Premium vb.)
 
 > [!NOTE]
 > Azure SYNAPSE Analytics 'ten Azure Cosmos DB kapsayıcıınızda hem analitik hem de işlem depolarına erişebilirsiniz. Ancak, işlemsel verilerinize büyük ölçekli analiz veya tarama çalıştırmak istiyorsanız, işlem iş yüklerinde performans etkisini önlemek için analitik depo kullanmanızı öneririz.
@@ -105,7 +105,7 @@ Azure Cosmos DB için Azure SYNAPSE Analytics çalışma zamanı desteği hakkı
 
 SYNAPSE bağlantısı aşağıdaki durumlarda önerilir:
 
-* Azure Cosmos DB müşterisiyseniz ve işletimsel verileriniz üzerinde analiz, bı ve makine öğrenimi çalıştırmak istiyorsanız. Bu gibi durumlarda, SYNAPSE link, işlem mağazalarınızın sağlanan verimini etkilemeden daha tümleşik bir analiz deneyimi sağlar. Örneğin:
+* Azure Cosmos DB müşterisiyseniz ve işletimsel verileriniz üzerinde analiz, bı ve makine öğrenimi çalıştırmak istiyorsanız. Bu gibi durumlarda, SYNAPSE link, işlem mağazalarınızın sağlanan verimini etkilemeden daha tümleşik bir analiz deneyimi sağlar. Örnek:
 
   * Azure Cosmos DB işletimsel verilerinize doğrudan ayrı bağlayıcılar kullanarak analiz veya bı çalıştırıyorsanız veya
 

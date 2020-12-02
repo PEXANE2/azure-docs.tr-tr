@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: e491b89ec5e6488228dd8befed669a13842f9d15
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: a1159da782a8cb822bf726173ad0d0bcd9da844a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288553"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460900"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault için sanal ağ hizmeti uç noktaları
 
@@ -54,7 +54,7 @@ Daha fazla bilgi için bkz. [Azure Key Vault güvenlik duvarlarını ve sanal a�
 > Aşağıdaki yapılandırma sınırlamalarından haberdar olun:
 > * En fazla 127 sanal ağ kuralına ve 127 IPv4 kuralına izin verilir. 
 > * "/31" veya "/32" ön ek boyutlarını kullanan küçük adres aralıkları desteklenmez. Bunun yerine, tek tek IP adresi kurallarını kullanarak bu aralıkları yapılandırın.
-> * IP ağ kurallarına yalnızca genel IP adresleri için izin verilir. Özel ağlar için ayrılan IP adresi aralıklarına (RFC 1918 ' de tanımlandığı gibi) IP kurallarında izin verilmez. Özel ağlarda **10.** , **172.16-31** ve 192,168 ile başlayan adresler bulunur **.** 
+> * IP ağ kurallarına yalnızca genel IP adresleri için izin verilir. Özel ağlar için ayrılan IP adresi aralıklarına (RFC 1918 ' de tanımlandığı gibi) IP kurallarında izin verilmez. Özel ağlarda **10.**, **172.16-31** ve 192,168 ile başlayan adresler bulunur **.** 
 > * Şu anda yalnızca IPv4 adresleri destekleniyor.
 
 ## <a name="trusted-services"></a>Güvenilen hizmetler
@@ -71,8 +71,8 @@ Daha fazla bilgi için bkz. [Azure Key Vault güvenlik duvarlarını ve sanal a�
 |Exchange Online & SharePoint Online|[Müşteri anahtarına](/microsoft-365/compliance/customer-key-overview)sahip Azure depolama hizmeti şifrelemesi müşteri anahtarına erişime izin verin.|
 |Azure Information Protection|Azure Information Protection için kiracı anahtarına erişime izin ver [.](/azure/information-protection/what-is-information-protection)|
 |Azure App Service|[Key Vault aracılığıyla Azure Web uygulaması sertifikasını dağıtın](https://azure.github.io/AppService/2016/05/24/Deploying-Azure-Web-App-Certificate-through-Key-Vault.html).|
-|Azure SQL Veritabanı|[Azure SQL veritabanı ve Azure SYNAPSE Analytics (eski ADıYLA SQL veri ambarı) için kendi anahtarını getir desteğiyle saydam veri şifrelemesi](../../azure-sql/database/transparent-data-encryption-byok-overview.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current).|
-|Azure Storage|[Depolama Hizmeti Şifrelemesi Azure Key Vault müşteri tarafından yönetilen anahtarları kullanma](../../storage/common/customer-managed-keys-configure-key-vault.md).|
+|Azure SQL Veritabanı|[Azure SQL veritabanı ve Azure SYNAPSE Analytics için kendi anahtarını getir desteğiyle saydam veri şifrelemesi](../../azure-sql/database/transparent-data-encryption-byok-overview.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current).|
+|Azure Depolama|[Depolama Hizmeti Şifrelemesi Azure Key Vault müşteri tarafından yönetilen anahtarları kullanma](../../storage/common/customer-managed-keys-configure-key-vault.md).|
 |Azure Data Lake Store|Müşteri tarafından yönetilen bir anahtarla [Azure Data Lake Store verilerin şifrelenmesi](../../data-lake-store/data-lake-store-encryption.md) .|
 |Azure Databricks|[Hızlı, kolay ve işbirliğine dayalı Apache Spark tabanlı analiz hizmeti](/azure/databricks/scenarios/what-is-azure-databricks)|
 |Azure API Management|[MSI kullanarak Key Vault özel etki alanı için sertifika dağıtma](../../api-management/api-management-howto-use-managed-service-identity.md#use-ssl-tls-certificate-from-azure-key-vault)|

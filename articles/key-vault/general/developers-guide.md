@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 596de459b888bb9973aca1c7d72f2f9e24c966eb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6fa9f5d86d3640bf3ae0233e7d6d8a00752f5b6d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013981"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460813"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault Geliştirici Kılavuzu
 
@@ -86,14 +86,14 @@ Anahtarlar, gizlilikler ve sertifikalara erişim veri düzlemine göre denetleni
 
 | Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[Başvuru](/cli/azure/keyvault/key)<br>[Hızlı Başlangıç](../keys/quick-create-cli.md)|[Başvuru](/powershell/module/az.keyvault/)<br>[Hızlı Başlangıç](../keys/quick-create-powershell.md)|[Başvuru](/rest/api/keyvault/#key-operations)|YOK|[Başvuru](/dotnet/api/azure.security.keyvault.keys)|[Başvuru](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)<br>[Hızlı Başlangıç](../keys/quick-create-python.md)|[Başvuru](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html)|[Başvuru](/javascript/api/@azure/keyvault-keys/)|
+|[Başvuru](/cli/azure/keyvault/key)<br>[Hızlı Başlangıç](../keys/quick-create-cli.md)|[Başvuru](/powershell/module/az.keyvault/)<br>[Hızlı Başlangıç](../keys/quick-create-powershell.md)|[Başvuru](/rest/api/keyvault/#key-operations)|Yok|[Başvuru](/dotnet/api/azure.security.keyvault.keys)|[Başvuru](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)<br>[Hızlı Başlangıç](../keys/quick-create-python.md)|[Başvuru](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html)|[Başvuru](/javascript/api/@azure/keyvault-keys/)|
 
 **Sertifikalar API 'Leri ve SDK 'Ları**
 
 
 | Azure CLI | PowerShell | REST API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[Başvuru](/cli/azure/keyvault/certificate)<br>[Hızlı Başlangıç](../certificates/quick-create-cli.md)|[Başvuru](/powershell/module/az.keyvault)<br>[Hızlı Başlangıç](../certificates/quick-create-powershell.md)|[Başvuru](/rest/api/keyvault/#certificate-operations)|YOK|[Başvuru](/dotnet/api/azure.security.keyvault.certificates)|[Başvuru](/python/api/overview/azure/keyvault-certificates-readme)<br>[Hızlı Başlangıç](../certificates/quick-create-python.md)|[Başvuru](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-certificates/4.1.0/index.html)|[Başvuru](/javascript/api/@azure/keyvault-certificates/)|
+|[Başvuru](/cli/azure/keyvault/certificate)<br>[Hızlı Başlangıç](../certificates/quick-create-cli.md)|[Başvuru](/powershell/module/az.keyvault)<br>[Hızlı Başlangıç](../certificates/quick-create-powershell.md)|[Başvuru](/rest/api/keyvault/#certificate-operations)|Yok|[Başvuru](/dotnet/api/azure.security.keyvault.certificates)|[Başvuru](/python/api/overview/azure/keyvault-certificates-readme)<br>[Hızlı Başlangıç](../certificates/quick-create-python.md)|[Başvuru](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-certificates/4.1.0/index.html)|[Başvuru](/javascript/api/@azure/keyvault-certificates/)|
 
 **Gizlilikler API 'Leri ve SDK 'ları**
 
@@ -120,7 +120,7 @@ Aşağıdaki makaleler ve senaryolar Azure Key Vault çalışmak için göreve �
 - Key Vault- [Windows](../../virtual-machines/extensions/key-vault-windows.md), [Linux](../../virtual-machines/extensions/key-vault-linux.md) 'tan sanal makinelere sertifika DAĞıTMA-Azure 'da VM 'de çalışan bir bulut uygulaması, bir sertifika gerektirir. Bu sertifikayı bugün bu sanal makineye nasıl alırsınız?
 - [Azure Web App sertifikasını Key Vault aracılığıyla dağıtma](../../app-service/configure-ssl-certificate.md#import-a-certificate-from-key-vault)
 - Erişim ilkesi atama ([CLI](assign-access-policy-cli.md)  |  [PowerShell](assign-access-policy-powershell.md)  |  [portalı](assign-access-policy-portal.md)). 
-- [CLI ile geçici silme Key Vault kullanımı](soft-delete-cli.md) , anahtar kasasının kullanımı ve yaşam döngüsü boyunca ve geçici silme etkin olan çeşitli Anahtar Kasası nesnelerinde size rehberlik eder.
+- [CLI ile geçici silme Key Vault kullanımı](./key-vault-recovery.md) , anahtar kasasının kullanımı ve yaşam döngüsü boyunca ve geçici silme etkin olan çeşitli Anahtar Kasası nesnelerinde size rehberlik eder.
 - [Dağıtım sırasında güvenli değerleri (parolalar](../../azure-resource-manager/templates/key-vault-parameter.md) gibi) geçirme-dağıtım sırasında bir parametre olarak güvenli bir değer (parola gibi) iletmeniz gerektiğinde, bu değeri bir Azure Key Vault gizli olarak saklayabilir ve diğer kaynak yöneticisi şablonlarındaki değere başvurabilirsiniz.
 
 ## <a name="integrated-with-key-vault"></a>Key Vault ile tümleşik

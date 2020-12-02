@@ -11,19 +11,19 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 09/21/2020
+ms.date: 12/01/2020
 tags: azure-synapse
-ms.openlocfilehash: ab974b0f68e831e672329f8af5ae1cb6a5fdbd4c
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: c3f1209c2c903399617bd60258cc152a6ce90b80
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672078"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462059"
 ---
 # <a name="data-discovery--classification"></a>Veri Bulma ve Sınıflandırma
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Veri bulma & sınıflandırması Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE Analytics 'te yerleşiktir. Veritabanlarınızdaki hassas verileri bulmak, sınıflandırmak, etiketlemek ve raporlamak için gelişmiş yetenekler sağlar.
+Veri bulma & sınıflandırması Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE Analytics 'te yerleşiktir. Veritabanınızdaki hassas verileri bulmak, sınıflandırmak, etiketlemek ve raporlamak için gelişmiş yetenekler sağlar.
 
 En hassas verileriniz arasında işletme, finans, sağlık hizmetleri veya kişisel bilgiler bulunabilir. Bu verileri bulmak ve sınıflandırmak, kuruluşunuzun bilgi koruma yaklaşımında bir özetleme rolü oynayabilir. Şunlara altyapı sağlayabilir:
 
@@ -55,8 +55,8 @@ Bu bölümde, aşağıdaki adımlar açıklanmaktadır:
 
 Sınıflandırma iki meta veri özniteliği içerir:
 
-- **Etiketler** : sütunda depolanan verilerin duyarlılık düzeyini tanımlamak için kullanılan ana sınıflandırma öznitelikleri.  
-- **Bilgi türleri** : sütunda depolanan verilerin türü hakkında daha ayrıntılı bilgiler sağlayan öznitelikler.
+- **Etiketler**: sütunda depolanan verilerin duyarlılık düzeyini tanımlamak için kullanılan ana sınıflandırma öznitelikleri.  
+- **Bilgi türleri**: sütunda depolanan verilerin türü hakkında daha ayrıntılı bilgiler sağlayan öznitelikler.
 
 ### <a name="define-and-customize-your-classification-taxonomy"></a>Sınıflandırma taksonominizi tanımlama ve özelleştirme
 
@@ -77,7 +77,9 @@ Kuruluş genelinde ilke tanımlandıktan sonra, özelleştirilmiş ilkenizi kull
 
 1. [Azure portalına](https://portal.azure.com) gidin.
 
-1. Azure SQL veritabanı bölmesinizdeki güvenlik başlığı altında bulunan **veri bulma & sınıflandırmasına** gidin. Genel Bakış sekmesi, veritabanının geçerli sınıflandırma durumunun bir özetini içerir. Özet, yalnızca belirli şema parçalarını, bilgi türlerini ve etiketleri göstermek üzere filtreleyebileceğiniz tüm sınıflandırılan sütunların ayrıntılı bir listesini içerir. Herhangi bir sütunu henüz sınıflandırılmamış [4. adıma atlayın](#step-4).
+1. Azure SQL veritabanı bölmesinizdeki **güvenlik** başlığı altında bulunan **veri bulma & sınıflandırmasına** gidin. Genel Bakış sekmesi, veritabanının geçerli sınıflandırma durumunun bir özetini içerir. Özet, yalnızca belirli şema parçalarını, bilgi türlerini ve etiketleri göstermek üzere filtreleyebileceğiniz tüm sınıflandırılan sütunların ayrıntılı bir listesini içerir. Herhangi bir sütunu henüz sınıflandırılmamış [4. adıma atlayın](#step-4).
+
+    ![Genel Bakış](./media/data-discovery-and-classification-overview/data-discovery-and-classification.png)
 
 1. Excel biçiminde bir rapor indirmek için bölmenin üst menüsünde **dışarı aktar** ' ı seçin.
 
@@ -91,7 +93,9 @@ Kuruluş genelinde ilke tanımlandıktan sonra, özelleştirilmiş ilkenizi kull
 
    - Belirli bir sütunun önerisini kabul etmek için ilgili satırın sol sütunundaki onay kutusunu seçin. Tüm önerileri kabul edildi olarak işaretlemek için, öneriler tablosu üstbilgisindeki en soldaki onay kutusunu seçin.
 
-   - Seçili önerileri uygulamak için **Seçili önerileri kabul et** ' i seçin.
+   - Seçili önerileri uygulamak için **Seçili önerileri kabul et**' i seçin.
+
+   ![Sınıflandırma için öneriler](./media/data-discovery-and-classification-overview/recommendation.png)
 
 1. Sütunları, alternatif olarak veya öneri tabanlı sınıflandırmanın yanı sıra el ile de sınıflandırabilirsiniz:
 
@@ -101,7 +105,10 @@ Kuruluş genelinde ilke tanımlandıktan sonra, özelleştirilmiş ilkenizi kull
 
    1. Bağlam penceresinin alt kısmında **Sınıflandırma Ekle** ' yi seçin.
 
-1. Sınıflandırmanızı ve kalıcı olarak etiketlemesini (etiketleyerek) Yeni sınıflandırma meta verileri ile veritabanı sütunlarını kullanarak, pencerenin üst menüsünde **Kaydet** ' i seçin.
+   ![Sınıflandırmayı el ile Ekle](./media/data-discovery-and-classification-overview/manually-add-classification.png)
+
+
+1. Sınıflandırmanızı ve kalıcı olarak etiketlemesini (etiketleyerek) Yeni sınıflandırma meta verileri ile veritabanı sütunlarını, **Sınıflandırma** sayfasında **Kaydet** ' i seçin.
 
 ## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>Gizli verilere erişimi denetleme
 
@@ -115,7 +122,7 @@ Bu yerleşik roller bir veritabanının veri sınıflandırmasını okuyabilir:
 
 - Sahip
 - Okuyucu
-- Katılımcı
+- Katkıda Bulunan
 - SQL Güvenlik Yöneticisi
 - Kullanıcı Erişimi Yöneticisi
 

@@ -10,15 +10,15 @@ ms.subservice: sql-dw
 ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 2e76f48466d084d448cceea0490e44041e7d062e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: f61f2932ad9c6342a81ec05df335e9ea4d659fce
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85212148"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461988"
 ---
-# <a name="connect-to-synapse-sql-pool-with-sqlcmd"></a>Sqlcmd ile SYNAPSE SQL Pool 'a bağlanma
+# <a name="connect-to-sql-pool-in-azure-synapse-analytics-with-sqlcmd"></a>Sqlcmd ile Azure SYNAPSE Analytics 'te SQL havuzuna bağlanma
 
 > [!div class="op_single_selector"]
 >
@@ -32,10 +32,10 @@ Bir SQL havuzuna bağlanmak ve sorgu eklemek için [sqlcmd] [sqlcmd] komut satı
 
 ## <a name="1-connect"></a>1. Bağlan
 
-[Sqlcmd] [sqlcmd] ile çalışmaya başlamak için, komut istemi ' ni açın ve **sqlcmd** yazıp SQL havuzu veritabanınızın bağlantı dizesini girin. Bağlantı dizesi için aşağıdaki parametreler gereklidir:
+[Sqlcmd] [sqlcmd] ile çalışmaya başlamak için, komut istemi ' ni açın ve **sqlcmd** yazıp SQL havuzunuzun bağlantı dizesini girin. Bağlantı dizesi için aşağıdaki parametreler gereklidir:
 
 * **Server (-S):**`<`Sunucu Adı`>`.database.windows.net biçiminde belirtilmiş sunucu
-* **Database (-d):** Veritabanı adı.
+* **Veritabanı (-d):** SQL havuzu adı.
 * **Alıntılanmış tanımlayıcıları etkinleştir (-ı):** Bir SQL havuzu örneğine bağlanmak için tırnak işareti tanımlayıcıları etkinleştirilmelidir.
 
 SQL Server Kimlik Doğrulamasını kullanmak için kullanıcı adı/parola parametrelerini eklemeniz gerekir:

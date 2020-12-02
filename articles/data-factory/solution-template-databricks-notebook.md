@@ -11,30 +11,30 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/27/2020
-ms.openlocfilehash: f9dc11bd046bdc3a8913b4b05f1b68b84c9736c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c20508d27d03c00a6842979731fb905bbaa9def
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89438475"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461250"
 ---
 # <a name="transformation-with-azure-databricks"></a>Azure Databricks ile dönüştürme
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Bu öğreticide, Azure Data Factory **doğrulama**, **kopyalama verileri**ve **Not defteri** etkinliklerini içeren uçtan uca bir işlem hattı oluşturacaksınız.
+Bu öğreticide, Azure Data Factory **doğrulama**, **kopyalama verileri** ve **Not defteri** etkinliklerini içeren uçtan uca bir işlem hattı oluşturacaksınız.
 
 - **Doğrulama** , kopyalama ve analiz işini tetiklemeniz için kaynak veri kümenizin aşağı akış tüketimine hazırlanmasını sağlar.
 
 - **Verileri kopyalama** , kaynak veri kümesini Azure Databricks not defterinde dBFS olarak bağlanan havuz depolama alanına çoğaltır. Bu şekilde, veri kümesi Spark tarafından doğrudan tüketilebilir.
 
-- **Not defteri** , veri kümesini dönüştüren Databricks Not defterini tetikler. Ayrıca, veri kümesini işlenen bir klasöre veya Azure Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) ekler.
+- **Not defteri** , veri kümesini dönüştüren Databricks Not defterini tetikler. Ayrıca, veri kümesini işlenen bir klasöre veya Azure Azure SYNAPSE Analytics 'e ekler.
 
 Kolaylık olması için bu öğreticideki şablon, zamanlanmış bir tetikleyici oluşturmaz. Gerekirse bir tane ekleyebilirsiniz.
 
 ![İşlem hattının diyagramı](media/solution-template-Databricks-notebook/pipeline-example.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Havuzu olarak kullanılmak üzere adlı bir kapsayıcı içeren bir Azure Blob depolama hesabı `sinkdata` .
 
@@ -56,29 +56,29 @@ Bir **dönüştürme** Not defterini Databricks çalışma alanınıza aktarmak 
 
    İçeri aktarılan not defterinde, aşağıdaki kod parçacığında gösterildiği gibi **komut 5** ' e gidin.
 
-   - `<storage name>`Ve ' i `<access key>` kendi depolama bağlantı bilgileriniz ile değiştirin.
+   - `<storage name>`Ve ' i `<access key>` kendi depolama bağlantı bilgileriniz ile değiştirin.
    - Kapsayıcı ile depolama hesabını kullanın `sinkdata` .
 
     ```python
-    # Supply storageName and accessKey values  
-    storageName = "<storage name>"  
-    accessKey = "<access key>"  
+    # Supply storageName and accessKey values  
+    storageName = "<storage name>"  
+    accessKey = "<access key>"  
 
-    try:  
-      dbutils.fs.mount(  
-        source = "wasbs://sinkdata\@"+storageName+".blob.core.windows.net/",  
-        mount_point = "/mnt/Data Factorydata",  
-        extra_configs = {"fs.azure.account.key."+storageName+".blob.core.windows.net": accessKey})  
+    try:  
+      dbutils.fs.mount(  
+        source = "wasbs://sinkdata\@"+storageName+".blob.core.windows.net/",  
+        mount_point = "/mnt/Data Factorydata",  
+        extra_configs = {"fs.azure.account.key."+storageName+".blob.core.windows.net": accessKey})  
 
-    except Exception as e:  
-      # The error message has a long stack track. This code tries to print just the relevant line indicating what failed.
+    except Exception as e:  
+      # The error message has a long stack track. This code tries to print just the relevant line indicating what failed.
 
-    import re
-    result = re.findall(r"\^\s\*Caused by:\s*\S+:\s\*(.*)\$", e.message, flags=re.MULTILINE)
-    if result:
-      print result[-1] \# Print only the relevant error message
-    else:  
-      print e \# Otherwise print the whole stack trace.  
+    import re
+    result = re.findall(r"\^\s\*Caused by:\s*\S+:\s\*(.*)\$", e.message, flags=re.MULTILINE)
+    if result:
+      print result[-1] \# Print only the relevant error message
+    else:  
+      print e \# Otherwise print the whole stack trace.  
     ```
 
 1. Databricks 'e erişmek için Data Factory için bir **databricks erişim belirteci** oluşturun.
@@ -142,7 +142,7 @@ Yeni işlem hattında, çoğu ayar varsayılan değerlerle otomatik olarak yapı
 
    **Not defteri** ayarlarını denetlemek için:
   
-    1. **Ayarlar** sekmesini seçin. **Not defteri yolu**için varsayılan yolun doğru olduğundan emin olun. Doğru not defteri yolunu gözatmanıza ve seçmeniz gerekebilir.
+    1. **Ayarlar** sekmesini seçin. **Not defteri yolu** için varsayılan yolun doğru olduğundan emin olun. Doğru not defteri yolunu gözatmanıza ve seçmeniz gerekebilir.
 
        ![Not defteri yolu](media/solution-template-Databricks-notebook/notebook-settings.png)
 

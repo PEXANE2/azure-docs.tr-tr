@@ -1,6 +1,6 @@
 ---
-title: Sunucusuz SQL Havuzu (Önizleme) kullanarak Parquet dosyalarını sorgulama
-description: Bu makalede sunucusuz SQL Havuzu (Önizleme) kullanarak Parquet dosyalarını sorgulamayı öğreneceksiniz.
+title: Sunucusuz SQL havuzu kullanarak Parquet dosyalarını sorgulama
+description: Bu makalede, bir sunucusuz SQL havuzu kullanarak Parquet dosyalarını sorgulamayı öğreneceksiniz.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 97b34d85e4628c0ef01dd02d3a9be85da7f8291e
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 20bfbaeea48711a680877e4d5d8f618e84eb12d7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685622"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462572"
 ---
-# <a name="query-parquet-files-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) kullanarak Parquet dosyalarını sorgulama
+# <a name="query-parquet-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu kullanarak Parquet dosyalarını sorgulama
 
-Bu makalede, Parquet dosyalarını okuyacak sunucusuz SQL Havuzu (Önizleme) kullanarak bir sorgu yazmayı öğreneceksiniz.
+Bu makalede, Parquet dosyalarını okuyacak sunucusuz SQL havuzu kullanarak bir sorgu yazmayı öğreneceksiniz.
 
 ## <a name="quickstart-example"></a>Hızlı başlangıç örneği
 
@@ -38,8 +38,8 @@ from openrowset(
 Bu dosyaya erişebildiğinizden emin olun. Dosyanız SAS anahtarı veya özel Azure kimliğiyle korunuyorsa [SQL oturum açma için sunucu düzeyi kimlik bilgilerini](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)oluşturmanız gerekir.
 
 > [!IMPORTANT]
-> `Latin1_General_100_CI_AS_SC_UTF8`PARQUET dosyalarındaki dize DEĞERLERI UTF-8 kodlaması kullanılarak kodlandığından, bazı UTF-8 veritabanı harmanlaması (örneğin) kullandığınızdan emin olun.
-> PARQUET dosyasında metin kodlama arasında uyuşmazlık ve harmanlama beklenmeyen dönüştürme hatalarına neden olabilir.
+> `Latin1_General_100_CI_AS_SC_UTF8`PARQUET dosyalarındaki dize DEĞERLERI UTF-8 kodlaması kullanılarak kodlandığından, UTF-8 veritabanı harmanlaması (örneğin) kullandığınızdan emin olun.
+> PARQUET dosyasındaki metin kodlaması arasında uyuşmazlık var ve harmanlama beklenmeyen dönüştürme hatalarına neden olabilir.
 > Aşağıdaki T-SQL ifadesini kullanarak geçerli veritabanının varsayılan harmanlamasını kolayca değiştirebilirsiniz: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
 
 ### <a name="data-source-usage"></a>Veri kaynağı kullanımı
@@ -81,7 +81,7 @@ from openrowset(
 
 Aşağıdaki bölümlerde, çeşitli türlerdeki PARQUET dosyalarını sorgulama hakkında bilgi alabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 İlk adımınız, bir veri kaynağı ile [NYC sarı TAXI](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) depolama hesabına başvuran **bir veritabanı oluşturmaktır** . Sonra bu veritabanında [kurulum betiğini](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) yürüterek nesneleri başlatın. Bu kurulum betiği, veri kaynaklarını, veritabanı kapsamlı kimlik bilgilerini ve bu örneklerde kullanılan harici dosya biçimlerini oluşturacaktır.
 

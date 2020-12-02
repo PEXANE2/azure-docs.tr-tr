@@ -11,14 +11,14 @@ ms.date: 05/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 691cdcb525f8e9e3d1fb914372b9f62366f4bfba
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4c761404ab5a95bc0189407cc97ce779b66356fe
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85213032"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460699"
 ---
-# <a name="quickstart-create-a-synapse-sql-pool-workload-classifier-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak SYNAPSE SQL havuzu iş yükü Sınıflandırıcısı oluşturma
+# <a name="quickstart-create-a-dedicated-sql-pool-workload-classifier-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak adanmış bir SQL havuzu iş yükü Sınıflandırıcısı oluşturma
 
 Bu hızlı başlangıçta, bir iş yükü grubuna sorgu atamak için bir [iş yükü Sınıflandırıcısı](sql-data-warehouse-workload-classification.md) oluşturacaksınız.  Sınıflandırıcı, `ELTLogin` SQL kullanıcısının `DataLoads` iş yükü grubuna istek atayacaktır.   [Hızlı başlangıç: iş yükü yalıtımını yapılandırma](quickstart-configure-workload-isolation-portal.md) öğreticisini izleyin `DataLoads` .  Bu öğreticide, istekleri doğru şekilde sınıflandırmasına yardımcı olmak için WLM_LABEL seçeneği ile bir iş yükü Sınıflandırıcısı oluşturulur.  Sınıflandırıcı, `HIGH` Bu isteklere de [iş yükü önem derecesini](sql-data-warehouse-workload-importance.md) atayacaktır.
 
@@ -31,16 +31,16 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 [Azure portalında](https://portal.azure.com/) oturum açın.
 
 > [!NOTE]
-> Azure SYNAPSE Analytics 'te bir SQL havuzu örneği oluşturmak, yeni bir faturalanabilir hizmetle sonuçlanabilir.  Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+> Azure SYNAPSE Analytics 'te adanmış bir SQL havuzu örneği oluşturmak, yeni bir faturalanabilir hizmetle sonuçlanabilir.  Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu hızlı başlangıç, SYNAPSE SQL 'de zaten bir SQL havuzu örneğiniz olduğunu ve DENETIM VERITABANı izinlerine sahip olduğunuzu varsayar. Gerekiyorsa **mySampleDataWarehouse** adlı bir veri ambarı oluşturmak için [Oluşturma ve Bağlanma - portal](create-data-warehouse-portal.md) bölümünü kullanabilirsiniz.
+Bu hızlı başlangıçta, DENETIM VERITABANı izinlerine sahip olduğunuz adanmış bir SQL havuzu örneği zaten var. Bir tane oluşturmanız gerekiyorsa, **Mysampledatawarehouse** adlı özel bir SQL havuzu oluşturmak için [Oluştur ve Bağlan-Portal](create-data-warehouse-portal.md) ' ı kullanın.
 <br><br>
 Bir iş yükü grubu `DataLoads` var.  İş yükü grubunu oluşturmak için [hızlı başlangıç: iş yükü yalıtımı yapılandırma](quickstart-configure-workload-isolation-portal.md) öğreticisini inceleyin.
 <br><br>
 >[!IMPORTANT] 
->İş yükü yönetimini yapılandırmak için SQL havuzunuzun çevrimiçi olması gerekir. 
+>İş yükü yönetimini yapılandırmak için adanmış SQL havuzunuzun çevrimiçi olması gerekir. 
 
 
 ## <a name="create-a-login-for-eltlogin"></a>ELTLogin için oturum açma oluşturma
@@ -57,7 +57,7 @@ END
 
 ## <a name="create-user-and-grant-permissions"></a>Kullanıcı oluşturma ve izin verme
 
-Oturum açma oluşturulduktan sonra, veritabanında bir kullanıcının oluşturulması gerekir.  Mysampledatawarehouse içinde SQL kullanıcısını oluşturmak için [Kullanıcı oluşturma](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ' yı kullanın `ELTRole` . **mySampleDataWarehouse**  Bu öğretici sırasında sınıflandırmayı test edeceğiz, `ELTLogin` **Mysampledatawarehouse**için izin verin. 
+Oturum açma oluşturulduktan sonra, veritabanında bir kullanıcının oluşturulması gerekir.  Mysampledatawarehouse içinde SQL kullanıcısını oluşturmak için [Kullanıcı oluşturma](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ' yı kullanın `ELTRole` . **mySampleDataWarehouse**  Bu öğretici sırasında sınıflandırmayı test edeceğiz, `ELTLogin` **Mysampledatawarehouse** için izin verin. 
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = 'ELTLogin')
@@ -72,27 +72,26 @@ END
 Sınıflandırma, istekleri bir dizi kurala göre iş yükü grubuna yönlendirmenize olanak tanır.  [Hızlı başlangıç: iş yükü yalıtımı yapılandırma](quickstart-configure-workload-isolation-portal.md) öğreticisini `DataLoads` iş yükü grubunu oluşturduk.  Artık sorguları iş yükü grubuna yönlendirmek için bir iş yükü Sınıflandırıcısı oluşturacaksınız `DataLoads` .
 
 
-1.  Azure portal sol sayfasında **Azure SYNAPSE Analytics (eski ADıYLA SQL DW)** seçeneğine tıklayın.
-2.  **Azure SYNAPSE Analytics (eski ADıYLA SQL DW)** sayfasından **mysampledatawarehouse** öğesini seçin. SQL Havuzu açılır.
-3.  **Iş yükü yönetimi**' ne tıklayın.
+1.  **Mysampledatawarehouse** adanmış SQL havuzu sayfanıza gidin.
+3.  **Iş yükü yönetimi**' ni seçin.
 
     ![Tıklama menüsü](./media/quickstart-create-a-workload-classifier-portal/menu.png)
 
-4.  İş yükü grubunun sağ tarafındaki **ayarlar & sınıflandırıcılar** ' ne tıklayın `DataLoads` .
+4.  İş yükü grubunun sağ tarafında bulunan **sınıflandırıcılar & ayarlar** ' ı seçin `DataLoads` .
 
     ![Oluştur’a tıklayın](./media/quickstart-create-a-workload-classifier-portal/settings-classifiers.png)
 
-5. **Sınıflandırıcılar**' ne tıklayın.
-6. **Sınıflandırıcı Ekle**' ye tıklayın.
+5. Sınıflandırıcılar sütunu altında  **Yapılandırılmadı** ' ı seçin.
+6. **+ Sınıflandırıcı Ekle**' yi seçin.
 
     ![Ekle'ye tıklayın.](./media/quickstart-create-a-workload-classifier-portal/add-wc.png)
 
-7.  `ELTLoginDataLoads` **Ad**için girin.
-8.  `ELTLogin` **Üye**için girin.
-9.  `High` **İstek önemi**için seçin.  *Isteğe bağlı*, normal önem varsayılandır.
-10. `fact_loads` **Etiket**için girin.
-11. **Ekle**'ye tıklayın.
-12. **Kaydet**’e tıklayın.
+7.  `ELTLoginDataLoads` **Ad** için girin.
+8.  `ELTLogin` **Üye** için girin.
+9.  `High` **İstek önemi** için seçin.  *Isteğe bağlı*, normal önem varsayılandır.
+10. `fact_loads` **Etiket** için girin.
+11. **Ekle**’yi seçin.
+12. **Kaydet**’i seçin.
 
     ![Yapılandırma ' ya tıklayın](./media/quickstart-create-a-workload-classifier-portal/config-wc.png)
 
@@ -135,8 +134,6 @@ WHERE [label] = 'fact_loads'
 ORDER BY submit_time DESC
 ```
 
-
-
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 `ELTLoginDataLoads`Bu öğreticide oluşturulan iş yükü sınıflandırıcısını silmek için:
@@ -152,24 +149,20 @@ ORDER BY submit_time DESC
 
     ![Kaydet’e tıklayın.](./media/quickstart-create-a-workload-classifier-portal/delete-save-wc.png)
 
-Veri ambarı birimleri ve veri Ambarınızda depolanan veriler için ücret ödersiniz. Bu işlem ve depolama alanı kaynakları ayrı ayrı faturalandırılır.
+Veri ambarı birimleri ve adanmış SQL havuzunuzdaki depolanan veriler için ücretlendiriliyorsunuz. Bu işlem ve depolama alanı kaynakları ayrı ayrı faturalandırılır.
 
-- Verileri depoda tutmak istiyorsanız, veri ambarını kullanmadığınız zamanlarda işlemi duraklatabilirsiniz. İşlem duraklatıldığında yalnızca veri depolama alanı için ücret ödersiniz. Verilerle çalışmaya hazırsanız, işlem işlemini sürdürmeniz gerekir.
-- Gelecekteki ücretlendirmeleri kaldırmak istiyorsanız, veri ambarını silebilirsiniz.
+- Verileri depolamada tutmak istiyorsanız, adanmış SQL havuzunuzu kullanmadığınız zaman, işlem duraklatabilirsiniz. İşlem duraklatıldığında yalnızca veri depolama alanı için ücret ödersiniz. Verilerle çalışmaya hazırsanız, işlem işlemini sürdürmeniz gerekir.
+- Gelecekteki ücretleri kaldırmak istiyorsanız, adanmış SQL havuzunuzu silebilirsiniz.
 
 Kaynakları temizlemek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com)oturum açın, veri Ambarınızda öğesini seçin.
+1. [Azure Portal](https://portal.azure.com)oturum açın, adanmış SQL havuzunuzu seçin.
 
     ![Kaynakları temizleme](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
-2. İşlem duraklatmak için **Duraklat** düğmesini seçin. Veri ambarı duraklatıldığında, bir **Başlat** düğmesi görürsünüz.  İşlem işlemini sürdürmesini sağlamak için **Başlat**' ı seçin.
+2. İşlem duraklatmak için **Duraklat** düğmesini seçin. Adanmış SQL havuzu duraklatıldığında, bir **Başlat** düğmesi görürsünüz.  İşlem işlemini sürdürmesini sağlamak için **Başlat**' ı seçin.
 
-3. İşlem veya depolama için ücretlendirilmemek üzere veri ambarını kaldırmak için **Sil**' i seçin.
-
-4. Oluşturduğunuz SQL Server 'ı kaldırmak için önceki görüntüde **sqlpoolservername.Database.Windows.net** ' ı seçin ve **Sil**' i seçin.  Sunucuyu silmek sunucuyla ilişkili tüm veritabanlarını da sileceğinden bu silme işlemini gerçekleştirirken dikkatli olun.
-
-5. Kaynak grubunu kaldırmak için **Myresourcegroup**' ı seçin ve **kaynak grubunu sil**' i seçin.
+3. İşlem veya depolama için ücretlendirilmemek üzere adanmış SQL havuzunu kaldırmak için **Sil**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

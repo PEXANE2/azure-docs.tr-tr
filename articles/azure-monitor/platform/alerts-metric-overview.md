@@ -4,12 +4,12 @@ description: Ölçüm uyarıları ile yapabileceklerinize ve bunların Azure Izl
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 3581c1f1660527bfbf2ae598349e30001962b1b4
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 066ffff5979e658a7c06fe10bd668a9fac839a14
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342187"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460836"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure İzleyici'de ölçüm uyarılarının nasıl çalıştığını anlama
 
@@ -122,7 +122,7 @@ Geri arama sürelerini ve ihlallerin sayısını artırmak, uyarıların yalnız
 
 > [!NOTE]
 >
-> Aşağıdaki durumlarda, eklenen zaman serisinin ilk değerlendirmesinin oluşma olasılığını azaltmak için *değerlendirme sıklığından*daha büyük bir *toplama ayrıntı düzeyi (süre)* seçmeyi öneririz:
+> Aşağıdaki durumlarda, eklenen zaman serisinin ilk değerlendirmesinin oluşma olasılığını azaltmak için *değerlendirme sıklığından* daha büyük bir *toplama ayrıntı düzeyi (süre)* seçmeyi öneririz:
 > - Birden çok boyutu izleyen ölçüm uyarısı kuralı – yeni bir boyut değer birleşimi eklendiğinde
 > - Birden çok kaynağı izleyen ölçüm uyarısı kuralı: kapsama yeni bir kaynak eklendiğinde
 > - Sürekli olarak (seyrek ölçüm) yayınlanmayan bir ölçüyü izleyen ölçüm uyarısı kuralı: ölçüm, kendisine yayılmadığı 24 saatten daha uzun bir süre sonra yayınlandığında
@@ -176,6 +176,7 @@ Desteklenen kaynak türlerinin tam listesini bu [makalede](./alerts-metric-near-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure 'da ölçüm uyarılarını oluşturma, görüntüleme ve yönetme hakkında bilgi edinin](alerts-metric.md)
+- [Azure montior Ölçüm Gezgini içinde uyarı oluşturma hakkında bilgi edinin](./metrics-charts.md#create-alert-rules)
 - [Azure Resource Manager şablonlarını kullanarak ölçüm uyarılarını dağıtmayı öğrenin](./alerts-metric-create-templates.md)
 - [Eylem grupları hakkında daha fazla bilgi edinin](action-groups.md)
 - [Dinamik eşikler durum türü hakkında daha fazla bilgi edinin](alerts-dynamic-thresholds.md)

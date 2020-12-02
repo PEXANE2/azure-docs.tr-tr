@@ -1,5 +1,5 @@
 ---
-title: Azure Resource Manager şablonu kullanarak bir SQL havuzu oluşturma
+title: Azure Resource Manager şablonu kullanarak adanmış bir SQL Havuzu (eski adıyla SQL DW) oluşturun
 description: Azure Resource Manager şablonu kullanarak Azure SYNAPSE Analytics SQL havuzu oluşturmayı öğrenin.
 services: azure-resource-manager
 author: julieMSFT
@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 06/09/2020
-ms.openlocfilehash: 29d4e4d696b34aa493714c870ebb466f491c47fe
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 70adb7409c44a79345a192df173a1a073cc9b7dd
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88641883"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460741"
 ---
-# <a name="quickstart-create-an-azure-synapse-analytics-sql-pool-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak Azure SYNAPSE Analytics SQL havuzu oluşturma
+# <a name="quickstart-create-an-azure-synapse-analytics-dedicated-sql-pool-formerly-sql-dw-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak Azure SYNAPSE Analytics adanmış SQL Havuzu (eski adıyla SQL DW) oluşturma
 
-Bu Azure Resource Manager şablonu (ARM şablonu), Saydam Veri Şifrelemesi etkin bir Azure SYNAPSE Analytics SQL havuzu oluşturacak. SYNAPSE SQL havuzu, Azure SYNAPSE 'de genel kullanıma sunulan kurumsal veri ambarı özelliklerini ifade eder.
+Bu Azure Resource Manager şablonu (ARM şablonu), Saydam Veri Şifrelemesi etkin bir adanmış SQL Havuzu (eski adıyla SQL DW) oluşturacak. Adanmış SQL Havuzu (eski adıyla SQL DW), Azure SYNAPSE 'da genel kullanıma sunulan kurumsal veri ambarı özelliklerine başvurur.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -41,7 +41,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-1. Azure 'da oturum açmak ve şablonu açmak için aşağıdaki görüntüyü seçin. Bu şablon bir Synapse SQL havuzu oluşturur.
+1. Azure 'da oturum açmak ve şablonu açmak için aşağıdaki görüntüyü seçin. Bu şablon adanmış bir SQL Havuzu (eski adıyla SQL DW) oluşturur.
    
    [![Azure’a dağıtın](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-sql-data-warehouse-transparent-encryption-create%2Fazuredeploy.json)
 
@@ -53,7 +53,7 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
    * **SQL Server adı**: varsayılan adı kabul edin veya SQL Server adı için bir ad girin.
    * **SQL Yöneticisi oturum açma**: SQL Server için yönetici kullanıcı adını girin.
    * **SQL yönetici parolası**: SQL Server için yönetici parolasını girin.
-   * **Veri ambarı adı**: bir SQL havuzu adı girin.
+   * **Veri ambarı adı**: ADANMıŞ bir SQL havuzu adı girin.
    * **Saydam veri şifrelemesi**: varsayılan, etkin ' i kabul edin. 
    * **Hizmet düzeyi hedefi**: varsayılan, DW400c kabul edin.
    * **Konum**: kaynak grubunun varsayılan konumunu kabul edin.
@@ -67,7 +67,7 @@ Dağıtılan kaynakları denetlemek için Azure portal kullanabilir ya da dağı
 # <a name="cli"></a>[CLI](#tab/CLI)
 
 ```azurecli-interactive
-echo "Enter the resource group where your Synapse SQL pool exists:" &&
+echo "Enter the resource group where your dedicated SQL pool (formerly SQL DW) exists:" &&
 read resourcegroupName &&
 az resource list --resource-group $resourcegroupName 
 ```
@@ -75,7 +75,7 @@ az resource list --resource-group $resourcegroupName
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
 ```azurepowershell-interactive
-$resourceGroupName = Read-Host -Prompt "Enter the resource group name where your SQL pool account exists"
+$resourceGroupName = Read-Host -Prompt "Enter the resource group name where your dedicated SQL pool (formerly SQL DW) account exists"
 (Get-AzResource -ResourceType "Microsoft.Sql/servers/databases" -ResourceGroupName $resourceGroupName).Name
  Write-Host "Press [ENTER] to continue..."
 ```
@@ -107,7 +107,7 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, ARM şablonunu kullanarak bir Azure SYNAPSE Analytics SQL havuzu oluşturdunuz ve dağıtımı doğruladı. Azure SYNAPSE Analytics ve Azure Resource Manager hakkında daha fazla bilgi edinmek için aşağıdaki makalelere devam edin.
+Bu hızlı başlangıçta, ARM şablonunu kullanarak adanmış bir SQL Havuzu (eski adıyla SQL DW) oluşturdunuz ve dağıtımı doğruladı. Azure SYNAPSE Analytics ve Azure Resource Manager hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın.
 
 - [Azure SYNAPSE Analytics 'e genel bakış](sql-data-warehouse-overview-what-is.md) konusunu okuyun
 - [Azure Resource Manager](../../azure-resource-manager/management/overview.md) hakkında daha fazla bilgi edinin

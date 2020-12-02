@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.custom: how-to, data4ml
-ms.openlocfilehash: e97546e678b3b7bf7932600ea53d09557493685c
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 554c815e6384115d56611e497f49a2c97ed15e38
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359876"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461444"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Azure Machine Learning Studio ile verilere bağlanma
 
@@ -118,7 +118,7 @@ Veri ayarlanmış olup olmadığını doğrulamak için veri kümesi genelinde �
 |Tür dağılımı| Bir sütun içindeki türlerin satır içi değer sayısı. Null değerler kendi türlerdir, bu nedenle bu görselleştirme tek veya eksik değerleri algılamak için yararlıdır.
 |Tür|Sütunun Çıkarsanan türü. Olası değerler şunlardır: dizeler, Boole değerleri, tarihler ve ondalıklar.
 |Min| Sütunun minimum değeri. Boş girdiler, türü bir devralınan sıralamaya (örneğin, Boolean) sahip olmayan özellikler için görünür.
-|En yüksek değer| Sütunun en büyük değeri. 
+|Maks| Sütunun en büyük değeri. 
 |Count| Sütundaki eksik ve eksik olmayan girdilerin toplam sayısı.
 |Eksik sayı yok| Sütundaki eksik girdi sayısı. Boş dizeler ve hatalar değer olarak değerlendirilir ve bu nedenle "eksik sayısı" öğesine katkıda bulunmazlar.
 |Dağılım Dilimleri| Verilerin dağıtılması hakkında bir fikir sağlamak için her bir satışla yaklaşık değerler.
@@ -138,9 +138,9 @@ Veri depolama hesabınız bir **Sanal ağda** ise Azure Machine Learning veriler
 
 ### <a name="access-validation"></a>Erişim doğrulaması
 
-**İlk veri deposu oluşturma ve kayıt sürecinin bir parçası olarak** , Azure Machine Learning otomatik olarak temel alınan depolama hizmetinin olduğunu ve belirtilen kullanıcının (Kullanıcı adı, hizmet sorumlusu veya SAS belirteci) belirtilen depolama alanına erişimi olduğunu doğrular.
+**İlk veri deposu oluşturma ve kayıt sürecinin bir parçası olarak**, Azure Machine Learning otomatik olarak temel alınan depolama hizmetinin olduğunu ve belirtilen kullanıcının (Kullanıcı adı, hizmet sorumlusu veya SAS belirteci) belirtilen depolama alanına erişimi olduğunu doğrular.
 
-**Veri deposu oluşturulduktan sonra** , bu doğrulama yalnızca, veri deposu nesneleri her alınışında **değil** , temeldeki depolama kapsayıcısına erişim gerektiren yöntemler için gerçekleştirilir. Örneğin, veri deposundan dosyaları indirmek isterseniz doğrulama gerçekleşir; ancak yalnızca varsayılan veri deposundan değişiklik yapmak istiyorsanız doğrulama gerçekleşmez.
+**Veri deposu oluşturulduktan sonra**, bu doğrulama yalnızca, veri deposu nesneleri her alınışında **değil** , temeldeki depolama kapsayıcısına erişim gerektiren yöntemler için gerçekleştirilir. Örneğin, veri deposundan dosyaları indirmek isterseniz doğrulama gerçekleşir; ancak yalnızca varsayılan veri deposundan değişiklik yapmak istiyorsanız doğrulama gerçekleşmez.
 
 Temel depolama hizmetine erişiminizin kimliğini doğrulamak için, oluşturmak istediğiniz veri deposu türüne göre hesap anahtarınızı, paylaşılan erişim imzaları (SAS) belirteçlerini veya hizmet sorumlusunu sağlayabilirsiniz. [Depolama türü matrisi](how-to-access-data.md#matrix) , her veri deposu türüne karşılık gelen desteklenen kimlik doğrulama türlerini listeler.
 
@@ -160,7 +160,7 @@ Hesap anahtarını, SAS belirtecini ve hizmet sorumlusu bilgilerini [Azure Porta
 
 ### <a name="permissions"></a>İzinler
 
-Azure Blob kapsayıcısı ve Azure Data Lake Gen 2 depolaması için, kimlik doğrulama kimlik bilgilerinizin **Depolama Blobu veri okuyucusu** erişimi olduğundan emin olun. [Depolama Blobu veri okuyucu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader)hakkında daha fazla bilgi edinin. Hesap SAS belirteci varsayılan olarak izin vermez. 
+Azure Blob kapsayıcısı ve Azure Data Lake Gen 2 depolaması için, kimlik doğrulama kimlik bilgilerinizin **Depolama Blobu veri okuyucusu** erişimi olduğundan emin olun. [Depolama Blobu veri okuyucu](../role-based-access-control/built-in-roles.md#storage-blob-data-reader)hakkında daha fazla bilgi edinin. Hesap SAS belirteci varsayılan olarak izin vermez. 
 * Veri **okuma erişimi** için kimlik doğrulama kimlik bilgileriniz, kapsayıcılar ve nesneler için en az liste ve okuma izinlerine sahip olmalıdır. 
 
 * Veri **yazma erişimi** için, yazma ve ekleme izinleri de gereklidir.

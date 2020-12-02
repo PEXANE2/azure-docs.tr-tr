@@ -1,6 +1,6 @@
 ---
 title: Paylaşılan meta veri tabloları
-description: Azure SYNAPSE Analytics, sunucusuz Apache Spark havuzunda tablo oluşturmak, verileri çoğaltmadan sunucusuz SQL havuzundan (Önizleme) ve adanmış SQL havuzundan erişilebilir hale getirir.
+description: Azure SYNAPSE Analytics, sunucusuz Apache Spark havuzunda tablo oluşturmak, verileri çoğaltmadan sunucusuz SQL havuzundan ve adanmış SQL havuzundan erişilebilir hale getirir.
 services: sql-data-warehouse
 author: MikeRys
 ms.service: synapse-analytics
@@ -10,18 +10,17 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f269217908bea4b5e8ef3c0004a9cec9d5d682c7
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 9ee18edd563d94a85dedf48b7a4d6df394c09707
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314531"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461380"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure SYNAPSE Analytics paylaşılan meta veri tabloları
 
-[!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
 
-Azure SYNAPSE Analytics, farklı çalışma alanı hesaplama altyapılarının, Apache Spark havuzları (Önizleme) ve sunucusuz SQL Havuzu (Önizleme) arasında veritabanlarını ve Parquet tarafından desteklenen tabloları paylaşmasına izin verir.
+Azure SYNAPSE Analytics, farklı çalışma alanı hesaplama altyapılarının, Apache Spark havuzları ve sunucusuz SQL havuzu arasında veritabanlarını ve Parquet tarafından desteklenen tabloları paylaşmasına izin verir.
 
 Bir Spark işi tarafından bir veritabanı oluşturulduktan sonra, depolama biçimi olarak Parquet kullanan Spark ile birlikte tablo oluşturabilirsiniz. Bu tablolar, Azure SYNAPSE çalışma alanı Spark havuzlarından herhangi biri tarafından sorgulanarak hemen kullanılabilir hale gelir. Bunlar ayrıca, izinlerle ilgili Spark işlerinin herhangi birinden de kullanılabilir.
 
@@ -87,9 +86,9 @@ Spark tabloları, SYNAPSE SQL altyapılarından farklı veri türleri sağlar. A
 
 Spark veritabanlarının ve tablolarının yanı sıra SQL altyapısındaki eşitlenmiş temsiller, temel alınan depolama düzeyinde güvenlik altına alınacaktır. Şu anda nesnelerin kendileri üzerinde izinleri olmadığından, nesneler Nesne Gezgini 'nde görülebilir.
 
-Yönetilen bir tablo oluşturan güvenlik sorumlusu, bu tablonun sahibi olarak değerlendirilir ve tablodaki tüm haklara ve temel klasör ve dosyalara sahip olur. Ayrıca, veritabanının sahibi otomatik olarak tablonun ikincil sahibi olur.
+Yönetilen tabloyu oluşturan güvenlik sorumlusu o tablonun sahibi kabul edilir ve hem o tablo hem de temel klasörler ve dosyalar üzerinde tüm haklara sahip olur. Buna ek olarak, veritabanının sahibi otomatik olarak tablonun ikincil sahibi olur.
 
-Kimlik doğrulaması geçişli bir Spark veya SQL dış tablosu oluşturursanız, veriler yalnızca klasör ve dosya düzeylerinde güvenlidir. Birisi bu tür bir dış tabloyu sorgullarsa, sorgu gönderenin güvenlik kimliği dosya sistemine geçirilir ve bu da erişim haklarını kontrol eder.
+Kimlik doğrulaması geçişiyle bir Spark veya SQL dış tablosu oluşturursanız, veriler yalnızca klasör ve dosya düzeylerinde güvenlik altına alır. Birisi bu tür bir dış tabloyu sorgularsa, sorguyu gönderenin güvenlik kimliği dosya sistemine geçirilir ve orada erişim hakları denetlenir.
 
 Klasörler ve dosyalar üzerinde izinlerin nasıl ayarlanacağı hakkında daha fazla bilgi için bkz. [Azure SYNAPSE Analytics Shared Database](database.md).
 

@@ -16,12 +16,12 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/13/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e8258aeef33be9192608f0d4cb29b46f08da64e2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f8de6389a04448579672b84e91f0bb4dd0f4ce2
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89010639"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460474"
 ---
 # <a name="token-based-http2-authentication-for-apns"></a>APNS için belirteç tabanlı (HTTP/2) kimlik doğrulaması
 
@@ -52,7 +52,7 @@ Belirteç tabanlı kimlik doğrulamasını etkinleştirmek için Apple geliştir
 
 ### <a name="key-identifier"></a>Anahtar tanımlayıcı
 
-Anahtar tanımlayıcısı, Apple geliştirici hesabınızdaki **Sertifikalar, tanımlayıcılar & profiller**altında bulunan **anahtarlar** sayfasından elde edilebilir:
+Anahtar tanımlayıcısı, Apple geliştirici hesabınızdaki **Sertifikalar, tanımlayıcılar & profiller** altında bulunan **anahtarlar** sayfasından elde edilebilir:
 
 ![Sertifikalar](./media/notification-hubs-push-notification-http2-token-authentification/keys.png)
 
@@ -78,7 +78,7 @@ Belirteç tabanlı kimlik bilgileri aşağıdaki alanlardan oluşur:
 
 * **Anahtar kimliği**: Apple geliştirici portalında oluşturulan özel anahtarın tanımlayıcısı; Örneğin, `2USFGKSKLT` .
 * **EKIP kimliği**: "önek" veya "uygulama öneki" olarak da bilinir. Bu, Apple geliştirici portalındaki kuruluşun tanımlayıcısıdır; Örneğin, `S4V3D7CHJR` .
-* **Paket kimliği**: "uygulama kimliği" olarak da adlandırılır. Bu, uygulamanın paket tanıtıcısıdır; Örneğin, `com.example.myapp` . Birçok uygulama için bir anahtar kullanabileceğinizi unutmayın. Bu değer `apns-topic` bir bildirim gönderilirken http üstbilgisiyle eşlenir ve belirli bir uygulamayı hedeflemek için kullanılır. Açıkça değerini ayarlayamayacağınızı unutmayın `apns-topic` .
+* **Paket kimliği**: "uygulama kimliği" olarak da adlandırılır. Bu, uygulamanın paket tanıtıcısıdır; Örneğin, `com.example.myapp` . Yalnızca bir uygulama için tek bir anahtar kullanabileceğinizi unutmayın. Bu değer `apns-topic` bir bildirim gönderilirken http üstbilgisiyle eşlenir ve belirli bir uygulamayı hedeflemek için kullanılır. Açıkça değer ayarlayamazsınız `apns-topic` .
 * **Belirteç**: "Key" veya "Private Key" olarak da bilinir. Bu, Apple geliştirici portalında oluşturulan. P8 dosyasından elde edilir. Anahtarın APNS etkin olmalıdır (anahtar oluşturulurken Apple Geliştirici Portalında seçilir). Değer, NH portalına/API 'sine girdiğinizde PEM üst bilgisi/alt bilgisinin bu kümeden çıkarılır.
 * **Uç nokta**: bu, Notification Hubs portalı dikey PENCERESINDE ve API 'deki bir dize alanından bir geçiş yapar. Geçerli değerler veya ' dir `https://api.development.push.apple.com:443/3/device` `https://api.sandbox.push.apple.com:443/3/device` . Notification Hubs, bildirim göndermek için üretim veya Sandbox ortamı için bu değeri kullanır. Bu, `aps-environment` uygulamadaki yetkilendirmeler ile eşleşmelidir; Aksi takdirde, oluşturulan APNs cihaz belirteçleri ortamla eşleşmez ve bildirimler gönderilemez.
 

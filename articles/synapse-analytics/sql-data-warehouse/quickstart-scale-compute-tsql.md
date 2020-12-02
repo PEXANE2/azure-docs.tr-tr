@@ -1,6 +1,6 @@
 ---
-title: "Hızlı başlangıç: Azure SYNAPSE Analytics 'te ölçeği işleme-T-SQL"
-description: T-SQL ve SQL Server Management Studio (SSMS) kullanarak Azure SYNAPSE Analytics 'te işlem ölçeğini ölçeklendirin. Daha iyi performans için işlemin ölçeğini genişletin veya maliyet tasarrufu sağlamak için işlemin ölçeğini geri daraltın.
+title: 'Hızlı başlangıç: adanmış SQL havuzunda (eski adıyla SQL DW) işlem ölçeklendirme-T-SQL'
+description: T-SQL ve SQL Server Management Studio (SSMS) kullanarak adanmış SQL havuzunda (eski adıyla SQL DW) işlem ölçeğini ölçeklendirin. Daha iyi performans için işlemin ölçeğini genişletin veya maliyet tasarrufu sağlamak için işlemin ölçeğini geri daraltın.
 services: synapse-analytics
 author: Antvgski
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: d11474a3f3b5d8c314f67260fddbbe0a98fe5196
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 37033e3c5f388d1a55a122899114914e661565f6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91569894"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460237"
 ---
-# <a name="quickstart-scale-compute-in-azure-synapse-analytics-using-t-sql"></a>Hızlı başlangıç: T-SQL kullanarak Azure SYNAPSE Analytics 'te işlem ölçekleme
+# <a name="quickstart-scale-compute-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-using-t-sql"></a>Hızlı başlangıç: T-SQL kullanarak Azure SYNAPSE Analytics 'te adanmış SQL Havuzu (eski adıyla SQL DW) için işlem ölçekleme
 
-T-SQL ve SQL Server Management Studio (SSMS) kullanarak Azure SYNAPSE Analytics 'te (eski adıyla SQL DW) işlem ölçeğini ölçeklendirin. Daha iyi performans için [işlemin ölçeğini genişletin](sql-data-warehouse-manage-compute-overview.md) veya maliyet tasarrufu sağlamak için işlemin ölçeğini geri daraltın.
+T-SQL ve SQL Server Management Studio (SSMS) kullanarak adanmış SQL havuzunda (eski adıyla SQL DW) işlem ölçeğini ölçeklendirin. Daha iyi performans için [işlemin ölçeğini genişletin](sql-data-warehouse-manage-compute-overview.md) veya maliyet tasarrufu sağlamak için işlemin ölçeğini geri daraltın.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -28,9 +28,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)’nun (SSMS) en yeni sürümünü indirin ve yükleyin.
 
-## <a name="create-a-data-warehouse"></a>Veri ambarı oluşturma
+## <a name="create-a-dedicated-sql-pool-formerly-sql-dw"></a>Adanmış bir SQL havuzu oluştur (eski adıyla SQL DW)
 
-[Hızlı Başlangıç: Oluşturma ve bağlanma - portal](create-data-warehouse-portal.md) bölümünü kullanarak **mySampleDataWarehouse** adlı bir veri ambarı oluşturun. Bir güvenlik duvarı kuralınız olduğundan ve SQL Server Management Studio içinden veri ambarınıza bağlanabildiğinizden emin olmak için hızlı başlangıcı doldurun.
+**Mysampledatawarehouse** adlı özel bir SQL Havuzu (eskı ADıYLA SQL DW) oluşturmak Için [hızlı başlangıç: oluşturma ve bağlanma-Portal](create-data-warehouse-portal.md) 'ı kullanın. Bir güvenlik duvarı kuralınız olduğundan ve SQL Server Management Studio içinden adanmış SQL havuzunuza (eski adıyla SQL DW) bağlanabildiğinizden emin olmak için hızlı başlangıcı doldurun.
 
 ## <a name="connect-to-the-server-as-server-admin"></a>Sunucu yöneticisi olarak sunucuya bağlanma
 
@@ -58,11 +58,11 @@ Bu bölümde Azure SQL sunucunuzla bağlantı kurmak için [SQL Server Managemen
 
 ## <a name="view-service-objective"></a>Hizmet hedefini görüntüleme
 
-Hizmet hedefi ayarı, veri ambarı için veri ambarı birimleri sayısını içerir.
+Hizmet hedefi ayarı, adanmış SQL havuzunun veri ambarı birimi sayısını (eski adıyla SQL DW) içerir.
 
-Veri ambarınız için geçerli veri ambarı birimlerini görüntülemek için:
+Adanmış SQL havuzunuzun (eski adıyla SQL DW) geçerli veri ambarı birimlerini görüntülemek için:
 
-1. **MySampleDataWarehouseservername.Database.Windows.net**bağlantısı altında **sistem veritabanları**' nı genişletin.
+1. **MySampleDataWarehouseservername.Database.Windows.net** bağlantısı altında **sistem veritabanları**' nı genişletin.
 2. **master** seçeneğine sağ tıklayıp **Yeni Sorgu**’yu seçin. Yeni bir sorgu penceresi açılır.
 3. sys.database_service_objectives dinamik yönetim görünümünden seçim yapmak için aşağıdaki sorguyu çalıştırın.
 
@@ -85,7 +85,7 @@ Veri ambarınız için geçerli veri ambarı birimlerini görüntülemek için:
 
 ## <a name="scale-compute"></a>Hesaplamayı ölçeklendirme
 
-Azure SYNAPSE ' de, veri ambarı birimlerini ayarlayarak işlem kaynaklarını artırabilir veya azaltabilirsiniz. [Oluşturma ve Bağlanma - portal](create-data-warehouse-portal.md) bölümünde **mySampleDataWarehouse** oluşturuldu ve 400 DWU ile başlatıldı. Aşağıdaki adımlar, **mySampleDataWarehouse** için DWU’ları ayarlar.
+Adanmış SQL havuzunda (eski adıyla SQL DW), veri ambarı birimlerini ayarlayarak işlem kaynaklarını artırabilir veya azaltabilirsiniz. [Oluşturma ve Bağlanma - portal](create-data-warehouse-portal.md) bölümünde **mySampleDataWarehouse** oluşturuldu ve 400 DWU ile başlatıldı. Aşağıdaki adımlar, **mySampleDataWarehouse** için DWU’ları ayarlar.
 
 Veri ambarı birimlerini değiştirmek için:
 
@@ -130,13 +130,13 @@ Hizmet nesnesi değişiklik durumunu yoklamak için:
 
     ![İşlem durumu](./media/quickstart-scale-compute-tsql/polling-output.png)
 
-## <a name="check-data-warehouse-state"></a>Veri ambarı durumunu denetleme
+## <a name="check-dedicated-sql-pool-formerly-sql-dw-state"></a>Adanmış SQL havuzunu denetle (eski adıyla SQL DW) durumu
 
-Bir veri ambarı duraklatıldığında için T-SQL ile buna bağlanamazsınız. Veri ambarının geçerli durumunu görmek için bir PowerShell cmdlet’ini kullanabilirsiniz. Bir örnek için bkz. [veri ambarı durumunu denetleme-PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state).
+Adanmış bir SQL Havuzu (eski adıyla SQL DW) duraklatıldığında T-SQL ile buna bağlanamazsınız. Adanmış SQL havuzunun (eski adıyla SQL DW) geçerli durumunu görmek için PowerShell cmdlet 'ini kullanabilirsiniz. Bir örnek için bkz. [ADANMıŞ SQL havuzunu denetleme (eski ADıYLA SQL DW) durumu-PowerShell](quickstart-scale-compute-powershell.md#check-data-warehouse-state).
 
 ## <a name="check-operation-status"></a>İşlem durumunu denetleme
 
-Azure SYNAPSE 'daki çeşitli yönetim işlemleri hakkında bilgi döndürmek için [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) DMV ' de aşağıdaki sorguyu çalıştırın. Örneğin, işlemi ve işlemin IN_PROGRESS veya COMPLETED olan durumunu döndürür.
+Adanmış SQL havuzunuzdaki (eski adıyla SQL DW) çeşitli yönetim işlemleri hakkında bilgi döndürmek için, [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) DMV ' de aşağıdaki sorguyu çalıştırın. Örneğin, işlemi ve işlemin IN_PROGRESS veya COMPLETED olan durumunu döndürür.
 
 ```sql
 SELECT *
@@ -150,7 +150,7 @@ AND
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık veri ambarınız için işlemin nasıl ölçeklendirileceğini öğrendiniz. Azure SYNAPSE hakkında daha fazla bilgi edinmek için veri yükleme öğreticisine geçin.
+Artık adanmış SQL havuzunuz için (eski adıyla SQL DW) işlem ölçeklendirmeyi öğrendiniz. Azure SYNAPSE Analytics hakkında daha fazla bilgi edinmek için veri yükleme öğreticisine geçin.
 
 > [!div class="nextstepaction"]
->[Azure SYNAPSE Analytics 'e veri yükleme](load-data-from-azure-blob-storage-using-polybase.md)
+>[Özel bir SQL havuzuna veri yükleme](load-data-from-azure-blob-storage-using-polybase.md)

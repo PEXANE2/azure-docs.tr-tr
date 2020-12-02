@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/24/2020
-ms.openlocfilehash: a879ac81859c855bb7b7bc2eddb1e3c9b62adb34
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 31298be4d50c7f562e2e2b9adbf889b165b197e5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321399"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461864"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>PowerShell kullanarak Saydam Veri Şifrelemesi (TDE) koruyucusunu kaldırma
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -35,13 +35,13 @@ Key Vault ' de TDE koruyucusu silindikten sonra, en fazla 10 dakika içinde tüm
 Bu nasıl yapılır Kılavuzu, güvenliği aşılmış bir olay yanıtından sonra istenen sonuca bağlı olarak iki yaklaşımdan geçer:
 
 - Azure SQL veritabanı/Azure SYNAPSE Analytics 'teki veritabanlarını **erişilemez** hale getirmek için.
-- Azure SQL veritabanı/Azure Azure SYNAPSE Analytics 'te (eski adıyla SQL veri ambarı) veritabanlarını **erişilmez** hale getirin.
+- Azure SQL veritabanı/Azure Azure SYNAPSE Analytics 'te veritabanlarını **erişilemez** hale getirmek için.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Bu abonelikte bir Azure aboneliğinizin olması ve bir yönetici olmanız gerekir
 - Azure PowerShell yüklü ve çalışıyor olmanız gerekir.
-- Bu nasıl yapılır kılavuzunda, bir Azure SQL veritabanı veya Azure Synapse (eski adıyla SQL veri ambarı) için TDE koruyucusu olarak Azure Key Vault bir anahtar kullandığınızı varsaymış olursunuz. Daha fazla bilgi için bkz. [BYOK desteği ile saydam veri şifrelemesi](transparent-data-encryption-byok-overview.md) .
+- Bu nasıl yapılır kılavuzunda, bir Azure SQL veritabanı veya Azure SYNAPSE için TDE koruyucusu olarak Azure Key Vault bir anahtar kullandığınızı varsaymış olursunuz. Daha fazla bilgi için bkz. [BYOK desteği ile saydam veri şifrelemesi](transparent-data-encryption-byok-overview.md) .
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

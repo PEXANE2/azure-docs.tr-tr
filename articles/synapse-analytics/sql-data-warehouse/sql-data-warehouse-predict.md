@@ -1,6 +1,6 @@
 ---
 title: TAHMIN eden makine öğrenimi modellerini puan edin
-description: SYNAPSE SQL 'de T-SQL tahmın etme işlevini kullanarak makine öğrenimi modellerini nasıl puanleyeceğinizi öğrenin.
+description: Adanmış SQL havuzundaki T-SQL tahmın etme işlevini kullanarak makine öğrenimi modellerini nasıl puanlandırıp kullanacağınızı öğrenin.
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 07/21/2020
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: a8caf6cd5072b4c098adff57194784491c92bb0a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 7b35997e763434d7ae4d849c33d358d1593d7e33
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325371"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460536"
 ---
 # <a name="score-machine-learning-models-with-predict"></a>TAHMIN eden makine öğrenimi modellerini puan edin
 
-SYNAPSE SQL, tanıdık T-SQL dilini kullanarak makine öğrenimi modellerini skor yeteneği sağlar. T-SQL ' i [tahmin](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)etmek için, mevcut makine öğrenimi modellerinizi geçmiş verilerle eğitimli hale getirebilir ve veri ambarınızın güvenli sınırları dahilinde puan verebilirsiniz. TAHMIN işlevi bir [Onnx (Open sinir Network Exchange)](https://onnx.ai/) modeli ve verileri giriş olarak alır. Bu özellik, değerli verileri Puanlama için veri ambarının dışına taşıma adımını ortadan kaldırır. Veri uzmanlarının, kendi görevleri için doğru çatı ile çalışan veri bilimcilerine sorunsuz işbirliği yapmasına olanak tanıyan T-SQL arabirimiyle makine öğrenimi modellerini kolay bir şekilde dağıtmak için amaçlar.
+Adanmış SQL havuzu, tanıdık T-SQL dilini kullanarak makine öğrenimi modellerini skor yeteneği sağlar. T-SQL ' i [tahmin](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)etmek için, mevcut makine öğrenimi modellerinizi geçmiş verilerle eğitimli hale getirebilir ve veri ambarınızın güvenli sınırları dahilinde puan verebilirsiniz. TAHMIN işlevi bir [Onnx (Open sinir Network Exchange)](https://onnx.ai/) modeli ve verileri giriş olarak alır. Bu özellik, değerli verileri Puanlama için veri ambarının dışına taşıma adımını ortadan kaldırır. Veri uzmanlarının, kendi görevleri için doğru çatı ile çalışan veri bilimcilerine sorunsuz işbirliği yapmasına olanak tanıyan T-SQL arabirimiyle makine öğrenimi modellerini kolay bir şekilde dağıtmak için amaçlar.
 
 > [!NOTE]
 > Bu işlevsellik şu anda sunucusuz SQL havuzunda desteklenmez.
@@ -31,9 +31,9 @@ SYNAPSE SQL, tanıdık T-SQL dilini kullanarak makine öğrenimi modellerini sko
 
 ## <a name="training-the-model"></a>Modeli eğitme
 
-SYNAPSE SQL, önceden eğitilen bir model bekliyor. SYNAPSE SQL 'de tahminleri gerçekleştirmek için kullanılan bir makine öğrenimi modeline eğitim yaparken aşağıdaki faktörleri aklınızda bulundurun.
+Adanmış SQL havuzu, önceden eğitilen bir model bekliyor. Adanmış SQL havuzunda tahmin yapmak için kullanılan bir makine öğrenimi modeline eğitim yaparken aşağıdaki faktörleri aklınızda tutun.
 
-- SYNAPSE SQL yalnızca ONNX biçim modellerini destekler. ONNX, birlikte çalışabilirliği etkinleştirmek için çeşitli çerçeveler arasında modeller alışverişi yapmanıza olanak sağlayan açık kaynaklı bir model biçimidir. Mevcut modellerinizi, yerel olarak destekleyen veya kullanılabilir paketleri dönüştüren çerçeveleri kullanarak ONNX biçimine dönüştürebilirsiniz. Örneğin, [sköğren-onnx](https://github.com/onnx/sklearn-onnx) paketi scikit-geçiş modellerini onnx 'e dönüştürün. [Onnx GitHub deposu](https://github.com/onnx/tutorials#converting-to-onnx-format) desteklenen çerçeveler ve örneklerin bir listesini sağlar.
+- Adanmış SQL havuzu yalnızca ONNX biçim modellerini destekler. ONNX, birlikte çalışabilirliği etkinleştirmek için çeşitli çerçeveler arasında modeller alışverişi yapmanıza olanak sağlayan açık kaynaklı bir model biçimidir. Mevcut modellerinizi, yerel olarak destekleyen veya kullanılabilir paketleri dönüştüren çerçeveleri kullanarak ONNX biçimine dönüştürebilirsiniz. Örneğin, [sköğren-onnx](https://github.com/onnx/sklearn-onnx) paketi scikit-geçiş modellerini onnx 'e dönüştürün. [Onnx GitHub deposu](https://github.com/onnx/tutorials#converting-to-onnx-format) desteklenen çerçeveler ve örneklerin bir listesini sağlar.
 
    Eğitim için [OTOMATIK ml](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) kullanıyorsanız, BIR onnx biçim modeli oluşturmak için *enable_onnx_compatible_models* parametresini true olarak ayarladığınızdan emin olun. [Otomatik Machine Learning Not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) , onnx biçiminde bir Machine Learning modeli oluşturmak Için otomatik ml 'yi nasıl kullanacağınızı gösteren bir örnek gösterir.
 
@@ -47,7 +47,7 @@ SYNAPSE SQL, önceden eğitilen bir model bekliyor. SYNAPSE SQL 'de tahminleri g
 
 ## <a name="loading-the-model"></a>Model yükleniyor
 
-Model, bir Synapse SQL Kullanıcı tablosunda onaltılık bir dize olarak depolanır. Modeli tanımlamak için model tablosuna KIMLIK ve açıklama gibi ek sütunlar eklenebilir. Model sütununun veri türü olarak varbinary (max) kullanın. Modelleri depolamak için kullanılabilecek bir tablo için kod örneği aşağıda verilmiştir:
+Model, ayrılmış bir SQL havuzu Kullanıcı tablosunda onaltılık bir dize olarak depolanır. Modeli tanımlamak için model tablosuna KIMLIK ve açıklama gibi ek sütunlar eklenebilir. Model sütununun veri türü olarak varbinary (max) kullanın. Modelleri depolamak için kullanılabilecek bir tablo için kod örneği aşağıda verilmiştir:
 
 ```sql
 -- Sample table schema for storing a model and related data
@@ -66,7 +66,7 @@ GO
 
 ```
 
-Model, onaltılı dizeye ve tablo tanımına dönüştürüldükten sonra, modeli SYNAPSE SQL tablosuna yüklemek için [copy komutunu](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) veya PolyBase 'i kullanın. Aşağıdaki kod örneği, modeli yüklemek için Copy komutunu kullanır.
+Model bir onaltılık dizeye ve belirtilen tablo tanımına dönüştürüldükten sonra, modeli adanmış SQL havuzu tablosuna yüklemek için [copy komutunu](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) veya PolyBase 'i kullanın. Aşağıdaki kod örneği, modeli yüklemek için Copy komutunu kullanır.
 
 ```sql
 -- Copy command to load hexadecimal string of the model from Azure Data Lake storage location

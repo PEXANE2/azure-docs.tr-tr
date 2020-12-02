@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d2d6ee8357698e4af59f44579ce7f2c3aa82991c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 99c7490c4bf842da119a3a0abd4623c64d720ac8
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340331"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462217"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Azure Data Factory kopyalama Sihirbazı
 
@@ -48,7 +48,7 @@ Verilerin kopyalamak istediğiniz gibi olup olmadığını doğrulamak için se�
 Giriş verilerinin şeması, bazı durumlarda çıkış verileri şemasıyla eşleşmeyebilir. Bu senaryoda, kaynak şemadan sütunları hedef şemadaki sütunlara eşlemeniz gerekir.
 
 > [!TIP]
-> SQL Server veya Azure SQL veritabanındaki verileri Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) kopyalarken, tablo hedef depoda yoksa, kaynak şemasını kullanarak otomatik tablo oluşturmayı destekler Data Factory. [Azure Data Factory kullanarak Azure SYNAPSE Analytics 'e ve bu kaynaklardan veri taşıma](./data-factory-azure-sql-data-warehouse-connector.md)hakkında daha fazla bilgi edinin.
+> SQL Server veya Azure SQL veritabanındaki verileri Azure SYNAPSE Analytics 'e kopyalarken, tablo hedef depoda yoksa, kaynak şemasını kullanarak otomatik tablo oluşturmayı destekler Data Factory. [Azure Data Factory kullanarak Azure SYNAPSE Analytics 'e ve bu kaynaklardan veri taşıma](./data-factory-azure-sql-data-warehouse-connector.md)hakkında daha fazla bilgi edinin.
 
 Hedef şemadaki bir sütunla eşlenecek kaynak şemadan bir sütun seçmek için açılan listeyi kullanın. Kopyalama Sihirbazı, sütun eşleme örüntüsünün anlaşılmasına çalışır. Bu, sütunların geri kalanına aynı düzeni uygular, böylece şema eşlemesini tamamlamaya yönelik her bir sütunu tek tek seçmeniz gerekmez. İsterseniz, sütunları tek tek eşlemek için açılan listeleri kullanarak bu eşlemeleri geçersiz kılabilirsiniz. Daha fazla sütun eşleştirirken, bu kalıp daha doğru hale gelir. Kopyalama Sihirbazı, her bir düzende güncellenir ve sonunda elde etmek istediğiniz sütun eşlemesi için doğru düzene ulaşır.     
 

@@ -13,16 +13,16 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 08/06/2020
+ms.date: 12/01/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref, devx-track-azurecli
-ms.openlocfilehash: c41ec06b1f985296377d27dcbe72b5f41224809b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4d7debce83928e21072c981b007e8048bfc4c594
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94835416"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460946"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure kaynakları için yönetilen kimliklerle ilgili SSS ve bilinen sorunlar
 
@@ -85,6 +85,46 @@ Hayır. Yönetilen kimlikler Şu anda çapraz dizin senaryolarını desteklemez.
 - Sistem tarafından atanan yönetilen kimlik: kaynak üzerinde yazma izinlerine sahip olmanız gerekir. Örneğin sanal makineler için Microsoft.Compute/virtualMachines/write iznine ihtiyaç duyulur. Bu eylem, [sanal makine katılımcısı](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)gibi kaynağa özgü yerleşik rollere dahildir.
 - Kullanıcı tarafından atanan yönetilen kimlik: kaynak üzerinde yazma izinlerine sahip olmanız gerekir. Örneğin sanal makineler için Microsoft.Compute/virtualMachines/write iznine ihtiyaç duyulur. Yönetilen kimliğe göre [yönetilen kimlik operatörü](../../role-based-access-control/built-in-roles.md#managed-identity-operator) rolü atamaya ek olarak.
 
+### <a name="how-do-i-prevent-the-creation-of-user-assigned-managed-identities"></a>Nasıl yaparım? Kullanıcı tarafından atanan yönetilen kimliklerin oluşturulmasını engelliyor musunuz?
+
+[Azure ilkesini](../../governance/policy/overview.md) kullanarak kullanıcılarınızın Kullanıcı tarafından atanan Yönetilen kimlikler oluşturmasını koruyabilirsiniz
+
+- [Azure Portal](https://portal.azure.com) gidin ve **ilkeye** gidin.
+- **Tanımları** seçin
+- **+ İlke tanımı** ' nı seçin ve gerekli bilgileri girin.
+- İlke kuralı bölümünde yapıştırma
+
+```json
+{
+  "mode": "All",
+  "policyRule": {
+    "if": {
+      "field": "type",
+      "equals": "Microsoft.ManagedIdentity/userAssignedIdentities"
+    },
+    "then": {
+      "effect": "deny"
+    }
+  },
+  "parameters": {}
+}
+
+```
+
+İlkeyi oluşturduktan sonra, kullanmak istediğiniz kaynak grubuna atayın.
+
+- Kaynak grupları ' na gidin.
+- Test için kullandığınız kaynak grubunu bulun.
+- Sol menüden **ilkeler** ' i seçin.
+- **Ilke ata** ' yı seçin
+- **Temel bilgiler** bölümünde şunları sağlar:
+    - **Kapsam** Test için kullandığımız kaynak grubu
+    - **İlke tanımı**: daha önce oluşturduğumuz ilke.
+- Tüm diğer ayarları varsayılan olarak bırakın ve **gözden geçir + oluştur** seçeneğini belirleyin.
+
+Bu noktada, kaynak grubunda Kullanıcı tarafından atanan yönetilen kimlik oluşturma girişimleri başarısız olur.
+
+  ![İlke ihlali](./media/known-issues/policy-violation.png)
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 

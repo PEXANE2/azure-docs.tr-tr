@@ -8,14 +8,14 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 919b8fb89e9189df7cb1964cbe0149dc6945ad2d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e0309b4c96b2ae25eb568e390717ba76cfd84fa5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323157"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461317"
 ---
-# <a name="create-a-managed-private-endpoint-to-your-data-source-preview"></a>Veri kaynağınıza yönetilen özel uç nokta oluşturma (Önizleme)
+# <a name="create-a-managed-private-endpoint-to-your-data-source"></a>Veri kaynağınıza yönetilen özel uç nokta oluşturma
 
 Bu makalede, Azure 'daki veri kaynağınıza yönetilen bir özel uç nokta oluşturma hakkında öğretir. Daha fazla bilgi için bkz. [yönetilen özel uç noktalar](./synapse-workspace-managed-private-endpoints.md) .
 
@@ -25,17 +25,17 @@ Azure SYNAPSE Studio 'dan veri kaynağınıza yönetilen bir özel uç nokta olu
 
 ## <a name="step-2-navigate-to-the-managed-virtual-networks-tab-in-synapse-studio"></a>2. Adım: SYNAPSE Studio 'da yönetilen sanal ağlar sekmesine gidin
 
-Azure SYNAPSE Studio 'da sol gezinti bölmesindeki **Yönet** sekmesini seçin. **Yönetilen özel uç noktaları** ' nı seçin ve **+ Yeni** ' yi seçin.
+Azure SYNAPSE Studio 'da sol gezinti bölmesindeki **Yönet** sekmesini seçin. **Yönetilen özel uç noktaları** ' nı seçin ve **+ Yeni**' yi seçin.
 ![Yeni yönetilen özel uç nokta oluştur](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-2.png)
 
 ## <a name="step-3-select-the-data-source-type"></a>3. Adım: veri kaynağı türünü seçin
 
-Veri kaynağı türünü seçin. Bu durumda, hedef veri kaynağı bir ADLS 2. hesabıdır. **Devam** ’ı seçin.
+Veri kaynağı türünü seçin. Bu durumda, hedef veri kaynağı bir ADLS 2. hesabıdır. **Devam**’ı seçin.
 ![Hedef veri kaynağı türü seçin](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-3.png)
 
 ## <a name="step-4-enter-information-about-the-data-source"></a>4. Adım: veri kaynağıyla ilgili bilgileri girin
 
-Sonraki pencerede, veri kaynağıyla ilgili bilgileri girin. Bu örnekte, bir ADLS 2. hesabına yönetilen özel uç nokta oluşturacağız. Yönetilen özel uç nokta için bir **ad** girin. Bir **Azure aboneliği** ve **depolama hesabı adı** sağlayın. **Oluştur** ’u seçin.
+Sonraki pencerede, veri kaynağıyla ilgili bilgileri girin. Bu örnekte, bir ADLS 2. hesabına yönetilen özel uç nokta oluşturacağız. Yönetilen özel uç nokta için bir **ad** girin. Bir **Azure aboneliği** ve **depolama hesabı adı** sağlayın. **Oluştur**’u seçin.
 ![Hedef veri kaynağı ayrıntılarını girin](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-4.png)
 
 ## <a name="step-5-verify-that-your-managed-private-endpoint-was-successfully-created"></a>5. Adım: yönetilen özel uç noktanızın başarıyla oluşturulduğunu doğrulama

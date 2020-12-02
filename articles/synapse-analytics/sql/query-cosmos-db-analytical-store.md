@@ -9,14 +9,18 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: eda05cbdf2f5b077fd6cf217a00cc58b1c6eda27
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 439337233e24dfcae2c8c911a9224fd3394d6846
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94986649"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462702"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>Azure SYNAPSE link Preview 'da sunucusuz SQL havuzu ile verileri Azure Cosmos DB sorgulama
+
+> [!IMPORTANT]
+> Azure Cosmos DB için Azure SYNAPSE bağlantısı için sunucusuz SQL havuzu desteği şu anda önizleme aşamasındadır. Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Sunucusuz bir SQL havuzu, işlem iş yüklerinizin performansını etkilemeden neredeyse gerçek zamanlı olarak [Azure SYNAPSE bağlantısı](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) ile etkinleştirilen Azure Cosmos DB kapsayıcılarınızdaki verileri analiz etmenize olanak tanır. [Analitik depodan](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) verileri sorgulamak ve t-SQL arabirimi aracılığıyla çok çeşitli iş ZEKASı (BI) ve geçici sorgulama araçlarıyla tümleşik bağlantıyı sorgulamak için tanıdık bir T-SQL söz dizimi sunar.
 

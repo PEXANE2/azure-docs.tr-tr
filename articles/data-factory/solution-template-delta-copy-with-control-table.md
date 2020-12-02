@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/24/2018
-ms.openlocfilehash: 255e4085e24ee7520c603f8a00b3e46c23367a77
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e7b7acb7e67d809229825b3d393fe49af12b3642
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000836"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461214"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>Denetim tablosu ile bir veritabanından Delta kopyası
 
@@ -140,7 +140,7 @@ Bu şablon ilk olarak eski eşik değerini alır ve geçerli filigran değeriyle
 
     Hedefe yalnızca yeni satırların kopyalandığını görürsünüz.
 
-15. Seçim Veri hedefi olarak Azure SYNAPSE Analytics (eski adıyla SQL DW) seçeneğini belirlerseniz, Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) PolyBase için gereken hazırlama için Azure Blob depolama alanına da bir bağlantı sağlamanız gerekir. Şablon sizin için bir kapsayıcı yolu oluşturacaktır. İşlem hattı çalıştırıldıktan sonra, kapsayıcının blob depolamada oluşturulup oluşturulmayacağını denetleyin.
+15. Seçim Veri hedefi olarak Azure SYNAPSE Analytics ' i seçerseniz, Azure SYNAPSE Analytics PolyBase tarafından gerekli olan hazırlama için Azure Blob depolama alanına da bir bağlantı sağlamanız gerekir. Şablon sizin için bir kapsayıcı yolu oluşturacaktır. İşlem hattı çalıştırıldıktan sonra, kapsayıcının blob depolamada oluşturulup oluşturulmayacağını denetleyin.
     
     ![PolyBase 'i yapılandırma](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable15.png)
     

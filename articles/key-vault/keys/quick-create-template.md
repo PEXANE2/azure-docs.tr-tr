@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 10/14/2020
 ms.author: sebansal
-ms.openlocfilehash: c16fc475e4982724ebc9f4f55301b6fc56dfb7c7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 73c52963df65dc4037f087a93108ccfacb3fb5d4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95017018"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461551"
 ---
 # <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template-preview"></a>Hızlı başlangıç: ARM şablonunu kullanarak bir Azure Anahtar Kasası ve anahtar oluşturma (Önizleme)
 
@@ -26,7 +26,7 @@ ms.locfileid: "95017018"
 Bu makaleyi gerçekleştirmek için:
 
 - Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
-- Kullanıcının RBAC 'nin atanmış rolü olması gerekir. mcý. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- Kullanıcının RBAC 'nin atanmış rolü olması gerekir. mcý. [Daha fazla bilgi edinin](../../role-based-access-control/role-assignments-portal.md)
 - Şablonda izinlerin yapılandırılması için Azure AD kullanıcı nesnesi kimliğiniz gerekir. Aşağıdaki yordam nesne KIMLIĞINI (GUID) alır.
 
     1. Aşağıdaki Azure PowerShell veya Azure CLı komutunu çalıştırarak **deneyin**' i seçin ve ardından betiği kabuk bölmesine yapıştırın. Betiği yapıştırmak için, kabuğa sağ tıklayın ve ardından **Yapıştır**' ı seçin.

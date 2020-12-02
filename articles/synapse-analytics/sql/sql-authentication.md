@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 460fed7244ba8094da41ae6b5b8161de3d9efe65
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: efa160eb422658aeeb2eea3ad3c1d305b4b9f8be
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317283"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462399"
 ---
 # <a name="sql-authentication"></a>SQL Kimlik Doğrulaması
 
@@ -29,7 +29,7 @@ Azure Active Directory, Kullanıcı yönetimi için tek bir yer kullanmanıza ol
 
 ## <a name="administrative-accounts"></a>Yönetim hesapları
 
-Yönetici işlevlerine sahip iki yönetici hesabı ( **Sunucu yöneticisi** ve **Active Directory yöneticisi** ) vardır. SQL sunucunuz için bu yönetici hesaplarını belirlemek için, Azure portal açın ve SYNAPSE SQL 'nizin Özellikler sekmesine gidin.
+Yönetici işlevlerine sahip iki yönetici hesabı (**Sunucu yöneticisi** ve **Active Directory yöneticisi**) vardır. SQL sunucunuz için bu yönetici hesaplarını belirlemek için, Azure portal açın ve SYNAPSE SQL 'nizin Özellikler sekmesine gidin.
 
 ![SQL Server Yöneticileri](./media/sql-authentication/sql-admins.png)
 
@@ -51,7 +51,7 @@ Yönetici işlevlerine sahip iki yönetici hesabı ( **Sunucu yöneticisi** ve *
 - , Ve rollerine üye ekleyebilir veya kaldırabilir `dbmanager` `loginmanager` .
 - , `sys.sql_logins` Sistem tablosunu görüntüleyebilir.
 
-## <a name="serverless-sql-pool-preview"></a>[Sunucusuz SQL Havuzu (Önizleme)](#tab/serverless)
+## <a name="serverless-sql-pool"></a>[Sunucusuz SQL havuzu](#tab/serverless)
 
 Sunucusuz SQL havuzuna erişimi olan kullanıcıları yönetmek için aşağıdaki yönergeleri kullanabilirsiniz.
 
@@ -77,7 +77,7 @@ Oturum açma ve Kullanıcı oluşturulduktan sonra, haklar vermek için normal S
 
 ### <a name="administrator-access-path"></a>Yönetici erişim yolu
 
-Sunucu düzeyi güvenlik duvarı doğru şekilde yapılandırıldığında **SQL sunucu yöneticisi** ve **Azure Active Directory yöneticisi** , SQL Server Management Studio veya SQL Server Veri Araçları gibi istemci araçlarını kullanarak bağlantı kurabilir. Tüm özellikler ve yetenekler yalnızca en güncel araçlar tarafından sunulur. 
+Sunucu düzeyi güvenlik duvarı doğru şekilde yapılandırıldığında **SQL sunucu yöneticisi** ve **Azure Active Directory yöneticisi**, SQL Server Management Studio veya SQL Server Veri Araçları gibi istemci araçlarını kullanarak bağlantı kurabilir. Tüm özellikler ve yetenekler yalnızca en güncel araçlar tarafından sunulur. 
 
 Aşağıdaki diyagramda, iki yönetici hesabı için tipik bir yapılandırma gösterilmektedir:
  
@@ -187,7 +187,7 @@ Verimli erişim yönetimi için bireysel kullanıcılar yerine gruplara ve rolle
 
 - SQL Server kimlik doğrulamasını kullanırken veritabanında bağımsız veritabanı kullanıcılarını oluşturun. Bir veya daha fazla veritabanı kullanıcılarını bir [veritabanı rolüne](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) ekleyin ve [izinleri](/sql/relational-databases/security/permissions-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) veritabanı rolüne atayın.
 
-Veritabanı rolleri **db_owner** , **db_ddladmin** , **db_datawriter** , **db_datareader** , **db_denydatawriter** ve **db_denydatareader** gibi yerleşik roller olabilir. Birkaç kullanıcıya tam izin vermek için genelde **db_owner** kullanılır. Diğer sabit veritabanı rolleri, geliştirme aşamasında basit bir veritabanını hızlı bir şekilde kullanıma almak için kullanışlıdır ancak çoğu üretim veritabanı için önerilmez. 
+Veritabanı rolleri **db_owner**, **db_ddladmin**, **db_datawriter**, **db_datareader**, **db_denydatawriter** ve **db_denydatareader** gibi yerleşik roller olabilir. Birkaç kullanıcıya tam izin vermek için genelde **db_owner** kullanılır. Diğer sabit veritabanı rolleri, geliştirme aşamasında basit bir veritabanını hızlı bir şekilde kullanıma almak için kullanışlıdır ancak çoğu üretim veritabanı için önerilmez. 
 
 Örneğin **db_datareader** sabit veritabanı rolü, veritabanındaki tüm tablolara okuma izni verir ve bu durum genelde ihtiyaç duyulandan fazlasıdır. 
 
@@ -208,7 +208,7 @@ SQL veritabanında oturum açma işlemlerini ve kullanıcıları yönetirken aş
 - Deyimlerini yürütürken **ana** veritabanına bağlı olmanız gerekir `CREATE/ALTER/DROP DATABASE` .
 - **Sunucu Yöneticisi** oturum açma bilgilerine karşılık gelen veritabanı kullanıcısı değiştirilemez veya bırakılamaz.
 - **Sunucu yöneticisi** oturum açma bilgilerinin varsayılan dili ABD-İngilizce olarak belirlenmiştir.
-- Yalnızca yöneticiler ( **Sunucu yöneticisi** oturum açma bilgileri veya Azure AD yöneticisi) ve **ana** veritabanındaki **dbmanager** veritabanı rolünün üyeleri `CREATE DATABASE` ve `DROP DATABASE` deyimlerini yürütme iznine sahiptir.
+- Yalnızca yöneticiler (**Sunucu yöneticisi** oturum açma bilgileri veya Azure AD yöneticisi) ve **ana** veritabanındaki **dbmanager** veritabanı rolünün üyeleri `CREATE DATABASE` ve `DROP DATABASE` deyimlerini yürütme iznine sahiptir.
 - `CREATE/ALTER/DROP LOGIN` deyimlerini yürütürken ana veritabanına bağlanmış olmanız gerekir. Ancak oturum açma bilgilerinin kullanılması önerilmez. Bunun yerine bağımsız veritabanı kullanıcılarını kullanmanız önerilir.
 - Bir kullanıcı veritabanına bağlanmak için bağlantı dizesinde veritabanının adını belirtmeniz gerekir.
 - Yalnızca sunucu düzeyi asıl oturum açma bilgisi ve **ana** veritabanındaki **loginmanager** veritabanı rolünün üyeleri `CREATE LOGIN`,`ALTER LOGIN` ve `DROP LOGIN` deyimlerini yürütme iznine sahiptir.

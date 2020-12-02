@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6cda99bfcb883dd42aa813d6edb922f2701ed1fe
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e48b1357b8576baca0e8defca94f4c5248c6f74e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352210"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461278"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure Data Factory için Azure Güvenlik temeli
 
@@ -578,7 +578,7 @@ Azure SQL veritabanı veri bulma ve sınıflandırma özelliğini kullanın. Ver
 
 **Rehberlik**: bulut VERI deposu https veya TLS 'yi destekliyorsa, Data Factory ve bulut veri deposundaki veri taşıma hizmetleri arasındaki tüm veri aktarımları, GÜVENLI kanal https veya TLS aracılığıyla yapılır. Kullanılan TLS sürümü 1,2.
 
-Azure SQL veritabanı ve Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) yapılan tüm bağlantılar, veriler veritabanına aktarılırken ve veritabanından aktarılırken şifreleme (SSL/TLS) gerektirir. JSON kullanarak bir işlem hattı yazarken, şifreleme özelliğini ekleyin ve bağlantı dizesinde true olarak ayarlayın. Azure depolama için bağlantı dizesinde HTTPS kullanabilirsiniz.
+Azure SQL veritabanı ve Azure SYNAPSE Analytics 'e yönelik tüm bağlantılar, veriler veritabanına aktarılırken ve veritabanından aktarılırken şifreleme (SSL/TLS) gerektirir. JSON kullanarak bir işlem hattı yazarken, şifreleme özelliğini ekleyin ve bağlantı dizesinde true olarak ayarlayın. Azure depolama için bağlantı dizesinde HTTPS kullanabilirsiniz.
 
 * [Azure Data Factory geçişte şifrelemeyi anlama](./data-movement-security-considerations.md)
 
@@ -656,7 +656,7 @@ Kimlik bilgilerini veya gizli değerleri bir Azure Key Vault saklayabilir ve etk
 
 * [Azure etkinlik günlüğü olayları için uyarı oluşturma](../azure-monitor/platform/alerts-activity-log.md)
 
-* [Azure Depolama analizini günlüğe kaydetme](../storage/common/storage-analytics-logging.md)
+* [Azure Depolama analizi günlüğü](../storage/common/storage-analytics-logging.md)
 
 **Azure Güvenlik Merkezi izlemesi**: Şu anda kullanılamıyor
 

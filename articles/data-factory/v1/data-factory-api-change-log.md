@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 robots: noindex
 ms.date: 01/22/2018
-ms.openlocfilehash: 24e468007e0e5ea849ac4d7f945b0aaf6377e580
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: b7f0a352afeb4a2e58d97bd5278115673f6b6df6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92633816"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461699"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure Data Factory-.NET API değişiklik günlüğü
 > [!NOTE]
@@ -75,7 +75,7 @@ Bu makalede, belirli bir sürümdeki Azure Data Factory SDK ile ilgili değişik
 ### <a name="feature-additions"></a>Özellik eklemeleri
 * Dosyaları iyileştirilmiş satır sütunlu (ORC) biçimde kopyalamak için yeni StorageFormat türü [Orcformat](/dotnet/api/microsoft.azure.management.datafactories.models.orcformat) türü eklendi.
 * [Allowpolybase](/dotnet/api/microsoft.azure.management.datafactories.models.sqldwsink) ve PolyBaseSettings özelliklerini SqlDWSink öğesine ekleyin.
-  * Verileri Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) kopyalamak için PolyBase kullanımını sağlar.
+  * Azure SYNAPSE Analytics 'e veri kopyalamak için PolyBase 'in kullanılmasını sağlar.
 
 ## <a name="version-461"></a>Sürüm 4.6.1
 ### <a name="bug-fixes"></a>Hata Düzeltmeleri
@@ -181,5 +181,5 @@ Aşağıdaki sınıflar yeniden adlandırıldı. Yeni adlar 4.0.0 sürümünden 
 * **Liste** işlem hattı API 'si, tam ayrıntılar yerine yalnızca bir işlem hattının özetini döndürür. Örneğin, bir işlem hattı özetindeki etkinlikler yalnızca ad ve tür içerir.
 
 ### <a name="feature-additions"></a>Özellik eklemeleri
-* [Sqldwsink](/dotnet/api/microsoft.azure.management.datafactories.models.sqldwsink) sınıfı iki yeni özelliği **destekler, bu, Azure** Azure SYNAPSE Analytics **SqlWriterCleanupScript** 'e ıdempotent kopyalamayı desteklemek için. Bu özellikler hakkında daha fazla bilgi için bkz. [Azure SYNAPSE Analytics](data-factory-azure-sql-data-warehouse-connector.md) makalesi.
-* Artık kopyalama etkinliğinin bir parçası olarak Azure SQL veritabanı ve Azure SYNAPSE Analytics kaynakları için saklı yordam çalıştırmayı destekliyoruz. [SQLSource](/dotnet/api/microsoft.azure.management.datafactories.models.sqlsource) ve [sqldwsource](/dotnet/api/microsoft.azure.management.datafactories.models.sqldwsource) sınıfları şu özelliklere sahiptir: **SqlReaderStoredProcedureName** ve **StoredProcedureParameters** . Bu özellikler hakkındaki ayrıntılar için bkz. [Azure SQL veritabanı](data-factory-azure-sql-connector.md#sqlsource) ve [Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) makaleleri Azure.com.
+* [Sqldwsink](/dotnet/api/microsoft.azure.management.datafactories.models.sqldwsink) sınıfı iki yeni özelliği **destekler, bu, Azure** Azure SYNAPSE Analytics **SqlWriterCleanupScript**'e ıdempotent kopyalamayı desteklemek için. Bu özellikler hakkında daha fazla bilgi için bkz. [Azure SYNAPSE Analytics](data-factory-azure-sql-data-warehouse-connector.md) makalesi.
+* Artık kopyalama etkinliğinin bir parçası olarak Azure SQL veritabanı ve Azure SYNAPSE Analytics kaynakları için saklı yordam çalıştırmayı destekliyoruz. [SQLSource](/dotnet/api/microsoft.azure.management.datafactories.models.sqlsource) ve [sqldwsource](/dotnet/api/microsoft.azure.management.datafactories.models.sqldwsource) sınıfları şu özelliklere sahiptir: **SqlReaderStoredProcedureName** ve **StoredProcedureParameters**. Bu özellikler hakkındaki ayrıntılar için bkz. [Azure SQL veritabanı](data-factory-azure-sql-connector.md#sqlsource) ve [Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) makaleleri Azure.com.

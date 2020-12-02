@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: bb978f30104b1e38bd8930ccb058c4057d394e51
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: d6c3dbc28da7bee0bc24a6dc24608c78e480c20e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899663"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462166"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Ölçeklendirerek ayıklama, dönüştürme ve yükleme (ETL)
 
@@ -27,7 +27,7 @@ Aşağıdaki bölümler ETL aşamalarını ve bunlarla ilişkili bileşenleri ke
 
 ## <a name="orchestration"></a>Düzenleme
 
-Düzenleme, ETL işlem hattının tüm aşamaları boyunca yayılır. HDInsight 'taki ETL işleri genellikle birbirleriyle birlikte çalışan birkaç farklı ürün içerir. Örneğin:
+Düzenleme, ETL işlem hattının tüm aşamaları boyunca yayılır. HDInsight 'taki ETL işleri genellikle birbirleriyle birlikte çalışan birkaç farklı ürün içerir. Örnek:
 
 - Verilerin bir bölümünü temizlemek için Apache Hive kullanabilirsiniz ve Apache Pig başka bir bölümü temizleyebilir.
 - Azure Data Lake Store Azure SQL veritabanı 'na veri yüklemek için Azure Data Factory kullanabilirsiniz.
@@ -56,7 +56,7 @@ Azure Data Factory hakkında daha fazla bilgi için [belgelerine](../../data-fac
 
 Kaynak veri dosyaları genellikle Azure Storage veya Azure Data Lake Storage bir konuma yüklenir. Dosyalar genellikle CSV gibi düz bir biçimde olur. Ancak, herhangi bir biçimde olabilir.
 
-### <a name="azure-storage"></a>Azure Storage
+### <a name="azure-storage"></a>Azure Depolama
 
 Azure depolama 'nın belirli uyarlanabilir hedefleri vardır. Daha fazla bilgi için bkz. [BLOB depolama Için ölçeklenebilirlik ve performans hedefleri](../../storage/blobs/scalability-targets.md) . Birçok analitik düğüm için Azure depolama, çok daha küçük dosyalarla ilgilenirken en iyi şekilde ölçeklendirilir. Hesap sınırlarınız dahilinde olduğunuz sürece Azure Storage, dosyaların ne kadar büyük olduğuna bakılmaksızın aynı performansı garanti eder. Terabaytlarca veri saklayabilir ve yine de tutarlı performans sağlayabilirsiniz. Bu ifade, bir alt küme veya tüm verileri kullanıp kullanmayacağınızı de doğrudur.
 
@@ -86,7 +86,7 @@ Veri kümelerini terabayt aralığında karşıya yüklemek için ağ gecikmesi 
 
 ### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-Azure SYNAPSE Analytics (eski adıyla SQL DW), hazırlanan sonuçları depolamak için uygun bir seçimdir. Azure SYNAPSE Analytics için bu hizmetleri gerçekleştirmek üzere Azure HDInsight 'ı kullanabilirsiniz.
+Azure SYNAPSE Analytics, hazırlanan sonuçları depolamak için uygun bir seçimdir. Azure SYNAPSE Analytics için bu hizmetleri gerçekleştirmek üzere Azure HDInsight 'ı kullanabilirsiniz.
 
 Azure SYNAPSE Analytics, analitik iş yükleri için iyileştirilmiş bir ilişkisel veritabanı deposudur. Bölümlenmiş tablolara göre ölçeklendirilir. Tablolar birden çok düğüm arasında bölümlenebilir. Düğümler, oluşturma sırasında seçilir. Olgu sonrasında ölçeklendirebilir, ancak bu, veri taşıma gerektirebilecek etkin bir işlemdir. Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics 'te Işlem yönetme](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
 

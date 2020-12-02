@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ec619681f1eebc51da85d31ad15f1db25cfd3cbc
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 570281e31c70b2f5f85a858f9dd424f93ee86029
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917928"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460060"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Key Vault'u Azure Özel Bağlantı ile tümleştirme
 
@@ -23,7 +23,7 @@ Azure özel uç noktası, Azure özel bağlantısı tarafından desteklenen bir 
 
 Daha fazla bilgi için bkz. [Azure özel bağlantısı nedir?](../../private-link/private-link-overview.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bir anahtar kasasını Azure özel bağlantısıyla bütünleştirmek için şunlar gerekir:
 
@@ -36,7 +36,7 @@ Bir anahtar kasasını Azure özel bağlantısıyla bütünleştirmek için şun
 
 Özel uç noktanız sanal ağınızda özel bir IP adresi kullanıyor.
 
-# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
+# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 ## <a name="establish-a-private-link-connection-to-key-vault-using-the-azure-portal"></a>Key Vault Azure portal kullanarak bir özel bağlantı bağlantısı kurun 
 
@@ -226,14 +226,14 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 
 * Özel DNS bölge kaynağınız olduğundan emin olun. 
     1. Tam adı olan bir Özel DNS Zone kaynağınız olmalıdır: privatelink.vaultcore.azure.net. 
-    2. Bu ayarı nasıl ayarlayacağınızı öğrenmek için lütfen aşağıdaki bağlantıya bakın. [Özel DNS bölgeler](https://docs.microsoft.com/azure/dns/private-dns-privatednszone)
+    2. Bu ayarı nasıl ayarlayacağınızı öğrenmek için lütfen aşağıdaki bağlantıya bakın. [Özel DNS bölgeler](../../dns/private-dns-privatednszone.md)
     
 * Özel DNS Bölgesini denetleyerek Sanal Ağ ile bağlantılı olmadığından emin olun. Hala genel IP adresini almaya devam ediyorsanız bu sorun olabilir. 
     1. Özel bölge DNS sanal ağa bağlı değilse, sanal ağdan kaynaklanan DNS sorgusu, anahtar kasasının genel IP adresini döndürür. 
     2. Azure portal Özel DNS bölgesi kaynağına gidin ve sanal ağ bağlantıları seçeneğine tıklayın. 
     4. Anahtar kasasına çağrı gerçekleştirecek sanal ağın listelenmesi gerekir. 
     5. Bu yoksa, ekleyin. 
-    6. Ayrıntılı adımlar için, [sanal ağın özel DNS bölgeye bağlanması için](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network) aşağıdaki belgeye bakın
+    6. Ayrıntılı adımlar için, [sanal ağın özel DNS bölgeye bağlanması için](../../dns/private-dns-getstarted-portal.md#link-the-virtual-network) aşağıdaki belgeye bakın
 
 * Özel DNS bölgesinde Anahtar Kasası için bir kaydın eksik olmadığından emin olun. 
     1. Özel DNS bölgesi sayfasına gidin. 

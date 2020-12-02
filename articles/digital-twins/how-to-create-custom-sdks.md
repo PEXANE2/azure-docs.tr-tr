@@ -8,12 +8,12 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: 158d22ffb3bc5486e0523c07cc2c022c49f2ee9c
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: c1dbdc4761c107a8e5028a43ead9710d45526016
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145608"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461179"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Oto Rest kullanarak Azure dijital TWINS için özel SDK 'lar oluşturma
 
@@ -64,7 +64,7 @@ Adımlar şunlardır:
 3. Çözüm Gezgini ' nde, oluşturulan çözümün *Adtapi* projesini sağ seçin ve *> var olan öğe Ekle ' yi seçin...*
 4. SDK 'Yı oluşturduğunuz klasörü bulun ve kök düzeyindeki dosyaları seçin
 5. "Tamam" düğmesine basın
-6. Projeye bir klasör ekleyin (Çözüm Gezgini içinde projeyi sağ seçin ve *> yeni klasör ekle* ' yi seçin.
+6. Projeye bir klasör ekleyin (Çözüm Gezgini içinde projeyi sağ seçin ve *> yeni klasör ekle*' yi seçin.
 7. Klasör *modellerini* adlandırın
 8. Çözüm Gezgini ' nde *modeller* klasörünü sağ seçin ve *> var olan öğeyi Ekle ' yi seçin...*
 9. Oluşturulan SDK 'nın *modeller* klasöründeki dosyaları seçin ve "Tamam" düğmesine basın
@@ -73,7 +73,7 @@ SDK 'Yı başarılı bir şekilde derlemek için, projenizin bu başvurulara iht
 * `Microsoft.Rest.ClientRuntime`
 * `Microsoft.Rest.ClientRuntime.Azure`
 
-Bunları eklemek için *NuGet paket yöneticisi > açık araçlar > çözüm Için NuGet Paketlerini Yönet...* .
+Bunları eklemek için *NuGet paket yöneticisi > açık araçlar > çözüm Için NuGet Paketlerini Yönet...*.
 
 1. Panelde, *tarayıcı* sekmesinin seçili olduğundan emin olun
 2. *Microsoft. Rest* 'i arayın
@@ -102,7 +102,7 @@ SDK 'da bir hata oluştuğunda (404 gibi HTTP hataları dahil), SDK bir özel du
 ```csharp
 try
 {
-    await client.DigitalTwins.AddAsync(id, initData);
+    await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(id, initData);
     Console.WriteLine($"Created a twin successfully: {id}");
 }
 catch (ErrorResponseException e)

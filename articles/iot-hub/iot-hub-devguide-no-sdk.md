@@ -13,12 +13,12 @@ ms.custom:
 - amqp
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: 3968f19329536169c3fb3eb1fbbaff99e99c293d
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: ae8b01522a248b8b1dbdd255a9fcd55f16cf2369
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079668"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461706"
 ---
 # <a name="develop-without-using-an-azure-iot-hub-sdk"></a>Azure IoT Hub SDK kullanmadan geliştirme
 
@@ -44,11 +44,11 @@ Geliştirmeye başlamadan önce, IoT Hub ve cihazınızın veya arka uç uygulam
 
 Azure IoT SDK olmadan aşağıdaki protokolleri kullanma hakkında yardım için:
 
-* **AMQP**üzerinde cihaz veya arka uç uygulamaları, bkz. [AMQP desteği](iot-hub-amqp-support.md).
+* **AMQP** üzerinde cihaz veya arka uç uygulamaları, bkz. [AMQP desteği](iot-hub-amqp-support.md).
 
-* **MQTT**üzerinde cihaz uygulamaları, bkz. [MQTT desteği](iot-hub-mqtt-support.md). Bu konunun çoğu, MQTT protokolünü doğrudan kullanarak ele alır. [IOT MQTT örnek deposunu](https://github.com/Azure-Samples/IoTMQTTSample)kullanma hakkındaki bilgileri de içerir. Bu depo, IoT Hub ileti göndermek için tutulma mosquıto kitaplığı kullanan C örnekleri içerir.
+* **MQTT** üzerinde cihaz uygulamaları, bkz. [MQTT desteği](iot-hub-mqtt-support.md). Bu konunun çoğu, MQTT protokolünü doğrudan kullanarak ele alır. [IOT MQTT örnek deposunu](https://github.com/Azure-Samples/IoTMQTTSample)kullanma hakkındaki bilgileri de içerir. Bu depo, IoT Hub ileti göndermek için tutulma mosquıto kitaplığı kullanan C örnekleri içerir.
 
-* **Https**üzerindeki cihaz veya arka uç uygulamaları [Azure IoT Hub REST API 'lerine](https://docs.microsoft.com/rest/api/iothub/)bakın. [Geliştirme önkoşulları](#development-prerequisites)bölümünde belirtildiği gıbı, https ile X. 509.440 sertifika YETKILISI (CA) kimlik doğrulamasını kullanamıyoruz farkında olun.
+* **Https** üzerindeki cihaz veya arka uç uygulamaları [Azure IoT Hub REST API 'lerine](/rest/api/iothub/)bakın. [Geliştirme önkoşulları](#development-prerequisites)bölümünde belirtildiği gıbı, https ile X. 509.440 sertifika YETKILISI (CA) kimlik doğrulamasını kullanamıyoruz farkında olun.
 
 Cihazlar için cihazınız destekliyorsa MQTT kullanmanız önemle önerilir.
 

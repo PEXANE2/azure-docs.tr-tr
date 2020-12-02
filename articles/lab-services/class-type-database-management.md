@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: bed43e586beff890f0aa8947140ae7d8e50439f3
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 32079d6dc31cf3fcad66976737630472129b4271
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659837"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462424"
 ---
 # <a name="set-up-a-lab-to-teach-database-management-for-relational-databases"></a>İlişkisel veritabanları için veritabanı yönetimine öğretmek üzere laboratuvar ayarlama
 
@@ -41,7 +41,7 @@ Bir sınıf Laboratuvarı ayarlarken aşağıdaki tablodaki ayarları kullanın.
 
 ## <a name="template-machine-configuration"></a>Şablon makine yapılandırması
 
-Windows Server 2019 ' ye MySQL yüklemek için, [bir sanal makinede MySQL Community Server 'ı yüklemek ve çalıştırmak](/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%252fazure%252fvirtual-machines%252fwindows%252fclassic%252ftoc.json#install-and-run-mysql-community-server-on-the-virtual-machine)bölümünde bahsedilen adımları izleyebilirsiniz.
+Windows Server 2019 ' ye MySQL yüklemek için, [bir sanal makinede MySQL Community Server 'ı yüklemek ve çalıştırmak](/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json#install-and-run-mysql-community-server-on-the-virtual-machine)bölümünde bahsedilen adımları izleyebilirsiniz.
 
 SQL Server 2019, yeni Laboratuvarı oluştururken seçtiğimiz sanal makine görüntüsüne önceden yüklenmiştir.
 

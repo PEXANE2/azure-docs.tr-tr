@@ -11,14 +11,14 @@ ms.date: 04/27/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 9132c9609961053e7f60344dc387b2a8d01bd6b9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ae21368269a2c098b4e35bf83b8c9fdf2749a297
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85212998"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460546"
 ---
-# <a name="quickstart-configure-workload-isolation-using-t-sql"></a>Hızlı başlangıç: T-SQL kullanarak iş yükü yalıtımını yapılandırma
+# <a name="quickstart-configure-workload-isolation-in-a-dedicated-sql-pool-using-t-sql"></a>Hızlı başlangıç: T-SQL kullanarak adanmış bir SQL havuzunda iş yükü yalıtımını yapılandırma
 
 Bu hızlı başlangıçta hızlı bir şekilde veri yükleme için kaynak ayırma için bir iş yükü grubu ve sınıflandırıcının oluşturulması gerekir. İş yükü grubu, sistem kaynaklarının %20 ' sini veri yüklerine ayırır.  İş yükü Sınıflandırıcısı, istekleri verileri yükleyen iş yükü grubuna atayacaktır.  Veri yükleri için %20 yalıtımıyla SLA 'Lara vurmaları garanti edilir.
 
@@ -29,7 +29,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu hızlı başlangıç, Azure SYNAPSE 'de zaten bir Synapse SQL örneğiniz olduğunu ve DENETIM VERITABANı izinlerine sahip olduğunuzu varsayar. Gerekiyorsa **mySampleDataWarehouse** adlı bir veri ambarı oluşturmak için [Oluşturma ve Bağlanma - portal](create-data-warehouse-portal.md) bölümünü kullanabilirsiniz.
+Bu hızlı başlangıç, Azure SYNAPSE 'de zaten bir Synapse SQL örneğiniz olduğunu ve DENETIM VERITABANı izinlerine sahip olduğunuzu varsayar. Bir tane oluşturmanız gerekiyorsa, **Mysampledatawarehouse** adlı özel bir SQL havuzu oluşturmak için [Oluştur ve Bağlan-Portal](create-data-warehouse-portal.md) ' ı kullanın.
 
 ## <a name="create-login-for-dataloads"></a>DataLoads için oturum açma oluşturma
 
@@ -103,10 +103,10 @@ DROP USER [ELTLogin]
 ;
 ```
 
-Veri ambarı birimleri ve veri Ambarınızda depolanan veriler için ücret ödersiniz. Bu işlem ve depolama alanı kaynakları ayrı ayrı faturalandırılır.
+Veri ambarı birimleri ve adanmış SQL havuzunuzdaki depolanan veriler için ücretlendiriliyorsunuz. Bu işlem ve depolama alanı kaynakları ayrı ayrı faturalandırılır.
 
-- Verileri depolama alanında tutmak istiyorsanız, SQL havuzunu kullanmadığınız sırada işlem duraklatabilirsiniz. İşlem duraklatıldığında yalnızca veri depolama alanı için ücret ödersiniz. Verilerle çalışmaya hazırsanız, işlem işlemini sürdürmeniz gerekir.
-- Gelecekteki ücretlendirmeleri kaldırmak istiyorsanız, veri ambarını silebilirsiniz.
+- Verileri depolama alanında tutmak istiyorsanız, adanmış SQL havuzunu kullanmadığınız zaman, işlem duraklatabilirsiniz. İşlem duraklatıldığında yalnızca veri depolama alanı için ücret ödersiniz. Verilerle çalışmaya hazırsanız, işlem işlemini sürdürmeniz gerekir.
+- Gelecekteki ücretleri kaldırmak istiyorsanız adanmış SQL havuzunu silebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

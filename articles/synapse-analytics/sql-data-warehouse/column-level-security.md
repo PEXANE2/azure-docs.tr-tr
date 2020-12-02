@@ -1,5 +1,5 @@
 ---
-title: Azure SYNAPSE için sütun düzeyi güvenlik nedir?
+title: Adanmış SQL havuzu için sütun düzeyinde güvenlik
 description: Column-Level güvenliği, müşterilerin, Kullanıcı yürütme bağlamına veya grup üyeliğine göre veritabanı tablo sütunlarına erişimi denetlemesine, uygulamanızdaki güvenliğin tasarımını ve kodlanmasını basitleştirmeye ve sütun erişimi üzerinde kısıtlamalar uygulamanıza olanak tanır.
 services: synapse-analytics
 author: julieMSFT
@@ -12,19 +12,19 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: f8bb40f9c80a0785c81c7aeacf783553bf73aa90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 817a912dabfc5365eabe8e0dabd7e0b40e40c525
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259892"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462502"
 ---
-# <a name="column-level-security"></a>Sütun düzeyinde güvenlik
+# <a name="column-level-security"></a>Sütun düzeyi güvenlik
 
 Column-Level güvenliği, müşterilerin, kullanıcının yürütme bağlamına veya grup üyeliğine göre tablo sütunlarına erişimi denetlemesine olanak tanır.
 
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
-Bu videonun gönderildiği [satır düzeyi güvenlik](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) Azure SYNAPSE için kullanılabilir hale geldi.
+Bu videonun gönderildiği [satır düzeyi güvenlik](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) , Azure SYNAPSE 'de adanmış SQL havuzu için kullanılabilir hale geldi.
 
 Sütun düzeyinde güvenlik, uygulamanızda güvenliğin tasarımını ve kodlamasını basitleştirir ve hassas verileri korumak için sütun erişimini kısıtlamanızı sağlar. Örneğin, belirli kullanıcıların departmanıyla ilgili bir tablonun yalnızca belirli sütunlarına erişebilmesini sağlama. Erişim kısıtlama mantığı, başka bir uygulama katmanındaki verilerden uzakta değil, veritabanı katmanında bulunur. Veri erişimi herhangi bir katmandan her denendiğinde, veritabanı erişim kısıtlamalarını uygular. Bu kısıtlama, genel güvenlik sisteminizin yüzey alanını azaltarak güvenlik düzeyini daha güvenilir ve sağlam hale getirir. Ayrıca, sütun düzeyinde güvenlik, kullanıcıların erişim kısıtlamalarını kullanıcılara önceden eklemek için sütunları filtrelemeye yönelik görüntüleme gereksinimini ortadan kaldırır.
 
@@ -32,7 +32,7 @@ Sütun düzeyinde güvenlik, uygulamanızda güvenliğin tasarımını ve kodlam
 
 ![Diyagramda, bir kapalı bir asma kilidi ile bir şematik tablo ve diğer sütunlar beyaz hücreler olduğunda, turuncu renkli bir sütun gösterilmektedir.](./media/column-level-security/cls.png)
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 ```syntaxsql
 GRANT <permission> [ ,...n ] ON
@@ -85,5 +85,5 @@ SELECT * FROM Membership;
 
 Sütun düzeyi güvenliğin bugün nasıl kullanıldığı hakkında bazı örnekler:
 
-- Finans hizmetleri firması, yalnızca hesap yöneticilerinin müşteri sosyal güvenlik numaralarına (SSN), telefon numaralarına ve diğer kişisel olarak tanımlanabilen bilgilere (PII) erişmesine izin verir.
+- Finans hizmetleri firması, yalnızca hesap yöneticilerinin müşteri sosyal güvenlik numaralarına (SSN), telefon numaralarına ve diğer kişisel verilere erişmesine izin verir.
 - Bir sağlık hizmetleri sağlayıcısı, yalnızca doktorlarla ve bu verileri, faturalandırma departmanı üyelerinin bu verileri görüntülemesini engellerken gizli tıp kayıtlarına erişime sahip olmasına olanak sağlar.

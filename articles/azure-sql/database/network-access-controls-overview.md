@@ -1,7 +1,7 @@
 ---
 title: Ağ erişim denetimleri
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
-description: Azure SQL veritabanı ve Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) için ağ erişimini yönetme ve denetleme konusuna genel bakış.
+description: Azure SQL veritabanı ve Azure SYNAPSE Analytics için ağ erişimini yönetme ve denetleme konusuna genel bakış.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: be327fabdffc0f98dc0449b51e7e4d73651d80d8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 90bc57af3aaf0d11cd354bfe7163014f836a72e8
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789497"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460011"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics ağ erişim denetimleri
 

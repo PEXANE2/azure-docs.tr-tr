@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: kgremban
-ms.openlocfilehash: eb53e7052db6d4de365864184b9bd2e6585b7e2d
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: dfd819d82f5e35183802e33e5d423cad4de36c38
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412131"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461597"
 ---
 # <a name="migrate-your-iot-hub-from-operations-monitoring-to-azure-monitor-resource-logs"></a>IoT Hub işlemler izlemeden Azure Izleyici kaynak günlüklerine geçirme
 
@@ -29,15 +29,15 @@ Azure portal IoT Hub güncelleştirmek için, önce bir tanılama ayarı oluştu
 
 1. [Azure Portal](https://portal.azure.com) oturum açın ve IoT Hub 'ınıza gidin.
 
-1. Sol bölmedeki **izleme** altında **Tanılama ayarları** ' nı seçin. Ardından **Tanılama ayarı Ekle** ' yi seçin.
+1. Sol bölmedeki **izleme** altında **Tanılama ayarları**' nı seçin. Ardından **Tanılama ayarı Ekle**' yi seçin.
 
    :::image type="content" source="media/iot-hub-migrate-to-diagnostics-settings/open-diagnostic-settings.png" alt-text="Izleme bölümündeki tanılama ayarlarını vurgulayan ekran görüntüsü.":::
 
 1. **Tanılama ayarı** bölmesinde, tanılama ayarına bir ad verin.
 
-1. **Kategori ayrıntıları** ' nın altında, izlemek istediğiniz işlemlerin kategorilerini seçin. IoT Hub bulunan işlemlerin kategorileri hakkında daha fazla bilgi için bkz. [kaynak günlükleri](monitor-iot-hub-reference.md#resource-logs).
+1. **Kategori ayrıntıları**' nın altında, izlemek istediğiniz işlemlerin kategorilerini seçin. IoT Hub bulunan işlemlerin kategorileri hakkında daha fazla bilgi için bkz. [kaynak günlükleri](monitor-iot-hub-reference.md#resource-logs).
 
-1. **Hedef ayrıntıları** ' nın altında, günlükleri nereye göndermek istediğinizi seçin. Bu hedeflerin herhangi bir birleşimini seçebilirsiniz:
+1. **Hedef ayrıntıları**' nın altında, günlükleri nereye göndermek istediğinizi seçin. Bu hedeflerin herhangi bir birleşimini seçebilirsiniz:
 
    * Bir depolama hesabına arşivle
    * Bir olay hub'ına akış yap
@@ -47,11 +47,11 @@ Azure portal IoT Hub güncelleştirmek için, önce bir tanılama ayarı oluştu
 
    :::image type="content" source="media/iot-hub-migrate-to-diagnostics-settings/add-diagnostic-setting.png" alt-text="Tamamlanmış bir tanılama ayarını gösteren ekran görüntüsü.":::
 
-1. Ayarları kaydetmek için **Kaydet** ’i seçin.
+1. Ayarları kaydetmek için **Kaydet**’i seçin.
 
-Yeni ayarlar yaklaşık 10 dakika içinde etkili olur. Bundan sonra, Günlükler yapılandırılmış hedefte görüntülenir. Tanılamayı yapılandırma hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızdan günlük verilerini toplama ve](/azure/azure-monitor/platform/platform-logs-overview)kullanma.
+Yeni ayarlar yaklaşık 10 dakika içinde etkili olur. Bundan sonra, Günlükler yapılandırılmış hedefte görüntülenir. Tanılamayı yapılandırma hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızdan günlük verilerini toplama ve](../azure-monitor/platform/platform-logs-overview.md)kullanma.
 
-PowerShell ve Azure CLı dahil olmak üzere tanılama ayarlarını oluşturma hakkında daha ayrıntılı bilgi için bkz. Azure Izleyici belgelerindeki [Tanılama ayarları](/azure/azure-monitor/platform/diagnostic-settings) .
+PowerShell ve Azure CLı dahil olmak üzere tanılama ayarlarını oluşturma hakkında daha ayrıntılı bilgi için bkz. Azure Izleyici belgelerindeki [Tanılama ayarları](../azure-monitor/platform/diagnostic-settings.md) .
 
 ### <a name="turn-off-operations-monitoring"></a>İşlem izlemeyi kapat
 
@@ -60,9 +60,9 @@ PowerShell ve Azure CLı dahil olmak üzere tanılama ayarlarını oluşturma ha
 
 Yeni tanılama ayarlarını iş akışınızda test etmeniz durumunda, işlemler izleme özelliğini kapatabilirsiniz. 
 
-1. IoT Hub menüsünde, **işlem izleme** ' yi seçin.
+1. IoT Hub menüsünde, **işlem izleme**' yi seçin.
 
-2. Her izleme kategorisinin altında **hiçbiri** ' ni seçin.
+2. Her izleme kategorisinin altında **hiçbiri**' ni seçin.
 
 3. İşlemleri izleme değişikliklerini kaydedin.
 

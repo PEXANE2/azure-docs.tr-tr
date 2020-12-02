@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: reference
 ms.service: iot-hub
 ms.date: 10/22/2020
-ms.openlocfilehash: 03941c3abe833deb218844cc60e2f04556fccc22
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 609c44991e7deca183321758fabdef80b71210c5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078212"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460864"
 ---
 # <a name="monitoring-azure-iot-hub-data-reference"></a>Azure IoT Hub veri başvurusunu izleme
 
@@ -19,13 +19,13 @@ Azure IoT Hub izleme verilerinin toplanması ve çözümlenmesi hakkındaki ayr�
 
 ## <a name="metrics"></a>Ölçümler
 
-Bu bölümde, Azure IoT Hub için otomatik olarak toplanan tüm platform ölçümleri listelenmektedir. IoT Hub ölçümler için kaynak sağlayıcısı ad alanı **Microsoft. Devices** ve tür ad alanı **Iothubs** 'dir.
+Bu bölümde, Azure IoT Hub için otomatik olarak toplanan tüm platform ölçümleri listelenmektedir. IoT Hub ölçümler için kaynak sağlayıcısı ad alanı **Microsoft. Devices** ve tür ad alanı **Iothubs**'dir.
 
 Aşağıdaki alt bölümlerde, genel kategoriye göre IoT Hub platform ölçümleri kesilir ve ile Azure portal göründükleri görünen ada göre listelenir. Ayrıca, her bir alt bölümde görünen ölçümlerle ilgili bilgiler de sağlanır.
 
-Ayrıca, Azure Izleyici belgelerindeki [Microsoft. Devices/IotHubs](/azure/azure-monitor/platform/metrics-supported#microsoftdevicesiothubs) altında ölçüm adına göre IoT Hub platform ölçümlerini listeleyen tek bir tablo bulabilirsiniz. Bu tabloda, bu makalede sunulan bazı ölçümler için [desteklenen toplamalar](#supported-aggregations) gibi bazı bilgiler sağlamadığının farkında olun.
+Ayrıca, Azure Izleyici belgelerindeki [Microsoft. Devices/IotHubs](../azure-monitor/platform/metrics-supported.md#microsoftdevicesiothubs) altında ölçüm adına göre IoT Hub platform ölçümlerini listeleyen tek bir tablo bulabilirsiniz. Bu tabloda, bu makalede sunulan bazı ölçümler için [desteklenen toplamalar](#supported-aggregations) gibi bazı bilgiler sağlamadığının farkında olun.
 
-Diğer Azure hizmetleri tarafından desteklenen ölçümler hakkında bilgi edinmek için bkz. [Azure izleyici Ile desteklenen ölçümler](/azure/azure-monitor/platform/metrics-supported).
+Diğer Azure hizmetleri tarafından desteklenen ölçümler hakkında bilgi edinmek için bkz. [Azure izleyici Ile desteklenen ölçümler](../azure-monitor/platform/metrics-supported.md).
 
 **Bu bölümdeki konular**
 
@@ -49,11 +49,11 @@ Her tablodaki **toplama türü** sütunu, bir grafik veya uyarı için ölçüm 
 
    ![Ölçümler için toplamayı gösteren ekran görüntüsü](./media/monitor-iot-hub-reference/aggregation-type.png)
 
-Çoğu ölçüm için tüm toplama türleri geçerlidir; Ancak, sayı ölçümleri için, **birim** sütun değeri **sayısı** , yalnızca bazı toplamalar geçerlidir. Count ölçümleri iki türden biri olabilir:
+Çoğu ölçüm için tüm toplama türleri geçerlidir; Ancak, sayı ölçümleri için, **birim** sütun değeri **sayısı**, yalnızca bazı toplamalar geçerlidir. Count ölçümleri iki türden biri olabilir:
 
-* **Tek noktalı** sayı ölçümleri için IoT Hub, ölçülen işlem her gerçekleştiğinde tek bir veri noktası kaydettirir (aslında 1--). Azure Izleyici daha sonra bu veri noktalarını belirtilen ayrıntı düzeyine göre toplar. **Tek nokta** ölçümlerine örnek olarak *gönderilen telemetri iletileri* ve *C2D ileti teslimleri tamamlanmıştır* . Bu ölçümler için, yalnızca ilgili toplama türü toplamdır (Toplam). Portal en düşük, en yüksek ve ortalama seçeneklerini seçmenizi sağlar; Ancak, bu değerler her zaman 1 olur.
+* **Tek noktalı** sayı ölçümleri için IoT Hub, ölçülen işlem her gerçekleştiğinde tek bir veri noktası kaydettirir (aslında 1--). Azure Izleyici daha sonra bu veri noktalarını belirtilen ayrıntı düzeyine göre toplar. **Tek nokta** ölçümlerine örnek olarak *gönderilen telemetri iletileri* ve *C2D ileti teslimleri tamamlanmıştır*. Bu ölçümler için, yalnızca ilgili toplama türü toplamdır (Toplam). Portal en düşük, en yüksek ve ortalama seçeneklerini seçmenizi sağlar; Ancak, bu değerler her zaman 1 olur.
 
-* **Snapshot** Count ölçümleri için, ölçülen işlem gerçekleştiğinde IoT Hub toplam bir sayı kaydeder. Şu anda IoT Hub tarafından yayılan üç **anlık görüntü** ölçümü vardır: *Toplam kullanılan ileti sayısı* , *Toplam cihaz (Önizleme)* ve *bağlı cihazlar (Önizleme)* . Bu ölçümler her yayıldıklarında bir "Toplam" miktarı sağladığından, bunları belirtilen ayrıntı düzeyi üzerinde toplamak hiçbir fikir vermez. Azure Izleyici, bu ölçümler için toplama türü için Ortalama, en düşük ve en yüksek değerleri seçmenizi sağlar.
+* **Snapshot** Count ölçümleri için, ölçülen işlem gerçekleştiğinde IoT Hub toplam bir sayı kaydeder. Şu anda IoT Hub tarafından yayılan üç **anlık görüntü** ölçümü vardır: *Toplam kullanılan ileti sayısı*, *Toplam cihaz (Önizleme)* ve *bağlı cihazlar (Önizleme)*. Bu ölçümler her yayıldıklarında bir "Toplam" miktarı sağladığından, bunları belirtilen ayrıntı düzeyi üzerinde toplamak hiçbir fikir vermez. Azure Izleyici, bu ölçümler için toplama türü için Ortalama, en düşük ve en yüksek değerleri seçmenizi sağlar.
 
 ### <a name="cloud-to-device-command-metrics"></a>Buluttan cihaza komut ölçümleri
 
@@ -150,8 +150,8 @@ Her tablodaki **toplama türü** sütunu, bir grafik veya uyarı için ölçüm 
 
 |Ölçüm görünen adı|Ölçüm|Birim|Toplama Türü|Açıklama|Boyutlar|
 |---|---|---|---|---|---|
-|Event Grid teslimler (Önizleme)|Eventgridteslimler|Count|Toplam|Event Grid yayımlanan IoT Hub olaylarının sayısı. Başarılı ve başarısız isteklerin sayısı için sonuç boyutunu kullanın. EventType boyutu olay türünü gösterir ( https://aka.ms/ioteventgrid) .|Sonuç,<br/>Olay türü<br>*Daha fazla bilgi için bkz. [ölçüm boyutları](#metric-dimensions)* .|
-|Event Grid gecikme süresi (Önizleme)|EventGridLatency|Mayacak|Ortalama|Olay Event Grid yayımlandığında IoT Hub olayının oluşturulduğu sürenin ortalama gecikme süresi (milisaniye). Bu sayı, tüm olay türleri arasındaki bir ortalama değer. Belirli bir olay türünün gecikmesini görmek için EventType boyutunu kullanın.|Olay türü<br>*Daha fazla bilgi için bkz. [ölçüm boyutları](#metric-dimensions)* .|
+|Event Grid teslimler (Önizleme)|Eventgridteslimler|Count|Toplam|Event Grid yayımlanan IoT Hub olaylarının sayısı. Başarılı ve başarısız isteklerin sayısı için sonuç boyutunu kullanın. EventType boyutu olay türünü gösterir ( https://aka.ms/ioteventgrid) .|Sonuç,<br/>Olay türü<br>*Daha fazla bilgi için bkz. [ölçüm boyutları](#metric-dimensions)*.|
+|Event Grid gecikme süresi (Önizleme)|EventGridLatency|Mayacak|Ortalama|Olay Event Grid yayımlandığında IoT Hub olayının oluşturulduğu sürenin ortalama gecikme süresi (milisaniye). Bu sayı, tüm olay türleri arasındaki bir ortalama değer. Belirli bir olay türünün gecikmesini görmek için EventType boyutunu kullanın.|Olay türü<br>*Daha fazla bilgi için bkz. [ölçüm boyutları](#metric-dimensions)*.|
 
 **Birim** değeri **sayısı** olan ölçümler için, yalnızca toplam (Sum) toplama geçerlidir. En düşük, en yüksek ve ortalama toplamalar her zaman 1 döndürür. Daha fazla bilgi için bkz. [desteklenen toplamalar](#supported-aggregations).
 
@@ -178,9 +178,9 @@ Her tablodaki **toplama türü** sütunu, bir grafik veya uyarı için ölçüm 
 
 |Ölçüm görünen adı|Ölçüm|Birim|Toplama Türü|Açıklama|Boyutlar|
 |---|---|---|---|---|---|
-| Yönlendirme teslim denemeleri (Önizleme) |Routingteslimler | Count | Toplam |Bu, yönlendirme teslimi ölçümdür. Belirli bir uç noktanın teslim durumunu veya belirli bir yönlendirme kaynağını belirlemek için boyutları kullanın.| Sonuç,<br>RoutingSource,<br>EndpointType,<br>FailureReasonCategory,<br>Uçnoktaadı<br>*Daha fazla bilgi için bkz. [ölçüm boyutları](#metric-dimensions)* . |
-| Yönlendirme teslim verilerinin bayt cinsinden boyutu (Önizleme)|RoutingDataSizeInBytesDelivered| Bayt | Toplam |IoT Hub tarafından özel uç noktaya ve yerleşik uç noktaya yönlendirilen toplam bayt sayısı. Belirli bir uç noktaya veya belirli bir yönlendirme kaynağına yönlendirilen veri boyutunu tanımlamak için boyutları kullanın.| RoutingSource,<br>EndpointType<br>Uçnoktaadı<br>*Daha fazla bilgi için bkz. [ölçüm boyutları](#metric-dimensions)* .|
-| Yönlendirme gecikmesi (Önizleme) |Routingdeliverygecikme süresi| Mayacak | Ortalama |Bu, yönlendirme teslimi gecikme ölçümdür. Belirli bir uç noktanın gecikmesini veya belirli bir yönlendirme kaynağını belirlemek için boyutları kullanın.| RoutingSource,<br>EndpointType,<br>Uçnoktaadı<br>*Daha fazla bilgi için bkz. [ölçüm boyutları](#metric-dimensions)* .|
+| Yönlendirme teslim denemeleri (Önizleme) |Routingteslimler | Count | Toplam |Bu, yönlendirme teslimi ölçümdür. Belirli bir uç noktanın teslim durumunu veya belirli bir yönlendirme kaynağını belirlemek için boyutları kullanın.| Sonuç,<br>RoutingSource,<br>EndpointType,<br>FailureReasonCategory,<br>Uçnoktaadı<br>*Daha fazla bilgi için bkz. [ölçüm boyutları](#metric-dimensions)*. |
+| Yönlendirme teslim verilerinin bayt cinsinden boyutu (Önizleme)|RoutingDataSizeInBytesDelivered| Bayt | Toplam |IoT Hub tarafından özel uç noktaya ve yerleşik uç noktaya yönlendirilen toplam bayt sayısı. Belirli bir uç noktaya veya belirli bir yönlendirme kaynağına yönlendirilen veri boyutunu tanımlamak için boyutları kullanın.| RoutingSource,<br>EndpointType<br>Uçnoktaadı<br>*Daha fazla bilgi için bkz. [ölçüm boyutları](#metric-dimensions)*.|
+| Yönlendirme gecikmesi (Önizleme) |Routingdeliverygecikme süresi| Mayacak | Ortalama |Bu, yönlendirme teslimi gecikme ölçümdür. Belirli bir uç noktanın gecikmesini veya belirli bir yönlendirme kaynağını belirlemek için boyutları kullanın.| RoutingSource,<br>EndpointType,<br>Uçnoktaadı<br>*Daha fazla bilgi için bkz. [ölçüm boyutları](#metric-dimensions)*.|
 |Yönlendirme: depolamaya teslim edilen Bloblar|D2C. endpoints. çıkış. Storage. blob 'ları|Count|Toplam|IoT Hub blob 'ları depolama uç noktalarına yönlendirmenin kaç kez yönlendirtığı sayısıdır.|Yok|
 |Yönlendirme: depolamaya teslim edilen veriler|D2C. endpoints. çıkış. Storage. Bytes|Bayt|Toplam|Depolama uç noktalarına teslim edilen veri miktarı (bayt) IoT Hub.|Yok|
 |Yönlendirme: Olay Hub 'ı için ileti gecikmesi|D2C. endpoints. Latency. eventHubs|Mayacak|Ortalama|Olay Hub 'ının özel uç noktalarına IoT Hub ileti girişi ve ileti girişi arasındaki ortalama gecikme süresi (milisaniye). Bu, yerleşik uç noktaya yönelik ileti yollarını içermez (olaylar).|Yok|
@@ -219,17 +219,17 @@ Azure IoT Hub, bazı yönlendirme ve olay Kılavuzu ölçümleriyle ilişkili a�
 |---|---|
 ||
 |**Uçnoktaadı**| Uç nokta adı.|
-|**EndpointType**|Aşağıdakilerden biri: **Eventhubs** , **servicebusqueues** , **cosmosdb** , **servicebuskonular** . **yerleşik** veya **blobstorage** .|
-|**Türü**| Aşağıdaki Event Grid olay türlerinden biri: **Microsoft. Devices. DeviceCreated** . **Microsoft. Devices. DeviceDeleted** , **Microsoft. Devices. DeviceConnected** , **Microsoft. Devices. DeviceConnected** veya **Microsoft. Devices. devicetelemetrisi** . Daha fazla bilgi için bkz. [olay türleri](iot-hub-event-grid.md#event-types).|
-|**FailureReasonCategory**| Aşağıdakilerden biri: **geçersiz** , **bırakılmış** , **yalnız bırakılmış** veya **null** .|
-|**Sonuç**| **Başarılı** veya **başarısız** .|
+|**EndpointType**|Aşağıdakilerden biri: **Eventhubs**, **servicebusqueues**, **cosmosdb**, **servicebuskonular**. **yerleşik** veya **blobstorage**.|
+|**Türü**| Aşağıdaki Event Grid olay türlerinden biri: **Microsoft. Devices. DeviceCreated**. **Microsoft. Devices. DeviceDeleted**, **Microsoft. Devices. DeviceConnected**, **Microsoft. Devices. DeviceConnected** veya **Microsoft. Devices. devicetelemetrisi**. Daha fazla bilgi için bkz. [olay türleri](iot-hub-event-grid.md#event-types).|
+|**FailureReasonCategory**| Aşağıdakilerden biri: **geçersiz**, **bırakılmış**, **yalnız bırakılmış** veya **null**.|
+|**Result**| **Başarılı** veya **başarısız**.|
 |**Yönlendirme kaynağı**| Cihaz Iletileri<br>İkizi değişiklik olayları<br>Cihaz yaşam döngüsü olayları|
 
-Ölçüm boyutları hakkında daha fazla bilgi için bkz. [çok boyutlu ölçümler](/azure/azure-monitor/platform/data-platform-metrics#multi-dimensional-metrics).
+Ölçüm boyutları hakkında daha fazla bilgi için bkz. [çok boyutlu ölçümler](../azure-monitor/platform/data-platform-metrics.md#multi-dimensional-metrics).
 
 ## <a name="resource-logs"></a>Kaynak günlükleri
 
-Bu bölümde, Azure IoT Hub için toplanan tüm kaynak günlüğü kategori türleri ve şemaları listelenmektedir. Tüm IoT Hub günlüklerin kaynak sağlayıcısı ve türü [Microsoft. Devices/IotHubs](/azure/azure-monitor/platform/resource-logs-categories#microsoftdevicesiothubs).
+Bu bölümde, Azure IoT Hub için toplanan tüm kaynak günlüğü kategori türleri ve şemaları listelenmektedir. Tüm IoT Hub günlüklerin kaynak sağlayıcısı ve türü [Microsoft. Devices/IotHubs](../azure-monitor/platform/resource-logs-categories.md#microsoftdevicesiothubs).
 
 **Bu bölümdeki konular**
 
@@ -384,7 +384,7 @@ Bu kategori, cihaz bir dosyayı depoya yüklerken doğrudan oluşan hataları ya
 
 ### <a name="routes"></a>Yollar
 
-[İleti yönlendirme](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c) kategorisi, IoT Hub tarafından algılanan ileti yolu değerlendirmesi ve uç nokta durumu sırasında oluşan hataları izler. Bu kategori, şunlar gibi olayları içerir:
+[İleti yönlendirme](./iot-hub-devguide-messages-d2c.md) kategorisi, IoT Hub tarafından algılanan ileti yolu değerlendirmesi ve uç nokta durumu sırasında oluşan hataları izler. Bu kategori, şunlar gibi olayları içerir:
 
 * Bir kural "tanımsız" olarak değerlendirilir,
 * IoT Hub bir uç noktayı ölü olarak işaretler veya
@@ -689,4 +689,4 @@ Tüm Azure Izleyici günlükleri/Log Analytics tablolarının bir başvurusu iç
 ## <a name="see-also"></a>Ayrıca Bkz.
 
 * Bkz. Azure IoT Hub izleme açıklaması için bkz. [azure IoT Hub](monitor-iot-hub.md) izleme.
-* Azure kaynaklarını izleme hakkında ayrıntılı bilgi için bkz. Azure [izleyici ile Azure kaynaklarını izleme](/azure/azure-monitor/insights/monitor-azure-resource) .
+* Azure kaynaklarını izleme hakkında ayrıntılı bilgi için bkz. Azure [izleyici ile Azure kaynaklarını izleme](../azure-monitor/insights/monitor-azure-resource.md) .

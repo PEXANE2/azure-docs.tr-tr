@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 2f32fc9ffb8be5b71bfe84a4f0e946e68e8fcd03
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: a915b5a348e3167d2cf81906b19abd9850584ce9
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577830"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460984"
 ---
 # <a name="plan-an-azure-managed-application-for-an-azure-application-offer"></a>Azure Uygulama teklifi için Azure yönetilen uygulaması planlayın
 
@@ -32,7 +32,7 @@ Azure uygulaması kullanın: aşağıdaki koşullar gerektiğinde yönetilen uyg
 | ------------ | ------------- |
 | Bir Azure aboneliği | Yönetilen uygulamalar bir müşterinin aboneliğine dağıtılmalıdır, ancak üçüncü taraf tarafından yönetilebilir. |
 | Faturalandırma ve ölçüm | Kaynaklar bir müşterinin Azure aboneliğinde sağlanır. Kullandıkça Öde ödeme modelini kullanan VM 'Ler, müşteri ile Microsoft aracılığıyla işlem yapar ve müşterinin Azure aboneliği aracılığıyla faturalandırılır. <br><br> Kendi lisansını getir VM 'Leri için, Microsoft, müşteri aboneliğinde oluşan tüm altyapı maliyetlerini faturalandırır, ancak müşteriyle doğrudan Transact yazılım lisanslama ücretleri. |
-| Azure ile uyumlu sanal sabit disk (VHD) | VM 'Ler Windows veya Linux üzerinde oluşturulmalıdır. Daha fazla bilgi için bkz:<br> • [Bir Azure VM teknik varlığı oluşturun](/azure/marketplace/partner-center-portal/vm-certification-issues-solutions#how-to-address-a-vulnerability-or-exploit-in-a-vm-offer.md) (Windows VHD 'ler için).<br> •  [Linux dağıtımları Azure 'da](/azure/virtual-machines/linux/endorsed-distros) (Linux VHD 'ler için) onaylı. |
+| Azure ile uyumlu sanal sabit disk (VHD) | VM 'Ler Windows veya Linux üzerinde oluşturulmalıdır. Daha fazla bilgi için bkz.<br> • [Bir Azure VM teknik varlığı oluşturun](./azure-vm-create-certification-faq.md#address-a-vulnerability-or-an-exploit-in-a-vm-offer) (Windows VHD 'ler için).<br> •  [Linux dağıtımları Azure 'da](../virtual-machines/linux/endorsed-distros.md) (Linux VHD 'ler için) onaylı. |
 | Müşteri kullanımı ilişkilendirmesi | Tüm yeni Azure Uygulama teklifleri Ayrıca bir [Azure iş ortağı müşteri kullanımı attributıon](azure-partner-customer-usage-attribution.md) GUID 'i de içermelidir. Müşteri kullanımı atımı ve nasıl etkinleştirileceği hakkında daha fazla bilgi için bkz. [Azure iş ortağı müşteri kullanımı atısyonu](azure-partner-customer-usage-attribution.md). |
 | Dağıtım paketi | Müşterilerin planınızı dağıtmasını sağlayacak bir dağıtım paketi gerekir. Aynı teknik yapılandırmayı gerektiren birden çok plan oluşturuyorsanız aynı paketi kullanabilirsiniz. Ayrıntılar için bkz. sonraki bölüm: dağıtım paketi. |
 |||
@@ -46,8 +46,8 @@ Dağıtım paketi, bu plan için gereken tüm şablon dosyalarını ve aynı zam
 
 Tüm Azure uygulamalarının bu iki dosyayı bir. zip arşivi kök klasörüne eklemesi gerekir:
 
-- [mainTemplate.js](/azure/azure-resource-manager/managed-applications/publish-service-catalog-app?tabs=azure-powershell#create-the-arm-template.md)adlı kaynak yöneticisi şablon dosyası. Bu şablon, müşterinin Azure aboneliğine dağıtılacak kaynakları tanımlar. Kaynak Yöneticisi şablonlarının örnekleri için bkz. [Azure hızlı başlangıç şablonları Galerisi](https://azure.microsoft.com/documentation/templates/) veya ilgili [GitHub: Azure Resource Manager hızlı başlangıç şablonları](https://github.com/azure/azure-quickstart-templates) deposu.
-- Azure uygulama oluşturma deneyimi için [createUiDefinition.js](/azure/azure-resource-manager/managed-application-createuidefinition-overview)adlı bir kullanıcı arabirimi tanımı. Kullanıcı arayüzünde tüketicilerin parametre değerleri sağlamasına olanak tanıyan öğeleri belirlersiniz.
+- [mainTemplate.js](../azure-resource-manager/managed-applications/publish-service-catalog-app.md?tabs=azure-powershell#create-the-arm-template)adlı kaynak yöneticisi şablon dosyası. Bu şablon, müşterinin Azure aboneliğine dağıtılacak kaynakları tanımlar. Kaynak Yöneticisi şablonlarının örnekleri için bkz. [Azure hızlı başlangıç şablonları Galerisi](https://azure.microsoft.com/documentation/templates/) veya ilgili [GitHub: Azure Resource Manager hızlı başlangıç şablonları](https://github.com/azure/azure-quickstart-templates) deposu.
+- Azure uygulama oluşturma deneyimi için [createUiDefinition.js](../azure-resource-manager/managed-applications/create-uidefinition-overview.md)adlı bir kullanıcı arabirimi tanımı. Kullanıcı arayüzünde tüketicilerin parametre değerleri sağlamasına olanak tanıyan öğeleri belirlersiniz.
 
 Desteklenen en büyük dosya boyutu:
 
@@ -58,7 +58,7 @@ Tüm yeni Azure Uygulama teklifleri Ayrıca bir [Azure iş ortağı müşteri ku
 
 ## <a name="azure-regions"></a>Azure bölgeleri
 
-Planınızı Azure ortak bölgesi, Azure Kamu bölgesi veya her ikisine de yayımlayabilirsiniz. [Azure Kamu](/azure/azure-government/documentation-government-manage-marketplace-partners)'da yayımlamadan önce, belirli uç noktalar farklı olabileceğinden planınızı ortamda test edin ve doğrulayın. Planınızı ayarlamak ve test etmek için [Microsoft Azure Kamu deneme](https://azure.microsoft.com/global-infrastructure/government/request/)sürümünden bir deneme hesabı isteyin.
+Planınızı Azure ortak bölgesi, Azure Kamu bölgesi veya her ikisine de yayımlayabilirsiniz. [Azure Kamu](../azure-government/documentation-government-manage-marketplace-partners.md)'da yayımlamadan önce, belirli uç noktalar farklı olabileceğinden planınızı ortamda test edin ve doğrulayın. Planınızı ayarlamak ve test etmek için [Microsoft Azure Kamu deneme](https://azure.microsoft.com/global-infrastructure/government/request/)sürümünden bir deneme hesabı isteyin.
 
 Yayımcı olarak tüm uyumluluk denetimleri, güvenlik ölçüleri ve en iyi uygulamalardan sorumludur. Azure Kamu fiziksel olarak yalıtılmış veri merkezleri ve ağlar (yalnızca ABD 'de bulunur) kullanır.
 
@@ -87,14 +87,14 @@ Fiyatlar ABD Doları cinsinden ayarlanır (USD = Birleşik Devletler dolar), kay
 
 ## <a name="just-in-time-jit-access"></a>Tam zamanında (JıT) erişim
 
-JıT erişimi, sorun giderme ve bakım için yönetilen bir uygulamanın kaynaklarına yükseltilmiş erişim isteme imkanı sağlar. Kaynaklara her zaman salt okuma erişiminizin olması gerekir, ancak belirli bir süre için daha fazla erişime sahip olabilirsiniz. Daha fazla bilgi için bkz. [Azure yönetilen uygulamalar için tam zamanında erişimi etkinleştirme ve isteme](/azure/managed-applications/request-just-in-time-access).
+JıT erişimi, sorun giderme ve bakım için yönetilen bir uygulamanın kaynaklarına yükseltilmiş erişim isteme imkanı sağlar. Kaynaklara her zaman salt okuma erişiminizin olması gerekir, ancak belirli bir süre için daha fazla erişime sahip olabilirsiniz. Daha fazla bilgi için bkz. [Azure yönetilen uygulamalar için tam zamanında erişimi etkinleştirme ve isteme](../azure-resource-manager/managed-applications/request-just-in-time-access.md).
 
 > [!NOTE]
 > Skıming, bu özelliği desteklemek için dosyanızı güncelleştirdiğinizden emin olsa bile Kullanıcı bildirim almalıdır `createUiDefinition.json` .
 
 ## <a name="deployment-mode"></a>Dağıtım modu
 
-Yönetilen bir uygulama planını, **tamamlanmış** veya **artımlı** Dağıtım modunu kullanacak şekilde yapılandırabilirsiniz. Tüm modda, kaynak [ üzerindemainTemplate.js](/azure/azure-resource-manager/managed-applications/publish-service-catalog-app?tabs=azure-powershell#create-the-arm-template.md)tanımlanmamışsa, uygulamanın müşterinin yeniden dağıtımı yönetilen kaynak grubundaki kaynakların kaldırılmasına neden olur. Artımlı modda, uygulamanın yeniden dağıtımı mevcut kaynakları değişmeden bırakır. Daha fazla bilgi için bkz. [Azure Resource Manager Dağıtım modları](/azure/azure-resource-manager/templates/deployment-modes).
+Yönetilen bir uygulama planını, **tamamlanmış** veya **artımlı** Dağıtım modunu kullanacak şekilde yapılandırabilirsiniz. Tüm modda, kaynak [ üzerindemainTemplate.js](../azure-resource-manager/managed-applications/publish-service-catalog-app.md?tabs=azure-powershell#create-the-arm-template)tanımlanmamışsa, uygulamanın müşterinin yeniden dağıtımı yönetilen kaynak grubundaki kaynakların kaldırılmasına neden olur. Artımlı modda, uygulamanın yeniden dağıtımı mevcut kaynakları değişmeden bırakır. Daha fazla bilgi için bkz. [Azure Resource Manager Dağıtım modları](../azure-resource-manager/templates/deployment-modes.md).
 
 ## <a name="notification-endpoint-url"></a>Bildirim uç noktası URL 'SI
 
@@ -104,7 +104,7 @@ Yönetilen bir uygulama planını, **tamamlanmış** veya **artımlı** Dağıt�
 
 İsteğe bağlı olarak, `*/read` Varsayılan olarak kullanılabilir olan eylemlere ek olarak, müşterilerin yönetilen kaynaklarda gerçekleştirebileceği eylemleri belirtebilirsiniz.
 
-Bu seçeneği belirlerseniz, denetim eylemlerini veya izin verilen veri eylemlerini ya da her ikisini de belirtmeniz gerekir. Daha fazla bilgi için bkz. [Azure kaynakları için reddedilen atamaları anlama](/azure/role-based-access-control/deny-assignments). Kullanılabilir eylemler için bkz. [Azure Resource Manager kaynak sağlayıcısı işlemleri](/azure/role-based-access-control/resource-provider-operations). Örneğin, tüketicilerin sanal makineleri yeniden başlatmasına izin vermek için `Microsoft.Compute/virtualMachines/restart/action` izin verilen eylemlere ekleyin.
+Bu seçeneği belirlerseniz, denetim eylemlerini veya izin verilen veri eylemlerini ya da her ikisini de belirtmeniz gerekir. Daha fazla bilgi için bkz. [Azure kaynakları için reddedilen atamaları anlama](../role-based-access-control/deny-assignments.md). Kullanılabilir eylemler için bkz. [Azure Resource Manager kaynak sağlayıcısı işlemleri](../role-based-access-control/resource-provider-operations.md). Örneğin, tüketicilerin sanal makineleri yeniden başlatmasına izin vermek için `Microsoft.Compute/virtualMachines/restart/action` izin verilen eylemlere ekleyin.
 
 ## <a name="choose-who-can-manage-the-application"></a>Uygulamayı kimin yönetebileceğini seçin
 
@@ -113,23 +113,23 @@ Seçili bulutların her birinde yönetilen bir uygulamayı kimin yönetebileceğ
 - **Azure Active Directory KIRACı kimliği** : izin vermek istediğiniz kullanıcıların, grupların veya uygulamaların kimliklerini IÇEREN Azure AD Kiracı kimliği (dizin kimliği olarak da bilinir). Azure portal [Azure Active Directory özelliklerinde](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)Azure AD kiracı kimliğinizi bulabilirsiniz.
 - **Yetkilendirmeler** – yönetilen kaynak grubuna izin verilmesini istediğiniz her bir Kullanıcı, Grup veya uygulamanın Azure ACTIVE DIRECTORY nesne kimliğini ekleyin. Kullanıcıyı, [Azure portal Azure Active Directory Kullanıcıları dikey penceresinde](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)bulunan birincil kimliğine göre belirler.
 
-Her bir asıl KIMLIK için, Azure AD yerleşik rollerinin birini (sahibi veya katkıda bulunan) ilişkilendirebilirsiniz. Seçtiğiniz rol, sorumlunun müşteri aboneliğindeki kaynaklarda sahip olacağı izinleri açıklar. Daha fazla bilgi için bkz. [Azure yerleşik rolleri](/azure/role-based-access-control/built-in-roles). Rol tabanlı erişim denetimi (RBAC) hakkında daha fazla bilgi için bkz. [Azure Portal RBAC ile çalışmaya başlama](/azure/role-based-access-control/overview).
+Her bir asıl KIMLIK için, Azure AD yerleşik rollerinin birini (sahibi veya katkıda bulunan) ilişkilendirebilirsiniz. Seçtiğiniz rol, sorumlunun müşteri aboneliğindeki kaynaklarda sahip olacağı izinleri açıklar. Daha fazla bilgi için bkz. [Azure yerleşik rolleri](../role-based-access-control/built-in-roles.md). Rol tabanlı erişim denetimi (RBAC) hakkında daha fazla bilgi için bkz. [Azure Portal RBAC ile çalışmaya başlama](../role-based-access-control/overview.md).
 
 > [!NOTE]
 > Azure bölgesi başına 100 yetkilendirmeler ekleyebilseniz de genellikle daha kolay bir Active Directory Kullanıcı grubu oluşturmak ve KIMLIĞINI "asıl KIMLIK" içinde belirtmek daha kolaydır. Bu, plan dağıtıldıktan sonra yönetim grubuna daha fazla kullanıcı eklemenizi sağlar ve daha fazla yetkilendirmeler eklemek için planı güncelleştirme ihtiyacını azaltır.
 
 ## <a name="policy-settings"></a>İlke ayarları
 
-Dağıtılan çözüme yönelik uyumluluk gereksinimlerini belirtmek için, yönetilen uygulamanıza [Azure ilkeleri](/azure/governance/policy) uygulayabilirsiniz. İlke tanımları ve parametre değerlerinin biçimi için bkz. [Azure İlke Örnekleri](/azure/governance/policy/samples).
+Dağıtılan çözüme yönelik uyumluluk gereksinimlerini belirtmek için, yönetilen uygulamanıza [Azure ilkeleri](../governance/policy/index.yml) uygulayabilirsiniz. İlke tanımları ve parametre değerlerinin biçimi için bkz. [Azure İlke Örnekleri](../governance/policy/samples/index.md).
 
 En fazla beş ilke ve her Ilke türünün yalnızca bir örneğini yapılandırabilirsiniz. Bazı ilke türleri ek parametreler gerektirir.
 
 | İlke türü | İlke parametreleri gerekli |
 | ------------ | ------------- |
 | Azure SQL veritabanı şifrelemesi | Hayır |
-| Azure SQL Server denetim ayarları | Yes |
+| Azure SQL Server denetim ayarları | Evet |
 | Azure Data Lake Store şifreleme | Hayır |
-| Tanılama ayarını denetle | Yes |
+| Tanılama ayarını denetle | Evet |
 | Kaynak konumu uyumluluğunu denetleme | Hayır |
 |||
 

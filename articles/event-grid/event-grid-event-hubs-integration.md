@@ -4,15 +4,15 @@ description: "Öğretici: Azure SYNAPSE Analytics 'e veri geçirmek için Azure 
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: e6dfcac17d79edd417af07179224fdf922906c4e
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 42a2f7fd557970328f6d88b08e296317cecd8c66
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841385"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462143"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Öğretici: veri ambarına büyük veri akışı
-Azure [Event Grid](overview.md) , uygulamalardan ve hizmetlerden bildirimleri (olayları) tepki etmenizi sağlayan akıllı bir olay yönlendirme hizmetidir. Örneğin, bir Azure Işlevini Azure Blob depolama alanına veya Azure Data Lake Storage yakalanan Event Hubs verileri işleyecek şekilde tetikleyip verileri diğer veri depolarına geçirebilirler. Bu [Event Hubs ve Event Grid tümleştirme örneği](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) , yakalanan Event Hubs verilerini blob depolamadan Azure SYNAPSE Analytics 'e (eskı adıyla SQL veri ambarı) sorunsuz bir şekilde geçirmek için Event Grid ile Event Hubs nasıl kullanacağınızı gösterir.
+Azure [Event Grid](overview.md) , uygulamalardan ve hizmetlerden bildirimleri (olayları) tepki etmenizi sağlayan akıllı bir olay yönlendirme hizmetidir. Örneğin, bir Azure Işlevini Azure Blob depolama alanına veya Azure Data Lake Storage yakalanan Event Hubs verileri işleyecek şekilde tetikleyip verileri diğer veri depolarına geçirebilirler. Bu [Event Hubs ve Event Grid tümleştirme örneği](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) , yakalanan Event Hubs verilerini blob depolamadan Azure SYNAPSE Analytics 'e sorunsuzca geçirmek için Event Grid ile Event Hubs nasıl kullanacağınızı gösterir.
 
 ![Uygulamaya genel bakış](media/event-grid-event-hubs-integration/overview.png)
 
@@ -27,14 +27,14 @@ Bu diyagram, bu öğreticide oluşturduğunuz çözümün iş akışını göste
 Bu makalede, aşağıdaki adımları uygulayın:
 
 > [!div class="checklist"]
-> * Altyapıyı dağıtmak için bir Azure Resource Manager şablonu kullanın: bir olay hub 'ı, bir depolama hesabı, bir işlev uygulaması, bir Synapse analizi.
-> * Veri ambarında bir tablo oluşturun.
+> * Altyapıyı dağıtmak için bir Azure Resource Manager şablonu kullanın: bir olay hub 'ı, bir depolama hesabı, bir işlev uygulaması, ayrılmış bir SQL Havuzu.
+> * Adanmış SQL havuzunda tablo oluşturun.
 > * İşlev uygulamasına kod ekleyin.
 > * Olaya abone olun. 
 > * Olay Hub 'ına veri gönderen uygulamayı çalıştırın.
 > * Veri ambarında geçirilen verileri görüntüleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -118,7 +118,7 @@ Bu adımda, gerekli altyapıyı bir [Kaynak Yöneticisi şablonuyla](https://git
     3.  Komutu çalıştırmak için Cloud Shell penceresinde **ENTER** tuşuna basın. Bu işlem biraz zaman alabilir. Bu, bir dizi kaynak oluştururken biraz zaman alabilir. Komutun sonucunda, hiçbir başarısızlık olmadığından emin olun. 
     
 
-### <a name="use-azure-powershell"></a>Azure PowerShell kullanma
+### <a name="use-azure-powershell"></a>Azure PowerShell'i kullanma
 
 1. Azure Cloud Shell ' de PowerShell moduna geçin. Azure Cloud Shell sol üst köşesinde aşağı ok ' i seçin ve **PowerShell**' i seçin.
 

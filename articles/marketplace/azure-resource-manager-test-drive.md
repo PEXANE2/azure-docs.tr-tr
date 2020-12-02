@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/19/2020
 ms.author: trkeya
 author: trkeya
-ms.openlocfilehash: 0b445f9d4fdda0b1fac9dcdb4344533cfd7d37a9
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: fd3fa04d2d7e868476838788dd9cf0e27c07aeca
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491248"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461764"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Test sürüşü Azure Resource Manager
 
@@ -37,7 +37,7 @@ Dağıtım şablonu, çözümünüzü oluşturan tüm Azure kaynaklarını içer
 - **Test sürücüsü Azure Resource Manager şablonu** – Azure Resource Manager şablonunuzu içeren. zip ' i karşıya yükleyin. Hızlı başlangıç makalesinde Azure Resource Manager şablonu oluşturma hakkında daha fazla bilgi edinin [Azure Portal kullanarak Azure Resource Manager şablonları oluşturun ve dağıtın](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
 
     > [!note]
-    > Başarıyla yayımlamak için ARM şablonunun biçimlendirilmesini doğrulamak önemlidir. Bunu iki şekilde yapabilirsiniz. bir [ÇEVRIMIÇI API aracı](https://docs.microsoft.com/rest/api/resources/deployments/validate) veya (2) bir [Test dağıtımıyla](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal)birlikte (1).
+    > Başarıyla yayımlamak için ARM şablonunun biçimlendirilmesini doğrulamak önemlidir. Bunu iki şekilde yapabilirsiniz. bir [ÇEVRIMIÇI API aracı](/rest/api/resources/deployments/validate) veya (2) bir [Test dağıtımıyla](../azure-resource-manager/templates/deploy-portal.md)birlikte (1).
 
 - **Sınama sürücüsü süresi** (zorunlu) – test sürücüsünün etkin kalacağı saat sayısını girin. Bu süre dolduktan sonra test sürücüsü otomatik olarak sona erer. Yalnızca tam sayılar kullanın (örneğin, "2" saatleri geçerlidir, "1,5" değildir).
 
@@ -76,7 +76,7 @@ Parametreleriniz için geçerli herhangi bir ad kullanabilirsiniz; test sürüc�
 | Meta veri türü   | Parametre türü  | Açıklama     | Örnek değer    |
 |---|---|---|---|
 | **BaseUri**     | string          | Dağıtım paketinizin temel URI 'SI| `https:\//\<\..\>.blob.core.windows.net/\<\..\>` |
-| **username**    | string          | Yeni rastgele Kullanıcı adı.| admin68876      |
+| **nitelen**    | string          | Yeni rastgele Kullanıcı adı.| admin68876      |
 | **parola**    | güvenli dize    | Yeni rastgele parola | LP! ACS \^ 2kh     |
 | **oturum kimliği**   | string          | Benzersiz test sürücüsü oturum KIMLIĞI (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
 
@@ -300,7 +300,7 @@ Tamamlanacak son bölüm, Azure aboneliğinizi ve Azure Active Directory (AD) ba
 
    ![Azure Abonelikleri](media/test-drive/azure-subscriptions.png)
 
-2. **Azure AD KIRACı kimliği** edinin. Zaten kullanılabilir bir kiracı Kimliğiniz varsa, **Azure Active Directory**  >  **Özellikler**  >  **dizin kimliği** ' nde bulabilirsiniz.
+2. **Azure AD KIRACı kimliği** edinin. Zaten kullanılabilir bir kiracı Kimliğiniz varsa, **Azure Active Directory**  >  **Özellikler**  >  **dizin kimliği**' nde bulabilirsiniz.
 
    ![Azure Active Directory özellikleri](media/test-drive/azure-active-directory-properties.png)
 
@@ -309,14 +309,14 @@ Tamamlanacak son bölüm, Azure aboneliğinizi ve Azure Active Directory (AD) ba
 3. **Azure AD UYGULAMASı kimliği** – yeni bir uygulama oluşturun ve kaydedin. Bu uygulamayı, test sürücü örneğiniz üzerinde işlem gerçekleştirmek için kullanacağız.
 
    1. Yeni oluşturulan dizine veya zaten var olan dizine gidin ve filtre bölmesinde Azure Active Directory ' yi seçin.
-   2. **Uygulama kayıtları** arayın ve **Ekle** ' yi seçin.
+   2. **Uygulama kayıtları** arayın ve **Ekle**' yi seçin.
    3. Bir uygulama adı girin.
    4. **Web uygulaması/API** **türünü** seçin.
    5. Oturum açma URL 'sinde herhangi bir değer sağlayın, bu alan kullanılmaz.
-   6. **Oluştur** ’u seçin.
-   7. Uygulama oluşturulduktan sonra **Özellikler** ' i,  >  **uygulamayı çok kiracılı olarak ayarla** ve sonra **Kaydet** ' i seçin.
+   6. **Oluştur**’u seçin.
+   7. Uygulama oluşturulduktan sonra **Özellikler**' i,  >  **uygulamayı çok kiracılı olarak ayarla** ve sonra **Kaydet**' i seçin.
 
-4. **Kaydet** ’i seçin.
+4. **Kaydet**’i seçin.
 
 5. Bu kayıtlı uygulamanın uygulama KIMLIĞINI kopyalayın ve test sürücüsü alanına yapıştırın.
 
@@ -334,9 +334,9 @@ Tamamlanacak son bölüm, Azure aboneliğinizi ve Azure Active Directory (AD) ba
 
       ![İzinleri ekleme](media/test-drive/access-control-permissions.jpg)
 
-   1. **Kaydet** ’i seçin.
+   1. **Kaydet**’i seçin.
 
-7. **Azure AD uygulaması** bir kimlik doğrulama anahtarı oluşturun. **Anahtarlar** ' ın altında, bir **anahtar açıklaması** ekleyin, süreyi **süresiz** olarak ayarlayın (süresi dolan bir anahtar, üretimde test sürücünüzü keser) ve ardından **Kaydet** ' i seçin. Bu değeri kopyalayın ve gerekli Test Drive alanına yapıştırın.
+7. **Azure AD uygulaması** bir kimlik doğrulama anahtarı oluşturun. **Anahtarlar**' ın altında, bir **anahtar açıklaması** ekleyin, süreyi **süresiz** olarak ayarlayın (süresi dolan bir anahtar, üretimde test sürücünüzü keser) ve ardından **Kaydet**' i seçin. Bu değeri kopyalayın ve gerekli Test Drive alanına yapıştırın.
 
 ![Azure AD uygulaması için anahtarları gösterir](media/test-drive/azure-ad-app-keys.png)
 

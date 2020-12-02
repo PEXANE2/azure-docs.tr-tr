@@ -3,12 +3,12 @@ title: Event Grid kaynak olarak Azure Key Vault
 description: Azure Event Grid Azure Key Vault olaylar için belirtilen özellikleri ve şemayı açıklar
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: b3d961228429c1f84e45c1df9147fa1687ab5074
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 605502794f2f3aa4f4edd14b49efda5003b91146
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324085"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460403"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>Event Grid kaynak olarak Azure Key Vault
 
@@ -35,7 +35,7 @@ Bir Azure Key Vault hesabı aşağıdaki olay türlerini üretir:
 
 ### <a name="event-examples"></a>Olay örnekleri
 
-Aşağıdaki örnek, **Microsoft. Keykasası. Secretnewversiontarafından oluşturulan**şemayı göstermektedir:
+Aşağıdaki örnek, **Microsoft. Keykasası. Secretnewversiontarafından oluşturulan** şemayı göstermektedir:
 
 ```JSON
 [
@@ -71,8 +71,8 @@ Bir olay aşağıdaki en üst düzey verilere sahiptir:
 | Nesne | string | Bu olayı tetikleyen nesnenin türü |
 | objectName | string | Bu olayı tetikleyen nesnenin adı |
 | sürüm | string | Bu olayı tetikleyen nesnenin sürümü |
-| NBF | number | Bu olayı tetikleyen nesnenin 1970-01-01T00:00:00Z 'den bu yana saniye cinsinden olmayan Tarih |
-| exp | number | Bu olayı tetikleyen nesnenin 1970-01-01T00:00:00Z 'den bu yana geçen sona erme tarihi |
+| NBF | sayı | Bu olayı tetikleyen nesnenin 1970-01-01T00:00:00Z 'den bu yana saniye cinsinden olmayan Tarih |
+| exp | sayı | Bu olayı tetikleyen nesnenin 1970-01-01T00:00:00Z 'den bu yana geçen sona erme tarihi |
 
 ## <a name="tutorials-and-how-tos"></a>Öğreticiler ve nasıl yapılır kılavuzları
 |Başlık  |Açıklama  |
@@ -85,5 +85,5 @@ Bir olay aşağıdaki en üst düzey verilere sahiptir:
 
 * Azure Event Grid giriş için bkz. Event Grid nedir [?](overview.md).
 * Azure Event Grid aboneliği oluşturma hakkında daha fazla bilgi için bkz. [Event Grid abonelik şeması](subscription-creation-schema.md).
-* Anahtar Kasası hakkında daha fazla bilgi için bkz. [Azure Key Vault nedir?](../key-vault/general/overview.md)
+* Key Vault hakkında daha fazla bilgi için bkz. [Azure Key Vault nedir?](../key-vault/general/overview.md)
 

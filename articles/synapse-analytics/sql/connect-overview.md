@@ -10,17 +10,17 @@ ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0897ca35dd5ae1b7209a36aee4bd5335d4ea4d25
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 2ff2d9708642c347a829de290d45849d8629807f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681542"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462361"
 ---
 # <a name="connect-to-synapse-sql"></a>SYNAPSE SQL 'e bağlanma
 Azure SYNAPSE Analytics 'te SYNAPSE SQL özelliğine bağlanın.
 
-## <a name="supported-tools-for-serverless-sql-pool-preview"></a>Sunucusuz SQL havuzu için desteklenen araçlar (Önizleme)
+## <a name="supported-tools-for-serverless-sql-pool"></a>Sunucusuz SQL havuzu için desteklenen Araçlar
 
 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) , 1.18.0 sürümünden başlayarak tam olarak desteklenmektedir. SSMS, sürüm 18,5 ' den başlayarak kısmen desteklenir, bunu yalnızca bağlanmak ve sorgulamak için kullanabilirsiniz.
 
@@ -46,7 +46,7 @@ Tam sunucu adını bulmak için:
 
 ![Tam sunucu adı](./media/connect-overview/server-connect-example.png)
 
-## <a name="serverless-sql-pool"></a>**sunucusuz SQL havuzu**
+## <a name="serverless-sql-pool"></a>**Sunucusuz SQL havuzu**
 
 ![Tam sunucu adı sunucusuz SQL havuzu](./media/connect-overview/server-connect-example-sqlod.png)
 

@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2020
-ms.openlocfilehash: 010ca40f4f3aacd6353aecd150e944672cc09066
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a559a51feafa310a4645282dc6368f520fc6b972
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097524"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459617"
 ---
 # <a name="optimize-multi-region-cost-in-azure-cosmos-db"></a>Azure Cosmos DB'de birden çok bölgenin maliyetini iyileştirme
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,14 +26,14 @@ Tek yazma bölgesinde sağlanan aktarım hızı saniyede 100 RU ile saat başın
 
 ### <a name="example"></a>Örnek
 
-Batı ABD, tek bölgeli yazma işlemleri için yapılandırılmış bir kapsayıcınızı kabul edin, bu arada üretilen iş 10.000 RU/sn ile sağlanır ve bu ay 1 TB veri depolar. Aynı depolama ve aktarım hızı ile Doğu ABD bir bölge ekleyin ve uygulamanızdan her iki bölgedeki kapsayıcılara yazmak istediğinizi varsayalım. Aylık toplam faturanız (31 gün varsayılarak), şu şekildedir:
+Batı ABD, bu ay 0,5 TB veri depolayan 10.000 RU/sn aktarım hızı ile sağlanan, tek bölgeli yazma işlemleri için yapılandırılmış bir Kapsayıcınız olduğunu düşünün. Aynı depolama ve aktarım hızı ile Doğu ABD bir bölge ekleyin ve uygulamanızdan her iki bölgede de kapsayıcılara yazmak istediğinizi varsayalım. Yeni toplam aylık faturanız (bir ayda 730 saat varsayılır) aşağıdaki gibi olacaktır:
 
 |**Öğe**|**Kullanım (aylık)**|**Hız**|**Aylık maliyet**|
 |----|----|----|----|
-|Batı ABD (tek yazma bölgelerinde) kapsayıcı için üretilen iş faturası |10.000 RU/s * 24 saat * 31 gün |$0,008/saat başına 100 RU/sn |$584,06 |
-|2 bölgede kapsayıcı için üretilen iş faturası-Batı ABD & Doğu ABD (birden fazla yazma bölgesi) |2 * 10.000 RU/s * 24 saat * 31 gün|$0,016/saat başına 100 RU/sn |$2.336,26 |
-|Batı ABD kapsayıcı için depolama faturası |1 TB (veya 1.024 GB) |$0,25/GB |$256 |
-|2 bölge için depolama faturası-Batı ABD & Doğu ABD |2 * 1 TB (veya 3.072 GB) |$0,25/GB |$768 |
+|Batı ABD (tek yazma bölgesi) kapsayıcısı için üretilen iş faturası |10.000 RU/s * 730 saat |$0,008/saat başına 100 RU/sn |$584 |
+|2 bölgede kapsayıcı için üretilen iş faturası-Batı ABD & Doğu ABD (birden fazla yazma bölgesi) |2 * 10.000 RU/s * 730 saat |$0,016/saat başına 100 RU/sn |$2.336 |
+|Batı ABD kapsayıcı için depolama faturası |0,5 TB (veya 512 GB) |$0,25/GB |$128 |
+|2 bölgede kapsayıcı için depolama faturası-Batı ABD & Doğu ABD |2 * 0,5 TB (veya 1.024 GB) |$0,25/GB |$256 |
 
 ## <a name="improve-throughput-utilization-on-a-per-region-basis"></a>Bölge bazında üretilen iş kullanımını geliştirme
 

@@ -1,6 +1,6 @@
 ---
 title: Paylaşılan meta veri modeli
-description: Azure SYNAPSE Analytics, farklı çalışma alanı hesaplama altyapılarının, sunucusuz Apache Spark havuzları (Önizleme), sunucusuz SQL Havuzu (Önizleme) ve adanmış SQL havuzları arasında veritabanlarını ve tabloları paylaşmasına izin verir.
+description: Azure SYNAPSE Analytics, farklı çalışma alanı hesaplama altyapılarının, sunucusuz Apache Spark havuzları, sunucusuz SQL havuzu ve adanmış SQL havuzları arasında veritabanlarını ve tabloları paylaşmasına izin verir.
 services: synapse-analytics
 author: MikeRys
 ms.service: synapse-analytics
@@ -9,18 +9,16 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: 64c19f3331be8ffda433207da88ebf22c546ee4e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b10b6f011fa7daee4094f0cc7b819d36127fedcd
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324659"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460354"
 ---
 # <a name="azure-synapse-analytics-shared-metadata"></a>Azure SYNAPSE Analytics paylaşılan meta verileri
 
-Azure SYNAPSE Analytics, farklı çalışma alanı hesaplama altyapılarının, sunucusuz Apache Spark havuzları (Önizleme) ve sunucusuz SQL Havuzu (Önizleme) arasında veritabanlarını ve tabloları paylaşmasına izin verir.
-
-[!INCLUDE [preview](../includes/note-preview.md)]
+Azure SYNAPSE Analytics, farklı çalışma alanı hesaplama altyapılarının, sunucusuz Apache Spark havuzları ve sunucusuz SQL havuzu arasında veritabanlarını ve tabloları paylaşmasına izin verir.
 
 Paylaşım, bu şekilde adlandırılan modern veri ambarı modelini destekler ve çalışma alanı SQL altyapılarını Spark ile oluşturulan veritabanlarına ve tablolara erişim sağlar. Ayrıca, SQL altyapılarının diğer altyapılarla paylaşılmayan kendi nesnelerini oluşturmalarına de olanak tanır.
 

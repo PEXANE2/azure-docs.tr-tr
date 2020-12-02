@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: SYNAPSE Studio kullanarak sunucusuz Apache Spark Havuzu (Önizleme) oluşturma'
+title: 'Hızlı başlangıç: SYNAPSE Studio kullanarak sunucusuz Apache Spark havuzu oluşturma'
 description: Bu kılavuzdaki adımları izleyerek SYNAPSE Studio kullanarak bir sunucusuz Apache Spark havuzu oluşturun.
 services: synapse-analytics
 author: saveenr
@@ -9,14 +9,14 @@ ms.subservice: spark
 ms.date: 10/16/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 313ad0c620fe06158e96c208ae265702134b58d1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d280e96b354f38a86545ed5f6bcaa6c9a314c46b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324164"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462038"
 ---
-# <a name="quickstart-create-a-serverless-apache-spark-pool-preview-using-synapse-studio"></a>Hızlı başlangıç: SYNAPSE Studio kullanarak sunucusuz Apache Spark Havuzu (Önizleme) oluşturma
+# <a name="quickstart-create-a-serverless-apache-spark-pool-using-synapse-studio"></a>Hızlı başlangıç: SYNAPSE Studio kullanarak sunucusuz Apache Spark havuzu oluşturma
 
 Azure SYNAPSE Analytics, verilerinizi almanıza, dönüştürmenizi, modellemenizi, çözümlemenize ve sungetirmenize yardımcı olmak için çeşitli analiz motorları sunmaktadır. Apache Spark havuz, açık kaynak büyük veri işlem yetenekleri sunar. SYNAPSE çalışma alanınızda bir Apache Spark havuzu oluşturduktan sonra, veriler yüklenebilir, modellenebilir, işlenebilir ve öngörüleri elde etmek için sunulabilir.  
 
@@ -79,9 +79,9 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
 
 1. Sonraki sekmede (ek ayarlar), tüm ayarları varsayılan olarak bırakın.
 
-1. Şimdilik hiç etiket eklememiz, bu nedenle **gözden geçir + oluştur** ' u seçin.
+1. Şimdilik hiç etiket eklememiz, bu nedenle **gözden geçir + oluştur**' u seçin.
 
-1. **Gözden geçir + oluştur** sekmesinde, ayrıntıların daha önce girilmiş olan öğesine göre doğru göründüğünden emin olun ve **Oluştur** ' a basın. 
+1. **Gözden geçir + oluştur** sekmesinde, ayrıntıların daha önce girilmiş olan öğesine göre doğru göründüğünden emin olun ve **Oluştur**' a basın. 
 
     ![SYNAPSE Studio yeni Apache Spark Havuzu Oluştur](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-26.png)
 
@@ -100,11 +100,11 @@ Apache Spark havuzunu SYNAPSE Studio kullanarak çalışma alanından silmek iç
 Apache Spark havuzunu silmek istiyorsanız, aşağıdakileri yapın:
 
 1. SYNAPSE Studio 'daki yönetim hub 'ındaki Apache Spark havuzlarına gidin.
-1. Apache Spark havuzunun komutlarını göstermek için, silinecek Apache havuzunun yanındaki üç nokta simgesini (Bu örnekte, **contosospark** ) seçin.
+1. Apache Spark havuzunun komutlarını göstermek için, silinecek Apache havuzunun yanındaki üç nokta simgesini (Bu örnekte, **contosospark**) seçin.
 
     ![Son oluşturulan havuz seçiliyken Apache Spark havuzlarının listelenmesi.](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-29.png)
 
-1. **Sil** 'e basın.
+1. **Sil**'e basın.
 1. Silmeyi onaylayın ve **Sil** düğmesine basın.
 1. İşlem başarıyla tamamlandığında, Apache Spark havuzu artık çalışma alanı kaynaklarında listelenmeyecektir. 
 

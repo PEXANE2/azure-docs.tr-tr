@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
-ms.openlocfilehash: 400dd66827e82c1ede496526c49977e6f5383487
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 4ea1982e7545f4ac39a5ecd15dc9e19a582ae31c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780198"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459636"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL veritabanı hiper ölçek SSS
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -118,7 +118,7 @@ Hiper ölçek tüm SQL Server iş yüklerini destekler, ancak öncelikle OLTP i�
 
 Şu anda bir veri ambarı olarak SQL Server kullanarak etkileşimli analiz sorguları çalıştırıyorsanız, daha düşük bir maliyetle küçük ve orta ölçekli veri ambarlarını (100 TB 'a kadar birkaç TB) barındırabileceğiniz için Hiperscale harika bir seçenektir ve SQL Server veri ambarı iş yüklerinizi en az T-SQL kod değişiklikleriyle hiper ölçeğe geçirebilirsiniz.
 
-Veri analizlerini, karmaşık sorgular ve sürekli olarak 100 MB/sn 'den büyük bir ölçekte çalıştırıyorsanız ya da paralel veri ambarı (PDW), Teradata veya diğer yoğun paralel Işleme (MPP) veri ambarlarından yararlanarak Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) en iyi seçim olabilir.
+Veri analizlerini, karmaşık sorgular ve sürekli olarak 100 MB/sn 'den büyük bir ölçekte çalıştırıyorsanız ya da paralel veri ambarı (PDW), Teradata veya diğer yoğun paralel Işleme (MPP) veri ambarlarından yararlanarak Azure SYNAPSE Analytics en iyi seçim olabilir.
   
 ## <a name="hyperscale-compute-questions"></a>Hiper ölçekli işlem soruları
 

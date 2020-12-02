@@ -3,14 +3,14 @@ title: Azure Otomasyonu 'nda değişkenleri yönetme
 description: Bu makalede runbook 'larda ve DSC yapılandırmalarında değişkenlerle nasıl çalışılacağı açıklanmaktadır.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 10/05/2020
+ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4749fcb6698ff1716f2cae257cc0efad458bf9a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5be0d45843eed8c7c0d7d9b6dc4655de01e914c3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91766193"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461461"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Azure Otomasyonu 'nda değişkenleri yönetme
 
@@ -26,10 +26,10 @@ Otomasyon değişkenleri aşağıdaki senaryolar için yararlıdır:
 
 Azure Otomasyonu değişkenleri sürdürür ve bir runbook ya da DSC yapılandırması başarısız olsa bile bunları kullanılabilir hale getirir. Bu davranış, bir runbook veya DSC yapılandırmasının, daha sonra başka bir runbook tarafından veya bir sonraki çalıştırılışında aynı runbook veya DSC yapılandırması tarafından kullanılan bir değer ayarlamasına olanak tanır.
 
-Azure Otomasyonu, her şifreli değişkeni güvenli bir şekilde depolar. Bir değişken oluşturduğunuzda, Azure Otomasyonu tarafından güvenli bir varlık olarak şifrelemeyi ve depolamayı belirtebilirsiniz. Değişkeni oluşturduktan sonra, değişkeni yeniden oluşturmadan şifreleme durumunu değiştiremezsiniz. Azure Güvenlik Merkezi 'nin önerisi, [Otomasyon hesabı değişkenlerinde](../../security-center/recommendations-reference.md#recs-computeapp)açıklandığı şekilde tüm Azure Otomasyonu değişkenlerini şifreleyebilmelidir.
+Azure Otomasyonu, her şifreli değişkeni güvenli bir şekilde depolar. Bir değişken oluşturduğunuzda, Azure Otomasyonu tarafından güvenli bir varlık olarak şifrelemeyi ve depolamayı belirtebilirsiniz. Değişkeni oluşturduktan sonra, değişkeni yeniden oluşturmadan şifreleme durumunu değiştiremezsiniz. Önceden şifrelenmeyen hassas verileri depolayan Otomasyon hesabı değişkenleri varsa, bunları silmeniz ve şifrelenmiş değişkenler olarak yeniden oluşturmanız gerekir. Azure Güvenlik Merkezi 'nin önerisi, [Otomasyon hesabı değişkenlerinde](../../security-center/recommendations-reference.md#recs-computeapp)açıklandığı şekilde tüm Azure Otomasyonu değişkenlerini şifreleyebilmelidir. Bu güvenlik önerilerinden hariç tutmak istediğiniz şifrelenmemiş değişkenlere sahipseniz, bkz. muafiyet kuralı oluşturmak için [öneriler ve güvenli puandan bir kaynağı muaf](../../security-center/exempt-resource.md) tutma.
 
 >[!NOTE]
->Azure Otomasyonu 'nda güvenli varlıklar, kimlik bilgileri, sertifikalar, bağlantılar ve şifrelenmiş değişkenler içerir. Bu varlıklar, her Otomasyon hesabı için oluşturulan benzersiz bir anahtar kullanılarak Azure Otomasyonu 'nda şifrelenir ve depolanır. Azure Otomasyonu, anahtarı sistem tarafından yönetilen Key Vault depolar. Otomasyon, güvenli bir varlık depolamadan önce anahtarı Key Vault 'den yükler ve ardından varlığı şifrelemek için kullanır. 
+>Azure Otomasyonu 'nda güvenli varlıklar, kimlik bilgileri, sertifikalar, bağlantılar ve şifrelenmiş değişkenler içerir. Bu varlıklar, her Otomasyon hesabı için oluşturulan benzersiz bir anahtar kullanılarak Azure Otomasyonu 'nda şifrelenir ve depolanır. Azure Otomasyonu, anahtarı sistem tarafından yönetilen Key Vault depolar. Otomasyon, güvenli bir varlık depolamadan önce anahtarı Key Vault 'den yükler ve ardından varlığı şifrelemek için kullanır.
 
 ## <a name="variable-types"></a>Değişken türleri
 

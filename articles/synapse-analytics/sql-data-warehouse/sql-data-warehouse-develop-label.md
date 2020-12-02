@@ -1,32 +1,30 @@
 ---
 title: Sorguları işaretlemek için etiketleri kullanma
-description: Çözümleri geliştirmeye yönelik SYNAPSE SQL havuzundaki sorguları işaretlemek için etiketleri kullanma ipuçları.
+description: Azure SYNAPSE Analytics 'te adanmış SQL havuzları için sorguları işaretlemek üzere etiketleri kullanma ipuçları.
 services: synapse-analytics
-author: XiaoyuMSFT
+author: MSTehrani
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 04/17/2018
-ms.author: xiaoyul
+ms.author: emtehran
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 91b6dac5fba4bb8dfd8cf4a3bb4e5952f8388bb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 7958caf71658dcdcbf31bac84697931e9049452f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89459156"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462750"
 ---
-# <a name="using-labels-to-instrument-queries-in-synapse-sql-pool"></a>SYNAPSE SQL havuzundaki sorguları işaretlemek için etiketleri kullanma
+# <a name="using-labels-to-instrument-queries-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzlarının sorgularını işaretlemek için etiketleri kullanma
 
-Bu makaleye dahil olmak üzere, SQL havuzundaki sorguları işaretlemek için Etiketler kullanarak çözüm geliştirmeye yönelik ipuçları yer almaktadır.
-
-Azure SYNAPSE Analytics 'te çözüm geliştirmeye yönelik sorguları işaretlemek için Etiketler kullanma ipuçları.
+Bu makalede, adanmış SQL havuzlarındaki sorguları işaretlemek için Etiketler kullanarak çözüm geliştirmeye yönelik ipuçları yer almaktadır.
 
 ## <a name="what-are-labels"></a>Etiketler nedir?
 
-SQL havuzu sorgu etiketleri adlı bir kavramı destekler. Herhangi bir derinliğe geçmeden önce bir örneğe göz atalım:
+Adanmış SQL havuzu sorgu etiketleri adlı bir kavramı destekler. Herhangi bir derinliğe geçmeden önce bir örneğe göz atalım:
 
 ```sql
 SELECT *

@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: Azure portal kullanarak adanmış bir SQL Havuzu (Önizleme) oluşturma'
+title: 'Hızlı başlangıç: Azure portal kullanarak adanmış bir SQL havuzu oluşturma'
 description: Bu kılavuzdaki adımları izleyerek Azure portal kullanarak yeni bir adanmış SQL havuzu oluşturun.
 services: synapse-analytics
 author: julieMSFT
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: b558e34d3f5d224515eee669dfa7b8f2c6bbb3cd
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3537b126adf082c8b00a02d999789d8a32b3f51d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541020"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462018"
 ---
-# <a name="quickstart-create-a-dedicated-sql-pool-preview-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak adanmış bir SQL Havuzu (Önizleme) oluşturma
+# <a name="quickstart-create-a-dedicated-sql-pool-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak adanmış bir SQL havuzu oluşturma
 
 Azure SYNAPSE Analytics, verilerinizi almak, dönüştürmek, modellemek ve analiz etmenize yardımcı olmak için çeşitli analiz motorları sunmaktadır. Adanmış bir SQL havuzu, T-SQL tabanlı işlem ve depolama olanakları sunar. SYNAPSE çalışma alanınızda adanmış bir SQL havuzu oluşturduktan sonra, veriler yüklenebilir, modellenebilir, işlenebilir ve daha hızlı analitik Öngörüler için teslim edilebilir.
 
@@ -24,7 +24,7 @@ Bu hızlı başlangıçta, Azure portal kullanarak bir Synapse çalışma alanı
 
 Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - [SYNAPSE çalışma alanı](./quickstart-create-workspace.md)
@@ -57,15 +57,15 @@ Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](htt
     > [!IMPORTANT]
     > Adanmış SQL havuzlarının kullanabileceği adlarla ilgili belirli sınırlamalar olduğunu unutmayın. Adlar özel karakterler içeremez, 15 veya daha az karakter olmalı, ayrılmış sözcükler içermemelidir ve çalışma alanında benzersiz olmalıdır.
 
-3. **Sonraki: Ek Ayarlar** ’ı seçin.
+3. **Sonraki: Ek Ayarlar**’ı seçin.
 4. Adanmış SQL havuzunu veri olmadan sağlamak için **hiçbiri** ' ni seçin. Varsayılan harmanlamayı seçili bırakın.
 
-    Adanmış SQL havuzunuzu bir geri yükleme noktasından geri yüklemek istiyorsanız **geri yükleme noktası** ' nı seçin. Geri yükleme gerçekleştirme hakkında daha fazla bilgi için bkz [. nasıl yapılır: var olan ayrılmış BIR SQL havuzunu geri yükleme](backuprestore/restore-sql-pool.md)
+    Adanmış SQL havuzunuzu bir geri yükleme noktasından geri yüklemek istiyorsanız **geri yükleme noktası**' nı seçin. Geri yükleme gerçekleştirme hakkında daha fazla bilgi için bkz [. nasıl yapılır: var olan ayrılmış BIR SQL havuzunu geri yükleme](backuprestore/restore-sql-pool.md)
 
 ![adanmış SQL havuzu akış oluşturma-ek ayarlar sekmesi.](media/quickstart-create-sql-pool/create-sql-pool-portal-03.png)
 
-5. **Gözden geçir + oluştur** ’u seçin.
-6. Ayrıntıların daha önce girildiği duruma göre doğru göründüğünden emin olun. **Oluştur** ’u seçin.
+5. **Gözden geçir ve oluştur**’u seçin.
+6. Ayrıntıların daha önce girildiği duruma göre doğru göründüğünden emin olun. **Oluştur**’u seçin.
 ![adanmış SQL havuzu akış oluşturma-ayarları gözden geçirme sekmesi.](media/quickstart-create-sql-pool/create-sql-pool-portal-04.png)
 
 7. Bu noktada kaynak sağlama akışı başlar.
@@ -86,7 +86,7 @@ Ayrılmış SQL havuzunu çalışma alanından silmek için aşağıdaki adımla
 Adanmış SQL havuzunu silmek istiyorsanız aşağıdaki adımları izleyin:
 
 1. Çalışma alanı Dikey penceresinde SQL havuzları dikey penceresine gidin
-1. Silinecek adanmış SQL havuzunu seçin (Bu durumda **contosowdw** )
+1. Silinecek adanmış SQL havuzunu seçin (Bu durumda **contosowdw**)
 1. Seçildikten sonra **Sil** 'e basın
 1. Silmeyi onaylayın ve **Sil** DÜĞMESINE ![ adanmış SQL havuzuna genel bakış ' a basın, silme onayını vurgular.](media/quickstart-create-sql-pool/create-sql-pool-portal-11.png)
 1. İşlem başarıyla tamamlandığında, adanmış SQL havuzu artık çalışma alanı kaynaklarında listelenmez.

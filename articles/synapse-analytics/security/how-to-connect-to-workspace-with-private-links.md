@@ -8,14 +8,14 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: ee915346a93a600ea352be42dc14e0464525c025
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 699a7321646167b0a9fb20a77a40999ec33b14f0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312254"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461336"
 ---
-# <a name="connect-to-your-azure-synapse-workspace-using-private-links-preview"></a>Özel bağlantıları kullanarak Azure SYNAPSE çalışma alanınıza bağlanma (Önizleme)
+# <a name="connect-to-your-azure-synapse-workspace-using-private-links"></a>Özel bağlantıları kullanarak Azure Synapse çalışma alanınıza bağlanma
 
 Bu makale, Azure SYNAPSE çalışma alanınızda özel bir uç nokta oluşturmayı öğretir. Daha fazla bilgi için bkz. [özel bağlantılar ve özel uç noktalar](https://docs.microsoft.com/azure/private-link/) .
 
@@ -28,13 +28,13 @@ Daha önce yapmadıysanız, ağ kaynak sağlayıcısını kaydedin. Kaynak sağl
 **Güvenlik** altında **Özel uç nokta bağlantısı** ' nı seçin. 
 ![Azure SYNAPSE çalışma alanını Azure portal içinde açın](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-1.png)
 
-Sonraki ekranda **+ Özel uç nokta** ' ı seçin.
+Sonraki ekranda **+ Özel uç nokta**' ı seçin.
 
 ![Azure portal içinde özel uç nokta aç](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-1a.png)
 
 ## <a name="step-3-select-your-subscription-and-region-details"></a>3. Adım: aboneliğinizi ve bölge ayrıntılarınızı seçin
 
-**Özel uç nokta oluştur** penceresindeki **temel bilgiler** sekmesinde, **aboneliğiniz** ve **kaynak grubunuz** ' ı seçin. Oluşturmak istediğiniz özel uç noktaya bir **ad** verin. Özel uç noktanın oluşturulmasını istediğiniz **bölgeyi** seçin.
+**Özel uç nokta oluştur** penceresindeki **temel bilgiler** sekmesinde, **aboneliğiniz** ve **kaynak grubunuz**' ı seçin. Oluşturmak istediğiniz özel uç noktaya bir **ad** verin. Özel uç noktanın oluşturulmasını istediğiniz **bölgeyi** seçin.
 
 Özel uç noktalar bir alt ağda oluşturulur. Abonelik, kaynak grubu ve Seçili bölge özel uç nokta alt ağlarını filtreleyin. **İleri ' yi seçin: bittiğinde kaynak >** .
 ![Abonelik ve bölge ayrıntıları ' nı seçin 1](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-2.png)
@@ -54,7 +54,7 @@ Ileri ' yi seçin: Kurulum 'un bir sonraki bölümüne ilerlemek için **yapıla
 
 ![Abonelik ve bölge ayrıntıları seçme 3](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-4.png)
 
-Dağıtım tamamlandığında, Azure SYNAPSE çalışma alanınızı Azure portal açın ve **Özel uç nokta bağlantıları** ' nı seçin. Özel uç noktayla ilişkili yeni özel uç nokta ve özel uç nokta bağlantısı adı gösterilir.
+Dağıtım tamamlandığında, Azure SYNAPSE çalışma alanınızı Azure portal açın ve **Özel uç nokta bağlantıları**' nı seçin. Özel uç noktayla ilişkili yeni özel uç nokta ve özel uç nokta bağlantısı adı gösterilir.
 
 ![Abonelik ve bölge ayrıntıları 4 ' ü seçin](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-5.png)
 

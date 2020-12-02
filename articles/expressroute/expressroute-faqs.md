@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: 7b7362d9315d8228e56dc85b2da22e0d507fa8ae
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ef5b065425fa05d016c1b1c1688cc28508f32d30
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339798"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462052"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute SSS
 
@@ -46,8 +46,9 @@ Hayır. Hizmet sağlayıcınızdan herhangi bir hızda VPN bağlantısı satın 
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-use-more-than-my-procured-bandwidth"></a>Belirli bir bant genişliğine ait bir ExpressRoute bağlantı hattı için ödeme yapıyorsanız, temin bant genişliğinden daha fazlasını kullanma imkanım var mı?
 
-Evet, ExpressRoute devrenizin ikincil bağlantısında bulunan bant genişliğini kullanarak temin olduğunuz bant genişliği sınırını en fazla iki kez kullanabilirsiniz. Devrenizin yerleşik yedekliği, temin bant genişliğinin her biri, iki Microsoft kurumsal sınır yönlendiricilerine (MSEE) birincil ve ikincil bağlantılar kullanılarak yapılandırılır. İkincil bağlantınız aracılığıyla kullanılabilen bant genişliği, gerekirse ek trafik için kullanılabilir. Ancak ikincil bağlantı yedekliliğinden, bu garanti edilmez ve sürekli bir süre için ek trafik için kullanılmamalıdır. Trafiği iletmek için her iki bağlantıyı da kullanma hakkında daha fazla bilgi edinmek için [buraya](./expressroute-optimize-routing.md#solution-use-as-path-prepending)bakın.
-Trafiği iletmek için yalnızca birincil bağlantınızı kullanmayı planlıyorsanız, bağlantı için bant genişliği düzeltilir ve abone olma denemesi, paket düşmesine neden olur. Trafik bir ExpressRoute ağ geçidiyle akar, SKU 'nun bant genişliği sabittir ve Burstable değildir.
+Evet, ExpressRoute devrenizin ikincil bağlantısında bulunan bant genişliğini kullanarak temin olduğunuz bant genişliği sınırını en fazla iki kez kullanabilirsiniz. Devrenizin yerleşik yedekliği, temin bant genişliğinin her biri, iki Microsoft kurumsal sınır yönlendiricilerine (MSEE) birincil ve ikincil bağlantılar kullanılarak yapılandırılır. İkincil bağlantınız aracılığıyla kullanılabilen bant genişliği, gerekirse ek trafik için kullanılabilir. Ancak ikincil bağlantı yedekliliğinden, bu garanti edilmez ve sürekli bir süre için ek trafik için kullanılmamalıdır. Trafiği iletmek için her iki bağlantıyı da kullanma hakkında daha fazla bilgi edinmek için bkz. [Use as Path dizinlenirken](./expressroute-optimize-routing.md#solution-use-as-path-prepending).
+
+Trafiği iletmek için yalnızca birincil bağlantınızı kullanmayı planlıyorsanız, bağlantı için bant genişliği düzeltilir ve abone olma denemesi, paket düşmesine neden olur. Trafik bir ExpressRoute ağ geçidiyle akar, ağ geçidi SKU 'SU için bant genişliği sabittir ve Burstable değildir. Her ağ geçidi SKU 'sunun bant genişliği için bkz. [ExpressRoute sanal ağ geçitleri hakkında](expressroute-about-virtual-network-gateways.md#aggthroughput).
 
 ### <a name="can-i-use-the-same-private-network-connection-with-virtual-network-and-other-azure-services-simultaneously"></a>Aynı anda sanal ağ ve diğer Azure hizmetleriyle aynı özel ağ bağlantısını kullanabilir miyim?
 

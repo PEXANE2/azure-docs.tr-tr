@@ -1,6 +1,6 @@
 ---
 title: Sıralı kümelenmiş columnstore dizini ile performans ayarlama
-description: Sorgu performansınızı geliştirmek için sıralı kümelenmiş columnstore dizini kullanırken bilmeniz gereken öneriler ve önemli noktalar.
+description: Ayrılmış SQL havuzlarındaki sorgu performansınızı geliştirmek için sıralı kümelenmiş columnstore dizini kullanırken bilmeniz gereken öneriler ve önemli noktalar.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,22 +11,22 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 48db8541ebad19e3b22b737f7e92dcc980708ef6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: afb6efcee2ad4f5cf25a411eed353ff2fc27d75c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91841603"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460798"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Sıralı kümelenmiş columnstore dizini ile performans ayarlama  
 
-Kullanıcılar SYNAPSE SQL havuzundaki bir columnstore tablosunu sorgulayıp iyileştirici, her kesimde depolanan en düşük ve en yüksek değerleri denetler.  Sorgu koşulunun sınırları dışında kalan segmentler diskten belleğe okunamaz.  Okunan parçaların sayısı ve toplam boyutu küçük olduğunda sorgu daha hızlı bir performans alabilir.   
+Kullanıcılar bir columnstore tablosunu adanmış SQL havuzunda sorgudığında, iyileştirici her kesimde depolanan en düşük ve en yüksek değerleri denetler.  Sorgu koşulunun sınırları dışında kalan segmentler diskten belleğe okunamaz.  Okunan parçaların sayısı ve toplam boyutu küçük olduğunda sorgu daha hızlı bir performans alabilir.   
 
 ## <a name="ordered-vs-non-ordered-clustered-columnstore-index"></a>Sıralı ve sıralı olmayan kümelenmiş columnstore dizini
 
 Varsayılan olarak, bir dizin seçeneği olmadan oluşturulan her tablo için bir iç bileşen (Dizin Oluşturucu) üzerinde sıralı olmayan bir kümelenmiş columnstore dizini (CCı) oluşturur.  Her sütundaki veriler ayrı bir CCI satır grubu segmentinde sıkıştırılır.  Her bir segmentin değer aralığında meta veriler bulunur, bu nedenle sorgu koşulunun sınırları dışında kalan segmentler sorgu yürütme sırasında diskten okunmazlar.  CCı, en yüksek düzeyde veri sıkıştırması sağlar ve sorguların daha hızlı çalışabilmesi için okunacak parçaların boyutunu azaltır. Ancak, Dizin Oluşturucu verileri segmentlere sıkıştırmadan önce sıralamadığından, çakışan değer aralıklarına sahip kesimler meydana gelebilir ve sorguların diskten daha fazla kesim okumasına ve daha uzun sürmesine neden olabilir.  
 
-Sıralı bir CCı oluştururken, SYNAPSE SQL Engine, Dizin Oluşturucu onları Dizin kesimlerine sıkıştırmadan önce, bellekteki mevcut verileri sıra anahtarları göre sıralar.  Sıralanmış verilerle, çakışan bölüm, sorguların daha verimli bir kesim yok etme ve bu nedenle diskten okunan segmentlerin sayısı daha az olduğundan daha hızlı performans sağlar.  Tüm veriler bellekte aynı anda sıralanmışsa, çakışan segmentden kaçınılabilir.  Veri ambarlarındaki büyük tablolar nedeniyle bu senaryo genellikle gerçekleşmez.  
+Sıralı bir CCı oluştururken, adanmış SQL havuzu altyapısı, Dizin Oluşturucu onları Dizin kesimlerine sıkıştırmadan önce, bellekteki mevcut verileri sıra anahtarına göre sıralar.  Sıralanmış verilerle, çakışan bölüm, sorguların daha verimli bir kesim yok etme ve bu nedenle diskten okunan segmentlerin sayısı daha az olduğundan daha hızlı performans sağlar.  Tüm veriler bellekte aynı anda sıralanmışsa, çakışan segmentden kaçınılabilir.  Veri ambarlarındaki büyük tablolar nedeniyle bu senaryo genellikle gerçekleşmez.  
 
 Bir sütunun kesim aralıklarını denetlemek için, aşağıdaki komutu tablo adınızla ve sütun adınızla çalıştırın:
 
@@ -50,7 +50,7 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 ```
 
 > [!NOTE] 
-> Sıralı bir CCı tablosunda, aynı DML veya veri yükleme işlemlerinden kaynaklanan yeni veriler, bu toplu iş içinde sıralanır ve tablodaki tüm verilerde Genel sıralama yapılmaz.  Kullanıcılar tablodaki tüm verileri sıralamak için sıralı CCı 'yı YENIDEN oluşturabilir.  SYNAPSE SQL 'de, columnstore dizini yeniden oluşturma, çevrimdışı bir işlemdir.  Bölümlenmiş bir tablo için, yeniden oluşturma tek seferde bir bölüm olarak gerçekleştirilir.  Yeniden oluşturulmakta olan bölümdeki veriler "çevrimdışı" ve bu bölüm için yeniden oluşturma tamamlanana kadar kullanılamaz. 
+> Sıralı bir CCı tablosunda, aynı DML veya veri yükleme işlemlerinden kaynaklanan yeni veriler, bu toplu iş içinde sıralanır ve tablodaki tüm verilerde Genel sıralama yapılmaz.  Kullanıcılar tablodaki tüm verileri sıralamak için sıralı CCı 'yı YENIDEN oluşturabilir.  Adanmış SQL havuzunda, columnstore dizini yeniden oluşturma, çevrimdışı bir işlemdir.  Bölümlenmiş bir tablo için, yeniden oluşturma tek seferde bir bölüm olarak gerçekleştirilir.  Yeniden oluşturulmakta olan bölümdeki veriler "çevrimdışı" ve bu bölüm için yeniden oluşturma tamamlanana kadar kullanılamaz. 
 
 ## <a name="query-performance"></a>Sorgu performansı
 

@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: efb86dbcbe7619ff6727c5e7374835dc3fc7d731
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: ed4b4d9c1de1e9024e8ea86d4661b42d6c68b0ae
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220508"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461001"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Azure Veri Paylaşımı rolleri ve gereksinimleri 
 
@@ -35,7 +35,7 @@ Aşağıda, veri paylaşımının kaynak yönetimli kimliğine atanan rollerin �
 |Azure Blob Depolama| Depolama Blob Verileri Okuyucusu | Depolama Blob Verileri Katkıda Bulunanı
 |Azure Data Lake Gen1 | Sahip | Desteklenmiyor
 |Azure Data Lake Gen2 | Depolama Blob Verileri Okuyucusu | Depolama Blob Verileri Katkıda Bulunanı
-|Azure Veri Gezgini Kümesi | Katılımcı | Katılımcı
+|Azure Veri Gezgini Kümesi | Katkıda Bulunan | Katkıda Bulunan
 |
 
 SQL tabanlı paylaşım için, Azure SQL veritabanı 'nda Azure veri paylaşımı kaynağıyla aynı ada sahip bir dış sağlayıcıdan bir SQL kullanıcısının oluşturulması gerekir. Bu kullanıcıyı oluşturmak için yönetici izni Azure Active Directory gereklidir. SQL kullanıcısının gerektirdiği iznin özeti aşağıda verilmiştir.
@@ -43,7 +43,7 @@ SQL tabanlı paylaşım için, Azure SQL veritabanı 'nda Azure veri paylaşım�
 |**SQL veritabanı türü**|**Veri Sağlayıcısı SQL Kullanıcı Izni**|**Veri tüketicisi SQL Kullanıcı Izni**|
 |---|---|---|
 |Azure SQL Veritabanı | db_datareader | db_datareader, db_datawriter, db_ddladmin
-|Azure Synapse Analytics (eski adı SQL DW) | db_datareader | db_datareader, db_datawriter, db_ddladmin
+|Azure Synapse Analytics | db_datareader | db_datareader, db_datawriter, db_ddladmin
 |
 
 ### <a name="data-provider"></a>Veri sağlayıcısı
@@ -59,13 +59,13 @@ Veri paylaşımının yönetilen kimliği için el ile bir rol ataması oluştur
 1. Azure veri deposuna gidin.
 1. **Access Control (IAM)** seçeneğini belirleyin.
 1. **Rol ataması Ekle**' yi seçin.
-1. *Rol*altında, yukarıdaki rol atama tablosunda bulunan rolü seçin (örneğin, depolama hesabı Için, *Depolama Blobu veri okuyucusu*' nu seçin).
+1. *Rol* altında, yukarıdaki rol atama tablosunda bulunan rolü seçin (örneğin, depolama hesabı Için, *Depolama Blobu veri okuyucusu*' nu seçin).
 1. *Seç*' in altında, Azure veri paylaşma kaynağınızın adını yazın.
 1. *Kaydet*’e tıklayın.
 
 Rol atama hakkında daha fazla bilgi edinmek için [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)bölümüne bakın. REST API 'Lerini kullanarak veri paylaşıyorsanız, [REST API kullanarak Azure rol atamaları ekleme veya kaldırma ' ya](../role-based-access-control/role-assignments-rest.md)başvurarak API kullanarak rol ataması oluşturabilirsiniz. 
 
-SQL tabanlı kaynaklar için SQL kullanıcısının SQL veritabanı 'nda Azure Active Directory kimlik doğrulaması kullanılarak SQL veritabanı 'na bağlanırken Azure veri paylaşma kaynağıyla aynı ada sahip bir dış sağlayıcıdan oluşturulması gerekir. Bu kullanıcıya *db_datareader* izni verilmesi gerekir. SQL tabanlı paylaşıma yönelik diğer önkoşullara birlikte örnek bir betik, [Azure SQL veritabanı veya SYNAPSE Analytics](how-to-share-from-sql.md) öğreticisinde bulunabilir. 
+SQL tabanlı kaynaklar için SQL kullanıcısının SQL veritabanı 'nda Azure Active Directory kimlik doğrulaması kullanılarak SQL veritabanı 'na bağlanırken Azure veri paylaşma kaynağıyla aynı ada sahip bir dış sağlayıcıdan oluşturulması gerekir. Bu kullanıcıya *db_datareader* izni verilmesi gerekir. SQL tabanlı paylaşıma yönelik diğer önkoşullara birlikte örnek bir betik, [Azure SQL veritabanı veya Azure SYNAPSE Analytics](how-to-share-from-sql.md) öğreticisinde bulunabilir. 
 
 ### <a name="data-consumer"></a>Veri tüketicisi
 Veri almak için, tüketici veri paylaşımının kaynağına ait yönetilen kimliğin hedef Azure veri deposuna erişim verilmesi gerekir. Örneğin, depolama hesabı durumunda, veri paylaşımının kaynak tarafından yönetilen kimliği, Depolama Blobu veri katılımcısı rolüne sahiptir. 
@@ -79,13 +79,13 @@ Veri paylaşımının yönetilen kimliği için el ile bir rol ataması oluştur
 1. Azure veri deposuna gidin.
 1. **Access Control (IAM)** seçeneğini belirleyin.
 1. **Rol ataması Ekle**' yi seçin.
-1. *Rol*altında, yukarıdaki rol atama tablosunda bulunan rolü seçin (örneğin, depolama hesabı Için, *Depolama Blobu veri okuyucusu*' nu seçin).
+1. *Rol* altında, yukarıdaki rol atama tablosunda bulunan rolü seçin (örneğin, depolama hesabı Için, *Depolama Blobu veri okuyucusu*' nu seçin).
 1. *Seç*' in altında, Azure veri paylaşma kaynağınızın adını yazın.
 1. *Kaydet*’e tıklayın.
 
 Rol atama hakkında daha fazla bilgi edinmek için [Azure Portal kullanarak Azure rol atamaları ekleme veya kaldırma](../role-based-access-control/role-assignments-portal.md#add-a-role-assignment)bölümüne bakın. REST API 'Lerini kullanarak veri alıyorsanız, [REST API kullanarak Azure rol atamaları Ekle veya Kaldır](../role-based-access-control/role-assignments-rest.md)' a başvurarak API kullanarak rol ataması oluşturabilirsiniz. 
 
-SQL tabanlı hedef için, SQL veritabanı Azure Active Directory kimlik doğrulaması kullanılarak SQL veritabanı 'na bağlanırken Azure veri paylaşma kaynağıyla aynı ada sahip SQL veritabanı 'nda bir dış sağlayıcıdan oluşturulması gerekir. Bu kullanıcıya *db_datareader, db_datawriter db_ddladmin* izin verilmesi gerekir. SQL tabanlı paylaşıma yönelik diğer önkoşullara birlikte örnek bir betik, [Azure SQL veritabanı veya SYNAPSE Analytics](how-to-share-from-sql.md) öğreticisinde bulunabilir. 
+SQL tabanlı hedef için, SQL veritabanı Azure Active Directory kimlik doğrulaması kullanılarak SQL veritabanı 'na bağlanırken Azure veri paylaşma kaynağıyla aynı ada sahip SQL veritabanı 'nda bir dış sağlayıcıdan oluşturulması gerekir. Bu kullanıcıya *db_datareader, db_datawriter db_ddladmin* izin verilmesi gerekir. SQL tabanlı paylaşıma yönelik diğer önkoşullara birlikte örnek bir betik, [Azure SQL veritabanı veya Azure SYNAPSE Analytics](how-to-share-from-sql.md) öğreticisinde bulunabilir. 
 
 ## <a name="resource-provider-registration"></a>Kaynak sağlayıcısı kaydı 
 

@@ -10,18 +10,16 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 22cbd0b4ce512df70d13d89c5f2539420dac2b85
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: da6c9f6df0e9e74de297cf6c8f655b62e3446bad
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307011"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462711"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Azure SYNAPSE SQL mimarisi 
 
 Bu makalede, SYNAPSE SQL 'in mimari bileşenleri açıklanır.
-
-[!INCLUDE [preview](../includes/note-preview.md)]
 
 ## <a name="synapse-sql-architecture-components"></a>SYNAPSE SQL mimarisi bileşenleri
 
@@ -47,7 +45,7 @@ Ayrılmış depolama ve işlem ile, SYNAPSE SQL 'in kullanılması, depolama iht
 * Verileri olduğu gibi bırakıp işlem kapasitesini duraklatır, böylece yalnızca depolama için ödeme yaparsınız.
 * Çalışma saatleri içinde işlem kapasitesini sürdürme.
 
-## <a name="azure-storage"></a>Azure Storage
+## <a name="azure-storage"></a>Azure Depolama
 
 SYNAPSE SQL, kullanıcı verilerinizi güvende tutmak için Azure Storage 'ı kullanır. Verileriniz Azure depolama tarafından depolandığından ve yönetildiğinden, depolama tüketiminize yönelik ayrı bir ücret alınır. 
 

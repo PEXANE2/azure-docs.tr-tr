@@ -1,6 +1,6 @@
 ---
 title: Sonuç kümesini önbelleğe ile performans ayarlama
-description: Azure SYNAPSE Analytics 'te SYNAPSE SQL havuzu için sonuç kümesi önbelleğe alma özelliğine genel bakış
+description: Azure SYNAPSE Analytics 'te adanmış SQL havuzu için sonuç kümesi önbelleğe alma özelliğine genel bakış
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: 933ec541e358f1839c1b4d24acd19e439ea26375
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2b54277d0306244dc4ab6740fdd30e52668dd63c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541290"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460780"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Sonuç kümesini önbelleğe ile performans ayarlama
 
-Sonuç kümesi önbelleğe alma etkin olduğunda, SYNAPSE SQL otomatik olarak sorgu sonuçlarını yinelenen kullanım için Kullanıcı veritabanında önbelleğe alır.  Bu, sonraki sorgu yürütmelerinin sonuçları doğrudan kalıcı önbellekten almasına izin verir, böylece yeniden hesaplama gerekmez.   Sonuç kümesi önbelleğe alma, sorgu performansını geliştirir ve işlem kaynağı kullanımını azaltır.  Ayrıca, önbelleğe alınmış sonuçlar kullanan sorgular bir eşzamanlılık yuvası kullanmaz ve bu nedenle mevcut eşzamanlılık sınırlarına göre sayılmaz. Güvenlik için, kullanıcılar önbelleğe alınmış sonuçlara yalnızca, önbellekteki sonuçları oluşturan kullanıcılarla aynı veri erişimi izinleri varsa erişebilir.  
+Sonuç kümesi önbelleğe alma etkin olduğunda, adanmış SQL havuzu, yinelenen kullanım için Kullanıcı veritabanındaki sorgu sonuçlarını otomatik olarak önbelleğe alır.  Bu, sonraki sorgu yürütmelerinin sonuçları doğrudan kalıcı önbellekten almasına izin verir, böylece yeniden hesaplama gerekmez.   Sonuç kümesi önbelleğe alma, sorgu performansını geliştirir ve işlem kaynağı kullanımını azaltır.  Ayrıca, önbelleğe alınmış sonuçlar kullanan sorgular bir eşzamanlılık yuvası kullanmaz ve bu nedenle mevcut eşzamanlılık sınırlarına göre sayılmaz. Güvenlik için, kullanıcılar önbelleğe alınmış sonuçlara yalnızca, önbellekteki sonuçları oluşturan kullanıcılarla aynı veri erişimi izinleri varsa erişebilir.  
 
 ## <a name="key-commands"></a>Anahtar komutları
 
@@ -47,7 +47,7 @@ Sonuç kümesi önbelleği bir veritabanı için açıldıktan sonra, bu sorgula
 > - ORDER BY sütunlarındaki veriler benzersiz değilse, sonuç kümesi önbelleğe alma özelliğinin etkin veya devre dışı olmasına bakılmaksızın ORDER BY sütunlarında aynı değerlere sahip satırlar için garanteed satır düzeni yoktur.
 
 > [!IMPORTANT]
-> Sonuç kümesi önbelleği oluşturma ve önbellekten veri alma işlemleri, bir Synapse SQL havuzu örneğinin denetim düğümünde gerçekleşir.
+> Sonuç kümesi önbelleği oluşturma ve önbellekten veri alma işlemleri adanmış bir SQL havuzu örneğinin denetim düğümünde gerçekleşir.
 > Sonuç kümesi önbelleğe alma açık olduğunda, büyük sonuç kümesi döndüren sorgular (örneğin, >1GB), denetim düğümünde yüksek bir kısma neden olabilir ve örnekteki genel sorgu yanıtını yavaşlatır.  Bu sorgular, veri araştırması veya ETL işlemleri sırasında yaygın olarak kullanılır. Denetim düğümünü stresmek ve performans sorununa yol açmak için, kullanıcılar bu sorgu türlerini çalıştırmadan önce veritabanında sonuç kümesi önbelleğe almayı kapatmalıdır.  
 
 Bu sorguyu, bir sorgu için sonuç kümesi önbelleğe alma işlemleri tarafından geçen süre için çalıştırın:
@@ -85,7 +85,7 @@ WHERE request_id = <'Your_Query_Request_ID'>
 
 Sonuç kümesi önbelleğinin en büyük boyutu veritabanı başına 1 TB 'tır.  Önbelleğe alınan sonuçlar, temeldeki sorgu verileri değiştiğinde otomatik olarak geçersiz kılınır.  
 
-Önbellek çıkarma işlemi, bu zamanlamayı izleyerek SYNAPSE SQL tarafından otomatik olarak yönetilir:
+Önbellek çıkarma, bu zamanlamayı izleyerek adanmış SQL havuzu tarafından otomatik olarak yönetilir:
 
 - Sonuç kümesi kullanılmıyorsa veya geçersiz kılınmamışsa, her 48 saatte bir.
 - Sonuç kümesi önbelleği en büyük boyuta yaklaşırsa.

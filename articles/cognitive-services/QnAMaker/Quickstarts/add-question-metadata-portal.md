@@ -1,18 +1,18 @@
 ---
-title: 'Hızlı başlangıç: Soru-Cevap Oluşturma portalına soru ve yanıt ekleme'
-description: Bu hızlı başlangıçta, kullanıcılarınızın sorularınızın doğru yanıtını bulabilmesi için meta verilerle soru ve yanıt çiftleri ekleme gösterilmektedir.
+title: Soru-Cevap Oluşturma portalına soru ve yanıt ekleme
+description: Bu makalede, kullanıcılarınızın sorularınızın doğru yanıtını bulabilmesi için meta verilerle soru ve yanıt çiftleri ekleme işlemlerinin nasıl yapılacağı gösterilmektedir.
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: e56d718892d9cfdbfda9068ecd68ef31f7f2ea46
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 53c0afa1cdb8c9920875b7ba694339107714bd54
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353081"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462202"
 ---
-# <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Hızlı başlangıç: Soru-Cevap Oluşturma portalı ile soru ve yanıt ekleme
+# <a name="add-questions-and-answer-with-qna-maker-portal"></a>Soru-Cevap Oluşturma Portal ile soru ve yanıt ekleme
 
 Bilgi Bankası oluşturulduktan sonra, yanıtı filtrelemek için meta verilerle soru ve cevap (QnA) çiftleri ekleyin. Aşağıdaki tablodaki sorular Azure hizmet limitleri ile ilgilidir, ancak her birinin farklı bir Azure Search hizmeti ile yapması gerekir.
 

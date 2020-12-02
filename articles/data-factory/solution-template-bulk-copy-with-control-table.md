@@ -11,20 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/14/2018
-ms.openlocfilehash: be3b82765f2f5268a75147e8e1ef6de34aeb8ff2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d1ff372009c6158f2148847dd77126bcb4d189f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441077"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461227"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>Denetim tablosu ile bir veritabanından toplu kopyalama
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Oracle Server, Netezza, Teradata veya SQL Server içindeki bir veri ambarından verileri Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) kopyalamak için, birden fazla tablodan çok büyük miktarlarda veri yüklemeniz gerekir. Genellikle verilerin her tabloda bölümlenmesi gerekir, böylece birden çok iş parçacığı içeren satırları tek bir tablodan paralel olarak yükleyebilirsiniz. Bu makalede, bu senaryolarda kullanılacak bir şablon açıklanmaktadır.
+Oracle Server, Netezza, Teradata veya SQL Server içindeki bir veri ambarından verileri Azure SYNAPSE Analytics 'e kopyalamak için, birden fazla tablodan çok büyük miktarlarda veri yüklemeniz gerekir. Genellikle verilerin her tabloda bölümlenmesi gerekir, böylece birden çok iş parçacığı içeren satırları tek bir tablodan paralel olarak yükleyebilirsiniz. Bu makalede, bu senaryolarda kullanılacak bir şablon açıklanmaktadır.
 
- >! Azure SYNAPSE Analytics 'e görece küçük veri haciminden az sayıda tablodan veri kopyalamak istiyorsanız [Azure Data Factory veri kopyalama aracını](copy-data-tool.md)kullanmak daha etkilidir. Bu makalede açıklanan şablon, bu senaryoya yönelik gereksiniminden daha fazla.
+ >! Görece küçük veri hacimiyle Azure SYNAPSE Analytics 'e kadar az sayıdaki tablodan veri kopyalamak istiyorsanız, [Azure Data Factory veri kopyalama aracını](copy-data-tool.md)kullanmak daha etkilidir. Bu makalede açıklanan şablon, bu senaryoya yönelik gereksiniminden daha fazla.
 
 ## <a name="about-this-solution-template"></a>Bu çözüm şablonu hakkında
 
@@ -48,7 +48,7 @@ Hedef deponuzda yolu tanımlayan son üç parametre yalnızca seçtiğiniz hedef
 
 ## <a name="how-to-use-this-solution-template"></a>Bu çözüm şablonunu kullanma
 
-1. Toplu kopyalama için kaynak veritabanı bölüm listesini depolamak üzere SQL Server veya Azure SQL veritabanı 'nda bir denetim tablosu oluşturun. Aşağıdaki örnekte, kaynak veritabanında beş bölüm vardır. *Datasource_table*için üç bölüm vardır ve ikisi *project_table*içindir. *LastModifyTime* sütunu, tablo *datasource_table* içindeki verileri kaynak veritabanından bölümlemek için kullanılır. İlk bölümü okumak için kullanılan sorgu, LastModifytime >= ' ' 2015-01-01 00:00:00 ' ' ve LastModifytime <= ' ' 2015-12-31 23:59:59.999 ' ' ' olan ' select * from datasource_table. Diğer bölümlerden verileri okumak için benzer bir sorgu kullanabilirsiniz.
+1. Toplu kopyalama için kaynak veritabanı bölüm listesini depolamak üzere SQL Server veya Azure SQL veritabanı 'nda bir denetim tablosu oluşturun. Aşağıdaki örnekte, kaynak veritabanında beş bölüm vardır. *Datasource_table* için üç bölüm vardır ve ikisi *project_table* içindir. *LastModifyTime* sütunu, tablo *datasource_table* içindeki verileri kaynak veritabanından bölümlemek için kullanılır. İlk bölümü okumak için kullanılan sorgu, LastModifytime >= ' ' 2015-01-01 00:00:00 ' ' ve LastModifytime <= ' ' 2015-12-31 23:59:59.999 ' ' ' olan ' select * from datasource_table. Diğer bölümlerden verileri okumak için benzer bir sorgu kullanabilirsiniz.
 
      ```sql
             Create table ControlTableForTemplate
@@ -86,7 +86,7 @@ Hedef deponuzda yolu tanımlayan son üç parametre yalnızca seçtiğiniz hedef
 
     ![İşlem hattını gözden geçirme](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable6.png)
 
-7. **Hata Ayıkla**' yı seçin, **parametreleri**girin ve ardından **son**' u seçin.
+7. **Hata Ayıkla**' yı seçin, **parametreleri** girin ve ardından **son**' u seçin.
 
     ![* * Hata Ayıkla * * öğesine tıklayın](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable7.png)
 

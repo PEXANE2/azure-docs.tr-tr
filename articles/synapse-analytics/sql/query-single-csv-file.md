@@ -1,6 +1,6 @@
 ---
-title: Sunucusuz SQL Havuzu (Önizleme) kullanarak CSV dosyalarını sorgulama
-description: Bu makalede, sunucusuz SQL Havuzu (Önizleme) kullanarak farklı dosya biçimlerine sahip tek CSV dosyalarını sorgulamayı öğreneceksiniz.
+title: Sunucusuz SQL havuzu kullanarak CSV dosyalarını sorgulama
+description: Bu makalede, sunucusuz SQL havuzu kullanarak farklı dosya biçimlerine sahip tek CSV dosyalarını sorgulamayı öğreneceksiniz.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9faff6589466c7cbe78a11c283139acb72bce4bb
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: f2f0cdf307e91fb40c55d4a98139bad1a5eca886
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685656"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462592"
 ---
 # <a name="query-csv-files"></a>CSV dosyalarını sorgulama
 
-Bu makalede, Azure SYNAPSE Analytics 'te sunucusuz SQL Havuzu (Önizleme) kullanarak tek bir CSV dosyasını sorgulamayı öğreneceksiniz. CSV dosyaları farklı biçimlere sahip olabilir: 
+Bu makalede, Azure SYNAPSE Analytics 'te sunucusuz SQL havuzunu kullanarak tek bir CSV dosyasını sorgulamayı öğreneceksiniz. CSV dosyaları farklı biçimlere sahip olabilir: 
 
 - Üst bilgi satırı ile ve olmadan
 - Virgül ve sekmeyle ayrılmış değerler
@@ -47,7 +47,7 @@ from openrowset(
 `firstrow`Bu durumda üstbilgiyi temsil eden CSV dosyasındaki ilk satırı atlamak için seçeneği kullanılır. Bu dosyaya erişebildiğinizden emin olun. Dosyanız SAS anahtarı veya özel kimlikle korunuyorsa, [SQL oturum açma için sunucu düzeyi kimlik bilgisi](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)kurulumunu yapmanız gerekir.
 
 > [!IMPORTANT]
-> CSV dosyanız UTF-8 karakterleri içeriyorsa, bazı UTF-8 veritabanı harmanlaması kullandığınızdan emin olun (örneğin `Latin1_General_100_CI_AS_SC_UTF8` ).
+> CSV dosyanız UTF-8 karakterleri içeriyorsa, UTF-8 veritabanı harmanlaması (örneğin) kullandığınızdan emin olun `Latin1_General_100_CI_AS_SC_UTF8` .
 > Dosyadaki metin kodlaması arasında uyuşmazlık var ve harmanlama beklenmeyen dönüştürme hatalarına neden olabilir.
 > Aşağıdaki T-SQL ifadesini kullanarak geçerli veritabanının varsayılan harmanlamasını kolayca değiştirebilirsiniz: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
 

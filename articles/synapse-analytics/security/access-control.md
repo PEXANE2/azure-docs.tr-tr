@@ -1,6 +1,6 @@
 ---
 title: Çalışma alanları, veriler ve işlem hatları erişimini yönetme
-description: Bir Azure SYNAPSE Analytics çalışma alanında (Önizleme) çalışma alanları, veriler ve işlem hatları için erişim denetimini yönetmeyi öğrenin.
+description: Azure SYNAPSE Analytics 'te çalışma alanları, veriler ve işlem hatları için erişim denetimini yönetmeyi öğrenin.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5d95ddcc610fb0350f47e0e5b494cbd16b95468c
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: c4304aeadf2950c1a91ee50ba9ecd895b2561b41
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95255230"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461359"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Çalışma alanları, veriler ve işlem hatları erişimini yönetme
 
-Bir Azure SYNAPSE Analytics çalışma alanında (Önizleme) çalışma alanları, veriler ve işlem hatları için erişim denetimini yönetmeyi öğrenin.
+Azure SYNAPSE Analytics 'te çalışma alanları, veriler ve işlem hatları için erişim denetimini yönetmeyi öğrenin.
 
 > [!NOTE]
 > GA için Azure RBAC, SYNAPSE özgü Azure rollerinin kullanıma sunulmasıyla daha fazla geliştirilecektir.
@@ -171,7 +171,7 @@ Bir kullanıcıya **tek** bir SQL veritabanına erişim izni vermek için şu ad
 
 Kullanıcıları oluşturduktan sonra sunucusuz SQL havuzunu kullanarak depolama hesabını sorgulayacağınızı doğrulayın.
 
-## <a name="access-control-to-workspace-pipeline-runs"></a>Çalışma alanı işlem hattı çalıştırmaları için erişim denetimi
+## <a name="access-control-to-workspace-pipeline-runs"></a>Çalışma alanı işlem hattı çalıştırmalarında erişim denetimi
 
 ### <a name="workspace-managed-identity"></a>Çalışma alanı tarafından yönetilen kimlik
 

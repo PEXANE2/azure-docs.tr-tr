@@ -3,18 +3,18 @@ title: Azure SQL veritabanı ve Azure SYNAPSE Analytics için bağlantı ayarlar
 description: Bu makalede, Azure SQL veritabanı ve Azure SYNAPSE Analytics için Aktarım Katmanı Güvenliği (TLS) sürüm seçimi ve proxy ve yeniden yönlendirme ayarları açıklanmaktadır.
 services: sql-database
 ms.service: sql-database
-titleSuffix: Azure SQL Database and Azure Synapse Analytics (formerly SQL Data Warehouse)
+titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.topic: how-to
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 07/06/2020
-ms.openlocfilehash: 9856d71a6398bcea5b979788846afce17e7955f7
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: e3422f468d1355245fb31e8f04d5f8625f583c37
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412994"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462177"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL bağlantı ayarları
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -104,12 +104,12 @@ az sql server update -n sql-server-name -g sql-server-group --set publicNetworkA
 
 Minimum [Aktarım Katmanı Güvenliği (TLS)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) sürümü ayarı, müşterilerin SQL veritabanı 'NıN hangi TLS sürümünü kullandığını seçmesine olanak sağlar.
 
-Şu anda TLS 1,0, 1,1 ve 1,2 destekliyoruz. En az TLS sürümünün ayarlanması, daha yeni TLS sürümlerinin desteklendiğinden emin olmanızı sağlar. Örneğin, 1,1 'den büyük bir TLS sürümü seçilmesi yalnızca TLS 1,1 ve 1,2 ile bağlantı kabul edilir ve TLS 1,0 ile kurulan bağlantılar reddedilir. Uygulamalarınızın onu desteklediğini doğrulamak için test ettikten sonra, en az TLS sürümünü 1,2 olarak ayarlamayı öneririz. Bu sürüm, önceki sürümlerde güvenlik açıklarına yönelik düzeltmeler içerir ve Azure SQL veritabanı 'nda desteklenen en yüksek TLS sürümüdür.
+Şu anda TLS 1.0, 1.1 ve 1.2’yi destekliyoruz. En düşük TLS sürümünü ayarlamak, daha yeni TLS sürümlerinin desteklendiğinden emin olmanızı sağlar. Örneğin 1.1’den büyük bir TLS sürümü seçmek, yalnızca TLS 1.1 ve 1.2 ile bağlantıların kabul edileceği ve TLS 1.0 ile bağlantıların reddedileceği anlamına gelir. Uygulamalarınızın desteklediğini test edip onayladıktan sonra, en düşük TLS sürümü olarak 1.2’yi ayarlamanızı öneririz. Bu sürüm önceki sürümlerdeki güvenlik açıklarının düzeltmelerini içerir ve Azure SQL Veritabanı’nda desteklenen en yüksek TLS sürümüdür.
 
 > [!IMPORTANT]
 > En az TLS sürümü için varsayılan değer tüm sürümlere izin verdir. Bir TLS sürümünü zorladıktan sonra, varsayılana dönmek mümkün değildir.
 
-TLS 'nin eski sürümlerini kullanan uygulamalar için en düşük TLS sürümünü uygulamalarınızın gereksinimlerine göre ayarlamayı öneririz. Şifrelenmemiş bir bağlantı kullanarak bağlanacak uygulamalara bağlı olan müşteriler için, en az TLS sürümü ayarlamamız önerilir.
+TLS’nin daha eski sürümlerine bağımlı olan uygulamalara sahip müşteriler için, en düşük TLS sürümünü uygulamalarınızın gereksinimlerine göre ayarlamanızı öneririz. Şifrelenmemiş bir bağlantı kullanarak bağlanacak uygulamalara bağımlı olan müşteriler için, en düşük TLS sürümünü ayarlamamanızı öneririz.
 
 Daha fazla bilgi için bkz. [SQL veritabanı bağlantısı Için TLS konuları](connect-query-content-reference-guide.md#tls-considerations-for-database-connectivity).
 

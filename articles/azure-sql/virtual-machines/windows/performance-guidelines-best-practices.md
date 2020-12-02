@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 10/18/2019
+ms.date: 11/09/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 6a6b39d540427b7c3400fded62431c914db23bb3
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 2cff67dde7cfe9e015cd25b26811410ce6e686e9
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327330"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462545"
 ---
 # <a name="performance-guidelines-for-sql-server-on-azure-virtual-machines"></a>Azure Sanal Makineleri'nde SQL Server için performans yönergeleri
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,9 +29,9 @@ Bu makalede Microsoft Azure Sanal Makineler SQL Server performansını iyileşti
 
 ## <a name="overview"></a>Genel Bakış
 
- Azure sanal makinelerinde SQL Server çalıştırılırken, şirket içi sunucu ortamlarında SQL Server için geçerli olan veritabanı performansı ayarlama seçeneklerini kullanmaya devam etmenizi öneririz. Bununla birlikte genel buluttaki bir ilişkisel veritabanının performansı, sanal makinenin boyutu ve veri disklerinin yapılandırması gibi birçok faktöre bağlıdır.
+Azure sanal makinelerinde SQL Server çalıştırılırken, şirket içi sunucu ortamlarında SQL Server için geçerli olan veritabanı performansı ayarlama seçeneklerini kullanmaya devam etmenizi öneririz. Bununla birlikte genel buluttaki bir ilişkisel veritabanının performansı, sanal makinenin boyutu ve veri disklerinin yapılandırması gibi birçok faktöre bağlıdır.
 
-[Azure Portal sağlanan görüntüleri SQL Server](sql-vm-create-portal-quickstart.md) genel depolama yapılandırması en iyi yöntemlerini izleyin (depolamanın nasıl yapılandırıldığı hakkında daha fazla bilgi için bkz. [SQL Server sanal makineler (VM) için depolama yapılandırması](storage-configuration.md)). Sağlamaktan sonra, bu makalede ele alınan diğer iyileştirmeleri uygulamayı düşünün. Seçimlerinizi iş yükünüze dayandırın ve test aracılığıyla doğrulayın.
+[Azure Portal sağlanan görüntüleri SQL Server](sql-vm-create-portal-quickstart.md) genel depolama [yapılandırması en iyi yöntemlerini](storage-configuration.md)izleyin. Sağlamaktan sonra, bu makalede ele alınan diğer iyileştirmeleri uygulamayı düşünün. Seçimlerinizi iş yükünüze dayandırın ve test aracılığıyla doğrulayın.
 
 > [!TIP]
 > Genellikle maliyetleri iyileştirmek ve performansı iyileştirmek arasında bir denge vardır. Bu makale, Azure sanal makinelerinde SQL Server için *en iyi* performansı almaya odaklanır. İş yükünüz daha az güç alıyorsa, aşağıda listelenen her iyileştirme gerektirmeyebilir. Bu önerileri değerlendirdiğiniz için performans ihtiyaçlarınızı, maliyetlerinizi ve iş yükü desenlerini göz önünde bulundurun.
@@ -42,21 +42,165 @@ Aşağıda Azure sanal makinelerinde SQL Server en iyi performansı için hızl�
 
 | Alan | İyileştirmeler |
 | --- | --- |
-| [VM boyutu](#vm-size-guidance) | -VM boyutlarını [E4S_v3](../../../virtual-machines/ev3-esv3-series.md) veya üzeri ya da [DS12_v2](../../../virtual-machines/dv2-dsv2-series-memory.md) ya da daha yüksek bir şekilde 4 veya daha fazla vCPU kullanın.<br/><br/> - [Es, EAS, DS ve DAS serisi](../../../virtual-machines/sizes-general.md) , OLTP iş yükü performansı için gereken En Iyi belleği vCPU oranına sunmaktadır. <br/><br/> - [E serisi](../../../virtual-machines/m-series.md) , görev açısından kritik performans için gereken en yüksek bellek oranını ve veri ambarı iş yükleri için ideal olduğunu sunar. <br/><br/> - [Uygulama performansı gereksinimleri denetim listesini](../../../virtual-machines/premium-storage-performance.md#application-performance-requirements-checklist) izleyerek hedef Iş yükünün [IOPS](../../../virtual-machines/premium-storage-performance.md#iops)'sini, [aktarım hızını](../../../virtual-machines/premium-storage-performance.md#throughput) ve [gecikme süresini](../../../virtual-machines/premium-storage-performance.md#latency) yoğun saatlerde toplayın ve Iş yükünüzün performans gereksinimlerine ölçeklenebilen [VM boyutunu](../../../virtual-machines/sizes-general.md) seçin.|
-| [Depolama](#storage-guidance) | -TPC-E ve TPC_C kıyaslamalar ile Azure sanal makinelerinde SQL Server performansının ayrıntılı testi için, [OLTP performansını iyileştirme](https://techcommunity.microsoft.com/t5/SQL-Server/Optimize-OLTP-Performance-with-SQL-Server-on-Azure-VM/ba-p/916794)başlıklı bloga başvurun. <br/><br/> -En iyi fiyat/performans avantajları için [Premium SSD 'ler](https://techcommunity.microsoft.com/t5/SQL-Server/Optimize-OLTP-Performance-with-SQL-Server-on-Azure-VM/ba-p/916794) kullanın. Veri dosyaları için [salt okunur önbelleği](../../../virtual-machines/premium-storage-performance.md#disk-caching) yapılandırma ve günlük dosyası için önbellek yok. <br/><br/> -İş yükü için 1 MS 'den az depolama gecikme süresi gerekliyse [Ultra diskleri](../../../virtual-machines/disks-types.md#ultra-disk) kullanın. Daha fazla bilgi edinmek için bkz. [Ultra diske geçiş](storage-migrate-to-ultradisk.md) . <br/><br/> -Disk türünü seçmeden önce [uygulamayı izleyerek](../../../virtual-machines/premium-storage-performance.md#application-performance-requirements-checklist) SQL Server verileri, günlüğü ve Temp DB dosyaları için depolama gecikmesi gereksinimlerini toplayın. <1 MS depolama gecikmeleri gerekliyse, Ultra diskler ' i kullanın, aksi takdirde Premium SSD kullanın. Düşük gecikme süreleri yalnızca günlük dosyası için gerekliyse ve veri dosyaları için gerekli değilse, yalnızca günlük dosyası için gerekli ıOPS ve üretilen iş düzeylerinde [Ultra disk sağlayın](../../../virtual-machines/disks-enable-ultra-ssd.md) . <br/><br/> -  [Premium dosya paylaşımları](failover-cluster-instance-premium-file-share-manually-configure.md) , bir SQL Server yük devretme kümesi örneği için paylaşılan depolama alanı olarak önerilir. Premium dosya paylaşımları, önbelleğe almayı desteklemez ve Premium SSD disklerine kıyasla sınırlı performansı sunar. Tek başına SQL örnekleri için Premium dosya paylaşımları üzerinden Premium SSD tarafından yönetilen diskler seçin; Ancak, bakım kolaylığı ve esnek ölçeklenebilirlik için yük devretme kümesi örneği paylaşılan depolama için Premium dosya paylaşımlarından yararlanın. <br/><br/> -Standart depolama yalnızca geliştirme ve test amaçları için ya da yedekleme dosyaları için önerilir ve üretim iş yükleri için kullanılmamalıdır. <br/><br/> - [Depolama hesabını](../../../storage/common/storage-account-create.md) ve SQL Server VM aynı bölgede saklayın.<br/><br/> -Depolama hesabında Azure [coğrafi olarak yedekli depolamayı](../../../storage/common/storage-redundancy.md) (coğrafi çoğaltma) devre dışı bırakın.  |
-| [Diskler](#disks-guidance) | -En az 2 [PREMIUM SSD disk](../../../virtual-machines/disks-types.md#premium-ssd) kullanın (günlük dosyası için 1 ve veri dosyaları için 1). <br/><br/> -<1 MS GÇ gecikme süreleri gerektiren iş yükleri için, M serisi için yazma hızlandırıcıyı etkinleştirin ve es ve DS serisi için Ultra SSD diskleri kullanmayı düşünün. <br/><br/> -Veri dosyalarını barındıran diskler üzerinde [salt okuma işlemini](../../../virtual-machines/premium-storage-performance.md#disk-caching) etkinleştirin.<br/><br/> - [SQL Server verileri, günlüğü ve tempdb dosyaları için depolamayı yapılandırırken](storage-configuration.md) iş yükünüze göre %20 ' ye AIT ek IOPS/verimlilik kapasitesi ekleyin <br/><br/> -Veritabanı depolama veya günlük kaydı için işletim sistemi veya geçici diskler kullanmaktan kaçının.<br/><br/> -Günlük dosyasını barındıran disk (ler) i önbelleğe almayı etkinleştirmeyin.  **Önemli**: bir Azure sanal makineler diskinin önbellek ayarlarını değiştirirken SQL Server hizmetini durdurun.<br/><br/> -Daha fazla depolama verimi sağlamak için birden çok Azure veri diski dizili.<br/><br/> -Belgelenmiş ayırma boyutlarıyla biçimlendirin. <br/><br/> - `D:\` Görev açısından kritik SQL Server iş yükleri için yerel SSD sürücüsüne tempdb yerleştirin (doğru VM boyutunu seçtikten sonra). VM 'yi Azure portal veya Azure hızlı başlangıç şablonlarından oluşturup [GEÇICI veritabanını yerel diske yerleştirirseniz](https://techcommunity.microsoft.com/t5/SQL-Server/Announcing-Performance-Optimized-Storage-Configuration-for-SQL/ba-p/891583) , başka bir işlem yapmanız gerekmez; Tüm diğer durumlar için, başlatmalardaki hatalardan kaçınmak üzere  [tempdb 'yi depolamak üzere SSD 'Yi kullanmak](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/) için blogdaki adımları izleyin. Yerel sürücünün kapasitesi, geçici DB boyutunuz için yeterli değilse, geçici DB 'yi [salt okuma önbelleği](../../../virtual-machines/premium-storage-performance.md#disk-caching)olan Premium SSD disklerinde [dizili](../../../virtual-machines/premium-storage-performance.md) bir depolama havuzuna yerleştirin. |
-| [G/Ç](#io-guidance) |-Veritabanı sayfa sıkıştırmasını etkinleştirin.<br/><br/> -Veri dosyaları için anlık dosya başlatmayı etkinleştirin.<br/><br/> -Veritabanının otomatik büyümesini sınırlayın.<br/><br/> -Veritabanının bir daha küçültmeyi devre dışı bırakın.<br/><br/> -Sistem veritabanları dahil olmak üzere tüm veritabanlarını veri disklerine taşıyın.<br/><br/> -SQL Server hata günlüğü ve izleme dosyası dizinlerini veri disklerine taşıyın.<br/><br/> -Varsayılan yedekleme ve veritabanı dosya konumlarını yapılandırın.<br/><br/> - [Bellekte kilitli sayfaları etkinleştirin](/sql/database-engine/configure-windows/enable-the-lock-pages-in-memory-option-windows?view=sql-server-2017).<br/><br/> -SQL Server performans düzeltmeleri uygulayın. |
+| [VM boyutu](#vm-size-guidance) | - [Standard_M8-4ms](/../../virtual-machines/m-series), [E4ds_v4](../../../virtual-machines/edv4-edsv4-series.md#edv4-series)veya [DS12_v2](../../../virtual-machines/dv2-dsv2-series-memory.md#dsv2-series-11-15) ya da daha yüksek gibi 4 veya daha fazla vCPU ile VM boyutlarını kullanın. <br/><br/> -SQL Server iş yüklerinin en iyi performansı için [bellek için iyileştirilmiş](../../../virtual-machines/sizes-memory.md) sanal makine boyutlarını kullanın. <br/><br/> - [DSv2 11-15](../../../virtual-machines/dv2-dsv2-series-memory.md), [Edsv4](../../../virtual-machines/edv4-edsv4-series.md) serisi, [d-](../../../virtual-machines/m-series.md)ve [Mv2](../../../virtual-machines/mv2-series.md) serisi, OLTP Iş yükleri için gereken en iyi bellekten sanal çekirdek oranını sunmaktadır. Her iki e serisi sanal makine, görev açısından kritik iş yükleri için gereken en yüksek bellek-vCore oranını sunar ve ayrıca veri ambarı iş yükleri için de idealdir. <br/><br/> -Görev açısından kritik ve veri ambarı iş yükleri için daha yüksek bellekten vCore oranı gerekebilir. <br/><br/> -SQL Server ayarları ve depolama seçenekleri en iyi SQL Server performans için yapılandırıldığından Azure sanal makine marketi görüntülerinden yararlanın. <br/><br/> -Hedef iş yükünün performans özelliklerini toplayın ve işletmeniz için uygun VM boyutunu tespit etmek üzere bunları kullanın.|
+| [Depolama](#storage-guidance) | -TPC-E ve TPC_C kıyaslamalar ile Azure sanal makinelerinde SQL Server performansının ayrıntılı testi için, [OLTP performansını iyileştirme](https://techcommunity.microsoft.com/t5/SQL-Server/Optimize-OLTP-Performance-with-SQL-Server-on-Azure-VM/ba-p/916794)başlıklı bloga başvurun. <br/><br/> -En iyi fiyat/performans avantajları için [Premium SSD 'ler](https://techcommunity.microsoft.com/t5/SQL-Server/Optimize-OLTP-Performance-with-SQL-Server-on-Azure-VM/ba-p/916794) kullanın. Veri dosyaları için [salt okuma önbelleğini](../../../virtual-machines/premium-storage-performance.md#disk-caching) yapılandırma ve günlük dosyası için önbellek yok. <br/><br/> -İş yükü için 1 MS 'den az depolama gecikmeleri gerekliyse [Ultra diskleri](../../../virtual-machines/disks-types.md#ultra-disk) kullanın. Daha fazla bilgi edinmek için bkz. [Ultra diske geçiş](storage-migrate-to-ultradisk.md) . <br/><br/> -Disk türünü seçmeden önce [uygulamayı izleyerek](../../../virtual-machines/premium-storage-performance.md#application-performance-requirements-checklist) SQL Server verileri, günlüğü ve Temp DB dosyaları için depolama gecikmesi gereksinimlerini toplayın. < 1 MS depolama gecikmeleri gerekliyse, Ultra diskler ' i kullanın, aksi takdirde Premium SSD kullanın. Düşük gecikme süreleri yalnızca günlük dosyası için gerekliyse ve veri dosyaları için gerekli değilse, yalnızca günlük dosyası için gerekli ıOPS ve üretilen iş düzeylerinde [Ultra disk sağlayın](../../../virtual-machines/disks-enable-ultra-ssd.md) . <br/><br/>  -Standart depolama yalnızca geliştirme ve test amaçları için ya da yedekleme dosyaları için önerilir ve üretim iş yükleri için kullanılmamalıdır. <br/><br/> - [Depolama hesabını](../../../storage/common/storage-account-create.md) ve SQL Server VM aynı bölgede saklayın.<br/><br/> -Depolama hesabında Azure [coğrafi olarak yedekli depolamayı](../../../storage/common/storage-redundancy.md) (coğrafi çoğaltma) devre dışı bırakın.  |
+| [Diskler](#disks-guidance) | -En az 2 [PREMIUM SSD disk](../../../virtual-machines/disks-types.md#premium-ssd) kullanın (günlük dosyası için 1 ve veri dosyaları için 1). <br/><br/> -< 1 MS GÇ gecikme süreleri gerektiren iş yükleri için, M serisi için yazma hızlandırıcıyı etkinleştirin ve es ve DS serisi için Ultra SSD diskler kullanmayı düşünün. <br/><br/> -Veri dosyalarını barındıran diskler üzerinde [salt okuma işlemini](../../../virtual-machines/premium-storage-performance.md#disk-caching) etkinleştirin.<br/><br/> - [SQL Server verileri, günlüğü ve tempdb dosyaları için depolamayı yapılandırırken](storage-configuration.md) iş yükünüze göre %20 ' ye AIT ek IOPS/verimlilik kapasitesi ekleyin <br/><br/> -Veritabanı depolama veya günlük kaydı için işletim sistemi veya geçici diskler kullanmaktan kaçının.<br/><br/> -Günlük dosyasını barındıran disk (ler) i önbelleğe almayı etkinleştirmeyin.  **Önemli**: bir Azure sanal makineler diskinin önbellek ayarlarını değiştirirken SQL Server hizmetini durdurun.<br/><br/> -Daha fazla depolama verimi sağlamak için birden çok Azure veri diski dizili.<br/><br/> -Belgelenmiş ayırma boyutlarıyla biçimlendirin. <br/><br/> - `D:\` Görev açısından kritik SQL Server iş yükleri için yerel SSD sürücüsüne tempdb yerleştirin (doğru VM boyutunu seçtikten sonra). VM 'yi Azure portal veya Azure hızlı başlangıç şablonlarından oluşturup [GEÇICI veritabanını yerel diske yerleştirirseniz](https://techcommunity.microsoft.com/t5/SQL-Server/Announcing-Performance-Optimized-Storage-Configuration-for-SQL/ba-p/891583), başka bir işlem yapmanız gerekmez; Tüm diğer durumlar için, başlatmalardaki hatalardan kaçınmak üzere  [tempdb 'yi depolamak üzere SSD 'Yi kullanmak](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-TempDB-and-buffer-pool-extensions/) için blogdaki adımları izleyin. Yerel sürücünün kapasitesi, geçici DB boyutunuz için yeterli değilse, geçici DB 'yi [salt okuma önbelleği](../../../virtual-machines/premium-storage-performance.md#disk-caching)olan Premium SSD disklerinde [dizili](../../../virtual-machines/premium-storage-performance.md) bir depolama havuzuna yerleştirin. |
+| [G/Ç](#io-guidance) |-Veritabanı sayfa sıkıştırmasını etkinleştirin.<br/><br/> -Veri dosyaları için anlık dosya başlatmayı etkinleştirin.<br/><br/> -Veritabanının otomatik büyümesini sınırlayın.<br/><br/> -Veritabanının bir daha küçültmeyi devre dışı bırakın.<br/><br/> -Sistem veritabanları dahil olmak üzere tüm veritabanlarını veri disklerine taşıyın.<br/><br/> -SQL Server hata günlüğü ve izleme dosyası dizinlerini veri disklerine taşıyın.<br/><br/> -Varsayılan yedekleme ve veritabanı dosya konumlarını yapılandırın.<br/><br/> - [Bellekte kilitli sayfaları etkinleştirin](/sql/database-engine/configure-windows/enable-the-lock-pages-in-memory-option-windows).<br/><br/> -SQL Server yüklü sürümü için [en son toplu güncelleştirmeleri](/sql/database-engine/install-windows/latest-updates-for-microsoft-sql-server) değerlendirin ve uygulayın. |
 | [Özelliğe özgü](#feature-specific-guidance) | -Doğrudan Azure Blob depolamaya yedekleme.<br/><br/>-12 TB 'den büyük veritabanları için [dosya anlık görüntüsü yedeklemeleri](/sql/relational-databases/backup-restore/file-snapshot-backups-for-database-files-in-azure) kullanın. <br/><br/>-Birden çok Temp DB dosyası, çekirdek başına 1 dosya, en fazla 8 dosya kullanın.<br/><br/>-Işletim sistemi için en fazla sunucu belleğini %90 veya en fazla 50 GB olacak şekilde ayarlayın. <br/><br/>-Geçici NUMA 'yı etkinleştirin. |
 
+
+<br/>
 Bu iyileştirmelerin *nasıl* ve *neden* yapılacağı hakkında daha fazla bilgi için lütfen aşağıdaki bölümlerde sunulan ayrıntıları ve Kılavuzu gözden geçirin.
+<br/><br/>
+
+## <a name="getting-started"></a>Başlarken
+
+Azure VM 'de yeni bir SQL Server oluşturuyorsanız ve geçerli bir kaynak sistemi geçiriyorsanız, satıcı gereksinimlerinize göre yeni SQL Server VM oluşturun.  Bir SQL Server VM için satıcı gereksinimleri, şirket içinde dağıttığınız şeydir. 
+
+Bulut için oluşturulmuş yeni bir uygulamayla yeni bir SQL Server VM oluşturuyorsanız, verileriniz ve kullanım gereksinimleriniz geliştikçe SQL Server VM kolayca boyut getirebilirsiniz.
+Düşük katmanlı D serisi, B serisi veya AV2 serisi ile geliştirme ortamlarını başlatın ve ortamınızı zaman içinde büyütün. 
+
+Üretim OLTP ortamı için önerilen minimum değer 4 sanal çekirdek, 32 GB bellek ve 8 ' in bellekten sanal çekirdek oranına sahiptir. Yeni ortamlar için 4 sanal çekirdek makinelerle başlayın ve veri ve işlem gereksinimleriniz değiştiğinde 8, 16, 32 sanal çekirdek veya daha fazlasını ölçeklendirin. OLTP üretilen iş için, her vCore için 5000 ıOPS 'ye sahip VM 'Leri hedef SQL Server. 
+
+Portalda depolama yapılandırmasıyla SQL Server VM Market görüntülerini kullanın. Bu, iş yükleriniz için gereken boyut, ıOPS ve aktarım hızını almak için gereken depolama havuzlarını doğru şekilde oluşturmayı kolaylaştırır. Premium Depolama ve Premium Depolama önbelleğini destekleyen SQL Server VM 'Leri seçmek önemlidir. Daha fazla bilgi için [depolama](#storage-guidance) bölümüne bakın. 
+
+SQL Server veri ambarı ve görev açısından kritik ortamların genellikle 8 bellekten sanal çekirdek oranının ötesine ölçeklendirilmesi gerekir. Orta ortamlar için, 16 çekirdek bellek oranı ve daha büyük veri ambarı ortamları için 32 çekirdek-bellek oranını seçebilirsiniz. 
+
+SQL Server veri ambarı ortamları, genellikle daha büyük makinelerin paralel işlenmesinden faydalanır. Bu nedenle, d serisi ve Mv2 serisi daha büyük veri ambarı ortamları için güçlü seçeneklerdir.
 
 ## <a name="vm-size-guidance"></a>VM boyut Kılavuzu
 
-En yoğun zamanlarda iş yükünün CPU, bellek ve depolama verimlilik gereksinimlerini toplayarak başlayın. \LogicalDisk\Disk Okuma/sn ve \LogicalDisk\Disk yazma/sn performans sayaçları, okuma ve yazma ıOPS gereksinimlerini toplamak için kullanılabilir ve \LogicalDisk\Disk baytları/sn sayacı veri, günlük ve Geçici VERITABANı dosyaları için [depolama aktarım hızı gereksinimlerini](../../../virtual-machines/premium-storage-performance.md#disk-caching) toplamak üzere kullanılabilir. IOPS ve verimlilik gereksinimleri yoğun olarak tanımlandıktan sonra VM boyutlarını değerlendir bu kapasiteyi sağlar. Örneğin, iş yükünüz 20 K okuma ıOPS ve 10.000 yazma ıOPS 'yi gerektiriyorsa, 2 P30 disk ile E16s_v3 (en fazla 32 K önbelleğe alınmış ve 25600 önbelleğe alınmış ıOPS ile) ya da M16_s (en fazla 20 KB önbelleğe alınmış ve 10.000, önbelleğe alınmış ıOPS ile) seçeneğini belirleyebilirsiniz. VM 'Ler, ıOPS ve aktarım hızı için farklı ölçek sınırlarına sahip olduğu için iş yükünün hem aktarım hızını hem de ıOPS gereksinimlerini anladığınızdan emin olun.<br/><br/>[DSv_3](../../../virtual-machines/dv3-dsv3-series.md) ve [Es_v3 serisi](../../../virtual-machines/ev3-esv3-series.md) , Intel Haswell veya çok iyi işlemciler içeren genel amaçlı donanımlarda barındırılır. [M serisi](../../../virtual-machines/m-series.md) en büyük SQL Server iş yükleri için en yüksek vCPU sayısını ve belleğini sunar ve ufuk Gölü işlemci ailesiyle bellek için iyileştirilmiş donanımda barındırılır. Bu VM Serisi, ana bilgisayar düzeyinde okuma önbelleğiyle en iyi performansı elde etmek için önerilen Premium depolamayı destekler. Hem Es_v3 hem de M serisi, daha düşük işlem ve yüksek depolama kapasitesi taleplerine sahip iş yükleri için para tasarrufu sağlayan [kısıtlı çekirdek boyutlarında](../../../virtual-machines/constrained-vcpu.md)de mevcuttur. 
+Geçerli bir şirket içi SQL Server veritabanını Azure VM 'lerinde SQL Server geçirmek için temel olarak kaynak makinenizden vCPU ve bellek yapılandırmasını kullanın. [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/) avantajlarından yararlanmak ve SQL Server lisanslama maliyetlerine kaydetmek için çekirdek lisansınızı Azure 'a taşıyın.
+
+**Microsoft, üretim SQL Server iş yükleri için başlangıç noktası olarak 8 ' den fazla bellek çekirdeği oranı önerir.** Üretim dışı iş yükleri için daha küçük oranlar kabul edilebilir. 
+
+İş yükünüze (OLTP veya veri ambarı) göre SQL Server performans için en uygun [bellek için iyileştirilmiş](../../../virtual-machines/sizes-memory.md), [genel amaçlı](../../../virtual-machines/sizes-general.md), [depolama Için iyileştirilmiş](../../../virtual-machines/sizes-storage.md)veya [Kısıtlanmış Vcore](../../../virtual-machines/constrained-vcpu.md) sanal makine boyutunu seçin. 
+
+### <a name="memory-optimized"></a>Bellek için iyileştirilmiş
+
+[Bellek için iyileştirilmiş sanal makine boyutları](../../../virtual-machines/sizes-memory.md) SQL Server VM 'ler için birincil hedeftir ve Microsoft tarafından önerilen seçenektir. Bellek için iyileştirilmiş sanal makineler, daha güçlü bellek-CPU oranları ve orta-büyük önbellek seçenekleri sunar. 
+
+#### <a name="m-and-mv2-series"></a>A ve Mv2 serisi
+
+[B serisi](../../../virtual-machines/m-series.md) , en büyük SQL Server iş yükleri Için sanal çekirdek sayısı ve belleği sunar.  
+
+[Mv2 serisi](../../../virtual-machines/mv2-series.md) , en yüksek sanal çekirdek sayısına ve belleğe sahiptir ve görev açısından kritik ve veri ambarı iş yükleri için önerilir. Mv2 serisi örnekler, büyük bellek içi veritabanlarını ve iş yüklerini, ilişkisel veritabanı sunucuları, büyük önbellekler ve bellek içi analizler için ideal olan yüksek bellekle CPU oranıyla desteklemek üzere benzersiz işlem performansı sağlayan bellek için iyileştirilmiş VM boyutlarıdır.
+
+[Standard_M64ms](../../../virtual-machines/m-series.md) , örneğin 28 bellekten sanal çekirdek oranına sahiptir.
+
+D ve Mv2 serisi özelliklerinin bazıları SQL Server performansa yönelik olarak, [Premium Depolama](../../../virtual-machines/premium-storage-performance.md) ve [Premium depolama önbelleğe alma](../../../virtual-machines/premium-storage-performance.md#disk-caching) desteği, [Ultra disk](../../../virtual-machines/disks-enable-ultra-ssd.md) desteği ve [yazma hızlandırmasını](../../../virtual-machines/how-to-enable-write-accelerator.md)kapsar.
+
+#### <a name="edsv4-series"></a>Edsv4 serisi
+
+[Edsv4 serisi](../../../virtual-machines/edv4-edsv4-series.md) , bellek yoğun uygulamalar için tasarlanmıştır. Bu sanal makinelerin büyük bir yerel depolama SSD kapasitesi, güçlü yerel disk ıOPS 'si, 504 GiB 'a kadar RAM ve gelişmiş işlem, Gen2 VM 'lerle önceki Ev3/Esv3 boyutları ile karşılaştırılır. Bu sanal makinelerde, standart SQL Server iş yükleri için ideal olan 8 ' in neredeyse tutarlı bir bellek-vCore oranı vardır. 
+
+Bu VM Serisi, düşük gecikme süresi, yüksek hızlı yerel depolama 'dan faydalanabilecek bellek yoğunluklu kurumsal uygulamalar ve uygulamalar için idealdir.
+
+Edsv4 serisi sanal makineler [Premium depolamayı](../../../virtual-machines/premium-storage-performance.md)ve [Premium depolama önbelleği](../../../virtual-machines/premium-storage-performance.md#disk-caching)'ni destekler.
+
+#### <a name="dsv2-series-11-15"></a>DSv2 serisi 11-15
+
+[DSv2 serisi 11-15](../../../virtual-machines/dv2-dsv2-series-memory.md#dsv2-series-11-15) , önceki D serisi ile aynı bellek ve disk yapılandırmalarına sahiptir. Bu seride, tüm sanal makinelerde 7 ' nin tutarlı, bellekten CPU oranı vardır. 
+
+[DSv2 serisi 11-15](../../../virtual-machines/dv2-dsv2-series-memory.md#dsv2-series-11-15) , [Premium Depolama](../../../virtual-machines/premium-storage-performance.md) ve [Premium Depolama önbelleğini](../../../virtual-machines/premium-storage-performance.md#disk-caching)destekler; bu, en iyi performans için önerilir.
+
+### <a name="general-purpose"></a>Genel Amaçlı
+
+[Genel amaçlı sanal makine boyutları](../../../virtual-machines/sizes-general.md) , geliştirme ve test, Web sunucuları ve daha küçük veritabanı sunucuları gibi daha küçük giriş düzeyi iş yükleri için dengeli bellekten sanal çekirdek oranları sağlamak üzere tasarlanmıştır. 
+
+Genel amaçlı sanal makinelerle daha küçük olan bellekten sanal çekirdek oranları nedeniyle, SQL Server bellek tabanlı performans sayaçlarını dikkatle izlemek önemlidir, çünkü bu, gereken arabellek önbelleği belleğini. Daha fazla bilgi için bkz. [bellek performansı temeli](#memory) . 
+
+Üretim iş yükleri için başlangıç önerisi 8 ' in bellekten sanal çekirdek oranı olduğundan, SQL Server çalıştıran bir genel amaçlı VM için önerilen en düşük yapılandırma 4 vCPU ve 32 GB bellek olur. 
+
+#### <a name="ddsv4-series"></a>Ddsv4 serisi
+
+[Ddsv4-Series](../../../virtual-machines/ddv4-ddsv4-series.md) , vCPU, bellek ve geçici disk için, ancak daha küçük bellekten sanal çekirdek desteğiyle bir bileşim sunar. 
+
+Ddsv4 VM 'Leri, daha düşük gecikme süresi ve daha yüksek hızlı yerel depolama içerir.
+
+Bu makineler, geçici depolama ve departman ilişkisel veritabanlarına hızlı erişim gerektiren yan yana SQL ve uygulama dağıtımları için idealdir. Bu serideki tüm sanal makineler arasında standart bir bellek-sanal çekirdek oranı vardır. 
+
+Bu nedenle, bu serideki, 8 sanal çekirdekler ve 32 GB bellek içeren başlangıç sanal makinesi olarak D8ds_v4 kullanmanız önerilir. En büyük makine, 64 sanal çekirdek ve 256 GB bellek içeren D64ds_v4.
+
+[Ddsv4 serisi](../../../virtual-machines/ddv4-ddsv4-series.md) sanal makineler, [Premium Depolama](../../../virtual-machines/premium-storage-performance.md) ve [Premium Depolama önbelleğini](../../../virtual-machines/premium-storage-performance.md#disk-caching)destekler.
+
+> [!NOTE]
+> [Ddsv4 serisi](../../../virtual-machines/ddv4-ddsv4-series.md) , SQL Server iş yükleri için önerilen 8 ' ın bellekten sanal çekirdek oranına sahip değildir. Bu nedenle, bu sanal makinelerin yalnızca daha küçük uygulama ve geliştirme iş yükleri için kullanılması düşünülmektedir.
+
+#### <a name="b-series"></a>B serisi
+
+[Burstable B serisi](../../../virtual-machines/sizes-b-series-burstable.md) sanal makine boyutları, kavram kanıtı ve çok küçük uygulama ve geliştirme sunucuları gibi tutarlı performansa gerek olmayan iş yükleri için idealdir. 
+
+[Burstable B serisi](../../../virtual-machines/sizes-b-series-burstable.md) sanal makine boyutlarının çoğu, 4 ' ün bellekten Vcore oranına sahiptir. Bu makinelerin en büyüğü 20 sanal çekirdek ve 80 GB bellek içeren [Standard_B20ms](../../../virtual-machines/sizes-b-series-burstable.md) .
+
+Bu seri, uygulamalar makine boyutuna bağlı olarak değişen Burstable kredilerle iş saatlerinde **veri bloğu** yapabilme özelliğine sahip olduğu için benzersizdir. 
+
+Krediler tükendiğinde VM, taban çizgisi makine performansına geri döner.
+
+B serisinin avantajı, özellikle de işlem gücü için gün boyunca gerekli olan diğer VM boyutlarına göre elde edebileceğiniz işlem tasarruflarıdır.
+
+Bu seri [Premium depolamayı](../../../virtual-machines/premium-storage-performance.md)destekler, ancak **does not support** [Premium Depolama önbelleğini](../../../virtual-machines/premium-storage-performance.md#disk-caching)desteklemez.
+
+> [!NOTE] 
+> [Burstable B serisi](../../../virtual-machines/sizes-b-series-burstable.md) , SQL Server iş yükleri için önerilen 8 ' ın bellekten sanal çekirdek oranına sahip değildir. Bu nedenle, bu sanal makineleri yalnızca daha küçük uygulamalar, Web sunucuları ve geliştirme iş yükleri için kullanmayı göz önünde bulundurun.
+
+#### <a name="av2-series"></a>Av2 Serisi
+
+[AV2 serisi](../../../virtual-machines/av2-series.md) VM 'ler, geliştirme ve test, düşük trafikli web sunucuları, küçük ve orta ölçekli uygulama veritabanları ve kavram kanıtı gibi giriş düzeyi iş yükleri için idealdir.
+
+Yalnızca [Standard_A2m_v2](../../../virtual-machines/av2-series.md) (2 sanal çekirdek ve 16GB bellek), [Standard_A4m_v2](../../../virtual-machines/av2-series.md) (4 sanal çekirdek ve 32gb bellek) ve [Standard_A8m_v2](../../../virtual-machines/av2-series.md) (8 sanal çekirdek ve 64 GB bellek), bu en önemli üç sanal makine Için 8 ' in bellek-Vcore oranına sahiptir. 
+
+Bu sanal makineler, daha küçük geliştirme ve test SQL Server makinelere yönelik iyi seçeneklerdir. 
+
+8 sanal çekirdek [Standard_A8m_v2](../../../virtual-machines/av2-series.md) , küçük uygulama ve Web sunucuları için de iyi bir seçenek olabilir.
+
+> [!NOTE] 
+> AV2 serisi, Premium depolamayı desteklemez ve bu nedenle, bellekten sanal çekirdek oranına sahip sanal makinelerle birlikte üretim SQL Server iş yükleri için önerilmez.
+
+### <a name="storage-optimized"></a>Depolama için iyileştirilmiş
+
+[Depolama için IYILEŞTIRILMIŞ VM boyutları](../../../virtual-machines/sizes-storage.md) belirli kullanım örneklerine yöneliktir. Bu sanal makineler özellikle iyileştirilmiş disk aktarım hızı ve GÇ ile tasarlanmıştır. Bu sanal makine serisi, büyük veri senaryoları, veri depolama ve büyük işlem veritabanlarına yöneliktir. 
+
+#### <a name="lsv2-series"></a>Lsv2 serisi
+
+[Lsv2 serisi](../../../virtual-machines/lsv2-series.md) , yüksek aktarım hızı, düşük gecikme süresi ve yerel NVMe depolama özellikleri. Lsv2 serisi VM 'Ler, dayanıklı veri disklerini kullanmak yerine doğrudan VM 'ye eklenen düğümdeki yerel diski kullanacak şekilde iyileştirilmiştir. 
+
+Bu sanal makineler, büyük veri, veri ambarı, raporlama ve ETL iş yükleri için güçlü seçeneklerdir. Yerel NVMe depolamanın yüksek aktarım hızı ve IOPS, veritabanınıza yüklenecek dosyaları ve kaynak verilerin kaynak sistemden ya da Azure Blob depolama veya Azure Data Lake gibi diğer depolardan yeniden oluşturulabilen diğer senaryolara yönelik olarak işlenmesi için iyi bir kullanım durumdur. [Lsv2 serisi](../../../virtual-machines/lsv2-series.md) VM 'Ler aynı anda en fazla 30 dakika boyunca disk performansını da aşırı alabilir.
+
+Bu sanal makineler 1,92, her bir vCPU için 8 GiB bellek ve her 8 vCPU için 8 TB 'lık NVMe SSD ile 80 vCPU arasında olur. Bu, [L80s_v2](../../../virtual-machines/lsv2-series.md), bu serinin en büyük VM 'si için, 10 gb 'Lık 80 sanal cpu ve 640 Bib belleği, 10 x 1.92 TB olan NVMe depolaması ile aynıdır.  Bu sanal makinelerin tümünde 8 ' e kadar tutarlı bir bellek-vCore oranı vardır.
+
+NVMe depolaması, sanal makinenizi yeniden başlatırsanız bu disklerde verilerin kaybedilmesi anlamına gelir.
+
+Lsv2 ve LS Serisi [Premium](../../../virtual-machines/premium-storage-performance.md)depolamayı destekler, ancak Premium depolama önbelleğe alma işlemini desteklemez. IOPS 'yi artırmak için yerel bir önbelleğin oluşturulması desteklenmez. 
+
+> [!WARNING]
+> Veri dosyalarınızı kısa ömürlü NVMe depolamada depolamak, VM serbest bırakıldığında veri kaybına neden olabilir. 
+
+### <a name="constrained-vcores"></a>Kısıtlanmış sanal çekirdekler
+
+Yüksek performanslı SQL Server iş yükleri genellikle daha fazla sanal çekirdek sayısı olmadan daha büyük miktarda bellek, GÇ ve aktarım hızına ihtiyaç duyar. 
+
+Birçok OLTP iş yükü, çok sayıda küçük işlem tarafından yönetilen uygulama veritabanlarıdır. OLTP iş yükleri sayesinde, verilerin yalnızca küçük bir miktarı okunmakta veya değiştirilir, ancak kullanıcı sayılarına göre çalışan işlem birimleri çok daha yüksektir. SQL Server belleğin önbelleğe almak için kullanılabilir olması, en son erişilen verileri performans için depolaması ve fiziksel okumaların belleğe hızla okunabileceği emin olmanız önemlidir. 
+
+Bu OLTP ortamlarında daha yüksek miktarda bellek, hızlı depolama ve en iyi şekilde gerçekleştirmek için gereken g/ç bant genişliği gerekir. 
+
+Daha yüksek SQL Server lisanslama maliyetleri olmadan bu performans düzeyini korumak için Azure, [Kısıtlanmış vCPU sayısı](../../../virtual-machines/constrained-vcpu.md)ile VM boyutları sunar. 
+
+Bu, üst sanal makinenin aynı bellek, depolama ve g/ç bant genişliğini koruyarak, kullanılabilir sanal çekirdekleri azaltarak lisanslama maliyetlerini denetlemeye yardımcı olur.
+
+VCPU sayısı, özgün VM boyutunun dörtte birini bir buçuk ile kısıtlanıyor olabilir. Sanal makine için kullanılabilir olan sanal çekirdekleri azaltmak, daha yüksek bellek-sanal çekirdek oranlarına ulaşacaktır.
+
+Bu yeni VM boyutları, daha kolay tanımlanabilmesi için etkin vCPU sayısını belirten bir soneke sahiptir. 
+
+Örneğin, [M64-32ms](../../../virtual-machines/constrained-vcpu.md) 32 yalnızca, [M64ms](../../../virtual-machines/m-series.md) için bellek, GÇ ve aktarım hızı ile [M64-16Ms](../../../virtual-machines/constrained-vcpu.md) yalnızca 16 sanal çekirdekleri gerektirir SQL Server sanal çekirdekler için yalnızca lisanslama gerektirir.  [M64-16ms](../../../virtual-machines/constrained-vcpu.md) 'nin M64ms lisans maliyetine ait bir SQL Server çeyreği olsa da, sanal makinenin işlem maliyeti aynı olacaktır.
+
+> [!NOTE] 
+> - Orta ila büyük veri ambarı iş yükleri, [kısıtlı vCore sanal](../../../virtual-machines/constrained-vcpu.md)makinelerinden yine de faydalanabilir, ancak veri ambarı iş yükleri genellikle daha az Kullanıcı ve paralel olarak çalışan sorgu planları aracılığıyla daha büyük miktarlarda veri adresleyen süreçler tarafından belirlenir. 
+> - İşletim sistemi lisansını içeren işlem maliyeti, üst sanal makineyle aynı kalacaktır. 
 
 ## <a name="storage-guidance"></a>Depolama yönergeleri
 
-TPC-E ve TPC_C kıyaslamalar ile Azure sanal makinelerinde SQL Server performansının ayrıntılı testi için, [OLTP performansını iyileştirme](https://techcommunity.microsoft.com/t5/SQL-Server/Optimize-OLTP-Performance-with-SQL-Server-on-Azure-VM/ba-p/916794)başlıklı bloga başvurun. 
+TPC-E ve TPC-C kıyaslamalarıyla Azure sanal makinelerinde SQL Server performansının ayrıntılı testi için, [OLTP performansını iyileştirme](https://techcommunity.microsoft.com/t5/SQL-Server/Optimize-OLTP-Performance-with-SQL-Server-on-Azure-VM/ba-p/916794)başlıklı bloga başvurun. 
 
 Tüm üretim iş yükleri için Premium SSD 'Ler içeren Azure Blob önbelleği önerilir. 
 
@@ -85,7 +229,7 @@ Aşağıdaki bölümlerde bu farklı diskleri kullanmaya yönelik öneriler aç�
 
 **D** sürücüsü olarak etiketlenen geçici depolama sürücüsü Azure Blob depolama alanına kalıcı değildir. Kullanıcı veritabanı dosyalarınızı veya Kullanıcı işlem günlüğü dosyalarını **D**: sürücüsünde saklamayın.
 
-`D:\`Görev açısından kritik SQL Server iş yükleri için (doğru VM boyutunu seçtikten sonra) tempdb 'yi yerel SSD sürücüsüne yerleştirin. VM 'yi Azure portal veya Azure hızlı başlangıç şablonlarından oluşturup [GEÇICI veritabanını yerel diske yerleştirirseniz](https://techcommunity.microsoft.com/t5/SQL-Server/Announcing-Performance-Optimized-Storage-Configuration-for-SQL/ba-p/891583), başka bir işlem yapmanız gerekmez; Tüm diğer durumlar için, başlatmalardaki hatalardan kaçınmak üzere  [tempdb 'yi depolamak üzere SSD 'Yi kullanmak](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/) için blogdaki adımları izleyin. Yerel sürücünün kapasitesi, geçici DB boyutunuz için yeterli değilse, geçici DB 'yi [salt okuma önbelleği](../../../virtual-machines/premium-storage-performance.md#disk-caching)olan Premium SSD disklerinde [dizili](../../../virtual-machines/premium-storage-performance.md) bir depolama havuzuna yerleştirin.
+`D:\`Görev açısından kritik SQL Server iş yükleri için (doğru VM boyutunu seçtikten sonra) tempdb 'yi yerel SSD sürücüsüne yerleştirin. VM 'yi Azure portal veya Azure hızlı başlangıç şablonlarından oluşturup [GEÇICI veritabanını yerel diske yerleştirirseniz](https://techcommunity.microsoft.com/t5/SQL-Server/Announcing-Performance-Optimized-Storage-Configuration-for-SQL/ba-p/891583), başka bir işlem yapmanız gerekmez; Tüm diğer durumlar için, başlatmalardaki hatalardan kaçınmak üzere  [tempdb 'yi depolamak üzere SSD 'Yi kullanmak](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-TempDB-and-buffer-pool-extensions/) için blogdaki adımları izleyin. Yerel sürücünün kapasitesi, geçici DB boyutunuz için yeterli değilse, geçici DB 'yi [salt okuma önbelleği](../../../virtual-machines/premium-storage-performance.md#disk-caching)olan Premium SSD disklerinde [dizili](../../../virtual-machines/premium-storage-performance.md) bir depolama havuzuna yerleştirin.
 
 Premium SSD 'Leri destekleyen VM 'Ler için TempDB 'yi okuma önbelleği etkinken Premium SSD 'leri destekleyen bir diskte da saklayabilirsiniz.
 
@@ -142,7 +286,7 @@ Premium SSD 'Leri destekleyen VM 'Ler için TempDB 'yi okuma önbelleği etkinke
      > [!WARNING]
      > Herhangi bir veritabanı bozulması olasılığını ortadan kaldırmak için Azure sanal makineler disklerinin önbellek ayarını değiştirirken SQL Server hizmetini durdurun.
 
-* **NTFS ayırma birimi boyutu**: veri diski biçimlendirilirken veri ve günlük dosyaları için BIR 64 KB ayırma birimi boyutu ve tempdb de kullanmanız önerilir. TempDB geçici diske yerleştirilmişse (D:\ sürücü) bu sürücüden yararlanarak elde edilen performans, 64K ayırma birimi boyutu gereksinimini ortadan kaldırarak ortaya çıktı. 
+* **NTFS ayırma birimi boyutu**: veri diski biçimlendirilirken veri ve günlük dosyaları için BIR 64 KB ayırma birimi boyutu ve tempdb de kullanmanız önerilir. TempDB geçici diske yerleştirilmişse (D:\ sürücü) bu sürücüden yararlanarak elde edilen performans, 64 KB 'lik bir ayırma birimi boyutu gereksinimini ortadan kaldırarak ortaya çıktı. 
 
 * **Disk yönetimi en iyi uygulamaları**: bir veri diski kaldırılırken veya önbellek türünü değiştirirken, değişiklik sırasında SQL Server hizmetini durdurun. Önbelleğe alma ayarları işletim sistemi diskinde değiştirildiğinde, Azure VM 'yi sonlandırır, önbellek türünü değiştirir ve VM 'yi yeniden başlatır. Bir veri diskinin önbellek ayarları değiştirildiğinde, VM durdurulmaz, ancak veri diski değişiklik sırasında VM 'den ayrılır ve yeniden eklenir.
 
@@ -210,10 +354,61 @@ Aşırı yüklenmiş sistemlerin işaretleri, çalışan iş parçacığı tüke
 
 
 
+## <a name="collect-performance-baseline"></a>Performans temelini topla
+
+Daha kapsamlı bir yaklaşım için, PerfMon/LogMan kullanarak performans sayaçlarını toplayın ve kaynak ortamının genel baskılarına ve olası performans sorunlarını daha iyi anlamak için SQL Server bekleme istatistiklerini yakalayın. 
+
+[Uygulama performansı denetim listesini](../../../virtual-machines/premium-storage-performance.md#application-performance-requirements-checklist)takip eden en yoğun zamanlarda kaynak Iş yükünün CPU, bellek, [IOPS](../../../virtual-machines/premium-storage-performance.md#iops), [verimlilik](../../../virtual-machines/premium-storage-performance.md#throughput)ve [gecikmesini](../../../virtual-machines/premium-storage-performance.md#latency) toplayarak başlayın. 
+
+Tipik iş gününde iş yükleri gibi yoğun saatlerde veri toplayın, ayrıca günlük işleme ve hafta sonu ETL iş yükleri gibi diğer yüksek yük işlemleri de elde edin. Çeyrek sonu işleme gibi genellikle yoğun iş yükleri için kaynaklarınızın ölçeğini ölçeklendirmeniz ve iş yükü tamamlandığında ölçeklendirilmesi gerekir. 
+
+İş yükünüzün performans gereksinimlerine ölçeklenebilen [VM boyutunu](../../../virtual-machines/sizes-memory.md) seçmek için performans analizini kullanın.
+
+
+### <a name="iops-and-throughput"></a>IOPS ve aktarım hızı
+
+SQL Server performans, g/ç alt sistemine göre büyük ölçüde değişir. Veritabanınız fiziksel belleğe uygun olmadığı için SQL Server sürekli olarak veritabanı sayfalarını arabellek havuzunda içine ve dışına çıkarır. SQL Server için veri dosyaları farklı şekilde değerlendirilmelidir. Günlük dosyalarına erişim, TempDB dahil olmak üzere veri dosyalarının rasgele olarak erişildiği bir işlemin geri alınması gerektiği durumlar haricinde sıralıdır. Yavaş bir g/ç alt sistemidir varsa, kullanıcılarınız yavaş yanıt süreleri ve zaman aşımları nedeniyle tamamlanmamış görevler gibi performans sorunlarıyla karşılaşabilir. 
+
+Azure Marketi Sanal makineleri, varsayılan olarak veri dosyalarından ayrı bir fiziksel diskte bulunan günlük dosyalarına sahiptir. TempDB veri dosyalarının sayısı ve boyutu en iyi uygulamaları karşılar ve kısa ömürlü D:/'yi hedeflenmiştir sürücü.. 
+
+Aşağıdaki PerfMon sayaçları, SQL Server gereken GÇ aktarım hızını doğrulamaya yardımcı olabilir: 
+* **\Logicaldisk\disk Okuma/sn** (okuma ve Yazma IOPS)
+* **\Logicaldisk\disk yazma/sn** (okuma ve Yazma IOPS) 
+* **\Logicaldisk\disk bayt/sn** (veri, günlük ve tempdb dosyaları için işleme gereksinimleri)
+
+En yoğun düzeylerde ıOPS ve aktarım hızı gereksinimlerini kullanarak ölçülerinizin kapasitesiyle eşleşen VM boyutlarını değerlendirin. 
+
+İş yükünüz 20 K okuma ıOPS ve 10.000 yazma ıOPS gerektiriyorsa, depolama alanları kullanılarak 2 P30 disk şeritli şekilde E16s_v3 (en fazla 32 K önbelleğe alınmış ve 25600 önbelleğe alınmış ıOPS ile) veya M16_s (20 KB 'a kadar önbelleğe alınmış ve 10.000 'den önbelleğe alınmış ıOPS ile) seçeneğini belirleyebilirsiniz. 
+
+VM 'Ler, ıOPS ve aktarım hızı için farklı ölçek sınırlarına sahip olduğu için iş yükünün hem aktarım hızını hem de ıOPS gereksinimlerini anladığınızdan emin olun.
+
+### <a name="memory"></a>Bellek
+
+Ayrıca, işletim sistemi tarafından kullanılan dış belleği ve SQL Server dahili olarak kullanılan belleği izleyin. Her iki bileşenin de basıncını belirlenmesi, sanal makinelerin boyutlandırmasından ve ayarlamaya yönelik fırsatları belirlemesine yardımcı olur. 
+
+Aşağıdaki PerfMon sayaçları, bir SQL Server sanal makinenin bellek durumunu doğrulamaya yardımcı olabilir: 
+* [\Bellek\kullanılabilir MBayt](/azure/monitoring/infrastructure-health/vmhealth-windows/winserver-memory-availmbytes)
+* [\SQLServer: bellek Manager\Target sunucu belleği (KB)](/sql/relational-databases/performance-monitor/sql-server-buffer-manager-object)
+* [\SQLServer: bellek Manager\Total sunucu belleği (KB)](/sql/relational-databases/performance-monitor/sql-server-buffer-manager-object)
+* [\SQLServer: buffer Manager\Lazy yazma/sn](/sql/relational-databases/performance-monitor/sql-server-buffer-manager-object)
+* [\SQLServer: buffer Manager\Page Life erkeklerin](/sql/relational-databases/performance-monitor/sql-server-buffer-manager-object)
+
+### <a name="compute--processing"></a>İşlem/Işleme
+
+Azure 'da işlem, Şirket içinden farklı yönetilir. Şirket içi sunucular, yönetim ek yükü ve yeni donanım edinme maliyeti nedeniyle yükseltme olmadan son birkaç yıla göre oluşturulmuştur. Sanallaştırma bu sorunlardan bazılarını azaltır, ancak kaynak tüketimine yapılan önemli değişiklikler tüm fiziksel ortamın yeniden dengelenmesi gereken anlamına gelir. 
+
+Bu, farklı bir donanım serisi üzerinde yeni bir sanal makinenin, hatta farklı bir bölgede bile elde edilmesi kolay bir şekilde Azure 'da bir sınama değildir. 
+
+Azure 'da, sanal makine kaynaklarından çok daha fazla yararlanmak istiyorsunuz, bu nedenle Azure sanal makineleri, iş yükünü etkilemeden ortalama CPU 'YU mümkün olduğunca yüksek tutmaya yönelik olarak yapılandırılmalıdır. 
+
+Aşağıdaki PerfMon sayaçları, bir SQL Server sanal makinenin işlem durumunu doğrulamaya yardımcı olabilir:
+* **\İşlemci bilgileri (_Total) \% Işlemci zamanı**
+* **\ Process (sqlservr) \% Işlemci zamanı**
+
+> [!NOTE] 
+> İdeal olarak, %90 ' ün üzerinde en üst düzeye sahip olan ancak sürekli bir süre için %80 ' a 100 ulaşmadan, işlem sürenizin% ' ı kullanmayı hedefmeye çalışın. Temelde, yalnızca uygulama için gereken işlemi sağlamak ve iş gerektirdiğinde ölçeği yukarı veya aşağı doğru şekilde planlamak isteyeceksiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-
-Depolama ve performans hakkında daha fazla bilgi için bkz. [Azure sanal makinelerinde SQL Server Için depolama yapılandırma yönergeleri](/archive/blogs/sqlserverstorageengine/storage-configuration-guidelines-for-sql-server-on-azure-vm)
 
 En iyi güvenlik uygulamaları için bkz. [Azure sanal makinelerinde SQL Server Için güvenlik konuları](security-considerations-best-practices.md).
 

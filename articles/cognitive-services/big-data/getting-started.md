@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 37239f9c7857a8e72bb293cfa3caeb429962a542
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 095f2c3ed17042bb616fb091d1af52a64c913709
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363349"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460505"
 ---
 # <a name="getting-started"></a>Başlarken
 
@@ -37,13 +37,13 @@ Bulut tabanlı bilişsel hizmetler, Azure 'da barındırılan akıllı algoritma
 
 Uygulamanız veya iş yükünüz büyük veri kümeleri kullanıyorsa, özel ağ gerektirir veya buluta başvuramadığı takdirde, Cloud Services ile iletişim kurma imkansızçıkabilir. Bu durumda Kapsayıcılı bilişsel hizmetler şu avantajlara sahiptir:
 
-* **Düşük bağlantı** : Kapsayıcılı bilişsel Hizmetleri, hem bulutta hem de kapalı bir bilgi işlem ortamında dağıtabilirsiniz. Uygulamanız buluta başvuramıyorum, uygulamanıza Kapsayıcılı bilişsel hizmetler dağıtımı yapmayı göz önünde bulundurun.
+* **Düşük bağlantı**: Kapsayıcılı bilişsel Hizmetleri, hem bulutta hem de kapalı bir bilgi işlem ortamında dağıtabilirsiniz. Uygulamanız buluta başvuramıyorum, uygulamanıza Kapsayıcılı bilişsel hizmetler dağıtımı yapmayı göz önünde bulundurun.
 
-* **Düşük gecikme süresi** : Kapsayıcılı hizmetler buluta/buluttan gidiş dönüş iletişimi gerektirmediğinden, yanıtlar çok daha düşük gecikme süreleriyle döndürülür.
+* **Düşük gecikme süresi**: Kapsayıcılı hizmetler buluta/buluttan gidiş dönüş iletişimi gerektirmediğinden, yanıtlar çok daha düşük gecikme süreleriyle döndürülür.
 
-* **Gizlilik ve veri güvenliği** : Kapsayıcılı Hizmetleri özel ağlara dağıtarak gizli verilerin ağdan ayrılmaması için.
+* **Gizlilik ve veri güvenliği**: Kapsayıcılı Hizmetleri özel ağlara dağıtarak gizli verilerin ağdan ayrılmaması için.
 
-* **Yüksek ölçeklenebilirlik** : Kapsayıcılı hizmetlerin "oran limitleri" yoktur ve Kullanıcı tarafından yönetilen bilgisayarlarda çalışır. Bu nedenle, çok daha büyük iş yüklerini işlemek için bilişsel hizmetleri son olmadan ölçeklendirebilirsiniz.
+* **Yüksek ölçeklenebilirlik**: Kapsayıcılı hizmetlerin "oran limitleri" yoktur ve Kullanıcı tarafından yönetilen bilgisayarlarda çalışır. Bu nedenle, çok daha büyük iş yüklerini işlemek için bilişsel hizmetleri son olmadan ölçeklendirebilirsiniz.
 
 Kapsayıcılı bir bilişsel hizmet oluşturmak için [Bu kılavuzu](../cognitive-services-container-support.md?tabs=luis) izleyin.
 
@@ -65,14 +65,14 @@ Azure Databricks, tek tıklamayla kurulum, kolaylaştırılmış iş akışları
     * Kitaplığı bir kümeye yükler  
       <img src="media/install-library.png" alt="Install Library on Cluster" width="50%"/>
 
-### <a name="synapse-analytics-optional"></a>SYNAPSE Analytics (isteğe bağlı)
+### <a name="azure-synapse-analytics-optional"></a>Azure SYNAPSE Analytics (isteğe bağlı)
 
-İsteğe bağlı olarak, SYNAPSE Analytics 'i kullanarak bir Spark kümesi oluşturabilirsiniz. Azure SYNAPSE Analytics, kurumsal veri depolama ve büyük veri analizlerini birlikte sunar. Bu sayede, daha az sayıda isteğe bağlı veya sağlanan kaynakları kullanarak koşullarınızda verileri sorgulama özgürlüğü elde edersiniz. SYNAPSE Analytics 'i kullanmaya başlamak için şu adımları izleyin:
+İsteğe bağlı olarak, SYNAPSE Analytics 'i kullanarak bir Spark kümesi oluşturabilirsiniz. Azure SYNAPSE Analytics, kurumsal veri depolama ve büyük veri analizlerini birlikte sunar. Bu sayede, daha az sayıda isteğe bağlı veya sağlanan kaynakları kullanarak koşullarınızda verileri sorgulama özgürlüğü elde edersiniz. Azure SYNAPSE Analytics 'i kullanmaya başlamak için şu adımları izleyin:
 
 1. [Bir Synapse çalışma alanı (Önizleme) oluşturun](../../synapse-analytics/quickstart-create-workspace.md).
 1. [Azure Portal kullanarak yeni bir sunucusuz Apache Spark Havuzu (Önizleme) oluşturun](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md).
 
-SYNAPSE Analytics 'te bilişsel hizmetler için büyük veri varsayılan olarak yüklüdür.
+Azure SYNAPSE Analytics 'te bilişsel hizmetler için büyük veri varsayılan olarak yüklüdür.
 
 ### <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
@@ -98,7 +98,7 @@ Spark kümenizi ve ortamınızı ayarladıktan sonra kısa bir örnek çalışt�
 
     <img src="media/databricks-notebook-details.jpg" alt="New notebook details" width="50%"/>
 
-    **Oluştur** ’u seçin.
+    **Oluştur**’u seçin.
 
 1. Bu kod parçacığını yeni Not defterinize yapıştırın.
 

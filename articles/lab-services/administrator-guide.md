@@ -3,12 +3,12 @@ title: Yönetici Kılavuzu Azure Lab Services | Microsoft Docs
 description: Bu kılavuz, Azure Lab Services kullanarak laboratuvar hesapları oluşturan ve yöneten yöneticilere yardımcı olur.
 ms.topic: article
 ms.date: 10/20/2020
-ms.openlocfilehash: 08d2fea719ad67f666ea9da09721dc3f7ab54768
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3ad3ee38a6c08a6af85822d76012cc6dfc34ff4e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999289"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462470"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services Yönetici Kılavuzu
 Bir University 'in bulut kaynaklarını yöneten bilgi teknolojisi (BT) yöneticileri, okulunuzun laboratuvar hesabını ayarlamaktan genellikle sorumludur. Laboratuvar hesabı ayarladıktan sonra Yöneticiler veya eğitimciler, hesapta yer alan laboratuvarları oluşturur. Bu makalede, söz konusu Azure kaynaklarına ve bunları oluşturmaya yönelik kılavuza yönelik yüksek düzeyde bir genel bakış sunulmaktadır.
@@ -116,7 +116,7 @@ Paylaşılan görüntüleri mantıksal olarak gruplamak için aşağıdakilerden
 
 Azure Lab Services kullanmaya başlarken, kaynak grupları, laboratuvar hesapları, laboratuvarlar ve paylaşılan görüntü Galerisi için adlandırma kuralları oluşturmanızı öneririz. Oluşturduğunuz adlandırma kuralları, kuruluşunuzun ihtiyaçlarına göre benzersiz olacaktır, ancak aşağıdaki tabloda genel yönergeler sunulmaktadır:
 
-| Kaynak türü | Rol | Önerilen düzen | Örnekler |
+| Kaynak türü | Role | Önerilen düzen | Örnekler |
 | ------------- | ---- | ----------------- | -------- | 
 | Kaynak grubu | Bir veya daha fazla laboratuvar hesabı ve bir veya daha fazla paylaşılan görüntü Galerisi içerir | \<organization short name\>-\<environment\>-RG<ul><li>**Kuruluş kısa adı** , kaynak grubunun desteklediği kuruluşun adını tanımlar.</li><li>**Ortam** , kaynak için *pilot* veya *Üretim* gibi ortamı tanımlar.</li><li>**RG** , kaynak türü *kaynak grubu* için temsil eder.</li></ul> | contosoüniversıtylabs-RG<br/>contosoüniversıtylabs-pilot-RG<br/>contosoüniversıtylabs-prod-RG |
 | Laboratuvar hesabı | Bir veya daha fazla Laboratuvarı içerir | \<organization short name\>-\<environment\>-La<ul><li>**Kuruluş kısa adı** , kaynak grubunun desteklediği kuruluşun adını tanımlar.</li><li>**Ortam** , kaynak için *pilot* veya *Üretim* gibi ortamı tanımlar.</li><li>**La** , kaynak türü *Laboratuvar hesabı* için temsil eder.</li></ul> | contosoüniversıtylabs-La<br/>mathdeptlabs-La<br/>bilimsel deptlabs-pilot-La<br/>bilimsel deptlabs-prod-La |
@@ -167,14 +167,14 @@ Yöneticiler veya laboratuvar oluşturucuları bir laboratuvar oluşturdukların
 
 | Boyut | Özellikler | Seriler | Önerilen kullanım |
 | ---- | ----- | ------ | ------------- |
-| Küçük| <ul><li>2 &nbsp; çekirdek</li><li>3,5 gigabayt (GB) RAM</li> | [Standard_A2_v2](../virtual-machines/av2-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | Komut satırı, Web tarayıcısı, düşük trafikli web sunucuları, küçük ve orta ölçekli veritabanları için idealdir. |
-| Orta | <ul><li>4 &nbsp; çekirdek</li><li>7 &nbsp; GB &nbsp; RAM</li> | [Standard_A4_v2](../virtual-machines/av2-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | İlişkisel veritabanları, bellek içi önbelleğe alma ve analiz için idealdir. |
-| Orta (iç içe sanallaştırma) | <ul><li>4 &nbsp; çekirdek</li><li>16 &nbsp; GB &nbsp; RAM</li></ul> | [Standard_D4s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#dsv3-series) | İlişkisel veritabanları, bellek içi önbelleğe alma ve analiz için idealdir.
+| Küçük| <ul><li>2 &nbsp; çekirdek</li><li>3,5 gigabayt (GB) RAM</li> | [Standard_A2_v2](../virtual-machines/av2-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Komut satırı, Web tarayıcısı, düşük trafikli web sunucuları, küçük ve orta ölçekli veritabanları için idealdir. |
+| Orta | <ul><li>4 &nbsp; çekirdek</li><li>7 &nbsp; GB &nbsp; RAM</li> | [Standard_A4_v2](../virtual-machines/av2-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | İlişkisel veritabanları, bellek içi önbelleğe alma ve analiz için idealdir. |
+| Orta (iç içe sanallaştırma) | <ul><li>4 &nbsp; çekirdek</li><li>16 &nbsp; GB &nbsp; RAM</li></ul> | [Standard_D4s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#dsv3-series) | İlişkisel veritabanları, bellek içi önbelleğe alma ve analiz için idealdir.
 | Büyük | <ul><li>8 &nbsp; çekirdek</li><li>16 &nbsp; GB &nbsp; RAM</li></ul>  | [Standard_A8_v2](../virtual-machines/av2-series.md) | Daha hızlı CPU 'Lar, daha iyi yerel disk performansı, büyük veritabanları, büyük bellek önbellekler gerektiren uygulamalar için idealdir.  Bu boyut, iç içe sanallaştırmayı da destekler. |
-| Büyük (iç içe sanallaştırma) | <ul><li>8 &nbsp; çekirdek</li><li>32 &nbsp; GB &nbsp; RAM</li></ul>  | [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#dsv3-series) | Daha hızlı CPU 'Lar, daha iyi yerel disk performansı, büyük veritabanları, büyük bellek önbellekler gerektiren uygulamalar için idealdir. |
+| Büyük (iç içe sanallaştırma) | <ul><li>8 &nbsp; çekirdek</li><li>32 &nbsp; GB &nbsp; RAM</li></ul>  | [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#dsv3-series) | Daha hızlı CPU 'Lar, daha iyi yerel disk performansı, büyük veritabanları, büyük bellek önbellekler gerektiren uygulamalar için idealdir. |
 | Küçük GPU (görselleştirme) | <ul><li>6 &nbsp; çekirdek</li><li>56 &nbsp; GB &nbsp; RAM</li>  | [Standard_NV6](../virtual-machines/nv-series.md) | OpenGL ve DirectX gibi çerçeveleri kullanarak uzaktan görselleştirme, akış, oyun ve kodlama için idealdir. |
 | Küçük GPU (Işlem) | <ul><li>6 &nbsp; çekirdek</li><li>56 &nbsp; GB &nbsp; RAM</li></ul>  | [Standard_NC6](../virtual-machines/nc-series.md) |AI ve derin öğrenme gibi bilgisayar açısından yoğun uygulamalar için idealdir. |
-| Orta ölçekli GPU (görselleştirme) | <ul><li>12 &nbsp; çekirdek</li><li>112 &nbsp; GB &nbsp; RAM</li></ul>  | [Standard_NV12](../virtual-machines/nv-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | OpenGL ve DirectX gibi çerçeveleri kullanarak uzaktan görselleştirme, akış, oyun ve kodlama için idealdir. |
+| Orta ölçekli GPU (görselleştirme) | <ul><li>12 &nbsp; çekirdek</li><li>112 &nbsp; GB &nbsp; RAM</li></ul>  | [Standard_NV12](../virtual-machines/nv-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | OpenGL ve DirectX gibi çerçeveleri kullanarak uzaktan görselleştirme, akış, oyun ve kodlama için idealdir. |
 
 ## <a name="manage-identity"></a>Kimliği Yönet
 

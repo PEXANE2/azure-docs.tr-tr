@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 6646b8a563cfe156a23b47011a769c6df015a286
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 64b39dfa581b242fbb490d61b388f2bf260976ef
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92340351"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460415"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Güvenlik Merkezi Sorun Giderme Kılavuzu
 
@@ -29,7 +29,7 @@ Uyarı türleri:
 
 * Sanal Makine Davranış Analizi (VMBA)
 * Ağ Analizi
-* SQL veritabanı ve Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) Analizi
+* SQL veritabanı ve Azure SYNAPSE Analytics Analizi
 * Bağlamsal Bilgiler
 
 Müşteriler, uyarı türlerine bağlı olarak aşağıdaki kaynakları kullanarak uyarıyı araştırmak için gerekli bilgileri elde edebilir:
@@ -62,7 +62,7 @@ Hizmetler yönetim konsolunu (Services. msc) açarsanız, aşağıda gösterildi
 
 ![Hizmetler](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig5.png)
 
-Aracının hangi sürümüne sahip olduğunu görmek için, **Görev Yöneticisi**'ni açın, **işler** sekmesinde **Log Analytics aracı hizmetini**bulun, sağ tıklayın ve **Özellikler**' e tıklayın. **Ayrıntılar** sekmesinde aşağıda gösterildiği gibi dosya sürümüne bakın:
+Aracının hangi sürümüne sahip olduğunu görmek için, **Görev Yöneticisi**'ni açın, **işler** sekmesinde **Log Analytics aracı hizmetini** bulun, sağ tıklayın ve **Özellikler**' e tıklayın. **Ayrıntılar** sekmesinde aşağıda gösterildiği gibi dosya sürümüne bakın:
 
 ![Dosya](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
 
@@ -81,7 +81,7 @@ Log Analytics aracısını bilgisayarınıza yüklerken farklı sonuçlar ürete
 
 **İzleme durumu**, Güvenlik Merkezi’nin otomatik sağlama için başlatılmış VM’leri ve bilgisayarları neden başarıyla izleyemediğini tanımlar. Aşağıdaki tabloda **İzleme durumu** değerleri, açıklamaları ve çözüm adımları gösterilmektedir.
 
-| İzleme durumu | Description | Çözüm adımları |
+| İzleme durumu | Açıklama | Çözüm adımları |
 |---|---|---|
 | Bekleyen aracı yüklemesi | Log Analytics Aracısı yüklemesi hala çalışıyor.  Yükleme birkaç saat sürebilir. | Otomatik yükleme işlemi tamamlanana kadar bekleyin. |
 | Güç durumu kapalı | VM durduruldu.  Log Analytics Aracısı yalnızca çalıştıran bir VM 'ye yüklenebilir. | VM’yi yeniden başlatın. |
@@ -105,10 +105,10 @@ Aşağıdaki tabloda iletişim için gereken kaynaklar gösterilmektedir.
 
 | Aracı Kaynağı | Bağlantı noktaları | HTTPS denetlemesini atlama |
 |---|---|---|
-| *.ods.opinsights.azure.com | 443 | Yes |
-| *.oms.opinsights.azure.com | 443 | Yes |
-| *.blob.core.windows.net | 443 | Yes |
-| *.azure-automation.net | 443 | Yes |
+| *.ods.opinsights.azure.com | 443 | Evet |
+| *.oms.opinsights.azure.com | 443 | Evet |
+| *.blob.core.windows.net | 443 | Evet |
+| *.azure-automation.net | 443 | Evet |
 
 Aracıyla ekleme sorunları yaşarsanız, [Operations Management Suite ekleme sorunlarını giderme](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues) makalesini okuduğunuzdan emin olun.
 

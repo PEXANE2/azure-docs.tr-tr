@@ -1,34 +1,34 @@
 ---
 title: T-SQL döngüleri kullanma
-description: T-SQL döngüleri kullanılarak çözüm geliştirmeye yönelik ipuçları ve SYNAPSE SQL havuzundaki imleçler değiştiriliyor.
+description: T-SQL döngüleri kullanılarak çözüm geliştirmeye yönelik ipuçları ve Azure SYNAPSE Analytics 'te adanmış SQL havuzları için imleçleri değiştirme.
 services: synapse-analytics
-author: XiaoyuMSFT
+author: MSTehrani
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 04/17/2018
-ms.author: xiaoyul
+ms.author: emtehran
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 25dad01a54b6ffe08656379340f58e0fe70ec666
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: 3477b3095414248afa9fbc7417ab707c94f35546
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85213423"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462731"
 ---
-# <a name="using-t-sql-loops-in-synapse-sql-pool"></a>SYNAPSE SQL havuzunda T-SQL döngülerini kullanma
+# <a name="using-t-sql-loops-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzları için T-SQL döngüleri kullanma
 
-Bu makalede, T-SQL döngüleri kullanılarak SQL havuzu çözüm geliştirme ve imleçleri değiştirme ipuçları yer almaktadır.
+Bu makalede, T-SQL döngüleri kullanılarak adanmış SQL havuzu çözümü geliştirme ve imleçleri değiştirme ipuçları yer almaktadır.
 
 ## <a name="purpose-of-while-loops"></a>WHILE döngülerinin amacı
 
-SYNAPSE SQL havuzu, sürekli olarak ekstre blokları yürütmeye yönelik [while](/sql/t-sql/language-elements/while-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) döngüsünü destekler. Bu WHILE döngüsü, belirtilen koşullar doğru olduğu sürece veya kod BREAK anahtar sözcüğünü kullanarak döngüyü özel olarak sonlandırana kadar devam eder.
+Azure 'daki adanmış SQL havuzları, sürekli olarak bildirim blokları yürütmeye yönelik [while](/sql/t-sql/language-elements/while-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) döngüsünü destekler. Bu WHILE döngüsü, belirtilen koşullar doğru olduğu sürece veya kod BREAK anahtar sözcüğünü kullanarak döngüyü özel olarak sonlandırana kadar devam eder.
 
 Döngüler SQL kodunda tanımlanan imleçleri değiştirmek için kullanışlıdır. Neyse ki SQL Code 'da yazılan neredeyse tüm imleçler hızlı ileri, salt okunurdur. Bu nedenle, döngüler değiştirmek için harika bir alternatiftir.
 
-## <a name="replacing-cursors-in-synapse-sql-pool"></a>SYNAPSE SQL havuzundaki imleçleri değiştirme
+## <a name="replacing-cursors-in-dedicated-sql-pool"></a>Adanmış SQL havuzundaki imleçleri değiştirme
 
 Bununla birlikte, önce baş olarak kullanmadan önce şu soruyu sormanız gerekir: "Bu imleç, küme tabanlı işlemleri kullanmak için yeniden yazılabilir mi?"
 

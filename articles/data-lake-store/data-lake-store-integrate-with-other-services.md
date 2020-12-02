@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 388c0db11c38f3dcdb9c4452b8d7283b2e811885
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 929853f4dbedca7034c8e2a51e6231651a2dd08f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108703"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461663"
 ---
 # <a name="integrating-azure-data-lake-storage-gen1-with-other-azure-services"></a>Azure Data Lake Storage 1. diğer Azure hizmetleriyle tümleştirme
 Azure Data Lake Storage 1., daha geniş bir senaryoyu etkinleştirmek için diğer Azure hizmetleriyle birlikte kullanılabilir. Aşağıdaki makalede Data Lake Storage 1. ile tümleştirilebilen hizmetler listelenmektedir.
@@ -54,7 +54,7 @@ Verileri kuruluş genelinde bulunabilir hale getirmek için Azure Veri Kataloğu
 SSIS ' de Data Lake Storage 1. bağlantı yöneticisini kullanarak bir SSIS paketini Data Lake Storage 1. bağlayabilirsiniz. Daha fazla bilgi için bkz. [SSIS ile Data Lake Storage 1. kullanma](/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager).
 
 ## <a name="use-data-lake-storage-gen1-with-azure-synapse-analytics"></a>Azure SYNAPSE Analytics ile Data Lake Storage 1. kullanma
-PolyBase 'i kullanarak Data Lake Storage 1. Azure SYNAPSE Analytics 'e (eski adıyla SQL veri ambarı) veri yükleyebilirsiniz. Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics ile Data Lake Storage 1. kullanma](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md).
+PolyBase 'i Data Lake Storage 1. Azure SYNAPSE Analytics 'e veri yüklemek için kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics ile Data Lake Storage 1. kullanma](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store.md).
 
 ## <a name="use-data-lake-storage-gen1-with-azure-event-hubs"></a>Azure Event Hubs ile Data Lake Storage 1. kullanma
 Azure Event Hubs tarafından alınan verileri arşivlemek ve yakalamak için Azure Data Lake Storage 1. kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure Event Hubs ile Data Lake Storage 1. kullanma](data-lake-store-archive-eventhub-capture.md).

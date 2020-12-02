@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: 2705e3d724530e879dd02346392f17fda274913a
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: bb28c517e353af6b8c1ee0cad788ff41b971918c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675334"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460883"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>Hava durumu ortaklarından Hava durumu verileri alın
 
@@ -96,16 +96,16 @@ Farmrets veri hub 'ında Hava durumu verilerini almaya başlamak için:
 
 3. Önceki adımda oluşturduğunuz/partner nesnesinin durumunu denetleyin. Durumu denetlemek için,/partner API 'sinde bir GET isteği yapın ve iş ortağı nesnesinin durumunu kontrol edin. Farmtts, iş ortağını başarıyla sağlar, durum **etkin** olarak ayarlanır.
 
-4. /JobType API 'sinde, bir GET isteği yapın. Daha önce oluşturduğunuz Hava durumu işlerini iş ortağı ek sürecinde denetleyin. Hava durumu işlerinde **ardışık düzen adı** alanı şu biçimdedir: **iş ortağı-name_partner-type_job-adı** .
+4. /JobType API 'sinde, bir GET isteği yapın. Daha önce oluşturduğunuz Hava durumu işlerini iş ortağı ek sürecinde denetleyin. Hava durumu işlerinde **ardışık düzen adı** alanı şu biçimdedir: **iş ortağı-name_partner-type_job-adı**.
 
       Artık Farmtts örneğinizin etkin bir hava durumu veri ortağı vardır. Belirli bir konum (Enlem ve Boylam) ve bir tarih aralığı için hava durumu verileri istemek üzere işleri çalıştırabilirsiniz. İş türleri, hava durumu işlerini çalıştırmak için gereken parametrelerin ayrıntılarına sahip olacaktır.
 
       Örneğin, DTN için aşağıdaki iş türleri oluşturulacaktır:
    
-      - **get_dtn_daily_observations** : bir konum ve zaman aralığı için günlük gözlemlerini alın.
-      - **get_dtn_daily_forecasts** : bir konum ve zaman aralığı için günlük tahminleri alın.
-      - **get_dtn_hourly_observations** : bir konum ve zaman aralığı için saatlik gözlemler alın.
-      - **get_dtn_hourly_forecasts** : bir konum ve zaman aralığı için saatlik tahminleri alın.
+      - **get_dtn_daily_observations**: bir konum ve zaman aralığı için günlük gözlemlerini alın.
+      - **get_dtn_daily_forecasts**: bir konum ve zaman aralığı için günlük tahminleri alın.
+      - **get_dtn_hourly_observations**: bir konum ve zaman aralığı için saatlik gözlemler alın.
+      - **get_dtn_hourly_forecasts**: bir konum ve zaman aralığı için saatlik tahminleri alın.
 
 6. İş türlerinin KIMLIĞINI ve parametrelerini bir yere unutmayın.
 
@@ -151,7 +151,7 @@ Bir Farmtts REST API kullanarak hava durumu verilerini sorgulamak için:
 
 1. Farmrets Datahub [Swagger](https://yourdatahub.azurewebsites.net/swagger)' de,/dalgalı Iş datalocation API 'sine gidin ve bir get isteği yapın. Yanıt, işin çalıştırıldığı konum (Enlem ve Boylam) için oluşturulan/dalgalı therdatalocation nesnelerini içerir. Nesnelerin **kimliği** ve **dalgalı veri modukapağını** bir yere dikkat edin.
 
-2. Daha önce yaptığınız gibi **dalgalı veri ModelId** için/dalgalı therdatamodel API 'SINDE bir get/{ID} isteği yapın. Hava durumu veri modeli, alınan hava durumu verileriyle ilgili tüm meta verileri ve ayrıntıları gösterir. Örneğin, hava durumu veri modeli nesnesinde, hava durumu ölçüsü, hava durumu bilgilerinin hangi türlerde ve birimlerde desteklenmekte olduğunu ayrıntılarıyla ayrıntılardır. Örneğin:
+2. Daha önce yaptığınız gibi **dalgalı veri ModelId** için/dalgalı therdatamodel API 'SINDE bir get/{ID} isteği yapın. Hava durumu veri modeli, alınan hava durumu verileriyle ilgili tüm meta verileri ve ayrıntıları gösterir. Örneğin, hava durumu veri modeli nesnesinde, hava durumu ölçüsü, hava durumu bilgilerinin hangi türlerde ve birimlerde desteklenmekte olduğunu ayrıntılarıyla ayrıntılardır. Örnek:
 
    ```json
    {
@@ -221,7 +221,7 @@ Yukarıdaki örnekte, yanıt iki zaman damgalarına ait verileri gösterir. Ayr�
 |     DockerDetails-GörüntüAdı         |          Docker görüntü adı. Örneğin, docker.io/mydockerimage (görüntü hub.docker.com) veya myazureacr.azurecr.io/mydockerimage (Azure Container Registry resim) ve benzeri. Hiçbir kayıt defteri sağlanmazsa varsayılan değer hub.docker.com ' dir.      |
 |          DockerDetails-ImageTag             |         Docker görüntüsünün etiket adı. Varsayılan değer "en son" dır.     |
 |  DockerDetails-kimlik bilgileri      |  Özel Docker 'a erişim için kimlik bilgileri. İş ortağı kimlik bilgilerini sağlar.   |
-|  DockerDetails-azureBatchVMDetails-batchVMSKU     |    Azure Batch VM SKU 'SU. Daha fazla bilgi için bkz. [tüm kullanılabilir Linux sanal makineleri](../../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json). <BR> <BR> Geçerli değerler şunlardır ' küçük ', ' Extrabüyük ', ' Large ', ' A8 ', ' A9 ', ' Medium ', ' a5 ', ' a6 ', ' a7 ', ' STANDARD_D1 ', ' STANDARD_D2 ', ' STANDARD_D3 ', ' STANDARD_D4 ', ' STANDARD_D11 ', ' STANDARD_D12 ', ' STANDARD_D13 ', ' STANDARD_D14 ', ' a10 ', ' a11 ', ' STANDARD_D1_V2 ', ' STANDARD_D2_V2 ', ' STANDARD_D3_V2 ', ' STANDARD_D4_V2 ', ' STANDARD_D11_V2 ', ' STANDARD_D12_V2 ', ' STANDARD_D13_V2 ', ' STANDARD_D14_V2 ', ' STANDARD_G1 ' , ' STANDARD_G5 ', ' STANDARD_D5_V2 ', ' BASIC_A1 ', ' BASIC_A2 ', ' BASIC_A3 ', ' BASIC_A4 ', ' STANDARD_A1 ', ' STANDARD_A2 ', ' STANDARD_A3 ', ' STANDARD_A4 ', ' STANDARD_A5 ', ' STANDARD_A6 ', ' STANDARD_A7 ', ' STANDARD_A8 ', ' STANDARD_A9 ', ' STANDARD_A10 ', ' STANDARD_A11 ', ' STANDARD_D15_V2 ', ' STANDARD_F1 ', ' STANDARD_F2 ', ' STANDARD_F4 ', ' STANDARD_F8 ', ' STANDARD_F16 ', ' STANDARD_NV6 ', ' STANDARD_NV12 ', ' STANDARD_NV24 ', ' STANDARD_NC6 ' , ' STANDARD_H8 ', ' STANDARD_H8m ', ' STANDARD_H16 ', ' STANDARD_H16m ', ' STANDARD_H16mr ', ' STANDARD_H16r ', ' STANDARD_A1_V2 ', ' STANDARD_A2_V2 ', ' STANDARD_A4_V2 ', ' STANDARD_A8_V2 ', ' STANDARD_A2m_V2 ', ' STANDARD_A4m_V2 ', ' STANDARD_A8m_V2 ', ' STANDARD_M64ms ', ' STANDARD_M128s ' ve ' STANDARD_D2_V3 '. *Varsayılan değer ' STANDARD_D2_V2 '.*  |
+|  DockerDetails-azureBatchVMDetails-batchVMSKU     |    Azure Batch VM SKU 'SU. Daha fazla bilgi için bkz. [tüm kullanılabilir Linux sanal makineleri](../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). <BR> <BR> Geçerli değerler şunlardır ' küçük ', ' Extrabüyük ', ' Large ', ' A8 ', ' A9 ', ' Medium ', ' a5 ', ' a6 ', ' a7 ', ' STANDARD_D1 ', ' STANDARD_D2 ', ' STANDARD_D3 ', ' STANDARD_D4 ', ' STANDARD_D11 ', ' STANDARD_D12 ', ' STANDARD_D13 ', ' STANDARD_D14 ', ' a10 ', ' a11 ', ' STANDARD_D1_V2 ', ' STANDARD_D2_V2 ', ' STANDARD_D3_V2 ', ' STANDARD_D4_V2 ', ' STANDARD_D11_V2 ', ' STANDARD_D12_V2 ', ' STANDARD_D13_V2 ', ' STANDARD_D14_V2 ', ' STANDARD_G1 ' , ' STANDARD_G5 ', ' STANDARD_D5_V2 ', ' BASIC_A1 ', ' BASIC_A2 ', ' BASIC_A3 ', ' BASIC_A4 ', ' STANDARD_A1 ', ' STANDARD_A2 ', ' STANDARD_A3 ', ' STANDARD_A4 ', ' STANDARD_A5 ', ' STANDARD_A6 ', ' STANDARD_A7 ', ' STANDARD_A8 ', ' STANDARD_A9 ', ' STANDARD_A10 ', ' STANDARD_A11 ', ' STANDARD_D15_V2 ', ' STANDARD_F1 ', ' STANDARD_F2 ', ' STANDARD_F4 ', ' STANDARD_F8 ', ' STANDARD_F16 ', ' STANDARD_NV6 ', ' STANDARD_NV12 ', ' STANDARD_NV24 ', ' STANDARD_NC6 ' , ' STANDARD_H8 ', ' STANDARD_H8m ', ' STANDARD_H16 ', ' STANDARD_H16m ', ' STANDARD_H16mr ', ' STANDARD_H16r ', ' STANDARD_A1_V2 ', ' STANDARD_A2_V2 ', ' STANDARD_A4_V2 ', ' STANDARD_A8_V2 ', ' STANDARD_A2m_V2 ', ' STANDARD_A4m_V2 ', ' STANDARD_A8m_V2 ', ' STANDARD_M64ms ', ' STANDARD_M128s ' ve ' STANDARD_D2_V3 '. *Varsayılan değer ' STANDARD_D2_V2 '.*  |
 |    DockerDetails-azureBatchVMDetails ile ayrılmış bilgisayar düğümleri   |  Toplu işlem havuzu başına adanmış bilgisayar düğümü sayısı. Varsayılan değer 1’dir. |
 |    DockerDetails-azureBatchVMDetails-nodeAgentSKUID          |    Azure Batch düğüm Aracısı SKU KIMLIĞI. Şu anda yalnızca "Batch. Node. Ubuntu 18,04" Batch düğüm Aracısı destekleniyor.    |
 | DockerDetails-partnerCredentials | Docker 'da iş ortağı API 'sini çağırma için kimlik bilgileri. İş ortağı, desteklenen yetkilendirme mekanizmasına bağlı olarak bu bilgileri sağlar; Örneğin, Kullanıcı adı ve parola veya API anahtarları. |

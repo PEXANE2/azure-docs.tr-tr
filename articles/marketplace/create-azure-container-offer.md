@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 76211e2aaf27fd28500bb539c94fa409b239e785
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: bcb334074d842fa5c35e4619f1c5d654405388a7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95759045"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459574"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Azure Market'te Azure kapsayıcısı teklifi oluşturma
 
@@ -91,7 +91,7 @@ Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
 Bu sayfa, teklifinizi Market 'te gruplandırmak için kullanılan kategorileri ve teklifinizi destekleyen yasal sözleşmeleri tanımlamanızı sağlar.
 
-#### <a name="category"></a>Kategori
+#### <a name="category"></a>Category
 
 Teklifinizi uygun Market arama alanlarında yerleştirmek için kategoriler ve alt kategoriler ' i seçin. Teklifinizin teklif açıklamasında bu kategorileri nasıl desteklediğini açıkladığınızdan emin olun. Seçin:
 
@@ -133,7 +133,7 @@ Bu sayfa, ticari Market 'te görüntülenen teklif ayrıntılarını tanımlaman
 > [!NOTE]
 > Teklif açıklaması, "Bu uygulama yalnızca [Ingilizce olmayan dil] ' de kullanılabilir" ifadesi ile başlıyorsa, teklif ayrıntılarının Ingilizce olması gerekmez. Ayrıca, teklif listesi ayrıntılarından farklı bir dilde içerik sunmak için faydalı bir bağlantı sağlamak da yararlı olabilir.
 
-### <a name="name"></a>Name
+### <a name="name"></a>Ad
 
 Buraya girdiğiniz ad teklifinizin başlığı olarak görüntülenir. Bu alan, teklifi oluştururken **teklif diğer adı** kutusuna girdiğiniz metin ile önceden doldurulur. Bu adı daha sonra değiştirebilirsiniz.
 
@@ -291,7 +291,7 @@ Bu sekme, planın kullanılabildiği bulutu seçmenize olanak sağlar. Bu sekmed
 
 Azure Container teklifleri için tüm planlar otomatik olarak **Azure genel**'de kullanıma sunulmuştur.  Planınız, ticari Market kullanan tüm genel Azure bölgelerinde bulunan müşteriler tarafından kullanılabilir. Ayrıntılar için bkz. [coğrafi kullanılabilirlik ve para birimi desteği](marketplace-geo-availability-currencies.md).
 
-Çözümünüzü burada görünmesini sağlamak için [Azure Kamu](/azure/azure-government/documentation-government-welcome.md) seçeneğini belirleyin. Bu, ABD Federal, eyalet ve yerel ya da üç devlet kurumlarının yanı sıra onlara hizmeti sunmaya uygun iş ortakları için denetimli erişime sahip bir kamu topluluk bulutuna sahiptir. Yayımcı olarak, bu bulut topluluğu için tüm uyumluluk denetimleri, güvenlik ölçüleri ve en iyi uygulamalardan siz sorumlusunuz. Azure Kamu fiziksel olarak yalıtılmış veri merkezleri ve ağlar (yalnızca ABD 'de bulunur) kullanır. Azure Kamu 'da [yayımlamadan](/azure/azure-government/documentation-government-manage-marketplace-partners.md) önce, sonuçlar farklı olabileceğinden çözümünüzü test edin ve onaylayın. Çözümünüzü oluşturmak ve test etmek için [Microsoft Azure Kamu deneme](https://azure.microsoft.com/global-infrastructure/government/request/)sürümünden bir deneme hesabı isteyin.
+Çözümünüzü burada görünmesini sağlamak için [Azure Kamu](../azure-government/documentation-government-welcome.md) seçeneğini belirleyin. Bu, ABD Federal, eyalet ve yerel ya da üç devlet kurumlarının yanı sıra onlara hizmeti sunmaya uygun iş ortakları için denetimli erişime sahip bir kamu topluluk bulutuna sahiptir. Yayımcı olarak, bu bulut topluluğu için tüm uyumluluk denetimleri, güvenlik ölçüleri ve en iyi uygulamalardan siz sorumlusunuz. Azure Kamu fiziksel olarak yalıtılmış veri merkezleri ve ağlar (yalnızca ABD 'de bulunur) kullanır. Azure Kamu 'da [yayımlamadan](../azure-government/documentation-government-manage-marketplace-partners.md) önce, sonuçlar farklı olabileceğinden çözümünüzü test edin ve onaylayın. Çözümünüzü oluşturmak ve test etmek için [Microsoft Azure Kamu deneme](https://azure.microsoft.com/global-infrastructure/government/request/)sürümünden bir deneme hesabı isteyin.
 
 > [!NOTE]
 > Planınız yayımlandıktan ve belirli bir bölgede kullanılabilir olduktan sonra bu bölgeyi kaldıramazsınız.
@@ -357,11 +357,11 @@ Teklif yayımlandıktan sonra, kapsayıcı görüntünüz belirli bir ortak kaps
 
 **Azure ABONELIK kimliği** – kullanım rapor edildiği ve kapsayıcı görüntünüzü içeren Azure Container Registry için hizmetlerin FATURALANDıRıLAN abonelik kimliğini belirtin. Bu KIMLIĞI, Azure portal [abonelikler sayfasında](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) bulabilirsiniz.
 
-**Azure Kaynak grubu adı** – kapsayıcı yansımanıza Azure Container Registry içeren [kaynak grubu](/azure/azure-resource-manager/management/manage-resource-groups-portal.md) adını belirtin. Kaynak grubuna abonelik KIMLIĞINDE erişilebilir olması gerekir (yukarıda). Adı Azure portal [kaynak grupları](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups) sayfasında bulabilirsiniz.
+**Azure Kaynak grubu adı** – kapsayıcı yansımanıza Azure Container Registry içeren [kaynak grubu](../azure-resource-manager/management/manage-resource-groups-portal.md) adını belirtin. Kaynak grubuna abonelik KIMLIĞINDE erişilebilir olması gerekir (yukarıda). Adı Azure portal [kaynak grupları](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups) sayfasında bulabilirsiniz.
 
-**Azure Container Registry Name** : kapsayıcı yansımanıza sahip [Azure Container Registry](/azure/container-registry/container-registry-intro.md) adını belirtin. Kapsayıcı kayıt defteri, daha önce belirttiğiniz Azure Kaynak grubunda olmalıdır. Tam oturum açma sunucusu adını değil, yalnızca kayıt defteri adını dahil edin. Adından **azurecr.io** attığınızdan emin olun. Kayıt defteri adını Azure portal [kapsayıcı kayıt defterleri sayfasında](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries) bulabilirsiniz.
+**Azure Container Registry Name** : kapsayıcı yansımanıza sahip [Azure Container Registry](../container-registry/container-registry-intro.md) adını belirtin. Kapsayıcı kayıt defteri, daha önce belirttiğiniz Azure Kaynak grubunda olmalıdır. Tam oturum açma sunucusu adını değil, yalnızca kayıt defteri adını dahil edin. Adından **azurecr.io** attığınızdan emin olun. Kayıt defteri adını Azure portal [kapsayıcı kayıt defterleri sayfasında](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries) bulabilirsiniz.
 
-**Azure Container Registry Için Yönetici Kullanıcı adı** -kapsayıcı yansımanıza sahip Azure Container Registry bağlantılı [Yönetici Kullanıcı adı](/azure/container-registry/container-registry-authentication.md#admin-account)belirtin. Şirketinizin kayıt defterine erişiminin olduğundan emin olmak için Kullanıcı adı ve parola gereklidir. Yönetici Kullanıcı adını ve parolasını almak için, Azure Command-Line arabirimi (CLı) kullanarak **yönetici özellikli** özelliği **true** olarak ayarlayın. **Yönetici kullanıcıyı** Azure Portal ' de **etkinleştirmek** üzere isteğe bağlı olarak ayarlayabilirsiniz.
+**Azure Container Registry Için Yönetici Kullanıcı adı** -kapsayıcı yansımanıza sahip Azure Container Registry bağlantılı [Yönetici Kullanıcı adı](../container-registry/container-registry-authentication.md#admin-account)belirtin. Şirketinizin kayıt defterine erişiminin olduğundan emin olmak için Kullanıcı adı ve parola gereklidir. Yönetici Kullanıcı adını ve parolasını almak için, Azure Command-Line arabirimi (CLı) kullanarak **yönetici özellikli** özelliği **true** olarak ayarlayın. **Yönetici kullanıcıyı** Azure Portal ' de **etkinleştirmek** üzere isteğe bağlı olarak ayarlayabilirsiniz.
 
  :::image type="content" source="./partner-center-portal/media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="Kapsayıcı kayıt defterini Güncelleştir iletişim kutusunu gösterir.":::
 
@@ -369,7 +369,7 @@ Teklif yayımlandıktan sonra, kapsayıcı görüntünüz belirli bir ortak kaps
 
 :::image type="content" source="./partner-center-portal/media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="Erişim tuşu menüsünü gösterir.":::
 
-**Azure Container Registry Içinde Depo adı**. Yansımanıza sahip Azure Container Registry deposunun adını sağlayın. Görüntüyü kayıt defterine gönderdiğinizde deponun adını ekleyin. Deponun adını [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **depoları** sayfasına giderek bulabilirsiniz. Daha fazla bilgi için bkz. [Azure Portal kapsayıcı kayıt defteri depolarını Görüntüleme](/azure/container-registry/container-registry-repositories.md).
+**Azure Container Registry Içinde Depo adı**. Yansımanıza sahip Azure Container Registry deposunun adını sağlayın. Görüntüyü kayıt defterine gönderdiğinizde deponun adını ekleyin. Deponun adını [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **depoları** sayfasına giderek bulabilirsiniz. Daha fazla bilgi için bkz. [Azure Portal kapsayıcı kayıt defteri depolarını Görüntüleme](../container-registry/container-registry-repositories.md).
 
 > [!NOTE]
 > Ad ayarlandıktan sonra değiştirilemez. Hesabınızdaki her teklif için benzersiz bir ad kullanın.

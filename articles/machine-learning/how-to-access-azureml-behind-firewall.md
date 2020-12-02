@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/18/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: cf89532fc41b10d6fbcba57963ebe30a361a2e6f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 8560acd9c5a11004c5144441d395863c8b85edba
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95012982"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461394"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Azure Machine Learning için bir güvenlik duvarının arkasındaki çalışma alanını kullan
 
@@ -34,7 +34,7 @@ Bu UDRs, Batch hizmetinin görev zamanlama için işlem düğümleriyle iletişi
 
 * [Azure IP aralıklarını ve hizmet etiketlerini](https://www.microsoft.com/download/details.aspx?id=56519) indirin ve dosyada `BatchNodeManagement.<region>` ve `AzureMachineLearning.<region>` Azure bölgeniz olduğu yerde arama yapın `<region>` .
 
-* Bilgileri indirmek için [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) 'yi kullanın. Aşağıdaki örnek, IP adresi bilgilerini indirir ve Doğu ABD 2 bölgesinin bilgilerini filtreler:
+* Bilgileri indirmek için [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) 'yi kullanın. Aşağıdaki örnek, IP adresi bilgilerini indirir ve Doğu ABD 2 bölgesinin bilgilerini filtreler:
 
     ```azurecli-interactive
     az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
@@ -111,7 +111,7 @@ Bu bölümdeki konaklar Microsoft 'a aittir ve çalışma alanınızın düzgün
 | **Şunun için gerekli:** | **Azure genel** | **Azure Devlet Kurumları** | **Azure China 21Vianet** |
 | ----- | ----- | ----- | ----- |
 | Azure Active Directory | login.microsoftonline.com | login.microsoftonline.us | login.chinacloudapi.cn |
-| Azure portal | management.azure.com | management.azure.us | management.azure.cn |
+| Azure portalı | management.azure.com | management.azure.us | management.azure.cn |
 
 **Azure Machine Learning Konakları**
 

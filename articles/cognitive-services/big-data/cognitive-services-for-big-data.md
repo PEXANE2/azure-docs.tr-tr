@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: overview
 ms.date: 07/09/2020
 ms.author: marhamil
-ms.openlocfilehash: 1b08925db12edffdaf5c85f1fa6f5934a412d81f
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: aaade03edbbb109656fb7371a063cdc2512c5a20
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363315"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461620"
 ---
 # <a name="azure-cognitive-services-for-big-data"></a>Büyük veriler için Azure bilişsel hizmetler
 
@@ -36,7 +36,7 @@ API 'Ler ve SDK 'Lar aracılığıyla erişilen bilişsel [Hizmetler](../index.y
 |Hizmet Adı|Hizmet Açıklaması|
 |:-----------|:------------------|
 |[Görüntü İşleme](../computer-vision/index.yml "Görüntü İşleme")| Görüntü İşleme Hizmeti, görüntüleri işlemeye ve bilgi döndürmeye yönelik gelişmiş algoritmalara erişmenizi sağlar. |
-|[Yüz Tanıma](../face/index.yml "Yüz")| Yüz tanıma hizmeti, yüz öznitelik algılamayı ve tanımayı etkinleştirerek gelişmiş yüz algoritmalarına erişim sağlar. |
+|[Yüz Tanıma](../face/index.yml "Yüz Tanıma")| Yüz tanıma hizmeti, yüz öznitelik algılamayı ve tanımayı etkinleştirerek gelişmiş yüz algoritmalarına erişim sağlar. |
 
 ### <a name="speech"></a>Konuşma
 
@@ -84,11 +84,11 @@ Büyük veriler için bilişsel hizmetler Apache Spark gerektirir. Büyük veril
 
 ### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-[Azure SYNAPSE Analytics](/azure/databricks/data/data-sources/azure/synapse-analytics) (eskı adıyla SQL veri ambarı), büyük ölçüde paralel işleme kullanan kurumsal veri ambarı olarak adlandırılmıştır. SYNAPSE Analytics ile, petabaytlarca veri genelinde karmaşık sorguları hızlı bir şekilde çalıştırabilirsiniz. Azure SYNAPSE Analytics, bir sezgisel Jupyter Notebook arabirimiyle Spark Işleri çalıştırmak için yönetilen Spark havuzları sağlar.
+[Azure SYNAPSE Analytics](/azure/databricks/data/data-sources/azure/synapse-analytics) , büyük ölçüde paralel işleme kullanan kurumsal veri ambarı olarak bulunur. SYNAPSE Analytics ile, petabaytlarca veri genelinde karmaşık sorguları hızlı bir şekilde çalıştırabilirsiniz. Azure SYNAPSE Analytics, bir sezgisel Jupyter Notebook arabirimiyle Spark Işleri çalıştırmak için yönetilen Spark havuzları sağlar.
 
 ### <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
-[Azure Kubernetes hizmeti (AKS)](../../aks/index.yml) , Docker kapsayıcılarını ve dağıtılmış uygulamaları büyük ölçekli ölçekte düzenler. AKS, Azure 'da Kubernetes kullanımını kolaylaştıran, yönetilen bir Kubernetes sunumudur. Kubernetes bilişsel hizmet ölçeği, gecikme süresi ve ağ üzerinde ayrıntılı denetim sağlayabilir. Ancak, Apache Spark hakkında bilginiz varsa Azure Databricks veya SYNAPSE analizlerini kullanmanızı öneririz.
+[Azure Kubernetes hizmeti (AKS)](../../aks/index.yml) , Docker kapsayıcılarını ve dağıtılmış uygulamaları büyük ölçekli ölçekte düzenler. AKS, Azure 'da Kubernetes kullanımını kolaylaştıran, yönetilen bir Kubernetes sunumudur. Kubernetes bilişsel hizmet ölçeği, gecikme süresi ve ağ üzerinde ayrıntılı denetim sağlayabilir. Ancak, Apache Spark hakkında bilginiz varsa Azure Databricks veya Azure SYNAPSE Analytics kullanmanızı öneririz.
 
 ### <a name="data-connectors"></a>Veri bağlayıcıları
 

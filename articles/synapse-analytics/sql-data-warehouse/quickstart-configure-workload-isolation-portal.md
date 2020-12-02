@@ -1,6 +1,6 @@
 ---
 title: 'Hızlı başlangıç: iş yükü yalıtımını yapılandırma-Portal'
-description: İş yükü yalıtımını yapılandırmak için Azure portal kullanın.
+description: Adanmış SQL havuzu için iş yükü yalıtımını yapılandırmak üzere Azure portal kullanın.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 05/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 30862a0c16995e143df72f2a243419819941f54e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 302249b7d8490e43b841116c52500e686626433d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85213049"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460601"
 ---
-# <a name="quickstart-configure-synapse-sql-pool-workload-isolation-using-a-workload-group-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal bir iş yükü grubu kullanarak SYNAPSE SQL havuzu iş yükü yalıtımını yapılandırma
+# <a name="quickstart-configure-dedicated-sql-pool-workload-isolation-using-a-workload-group-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal bir iş yükü grubunu kullanarak adanmış SQL havuzu iş yükü yalıtımını yapılandırma
 
 Bu hızlı başlangıçta, kaynak ayırma için bir iş yükü grubu oluşturarak [iş yükü yalıtımını](sql-data-warehouse-workload-isolation.md) yapılandıracaksınız.  Bu öğreticinin amaçları doğrultusunda, çağıran veri yükleme için iş yükü grubunu oluşturacağız `DataLoads` . İş yükü grubu, sistem kaynaklarının %20 ' sini ayıracaktır.  Veri yükleri için %20 yalıtımıyla, bunlar SLA 'Lara vurmasına izin veren garantili kaynaklardır.  İş yükü grubunu oluşturduktan sonra, bu iş yükü grubuna sorgular atamak için [bir iş yükü Sınıflandırıcısı oluşturun](quickstart-create-a-workload-classifier-portal.md) .
 
@@ -31,32 +31,32 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 [Azure portalında](https://portal.azure.com/) oturum açın.
 
 > [!NOTE]
-> Azure SYNAPSE Analytics 'te bir SQL havuzu örneği oluşturmak, yeni bir faturalanabilir hizmetle sonuçlanabilir.  Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+> Azure SYNAPSE Analytics 'te adanmış bir SQL havuzu örneği oluşturmak, yeni bir faturalanabilir hizmetle sonuçlanabilir.  Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu hızlı başlangıç, SYNAPSE SQL 'de zaten bir SQL havuzu örneğiniz olduğunu ve DENETIM VERITABANı izinlerine sahip olduğunuzu varsayar. Gerekiyorsa **mySampleDataWarehouse** adlı bir veri ambarı oluşturmak için [Oluşturma ve Bağlanma - portal](create-data-warehouse-portal.md) bölümünü kullanabilirsiniz.
+Bu hızlı başlangıç, SYNAPSE SQL 'de zaten adanmış bir SQL havuzu örneğiniz olduğunu ve DENETIM VERITABANı izinlerine sahip olduğunuzu varsayar. Bir tane oluşturmanız gerekiyorsa, **Mysampledatawarehouse** adlı bir veri ambarı oluşturmak Için [hızlı başlangıç: adanmış SQL havuzu oluşturma-Portal](../quickstart-create-sql-pool-portal.md) ' ı kullanın.
 
 >[!IMPORTANT] 
->İş yükü yönetimini yapılandırmak için SQL havuzunuzun çevrimiçi olması gerekir. 
+>İş yükü yönetimini yapılandırmak için adanmış SQL havuzunuzun çevrimiçi olması gerekir. 
 
 ## <a name="configure-workload-isolation"></a>İş yükü yalıtımını yapılandırma
-SQL havuzu kaynakları, iş yükü grupları oluşturularak belirli iş yükleri için yalıtılabilir ve ayrılabilir.  İş yükü gruplarının iş yükünüzü yönetme konusunda nasıl yardımcı olduğunu öğrenmek için [Iş yükü yalıtımı](sql-data-warehouse-workload-isolation.md) kavram belgelerine bakın.  [Oluşturma ve bağlanma-Portal](create-data-warehouse-portal.md) hızlı başlangıcı, **mysampledatawarehouse** oluşturdu ve 400 dwus ile başlatıldı. Aşağıdaki adımlarda, **Mysampledatawarehouse**içinde bir iş yükü grubu oluşturulur.
+
+Adanmış SQL havuzu kaynakları, iş yükü grupları oluşturularak belirli iş yükleri için yalıtılabilir ve ayrılabilir.  İş yükü gruplarının iş yükünüzü yönetme konusunda nasıl yardımcı olduğunu öğrenmek için [Iş yükü yalıtımı](sql-data-warehouse-workload-isolation.md) kavram belgelerine bakın.  [Oluşturma ve bağlanma-Portal](create-data-warehouse-portal.md) hızlı başlangıcı **mysampledatawarehouse** oluşturdu ve DW100c adresinde başlatıldı. Aşağıdaki adımlarda, **Mysampledatawarehouse** içinde bir iş yükü grubu oluşturulur.
 
 %20 yalıtımına sahip bir iş yükü grubu oluşturmak için:
-1.  Azure portal sol sayfasında **Azure SYNAPSE Analytics (eski ADıYLA SQL DW)** seçeneğine tıklayın.
-2.  **Azure SYNAPSE Analytics (eski ADıYLA SQL DW)** sayfasından **mysampledatawarehouse** öğesini seçin. SQL Havuzu açılır.
-3.  **Iş yükü yönetimi**' ne tıklayın.
-4.  **Yeni iş yükü grubu**' na tıklayın.
-5.  **Özel ' e**tıklayın.
+1.  **Mysampledatawarehouse** adanmış SQL havuzu sayfanıza gidin.
+1.  **Iş yükü yönetimi**' ni seçin.
+1.  **Yeni iş yükü grubu**' nu seçin.
+1.  **Özel**' i seçin.
 
     ![Özel 'e tıklayın](./media/quickstart-configure-workload-isolation-portal/create-wg.png)
 
-6.  `DataLoads` **İş yükü grubu**için girin.
-7.  `20` **Min. resources**için girin%.
+6.  `DataLoads` **İş yükü grubu** için girin.
+7.  `20` **Min. resources** için girin%.
 8.  `5` **Istek başına min. resources%** için girin.
 9.  `100` **Cap kaynakları için%** girin.
-10.   **Kaydet**’e tıklayın.
+10. **Kaydet** girin.
 
    ![Kaydet’e tıklayın.](./media/quickstart-configure-workload-isolation-portal/configure-wg.png)
 
@@ -83,17 +83,13 @@ Veri ambarı birimleri ve veri Ambarınızda depolanan veriler için ücret öde
 
 Kaynakları temizlemek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com)oturum açın, veri Ambarınızda öğesini seçin.
+1. [Azure Portal](https://portal.azure.com)oturum açın, adanmış SQL havuzunuzu seçin.
 
     ![Kaynakları temizleme](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
 2. İşlem duraklatmak için **Duraklat** düğmesini seçin. Veri ambarı duraklatıldığında, bir **Başlat** düğmesi görürsünüz.  İşlem işlemini sürdürmesini sağlamak için **Başlat**' ı seçin.
 
 3. İşlem veya depolama için ücretlendirilmemek üzere veri ambarını kaldırmak için **Sil**' i seçin.
-
-4. Oluşturduğunuz SQL Server 'ı kaldırmak için önceki görüntüde **sqlpoolservername.Database.Windows.net** ' ı seçin ve **Sil**' i seçin.  Sunucuyu silmek sunucuyla ilişkili tüm veritabanlarını da sileceğinden bu silme işlemini gerçekleştirirken dikkatli olun.
-
-5. Kaynak grubunu kaldırmak için **Myresourcegroup**' ı seçin ve **kaynak grubunu sil**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

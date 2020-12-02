@@ -8,14 +8,14 @@ ms.subservice: security
 ms.date: 10/16/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4100640fd619d9d971ac1c7083eedef8e2125fc3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 5506a54193efc813927663533ddfd89be3ddf40a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738269"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461299"
 ---
-# <a name="azure-synapse-workspace-managed-identity-preview"></a>Azure SYNAPSE çalışma alanı yönetilen kimliği (Önizleme)
+# <a name="azure-synapse-workspace-managed-identity"></a>Azure Synapse çalışma alanı yönetilen kimliği
 
 Bu makalede, Azure SYNAPSE çalışma alanında yönetilen kimlik hakkında bilgi edineceksiniz.
 
@@ -25,9 +25,9 @@ Azure kaynakları için yönetilen kimlik Azure Active Directory bir özelliktir
 
 Azure kaynakları için Yönetilen kimlikler, daha önce Yönetilen Hizmet Kimliği (MSI) olarak bilinen hizmetin yeni adıdır. Daha fazla bilgi için bkz. [Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
 
-## <a name="azure-synapse-workspace-managed-identity"></a>Azure SYNAPSE çalışma alanı yönetilen kimliği
+## <a name="azure-synapse-workspace-managed-identity"></a>Azure Synapse çalışma alanı yönetilen kimliği
 
-Çalışma alanını oluştururken, Azure SYNAPSE çalışma alanınız için sistem tarafından atanan bir yönetilen kimlik oluşturulur.
+Çalışma alanını oluşturduğunuzda Azure Synapse çalışma alanınız için Sistem tarafından atanan bir yönetilen kimlik oluşturulur.
 
 >[!NOTE]
 >Bu çalışma alanı yönetilen kimliği, bu belgenin geri kalanı aracılığıyla yönetilen kimlik olarak anılacaktır.
@@ -48,7 +48,7 @@ Yönetilen kimlik bilgilerini Azure SYNAPSE Studio 'dan yönetilen kimlik doğru
 
 ![Bağlı hizmet oluşturma 1](./media/synapse-workspace-managed-identity/workspace-managed-identity-2.png)
 
-**Yeni bağlı hizmet** penceresinde *Azure Data Lake Storage 2.* yazın. Aşağıdaki listeden **Azure Data Lake Storage 2.** kaynak türünü seçin ve **devam** ' ı seçin.
+**Yeni bağlı hizmet** penceresinde *Azure Data Lake Storage 2.* yazın. Aşağıdaki listeden **Azure Data Lake Storage 2.** kaynak türünü seçin ve **devam**' ı seçin.
 
 ![Bağlı hizmet oluşturma 2](./media/synapse-workspace-managed-identity/workspace-managed-identity-3.png)
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: bb24c04681b142aaa1c80738090afe2a13949495
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 5ea820af6d5258b9a98856c9d5243a84d32d931f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96014557"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461671"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>SQL için Azure Defender 'a giriş
 
@@ -25,8 +25,8 @@ SQL için Azure Defender, Azure Güvenlik Merkezi 'nin [veri güvenlik paketini]
 |----|:----|
 |Yayın durumu:|**Azure SQL veritabanı sunucuları Için Azure Defender** -genel kullanıma sunuldu (GA)<br>**MAKINELERDE SQL Server 'lar Için Azure Defender** -Önizleme<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Fiyat|**SQL Için Azure Defender 'ı** oluşturan iki plan, [fiyatlandırma sayfasında](security-center-pricing.md) gösterildiği gibi faturalandırılır|
-|Korumalı SQL sürümleri:|Azure sanal makineler üzerinde SQL- [Windows](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) ve [Linux](../azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md)<br>[Arc ETKIN SQL Server 'lar](https://docs.microsoft.com/sql/sql-server/azure-arc/overview) (ŞIRKET içi SQL Server 'lar dahil)<br>Azure SQL [tek veritabanları](../azure-sql/database/single-database-overview.md) ve [elastik havuzlar](../azure-sql/database/elastic-pool-overview.md)<br>[Azure SQL Yönetilen Örnek](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Azure SYNAPSE Analytics (eski adıyla SQL DW) adanmış SQL havuzu](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse)|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Çin gov, diğer gov|
+|Korumalı SQL sürümleri:|Azure sanal makineler üzerinde SQL- [Windows](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) ve [Linux](../azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md)<br>[Arc ETKIN SQL Server 'lar](https://docs.microsoft.com/sql/sql-server/azure-arc/overview) (ŞIRKET içi SQL Server 'lar dahil)<br>Azure SQL [tek veritabanları](../azure-sql/database/single-database-overview.md) ve [elastik havuzlar](../azure-sql/database/elastic-pool-overview.md)<br>[Azure SQL Yönetilen Örnek](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)<br>[Azure SYNAPSE Analytics adanmış SQL havuzu](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)|
+|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Evet](./media/icons/yes-icon.png) US Gov<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov|
 |||
 
 ## <a name="what-does-azure-defender-for-sql-protect"></a>SQL için Azure Defender neleri korur?
@@ -36,7 +36,7 @@ SQL için Azure Defender, Azure Güvenlik Merkezi 'nin [veri güvenlik paketini]
 - **Azure SQL veritabanı sunucuları Için Azure Defender** şunları korur:
   - [Azure SQL Veritabanı](../azure-sql/database/sql-database-paas-overview.md)
   - [Azure SQL Yönetilen Örnek](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)
-  - [Azure 'da adanmış SQL havuzu SYNAPSE](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse)
+  - [Azure 'da adanmış SQL havuzu SYNAPSE](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
 - **MAKINELERDEKI SQL sunucuları Için Azure Defender (Önizleme)** , Azure Native SQL Server 'larınıza yönelik korumalar genişleterek karma ortamları tamamen destekler ve Azure, diğer bulut ortamlarında ve hatta şirket içi MAKINELERDE barındırılan SQL sunucularını (desteklenen tüm sürümleri) korur
 

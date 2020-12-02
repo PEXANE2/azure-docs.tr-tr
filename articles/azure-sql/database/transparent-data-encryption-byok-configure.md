@@ -12,17 +12,17 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 40572d50f7653539758ff892019e7e65b0ffa6dd
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: b4480f3d28cb89165a6ba3c5b26b10b1aba9765c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96324899"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461846"
 ---
 # <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell ve Azure CLı: Saydam Veri Şifrelemesi Azure Key Vault müşteri tarafından yönetilen anahtarla etkinleştirin
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Bu makalede, Azure SQL veritabanı veya Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) Azure Key Vault Saydam Veri Şifrelemesi (TDE) için bir anahtarın nasıl kullanılacağı açıklanmaktadır. TDE Azure Key Vault tümleştirme-Kendi Anahtarını Getir (BYOK) desteği hakkında daha fazla bilgi edinmek için, [Azure Key Vault 'de müşteri tarafından yönetilen anahtarlarla TDE](transparent-data-encryption-byok-overview.md)sayfasını ziyaret edin.
+Bu makalede, Azure SQL veritabanı veya Azure SYNAPSE Analytics 'te Saydam Veri Şifrelemesi (TDE) için Azure Key Vault bir anahtarın nasıl kullanılacağı açıklanmaktadır. TDE Azure Key Vault tümleştirme-Kendi Anahtarını Getir (BYOK) desteği hakkında daha fazla bilgi edinmek için, [Azure Key Vault 'de müşteri tarafından yönetilen anahtarlarla TDE](transparent-data-encryption-byok-overview.md)sayfasını ziyaret edin.
 
 > [!NOTE] 
 > Azure SQL artık, yönetilen bir HSM 'de TDE koruyucusu olarak depolanan bir RSA anahtarının kullanılmasını desteklemektedir. Bu özellik **genel önizlemede**. Azure Key Vault yönetilen HSM, FIPS 140-2 düzey 3 tarafından doğrulanan HSM 'leri kullanarak bulut uygulamalarınızın şifreleme anahtarlarını korumanıza olanak sağlayan, tam olarak yönetilen, yüksek oranda kullanılabilir, tek kiracılı ve standartlara uygun bir bulut hizmetidir. [Yönetilen HSM](../../key-vault/managed-hsm/index.yml)'ler hakkında daha fazla bilgi edinin.

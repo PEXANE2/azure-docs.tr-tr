@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: de0224c51debe4d0203400b55721208ce7093649
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 05f336af62bc0869249d5b32700ea3515ac5994f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636298"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459709"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Office 365 ' den veri yükleme
 
@@ -34,13 +34,13 @@ Bu makalede, _Office 365 ' de Azure Blob depolama alanına veri yükleme_ Data F
       
    ![Yeni veri fabrikası sayfası](./media/load-office-365-data/new-azure-data-factory.png)
  
-    * **Ad** : Azure Data Factory 'niz için genel olarak benzersiz bir ad girin. "Data Factory Name *LoadFromOffice365Demo* kullanılamıyor" hatasını alırsanız Veri Fabrikası için farklı bir ad girin. Örneğin _**, Name**_**LoadFromOffice365Demo** adını kullanabilirsiniz. Data Factory 'yi yeniden oluşturmayı deneyin. Data Factory yapıtlarını adlandırma kuralları için bkz. [Data Factory adlandırma kuralları](naming-rules.md).
-    * **Abonelik** : veri fabrikasının oluşturulacağı Azure aboneliğinizi seçin. 
-    * **Kaynak grubu** : açılan listeden var olan bir kaynak grubunu seçin veya **Yeni oluştur** seçeneğini belirleyin ve bir kaynak grubunun adını girin. Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).  
-    * **Sürüm** : **V2** 'yi seçin.
-    * **Konum** : veri fabrikasının konumunu seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Data Factory tarafından kullanılan veri depoları diğer konumlarda ve bölgelerde olabilir. Bu veri depoları Azure Data Lake Store, Azure depolama, Azure SQL veritabanı vb. içerir.
+    * **Ad**: Azure Data Factory 'niz için genel olarak benzersiz bir ad girin. "Data Factory Name *LoadFromOffice365Demo* kullanılamıyor" hatasını alırsanız Veri Fabrikası için farklı bir ad girin. Örneğin _**, Name**_**LoadFromOffice365Demo** adını kullanabilirsiniz. Data Factory 'yi yeniden oluşturmayı deneyin. Data Factory yapıtlarını adlandırma kuralları için bkz. [Data Factory adlandırma kuralları](naming-rules.md).
+    * **Abonelik**: veri fabrikasının oluşturulacağı Azure aboneliğinizi seçin. 
+    * **Kaynak grubu**: açılan listeden var olan bir kaynak grubunu seçin veya **Yeni oluştur** seçeneğini belirleyin ve bir kaynak grubunun adını girin. Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).  
+    * **Sürüm**: **V2**'yi seçin.
+    * **Konum**: veri fabrikasının konumunu seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Data Factory tarafından kullanılan veri depoları diğer konumlarda ve bölgelerde olabilir. Bu veri depoları Azure Data Lake Store, Azure depolama, Azure SQL veritabanı vb. içerir.
 
-3. **Oluştur** ’u seçin.
+3. **Oluştur**’u seçin.
 4. Oluşturma işlemi tamamlandıktan sonra, veri fabrikanıza gidin. Aşağıdaki görüntüde gösterildiği gibi **Data Factory** giriş sayfasını görürsünüz:
    
    ![Data factory giriş sayfası](./media/load-office-365-data/data-factory-home-page.png)
@@ -49,7 +49,7 @@ Bu makalede, _Office 365 ' de Azure Blob depolama alanına veri yükleme_ Data F
 
 ## <a name="create-a-pipeline"></a>İşlem hattı oluşturma
 
-1. "Başlarken" sayfasında işlem **hattı oluştur** ' u seçin.
+1. "Başlarken" sayfasında işlem **hattı oluştur**' u seçin.
  
     ![İşlem hattı oluşturma](./media/load-office-365-data/create-pipeline-entry.png)
 
@@ -61,7 +61,7 @@ Bu makalede, _Office 365 ' de Azure Blob depolama alanına veri yükleme_ Data F
 
 1. İşlem hattı > **kaynak sekmesine** gidin ve kaynak veri kümesi oluşturmak Için **+ Yeni** ' ye tıklayın. 
 
-2. Yeni veri kümesi penceresinde **Office 365** ' i seçin ve ardından **devam** ' ı seçin.
+2. Yeni veri kümesi penceresinde **Office 365**' i seçin ve ardından **devam**' ı seçin.
  
 3. Şimdi kopyalama etkinliği yapılandırma sekmesindedir. Veri yapılandırmasına devam etmek için Office 365 veri kümesinin yanındaki **Düzenle** düğmesine tıklayın.
 
@@ -69,13 +69,13 @@ Bu makalede, _Office 365 ' de Azure Blob depolama alanına veri yükleme_ Data F
  
 4. Office 365 veri kümesi için yeni bir sekme açıldığını görürsünüz. Özellikler penceresi altındaki **Genel sekmesinde** , ad Için "SourceOffice365Dataset" yazın.
  
-5. Özellikler penceresi **Bağlantı sekmesine** gidin. Bağlı hizmet metin kutusunun yanındaki **+ Yeni** ' ye tıklayın.
+5. Özellikler penceresi **Bağlantı sekmesine** gidin. Bağlı hizmet metin kutusunun yanındaki **+ Yeni**' ye tıklayın.
 
 6. Yeni bağlı hizmet penceresinde ad olarak "Office365LinkedService" yazın, hizmet sorumlusu KIMLIĞI ve hizmet sorumlusu anahtarını girin, ardından bağlantıyı test edin ve bağlı hizmeti dağıtmak için **Oluştur** ' u seçin.
 
     ![Yeni Office 365 bağlı hizmeti](./media/load-office-365-data/new-office-365-linked-service.png)
  
-7. Bağlı hizmet oluşturulduktan sonra veri kümesi ayarlarına dönersiniz. **Tablo** ' nın yanındaki aşağı oku seçerek kullanılabilir Office 365 veri kümeleri listesini genişletin ve "BasicDataSet_v0 ' yi seçin. Message_v0 "açılan listeden:
+7. Bağlı hizmet oluşturulduktan sonra veri kümesi ayarlarına dönersiniz. **Tablo**' nın yanındaki aşağı oku seçerek kullanılabilir Office 365 veri kümeleri listesini genişletin ve "BasicDataSet_v0 ' yi seçin. Message_v0 "açılan listeden:
 
     ![Yapılandırma Office 365 veri kümesi tablosu](./media/load-office-365-data/edit-dataset.png)
 
@@ -91,7 +91,7 @@ Bu makalede, _Office 365 ' de Azure Blob depolama alanına veri yükleme_ Data F
 
 1. İşlem hattı > **Havuz sekmesine** gidin ve bir havuz veri kümesi oluşturmak Için **+ Yeni** ' yi seçin.
  
-2. Yeni veri kümesi penceresinde, Office 365 ' den kopyalanırken yalnızca desteklenen hedeflerin seçili olduğuna dikkat edin. **Azure Blob depolama** ' yı seçin, ikili biçim ' i seçin ve **devam** ' ı seçin.  Bu öğreticide, Office 365 verilerini bir Azure Blob depolama alanına kopyalayaöğreneceksiniz.
+2. Yeni veri kümesi penceresinde, Office 365 ' den kopyalanırken yalnızca desteklenen hedeflerin seçili olduğuna dikkat edin. **Azure Blob depolama**' yı seçin, ikili biçim ' i seçin ve **devam**' ı seçin.  Bu öğreticide, Office 365 verilerini bir Azure Blob depolama alanına kopyalayaöğreneceksiniz.
 
 3. Veri yapılandırmasına devam etmek için Azure Blob depolama veri kümesinin yanındaki **Düzenle** düğmesine tıklayın.
 
@@ -106,19 +106,19 @@ Bu makalede, _Office 365 ' de Azure Blob depolama alanına veri yükleme_ Data F
 
 ## <a name="validate-the-pipeline"></a>İşlem hattını doğrulama
 
-İşlem hattını doğrulamak için araç çubuğundan **Doğrula** 'yı seçin.
+İşlem hattını doğrulamak için araç çubuğundan **Doğrula**'yı seçin.
 
 Ayrıca, sağ üst köşedeki kod ' a tıklayarak ardışık düzen ile ilişkili JSON kodunu da görebilirsiniz.
 
 ## <a name="publish-the-pipeline"></a>İşlem hattını yayımlama
 
-Üstteki araç çubuğunda **Tümünü Yayımla** ' yı seçin. Bu eylem, oluşturduğunuz varlıkları (veri kümeleri ve işlem hatları) Data Factory'de yayımlar.
+Üstteki araç çubuğunda **Tümünü Yayımla**' yı seçin. Bu eylem, oluşturduğunuz varlıkları (veri kümeleri ve işlem hatları) Data Factory'de yayımlar.
 
 ![Değişiklikleri yayımlama](./media/load-office-365-data/publish-changes.png) 
 
 ## <a name="trigger-the-pipeline-manually"></a>İşlem hattını el ile tetikleme
 
-Araç çubuğunda **tetikleyici Ekle** ' yi seçin ve sonra **Şimdi Tetikle** ' yi seçin. İşlem Hattı Çalıştırma sayfasında **Son** ’u seçin. 
+Araç çubuğunda **tetikleyici Ekle** ' yi seçin ve sonra **Şimdi Tetikle**' yi seçin. İşlem Hattı Çalıştırma sayfasında **Son**’u seçin. 
 
 ## <a name="monitor-the-pipeline"></a>İşlem hattını izleme
 
@@ -147,7 +147,7 @@ Onay sağlandığında, veri ayıklama devam eder ve bir süre sonra işlem hatt
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) desteği hakkında bilgi edinmek için aşağıdaki makaleye ilerleyin: 
+Azure SYNAPSE Analytics desteği hakkında bilgi edinmek için aşağıdaki makaleye ilerleyin: 
 
 > [!div class="nextstepaction"]
 >[Office 365 bağlayıcısı](connector-office-365.md)
