@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/12/2019
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: 8594ce713a8675505e0ee3051018b05992b160a9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a9146099951aba223a7b201c1613e1ec0ba617d4
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96025507"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96509339"
 ---
 **Son belge güncelleştirmesi**: 12 kasım 2019 10:00 PST.
 
@@ -21,7 +21,7 @@ Kurgusal yürütme yan kanal saldırıları olarak bilinen [Yeni BIR CPU güvenl
 
 Microsoft, tüm bulut hizmetlerimiz üzerinde azaltmalar dağıttı. Azure çalıştıran ve müşteri iş yüklerini birbirinden yalıtan altyapı korunur. Yani aynı altyapıyı kullanan potansiyel bir saldırgan, bu güvenlik açıklarını kullanarak uygulamanıza saldırır.
 
-Azure, müşteri etkisini en aza indirmek ve yeniden başlatmalar gereksinimini ortadan kaldırmak için mümkün olduğunda [bakım işlemlerini koruyan bellek](../articles/virtual-machines/maintenance-and-updates.md?bc=%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json%252c%252fazure%252fvirtual-machines%252fwindows%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json%253ftoc%253d%252fazure%252fvirtual-machines%252fwindows%252ftoc.json#maintenance-that-doesnt-require-a-reboot) kullanıyor. Azure, konakta sistem genelinde güncelleştirmeler yaparken ve müşterilerimizi koruduğunuz bu yöntemlerle yararlanmaya devam edecektir.
+Azure, müşteri etkisini en aza indirmek ve yeniden başlatmalar gereksinimini ortadan kaldırmak için mümkün olduğunda [bakım işlemlerini koruyan bellek](../articles/virtual-machines/maintenance-and-updates.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json%252c%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json%253ftoc%253d%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#maintenance-that-doesnt-require-a-reboot) kullanıyor. Azure, konakta sistem genelinde güncelleştirmeler yaparken ve müşterilerimizi koruduğunuz bu yöntemlerle yararlanmaya devam edecektir.
 
 Güvenliğin Azure 'un her yönüyle tümleştirildiği hakkında daha fazla bilgi için [Azure Güvenlik belgeleri](../articles/security/index.yml) sitesinde bulabilirsiniz. 
 

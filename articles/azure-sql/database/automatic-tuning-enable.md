@@ -9,20 +9,20 @@ ms.devlang: ''
 ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 12/03/2019
-ms.openlocfilehash: 35fc4b18ee5a98270f715a969354df2be5000150
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 35e2a73b0cfae104cee417e7d4a159e7fd169a17
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91444089"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500912"
 ---
 # <a name="enable-automatic-tuning-in-the-azure-portal-to-monitor-queries-and-improve-workload-performance"></a>Sorguları izlemek ve iş yükü performansını geliştirmek için Azure portal otomatik ayarlamayı etkinleştirin
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 
-Azure SQL veritabanı, sorgularınızı sürekli olarak izleyen veri hizmetlerini otomatik olarak yönetir ve iş yükünüzün performansını artırmak için gerçekleştirebileceğiniz eylemi tanımlar. Önerileri gözden geçirebilir ve bunları el ile uygulayabilir ya da Azure SQL veritabanı 'nın düzeltici eylemleri otomatik olarak uygulamasını sağlayabilirsiniz. Bu, **otomatik ayarlama modu**olarak bilinir.
+Azure SQL veritabanı, sorgularınızı sürekli olarak izleyen veri hizmetlerini otomatik olarak yönetir ve iş yükünüzün performansını artırmak için gerçekleştirebileceğiniz eylemi tanımlar. Önerileri gözden geçirebilir ve bunları el ile uygulayabilir ya da Azure SQL veritabanı 'nın düzeltici eylemleri otomatik olarak uygulamasını sağlayabilirsiniz. Bu, **otomatik ayarlama modu** olarak bilinir.
 
 Otomatik ayarlama, sunucuda veya veritabanı düzeyinde şu şekilde etkinleştirilebilir:
 
@@ -47,7 +47,7 @@ Sunucu düzeyinde, otomatik ayarlama yapılandırmasını "Azure Varsayılanlar�
 > - Yapılandırılmış otomatik ayarlama tercihleri olmayan mevcut sunucular, Azure varsayılanlarını DEVRALACAK şekilde otomatik olarak yapılandırılır. Bu, şu anda tanımsız bir durumda otomatik ayarlama için sunucu ayarlarına sahip olan tüm müşteriler için geçerlidir.
 > - Oluşturulan yeni sunucular, Azure varsayılanlarını DEVRALACAK şekilde otomatik olarak yapılandırılacaktır (otomatik ayarlama yapılandırması yeni sunucu oluşturma sırasında tanımsız bir durumda olduğunda daha önce olduğu gibi).
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Azure SQL veritabanı 'nda bir [sunucuda](logical-servers.md) otomatik ayarlamayı etkinleştirmek için Azure Portal sunucuya gidin ve sonra menüdeki **otomatik ayarlama** ' yı seçin.
 
@@ -62,7 +62,7 @@ Bir sunucudaki otomatik ayarlama seçenekleri, bu sunucudaki tüm veritabanları
 
 ### <a name="rest-api"></a>REST API
 
-Bir **sunucuda**otomatik ayarlamayı etkinleştirmek üzere bir REST API kullanma hakkında daha fazla bilgi edinmek için bkz. [sunucu otomatik ayarlama güncelleştirme ve http yöntemlerini alma](/rest/api/sql/serverautomatictuning).
+Bir **sunucuda** otomatik ayarlamayı etkinleştirmek üzere bir REST API kullanma hakkında daha fazla bilgi edinmek için bkz. [sunucu otomatik ayarlama güncelleştirme ve http yöntemlerini alma](/rest/api/sql/serverautomatictuning).
 
 ## <a name="enable-automatic-tuning-on-an-individual-database"></a>Tek bir veritabanında otomatik ayarlamayı etkinleştir
 
@@ -71,9 +71,9 @@ Azure SQL veritabanı, her bir veritabanı için otomatik ayarlama yapılandırm
 > [!TIP]
 > Genel öneri, otomatik ayarlama yapılandırmasını **sunucu düzeyinde** yönetmelidir, böylece aynı yapılandırma ayarları her veritabanına otomatik olarak uygulanabilir. Yalnızca veritabanının aynı sunucudan gelen ayarları devrallarından farklı ayarlara sahip olması gerekiyorsa, tek bir veritabanında otomatik ayarlamayı yapılandırın.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
-**Tek bir veritabanında**otomatik ayarlamayı etkinleştirmek için Azure Portal veritabanına gidin ve **otomatik ayarlama**' yı seçin.
+**Tek bir veritabanında** otomatik ayarlamayı etkinleştirmek için Azure Portal veritabanına gidin ve **otomatik ayarlama**' yı seçin.
 
 Bireysel otomatik ayarlama ayarları her veritabanı için ayrı olarak yapılandırılabilir. Tek bir otomatik ayarlama seçeneğini el ile yapılandırabilir veya bir seçeneğin ayarlarını sunucudan devralmasını belirtebilirsiniz.
 
@@ -83,7 +83,7 @@ Lütfen şu anda DROP_INDEX seçeneğinin bölüm değiştirme ve Dizin ipuçlar
 
 İstediğiniz yapılandırmayı seçtikten sonra **Uygula**' ya tıklayın.
 
-### <a name="rest-api"></a>REST API 'SI
+### <a name="rest-api"></a>Rest API
 
 Tek bir veritabanında otomatik ayarlamayı etkinleştirmek üzere bir REST API kullanma hakkında daha fazla bilgi edinmek için bkz. [Azure SQL veritabanı otomatik ayarlama güncelleştirme ve http YÖNTEMLERINI alma](/rest/api/sql/databaseautomatictuning).
 

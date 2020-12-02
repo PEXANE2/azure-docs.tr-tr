@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: c88b777e08bc165caefa14fe28d43c498e3fefcd
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a016781e5b05c8f43c043bf1f3368a58064e43ad
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790381"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501269"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Azure SQL veritabanı için Sorgu Performansı İçgörüleri
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -30,7 +30,7 @@ Sorgu Performansı İçgörüleri tek veritabanı ve havuza alınmış veritaban
 
 ![Sorgu Performansı İçgörüleri](./media/query-performance-insight-use/opening-title.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Sorgu Performansı İçgörüleri, veritabanınızda [sorgu deposunun](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) etkin olmasını gerektirir. Azure SQL veritabanı 'ndaki tüm veritabanları için varsayılan olarak otomatik olarak etkinleştirilir. Sorgu deposu çalışmıyorsa, Azure portal etkinleştirmek isteyip istemeyecektir.
 
@@ -41,8 +41,8 @@ Sorgu Performansı İçgörüleri, veritabanınızda [sorgu deposunun](/sql/rela
 
 Sorgu Performansı İçgörüleri kullanmak için aşağıdaki [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md) izinlerinizin olması gerekir:
 
-* En üstteki kaynak kullanan sorguları ve grafikleri görüntülemek için **okuyucu** , **sahip** , **katkıda bulunan** , **SQL DB katılımcısı** veya **SQL Server katkıda** bulunan izinleri gereklidir.
-* Sorgu metnini görüntülemek için **sahip** , **katkıda** bulunan, **SQL DB katılımcısı** veya **SQL Server katkıda** bulunan izinleri gereklidir.
+* En üstteki kaynak kullanan sorguları ve grafikleri görüntülemek için **okuyucu**, **sahip**, **katkıda bulunan**, **SQL DB katılımcısı** veya **SQL Server katkıda** bulunan izinleri gereklidir.
+* Sorgu metnini görüntülemek için **sahip**, **katkıda** bulunan, **SQL DB katılımcısı** veya **SQL Server katkıda** bulunan izinleri gereklidir.
 
 ## <a name="use-query-performance-insight"></a>Sorgu Performansı İçgörüleri’ni kullanma
 
@@ -85,8 +85,8 @@ Varsayılan olarak, Sorgu Performansı İçgörüleri ilk kez açtığınızda e
    >
    > Daha ayrıntılı bir karşılaştırma için (bir dakikaya kadar) özel bir DTU kullanım grafiği oluşturmayı düşünün:
    >
-   > 1. Azure Portal **Azure SQL veritabanı**  >  **izleme** ' yi seçin.
-   > 2. **Ölçümler** ’i seçin.
+   > 1. Azure Portal **Azure SQL veritabanı**  >  **izleme**' yi seçin.
+   > 2. **Ölçümler**’i seçin.
    > 3. **+ Grafik Ekle ' yi** seçin.
    > 4. Grafikteki DTU yüzdesini seçin.
    > 5. Ayrıca, sol üst menüden **son 24 saat** ' i seçin ve bir dakika olarak değiştirin.
@@ -177,8 +177,8 @@ Uzun süre çalışan sorguları belirlemek için:
    >
    > Veritabanı DTU kullanımını daha fazla ayrıntı ile (bir dakikaya kadar) anlamak için Azure portal özel bir grafik oluşturmayı düşünün:
    >
-   > 1. **Azure SQL veritabanı**  >  **izleme** 'yi seçin.
-   > 2. **Ölçümler** ’i seçin.
+   > 1. **Azure SQL veritabanı**  >  **izleme**'yi seçin.
+   > 2. **Ölçümler**’i seçin.
    > 3. **+ Grafik Ekle ' yi** seçin.
    > 4. Grafikteki DTU yüzdesini seçin.
    > 5. Ayrıca, sol üst menüden **son 24 saat** ' i seçin ve bir dakika olarak değiştirin.
@@ -238,14 +238,14 @@ Bu iletiler genellikle sorgu deposu yeni veri toplayamıyorum görüntülenir.
 
 İki tür bekletme ilkesi vardır:
 
-* **Boyut tabanlı** : Bu ilke **Otomatik** olarak ayarlandıysa, en büyük boyuta yaklaştıklarında verileri otomatik olarak temizler.
-* **Zaman tabanlı** : Bu ilke varsayılan olarak 30 güne ayarlanır. Sorgu deposunda boş alan biterse, 30 günden eski olan sorgu bilgilerini silecektir.
+* **Boyut tabanlı**: Bu ilke **Otomatik** olarak ayarlandıysa, en büyük boyuta yaklaştıklarında verileri otomatik olarak temizler.
+* **Zaman tabanlı**: Bu ilke varsayılan olarak 30 güne ayarlanır. Sorgu deposunda boş alan biterse, 30 günden eski olan sorgu bilgilerini silecektir.
 
 Yakalama ilkesini şu şekilde ayarlayabilirsiniz:
 
-* **Tümü** : sorgu deposu tüm sorguları yakalar.
-* **Otomatik** : sorgu deposu seyrek olarak derleme ve yürütme süresine sahip seyrek sorguları ve sorguları yoksayar. Yürütme sayısı, derleme süresi ve çalışma zamanı süresi eşikleri dahili olarak belirlenir. Bu varsayılan seçenektir.
-* **Hiçbiri** : sorgu deposu yeni sorgular yakalamayı durduruyor, ancak zaten yakalanan sorgulara yönelik çalışma zamanı istatistikleri yine de toplanmaktadır.
+* **Tümü**: sorgu deposu tüm sorguları yakalar.
+* **Otomatik**: sorgu deposu seyrek olarak derleme ve yürütme süresine sahip seyrek sorguları ve sorguları yoksayar. Yürütme sayısı, derleme süresi ve çalışma zamanı süresi eşikleri dahili olarak belirlenir. Bu varsayılan seçenektir.
+* **Hiçbiri**: sorgu deposu yeni sorgular yakalamayı durduruyor, ancak zaten yakalanan sorgulara yönelik çalışma zamanı istatistikleri yine de toplanmaktadır.
 
 [SSMS](/sql/ssms/download-sql-server-management-studio-ssms) veya Azure Portal aşağıdaki komutları yürüterek tüm ilkelerin **Otomatik** olarak ve temizleme ilkesini 30 güne ayarlamamız önerilir. ( `YourDB` Veritabanı adıyla değiştirin.)
 

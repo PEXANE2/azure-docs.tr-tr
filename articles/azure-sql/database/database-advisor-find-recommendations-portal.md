@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: 6ad8f3e146c13e7b88752b8ef6d514346542ce26
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 748ac448ad8bf5c06e5be8b7a4a8b00a9b7af84b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672260"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500895"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Performans önerilerini bulma ve uygulama
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,11 +25,11 @@ Azure SQL veritabanı 'nda veritabanınızın performansını iyileştirebilecek
 
 ## <a name="viewing-recommendations"></a>Önerileri görüntüleme
 
-Performans önerilerini görüntülemek ve uygulamak için Azure 'da doğru [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md) izinlerine ihtiyacınız vardır. **Okuyucu** , **SQL DB katkıda bulunan** Izinleri, önerileri ve **sahibini** görüntülemek Için gereklidir; **SQL DB katkıda bulunan** izinleri tüm eylemleri yürütmek için gereklidir; dizinler oluşturun veya bırakın ve Dizin oluşturmayı iptal edin.
+Performans önerilerini görüntülemek ve uygulamak için Azure 'da doğru [Azure rol tabanlı erişim denetimi (Azure RBAC)](../../role-based-access-control/overview.md) izinlerine ihtiyacınız vardır. **Okuyucu**, **SQL DB katkıda bulunan** Izinleri, önerileri ve **sahibini** görüntülemek Için gereklidir; **SQL DB katkıda bulunan** izinleri tüm eylemleri yürütmek için gereklidir; dizinler oluşturun veya bırakın ve Dizin oluşturmayı iptal edin.
 
 Azure portal performans önerilerini bulmak için aşağıdaki adımları kullanın:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. **Tüm hizmetler**  >  **SQL veritabanlarına** gidin ve veritabanınızı seçin.
 3. Seçilen veritabanı için kullanılabilir önerileri görüntülemek için **performans önerisi** ' ne gidin.
 
@@ -86,7 +86,7 @@ Seçili öneriler veritabanına uygulandı.
 
 İsterseniz, atılan öğeleri **öneriler** listesine geri ekleyebilirsiniz:
 
-1. **Öneriler** sayfasında, **Görünüm atıldı** ' ı tıklatın.
+1. **Öneriler** sayfasında, **Görünüm atıldı**' ı tıklatın.
 2. Ayrıntılarını görüntülemek için listeden atılan bir öğe seçin.
 3. İsteğe bağlı olarak, dizini **önerilerin** ana listesine geri eklemek Için almayı **geri al** ' a tıklayın.
 
@@ -98,7 +98,7 @@ Seçili öneriler veritabanına uygulandı.
 
 Veritabanınızı, önerileri otomatik olarak uygulayacak şekilde ayarlayabilirsiniz. Öneriler kullanılabilir hale geldiğinde, bunlar otomatik olarak uygulanır. Hizmet tarafından yönetilen tüm önerilerden itibaren, performans etkisi negatifse, öneri geri döndürülür.
 
-1. **Öneriler** sayfasında **otomatikleştir** ' e tıklayın:
+1. **Öneriler** sayfasında **otomatikleştir**' e tıklayın:
 
    ![Danışman ayarları](./media/database-advisor-find-recommendations-portal/settings.png)
 2. Otomatikleştirebileceğiniz eylemleri seçin:
@@ -112,13 +112,13 @@ Veritabanınızı, önerileri otomatik olarak uygulayacak şekilde ayarlayabilir
 
 ### <a name="manually-apply-recommendations-through-t-sql"></a>T-SQL aracılığıyla önerileri el ile uygulama
 
-Herhangi bir önerisi seçin ve ardından **betiği görüntüle** ' ye tıklayın. Öneriyi el ile uygulamak için bu betiği veritabanınıza çalıştırın.
+Herhangi bir önerisi seçin ve ardından **betiği görüntüle**' ye tıklayın. Öneriyi el ile uygulamak için bu betiği veritabanınıza çalıştırın.
 
 *El ile yürütülen dizinler izlenmez ve hizmetin performans etkisi için doğrulanmamıştır* . bu sayede, performans kazancı sağlamalarını ve gerekirse bunları ayarlamayı veya silmeyi doğrulamak üzere oluşturulduktan sonra bu dizinleri izlemeniz önerilir. Dizinleri oluşturma hakkında ayrıntılı bilgi için bkz. [Dizin oluşturma (Transact-SQL)](/sql/t-sql/statements/create-index-transact-sql). Ayrıca, el ile uygulanan öneriler etkin kalır ve 24-48 saat önerisi listesinde gösterilir. sistemi otomatik olarak çizmadan önce. Bir öneriyi daha erken kaldırmak isterseniz, el ile atabilirsiniz.
 
 ### <a name="canceling-recommendations"></a>Öneriler iptal ediliyor
 
-**Bekleyen** , **doğrulama** veya **başarı** durumundaki öneriler iptal edilebilir. **Yürütme** durumu ile ilgili öneriler iptal edilemez.
+**Bekleyen**, **doğrulama** veya **başarı** durumundaki öneriler iptal edilebilir. **Yürütme** durumu ile ilgili öneriler iptal edilemez.
 
 1. Öneri **ayrıntıları** sayfasını açmak Için **ayarlama geçmişi** alanında bir öneri seçin.
 2. Öneriyi uygulama işlemini durdurmak için **iptal** ' e tıklayın.

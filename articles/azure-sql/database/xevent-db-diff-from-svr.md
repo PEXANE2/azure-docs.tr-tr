@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: reference
-author: MightyPen
-ms.author: genemi
-ms.reviewer: jrasnik
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: 0c89dc28a330e319e18a6289e5f6759c56e46ae8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 139673e46421aa0dc19298697872fbff5fe587af
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791282"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501218"
 ---
 # <a name="extended-events-in-azure-sql-database"></a>Azure SQL veritabanı 'nda genişletilmiş olaylar 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -32,7 +32,7 @@ Genişletilmiş olaylar hakkında ek bilgilere şu adresten ulaşılabilir:
 - [Hızlı başlangıç: SQL Server genişletilmiş olaylar](/sql/relational-databases/extended-events/quick-start-extended-events-in-sql-server)
 - [Genişletilmiş Olaylar](/sql/relational-databases/extended-events/extended-events)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu konu başlığı altında zaten bir bilginiz olduğunu varsaymaktadır:
 
@@ -97,7 +97,7 @@ Azure SQL veritabanı, genişletilmiş olayları destekleyen [dinamik yönetim g
 
 Microsoft SQL Server, benzer Katalog görünümleri adın *\_ veritabanı* bölümü olmadan adlandırılır, örneğin:
 
-- ad yerine **sys.dm_xe_sessions**<br/>**sys.dm_xe_database_sessions** .
+- ad yerine **sys.dm_xe_sessions**<br/>**sys.dm_xe_database_sessions**.
 
 ### <a name="dmvs-common-to-both"></a>Her ikisine de genel olarak DMVs
 

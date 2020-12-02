@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: daberry
-ms.openlocfilehash: 250223c5c15a0179fe105e66e7004f8920c5eb34
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 07564955e9cfa6931e461df00ef50a237a66b9b3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637624"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500691"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3 ve Esv3 serisi
 
@@ -80,7 +80,7 @@ Esv3 serisi VM 'nin özelliği Intel® Hyper-Threading teknolojisi.
 
 <sup>2</sup> örnek, tek bir müşteriye adanmış donanımlar için yalıtılmıştır.
 
-<sup>3</sup> Esv3 serisi VM 'ler, disk performansını zaman alabilir ve aynı anda en fazla 30 dakika boyunca ücretsiz [olarak alabilir.](linux/disk-bursting.md)
+<sup>3</sup> Esv3 serisi VM 'ler, disk performansını zaman alabilir ve aynı anda en fazla 30 dakika boyunca ücretsiz [olarak alabilir.](./disk-bursting.md)
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 03/30/2020
-ms.openlocfilehash: 180f6e8902dc881c99a74a6491eeb3012bc03d0f
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 4204254754307f8310d5ccfda19400de57381075
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675225"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500878"
 ---
 # <a name="automatic-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde otomatik ayarlama
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -69,7 +69,7 @@ Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde kullanılabilen otom
 
 ### <a name="automatic-tuning-for-sql-database"></a>SQL veritabanı için otomatik ayarlama
 
-Azure SQL veritabanı için otomatik ayarlama, veritabanı performansınızı iyileştirmek için **Dizin oluşturma** , **Drop Index** ve **en son iyi plan planı** veritabanı Danışmanı önerilerini kullanır. Daha fazla bilgi için Azure portal, [PowerShell](/powershell/module/az.sql/get-azsqldatabaserecommendedaction)'de ve [REST API](/rest/api/sql/serverautomatictuning) [veritabanı Danışmanı önerilerine](database-advisor-find-recommendations-portal.md)bakın.
+Azure SQL veritabanı için otomatik ayarlama, veritabanı performansınızı iyileştirmek için **Dizin oluşturma**, **Drop Index** ve **en son iyi plan planı** veritabanı Danışmanı önerilerini kullanır. Daha fazla bilgi için Azure portal, [PowerShell](/powershell/module/az.sql/get-azsqldatabaserecommendedaction)'de ve [REST API](/rest/api/sql/serverautomatictuning) [veritabanı Danışmanı önerilerine](database-advisor-find-recommendations-portal.md)bakın.
 
 Azure portal kullanarak ayarlama önerilerini el ile uygulayabilir veya otomatik ayarlama olarak çalışabilen sizin için ayarlama önerilerini uygulamanıza izin verebilirsiniz. System olarak çalışabilen 'ın ayarlama önerilerini uygulamasına izin vermenin avantajları, iş yükü performansına yönelik olumlu bir kazanç olduğunu otomatik olarak doğrular ve algılanan önemli performans geliştirmesi yoksa ayarlama önerisi otomatik olarak döndürülür. Bu, sık yürütülemeyen bir ayar önerisi tarafından etkilenen sorgular söz konusu olduğunda, doğrulama aşamasının tasarım ile 72 saat arasında sürebileceğini unutmayın.
 

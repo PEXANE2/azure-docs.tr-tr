@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 11/19/2020
 ms.author: nanditav
 ms.reviewer: jrasnick
-ms.openlocfilehash: a6ea3925f3b6bc786be6a4855b2f3bfb6b402d70
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d9a9d3c303739e68b5b8ef28053d6cf0b071f955
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455188"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501065"
 ---
 # <a name="encryption-for-azure-synapse-analytics-workspaces"></a>Azure SYNAPSE Analytics çalışma alanları için şifreleme
 
@@ -47,13 +47,13 @@ Aşağıdaki SYNAPSE bileşenlerindeki veriler, çalışma alanı düzeyinde yap
 Çalışma alanları, müşteri tarafından yönetilen bir anahtarla çalışma alanı oluşturma sırasında çift şifrelemeyi etkinleştirecek şekilde yapılandırılabilir. Yeni çalışma alanınızı oluştururken "güvenlik" sekmesinde "müşteri tarafından yönetilen anahtar kullanarak çift şifrelemeyi etkinleştir" seçeneğini seçin. Anahtar tanımlayıcı URI 'SI girmeyi veya çalışma alanıyla **aynı bölgedeki** anahtar kasaların listesinden seçim yapabilirsiniz. Key Vault, **Temizleme koruması 'nın etkinleştirilmesini** gerektirir.
 
 > [!IMPORTANT]
-> Mevcut olduğunda, Çift şifrelemenin yapılandırma ayarı çalışma alanı oluşturulduktan sonra değiştirilemez.
+> Çift şifrelemenin yapılandırma ayarı, çalışma alanı oluşturulduktan sonra değiştirilemez.
 
 :::image type="content" source="./media/workspaces-encryption/workspaces-encryption.png" alt-text="Bu diyagramda, müşteri tarafından yönetilen bir anahtarla çift şifrelemeye yönelik bir çalışma alanı etkinleştirmek için seçilmesi gereken seçeneği gösterilmektedir.":::
 
 ### <a name="key-access-and-workspace-activation"></a>Anahtar erişimi ve çalışma alanı etkinleştirme
 
-Müşteri tarafından yönetilen anahtarlarla Azure SYNAPSE şifreleme modeli, gerektiğinde şifreleme ve şifre çözme için Azure Key Vault anahtarlara erişen çalışma alanını içerir. Anahtarlar, erişim ilkesi aracılığıyla veya RBAC erişimi ([Önizleme](../../key-vault/general/rbac-guide.md)) Azure Key Vault çalışma alanı tarafından erişilebilir hale getirilir. Azure Key Vault erişim ilkesi aracılığıyla izin verirken, ilke oluşturma sırasında "yalnızca uygulama" seçeneğini belirleyin.
+Müşteri tarafından yönetilen anahtarlarla Azure SYNAPSE şifreleme modeli, gerektiğinde şifreleme ve şifre çözme için Azure Key Vault anahtarlara erişen çalışma alanını içerir. Anahtarlar, erişim ilkesi aracılığıyla veya RBAC erişimi ([Önizleme](../../key-vault/general/rbac-guide.md)) Azure Key Vault çalışma alanı tarafından erişilebilir hale getirilir. Azure Key Vault erişim ilkesi aracılığıyla izin verirken, ilke oluşturma sırasında ["yalnızca uygulama"](../../key-vault/general/secure-your-key-vault.md#key-vault-authentication-options) seçeneğini belirleyin (çalışma alanının yönetilen kimliğini seçin ve yetkili bir uygulama olarak eklemeyin).
 
  Çalışma alanının, çalışma alanının etkinleştirilmeden önce anahtar kasasında ihtiyaç duyması gereken izinler verilmelidir. Çalışma alanı etkinleştirmesine yönelik bu aşamalı yaklaşım, çalışma alanındaki verilerin müşteri tarafından yönetilen anahtarla şifrelenmesini sağlar. Şifrelemenin adanmış SQL havuzları için etkinleştirilip etkinleştirilebileceğine veya devre dışı bırakılabileceğini unutmayın. her havuz varsayılan olarak şifreleme için etkinleştirilmemiştir.
 
@@ -76,6 +76,9 @@ Bekleyen verileri şifrelemek veya şifrelerini çözmek için, çalışma alan�
 Azure portal **şifreleme** sayfasından verileri şifrelemek için kullanılan müşteri tarafından yönetilen anahtarı değiştirebilirsiniz. Burada, bir anahtar tanımlayıcı kullanarak yeni bir anahtar seçebilir veya çalışma alanıyla aynı bölgede erişiminiz olan anahtar kasalarından seçim yapabilirsiniz. Daha önce kullanılan farklı bir anahtar kasasında bir anahtar seçerseniz, yeni anahtar kasasında çalışma alanı yönetilen kimliği "Al", "Wrap" ve "sarmalama" izinlerini verin. Çalışma alanı, yeni anahtar kasasına erişimini doğrular ve çalışma alanındaki tüm veriler yeni anahtarla yeniden şifrelenir.
 
 :::image type="content" source="./media/workspaces-encryption/workspace-encryption-management.png" alt-text="Bu diyagramda Azure portal çalışma alanı şifreleme bölümü gösterilmektedir.":::
+
+>[!IMPORTANT]
+>Bir çalışma alanının şifreleme anahtarını değiştirirken, anahtarı, çalışma alanında yenisiyle yeni bir anahtarla değiştirene kadar saklayın. Bu, yeni anahtarla yeniden şifrelenmeden önce eski anahtarla verilerin şifresinin çözülmesini sağlar.
 
 Otomatik, dönemsel anahtar döndürme veya anahtarlar üzerindeki eylemlerin Azure Anahtar Kasası ilkeleri, yeni anahtar sürümlerinin oluşturulmasına neden olabilir. Çalışma alanındaki tüm verileri etkin anahtarın en son sürümüyle yeniden şifrelemeyi tercih edebilirsiniz. Yeniden şifrelemek için Azure portal anahtarı geçici bir anahtarla değiştirin ve ardından şifreleme için kullanmak istediğiniz anahtara geri dönün. Örnek olarak, Active Key KEY1 'ın en son sürümünü kullanarak veri şifrelemeyi güncelleştirmek için, çalışma alanı müşteri tarafından yönetilen anahtarı geçici anahtar, key2 olarak değiştirin. Key2 ile şifrelemeyi bekleyin. Daha sonra çalışma alanı müşteri tarafından yönetilen anahtarı KEY1 'e geri geçirin. çalışma alanındaki veriler en son KEY1 sürümü ile yeniden şifrelenir.
 

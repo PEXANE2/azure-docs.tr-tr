@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ef481b73b6dc42bc35252c08ae8d63b9de95b2ba
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 1a7e8e71e26af241d16095a5fa1e6a02a7e3d4c2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325103"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500776"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Azure'da hangi disk türleri kullanılabilir?
 
@@ -84,7 +84,7 @@ Standart depolamanın aksine bir Premium Depolama diski sağladığınızda, bu 
 
 P30 ' den küçük Premium SSD boyutları artık disk patlaması sunar ve disk başına ıOPS 'yi 3.500 ' e kadar ve bant genişliğine MB/sn 170 'ye kadar alabilir. Burdıya otomatik ve bir kredi sistemine göre çalışır. Krediler, disk trafiği sağlanan performans hedefinin altındaysa otomatik olarak bir patlama demetini içinde biriktirilir ve trafik hedefin ötesinde en fazla patlama sınırına kadar, krediler otomatik olarak tüketilir. En fazla patlama sınırı, ' den tüketmek üzere patlama kredileriniz olsa bile, disk ıOPS & bant genişliği üst sınırını tanımlar. Disk patlaması, GÇ desenlerinin öngörülemeyen değişikliklerinde daha iyi tolerans sağlar. Çıkmanız gerekirse trafiği olan işletim sistemi diski önyüklemesi ve uygulamaları için en iyi şekilde yararlanabilirsiniz.    
 
-Bir kullanıcı eylemi gerekmeden, varsayılan olarak geçerli disk boyutlarının yeni dağıtımları üzerinde, disk patlaması desteği etkinleştirilecek. Geçerli boyutlardaki mevcut diskler için, iki seçenekten birini kullanarak gereksiz bir şekilde etkinleştirebilirsiniz: diski ayırma ve yeniden bağlama ya da bağlı VM 'yi durdurup yeniden başlatma. Disk, en yüksek veri bloğu sınırı olan 30 dakikalık bir sanal makineye eklendiğinde, tüm veri bloğu uygulanabilir disk boyutları tam bir patlama kredisi demeti ile başlar. Azure disklerinde ne kadar iş çalıştığı hakkında daha fazla bilgi edinmek için bkz. [Premium SSD burdımı](linux/disk-bursting.md). 
+Bir kullanıcı eylemi gerekmeden, varsayılan olarak geçerli disk boyutlarının yeni dağıtımları üzerinde, disk patlaması desteği etkinleştirilecek. Geçerli boyutlardaki mevcut diskler için, iki seçenekten birini kullanarak gereksiz bir şekilde etkinleştirebilirsiniz: diski ayırma ve yeniden bağlama ya da bağlı VM 'yi durdurup yeniden başlatma. Disk, en yüksek veri bloğu sınırı olan 30 dakikalık bir sanal makineye eklendiğinde, tüm veri bloğu uygulanabilir disk boyutları tam bir patlama kredisi demeti ile başlar. Azure disklerinde ne kadar iş çalıştığı hakkında daha fazla bilgi edinmek için bkz. [Premium SSD burdımı](./disk-bursting.md). 
 
 ### <a name="transactions"></a>İşlemler
 

@@ -6,27 +6,27 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 10/30/2020
 ms.author: rahugup
-ms.openlocfilehash: e1b34db7f2473e16d3ebde11376652f654f2f778
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 4ef4d3989f063e9d31718bc7143662c4f20cc90b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377964"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500827"
 ---
 # <a name="scale-migration-of-vmware-vms"></a>VMware VM 'lerinin ölçeğini ölçeklendirme 
 
-Bu makale, aracısız yöntemi kullanarak çok sayıda VMware sanal makinesini (VM) geçirmek için betikleri nasıl kullanacağınızı anlamanıza yardımcı olur. Geçişleri ölçeklendirmek için [Azure geçişi PowerShell modülünü](https://aka.ms/azuremigratepowershellvmware)kullanırsınız. 
+Bu makale, aracısız yöntemi kullanarak çok sayıda VMware sanal makinesini (VM) geçirmek için betikleri nasıl kullanacağınızı anlamanıza yardımcı olur. Geçişleri ölçeklendirmek için [Azure geçişi PowerShell modülünü](./tutorial-migrate-vmware-powershell.md)kullanırsınız. 
 
-Azure geçişi VMware geçiş Otomasyonu betikleri, GitHub 'da [Azure PowerShell örnekleri](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-vmware-agentles) deposunda indirilebilir. Betikler, VMware VM 'lerini aracısız geçiş yöntemi kullanılarak Azure 'a geçirmek için kullanılabilir. Bu betikte kullanılan Azure geçişi PowerShell komutları [burada](https://aka.ms/azuremigratepowershellvmware)belgelenmiştir.
+Azure geçişi VMware geçiş Otomasyonu betikleri, GitHub 'da [Azure PowerShell örnekleri](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-vmware-agentles) deposunda indirilebilir. Betikler, VMware VM 'lerini aracısız geçiş yöntemi kullanılarak Azure 'a geçirmek için kullanılabilir. Bu betikte kullanılan Azure geçişi PowerShell komutları [burada](./tutorial-migrate-vmware-powershell.md)belgelenmiştir.
 
 ## <a name="current-limitations"></a>Geçerli sınırlamalar
 - Bu betikler, VMware VM 'lerinin tüm disklerle geçirilmesini destekler. Bir VMware VM 'sine eklenen diskleri seçmeli olarak çoğaltmak istiyorsanız betikleri güncelleştirebilirsiniz. 
 - Betikler değerlendirme önerilerinin kullanımını destekler. Değerlendirme önerileri kullanılmıyorsa, VMware VM 'ye bağlı tüm diskler aynı yönetilen disk türüne geçirilir (Standart veya Premium). Aynı VM ile birden fazla yönetilen disk türü kullanmak istiyorsanız betikleri güncelleştirebilirsiniz
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure ve VMware 'yi geçiş için hazırlamak üzere [bulma öğreticisini doldurun](tutorial-discover-vmware.md) .
-- [VMware VM](tutorial-assess-vmware.md) 'lerini Azure 'a geçirmeden önce değerlendirmek için ikinci öğreticiyi tamamlamanızı öneririz.
+- [VMware VM](./tutorial-assess-vmware-azure-vm.md) 'lerini Azure 'a geçirmeden önce değerlendirmek için ikinci öğreticiyi tamamlamanızı öneririz.
 - Azure PowerShell `Az` modüle sahipsiniz. Azure PowerShell yüklemeniz veya yükseltmeniz gerekiyorsa [Azure PowerShell yüklemek ve yapılandırmak için bu kılavuzu](/powershell/azure/install-az-ps) izleyin
 
 ## <a name="install-azure-migrate-powershell-module"></a>Azure geçişi PowerShell modülünü yükler
@@ -123,4 +123,4 @@ Input.csv dosyasını kullanarak VM 'Ler için çoğaltma başlatmak üzere beti
 ".\AzMigrate_StartReplication.ps1" .\Input.csv 
 ```
 
-Azure geçişi ile VMware VM 'Leri geçirmek için Azure PowerShell kullanma hakkında daha fazla bilgi edinmek için [öğreticiyi](https://aka.ms/azuremigratepowershellvmware)izleyin.
+Azure geçişi ile VMware VM 'Leri geçirmek için Azure PowerShell kullanma hakkında daha fazla bilgi edinmek için [öğreticiyi](./tutorial-migrate-vmware-powershell.md)izleyin.

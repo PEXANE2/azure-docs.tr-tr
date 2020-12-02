@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: b1ef29eb71ccd945552550f64e5ae95bc85be44d
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 79ccf0f8aae7e915601081f875cea294de52d787
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672121"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500861"
 ---
 # <a name="database-advisor-performance-recommendations-for-azure-sql-database"></a>Azure SQL veritabanı için Veritabanı Danışmanı performans önerileri
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -105,7 +105,7 @@ Bu öneriyi uyguladıktan sonra, veritabanınızda dakika içinde zorunlu Parame
 
 | SQL hata kodu | İleti |
 | --- | --- |
-| 201 |' ' Yordamı veya işlevi, sağlanmamış *' ' parametresini bekliyor* . |
+| 201 |' ' Yordamı veya işlevi, sağlanmamış *' ' parametresini bekliyor*. |
 | 207 |Geçersiz sütun adı ' * '. |
 | 208 |Geçersiz nesne adı ' * '. |
 | 213 |Girilen değerlerin sütun adı veya numarası tablo tanımıyla eşleşmiyor. |

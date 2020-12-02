@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 8a7812bfcbedc8307557b4fb0623cb8a72913419
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 5c58742bd04f21ea501fde95798245c81442e24c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95743047"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501184"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>Hızlı başlangıç: yüz REST API ve Python kullanarak görüntüdeki yüzeyleri algılama
 
@@ -34,9 +34,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
     * Uygulamanızı Yüz Tanıma API'si bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
     * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
 
-## <a name="run-the-jupyter-notebook"></a>Jupyter Not defterini çalıştırma
+## <a name="run-the-jupyter-notebook"></a>Jupyter Notebook çalıştırma
 
-[MyBinder](https://mybinder.org)’da Jupyter not defteri olarak bu hızlı başlangıcı çalıştırabilirsiniz. Cildi başlatmak için aşağıdaki düğmeyi seçin. Ardından not defterindeki yönergeleri izleyin.
+Bu hızlı başlangıcı, [Myciltçi](https://mybinder.org)üzerinde bir Jupyter Notebook olarak çalıştırabilirsiniz. Cildi başlatmak için aşağıdaki düğmeyi seçin. Ardından not defterindeki yönergeleri izleyin.
 
 [![Bağlayıcısı](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=FaceAPI.ipynb)
 

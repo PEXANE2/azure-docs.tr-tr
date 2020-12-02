@@ -13,16 +13,19 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 24f1332e940929cff6aeb6a0d5d3c43e28d36f22
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 9b870e21ffd5c6a8261b6731b939b5dff558256d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149175"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501201"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>C için Azure IoT cihaz SDK 'Sı
 
-**Azure IoT cihaz SDK 'sı** , **Azure IoT Hub** hizmetine ileti gönderme ve iletileri alma sürecini basitleştirmek için tasarlanan bir kitaplıklar kümesidir. Her biri belirli bir platformu hedefleyen SDK 'nın farklı çeşitlemeleri vardır, ancak bu makalede **C Için Azure IoT cihaz SDK 'sı**açıklanmaktadır.
+**Azure IoT cihaz SDK 'sı** , **Azure IoT Hub** hizmetine ileti gönderme ve iletileri alma sürecini basitleştirmek için tasarlanan bir kitaplıklar kümesidir. Her biri belirli bir platformu hedefleyen SDK 'nın farklı çeşitlemeleri vardır, ancak bu makalede **C Için Azure IoT cihaz SDK 'sı** açıklanmaktadır.
+
+> [!NOTE]
+> Katıştırılmış C SDK 'Sı, kendi ağını getir (BYON) yaklaşımını destekleyen kısıtlı cihazlara bir alternatiftir. IoT geliştiricileri, bir cihaz çözümü oluşturmak için MQTT istemcisini, TLS ve tercih ettikleri yuvayı bir araya getirir. [Katıştırılmış C SDK 'sı hakkında daha fazla bilgi edinin](https://github.com/Azure/azure-sdk-for-c/tree/master/sdk/docs/iot).
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
@@ -74,7 +77,7 @@ Paketler, genel platformlar (örneğin, Windows için NuGet veya Deton ve Ubuntu
 
 ### <a name="obtain-the-device-credentials"></a>Cihaz kimlik bilgilerini alma
 
-Örnek kaynak koduna sahip olduğunuza göre, bir sonraki şey bir cihaz kimlik bilgileri kümesi almak için kullanılır. Bir cihazın bir IoT Hub 'ına erişebilmesi için önce cihazı IoT Hub Identity kayıt defterine eklemeniz gerekir. Cihazınızı eklediğinizde, cihazın IoT Hub 'ına bağlanabilmesi için gereken bir cihaz kimlik bilgileri kümesi alırsınız. Sonraki bölümde ele alınan örnek uygulamalar bu kimlik bilgilerinin bir **Cihaz bağlantı dizesi**biçiminde olmasını bekler.
+Örnek kaynak koduna sahip olduğunuza göre, bir sonraki şey bir cihaz kimlik bilgileri kümesi almak için kullanılır. Bir cihazın bir IoT Hub 'ına erişebilmesi için önce cihazı IoT Hub Identity kayıt defterine eklemeniz gerekir. Cihazınızı eklediğinizde, cihazın IoT Hub 'ına bağlanabilmesi için gereken bir cihaz kimlik bilgileri kümesi alırsınız. Sonraki bölümde ele alınan örnek uygulamalar bu kimlik bilgilerinin bir **Cihaz bağlantı dizesi** biçiminde olmasını bekler.
 
 IoT Hub 'ınızı yönetmenize yardımcı olacak çeşitli açık kaynaklı araçlar vardır.
 
@@ -98,7 +101,7 @@ Cihaz Gezgini aracı hakkında bilginiz yoksa, aşağıdaki yordamda bir cihaz e
 
 1. **IoT Hub bağlantı dizenizi** ilk alana girin ve **Güncelleştir**' e tıklayın. Bu adım, aracı IoT Hub ile iletişim kurabilmesi için yapılandırır. 
 
-**Bağlantı dizesi** , **IoT Hub hizmet**  >  **ayarları**  >  **paylaşılan erişim ilkesi**  >  **ıthubowner**altında bulunabilir.
+**Bağlantı dizesi** , **IoT Hub hizmet**  >  **ayarları**  >  **paylaşılan erişim ilkesi**  >  **ıthubowner** altında bulunabilir.
 
 1. IoT Hub bağlantı dizesi yapılandırıldığında, **Yönetim** sekmesine tıklayın:
 
@@ -124,7 +127,7 @@ static const char* connectionString = "[device connection string]";
 
 ## <a name="use-the-iothubclient-library"></a>IoTHubClient kitaplığını kullanma
 
-[Azure-IoT-SDK-c](https://github.com/azure/azure-iot-sdk-c) deposundaki **ıothub \_ istemci** klasörü içinde, **ıothub \_ istemci \_ örneği \_ MQTT**adlı bir uygulama içeren bir **örnekler** klasörü vardır.
+[Azure-IoT-SDK-c](https://github.com/azure/azure-iot-sdk-c) deposundaki **ıothub \_ istemci** klasörü içinde, **ıothub \_ istemci \_ örneği \_ MQTT** adlı bir uygulama içeren bir **örnekler** klasörü vardır.
 
 **İothub_client \_ örnekleri \_ iothub_convenience_sample** uygulamasının Windows sürümü aşağıdaki Visual Studio çözümünü içerir:
 
@@ -166,7 +169,7 @@ else
 
 Bu işleve cihaz Gezgini aracından edindiğiniz cihaz bağlantı dizesinin bir kopyasını geçirirsiniz. Ayrıca kullanılacak iletişim protokolünü belirlersiniz. Bu örnek MQTT kullanır, ancak AMQP ve HTTPS de seçenekleridir.
 
-Geçerli bir **ıothub \_ istemci \_ tutamacına**sahip olduğunuzda, IoT Hub iletileri almak ve bu bilgisayardan Ileti göndermek için API 'leri çağırmaya başlayabilirsiniz.
+Geçerli bir **ıothub \_ istemci \_ tutamacına** sahip olduğunuzda, IoT Hub iletileri almak ve bu bilgisayardan Ileti göndermek için API 'leri çağırmaya başlayabilirsiniz.
 
 ### <a name="send-messages"></a>İleti gönderme
 
@@ -216,7 +219,7 @@ do
 } while (g_continueRunning);
 ```
 
-Her ileti gönderdiğinizde, veriler gönderildiğinde çağrılan geri çağırma işlevine yönelik bir başvuru belirtirsiniz. Bu örnekte, geri çağırma işlevi **SendConfirmationCallback**olarak adlandırılır. Aşağıdaki kod parçacığında bu geri çağırma işlevi gösterilmektedir:
+Her ileti gönderdiğinizde, veriler gönderildiğinde çağrılan geri çağırma işlevine yönelik bir başvuru belirtirsiniz. Bu örnekte, geri çağırma işlevi **SendConfirmationCallback** olarak adlandırılır. Aşağıdaki kod parçacığında bu geri çağırma işlevi gösterilmektedir:
 
 ```c
 static void SendConfirmationCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* userContextCallback)
@@ -339,7 +342,7 @@ Gördüğünüz gibi, **Iothubclient** kitaplığı ile ileti göndermek ve alma
 
 Kavramsal olarak **serileştirici** KITAPLıĞı, SDK 'Daki **Iothubclient** kitaplığının üzerinde bulunur. IoT Hub ile temel alınan iletişim için **Iothubclient** kitaplığını kullanır, ancak geliştiriciden ileti serileştirme ile ilgilenme yükünü kaldırmak için modelleme özellikleri ekler. Bu kitaplığın çalışması bir örnek tarafından en iyi şekilde gösterilmiştir.
 
-[Azure-IoT-SDK-c deposundaki](https://github.com/Azure/azure-iot-sdk-c) **seri hale getirici** klasörü içinde, **SimpleSample \_ MQTT**adlı bir uygulama içeren bir **Samples** klasörüdür. Bu örneğin Windows sürümü, aşağıdaki Visual Studio çözümünü içerir:
+[Azure-IoT-SDK-c deposundaki](https://github.com/Azure/azure-iot-sdk-c) **seri hale getirici** klasörü içinde, **SimpleSample \_ MQTT** adlı bir uygulama içeren bir **Samples** klasörüdür. Bu örneğin Windows sürümü, aşağıdaki Visual Studio çözümünü içerir:
 
   ![MQTT için Visual Studio çözümü örneği](./media/iot-hub-device-sdk-c-intro/simplesample_mqtt.png)
 
@@ -391,13 +394,13 @@ else
 ...
 ```
 
-**Serileştirici \_ init** işlevine yapılan çağrı bir kerelik çağrıdır ve temel alınan kitaplığı başlatır. Ardından, iothubclient ** \_ ll \_ createfromconnectionstring** Işlevini çağırarak, **ıOTHUBCLIENT** örneğindeki ile aynı API 'dir. Bu çağrı, cihaz Bağlantı dizenizi ayarlar (Bu çağrı, kullanmak istediğiniz protokolü de seçersiniz). Bu örnek, taşıma olarak MQTT kullanır, ancak AMQP veya HTTPS kullanabilir.
+**Serileştirici \_ init** işlevine yapılan çağrı bir kerelik çağrıdır ve temel alınan kitaplığı başlatır. Ardından, iothubclient **\_ ll \_ createfromconnectionstring** Işlevini çağırarak, **ıOTHUBCLIENT** örneğindeki ile aynı API 'dir. Bu çağrı, cihaz Bağlantı dizenizi ayarlar (Bu çağrı, kullanmak istediğiniz protokolü de seçersiniz). Bu örnek, taşıma olarak MQTT kullanır, ancak AMQP veya HTTPS kullanabilir.
 
-Son olarak, ** \_ model \_ örneği oluştur** işlevini çağırın. **Dalgalı istasyon** , modelin ad alanıdır ve **Contosoanemometer** modelin adıdır. Model örneği oluşturulduktan sonra, ileti göndermeye ve almaya başlamak için kullanabilirsiniz. Ancak, bir modelin ne olduğunu anlamak önemlidir.
+Son olarak, **\_ model \_ örneği oluştur** işlevini çağırın. **Dalgalı istasyon** , modelin ad alanıdır ve **Contosoanemometer** modelin adıdır. Model örneği oluşturulduktan sonra, ileti göndermeye ve almaya başlamak için kullanabilirsiniz. Ancak, bir modelin ne olduğunu anlamak önemlidir.
 
 ### <a name="define-the-model"></a>Modeli tanımlama
 
-**Seri hale getirici** kitaplığındaki bir model, cihazınızın IoT Hub gönderebileceği iletileri ve bu iletilerin alabileceği modelleme dilinde *Eylemler* olarak adlandırılan iletileri tanımlar. Örnek uygulama ** \_ \_ iothub_convenience_sample iothub_client örnekleri** gibi bir C makroları kümesi kullanarak bir model tanımlarsınız:
+**Seri hale getirici** kitaplığındaki bir model, cihazınızın IoT Hub gönderebileceği iletileri ve bu iletilerin alabileceği modelleme dilinde *Eylemler* olarak adlandırılan iletileri tanımlar. Örnek uygulama **\_ \_ iothub_convenience_sample iothub_client örnekleri** gibi bir C makroları kümesi kullanarak bir model tanımlarsınız:
 
 ```c
 BEGIN_NAMESPACE(WeatherStation);
@@ -415,7 +418,7 @@ END_NAMESPACE(WeatherStation);
 
 **BEGIN \_ ad** alanı ve **End \_ Namespace** makroları her ikisi de modelin ad alanını bağımsız değişken olarak alır. Bu makrolar arasındaki herhangi bir şeyin modelinizin veya modellerinizin tanımı ve modellerin kullandığı veri yapıları olması beklenir.
 
-Bu örnekte, **Contosoanemometer**adlı tek bir model vardır. Bu model, cihazınızın IoT Hub: **DeviceID** ve **wın2 hızında**gönderebileceği iki veri parçasını tanımlar. Ayrıca, cihazınızın alabileceği üç eylemi (ileti) tanımlar: **Turnfanon**, **Turnfankapalı**ve **setaırdiri**. Her veri öğesinin bir türü vardır ve her eylem bir ada (ve isteğe bağlı olarak bir parametre kümesine) sahiptir.
+Bu örnekte, **Contosoanemometer** adlı tek bir model vardır. Bu model, cihazınızın IoT Hub: **DeviceID** ve **wın2 hızında** gönderebileceği iki veri parçasını tanımlar. Ayrıca, cihazınızın alabileceği üç eylemi (ileti) tanımlar: **Turnfanon**, **Turnfankapalı** ve **setaırdiri**. Her veri öğesinin bir türü vardır ve her eylem bir ada (ve isteğe bağlı olarak bir parametre kümesine) sahiptir.
 
 Modelde tanımlanan veriler ve Eylemler, IoT Hub ileti göndermek ve cihaza gönderilen iletilere yanıt vermek için kullanabileceğiniz bir API yüzeyi tanımlar. Bu modelin kullanımı en iyi bir örnek aracılığıyla anlaşıladır.
 
@@ -428,7 +431,7 @@ myWeather->DeviceId = "myFirstDevice";
 myWeather->WindSpeed = avgWindSpeed + (rand() % 4 + 2);
 ```
 
-Daha önce tanımladığınız model, bir **yapının**üyelerini ayarlayarak değerleri ayarlamanıza olanak sağlar. Sonra, göndermek istediğiniz iletiyi serileştirin:
+Daha önce tanımladığınız model, bir **yapının** üyelerini ayarlayarak değerleri ayarlamanıza olanak sağlar. Sonra, göndermek istediğiniz iletiyi serileştirin:
 
 ```c
 unsigned char* destination;
@@ -444,7 +447,7 @@ else
 }
 ```
 
-Bu kod, cihazdan buluta bir arabelleğe ( **hedefe**göre başvurulur) seri hale getirir. Kod daha sonra iletiyi IoT Hub göndermek için **SendMessage** işlevini çağırır:
+Bu kod, cihazdan buluta bir arabelleğe ( **hedefe** göre başvurulur) seri hale getirir. Kod daha sonra iletiyi IoT Hub göndermek için **SendMessage** işlevini çağırır:
 
 ```c
 static void sendMessage(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const unsigned char* buffer, size_t size)
@@ -541,7 +544,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT IoTHubMessage(IOTHUB_MESSAGE_HANDLE mess
 }
 ```
 
-Bu kod ortak olduğundan, her çözüm için de aynıdır. Bu işlev iletiyi alır ve **yürütme \_ komutu**çağrısı aracılığıyla bunu uygun işleve yönlendirmenizi sağlar. Bu noktada çağrılan işlev, modelinizdeki eylemlerin tanımına bağlıdır.
+Bu kod ortak olduğundan, her çözüm için de aynıdır. Bu işlev iletiyi alır ve **yürütme \_ komutu** çağrısı aracılığıyla bunu uygun işleve yönlendirmenizi sağlar. Bu noktada çağrılan işlev, modelinizdeki eylemlerin tanımına bağlıdır.
 
 Modelinizde bir eylem tanımladığınızda, cihazınız ilgili iletiyi aldığında çağrılan bir işlevi uygulamanız gerekir. Örneğin, modeliniz bu eylemi tanımlıyorsa:
 
@@ -581,7 +584,7 @@ Bu üç işlevden her biri, daha önce açıklanan üç başlatma işlevi ile hi
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Bu makalede, **C Için Azure IoT cihaz SDK 'sında**kitaplıkları kullanmanın temelleri ele alınmıştır. SDK 'ya nelerin dahil edildiğini, mimarisini ve Windows örnekleri ile çalışmaya nasıl başladığınızı anlamak için yeterli bilgi sağlamaktadır. Sonraki makalede, [IoTHubClient Kitaplığı hakkında daha fazla bilgi](iot-hub-device-sdk-c-iothubclient.md)vererek SDK 'nın açıklaması devam etmektedir.
+Bu makalede, **C Için Azure IoT cihaz SDK 'sında** kitaplıkları kullanmanın temelleri ele alınmıştır. SDK 'ya nelerin dahil edildiğini, mimarisini ve Windows örnekleri ile çalışmaya nasıl başladığınızı anlamak için yeterli bilgi sağlamaktadır. Sonraki makalede, [IoTHubClient Kitaplığı hakkında daha fazla bilgi](iot-hub-device-sdk-c-iothubclient.md)vererek SDK 'nın açıklaması devam etmektedir.
 
 IoT Hub için geliştirme hakkında daha fazla bilgi için bkz. [Azure IoT SDK 'ları](iot-hub-devguide-sdks.md).
 

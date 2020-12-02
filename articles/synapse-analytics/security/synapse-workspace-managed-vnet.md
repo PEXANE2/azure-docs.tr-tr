@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 12240dd3c8dca2c686950f420f49411fde5f7f28
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b605c2c9f3c7468d0fe1f2cccd8c3602c556714b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460358"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501082"
 ---
 # <a name="azure-synapse-analytics-managed-virtual-network"></a>Azure SYNAPSE Analytics yönetilen sanal ağı
 
@@ -52,8 +52,6 @@ Onay kutusunu işaretlenmemiş olarak bırakırsanız, çalışma alanınızın 
 
 ![Yönetilen çalışma alanı sanal ağını etkinleştir](./media/synapse-workspace-managed-vnet/enable-managed-vnet-1.png)
 
->[!NOTE]
->Yönetilen özel uç noktaları hariç yönetilen çalışma alanı sanal ağından gelen tüm giden trafik gelecekte engellenir. Çalışma alanı dışındaki tüm Azure veri kaynaklarınıza bağlanmak için yönetilen özel uç noktalar oluşturmanız önerilir. 
 
 Azure portal **Genel Bakış ' ı** seçerek Azure SYNAPSE çalışma alanınızın yönetilen bir çalışma alanı sanal ağıyla ilişkili olup olmadığını kontrol edebilirsiniz.
 

@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 1dcefefe02d91506c494cdf91e75ca951ccf43bb
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 408ba76c44d1161a4b91ccc037721796c7b94661
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94365489"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500759"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure önyükleme tanılaması
 
@@ -41,10 +41,10 @@ Azure portal bir VM oluştururken, varsayılan ayar, bir yönetilen depolama hes
 :::image type="content" source="./media/boot-diagnostics/boot-diagnostics-enable-portal.png" alt-text="VM oluşturma sırasında yönetilen önyükleme tanılamayı etkinleştiren ekran görüntüsü.":::
 
 ### <a name="enable-managed-boot-diagnostics-using-cli"></a>CLı kullanarak yönetilen önyükleme tanılamayı etkinleştirme
-Yönetilen depolama hesabıyla önyükleme Tanılaması, Azure CLı 2.12.0 ve sonrasında desteklenir. Depolama hesabı için bir ad veya URI girişi yapmazsanız, yönetilen bir hesap kullanılacaktır. Daha fazla bilgi ve kod örneği için bkz. [önyükleme tanılaması Için CLI belgeleri](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics?view=azure-cli-latest&preserve-view=true).
+Yönetilen depolama hesabıyla önyükleme Tanılaması, Azure CLı 2.12.0 ve sonrasında desteklenir. Depolama hesabı için bir ad veya URI girişi yapmazsanız, yönetilen bir hesap kullanılacaktır. Daha fazla bilgi ve kod örneği için bkz. [önyükleme tanılaması Için CLI belgeleri](/cli/azure/vm/boot-diagnostics?preserve-view=true&view=azure-cli-latest).
 
 ### <a name="enable-managed-boot-diagnostics-using-azure-resource-manager-arm-templates"></a>Azure Resource Manager (ARM) şablonları kullanarak yönetilen önyükleme tanılamayı etkinleştirme
-API sürüm 2020-06-01 ' den sonraki her şey yönetilen önyükleme tanılamayı destekler. Daha fazla bilgi için bkz. [önyükleme tanılama örneği görünümü](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#bootdiagnostics).
+API sürüm 2020-06-01 ' den sonraki her şey yönetilen önyükleme tanılamayı destekler. Daha fazla bilgi için bkz. [önyükleme tanılama örneği görünümü](/rest/api/compute/virtualmachines/createorupdate#bootdiagnostics).
 
 ```ARM Template
             "name": "[parameters('virtualMachineName')]",

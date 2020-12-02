@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ac75ab31f8c9cdd9405115db4f5c35d28707e29f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 06d20dd47ceb71b51e226d662892eab06b072685
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950372"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500946"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 'da SAP iş yükleri: planlama ve dağıtım denetim listesi
 
@@ -243,8 +243,8 @@ Bu aşamada, üretim dışı dağıtımlarınız sırasında karşılaştığın
     - Azure Premium Depolama, gecikme süresine duyarlı diskler veya [% 99,9 tek VM SLA 'sinin](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) gerekli olduğu durumlarda kullanılır.
     - Azure Yazma Hızlandırıcısı doğru şekilde dağıtılır.
         - VM 'Ler, depolama alanları veya dizili kümeler içinde Yazma Hızlandırıcısı gereken diskler arasında doğru şekilde oluşturulduğundan emin olun.
-        - [Linux 'ta yazılım RAID yapılandırmasını](../../linux/configure-raid.md)denetleyin.
-        - [Azure 'Da Linux VM 'lerinde LVM yapılandırmasını](../../linux/configure-lvm.md)denetleyin.
+        - [Linux 'ta yazılım RAID yapılandırmasını](/previous-versions/azure/virtual-machines/linux/configure-raid)denetleyin.
+        - [Azure 'Da Linux VM 'lerinde LVM yapılandırmasını](/previous-versions/azure/virtual-machines/linux/configure-lvm)denetleyin.
     - [Azure yönetilen diskler](https://azure.microsoft.com/services/managed-disks/) yalnızca kullanılır.
     - VM 'Ler doğru kullanılabilirlik kümelerine ve Kullanılabilirlik Alanları dağıtıldı.
     - [Azure hızlandırılmış ağ](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) , SAP uygulama KATMANıNDA ve SAP DBMS katmanında kullanılan VM 'lerde etkindir.

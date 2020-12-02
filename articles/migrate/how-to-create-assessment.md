@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/15/2019
 ms.author: raynew
-ms.openlocfilehash: c4132ca675af136d7fd50b8ddd02277919a5ed28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 534619ace09b4e11934062a591adf8d9ab6f77ad
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361101"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500810"
 ---
 # <a name="create-an-azure-vm-assessment"></a>Azure VM değerlendirmesi oluşturma
 
@@ -21,7 +21,7 @@ Bu makalede, Azure geçişi: Sunucu değerlendirmesi ile şirket içi VMware VM 
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-- Bir Azure geçişi projesi [oluşturduğunuzdan](how-to-add-tool-first-time.md) emin olun.
+- Bir Azure geçişi projesi [oluşturduğunuzdan](./create-manage-projects.md) emin olun.
 - Zaten bir proje oluşturduysanız Azure geçişi: Sunucu değerlendirmesi [aracını eklediğinizden emin](how-to-assess.md) olun.
 - Bir değerlendirme oluşturmak için, [VMware](how-to-set-up-appliance-vmware.md) veya [Hyper-V](how-to-set-up-appliance-hyper-v.md)için bir Azure geçiş gereci ayarlamanız gerekir. Gereç, şirket içi makineleri bulur ve Azure geçişi: Sunucu değerlendirmesi ' ne meta veri ve performans verileri gönderir. [Daha fazla bilgi edinin](migrate-appliance.md).
 
@@ -45,7 +45,7 @@ Bir değerlendirmeyi aşağıdaki gibi çalıştırın:
 
     ![Ekran görüntüsü değerlendirme araçları altında değerlendirmede Azure geçişi sunucularını gösterir.](./media/how-to-create-assessment/assess.png)
 
-3. **Sunucuları değerlendir**bölümünde, değerlendirme türünü "Azure VM" olarak seçin, bulma kaynağını seçin ve değerlendirme adını belirtin.
+3. **Sunucuları değerlendir** bölümünde, değerlendirme türünü "Azure VM" olarak seçin, bulma kaynağını seçin ve değerlendirme adını belirtin.
 
     ![Değerlendirmeyle ilgili temel bilgiler](./media/how-to-create-assessment/assess-servers-azurevm.png)
 
@@ -82,7 +82,7 @@ Azure VM değerlendirmesi şunları ifade eder:
 
 ### <a name="review-azure-readiness"></a>Azure için hazır olmayı gözden geçirme
 
-1. **Azure 'a hazırlık**bölümünde, VM 'lerin Azure 'a geçiş için hazır olup olmadığını doğrulayın.
+1. **Azure 'a hazırlık** bölümünde, VM 'lerin Azure 'a geçiş için hazır olup olmadığını doğrulayın.
 2. VM durumunu gözden geçirin:
     - **Azure için hazır**: Azure Geçişi, değerlendirme kapsamındaki VM'ler için VM boyutu önerisi ve maliyet tahmini sunar.
     - **Koşullara hazırlanma**: sorunları ve önerilen düzeltmeyi gösterir.
