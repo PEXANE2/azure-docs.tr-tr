@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 19fe6be0487772524516172bd32e0562512c4e3c
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: e680ba10c507ef83591b56652ee8e95c4d665dda
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630184"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492072"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>Linux 'ta Azure dosyaları sorunlarını giderme (SMB)
 
@@ -107,7 +107,7 @@ Bir dosya paylaşımının, dizinin veya dosyanın açık tanıtıcılarını ka
 
 - Belirli bir en düşük g/ç boyutu gereksiniminize sahip değilseniz en iyi performans için g/ç boyutu olarak 1 MIB kullanmanızı öneririz.
 - Doğru kopyalama yöntemini kullanın:
-    - İki dosya paylaşımı arasındaki herhangi bir aktarım için [AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) kullanın.
+    - İki dosya paylaşımı arasındaki herhangi bir aktarım için [AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) kullanın.
     - CP veya DD 'yi paralel olarak kullanmak kopyalama hızını iyileştirebilir, iş parçacıklarının sayısı kullanım örneğine ve iş yüküne bağlıdır. Aşağıdaki örneklerde altı kullanılır: 
     - CP örneği (CP, dosya sisteminin varsayılan blok boyutunu öbek boyutu olarak kullanır): `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &` .
     - dd örneği (Bu komut, öbek boyutunu açıkça 1 MiB olarak belirler): `find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`

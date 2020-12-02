@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: troubleshooting
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: jrasnick, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: ce5bf86073b2c478108e264010bb3c213c214368
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 6ea17f04538e3444b1baddaa8862add2cfbbaa9c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791758"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493432"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Azure SQL Veritabanı'nda algılanabilir sorgu performansı sorunu türleri
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -27,8 +27,8 @@ Bu tür performans sorunlarını algılamak için Azure SQL veritabanı [akıll�
 
 ![İş yükü durumları](./media/identify-query-performance-issues/workload-states.png)
 
-**Çalışma ile ilgili sorunlar** : çalışma ile ilgili sorunlar genellikle yetersiz veya aşırı kullanılan kaynaklarla ilgili bir alt sorgu planına veya yürütme sorunlarına neden olan derleme sorunlarıyla ilgilidir.
-Beklenme **sorunları** : bekleyen ilgili sorunlar genellikle ile ilgilidir:
+**Çalışma ile ilgili sorunlar**: çalışma ile ilgili sorunlar genellikle yetersiz veya aşırı kullanılan kaynaklarla ilgili bir alt sorgu planına veya yürütme sorunlarına neden olan derleme sorunlarıyla ilgilidir.
+Beklenme **sorunları**: bekleyen ilgili sorunlar genellikle ile ilgilidir:
 
 - Kilitler (engelleme)
 - G/Ç
@@ -137,13 +137,13 @@ Yeniden derleme ipucu kullanırsanız, bir plan önbelleğe alınmaz.
 
 Yeniden derleme (veya önbellek çıkarılması sonrasında yeni derleme), orijinalle özdeş bir sorgu yürütme planının oluşturulmasına neden olabilir. Plan önceki veya orijinal plandan değiştiğinde, bu açıklamalar olasıdır:
 
-- **Değiştirilen fiziksel tasarım** : Örneğin, yeni oluşturulan dizinler bir sorgunun gereksinimlerini daha etkin bir şekilde kapsar. Sorgu iyileştiricisi, yeni bir derlemede kullanılabilir ve bu yeni dizin kullanılarak sorgu yürütmenin ilk sürümü için başlangıçta seçilmiş olan veri yapısını kullanmaktan daha iyi bir hale gelebilir. Başvurulan nesnelerde yapılan tüm fiziksel değişiklikler, derleme zamanında yeni bir plan seçimine neden olabilirler.
+- **Değiştirilen fiziksel tasarım**: Örneğin, yeni oluşturulan dizinler bir sorgunun gereksinimlerini daha etkin bir şekilde kapsar. Sorgu iyileştiricisi, yeni bir derlemede kullanılabilir ve bu yeni dizin kullanılarak sorgu yürütmenin ilk sürümü için başlangıçta seçilmiş olan veri yapısını kullanmaktan daha iyi bir hale gelebilir. Başvurulan nesnelerde yapılan tüm fiziksel değişiklikler, derleme zamanında yeni bir plan seçimine neden olabilirler.
 
-- **Sunucu kaynak farkları** : bir sistemdeki bir plan başka bir sistemdeki plandan farklıysa, kullanılabilir işlemcilerin sayısı gibi kaynak kullanılabilirliği, hangi planın oluşturulduğunu etkileyebilir. Örneğin, bir sistemin daha fazla işlemcisi varsa, paralel bir plan seçilebilir.
+- **Sunucu kaynak farkları**: bir sistemdeki bir plan başka bir sistemdeki plandan farklıysa, kullanılabilir işlemcilerin sayısı gibi kaynak kullanılabilirliği, hangi planın oluşturulduğunu etkileyebilir. Örneğin, bir sistemin daha fazla işlemcisi varsa, paralel bir plan seçilebilir.
 
-- **Farklı istatistikler** : başvurulan nesnelerle ilişkili istatistikler değişmiş olabilir veya özgün sistemin istatistikleriyle, bu durum önemli ölçüde farklı olabilir. İstatistik değişikliği ve yeniden derleme gerçekleştiğinde, sorgu iyileştiricisi değiştiği sırada başlangıç istatistiklerini kullanır. Düzeltilen istatistiklerin veri dağıtımları ve frekansları, özgün derlemeden farklı bir farklılık gösterebilir. Bu değişiklikler, kardinalite tahminleri oluşturmak için kullanılır. ( *Kardinalite tahminleri* , mantıksal sorgu ağacı üzerinden akışı beklenen satır sayısıdır.) Kardinalite tahminlerinde yapılan değişiklikler, farklı fiziksel işleçler ve ilişkili işlem siparişleri seçmenize yol açabilir. İstatistikte küçük değişiklikler bile değiştirilen bir sorgu yürütme planına yol açabilir.
+- **Farklı istatistikler**: başvurulan nesnelerle ilişkili istatistikler değişmiş olabilir veya özgün sistemin istatistikleriyle, bu durum önemli ölçüde farklı olabilir. İstatistik değişikliği ve yeniden derleme gerçekleştiğinde, sorgu iyileştiricisi değiştiği sırada başlangıç istatistiklerini kullanır. Düzeltilen istatistiklerin veri dağıtımları ve frekansları, özgün derlemeden farklı bir farklılık gösterebilir. Bu değişiklikler, kardinalite tahminleri oluşturmak için kullanılır. (*Kardinalite tahminleri* , mantıksal sorgu ağacı üzerinden akışı beklenen satır sayısıdır.) Kardinalite tahminlerinde yapılan değişiklikler, farklı fiziksel işleçler ve ilişkili işlem siparişleri seçmenize yol açabilir. İstatistikte küçük değişiklikler bile değiştirilen bir sorgu yürütme planına yol açabilir.
 
-- **Değiştirilen veritabanı uyumluluk düzeyi veya kardinalite tahmini sürümü** : veritabanı uyumluluk düzeyinde yapılan değişiklikler, farklı bir sorgu yürütme planına neden olabilecek yeni stratejiler ve özellikler sağlayabilir. Veritabanı uyumluluk düzeyinin ötesinde, devre dışı veya etkin bir izleme bayrağı 4199 veya veritabanı kapsamlı yapılandırma QUERY_OPTIMIZER_HOTFIXES değiştirilen bir durum, derleme zamanında sorgu yürütme planı seçimlerini de etkileyebilir. İzleme bayrakları 9481 (eski CE 'yi zorla) ve 2312 (varsayılan CE 'yi zorla) Ayrıca planı da etkiler.
+- **Değiştirilen veritabanı uyumluluk düzeyi veya kardinalite tahmini sürümü**: veritabanı uyumluluk düzeyinde yapılan değişiklikler, farklı bir sorgu yürütme planına neden olabilecek yeni stratejiler ve özellikler sağlayabilir. Veritabanı uyumluluk düzeyinin ötesinde, devre dışı veya etkin bir izleme bayrağı 4199 veya veritabanı kapsamlı yapılandırma QUERY_OPTIMIZER_HOTFIXES değiştirilen bir durum, derleme zamanında sorgu yürütme planı seçimlerini de etkileyebilir. İzleme bayrakları 9481 (eski CE 'yi zorla) ve 2312 (varsayılan CE 'yi zorla) Ayrıca planı da etkiler.
 
 ## <a name="resource-limits-issues"></a>Kaynak sınırları sorunları
 
@@ -173,11 +173,11 @@ Uygulama trafiği ve iş yükü birimi artışının artması CPU kullanımına 
 
 Bir CPU sorunu sunan iş yükü birimi değişikliğini belirlemek her zaman kolay değildir. Şu faktörleri göz önünde bulundurun:
 
-- **Değiştirilen kaynak kullanımı** : ÖRNEĞIN, CPU kullanımının uzun bir süre için yüzde 80 ' luk arttığı bir senaryoyu düşünün. Yalnızca CPU kullanımı, iş yükü biriminin değiştiği anlamına gelmez. Sorgu yürütme planındaki gerilemeler ve veri dağıtımındaki değişiklikler aynı zamanda uygulama aynı iş yükünü yürüttüğünde bile daha fazla kaynak kullanımına katkıda bulunabilir.
+- **Değiştirilen kaynak kullanımı**: ÖRNEĞIN, CPU kullanımının uzun bir süre için yüzde 80 ' luk arttığı bir senaryoyu düşünün. Yalnızca CPU kullanımı, iş yükü biriminin değiştiği anlamına gelmez. Sorgu yürütme planındaki gerilemeler ve veri dağıtımındaki değişiklikler aynı zamanda uygulama aynı iş yükünü yürüttüğünde bile daha fazla kaynak kullanımına katkıda bulunabilir.
 
-- **Yeni bir sorgunun görünümü** : bir uygulama, farklı zamanlarda yeni bir sorgu kümesini sürücü halinde kullanabilir.
+- **Yeni bir sorgunun görünümü**: bir uygulama, farklı zamanlarda yeni bir sorgu kümesini sürücü halinde kullanabilir.
 
-- **İstek sayısında artış veya azaltma** : Bu senaryo, bir iş yükünün en belirgin ölçümüdür. Sorgu sayısı, her zaman daha fazla kaynak kullanımına karşılık gelmez. Ancak, bu ölçüm hala önemli bir sinyaldir ve diğer faktörler değiştirilmez.
+- **İstek sayısında artış veya azaltma**: Bu senaryo, bir iş yükünün en belirgin ölçümüdür. Sorgu sayısı, her zaman daha fazla kaynak kullanımına karşılık gelmez. Ancak, bu ölçüm hala önemli bir sinyaldir ve diğer faktörler değiştirilmez.
 
 [İş yükü artışsını](database/intelligent-insights-troubleshoot-performance.md#workload-increase) ve [gerileme planını](database/intelligent-insights-troubleshoot-performance.md#plan-regression)algılamak için akıllı içgörüler kullanın.
 
@@ -185,7 +185,7 @@ Bir CPU sorunu sunan iş yükü birimi değişikliğini belirlemek her zaman kol
 
 Bir alt plan planını ve yürütme sorunlarıyla ilgili *bekleme* sorunlarını ortadan kaldırdıktan sonra, performans sorunu genellikle sorgular büyük olasılıkla bazı kaynakları bekliyor. Bekleme ile ilgili sorunlar şunlar olabilir:
 
-- **Engelleme** :
+- **Engelleme**:
 
   Bir sorgu, diğer kullanıcılar aynı nesnelere erişmeyi denediğinde veritabanındaki nesneleri kilitleyip tutabilirler. [DMVs](database/monitoring-with-dmvs.md#monitoring-blocked-queries) veya [akıllı içgörüler](database/intelligent-insights-troubleshoot-performance.md#locking)kullanarak engelleme sorgularını belirleyebilirsiniz.
 - **GÇ sorunları**

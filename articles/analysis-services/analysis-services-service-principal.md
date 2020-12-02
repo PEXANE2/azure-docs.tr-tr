@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5d114017d5e5dfecfe20afc69849763a87aadd41
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: b04b9ababfe0e4c2a60d14044b9d3ee120837dc5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015345"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491052"
 ---
 # <a name="automation-with-service-principals"></a>Hizmet sorumlularıyla otomasyon
 
@@ -92,7 +92,7 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO ve ADOMD 
 
-İstemci uygulamalarıyla ve web uygulamalarıyla bağlantı kurarken, NuGet’ten [AMO ve ADOMD istemci kitaplıkları](/analysis-services/client-libraries?view=azure-analysis-services-current) sürüm 15.0.2 ve üzeri yüklenebilir paketleri bağlantı dizelerinde şu söz dizimiyle hizmet sorumlularının kullanılmasını destekler: `app:AppID` ve parola veya `cert:thumbprint`. 
+İstemci uygulamalarıyla ve web uygulamalarıyla bağlantı kurarken, NuGet’ten [AMO ve ADOMD istemci kitaplıkları](/analysis-services/client-libraries?view=azure-analysis-services-current&preserve-view=true) sürüm 15.0.2 ve üzeri yüklenebilir paketleri bağlantı dizelerinde şu söz dizimiyle hizmet sorumlularının kullanılmasını destekler: `app:AppID` ve parola veya `cert:thumbprint`. 
 
 Aşağıdaki örnekte bir model veritabanı yenileme işlemi gerçekleştirmek için `appID` ve `password` kullanılmıştır:
 

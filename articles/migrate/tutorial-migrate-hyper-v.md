@@ -6,12 +6,12 @@ ms.date: 06/08/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 038d0ec817d4f81371546e8d7aa4b48b299c8d98
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 2d31c5b90f37f336b48118e4f4adde4777f8cf4a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302556"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493143"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Hyper-V VM’lerini Azure’a geçirme 
 
@@ -22,7 +22,7 @@ Bu öğretici, makinelerin Azure 'a nasıl değerlendirileceğini ve geçirilece
 > [!NOTE]
 > Öğreticiler, bir senaryo için en basit dağıtım yolunu gösterir, böylece bir kavram kanıtı hızlı bir şekilde ayarlayabilmenizi sağlayabilirsiniz. Öğreticiler mümkün olduğunca varsayılan seçenekleri kullanır ve tüm olası ayarları ve yolları göstermez. 
 
- Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure geçişi: sunucu geçiş aracı 'nı ekleyin.
@@ -45,7 +45,6 @@ Bu öğreticiye başlamadan önce karşılamanız gereken ön koşullar şunlard
 4. [Hyper-V VM](tutorial-assess-hyper-v.md) 'lerini Azure 'a geçirmeden önce değerlendirmenizi öneririz, ancak şunları yapmanız gerekmez.
 5. Zaten oluşturulmuş projeye git veya [Yeni bir proje oluştur](https://docs.microsoft.com/azure/migrate/create-manage-projects)
 6. Azure hesabınız için izinleri doğrulama-Azure hesabınız, bir VM oluşturmak ve Azure yönetilen diskine yazmak için izinlere ihtiyaç duyuyor.
-
 
 ## <a name="download-and-install-the-provider"></a>Sağlayıcıyı indirme ve yükleme
 

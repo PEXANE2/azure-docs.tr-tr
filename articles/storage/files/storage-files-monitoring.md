@@ -10,12 +10,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 5357a1f2d1f042f9dab01edf205926992e4225d0
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: c33771bc67a67d6b3b73769071126db6a913f702
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843834"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492157"
 ---
 # <a name="monitoring-azure-files"></a>Azure dosyalarını izleme
 
@@ -44,7 +44,7 @@ Azure dosyaları, [Azure kaynaklarından gelen verileri izleme](../../azure-moni
 
 Azure dosyaları tarafından oluşturulan ölçümler ve günlük ölçümleri hakkında ayrıntılı bilgi için bkz. [Azure dosya izleme veri başvurusu](storage-files-monitoring-reference.md) .
 
-Azure Izleyici 'de ölçümler ve Günlükler yalnızca depolama hesaplarını Azure Resource Manager destekler. Azure Izleyici, klasik depolama hesaplarını desteklemez. Klasik bir depolama hesabında ölçümleri veya günlükleri kullanmak istiyorsanız bir Azure Resource Manager depolama hesabına geçiş yapmanız gerekir. Bkz. [Azure Resource Manager 'ye geçirme](../../virtual-machines/windows/migration-classic-resource-manager-overview.md).
+Azure Izleyici 'de ölçümler ve Günlükler yalnızca depolama hesaplarını Azure Resource Manager destekler. Azure Izleyici, klasik depolama hesaplarını desteklemez. Klasik bir depolama hesabında ölçümleri veya günlükleri kullanmak istiyorsanız bir Azure Resource Manager depolama hesabına geçiş yapmanız gerekir. Bkz. [Azure Resource Manager 'ye geçirme](../../virtual-machines/migration-classic-resource-manager-overview.md).
 
 ## <a name="collection-and-routing"></a>Toplama ve yönlendirme
 
@@ -69,7 +69,7 @@ Azure portal, PowerShell, Azure CLı veya bir Azure Resource Manager şablonunu 
 
 Genel rehberlik için bkz. [Azure 'da platform günlüklerini ve ölçümlerini toplamak için tanılama ayarı oluşturma](../../azure-monitor/platform/diagnostic-settings.md).
 
-### <a name="azure-portal"></a>[Azure portalı](#tab/azure-portal)
+### <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. Azure portalında oturum açın.
 

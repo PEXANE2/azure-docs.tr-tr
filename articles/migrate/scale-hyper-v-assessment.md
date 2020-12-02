@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: raynew
-ms.openlocfilehash: 393c58334f4a1bead7e089d0a64b2d165b67401d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: f54283e4e63af22b30bddf97456eed75de3806cc
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317171"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492973"
 ---
 # <a name="assess-large-numbers-of-hyper-v-vms-for-migration-to-azure"></a>Azure 'a geçiş için çok sayıda Hyper-V VM 'yi değerlendirin
 
@@ -75,7 +75,7 @@ Planlama gereksinimlerinize uygun olarak şunları yapın:
 1. Bir Azure geçişi projesi oluşturun.
 2. Azure geçişi sunucu değerlendirmesi aracını projelere ekleyin.
 
-[Daha fazla bilgi edinin](how-to-add-tool-first-time.md)
+[Daha fazla bilgi edinin](./create-manage-projects.md)
 
 ## <a name="create-and-review-an-assessment"></a>Değerlendirme oluşturma ve gözden geçirme
 

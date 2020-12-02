@@ -6,12 +6,12 @@ ms.author: jiangma
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 0a6449e6b728ee690dd6ddee192868aaeb3511ad
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9ed53721b66dc03bad24e0510e0c8a970c61aec1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95911048"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492429"
 ---
 # <a name="configure-built-in-container-registry-for-azure-red-hat-openshift-4"></a>Azure Red Hat OpenShift 4 için yerleşik kapsayıcı kayıt defterini yapılandırma
 
@@ -26,9 +26,9 @@ Bu makalede, Azure Red Hat OpenShift (ARO) 4 kümesi için yerleşik kapsayıcı
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makalede, mevcut bir ARO kümeniz olduğu varsayılır. Bir ARO kümesine ihtiyacınız varsa, bkz. ARO öğreticisi, [Azure Red Hat OpenShift 4 kümesi oluşturma](/azure/openshift/tutorial-create-cluster). Bağımsız değişkeniyle küme oluşturmayı unutmayın `--pull-secret` `az aro create` .  Bu, Azure Active Directory kimlik doğrulaması ve yerleşik kapsayıcı kayıt defteri yapılandırmak için gereklidir.
+Bu makalede, mevcut bir ARO kümeniz olduğu varsayılır. Bir ARO kümesine ihtiyacınız varsa, bkz. ARO öğreticisi, [Azure Red Hat OpenShift 4 kümesi oluşturma](./tutorial-create-cluster.md). Bağımsız değişkeniyle küme oluşturmayı unutmayın `--pull-secret` `az aro create` .  Bu, Azure Active Directory kimlik doğrulaması ve yerleşik kapsayıcı kayıt defteri yapılandırmak için gereklidir.
 
-Kümeniz olduktan sonra, [Azure Red Hat OpenShift 4 kümesine bağlanma](/azure/openshift/tutorial-connect-cluster)bölümündeki adımları izleyerek kümeye bağlanın.
+Kümeniz olduktan sonra, [Azure Red Hat OpenShift 4 kümesine bağlanma](./tutorial-connect-cluster.md)bölümündeki adımları izleyerek kümeye bağlanın.
    * Bu makalenin ilerleyen kısımlarında komutunu kullanacağımız için "OpenShift CLı 'yı Install" bölümündeki adımları izlediğinizden emin olun `oc` .
    * Gibi görünen küme konsolu URL 'sini unutmayın `https://console-openshift-console.apps.<random>.<region>.aroapp.io/` . `<random>`Ve değerleri `<region>` Bu makalede daha sonra kullanılacaktır.
    * `kubeadmin`Kimlik bilgilerini aklınızda edin. Bunlar, bu makalenin ilerleyen kısımlarında de kullanılacaktır.

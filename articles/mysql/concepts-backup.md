@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 05cc6579d83fe0cd861f3f91b8d44297963f8101
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: a124f576b2540399d27fcd97e0e58476dba4ba4b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433283"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492820"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda yedekleme ve geri yükleme
 
@@ -38,11 +38,11 @@ Temel depolama, [temel katman sunucularını](concepts-pricing-tiers.md)destekle
 Genel amaçlı depolama, [genel amaçlı](concepts-pricing-tiers.md) ve [bellek için iyileştirilmiş katman](concepts-pricing-tiers.md) sunucusunu destekleyen arka uç deposıdır. 4 TB 'a kadar genel amaçlı depolamaya sahip sunucular için her hafta bir kez tam yedeklemeler gerçekleşir. Değişiklik yedeklemeleri günde iki kez gerçekleşir. İşlem günlüğü yedeklemeleri her beş dakikada bir gerçekleşir. 4 TB 'lık depolamaya kadar genel amaçlı depolama üzerindeki yedeklemeler anlık görüntü tabanlıdır ve yedekleme sırasında GÇ bant genişliği tüketir. 4 TB depolama alanı üzerinde büyük veritabanları (> 1 TB) için, şunları göz önünde bulundurmanız önerilir
 
 - Yedekleme IOs için hesaba daha fazla IOPS sağlama veya
-- Alternatif olarak, temel alınan depolama altyapısı tercih ettiğiniz [Azure Bölgelerinizdeki](/azure/mysql/concepts-pricing-tiers#storage)kullanılabilir ise, 16 TB 'a kadar depolamayı destekleyen genel amaçlı depolamaya geçiş yapın. Genel amaçlı depolama için 16 TB 'a kadar depolamayı destekleyen ek bir ücret yoktur. 16 TB depolamaya geçiş konusunda yardım için lütfen Azure portal bir destek bileti açın.
+- Alternatif olarak, temel alınan depolama altyapısı tercih ettiğiniz [Azure Bölgelerinizdeki](./concepts-pricing-tiers.md#storage)kullanılabilir ise, 16 TB 'a kadar depolamayı destekleyen genel amaçlı depolamaya geçiş yapın. Genel amaçlı depolama için 16 TB 'a kadar depolamayı destekleyen ek bir ücret yoktur. 16 TB depolamaya geçiş konusunda yardım için lütfen Azure portal bir destek bileti açın.
 
 #### <a name="general-purpose-storage-servers-with-up-to-16-tb-storage"></a>16 TB 'a kadar depolama alanı içeren genel amaçlı depolama sunucuları
 
-[Azure bölgelerinin](/azure/mysql/concepts-pricing-tiers#storage)bir alt kümesinde, tüm yeni sağlanan sunucular, 16 TB 'a kadar genel amaçlı depolama alanını destekleyebilir. Diğer bir deyişle, 16 TB 'a kadar depolama alanı, desteklendiği tüm [bölgeler](concepts-pricing-tiers.md#storage) için varsayılan genel amaçlı depolama alanı olur. Bu 16 TB depolama sunucularındaki yedeklemeler anlık görüntü tabanlıdır. İlk tam anlık görüntü yedeklemesi, sunucu oluşturulduktan hemen sonraya zamanlanır. Bu ilk tam anlık görüntü yedeklemesi sunucunun temel yedeklemesi olarak tutulur. Sonraki anlık görüntü yedeklemeleri yalnızca değişiklik yedeğidir.
+[Azure bölgelerinin](./concepts-pricing-tiers.md#storage)bir alt kümesinde, tüm yeni sağlanan sunucular, 16 TB 'a kadar genel amaçlı depolama alanını destekleyebilir. Diğer bir deyişle, 16 TB 'a kadar depolama alanı, desteklendiği tüm [bölgeler](concepts-pricing-tiers.md#storage) için varsayılan genel amaçlı depolama alanı olur. Bu 16 TB depolama sunucularındaki yedeklemeler anlık görüntü tabanlıdır. İlk tam anlık görüntü yedeklemesi, sunucu oluşturulduktan hemen sonraya zamanlanır. Bu ilk tam anlık görüntü yedeklemesi sunucunun temel yedeklemesi olarak tutulur. Sonraki anlık görüntü yedeklemeleri yalnızca değişiklik yedeğidir.
 
 Anlık görüntü değişiklik yedekleri günde en az bir kez gerçekleştirilir. Anlık görüntü değişiklik yedekleri belirli bir plana göre gerçekleştirilmez. Değişiklik anlık görüntüsü yedeklemeleri, son fark yedeklemesinden bu yana işlem günlüğü (MySQL içindeki binlog) 50 GB 'yi aşmadığı takdirde 24 saatte bir gerçekleşir. Bir gün içinde en fazla altı anlık görüntü değişiklik yedeği alınabilir.
 

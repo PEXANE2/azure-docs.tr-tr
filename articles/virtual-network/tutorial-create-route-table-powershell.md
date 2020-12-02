@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c94c7709a8066b31a6ac1ebc54180d41a303f44a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41c0f9546b07158a2c7fb3344698598f0c38521f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078240"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492106"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-powershell"></a>PowerShell kullanarak bir rota tablosu ile ağ trafiğini yönlendirme
 
@@ -52,7 +52,7 @@ Bir rota tablosu oluşturabilmeniz için, [New-AzResourceGroup](/powershell/modu
 New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 ```
 
-[New-AzRouteTable](/powershell/module/az.network/new-azroutetable)ile bir rota tablosu oluşturun. Aşağıdaki örnek *Myroutetablepublic*adlı bir yol tablosu oluşturur.
+[New-AzRouteTable](/powershell/module/az.network/new-azroutetable)ile bir rota tablosu oluşturun. Aşağıdaki örnek *Myroutetablepublic* adlı bir yol tablosu oluşturur.
 
 ```azurepowershell-interactive
 $routeTablePublic = New-AzRouteTable `
@@ -79,7 +79,7 @@ Get-AzRouteTable `
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Yönlendirme tablosunu bir alt ağ ile ilişkilendirme
 
-Bir rota tablosunu bir alt ağ ile ilişkilendirebilmeniz için önce bir sanal ağ ve alt ağ oluşturmanız gerekir. [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)ile bir sanal ağ oluşturun. Aşağıdaki örnek, *10.0.0.0/16*adres ön ekine sahip *myVirtualNetwork* adlı bir sanal ağ oluşturur.
+Bir rota tablosunu bir alt ağ ile ilişkilendirebilmeniz için önce bir sanal ağ ve alt ağ oluşturmanız gerekir. [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)ile bir sanal ağ oluşturun. Aşağıdaki örnek, *10.0.0.0/16* adres ön ekine sahip *myVirtualNetwork* adlı bir sanal ağ oluşturur.
 
 ```azurepowershell-interactive
 $virtualNetwork = New-AzVirtualNetwork `
@@ -89,7 +89,7 @@ $virtualNetwork = New-AzVirtualNetwork `
   -AddressPrefix 10.0.0.0/16
 ```
 
-[New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)ile üç alt ağ yapılandırması oluşturarak üç alt ağ oluşturun. Aşağıdaki örnek, *genel*, *özel*ve *DMZ* alt ağları için üç alt ağ yapılandırması oluşturur:
+[New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)ile üç alt ağ yapılandırması oluşturarak üç alt ağ oluşturun. Aşağıdaki örnek, *genel*, *özel* ve *DMZ* alt ağları için üç alt ağ yapılandırması oluşturur:
 
 ```azurepowershell-interactive
 $subnetConfigPublic = Add-AzVirtualNetworkSubnetConfig `
@@ -121,7 +121,7 @@ Set-AzVirtualNetworkSubnetConfig `
   -VirtualNetwork $virtualNetwork `
   -Name 'Public' `
   -AddressPrefix 10.0.0.0/24 `
-  -RouteTable $routeTablePublic | `
+  -RouteTable $myRouteTablePublic | `
 Set-AzVirtualNetwork
 ```
 
@@ -178,7 +178,7 @@ $vmConfig = New-AzVMConfig `
   Add-AzVMNetworkInterface -Id $nic.Id
 ```
 
-VM yapılandırmasını [New-AzVM](/powershell/module/az.compute/new-azvm)ile kullanarak VM 'yi oluşturun. Aşağıdaki örnek, *Myvmnva*ADLı bir VM oluşturur.
+VM yapılandırmasını [New-AzVM](/powershell/module/az.compute/new-azvm)ile kullanarak VM 'yi oluşturun. Aşağıdaki örnek, *Myvmnva* ADLı bir VM oluşturur.
 
 ```azurepowershell-interactive
 $vmNva = New-AzVM `

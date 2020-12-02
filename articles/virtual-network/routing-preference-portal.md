@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: 7d41893d734037e466ad786641fed98c461adcfc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21d9f318ef18b7ffb49a95ce495c09f1fa46ec1a
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86231820"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491324"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-the-azure-portal"></a>Azure portal kullanarak genel IP adresi için yönlendirme tercihini yapılandırın
 
@@ -25,7 +25,7 @@ Bu makalede genel bir IP adresi için ISS ağı (**Internet** seçeneği) aracı
 
 * Sanal makine
 * Sanal makine ölçek kümesi
-* Azure Kubernetes Hizmeti (AKS)
+* Azure Kubernetes Service (AKS)
 * Internet 'e yönelik yük dengeleyici
 * Application Gateway
 * Azure Güvenlik Duvarı
@@ -34,20 +34,14 @@ Varsayılan olarak, genel IP adresi için yönlendirme tercihi tüm Azure hizmet
 
 > [!IMPORTANT]
 > Yönlendirme tercihi şu anda genel önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Azure aboneliğiniz yoksa şimdi [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="register-the-feature-for-your-subscription"></a>Aboneliğiniz için özelliği kaydedin
-Yönlendirme tercihi özelliği şu anda önizlemededir. Azure PowerShell kullanarak aboneliğiniz için özelliği aşağıdaki gibi kaydedin:
-```azurepowershell
-Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature -ProviderNamespace Microsoft.Network
-```
-
 ## <a name="create-a-public-ip-address-with-a-routing-preference"></a>Yönlendirme tercihi ile genel IP adresi oluşturma
-1. [Azure Portal](https://preview.portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://preview.portal.azure.com/) oturum açın.
 2. **Kaynak oluştur**’u seçin. 
-3. Arama kutusuna *genel IP adresi*yazın.
+3. Arama kutusuna *genel IP adresi* yazın.
 3. Arama sonuçlarında **genel IP adresi**' ni seçin. Sonra, **genel IP adresi** sayfasında **Oluştur**' u seçin.
 3. **Yönlendirme tercihi** seçeneklerinde **Internet**' i seçin.
 

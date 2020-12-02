@@ -11,19 +11,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
-ms.openlocfilehash: 6411e019d77b219e40bd91da973e00afda0ff18b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 047da0224cdbdb534ad9080faee4fd48da3840c5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965494"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492463"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Azure ağ Izleyicisi 'nde bağlantıya sorun giderme konusuna giriş
 
 Ağ Izleyicisi 'nin bağlantı sorunlarını giderme özelliği, bir sanal makineden bir sanal makineye (VM), tam etki alanı adına (FQDN), URI 'ye veya IPv4 adresine doğrudan TCP bağlantısını denetleme yeteneği sağlar. Ağ senaryoları karmaşıktır, bunlar ağ güvenlik grupları, güvenlik duvarları, Kullanıcı tanımlı yollar ve Azure tarafından sağlanmış kaynaklar kullanılarak uygulanır. Karmaşık yapılandırmalarda sorun giderme bağlantı sorunları zorlayıcı hale getirir. Ağ Izleyicisi, bağlantı sorunlarını bulma ve algılamaya yönelik süreyi azaltmaya yardımcı olur. Döndürülen sonuçlar, bir bağlantı sorununun bir platform veya Kullanıcı yapılandırma sorunundan kaynaklanıyor olup olmadığı hakkında öngörüler sağlayabilir. Bağlantı, [PowerShell](network-watcher-connectivity-powershell.md), [Azure CLI](network-watcher-connectivity-cli.md)ve [REST API](network-watcher-connectivity-rest.md)ile denetlenebilir.
 
 > [!IMPORTANT]
-> Bağlantı sorunlarını gidermek için, üzerinde çalıştığınız VM 'nin `AzureNetworkWatcherExtension` VM uzantısının yüklü olması gerekir. Windows VM 'ye uzantı yüklemek için bkz. [Windows Için Azure ağ Izleyicisi Aracısı sanal makine uzantısı](../virtual-machines/extensions/network-watcher-windows.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json) ve Linux VM Için [Azure Ağ İzleyicisi Aracısı sanal makine uzantısı](../virtual-machines/extensions/network-watcher-linux.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json)' nı ziyaret edin. Uzantı hedef uç noktada gerekli değil.
+> Bağlantı sorunlarını gidermek için, üzerinde çalıştığınız VM 'nin `AzureNetworkWatcherExtension` VM uzantısının yüklü olması gerekir. Windows VM 'ye uzantı yüklemek için bkz. [Windows Için Azure ağ Izleyicisi Aracısı sanal makine uzantısı](../virtual-machines/extensions/network-watcher-windows.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) ve Linux VM Için [Azure Ağ İzleyicisi Aracısı sanal makine uzantısı](../virtual-machines/extensions/network-watcher-linux.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)' nı ziyaret edin. Uzantı hedef uç noktada gerekli değil.
 
 ## <a name="response"></a>Yanıt
 

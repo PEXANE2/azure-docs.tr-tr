@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 1eddca26152f27ced20bbae66b3265639b97e64e
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 266862a1691387caf1b1ffa9a47b0e60e84970d8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629504"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492140"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Dosyalar hakkında sık sorulan sorular (SSS)
 [Azure dosyaları](storage-files-introduction.md) , bulutta endüstri standardı [sunucu ILETI bloğu (SMB) protokolü](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) ve [ağ dosya sistemi (NFS) protokolü](https://en.wikipedia.org/wiki/Network_File_System) (Önizleme) aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Azure dosya paylaşımlarını bulutta veya Windows, Linux ve macOS 'ın şirket içi dağıtımlarında eşzamanlı olarak bağlayabilirsiniz. Ayrıca, verilerin kullanıldığı yere hızlı erişim için Azure Dosya Eşitleme kullanarak Windows Server makinelerinde Azure dosya paylaşımlarını önbelleğe alabilirsiniz.
@@ -22,7 +22,7 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
 1. Bu makalenin açıklamalar bölümü.
 2. [Microsoft Q&Azure depolama Için bir soru sayfası](/answers/topics/azure-file-storage.html).
 3. [Azure dosyaları UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files). 
-4. Microsoft Desteği. Yeni bir destek isteği oluşturmak için, Azure portal **Yardım** sekmesinde **Yardım + Destek** düğmesini seçin ve ardından **Yeni destek isteği** ' ni seçin.
+4. Microsoft Desteği. Yeni bir destek isteği oluşturmak için, Azure portal **Yardım** sekmesinde **Yardım + Destek** düğmesini seçin ve ardından **Yeni destek isteği**' ni seçin.
 
 ## <a name="general"></a>Genel
 * <a id="why-files-useful"></a>
@@ -184,7 +184,7 @@ Bu makalede, Azure dosyaları ile Azure Dosya Eşitleme kullanımı dahil olmak 
 
     - Azure Dosya Eşitleme tüm isteğe bağlı ACL 'Leri veya DACL 'Leri (Active Directory tabanlı veya yerel), eşitlediği tüm sunucu uç noktalarına korur ve çoğaltır. 
     
-    Azure Storage hizmetlerinde desteklenen tüm protokollerin kapsamlı bir gösterimi için [Azure depolama 'ya erişimi yetkilendirme](../common/storage-auth.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) konusuna başvurabilirsiniz. 
+    Azure Storage hizmetlerinde desteklenen tüm protokollerin kapsamlı bir gösterimi için [Azure depolama 'ya erişimi yetkilendirme](../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) konusuna başvurabilirsiniz. 
     
 * <a id="encryption-at-rest"></a>
 **Azure dosya paylaşımımın bekleyen bir şekilde şifrelenmesini nasıl sağlayabilirim?**  

@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0196330df01f98e216c39bcc689eac2bde2f4cd9
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: e112060db4a44884d3094a939b03ff106ba72e65
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629351"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492208"
 ---
 # <a name="develop-for-azure-files-with-net"></a>.NET ile Azure Dosyaları için geliştirme
 
@@ -50,9 +50,9 @@ Azure dosyaları istemci kitaplığını herhangi bir tür .NET uygulamasında k
 
 Visual Studio'da yeni bir Windows konsol uygulaması oluşturun. Aşağıdaki adımlarda, Visual Studio 2019 ' de bir konsol uygulamasının nasıl oluşturulacağı gösterilmektedir. Adımlar Visual Studio’nun diğer sürümlerinde de benzerdir.
 
-1. Visual Studio 'Yu başlatın ve **Yeni proje oluştur** ' u seçin.
-1. **Yeni proje oluştur** bölümünde C# için **konsol uygulaması (.NET Framework)** öğesini seçin ve ardından **İleri** ' yi seçin.
-1. **Yeni projenizi yapılandırın** bölümünde uygulama için bir ad girin ve **Oluştur** ' u seçin.
+1. Visual Studio 'Yu başlatın ve **Yeni proje oluştur**' u seçin.
+1. **Yeni proje oluştur** bölümünde C# için **konsol uygulaması (.NET Framework)** öğesini seçin ve ardından **İleri**' yi seçin.
+1. **Yeni projenizi yapılandırın** bölümünde uygulama için bir ad girin ve **Oluştur**' u seçin.
 
 Bu makaledeki tüm kod örneklerini `Program` *program.cs* dosyasındaki sınıfına ekleyin.
 
@@ -69,8 +69,8 @@ Projenizdeki bu paketlere başvurun:
 
 Paketleri edinmek için NuGet kullanabilirsiniz. Şu adımları izleyin:
 
-1. **Çözüm Gezgini** , projenize sağ tıklayın ve **NuGet Paketlerini Yönet** ' i seçin.
-1. **NuGet Paket Yöneticisi** ' nde, **Araştır** ' ı seçin. Sonra **Azure. Core** ' u arayıp seçin ve ardından **Install** ' ı seçin.
+1. **Çözüm Gezgini**, projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin.
+1. **NuGet Paket Yöneticisi**' nde, **Araştır**' ı seçin. Sonra **Azure. Core**' u arayıp seçin ve ardından **Install**' ı seçin.
 
    Bu adım paketini ve bağımlılıklarını yüklenir.
 
@@ -89,8 +89,8 @@ Paketleri edinmek için NuGet kullanabilirsiniz. Şu adımları izleyin:
 
 Paketleri edinmek için NuGet kullanabilirsiniz. Şu adımları izleyin:
 
-1. **Çözüm Gezgini** , projenize sağ tıklayın ve **NuGet Paketlerini Yönet** ' i seçin.
-1. **NuGet Paket Yöneticisi** ' nde, **Araştır** ' ı seçin. Sonra **Microsoft. Azure. Storage. blob** ' u arayıp seçin ve ardından **Install** ' ı seçin.
+1. **Çözüm Gezgini**, projenize sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin.
+1. **NuGet Paket Yöneticisi**' nde, **Araştır**' ı seçin. Sonra **Microsoft. Azure. Storage. blob**' u arayıp seçin ve ardından **Install**' ı seçin.
 
    Bu adım paketini ve bağımlılıklarını yüklenir.
 1. Bu paketleri arayın ve yükler:
@@ -103,7 +103,7 @@ Paketleri edinmek için NuGet kullanabilirsiniz. Şu adımları izleyin:
 
 ## <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>Depolama hesabı kimlik bilgilerinizi App.config dosyasına kaydedin
 
-Ardından, kimlik bilgilerinizi projenizin *App.config* dosyasına kaydedin. **Çözüm Gezgini** , `App.config` dosyayı aşağıdaki örneğe benzer olacak şekilde çift tıklayın ve düzenleyin.
+Ardından, kimlik bilgilerinizi projenizin *App.config* dosyasına kaydedin. **Çözüm Gezgini**, `App.config` dosyayı aşağıdaki örneğe benzer olacak şekilde çift tıklayın ve düzenleyin.
 
 # <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
@@ -135,7 +135,7 @@ Ardından, kimlik bilgilerinizi projenizin *App.config* dosyasına kaydedin. **�
 
 ## <a name="add-using-directives"></a>Using yönergeleri ekleme
 
-**Çözüm Gezgini** , *program.cs* dosyasını açın ve aşağıdaki using yönergelerini dosyanın en üstüne ekleyin.
+**Çözüm Gezgini**, *program.cs* dosyasını açın ve aşağıdaki using yönergelerini dosyanın en üstüne ekleyin.
 
 # <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
@@ -316,7 +316,7 @@ Paylaşılan erişim imzaları oluşturma ve kullanma hakkında daha fazla bilgi
 
 Azure dosyaları istemci kitaplığı 'nın 5. x sürümünden başlayarak, bir dosyayı başka bir dosyaya, bir bloba bir dosyaya veya bir bloba bir dosyaya kopyalayabilirsiniz.
 
-AzCopy komutunu Ayrıca bir dosyayı başka bir dosyaya kopyalamak veya bir blobu bir dosyaya ya da başka bir yolla kopyalamak için de kullanabilirsiniz. Bkz. [AzCopy ile çalışmaya başlama](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json).
+AzCopy komutunu Ayrıca bir dosyayı başka bir dosyaya kopyalamak veya bir blobu bir dosyaya ya da başka bir yolla kopyalamak için de kullanabilirsiniz. Bkz. [AzCopy ile çalışmaya başlama](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 > [!NOTE]
 > Bir blobu dosyaya veya bir dosyayı bloba kopyalamak için aynı depolama hesabında kopyalama yapıyor olsanız da kaynak nesnesi erişimini yetkilendirmek amacıyla bir paylaşılan erişim imzası (SAS) kullanmanız gerekir.
@@ -624,7 +624,7 @@ Azure dosyaları hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın
 
 ### <a name="tooling-support-for-file-storage"></a>File Storage için araç desteği
 
-- [AzCopy’yi kullanmaya başlama](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json)
+- [AzCopy’yi kullanmaya başlama](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 - [Windows’ta Azure Dosyalar sorunlarını giderme](./storage-troubleshoot-windows-file-connection-problems.md)
 
 ### <a name="reference"></a>Başvuru

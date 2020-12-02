@@ -9,12 +9,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: e5b54f0eb3f068e1697b8541373ed84692448a59
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: da6a1f4590257d43d2604913f2cbcedf29ea1eb6
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844838"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491783"
 ---
 # <a name="monitoring-azure-table-storage"></a>Azure Tablo depolamayı izleme
 
@@ -46,7 +46,7 @@ Azure Tablo depolama, [Azure kaynaklarından gelen verileri izleme](../../azure-
 
 Azure Tablo Depolaması tarafından oluşturulan ölçümler ve günlük ölçümleri hakkında ayrıntılı bilgi için bkz. [Azure Tablo depolama izleme verileri başvurusu](monitor-table-storage-reference.md) .
 
-Azure Izleyici 'de ölçümler ve Günlükler yalnızca depolama hesaplarını Azure Resource Manager destekler. Azure Izleyici, klasik depolama hesaplarını desteklemez. Klasik bir depolama hesabında ölçümleri veya günlükleri kullanmak istiyorsanız bir Azure Resource Manager depolama hesabına geçiş yapmanız gerekir. Bkz. [Azure Resource Manager 'ye geçirme](../../virtual-machines/windows/migration-classic-resource-manager-overview.md).
+Azure Izleyici 'de ölçümler ve Günlükler yalnızca depolama hesaplarını Azure Resource Manager destekler. Azure Izleyici, klasik depolama hesaplarını desteklemez. Klasik bir depolama hesabında ölçümleri veya günlükleri kullanmak istiyorsanız bir Azure Resource Manager depolama hesabına geçiş yapmanız gerekir. Bkz. [Azure Resource Manager 'ye geçirme](../../virtual-machines/migration-classic-resource-manager-overview.md).
 
 İsterseniz klasik ölçümleri ve günlükleri kullanmaya devam edebilirsiniz. Aslında, klasik ölçümler ve Günlükler Azure Izleyici 'de ölçümler ve Günlükler ile paralel olarak kullanılabilir. Azure depolama hizmeti eski ölçümler ve günlüklerde sona erene kadar destek yerinde kalır.
 
@@ -71,7 +71,7 @@ Genel rehberlik için bkz. [Azure 'da platform günlüklerini ve ölçümlerini 
 > [!NOTE]
 > Azure Izleyici 'de Azure depolama günlükleri genel önizleme aşamasındadır ve tüm genel bulut bölgelerinde önizleme testi için kullanılabilir. Önizlemeye kaydolmak için [Bu sayfaya](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)bakın. Bu önizleme, Bloblar (Azure Data Lake Storage 2.), dosyalar, kuyruklar ve tablolar için Günlükler sunar. Bu özellik, Azure Resource Manager dağıtım modeliyle oluşturulan tüm depolama hesapları için kullanılabilir. Bkz. [depolama hesabına genel bakış](../common/storage-account-overview.md).
 
-### <a name="azure-portal"></a>[Azure portalı](#tab/azure-portal)
+### <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. Azure portalında oturum açın.
 

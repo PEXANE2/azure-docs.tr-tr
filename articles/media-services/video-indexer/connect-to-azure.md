@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: juliako
-ms.openlocfilehash: 3f159a11dc9607daf479c13f6612cab0175dae0c
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 282e1ef98a3c0d6e152b56a180a639c86d004af9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94634897"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493109"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Azure 'a bağlı bir Video Indexer hesabı oluşturun
 
@@ -45,7 +45,7 @@ Bu makalede, bir Azure aboneliğine ve bir Azure Media Services hesabına bağl�
 
     Video Indexer hesabınızı Azure 'a bağlarken bu üyeyi kullanacaksınız.
 
-    Bu Kullanıcı, bir **sahip** rolü ya da **katkıda** bulunan ve **Kullanıcı erişimi yönetici** rolleri ile Azure aboneliğinizde bir üye olmalıdır. Bir Kullanıcı iki rol ile iki kez eklenebilir. Katkıda bulunan ve Kullanıcı erişimi yöneticisiyle bir kez. Daha fazla bilgi için bkz. [kullanıcının Azure kaynaklarına erişimi görüntüleme](https://docs.microsoft.com/azure/role-based-access-control/check-access).
+    Bu Kullanıcı, bir **sahip** rolü ya da **katkıda** bulunan ve **Kullanıcı erişimi yönetici** rolleri ile Azure aboneliğinizde bir üye olmalıdır. Bir Kullanıcı iki rol ile iki kez eklenebilir. Katkıda bulunan ve Kullanıcı erişimi yöneticisiyle bir kez. Daha fazla bilgi için bkz. [kullanıcının Azure kaynaklarına erişimi görüntüleme](../../role-based-access-control/check-access.md).
 
     ![erişim denetimi](./media/create-account/access-control-iam.png)
 
@@ -53,9 +53,9 @@ Bu makalede, bir Azure aboneliğine ve bir Azure Media Services hesabına bağl�
 
 * Azure portal kullanarak EventGrid kaynak sağlayıcısını kaydedin.
 
-    [Azure Portal](https://portal.azure.com/) **abonelikler** -> [abonelik]-> **resourceproviders** ' a gidin.
+    [Azure Portal](https://portal.azure.com/) **abonelikler**-> [abonelik]->**resourceproviders**' a gidin.
 
-    **Microsoft. Media** ve **Microsoft. eventgrid** için arama yapın. "Kayıtlı" durumunda değilse, **Kaydet** ' e tıklayın. Kaydolmak birkaç dakika sürer.
+    **Microsoft. Media** ve **Microsoft. eventgrid** için arama yapın. "Kayıtlı" durumunda değilse, **Kaydet**' e tıklayın. Kaydolmak birkaç dakika sürer.
 
     ![EventGrid](./media/create-account/event-grid.png)
 
@@ -74,10 +74,10 @@ Bu makalede, bir Azure aboneliğine ve bir Azure Media Services hesabına bağl�
 1. Desteklenen konumlardan bir Azure bölgesi seçin: Batı ABD 2, Kuzey Avrupa veya Doğu Asya.
 1. **Azure Media Services hesabı** altında şu seçeneklerden birini seçin:
 
-    * Yeni bir Media Services hesabı oluşturmak için **Yeni kaynak grubu oluştur** ' u seçin. Kaynak grubunuz için bir ad girin.
+    * Yeni bir Media Services hesabı oluşturmak için **Yeni kaynak grubu oluştur**' u seçin. Kaynak grubunuz için bir ad girin.
 
         Azure yeni bir Azure depolama hesabı da dahil olmak üzere aboneliğinizde yeni hesabınızı oluşturacak.  
-    * Mevcut bir Media Services hesabını kullanmak için **mevcut kaynağı kullan** ' ı seçin. Hesaplar listesinden hesabınızı seçin.
+    * Mevcut bir Media Services hesabını kullanmak için **mevcut kaynağı kullan**' ı seçin. Hesaplar listesinden hesabınızı seçin.
 
         Media Services hesabınız Video Indexer hesabınızla aynı bölgeye sahip olmalıdır.
 
@@ -86,7 +86,7 @@ Bu makalede, bir Azure aboneliğine ve bir Azure Media Services hesabına bağl�
     * Bağlantınızı el ile yapılandırmak için **el ile yapılandırma bağlantısına geç** bağlantısını seçin.
 
         Ayrıntılı bilgi için, aşağıda bulunan [Azure 'a El Ile bağlanma](#connect-to-azure-manually-advanced-option) (Gelişmiş seçenek) bölümüne bakın.
-1. İşiniz bittiğinde **Oluştur** ’u seçin. Bu işlem birkaç dakika sürebilir.
+1. İşiniz bittiğinde **Oluştur**’u seçin. Bu işlem birkaç dakika sürebilir.
 
     Azure 'a bağlandıktan sonra yeni Video Indexer hesabınız hesap listesinde görüntülenir:
 
@@ -94,7 +94,7 @@ Bu makalede, bir Azure aboneliğine ve bir Azure Media Services hesabına bağl�
 1. Video Indexer Web uygulamasında videolarınızı oynatabilmeniz için Media Services hesabının akış uç noktasının çalıştığından emin olun (durdurulmuş durumdaysa Başlat ' a basın).
 
 > [!TIP]
-> Hesabınız için kolay bir görüntü sağlamak üzere **Ayarlar** ' a gidin.
+> Hesabınız için kolay bir görüntü sağlamak üzere **Ayarlar**' a gidin.
 
 ## <a name="connect-to-azure-manually-advanced-option"></a>Azure 'a el ile bağlanma (Gelişmiş seçenek)
 
@@ -118,16 +118,16 @@ Azure bağlantısı başarısız olduysa, el ile bağlanarak sorunu gidermeyi de
     Ayrılmış birimler hesabınıza ücretlendirilir, [fiyatlandırma ayrıntılarını](https://azure.microsoft.com/pricing/details/media-services/#analytics)görüntüleyin. s
 1. Video Indexer Web uygulamasında videolarınızı oynatabilmeniz için önce yeni Media Services hesabının varsayılan **akış uç noktasını** başlatmanız gerekir.
 
-    Yeni Media Services hesabında, **akış uç noktaları** ' nı seçin. Ardından akış uç noktasını seçip Başlat ' a basın.
+    Yeni Media Services hesabında, **akış uç noktaları**' nı seçin. Ardından akış uç noktasını seçip Başlat ' a basın.
 
     ![Akış uç noktaları](./media/create-account/create-ams-account2.png)
 4. Media Services API 'SI ile kimlik doğrulaması yapmak Video Indexer için, bir AD uygulamasının oluşturulması gerekir. Aşağıdaki adımlar, [Azure Portal kullanarak Azure AD kimlik doğrulaması ile çalışmaya başlama](../previous/media-services-portal-get-started-with-aad.md)bölümünde AÇıKLANAN Azure AD kimlik doğrulaması sürecinde size kılavuzluk ediyor:
 
-    1. Yeni Media Services hesabında **API erişimi** ' ni seçin.
+    1. Yeni Media Services hesabında **API erişimi**' ni seçin.
     2. [Hizmet sorumlusu kimlik doğrulama yöntemini](../previous/media-services-portal-get-started-with-aad.md)seçin.
     3. İstemci KIMLIĞINI ve gizli anahtarı al
 
-        **Ayarlar** -> **anahtarlar** ' ı seçtikten sonra, **Açıklama** ekleyin, **Kaydet** ' e basın ve anahtar değeri doldurulur.
+        **Ayarlar** -> **anahtarlar**' ı seçtikten sonra, **Açıklama** ekleyin, **Kaydet**' e basın ve anahtar değeri doldurulur.
 
         Anahtarın süresi dolarsa, hesap sahibinin anahtarı yenilemek için Video Indexer desteğe başvurması gerekecektir.
 
@@ -163,7 +163,7 @@ Yeni bir hesap oluştururken, içeriğinizi *deneme* hesabından yeni hesaba akt
 
 Daha sonra hesabı silmek isterseniz, hesabı Video Indexer Web sitesinden silebilirsiniz. Hesabı silmek için sahip olmanız gerekir.
 
-Hesap > **ayarları**  ->  **Bu hesabı Sil** ' i seçin. 
+Hesap > **ayarları**  ->  **Bu hesabı Sil**' i seçin. 
 
 Hesap, 90 gün içinde kalıcı olarak silinir.
 

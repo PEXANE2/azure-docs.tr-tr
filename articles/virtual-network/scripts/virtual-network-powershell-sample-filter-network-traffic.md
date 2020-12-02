@@ -16,18 +16,18 @@ ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: dbbc0fa160affec81d36a4da127c4fb864913fd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2a6c3a656065d6168280705d3cc27adabceb5d2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91306778"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491393"
 ---
 # <a name="filter-inbound-and-outbound-vm-network-traffic-script-sample"></a>Gelen ve giden sanal makine ağ trafiğini filtreleme betiği örneği
 
 Bu betik örneği, ön uç ve arka uç alt ağları ile sanal ağ oluşturur. Ön uç alt ağına gelen ağ trafiği, HTTP ve HTTPS ile sınırlıyken arka uç alt ağından İnternet’e giden trafiğe izin verilmez. Betiği çalıştırdıktan sonra iki NIC içeren bir sanal makineniz olur. Her NIC, farklı bir alt ağa bağlanır.
 
-Azure [Cloud Shell](https://shell.azure.com/powershell)’den veya yerel bir PowerShell yüklemesinden betiği yürütebilirsiniz. PowerShell 'i yerel olarak kullanırsanız, bu betik Azure PowerShell modülü sürüm 1.0.0 veya üstünü gerektirir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
+Azure [Cloud Shell](https://shell.azure.com/powershell)’den veya yerel bir PowerShell yüklemesinden betiği yürütebilirsiniz. PowerShell 'i yerel olarak kullanırsanız, bu betik Azure PowerShell modülü sürüm 1.0.0 veya üstünü gerektirir. Yüklü sürümü bulmak için `Get-InstalledModule -Name Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

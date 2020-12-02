@@ -3,12 +3,12 @@ title: Azure geçişi ile Azure 'a geçiş için çok sayıda VMware VM 'yi değ
 description: Azure geçişi hizmeti kullanılarak Azure 'a geçiş için çok sayıda VMware VM 'lerinin nasıl değerlendirileneceğini açıklar. e
 ms.topic: how-to
 ms.date: 03/23/2020
-ms.openlocfilehash: 0a5a29ffc8abe0e8ec4fe85a41b4b67c2e655d2b
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 0be7a7ea4afc400787456533689fe00b1db1c116
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314109"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492939"
 ---
 # <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Azure 'a geçiş için çok sayıda VMware VM 'lerini değerlendirin
 
@@ -88,7 +88,7 @@ Planlama gereksinimlerinize uygun olarak şunları yapın:
 1. Bir Azure geçişi projesi oluşturun.
 2. Azure geçişi sunucu değerlendirmesi aracını projelere ekleyin.
 
-[Daha fazla bilgi edinin](how-to-add-tool-first-time.md)
+[Daha fazla bilgi edinin](./create-manage-projects.md)
 
 ## <a name="create-and-review-an-assessment"></a>Değerlendirme oluşturma ve gözden geçirme
 

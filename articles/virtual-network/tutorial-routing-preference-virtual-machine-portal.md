@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: b2f3635c8280bdd95e8ad1259fe4ae35f8b531a4
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: dd9c1c23bddf78eb1bdb8fc07f2cb6f8a7faa859
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042814"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491222"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-the-azure-portal"></a>Azure portal kullanarak bir VM için yönlendirme tercihini yapılandırma
 
@@ -29,12 +29,6 @@ Bu makalede, Azure portal kullanarak trafiği genel İnternet üzerinden yönlen
 > Yönlendirme tercihi şu anda genel önizleme aşamasındadır.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="register-the-feature-for-your-subscription"></a>Aboneliğiniz için özelliği kaydedin
-Yönlendirme tercihi özelliği şu anda önizlemededir. Azure PowerShell kullanarak aboneliğiniz için özelliği aşağıdaki gibi kaydetmeniz gerekir:
-```azurepowershell
-Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature ProviderNamespace Microsoft.Network
-```
-
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 [Azure portalında](https://preview.portal.azure.com/) oturum açın.
@@ -42,8 +36,8 @@ Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature ProviderNa
 ## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 
 1. Azure portalının sol üst köşesinde bulunan **+ Kaynak oluştur** seçeneğini belirleyin.
-2. **İşlem** ' ı seçin ve ardından **WINDOWS Server 2016 VM** veya seçtiğiniz başka bir işletim sistemini seçin.
-3. Aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve sonra **Tamam** ’ı seçin:
+2. **İşlem**' ı seçin ve ardından **WINDOWS Server 2016 VM** veya seçtiğiniz başka bir işletim sistemini seçin.
+3. Aşağıdaki bilgileri girin veya seçin, kalan ayarlar için varsayılan değerleri kabul edin ve sonra **Tamam**’ı seçin:
 
     |Ayar|Değer|
     |---|---|
@@ -51,7 +45,7 @@ Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature ProviderNa
     |Kullanıcı adı| Seçtiğiniz bir kullanıcı adını girin.|
     |Parola| Seçtiğiniz bir parolayı girin. Parola en az 12 karakter uzunluğunda olmalı ve [tanımlanmış karmaşıklık gereksinimlerini](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)karşılamalıdır.|
     |Abonelik| Aboneliğinizi seçin.|
-    |Kaynak grubu| **Mevcut olanı kullan** ’ı seçin ve **myResourceGroup** seçeneğini belirleyin.|
+    |Kaynak grubu| **Mevcut olanı kullan**’ı seçin ve **myResourceGroup** seçeneğini belirleyin.|
     |Konum| **Doğu ABD** seçin|
 
 4. Sanal makine için bir boyut seçin ve **Seç** seçeneğini belirleyin.
@@ -64,14 +58,14 @@ Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature ProviderNa
 
    ![Bir bağlantı noktası seçin](./media/tutorial-routing-preference-virtual-machine-portal/pip-ports-new.png)
 
-7. Kalan varsayılan ayarları kabul edin ve **Tamam** ' ı seçin.
-8. **Özet** sayfasında **Oluştur** 'u seçin. Sanal makinenin dağıtılması birkaç dakika sürer.
+7. Kalan varsayılan ayarları kabul edin ve **Tamam**' ı seçin.
+8. **Özet** sayfasında **Oluştur**'u seçin. Sanal makinenin dağıtılması birkaç dakika sürer.
 9. Sanal makine dağıtıldıktan sonra portalın üst kısmındaki arama kutusuna *Mypublicıpaddress* yazın. Arama sonuçlarında **Mypublicıpaddress** göründüğünde seçin.
 10. Aşağıdaki resimde gösterildiği gibi, atanan genel IP adresini ve adresin **Myvm** sanal makinesine atandığını görebilirsiniz:
 
     ![Ekran görüntüsü, NIC 'in ağ arabirimi için genel g/ç 'sini gösterir MYNIC.](./media/tutorial-routing-preference-virtual-machine-portal/pip-properties-new.png)
 
-11. **Ağ** ' ı seçin, ardından NIC **MYNIC** ' e tıklayın ve ardından genel IP adresini seçerek yönlendirme tercihinin **Internet** olarak atandığını onaylayın.
+11. **Ağ**' ı seçin, ardından NIC **MYNIC** ' e tıklayın ve ardından genel IP adresini seçerek yönlendirme tercihinin **Internet** olarak atandığını onaylayın.
 
     ![Ekran görüntüsünde, bir genel ı adresi için ı P adresi ve yönlendirme tercihi gösterilmektedir.](./media/tutorial-routing-preference-virtual-machine-portal/pip-routing-internet-new.png)
 
@@ -80,8 +74,8 @@ Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature ProviderNa
 Artık gerekli olmadığında kaynak grubunu ve içerdiği tüm kaynakları silin:
 
 1. Portalın üst kısmındaki **Ara** kutusuna *myResourceGroup* değerini girin. Arama sonuçlarında **myResourceGroup** seçeneğini gördüğünüzde bunu seçin.
-2. **Kaynak grubunu sil** 'i seçin.
-3. **KAYNAK GRUBU ADINI YAZIN:** için *myResourceGroup* girin ve **Sil** ’i seçin.
+2. **Kaynak grubunu sil**'i seçin.
+3. **KAYNAK GRUBU ADINI YAZIN:** için *myResourceGroup* girin ve **Sil**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Yönlendirme tercihi ile genel IP](routing-preference-overview.md)hakkında daha fazla bilgi edinin.

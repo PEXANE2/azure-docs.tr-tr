@@ -7,22 +7,22 @@ ms.topic: how-to
 ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 53111ccd634c516d0db10c0e2dd41768aba43f41
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: a0415133bf3168c846e1105efe992c2c48c57ff2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629249"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492191"
 ---
 # <a name="how-to-deploy-azure-files"></a>Azure Dosyaları’nı dağıtma
 [Azure dosyaları](storage-files-introduction.md) , bulutta ENDÜSTRI standardı SMB protokolü aracılığıyla erişilebilen tam olarak yönetilen dosya paylaşımları sunar. Bu makalede, Azure dosyalarını kuruluşunuzda nasıl kuruluşunuzun içinde dağıtacağınız gösterilmektedir.
 
 Bu makaledeki adımları izleyerek önce [bir Azure dosyaları dağıtımına yönelik planlamayı](storage-files-planning.md) okumayı kesinlikle öneririz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu makalede, aşağıdaki adımları zaten tamamladığınız varsayılmaktadır:
 
-- İstediğiniz bölgede istediğiniz dayanıklılık ve şifreleme seçeneklerine sahip bir Azure depolama hesabı oluşturdunuz. Depolama hesabı oluşturma hakkında adım adım yönergeler için bkz. [depolama hesabı oluşturma](../common/storage-account-create.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) .
+- İstediğiniz bölgede istediğiniz dayanıklılık ve şifreleme seçeneklerine sahip bir Azure depolama hesabı oluşturdunuz. Depolama hesabı oluşturma hakkında adım adım yönergeler için bkz. [depolama hesabı oluşturma](../common/storage-account-create.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) .
 - Depolama hesabınızda istediğiniz kotayı içeren bir Azure dosya paylaşımının oluşturulması. Dosya paylaşımının nasıl oluşturulacağı hakkında adım adım yönergeler için bkz. [dosya paylaşma oluşturma](storage-how-to-create-file-share.md) .
 
 ## <a name="transfer-data-into-azure-files"></a>Verileri Azure dosyaları 'na aktarma
@@ -63,7 +63,7 @@ Aşağıdaki adımlar, verileri şirket içi bir konumdan Azure dosya paylaşım
     "F:\shares\scratch\","MyAzureFileShare/",file,rename,"None",None
     ```
 
-    Depolama hesabı ile birden çok paylaşım belirtilebilir. Daha fazla bilgi için bkz. [veri kümesini HAZıRLAMA CSV dosyası](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) .
+    Depolama hesabı ile birden çok paylaşım belirtilebilir. Daha fazla bilgi için bkz. [veri kümesini HAZıRLAMA CSV dosyası](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) .
 
 5. Sürücü kümesi CSV dosyasını oluşturun. Sürücü kümesi CSV dosyası, şirket içi dışarı aktarma aracısının kullanabildiği diskleri listeler. Örneğin, aşağıdaki sürücü, CSV dosya listelerini `X:` , ve şirket `Y:` `Z:` içi dışarı aktarma işinde kullanılacak sürücüleri ayarlar:
 
@@ -74,7 +74,7 @@ Aşağıdaki adımlar, verileri şirket içi bir konumdan Azure dosya paylaşım
     Z,Format,SilentMode,Encrypt,
     ```
     
-    Daha fazla bilgi için bkz. [sürücü KÜMESI CSV dosyası hazırlama](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) .
+    Daha fazla bilgi için bkz. [sürücü KÜMESI CSV dosyası hazırlama](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) .
 
 6. Verilerinizi bir veya daha fazla sabit sürücüye kopyalamak için [Waımportexport aracını](https://www.microsoft.com/download/details.aspx?id=55280) kullanın.
 
@@ -120,7 +120,7 @@ AzCopy, en iyi performansla basit komutlar kullanarak Azure dosyalarını ve Azu
     azcopy --source <path-to-local-share> --destination https://<storage-account>.file.core.windows.net/<file-share>/ --dest-key <storage-account-key> --recursive
     ```
 
-    AzCopy, kopyalama davranışını istenen şekilde değiştirmek için önemli sayıda seçeneklere sahiptir. Daha fazla bilgi için bkz. [AzCopy ile çalışmaya başlama](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json).
+    AzCopy, kopyalama davranışını istenen şekilde değiştirmek için önemli sayıda seçeneklere sahiptir. Daha fazla bilgi için bkz. [AzCopy ile çalışmaya başlama](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 ## <a name="automatically-mount-on-needed-pcsservers"></a>Gerekli bilgisayarlara/sunuculara otomatik olarak bağla
 Şirket içi dosya paylaşımını değiştirmek için, paylaşımların kullanılacağı makinelere önceden bağlanması yararlı olur. Bu, makine listesinde otomatik olarak yapılabilir.

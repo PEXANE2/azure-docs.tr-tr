@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 554b3ad1dbe1e736300387aefde195b9054ab326
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 87dff3bbb4a7ff5e40a06d1b63bdc38987d727fe
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437108"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492701"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Müşteri tarafından yönetilen bir anahtarla MySQL için Azure veritabanı veri şifrelemesi
 
@@ -97,8 +97,8 @@ Key Vault, müşteri tarafından yönetilen bir anahtarla veri şifrelemeyi yap�
 
 * Veri şifrelemesi etkin olan MySQL için Azure veritabanınız için zaman Içinde geri yükleme sunucusunda bir nokta oluşturuyorsanız, yeni oluşturulan sunucu *erişilemez* durumda olur. [Azure Portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) veya [CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers)aracılığıyla bu hatayı çözebilirsiniz.
 * Veri şifrelemesi etkin olan MySQL için Azure veritabanı için bir okuma çoğaltması oluşturuyorsanız, çoğaltma sunucusu *erişilemez* durumda olur. [Azure Portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) veya [CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers)aracılığıyla bu hatayı çözebilirsiniz.
-* Keykasasını silerseniz, MySQL için Azure veritabanı anahtara erişemez ve *erişilemez* duruma geçer. [Key Vault](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) kurtarın ve sunucuyu *kullanılabilir* hale getirmek için veri şifrelemeyi yeniden doğrulayın.
-* Anahtar kasasından anahtarı sileriz, MySQL için Azure veritabanı anahtara erişemez ve *erişilemez* duruma geçer. [Anahtarı](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) kurtarın ve sunucuyu *kullanılabilir* hale getirmek için veri şifrelemeyi yeniden doğrulayın.
+* Keykasasını silerseniz, MySQL için Azure veritabanı anahtara erişemez ve *erişilemez* duruma geçer. [Key Vault](../key-vault/general/key-vault-recovery.md) kurtarın ve sunucuyu *kullanılabilir* hale getirmek için veri şifrelemeyi yeniden doğrulayın.
+* Anahtar kasasından anahtarı sileriz, MySQL için Azure veritabanı anahtara erişemez ve *erişilemez* duruma geçer. [Anahtarı](../key-vault/general/key-vault-recovery.md) kurtarın ve sunucuyu *kullanılabilir* hale getirmek için veri şifrelemeyi yeniden doğrulayın.
 * Azure Keykasasında depolanan anahtarın süresi dolarsa, anahtar geçersiz hale gelir ve MySQL için Azure veritabanı *erişilemez* duruma geçer. [CLI](/cli/azure/keyvault/key#az-keyvault-key-set-attributes) kullanarak anahtar sona erme tarihini genişletin ve ardından sunucuyu *kullanılabilir* hale getirmek için veri şifrelemesini yeniden doğrulayın.
 
 ### <a name="accidental-key-access-revocation-from-key-vault"></a>Key Vault 'den yanlışlıkla anahtar erişimi iptali

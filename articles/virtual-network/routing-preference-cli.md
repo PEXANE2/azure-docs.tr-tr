@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5e7a8c5552165324ef154767d1605e12b0c9ad22
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: f6c4d0defbaeb484f66593e112587c16c46eed2f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94747897"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491613"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-azure-cli"></a>Azure CLı kullanarak genel IP adresi için yönlendirme tercihini yapılandırma
 
@@ -27,7 +27,7 @@ Bu makalede, Azure CLı kullanarak genel bir IP adresi için ISS ağı (**Intern
 
 * Sanal makine
 * Sanal makine ölçek kümesi
-* Azure Kubernetes Hizmeti (AKS)
+* Azure Kubernetes Service (AKS)
 * Internet 'e yönelik yük dengeleyici
 * Application Gateway
 * Azure Güvenlik Duvarı
@@ -43,12 +43,6 @@ Varsayılan olarak, genel IP adresi için yönlendirme tercihi tüm Azure hizmet
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 - Bu makale, Azure CLı 'nin sürüm 2.0.49 veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
-
-## <a name="register-the-feature-for-your-subscription"></a>Aboneliğiniz için özelliği kaydedin
-Yönlendirme tercihi özelliği şu anda önizlemededir. Aboneliğiniz için özelliği aşağıdaki şekilde kaydedin:
-```azurecli
-az feature register --namespace Microsoft.Network --name AllowRoutingPreferenceFeature
-```
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 [az group create](/cli/azure/group#az-group-create) komutuyla bir kaynak grubu oluşturun. Aşağıdaki örnek, **Doğu ABD** Azure bölgesinde bir kaynak grubu oluşturur:

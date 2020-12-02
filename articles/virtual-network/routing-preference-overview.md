@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: 171ae04a70f3639981e74d20d260a03359a0f2c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f5653e4c184e88bce86026681dde1aee9e14d49
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187447"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491426"
 ---
 # <a name="what-is-routing-preference-preview"></a>Yönlendirme tercihi nedir (Önizleme)?
 
@@ -26,11 +26,11 @@ Azure yönlendirme tercihi, trafiğinizin Azure ile Internet arasında nasıl y�
 
 > [!IMPORTANT]
 > Yönlendirme tercihi şu anda genel önizleme aşamasındadır.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="routing-via-microsoft-global-network"></a>Microsoft Global ağı aracılığıyla yönlendirme
 
-Trafiğinizi *Microsoft Global Network*üzerinden yönlendirdiğinizde, trafik 160.000 ' den fazla Fiber ' a yayılan en büyük ağlardan biri üzerinden, 165 ' den fazla iletişim kutusu (pop) ile dağıtılır. Ağ, aşırı yüksek güvenilirlik ve kullanılabilirlik sağlamak için birden fazla yedekli fiber yol ile birlikte sağlanmış olur. Trafik Mühendisliği, trafiğiniz için düşük gecikmeli yol seçimini sağlayan, yazılım tanımlı bir WAN denetleyicisi tarafından yönetilir ve Premium ağ performansı sunar.
+Trafiğinizi *Microsoft Global Network* üzerinden yönlendirdiğinizde, trafik 160.000 ' den fazla Fiber ' a yayılan en büyük ağlardan biri üzerinden, 165 ' den fazla iletişim kutusu (pop) ile dağıtılır. Ağ, aşırı yüksek güvenilirlik ve kullanılabilirlik sağlamak için birden fazla yedekli fiber yol ile birlikte sağlanmış olur. Trafik Mühendisliği, trafiğiniz için düşük gecikmeli yol seçimini sağlayan, yazılım tanımlı bir WAN denetleyicisi tarafından yönetilir ve Premium ağ performansı sunar.
 
 ![Microsoft Global ağı aracılığıyla yönlendirme](media/routing-preference-overview/route-via-microsoft-global-network.png)
 
@@ -38,7 +38,7 @@ Giriş **trafiği:** Küresel BGP her noktaya yayın duyurusu, giriş trafiğini
 
 **Çıkış trafiği:** Çıkış trafiği aynı prensibi izler. Trafik, Microsoft küresel ağı 'na ait yolculuğun büyük bir bölümünü hareket eder ve kullanıcıya en yakın çıkış yapar. Örneğin, Azure Chicago 'nin trafiği Singapur 'dan bir kullanıcıya gidiyor ise trafik Microsoft ağı 'na Chicago 'den Singapur 'a, Microsoft ağı ise Singapur Edge POP 'da çıkar.
 
-Hem giriş hem de çıkış trafiği Microsoft Global Network 'teki seyahatin toplu olarak kalır. Bu, *soğuk patates yönlendirme*olarak da bilinir.
+Hem giriş hem de çıkış trafiği Microsoft Global Network 'teki seyahatin toplu olarak kalır. Bu, *soğuk patates yönlendirme* olarak da bilinir.
 
 
 ## <a name="routing-over-public-internet-isp-network"></a>Ortak Internet üzerinden yönlendirme (ISS ağı)
@@ -57,12 +57,12 @@ Giriş **trafiği:** Giriş yolu, trafiğin barındırılan hizmet bölgesine en
 
 * Sanal makine
 * Sanal makine ölçek kümesi
-* Azure Kubernetes Hizmeti (AKS)
+* Azure Kubernetes Service (AKS)
 * Internet 'e yönelik yük dengeleyici
 * Application Gateway
 * Azure Güvenlik Duvarı
 
-Depolama için birincil uç noktalar her zaman **Microsoft Global ağını**kullanır. Trafik yönlendirme için tercih ettiğiniz ikincil uç noktaları **Internet** ile etkinleştirebilirsiniz. Desteklenen depolama hizmetleri şunlardır:
+Depolama için birincil uç noktalar her zaman **Microsoft Global ağını** kullanır. Trafik yönlendirme için tercih ettiğiniz ikincil uç noktaları **Internet** ile etkinleştirebilirsiniz. Desteklenen depolama hizmetleri şunlardır:
 
 * Bloblar
 * Dosyalar
@@ -70,19 +70,7 @@ Depolama için birincil uç noktalar her zaman **Microsoft Global ağını**kull
 * Azure DataLake
 
 ## <a name="pricing"></a>Fiyatlandırma
-Her iki seçenek arasındaki fiyat farkı, Internet çıkış veri aktarımı fiyatlandırmasına yansıtılır. **Microsoft Global Network** veri aktarımı fiyatı üzerinden yönlendirme, geçerli internet çıkış fiyatıyla aynı. En son fiyatlandırma bilgileri için [Azure bant genişliği fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/bandwidth/) ziyaret edin. Aşağıdaki tabloda gösterildiği gibi, **genel Internet** üzerinden yönlendirme daha düşük fiyatlandırılır:
-
-| Çıkış kaynak bölgesi | 0-5 GB/ay | 5 GB-10 TB/ay | 10-50 TB/ay | 50-150 TB/ay | 150-500 TB/ay |
-| --- | --- | --- | --- | --- | --- |
-| Bölge 1 | $0/GB | $0.085/GB | $0.065/GB | $0.06/GB | $0.04/GB |
-| Bölge 2 | $0/GB | $0.11/GB | $0.075/GB | $0,07/GB | $0.06/GB  |
-
-500 TB üzerinden aylık hacim için [bizimle Iletişim kurun](https://azure.microsoft.com/overview/sales-number/) .
-* Bölge 1 — Avustralya Orta, Avustralya Orta 2, Kanada Orta, Kanada Doğu, Kuzey Avrupa, Batı Avrupa, Fransa Orta, Fransa Güney, Almanya Kuzey (genel), Almanya Orta Batı (genel), Norveç Doğu, Norveç Batı, İsviçre Kuzey, İsviçre Batı, UK Güney, UK Batı, Orta ABD, Doğu ABD, Doğu ABD 2, Orta Kuzey ABD, Orta Güney ABD, Batı ABD, Batı ABD 2 ve Orta Batı ABD.
-
-* Bölge 2 — Doğu Asya, Güneydoğu Asya, Avustralya Doğu, Avustralya Güneydoğu, Orta Hindistan, Güney Hindistan, Batı Hindistan, Japonya Doğu, Japonya Batı, Kore Orta ve Kore Güney.
-
-* Bölge 3 — Brezilya Güney, Güney Afrika Kuzey, Güney Afrika Batı, BAE Orta ve BAE Kuzey.
+Her iki seçenek arasındaki fiyat farkı, Internet çıkış veri aktarımı fiyatlandırmasına yansıtılır. **Microsoft Global Network** veri aktarımı fiyatı üzerinden yönlendirme, geçerli internet çıkış fiyatıyla aynı. En son fiyatlandırma bilgileri için [Azure bant genişliği fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/bandwidth/) ziyaret edin. 
 
 ## <a name="availability"></a>Kullanılabilirlik
 

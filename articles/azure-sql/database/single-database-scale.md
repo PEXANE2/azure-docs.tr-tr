@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=1, references_regions
 ms.devlang: ''
 ms.topic: conceptual
-author: stevestein
-ms.author: sstein
-ms.reviewer: ''
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: sstein
 ms.date: 09/16/2020
-ms.openlocfilehash: d24143a440c0d30c3abcd6eb5efd454033b8f71c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: da3c70baccc3c86f2ac57d61539456464e3042b6
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791486"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493415"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Azure SQL Veritabanında tek veritabanı kaynaklarını ölçeklendirme
 
@@ -113,7 +113,7 @@ else {
 - Geri yükleme hizmeti teklifleri, çeşitli hizmet katmanları için farklılık gösterir. **Temel** katmana eski sürüme düşürüyorsanız, daha düşük bir yedekleme saklama süresi vardır. Bkz. [Azure SQL veritabanı yedeklemeleri](automated-backups-overview.md).
 - Veritabanı için yeni özellikler, değişiklikler tamamlanana kadar uygulanmaz.
 
-## <a name="billing"></a>Faturalama
+## <a name="billing"></a>Faturalandırma
 
 Kullanımdan veya veritabanının bir saatten az etkin kalıp kalmadığından bağımsız olarak, bu saat boyunca uygulanan en yüksek hizmet katmanı + işlem boyutunu kullanarak bir veritabanının mevcut olduğu her saat için faturalandırılırsınız. Örneğin, tek bir veritabanı oluşturup beş dakika sonra silerseniz faturanız bir veritabanı saati için bir ücret yansıtır.
 

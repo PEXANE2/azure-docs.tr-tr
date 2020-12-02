@@ -4,12 +4,12 @@ description: Azure geçişi ile VMware VM 'lerinin aracısız geçişini nasıl 
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 7eb918a844b1cd542664ac7e5aec2736ceba0e6f
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 202886bc0a7738f8211cfea6d90a380c7bac82b8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301642"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492956"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware VM 'lerini Azure 'a geçirme (aracısız)
 
@@ -21,7 +21,7 @@ Bu öğretici, VMware VM 'lerinin Azure 'a nasıl değerlendirileceğini ve geç
 > Öğreticiler, bir senaryo için en basit dağıtım yolunu gösterir, böylece bir kavram kanıtı hızlı bir şekilde ayarlayabilmenizi sağlayabilirsiniz. Öğreticiler mümkün olduğunca varsayılan seçenekleri kullanır ve tüm olası ayarları ve yolları göstermez. 
 
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure geçişi: sunucu geçiş aracı 'nı ekleyin.
@@ -38,7 +38,7 @@ Bu öğreticiye başlamadan önce karşılamanız gereken ön koşullar şunlard
 
 1. Geçiş için Azure ve VMware 'yi hazırlamak üzere [ilk öğreticiyi doldurun](./tutorial-discover-vmware.md) .
 2. [VMware VM](./tutorial-assess-vmware-azure-vm.md) 'lerini Azure 'a geçirmeden önce değerlendirmek için ikinci öğreticiyi tamamlamanızı öneririz, ancak şunları yapmanız gerekmez. 
-3. Zaten oluşturulmuş projeye git veya [Yeni bir proje oluştur](https://docs.microsoft.com/azure/migrate/create-manage-projects)
+3. Zaten oluşturulmuş projeye git veya [Yeni bir proje oluştur](./create-manage-projects.md)
 4. Azure hesabınız için izinleri doğrulama-Azure hesabınız, bir VM oluşturmak ve Azure yönetilen diskine yazmak için izinlere ihtiyaç duyuyor.
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>Azure geçişi gereç 'yi ayarlama

@@ -15,12 +15,12 @@ ms.date: 07/27/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: 4ccd668fb6afa6787fadeda6ed92ebd954e2b892
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 3e4d75c59d0e3c97b0900dd72a27d4afbf4015c9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657831"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492327"
 ---
 # <a name="view-activity-logs-for-azure-rbac-changes"></a>Azure RBAC değişiklikleri için etkinlik günlüklerini görüntüleme
 
@@ -48,7 +48,7 @@ Portaldaki etkinlik günlüğünde birkaç filtre vardır. Azure RBAC ile ilgili
 | Olay kategorisi | <ul><li>Yönetim</li></ul> |
 | İşlem | <ul><li>Rol ataması oluştur</li><li>Rol atamasını Sil</li><li>Özel rol tanımı oluştur veya güncelleştir</li><li>Özel rol tanımını sil</li></ul> |
 
-Etkinlik günlükleri hakkında daha fazla bilgi için bkz. [kaynaklardaki eylemleri izlemek için etkinlik günlüklerini görüntüleme](../azure-resource-manager/management/view-activity-logs.md?toc=%252fazure%252fmonitoring-and-diagnostics%252ftoc.json).
+Etkinlik günlükleri hakkında daha fazla bilgi için bkz. [kaynaklardaki eylemleri izlemek için etkinlik günlüklerini görüntüleme](../azure-resource-manager/management/view-activity-logs.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json).
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -162,5 +162,5 @@ AzureActivity
 ![Gelişmiş analiz portalını kullanan etkinlik günlükleri-ekran görüntüsü](./media/change-history-report/azure-log-analytics.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Etkinlik günlüğünde olayları görüntüleme](../azure-resource-manager/management/view-activity-logs.md?toc=%252fazure%252fmonitoring-and-diagnostics%252ftoc.json)
+* [Etkinlik günlüğünde olayları görüntüleme](../azure-resource-manager/management/view-activity-logs.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
 * [Azure Etkinlik Günlüğü ile Abonelik Etkinliğini İzleme](../azure-monitor/platform/platform-logs-overview.md)

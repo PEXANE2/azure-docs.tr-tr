@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: e446ec08d63c44566b2f45c1427999536d0be703
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: aef332e54fa650e1abbebe671560238d7eb318de
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188726"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492055"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Windows 'da Azure dosyaları sorunlarını giderme (SMB)
 
@@ -147,7 +147,7 @@ Azure dosya paylaşımında bir dosya veya dizin için izin verilen eş zamanlı
 
 ### <a name="solution"></a>Çözüm
 
-Bazı tutamaçları kapatarak eşzamanlı açık tanıtıcı sayısını azaltın ve yeniden deneyin. Daha fazla bilgi için bkz. [performans ve ölçeklenebilirlik denetim listesi Microsoft Azure depolama](../blobs/storage-performance-checklist.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json).
+Bazı tutamaçları kapatarak eşzamanlı açık tanıtıcı sayısını azaltın ve yeniden deneyin. Daha fazla bilgi için bkz. [performans ve ölçeklenebilirlik denetim listesi Microsoft Azure depolama](../blobs/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 Bir dosya paylaşımının, dizinin veya dosyanın açık tanıtıcılarını görüntülemek için [Get-AzStorageFileHandle](/powershell/module/az.storage/get-azstoragefilehandle) PowerShell cmdlet 'ini kullanın.  
 
@@ -262,7 +262,7 @@ Azure dosya hizmetine dosya aktarmaya çalıştığınızda yavaş performans g�
 - Belirli bir en düşük g/ç boyutu gereksiniminize sahip değilseniz en iyi performans için g/ç boyutu olarak 1 MIB kullanmanızı öneririz.
 -   Yazmalar ile genişletilen bir dosyanın son boyutunu biliyorsanız ve bu dosyada, yazılı olmayan kuyruk sıfır içerdiğinde yazılım uyumluluk sorunlarıyla karşılaşırsanız, her yazma için bir genişletme yazma yapmak yerine dosya boyutunu önceden ayarlayın.
 -   Doğru kopyalama yöntemini kullanın:
-    -   İki dosya paylaşımı arasındaki herhangi bir aktarım için [AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) kullanın.
+    -   İki dosya paylaşımı arasındaki herhangi bir aktarım için [AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) kullanın.
     -   Şirket içi bilgisayardaki dosya paylaşımları arasında [Robocopy](./storage-files-deployment-guide.md#robocopy) kullanın.
 
 ### <a name="considerations-for-windows-81-or-windows-server-2012-r2"></a>Windows 8.1 veya Windows Server 2012 R2 ile ilgili konular
@@ -401,7 +401,7 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 Cmdlet bu denetimleri sırayla gerçekleştirir ve hatalara yönelik rehberlik sağlar:
 1. Checkadobjectpassworno: depolama hesabını temsil eden AD kimliği üzerinde yapılandırılan parolanın, depolama hesabı kerb1 veya kerb2 anahtarı ile aynı olduğundan emin olun. Parola yanlışsa, parolayı sıfırlamak için [Update-AzStorageAccountADObjectPassword](./storage-files-identity-ad-ds-update-password.md) komutunu çalıştırabilirsiniz. 
 2. CheckADObject: depolama hesabını temsil eden ve doğru SPN 'ye (hizmet asıl adı) sahip Active Directory bir nesne olduğunu onaylayın. SPN doğru kurulum gerçekleştirmemişse, SPN 'yi yapılandırmak için lütfen hata ayıklama cmdlet 'inde döndürülen set-AD cmdlet 'ini çalıştırın.
-3. Checkdomainkatılmış: istemci makinenin AD 'ye katılmış olduğunu doğrulayın. Makinenize etki alanına katılmış değilse, etki alanına katılma yönergesi için lütfen bu [makaleye](/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain#:~:text=To%20join%20a%20computer%20to%20a%20domain&text=Navigate%20to%20System%20and%20Security,join%2C%20and%20then%20click%20OK) bakın.
+3. Checkdomainkatılmış: istemci makinenin AD 'ye katılmış olduğunu doğrulayın. Makinenize etki alanına katılmış değilse, etki alanına katılma yönergesi için lütfen bu [makaleye](/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain) bakın.
 4. CheckPort445Connectivity: bağlantı noktası 445 ' nin SMB bağlantısı için açıldığını denetleyin. Gerekli bağlantı noktası açık değilse, Azure dosyaları ile ilgili bağlantı sorunları için lütfen sorun giderme aracına bakın [AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) .
 5. Checksıdhasaaduser: oturum açan AD kullanıcısının Azure AD ile eşitlendiğinden emin olun. Belirli bir AD kullanıcısının Azure AD ile eşitlenip eşitlenmediğini aramak isterseniz, giriş parametrelerinde-UserName ve-Domain öğesini belirtebilirsiniz. 
 6. CheckGetKerberosTicket: depolama hesabına bağlanmak için bir Kerberos bileti almayı deneyin. Geçerli bir Kerberos belirteci yoksa, Klist Get CIFS/Storage-Account-Name. File. Core. Windows. net cmdlet 'ini çalıştırın ve hata kodunu, bilet alma hatasının köke neden olacak şekilde inceleyin.

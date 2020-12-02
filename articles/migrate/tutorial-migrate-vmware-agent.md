@@ -4,19 +4,19 @@ description: Azure geçişi ile VMware VM 'lerinin aracı tabanlı geçişini ç
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
-ms.openlocfilehash: 437dbce1c577b5d837ad0c70e8e8865ba59cf9e6
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 46f23953e6572b752f8773bc9db86be946ccf212
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302752"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493006"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware VM 'lerini Azure 'a geçirme (aracı tabanlı)
 
 Bu makalede, şirket içi VMware VM 'lerini, [Azure geçişi: sunucu geçiş](migrate-services-overview.md#azure-migrate-server-migration-tool) aracı ile aracı tabanlı geçişle kullanarak Azure 'a nasıl geçirebileceğiniz gösterilmektedir.  Ayrıca, aracı tabanlı geçiş kullanarak VMware VM 'Leri geçirebilirsiniz. Yöntemleri [karşılaştırın](server-migrate-overview.md#compare-migration-methods) .
 
 
- Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Azure 'u Azure geçişi ile çalışacak şekilde hazırlayın.
 > * Aracı tabanlı geçişe hazırlanın. Azure geçişi 'nin geçiş için makineleri bulabilmesi için bir VMware hesabı ayarlayın. Mobility hizmeti aracısının geçirmek istediğiniz makinelere yükleyebilmesi için bir hesap ayarlayın ve bir makineyi çoğaltma gereci olarak davranacak şekilde hazırlayın.
@@ -133,7 +133,6 @@ VMware sunucularının ve VM 'lerinin Azure 'a geçiş gereksinimleriyle uyumlu 
 
 > [!NOTE]
 > Azure geçişi sunucu geçişi ile aracı tabanlı geçiş, Azure Site Recovery hizmetinin özelliklerine dayalıdır. Bazı gereksinimler Site Recovery belgelerine bağlantı verebilir.
-
 
 ## <a name="set-up-the-replication-appliance"></a>Çoğaltma gereç ayarı
 

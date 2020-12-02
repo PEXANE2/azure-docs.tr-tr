@@ -6,18 +6,18 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: e756e033c8e5b2508dca9bde76ad16be26a940fa
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 42bbe1c9f4056ae0dae0ccd59b452db90a7c63c5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505793"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493670"
 ---
 # <a name="upgrade-your-postgresql-database-using-dump-and-restore"></a>Döküm ve geri yükleme kullanarak PostgreSQL veritabanınızı yükseltme
 
 Aşağıdaki yöntemleri kullanarak veritabanlarınızı daha yüksek bir ana sürüm sunucusuna geçirerek PostgreSQL için Azure veritabanı 'nda dağıtılan PostgreSQL sunucunuzu yükseltebilirsiniz.
 * PostgreSQL kullanan **çevrimdışı** Yöntem [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) ve [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) verileri geçirmek için kapalı kalma süresi. Bu belge, bu yükseltme/geçiş yöntemini ele alınmaktadır.
-* [Veritabanı geçiş hizmeti](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal) (DMS) kullanan **çevrimiçi** yöntem. Bu yöntem, daha düşük kapalı kalma süresi geçişini sağlar ve hedef veritabanını kaynakla eşitlenmiş halde tutar ve ne zaman kesilmesini istediğinizi seçebilirsiniz. Ancak, DMS kullanılarak değinilmesi gereken birkaç önkoşul ve kısıtlama vardır. Ayrıntılar için [DMS belgelerine](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal)bakın. 
+* [Veritabanı geçiş hizmeti](../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md) (DMS) kullanan **çevrimiçi** yöntem. Bu yöntem, daha düşük kapalı kalma süresi geçişini sağlar ve hedef veritabanını kaynakla eşitlenmiş halde tutar ve ne zaman kesilmesini istediğinizi seçebilirsiniz. Ancak, DMS kullanılarak değinilmesi gereken birkaç önkoşul ve kısıtlama vardır. Ayrıntılar için [DMS belgelerine](../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md)bakın. 
 
  Aşağıdaki tabloda, veritabanı boyutlarına ve senaryolarına göre bazı öneriler verilmektedir.
 
@@ -28,7 +28,7 @@ Aşağıdaki yöntemleri kullanarak veritabanlarınızı daha yüksek bir ana s�
 | Küçük orta ölçekli DBs (10 GB – 100 GB) | X | X |
 | Büyük veritabanları (> 100 GB) |  | X |
 | Yükseltme için kapalı kalma süresi uygulanabilir (veritabanı boyutundan bağımsız olarak) | X |  |
-| Yeniden başlatma dahil, DMS [ön gereksinimleri](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal#prerequisites)ele alabilir mi? |  | X |
+| Yeniden başlatma dahil, DMS [ön gereksinimleri](../dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal.md#prerequisites)ele alabilir mi? |  | X |
 | Yükseltme işlemi sırasında DDLs ve günlüğe kaydedilmeyeceğini kaldırmak olabilir mi? | |  X |
 
 Bu kılavuzda, kaynak sunucudan PostgreSQL 'in daha yüksek bir sürümünü çalıştıran hedef sunucuya nasıl geçirebileceğiniz gösterilmektedir.

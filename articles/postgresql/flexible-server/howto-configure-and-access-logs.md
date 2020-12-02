@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 319b7a40a87d29454b22a26088df313ef524dc56
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3b54fe1ffd49c12db82a038ad449190a0049133f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545829"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492361"
 ---
 # <a name="configure-and-access-logs-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL için Azure veritabanı 'nda günlükleri yapılandırma ve erişme-esnek sunucu
 
@@ -22,13 +22,13 @@ PostgreSQL günlükleri, esnek bir sunucunun her düğümünde kullanılabilir. 
 
 ## <a name="configure-diagnostic-settings"></a>Tanılama ayarlarını yapılandırma
 
-Azure portal, CLı, REST API ve PowerShell 'i kullanarak Postgres sunucunuz için tanılama ayarlarını etkinleştirebilirsiniz. Seçilecek günlük kategorisi **Postgressqllogs** ' dır.
+Azure portal, CLı, REST API ve PowerShell 'i kullanarak Postgres sunucunuz için tanılama ayarlarını etkinleştirebilirsiniz. Seçilecek günlük kategorisi **Postgressqllogs**' dır.
 
 Azure portal kullanarak kaynak günlüklerini etkinleştirmek için:
 
 1. Portalda, Postgres sunucunuzun gezinti menüsünde *Tanılama ayarları* ' na gidin.
    
-2. *Tanılama ayarı Ekle* ' yi seçin.
+2. *Tanılama ayarı Ekle*' yi seçin.
    :::image type="content" source="media/howto-logging/diagnostic-settings.png" alt-text="Tanılama Ayarları Ekle düğmesi":::
 
 3. Bu ayarı adlandırın. 
@@ -36,7 +36,7 @@ Azure portal kullanarak kaynak günlüklerini etkinleştirmek için:
 4. Tercih ettiğiniz uç noktayı (depolama hesabı, Olay Hub 'ı, Log Analytics) seçin. 
 
 5. **Postgressqllogs** günlük türünü seçin.
-   :::image type="content" source="media/howto-logging/diagnostic-create-setting.png" alt-text="Tanılama Ayarları Ekle düğmesi":::
+   :::image type="content" source="media/howto-logging/diagnostic-create-setting.png" alt-text="PostgreSQL günlüklerini seçin":::
 
 7. Ayarınızı kaydedin.
 
@@ -71,5 +71,5 @@ Yukarıdaki sorguda, bu çalışma alanındaki tüm Postgres sunucusu günlüğ�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Log Analytics sorgularını kullanmaya başlama](../../azure-monitor/log-query/get-started-portal.md)
+- [Log Analytics sorgularını kullanmaya başlama](../../azure-monitor/log-query/log-analytics-tutorial.md)
 - [Azure Olay Hub 'ları](../../event-hubs/event-hubs-about.md) hakkında bilgi edinin

@@ -4,16 +4,16 @@ description: Bir kuyruk oluşturmak ve kuyruğa ileti eklemek için Azure kuyru�
 author: mhopkins-msft
 ms.custom: devx-track-java
 ms.author: mhopkins
-ms.date: 09/10/2020
+ms.date: 12/01/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 25b6bdcb293379e3206cc6714fae65fe40f6e6c5
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 4c96b84aa53d2a9f4d6e44ac84cf0ce9e0ecac04
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345610"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491936"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>Hızlı başlangıç: Java için Azure kuyruk depolama istemci kitaplığı V12
 
@@ -33,7 +33,7 @@ Ek kaynaklar:
 - [API başvuru belgeleri](/java/api/overview/azure/storage-queue-readme)
 - [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue)
 - [Paket (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue)
-- [Örnekler](../common/storage-samples-java.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json#queue-samples)
+- [Örnekler](../common/storage-samples-java.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -52,13 +52,29 @@ Kuyruklar adlı bir Java uygulaması oluşturma *-hızlı başlangıç-V12*.
 
 1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), Maven kullanarak *Kuyruklar-hızlı başlangıç-V12* adlı yeni bir konsol uygulaması oluşturun. "Hello World!" oluşturmak için aşağıdaki **MVN** komutunu yazın Java projesi.
 
-   ```console
-   mvn archetype:generate -DgroupId=com.queues.quickstart \
-                          -DartifactId=queues-quickstart-v12 \
-                          -DarchetypeArtifactId=maven-archetype-quickstart \
-                          -DarchetypeVersion=1.4 \
-                          -DinteractiveMode=false
-   ```
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+    ```powershell
+    mvn archetype:generate `
+        --define interactiveMode=n `
+        --define groupId=com.queues.quickstart `
+        --define artifactId=queues-quickstart-v12 `
+        --define archetypeArtifactId=maven-archetype-quickstart `
+        --define archetypeVersion=1.4
+    ```
+
+    # <a name="bash"></a>[Bash](#tab/bash)
+
+    ```bash
+    mvn archetype:generate \
+        --define interactiveMode=n \
+        --define groupId=com.queues.quickstart \
+        --define artifactId=queues-quickstart-v12 \
+        --define archetypeArtifactId=maven-archetype-quickstart \
+        --define archetypeVersion=1.4
+    ```
+
+    ---
 
 1. Projenin üretilme çıktısı şuna benzer görünmelidir:
 

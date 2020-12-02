@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: f31a883a2b10f37d6a4a7a91fff37739e340ac60
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 73d88f69057dc6fe39f6329e89eb72ecebf853f0
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348857"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491987"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>C++’tan Kuyruk Depolama kullanma
 
@@ -23,7 +23,7 @@ ms.locfileid: "93348857"
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu kılavuzda, Azure kuyruk depolama hizmetini kullanarak genel senaryoları nasıl gerçekleştireceğiniz gösterilmektedir. Örnekler C++ dilinde yazılmıştır ve [C++ için Azure Depolama İstemci Kitaplığı](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)’nı kullanır. Kapsanan senaryolar sıra iletilerini **ekleme** , göz **atma** , **alma** ve **silme** , Ayrıca kuyruk **oluşturma ve silme** içerir.
+Bu kılavuzda, Azure kuyruk depolama hizmetini kullanarak genel senaryoları nasıl gerçekleştireceğiniz gösterilmektedir. Örnekler C++ dilinde yazılmıştır ve [C++ için Azure Depolama İstemci Kitaplığı](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)’nı kullanır. Kapsanan senaryolar sıra iletilerini **ekleme**, göz **atma**, **alma** ve **silme** , Ayrıca kuyruk **oluşturma ve silme** içerir.
 
 > [!NOTE]
 > Bu kılavuz C++ için Azure Depolama İstemci Kitaplığı sürüm 1.0.0 ve üzerini hedefler. Önerilen sürüm, [NuGet](https://www.nuget.org/packages/wastorage) ya da [GitHub](https://github.com/Azure/azure-storage-cpp/) üzerinden ulaşılabilen Depolama İstemci Kitaplığı 2.2.0’dır.
@@ -60,7 +60,7 @@ Kuyruklara erişmek için Azure depolama API 'Lerini kullanmak istediğiniz C++ 
 
 ## <a name="set-up-an-azure-storage-connection-string"></a>Azure depolama bağlantı dizesi ayarlama
 
-Azure depolama istemcisi, veri yönetimi hizmetlerine erişmek üzere uç noktaları ve kimlik bilgilerini depolamak için bir depolama bağlantı dizesi kullanır. Bir istemci uygulamasında çalışırken, depolama hesabınızın adını ve *AccountName* ve *accountkey* değerleri için [Azure Portal](https://portal.azure.com) listelenen depolama hesabı için depolama erişim anahtarını kullanarak depolama bağlantı dizesini aşağıdaki biçimde sağlamanız gerekir. Depolama hesapları ve erişim anahtarları hakkında daha fazla bilgi için bkz. [Azure depolama hesapları hakkında](../common/storage-account-create.md?toc=%252fazure%252fstorage%252fqueues%252ftoc.json). Bu örnekte bağlantı dizesini tutmak için nasıl statik bir alan bildirebileceğiniz gösterilmektedir:
+Azure depolama istemcisi, veri yönetimi hizmetlerine erişmek üzere uç noktaları ve kimlik bilgilerini depolamak için bir depolama bağlantı dizesi kullanır. Bir istemci uygulamasında çalışırken, depolama hesabınızın adını ve *AccountName* ve *accountkey* değerleri için [Azure Portal](https://portal.azure.com) listelenen depolama hesabı için depolama erişim anahtarını kullanarak depolama bağlantı dizesini aşağıdaki biçimde sağlamanız gerekir. Depolama hesapları ve erişim anahtarları hakkında daha fazla bilgi için bkz. [Azure depolama hesapları hakkında](../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json). Bu örnekte bağlantı dizesini tutmak için nasıl statik bir alan bildirebileceğiniz gösterilmektedir:
 
 ```cpp
 // Define the connection-string with your values.

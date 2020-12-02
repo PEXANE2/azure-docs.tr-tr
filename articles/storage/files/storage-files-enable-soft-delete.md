@@ -4,16 +4,16 @@ description: Veri kurtarma için Azure dosya paylaşımlarında geçici silme ö
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/28/2020
+ms.date: 12/01/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 7defa8611080027a67a0d1db1daa4c4a9d44edfe
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: ea98b2d9812fb5c848c7e13b94d46a4142595cd4
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126150"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492174"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>Azure dosya paylaşımlarında geçici silme özelliğini etkinleştirme
 
@@ -33,11 +33,29 @@ Aşağıdaki bölümlerde, var olan bir depolama hesabında Azure dosya paylaş�
 
 :::image type="content" source="media/storage-how-to-recover-deleted-account/enable-soft-delete-files.png" alt-text="Depolama hesabı geçici silme ayarları bölmesinin ekran görüntüsü. Dosya paylaşımları bölümünü vurgulama, geçişi etkinleştirme, bekletme süresi ayarlama ve kaydetme. Bu, Depolama hesabınızdaki tüm dosya paylaşımları için geçici silme olanağı sağlar.":::
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Geçici silme cmdlet 'leri, sürüm 2.1.3 ve [Azure CLI modülünün](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)daha yeni sürümlerinde kullanılabilir.
+
+## <a name="getting-started-with-cli"></a>CLı ile çalışmaya başlama
+
+Geçici silme özelliğini etkinleştirmek için bir dosya istemcisinin hizmet özelliklerini güncelleştirmeniz gerekir. Aşağıdaki örnek, bir depolama hesabındaki tüm dosya paylaşımları için geçici silme imkanı sunar:
+
+```azurecli
+az storage account file-service-properties update --enable-delete-retention true -n yourStorageaccount -g yourResourceGroup
+```
+
+Geçici silmenin etkinleştirilip etkinleştirilmediğini doğrulayabilirsiniz ve bekletme ilkesini aşağıdaki komutla görüntüleyebilirsiniz:
+
+```azurecli
+az storage account file-service-properties show -n yourStorageaccount -g yourResourceGroup
+```
+
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ## <a name="prerequisite"></a>Önkoşul
 
-Geçici silme cmdlet 'leri az. Storage modülünün [3.0.0](https://www.powershellgallery.com/packages/Az.Storage/3.0.0) sürümünde kullanılabilir. 
+Geçici silme cmdlet 'leri, az. Storage modülünün 4.8.0 ve daha yeni sürümlerinde kullanılabilir. 
 
 ## <a name="getting-started-with-powershell"></a>PowerShell ile çalışmaya başlayın
 
@@ -63,22 +81,42 @@ Get-AzStorageFileServiceProperty -ResourceGroupName $rgName -StorageAccountName 
 
 Geçici olarak silinen bir dosya paylaşımının geri yüklenmesi için:
 
-1. Depolama hesabınıza gidin ve **dosya paylaşımları** ' nı seçin.
+1. Depolama hesabınıza gidin ve **dosya paylaşımları**' nı seçin.
 1. Dosya paylaşımı dikey penceresinde, geçici olarak silinen paylaşımları görüntülemek için **silinen paylaşımları göster** ' i etkinleştirin.
 
     Bu, şu anda **Silinmiş** durumdaki tüm paylaşımları görüntüler.
 
-    :::image type="content" source="media/storage-how-to-recover-deleted-account/undelete-file-share.png" alt-text="Depolama hesabı geçici silme ayarları bölmesinin ekran görüntüsü. Dosya paylaşımları bölümünü vurgulama, geçişi etkinleştirme, bekletme süresi ayarlama ve kaydetme. Bu, Depolama hesabınızdaki tüm dosya paylaşımları için geçici silme olanağı sağlar.":::
+    :::image type="content" source="media/storage-how-to-recover-deleted-account/undelete-file-share.png" alt-text="Durum sütunu, Ad sütununun yanındaki sütun silindi olarak ayarlandıysa, dosya paylaşımınız geçici olarak silinmiş durumda olur. Ve, belirtilen saklama süresinden sonra kalıcı olarak silinir.":::
 
-1. Paylaşıma ve **silmeyi geri al** ' ı seçtiğinizde, bu, paylaşımın geri yükleneceği
+1. Paylaşıma ve **silmeyi geri al**' ı seçtiğinizde, bu, paylaşımın geri yükleneceği
 
     Durumu **etkin** olarak geçiş yaptığından paylaşımın geri yüklendiğini doğrulayabilirsiniz.
 
-    :::image type="content" source="media/storage-how-to-recover-deleted-account/restored-file-share.png" alt-text="Depolama hesabı geçici silme ayarları bölmesinin ekran görüntüsü. Dosya paylaşımları bölümünü vurgulama, geçişi etkinleştirme, bekletme süresi ayarlama ve kaydetme. Bu, Depolama hesabınızdaki tüm dosya paylaşımları için geçici silme olanağı sağlar.":::
+    :::image type="content" source="media/storage-how-to-recover-deleted-account/restored-file-share.png" alt-text="Durum sütunu, Ad sütununun yanındaki sütun etkin olarak ayarlanırsa, dosya paylaşımınız geri yüklendi.":::
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Geçici silme cmdlet 'leri, Azure CLı 'nin 2.1.3 sürümünde kullanılabilir. Geçici olarak silinen bir dosya paylaşımının geri yüklenmesi için önce `--deleted-version` paylaşımın değerini almalısınız. Bu değeri almak için, depolama hesabınız için tüm silinen paylaşımları listelemek üzere aşağıdaki komutu kullanın:
+
+```azurecli
+az storage share-rm list --storage-account yourStorageaccount --include-deleted
+```
+
+Geri yüklemek istediğiniz paylaşmayı tanımladıktan sonra geri yüklemek için aşağıdaki komutla birlikte kullanabilirsiniz:
+
+```azurecli
+az storage share-rm restore -n deletedshare --deleted-version 01D64EB9886F00C4 -g yourResourceGroup --storage-account yourStorageaccount
+```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Geçici silme cmdlet 'leri az. Storage modülünün 3.0.0 sürümünde kullanılabilir. Geçici olarak silinen bir dosya paylaşımının geri yüklenmesi için aşağıdaki komutu kullanın:
+Geçici silme cmdlet 'leri, az. Storage modülünün 4.8.0 ve daha yeni sürümlerinde kullanılabilir. Geçici olarak silinen bir dosya paylaşımının geri yüklenmesi için önce `-DeletedShareVersion` paylaşımın değerini almalısınız. Bu değeri almak için, depolama hesabınız için tüm silinen paylaşımları listelemek üzere aşağıdaki komutu kullanın:
+
+```azurepowershell-interactive
+Get-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $accountName -IncludeDeleted
+```
+
+Geri yüklemek istediğiniz paylaşmayı tanımladıktan sonra geri yüklemek için aşağıdaki komutla birlikte kullanabilirsiniz:
 
 ```azurepowershell-interactive
 Restore-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $accountName -DeletedShareVersion 01D5E2783BDCDA97
@@ -95,11 +133,18 @@ Geçici silme kullanmayı durdurmak istiyorsanız veya bir dosya paylaşımını
 1. Dosya **paylaşımları altında** **dosya paylaşımları Için geçici silme** **devre dışı** seçeneğini belirleyin.
 1. Veri saklama ayarlarınızı onaylamak için **Kaydet** ' i seçin.
 
-    :::image type="content" source="media/storage-how-to-recover-deleted-account/disable-soft-delete-files.png" alt-text="Depolama hesabı geçici silme ayarları bölmesinin ekran görüntüsü. Dosya paylaşımları bölümünü vurgulama, geçişi etkinleştirme, bekletme süresi ayarlama ve kaydetme. Bu, Depolama hesabınızdaki tüm dosya paylaşımları için geçici silme olanağı sağlar.":::
+    :::image type="content" source="media/storage-how-to-recover-deleted-account/disable-soft-delete-files.png" alt-text="Geçici silme devre dışı bırakıldığında, Depolama hesabınızdaki tüm dosya paylaşımlarını boş olarak hemen ve kalıcı olarak silebilirsiniz.":::
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Geçici silme cmdlet 'leri, Azure CLı 'nin 2.1.3 sürümünde kullanılabilir. Depolama hesabınızda geçici silme devre dışı bırakmak için aşağıdaki komutu kullanabilirsiniz:
+
+```azurecli
+az storage account file-service-properties update --enable-delete-retention false -n yourStorageaccount -g yourResourceGroup
+```
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Geçici silme cmdlet 'leri az. Storage modülünün 3.0.0 sürümünde kullanılabilir. Depolama hesabınızda geçici silme devre dışı bırakmak için aşağıdaki komutu kullanabilirsiniz:
+Geçici silme cmdlet 'leri, az. Storage modülünün 4.8.0 ve daha yeni sürümlerinde kullanılabilir. Depolama hesabınızda geçici silme devre dışı bırakmak için aşağıdaki komutu kullanabilirsiniz:
 
 ```azurepowershell-interactive
 Update-AzStorageFileServiceProperty -ResourceGroupName $rgName -StorageAccountName $accountName -EnableShareDeleteRetentionPolicy $false

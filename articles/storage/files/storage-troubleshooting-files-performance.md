@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: a49dbdace01396656c3114df0bc0d4589aff57c1
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 5a35d939c12639770e25c3096c77f13d31310f85
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94916500"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492021"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Azure dosya paylaşımları performans sorunlarını giderme
 
@@ -196,7 +196,7 @@ SMB çok kanallı yapılandırma ayarları için bir uzaktan yeniden bağlama ol
 
 ### <a name="cause"></a>Nedeni  
 
-Dosya paylaşımlarında yüksek sayıdaki dosya değişikliği bildirimi, önemli ölçüde yüksek gecikme süreleriyle sonuçlanabilir. Bu genellikle derin iç içe Dizin yapısıyla dosya paylaşımlarında barındırılan Web sitelerinde oluşur. Tipik bir senaryo, varsayılan yapılandırmadaki her bir dizin için dosya değişiklik bildiriminin ayarlandığı IIS tarafından barındırılan Web uygulamasıdır. SMB istemcisinin kaydedildiği paylaşımdaki her değişiklik ([ReadDirectoryChangesW](https://docs.microsoft.com/windows/win32/api/winbase/nf-winbase-readdirectorychangesw)), sistem kaynaklarını alan ve değişiklik sayısıyla worsens veren dosya hizmetinden istemciye bir değişiklik bildirimi gönderir. Bu, paylaşımın azaltılmasına neden olabilir ve bu nedenle daha yüksek istemci tarafı gecikme süresine neden olur. 
+Dosya paylaşımlarında yüksek sayıdaki dosya değişikliği bildirimi, önemli ölçüde yüksek gecikme süreleriyle sonuçlanabilir. Bu genellikle derin iç içe Dizin yapısıyla dosya paylaşımlarında barındırılan Web sitelerinde oluşur. Tipik bir senaryo, varsayılan yapılandırmadaki her bir dizin için dosya değişiklik bildiriminin ayarlandığı IIS tarafından barındırılan Web uygulamasıdır. SMB istemcisinin kaydedildiği paylaşımdaki her değişiklik ([ReadDirectoryChangesW](/windows/win32/api/winbase/nf-winbase-readdirectorychangesw)), sistem kaynaklarını alan ve değişiklik sayısıyla worsens veren dosya hizmetinden istemciye bir değişiklik bildirimi gönderir. Bu, paylaşımın azaltılmasına neden olabilir ve bu nedenle daha yüksek istemci tarafı gecikme süresine neden olur. 
 
 Doğrulamak için, portalda Azure ölçümlerini kullanabilirsiniz. 
 
