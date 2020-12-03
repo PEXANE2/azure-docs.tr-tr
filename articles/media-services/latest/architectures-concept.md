@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: inhenkel
-ms.openlocfilehash: e00079190371b3ae0e318aaadd8cf724d9d339d0
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: c14dbe4253696e01e99111a24319e455c1d551e9
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512729"
+ms.locfileid: "96534004"
 ---
 # <a name="media-services-architectures"></a>Media Services mimarileri
 
@@ -30,12 +30,6 @@ Canlı akış çözümü, videoyu gerçek zamanlı olarak yakalamanızı ve mü�
 Bu çözüm, Azure yönetilen hizmetlerinde oluşturulmuştur: Media Services ve Content Delivery Network. Bu hizmetler, düzeltme eki uygulanan ve desteklenen yüksek kullanılabilirliğe sahip bir ortamda çalışır ve üzerinde çalıştıkları ortam yerine çözümünüze odaklanmanızı sağlar.
 
 Bkz. Azure mimari merkezindeki [canlı akış dijital medyası](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/digital-media-live-stream) .
-
-## <a name="instant-broadcasting-on-serverless-architecture"></a>Sunucusuz mimaride anında yayınlar
-
-Sunucusuz kod kullanarak bire çok gerçek zamanlı iletişimi ve güncelleştirmeleri kolaylaştırın. Bu mimari Azure Işlevleri, SignalR hizmeti, bir depolama hesabı ve bir SQL veritabanı kullanır.
-
-Bkz. Azure mimari merkezindeki [sunucusuz mimaride anında yayınlama](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/instant-broadcasting-on-serverless-architecture) .
 
 ## <a name="video-on-demand-digital-media"></a>Dijital medya ile isteğe bağlı video
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 73887515eea344e920455e3c24f3eae3d5ad515a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 50cce15d14561bb1c8ebfdbbeeedd99dc8efcda1
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95013744"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533001"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optik Karakter Tanıma (OCR)
 
@@ -133,7 +133,7 @@ Başarılı bir JSON yanıtı örneğine bakın:
 ### <a name="read-32-preview-adds-text-line-style-latin-languages-only"></a>Okuma 3,2 Preview metin satırı stili ekler (yalnızca Latin dilleri)
 [Okuma 3,2 Önizleme API 'si](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005) , her metin satırının yazdırma veya el yazısı stili olup olmadığı, Güvenirlik puanı ile birlikte bir **Görünüm** nesnesi verir. Bu özellik yalnızca Latin dilleri için desteklenir.
 
-[Görüntü işleme OCR SDK 'sı hızlı](./quickstarts-sdk/client-library.md) başlangıçlarını okuyun ve [okuma REST API hızlı](./QuickStarts/CSharp-hand-text.md) başlangıçlarını kullanarak, kuruluşunuzda OCR özelliklerini tümleştirmaya başlayabilirsiniz.
+[Görüntü İşleme REST API veya istemci kitaplığı hızlı](./quickstarts-sdk/client-library.md) başlangıçlarıyla çalışmaya başlamak IÇIN, OCR özelliklerini uygulamalarınıza tümleştirmeye başlayın.
 
 ## <a name="supported-languages-for-print-text"></a>Yazdırma metni için desteklenen diller
 [Okuma API 'si](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) , yazdırılan metnin Ingilizce, Ispanyolca, Almanca, Fransızca, Italyanca, Portekizce ve Felemenkçe dillerde ayıklanmasından sonra desteklenir.
@@ -197,7 +197,6 @@ Tüm bilişsel hizmetlerde olduğu gibi, okuma/OCR hizmetlerini kullanan gelişt
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- C#, Java, JavaScript veya Python 'da [okuma SDK 'sı hızlı](./quickstarts-sdk/client-library.md) başlangıçlarını görüntü işleme kullanmaya başlayın.
-- REST API 'Lerinin nasıl kullanılacağını öğrenmek için C#, Java, JavaScript veya Python 'da [okuma REST API hızlı](./QuickStarts/CSharp-hand-text.md) başlangıçlarını kullanın.
+- [Görüntü İşleme REST API veya istemci kitaplığı hızlı](./quickstarts-sdk/client-library.md)başlangıçlarını kullanmaya başlayın.
 - [Okuma REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005)hakkında bilgi edinin.
 - Basitleştirilmiş Çince ve Japonca desteğiyle ilgili [REST API 3,2 okuma genel önizlemesi](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005) hakkında bilgi edinin.

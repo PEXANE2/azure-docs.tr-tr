@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 18f8df90cd59a1fb32024ec93674fed7eb49519a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: baf2734c2f3c4de86b75a20239ecf7440c61a632
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451992"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96534055"
 ---
 # <a name="dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-release-notes"></a>Azure SYNAPSE Analytics sürüm notlarında adanmış SQL Havuzu (eski adıyla SQL DW)
 
@@ -39,6 +39,13 @@ Araç geliştirmeleri için sürüm notunda belirtilen doğru sürümün yüklü
 >
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
+
+## <a name="dec-2020"></a>Dec 2020
+
+| Hizmet geliştirmeleri | Ayrıntılar |
+| --- | --- |
+|**Sütunlar için sp_rename saklı yordam (Önizleme)**|Sütunu [CTAS](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-develop-ctas) olmadan yeniden adlandırdığınızda daha basit hale gelmiştir. Azure SYNAPSE SQL, bir Kullanıcı tablosundaki dağıtım dışı bir sütunu yeniden adlandırmak için sp_rename (Önizleme) sistem saklı yordamı için destek eklemiştir. Bu özellik şu anda önizleme aşamasındadır ve GA 'de araç çubuğunda desteklenecektir. Ayrıntılar için bkz. [sp_rename](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-rename-transact-sql?view=azure-sqldw-latest).|
+|**T-SQL tahmin için ek parametre**|Bu yeni sürümde, var olan T-SQL tahmın bildirimine ' RUNTIME ' adlı gerekli ek bir parametre eklenir. Mevcut betikleri güncelleştirmek için bkz. [T-SQL tahmin](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest)edilecek örnekler.|
 
 ## <a name="oct-2020"></a>Eki 2020
 

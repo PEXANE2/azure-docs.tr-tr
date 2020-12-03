@@ -4,12 +4,12 @@ description: Azure Service Fabric üzerinde ilk Windows kapsayıcı uygulamanız
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 96a9eda23268bc06029292c3c5f10502216e3658
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 197423670ffe05f15fdc5bfd351efdfba33b53cd
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93087069"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533783"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Windows üzerinde ilk Service Fabric kapsayıcı uygulamanızı oluşturma
 
@@ -36,20 +36,15 @@ Bir Service Fabric kümesindeki Windows kapsayıcısında mevcut olan bir uygula
 
   Bu makalede, Küme düğümleriniz üzerinde çalışan kapsayıcılarla Windows Server 'ın (derleme) sürümü, geliştirme makinmenizle aynı olmalıdır. Bunun nedeni, geliştirme makinenizde Docker görüntüsünü oluşturmanız ve kapsayıcı işletim sisteminin sürümleri ve dağıtıldığı ana bilgisayar IŞLETIM sistemi arasında uyumluluk kısıtlamaları vardır. Daha fazla bilgi için bkz. [Windows Server kapsayıcısı işletim sistemi ve konak işletim sistemi uyumluluğu](#windows-server-container-os-and-host-os-compatibility). 
   
-Kümeniz için gerekli olan kapsayıcılarla Windows Server sürümünü öğrenmek için, `ver` geliştirme makinenizde bir Windows komut isteminden komutunu çalıştırın:
-
-* Sürüm *x. x. 14323. x* içeriyorsa, [bir küme oluştururken](service-fabric-cluster-creation-via-portal.md), Işletim sistemi için *windowsserver 2016-Datacenter-with-containers* ' ı seçin.
-  * Sürüm *x. x. 16299. x* içeriyorsa, [bir küme oluştururken](service-fabric-cluster-creation-via-portal.md)Işletim sistemi Için *Windowsserveraltı Datacenter-Core-1709--containers* ' ı seçin.
+    Kümeniz için gerekli olan kapsayıcılarla Windows Server sürümünü öğrenmek için, `ver` geliştirme makinenizde bir Windows komut isteminden komutunu çalıştırın. [Bir küme oluşturmadan](service-fabric-cluster-creation-via-portal.md)önce [Windows Server kapsayıcısı işletim sistemi ve konak işletim sistemi uyumluluğunu](#windows-server-container-os-and-host-os-compatibility) inceleyin.
 
 * Azure Container Registry’deki bir kayıt defteri - Azure aboneliğinizde [Kapsayıcı kayıt defteri oluşturun](../container-registry/container-registry-get-started-portal.md).
 
 > [!NOTE]
 > Windows 10 ' da çalışan bir Service Fabric kümesine kapsayıcı dağıtmak desteklenir.  Windows 10 ' un Windows kapsayıcıları 'nı çalıştırmak için nasıl yapılandırılacağı hakkında bilgi için [Bu makaleye](service-fabric-how-to-debug-windows-containers.md) bakın.
->   
 
 > [!NOTE]
-> Service Fabric sürümleri 6,2 ve üzeri, Windows Server sürüm 1709 ' de çalışan kümelere kapsayıcı dağıtımı desteği.  
-> 
+> Service Fabric sürümleri 6,2 ve üzeri, Windows Server sürüm 1709 ' de çalışan kümelere kapsayıcı dağıtımı desteği.
 
 ## <a name="define-the-docker-container"></a>Docker kapsayıcısını tanımlama
 
@@ -109,10 +104,18 @@ if __name__ == "__main__":
 ```
 
 <a id="Build-Containers"></a>
-## <a name="build-the-image"></a>Görüntü oluşturma
-Web uygulamanızı çalıştıran görüntüyü oluşturmak için `docker build` komutunu çalıştırın. PowerShell penceresini açın ve Dockerfile dosyasını içeren dizine gidin. Şu komutu çalıştırın:
+
+## <a name="login-to-docker-and-build-the-image"></a>Docker 'da oturum açın ve görüntü oluşturun
+
+Daha sonra Web uygulamanızı çalıştıran görüntüyü oluşturacağız. Docker 'dan (Dockerfile gibi) ortak görüntüleri çektiğinizde `python:2.7-windowsservercore` , anonim bir çekme isteği yapmak yerine Docker Hub hesabınızda kimlik doğrulaması yapmak en iyi uygulamadır.
+
+> [!NOTE]
+> Sık sık anonim çekme istekleri yaparken, bu hataları engellemek için Docker hata ile benzer `ERROR: toomanyrequests: Too Many Requests.` veya `You have reached your pull rate limit.` Bu hata için kimlik doğrulaması yapabilirsiniz. Daha fazla bilgi için bkz. [Azure Container Registry ortak Içeriği yönetme](../container-registry/buffer-gate-public-content.md) .
+
+PowerShell penceresini açın ve Dockerfile dosyasını içeren dizine gidin. Sonra aşağıdaki komutları çalıştırın:
 
 ```
+docker login
 docker build -t helloworldapp .
 ```
 
@@ -136,7 +139,7 @@ Uygulamayı çalıştırın:
 docker run -d --name my-web-site helloworldapp
 ```
 
-*name* , çalışan kapsayıcıya bir ad verir (kapsayıcı kimliği yerine).
+*name*, çalışan kapsayıcıya bir ad verir (kapsayıcı kimliği yerine).
 
 Kapsayıcı başladıktan sonra çalışan kapsayıcınıza bir tarayıcıdan bağlanabilmek için IP adresini bulun:
 ```
@@ -190,11 +193,11 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 ## <a name="create-the-containerized-service-in-visual-studio"></a>Visual Studio’da kapsayıcıya alınmış hizmet oluşturma
 Service Fabric SDK’sı ve araçları, kapsayıcıya alınmış uygulamalar oluşturmanıza yardımcı olan bir hizmet şablonu sağlar.
 
-1. Visual Studio’yu çalıştırın. **Dosya**  >  **Yeni**  >  **Proje** ' yi seçin.
-2. **Service Fabric uygulaması** ’nı seçin, "MyFirstContainer" olarak adlandırın ve **Tamam** ’a tıklayın.
-3. **Hizmet şablonları** listesinden **Kapsayıcı** ’yı seçin.
+1. Visual Studio’yu çalıştırın. **Dosya**  >  **Yeni**  >  **Proje**' yi seçin.
+2. **Service Fabric uygulaması**’nı seçin, "MyFirstContainer" olarak adlandırın ve **Tamam**’a tıklayın.
+3. **Hizmet şablonları** listesinden **Kapsayıcı**’yı seçin.
 4. **Görüntü Adı** alanına, kapsayıcı deponuza gönderdiğiniz görüntünün dizini olan "myregistry.azurecr.io/samples/helloworldapp" değerini girin.
-5. Hizmetinize bir ad verin ve **Tamam** ’a tıklayın.
+5. Hizmetinize bir ad verin ve **Tamam**’a tıklayın.
 
 ## <a name="configure-communication"></a>İletişimi yapılandırma
 Kapsayıcıya alınmış hizmetin iletişim sağlayabilmesi için bir uç nokta gerekir. ServiceManifest.xml dosyasına protokol, bağlantı noktası ve tür bilgileriyle bir `Endpoint` öğesi ekleyin. Bu örnekte, 8081 numaralı sabit bağlantı noktası kullanılır. Hiçbir bağlantı noktası belirtilmemişse, uygulama bağlantı noktası aralığından rastgele bir bağlantı noktası seçilir. 
@@ -319,11 +322,11 @@ Varsayılan olarak, *ıncludedockerhealthstatusınsystemhealthreport* **true** o
 Tüm Service Fabric kümesi için **HEALTHCHECK** tümleştirmesini devre dışı bırakmak istiyorsanız [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) özelliğini **false** olarak ayarlamanız gerekir.
 
 ## <a name="deploy-the-container-application"></a>Kapsayıcı uygulamasını dağıtma
-Tüm değişikliklerinizi kaydedin ve uygulamayı derleyin. Uygulamanızı yayımlamak için Çözüm Gezgini’nde **MyFirstContainer** ’a sağ tıklayın ve **Yayımla** ’yı seçin.
+Tüm değişikliklerinizi kaydedin ve uygulamayı derleyin. Uygulamanızı yayımlamak için Çözüm Gezgini’nde **MyFirstContainer**’a sağ tıklayın ve **Yayımla**’yı seçin.
 
-**Bağlantı Uç Noktası** ’nda kümenin yönetim uç noktasını girin. Örneğin, `containercluster.westus2.cloudapp.azure.com:19000`. İstemci bağlantı uç noktasını [Azure portalında](https://portal.azure.com) kümenizin Genel Bakış sekmesinde bulabilirsiniz.
+**Bağlantı Uç Noktası**’nda kümenin yönetim uç noktasını girin. Örneğin, `containercluster.westus2.cloudapp.azure.com:19000`. İstemci bağlantı uç noktasını [Azure portalında](https://portal.azure.com) kümenizin Genel Bakış sekmesinde bulabilirsiniz.
 
-**Yayımla** ’ya tıklayın.
+**Yayımla**’ya tıklayın.
 
 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md), bir Service Fabric kümesindeki uygulama ve düğümleri inceleyip yönetmeye yönelik web tabanlı bir araçtır. Bir tarayıcı penceresi açıp `http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/` konumuna gidin ve uygulama dağıtımını izleyin. Uygulama dağıtılır, ancak görüntü küme düğümlerine yüklenene kadar hatalı durumdadır (bu işlem, görüntü boyutuna bağlı olarak biraz zaman alabilir): ![Hata][1]
 
@@ -344,7 +347,7 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
 
 ## <a name="windows-server-container-os-and-host-os-compatibility"></a>Windows Server kapsayıcısı işletim sistemi ve konak işletim sistemi uyumluluğu
 
-Windows Server kapsayıcıları, bir konak işletim sisteminin tüm sürümleri arasında uyumlu değildir. Örneğin:
+Windows Server kapsayıcıları, bir konak işletim sisteminin tüm sürümleri arasında uyumlu değildir. Örnek:
  
 - Windows Server sürüm 1709 kullanılarak oluşturulan Windows Server kapsayıcıları, Windows Server sürüm 2016 çalıştıran bir konakta çalışmıyor. 
 - Windows Server 2016 kullanılarak oluşturulan Windows Server kapsayıcıları, Hyper-V yalıtım modunda yalnızca Windows Server sürüm 1709 çalıştıran bir konakta çalışır. 
@@ -352,7 +355,7 @@ Windows Server kapsayıcıları, bir konak işletim sisteminin tüm sürümleri 
  
 Daha fazla bilgi için bkz. [Windows kapsayıcı sürümü uyumluluğu](/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
-Service Fabric kümenize kapsayıcı oluştururken ve dağıttığınızda konak IŞLETIM sisteminin ve kapsayıcı işletim sisteminin uyumluluğunu göz önünde bulundurun. Örneğin:
+Service Fabric kümenize kapsayıcı oluştururken ve dağıttığınızda konak IŞLETIM sisteminin ve kapsayıcı işletim sisteminin uyumluluğunu göz önünde bulundurun. Örnek:
 
 - Küme düğümlerinizin işletim sistemi ile uyumlu bir işletim sistemi ile kapsayıcıları dağıttığınızdan emin olun.
 - Kapsayıcı uygulamanız için belirtilen yalıtım modunun, dağıtıldığı düğümde kapsayıcı işletim sistemi desteğiyle tutarlı olduğundan emin olun.

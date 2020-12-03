@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/18/2020
+ms.date: 12/02/2020
 ms.author: mnayak
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f6c4d0defbaeb484f66593e112587c16c46eed2f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c3ce69dc9364d71a501f122a7150ad4a59869422
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96491613"
+ms.locfileid: "96534021"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-azure-cli"></a>Azure CLı kullanarak genel IP adresi için yönlendirme tercihini yapılandırma
 
@@ -52,7 +52,7 @@ Varsayılan olarak, genel IP adresi için yönlendirme tercihi tüm Azure hizmet
 ```
 ## <a name="create-a-public-ip-address"></a>Genel IP adresi oluşturma
 
-Aşağıda gösterildiği gibi, [az Network public-IP Create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)komutunu kullanarak "Internet" türünün yönlendirme tercihi ile genel bir IP adresi oluşturun.
+Aşağıda gösterildiği gibi, [az Network public-IP Create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)komutunu kullanarak **Internet** türü yönlendirme tercıhı Ile genel bir IP adresi oluşturun.
 
 Aşağıdaki komut, **Doğu ABD** Azure bölgesinde **Internet** yönlendirme tercihi Ile yeni bir genel IP oluşturur.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f6d17b007fcccd87aed17a9ec3ca039b9559ab6d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 860bc9440547a4c62336ccc573859ec56b3400b5
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492242"
+ms.locfileid: "96533868"
 ---
 # <a name="azure-security-baseline-for-site-recovery"></a>Site Recovery için Azure Güvenlik temeli
 
@@ -164,9 +164,9 @@ Günlük sonuçlarını görselleştirin ve sorgulayın ve izlenen verilere gör
 
 **Rehberlik**: varsayılan olarak hiçbir rol atanmaz. İş ihtiyaçları temelinde açıkça atanması gerekir. Tüm rol atamaları, yönetim gruplarının üyesi olan hesapları saptamak için PowerShell CLı veya Azure Active Directory (Azure AD) ile denetlenebilir.
 
-- [Azure AD 'de PowerShell ile dizin rolü alma](/powershell/module/azuread/get-azureaddirectoryrole?amp;preserve-view=true&view=azureadps-2.0)
+- [Azure AD 'de PowerShell ile dizin rolü alma](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [Azure AD 'de PowerShell ile bir dizin rolünün üyelerini alma](/powershell/module/azuread/get-azureaddirectoryrolemember?amp;preserve-view=true&view=azureadps-2.0)
+- [Azure AD 'de PowerShell ile bir dizin rolünün üyelerini alma](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -431,7 +431,7 @@ Klasik Azure kaynakları kaynak Graph aracılığıyla bulunabilse de, ileri do�
 
 - [Azure Graph ile sorgu oluşturma](../governance/resource-graph/first-query-portal.md)
 
-- [Azure aboneliklerinizi görüntüleme](/powershell/module/az.accounts/get-azsubscription?amp;preserve-view=true&view=azps-4.8.0)
+- [Azure aboneliklerinizi görüntüleme](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Azure RBAC 'yi anlama](../role-based-access-control/overview.md)
 
@@ -530,7 +530,7 @@ Kurumsal standartlarınıza ve hizmet düzeyi sözleşmelerinize uyumluluğu kor
 **Kılavuz**: Azure Ilkesiyle kurtarma hizmetleri kasanızda standart güvenlik yapılandırması tanımlayın ve uygulayın. 
 
 Denetim için özel ilkeler oluşturmak veya Site Recovery hizmetinin kurtarma hizmetleri Kasası kaynaklarını yapılandırmayı zorlamak için "Microsoft. RecoveryServices" ad alanındaki Azure Ilke diğer adlarını kullanın.
-- [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](/powershell/module/az.resources/get-azpolicyalias?amp;preserve-view=true&view=azps-4.8.0)
+- [Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Azure İlkesi'ni yapılandırma ve yönetme](../governance/policy/tutorials/create-and-manage.md)
 
@@ -553,9 +553,9 @@ Denetim için özel ilkeler oluşturmak veya Site Recovery hizmetinin kurtarma h
 
 **Rehberlik**: kurtarma hizmetleri kasaları ve ilgili kaynaklarınız Için özel Azure ilke tanımları kullanıyorsanız kodunuzu güvenli bir şekilde depolamak ve yönetmek için Azure Repos seçin.
 
-- [Azure DevOps 'da kod depolama](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
+- [Azure DevOps 'da kod depolama](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Azure Repos belgeleri](/azure/devops/repos/?amp;preserve-view=true&view=azure-devops)
+- [Azure Repos belgeleri](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -656,7 +656,7 @@ Site Recovery Services meta verileri tarafından şu tür yapılandırmasıyla k
 
 Bu, müşteri kapsamında değildir ve Site Recovery ekibi tarafından dahili olarak ele alınır. Müşteri, Azure 'da Key Vault anahtarlarını yedekleyebilir.
 
-- [Azure 'da Anahtar Kasası anahtarlarını yedekleme](/powershell/module/az.keyvault/backup-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
+- [Azure 'da Anahtar Kasası anahtarlarını yedekleme](/powershell/module/az.keyvault/backup-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -666,7 +666,7 @@ Bu, müşteri kapsamında değildir ve Site Recovery ekibi tarafından dahili ol
 
 **Rehberlik**: yedeklenen müşteri tarafından yönetilen anahtarların düzenli olarak test geri yüklemeleri.
 
-- [Azure 'da Anahtar Kasası anahtarlarını geri yükleme](/powershell/module/az.keyvault/restore-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
+- [Azure 'da Anahtar Kasası anahtarlarını geri yükleme](/powershell/module/az.keyvault/restore-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 

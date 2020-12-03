@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 5/11/2020
-ms.openlocfilehash: 3a08b73a74d30a99ba3c360f012d5917f1d0c8bf
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.date: 12/2/2020
+ms.openlocfilehash: 2cfd391daa13a100a56bb10b79b27eda80902374
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129737"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533629"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Stream Analytics aramalar için başvuru verilerini kullanma
 
@@ -111,13 +111,13 @@ SQL veritabanı başvuru verilerinizi yapılandırmak için önce **başvuru ver
 
 ## <a name="size-limitation"></a>Boyut sınırlaması
 
-En iyi performansı elde etmek için 300 MB 'tan az olan başvuru veri kümelerini kullanmanız önerilir. 300 MB 'den büyük başvuru verilerinin kullanımı 6 SUs veya daha fazla iş ortamında desteklenir. Bu işlevsellik önizlemededir ve üretimde kullanılmamalıdır. Çok büyük bir başvuru verilerinin kullanılması, işinizin performansını etkileyebilir. Sorgu karmaşıklığı, pencereli toplamalar, zamana bağlı birleşimler ve zamana bağlı analitik işlevler gibi durum bilgisi içeren işleme dahil olmak üzere arttıkça, başvuru verilerinin en fazla desteklenen boyutunun azalttığı beklenmektedir. Azure Stream Analytics başvuru verilerini yükleyemez ve karmaşık işlemler gerçekleştirmeyebilir, iş belleği tükenme ve başarısız olur. Bu gibi durumlarda% SU kullanım ölçümü %100 ' ye ulaşacaktır.    
+En iyi performansı elde etmek için 300 MB 'tan az olan başvuru veri kümelerini kullanmanız önerilir. Başvuru veri kümeleri 5 GB veya daha düşük olan işlerde 6 SUs veya daha fazlası desteklenir. Çok büyük bir başvuru verilerinin kullanılması, işinizin uçtan uca gecikme süresini etkileyebilir. Sorgu karmaşıklığı, pencereli toplamalar, zamana bağlı birleşimler ve zamana bağlı analitik işlevler gibi durum bilgisi içeren işleme dahil olmak üzere arttıkça, başvuru verilerinin en fazla desteklenen boyutunun azalttığı beklenmektedir. Azure Stream Analytics başvuru verilerini yükleyemez ve karmaşık işlemler gerçekleştirmeyebilir, iş belleği tükenme ve başarısız olur. Bu gibi durumlarda% SU kullanım ölçümü %100 ' ye ulaşacaktır.    
 
 |**Akış birimi sayısı**  |**Önerilen boyut**  |
 |---------|---------|
 |1   |50 MB veya daha düşük   |
 |3   |150 MB veya daha düşük   |
-|6 ve daha fazla   |300 MB veya daha düşük. Önizleme aşamasında 300 MB 'den büyük başvuru verilerinin kullanılması, önizlemede desteklenir ve işinizin performansını etkileyebilir.    |
+|6 ve daha fazla   |5 GB veya daha düşük.    |
 
 Başvuru verileri için sıkıştırma desteği kullanılamaz.
 

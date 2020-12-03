@@ -10,12 +10,12 @@ ms.date: 11/03/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: a808a6bb0d4dc75f02147bbfdd74d17b34e96f6e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: feac7b890c973b1541c5362f860432687082953f
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313974"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533885"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>Kapsayıcılar ve BLOB 'lar için anonim genel okuma erişimini yapılandırma
 
@@ -53,14 +53,14 @@ Depolama hesabı için genel erişime izin vermemek, bu hesaptaki tüm kapsayıc
 
 Bir depolama hesabı için genel erişime izin vermek veya bu erişimi engellemek için, hesabın **Allowblobpublicaccess** özelliğini yapılandırın. Bu özellik, Azure Resource Manager dağıtım modeliyle oluşturulan tüm depolama hesapları için kullanılabilir. Daha fazla bilgi için bkz. [depolama hesabına genel bakış](../common/storage-account-overview.md).
 
-**Allowblobpublicaccess** özelliği varsayılan olarak ayarlı değildir ve açıkça ayarlanana kadar bir değer döndürmez. Özellik değeri **null** ya da **doğru** olduğunda depolama hesabı ortak erişime izin verir.
+**Allowblobpublicaccess** özelliği bir depolama hesabı için varsayılan olarak ayarlı değildir ve açıkça ayarlanana kadar bir değer döndürmez. Özellik değeri **null** ya da **doğru** olduğunda depolama hesabı ortak erişime izin verir.
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
 Azure portal bir depolama hesabı için genel erişime izin vermek veya bu erişimi engellemek için şu adımları izleyin:
 
 1. Azure portalda depolama hesabınıza gidin.
-1. **Ayarlar** ' ın altındaki **yapılandırma** ayarını bulun.
+1. **Ayarlar**' ın altındaki **yapılandırma** ayarını bulun.
 1. **BLOB ortak erişimini** **etkin** veya **devre dışı** olarak ayarlayın.
 
     :::image type="content" source="media/anonymous-read-access-configure/blob-public-access-portal.png" alt-text="Hesap için blob genel erişimine izin verme veya bu erişimi engelleme ile ilgili ekran görüntüsü":::
@@ -131,9 +131,9 @@ az storage account show \
 
 Şablonla bir depolama hesabı için genel erişime izin vermek veya bu erişimi engellemek için, **Allowblobpublicaccess** özelliği **true** veya **false** olarak ayarlanmış bir şablon oluşturun. Aşağıdaki adımlar Azure portal bir şablonun nasıl oluşturulacağını açıklamaktadır.
 
-1. Azure portal **kaynak oluştur** ' u seçin.
-1. **Market 'Te ara** ' te, **şablon dağıtımı** yazın ve ardından **ENTER** tuşuna basın.
-1. **Şablon dağıtımı seçin (özel şablonlar kullanarak dağıtın) (Önizleme)** , **Oluştur** ' u seçin ve ardından **düzenleyicide kendi şablonunuzu oluşturun** ' i seçin.
+1. Azure portal **kaynak oluştur**' u seçin.
+1. **Market 'Te ara**' te, **şablon dağıtımı** yazın ve ardından **ENTER** tuşuna basın.
+1. **Şablon dağıtımı seçin (özel şablonlar kullanarak dağıtın) (Önizleme)**, **Oluştur**' u seçin ve ardından **düzenleyicide kendi şablonunuzu oluşturun**' i seçin.
 1. Şablon Düzenleyicisi 'nde, yeni bir hesap oluşturmak için aşağıdaki JSON öğesine yapıştırın ve **Allowblobpublicaccess** özelliğini **true** veya **false** olarak ayarlayın. Açılı ayraçlar içindeki yer tutucuları kendi değerlerinizle değiştirmeyi unutmayın.
 
     ```json
@@ -195,7 +195,7 @@ Tek bir blob için genel erişim düzeyini değiştiremezsiniz. Genel erişim d�
 Azure portal bir veya daha fazla mevcut kapsayıcının genel erişim düzeyini güncelleştirmek için şu adımları izleyin:
 
 1. Azure portal depolama hesabınıza genel bakış bölümüne gidin.
-1. Menü dikey penceresinde **BLOB hizmeti** altında **kapsayıcılar** ' ı seçin.
+1. Menü dikey penceresinde **BLOB hizmeti** altında **kapsayıcılar**' ı seçin.
 1. Ortak erişim düzeyini ayarlamak istediğiniz kapsayıcıları seçin.
 1. Genel erişim ayarlarını göstermek için **erişim düzeyini Değiştir** düğmesini kullanın.
 1. **Genel erişim düzeyi** açılan menüsünde istenen genel erişim düzeyini seçin ve değişikliği seçili kapsayıcılara uygulamak için Tamam düğmesine tıklayın.

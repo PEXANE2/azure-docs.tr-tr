@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 43359c47b4d2c1b8895938271c74dab03f7731f7
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 9721ffa807c9adbeb50839113bc64fd23d8eb13f
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541785"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533732"
 ---
 # <a name="categorize-images-by-subject-matter"></a>Görüntüleri konuya göre kategorilere ayırın
 
@@ -53,7 +53,7 @@ Aşağıdaki JSON yanıtında, örnek görüntüyü görsel özelliklerine göre
 
 Aşağıdaki tabloda tipik bir görüntü kümesi ve her görüntü için Görüntü İşleme tarafından döndürülen kategori gösterilmektedir.
 
-| Görüntü | Kategori |
+| Görüntü | Category |
 |-------|----------|
 | ![Aile olarak bir arada bulunan dört kişi](./Images/family_photo.png) | people_group |
 | ![Bir Grassy alanında oturan bir pupa](./Images/cute_dog.png) | animal_dog |
@@ -64,8 +64,7 @@ Aşağıdaki tabloda tipik bir görüntü kümesi ve her görüntü için Görü
 
 Kategori özelliği, [görüntüyü çözümle](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API 'sinin bir parçasıdır. Bu API 'YI yerel bir SDK aracılığıyla veya REST çağrıları aracılığıyla çağırabilirsiniz. `Categories` **Visualfeatures** sorgu parametresine dahil edin. Ardından, tam JSON yanıtını aldığınızda, bu dizeyi yalnızca bölüm içeriği için ayrıştırın `"categories"` .
 
-* [Hızlı başlangıç: Görüntü İşleme .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
-* [Hızlı başlangıç: bir görüntüyü çözümleme (REST API)](./quickstarts/csharp-analyze.md)
+* [Hızlı başlangıç: Görüntü İşleme REST API veya istemci kitaplıkları](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

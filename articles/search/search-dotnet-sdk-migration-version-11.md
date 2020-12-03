@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 11/10/2020
+ms.date: 12/02/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 90fc356929a9ea5713a8d359dfaa83286017b8f8
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 260df85f3e380e40d153fc17ce77bd56ca068982
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445447"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532831"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Azure Bilişsel Arama .NET SDK sürüm 11 ' e yükseltme
 
-[.NET SDK 'sının](/dotnet/api/overview/azure/search)10,0 veya daha eski bir sürümünü kullanıyorsanız, bu makale 11 sürümüne yükseltmenize yardımcı olur.
+[.NET SDK 'sının](/dotnet/api/overview/azure/search)10,0 veya daha eski bir sürümünü kullanıyorsanız bu makale, sürüm 11 ve **Azure.Search.Documstalar** istemci kitaplığına yükseltmenize yardımcı olur.
 
 Sürüm 11, Azure SDK geliştirme ekibi tarafından yayınlanan, tamamen yeniden tasarlanan bir istemci kitaplığıdır (önceki sürümler Azure Bilişsel Arama geliştirme ekibi tarafından üretildi). Kitaplık, diğer Azure istemci kitaplıklarıyla daha fazla tutarlılık için yeniden tasarlanmıştır, [Azure](/dotnet/api/azure.core) üzerinde bir bağımlılık gerçekleştirerek ve [ üzerindeSystem.Text.Js](/dotnet/api/system.text.json)ve ortak görevler için tanıdık yaklaşımlar uygulama.
 
@@ -49,7 +49,7 @@ Uygun olduğunda, aşağıdaki tablo iki sürüm arasındaki istemci kitaplıkla
 |---------------------|------------------------------|------------------------------|
 | Sorgular için kullanılan istemci ve bir dizini doldurma. | [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) | [SearchClient](/dotnet/api/azure.search.documents.searchclient) |
 | Dizinler, çözümleyiciler, eş anlamlı haritalar için kullanılan istemci | [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) |
-| Dizin oluşturucular, veri kaynakları, becerileri için kullanılan istemci | [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexerClient ( **Yeni** )](/dotnet/api/azure.search.documents.indexes.searchindexerclient) |
+| Dizin oluşturucular, veri kaynakları, becerileri için kullanılan istemci | [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexerClient (**Yeni**)](/dotnet/api/azure.search.documents.indexes.searchindexerclient) |
 
 > [!Important]
 > `SearchIndexClient` Her iki sürümde de bulunur, ancak farklı işlemleri destekler. Sürüm 10 ' da `SearchIndexClient` Dizinler ve diğer nesneler oluşturun. Sürüm 11 ' de `SearchIndexClient` var olan dizinlerle birlikte kullanılır. Kodu güncelleştirirken karışıklık oluşmasını önlemek için, istemci başvurularının güncelleştirildiği sırayı en az bir hale getirin. [Yükseltme adımlarında](#UpgradeSteps) aşağıdaki sıra, herhangi bir dize değiştirme sorununu azaltmaya yardımcı olur.
@@ -141,7 +141,7 @@ Aşağıdaki sürüm 10 özellikleri henüz 11. sürümde kullanılamamaktadır.
 
 ## <a name="steps-to-upgrade"></a>Yükseltme adımları
 
-Aşağıdaki adımlar, özellikle de istemci başvurularına bağlı olarak, gerekli görevlerin ilk kümesinden yürüyerek bir kod geçişi üzerinde başlamanızı sağlar.
+Aşağıdaki adımlar, özellikle de istemci başvurularıyla ilgili olarak, gerekli görevlerin ilk kümesinden yürüyerek bir kod geçişi üzerinde başlamanızı sağlar.
 
 1. Proje başvurularınızı sağ tıklayıp "NuGet Paketlerini Yönet..." seçeneğini belirleyerek [Azure.Search.Documstaları paketini](https://www.nuget.org/packages/Azure.Search.Documents/) yükleyeceksiniz. Visual Studio 'da.
 
@@ -170,7 +170,7 @@ Aşağıdaki adımlar, özellikle de istemci başvurularına bağlı olarak, ger
 
 1. Dizin oluşturucudan ilgili nesneler için yeni istemci başvuruları ekleyin. Dizin oluşturucular, veri kaynakları veya becerileri kullanıyorsanız, istemci başvurularını [SearchIndexerClient](/dotnet/api/azure.search.documents.indexes.searchindexerclient)olarak değiştirin. Bu istemci, sürüm 11 ' de yenidir ve öncül değildir.
 
-1. Koleksiyonları yeniden ziyaret edin. Yeni SDK 'da, liste null değerler içeriyorsa aşağı akış sorunlarından kaçınmak için tüm listeler salt okunurdur. Kod değişikliği bir listeye öğe eklemektir. Örneğin, bir Select özelliğine dizeler atamak yerine, bunları aşağıdaki şekilde ekleyebilirsiniz:
+1. Koleksiyonları ve listeleri gözden geçirin. Yeni SDK 'da, liste null değerler içeriyorsa aşağı akış sorunlarından kaçınmak için tüm listeler salt okunurdur. Kod değişikliği bir listeye öğe eklemektir. Örneğin, bir Select özelliğine dizeler atamak yerine, bunları aşağıdaki şekilde ekleyebilirsiniz:
 
    ```csharp
    var options = new SearchOptions
@@ -188,11 +188,13 @@ Aşağıdaki adımlar, özellikle de istemci başvurularına bağlı olarak, ger
     options.Select.Add("LastRenovationDate");
    ```
 
+   Select, modeller, SearchFields, SourceFields, ScoringParameters ve OrderBy, şimdi yeniden yapılandırılması gereken tüm listelerdir.
+
 1. Sorgular ve veri içeri aktarma için istemci başvurularını güncelleştirin. [Searchındexclient](/dotnet/api/microsoft.azure.search.searchindexclient) örnekleri [searchclient](/dotnet/api/azure.search.documents.searchclient)olarak değiştirilmelidir. Ad karışıklığı önlemek için, bir sonraki adıma geçmeden önce tüm örnekleri yakalediğinizden emin olun.
 
-1. Dizin, Dizin Oluşturucu, eş anlamlı eşleme ve çözümleyici nesneleri için istemci başvurularını güncelleştirin. [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) örnekleri [searchındexclient](/dotnet/api/microsoft.azure.search.searchindexclient)olarak değiştirilmelidir. 
+1. Dizin, eş anlamlı eşleme ve çözümleyici nesneleri için istemci başvurularını güncelleştirin. [SearchServiceClient](/dotnet/api/microsoft.azure.search.searchserviceclient) örnekleri [searchındexclient](/dotnet/api/microsoft.azure.search.searchindexclient)olarak değiştirilmelidir. 
 
-1. Mümkün olduğunca, yeni kitaplığın API 'Lerini kullanmak için sınıfları, yöntemleri ve özellikleri güncelleştirin. [Adlandırma farkları](#naming-differences) bölümünün başlaması için bir yer vardır ancak [değişiklik günlüğünü](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md)de gözden geçirebilirsiniz.
+1. Kodunuzun geri kalanı için, güncelleştirme sınıfları, yöntemleri ve özellikleri yeni kitaplığın API 'Lerini kullanacak şekilde kullanın. [Adlandırma farkları](#naming-differences) bölümünün başlaması için bir yer vardır ancak [değişiklik günlüğünü](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md)de gözden geçirebilirsiniz.
 
    Eşdeğer API 'Leri bulmakta sorun yaşıyorsanız, [https://github.com/MicrosoftDocs/azure-docs/issues](https://github.com/MicrosoftDocs/azure-docs/issues) belgeleri iyileştirebilmemiz veya sorunu araştırabilmeniz için bir sorunu günlüğe kaydetmeyi öneririz.
 

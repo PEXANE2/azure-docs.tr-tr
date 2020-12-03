@@ -1,24 +1,24 @@
 ---
-title: Öğretici-terrayform ile Azure yay bulut örneği sağlama
+title: Terrayform ile Azure Spring Cloud örneğini sağlama
 description: Terrayform ile bir Azure yay bulutu örneği sağlayın.
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: ed66da991df4dbe89c327a9a28ee28527c3da87b
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 060ef2d08b849706b47b24748142c608292971b5
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091653"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533800"
 ---
-# <a name="tutorial-provision-an-azure-spring-cloud-instance-with-terraform"></a>Öğretici: Terrayform ile Azure yay bulutu örneği sağlama
+# <a name="provision-an-azure-spring-cloud-instance-with-terraform"></a>Terrayform ile Azure yay bulutu örneği sağlama
 
 **Bu makale şu şekilde geçerlidir:** ✔️ Java ✔️ C #
 
-Bu öğretici, Terrayform kullanarak bir Azure Spring Cloud örneği oluşturur. Yordamlar aşağıdaki kaynakları oluşturma konusunda size yol gösterir:
+Bu örnek, Terrayform kullanarak bir Azure Spring Cloud örneği oluşturur. Yordamlar aşağıdaki kaynakları oluşturma konusunda size yol gösterir:
 
 > [!div class="checklist"]
 > * Kaynak Grubu
@@ -37,7 +37,7 @@ Bu öğretici, Terrayform kullanarak bir Azure Spring Cloud örneği oluşturur.
 
 ## <a name="create-configuration-file"></a>Yapılandırma dosyası oluşturma
 
-1. [Azure portalda](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
+1. [Azure portalında](https://go.microsoft.com/fwlink/p/?LinkID=525040) oturum açın.
 
 1. [Azure Cloud Shell](../app-service/quickstart-java.md#use-azure-cloud-shell)açın.
 
@@ -72,7 +72,7 @@ Bu öğretici, Terrayform kullanarak bir Azure Spring Cloud örneği oluşturur.
     }
     ```
 
-1. Dosyayı kaydedin (** &lt; CTRL>S**) ve düzenleyiciden çıkın (** &lt; CTRL>Q**).
+1. Dosyayı kaydedin (**&lt; CTRL>S**) ve düzenleyiciden çıkın (**&lt; CTRL>Q**).
 
 ## <a name="apply-the-configuration"></a>Yapılandırmayı Uygula
 
@@ -143,7 +143,7 @@ Bu bölümde, Azure depolama hesabıyla Azure Spring Cloud için günlük ve öl
     }
     ```
 
-1. Dosyayı kaydedin (** &lt; CTRL>S**) ve düzenleyiciden çıkın (** &lt; CTRL>Q**).
+1. Dosyayı kaydedin (**&lt; CTRL>S**) ve düzenleyiciden çıkın (**&lt; CTRL>Q**).
 
 1. Önceki bölümde olduğu gibi, değişiklikleri yapmak için aşağıdaki komutu çalıştırın:
 
@@ -161,7 +161,7 @@ Bu bölümde, Azure depolama hesabıyla Azure Spring Cloud için günlük ve öl
 
 Artık gerekli değilse, bu makalede oluşturulan kaynakları silin.
 
-Bu öğreticide oluşturulan Azure kaynaklarını kaldırmak için [terkform Destroy](https://www.terraform.io/docs/commands/destroy.html) komutunu çalıştırın:
+Bu alıştırmada oluşturulan Azure kaynaklarını kaldırmak için [terkform Destroy](https://www.terraform.io/docs/commands/destroy.html) komutunu çalıştırın:
 
 ```bash
 terraform destroy -auto-approve

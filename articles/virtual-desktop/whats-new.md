@@ -3,17 +3,17 @@ title: Windows sanal masaüstündeki yenilikler nelerdir? - Azure
 description: Windows sanal masaüstü için yeni özellikler ve ürün güncelleştirmeleri.
 author: Heidilohr
 ms.topic: overview
-ms.date: 11/11/2020
+ms.date: 12/02/2020
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: c82312b40955b392243bf616ee991c0108a13fb5
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: e267de136271991446444a47a470dd52789b3613
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537399"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533970"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows sanal masaüstündeki yenilikler nelerdir?
 
@@ -25,6 +25,31 @@ Windows sanal masaüstü güncelleştirmeleri düzenli aralıklarla yapılır. B
 - Hata düzeltmeleri
 
 Bu makale aylık olarak güncelleştirilir. Yeni güncelleştirmeleri kullanmaya devam etmek için bu adımları en sık kontrol ettiğinizden emin olun.
+
+## <a name="november-2020"></a>Kasım 2020
+
+### <a name="azure-portal-experience"></a>Azure portal deneyim
+
+Azure portal kullanıcı deneyiminde iki hata düzeltildi:
+
+- "VM Ekle" iş akışında masaüstü uygulamasının kolay adı artık üzerine yazılmaz.
+- Oturum ana bilgisayarları ölçek kümelerinin parçasıysa, oturum ana bilgisayarı sekmesi şimdi yüklenir.
+
+### <a name="fslogix-client-version-2009"></a>FSLogix istemcisi, sürüm 2009 
+
+Çeşitli düzeltmeler ve geliştirmeler ile FSLogix istemcisinin yeni bir sürümünü yayımladık. [Blog gönderimiz](https://social.msdn.microsoft.com/Forums/en-US/defe5828-fba4-4715-a68c-0e4d83eefa6b/release-notes-for-fslogix-apps-release-2009-29762130127?forum=FSLogix)hakkında daha fazla bilgi edinin.
+
+### <a name="rdp-shortpath-public-preview"></a>RDP ShortPath genel önizlemesi
+
+RDP ShortPath, Noktadan siteye ve siteden siteye VPN 'Leri ve ExpressRoute kullanarak Windows sanal masaüstü oturum ana bilgisayarınıza doğrudan bağlantı sağlar. Ayrıca URCP aktarma protokolünü tanıtır. RDP ShortPath, Kullanıcı deneyimini geliştirmek için gecikme süresini ve ağ atlamalarını azaltmak üzere tasarlanmıştır. [Windows sanal masaüstü RDP Shortfılepath](shortpath.md)'de daha fazla bilgi edinin.
+
+### <a name="azdesktopvirtualization-version-201"></a>Az. DesktopVirtualization, sürüm 2.0.1
+
+Windows sanal masaüstü cmdlet 'lerinin sürüm 2.0.1'i yayımladık. Bu güncelleştirme, MSIX uygulama ekleme 'yi yönetmenizi sağlayacak cmdlet 'leri içerir. Yeni sürümü [PowerShell galerisinde](https://www.powershellgallery.com/packages/Az.DesktopVirtualization/2.0.1)indirebilirsiniz.
+
+### <a name="azure-advisor-updates"></a>Azure Advisor güncelleştirmeleri
+
+Azure Advisor artık Windows sanal masaüstündeki yakınlık Kılavuzu için yeni bir önerisine sahiptir. [Azure Web sitesinden](https://azure.microsoft.com/updates/new-recommendations-from-azure-advisor/)daha fazla bilgi edinin.
 
 ## <a name="october-2020"></a>Ekim 2020
 
@@ -139,7 +164,7 @@ Artık Windows sanal masaüstündeki Azure portal aşağıdaki işlemleri yapabi
 
 ### <a name="diagnostics"></a>Tanılama
 
-Log Analytics çalışma alanı için yeni önceden oluşturulmuş sorgular yayımladık. Sorgulara erişmek için **günlüklere** gidin ve **Kategori** altında **Windows sanal masaüstü** ' nü seçin. [Tanılama özelliği için Log Analytics kullanma](diagnostics-log-analytics.md)hakkında daha fazla bilgi edinin.
+Log Analytics çalışma alanı için yeni önceden oluşturulmuş sorgular yayımladık. Sorgulara erişmek için **günlüklere** gidin ve **Kategori** altında **Windows sanal masaüstü**' nü seçin. [Tanılama özelliği için Log Analytics kullanma](diagnostics-log-analytics.md)hakkında daha fazla bilgi edinin.
 
 ### <a name="update-for-remote-desktop-client-for-android"></a>Android için Uzak Masaüstü istemcisi güncelleştirmesi
 
@@ -174,7 +199,6 @@ Bu değişiklik sizin için aşağıdaki gibidir:
 - PowerShell veya tanılama hizmeti Web uygulaması tarafından yapılması için kullanılan izleme işlevleri artık Azure portal Log Analytics öğesine taşınmıştır. Artık raporlarınızı görselleştirmek için iki seçeneğiniz de vardır. Görsel raporlar oluşturmak için kusto sorguları çalıştırabilir ve çalışma kitaplarını kullanabilirsiniz.
 
 - Artık Windows sanal masaüstü 'Nü kullanmak için Azure Active Directory (Azure AD) onayını tamamlamayı gerekli değilsiniz. Bu güncelleştirmede, Azure aboneliğinizdeki Azure AD kiracısı kullanıcılarınızın kimliğini doğrular ve yöneticiler için Azure RBAC denetimleri sağlar.
-
 
 ### <a name="powershell-support"></a>PowerShell desteği
 

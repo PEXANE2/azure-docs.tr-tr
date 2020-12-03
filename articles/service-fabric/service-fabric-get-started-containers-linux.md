@@ -4,12 +4,12 @@ description: Azure Service Fabric üzerinde ilk Linux kapsayıcı uygulamanızı
 ms.topic: conceptual
 ms.date: 1/4/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: d085f8704850cdbb03e21b15b3cca7c8998b96fb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0481cc2d36f7882bbd8eea9b984c3dc388de5dee
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004237"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96534089"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Linux üzerinde ilk Service Fabric kapsayıcı uygulamanızı oluşturma
 > [!div class="op_single_selector"]
@@ -87,10 +87,17 @@ if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)
 ```
 
-## <a name="build-the-image"></a>Görüntü oluşturma
-Web uygulamanızı çalıştıran görüntüyü oluşturmak için `docker build` komutunu çalıştırın. Bir PowerShell penceresi açıp *c:\temp\helloworldapp* dizinine gidin. Şu komutu çalıştırın:
+## <a name="login-to-docker-and-build-the-image"></a>Docker 'da oturum açın ve görüntü oluşturun
 
-```bash
+Daha sonra Web uygulamanızı çalıştıran görüntüyü oluşturacağız. Docker 'dan (Dockerfile gibi) ortak görüntüleri çektiğinizde `python:2.7-slim` , anonim bir çekme isteği yapmak yerine Docker Hub hesabınızda kimlik doğrulaması yapmak en iyi uygulamadır.
+
+> [!NOTE]
+> Sık sık anonim çekme istekleri yaparken, bu hataları engellemek için Docker hata ile benzer `ERROR: toomanyrequests: Too Many Requests.` veya `You have reached your pull rate limit.` Bu hata için kimlik doğrulaması yapabilirsiniz. Daha fazla bilgi için bkz. [Azure Container Registry ortak Içeriği yönetme](../container-registry/buffer-gate-public-content.md) .
+
+PowerShell penceresini açın ve Dockerfile dosyasını içeren dizine gidin. Sonra aşağıdaki komutları çalıştırın:
+
+```
+docker login
 docker build -t helloworldapp .
 ```
 

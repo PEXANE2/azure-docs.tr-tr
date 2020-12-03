@@ -14,12 +14,12 @@ ms.custom:
 - seodec18
 - cog-serv-seo-aug-2020
 keywords: bilgisayar görme, görüntü işleme uygulamaları, görüntü işleme hizmeti
-ms.openlocfilehash: 1b4768781c45733590639b4a382fecfdb02adf48
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 566424f9344d1eeff258a0391fa3635d5a12aae6
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95532299"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533121"
 ---
 # <a name="what-is-computer-vision"></a>Görüntü İşleme nedir?
 
@@ -114,4 +114,4 @@ Tüm bilişsel hizmetlerde olduğu gibi, Görüntü İşleme hizmetini kullanan 
 
 Tercih ettiğiniz geliştirme dilindeki hızlı başlangıç kılavuzunu izleyerek Görüntü İşleme kullanmaya başlayın:
 
-- [Hızlı başlangıç: Görüntü İşleme istemci kitaplığı](./quickstarts-sdk/client-library.md)
+- [Hızlı başlangıç: Görüntü İşleme REST API veya istemci kitaplıkları](./quickstarts-sdk/client-library.md)

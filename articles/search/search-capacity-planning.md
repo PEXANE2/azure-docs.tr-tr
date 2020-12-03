@@ -8,24 +8,24 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: 76084a9ddd6842194bb4c6b25d62e62c2ed2d4a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92dcbfd360938724bb65b734d7c69ea61d7826b0
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89660317"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533052"
 ---
 # <a name="adjust-the-capacity-of-an-azure-cognitive-search-service"></a>Azure Bilişsel Arama hizmetinin kapasitesini ayarlama
 
 Belirli bir fiyatlandırma katmanında [bir arama hizmeti](search-create-service-portal.md) ve kilitlemeyi sağlamadan önce, kapasitenin nasıl çalıştığını ve iş yükü dalgalanmasına uyum sağlamak için çoğaltmaları ve bölümleri nasıl ayarlayabileceğinizi anlamak için birkaç dakikanızı yararlanın.
 
-Kapasite, [seçtiğiniz katmanın](search-sku-tier.md) bir işlevidir (Katmanlar, donanım özelliklerini belirleme) ve tasarlanan iş yükleri için gereken çoğaltma ve bölüm birleşimini. Yineleme veya bölüm sayısını ayrı ayrı artırabilir veya azaltabilirsiniz. Katmana ve ayarlamanın boyutuna bağlı olarak, kapasite ekleme veya azaltma, 15 dakikadan birkaç saate kadar herhangi bir zaman alabilir.
+Kapasite, [seçtiğiniz katmanın](search-sku-tier.md) bir işlevidir (Katmanlar, donanım özelliklerini belirleme) ve tasarlanan iş yükleri için gereken çoğaltma ve bölüm birleşimini. Bir hizmet oluşturulduktan sonra çoğaltma veya bölümlerin sayısını bağımsız olarak artırabilir veya azaltabilirsiniz. Maliyetler her ek fiziksel kaynakla çalışmaya devam eder, ancak büyük iş yükleri tamamlandığında faturanızı düşürmek için ölçeği azaltabilirsiniz. Katmana ve ayarlamanın boyutuna bağlı olarak, kapasite ekleme veya azaltma, 15 dakikadan birkaç saate kadar herhangi bir zaman alabilir.
 
 Kopyaların ve bölümlerin tahsisini değiştirirken Azure portal kullanmanızı öneririz. Portal, bir katmanın en fazla limitlerini takip eden izin verilen birleşimler üzerinde sınırlar uygular. Ancak, komut dosyası tabanlı veya kod tabanlı bir sağlama yaklaşımına ihtiyacınız varsa [Azure PowerShell](search-manage-powershell.md) veya [Yönetim REST API](/rest/api/searchmanagement/services) alternatif çözümlerdir.
 
 ## <a name="concepts-search-units-replicas-partitions-shards"></a>Kavramlar: ara birimler, çoğaltmalar, bölümler, parçalar
 
-Kapasite, esnek yapılandırmaların desteklenmesi için temel bir *parça* mekanizması kullanılarak, *bölüm* ve *çoğaltmaların*birleşimlerinde ayrılabilecek *arama birimlerinde* ifade edilir:
+Kapasite, esnek yapılandırmaların desteklenmesi için temel bir *parça* mekanizması kullanılarak, *bölüm* ve *çoğaltmaların* birleşimlerinde ayrılabilecek *arama birimlerinde* ifade edilir:
 
 | Konsept  | Tanım|
 |----------|-----------|
@@ -36,7 +36,7 @@ Kapasite, esnek yapılandırmaların desteklenmesi için temel bir *parça* meka
 
 Aşağıdaki diyagramda çoğaltmalar, bölümler, parçalar ve arama birimleri arasındaki ilişki gösterilmektedir. İki çoğaltma ve iki bölümden oluşan bir hizmette, tek bir dizinin dört arama birimi arasında nasıl yayıldığından bir örnek gösterir. Dört arama biriminin her biri, dizinin parçaları yalnızca yarısını depolar. Sol sütundaki arama birimleri ilk bölümden oluşan ilk parçayı depolarken, sağ sütundaki parçaların ikinci yarısını depolarken ikinci bölümden oluşan bir şekilde depolar. İki çoğaltma olduğundan, her bir dizin parçanın iki kopyası vardır. En üstteki satırdaki arama birimleri, ilk yinelemeyi kapsayan, alt satırdaki diğer bir kopyayı ikinci çoğaltmadan oluşan başka bir kopya depolarken bir kopya depolar.
 
-:::image type="content" source="media/search-capacity-planning/shards.png" alt-text="Arama dizinleri bölümler arasında parçalı olarak bulunur.&quot;:::
+:::image type="content" source="media/search-capacity-planning/shards.png" alt-text="Arama dizinleri bölümler arasında parçalı olarak bulunur.":::
 
 Yukarıdaki diyagramda yalnızca bir örnek vardır. Birçok bölüm ve çoğaltma kombinasyonu, en fazla 36 toplam arama birimine kadar mümkündür.
 
@@ -44,7 +44,7 @@ Bilişsel Arama, parça yönetimi bir uygulama ayrıntısı ve yapılandırılam
 
 + Sıralama bozukluileri: arama puanları önce parça düzeyinde hesaplanır ve sonra tek bir sonuç kümesine toplanır. Parça içeriğinin özelliklerine bağlı olarak, bir parçadaki eşleşmeler, başka bir parçadaki eşleşmelerle daha yüksek bir şekilde derecelendirilir. Arama sonuçlarında sezgisel olmayan bir derecelendirmeden fark ederseniz büyük olasılıkla, özellikle dizinler küçük olduğunda, parçalı olarak oluşan etkileri yüksektir. [Puanları tüm dizinde küresel olarak hesaplama](index-similarity-and-scoring.md#scoring-statistics-and-sticky-sessions)seçeneğini belirleyerek bu derecelendirme bozuklukilerini önleyebilirsiniz, ancak bunu yapmak bir performans cezası olur.
 
-+ Otomatik tamamlama bozuklukları: kısmi olarak girilen bir terimin ilk birkaç karakterinin üzerinde eşleşme yapıldığında otomatik tamamlama sorguları, yazım içinde küçük sapmalar sağlayan benzer bir parametre kabul eder. Otomatik tamamlama için, belirsiz eşleştirme, geçerli parça içindeki koşullara göre kısıtlanmıştır. Örneğin, bir parça &quot;Microsoft&quot; ve kısmi &quot;micor&quot; terimi girilmişse, arama altyapısı bu parça içinde &quot;Microsoft" ile eşleşir, ancak dizinin kalan bölümlerini tutan diğer parçalar üzerinde değildir.
++ Otomatik tamamlama bozuklukları: kısmi olarak girilen bir terimin ilk birkaç karakterinin üzerinde eşleşme yapıldığında otomatik tamamlama sorguları, yazım içinde küçük sapmalar sağlayan benzer bir parametre kabul eder. Otomatik tamamlama için, belirsiz eşleştirme, geçerli parça içindeki koşullara göre kısıtlanmıştır. Örneğin, bir parça "Microsoft" ve kısmi "micor" terimi girilmişse, arama altyapısı bu parça içinde "Microsoft" ile eşleşir, ancak dizinin kalan bölümlerini tutan diğer parçalar üzerinde değildir.
 
 ## <a name="when-to-add-nodes"></a>Düğüm ekleme
 

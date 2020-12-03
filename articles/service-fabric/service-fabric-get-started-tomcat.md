@@ -4,12 +4,12 @@ description: Azure Service Fabric 'de Apache Tomcat sunucusunda çalışan bir u
 ms.topic: conceptual
 ms.date: 6/08/2018
 ms.author: pepogors
-ms.openlocfilehash: 1a699f3b35970270a9800162a6d8717682a168ae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3de97bc277195dff2daf5868c0eb9aec5d6e27c0
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75614426"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96534038"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Linux 'ta Apache Tomcat Server çalıştıran Service Fabric kapsayıcısı oluşturma
 Apache Tomcat, Java Servlet ve Java sunucu teknolojilerinin popüler, açık kaynaklı bir uygulamasıdır. Bu makalede Apache Tomcat ve basit bir Web uygulamasıyla kapsayıcı oluşturma, kapsayıcıyı Linux çalıştıran bir Service Fabric kümesine dağıtma ve Web uygulamasına bağlanma işlemlerinin nasıl yapılacağı gösterilmektedir.  
@@ -52,9 +52,10 @@ Apache Tomcat görüntüsünü ve basit bir Web uygulamasını temel alan bir Do
    Daha fazla bilgi için [Dockerfile başvurusuna](https://docs.docker.com/engine/reference/builder/) bakın.
 
 
-4. `docker build`Web uygulamanızı çalıştıran görüntüyü oluşturmak için komutunu çalıştırın:
+4. Docker 'da oturum açın ve `docker build` Web uygulamanızı çalıştıran görüntüyü oluşturmak için komutunu çalıştırın:
 
    ```bash
+   docker login
    docker build . -t tomcattest
    ```
 
@@ -99,7 +100,7 @@ Apache Tomcat görüntüsünü ve basit bir Web uygulamasını temel alan bir Do
    ```
 
 ## <a name="push-the-tomcat-image-to-your-container-registry"></a>Tomcat görüntüsünü kapsayıcı Kayıt defterinize gönderme
-Tomcat görüntüsünün geliştirme bilgisayarınızdaki bir kapsayıcıda çalıştığını doğruladığınıza göre, kapsayıcıyı kapsayıcı kayıt defterindeki bir depoya gönderin. Bu makale, görüntüyü depolamak için Azure Container Registry kullanır, ancak bazı adımları değişikliklerle seçtiğiniz herhangi bir kapsayıcı kayıt defterini kullanabilirsiniz. Bu makalede, kayıt defteri adının *myregistry* olduğu varsayılır ve tam kayıt defteri adı myregistry.azurecr.io olur. Bunları senaryonuz için uygun şekilde değiştirin. 
+Tomcat görüntüsünün geliştirme bilgisayarınızdaki bir kapsayıcıda çalıştığını doğruladığınıza göre, görüntü geliştirme ve dağıtım iş akışlarınızın [kesintisini azaltmak](../container-registry/buffer-gate-public-content.md) için kapsayıcıyı bir kapsayıcı kayıt defterinde depoya gönderin. Bu makale, görüntüyü depolamak için Azure Container Registry kullanır, ancak bazı adımları değişikliklerle seçtiğiniz herhangi bir kapsayıcı kayıt defterini kullanabilirsiniz. Bu makalede, kayıt defteri adının *myregistry* olduğu varsayılır ve tam kayıt defteri adı myregistry.azurecr.io olur. Bunları senaryonuz için uygun şekilde değiştirin. 
 
 1. `docker login` [Kayıt defteri kimlik bilgilerinizle](../container-registry/container-registry-authentication.md), kapsayıcı kayıt defterinizde oturum açmak için ' i çalıştırın.
 
@@ -204,12 +205,12 @@ Tomcat görüntüsünü bir kapsayıcı kayıt defterine itilmiş olduğunuza g�
    * Yerel bir kümede `http://localhost:19080/Explorer` (Mac OS X vagrant kullanıyorsanız, *localhost* 'u VM 'nin özel IP 'si ile değiştirin) kullanın.
    * Güvenli bir Azure kümesinde kullanın `https://PublicIPorFQDN:19080/Explorer` . 
     
-   **Uygulamalar** düğümünü genişletin ve artık uygulama türü, **Servicefabrictomcattype**ve bu türün ilk örneği için başka bir giriş olduğunu unutmayın. Uygulamanın tam olarak dağıtılması birkaç dakika sürebilir, bu nedenle hasta olmalıdır.
+   **Uygulamalar** düğümünü genişletin ve artık uygulama türü, **Servicefabrictomcattype** ve bu türün ilk örneği için başka bir giriş olduğunu unutmayın. Uygulamanın tam olarak dağıtılması birkaç dakika sürebilir, bu nedenle hasta olmalıdır.
 
    ![Service Fabric Explorer](./media/service-fabric-get-started-tomcat/service-fabric-explorer.png)
 
 
-1. Tomcat sunucusundaki uygulamaya erişmek için bir tarayıcı penceresi açın ve aşağıdaki URL 'Lerden birini girin. Yerel kümeye dağıttıysanız, *Publicıporfqdn*için *localhost* kullanın. "Merhaba Dünya!" çeşidinin bir türevini görürsünüz her URL için hoş geldiniz ekranı.
+1. Tomcat sunucusundaki uygulamaya erişmek için bir tarayıcı penceresi açın ve aşağıdaki URL 'Lerden birini girin. Yerel kümeye dağıttıysanız, *Publicıporfqdn* için *localhost* kullanın. "Merhaba Dünya!" çeşidinin bir türevini görürsünüz her URL için hoş geldiniz ekranı.
 
    * http://PublicIPorFQDN:8080/hello  
    * http://PublicIPorFQDN:8080/hello/sayhello
