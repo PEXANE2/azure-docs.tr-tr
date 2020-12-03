@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: d4983ecd1b8afe1ec6bd3cc31df8b711cebaddf1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 00b5d220cdbc511a309d55cfca2049508049fa30
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350271"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549013"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight sürüm notları
 
@@ -46,8 +46,9 @@ HDInsight 3,6 ML Hizmetleri küme türü 31 2020 Aralık 'Ta destek bitişi olac
 ### <a name="disabled-vm-sizes"></a>Devre dışı VM boyutları
 HDInsight, 16 2020 Kasım 'dan başlayarak standand_A8, standand_A9, standand_A10 ve standand_A11 VM boyutlarını kullanarak kümeler oluşturan yeni müşterileri engelleyecek. Son üç ay içinde bu VM boyutlarını kullanmış olan mevcut müşteriler etkilenmez. HDInsight, 9 2021 Ocak 'Tan başlayarak standand_A8, standand_A9, standand_A10 ve standand_A11 VM boyutlarını kullanarak küme oluşturan tüm müşterileri engelleyecek. Mevcut kümeler olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için HDInsight 4,0 ' ye geçmeyi düşünün.
 
-### <a name="behavior-changes"></a>Davranış değişiklikleri
-Bu yayın için davranış değişikliği yok.
+## <a name="behavior-changes"></a>Davranış değişiklikleri
+### <a name="add-nsg-rule-checking-before-scaling-operation"></a>Ölçeklendirmeden önce NSG kuralı denetimi ekleme işlemi
+HDInsight, ölçeklendirme işlemiyle ağ güvenlik grupları (NSG 'ler) ve Kullanıcı tanımlı yollar (UDRs) denetimi ekledi. Küme oluşturmanın yanı sıra küme ölçekleme için de aynı doğrulama yapılır. Bu doğrulama öngörülemeyen hataları önlemeye yardımcı olur. Doğrulama geçmezse ölçeklendirme başarısız olur. NSG 'ler ve UDRs 'nin doğru şekilde nasıl yapılandırılacağı hakkında daha fazla bilgi edinin. [HDInsight YÖNETIM IP adresleri](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)bölümüne bakın.
 
 ## <a name="upcoming-changes"></a>Yaklaşan değişiklikler
 Gelecek sürümlerde aşağıdaki değişiklikler olur.

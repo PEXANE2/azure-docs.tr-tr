@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 8f46c402c8c25a144cd4c12137aeabfdfa31e096
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 50d0119b08d2c76a5f6111e485408ebcdace83c6
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463147"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549030"
 ---
 # <a name="manage-your-bill-in-an-iot-central-application"></a>IoT Central uygulamasında faturanızı yönetme
 
@@ -34,11 +34,11 @@ Bu self servis işlemini gerçekleştirmek için şu adımları izleyin:
 
 1. **Yönetim** bölümündeki **fiyatlandırma** sayfasına gidin.
 
-    ![Deneme durumu](media/howto-view-bill/freetrialbilling.png)
+    :::image type="content" source="media/howto-view-bill/freetrialbilling.png" alt-text="Deneme durumu":::
 
 1. **Ücretli plana Dönüştür**' ü seçin.
 
-    ![Deneme süresini Dönüştür](media/howto-view-bill/convert.png)
+    :::image type="content" source="media/howto-view-bill/convert.png" alt-text="Deneme süresini Dönüştür":::
 
 1. Uygun Azure Active Directory ve ardından ücretli bir plan kullanan uygulamanız için kullanılacak Azure aboneliğini seçin.
 
@@ -55,7 +55,7 @@ Fiyatlandırma bölümünde, Azure IoT fiyatlandırma planınızı dilediğiniz 
 
 1. **Yönetim** bölümündeki **fiyatlandırma** sayfasına gidin.
 
-    ![Yükseltme planını yükselt](media/howto-view-bill/pricing.png)
+    :::image type="content" source="media/howto-view-bill/pricing.png" alt-text="Fiyatlandırma planını yükselt":::
 
 1. **Planı** seçip yükseltmek veya Alçaldüşürmek için **Kaydet** ' i seçin.
 

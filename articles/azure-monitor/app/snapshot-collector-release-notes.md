@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: pharring
 ms.author: pharring
 ms.date: 11/10/2020
-ms.openlocfilehash: 89c13566c3710e56a4cd737d9aa03c6fb57edc93
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 73fea1e1928cf4e1bd5342aa0a4c885ccb5cf137
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542737"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548180"
 ---
 # <a name="release-notes-for-microsoftapplicationinsightssnapshotcollector"></a>Microsoft. ApplicationInsights. SnapshotCollector için sürüm notları
 
@@ -22,6 +22,11 @@ Hata raporları ve geri bildirim için, şurada GitHub 'da bir sorun açın: htt
 
 ## <a name="release-notes"></a>Sürüm notları
 
+## <a name="1374"></a>[1.3.7.4](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.7.4)
+Test Azure App Service kodsuz kullanacaksınız iliştirme senaryosunda bulunan bir sorunu gidermek için bir nokta yayını.
+### <a name="changes"></a>Değişiklikler
+- Netcoreapp 3.0 hedefi artık Microsoft. ApplicationInsights. AspNetCore >= 2.1.1 (daha önce >= 2.1.2 'yi) bağımlıdır.
+
 ## <a name="1373"></a>[1.3.7.3](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.7.3)
 Birkaç yüksek etki sorunu gidermek için bir nokta yayını.
 ### <a name="bug-fixes"></a>Hata düzeltmeleri
@@ -30,9 +35,9 @@ Birkaç yüksek etki sorunu gidermek için bir nokta yayını.
 
 ## <a name="137"></a>[1.3.7](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.7)
 ### <a name="changes"></a>Değişiklikler
-SnapshotCollector 'ın netcoreapp 2.0 hedefi Microsoft. ApplicationInsights. AspNetCore >= 2.1.1 (yeniden) öğesine bağlıdır. Bu, 1.3.5 Before davranışını geri döndürür. 1.3.6 ' de yükseltmeyi denedik, ancak bazı Azure App Service senaryolarına izin vermez.
+- SnapshotCollector 'ın netcoreapp 2.0 hedefi Microsoft. ApplicationInsights. AspNetCore >= 2.1.1 (yeniden) öğesine bağlıdır. Bu, 1.3.5 Before davranışını geri döndürür. 1.3.6 ' de yükseltmeyi denedik, ancak bazı Azure App Service senaryolarına izin vermez.
 ### <a name="new-features"></a>Yeni özellikler
-Snapshot Collector APPLICATIONINSIGHTS_CONNECTION_STRING ortam değişkeninden veya TelemetryConfiguration öğesinden ConnectionString 'i okur ve ayrıştırır. Öncelikle bu, anlık görüntü hizmetine bağlanmak için uç noktayı ayarlamak üzere kullanılır. Daha fazla bilgi için bkz. [bağlantı dizeleri belgeleri](./sdk-connection-string.md).
+- Snapshot Collector APPLICATIONINSIGHTS_CONNECTION_STRING ortam değişkeninden veya TelemetryConfiguration öğesinden ConnectionString 'i okur ve ayrıştırır. Öncelikle bu, anlık görüntü hizmetine bağlanmak için uç noktayı ayarlamak üzere kullanılır. Daha fazla bilgi için bkz. [bağlantı dizeleri belgeleri](./sdk-connection-string.md).
 ### <a name="bug-fixes"></a>Hata düzeltmeleri
 - Net45 hariç tüm hedefler için HttpClient kullanımı, uyumsuz bir SecurityProtocol nedeniyle bazı ortamlarda WebRequest başarısız olduğundan (TLS 1,2 gerektirir).
 
@@ -60,20 +65,20 @@ Snapshot Collector APPLICATIONINSIGHTS_CONNECTION_STRING ortam değişkeninden v
 - AddSnapshotCollector () kullanılarak anlık görüntü toplayıcısı ekleme daha kolay hale getirilir. [Burada](./snapshot-debugger-appservice.md)daha fazla bilgi bulabilirsiniz.
 - Blob bloklarını doğrulamak için FıMMA MD5 ayarını kullanın. Bu, işletim sistemi FIPS uyumlu moda ayarlandığında kullanılamayan varsayılan .NET MD5 şifre algoritmasını önler.
 - İşlev çağrılarını en iyi duruma getirirken .NET Framework çerçevelerini yoksayın. Bu davranış, DeoptimizeIgnoredModules yapılandırma ayarı tarafından denetlenebilir.
-- Birden `DeoptimizeMethodCount` fazla işlev çağrısının en iyi duruma getirilmesini sağlayan yapılandırma ayarı ekleyin. Buradan daha fazla bilgi
+- Birden `DeoptimizeMethodCount` fazla işlev çağrısının en iyi duruma getirilmesini sağlayan yapılandırma ayarı ekleyin. Burada daha fazla bilgi bulabilirsiniz
 
 ## <a name="134"></a>[1.3.4](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.4)
 - Yapılandırılmış Izleme anahtarlarına izin verin.
 - Anlık görüntüyle devam et Tuploader sağlamlık-eski Uploader günlükleri taşınamadığından bile başlatmaya devam edin.
 - SnapshotUploader.exe hemen çıktığında ek telemetri raporlamaya yeniden etkinleştirildi (1.3.3 içinde devre dışı bırakıldı).
 - İç Telemetriyi kolaylaştırın.
-- _Deneysel Özellik_ : ekleme noktası toplama planları: "anlık görüntü Tonsorumlusu" ekleyin. Daha fazla bilgi [burada](https://gist.github.com/alexaloni/5b4d069d17de0dabe384ea30e3f21dfe)bulunabilir.
+- _Deneysel Özellik_: ekleme noktası toplama planları: "anlık görüntü Tonsorumlusu" ekleyin. Daha fazla bilgi [burada](https://gist.github.com/alexaloni/5b4d069d17de0dabe384ea30e3f21dfe)bulunabilir.
 
 ## <a name="133"></a>[1.3.3](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.3)
 - .NET Core uygulamaları için anlık görüntüleri karşıya yüklemeden SnapshotUploader.exe neden olan hata düzeltildi.
 
 ## <a name="132"></a>[1.3.2](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.2)
-- _Deneysel Özellik_ : snappoint koleksiyon planları. Daha fazla bilgi [burada](https://gist.github.com/alexaloni/5b4d069d17de0dabe384ea30e3f21dfe)bulunabilir.
+- _Deneysel Özellik_: snappoint koleksiyon planları. Daha fazla bilgi [burada](https://gist.github.com/alexaloni/5b4d069d17de0dabe384ea30e3f21dfe)bulunabilir.
 - Çalışma zamanı, SnapshotCollector 'ın yüklü olduğu AppDomain 'i kaldırdığında işlemin çıkış için beklemek yerine, SnapshotUploader.exe çıkılacak. Bu, IIS 'de barındırılırken toplayıcı güvenilirliğini geliştirir.
 - Aynı Izleme anahtarını kullanan birden çok SnapshotCollector örneğine izin vermek için yapılandırma ekleyin: ShareUploaderProcess (varsayılan olarak `true` ).
 - SnapshotUploader.exe hemen çıktığında ek telemetri bildirin.

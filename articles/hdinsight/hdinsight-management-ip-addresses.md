@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: 682db0ef52e624a23d95aa18a007f05a78f39677
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 9fa38e045bbe29e5d45587adf0d277c1414fee4c
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518796"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549047"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight yönetim IP adresleri
 
-Bu makalede, Azure HDInsight sistem durumu ve Yönetim Hizmetleri tarafından kullanılan IP adresleri listelenir. Ağ güvenlik grupları (NSG 'ler) veya Kullanıcı tanımlı yollar (UDRs) kullanıyorsanız, bu IP adreslerinin bazılarını gelen ağ trafiği için izin verilenler listesine eklemeniz gerekebilir.
+Bu makalede, Azure HDInsight sistem durumu ve Yönetim Hizmetleri tarafından kullanılan IP adresleri listelenir. Ağ güvenlik grupları (NSG 'ler) veya Kullanıcı tanımlı yollar (UDRs) kullanıyorsanız, bu IP adreslerinden bazılarını gelen ağ trafiği için izin verilenler listesine eklemeniz gerekebilir.
 
 ## <a name="introduction"></a>Giriş
  
@@ -27,6 +27,8 @@ Bu makalede, Azure HDInsight sistem durumu ve Yönetim Hizmetleri tarafından ku
 HDInsight kümenize gelen trafiği denetlemek için ağ güvenlik grupları (NSG 'ler) veya Kullanıcı tanımlı yollar (UDRs) kullanıyorsanız, kümenizin kritik Azure sistem durumu ve yönetim hizmetleriyle iletişim kurabildiğinden emin olmanız gerekir.  Bu hizmetlere ait IP adreslerinden bazıları bölgeye özeldir ve bazıları tüm Azure bölgeleri için geçerlidir. Özel DNS kullanmıyorsanız Azure DNS hizmetinden gelen trafiğe de izin vermeniz gerekebilir.
 
 Burada listelenmeyen bir bölge için IP adreslerine ihtiyacınız varsa, bölgenizin IP adreslerini bulmak için [hizmet etiketi bulma API](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) 'sini kullanabilirsiniz. API 'yi kullandıysanız, [hizmet etıketı json dosyasını](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files) indirin ve istediğiniz bölgeyi arayın.
+
+HDInsight, daha fazla hata oluşmasını engellemek için küme oluşturma ve ölçeklendirme ile bu kurallara yönelik doğrulama yapar. Doğrulama geçmezse, oluşturma ve ölçekleme başarısız olur.
 
 Aşağıdaki bölümlerde, izin verilmesi gereken belirli IP adresleri ele alınmaktadır.
 

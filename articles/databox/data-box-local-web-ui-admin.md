@@ -6,36 +6,30 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 09/23/2020
+ms.date: 12/01/2020
 ms.author: alkohli
-ms.openlocfilehash: f5bcb5c42661c375372d4d0b17571d784152dd5f
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 751ac870996fa1a2805bb018c991f85525fd797d
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337296"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548979"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Data Box ve Data Box Heavy yönetmek için yerel Web Kullanıcı arabirimini kullanın
 
 Bu makalede Data Box ve Data Box Heavy cihazlarda gerçekleştirilen yapılandırma ve yönetim görevlerinin bazıları açıklanmaktadır. Azure portal Kullanıcı arabirimi ve cihaz için yerel Web Kullanıcı arabirimi aracılığıyla Data Box ve Data Box Heavy cihazlarını yönetebilirsiniz. Bu makale, yerel Web Kullanıcı arabirimi kullanılarak gerçekleştirilen görevleri odaklanır.
 
-Data Box için yerel Web Kullanıcı arabirimi ve Data Box Heavy için, cihazın ilk yapılandırması için kullanılır. Ayrıca, yerel Web Kullanıcı arabirimini kullanarak cihazı kapatabilir veya yeniden başlatabilir, tanılama testlerini çalıştırabilir, yazılımı güncelleştirebilir, kopyalama günlüklerini görüntüleyebilir ve Microsoft Desteği için bir günlük paketi oluşturabilirsiniz. İki bağımsız düğüm içeren bir Data Box Heavy cihazda, cihazın her bir düğümüne karşılık gelen iki ayrı yerel Web 'e erişebilirsiniz.
-
-Bu makale aşağıdaki öğreticileri içerir:
-
-- Destek paketi oluşturma
-- Cihazınızı kapatma ya da yeniden başlatma
-- Malzeme reçetesini (BOM) veya bildirim dosyalarını indirin
-- Cihazın kullanılabilir kapasitesini görüntüleme
-- Sağlama toplamı doğrulamasını atlama
+Data Box ve Data Box Heavy için yerel Web Kullanıcı arabirimi, cihazın ilk yapılandırması için kullanılır. Ayrıca, yerel Web Kullanıcı arabirimini kullanarak cihazı kapatabilir veya yeniden başlatabilir, tanılama testlerini çalıştırabilir, yazılımı güncelleştirebilir, kopyalama günlüklerini görüntüleyebilir, cihazdan yerel verileri silebilir ve Microsoft Desteği için bir destek paketi oluşturabilirsiniz. İki bağımsız düğüm içeren bir Data Box Heavy cihazda, cihazın her bir düğümüne karşılık gelen iki ayrı yerel Web 'e erişebilirsiniz.
 
 [!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="generate-support-package"></a>Destek paketi oluşturma
 
-Cihaz sorunları yaşarsanız, sistem günlüklerinden bir Destek paketi oluşturabilirsiniz. Microsoft Destek sorunu gidermek için bu paketi kullanır. Bir destek paketi oluşturmak için aşağıdaki adımları uygulayın:
+Cihaz sorunları yaşarsanız, sistem günlüklerinden bir Destek paketi oluşturabilirsiniz. Microsoft Destek sorunu gidermek için bu paketi kullanır.
 
-1. Yerel Web Kullanıcı arabiriminde, desteğe **başvurun** ' e gidin ve **destek paketi oluştur** ' u seçin.
+Bir destek paketi oluşturmak için aşağıdaki adımları uygulayın:
+
+1. Yerel Web Kullanıcı arabiriminde, desteğe **başvurun** ' e gidin ve **destek paketi oluştur**' u seçin.
 
     ![Destek paketi oluşturma 1](media/data-box-local-web-ui-admin/create-support-package-1.png)
 
@@ -43,7 +37,7 @@ Cihaz sorunları yaşarsanız, sistem günlüklerinden bir Destek paketi oluştu
 
     ![Destek paketi oluşturma 2](media/data-box-local-web-ui-admin/create-support-package-2.png)
 
-3. Destek paketi oluşturma işlemi tamamlandıktan sonra **destek paketini indir** ' i seçin.
+3. Destek paketi oluşturma işlemi tamamlandıktan sonra **destek paketini indir**' i seçin.
 
     ![Destek paketi oluşturma 4](media/data-box-local-web-ui-admin/create-support-package-4.png)
 
@@ -51,13 +45,33 @@ Cihaz sorunları yaşarsanız, sistem günlüklerinden bir Destek paketi oluştu
 
     ![Destek paketi oluşturma 5](media/data-box-local-web-ui-admin/create-support-package-5.png)
 
+## <a name="erase-local-data-from-your-device"></a>Cihazınızdaki yerel verileri silme
+
+Yerel Web Kullanıcı arabirimini kullanarak, Azure veri merkezine döndürmeden önce cihazınızdaki yerel verileri silebilirsiniz.
+
+> [!IMPORTANT]
+> Veri silme geri alınamaz. Cihazınızdaki yerel verileri silmeden önce, dosyaları yedeklediğinizden emin olun.
+
+Cihazınızdaki yerel verileri silmek için şu adımları uygulayın:
+
+1. Yerel Web Kullanıcı arabiriminde, **veri silme**' ye gidin.
+2. Cihaz parolasını girip **verileri Sil**' i seçin.
+
+    ![Bir cihaz için veri silme seçeneği](media/data-box-local-web-ui-admin/erase-local-data-1.png)
+
+3. Onay isteminde, devam etmek için **Evet** ' i seçin. Veri silme, 50 dakika kadar sürebilir.
+
+   Cihazdan silmeden önce yerel verilerinizi yedeklediğinizden emin olun. Veri silme geri alınamaz.
+
+    ![Veri silme onay istemi](media/data-box-local-web-ui-admin/erase-local-data-2.png)
+
 ## <a name="shut-down-or-restart-your-device"></a>Cihazınızı kapatma ya da yeniden başlatma
 
-Yerel Web Kullanıcı arabirimini kullanarak cihazınızı kapatabilir veya yeniden başlatabilirsiniz. Cihazı yeniden başlatmadan önce konaktaki paylaşımları sonra da cihazı çevrimdışına almanız önerilir. Bunun yapılması, veri bozulması olasılığını en aza indirir. Cihazı kapatırken veri kopyasının devam etmediğinden emin olun.
+Yerel Web Kullanıcı arabirimini kullanarak cihazınızı kapatabilir veya yeniden başlatabilirsiniz. Yeniden başlatmadan önce, ana bilgisayar ve ardından cihaz üzerindeki paylaşımları çevrimdışına almanız önerilir. Bunun yapılması, veri bozulması olasılığını en aza indirir. Cihazı kapatırken veri kopyasının devam etmediğinden emin olun.
 
 Cihazınızı kapatmak için aşağıdaki adımları uygulayın.
 
-1. Yerel web kullanıcı arabiriminde **Kapat ya da yeniden başlat** 'a gidin.
+1. Yerel web kullanıcı arabiriminde **Kapat ya da yeniden başlat**'a gidin.
 2. **Kapat ' ı** seçin.
 
     ![Data Box'ı kapatma 1](media/data-box-local-web-ui-admin/shut-down-local-web-ui-1.png)
@@ -70,8 +84,8 @@ Cihaz kapatıldıktan sonra cihazı açmak için ön paneldeki güç düğmesini
 
 Data Box'ınızı yeniden başlatmak için aşağıdaki adımları gerçekleştirin.
 
-1. Yerel web kullanıcı arabiriminde **Kapat ya da yeniden başlat** 'a gidin.
-2. **Yeniden Başlat** ' ı seçin.
+1. Yerel web kullanıcı arabiriminde **Kapat ya da yeniden başlat**'a gidin.
+2. **Yeniden Başlat**' ı seçin.
 
     ![Data Box'ı yeniden başlatma 1](media/data-box-local-web-ui-admin/restart-local-web-ui-1.png)
 
@@ -159,8 +173,8 @@ Bu dosya, Data Box veya Data Box Heavy kopyalanan tüm dosyaların listesini iç
 
 Cihazın kullanılabilir ve kullanılan kapasitesini görüntülemek için cihaz panosunu kullanabilirsiniz.
 
-1. Yerel web kullanıcı arabiriminde **Panoyu görüntüle** 'ye gidin.
-2. **Bağlan ve kopyala** 'nın altında cihazdaki boş ve kullanılan alan gösterilir.
+1. Yerel web kullanıcı arabiriminde **Panoyu görüntüle**'ye gidin.
+2. **Bağlan ve kopyala**'nın altında cihazdaki boş ve kullanılan alan gösterilir.
 
     ![Kullanılabilir kapasiteyi görüntüleme](media/data-box-local-web-ui-admin/verify-used-space-dashboard.png)
 
@@ -168,16 +182,16 @@ Cihazın kullanılabilir ve kullanılan kapasitesini görüntülemek için cihaz
 
 Teslim için hazırlanırken, verileriniz için sağlama toplamı varsayılan olarak oluşturulur. Bazı ender durumlarda, veri türüne (küçük dosya boyutları) bağlı olarak performans yavaş olabilir. Bu gibi durumlarda sağlama toplamını atlayabilirsiniz.
 
-Gönderim hazırlığı sırasında sağlama toplamı hesaplaması yalnızca içeri aktarma siparişleri için yapılır ve dışa aktarma siparişleri için yapılır. 
+Gönderim hazırlığı sırasında sağlama toplamı hesaplaması yalnızca içeri aktarma siparişleri için yapılır ve dışa aktarma siparişleri için yapılır.
 
 Performans ciddi şekilde etkilenmedikçe sağlama toplamını kesinlikle atlamamanızı öneririz.
 
-1. Cihazınızın yerel Web Kullanıcı arabiriminin sağ üst köşesinde **Ayarlar** ' a gidin.
+1. Cihazınızın yerel Web Kullanıcı arabiriminin sağ üst köşesinde **Ayarlar**' a gidin.
 
     ![Sağlama toplamını devre dışı bırakma](media/data-box-local-web-ui-admin/disable-checksum.png)
 
 2. Sağlama toplamı doğrulamasını **Devre dışı bırakma**
-3. **Uygula** ’yı seçin.
+3. **Uygula**’yı seçin.
 
 > [!NOTE]
 > Sağlama toplamı hesaplamayı Atla seçeneği yalnızca Azure Data Box kilidi açıldığında kullanılabilir. Cihaz kilitlendiğinde bu seçeneği görmezsiniz.
@@ -190,7 +204,7 @@ SMB imzalama ile ilgili daha fazla bilgi için bkz. [sunucu Ileti bloğu Imzalam
 
 Azure cihazınızda SMB imzalamayı etkinleştirmek için:
 
-1. Cihazınızın yerel Web Kullanıcı arabiriminin sağ üst köşesinde **Ayarlar** ' ı seçin.
+1. Cihazınızın yerel Web Kullanıcı arabiriminin sağ üst köşesinde **Ayarlar**' ı seçin.
 
     ![Ayarlar'ı açma](media/data-box-local-web-ui-admin/data-box-settings-1.png)
 
@@ -198,9 +212,9 @@ Azure cihazınızda SMB imzalamayı etkinleştirmek için:
 
     ![SMB imzalamayı etkinleştir](media/data-box-local-web-ui-admin/data-box-smb-signing-1.png)
 
-3. **Uygula** ’yı seçin.
-4. Yerel web kullanıcı arabiriminde **Kapat ya da yeniden başlat** 'a gidin.
-5. **Yeniden Başlat** ' ı seçin.
+3. **Uygula**’yı seçin.
+4. Yerel web kullanıcı arabiriminde **Kapat ya da yeniden başlat**'a gidin.
+5. **Yeniden Başlat**' ı seçin.
 
 ## <a name="enable-backup-operator-privileges"></a>Yedekleme Işletmeni ayrıcalıklarını etkinleştir
 
@@ -210,7 +224,7 @@ Bilgi için bkz. [Active Directory güvenlik gruplarında](/windows/security/ide
 
 Azure cihazınızda yedekleme Işletmeni ayrıcalıklarını etkinleştirmek için:
 
-1. Cihazınızın yerel Web Kullanıcı arabiriminin sağ üst köşesinde **Ayarlar** ' ı seçin.
+1. Cihazınızın yerel Web Kullanıcı arabiriminin sağ üst köşesinde **Ayarlar**' ı seçin.
 
    ![Data Box ayarlarını aç-1](media/data-box-local-web-ui-admin/data-box-settings-1.png)
 
@@ -218,9 +232,9 @@ Azure cihazınızda yedekleme Işletmeni ayrıcalıklarını etkinleştirmek iç
 
    ![Yedekleme Işletmeni ayrıcalıklarını etkinleştir](media/data-box-local-web-ui-admin/data-box-backup-operator-privileges-1.png)
 
-3. **Uygula** ' yı seçin.
-4. Yerel web kullanıcı arabiriminde **Kapat ya da yeniden başlat** 'a gidin.
-5. **Yeniden Başlat** ' ı seçin.
+3. **Uygula**' yı seçin.
+4. Yerel web kullanıcı arabiriminde **Kapat ya da yeniden başlat**'a gidin.
+5. **Yeniden Başlat**' ı seçin.
 
 ## <a name="enable-acls-for-azure-files"></a>Azure dosyaları için ACL 'Leri etkinleştirme
 
@@ -233,7 +247,7 @@ Kullanıcılar Data Box SMB aracılığıyla verileri karşıya yüklerken, dosy
 
 Azure dosyaları için ACL 'lerin aktarılmasını etkinleştirmek için:
 
-1. Cihazınızın yerel Web Kullanıcı arabiriminin sağ üst köşesinde **Ayarlar** ' ı seçin.
+1. Cihazınızın yerel Web Kullanıcı arabiriminin sağ üst köşesinde **Ayarlar**' ı seçin.
 
     ![Data Box ayarlarını aç-2](media/data-box-local-web-ui-admin/data-box-settings-1.png)
 
@@ -241,9 +255,9 @@ Azure dosyaları için ACL 'lerin aktarılmasını etkinleştirmek için:
 
      ![Azure dosyaları için ACL 'Leri etkinleştirme](media/data-box-local-web-ui-admin/data-box-acls-for-azure-files-1.png)
   
-3. **Uygula** ’yı seçin.
-4. Yerel web kullanıcı arabiriminde **Kapat ya da yeniden başlat** 'a gidin.
-5. **Yeniden Başlat** ' ı seçin.
+3. **Uygula**’yı seçin.
+4. Yerel web kullanıcı arabiriminde **Kapat ya da yeniden başlat**'a gidin.
+5. **Yeniden Başlat**' ı seçin.
 
 ## <a name="enable-tls-11"></a>TLS 1,1 'yi etkinleştirme
 
@@ -253,7 +267,7 @@ TLS ile ilgili daha fazla bilgi için bkz. [Azure Data Box Gateway Security](../
 
 Azure cihazınızda TLS 1,1 ' i etkinleştirmek için:
 
-1. Cihazınızın yerel Web Kullanıcı arabiriminin sağ üst köşesinde **Ayarlar** ' ı seçin.
+1. Cihazınızın yerel Web Kullanıcı arabiriminin sağ üst köşesinde **Ayarlar**' ı seçin.
 
     ![Data Box ayarları aç-3](media/data-box-local-web-ui-admin/data-box-settings-1.png)
 
@@ -261,9 +275,9 @@ Azure cihazınızda TLS 1,1 ' i etkinleştirmek için:
 
     ![TLS 1,1 'yi etkinleştirme](media/data-box-local-web-ui-admin/data-box-tls-1-1.png)
 
-3. **Uygula** ’yı seçin.
-4. Yerel web kullanıcı arabiriminde **Kapat ya da yeniden başlat** 'a gidin.
-5. **Yeniden Başlat** ' ı seçin.
+3. **Uygula**’yı seçin.
+4. Yerel web kullanıcı arabiriminde **Kapat ya da yeniden başlat**'a gidin.
+5. **Yeniden Başlat**' ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

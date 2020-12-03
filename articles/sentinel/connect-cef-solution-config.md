@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: e2ed3680a0867ab8f7e2ad41603883f07a4be427
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: fec3f25c4b401ff7c3bc73d249b716b9c12e6529
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655757"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548554"
 ---
 # <a name="step-2-configure-your-security-solution-to-send-cef-messages"></a>2. Adım: Güvenlik çözümünüzü CEF iletileri gönderecek şekilde yapılandırma
 
@@ -34,12 +34,13 @@ Güvenlik çözümünüz zaten mevcut bir bağlayıcınız varsa, bağlayıcıya
 - [Cisco](connect-cisco.md)
 - [ExtraHop Reveal(x)](connect-extrahop.md)
 - [F5 ASM](connect-f5.md)  
+- [Forcepoint ürünleri](connect-forcepoint-casb-ngfw.md)
 - [Fortinet](connect-fortinet.md)
+- [Illusive Networks AMS](connect-illusive-attack-management-system.md)
 - [One Identity Safeguard](connect-one-identity.md)
 - [Palo Alto Networks](connect-paloalto.md)
 - [Trend Micro Deep Security](connect-trend-micro.md)
-- [Zscaler](connect-zscaler.md)   
-
+- [Zscaler](connect-zscaler.md)
 ## <a name="configure-any-other-solution"></a>Diğer herhangi bir çözümü yapılandırma
 
 Belirli güvenlik çözümünüz için bir bağlayıcı yoksa, günlükleri CEF aracısına iletmek için aşağıdaki genel yönergeleri kullanın.
@@ -50,12 +51,22 @@ Belirli güvenlik çözümünüz için bir bağlayıcı yoksa, günlükleri CEF 
     - Biçim = CEF
     - IP adresi-CEF iletilerini bu amaçla ayrıldığınızdan sanal makinenin IP adresine gönderdiğinizden emin olun.
 
-   > [!NOTE]
-   > Bu çözüm Syslog RFC 3164 veya RFC 5424 ' ü destekler.
+   Bu çözüm Syslog RFC 3164 veya RFC 5424 ' ü destekler.
 
-1. CEF olayları için Log Analytics ilgili şemayı kullanmak için, araması yapın `CommonSecurityLog` .
+1. Log Analytics CEF olaylarını aramak için `CommonSecurityLog` sorgu penceresine girin.
 
 1. 3. Adım: [bağlantıyı doğrulama](connect-cef-verify.md)adımına geçin.
+
+> [!NOTE]
+> **TimeGenerated alanının kaynağını değiştirme**
+>
+> - Varsayılan olarak, Log Analytics Aracısı şemadaki *TimeGenerated* alanını, aracının Syslog arka plan programından olayı aldığı zamana göre doldurur. Sonuç olarak, olayın kaynak sistemde oluşturulduğu zaman Azure Sentinel 'de kaydedilmez.
+>
+> - Ancak, komut dosyasını indirecek ve çalıştıracak aşağıdaki komutu çalıştırabilirsiniz `TimeGenerated.py` . Bu betik, Log Analytics aracısını aracı tarafından alındığı zaman yerine, *TimeGenerated* alanını olayın kaynak sistemindeki özgün zamanına göre doldurmak üzere yapılandırır.
+>
+>    ```bash
+>    wget -O TimeGenerated.py https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/TimeGenerated.py && python TimeGenerated.py {ws_id}
+>    ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

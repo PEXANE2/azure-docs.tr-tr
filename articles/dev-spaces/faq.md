@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: Azure Dev Spaces hakkında bazı yaygın soruların yanıtlarını bulun
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
-ms.openlocfilehash: a25ebd88d022ff278b3e3d9cc9cbf4d8b9b670cd
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: e83bed86714e4b92c63f4e7b7eb55df7a2a7eaff
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636104"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548843"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Azure Dev Spaces hakkında sık sorulan sorular
 
@@ -20,7 +20,7 @@ Bu, Azure Dev Spaces hakkında sıkça sorulan soruları ele alınmaktadır.
 
 ## <a name="what-versions-of-kubernetes-are-supported-for-azure-dev-spaces"></a>Azure Dev Spaces için Kubernetes sürümleri destekleniyor mu?
 
-Azure Dev Spaces, [AKS 'Deki Kubernetes 'in Şu anda desteklenen tüm genel kullanılabilirlik (GA) sürümlerini][aks-supported-k8s]destekler.
+Azure Dev Spaces [, 1,18 'e kadar AKS 'Deki Kubernetes 'ın Şu anda desteklenen genel kullanım (GA) sürümlerini][aks-supported-k8s]destekler. AKS 'deki Kubernetes 1,19 ve üzeri, Azure Dev Spaces ile çalışmayan kapsayıcı çalışma zamanı olarak ContainerD kullanır.
 
 ## <a name="which-azure-regions-currently-provide-azure-dev-spaces"></a>Şu anda hangi Azure bölgeleri Azure Dev Spaces sağlıyor?
 

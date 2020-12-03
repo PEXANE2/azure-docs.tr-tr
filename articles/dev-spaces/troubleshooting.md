@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Azure Dev Spaces etkinleştirirken ve kullanırken karşılaşılan yaygın sorunları giderme ve çözme hakkında bilgi edinin
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s '
-ms.openlocfilehash: a30ae2d78d682427cf53c8f98b0ca70b441d72e1
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: bf8c4d2040445fa3417fce02fb4b66216b21f3b5
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636818"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548877"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces sorunlarını giderme
 
@@ -138,7 +138,7 @@ Streaming build container logs for service 'mywebapi' failed with: Timed out aft
 Container image build failed
 ```
 
-Yukarıdaki komut, hizmetin Pod öğesinin sanal düğüm *-aci-Linux* 'a atandığını gösterir ve bu sanal bir düğümdür.
+Yukarıdaki komut, hizmetin Pod öğesinin sanal düğüm *-aci-Linux*'a atandığını gösterir ve bu sanal bir düğümdür.
 
 Bu sorunu onarmak için, hizmetin bir sanal düğümde çalışmasına izin veren tüm *Nodeselector* veya *toleranations* değerlerini kaldırmak üzere hizmetin HELI grafiğini güncelleştirin. Bu değerler genellikle grafiğin `values.yaml` dosyasında tanımlanmıştır.
 
@@ -217,7 +217,7 @@ azds up --verbose --output json
 
 Visual Studio 'da:
 
-1. **Araçlar > seçenekler** ' i açın ve **Projeler ve çözümler** altında **Oluştur ve Çalıştır** ' ı seçin.
+1. **Araçlar > seçenekler** ' i açın ve **Projeler ve çözümler** altında **Oluştur ve Çalıştır**' ı seçin.
 2. **MSBuild proje derlemesi çıkış ayrıntı düzeyi** ayarını **ayrıntılı** veya **Tanılama** olarak değiştirin.
 
     ![Araç seçenekleri iletişim kutusunun ekran görüntüsü](media/common/VerbositySetting.PNG)
@@ -261,16 +261,16 @@ Bu hata, Azure Dev Spaces Şu anda çok aşamalı derlemeleri desteklemediğinde
 
 [AKS kümenizi geliştirme makinenize bağlamak için Azure dev Spaces](https://code.visualstudio.com/docs/containers/bridge-to-kubernetes)kullanırken, ağ trafiğinin geliştirme makineniz ve aks kümeniz arasında iletilemediği bir sorunla karşılaşabilirsiniz.
 
-Geliştirme makinenizi AKS kümenize bağlarken, geliştirme makinenizin dosyasını değiştirerek AKS kümeniz ile geliştirme makineniz arasındaki ağ trafiğini iletir Azure Dev Spaces `hosts` . Azure Dev Spaces, `hosts` bir ana bilgisayar adı olarak değiştirdiğiniz Kubernetes hizmetinin adresiyle öğesinde bir giriş oluşturur. Bu giriş, geliştirme makineniz ve AKS kümesi arasında ağ trafiğini yönlendirmek için bağlantı noktası iletme ile kullanılır. Geliştirme makinenizdeki bir hizmet, değiştirdiğiniz Kubernetes hizmetinin bağlantı noktasıyla çakışıyorsa, Azure Dev Spaces Kubernetes hizmeti için ağ trafiğini iletemez. Örneğin, *Windows BranchCache* hizmeti genellikle *0.0.0.0:80* ' e bağlanır, bu da çakışmalar tüm yerel ıp 'lerde bağlantı noktası 80 ' de çakışmaya neden olur.
+Geliştirme makinenizi AKS kümenize bağlarken, geliştirme makinenizin dosyasını değiştirerek AKS kümeniz ile geliştirme makineniz arasındaki ağ trafiğini iletir Azure Dev Spaces `hosts` . Azure Dev Spaces, `hosts` bir ana bilgisayar adı olarak değiştirdiğiniz Kubernetes hizmetinin adresiyle öğesinde bir giriş oluşturur. Bu giriş, geliştirme makineniz ve AKS kümesi arasında ağ trafiğini yönlendirmek için bağlantı noktası iletme ile kullanılır. Geliştirme makinenizdeki bir hizmet, değiştirdiğiniz Kubernetes hizmetinin bağlantı noktasıyla çakışıyorsa, Azure Dev Spaces Kubernetes hizmeti için ağ trafiğini iletemez. Örneğin, *Windows BranchCache* hizmeti genellikle *0.0.0.0:80*' e bağlanır, bu da çakışmalar tüm yerel ıp 'lerde bağlantı noktası 80 ' de çakışmaya neden olur.
 
 Bu sorunu onarmak için, değiştirmeye çalıştığınız Kubernetes hizmetinin bağlantı noktasıyla çakışan tüm hizmetleri veya süreçlerini durdurmanız gerekir. Geliştirme makinenizde hangi hizmetlerin veya işlemlerin çakışıp çakışmadığını denetlemek için *netstat* gibi araçları kullanabilirsiniz.
 
 Örneğin, *Windows BranchCache* hizmetini durdurmak ve devre dışı bırakmak için:
 * `services.msc`Komutunu komut isteminden çalıştırın.
-* *BranchCache* ' e sağ tıklayın ve *Özellikler* ' i seçin.
-* *Durdur* ' a tıklayın.
+* *BranchCache* ' e sağ tıklayın ve *Özellikler*' i seçin.
+* *Durdur*' a tıklayın.
 * İsteğe bağlı olarak, *Başlangıç türünü* *devre dışı* olarak ayarlayarak devre dışı bırakabilirsiniz.
-* *Tamam* düğmesine tıklayın.
+* *Tamam*'a tıklayın.
 
 ### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>"Pod için Azureassignedıdentity bulunamadı: azds/AZD-Web kancası-Deployment- \<id\> , atanan durumunda"
 
@@ -378,6 +378,17 @@ spec:
     spec:
       [...]
 ```
+
+### <a name="error-cannot-get-connection-details-for-azure-dev-spaces-controller-abc-because-it-is-in-the-failed-state-something-wrong-might-have-happened-with-your-controller"></a>Hata "' başarısız ' durumunda olduğundan, ' ABC ' Azure Dev Spaces denetleyicisi için bağlantı ayrıntıları alınamıyor. Denetleyicinizde yanlış bir sorun oluşmuş olabilir. "
+
+Bu sorunu çözmek için Azure Dev Spaces denetleyiciyi kümeden silmeyi ve yeniden yüklemeyi deneyin:
+
+```bash
+azds remove -g <resource group name> -n <cluster name>
+azds controller create --name <cluster name> -g <resource group name> -tn <cluster name>
+```
+
+Ayrıca, Azure Dev Spaces devre dışı bırakılmakta olduğundan, daha iyi bir deneyim sağlayan [Kubernetes 'e geçiş](migrate-to-bridge-to-kubernetes.md) yapmayı düşünün.
 
 ## <a name="common-issues-using-visual-studio-and-visual-studio-code-with-azure-dev-spaces"></a>Azure Dev Spaces ile Visual Studio ve Visual Studio Code kullanma hakkında genel sorunlar
 
@@ -502,9 +513,9 @@ Kullanıcının, denetleyicinin Azure rolünü güncelleştirmek için:
 1. *Rol atamaları* sekmesine tıklayın.
 1. *Ekle* ' ye tıklayın ve *rol ataması ekleyin*.
     * *Rol* Için, *katkıda bulunan* veya *sahip* seçeneklerinden birini belirleyin.
-    * *Erişim atama* Için, *Azure AD Kullanıcı, Grup veya hizmet sorumlusu* ' nı seçin.
+    * *Erişim atama* Için, *Azure AD Kullanıcı, Grup veya hizmet sorumlusu*' nı seçin.
     * *Seç* için izin vermek istediğiniz kullanıcıyı arayın.
-1. *Kaydet* ’e tıklayın.
+1. *Kaydet*’e tıklayın.
 
 ### <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>Geliştirme alanları hizmeti ile ilişkili genel bir URL için DNS ad çözümlemesi başarısız oluyor
 
@@ -530,7 +541,7 @@ Bu sorunu düzeltmek için:
 Hizmetinize erişmeye çalışırken bu hatayı görebilirsiniz. Örneğin, bir tarayıcıda hizmetin URL 'sine gittiğinizde. Bu hata kapsayıcı bağlantı noktasının kullanılamadığı anlamına gelir. Bu, aşağıdaki nedenlerden kaynaklanabilir:
 
 * Kapsayıcı, hala oluşturulup dağıtılmakta olan bir işlemdir. Bu sorun, `azds up` hata ayıklayıcıyı çalıştırıp başlattığınızda ve sonra başarıyla dağıtılmadan önce kapsayıcıya erişmeyi denerseniz oluşabilir.
-* Bağlantı noktası yapılandırması, _Dockerfile_ , Helmchart ve bir bağlantı noktasını açan tüm sunucu kodları arasında tutarlı değildir.
+* Bağlantı noktası yapılandırması, _Dockerfile_, Helmchart ve bir bağlantı noktasını açan tüm sunucu kodları arasında tutarlı değildir.
 
 Bu sorunu düzeltmek için:
 

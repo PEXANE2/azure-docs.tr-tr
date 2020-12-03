@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/08/2020
+ms.date: 11/13/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4105698198e6fb7f4e3d3526ff9590ebca4898f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47a2aae39be93361e1e0e581efb56cc678b444cd
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612175"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549098"
 ---
 # <a name="object-replication-for-block-blobs"></a>Blok Blobları için nesne çoğaltma
 
@@ -43,14 +43,36 @@ Nesne çoğaltma, aşağıdaki Azure depolama özelliklerinin de etkinleştirilm
 
 Değişiklik akışı ve BLOB sürümü oluşturma özelliğinin etkinleştirilmesi ek ücret ödemeniz gerekebilir. Daha fazla ayrıntı için [Azure Depolama fiyatlandırması sayfasına](https://azure.microsoft.com/pricing/details/storage/)bakın.
 
+## <a name="how-object-replication-works"></a>Nesne çoğaltma nasıl çalışacaktır?
+
+Nesne çoğaltma, yapılandırdığınız kurallara göre kapsayıcıda blok bloblarını zaman uyumsuz olarak kopyalar. Blob içerikleri, blob ile ilişkili tüm sürümler ve Blobun meta verileri ve özellikleri, kaynak kapsayıcıdan hedef kapsayıcıya kopyalanır.
+
+> [!IMPORTANT]
+> Blok Blobu verileri zaman uyumsuz olarak çoğaltıldığından, kaynak hesap ve hedef hesap hemen eşitlenmiş durumda değildir. Şu anda, hedef hesaba veri çoğaltmak için ne kadar süreceğine ilişkin bir SLA yoktur. Çoğaltmanın tamamlanıp tamamlanmadığını öğrenmek için kaynak Blobun çoğaltma durumunu kontrol edebilirsiniz. Daha fazla bilgi için bkz. [bir Blobun çoğaltma durumunu denetleme](object-replication-configure.md#check-the-replication-status-of-a-blob).
+
+### <a name="blob-versioning"></a>Blob sürümü oluşturma
+
+Nesne çoğaltma, hem kaynak hem de hedef hesaplarda blob sürümü oluşturma özelliğinin etkinleştirilmesini gerektirir. Kaynak hesapta çoğaltılan bir blob değiştirildiğinde, kaynak hesapta, blob 'un önceki durumunu yansıtan önce, değişiklik yapmadan önce blob 'un yeni bir sürümü oluşturulur. Kaynak hesaptaki geçerli sürüm (veya temel blob) en son güncelleştirmeleri yansıtır. Hem güncelleştirilmiş güncel sürüm hem de yeni önceki sürüm hedef hesaba çoğaltılır. Yazma işlemlerinin blob sürümlerini nasıl etkilediği hakkında daha fazla bilgi için bkz. [yazma Işlemlerinde sürüm oluşturma](versioning-overview.md#versioning-on-write-operations).
+
+Kaynak hesaptaki bir blob silindiğinde, Blobun geçerli sürümü önceki bir sürümde yakalanır ve sonra silinir. Blob 'un önceki tüm sürümleri, geçerli sürüm silindikten sonra bile devam ederse. Bu durum hedef hesaba çoğaltılır. Silme işlemlerinin blob sürümlerini nasıl etkilediği hakkında daha fazla bilgi için bkz. [Delete Işlemlerinde sürüm oluşturma](versioning-overview.md#versioning-on-delete-operations).
+
+### <a name="snapshots"></a>Anlık Görüntüler
+
+Nesne çoğaltma, blob anlık görüntülerini desteklemez. Kaynak hesaptaki bir blobdaki tüm anlık görüntüler hedef hesaba çoğaltılmaz.
+
+### <a name="blob-tiering"></a>Blob katmanlama
+
+Kaynak ve hedef hesaplar sık erişimli veya seyrek erişimli katmanda olduğunda nesne çoğaltma desteklenir. Kaynak ve hedef hesaplar farklı katmanlarda olabilir. Ancak, kaynak veya hedef hesaptaki bir blob arşiv katmanına taşınmışsa nesne çoğaltma başarısız olur. Blob katmanları hakkında daha fazla bilgi için bkz. [Azure Blob depolama Için erişim katmanları-sık erişimli, seyrek erişimli ve arşiv](storage-blob-storage-tiers.md).
+
+### <a name="immutable-blobs"></a>Sabit bloblar
+
+Nesne çoğaltma, sabit Blobları desteklemez. Kaynak veya hedef kapsayıcıda zaman tabanlı bir bekletme ilkesi veya yasal tutma varsa, nesne çoğaltma başarısız olur. Sabit Bloblar hakkında daha fazla bilgi için bkz. [sabit depolamayla iş açısından kritik blob verilerini depolama](storage-blob-immutable-storage.md).
+
 ## <a name="object-replication-policies-and-rules"></a>Nesne çoğaltma ilkeleri ve kuralları
 
 Nesne çoğaltmasını yapılandırdığınızda, kaynak depolama hesabı ve hedef hesap belirten bir çoğaltma ilkesi oluşturursunuz. Çoğaltma İlkesi, kaynak kapsayıcısını ve hedef kapsayıcıyı belirten bir veya daha fazla kural içerir ve kaynak kapsayıcısındaki hangi blok bloblarının çoğaltılacağı anlamına gelir.
 
 Nesne çoğaltmasını yapılandırdıktan sonra Azure depolama, kaynak hesabın değişiklik akışını düzenli aralıklarla denetler ve yazma veya silme işlemlerini zaman uyumsuz olarak hedef hesaba çoğaltır. Çoğaltma gecikmesi, çoğaltılan blok Blobun boyutuna bağlıdır.
-
-> [!IMPORTANT]
-> Blok Blobu verileri zaman uyumsuz olarak çoğaltıldığından, kaynak hesap ve hedef hesap hemen eşitlenmiş durumda değildir. Şu anda, hedef hesaba veri çoğaltmak için ne kadar süreceğine ilişkin bir SLA yoktur.
 
 ### <a name="replication-policies"></a>Çoğaltma ilkeleri
 

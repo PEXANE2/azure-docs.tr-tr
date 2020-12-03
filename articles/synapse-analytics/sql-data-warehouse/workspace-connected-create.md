@@ -10,21 +10,21 @@ ms.subservice: sql-dw
 ms.date: 11/25/2020
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: b105c4c9ee0bd27af11fe09a0fd756467e30bb35
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a1fbc6eede6c82020b765185602c672c1162fdf8
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468032"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548197"
 ---
 # <a name="enabling-synapse-workspace-features-for-a-dedicated-sql-pool-formerly-sql-dw"></a>Adanmış bir SQL havuzu için SYNAPSE çalışma alanı özelliklerini etkinleştirme (eski adıyla SQL DW)
 
 Tüm SQL veri ambarı kullanıcıları artık SYNAPSE Studio ve çalışma alanı aracılığıyla mevcut bir adanmış SQL havuzuna (eski adıyla SQL DW) erişebilir ve bunları kullanabilir. Kullanıcılar Otomasyon, bağlantı veya araç araçlarını etkilemeden SYNAPSE Studio ve çalışma alanını kullanabilir. Bu makalede mevcut bir Azure SYNAPSE Analytics kullanıcısının, var olan ayrılmış bir SQL Havuzu (eski adıyla SQL DW) için SYNAPSE çalışma alanı özelliklerini nasıl etkinleştirebileceği açıklanmaktadır. Kullanıcı, artık SYNAPSE çalışma alanı ve Studio aracılığıyla kullanılabilen yeni özellik zengin özelliklerinden yararlanarak mevcut analiz çözümünü genişletebilir.   
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Veri Ambarınızda SYNAPSE çalışma alanı özelliklerini etkinleştirmeden önce, aşağıdakileri kullandığınızdan emin olmalısınız
 - SQL mantıksal sunucusunda barındırılan SQL kaynaklarını oluşturma ve yönetme hakları.
-- SYNAPSE kaynakları oluşturma hakkı.
+- Azure SYNAPSE kaynakları oluşturma hakkı.
 - Mantıksal sunucuda tanımlanan bir Azure Active Directory Yöneticisi
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 5374871a51586a573e9ab41121f3f2dd95baf876
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: ead878daaab977c77b3ab36f42ccfe4d01d7bc03
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695257"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548639"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>1. Adım: günlük ileticisini dağıtma
 
@@ -34,7 +34,7 @@ Bu adımda, günlükleri güvenlik çözümünüzden Azure Sentinel çalışma a
     - TCP bağlantı noktası 514 ' deki güvenlik çözümlerinizde syslog iletilerini dinleme
     - TCP bağlantı noktası 25226 kullanarak yalnızca, CEF olarak tanımladığı iletileri localhost üzerinde Log Analytics aracısına iletme
  
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Belirlenen Linux makinenizde yükseltilmiş izinleriniz (sudo) olmalıdır.
 
@@ -57,6 +57,9 @@ Bu adımda, günlükleri güvenlik çözümünüzden Azure Sentinel çalışma a
 1. Betik çalışırken, herhangi bir hata veya uyarı iletisi aldığınızdan emin olmak için kontrol edin.
     - *Bilgisayar* alanının eşlemesiyle bir sorunu düzeltmek için bir komut çalıştırmanızı yönlendiren bir ileti alabilirsiniz. Ayrıntılar için [dağıtım betiğinin](#mapping-command) açıklamasına bakın.
 
+1. 2. [Adım: CEF iletilerini iletmek için Güvenlik çözümünüzü yapılandırma](connect-cef-solution-config.md) .
+
+
 > [!NOTE]
 > **Hem düz Syslog *hem* de CEF iletilerini iletmek için aynı makineyi kullanma**
 >
@@ -67,7 +70,16 @@ Bu adımda, günlükleri güvenlik çözümünüzden Azure Sentinel çalışma a
 > 1. Aracının Azure Sentinel 'de Syslog yapılandırmasıyla eşitlenmesini devre dışı bırakmak için bu makinelerde aşağıdaki komutu çalıştırmanız gerekir. Bu, önceki adımda yaptığınız yapılandırma değişikliğinin üzerine yazılmamasını sağlar.<br>
 > `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
 
-2. [Adım: CEF iletilerini iletmek için Güvenlik çözümünüzü yapılandırma](connect-cef-solution-config.md) .
+> [!NOTE]
+> **TimeGenerated alanının kaynağını değiştirme**
+>
+> - Varsayılan olarak, Log Analytics Aracısı şemadaki *TimeGenerated* alanını, aracının Syslog arka plan programından olayı aldığı zamana göre doldurur. Sonuç olarak, olayın kaynak sistemde oluşturulduğu zaman Azure Sentinel 'de kaydedilmez.
+>
+> - Ancak, komut dosyasını indirecek ve çalıştıracak aşağıdaki komutu çalıştırabilirsiniz `TimeGenerated.py` . Bu betik, Log Analytics aracısını aracı tarafından alındığı zaman yerine, *TimeGenerated* alanını olayın kaynak sistemindeki özgün zamanına göre doldurmak üzere yapılandırır.
+>
+>    ```bash
+>    wget -O TimeGenerated.py https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/TimeGenerated.py && python TimeGenerated.py {ws_id}
+>    ```
 
 ## <a name="deployment-script-explained"></a>Dağıtım betiği açıklanmıştı
 

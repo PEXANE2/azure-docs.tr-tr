@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 9dc3631b738da78df83113d89d23051033674d11
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 63d349c8cfff52932d51ce7143aba33521c43890
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93338382"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549200"
 ---
 # <a name="mathematical-functions-azure-cosmos-db"></a>Matematik işlevleri (Azure Cosmos DB)  
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -57,7 +57,7 @@ Aşağıdaki desteklenen yerleşik matematik işlevleri, genellikle giriş bağ�
 * [SIGN](sql-query-sign.md)
 * [SIN](sql-query-sin.md)
 * [SQRT](sql-query-sqrt.md)
-* [SQUARE](sql-query-square.md)
+* [KARE](sql-query-square.md)
 * [TAN](sql-query-tan.md)
 * [TRUNC](sql-query-trunc.md)
 
@@ -69,4 +69,4 @@ S_SAYI_ÜRET hariç tüm matematik işlevleri belirleyici işlevlerdir. Bu, beli
 - [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
 - [Azure Cosmos DB'ye giriş](introduction.md)
 - [Kullanıcı tanımlı Işlevler](sql-query-udfs.md)
-- [Toplamlar](sql-query-aggregates.md)
+- [Toplamlar](sql-query-aggregate-functions.md)

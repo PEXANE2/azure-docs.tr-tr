@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2019
 ms.author: mlottner
-ms.openlocfilehash: d97fa4c3c57f6f0dcc5c55b76d839308156c40fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75c6841b7fed354843b955a971f02946be349a02
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90941727"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548894"
 ---
 # <a name="azure-defender-for-iot-baseline-and-custom-checks"></a>IoT için Azure Defender temel ve özel denetimler
 
@@ -62,8 +62,8 @@ Temel özel denetimleri yapılandırmak için:
 
 ## <a name="baseline-custom-check-properties"></a>Taban çizgisi özel denetim özellikleri
 
-| Adı| Durum | Geçerli değerler| Varsayılan değerler| Açıklama |
-|----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
+| Ad| Durum | Geçerli değerler| Varsayılan değerler| Açıklama |
+|------|-----|------|-----|-----|
 |baselineCustomChecksEnabled|Gerekli: true |Geçerli değerler: **Boolean** |Varsayılan değer: **false** |Yüksek öncelikli iletiler gönderilmeden önce en uzun zaman aralığı.|
 |baselineCustomChecksFilePath |Gerekli: true|Geçerli değerler: **String**, **null** |Varsayılan değer: **null** |Taban çizgisi XML yapılandırmasının tam yolu|
 |baselineCustomChecksFileHash |Gerekli: true|Geçerli değerler: **String**, **null** |Varsayılan değer: **null** |`sha256sum` XML yapılandırma dosyası. Ek bilgi için [SHA256sum başvurusunu](https://linux.die.net/man/1/sha256sum) kullanın. |

@@ -7,13 +7,13 @@ ms.reviewer: susabat
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: troubleshooting
-ms.date: 11/27/2020
-ms.openlocfilehash: e0b4b31a1d732cbd5cbfaa9b6e5e021caa3adf01
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.date: 12/03/2020
+ms.openlocfilehash: d5cf39cf91b69574fc1423cfe0942b567cf9a278
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301969"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548218"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>ADF 'de CI-CD, Azure DevOps ve GitHub sorunlarını giderme 
 
@@ -58,7 +58,7 @@ CI/CD işlem hattı şu hata ile başarısız oluyor:
 
 #### <a name="recommendation"></a>Öneri
 
-Genellikle parametreli olan bir tetikleyiciyi sildiğimiz için hata oluşur, bu nedenle parametreler ARM şablonunda kullanılamıyor (tetikleyici artık mevcut olmadığından). Parametre artık ARM şablonunda olmadığından, DevOps ardışık düzeninde geçersiz kılınan parametreleri güncelleştirmemiz gerekir. Aksi takdirde, ARM şablonundaki parametrelerin her değiştirilişinde, DevOps ardışık düzeninde geçersiz kılınan parametreleri güncelleştirmelidir (dağıtım görevinde).
+Bu, parametreleştirilen bir tetikleyiciyi genellikle sildiğimiz için hata oluşur, bu nedenle parametreler ARM şablonunda kullanılamaz (tetikleyici artık mevcut olmadığından). Parametre artık ARM şablonunda olmadığından, DevOps ardışık düzeninde geçersiz kılınan parametreleri güncelleştirmemiz gerekir. Aksi takdirde, ARM şablonundaki parametrelerin her değiştirilişinde, DevOps ardışık düzeninde geçersiz kılınan parametreleri güncelleştirmelidir (dağıtım görevinde).
 
 ### <a name="updating-property-type-is-not-supported"></a>Özellik türünü güncelleştirme desteklenmiyor
 
@@ -107,7 +107,7 @@ Data Factory değişiklikleri yayımlamaya çalışırken şu hata iletisini al�
 
 Git yapılandırmasını ayırdıktan sonra, Data Factory "eşitleme sırasında" olarak ayarlayan "kaynakları Içeri aktar" bayrağı seçili olacak şekilde yeniden ayarlayın. Bu, yayımlanacak hiçbir değişiklik olmadığı anlamına gelir.
 
-**Çözünürlük**
+#### <a name="resolution"></a>Çözüm
 
 Git yapılandırmasını ayırın ve yeniden ayarlayın ve "var olan kaynakları içeri aktar" onay kutusunu denetlediğinizden emin olun.
 

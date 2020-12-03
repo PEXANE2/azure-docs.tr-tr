@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2019
+ms.date: 12/03/2020
 ms.author: mlottner
-ms.openlocfilehash: aec750d246ce99fa65431e23ef68e70418db0017
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7f7575697706363c082a4e6374b3df7a49e65cdf
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90942195"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548860"
 ---
 # <a name="defender-for-iot-event-aggregation"></a>IoT olay toplama için Defender
 
-IoT güvenlik aracıları için Defender, yerel cihazınızdan veri ve sistem olayları toplar ve bu verileri işleme ve analiz için Azure bulutuna gönderir. Güvenlik Aracısı, yeni işlem ve yeni bağlantı olayları dahil olmak üzere birçok cihaz olayı türünü toplar. Yeni işlem ve yeni bağlantı olaylarının her ikisi de bir cihazda ikinci olarak sıklıkla meydana gelebilir ve güçlü ve kapsamlı güvenlik için önemli olsa da, güvenlik aracılarının göndermeye zorlanacağı ileti sayısı, IoT Hub kotasına ve maliyet sınırlarına hızlı bir şekilde ulaşabilir veya bu sınıra ulaşabilirler. Ancak, bu olaylar, cihazınızı korumak için önemli olan önemli ölçüde önemli güvenlik bilgilerini içerir.
+IoT güvenlik aracıları için Defender, yerel cihazınızdan veri ve sistem olayları toplayıp bu verileri işleme ve analiz için Azure bulutuna gönderir. Güvenlik Aracısı, yeni işlem ve yeni bağlantı olayları dahil olmak üzere birçok cihaz olayı türünü toplar. Yeni işlem ve yeni bağlantı olaylarının her ikisi de bir cihazda ikinci olarak sıklıkla meydana gelebilir ve güçlü ve kapsamlı güvenlik için önemli olsa da, güvenlik aracılarının göndermeye zorlanacağı ileti sayısı, IoT Hub kotasına ve maliyet sınırlarına hızlı bir şekilde ulaşabilir veya bu sınıra ulaşabilirler. Ancak, bu olaylar, cihazınızı korumak için önemli olan önemli ölçüde önemli güvenlik bilgilerini içerir.
 
 Cihazları koruma altına alırken ek kota ve maliyetleri azaltmak için, IoT aracıları için Defender bu tür olayları toplar.
 
@@ -36,7 +36,7 @@ Toplama şu anda aşağıdaki olay türleri için kullanılabilir:
 
 ## <a name="how-does-event-aggregation-work"></a>Olay toplama nasıl çalışır?
 
-Olay toplama bırakıldığında, IoT aracıları için **Defender, Aralık**dönemi veya zaman penceresi için olayları toplar.
+Olay toplama bırakıldığında, IoT aracıları için **Defender, Aralık** dönemi veya zaman penceresi için olayları toplar.
 Aralık süresi geçtikten sonra, aracı, toplanan olayları daha fazla analiz için Azure bulutuna gönderir.
 Toplanan olaylar, Azure bulutuna gönderilene kadar bellekte depolanır.
 
@@ -44,7 +44,7 @@ Aracının bellekte zaten tutulmakta olan bir olay ile aynı olayı topladığı
 
 Olaylar yalnızca aşağıdaki koşullar karşılandığında özdeş olarak değerlendirilir:
 
-* ProcessCreate olayları- **commandLine**, **çalıştırılabilir**, **Kullanıcı adı**ve Kullanıcı **kimliği** aynı olduğunda
+* ProcessCreate olayları- **commandLine**, **çalıştırılabilir**, **Kullanıcı adı** ve Kullanıcı **kimliği** aynı olduğunda
 * ConnectionCreate olayları- **commandLine**, **UserID**, **Direction**, **Yerel adres**, **uzak adres**, * * protokolü ve **hedef bağlantı noktası** aynı olduğunda
 * ProcessTerminate olayları- **yürütülebilir** ve **Çıkış durumu** aynı olduğunda
 
@@ -52,8 +52,8 @@ Olaylar yalnızca aşağıdaki koşullar karşılandığında özdeş olarak de�
 
 Toplama sırasında, toplanmayan olay özellikleri atılır ve Log Analytics 'te 0 değeri ile görüntülenir.
 
-* ProcessCreate olayları- **İşlemKimliği**ve **ParentProcessId** 0 olarak ayarlanır
-* ConnectionCreate olayları- **İşlemKimliği**ve **kaynak bağlantı noktası** 0 olarak ayarlanır
+* ProcessCreate olayları- **İşlemKimliği** ve **ParentProcessId** 0 olarak ayarlanır
+* ConnectionCreate olayları- **İşlemKimliği** ve **kaynak bağlantı noktası** 0 olarak ayarlanır
 
 ## <a name="event-aggregation-based-alerts"></a>Olay toplama tabanlı uyarılar
 
