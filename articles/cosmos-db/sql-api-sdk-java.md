@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 87ff11c33c909c7398ebced54ec81907dab2d991
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 0b48b8d954b132caab96e5978c90687899ea04c2
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93080541"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549234"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Java SDK Azure Cosmos DB: sürüm notları ve kaynakları
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -40,7 +40,7 @@ ms.locfileid: "93080541"
 Bu, zaman uyumlu işlemleri destekleyen SQL API 'SI için özgün Azure Cosmos DB eşitleme Java SDK v2 ' dir.
 
 > [!IMPORTANT]  
-> Bu, Azure Cosmos DB için en son Java SDK 'Sı *değildir* ! Projeniz için [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md) kullanmayı düşünün. Yükseltmek için [Azure Cosmos DB Java SDK 'sı v4](migrate-java-v4-sdk.md) Kılavuzu ve [reaktör vs rxjava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) Kılavuzu 'ndaki yönergeleri izleyin. 
+> Bu, Azure Cosmos DB için en son Java SDK 'Sı *değildir* ! Projeniz için [Azure Cosmos DB Java SDK v4](sql-api-sdk-java-v4.md) kullanmayı düşünün. Yükseltmek için [Azure Cosmos DB Java SDK 'sı v4](migrate-java-v4-sdk.md) Kılavuzu ve [reaktör vs rxjava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-rxjava-guide.md) Kılavuzu 'ndaki yönergeleri izleyin. 
 >
 
 | |  |
@@ -175,7 +175,7 @@ Bu, zaman uyumlu işlemleri destekleyen SQL API 'SI için özgün Azure Cosmos D
 * Oturum kapsayıcısında, koleksiyon oluşturulduktan hemen sonra istekler için "sahip kaynak bulunamadı" özel durumuna neden olabilecek birkaç hata düzeltildi.
 
 ### <a name="195"></a><a name="1.9.5"></a>1.9.5
-* Toplama sorguları (COUNT, MIN, MAX, SUM ve AVG) için destek eklendi. Bkz. [toplama desteği](sql-query-aggregates.md).
+* Toplama sorguları (COUNT, MIN, MAX, SUM ve AVG) için destek eklendi. Bkz. [toplama desteği](sql-query-aggregate-functions.md).
 * Değişiklik akışı için destek eklendi.
 * RequestOptions. Setpopulatequotaınfo aracılığıyla koleksiyon kota bilgileri için destek eklendi.
 * RequestOptions. setScriptLoggingEnabled aracılığıyla depolanan yordam betiği günlüğü için destek eklendi.

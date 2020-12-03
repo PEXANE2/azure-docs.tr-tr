@@ -1,0 +1,149 @@
+---
+title: Azure SQL veritabanını kaydetme ve tarama
+description: Bu öğreticide Azure SQL veritabanı 'nın nasıl taranması açıklanmaktadır
+author: hophan
+ms.author: hophan
+ms.service: purview
+ms.subservice: purview-data-catalog
+ms.topic: tutorial
+ms.date: 10/02/2020
+ms.openlocfilehash: 93df05fefcf07de90eb6076a3bf43972e6e02b95
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96555939"
+---
+# <a name="register-and-scan-an-azure-sql-database"></a>Azure SQL veritabanını kaydetme ve tarama
+
+Bu makalede bir Azure SQL veritabanı veri kaynağını purview 'a kaydetme ve üzerinde tarama ayarlama özetlenmektedir.
+
+## <a name="supported-capabilities"></a>Desteklenen yetenekler
+
+Azure SQL veritabanı veri kaynağı aşağıdaki işlevleri destekler:
+
+- Azure SQL veritabanı 'nda meta verileri ve sınıflandırmayı yakalamak için **tam ve artımlı taramalar** .
+
+- ADF Copy ve veri akışı etkinlikleri için veri varlıkları arasında **kökenini** .
+
+## <a name="prerequisites"></a>Ön koşullar
+
+1. Henüz bir tane yoksa yeni bir purview hesabı oluşturun.
+
+1. Purview hesabı ve Azure SQL veritabanı arasında ağ erişimi.
+
+
+### <a name="set-up-authentication-for-a-scan"></a>Tarama için kimlik doğrulamasını ayarlama
+
+Azure SQL veritabanı 'nı taramak için kimlik doğrulaması. Yeni kimlik doğrulaması oluşturmanız gerekiyorsa, [SQL veritabanı 'na veritabanı erişimini yetkilendirmeniz](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage)gerekir. Takiview 'un günümüzde desteklediği üç kimlik doğrulama yöntemi vardır:
+
+- SQL kimlik doğrulaması
+- Hizmet Sorumlusu
+- Yönetilen Kimlik
+
+#### <a name="sql-authentication"></a>SQL kimlik doğrulaması
+
+> [!Note]
+> Yalnızca sunucu düzeyinde asıl oturum açma (sağlama işlemi tarafından oluşturulan) veya `loginmanager` ana veritabanındaki veritabanı rolünün üyeleri yeni oturumlar oluşturabilir. İzin verdikten yaklaşık **15 dakika** sürer, purview hesabının kaynakları tarayabilmesi için uygun izinlere sahip olması gerekir.
+
+Bu kullanılabilir değilse Azure SQL veritabanı için oturum açma oluşturmak üzere [oturum oluşturma](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1) ' daki yönergeleri izleyebilirsiniz. Sonraki adımlar için **Kullanıcı adı** ve **parolaya** ihtiyacınız olacak.
+
+1. Azure portal, anahtar kasanıza gidin
+1. **Gizli dizileri > ayarları** seçin
+1. **+ Oluştur/Içeri aktar** ' ı seçin ve Azure SQL veritabanından *parola* olarak **adı** ve **değeri** girin
+1. Tamamlanacak **Oluştur** ' u seçin
+1. Anahtar Kasanızda purview 'a bağlı değilse, [Yeni bir Anahtar Kasası bağlantısı oluşturmanız](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account) gerekir
+1. Son olarak, taramanızı ayarlamak için **Kullanıcı adını** ve **parolayı** kullanarak [Yeni bir kimlik bilgisi oluşturun](manage-credentials.md#create-a-new-credential)
+
+#### <a name="service-principal-and-managed-identity"></a>Hizmet sorumlusu ve yönetilen kimlik
+
+Azure SQL veritabanınızı taramak için purview 'ın hizmet sorumlusu 'nı veya purview 'ın **yönetilen kimliğini** kullanmasına izin veren birkaç adım vardır
+
+   > [!Note]
+   > Purview 'in taranması için **uygulama (istemci) kimliği** ve **istemci parolası** gerekir.
+
+##### <a name="create-or-use-an-existing-service-principal"></a>Mevcut bir hizmet sorumlusu oluşturun veya kullanın
+
+> [!Note]
+> Purview 'un **yönetilen kimliğini** kullanıyorsanız bu adımı atlayın
+
+Hizmet sorumlusu kullanmak için mevcut bir tane kullanabilir veya yeni bir tane oluşturabilirsiniz. 
+
+> [!Note]
+> Yeni bir hizmet sorumlusu oluşturmanız gerekiyorsa lütfen şu adımları izleyin:
+> 1. [Azure Portal](https://portal.azure.com)gidin.
+> 1. Sol taraftaki menüden **Azure Active Directory** ' yi seçin.
+> 1. **Uygulama kayıtları**’nı seçin.
+> 1. **+ Yeni uygulama kaydı**' nı seçin.
+> 1. **Uygulama** için bir ad girin (hizmet asıl adı).
+> 1. **Yalnızca bu kuruluş dizininde hesaplar '** ı seçin.
+> 1. Yeniden yönlendirme URI 'SI için **Web** ' i seçin ve istediğiniz URL 'yi girin; gerçek veya iş olması gerekmez.
+> 1. Ardından **Kaydet**’i seçin.
+
+##### <a name="configure-azure-ad-authentication-in-the-database-account"></a>Veritabanı hesabında Azure AD kimlik doğrulamasını yapılandırma
+
+Hizmet sorumlusu veya yönetilen kimliğin veritabanı, şemalar ve tablolar için meta verileri almak için izni olmalıdır. Ayrıca sınıflandırmanın örneklemesine yönelik tabloları sorgulayabilmelidir.
+
+- [Azure SQL ile Azure AD kimlik doğrulamasını yapılandırma ve yönetme](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure)
+- Yönetilen kimlik kullanıyorsanız, purview hesabınızın kendi yönetilen kimliği vardır ve bu, temel olarak sizin oluşturduğunuz zaman sizin oluşturduğunuz bir addır. Azure SQL veritabanı ['nda hizmet sorumlusu kullanıcısı oluşturma](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-service-principal-tutorial#create-the-service-principal-user-in-azure-sql-database)öğreticisini IZLEYEREK Azure SQL veritabanı 'Nda BIR Azure AD kullanıcısını tam olarak takip ettiğiniz yönetilen kimlik veya kendi hizmet sorumlusu ile oluşturmanız gerekir. `db_owner`Kimliğe (**Önerilen**) izin atamanız gerekir. Kullanıcı oluşturmak ve izin vermek için örnek SQL söz dizimi:
+
+    ```sql
+    CREATE USER [Username] FROM EXTERNAL PROVIDER
+    GO
+    
+    EXEC sp_addrolemember 'db_owner', [Username]
+    GO
+    ```
+
+    > [!Note]
+    > `Username`Kendi hizmet sorumlunuz veya purview 'ın yönetilen kimliği
+    
+##### <a name="add-service-principal-to-key-vault-and-purviews-credential"></a>Ana kasaya hizmet sorumlusu ve takip görünümü kimlik bilgileri ekleyin
+
+> [!Note]
+> Purview 'un **yönetilen kimliğini** kullanmayı planlıyorsanız, varsayılan purview 'ın yönetilen kimliği **PURVIEW-MSI** kimlik bilgilerinde zaten olduğundan bu adımı atlayabilirsiniz.
+
+Hizmet sorumlusunun uygulama KIMLIĞI ve gizli anahtarı almak için gereklidir:
+
+1. [Azure Portal](https://portal.azure.com) hizmet sorumlusuna gidin
+1. **Uygulama (istemci) kimliğinin** değerlerini, **Sertifikalar & Gizliliklerden** **genel bakış** ve **istemci gizliliğine** kopyalayın.
+1. Anahtar kasanıza gidin
+1. **Gizli dizileri > ayarları** seçin
+1. **+ Oluştur/Içeri aktar** ' ı seçin ve seçtiğiniz **adı** ve **değeri** hizmet sorumlınızdan **istemci gizli anahtarı** olarak girin
+1. Tamamlanacak **Oluştur** ' u seçin
+1. Anahtar Kasanızda purview 'a bağlı değilse, [Yeni bir Anahtar Kasası bağlantısı oluşturmanız](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account) gerekir
+1. Son olarak, taramanızı ayarlamak için hizmet sorumlusunu kullanarak [Yeni bir kimlik bilgisi oluşturun](manage-credentials.md#create-a-new-credential)
+
+## <a name="register-an-azure-sql-database-data-source"></a>Azure SQL veritabanı veri kaynağını kaydetme
+
+Veri kataloğunuza yeni bir Azure SQL veritabanı kaydetmek için aşağıdakileri yapın:
+
+1. Purview hesabınıza gidin
+
+1. Sol gezinti bölmesinde **kaynakları** seçin
+
+1. **Kaydol** ' u seçin
+
+1. **Kayıt kaynakları** ÜZERINDE **Azure SQL veritabanı**' nı seçin. **Devam**’ı seçin.
+
+:::image type="content" source="media/register-scan-azure-sql-database/register-new-data-source.png" alt-text="Yeni veri kaynağını Kaydet" border="true":::
+
+**Kaynakları Kaydet (Azure SQL veritabanı)** ekranında, şunları yapın:
+
+1. Veri kaynağının katalogda listelenecek bir **ad** girin.
+1. İstediğiniz depolama hesabınıza nasıl işaret etmek istediğinizi seçin:
+   1. **Azure aboneliği ' nden** seçim yapın, **Azure aboneliği** açılan kutusundan ilgili aboneliği ve **sunucu adı** açılır kutusundan uygun sunucuyu seçin.
+   1. Veya **El Ile gir** ' i seçip **sunucu adı** girebilirsiniz.
+1. Veri kaynağını kaydetmek için **son** ' a gidin.
+
+:::image type="content" source="media/register-scan-azure-sql-database/add-azure-sql-database.png" alt-text="kaynakları kaydetme seçenekleri" border="true":::
+
+[!INCLUDE [create and manage scans](includes/manage-scans.md)]
+
+> [!NOTE]
+> Taramanızı silmek, varlıklarınızı önceki Azure SQL veritabanı taramalarından silmez.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+- [Azure purview veri kataloğuna gözatın](how-to-browse-catalog.md)
+- [Azure purview Veri Kataloğu 'Nda arama](how-to-search-catalog.md)
