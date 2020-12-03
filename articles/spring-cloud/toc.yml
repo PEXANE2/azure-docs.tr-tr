@@ -25,10 +25,6 @@
           href: spring-cloud-quickstart-logs-metrics-tracing.md
 - name: Öğreticiler
   items:
-    - name: Uygulamayı el ile ölçeklendirme
-      href: spring-cloud-tutorial-scale-manual.md
-    - name: Uygulamayı otomatik ölçeklendirme
-      href: spring-cloud-tutorial-setup-autoscale.md
     - name: Uyarılar ve eylem grupları
       href: spring-cloud-tutorial-alerts-action-groups.md
     - name: Devre Kesici Panosu
@@ -83,6 +79,12 @@
           href: spring-cloud-howto-start-stop-delete.md
         - name: Kalıcı depolama kullanma
           href: spring-cloud-howto-persistent-storage.md
+    - name: Ölçek
+      items:
+        - name: Uygulamayı el ile ölçeklendirme
+          href: spring-cloud-tutorial-scale-manual.md
+        - name: Uygulamayı otomatik ölçeklendirme
+          href: spring-cloud-tutorial-setup-autoscale.md
         - name: Giden genel IP adresleri tanımlama
           href: spring-cloud-howto-outbound-public-ip.md
     - name: İzleme
@@ -132,7 +134,19 @@
         - name: Spring Boot
           href: /azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud
         - name: Tomcat
-          href: /azure/developer/java/migration/migrate-tomcat-to-azure-spring-cloud
+          href: 'https://docs.microsoft.com/azure/developer/java/migration/migrate-tomcat-to-azure-spring-cloud'
+- name: DevOps Dağıtımı
+  items:
+    - name: Azure DevOps ile CI/CD
+      href: spring-cloud-howto-cicd.md
+    - name: GitHub Actions ile CI/CD
+      href: spring-cloud-howto-github-actions.md
+    - name: GitHub Actions'da Key Vault ile Kimlik Doğrulaması
+      href: spring-cloud-github-actions-key-vault.md
+- name: Sorun giderme
+  items:
+    - name: Sorun Giderme Kılavuzu
+      href: spring-cloud-troubleshoot.md
 - name: Başvuru
   items:
     - name: Azure CLI Eklentisi
