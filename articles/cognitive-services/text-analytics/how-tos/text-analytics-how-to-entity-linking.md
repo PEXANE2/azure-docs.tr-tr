@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 11/19/2020
 ms.author: aahi
-ms.openlocfilehash: ef06faa17739153b2a04e777498e1de6e97c0646
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 804d739efa5ac96c0b2d7228573f031f324e590e
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957104"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558989"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Metin Analizi içinde adlandırılmış varlık tanımayı kullanma
 
@@ -31,7 +31,7 @@ Adlandırılmış varlık tanıma (NER), metinde farklı varlıkları belirleme 
 
 ## <a name="personally-identifiable-information-pii"></a>Kişisel olarak tanımlanabilen bilgiler (PII)
 
-PII özelliği, NER 'in bir parçasıdır ve gizli varlıkları, telefon numarası, e-posta adresi, posta adresi, Passport numarası gibi bireysel bir kişiyle ilişkili metinde tanımlayabilir ve redaksiyonde ekleyebilir.  
+PII özelliği, NER 'in bir parçasıdır ve gizli varlıkları, telefon numarası, e-posta adresi, posta adresi, Passport numarası gibi bireysel bir kişiyle ilişkili metinde tanımlayabilir ve redaksiyonde ekleyebilir.
 
 ## <a name="named-entity-recognition-features-and-versions"></a>Adlandırılmış varlık tanıma özellikleri ve sürümleri
 

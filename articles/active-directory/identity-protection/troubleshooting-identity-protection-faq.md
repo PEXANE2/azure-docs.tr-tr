@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba22745923f1b157c477dce0b5704c7e278e748e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 6eb63a4a0b7b7fdefd636d3460b182f8d907dd36
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96176010"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558938"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Azure Active Directory 'de sık sorulan sorular kimlik koruması
 
@@ -82,9 +82,11 @@ Tüm risk algılamaları, [risk](concept-identity-protection-risks.md#risk-types
 
 - Bu geri bildirimin alınması sırasında, oturum açma (Kullanıcı değil) risk durumunu **onaylı güvenli** ve risk düzeyine taşıyacağız **-** .
 
-- Ayrıca, risk değerlendirmesinde gelecekteki geliştirmeler için Machine Learning sistemlerimize bilgi sağlıyoruz.
+- Ayrıca, risk değerlendirmesinde gelecekteki geliştirmeler için Machine Learning sistemlerimize bilgi sağlıyoruz. 
 
     > [!NOTE]
+    >Bugün, oturum açma sırasında güvenli Onayla ' yı seçtiğinizde, aynı özelliklerle riskli olarak işaretlenmesinin ardından gelecek oturum açma işlemleri engellenir. Kullanıcının özelliklerini öğrenmek için sistemi eğmenin en iyi yolu, MFA ile riskli oturum açma ilkesini kullanmaktır. MFA için riskli oturum açma işlemleri yapıldığında ve Kullanıcı isteğe başarıyla yanıt verdiğinde, oturum açma işlemi başarılı olur ve sistemi meşru Kullanıcı davranışında eğitme konusunda yardımcı olur.
+    >
     > Kullanıcının güvenliğinin aşılmadığını düşünüyorsanız, oturum açma düzeyinde **onaylanmış güvenli** kullanmak yerine Kullanıcı düzeyinde Kullanıcı **riskini kapat** seçeneğini kullanın. Kullanıcı düzeyindeki Kullanıcı **riskini** kapatma, Kullanıcı riskini ve geçmişteki tüm riskli oturum açma işlemlerini ve risk algılamalarını kapatır.
 
 ### <a name="why-am-i-seeing-a-user-with-a-low-or-above-risk-score-even-if-no-risky-sign-ins-or-risk-detections-are-shown-in-identity-protection"></a>Kimlik koruması 'nda riskli oturum açma veya risk algılamaları gösterilmese bile, bir kullanıcıyı düşük (veya üzeri) risk puanı ile neden görüyorum?

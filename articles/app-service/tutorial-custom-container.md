@@ -7,12 +7,12 @@ ms.author: msangapu
 keywords: Azure App Service, Web uygulaması, Linux, Windows, Docker, kapsayıcı
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: b5682275a9e5f3993de715ab5f23a708d5df47ae
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 68fe49ff201ead89d846a0676e81dda9fc9b75b9
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130128"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558615"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>Özel bir kapsayıcı kullanarak Azure App Service özel yazılım geçirme
 
@@ -30,8 +30,8 @@ Bu öğreticiyi tamamlamak için:
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Docker for Windows'u yükleyin</a>.
 - <a href="/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Windows kapsayıcılarını çalıştırmak için Docker’a geçiş yapın</a>.
 - **ASP.net ve Web geliştirme** ve **Azure geliştirme** Iş yükleriyle <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> ' i yükledikten sonra. Visual Studio 2019 zaten yüklüyse:
-    - **Help**  >  **Güncelleştirmeler için yardım denetimi** ' ne tıklayarak Visual Studio 'ya en son güncelleştirmeleri yüklersiniz.
-    - **Araçlar**  >  **ve Özellikler al** ' a tıklayarak iş yüklerini Visual Studio 'da ekleyin.
+    - **Help**  >  **Güncelleştirmeler için yardım denetimi**' ne tıklayarak Visual Studio 'ya en son güncelleştirmeleri yüklersiniz.
+    - **Araçlar**  >  **ve Özellikler al**' a tıklayarak iş yüklerini Visual Studio 'da ekleyin.
 
 ## <a name="set-up-the-app-locally"></a>Uygulamayı yerel ortamda oluşturma
 
@@ -46,7 +46,7 @@ Bu adımda yerel .NET projesini oluşturacaksınız.
 
 ### <a name="install-the-font"></a>Yazı tipini yükleme
 
-Windows Gezgini'nde _custom-font-win-container-master/CustomFontSample_ dizinine gidin, _FrederickatheGreat-Regular.ttf_ dosyasına sağ tıklayın ve **Yükle** 'yi seçin.
+Windows Gezgini'nde _custom-font-win-container-master/CustomFontSample_ dizinine gidin, _FrederickatheGreat-Regular.ttf_ dosyasına sağ tıklayın ve **Yükle**'yi seçin.
 
 Bu yazı tipi [Google Fonts](https://fonts.google.com/specimen/Fredericka+the+Great) sayfasında genel kullanıma açık bir şekilde sunulmaktadır.
 
@@ -62,9 +62,9 @@ Yüklenmiş olan bir yazı tipini kullandığından uygulama App Service korumal
 
 ### <a name="configure-windows-container"></a>Windows kapsayıcısını yapılandırma
 
-Çözüm Gezgini'nde **CustomFontSample** projesine sağ tıklayıp **Ekle** > **Kapsayıcı Düzenleme Desteği** 'ne tıklayın.
+Çözüm Gezgini'nde **CustomFontSample** projesine sağ tıklayıp **Ekle** > **Kapsayıcı Düzenleme Desteği**'ne tıklayın.
 
-:::image type="content" source="media/tutorial-custom-container/enable-container-orchestration.png" alt-text="Varsayılan tarayıcıda gösterilen uygulamayı gösteren ekran görüntüsü.":::
+:::image type="content" source="media/tutorial-custom-container/enable-container-orchestration.png" alt-text="CustomFontSample projesi, ekleme ve kapsayıcı Orchestrator desteği menü öğelerini gösteren Çözüm Gezgini penceresinin ekran görüntüsü.":::
 
 **Docker Compose**  >  **Tamam ' ı** seçin.
 
@@ -96,30 +96,30 @@ _InstallFont.ps1_ dosyasını **CustomFontSample** projesinde bulabilirsiniz. Ya
 
 ### <a name="open-publish-wizard"></a>Yayımlama sihirbazını açma
 
-Çözüm Gezgini'nde **CustomFontSample** projesine sağ tıklayın ve **Yayımla** 'yı seçin.
+Çözüm Gezgini'nde **CustomFontSample** projesine sağ tıklayın ve **Yayımla**'yı seçin.
 
-:::image type="content" source="media/tutorial-custom-container/open-publish-wizard.png" alt-text="Varsayılan tarayıcıda gösterilen uygulamayı gösteren ekran görüntüsü.":::
+:::image type="content" source="media/tutorial-custom-container/open-publish-wizard.png" alt-text="CustomFontSample projesini gösteren Çözüm Gezgini ekran görüntüsü ve seçili yayımlama.":::
 
 ### <a name="create-registry-and-publish"></a>Kayıt defterini oluşturma ve yayımlama
 
-Yayımla sihirbazında **Container Registry**  >  **yeni Azure Container Registry oluştur** ' u seçin  >  **Publish** .
+Yayımla sihirbazında **Container Registry**  >  **yeni Azure Container Registry oluştur**' u seçin  >  **Publish**.
 
-:::image type="content" source="media/tutorial-custom-container/create-registry.png" alt-text="Varsayılan tarayıcıda gösterilen uygulamayı gösteren ekran görüntüsü.":::
+:::image type="content" source="media/tutorial-custom-container/create-registry.png" alt-text="Container Registry, yeni Azure Container Registry oluştur ve Yayımla düğmesi seçili olan Yayımla Sihirbazı ekran görüntüsü.":::
 
 ### <a name="sign-in-with-azure-account"></a>Azure hesabınızla oturum açın
 
-**Yeni Azure Container Registry oluştur** iletişim kutusunda **Hesap ekle** ’yi seçin ve Azure aboneliğinizde oturum açın. Oturumunuz zaten açıksa, açılan menüden istediğiniz aboneliği içeren hesabı seçin.
+**Yeni Azure Container Registry oluştur** iletişim kutusunda **Hesap ekle**’yi seçin ve Azure aboneliğinizde oturum açın. Oturumunuz zaten açıksa, açılan menüden istediğiniz aboneliği içeren hesabı seçin.
 
 ![Azure'da oturum açma](./media/tutorial-custom-container/add-an-account.png)
 
 ### <a name="configure-the-registry"></a>Kayıt defterini yapılandırma
 
-Yeni kapsayıcı kayıt defterini aşağıdaki tabloda bulunan değerleri kullanarak yapılandırın. Tamamladığınızda **Oluştur** ’a tıklayın.
+Yeni kapsayıcı kayıt defterini aşağıdaki tabloda bulunan değerleri kullanarak yapılandırın. Tamamladığınızda **Oluştur**’a tıklayın.
 
 | Ayar  | Önerilen değer | Daha fazla bilgi edinmek için |
 | ----------------- | ------------ | ----|
 |**DNS Ön Eki**| Oluşturulan kayıt defteri adını kullanın veya benzersiz bir adla değiştirin. |  |
-|**Kaynak Grubu**| **Yeni** 'ye tıklayın, **myResourceGroup** yazın ve **Tamam** 'a tıklayın. |  |
+|**Kaynak Grubu**| **Yeni**'ye tıklayın, **myResourceGroup** yazın ve **Tamam**'a tıklayın. |  |
 |**SKU**| Temel | [Fiyatlandırma katmanları](https://azure.microsoft.com/pricing/details/container-registry/)|
 |**Kayıt Defteri Konumu**| West Europe | |
 
@@ -137,17 +137,17 @@ Sol menüden **kaynak oluştur**  >  **Web**  >  **kapsayıcılar için Web App*
 
 ### <a name="configure-app-basics"></a>Uygulama temellerini yapılandırma
 
-**Temel bilgiler** sekmesinde, aşağıdaki tabloya göre ayarları yapılandırın ve ardından İleri ' ye tıklayın **: Docker** .
+**Temel bilgiler** sekmesinde, aşağıdaki tabloya göre ayarları yapılandırın ve ardından İleri ' ye tıklayın **: Docker**.
 
 | Ayar  | Önerilen değer | Daha fazla bilgi edinmek için |
 | ----------------- | ------------ | ----|
 |**Abonelik**| Doğru aboneliğin seçildiğinden emin olun. |  |
-|**Kaynak Grubu**| **Yeni oluştur** ' u seçin, **myresourcegroup** yazın ve **Tamam** ' a tıklayın. |  |
+|**Kaynak Grubu**| **Yeni oluştur**' u seçin, **myresourcegroup** yazın ve **Tamam**' a tıklayın. |  |
 |**Ad**| Benzersiz bir ad yazın. | Web uygulamasının URL'si `http://<app-name>.azurewebsites.net` şeklindedir; burada `<app-name>`, uygulamanızın adıdır. |
-|**Yayımla**| Docker kapsayıcısı | |
+|**Yayımlama**| Docker kapsayıcısı | |
 |**İşletim Sistemi**| Windows | |
 |**Bölge**| West Europe | |
-|**Windows Planı**| **Yeni oluştur** ' u seçin, **myappserviceplan** yazın ve **Tamam** ' a tıklayın. | |
+|**Windows Planı**| **Yeni oluştur**' u seçin, **myappserviceplan** yazın ve **Tamam**' a tıklayın. | |
 
 **Temel kavramlar** sekmesi şöyle görünmelidir:
 
@@ -155,7 +155,7 @@ Sol menüden **kaynak oluştur**  >  **Web**  >  **kapsayıcılar için Web App*
 
 ### <a name="configure-windows-container"></a>Windows kapsayıcısını yapılandırma
 
-**Docker** sekmesinde, aşağıdaki tabloda gösterildiği gibi özel Windows kapsayıcınızı yapılandırın ve **gözden geçir + oluştur** ' u seçin.
+**Docker** sekmesinde, aşağıdaki tabloda gösterildiği gibi özel Windows kapsayıcınızı yapılandırın ve **gözden geçir + oluştur**' u seçin.
 
 | Ayar  | Önerilen değer |
 | ----------------- | ------------ |
@@ -166,7 +166,7 @@ Sol menüden **kaynak oluştur**  >  **Web**  >  **kapsayıcılar için Web App*
 
 ### <a name="complete-app-creation"></a>Uygulama oluşturmayı tamamlama
 
-**Oluştur** 'a tıklayın ve Azure'un gereken kaynakları oluşturmasını bekleyin.
+**Oluştur**'a tıklayın ve Azure'un gereken kaynakları oluşturmasını bekleyin.
 
 ## <a name="browse-to-the-web-app"></a>Web uygulamasına göz atma
 
@@ -174,9 +174,9 @@ Azure işlemi tamamlandığında bir bildirim kutusu görüntülenir.
 
 ![Azure işleminin tamamlandığını gösterir.](media/tutorial-custom-container/portal-create-finished.png)
 
-1. **Kaynağa git** 'e tıklayın.
+1. **Kaynağa git**'e tıklayın.
 
-2. Uygulama sayfasında **URL** 'nin altındaki bağlantıya tıklayın.
+2. Uygulama sayfasında **URL**'nin altındaki bağlantıya tıklayın.
 
 Aşağıdaki sayfayla yeni bir tarayıcı sayfası açılır:
 
@@ -213,7 +213,7 @@ Akışı yapılan günlükler şuna benzer:
 
 Azure App Service, hem yerleşik görüntüleri hem de özel görüntüleri barındırmak için Docker kapsayıcı teknolojisini kullanır. Yerleşik görüntülerin bir listesini görmek için, [' az WebApp List-çalışma zamanları--Linux '](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az-webapp-list-runtimes)Azure CLI komutunu çalıştırın. Bu görüntüler gereksinimlerinizi karşılamadığı takdirde, özel bir görüntü oluşturup dağıtabilirsiniz.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Gereksinimlerinize uygun bir yerleşik görüntü yoksa özel bir görüntü oluşturun
@@ -228,31 +228,16 @@ Bu öğreticiyi tamamlamak, kapsayıcı kayıt defteri için Azure hesabınızda
 
 ## <a name="set-up-your-initial-environment"></a>İlk ortamınızı ayarlama
 
-* Etkin aboneliği olan bir Azure hesabına sahip olmanız gerekir. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-* Docker görüntülerini oluşturmak için kullandığınız [Docker](https://docs.docker.com/get-started/#setup)'ı yükleyebilirsiniz. Docker 'ı yüklemek için bilgisayarın yeniden başlatılması gerekebilir.
-* Azure <a href="/cli/azure/install-azure-cli" target="_blank">CLI</a> 2.0.80 veya üstünü yükleyerek Azure kaynaklarını temin etmek ve yapılandırmak için herhangi bir kabukta komut çalıştırırsınız.
+- Etkin aboneliği olan bir Azure hesabına sahip olmanız gerekir. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Docker görüntülerini oluşturmak için kullandığınız [Docker](https://docs.docker.com/get-started/#setup)'ı yükleyebilirsiniz. Docker 'ı yüklemek için bilgisayarın yeniden başlatılması gerekebilir.
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+- Bu öğretici, Azure CLı 'nin sürüm 2.0.80 veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
 
-Docker ve Azure CLı yükledikten sonra, bir Terminal penceresi açın ve Docker 'ın yüklü olduğunu doğrulayın:
+Docker 'ı yükledikten veya Azure Cloud Shell çalıştırdıktan sonra, bir Terminal penceresi açın ve Docker 'ın yüklü olduğunu doğrulayın:
 
 ```bash
 docker --version
 ```
-
-Ayrıca Azure CLı sürümünüzün 2.0.80 veya üzeri olduğunu doğrulayın:
-
-```azurecli
-az --version
-```
-
-Daha sonra CLı aracılığıyla Azure 'da oturum açın:
-
-```azurecli
-az login
-```
-
-`az login`Komut, kimlik bilgilerinizi toplamak için bir tarayıcı açar. Komut tamamlandığında, abonelikleriniz hakkında bilgi içeren JSON çıkışını gösterir.
-
-Oturum açtıktan sonra, aboneliğinizdeki kaynaklarla çalışmak için Azure CLı ile Azure komutlarını çalıştırabilirsiniz.
 
 ## <a name="clone-or-download-the-sample-app"></a>Örnek uygulamayı kopyalayın veya indirin
 
@@ -276,7 +261,7 @@ cd docker-django-webapp-linux
 
 ### <a name="download-from-github"></a>GitHub’dan indirin
 
-Git klonu kullanmak yerine, ' ı ziyaret edebilir [https://github.com/Azure-Samples/docker-django-webapp-linux](https://github.com/Azure-Samples/docker-django-webapp-linux) , **Kopyala** ' yı seçebilir ve **ZIP indir** ' i seçebilirsiniz. 
+Git klonu kullanmak yerine, ' ı ziyaret edebilir [https://github.com/Azure-Samples/docker-django-webapp-linux](https://github.com/Azure-Samples/docker-django-webapp-linux) , **Kopyala**' yı seçebilir ve **ZIP indir**' i seçebilirsiniz. 
 
 ZIP dosyasını *Docker-docgo-WebApp-Linux* adlı bir klasöre ayıklayın. 
 
@@ -320,7 +305,7 @@ ENTRYPOINT ["init.sh"]
 ## <a name="build-and-test-the-image-locally"></a>Görüntüyü yerel olarak derleyin ve test edin
 
 > [!NOTE]
-> Docker Hub [, IP başına anonim giriş sayısı ve ücretsiz Kullanıcı başına kimliği doğrulanmış giriş sayısı üzerinde kotalar içerir (bkz. **veri aktarımı** )](https://www.docker.com/pricing). Docker Hub 'dan çekmenize sınırlı olduğunu fark ederseniz, `docker login` oturum açmadıysanız deneyin.
+> Docker Hub [, IP başına anonim giriş sayısı ve ücretsiz Kullanıcı başına kimliği doğrulanmış giriş sayısı üzerinde kotalar içerir (bkz. **veri aktarımı**)](https://www.docker.com/pricing). Docker Hub 'dan çekmenize sınırlı olduğunu fark ederseniz, `docker login` oturum açmadıysanız deneyin.
 > 
 
 1. Görüntüyü derlemek için aşağıdaki komutu çalıştırın:
@@ -338,13 +323,11 @@ ENTRYPOINT ["init.sh"]
     Bu [`docker run`](https://docs.docker.com/engine/reference/commandline/run/) komut, ve `-p` ardından görüntünün adı ile birlikte gelen bağlantı noktasını belirtir. 
     
     > [!TIP]
-    > Windows üzerinde çalıştırıyorsanız ve hatayı görürseniz, *standard_init_linux. go: 211: exec Kullanıcı işlemi "böyle bir dosya veya dizin yok" hatası nedeniyle* , *INIT.sh* dosyası beklenen LF SONLARı yerine CR-LF satır sonlarını içeriyor. Bu hata, örnek depoyu kopyalamak için git kullandıysanız ancak parametreyi atlarsanız oluşur `--config core.autocrlf=input` . Bu durumda, depoyu '--config ' ' bağımsız değişkeniyle yeniden kopyalayın. Ayrıca, *init.sh* öğesini DÜZENLEDIYSENIZ ve CRLF sonları ile kaydettiyseniz hatayı görebilirsiniz. Bu durumda, dosyayı yalnızca LF sonları ile yeniden kaydedin.
+    > Windows üzerinde çalıştırıyorsanız ve hatayı görürseniz, *standard_init_linux. go: 211: exec Kullanıcı işlemi "böyle bir dosya veya dizin yok" hatası nedeniyle*, *INIT.sh* dosyası beklenen LF SONLARı yerine CR-LF satır sonlarını içeriyor. Bu hata, örnek depoyu kopyalamak için git kullandıysanız ancak parametreyi atlarsanız oluşur `--config core.autocrlf=input` . Bu durumda, depoyu '--config ' ' bağımsız değişkeniyle yeniden kopyalayın. Ayrıca, *init.sh* öğesini DÜZENLEDIYSENIZ ve CRLF sonları ile kaydettiyseniz hatayı görebilirsiniz. Bu durumda, dosyayı yalnızca LF sonları ile yeniden kaydedin.
 
 1. `http://localhost:8000`Web uygulamasının ve kapsayıcının düzgün çalıştığını doğrulamak için öğesine gidin.
 
     ![Web uygulamasını yerel olarak test etme](./media/app-service-linux-using-custom-docker-image/app-service-linux-browse-local.png)
-
-[!INCLUDE [Try Cloud Shell](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -573,7 +556,7 @@ SSH, kapsayıcı ile istemci arasında güvenli iletişime olanak tanır. Kapsay
 
 ### <a name="configure-the-container-for-ssh"></a>SSH için kapsayıcıyı yapılandırma
 
-Bu öğreticide kullanılan örnek uygulama, SSH sunucusunu yükleyecek ve ayrıca oturum açma kimlik bilgilerini ayarlayan *Dockerfile* 'da gerekli yapılandırmaya zaten sahiptir. Bu bölüm yalnızca bilgilendirme amaçlıdır. Kapsayıcıya bağlanmak için sonraki bölüme atlayın
+Bu öğreticide kullanılan örnek uygulama, SSH sunucusunu yükleyecek ve ayrıca oturum açma kimlik bilgilerini ayarlayan *Dockerfile*'da gerekli yapılandırmaya zaten sahiptir. Bu bölüm yalnızca bilgilendirme amaçlıdır. Kapsayıcıya bağlanmak için sonraki bölüme atlayın
 
 ```Dockerfile
 ENV SSH_PASSWD "root:Docker!"

@@ -4,12 +4,12 @@ description: Azure App Service işletim sistemi ve çalışma zamanlarını, uyg
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 31b2d39f5d0d125d2bf23ac72718d9b386b48923
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 8b52223aea0f0bdfecf58906ac192e893da3b47d
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833495"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558496"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure App Service işletim sistemi ve çalışma zamanı düzeltme eki uygulama
 
@@ -51,7 +51,7 @@ Desteklenen dil çalışma zamanlarının (ana, ikincil veya düzeltme ekinin) y
 
 ### <a name="new-patch-updates"></a>Yeni düzeltme eki güncelleştirmeleri
 
-.NET, PHP, Java SDK veya Tomcat/Jetty sürümüne yönelik düzeltme eki güncellemeleri, var olan yüklemenin yeni sürümle üzerine yazılarak otomatik olarak uygulanır. Node.js Patch güncelleştirmeleri, var olan sürümler (bir sonraki bölümde yer aldığı birincil ve ikincil sürümlere benzer) ile yan yana yüklenir. Yeni Python düzeltme eki sürümleri, yerleşik Python yüklemeleri ile yan yana [site uzantıları](https://azure.microsoft.com/blog/azure-web-sites-extensions/)üzerinden el ile yüklenebilir.
+.NET, PHP, Java SDK veya Tomcat sürümüne yönelik düzeltme eki güncelleştirmeleri, mevcut yüklemenin en son sürümü üzerine yazılarak otomatik olarak uygulanır. Node.js Patch güncelleştirmeleri, var olan sürümler (bir sonraki bölümde yer aldığı birincil ve ikincil sürümlere benzer) ile yan yana yüklenir. Yeni Python düzeltme eki sürümleri, yerleşik Python yüklemeleri ile yan yana [site uzantıları](https://azure.microsoft.com/blog/azure-web-sites-extensions/)üzerinden el ile yüklenebilir.
 
 ### <a name="new-major-and-minor-versions"></a>Yeni birincil ve ikincil sürümler
 

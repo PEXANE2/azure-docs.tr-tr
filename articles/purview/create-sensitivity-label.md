@@ -6,13 +6,13 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 11/22/2020
-ms.openlocfilehash: b286533da90565429f96c5701aaa72dab0fb21d0
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.date: 12/03/2020
+ms.openlocfilehash: 195ddfcc3c781c1866a7751f989c9460463edbb9
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/03/2020
-ms.locfileid: "96555529"
+ms.locfileid: "96558173"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Verilerinizi Azure purview 'da otomatik olarak etiketleme
 
@@ -36,15 +36,9 @@ Takip, Microsoft 365 olarak gizli bilgi türleri olarak da bilinen aynı sınıf
 > Sınıflandırmalar doğrudan eşleştirirken (sosyal güvenlik numarası bir **sosyal güvenlik numarası** sınıflandırmasına sahiptir), bir veya daha fazla sınıflandırma ve senaryo birlikte bulunduğunda duyarlık etiketleri uygulanır. 
 > 
 
-Azure purview içindeki duyarlılık etiketleri şu şekilde kullanılabilir:
+Azure purview içindeki duyarlılık etiketleri, dosyalara ve veritabanı sütunlarına otomatik olarak Etiketler uygulamak için kullanılabilir.
 
-- Etiketleri dosyalara ve veritabanı sütunlarına **otomatik olarak Uygula**
-
-- Verilerinize kimlerin erişebileceği ve erişeerişebilen **denetimi**
-
-- Etiketli verilerde şifreleme gibi **koruma ayarlarını zorunlu kıl**
-
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 - Microsoft 365 belgelerindeki [duyarlılık etiketleri hakkında bilgi edinin](/microsoft-365/compliance/sensitivity-labels)
 - [Oto etiketleme kuralları nelerdir?](#what-are-autolabeling-rules)
@@ -74,7 +68,7 @@ Duyarlılık etiketleri aşağıdaki veri türleri için Azure purview 'da deste
 
 Duyarlılık etiketleriniz yoksa, bunları oluşturmanız ve Azure purview için kullanılabilir hale getirmeniz gerekir. Mevcut duyarlılık etiketleri, Azure purview için kullanılabilir hale getirmek üzere de değiştirilebilir.
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 - [Lisanslama gereksinimleri](#licensing-requirements)
 - [Duyarlılık etiketlerini Azure purview 'a genişletme](#extending-sensitivity-labels-to-azure-purview)

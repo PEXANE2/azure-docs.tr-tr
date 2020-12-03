@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 90e3464ac9ddf1e839c3a731f79ac2c0771c37ea
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: a6aa4ad009d037e6ea0d1ade3cc9735351bd634a
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532715"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558870"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için 8x8 yapılandırma
 
-Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem 8x8 Configuration Manager hem de Azure Active Directory (Azure AD) içinde gerçekleştirmeniz gereken adımları açıklamaktadır. Yapılandırıldığında, Azure AD, Azure AD sağlama hizmetini kullanarak kullanıcıları ve grupları [8x8](https://www.8x8.com) ' e otomatik olarak sağlar ve hazırlar. Hizmetin işlevleri ve çalışma şekli hakkında daha fazla bilgi edinmek ve sık sorulan soruları incelemek için bkz. [Azure Active Directory ile SaaS uygulamalarına kullanıcı hazırlama ve kaldırma işlemlerini otomatik hale getirme](../app-provisioning/user-provisioning.md). 
+Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem 8x8 yönetici konsolunda hem de Azure Active Directory (Azure AD) gerçekleştirmeniz gereken adımları açıklamaktadır. Yapılandırıldığında, Azure AD, Azure AD sağlama hizmetini kullanarak kullanıcıları ve grupları [8x8](https://www.8x8.com) ' e otomatik olarak sağlar ve hazırlar. Hizmetin işlevleri ve çalışma şekli hakkında daha fazla bilgi edinmek ve sık sorulan soruları incelemek için bkz. [Azure Active Directory ile SaaS uygulamalarına kullanıcı hazırlama ve kaldırma işlemlerini otomatik hale getirme](../app-provisioning/user-provisioning.md). 
 
 ## <a name="capabilities-supported"></a>Desteklenen özellikler
 > [!div class="checklist"]
@@ -36,7 +36,7 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 * [Bir Azure AD kiracısı](../develop/quickstart-create-new-tenant.md) 
 * Azure AD'de hazırlama [iznine](../roles/permissions-reference.md) sahip bir kullanıcı hesabı (Uygulama Yöneticisi, Bulut Uygulaması Yöneticisi, Uygulama Sahibi veya Genel Yönetici).
 * Herhangi bir düzeyin bir 8x8 X serisi aboneliği.
-* [Configuration Manager](https://vo-cm.8x8.com)üzerinde yönetici iznine sahip bir 8x8 Kullanıcı hesabı.
+* Yönetici [konsolu](https://vo-cm.8x8.com)'nda yönetici iznine sahip bir 8x8 Kullanıcı hesabı.
 * [Azure AD Ile tek Sign-On](./8x8virtualoffice-tutorial.md) zaten yapılandırılmış.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Adım 1. Hazırlama dağıtımınızı planlama
@@ -48,7 +48,7 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
 Bu bölüm, Azure AD ile sağlamayı desteklemek için 8x8 ' i yapılandırma adımlarında size rehberlik eder.
 
-### <a name="to-configure-a-user-provisioning-access-token-in-8x8-configuration-manager"></a>8x8 ' de bir Kullanıcı sağlama erişim belirteci yapılandırmak için Configuration Manager:
+### <a name="to-configure-a-user-provisioning-access-token-in-8x8-admin-console"></a>8x8 yönetici konsolunda kullanıcı sağlama erişim belirteci yapılandırmak için:
 
 1. [Yönetici Konsolu](https://admin.8x8.com)'nda oturum açın. **Kimlik yönetimi**' ni seçin.
 
@@ -102,7 +102,7 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya Gru
 
     ![Otomatik seçeneği olarak adlandırılan sağlama modu açılan listesinin ekran görüntüsü.](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümünde Configuration Manager **8X8 URL** 'sini **kiracı URL**'sine kopyalayın. Configuration Manager olan **8x8 API belirtecini** **gizli belirtece** kopyalayın. Azure AD 'nin 8x8 ' e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, 8x8 hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünde, yönetim konsolundan **8X8 URL** 'sini **kiracı URL**'sine kopyalayın. **8x8 API belirtecini** Yönetici konsolundan **gizli belirtece** kopyalayın. Azure AD 'nin 8x8 ' e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, 8x8 hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
     ![Ekran görüntüsü, kiracı U R L ve gizli belirteç girebileceğiniz yönetici kimlik bilgileri iletişim kutusunu gösterir.](./media/8x8-provisioning-tutorial/provisioning.png)
 

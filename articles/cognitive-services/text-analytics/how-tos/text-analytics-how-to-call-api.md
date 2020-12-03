@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 11/19/2020
+ms.date: 12/02/2020
 ms.author: aahi
-ms.openlocfilehash: 90a4da2aadbbdf07d851e4407d2d417fc76d32af
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 5985c30973f703b897fa2eedc2be3b939d97900b
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512333"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559006"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Metin Analizi nasıl çağrılacağını REST API
 
@@ -52,9 +52,9 @@ Hangi özelliklerin zaman uyumsuz olarak kullanılabileceğini görmek için aş
 
 
 > [!NOTE]
-> Veya uç noktalarını kullanmak istiyorsanız, standart (S) [fiyatlandırma katmanını](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) kullanarak bir metin analizi kaynağına ihtiyacınız olacaktır `/analyze` `/health` .
+> * Veya uç noktalarını kullanmak istiyorsanız, standart (S) [fiyatlandırma katmanını](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) kullanarak bir metin analizi kaynağına ihtiyacınız olacaktır `/analyze` `/health` .
 
-1.  İlk olarak, [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) gidin ve henüz yoksa yeni bir metin analizi kaynağı oluşturun. Veya uç noktalarını kullanmak istiyorsanız, **Standart fiyatlandırma katmanını** seçin `/analyze` `/health` .
+1.  İlk olarak, [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) gidin ve henüz yoksa yeni bir metin analizi kaynağı oluşturun. Veya uç noktalarını kullanmak istiyorsanız, **Standart fiyatlandırma katmanını** seçin `/analyze` `/health` . `/analyze`Uç nokta [fiyatlandırma katmanınıza](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)dahildir.
 
 2.  Uç noktanız için kullanmak istediğiniz bölgeyi seçin.  Lütfen `/analyze` ve `/health` uç noktaların yalnızca şu bölgelerde kullanılabilir olduğunu unutmayın: Batı ABD 2, Doğu ABD 2, Orta ABD, Kuzey Avrupa ve Batı Avrupa.
 
@@ -89,7 +89,7 @@ Aşağıda, zaman uyumlu Metin Analizi uç noktaları için bir API isteği örn
 }
 ```
 
-#### <a name="analyze"></a>[Analiz](#tab/analyze)
+#### <a name="analyze"></a>[Çözümleme](#tab/analyze)
 
 > [!NOTE]
 > Metin Analizi istemci kitaplığının en son sürümü, istemci nesnesini kullanarak zaman uyumsuz analiz işlemlerini çağırmanızı sağlar. GitHub 'da örnekleri bulabilirsiniz:
@@ -204,7 +204,7 @@ Postman 'da (veya başka bir Web API test aracında) kullanmak istediğiniz öze
 | Adlandırılmış varlık tanıma-PII | POST | `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/pii` |
 | Adlandırılmış varlık tanıma-FI | POST |  `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/pii?domain=phi` |
 
-#### <a name="analyze"></a>[Analiz](#tab/analyze)
+#### <a name="analyze"></a>[Çözümleme](#tab/analyze)
 
 | Öne çıkan özelliği | İstek türü | Kaynak uç noktaları |
 |--|--|--|
@@ -272,7 +272,7 @@ Zaman uyumlu uç nokta yanıtları kullandığınız uç noktaya göre değişir
 + [Yaklaşım Analizi](text-analytics-how-to-sentiment-analysis.md#view-the-results)
 + [Varlık tanıma](text-analytics-how-to-entity-linking.md#view-results)
 
-# <a name="analyze"></a>[Analiz](#tab/analyze)
+# <a name="analyze"></a>[Çözümleme](#tab/analyze)
 
 Başarılı olursa, uç noktaya yönelik GET isteği `/analyze` atanan görevleri içeren bir nesne döndürür. Örneğin, `keyPhraseExtractionTasks`. Bu görevler, uygun Metin Analizi özelliğinden gelen yanıt nesnesini içerir. Daha fazla bilgi için aşağıdaki makalelere bakın.
 

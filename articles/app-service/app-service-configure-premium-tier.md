@@ -6,20 +6,20 @@ ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: e6b8c7d54cf24d810a1f32082d816c908966f63c
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 204e087908ff978880966332b4619935dc6f0458
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739689"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559125"
 ---
 # <a name="configure-premiumv3-tier-for-azure-app-service"></a>Azure App Service için PremiumV3 katmanını yapılandırma
 
 Yeni **PremiumV3** fiyatlandırma katmanı, daha hızlı IŞLEMCILER, SSD depolaması ve mevcut fiyatlandırma katmanlarının (çift **PremiumV2** katmanı) bellek-çekirdek oranını çok daha da sağlar. Performans avantajı sayesinde uygulamalarınızı daha az örnek üzerinde çalıştırarak tasarruf edebilirsiniz. Bu makalede, **PremiumV3** katmanında bir uygulama oluşturmayı veya bir uygulamayı **PremiumV3** katmanına ölçeklendirmeyi öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Bir uygulamayı **PremiumV3** 'e ölçeklendirmek Için, **PremiumV3** 'den daha düşük bir fiyatlandırma katmanında çalışan bir Azure App Service uygulamasına sahip olmanız ve uygulamanın PremiumV3 'yi destekleyen bir App Service dağıtımında çalışıyor olması gerekir.
+Bir uygulamayı **PremiumV3**'e ölçeklendirmek Için, **PremiumV3**'den daha düşük bir fiyatlandırma katmanında çalışan bir Azure App Service uygulamasına sahip olmanız ve uygulamanın PremiumV3 'yi destekleyen bir App Service dağıtımında çalışıyor olması gerekir.
 
 <a name="availability"></a>
 
@@ -42,14 +42,14 @@ az appservice list-locations --sku P1V3
 
 Bir App Service uygulamasının fiyatlandırma katmanı, üzerinde çalıştığı [App Service planında](overview-hosting-plans.md) tanımlanmıştır. App Service bir planı kendisi veya uygulama oluşturma kapsamında oluşturabilirsiniz.
 
-<a href="https://portal.azure.com" target="_blank">Azure portal</a>App Service planını yapılandırırken **fiyatlandırma katmanı** ' nı seçin. 
+<a href="https://portal.azure.com" target="_blank">Azure portal</a>App Service planını yapılandırırken **fiyatlandırma katmanı**' nı seçin. 
 
-**Üretim** ' ı seçin, ardından **P1V3** , **P2V3** veya **P3V3** öğesini seçin ve **Uygula** ' ya tıklayın.
+**Üretim**' ı seçin, ardından **P1V3**, **P2V3** veya **P3V3** öğesini seçin ve **Uygula**' ya tıklayın.
 
 ![Uygulamanız için önerilen fiyatlandırma katmanlarını gösteren ekran görüntüsü.](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 > [!IMPORTANT] 
-> **P1V3** , **P2V3** ve **P3V3** as seçeneklerini görmüyorsanız veya seçenekler gri ise, **PremiumV3** büyük olasılıkla App Service planını içeren temel App Service dağıtımında kullanılabilir değildir. Daha fazla ayrıntı için bkz. [Desteklenmeyen bir kaynak grubu ve bölge kombinasyonuna ölçeği artırma](#unsupported) .
+> **P1V3**, **P2V3** ve **P3V3** as seçeneklerini görmüyorsanız veya seçenekler gri ise, **PremiumV3** büyük olasılıkla App Service planını içeren temel App Service dağıtımında kullanılabilir değildir. Daha fazla ayrıntı için bkz. [Desteklenmeyen bir kaynak grubu ve bölge kombinasyonuna ölçeği artırma](#unsupported) .
 
 ## <a name="scale-up-an-existing-app-to-premiumv3-tier"></a>Mevcut bir uygulamayı PremiumV3 katmanına ölçeklendirme
 
@@ -63,7 +63,7 @@ App Service uygulaması sayfanızın sol gezinti bölmesinde **Ölçek yukarı (
 
 ![App Service planınızın nasıl ölçeklenebilmesini gösteren ekran görüntüsü.](media/app-service-configure-premium-tier/scale-up-tier-portal.png)
 
-**Üretim** ' ı seçin, ardından **P1V3** , **P2V3** veya **P3V3** öğesini seçin ve **Uygula** ' ya tıklayın.
+**Üretim**' ı seçin, ardından **P1V3**, **P2V3** veya **P3V3** öğesini seçin ve **Uygula**' ya tıklayın.
 
 ![Uygulamanız için önerilen fiyatlandırma katmanlarını gösteren ekran görüntüsü.](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
@@ -79,7 +79,7 @@ Temel App Service dağıtımı PremiumV3 ' i desteklemiyorsa bazı App Service p
 
 ## <a name="scale-up-from-an-unsupported-resource-group-and-region-combination"></a>Desteklenmeyen bir kaynak grubu ve bölge birleşiminden ölçeği büyütme
 
-Uygulamanız **PremiumV3** ' nin kullanılamadığı bir App Service dağıtımında çalışıyorsa veya uygulamanız Şu anda **PremiumV3** ' yi desteklemeyen bir bölgede çalışıyorsa, **PremiumV3** 'in avantajlarından yararlanmak için uygulamanızı yeniden dağıtmanız gerekir.  İki seçeneğiniz vardır:
+Uygulamanız **PremiumV3** ' nin kullanılamadığı bir App Service dağıtımında çalışıyorsa veya uygulamanız Şu anda **PremiumV3**' yi desteklemeyen bir bölgede çalışıyorsa, **PremiumV3**'in avantajlarından yararlanmak için uygulamanızı yeniden dağıtmanız gerekir.  İki seçeneğiniz vardır:
 
 - Yeni bir kaynak grubunda ve yeni bir App Service planına sahip bir uygulama oluşturun. App Service planını oluştururken bir **PremiumV3** katmanını seçin. Bu adım, App Service planının **PremiumV3** destekleyen bir dağıtım birimine dağıtılmasını sağlar. Ardından, uygulama kodunuzu yeni oluşturulan uygulamaya yeniden dağıtın. Maliyetleri kaydetmek için App Service planını daha düşük bir katmana ölçeklendirseniz bile, dağıtım birimi onu desteklediğinden, her zaman **PremiumV3** 'e geri dönebilirsiniz.
 - Uygulamanız zaten mevcut bir **Premium** katmanda çalıştırılıyorsa, uygulamanızı tüm uygulama ayarları, bağlantı dizeleri ve dağıtım yapılandırmasıyla **PremiumV3** kullanan yeni bir App Service planına kopyalayabilirsiniz.
@@ -98,7 +98,7 @@ Preview Premium kapsayıcı SKU 'SU kullanan bir uygulamanız varsa ve yeni Prem
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Aşağıdaki komut _P1V2_ içinde bir App Service planı oluşturur. Bunu Cloud Shell çalıştırabilirsiniz. Seçenekleri `--sku` P1V3, _P2V3_ ve _P3V3_ ' dir.
+Aşağıdaki komut _P1V3_ içinde bir App Service planı oluşturur. Bunu Cloud Shell çalıştırabilirsiniz. Seçenekleri `--sku` P1V3, _P2V3_ ve _P3V3_' dir.
 
 ```azurecli-interactive
 az appservice plan create \
@@ -111,7 +111,7 @@ az appservice plan create \
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Aşağıdaki komut _P1V3_ içinde bir App Service planı oluşturur. Seçenekleri `-WorkerSize` _küçük_ , _Orta_ ve _büyük_ .
+Aşağıdaki komut _P1V3_ içinde bir App Service planı oluşturur. Seçenekleri `-WorkerSize` _küçük_, _Orta_ ve _büyük_.
 
 ```powershell
 New-AzAppServicePlan -ResourceGroupName <resource_group_name> `

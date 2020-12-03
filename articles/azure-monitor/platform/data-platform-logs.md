@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/22/2020
 ms.author: bwren
-ms.openlocfilehash: dd4586128bf2ce657352c0a1d4608637ecf9dba9
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 69fda41249ced8518e430af8305c0cb10822b214
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531233"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559074"
 ---
 # <a name="azure-monitor-logs-overview"></a>Azure İzleyici Günlükleri'ne genel bakış
 Azure Izleyici günlükleri, [izlenen kaynaklardan](../monitor-reference.md)gelen günlük ve performans verilerini toplayan ve düzenleyen bir Azure izleyici özelliğidir. Azure hizmetlerinden gelen [Platform günlükleri](platform-logs-overview.md) , [sanal makine aracılarından](agents-overview.md)gelen günlük ve performans verileri ve [uygulamalardan](../app/app-insights-overview.md) kullanım ve performans verileri gibi farklı kaynaklardaki veriler tek bir çalışma alanında birleştirilebilir ve bu sayede milyonlarca kaydı hızlı bir şekilde analiz etme yeteneğine sahip olan gelişmiş bir sorgu dili kullanılarak analiz edilebilir. Yalnızca belirli bir kayıt kümesini alan basit bir sorgu gerçekleştirebilir veya izleme verilerinizde kritik desenleri belirlemek için gelişmiş veri analizi gerçekleştirebilirsiniz. Log Analytics kullanarak günlük sorgularıyla ve sonuçlarıyla etkileşimli olarak çalışın, sorunları önceden bilgilendirmeye yönelik bir uyarı kurallarında kullanın veya sonuçları bir çalışma kitabı veya panoda görselleştirin.
@@ -25,7 +25,7 @@ Aşağıdaki tabloda Azure Izleyici 'de günlükleri kullanmanın farklı yollar
 
 |  |  |
 |:---|:---|
-| **Analiz** | [Günlük sorgularını](../log-query/log-query-overview.md) yazmak ve güçlü bir analiz altyapısı kullanarak günlük verilerini etkileşimli olarak çözümlemek için Azure Portal [Log Analytics](../log-query/log-analytics-tutorial.md) kullanın |
+| **Çözümleme** | [Günlük sorgularını](../log-query/log-query-overview.md) yazmak ve güçlü bir analiz altyapısı kullanarak günlük verilerini etkileşimli olarak çözümlemek için Azure Portal [Log Analytics](../log-query/log-analytics-tutorial.md) kullanın |
 | **Uyarı** | Sorgu sonuçları belirli bir sonuçla eşleşiyorsa bildirim gönderen veya [otomatik eylem](action-groups.md) alan bir [günlük uyarı kuralı](alerts-log.md) yapılandırın. |
 | **Görselleştirme** | Bir [Azure panosuna](../../azure-portal/azure-portal-dashboards.md)tablo veya grafik olarak işlenen sorgu sonuçlarını sabitleme.<br>Etkileşimli bir raporda birden fazla veri kümesiyle birleştirilecek bir [çalışma kitabı](./workbooks-overview.md) oluşturun. <br>Farklı görselleştirmeler kullanmak ve Azure dışındaki kullanıcılarla paylaşmak için bir sorgunun sonuçlarını [Power BI](powerbi.md) dışarı aktarın.<br>Bir sorgunun sonuçlarını [Grafana](grafana-plugin.md) olarak dışa aktarın ve diğer veri kaynaklarıyla birleştirin.|
 | **İçgörüler** | Belirli uygulamalar ve hizmetler için özelleştirilmiş bir izleme deneyimi sağlayan [öngörüleri](../monitor-reference.md#insights-and-core-solutions) destekleme.  |
@@ -42,7 +42,7 @@ Bir Log Analytics çalışma alanı oluşturduktan sonra, verilerini göndermek 
 
 
 ## <a name="log-analytics-workspaces"></a>Log Analytics çalışma alanları
-Azure Izleyici günlükleri tarafından toplanan veriler, bir veya daha fazla [Log Analytics çalışma](./design-logs-deployment.md)alanında depolanır. Çalışma alanı verilerin coğrafi konumunu, hangi kullanıcıların verilere erişebileceğini tanımlayan erişim haklarını ve fiyatlandırma katmanı ve veri saklama gibi yapılandırma ayarlarını tanımlar.  
+Azure Izleyici günlükleri tarafından toplanan veriler bir veya daha fazla [Log Analytics çalışma](./design-logs-deployment.md)alanında depolanır. Çalışma alanı verilerin coğrafi konumunu, hangi kullanıcıların verilere erişebileceğini tanımlayan erişim haklarını ve fiyatlandırma katmanı ve veri saklama gibi yapılandırma ayarlarını tanımlar.  
 
 Azure Izleyici günlüklerini kullanmak için en az bir çalışma alanı oluşturmanız gerekir. Tek bir çalışma alanı tüm izleme verileriniz için yeterli olabilir veya gereksinimlerinize bağlı olarak birden çok çalışma alanı oluşturmayı tercih edebilir. Örneğin, üretim verileriniz ve test için bir çalışma alanınız olabilir. 
 

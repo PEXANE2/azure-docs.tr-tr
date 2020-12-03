@@ -8,19 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 11/19/2020
+ms.date: 12/02/2020
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 8743e765a050bfc4a2ba93a1b3e0344a960edb76
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 157bef31b375db54f294284ca0a5d97cd7035b17
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966896"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558972"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Metin Analizi API’sindeki yenilikler
 
 Metin Analizi API'si, sürekli olarak güncelleştirilir. Son geliştirmelerin güncel kalması için, bu makalede yeni yayınlar ve özellikler hakkında bilgi verilmektedir.
+
+## <a name="december-2020"></a>Aralık 2020
+
+* Metin Analizi API'si için [güncelleştirilmiş fiyatlandırma](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) ayrıntıları
 
 ## <a name="november-2020"></a>Kasım 2020
 
@@ -240,4 +244,4 @@ Varlık bağlama, Ingilizce ve Ispanyolca 'yi destekler. NER dil desteği varlı
 * [Yaklaşım Analizi](how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Dil algılama](how-tos/text-analytics-how-to-language-detection.md)
 * [Varlık tanıma](how-tos/text-analytics-how-to-entity-linking.md)
-* [Anahtar tümceciği ayıklama](how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Anahtar ifade ayıklama](how-tos/text-analytics-how-to-keyword-extraction.md)

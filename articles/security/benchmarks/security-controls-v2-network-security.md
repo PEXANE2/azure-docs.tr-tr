@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: b6aaad9cce330d755fb69f8be48737f9a8f6c4a7
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 38ab16fbadee245810a4486170dd54922c0c38f9
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96487754"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558921"
 ---
 # <a name="security-control-v2-network-security"></a>Güvenlik denetimi v2: ağ güvenliği
 
@@ -126,7 +126,11 @@ Dağıtılmış hizmet reddi (DDoS) saldırıları, uygulamaya özgü saldırıl
 
 **Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-Yok
+- [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
+
+- [Duruş yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
+
+- [Uygulama güvenliği ve DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 ## <a name="ns-5-deploy-intrusion-detectionintrusion-prevention-systems-idsips"></a>NS-5: izinsiz giriş algılama/yetkisiz erişim önleme sistemleri (KIMLIKLER/IP 'ler) dağıtma
 

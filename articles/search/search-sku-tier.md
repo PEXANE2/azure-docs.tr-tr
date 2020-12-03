@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 1b23d6c7952e60ee693bb481fec04d358654632c
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 3f2cbd7afe206866ae4d5b7c0925c8f3be9ab785
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530502"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558819"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Azure Bilişsel Arama için bir fiyatlandırma katmanı seçin
 
@@ -21,7 +21,7 @@ ms.locfileid: "96530502"
 
 + Dizinlerin ve diğer nesnelerin miktarı (en fazla limit)
 + Bölümlerin boyutu ve hızı (fiziksel depolama)
-+ Faturalandırılabilir ücret, kullanımda olan bölüm ve çoğaltmaların sayısıyla aynı zamanda bir sabit maliyet
++ Faturalanabilir ücret, sabit bir aylık maliyet, ancak aynı zamanda bölümler veya çoğaltmalar eklerseniz artımlı maliyet
 
 Ayrıca, bazı [Premium özellikler](#premium-features) katman gereksinimleriyle birlikte gelir.
 

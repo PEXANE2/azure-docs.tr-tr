@@ -1,20 +1,20 @@
 ---
-title: Azure Otomasyonu 'nda kimlik bilgilerini yönetme
+title: Azure Otomasyonu'nda kimlik bilgilerini yönetme
 description: Bu makalede, kimlik bilgileri varlıklarının nasıl oluşturulduğu ve bir runbook veya DSC yapılandırmasında nasıl kullanılacağı açıklanır.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 09/10/2020
+ms.date: 12/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4fbcf74c2c70d3dffd86728132d58430472271b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec35653f67c46a7032e834020d8e2ca4ab3125c8
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90004673"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558853"
 ---
-# <a name="manage-credentials-in-azure-automation"></a>Azure Otomasyonu 'nda kimlik bilgilerini yönetme
+# <a name="manage-credentials-in-azure-automation"></a>Azure Otomasyonu'nda kimlik bilgilerini yönetme
 
-Otomasyon kimlik bilgileri varlığı, Kullanıcı adı ve parola gibi güvenlik kimlik bilgilerini içeren bir nesne barındırır. Runbook 'lar ve DSC yapılandırması, kimlik doğrulaması için bir [PSCredential](/dotnet/api/system.management.automation.pscredential) nesnesini kabul eden cmdlet 'leri kullanır. Alternatif olarak, `PSCredential` kimlik doğrulaması gerektiren bir uygulama veya hizmete sağlamak üzere nesnenin Kullanıcı adını ve parolasını ayıklayabilirler. 
+Otomasyon kimlik bilgileri varlığı, Kullanıcı adı ve parola gibi güvenlik kimlik bilgilerini içeren bir nesne barındırır. Runbook 'lar ve DSC yapılandırması, kimlik doğrulaması için bir [PSCredential](/dotnet/api/system.management.automation.pscredential) nesnesini kabul eden cmdlet 'leri kullanır. Alternatif olarak, `PSCredential` kimlik doğrulaması gerektiren bir uygulama veya hizmete sağlamak üzere nesnenin Kullanıcı adını ve parolasını ayıklayabilirler.
 
 >[!NOTE]
 >Azure Otomasyonu 'nda güvenli varlıklar, kimlik bilgileri, sertifikalar, bağlantılar ve şifrelenmiş değişkenler içerir. Bu varlıklar, her Otomasyon hesabı için oluşturulan benzersiz bir anahtar kullanılarak Azure Otomasyonu 'nda şifrelenir ve depolanır. Azure Otomasyonu, anahtarı sistem tarafından yönetilen Key Vault depolar. Otomasyon, güvenli bir varlık depolamadan önce anahtarı Key Vault 'den yükler ve ardından varlığı şifrelemek için kullanır. 
@@ -44,7 +44,7 @@ Aşağıdaki tablodaki cmdlet 'ler, runbook 'larınızda ve DSC yapılandırmala
 
 `PSCredential`Kodunuzda nesneleri almak için modülünü içeri aktarmanız gerekir `Orchestrator.AssetManagement.Cmdlets` . Daha fazla bilgi için bkz. [Azure Automation 'da modülleri yönetme](modules.md).
 
-```azurepowershell
+```powershell
 Import-Module Orchestrator.AssetManagement.Cmdlets -ErrorAction SilentlyContinue
 ```
 
@@ -68,16 +68,16 @@ Azure portal kullanarak veya Windows PowerShell kullanarak yeni bir kimlik bilgi
 
 ### <a name="create-a-new-credential-asset-with-the-azure-portal"></a>Azure portal yeni bir kimlik bilgisi varlığı oluşturun
 
-1. Otomasyon hesabınızdan, sol taraftaki bölmede, **paylaşılan kaynaklar**altında **kimlik bilgileri** ' ni seçin.
-1. **Kimlik bilgileri** sayfasında **kimlik bilgisi ekle**' yi seçin.
-2. Yeni kimlik bilgisi bölmesinde, adlandırma standartlarınızı izleyerek uygun bir kimlik bilgisi adı girin.
-3. **Kullanıcı adı** ALANıNA erişim Kimliğinizi yazın.
-4. Her iki parola alanı için de gizli erişim anahtarınızı girin.
+1. Otomasyon hesabınızdan, sol taraftaki bölmede, **paylaşılan kaynaklar** altında **kimlik bilgileri** ' ni seçin.
+2. **Kimlik bilgileri** sayfasında **kimlik bilgisi ekle**' yi seçin.
+3. Yeni kimlik bilgisi bölmesinde, adlandırma standartlarınızı izleyerek uygun bir kimlik bilgisi adı girin.
+4. **Kullanıcı adı** ALANıNA erişim Kimliğinizi yazın.
+5. Her iki parola alanı için de gizli erişim anahtarınızı girin.
 
     ![Yeni kimlik bilgisi oluştur](../media/credentials/credential-create.png)
 
-5. Multi-Factor Authentication kutusu işaretliyse, işaretini kaldırın.
-6. Yeni kimlik bilgisi varlığını kaydetmek için **Oluştur** ' a tıklayın.
+6. Multi-Factor Authentication kutusu işaretliyse, işaretini kaldırın.
+7. Yeni kimlik bilgisi varlığını kaydetmek için **Oluştur** ' a tıklayın.
 
 > [!NOTE]
 > Azure Otomasyonu, çok faktörlü kimlik doğrulaması kullanan kullanıcı hesaplarını desteklemez.
@@ -106,8 +106,7 @@ Alternatif olarak, bir parolanın güvenli olmayan bir sürümünü temsil eden 
 
 Aşağıdaki örnek, bir runbook 'ta PowerShell kimlik bilgisinin nasıl kullanılacağını göstermektedir. Kimlik bilgisini alır ve Kullanıcı adını ve parolasını değişkenlere atar.
 
-
-```azurepowershell
+```powershell
 $myCredential = Get-AutomationPSCredential -Name 'MyCredential'
 $userName = $myCredential.UserName
 $securePassword = $myCredential.Password
@@ -116,14 +115,13 @@ $password = $myCredential.GetNetworkCredential().Password
 
 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount)ile Azure 'da kimlik doğrulaması yapmak için kimlik bilgisi de kullanabilirsiniz. Çoğu durumda, bir [Farklı Çalıştır hesabı](../manage-runas-account.md) kullanmalı ve [Get-azautomationconnection](../automation-connections.md)ile bağlantıyı almanız gerekir.
 
-
-```azurepowershell
+```powershell
 $myCred = Get-AutomationPSCredential -Name 'MyCredential'
 $userName = $myCred.UserName
 $securePassword = $myCred.Password
 $password = $myCred.GetNetworkCredential().Password
 
-$myPsCred = New-Object System.Management.Automation.PSCredential ($userName,$password)
+$myPsCred = New-Object System.Management.Automation.PSCredential ($userName,$securePassword)
 
 Connect-AzAccount -Credential $myPsCred
 ```
@@ -145,7 +143,6 @@ Azure Otomasyonu 'ndaki DSC yapılandırması, kullanarak kimlik bilgisi varlık
 ## <a name="use-credentials-in-a-python-2-runbook"></a>Python 2 runbook 'unda kimlik bilgilerini kullanma
 
 Aşağıdaki örnekte, Python 2 runbook 'larında kimlik bilgilerine erişme örneği gösterilmektedir.
-
 
 ```python
 import automationassets

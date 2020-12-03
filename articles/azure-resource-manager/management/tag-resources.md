@@ -2,14 +2,14 @@
 title: Mantıksal kuruluş için kaynakları, kaynak grupları ve abonelikleri etiketleme
 description: Azure kaynaklarını faturalandırma ve yönetmeye göre düzenlemek için etiketlerin nasıl uygulanacağını gösterir.
 ms.topic: conceptual
-ms.date: 11/20/2020
+ms.date: 12/03/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9e9ef96a712e5ac2ba483170fb8ef9c89115b4f8
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e47d3acf15ce5e4f5cb70444419b76beb21ae98b
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95972577"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558156"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Azure kaynaklarınızı ve yönetim hiyerarşinizi düzenlemek için etiketleri kullanma
 
@@ -26,9 +26,11 @@ Etiketleme stratejisi uygulama hakkında öneriler için bkz. [Kaynak adlandırm
 
 ## <a name="required-access"></a>Gerekli erişim
 
-Bir kaynağa etiket uygulamak için, **Microsoft. resources/Tags** kaynak türüne yazma erişiminizin olması gerekir. [Etiket katılımcısı](../../role-based-access-control/built-in-roles.md#tag-contributor) rolü, varlığa erişimi olmayan bir varlığa Etiketler uygulamanıza olanak sağlar. Şu anda, etiket katılımcısı rolü, Portal üzerinden kaynaklara veya kaynak gruplarına Etiketler uygulayamaz. Portal üzerinden aboneliğe Etiketler uygulayabilir. PowerShell ve REST API aracılığıyla tüm etiket işlemlerini destekler.  
+Kaynakları etiketleyerek gereken erişimi almanın iki yolu vardır.
 
-[Katkıda](../../role-based-access-control/built-in-roles.md#contributor) bulunan rolü, herhangi bir varlığa Etiketler uygulamak için gerekli erişimi de verir. Etiketleri yalnızca bir kaynak türüne uygulamak için bu kaynak için katkıda bulunan rolünü kullanın. Örneğin, sanal makinelere Etiketler uygulamak için [sanal makine katılımcısı](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)'nı kullanın.
+- **Microsoft. resources/Tags** kaynak türüne yazma erişiminizin olması olabilir. Bu erişim, kaynağın kendisinin erişimi olmasa bile tüm kaynakları etiketlemenizi sağlar. [Etiket katılımcısı](../../role-based-access-control/built-in-roles.md#tag-contributor) rolü bu erişime izin verir. Şu anda, etiket katılımcısı rolü, Portal üzerinden kaynaklara veya kaynak gruplarına Etiketler uygulayamaz. Portal üzerinden aboneliğe Etiketler uygulayabilir. PowerShell ve REST API aracılığıyla tüm etiket işlemlerini destekler.  
+
+- Kaynağın kendisi için yazma erişiminizin olması gerekir. [Katkıda](../../role-based-access-control/built-in-roles.md#contributor) bulunan rolü, herhangi bir varlığa Etiketler uygulamak için gerekli erişimi verir. Etiketleri yalnızca bir kaynak türüne uygulamak için bu kaynak için katkıda bulunan rolünü kullanın. Örneğin, sanal makinelere Etiketler uygulamak için [sanal makine katılımcısı](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)'nı kullanın.
 
 ## <a name="powershell"></a>PowerShell
 
@@ -236,7 +238,7 @@ $subscription = (Get-AzSubscription -SubscriptionName "Example Subscription").Id
 Remove-AzTag -ResourceId "/subscriptions/$subscription"
 ```
 
-## <a name="azure-cli"></a>Azure CLI’si
+## <a name="azure-cli"></a>Azure CLI
 
 ### <a name="apply-tags"></a>Etiketleri Uygula
 
@@ -277,7 +279,7 @@ az tag create --resource-id $resource --tags Team=Compliance Environment=Product
 },
 ```
 
-Zaten etiketlere sahip olan bir kaynağa etiket eklemek için **az Tag Update** kullanın. **--Operation** parametresini **merge** olarak ayarlayın.
+Zaten etiketlere sahip olan bir kaynağa etiket eklemek için kullanın `az tag update` . `--operation`Parametresini olarak ayarlayın `Merge` .
 
 ```azurecli-interactive
 az tag update --resource-id $resource --operation Merge --tags Dept=Finance Status=Normal
@@ -313,7 +315,7 @@ az tag update --resource-id $resource --operation Merge --tags Status=Green
 },
 ```
 
-**Değiştirilecek** **--Operation** parametresini ayarladığınızda, varolan Etiketler Yeni Etiketler kümesiyle değiştirilir.
+`--operation`Parametresini öğesine ayarladığınızda `Replace` , varolan Etiketler Yeni Etiketler kümesiyle değiştirilmiştir.
 
 ```azurecli-interactive
 az tag update --resource-id $resource --operation Replace --tags Project=ECommerce CostCenter=00123 Team=Web
@@ -406,7 +408,7 @@ az group list --tag Dept=Finance
 
 ### <a name="remove-tags"></a>Etiketleri Kaldır
 
-Belirli etiketleri kaldırmak için **az Tag Update** ve set **--Operation** öğesini kullanarak **silin**. Silmek istediğiniz etiketleri geçirin.
+Belirli etiketleri kaldırmak için öğesini kullanın `az tag update` ve `--operation` olarak ayarlayın `Delete` . Silmek istediğiniz etiketleri geçirin.
 
 ```azurecli-interactive
 az tag update --resource-id $resource --operation Delete --tags Project=ECommerce Team=Web

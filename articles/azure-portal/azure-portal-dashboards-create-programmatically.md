@@ -3,21 +3,21 @@ title: Program aracılığıyla Azure panoları oluşturma
 description: Program aracılığıyla Azure panoları oluşturmak için Azure portal bir panoyu şablon olarak kullanın. JSON başvurusunu içerir.
 services: azure-portal
 documentationcenter: ''
-author: adamabmsft
+author: mgblythe
 manager: mtillman
 ms.service: azure-portal
 ms.devlang: NA
 ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 03/23/2020
+ms.date: 12/4/2020
 ms.author: mblythe
-ms.openlocfilehash: 7f52bd94a0286ea50d09ab7c77dce339e8a3ebf3
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 7e6819b01af3fc9357417a838fefce7f2c73dcce
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089375"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558225"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Program aracılığıyla Azure panoları oluşturma
 
@@ -658,3 +658,49 @@ Bu örnek, bir panoyu kendisine dağıtır, ancak şablon dili birden fazla kayn
 ```
 
 Bir panoyu dağıtmak için parametreli şablon kullanmanın bir örneğini gördüğünüze göre, [Azure Resource Manager REST API 'leri](/rest/api/), [Azure CLI](/cli/azure)veya [Azure PowerShell komutlarını](/powershell/azure/get-started-azureps)kullanarak şablonu dağıtmayı deneyebilirsiniz.
+
+## <a name="programmatically-create-a-dashboard-by-using-azure-cli"></a>Azure CLı kullanarak program aracılığıyla pano oluşturma
+
+Ortamınızı Azure CLı için hazırlayın.
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+- Bu örnekler aşağıdaki panoyu kullanır: [ üzerindeportal-dashboard-template-testvm.js](https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/azure-portal/portal-dashboard-template-testvm.json). Açılı parantez içindeki içeriği değerlerinizle değiştirin.
+
+Bir pano oluşturmak için [az Portal Dashboard Create](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_create) komutunu çalıştırın:
+
+```azurecli
+az portal dashboard create --resource-group myResourceGroup --name 'Simple VM Dashboard' \
+   --input-path portal-dashboard-template-testvm.json --location centralus
+```
+
+[Az Portal Dashboard Update](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_update) komutunu kullanarak bir panoyu güncelleştirebilirsiniz:
+
+```azurecli
+az portal dashboard update --resource-group myResourceGroup --name 'Simple VM Dashboard' \
+--input-path portal-dashboard-template-testvm.json --location centralus
+```
+
+[Az Portal panosu göster](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_show) komutunu çalıştırarak bir panonun ayrıntılarına bakın:
+
+```azurecli
+az portal dashboard show --resource-group myResourceGroup --name 'Simple VM Dashboard'
+```
+
+Geçerli abonelik için tüm panoları görmek için [az Portal Dashboard List](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_list)kullanın:
+
+```azurecli
+az portal dashboard list
+```
+
+Ayrıca, bir kaynak grubu için tüm panoları görebilirsiniz:
+
+```azurecli
+az portal dashboard list --resource-group myResourceGroup
+```
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Masaüstleri hakkında daha fazla bilgi için bkz. [Azure Portal ayarlarını ve tercihlerini yönetme](set-preferences.md).
+
+Panolar için Azure CLı desteği hakkında daha fazla bilgi için, bkz. [az Portal Dashboard](/cli/azure/ext/portal/portal/dashboard).

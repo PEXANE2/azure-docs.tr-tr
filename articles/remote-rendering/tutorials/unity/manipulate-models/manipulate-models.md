@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 003203ef1a25102f9fd3c50001603dbd5d33ce5a
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 48c835070329b5cb0892b10760d37708e46bfa1d
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565979"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559142"
 ---
 # <a name="tutorial-manipulating-models"></a>Öğretici: modelleri düzenleme
 
@@ -24,7 +24,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Uzamsal sorgularla raycast
 > * Uzaktan işlenen nesneler için basit animasyonlar ekleme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bu öğretici [öğretici: arabirimler ve özel modeller](../custom-models/custom-models.md)üzerinde oluşturulur.
 
@@ -109,7 +109,7 @@ Bir modelin [**sınırları, tüm**](https://docs.unity3d.com/Manual/class-BoxCo
     ```
 
     > [!NOTE]
-    > Visual Studio 'da bir hata görürseniz *, ' X ' üzerinde talep ediliyor özelliği C# 6 ' da kullanılamaz. Lütfen dil sürümü 7,0 veya üzerini kullanın* , bu hata güvenle yoksayılabilir. Bu, Unity 'nin çözümü ve proje üretimi ile ilgilidir.
+    > Visual Studio 'da bir hata görürseniz *, ' X ' üzerinde talep ediliyor özelliği C# 6 ' da kullanılamaz. Lütfen dil sürümü 7,0 veya üzerini kullanın*, bu hata güvenle yoksayılabilir. Bu, Unity 'nin çözümü ve proje üretimi ile ilgilidir.
 
     Bu betik,  **Baseremoterenderedmodel** uygulayan komut dosyasıyla aynı gameobject öğesine eklenmelidir. Bu durumda, **Remoterenderedmodel** anlamına gelir. Önceki betiklerle benzer şekilde, bu ilk kod tüm durum değişikliklerini, olayları ve uzak sınırlara ilişkin verileri işleyecektir.
 
@@ -167,7 +167,7 @@ Artık Unity nesnesinde doğru sınırlarla yapılandırılmış yerel bir **Box
 
 ## <a name="move-rotate-and-scale"></a>Taşıma, döndürme ve ölçekleme  
 
-Uzaktan işlenen nesneleri taşıma, döndürme ve ölçekleme diğer Unity nesneleriyle aynı şekilde çalışacaktır. Bu yöntemde bulunan **Remoterenderingcoordinator** , `LateUpdate` `Update` Şu anda etkin olan oturumu çağırıyor. `Update`Eşitlenecek yerel model varlığı, uzak karşılıklarıyla birlikte dönüşümler olan bir parçasıdır. Uzaktan işlenmiş bir modeli taşımak, döndürmek veya ölçeklendirmek için, yalnızca uzak modeli temsil eden GameObject dönüşümünü taşımanız, döndürmeniz veya ölçeklendirmeniz gerekir. Burada, bir ana oyun nesnesinin, bu kendisine ekli olan **Remoterenderedmodel** betiğinin dönüşümünü değiştirebiliyoruz.
+Uzaktan işlenen nesneleri taşıma, döndürme ve ölçekleme diğer Unity nesneleriyle aynı şekilde çalışacaktır. Bu yöntemde bulunan **Remoterenderingcoordinator**, `LateUpdate` `Update` Şu anda etkin olan oturumu çağırıyor. `Update`Eşitlenecek yerel model varlığı, uzak karşılıklarıyla birlikte dönüşümler olan bir parçasıdır. Uzaktan işlenmiş bir modeli taşımak, döndürmek veya ölçeklendirmek için, yalnızca uzak modeli temsil eden GameObject dönüşümünü taşımanız, döndürmeniz veya ölçeklendirmeniz gerekir. Burada, bir ana oyun nesnesinin, bu kendisine ekli olan **Remoterenderedmodel** betiğinin dönüşümünü değiştirebiliyoruz.
 
 Bu öğretici, nesne etkileşimi için MRTK kullanıyor. Bir nesnenin taşınması, döndürülmesi ve ölçeklendirilmesi için MRTK 'a özgü uygulamanın çoğu Bu öğreticinin kapsamı dışındadır. **Model araçları** menüsünde **appmenu** içinde önceden yapılandırılmış bir model görünüm denetleyicisi vardır.
 
@@ -176,7 +176,7 @@ Bu öğretici, nesne etkileşimi için MRTK kullanıyor. Bir nesnenin taşınmas
 1. Sahneyi oynatmak ve **Appmenu** Içindeki **model araçları** menüsünü açmak için Unity 'nin Play düğmesine basın.
 ![Denetleyiciyi görüntüle](./media/model-with-view-controller.png)
 
-**Appmenu** , modeliyle bağlama için bir görünüm denetleyicisi uygulayan bir alt menü **modeli araçlarına** sahiptir. GameObject bir **Remotesınır** bileşeni içerdiğinde, görünüm denetleyicisi bir **BoxCollider** ile nesne etrafında bir sınırlayıcı kutu oluşturan bir mrtk bileşeni olan bir [**BoundingBox**](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_BoundingBox.html) bileşeni ekler. Bir Nesneel etkileşiminden sorumlu olan [**Objectlıör**](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/api/Microsoft.MixedReality.Toolkit.Experimental.UI.ObjectManipulator.html?q=ObjectManipulator). Bu komut dosyaları, uzaktan işlenmiş modeli taşımanızı, döndürmemizi ve ölçeklendirmemize olanak sağlayacak.
+**Appmenu** , modeliyle bağlama için bir görünüm denetleyicisi uygulayan bir alt menü **modeli araçlarına** sahiptir. GameObject bir **Remotesınır** bileşeni içerdiğinde, görünüm denetleyicisi bir **BoxCollider** ile nesne etrafında bir sınırlayıcı kutu oluşturan bir mrtk bileşeni olan bir [**BoundingBox**](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_BoundingBox.html) bileşeni ekler. Bir Nesneel etkileşiminden sorumlu olan [**Objectlıör**](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/api/Microsoft.MixedReality.Toolkit.UI.ObjectManipulator.html). Bu komut dosyaları, uzaktan işlenmiş modeli taşımanızı, döndürmemizi ve ölçeklendirmemize olanak sağlayacak.
 
 1. Farenizi oyun paneline taşıyın ve odaklanmak için buraya tıklayın.
 1. [Mrtk 'nin el benzetimini](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/InputSimulation/InputSimulationService.html#hand-simulation)kullanarak sol SHIFT tuşuna basın ve basılı tutun.

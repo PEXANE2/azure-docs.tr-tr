@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ebadaf51a7dfbb286dac0bbdb0c3c8437ae2356f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5793e2958edce0a4c97660a75d0ecefa914c12d2
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89022233"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559091"
 ---
 # <a name="tutorial-interfaces-and-custom-models"></a>Öğretici: arabirimler ve özel modeller
 
@@ -30,25 +30,25 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="get-started-with-the-mixed-reality-toolkit-mrtk"></a>Karma Gerçeklik araç seti 'ni kullanmaya başlama (MRTK)
 
-Karma Gerçeklik araç seti (MRTK), karma gerçeklik deneyimleri oluşturmaya yönelik platformlar arası bir araç setidir. Kendi etkileşim ve görselleştirme özellikleri için MRTK 2,3 kullanacağız.
+Karma Gerçeklik araç seti (MRTK), karma gerçeklik deneyimleri oluşturmaya yönelik platformlar arası bir araç setidir. Kendi etkileşim ve görselleştirme özellikleri için MRTK 2.5.1 kullanacağız.
 
-MRTK eklemek için, [mrtk ile çalışmaya](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/Documentation/GettingStartedWithTheMRTK.html)başlama bölümünde listelenen [gerekli adımları](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/Documentation/GettingStartedWithTheMRTK.html#required) izleyin.
+MRTK eklemek için [mrtk yükleme kılavuzunda](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/Documentation/Installation.html)listelenen [gerekli adımları](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/Documentation/Installation.html#required) izleyin.
 
 Bu adımlar şunlardır:
- - [En son MRTK Unity paketlerini al](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/Documentation/GettingStartedWithTheMRTK.html#get-the-latest-mrtk-unity-packages)
-     - "En son" diyor olsa da bu sürüm 2,3 ' dir.
-     - Bu öğreticide yalnızca *Foundation* paketini kullanıyoruz. *Uzantılar*, *Araçlar*ve *örnekler* paketleri gerekli değildir.
- - [MRTK paketlerini Unity projenize aktarın](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/Documentation/GettingStartedWithTheMRTK.html#import-mrtk-packages-into-your-unity-project)
- - [Unity projenizi hedef platforma değiştirme](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/Documentation/GettingStartedWithTheMRTK.html#switch-your-unity-project-to-the-target-platform)
+ - [En son MRTK Unity paketlerini al](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/Documentation/Installation.html#1-get-the-latest-mrtk-unity-packages)
+     - "En son" diyor olsa da, lütfen MRTK yayın sayfasından 2.5.1 sürümünü kullanın.
+     - Bu öğreticide yalnızca *Foundation* paketini kullanıyoruz. *Uzantılar*, *Araçlar* ve *örnekler* paketleri gerekli değildir.
+ - [MRTK paketlerini Unity projenize aktarın](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/Documentation/Installation.html#2-import-mrtk-packages-into-your-unity-project)
+ - [Unity projenizi hedef platforma değiştirme](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/Documentation/Installation.html#3-switch-your-unity-project-to-the-target-platform)
      - Bu adımı ilk bölümde yapmış olmanız gerekir, ancak şimdi de iki kez denetlenecek zaman iyi bir yoldur!
- - [Yeni bir sahneye veya yeni projeye MRTK ekleyin](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/Documentation/GettingStartedWithTheMRTK.html#add-mrtk-to-a-new-scene-or-new-project)
+ - [Yeni bir sahneye veya yeni projeye MRTK ekleyin](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/Documentation/Installation.html#4-add-and-configure-mrtk-with-a-new-scene)
      - MRTK 'yi yeni bir sahneye ekleyebilir ve düzenleyicinizi ve model nesnelerinizi/betikleri yeniden ekleyebilir ya da karma gerçeklik araç seti 'ni kullanarak var olan sahneye MRTK ekleyebilirsiniz *-> sahneye ekleyin ve* menü komutunu yapılandırın.
 
 ## <a name="import-assets-used-by-this-tutorial"></a>Bu öğretici tarafından kullanılan varlıkları içeri aktar
 
 Bu bölümde başlayarak, kapsanan malzemenin büyük bir bölümü için basit bir [model-görünüm-denetleyici modeli](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) uygulayacağız. *Modelin model* parçası Azure uzaktan işleme özgü kodu ve Azure uzaktan işleme ile ilgili durum yönetimi ' dir. Düzenin *Görünüm* ve *Denetleyici* parçaları mrtk varlıkları ve bazı özel betikler kullanılarak uygulanır. Bu öğreticide, burada uygulanan *Görünüm denetleyicisi* olmadan *modeli* kullanmak mümkündür. Bu ayrım, bu öğreticide bulunan kodu, tasarım deseninin *Görünüm denetleyicisi* bölümünün üzerinde bulunacağı kendi uygulamanıza kolayca tümleştirmenize olanak sağlar.
 
-MRTK 'nin tanıtılmasıyla birlikte, etkileşimleri ve görsel geri bildirimleri desteklemek için artık projeye eklenebilecek birçok komut dosyası, ön ek ve varlık vardır. **Öğretici varlıkları**olarak anılan bu varlıklar, ' \Unity\TutorialAssets\TutorialAssets.unitypackage ' Içindeki [Azure uzaktan işleme GitHub](https://github.com/Azure/azure-remote-rendering) ' da yer alan bir [Unity varlık paketine](https://docs.unity3d.com/Manual/AssetPackages.html)paketlenmiştir.
+MRTK 'nin tanıtılmasıyla birlikte, etkileşimleri ve görsel geri bildirimleri desteklemek için artık projeye eklenebilecek birçok komut dosyası, ön ek ve varlık vardır. **Öğretici varlıkları** olarak anılan bu varlıklar, ' \Unity\TutorialAssets\TutorialAssets.unitypackage ' Içindeki [Azure uzaktan işleme GitHub](https://github.com/Azure/azure-remote-rendering) ' da yer alan bir [Unity varlık paketine](https://docs.unity3d.com/Manual/AssetPackages.html)paketlenmiştir.
 
 1. Yüklemeyi bilinen bir konuma ayıklayın, git deposu [Azure uzaktan oluşturma](https://github.com/Azure/azure-remote-rendering)'yı kopyalayın veya indirin.
 1. Unity projenizde *varlıklar-> paketi Içeri aktar-> özel paket*' i seçin.
@@ -59,7 +59,7 @@ MRTK 'nin tanıtılmasıyla birlikte, etkileşimleri ve görsel geri bildirimler
 MRTK ve öğretici varlıkları projeye dahil edildikten sonra, MRTK profilini öğretici için daha uygun bir şekilde geçeceğiz.
 
 1. Sahne hiyerarşisinde **Mixedrealitytoolkit** oyunobject ' i seçin.
-1. Denetçisinde, **Mixedrealitytoolkit** bileşeni altında yapılandırma profilini *ARRMixedRealityToolkitConfigurationProfile*olarak değiştirin.
+1. Denetçisinde, **Mixedrealitytoolkit** bileşeni altında yapılandırma profilini *ARRMixedRealityToolkitConfigurationProfile* olarak değiştirin.
 1. Değişikliklerinizi kaydetmek için *CTRL + S* tuşlarına basın.
 
 Bu işlem, birincil olarak MRTK, varsayılan HoloLens 2 profilleriyle yapılandırılır. Belirtilen profiller aşağıdaki yollarla önceden yapılandırılmıştır:
@@ -75,7 +75,7 @@ Artık, geçerli oturum durumunu görsel geri bildirimde bulunmak için, sahneye
 
 1. *Varlıklar/Remoterenderingöğreticisi/Prefabs/appmenu* Içindeki **appmenu** prefab konumunu bulun
 1. **Appmenu** prefab ' i sahneye sürükleyin.
-1. Büyük olasılıkla bu, sahneye *metin ağı Pro* varlıkları dahil ettiğimiz Için **tmp İçeri Aktarıcı**için bir iletişim kutusu görürsünüz. **Tmp Essentials 'ı Içeri aktarmak**için istemleri izleyin. Ardından içeri aktarma iletişim kutusunu kapatın, örnekler ve ek özellikler gerekli değildir.
+1. Büyük olasılıkla bu, sahneye *metin ağı Pro* varlıkları dahil ettiğimiz Için **tmp İçeri Aktarıcı** için bir iletişim kutusu görürsünüz. **Tmp Essentials 'ı Içeri aktarmak** için istemleri izleyin. Ardından içeri aktarma iletişim kutusunu kapatın, örnekler ve ek özellikler gerekli değildir.
 1. **Appmenu** otomatik olarak yedeklenecek ve bir oturuma bağlanmaya yönelik kalıcı olarak, daha önce yerleştirilmiş olan atlamayı kaldırabilmemiz için yapılandırılır. **Remoterenderingcoordinator** oyunobject üzerinde, daha önce uyguladığımız yetkilendirme Için, **Yetkilendirme isteğinde bulunan üzerinde** '-' düğmesine basarak atlayın.
  ![Atlamayı kaldırın ](./media/remove-bypass-event.png) .
 1. Unity düzenleyicisinde **oynat** ' a basarak görünüm denetleyicisini test edin.
@@ -90,9 +90,9 @@ Artık, geçerli oturum durumunu görsel geri bildirimde bulunmak için, sahneye
 
 Şimdi, durumu izlemek, olaylara yanıt vermek, olayları tetikleme ve yapılandırma için kullanılan yeni bir komut dosyası olan **Remoterenderedmodel** uygulayacağız. Temelde, **Remoterenderedmodel** , içindeki model verilerinin uzak yolunu depolar `modelPath` . Bu,, tanımladığı modeli otomatik olarak yüklemek veya kaldırmak gerekip gerekmediğini görmek için **Remoterenderingcoordinator** 'daki durum değişikliklerini dinler. Bu kendisine iliştirilmiş **Remoterenderedmodel** Içeren gameobject, uzak içerik için yerel üst olur.
 
-**Remoterenderedmodel** betiğinin **öğretici varlıklarından**dahil olan **baseremoterenderedmodel**uyguladığından emin olun. Bu, uzak model görünüm denetleyicisinin betiğe bağlanmasına izin verir.
+**Remoterenderedmodel** betiğinin **öğretici varlıklarından** dahil olan **baseremoterenderedmodel** uyguladığından emin olun. Bu, uzak model görünüm denetleyicisinin betiğe bağlanmasına izin verir.
 
-1. **Remoterenderedmodel** adlı yeni bir betiği, **Remoterenderingcoordinator**ile aynı klasörde oluşturun. Tüm içeriği şu kodla değiştirin:
+1. **Remoterenderedmodel** adlı yeni bir betiği, **Remoterenderingcoordinator** ile aynı klasörde oluşturun. Tüm içeriği şu kodla değiştirin:
 
     ```csharp
     // Copyright (c) Microsoft Corporation. All rights reserved.
@@ -259,12 +259,12 @@ En temel koşullarda, **Remoterenderedmodel** , bir modeli yüklemek için gerek
 
 Test modelini yeniden yükleyerek yeni betiği test edelim. Betiği içerecek bir oyun nesnesi oluşturacağız ve test modelinin üst öğesi olması gerekir.
 
-1. Sahnede yeni bir boş oyun nesnesi oluşturun ve **Testmodel**olarak adlandırın.
+1. Sahnede yeni bir boş oyun nesnesi oluşturun ve **Testmodel** olarak adlandırın.
 1. *Remoterenderedmodel* betiğini **testmodel**' e ekleyin.
 ![RemoteRenderedModel bileşeni ekleme](./media/add-remote-rendered-model-script.png)
 1. `Model Display Name`Ve öğesini `Model Path` sırasıyla "*testmodel*" ve "*Builtin://Engine*" ile doldurur.
 ![Model ayrıntılarını belirtin](./media/add-model-script.png)
-1. **X = 0, y = 0, z = 3**konumundaki **testmodel** nesnesini kameranın önüne konumlandırın.
+1. **X = 0, y = 0, z = 3** konumundaki **testmodel** nesnesini kameranın önüne konumlandırın.
 ![Konum nesnesi](./media/test-model-position.png)
 1. **Automaticallyload** 'un açık olduğundan emin olun.
 1. Uygulamayı test etmek için Unity düzenleyicisinde **oynat** ' a basın.

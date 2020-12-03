@@ -4,12 +4,12 @@ description: Azure App Service bir özel kapsayıcıyı yapılandırmayı öğre
 ms.topic: article
 ms.date: 09/22/2020
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 9f71efbf7cc606efd598880e90ade3a549402245
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2aece0550d7b78ac4312e71b2671de4a64e4b86b
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787066"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96557935"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>Azure App Service için özel kapsayıcıyı yapılandırma
 
@@ -139,7 +139,17 @@ Dosyaları yeniden başlatmalar arasında kalıcı hale getirmek ve örnekleri a
 
 Kalıcı depolama devre dışı bırakıldığında, dizine yazma işlemleri `C:\home` kalıcı olmaz. [Docker ana bilgisayar günlükleri ve kapsayıcı günlükleri](#access-diagnostic-logs) , kapsayıcıya eklenmemiş, varsayılan kalıcı bir paylaşılan depolama alanına kaydedilir. Kalıcı depolama etkinleştirildiğinde, dizine yapılan tüm yazma işlemleri `C:\home` kalıcı hale getirilir ve genişleme uygulamasının tüm örnekleri tarafından erişilebilir ve günlük olarak erişilebiliyor `C:\home\LogFiles` .
 
-Varsayılan olarak, kalıcı depolama *devre dışıdır* ve ayar uygulama ayarları 'nda gösterilmez. Etkinleştirmek için `WEBSITES_ENABLE_APP_SERVICE_STORAGE` [Cloud Shell](https://shell.azure.com)aracılığıyla uygulama ayarını ayarlayın. Bash 'de:
+::: zone-end
+
+::: zone pivot="container-linux"
+
+Dosyaları yeniden başlatmalar arasında kalıcı hale getirmek ve örnekleri arasında paylaşmak için uygulamanızın dosya sistemindeki */Home* dizinini kullanabilirsiniz. `/home`Uygulamanızda, kapsayıcı uygulamanızın kalıcı depolamaya erişmesini sağlamak için verilmiştir.
+
+Kalıcı depolama devre dışı bırakıldığında, dizine yazma işlemleri, `/home` uygulama yeniden başlatmaları veya birden çok örnek arasında kalıcı olmaz. Tek özel durum `/home/LogFiles` , Docker ve kapsayıcı günlüklerini depolamak için kullanılan dizindir. Kalıcı depolama etkinleştirildiğinde, dizine yapılan tüm yazmaları `/home` kalıcı hale getirilir ve genişleme uygulamasının tüm örnekleri tarafından erişilebilir.
+
+::: zone-end
+
+Varsayılan olarak, kalıcı depolama devre dışıdır ve ayar uygulama ayarları 'nda gösterilmez. Etkinleştirmek için `WEBSITES_ENABLE_APP_SERVICE_STORAGE` [Cloud Shell](https://shell.azure.com)aracılığıyla uygulama ayarını ayarlayın. Bash 'de:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=true
@@ -150,28 +160,6 @@ PowerShell'de:
 ```azurepowershell-interactive
 Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITES_ENABLE_APP_SERVICE_STORAGE"=true}
 ```
-
-::: zone-end
-
-::: zone pivot="container-linux"
-
-Dosyaları yeniden başlatmalar arasında kalıcı hale getirmek ve örnekleri arasında paylaşmak için uygulamanızın dosya sistemindeki */Home* dizinini kullanabilirsiniz. `/home`Uygulamanızda, kapsayıcı uygulamanızın kalıcı depolamaya erişmesini sağlamak için verilmiştir.
-
-Kalıcı depolama devre dışı bırakıldığında, dizine yazma işlemleri, `/home` uygulama yeniden başlatmaları veya birden çok örnek arasında kalıcı olmaz. Tek özel durum `/home/LogFiles` , Docker ve kapsayıcı günlüklerini depolamak için kullanılan dizindir. Kalıcı depolama etkinleştirildiğinde, dizine yapılan tüm yazmaları `/home` kalıcı hale getirilir ve genişleme uygulamasının tüm örnekleri tarafından erişilebilir.
-
-Varsayılan olarak, kalıcı depolama *etkindir* ve ayar uygulama ayarları 'nda gösterilmez. Devre dışı bırakmak için `WEBSITES_ENABLE_APP_SERVICE_STORAGE` [Cloud Shell](https://shell.azure.com)aracılığıyla uygulama ayarını ayarlayın. Bash 'de:
-
-```azurecli-interactive
-az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=false
-```
-
-PowerShell'de:
-
-```azurepowershell-interactive
-Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITES_ENABLE_APP_SERVICE_STORAGE"=false}
-```
-
-::: zone-end
 
 > [!NOTE]
 > Ayrıca, [kendi kalıcı depolama alanınızı da yapılandırabilirsiniz](configure-connect-to-azure-storage.md).
@@ -212,7 +200,7 @@ Docker günlüklerine erişmenin birkaç yolu vardır:
 
 ### <a name="in-azure-portal"></a>Azure portal
 
-Docker günlükleri, uygulamanızdaki **kapsayıcı ayarları** sayfasında portalda görüntülenir. Günlükler kesilir, ancak **İndir** ' i tıklayarak tüm günlükleri indirebilirsiniz. 
+Docker günlükleri, uygulamanızdaki **kapsayıcı ayarları** sayfasında portalda görüntülenir. Günlükler kesilir, ancak **İndir**' i tıklayarak tüm günlükleri indirebilirsiniz. 
 
 ### <a name="from-the-kudu-console"></a>Kudu konsolundan
 
@@ -365,7 +353,7 @@ az webapp config appsettings set --resource-group <group-name> --name <app-name>
 
 *Docker-Compose. yıml* dosyanızda, `volumes` seçeneğini ile eşleyin `${WEBAPP_STORAGE_HOME}` . 
 
-`WEBAPP_STORAGE_HOME`, App Service içinde bulunan ve uygulamanız için kalıcı depolamayla eşlenmiş olan bir ortam değişkenidir. Örneğin:
+`WEBAPP_STORAGE_HOME`, App Service içinde bulunan ve uygulamanız için kalıcı depolamayla eşlenmiş olan bir ortam değişkenidir. Örnek:
 
 ```yaml
 wordpress:

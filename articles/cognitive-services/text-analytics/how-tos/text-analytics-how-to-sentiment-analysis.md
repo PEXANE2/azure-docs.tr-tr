@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 11/11/2020
+ms.date: 12/02/2020
 ms.author: aahi
-ms.openlocfilehash: 2c592a959dfb9d4e93f97488a9ac1b1f6683c23e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0437704709e863cdbc62321c8a4b79015564e362
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968280"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558768"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>Nasıl yapılır: yaklaşım Analizi ve Görüşleme madenciliği
 
-Metin Analizi API'si Yaklaşım Analizi özelliği pozitif ve olumsuz yaklaşımı tespit etmek için iki yol sağlar. Bir Yaklaşım Analizi isteği gönderirseniz, API, tümce ve belge düzeyindeki yaklaşım etiketlerini ("negatif", "nötr" ve "pozitif") ve güvenirlik puanlarını döndürür. Ayrıca, metinde (ürünlerin veya hizmetlerin öznitelikleri gibi) konuyla ilgili ayrıntılı bilgiler sağlayan Yaklaşım Analizi uç noktası kullanarak bir istek araştırma isteği gönderebilirsiniz.
+Metin Analizi API'si Yaklaşım Analizi özelliği pozitif ve olumsuz yaklaşımı tespit etmek için iki yol sağlar. Bir Yaklaşım Analizi isteği gönderirseniz, API, tümce ve belge düzeyindeki yaklaşım etiketlerini ("negatif", "nötr" ve "pozitif") ve güvenirlik puanlarını döndürür. Ayrıca, metinde (ürünlerin veya hizmetlerin öznitelikleri gibi) konuyla ilgili ayrıntılı bilgiler sağlayan Yaklaşım Analizi uç noktası kullanarak bir istek araştırma isteği gönderebilirsiniz. 
 
 API tarafından kullanılan AI modelleri hizmet tarafından sağlanır, yalnızca analiz için içerik göndermeniz gerekir.
 
@@ -51,13 +51,14 @@ Güvenirlik puanları 1 ile 0 arasındadır. 1 ' e yakın puan, etiketin sınıf
 
 ## <a name="opinion-mining"></a>Görüşün madenciliği
 
-Fikrinizi araştırma, 3,1-Preview. 1 ' den başlayarak Yaklaşım Analizi bir özelliktir. Doğal dil Işlemede (NLP) en boy tabanlı Yaklaşım Analizi olarak da bilinen bu özellik, metinle ilgili, özelliklerle (ürünlerin veya hizmetlerin öznitelikleri gibi) ilgili daha ayrıntılı bilgiler sağlar.
+Fikrinizi araştırma, 3,1-Preview. 1 ' den başlayarak Yaklaşım Analizi bir özelliktir. Doğal dil Işlemede (NLP) en boy tabanlı Yaklaşım Analizi olarak da bilinen bu özellik, metinle ilgili, özelliklerle (ürünlerin veya hizmetlerin öznitelikleri gibi) ilgili daha ayrıntılı bilgiler sağlar. 
 
 Örneğin, bir müşteri bir otel hakkında "Oda harika, ancak personelin kullanımı çok iyiydi" gibi bir otel hakkında geri bildirim bırakırsa, görüşmelerin araştırma metni ve bunlarla ilişkili ek ve yaklaşım gibi konuları bulur. Yaklaşım Analizi yalnızca negatif bir yaklaşım rapor edebilir.
 
 :::image type="content" source="../media/how-tos/opinion-mining.png" alt-text="Fikrinizi araştırma örneği diyagramı" lightbox="../media/how-tos/opinion-mining.png":::
 
-Sonuçlarınızda dikkatli araştırma elde etmek için, `opinionMining=true` bayrağı bir yaklaşım Analizi isteğine dahil etmeniz gerekir. Fikrinizi araştırma sonuçları, yaklaşım Analizi yanıtına dahil edilir.
+Sonuçlarınızda dikkatli araştırma elde etmek için, `opinionMining=true` bayrağı bir yaklaşım Analizi isteğine dahil etmeniz gerekir. Fikrinizi araştırma sonuçları, yaklaşım Analizi yanıtına dahil edilir. Fikrinizi araştırma bir Yaklaşım Analizi uzantısıdır ve geçerli [fiyatlandırma katmanınıza](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)dahil edilmiştir.
+
 
 ## <a name="sending-a-rest-api-request"></a>REST API isteği gönderiliyor 
 

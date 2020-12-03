@@ -3,12 +3,12 @@ title: Sepet kapsayıcısı ile TLS 'yi etkinleştirme
 description: Sepet kapsayıcısında NGINX 'i çalıştırarak Azure Container Instances çalıştıran bir kapsayıcı grubu için SSL veya TLS uç noktası oluşturma
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: f7f5d8e8136f4357067888f5a39fa0c3635122d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6587a84e7cbe655c509f74e9e39e93010e7058be
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86169859"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558088"
 ---
 # <a name="enable-a-tls-endpoint-in-a-sidecar-container"></a>Bir sepet kapsayıcısında TLS uç noktasını etkinleştirme
 
@@ -22,9 +22,9 @@ Bu örnekte, kapsayıcı grubu yalnızca NGINX için 443 numaralı bağlantı no
 
 Bir kapsayıcı grubunda TLS 'yi etkinleştirmeye yönelik diğer yaklaşımlara yönelik [sonraki adımlara](#next-steps) bakın.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Bu makaleyi tamamlayabilmeniz için Azure Cloud Shell veya yerel bir Azure CLı yüklemesi kullanabilirsiniz. Yerel olarak kullanmak isterseniz, sürüm 2.0.55 veya üzeri önerilir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
+- Bu makale, Azure CLı 'nin sürüm 2.0.55 veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
 
 ## <a name="create-a-self-signed-certificate"></a>Otomatik olarak imzalanan sertifika oluşturma
 
@@ -40,7 +40,7 @@ openssl req -new -newkey rsa:2048 -nodes -keyout ssl.key -out ssl.csr
 
 Kimlik bilgilerini eklemek için istemleri izleyin. Ortak ad için sertifikayla ilişkili ana bilgisayar adını girin. Parola istendiğinde, parola eklemeyi atlamak için yazmadan ENTER tuşuna basın.
 
-Sertifika isteğinden otomatik olarak imzalanan sertifika (. CRT dosyası) oluşturmak için aşağıdaki komutu çalıştırın. Örneğin:
+Sertifika isteğinden otomatik olarak imzalanan sertifika (. CRT dosyası) oluşturmak için aşağıdaki komutu çalıştırın. Örnek:
 
 ```console
 openssl x509 -req -days 365 -in ssl.csr -signkey ssl.key -out ssl.crt

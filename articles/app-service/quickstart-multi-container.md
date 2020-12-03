@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: c67d4dbb68048d273b1f9acd83a8460447e5abe4
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2920aad07ac54a19962f552debb8cfa809e17294
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748913"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558360"
 ---
 # <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Docker Compose yapılandırma kullanarak çok Kapsayıcılı (Önizleme) uygulama oluşturma
 
@@ -21,13 +21,13 @@ ms.locfileid: "92748913"
 
 [Kapsayıcılar için Web App](overview.md#app-service-on-linux), Docker görüntülerini esnek bir şekilde kullanmanızı sağlar. Bu hızlı başlangıçta, bir Docker Compose yapılandırması kullanılarak [Cloud Shell](../cloud-shell/overview.md) kapsayıcılar için Web App için çok kapsayıcılı bir uygulamanın (Önizleme) nasıl dağıtılacağı gösterilmektedir.
 
-Bu hızlı başlangıcı Cloud Shell'de tamamlayacaksınız ama bu komutları [Azure CLI](/cli/azure/install-azure-cli) (2.0.32 veya üzeri) ile yerel olarak da çalıştırabilirsiniz. 
-
 ![Kapsayıcılar için Web App üzerinde örnek çok kapsayıcılı uygulama][1]
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+
+Bu makale, Azure CLı 'nin sürüm 2.0.32 veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
 
 ## <a name="download-the-sample"></a>Örneği indirme
 
@@ -129,7 +129,7 @@ Dağıtılan uygulamaya göz atmak için (`http://<app_name>.azurewebsites.net`)
 
 ![Kapsayıcılar için Web App üzerinde örnek çok kapsayıcılı uygulama][1]
 
-**Tebrikler** , kapsayıcılar için Web App içinde çok kapsayıcılı bir uygulama oluşturdunuz.
+**Tebrikler**, kapsayıcılar için Web App içinde çok kapsayıcılı bir uygulama oluşturdunuz.
 
 [!INCLUDE [Clean-up section](../../includes/cli-script-clean-up.md)]
 

@@ -4,12 +4,12 @@ description: Bu öğreticide, aynı kayıt defterinde bir temel görüntü günc
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 32b4dbe2563731664030dbc32c2b570ccc3e1d12
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 342f7fc37edb3a1623b72c57e8766b1a484d0e8d
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030654"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559159"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Öğretici: Azure Container Registry 'de temel görüntü güncelleştirildiği zaman kapsayıcı görüntüsü derlemelerini otomatikleştirin 
 
@@ -32,10 +32,10 @@ Bu öğreticide:
 
 Bu öğreticide, ortamınızı zaten yapılandırdığınız ve serideki ilk iki öğreticideki adımları tamamladığınız varsayılmaktadır:
 
-* Azure kapsayıcı kayıt defteri oluşturma
-* Örnek deponun çatalını oluşturma
-* Örnek depoyu kopyalama
-* GitHub kişisel erişim belirteci oluşturma
+- Azure kapsayıcı kayıt defteri oluşturma
+- Örnek deponun çatalını oluşturma
+- Örnek depoyu kopyalama
+- GitHub kişisel erişim belirteci oluşturma
 
 Daha önce yapmadıysanız, devam etmeden önce aşağıdaki öğreticilerini doldurun:
 
@@ -44,6 +44,9 @@ Daha önce yapmadıysanız, devam etmeden önce aşağıdaki öğreticilerini do
 [Azure Container Registry Görevleri ile kapsayıcı görüntüsü derlemelerini otomatik hale getirme](container-registry-tutorial-build-task.md)
 
 ### <a name="configure-the-environment"></a>Ortamı yapılandırma
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+- Bu makale, Azure CLı 'nin sürüm 2.0.46 veya üstünü gerektirir. Azure Cloud Shell kullanılıyorsa, en son sürüm zaten yüklüdür.
 
 Bu kabuk ortam değişkenlerini ortamınıza uygun değerlerle doldurun. Bu adımın yapılması kesinlikle zorunlu değildir ancak bu öğreticideki çok satırlı Azure CLI komutlarını yürütmeyi biraz daha kolaylaştırır. Bu ortam değişkenlerini doldurmazsanız, her değeri örnek komutlarda göründüğü her yerde el ile değiştirmelisiniz.
 
