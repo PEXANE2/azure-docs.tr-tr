@@ -4,15 +4,15 @@ description: Bu makalede, Azure Güvenlik Duvarı 'nı Azure PowerShell kullanar
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.date: 11/12/2020
+ms.date: 12/02/2020
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 18a7da6402d7835be8dbad0551973a262ab335c8
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: ca4e313d4836764009feccf5acfaefe48b01b55e
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660245"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531771"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>Azure PowerShell kullanarak Azure Güvenlik duvarını dağıtma ve yapılandırma
 
@@ -65,7 +65,7 @@ New-AzResourceGroup -Name Test-FW-RG -Location "East US"
 
 ### <a name="create-a-virtual-network-and-azure-bastion-host"></a>Sanal ağ ve Azure savunma Konağı oluşturma
 
-Bu sanal ağın dört alt ağı vardır:
+Bu sanal ağın üç alt ağı vardır:
 
 > [!NOTE]
 > AzureFirewallSubnet alt ağının boyutu/26 ' dır. Alt ağ boyutu hakkında daha fazla bilgi için bkz. [Azure Güvenlik DUVARı SSS](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).

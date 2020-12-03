@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 11/05/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperfq2
-ms.openlocfilehash: ca8a36584c09d850ed1daab8cba301b244f76526
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a9bf03fd59e6088ce1c1b09a41b2bf55d1f45455
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447028"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532967"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning kaynakları ve iş akışları için kimlik doğrulamasını ayarlama
 
@@ -27,7 +27,7 @@ Azure Machine Learning çalışma alanınıza nasıl kimlik doğrulaması ayarla
 
 * __Hizmet sorumlusu__: Azure Active Directory ' de bir hizmet sorumlusu hesabı oluşturur ve bir belirteç almak veya bir belirteci almak için kullanın. Hizmet sorumlusu, Kullanıcı etkileşimi gerektirmeden hizmette _kimlik doğrulaması yapmak için otomatik bir işlem_ gerektiğinde kullanılır. Örneğin, eğitim kodu her değiştiğinde bir modeli gösteren ve test eden bir sürekli tümleştirme ve dağıtım betiği.
 
-* __Yönetilen kimlik__: _bir azure sanal makinesinde_ Azure Machine Learning SDK kullanırken Azure için yönetilen bir kimlik kullanabilirsiniz. Bu iş akışı, kimlik bilgilerini Python kodunda depolamadan veya kullanıcıdan kimlik doğrulaması yapmasını istemeden, VM 'nin yönetilen kimliği kullanarak çalışma alanına bağlanmasına izin verir. Azure Machine Learning işlem kümeleri, _eğitim modelleri_ sırasında çalışma alanına erişmek için yönetilen bir kimlik kullanmak üzere de yapılandırılabilir.
+* __Yönetilen kimlik__: _bir azure sanal makinesinde_ Azure Machine Learning SDK kullanırken, Azure için yönetilen bir kimlik kullanabilirsiniz. Bu iş akışı, kimlik bilgilerini Python kodunda depolamadan veya kullanıcıdan kimlik doğrulaması yapmasını istemeden, VM 'nin yönetilen kimliği kullanarak çalışma alanına bağlanmasına izin verir. Azure Machine Learning işlem kümeleri, _eğitim modelleri_ sırasında çalışma alanına erişmek için yönetilen bir kimlik kullanmak üzere de yapılandırılabilir.
 
 > [!IMPORTANT]
 > Kullanılan kimlik doğrulama iş akışından bağımsız olarak, kaynaklara izin verilen erişim düzeyini (yetkilendirme) kapsamı için Azure rol tabanlı erişim denetimi (Azure RBAC) kullanılır. Örneğin, bir yönetici veya Otomasyon işleminin bir işlem örneği oluşturmak için erişimi olabilir, ancak bunu kullanmayabilir, bir veri bilimconu onu kullanabilir ancak silemez veya oluşturamaz. Daha fazla bilgi için bkz. [Azure Machine Learning erişimi yönetme](how-to-assign-roles.md).

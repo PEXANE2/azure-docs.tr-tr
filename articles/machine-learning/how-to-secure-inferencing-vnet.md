@@ -11,14 +11,14 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperfq4, tracking-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: 3bd4d328c6b0b73a51f325adde988c8f0988ea8a
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: fcaf8f62dcdc43a48ff2ae7ff790ac14ab42e8b6
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873820"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532899"
 ---
-# <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Sanal ağlarla Azure Machine Learning çıkarım ortamının güvenliğini sağlama
+# <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Sanal ağlarla Azure Machine Learning ınvenli bir ortamın güvenliğini sağlama
 
 Bu makalede, Azure Machine Learning ' de sanal ağ ile ınırel korumalı ortamların güvenliğini nasıl sağlayacağınızı öğreneceksiniz.
 
@@ -36,7 +36,7 @@ Bu makalede, bir sanal ağda aşağıdaki ınırm kaynaklarını güvenli hale g
 > - Azure Container Instances (ACI)
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 + Genel sanal ağ senaryolarını ve genel sanal ağ mimarisini anlamak için [ağ güvenliğine genel bakış](how-to-network-security-overview.md) makalesini okuyun.
 
@@ -252,7 +252,9 @@ aks_target.wait_for_completion(show_output = True)
 Azure Container Instances, bir model dağıtıldığında dinamik olarak oluşturulur. Azure Machine Learning sanal ağ içinde ACI oluşturmak üzere etkinleştirmek için, dağıtım tarafından kullanılan alt ağ için __alt ağ temsilcisini__ etkinleştirmeniz gerekir.
 
 > [!WARNING]
-> Bir sanal ağda Azure Container Instances kullanırken, sanal ağın Azure Machine Learning çalışma alanınız ile aynı kaynak grubunda olması gerekir.
+> Bir sanal ağda Azure Container Instances kullanırken, sanal ağın şu olması gerekir:
+> * Azure Machine Learning çalışma alanınız ile aynı kaynak grubunda.
+> * Çalışma alanınızın __özel bir uç noktası__ varsa Azure Container Instances için kullanılan sanal ağ, çalışma alanı özel uç noktası tarafından kullanılan bir ile aynı olmalıdır.
 >
 > Sanal ağ içinde Azure Container Instances kullanırken, çalışma alanınızın Azure Container Registry (ACR) Sanal ağda de olamaz.
 
@@ -265,7 +267,7 @@ Azure Container Instances, bir model dağıtıldığında dinamik olarak oluştu
 
 2. [AciWebservice.deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?preserve-view=true&view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-&preserve-view=true)kullanarak modeli dağıtın, `vnet_name` ve `subnet_name` parametrelerini kullanın. Bu parametreleri, temsilciyi etkinleştirdiğiniz sanal ağ adı ve alt ağa ayarlayın.
 
-## <a name="limit-outbound-connectivity-from-the-virtual-network"></a>Sanal ağ ile giden bağlantıyı sınırlayın
+## <a name="limit-outbound-connectivity-from-the-virtual-network"></a>Sanal ağdan giden bağlantıyı sınırlama
 
 Varsayılan giden kurallarını kullanmak istemiyorsanız ve sanal ağınızın giden erişimini sınırlandırmak istiyorsanız, Azure Container Registry erişimine izin vermeniz gerekir. Örneğin, ağ güvenlik gruplarınızı (NSG), ' {RegionName} öğesinin bir Azure bölgesinin adı olduğu __AzureContainerRegistry. RegionName__ hizmet etiketine erişime izin veren bir kural içerdiğinden emin olun.
 

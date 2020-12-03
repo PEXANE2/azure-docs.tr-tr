@@ -3,17 +3,17 @@ title: Android eşlemesindeki trafik verilerini göster | Microsoft Azure harita
 description: Bu makalede, Microsoft Azure haritaları Android SDK kullanarak bir Haritada trafik verileri görüntüleme hakkında bilgi edineceksiniz.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 02/27/2020
+ms.date: 11/25/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: bc37f2b3f603262f67a46746187df6e4b5a494b5
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 5f7e67d159c2b7dea3ebac7fd4d0856f508cb298
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895537"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532763"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Azure haritalar 'ı kullanarak haritadaki trafik verilerini gösterme Android SDK
 
@@ -21,7 +21,9 @@ Akış verileri ve olay verileri, haritada görüntülenebilen iki trafik verisi
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Haritada trafiği gösterebilmeniz için önce [bir Azure hesabı](quick-demo-map-app.md#create-an-azure-maps-account)oluşturmanız ve [bir abonelik anahtarı edinmeniz](quick-demo-map-app.md#get-the-primary-key-for-your-account)gerekir. Ardından, [Azure Maps Android SDK](./how-to-use-android-map-control-library.md) yüklemeniz ve bir harita yüklemeniz gerekir.
+1. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
+2. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account).
+3. [Azure haritalar Android SDK](./how-to-use-android-map-control-library.md)indirin ve yükleyin.
 
 ## <a name="incidents-traffic-data"></a>Olaylar trafik verileri
 
@@ -73,7 +75,7 @@ protected void onCreate(Bundle savedInstanceState) {
 
 Belirli bir özelliğin olaylarını almak için aşağıdaki kodu kullanabilirsiniz. Bir özelliğe tıklandığında, kod mantığı olayları denetler ve olay hakkında bir ileti oluşturur. Ayrıntılar ile ekranın alt kısmında bir ileti görüntülenir.
 
-1. İlk olarak, aşağıdaki gibi görünmesi için **kay > düzen > activity_main.xml** düzenlemeniz gerekir. , `mapcontrol_centerLat` `mapcontrol_centerLng` Ve `mapcontrol_zoom` değerlerini istediğiniz değerlerle değiştirebilirsiniz. Geri çek, yakınlaştırma düzeyi 0 ile 22 arasında bir değerdir. Yakınlaştırma düzeyinde 0, dünyanın tamamı tek bir kutucuğa sığar.
+1. İlk olarak, `res > layout > activity_main.xml` aşağıdaki gibi görünmesi için düzenlemeniz gerekir. , `mapcontrol_centerLat` `mapcontrol_centerLng` Ve `mapcontrol_zoom` değerlerini istediğiniz değerlerle değiştirebilirsiniz. Geri çek, yakınlaştırma düzeyi 0 ile 22 arasında bir değerdir. Yakınlaştırma düzeyinde 0, dünyanın tamamı tek bir kutucuğa sığar.
 
    ```XML
    <?xml version="1.0" encoding="utf-8"?>
@@ -223,11 +225,9 @@ Belirli bir özelliğin olaylarını almak için aşağıdaki kodu kullanabilirs
 
 3. Uygulamanızda yukarıdaki kodu ekledikten sonra, bir özelliğe tıklayabilir ve trafik olaylarının ayrıntılarını görebilirsiniz. **activity_main.xml** dosyanızda kullandığınız enlem, boylam ve yakınlaştırma düzeyi değerlerine bağlı olarak, aşağıdaki görüntüye benzer sonuçlar görürsünüz:
 
-   <center>
 
-   ![Olay-eşleme-giden trafik](./media/how-to-show-traffic-android/android-traffic.png)
+    ![Olay-eşleme-giden trafik](./media/how-to-show-traffic-android/android-traffic.png)
 
-   </center>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

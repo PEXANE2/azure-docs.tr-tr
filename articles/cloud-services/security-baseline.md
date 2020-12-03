@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7deee88210acf700916961be7c4ccaf9477accf8
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 100871ab2188aa638c4c9f2b058021706c7741bb
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353451"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531913"
 ---
 # <a name="azure-security-baseline-for-azure-cloud-services"></a>Azure Cloud Services için Azure Güvenlik temeli
 
@@ -36,7 +36,7 @@ Microsoft Azure Cloud Services (klasik) Azure Resource Manager sanal ağlara yer
 
 - [Ağ güvenlik grubuna genel bakış](../virtual-network/network-security-groups-overview.md)
 
-- [Sanal Ağ eşlemesi](./cloud-services-connectivity-and-networking-faq.md?amp;preserve-view=#how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services)
+- [Sanal Ağ eşlemesi](./cloud-services-connectivity-and-networking-faq.md?preserve-view=true#how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -58,7 +58,7 @@ Denetim için ağ güvenlik grubu akış günlüklerini etkinleştirin ve günl�
 
 - [Cloud Services config dosyası](schema-cscfg-file.md)
 
-- [Azure Ilkesi tarafından desteklenen hizmetlerin listesi](/cli/azure/azure-services-the-azure-cli-can-manage?amp;preserve-view=)
+- [Azure Ilkesi tarafından desteklenen hizmetlerin listesi](/cli/azure/azure-services-the-azure-cli-can-manage?preserve-view=)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -89,9 +89,9 @@ Varsayılan URL veya Cloud Services adına gelen trafiği engelleyin, örneğin 
 
 Klasik abonelik Yöneticisi atamalarına Izin verme kuralını yapılandırın. Varsayılan olarak, bir iç uç nokta tanımlandıktan sonra, iletişim herhangi bir rolden herhangi bir kısıtlama olmadan bir rolün iç uç noktasına akabilir. İletişimi kısıtlamak için, hizmet tanımı dosyasındaki ServiceDefinition öğesine bir NetworkTrafficRules öğesi eklemeniz gerekir.
 
-- [Bulut hizmetimin varsayılan URL 'sine gelen trafiği engelleme/devre dışı bırakabilir](./cloud-services-connectivity-and-networking-faq.md?amp;preserve-view=#how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service)
+- [Bulut hizmetimin varsayılan URL 'sine gelen trafiği engelleme/devre dışı bırakabilir](./cloud-services-connectivity-and-networking-faq.md?preserve-view=true#how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service)
 
-- [Azure DDOS koruması](./cloud-services-connectivity-and-networking-faq.md?amp;preserve-view=#how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service)
+- [Azure DDOS koruması](./cloud-services-connectivity-and-networking-faq.md?preserve-view=true#how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service)
 
 - [Belirli bir IP adresini engelle](cloud-services-startup-tasks-common.md#block-a-specific-ip-address)
 
@@ -107,7 +107,7 @@ Bir ağ güvenlik grubunda akış günlüğünü yapılandırın. Ağ Izleyicisi
 
 - [Ağ güvenlik grubunda akış günlüğünü yapılandırma](../virtual-machines/extensions/network-watcher-linux.md)
 
-- [Akış günlüklerini yapılandırma hakkında daha fazla bilgi için ziyaret edin](/cli/azure/azure-services-the-azure-cli-can-manage?amp;preserve-view=)
+- [Akış günlüklerini yapılandırma hakkında daha fazla bilgi için ziyaret edin](/cli/azure/azure-services-the-azure-cli-can-manage?preserve-view=)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -231,13 +231,13 @@ Azure Izleyici içindeki etkinlik günlüğündeki bazı olayların değişiklik
 
 Azure Cloud Services, kullanılabilirlik, performans, başarısızlık ve kullanım için Application Insights tarafından izlenebilir. En önemli verileri görebilmeniz için Application Insights özel grafikler eklenebilir. Rol örneği verileri, Azure Cloud Services projenizde Application Insights SDK kullanılarak toplanabilir. 
 
-- [Dağıtımdan önce Visual Studio 'da tanılamayı aç](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?amp;preserve-view=#to-turn-on-diagnostics-in-visual-studio-before-deployment)
+- [Dağıtımdan önce Visual Studio 'da tanılamayı aç](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?preserve-view=true#to-turn-on-diagnostics-in-visual-studio-before-deployment)
 
 - [Değişiklik geçmişini görüntüle](../azure-monitor/platform/activity-log.md#view-change-history)
 
 - [Azure bulut hizmeti için Application Insights (klasik)](../azure-monitor/app/cloudservices.md)
 
-- [Azure bulut hizmeti (klasik) ve sanal makineler için tanılamayı ayarlama](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?amp;preserve-view=true&toc=%2fazure%2fcloud-services%2ftoc.json)
+- [Azure bulut hizmeti (klasik) ve sanal makineler için tanılamayı ayarlama](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?preserve-view=true&toc=%2fazure%2fcloud-services%2ftoc.json)
 
 **Azure Güvenlik Merkezi izlemesi**: Yes
 
@@ -289,7 +289,7 @@ Azure tanılama uzantısı, verileri bir Azure depolama hesabında toplar ve dep
 
 **Kılavuz**: Azure Için Microsoft kötü amaçlı yazılımdan koruma, Azure Cloud Services ve sanal makinelerini korur. Web uygulaması ateş duvarları, ağ güvenlik duvarları, kötü amaçlı yazılım, yetkisiz giriş algılama ve önleme sistemleri (KIMLIKLER veya IP 'ler) ve daha fazlası gibi üçüncü taraf güvenlik çözümlerini de dağıtma seçeneğiniz vardır.
 
-- [Azure temel IP/KIMLIKLERININ ve DDOS 'nin sağladığı özellikler ve yetenekler nelerdir?](./cloud-services-configuration-and-management-faq.md?amp;preserve-view=#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
+- [Azure temel IP/KIMLIKLERININ ve DDOS 'nin sağladığı özellikler ve yetenekler nelerdir?](./cloud-services-configuration-and-management-faq.md?preserve-view=true#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -840,7 +840,7 @@ Azure Cloud Services 'de başlangıç görevinde bir PowerShell betiği ile köt
 
 Azure Güvenlik Merkezi 'nde Uyarlamalı uygulama denetimi özelliğini, akıllı, otomatik, uçtan uca bir çözüm olarak seçin. Makinelerinizi kötü amaçlı yazılımlara karşı korumanıza yardımcı olur ve kötü amaçlı yazılımdan koruma çözümleri tarafından kaçırılmayabilir.
 
-- [Azure Cloud Services için otomatikleştirilmiş bir şekilde kötü amaçlı yazılımdan koruma uzantısı nasıl ekleyebilirim?](./cloud-services-configuration-and-management-faq.md?amp;preserve-view=#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
+- [Azure Cloud Services için otomatikleştirilmiş bir şekilde kötü amaçlı yazılımdan koruma uzantısı nasıl ekleyebilirim?](./cloud-services-configuration-and-management-faq.md?preserve-view=true#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
 
 - [Kötü amaçlı yazılımdan koruma senaryoları](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios)
 

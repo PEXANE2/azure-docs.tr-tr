@@ -3,36 +3,65 @@ title: 2. x-Azure Izleyici Application Insights Java 'dan yükseltme
 description: Azure Izleyici 'den yükseltme Application Insights Java 2. x
 ms.topic: conceptual
 ms.date: 11/25/2020
-ms.openlocfilehash: d1d09c09afbabd40a32cbb80f1901112c37ac3da
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9a0e8237d81428b1ecab95627fe106a563d2090c
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96355134"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532447"
 ---
-# <a name="upgrading-from-application-insights-java-sdk-2x"></a>Application Insights Java SDK 2. x sürümünden yükseltme
+# <a name="upgrading-from-application-insights-java-2x-sdk"></a>Java 2. x SDK Application Insights yükseltme
 
-Uygulamanızda zaten Application Insights Java SDK 'Sı 2. x kullanıyorsanız, kaldırmanız gerekmez.
-Java 3,0 Aracısı bu dosyayı algılar ve Java SDK 'Sı 2. x aracılığıyla gönderdiğiniz herhangi bir özel Telemetriyi yakalayıp, yinelenen telemetrinin önlenmesi için Java SDK 2. x tarafından gerçekleştirilen herhangi bir otomatik koleksiyonu engeller.
+Uygulamanızda zaten Java 2. x SDK Application Insights kullanıyorsanız, bunu kaldırmanız gerekmez.
+Java 3,0 Aracısı bunu algılar ve 2. x SDK 'Sı aracılığıyla gönderdiğiniz herhangi bir özel Telemetriyi yakalayıp, yinelenen telemetrinin önlenmesi için 2. x SDK tarafından gerçekleştirilen herhangi bir otomatik koleksiyonu engeller.
 
 Application Insights 2. x Aracısı kullanıyorsanız, `-javaagent:` 2. x aracısına işaret eden JVM bağımsız değişken 'i kaldırmanız gerekir.
 
+Bu belgenin geri kalanında, 2. x 'ten 3,0 sürümüne yükseltirken karşılaşabileceğiniz sınırlamalar ve değişiklikler açıklanmakta ve yararlı bulabileceğiniz bazı geçici çözümler açıklanmaktadır.
+
 ## <a name="telemetryinitializers-and-telemetryprocessors"></a>TelemetryInitializers ve TelemetryProcessors
 
-Java SDK 2. x TelemetryInitializers ve TelemetryProcessors, 3,0 Aracısı kullanılırken çalıştırılmayacak.
+3,0 Aracısı kullanılırken 2. x SDK TelemetryInitializers ve TelemetryProcessors çalıştırılmayacak.
 Bu, daha önce gerekli olan kullanım örneklerinin birçoğu, [özel boyutları](./java-standalone-config.md#custom-dimensions) yapılandırarak veya [telemetri işlemcileri](./java-standalone-telemetry-processors.md)yapılandırarak 3,0 'de çözülebilir.
 
 ## <a name="multiple-applications-in-a-single-jvm"></a>Tek bir JVM 'de birden çok uygulama
 
 Şu anda 3,0, çalışan işlem başına yalnızca tek bir [bağlantı dizesini ve rol adını](./java-standalone-config.md#connection-string-and-role-name) destekler. Özellikle, farklı bağlantı dizelerini veya farklı rol adlarını kullanan aynı Tomcat dağıtımında birden çok Tomcat Web uygulamanız olamaz.
 
-## <a name="http-request-telemetry-names"></a>HTTP istek telemetri adları
+## <a name="operation-names"></a>İşlem adları
 
-3,0 sürümündeki HTTP istek telemetrisi adları genellikle Application Insights portalında U/X ' te daha iyi bir toplu görünüm sağlayacak şekilde değiştirilmiştir.
+3,0 içindeki işlem adları genellikle Application Insights Portal U/X ' te daha iyi bir toplu görünüm sağlayacak şekilde değiştirilmiştir.
 
-Ancak bazı uygulamalar için, önceki telemetri adları tarafından sağlanmış olan U/X içindeki toplanmış görünümü yine de tercih edebilirsiniz. Bu durumda, önceki adlara dönmek için 3,0 içindeki telemetri işlemcileri önizleme özelliğini kullanabilirsiniz.
+:::image type="content" source="media/java-ipa/upgrade-from-2x/operation-names-3-0.png" alt-text="3,0 içindeki işlem adları":::
 
-### <a name="to-prefix-the-telemetry-name-with-the-http-method-get-post-etc"></a>Http yöntemiyle telemetri adına önek olarak ( `GET` , `POST` , vb.):
+Ancak bazı uygulamalarda, önceki işlem adları tarafından sağlanmış olan U/X ' de toplanmış görünümü tercih edebilirsiniz. Bu durumda, önceki davranışı çoğaltmak için 3,0 içindeki [telemetri işlemcileri](./java-standalone-telemetry-processors.md) (Önizleme) özelliğini kullanabilirsiniz.
+
+### <a name="prefix-the-operation-name-with-the-http-method-get-post-etc"></a>Http yöntemiyle işlem adına önek ekleyin ( `GET` , `POST` , vb.)
+
+2. x SDK 'sında, işlem adları http yöntemi ( `GET` , `POST` , vb.) tarafından önekli, ör.
+
+:::image type="content" source="media/java-ipa/upgrade-from-2x/operation-names-prefixed-by-http-method.png" alt-text="Http yöntemi tarafından önekli işlem adları":::
+
+Aşağıdaki kod parçacığı, önceki davranışı çoğaltmak için birleştiren 3 telemetri işlemciyi yapılandırır.
+Telemetri işlemcileri aşağıdaki eylemleri gerçekleştirir (sırasıyla):
+
+1. İlk telemetri işlemcisi, bir yayma işlemcisidir (türüne sahiptir `span` ), yani ve için geçerli olur `requests` `dependencies` .
+
+   Adlı bir özniteliğe sahip olan `http.method` ve ile başlayan bir span adına sahip olan tüm yayılımın eşleşmesi gerekecektir `/` .
+
+   Ardından, bu yayılma adını adlı bir özniteliğe ayıklar `tempName` .
+
+2. İkinci telemetri işlemcisi de bir yayma işlemcisidir.
+
+   Adlı bir özniteliğe sahip olan herhangi bir yayılma eşleşmesi gerekecektir `tempName` .
+
+   Daha sonra, iki özniteliği birleştirerek `http.method` ve boşlukla ayırarak span adını güncelleştirir `tempName` .
+
+3. Son telemetri işlemcisi, öznitelik işlemcisidir (türü vardır `attribute` ), bu, öznitelikleri olan tüm telemetri için geçerlidir (Şu anda `requests` `dependencies` ve `traces` ).
+
+   Adlı bir özniteliğe sahip olan herhangi bir Telemetriyi eşleştirecektir `tempName` .
+
+   Daha sonra, adlı özniteliği `tempName` , özel bir boyut olarak raporlanmayacak şekilde silecektir.
 
 ```
 {
@@ -83,7 +112,40 @@ Ancak bazı uygulamalar için, önceki telemetri adları tarafından sağlanmı�
 }
 ```
 
-### <a name="to-set-the-telemetry-name-to-the-full-url-path"></a>Telemetri adını tam URL yoluna ayarlamak için
+### <a name="set-the-operation-name-to-the-full-path"></a>İşlem adını tam yola ayarla
+
+Ayrıca, 2. x SDK 'sında, bazı durumlarda işlem adları tam yolu içeriyordu, örn.
+
+:::image type="content" source="media/java-ipa/upgrade-from-2x/operation-names-with-full-path.png" alt-text="Tam yol içeren işlem adları":::
+
+Aşağıdaki kod parçacığı, önceki davranışı çoğaltmak için birleştiren 4 telemetri işlemciyi yapılandırır.
+Telemetri işlemcileri aşağıdaki eylemleri gerçekleştirir (sırasıyla):
+
+1. İlk telemetri işlemcisi, bir yayma işlemcisidir (türüne sahiptir `span` ), yani ve için geçerli olur `requests` `dependencies` .
+
+   Adlı bir özniteliğe sahip olan herhangi bir yayılma eşleşmesi gerekecektir `http.url` .
+
+   Ardından, Aralık adını `http.url` öznitelik değeriyle güncelleştirir.
+
+   Bu, bunun sonu olur, ancak bu, `http.url` gibi bir şey gibi görünür `http://host:port/path` ve büyük olasılıkla yalnızca parçayı istemeniz olasıdır `/path` .
+
+2. İkinci telemetri işlemcisi de bir yayma işlemcisidir.
+
+   Adlı bir özniteliğe `http.url` (diğer bir deyişle, ilk işlemcinin eşleştiği tüm yayılmasına) sahip olan tüm yayılımla eşleşir.
+
+   Ardından, yayılma adının yol bölümünü adlı bir özniteliğe ayıklar `tempName` .
+
+3. Üçüncü telemetri işlemcisi de bir yayma işlemcisidir.
+
+   Adlı bir özniteliğe sahip olan herhangi bir yayılma eşleşmesi gerekecektir `tempPath` .
+
+   Sonra, öznitelik adını öznitelikten güncellecektir `tempPath` .
+
+4. Son telemetri işlemcisi, öznitelik işlemcisidir (türü vardır `attribute` ), bu, öznitelikleri olan tüm telemetri için geçerlidir (Şu anda `requests` `dependencies` ve `traces` ).
+
+   Adlı bir özniteliğe sahip olan herhangi bir Telemetriyi eşleştirecektir `tempPath` .
+
+   Daha sonra, adlı özniteliği `tempPath` , özel bir boyut olarak raporlanmayacak şekilde silecektir.
 
 ```
 {
@@ -94,7 +156,6 @@ Ancak bazı uygulamalar için, önceki telemetri adları tarafından sağlanmı�
         "include": {
           "matchType": "strict",
           "attributes": [
-            { "key": "http.method" },
             { "key": "http.url" }
           ]
         },
@@ -107,7 +168,6 @@ Ancak bazı uygulamalar için, önceki telemetri adları tarafından sağlanmı�
         "include": {
           "matchType": "strict",
           "attributes": [
-            { "key": "http.method" },
             { "key": "http.url" }
           ]
         },
@@ -145,3 +205,15 @@ Ancak bazı uygulamalar için, önceki telemetri adları tarafından sağlanmı�
   }
 }
 ```
+
+## <a name="dependency-names"></a>Bağımlılık adları
+
+3,0 içindeki bağımlılık adları da değiştirilmiştir, Ayrıca, Application Insights Portal U/X ' de genellikle daha iyi bir toplu görünüm sağlar.
+
+Yine, bazı uygulamalar için, önceki bağımlılık adları tarafından sağlanmış olan U/X ' de toplanmış görünümü tercih edebilirsiniz. Bu durumda, önceki davranışı çoğaltmak için yukarıdaki gibi benzer teknikleri kullanabilirsiniz.
+
+## <a name="operation-name-on-dependencies"></a>Bağımlılıklarda işlem adı
+
+Daha önce 2. x SDK 'sında, istek telemetride işlem adı bağımlılık telemetrisi üzerinde de ayarlanmıştır.
+Application Insights Java 3,0, bağımlılık telemetrisi üzerinde işlem adını artık doldurmayacak.
+Bağımlılık telemetrinin üst öğesi olan istek için işlem adını görmek isterseniz, bağımlılık tablosundan istek tablosuna katmak üzere bir günlük (kusto) sorgusu yazabilirsiniz.

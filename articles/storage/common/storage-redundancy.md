@@ -6,22 +6,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/24/2020
+ms.date: 12/02/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: fbc24db21ee43e3c2aef3d0164e8510a79508fd2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57cde2c5c0a1caf7ad5182cad8db72ab8aa7c908
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89658578"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531792"
 ---
-# <a name="azure-storage-redundancy"></a>Azure depolama artıklığı
+# <a name="azure-storage-redundancy"></a>Azure Depolama yedekliliği
 
-Azure depolama, geçici donanım arızaları, ağ veya güç kesintileri ve çok büyük doğal felaketler de dahil olmak üzere planlı ve planlanmamış olaylardan korunabilmesi için verilerinizin birden çok kopyasını her zaman depolar. Yedeklilik, depolama hesabınızın, başarısızlık durumunda bile [Azure depolama Için hizmet düzeyi sözleşmesini (SLA)](https://azure.microsoft.com/support/legal/sla/storage/) karşıladığından emin olmanızı sağlar.
+Azure depolama, geçici donanım arızaları, ağ veya güç kesintileri ve çok büyük doğal felaketler de dahil olmak üzere planlı ve planlanmamış olaylardan korunabilmesi için verilerinizin birden çok kopyasını her zaman depolar. Artıklık, depolama hesabınızın, başarısızlık durumunda bile kullanılabilirlik ve dayanıklılık hedeflerini karşıladığından emin olmanızı sağlar.
 
-Senaryonuz için en uygun artıklık seçeneğinin hangisi olduğuna karar verirken, düşük maliyetler ve daha yüksek kullanılabilirlik ve dayanıklılık arasındaki avantajları göz önünde bulundurun. Hangi artıklık seçeneğini belirlemenizi gerektiğine yardımcı olan faktörler şunlardır:  
+Senaryonuz için en uygun artıklık seçeneğinin hangisi olduğuna karar verirken, düşük maliyetler ve daha yüksek kullanılabilirlik arasındaki avantajları göz önünde bulundurun. Hangi artıklık seçeneğini belirlemenizi gerektiğine yardımcı olan faktörler şunlardır:  
 
 - Verileriniz birincil bölgede nasıl çoğaltılır
 - Verilerinizin birincil bölgeye coğrafi olarak uzaktaki ikinci bir bölgeye çoğaltılıp çoğaltılmayacağı, bölgesel olağanüstü durumlara karşı koruma
@@ -63,7 +63,7 @@ Aşağıdaki tabloda hangi depolama hesabı türlerinin hangi bölgelerde ZRS de
 
 | Depolama hesabı türü | Desteklenen bölgeler | Desteklenen hizmetler |
 |--|--|--|
-| Genel amaçlı v2<sup>1</sup> | Güneydoğu Asya<br /> Doğu Avustralya<br /> Kuzey Avrupa<br />  Batı Avrupa<br /> Orta Fransa<br /> Doğu Japonya<br /> Güney Afrika Kuzey<br /> Güney Birleşik Krallık<br /> ABD Orta<br /> ABD Doğu<br /> ABD Doğu 2<br /> ABD Batı 2 | Blok blobları<br /> Sayfa Blobları<sup>2</sup><br /> Dosya paylaşımları (Standart)<br /> Tablolar<br /> Kuyruklar<br /> |
+| Genel amaçlı v2<sup>1</sup> | Güneydoğu Asya<br /> Doğu Avustralya<br /> Kuzey Avrupa<br />  Batı Avrupa<br /> Orta Fransa<br /> Doğu Japonya<br /> Güney Afrika - Kuzey<br /> Güney Birleşik Krallık<br /> ABD Orta<br /> ABD Doğu<br /> ABD Doğu 2<br /> ABD Batı 2 | Blok blobları<br /> Sayfa Blobları<sup>2</sup><br /> Dosya paylaşımları (Standart)<br /> Tablolar<br /> Kuyruklar<br /> |
 | BlockBlobStorage<sup>1</sup> | Güneydoğu Asya<br /> Doğu Avustralya<br /> Kuzey Avrupa<br /> Batı Avrupa<br /> ABD Doğu <br /> ABD Doğu 2 <br /> ABD Batı 2| Yalnızca Premium blok Blobları |
 | Dosya depolama | Güneydoğu Asya<br /> Doğu Avustralya<br /> Kuzey Avrupa<br /> Batı Avrupa<br /> ABD Doğu <br /> ABD Doğu 2 <br /> ABD Batı 2 | Yalnızca Premium dosya paylaşımları |
 
@@ -153,11 +153,9 @@ Aşağıdaki tabloda her artıklık seçeneği için anahtar parametreleri açı
 
 | Parametre | LRS | ZRS | GRS/RA-GRS | GZRS/RA-GZRS |
 |:-|:-|:-|:-|:-|
-| Belirli<sup>bir yıl boyunca</sup> nesnelerin yüzde dayanıklılığı yüzdesi | en az% 99,999999999 (11 9) | en az% 99,9999999999 (12 9) | en az% 99.99999999999999 (16 9) | en az% 99.99999999999999 (16 9) |
-| Okuma istekleri için kullanılabilirlik SLA 'Sı<sup>1</sup> | En az% 99,9 (Seyrek Erişimli Katman için %99) | En az% 99,9 (Seyrek Erişimli Katman için %99) | GRS için en az% 99,9 (Seyrek Erişimli Katman için %99)<br /><br />RA-GRS için en az% 99,99 (Seyrek Erişimli Katman için% 99,9) | GZRS için en az% 99,9 (Seyrek Erişimli Katman için %99)<br /><br />RA-GZRS için en az% 99,99 (Seyrek Erişimli Katman için% 99,9) |
-| Yazma istekleri için kullanılabilirlik SLA 'Sı<sup>1</sup> | En az% 99,9 (Seyrek Erişimli Katman için %99) | En az% 99,9 (Seyrek Erişimli Katman için %99) | En az% 99,9 (Seyrek Erişimli Katman için %99) | En az% 99,9 (Seyrek Erişimli Katman için %99) |
-
-<sup>1</sup> dayanıklılık ve kullanılabilirlik Için Azure depolama garantisi hakkında daha fazla bilgi için bkz. [Azure Storage SLA](https://azure.microsoft.com/support/legal/sla/storage/).
+| Belirli bir yıl boyunca nesnelerin yüzde dayanıklılığı | en az% 99,999999999 (11 9) | en az% 99,9999999999 (12 9) | en az% 99.99999999999999 (16 9) | en az% 99.99999999999999 (16 9) |
+| Okuma istekleri için kullanılabilirlik | En az% 99,9 (Seyrek Erişimli Katman için %99) | En az% 99,9 (Seyrek Erişimli Katman için %99) | GRS için en az% 99,9 (Seyrek Erişimli Katman için %99)<br /><br />RA-GRS için en az% 99,99 (Seyrek Erişimli Katman için% 99,9) | GZRS için en az% 99,9 (Seyrek Erişimli Katman için %99)<br /><br />RA-GZRS için en az% 99,99 (Seyrek Erişimli Katman için% 99,9) |
+| Yazma istekleri için kullanılabilirlik | En az% 99,9 (Seyrek Erişimli Katman için %99) | En az% 99,9 (Seyrek Erişimli Katman için %99) | En az% 99,9 (Seyrek Erişimli Katman için %99) | En az% 99,9 (Seyrek Erişimli Katman için %99) |
 
 ### <a name="durability-and-availability-by-outage-scenario"></a>Kesinti senaryosuna göre dayanıklılık ve kullanılabilirlik
 

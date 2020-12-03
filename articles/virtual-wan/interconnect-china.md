@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: sukishen
-ms.openlocfilehash: a92dafe6237d0f061f837f07c5dcf2686b1a8a7e
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 169477ffdf6fd593f1b6f01469c7303f8bd3a488
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510749"
+ms.locfileid: "96531857"
 ---
 # <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>Azure sanal WAN ve güvenli hub kullanarak Çin ile bağlantı
 
@@ -20,7 +20,7 @@ Ortak bir oto, üretim, lojistik sektörlere veya emeltes gibi diğer Kurumsal S
 
 Çoğu durumda, müşteriler yüksek gecikme süresi, düşük bant genişliği, kararsız bağlantı ve Çin dışında (örneğin, Avrupa veya Birleşik Devletler) yüksek maliyetlerle bağlantı altına alınır.
 
-Bu bir nedenden dolayı, Internet 'in Çince bölümünü koruyan ve trafiği Çin 'e filtreleyen "Çin güvenlik duvarı 'nın" harika güvenlik duvarıdır. Çin Mainland ile Çin dışında çalışan neredeyse tüm trafik, Hong Kong ve Macau gibi özel yönetim bölgeleri haricinde harika güvenlik duvarını geçirir. Hong Kong ve Macau aracılığıyla çalışan trafik, eksiksiz güvenlik duvarında harika güvenlik duvarının bir alt kümesi tarafından işlenir.
+Bu bir nedenden dolayı, Internet 'in Çince bölümünü koruyan ve trafiği Çin 'e filtreleyen "Çin güvenlik duvarı 'nın" harika güvenlik duvarıdır. Çin Halk Cumhuriyeti 'nden, Hong Kong ve Macau gibi özel yönetim bölgeleri dışında, neredeyse tüm trafik, En Iyi güvenlik duvarını geçirir. Hong Kong ve Macau aracılığıyla çalışan trafik, eksiksiz güvenlik duvarında harika güvenlik duvarının bir alt kümesi tarafından işlenir.
 
 :::image type="content" source="./media/interconnect-china/provider.png" alt-text="Diyagramda sağlayıcı bağlantısı gösterilmektedir.":::
 
@@ -71,13 +71,13 @@ Aşağıdaki listede, Hong Kong 'da olası Internet değişimleri gösterilmekte
 
 Bu Connect kullanılırken, Microsoft hizmetlerine yönelik bir sonraki BGP atlayağınızın Microsoft otonom sistem numarası (AS #) 8075 olması gerekir. Tek bir konum veya SDWAN çözümü kullanıyorsanız, bu bağlantı seçimi olacaktır.
 
-Ana kara Çin ve Hong Kong arasında birbirine bağlı bağlantılar ile ilgili geçerli değişikliklerle, bu ağ sağlayıcılarının çoğu ana kara Çin ve Hong Kong arasında bir MPLS Köprüsü oluşturur.
+Çin ve Hong Kong ÖIB arasında birbirine bağlı bağlantılar ile ilgili geçerli değişikliklerle, bu ağ sağlayıcılarının çoğu Çin ve Hong Kong ÖIB arasında bir MPLS Köprüsü oluşturur.
 
 Çin içinde siteden siteye VPN bağlantılarına izin verildiğini ve bunların büyük ölçüde kararlı olduğunu görebilirsiniz. Aynı, dünyanın geri kalanında bulunan dallar arasındaki siteden siteye bağlantılar için de geçerlidir. Sağlayıcılar artık her iki tarafta bir VPN/SDWAN toplama ve aralarında MPLS aracılığıyla köprü oluşturur.
 
 :::image type="content" source="./media/interconnect-china/china-mpls-bridge.png" alt-text="Diyagramda Çin MPLS Köprüsü görüntülenir.":::
 
-Her iki durumda da, Çince ana kara 'nin ikinci ve normal bir internet ayırıcıya sahip olmasını öneririz. Bu, kurumsal trafik arasındaki trafiği Microsoft 365 ve Azure gibi bulut hizmetleri ve yasalar tarafından düzenlenen Internet trafiği arasında bölecektir.
+Her iki durumda da Çin 'de ikinci ve normal bir internet 'e dikkat etmeniz önerilir. Bu, kurumsal trafik arasındaki trafiği Microsoft 365 ve Azure gibi bulut hizmetleri ve yasalar tarafından düzenlenen Internet trafiği arasında bölecektir.
 
 Çin 'de uyumlu bir ağ mimarisi aşağıdaki örnekteki gibi görünebilir:
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 44c5f9f1a7c0d014d101ad45a80e1e53c42f69a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fabb4cd1e555a7a67a53bf2f5a99d93c87df436c
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88009044"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532814"
 ---
 # <a name="display-feature-information"></a>Özellik bilgilerini görüntüleme
 
@@ -63,9 +63,7 @@ map.events.add((OnFeatureClick) (features) -> {
 }, symbolLayer.getId());    //Limit this event to the symbol layer.
 ```
 
-<center>
-
-![Dokunulmakta olan bir özelliğin animasyonu ve bir bildirim iletisi görüntüleniyor](./media/display-feature-information-android/symbol-layer-click-toast-message.gif)</center>
+![Dokunulmakta olan bir özelliğin animasyonu ve bir bildirim iletisi görüntüleniyor](./media/display-feature-information-android/symbol-layer-click-toast-message.gif)
 
 Mesajların yanı sıra, bir özelliğin meta veri özelliklerini sunmak için birçok farklı yol vardır:
 

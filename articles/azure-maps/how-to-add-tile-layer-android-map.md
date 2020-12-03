@@ -1,6 +1,6 @@
 ---
-title: Android Maps 'e kutucuk katmanı ekleme | Microsoft Azure haritaları
-description: Bir haritaya döşeme katmanı eklemeyi öğrenin. Bir haritaya Hava durumu radar kaplaması eklemek için Azure Maps Android SDK kullanan bir örneğe bakın.
+title: Azure haritalar 'ı kullanarak haritaya kutucuk katmanı ekleme Android SDK
+description: Bir haritaya döşeme katmanı eklemeyi öğrenin. Bir haritaya Hava durumu radar kaplaması eklemek için Microsoft Azure haritaları Android SDK kullanan bir örneğe bakın.
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 04/26/2019
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: faa5e3e3177e18787a73c6b4c43aa04b6bc760b7
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 22618a28f1a87e68c19467aedf639e96ec2fb91e
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897101"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532685"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Azure haritalar 'ı kullanarak haritaya kutucuk katmanı ekleme Android SDK
 

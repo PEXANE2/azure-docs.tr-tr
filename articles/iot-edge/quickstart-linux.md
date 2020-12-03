@@ -4,17 +4,17 @@ description: Bu hızlı başlangıçta, Linux üzerinde IoT Edge bir cihaz oluş
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/30/2020
+ms.date: 12/02/2020
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 720a4d14a73350d98b3f9054f748b93d296be11b
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: ce8d014f7ec9ae0a915b69cff033e929f139acc0
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579326"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532100"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Hızlı başlangıç: ilk IoT Edge modülünüzü bir sanal Linux cihazına dağıtma
 
@@ -45,7 +45,7 @@ Cloud Shell örneğine Azure IoT uzantısını ekleyin.
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bulut kaynakları:
 
@@ -119,11 +119,11 @@ Bu bölüm, yeni bir sanal makine oluşturmak ve buna IoT Edge çalışma zaman�
    az deployment group create \
    --resource-group IoTEdgeResources \
    --template-uri "https://aka.ms/iotedge-vm-deploy" \
-   --parameters dnsLabelPrefix='my-edge-vm' \
+   --parameters dnsLabelPrefix='<REPLACE_WITH_VM_NAME>' \
    --parameters adminUsername='azureUser' \
    --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name
    <REPLACE_WITH_HUB_NAME> -o tsv) \
-   --parameters authenticationType='password'
+   --parameters authenticationType='password' \
    --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
    ```
 
@@ -133,7 +133,7 @@ Bu bölüm, yeni bir sanal makine oluşturmak ve buna IoT Edge çalışma zaman�
    az deployment group create `
    --resource-group IoTEdgeResources `
    --template-uri "https://aka.ms/iotedge-vm-deploy" `
-   --parameters dnsLabelPrefix='my-edge-vm1' `
+   --parameters dnsLabelPrefix='<REPLACE_WITH_VM_NAME>' `
    --parameters adminUsername='azureUser' `
    --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) `
    --parameters authenticationType='password' `
@@ -146,7 +146,7 @@ Bu şablon aşağıdaki parametreleri alır:
 | --------- | ----------- |
 | **kaynak grubu** | Kaynakların oluşturulacağı kaynak grubu. Bu makale genelinde kullandığımız varsayılan **ıotedgeresogenellerinizi** kullanın veya aboneliğinizde mevcut bir kaynak grubunun adını sağlayın. |
 | **Şablon-URI** | Kullandığımız Kaynak Yöneticisi şablonuna yönelik bir işaretçi. |
-| **dnsLabelPrefix** | Sanal makinenin ana bilgisayar adını oluşturmak için kullanılacak dize. **-Edge-VM** örneğini kullanın veya yeni bir dize belirtin. |
+| **dnsLabelPrefix** | Sanal makinenin ana bilgisayar adını oluşturmak için kullanılacak dize. Yer tutucu metnini, sanal makineniz için bir adla değiştirin. |
 | **adminUsername** | Sanal makinenin yönetici hesabı için bir Kullanıcı adı. Örnek **azureUser** kullanın veya yeni bir Kullanıcı adı sağlayın. |
 | **deviceConnectionString** | Sanal makinede IoT Edge çalışma zamanını yapılandırmak için kullanılan IoT Hub cihaz kimliğinden bağlantı dizesi. Bu parametre içindeki CLı komutu sizin için bağlantı dizesini dönüştürür. Yer tutucu metnini IoT Hub 'ınızın adıyla değiştirin. |
 | **authenticationType** | Yönetici hesabı için kimlik doğrulama yöntemi. Bu hızlı başlangıç, **parola** kimlik doğrulaması kullanır, ancak bu parametreyi **sshpublickey** olarak da ayarlayabilirsiniz. |

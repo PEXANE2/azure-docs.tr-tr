@@ -7,48 +7,64 @@ ms.topic: overview
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 74ebdafb835aff75f282b9d6ac02d8ccf672a2be
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 041ef9950300129d54c9374939e13a2f99035bc1
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501099"
+ms.locfileid: "96532861"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Azure Spring Cloud nedir?
 
-Azure yay bulutu, Azure 'a Spring Boot tabanlı mikro hizmet uygulamalarının, sıfır kod değişiklikleriyle dağıtılmasını kolaylaştırır.  Azure yay bulutu, Spring bulut uygulamalarının altyapısını yönetir, böylelikle geliştiriciler koda odaklanabilirler.  Spring Cloud, kapsamlı izleme ve tanılama, yapılandırma yönetimi, hizmet bulma, CI/CD tümleştirmesi, mavi yeşil dağıtımlar ve daha fazlasını kullanarak yaşam döngüsü yönetimi sağlar.
+Azure Spring Cloud, herhangi bir kod değişikliği yapmadan Spring Boot mikro hizmet uygulamalarını Azure 'a dağıtmayı kolaylaştırır.  Bu hizmet, geliştiricilerin koda odaklanabilmesi için yay bulutu uygulamalarının altyapısını yönetir.  Azure Spring Cloud, kapsamlı izleme ve tanılama, yapılandırma yönetimi, hizmet bulma, CI/CD tümleştirmesi, mavi-yeşil dağıtımlar ve daha fazlasını kullanarak yaşam döngüsü yönetimi sağlar.
 
-Azure Spring Cloud, hem Java [Spring Boot](https://spring.io/projects/spring-boot) hem de ASP.NET Core [steeltoe](https://steeltoe.io/) uygulamalarını destekler. Steeltoe desteği şu anda genel önizleme olarak sunulmaktadır. Genel Önizleme teklifleri, resmi sürümünden önceki yeni özelliklerle denemeler yapmanızı sağlar.  Genel Önizleme özellikleri ve Hizmetleri üretim kullanımı için tasarlanmamıştır.  Daha fazla bilgi için bkz. [SSS](https://azure.microsoft.com/support/faq/) veya dosya a [destek isteği](../azure-portal/supportability/how-to-create-azure-support-request.md).
+## <a name="why-use-azure-spring-cloud"></a>Azure yay bulutu neden kullanılmalıdır?
 
-Azure Spring Cloud, Azure ekosisteminin bir parçası olarak depolama, veritabanları, izleme ve daha fazlasını içeren diğer Azure hizmetlerine kolayca bağlamayı sağlar.
+Uygulamaların Azure Spring Cloud 'a dağıtılması birçok avantaj sunar.  Şunları yapabilirsiniz:
+* Mevcut yay uygulamalarını verimli bir şekilde geçirin ve bulut Ölçeklendirmesi ve maliyetlerini yönetin.
+* Çeviklik ve teslimin hızını artırmak için yayı bulut desenleriyle modernleştirin.
+* Bulut ölçeğinde Java 'Yı çalıştırın ve karmaşık altyapı olmadan daha yüksek kullanım yapın.
+* Kapsayıcısız bağımlılıklar olmadan hızlı bir şekilde geliştirin ve dağıtın.
+* Üretim iş yüklerini etkili ve kolay bir şekilde izleyin.
 
-Bu giriş, Azure Spring Cloud 'ın aşağıdaki yeteneklerini açıklamaktadır:
+Azure Spring Cloud, hem Java [Spring Boot](https://spring.io/projects/spring-boot) hem de ASP.NET Core [steeltoe](https://steeltoe.io/) uygulamalarını destekler. Steeltoe desteği şu anda genel önizleme olarak sunulmaktadır. Genel Önizleme teklifleri, resmi sürümünden önceki yeni özelliklerle denemeler yapmanızı sağlar. Genel Önizleme özellikleri ve Hizmetleri üretim kullanımı için tasarlanmamıştır. Daha fazla bilgi için bkz. [SSS](https://azure.microsoft.com/support/faq/) veya dosya a [destek isteği](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
-* Yapılandırma Sunucusu
-* Mavi/yeşil dağıtımlar
-* Uygulama ölçeklendirme
-* Azure DevOps ile tümleştirme
-* Uygulama izleme
+## <a name="service-overview"></a>Hizmete genel bakış
 
-## <a name="spring-cloud-config-server"></a>Yay bulutu yapılandırma sunucusu
+Azure Spring Cloud, Azure ekosisteminin bir parçası olarak depolama, veritabanları, izleme ve daha fazlasını içeren diğer Azure hizmetlerine kolayca bağlamayı sağlar.  
 
-Azure Spring Cloud config Server, hem sunucu hem de istemci tarafı desteğiyle dağıtılmış bir sistemde externalized yapılandırma sağlar.  Azure Spring Cloud config Server, tüm ortamlarda uygulama özelliklerini yönetmek için merkezi bir konumdur. Daha fazla bilgi için bkz. [Spring Cloud config Server başvurusu](https://spring.io/projects/spring-cloud-config). 
+  ![Azure yay bulutuna genel bakış](media/spring-cloud-principles/azure-spring-cloud-overview.png)
 
-## <a name="bluegreen-deployments"></a>Mavi/yeşil dağıtımlar
+* Azure yay bulutu, altyapıyı yönetmenin sorunsuz bir şekilde uygulama oluşturmaya ve çalıştırmaya odaklanmanızı sağlayan Spring Boot uygulamaları için tam olarak yönetilen bir hizmettir.
 
-Azure Spring Cloud, kodu üretim ortamlarına serbest bırakma ve güncelleştirme için mavi/yeşil dağıtımları destekler.  Bu değişiklik yönetimi deseninin, geliştiricilerin, gerekli olduğunda anında geri dönüş güvenliği ile özellik ve kod değişiklikleri uygulamasına olanak tanır.  Geliştiriciler, uygulama kesintiye uğramadan kod değişikliklerini güncelleştirmek veya geri almak için birden çok üretim ortamında kod yazmaya yoğunlaşmasını sağlayabilir.  Hazırlama ortamları ve mavi/yeşil dağıtımlar hakkında daha fazla bilgi edinmek için bu [nasıl yapılır makalesini](spring-cloud-howto-staging-environment.md)ziyaret edin.
+* Yalnızca JARs veya kodunuzu dağıtmanız yeterlidir ve Azure Spring Cloud, uygulamalarınızı yay hizmeti çalışma zamanı ve yerleşik uygulama yaşam döngüsü ile otomatik olarak dağıtacaktır.
 
-## <a name="cicd-pipeline-automation"></a>CI/CD işlem hattı otomasyonu
+* İzleme basittir. Dağıtımdan sonra uygulama performansını izleyebilir, hataları giderebilir ve uygulamaları hızlı bir şekilde geliştirebilirsiniz. 
 
-Azure Spring Cloud, Azure CLı kullanarak Azure DevOps ile tümleştirme sağlar.  Azure DevOps kullanarak, Spring uygulamanıza kod tümleştirmeyi ve dağıtımı otomatikleştirebileceğinizi unutmayın.  Daha fazla bilgi edinmek için bu [makaleyi](spring-cloud-howto-cicd.md)ziyaret edin.
+* Azure 'un ekosistemleri ve hizmetleriyle tam tümleştirme.
 
-## <a name="application-scaling"></a>Uygulama ölçeklendirme
+* Azure yay bulutu, tam olarak yönetilen altyapı, yerleşik yaşam döngüsü yönetimi ve izleme kolaylığı ile kurumsal olarak hazır.
 
-Azure Spring Cloud, Azure Spring Cloud panonuzda mikro hizmetleri kolayca ölçeklendirmenize olanak tanır.  Hem vCPU sayısı hem de mikro hizmetlerinizin kullanabildiği bellek miktarı, gereksinimlerinize uyacak şekilde ölçeklendirilebilir veya azaltılabilir.  Ölçeklendirme, saniyeler içinde etkili olur ve kod değişikliği veya yeniden dağıtım gerektirmez.  Daha fazla bilgi edinmek için bu [öğreticiyi](spring-cloud-tutorial-scale-manual.md)izleyin.
+## <a name="documentation-overview"></a>Belgelere genel bakış
+Bu belge, Azure Spring Cloud Services 'ı kullanmaya başlama ve bu avantajlardan yararlanma hakkında bilgi sağlayan bölümleri içerir.
 
-## <a name="application-monitoring"></a>Uygulama izleme
-
-Yay bulutu 'nın dağıtılmış izleme araçları, geliştiricilerin bir uygulamadaki mikro hizmetler arasındaki karmaşık bağlantıları hata ayıklamasına ve izlemesine olanak sağlar.  Azure Application Insights [Spring Cloud ınuth](https://spring.io/projects/spring-cloud-sleuth) 'i tümleştirerek [Application Insights](../azure-monitor/monitor-reference.md), Azure, doğrudan Azure Portal güçlü dağıtılmış izleme özelliği sağlar.  Daha fazla bilgi edinmek için bu [öğreticiyi](spring-cloud-tutorial-distributed-tracing.md)izleyin.
+* Kullanmaya başlayın
+    * [İlk uygulamanızı yayınlama](spring-cloud-quickstart.md)
+    * [Azure yay bulut hizmeti sağlama](spring-cloud-quickstart-provision-service-instance.md)
+    * [Yapılandırma sunucusunu ayarlama]()
+    * [Uygulama oluşturma ve dağıtma](spring-cloud-quickstart-deploy-apps.md)
+    * [Günlük ölçümlerini ve izlemeyi kullanma](spring-cloud-quickstart-logs-metrics-tracing.md)
+* Nasıl yapılır
+    * [Geliştirme](spring-cloud-tutorial-prepare-app-deployment.md): mevcut bir Java Spring uygulamasını Azure Spring Cloud 'a dağıtmak için hazırlayın. Azure yay bulutu, düzgün yapılandırıldığında, Java Spring bulut uygulamalarını izlemek, ölçeklendirmek ve güncelleştirmek için güçlü hizmetler sağlar.
+    * [Dağıtma](spring-cloud-howto-staging-environment.md): Azure yay bulutu 'ndaki mavi yeşil dağıtım modelini kullanarak hazırlama dağıtımı ayarlama. Mavi/yeşil dağıtım, yeni (yeşil) sürüm dağıtıldığı sırada mevcut (mavi) sürümü canlı tutma prensibine dayanan bir Azure DevOps Sürekli Teslim düzenidir.
+    * [Uygulamaları yapılandırma](spring-cloud-howto-start-stop-delete.md): Azure Spring Cloud uygulamalarınızı başlatın, durdurun ve silin. Azure portal veya Azure CLı kullanarak Azure Spring Cloud 'da bir uygulamanın durumunu değiştirin.
+    * [Ölçek](spring-cloud-tutorial-scale-manual.md): Azure Portal veya otomatik ölçeklendirme ayarlarını kullanarak Azure Spring Cloud panosunu kullanarak herhangi bir mikro hizmet uygulamasını ölçeklendirin. Veritabanları, depolama ve Anahtar kasaları gibi dış kaynaklarla iletişim kurmak için genel IP 'Ler kullanılabilir.
+    * [Uygulamaları izleme](spring-cloud-tutorial-distributed-tracing.md): karmaşık sorunları kolayca ayıklamanız ve izlemek için dağıtılmış izleme araçları. Azure Spring Cloud, Azure 'ın Application Insights yay bulutuna karşı tümleşir. Bu tümleştirme Azure portal güçlü dağıtılmış izleme yeteneği sağlar.
+    * [Güvenli uygulamalar](spring-cloud-howto-enable-system-assigned-managed-identity.md): Azure kaynakları, Azure Active Directory otomatik olarak yönetilen bir kimlik sağlar. Bu kimliği, kodunuzda kimlik bilgileri olmadan Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmette kimlik doğrulaması yapmak için kullanabilirsiniz.
+    * [Diğer Azure hizmetleriyle tümleştirme](spring-cloud-tutorial-bind-cosmos.md): Spring Boot uygulamalarınızı el ile yapılandırmak yerine, seçili Azure hizmetlerini uygulamalarınıza otomatik olarak bağlayarak, örneğin uygulamanızı bir Azure Cosmos db veritabanına bağlayabilirsiniz.
+    * [Otomatikleştir](spring-cloud-howto-cicd.md): sürekli tümleştirme ve sürekli teslim araçları, var olan uygulamalara en az çaba ve riske sahip güncelleştirmeleri hızlı bir şekilde dağıtmanızı sağlar. Azure DevOps bu temel görevleri düzenlemeye ve denetlemeye yardımcı olur. 
+    * [Sorun giderme](spring-cloud-howto-self-diagnose-solve.md): Azure Spring Cloud Diagnostics, uygulama sorunlarını gidermenize yardımcı olacak etkileşimli bir deneyim sunar. Yapılandırma gerekmez. Sorunları bulduğunuzda, Azure yay Bulut Tanılaması sorunları tanımlar ve sorun gidermeye ve sorunları çözmeye yardımcı olan bilgiler için sizi yönlendirir.
+    * [Geçiş](https://docs.microsoft.com/azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud): mevcut bir yay bulutu uygulamasını veya Spring Boot uygulamasını Azure Spring Cloud üzerinde çalışacak şekilde geçirme.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

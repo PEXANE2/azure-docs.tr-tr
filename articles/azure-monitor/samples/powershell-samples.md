@@ -7,18 +7,18 @@ author: bwren
 ms.author: bwren
 ms.date: 2/14/2018
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 74211df6f925aaa09a4c87a518056e8ef3206b87
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f7ddf94bbd077912cf0d7c2adef2eac548274ca
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078410"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532287"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Azure Izleyici PowerShell örnekleri
 Bu makalede, Azure Izleyici özelliklerine erişmenize yardımcı olacak örnek PowerShell komutları gösterilmektedir.
 
 > [!NOTE]
-> Azure Izleyici, 25 Eylül 2016 ' e kadar "Azure Insights" adı verilen yeni addır. Bununla birlikte, ad alanları ve bu nedenle, aşağıdaki komutlar Word *öngörülerini*de içerir.
+> Azure Izleyici, 25 Eylül 2016 ' e kadar "Azure Insights" adı verilen yeni addır. Bununla birlikte, ad alanları ve bu nedenle, aşağıdaki komutlar Word *öngörülerini* de içerir.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -54,7 +54,7 @@ Set-AzContext -SubscriptionId <subscriptionid>
 
 
 ## <a name="retrieve-activity-log"></a>Etkinlik günlüğünü al
-[Get-AzLog](/powershell/module/az.monitor/get-azlog) cmdlet 'ini kullanın.  Yaygın olarak kullanılan bazı örnekler aşağıda verilmiştir. Etkinlik günlüğü, son 90 gün işlem içerir. Bu saatten önceki tarihleri kullanmak bir hata mesajı elde ediyor.  
+[Get-AzLog](/powershell/module/az.monitor/get-azlog) cmdlet 'ini kullanın.  Yaygın olarak kullanılan bazı örnekler aşağıda verilmiştir. Etkinlik Günlüğü son 90 günün işlemlerini tutar. Bu saatten önceki tarihleri kullanmak bir hata mesajı elde ediyor.  
 
 Aşağıdaki komutlarda ne zaman kullanılacağını doğrulamak için geçerli tarih/saat ne olduğunu öğrenin:
 ```powershell
@@ -94,13 +94,13 @@ Get-AzLog -Caller 'myname@company.com'
 Aşağıdaki komut, etkinlik günlüğünden son 1000 olayı alır:
 
 ```powershell
-Get-AzLog -MaxRecord 10
+Get-AzLog -MaxRecord 1000
 ```
 
 `Get-AzLog` diğer birçok parametreyi destekler. `Get-AzLog`Daha fazla bilgi için başvuruya bakın.
 
 > [!NOTE]
-> `Get-AzLog` yalnızca 15 günlük geçmişi sağlar. **-MaxRecords** parametresini kullanmak, son N olayı, 15 günden daha fazla sorgulamanızı sağlar. 15 günden eski olaylara erişmek için REST API veya SDK 'yı (SDK kullanarak C# örneği) kullanın. **StartTime**'i eklemezseniz, varsayılan değer **bitişsaati** eksi bir saattir. **Bitişsaati**eklemezseniz, varsayılan değer geçerli süredir. Her zaman UTC 'de.
+> `Get-AzLog` yalnızca 15 günlük geçmişi sağlar. **-MaxRecords** parametresinin kullanılması, 15 günün ötesinde son N olayı sorgulamanıza olanak tanır. 15 günden eski olaylara erişmek için REST API veya SDK kullanın (SDK'nın kullanıldığı C# örneği). **StartTime** eklemezseniz, varsayılan değer **EndTime** eksi bir saattir. **EndTime** eklemezseniz, varsayılan değer geçerli saat olur. Tüm saatler UTC cinsindendir.
 > 
 > 
 
@@ -151,9 +151,9 @@ Aşağıdaki tabloda, ölçüm kullanılarak bir uyarı oluşturmak için kullan
 
 | parametre | değer |
 | --- | --- |
-| Name |simpletestdiskwrite |
+| Ad |simpletestdiskwrite |
 | Bu uyarı kuralının konumu |Doğu ABD |
-| adlı yönetilen örnek, |montest |
+| ResourceGroup |montest |
 | Targetresourceıd |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
 | Oluşturulan uyarının MetricName |\Fiziksel disk (_Total) \Disk yazma/sn. `Get-MetricDefinitions` Tam ölçüm adlarını alma hakkında cmdlet 'e bakın |
 | işleç |GreaterThan |
@@ -187,7 +187,7 @@ Uyarı kuralını alma
 Get-AzAlertRule -Name vmcpu_gt_1 -ResourceGroup myrg1 -DetailedOutput
 ```
 
-Verilen özellikler için zaten bir uyarı kuralı varsa, uyarı Ekle cmdlet 'i de kuralı güncelleştirir. Bir uyarı kuralını devre dışı bırakmak için **-DisableRule**parametresini ekleyin.
+Verilen özellikler için zaten bir uyarı kuralı varsa, uyarı Ekle cmdlet 'i de kuralı güncelleştirir. Bir uyarı kuralını devre dışı bırakmak için **-DisableRule** parametresini ekleyin.
 
 ## <a name="get-a-list-of-available-metrics-for-alerts"></a>Uyarılar için kullanılabilir ölçümlerin bir listesini alın
 `Get-AzMetricDefinition`Belirli bir kaynak için tüm ölçümlerin listesini görüntülemek için cmdlet 'ini kullanabilirsiniz.

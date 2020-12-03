@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0ed56d200c2b5a472dbf93d45ad25156ea02a884
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 90e3464ac9ddf1e839c3a731f79ac2c0771c37ea
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181161"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532715"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için 8x8 yapılandırma
 
@@ -29,7 +29,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem 8x8 Co
 > * Kullanıcı özniteliklerinin Azure AD ve 8x8 arasında eşitlenmiş kalmasını sağlama
 > * 8x8 [' e çoklu oturum açma](./8x8virtualoffice-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -50,17 +50,17 @@ Bu bölüm, Azure AD ile sağlamayı desteklemek için 8x8 ' i yapılandırma ad
 
 ### <a name="to-configure-a-user-provisioning-access-token-in-8x8-configuration-manager"></a>8x8 ' de bir Kullanıcı sağlama erişim belirteci yapılandırmak için Configuration Manager:
 
-1. [Configuration Manager](https://vo-cm.8x8.com)oturum açın. **Kimlik yönetimi**' ni seçin.
+1. [Yönetici Konsolu](https://admin.8x8.com)'nda oturum açın. **Kimlik yönetimi**' ni seçin.
 
-   ![Kimlik Yönetimi](./media/8x8-provisioning-tutorial/8x8-identity-management.png)
+   ![Yönetici](./media/8x8-provisioning-tutorial/8x8-identity-management.png)
 
 2. Belirteç oluşturmak için **Kullanıcı sağlama bilgilerini göster** bağlantısına tıklayın.
 
-   ![Kullanıcı sağlamayı göster](./media/8x8-provisioning-tutorial/8x8-show-user-provisioning.png)
+   ![Göster](./media/8x8-provisioning-tutorial/8x8-show-user-provisioning.png)
 
 3. **8X8 URL** ve **8X8 API belirteç** değerlerini kopyalayın. Bu değerler, Azure portal 8x8 uygulamanızın sağlama sekmesinde sırasıyla **kiracı URL 'si** ve **gizli belirteç** alanlarına girilir.
 
-   ![URL 'YI ve belirteci Kopyala](./media/8x8-provisioning-tutorial/8x8-copy-url-token.png)
+   ![Belirteç](./media/8x8-provisioning-tutorial/8x8-copy-url-token.png)
 
 ## <a name="step-3-add-8x8-from-the-azure-ad-application-gallery"></a>3. Adım Azure AD uygulama galerisinden 8x8 ekleyin
 

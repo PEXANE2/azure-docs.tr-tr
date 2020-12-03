@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: a1159da782a8cb822bf726173ad0d0bcd9da844a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9cbce00e2c2743aec57cd857b6f38d20bce33698
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460900"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532916"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault için sanal ağ hizmeti uç noktaları
 
@@ -80,7 +80,7 @@ Daha fazla bilgi için bkz. [Azure Key Vault güvenlik duvarlarını ve sanal a�
 |Azure Event Hubs|[Müşteri tarafından yönetilen anahtarlar senaryosu için anahtar kasasına erişime izin ver](../../event-hubs/configure-customer-managed-key.md)|
 |Azure Service Bus|[Müşteri tarafından yönetilen anahtarlar senaryosu için anahtar kasasına erişime izin ver](../../service-bus-messaging/configure-customer-managed-key.md)|
 |Azure İçeri/Dışarı Aktarma| [Içeri/dışarı aktarma hizmeti için Azure Key Vault 'de müşteri tarafından yönetilen anahtarları kullanın](../../storage/common/storage-import-export-encryption-key-portal.md)
-|Azure Container Registry|[Müşteri tarafından yönetilen anahtarları kullanarak kayıt defteri şifreleme](../../container-registry/container-registry-customer-managed-keys.md)<br><br/>[Yapıtları başka bir kayıt defterine aktar](../../container-registry/container-registry-transfer-images.md)
+|Azure Container Registry|[Müşteri tarafından yönetilen anahtarları kullanarak kayıt defteri şifreleme](../../container-registry/container-registry-customer-managed-keys.md)
 
 > [!NOTE]
 > İlgili hizmetlerin Key Vault erişimi almasını sağlamak için ilgili Key Vault erişim ilkelerini ayarlamanız gerekir.

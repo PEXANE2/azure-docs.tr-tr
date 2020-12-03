@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 10/19/2020
 ms.author: alkohli
-ms.openlocfilehash: e5eb008d40b7617272d7d39b71cb4850cb5becfc
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3a4428b2e6f42facd8230fa4d9f6f637f6fe4659
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468023"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531747"
 ---
 # <a name="deployment-checklist-for-your-azure-stack-edge-pro-r-device"></a>Azure Stack Edge Pro R cihazınız için dağıtım denetim listesi  
 
@@ -43,7 +43,7 @@ Azure Stack Edge Pro R cihazına sipariş verdikten sonra ve cihazı almadan ön
 | Etkinleştirme  | Azure Stack Edge Pro/Data Box Gateway kaynağından etkinleştirme anahtarı gerektir.    | Oluşturulduktan sonra anahtarın 3 gün içinde süresi dolar. |
 
 <!--
-| (Optional) MAC Address            | If MAC address needs to be whitelisted, get the address of the connected port from local UI of the device. |                                                                                                                   |
+| (Optional) MAC Address            | If MAC address needs to be approved, get the address of the connected port from local UI of the device. |                                                                                                                   |
 | (Optional) Network switch port    | Device hosts Hyper-V VMs for compute. Some network switch port configurations don’t accommodate these setups by default.                                                                                                        |                                                                                                                   |-->
 
 

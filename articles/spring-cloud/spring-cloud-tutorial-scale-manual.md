@@ -1,24 +1,24 @@
 ---
-title: "Öğretici: Azure Spring Cloud 'da bir uygulamayı ölçeklendirme | Microsoft Docs"
+title: Azure Spring Cloud 'da bir uygulamayı ölçeklendirme | Microsoft Docs
 description: Azure portal Azure Spring Cloud ile uygulama ölçeklendirmeyi öğrenin
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.author: brendm
 author: bmitchell287
 ms.date: 10/06/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 33d25edafa9249300406365699930ded1c8ec75b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5632f9a6126615255306cc89425bd08a9ffa9753
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906847"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531811"
 ---
-# <a name="tutorial-scale-an-application-in-azure-spring-cloud"></a>Öğretici: Azure Spring Cloud 'da bir uygulamayı ölçeklendirme
+# <a name="scale-an-application-in-azure-spring-cloud"></a>Azure Spring Cloud 'da bir uygulamayı ölçeklendirme
 
 **Bu makale şu şekilde geçerlidir:** ✔️ Java ✔️ C #
 
-Bu öğreticide, Azure portal Azure Spring Cloud Panosu kullanılarak herhangi bir mikro hizmet uygulamasının nasıl ölçeklendirileceğini gösterilmektedir.
+Bu belgelerde, Azure portal Azure Spring Cloud Panosu kullanılarak herhangi bir mikro hizmet uygulamasının ölçeklendirilmesi gösterilmektedir.
 
 Sanal CPU (vCPU) sayısını ve bellek miktarını değiştirerek uygulamanızı yukarı ve aşağı ölçeklendirin. Uygulama örneklerinin sayısını değiştirerek uygulamanızı içinde ve dışarı ölçeklendirin.
 
@@ -34,7 +34,7 @@ Bu yordamları izlemek için şunlar gerekir:
 
 ## <a name="navigate-to-the-scale-page-in-the-azure-portal"></a>Azure portal ölçek sayfasına gidin
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Azure yay bulutuna **genel bakış** sayfasına gidin.
 
@@ -42,7 +42,7 @@ Bu yordamları izlemek için şunlar gerekir:
 
 1. Sayfanın sol tarafındaki menüde **Ayarlar** ' ın altında **uygulamalar** sekmesini seçin.
 
-1. Ölçeklendirmek istediğiniz uygulamayı seçin. Bu örnekte, **Hesap-hizmet**adlı uygulamayı seçin. Daha sonra uygulamanın **genel bakış** sayfasını görmeniz gerekir.
+1. Ölçeklendirmek istediğiniz uygulamayı seçin. Bu örnekte, **Hesap-hizmet** adlı uygulamayı seçin. Daha sonra uygulamanın **genel bakış** sayfasını görmeniz gerekir.
 
 1. Sayfanın sol tarafındaki menüde bulunan **Ayarlar** ' ın altındaki **Ölçek** sekmesine gidin. Aşağıdaki bölümde gösterilen özniteliklerin ölçeklendirilmesine yönelik seçenekleri görmeniz gerekir.
 
@@ -67,7 +67,7 @@ Temel katmandadır ve bu [limitlerden](spring-cloud-quotas.md)biri veya daha faz
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, bir Azure yay bulutu uygulamasını el ile ölçeklendirmenin nasıl yapılacağını öğrendiniz. Uyarıları ayarlayarak bir uygulamayı izlemeyi öğrenmek için bir sonraki öğreticiye geçin.
+Bu örnek, bir Azure Spring Cloud uygulamasını el ile ölçeklendirmenin açıklanmıştı. Uyarıları ayarlayarak bir uygulamayı nasıl izleyeceğinizi öğrenmek için bkz. [Otomatik ölçeklendirmeyi ayarlama](spring-cloud-tutorial-setup-autoscale.md).
 
 > [!div class="nextstepaction"]
 > [Uyarıları ayarlamayı öğrenin](spring-cloud-tutorial-alerts-action-groups.md)

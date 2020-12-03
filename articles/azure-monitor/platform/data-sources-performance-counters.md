@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: 54e7a781ba9ed3cd4b53e1028c4a3bb79c256aed
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 533d4a83ea73b98e26a57febc077a607bcb25465
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012621"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532317"
 ---
 # <a name="collect-windows-and-linux-performance-data-sources-with-log-analytics-agent"></a>Log Analytics Agent ile Windows ve Linux performans verileri kaynaklarını toplayın
 Windows ve Linux 'ta performans sayaçları, donanım bileşenlerinin, işletim sistemlerinin ve uygulamaların performansına ilişkin öngörüler sağlar.  Azure Izleyici, daha uzun süreli analiz ve raporlama için performans verilerini toplamaya ek olarak neredeyse gerçek zamanlı (NRT) analiz için sık aralıklarla Log Analytics aracılarından performans sayaçlarını toplayabilir.
@@ -28,7 +28,7 @@ Yeni bir çalışma alanı için Windows veya Linux performans sayaçlarını il
 
 Windows performans sayaçları için her performans sayacı için belirli bir örnek seçebilirsiniz. Linux performans sayaçları için, seçtiğiniz her sayacın örneği, üst sayacın tüm alt sayaçları için geçerlidir. Aşağıdaki tabloda hem Linux hem de Windows performans sayaçları için kullanılabilen ortak örnekler gösterilmektedir.
 
-| Örnek adı | Description |
+| Örnek adı | Açıklama |
 | --- | --- |
 | \_Toplam |Tüm örneklerin toplamı |
 | \* |Tüm örnekler |
@@ -50,15 +50,14 @@ Toplanacak yeni bir Windows performans sayacı eklemek için bu yordamı izleyin
 
 ### <a name="linux-performance-counters"></a>Linux performans sayaçları
 
-![Linux performans sayaçlarını yapılandırma](media/data-sources-performance-counters/configure-linux.png)
+![Linux performans sayaçlarını yapılandırma](media/data-sources-performance-counters/configure-linux-1.png)
 
 Toplanacak yeni bir Linux performans sayacı eklemek için bu yordamı izleyin.
 
-1. Varsayılan olarak, tüm yapılandırma değişiklikleri otomatik olarak tüm aracılara gönderilir.  Linux aracıları için bir yapılandırma dosyası, Floentd veri toplayıcısına gönderilir.  Bu dosyayı her bir Linux aracısında el ile değiştirmek istiyorsanız, *Linux makinelerime aşağıdaki yapılandırmayı Uygula* onay kutusunun işaretini kaldırın ve aşağıdaki yönergeleri izleyin.
-2. *Nesne (örnek) \Sayaç* biçiminde metin kutusuna sayacın adını yazın.  Yazmaya başladığınızda, size ortak sayaçların eşleşen bir listesi sunulur.  Listeden bir sayaç seçebilir veya kendi listenizden birini yazabilirsiniz.  
-3. **+** Sayacı, nesne **Enter** için diğer sayaçlar listesine eklemek için tıklayın veya ENTER tuşuna basın.
-4. Bir nesne için tüm sayaçlar aynı **örnek aralığı** kullanır.  Varsayılan değer 10 saniyedir.  Toplanan performans verilerinin depolama gereksinimlerini azaltmak istiyorsanız bunu 1800 saniyeye (30 dakika) daha yüksek bir değere değiştirirsiniz.
-5. Sayaç eklemeyi tamamladığınızda, yapılandırmayı kaydetmek için ekranın üst kısmındaki **Kaydet** düğmesine tıklayın.
+1. *Nesne (örnek) \Sayaç* biçiminde metin kutusuna sayacın adını yazın.  Yazmaya başladığınızda, size ortak sayaçların eşleşen bir listesi sunulur.  Listeden bir sayaç seçebilir veya kendi listenizden birini yazabilirsiniz.  
+1. **+** Sayacı, nesne **Enter** için diğer sayaçlar listesine eklemek için tıklayın veya ENTER tuşuna basın.
+1. Bir nesne için tüm sayaçlar aynı **örnek aralığı** kullanır.  Varsayılan değer 10 saniyedir.  Toplanan performans verilerinin depolama gereksinimlerini azaltmak istiyorsanız bunu 1800 saniyeye (30 dakika) daha yüksek bir değere değiştirirsiniz.
+1. Sayaç eklemeyi tamamladığınızda, yapılandırmayı kaydetmek için ekranın üst kısmındaki **Kaydet** düğmesine tıklayın.
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>Yapılandırma dosyasında Linux performans sayaçlarını yapılandırma
 Linux performans sayaçlarını Azure portal kullanarak yapılandırmak yerine, Linux aracısında yapılandırma dosyalarını düzenlemeyle ilgili seçeneğiniz vardır.  Toplanacak performans ölçümleri, **/etc/seçenek/Microsoft/omsagent/ \<workspace id\> /conf/omsagent.exe** içindeki yapılandırma tarafından denetlenir.
@@ -78,7 +77,7 @@ Toplanacak performans ölçümlerinin her nesnesi veya kategorisi yapılandırma
 
 Bu öğedeki parametreler aşağıdaki tabloda açıklanmıştır.
 
-| Parametreler | Description |
+| Parametreler | Açıklama |
 |:--|:--|
 | nesne \_ adı | Koleksiyonun nesne adı. |
 | örnek \_ Regex |  Toplanacak örnekleri tanımlayan bir *normal ifade* . Değer: `.*` tüm örnekleri belirtir. Yalnızca toplam örnek için işlemci ölçümlerini toplamak üzere \_ belirtebilirsiniz `_Total` . Yalnızca crond veya SSHD örnekleri için işlem ölçümlerini toplamak üzere şunları belirtebilirsiniz: `(crond\|sshd)` . |
@@ -206,7 +205,7 @@ Performans kayıtları bir **perf** türüne sahiptir ve aşağıdaki tabloda bu
 ## <a name="log-queries-with-performance-records"></a>Performans kayıtlarıyla günlük sorguları
 Aşağıdaki tabloda, performans kayıtlarını alan günlük sorgularının farklı örnekleri verilmiştir.
 
-| Sorgu | Description |
+| Sorgu | Açıklama |
 |:--- |:--- |
 | Perf |Tüm performans verileri |
 | Perf &#124; Computer = = "Bilgisayarım" |Belirli bir bilgisayardaki tüm performans verileri |
