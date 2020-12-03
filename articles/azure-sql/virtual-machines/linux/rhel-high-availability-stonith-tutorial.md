@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
-ms.openlocfilehash: ef3f9f8d75049051ad568abf1163014a78b0cda3
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 9a6faec2542337eedbe4aafb69f1061582f92cc7
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96324746"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531590"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Öğretici: Azure 'da RHEL sanal makinelerinde SQL Server için kullanılabilirlik grupları yapılandırma 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -1132,6 +1132,34 @@ Yapılandırmanın şimdiye kadar başarılı olduğundan emin olmak için bir y
     sudo pcs resource move ag_cluster-clone <VM2> --master
     ```
 
+   Ayrıca, kaynağı istenen bir düğüme taşımak için oluşturulan geçici kısıtlamanın otomatik olarak devre dışı bırakılması için ek bir seçenek belirtebilir ve aşağıdaki adım 2 ve 3 ' ü gerçekleştirmeniz gerekmez.
+
+   **RHEL 7**
+
+    ```bash
+    sudo pcs resource move ag_cluster-master <VM2> --master lifetime=30S
+    ```
+
+   **RHEL 8**
+
+    ```bash
+    sudo pcs resource move ag_cluster-clone <VM2> --master lifetime=30S
+    ```
+
+   Aşağıdaki 2 ve 3. adımları otomatik hale getirmek için, kaynak taşıma komutunun kendisindeki geçici kısıtlamayı temizlemek için başka bir alternatif de tek bir satırda birden çok komut birleştirilerek kullanılır. 
+
+   **RHEL 7**
+
+    ```bash
+    sudo pcs resource move ag_cluster-master <VM2> --master && sleep 30 && pcs resource clear ag_cluster-master
+    ```
+
+   **RHEL 8**
+
+    ```bash
+    sudo pcs resource move ag_cluster-clone <VM2> --master && sleep 30 && pcs resource clear ag_cluster-clone
+    ```
+    
 2. Kısıtlamaları yeniden denetederseniz, el ile yük devretme nedeniyle başka bir kısıtlamanın eklendiğini görürsünüz:
     
     **RHEL 7**

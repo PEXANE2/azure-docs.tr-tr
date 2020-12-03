@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 55a1255ffa82aec8ea7b9e1ec2bbc6746b9b0636
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: bae214fb8eff9747bf3f79323d8eb9ce1cb6cdb7
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523628"
+ms.locfileid: "96531607"
 ---
 # <a name="synapse-rbac-roles"></a>SYNAPSE RBAC rolleri
 
@@ -28,12 +28,11 @@ Makalede yerleşik SYNAPSE RBAC rolleri, izin verdiğiniz izinler ve kullanılab
 - **Yeni alt düzey kapsamlar** birkaç rol için tanıtılmıştır.  Bu kapsamlar, rollerin belirli kaynaklarla veya nesnelerle sınırlı olmasını sağlar.
 
 >[!Note]
->- Yeni roller ve alt düzey kapsamlar Şu anda önizlemededir.  
->- Apache Spark yönetici ve SQL yöneticisi rolleri yeni SYNAPSE RBAC rollerinin yerine gelecek bir sürümde kullanım dışı olacaktır.  Tam olarak desteklenen yeni önizleme rollerini benimsemeniz ve kullanımları hakkında geri bildirim sağlamanız önerilir.
+>- **Yeni roller ve alt düzey kapsamlar Şu anda önizlemededir**.  Bu yeni rolleri ve kapsamları kullanmanız önerilir. Bu roller, tam olarak desteklenir ve kullanımları hakkında geri bildirim sağlar.
 
 ## <a name="built-in-synapse-rbac-roles-and-scopes"></a>Yerleşik SYNAPSE RBAC rolleri ve kapsamları
 
-Aşağıdaki tabloda, her bir yerleşik rol ve bu rollerin kullanılabileceği kapsamlar açıklanmaktadır.
+Aşağıdaki tabloda, yerleşik roller ve kullanılabilecekleri kapsamlar açıklanmaktadır.
 
 >[!Note]
 > Herhangi bir kapsamda SYNAPSE RBAC rolüne sahip kullanıcılar, çalışma alanı kapsamında SYNAPSE Kullanıcı rolüne otomatik olarak sahiptir. 

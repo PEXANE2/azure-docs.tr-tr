@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/04/2020
+ms.date: 12/02/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 6374164bb5049742d63a669b4c1e552c93967977
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 396d6f69673f8758d8d1302f8d10b8a92e5f50b4
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173388"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530772"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Uygulamanızı Azure AD uygulama galerisine yayımlayın
 
@@ -69,7 +69,7 @@ Uygulamanızı Azure AD uygulama galerisinde yayımlama adımları şunlardır:
 - Karşılıklı müşteriler, adım adım bir yapılandırma öğreticisini alır.
 - Etki alanları arası kimlik yönetimi ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) için sistemi kullanan müşteriler aynı uygulama için sağlama kullanabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 En az iki Kullanıcı kayıtlı olarak test için kalıcı bir hesaba ihtiyacınız vardır.
 
@@ -168,14 +168,25 @@ ASP.NET Core WS-Fed hakkında daha fazla bilgi edinmek için bkz. [ASP.NET Core 
 
 HTML oturum açma sayfasına sahip bir Web uygulaması oluşturun. Uygulamanızın, beklenen şekilde çalışması için çoklu oturum açmayı sağlamak üzere parola oluşturma işlemi yapılabilmesi için, uygulamanızın form kimlik doğrulamasını desteklediğinden emin olun.
 
+## <a name="step-3---implement-scim-user-provisioning-in-your-app"></a>3. adım-uygulamanızda SCıM Kullanıcı sağlamasını uygulama
+[SCIM](https://aka.ms/scimoverview) sağlamasını destekleme, isteğe bağlıdır, ancak uygulamanızı oluşturma konusunda çok önerilmiş bir adımdır. SCıM standardını desteklemek kolaydır ve müşterilerin, CSV dosyalarını karşıya yüklemek gibi el ile işlemlere bağlı kalmadan uygulamanızdaki Kullanıcı hesaplarını otomatik olarak oluşturmasına ve güncelleştirmesine izin verir. Ayrıca, müşteriler, SAML JıT gibi bir çözümle gerçekleştirilmeyebilir ve grup üyeliklerini eşitlenmiş halde tutmaya otomatik hale getirebilir. 
 
-## <a name="step-3---create-your-azure-tenant-and-test-your-app"></a>3. adım-Azure kiracınızı oluşturun ve uygulamanızı test edin
+### <a name="learn-about-scim"></a>SCıM hakkında bilgi edinin
+Müşterilerinizin SCıM standartları ve avantajları hakkında daha fazla bilgi edinmek için bkz. [SCIM ile sağlama-](https://aka.ms/scimoverview)Başlarken.
+
+### <a name="understand-the-azure-ad-scim-implementation"></a>Azure AD SCıM uygulamasını anlama
+Azure AD SCıM uygulamasıyla ilgili daha fazla bilgi edinmek için bkz. [SCIM uç noktası oluşturma ve Azure AD ile Kullanıcı sağlamayı yapılandırma](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups).
+
+### <a name="implement-scim"></a>SCıM 'i uygulama
+Azure AD, bir SCıM uç noktası oluşturmanıza yardımcı olacak [başvuru kodu](https://aka.ms/scimoverview) sağlar. GitHub 'da bulabileceğiniz birçok üçüncü taraf kitaplığı/başvurusu da vardır.  
+
+## <a name="step-4---create-your-azure-tenant-and-test-your-app"></a>4. adım-Azure kiracınızı oluşturun ve uygulamanızı test edin
 
 Uygulamanızı test etmek için bir Azure AD kiracısına sahip olmanız gerekir. Geliştirme ortamınızı ayarlamak için bkz. [hızlı başlangıç: kiracı ayarlama](quickstart-create-new-tenant.md).
 
 Alternatif olarak, Azure AD kiracısı her Microsoft 365 abonelikle birlikte gelir. Ücretsiz bir Microsoft 365 geliştirme ortamı ayarlamak için, bkz. [Microsoft 365 Geliştirici programına ekleme](/office/developer-program/microsoft-365-developer-program).
 
-Kiracınız olduktan sonra, tek oturum açma erişimini etkinleştirip test etmeniz gerekir. 
+Kiracınız olduktan sonra, tek oturum açma ve [sağlamayı](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client)test etmeniz gerekir. 
 
 **OıDC veya Oath uygulamaları için** uygulamanızı çok kiracılı bir uygulama olarak [kaydedin](quickstart-register-app.md) . Desteklenen hesap türlerinde herhangi bir kurumsal dizin ve kişisel Microsoft hesabı seçeneğinde bulunan hesapları seçin.
 
@@ -184,7 +195,7 @@ Kiracınız olduktan sonra, tek oturum açma erişimini etkinleştirip test etme
 Ayrıca, gerekirse [tek kiracılı bir uygulamayı birden çok kiracıya dönüştürebilirsiniz](howto-convert-app-to-be-multi-tenant.md) .
 
 
-## <a name="step-4---create-and-publish-documentation"></a>4. adım-belge oluşturma ve yayımlama
+## <a name="step-5---create-and-publish-documentation"></a>5. adım-belge oluşturma ve yayımlama
 
 ### <a name="documentation-on-your-site"></a>Sitenizdeki belgeler
 
@@ -206,13 +217,14 @@ Sitenizdeki tüm belgelerinize, en azından aşağıdaki öğeleri eklemesi öne
 * Pilot kullanıcılar için test adımları
 * Hata kodları ve iletileri dahil sorun giderme bilgileri
 * Müşteriler için destek mekanizmaları
+* Desteklenen kaynaklar ve öznitelikler de dahil olmak üzere SCıM uç noktanız hakkındaki ayrıntılar
 
 ### <a name="documentation-on-the-microsoft-site"></a>Microsoft sitesindeki belgeler
 
 Uygulamanızı Azure Marketi 'nde da yayımlayan Azure Active Directory Uygulama galerisinde, Microsoft, adım adım işlemi açıklayan, karşılıklı müşterilerimiz için belge oluşturacaktır. [Burada](../saas-apps/tutorial-list.md)bir örnek görebilirsiniz. Bu belge, galeriye gönderiminiz temel alınarak oluşturulur ve GitHub hesabınızı kullanarak uygulamanızda değişiklik yaparsanız onu kolayca güncelleştirebilirsiniz.
 
 
-## <a name="step-5---submit-your-app"></a>5. adım-uygulamanızı gönderme
+## <a name="step-6---submit-your-app"></a>6. adım-uygulamanızı gönderme
 
 Uygulama tümleştirmesinin Azure AD ile çalışıp çalışmadığını test ettikten sonra, uygulama isteğinizi [Microsoft Application Network portalında](https://microsoft.sharepoint.com/teams/apponboarding/Apps)gönderebilirsiniz.
 
@@ -262,7 +274,7 @@ Uygulamanızı parola SSO kullanarak galerideki listeye eklemek istiyorsanız, g
 
 ![Galerideki parola SSO uygulamasını listeleme](./media/howto-app-gallery-listing/passwordsso.png)
 
-Kullanıcı hazırlama için bir [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2,0 uç noktası uygulamadıysanız gösterilen seçeneği belirleyin. 
+Kullanıcı hazırlama için bir [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2,0 uç noktası uygulamadıysanız gösterilen seçeneği belirleyin. Ekleme isteğinde şema sağlanırken, şemanızı indirmek için lütfen [buradaki](https://docs.microsoft.com/azure/active-directory/app-provisioning/export-import-provisioning-configuration) yönergeleri izleyin. Galeri uygulamasını oluşturmak için Galeri dışı uygulamayı test ederken yapılandırdığınız şemayı kullanacağız. 
 
    ![Kullanıcı hazırlama isteği](./media/howto-app-gallery-listing/user-provisioning.png)
 
@@ -301,7 +313,7 @@ Galerideki bir OpenID Connect uygulamasını listeleme işleminin zaman çizelge
 Tüm yürüyen değişiklikler için [Azure AD SSO tümleştirme ekibine](mailto:SaaSApplicationIntegrations@service.microsoft.com)e-posta gönderin ve mümkün olan en kısa sürede yanıt vereceğiz.
 
 
-## <a name="step-6---join-the-microsoft-partner-network"></a>6. adım-Microsoft iş ortağı ağı 'nı birleştirin
+## <a name="step-7---join-the-microsoft-partner-network"></a>7. adım-Microsoft iş ortağı ağı 'nı birleştirin
 Microsoft İş Ortağı Ağı, özel kaynaklara, programlara, araçlara ve bağlantılara anında erişim sağlar. Ağa katılarak ve pazara git planınızı oluşturmak için bkz. [ticari müşterilere ulaşın](https://partner.microsoft.com/explore/commercial#gtm).
 
 

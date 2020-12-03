@@ -1,19 +1,19 @@
 ---
-title: Android Maps 'e sembol katmanı ekleme | Microsoft Azure haritaları
-description: Haritaya işaret eklemeyi öğrenin. Bir veri kaynağından gelen nokta tabanlı verileri içeren bir sembol katmanı eklemek için Azure Maps Android SDK kullanan bir örneğe bakın.
+title: Azure haritalar 'ı kullanarak haritaya bir sembol katmanı ekleme Android SDK
+description: Haritaya işaret eklemeyi öğrenin. Bir veri kaynağından gelen nokta tabanlı verileri içeren bir sembol katmanını eklemek için Microsoft Azure haritaları Android SDK kullanan bir örneğe bakın.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 04/26/2019
+ms.date: 11/24/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: acd5f06a5383308ce736f2860810ebee7e5bce28
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 300a7968b2072459d6d7709e4d89388e1bcf59f3
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897118"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531216"
 ---
 # <a name="add-a-symbol-layer-to-a-map-using-azure-maps-android-sdk"></a>Azure haritalar 'ı kullanarak haritaya bir sembol katmanı ekleme Android SDK
 
@@ -21,7 +21,9 @@ Bu makalede, Azure Maps Android SDK kullanarak bir harita üzerinde sembol katma
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu makaledeki adımları tamamen izlemek için, bir harita yüklemek üzere [Azure Maps Android SDK](./how-to-use-android-map-control-library.md) yüklemeniz gerekir.
+1. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
+2. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account).
+3. [Azure haritalar Android SDK](./how-to-use-android-map-control-library.md)indirin ve yükleyin.
 
 ## <a name="add-a-symbol-layer"></a>Sembol katmanı ekleme
 
@@ -62,7 +64,7 @@ Sembol katmanını kullanarak haritada bir işaretleyici eklemek için aşağıd
         //Create a point feature and add it to the data source.
         dataSource.add(Feature.fromGeometry(Point.fromLngLat(-122.33, 47.64)));
     
-        //Add a custom image icon to the map resources.
+        //Add a red custom image icon to the map resources.
         map.images.add("my-icon", R.drawable.mapcontrol_marker_red);
     
         //Create a symbol layer and add it to the map.
@@ -71,8 +73,6 @@ Sembol katmanını kullanarak haritada bir işaretleyici eklemek için aşağıd
         });
     
     ```
-    
-    Yukarıdaki kod parçacığı ilk olarak, **Onready ()** geri çağırma yöntemini kullanarak bir Azure haritalar harita denetim örneği edinir. Daha sonra **DataSource** sınıfını kullanarak bir veri kaynağı nesnesi oluşturur ve bunu haritaya ekler. Ardından bir nokta geometrisi içeren bir **özellik** ekler. Kırmızı bir işaret resmi, ardından sembol için simge olarak ayarlanır. Bir **sembol katmanı** , veri kaynağında kaydırılan nokta tabanlı verileri haritada sembol olarak işlemek için metin veya simgeleri kullanır. Daha sonra bir sembol katmanı oluşturulur ve veri kaynağı işlemek için iletilir ve sonra haritanın katmanlarına eklenir.
     
     Yukarıdaki kod parçacığını ekledikten sonra `MainActivity.java` aşağıdaki gibi görünmelidir:
     
@@ -165,19 +165,17 @@ Sembol katmanını kullanarak haritada bir işaretleyici eklemek için aşağıd
         }
     }
     ```
-    
-Bu noktada, uygulamanızı çalıştırırsanız burada gösterildiği gibi haritada bir işaret görmeniz gerekir:
 
-<center>
+Uygulamayı çalıştırdığınızda, haritada aşağıda gösterildiği gibi bir işaret görürsünüz:
 
-![Android eşleme PIN 'i](./media/how-to-add-symbol-to-android-map/android-map-pin.png)</center>
+![Android eşleme PIN 'i](./media/how-to-add-symbol-to-android-map/android-map-pin.png)
 
 > [!TIP]
 > Varsayılan olarak, sembol katmanları örtüşen sembolleri gizleyerek sembol işlemesini iyileştirir. Yakınlaştırma sırasında gizli simgeler görünür hale gelir. Bu özelliği devre dışı bırakmak ve tüm sembolleri her zaman işlemek için `iconAllowOverlap` seçeneğini olarak ayarlayın `true` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Haritanızda daha fazla bilgi eklemek için bkz.:
+Haritanızda daha fazla veri eklemek için bkz.:
 
 > [!div class="nextstepaction"]
 > [Android haritasına şekil ekleme](./how-to-add-shapes-to-android-map.md)

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: c77001707eda7c208ad19a014a1f0cff2b85b25d
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: b23b5a81fdff8a05742092f517128e08723103fc
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95736485"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531148"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Azure için SQL Data Sync nedir?
 
@@ -26,7 +26,7 @@ SQL Data Sync, hem şirket içinde hem de bulutta birden çok veritabanı üzeri
 > Azure SQL Data Sync Şu anda Azure SQL yönetilen örneğini desteklemez.
 
 
-## <a name="overview"></a>Genel Bakış 
+## <a name="overview"></a>Genel bakış 
 
 Veri eşitleme, bir eşitleme grubu kavramını temel alarak. Eşitleme grubu, eşitlemek istediğiniz veritabanlarının bir grubudur.
 
@@ -63,10 +63,8 @@ Veri eşitleme, aşağıdaki senaryolar için tercih edilen çözüm değildir:
 | Olağanüstü Durum Kurtarma | [Azure coğrafi olarak yedekli yedeklemeler](automated-backups-overview.md) |
 | Ölçeği oku | [Salt okunurdur ve salt okuma sorgu iş yüklerinin yükünü dengelemek için salt okuma çoğaltmaları kullanın (Önizleme)](read-scale-out.md) |
 | ETL (OLTP-OLAP) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) veya [SQL Server Integration Services](/sql/integration-services/sql-server-integration-services) |
-| SQL Server 'den Azure SQL veritabanı 'na geçiş | [Azure Veritabanı Geçiş Hizmeti](https://azure.microsoft.com/services/database-migration/) |
+| SQL Server 'den Azure SQL veritabanı 'na geçiş. Ancak, kaynak ve hedefin eşitlenmiş durumda tutulduğundan emin olmak için geçiş tamamlandıktan sonra SQL Data Sync kullanılabilir.  | [Azure Veritabanı Geçiş Hizmeti](https://azure.microsoft.com/services/database-migration/) |
 |||
-
-
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
@@ -83,7 +81,7 @@ Veri eşitleme, aşağıdaki senaryolar için tercih edilen çözüm değildir:
 | **Avantajlar** | -Etkin-etkin destek<br/>-Şirket içi ve Azure SQL veritabanı arasında çift yönlü | -Düşük gecikme süresi<br/>-İşlemsel tutarlılık<br/>-Geçişten sonra var olan topolojiyi yeniden kullan <br/>-Azure SQL yönetilen örnek desteği |
 | **Dezavantajlar** | -İşlem tutarlılığı yok<br/>-Daha yüksek performans etkisi | -Azure SQL veritabanından yayımlanamıyor <br/>-Yüksek bakım maliyeti |
 
-## <a name="get-started"></a>başlarken 
+## <a name="get-started"></a>Kullanmaya başlayın 
 
 ### <a name="set-up-data-sync-in-the-azure-portal"></a>Azure portal veri eşitlemesini ayarlama
 

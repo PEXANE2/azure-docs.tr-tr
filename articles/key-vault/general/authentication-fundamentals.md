@@ -7,12 +7,12 @@ ms.date: 09/25/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 30c26fcc48b1051944c181c0d24ae9e3c89ce477
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 6de0fc52ae265a47ca7f52d46e5f44b74c1277aa
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565832"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530927"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Key Vault Kimlik Doğrulamasının temelleri
 
@@ -116,8 +116,6 @@ Key Vault rol atamaları, anahtarlara, sırları ve sertifikalara erişmek için
 * Azure RBAC izinleri, kullanıcılara bir abonelikte, kaynak grubunda veya tek bir Anahtar Kasası düzeyinde atanmış bu rollere sahip olmasını sağlayarak ölçeklenebilir şekilde yönetilebilir. Bir kullanıcının Azure RBAC atamasının kapsamındaki tüm anahtar kasaları için veri düzlemi izinleri olacaktır. Bu, Anahtar Kasası başına Kullanıcı/uygulama başına bireysel erişim ilkesi izinleri atama gereksinimini ortadan kaldırır.
 
 * Azure RBAC izinleri Privileged Identity Management veya PıM ile uyumludur. Bu, Key Vault Yöneticisi gibi ayrıcalıklı roller için tam zamanında erişim denetimleri yapılandırmanıza olanak tanır. Bu, en iyi güvenlik uygulamasıdır ve anahtar kasalarınıza olan erişimi ortadan kaldırarak en az ayrıcalık sorumlusunu izler.
-
-* Azure RBAC izinleri, nesne başına ayrıntılı izinlerle uyumludur, bu sayede bir kullanıcının yalnızca bazı Anahtar Kasası nesnelerinizin işlemlerini gerçekleştirmesini kısıtlayabilirsiniz. Bu, birden fazla uygulamanın uygulamalar arasında erişimi yalıtmaya devam ederken tek bir anahtar kasasını paylaşmasına izin verir.
 
 Key Vault için Azure RBAC hakkında daha fazla bilgi için aşağıdaki belgelere bakın:
 

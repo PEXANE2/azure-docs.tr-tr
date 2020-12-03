@@ -4,12 +4,12 @@ description: En son özellikleri ve güvenlik güncelleştirmelerini almak için
 services: container-service
 ms.topic: article
 ms.date: 11/17/2020
-ms.openlocfilehash: 262905c9f840850795ba9555912e81eca61369d1
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 30ad80727c238ae7e415039adf3e4eb75dbbc1b5
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683242"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531352"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) kümesini yükseltme
 
@@ -121,6 +121,64 @@ Name          Location    ResourceGroup    KubernetesVersion    ProvisioningStat
 myAKSCluster  eastus      myResourceGroup  1.13.10               Succeeded            myaksclust-myresourcegroup-19da35-90efab95.hcp.eastus.azmk8s.io
 ```
 
+## <a name="set-auto-upgrade-channel-preview"></a>Otomatik yükseltme kanalını ayarla (Önizleme)
+
+Bir kümeyi el ile yükseltmenin yanı sıra, kümenizde bir otomatik yükseltme kanalı da ayarlayabilirsiniz. Aşağıdaki yükseltme kanalları kullanılabilir:
+
+* *hiçbiri*, Otomatik yükseltmeleri devre dışı bırakan ve kümeyi geçerli Kubernetes sürümünde tutan yok. Bu varsayılandır ve hiçbir seçenek belirtilmemişse kullanılır.
+* ikincil sürümü aynı tutarken, kümeyi desteklenen en son düzeltme eki sürümüne otomatik olarak yükseltecek olan *Düzeltme Eki*. Örneğin, bir küme sürüm *1.17.7* çalıştırıyorsa ve *1.17.9*, *1.18.4*, *1.18.6* ve *1.19.1* sürümleri kullanılabiliyorsa, kümeniz *1.17.9* olarak yükseltilir.
+* *kararlı*, kümeyi alt sürüm *N-1*' deki desteklenen en son düzeltme eki sürümüne otomatik olarak yükseltecek, burada *n* desteklenen en son alt sürümdür. Örneğin, bir küme sürüm *1.17.7* çalıştırıyorsa ve *1.17.9*, *1.18.4*, *1.18.6* ve *1.19.1* sürümleri kullanılabiliyorsa, kümeniz *1.18.6* olarak yükseltilir.
+* *hızlı*, kümeyi en son desteklenen alt sürümde bulunan en son desteklenen yama sürümüne otomatik olarak yükseltecek. Kümenin en son desteklenen alt sürüm olduğu *n-2* alt *sürümünde yer alan* Kubernetes 'nin bir sürümünde olduğu durumlarda, küme ilk olarak *n-1* alt sürümünde desteklenen en son düzeltme eki sürümüne yükseltir. Örneğin, bir küme sürüm *1.17.7* çalıştırıyorsa ve *1.17.9*, *1.18.4*, *1.18.6* ve *1.19.1* sürümleri kullanılabiliyorsa, kümeniz önce *1.18.6* olarak yükseltilir, sonra *1.19.1* olarak yükseltilir.
+
+> [!NOTE]
+> Küme otomatik yükseltme yalnızca Kubernetes 'in GA sürümlerine güncelleştirmeler sağlar ve önizleme sürümleri için güncelleştirmeyecektir.
+
+Bir kümeyi otomatik olarak yükseltme, bir kümeyi el ile yükseltirken aynı işlemi izler. Daha ayrıntılı bilgi için bkz. [AKS kümesini yükseltme][upgrade-cluster].
+
+AKS kümeleri için küme otomatik yükseltmesi bir önizleme özelliğidir.
+
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+
+`AutoUpgradePreview`Aşağıdaki örnekte gösterildiği gibi, [az Feature Register][az-feature-register] komutunu kullanarak özellik bayrağını kaydedin:
+
+```azurecli-interactive
+az feature register --namespace Microsoft.ContainerService -n AutoUpgradePreview
+```
+
+Durumun *kayıtlı* gösterilmesi birkaç dakika sürer. [Az Feature List][az-feature-list] komutunu kullanarak kayıt durumunu doğrulayın:
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AutoUpgradePreview')].{Name:name,State:properties.state}"
+```
+
+Hazırlandığınızda, [az Provider Register][az-provider-register] komutunu kullanarak *Microsoft. Containerservice* kaynak sağlayıcısı kaydını yenileyin:
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
+
+*Aks-Preview* uzantısını yüklemek için [az Extension Add][az-extension-add] komutunu kullanın ve [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeleri denetleyin:
+
+```azurecli-interactive
+# Install the aks-preview extension
+az extension add --name aks-preview
+
+# Update the extension to make sure you have the latest version installed
+az extension update --name aks-preview
+```
+
+Bir küme oluştururken otomatik yükseltme kanalını ayarlamak için, aşağıdaki örneğe benzer şekilde *otomatik yükseltme kanalı* parametresini kullanın.
+
+```azurecli-interactive
+az aks create --resource-group myResourceGroup --name myAKSCluster --auto-upgrade-channel stable --generate-ssh-keys
+```
+
+Mevcut kümede otomatik yükseltme kanalını ayarlamak için, aşağıdaki örneğe benzer şekilde *otomatik yükseltme kanalı* parametresini güncelleştirin.
+
+```azurecli-interactive
+az aks update --resource-group myResourceGroup --name myAKSCluster --auto-upgrade-channel stable
+```
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu makalede, mevcut bir AKS kümesini nasıl yükselteceğiniz açıklanır. AKS kümelerini dağıtma ve yönetme hakkında daha fazla bilgi için bkz. öğreticiler kümesi.
@@ -137,6 +195,10 @@ Bu makalede, mevcut bir AKS kümesini nasıl yükselteceğiniz açıklanır. AKS
 [az-aks-get-upgrades]: /cli/azure/aks#az-aks-get-upgrades
 [az-aks-upgrade]: /cli/azure/aks#az-aks-upgrade
 [az-aks-show]: /cli/azure/aks#az-aks-show
-[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+[az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true
+[nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
+[upgrade-cluster]:  #upgrade-an-aks-cluster

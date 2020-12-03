@@ -7,12 +7,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: b695205c08f9039fbf91eaeddb7622b784d81d12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 69ac1e82c267dee521143c4ed5f6c2be4d32e2ea
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400596"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531335"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights için kullanımı ve maliyetleri yönetme
 
@@ -74,7 +74,7 @@ Application Insights ücretleri Azure faturanızda eklenir. Azure faturanızın 
 ### <a name="using-data-volume-metrics"></a>Veri hacmi ölçümlerini kullanma
 <a id="understanding-ingested-data-volume"></a>
 
-Veri birimleriniz hakkında daha fazla bilgi edinmek için Application Insights kaynağınız için **ölçümleri** seçin, yeni bir grafik ekleyin. Grafik ölçümü için, **günlük tabanlı ölçümler**altında, **veri noktası birimi**' ni seçin. **Bölmeyi Uygula**' ya tıklayın ve ** `Telemetryitem` türe**göre Gruplandır ' ı seçin.
+Veri birimleriniz hakkında daha fazla bilgi edinmek için Application Insights kaynağınız için **ölçümleri** seçin, yeni bir grafik ekleyin. Grafik ölçümü için, **günlük tabanlı ölçümler** altında, **veri noktası birimi**' ni seçin. **Bölmeyi Uygula**' ya tıklayın ve **`Telemetryitem` türe** göre Gruplandır ' ı seçin.
 
 ![Veri hacmine bakmak için ölçümleri kullanma](./media/pricing/10-billing.png)
 
@@ -148,7 +148,7 @@ union (AppAvailabilityResults),
       (AppRequests),
       (AppSystemEvents),
       (AppTraces)
-| where TimeGenerated >= startofday(ago(7d) and TimeGenerated < startofday(now())
+| where TimeGenerated >= startofday(ago(7d)) and TimeGenerated < startofday(now())
 | summarize sum(_BilledSize) by _ResourceId, bin(TimeGenerated, 1d)
 | render areachart
 ```
@@ -167,7 +167,7 @@ union (AppAvailabilityResults),
       (AppRequests),
       (AppSystemEvents),
       (AppTraces)
-| where TimeGenerated >= startofday(ago(7d) and TimeGenerated < startofday(now())
+| where TimeGenerated >= startofday(ago(7d)) and TimeGenerated < startofday(now())
 | where _ResourceId contains "<myAppInsightsResourceName>"
 | summarize sum(_BilledSize) by Type, bin(TimeGenerated, 1d)
 | render areachart
@@ -188,7 +188,7 @@ Aşağıdaki teknikler kullanılarak, göndereceğiniz verilerin hacmi yönetile
 
 * **Ajax çağrılarını sınırlandırma**: her sayfa görünümünde [bildirilemeyen Ajax çağrısı sayısını sınırlayabilir](./javascript.md#configuration) veya Ajax raporlamayı devre dışı bırakabilirsiniz.
 
-* **Gereksiz modülleri devre dışı bırak**: ihtiyacınız olmayan koleksiyon modüllerini kapatmak için [ApplicationInsights.configdüzenleyin ](./configuration-with-applicationinsights-config.md) . Örneğin, performans sayaçları veya bağımlılık verilerinin yoksayılması olduğuna karar verebilirsiniz.
+* **Gereksiz modülleri devre dışı bırak**: ihtiyacınız olmayan koleksiyon modüllerini kapatmak için [ApplicationInsights.configdüzenleyin](./configuration-with-applicationinsights-config.md) . Örneğin, performans sayaçları veya bağımlılık verilerinin yoksayılması olduğuna karar verebilirsiniz.
 
 * **Ön toplama ölçümleri**: uygulamanızda trackmetric çağrıları yerleştirirseniz, bir ölçüm toplu işinin ortalama ve standart sapması hesaplamasını kabul eden aşırı yüklemeyi kullanarak trafiği azaltabilirsiniz. Ya da, [önceden toplama paketi](https://www.myget.org/gallery/applicationinsights-sdk-labs)de kullanabilirsiniz.
  
@@ -198,7 +198,7 @@ Aşağıdaki teknikler kullanılarak, göndereceğiniz verilerin hacmi yönetile
     
     Günlük Cap hakkındaki uyarı e-postaları, Application Insights kaynağınız için bu rollerin üyesi olan hesaba gönderilir: "ServiceAdmin", "AccountAdmin", "CoAdmin", "Owner".
 
-    Günlük sınırı ayarlarken dikkatli olun. Amacınızı *hiçbir şekilde günlük tepesine vurmamanız*gerekir. Günlük sınıra ulaşırsanız günün geri kalanında veri kaybı yaşarsınız ve uygulamalarınızı izleyemezsiniz. Günlük ucunu değiştirmek için, **günlük hacim Cap** seçeneğini kullanın. Bu seçeneğe **kullanım ve tahmini maliyetler** bölmesinde erişebilirsiniz (Bu, makalenin ilerleyen kısımlarında daha ayrıntılı olarak açıklanmıştır).
+    Günlük sınırı ayarlarken dikkatli olun. Amacınızı *hiçbir şekilde günlük tepesine vurmamanız* gerekir. Günlük sınıra ulaşırsanız günün geri kalanında veri kaybı yaşarsınız ve uygulamalarınızı izleyemezsiniz. Günlük ucunu değiştirmek için, **günlük hacim Cap** seçeneğini kullanın. Bu seçeneğe **kullanım ve tahmini maliyetler** bölmesinde erişebilirsiniz (Bu, makalenin ilerleyen kısımlarında daha ayrıntılı olarak açıklanmıştır).
     
     Application Insights için kullanılamayacak kredi içeren bazı abonelik türlerinde kısıtlama kaldırdık. Daha önce, aboneliğin bir harcama limiti varsa, günlük sınır iletişim kutusunda harcama limitini kaldırma ve günlük ucunun 32,3 MB/gün dışında bir şekilde çıkarılması için yönergeler vardır.
     
@@ -287,7 +287,7 @@ Günlük birim Cap e-postalarını devre dışı bırakmak için, Application In
 Azure Application Insights 'in erken benimseme için, hala iki olası fiyatlandırma katmanı vardır: temel ve kurumsal. Temel fiyatlandırma katmanı yukarıda açıklananla aynıdır ve varsayılan katmandır. Ek bir ücret ödemeden tüm kurumsal katman özelliklerini içerir. Temel katman, birincil olarak alınan verilerin hacmi üzerinde yer alır.
 
 > [!NOTE]
-> Bu eski fiyatlandırma katmanları yeniden adlandırıldı. Kurumsal fiyatlandırma katmanı artık **düğüm başına** çağrılır ve temel fiyatlandırma KATMANı artık **GB başına**çağırılır. Bu yeni adlar aşağıda ve Azure portal kullanılır.  
+> Bu eski fiyatlandırma katmanları yeniden adlandırıldı. Kurumsal fiyatlandırma katmanı artık **düğüm başına** çağrılır ve temel fiyatlandırma KATMANı artık **GB başına** çağırılır. Bu yeni adlar aşağıda ve Azure portal kullanılır.  
 
 Düğüm başına (eskiden Enterprise) katmanının düğüm başına ücreti vardır ve her düğüm günlük veri indirimi alır. Düğüm başına fiyatlandırma katmanında, dahil edilen indirimin üzerinde alınan veriler için ücretlendirilirsiniz. Operations Management Suite kullanıyorsanız düğüm başına katmanını seçmeniz gerekir.
 

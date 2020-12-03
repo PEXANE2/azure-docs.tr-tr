@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 6da80ec4c9c3c4e6c95eb1c9001596ffe3dd5711
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c69df88828a179cf1dce7bd35ac19c518b07903d
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447849"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530723"
 ---
 # <a name="troubleshooting-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL Havuzu (eski adıyla SQL DW) sorunlarını giderme
 
@@ -45,6 +45,7 @@ Bu makalede, Azure SYNAPSE Analytics 'te adanmış SQL havuzunda (eski adıyla S
 | Sorun                                                        | Çözüm                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | CETAS kullanarak boş dizeleri dışarı aktarmak, Parquet ve ORC dosyalarında NULL değerler oluşmasına neden olur. Not NULL kısıtlamaları olmayan sütunlardan boş dizeler dışarı aktarıyorsanız, CETAS reddedilen kayıtlarla sonuçlanır ve dışa aktarma potansiyel olarak başarısız olabilir. | CETAS 'ın SELECT deyimindeki boş dizeleri veya sorunlu sütunu kaldırın. |
+| Parquet ve ORC dosya biçimi için 0-127 aralığının dışında bir değerin bir mini sütuna yüklenmesi desteklenmez. | Hedef sütun için daha büyük bir veri türü belirtin.           |
 
 ## <a name="performance"></a>Performans
 
