@@ -7,19 +7,20 @@ author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/15/2020
+ms.date: 12/02/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5a1f03966fa43d85192869e5ada85fd68397dba
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 60d71c44ebaba5b0cbcb03afa41ad15237dceaef
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95488887"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96547483"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Microsoft 365 grupları için süre sonu ilkesini yapılandırma
 
@@ -61,10 +62,10 @@ Yöneticiler, Azure AD 'de etkinlik denetim günlüklerinden otomatik olarak yen
 
 Aşağıda, Azure AD 'de Microsoft 365 grupları için süre sonu yapılandırıp kullanabileceğiniz roller verilmiştir.
 
-Rol | İzinler
+Role | İzinler
 -------- | --------
 Genel yönetici, Grup Yöneticisi veya Kullanıcı Yöneticisi | Microsoft 365 grupları için süre sonu ilke ayarlarını oluşturabilir, okuyabilir, güncelleştirebilir veya silebilir<br>Herhangi bir Microsoft 365 grubunu yenileyebilirler
-Kullanıcı | Sahip oldukları bir Microsoft 365 grubunu yenileyebilirler<br>Sahip oldukları bir Microsoft 365 grubunu geri yükleyebilir<br>Süre sonu ilke ayarlarını okuyabilir
+User | Sahip oldukları bir Microsoft 365 grubunu yenileyebilirler<br>Sahip oldukları bir Microsoft 365 grubunu geri yükleyebilir<br>Süre sonu ilke ayarlarını okuyabilir
 
 Silinen bir grubu geri yükleme izinleri hakkında daha fazla bilgi için, [Azure Active Directory içindeki silinen Microsoft 365 grubunu geri yükleme](groups-restore-deleted.md)bölümüne bakın.
 

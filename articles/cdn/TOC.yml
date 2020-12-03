@@ -111,8 +111,8 @@
     - name: Çözümleme
       href: cdn-log-analysis.md
       items:
-        - name: HTTP ham günlükleri
-          href: enable-raw-logs.md
+        - name: 'İzleme, ölçümler ve erişim günlükleri'
+          href: monitoring-and-access-log.md
         - name: Azure tanılama günlükleri
           href: cdn-azure-diagnostic-logs.md
         - name: Verizon'dan alınan Azure CDN için Analytics araçları

@@ -1,30 +1,26 @@
 - name: Microsoft kimlik platformu belgeleri
   href: index.yml
 - name: Genel Bakış
+  expanded: true
   items:
     - name: Microsoft kimlik platformu nedir?
       href: v2-overview.md
     - name: Docs’taki yenilikler?
       href: whats-new-docs.md
 - name: Hızlı Başlangıçlar
-  expanded: true
   items:
-    - name: Kiracı ayarlama
-      href: quickstart-create-new-tenant.md
-    - name: Uygulama yapılandırma
+    - name: Geliştirme için hazırlanma
       items:
-        - name: Bir uygulamayı kaydetme
+        - name: Azure AD kiracısı edinin
+          href: quickstart-create-new-tenant.md
+        - name: Uygulamayı veya Web API’sini kaydetme
           href: quickstart-register-app.md
-        - name: Bir web API'sini kullanıma sunmak için uygulamayı yapılandırma
+        - name: Web API’si kaydında kapsamları kullanıma sunma
           href: quickstart-configure-app-expose-web-apis.md
-        - name: Bir web API'sine erişmek için uygulamayı yapılandırma
+        - name: Web API’sine kapsamlı izin verme
+          displayName: 'permissions, scp, scp claims'
           href: quickstart-configure-app-access-web-apis.md
-        - name: Bir uygulama tarafından desteklenen hesapları değiştirme
-          href: quickstart-modify-supported-accounts.md
-        - name: Uygulama kaldırma
-          href: quickstart-remove-app.md
-    - name: Tek sayfalı uygulamalar
-      displayName: SPA
+    - name: Tek sayfalı uygulama (SPA)
       items:
         - name: Angular
           href: quickstart-v2-angular.md
@@ -32,7 +28,7 @@
           href: quickstart-v2-javascript-auth-code.md
         - name: JavaScript - Örtük akış
           href: quickstart-v2-javascript.md
-    - name: Web uygulamaları
+    - name: Web uygulaması
       items:
         - name: ASP.NET
           href: quickstart-v2-aspnet-webapp.md
@@ -41,19 +37,18 @@
         - name: Node.js - MSAL | Önizleme
           href: quickstart-v2-nodejs-webapp-msal.md
         - name: Node.js - Passport.js
-          href: quickstart-v2-nodejs-webapp.md
           displayName: OIDC
         - name: Java
           href: quickstart-v2-java-webapp.md
         - name: Python
           href: quickstart-v2-python-webapp.md
-    - name: Web API'leri
+    - name: Web API
       items:
         - name: ASP.NET
           href: quickstart-v2-dotnet-native-aspnet.md
         - name: ASP.NET Çekirdeği
           href: quickstart-v2-aspnet-core-web-api.md
-    - name: Mobil uygulamalar ve masaüstü uygulamaları
+    - name: Mobil ve masaüstü
       items:
         - name: Android
           href: quickstart-v2-android.md
@@ -64,7 +59,7 @@
           href: quickstart-v2-uwp.md
         - name: Windows Masaüstü .NET
           href: quickstart-v2-windows-desktop.md
-    - name: Daemon uygulamaları
+    - name: Daemon veya arka uç hizmeti
       items:
         - name: .NET Core konsolu (daemon)
           href: quickstart-v2-netcore-daemon.md
@@ -72,8 +67,7 @@
           href: quickstart-v2-python-daemon.md
 - name: Öğreticiler
   items:
-    - name: Tek sayfalı uygulamalar
-      displayName: SPA
+    - name: Tek sayfalı uygulama (SPA)
       items:
         - name: Angular
           href: tutorial-v2-angular.md
@@ -83,13 +77,13 @@
           href: tutorial-v2-javascript-auth-code.md
         - name: JavaScript - Örtük akış
           href: tutorial-v2-javascript-spa.md
-    - name: Web uygulamaları
+    - name: Web uygulaması
       items:
         - name: ASP.NET
           href: tutorial-v2-asp-webapp.md
         - name: Blazor Server
           href: tutorial-blazor-server.md
-    - name: Mobil uygulamalar ve masaüstü uygulamaları
+    - name: Mobil ve masaüstü
       items:
         - name: Android
           href: tutorial-v2-android.md
@@ -102,7 +96,7 @@
           href: tutorial-v2-windows-desktop.md
         - name: Android uygulamanızda paylaşılan cihaz modunu kullanma
           href: tutorial-v2-shared-device-mode.md
-    - name: Daemon uygulamaları
+    - name: Daemon veya arka uç hizmeti
       items:
         - name: ASP.NET daemon web uygulaması
           href: tutorial-v2-aspnet-daemon-web-app.md
@@ -120,21 +114,37 @@
           href: security-tokens.md
         - name: Uygulama modeli
           href: application-model.md
-        - name: Uygulama oturum açma akışı
-          href: app-sign-in-flow.md
-    - name: Kimlik doğrulama akışları ve uygulama senaryoları
+    - name: Kimlik doğrulama kitaplıkları
+      displayName: 'msal, microsoft.identity.web'
+      items:
+        - name: Microsoft Authentication Library (MSAL)
+          href: msal-overview.md
+        - name: Microsoft Kimlik Web kitaplığı
+          href: microsoft-identity-web.md
+          displayName: 'auth, library, .NET Core, msal'
+    - name: Uygulama senaryoları ve kimlik doğrulaması akışları
       displayName: Auth flows
       href: authentication-flows-app-scenarios.md
+    - name: Uygulamalar ve hizmet sorumluları
+      href: app-objects-and-service-principals.md
     - name: Kimlik platformu en iyi yöntemleri
       href: identity-platform-integration-checklist.md
-    - name: Mobil cihazda çoklu oturum açma (SSO)
-      href: mobile-sso-support-overview.md
-      displayName: 'android, ios'
-    - name: Uygulama senaryoları
+    - name: İzinler ve onay
+      displayName: Scopes
+      href: v2-permissions-and-consent.md
+    - name: Koşullu erişim
+      href: v2-conditional-access-dev-guide.md
+    - name: Otomatik kullanıcı sağlama (SCIM)
+      href: ../app-provisioning/user-provisioning.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
+- name: Nasıl yapılır
+  items:
+    - name: Uygulama senaryonuzu tümleştirme
       displayName: App scenarios
       items:
         - name: Hedef kitlenin oturumunu açma
           href: v2-supported-account-types.md
+        - name: Uygulama oturum açma akışı
+          href: app-sign-in-flow.md
         - name: Tek sayfalı uygulama
           displayName: SPA
           items:
@@ -267,11 +277,33 @@
               href: scenario-mobile-call-api.md
             - name: Üretime taşıma
               href: scenario-mobile-production.md
-    - name: Microsoft Authentication Library (MSAL)
+    - name: Microsoft Authentication Library ile çalışma
+      displayName: MSAL
       items:
-        - name: Genel Bakış
-          href: msal-overview.md
-        - name: .NET
+        - Name: Tüm platformlar
+          items:
+            - name: Desteklenen kimlik doğrulama akışları
+              href: msal-authentication-flows.md
+            - name: Belirteçleri alma ve önbelleğe alma
+              href: msal-acquire-cache-tokens.md
+            - name: Ortak ve gizli istemci uygulamaları
+              href: msal-client-applications.md
+            - name: Uygulama yapılandırması
+              href: msal-client-application-configuration.md
+            - name: Paylaşılan cihazlar
+              href: msal-shared-devices.md
+              displayName: 'shared device mode, firstline worker, frontline worker, flw'
+            - name: Chrome tarayıcısında SameSite tanımlama bilgisi değişikliklerini işleme
+              href: howto-handle-samesite-cookie-changes-chrome-browser.md
+            - name: v1.0 belirteçleri kabul eden web API'si için kapsamlar
+              href: msal-v1-app-scopes.md
+            - name: ADAL’den MSAL’ye uygulama geçirme
+              href: msal-migration.md
+              displayName: migration
+            - name: Ulusal bulutlar ve MSAL
+              href: msal-national-cloud.md
+              displayName: 'china, germany, gov, 21vianet'
+        - name: MSAL.NET
           displayName: 'xamarin, ASP.NET Core'
           items:
             - name: Uygulamaları başlatma
@@ -294,7 +326,103 @@
               href: msal-handling-exceptions.md?tabs=dotnet
             - name: Günlüğe kaydetme
               href: msal-logging.md?tabs=dotnet
-        - name: Android
+            - name: Önbellekten belirteç alma
+              href: msal-net-acquire-token-silently.md
+            - name: Belirteç önbelleği serileştirme
+              href: msal-net-token-cache-serialization.md
+            - name: Belirteç önbelleği temizleme
+              href: msal-net-clear-token-cache.md
+            - name: Genel istemci uygulaması örneği oluşturma
+              href: msal-net-instantiate-public-client-config-options.md
+            - name: Seçeneklerle gizli istemci örneği oluşturma
+              href: msal-net-instantiate-confidential-client-config-options.md
+            - name: Çeşitli kaynaklar için onay alma
+              href: msal-net-user-gets-consent-for-multiple-resources.md
+            - name: Kendi HttpClient değerinizi sağlama
+              href: msal-net-provide-httpclient.md
+        - name: MSAL.js (JavaScript ve Node.js)
+          items:
+            - name: Sayfa yeniden yüklemelerinden kaçınma
+              href: msal-js-avoid-page-reloads.md
+            - name: Kimlik doğrulaması isteklerinde özel durumu geçme
+              href: msal-js-pass-custom-state-authentication-request.md
+            - name: Komut istemi davranışı
+              href: msal-js-prompt-behavior.md
+            - name: SPA’yı örtük durumdan kimlik doğrulaması akışına geçirme
+              href: migrate-spa-implicit-to-auth-code.md
+              displayName: 'authorization, single-page app, 2.0'
+            - name: Uygulamaları başlatma - JavaScript
+              href: msal-js-initializing-client-applications.md
+            - name: Azure AD B2C ile tümleştirme
+              href: msal-b2c-overview.md
+            - name: MSAL.js'ye geçirme
+              href: msal-compare-msal-js-and-adal-js.md
+            - name: MSAL.js ile çoklu oturum açma
+              href: msal-js-sso.md
+            - name: Dikkat edilmesi gerekenler - IE
+              href: msal-js-use-ie-browser.md
+            - name: Bilinen sorunlar - IE ve Microsoft Edge
+              href: msal-js-known-issues-ie-edge-browsers.md
+            - name: Hataları ve özel durumları işleme
+              href: msal-handling-exceptions.md?tabs=javascript
+            - name: Günlüğe kaydetme
+              href: msal-logging.md?tabs=javascript
+        - name: iOS ve macOS için MSAL
+          items:
+            - name: iOS ve macOS için MSAL farklılıkları
+              href: msal-differences-ios-macos.md
+            - name: Anahtarlık yapılandırma
+              href: howto-v2-keychain-objc.md
+            - name: Tarayıcıları ve WebView’ları özelleştirme
+              href: customize-webviews.md
+            - name: Özel talepler isteme
+              href: request-custom-claims.md
+            - name: Yeniden yönlendirme URI’si yapılandırması
+              href: redirect-uris-ios.md
+            - name: Azure AD B2C ile tümleştirme
+              href: config-authority.md#b2c
+            - name: MSAL.iOS / macOS’e Geçiş
+              href: migrate-objc-adal-msal.md
+            - name: iOS cihazlar için paylaşılan cihaz modu
+              href: msal-ios-shared-devices.md
+              displayName: 'firstline worker, frontline worker, flw'
+            - name: MSAL uygulamaları arasında SSO
+              href: single-sign-on-macos-ios.md
+            - name: ADAL ve MSAL uygulamaları arasında SSO
+              href: sso-between-adal-msal-apps-macos-ios.md
+            - name: SSL sorunlarını giderme (MSAL iOS/macOS)
+              href: ssl-issues.md
+            - name: Hataları ve özel durumları işleme
+              href: msal-handling-exceptions.md?tabs=iosmacos
+            - name: Günlüğe kaydetme
+              href: msal-logging.md?tabs=swift
+        - name: Python için MSAL
+          items:
+            - name: Özel belirteç önbelleği serileştirme
+              href: msal-python-token-cache-serialization.md
+            - name: MSAL Python’a geçiş
+              href: migrate-python-adal-msal.md
+            - name: Python için MSAL’de ADFS desteği
+              href: msal-python-adfs-support.md
+            - name: Hataları ve özel durumları işleme
+              href: msal-handling-exceptions.md?tabs=python
+            - name: Günlüğe kaydetme
+              href: msal-logging.md?tabs=python
+        - name: Java için MSAL
+          items:
+            - name: Özel belirteç önbelleği serileştirme
+              href: msal-java-token-cache-serialization.md
+            - name: Belirteç önbelleğinden hesap alma ve kaldırma
+              href: msal-java-get-remove-accounts-token-cache.md
+            - name: Java için MSAL’ye geçiş
+              href: migrate-adal-msal-java.md
+            - name: Java için MSAL’de ADFS desteği
+              href: msal-java-adfs-support.md
+            - name: Hataları ve özel durumları işleme
+              href: msal-handling-exceptions.md?tabs=java
+            - name: Günlüğe kaydetme
+              href: msal-logging.md?tabs=java
+        - name: Android için MSAL
           items:
             - name: Hesaplar ve kiracı profilleri
               href: accounts-overview.md
@@ -314,92 +442,107 @@
               displayName: 'android, mobile'
             - name: Günlüğe kaydetme
               href: msal-logging.md?tabs=android
-        - name: iOS ve macOS
+    - name: Belirteçleri ve talepleri özelleştirme
+      items:
+        - name: Rol talebini yapılandırma
+          href: active-directory-enterprise-app-role-management.md
+        - name: Azure portalı kullanarak talepleri özelleştirme
+          href: active-directory-saml-claims-customization.md
+        - name: PowerShell’i kullanarak talepleri özelleştirme
+          href: active-directory-claims-mapping.md
+        - name: İsteğe bağlı talepleri yapılandırma
+          href: active-directory-optional-claims.md
+        - name: Taleplerde dizin şeması uzantısı özniteliklerini kullanma
+          href: active-directory-schema-extensions.md
+        - name: Belirteç ömrünü yapılandırma
+          href: configure-token-lifetimes.md
+        - name: Sürekli Erişim Değerlendirmesi API’lerini kullanma
+          href: app-resilience-continuous-access-evaluation.md
+          displayName: cae
+    - name: Tarayıcı tanımlama bilgisi kısıtlamalarını işleme
+      items:
+        - name: Safari’de ITP’yi işleme
+          href: reference-third-party-cookies-spas.md
+        - name: Chrome’da SameSite tanımlama bilgisi değişikliklerini işleme
+          href: howto-handle-samesite-cookie-changes-chrome-browser.md
+    - name: Uygulama ve hizmetlerde kimliğini doğrulaması
+      items:
+        - name: Azure PowerShell’i kullanarak hizmet sorumlusu oluşturma
+          href: howto-authenticate-service-principal-powershell.md
+        - name: Azure portalı kullanarak hizmet sorumlusu oluşturma
+          href: howto-create-service-principal-portal.md
+    - name: Birden fazla kiracıdan oturum açılmasını kabul etme
+      items:
+        - name: Bir uygulama tarafından desteklenen hesapları değiştirme
+          href: quickstart-modify-supported-accounts.md
+        - name: Çok kiracılı oturum açma işlemlerini etkinleştirme
+          href: howto-convert-app-to-be-multi-tenant.md
+        - name: Yayımcı etki alanını yapılandırma
+          displayName: 'verified domain, verified publisher domain'
+          href: howto-configure-publisher-domain.md
+    - name: Uygulama ve kaynaklara erişim yetkisi verme
+      items:
+        - name: Uygulamanızı bir kullanıcı kümesiyle sınırlama
+          href: howto-restrict-your-app-to-a-set-of-users.md
+        - name: Uygulamanıza uygulama rolleri ekleme
+          href: howto-add-app-roles-in-azure-ad-apps.md
+    - name: Microsoft Graph API’sini kullanma
+      href: microsoft-graph-intro.md
+    - name: Uygulamayı piyasaya sürme
+      items:
+        - name: Marka yönergelerini izleme
+          displayName: Add branding
+          href: howto-add-branding-in-azure-ad-apps.md
+        - name: Hizmet Koşulları ve Gizlilik Bildirimini yapılandırma
+          href: howto-add-terms-of-service-privacy-statement.md
+        - name: Uygulamanız için yayımcı doğrulamasını yapılandırma
           items:
-            - name: Azure AD B2C ile tümleştirme
-              href: config-authority.md#b2c
-            - name: MSAL.iOS / macOS’e Geçiş
-              href: migrate-objc-adal-msal.md
-            - name: iOS cihazlar için paylaşılan cihaz modu
-              href: msal-ios-shared-devices.md
-              displayName: 'firstline worker, frontline worker, flw'
-            - name: MSAL uygulamaları arasında SSO
-              href: single-sign-on-macos-ios.md
-            - name: ADAL ve MSAL uygulamaları arasında SSO
-              href: sso-between-adal-msal-apps-macos-ios.md
-            - name: SSL sorunlarını giderme (MSAL iOS/macOS)
-              href: ssl-issues.md
-            - name: Hataları ve özel durumları işleme
-              href: msal-handling-exceptions.md?tabs=iosmacos
-            - name: Günlüğe kaydetme
-              href: msal-logging.md?tabs=swift
-        - name: Java
-          items:
-            - name: Java için MSAL’ye geçiş
-              href: migrate-adal-msal-java.md
-            - name: Java için MSAL’de ADFS desteği
-              href: msal-java-adfs-support.md
-            - name: Hataları ve özel durumları işleme
-              href: msal-handling-exceptions.md?tabs=java
-            - name: Günlüğe kaydetme
-              href: msal-logging.md?tabs=java
-        - name: JavaScript ve Node.js
-          items:
-            - name: Uygulamaları başlatma - JavaScript
-              href: msal-js-initializing-client-applications.md
-            - name: Azure AD B2C ile tümleştirme
-              href: msal-b2c-overview.md
-            - name: MSAL.js'ye geçirme
-              href: msal-compare-msal-js-and-adal-js.md
-            - name: MSAL.js ile çoklu oturum açma
-              href: msal-js-sso.md
-            - name: Dikkat edilmesi gerekenler - IE
-              href: msal-js-use-ie-browser.md
-            - name: Bilinen sorunlar - IE ve Microsoft Edge
-              href: msal-js-known-issues-ie-edge-browsers.md
-            - name: Hataları ve özel durumları işleme
-              href: msal-handling-exceptions.md?tabs=javascript
-            - name: Günlüğe kaydetme
-              href: msal-logging.md?tabs=javascript
-        - name: Python
-          items:
-            - name: MSAL Python’a geçiş
-              href: migrate-python-adal-msal.md
-            - name: Python için MSAL’de ADFS desteği
-              href: msal-python-adfs-support.md
-            - name: Hataları ve özel durumları işleme
-              href: msal-handling-exceptions.md?tabs=python
-            - name: Günlüğe kaydetme
-              href: msal-logging.md?tabs=python
-        - Name: Tüm platformlar
-          items:
-            - name: Desteklenen kimlik doğrulama akışları
-              href: msal-authentication-flows.md
-            - name: Belirteçleri alma ve önbelleğe alma
-              href: msal-acquire-cache-tokens.md
-            - name: Ortak ve gizli istemci uygulamaları
-              href: msal-client-applications.md
-            - name: Uygulama yapılandırması
-              href: msal-client-application-configuration.md
-            - name: Paylaşılan cihazlar
-              href: msal-shared-devices.md
-              displayName: 'shared device mode, firstline worker, frontline worker, flw'
-            - name: Chrome tarayıcısında SameSite tanımlama bilgisi değişikliklerini işleme
-              href: howto-handle-samesite-cookie-changes-chrome-browser.md
-            - name: v1.0 belirteçleri kabul eden web API'si için kapsamlar
-              href: msal-v1-app-scopes.md
-            - name: ADAL’den MSAL’ye uygulama geçirme
-              href: msal-migration.md
-              displayName: migration
-    - name: Microsoft Kimlik Web kitaplığı
-      href: microsoft-identity-web.md
-      displayName: 'auth, library, .NET Core'
+            - name: Uygulamanızı yayımcısı doğrulandı olarak işaretleme
+              href: mark-app-as-publisher-verified.md
+            - name: Yayımcı doğrulaması ile ilgili sorunları giderme
+              href: troubleshoot-publisher-verification.md
+        - name: Uygulama Kaynağında Yayımlama
+          href: v2-howto-get-appsource-certified.md
+        - name: Azure AD Uygulama Galerisi'nde Yayımlama
+          href: v2-howto-app-gallery-listing.md
+        - name: Office 365 Satıcı Panosu'nda Yayımlama
+          href: /office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store
+    - name: Visual Studio ile çalışma
+      items:
+        - name: Active Directory bağlı hizmetini kullanma
+          href: vs-active-directory-add-connected-service.md
+        - name: .NET MVC projelerini kullanmaya başlama
+          href: vs-active-directory-dotnet-getting-started.md
+        - name: .NET MVC projeme ne oldu?
+          href: vs-active-directory-dotnet-what-happened.md
+        - name: .NET WebAPI projelerini kullanmaya başlama
+          href: vs-active-directory-webapi-getting-started.md
+        - name: WebAPI projeme ne oldu?
+          href: vs-active-directory-webapi-what-happened.md
+        - name: Kimlik doğrulaması sırasında hataları tanılama
+          href: vs-active-directory-error.md
+    - name: Uygulama kaydını kaldırma
+      href: quickstart-remove-app.md
+- name: Başvuru
+  items:
+    - name: Sözlük
+      href: developer-glossary.md
+    - name: Uygulama yapılandırması
+      displayName: App configuration
+      items:
+        - name: Azure AD'ye uygulamalar nasıl ve neden eklenir?
+          href: active-directory-how-applications-are-added.md
+        - name: Yeniden yönlendirme URI’si/yanıt URL’si kısıtlamaları ve sınırlamaları
+          href: reply-url.md
+        - name: Desteklenen hesap türlerine göre doğrulama farklılıkları
+          href: supported-accounts-validation.md
+        - name: Tek kiracılı ve çok kiracılı uygulamalar
+          href: single-and-multi-tenant-apps.md
+        - name: Yayımcı doğrulaması
+          href: publisher-verification-overview.md
     - name: Kimlik doğrulama protokolleri
       displayName: Auth protocol
       items:
-        - name: Uygulama türleri ve OAuth 2.0
-          displayName: 'App types, OAuth'
-          href: v2-app-types.md
         - name: OAuth 2.0 ve OpenID Connect protokolleri
           items:
             - name: OAuth 2.0 ve OpenID Connect
@@ -445,27 +588,30 @@
               href: active-directory-saml-protocol-reference.md
             - name: SAML belirteçleri
               href: reference-saml-tokens.md
-    - name: Uygulama yapılandırması
-      displayName: App configuration
-      items:
-        - name: Uygulamalar ve hizmet sorumluları
-          displayName: 'Apps, service principals'
-          href: app-objects-and-service-principals.md
-        - name: Azure AD'ye uygulamalar nasıl ve neden eklenir?
-          href: active-directory-how-applications-are-added.md
-        - name: Yeniden yönlendirme URI’si/yanıt URL’si kısıtlamaları ve sınırlamaları
-          href: reply-url.md
-        - name: Desteklenen hesap türlerine göre doğrulama farklılıkları
-          href: supported-accounts-validation.md
-        - name: Tek kiracılı ve çok kiracılı uygulamalar
-          href: single-and-multi-tenant-apps.md
-        - name: Yayımcı doğrulaması
-          href: publisher-verification-overview.md
+    - name: Uygulama türleri ve OAuth 2.0
+      displayName: 'App types, OAuth'
+      href: v2-app-types.md
+    - name: Uygulama bildirimi
+      href: reference-app-manifest.md
+      displayName: app manifest
+    - name: Android MSAL yapılandırma dosyası
+      href: msal-configuration.md
+    - name: Kimlik doğrulama kitaplıkları
+      displayName: 'MSAL, auth library, SDK'
+      href: reference-v2-libraries.md
+    - name: Microsoft Graph’taki API’leri tanımlama ve bunlara erişme
+      href: /graph/api/resources/azure-ad-overview
+    - name: Kimlik doğrulaması ve yetkilendirme hata kodları
+      displayName: AADSTS
+      href: reference-aadsts-error-codes.md
+    - name: Yeni değişiklikler
+      href: reference-breaking-changes.md
+    - name: Mobil cihazda çoklu oturum açma (SSO)
+      href: mobile-sso-support-overview.md
+      displayName: 'android, ios'
     - name: İzinler ve onay
       displayName: Scopes
       items:
-        - name: İzin ve onay türleri
-          href: v2-permissions-and-consent.md
         - name: Onay çerçevesi
           href: consent-framework.md
         - name: Yönetici onayı
@@ -473,24 +619,23 @@
         - name: Uygulama onayı deneyimleri
           displayName: App consent experiences
           href: application-consent-experience.md
-    - name: Koşullu erişim
-      href: v2-conditional-access-dev-guide.md
-    - name: Ulusal Bulutlar
-      items:
-        - name: Genel Bakış
-          href: authentication-national-cloud.md
-        - name: Kimlik Doğrulaması
-          href: msal-national-cloud.md
+    - name: Ulusal bulut kimlik doğrulaması uç noktaları
+      href: authentication-national-cloud.md
+      displayName: 'china, germany, gov, 21vianet'
     - name: Otomatik kullanıcı sağlama (SCIM)
       items:
-        - name: Otomatik kullanıcı sağlama nedir?
-          href: ../app-provisioning/user-provisioning.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
         - name: SCIM uç noktasını geliştirme ve tümleştirme
           href: ../app-provisioning/use-scim-to-provision-users-and-groups.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
         - name: Yaygın sağlama senaryoları
           href: ../app-provisioning/scim-graph-scenarios.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
         - name: MS Graph kullanarak yapılandırmayı otomatikleştirme
-          href: /graph/application-provisioning-configure-api?bc=%2fazure%2factive-directory%2fdevelop%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fdevelop%2ftoc.json
+          href: ../app-provisioning/application-provisioning-configure-api.md?toc=/azure/active-directory/develop/toc.json&bc=/azure/active-directory/develop/breadcrumb/toc.json
+- name: Kaynaklar
+  items:
+    - name: Videolar
+      href: identity-videos.md
+    - name: Microsoft kimlik platformu geliştirici blogu
+      href: 'https://developer.microsoft.com/en-us/identity/blogs/'
     - name: Azure portalı yardım makaleleri
       items:
         - name: Özel olarak geliştirilmiş bir uygulama için belirteç ömrü varsayılanları
@@ -519,158 +664,6 @@
           href: active-directory-how-to-integrate.md
         - name: Bir uygulama için çoklu oturum açmayı yapılandırma
           href: registration-config-sso-how-to.md
-- name: Nasıl yapılır kılavuzları
-  items:
-    - name: Kimlik Doğrulaması
-      items:
-        - name: Rol talebini yapılandırma
-          href: active-directory-enterprise-app-role-management.md
-        - name: Talep özelleştirme - Portal
-          href: active-directory-saml-claims-customization.md
-        - name: Talep özelleştirme - PowerShell
-          href: active-directory-claims-mapping.md
-        - name: İsteğe bağlı talepleri yapılandırma
-          href: active-directory-optional-claims.md
-        - name: Taleplerde dizin şeması uzantısı özniteliklerini kullanma
-          href: active-directory-schema-extensions.md
-        - name: Belirteç ömrünü yapılandırma
-          href: configure-token-lifetimes.md
-        - name: Chrome tarayıcısında SameSite tanımlama bilgisi değişikliklerini işleme
-          href: howto-handle-samesite-cookie-changes-chrome-browser.md
-        - name: Safari’de ITP’yi işleme
-          href: reference-third-party-cookies-spas.md
-        - name: Sürekli Erişim Değerlendirmesi API’lerini kullanma
-          href: app-resilience-continuous-access-evaluation.md
-    - name: Uygulama yapılandırması
-      displayName: App configuration
-      items:
-        - name: Tek kiracılı bir uygulamayı çok kiracılı uygulamaya dönüştürme
-          href: howto-convert-app-to-be-multi-tenant.md
-        - name: Hizmet sorumlusu oluşturma
-          items:
-            - name: Azure PowerShell’i kullanma
-              href: howto-authenticate-service-principal-powershell.md
-            - name: Azure portalını kullanma
-              href: howto-create-service-principal-portal.md
-        - name: Uygulamanızı bir kullanıcı kümesiyle sınırlama
-          href: howto-restrict-your-app-to-a-set-of-users.md
-        - name: Uygulamanıza uygulama rolleri ekleme
-          href: howto-add-app-roles-in-azure-ad-apps.md
-        - name: Marka yönergelerini izleme
-          displayName: Add branding
-          href: howto-add-branding-in-azure-ad-apps.md
-        - name: Yayımcı etki alanını yapılandırma
-          href: howto-configure-publisher-domain.md
-          displayName: 'verified domain, verified publisher domain'
-        - name: Hizmet Koşulları ve Gizlilik Bildirimini yapılandırma
-          href: howto-add-terms-of-service-privacy-statement.md
-        - name: Uygulamanız için yayımcı doğrulamasını yapılandırma
-          items:
-            - name: Uygulamanızı yayımcısı doğrulandı olarak işaretleme
-              href: mark-app-as-publisher-verified.md
-            - name: Yayımcı doğrulaması ile ilgili sorunları giderme
-              href: troubleshoot-publisher-verification.md
-    - name: Microsoft Authentication Library ile çalışma
-      displayName: MSAL
-      items:
-        - name: MSAL.NET
-          items:
-            - name: Önbellekten belirteç alma
-              href: msal-net-acquire-token-silently.md
-            - name: Belirteç önbelleği serileştirme
-              href: msal-net-token-cache-serialization.md
-            - name: Belirteç önbelleği temizleme
-              href: msal-net-clear-token-cache.md
-            - name: Genel istemci uygulaması örneği oluşturma
-              href: msal-net-instantiate-public-client-config-options.md
-            - name: Seçeneklerle gizli istemci örneği oluşturma
-              href: msal-net-instantiate-confidential-client-config-options.md
-            - name: Çeşitli kaynaklar için onay alma
-              href: msal-net-user-gets-consent-for-multiple-resources.md
-            - name: Kendi HttpClient değerinizi sağlama
-              href: msal-net-provide-httpclient.md
-        - name: MSAL.js
-          items:
-            - name: Sayfa yeniden yüklemelerinden kaçınma
-              href: msal-js-avoid-page-reloads.md
-            - name: Kimlik doğrulaması isteklerinde özel durumu geçme
-              href: msal-js-pass-custom-state-authentication-request.md
-            - name: Komut istemi davranışı
-              href: msal-js-prompt-behavior.md
-            - name: SPA’yı örtük durumdan kimlik doğrulaması akışına geçirme
-              href: migrate-spa-implicit-to-auth-code.md
-              displayName: 'authorization, single-page app, 2.0'
-        - name: iOS ve macOS için MSAL
-          items:
-            - name: iOS ve macOS için MSAL farklılıkları
-              href: msal-differences-ios-macos.md
-            - name: Anahtarlık yapılandırma
-              href: howto-v2-keychain-objc.md
-            - name: Tarayıcıları ve WebView’ları özelleştirme
-              href: customize-webviews.md
-            - name: Özel talepler isteme
-              href: request-custom-claims.md
-            - name: Yeniden yönlendirme URI’si yapılandırması
-              href: redirect-uris-ios.md
-        - name: Python için MSAL
-          items:
-            - name: Özel belirteç önbelleği serileştirme
-              href: msal-python-token-cache-serialization.md
-        - name: Java için MSAL
-          items:
-            - name: Özel belirteç önbelleği serileştirme
-              href: msal-java-token-cache-serialization.md
-            - name: Belirteç önbelleğinden hesap alma ve kaldırma
-              href: msal-java-get-remove-accounts-token-cache.md
-    - name: Microsoft Graph API’sini kullanma
-      href: microsoft-graph-intro.md
-    - name: Visual Studio ile çalışma
-      items:
-        - name: Active Directory bağlı hizmetini kullanma
-          href: vs-active-directory-add-connected-service.md
-        - name: .NET MVC projelerini kullanmaya başlama
-          href: vs-active-directory-dotnet-getting-started.md
-        - name: .NET MVC projeme ne oldu?
-          href: vs-active-directory-dotnet-what-happened.md
-        - name: .NET WebAPI projelerini kullanmaya başlama
-          href: vs-active-directory-webapi-getting-started.md
-        - name: WebAPI projeme ne oldu?
-          href: vs-active-directory-webapi-what-happened.md
-        - name: Kimlik doğrulaması sırasında hataları tanılama
-          href: vs-active-directory-error.md
-    - name: Uygulamayı piyasaya sürme
-      items:
-        - name: Uygulama Kaynağında Yayımlama
-          href: v2-howto-get-appsource-certified.md
-        - name: Azure AD Uygulama Galerisi'nde Yayımlama
-          href: v2-howto-app-gallery-listing.md
-        - name: Office 365 Satıcı Panosu'nda Yayımlama
-          href: /office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store
-- name: Başvuru
-  items:
-    - name: Uygulama bildirimi
-      href: reference-app-manifest.md
-      displayName: app manifest
-    - name: Android MSAL yapılandırma dosyası
-      href: msal-configuration.md
-    - name: Kimlik doğrulama kitaplıkları
-      displayName: 'MSAL, auth library, SDK'
-      href: reference-v2-libraries.md
-    - name: Microsoft Graph’taki API’leri tanımlama ve bunlara erişme
-      href: /graph/api/resources/azure-ad-overview
-    - name: Kimlik doğrulaması ve yetkilendirme hata kodları
-      displayName: AADSTS
-      href: reference-aadsts-error-codes.md
-    - name: Yeni değişiklikler
-      href: reference-breaking-changes.md
-- name: Kaynaklar
-  items:
-    - name: Sözlük
-      href: developer-glossary.md
-    - name: Videolar
-      href: identity-videos.md
-    - name: Microsoft kimlik platformu geliştirici blogu
-      href: 'https://developer.microsoft.com/en-us/identity/blogs/'
     - name: Azure AD blogu
       href: 'https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory'
     - name: Azure yol haritası

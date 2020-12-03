@@ -3,12 +3,12 @@ title: Şifrelenmiş Azure VM 'lerini yedekleme ve geri yükleme
 description: Azure Backup hizmetiyle şifrelenmiş Azure VM 'lerinin nasıl yedeklendiğini ve geri yükleneceğini açıklar.
 ms.topic: conceptual
 ms.date: 08/18/2020
-ms.openlocfilehash: c4760a54d0200e48b2d6a38c963e9fc23925f7ff
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: ee7fedffd58ffb9e98f8c412833d151eb1a95530
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96324933"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96547160"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>Şifrelenmiş Azure sanal makinelerini yedekleme ve geri yükleme
 
@@ -22,7 +22,11 @@ Varsayılan olarak, sanal makinelerinizdeki tüm diskler, [depolama hizmeti şif
 
 ## <a name="encryption-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak şifreleme
 
-Özel yönetilen anahtarlarla (CMK) disk şifrelerken, diskleri şifrelemek için kullanılan anahtar Azure Key Vault depolanır ve sizin tarafınızdan yönetilir. CMK kullanan Depolama Hizmeti Şifrelemesi (SSE), Azure disk şifrelemesi (ADE) şifrelemesi ile farklıdır. ADE, işletim sisteminin şifreleme araçlarını kullanır. SSE, depolama hizmetindeki verileri şifreler ve sanal makinelerinize yönelik herhangi bir işletim sistemini veya görüntüyü kullanmanıza olanak sağlar. Yönetilen disklerin müşteri tarafından yönetilen anahtarlarla şifrelenmesi hakkında daha fazla bilgi için [Bu makaleye](../virtual-machines/disk-encryption.md#customer-managed-keys)bakın.
+Müşteri tarafından yönetilen anahtarlarla (CMK) diskleri şifrelerken, diskleri şifrelemek için kullanılan anahtar Azure Key Vault depolanır ve sizin tarafınızdan yönetilir. CMK kullanan Depolama Hizmeti Şifrelemesi (SSE), Azure disk şifrelemesi (ADE) şifrelemesi ile farklıdır. ADE, işletim sisteminin şifreleme araçlarını kullanır. SSE, depolama hizmetindeki verileri şifreler ve sanal makinelerinize yönelik herhangi bir işletim sistemini veya görüntüyü kullanmanıza olanak sağlar.
+
+Disklerini şifrelemek için müşteri tarafından yönetilen anahtarlar kullanan VM 'lerin yedeklenmesi veya geri yüklenmesi için herhangi bir açık eylem gerçekleştirmeniz gerekmez. Kasada depolanan bu VM 'Ler için yedekleme verileri, [kasada kullanılan şifrelemeyle](encryption-at-rest-with-cmk.md)aynı yöntemlerle şifrelenir.
+
+Yönetilen disklerin müşteri tarafından yönetilen anahtarlarla şifrelenmesi hakkında daha fazla bilgi için [Bu makaleye](../virtual-machines/disk-encryption.md#customer-managed-keys)bakın.
 
 ## <a name="encryption-support-using-ade"></a>ADE kullanarak şifreleme desteği
 
@@ -32,8 +36,8 @@ Azure Backup, aşağıdaki tabloda özetlenen Azure AD uygulaması olmadan ve il
 
 **VM disk türü** | **ADE (BEK/dm-crypt)** | **ADE ve KEK**
 --- | --- | ---
-**Yönetilmeyen** | Yes | Yes
-**Yönetilen**  | Yes | Yes
+**Yönetilmeyen** | Evet | Evet
+**Yönetilen**  | Evet | Evet
 
 - [Ade](../security/fundamentals/azure-disk-encryption-vms-vmss.md), [Key Vault](../key-vault/general/overview.md)ve [Keks](../virtual-machine-scale-sets/disk-encryption-key-vault.md#set-up-a-key-encryption-key-kek)hakkında daha fazla bilgi edinin.
 - Azure VM disk şifrelemesi [hakkında SSS](../security/fundamentals/azure-disk-encryption-vms-vmss.md) makalesini okuyun.
@@ -131,7 +135,7 @@ Azure Backup, anahtar ve gizli dizileri, ilişkili VM 'lerle birlikte yedeklemek
 
     ![Azure Backup seçimi](./media/backup-azure-vms-encryption/select-backup-template.png)
 
-1. **Add (Ekle)** seçeneğini belirleyin. **Yedekleme yönetimi hizmeti** **erişim ilkelerine** eklenir.
+1. **Ekle**’yi seçin. **Yedekleme yönetimi hizmeti** **erişim ilkelerine** eklenir.
 
     ![Erişim ilkeleri](./media/backup-azure-vms-encryption/backup-service-access-policy.png)
 

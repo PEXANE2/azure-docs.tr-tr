@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 06/11/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b33524acd09cbf565127dc81ef2b5bfa16b4504d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 6bbf87689b577eda7de491744156e63eaa3b440c
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339776"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546888"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-java-sdk-v4"></a>Uygulamanızı Java SDK 'Sı v4 Azure Cosmos DB kullanmak için geçirin
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -33,7 +33,7 @@ Bu makalede, daha eski bir Java SDK 'sını kullanan mevcut Java uygulamanızın
 
 Aşağıdaki tabloda farklı Azure Cosmos DB Java SDK 'Ları, paket adı ve sürüm bilgileri listelenmektedir:
 
-| Java SDK| Yayın Tarihi | Paketlenmiş API 'Ler   | Maven jar  | Java paket adı  |API Başvurusu   | Sürüm Notları  |
+| Java SDK| Yayın Tarihi | Paketlenmiş API 'Ler   | Maven jar  | Java paket adı  |API Referansı   | Sürüm Notları  |
 |-------|------|-----------|-----------|--------------|-------------|---------------------------|
 | Zaman uyumsuz 2. x. x  | Haziran 2018    | Async (RxJava)  | `com.microsoft.azure::azure-cosmosdb` | `com.microsoft.azure.cosmosdb.rx` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Sürüm Notları](sql-api-sdk-async-java.md) |
 | 2. x. x eşitlemesini Eşitle     | Eyl 2018    | Sync   | `com.microsoft.azure::azure-documentdb` | `com.microsoft.azure.cosmosdb` | [API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Sürüm Notları](sql-api-sdk-java.md)  |
@@ -46,9 +46,9 @@ Aşağıda, farklı SDK 'lar arasındaki önemli uygulama farklılıkları veril
 
 ### <a name="rxjava-is-replaced-with-reactor-in-azure-cosmos-db-java-sdk-versions-3xx-and-40"></a>RxJava, Azure Cosmos DB Java SDK sürümü 3. x ve 4,0 ' de reaktör ile değiştirilmiştir
 
-Zaman uyumsuz programlama veya reaktif programlama hakkında bilginiz yoksa, zaman uyumsuz programlama ve proje Reaktörine giriş için [reaktör deseninin kılavuzuna](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md) bakın. Bu kılavuz, daha önce Java SDK 'Sı 2. x. x veya Azure Cosmos DB Java SDK 3. x. x eşitleme API 'sini kullanıyorsanız Azure Cosmos DB yararlı olabilir.
+Zaman uyumsuz programlama veya reaktif programlama hakkında bilginiz yoksa, zaman uyumsuz programlama ve proje Reaktörine giriş için [reaktör deseninin kılavuzuna](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-pattern-guide.md) bakın. Bu kılavuz, daha önce Java SDK 'Sı 2. x. x veya Azure Cosmos DB Java SDK 3. x. x eşitleme API 'sini kullanıyorsanız Azure Cosmos DB yararlı olabilir.
 
-Azure Cosmos DB zaman uyumsuz Java SDK 'Sı 2. x. x kullandıysanız ve 4,0 SDK 'sına geçirmeyi planlıyorsanız, RxJava kodunu reaktör kullanmak üzere dönüştürmeye yönelik rehberlik için [reaktör vs Rxjava kılavuzuna](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) bakın.
+Azure Cosmos DB zaman uyumsuz Java SDK 'Sı 2. x. x kullandıysanız ve 4,0 SDK 'sına geçirmeyi planlıyorsanız, RxJava kodunu reaktör kullanmak üzere dönüştürmeye yönelik rehberlik için [reaktör vs Rxjava kılavuzuna](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-rxjava-guide.md) bakın.
 
 ### <a name="azure-cosmos-db-java-sdk-v4-has-direct-connectivity-mode-in-both-async-and-sync-apis"></a>Azure Cosmos DB Java SDK v4, hem Async hem de Sync API 'Lerinde doğrudan bağlantı moduna sahiptir
 
@@ -66,9 +66,9 @@ Aşağıda, Java SDK 4. x. x Azure Cosmos DB önceki SDK 'lara kıyasla (Java SD
 
   * **Java SDK 4,0** : sınıf adı daha sonra eklenmediği takdirde tüm SıNıFLAR eşitleme API 'sine aittir `Async` `Cosmos` .
 
-  * **Java SDK 3. x. x** : sınıf adı daha sonra eklenmediği takdirde tüm sınıflar zaman uyumsuz API 'ye aittir `Async` `Cosmos` .
+  * **Java SDK 3. x. x**: sınıf adı daha sonra eklenmediği takdirde tüm sınıflar zaman uyumsuz API 'ye aittir `Async` `Cosmos` .
 
-  * **Async Java SDK 2. x. x** : sınıf adları eşitleme Java SDK 'sı 2. x. x ile benzerdir, ancak ad *zaman uyumsuz* olarak başlar.
+  * **Async Java SDK 2. x. x**: sınıf adları eşitleme Java SDK 'sı 2. x. x ile benzerdir, ancak ad *zaman uyumsuz* olarak başlar.
 
 ### <a name="hierarchical-api-structure"></a>Hiyerarşik API yapısı
 
@@ -376,5 +376,5 @@ SalesOrder salesOrder = new SalesOrder(
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * V4 SDK 'sını kullanarak Azure Cosmos DB SQL API verilerini yönetmek için [bir Java uygulaması oluşturma](create-sql-api-java.md)
-* [Reaktör tabanlı Java SDK 'ları](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md) hakkında bilgi edinin
-* [Reaktör vs Rxjava kılavuzuyla](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) zaman uyumsuz kodu yeniden aktör Için rxjava Async kodunu dönüştürme hakkında bilgi edinin
+* [Reaktör tabanlı Java SDK 'ları](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-pattern-guide.md) hakkında bilgi edinin
+* [Reaktör vs Rxjava kılavuzuyla](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-rxjava-guide.md) zaman uyumsuz kodu yeniden aktör Için rxjava Async kodunu dönüştürme hakkında bilgi edinin

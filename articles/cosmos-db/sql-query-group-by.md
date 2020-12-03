@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: tisande
-ms.openlocfilehash: 71314e6999031f52ebbfc582b43684ab5a17a261
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: d9cafc100ddd4b553577c447e82334e6ee7d1b6d
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93338827"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545460"
 ---
 # <a name="group-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB içindeki GROUP BY yan tümcesi
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -41,7 +41,7 @@ GROUP BY yan tümcesi sorgunun sonuçlarını belirtilen bir veya daha fazla öz
 
 ## <a name="remarks"></a>Açıklamalar
   
-  Bir sorgu GROUP BY yan tümcesi kullandığında, SELECT yan tümcesi yalnızca GROUP BY yan tümcesine dahil olan özelliklerin ve sistem işlevlerinin alt kümesini içerebilir. Tek bir istisna, SELECT yan tümcesinde GROUP BY yan tümcesine eklenmeksizin görünebilen [toplu sistem işlevleridir](sql-query-aggregates.md). Ayrıca SELECT yan tümcesine her zaman sabit değerler ekleyebilirsiniz.
+  Bir sorgu GROUP BY yan tümcesi kullandığında, SELECT yan tümcesi yalnızca GROUP BY yan tümcesine dahil olan özelliklerin ve sistem işlevlerinin alt kümesini içerebilir. Tek bir istisna, SELECT yan tümcesinde GROUP BY yan tümcesine eklenmeksizin görünebilen [toplama işlevleridir](sql-query-aggregate-functions.md). Ayrıca SELECT yan tümcesine her zaman sabit değerler ekleyebilirsiniz.
 
   GROUP BY yan tümcesi SELECT, FROM ve WHERE yan tümcesinden sonra ve sınır sınırı tümceciğinden önce olmalıdır. Şu anda GROUP BY ORDER BY yan tümcesiyle birlikte kullanamazsınız, ancak bu planlanmaktadır.
 
@@ -192,4 +192,4 @@ Sonuçlar:
 
 - [Başlarken](sql-query-getting-started.md)
 - [SELECT yan tümcesi](sql-query-select.md)
-- [Toplama işlevleri](sql-query-aggregates.md)
+- [Toplama işlevleri](sql-query-aggregate-functions.md)

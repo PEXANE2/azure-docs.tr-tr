@@ -1,12 +1,12 @@
-- name: Azure Synapse (eski adıyla SQL DW)
-  href: index.yml
-- name: Azure Synapse’e (çalışma alanları önizlemesi) geçme
+- name: Ayrılmış SQL havuzu (eski adıyla SQL DW)
+  href: sql-data-warehouse-overview-what-is.md
+- name: Azure Synapse’e geçiş
   href: ../overview-what-is.md
 - name: Genel Bakış
   items:
-    - name: Azure Synapse Analytics nedir?
+    - name: Ayrılmış SQL havuzu nedir?
       href: sql-data-warehouse-overview-what-is.md
-    - name: Azure Synapse Analytics mimarisi
+    - name: Ayrılmış SQL havuzu mimarisi
       href: massively-parallel-processing-mpp-architecture.md
     - name: Veri ambarı birimleri
       href: what-is-a-data-warehouse-unit-dwu-cdwu.md
@@ -74,6 +74,12 @@
           href: pause-and-resume-compute-powershell.md
 - name: Kavramlar
   items:
+    - name: Synapse çalışma alanı deneyimi
+      items:
+        - name: Genel Bakış
+          href: workspace-connected-experience.md
+        - name: Desteklenen bölgeler
+          href: workspace-connected-regions.md
     - name: Güvenlik
       items:
         - name: Genel Bakış
@@ -272,6 +278,10 @@
           href: sql-data-warehouse-overview-integrate.md
 - name: Nasıl yapılır kılavuzları
   items:
+    - name: Synapse çalışma alanı deneyimi
+      items:
+        - name: Synapse çalışma alanı oluşturma
+          href: workspace-connected-create.md
     - name: Güvenlik
       items:
         - name: Azure AD kimlik doğrulamasını yapılandırma
@@ -384,9 +394,9 @@
       items:
         - name: Tam başvuru
           href: /sql/t-sql/language-reference?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest
-        - name: Azure Synapse Analytics TSQL dili öğeleri
+        - name: T-SQL dil öğeleri
           href: sql-data-warehouse-reference-tsql-language-elements.md
-        - name: Azure Synapse Analytics TSQL deyimleri
+        - name: T-SQL bildirimleri
           href: sql-data-warehouse-reference-tsql-statements.md
     - name: Sistem görünümleri
       href: sql-data-warehouse-reference-tsql-system-views.md
@@ -394,6 +404,9 @@
       href: sql-data-warehouse-reference-powershell-cmdlets.md
     - name: REST API'leri
       href: sql-data-warehouse-manage-compute-rest-api.md
+    - name: Azure İlkesi yerleşik ilkeler
+      displayName: 'samples, policies, definitions'
+      href: ../policy-reference.md
 - name: Kaynaklar
   items:
     - name: Azure Yol Haritası

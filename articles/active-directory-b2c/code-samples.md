@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b52bfc14906d8e47c804ae15ee898f6ca00784af
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8642f4284770df54704a4e7066054d3bb4640486
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503853"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545884"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C kod örnekleri
 
@@ -68,15 +68,25 @@ Aşağıdaki tablolar, [API bağlayıcıları](api-connectors-overview.md)kullan
 | [Node.js](https://github.com/Azure-Samples/active-directory-nodejs-external-identities-api-connector-azure-function-validate)   | Bu Node.js Azure Işlevi örneği, oturum açma işlemlerinin belirli e-posta etki alanlarına nasıl sınırlandırılacağını ve Kullanıcı tarafından belirtilen bilgilerin nasıl doğrulandığını gösterir.  |
 | [Python](https://github.com/Azure-Samples/active-directory-python-external-identities-api-connector-azure-function-validate)    | Bu Python Azure Işlevi örneği, oturum açma işlemlerinin belirli e-posta etki alanlarına nasıl sınırlandırılacağını ve Kullanıcı tarafından belirtilen bilgilerin nasıl doğrulandığını gösterir.    |
 
-### <a name="identity-verification-with-api-connectors"></a>API bağlayıcıları ile kimlik doğrulama
+
+### <a name="automated-fraud-protection-services--captcha"></a>Otomatik sahtekarlık koruma hizmetleri & CAPTCHA
+| Örnek                                                                                                            | Açıklama                                                                                                                          |
+| ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| [Arkoo Labs sahtekarlık ve uygunsuz kullanım koruması](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-arkose) | Bu örnekte, Arkoo Labs sahtekarlık ve uygunsuz kullanım koruma hizmeti kullanılarak Kullanıcı oturum açma işlemlerinin nasıl korunacağı gösterilmektedir. |
+| [reCAPTCHA](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-captcha) | Bu örnek, otomatik kötüye kullanımı engellemek için reCAPTCHA Challenge kullanarak Kullanıcı oturum açma bilgilerinizi nasıl koruyabileceğinizi gösterir. |
+
+
+### <a name="identity-verification"></a>Kimlik doğrulama
 
 | Örnek                                                                                                            | Açıklama                                                                                                                          |
 | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| [IDology](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-idology-identity-verification) | Bu örnek, IDology ile tümleştirme için bir API Bağlayıcısı kullanarak Self Servis kaydolma 'nın bir parçası olarak bir kullanıcı kimliğini nasıl doğrulayacağınızı gösterir. |
-| [Experian](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-experian-identity-verification) | Bu örnek, Experian ile tümleştirme için bir API Bağlayıcısı kullanarak Self Servis kaydolma 'nın bir parçası olarak bir kullanıcı kimliğini nasıl doğrulayacağınızı gösterir. |
+| [IDology](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-idology-identity-verification) | Bu örnek, IDology ile tümleştirme için bir API Bağlayıcısı kullanarak, kaydolma akışlarınızın bir parçası olarak bir kullanıcı kimliğini nasıl doğrulayacağınızı gösterir. |
+| [Experian](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-experian-identity-verification) | Bu örnek, Experian ile tümleştirme için bir API Bağlayıcısı kullanarak, kaydolma akışlarınızın bir parçası olarak bir kullanıcı kimliğini nasıl doğrulayacağınızı gösterir. |
 
-### <a name="community-samples"></a>Topluluk örnekleri
+
+### <a name="other"></a>Diğer
 
 | Örnek                                                                                                            | Açıklama                                                                                                                          |
 | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| [Davet kodu](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-invitation-code) | Bu örnekte, davet kodları kullanılarak nasıl kayıt yapılacağını belirli kitlelere kısıtlama yapılacağı gösterilmektedir.|
 | [API Bağlayıcısı topluluk örnekleri](https://github.com/azure-ad-b2c/api-connector-samples) | Bu depoda, API bağlayıcıları tarafından etkinleştirilen senaryoların topluluk tarafından korunan örnekleri bulunur.|

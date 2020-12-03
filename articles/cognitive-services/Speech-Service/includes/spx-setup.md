@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 6f80d41001d11c52a00454ea2a593f3f1fce32db
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: da88b8554d6c3214da9a386613538c237a318f73
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96026337"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546918"
 ---
 ## <a name="download-and-install"></a>İndirme ve yükleme
 
@@ -53,15 +53,19 @@ Linux 'ta konuşma CLı 'Yı x64 CPU 'ya yüklemek için şu adımları izleyin:
 
 `spx`Konuşma CLI yardımını görmek için yazın.
 
-#### <a name="docker-install"></a>[Docker yüklemesi](#tab/dockerinstall)
-
-> [!NOTE]
-> <a href="https://www.docker.com/get-started" target="_blank">Platformunuz <span class="docon docon-navigate-external x-hidden-focus"></span> Için Docker Desktop</a> yüklenmesi gerekir.
+#### <a name="docker-install-windows-linux-macos"></a>[Docker yüklemesi (Windows, Linux, macOS)](#tab/dockerinstall)
 
 Konuşma CLı 'Yı bir Docker kapsayıcısına yüklemek için şu adımları izleyin:
 
-1. Yeni bir komut isteminde veya terminalde aşağıdaki komutu yazın:  `docker pull msftspeech/spx`
-2. Bu komutu yazın. Konuşma CLı için yardım bilgileri görmeniz gerekir: `docker run -it --rm msftspeech/spx help`
+1. <a href="https://www.docker.com/get-started" target="_blank">Docker Desktop <span class="docon docon-navigate-external x-hidden-focus"></span> 'ı yükler</a> zaten yüklü değilse, platformunuz için.
+2. Yeni bir komut isteminde veya terminalde aşağıdaki komutu yazın:
+   ```shell   
+   docker pull msftspeech/spx
+   ```
+3. Bu komutu yazın. Konuşma CLı için yardım bilgileri görmeniz gerekir:
+   ```shell 
+   docker run -it --rm msftspeech/spx help
+   ```
 
 ### <a name="mount-a-directory-in-the-container"></a>Kapsayıcıda bir dizin bağlama
 
@@ -72,7 +76,7 @@ Windows 'ta, konuşma CLı 'nın kapsayıcı içinden kullanabileceği yerel bir
 
 `mkdir c:\spx-data`
 
-Veya Linux veya Mac üzerinde, bir dizin oluşturmak ve mutlak yolunu görmek için bu komutu bir terminale yazın:
+Veya Linux veya macOS 'ta bir dizin oluşturmak ve mutlak yolunu görmek için bu komutu bir terminale yazın:
 
 ```bash
 mkdir ~/spx-data
@@ -86,13 +90,17 @@ Konuşma CLı 'Yı çağırdığınızda mutlak yol kullanacaksınız.
 
 Bu belgelerde `spx` Docker olmayan yüklemelerde kullanılan konuşma CLI komutu gösterilmektedir.
 `spx`Bir Docker kapsayıcısında komutunu çağırırken, konuşma CLI 'nın yapılandırma değerlerini depolayabileceği ve bulabileceği ve dosyaları okuyabildiği ve yazacağı dosya sistemine kapsayıcıda bir dizin bağlamanız gerekir.
+
 Windows 'ta komutlarınız şöyle olacaktır:
 
-`docker run -it -v c:\spx-data:/data --rm msftspeech/spx`
+```shell
+docker run -it -v c:\spx-data:/data --rm msftspeech/spx
+```
 
-Linux veya Mac üzerinde, komutlarınız şuna benzer şekilde başlayacaktır:
-
-`sudo docker run -it -v /ABSOLUTE_PATH:/data --rm msftspeech/spx`
+Linux veya macOS 'ta, komutlarınız şuna benzer şekilde başlayacaktır:
+```shell   
+sudo docker run -it -v /ABSOLUTE_PATH:/data --rm msftspeech/spx
+```
 
 > [!NOTE]
 > `/ABSOLUTE_PATH`Yukarıdaki bölümde komut tarafından gösterilen mutlak yol ile değiştirin `pwd` .
@@ -100,12 +108,43 @@ Linux veya Mac üzerinde, komutlarınız şuna benzer şekilde başlayacaktır:
 `spx`Bir kapsayıcıda yüklü olan komutu kullanmak için, her zaman yukarıda gösterilen tam komutu ve ardından isteğinizin parametrelerini girin.
 Örneğin, Windows 'da bu komut anahtarınızı ayarlar:
 
-`docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCRIPTION-KEY`
+```shell
+docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCRIPTION-KEY
+```
 
-> [!NOTE]
-> Bir Docker kapsayıcısı içinde konuşma CLı çalıştırdığınızda bilgisayarınızın mikrofonunu veya hoparlörünü kullanamazsınız.
-> Bu cihazları kullanmak için, Docker kapsayıcısının dışında kayıt/kayıttan yürütme için konuşma CLı 'ye ve ses dosyalarını geçirin.
-> Konuşma CLı Aracı, yukarıdaki adımlarda ayarladığınız yerel dizine erişebilir.
+> [!WARNING]
+> Bir Docker kapsayıcısı içinde konuşma CLı çalıştırdığınızda bilgisayarınızın mikrofonunu kullanamazsınız. Ancak, yerel olarak bağlı dizininizde ses dosyalarını okuyabilir ve kaydedebilirsiniz. 
+
+### <a name="optional-create-a-command-line-shortcut"></a>İsteğe bağlı: komut satırı kısayolu oluşturma
+
+Linux veya macOS üzerinde bir Docker kapsayıcısından konuşma CLı 'Yı çalıştırıyorsanız bir kısayol oluşturabilirsiniz. 
+
+Kısayol oluşturmak için aşağıdaki yönergeleri izleyin:
+1. En `.bash_profile` sevdiğiniz metin düzenleyicinizle açın. Örnek:
+   ```shell
+   nano ~/.bash_profile
+   ```
+2. Sonra, bu işlevi ' e ekleyin `.bash_profile` . Bu işlevi bağlı dizininiz için doğru yol ile güncelleştirdiğinizden emin olun:
+   ```shell   
+   spx(){
+       sudo docker run -it -v /ABSOLUTE_PATH:/data --rm msftspeech/spx
+   }
+   ```
+3. Profiliniz kaynağı:
+   ```shell
+   source ~/.bash_profile
+   ```
+4. Şimdi çalıştırmak yerine `sudo docker run -it -v /ABSOLUTE_PATH:/data --rm msftspeech/spx` yalnızca `spx` bağımsız değişkenleri yazabilirsiniz. Örnek: 
+   ```shell
+   // Get some help
+   spx help recognize
+
+   // Recognize speech from an audio file 
+   spx recognize --file /mounted/directory/file.wav
+   ```
+
+> [!WARNING]
+> Docker 'ın başvurduğu bağlı dizini değiştirirseniz, içindeki işlevini güncelleştirmeniz gerekir `.bash_profile` .
 
 ***
 

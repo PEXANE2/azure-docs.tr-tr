@@ -2,8 +2,10 @@
   href: index.yml
 - name: Genel Bakış
   items:
-    - name: Azure AD rolleri
+    - name: Azure AD RBAC nedir?
       href: custom-overview.md
+    - name: Azure AD rollerini anlama
+      href: concept-understand-roles.md
 - name: Hızlı Başlangıçlar
   items:
     - name: Sınırsız uygulama kaydı oluşturma
@@ -50,8 +52,6 @@
     - name: Özel roller
       expanded: true
       items:
-        - name: Özel rollere genel bakış
-          href: custom-overview.md
         - name: Özel rol oluşturma
           href: custom-create.md
         - name: Özel rol atamalarını görüntüleme

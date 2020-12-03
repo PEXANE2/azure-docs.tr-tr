@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: e988b88f222750bc7de505a24eb44877eea4d966
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f9b1193a4eb2c7299cbfb0c729673b72d1e8fbad
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452442"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545851"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. destekleyen Azure hizmetleri
 
@@ -37,10 +37,10 @@ Bu tabloda Azure Data Lake Storage 2. ile kullanabileceğiniz Azure hizmetleri l
 |Azure Stream Analytics|Genel kullanıma sunuldu|Evet|Evet|[Hızlı başlangıç: Azure portalını kullanarak Stream Analytics işi oluşturma](../../stream-analytics/stream-analytics-quick-create-portal.md) <br> [Azure Data Lake Gen2 çıkış](../../stream-analytics/stream-analytics-define-outputs.md)|
 |Data Box|Genel kullanıma sunuldu|Hayır|Evet|[Şirket içi bir, Azure depolama 'ya veri geçirmek için Azure Data Box kullanma](data-lake-storage-migrate-on-premises-hdfs-cluster.md)|
 |HDInsight |Genel kullanıma sunuldu|Evet|Evet|[Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br>[Data Lake Storage 2. ile](data-lake-storage-use-hdfs-data-lake-storage.md) <br>[Öğretici: Azure HDInsight üzerinde Apache Hive kullanarak verileri ayıklama, dönüştürme ve yükleme](data-lake-storage-tutorial-extract-transform-load-hive.md)|
-|IoT Hub |Genel kullanıma sunuldu|Hayır|Evet|[Farklı uç noktalara cihazdan buluta iletiler göndermek için IoT Hub ileti yönlendirmeyi kullanma](../../iot-hub/iot-hub-devguide-messages-d2c.md)|
+|IoT Hub |Genel kullanıma sunuldu|Evet|Evet|[Farklı uç noktalara cihazdan buluta iletiler göndermek için IoT Hub ileti yönlendirmeyi kullanma](../../iot-hub/iot-hub-devguide-messages-d2c.md)|
 |Power BI|Genel kullanıma sunuldu|Evet|Evet|[Power BI kullanarak Data Lake Storage 2. verileri çözümleme](/power-query/connectors/datalakestorage)|
 |Azure Synapse Analytics (eski adı SQL Veri Ambarı)|Genel kullanıma sunuldu|Evet|Evet|[Azure SYNAPSE Analytics ile kullanma](../../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|SQL Server Integration Services (SSIS)|Genel kullanıma sunuldu|Evet|Evet|[Azure depolama bağlantı Yöneticisi](/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-2017)|
+|SQL Server Integration Services (SSIS)|Genel kullanıma sunuldu|Evet|Evet|[Azure depolama bağlantı Yöneticisi](/sql/integration-services/connection-manager/azure-storage-connection-manager)|
 |Azure Veri Gezgini|Genel kullanıma sunuldu|Evet|Evet|[Azure Data Lake Azure Veri Gezgini kullanarak verileri sorgulama](/azure/data-explorer/data-lake-query-data)|
 |Azure Bilişsel Arama|Önizleme|Evet|Evet|[Azure Data Lake Storage 2. belgelerini dizin ve arama (Önizleme)](../../search/search-howto-index-azure-data-lake-storage.md)|
 |Azure Content Delivery Network|Henüz desteklenmiyor|Geçerli değil|Geçerli değil|[Azure Data Lake Storage 2. belgelerini dizin ve arama (Önizleme)](../../cdn/cdn-overview.md)|

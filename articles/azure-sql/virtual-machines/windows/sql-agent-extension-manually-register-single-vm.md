@@ -14,12 +14,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: c82ea3328938b42a26df03c7e83776e1a1a69b20
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 48c996b6c7d0024b256908565c57032fe3e18514
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94558003"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545647"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>SQL IaaS Aracısı Uzantısı ile SQL Server VM kaydetme
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -57,9 +57,9 @@ SQL Server VM SQL IaaS Aracısı Uzantısı ile kaydetmek için öncelikle abone
 
 1. Azure portal açın ve **tüm hizmetlere** gidin. 
 1. **Abonelikler** ' e gidin ve ilgilendiğiniz aboneliği seçin.  
-1. **Abonelikler** sayfasında, **Uzantılar** ' a gidin. 
+1. **Abonelikler** sayfasında, **Uzantılar**' a gidin. 
 1. SQL ile ilgili uzantıları getirmek için filtreye **SQL** girin. 
-1. İstediğiniz eyleme bağlı olarak **Microsoft. SqlVirtualMachine** sağlayıcısı için **Kaydet** , **yeniden kaydet** veya **kaydı kaldır** ' ı seçin. 
+1. İstediğiniz eyleme bağlı olarak **Microsoft. SqlVirtualMachine** sağlayıcısı için **Kaydet**, **yeniden kaydet** veya **kaydı kaldır** ' ı seçin. 
 
    ![Sağlayıcıyı değiştirme](./media/sql-agent-extension-manually-register-single-vm/select-resource-provider-sql.png)
 
@@ -104,7 +104,7 @@ Azure CLı ile hafif modda bir SQL Server VM kaydetme:
 
   ```azurecli-interactive
   # Register Enterprise or Standard self-installed VM in Lightweight mode
-  az sql vm create --name <vm_name> --resource-group <resource_group_name> --location <vm_location> --license-type PAYG 
+  az sql vm create --name <vm_name> --resource-group <resource_group_name> --location <vm_location> --license-type <license_type> 
   ```
 
 
@@ -119,7 +119,7 @@ SQL Server VM Azure PowerShell basit modda kaydetme:
           
   # Register SQL VM with 'Lightweight' SQL IaaS agent
   New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
-    -LicenseType PAYG -SqlManagementType LightWeight  
+    -LicenseType <license_type>  -SqlManagementType LightWeight  
   ```
 
 ---
@@ -140,7 +140,7 @@ SQL Server VM doğrudan tam modda kaydetmek için (ve SQL Server hizmetinizi bü
 
 ### <a name="noagent-management-mode"></a>NoAgent yönetim modu 
 
-Windows Server 2008 ( _R2 değil_ ) üzerinde yüklü olan SQL Server 2008 ve 2008 R2, [NOAGENT modunda](sql-server-iaas-agent-extension-automate-management.md#management-modes)SQL IaaS Aracısı Uzantısı ile kaydedilebilir. Bu seçenek uyumluluk sağlar ve Azure portal sınırlı işlevlerle birlikte SQL Server VM izlenmesini sağlar.
+Windows Server 2008 (_R2 değil_) üzerinde yüklü olan SQL Server 2008 ve 2008 R2, [NOAGENT modunda](sql-server-iaas-agent-extension-automate-management.md#management-modes)SQL IaaS Aracısı Uzantısı ile kaydedilebilir. Bu seçenek uyumluluk sağlar ve Azure portal sınırlı işlevlerle birlikte SQL Server VM izlenmesini sağlar.
 
 
 **Lisans türü** için şunlardan birini belirtin: `AHUB` , `PAYG` , veya `DR` . **Görüntü teklifi** için ya da şunu belirtin `SQL2008-WS2008``SQL2008R2-WS2008`
@@ -195,7 +195,7 @@ Azure portal kullanarak uzantıyı tam moda yükseltmek için aşağıdaki adım
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. [SQL sanal makineler](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) kaynağına gidin. 
-1. SQL Server VM seçin ve **genel bakış** ' ı seçin. 
+1. SQL Server VM seçin ve **genel bakış**' ı seçin. 
 1. NoAgent veya Lightweight IaaS modundaki sanal makineler SQL Server için, **SQL IaaS uzantı Iletisiyle tek lisans türünü seçin ve sürüm güncelleştirmelerini** seçin.
 
    ![Portalın modunu değiştirme seçimleri](./media/sql-agent-extension-manually-register-single-vm/change-sql-iaas-mode-portal.png)
@@ -283,7 +283,7 @@ Azure portal kullanarak SQL Server VM uzantıdan kaydını silmek için şu adı
   
    ![SQL sanal makineler kaynağı](./media/sql-agent-extension-manually-register-single-vm/sql-vm-manage.png)
 
-1. **Sil** ’i seçin. 
+1. **Sil**’i seçin. 
 
    ![Üstteki gezinmede Sil ' i seçin](./media/sql-agent-extension-manually-register-single-vm/delete-sql-vm-resource.png)
 
@@ -323,7 +323,7 @@ Remove-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için aşağıdaki makalelere bakın: 
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin: 
 
 * [Windows VM 'de SQL Server genel bakış](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Windows VM 'de SQL Server hakkında SSS](frequently-asked-questions-faq.md)  

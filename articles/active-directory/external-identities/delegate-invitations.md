@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 09/15/2020
+ms.date: 11/30/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5a983931bd372931eacff2f7b21f3358f536046
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 8a249102de6a5bff7354e339e604b7d2efebd4fb
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362935"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546226"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>B2B dış işbirliğini etkinleştirme ve konuk davet edebilecek kişileri yönetme
 
@@ -40,41 +40,58 @@ Varsayılan olarak, konukları dahil tüm kullanıcılar Konuk kullanıcıları 
 ### <a name="to-configure-external-collaboration-settings"></a>Dış işbirliği ayarlarını yapılandırmak için:
 
 1. [Azure Portal](https://portal.azure.com) kiracı yöneticisi olarak oturum açın.
-2. **Azure Active Directory**seçin.
+2. **Azure Active Directory** seçin.
 3. **Dış kimlikler**  >  **dış işbirliği ayarları**' nı seçin.
 
 4. **Konuk Kullanıcı erişimi kısıtlamaları (Önizleme)** altında, konuk kullanıcıların sahip olmasını istediğiniz erişim düzeyini seçin:
+  
+    ![Konuk Kullanıcı erişimi kısıtlamaları ayarları](./media/delegate-invitations/guest-user-access.png)
 
    - **Konuk kullanıcılar aynı üyelere (en kapsamlı) sahiptir**: Bu seçenek, konuklara Azure AD kaynaklarına ve dizin verilerine üye kullanıcı olarak aynı erişimi sağlar.
 
    - **Konuk kullanıcıların, dizin nesnelerinin özelliklerine ve üyeliklerine sınırlı erişimi vardır**: (varsayılan) Bu ayar, kullanıcıları, grupları veya diğer dizin kaynaklarını numaralandırma gibi belirli dizin görevlerinin konukları engeller. Konuklar, tüm gizli olmayan grupların üyeliğini görebilir.
 
    - **Konuk Kullanıcı erişimi, kendi dizin nesnelerinin özellikleri ve üyelikleri (en kısıtlayıcı) ile kısıtlıdır**: Bu ayarla, konuklar yalnızca kendi profillerine erişebilir. Konukların diğer kullanıcıların profillerini, gruplarını veya grup üyeliklerini görmesini izin verilmez.
-  
-    ![Konuk Kullanıcı erişimi kısıtlamaları ayarları](./media/delegate-invitations/guest-user-access.png)
 
-5. **Konuk davet ayarları**altında, uygun ayarları seçin:
 
-   - **Konuk davet eden rolündeki Yöneticiler ve kullanıcılar davet edebilir**: yöneticilerin ve kullanıcıların "konuk davet eden" rolünde konukları davet etmesini sağlamak için, bu ilkeyi **Evet**olarak ayarlayın.
+5. **Konuk davet ayarları** altında, uygun ayarları seçin:
 
-   - **Üyeler davet edebilir**: dizininizin yönetici olmayan üyelerinin konukları davet etmesini sağlamak için, bu ilkeyi **Evet**olarak ayarlayın.
+    ![Konuk davet ayarları](./media/delegate-invitations/guest-invite-settings.png)
 
-   - **Konuklar davet edebilir**: konukların diğer konukları davet etmesini sağlamak için bu ilkeyi **Evet**olarak ayarlayın.
+   - **Konuk davet eden rolündeki Yöneticiler ve kullanıcılar davet edebilir**: yöneticilerin ve kullanıcıların "konuk davet eden" rolünde konukları davet etmesini sağlamak için, bu ilkeyi **Evet** olarak ayarlayın.
 
-   - **Konuklar Için e-posta One-Time geçiş kodunu etkinleştir (Önizleme)**: tek seferlik geçiş kodu özelliği hakkında daha fazla bilgi için, bkz. [e-posta bir kerelik geçiş kodu doğrulaması (Önizleme)](one-time-passcode.md).
+   - **Üyeler davet edebilir**: dizininizin yönetici olmayan üyelerinin konukları davet etmesini sağlamak için, bu ilkeyi **Evet** olarak ayarlayın.
 
-   - **Konuk self servis kaydolma özelliğini Kullanıcı akışları (Önizleme) Ile etkinleştirin**: Bu ayar hakkında daha fazla bilgi için bkz. [bir uygulamaya self servis kaydolma Kullanıcı akışı ekleme (Önizleme)](self-service-sign-up-user-flow.md).
+   - **Konuklar davet edebilir**: konukların diğer konukları davet etmesini sağlamak için bu ilkeyi **Evet** olarak ayarlayın.
 
    > [!NOTE]
    > **Üyeler davet** etmek için **Hayır** ve **Yöneticiler ve konuk davet eden rolündeki kullanıcılar davet** **olarak ayarlanırsa,** **konuk davet** eden rolündeki kullanıcılar konukları davet edebilir.
 
-    ![Konuk davet ayarları](./media/delegate-invitations/guest-invite-settings.png)
+6. **Konuklar için bir kerelik geçiş kodu** altında uygun ayarları seçin (daha fazla bilgi için bkz. e- [posta bir kerelik geçiş kodu kimlik doğrulaması](one-time-passcode.md)):
 
-6. **İşbirliği kısıtlamaları**' nın altında, belirttiğiniz etki alanlarına davetleri izin vermeyi veya reddetmeyi seçin. Daha fazla bilgi için, bkz. [belirli kuruluşlardan B2B kullanıcılarına Izin verme veya bu kullanıcıların davetlerini engelleme](allow-deny-list.md).
+   ![E-posta bir kerelik geçiş kodu ayarları](./media/delegate-invitations/email-otp-settings.png)
 
+   - **Mart 2021 ' de guests için e-posta tek seferlik geçiş kodunu otomatik olarak etkinleştirin**. Varsayılanını E-posta bir kerelik geçiş kodu özelliği kiracınız için zaten etkin değilse, bu, Mart 2021 ' de otomatik olarak açılır. Özelliğin o anda etkinleştirilmesini istiyorsanız başka bir eylem gerekmez. Özelliği zaten etkinleştirdiyseniz veya devre dışı bıraktığınız takdirde bu seçenek kullanılamaz.
+
+   - **Şimdi geçerli olan konuklar için tek seferlik geçiş kodunu etkinleştirin**. Kiracınız için bir kerelik geçiş kodu özelliğini etkinleştirir.
+
+   - **Konuklar için tek seferlik e-posta geçiş kodunu devre dışı bırakın**. , Kiracınız için bir kerelik geçiş kodu özelliğini kapatır ve özelliğin Mart 2021 ' de açılmasını önler.
+
+   > [!NOTE]
+   > Yukarıdaki seçenekler yerine, bu özelliği etkinleştirdiyseniz veya devre dışı bıraktığınız takdirde veya daha önce önizlemeyi kabul ettiyseniz, aşağıdaki iki durumlu bir geçiş görürsünüz:
+   >
+   >![E-posta bir kerelik geçiş kodunu etkinleştir](media/delegate-invitations/enable-email-otp-opted-in.png)
+
+7. **Konuk self servis kaydolma özelliğini Kullanıcı akışları (Önizleme) Ile etkinleştir** altında, kullanıcıların uygulamalara kaydolmasına izin veren Kullanıcı akışları oluşturabilmenizi istiyorsanız **Evet** ' i seçin. Bu ayar hakkında daha fazla bilgi için bkz. [bir uygulamaya self servis kaydolma Kullanıcı akışı ekleme (Önizleme)](self-service-sign-up-user-flow.md).
+
+    ![Kullanıcı akışları ile Self Servis kaydolma ayarı](./media/delegate-invitations/self-service-sign-up-setting.png)
+
+7. **İşbirliği kısıtlamaları**' nın altında, belirttiğiniz etki alanlarına davetleri izin vermeyi veya reddetmeyi seçin. Daha fazla bilgi için, bkz. [belirli kuruluşlardan B2B kullanıcılarına Izin verme veya bu kullanıcıların davetlerini engelleme](allow-deny-list.md).
+
+    ![İşbirliği kısıtlamaları ayarları](./media/delegate-invitations/collaboration-restrictions.png)
 ## <a name="assign-the-guest-inviter-role-to-a-user"></a>Konuk davet eden rolünü bir kullanıcıya atama
 
-Konuk davet eden rolü sayesinde, bireysel kullanıcılara bir küresel yönetici veya başka yönetici rolü atamadan konukları davet etme yeteneği verebilirsiniz. Konuk davet eden rolünü kişilere atayın. Daha sonra **, yöneticileri ve konuk davet eden rolünde bulunan kullanıcıları Evet 'e davet edediğinizden** emin **Yes**olun.
+Konuk davet eden rolü sayesinde, bireysel kullanıcılara bir küresel yönetici veya başka yönetici rolü atamadan konukları davet etme yeteneği verebilirsiniz. Konuk davet eden rolünü kişilere atayın. Daha sonra **, yöneticileri ve konuk davet eden rolünde bulunan kullanıcıları Evet 'e davet edediğinizden** emin **Yes** olun.
 
 Konuk davet eden rolüne kullanıcı eklemek için PowerShell 'in nasıl kullanılacağını gösteren bir örnek aşağıda verilmiştir:
 

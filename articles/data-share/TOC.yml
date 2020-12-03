@@ -45,7 +45,7 @@
       items:
         - name: Azure Depolama’dan paylaşma
           href: how-to-share-from-storage.md
-        - name: Azure SQL Veritabanı veya Synapse Analytics’ten paylaşma
+        - name: Azure SQL Veritabanı veya Azure Synapse Analytics’ten paylaşma
           href: how-to-share-from-sql.md
         - name: Azure Veri Gezgini'nden paylaşma
           href: /azure/data-explorer/data-share

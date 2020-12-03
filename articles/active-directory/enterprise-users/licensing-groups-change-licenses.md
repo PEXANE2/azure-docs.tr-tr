@@ -8,19 +8,20 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
+ms.subservice: enterprise-users
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/15/2020
+ms.date: 12/02/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f6d472f52fa0acf791cc9b5998bf2ebf4e5951b
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 050ae95c79e7ecb98f8508c2fdb41b90fc1b1da0
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95503108"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546548"
 ---
 # <a name="change-license-assignments-for-a-user-or-group-in-azure-active-directory"></a>Azure Active Directory bir kullanıcı veya grup için lisans atamalarını değiştirme
 
@@ -53,7 +54,7 @@ Lisans atamalarını güncelleştirmeden önce, tüm Kullanıcı veya grupların
 
     ![Office 365 E1 temizlenmiş ve Office 365 E3 seçili olduğunu gösteren bir kullanıcının lisans atamaları sayfası](./media/licensing-groups-change-licenses/update-user-license-assignments.png)
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 Azure AD, yeni lisansları uygular ve hizmet devamlılığını sağlamak için eski lisansları aynı anda kaldırır.
 
@@ -68,7 +69,7 @@ Azure AD, yeni lisansları uygular ve hizmet devamlılığını sağlamak için 
 
     ![Kullanıcı veya grup lisansları sayfasında atamalar komutunu seçin](./media/licensing-groups-change-licenses/update-group-license-assignments.png)
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
 Azure AD, hizmet devamlılığını sağlamak için yeni lisansları uygular ve gruptaki tüm kullanıcılar için aynı anda eski lisansları kaldırır.
 

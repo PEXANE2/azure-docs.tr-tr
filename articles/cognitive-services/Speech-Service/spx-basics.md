@@ -10,16 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: bead348e64fcee4cc5b790f975c9da5200ee796b
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: acc19d9a04909dcf0e79c93e0c8a3fb8225ee1b4
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422408"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546919"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>Konuşma CLı 'nın temellerini öğrenin
 
-Bu makalede, konuşma hizmetini kod yazmadan kullanmak için bir komut satırı aracı olan konuşma CLı 'nın temel kullanım düzenlerini öğrenirsiniz. Kullanım durumlarınızın yeterince karşılanıp karşılanmadığını görmek için, geliştirme ortamları oluşturmadan veya herhangi bir kod yazmaya gerek kalmadan, konuşma hizmetinin ana özelliklerini hızlıca test edebilirsiniz. Ayrıca, konuşma CLı, üretime hazırlanın ve konuşma hizmetindeki basit iş akışlarını otomatik hale getirmek için `.bat` veya kabuk betikleri kullanılarak kullanılabilir.
+Bu makalede, konuşma hizmetini kod yazmadan kullanmak için bir komut satırı aracı olan konuşma CLı 'nın temel kullanım düzenlerini öğrenirsiniz. Kullanım durumlarınızın yeterince karşılanıp karşılanmadığını görmek için, geliştirme ortamları oluşturmadan veya herhangi bir kod yazmaya gerek kalmadan, konuşma hizmetinin ana özelliklerini hızlıca test edebilirsiniz. Konuşma CLı, üretime hazırlanıyor ve konuşma hizmetindeki basit iş akışlarını otomatikleştirmek için `.bat` veya kabuk betikleri kullanılarak kullanılabilir.
+
+Bu makalede, komut istemi, Terminal veya PowerShell ile ilgili bilgi sahibi olduğunuz varsayılır.
 
 [!INCLUDE [](includes/spx-setup.md)]
 
@@ -45,11 +47,24 @@ Recognize komutuna yönelik seçenekleri görmek için aşağıdaki komutu girin
 spx help recognize
 ```
 
-Şimdi, aşağıdaki komutu çalıştırarak varsayılan mikrofonunuzu kullanarak bazı konuşma tanıma işlemleri gerçekleştirmek için konuşma hizmetini kullanın.
+Şimdi sisteminizin varsayılan mikrofonunu kullanarak konuşma tanımayı gerçekleştirmek için konuşma CLı 'sını kullanalım. 
+
+>[!WARNING]
+> Docker kapsayıcısı kullanıyorsanız, bu komut çalışmaz.
+
+Şu komutu çalıştırın:
 
 ```shell
 spx recognize --microphone
 ```
+
+Konuşma CLı 'sı sayesinde konuşmayı bir ses dosyasından de tanıyabilirsiniz.
+
+```shell
+spx recognize --file /path/to/file.wav
+```
+> [!TIP]
+> Bir Docker kapsayıcısında konuşmayı bir ses dosyasından tanıyor ve ses dosyasının önceki adımda bağladığınız dizinde bulunduğundan emin olun.
 
 Komutu girdikten sonra, SPX geçerli etkin giriş cihazında sesi dinlemeye başlayacaktır ve ' ı bastıktan sonra durur `ENTER` . Kaydedilen konuşma daha sonra tanınır ve konsol çıkışında metne dönüştürülür. Metinden konuşmaya birleştirme özelliği, konuşma CLı 'yi kullanmayı da kolaylaştırır. 
 

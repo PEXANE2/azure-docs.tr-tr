@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: anfeldma
 ms.custom: devx-track-java, contperfq2
-ms.openlocfilehash: 6b87a06620a6e20ff67bde6fde9ed01aaef7fc9e
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 1359d01136067b6a939efd1cc0cd7db36f4dc2d6
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339725"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545477"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Azure Cosmos DB Java SDK v4 için performans ipuçları
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -124,7 +124,7 @@ Daha fazla ayrıntı için lütfen [Windows](../virtual-network/create-vm-accele
     
     Coğrafi birlikte bulundurma, eşitleme API 'si kullanırken size daha yüksek ve daha tutarlı bir aktarım hızı sağlayabilir (bkz. [performans için aynı Azure bölgesindeki istemcileri birlikte bulma](#collocate-clients)), ancak yine de zaman uyumsuz API kullanımına izin verilmeyen aktarım hızını aşmayı beklemeden
 
-    Ayrıca, Java SDK v4 zaman uyumsuz API Azure Cosmos DB uygulamak için kullanılan reaktif akışlar çerçevesi olan [Proje reaktör](https://projectreactor.io/)ile bazı kullanıcılar da tanıdık gelebilir. Bu sorun devam ediyor ise, açıklayıcı [reaktör düzen kılavuzumuzu](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md) okumanızı ve daha sonra kendinizi tanımak Için bu [girişe](https://tech.io/playgrounds/929/reactive-programming-with-reactor-3/Intro) göz atmanızı öneririz. Zaten zaman uyumsuz bir arabirimle Azure Cosmos DB kullandıysanız ve kullandığınız SDK zaman uyumsuz Java SDK v2 Azure Cosmos DB, [reactivex](http://reactivex.io/) / [rxjava](https://github.com/ReactiveX/RxJava) ile ilgili bilgi sahibi olabilirsiniz ancak proje reaktörde nelerin değiştiğini tam olarak görebilirsiniz. Bu durumda, familiarized olmak için lütfen [reaktör vs. RxJava kılavuzumuza](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) göz atın.
+    Ayrıca, Java SDK v4 zaman uyumsuz API Azure Cosmos DB uygulamak için kullanılan reaktif akışlar çerçevesi olan [Proje reaktör](https://projectreactor.io/)ile bazı kullanıcılar da tanıdık gelebilir. Bu sorun devam ediyor ise, açıklayıcı [reaktör düzen kılavuzumuzu](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-pattern-guide.md) okumanızı ve daha sonra kendinizi tanımak Için bu [girişe](https://tech.io/playgrounds/929/reactive-programming-with-reactor-3/Intro) göz atmanızı öneririz. Zaten zaman uyumsuz bir arabirimle Azure Cosmos DB kullandıysanız ve kullandığınız SDK zaman uyumsuz Java SDK v2 Azure Cosmos DB, [reactivex](http://reactivex.io/) / [rxjava](https://github.com/ReactiveX/RxJava) ile ilgili bilgi sahibi olabilirsiniz ancak proje reaktörde nelerin değiştiğini tam olarak görebilirsiniz. Bu durumda, familiarized olmak için lütfen [reaktör vs. RxJava kılavuzumuza](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/reactor-rxjava-guide.md) göz atın.
 
     Aşağıdaki kod parçacıkları, sırasıyla Azure Cosmos DB istemcinizi zaman uyumsuz API veya eşitleme API 'SI işlemi için başlatmayı gösterir:
 
@@ -154,7 +154,7 @@ Daha fazla ayrıntı için lütfen [Windows](../virtual-network/create-vm-accele
 
         :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Doğrudan mod mimarisinin çizimi" border="false":::
 
-        Doğrudan modda çalışan istemci tarafı mimarisi, tahmin edilebilir ağ kullanımı ve Azure Cosmos DB çoğaltmaya çoğullanmış erişim sağlar. Yukarıdaki diyagramda, doğrudan modunun Cosmos DB arka uçtaki çoğaltmalara istemci isteklerini nasıl yönlendirdiğini gösterir. Doğrudan mod mimarisi, VERITABANı çoğaltması başına istemci tarafında en fazla 10 _ *Kanal* * ayırır. Kanal, 30 istekten oluşan bir istek arabelleğinin önünde yer aldığı bir TCP bağlantısıdır. Bir çoğaltmaya ait olan kanallar, çoğaltmanın **hizmet uç noktası** tarafından gerektiği şekilde dinamik olarak ayrılır. Kullanıcı doğrudan modda bir istek verdiği zaman, **Transportclient** , isteği bölüm anahtarına göre uygun hizmet uç noktasına yönlendirir. **Istek kuyruğu** , hizmet uç noktasından önceki istekleri arabelleğe alır.
+        Doğrudan modda çalışan istemci tarafı mimarisi, tahmin edilebilir ağ kullanımı ve Azure Cosmos DB çoğaltmaya çoğullanmış erişim sağlar. Yukarıdaki diyagramda, doğrudan modunun Cosmos DB arka uçtaki çoğaltmalara istemci isteklerini nasıl yönlendirdiğini gösterir. Doğrudan mod mimarisi, VERITABANı çoğaltması başına istemci tarafında en fazla 10 _ *Kanal** ayırır. Kanal, 30 istekten oluşan bir istek arabelleğinin önünde yer aldığı bir TCP bağlantısıdır. Bir çoğaltmaya ait olan kanallar, çoğaltmanın **hizmet uç noktası** tarafından gerektiği şekilde dinamik olarak ayrılır. Kullanıcı doğrudan modda bir istek verdiği zaman, **Transportclient** , isteği bölüm anahtarına göre uygun hizmet uç noktasına yönlendirir. **Istek kuyruğu** , hizmet uç noktasından önceki istekleri arabelleğe alır.
 
     * ***Doğrudan mod _ Için yapılandırma seçenekleri**
 
@@ -182,7 +182,7 @@ Daha fazla ayrıntı için lütfen [Windows](../virtual-network/create-vm-accele
 
         Verilerin sorguya göre tüm bölümler arasında eşit bir şekilde dağıtılması halinde paralel sorguların en iyi avantajları ürettiğine dikkat edin. Bölümlenmiş koleksiyon, bir sorgu tarafından döndürülen verilerin tümünün veya çoğunluğunun birkaç bölümde (en kötü durumda bir bölüm) yoğunlaşarak bir şekilde bölümlenmişse, sorgunun performansı bu bölümler tarafından bottlenecked olacaktır.
 
-    _ * **Ayarlama setMaxBufferedItemCount \:** _
+    _ ***Ayarlama setMaxBufferedItemCount \:** _
     
         Parallel query is designed to pre-fetch results while the current batch of results is being processed by the client. The pre-fetching helps in overall latency improvement of a query. setMaxBufferedItemCount limits the number of pre-fetched results. Setting setMaxBufferedItemCount to the expected number of results returned (or a higher number) enables the query to receive maximum benefit from pre-fetching.
 
@@ -198,7 +198,7 @@ _ **Istemcinizi genişleme-iş yükü**
 
 * **Daha iyi performans için, sorguların/okunan akışların sayfa boyutunu ayarlayın**
 
-    Belgeleri oku (örneğin, *readItems* ) kullanarak veya bir SQL sorgusu ( *QueryItems* ) verirken belge okuma işlemi gerçekleştirirken sonuçlar, sonuç kümesi çok büyükse, bölümlenmiş bir biçimde döndürülür. Varsayılan olarak, sonuçlar 100 öğe veya 1 MB Öbekle döndürülür, bu sınır ilk önce dönüştürülür.
+    Belgeleri oku (örneğin, *readItems*) kullanarak veya bir SQL sorgusu (*QueryItems*) verirken belge okuma işlemi gerçekleştirirken sonuçlar, sonuç kümesi çok büyükse, bölümlenmiş bir biçimde döndürülür. Varsayılan olarak, sonuçlar 100 öğe veya 1 MB Öbekle döndürülür, bu sınır ilk önce dönüştürülür.
 
     Uygulamanızın Azure Cosmos DB bir sorgu sağladığını ve uygulamanızın, görevi tamamlaması için tam sorgu sonuçları kümesi gerektirdiğini varsayalım. Tüm geçerli sonuçları almak için gereken ağ gidiş dönüşlerin sayısını azaltmak için, [x-MS-Max-item-Count](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) istek üst bilgisi alanını ayarlayarak sayfa boyutunu artırabilirsiniz. 
 
@@ -237,7 +237,7 @@ _ **Istemcinizi genişleme-iş yükü**
 
         Zaman uyumlu bir günlükçü gecikmesi, istek oluşturma iş parçacığınız için genel gecikme süresi hesaplamasına yönelik bir etken olması halinde. Yüksek performanslı uygulama iş parçacıklarından günlüğe kaydetme ek yükünü ayırmak için [log4j2](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Flogging.apache.org%2Flog4j%2Flog4j-2.3%2Fmanual%2Fasync.html&data=02%7C01%7CCosmosDBPerformanceInternal%40service.microsoft.com%7C36fd15dea8384bfe9b6b08d7c0cf2113%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637189868158267433&sdata=%2B9xfJ%2BWE%2F0CyKRPu9AmXkUrT3d3uNA9GdmwvalV3EOg%3D&reserved=0) gibi bir zaman uyumsuz günlükçü önerilir.
 
-    _ * **Netty 'nin günlüğünü devre dışı bırak** _
+    _ ***Netty 'nin günlüğünü devre dışı bırak** _
 
         Netty library logging is chatty and needs to be turned off (suppressing sign in the configuration may not be enough) to avoid additional CPU costs. If you are not in debugging mode, disable netty's logging altogether. So if you are using log4j to remove the additional CPU costs incurred by ``org.apache.log4j.Category.callAppenders()`` from netty add the following line to your codebase:
 

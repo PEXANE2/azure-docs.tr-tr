@@ -106,6 +106,8 @@
       href: azure-advisor.md
     - name: Önerileri çözümleme
       href: azure-advisor-recommendations.md
+    - name: Windows Sanal Masaüstü için Azure İzleyici’yi kullanma
+      href: azure-monitor.md
     - name: Olağanüstü durum kurtarma planını ayarlama
       href: disaster-recovery.md
 - name: Kavramlar
@@ -150,6 +152,8 @@
           href: app-attach-glossary.md
         - name: SSS
           href: app-attach-faq.md
+    - name: Azure İzleyici sözlüğü
+      href: azure-monitor-glossary.md
     - name: Veri konumları
       href: data-locations.md
 - name: Sorun giderme
@@ -170,6 +174,8 @@
       href: troubleshoot-powershell.md
     - name: Grafik performansı sorunlarını tanılama
       href: remotefx-graphics-performance-counters.md
+    - name: Azure İzleyici
+      href: troubleshoot-azure-monitor.md
 - name: Başvuru
   items:
     - name: En iyi güvenlik uygulamaları

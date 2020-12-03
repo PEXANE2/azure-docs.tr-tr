@@ -4,48 +4,44 @@ description: Azure Application Insights 'de Web testlerinde sorun giderme. Web s
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
-ms.date: 04/28/2020
+ms.date: 11/19/2020
 ms.reviewer: sdash
-ms.openlocfilehash: 0ac8dd189bee1c1d4f5a7a4d0f7de68b085fbc56
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 368c45433247c441631bdf79bfc9caa28a41f1b4
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015341"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546765"
 ---
 # <a name="troubleshooting"></a>Sorun giderme
 
 Bu makale, kullanılabilirlik izlemeyi kullanırken oluşabilecek yaygın sorunları gidermenize yardımcı olur.
 
-## <a name="ssltls-errors"></a>SSL/TLS hataları
+## <a name="troubleshooting-report-steps-for-ping-tests"></a>Ping testleri için sorun giderme raporu adımları
 
-|Belirti/hata iletisi| Olası nedenler|
-|--------|------|
-|SSL/TLS güvenli kanalı oluşturulamadı  | SSL sürümü. Yalnızca TLS 1,0, 1,1 ve 1,2 desteklenir. **SSLv3 desteklenmiyor.**
-|TLSv 1.2 kayıt katmanı: uyarı (düzey: önemli, Açıklama: Hatalı kayıt MAC)| [Daha fazla bilgi](https://security.stackexchange.com/questions/39844/getting-ssl-alert-write-fatal-bad-record-mac-during-openssl-handshake)için bkz. StackExchange iş parçacığı.
-|Başarısız olan URL bir CDN 'ye (Content Delivery Network) | Bunun nedeni CDN 'inizdeki bir yanlış yapılandırma olabilir |  
+Sorun giderme raporu, **ping testlerinizin** başarısız olmasına neden olan yaygın sorunları kolayca tanılamanıza olanak sağlar.
 
-### <a name="possible-workaround"></a>Olası geçici çözüm
+![Sorun giderme raporunu görüntülemek için uçtan uca işlem ayrıntılarına bir hata seçerek kullanılabilirlik sekmesinden gezinme animasyonu](./media/troubleshoot-availability/availability-to-troubleshooter.gif)
 
-* Sorunu yaşayan URL 'Ler her zaman bağımlı kaynaklara bağımlıysa, Web testi için **bağımlı istekleri ayrıştırmayı** devre dışı bırakmanız önerilir.
-
-## <a name="test-fails-only-from-certain-locations"></a>Test yalnızca belirli konumlardan başarısız oluyor
-
-|Belirti/hata iletisi| Olası nedenler|
-|----|---------|
-|Bağlı olan taraf bir süre sonra düzgün bir şekilde yanıt vermediği için bağlantı girişimi başarısız oldu  | Belirli konumlardaki test aracıları bir güvenlik duvarı tarafından engelleniyor.|
-|    |Belirli IP adreslerini yeniden yönlendirme (yük dengeleyiciler, coğrafi trafik yöneticileri, Azure Express Route) aracılığıyla yapılır. 
-|    |Azure ExpressRoute kullanıyorsanız, paketlerin [asimetrik yönlendirmenin gerçekleştiği](../../expressroute/expressroute-asymmetric-routing.md)durumlarda nerelerde bırakılbileceği senaryolar vardır.|
-
-## <a name="test-failure-with-a-protocol-violation-error"></a>Protokol ihlali hatası ile test hatası
-
-|Belirti/hata iletisi| Olası nedenler| Olası çözümler |
-|----|---------|-----|
-|Sunucu bir protokol ihlali taahhütlü. Section = ResponseHeader ayrıntısı = CR 'nin arkasından LF gelmelidir | Bu durum, hatalı biçimlendirilmiş üstbilgiler algılandığında oluşur. Özellikle, bazı üst bilgiler satır sonunu belirtmek için CRLF kullanmıyor olabilir, bu da HTTP belirtimini ihlal ediyor. Application Insights, bu HTTP belirtimini zorluyor ve hatalı biçimlendirilmiş üst bilgilerle yanıt verir.| a. Hatalı sunucuları onarmak için Web sitesi konak sağlayıcısı/CDN sağlayıcısına başvurun. <br> b. Başarısız isteklerin kaynak olması durumunda (örn. stil dosyaları, görüntüler, betikler), bağımlı isteklerin ayrıştırılmasını devre dışı bırakmayı düşünebilirsiniz. Bunu yaparsanız, bu dosyaların kullanılabilirliğini izleme özelliğini kaybedeceğinizi aklınızda bulundurun).
+1. Application Insights kaynağınızın kullanılabilirlik sekmesinde, kullanılabilirlik testlerinin genel veya bir kısmını seçin.
+2. , Sol taraftaki "detaya git" bölümündeki bir test **başarısız** ' ı seçin veya dağılım çiziminde noktalarından birini seçin.
+3. Uçtan uca işlem ayrıntısı sayfasında, bir olay seçin ve ardından "Rapor Özeti sorunlarını giderme" seçeneğinin altındaki sorun giderme raporunu görmek için **[adıma git]** seçeneğini belirleyin.
 
 > [!NOTE]
-> URL, HTTP üstbilgileri gevşek olarak doğrulanmış tarayıcılarda başarısız olmayabilir. Bu sorunun ayrıntılı bir açıklaması için bu blog gönderisine bakın: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
+>  Bağlantı yeniden kullanım adımı varsa DNS çözümlemesi, bağlantı kurulumu ve TLS taşıma adımları mevcut olmayacaktır.
 
+|Adım | Hata iletisi | Olası nedeni |
+|-----|---------------|----------------|
+| Bağlantı yeniden kullanımı | yok | Genellikle önceden oluşturulmuş bir bağlantıya bağımlıdır Web test adımının bağımlıdır. Bu nedenle, DNS, bağlantı veya SSL adımı gerekmez. |
+| DNS çözümleme | Uzak ad çözümlenemedi: "URL 'niz" | Büyük olasılıkla yanlış yapılandırılmış DNS kayıtları veya geçici DNS sunucusu hatalarından dolayı DNS çözümleme işlemi başarısız oldu. |
+| Bağlantı kurma | Bağlı olan taraf bir süre sonra düzgün bir şekilde yanıt vermediği için bağlantı girişimi başarısız oldu. | Genel olarak, sunucunuz HTTP isteğine yanıt vermediği anlamına gelir. Yaygın bir nedeni, test aracılarımızın sunucunuzdaki bir güvenlik duvarı tarafından engellenmesidir. Bir Azure sanal ağı dahilinde test etmek isterseniz, kullanılabilirlik hizmeti etiketini ortamınıza eklemeniz gerekir.|
+| TLS taşıma  | İstemci ve sunucu, ortak bir algoritmaya sahip olmadıkları için iletişim kuramıyor.| Yalnızca TLS 1,0, 1,1 ve 1,2 desteklenir. SSL desteklenmez. Bu adım SSL sertifikalarını doğrulamaz ve yalnızca güvenli bir bağlantı kurar. Bu adım, yalnızca bir hata oluştuğunda görüntülenir. |
+| Yanıt üst bilgisi alınıyor | Aktarım bağlantısından veriler okunamıyor. Bağlantı kapatıldı. | Sunucunuz yanıt üstbilgisinde bir protokol hatası taahhüt ediyor. Örneğin, yanıt tam olarak olmadığında bağlantınız sunucu tarafından kapatıldı. |
+| Yanıt gövdesi alma | Aktarım bağlantısından veri okunamıyor: bağlantı kapatıldı. | Sunucunuz yanıt gövdesinde bir protokol hatası taahhüt ediyor. Örneğin, yanıt tam olarak okunmadığı veya öbekli yanıt gövdesinde öbek boyutu yanlış olduğunda, bağlantınız sunucu tarafından kapatıldı. |
+| Yeniden yönlendirme sınırı doğrulaması | Bu Web sayfasının çok fazla yeniden yönlendirmeleri vardır. Bu istek otomatik yeniden yönlendirmeler için sınırı aştığından, bu döngü burada sonlandırılacak. | Test başına 10 yeniden yönlendirme sınırı vardır. |
+| Durum kodu doğrulaması | `200 - OK` beklenen durumla eşleşmiyor `400 - BadRequest` . | Başarılı olarak sayılan döndürülen durum kodu. 200, normal web sayfası döndürüldüğünü belirten koddur. |
+| İçerik doğrulama | Gerekli ' Merhaba ' metni yanıtta görünmüyor. | Dize, yanıtta, "Welcome!" dizesi gibi tam bir büyük küçük harfe duyarlı eşleşme değildir. Joker karakter içermeyen (örneğin bir yıldız işareti) düz bir dize olmalıdır. Sayfa içeriğiniz değişirse dizeyi güncelleştirmeniz gerekebilir. İçerik eşleşmesi ile yalnızca Ingilizce karakterler desteklenir. |
+  
 ## <a name="common-troubleshooting-questions"></a>Ortak sorun giderme soruları
 
 ### <a name="site-looks-okay-but-i-see-test-failures-why-is-application-insights-alerting-me"></a>Site sorunsuz görünüyor, ancak test hataları görüyorum? Neden Application Insights uyarı veriyor?
@@ -54,7 +50,7 @@ Bu makale, kullanılabilirlik izlemeyi kullanırken oluşabilecek yaygın sorunl
 
    * Geçici ağ hüklarından gürültü düzeyini azaltmak için, test arızaları yapılandırması için yeniden denemeleri etkinleştirin ' in işaretli olduğundan emin olun. Ayrıca, daha fazla konumdan test edebilir ve uyarı kuralı eşiğini, hataya özel sorunları engellemek için uygun şekilde yönetebilirsiniz.
 
-   * Hatanın neden bildirildiğimiz ayrıntılarını görmek için kullanılabilirlik deneyiminde kırmızı noktalardan herhangi birine veya arama Gezgini 'ndeki herhangi bir kullanılabilirlik hatasına tıklayın. Test sonucu, ilişkili sunucu tarafı telemetri (etkinse) ile birlikte testin neden başarısız olduğunu anlamanıza yardımcı olmalıdır. Geçici sorunların yaygın nedenleri ağ veya bağlantı sorunlarıdır.
+   * Neden başarısız olduğunu bildirdiğimiz ayrıntılarını görmek için, kullanılabilirlik dağılımı çizim deneyimi deneyiminden kırmızı noktalardan herhangi birine veya arama Gezgini 'nden herhangi bir kullanılabilirlik hatasına tıklayın. Test sonucu, ilişkili sunucu tarafı telemetri (etkinse) ile birlikte testin neden başarısız olduğunu anlamanıza yardımcı olmalıdır. Geçici sorunların yaygın nedenleri ağ veya bağlantı sorunlarıdır.
 
    * Test zaman aşımına uğrar mı? 2 dakika sonra testleri iptal ediyoruz. Ping veya çok adımlı testiniz 2 dakikadan uzun sürerse, bunu hata olarak raporlarız. Testi daha kısa süreler içinde tamamlayabileceğiniz birden çok tabloya bölmek göz önünde bulundurun.
 
@@ -134,4 +130,3 @@ Kullanıcılara rollerine göre bildirimde bulunan yeni uyarı deneyimini veya n
 
 * [Çok adımlı Web testi](availability-multistep.md)
 * [URL ping testleri](monitor-web-app-availability.md)
-

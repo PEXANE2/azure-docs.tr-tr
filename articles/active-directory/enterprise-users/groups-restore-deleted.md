@@ -5,19 +5,20 @@ services: active-directory
 author: curtand
 manager: daveba
 ms.service: active-directory
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: quickstart
-ms.date: 11/15/2020
+ms.date: 12/02/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f79b08a75deca64a301f5b8e0b3a7634f5a3c7d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: d8a2aed6bf4a6b327ca7dd026f615a5d00af0bd8
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95503000"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546276"
 ---
 # <a name="restore-a-deleted-microsoft-365-group-in-azure-active-directory"></a>Silinen bir Microsoft 365 grubunu Azure Active Directory geri yükleme
 
@@ -28,11 +29,11 @@ Azure Active Directory (Azure AD) içinde bir Microsoft 365 grubunu sildiğinizd
 
 Grubu geri yüklemek için gerekli izinler aşağıdakilerden herhangi biri olabilir:
 
-Rol | İzinler
+Role | İzinler
 --------- | ---------
 Genel yönetici, Grup Yöneticisi, Iş ortağı Katman2 desteği ve Intune Yöneticisi | Silinen Microsoft 365 grubunu geri yükleyebilir
 Kullanıcı Yöneticisi ve Iş ortağı Katman1 desteği | Şirket Yöneticisi rolüne atanan gruplar hariç silinen Microsoft 365 grubunu geri yükleyebilir
-Kullanıcı | Sahip oldukları silinen Microsoft 365 grubunu geri yükleyebilir
+User | Sahip oldukları silinen Microsoft 365 grubunu geri yükleyebilir
 
 ## <a name="view-and-manage-the-deleted-microsoft-365-groups-that-are-available-to-restore"></a>Geri yüklenebilecek silinen Microsoft 365 gruplarını görüntüleyin ve yönetin
 

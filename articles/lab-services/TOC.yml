@@ -20,11 +20,11 @@
       href: tutorial-track-usage.md
 - name: Kavramlar
   items:
-    - name: Sınıf Laboratuvarlarına genel bakış
+    - name: Laboratuvarlara genel bakış
       href: classroom-labs-overview.md
-    - name: Sınıf Laboratuvarları kavramları
+    - name: Laboratuvar kavramları
       href: classroom-labs-concepts.md
-    - name: Sınıf Laboratuvarları mimarisinin temelleri
+    - name: Laboratuvar mimarisinin temelleri
       href: classroom-labs-fundamentals.md
     - name: Kapasite sınırları
       href: capacity-limits.md
@@ -36,7 +36,7 @@
           href: classroom-labs-scenarios.md
         - name: Hackathon için Laboratuvar Servislerini kullanma
           href: hackathon-labs.md
-        - name: Sınıf laboratuvarları - sınıf türleri
+        - name: laboratuvarlar - sınıf türleri
           items:
             - name: Sınıf türlerine genel bakış
               href: class-types.md
@@ -112,9 +112,9 @@
           href: lab-account-owner-support-information.md
         - name: Paylaşılan Görüntü Galerisi’ne özel görüntü yükleme
           href: upload-custom-image-shared-image-gallery.md
-    - name: Sınıf laboratuvarlarını oluşturma ve yapılandırma (eğitimci)
+    - name: Laboratuvar oluşturma ve yapılandırma (eğitimci)
       items:
-        - name: Sınıf laboratuvarları oluşturma ve yönetme
+        - name: Laboratuvar oluşturma ve yönetme
           href: how-to-manage-classroom-labs.md
         - name: Panoyu kullanma
           href: use-dashboard.md
@@ -150,9 +150,9 @@
           href: lab-creator-support-information.md
         - name: Eğitimci görünümünden öğrenci VM’lerine erişme
           href: instructor-access-virtual-machines.md
-    - name: Sınıf laboratuvarlarında VM’lere bağlanma (öğrenci)
+    - name: Laboratuvarlarda VM’lere bağlanma (öğrenci)
       items:
-        - name: Sınıf laboratuvarlarına erişim
+        - name: Laboratuvarlara erişme
           href: how-to-use-classroom-lab.md
         - name: Linux VM’lere bağlanma
           href: how-to-use-remote-desktop-linux-student.md

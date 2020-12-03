@@ -617,7 +617,7 @@
                           items:
                             - name: SQL Veritabanı ile
                               href: database/saas-tenancy-tenant-analytics.md
-                            - name: Azure Synapse Analytics (eski adı SQL Veri Ambarı) ile
+                            - name: Azure Synapse Analytics ile
                               href: database/saas-tenancy-tenant-analytics-adf.md
                     - name: Coğrafi geri yüklemeyi kullanarak olağanüstü durum kurtarma
                       href: database/saas-dbpertenant-dr-geo-restore.md
@@ -639,7 +639,7 @@
                       href: database/saas-multitenantdb-tenant-analytics.md
     - name: Örnekler
       items:
-        - name: Azure CLI’si
+        - name: Azure CLI
           href: database/az-cli-script-samples-content-guide.md?tabs=single-database
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=single-database
@@ -964,7 +964,7 @@
           href: managed-instance/user-initiated-failover.md
     - name: Örnekler
       items:
-        - name: Azure CLI’si
+        - name: Azure CLI
           href: database/az-cli-script-samples-content-guide.md?tabs=managed-instance
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=managed-instance

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 12/02/2020
 ms.author: yushwang
-ms.openlocfilehash: a77ee3c4301d278f98b571402514663dcfc9ca52
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 47d14c5ee7f6c4816bf15351e9cb28a2aaa72b4c
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657933"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546854"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>Şifreleme gereksinimleri ve Azure VPN ağ geçitleri hakkında
 
@@ -29,6 +29,8 @@ IKEv1 ve IKEv2 bağlantıları aynı VPN ağ geçidine uygulandığında, bu iki
 ## <a name="about-ipsec-and-ike-policy-parameters-for-azure-vpn-gateways"></a>Azure VPN ağ geçitleri için IPSec ve ıKE ilke parametreleri hakkında
 
 IPSec ve ıKE protokol standardı çeşitli birleşimlerde çok sayıda şifreleme algoritmasını destekler. Şifreleme algoritmalarının ve parametrelerinin belirli bir birleşimini istemeyin, Azure VPN ağ geçitleri varsayılan bir teklif kümesi kullanır. Varsayılan ilke kümeleri, varsayılan yapılandırmalarda çok çeşitli üçüncü taraf VPN cihazlarıyla birlikte çalışabilirliği en üst düzeye çıkarmak üzere seçilmiştir. Sonuç olarak, ilkeler ve tekliflerin sayısı kullanılabilir şifreleme algoritmaları ve anahtar güçlerinin tüm olası birleşimlerini kapsayamaz.
+
+### <a name="default-policy"></a>Varsayılan ilke
 
 Azure VPN Gateway için ayarlanan varsayılan ilke, [siteden siteye VPN Gateway bağlantıları IÇIN VPN cihazları ve IPSec/IKE parametreleri hakkında](vpn-gateway-about-vpn-devices.md)makalesinde listelenmiştir.
 
