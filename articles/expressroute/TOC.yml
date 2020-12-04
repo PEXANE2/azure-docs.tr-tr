@@ -145,7 +145,11 @@
     - name: Eşlemeleri yönetme
       items:
         - name: Eşlemeleri etkinleştirme ve devre dışı bırakma
-          href: expressroute-howto-reset-peering.md
+          items:
+            - name: Azure portalı
+              href: expressroute-howto-reset-peering-portal.md
+            - name: Azure PowerShell
+              href: expressroute-howto-reset-peering.md
         - name: Ortak eşlemeden Microsoft eşlemesine geçiş yapma
           href: how-to-move-peering.md
     - name: Devreler üzerinden trafiği şifreleme

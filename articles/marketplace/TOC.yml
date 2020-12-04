@@ -50,7 +50,7 @@
         - name: Ortak satış iş ortağı etkileşimi
           href: marketplace-co-sell.md
         - name: İş Ortağı Merkezi’nde ortak satış seçeneği
-          href: partner-center-portal/commercial-marketplace-co-sell.md
+          href: commercial-marketplace-co-sell.md
         - name: CSP İş Ortakları aracılığıyla perakende satış
           href: cloud-solution-providers.md
         - name: Program ekleme kılavuzunu bağlama
@@ -382,9 +382,9 @@
     - name: Desteklenen ülkeler ve bölgeler
       href: sell-from-countries.md
     - name: Ortak satış ülke ve bölge kodları
-      href: partner-center-portal/commercial-marketplace-co-sell-countries.md
+      href: commercial-marketplace-co-sell-countries.md
     - name: Ortak satış eyalet kodları
-      href: partner-center-portal/commercial-marketplace-co-sell-states.md
+      href: commercial-marketplace-co-sell-states.md
     - name: Kategoriler ve alt kategoriler
       href: categories.md
     - name: Desteklenen HTML etiketleri
