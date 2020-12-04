@@ -9,18 +9,18 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 97a90284ad8d195751eb5dd90675822d00243ea8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 11c20f3f79a4fceafaca9b1a948f1b4a425dad87
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91665217"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572720"
 ---
 # <a name="voice-and-video-concepts"></a>Ses ve görüntü kavramları
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
-Azure Iletişim hizmetlerini kullanarak ses ve video çağrıları yapabilir, çağrı meta verilerini çözümleyebilir, çağrıları kaydedebilir ve hatta çağrı ağaçları oluşturabilirsiniz. Çağrılarınız, Internet 'e bağlı diğer cihazlara ve eski telefonlar için yapılabilir. Kullanıcılarınızın özel konuşmalardaki veya grup tartışmalarında bir diğerine konuşmasını sağlayan uygulamalar oluşturmak için Iletişim Hizmetleri JavaScript, Android veya iOS istemci kitaplıklarını kullanabilirsiniz. Azure Iletişim Hizmetleri, hizmetlere veya botlara yapılan çağrıları destekler.
+Azure Iletişim Hizmetleri 'ni kullanarak bir veya daha fazla ses ve video çağrısı yapabilirsiniz. Çağrılarınız, Internet 'e bağlı diğer cihazlara ve eski telefonlar için yapılabilir. Kullanıcılarınızın özel konuşmalardaki veya grup tartışmalarında bir diğerine konuşmasını sağlayan uygulamalar oluşturmak için Iletişim Hizmetleri JavaScript, Android veya iOS istemci kitaplıklarını kullanabilirsiniz. Azure Iletişim Hizmetleri, hizmetlere veya botlara yapılan çağrıları destekler.
 
 ## <a name="call-types-in-azure-communication-services"></a>Azure Iletişim hizmetlerinde çağrı türleri
 

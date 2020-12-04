@@ -6,14 +6,14 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/10/2020
-ms.openlocfilehash: 469610d7195835a4b68e4d887c5be57a8926ba37
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: dd667202a329148e498d0e25ee15110de5d7448a
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489514"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573417"
 ---
-# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Azure Stream Analytics işinizin kimliğini doğrulamak için yönetilen kimliği kullanın Power BI
+# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi-preview"></a>Azure Stream Analytics işinizin kimliğini doğrulamak için yönetilen kimliği kullanın Power BI (Önizleme)
 
 Power BI çıkışı için [yönetilen kimlik kimlik doğrulaması](../active-directory/managed-identities-azure-resources/overview.md) , Stream Analytics işlerinin Power BI hesabınızdaki bir çalışma alanına doğrudan erişmesini sağlar. Bu özellik, bir kullanıcının Azure portal aracılığıyla Power BI etkileşimli olarak oturum açması için artık gerekli olmadığından, Stream Analytics işlerin dağıtımlarının tamamen otomatikleştirilmesi için izin verir. Ayrıca, işi düzenli olarak yeniden sağlamak zorunda kalabileceğinizden, Power BI yazan uzun süren işler artık daha iyi destekleniyor.
 
@@ -29,13 +29,13 @@ Bu özelliği kullanmak için aşağıdakiler gereklidir:
 
 ## <a name="create-a-stream-analytics-job-using-the-azure-portal"></a>Azure portal kullanarak Stream Analytics işi oluşturma
 
-1. Yeni bir Stream Analytics işi oluşturun veya Azure portal var olan bir işi açın. Ekranın sol tarafındaki menü çubuğundan **Yapılandır** ' ın altında bulunan **yönetilen kimlik** ' i seçin. "Sistem tarafından atanan yönetilen kimliği kullan" öğesinin seçili olduğundan emin olun ve ardından ekranın alt kısmındaki **Kaydet** düğmesini seçin.
+1. Yeni bir Stream Analytics işi oluşturun veya Azure portal var olan bir işi açın. Ekranın sol tarafındaki menü çubuğundan **Yapılandır**' ın altında bulunan **yönetilen kimlik** ' i seçin. "Sistem tarafından atanan yönetilen kimliği kullan" öğesinin seçili olduğundan emin olun ve ardından ekranın alt kısmındaki **Kaydet** düğmesini seçin.
 
    ![Stream Analytics yönetilen kimliği yapılandırma](./media/common/stream-analytics-enable-managed-identity.png)
 
 2. Çıktıyı yapılandırmadan önce, bu makalenin [Power BI çalışma alanınıza Stream Analytics iş erişimini verme](#give-the-stream-analytics-job-access-to-your-power-bi-workspace) bölümündeki yönergeleri izleyerek Stream Analytics işi Power BI çalışma alanınıza erişim izni verin.
 
-3. Stream analitik işinin **çıktılar** bölümüne gidin, **+ Ekle** ' yi seçin ve ardından **Power BI** ' yi seçin. Sonra **Yetkilendir** düğmesini seçin ve Power BI hesabınızla oturum açın.
+3. Stream analitik işinin **çıktılar** bölümüne gidin, **+ Ekle**' yi seçin ve ardından **Power BI**' yi seçin. Sonra **Yetkilendir** düğmesini seçin ve Power BI hesabınızla oturum açın.
 
    ![Power BI hesabıyla yetkilendir](./media/stream-analytics-powerbi-output-managed-identity/stream-analytics-authorize-powerbi.png)
 

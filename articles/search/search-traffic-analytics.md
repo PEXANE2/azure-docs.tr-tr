@@ -7,20 +7,20 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/18/2020
+ms.date: 12/03/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: d93ced4b45befec207494909de61d30a98d2a67e
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: eddab12e8ecf2e4757998bbd1e6e07c4c4d85f3c
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "91333741"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573871"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>Arama trafiği analizi için telemetri verilerini toplama
 
 Arama trafiği analizi, Kullanıcı tarafından başlatılan tıklama olayları ve klavye girişleri gibi Azure Bilişsel Arama uygulamanızla kullanıcı etkileşimleri hakkında telemetri toplamaya yönelik bir modeldir. Bu bilgileri kullanarak, popüler arama terimleri, tıklama ücreti ve hangi sorgu girişlerinin sıfır sonuçları elde etme gibi arama çözümünüzün verimliliğini belirleyebilirsiniz.
 
-Bu model, Kullanıcı verilerini toplamak için [Application Insights](../azure-monitor/app/app-insights-overview.md) ( [Azure izleyici](../azure-monitor/index.yml)'nin bir özelliği) bir bağımlılığı alır. Bu makalede açıklandığı gibi, istemci kodunuza izleme eklemenizi gerektirir. Son olarak, verileri çözümlemek için bir raporlama mekanizmasına ihtiyacınız olacaktır. Power BI önerilir ancak uygulama panosunu veya Application Insights bağlanan herhangi bir aracı kullanabilirsiniz.
+Bu model, Kullanıcı verilerini toplamak için [Application Insights](../azure-monitor/app/app-insights-overview.md) ( [Azure izleyici](../azure-monitor/index.yml)'nin bir özelliği) bir bağımlılığı alır. Bu makalede açıklandığı gibi, istemci kodunuza izleme eklemenizi gerektirir. Son olarak, verileri çözümlemek için bir raporlama mekanizmasına ihtiyacınız olacaktır. Power BI önerilir, ancak uygulama panosunu veya Application Insights bağlanan herhangi bir aracı kullanabilirsiniz.
 
 > [!NOTE]
 > Bu makalede açıklanan model, gelişmiş senaryolar ve istemcinizde eklediğiniz kod tarafından oluşturulan tıklama akışı verileri içindir. Buna karşılık, hizmet günlüklerinin ayarlanması kolaydır, bir dizi ölçüm sağlar ve kod gerekmeden portalda yapılabilir. Günlüğe kaydetmenin etkinleştirilmesi tüm senaryolar için önerilir. Daha fazla bilgi için bkz. [günlük verilerini toplama ve analiz etme](search-monitor-logs.md).
@@ -29,7 +29,7 @@ Bu model, Kullanıcı verilerini toplamak için [Application Insights](../azure-
 
 Arama trafiği analizi için yararlı ölçümler sağlamak üzere, arama uygulamanızın kullanıcılarından bazı sinyalleri günlüğe kaydetmek gerekir. Bu sinyaller, kullanıcıların ilgilendiği ve ilgili kabul ettikleri içerikleri işaret eder. Arama trafiği analizi için şunlar vardır:
 
-+ Kullanıcı tarafından oluşturulan arama olayları: yalnızca bir kullanıcı tarafından başlatılan arama sorguları ilginç. Modelleri, ek içerikleri veya herhangi bir iç bilgiyi doldurmak için kullanılan arama istekleri önemli değildir ve sonuçlarınızı eğebilir ve bunları saptlarlar.
++ Kullanıcı tarafından oluşturulan arama olayları: yalnızca bir kullanıcı tarafından başlatılan arama sorguları ilginç. Modelleri doldurmak veya iç bilgileri almak için kullanılanlar gibi diğer arama istekleri de önemli değildir. Sonuçlarınızda eğriliği veya farkı önlemek için yalnızca Kullanıcı tarafından başlatılan olayları işaretlemediğinizden emin olun.
 
 + Kullanıcı tarafından oluşturulan tıklama olayları: bir arama sonuçları sayfasında, bir tıklama olayı genellikle belgenin belirli bir arama sorgusunun ilgili bir sonucu olduğu anlamına gelir.
 
@@ -37,7 +37,7 @@ Arama ve tıklama olaylarına bir bağıntı KIMLIĞIYLE bağlanarak uygulamanı
 
 ## <a name="add-search-traffic-analytics"></a>Arama trafiği analizi ekleme
 
-Azure Bilişsel Arama hizmetinizin [Portal](https://portal.azure.com) sayfasında, arama Trafik Analizi sayfasında bu telemetri deseninin takip eden bir sayfa sayfası bulunur. Bu sayfadan bir Application Insights kaynağı seçebilir veya oluşturabilir, izleme anahtarını alabilir, çözümünüz için uyarlayabileceğiniz kod parçacıklarını kopyalayabilir ve düzen içinde yansıtılan şema üzerinde oluşturulmuş bir Power BI raporu indirebilirsiniz.
+Azure Bilişsel Arama hizmetiniz için [Portal](https://portal.azure.com) sayfasında, bu telemetri deseninin takip eden bir başvuru sayfasına erişmek için arama trafik analizi sayfasını açın. Bu sayfadan bir Application Insights kaynağı seçebilir veya oluşturabilir, izleme anahtarını alabilir, çözümünüz için uyarlayabileceğiniz kod parçacıklarını kopyalayabilir ve düzen içinde yansıtılan şema üzerinde oluşturulmuş bir Power BI raporu indirebilirsiniz.
 
 ![Portalda Trafik Analizi sayfasında ara](media/search-traffic-analytics/azuresearch-trafficanalytics.png "Portalda Trafik Analizi sayfasında ara")
 
@@ -49,11 +49,11 @@ Application Insights bir kaynağınız olduğunda, uygulamanızı kaydetmek içi
 
 Bazı Visual Studio proje türleri için çalışma için bir kısayol aşağıdaki adımlarda yansıtılır. Bir kaynak oluşturur ve uygulamanızı yalnızca birkaç tıklamayla kaydeder.
 
-1. Visual Studio ve ASP.NET geliştirme için çözümünüzü açın ve **Proje**  >  **Ekle Application Insights telemetri** ' yi seçin.
+1. Visual Studio ve ASP.NET geliştirme için çözümünüzü açın ve **Proje**  >  **Ekle Application Insights telemetri**' yi seçin.
 
 1. **Get Started** düğmesine tıklayın.
 
-1. Microsoft hesabı, Azure aboneliği ve bir Application Insights kaynağı (varsayılan olarak yeni bir kaynak) sağlayarak uygulamanızı kaydedin. **Kaydet** ’e tıklayın.
+1. Microsoft hesabı, Azure aboneliği ve bir Application Insights kaynağı (varsayılan olarak yeni bir kaynak) sağlayarak uygulamanızı kaydedin. **Kaydet**’e tıklayın.
 
 Bu noktada, uygulamanız uygulama izleme için ayarlanır. Bu, tüm sayfa yüklemelerinin varsayılan ölçümlerle izlendiği anlamına gelir. Önceki adımlar hakkında daha fazla bilgi için bkz. [sunucu tarafı telemetrisini Application Insights etkinleştirme](../azure-monitor/app/asp-net-core.md#enable-application-insights-server-side-telemetry-visual-studio).
 
@@ -71,7 +71,7 @@ Sunucu tarafı telemetrisi, uygulama katmanında ölçümleri, örneğin bulutta
 
 **C# kullanma**
 
-C# için, ASP.NET ise, uygulama yapılandırmanızda **ınstrumentationkey** bulunur (örneğin, projeniz için appsettings.js). Anahtar konumundan emin değilseniz kayıt yönergelerine geri bakın.
+C# için, ASP.NET olduğunda, **ınstrumentationkey** , uygulama yapılandırmanızda tanımlanmalıdır (appsettings.jsgibi). Anahtar konumundan emin değilseniz kayıt yönergelerine geri bakın.
 
 ```csharp
 private static TelemetryClient _telemetryClient;
@@ -98,9 +98,26 @@ window.appInsights=appInsights;
 
 Arama isteklerini tıklama ile ilişkilendirmek için, bu iki farklı olayı içeren bir bağıntı KIMLIĞI olması gerekir. Azure Bilişsel Arama, bir HTTP üstbilgisiyle istek yaptığınızda bir arama KIMLIĞI sağlar.
 
-Arama KIMLIĞINE sahip olmak, isteğin kendisi için Azure Bilişsel Arama tarafından oluşturulan ölçümlerin bağıntı almasına izin verir ve Application Insights oturum açmak için kullandığınız özel ölçümler vardır.  
+Arama KIMLIĞINE sahip olmak, isteğin kendisi için Azure Bilişsel Arama tarafından oluşturulan ölçümlerin bağıntı almasına izin verir ve Application Insights oturum açmak için kullandığınız özel ölçümler vardır.
 
-**C# kullanma**
+**C# kullanın (daha yeni V11 SDK)**
+
+```csharp
+// This sample uses the .NET SDK https://www.nuget.org/packages/Azure.Search.Documents
+
+var client = new SearchClient(<SearchServiceName>, <IndexName>, new AzureKeyCredentials(<QueryKey>)
+
+// Use HTTP headers so that you can get the search ID from the response
+var headers = new Dictionary<string, List<string>>() { { "x-ms-azs-return-searchid", new List<string>() { "true" } } };
+var response = await client.searchasync(searchText: searchText, searchOptions: options, customHeaders: headers);
+string searchId = string.Empty;
+if (response.Response.Headers.TryGetValues("x-ms-azs-searchid", out IEnumerable<string> headerValues))
+{
+    searchId = headerValues.FirstOrDefault();
+}
+```
+
+**C# kullanın (eski ile v10 arasındaki SDK)**
 
 ```csharp
 // This sample uses the .NET SDK https://www.nuget.org/packages/Microsoft.Azure.Search
@@ -129,12 +146,12 @@ var searchId = request.getResponseHeader('x-ms-azs-searchid');
 
 Bir kullanıcı tarafından her bir arama isteği verildiğinde, bir Application Insights özel olayında aşağıdaki şemaya sahip bir arama olayı olarak oturum açmanız gerekir. Yalnızca Kullanıcı tarafından oluşturulan arama sorgularının günlüğe kaydetmeyi unutmayın.
 
-+ **SearchServiceName** : (dize) arama hizmeti adı
-+ **Searchıd** : (GUID) arama sorgusunun benzersiz tanımlayıcısı (arama yanıtında gelir)
-+ **IndexName** : (dize) Sorgulanacak arama hizmeti dizini
-+ **Queryterms** : (dize) Kullanıcı tarafından girilen arama terimleri
-+ **Resultcount** : (int) döndürülen belge sayısı (arama yanıtında gelir)
-+ **ScoringProfile** : (dize) kullanılan Puanlama profili adı
++ **SearchServiceName**: (dize) arama hizmeti adı
++ **Searchıd**: (GUID) arama sorgusunun benzersiz tanımlayıcısı (arama yanıtında gelir)
++ **IndexName**: (dize) Sorgulanacak arama hizmeti dizini
++ **Queryterms**: (dize) Kullanıcı tarafından girilen arama terimleri
++ **Resultcount**: (int) döndürülen belge sayısı (arama yanıtında gelir)
++ **ScoringProfile**: (dize) kullanılan Puanlama profili adı
 
 > [!NOTE]
 > Arama sorgunuza $count = true ekleyerek kullanıcı tarafından oluşturulan sorguların sayısını isteyin. Daha fazla bilgi için bkz. [arama belgeleri (REST)](/rest/api/searchservice/search-documents#counttrue--false).
@@ -172,10 +189,10 @@ appInsights.trackEvent("Search", {
 
 Bir kullanıcının bir belgeyi tıkladığı her seferinde, arama analizi amacıyla günlüğe kaydedilecek bir sinyal olan bu bir sinyaldir. Bu olayları aşağıdaki şemayla günlüğe kaydetmek için Application Insights özel olaylar kullanın:
 
-+ **ServiceName** : (dize) arama hizmeti adı
-+ **Searchıd** : (GUID) ilgili arama sorgusunun benzersiz tanımlayıcısı
-+ **Docid eşleyicisinde** : (dize) belge tanımlayıcısı
-+ **Konum** : (int) arama sonuçları sayfasında belgenin derecesi
++ **ServiceName**: (dize) arama hizmeti adı
++ **Searchıd**: (GUID) ilgili arama sorgusunun benzersiz tanımlayıcısı
++ **Docid eşleyicisinde**: (dize) belge tanımlayıcısı
++ **Konum**: (int) arama sonuçları sayfasında belgenin derecesi
 
 > [!NOTE]
 > Konum, uygulamanızdaki önemli bir sıraya başvurur. Bu numarayı, her zaman aynı olduğu sürece, karşılaştırmaya izin verecek şekilde ayarlayabilirsiniz.
@@ -209,19 +226,19 @@ appInsights.trackEvent("Click", {
 
 Uygulamanızı doldurduktan ve uygulamanızın Application Insights doğru şekilde bağlandığını doğruladıktan sonra, Power BI masaüstündeki verileri çözümlemek için önceden tanımlanmış bir rapor şablonu indirirler. Rapor, arama trafiği analizi için yakalanan ek verileri çözümlemek için yararlı olan grafikleri ve tabloları içerir.
 
-1. Azure Bilişsel Arama panosu sol gezinti bölmesinde, **Ayarlar** ' ın altında, **Trafik Analizi ara** ' ya tıklayın.
+1. Azure Bilişsel Arama panosu sol gezinti bölmesinde, **Ayarlar**' ın altında, **Trafik Analizi ara**' ya tıklayın.
 
 1. **Arama trafiği analizi** sayfasında, adım 3 ' te, Power BI yüklemek Için **Power BI Desktop al** ' a tıklayın.
 
    ![Power BI raporlarını al](./media/search-traffic-analytics/get-use-power-bi.png "Power BI raporlarını al")
 
-1. Aynı sayfada **Power BI raporu indir** ' e tıklayın.
+1. Aynı sayfada **Power BI raporu indir**' e tıklayın.
 
 1. Rapor Power BI Desktop açılır ve Application Insights bağlanmanız ve kimlik bilgilerini sağlamanız istenir. Application Insights kaynağınızın Azure portal sayfalarında bağlantı bilgilerini bulabilirsiniz. Kimlik bilgileri için, Portal oturum açma için kullandığınız kullanıcı adını ve parolayı belirtin.
 
    ![Application Insights'a Bağlan](./media/search-traffic-analytics/connect-to-app-insights.png "Application Insights'a Bağlan")
 
-1. **Yükle** ' ye tıklayın.
+1. **Yükle**' ye tıklayın.
 
 Rapor, arama performansınızı ve ilginizi geliştirmek için daha bilinçli kararlar almanıza yardımcı olan grafikleri ve tabloları içerir.
 

@@ -4,12 +4,12 @@ description: Azure 'da kaynak Web uygulamanızı, bulut hizmetinizi, sanal makin
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: dbfffd98cd05e3ab2efbbe33e05da208fdc05600
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 364309301b403234936da1bac6e1b74af24c2fdb
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518711"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573315"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure 'da otomatik ölçeklendirme ile çalışmaya başlama
 Bu makalede, Microsoft Azure portal kaynağınız için otomatik ölçeklendirme ayarlarınızı nasıl ayarlayabileceğinizi açıklar.
@@ -131,10 +131,10 @@ Büyük kuruluşlarda bulunan geliştirme ekipleri, genellikle sunulan API 'Ler 
 
 ### <a name="behavior"></a>Davranış
 
-Sistem durumu denetim yolu sağlandığında, App Service tüm örneklerdeki yolu ping yapar. Başarılı bir yanıt kodu 5 pingden sonra alınmıyorsa, bu örnek "sağlıksız" olarak değerlendirilir. Sağlıksız örnek, yük dengeleyici dönüşünün dışında bırakılacak. Uygulama ayarıyla gereken başarısız Ping sayısını yapılandırabilirsiniz `WEBSITE_HEALTHCHECK_MAXPINGFAILURES` . Bu uygulama ayarı, 2 ile 10 arasında herhangi bir tamsayıya ayarlanabilir. Örneğin, bu olarak ayarlanırsa `2` , örneklerinizin iki başarısız Ping sonrasında yük dengeleyiciden kaldırılması gerekir. Ayrıca, ölçeği büyütme veya küçültme sırasında App Service, yeni örneklerin yük dengeleyiciye eklenmeden önce isteklere hazır olmasını sağlamak için sistem durumu denetim yoluna ping yapar.
+Sistem durumu denetim yolu sağlandığında, App Service tüm örneklerdeki yolu ping yapar. Başarılı bir yanıt kodu 5 pingden sonra alınmıyorsa, bu örnek "sağlıksız" olarak değerlendirilir. 2 veya daha fazla örneğe ölçeklendirdiyseniz ve [temel katmanı](../../app-service/overview-hosting-plans.md) veya daha üstünü kullanıyorsanız, sağlıksız örnekler yük dengeleyici rotasyondan dışlanır. Uygulama ayarıyla gereken başarısız Ping sayısını yapılandırabilirsiniz `WEBSITE_HEALTHCHECK_MAXPINGFAILURES` . Bu uygulama ayarı, 2 ile 10 arasında herhangi bir tamsayıya ayarlanabilir. Örneğin, bu olarak ayarlanırsa `2` , örneklerinizin iki başarısız Ping sonrasında yük dengeleyiciden kaldırılması gerekir. Ayrıca, ölçeği büyütme veya küçültme sırasında App Service, yeni örneklerin yük dengeleyiciye eklenmeden önce isteklere hazır olmasını sağlamak için sistem durumu denetim yoluna ping yapar.
 
 > [!NOTE]
-> App Service planınızın, yük dengeleyici dışlamanın gerçekleşmesi için 2 veya daha fazla örneğe ölçeklendirilmesi gerektiğini unutmayın. Yalnızca 1 örnek varsa, sağlıksız olsa bile yük dengeleyiciden kaldırılmaz. 
+> App Service planınızın 2 veya daha fazla örneğe ölçeklendirilmesi ve yük dengeleyici dışlamanın gerçekleşmesi için **temel katman veya daha yüksek** olması gerektiğini unutmayın. Yalnızca 1 örnek varsa, sağlıksız olsa bile yük dengeleyiciden kaldırılmaz. 
 
 Kalan sağlıklı örnekler daha fazla yük yaşayabilir. Kalan örneklerin aşırı bir kısmını ortadan kaldırmak için, örneklerinizin yarısını hariç tutulamayacak. Örneğin, bir App Service planı 4 örneğe ölçeklenirse ve 3 ' ü sağlıksız olan 3 tanesi, yük dengeleyici dönüşüyle dışarıda bırakılır. Diğer 2 örnek (1 sağlıklı ve 1 sağlıksız) istekleri almaya devam edecektir. Tüm örneklerin sağlıksız olduğu en kötü durum senaryosunda, hiçbiri dışlanacaktır. Bu davranışı geçersiz kılmak istiyorsanız, `WEBSITE_HEALTHCHECK_MAXUNHEALTHYWORKERPERCENT` uygulama ayarını ve arasında bir değer olarak ayarlayabilirsiniz `0` `100` . Bunun daha yüksek bir değere ayarlanması, sağlıksız örneklerin kaldırıldığı anlamına gelir (varsayılan değer 50 ' dir).
 

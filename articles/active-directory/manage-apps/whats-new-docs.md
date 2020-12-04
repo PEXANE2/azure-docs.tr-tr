@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory uygulama yönetiminde yenilikler
 description: Azure Active Directory Uygulama yönetimi için yeni ve güncelleştirilmiş belgeler.
-ms.date: 11/05/2020
+ms.date: 12/03/2020
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
@@ -9,16 +9,26 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: 10861438334bc804d1b1e4b9a669280f7e09ffde
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 38602482f1a25f212829342fe691d7bb75666d31
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94654018"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571020"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Uygulama yönetimi Azure Active Directory: yenilikler
 
 Azure Active Directory Uygulama yönetimi belgelerindeki yenilikler ' e hoş geldiniz. Bu makalede, eklenen ve son üç ay içinde önemli güncelleştirmeleri olan yeni belgeler listelenir. Uygulama yönetimi hizmeti yenilikleri hakkında bilgi edinmek için bkz. [Azure Active Directory](../fundamentals/whats-new.md)yenilikleri.
+
+## <a name="november-2020"></a>Kasım 2020
+
+### <a name="new-articles"></a>Yeni makaleler
+- [Azure AD Uygulaması Proxy (Önizleme) ile şirket içi uygulamalar için üst bilgi tabanlı çoklu oturum açma](application-proxy-configure-single-sign-on-with-headers.md)
+
+### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
+- [Uygulama yönetimi Azure Active Directory: yenilikler](whats-new-docs.md)
+- [SAML tabanlı çoklu oturum açma ile yapılandırılmış uygulamalarda oturum açma sorunları](application-sign-in-problem-federated-sso-gallery.md)
+
 
 ## <a name="october-2020"></a>Ekim 2020
 
@@ -32,9 +42,9 @@ Azure Active Directory Uygulama yönetimi belgelerindeki yenilikler ' e hoş gel
 
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 
-- [SAML tabanlı çoklu oturum açma yapılandırılmış uygulamalarda oturum açma sorunları](application-sign-in-problem-federated-sso-gallery.md)
+- [SAML tabanlı çoklu oturum açma ile yapılandırılmış uygulamalarda oturum açma sorunları](application-sign-in-problem-federated-sso-gallery.md)
 - [Uygulama Ara Sunucusu Aracı Bağlayıcısı’nı yüklerken sorun oluşuyor](application-proxy-connector-installation-problem.md)
-- [Active Directory Federasyon Hizmetleri (AD FS) uygulama kimlik doğrulamasını Azure Active Directory olarak taşıma](migrate-adfs-apps-to-azure.md)
+- [Uygulama kimlik doğrulamasını Active Directory Federasyon Hizmetleri’nden Azure Active Directory’ye taşıma](migrate-adfs-apps-to-azure.md)
 - [Son kullanıcıların uygulamalara onay verme şeklini yapılandırma](configure-user-consent.md)
 
 
@@ -52,7 +62,7 @@ Azure Active Directory Uygulama yönetimi belgelerindeki yenilikler ' e hoş gel
 - [Uygulamalara onayı yönetme ve izin isteklerini değerlendirme](manage-consent-requests.md)
 - [Kimlik yönetimi için Azure AD kiracınızı kullanarak uygulamaları görüntüleme](application-types.md)
 - [Kullanıcıların Azure Active Directory ' de uygulamalara nasıl atandığını anlayın](ways-users-get-assigned-to-applications.md)
-- [Azure Active Directory bir uygulama için Kullanıcı atamasını yönetme](assign-user-or-group-access-portal.md)
+- [Azure Active Directory’de uygulama için kullanıcı atamasını yönetme](assign-user-or-group-access-portal.md)
 
 
 ## <a name="august-2020"></a>Ağustos 2020
@@ -65,7 +75,7 @@ Azure Active Directory Uygulama yönetimi belgelerindeki yenilikler ' e hoş gel
 - [Azure Active Directory uygulamalar için son kullanıcı deneyimleri](end-user-experiences.md)
 - [Self Servis uygulama erişimini kullanma](access-panel-manage-self-service-access.md)
 - [Azure AD uygulamalarımın bir uygulamada oturum açma sorunlarını giderme](application-sign-in-other-problem-access-panel.md)
-- [Azure AD 'de parola tabanlı çoklu oturum açma sorunlarını giderme](troubleshoot-password-based-sso.md)
+- [Azure AD’de parola tabanlı çoklu oturum açma sorunlarını giderme](troubleshoot-password-based-sso.md)
 - [Azure Active Directory uygulamalarımın dağıtımını planlayın](access-panel-deployment-plan.md)
 - [Çoklu oturum açma (SSO) nedir?](what-is-single-sign-on.md)
 - [Azure Active Directory fazla ayrıcalıklı veya şüpheli uygulamalarda işlem yapın](manage-application-permissions.md)

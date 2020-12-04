@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory işletmeden müşteriye (B2C) yenilikleri
 description: Azure Active Directory işletmeden müşteriye (B2C) yönelik yeni ve güncelleştirilmiş belgeler.
-ms.date: 11/10/2020
+ms.date: 12/03/2020
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: reference
@@ -9,16 +9,23 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: f89537d1e221ecc9a871343e863f021723965239
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 4c204ec33604ff5edd1551f9728c28e3dcab9a61
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94550105"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571088"
 ---
 # <a name="azure-active-directory-b2c-whats-new"></a>Azure Active Directory B2C: yenilikler
 
 Azure Active Directory B2C belgelerindeki yenilikler 'e hoş geldiniz. Bu makalede, eklenen ve son üç ay içinde önemli güncelleştirmeleri olan yeni belgeler listelenir. B2C hizmetiyle ilgili yenilikler hakkında bilgi edinmek için bkz. [Azure Active Directory](../active-directory/fundamentals/whats-new.md)yenilikleri.
+
+## <a name="november-2020"></a>Kasım 2020
+
+### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
+- [Azure Izleyici ile Azure AD B2C izleme](azure-monitor.md)
+- [Öğretici: Azure AD B2C ile tek sayfalı bir uygulamada kimlik doğrulamasını etkinleştirme](tutorial-single-page-app.md)
+
 
 ## <a name="october-2020"></a>Ekim 2020
 

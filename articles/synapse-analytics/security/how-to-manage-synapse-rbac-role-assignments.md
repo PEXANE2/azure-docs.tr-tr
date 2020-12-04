@@ -8,27 +8,28 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: a4016751944e5b7ec5d32dc586e9034db99c9d73
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: f26b54a18ff137575cac208d70e4693c0b9914a8
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523663"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572295"
 ---
 # <a name="how-to-manage-synapse-rbac-role-assignments-in-synapse-studio"></a>SYNAPSE Studio 'da SYNAPSE RBAC rol atamalarını yönetme
 
-SYNAPSE RBAC, SYNAPSE kaynaklarının ve kod yapılarının erişimini ve kullanımını sağlamak üzere kullanıcılara, gruplara ve diğer güvenlik sorumlularına izinler atamak için roller kullanır.  [Daha fazla bilgi edinin](./synapse-workspace-synapse-rbac.md)
+SYNAPSE RBAC, SYNAPSE kaynaklarının ve kod yapılarının erişimini ve kullanımını sağlamak üzere kullanıcılara, gruplara ve diğer güvenlik sorumlularına izinler atamak için roller kullanır.  [Daha fazla bilgi](./synapse-workspace-synapse-rbac.md)
 
 Bu makale, SYNAPSE RBAC rol atamalarının nasıl ekleneceğini ve silineceğini gösterir.
 
 >[!Note]
 >- SYNAPSE RBAC rol atamalarını yönetmek için, çalışma alanında veya yönetmek istediğiniz nesneleri içeren alt düzey bir kapsamda SYNAPSE Yöneticisi rolüne sahip olmanız gerekir. Çalışma alanında SYNAPSE yöneticisiyseniz, çalışma alanındaki tüm nesnelere erişim izni verebilirsiniz. 
->- SYNAPSE yöneticileri atanmamış veya size kullanılabilir olmayan bir çalışma alanına erişimi yeniden elde etmenize yardımcı olması için, çalışma alanında **Azure RBAC** rol atamalarını yönetme izinlerine sahip olan KULLANıCıLAR **SYNAPSE RBAC** rol atamalarını yönetebilir ve bu, SYNAPSE RBAC 'de SYNAPSE yöneticisinin veya diğer rol atamalarının eklenmesine izin verir.
+>- Farklı bir AD kiracısından gelen **Konuk kullanıcılar** , SYNAPSE yönetici rolü atansa bile rol atamalarını göremez veya yönetemez.
+>- SYNAPSE yöneticileri atanmamış veya size kullanılabilir olmayan bir çalışma alanına erişimi yeniden elde etmenize yardımcı olması için, çalışma alanında **Azure RBAC** rol atamalarını yönetme izinlerine sahip olan KULLANıCıLAR **SYNAPSE RBAC** rol atamalarını yönetebilir ve bu da SYNAPSE Yöneticisi veya diğer SYNAPSE rol atamalarının eklenmesine izin verir.
 >- SQL havuzlara erişim SQL izinleri kullanılarak yönetilir.  SYNAPSE Yöneticisi ve SYNAPSE SQL yönetici rolleri dışında, SYNAPSE RBAC rolleri SQL havuzlarına erişim vermez.
 
 >[!important]
 >- SYNAPSE RBAC rol atamalarında yapılan değişikliklerin etkili olması 2-5 dakika sürebilir. 
->- Güvenlik gruplarının üyeliğini değiştirerek SYNAPSE RBAC izinlerini yönetiyorsanız, üyelikte yapılan değişiklikler Azure Active Directory kullanılarak yönetilir.  Grup üyeliğinde yapılan değişikliklerin etkili olması birkaç dakika sürebilir.
+>- Güvenlik gruplarının üyeliğini değiştirerek SYNAPSE RBAC izinlerini yönetiyorsanız, üyelikte yapılan değişiklikler Azure Active Directory kullanılarak yönetilir.  Grup üyeliklerinde yapılan değişikliklerin etkili olması 10-15 dakika veya daha uzun sürebilir.
 
 ## <a name="open-synapse-studio"></a>SYNAPSE Studio 'Yu açın  
 

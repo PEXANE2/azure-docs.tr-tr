@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/14/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1245010ae0b21c5bb8e3ebd93a9fe851d48c858b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 77a43d5bd5f2b228d5ed4384fc1efdca76f8ea0b
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94835518"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573893"
 ---
 # <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>Uygulamaları Azure AD 'ye geçirmek için AD FS uygulama etkinliği raporunu (Önizleme) kullanın
 
@@ -26,19 +26,23 @@ Birçok kuruluş, bulut uygulamalarında çoklu oturum açma sağlamak için Act
 
 Azure portal AD FS uygulama etkinliği raporu (Önizleme), uygulamalarınızın Azure AD 'ye geçirilme yeteneğine hızlı bir şekilde yararlanmanızı sağlar. Tüm AD FS uygulamaları Azure AD ile uyumluluk için değerlendirir, herhangi bir sorun olup olmadığını denetler ve tek tek uygulamaları geçişe hazırlamaya yönelik rehberlik sağlar. AD FS uygulama etkinliği raporuyla şunları yapabilirsiniz:
 
-* **AD FS uygulamaları ve geçişinizin kapsamını bulun.** AD FS uygulama etkinliği raporu, kuruluşunuzdaki tüm AD FS uygulamaları listeler ve Azure AD 'ye geçiş için hazırlığını gösterir.
+* **AD FS uygulamaları ve geçişinizin kapsamını bulun.** AD FS uygulama etkinliği raporu, kuruluşunuzda son 30 gün içinde etkin bir Kullanıcı oturum açma yapmış olan tüm AD FS uygulamalarını listeler. Rapor, uygulamaların Azure AD 'ye geçiş için hazır olduğunu gösterir. Rapor, Microsoft ile ilgili bağlı tarafları Office 365 gibi AD FS görüntülemez. Örneğin, ' urn: Federation: MicrosoftOnline ' adlı bağlı olan taraflar.
+
 * **Geçiş için uygulamaları önceliklendirin.** Uygulamanın geçiş riskini veya riskini belirlemede yardımcı olması için son 1, 7 veya 30 gün içinde uygulamada oturum açmış benzersiz kullanıcıların sayısını alın.
-* **Geçiş testlerini çalıştırın ve sorunları giderin.** Raporlama hizmeti, bir uygulamanın geçişe hazırlanma olup olmadığını anlamak için testleri otomatik olarak çalıştırır. Sonuçlar, AD FS uygulama etkinliği raporunda geçiş durumu olarak görüntülenir. Olası geçiş sorunları tanımlanmışsa, sorunların nasıl ele alınacağını gösteren özel yönergeler alırsınız.
+* **Geçiş testlerini çalıştırın ve sorunları giderin.** Raporlama hizmeti, bir uygulamanın geçişe hazırlanma olup olmadığını anlamak için testleri otomatik olarak çalıştırır. Sonuçlar, AD FS uygulama etkinliği raporunda geçiş durumu olarak görüntülenir. AD FS yapılandırması bir Azure AD yapılandırmasıyla uyumlu değilse, Azure AD 'de yapılandırmanın nasıl ele alınacağını gösteren özel yönergeler alırsınız.
 
 AD FS uygulama etkinliği verileri şu yönetici rollerinden herhangi biri atanmış kullanıcılar tarafından kullanılabilir: genel yönetici, rapor okuyucu, güvenlik okuyucusu, uygulama Yöneticisi veya bulut uygulama Yöneticisi.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Kuruluşunuzun uygulamalara erişmek için şu anda AD FS kullanıyor olması gerekir.
 * Azure AD Connect Health Azure AD kiracınızda etkinleştirilmelidir.
 * AD FS aracısının Azure AD Connect Health yüklü olması gerekir.
    * [Azure AD Connect Health hakkında daha fazla bilgi edinin](../hybrid/how-to-connect-health-adfs.md)
    * [Azure AD Connect Health ayarlama ve AD FS aracısını kurma ile çalışmaya başlama](../hybrid/how-to-connect-health-agent-install.md)
+
+>[!IMPORTANT] 
+>Azure AD Connect Health yükledikten sonra beklediğiniz tüm uygulamaları görmemek için birkaç neden vardır. AD FS uygulama etkinliği raporu yalnızca son 30 gün içinde Kullanıcı oturum açmaları olan AD FS bağlı tarafları gösterir. Ayrıca, rapor Office 365 gibi Microsoft ile ilgili bağlı tarafları göstermez.
 
 ## <a name="discover-ad-fs-applications-that-can-be-migrated"></a>Geçirilebileceğini AD FS uygulamaları bulma 
 
@@ -74,7 +78,7 @@ AD FS uygulama etkinliği raporu, Azure AD **kullanımı & Öngörüler** raporl
 
 Aşağıdaki tabloda AD FS uygulamalarda gerçekleştirilen tüm yapılandırma sınamaları listelenmektedir.
 
-|Sonuç  |Geçiş/uyarı/başarısız  |Açıklama  |
+|Result  |Geçiş/uyarı/başarısız  |Açıklama  |
 |---------|---------|---------|
 |Test-ADFSRPAdditionalAuthenticationRules <br> AdditionalAuthentication için en az bir geçirilip geçirilemeyeceğini denetleyin olmayan kural algılandı.       | Geçiş/uyarı          | Bağlı olan taraf, Multi-Factor Authentication (MFA) için sorulacak kurallara sahiptir. Azure AD 'ye geçmek için bu kuralları koşullu erişim ilkelerine çevirin. Şirket içi MFA kullanıyorsanız Azure AD MFA 'ya geçmeniz önerilir. [Koşullu erişim hakkında daha fazla bilgi edinin](../authentication/concept-mfa-howitworks.md).        |
 |Test-ADFSRPAdditionalWSFedEndpoint <br> Bağlı olan tarafın AdditionalWSFedEndpoint değeri true olarak ayarlanmıştır.       | Başarılı/Başarısız          | AD FS bağlı olan taraf, birden çok WS-Fed onay uç noktasına izin verir.Şu anda Azure AD yalnızca bir tane destekler.Bu sonucun geçişi engellediği bir senaryonuz varsa [bize bilgi verin](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695621-allow-multiple-ws-fed-assertion-endpoints).     |
@@ -121,6 +125,17 @@ Aşağıdaki tabloda AD FS uygulamalarda gerçekleştirilen tüm talep kuralı s
 |EXTERNAL_ATTRIBUTE_STORE      | Verme bildiriminde Active Directory farklı bir öznitelik deposu kullanılmaktadır. Şu anda Azure AD, Active Directory veya Azure AD 'den farklı mağazalardan kaynaklı talepler değildir. Bu sonuç, uygulamaları Azure AD 'ye geçirmeyi engelliyorsa [bize bilgi verin](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695717-allow-to-source-user-attributes-from-external-dire).          |
 |UNSUPPORTED_ISSUANCE_CLASS      | Verme bildiriminde, gelen talep kümesine talepler eklemek için Ekle kullanılır. Azure AD 'de, bu, birden çok talep dönüştürmesi olarak yapılandırılabilir.Daha fazla bilgi için bkz. [Kurumsal uygulamalar IÇIN SAML belirtecinde verilen talepleri özelleştirme](../develop/active-directory-claims-mapping.md).         |
 |UNSUPPORTED_ISSUANCE_TRANSFORMATION      | Verme deyimi, oluşturulacak talebin değerini dönüştürmek için normal Ifadeler kullanır.Azure AD 'de benzer işlevlere ulaşmak için, ayıklama (), Trim (), diğer bir deyişle, diğer kullanıcıların arasında önceden tanımlanmış bir dönüşüm kullanabilirsiniz. Daha fazla bilgi için bkz. [Kurumsal uygulamalar IÇIN SAML belirtecinde verilen talepleri özelleştirme](../develop/active-directory-saml-claims-customization.md).          |
+
+## <a name="troubleshooting"></a>Sorun giderme
+
+### <a name="cant-see-all-my-ad-fs-applications-in-the-report"></a>Rapordaki tüm AD FS uygulamalarımı göremiyor
+
+ Azure AD Connect sistem durumu yüklediyseniz, ancak bunu yükleme isteğini görmeye devam ediyorsanız veya rapor içinde tüm AD FS uygulamalarınızı görmüyorsanız, etkin AD FS uygulamalarınız veya AD FS uygulamalarınızın Microsoft uygulaması olması olabilir.
+ 
+ AD FS uygulama etkinliği raporu, kuruluşunuzdaki tüm AD FS uygulamalarını son 30 gün içinde etkin kullanıcıların oturum açma bilgileriyle listeler. Ayrıca, rapor Microsoft ile ilgili bağlı tarafları Office 365 gibi AD FS görüntülemez. Örneğin, ' urn: Federation: MicrosoftOnline ', ' microsoftonline ', ' Microsoft: winhello: CERT: prov: Server ' adlı bağlı olan taraflar listede gösterilmez.
+
+
+
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -2,16 +2,16 @@
 title: Azure Kubernetes hizmetlerindeki küme yapılandırması (AKS)
 description: Azure Kubernetes hizmeti 'nde (AKS) bir kümeyi yapılandırmayı öğrenin
 services: container-service
-ms.topic: conceptual
+ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 88774450fb196da5de24bcad047ecdb8c424f653
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: dcd9ec52992da8037bb498dc09701879c4c94667
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95736550"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572584"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS kümesini yapılandırma
 
@@ -19,7 +19,7 @@ AKS kümesi oluşturmanın bir parçası olarak, Küme yapılandırmanızı gere
 
 ## <a name="os-configuration"></a>İşletim sistemi yapılandırması
 
-AKS artık, Kubernetes sürümlerindeki 1.18.8 'den yüksek olan kümeler için genel kullanıma yönelik düğüm işletim sistemi (OS) olarak Ubuntu 18,04 ' i desteklemektedir. 1.18. x altındaki sürümler için AKS Ubuntu 16,04, hala varsayılan temel görüntü olmaya devam etmektedir. Kubernetes v 1.18. x ve Onward 'den, varsayılan temel AKS Ubuntu 18,04 ' dir.
+AKS artık, Kubernetes sürümlerindeki 1.18.8 'den yüksek olan kümeler için genel kullanıma yönelik düğüm işletim sistemi (OS) olarak Ubuntu 18,04 ' i desteklemektedir. 1.18. x altındaki sürümler için AKS Ubuntu 16,04, hala varsayılan temel görüntüdür. Kubernetes v 1.18. x ve Onward 'den, varsayılan temel AKS Ubuntu 18,04 ' dir.
 
 > [!IMPORTANT]
 > Düğüm, Kubernetes v 1.18 üzerinde oluşturulan düğüm havuzları veya düğüm görüntüsünde daha fazla varsayılan `AKS Ubuntu 18.04` . Desteklenen bir Kubernetes sürümündeki düğüm havuzları, `AKS Ubuntu 16.04` düğüm görüntüsü olarak 1,18 'den azdır, ancak `AKS Ubuntu 18.04` düğüm havuzu Kubernetes sürümü v 1.18 veya üzeri olarak güncelleştirildikten sonra olarak güncelleştirilecektir.
@@ -302,7 +302,7 @@ Düğüm kaynak grubuyla çalışırken şunları yapamazsınız:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- `Kured`Kümenizdeki [Linux düğümlerine güvenlik ve çekirdek güncelleştirmeleri uygulamak](node-updates-kured.md) için kullanmayı öğrenin.
+- Kümenizdeki [düğüm görüntülerini nasıl yükselteceğinizi](node-image-upgrade.md) öğrenin.
 - Kümenizi, Kubernetes 'in en son sürümüne nasıl yükselteceğinizi öğrenmek için bkz. [Azure Kubernetes hizmeti (AKS) kümesini yükseltme](upgrade-cluster.md) .
 - [ `containerd` Ve Kubernetes](https://kubernetes.io/blog/2018/05/24/kubernetes-containerd-integration-goes-ga/) hakkında daha fazla bilgi edinin
 - Bazı yaygın AKS sorularına cevap bulmak için [aks hakkında sık sorulan soruların](faq.md) listesine bakın.

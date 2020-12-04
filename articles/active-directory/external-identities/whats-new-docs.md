@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory dış Kimlikteki yenilikler
 description: Azure Active Directory dış kimliklere yönelik yeni ve güncelleştirilmiş belgeler.
-ms.date: 11/10/2020
+ms.date: 12/03/2020
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
@@ -9,16 +9,24 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: f7c296b4a5bed0c3e599f59e9f0461295b86f197
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 35fa6909160ca707035ee9fc599e4035c2ae7981
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94550116"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573910"
 ---
 # <a name="azure-active-directory-external-identities-whats-new"></a>Dış kimlikler Azure Active Directory: yenilikler
 
 Azure Active Directory dış kimlikler belgelerindeki yenilikler ' e hoş geldiniz. Bu makalede, eklenen ve son üç ay içinde önemli güncelleştirmeleri olan yeni belgeler listelenir. Dış kimlikler hizmeti yenilikleri hakkında bilgi edinmek için bkz. [Azure Active Directory](../fundamentals/whats-new.md)yenilikleri.
+
+## <a name="november-2020"></a>Kasım 2020
+
+### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
+- [Microsoft 365 dış paylaşım ve Azure Active Directory (Azure AD) B2B işbirliği](o365-external-user.md)
+- [Azure AD B2B işbirliğini kullanarak yerel olarak yönetilen iş ortağı hesaplarına bulut kaynakları için erişim verme](hybrid-on-premises-to-cloud.md)
+- [Azure Active Directory B2B işbirliği kullanıcısının özellikleri](user-properties.md)
+
 
 ## <a name="october-2020"></a>Ekim 2020
 

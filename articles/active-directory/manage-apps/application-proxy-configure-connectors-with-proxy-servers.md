@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperfq2
-ms.openlocfilehash: 2d041782e8df795acb120ba1357cec5ef204dc28
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 9032e4c04279d87bf4422d3a87d19fdbecec1a64
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656349"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571802"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Mevcut şirket içi proxy sunucularıyla çalışma
 
@@ -167,6 +167,9 @@ Artık ara sunucu üzerinden akan tüm trafiği görmeniz gerekir. Sorun yaşıy
 Bağlayıcı bağlantı sorunlarını belirlemek ve sorunlarını gidermek için en iyi yol, bağlayıcı hizmetini başlatırken ağ yakalama işleminin sürme yoludur. Ağ izlemelerini yakalama ve filtreleme hakkında bazı hızlı ipuçları aşağıda verilmiştir.
 
 Seçtiğiniz izleme aracını kullanabilirsiniz. Bu makalenin amaçları doğrultusunda, Microsoft Message Analyzer 'ı kullandık.
+
+> [!NOTE]
+> [Microsoft Message Analyzer (MMA) kullanımdan](https://docs.microsoft.com/openspecs/blog/ms-winintbloglp/dd98b93c-0a75-4eb0-b92e-e760c502394f) kaldırılmıştır ve indirme paketleri, Kasım 25 2019 ' deki Microsoft.com sitelerinden kaldırılmıştır.  Şu anda geliştirmede Microsoft Ileti Çözümleyicisi için Microsoft 'a yönelik bir Microsoft tarafından değişiklik bulunmamaktadır.  Benzer işlevler için lütfen Wireshark gibi bir 3. taraf ağ protokolü Çözümleyicisi aracı kullanmayı deneyin.
 
 Aşağıdaki örnekler Ileti çözümleyici 'ye özgüdür, ancak ilkeler herhangi bir analiz aracına uygulanabilir.
 

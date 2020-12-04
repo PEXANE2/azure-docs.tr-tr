@@ -5,20 +5,27 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: 45949ae11a59ad9b5459dbc3ec049743b40e55ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions
+ms.openlocfilehash: 1b20f7134f1b39853a78ee5b709e732ccf35acac
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80680368"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571122"
 ---
 # <a name="regions"></a>Bölgeler
 
 Bu sayfa, Azure uzaktan Işleme ile kullanılmak üzere kullanılabilir olan bölgeleri listeler. En iyi sonuçlar için, her zaman fiziksel konumunuza en yakın bölgeyi kullanın.
 
-| Name | Region | URL |
+| Ad | Region | URL |
 |-----------|:-----------|:-----------|
-| Batı ABD 2 | westus2 | `https://remoterendering.westus2.mixedreality.azure.com` |
+| Doğu Avustralya | australiaeast | `https://remoterendering.australiaeast.mixedreality.azure.com` |
 | Doğu ABD | eastus | `https://remoterendering.eastus.mixedreality.azure.com` |
-| West Europe | westeurope | `https://remoterendering.westeurope.mixedreality.azure.com` |
+| Doğu ABD 2 | eastus2 | `https://remoterendering.eastus2.mixedreality.azure.com` |
+| Doğu Japonya | japaneast | `https://remoterendering.japaneast.mixedreality.azure.com` |
+| Kuzey Avrupa | northeurope | `https://remoterendering.northeurope.mixedreality.azure.com` |
+| Orta Güney ABD | southcentralus | `https://remoterendering.southcentralus.mixedreality.azure.com` |
 | Güneydoğu Asya | southeastasia | `https://remoterendering.southeastasia.mixedreality.azure.com` |
+| Güney Birleşik Krallık | uksouth | `https://remoterendering.uksouth.mixedreality.azure.com` |
+| West Europe | westeurope | `https://remoterendering.westeurope.mixedreality.azure.com` |
+| Batı ABD 2 | westus2 | `https://remoterendering.westus2.mixedreality.azure.com` |

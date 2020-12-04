@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-js
 - devx-track-azurecli
-ms.openlocfilehash: 432cc733ee31bdaa18d555d9a6aeb6aee9879a44
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b4de685accf665c7555a454ef247ddf589c6ba5f
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748539"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572346"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Öğretici: Cihaz yazılımı güncelleştirme işlemi gerçekleştirme
 
@@ -38,11 +38,9 @@ Bu öğreticide, aşağıdaki görevleri tamamlayacaksınız:
 > * Bir cihazdaki cihaz yazılımı güncelleştirme işleminin simülasyonunu yapın.
 > * Cihaz yazılımı güncelleştirmesi devam ederken cihazdan durum güncelleştirmelerini alın.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 Bu hızlı başlangıçta çalıştırdığınız iki örnek uygulama, Node.js kullanılarak yazılır. Geliştirme makinenizde Node.js ile v10 arasındaki. x. x veya üzeri bir sürüm gerekir.
 
@@ -199,7 +197,7 @@ Otomatik cihaz yapılandırması oluşturma zamanında çalıştığından ve be
 
 Sonraki öğreticiyi tamamlamayı planlıyorsanız, kaynak grubunu ve IoT hub’ı değiştirmeden bırakın ve sonra bunları yeniden kullanın.
 
-Artık gerekli değilse portaldan IoT hub’ı ve kaynak grubunu silin. Bunu yapmak için, IoT hub’ınızı içeren **tutorial-iot-hub-rg** kaynak grubunu seçin ve **Sil** ’e tıklayın.
+Artık gerekli değilse portaldan IoT hub’ı ve kaynak grubunu silin. Bunu yapmak için, IoT hub’ınızı içeren **tutorial-iot-hub-rg** kaynak grubunu seçin ve **Sil**’e tıklayın.
 
 Alternatif olarak, CLI kullanın:
 

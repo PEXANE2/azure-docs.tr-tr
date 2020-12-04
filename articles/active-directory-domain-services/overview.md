@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 08/14/2020
+ms.date: 12/03/2020
 ms.author: joflore
 ms.custom: contperfq1
-ms.openlocfilehash: 988119c34ab0a8ef0e20ec86a7552fb7b4643cd1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d8d709590345982479301f25601fae25fa6f4fae
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967996"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571870"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services nedir?
 
@@ -31,9 +31,9 @@ Azure AD DS, mevcut Azure AD kiracınızla tümleşir. Bu tümleştirme, kullan�
 
 ## <a name="how-does-azure-ad-ds-work"></a>Azure AD DS nasıl çalışır?
 
-Azure AD DS yönetilen bir etki alanı oluşturduğunuzda, benzersiz bir ad alanı tanımlarsınız. Bu ad alanı, *aaddscontoso.com*gibi etki alanı adıdır. İki Windows Server etki alanı denetleyicisi (DC), daha sonra seçtiğiniz Azure bölgenize dağıtılır. Bu DC dağıtımı bir çoğaltma kümesi olarak bilinir.
+Azure AD DS yönetilen bir etki alanı oluşturduğunuzda, benzersiz bir ad alanı tanımlarsınız. Bu ad alanı, *aaddscontoso.com* gibi etki alanı adıdır. İki Windows Server etki alanı denetleyicisi (DC), daha sonra seçtiğiniz Azure bölgenize dağıtılır. Bu DC dağıtımı bir çoğaltma kümesi olarak bilinir.
 
-Bu DC 'leri yönetmeniz, yapılandırmanız veya güncelleştirmeniz gerekmez. Azure platformu, yedeklemeleri dahil olmak üzere yönetilen etki alanının bir parçası olan DC 'leri işler.
+Bu DC 'leri yönetmeniz, yapılandırmanız veya güncelleştirmeniz gerekmez. Azure platformu, Azure disk şifrelemesi ile bekleyen yedeklemeler ve şifreleme dahil olmak üzere, DC 'leri yönetilen etki alanının bir parçası olarak işler.
 
 Yönetilen bir etki alanı, merkezi bir grup kullanıcıya, gruba ve kimlik bilgilerine erişim sağlamak için Azure AD 'den tek yönlü bir eşitleme gerçekleştirecek şekilde yapılandırılmıştır. Kaynakları doğrudan yönetilen etki alanında oluşturabilirsiniz, ancak Azure AD 'ye geri eşitlenmez. Yönetilen etki alanına bağlanan Azure 'daki uygulamalar, hizmetler ve sanal makineler, etki alanına katılması, Grup ilkesi, LDAP ve Kerberos/NTLM kimlik doğrulaması gibi ortak AD DS özellikleri kullanabilir.
 

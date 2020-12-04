@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: f3ba5751e7a0c2369d505535896bbb4ff7523c02
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 17bf7b3f457ff6046d92012ffd679ed4b9315530
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314579"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574131"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>Öğretici: ilk makine öğrenimi modelinizi eğitme (Bölüm 3/4)
 
@@ -51,92 +51,13 @@ Bu öğreticide şunları yaptınız:
 
 Aşağıdaki kod, PyTorch kaynağından [Bu giriş örneğinde](https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html) alınır. Azure Machine Learning kavramların yalnızca PyTorch değil, herhangi bir makine öğrenimi kodu için uygulanacağını unutmayın.
 
-```python
-# tutorial/src/model.py
-import torch.nn as nn
-import torch.nn.functional as F
-
-
-class Net(nn.Module):
-    def __init__(self):
-        super(Net, self).__init__()
-        self.conv1 = nn.Conv2d(3, 6, 5)
-        self.pool = nn.MaxPool2d(2, 2)
-        self.conv2 = nn.Conv2d(6, 16, 5)
-        self.fc1 = nn.Linear(16 * 5 * 5, 120)
-        self.fc2 = nn.Linear(120, 84)
-        self.fc3 = nn.Linear(84, 10)
-
-    def forward(self, x):
-        x = self.pool(F.relu(self.conv1(x)))
-        x = self.pool(F.relu(self.conv2(x)))
-        x = x.view(-1, 16 * 5 * 5)
-        x = F.relu(self.fc1(x))
-        x = F.relu(self.fc2(x))
-        x = self.fc3(x)
-        return x
-```
+:::code language="python" source="~/MachineLearningNotebooks/tutorials/get-started-day1/IDE-users/src/model.py":::
 
 Daha sonra eğitim betiğini tanımlarsınız. Bu betik, PyTorch API 'lerini kullanarak CIFAR10 veri kümesini indirir `torchvision.dataset` , içinde tanımlanan ağı ayarlar `model.py` ve standart SGD ve çapraz entropi kaybını kullanarak iki dönemler için bunu yapar.
 
 `train.py`Alt dizinde bir betik oluşturun `src` :
 
-```python
-# tutorial/src/train.py
-import torch
-import torch.optim as optim
-import torchvision
-import torchvision.transforms as transforms
-
-from model import Net
-
-# download CIFAR10 data
-trainset = torchvision.datasets.CIFAR10(
-    root="./data",
-    train=True,
-    download=True,
-    transform=torchvision.transforms.ToTensor(),
-)
-trainloader = torch.utils.data.DataLoader(
-    trainset, batch_size=4, shuffle=True
-)
-
-if __name__ == "__main__":
-
-    # define convolutional network
-    net = Net()
-
-    # set up pytorch loss /  optimizer
-    criterion = torch.nn.CrossEntropyLoss()
-    optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
-
-    # train the network
-    for epoch in range(2):
-
-        running_loss = 0.0
-        for i, data in enumerate(trainloader, 0):
-            # unpack the data
-            inputs, labels = data
-
-            # zero the parameter gradients
-            optimizer.zero_grad()
-
-            # forward + backward + optimize
-            outputs = net(inputs)
-            loss = criterion(outputs, labels)
-            loss.backward()
-            optimizer.step()
-
-            # print statistics
-            running_loss += loss.item()
-            if i % 2000 == 1999:
-                loss = running_loss / 2000
-                print(f"epoch={epoch + 1}, batch={i + 1:5}: loss {loss:.2f}")
-                running_loss = 0.0
-
-    print("Finished Training")
-
-```
+:::code language="python" source="~/MachineLearningNotebooks/tutorials/get-started-day1/IDE-users/src/train.py":::
 
 Artık şu dizin yapısına sahipsiniz:
 
@@ -153,27 +74,23 @@ tutorial
 └──03-run-hello.py
 ```
 
-## <a name="create-a-python-environment"></a>Python ortamı oluşturma
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaşdığım](https://www.research.net/r/7CTJQQN?issue=create-scripts) [eğitim betiklerini oluşturdum](?success=create-scripts#environment)
+
+## <a name="create-a-python-environment"></a><a name="environment"></a> Python ortamı oluşturma
 
 Tanıtım amacıyla, Conda ortamını kullanacağız. (Bir PIP sanal ortamının adımları neredeyse aynıdır.)
 
 Gizli dizinde adlı bir dosya oluşturun `pytorch-env.yml` `.azureml` :
 
-```yml
-# tutorial/.azureml/pytorch-env.yml
-name: pytorch-env
-channels:
-    - defaults
-    - pytorch
-dependencies:
-    - python=3.6.2
-    - pytorch
-    - torchvision
-```
+:::code language="yml" source="~/MachineLearningNotebooks/tutorials/get-started-day1/IDE-users/environments/pytorch-env.yml":::
 
 Bu ortam, modelinize ve eğitim betiğinizin gerektirdiği tüm bağımlılıklara sahiptir. Python için Azure Machine Learning SDK 'nın bağımlılığı olmadığına dikkat edin.
 
-## <a name="test-locally"></a>Yerel olarak test etme
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaşdığım](https://www.research.net/r/7CTJQQN?issue=create-env-file) [ortam dosyasını oluşturdum](?success=create-env-file#test-local)
+
+## <a name="test-locally"></a><a name="test-local"></a> Yerel olarak test etme
 
 Komut dosyanızı bu ortamda yerel olarak test etmek için aşağıdaki kodu kullanın:
 
@@ -185,33 +102,16 @@ python src/train.py                             # train model
 
 Bu betiği çalıştırdıktan sonra adlı bir dizine indirilen verileri görürsünüz `tutorial/data` .
 
-## <a name="create-the-control-script"></a>Denetim betiğini oluşturma
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaşdığım](https://www.research.net/r/7CTJQQN?issue=test-local) [ortam dosyasını oluşturdum](?success=test-local#create-local)
+
+## <a name="create-the-control-script"></a><a name="create-local"></a> Denetim betiğini oluşturma
 
 Aşağıdaki denetim betiği ve "Hello World!" göndermek için kullandığınız biri arasındaki fark , ortamı ayarlamak için birkaç ek satır eklemenizi sağlar.
 
 Adlı dizinde yeni bir Python dosyası oluşturun `tutorial` `04-run-pytorch.py` :
 
-```python
-# tutorial/04-run-pytorch.py
-from azureml.core import Workspace
-from azureml.core import Experiment
-from azureml.core import Environment
-from azureml.core import ScriptRunConfig
-
-if __name__ == "__main__":
-    ws = Workspace.from_config()
-    experiment = Experiment(workspace=ws, name='day1-experiment-train')
-    config = ScriptRunConfig(source_directory='src', script='train.py', compute_target='cpu-cluster')
-
-    # set up pytorch environment
-    env = Environment.from_conda_specification(name='pytorch-env', file_path='.azureml/pytorch-env.yml')
-    config.run_config.environment = env
-
-    run = experiment.submit(config)
-
-    aml_url = run.get_portal_url()
-    print(aml_url)
-```
+:::code language="python" source="~/MachineLearningNotebooks/tutorials/get-started-day1/IDE-users/04-run-pytorch.py":::
 
 ### <a name="understand-the-code-changes"></a>Kod değişikliklerini anlayın
 
@@ -232,9 +132,13 @@ if __name__ == "__main__":
    :::column-end:::
 :::row-end:::
 
-## <a name="submit-the-run-to-azure-machine-learning"></a>Çalıştırmayı Azure Machine Learning gönder
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaşdığım](https://www.research.net/r/7CTJQQ?issue=control-script) [Denetim betiğini](?success=control-script#submit) oluşturdum
 
-Yerel ortamları geçtiyseniz, Python için Azure Machine Learning SDK 'Sı yüklü olan bir ortama geri doğru geçdiğinizden emin olun. 
+
+## <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit"></a> Çalıştırmayı Azure Machine Learning gönder
+
+Yerel ortamları geçtiyseniz, Python için Azure Machine Learning SDK 'Sı yüklü olan bir ortama geri doğru geçdiğinizden emin olun.
 
 Ardından şunu çalıştırın:
 
@@ -281,7 +185,10 @@ Azure Machine Learning Ayrıca, seçkin ortamların bir koleksiyonunu tutar. Bu 
 
 Kısacası, kayıtlı ortamların kullanılması zamandan tasarruf edebilir! Daha fazla bilgi için [ortamları nasıl kullanacağınızı](./how-to-use-environments.md) okuyun.
 
-## <a name="log-training-metrics"></a>Günlük eğitimi ölçümleri
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaşdığım](https://www.research.net/r/7CTJQQ?issue=test-w-environment) [çalışmayı gönderdim](?success=test-w-environment#log)
+
+## <a name="log-training-metrics"></a><a name="log"></a> Günlük eğitimi ölçümleri
 
 Artık Azure Machine Learning bir model eğitimine sahip olduğunuza göre bazı performans ölçümlerini izlemeye başlayın.
 
@@ -291,67 +198,8 @@ Geçerli eğitim betiği, ölçümleri terminalden yazdırır. Azure Machine Lea
 
 `train.py`Betiğinizi iki satırlık kod satırı içerecek şekilde değiştirin:
 
-```python
-# train.py
-import torch
-import torch.optim as optim
-import torchvision
-import torchvision.transforms as transforms
+:::code language="python" source="~/MachineLearningNotebooks/tutorials/get-started-day1/code/pytorch-cifar10-train-with-logging/train.py":::
 
-from model import Net
-from azureml.core import Run
-
-
-# ADDITIONAL CODE: get Azure Machine Learning run from the current context
-run = Run.get_context()
-
-# download CIFAR10 data
-trainset = torchvision.datasets.CIFAR10(
-    root="./data",
-    train=True,
-    download=True,
-    transform=torchvision.transforms.ToTensor(),
-)
-trainloader = torch.utils.data.DataLoader(
-    trainset, batch_size=4, shuffle=True, num_workers=2
-)
-
-if __name__ == "__main__":
-
-    # define convolutional network
-    net = Net()
-
-    # set up pytorch loss /  optimizer
-    criterion = torch.nn.CrossEntropyLoss()
-    optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
-
-    # train the network
-    for epoch in range(2):
-
-        running_loss = 0.0
-        for i, data in enumerate(trainloader, 0):
-            # unpack the data
-            inputs, labels = data
-
-            # zero the parameter gradients
-            optimizer.zero_grad()
-
-            # forward + backward + optimize
-            outputs = net(inputs)
-            loss = criterion(outputs, labels)
-            loss.backward()
-            optimizer.step()
-
-            # print statistics
-            running_loss += loss.item()
-            if i % 2000 == 1999:
-                loss = running_loss / 2000
-                run.log('loss', loss) # ADDITIONAL CODE: log loss metric to Azure Machine Learning
-                print(f'epoch={epoch + 1}, batch={i + 1:5}: loss {loss:.2f}')
-                running_loss = 0.0
-
-    print('Finished Training')
-```
 
 #### <a name="understand-the-additional-two-lines-of-code"></a>Kodun ek iki satırını anlayın
 
@@ -372,26 +220,19 @@ Azure Machine Learning ölçümler şunlardır:
 - , Studio 'da eğitim performansını görselleştirebilmeniz için bir kullanıcı arabirimi ile donatılmış.
 - Ölçeklendirilmesi için tasarlanan, yüzlerce denemeleri çalıştırırken bu avantajları de koruyabilirsiniz.
 
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaştım](https://www.research.net/r/7CTJQQ?issue=modify-train) [train.py değiştirdim](?success=modify-train#log)
+
 ### <a name="update-the-conda-environment-file"></a>Conda ortam dosyasını güncelleştirme
 
 `train.py`Komut dosyası yeni bir bağımlılık almış `azureml.core` . `pytorch-env.yml`Bu değişikliği yansıtacak şekilde güncelleştirin:
 
-```yaml
-# tutorial/.azureml/pytorch-env.yml
-name: pytorch-env
-channels:
-    - defaults
-    - pytorch
-dependencies:
-    - python=3.6.2
-    - pytorch
-    - torchvision
-    - pip
-    - pip:
-        - azureml-sdk
-```
+:::code language="python" source="~/MachineLearningNotebooks/tutorials/get-started-day1/configuration/pytorch-aml-env.yml":::
 
-### <a name="submit-the-run-to-azure-machine-learning"></a>Çalıştırmayı Azure Machine Learning gönder
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaşdığım](https://www.research.net/r/7CTJQQ?issue=update-environment) [ortam dosyasını güncelleştirdim](?success=update-environment#submit-again)
+
+### <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit-again"></a> Çalıştırmayı Azure Machine Learning gönder
 Bu betiği bir kez daha gönder:
 
 ```bash
@@ -401,6 +242,9 @@ python 04-run-pytorch.py
 Bu kez, Studio 'yu ziyaret ettiğinizde, artık model eğitimi kaybından canlı güncelleştirmeleri görebileceğiniz **ölçümler** sekmesine gidin!
 
 :::image type="content" source="media/tutorial-1st-experiment-sdk-train/logging-metrics.png" alt-text="Ölçümler sekmesinde eğitim kaybı grafiği.":::
+
+> [!div class="nextstepaction"]
+> [I resubmitted the run](?success=resubmit-with-logging#next-steps) [Bir sorunla Karşılaşdığım](https://www.research.net/r/7CTJQQ?issue=resubmit-with-logging) çalışmayı yeniden aldım
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

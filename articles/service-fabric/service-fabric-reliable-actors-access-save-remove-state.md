@@ -1,17 +1,15 @@
 ---
 title: Azure Service Fabric durumunu yönetme
 description: Azure Service Fabric güvenilir aktör için durum erişimi, kaydetme ve kaldırma hakkında bilgi edinin ve bir uygulama tasarlarken dikkat edilecek noktalar.
-author: vturecek
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e97fadb374fc45110f5071aab48da0a57eef4284
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e796232719342883efc2aa5dd377d586f3039ad
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89012798"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571326"
 ---
 # <a name="access-save-and-remove-reliable-actors-state"></a>Reliable Actors duruma erişin, kaydedin ve kaldırın
 [Reliable Actors](service-fabric-reliable-actors-introduction.md) hem mantığı hem de durumu kapsüllemek ve durumu güvenilir bir şekilde korumak için tek iş parçacıklı nesnelerdir. Her aktör örneğinin kendi [Durum Yöneticisi](service-fabric-reliable-actors-state-management.md)vardır: anahtar/değer çiftlerini güvenilir bir şekilde depolayan sözlük benzeri bir veri yapısı. Durum Yöneticisi, bir durum sağlayıcısının etrafındaki bir sarmalayıcıdır. Bu uygulamayı, hangi [Kalıcılık ayarının](service-fabric-reliable-actors-state-management.md#state-persistence-and-replication) kullanıldığı bağımsız olarak verileri depolamak için kullanabilirsiniz.
@@ -107,7 +105,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 ## <a name="save-state"></a>Durumu Kaydet
 Durum Yöneticisi alma yöntemleri, yerel bellekteki bir nesneye bir başvuru döndürür. Bu nesnenin tek başına yerel bellekte değiştirilmesi, bu nesnenin durda kaydedilmesine neden olmaz. Bir nesne durum yöneticisinden alındığında ve değiştirildiğinde, bu, durda kaydedilmesi için durum yöneticisine yeniden eklenmelidir.
 
-Sözdizimi eşdeğeri olan koşulsuz *küme*kullanarak durum ekleyebilirsiniz `dictionary["key"] = value` :
+Sözdizimi eşdeğeri olan koşulsuz *küme* kullanarak durum ekleyebilirsiniz `dictionary["key"] = value` :
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]

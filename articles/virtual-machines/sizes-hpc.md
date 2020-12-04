@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 09/23/2020
+ms.date: 12/03/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 29033cbabfcfa00c9f8458cbc161af67df5806cb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 21b1004a347dec3a7f2a6460d8b853350bf36ff0
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91325972"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571054"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>Yüksek performanslı bilgi işlem VM boyutları
 
@@ -40,7 +40,7 @@ HPC VM boyutlarının çoğu (HBv2, HB, HC, H16r, H16mr, A8 ve A9), uzak doğrud
 Bu arabirim, RDMA özellikli örneklerin bir InfiniBand (ıB) ağı üzerinden iletişim kurmasını, HBv2 için HDR ücretine, HB, HC, NDv2, FDR tarifelerinin H16r, H16mr ve diğer RDMA özellikli N serisi sanal makinelere ve A8 ve A9 VM 'Ler için QDR ücretlerden çalışmasına izin verir. Bu RDMA özellikleri, bazı Ileti geçirme arabirimi (MPı) uygulamalarının ölçeklenebilirliğini ve performansını artırabilir.
 
 > [!NOTE]
-> Azure HPC 'de, InfiniBand için SR-ıOV etkinleştirilmiş olmasına bağlı olarak iki VM sınıfı vardır. Şu anda, InfiniBand özellikli VM 'Ler için SR-ıOV: HBv2, HB, HC, NCv3 ve NDv2. InfiniBand etkin VM 'lerin geri kalanı şu anda SR-ıOV ' n i n etkin değil.
+> Azure HPC 'de, InfiniBand için SR-ıOV etkinleştirilmiş olmasına bağlı olarak iki VM sınıfı vardır. Şu anda, H16r, H16mr, NC24r, A8, A9 dışında, Azure 'da daha yeni nesil, RDMA özellikli veya Infiniband özellikli VM 'Ler SR-ıOV etkindir.
 > RDMA yalnızca InfiniBand (ıB) ağı üzerinden etkinleştirilir ve tüm RDMA özellikli sanal makineler için desteklenir.
 > IB üzerinden IP yalnızca SR-ıOV etkinleştirilmiş VM 'lerde desteklenir.
 > RDMA, Ethernet ağı üzerinden etkinleştirilmemiş.
@@ -55,7 +55,7 @@ Bu arabirim, RDMA özellikli örneklerin bir InfiniBand (ıB) ağı üzerinden i
 
    VM uzantısını bir VM 'ye eklemek için [Azure PowerShell](/powershell/azure/) cmdlet 'lerini kullanabilirsiniz. Daha fazla bilgi için bkz. [sanal makine uzantıları ve özellikleri](./extensions/overview.md). [Klasik dağıtım modelinde](/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic)dağıtılan VM 'ler için uzantılara de çalışabilirsiniz.
 
-- **MPI** -Azure 'daki SR-ıOV etkin VM boyutları (HBv2, HB, HC, NCv3, NDv2), her türlü MPI 'ın Mellanox ile kullanılmasına izin verir. SR-ıOV olmayan VM 'lerde desteklenen MPı uygulamaları, VM 'Ler arasında iletişim kurmak için Microsoft ağ doğrudan (ND) arabirimini kullanır. Bu nedenle, yalnızca Microsoft MPı (MS-MPı) 2012 R2 veya üzeri ve Intel MPı 5. x sürümleri desteklenir. Intel MPı çalışma zamanı kitaplığı 'nın sonraki sürümleri (2017, 2018), Azure RDMA sürücüleriyle uyumlu olmayabilir veya olmayabilir. Bkz. Azure üzerinde MPı üzerinde HPC VM 'Leri ayarlama hakkında daha fazla bilgi için bkz. [HPC Için Setup MPI](./workloads/hpc/setup-mpi.md) .
+- **MPI** -Azure 'daki SR-ıOV etkinleştirilmiş VM boyutları, her türlü MPI 'ın Mellanox ile kullanılmasına izin verir. SR-ıOV olmayan VM 'lerde desteklenen MPı uygulamaları, VM 'Ler arasında iletişim kurmak için Microsoft ağ doğrudan (ND) arabirimini kullanır. Bu nedenle, yalnızca Microsoft MPı (MS-MPı) 2012 R2 veya üzeri ve Intel MPı 5. x sürümleri desteklenir. Intel MPı çalışma zamanı kitaplığı 'nın sonraki sürümleri (2017, 2018), Azure RDMA sürücüleriyle uyumlu olmayabilir veya olmayabilir. Bkz. Azure üzerinde MPı üzerinde HPC VM 'Leri ayarlama hakkında daha fazla bilgi için bkz. [HPC Için Setup MPI](./workloads/hpc/setup-mpi.md) .
 
 - **RDMA ağ adresi alanı** -Azure 'daki RDMA ağı, 172.16.0.0/16 adres alanını ayırır. MPı uygulamalarını bir Azure sanal ağında dağıtılan örneklerde çalıştırmak için, sanal ağ adres alanının RDMA ağıyla çakışmadığından emin olun.
 

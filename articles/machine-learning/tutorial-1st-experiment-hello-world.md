@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 20173c4ba02f53a526167a5a8e22bd0cedc85594
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 971bac8a0b0951d4e07e139aea6c465a9159b8db
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393227"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96570969"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>Öğretici: "Hello World!" Çalıştır Python betiği (Bölüm 2/4)
 
@@ -33,7 +33,7 @@ Bu öğreticide şunları yapacaksınız:
 > * "Hello World!" öğesini gönder ve Çalıştır SCRIPT.
 > * Kod çıktılarınızı bulutta görüntüleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Zaten bir Azure Machine Learning çalışma alanınız yoksa [Bölüm 1](tutorial-1st-experiment-sdk-setup-local.md) ' in tamamlanması.
 - Python dili ve makine öğrenimi iş akışlarının giriş bilgisi.
@@ -61,7 +61,8 @@ tutorial
 └──02-create-compute.py
 ```
 
-### <a name="test-your-script-locally"></a>Betiğinizi yerel olarak test etme
+
+### <a name="test-your-script-locally"></a><a name="test"></a>Betiğinizi yerel olarak test etme
 
 Kodunuzu, en sevdiğiniz IDE 'yi veya bir terminali kullanarak yerel olarak çalıştırabilirsiniz. Kodu yerel olarak çalıştırmak kodun etkileşimli hata ayıklamasının avantajına sahiptir.
 
@@ -70,7 +71,10 @@ cd <path/to/tutorial>
 python ./src/hello.py
 ```
 
-## <a name="create-a-control-script"></a>Denetim betiği oluşturma
+> [!div class="nextstepaction"]
+> [Yerel olarak](?success=run-local#control-script) [bir sorunla karşılaşdığım](https://www.research.net/r/7C2NTH7?issue=run-local) betiği çalıştırdım
+
+## <a name="create-a-control-script"></a><a name="control-script"></a> Denetim betiği oluşturma
 
 Bir *Denetim betiği* `hello.py` , komut dosyanızı bulutta çalıştırmanızı sağlar. Machine Learning kodunuzun nasıl ve nerede çalıştırılacağını denetlemek için denetim betiğini kullanın.  
 
@@ -89,6 +93,8 @@ run = experiment.submit(config)
 aml_url = run.get_portal_url()
 print(aml_url)
 ```
+
+
 
 ### <a name="understand-the-code"></a>Kodu anlama
 
@@ -135,7 +141,10 @@ Denetim betiğinin nasıl çalıştığına ilişkin bir açıklama aşağıda v
    :::column-end:::
 :::row-end:::
 
-## <a name="submit-and-run-your-code-in-the-cloud"></a>Kodunuzu buluta gönderme ve çalıştırma
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaşdığım](https://www.research.net/r/7C2NTH7?issue=create-control-script) [Denetim betiğini](?success=create-control-script#submit) oluşturdum
+
+## <a name="submit-and-run-your-code-in-the-cloud"></a><a name="submit"></a> Kodunuzu buluta gönderme ve çalıştırma
 
 Denetim betiğinizi çalıştırın, bu, `hello.py` [Kurulum öğreticisinde](tutorial-1st-experiment-sdk-setup-local.md)oluşturduğunuz işlem kümesinde sırayla çalışır.
 
@@ -154,7 +163,10 @@ python 03-run-hello.py
 > [!TIP]
 > Bu kodu çalıştırmak, aboneliğe erişiminizin olmadığı bir hata veriyorsa, bkz. kimlik doğrulama seçenekleri hakkında bilgi için bkz. [çalışma alanına bağlanma](how-to-manage-workspace.md?tab=python#connect-multi-tenant) .
 
-## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a>Studio 'yu kullanarak kodunuzu bulutta izleyin
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaşdığım](https://www.research.net/r/7C2NTH7?issue=submit-to-cloud) [bulutta kod gönderdim](?success=submit-to-cloud#monitor)
+
+## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a><a name="monitor"></a>Studio 'yu kullanarak kodunuzu bulutta izleyin
 
 Çıktı, aşağıdaki gibi görünen bir Studio bağlantısı içerir: `https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>` .
 
@@ -185,6 +197,9 @@ Bağlantıyı izleyin ve **çıktılar + Günlükler** sekmesine gidin. Aşağı
 8. satırda "Merhaba Dünya!" öğesini görürsünüz. çıktıların.
 
 `70_driver_log.txt`Dosya, bir çalıştırmanın standart çıktısını içerir. Bu dosya, bulutta uzak çalıştırmaları hata ayıkladığınızda yararlı olabilir.
+
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaşdığım](https://www.research.net/r/7C2NTH7?issue=monitor-in-studio) [Studio 'Daki günlüğü gördüm](?success=monitor-in-studio#next-steps)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

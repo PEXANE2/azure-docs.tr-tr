@@ -8,20 +8,23 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6d6a0bdb9a6aaa2d9ca75ccd4a6d71e9046bee4a
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 9ebbe54dd41cd7d7b83ef12f465326db3ef2b9ab
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523657"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572193"
 ---
 # <a name="how-to-review-synapse-rbac-role-assignments"></a>SYNAPSE RBAC rol atamalarını gözden geçirme
 
-SYNAPSE RBAC rolleri, SYNAPSE kaynaklarının erişimini ve kullanımını etkinleştirmek üzere kullanıcılara, gruplara ve diğer güvenlik ilkelerine izinler atamak için kullanılır.  [Daha fazla bilgi edinin](https://go.microsoft.com/fwlink/?linkid=2148306)
+SYNAPSE RBAC rolleri, SYNAPSE kaynaklarının erişimini ve kullanımını etkinleştirmek üzere kullanıcılara, gruplara ve diğer güvenlik ilkelerine izinler atamak için kullanılır.  [Daha fazla bilgi](https://go.microsoft.com/fwlink/?linkid=2148306)
 
 Bu makalede, bir çalışma alanı için geçerli rol atamalarının nasıl inceleneceği açıklanır.
 
-Herhangi bir Synapse RBAC rolüyle, erişiminiz olmayan nesneler için Atamalar da dahil olmak üzere tüm kapsamlar için SYNAPSE RBAC rol atamalarını listeleyebilirsiniz. Yalnızca bir Synapse Yöneticisi SYNAPSE RBAC erişimine izin verebilir.   
+Herhangi bir Synapse RBAC rolüyle, erişiminiz olmayan nesneler için Atamalar da dahil olmak üzere tüm kapsamlar için SYNAPSE RBAC rol atamalarını listeleyebilirsiniz. Yalnızca bir Synapse Yöneticisi SYNAPSE RBAC erişimine izin verebilir.  
+
+>[!Note]
+>Konuk kullanıcılar (farklı bir AD kiracısından kullanıcılar) SYNAPSE yönetici rolü atansa bile rol atamalarını göremez veya yönetemez.    
 
 ## <a name="open-synapse-studio"></a>SYNAPSE Studio 'Yu açın  
 

@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc, contperfq1
-ms.date: 11/10/2020
+ms.date: 12/03/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: e714e88e47ec20adec44a104c659d03e62d8010a
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: fc68170a89a3d9a359ae9cb2c0d5543af301e738
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658392"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573043"
 ---
 # <a name="what-is-azure-firewall"></a>Azure Güvenlik Duvarı nedir?
 
@@ -70,7 +70,8 @@ TCP/UDP dışı protokollere (örneğin ICMP) yönelik ağ filtreleme kuralları
 |Özel DNS zorlamalı tünelleme ile çalışmıyor|Zorlamalı tünel etkinleştirilirse, özel DNS çalışmaz.|Bir düzelme araştırılır.|
 |Birden çok Kullanılabilirlik Alanları için yeni genel IP adresi desteği|İki kullanılabilirlik alanıyla bir güvenlik duvarı dağıtırken yeni bir genel IP adresi ekleyemezsiniz (1 ve 2, 2 ve 3 veya 1 ve 3)|Bu, genel bir IP adresi kaynak sınırlamasıdır.|
 |Başlat/Durdur, Zorlamalı tünel modunda yapılandırılmış bir güvenlik duvarı ile çalışmıyor|Başlat/Durdur, Zorlamalı tünel modunda yapılandırılmış Azure Güvenlik Duvarı ile çalışmıyor. Zorlamalı tünel yapılandırılmış olarak Azure Güvenlik Duvarı 'Nı başlatma girişimi şu hata ile sonuçlanır:<br><br>*Set-AzFirewall: AzureFirewall FW-xx yönetim IP yapılandırması mevcut bir güvenlik duvarına eklenemiyor. Zorlamalı tünel desteğini kullanmak istiyorsanız bir yönetim IP yapılandırması ile yeniden dağıtın. <br> StatusCode: 400 <br> ReasonPhrase: Hatalı istek*|İnceleme altında.<br><br>Geçici bir çözüm olarak, mevcut güvenlik duvarını silebilir ve aynı parametrelerle yeni bir tane oluşturabilirsiniz.|
-|Portal kullanılarak güvenlik duvarı ilkesi etiketleri eklenemiyor|Azure Güvenlik Duvarı Ilkesinde, Azure portal kullanarak etiket eklemelerini önleyen bir yama destek sınırlaması vardır. Şu hata oluşturuldu: *kaynak için Etiketler kaydedilemedi*.|Bir düzelme araştırılır. Alternatif olarak, etiketleri güncelleştirmek için Azure PowerShell cmdlet 'ini kullanabilirsiniz `Set-AzFirewallPolicy` .
+|Portal kullanılarak güvenlik duvarı ilkesi etiketleri eklenemiyor|Azure Güvenlik Duvarı Ilkesinde, Azure portal kullanarak etiket eklemelerini önleyen bir yama destek sınırlaması vardır. Şu hata oluşturuldu: *kaynak için Etiketler kaydedilemedi*.|Bir düzelme araştırılır. Alternatif olarak, etiketleri güncelleştirmek için Azure PowerShell cmdlet 'ini kullanabilirsiniz `Set-AzFirewallPolicy` .|
+|IPv6 henüz desteklenmiyor|Bir kurala bir IPv6 adresi eklerseniz güvenlik duvarı başarısız olur.|Yalnızca IPv4 adreslerini kullanın. IPv6 desteği araştırma aşamasındadır.|
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

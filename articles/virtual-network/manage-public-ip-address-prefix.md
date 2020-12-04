@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: allensu
-ms.openlocfilehash: 90fc35249daea51a08cb83143c6be024e78964a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3b86f9bcbc863a78fd5f8f748e973a20ea709636
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91804019"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573179"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Genel IP adresi ön eki oluşturma, değiştirme veya silme
 
@@ -43,15 +43,15 @@ Genel IP adresi ön eklerinin ücreti vardır. Ayrıntılar için bkz. [fiyatlan
 
 1. Portalın sol üst köşesinde **+ kaynak oluştur**' u seçin.
 2. *Market 'Te ara* kutusuna *genel IP öneki* girin. Arama sonuçlarında **genel IP adresi ön eki** göründüğünde, bunu seçin.
-3. **Genel IP adresi ön eki**altında **Oluştur**' u seçin.
-4. Aşağıdaki ayarlara ait değerleri girin veya seçin, **genel IP adresi öneki oluştur**altında, **Oluştur**' u seçin.
+3. **Genel IP adresi ön eki** altında **Oluştur**' u seçin.
+4. Aşağıdaki ayarlara ait değerleri girin veya seçin, **genel IP adresi öneki oluştur** altında, **Oluştur**' u seçin.
 
    |Ayar|Gerekli mi?|Ayrıntılar|
    |---|---|---|
    |Abonelik|Evet|Genel IP adresini ilişkilendirmek istediğiniz kaynakla aynı [abonelikte](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) bulunmalıdır.|
    |Kaynak grubu|Evet|, Genel IP adresini ilişkilendirmek istediğiniz kaynakla aynı veya farklı bir [kaynak grubunda](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) bulunabilir.|
-   |Adı|Evet|Ad, seçtiğiniz kaynak grubu içinde benzersiz olmalıdır.|
-   |Bölge|Evet|, Aralıktan adres atayacağımız genel IP adresleriyle aynı [bölgede](https://azure.microsoft.com/regions)bulunmalıdır.|
+   |Ad|Evet|Ad, seçtiğiniz kaynak grubu içinde benzersiz olmalıdır.|
+   |Region|Evet|, Aralıktan adres atayacağımız genel IP adresleriyle aynı [bölgede](https://azure.microsoft.com/regions)bulunmalıdır.|
    |Ön ek boyutu|Evet| İhtiyaç duyduğunuz ön ek boyutu. Varsayılan değer A/28 veya 16 IP adresleridir.
 
 **Komutlar**
@@ -61,17 +61,20 @@ Genel IP adresi ön eklerinin ücreti vardır. Ayrıntılar için bkz. [fiyatlan
 |CLI|[az Network public-ip Create](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create)|
 |PowerShell|[New-AzPublicIpPrefix](/powershell/module/az.network/new-azpublicipprefix)|
 
+>[!NOTE]
+>Kullanılabilirlik alanları olan bölgelerde, bir genel IP adresi ön eki oluşturmak için PowerShell veya CLı komutlarını kullanabilirsiniz: Bu, belirli bir bölgeyle ilişkili olan veya bölge artıklığı kullanma.  API sürüm 2020-08-01 veya üzeri için bir bölge parametresi sağlanmazsa, bir genel IP adresi ön eki oluşturulur. API 'nin 2020-08-01 'den eski sürümleri için, bölgesel olarak yedekli bir genel IP adresi ön eki oluşturulur. 
+
 ## <a name="create-a-static-public-ip-address-from-a-prefix"></a>Önekten statik bir genel IP adresi oluşturma
 Ön ek oluşturduktan sonra, önekten statik IP adresleri oluşturmanız gerekir. Bunu yapmak için aşağıdaki adımları izleyin.
 
-1. Azure portal üst kısmında bulunan metin *arama kaynaklarını* içeren kutuya *genel IP adresi ön eki*yazın. **Genel IP adresi önekleri** arama sonuçlarında görüntülendiğinde, bunu seçin.
+1. Azure portal üst kısmında bulunan metin *arama kaynaklarını* içeren kutuya *genel IP adresi ön eki* yazın. **Genel IP adresi önekleri** arama sonuçlarında görüntülendiğinde, bunu seçin.
 2. Genel IP 'Leri oluşturmak istediğiniz ön eki seçin.
 3. Arama sonuçlarında göründüğünde, bunu seçin ve genel bakış bölümünde **+ IP adresi ekle** ' ye tıklayın.
-4. **Genel IP adresi oluştur**altında aşağıdaki ayarlara ait değerleri girin veya seçin. Bir önek standart SKU, IPv4 ve statik olduğundan, yalnızca aşağıdaki bilgileri sağlamanız gerekir:
+4. **Genel IP adresi oluştur** altında aşağıdaki ayarlara ait değerleri girin veya seçin. Bir önek standart SKU, IPv4 ve statik olduğundan, yalnızca aşağıdaki bilgileri sağlamanız gerekir:
 
    |Ayar|Gerekli mi?|Ayrıntılar|
    |---|---|---|
-   |Adı|Evet|Genel IP adresinin adı, seçtiğiniz kaynak grubu içinde benzersiz olmalıdır.|
+   |Ad|Evet|Genel IP adresinin adı, seçtiğiniz kaynak grubu içinde benzersiz olmalıdır.|
    |Boşta kalma zaman aşımı (dakika)|Hayır|Bir TCP veya HTTP bağlantısının istemcilere bağlı kalmadan açık tutulması için, etkin tut iletileri göndermek için kaç dakika sürer. |
    |DNS ad etiketi|Hayır|İçinde adını oluşturduğunuz Azure bölgesi içinde benzersiz olmalıdır (tüm abonelikler ve tüm müşteriler genelinde). Azure adı ve IP adresini DNS 'ye otomatik olarak kaydeder, böylece ada sahip bir kaynağa bağlanabilirsiniz. Azure, tam DNS adını oluşturmak için *Location.cloudapp.Azure.com* gibi bir varsayılan alt ağ (seçtiğiniz konum sizin seçtiğiniz konumdur), sağladığınız ada ekler. Daha fazla bilgi için bkz. [Azure genel IP adresi ile Azure DNS kullanma](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address).|
 
@@ -84,7 +87,7 @@ Alternatif olarak, genel bir IP adresi kaynağı oluşturmak için aşağıdaki 
 
 ## <a name="view-or-delete-a-prefix"></a>Ön eki görüntüleme veya silme
 
-1. Azure portal üst kısmında bulunan metin *arama kaynaklarını* içeren kutuya *genel IP adresi ön eki*yazın. **Genel IP adresi önekleri** arama sonuçlarında görüntülendiğinde, bunu seçin.
+1. Azure portal üst kısmında bulunan metin *arama kaynaklarını* içeren kutuya *genel IP adresi ön eki* yazın. **Genel IP adresi önekleri** arama sonuçlarında görüntülendiğinde, bunu seçin.
 2. Görüntülemek istediğiniz genel IP adresi ön ekinin adını seçin, ayarları değiştirin veya listeden silin.
 3. Genel IP adresi önekini görüntüleme, silme veya değiştirme seçeneklerine bağlı olarak, aşağıdaki seçeneklerden birini doldurun.
    - **Görünüm**: **genel bakış** bölümü önek gibi genel IP adresi ön eki için anahtar ayarlarını gösterir.
@@ -101,7 +104,7 @@ Alternatif olarak, genel bir IP adresi kaynağı oluşturmak için aşağıdaki 
 
 Genel IP adresi öneklerinde görevler gerçekleştirmek için, hesabınız [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolüne veya aşağıdaki tabloda listelenen uygun eylemlere atanmış [özel](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) bir role atanmalıdır:
 
-| Eylem                                                            | Adı                                                           |
+| Eylem                                                            | Ad                                                           |
 | ---------                                                         | -------------                                                  |
 | Microsoft. Network/Publicipönekleri/okuma                           | Genel IP adresi ön ekini oku                                |
 | Microsoft. Network/Publicipöneklerini/yazma                          | Genel IP adresi öneki oluşturma veya güncelleştirme                    |

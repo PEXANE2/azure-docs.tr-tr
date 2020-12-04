@@ -11,16 +11,16 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 1b4ee9f06e8ed8bd47be1075070dea71b42b1cef
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 05ac0f78345e1c1d7643f24410d53b209ab7c375
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93349078"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574165"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>Öğretici: geliştirme ortamınızda Azure Machine Learning kullanmaya başlayın (Bölüm 1/4)
 
-Bu *dört bölümden oluşan öğretici serisinde* , Azure bulut platformunda Azure Machine Learning ve işlerin temel aldığı Python Machine Learning görevlerinin temellerini öğrenirsiniz. 
+Bu *dört bölümden oluşan öğretici serisinde*, Azure bulut platformunda Azure Machine Learning ve işlerin temel aldığı Python Machine Learning görevlerinin temellerini öğrenirsiniz. 
 
 Bu öğretici serisinin 1. bölümünde şunları yapmanız gerekir:
 
@@ -52,7 +52,10 @@ Bu öğreticide kullanmak üzere bir Python ortamı ayarlamak için en tanıdık
 pip install azureml-sdk
 ```
 
-## <a name="create-a-directory-structure-for-code"></a>Kod için dizin yapısı oluşturma
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaşdığım](https://www.research.net/r/7C8Z3DN?issue=install-sdk) [SDK 'yı yükledim](?success=install-sdk#dir)
+
+## <a name="create-a-directory-structure-for-code"></a><a name="dir"></a>Kod için dizin yapısı oluşturma
 Bu öğretici için aşağıdaki basit dizin yapısını ayarlamanızı öneririz:
 
 ```markdown
@@ -63,7 +66,11 @@ tutorial
 - `tutorial`: Projenin en üst düzey dizini.
 - `.azureml`: Azure Machine Learning yapılandırma dosyalarını depolamak için gizli alt dizin.
 
-## <a name="create-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanı oluşturma
+
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaşdığım](https://www.research.net/r/7C8Z3DN?issue=create-dir) [bir dizin](?success=create-dir#workspace) oluşturdum
+
+## <a name="create-an-azure-machine-learning-workspace"></a><a name="workspace"></a>Azure Machine Learning çalışma alanı oluşturma
 
 Çalışma alanı, Azure Machine Learning için en üst düzey kaynaktır ve merkezi bir yerdir:
 
@@ -119,7 +126,10 @@ Dosya, `.azureml/config.json` Azure Machine Learning çalışma alanınıza bağ
 >
 > Azure Machine Learning çalışma alanınız ile etkileşimde bulunmak için kimlik doğrulaması yine de gereklidir.
 
-## <a name="create-an-azure-machine-learning-compute-cluster"></a>Azure Machine Learning işlem kümesi oluşturma
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaşdığım](https://www.research.net/r/7C8Z3DN?issue=create-workspace) [bir çalışma alanı oluşturdum](?success=create-workspace#cluster)
+
+## <a name="create-an-azure-machine-learning-compute-cluster"></a><a name="cluster"></a> Azure Machine Learning işlem kümesi oluşturma
 
 `tutorial`Adlı üst düzey dizinde bir Python betiği oluşturun `02-create-compute.py` . Sıfır ve dört düğüm arasında otomatik ölçeklendirme yapılacak bir Azure Machine Learning işlem kümesi oluşturmak için aşağıdaki kodla doldurun:
 
@@ -167,6 +177,9 @@ tutorial
 └──01-create-workspace.py
 └──02-create-compute.py
 ```
+
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaşdığım](https://www.research.net/r/7C8Z3DN?issue=create-compute-cluster) [bir işlem kümesi](?success=create-compute-cluster#next-steps) oluşturdum
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

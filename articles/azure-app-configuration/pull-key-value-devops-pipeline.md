@@ -7,18 +7,18 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: drewbat
-ms.openlocfilehash: 15810e65873c685565ccaad6c2dcdc1707713f2c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1c28b4e9821f31f927ef4f640aa664d330cf8792
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182657"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571003"
 ---
 # <a name="pull-settings-to-app-configuration-with-azure-pipelines"></a>Azure Pipelines ile uygulama yapılandırmasına yönelik çekme ayarları
 
 [Azure uygulama yapılandırma](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task) görevi, uygulama yapılandırma deponuzdan anahtar değerlerini çeker ve bunları sonraki görevler tarafından tüketilen Azure işlem hattı değişkenleri olarak ayarlar. Bu görev, anahtar değerlerini bir yapılandırma dosyasından uygulama yapılandırma deponuza ileten [Azure uygulama yapılandırma gönderim](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task-push) görevini tamamlar. Daha fazla bilgi için bkz. [Azure Pipelines ayarları uygulama yapılandırmasına gönderme](push-kv-devops-pipeline.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - Uygulama yapılandırma deposu- [Azure Portal](https://portal.azure.com)ücretsiz olarak bir tane oluşturun.
@@ -27,7 +27,7 @@ ms.locfileid: "96182657"
 
 ## <a name="create-a-service-connection"></a>Hizmet bağlantısı oluşturma
 
-Bir hizmet bağlantısı Azure DevOps projenizden Azure aboneliğinizdeki kaynaklara erişmenizi sağlar.
+Bir [hizmet bağlantısı](/azure/devops/pipelines/library/service-endpoints) Azure DevOps projenizden Azure aboneliğinizdeki kaynaklara erişmenizi sağlar.
 
 1. Azure DevOps 'da, hedef işlem hattınızı içeren projeye gidin ve sol alttaki **Proje ayarlarını** açın.
 1. İşlem **hatları** altında **hizmet bağlantıları**' nı seçin.

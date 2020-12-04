@@ -7,18 +7,18 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: lcozzens
-ms.openlocfilehash: 936be917d5b494c9d71386440c711ef6c29ffb45
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7c0f886f23bc24eeed54043e9a7ee5fb1f645172
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183507"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572516"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Ayarları Azure Pipelines ile uygulama yapılandırmasına gönderme
 
 [Azure uygulama yapılandırma gönderim](https://marketplace.visualstudio.com/items?itemName=AzureAppConfiguration.azure-app-configuration-task-push) görevi, anahtar değerlerini bir yapılandırma dosyasından uygulama yapılandırma deponuza gönderir. Bu görev, artık uygulama yapılandırma deposundaki ayarları ve uygulama yapılandırma deposuna gönderme ayarlarını çektiğinizde, işlem hattı içinde tam daire işlevlerini sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 - Uygulama yapılandırma kaynağı- [Azure Portal](https://portal.azure.com)ücretsiz olarak bir tane oluşturun.
@@ -27,7 +27,7 @@ ms.locfileid: "96183507"
 
 ## <a name="create-a-service-connection"></a>Hizmet bağlantısı oluşturma
 
-Bir hizmet bağlantısı Azure DevOps projenizden Azure aboneliğinizdeki kaynaklara erişmenizi sağlar.
+Bir [hizmet bağlantısı](/azure/devops/pipelines/library/service-endpoints) Azure DevOps projenizden Azure aboneliğinizdeki kaynaklara erişmenizi sağlar.
 
 1. Azure DevOps 'da, hedef işlem hattınızı içeren projeye gidin ve sol alttaki **Proje ayarlarını** açın.
 1. İşlem **hatları** altında **hizmet bağlantıları** ' nı seçin ve sağ üst köşedeki **yeni hizmet bağlantısı** ' nı seçin.

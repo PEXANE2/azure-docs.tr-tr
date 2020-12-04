@@ -1,17 +1,15 @@
 ---
 title: Aktör tabanlı Azure Service Fabric aktörleri içindeki olaylar
 description: Aktör ve istemci arasında iletişim kurmanın etkili bir yolu olan Service Fabric Reliable Actors olayları hakkında bilgi edinin.
-author: vturecek
 ms.topic: conceptual
 ms.date: 10/06/2017
-ms.author: amanbha
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f5634a33dccb06437f2e5f095e7880221dba9d6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 591e3539715ba0873e44f56a93d05df6552bb1ef
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89007919"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571377"
 ---
 # <a name="actor-events"></a>Aktör olayları
 Aktör olayları, aktörden istemcilere en iyi çaba bildirimleri göndermenin bir yolunu sağlar. Aktör olayları, aktörden istemciye iletişim için tasarlanmıştır ve aktör ile aktör arasındaki iletişim için kullanılmamalıdır.

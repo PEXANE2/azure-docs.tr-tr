@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: 9f36502eb464f051cd50b51245db69fa76daa915
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 12/03/2020
+ms.openlocfilehash: 79ba186351cc145e012658abc30572e99b123dbb
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499552"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573995"
 ---
-# <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Kısmi terim arama ve özel karakterlerle desenler (joker karakter, Regex, desenler)
+# <a name="partial-term-search-and-patterns-with-special-characters-hyphens-wildcard-regex-patterns"></a>Kısmi terim arama ve özel karakterlerle desenler (tireler, joker karakter, Regex, desenler)
 
-*Kısmi bir terim arama* , dönem parçalarından oluşan sorguları ifade eder; burada, tam bir dönem yerine yalnızca başlangıç, orta veya terim (ön ek, ınfıx veya sonek sorguları olarak adlandırılır) olabilir. Kısmi bir terim arama, genellikle, sorgu dizesinin parçası olan tireler veya eğik çizgiler gibi özel karakterler içeren parçaların bir birleşimini içerebilir. Yaygın kullanım durumları, telefon numarası, URL, kod veya hecelenmiş Birleşik sözcüklerin parçalarını içerir.
+*Kısmi bir terim arama* , dönem parçalarından oluşan sorguları ifade eder; burada, tam bir dönem yerine yalnızca başlangıç, orta veya terim (ön ek, ınfıx veya sonek sorguları olarak adlandırılır) olabilir. Kısmi bir terim arama, genellikle kısa çizgi, kısa çizgi veya sorgu dizesinin parçası olan eğik çizgi gibi özel karakterler içeren parçaların bir birleşimini içerebilir. Yaygın kullanım durumları, telefon numarası, URL, kod veya hecelenmiş Birleşik sözcüklerin parçalarını içerir.
 
 Dizinin beklenen biçimde belirteçleri yoksa, özel karakterler içeren kısmi terim arama ve sorgu dizeleri sorunlu olabilir. Dizin oluşturma işleminin (varsayılan standart çözümleyicisini varsayarak) [sözcük analizi aşamasında](search-lucene-query-architecture.md#stage-2-lexical-analysis) , özel karakterler atılır, bileşik sözcükler bölünür ve boşluk silinir; tümü, hiçbir eşleşme bulunamadığında sorguların başarısız olmasına neden olabilir. Örneğin, (yani,,,,) gibi bir telefon numarası, `+1 (425) 703-6214` `"1"` `"425"` `"703"` `"6214"` `"3-62"` içerik gerçekten dizinde bulunmadığından bir sorguda gösterilmez. 
 
@@ -26,7 +26,7 @@ Dizinin beklenen biçimde belirteçleri yoksa, özel karakterler içeren kısmi 
 > [!TIP]
 > Postman ve REST API 'Leri hakkında bilgi sahibiyseniz, bu makalede açıklanan kısmi terimleri ve özel karakterleri sorgulamak için [sorgu örnekleri koleksiyonunu indirin](https://github.com/Azure-Samples/azure-search-postman-samples/) .
 
-## <a name="what-is-partial-term-search-in-azure-cognitive-search"></a>Azure Bilişsel Arama kısmi terim araması nedir?
+## <a name="about-partial-term-search"></a>Kısmi terim arama hakkında
 
 Azure Bilişsel Arama, dizinde simgeleştirilmiş terimlerin tamamını tarar ve joker karakter yer tutucusu işleçlerini ( `*` ve `?` ) eklemediğiniz veya sorguyu normal bir ifade olarak biçimlendirmediğiniz sürece kısmi bir dönemde eşleşme bulmayacaktır. Kısmi terimler şu teknikler kullanılarak belirtilir:
 
@@ -45,15 +45,15 @@ Kısmi terim veya kalıp arama için ve benzer arama gibi diğer birkaç sorgu f
 
 Parçalar veya desenler ya da özel karakterler üzerinde arama yapmanız gerektiğinde, varsayılan çözümleyici 'yi daha basit simgeleştirme kuralları altında çalışan özel bir çözümleyici ile geçersiz kılabilirsiniz, bu da tüm dizeyi dizinde tutarak. Bir adım geri alınarak yaklaşım şuna benzer:
 
-+ Dizenin bozulmadan bir sürümünü depolamak için bir alan tanımlayın (sorgu sırasında çözümlenmeyen ve çözümlenmemiş metni istediğiniz varsayılarak)
-+ Belirteçleri doğru ayrıntı düzeyi düzeyine yayan çeşitli çözümleyiciler arasından değerlendirin ve seçin
-+ Çözümleyici 'yi alana atama
-+ Dizin oluşturma ve test etme
+1. Dizenin bozulmadan bir sürümünü depolamak için bir alan tanımlayın (sorgu sırasında çözümlenmeyen ve çözümlenmemiş metni istediğiniz varsayılarak)
+1. Belirteçleri doğru ayrıntı düzeyi düzeyine yayan çeşitli çözümleyiciler arasından değerlendirin ve seçin
+1. Çözümleyici 'yi alana atama
+1. Dizin oluşturma ve test etme
 
 > [!TIP]
 > Çözümleyiciler değerlendirmek, sık sık dizin yeniden oluşturma gerektiren yinelemeli bir işlemdir. Bu adımı Postman, [Dizin oluşturma](/rest/api/searchservice/create-index), [Dizin silme](/rest/api/searchservice/delete-index),[belge yükleme](/rest/api/searchservice/addupdate-or-delete-documents)ve [belge arama](/rest/api/searchservice/search-documents)için REST API 'leri kullanarak daha kolay hale getirebilirsiniz. Yükleme belgeleri için, istek gövdesi test etmek istediğiniz küçük bir temsili veri kümesi (örneğin, telefon numarası veya ürün kodu içeren bir alan) içermelidir. Aynı Postman koleksiyonundaki bu API 'lerle, bu adımları hızla geçebilirsiniz.
 
-## <a name="duplicate-fields-for-different-scenarios"></a>Farklı senaryolar için yinelenen alanlar
+## <a name="1---create-a-dedicated-field"></a>1-adanmış alan oluşturma
 
 Çözümleyiciler, koşulların bir dizinde nasıl simgeleştirilmiş olduğunu tespit ediyor. Çözümleyiciler alan temelinde atandıklarından, farklı senaryolar için iyileştirmek üzere dizininizdeki alanları oluşturabilirsiniz. Örneğin, ilk ve ikinci üzerinde normal tam metin aramasını desteklemek için "featureCode" ve "featureCodeRegex" tanımlayabilir. Her bir alana atanan çözümleyiciler, her bir alanın içeriğinin dizin içinde nasıl simgeleştirilmiş olduğunu belirtir.  
 
@@ -74,7 +74,9 @@ Parçalar veya desenler ya da özel karakterler üzerinde arama yapmanız gerekt
 },
 ```
 
-## <a name="choose-an-analyzer"></a>Çözümleyici seçin
+<a name="set-an-analyzer"></a>
+
+## <a name="2---set-an-analyzer"></a>2-bir çözümleyici ayarlama
 
 Tam terim belirteçleri üreten bir çözümleyici seçerken, aşağıdaki çözümleyiciler yaygın seçimlerdir:
 
@@ -98,7 +100,7 @@ Birlikte çalışmak için doldurulmuş bir dizininiz olmalıdır. Var olan bir 
    }
     ```
 
-1. Metnin dizin içinde nasıl simgeleştirilmiş olduğunu görmek için yanıtı değerlendirin. Her bir terimin ne kadar küçük ve nasıl bölündüğü hakkında dikkat edin. Bu belgede yalnızca bu belirteçlerle eşleşen sorgular döndürülür. "10-veya" içeren bir sorgu başarısız olur.
+1. Metnin dizin içinde nasıl simgeleştirilmiş olduğunu görmek için yanıtı değerlendirin. Her bir terimin ne kadar küçük, kısa çizgilerden kaldırıldığı ve tek tek belirteçlere ayrılmış alt dizelerin olduğunu fark edin. Bu belgede yalnızca bu belirteçlerle eşleşen sorgular döndürülür. "10-veya" içeren bir sorgu başarısız olur.
 
     ```json
     {
@@ -152,7 +154,7 @@ Birlikte çalışmak için doldurulmuş bir dizininiz olmalıdır. Var olan bir 
 > [!Important]
 > Sorgunun, sorgu ağacını oluştururken bir arama ifadesinde genellikle küçük harf koşullarına duyarlı olduğunu unutmayın. Dizin oluşturma sırasında büyük/küçük harf metin girişi olmayan bir çözümleyici kullanıyorsanız ve beklenen sonuçları alamıyorsanız, bunun nedeni bu olabilir. Çözüm, aşağıdaki "özel Çözümleyicileri kullanma" bölümünde açıklandığı gibi küçük harfli bir belirteç filtresi eklemektir.
 
-## <a name="configure-an-analyzer"></a>Çözümleyici yapılandırma
+## <a name="3---configure-an-analyzer"></a>3-çözümleyici yapılandırma
  
 Çözümleyici 'yi değerlendiriyor veya belirli bir yapılandırma ile ileriye doğru hareket etmekle birlikte, alan tanımında Çözümleyicisi belirtmeniz ve bir yerleşik çözümleyici kullanmıyorsanız, büyük olasılıkla çözümleyici 'yi yapılandırmanız gerekir. Çözümleyiciler takas edildiğinde, genellikle dizini yeniden oluşturmanız gerekir (drop, yeniden oluştur ve yeniden yükle). 
 
@@ -216,7 +218,7 @@ Aşağıdaki örnek, Simgeleştirici ve küçük harfli bir belirteç filtresi a
 > [!NOTE]
 > `keyword_v2`Belirteç ayırıcı ve `lowercase` token filtresi, sistem tarafından bilinir ve varsayılan yapılandırmalarının kullanılması gerekir. bu nedenle, bunları önce tanımlamak zorunda kalmadan ada göre başvurabileceğiniz anlamına gelir.
 
-## <a name="build-and-test"></a>Derleme ve test etme
+## <a name="4---build-and-test"></a>4-derleme ve test
 
 Çözümleyicinizi destekleyen çözümleyiciler ve alan tanımlarına sahip bir dizin tanımladıktan sonra, kısmi dize sorgularını test edebilmeniz için temsili dizeleri olan belgeleri yükleyin. 
 
@@ -228,7 +230,7 @@ Aşağıdaki örnek, Simgeleştirici ve küçük harfli bir belirteç filtresi a
 
 + [Yükleme belgeleri](/rest/api/searchservice/addupdate-or-delete-documents) , dizininizdeki ve aranabilir içeriğin yanı sıra aynı yapıya sahip belgeleri içeri aktarır. Bu adımdan sonra, dizininiz sorgu veya test için hazırlanıyor.
 
-+ [Test Çözümleyicisi](/rest/api/searchservice/test-analyzer) , [bir çözümleyici seçin](#choose-an-analyzer)bölümünde tanıtılmıştır. Koşulların nasıl simgeleştirilmiş olduğunu anlamak için çeşitli çözümleyiciler kullanarak dizininizdeki dizelerin bazılarını test edin.
++ [Test Çözümleyicisi](/rest/api/searchservice/test-analyzer) , [bir çözümleyici ayarla](#set-an-analyzer)' da tanıtılmıştır. Koşulların nasıl simgeleştirilmiş olduğunu anlamak için çeşitli çözümleyiciler kullanarak dizininizdeki dizelerin bazılarını test edin.
 
 + [Arama belgeleri](/rest/api/searchservice/search-documents) , joker ve normal ifadeler için [basit söz dizimi](query-simple-syntax.md) veya [tam Lucene sözdizimini](query-lucene-syntax.md) kullanarak bir sorgu isteğinin nasıl oluşturulacağını açıklar.
 

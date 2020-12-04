@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric Explorer kullanarak kümenizi görselleştirme
 description: Service Fabric Explorer, bir Microsoft Azure Service Fabric kümesindeki bulut uygulamalarını ve düğümlerini incelemek ve yönetmek için bir uygulamadır.
-author: mikkelhegn
 ms.topic: conceptual
 ms.date: 01/24/2019
-ms.author: mikhegn
-ms.openlocfilehash: 5627aa614a7e2819b6f3cc1401c8458552e57219
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a45aff305f97610cb2660c2e3f4b4427b905d7d4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085182"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574064"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Service Fabric Explorer ile kümenizi görselleştirme
 
@@ -83,7 +81,7 @@ Düğüm görünümü, kümenin fiziksel düzenini gösterir. Belirli bir düğ�
 ## <a name="actions"></a>Eylemler
 Service Fabric Explorer, kümenizin içindeki düğümlerde, uygulamalarda ve hizmetlerde eylemler çağırma için hızlı bir yol sunar.
 
-Örneğin, bir uygulama örneğini silmek için soldaki ağaçtan **uygulamayı seçin ve** ardından  >  **uygulama Sil** ' i seçin.
+Örneğin, bir uygulama örneğini silmek için soldaki ağaçtan **uygulamayı seçin ve** ardından  >  **uygulama Sil**' i seçin.
 
 ![Service Fabric Explorer bir uygulamayı silme][sfx-delete-application]
 

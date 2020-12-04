@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 07/17/2020
 ms.author: thomasge
-ms.openlocfilehash: 1f8cb98ea36fdad9a67eca26c6fbea7ede1f811a
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 96a1eebbdcbf269b06d2ece77987ce7813f1d5f5
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94627889"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571071"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Azure Kubernetes hizmetinde Yönetilen kimlikler kullanma
 
@@ -36,7 +36,7 @@ Aşağıdaki kaynağın yüklü olması gerekir:
 
 AKS, yerleşik hizmetler ve eklentiler için birkaç yönetilen kimlik kullanır.
 
-| Kimlik                       | Name    | Kullanım örneği | Varsayılan izinler | Kendi kimliğinizi getir
+| Kimlik                       | Ad    | Kullanım örneği | Varsayılan izinler | Kendi kimliğinizi getir
 |----------------------------|-----------|----------|
 | Kontrol düzlemi | görünür değil | Inks yük dengeleyiciler ve AKS yönetilen genel IP 'Ler dahil olmak üzere yönetilen ağ kaynakları için AKS tarafından kullanılır | Düğüm kaynak grubu için katkıda bulunan rolü | Önizleme
 | Kubelet | AKS küme adı-agentpool | Azure Container Registry (ACR) ile kimlik doğrulaması | NA (Kubernetes v 1.15 + için) | Şu anda desteklenmiyor
@@ -105,23 +105,35 @@ Son olarak, kümeye erişmek için kimlik bilgilerini alın:
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
 ```
-## <a name="update-an-existing-service-principal-based-aks-cluster-to-managed-identities"></a>Mevcut bir hizmet sorumlusu tabanlı AKS kümesini yönetilen kimliklere güncelleştirme
+## <a name="update-an-aks-cluster-to-managed-identities-preview"></a>AKS kümesini yönetilen kimliklere güncelleştirme (Önizleme)
 
-Artık aşağıdaki CLı komutlarını kullanarak bir AKS kümesini yönetilen kimliklerle güncelleştirebilirsiniz.
+Aşağıdaki CLı komutlarını kullanarak, şu anda hizmet sorumluları ile çalışan bir AKS kümesini yönetilen kimliklerle çalışacak şekilde güncelleştirebilirsiniz.
 
-İlk olarak, sistem tarafından atanan kimliği güncelleştirin:
+İlk olarak, sistem tarafından atanan kimlik için özellik bayrağını kaydedin:
+
+```azurecli-interactive
+az feature register --namespace Microsoft.ContainerService -n MigrateToMSIClusterPreview
+```
+
+Sistem tarafından atanan kimliği güncelleştirin:
 
 ```azurecli-interactive
 az aks update -g <RGName> -n <AKSName> --enable-managed-identity
 ```
 
-Ardından, Kullanıcı tarafından atanan kimliği güncelleştirin:
+Kullanıcı tarafından atanan kimliği güncelleştirin:
+
+```azurecli-interactive
+az feature register --namespace Microsoft.ContainerService -n UserAssignedIdentityPreview
+```
+
+Kullanıcı tarafından atanan kimliği güncelleştirin:
 
 ```azurecli-interactive
 az aks update -g <RGName> -n <AKSName> --enable-managed-identity --assign-identity <UserAssignedIdentityResourceID> 
 ```
 > [!NOTE]
-> Sisteme atanan veya Kullanıcı tarafından atanan kimlikler yönetilen kimliğe güncelleştirildikten sonra, `az nodepool upgrade --node-image-only` yönetilen kimlik güncelleştirmesini tamamlamak için düğümlerinizde bir oluşturma işlemi gerçekleştirin.
+> Sistem tarafından atanan veya Kullanıcı tarafından atanan kimlikler yönetilen kimliğe güncelleştirildikten sonra, `az nodepool upgrade --node-image-only` yönetilen kimlik güncelleştirmesini tamamlamak için düğümlerinizde bir oluşturma işlemi gerçekleştirin.
 
 ## <a name="bring-your-own-control-plane-mi-preview"></a>Kendi denetim düzlemi 'ni getir MI (Önizleme)
 Özel denetim düzlemi kimliği, küme oluşturma işleminden önce mevcut kimliğe erişim izni verilmesini sağlar. Bu, yönetilen bir kimlikle özel VNET veya outboundType of UDR kullanma gibi senaryolara izin vermez.

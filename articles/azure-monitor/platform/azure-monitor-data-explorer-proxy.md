@@ -7,12 +7,12 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: 8884fd56cfc1e18a0a358d6902f7f8bcbfc1f5d3
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 5cb2f7b3b07c20e09d61e97412bc35f03b15cb3b
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/03/2020
-ms.locfileid: "96553886"
+ms.locfileid: "96572159"
 ---
 # <a name="cross-resource-query-azure-data-explorer-using-azure-monitor"></a>Azure Izleyici kullanarak Azure Veri Gezgini çapraz kaynak sorgulama
 Azure Izleyici, Azure Veri Gezgini, [Application Insights (AI)](/azure/azure-monitor/app/app-insights-overview)ve [Log Analytics (La)](/azure/azure-monitor/platform/data-platform-logs)arasında çapraz hizmet sorgularını destekler. Daha sonra, Log Analytics/Application Insights araçlarını kullanarak Azure Veri Gezgini kümenizi sorgulayabilir ve bir çapraz hizmet sorgusunda buna başvurabilirsiniz. Makalesinde, bir çapraz hizmet sorgusunun nasıl yapılacağı gösterilir.
@@ -20,7 +20,7 @@ Azure Izleyici, Azure Veri Gezgini, [Application Insights (AI)](/azure/azure-mon
 Azure Izleyici çapraz hizmet akışı: :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-monitor-data-explorer-flow.png" alt-text="Azure izleyici ve azure Veri Gezgini çapraz hizmet akışı.":::
 
 >[!NOTE]
->* Azure Izleyici ara sunucusu özel önizlemede, Allowlist gereklidir.
+>* Azure Izleyici çapraz hizmet sorgusu özel önizleme aşamasındadır-Allowlist gereklidir.
 >* Herhangi bir soru ile [hizmet ekibine](mailto:ADXProxy@microsoft.com) başvurun.
 ## <a name="cross-query-your-log-analytics-or-application-insights-resources-and-azure-data-explorer"></a>Log Analytics veya Application Insights kaynaklarınızı ve Azure Veri Gezgini çapraz sorgulama
 
@@ -66,9 +66,3 @@ Kusto Explorer, Kullanıcı hesabının ilk ait olduğu kiracıya otomatik olara
 * [Sorgu yazma](https://docs.microsoft.com/azure/data-explorer/write-queries)
 * [Azure Veri Gezgini kullanarak Azure Izleyici 'de verileri sorgulama](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)
 * [Azure Izleyici 'de çapraz kaynak günlük sorguları gerçekleştirme](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query)
-
-
-
-
-
-

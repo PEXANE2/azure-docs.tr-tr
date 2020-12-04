@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 8/07/2020
-ms.openlocfilehash: 4179b06759802025f97bd32a355b788c96c9eddb
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: a32491453812d74d4bd93f3f97b7e6a32036f65f
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123329"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573383"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure Stream Analytics Önizleme özellikleri
 
@@ -22,7 +22,7 @@ Bu makale, şu anda Azure Stream Analytics için Önizlemedeki tüm özellikleri
 
 Aşağıdaki özellikler genel önizlemede. Günümüzde bu özelliklerden faydalanabilirsiniz, ancak bunları üretim ortamınızda kullanmayın.
 
-### <a name="authenticate-to-sql-database-output-with-managed-identities"></a>Yönetilen kimlikler ile SQL veritabanı çıktısına kimlik doğrulama
+### <a name="authenticate-to-sql-database-output-with-managed-identities-preview"></a>Yönetilen kimlikler ile SQL veritabanı çıktısına kimlik doğrulama (Önizleme)
 
 Azure Stream Analytics, Azure SQL veritabanı çıkış havuzları için [yönetilen kimlik kimlik doğrulamasını](../active-directory/managed-identities-azure-resources/overview.md) destekler. Yönetilen kimlikler, Kullanıcı tabanlı kimlik doğrulama yöntemlerinin, parola değişiklikleri nedeniyle yeniden kimlik doğrulaması ihtiyacı gibi sınırlamaları ortadan kaldırır. 
 

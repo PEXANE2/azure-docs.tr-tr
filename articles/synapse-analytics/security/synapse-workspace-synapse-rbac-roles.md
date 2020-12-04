@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: bae214fb8eff9747bf3f79323d8eb9ce1cb6cdb7
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: a978113265e5e61c0fc09ef0daeb1da9826f294d
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531607"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572805"
 ---
 # <a name="synapse-rbac-roles"></a>SYNAPSE RBAC rolleri
 
@@ -28,7 +28,7 @@ Makalede yerleşik SYNAPSE RBAC rolleri, izin verdiğiniz izinler ve kullanılab
 - **Yeni alt düzey kapsamlar** birkaç rol için tanıtılmıştır.  Bu kapsamlar, rollerin belirli kaynaklarla veya nesnelerle sınırlı olmasını sağlar.
 
 >[!Note]
->- **Yeni roller ve alt düzey kapsamlar Şu anda önizlemededir**.  Bu yeni rolleri ve kapsamları kullanmanız önerilir. Bu roller, tam olarak desteklenir ve kullanımları hakkında geri bildirim sağlar.
+>**Yeni SYNAPSE RBAC rolleri ve alt düzey kapsamları Şu anda önizleme** aşamasındadır.  Bu yeni rolleri ve kapsamları kullanmanız önerilir. Bu roller, tam olarak desteklenir ve kullanımları hakkında geri bildirim sağlar.
 
 ## <a name="built-in-synapse-rbac-roles-and-scopes"></a>Yerleşik SYNAPSE RBAC rolleri ve kapsamları
 

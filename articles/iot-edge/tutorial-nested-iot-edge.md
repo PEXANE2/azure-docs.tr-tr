@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 28b34ecaf51406b35c67d3838714691390f5adf7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2f59feb83149042781b624aeb0df73fe3ab32587
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453049"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574233"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>Öğretici: IoT Edge cihazları hiyerarşisi oluşturma (Önizleme)
 
@@ -53,7 +53,7 @@ IoT Edge cihazlarının bir hiyerarşisini oluşturmak için şunlar gerekir:
 * IoT Edge cihaz olarak yapılandırılacak iki Linux cihaz. Kullanılabilir cihazlar yoksa, [Azure sanal makinelerini](../virtual-machines/linux/index.yml)kullanabilirsiniz.
 * Geçerli aboneliği olan bir Azure hesabı. [Azure aboneliğiniz](../guides/developer/azure-developer-guide.md#understanding-accounts-subscriptions-and-billing) yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 * Azure 'da ücretsiz veya standart bir katman [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) .
-* Azure CLı v 2.3.1, Azure IoT uzantısı v 0.10.6 veya üzeri yüklü. Bu öğretici [Azure Cloud Shell](../cloud-shell/overview.md)kullanır. Azure Cloud Shell hakkında bilgi sahibi değilseniz, [Ayrıntılar için hızlı başlangıç ' a bakın](./quickstart-linux.md#use-azure-cloud-shell).
+* Azure CLı v 2.3.1, Azure IoT uzantısı v 0.10.6 veya üzeri yüklü. Bu öğretici [Azure Cloud Shell](../cloud-shell/overview.md)kullanır. Azure Cloud Shell hakkında bilgi sahibi değilseniz, [Ayrıntılar için hızlı başlangıç ' a bakın](./quickstart-linux.md#prerequisites).
 
 Ayrıca, bir fabrika ortamının benzetimini yapmak için Azure sanal makinelerini önceden yapılandırılmış cihazlar olarak dağıtan [endüstriyel IoT örneği için](https://aka.ms/iotedge-nested-sample)komut dosyalı Azure IoT Edge ' yi izleyerek bu senaryoyu deneyebilirsiniz.
 

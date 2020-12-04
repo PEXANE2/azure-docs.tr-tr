@@ -10,12 +10,12 @@ ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 09/22/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 43b03abb2aac13358a2187a0a5dc570c1e45934e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c612e2a95e2596b2732ed8282037c8ded908a0a0
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458494"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571394"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Derin öğrenme ile Machine Learning Azure Machine Learning
 
@@ -93,8 +93,6 @@ Derin öğrenme yöntemlerine dayalı metin analizi, büyük miktarlarda metin v
 
 Şirketler, kamu yönetmelikleriyle Insider ticareti ve uyumluluğu algılamak üzere metin analizi gerçekleştirmek için derin öğrenme kullanır. Daha yaygın bir örnek sigorta dolandırıcılığı örneğidir: metin analizi, genellikle bir sigorta talebinin sahtekarlık olasılığını tanımak üzere büyük miktarda belgeyi çözümlemek için kullanılır. 
 
-Azure Machine Learning ' de bir TensorFlow modelinin nasıl kullanılacağını öğrenin: [bir TensorFlow modeli kullanarak el ile yazılmış rakamları sınıflandırın](./how-to-train-tensorflow.md?WT.mc_id=docs-article-lazzeri)
-
 ## <a name="artificial-neural-networks"></a>Yapay sinir ağları
 
 Yapay sinir ağları bağlı düğümlerin katmanlarına göre biçimlendirilir. Derin öğrenme modelleri, çok sayıda katmana sahip sinir ağlarını kullanır. 
@@ -107,7 +105,7 @@ Feedforward sinir Network, yapay sinir Network 'ün en basit türüdür. Bir fee
 
 ### <a name="recurrent-neural-network"></a>Yinelenen sinir ağı
 
-Yinelenen sinir Networks, yaygın olarak kullanılan yapay bir sinir ağı. Bu ağlar bir katmanın çıkışını kaydeder ve katmanın sonucunun tahmin edilmesine yardımcı olması için giriş katmanına geri akışı sağlar. Yinelenen sinir ağlarında harika öğrenme becerileri vardır. Zaman serisi tahmini, el yazısı öğrenme ve dili tanıma gibi karmaşık görevler için yaygın olarak kullanılır.
+Yinelenen sinir Networks, yaygın olarak kullanılan yapay bir sinir ağı. Bu ağlar bir katmanın çıkışını kaydeder ve katmanın sonucunun tahmin edilmesine yardımcı olması için giriş katmanına geri akışı sağlar. Yinelenen sinir ağlarında harika öğrenme becerileri vardır. Zaman serisi tahmin, öğrenme el yazısı ve dil tanıma gibi karmaşık görevler için yaygın olarak kullanılır.
 
 ### <a name="convolutional-neural-networks"></a>Evsel sinir ağları
 
@@ -118,6 +116,9 @@ Video tanıma, görüntü tanıma ve öneren sistemleri gibi alanlarda, evsel si
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Aşağıdaki makalelerde [Azure Machine Learning](./index.yml?WT.mc_id=docs-article-lazzeri)içindeki açık kaynaklı derin öğrenme modellerini kullanmaya yönelik daha fazla seçenek gösterilmektedir:
+
+
+- [Bir TensorFlow modeli kullanarak el ile yazılmış rakamları sınıflandırın](./how-to-train-tensorflow.md?WT.mc_id=docs-article-lazzeri) 
 
 - [Bir TensorFlow tahmin aracı ve keras kullanarak el ile yazılmış rakamları sınıflandır](./how-to-train-keras.md?WT.mc_id=docs-article-lazzeri)
 

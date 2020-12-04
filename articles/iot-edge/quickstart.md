@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 5f6d768e3d863d52cfc91beb799d86fcd854af16
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 791358fe6a9524e3275ed75ce34bdc86123f0ee0
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517640"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572363"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Hızlı başlangıç: ilk IoT Edge modülünüzü sanal bir Windows cihazına dağıtma
 
@@ -33,23 +33,23 @@ Bu hızlı başlangıç, bir Windows sanal makinesi oluşturma ve bunu IoT Edge 
 
 Etkin bir Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Bu hızlı başlangıçtaki adımların çoğunu gerçekleştirmek için Azure CLı 'yi kullanırsınız. Azure IoT, ek işlevselliği etkinleştirmek için bir uzantıya sahiptir.
-
-Cloud Shell örneğine Azure IoT uzantısını ekleyin.
-
-   ```azurecli-interactive
-   az extension add --name azure-iot
-   ```
-
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
+
+Ortamınızı Azure CLı için hazırlayın.
+
+- PowerShell ortamını kullanarak [Azure Cloud Shell](/azure/cloud-shell/quickstart-powershell) kullanın.
+
+   [![Ekli başlatma](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell’i başlatma")](https://shell.azure.com)   
+- Dilerseniz CLI başvuru komutlarını çalıştırmak için Azure CLI’yi [yükleyebilirsiniz](/cli/azure/install-azure-cli).
+   - Yerel yükleme kullanıyorsanız [az login](/cli/azure/reference-index#az-login) komutunu kullanarak Azure CLI ile oturum açın.  Kimlik doğrulama işlemini tamamlamak için terminalinizde görüntülenen adımları izleyin.  Ek oturum açma seçenekleri için bkz. [Azure CLI ile oturum açma](/cli/azure/authenticate-azure-cli).
+  - İstendiğinde, ilk kullanımda Azure CLI uzantılarını yükleyin.  Uzantılar hakkında daha fazla bilgi için bkz. [Azure CLI ile uzantıları kullanma](/cli/azure/azure-cli-extensions-overview).
+  - Yüklü sürümü ve bağımlı kitaplıkları bulmak için [az version](/cli/azure/reference-index?#az_version) komutunu çalıştırın. En son sürüme yükseltmek için [az upgrade](/cli/azure/reference-index?#az_upgrade) komutunu çalıştırın.
 
 Bulut kaynakları:
 
-* Bu hızlı başlangıçta kullandığınız tüm kaynakları yönetmek için kullanacağınız bir kaynak grubu.
+- Bu hızlı başlangıçta kullandığınız tüm kaynakları yönetmek için kullanacağınız bir kaynak grubu.
 
    ```azurecli-interactive
    az group create --name IoTEdgeResources --location westus2
@@ -57,7 +57,7 @@ Bulut kaynakları:
 
 IoT Edge cihazı:
 
-* IoT Edge cihazınız olarak görev yapacak bir Windows sanal makinesi. Bu sanal makineyi, güvenli bir parolayla değiştirerek aşağıdaki komutu kullanarak oluşturabilirsiniz `{password}` :
+- IoT Edge cihazınız olarak görev yapacak bir Windows sanal makinesi. Bu sanal makineyi, güvenli bir parolayla değiştirerek aşağıdaki komutu kullanarak oluşturabilirsiniz `{password}` :
 
   ```azurecli-interactive
   az vm create --resource-group IoTEdgeResources --name EdgeVM --image MicrosoftWindowsDesktop:Windows-10:rs5-pro:latest --admin-username azureuser --admin-password {password} --size Standard_DS1_v2
@@ -68,8 +68,8 @@ IoT Edge cihazı:
   Sanal makineniz başladıktan sonra, sanal makinenize bağlanırken kullanmak için bir RDP dosyası indirebilirsiniz:
 
   1. Azure portal yeni Windows sanal makinenize gidin.
-  1. **Bağlan** ’ı seçin.
-  1. **RDP** SEKMESINDE, **RDP dosyasını indir** ' i seçin.
+  1. **Bağlan**’ı seçin.
+  1. **RDP** SEKMESINDE, **RDP dosyasını indir**' i seçin.
 
   Komutuyla belirttiğiniz yönetici adı ve parolayı kullanarak Windows sanal makinenize bağlanmak için bu dosyayı Uzak Masaüstü Bağlantısı açın `az vm create` .
 
@@ -116,7 +116,7 @@ IoT Edge cihazlar sıradan IoT cihazlarından farklı şekilde yönetilemediğin
 2. Fiziksel cihazınızı IoT Hub içindeki kimliğiyle bağlayan cihazınız için bağlantı dizesini görüntüleyin. IoT Hub 'ınızın adını, cihazınızın adını ve iki arasındaki bağlantıların kimliğini doğrulayan paylaşılan bir anahtarı içerir.
 
    ```azurecli-interactive
-   az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name {hub_name}
+   az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name {hub_name}
    ```
 
 3. JSON çıktısındaki `connectionString` anahtarının değerini kopyalayıp kaydedin. Bu değer, cihaz bağlantı dizesidir. Bu bağlantı dizesini bir sonraki bölümde IoT Edge çalışma zamanını yapılandırmak için kullanacaksınız.

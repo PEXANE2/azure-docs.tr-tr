@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 9034757539a3dfd8b5e43e97ec518479da396456
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: d2d890db3c246ad7f3d0a56a3df264d5f78bd54d
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917554"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571139"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Ticari Market için SaaS teklifi planlaması
 
@@ -113,10 +113,10 @@ SaaS teklifiniz hem BT çözümü (Azure Marketi) hem *de* bir iş çözümü (a
 
 | Ölçülen faturalandırma | Ortak plan | Özel plan | Kullanılabilir: |
 |---|---|---|---|
-| Yes             | Yes         | Hayır           | Azure Marketi ve Azure portal |
-| Yes             | Yes         | Yes          | Azure Marketi ve Azure portal * |
-| Yes             | Hayır          | Yes          | Yalnızca Azure portal |
-| Hayır              | Hayır          | Yes          | Yalnızca Azure portal |
+| Evet             | Evet         | Hayır           | Azure Marketi ve Azure portal |
+| Evet             | Evet         | Evet          | Azure Marketi ve Azure portal * |
+| Evet             | Hayır          | Evet          | Yalnızca Azure portal |
+| Hayır              | Hayır          | Evet          | Yalnızca Azure portal |
 |||||
 
 &#42; teklifin özel planı yalnızca Azure portal ile kullanılabilir
@@ -150,7 +150,7 @@ Iş Ortağı Merkezi 'nde [Yeni bir SaaS teklifi oluşturduğunuzda](create-new-
 6. Gizlilik ilkesi
 7. Teklif adı
 8. Özet
-9. Description
+9. Açıklama
 10. Ekran görüntüleri/videolar
 11. Belgeler
 
@@ -202,7 +202,7 @@ Teklifinizi daha kolay bir şekilde oluşturmaya yardımcı olmak için bu öğe
   - . png dosyası
   - Bir resim yazısı içermelidir
 - **Medya-videolar** (isteğe bağlı): aşağıdaki gereksinimlere sahip en fazla dört video ekleyebilirsiniz, bu da teklifinizi gösterir:
-  - Name
+  - Ad
   - URL: yalnızca YouTube veya Vimeo 'da barındırılmalıdır.
   - Küçük resim: 1280 x 720. png dosyası
 
@@ -258,7 +258,7 @@ Microsoft tarafından desteklenen pazarlama ve satış kanallarını kabul edebi
 
 - **CSP 'ler aracılığıyla yeniden Satım**: Microsoft bulut çözüm SAĞLAYıCıLARıNıN (CSP) iş ortaklarının, çözümünüzü bir paketlenmiş teklifin parçası olarak yeniden satmasına izin vermek için bu seçeneği kullanın. Daha fazla bilgi için bkz. [bulut çözümü sağlayıcısı programı](cloud-solution-providers.md) .
 
-- **Microsoft Ile ortak satış**: Bu seçenek, Microsoft satış ekiplerinin, müşterilerinin IHTIYAÇLARıNı değerlendirirken IP ortak satış için uygun çözümünüzü kabul etmenize olanak tanır. Teklifinizi değerlendirme için hazırlama hakkında ayrıntılı bilgi edinmek için [Iş Ortağı Merkezi 'Nde ortak satış seçeneğine](./partner-center-portal/commercial-marketplace-co-sell.md) bakın.
+- **Microsoft Ile ortak satış**: Bu seçenek, Microsoft satış ekiplerinin, müşterilerinin IHTIYAÇLARıNı değerlendirirken IP ortak satış için uygun çözümünüzü kabul etmenize olanak tanır. Teklifinizi değerlendirme için hazırlama hakkında ayrıntılı bilgi edinmek için [Iş Ortağı Merkezi 'Nde ortak satış seçeneğine](commercial-marketplace-co-sell.md) bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

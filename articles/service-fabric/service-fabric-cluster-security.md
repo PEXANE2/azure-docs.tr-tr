@@ -3,13 +3,12 @@ title: Azure Service Fabric kümesinin güvenliğini sağlama
 description: Azure Service Fabric kümesi için güvenlik senaryoları ve bunları uygulamak için kullanabileceğiniz çeşitli teknolojiler hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 08/14/2018
-ms.custom: sfrev
-ms.openlocfilehash: 642356f08a946cae5d2b2d395aaddd8e4dad27ed
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 6f7bb785184938fe5c1e20e3c915b0112c7723ee
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682800"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573077"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric kümesi güvenlik senaryoları
 

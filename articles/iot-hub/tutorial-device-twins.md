@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-js
 - devx-track-azurecli
-ms.openlocfilehash: 74d5e5395853bcba20b2012e54dd8f9fea03afe6
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 9ec2c51f01d6b13f33bc2d537a8f73a6721967d4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748545"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572533"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -28,7 +28,7 @@ ms.locfileid: "92748545"
 
 Cihazlarınızdan telemetri almanın yanı sıra cihazlarınızı arka uç hizmetinizden yapılandırmak isteyebilirsiniz. Cihazlarınıza bir istenen yapılandırma gönderdiğinizde bu cihazlardan durum ve uyumluluk güncelleştirmeleri almak da isteyebilirsiniz. Örneğin, bir cihaz için hedef çalışma sıcaklığı aralığı ayarlayabilir veya cihazlarınızdan üretici yazılımı sürüm bilgileri toplayabilirsiniz.
 
-Bir cihaz ile IoT hub arasında durum bilgilerini eşitlemek için _cihaz ikizlerini_ kullanırsınız. [Cihaz ikizi](iot-hub-devguide-device-twins.md), belirli bir cihazla ilişkili olan ve IoT Hub tarafından bunları [sorgulayabileceğiniz](iot-hub-devguide-query-language.md) bulutta depolanan bir JSON belgesidir. Bir cihaz ikizi _istenen özellikleri_ , _bildirilen özellikleri_ ve _etiketleri_ içerir. İstenen özellikler arka uç uygulaması tarafından ayarlanır ve bir cihaz tarafından okunur. Bildirilen özellikler bir cihaz tarafından ayarlanır ve bir arka uç uygulaması tarafından okunur. Etiketler bir arka uç uygulaması tarafından oluşturulur ve asla bir cihaza gönderilmez. Cihazlarınızı düzenlemek için etiketleri kullanırsınız. Bu öğreticide istenen ve bildirilen özellikleri kullanarak durum bilgilerini nasıl eşitleyebileceğiniz gösterilmiştir:
+Bir cihaz ile IoT hub arasında durum bilgilerini eşitlemek için _cihaz ikizlerini_ kullanırsınız. [Cihaz ikizi](iot-hub-devguide-device-twins.md), belirli bir cihazla ilişkili olan ve IoT Hub tarafından bunları [sorgulayabileceğiniz](iot-hub-devguide-query-language.md) bulutta depolanan bir JSON belgesidir. Bir cihaz ikizi _istenen özellikleri_, _bildirilen özellikleri_ ve _etiketleri_ içerir. İstenen özellikler arka uç uygulaması tarafından ayarlanır ve bir cihaz tarafından okunur. Bildirilen özellikler bir cihaz tarafından ayarlanır ve bir arka uç uygulaması tarafından okunur. Etiketler bir arka uç uygulaması tarafından oluşturulur ve asla bir cihaza gönderilmez. Cihazlarınızı düzenlemek için etiketleri kullanırsınız. Bu öğreticide istenen ve bildirilen özellikleri kullanarak durum bilgilerini nasıl eşitleyebileceğiniz gösterilmiştir:
 
 ![İkiz özeti](media/tutorial-device-twins/DeviceTwins.png)
 
@@ -39,11 +39,9 @@ Bu öğreticide, aşağıdaki görevleri gerçekleştireceksiniz:
 > * Durum bilgilerini simülasyon cihazınıza göndermek için istenen özellikleri kullanın.
 > * Simülasyon cihazınızdan toplanan durum bilgilerini almak için bildirilen özellikleri kullanın.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 Bu hızlı başlangıçta çalıştırdığınız iki örnek uygulama, Node.js kullanılarak yazılır. Geliştirme makinenizde Node.js ile v10 arasındaki. x. x veya üzeri bir sürüm gerekir.
 
@@ -138,11 +136,11 @@ Aşağıdaki işleyici yalnızca **fanOn** istenen özelliğinde yapılan deği�
 
 Daha önce gösterilen örnek istenen özellikler JSON öğesinde **components** altındaki **climate** düğümü **minTemperature** ve **maxTemperature** şeklinde iki özellik içerir.
 
-Bir cihazın yerel **ikiz** nesnesi istenen ve bildirilen özelliklerin eksiksiz bir kümesini depolar. Arka uçtan gönderilen **delta** , istenen özelliklerin yalnızca bir alt kümesini güncelleştirebilir. Aşağıdaki kod parçacığında, simülasyon cihazı **minTemperature** ve **maxTemperature** özelliklerinden yalnızca biri için güncelleştirme alırsa cihazı yapılandırmak üzere diğer değer için yerel ikizdeki değeri kullanır:
+Bir cihazın yerel **ikiz** nesnesi istenen ve bildirilen özelliklerin eksiksiz bir kümesini depolar. Arka uçtan gönderilen **delta**, istenen özelliklerin yalnızca bir alt kümesini güncelleştirebilir. Aşağıdaki kod parçacığında, simülasyon cihazı **minTemperature** ve **maxTemperature** özelliklerinden yalnızca biri için güncelleştirme alırsa cihazı yapılandırmak üzere diğer değer için yerel ikizdeki değeri kullanır:
 
 [!code-javascript[Handle climate component](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/SimulatedDevice.js?name=climatecomponent&highlight=2 "Handle climate component")]
 
-Yerel **ikiz** nesnesi istenen ve bildirilen özellikleri eksiksiz bir kümesini depolar. Arka uçtan gönderilen **delta** , istenen özelliklerin yalnızca bir alt kümesini güncelleştirebilir.
+Yerel **ikiz** nesnesi istenen ve bildirilen özellikleri eksiksiz bir kümesini depolar. Arka uçtan gönderilen **delta**, istenen özelliklerin yalnızca bir alt kümesini güncelleştirebilir.
 
 ### <a name="handle-insert-update-and-delete-operations"></a>Ekleme, güncelleştirme ve silme işlemlerini işleme
 
@@ -252,7 +250,7 @@ Aşağıdaki ekran görüntüsünde, arka uç uygulamasından alınan çıkış 
 
 Sonraki öğreticiyi tamamlamayı planlıyorsanız, kaynak grubunu ve IoT hub’ı değiştirmeden bırakın ve sonra bunları yeniden kullanın.
 
-Artık gerekli değilse portaldan IoT hub’ı ve kaynak grubunu silin. Bunu yapmak için, IoT hub’ınızı içeren **tutorial-iot-hub-rg** kaynak grubunu seçin ve **Sil** ’e tıklayın.
+Artık gerekli değilse portaldan IoT hub’ı ve kaynak grubunu silin. Bunu yapmak için, IoT hub’ınızı içeren **tutorial-iot-hub-rg** kaynak grubunu seçin ve **Sil**’e tıklayın.
 
 Alternatif olarak, CLI kullanın:
 

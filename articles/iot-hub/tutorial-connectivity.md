@@ -16,12 +16,12 @@ ms.custom:
 ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: cf1c558474cfde85dd2c9ba8c85dc553fe5d9b56
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 1eead9bb93fe8b753ace518cde18b240ab1a3cd4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547512"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572686"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Öğretici: IoT hub’ınızla bağlantıyı test etmek için bir simülasyon cihazı kullanma
 
@@ -29,22 +29,14 @@ Bu öğreticide, cihaz bağlantısını test etmek için Azure IOT Hub'ı portal
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Cihazın kimlik doğrulamasını denetleme
 > * Cihazın bulut bağlantısını denetleme
 > * Bulut-cihaz bağlantısını denetleme
 > * Cihaz çift eşitlemesini denetleme
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-## <a name="prerequisites"></a>Önkoşullar
-
-Bu öğreticide çalıştırdığınız CLI betikleri [Azure CLI için Microsoft Azure IoT uzantısını](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) kullanır. Bu uzantıyı yüklemek için aşağıdaki CLI komutunu çalıştırın:
-
-```azurecli-interactive
-az extension add --name azure-iot
-```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
@@ -76,15 +68,15 @@ Portalda oturum açın ve IoT Hub'ınıza gidin. Ardından **IoT cihazları** ar
 
 ![IoT cihazları aracı](media/tutorial-connectivity/iot-devices-tool.png)
 
-Yeni bir cihaz kaydetmek için **+ Ekle** ’ye tıklayın, **Cihaz Kimliği** ’ni **MyTestDevice** olarak ayarlayın ve **Kaydet** ’e tıklayın:
+Yeni bir cihaz kaydetmek için **+ Ekle**’ye tıklayın, **Cihaz Kimliği**’ni **MyTestDevice** olarak ayarlayın ve **Kaydet**’e tıklayın:
 
 ![Yeni cihaz ekleme](media/tutorial-connectivity/add-device.png)
 
-**MyTestDevice** ’ın bağlantı dizesini almak için cihazlar listesinde ona tıklayın ve ardından **Bağlantı dizesi birincil anahtarı** değerini kopyalayın. Bağlantı dizesi cihaz için *paylaşılan erişim anahtarını* içerir.
+**MyTestDevice**’ın bağlantı dizesini almak için cihazlar listesinde ona tıklayın ve ardından **Bağlantı dizesi birincil anahtarı** değerini kopyalayın. Bağlantı dizesi cihaz için *paylaşılan erişim anahtarını* içerir.
 
 ![Cihaz bağlantı dizesini alma](media/tutorial-connectivity/copy-connection-string.png)
 
-**MyTestDevice** ’ın IoT hub'ınıza telemetri göndermesini denemek için daha önce indirdiğiniz Node.js simülasyon cihazı uygulamasını çalıştırın.
+**MyTestDevice**’ın IoT hub'ınıza telemetri göndermesini denemek için daha önce indirdiğiniz Node.js simülasyon cihazı uygulamasını çalıştırın.
 
 Geliştirme makinenizdeki terminal penceresinde, indirdiğiniz örnek Node.js projesinin kök klasörüne gidin. Ardından **iot-hub\Tutorials\ConnectivityTests** klasörüne gidin.
 
@@ -105,7 +97,7 @@ Hub'ınıza bağlanmaya çalışırken terminal penceresinde bilgiler gösterili
 
 Bu bölümde, cihaz anahtarını sıfırlar ve simülasyon cihazı bağlanmaya çalıştığında çıkan hatayı incelersiniz.
 
-**MyTestDevice** ’ın birincil cihaz anahtarını sıfırlamak için aşağıdaki komutları çalıştırın:
+**MyTestDevice**’ın birincil cihaz anahtarını sıfırlamak için aşağıdaki komutları çalıştırın:
 
 ```azurecli-interactive
 # Generate a new Base64 encoded key using the current date
@@ -228,7 +220,7 @@ Doğrudan yöntem çağrısı aldığında, simülasyon cihazı konsola bir ilet
 
 Simülasyon cihazı başarıyla doğrudan yöntem çağrısı aldığında, hub'a bir onay gönderir:
 
-![Doğrudan yöntem alındığı bildirimi](media/tutorial-connectivity/method-acknowledgement.png)
+![Doğrudan yöntem bildirimi al](media/tutorial-connectivity/method-acknowledgement.png)
 
 ## <a name="check-twin-synchronization"></a>Çift eşitlemeyi denetleme
 
@@ -266,11 +258,11 @@ Simülasyon cihazı, istenen özelliklerde yapılan değişiklikleri almanın ya
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse portaldan IoT hub’ı ve kaynak grubunu silin. Bunu yapmak için, IoT hub’ınızı içeren **tutorials-iot-hub-rg** kaynak grubunu seçin ve **Sil** ’e tıklayın.
+Artık gerekli değilse portaldan IoT hub’ı ve kaynak grubunu silin. Bunu yapmak için, IoT hub’ınızı içeren **tutorials-iot-hub-rg** kaynak grubunu seçin ve **Sil**’e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu öğreticide, cihaz anahtarlarınızı denetlemeyi, cihaz bulut bağlantısını denetlemeyi, bulut-cihaz bağlantısını denetlemeyi ve cihaz çift eşitlemesini denetlemeyi öğrendiniz. IoT hub'ınızı izleme hakkında daha fazla bilgi için IoT Hub izlemeye yönelik nasıl yapılır makalesini inceleyin.
 
 > [!div class="nextstepaction"]
-> [İzleyici IoT Hub](monitor-iot-hub.md)
+> [IoT Hub’ı izleme](monitor-iot-hub.md)
