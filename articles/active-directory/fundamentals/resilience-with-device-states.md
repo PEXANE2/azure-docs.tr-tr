@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4075cb71cb4dae7ac506c16e3987070cfa10bb09
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: faa334c21e23ecddad287846d34aaf0d72af66cc
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919854"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602193"
 ---
 # <a name="build-resilience-with-device-states"></a>Cihaz durumlarıyla esnekliği derleme
 
@@ -44,7 +44,7 @@ Bir bir uygulamaya erişim istemek için bir PRT kullanıldığında, cihazı, o
 
 * Kişisel veya şirkete ait iOS ve Android cihazlar için [Microsoft Authenticator uygulamasını](../user-help/user-help-auth-app-overview.md)dağıtın. Multi-Factor Authentication ve parola-Less oturum açma özelliklerine ek olarak, Microsoft Authenticator uygulaması, son kullanıcılar için daha az kimlik doğrulama istemiyle [aracılı kimlik doğrulama](../develop/brokered-auth.md) aracılığıyla yerel uygulama genelinde çoklu oturum açmayı etkinleştirecektir.
 
-* Kişisel veya şirkete ait iOS ve Android cihazlar için, daha az kimlik doğrulama istekleriyle şirket kaynaklarına güvenli bir şekilde erişmek üzere [mobil uygulama yönetimi](https://docs.microsoft.com/mem/intune/apps/app-management.md) 'ni kullanır. 
+* Kişisel veya şirkete ait iOS ve Android cihazlar için, daha az kimlik doğrulama istekleriyle şirket kaynaklarına güvenli bir şekilde erişmek üzere [mobil uygulama yönetimi](https://docs.microsoft.com/mem/intune/apps/app-management) 'ni kullanır. 
 
 * [Apple cihazları (Önizleme) Için Microsoft ENTERPRISE SSO eklentisini kullanın](../develop/apple-sso-plugin.md). Bu, cihazı kaydeder ve tarayıcı ve yerel Azure AD uygulamaları arasında SSO sağlar. 
 

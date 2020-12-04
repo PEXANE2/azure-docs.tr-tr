@@ -2,15 +2,15 @@
 title: Test araç seti için test çalışmaları
 description: ARM şablonu test araç seti tarafından çalıştırılan testleri açıklar.
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 12/03/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: dda8e92c17029126e7f473a6aee03acfc970e04b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff9ad659e15a88725e4c3905ab6c623fda7610fd
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89378126"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600913"
 ---
 # <a name="default-test-cases-for-arm-template-test-toolkit"></a>ARM şablonu test araç seti için varsayılan test çalışmaları
 
@@ -137,9 +137,11 @@ Aşağıdaki örnek bu testi **geçirir** .
 
 Test adı: **konum sabit kodlanmamalıdır**
 
-Şablonunuz için kullanılabilen bölgeler sınırlı olabilir. Kaynak konumunu olarak ayarladığınızda `"[resourceGroup().location]"` , kaynak grubu, diğer kullanıcıların erişebileceği bir bölgede oluşturulmuş olabilir. Bu kullanıcıların şablonu kullanmalarını engelledi.
+Şablonlarınız konum adlı bir parametreye sahip olmalıdır. Şablonunuzda kaynakların konumunu ayarlamak için bu parametreyi kullanın. Ana şablonda (azuredeploy.jsveya mainTemplate.json olarak adlandırılır), bu parametre varsayılan kaynak grubu konumu olarak belirtilebilir. Bağlantılı veya iç içe şablonlarda, konum parametresinin varsayılan bir konumu olmamalıdır.
 
-Her kaynak için konum tanımlarken, kaynak grubu konumuna varsayılan olarak bir parametre kullanın. Kullanıcılar bu parametreyi sunarak, uygun olduğunda varsayılan değeri kullanabilir, ancak farklı bir konum da belirtebilir.
+Şablonunuz için kullanılabilen bölgeler sınırlı olabilir. Kaynak konumunu sabit kodunuzda, kullanıcıların o bölgede bir kaynak oluşturması engellenebilir. Kaynak konumunu olarak ayarlamış olsanız bile kullanıcılar engellenebilir `"[resourceGroup().location]"` . Kaynak grubu, diğer kullanıcıların erişebileceği bir bölgede oluşturulmuş olabilir. Bu kullanıcıların şablonu kullanmalarını engelledi.
+
+Kaynak grubu konumuna varsayılan olarak bir konum parametresi sağlayarak, kullanıcılar uygun olduğunda varsayılan değeri kullanabilir, ancak farklı bir konum da belirtebilir.
 
 Kaynaktaki konum olarak ayarlandığı için aşağıdaki örnekte bu test **başarısız olur** `resourceGroup().location` .
 
@@ -195,7 +197,7 @@ Sonraki örnek bir konum parametresi kullanır, ancak location parametresi sabit
 }
 ```
 
-Bunun yerine, kaynak grubu konumuna varsayılan olarak bir parametre oluşturun, ancak kullanıcıların farklı bir değer sağlamasına izin verir. Aşağıdaki örnek bu testi **geçirir** .
+Bunun yerine, kaynak grubu konumuna varsayılan olarak bir parametre oluşturun, ancak kullanıcıların farklı bir değer sağlamasına izin verir. Aşağıdaki örnek, şablon ana şablon olarak kullanıldığında bu testi **geçirir** .
 
 ```json
 {
@@ -227,6 +229,8 @@ Bunun yerine, kaynak grubu konumuna varsayılan olarak bir parametre oluşturun,
     "outputs": {}
 }
 ```
+
+Ancak, yukarıdaki örnek bağlantılı bir şablon olarak kullanılıyorsa, test **başarısız olur**. Bağlı şablon olarak kullanıldığında, varsayılan değeri kaldırın.
 
 ## <a name="resources-should-have-location"></a>Kaynakların konumu olmalıdır
 

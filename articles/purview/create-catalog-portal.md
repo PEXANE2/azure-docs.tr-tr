@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 10/23/2020
-ms.openlocfilehash: 00b504c7bcf51a69d03fb1294de4f52ef35ed163
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: c9e0b155a4cf34373bb6d851241dc62ddd661045
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96555995"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602390"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal bir Azure purview hesabı oluşturun
 
@@ -21,11 +21,67 @@ ms.locfileid: "96555995"
 
 Bu hızlı başlangıçta bir Azure purview hesabı oluşturursunuz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 * Kendi [Azure Active Directory kiracınız](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant).
+
+* Hesabınız abonelikte kaynak oluşturma iznine sahip olmalıdır
+
+* Tüm uygulamaların **depolama hesabı** ve **EventHub ad alanı** oluşturmasını engelleyen **Azure Ilkeniz** varsa, bir purview hesabı oluşturma işlemi sırasında girilebilen Tag kullanarak ilke özel durumu yapmanız gerekir. Ana neden her bir purview hesabının oluşturulması, bir yönetilen kaynak grubu ve bu kaynak grubu, bir depolama hesabı ve bir EventHub ad alanı içinde oluşturulması gerekir.
+    1. Azure portal gidin ve **ilkeyi** arayın
+    1. Operator ve Tag ile iki özel durum eklemek için [özel ilke tanımı oluştur](https://docs.microsoft.com/azure/governance/policy/tutorials/create-custom-policy-definition) veya mevcut ilkeyi Değiştir ' i izleyin `not` `resourceBypass` :
+
+        ```json
+        {
+          "mode": "All",
+          "policyRule": {
+            "if": {
+              "anyOf": [
+              {
+                "allOf": [
+                {
+                  "field": "type",
+                  "equals": "Microsoft.Storage/storageAccounts"
+                },
+                {
+                  "not": {
+                    "field": "tags['<resourceBypass>']",
+                    "exists": true
+                  }
+                }]
+              },
+              {
+                "allOf": [
+                {
+                  "field": "type",
+                  "equals": "Microsoft.EventHub/namespaces"
+                },
+                {
+                  "not": {
+                    "field": "tags['<resourceBypass>']",
+                    "exists": true
+                  }
+                }]
+              }]
+            },
+            "then": {
+              "effect": "deny"
+            }
+          },
+          "parameters": {}
+        }
+        ```
+        
+        > [!Note]
+        > Etiketi yanında bir şey olabilir `resourceBypass` ve ilke etiketi algılayabildiği sürece ikinci adımlarda takip görünümü oluştururken değeri tanımlamanız gerekir.
+
+        :::image type="content" source="./media/create-catalog-portal/policy-definition.png" alt-text="İlke tanımının nasıl oluşturulacağını gösteren ekran görüntüsü.":::
+
+    1. Oluşturulan özel ilkeyi kullanarak [bir ilke ataması oluşturun](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal) .
+
+        [![İlke atamasının nasıl oluşturulacağını gösteren ekran görüntüsü](./media/create-catalog-portal/policy-assignment.png)](./media/create-catalog-portal/policy-assignment.png#lightbox)
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -61,9 +117,17 @@ Gerekirse, aboneliğinizi Azure purview 'ın aboneliğinizde çalışacak şekil
     1. Kataloğunuz için bir **purview hesabı adı** girin. Boşluklara ve simgelere izin verilmez.
     1. Bir  **konum** seçin ve ardından **İleri: yapılandırma**' yı seçin.
 1. **Yapılandırma** sekmesinde, istenen **Platform boyutunu** seçin-izin verilen değerler 4 Kapasite birimi (CU) ve 16 cu ' dır. **Sonraki: Etiketler**' i seçin.
-1. **Etiketler** sekmesinde, isteğe bağlı olarak bir veya daha fazla etiket ekleyebilirsiniz. Bu Etiketler, Azure purview değil yalnızca Azure portal kullanımı içindir.
+1. **Etiketler** sekmesinde, isteğe bağlı olarak bir veya daha fazla etiket ekleyebilirsiniz. Bu Etiketler, Azure purview değil yalnızca Azure portal kullanımı içindir. 
+
+    > [!Note] 
+    > **Azure ilkeniz** varsa ve **Önkoşullar**' da olduğu gibi özel durum eklemeniz gerekiyorsa, doğru etiketi eklemeniz gerekir. Örneğin, bir etiket `resourceBypass` : :::image type="content" source="./media/create-catalog-portal/add-purview-tag.png" alt-text="purview hesabına etiket"::: Ekle ' ye ekleyebilirsiniz.
+
 1. **& oluştur**' u seçin ve ardından **Oluştur**' u seçin. Oluşturma işleminin tamamlanmasında birkaç dakika sürer. Yeni oluşturulan Azure purview hesabı örneği, **purview hesapları** sayfasındaki listede görüntülenir.
 1. Yeni hesap sağlama tamamlandığında **Kaynağa Git**' i seçin.
+
+    > [!Note]
+    > Sağlama durumu ile başarısız olduysa `Conflict` , bu, **depolama hesabı** ve **EventHub ad alanı** oluşturmaktan bir Azure ilkesi engellediği anlamına gelir. Özel durumlar eklemek için **Önkoşul** adımlarını uygulamanız gerekir.
+    > :::image type="content" source="./media/create-catalog-portal/purview-conflict-error.png" alt-text="Takip görünümü çakışma hata iletisi":::
 
 1. **Sağlamayla hesabını Başlat**' ı seçin.
 

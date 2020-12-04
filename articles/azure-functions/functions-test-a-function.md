@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp, devx-track-js
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: ff64d5c17174f8e1e67111ebca9ccf050deb2f26
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 2488a476fe40c2bf1f3e290b462babceff30a9b0
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409663"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601399"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Azure İşlevleri'nde kodunuzu test etmeye yönelik stratejiler
 
@@ -28,7 +28,7 @@ Aşağıdaki içerik, farklı dilleri ve ortamları hedeflemek üzere iki farkl�
 
 ## <a name="c-in-visual-studio"></a>Visual Studio’da C#
 
-Aşağıdaki örnek, Visual Studio 'da C# işlev uygulamasının nasıl oluşturulduğunu ve [xUnit](https://xunit.github.io)ile nasıl çalıştırılacağını ve test edileceğini açıklar.
+Aşağıdaki örnek, Visual Studio 'da C# işlev uygulamasının nasıl oluşturulduğunu ve [xUnit](https://github.com/xunit/xunit)ile nasıl çalıştırılacağını ve test edileceğini açıklar.
 
 ![Visual Studio 'Da C# ile Azure Işlevlerini test etme](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
@@ -39,7 +39,7 @@ Ortamınızı ayarlamak için bir Işlev ve test uygulaması oluşturun. Aşağ�
 1. [Yeni bir işlevler uygulaması oluşturun](./functions-create-first-azure-function.md) ve **işlevleri** adlandırın
 2. [Şablondan BIR http Işlevi oluşturun](./functions-create-first-azure-function.md) ve **myhttptrigger** olarak adlandırın.
 3. [Şablondan bir Zamanlayıcı Işlevi oluşturun](./functions-create-scheduled-function.md) ve **mytimertrigger** olarak adlandırın.
-4. Çözümde [bir xUnit test uygulaması oluşturun](https://xunit.github.io/docs/getting-started-dotnet-core) ve bunu **Functions. Tests** olarak adlandırın.
+4. Çözümde [bir xUnit test uygulaması oluşturun](https://xunit.net/docs/getting-started/netcore/cmdline) ve bunu **Functions. Tests** olarak adlandırın.
 5. Test uygulamasından [Microsoft. AspNetCore. Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) 'ye bir başvuru eklemek için NuGet kullanın
 6. [*Functions*](/visualstudio/ide/managing-references-in-a-project?view=vs-2017) Functions *. Tests* uygulamasındaki Functions uygulamasına başvurun.
 
@@ -107,11 +107,11 @@ namespace Functions.Tests
 
 `ListLogger`Sınıfı, arabirimi tarafından anlaşmalı olarak aşağıdaki üyeleri uygular `ILogger` :
 
-- **BeginScope** : kapsamlar günlüğe kaydetme uygulamanıza bağlam ekler. Bu durumda, test, test işlevine izin vermek için yalnızca sınıftaki statik örneği işaret eder `NullScope` .
+- **BeginScope**: kapsamlar günlüğe kaydetme uygulamanıza bağlam ekler. Bu durumda, test, test işlevine izin vermek için yalnızca sınıftaki statik örneği işaret eder `NullScope` .
 
-- **IsEnabled** : varsayılan değeri `false` sağlanır.
+- **IsEnabled**: varsayılan değeri `false` sağlanır.
 
-- **GNLK** : Bu yöntem, `formatter` iletiyi biçimlendirmek için sağlanan işlevi kullanır ve sonra elde edilen metni `Logs` koleksiyona ekler.
+- **GNLK**: Bu yöntem, `formatter` iletiyi biçimlendirmek için sağlanan işlevi kullanır ve sonra elde edilen metni `Logs` koleksiyona ekler.
 
 `Logs`Koleksiyonu bir örneğidir `List<string>` ve oluşturucuda başlatılır.
 
@@ -193,13 +193,13 @@ namespace Functions.Tests
 
 `TestFactory`Sınıfı aşağıdaki üyeleri uygular:
 
-- **Veri** : Bu özellik, örnek verilerin bir [IEnumerable](/dotnet/api/system.collections.ienumerable) koleksiyonunu döndürür. Anahtar değer çiftleri bir sorgu dizesine geçirilen değerleri temsil eder.
+- **Veri**: Bu özellik, örnek verilerin bir [IEnumerable](/dotnet/api/system.collections.ienumerable) koleksiyonunu döndürür. Anahtar değer çiftleri bir sorgu dizesine geçirilen değerleri temsil eder.
 
-- **CreateDictionary** : Bu yöntem, anahtar/değer çiftini bağımsız değişken olarak kabul eder ve `Dictionary` `QueryCollection` sorgu dizesi değerlerini temsil etmek için oluşturmak üzere yeni bir değer döndürür.
+- **CreateDictionary**: Bu yöntem, anahtar/değer çiftini bağımsız değişken olarak kabul eder ve `Dictionary` `QueryCollection` sorgu dizesi değerlerini temsil etmek için oluşturmak üzere yeni bir değer döndürür.
 
-- **Createhttprequest** : Bu yöntem, belirtilen sorgu dizesi parametreleriyle BAŞLATıLAN bir http isteği oluşturur.
+- **Createhttprequest**: Bu yöntem, belirtilen sorgu dizesi parametreleriyle BAŞLATıLAN bir http isteği oluşturur.
 
-- **Creategünlükçü** : günlükçü türü temelinde, bu yöntem test için kullanılan bir günlükçü sınıfı döndürür. , `ListLogger` Testlerin değerlendirmesi için kullanılabilen günlüğe kaydedilen iletileri izler.
+- **Creategünlükçü**: günlükçü türü temelinde, bu yöntem test için kullanılan bir günlükçü sınıfı döndürür. , `ListLogger` Testlerin değerlendirmesi için kullanılabilen günlüğe kaydedilen iletileri izler.
 
 Son olarak, Işlevlerde yeni bir sınıf oluşturun. **FunctionsTests.cs** adlı projeyi *sınar* ve aşağıdaki kodu girin:
 
@@ -245,23 +245,23 @@ namespace Functions.Tests
 
 Bu sınıfta uygulanan Üyeler şunlardır:
 
-- **Http_trigger_should_return_known_string** : Bu test bir http işlevine sorgu dizesi değerleriyle bir istek oluşturur `name=Bill` ve beklenen yanıtın döndürülüp döndürülmediğini denetler.
+- **Http_trigger_should_return_known_string**: Bu test bir http işlevine sorgu dizesi değerleriyle bir istek oluşturur `name=Bill` ve beklenen yanıtın döndürülüp döndürülmediğini denetler.
 
-- **Http_trigger_should_return_string_from_member_data** : Bu test, http işlevine örnek veriler sağlamak Için xUnit özniteliklerini kullanır.
+- **Http_trigger_should_return_string_from_member_data**: Bu test, http işlevine örnek veriler sağlamak Için xUnit özniteliklerini kullanır.
 
-- **Timer_should_log_message** : Bu test bir örneği oluşturur `ListLogger` ve bunu bir Zamanlayıcı işlevlerine geçirir. İşlev çalıştırıldığında, beklenen iletinin mevcut olduğundan emin olmak için günlük denetlenir.
+- **Timer_should_log_message**: Bu test bir örneği oluşturur `ListLogger` ve bunu bir Zamanlayıcı işlevlerine geçirir. İşlev çalıştırıldığında, beklenen iletinin mevcut olduğundan emin olmak için günlük denetlenir.
 
 Testlerinizde uygulama ayarlarına erişmek istiyorsanız, [inject](./functions-dotnet-dependency-injection.md) `IConfiguration` işlevinizdeki moclenmiş ortam değişkeni değerlerini içeren bir örnek ekleyebilirsiniz.
 
 ### <a name="run-tests"></a>Testleri çalıştırma
 
-Testleri çalıştırmak için **Test Gezgini** ' ne gidin ve **Tümünü Çalıştır** ' a tıklayın.
+Testleri çalıştırmak için **Test Gezgini** ' ne gidin ve **Tümünü Çalıştır**' a tıklayın.
 
 ![Visual Studio 'Da C# ile Azure Işlevlerini test etme](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
 ### <a name="debug-tests"></a>Hata ayıklama testleri
 
-Testlerde hata ayıklamak için bir test üzerine bir kesme noktası ayarlayın, **Test Gezgini** 'ne gidin ve **son çalıştırma > hata ayıkla Çalıştır** ' a tıklayın.
+Testlerde hata ayıklamak için bir test üzerine bir kesme noktası ayarlayın, **Test Gezgini** 'ne gidin ve **son çalıştırma > hata ayıkla Çalıştır**' a tıklayın.
 
 ## <a name="javascript-in-vs-code"></a>VS Code JavaScript
 

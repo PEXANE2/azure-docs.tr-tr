@@ -3,12 +3,12 @@ title: Hackathon için Azure Lab Services kullanma
 description: Bu makalede, hack maratonları çalıştırmak için kullanabileceğiniz Labs oluşturmak için Azure Lab Services nasıl kullanılacağı açıklanır.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 561351636a37c2cd5c3070dbfef2a3122e5c29b0
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: a0917ede4502dcbb59d1a30b7985b06c06975599
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96434269"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602589"
 ---
 # <a name="use-azure-lab-services-for-your-next-hackathon"></a>Sonraki Hackathon için Azure Lab Services kullanın
 Azure Lab Services, Hackathon için yeni bir sanal makine Laboratuvarı (VM) hızlı bir şekilde çalıştırabilmeniz için hafif ve kullanımı kolay olacak şekilde tasarlanmıştır.  Hackathon 'nizin mümkün olduğunca sorunsuz bir şekilde gitmemesini sağlamak için aşağıdaki denetim listesini kullanın. Bu denetim listesi, Hackathon laboratuvarınızı oluşturmaktan ve yönetmekten sorumlu BT departmanınız veya fakülte tamamlanmalıdır. 
@@ -39,7 +39,7 @@ Hackathon için Laboratuvar Hizmetleri 'ni kullanmak için, hem laboratuvar hesa
 
 - **Laboratuvar erişimini kısıtlayıp kısıtlamamaya karar verin**. 
 
-    Laboratuvara Kullanıcı eklerken, varsayılan olarak etkinleştirilen erişimi kısıtla seçeneği vardır. Bu özellik, kayıt bağlantısını kullanarak laboratuvara kaydolmadan ve bunlara erişebilmek için Hackathon katılımcılarının tüm e-postalarını listeye eklemenizi gerektirir. Katılanların olaydan önce nerede olacağını bildiğiniz bir Hackathon varsa, erişimi kısıtla seçeneğini devre dışı bırakmayı seçebilirsiniz ve bu, herkesin kayıt bağlantısını kullanarak laboratuvara kaydolmanızı sağlar. Daha fazla bilgi için bkz. [Kullanıcı ekleme hakkında nasıl yapılır Kılavuzu](how-to-configure-student-usage.md#add-users-to-a-lab).
+    Laboratuvara Kullanıcı eklerken, varsayılan olarak etkinleştirilen erişimi kısıtla seçeneği vardır. Bu özellik, kayıt bağlantısını kullanarak laboratuvara kaydolmadan ve bunlara erişebilmek için Hackathon katılımcılarının tüm e-postalarını listeye eklemenizi gerektirir. Katılanların olaydan önce nerede olacağını bildiğiniz bir Hackathon varsa, erişimi kısıtla seçeneğini devre dışı bırakmayı seçebilirsiniz ve bu, herkesin kayıt bağlantısını kullanarak laboratuvara kaydolmanızı sağlar. Daha fazla bilgi için bkz. [Kullanıcı ekleme hakkında nasıl yapılır Kılavuzu](how-to-configure-student-usage.md).
 
 - **Zamanlamayı, kotayı ve oto kapatma ayarlarını doğrulayın**. 
 

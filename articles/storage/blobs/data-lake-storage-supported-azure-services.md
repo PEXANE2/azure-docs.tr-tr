@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: f9b1193a4eb2c7299cbfb0c729673b72d1e8fbad
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 66efc02990c958ba056b6e678cdbf2815f10078c
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96545851"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600396"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. destekleyen Azure hizmetleri
 
@@ -44,6 +44,7 @@ Bu tabloda Azure Data Lake Storage 2. ile kullanabileceğiniz Azure hizmetleri l
 |Azure Veri Gezgini|Genel kullanıma sunuldu|Evet|Evet|[Azure Data Lake Azure Veri Gezgini kullanarak verileri sorgulama](/azure/data-explorer/data-lake-query-data)|
 |Azure Bilişsel Arama|Önizleme|Evet|Evet|[Azure Data Lake Storage 2. belgelerini dizin ve arama (Önizleme)](../../search/search-howto-index-azure-data-lake-storage.md)|
 |Azure Content Delivery Network|Henüz desteklenmiyor|Geçerli değil|Geçerli değil|[Azure Data Lake Storage 2. belgelerini dizin ve arama (Önizleme)](../../cdn/cdn-overview.md)|
+|Azure SQL Veritabanı|Henüz desteklenmiyor|Geçerli değil|Geçerli değil|[Azure SQL Veritabanı nedir?](/azure/azure-sql/database/sql-database-paas-overview.md)|
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

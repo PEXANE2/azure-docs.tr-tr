@@ -3,13 +3,15 @@ title: JVM bağımsız değişkeni ekleme-Azure Izleyici Application Insights Ja
 description: Azure Izleyici Application Insights Java için JVM bağımsız değişkeni ekleme
 ms.topic: conceptual
 ms.date: 04/16/2020
+author: MS-jgol
 ms.custom: devx-track-java
-ms.openlocfilehash: 3c9c38d4173413310b715e05c9dcfb9c15be9d4f
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.author: jgol
+ms.openlocfilehash: e665bf734d2141081796f7810eed02eff3b5c5ad
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377642"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601110"
 ---
 # <a name="adding-the-jvm-arg-for-azure-monitor-application-insights-java"></a>Azure Izleyici Application Insights Java için JVM bağımsız değişkeni ekleme
 
@@ -170,7 +172,7 @@ Bu satırları Ekle `start.ini`
 
 ## <a name="websphere-8"></a>Web küre 8
 
-Yönetim konsolunu açın **sunucu > Web Sphere uygulama sunucuları > uygulama sunucuları** ' na gidin, uygun uygulama sunucularını seçin ve açık ' a tıklayın: 
+Yönetim konsolunu açın **sunucu > Web Sphere uygulama sunucuları > uygulama sunucuları**' na gidin, uygun uygulama sunucularını seçin ve açık ' a tıklayın: 
 
 ```
 Java and Process Management > Process definition >  Java Virtual Machine

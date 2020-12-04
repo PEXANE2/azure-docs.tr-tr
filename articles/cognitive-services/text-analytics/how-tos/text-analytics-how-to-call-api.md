@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.author: aahi
-ms.openlocfilehash: 5985c30973f703b897fa2eedc2be3b939d97900b
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 3d3c452dd883316520e0c28f01c241af74d597c8
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96559006"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602793"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Metin Analizi nasıl çağrılacağını REST API
 
@@ -31,7 +31,7 @@ V 3.1-Preview. 3 ' den başlayarak Metin Analizi API'si iki zaman uyumsuz uç no
 
 Hangi özelliklerin zaman uyumsuz olarak kullanılabileceğini görmek için aşağıdaki tabloya bakın. Uç noktadan yalnızca birkaç özelliğin çağrılabilecek olduğunu unutmayın `/analyze` . 
 
-| Öne çıkan özelliği | Zaman Uyumlu | Zaman uyumsuz |
+| Özellik | Zaman Uyumlu | Zaman uyumsuz |
 |--|--|--|
 | Dil algılama | ✔ |  |
 | Yaklaşım analizi | ✔ |  |
@@ -194,7 +194,7 @@ Postman 'da (veya başka bir Web API test aracında) kullanmak istediğiniz öze
 
 #### <a name="synchronous"></a>[Zaman Uyumlu](#tab/synchronous)
 
-| Öne çıkan özelliği | İstek türü | Kaynak uç noktaları |
+| Özellik | İstek türü | Kaynak uç noktaları |
 |--|--|--|
 | Dil algılama | POST | `<your-text-analytics-resource>/text/analytics/v3.0/languages` |
 | Yaklaşım analizi | POST | `<your-text-analytics-resource>/text/analytics/v3.0/sentiment` |
@@ -206,14 +206,14 @@ Postman 'da (veya başka bir Web API test aracında) kullanmak istediğiniz öze
 
 #### <a name="analyze"></a>[Çözümleme](#tab/analyze)
 
-| Öne çıkan özelliği | İstek türü | Kaynak uç noktaları |
+| Özellik | İstek türü | Kaynak uç noktaları |
 |--|--|--|
 | Analiz işini gönder | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze` |
 | Çözümleme durumunu ve sonuçlarını al | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze/jobs/<Operation-Location>` |
 
 #### <a name="text-analytics-for-health"></a>[Sistem durumu için Metin Analizi](#tab/health)
 
-| Öne çıkan özelliği | İstek türü | Kaynak uç noktaları |
+| Özellik | İstek türü | Kaynak uç noktaları |
 |--|--|--|
 | Sistem durumu işi için Metin Analizi gönder  | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs` |
 | İş durumunu ve sonuçları al | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/entities/health/jobs/<Operation-Location>` |
@@ -260,6 +260,8 @@ Zaman uyumsuz `/analyze` veya `/health` uç noktalara çağrı yaptıysanız, bi
 3. Öğesini `Operation-Location` isteğe ekleyin.
 
 4. Yanıt, istekte belirtilen her belge KIMLIĞI için bir öğe içeren tek bir JSON belgesi olacaktır.
+
+Lütfen hem zaman uyumsuz hem de `/analyze` `/health` işlemler için yukarıdaki adım 2 ' deki GET isteğinin sonuçları, işin oluşturulduğu zamandan itibaren 24 saat için kullanılabilir olduğunu unutmayın.  Bu süre, `expirationDateTime` Get yanıtında değeri ile belirtilir.  Bu süre dolduktan sonra sonuçlar temizlenir ve artık alma için kullanılamaz.    
 
 ## <a name="example-api-responses"></a>Örnek API yanıtları
  

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/23/2020
+ms.date: 11/20/2020
 ms.author: jeedes
-ms.openlocfilehash: ccf945f8bfec85a18493d515dce48f4cb3e3b612
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4acc4c0cec530b8f83648042cd7a417992257543
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182381"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602079"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-software-ag-cloud"></a>Öğretici: Software AG bulutu ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,7 +26,7 @@ Bu öğreticide, yazılım AG bulutunu Azure Active Directory (Azure AD) ile tü
 * Kullanıcılarınızın Azure AD hesaplarıyla Software AG bulutuna otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -77,9 +77,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<SUBDOMAIN>.softwareag.cloud/auth/realms/TENANT-NAME/broker/IDENTITY-PROVIDER-NAME/endpoint`
+    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://*.softwareag.cloud/auth/realms/TENANT-NAME/broker/IDENTITY-PROVIDER-NAME/endpoint`
 
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<SUBDOMAIN>.softwareag.cloud/auth/realms/TENANT-NAME`
+    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://*.softwareag.cloud/auth/realms/TENANT-NAME`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [yazılım AG bulutu istemci destek ekibine](mailto:support@softwareag.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
@@ -101,7 +101,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -121,19 +121,19 @@ Bu bölümde, yazılım AG bulutuna erişim vererek Azure çoklu oturum açma ö
 
 1.  **Yönetime** tıklayın
 
-    ![Software AG Cloud1 yapılandırma](./media/software-ag-cloud-tutorial/admin.png)
+    ![Yazılım AG bulutu yönetimini yapılandırma](./media/software-ag-cloud-tutorial/admin.png)
 
 1. **Çoklu oturum açma > kimlik sağlayıcısı ekleme '** ye gidin
 
-    ![Software AG Cloud2 yapılandırma](./media/software-ag-cloud-tutorial/add-identity-provider.png)
+    ![Yazılım AG bulutu kimlik sağlayıcısını yapılandırma](./media/software-ag-cloud-tutorial/add-identity-provider.png)
 
 1. Aşağıdaki sayfada aşağıdaki adımları gerçekleştirin.
 
-    ![Software AG Cloud3 yapılandırma](./media/software-ag-cloud-tutorial/saml-1.png)
+    ![Yazılım AG bulutu yapılandırma adımları](./media/software-ag-cloud-tutorial/saml-1.png)
 
     a. **Kimlik sağlayıcısı görünen adı** metin kutusunda, adı gibi verin `azure ad` .
 
-    b. **Yazılım AG bulutu yeniden yönlendirme URI 'si metin kutusunda kullanılacak kimlik sağlayıcısı benzersiz tanımlayıcısı** ' nda, Azure Portal KOPYALADıĞıNıZ **varlık kimliği** değerini yapıştırın.
+    b. **Yazılım AG bulutu yeniden yönlendirme URI 'si metin kutusunda kullanılacak kimlik sağlayıcısı benzersiz tanımlayıcısı** ' nda, kimlik sağlayıcısı için benzersiz bir ad girin. **Yazılım AG bulutu yeniden yönlendirme URI 'si** alanı YENILENIR ve URI ile doldurulur. Bu URI 'yi kopyalayın ve tanımlanan desenlere göre Azure portal **VARLıK kimliğini** ve diğer bilgileri yapılandırmak için kullanın.
 
     c. **Federasyon meta VERI XML** dosyasını **kimlik sağlayıcısı yapılandırması** ' na içeri aktarın ve **İleri**' ye tıklayın.
 
@@ -147,11 +147,12 @@ Bu bölümde, yazılım AG bulutu 'nda Britta Simon adlı bir Kullanıcı oluşt
 
 Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-1. Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz yazılım AG bulutu oturum açma URL 'sine yeniden yönlendirilir. 
+* Microsoft Azure, yazılım AG bulutu 'nda bir sağlayıcı olarak yapılandırıldığı varsayılarak, öğesine gidin `www.softwareag.cloud` ve oturum aç düğmesine tıklayın ve ortam adını girin. Sonraki ekranda, "oturum aç <IDP NAME> " bağlantısına tıklayın ve kimlik bilgilerini girin. Kimliği doğrulandıktan sonra, oturum açılır ve yazılım AG bulutu giriş sayfasına yönlendirilirsiniz.
 
-2. Yazılım AG bulutu oturum açma URL 'sine doğrudan gidin ve oturum akışını buradan başlatın.
+* Yazılım AG bulutu oturum açma URL 'sine doğrudan gidin ve oturum akışını buradan başlatın.
 
-3. Microsoft Access panel ' i kullanabilirsiniz. Erişim panelinde yazılım AG bulutu kutucuğunu tıklattığınızda, bu, Software AG bulutu oturum açma URL 'sine yeniden yönlendirilir. Erişim paneli hakkında daha fazla bilgi için bkz [. erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md)
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım ' da yazılım AG bulutu kutucuğuna tıkladığınızda bu, Software AG bulutu oturum açma URL 'sine yeniden yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

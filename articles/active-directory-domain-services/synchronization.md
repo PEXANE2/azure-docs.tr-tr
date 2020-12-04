@@ -11,18 +11,20 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: joflore
-ms.openlocfilehash: 683a6c9f31947355a5415a5b8b57b621f717af91
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 92d440d019942219b322ef084b45317983d04fbe
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967673"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602249"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services yönetilen bir etki alanında nesneleri ve kimlik bilgilerini eşitleme
 
 Azure Active Directory Domain Services (Azure AD DS) tarafından yönetilen etki alanındaki nesneler ve kimlik bilgileri, etki alanı içinde yerel olarak veya Azure Active Directory (Azure AD) kiracısından eşitlenebilir. Azure AD DS ilk kez dağıttığınızda, Azure AD 'den nesneleri çoğaltmaya yönelik otomatik tek yönlü bir eşitleme yapılandırılır ve başlatılır. Bu tek yönlü eşitleme arka planda çalışmaya devam eder ve Azure AD DS yönetilen etki alanını Azure AD 'deki değişikliklerle güncel tutar. Azure AD DS 'den Azure AD 'ye geri eşitleme gerçekleşmez.
 
 Karma bir ortamda, şirket içi AD DS etki alanındaki nesneler ve kimlik bilgileri Azure AD Connect kullanılarak Azure AD ile eşitlenebilir. Bu nesneler Azure AD 'ye başarıyla eşitlendiğinde, otomatik arka plan eşitleme, bu nesneleri ve kimlik bilgilerini yönetilen etki alanını kullanan uygulamalar için kullanılabilir hale getirir.
+
+Şirket içi AD DS ve Azure AD ADFS kullanılarak federal kimlik doğrulaması için yapılandırılırsa, Azure DS 'de kullanılabilir (geçerli/geçerli) Parola karması yoktur. Beslenen kimlik doğrulaması uygulanmadan önce oluşturulan Azure AD Kullanıcı hesaplarının eski bir parola karması olabilir, ancak bu durum büyük olasılıkla şirket içi parolasının bir karmasıyla eşleşmez. Bu nedenle Azure AD DS, kullanıcıların kimlik bilgilerini doğrulayamayacak.
 
 Aşağıdaki diyagramda, eşitlemenin Azure AD DS, Azure AD ve isteğe bağlı bir şirket içi AD DS ortamı arasında nasıl çalıştığı gösterilmektedir:
 

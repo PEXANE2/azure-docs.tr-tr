@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: eb290b8c154c40388bfb3e7f9cbac7b645aa9609
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: bc1ae4bc2cf64c3e2f996709c086eb23cb8b8385
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452676"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602606"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Sanal makine sertifikası sorunlarını giderme
 
@@ -98,7 +98,7 @@ Zaman Damgası|4
 Oluşturan uygulama|4
 Oluşturucu sürümü|4
 Oluşturucu konak işletim sistemi|4
-Özgün Boyut|8
+Özgün plan|8
 Geçerli boyut|8
 Disk geometrisi|4
 Disk Türü|4
@@ -203,7 +203,7 @@ Boyut 1023 gigabayttan (GB) büyük olan veri diski istekleri onaylanmayacak. Bu
 
 |İşletim Sistemi|Önerilen VHD boyutu|
 |---|---|
-|Linux|30 GB ila 1023 GB|
+|Linux|1 GB ila 1023 GB|
 |Windows|30 GB ila 250 GB|
 
 VM 'Ler temeldeki işletim sistemine erişime izin vermediğinden, VHD boyutunun VHD için yeterince büyük olduğundan emin olun. Diskler kesinti olmadan genişletilebilir değildir. 30 GB ile 50 GB arasında bir disk boyutu kullanın.

@@ -1,17 +1,17 @@
 ---
-title: Kimlik doğrulaması ve yetkilendirme
+title: Kimlik doğrulama ve yetkilendirme
 description: Azure App Service ve Azure Işlevlerinde yerleşik kimlik doğrulama ve yetkilendirme desteği hakkında bilgi edinin ve uygulamanızın yetkisiz erişime karşı nasıl güvenli hale getirilmesine yardımcı olabilir.
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 09460e4e38ea1842d58ecf3a9b3cd00a072c271e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4f1aceed7e6a41a8ad4f3a062f23a796e31e34ad
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008455"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601688"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure App Service ve Azure Işlevlerinde kimlik doğrulama ve yetkilendirme
 
@@ -90,7 +90,7 @@ App Service, üçüncü taraf bir kimlik sağlayıcısının sizin için Kullan�
 | Sağlayıcı | Oturum açma uç noktası |
 | - | - |
 | [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) | `/.auth/login/aad` |
-| [Microsoft Hesabı](../active-directory/develop/v2-overview.md) | `/.auth/login/microsoftaccount` |
+| [Microsoft hesabı](../active-directory/develop/v2-overview.md) | `/.auth/login/microsoftaccount` |
 | [Facebook](https://developers.facebook.com/docs/facebook-login) | `/.auth/login/facebook` |
 | [Google](https://developers.google.com/identity/choose-auth) | `/.auth/login/google` |
 | [Twitter](https://developer.twitter.com/en/docs/basics/authentication) | `/.auth/login/twitter` |
@@ -166,6 +166,7 @@ Sağlayıcıya özgü nasıl yapılır Kılavuzu:
 * [Uygulamanızı Microsoft Hesabı oturum açma bilgilerini kullanacak şekilde yapılandırma][MSA]
 * [Uygulamanızı Twitter oturum açma bilgilerini kullanacak şekilde yapılandırma][Twitter]
 * [Uygulamanızı, oturum açmak için bir OpenID Connect sağlayıcısı kullanacak şekilde yapılandırma (Önizleme)][OIDC]
+* [Uygulamanızı Apple ile oturum açma kullanacak şekilde yapılandırma (Önizleme)][Apple]
 
 [AAD]: configure-authentication-provider-aad.md
 [Facebook]: configure-authentication-provider-facebook.md
@@ -173,6 +174,7 @@ Sağlayıcıya özgü nasıl yapılır Kılavuzu:
 [MSA]: configure-authentication-provider-microsoft.md
 [Twitter]: configure-authentication-provider-twitter.md
 [OIDC]: configure-authentication-provider-openid-connect.md
+[Apple]: configure-authentication-provider-apple.md
 
 [custom-auth]: /previous-versions/azure/app-service-mobile/app-service-mobile-dotnet-backend-how-to-use-server-sdk#custom-auth
 

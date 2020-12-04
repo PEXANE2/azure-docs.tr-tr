@@ -3,12 +3,15 @@ title: Telemetri işlemcileri (Önizleme)-Azure Izleyici Application Insights Ja
 description: Azure Izleyici için telemetri işlemcileri Application Insights Java
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: e3c41a7a9968a7de743f0c513b1f2b194501d0df
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+author: MS-jgol
+ms.custom: devx-track-java
+ms.author: jgol
+ms.openlocfilehash: 316243e130345ce1b009e065cf9d8250c501ee84
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425805"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601042"
 ---
 # <a name="telemetry-processors-preview-for-azure-monitor-application-insights-java"></a>Azure Izleyici Application Insights Java için telemetri işlemcileri (Önizleme)
 
@@ -56,10 +59,10 @@ Adlı bir yapılandırma dosyası oluşturun `applicationinsights.json` ve `appl
 
 Öznitelik işlemcisi ve span işlemcisi, yayılma alanının işlemciye dahil edilip edilmediğini veya işlemciyi dışarıda bırakılmasını gerekip gerekmediğini öğrenmek için, ile eşleşecek bir yayılımın özelliklerinin bir kümesini sağlama seçeneğini sunar. Bu seçeneği, `include` ve/veya `exclude` en az bir ile, ya da ' nin altında yapılandırmak için `matchType` `spanNames` `attributes` gereklidir. Dahil etme/hariç tutma yapılandırması, belirtilen birden fazla koşula sahip olmak için desteklenir. Bir eşleşmenin gerçekleşmesi için belirtilen koşulların tümü doğru olarak değerlendirilmelidir. 
 
-**Gerekli alan** : 
+**Gerekli alan**: 
 * `matchType` içindeki öğelerin `spanNames` ve dizilerin nasıl `attributes` yorumlandığını denetler. Olası değerler: `regexp` veya `strict`. 
 
-**Isteğe bağlı alanlar** : 
+**Isteğe bağlı alanlar**: 
 * `spanNames` öğelerin en az biriyle eşleşmesi gerekir. 
 * `attributes` eşleştirilecek özniteliklerin listesini belirtir. Bir eşleşmenin gerçekleşmesi için bu özniteliklerin tümünün tam olarak eşleşmesi gerekir.
 

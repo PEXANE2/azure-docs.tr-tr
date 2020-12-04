@@ -4,18 +4,18 @@ description: Azure depolama envanteri, bir depolama hesabındaki tüm blob veril
 services: storage
 author: mhopkins-msft
 ms.service: storage
-ms.date: 11/04/2020
+ms.date: 12/03/2020
 ms.topic: conceptual
 ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 149fb9c888c54ea45d273890f3fe2cd59730fa01
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 86ded3dea819702631b1fa04dbc56f727566fc98
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96355076"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602691"
 ---
 # <a name="use-azure-storage-blob-inventory-to-manage-blob-data-preview"></a>Blob verilerini yönetmek için Azure Storage blob envanterini kullanma (Önizleme)
 
@@ -23,7 +23,7 @@ Azure Depolama Blobu envanter özelliği, bir depolama hesabındaki blob veriler
 
 ## <a name="availability"></a>Kullanılabilirlik
 
-Blob envanteri, genel amaçlı sürüm 2 (GPv2), Premium Blok Blob depolama ve Azure DataLake Storage Gen2 (ADLS 2.) hesapları için desteklenir.
+Blob envanteri hem genel amaçlı sürüm 2 (GPv2) hem de Premium Blok Blob depolama hesapları için desteklenir. Bu özellik [hiyerarşik ad alanı](data-lake-storage-namespace.md) özelliği etkin olan veya olmadan desteklenir.
 
 ### <a name="preview-regions"></a>Önizleme bölgeleri
 
@@ -87,9 +87,9 @@ Azure portal **BLOB stoğu** bölümünde **kod görünümü** sekmesini seçere
 
 | Parametre adı | Parametre türü        | Notlar | Gerekli mi? |
 |----------------|-----------------------|-------|-----------|
-| hedef    | Dize                | Tüm envanter dosyalarının üretilebileceği hedef kapsayıcı. Hedef kapsayıcının zaten mevcut olması gerekir. | Yes |
-| enabled        | Boole               | Tüm ilkeyi devre dışı bırakmak için kullanılır. **True** olarak ayarlandığında, kural düzeyi etkinleştirilmiş alan bu parametreyi geçersiz kılar. Devre dışı bırakıldığında, tüm kurallar için stok devre dışı bırakılır. | Yes |
-| rules          | Kural nesneleri dizisi | İlkede en az bir kural gereklidir. En fazla 10 kural desteklenir. | Yes |
+| hedef    | Dize                | Tüm envanter dosyalarının üretilebileceği hedef kapsayıcı. Hedef kapsayıcının zaten mevcut olması gerekir. | Evet |
+| enabled        | Boole               | Tüm ilkeyi devre dışı bırakmak için kullanılır. **True** olarak ayarlandığında, kural düzeyi etkinleştirilmiş alan bu parametreyi geçersiz kılar. Devre dışı bırakıldığında, tüm kurallar için stok devre dışı bırakılır. | Evet |
+| rules          | Kural nesneleri dizisi | İlkede en az bir kural gereklidir. En fazla 10 kural desteklenir. | Evet |
 
 ## <a name="inventory-rules"></a>Envanter kuralları
 
@@ -99,9 +99,9 @@ Bir kural, bir envanter raporu oluşturmak için filtreleme koşullarını ve ç
 
 | Parametre adı | Parametre türü                 | Notlar | Gerekli mi? |
 |----------------|--------------------------------|-------|-----------|
-| name           | Dize                         | Bir kural adı en fazla 256 büyük harfe duyarlı alfasayısal karakter içerebilir. Ad, ilke içinde benzersiz olmalıdır. | Yes |
-| enabled        | Boole                        | Kuralın etkinleştirilmesini veya devre dışı bırakılacağını veren bir bayrak. Varsayılan değer **true**'dur. | Yes |
-| tanım     | JSON envanter kuralı tanımı | Her tanım bir kural filtresi kümesinden oluşur. | Yes |
+| name           | Dize                         | Bir kural adı en fazla 256 büyük harfe duyarlı alfasayısal karakter içerebilir. Ad, ilke içinde benzersiz olmalıdır. | Evet |
+| enabled        | Boole                        | Kuralın etkinleştirilmesini veya devre dışı bırakılacağını veren bir bayrak. Varsayılan değer **true**'dur. | Evet |
+| tanım     | JSON envanter kuralı tanımı | Her tanım bir kural filtresi kümesinden oluşur. | Evet |
 
 Genel **BLOB stoğu etkin** bayrağı, bir kuraldaki *etkin* parametreye göre önceliklidir.
 
@@ -111,7 +111,7 @@ Blob envanter raporunu özelleştirmek için çeşitli filtreler mevcuttur:
 
 | Filtre adı         | Filtre türü                     | Notlar | Gerekli mi? |
 |---------------------|---------------------------------|-------|-----------|
-| blobTypes           | Öntanımlı Enum değerlerinin dizisi | Geçerli değerler `blockBlob` ve `appendBlob` hiyerarşik ad alanı etkin hesaplar için ve `blockBlob` , `appendBlob` ve `pageBlob` diğer hesaplar için. | Yes |
+| blobTypes           | Öntanımlı Enum değerlerinin dizisi | Geçerli değerler `blockBlob` ve `appendBlob` hiyerarşik ad alanı etkin hesaplar için ve `blockBlob` , `appendBlob` ve `pageBlob` diğer hesaplar için. | Evet |
 | prefixMatch         | Öneklerin eşleşmesi için 10 ' a kadar dize dizisi. Ön ek bir kapsayıcı adıyla başlamalıdır, örneğin "kapsayıcı1/foo" | *PrefixMatch* tanımlayamazsınız veya boş bir ön ek sağlamazsanız, kural depolama hesabındaki tüm Bloblar için geçerlidir. | Hayır |
 | ıncludesnapshots    | Boole                         | Envanterin anlık görüntüleri içerip içermediğini belirtir. Varsayılan değer **false**'dur. | Hayır |
 | ıncludeblobversions | Boole                         | Envanterin blob sürümlerini içerip içermediğini belirtir. Varsayılan değer **false**'dur. | Hayır |

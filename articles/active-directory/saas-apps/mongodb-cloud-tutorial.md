@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/03/2020
 ms.author: jeedes
-ms.openlocfilehash: f76f6bc77a26a8574218a07321ab72acc9280569
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: af1c0702929e7cd700c8d19ab24e40f9c6f43a21
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517999"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602198"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mongodb-cloud"></a>Öğretici: MongoDB bulutu ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -57,7 +57,7 @@ MongoDB bulutunun Azure AD ile tümleştirilmesini yapılandırmak için, Galeri
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-mongodb-cloud"></a>MongoDB bulutu için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak MongoDB bulutuyla Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, MongoDB bulutu 'ndaki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlı bir ilişki kurmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak MongoDB bulutuyla Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, MongoDB bulutu 'ndaki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlı bir ilişki kurmanız gerekir.
 
 Azure AD SSO 'yu MongoDB bulutu ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -72,7 +72,7 @@ Azure AD SSO 'yu MongoDB bulutu ile yapılandırmak ve test etmek için aşağı
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **MongoDB Cloud** Application Integration sayfasında **Yönet** bölümünü bulun. **Çoklu oturum açma**seçeneğini belirleyin.
+1. [Azure Portal](https://portal.azure.com/), **MongoDB Cloud** Application Integration sayfasında **Yönet** bölümünü bulun. **Çoklu oturum açma** seçeneğini belirleyin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesini seçin.
 
@@ -97,7 +97,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Önceki özniteliklere ek olarak, MongoDB Cloud uygulaması, SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre gözden geçirebilirsiniz.
     
-    | Adı | Kaynak özniteliği|
+    | Ad | Kaynak özniteliği|
     | ---------------| --------- |
     | e-posta | User. UserPrincipalName |
     | firstName | Kullanıcı. |
@@ -162,7 +162,7 @@ Erişim paneli 'nde MongoDB bulut kutucuğunu seçtiğinizde, SSO 'yu ayarladı�
 
 - [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
 
-- [Azure 'da MongoDB Atlas 'e kaydolun](https://azuremarketplace.microsoft.com/marketplace/apps/mongodb.mongodb_atlas_may_2020?tab=Overview)
+- [Azure 'da MongoDB Atlas 'e kaydolun](https://azuremarketplace.microsoft.com/marketplace/apps/mongodb.mdb_atlas_oct2020?tab=Overview)
 
 - [Azure AD ile MongoDB bulutu 'nı deneyin](https://aad.portal.azure.com/)
 

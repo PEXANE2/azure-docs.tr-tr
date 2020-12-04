@@ -4,12 +4,12 @@ description: Farklı senaryolar için App Service kimlik doğrulaması ve yetkil
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 0e07dc42a45a697b293e2ebc90bdd92aa924f071
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 85fd7fdba4c62f4837a419af44c83f7e46cb9e39
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302032"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601790"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure App Service 'da gelişmiş kimlik doğrulama ve yetkilendirme kullanımı
 
@@ -24,6 +24,7 @@ Hızlıca kullanmaya başlamak için aşağıdaki öğreticilerden birine bakın
 * [Uygulamanızı Microsoft Hesabı oturum açma bilgilerini kullanacak şekilde yapılandırma](configure-authentication-provider-microsoft.md)
 * [Uygulamanızı Twitter oturum açma bilgilerini kullanacak şekilde yapılandırma](configure-authentication-provider-twitter.md)
 * [Uygulamanızı bir OpenID Connect sağlayıcısı kullanarak oturum açmak üzere yapılandırma (Önizleme)](configure-authentication-provider-openid-connect.md)
+* [Uygulamanızı Apple ile oturum açma kullanarak oturum açmak üzere yapılandırma (Önizleme)](configure-authentication-provider-apple.md)
 
 ## <a name="use-multiple-sign-in-providers"></a>Çoklu oturum açma sağlayıcılarını kullanma
 
@@ -33,7 +34,7 @@ Portal Yapılandırması, kullanıcılarınıza birden çok oturum açma sağlay
 
 **İsteğin kimliği doğrulanmamış olduğunda gerçekleştirilecek eylem Için** **anonim isteklere izin ver (eylem yok)** seçeneğini belirleyin.
 
-Oturum açma sayfasında veya gezinti çubuğunda veya uygulamanızın herhangi bir yerinde, etkinleştirdiğiniz her bir sağlayıcının () bir oturum açma bağlantısını ekleyin `/.auth/login/<provider>` . Örneğin:
+Oturum açma sayfasında veya gezinti çubuğunda veya uygulamanızın herhangi bir yerinde, etkinleştirdiğiniz her bir sağlayıcının () bir oturum açma bağlantısını ekleyin `/.auth/login/<provider>` . Örnek:
 
 ```html
 <a href="/.auth/login/aad">Log in with Azure AD</a>
@@ -41,6 +42,7 @@ Oturum açma sayfasında veya gezinti çubuğunda veya uygulamanızın herhangi 
 <a href="/.auth/login/facebook">Log in with Facebook</a>
 <a href="/.auth/login/google">Log in with Google</a>
 <a href="/.auth/login/twitter">Log in with Twitter</a>
+<a href="/.auth/login/apple">Log in with Apple</a>
 ```
 
 Kullanıcı bağlantılardan birine tıkladığında, kullanıcının oturum açması için ilgili oturum açma sayfası açılır.
@@ -55,7 +57,7 @@ Kullanıcı oturum açma sonrası eklentisini özel bir URL 'ye yönlendirmek i�
 
 İstemci ile yönlendirilen bir oturum açma bölümünde, uygulama kullanıcıdan sağlayıcıya el ile oturum açar ve ardından kimlik doğrulama belirtecini doğrulama için App Service (bkz. [kimlik doğrulama akışı](overview-authentication-authorization.md#authentication-flow)) gönderir. Bu doğrulamanın kendisi, istenen uygulama kaynaklarına erişim hakkı vermez, ancak başarılı bir doğrulama size uygulama kaynaklarına erişmek için kullanabileceğiniz bir oturum belirteci verecektir. 
 
-Sağlayıcı belirtecini doğrulamak için App Service uygulamasının öncelikle istenen sağlayıcıyla yapılandırılması gerekir. Çalışma zamanında, sağlayıcınızdan kimlik doğrulama belirtecini aldıktan sonra, `/.auth/login/<provider>` doğrulama için belirteci gönderin. Örneğin: 
+Sağlayıcı belirtecini doğrulamak için App Service uygulamasının öncelikle istenen sağlayıcıyla yapılandırılması gerekir. Çalışma zamanında, sağlayıcınızdan kimlik doğrulama belirtecini aldıktan sonra, `/.auth/login/<provider>` doğrulama için belirteci gönderin. Örnek: 
 
 ```
 POST https://<appname>.azurewebsites.net/.auth/login/aad HTTP/1.1
@@ -86,7 +88,7 @@ Sağlayıcı belirteci başarıyla doğrulandıktan sonra, API, `authenticationT
 }
 ```
 
-Bu oturum belirtecine sahip olduğunuzda, `X-ZUMO-AUTH` http isteklerinize üst bilgi ekleyerek korumalı uygulama kaynaklarına erişebilirsiniz. Örneğin: 
+Bu oturum belirtecine sahip olduğunuzda, `X-ZUMO-AUTH` http isteklerinize üst bilgi ekleyerek korumalı uygulama kaynaklarına erişebilirsiniz. Örnek: 
 
 ```
 GET https://<appname>.azurewebsites.net/api/products/1
@@ -107,7 +109,7 @@ Web sayfasında basit bir oturum kapatma bağlantısı şöyle olabilir:
 <a href="/.auth/logout">Sign out</a>
 ```
 
-Varsayılan olarak, başarılı bir oturum kapatma istemciyi URL 'ye yeniden yönlendirir `/.auth/logout/done` . Sorgu parametresini ekleyerek, oturum kapatma sonrası yeniden yönlendirme sayfasını değiştirebilirsiniz `post_logout_redirect_uri` . Örneğin:
+Varsayılan olarak, başarılı bir oturum kapatma istemciyi URL 'ye yeniden yönlendirir `/.auth/logout/done` . Sorgu parametresini ekleyerek, oturum kapatma sonrası yeniden yönlendirme sayfasını değiştirebilirsiniz `post_logout_redirect_uri` . Örnek:
 
 ```
 GET /.auth/logout?post_logout_redirect_uri=/index.html
@@ -269,7 +271,7 @@ Herhangi bir Windows uygulaması için, *Web.config* dosyasını düzenleyerek I
 
 ### <a name="identity-provider-level"></a>Kimlik sağlayıcısı düzeyi
 
-Kimlik sağlayıcısı, belirli bir anahtar yetkilendirme sağlayabilir. Örneğin:
+Kimlik sağlayıcısı, belirli bir anahtar yetkilendirme sağlayabilir. Örnek:
 
 - [Azure App Service](configure-authentication-provider-aad.md)için, [Kurumsal düzeyde ERIŞIMI](../active-directory/manage-apps/what-is-access-management.md) doğrudan Azure AD 'de yönetebilirsiniz. Yönergeler için bkz. [kullanıcının bir uygulamaya erişimini kaldırma](../active-directory/manage-apps/methods-for-removing-user-access.md).
 - [Google](configure-authentication-provider-google.md)için, bir [kuruluşa](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations) ait Google API projeleri yalnızca kuruluşunuzdaki kullanıcılara erişime izin verecek şekilde yapılandırılabilir (bkz. [Google 'ın **OAuth 2,0** destek sayfasını ayarlama](https://support.google.com/cloud/answer/6158849?hl=en)).
@@ -315,7 +317,6 @@ Aşağıdakiler dosya içinde olası yapılandırma seçeneklerini tüketmektedi
         "enabled": <true|false>
     },
     "globalValidation": {
-        "requireAuthentication": <true|false>,
         "unauthenticatedClientAction": "RedirectToLoginPage|AllowAnonymous|Return401|Return403",
         "redirectToProvider": "<default provider alias>",
         "excludedPaths": [
@@ -349,13 +350,13 @@ Aşağıdakiler dosya içinde olası yapılandırma seçeneklerini tüketmektedi
             }
         },
         "preserveUrlFragmentsForLogins": <true|false>,
-        "allowedExternalRedirectUri": [
+        "allowedExternalRedirectUrls": [
             "https://uri1.azurewebsites.net/",
             "https://uri2.azurewebsites.net/",
             "url_scheme_of_your_app://easyauth.callback"
         ],
         "cookieExpiration": {
-            "convention": "FixedTime|IdentityProviderDerived",
+            "convention": "FixedTime|IdentityDerived",
             "timeToExpiration": "<timespan>"
         },
         "nonce": {
@@ -437,13 +438,26 @@ Aşağıdakiler dosya içinde olası yapılandırma seçeneklerini tüketmektedi
                 "consumerSecretSettingName": "APP_SETTING_CONTAINING TWITTER_CONSUMER_SECRET"
             }
         },
+        "apple": {
+            "enabled": <true|false>,
+            "registration": {
+                "clientId": "<client id>",
+                "clientSecretSettingName": "APP_SETTING_CONTAINING_APPLE_SECRET"
+            },
+            "login": {
+                "scopes": [
+                    "profile",
+                    "email"
+                ]
+            }
+        },
         "openIdConnectProviders": {
             "<providerName>": {
                 "enabled": <true|false>,
                 "registration": {
                     "clientId": "<client id>",
                     "clientCredential": {
-                        "secretSettingName": "<name of app setting containing client secret>"
+                        "clientSecretSettingName": "<name of app setting containing client secret>"
                     },
                     "openIdConnectConfiguration": {
                         "authorizationEndpoint": "<url specifying authorization endpoint>",
@@ -455,7 +469,7 @@ Aşağıdakiler dosya içinde olası yapılandırma seçeneklerini tüketmektedi
                 },
                 "login": {
                     "nameClaimType": "<name of claim containing name>",
-                    "scope": [
+                    "scopes": [
                         "openid",
                         "profile",
                         "email"
@@ -486,7 +500,7 @@ Uygulamanız tarafından kullanılan çalışma zamanı sürümünü değiştire
 
 #### <a name="view-the-current-runtime-version"></a>Geçerli çalışma zamanı sürümünü görüntüle
 
-Platform kimlik doğrulama ara yazılımı 'nın geçerli sürümünü, Azure CLı kullanarak veya uygulamanızdaki built0-ın sürümü HTTP uç noktalarından biri aracılığıyla görüntüleyebilirsiniz.
+Azure CLı kullanarak veya uygulamanızdaki yerleşik sürüm HTTP uç noktalarından biri aracılığıyla platform kimlik doğrulama ara yazılımı 'nın geçerli sürümünü görüntüleyebilirsiniz.
 
 ##### <a name="from-the-azure-cli"></a>Azure CLı 'dan
 

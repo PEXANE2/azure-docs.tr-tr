@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 12/3/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 77e34e4a18012f15b9e907e3b9efc1965b98f824
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3222c790ccd0cee936b246253a16b5c434c61c8
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612129"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602215"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft Identity Platform uygulaması kimlik doğrulama sertifikası kimlik bilgileri
 
@@ -36,7 +36,7 @@ Onaylama işlemlerini hesaplamak için, tercih ettiğiniz dilde birçok JWT kita
 | --- | --- |
 | `alg` | **RS256** olmalıdır |
 | `typ` | **JWT** olmalıdır |
-| `x5t` | X. 509.440 sertifika karmasıdır (sertifikanın SHA-1 *parmak izi*olarak da bilinir), Base64 dizesi değeri olarak kodlanan onaltılık gösterimi. Örneğin, (onaltılı) bir X. 509.440 sertifikası karması verildiğinde `84E05C1D98BCE3A5421D225B140B36E86A3D5534` , `x5t` talep `hOBcHZi846VCHSJbFAs26Go9VTQ=` (base64) olacaktır. |
+| `x5t` | X. 509.440 sertifika karmasıdır (sertifikanın SHA-1 *parmak izi* olarak da bilinir) Base64url dize değeri olarak kodlanan onaltılık gösterimi. Örneğin, (onaltılı) bir X. 509.440 sertifikası karması verildiğinde `84E05C1D98BCE3A5421D225B140B36E86A3D5534` , `x5t` talep `hOBcHZi846VCHSJbFAs26Go9VTQ=` (Base64url) olacaktır. |
 
 ### <a name="claims-payload"></a>Talepler (yük)
 

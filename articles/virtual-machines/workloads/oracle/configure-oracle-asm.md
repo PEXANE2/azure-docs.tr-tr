@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: e5593d530891e39404e0b9760861f2f22ae333d3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6f0b58374ae3eb972993b544117d8cbb98371ce5
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000003"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602623"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Azure Linux sanal makinesinde Oracle ASM ayarlama  
 
@@ -33,7 +33,7 @@ CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için A
 
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Kaynak grubu oluşturmak için [az group create](/cli/azure/group) komutunu kullanın. Azure Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Bu örnekte, *eastus* bölgesinde *myresourcegroup* adlı bir kaynak grubu.
+Bir kaynak grubu oluşturmak için [az Group Create](/cli/azure/group) komutunu kullanın. Azure Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Bu örnekte, *eastus* bölgesinde *myresourcegroup* adlı bir kaynak grubu.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -345,7 +345,7 @@ Bu öğretici için varsayılan kullanıcı *kılavuza* ve varsayılan grup *asm
 
 Oracle Grid altyapı yazılımını indirmek ve hazırlamak için aşağıdaki adımları izleyin:
 
-1. Oracle [asm indirme sayfasından](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-linux-download-2240591.html)Oracle Grid altyapısını indirin. 
+1. Oracle [asm indirme sayfasından](https://www.oracle.com/database/technologies/oracle19c-linux-downloads.html)Oracle Grid altyapısını indirin. 
 
    **Linux x86-64 için Oracle Database 12c sürüm 1 Grid altyapısını (12.1.0.2.0)** başlıklı indirme altında, iki. zip dosyasını indirin.
 

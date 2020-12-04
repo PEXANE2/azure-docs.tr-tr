@@ -1,22 +1,22 @@
 ---
-title: Iş Ortağı Merkezi 'nde ortak satış seçeneği | Azure Marketi
-description: Teklifinizin ortak satış sekmesinde sağladığınız bilgiler, Microsoft Sales ekipleri tarafından müşteri gereksinimlerine uygun olarak değerlendirme yaparken teklifiniz hakkında daha fazla bilgi edinmek için kullanılacaktır.
+title: Ticari Market 'teki ortak satış seçeneği | Azure Marketi
+description: Teklifinizin Microsoft ile birlikte satış konusunda sağladığınız bilgiler, Microsoft Sales ekipleri tarafından müşteri gereksinimlerine uygun olarak değerlendirme yaparken teklifiniz hakkında daha fazla bilgi edinmek için kullanılacaktır.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
-ms.date: 12/03/2020
-ms.openlocfilehash: f424cd85e26511f8fe3d863b1f2c77bc1e5e7537
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.date: 12/04/2020
+ms.openlocfilehash: baa99518498b05b0a658627d9908298eb58f7775
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96583010"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602742"
 ---
-# <a name="co-sell-option-in-partner-center"></a>İş Ortağı Merkezi’nde ortak satış seçeneği
+# <a name="co-sell-option-in-the-commercial-marketplace"></a>Ticari Market 'teki ortak satış seçeneği
 
-Ortak satış sekmesi hakkında bilgi sağlanması tamamen isteğe bağlıdır. [Ortak satış Için hazırlık ve IP ortak satışı Incentivized durumu](/legal/marketplace/certification-policies.md#3000-requirements-for-co-sell-status)elde etmek gerekir. Sağladığınız bilgiler, Microsoft Sales ekipleri tarafından müşteri gereksinimlerine uygun olarak değerlendirme yaparken teklifiniz hakkında daha fazla bilgi edinmek için kullanılacaktır. Doğrudan müşteriler tarafından kullanılamaz. Daha fazla bilgi için bkz. [Microsoft Ile ortak satış](https://partner.microsoft.com/membership/co-sell-with-microsoft).
+**Microsoft Ile ortak satış** hakkında bilgi sağlamak tamamen isteğe bağlıdır. [Ortak satış Için hazırlık ve IP ortak satışı Incentivized durumu](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)elde etmek gerekir. Sağladığınız bilgiler, Microsoft Sales ekipleri tarafından müşteri gereksinimlerine uygun olarak değerlendirme yaparken teklifiniz hakkında daha fazla bilgi edinmek için kullanılacaktır. Doğrudan müşteriler tarafından kullanılamaz. Daha fazla bilgi için bkz. [Microsoft Ile ortak satış](https://partner.microsoft.com/membership/co-sell-with-microsoft).
 
 Iş Ortağı Merkezi 'ndeki ortak satış seçeneği şu anda aşağıdaki teklif türlerini kullanabilir.
 

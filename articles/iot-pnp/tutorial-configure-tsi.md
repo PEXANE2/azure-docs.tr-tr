@@ -7,12 +7,12 @@ ms.date: 10/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: ad5c6f205fc832eb125e52b4135990fc58742e62
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e1eeb85980430e33446329b5f25ff963ab1c8027
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453237"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600852"
 ---
 # <a name="preview-tutorial-create-and-connect-to-time-series-insights-gen2-to-store-visualize-and-analyze-iot-plug-and-play-device-telemetry"></a>Önizleme öğreticisi: IoT Tak ve Kullan cihaz telemetrisini depolamak, görselleştirmek ve çözümlemek için Time Series Insights Gen2 oluşturma ve bağlama
 
@@ -124,7 +124,7 @@ Ardından, DTDL cihaz modelinizi Azure Time Series Insights (TSI) içinde varlı
 * Tür adı, model adı ya da görünen ad olabilir.
 * Model açıklaması türün açıklaması olur.
 * Sayısal bir şemaya sahip her telemetri için en az bir tür değişkeni oluşturulur.
-  * Değişkenler için yalnızca sayısal veri türleri kullanılabilir, ancak bir değer dönüştürülebileceği başka bir tür olarak gönderilmişse, örneğin gibi bir `"0"` [dönüştürme](/rest/api/time-series-insights/reference-time-series-expression-syntax.md#conversion-functions) işlevi kullanabilirsiniz `toDouble` .
+  * Değişkenler için yalnızca sayısal veri türleri kullanılabilir, ancak bir değer dönüştürülebileceği başka bir tür olarak gönderilmişse, örneğin gibi bir `"0"` [dönüştürme](/rest/api/time-series-insights/reference-time-series-expression-syntax#conversion-functions) işlevi kullanabilirsiniz `toDouble` .
 * Değişken adı telemetri adı ya da görünen ad olabilir.
 * Değişken zaman serisi Ifadesini tanımladığınızda, telemetride telemetri adına ve veri türüne bakın.
 
@@ -138,7 +138,7 @@ Ardından, DTDL cihaz modelinizi Azure Time Series Insights (TSI) içinde varlı
 ![DTDL-zaman serisi model türü](./media/tutorial-configure-tsi/DTDL-to-TSM-Type.png)
 
 > [!NOTE]
-> Bu örnekte üç değişken gösterilmektedir, ancak her tür en fazla 100 olabilir. Farklı değişkenler gerektiğinde farklı hesaplamalar gerçekleştirmek için aynı telemetri değerine başvurabilir. Filtrelerin, toplamların ve skaler işlevlerin tam listesi için bkz. [Time Series Insights Gen2 zaman serisi ifade sözdizimi](/rest/api/time-series-insights/reference-time-series-expression-syntax.md).
+> Bu örnekte üç değişken gösterilmektedir, ancak her tür en fazla 100 olabilir. Farklı değişkenler gerektiğinde farklı hesaplamalar gerçekleştirmek için aynı telemetri değerine başvurabilir. Filtrelerin, toplamların ve skaler işlevlerin tam listesi için bkz. [Time Series Insights Gen2 zaman serisi ifade sözdizimi](/rest/api/time-series-insights/reference-time-series-expression-syntax).
 
 Bir metin Düzenleyicisi açın ve aşağıdaki JSON 'ı yerel sürücünüze kaydedin:
 
@@ -226,4 +226,4 @@ Grafik bölmesine geri gidin ve cihazınızı **> cihaz Fleet**' i genişletin. 
 
 * Ortamınızın zaman serisi modeline derinlemesine bir genel bakış için, [Azure Time Series Insights Gen2 makalesinde zaman serisi modeli](../time-series-insights/concepts-model-overview.md) konusuna bakın.
 
-* Sorgu API 'Lerini ve zaman serisi Ifade sözdizimini incelemek için bkz. [Azure Time Series Insights Gen2 Query API 'leri](/rest/api/time-series-insights/reference-query-apis.md).
+* Sorgu API 'Lerini ve zaman serisi Ifade sözdizimini incelemek için bkz. [Azure Time Series Insights Gen2 Query API 'leri](/rest/api/time-series-insights/reference-query-apis).

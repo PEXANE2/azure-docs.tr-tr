@@ -3,12 +3,12 @@ title: Azure Lab Services kullanmaya başlayın
 description: Bu makalede Azure Lab Services ile çalışmaya başlama açıklanmaktadır.
 ms.topic: article
 ms.date: 11/18/2020
-ms.openlocfilehash: 6fb0da7f91e0eecdeefecdb6635b657245fda9af
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 44afe13fb6f555b12dfce939ce8e88e3af8dc7ef
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96434439"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602674"
 ---
 # <a name="get-started-with-lab-services"></a>Laboratuvar Hizmetleri 'ni kullanmaya başlama 
 
@@ -115,12 +115,8 @@ Bir öğrenciye sanal makineye bağlanma sorunları yaşanıyorsa veya başka bi
 
 1. [Azure Laboratuvar Hizmetleri Web sitesinden](https://labs.azure.com/) pencerenin sol tarafındaki **Kullanıcılar** ' a tıklayın.
 1. Pencerenin üst kısmında, **Kullanıcı Ekle** ' ye tıklayın ve **e-posta adresine göre Ekle**' yi seçin. 
-
-    :::image type="content" source="./media/how-to-configure-student-usage/add-users-button.png" alt-text="' Kullanıcı Ekle ' düğmesi":::
 1. Sağ tarafta görünen **kullanıcıları Ekle** bölmesinde, öğrenciler için e-posta adreslerini ayrı satırlara veya noktalı virgülle ayırarak tek bir satıra girin.
 1. **Kaydet**’e tıklayın.
-
-    :::image type="content" source="./media/get-started-manage-labs/add-students.png" alt-text="Laboratuvarınızın öğrencileri ekleyin":::
 1. Kullanıcı listeniz artık e-postalar, durum, davet ve kota saatleriyle güncelleştirilecektir.
 
     Öğrenciler bir laboratuvar için kaydedildikten sonra, Azure Active Directory adları ilk ve son adlarla güncelleştirilir.

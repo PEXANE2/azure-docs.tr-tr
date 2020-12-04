@@ -1,5 +1,5 @@
 ---
-title: Azure AD Connect Sync v2 uç noktası genel önizlemesi | Microsoft Docs
+title: Azure AD Connect Sync v2 uç noktası | Microsoft Docs
 description: Bu belge, Azure AD Connect Sync v2 uç noktaları API 'SI için güncelleştirmeleri içerir.
 services: active-directory
 author: billmath
@@ -12,34 +12,24 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4b9b73e30094ed7d07e19f4b93f2fe8ab8f6af3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ffb298bca53a06bd1ef14a750648fe6e76fd45ee
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339430"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602113"
 ---
-# <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect Sync v2 Endpoint API (Genel Önizleme) 
+# <a name="azure-ad-connect-sync-v2-endpoint-api"></a>Azure AD Connect eşitleme v2 uç nokta API’si 
 Microsoft, Azure Active Directory için eşitleme hizmeti işlemlerinin performansını geliştiren Azure AD Connect için yeni bir uç nokta (API) dağıttı. Yeni v2 uç noktasından yararlanarak, Azure AD 'ye dışarı ve içeri aktarma sırasında dikkat çekici performans kazanımları yaşarsınız. Bu yeni uç nokta şunları destekler:
     
- -  en fazla 250 k üye içeren grupları eşitleme
+ - en fazla 250 k üye içeren grupları eşitleme
  - Azure AD 'ye verme ve içeri aktarma ile ilgili performans artışı
  
 > [!NOTE]
 > Şu anda, yeni uç noktanın geri yazılan Microsoft 365 grupları için yapılandırılmış bir Grup boyutu sınırı yok. Bu, Active Directory ve eşitleme döngüleriyle gecikme süreleriyle ilgili bir etkiye sahip olabilir. Grup boyutlarınızı artımlı olarak artırmanız önerilir.  
 
-
 ## <a name="pre-requisites"></a>Ön koşullar  
 Yeni v2 uç noktasını kullanabilmek için, [Azure AD Connect sürüm 1.5.30.0](https://www.microsoft.com/download/details.aspx?id=47594) veya üstünü kullanmanız ve aşağıdaki dağıtım adımlarını izleyerek Azure AD Connect sunucunuz için v2 uç noktasını etkinleştirmeniz gerekir.   
-
->[!NOTE]
->Şu anda bu genel Önizleme yalnızca Azure genel bulutunda mevcuttur ve [Ulusal bulutlar](../develop/authentication-national-cloud.md)için kullanılamaz.
-
-### <a name="public-preview-limitations"></a>Genel önizleme sınırlamaları  
-Bu sürümde çok sayıda test çalışırken sorunlarla karşılaşabilirsiniz. Bu genel önizleme sürümünün amaçlarından biri, bu tür sorunları bulup çözmelidir.  
-
->[!IMPORTANT]
-> Bu genel önizleme sürümü için destek sağlanır, Microsoft, hemen karşılaşabileceğiniz tüm sorunları her zaman çözemeyebilir. Bu nedenle, üretim ortamınızda bu sürümü dağıtmadan önce en iyi yargılarınızı kullanmanız önerilir. 
 
 ## <a name="deployment-guidance"></a>Dağıtım Kılavuzu 
 V2 uç noktasını kullanmak için [Azure AD Connect sürüm 1.5.30.0](https://www.microsoft.com/download/details.aspx?id=47594) veya üstünü dağıtmanız gerekir. İndirmek için belirtilen bağlantıyı kullanın. 
@@ -184,17 +174,9 @@ V2 uç noktasını etkinleştirdiyseniz ve geri almanız gerekiyorsa, şu adıml
 > V2 'den v1 uç noktalarına geri geçiş yaparken, 50 ' den fazla üye ile eşitlenen gruplar, Azure AD 'ye sağlanan ve AD için sağlanan Birleşik grupları Microsoft 365 her iki AD grubu için tam eşitleme çalıştırıldıktan sonra silinir. 
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular  
-**S: bir müşteri, üretimde bu özelliği kullanabilir mi?**  
-</br>Evet, bu, daha önce bahsedilen desteklenmediği uyarısıyla ile üretim ortamlarında kullanılabilir.
  
-**S: herhangi bir şey yanlış gittiğinde müşteri iletişim konusu kimler olabilir?**  
-</br>Bu özelliği kullanırken desteğe ihtiyacınız varsa bir destek talebi açmanız gerekir. 
- 
-**S: genel önizleme için sık sık güncelleştirmeler bekleyebilir miyim?**  
-</br>Genel Önizleme sırasında devam eden sınırlı bir ölçüde değişiklik vardır.Üretimde genel önizleme özelliklerini dağıttığınızda bu riski değerlendirmelisiniz.  
- 
-**S: sonraki kilometre taşına zaman**  
-</br>Genel Önizleme özellikleri, daha fazla kilometre taşlarına ulaşmadan önce geri alınabilir ve muhtemelen yeniden tasarlanmıştır.  
+**Yeni bitiş noktası, yükseltmeler ve yeni yüklemeler için varsayılan olarak ne zaman olur?**  
+</br>Ocak 2021 ' de karşıdan yüklenmek üzere yayımlanacak AADConnect 'in yeni bir sürümünü planlıyoruz. Bu sürüm varsayılan olarak v2 uç noktasını kullanır ve herhangi bir ek yapılandırma için 50K 'den büyük olan eşitleme gruplarını etkinleştirir. Bu sürüm daha sonra uygun sunuculara otomatik olarak yükseltme için yayımlanacak.
  
 ## <a name="next-steps"></a>Sonraki adımlar
 

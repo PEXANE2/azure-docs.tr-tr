@@ -3,12 +3,12 @@ title: Azure Işlevleri 'nde proxy ile çalışma
 description: Azure İşlev Proxy'leri kullanmaya genel bakış
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 3e08b9cf633162cc7015f47774b043cf58c115a0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fb263239f99bcb4ec4c893b700d5c1cce078659f
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020407"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601382"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Azure İşlev Proxy'leri çalışın
 
@@ -28,7 +28,7 @@ Bu bölümde, Işlevler portalında bir ara sunucu oluşturma konusu gösterilme
 3. Ara sunucunuz için bir ad sağlayın.
 4. **Yönlendirme şablonunu** ve **http yöntemlerini** belirterek bu işlev uygulamasında gösterilen uç noktayı yapılandırın. Bu parametreler, [http tetikleyicilerinin]kurallarına göre davranır.
 5. **Arka uç URL 'sini** başka bir uç noktaya ayarlayın. Bu uç nokta, başka bir işlev uygulamasındaki bir işlev veya başka bir API olabilir. Değerin statik olması gerekmez ve [özgün istemci isteğinden] [uygulama ayarlarına] ve parametrelerine başvurabilir.
-6. **Oluştur**'a tıklayın.
+6. **Oluştur**’a tıklayın.
 
 Proxy 'niz artık işlev uygulamanızda yeni bir uç nokta olarak var. Bir istemci perspektifinden, Azure Işlevlerinde bir HttpTrigger ile eşdeğerdir. Proxy URL 'sini kopyalayıp en sevdiğiniz HTTP istemcisiyle test ederek yeni proxy 'nizi deneyebilirsiniz.
 
@@ -55,11 +55,11 @@ Bir ara sunucu yapılandırmasının statik olması gerekmez. Özgün istemci is
 ### <a name="reference-local-functions"></a><a name="reference-localhost"></a>Yerel işlevlere başvur
 `localhost`Aynı işlev uygulaması içindeki bir işleve, gidiş dönüş proxy isteği olmadan doğrudan başvurmak için ' yi kullanabilirsiniz.
 
-`"backendurl": "https://localhost/api/httptriggerC#1"` rotada yerel bir HTTP tetiklemeli işleve başvuracaktır `/api/httptriggerC#1`
+`"backendUri": "https://localhost/api/httptriggerC#1"` rotada yerel bir HTTP tetiklemeli işleve başvuracaktır `/api/httptriggerC#1`
 
  
 >[!Note]  
->İşleviniz *işlev, yönetici veya sys* Yetkilendirme düzeylerini kullanıyorsa, özgün işlev URL 'sine göre kodu ve ClientID sağlamanız gerekir. Bu durumda, başvurunun şöyle görünmesi gerekir: `"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"` Bu anahtarların [uygulama ayarlarında] depolanmasını ve proxy 'leriniz ile başvurmayı öneririz. Bu, kaynak kodunuzda gizli dizileri depolamayı önler. 
+>İşleviniz *işlev, yönetici veya sys* Yetkilendirme düzeylerini kullanıyorsa, özgün işlev URL 'sine göre kodu ve ClientID sağlamanız gerekir. Bu durumda, başvurunun şöyle görünmesi gerekir: `"backendUri": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"` Bu anahtarların [uygulama ayarlarında] depolanmasını ve proxy 'leriniz ile başvurmayı öneririz. Bu, kaynak kodunuzda gizli dizileri depolamayı önler. 
 
 ### <a name="reference-request-parameters"></a><a name="request-parameters"></a>Başvuru isteği parametreleri
 

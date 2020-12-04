@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7ee2e1e6a46ce07d95797362cde313dc8e0b0fa5
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 6b45bad7c439fb98737f0caee08b2996323fbd3b
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683548"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602708"
 ---
 # <a name="tutorial-use-serverless-sql-pool-with-power-bi-desktop--create-a-report"></a>Öğretici: Power BI Desktop & bir rapor oluşturmak için sunucusuz SQL havuzu kullanma
 
@@ -100,7 +100,7 @@ Demo verileri aşağıdaki veri kümelerini içerir:
 
 2000 ve 2010 ' den kaynaklanan her bir ABD İlçesi için cinsiyet ve yarış tarafından popülasyon, Parquet biçiminde ABD 'de Cennial
 
-| Klasör yolu                                                  | Description                                                  |
+| Klasör yolu                                                  | Açıklama                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | /Release                                                    | Tanıtım depolama hesabındaki veriler için üst klasör               |
 | /Release/us_population_county/                               | Veri dosyalarını, Hive/Hadoop bölümlendirme şeması kullanılarak yıla göre bölümlenen Parquet biçiminde doldurma. |
@@ -158,7 +158,7 @@ Bu raporu kullanarak işiniz bittiğinde, aşağıdaki adımlarla kaynakları si
 1. Depolama hesabı için kimlik bilgilerini sil
 
    ```sql
-   DROP EXTENAL DATA SOURCE AzureOpenData
+   DROP EXTERNAL DATA SOURCE AzureOpenData
    ```
 
 2. Görünümü Sil

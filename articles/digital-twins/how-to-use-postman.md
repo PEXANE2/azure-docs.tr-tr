@@ -1,5 +1,5 @@
 ---
-title: Postman ile istek yapma
+title: Postman ile istekte bulunma
 titleSuffix: Azure Digital Twins
 description: Azure dijital TWINS API 'Lerini test etmek için Postman yapılandırma ve kullanma hakkında bilgi edinin.
 ms.author: baanders
@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: f9be9dd94aad8c206b562f2c984ec944f70d3957
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5dbe161af172b65919328fca0b272f3b658f1b32
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188079"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600498"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>Azure dijital TWINS API 'Lerine istek göndermek için Postman kullanma
 
@@ -25,7 +25,7 @@ Bu makalede, [Postman Rest Istemcisinin](https://www.getpostman.com/) Azure diji
 1. Bir Postman koleksiyonu kurun ve Postman REST istemcisini, kimlik doğrulaması için taşıyıcı belirtecinizi kullanacak şekilde yapılandırın.
 1. Azure dijital TWINS API 'Lerine bir istek oluşturmak ve göndermek için yapılandırılmış Postman 'ı kullanın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure dijital TWINS API 'Lerine erişmek için Postman kullanmaya devam etmek için bir Azure dijital TWINS örneği ayarlamanız ve Postman 'yı indirmeniz gerekir. Bu bölümün geri kalanında bu adımlarda adım adım gösterilmektedir.
 
@@ -130,7 +130,7 @@ Azure dijital TWINS API 'Lerinden birine bir Postman isteği yapmak için API 'n
 
 Örnek sorgu ile devam etmek için bu makalede sorgu API 'SI (ve [başvuru belgeleri](/rest/api/digital-twins/dataplane/query/querytwins)) kullanılarak bir örnekteki tüm dijital TWINS 'leri sorgulama yapılır.
 
-1. Başvuru belgelerinden istek URL 'sini ve türünü alın. Sorgu API 'SI için bu *gönderi https://digitaltwins-name.digitaltwins.azure.net/query?api-version=2020-10-31* olur.
+1. Başvuru belgelerinden istek URL 'sini ve türünü alın. Sorgu API 'SI için bu *gönderi `https://digitaltwins-name.digitaltwins.azure.net/query?api-version=2020-10-31`* olur.
 1. Postman 'da, istek için türü ayarlayın ve URL 'de yer tutucuları gerektiği şekilde doldurarak istek URL 'sini girin. Bunun nedeni, [*Önkoşul*](#prerequisites) bölümünde örneğinizin **ana bilgisayar adını** kullanacaksınız.
     
    :::image type="content" source="media/how-to-use-postman/postman-request-url.png" alt-text="Yeni isteğin ayrıntılarında, başvuru belgelerindeki sorgu URL 'SI istek URL 'si kutusuna doldurulmuştur." lightbox="media/how-to-use-postman/postman-request-url.png":::

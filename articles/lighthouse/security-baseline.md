@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 10ad0b83f3c85b48f9d066e1feec8d8aac4dd057
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: a6a1b41dd4ede055ba81c069c2164bb36da99876
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533681"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602317"
 ---
 # <a name="azure-security-baseline-for-azure-lighthouse"></a>Azure için Azure Güvenlik temeli açık
 
@@ -306,7 +306,7 @@ Bir hizmet sağlayıcı, güvenlik ekibinin Temsilcili müşteri kaynaklarını 
 
 ## <a name="logging-and-threat-detection"></a>Günlüğe Kaydetme ve Tehdit Algılama
 
-*Daha fazla bilgi için bkz. [Azure Güvenlik Karşılaştırması: Günlüğe Kaydetme ve Tehdit Algılama](/azure/security/benchmarks/security-controls-v2-logging-threat-protection).*
+*Daha fazla bilgi için bkz. [Azure Güvenlik Karşılaştırması: Günlüğe Kaydetme ve Tehdit Algılama](/azure/security/benchmarks/security-controls-v2-logging-threat-detection).*
 
 ### <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1: Azure kaynakları için tehdit algılamayı etkinleştirme
 
@@ -676,7 +676,7 @@ Bu strateji kapsamında aşağıdaki öğeler için rehberlik, ilkeler ve standa
 
 -   Farklı tehdit ve saldırı senaryolarına yönelik düzeltme stratejisi
 
--   Internet Edge ve giriş ve çıkış stratejisi/Azure/Security/benchmarks/Security-Controls-v2-Logging-Threat-Protection
+-   Internet Edge ve giriş ve çıkış stratejisi/Azure/Security/benchmarks/Security-Controls-v2-Logging-Threat-Detection
 -   Hibrit bulut ve şirket içi bağlantı stratejisi
 
 -   Güncel ağ güvenliği yapıtları (ağ diyagramları, başvuru amaçlı ağ mimarisi vb.)
@@ -748,7 +748,7 @@ Daha fazla bilgi için aşağıdaki başvuruları inceleyin:
 
 - [Azure Güvenlik Karşılaştırması: Günlüğe kaydetme ve tehdit algılama](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
 
-- [Azure Güvenlik Karşılaştırması: Olay yanıtı](/azure/security/benchmarks/security-benchmark-v2-incident-response)
+- [Azure Güvenlik Karşılaştırması: Olay yanıtı](/azure/security/benchmarks/security-controls-v2-incident-response)
 
 - [Azure Güvenliği En İyi Deneyimi 4 - Süreç. Bulut için Olay Yanıt Sürecini Güncelleştirme](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud)
 

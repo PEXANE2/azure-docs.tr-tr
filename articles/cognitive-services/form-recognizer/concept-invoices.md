@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: eb1be4c78be0eb7fb943700b168fa82ede4d3861
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9a3a6bd6489baea90ed4143b42a09e7d697bbc50
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458391"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602453"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Form tanıyıcı önceden oluşturulmuş fatura modeli
 
@@ -80,8 +80,8 @@ Fatura hizmeti metin, tablolar ve 26 fatura alanlarını ayıklar. JSON çıkı�
 | CustomerId | string | Müşterinin başvuru KIMLIĞI | CıD-12345 |  |
 | PurchaseOrder | string | Bir satınalma siparişi başvuru numarası | PO-3333 | |  |
 | InvoiceId | string | Bu belirli faturaya ait kimlik (genellikle "fatura numarası") | INV-100 | |  |
-| InvoiceDate | date | Faturanın verildiği tarih | 11/15/2019 | 
-| DueDate | date | Bu faturaya ait tarih ödemesi vadesi | 12/15/2019 | 2019-12-15 | 2019-11-15 |
+| InvoiceDate | tarih | Faturanın verildiği tarih | 11/15/2019 | 
+| DueDate | tarih | Bu faturaya ait tarih ödemesi vadesi | 12/15/2019 | 2019-12-15 | 2019-11-15 |
 | SatıcıAdı | string | Bu faturayı oluşturan satıcı | CONTOSO LTD. | |
 | VendorAddress | string | Satıcının posta adresi | 123 456th St New York, NY, 10001 | |
 | VendorAddressRecipient | string | VendorAddress ile ilişkili ad | Contoso yönetim merkezleri | |
@@ -99,9 +99,9 @@ Fatura hizmeti metin, tablolar ve 26 fatura alanlarını ayıklar. JSON çıkı�
 | ServiceAddressRecipient | string | ServiceAddress ile ilişkili ad | Microsoft Hizmetleri | |
 | Havaletanceaddress | string | Müşteri için açık havale veya ödeme adresi | 123 New York, NY, 10001 havale |  |
 | Havaletanceaddressrecipient | string | Havaletanceaddress ile ilişkili ad | Contoso faturalandırma |  |
-| ServiceStartDate | date | Hizmet döneminin ilk tarihi (örneğin, bir yardımcı program fatura hizmeti dönemi) | 14.10.2019 | 2019-10-14 |
-| ServiceEndDate | date | Hizmet döneminin bitiş tarihi (örneğin, bir yardımcı program fatura hizmeti dönemi) | 11/14/2019 | 2019-11-14 |
-| Previousunpaıdbakiye | sayı | Açık önceden Ödenmemiş bakiye | 500,00 ABD doları | 500 |
+| ServiceStartDate | tarih | Hizmet döneminin ilk tarihi (örneğin, bir yardımcı program fatura hizmeti dönemi) | 14.10.2019 | 2019-10-14 |
+| ServiceEndDate | tarih | Hizmet döneminin bitiş tarihi (örneğin, bir yardımcı program fatura hizmeti dönemi) | 11/14/2019 | 2019-11-14 |
+| Previousunpaıdbakiye | sayı | Açık önceden Ödenmemiş bakiye | $500,00 | 500 |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -112,4 +112,4 @@ Fatura hizmeti metin, tablolar ve 26 fatura alanlarını ayıklar. JSON çıkı�
 ## <a name="see-also"></a>Ayrıca bkz.
 
 * [Form Tanıma nedir?](./overview.md)
-* [REST API başvuru belgeleri](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeInvoiceAsync)
+* [REST API başvuru belgeleri](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9843c2794cbb1a96291)

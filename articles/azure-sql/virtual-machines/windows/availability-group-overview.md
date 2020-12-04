@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d04f689dec3a3c182c0da23007247c20c4f8063d
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 8573e45270dfd1ff984eae3dc5fbf1dc5f2fc6da
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504399"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600872"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Azure VM 'lerinde SQL Server her zaman kullanılabilirlik grubu
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -39,7 +39,9 @@ Aşağıdaki diyagramda Azure VM 'lerinde SQL Server için bir kullanılabilirli
 
 Yedeklilik ve yüksek kullanılabilirliği artırmak için SQL Server VM 'Lerin aynı [kullanılabilirlik kümesinde](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview)veya farklı [kullanılabilirlik bölgelerinde](../../../availability-zones/az-overview.md)olması gerekir.
 
-Kullanılabilirlik kümesi, aynı Kullanılabilirlik alanında iki Arasız olarak yapılandırılan kaynakların gruplandırmasıdır. Bu, dağıtım toplaması sırasında gruptaki birden fazla kaynağın etkilenmelerini engeller. 
+Aynı Kullanılabilirlik kümesine bir VM kümesinin yerleştirilmesi, donanım arızasından kaynaklanan bir veri merkezi içindeki kesintilerden (bir kullanılabilirlik kümesindeki VM 'Ler, kaynakları paylaşmaz) veya güncelleştirmelerden (bir kullanılabilirlik kümesindeki VM 'ler aynı anda güncellenmez) karşı koruma sağlar. Bir bölgedeki veri merkezleri kümesini temsil eden her bölge ile tüm veri merkezinde hataya karşı koruma Kullanılabilirlik Alanları.  Kaynakların farklı Kullanılabilirlik Alanları yerleştirildiğinden emin olduktan sonra, tüm sanal makinelerinizi çevrimdışına alabilir.
+
+Azure VM 'Leri oluştururken, kullanılabilirlik kümelerini yapılandırma ile Kullanılabilirlik Alanları arasında seçim yapmanız gerekir.  Azure VM, her ikisine de katılamaz.
 
 
 ## <a name="connectivity"></a>Bağlantı 
@@ -79,17 +81,17 @@ Aşağıdaki tabloda kullanılabilir seçeneklerin karşılaştırması verilmi�
 |**SQL Server sürümü** |2016 + |2016 +|2016 +|2012 +|
 |**SQL Server yayını** |Enterprise |Enterprise |Enterprise |Kurumsal, standart|
 |**Windows Server sürümü**| 2016 + | 2016 + | 2016 + | Tümü|
-|**Sizin için kümeyi oluşturur**|Yes|Yes | Yes |Hayır|
-|**Sizin için kullanılabilirlik grubunu oluşturur** |Yes |Hayır|Hayır|Hayır|
-|**Bağımsız olarak dinleyici ve yük dengeleyici oluşturur** |Hayır|Hayır|Hayır|Yes|
-|**Bu yöntem kullanılarak DNN dinleyicisi oluşturulabilir mi?**|Hayır|Hayır|Hayır|Yes|
+|**Sizin için kümeyi oluşturur**|Evet|Evet | Evet |Hayır|
+|**Sizin için kullanılabilirlik grubunu oluşturur** |Evet |Hayır|Hayır|Hayır|
+|**Bağımsız olarak dinleyici ve yük dengeleyici oluşturur** |Hayır|Hayır|Hayır|Evet|
+|**Bu yöntem kullanılarak DNN dinleyicisi oluşturulabilir mi?**|Hayır|Hayır|Hayır|Evet|
 |**WSFC çekirdek yapılandırması**|Bulut tanığı|Bulut tanığı|Bulut tanığı|Tümü|
-|**Birden çok bölgeye sahip DR** |Hayır|Hayır|Hayır|Yes|
-|**Multisubnet desteği** |Yes|Yes|Yes|Yes|
-|**Mevcut bir AD için destek**|Yes|Yes|Yes|Yes|
-|**Aynı bölgede multizone ile DR**|Yes|Yes|Yes|Yes|
-|**AD olmadan dağıtılmış AG**|Hayır|Hayır|Hayır|Yes|
-|**Küme olmadan dağıtılmış AG** |Hayır|Hayır|Hayır|Yes|
+|**Birden çok bölgeye sahip DR** |Hayır|Hayır|Hayır|Evet|
+|**Multisubnet desteği** |Evet|Evet|Evet|Evet|
+|**Mevcut bir AD için destek**|Evet|Evet|Evet|Evet|
+|**Aynı bölgede multizone ile DR**|Evet|Evet|Evet|Evet|
+|**AD olmadan dağıtılmış AG**|Hayır|Hayır|Hayır|Evet|
+|**Küme olmadan dağıtılmış AG** |Hayır|Hayır|Hayır|Evet|
 
 Daha fazla bilgi için bkz. [Azure Portal](availability-group-azure-portal-configure.md), [Azure CLI/PowerShell](./availability-group-az-commandline-configure.md), [hızlı başlangıç şablonları](availability-group-quickstart-template-configure.md)ve [el ile](availability-group-manually-configure-prerequisites-tutorial.md).
 

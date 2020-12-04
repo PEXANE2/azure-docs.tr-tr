@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29580564ffa2fed579065e6a8551a6f44597e41a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: d8825dcb2d8dbcf4a1296d8bace84b3d2716687f
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433266"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602052"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Azure Active Directory varsayılan kullanıcı izinleri nelerdir?
 Azure Active Directory'de (Azure AD) tüm kullanıcılara varsayılan olarak belirli izinler verilir. Kullanıcının erişimi, Kullanıcı türünden, [rol atamalarından](active-directory-users-assign-role-azure-portal.md)ve ayrı nesnelerin sahiplerinden oluşur. Bu makalede bu varsayılan izinler ve açıklanmakta ve üye ile konuk varsayılan değerleri karşılaştırılmaktadır. Varsayılan Kullanıcı izinleri yalnızca Azure AD 'deki Kullanıcı ayarları ' nda değiştirilebilir.
@@ -32,7 +32,7 @@ Alınan varsayılan izinler kümesi, kullanıcının kiracının (Üye Kullanıc
 
 **Alan** | **Üye kullanıcı izinleri** | **Varsayılan Konuk Kullanıcı izinleri** | **Kısıtlı Konuk Kullanıcı izinleri (Önizleme)**
 ------------ | --------- | ---------- | ----------
-Kullanıcılar ve ilgili kişiler | <ul><li>Tüm kullanıcıların ve kişilerin listesini listeleme<li>Kullanıcıların ve kişilerin tüm genel özelliklerini okuma</li><li>Konuk davet etme<li>Kendi parolasını değiştirme<li>Kendi cep telefonu numarasını yönetme<li>Kendi fotoğrafını yönetme<li>Kendi yenileme belirteçlerini geçersiz kılma</li></ul> | <ul><li>Kendi özelliklerini okuma<li>Diğer kullanıcıların ve kişilerin görünen ad, e-posta, oturum açma adı, fotoğraf, Kullanıcı asıl adı ve Kullanıcı türü özelliklerini okuyun<li>Kendi parolasını değiştirme<li>Başka bir kullanıcıyı görünen ad, Kullanıcı asıl adı veya ObjectID (izin veriliyorsa) ile ara<li>Diğer kullanıcıların yönetim ve doğrudan rapor bilgilerini okuyun</li></ul> | <ul><li>Kendi özelliklerini okuma<li>Kendi parolasını değiştirme</li></ul>
+Kullanıcılar ve ilgili kişiler | <ul><li>Tüm kullanıcıların ve kişilerin listesini listeleme<li>Kullanıcıların ve kişilerin tüm genel özelliklerini okuma</li><li>Konuk davet etme<li>Kendi parolasını değiştirme<li>Kendi cep telefonu numarasını yönetme<li>Kendi fotoğrafını yönetme<li>Kendi yenileme belirteçlerini geçersiz kılma</li></ul> | <ul><li>Kendi özelliklerini okuma<li>Diğer kullanıcıların ve kişilerin görünen ad, e-posta, oturum açma adı, fotoğraf, Kullanıcı asıl adı ve Kullanıcı türü özelliklerini okuyun<li>Kendi parolasını değiştirme<li>ObjectID tarafından başka bir kullanıcı ara (izin veriliyorsa)<li>Diğer kullanıcıların yönetim ve doğrudan rapor bilgilerini okuyun</li></ul> | <ul><li>Kendi özelliklerini okuma<li>Kendi parolasını değiştirme</li></ul>
 Gruplar | <ul><li>Güvenlik grubu oluşturma<li>Microsoft 365 grupları oluşturma<li>Tüm grupların listesini listeleme<li>Grupların tüm özelliklerini okuma<li>Gizli olmayan grup üyeliklerini okuma<li>Birleştirilmiş grup için gizli Microsoft 365 grup üyeliklerini oku<li>Kullanıcının sahip olduğu grupların özelliklerini, sahipliğini ve üyeliğini yönetme<li>Sahip olunan gruplara konuk ekleme<li>Dinamik üyelik ayarlarını yönetme<li>Sahip olunan grupları silme<li>Sahip olunan Microsoft 365 gruplarını geri yükleme</li></ul> | <ul><li>Üyelik ve sahiplik (hatta katılmamış gruplar) dahil olmak üzere, gizli olmayan grupların özelliklerini okuyun<li>Birleştirilmiş gruplar için gizli Microsoft 365 grup üyeliklerini oku<li>Grupları görünen ada veya ObjectID 'ye göre ara (izin veriliyorsa)</li></ul> | <ul><li>Birleştirilmiş gruplar için nesne kimliğini oku<li>Bazı Microsoft 365 uygulamalarında birleştirilmiş grupların üyeliğini ve sahipliğini okuma (izin veriliyorsa)</li></ul>
 Uygulamalar | <ul><li>Yeni uygulama kaydetme (oluşturma)<li>Tüm uygulamaların listesini listeleme<li>Kayıtlı ve kurumsal uygulamaların özelliklerini okuma<li>Sahip olunan uygulamaların uygulama özelliklerini, atamalarını ve kimlik bilgilerini yönetme<li>Kullanıcı için uygulama parolasını oluşturma veya silme<li>Sahip olunan uygulamaları silme<li>Sahip olunan uygulamaları geri yükleme</li></ul> | <ul><li>Kayıtlı ve kurumsal uygulamaların özelliklerini okuma</li></ul> | <ul><li>Kayıtlı ve kurumsal uygulamaların özelliklerini okuma
 Cihazlar</li></ul> | <ul><li>Tüm cihazların listesini listeleme<li>Cihazların tüm özelliklerini okuma<li>Sahip olunan cihazların tüm özelliklerini yönetme</li></ul> | İzin yok | İzin yok

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 09/01/2020
 ms.author: azhussai
-ms.openlocfilehash: 1d88379726cfb6c4218c38b9ccc87005609a9aba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89ba6b7a69c95951a083628f23be68d811c7768c
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89460754"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601620"
 ---
 # <a name="understanding-pricing-for-azure-application-gateway-and-web-application-firewall"></a>Azure Application Gateway ve Web uygulaması güvenlik duvarı için fiyatlandırmayı anlama
 
@@ -254,9 +254,19 @@ Kullanılan ek cu düzeyinde kapsanır sayısı, her örnekle kullanılabilen bo
 
 Sabit fiyat = $0,246 * 730 (saatler) = $179,58
 
-Değişken maliyetler = $0,008 * (3 (örnek birimleri) * 10 (Kapasite birimleri) + 5 (ek kapasite birimleri)) * 730 (saatler) = $204,4
+Değişken maliyetler = $0,008 * (3 (örnek birimleri) * 10 (Kapasite birimleri) + 10 (ek kapasite birimleri)) * 730 (saatler) = $233,6
 
-Toplam maliyet = $179,58 + $204,4 = $383,98
+Toplam maliyet = $179,58 + $233,6 = $413,18
+
+Ancak, yalnızca 7 ek cu düzeyinde kapsanır, işleme kapasitesi eşdeğerini 3 ayrılmış örnek içinde kullanılmak üzere kullanılabilir.
+Bu senaryoda Application Gateway kaynak ölçeklendirildi ve gecikme süresi veya isteklerin düşürülme süresini arttırabilecek olabilir.
+
+Sabit fiyat = $0,246 * 730 (saatler) = $179,58
+
+Değişken maliyetler = $0,008 * (3 (örnek birimleri) * 10 (Kapasite birimleri) + 7 (ek kapasite birimleri)) * 730 (saatler) = $216,08
+
+Toplam maliyet = $179,58 + $216,08 = $395,66
+
 
 ![Manuel ölçek 2 diyagramı.](./media/pricing/manual-scale-2.png)
 

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14a10d296f8451d582d88b8fbcd20685192d9c6a
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 4750de0b9b0d44dbe30571e308227d2123b5e447
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96343629"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602096"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory yenilikler için arşiv var mı?
 
@@ -1363,7 +1363,7 @@ Daha fazla bilgi için bkz. [aylık etkin kullanıcıları faturalama modeline y
 
 2019 Ekim 'de, uygulama galerisine federasyon desteğiyle bu 35 yeni uygulamalar ekledik:
 
-[Çapraz-mobil](../saas-apps/in-case-of-crisis-mobile-tutorial.md), [Juno ile yolculuğa](../saas-apps/juno-journey-tutorial.md), [ExponentHR](../saas-apps/exponenthr-tutorial.md), [kişi](https://tact.ai/assistant/), [opuscapita nakit yönetimi](http://cm1.opuscapita.com/tenantname), [salestim](https://www.salestim.com/), [learnster](../saas-apps/learnster-tutorial.md), [dynaTrace](../saas-apps/dynatrace-tutorial.md), [hunchbuzz](https://login.hunchbuzz.com/integrations/azure/process), en uygun [çalışma](../saas-apps/freshworks-tutorial.md), [ECornell](../saas-apps/ecornell-tutorial.md), [Shiphazı](../saas-apps/shiphazmat-tutorial.md), [NETÜSE Bulut güvenliği](../saas-apps/netskope-cloud-security-tutorial.md), [çekişme](../saas-apps/contentful-tutorial.md), [bindtuning](https://bindtuning.com/login), [HireVue koordinatı – Avrupa](https://www.hirevue.com/), [HireVue koordinatı-usonly](https://www.hirevue.com/), [HireVue koordinatı-US](https://www.hirevue.com/), [WittyParrot BILGI kutusu](https://wittyapi.wittyparrot.com/wittyparrot/api/provision/trail/signup), [cloudmore](../saas-apps/cloudmore-tutorial.md), [Visit.org](../saas-apps/visitorg-tutorial.md), [cambium Xirrus EasyPass Portal](https://login.xirrus.com/azure-signup), [Paylocity](../saas-apps/paylocity-tutorial.md), [posta şanslar!](../saas-apps/mail-luck-tutorial.md), [teamie](https://theteamie.com/), [takımlar için hız](https://velocity.peakup.org/teams/login), [sıgnl4](https://account.signl4.com/manage), [EAB gidilecek Impl](../saas-apps/eab-navigate-impl-tutorial.md), [ekran karşılamaları](https://console.screenmeet.com/), [Omega noktası](https://pi.ompnt.com/), [konuşma](https://speaking.email/FAQ/98/email-access-via-microsoft-intune)için konuşma e-postası, [for Office 365 Direct (iPhone/Android)](https://speaking.email/FAQ/126/email-access-via-microsoft-office-365-direct), [ExactCare SSO](../saas-apps/exactcare-sso-tutorial.md), [ıhealthhome bakım gezinti sistemi](https://ihealthnav.com/account/signin), [qubie](https://qubie.azurewebsites.net/static/adminTab/authorize.html)
+[Çapraz-mobil](../saas-apps/in-case-of-crisis-mobile-tutorial.md), [Juno ile yolculuğa](../saas-apps/juno-journey-tutorial.md), [ExponentHR](../saas-apps/exponenthr-tutorial.md), [kişi](https://tact.ai/assistant/), [opuscapita nakit yönetimi](https://appsource.microsoft.com/product/web-apps/opuscapitagroupoy-1036255.opuscapita-cm), [salestim](https://www.salestim.com/), [learnster](../saas-apps/learnster-tutorial.md), [dynaTrace](../saas-apps/dynatrace-tutorial.md), [hunchbuzz](https://login.hunchbuzz.com/integrations/azure/process), en uygun [çalışma](../saas-apps/freshworks-tutorial.md), [ECornell](../saas-apps/ecornell-tutorial.md), [Shiphazı](../saas-apps/shiphazmat-tutorial.md), [NETÜSE Bulut güvenliği](../saas-apps/netskope-cloud-security-tutorial.md), [çekişme](../saas-apps/contentful-tutorial.md), [bindtuning](https://bindtuning.com/login), [HireVue koordinatı – Avrupa](https://www.hirevue.com/), [HireVue koordinatı-usonly](https://www.hirevue.com/), [HireVue koordinatı-US](https://www.hirevue.com/), [WittyParrot BILGI kutusu](https://wittyapi.wittyparrot.com/wittyparrot/api/provision/trail/signup), [cloudmore](../saas-apps/cloudmore-tutorial.md), [Visit.org](../saas-apps/visitorg-tutorial.md), [cambium Xirrus EasyPass Portal](https://login.xirrus.com/azure-signup), [Paylocity](../saas-apps/paylocity-tutorial.md), [posta şanslar!](../saas-apps/mail-luck-tutorial.md), [teamie](https://theteamie.com/), [takımlar için hız](https://velocity.peakup.org/teams/login), [sıgnl4](https://account.signl4.com/manage), [EAB gidilecek Impl](../saas-apps/eab-navigate-impl-tutorial.md), [ekran karşılamaları](https://console.screenmeet.com/), [Omega noktası](https://pi.ompnt.com/), [konuşma](https://speaking.email/FAQ/98/email-access-via-microsoft-intune)için konuşma e-postası, [for Office 365 Direct (iPhone/Android)](https://speaking.email/FAQ/126/email-access-via-microsoft-office-365-direct), [ExactCare SSO](../saas-apps/exactcare-sso-tutorial.md), [ıhealthhome bakım gezinti sistemi](https://ihealthnav.com/account/signin), [qubie](https://qubie.azurewebsites.net/static/adminTab/authorize.html)
 
 Uygulamalar hakkında daha fazla bilgi için, bkz. [Azure Active Directory SaaS uygulama tümleştirmesi](../saas-apps/tutorial-list.md). Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilgi için, [Azure Active Directory Uygulama galerisinde uygulamanızı](../develop/v2-howto-app-gallery-listing.md)listeleme bölümüne bakın.
 
@@ -2670,7 +2670,7 @@ Aşağıdaki alanlar denetim şemasında değişiyor:
 |Kategori|Bu **hizmet adı** alanıdır. Artık **denetim kategorileri** alanıdır. **Hizmet adı** **Loggedbyservice** alanı olarak yeniden adlandırıldı.|<ul><li>Hesap Sağlama</li><li>Çekirdek Dizin</li><li>Self servis parola sıfırlama</li></ul>|<ul><li>Kullanıcı Yönetimi</li><li>Grup Yönetimi</li><li>Uygulama yönetimi</li></ul>|
 |targetResources|En üst düzeyde **Targetresourcetype** içerir.|&nbsp;|<ul><li>İlke</li><li>Uygulama</li><li>Kullanıcı</li><li>Grup</li></ul>|
 |loggedByService|Denetim günlüğünü oluşturan hizmetin adını sağlar.|Null|<ul><li>Hesap Sağlama</li><li>Çekirdek Dizin</li><li>Self servis parola sıfırlama</li></ul>|
-|Sonuç|Denetim günlüklerinin sonucunu sağlar. Bu, daha önce numaralandırılmıştı, ancak şimdi gerçek değeri gösteriyoruz.|<ul><li>0</li><li>1</li></ul>|<ul><li>Başarılı</li><li>Hata</li></ul>|
+|Result|Denetim günlüklerinin sonucunu sağlar. Bu, daha önce numaralandırılmıştı, ancak şimdi gerçek değeri gösteriyoruz.|<ul><li>0</li><li>1</li></ul>|<ul><li>Başarılı</li><li>Hata</li></ul>|
 
 #### <a name="changed-fields-in-the-sign-in-schema"></a>Oturum açma şemasında değiştirilen alanlar
 Aşağıdaki alanlar, oturum açma şemasında değişiyor:
@@ -2941,7 +2941,7 @@ Aşağıdaki uygulamalar [onaylanan istemci uygulamaları](../conditional-access
 
 - Microsoft Stream
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 - [Azure AD uygulama tabanlı koşullu erişim](../conditional-access/app-based-conditional-access.md)
 
@@ -3605,7 +3605,7 @@ Daha fazla bilgi için bkz. [Azure AD B2C: erişim belirteçleri isteme](../../a
 
 SAML tabanlı SSO uygulamalarını yapılandırırken yapılandırma sayfasında tümleştirmeyi test edebilirsiniz. Oturum açma sırasında bir hatayla karşılaşırsanız, testi deneymenizde hata verebilir ve Azure AD, belirli sorunu çözmek için çözüm adımları sağlar.
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 - [Azure Active Directory uygulama galerisinde bulunmayan uygulamalar için çoklu oturum açmayı yapılandırma](../manage-apps/view-applications-portal.md)
 - [Azure Active Directory içindeki uygulamalarda SAML tabanlı çoklu oturum açma hatalarını ayıklama](../manage-apps/debug-saml-sso-issues.md)
@@ -3740,7 +3740,7 @@ Bir galeri veya Galeri dışı bir uygulama için bir sertifika sona ermek üzer
 
 Bazı kullanıcılar SAML tabanlı çoklu oturum açma için yapılandırılmış kurumsal uygulamalar için bildirim almadı. Bu sorun çözüldü. Azure AD, 7, 30 ve 60 gün içinde süresi dolan sertifikaların bildirimini gönderir. Bu olayı denetim günlüklerinde görebilirsiniz.
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 - [Azure Active Directory 'da federe çoklu oturum açma için sertifikaları yönetme](../manage-apps/manage-certificates-for-federated-single-sign-on.md)
 - [Azure Active Directory portalındaki denetim etkinliği raporları](../reports-monitoring/concept-audit-logs.md)
@@ -3769,7 +3769,7 @@ Daha fazla bilgi için bkz. [Azure AD B2B işbirliği nedir?](../external-identi
 
 [Blog gönderimizde](https://cloudblogs.microsoft.com/enterprisemobility/2018/03/15/the-intune-managed-browser-now-supports-azure-ad-sso-and-conditional-access/)bunun hakkında daha fazla bilgi edinin.
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 - [Uygulama tabanlı koşullu erişim kurulumu](../conditional-access/app-based-conditional-access.md)
 
@@ -4086,7 +4086,7 @@ Aşağıdaki uygulamalar Şubat sonuna kadar eklenecektir:
 
 - Microsoft faturalandırma
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 - [Onaylanan istemci uygulaması gereksinimi](../conditional-access/concept-conditional-access-conditions.md#client-apps)
 - [Azure AD uygulama tabanlı koşullu erişim](../conditional-access/app-based-conditional-access.md)
@@ -4183,7 +4183,7 @@ Yeni Azure Active Directory Yönetim konsolunun genel kullanıma sunulduğuna ve
 
 Yeni Yönetici konsoluna geçişin bir parçası olarak, Azure AD etkinlik günlüklerini almak için 2 yeni API 'si yaptık. Yeni API 'Ler kümesi, daha zengin denetim ve oturum açma etkinlikleri sağlamaya ek olarak daha zengin filtreleme ve sıralama işlevselliği sağlar. Daha önce güvenlik raporları üzerinden kullanılabilen verilere artık Microsoft Graph kimlik koruması risk algılamaları API 'SI aracılığıyla erişilebilir.
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 - [Azure Active Directory Reporting API 'SI ile çalışmaya başlama](../reports-monitoring/concept-reporting-api.md)
 
@@ -4344,7 +4344,7 @@ Aşağıdaki uygulamalar [onaylanan istemci uygulamaları](../conditional-access
 - [Microsoft Kaizala](https://www.microsoft.com/garage/profiles/kaizala/)
 - Microsoft StaffHub
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 - [Onaylanan istemci uygulaması gereksinimi](../conditional-access/concept-conditional-access-conditions.md#client-apps)
 - [Azure AD uygulama tabanlı koşullu erişim](../conditional-access/app-based-conditional-access.md)
@@ -4426,7 +4426,7 @@ Artık macOS 'ı Azure AD koşullu erişim ilkenize cihaz platformu olarak dahil
 - **MacOS cihazlarının, kuruluşunuzun Intune 'da tanımlanan uyumluluk ilkelerine bağlı olduğundan emin olun.** Azure portal Intune 'da, artık macOS cihazları için uyumluluk ilkeleri ayarlayabilirsiniz.
 - **Azure AD 'deki uygulamalara erişimi yalnızca uyumlu macOS cihazlarına kısıtlayın.** Koşullu erişim ilkesi yazma, macOS öğesini ayrı bir cihaz platformu seçeneği olarak içerir. Artık Azure 'da ayarlanan hedeflenen uygulama için macOS 'a özgü koşullu erişim ilkelerini yazabilirsiniz.
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 - [Intune ile macOS cihazları için cihaz uyumluluğu ilkesi oluşturma](/mem/intune/protect/compliance-policy-create-mac-os)
 - [Azure AD 'de koşullu erişim](../conditional-access/overview.md)
@@ -4473,7 +4473,7 @@ Azure AD Yönetim merkezinde artık şunları yapabilirsiniz:
 - Microsoft Planner
 - Azure Information Protection
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 - [Onaylanan istemci uygulaması gereksinimi](../conditional-access/concept-conditional-access-conditions.md#client-apps)
 - [Azure AD uygulama tabanlı koşullu erişim](../conditional-access/app-based-conditional-access.md)

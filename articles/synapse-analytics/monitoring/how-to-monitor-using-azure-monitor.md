@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: f495de13c20aa2953f55e2837fab15a6c62e1083
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9032fcaf35265c791913f5b69fb0972bada6885f
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468040"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602470"
 ---
 # <a name="use-azure-monitor-with-your-azure-synapse-analytics-workspace"></a>Azure Izleyici 'yi Azure SYNAPSE Analytics çalışma alanınız ile birlikte kullanma
 
@@ -107,7 +107,6 @@ Azure SYNAPSE Analytics çalışma alanları tarafından yayılan Günlükler ş
 |-------------------------------|-------------------------------------------------|-------------|
 | SynapseGatewayApiRequests     | GatewayApiRequests             | Azure SYNAPSE ağ geçidi API istekleri. |
 | SynapseRbacOperations         | SynapseRbacOperations          | Azure SYNAPSE rol tabanlı erişim denetimi (SRTZB) işlemleri. |
-| SynapseBuiltinSqlPoolRequestsEnded   | BuiltInSqlReqsEnded    | Azure SYNAPSE yerleşik sunucusuz SQL isteklerini sonlandırdı. |
 
 ### <a name="dedicated-sql-pool-logs"></a>Adanmış SQL havuzu günlükleri
 

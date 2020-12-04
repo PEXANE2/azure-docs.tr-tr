@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 06/08/2020
 ms.author: joflore
-ms.openlocfilehash: 0576fdaa9bdcc90636c3cd2bc90ba2818f1e69e7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 916615808bc1e28b9794b57e08960520e3abd835
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962675"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602283"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Kendi kendini yönetilen Active Directory Domain Services, Azure Active Directory ve yönetilen Azure Active Directory Domain Services karşılaştırın
 
@@ -114,6 +114,9 @@ Azure AD DS katılmış cihazlarda, uygulamalar kimlik doğrulaması için Kerbe
 | Yönetim                      | Intune gibi mobil cihaz yönetimi (MDM) yazılımı | Grup İlkesi                                                              |
 | Ağ                      | Internet üzerinden çalışarak                             | Yönetilen etki alanının dağıtıldığı sanal ağa bağlı veya eşlenmiş olmalıdır |
 | Harika...                    | Son Kullanıcı mobil veya masaüstü cihazları                  | Azure 'da dağıtılan sunucu VM 'Leri                                              |
+
+
+Şirket içi AD DS ve Azure AD ADFS kullanılarak federal kimlik doğrulaması için yapılandırılırsa, Azure DS 'de kullanılabilir (geçerli/geçerli) Parola karması yoktur. Beslenen kimlik doğrulaması uygulanmadan önce oluşturulan Azure AD Kullanıcı hesaplarının eski bir parola karması olabilir, ancak bu durum büyük olasılıkla şirket içi parolasının bir karmasıyla eşleşmez. Bu nedenle Azure AD DS, kullanıcıların kimlik bilgilerini doğrulayamayacak
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -3,12 +3,12 @@ title: Azure Dayanıklı İşlevler birim testi
 description: Birim testi Dayanıklı İşlevler nasıl yapılacağını öğrenin.
 ms.topic: conceptual
 ms.date: 11/03/2019
-ms.openlocfilehash: 86733f8b5b80799bad3e52c643ed27465dfc7641
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7786a0a2e2d31086e1938b70e63fe2374e16fe7f
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74231218"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601365"
 ---
 # <a name="durable-functions-unit-testing"></a>Dayanıklı İşlevler birim testi
 
@@ -25,7 +25,7 @@ Bu makaledeki örneklerde aşağıdaki kavramlar ve çerçeveler hakkında bilgi
 
 * Dayanıklı İşlevler
 
-* [xUnit](https://xunit.github.io/) -test çerçevesi
+* [xUnit](https://github.com/xunit/xunit) -test çerçevesi
 
 * [moq](https://github.com/moq/moq4) -Mocking çerçevesi
 
@@ -179,6 +179,6 @@ Ve birim testleri çıktının biçimini doğrular. Birim testleri doğrudan vey
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [XUnit hakkında daha fazla bilgi](https://xunit.github.io/docs/getting-started-dotnet-core)
+> [XUnit hakkında daha fazla bilgi](https://xunit.net/docs/getting-started/netcore/cmdline)
 > 
 > [Moq hakkında daha fazla bilgi](https://github.com/Moq/moq4/wiki/Quickstart)

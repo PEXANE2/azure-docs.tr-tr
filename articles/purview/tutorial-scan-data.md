@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 711b3399d865899770567583a1425faeb9e408ec
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 083d820c989870b2a73217eeebf192f0d540ba36
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96555812"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602555"
 ---
 # <a name="tutorial-scan-data-with-azure-purview-preview"></a>Öğretici: Azure purview ile verileri tarama (Önizleme)
 
@@ -146,11 +146,14 @@ Katalog yapılandırması tamamlandıktan sonra, varlıkları oluşturmak için 
 
    Komutu çalıştırdığınızda, Azure Active Directory kimlik bilgilerinizi kullanarak oturum açmanız için bir açılır pencere görünür.
 
-1. Başlangıç paketini çalıştırmak için aşağıdaki komutu kullanın. ,, `CatalogName` , `TenantID` `SubscriptionID` `NewResourceGroupName` Ve `CatalogResourceGroupName` yer tutucularını değiştirin. İçin `NewResourceGroupName` , kaynak grubu için verileri barındıran benzersiz bir ad kullanın.
+1. Başlangıç paketini çalıştırmak için aşağıdaki komutu kullanın. ,, `CatalogName` , `TenantID` `SubscriptionID` `newresourcegroupname` Ve `CatalogResourceGroupName` yer tutucularını değiştirin. İçin `newresourcegroupname` , kaynak grubu için verileri barındıran benzersiz bir ad kullanın.
+
+> [!IMPORTANT]
+> **Newresourcegroupname** yalnızca alfasayısal veya sayı olabilir. **Büyük harfli harflerden oluşan sonuçlara ve özel karakterlere izin verilmez.**
 
    ```powershell
    .\RunStarterKit.ps1 -CatalogName <CatalogName> -TenantId <TenantID>`
-   -ResourceGroup <NewResourceGroupName> `
+   -ResourceGroup <newresourcegroupname> `
    -SubscriptionId <SubscriptionID> `
    -CatalogResourceGroup <CatalogResourceGroupName>
    ```
@@ -158,6 +161,9 @@ Katalog yapılandırması tamamlandıktan sonra, varlıkları oluşturmak için 
 Ortamın ayarlanması, en fazla 10 dakika sürebilir. Bu süre boyunca, çeşitli açılır pencereler görebilirsiniz. Bu işlem, yoksayabilirsiniz. **BlobDataCreator.exe** penceresini kapatmayın; bittiğinde otomatik olarak kapanır.
 
 İletiyi gördüğünüzde `Executing Copy pipeline xxxxxxxxxx-487e-4fc4-9628-92dd8c2c732b` , başka bir **BlobDataCreator.exe** örneğinin çalışmaya başlamasını ve bitmesini bekleyin.
+
+> [!IMPORTANT]
+> ' Etkin görev sayısı ' azaltılmasını sonlandırması durumunda, blob Oluşturucu penceresinden çıkabilir ve PowerShell penceresinde ENTER tuşuna basabilirsiniz
 
 İşlem tamamlandıktan sonra, sağladığınız ada sahip bir kaynak grubu oluşturulur. Azure Data Factory, Azure Blob depolama ve Azure Data Lake Storage 2. hesapları bu kaynak grubunda bulunur. Kaynak grubu, belirttiğiniz abonelikte yer alır.
 

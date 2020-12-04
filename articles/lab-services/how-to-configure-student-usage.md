@@ -2,39 +2,74 @@
 title: Azure Lab Services laboratuvarlarında kullanım ayarlarını yapılandırma
 description: Bir laboratuvarda öğrenci sayısını yapılandırmayı, laboratuvara kaydolmasını ve VM 'nin kullanabileceği saat sayısını denetlemeyi ve daha fazlasını öğrenin.
 ms.topic: article
-ms.date: 11/11/2020
-ms.openlocfilehash: e768c74d338cf21eb56660fe3790fc1f0f3ec80d
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.date: 12/01/2020
+ms.openlocfilehash: 3b05246445aea708312891ec631a35da3bc1eb8e
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96434558"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602640"
 ---
 # <a name="add-and-manage-lab-users"></a>Laboratuvar kullanıcılarını ekleme ve yönetme
 
 Bu makalede, bir laboratuvara Kullanıcı ekleme, laboratuvar ile kaydetme, sanal makineyi (VM) tarafından kullanılabilecek ek saatlerin sayısını denetleme ve daha fazla bilgi edinme açıklanır. 
 
-## <a name="add-users-to-a-lab"></a>Laboratuvara Kullanıcı ekleme
+Kullanıcıları eklediğinizde, varsayılan olarak **erişimi kısıtla** seçeneği açıktır ve kullanıcılar listesinde olmadıkları takdirde, öğrenciler bir kayıt bağlantısı olsa bile laboratuvara kayıt yaptıramazlar. Yalnızca listelenen kullanıcılar, göndereceğiniz kayıt bağlantısını kullanarak laboratuvara kayıt yapabilir. Kayıt bağlantısına sahip oldukları sürece öğrencilerin laboratuvara kaydedilmesine izin veren **erişimi kısıtla** seçeneğini devre dışı bırakabilirsiniz. 
 
-Bu bölümde, öğrencileri el ile veya bir CSV dosyası karşıya yükleyerek bir laboratuvarya ekleyebilirsiniz. Şunları yapın:
+Bu makalede, bir laboratuvara Kullanıcı ekleme gösterilmektedir.
+
+## <a name="add-users-from-an-azure-ad-group"></a>Azure AD grubundan Kullanıcı ekleme
+
+### <a name="overview"></a>Genel Bakış
+
+Artık kullanıcıları el ile eklemek veya silmek zorunda kalmaması için bir laboratuar Kullanıcı listesini mevcut bir Azure Active Directory (Azure AD) grubuyla eşitleyebilirsiniz. 
+
+Kurumsal kaynaklara ve bulut tabanlı uygulamalara erişimi yönetmek için kuruluşunuzun Azure Active Directory içinde bir Azure AD grubu oluşturulabilir. Daha fazla bilgi için bkz. [Azure AD grupları](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups). Kuruluşunuz Microsoft Office 365 veya Azure hizmetlerini kullanıyorsa, kuruluşunuzda Azure Active Directory yönettiğiniz Yöneticiler zaten olur. 
+
+### <a name="sync-users-with-azure-ad-group"></a>Kullanıcıları Azure AD grubuyla eşitleme
+
+> [!IMPORTANT]
+> Kullanıcı listesinin boş olduğundan emin olun. Laboratuvar içinde el ile eklediğiniz veya bir CSV dosyası içeri aktardığınız mevcut kullanıcılar varsa, Laboratuvarı mevcut bir gruba eşitleme seçeneği görünmez. 
+
+1. [Azure Lab Services Web sitesinde](https://labs.azure.com/)oturum açın.
+1. Birlikte çalışmak istediğiniz Laboratuvarı seçin.
+1. Sol bölmede **Kullanıcılar**' ı seçin. 
+1. **Gruptan Eşitle**' ye tıklayın. 
+
+    :::image type="content" source="./media/how-to-configure-student-usage/add-users-sync-group.png" alt-text="Bir Azure AD grubundan eşitleme yaparak Kullanıcı ekleme":::
+    
+1. Laboratuvarınızı ile eşitlemek için mevcut bir Azure AD grubu seçmeniz istenir. 
+    
+    Listede bir Azure AD grubu görmüyorsanız, aşağıdakilerden biri olabilir:
+
+    -   Bir Azure Active Directory Konuk Kullanıcı (genellikle Azure AD 'nin sahibi olan kuruluşun dışındaysanız) varsa ve Azure AD içinde gruplar arayabileceksiniz. Bu durumda, bu durumda laboratuvara bir Azure AD grubu ekleyemeyeceksiniz. 
+    -   Takımlar aracılığıyla oluşturulan Azure AD grupları bu listede gösterilmez. Laboratuvarların içinden doğrudan içinden laboratuvar oluşturmak ve yönetmek için Azure Lab Services uygulama ekleyebilirsiniz. [Bir laboratuvarın Kullanıcı listesini takımlar içinden yönetme](how-to-manage-user-lists-within-teams.md)hakkında daha fazla bilgi için bkz.. 
+1. Laboratuvarınızı eşitlemek için Azure AD grubunu girdikten sonra **Ekle**' ye tıklayın.
+1. Laboratuvar eşitlendikten sonra, Azure AD grubunun içindeki herkesi Kullanıcı olarak laboratuvara çeker ve kullanıcı listesinin güncelleştirildiğini görürsünüz. Yalnızca bu Azure AD grubundaki kişilerin laboratuvarınızda erişimi olur. Kullanıcı listesi, Azure AD grubunun en son üyeliğiyle eşleşecek şekilde her 24 saatte bir yenilenir. Azure AD grubundaki en son değişikliklerle el ile eşitleme yapmak için kullanıcılar sekmesindeki Eşitle düğmesine de tıklayabilirsiniz.
+1. Tüm kullanıcılara, laboratuvara kayıt bağlantısı olan tüm kullanıcılara bir e-posta gönderecek olan **Tümünü davet et** düğmesine tıklayarak kullanıcıları laboratuvara davet edin. 
+
+### <a name="automatic-management-of-virtual-machines-based-on-changes-to-the-azure-ad-group"></a>Azure AD grubundaki değişikliklere göre sanal makinelerin otomatik yönetimi 
+
+Laboratuvar bir Azure AD grubuyla eşitlendiğinde, laboratuvardaki sanal makinelerin sayısı gruptaki kullanıcı sayısıyla otomatik olarak eşleşir. Artık laboratuvar kapasitesini el ile güncelleştiremezsiniz. Bir Kullanıcı Azure AD grubuna eklendiğinde, bir laboratuvar otomatik olarak bu kullanıcı için bir sanal makine ekler. Bir Kullanıcı Azure AD grubundan silindiğinde, bir laboratuvar kullanıcının sanal makinesini laboratuvara otomatik olarak siler. 
+
+## <a name="add-users-manually-from-emails-or-csv-file"></a>Kullanıcıları e-postalardan veya CSV dosyasından el ile Ekle
+
+Bu bölümde öğrencileri el ile (e-posta adresine göre veya bir CSV dosyası karşıya yükleyerek) eklersiniz. 
+
+### <a name="add-users-by-email-address"></a>E-posta adresine göre Kullanıcı ekleme
 
 1. Sol bölmede **Kullanıcılar**' ı seçin. 
+1. **Kullanıcıları el Ile Ekle**' ye tıklayın. 
 
-    Varsayılan olarak, **erişimi kısıtla** seçeneği açıktır ve kullanıcılar listesinde olmadıkları takdirde, öğrenciler bir kayıt bağlantısına sahip olsalar bile laboratuvara kayıt yaptıramazlar. Yalnızca listelenen kullanıcılar, göndereceğiniz kayıt bağlantısını kullanarak laboratuvara kayıt yapabilir. Bu yordamda, kullanıcıları listeye eklersiniz. Alternatif olarak, kayıt bağlantısına sahip oldukları sürece öğrencilerin laboratuvara kaydedilmesine izin veren **erişimi kısıtla** seçeneğini devre dışı bırakabilirsiniz. 
+    :::image type="content" source="./media/how-to-configure-student-usage/add-users-manually.png" alt-text="Kullanıcıları el ile ekleme":::
+1. **E-posta adresi ekle** ' yi seçin (varsayılan), öğrenciler için e-posta adreslerini ayrı satırlara veya noktalı virgülle ayrılmış tek bir satıra girin. 
 
-1. **Kullanıcılar** bölmesinin en üstünde **Kullanıcı Ekle**' yi seçin ve ardından **e-posta adresi ekle**' yi seçin. 
-
-    !["Kullanıcı Ekle" düğmesi](./media/how-to-configure-student-usage/add-users-button.png)
-
-1. **Kullanıcıları Ekle** bölmesinde, öğrenciler için e-posta adreslerini ayrı satırlara veya noktalı virgülle ayrılmış tek bir satıra girin. 
-
-    ![Kullanıcıların e-posta adreslerini ekleme](./media/how-to-configure-student-usage/add-users-email-addresses.png)
-
+    :::image type="content" source="./media/how-to-configure-student-usage/add-users-email-addresses.png" alt-text="Kullanıcıların e-posta adreslerini ekleme":::
 1. **Kaydet**’i seçin. 
 
     Bu liste, geçerli kullanıcıların e-posta adreslerini ve laboratuvarda kayıtlı olup olmadığını gösterir. 
 
-    ![Kullanıcı listesi](./media/how-to-configure-student-usage/list-of-added-users.png)
+    :::image type="content" source="./media/how-to-configure-student-usage/list-of-added-users.png" alt-text="Kullanıcı listesi":::
 
     > [!NOTE]
     > Öğrenciler laboratuvara kaydedildikten sonra liste adlarını görüntüler. Listede gösterilen ad, Azure Active Directory öğrencilerinin ilk ve soyadlarını kullanarak oluşturulur. 
@@ -47,23 +82,15 @@ Bir CSV metin dosyası, virgülle ayrılmış (CSV) tablolu verileri (sayılar v
 
 1. Microsoft Excel 'de öğrencilerin e-posta adreslerini tek bir sütunda listeleyen bir CSV dosyası oluşturun.
 
-    ![Bir CSV dosyasındaki kullanıcıların listesi](./media/how-to-configure-student-usage/csv-file-with-users.png)
-
+    :::image type="content" source="./media/how-to-configure-student-usage/csv-file-with-users.png" alt-text="Bir CSV dosyasındaki kullanıcıların listesi":::
 1. **Kullanıcılar** bölmesinin en üstünde **Kullanıcı Ekle**' yı seçin ve ardından **CSV 'yi karşıya yükle**' yi seçin.
-
-    !["CSV 'yi karşıya yükle" düğmesi](./media/how-to-configure-student-usage/upload-csv-button.png)
-
 1. Öğrencilerin e-posta adreslerini içeren CSV dosyasını seçin ve sonra **Aç**' ı seçin.
 
     **Kullanıcı Ekle** PENCERESI, CSV dosyasındaki e-posta adresi listesini görüntüler. 
-
-    ![CSV dosyasından e-posta adreslerine sahip "Kullanıcı Ekle" penceresi](./media/how-to-configure-student-usage/add-users-window.png)
-
 1. **Kaydet**’i seçin. 
-
 1. **Kullanıcılar** bölmesinde, eklenen öğrencilerin listesini görüntüleyin. 
 
-    !["Kullanıcılar" bölmesindeki eklenen kullanıcıların listesi](./media/how-to-configure-student-usage/list-of-added-users.png)
+    :::image type="content" source="./media/how-to-configure-student-usage/list-of-added-users.png" alt-text="Kullanıcılar bölmesinde eklenen kullanıcıların listesi":::
 
 ## <a name="send-invitations-to-users"></a>Kullanıcılara davet gönder
 
@@ -210,7 +237,6 @@ Henüz GitHub hesabını bir Microsoft hesabı bağlamadıysa, şunları yapabil
 1. Araç çubuğunda üç nokta (**...**) simgesini seçin ve ardından **CSV 'yi dışarı aktar**' ı seçin. 
 
     !["CSV 'yi dışarı aktar" düğmesi](./media/how-to-export-users-virtual-machines-csv/users-export-csv.png)
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
