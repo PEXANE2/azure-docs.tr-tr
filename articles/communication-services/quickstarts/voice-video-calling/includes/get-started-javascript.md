@@ -6,16 +6,16 @@ ms.author: nimag
 ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 652566efda4d4f274dc5700d35bcf45c1ebfb9e2
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: d35e51d097c2d5e0b66c23efa27ae70c065d547c
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92347126"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96584536"
 ---
 Bu hızlı başlangıçta, JavaScript için istemci kitaplığı 'nı çağıran Azure Iletişim hizmetlerini kullanarak nasıl çağrı başlayacağınızı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - [Node.js](https://nodejs.org/) Etkin LTS ve bakım LTS sürümleri (8.11.1 ve 10.14.1 önerilir).
@@ -59,10 +59,10 @@ Bu hızlı başlangıç için aşağıdaki WebPack sürümleri önerilir:
 
 ### <a name="set-up-the-app-framework"></a>Uygulama çerçevesini ayarlama
 
-Bu hızlı başlangıç, uygulama varlıklarını paketleyip Web Pack kullanır. WebPack, WebPack-CLI ve WebPack-dev-Server NPM paketlerini yüklemek için aşağıdaki komutu çalıştırın ve bunları ** üzerindepackage.js**geliştirme bağımlılıkları olarak listeleyin:
+Bu hızlı başlangıç, uygulama varlıklarını paketleyip Web Pack kullanır. WebPack, WebPack-CLI ve WebPack-dev-Server NPM paketlerini yüklemek için aşağıdaki komutu çalıştırın ve bunları **üzerindepackage.js** geliştirme bağımlılıkları olarak listeleyin:
 
 ```console
-npm install webpack webpack-cli webpack-dev-server --save-dev
+npm install webpack@4.42.0 webpack-cli@3.3.11 webpack-dev-server@3.10.3 --save-dev
 ```
 
 Projenizin kök dizininde bir **index.html** dosyası oluşturun. Bu dosyayı, kullanıcının bir Azure Iletişim bot 'a çağrı yerleştirmesini sağlayacak temel bir düzen yapılandırmak için kullanacağız.
@@ -124,7 +124,7 @@ Aşağıdaki sınıflar ve arabirimler, istemci Kitaplığı çağıran Azure Il
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
-`<USER_ACCESS_TOKEN>`Kaynağınız için geçerli bir Kullanıcı erişim belirteci ile değiştirmeniz gerekir. Kullanılabilir bir belirteciniz yoksa, [Kullanıcı erişim belirteci](../../access-tokens.md) belgelerine başvurun. Kullanarak `CallClient` , `CallAgent` bir örneği başlatın, bu, `CommunicationUserCredential` çağrısı yapıp almamızı sağlar. Aşağıdaki kodu **client.js**ekleyin:
+`<USER_ACCESS_TOKEN>`Kaynağınız için geçerli bir Kullanıcı erişim belirteci ile değiştirmeniz gerekir. Kullanılabilir bir belirteciniz yoksa, [Kullanıcı erişim belirteci](../../access-tokens.md) belgelerine başvurun. Kullanarak `CallClient` , `CallAgent` bir örneği başlatın, bu, `CommunicationUserCredential` çağrısı yapıp almamızı sağlar. Aşağıdaki kodu **client.js** ekleyin:
 
 ```javascript
 async function init() {

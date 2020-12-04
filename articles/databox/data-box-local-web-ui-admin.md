@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/01/2020
+ms.date: 12/03/2020
 ms.author: alkohli
-ms.openlocfilehash: 751ac870996fa1a2805bb018c991f85525fd797d
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 90869af032a381cecd3e65f5d5b367156dd047c5
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548979"
+ms.locfileid: "96576887"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Data Box ve Data Box Heavy yönetmek için yerel Web Kullanıcı arabirimini kullanın
 
-Bu makalede Data Box ve Data Box Heavy cihazlarda gerçekleştirilen yapılandırma ve yönetim görevlerinin bazıları açıklanmaktadır. Azure portal Kullanıcı arabirimi ve cihaz için yerel Web Kullanıcı arabirimi aracılığıyla Data Box ve Data Box Heavy cihazlarını yönetebilirsiniz. Bu makale, yerel Web Kullanıcı arabirimi kullanılarak gerçekleştirilen görevleri odaklanır.
+Bu makalede Data Box ve Data Box Heavy cihazlarda gerçekleştirilen yapılandırma ve yönetim görevlerinin bazıları açıklanmaktadır. Azure portal Kullanıcı arabirimi ve cihaz için yerel Web Kullanıcı arabirimi aracılığıyla Data Box ve Data Box Heavy cihazlarını yönetebilirsiniz. Bu makale, yerel Web Kullanıcı arabirimi kullanılarak gerçekleştirilen görevlere odaklanır.
 
-Data Box ve Data Box Heavy için yerel Web Kullanıcı arabirimi, cihazın ilk yapılandırması için kullanılır. Ayrıca, yerel Web Kullanıcı arabirimini kullanarak cihazı kapatabilir veya yeniden başlatabilir, tanılama testlerini çalıştırabilir, yazılımı güncelleştirebilir, kopyalama günlüklerini görüntüleyebilir, cihazdan yerel verileri silebilir ve Microsoft Desteği için bir destek paketi oluşturabilirsiniz. İki bağımsız düğüm içeren bir Data Box Heavy cihazda, cihazın her bir düğümüne karşılık gelen iki ayrı yerel Web 'e erişebilirsiniz.
+Data Box için yerel Web Kullanıcı arabirimi ve Data Box Heavy için, cihazın ilk yapılandırması için kullanılır. Ayrıca, yerel Web Kullanıcı arabirimini kullanarak cihazı kapatabilir veya yeniden başlatabilir, tanılama testlerini çalıştırabilir, yazılımı güncelleştirebilir, kopyalama günlüklerini görüntüleyebilir, cihazdan yerel verileri silebilir ve Microsoft Desteği için bir destek paketi oluşturabilirsiniz. İki bağımsız düğüm içeren bir Data Box Heavy cihazda, cihazın her bir düğümüne karşılık gelen iki ayrı yerel Web 'e erişebilirsiniz.
 
 [!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
@@ -29,21 +29,25 @@ Cihaz sorunları yaşarsanız, sistem günlüklerinden bir Destek paketi oluştu
 
 Bir destek paketi oluşturmak için aşağıdaki adımları uygulayın:
 
-1. Yerel Web Kullanıcı arabiriminde, desteğe **başvurun** ' e gidin ve **destek paketi oluştur**' u seçin.
+1. Yerel Web Kullanıcı arabiriminde **desteğe başvurun** sayfasına gidin. İsteğe bağlı olarak **bellek dökümünü dahil et**' i seçin. Ardından **destek paketi oluştur**' u seçin.
+
+    Bellek dökümü, cihazınızın belleğinin, sistem hatasından sonra kaydedilen içeriğidir.
+
+    Destek bir tane istemediği müddetçe **bellek dökümünü dahil et** seçeneğini seçemezsiniz. Bellek dökümü içeren bir destek paketinin toplanması uzun zaman alır ve hassas veriler dahil edilir.
 
     ![Destek paketi oluşturma 1](media/data-box-local-web-ui-admin/create-support-package-1.png)
 
-2. Bir Destek paketi toplanır. Bu işlem birkaç dakika sürer.
+    Bir Destek paketi toplanır. Yalnızca sistem günlüklerini eklerseniz, bu işlem birkaç dakika sürer. Bellek dökümü eklerseniz çok daha uzun sürer.
 
     ![Destek paketi oluşturma 2](media/data-box-local-web-ui-admin/create-support-package-2.png)
 
-3. Destek paketi oluşturma işlemi tamamlandıktan sonra **destek paketini indir**' i seçin.
+2. Destek paketini oluşturma işlemi tamamlandıktan sonra **destek paketini indir**' i seçin.
+
+    ![Destek paketi oluşturma 3](media/data-box-local-web-ui-admin/create-support-package-3.png)
+
+3. İndirme konumuna göz atıp konumu seçin. İçeriği görüntülemek için klasörü açın.
 
     ![Destek paketi oluşturma 4](media/data-box-local-web-ui-admin/create-support-package-4.png)
-
-4. İndirme konumuna göz atıp konumu seçin. İçeriği görüntülemek için klasörü açın.
-
-    ![Destek paketi oluşturma 5](media/data-box-local-web-ui-admin/create-support-package-5.png)
 
 ## <a name="erase-local-data-from-your-device"></a>Cihazınızdaki yerel verileri silme
 
@@ -72,6 +76,7 @@ Yerel Web Kullanıcı arabirimini kullanarak cihazınızı kapatabilir veya yeni
 Cihazınızı kapatmak için aşağıdaki adımları uygulayın.
 
 1. Yerel web kullanıcı arabiriminde **Kapat ya da yeniden başlat**'a gidin.
+
 2. **Kapat ' ı** seçin.
 
     ![Data Box'ı kapatma 1](media/data-box-local-web-ui-admin/shut-down-local-web-ui-1.png)
@@ -107,7 +112,7 @@ Başlamadan önce, içeri aktarma siparişiniz için BOM veya manifest dosyalar�
 
     <!-- ![Select Download list of files](media/data-box-portal-admin/download-list-of-files.png) -->
 
-3. Dosya Gezgini 'nde, cihaza bağlanmak için kullanılan protokole ve kullanılan Azure depolama türüne göre ayrı dosya listelerinin oluşturulduğunu görürsünüz.
+3. Dosya Gezgini 'nde, cihaza bağlanmak için kullanılan protokole ve kullanılan Azure depolama türüne bağlı olarak dosyaların ayrı listeleri oluşturulur.
 
     <!-- ![Files for storage type and connection protocol](media/data-box-portal-admin/files-storage-connection-type.png) -->
     ![Depolama türü ve bağlantı protokolü dosyaları](media/data-box-local-web-ui-admin/prepare-to-ship-5.png)
@@ -184,7 +189,7 @@ Teslim için hazırlanırken, verileriniz için sağlama toplamı varsayılan ol
 
 Gönderim hazırlığı sırasında sağlama toplamı hesaplaması yalnızca içeri aktarma siparişleri için yapılır ve dışa aktarma siparişleri için yapılır.
 
-Performans ciddi şekilde etkilenmedikçe sağlama toplamını kesinlikle atlamamanızı öneririz.
+Performans ciddi bir şekilde etkilenmediği takdirde sağlama toplamını devre dışı bırakmamanızı kesinlikle öneririz.
 
 1. Cihazınızın yerel Web Kullanıcı arabiriminin sağ üst köşesinde **Ayarlar**' a gidin.
 
@@ -261,9 +266,9 @@ Azure dosyaları için ACL 'lerin aktarılmasını etkinleştirmek için:
 
 ## <a name="enable-tls-11"></a>TLS 1,1 'yi etkinleştirme
 
-Varsayılan olarak, Azure Data Box, TSL 1,1 ' den daha güvenli olduğu için şifreleme için Aktarım Katmanı Güvenliği (TLS) 1,2 kullanır. Ancak, veya istemcileriniz TLS 1,2 desteklemeyen verilere erişmek için bir tarayıcı kullanıyorsa, TLS 1,1 ' i etkinleştirebilirsiniz.
+Varsayılan olarak, Azure Data Box, TSL 1,1 ' den daha güvenli olduğundan şifreleme için Aktarım Katmanı Güvenliği (TLS) 1,2 kullanır. Ancak, veya istemcileriniz TLS 1,2 desteklemeyen verilere erişmek için bir tarayıcı kullanıyorsa, TLS 1,1 ' i etkinleştirebilirsiniz.
 
-TLS ile ilgili daha fazla bilgi için bkz. [Azure Data Box Gateway Security](../databox-online/data-box-gateway-security.md).
+TLS ile ilgili daha fazla bilgi için bkz. [Azure Data Box Gateway Security](../databox-gateway/data-box-gateway-security.md).
 
 Azure cihazınızda TLS 1,1 ' i etkinleştirmek için:
 

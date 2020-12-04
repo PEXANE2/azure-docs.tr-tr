@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: azure-communication-services
 author: tomaschladek
 manager: nmurav
@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: c1c6478948aaf207f0ca1adf367840ca3db34649
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: a64d26ad11911e2cb9dcdec027b3ab3e4d22984b
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325309"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96584593"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -104,7 +104,7 @@ console.log(`\nCreated an identity with ID: ${identityResponse.communicationUser
 
 ## <a name="issue-access-tokens"></a>Erişim belirteçleri verme
 
-`issueToken`Zaten var olan Iletişim Hizmetleri kimliği için bir erişim belirteci vermek üzere metodunu kullanın. Parametresi `scopes` , bu erişim belirtecini yetkilendirecek temel öğeler kümesini tanımlar. [Desteklenen eylemlerin listesine](../../concepts/authentication.md)bakın. Parametresinin yeni örneği, `communicationUser` Azure Iletişim hizmeti kimliğinin dize gösterimine göre oluşturulabilir.
+`issueToken`Zaten var olan bir Iletişim Hizmetleri kimliği için erişim belirteci vermek üzere metodunu kullanın. Parametresi `scopes` , bu erişim belirtecini yetkilendirecek temel öğeler kümesini tanımlar. [Desteklenen eylemlerin listesine](../../concepts/authentication.md)bakın. Parametresinin yeni örneği, `communicationUser` Azure Iletişim hizmeti kimliğinin dize gösterimine göre oluşturulabilir.
 
 ```javascript
 // Issue an access token with the "voip" scope for an identity
@@ -119,12 +119,11 @@ Erişim belirteçleri yeniden verilmesini gerektiren kısa ömürlü kimlik bilg
 
 ## <a name="refresh-access-tokens"></a>Erişim belirteçlerini yenileme
 
-Bir erişim belirtecini yenilemek için, öğesini kullanarak yeniden `CommunicationUser` yayımlayın:
+Erişim belirteçlerini yenilemek, `issueToken` belirteçleri vermek için kullanılan kimlik ile çağırmak kadar kolaydır. Ayrıca, yenilenen belirteçleri de sağlamanız gerekir `scopes` . 
 
-```javascript  
-// Value existingIdentity represents identity of Azure Communication Services stored during identity creation
-identityResponse = new CommunicationUser(existingIdentity);
-tokenResponse = await identityClient.issueToken(identityResponse, ["voip"]);
+```javascript
+// // Value of identityResponse represents the Azure Communication Services identity stored during identity creation and then used to issue the tokens being refreshed
+let refreshedTokenResponse = await identityClient.issueToken(identityResponse, ["voip"]);
 ```
 
 
