@@ -39,6 +39,8 @@
       href: restart-resize-error-troubleshooting.md
     - name: 'Hizmetleri Yeniden Başlatma, Kapatma veya Durdurma'
       href: boot-error-troubleshoot-windows.md
+    - name: Linux sanal makinesinde dolu bir işletim sistemi diskiyle ilgili sorunlar
+      href: os-disk-full-linux.md
 - name: Beklenmeyen yeniden başlatma
   items:
     - name: Ekli VHD’ler ile VM’lerin beklenmeyen yeniden başlatmaları

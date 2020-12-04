@@ -124,7 +124,7 @@
           href: shortpath.md
         - name: Hizmet Kalitesi (QoS) uygulama
           href: rdp-quality-of-service-qos.md
-        - name: Güvenli URL listesi
+        - name: Gerekli URL listesi
           href: safe-url-list.md
         - name: Bant genişliği ile ilgili dikkat edilmesi gerekenler
           href: rdp-bandwidth.md

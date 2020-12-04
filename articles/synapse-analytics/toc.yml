@@ -109,6 +109,10 @@
                   displayname: vnet
                 - name: Synapse çalışma alanı Yönetilen özel uç noktalar
                   href: ./security/synapse-workspace-managed-private-endpoints.md
+                - name: Synapse çalışma alanı - veri sızdırma koruması
+                  href: ./security/workspace-data-exfiltration-protection.md
+                - name: Synapse çalışma alanı ile özel bağlantı merkezleri
+                  href: ./security/synapse-private-link-hubs.md
             - name: Kimlik doğrulaması ve geçiş
               items:
                 - name: Azure Active Directory
@@ -121,8 +125,13 @@
             - name: Erişim denetimi
               items:
                 - name: Genel Bakış
-                  href: ./security/access-control.md
-                  displayname: 'access, control'
+                  href: ./security/synapse-workspace-access-control-overview.md
+                - name: Synapse RBAC
+                  href: ./security/synapse-workspace-synapse-rbac.md
+                - name: Synapse RBAC rolleri
+                  href: ./security/synapse-workspace-synapse-rbac-roles.md
+                - name: Synapse RBAC rollerini anlama
+                  href: ./security/synapse-workspace-understand-what-role-you-need.md
                 - name: Synapse çalışma alanı yönetilen kimlik
                   href: ./security/synapse-workspace-managed-identity.md
     - name: Nasıl yapılır kılavuzları
@@ -135,11 +144,19 @@
           items:
             - name: Erişim denetimini yönetme
               items:
+                - name: Erişim denetimini ayarlama
+                  href: ./security/how-to-set-up-access-control.md
+                - name: Synapse rol atamalarını inceleme
+                  href: ./security/how-to-review-synapse-rbac-role-assignments.md
+                - name: Synapse rol atamalarını yönetme
+                  href: ./security/how-to-manage-synapse-rbac-role-assignments.md
                 - name: Azure Synapse çalışma alanı yönetilen kimliği için izinleri ayarlama
                   href: security/how-to-grant-workspace-managed-identity-permissions.md
                   displayname: grant
-                - name: Erişim denetimini ayarlama
-                  href: security/how-to-set-up-access-control.md
+            - name: Veri sızdırma koruması
+              items:
+                - name: Veri sızdırma koruması içeren bir çalışma alanını oluşturma ve yönetme
+                  href: security/how-to-create-a-workspace-with-data-exfiltration-protection.md
             - name: Özel uç noktaları yönetme
               items:
                 - name: Veri kaynaklarına Yönetilen özel uç noktaları ayarlama

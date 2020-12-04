@@ -1,10 +1,10 @@
 - name: Windows VM’leri ile İlgili Belgeler
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Sanal Makineler hakkında
       href: overview.md
-- name: Hızlı Başlangıçlar
+- name: Hızlı başlangıçlar
   items:
     - name: VM Oluşturma - Portal
       href: quick-create-portal.md
@@ -51,98 +51,6 @@
       href: tutorial-iis-sql.md
     - name: 16 - SSL ile web sunucusunun güvenliğini sağlama
       href: tutorial-secure-web-server.md
-- name: Örnekler
-  items:
-    - name: PowerShell dizini
-      href: powershell-samples.md
-    - name: PowerShell
-      items:
-        - name: Oluştur
-          items:
-            - name: Hızlı
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-quick.md
-            - name: Tam olarak yapılandırılmış VM
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm.md
-            - name: Yüksek oranda kullanılabilir VM
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-nlb-vm.md
-            - name: Özel betik örneği
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md
-            - name: DSC kullanma
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-iis-using-dsc.md
-            - name: VHD karşıya yüklemesinden VM
-              href: ./../scripts/virtual-machines-windows-powershell-upload-generalized-script.md
-            - name: Bir işletim sistemi diski iliştirme
-              href: ./../scripts/virtual-machines-powershell-sample-create-vm-from-managed-os-disks.md
-            - name: Anlık görüntüden VM
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md
-        - name: Depolamayı yönetme
-          items:
-            - name: VHD'den yönetilen disk oluşturma
-              href: ../scripts/virtual-machines-powershell-sample-create-managed-disk-from-vhd.md
-            - name: Anlık görüntüden yönetilen disk oluşturma
-              href: ../scripts/virtual-machines-powershell-sample-create-managed-disk-from-snapshot.md
-            - name: Yönetilen diski çoğaltma
-              href: ../scripts/virtual-machines-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md
-            - name: Anlık görüntüyü bir depolama hesabına VHD olarak dışarı aktarma
-              href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account.md
-            - name: Yönetilen diskin VHD’sini bir depolama hesabına dışarı aktarma
-              href: ../scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd.md
-            - name: VHD’den anlık görüntü oluşturma
-              href: ../scripts/virtual-machines-powershell-sample-create-snapshot-from-vhd.md
-            - name: Anlık görüntü kopyalama
-              href: ../scripts/virtual-machines-powershell-sample-copy-snapshot-to-same-or-different-subscription.md
-        - name: Güvenlik
-          items:
-            - name: VM’yi ve veri disklerini şifreleme
-              href: ./../scripts/virtual-machines-windows-powershell-sample-encrypt-vm.md?
-        - name: İzleme
-          items:
-            - name: Azure İzleyici
-              href: ./../scripts/virtual-machines-windows-powershell-sample-create-vm-oms.md
-            - name: Bir abonelikteki tüm VM’lerle ilgili ayrıntıları toplama
-              href: ../scripts/virtual-machines-powershell-sample-collect-vm-details.md
-    - name: Azure CLI dizini
-      href: cli-samples.md
-    - name: CLI
-      items:
-        - name: Oluştur
-          items:
-            - name: Hızlı
-              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-quick-create.md
-            - name: Tam olarak yapılandırılmış VM
-              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm.md
-            - name: Yüksek oranda kullanılabilir VM
-              href: ./../scripts/virtual-machines-windows-cli-sample-nlb.md
-            - name: Özel betik örneği
-              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-iis.md
-            - name: DSC yapılandırması kullanma
-              href: ./../scripts/virtual-machines-windows-cli-sample-create-iis-using-dsc.md
-        - name: Depolamayı yönetme
-          items:
-            - name: VHD'den yönetilen disk oluşturma
-              href: ../scripts/virtual-machines-cli-sample-create-managed-disk-from-vhd.md
-            - name: Anlık görüntüden yönetilen disk oluşturma
-              href: ../scripts/virtual-machines-cli-sample-create-managed-disk-from-snapshot.md
-            - name: Yönetilen diski kopyalama
-              href: ../scripts/virtual-machines-cli-sample-copy-managed-disks-to-same-or-different-subscription.md
-            - name: Anlık görüntüyü depolama hesabına VHD olarak dışarı aktarma
-              href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-storage-account.md
-            - name: Yönetilen diskin VHD’sini bir depolama hesabına dışarı aktarma
-              href: ../scripts/virtual-machines-cli-sample-copy-managed-disks-vhd.md
-            - name: Anlık görüntüyü kopyalama
-              href: ../scripts/virtual-machines-cli-sample-copy-snapshot-to-same-or-different-subscription.md
-        - name: Ağ
-          items:
-            - name: VM’ler arasındaki ağ trafiğinin güvenliğini sağlama
-              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-nsg.md
-        - name: Güvenlik
-          items:
-            - name: VM’yi ve veri disklerini şifreleme
-              href: ./../scripts/virtual-machines-windows-cli-sample-encrypt-vm.md
-        - name: İzleme
-          items:
-            - name: Azure İzleyici
-              href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-oms.md
 - name: Kavramlar
   items:
     - name: Görüntüler
@@ -672,9 +580,6 @@
           href: change-drive-letter.md
         - name: Kullanılabilirlik kümesini değiştirme
           href: change-availability-set.md
-        - name: ARM şablonunu dışarı aktarma
-          displayName: Azure Resource Manager
-          href: download-template.md
         - name: Azure VM aracısı
           href: ../extensions/agent-windows.md
         - name: Kurgusal yürütmeyi azaltma
@@ -951,6 +856,8 @@
           href: find-unattached-disks.md
         - name: Kullanıma açılmamış diskleri bulma - Portal
           href: ../disks-find-unattached-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Azure Disklerini Konuk Disklerine eşleme
+          href: azure-to-guest-disk-mapping.md
         - name: Disklerle ilgili SSS
           href: ../faq-for-disks.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Ağı yönetme

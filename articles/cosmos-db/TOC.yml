@@ -1,6 +1,6 @@
 - name: Azure Cosmos DB belgeleri
   href: index.yml
-- name: Genel Bakış
+- name: Genel bakış
   items:
     - name: Azure Cosmos DB’ye hoş geldiniz
       href: introduction.md
@@ -1305,7 +1305,7 @@
           href: tutorial-setup-ci-cd.md
         - name: Azure Depolama Gezgini'ni kullanma
           href: storage-explorer.md
-        - name: Azure Cosmos gezginini kullanma
+        - name: Azure Cosmos DB Gezgini’ni kullanma
           href: data-explorer.md
     - name: Azure Synapse Link ile analiz ve iş zekası
       items:

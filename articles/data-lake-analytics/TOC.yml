@@ -68,7 +68,7 @@
             - name: Temel Bilgiler
               href: data-lake-analytics-u-sql-get-started.md
             - name: Dil başvurusu
-              href: /u-sql/
+              href: 'https://docs.microsoft.com/u-sql'
             - name: Katalog
               href: data-lake-analytics-u-sql-catalog.md
             - name: Kullanıcı tanımlı işleçler
@@ -79,8 +79,6 @@
               href: data-lake-analytics-u-sql-r-extensions.md
             - name: Bilişsel uzantılar
               href: data-lake-analytics-u-sql-cognitive.md
-            - name: Programlama kılavuzu
-              href: data-lake-analytics-u-sql-programmability-guide.md
         - name: Visual Studio
           items:
             - name: Yükleme
@@ -115,6 +113,28 @@
               href: data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md
             - name: Yerel çalıştırma ve hata ayıklama
               href: data-lake-tools-for-vscode-local-run-and-debug.md
+        - name: Programlama kılavuzu
+          items:
+            - name: Programlama kılavuzuna genel bakış
+              href: data-lake-analytics-u-sql-programmability-guide.md
+            - name: Programlama kılavuzu - UDT ve UDAGG
+              href: data-lake-analytics-u-sql-programmability-guide-UDT-AGG.md
+            - name: Programlama kılavuzu - UDO
+              items:
+                - name: Kullanıcı tarafından tanımlanan nesnelere genel bakış
+                  href: data-lake-analytics-u-sql-programmability-guide-UDO.md
+                - name: Kullanıcı tarafından tanımlanan ayıklayıcıyı kullanma
+                  href: data-lake-analytics-u-sql-programmability-guide-extractor.md
+                - name: Kullanıcı tarafından tanımlanan çıkış aracı kullanma
+                  href: data-lake-analytics-u-sql-programmability-guide-outputter.md
+                - name: Kullanıcı tarafından tanımlanan işlemciyi kullanma
+                  href: data-lake-analytics-u-sql-programmability-guide-processor.md
+                - name: Kullanıcı tarafından tanımlanan uygulayıcıyı kullanma
+                  href: data-lake-analytics-u-sql-programmability-guide-applier.md
+                - name: Kullanıcı tarafından tanımlanan birleştiriciyi kullanma
+                  href: data-lake-analytics-u-sql-programmability-guide-combiner.md
+                - name: Kullanıcı tarafından tanımlanan azaltıcıyı kullanma
+                  href: data-lake-analytics-u-sql-programmability-guide-reducer.md
     - name: U-SQL işleri zamanlama
       items:
         - name: İşleri SSIS kullanarak zamanlama

@@ -146,6 +146,8 @@
           href: reduce-latency-ppg.md
         - name: Düğüm görüntüsünü yükseltme
           href: node-image-upgrade.md
+        - name: GitHub Actions ile düğüm görüntüsünü otomatik olarak yükseltme
+          href: node-upgrade-github-actions.md
         - name: İşlem düğümü işletim sistemi güncelleştirmeleri
           href: node-updates-kured.md
         - name: AKS kümesini yapılandırma
