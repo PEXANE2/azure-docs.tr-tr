@@ -8,12 +8,12 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f261db8d40e1a1cc1737ff6a3f5c50da661b73e6
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: f9471b6b465b63f48feb3bda82e7827308aae945
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433485"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575407"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Öğretici: IoT Edge makine öğrenimi için bir ortam ayarlama
 
@@ -209,6 +209,10 @@ IoT Hub 'ı oluşturmanın bir parçası olarak, önceki bölümde çalıştık 
 1. **Doğru** olarak ayarlanan **yönlendirme sorgusuna** bakın. Bu ayar, tüm cihaz telemetri iletilerinin bu rota ile eşleştiği anlamına gelir; Bu nedenle, tüm iletiler **Turbofandevicesstorage** uç noktasına gönderilir.
 
 1. Hiçbir düzenleme yapılmazdan bu yana yalnızca bu sayfayı kapatmanız yeterlidir.
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Bu öğretici, her bir makalenin bir önceki bölümde gerçekleştirilen iş üzerinde oluşturulduğu bir küme parçasıdır. Lütfen son öğreticiyi tamamlayana kadar tüm kaynakları temizlemeyi bekleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: fdfaef554e4e641656abd3fd2b4a5d3bbc519ccd
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 6398d23aeb0e26fbc336c0c1066078f327fa2f73
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325428"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576579"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Sanal ağ yalıtımı ve gizliliği genel bakış
 
@@ -145,10 +145,11 @@ Depolama alanı bir sanal ağda ise, önce [Studio](overview-what-is-machine-lea
 
 * Studio 'daki verileri önizleyin.
 * Tasarımcıda verileri görselleştirin.
+* Tasarımcıda bir model dağıtın.
 * Bir oto ml denemesi gönder.
 * Etiketleme projesi başlatın.
 
-VNet 'in içindeyken tam Studio işlevselliğini etkinleştirmek için bkz. [sanal bir ağda Azure Machine Learning Studio 'Yu kullanma](how-to-enable-studio-virtual-network.md#access-data-using-the-studio). Studio, hizmet uç noktalarını veya özel uç noktaları kullanarak depolama hesaplarını destekler.
+VNet 'in içindeyken tam Studio işlevselliğini etkinleştirmek için bkz. [sanal bir ağda Azure Machine Learning Studio 'Yu kullanma](how-to-enable-studio-virtual-network.md#configure-data-access-in-the-studio). Studio, hizmet uç noktalarını veya özel uç noktaları kullanarak depolama hesaplarını destekler.
 
 ### <a name="limitations"></a>Sınırlamalar
 - [Ml yardımlı veri etiketleme](how-to-create-labeling-projects.md#use-ml-assisted-labeling) , bir sanal ağın arkasında güvenliği sağlanmış varsayılan depolama hesaplarını desteklemez. ML yardımlı veri etiketleme için varsayılan olmayan bir depolama hesabı kullanmanız gerekir. Varsayılan olmayan depolama hesabının sanal ağın arkasında güvenliği sağlanmadığını göz önünde bulabilirsiniz. 

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: df800938d568af0b94cfb1d368ef32e9b085b6eb
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 543e6115be30963600d867bb9c2a03dfbb54e9f1
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913118"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576562"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Örnek etiketleme aracını dağıtma
 
@@ -37,13 +37,13 @@ Başlamadan önce, örnek etiketleme aracını bir Azure Container Instance 'a (
 * [Azure portalını kullanma](#azure-portal)
 * [Azure CLI'yı kullanma](#azure-cli)
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Azure portal kullanarak yeni bir kaynak oluşturmak için aşağıdaki adımları izleyin: 
 
-1. [Azure Portal](https://portal.azure.com/signin/index/) oturum açın.
-2. **Kaynak oluştur** ’u seçin. 
-3. Ardından **Web uygulaması** ' nı seçin. 
+1. [Azure portalda](https://portal.azure.com/signin/index/) oturum açın.
+2. **Kaynak oluştur**’u seçin. 
+3. Ardından **Web uygulaması**' nı seçin. 
 
    > [!div class="mx-imgBorder"]
    > ![Web uygulaması Seç](./media/quickstarts/formre-create-web-app.png)
@@ -95,7 +95,7 @@ Azure portal kullanarak yeni bir kaynak oluşturmak için aşağıdaki adımlar�
    > [!div class="mx-imgBorder"]
    > ![Docker 'ı yapılandırma](./media/quickstarts/formre-configure-docker.png)
 
-7. İşte bu kadar. Ardından Web uygulamanızı dağıtmak için **gözden geçir + oluştur** ' u ve ardından **Oluştur** ' u seçin. Tamamlandığında, Web uygulamanıza, kaynağınız için **genel bakış** bölümünde belirtilen URL 'de erişebilirsiniz.
+7. İşte bu kadar. Ardından Web uygulamanızı dağıtmak için **gözden geçir + oluştur**' u ve ardından **Oluştur** ' u seçin. Tamamlandığında, Web uygulamanıza, kaynağınız için **genel bakış** bölümünde belirtilen URL 'de erişebilirsiniz.
 
 > [!NOTE]
 > Web uygulamanızı oluştururken yetkilendirmeyi/kimlik doğrulamasını da yapılandırabilirsiniz. Başlamak için bu gerekli değildir. 
@@ -136,7 +136,7 @@ DNS_NAME_LABEL=aci-demo-$RANDOM
 az container create \
   --resource-group <resource_group_name> \
   --name <name> \
-  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview \
+  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview \
   --ports 3000 \
   --dns-name-label $DNS_NAME_LABEL \
   --location <region name> \

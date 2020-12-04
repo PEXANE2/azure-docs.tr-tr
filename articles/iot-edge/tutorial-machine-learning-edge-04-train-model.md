@@ -8,12 +8,12 @@ ms.date: 3/24/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b9a29e890553d15d19853ec836f8c4296869e143
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 8efc0301296f64abfe9b827e943882e930929086
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959637"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575338"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Öğretici: Azure Machine Learning modeli eğitme ve dağıtma
 
@@ -27,7 +27,7 @@ Azure Notebooks, makine öğrenimi modellerini denemek, eğmek ve dağıtmak iç
 
 Bu makaledeki adımlar genellikle veri bilimcileri tarafından gerçekleştirilmiş olabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makale, IoT Edge Azure Machine Learning kullanımı hakkında öğretici için bir serinin bir parçasıdır. Serideki her makale, önceki makaledeki iş üzerinde oluşturulur. Bu makaleye doğrudan ulaşdıysanız, serideki [ilk makaleyi](tutorial-machine-learning-edge-01-intro.md) ziyaret edin.
 
@@ -158,7 +158,7 @@ Not defterlerinin başarıyla tamamlandığını doğrulamak için, birkaç öğ
 
 1. Aşağıdaki dosyaların oluşturulduğunu doğrulayın:
 
-    | Dosya | Description |
+    | Dosya | Açıklama |
     | --- | --- |
     | ./aml_config/.azureml/config.js | Azure Machine Learning Çalışma Alanı oluşturmak için kullanılan yapılandırma dosyası. |
     | ./aml_config/model_config.jsaçık | Modeli Azure 'daki **Turbofandemo** Machine Learning çalışma alanına dağıtmak için gereken yapılandırma dosyası. |
@@ -166,10 +166,10 @@ Not defterlerinin başarıyla tamamlandığını doğrulamak için, birkaç öğ
 
 1. Aşağıdaki Azure kaynaklarının oluşturulduğunu doğrulayın. Bazı kaynak adlarına rastgele karakterler eklenir.
 
-    | Azure kaynağı | Name |
+    | Azure kaynağı | Ad |
     | --- | --- |
     | Machine Learning çalışma alanı | turborfanDemo |
-    | Container Registry | turbofandemoxxxxxxxx |
+    | Container Kayıt Defteri | turbofandemoxxxxxxxx |
     | Uygulama öngörüleri | turbofanınsilerxxxxxxxx |
     | Key Vault | turbofankeyvaultbxxxxxxxx |
     | Depolama | turbofanstoragexxxxxxxxx |
@@ -179,6 +179,10 @@ Not defterlerinin başarıyla tamamlandığını doğrulamak için, birkaç öğ
 Hata ayıklama için not defterine Python deyimleri ekleyebilirsiniz, örneğin, `print()` değerleri gösterme komutu. Tanımlı olmayan değişkenler veya nesneler görürseniz, ilk olarak bildirildiği veya örneklendiği hücreleri çalıştırın.
 
 Not defterlerini yeniden yapmanız gerekiyorsa, önceden oluşturulmuş dosyaları ve Azure kaynaklarını silmeniz gerekebilir.
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Bu öğretici, her bir makalenin bir önceki bölümde gerçekleştirilen iş üzerinde oluşturulduğu bir küme parçasıdır. Lütfen son öğreticiyi tamamlayana kadar tüm kaynakları temizlemeyi bekleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

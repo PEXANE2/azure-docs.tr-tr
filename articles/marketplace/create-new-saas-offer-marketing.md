@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: c8fa2efe708823ff4154edfd58f1b18e0176a990
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ccc5a63da40950fbf9f05e3e029393fce8814d7
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89381210"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576698"
 ---
 # <a name="how-to-market-your-saas-offer"></a>SaaS teklifinizi pazara sunma
 
@@ -23,9 +23,9 @@ Bu makalede, Microsoft aracılığıyla hizmet olarak yazılım (SaaS) teklifi s
 
 **Microsoft Ile ortak satış** hakkında bilgi sağlamak tamamen isteğe bağlıdır. Ancak, _ortak satış Için hazırlık_ ve _IP ortak satışı için hazırlık_ durumu elde etmek gerekir. Microsoft satış ekipleri, bu bilgileri, müşteri gereksinimlerine uygun şekilde değerlendirirken çözümünüz hakkında daha fazla bilgi edinmek için kullanır. Bu sekmede sağladığınız bilgiler doğrudan müşteriler tarafından kullanılamaz.
 
-**Ortak satışı Microsoft sekmesi ile** yapılandırmaya yönelik ayrıntılar ve yönergeler için bkz. [Partner Center 'da ortak satış seçeneği](partner-center-portal/commercial-marketplace-co-sell.md).
+**Ortak satışı Microsoft sekmesi ile** yapılandırmaya yönelik ayrıntılar ve yönergeler için bkz. [Partner Center 'da ortak satış seçeneği](commercial-marketplace-co-sell.md).
 
-## <a name="resell-through-csps"></a>CSP 'Ler aracılığıyla yeniden satış
+## <a name="resell-through-csps"></a>CSP’ler aracılığıyla satış
 
 Teklifinizi bulut çözümü sağlayıcısı (CSP) programında kullanılabilir hale getirmek isterseniz, CSP 'Ler, müşterilerine paketlenmiş bir çözümün parçası olarak ürününüzü satabilir. CSP aracılığıyla teklifinizi yeniden satma hakkında daha fazla bilgi ve **CSP aracılığıyla yeniden satışın** yapılandırılması için adım adım yönergeler için bkz. [bulut çözümü sağlayıcısı programı](cloud-solution-providers.md).
 

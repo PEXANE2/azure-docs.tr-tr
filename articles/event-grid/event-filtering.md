@@ -2,13 +2,13 @@
 title: Azure Event Grid için olay filtreleme
 description: Azure Event Grid aboneliği oluştururken olayların nasıl filtreleneceğini açıklar.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 837209d4197c271598155776b8d171a705e1f454
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/03/2020
+ms.openlocfilehash: bc3e84037693fcd909961ba409871d947ef1de7d
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86120101"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574915"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Event Grid abonelikleri için olay filtrelemeyi anlayın
 
@@ -72,7 +72,7 @@ Birden çok değer içeren tek bir filtre belirtirseniz, **ya** da bir işlem ge
 ]
 ```
 
-Birden çok farklı filtre belirtirseniz, **ve** bir işlem gerçekleştirilir, bu nedenle her filtre koşulu karşılanmalıdır. Aşağıda bir örnek verilmiştir: 
+Birden çok farklı filtre belirtirseniz **ve** bir işlem yapılır, bu nedenle her filtre koşulu karşılanmalıdır. Aşağıda bir örnek verilmiştir: 
 
 ```json
 "advancedFilters": [
@@ -117,6 +117,23 @@ Birden çok farklı filtre belirtirseniz, **ve** bir işlem gerçekleştirilir, 
 
 Tüm dize karşılaştırmaları büyük/küçük harfe duyarlı **değildir** .
 
+> [!NOTE]
+> Olay JSON 'SI gelişmiş filtre anahtarını içermiyorsa, filtre aşağıdaki işleçler için evaulated olarak **eşleşmez** : 
+> - NumberGreaterThan
+> - NumberGreaterThanOrEquals
+> - NumberLessThan
+> - Numberlessals
+> - Numberın
+> - BoolEquals
+> - StringContains
+> - StringBeginsWith
+> - StringEndsWith
+> - Stringın
+> 
+>Filtre, aşağıdaki işleçler için evaulated olarak **eşleşir** :
+> - Numbernotın
+> - Stringnotın
+
 ### <a name="key"></a>Anahtar
 
 Event Grid şemasındaki olaylar için, anahtar için aşağıdaki değerleri kullanın:
@@ -142,7 +159,7 @@ Bulut olayları şemasındaki olaylar için, anahtar için aşağıdaki değerle
 
 Değerler şu şekilde olabilir:
 
-* number
+* sayı
 * string
 * boolean
 * array
@@ -154,7 +171,7 @@ Gelişmiş filtreleme aşağıdaki sınırlamalara sahiptir:
 * Her olay Kılavuzu aboneliği için tüm filtrelerdeki 5 Gelişmiş filtre ve 25 filtre değeri
 * dize değeri başına 512 karakter
 * **İçindeki** ve **Not** işleçleri için beş değer
-* ** `.` (Nokta)** karakterleriyle anahtarlar. Örneğin: `http://schemas.microsoft.com/claims/authnclassreference` veya `john.doe@contoso.com` . Şu anda Anahtarlar içinde kaçış karakterleri için destek yoktur. 
+* **`.` (Nokta)** karakterleriyle anahtarlar. Örneğin: `http://schemas.microsoft.com/claims/authnclassreference` veya `john.doe@contoso.com` . Şu anda Anahtarlar içinde kaçış karakterleri için destek yoktur. 
 
 Aynı anahtar birden fazla filtrede kullanılabilir.
 

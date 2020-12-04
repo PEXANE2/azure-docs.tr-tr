@@ -3,12 +3,12 @@ title: Öğretici-ağ planlama denetim listesi
 description: Ağ gereksinimi önkoşulları ve Azure VMware çözümü için ağ bağlantısı ve ağ bağlantı noktalarıyla ilgili ayrıntılar hakkında bilgi edinin.
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 5ee70b8a297e1b8418049ff229b3c1869819145b
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 52f973ada23576fd6d542c40c9a9e63e6f270df3
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948213"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575168"
 ---
 # <a name="networking-planning-checklist-for-azure-vmware-solution"></a>Azure VMware çözümü için ağ planlama denetim listesi 
 
@@ -47,9 +47,19 @@ Alt ağlar:
 | Ağ kullanımı             | Alt ağ | Örnek          |
 | ------------------------- | ------ | ---------------- |
 | Özel bulut yönetimi  | `/26`  | `10.10.0.0/26`   |
+| HCX MGMT geçişleri       | `/26`  | `10.10.0.64/26`  |
+| Global Reach ayrılmış     | `/26`  | `10.10.0.128/26` |
+| Ayrılmış ExpressRoute     | `/27`  | `10.10.0.192/27` |
+| ExpressRoute eşlemesi      | `/27`  | `10.10.0.224/27` |
+| ESXi yönetimi           | `/25`  | `10.10.1.0/25`   |
 | vMotion ağı           | `/25`  | `10.10.1.128/25` |
-| VM iş yükleri              | `/24`  | `10.10.2.0/24`   |
-| ExpressRoute eşlemesi      | `/29`  | `10.10.3.8/29`   |
+| Çoğaltma ağı       | `/25`  | `10.10.2.0/25`   |
+| vSAN                      | `/25`  | `10.10.2.128/25` |
+| HCX yukarı                | `/26`  | `10.10.3.0/26`   |
+| Ayrılmıştır                  | `/26`  | `10.10.3.64/26`  |
+| Ayrılmıştır                  | `/26`  | `10.10.3.128/26` |
+| Ayrılmıştır                  | `/26`  | `10.10.3.192/26` |
+
 
 
 ## <a name="required-network-ports"></a>Gerekli ağ bağlantı noktaları

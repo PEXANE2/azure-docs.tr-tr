@@ -1,17 +1,15 @@
 ---
 title: Reliable Actors durum yönetimi
 description: Reliable Actors durumunun nasıl yönetildiğini, kalıcı olduğunu ve yüksek kullanılabilirlik için çoğaltıldığını açıklar.
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9d5859886dbd1211f929be1031237f7e7d9b1fc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: badfc490f26b71881e7970c2c0be3472abfec25a
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89611715"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575610"
 ---
 # <a name="reliable-actors-state-management"></a>Reliable Actors durum yönetimi
 Reliable Actors hem mantığı hem de durumu kapsüllemek için tek iş parçacıklı nesnelerdir. Aktör Reliable Services çalıştığı için, aynı kalıcılık ve çoğaltma mekanizmalarını kullanarak durumu güvenilir bir şekilde koruyabilirler. Bu şekilde, aktörler hatalardan sonra, çöp toplamadan sonra yeniden etkinleştirme sonrasında veya kaynak Dengeleme ya da yükseltmeler nedeniyle bir kümedeki düğümler arasında taşındıktan sonra durumlarını kaybeder.
@@ -73,7 +71,7 @@ class MyActorImpl extends FabricActor implements MyActor
 Bu ayar yalnızca bellek içi bir durum sağlayıcısı kullanır ve çoğaltma sayısını 1 olarak ayarlar.
 
 ### <a name="defaults-and-generated-settings"></a>Varsayılanlar ve oluşturulan ayarlar
-`StatePersistence`Özniteliğini kullanırken, aktör hizmeti başladığında çalışma zamanında sizin için bir durum sağlayıcısı otomatik olarak seçilir. Ancak çoğaltma sayısı, Visual Studio aktör derleme araçları tarafından derleme sırasında ayarlanır. Yapı araçları, ApplicationManifest.xml ' deki aktör hizmeti için otomatik olarak *varsayılan bir hizmet* oluşturur. **En az çoğaltma kümesi boyutu** ve **hedef çoğaltma kümesi boyutu**için parametreler oluşturulur.
+`StatePersistence`Özniteliğini kullanırken, aktör hizmeti başladığında çalışma zamanında sizin için bir durum sağlayıcısı otomatik olarak seçilir. Ancak çoğaltma sayısı, Visual Studio aktör derleme araçları tarafından derleme sırasında ayarlanır. Yapı araçları, ApplicationManifest.xml ' deki aktör hizmeti için otomatik olarak *varsayılan bir hizmet* oluşturur. **En az çoğaltma kümesi boyutu** ve **hedef çoğaltma kümesi boyutu** için parametreler oluşturulur.
 
 Bu parametreleri el ile değiştirebilirsiniz. Ancak, öznitelik her `StatePersistence` değiştirildiğinde parametreler seçili öznitelik için varsayılan çoğaltma kümesi boyut değerlerine ayarlanır `StatePersistence` ve önceki değerleri geçersiz kılar. Diğer bir deyişle, ServiceManifest.xml ' de ayarladığınız değerler *yalnızca* öznitelik değerini değiştirdiğinizde derleme zamanında geçersiz kılınır `StatePersistence` .
 
@@ -106,7 +104,7 @@ Durum Yöneticisi, güvenilir sözlükte bulunanlara benzer şekilde durum yöne
 
 Aktör durumunu yönetme örnekleri, okuma [erişimi, kaydetme ve Reliable Actors durumu](service-fabric-reliable-actors-access-save-remove-state.md).
 
-## <a name="best-practices"></a>Önerilen uygulamalar
+## <a name="best-practices"></a>En iyi uygulamalar
 Aktör durumunu yönetmeye yönelik bazı önerilen uygulamalar ve sorun giderme ipuçları aşağıda verilmiştir.
 
 ### <a name="make-the-actor-state-as-granular-as-possible"></a>Aktör durumunu mümkün olduğunca ayrıntılı yapın

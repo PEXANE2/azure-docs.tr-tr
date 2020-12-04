@@ -1,17 +1,15 @@
 ---
 title: Service Fabric Reliable Actors genel bakış
 description: Sanal aktör düzenine göre Service Fabric Reliable Actors programlama modeline giriş.
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: adb15d995cd2a9fd604aa6b91360adc88a2804e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a8a7003a69deaf6b74d6fbb8a3cf84b0a78eecf
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89007936"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576392"
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>Service Fabric Reliable Actors giriş
 Reliable Actors, [sanal aktör](https://research.microsoft.com/en-us/projects/orleans/) düzenine göre Service Fabric bir uygulama çerçevesidir. Reliable Actors API 'SI, Service Fabric tarafından sağlanan ölçeklenebilirlik ve güvenilirlik garantisi üzerine inşa olan tek iş parçacıklı bir programlama modeli sağlar.
@@ -43,7 +41,7 @@ Bu sanal aktör yaşam süresi soyutlama, sanal aktör modelinin bir sonucu olar
 * Reliable Actors, aktör nesneleri örtülü olarak oluştursa da, aktör ve durumunu açıkça silme olanağınız vardır.
 
 ## <a name="distribution-and-failover"></a>Dağıtım ve yük devretme
-Ölçeklenebilirlik ve güvenilirlik sağlamak için Service Fabric aktörleri küme genelinde dağıtır ve bunları otomatik olarak başarısız düğümlerden, gerektiği gibi sağlıklı bir şekilde geçirir. Bu, [bölümlenmiş ve durum bilgisi olan güvenilir bir hizmet](service-fabric-concepts-partitioning.md)üzerinde soyutlamadır. Dağıtım, ölçeklenebilirlik, güvenilirlik ve otomatik yük devretme, aktörlerin *aktör hizmeti*olarak adlandırılan durum bilgisi olan güvenilir bir hizmetin içinde çalıştığı gerçeğini sağlamıştır.
+Ölçeklenebilirlik ve güvenilirlik sağlamak için Service Fabric aktörleri küme genelinde dağıtır ve bunları otomatik olarak başarısız düğümlerden, gerektiği gibi sağlıklı bir şekilde geçirir. Bu, [bölümlenmiş ve durum bilgisi olan güvenilir bir hizmet](service-fabric-concepts-partitioning.md)üzerinde soyutlamadır. Dağıtım, ölçeklenebilirlik, güvenilirlik ve otomatik yük devretme, aktörlerin *aktör hizmeti* olarak adlandırılan durum bilgisi olan güvenilir bir hizmetin içinde çalıştığı gerçeğini sağlamıştır.
 
 Aktör, aktör hizmetinin bölümlerine dağıtılır ve bu bölümler bir Service Fabric kümesindeki düğümlere dağıtılır. Her hizmet bölümü bir aktör kümesi içerir. Service Fabric, hizmet bölümlerinin dağıtımını ve yük devretmesini yönetir.
 
@@ -124,13 +122,13 @@ Bu diyagram aşağıdaki kuralları izler:
 
 Göz önünde bulundurmanız gereken bazı önemli noktaları:
 
-* *Method1* , istemci isteğine *Xyz789*yanıt olarak *ActorId2* adına yürütülürken, *Ayrıca Method1 tarafından yürütülmesini gerektiren başka* bir istemci isteği (*abc123*) varolur *.* Ancak, *Method1* 'in ikinci yürütmesi, önceki yürütme bitinceye kadar başlamaz. Benzer şekilde, *ActorId2* tarafından kaydedilen bir anımsatıcı, *Method1* *istemci isteğine yanıt*olarak yürütüldüğünde ateşlenir. Anımsatıcı geri çağırması yalnızca *Method1* yürütmeleri tamamlandıktan sonra yürütülür. Bunun hepsi, *ActorId2*için zorunlu tabanlı eşzamanlılık nedeniyle yapılır.
-* Benzer şekilde, ActorId1 için açık tabanlı eşzamanlılık, *Method1*, *Method2*ve zamanlayıcı geri çağrısının bir seri bir *biçimde olması adına* bir şekilde yürütülmesi tarafından gösterildiği gibi, *ActorId1*için de zorlanır.
-* *ActorId1* adına *Method1* yürütmesi, *ActorId2*adına yürütme ile çakışıyor. Bunun nedeni, çift tabanlı eşzamanlılık yalnızca aktör içinde zorlanır ve aktörler arasında değil.
+* *Method1* , istemci isteğine *Xyz789* yanıt olarak *ActorId2* adına yürütülürken, *Ayrıca Method1 tarafından yürütülmesini gerektiren başka* bir istemci isteği (*abc123*) varolur *.* Ancak, *Method1* 'in ikinci yürütmesi, önceki yürütme bitinceye kadar başlamaz. Benzer şekilde, *ActorId2* tarafından kaydedilen bir anımsatıcı, *Method1* *istemci isteğine yanıt* olarak yürütüldüğünde ateşlenir. Anımsatıcı geri çağırması yalnızca *Method1* yürütmeleri tamamlandıktan sonra yürütülür. Bunun hepsi, *ActorId2* için zorunlu tabanlı eşzamanlılık nedeniyle yapılır.
+* Benzer şekilde, ActorId1 için açık tabanlı eşzamanlılık, *Method1*, *Method2* ve zamanlayıcı geri çağrısının bir seri bir *biçimde olması adına* bir şekilde yürütülmesi tarafından gösterildiği gibi, *ActorId1* için de zorlanır.
+* *ActorId1* adına *Method1* yürütmesi, *ActorId2* adına yürütme ile çakışıyor. Bunun nedeni, çift tabanlı eşzamanlılık yalnızca aktör içinde zorlanır ve aktörler arasında değil.
 * Yöntem/geri çağırma yürütmelerinin bazılarında, yöntem `Task` `CompletableFuture` /geri çağırma tarafından döndürülen (C#)/(Java), yöntem dönüşinden sonra tamamlanır. Bazı bazılarında, zaman uyumsuz işlem, metodun/geri aramanın döndürdüğü zaman tarafından zaten bitmiştir. Her iki durumda da, aktör başına kilit yalnızca Yöntem/geri çağırma, ve zaman uyumsuz işlem bittikten sonra serbest bırakılır.
 
 ### <a name="reentrancy"></a>Yeniden giriş
-Aktör çalışma zamanı varsayılan olarak yeniden giriş yapılmasına izin verir. Yani aktör bir aktör yöntemi, aktör *B*üzerinde bir *yöntemi çağırırsa,* bu yöntem *bir aktör*üzerinde başka bir yöntemi çağırırsa, bu yöntemin çalışmasına izin verilir. Bunun nedeni, aynı mantıksal çağrı zinciri bağlamının bir parçası olması olabilir. Tüm Zamanlayıcı ve anımsatıcı çağrıları yeni mantıksal çağrı bağlamıyla başlar. Daha fazla ayrıntı için [Reliable Actors yeniden](service-fabric-reliable-actors-reentrancy.md) giriş bölümüne bakın.
+Aktör çalışma zamanı varsayılan olarak yeniden giriş yapılmasına izin verir. Yani aktör bir aktör yöntemi, aktör *B* üzerinde bir *yöntemi çağırırsa,* bu yöntem *bir aktör* üzerinde başka bir yöntemi çağırırsa, bu yöntemin çalışmasına izin verilir. Bunun nedeni, aynı mantıksal çağrı zinciri bağlamının bir parçası olması olabilir. Tüm Zamanlayıcı ve anımsatıcı çağrıları yeni mantıksal çağrı bağlamıyla başlar. Daha fazla ayrıntı için [Reliable Actors yeniden](service-fabric-reliable-actors-reentrancy.md) giriş bölümüne bakın.
 
 ### <a name="scope-of-concurrency-guarantees"></a>Eşzamanlılık garantisi kapsamı
 Aktör çalışma zamanı, bu yöntemlerin çağrılmasını denetlediği durumlarda bu eşzamanlılık garantisi sağlar. Örneğin, bir istemci isteğine yanıt olarak yapılan yöntem etkinleştirmeleri ve Zamanlayıcı ve anımsatıcı geri çağırmaları için bu onay garantisi sağlar. Ancak aktör kodu, aktör çalışma zamanı tarafından belirtilen mekanizmaların dışında doğrudan bu yöntemleri çağırdıysa, çalışma zamanı hiçbir eşzamanlılık garantisi sağlayamaz. Örneğin, yöntemi aktör yöntemleri tarafından döndürülen görevle ilişkilendirilmemiş bir görev bağlamında çağrılırsa, çalışma zamanı eşzamanlılık garantisi sağlayamaz. Yöntem, aktörün kendi kendine oluşturduğu bir iş parçacığından çağrılırsa, çalışma zamanı eşzamanlılık garantisi da sağlayamaz. Bu nedenle, arka plan işlemleri gerçekleştirmek için aktör, [aktör zamanlayıcıları ve](service-fabric-reliable-actors-timers-reminders.md) çift tabanlı eşzamanlılık kullanan aktör anımsatıcıları kullanmalıdır.

@@ -4,13 +4,12 @@ description: Service Fabric kümenizi planlarken dikkate alınması gereken dü�
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
-ms.custom: sfrev
-ms.openlocfilehash: d2b303c22eea9fb46a68bb3c8e36991d47d61554
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 731dcfdf25efc4b2f44669dacd8a400037ed47f4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91817746"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576341"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric küme kapasitesi planlama konuları
 
@@ -30,7 +29,7 @@ Bu makale, bu alanların her biri için önemli karar noktalarında size kılavu
 
 Her düğüm türü ayrı bir ölçek kümesi olduğundan, bağımsız olarak yukarı veya aşağı ölçeklendirilebilir, farklı bağlantı noktası kümelerine açık olabilir ve farklı kapasite ölçümleri vardır. Düğüm türleri ve sanal makine ölçek kümeleri arasındaki ilişki hakkında daha fazla bilgi için bkz. [küme düğümü türleri Service Fabric](service-fabric-cluster-nodetypes.md).
 
-Her küme, Service Fabric platform özellikleri sağlayan kritik sistem hizmetlerini çalıştıran bir **birincil düğüm türü**gerektirir. Uygulamalarınızı çalıştırmak için birincil düğüm türlerini de kullanmak mümkün olsa da, bunları yalnızca sistem hizmetlerini çalıştırmaya ayırmak önerilir.
+Her küme, Service Fabric platform özellikleri sağlayan kritik sistem hizmetlerini çalıştıran bir **birincil düğüm türü** gerektirir. Uygulamalarınızı çalıştırmak için birincil düğüm türlerini de kullanmak mümkün olsa da, bunları yalnızca sistem hizmetlerini çalıştırmaya ayırmak önerilir.
 
 **Birincil olmayan düğüm türleri** , uygulama rollerini ( *ön uç* ve *arka uç* hizmetleri gibi) tanımlamak ve bir küme içindeki hizmetleri fiziksel olarak yalıtmak için kullanılabilir. Service Fabric kümeler, birincil olmayan sıfır veya daha fazla düğüm türüne sahip olabilir.
 
@@ -40,21 +39,21 @@ Birincil düğüm türü, `isPrimary` Azure Resource Manager dağıtım şablonu
 
 İlk düğüm türü sayısı, kümenizin amacına ve üzerinde çalışan uygulama ve hizmetlere bağlıdır. Aşağıdaki soruları göz önünde bulundurun:
 
-* ***Uygulamanızda birden fazla hizmet var mı ve bunların herkese açık veya internet 'e yönelik olması gerekiyor mu?***
+* ***Uygulamanızda birden fazla hizmet var mı ve bunların herkese açık veya internet 'e yönelik olması gerekiyor mu?** _
 
     Tipik uygulamalar, bir istemciden girdi alan bir ön uç ağ geçidi hizmeti ve ön uç ve arka uç hizmetleri arasında ayrı bir ağla, ön uç hizmetleriyle iletişim kuran bir veya daha fazla arka uç hizmet içerir. Bu durumlar genellikle üç düğüm türü gerektirir: bir birincil düğüm türü ve birincil olmayan iki düğüm türü (her biri ön ve arka uç hizmeti için).
 
-* ***Uygulamanızı oluşturan hizmetler, daha fazla RAM veya daha yüksek CPU döngüleri gibi farklı altyapı ihtiyaçlarına sahip mi?***
+_ ***Uygulamanızı oluşturan hizmetlerden daha fazla RAM veya daha yüksek CPU döngüsü gibi farklı altyapı ihtiyaçları var mı?** _
 
-    Genellikle, ön uç hizmeti, internet 'e açık bağlantı noktaları olan daha küçük VM 'lerde (D2 gibi VM boyutları) çalıştırılabilir.  Yoğun şekilde yoğun arka uç hizmetlerinin, internet 'e yönelik olmayan daha büyük VM 'lerde (D4, D6, D15 gibi) çalışması gerekebilir. Bu hizmetler için farklı düğüm türlerini tanımlamak, temel Service Fabric VM 'lerin daha verimli ve güvenli bir şekilde kullanılabilmesini sağlar ve bunları bağımsız olarak ölçeklendirmelerini sağlar. İhtiyaç duyacağınız kaynak miktarını tahmin etme hakkında daha fazla bilgi için bkz. [Service Fabric uygulamalar Için kapasite planlama](service-fabric-capacity-planning.md)
+    Often, front-end service can run on smaller VMs (VM sizes like D2) that have ports open to the internet.  Computationally intensive back-end services might need to run on larger VMs (with VM sizes like D4, D6, D15) that are not internet-facing. Defining different node types for these services allow you to make more efficient and secure use of underlying Service Fabric VMs, and enables them to scale them independently. For more on estimating the amount of resources you'll need, see [Capacity planning for Service Fabric applications](service-fabric-capacity-planning.md)
 
-* ***Uygulama hizmetlerinizin 100 düğümden daha fazla ölçeklendirme yapması gerekir mi?***
+_ ***Uygulama hizmetlerinizin 100 düğümden daha fazla ölçeklendirme yapması gerekir mi?** _
 
-    Tek düğümlü bir tür, Service Fabric uygulamalar için sanal makine ölçek kümesi başına 100 düğümden daha fazla güvenilir bir şekilde ölçeklendirilemedi. 100 'den fazla düğüm çalıştırmak için ek sanal makine ölçek kümeleri (ve bu nedenle ek düğüm türleri) gerekir.
+    A single node type can't reliably scale beyond 100 nodes per virtual machine scale set for Service Fabric applications. Running more than 100 nodes requires additional virtual machine scale sets (and therefore additional node types).
 
-* ***Kümeniz Kullanılabilirlik Alanları arasında yayılacaktır mi?***
+_ ***Kümeniz kullanılabilirlik alanları arasında yayılacaktır mi?** _
 
-    Service Fabric, belirli bölgelere sabitlenmiş düğüm türlerini dağıtarak, uygulamalarınızın yüksek kullanılabilirliğe sahip olduğundan [kullanılabilirlik alanları](../availability-zones/az-overview.md) yayılmış kümeleri destekler. Kullanılabilirlik Alanları ek düğüm türü planlaması ve minimum gereksinimleri gerektirir. Ayrıntılar için bkz. [kullanılabilirlik alanları arasında yayılan Service Fabric kümelerinin birincil düğüm türü Için önerilen topoloji](service-fabric-cross-availability-zones.md#recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones). 
+    Service Fabric supports clusters that span across [Availability Zones](../availability-zones/az-overview.md) by deploying node types that are pinned to specific zones, ensuring high-availability of your applications. Availability Zones require additional node type planning and minimum requirements. For details, see [Recommended topology for primary node type of Service Fabric clusters spanning across Availability Zones](service-fabric-cross-availability-zones.md#recommended-topology-for-primary-node-type-of-azure-service-fabric-clusters-spanning-across-availability-zones). 
 
 Kümenizin ilk oluşturması için düğüm türlerinin sayısını ve özelliklerini belirlerken, kümeniz dağıtıldıktan sonra her zaman, birincil olmayan düğüm türlerini ekleyebileceğiniz, değiştirebileceğinizi veya kaldıracağınızı unutmayın. [Birincil düğüm türleri, çalışan kümelerde de değiştirilebilir](service-fabric-scale-up-primary-node-type.md) (ancak, bu işlemler üretim ortamlarında büyük bir planlama ve uyarı gerektirir).
 
@@ -62,7 +61,7 @@ Düğüm türü özelliklerinizi daha iyi bir şekilde dikkate almanız, düğü
 
 ## <a name="durability-characteristics-of-the-cluster"></a>Kümenin dayanıklılık özellikleri
 
-*Dayanıklılık düzeyi* , Service Fabric sanal makinelerinizin temel alınan Azure altyapısına sahip olduğu ayrıcalıkları belirler. Bu ayrıcalık Service Fabric, Service Fabric sistemi hizmetleri ve durum bilgisi olan hizmetlerinizin çekirdek gereksinimlerini etkileyen tüm VM düzeyi altyapı isteklerini (yeniden başlatma, yeniden görüntü veya geçiş gibi) duraklatmasını sağlar.
+_Durability Level *, Service Fabric sanal makinelerinizin temel alınan Azure altyapısına sahip olduğu ayrıcalıkları belirler. Bu ayrıcalık Service Fabric, Service Fabric sistemi hizmetleri ve durum bilgisi olan hizmetlerinizin çekirdek gereksinimlerini etkileyen tüm VM düzeyi altyapı isteklerini (yeniden başlatma, yeniden görüntü veya geçiş gibi) duraklatmasını sağlar.
 
 > [!IMPORTANT]
 > Dayanıklılık düzeyi, düğüm türü başına ayarlanır. Hiçbiri belirtilmemişse, *bronz* katman kullanılacaktır, ancak otomatik işletim sistemi yükseltmeleri sağlamaz. Üretim iş yükleri için *gümüş* veya *altın* dayanıklılık önerilir.

@@ -10,14 +10,14 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.custom: designer
-ms.openlocfilehash: 0475e7a7b9bb40e77fe23362ff098350037bdd30
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: ca812fc7548e3c70f1faa1e1ed6a34afda3872af
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555286"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575984"
 ---
-# <a name="tutorial-predict-automobile-price-with-the-designer"></a>Öğretici: tasarımcı ile otomobil fiyatlarını tahmin etme
+# <a name="tutorial-predict-automobile-price-with-the-designer"></a>Öğretici: Tasarımcıyla otomobil fiyatını tahmin etme
 
 
 Bu iki bölümden oluşan öğreticide, her bir otomobil fiyatını tahmin eden bir makine öğrenimi modelini eğitme ve dağıtma için Azure Machine Learning tasarımcısını nasıl kullanacağınızı öğreneceksiniz. Tasarımcı, tek bir kod satırı olmadan makine öğrenimi modelleri oluşturmanıza olanak sağlayan bir sürükle ve bırak aracıdır.
@@ -48,19 +48,22 @@ Azure Machine Learning bir işlem hattı oluşturmak için bir Azure Machine Lea
 
 ### <a name="create-a-new-workspace"></a>Yeni çalışma alanı oluşturma
 
-Tasarımcıyı kullanmak için önce bir Azure Machine Learning çalışma alanına ihtiyacınız vardır. Çalışma alanı Azure Machine Learning için en üst düzey kaynaktır, Azure Machine Learning içinde oluşturduğunuz tüm yapıtlarla çalışmak için merkezi bir yer sağlar.
+Tasarımcıyı kullanmak için bir Azure Machine Learning çalışma alanı gerekir. Çalışma alanı Azure Machine Learning için en üst düzey kaynaktır, Azure Machine Learning içinde oluşturduğunuz tüm yapıtlarla çalışmak için merkezi bir yer sağlar. Çalışma alanı oluşturma yönergesi için bkz. [Azure Machine Learning çalışma alanları oluşturma ve yönetme](how-to-manage-workspace.md).
+
+> [!NOTE]
+> Çalışma alanınız bir sanal ağ kullanıyorsa, tasarımcıyı kullanmak için kullanmanız gereken ek yapılandırma adımları vardır. Daha fazla bilgi için bkz. [Azure sanal ağında Azure Machine Learning Studio 'Yu kullanma](how-to-enable-studio-virtual-network.md)
 
 ### <a name="create-the-pipeline"></a>İşlem hattını oluşturma
 
 1. <a href="https://ml.azure.com?tabs=jre" target="_blank">Ml.Azure.com</a>'de oturum açın ve birlikte çalışmak istediğiniz çalışma alanını seçin.
 
-1. **Tasarımcı** ' yı seçin.
+1. **Tasarımcı**' yı seçin.
 
     ![Tasarımcıya nasıl erişediğinin gösterildiği görsel çalışma alanının ekran görüntüsü](./media/tutorial-designer-automobile-price-train-score/launch-designer.png)
 
-1. Kullanımı **kolay önceden oluşturulmuş modüller** ' i seçin.
+1. Kullanımı **kolay önceden oluşturulmuş modüller**' i seçin.
 
-1. Tuvalin üst kısmında, varsayılan işlem hattı adı ardışık düzen- **oluşturma** ' yı seçin. Bunu, *otomobil fiyat tahmini* olarak yeniden adlandırın. Adın benzersiz olması gerekmez.
+1. Tuvalin üst kısmında, varsayılan işlem hattı adı ardışık düzen- **oluşturma**' yı seçin. Bunu, *otomobil fiyat tahmini* olarak yeniden adlandırın. Adın benzersiz olması gerekmez.
 
 ## <a name="set-the-default-compute-target"></a>Varsayılan işlem hedefini ayarla
 
@@ -70,7 +73,7 @@ Her modülün varsayılan olarak aynı işlem hedefini kullanmasını söyleyece
 
 1. İşlem hattı adının yanında, **Gear icon** ![ tuval simgesinin en üstündeki dişli simgesi ekran görüntüsünü seçerek ](./media/tutorial-designer-automobile-price-train-score/gear-icon.png) **Ayarlar** bölmesini açın.
 
-1. Tuvalin sağındaki **Ayarlar** bölmesinde, **işlem hedefini seç** ' i seçin.
+1. Tuvalin sağındaki **Ayarlar** bölmesinde, **işlem hedefini seç**' i seçin.
 
     Zaten kullanılabilir bir işlem hedefi varsa, bu işlem hattını çalıştırmak için seçin.
 
@@ -79,7 +82,7 @@ Her modülün varsayılan olarak aynı işlem hedefini kullanmasını söyleyece
 
 1. İşlem kaynağı için bir ad girin.
 
-1. **Kaydet** ’i seçin.
+1. **Kaydet**’i seçin.
 
     > [!NOTE]
     > İşlem kaynağının oluşturulması yaklaşık beş dakika sürer. Kaynak oluşturulduktan sonra yeniden kullanabilir ve gelecekteki çalıştırmalar için bu bekleme süresini atlayabilirsiniz.
@@ -100,7 +103,7 @@ Her modülün varsayılan olarak aynı işlem hedefini kullanmasını söyleyece
 
 Kullanacağınız veri kümesini anlamak için verileri görselleştirebilirsiniz.
 
-1. **Otomobil fiyat verileri (ham)** öğesine sağ tıklayın ve **Görselleştir** ' i seçin.
+1. **Otomobil fiyat verileri (ham)** öğesine sağ tıklayın ve **Görselleştir**' i seçin.
 
 1. Her biri hakkındaki bilgileri görüntülemek için veri penceresinde farklı sütunları seçin.
 
@@ -128,9 +131,9 @@ Bir modeli eğitedığınızda, eksik olan veriler hakkında bir şey yapmanız 
 
 1. **Veri kümesi modülünde sütunları seç '** i seçin.
 
-1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde **sütunu Düzenle** ' yi seçin.
+1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde **sütunu Düzenle**' yi seçin.
 
-1. **Ekle** ' nin yanındaki **sütun adları** açılan ' i genişletin ve **tüm sütunlar** ' ı seçin.
+1. **Ekle**' nin yanındaki **sütun adları** açılan ' i genişletin ve **tüm sütunlar**' ı seçin.
 
 1. **+** Yeni bir kural eklemek için öğesini seçin.
 
@@ -144,7 +147,7 @@ Bir modeli eğitedığınızda, eksik olan veriler hakkında bir şey yapmanız 
 
 1. **Veri kümesi modülünde sütunları seç '** i seçin. 
 
-1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde, **Açıklama** metin kutusunu seçin ve *normalleştirilmiş zararları hariç tut* ' u girin.
+1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde, **Açıklama** metin kutusunu seçin ve *normalleştirilmiş zararları hariç tut*' u girin.
 
     İşlem hattınızı düzenlemenize yardımcı olması için grafik üzerinde açıklamalar görüntülenecektir.
 
@@ -155,21 +158,21 @@ Bir modeli eğitedığınızda, eksik olan veriler hakkında bir şey yapmanız 
 > [!TIP]
 > Giriş verilerinden eksik değerleri Temizleme, tasarımcıda birçok modülün kullanılmasına yönelik bir önkoşuldur.
 
-1. Tuvalin solundaki modül paletinde, bölüm **veri dönüşümü** ' ni genişletin ve **eksik veri modülünü temizle** ' yi bulun.
+1. Tuvalin solundaki modül paletinde, bölüm **veri dönüşümü**' ni genişletin ve **eksik veri modülünü temizle** ' yi bulun.
 
 1. **Eksik verileri temizle** modülünü ardışık düzen tuvaline sürükleyin. **Veri kümesi modülündeki sütunları seçme** modülüne bağlayın. 
 
 1. **Eksik verileri temizle** modülünü seçin.
 
-1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde **sütunu Düzenle** ' yi seçin.
+1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde **sütunu Düzenle**' yi seçin.
 
-1. Görüntülenen **sütunlar** penceresinde, **Ekle** ' nin yanındaki açılan menüyü genişletin. Seç, **tüm sütunlar**
+1. Görüntülenen **sütunlar** penceresinde, **Ekle**' nin yanındaki açılan menüyü genişletin. Seç, **tüm sütunlar**
 
-1. **Kaydet** 'i seçin
+1. **Kaydet**’i seçin
 
-1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde, **temizleme modu** ' nun altındaki **tüm satırı Kaldır** ' ı seçin.
+1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde, **temizleme modu**' nun altındaki **tüm satırı Kaldır** ' ı seçin.
 
-1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde, **Açıklama** kutusunu seçin ve *eksik değer satırlarını kaldır* ' ı girin. 
+1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde, **Açıklama** kutusunu seçin ve *eksik değer satırlarını kaldır*' ı girin. 
 
     İşlem hatlarınız şuna benzer şekilde görünmelidir:
 
@@ -200,19 +203,19 @@ Verileri bölmek makine öğreniminde ortak bir görevdir. Verilerinizi iki ayr�
 
     Bu seçenek, modeli eğitmek için verilerin yüzde 70 ' unu ve test için yüzde 30 ' unu böler. %70 veri kümesine sol çıkış bağlantı noktası üzerinden erişilebilecektir. Kalan veriler doğru çıkış bağlantı noktası üzerinden sunulacaktır.
 
-1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde, **Açıklama** kutusunu seçin ve *veri kümesini eğitim kümesi (0,7) ve test kümesi (0,3) olarak Böl* ' i girin.
+1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde, **Açıklama** kutusunu seçin ve *veri kümesini eğitim kümesi (0,7) ve test kümesi (0,3) olarak Böl*' i girin.
 
 ### <a name="train-the-model"></a>Modeli eğitme
 
 Fiyatı içeren bir veri kümesi vererek modeli eğitme. Algoritma, eğitim verileri tarafından sunulan özellikler ve fiyat arasındaki ilişkiyi açıklayan bir model oluşturur.
 
-1. Modül paletinde **Machine Learning algoritmaları** ' nı genişletin.
+1. Modül paletinde **Machine Learning algoritmaları**' nı genişletin.
     
     Bu seçenek, öğrenme algoritmalarını başlatmak için kullanabileceğiniz birkaç modül kategorisini görüntüler.
 
-1. **Regresyon**  >  **Doğrusal regresyon** ' i seçin ve işlem hattı tuvaline sürükleyin.
+1. **Regresyon**  >  **Doğrusal regresyon**' i seçin ve işlem hattı tuvaline sürükleyin.
 
-1. Modül paletinde, bölüm **modülü eğitimi** ' ni genişletin ve **model eğitme** modülünü tuvale sürükleyin.
+1. Modül paletinde, bölüm **modülü eğitimi**' ni genişletin ve **model eğitme** modülünü tuvale sürükleyin.
 
 1. **Doğrusal regresyon** modülünün çıkışını **eğitme modeli** modülünün sol girişine bağlayın.
 
@@ -227,7 +230,7 @@ Fiyatı içeren bir veri kümesi vererek modeli eğitme. Algoritma, eğitim veri
 
 1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde, **sütun seçiciyi Düzenle** ' yi seçin.
 
-1. **Etiket sütunu** iletişim kutusunda, açılan menüyü genişletin ve **sütun adları** ' nı seçin. 
+1. **Etiket sütunu** iletişim kutusunda, açılan menüyü genişletin ve **sütun adları**' nı seçin. 
 
 1. Metin kutusuna modelinizin tahmin edilecek değeri belirtmek için *Fiyat* girin.
 
@@ -262,20 +265,20 @@ Modelinizin test veri kümesini ne kadar iyi puanlaleceğini değerlendirmek iç
 
 İşlem hattınızda tüm kurulum olduğuna göre, makine öğrenimi modelinizi eğitebilmeniz için bir işlem hattı çalıştırması gönderebilirsiniz. Geliştirme sırasında işlem hattınızdaki değişiklikleri gözden geçirmek için kullanılabilecek herhangi bir noktada geçerli bir işlem hattı çalıştırması gönderebilirsiniz.
 
-1. Tuvalin üst kısmında **Gönder** ' i seçin.
+1. Tuvalin üst kısmında **Gönder**' i seçin.
 
-1. İşlem **hattı çalıştırmasını ayarla** iletişim kutusunda **Yeni oluştur** ' u seçin.
+1. İşlem **hattı çalıştırmasını ayarla** iletişim kutusunda **Yeni oluştur**' u seçin.
 
     > [!NOTE]
     > Denemeleri Group benzer işlem hattı birlikte çalışır. Birden çok kez işlem hattı çalıştırırsanız, art arda çalıştırmalar için aynı denemeyi seçebilirsiniz.
 
     1. **Yeni deneme adı** için açıklayıcı bir ad girin.
 
-    1. **Gönder** ’i seçin.
+    1. **Gönder**’i seçin.
     
     Çalışma durumunu ve ayrıntılarını tuvalin sağ üst kısmında görüntüleyebilirsiniz.
     
-    İlk çalıştırıldır, işlem hattının çalışmasının tamamlanması 20 dakikaya kadar sürebilir. Varsayılan işlem ayarlarının minimum düğüm boyutu 0 ' dır ve bu, tasarımcının boşta kaldıktan sonra kaynakları ayırması gerektiği anlamına gelir. İşlem kaynakları zaten ayrıldığından tekrarlanan işlem hattı çalıştırmaları daha az zaman alır. Ayrıca tasarımcı, verimliliği artırmak için her modül için önbelleğe alınmış sonuçları kullanır.
+    İlk çalıştırıldıysanız, işlem hattının çalışmasının tamamlanması 20 dakikaya kadar sürebilir. Varsayılan işlem ayarlarının minimum düğüm boyutu 0 ' dır ve bu, tasarımcının boşta kaldıktan sonra kaynakları ayırması gerektiği anlamına gelir. İşlem kaynakları zaten ayrıldığından tekrarlanan işlem hattı çalıştırmaları daha az zaman alır. Ayrıca tasarımcı, verimliliği artırmak için her modül için önbelleğe alınmış sonuçları kullanır.
 
 ### <a name="view-scored-labels"></a>Puanlanmış etiketleri görüntüle
 
@@ -295,11 +298,11 @@ Eğitim modelinin test veri kümesinde ne kadar iyi gerçekleştirildiğini gör
 
 Modeliniz için aşağıdaki istatistikler gösterilmektedir:
 
-* Ortalama **mutlak hata (MAE)** : mutlak hataların ortalaması. Bir hata, tahmin edilen değer ve gerçek değer arasındaki farktır.
-* **Kök ortalama kare hatası (rmo)** : test veri kümesinde yapılan tahmine dayalı ortalama kare şeklindeki hata sayısının kare kökü.
-* **Relative Absolute Error (Göreli Mutlak Hata)** : Gerçek değerler ve tüm gerçek değerlerin ortalaması arasındaki mutlak hataların mutlak farka göreli ortalaması.
-* **Relative Squared Error (Göreli Karesi Alınmış Hata)** : Gerçek değerler ve tüm gerçek değerlerin ortalaması arasındaki karesi alınmış hataların karesi alınmış farka göreli ortalaması.
-* **Belirleme katsayısı** : R kare değeri olarak da bilinen bu istatistiksel ölçüm, modelin verilere ne kadar iyi uyduğunu gösterir.
+* Ortalama **mutlak hata (MAE)**: mutlak hataların ortalaması. Bir hata, tahmin edilen değer ve gerçek değer arasındaki farktır.
+* **Kök ortalama kare hatası (rmo)**: test veri kümesinde yapılan tahmine dayalı ortalama kare şeklindeki hata sayısının kare kökü.
+* **Relative Absolute Error (Göreli Mutlak Hata)**: Gerçek değerler ve tüm gerçek değerlerin ortalaması arasındaki mutlak hataların mutlak farka göreli ortalaması.
+* **Relative Squared Error (Göreli Karesi Alınmış Hata)**: Gerçek değerler ve tüm gerçek değerlerin ortalaması arasındaki karesi alınmış hataların karesi alınmış farka göreli ortalaması.
+* **Belirleme katsayısı**: R kare değeri olarak da bilinen bu istatistiksel ölçüm, modelin verilere ne kadar iyi uyduğunu gösterir.
 
 Her bir hata istatistiği ne kadar küçük olursa o kadar iyidir. Daha küçük bir değer, tahminlerinin gerçek değerlere yakın olduğunu gösterir. Belirleme katsayısı için, değeri bir (1,0), daha iyi tahmine dayalı olur.
 

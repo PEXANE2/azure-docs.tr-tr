@@ -3,61 +3,55 @@ title: Sanal ağ eşlemesi için VPN ağ geçidi aktarımını yapılandırma
 description: İki Azure sanal ağını bağlantı amaçlarıyla sorunsuz bir şekilde bağlamak için sanal ağ eşlemesi için ağ geçidi geçişi yapılandırın.
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
-author: yushwang
+author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.date: 09/02/2020
-ms.author: yushwang
-ms.openlocfilehash: 4175069a21fd568af46a9f7d5aefc73f1574ac0c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 11/30/2020
+ms.author: cherylmc
+ms.openlocfilehash: 2fc12385c78135269b6a73038fd0ad810ebaedd6
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488196"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576209"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>Sanal ağ eşlemesi için VPN ağ geçidi aktarımını yapılandırma
 
-Bu makale, sanal ağ eşlemesi için ağ geçidi aktarımını yapılandırmanıza yardımcı olur. [Sanal ağ eşlemesi](../virtual-network/virtual-network-peering-overview.md), iki Azure sanal ağını sorunsuzca bağlar ve bağlantı amacıyla iki sanal ağı tek bir ağda birleştirir. [Ağ geçidi aktarımı](../virtual-network/virtual-network-peering-overview.md#gateways-and-on-premises-connectivity), bir sanal ağın şirket içi ve dışı karışık bağlantı ya da sanal ağlar arası bağlantı için eşlenmiş sanal ağdaki VPN ağ geçidinden yararlanmasını sağlayan bir eşleme özelliğidir. Aşağıdaki diyagramda sanal ağ eşlemesi ile ağ geçidi aktarımının nasıl çalıştığı gösterilmiştir.
+Bu makale, sanal ağ eşlemesi için ağ geçidi aktarımını yapılandırmanıza yardımcı olur. [Sanal ağ eşlemesi](../virtual-network/virtual-network-peering-overview.md), iki Azure sanal ağını sorunsuzca bağlar ve bağlantı amacıyla iki sanal ağı tek bir ağda birleştirir. [Ağ geçidi geçişi](../virtual-network/virtual-network-peering-overview.md#gateways-and-on-premises-connectivity) , bir sanal ağın, şirket Içi veya VNet-VNet bağlantısı için eşlenen sanal ağda VPN ağ geçidini kullanmasına imkan tanıyan bir eşleme özelliğidir. Aşağıdaki diyagramda sanal ağ eşlemesi ile ağ geçidi aktarımının nasıl çalıştığı gösterilmiştir.
 
-![gateway-transit](./media/vpn-gateway-peering-gateway-transit/gatewaytransit.png)
+![Ağ Geçidi aktarım diyagramı](./media/vpn-gateway-peering-gateway-transit/gatewaytransit.png)
 
-Diyagramda, ağ geçidi aktarımı eşlenmiş sanal ağların Hub-RM içinde Azure VPN ağ geçidi kullanmasına olanak tanır. S2S, P2S ve sanal ağlar arası bağlantılar dahil VPN ağ geçidinde kullanılabilen bağlantılar, üç sanal ağ için de geçerlidir. Aktarım seçeneği, aynı veya farklı dağıtım modelleri arasında eşleme için kullanılabilir. Tek kısıtlama, diyagramda gösterildiği gibi VPN ağ geçidinin yalnızca Resource Manager dağıtım modelini kullanarak sanal ağda olabilmesidir.
+Diyagramda, ağ geçidi aktarımı eşlenmiş sanal ağların Hub-RM içinde Azure VPN ağ geçidi kullanmasına olanak tanır. S2S, P2S ve sanal ağlar arası bağlantılar dahil VPN ağ geçidinde kullanılabilen bağlantılar, üç sanal ağ için de geçerlidir. Aktarım seçeneği, aynı veya farklı dağıtım modelleri arasında eşleme için kullanılabilir. Farklı dağıtım modelleri arasında geçiş yapılandırıyorsanız, hub sanal ağı ve sanal ağ geçidi, klasik dağıtım modelinde değil, Kaynak Yöneticisi dağıtım modelinde olmalıdır.
+>
 
 Merkez-uç ağ mimarisinde ağ geçidi aktarımı, uç sanal ağların her uç sanal ağdaki VPN ağ geçitlerini dağıtmak yerine merkezdeki VPN ağ geçidini paylaşmasına olanak tanır. Ağ geçidine bağlı sanal ağların veya şirket içi ağların yolları, ağ geçidi aktarımı kullanılarak eşlenmiş sanal ağların yönlendirme tablolarına yayılır. VPN ağ geçidinden otomatik yol yaymayı devre dışı bırakabilirsiniz. "**BGP yol yaymayı devre dışı bırak**" seçeneği ile bir yönlendirme tablosu oluşturun ve yönlendirme tablosunu alt ağlarla ilişkilendirerek bu alt ağlara yol dağıtımını engelleyin. Daha fazla bilgi için bkz. [Sanal ağ yönlendirme tablosu](../virtual-network/manage-route-table.md).
 
-Bu belgede açıklanan iki senaryo vardır:
+Bu makalede iki senaryo vardır:
 
-1. Her iki sanal ağ da Resource Manager dağıtım modelini kullanır
-2. Uç sanal ağ klasiktir, ağ geçidini içeren merkez sanal ağ ise Resource Manager içinde bulunur
-
+* **Aynı dağıtım modeli**: Kaynak Yöneticisi dağıtım modelinde her iki sanal ağ de oluşturulur.
+* **Farklı dağıtım modelleri**: bağlı bileşen sanal ağı klasik dağıtım modelinde oluşturulur ve hub sanal ağı ve ağ geçidi Kaynak Yöneticisi dağıtım modelidir.
 
 >[!NOTE]
 > Ağınızın topolojisine bir değişiklik yaparsanız ve Windows VPN istemcileriniz varsa, değişikliklerin istemciye uygulanması için Windows istemcileri için VPN istemci paketinin indirilip yeniden yüklenmesi gerekir.
 >
 
-## <a name="requirements"></a>Gereksinimler
+## <a name="prerequisites"></a>Önkoşullar
 
+Başlamadan önce, aşağıdaki sanal ağlara ve izinlere sahip olduğunuzu doğrulayın:
 
+### <a name="virtual-networks"></a><a name="vnet"></a>Sanal ağlar
 
-Bu belgedeki örnek, aşağıdaki kaynakların oluşturulmasını gerektirir:
+|Sanal Ağ|Dağıtım modeli| Sanal ağ geçidi|
+|---|---|---|---|
+| Merkez-RM| [Resource Manager](vpn-gateway-howto-site-to-site-resource-manager-portal.md)| [Evet](tutorial-create-gateway-portal.md)|
+| Bağlı bileşen-RM | [Resource Manager](vpn-gateway-howto-site-to-site-resource-manager-portal.md)| Hayır |
+| Uç-Klasik | [Klasik](vpn-gateway-howto-site-to-site-classic-portal.md#CreatVNet) | Hayır |
 
-1. Bir VPN ağ geçidi ile Merkez-RM sanal ağı
-2. Uç-RM sanal ağı
-3. Klasik dağıtım modeli ile Uç-Klasik sanal ağı
-4. Kullandığınız hesap, gerekli rol ve izinleri gerektirir. Ayrıntılar için bu makalenin [İzinler](#permissions) bölümüne bakın.
+### <a name="permissions"></a><a name="permissions"></a>İzinler
 
-Yönergeler için aşağıdaki belgelere bakın:
+Sanal ağ eşlemesi için kullandığınız hesaplar gerekli rol veya izinlere sahip olmalıdır. Aşağıdaki örnekte, **hub-RM** ve **bağlı bileşen-klasik** adlı iki sanal ağı eşkullandıysanız, hesabınız her bir sanal ağ için aşağıdaki rollere veya izinlere sahip olmalıdır:
 
-1. [Bir sanal ağda VPN ağ geçidi oluşturma](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-2. [Aynı dağıtım modeli ile sanal ağ eşlemesi oluşturma](../virtual-network/tutorial-connect-virtual-networks-portal.md)
-3. [Farklı dağıtım modelleri ile sanal ağ eşlemesi oluşturma](../virtual-network/create-peering-different-deployment-models.md)
-
-## <a name="permissions"></a><a name="permissions"></a>İzinler
-
-Sanal ağ eşlemesi için kullandığınız hesaplar gerekli rol veya izinlere sahip olmalıdır. Aşağıdaki örnekte, Merkez-RM ve Uç-Klasik adlı iki sanal ağ eşliyorsanız hesabınız her sanal ağ için aşağıdaki rol veya izinlere sahip olmalıdır:
-    
-|Sanal ağ|Dağıtım modeli|Role|İzinler|
+|Sanal Ağ|Dağıtım modeli|Role|İzinler|
 |---|---|---|---|
 |Merkez-RM|Resource Manager|[Ağ Katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
 | |Klasik|[Klasik Ağ Katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Yok|
@@ -66,35 +60,55 @@ Sanal ağ eşlemesi için kullandığınız hesaplar gerekli rol veya izinlere s
 
 [Yerleşik roller](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) ve [özel rollere](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (yalnızca Resource Manager) belirli izinlerin atanması hakkında daha fazla bilgi edinin.
 
-## <a name="resource-manager-to-resource-manager-peering-with-gateway-transit"></a>Ağ geçidi aktarımı ile Resource Manager’dan Resource Manager’a eşleme
+## <a name="same-deployment-model"></a><a name="same"></a>Aynı dağıtım modeli
 
-Ağ geçidi aktarımını etkinleştirmek üzere sanal ağ eşlemeleri oluşturmak veya güncelleştirmek için yönergeleri izleyin.
+Bu senaryoda, sanal ağların her ikisi de Kaynak Yöneticisi dağıtım modelidir. Ağ Geçidi aktarımı 'nı etkinleştirmek için sanal ağ eşayarlarını oluşturmak veya güncelleştirmek üzere aşağıdaki adımları kullanın.
 
-1. Azure portalında Uç-RM’den Merkez-RM’ye sanal ağ eşlemesi oluşturun veya güncelleştirin. Spoke-RM sanal ağ kaynağına gidin, "Eşlemeler" ve sonra "Ekle" öğesine tıklayın:
-    - "Resource Manager" seçeneğini ayarlayın
-    - İlgili abonelikte Merkez-RM sanal ağını seçin
-    - "Sanal ağ erişimine izin ver" seçeneğinin "Etkin" olduğundan emin olun
-    - "**Uzak ağ geçitleri kullan**" seçeneğini ayarlayın
-    - "Tamam"’a tıklayın
+### <a name="to-add-a-peering-and-enable-transit"></a>Eşleme eklemek ve geçişi etkinleştirmek için
 
-      ![spokerm-to-hubrm](./media/vpn-gateway-peering-gateway-transit/spokerm-hubrm-peering.png)
+1. [Azure Portal](https://portal.azure.com), hub-RM ' den sanal ağ eşlemesi oluşturun veya güncelleştirin. **Hub-RM** sanal ağına gidin. **Eşleme Ekle**' ye tıklayın ve ardından **Ekle** **' ye tıklayın**.
+1. **Eşleme Ekle** sayfasında, **Bu sanal ağın** değerlerini yapılandırın.
 
-2. Eşleme zaten oluşturulduysa eşleme kaynağına gidin, ardından adım (1)’de gösterilen ekran görüntüsüne benzer şekilde "**Uzak ağ geçitleri kullan**" seçeneğini etkinleştirin
+   * Eşleme bağlantı adı: bağlantıyı adlandırın. Örnek: **Hubrmtospokerd**
+   * Uzak sanal ağa giden trafik: **Izin ver**
+   * Uzak sanal ağdan iletilen trafik: **Izin ver**
+   * Sanal ağ geçidi: **Bu sanal ağın ağ geçidini kullan**
 
-3. Azure portalında Merkez-RM’den Uç-RM’ye sanal ağ eşlemesi oluşturun veya güncelleştirin. Merkez-RM sanal ağ kaynağına gidin, "Eşlemeler" ve sonra "Ekle" öğesine tıklayın:
-    - "Resource Manager" seçeneğini ayarlayın
-    - "Sanal ağ erişimine izin ver" seçeneğinin "Etkin" olduğundan emin olun
-    - İlgili abonelikte "Uç-RM" sanal ağını seçin
-    - "**Ağ geçidi aktarımına izin ver**" seçeneğini ayarlayın
-    - "Tamam"’a tıklayın
+     :::image type="content" source="./media/vpn-gateway-peering-gateway-transit/peering-vnet.png" alt-text="Ekran görüntüsünde eşleme Ekle gösterilir.":::
 
-      ![hubrm-to-spokerm](./media/vpn-gateway-peering-gateway-transit/hubrm-spokerm-peering.png)
+1. Aynı sayfada, **uzak sanal ağın** değerlerini yapılandırmak için devam edin.
 
-4. Eşleme zaten oluşturulduysa eşleme kaynağına gidin, ardından adım (3)’te gösterilen ekran görüntüsüne benzer şekilde "**Ağ geçidi aktarımına izin ver**" seçeneğini etkinleştirin
+   * Eşleme bağlantı adı: bağlantıyı adlandırın. Örnek: **Spokermtohubrm**
+   * Dağıtım modeli: **Kaynak Yöneticisi**
+   * Sanal ağ: **bağlı bileşen-RM**
+   * Uzak sanal ağa giden trafik: **Izin ver**
+   * Uzak sanal ağdan iletilen trafik: **Izin ver**
+   * Sanal ağ geçidi: **uzak sanal ağın ağ geçidini kullanma**
 
-5. Her iki sanal ağda eşleme durumunun "**Bağlı**" olduğunu doğrulayın
+     :::image type="content" source="./media/vpn-gateway-peering-gateway-transit/peering-remote.png" alt-text="Ekran görüntüsü uzak sanal ağ için değerleri gösterir.":::
 
-### <a name="powershell-sample"></a>PowerShell örneği
+1. Eşlemeyi oluşturmak için **Ekle** ' yi seçin.
+1. Eşleme durumunu her iki sanal ağda da **bağlı** olarak doğrulayın.
+
+### <a name="to-modify-an-existing-peering-for-transit"></a>Aktarım için varolan bir eşlemeyi değiştirme
+
+Eşleme zaten oluşturulmuşsa, transit eşlemesini değiştirebilirsiniz.
+
+1. Sanal ağa gidin. **Peerler** ' i seçin ve değiştirmek istediğiniz eşlemeyi seçin.
+
+   :::image type="content" source="./media/vpn-gateway-peering-gateway-transit/peering-modify.png" alt-text="Ekran görüntüsü, select peerusing ' i gösterir.":::
+
+1. VNet eşlemesini güncelleştirin.
+
+   * Uzak sanal ağa giden trafik: **Izin ver**
+   * Sanal ağa iletilen trafik; **Izin ver**
+   * Sanal ağ geçidi: **uzak sanal ağın ağ geçidini kullan**
+
+     :::image type="content" source="./media/vpn-gateway-peering-gateway-transit/modify-peering-settings.png" alt-text="Ekran görüntüsünde eşleme ağ geçidini değiştirme gösterilmektedir.":::
+
+1. Eşleme ayarlarını **kaydedin** .
+
+### <a name="powershell-sample"></a><a name="ps-same"></a>PowerShell örneği
 
 Yukarıdaki örnekle eşleme oluşturmak veya güncelleştirmek için PowerShell’i de kullanabilirsiniz. Değişkenleri, sanal ağlarınızın ve kaynak gruplarınızın adlarıyla değiştirin.
 
@@ -120,28 +134,30 @@ Add-AzVirtualNetworkPeering `
   -AllowGatewayTransit
 ```
 
-## <a name="classic-to-resource-manager-peering-with-gateway-transit"></a>Ağ geçidi aktarımı ile Klasikten Resource Manager’a eşleme
+## <a name="different-deployment-models"></a><a name="different"></a>Farklı dağıtım modelleri
 
-Adımlar Resource Manager örneğine benzer, ancak işlemler yalnızca Merkez-RM sanal ağına uygulanır.
+Bu yapılandırmada, bağlı **olan VNet sanal ağı klasik dağıtım** modelinde ve hub VNET **hub 'ı-RM** Kaynak Yöneticisi dağıtım modelinde. Dağıtım modelleri arasında geçiş yapılandırılırken, sanal ağ geçidinin klasik VNet değil Kaynak Yöneticisi VNet için yapılandırılması gerekir.
 
-1. Azure portalında Merkez-RM’den Uç-RM’ye sanal ağ eşlemesi oluşturun veya güncelleştirin. Merkez-RM sanal ağ kaynağına gidin, "Eşlemeler" ve sonra "Ekle" öğesine tıklayın:
-   - Sanal ağ dağıtım modeli için "Klasik" seçeneğini ayarlayın
-   - İlgili abonelikte "Uç-Klasik" sanal ağını seçin
-   - "Sanal ağ erişimine izin ver" seçeneğinin "Etkin" olduğundan emin olun
-   - "**Ağ geçidi aktarımına izin ver**" seçeneğini ayarlayın
-   - "Tamam"’a tıklayın
+Bu yapılandırma için yalnızca **hub-RM** sanal ağını yapılandırmanız gerekir. **Bağlı olan klasik** VNET üzerinde herhangi bir şeyi yapılandırmanız gerekmez.
 
-     ![hubrm-to-spokeclassic](./media/vpn-gateway-peering-gateway-transit/hubrm-spokeclassic-peering.png)
+1. Azure portal **hub-RM** sanal ağına gidin, eşlemeler **' i seçin** ve **+ Ekle**' yi seçin.
+1. **Eşleme Ekle** sayfasında, aşağıdaki değerleri yapılandırın:
 
-2. Eşleme zaten oluşturulduysa eşleme kaynağına gidin, ardından adım (1)’de gösterilen ekran görüntüsüne benzer şekilde "**Ağ geçidi aktarımına izin ver**" seçeneğini etkinleştirin
+   * Eşleme bağlantı adı: bağlantıyı adlandırın. Örnek: **Hubrmtoclassic**
+   * Uzak sanal ağa giden trafik: **Izin ver**
+   * Uzak sanal ağdan iletilen trafik: **Izin ver**
+   * Sanal ağ geçidi: **Bu sanal ağın ağ geçidini kullan**
+   * Uzak sanal ağ: **Klasik**
 
-3. Uç-Klasik sanal ağında işlem yok
+     :::image type="content" source="./media/vpn-gateway-peering-gateway-transit/peering-classic.png" alt-text="Bağlı bileşen için eşleme sayfası ekleme-klasik":::
 
-4. Merkez-RM sanal ağında eşleme durumunun "**Bağlı**" olduğunu doğrulayın
+1. Aboneliğin doğru olduğundan emin olun, sonra açılan menüden sanal ağı seçin.
+1. Eşlemeyi eklemek için **Ekle** ' yi seçin.
+1. Hub-RM sanal ağında **bağlı** olarak eşleme durumunu doğrulayın. 
 
-Durum "Bağlı" olarak gösterildikten sonra uç sanal ağlar merkez sanal ağındaki VPN ağ geçidi üzerinden sanal ağlar arası veya şirket içi ve dışı karışık bağlantıyı kullanmaya başlayabilir.
+Bu yapılandırma için, **bağlı olan-klasik** sanal ağ üzerinde herhangi bir şeyi yapılandırmanız gerekmez. Durum **bağlı**' ı gösterdiğinde, bağlı olan sanal ağ, hub sanal ağındaki VPN ağ geçidi üzerinden bağlantıyı kullanabilir.
 
-### <a name="powershell-sample"></a>PowerShell örneği
+### <a name="powershell-sample"></a><a name="ps-different"></a>PowerShell örneği
 
 Yukarıdaki örnekle eşleme oluşturmak veya güncelleştirmek için PowerShell’i de kullanabilirsiniz. Değişkenleri ve abonelik kimliğini sanal ağınızın, kaynak grubunuzun ve aboneliğinizin değerleri ile değiştirin. Yalnızca merkez sanal ağı üzerinde sanal ağ eşlemesi oluşturmanız gerekir.
 
@@ -152,7 +168,7 @@ $HubRM   = "Hub-RM"
 $hubrmvnet   = Get-AzVirtualNetwork -Name $HubRM -ResourceGroup $HubRG
 
 Add-AzVirtualNetworkPeering `
-  -Name HubRMToSpokeRM `
+  -Name HubRMToClassic `
   -VirtualNetwork $hubrmvnet `
   -RemoteVirtualNetworkId "/subscriptions/<subscription Id>/resourceGroups/Default-Networking/providers/Microsoft.ClassicNetwork/virtualNetworks/Spoke-Classic" `
   -AllowGatewayTransit
@@ -162,3 +178,5 @@ Add-AzVirtualNetworkPeering `
 
 * Üretimde kullanım için sanal ağ eşlemesi oluşturmadan önce [sanal ağ eşleme kısıtlamaları ve davranışları](../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints) ile [sanal ağ eşleme ayarları](../virtual-network/virtual-network-manage-peering.md#create-a-peering) hakkında daha fazla bilgi edinin.
 * Sanal ağ eşleme ve ağ geçidi aktarımı ile [merkez ve uç ağ topolojisi oluşturma](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke#virtual-network-peering) hakkında bilgi edinin.
+* [Aynı dağıtım modeliyle sanal ağ eşlemesi oluşturun](../virtual-network/tutorial-connect-virtual-networks-portal.md).
+* [Farklı dağıtım modelleriyle sanal ağ eşlemesi oluşturun](../virtual-network/create-peering-different-deployment-models.md).

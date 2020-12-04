@@ -1,17 +1,15 @@
 ---
 title: Aktör türü serileştirme üzerinde Reliable Actors notları
 description: Service Fabric Reliable Actors durumlarını ve arabirimlerini tanımlamak için kullanılabilecek, seri hale getirilebilir sınıfları tanımlamaya yönelik temel gereksinimleri açıklar
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 33a15b3c6f570d3b4d36a205f91bce7b042f3bb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a1118e394046b217a288663659a2c910098e992
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89016589"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576018"
 ---
 # <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>Service Fabric Reliable Actors türü serileştirme notları
 Tüm yöntemlerin bağımsız değişkenleri, bir aktör arabirimindeki her bir yöntem tarafından döndürülen görevlerin sonuç türleri ve aktörün durum Yöneticisi 'nde depolanan nesneler, [seri hale getirilebilir veri sözleşmesi](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer)olmalıdır. Bu, [aktör olay arabirimlerinde](service-fabric-reliable-actors-events.md)tanımlanan yöntemlerin bağımsız değişkenleri için de geçerlidir. (Aktör olay arabirimi yöntemleri her zaman void döndürür.)

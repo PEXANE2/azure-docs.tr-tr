@@ -4,13 +4,12 @@ description: Azure Service Fabric düğüm türlerinin sanal makine ölçek küm
 ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
-ms.custom: sfrev
-ms.openlocfilehash: 870467760a2baaa887b06fb8e01335f225f04d6e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7df7ed9fa1f872cd9554dcf4c8880b7c9d5e53c4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90561899"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576409"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric düğüm türleri ve sanal makine ölçek kümeleri
 
@@ -18,7 +17,7 @@ ms.locfileid: "90561899"
 
 Service Fabric çalışma zamanı, ölçek kümesindeki her bir sanal makineye *Microsoft. Azure. ServiceFabric* sanal makine uzantısı tarafından yüklenir. Her bir düğüm türünü bağımsız olarak yukarı veya aşağı ölçeklendirebilirsiniz, her küme düğümünde çalışan işletim sistemi SKU 'sunu değiştirebilir, farklı bağlantı noktası kümelerine açık olabilir ve farklı kapasite ölçümleri kullanabilirsiniz.
 
-Aşağıdaki şekilde, *ön uç* ve *arka uç*adında iki düğüm türüne sahip bir küme gösterilmektedir. Her düğüm türünün beş düğümü vardır.
+Aşağıdaki şekilde, *ön uç* ve *arka uç* adında iki düğüm türüne sahip bir küme gösterilmektedir. Her düğüm türünün beş düğümü vardır.
 
 ![İki düğüm türü olan bir küme][NodeTypes]
 
@@ -30,7 +29,7 @@ Yukarıdaki şekilde gösterildiği gibi, ölçek kümesi örnekleri 0 ' dan ba�
 
 ## <a name="map-scale-set-load-balancers-to-node-types-and-scale-sets"></a>Harita ölçek kümesi yük dengeleyiciler için düğüm türleri ve ölçek kümeleri
 
-Kümenizi Azure portal dağıttıysanız veya örnek Azure Resource Manager şablonunu kullandıysanız, bir kaynak grubundaki tüm kaynaklar listelenir. Her ölçek kümesi veya düğüm türü için yük dengeleyicileri görebilirsiniz. Yük dengeleyici adı şu biçimi kullanır: **lb- &lt; node tür adı &gt; **. Aşağıdaki şekilde gösterildiği gibi LB-sfcluster4doc-0 bir örnektir:
+Kümenizi Azure portal dağıttıysanız veya örnek Azure Resource Manager şablonunu kullandıysanız, bir kaynak grubundaki tüm kaynaklar listelenir. Her ölçek kümesi veya düğüm türü için yük dengeleyicileri görebilirsiniz. Yük dengeleyici adı şu biçimi kullanır: **lb- &lt; node tür adı &gt;**. Aşağıdaki şekilde gösterildiği gibi LB-sfcluster4doc-0 bir örnektir:
 
 ![Ekran görüntüsü, iki yük dengeleyicileri vurgulanmış bir kaynak grubu gösterir.][Resources]
 

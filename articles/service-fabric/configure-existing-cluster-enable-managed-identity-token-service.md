@@ -3,20 +3,19 @@ title: Mevcut bir Service Fabric kümesinde yönetilen kimlik desteğini yapıla
 description: Mevcut bir Azure Service Fabric kümesinde Yönetilen kimlikler desteğini etkinleştirme
 ms.topic: article
 ms.date: 03/11/2019
-ms.custom: sfrev
-ms.openlocfilehash: 722c507300cc5766d162f336f77f60293c5c90dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7bcba34e941f6fee038aa475d7c0869eb65aca2e
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86257610"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574709"
 ---
 # <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>Mevcut bir Service Fabric kümesinde yönetilen kimlik desteğini yapılandırma
 
-Service Fabric uygulamalarınızda [Azure kaynakları Için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md) kullanmak üzere önce kümede *yönetilen kimlik belirteci hizmetini* etkinleştirin. Bu hizmet, yönetilen kimliklerini kullanan Service Fabric uygulamalarının kimlik doğrulamasından ve kendi adına erişim belirteçleri elde etmeye sorumludur. Hizmet etkinleştirildikten sonra, sol bölmedeki **sistem** bölümü altında, **doku:/System/Managedıdentitytokenservice**adı altında çalışan Service Fabric Explorer görebilirsiniz.
+Service Fabric uygulamalarınızda [Azure kaynakları Için Yönetilen kimlikler](../active-directory/managed-identities-azure-resources/overview.md) kullanmak üzere önce kümede *yönetilen kimlik belirteci hizmetini* etkinleştirin. Bu hizmet, yönetilen kimliklerini kullanan Service Fabric uygulamalarının kimlik doğrulamasından ve kendi adına erişim belirteçleri elde etmeye sorumludur. Hizmet etkinleştirildikten sonra, sol bölmedeki **sistem** bölümü altında, **doku:/System/Managedıdentitytokenservice** adı altında çalışan Service Fabric Explorer görebilirsiniz.
 
 > [!NOTE]
-> **Yönetilen kimlik belirteci hizmetini**etkinleştirmek için Service Fabric Runtime sürümü 6.5.658.9590 veya üzeri gereklidir.  
+> **Yönetilen kimlik belirteci hizmetini** etkinleştirmek için Service Fabric Runtime sürümü 6.5.658.9590 veya üzeri gereklidir.  
 >
 > Küme kaynağını açıp **temel** bileşenler bölümündeki **Service Fabric sürümü** özelliğini denetleyerek Azure Portal bir kümenin Service Fabric sürümünü bulabilirsiniz.
 >

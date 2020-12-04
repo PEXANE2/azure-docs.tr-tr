@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, devx-track-azurecli
-ms.openlocfilehash: f57e809373a8bd06c4b4afbb9b193464315e788f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 754b1544f112fb63fae91a52c7e48f25b9790ed2
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959586"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575100"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Öğretici: IoT Edge cihaz yapılandırma
 
@@ -22,7 +22,7 @@ Bu makalede, Linux çalıştıran bir Azure sanal makinesini, saydam bir ağ ge�
 
 Bu makaledeki adımlar genellikle bir bulut geliştiricisi tarafından gerçekleştirilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makale, IoT Edge Azure Machine Learning kullanımı hakkında öğretici için bir serinin bir parçasıdır. Serideki her makale, önceki makaledeki iş üzerinde oluşturulur. Bu makaleye doğrudan ulaşdıysanız, serideki [ilk makaleyi](tutorial-machine-learning-edge-01-intro.md) ziyaret edin.
 
@@ -38,7 +38,7 @@ Bu bölümde, oluşturup çalıştırdığımız bir Docker görüntüsü kullan
 
 3. Zaten çalışmıyorsa, Windows Başlat menüsünden **Docker for Windows** başlatın.
 
-4. Visual Studio Code'u açın.
+4. Visual Studio Code’u açın.
 
 5. **Dosya**  >  **klasörü aç...** öğesini seçin ve **C: \\ kaynak \\ ıotedgeandmlsample \\ createcertificates** öğesini seçin.
 
@@ -295,6 +295,10 @@ Ardından, config. YAML dosyasını doğrudan düzenleyerek sertifikaları ve an
     ```bash
     journalctl -u iotedge --no-pager --no-full
     ```
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Bu öğretici, her bir makalenin bir önceki bölümde gerçekleştirilen iş üzerinde oluşturulduğu bir küme parçasıdır. Lütfen son öğreticiyi tamamlayana kadar tüm kaynakları temizlemeyi bekleyin.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure VM 'yi Azure IoT Edge saydam ağ geçidi olarak yapılandırmayı tamamladık. Azure Key Vault için karşıya yüklemediğimiz test sertifikalarını oluşturarak başladık. Daha sonra, Azure Marketi 'nden "Ubuntu Server 16,04 LTS + Azure IoT Edge Runtime" görüntüsüyle VM 'yi dağıtmak için bir betik ve Kaynak Yöneticisi şablonu kullandık. VM, SSH aracılığıyla bağlandığımız sanal makine ile Azure 'da oturum açdık ve Key Vault 'ten indirilen sertifikalar ile oturum açmamız gerekir. Config. YAML dosyasını güncelleştirerek IoT Edge çalışma zamanının yapılandırmasında birkaç güncelleştirme yaptık.

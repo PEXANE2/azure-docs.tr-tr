@@ -1,17 +1,15 @@
 ---
 title: Reliable Services iletişimine genel bakış
 description: Hizmetlere yönelik dinleyicileri açmak, uç noktaları çözümlemek ve hizmetler arasında iletişim kurmak dahil Reliable Services iletişim modeline genel bakış.
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9b45ceaed9f0d3d64a0fc6890549542acc6b1c21
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e7dc10055633c8e6dd2c645f28b774d5d5f3ac3f
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018646"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574335"
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>Reliable Services iletişim API 'Lerini kullanma
 Platform olarak Azure Service Fabric, hizmetler arasındaki iletişim hakkında tamamen bağımsızdır. Her protokol ve yığın, UDP 'den HTTP 'ye kadar kabul edilebilir. Hizmetlerin nasıl iletişim kurması gerektiğini seçmek için hizmet geliştiricisi 'nin bir daha vardır. Reliable Services uygulama çerçevesi, yerleşik iletişim yığınlarının yanı sıra özel iletişim bileşenlerinizi oluşturmak için kullanabileceğiniz API 'Ler sağlar.
@@ -197,7 +195,7 @@ Service Fabric, istemcilerin ve diğer hizmetlerin bu adresi hizmet adına göre
 Reliable Services API 'SI, hizmetlerle iletişim kuran istemcileri yazmak için aşağıdaki kitaplıkları sağlar.
 
 ### <a name="service-endpoint-resolution"></a>Hizmet uç noktası çözümleme
-Bir hizmetle iletişimin ilk adımı, iletişim kurmak istediğiniz bölümün veya hizmet örneğinin bir uç nokta adresini çözmeye yönelik bir hizmettir. `ServicePartitionResolver(C#) / FabricServicePartitionResolver(Java)`Yardımcı program sınıfı, istemcilerin çalışma zamanında bir hizmetin uç noktasını belirlemesine yardımcı olan temel bir temel programdır. Service Fabric terimlerinde, bir hizmetin uç noktasını belirleme işlemi *hizmet uç noktası çözümü*olarak adlandırılır.
+Bir hizmetle iletişimin ilk adımı, iletişim kurmak istediğiniz bölümün veya hizmet örneğinin bir uç nokta adresini çözmeye yönelik bir hizmettir. `ServicePartitionResolver(C#) / FabricServicePartitionResolver(Java)`Yardımcı program sınıfı, istemcilerin çalışma zamanında bir hizmetin uç noktasını belirlemesine yardımcı olan temel bir temel programdır. Service Fabric terimlerinde, bir hizmetin uç noktasını belirleme işlemi *hizmet uç noktası çözümü* olarak adlandırılır.
 
 Bir küme içindeki hizmetlere bağlanmak için, varsayılan ayarlar kullanılarak ServicePartitionResolver oluşturulabilir. Çoğu durum için önerilen kullanımdır:
 
@@ -208,7 +206,7 @@ ServicePartitionResolver resolver = ServicePartitionResolver.GetDefault();
 FabricServicePartitionResolver resolver = FabricServicePartitionResolver.getDefault();
 ```
 
-Farklı bir kümedeki hizmetlere bağlanmak için bir küme ağ geçidi uç noktası kümesiyle bir ServicePartitionResolver oluşturulabilir. Ağ Geçidi uç noktalarının aynı kümeye bağlanmak için yalnızca farklı uç noktalar olduğunu unutmayın. Örneğin:
+Farklı bir kümedeki hizmetlere bağlanmak için bir küme ağ geçidi uç noktası kümesiyle bir ServicePartitionResolver oluşturulabilir. Ağ Geçidi uç noktalarının aynı kümeye bağlanmak için yalnızca farklı uç noktalar olduğunu unutmayın. Örnek:
 
 ```csharp
 ServicePartitionResolver resolver = new  ServicePartitionResolver("mycluster.cloudapp.azure.com:19000", "mycluster.cloudapp.azure.com:19001");
@@ -333,14 +331,14 @@ public class MyCommunicationClientFactory extends CommunicationClientFactoryBase
 }
 ```
 
-Son olarak, özel durum işleyicisi bir özel durum oluştuğunda hangi eylemin yapılacağını belirlemekten sorumludur. Özel durumlar yeniden **denenebilir** ve yeniden **denenmesiz**olarak kategorize edilir.
+Son olarak, özel durum işleyicisi bir özel durum oluştuğunda hangi eylemin yapılacağını belirlemekten sorumludur. Özel durumlar yeniden **denenebilir** ve yeniden **denenmesiz** olarak kategorize edilir.
 
 * Yeniden **denenmeyen** özel durumlar, çağrı yapana tekrar geri oluşturulur.
-* yeniden **denenebilir** özel durumlar **geçici** ve **geçici olmayan**bir şekilde kategorilere ayrılır.
+* yeniden **denenebilir** özel durumlar **geçici** ve **geçici olmayan** bir şekilde kategorilere ayrılır.
   * **Geçici** özel durumlar, hizmet uç noktası adresi yeniden çözümlenmeden yalnızca yeniden denenebilecek olanlardır. Bunlar, hizmet uç noktası adresinin yok olduğunu belirten geçici ağ sorunları veya hizmet hatası yanıtlarını içerir.
   * **Geçici olmayan** özel durumlar, hizmet uç noktası adresinin yeniden çözümlenmesini gerektirir. Bunlar, hizmetin farklı bir düğüme taşındığını belirten hizmet uç noktasına ulaşılamadığını gösteren özel durumlar içerir.
 
-, `TryHandleException` Belirli bir özel durumla ilgili bir karar getirir. Bir özel durum hakkında hangi kararların yapılacağını **bilmezse** , **false**döndürmelidir. Hangi kararın yapılacağını **biliyorsanız** , sonucu buna göre ayarlamanız ve **true**döndürmelidir.
+, `TryHandleException` Belirli bir özel durumla ilgili bir karar getirir. Bir özel durum hakkında hangi kararların yapılacağını **bilmezse** , **false** döndürmelidir. Hangi kararın yapılacağını **biliyorsanız** , sonucu buna göre ayarlamanız ve **true** döndürmelidir.
 
 ```csharp
 class MyExceptionHandler : IExceptionHandler

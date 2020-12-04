@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 439337233e24dfcae2c8c911a9224fd3394d6846
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a7e9cdb18d109abeef7d7d7237444ac55f9e7da1
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462702"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576358"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>Azure SYNAPSE link Preview 'da sunucusuz SQL havuzu ile verileri Azure Cosmos DB sorgulama
 
@@ -33,6 +33,12 @@ Bu makalede, Azure SYNAPSE bağlantısı ile etkinleştirilen Azure Cosmos DB ka
 
 ## <a name="overview"></a>Genel Bakış
 
+Sunucusuz SQL havuzu, işlevi kullanarak analitik depolamayı Azure Cosmos DB sorgulamanızı sağlar `OPENROWSET` . 
+- `OPENROWSET` satır içi anahtar ile. Bu sözdizimi, kimlik bilgileri hazırlanmasına gerek kalmadan Azure Cosmos DB koleksiyonlarını sorgulamak için kullanılabilir.
+- `OPENROWSET` Cosmos DB hesap anahtarını içeren bu kimlik bilgilerine başvuruluyor. Bu söz dizimi, Azure Cosmos DB koleksiyonlarında görünümler oluşturmak için kullanılabilir.
+
+### <a name="openrowset-with-key"></a>[Anahtarla OPENROWSET](#tab/openrowset-key)
+
 Azure Cosmos DB analitik depodaki verileri sorgulamayı ve çözümlemeyi desteklemek için, sunucusuz bir SQL havuzu aşağıdaki `OPENROWSET` sözdizimini kullanır:
 
 ```sql
@@ -45,17 +51,39 @@ OPENROWSET(
 
 Azure Cosmos DB bağlantı dizesi, işlev için Azure Cosmos DB hesap adı, veritabanı adı, veritabanı hesabı ana anahtarı ve isteğe bağlı bir bölge adı belirtir `OPENROWSET` .
 
-> [!IMPORTANT]
-> `Latin1_General_100_CI_AS_SC_UTF8`Bir Azure Cosmos DB analitik deposundaki dize DEĞERLERI UTF-8 metin olarak kodlandığından, örneğin, bazı UTF-8 veritabanı harmanlaması kullandığınızdan emin olun.
-> Dosyadaki metin kodlaması ve harmanlama arasında uyuşmazlık, beklenmeyen metin dönüştürme hatalarına neden olabilir.
-> T-SQL ifadesini kullanarak geçerli veritabanının varsayılan harmanlamasını kolayca değiştirebilirsiniz `alter database current collate Latin1_General_100_CI_AI_SC_UTF8` .
-
 Bağlantı dizesi aşağıdaki biçimdedir:
 ```sql
 'account=<database account name>;database=<database name>;region=<region name>;key=<database account master key>'
 ```
 
 Azure Cosmos DB kapsayıcı adı, sözdiziminde tırnak işareti olmadan belirtilir `OPENROWSET` . Kapsayıcı adında özel karakterler varsa (örneğin, bir tire (-) varsa, ad sözdiziminde köşeli ayraç () içine sarılanmış olmalıdır `[]` `OPENROWSET` .
+
+### <a name="openrowset-with-credential"></a>[Kimlik bilgisiyle OPENROWSET](#tab/openrowset-credential)
+
+`OPENROWSET`Kimlik bilgisine başvuran sözdizimi kullanabilirsiniz:
+
+```sql
+OPENROWSET( 
+       PROVIDER = 'CosmosDB',
+       CONNECTION = '<Azure Cosmos DB connection string without account key>',
+       OBJECT = '<Container name>',
+       [ CREDENTIAL | SERVER_CREDENTIAL ] = '<credential name>'
+    )  [ < with clause > ] AS alias
+```
+
+Azure Cosmos DB bağlantı dizesi bu durumda anahtar içermez. Bağlantı dizesi aşağıdaki biçimdedir:
+```sql
+'account=<database account name>;database=<database name>;region=<region name>'
+```
+
+Veritabanı hesabı ana anahtarı sunucu düzeyi kimlik bilgisine veya veritabanı kapsamlı kimlik bilgisine yerleştirildi. 
+
+---
+
+> [!IMPORTANT]
+> `Latin1_General_100_CI_AS_SC_UTF8`Bir Azure Cosmos DB analitik deposundaki dize DEĞERLERI UTF-8 metin olarak kodlandığından, örneğin, bazı UTF-8 veritabanı harmanlaması kullandığınızdan emin olun.
+> Dosyadaki metin kodlaması ve harmanlama arasında uyuşmazlık, beklenmeyen metin dönüştürme hatalarına neden olabilir.
+> T-SQL ifadesini kullanarak geçerli veritabanının varsayılan harmanlamasını kolayca değiştirebilirsiniz `alter database current collate Latin1_General_100_CI_AI_SC_UTF8` .
 
 > [!NOTE]
 > Sunucusuz bir SQL havuzu, Azure Cosmos DB bir işlem deposunun sorgulanmasını desteklemez.
@@ -76,6 +104,9 @@ Sunucusuz bir SQL havuzuyla Azure Cosmos DB verilerinin nasıl sorgulanalınaca�
 
 Azure Cosmos DB verileri keşfetmenin en kolay yolu otomatik Şema çıkarımı özelliğini kullanmaktır. `WITH`Deyimden yan tümcesini atlayarak `OPENROWSET` , SUNUCUSUZ SQL havuzunun Azure Cosmos DB kapsayıcısının analitik deposunun şemasını otomatik olarak (çıkarması) otomatik olarak oluşturmasını sağlayabilirsiniz.
 
+
+### <a name="openrowset-with-key"></a>[Anahtarla OPENROWSET](#tab/openrowset-key)
+
 ```sql
 SELECT TOP 10 *
 FROM OPENROWSET( 
@@ -83,6 +114,25 @@ FROM OPENROWSET(
        'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
        EcdcCases) as documents
 ```
+
+### <a name="openrowset-with-credential"></a>[Kimlik bilgisiyle OPENROWSET](#tab/openrowset-credential)
+
+```sql
+/*  Setup - create server-level or database scoped credential with Azure Cosmos DB account key:
+    CREATE CREDENTIAL MyCosmosDbAccountCredential
+    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'C0Sm0sDbKey==';
+*/
+SELECT TOP 10 *
+FROM OPENROWSET(
+      PROVIDER = 'CosmosDB',
+      CONNECTION = 'account=MyCosmosDbAccount;database=covid;region=westus2',
+      OBJECT = 'EcdcCases',
+      SERVER_CREDENTIAL = 'MyCosmosDbAccountCredential'
+    ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
+```
+
+---
+
 Yukarıdaki örnekte, sunucusuz SQL havuzunun, `covid` `MyCosmosDbAccount` Azure Cosmos DB anahtarı (önceki örnekte kukla) kullanılarak kimliği doğrulanmış Azure Cosmos DB hesabındaki veritabanına bağlanmasını sağladık. Daha sonra `EcdcCases` bölgede bulunan analitik depoya eriştik `West US 2` . Belirli özelliklerin projeksiyonu olmadığından, `OPENROWSET` işlev Azure Cosmos DB öğelerinden tüm özellikleri döndürür.
 
 Azure Cosmos DB kapsayıcısındaki öğelerin, ve özelliklerinin olduğunu varsayarsak, `date_rep` `cases` `geo_id` Bu sorgunun sonuçları aşağıdaki tabloda gösterilmiştir:
@@ -119,6 +169,7 @@ Aşağıdaki yapıyla [ECDC COVıD veri kümesinden](https://azure.microsoft.com
 
 Azure Cosmos DB içindeki bu düz JSON belgeleri, SYNAPSE SQL 'de bir dizi satır ve sütun olarak gösterilebilir. `OPENROWSET`İşlevi, okumak istediğiniz özelliklerin bir alt kümesini ve yan tümcesindeki tam sütun türlerini belirtmenize olanak sağlar `WITH` :
 
+### <a name="openrowset-with-key"></a>[Anahtarla OPENROWSET](#tab/openrowset-key)
 ```sql
 SELECT TOP 10 *
 FROM OPENROWSET(
@@ -127,7 +178,21 @@ FROM OPENROWSET(
        EcdcCases
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
-
+### <a name="openrowset-with-credential"></a>[Kimlik bilgisiyle OPENROWSET](#tab/openrowset-credential)
+```sql
+/*  Setup - create server-level or database scoped credential with Azure Cosmos DB account key:
+    CREATE CREDENTIAL MyCosmosDbAccountCredential
+    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'C0Sm0sDbKey==';
+*/
+SELECT TOP 10 *
+FROM OPENROWSET(
+      PROVIDER = 'CosmosDB',
+      CONNECTION = 'account=MyCosmosDbAccount;database=covid;region=westus2',
+      OBJECT = 'EcdcCases',
+      SERVER_CREDENTIAL = 'MyCosmosDbAccountCredential'
+    ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
+```
+---
 Bu sorgunun sonucu aşağıdaki tablo gibi görünebilir:
 
 | date_rep | çalışmaların | geo_id |
@@ -137,6 +202,26 @@ Bu sorgunun sonucu aşağıdaki tablo gibi görünebilir:
 | 2020-08-11 | 163 | RS |
 
 Azure Cosmos DB değerleri için kullanılması gereken SQL türleri hakkında daha fazla bilgi için makalenin sonundaki [SQL tür eşlemeleri kuralları](#azure-cosmos-db-to-sql-type-mappings) bölümüne bakın.
+
+## <a name="create-view"></a>Görünüm Oluştur
+
+Şemayı tanımladıktan sonra, Azure Cosmos DB verilerinizin üzerine bir görünüm hazırlayabilirsiniz. Azure Cosmos DB hesap anahtarınızı ayrı bir kimlik bilgisine yerleştirmeniz ve bu kimlik bilgisine işlevle başvurmalısınız `OPENROWSET` . Hesap anahtarınızı görünüm tanımında değiştirmeyin.
+
+```sql
+CREATE CREDENTIAL MyCosmosDbAccountCredential
+WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'C0Sm0sDbKey==';
+GO
+CREATE OR ALTER VIEW EcdcCases
+AS SELECT *
+FROM OPENROWSET(
+      PROVIDER = 'CosmosDB',
+      CONNECTION = 'account=MyCosmosDbAccount;database=covid;region=westus2',
+      OBJECT = 'EcdcCases',
+      SERVER_CREDENTIAL = 'MyCosmosDbAccountCredential'
+    ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
+```
+
+`OPENROWSET`Performansınızı etkileyebileceğinden, açıkça tanımlanmış şema olmadan kullanmayın. Sütunlarınız için mümkün olan en küçük boyutları (örneğin, VARCHAR (100) varsayılan VARCHAR (8000) yerine) kullandığınızdan emin olun. UTF [-8 dönüştürme sorununu](/troubleshoot/reading-utf8-text)önlemek için, bazı UTF-8 harmanlamasını varsayılan veritabanı harmanlaması olarak veya açık sütun harmanlama olarak ayarlamanız gerekir. Harmanlama `Latin1_General_100_BIN2_UTF8` , bazı dize sütunlarını kullanarak verileri filtreleyerek en iyi performansı sağlar.
 
 ## <a name="query-nested-objects-and-arrays"></a>İç içe nesneleri ve dizileri sorgulama
 

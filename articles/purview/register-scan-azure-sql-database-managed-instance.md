@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 24d2418cc571e1cbb3feff8aab5eee70ab08a97a
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: ded15b45dd859b18180bd396067360ae6585ef97
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/03/2020
-ms.locfileid: "96555943"
+ms.locfileid: "96575882"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>Azure SQL veritabanı yönetilen örneğini kaydetme ve tarama
 
@@ -26,7 +26,7 @@ Azure SQL veritabanı yönetilen örneği veri kaynağı aşağıdaki işlevleri
 
 - ADF Copy ve veri akışı etkinlikleri için veri varlıkları arasında **kökenini** .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Henüz bir tane yoksa yeni bir purview hesabı oluşturun.
 
@@ -100,6 +100,20 @@ Hizmet sorumlusunun uygulama KIMLIĞI ve gizli anahtarı almak için gereklidir:
 1. Tamamlanacak **Oluştur** ' u seçin
 1. Anahtar Kasanızda purview 'a bağlı değilse, [Yeni bir Anahtar Kasası bağlantısı oluşturmanız](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account) gerekir
 1. Son olarak, taramanızı ayarlamak için hizmet sorumlusunu kullanarak [Yeni bir kimlik bilgisi oluşturun](manage-credentials.md#create-a-new-credential)
+
+### <a name="firewall-settings"></a>Güvenlik duvarı ayarları
+
+Veritabanı sunucunuz Azure bağlantılarının etkinleştirilmesini sağlamalıdır. Bu, Azure purview 'ın sunucuya ulaşmasını ve sunucuya bağlanmasını sağlar. [Azure 'ın Içinden bağlantılar](../azure-sql/database/firewall-configure.md#connections-from-inside-azure)Için nasıl yapılır kılavuzunu izleyebilirsiniz.
+
+1. Veritabanı hesabınıza gidin
+1. **Genel bakış** sayfasında sunucu adını seçin
+1. **Güvenlik > güvenlik duvarları ve sanal ağlar 'ı** seçin
+1. **Azure hizmetlerinin ve kaynaklarının bu sunucuya erişmesine Izin ver** için **Evet** ' i seçin
+
+    :::image type="content" source="media/register-scan-azure-sql-database/sql-firewall.png" alt-text="kaynakları kaydetme seçenekleri" border="true":::
+    
+> [!Note]
+> Şu anda Azure purview, VNET yapılandırmasını desteklemez. Bu nedenle, IP tabanlı güvenlik duvarı ayarları yapılamaz.
 
 ## <a name="register-an-azure-sql-database-managed-instance-data-source"></a>Azure SQL veritabanı yönetilen örnek veri kaynağını kaydetme
 

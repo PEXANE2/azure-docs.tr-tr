@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 59b4a04231df3b93b093750cc6c9d70982a418a9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 688cd7c2e54a6b4c6b5a11705e10c33604324f09
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91665353"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576290"
 ---
 # <a name="azure-data-lake-storage-gen-1-output-from-azure-stream-analytics"></a>Azure Stream Analytics Azure Data Lake Storage Gen 1 çıkışı
 
@@ -36,7 +36,7 @@ Aşağıdaki tabloda Data Lake Storage Gen 1 çıktı yapılandırmak için öze
 | Encoding | CSV veya JSON biçimi kullanıyorsanız, bir kodlama belirtilmesi gerekir. Şu anda desteklenen tek kodlama biçimi UTF-8 ' i destekler.|
 | Sınırlayıcı | Yalnızca CSV serileştirme için geçerlidir. Stream Analytics CSV verilerini seri hale getirmek için bir dizi ortak sınırlayıcıları destekler. Desteklenen değerler virgül, noktalı virgül, boşluk, sekme ve dikey çubuklardır.|
 | Biçimlendir | Yalnızca JSON serileştirme için geçerlidir. **Satır ayrımı** , çıktının her bir JSON nesnesine yeni bir satırla ayrılmış şekilde biçimlendirildiğini belirtir. **Satır ayrılmış**' i SEÇERSENIZ, JSON tek seferde bir nesne okur. Tüm içerik geçerli bir JSON değil.  **Dizi** , çıktının JSON nesneleri dizisi olarak biçimlendirildiğini belirtir. Bu dizi yalnızca iş durdurulduğunda veya Stream Analytics bir sonraki zaman penceresine taşındığında kapatılır. Genel olarak, çıkış dosyası hala üzerine yazılırken özel bir işleme gerektirmediğinden, hat ayrımı olan JSON kullanılması tercih edilir.|
-| Kimlik doğrulaması modu | [Yönetilen kimlik](stream-analytics-managed-identities-adls.md) veya kullanıcı belirtecini kullanarak Data Lake Storage hesabınıza erişim yetkisi verebilirsiniz. Erişim izni verdiğinizde, Kullanıcı hesabı parolasını değiştirerek, bu iş için Data Lake Storage çıkışını silerek veya Stream Analytics işini silerek erişimi iptal edebilirsiniz. |
+| Kimlik doğrulaması modu | [Yönetilen kimlik](stream-analytics-managed-identities-adls.md) (Önizleme) veya kullanıcı belirteci kullanarak Data Lake Storage hesabınıza erişim yetkisi verebilirsiniz. Erişim izni verdiğinizde, Kullanıcı hesabı parolasını değiştirerek, bu iş için Data Lake Storage çıkışını silerek veya Stream Analytics işini silerek erişimi iptal edebilirsiniz. |
 
 ## <a name="partitioning"></a>Bölümleme
 

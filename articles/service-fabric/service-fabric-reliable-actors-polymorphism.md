@@ -1,17 +1,15 @@
 ---
 title: Reliable Actors çerçevesinde çok biçimlilik
 description: İşlevselliği ve API tanımlarını yeniden kullanmak için Reliable Actors Framework 'te .NET arabirimlerinin ve türlerinin hiyerarşileri oluşturun.
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7552609fc4c85cdd5033e67b1bab7fb58cb6ebf1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 568e306979e862c325264a4e12a64d95e6d13c5f
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89016572"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576001"
 ---
 # <a name="polymorphism-in-the-reliable-actors-framework"></a>Reliable Actors çerçevesinde çok biçimlilik
 Reliable Actors Framework, nesne odaklı tasarımda kullandığınız tekniklerin birçoğunu kullanarak aktör oluşturmanıza olanak sağlar. Bu tekniklerin biri çok biçimlerdir, bu da türlerin ve arabirimlerin daha Genelleştirilmiş üst öğeden devralınmasını sağlar. Reliable Actors Framework 'te devralma, genellikle birkaç ek kısıtlama içeren .NET modelini izler. Java/Linux durumunda Java modelini izler.

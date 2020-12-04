@@ -1,16 +1,15 @@
 ---
 title: Service Fabric programlama modeline genel bakış
 description: 'Service Fabric, hizmetler oluşturmak için iki çerçeve sunar: aktör çerçevesi ve hizmetler çerçevesi. Basitlik ve denetim açısından ayrı bir denge sunar.'
-author: vturecek
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
-ms.openlocfilehash: 8e1c96d0b04140f8c1121cfb74b43969b49cfdda
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 523c9e0064d8b78698f1a0dd3544bda58436800c
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260535"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575729"
 ---
 # <a name="service-fabric-programming-model-overview"></a>Service Fabric programlama modeline genel bakış
 
@@ -38,7 +37,7 @@ Service Fabric dışlamalı, Reliable Services durumu durum bilgisi olabilir, bu
 
 [Reliable Services hakkında daha fazla bilgi edinin](service-fabric-reliable-services-introduction.md) veya [ilk güvenilir hizmetinizi yazmaya](service-fabric-reliable-services-quick-start.md)başlayın.
 
-## <a name="aspnet-core"></a>ASP.NET Çekirdeği
+## <a name="aspnet-core"></a>ASP.NET Core
 
 ASP.NET Core, Web uygulamaları, IoT uygulamaları ve mobil arka uçlar gibi modern bulut tabanlı Internet 'e bağlı uygulamalar oluşturmaya yönelik açık kaynaklı, platformlar arası bir çerçevedir. Service Fabric, güvenilir koleksiyonlardan ve Service Fabric gelişmiş düzenleme özelliğinden yararlanan hem durum bilgisi olmayan hem de durum bilgisi olan ASP.NET Core uygulamaları yazmak için ASP.NET Core ile tümleşir.
 
@@ -46,7 +45,7 @@ ASP.NET Core, Web uygulamaları, IoT uygulamaları ve mobil arka uçlar gibi mod
 
 ## <a name="reliable-actors"></a>Reliable Actors
 
-Reliable Services üzerine inşa edilen güvenilir aktör çerçevesi, hesaplama [aktör modeline](https://en.wikipedia.org/wiki/Actor_model)göre [sanal aktör](https://research.microsoft.com/en-us/projects/orleans/) modelini uygulayan bir uygulama çerçevesidir. Güvenilir aktör çerçevesi, *aktör*olarak adlandırılan tek iş parçacıklı yürütme ile bağımsız işlem ve durum birimleri kullanır. Güvenilir aktör çerçevesi, aktörler ve önceden ayarlanmış durum kalıcılığı ve genişleme yapılandırmalarına yönelik yerleşik iletişim sağlar.
+Reliable Services üzerine inşa edilen güvenilir aktör çerçevesi, hesaplama [aktör modeline](https://en.wikipedia.org/wiki/Actor_model)göre [sanal aktör](https://research.microsoft.com/en-us/projects/orleans/) modelini uygulayan bir uygulama çerçevesidir. Güvenilir aktör çerçevesi, *aktör* olarak adlandırılan tek iş parçacıklı yürütme ile bağımsız işlem ve durum birimleri kullanır. Güvenilir aktör çerçevesi, aktörler ve önceden ayarlanmış durum kalıcılığı ve genişleme yapılandırmalarına yönelik yerleşik iletişim sağlar.
 
 Reliable Actors, Reliable Services yerleşik bir uygulama çerçevesi olduğundan, platform tarafından sunulan özelliklerin tam kümesinden Service Fabric platformu ve avantajları ile tamamen tümleşiktir.
 

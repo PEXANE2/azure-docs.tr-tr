@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 09/23/2020
-ms.openlocfilehash: 72566987068729efef4310ce145c30584c4895b0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 12/03/2020
+ms.openlocfilehash: 4436289d544de057acef132117346ac53c20b5a7
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011413"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576527"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Azure Stream Analytics veri koruma 
 
@@ -41,7 +41,7 @@ Ayrıca, Stream Analytics işiniz ile ilgili tüm veri varlıklarını (müşter
 
 Stream Analytics, verilerinizi şifrelemek ve korumak için altyapıda en iyi sınıf şifreleme standartlarını otomatik olarak kullanır. Tüm verilerinizi güvenli bir şekilde depolamak için Stream Analytics güvenebilir ve böylece altyapıyı yönetme konusunda endişelenmenize gerek kalmaz.
 
-Verilerinizi şifrelemek için müşteri tarafından yönetilen anahtarları (CMK) kullanmak istiyorsanız, Stream Analytics çalışma zamanının gerektirdiği tüm özel veri varlıklarını depolamak için kendi depolama hesabınızı (genel amaçlı v1 veya v2) kullanabilirsiniz. Depolama Hesabınız gerektiği şekilde şifrelenebilir. Özel veri varlıklarınızdan hiçbiri Stream Analytics altyapısı tarafından kalıcı olarak depolanmaz. 
+Verilerinizi şifrelemek için müşteri tarafından yönetilen anahtarlar kullanmak istiyorsanız, Stream Analytics çalışma zamanının gerektirdiği tüm özel veri varlıklarını depolamak için kendi depolama hesabınızı (genel amaçlı v1 veya v2) kullanabilirsiniz. Depolama Hesabınız gerektiği şekilde şifrelenebilir. Özel veri varlıklarınızdan hiçbiri Stream Analytics altyapısı tarafından kalıcı olarak depolanmaz. 
 
 Bu ayar Stream Analytics iş oluşturma sırasında yapılandırılmalıdır ve işin yaşam döngüsü boyunca değiştirilemez. Stream Analytics tarafından kullanılmakta olan depolamanın değiştirilmesi veya silinmesi önerilmez. Depolama hesabınızı silerseniz, tüm özel veri varlıklarını kalıcı olarak silecektir ve bu da işinizin başarısız olmasına neden olur. 
 
@@ -50,16 +50,13 @@ Stream Analytics Portal kullanılarak anahtarları depolama hesabınıza güncel
 
 ### <a name="configure-storage-account-for-private-data"></a>Özel veriler için depolama hesabını yapılandırma 
 
-
 Tüm verilerinizi güvenli hale getirmek ve özel verilerinizin konumunu açıkça seçmek için depolama hesabınızı şifreleyin. 
 
 Tüm düzenlenmiş sektörlerde veya ortamlarda uyumluluk yükümlülüklerinizi karşılamanıza yardımcı olmak için [Microsoft 'un uyumluluk teklifleri](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)hakkında daha fazla bilgi edinebilirsiniz. 
 
-
-
 Depolama hesabınızı özel veri varlıkları için yapılandırmak üzere aşağıdaki adımları kullanın. Bu yapılandırma, depolama hesabınızdan değil, Stream Analytics işinden yapılır.
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure portalda](https://portal.azure.com/) oturum açın.
 
 1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesini seçin. 
 
@@ -69,9 +66,15 @@ Depolama hesabınızı özel veri varlıkları için yapılandırmak üzere aşa
 
 1. *Depolama hesabımın bu iş için ihtiyaç duyduğu tüm özel veri varlıklarını güvenli* bir şekilde belirten onay kutusunu seçin.
 
-1. Aboneliğinizden bir depolama hesabı seçin. Bu ayarın işin yaşam döngüsü boyunca değiştirilemeyeceğini unutmayın. 
+1. Aboneliğinizden bir depolama hesabı seçin. Bu ayarın işin yaşam döngüsü boyunca değiştirilemeyeceğini unutmayın. Ayrıca, iş oluşturulduktan sonra bu seçeneği ekleyemezsiniz.
+
+1. Bir bağlantı dizesiyle kimlik doğrulaması yapmak için kimlik doğrulama modu açılır listesinden **bağlantı dizesi** ' ni seçin. Depolama hesabı anahtarı aboneliğinizden otomatik olarak doldurulur.
 
    ![Özel veri depolama hesabı ayarları](./media/data-protection/storage-account-create.png)
+
+1. Yönetilen kimlik (Önizleme) ile kimlik doğrulaması yapmak için kimlik doğrulama modu açılan menüsünden **yönetilen kimlik** ' i seçin. Yönetilen kimlik ' i seçerseniz, Stream Analytics işinizi depolama hesabının erişim denetim listesine eklemeniz gerekir. İş erişiminiz yoksa, iş herhangi bir işlem gerçekleştiremez. Erişim verme hakkında daha fazla bilgi için bkz. [Azure RBAC kullanarak başka bir kaynağa yönetilen kimlik erişimi atama](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md#use-azure-rbac-to-assign-a-managed-identity-access-to-another-resource).
+
+   :::image type="content" source="media/data-protection/storage-account-create-msi.png" alt-text="Yönetilen kimlik kimlik doğrulamasıyla özel veri depolama hesabı ayarları":::
 
 ## <a name="private-data-assets-that-are-stored-by-stream-analytics"></a>Stream Analytics tarafından depolanan özel veri varlıkları
 

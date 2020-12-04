@@ -1,20 +1,18 @@
 ---
 title: Service Fabric Reliable Actors
 description: Reliable Actors Reliable Services nasıl katmanlanmakta olduğunu ve Service Fabric platformunun özelliklerinin nasıl kullanıldığını açıklar.
-author: vturecek
 ms.topic: conceptual
 ms.date: 3/9/2018
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1cd90d4567bde6cd2c4f2a29e2d516b51b79e2af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3bd67e0f71e20a8b5a74b4b38e5b423a14dc08d
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89016623"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575627"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Reliable Actors Service Fabric platformunu kullanma
-Bu makalede Reliable Actors Azure Service Fabric platformunda nasıl çalıştığı açıklanmaktadır. Reliable Actors, *aktör hizmeti*olarak adlandırılan durum bilgisi olan güvenilir bir hizmetin uygulamasında barındırılan bir çerçevede çalışır. Aktör hizmeti, Aktörlerinizin yaşam döngüsünü ve ileti dağıtımını yönetmek için gerekli tüm bileşenleri içerir:
+Bu makalede Reliable Actors Azure Service Fabric platformunda nasıl çalıştığı açıklanmaktadır. Reliable Actors, *aktör hizmeti* olarak adlandırılan durum bilgisi olan güvenilir bir hizmetin uygulamasında barındırılan bir çerçevede çalışır. Aktör hizmeti, Aktörlerinizin yaşam döngüsünü ve ileti dağıtımını yönetmek için gerekli tüm bileşenleri içerir:
 
 * Aktör çalışma zamanı yaşam döngüsünü ve çöp toplamayı yönetir ve tek iş parçacıklı erişim uygular.
 * Aktör hizmeti uzaktan iletişim dinleyicisi, aktöre yönelik uzaktan erişim çağrılarını kabul eder ve uygun aktör örneğine yönlendirmek üzere bunları bir dağıtıcıya gönderir.

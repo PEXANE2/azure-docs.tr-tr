@@ -1,15 +1,14 @@
 ---
 title: 'Uygulama yükseltme: veri serileştirme'
 description: Veri serileştirme ve bunların sıralı uygulama yükseltmelerini nasıl etkilediği için en iyi uygulamalar.
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.openlocfilehash: d502e74139c543d4183a75faa6bea1948d9f3e56
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9474a0bf8041ac541389f782f60bf1220d690cde
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86247991"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575644"
 ---
 # <a name="how-data-serialization-affects-an-application-upgrade"></a>Veri serileştirmesi bir uygulama yükseltmesini nasıl etkiler
 Bir sıralı [uygulama yükseltmesinde](service-fabric-application-upgrade.md), yükseltme bir tek seferde bir yükseltme etki alanı olmak üzere düğümlerin bir alt kümesine uygulanır. Bu işlem sırasında, bazı yükseltme etki alanları uygulamanızın daha yeni bir sürümüdür ve bazı yükseltme etki alanları uygulamanızın eski bir sürümüdür. Dağıtım sırasında, uygulamanızın yeni sürümü verilerinizin eski sürümünü okuyabilmelidir ve uygulamanızın eski sürümü verilerinizin yeni sürümünü okuyabilmelidir olması gerekir. Veri biçimi ileri ve geri uyumlu değilse, yükseltme başarısız olabilir veya daha kötü, veriler kaybolabilir veya bozulabilir. Bu makalede, veri biçiminizi ne oluşturduğunu ve verilerinizin ileriye ve geriye dönük olarak uyumlu olmasını sağlamak için en iyi yöntemleri sunan açıklanır.

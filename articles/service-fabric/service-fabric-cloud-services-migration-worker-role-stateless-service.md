@@ -1,17 +1,15 @@
 ---
 title: Azure Cloud Services uygulamalarını Service Fabric Dönüştür
 description: Bu kılavuzda Cloud Services Web ve çalışan rolleri ve durum bilgisi olmayan hizmetler Service Fabric karşılaştırılmaktadır Cloud Services ' den Service Fabric 'ye geçiş yapılır.
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 24a411403fc139a7e7fa6644690c57a3b2729bf5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cf593f793aabf2a0650684ed8d02fe02d756ec2b
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89002292"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575746"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Durum bilgisi olmayan hizmetlere Service Fabric Web ve çalışan rollerini dönüştürmeye yönelik kılavuz
 Bu makalede, Cloud Services Web ve çalışan rollerinizin durum bilgisi olmayan hizmetlere Service Fabric nasıl geçirileceği açıklanır. Bu, genel mimarinin kabaca aynı kalmasını sağlayan uygulamalar için Cloud Services Service Fabric en basit geçiş yoludur.
@@ -43,7 +41,7 @@ Kavramsal olarak, bir çalışan rolü durum bilgisiz iş yükünü temsil eder,
 
 | **Girdi Noktası** | **Çalışan rolü** | **Service Fabric hizmeti** |
 | --- | --- | --- |
-| İşleniyor |`Run()` |`RunAsync()` |
+| İşleme |`Run()` |`RunAsync()` |
 | VM başlatma |`OnStart()` |Yok |
 | VM durdur |`OnStop()` |Yok |
 | İstemci istekleri için açık dinleyicisi |Yok |<ul><li> `CreateServiceInstanceListener()` durum bilgisiz için</li><li>`CreateServiceReplicaListener()` durum bilgisi için</li></ul> |

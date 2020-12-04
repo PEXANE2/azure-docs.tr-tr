@@ -1,17 +1,15 @@
 ---
 title: Azure 'da Service Fabric hızlı bir şekilde bir .NET uygulaması oluşturun
 description: Bu hızlı başlangıçta, Service Fabric güvenilir hizmetler örnek uygulaması kullanarak Azure için .NET uygulaması oluşturursunuz.
-author: mikkelhegn
 ms.topic: quickstart
 ms.date: 06/26/2019
-ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: b88dfedd5454d708386afa6912a26dac41c6d6b4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 15e2180e44acaa5ebefb403b2da3755396a45ba4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86258565"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575899"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Hızlı başlangıç: Service Fabric'e bir .NET güvenilir hizmetler uygulaması dağıtma
 
@@ -160,8 +158,8 @@ Uygulamayı yükseltmek için aşağıdakileri yapın:
 6. **VotingWebPkg**'nin altındaki **Code** öğesinin sürümünü örneğin "2.0.0" olarak değiştirin ve **Kaydet**'e tıklayın.
 
     ![Sürümü Değiştir İletişim Kutusu](./media/service-fabric-quickstart-dotnet/change-version.png)
-7. **Service Fabric uygulaması Yayımla** iletişim kutusunda, **uygulamayı Yükselt onay kutusunu**işaretleyin.
-8.  **Hedef profili** **PublishProfiles\Local.5Node.xml** değiştirin ve **bağlantı uç noktasının** **yerel küme**olarak ayarlandığından emin olun. 
+7. **Service Fabric uygulaması Yayımla** iletişim kutusunda, **uygulamayı Yükselt onay kutusunu** işaretleyin.
+8.  **Hedef profili** **PublishProfiles\Local.5Node.xml** değiştirin ve **bağlantı uç noktasının** **yerel küme** olarak ayarlandığından emin olun. 
 9. **Uygulamayı Yükselt**' i seçin.
 
     ![Yayımla İletişim Kutusu Yükseltme Ayarı](./media/service-fabric-quickstart-dotnet/upgrade-app.png)

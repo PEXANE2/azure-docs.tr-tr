@@ -1,17 +1,15 @@
 ---
 title: Azure Service Fabric ile bağlanma ve hizmetlerle iletişim kurma
 description: Service Fabric 'de Hizmetleri çözmeyi, bağlamayı ve iletişim kurmayı öğrenin.
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 715089d40f584fbbaf23f674e4243c92c718e9d1
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 11f525eba89dc963deee0ba9a86566361ef644de
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093336"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576307"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>Service Fabric ile bağlanma ve hizmetlerle iletişim kurma
 Service Fabric, bir hizmet, genellikle birden çok VM arasında dağıtılan bir Service Fabric kümesinde bir yerde çalışır. Hizmet sahibine veya Service Fabric göre otomatik olarak bir yerden diğerine taşınabilir. Hizmetler, belirli bir makineye veya adrese statik olarak bağlı değildir.
@@ -62,11 +60,11 @@ Ters proxy hizmetini kullanma hakkında daha fazla bilgi için bkz. [Azure 'Da t
 Bir kümedeki düğümler aynı yerel ağda olduğundan, bir küme içindeki birbirlerine bağlanan hizmetler genellikle diğer hizmetlerin uç noktalarına erişebilir. Ancak, bazı ortamlarda, giriş trafiğini sınırlı bir bağlantı noktası kümesiyle yönlendiren bir yük dengeleyicinin arkasında bir küme olabilir. Bu durumlarda, hizmetler hala birbirleriyle iletişim kurabilir ve Adlandırma Hizmeti kullanarak adresleri çözümleyebilir, ancak dış istemcilerin hizmetlere bağlanmasına izin vermek için ek adımların alınması gerekir.
 
 ## <a name="service-fabric-in-azure"></a>Azure 'da Service Fabric
-Azure 'daki bir Service Fabric kümesi bir Azure Load Balancer arkasına yerleştirilir. Kümenin tüm dış trafiği yük dengeleyiciden geçmelidir. Yük dengeleyici, belirli bir bağlantı noktası üzerinden gelen trafiği, aynı bağlantı noktası açık olan rastgele bir *düğüme* otomatik olarak iletecektir. Azure Load Balancer yalnızca *düğümlerde*açık olan bağlantı noktalarını bilir, bireysel *Hizmetler*tarafından açık olan bağlantı noktalarını bilmez.
+Azure 'daki bir Service Fabric kümesi bir Azure Load Balancer arkasına yerleştirilir. Kümenin tüm dış trafiği yük dengeleyiciden geçmelidir. Yük dengeleyici, belirli bir bağlantı noktası üzerinden gelen trafiği, aynı bağlantı noktası açık olan rastgele bir *düğüme* otomatik olarak iletecektir. Azure Load Balancer yalnızca *düğümlerde* açık olan bağlantı noktalarını bilir, bireysel *Hizmetler* tarafından açık olan bağlantı noktalarını bilmez.
 
 ![Azure Load Balancer ve Service Fabric topolojisi][3]
 
-Örneğin, **80**numaralı bağlantı noktasında dış trafiği kabul etmek için aşağıdaki noktalar yapılandırılmalıdır:
+Örneğin, **80** numaralı bağlantı noktasında dış trafiği kabul etmek için aşağıdaki noktalar yapılandırılmalıdır:
 
 1. 80 numaralı bağlantı noktasını dinleyen bir hizmet yazın. Hizmetin ServiceManifest.xml bağlantı noktası 80 ' ü yapılandırın ve hizmette bir dinleyici açın, örneğin, şirket içinde barındırılan bir Web sunucusu.
 
@@ -158,7 +156,7 @@ Azure 'daki bir Service Fabric kümesi bir Azure Load Balancer arkasına yerleş
 
     ![Azure Load Balancer trafiği iletme][8]
 
-Azure Load Balancer ve araştırmanın düğümler üzerinde çalışan *Hizmetleri* değil, yalnızca *düğümleri*hakkında bilgi sahibi olduğunu unutmamak önemlidir. Azure Load Balancer her zaman, araştırmasına yanıt veren düğümlere trafik gönderir, bu nedenle araştırmayı yanıtlayabilecek düğümlerde hizmetlerin kullanılabilir olmasını sağlamak için dikkatli olunması gerekir.
+Azure Load Balancer ve araştırmanın düğümler üzerinde çalışan *Hizmetleri* değil, yalnızca *düğümleri* hakkında bilgi sahibi olduğunu unutmamak önemlidir. Azure Load Balancer her zaman, araştırmasına yanıt veren düğümlere trafik gönderir, bu nedenle araştırmayı yanıtlayabilecek düğümlerde hizmetlerin kullanılabilir olmasını sağlamak için dikkatli olunması gerekir.
 
 ## <a name="reliable-services-built-in-communication-api-options"></a>Reliable Services: yerleşik iletişim API 'SI seçenekleri
 Reliable Services Framework önceden oluşturulmuş çeşitli iletişim seçenekleriyle birlikte gelir. Kendisi için en iyi çalışma kararı, programlama modelinin, iletişim çerçevesinin ve hizmetlerinizin yazıldığı programlama dilinin seçimine bağlıdır.

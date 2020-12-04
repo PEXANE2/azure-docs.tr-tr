@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: beaa231eddd57e29578a1d69ee30af05ce7c8d0f
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 74f4391fcd071ac510fc66b2f8bc36ec4549dc47
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/03/2020
-ms.locfileid: "96554380"
+ms.locfileid: "96575763"
 ---
 # <a name="sensitivity-label-insights-about-your-data-in-azure-purview"></a>Azure purview 'daki verileriniz hakkında duyarlılık etiketi öngörüleri
 
@@ -27,7 +27,7 @@ Bu nasıl yapılır kılavuzunda şunları yapmayı öğreneceksiniz:
 > - Verilerinize ilişkin duyarlılık etiketleme öngörülerini görüntüleme
 > - Verileriniz hakkında daha fazla duyarlılık etiketleme ayrıntısı için detaya gidin
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Purview Insights 'ı kullanmaya başlamadan önce aşağıdaki adımları tamamladığınızdan emin olun:
 
@@ -75,6 +75,7 @@ Takip, Microsoft 365 olarak gizli bilgi türleri olarak da bilinen aynı sınıf
    |**Tablolara uygulanan üst Etiketler**     | Verilerinize ait veritabanı tablolarına uygulanan en büyük duyarlılık etiketlerini gösterir. |   
    |  **Etiketleme etkinliği**  |  Her biri seçili zaman çerçevesinde etiketlendirilmiş dosya veya tablo sayısını gösteren dosyalar ve tablolar için ayrı grafikler görüntüler. <br>**Varsayılan**: 30 gün<br>Görüntülenecek farklı bir zaman çerçevesini seçmek için grafiklerin üzerindeki **zaman** filtresini seçin.    |
    |    |    |
+
 ## <a name="sensitivity-labeling-insights-drilldown"></a>Duyarlılık etiketleme öngörüleri ayrıntıya gitme
 
 Aşağıdaki **duyarlık grafiklerini etiketleyerek** , daha fazla ayrıntı için detaya gitmek üzere **daha fazla bilgi görüntüle** bağlantısını seçin:
@@ -98,6 +99,7 @@ Daha fazla bilgi edinmek için aşağıdakilerden birini yapın:
 |**Daha fazla ayrıntıya gitme**     | Belirli bir etikete gitmek için **duyarlık etiketi** sütunundaki bir adı seçerek **etiketi kaynak raporuna göre** görüntüleyin. <br><br>Bu rapor, kaynak adı, kaynak türü, abonelik KIMLIĞI ve sınıflandırılan dosya ve tablo sayıları dahil olmak üzere seçili etiket için verileri görüntüler.      |
 |**Varlıklara gözatamıyorum**     |  Belirli bir etiket veya kaynakla bulunan varlıklara gözatmak için, görüntülemekte olduğunuz rapora bağlı olarak bir veya daha fazla etiket veya kaynak seçin ve ardından filtrelerin üzerindeki **varlıklara göz at** ' ı seçin :::image type="icon" source="media/insights/ico-browse-assets.png" border="false"::: . <br><br>Arama sonuçları, seçili filtre için bulunan etiketlenmiş varlıkların tümünü görüntüler.  Daha fazla bilgi için bkz. [Azure purview veri kataloğunu arama](how-to-search-catalog.md).       |
 | | |
+
 ## <a name="sensitivity-label-integration-with-microsoft-365-compliance"></a>Microsoft 365 uyumlulukla duyarlılık etiketi tümleştirmesi
 
 Microsoft 365 sunulan [Microsoft Information Protection](/microsoft-365/compliance/information-protection) ile yakın tümleştirme, purview 'ın, verileri parçalara göre görünürlüğünüzü genişletmenin ve etiketlemesini ve etiketlemenize yönelik doğrudan yolları mümkün hale getirecek anlamına gelir.
@@ -108,15 +110,9 @@ Daha fazla bilgi için bkz. [Azure purview 'da verilerinizi otomatik olarak etik
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure purview Insight Reports hakkında daha fazla bilgi edinin
-> [!div class="nextstepaction"]
-> [Sözlük öngörüleri](glossary-insights.md)
+Bu Azure purview Insight Reports hakkında daha fazla bilgi edinin:
 
-> [!div class="nextstepaction"]
-> [Öngörüleri Tara](scan-insights.md)
-
-> [!div class="nextstepaction"]
-> [Sınıflandırma öngörüleri](./classification-insights.md)
-
-> [!div class="nextstepaction"]
-> [Dosya Uzantısı öngörüleri](file-extension-insights.md)
+- [Sözlük öngörüleri](glossary-insights.md)
+- [Öngörüleri Tara](scan-insights.md)
+- [Sınıflandırma öngörüleri](./classification-insights.md)
+- [Dosya Uzantısı öngörüleri](file-extension-insights.md)

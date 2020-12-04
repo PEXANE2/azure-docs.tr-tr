@@ -1,16 +1,14 @@
 ---
 title: Yerel Azure Service Fabric kümesi kurulumlarınızın sorunlarını giderme
 description: Bu makalede, yerel geliştirme kümenizin sorunlarını gidermeye yönelik bir dizi öneri ele alınmaktadır
-author: mikkelhegn
 ms.topic: conceptual
 ms.date: 02/23/2018
-ms.author: mikhegn
-ms.openlocfilehash: 76ca0bb7b81b3896538f08ff2ef52ed1ac6b363f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 20948cd1626c02d73fb6e9ef096b552bbab627fb
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87091615"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575916"
 ---
 # <a name="troubleshoot-your-local-development-cluster-setup"></a>Yerel geliştirme kümesi kurulumunuzda sorun giderme
 Yerel Azure Service Fabric geliştirme kümeniz ile etkileşim kurarken bir sorunla karşılaşırsanız, olası çözümler için aşağıdaki önerileri gözden geçirin.

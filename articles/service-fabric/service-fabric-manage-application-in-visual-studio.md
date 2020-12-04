@@ -1,16 +1,14 @@
 ---
 title: Visual Studio'da uygulamaları yönetme
 description: Azure Service Fabric uygulamalarınızı ve hizmetlerinizi oluşturmak, geliştirmek, paketlemek, dağıtmak ve hatalarını ayıklamak için Visual Studio 'Yu kullanın.
-author: mikkelhegn
 ms.topic: conceptual
 ms.date: 03/26/2018
-ms.author: mikhegn
-ms.openlocfilehash: d6734f5da0fb7e5c9052b26b55b2d90b068bdbbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1fd9295a0dead180767febcc5339ef0a25cb1e48
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75614341"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574556"
 ---
 # <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>Service Fabric uygulamalarınızı yazmayı ve yönetmeyi kolaylaştırmak için Visual Studio 'Yu kullanın
 Azure Service Fabric uygulamalarınızı ve hizmetlerinizi Visual Studio aracılığıyla yönetebilirsiniz. [Geliştirme ortamınızı ayarladıktan](service-fabric-get-started.md)sonra Visual Studio 'yu kullanarak, yerel geliştirme kümenize Service Fabric uygulamalar oluşturabilir, hizmetler ekleyebilir veya paket, kayıt ve dağıtım uygulamaları dağıtabilirsiniz.
@@ -27,7 +25,7 @@ Varsayılan olarak, bir uygulama dağıtmak aşağıdaki adımları tek bir basi
 Visual Studio 'da **F5** tuşuna basmak uygulamanızı dağıtır ve hata ayıklayıcıyı tüm uygulama örneklerine ekler. Hata ayıklama olmadan bir uygulamayı dağıtmak için **CTRL + F5** kullanabilirsiniz veya yayımlama profilini kullanarak yerel veya uzak bir kümeye yayımlayabilirsiniz.
 
 ### <a name="application-debug-mode"></a>Uygulama hata ayıklama modu
-Visual Studio, hata ayıklamanın bir parçası olarak Visual Studios 'ın uygulama dağıtımını nasıl işlemesini denetleyen **uygulama hata ayıklama modu**adlı bir özellik sağlar.
+Visual Studio, hata ayıklamanın bir parçası olarak Visual Studios 'ın uygulama dağıtımını nasıl işlemesini denetleyen **uygulama hata ayıklama modu** adlı bir özellik sağlar.
 
 #### <a name="to-set-the-application-debug-mode-property"></a>Uygulama hata ayıklama modu özelliğini ayarlamak için
 1. Service Fabric uygulama projesinin (*. sfproj) kısayol menüsünde **Özellikler** ' i seçin (veya **F4** tuşuna basın).

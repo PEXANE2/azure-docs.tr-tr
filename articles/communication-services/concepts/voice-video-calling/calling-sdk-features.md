@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 44365dec247b9f3135a090cee397cad32598fd29
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: f621d11553101c2c0bcfce804b26c218ae58670c
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977876"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576477"
 ---
 # <a name="calling-client-library-overview"></a>Arama istemci kitaplığına genel bakış
 
@@ -70,6 +70,26 @@ Aşağıdaki tablo, şu anda kullanılabilir olan desteklenen tarayıcı ve sür
 * Önceki iki sürüme ek olarak Chrome 'un en son sürümünün desteklendiğini unutmayın.<br/>
 
 * * Safari sürümlerinin 13.1 + desteklendiğini unutmayın. Safari macOS için giden video henüz desteklenmiyor, ancak iOS üzerinde destekleniyor. Giden ekran paylaşımı yalnızca masaüstü iOS üzerinde destekleniyor.
+
+## <a name="calling-client---browser-security-model"></a>Çağıran istemci-tarayıcı güvenlik modeli
+
+### <a name="user-webrtc-over-https"></a>HTTPS üzerinden Kullanıcı WebRTC
+
+Gibi WebRTC API 'Leri `getUserMedia` , bu API 'leri çağıran UYGULAMANıN https üzerinden sunulmasını gerektirir.
+
+Yerel geliştirme için kullanabilirsiniz `http://localhost` .
+
+### <a name="embed-the-communication-services-calling-sdk-in-an-iframe"></a>SDK 'Yı çağıran Iletişim hizmetlerini iframe 'e ekleme
+
+Yeni bir [izinler ilkesi (özellik ilkesi de denir)](https://www.w3.org/TR/permissions-policy-1/#iframe-allow-attribute) çeşitli tarayıcılar tarafından benimsenmekte. Bu ilke, uygulamaların bir çapraz kaynak iframe öğesi aracılığıyla bir cihazın kameraya ve mikrofona nasıl erişebileceğini denetleyerek çağrı senaryolarını etkiler.
+
+Uygulamanın bir parçasını farklı bir etki alanından barındırmak için bir iframe kullanmak istiyorsanız, `allow` özniteliğini doğru değeri olan IFRAME 'nize eklemeniz gerekir.
+
+Örneğin, bu iframe hem kamera hem de mikrofon erişimine izin verir:
+
+```html
+<iframe allow="camera *; microphone *">
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

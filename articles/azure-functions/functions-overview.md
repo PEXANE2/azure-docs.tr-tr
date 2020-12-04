@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/20/2020
 ms.author: cshoe
 ms.custom: contperfq2
-ms.openlocfilehash: 514f2e9a82a50f95f9c054c6a54e7b5af3c0af15
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a312c0ff255df4545181755ae6accd0d7dfb13a2
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96167786"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574862"
 ---
 # <a name="introduction-to-azure-functions"></a>Azure İşlevleri’ne Giriş
 
@@ -43,7 +43,7 @@ Aşağıdakiler yaygın bir, _ancak Hayır anlamına gelir_, Azure işlevleri i�
 | **Zamanlanmış görevleri Çalıştır** | Kodu [belirlenen saatlerde](./functions-bindings-timer.md) yürütme |
 | **Güvenilir ileti sırası sistemleri oluşturma** | [Kuyruk depolama](./functions-bindings-storage-queue.md), [Service Bus](./functions-bindings-service-bus.md)veya [Event Hubs](./functions-bindings-event-hubs.md) kullanarak ileti kuyruklarını işleme |
 | **IoT veri akışlarını çözümleme** | [IoT cihazlarındaki verileri](./functions-bindings-event-iot.md) toplayın ve işleyin |
-| **Verileri gerçek zamanlı olarak işleme** | Şu anda verilere yanıt vermek için [işlevler ve sinyal R](./functions-bindings-signalr-service.md) kullanın |
+| **Verileri gerçek zamanlı olarak işleme** | Şu anda verilere yanıt vermek için [Functions ve SignalR](./functions-bindings-signalr-service.md) kullanın |
 
 İşlevlerinizi oluştururken aşağıdaki seçenekler ve kaynaklar kullanılabilir:
 

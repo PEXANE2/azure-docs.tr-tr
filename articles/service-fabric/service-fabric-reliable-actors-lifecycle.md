@@ -1,17 +1,15 @@
 ---
 title: Azure Service Fabric aktör yaşam döngüsüne genel bakış
 description: Service Fabric güvenilir aktör yaşam döngüsü, çöp toplama ve aktörlerin ve bunların durumlarını el ile silme işlemini açıklar
-author: amanbha
 ms.topic: conceptual
 ms.date: 10/06/2017
-ms.author: amanbha
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3cea6213b2c6f2797d46f865afe1e13cbf4aaff6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88db4bb2376cbc418d6954e274a18a6c18a280d1
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89016708"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576052"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Aktör yaşam döngüsü, otomatik atık toplama ve el ile silme
 Bir aktör, metotlarından herhangi birine ilk kez çağrı yapıldığında etkinleştirilir. Bir aktör, yapılandırılabilir bir süre için kullanılmıyorsa devre dışı bırakılır (aktör çalışma zamanı tarafından atık olarak toplanır). Aktör ve durumu istediğiniz zaman el ile de silinebilir.

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 04/24/2020
-ms.openlocfilehash: 548deeec456537c64dc5d8ebe95ed1e4802e91c5
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 3f6ff0f81c1979297ed0144eca336cb252c2e787
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349223"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574369"
 ---
 # <a name="quickstart-connect-a-go-application-to-azure-cosmos-dbs-api-for-mongodb"></a>Hızlı başlangıç: bir Go uygulamasını MongoDB için Azure Cosmos DB API 'sine bağlama
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -35,9 +35,7 @@ Azure Cosmos DB, genel dağıtım ve yatay ölçeklendirme özellikleri ile belg
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free). Veya Azure aboneliği olmadan [ücretsiz Azure Cosmos DB deneyin](https://azure.microsoft.com/try/cosmosdb/) . [Azure Cosmos DB öykünücüsünü](https://aka.ms/cosmosdb-emulator) bağlantı dizesiyle de kullanabilirsiniz `.mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true` .
 - Bilgisayarınızda yüklü ve çalışır bir go hakkında bilgi sahibi [olun](https://golang.org/) .
 - [Git](https://git-scm.com/downloads).
-- Azure Cloud Shell kullanmak istemiyorsanız, [Azure CLI 2.0 +](/cli/azure/install-azure-cli).
-
-[!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="clone-the-sample-application"></a>Örnek uygulamayı kopyalama
 

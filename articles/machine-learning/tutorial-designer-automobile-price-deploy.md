@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/25/2020
 ms.custom: designer
-ms.openlocfilehash: 28358db2e538867957fcc8d4984cf1c028f9ab2c
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 14be695f2f58b9738af11a3d2ca3f06592a1cc6e
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030381"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575967"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Öğretici: tasarımcı ile makine öğrenimi modeli dağıtma
 
@@ -123,7 +123,7 @@ Web hizmetinizi kullanma hakkında daha fazla bilgi için bkz. Web hizmeti [olar
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, tasarımcıda makine öğrenimi modeli oluşturma, dağıtma ve kullanma bölümündeki temel adımları öğrendiniz. Diğer sorun türlerini çözümlemek için tasarımcıyı nasıl kullanabileceğiniz hakkında daha fazla bilgi edinmek için diğer örnek işlem hatlarımıza bakın.
+Bu öğreticide, tasarımcıda makine öğrenimi modeli oluşturma, dağıtma ve kullanma bölümündeki temel adımları öğrendiniz. Tasarımcıyı nasıl kullanabileceğiniz hakkında daha fazla bilgi edinmek için aşağıdaki bağlantılara bakın:
 
-> [!div class="nextstepaction"]
-> [Tasarımcı örnekleri](samples-designer.md)
++ [Tasarımcı örnekleri](samples-designer.md): diğer sorun türlerini çözümlemek için tasarımcıyı nasıl kullanacağınızı öğrenin.
++ [Azure Machine Learning Studio 'yu bir Azure sanal ağında kullanın](how-to-enable-studio-virtual-network.md).

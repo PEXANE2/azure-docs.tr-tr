@@ -11,24 +11,25 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: df4d777ad78240b3ca84c51152b37861c4ccc486
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a90b98e8be976da9ee2669ab3b5fed4a890f0fb2
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94960011"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576645"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure sanal ağında Azure Machine Learning Studio 'yu kullanma
 
-Bu makalede, bir sanal ağda Azure Machine Learning Studio 'yu kullanmayı öğreneceksiniz. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
+Bu makalede, bir sanal ağda Azure Machine Learning Studio 'yu kullanmayı öğreneceksiniz. Studio, oto ml, tasarımcı ve veri etiketleme gibi özellikler içerir. Bu özellikleri bir sanal ağda kullanabilmek için, bu makaledeki adımları izlemeniz gerekir.
+
+Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
-> - Bir sanal ağın içindeki bir kaynaktan Studio 'ya erişin.
-> - Depolama hesapları için özel uç noktaları yapılandırın.
 > - Bir sanal ağ içinde depolanan verilere Studio erişimi verin.
+> - Bir sanal ağın içindeki bir kaynaktan Studio 'ya erişin.
 > - Studio 'nun depolama güvenliğini nasıl etkilediğini anlayın.
 
-Bu makale, bir Azure Machine Learning iş akışını güvenli hale getirmek için size kılavuzluk eden beş bölümlü bir serinin beş bölümüdür. İlk olarak birinci mimariyi anlamak için [tek bir bölüm (VNet genel bakış](how-to-network-security-overview.md) ) okumanız önemle tavsiye ederiz. 
+Bu makale, bir Azure Machine Learning iş akışını güvenli hale getirmek için size kılavuzluk eden beş bölümlü bir serinin beş bölümüdür. Bir sanal ağ ortamı ayarlamak için önceki bölümleri okumanız önemle tavsiye ederiz.
 
 Bu serideki diğer makalelere göz atın:
 
@@ -39,9 +40,9 @@ Bu serideki diğer makalelere göz atın:
 > Çalışma alanınız, Azure Kamu veya Azure Çin 21Vianet gibi bir bağımsız __bulutta__ ise, tümleşik Not defterleri sanal bir ağdaki depolamanın _kullanımını desteklemez._ Bunun yerine işlem örneğinde Jupyter Notebook'larını kullanabilirsiniz. Daha fazla bilgi için, [Işlem örneği Not Defteri Içindeki erişim verileri](how-to-secure-training-vnet.md#access-data-in-a-compute-instance-notebook) bölümüne bakın.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-+ Genel sanal ağ senaryolarını ve genel sanal ağ mimarisini anlamak için [ağ güvenliğine genel bakış](how-to-network-security-overview.md) makalesini okuyun.
++ Genel sanal ağ senaryolarını ve mimarisini anlamak için [ağ güvenliğine genel bakış](how-to-network-security-overview.md) makalesini okuyun.
 
 + Kullanılacak önceden var olan bir sanal ağ ve alt ağ.
 
@@ -49,21 +50,16 @@ Bu serideki diğer makalelere göz atın:
 
 + Mevcut bir [Azure depolama hesabı, Sanal ağınızı ekledi](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints).
 
-## <a name="access-the-studio-from-a-resource-inside-the-vnet"></a>VNet 'in içindeki bir kaynaktaki Studio 'ya erişme
+## <a name="configure-data-access-in-the-studio"></a>Studio 'da veri erişimini yapılandırma
 
-Studio 'ya bir sanal ağın içindeki bir kaynaktan erişiyorsanız (örneğin, bir işlem örneği veya sanal makine), sanal ağdan Studio 'ya giden trafiğe izin vermeniz gerekir. 
+Bir sanal ağda bazı Studio özelliklerinden bazıları varsayılan olarak devre dışıdır. Bu özellikleri yeniden etkinleştirmek için, Studio 'da kullanmayı düşündüğünüz depolama hesapları için yönetilen kimliği etkinleştirmeniz gerekir. 
 
-Örneğin, giden trafiği kısıtlamak için ağ güvenlik grupları (NSG) kullanıyorsanız, __Azurefrontkapısı. ön uç__'nin __hizmet etiketi__ hedefine bir kural ekleyin.
-
-## <a name="access-data-using-the-studio"></a>Studio 'yu kullanarak verilere erişme
-
-Bir [hizmet uç noktası](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) veya [Özel uç nokta](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints)Ile sanal ağınıza bir Azure depolama hesabı ekledikten sonra, depolama hesabınızı, Studio 'ya verilerinize erişim vermek için [yönetilen kimlik](../active-directory/managed-identities-azure-resources/overview.md) kullanacak şekilde yapılandırmanız gerekir.
-
-Yönetilen kimlik ' i etkinleştirmezseniz bu hatayı alırsınız, `Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.` Ayrıca aşağıdaki işlemler devre dışı bırakılır:
+Aşağıdaki işlemler bir sanal ağda varsayılan olarak devre dışıdır:
 
 * Studio 'daki verileri önizleyin.
 * Tasarımcıda verileri görselleştirin.
-* Bir oto ml denemesi gönder.
+* Tasarımcıda bir model dağıtın ([varsayılan depolama hesabı](#enable-managed-identity-authentication-for-default-storage-accounts)).
+* Bir oto ml denemesi ([varsayılan depolama hesabı](#enable-managed-identity-authentication-for-default-storage-accounts)) gönderebilirsiniz.
 * Etiketleme projesi başlatın.
 
 Studio, bir sanal ağdaki aşağıdaki veri deposu türlerinden veri okumayı destekler:
@@ -73,34 +69,56 @@ Studio, bir sanal ağdaki aşağıdaki veri deposu türlerinden veri okumayı de
 * Azure Data Lake Storage Gen2
 * Azure SQL Veritabanı
 
-### <a name="grant-workspace-managed-identity-__reader__-access-to-storage-private-link"></a>Depolama özel bağlantısına çalışma alanı yönetilen kimlik __okuyucusu__ erişimi verme
+### <a name="configure-datastores-to-use-workspace-managed-identity"></a>Veri depolarını çalışma alanı tarafından yönetilen kimliği kullanacak şekilde yapılandırma
 
-Bu adım yalnızca, Azure Storage hesabını [özel bir uç nokta](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints)ile sanal ağınıza eklediyseniz gereklidir. Daha fazla bilgi için bkz. [Reader](../role-based-access-control/built-in-roles.md#reader) yerleşik rolü.
+Bir [hizmet uç noktası](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) veya [Özel uç nokta](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints)Ile sanal ağınıza bir Azure depolama hesabı ekledikten sonra, veri depolama alanınızı [yönetilen kimlik](../active-directory/managed-identities-azure-resources/overview.md) kimlik doğrulamasını kullanacak şekilde yapılandırmanız gerekir. Bunu yaptığınızda, Studio 'nun Depolama hesabınızdaki verilere erişmesine izin verir.
 
-### <a name="configure-datastores-to-use-workspace-managed-identity"></a>Veri depolarını çalışma alanı yönetilen kimliğini kullanacak şekilde yapılandırma
-
-Azure Machine Learning, depolama hesaplarına bağlanmak için [veri depolarını](concept-data.md#datastores) kullanır. Veri mağazalarınızı yönetilen kimlik kullanacak şekilde yapılandırmak için aşağıdaki adımları kullanın. 
+Azure Machine Learning, depolama hesaplarına bağlanmak için [veri depolarını](concept-data.md#datastores) kullanır. Bir veri deposunu yönetilen kimlik kullanacak şekilde yapılandırmak için aşağıdaki adımları kullanın:
 
 1. Studio 'da __veri depoları__' nı seçin.
 
-1. Yeni bir veri deposu oluşturmak için __+ Yeni veri deposu__' nu seçin.
+1. Mevcut bir veri deposunu güncelleştirmek için veri deposunu seçin ve __kimlik bilgilerini güncelleştir__' i seçin.
 
-    Mevcut bir veri deposunu güncelleştirmek için veri deposunu seçin ve __kimlik bilgilerini güncelleştir__' i seçin.
+    Yeni bir veri deposu oluşturmak için __+ Yeni veri deposu__' nu seçin.
 
-1. Veri deposu ayarları ' nda, __çalışma alanı tarafından yönetilen kimliği kullanarak Azure Machine Learning hizmetin depolamaya erişmesine Izin ver__ için __Evet__ ' i seçin.
+1. Veri deposu ayarlarında, __Azure Machine Learning Studio 'da veri önizleme ve profil oluşturma için çalışma alanı yönetilen kimliğini kullan__ için __Evet__ ' i seçin.
+
+    ![Yönetilen çalışma alanı kimliğini etkinleştirmeyi gösteren ekran görüntüsü](./media/how-to-enable-studio-virtual-network/enable-managed-identity.png)
+
+Bu adımlar, Azure RBAC kullanarak, çalışma alanı tarafından yönetilen kimliği depolama hizmetine __okuyucu__ olarak ekler. __Okuyucu__ erişimi, çalışma alanının, verilerin sanal ağdan çıkmadığınızdan emin olmak için güvenlik duvarı ayarlarını almasına izin verir. Değişikliklerin etkili olması 10 dakika kadar sürebilir.
+
+### <a name="enable-managed-identity-authentication-for-default-storage-accounts"></a>Varsayılan depolama hesapları için yönetilen kimlik kimlik doğrulamasını etkinleştir
+
+Her Azure Machine Learning çalışma alanı, çalışma alanınızı oluştururken tanımlanan iki varsayılan depolama hesabıyla gelir. Studio, Studio 'daki belirli özellikler için kritik olan deneme ve model yapıtlarını depolamak için varsayılan depolama hesaplarını kullanır.
+
+Aşağıdaki tabloda, çalışma alanı varsayılan depolama hesaplarınız için yönetilen kimlik kimlik doğrulamasını neden etkinleştirmeniz gerekir.
+
+|Depolama hesabı  | Notlar  |
+|---------|---------|
+|Çalışma alanı varsayılan blob depolaması| Tasarımcıda Model varlıklarını depolar. Tasarımcıyı tasarımcıda dağıtmak için bu depolama hesabında yönetilen kimlik kimlik doğrulamasını etkinleştirmeniz gerekir. <br> <br> Yönetilen kimlik kullanmak üzere yapılandırılmış varsayılan olmayan bir veri deposu kullanıyorsa, tasarımcı işlem hattını görselleştirebilir ve çalıştırabilirsiniz. Ancak, varsayılan veri deposunda yönetilen kimlik olmadan eğitilen bir model dağıtmaya çalışırsanız, kullanımda olan diğer veri depolarından bağımsız olarak dağıtım başarısız olur.|
+|Çalışma alanı varsayılan dosya deposu| Oto ml deneme varlıklarını depolar. Bu depolama hesabında, oto ml denemeleri göndermek için yönetilen kimlik kimlik doğrulamasını etkinleştirmeniz gerekir. |
 
 
-Bu adımlar, Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak, çalışma alanı tarafından yönetilen kimliği depolama hizmetine __okuyucu__ olarak ekler. __Okuyucu__ erişimi, çalışma alanının güvenlik duvarı ayarlarını almasına ve verilerin sanal ağdan çıkmadığınızdan emin olmanızı sağlar.
+![Varsayılan veri depolarının nerede bulunileceğini gösteren ekran görüntüsü](./media/how-to-enable-studio-virtual-network/default-datastores.png)
 
-> [!NOTE]
-> Bu değişikliklerin etkili olması 10 dakika kadar sürebilir.
+
+### <a name="grant-workspace-managed-identity-__reader__-access-to-storage-private-link"></a>Depolama özel bağlantısına çalışma alanı yönetilen kimlik __okuyucusu__ erişimi verme
+
+Azure depolama hesabınız özel bir uç nokta kullanıyorsa, çalışma alanı tarafından yönetilen kimlik **okuyucusu** özel bağlantı için erişim izni vermeniz gerekir. Daha fazla bilgi için bkz. [Reader](../role-based-access-control/built-in-roles.md#reader) yerleşik rolü. 
+
+Depolama hesabınız bir hizmet uç noktası kullanıyorsa, bu adımı atlayabilirsiniz.
+
+## <a name="access-the-studio-from-a-resource-inside-the-vnet"></a>VNet 'in içindeki bir kaynaktaki Studio 'ya erişme
+
+Studio 'ya bir sanal ağın içindeki bir kaynaktan erişiyorsanız (örneğin, bir işlem örneği veya sanal makine), sanal ağdan Studio 'ya giden trafiğe izin vermeniz gerekir. 
+
+Örneğin, giden trafiği kısıtlamak için ağ güvenlik grupları (NSG) kullanıyorsanız, __Azurefrontkapısı. ön uç__'nin __hizmet etiketi__ hedefine bir kural ekleyin.
 
 ## <a name="technical-notes-for-managed-identity"></a>Yönetilen kimlik için teknik notlar
 
-Depolama hizmetlerine erişmek için yönetilen kimlik kullanılması bazı güvenlik konularını etkiler. Bu bölümde, her depolama hesabı türü için değişiklikler açıklanmaktadır.
+Depolama hizmetlerine erişmek için yönetilen kimlik kullanmak güvenlik konularını etkiler. Bu bölümde, her depolama hesabı türü için değişiklikler açıklanmaktadır. 
 
-> [!IMPORTANT]
-> Bu konular, eriştiğiniz __depolama hesabı türüne__ özeldir.
+Bu konular, eriştiğiniz __depolama hesabı türüne__ özeldir.
 
 ### <a name="azure-blob-storage"></a>Azure Blob depolama
 
@@ -124,23 +142,17 @@ Yönetilen kimlik kullanarak bir Azure SQL veritabanında depolanan verilere eri
 
 Bir SQL kapsanan Kullanıcı oluşturduktan sonra, bu kullanıcıya izin ver [T-SQL komutunu](/sql/t-sql/statements/grant-object-permissions-transact-sql)kullanarak izin verin.
 
-### <a name="azure-machine-learning-designer-default-datastore"></a>Azure Machine Learning Designer varsayılan veri deposu
+### <a name="azure-machine-learning-designer-intermediate-module-output"></a>Azure Machine Learning Designer ara modül çıktısı
 
-Tasarımcı, çıktıyı varsayılan olarak depolamak için çalışma alanınıza bağlı depolama hesabını kullanır. Bununla birlikte, erişimi olan herhangi bir veri deposu için çıktıyı depolamak üzere belirtebilirsiniz. Ortamınız sanal ağlar kullanıyorsa, verilerinizin güvenli ve erişilebilir kalmasını sağlamak için bu denetimleri kullanabilirsiniz.
+Tasarımcıda herhangi bir modülün çıkış konumunu belirtebilirsiniz. Ara veri kümelerini güvenlik, günlüğe kaydetme veya denetim amaçlarıyla ayrı bir konumda depolamak için bunu kullanın. Çıktıyı belirtmek için:
 
-Bir işlem hattı için yeni bir varsayılan depolama alanı ayarlamak için:
+1. Çıktısını belirtmek istediğiniz modülün bulunduğu modülü seçin.
+1. Sağ tarafta görüntülenen modül ayarları bölmesinde **Çıkış ayarları**' nı seçin.
+1. Her modül çıktısı için kullanmak istediğiniz veri deposunu belirtin.
+ 
+Sanal ağınızdaki ara depolama hesaplarına erişiminiz olduğundan emin olun. Aksi takdirde, işlem hattı başarısız olur.
 
-1. İşlem hattı Taslağınızda, işlem hatlarınızın başlığının yakınında bulunan **Ayarlar dişli simgesini** seçin.
-1. **Varsayılan veri deposunu Seç**' i seçin.
-1. Yeni bir veri deposu belirtin.
-
-Ayrıca modül temelinde varsayılan veri deposunu geçersiz kılabilirsiniz. Bu, her bir modülün depolama konumu üzerinde denetim sağlar.
-
-1. Çıktısını belirtmek istediğiniz modülü seçin.
-1. **Çıkış ayarları** bölümünü genişletin.
-1. **Varsayılan çıkış ayarlarını geçersiz kıl ' ı** seçin.
-1. **Çıkış ayarlarını ayarla**' yı seçin.
-1. Yeni bir veri deposu belirtin.
+Ayrıca, çıkış verilerini görselleştirmek için ara depolama hesapları için [yönetilen kimlik kimlik doğrulamasını etkinleştirmeniz](#configure-datastores-to-use-workspace-managed-identity) gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

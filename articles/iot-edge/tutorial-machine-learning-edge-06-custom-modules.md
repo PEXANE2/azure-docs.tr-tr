@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 199da0586a061bccdf8a6ff8a1f53df2f703512f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2c7503cf51ab74dc486f83de8033bfe4850a8c68
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959450"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575066"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Öğretici: özel IoT Edge modüller oluşturma ve dağıtma
 
@@ -52,7 +52,7 @@ Aşağıdaki diyagramda, tam çözüm için modüller, girişler, çıktılar ve
 
 Bu makaledeki adımlar genellikle bir bulut geliştiricisi tarafından gerçekleştirilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makale, IoT Edge Azure Machine Learning kullanımı hakkında öğretici için bir serinin bir parçasıdır. Serideki her makale, önceki makaledeki iş üzerinde oluşturulur. Bu makaleye doğrudan ulaşdıysanız, serideki [ilk makaleyi](tutorial-machine-learning-edge-01-intro.md) ziyaret edin.
 
@@ -804,6 +804,10 @@ IoT Edge cihazında (bizim durumumuzdaki Linux VM) oturum açarak modüllerinizi
    ```bash
    sudo docker exec -it avroFileWriter bash
    ```
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Bu öğretici, her bir makalenin bir önceki bölümde gerçekleştirilen iş üzerinde oluşturulduğu bir küme parçasıdır. Lütfen son öğreticiyi tamamlayana kadar tüm kaynakları temizlemeyi bekleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

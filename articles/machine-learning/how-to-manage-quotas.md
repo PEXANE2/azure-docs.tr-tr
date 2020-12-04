@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
-ms.date: 10/13/2020
+ms.date: 12/1/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4, contperfq2
-ms.openlocfilehash: d82cbafbbdeb379c8eb97494ca8d3243f356b7a1
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 18eb952d06d83b4604625a795be3c8512c3f90d7
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542125"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576596"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Azure Machine Learning olan kaynaklar için kotaları yönetme ve artırma
 
@@ -45,25 +45,29 @@ Kotaları yönetme ile birlikte [Azure Machine Learning maliyetlerini nasıl pla
 
 Bu bölümde, aşağıdaki kaynaklar için varsayılan ve en yüksek kota sınırları hakkında bilgi edineceksiniz:
 
++ Azure Machine Learning varlıklar
+  + Azure Machine Learning işlem
+  + Azure Machine Learning işlem hatları
 + Sanal makineler
-+ Azure Machine Learning işlem
-+ Azure Machine Learning işlem hatları
 + Azure Container Instances
-+ Azure Depolama
++ Azure Storage
 
 > [!IMPORTANT]
 > Sınırlar değişikliğe tabidir. En son bilgiler için bkz. Azure [aboneliği ve hizmet limitleri, Kotalar ve](../azure-resource-manager/management/azure-subscription-service-limits.md) tüm Azure için kısıtlamalar.
 
-### <a name="virtual-machines"></a>Sanal makineler
-Her Azure aboneliğinin, tüm hizmetler genelinde sanal makine sayısıyla sınırlı bir limiti vardır. Sanal makine çekirdekleri, boyut serisi başına bölgesel toplam sınıra ve bölgesel sınıra sahiptir. Her iki sınır de ayrı olarak zorlanır.
+### <a name="azure-machine-learning-assets"></a>Azure Machine Learning varlıklar
+Varlıklar için aşağıdaki sınırlar her çalışma alanı temelinde geçerlidir. 
 
-Örneğin, ABD Doğu toplam VM çekirdek limiti 30, A serisi çekirdek limiti 30 ve D serisi çekirdek limiti 30 olan bir abonelik düşünün. Bu aboneliğin 30 a1 VM 'Leri, 30 D1 VM 'yi veya bir toplam 30 çekirdeği aşmayan bir bileşimini dağıtmaya izin verilir.
+| **Kaynak** | **Üst sınır** |
+| --- | --- |
+| Veri kümeleri | 10 milyon |
+| Çalıştırmalar | 10 milyon |
+| Modeller | 10 milyon|
+| Artifacts | 10 milyon |
 
-Aşağıdaki tabloda gösterilen değerlerin üstünde sanal makineler için sınır yükseltemezsiniz.
+Ayrıca, maksimum **çalışma süresi** 30 gündür ve **her çalıştırma için günlüğe kaydedilen** en fazla ölçüm sayısı 1.000.000 ' dir.
 
-[!INCLUDE [azure-subscription-limits-azure-resource-manager](../../includes/azure-subscription-limits-azure-resource-manager.md)]
-
-### <a name="azure-machine-learning-compute"></a>Azure Machine Learning işlem
+#### <a name="azure-machine-learning-compute"></a>Azure Machine Learning işlem
 [Azure Machine Learning işlem](concept-compute-target.md#azure-machine-learning-compute-managed) , hem çekirdek sayısı hem de bir abonelikte bölge başına izin verilen benzersiz işlem kaynakları sayısı üzerinde varsayılan bir kota sınırına sahiptir. Bu kota, önceki bölümden VM çekirdek kotasından ayrıdır.
 
 Bu bölümdeki sınırları tabloda gösterilen en fazla sınıra kadar yükseltmek için [bir kota artışı isteyin](#request-quota-increases) .
@@ -90,13 +94,22 @@ Aşağıdaki tabloda, aşamazsınız ek sınırlar gösterilmektedir.
 <sup>1</sup> en fazla ömür süresi, bir çalıştırmanın başladığı ve bittiği zaman arasındaki süredir. Tamamlanan çalıştırmalar süresiz olarak devam ederse. Maksimum yaşam süresi içinde tamamlanmayan çalışma verilerine erişilemiyor.
 <sup>2</sup> bir kapasite kısıtlaması olduğunda düşük öncelikli bir düğümdeki 2 iş değiştirilebilir. İşinizdeki denetim noktalarını uygulamanızı öneririz.
 
-### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning işlem hatları
+#### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning işlem hatları
 [Azure Machine Learning işlem hatları](concept-ml-pipelines.md) Aşağıdaki sınırlara sahiptir.
 
-| **Kaynak** | **Sınırlı** |
+| **Kaynak** | **Sınır** |
 | --- | --- |
 | İşlem hattı adımları | 30.000 |
 | Her kaynak grubu için çalışma alanı | 800 |
+
+### <a name="virtual-machines"></a>Sanal makineler
+Her Azure aboneliğinin, tüm hizmetler genelinde sanal makine sayısıyla sınırlı bir limiti vardır. Sanal makine çekirdekleri, boyut serisi başına bölgesel toplam sınıra ve bölgesel sınıra sahiptir. Her iki sınır de ayrı olarak zorlanır.
+
+Örneğin, ABD Doğu toplam VM çekirdek limiti 30, A serisi çekirdek limiti 30 ve D serisi çekirdek limiti 30 olan bir abonelik düşünün. Bu aboneliğin 30 a1 VM 'Leri, 30 D1 VM 'yi veya bir toplam 30 çekirdeği aşmayan bir bileşimini dağıtmaya izin verilir.
+
+Aşağıdaki tabloda gösterilen değerlerin üstünde sanal makineler için sınır yükseltemezsiniz.
+
+[!INCLUDE [azure-subscription-limits-azure-resource-manager](../../includes/azure-subscription-limits-azure-resource-manager.md)]
 
 ### <a name="container-instances"></a>Container Instances
 
@@ -115,7 +128,7 @@ Aynı abonelikteki birden çok [çalışma alanı](concept-workspace.md) arasın
 Varsayılan olarak, tüm çalışma alanları VM aileleri için abonelik düzeyi kotasıyla aynı kotayı paylaşır. Ancak, bir abonelikteki çalışma alanlarında ayrı VM aileleri için maksimum kota ayarlayabilirsiniz. Bu, kapasiteyi paylaşmanızı ve kaynak çekişme sorunlarından kaçınmanızı sağlar.
 
 1. Aboneliğinizdeki herhangi bir çalışma alanına gidin.
-1. Sol bölmede, **kullanımlar + kotalar** ' ı seçin.
+1. Sol bölmede, **kullanımlar + kotalar**' ı seçin.
 1. Kotaları görüntülemek için **kotaları Yapılandır** sekmesini seçin.
 1. Bir VM ailesini genişletin.
 1. Bu VM ailesi altında listelenen herhangi bir çalışma alanında bir kota sınırı ayarlayın.

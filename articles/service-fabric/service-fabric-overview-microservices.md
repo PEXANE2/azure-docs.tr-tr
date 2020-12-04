@@ -3,13 +3,12 @@ title: Azure üzerinde mikro hizmetlere giriş
 description: Mikro hizmet yaklaşımına sahip bulut uygulamalarının neden oluşturulmasına ilişkin genel bakış, modern uygulama geliştirme ve Azure Service Fabric bunun için bir platform sağlar.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.custom: sfrev
-ms.openlocfilehash: 4345c919e73e57667fb3b9c90c42224326bc3552
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d20e04820c87a7390d9c20e511259ee9860c27f5
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91300777"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575661"
 ---
 # <a name="why-use-a-microservices-approach-to-building-applications"></a>Uygulamaları oluşturmak için neden mikro hizmetler yaklaşımı kullanılmalıdır
 
@@ -43,7 +42,7 @@ Mikro hizmetlerin alt tarafı, daha fazla farklı varlık yönetmeniz ve daha ka
 
 Standartlar, mikro hizmet yaklaşımını, yalnızca bir hizmette bulunan ve rigıd sözleşmeleri yerine yalnızca ihtiyaç duyduğunuz şeyleri nasıl iletdiğinizi ve tolerans yapmayı belirleyerek çalışır. Hizmetler birbirinden bağımsız olarak güncelleştiğinden, bu sözleşmelerin tasarımın önüne tanımlanması önemlidir. Mikro hizmet yaklaşımı ile tasarlamaya yönelik başka bir açıklama, "ayrıntılı hizmet odaklı mimari (SOA)" dir.
 
-***En basit, mikro hizmetler tasarımı yaklaşımı, iletişim için her biri ve üzerinde anlaşılan her bir hizmet için bağımsız değişiklikler içeren bir hizmet Federasyonu ile ilgilidir.***
+***En basit, mikro hizmetler tasarımı yaklaşımı, iletişim için her biri ve üzerinde anlaşılan her bir hizmet için bağımsız değişiklikler içeren bir hizmet Federasyonu ile ilgilidir.** _
 
 Daha fazla bulut uygulaması üretildiğinde, kullanıcılar genel uygulamanın bu ayrışmına bağımsız olarak, senaryoya odaklanmış hizmetlerden daha uzun süreli bir yaklaşım olduğunu tespit edilmiştir.
 
@@ -67,7 +66,7 @@ Mikro hizmetler yaklaşımını kullandığınızda, uygulamanızı birçok kü�
 
 Mikro hizmetlerin farklı tanımları vardır. Ancak bu mikro hizmet özelliklerinin çoğu yaygın olarak kabul edilir:
 
-* Müşteri veya iş senaryosunu yalıt. Hangi sorunu çözmenize?
+_ Bir müşteriyi veya iş senaryosunu yalıt. Hangi sorunu çözmenize?
 * Küçük bir mühendislik ekibi tarafından geliştirilmiştir.
 * Herhangi bir Framework kullanılarak herhangi bir programlama dilinde yazılır.
 * Kodu ve isteğe bağlı olarak, her ikisi de bağımsız olarak sürümlü, dağıtılmış ve ölçeklenen durum oluşur.
@@ -77,7 +76,7 @@ Mikro hizmetlerin farklı tanımları vardır. Ancak bu mikro hizmet özellikler
 
 Şunları toplamak için:
 
-***Mikro hizmet uygulamaları, iyi tanımlanmış arabirimler sayesinde standart protokoller üzerinden birbirleriyle iletişim kuran küçük, bağımsız sürümlü ve ölçeklenebilir müşteri odaklı hizmetlerden oluşur.***
+***Mikro hizmet uygulamaları, iyi tanımlanmış arabirimler sayesinde standart protokoller üzerinden birbirleriyle iletişim kuran küçük, bağımsız sürümlü ve ölçeklenebilir müşteri odaklı hizmetlerden oluşur.** _
 
 ### <a name="written-in-any-programming-language-using-any-framework"></a>Herhangi bir Framework kullanılarak herhangi bir programlama dilinde yazılmıştır
 
@@ -95,9 +94,9 @@ Tek parçalı ve mikro hizmet yaklaşımlarımızın bir süre karşılaştırı
 
 ![Service Fabric platform durumu depolaması][Image2]
 
-***Sol taraftaki tek parçalı yaklaşım, belirli teknolojilerin tek bir veritabanına ve katmanlarına sahiptir.***
+_*_Sol taraftaki tek parçalı yaklaşım, belirli teknolojilerin tek bir veritabanına ve katmanlarına sahiptir._*_
 
-***Sağdaki mikro hizmetler yaklaşımı, durumun genellikle mikro hizmet kapsamındaki ve çeşitli teknolojilerin kullanıldığı, birbirine bağlı mikro hizmetler grafiğine sahiptir.***
+_*_Sağdaki mikro hizmetler yaklaşımı, durumun genellikle mikro hizmet kapsamındaki ve çeşitli teknolojilerin kullanıldığı, birbirine bağlı mikro hizmetler grafiğine sahiptir._*_
 
 Tek parçalı bir yaklaşımda, uygulama genellikle tek bir veritabanı kullanır. Bir veritabanını kullanmanın avantajı tek bir konumda olduğundan, dağıtımını kolaylaştırır. Her bileşenin durumunu depolamak için tek bir tablosu olabilir. Ekipler, bir güçlük olan, tamamen ayrı bir durum olmalıdır. Kaçınılmaz, birisi mevcut bir müşteri tablosuna bir sütun eklemek, tablolar arasında bir birleşme ve depolama katmanında bağımlılıklar oluşturmak için kullanılır. Bu durumda, ayrı bileşenleri ölçeklendiremez.
 
@@ -137,18 +136,18 @@ Sağlık, tanılamalardan farklıdır. Sistem durumu, uygun işlemleri gerçekle
 
 Azure Service Fabric, Microsoft, genellikle tek parçalı olarak hizmet sunmaya yönelik paketlenmiş ürünleri sunmaya çalıştığında ortaya çıktı. Azure SQL veritabanı ve Azure Cosmos DB gibi büyük hizmetleri oluşturma ve çalıştırma deneyimi (şekillendirilmiş Service Fabric). Platform, daha fazla hizmet benimsediği zaman içinde gelişmiştir. Service Fabric yalnızca Azure 'da değil, tek başına Windows Server dağıtımlarında de çalıştırdık.
 
-***Service Fabric amacı, bir hizmet oluşturma ve çalıştırma ve altyapı kaynaklarını verimli bir şekilde kullanma ile ilgili sorunları çözmektir. bu sayede takımlar, mikro hizmetler yaklaşımını kullanarak iş sorunlarını çözebilir.***
+_*_Service Fabric amacı, bir hizmet oluşturma ve çalıştırma ve altyapı kaynaklarını verimli bir şekilde kullanma ile ilgili sorunları çözmektir. bu sayede takımlar, mikro hizmetler yaklaşımını kullanarak iş sorunlarını çözebilir._*_
 
 Bu kısa videoda Service Fabric ve mikro hizmetler tanıtılır:
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Service-Fabric/player]
 
 Service Fabric, mikro hizmetler yaklaşımını kullanan uygulamalar oluşturmanıza yardımcı olur:
 
-* Başarısız hizmetleri dağıtmak, yükseltmek, algılamak ve yeniden başlatmak, hizmetleri bulmak, iletileri yönlendirmek, durumu yönetmek ve sistem durumunu izlemek için sistem hizmetleri sağlayan bir platform.
+_ Sistem hizmetlerini, başarısız hizmetleri dağıtmak, yükseltmek, algılamak ve yeniden başlatmak, hizmetleri bulmak, iletileri yönlendirmek, durumu yönetmek ve sistem durumunu izlemek için bir platform sağlar.
 * Kapsayıcılarda veya işlem olarak çalışan uygulamalar dağıtma özelliği. Bir kapsayıcı ve işlem Orchestrator Service Fabric.
 * Mikro hizmetler olarak uygulama oluşturmanıza yardımcı olmak için üretken programlama API 'Leri: [ASP.NET Core, Reliable Actors ve Reliable Services](service-fabric-choose-framework.md). Örneğin, sistem durumu ve tanılama bilgilerini alabilir veya yerleşik yüksek kullanılabilirlik özelliğinden yararlanabilirsiniz.
 
-***Service Fabric, hizmetinizi nasıl derlemenize ilişkin bağımsız olarak, herhangi bir teknolojiyi de kullanabilirsiniz. Ancak, mikro hizmetler oluşturmayı kolaylaştıran yerleşik programlama API 'Leri sağlar.***
+***Service Fabric, hizmetinizi nasıl derlemenize ilişkin bağımsız olarak, herhangi bir teknolojiyi de kullanabilirsiniz. Ancak, mikro hizmetler oluşturmayı kolaylaştıran yerleşik programlama API 'Leri sağlar.** _
 
 ### <a name="migrating-existing-applications-to-service-fabric"></a>Mevcut uygulamaları Service Fabric geçirme
 
@@ -162,11 +161,11 @@ Service Fabric, var olan kodu yeniden kullanmanıza ve yeni mikro hizmetlerle mo
 
 ![Mikro hizmetlere geçiş][Image3]
 
-Bunu unutmayın, *Bu aşamaların herhangi birini başlatabilir ve durdurabilirsiniz*. Sonraki aşamada ilerlemeniz gerekmez. 
+Bunu unutmayın, bu aşamaların herhangi birini _start ve durdurabilirsiniz *. Sonraki aşamada ilerlemeniz gerekmez. 
 
 Bu aşamaların her biri için örneklere bakalım.
 
-**Geçiş**  
+**Geçirme**  
 İki nedenden dolayı birçok şirket, mevcut tek parçalı uygulamaları kapsayıcılara geçirmektedir:
 
 * Mevcut donanımların birleştirilmesi ve kaldırılması nedeniyle ya da daha yüksek yoğunlukta çalışan uygulamalar nedeniyle maliyet indirimi.

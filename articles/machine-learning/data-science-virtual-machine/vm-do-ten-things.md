@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 1e263886d0cc199bb30fd28877be32209ab32a22
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 09a4dc8467b9b3c11c8daeb5ca8c62a0e26e79de
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462396"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575016"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>Windows Veri Bilimi Sanal Makinesi ile veri bilimi
 
@@ -25,7 +25,7 @@ DSVM, Azure hizmetleriyle yakından birlikte çalışmaktadır. Azure 'da, Azure
 
 Bu makalede, veri bilimi görevlerini gerçekleştirmek ve diğer Azure hizmetleriyle etkileşim kurmak için DSVM 'nizi nasıl kullanacağınızı öğreneceksiniz. DSVM 'de yapabileceğiniz bazı şeyler aşağıda verilmiştir:
 
-- Bir Jupyter Not defteri kullanarak, Python 2, Python 3 ve Microsoft R kullanarak bir tarayıcıda verilerinize denemeler yapın. (Microsoft R, bir R 'nin performans için tasarlanan kurumsal kullanıma yönelik bir sürümüdür.)
+- Python 2, Python 3 ve Microsoft R kullanarak verileri tarayıcıda denemek için Jupyter Notebook kullanın. (Microsoft R, bir R 'nin performans için tasarlanan kurumsal kullanıma yönelik bir sürümüdür.)
 - Microsoft Machine Learning Server ve Python kullanarak DSVM 'de yerel olarak veri araştırma ve modeller geliştirme.
 - Azure portal veya PowerShell 'i kullanarak Azure kaynaklarınızı yönetin.
 - DSVM 'niz üzerinde bir Azure dosya paylaşımından bağlanabilir sürücü olarak depolama alanınızı genişletin ve büyük ölçekli veri kümelerini/kodları tüm ekibiniz üzerinde paylaşabilirsiniz.
@@ -49,8 +49,8 @@ Bu makalede, veri bilimi görevlerini gerçekleştirmek ve diğer Azure hizmetle
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 
-## <a name="use-jupyter-notebooks"></a>Jupyter not defterlerini kullanma
-Jupyter Notebook, veri araştırması ve modelleme için tarayıcı tabanlı bir IDE sağlar. Bir Jupyter not defterinde Python 2, Python 3 veya R (açık kaynak ve Microsoft R Server) kullanabilirsiniz.
+## <a name="use-jupyter-notebooks"></a>Jupyter Notebook'u kullanma
+Jupyter Notebook, veri araştırması ve modelleme için tarayıcı tabanlı bir IDE sağlar. Bir Jupyter Notebook Python 2, Python 3 veya R (açık kaynak ve Microsoft R Server) kullanabilirsiniz.
 
 Jupyter Notebook başlatmak için **Başlat** menüsünde veya masaüstünde **Jupyter Notebook** simgesini seçin. DSVM komut isteminde, ```jupyter notebook``` mevcut not defterlerine sahip olduğunuz veya yeni not defterleri oluşturmak istediğiniz dizinden komutunu da çalıştırabilirsiniz.  
 
@@ -201,7 +201,7 @@ Ayrıca, Azure Depolama Gezgini kullanarak sanal makinenizde yerel dosyadaki ver
 
 #### <a name="read-data-from-an-azure-blob-python-odbc"></a>Azure blobundan verileri okuma: Python ODBC
 
-Bir Jupyter Not defteri 'ndeki veya bir Python programındaki bloba doğrudan veri okumak için BlobService kitaplığını kullanabilirsiniz.
+Blob hizmeti kitaplığını, bir Jupyter Notebook veya bir Python programındaki bir bloba doğrudan veri okumak için kullanabilirsiniz.
 
 İlk olarak, gerekli paketleri içeri aktarın:
 

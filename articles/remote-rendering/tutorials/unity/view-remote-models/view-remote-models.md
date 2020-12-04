@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bcee951dc85d9c317bad481ebdb91ff6c761371c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 834df29597abaaadad98b232ce75b32a6431cfc2
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653681"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96574743"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>Öğretici: uzaktan işlenmiş bir modeli görüntüleme
 
@@ -49,7 +49,7 @@ Azure uzaktan Işleme hizmetine erişim sağlamak için önce [bir hesap oluştu
 > [ARR örnekleri deposu](https://github.com/Azure/azure-remote-rendering) , tüm öğreticilerin tamamlandığı bir proje içerir, başvuru olarak kullanılabilir. Tüm Unity projesi için *Unity\Tutorial-Complete* bakın.
 
 Unity hub 'ında yeni bir proje oluşturun.
-Bu örnekte, projenin **RemoteRendering**adlı bir klasörde oluşturulduğunu varsayacağız.
+Bu örnekte, projenin **RemoteRendering** adlı bir klasörde oluşturulduğunu varsayacağız.
 
 :::image type="content" source="./media/unity-new-project.PNG" alt-text="Yeni Unity projesi":::
 
@@ -76,7 +76,7 @@ Bu örnekte, projenin **RemoteRendering**adlı bir klasörde oluşturulduğunu v
 
 Bildirimi değiştirdikten ve kaydettikten sonra Unity otomatik olarak yenilenir. *Proje* penceresinde paketlerin yüklendiğini onaylayın:
 
-:::image type="content" source="./media/confirm-packages.png" alt-text="Yeni Unity projesi":::
+:::image type="content" source="./media/confirm-packages.png" alt-text="paket içeri aktarmaları Onayla":::
 
 Paketleriniz yüklenmemesi halinde Unity konsolunuza hata olup olmadığını denetleyin. Herhangi bir hata yoksa ve **paketler** klasörü altında herhangi bir paket görmüyorsanız, paket görünürlüğü değiştirme düğmesini işaretleyin. \
 ![Paket görünürlüğü değiştirme düğmesine işaret eden bir ok ile ekran görüntüsü.](./media/unity-package-visibility.png)
@@ -86,7 +86,7 @@ Paketleriniz yüklenmemesi halinde Unity konsolunuza hata olup olmadığını de
 Aşağıdaki adımlarda, projenizin uzaktan işleme paketinin en son sürümünü kullandığından emin olabilirsiniz.
 
 1. Unity düzenleyicisinin en üst menüsünde, *Window->Package Manager*' ı açın.
-1. **Uzaktan işleme Microsoft Azure**paketi seçin.
+1. **Uzaktan işleme Microsoft Azure** paketi seçin.
 1. **Microsoft Azure uzaktan işleme** paketinin Paket Yöneticisi sayfasında, **Güncelleştir** düğmesinin kullanılabilir olup olmadığını görün. Varsa, paketi mevcut en son sürüme güncelleştirmek için tıklayın: \
 ![Paket yöneticisinde ARR paketi](./media/package-manager.png)
 1. Paketin güncelleştirilmesi, bazen konsol hatalarına neden olabilir. Bu durumda projeyi kapatıp yeniden açmayı deneyin.
@@ -106,7 +106,7 @@ Aşağıdaki adımlarda, projenizin uzaktan işleme paketinin en son sürümün�
 
     ![Renk tekerleği](./media/color-wheel-black.png)
 
-1. **Kırpma düzlemleri** *Near = 0,3* ve *Far = 20*olarak ayarlayın. Bu, işlemenin 30 cm 'den daha yakın veya 20 ölçümden daha büyük olan bir geometriyi kırpmak anlamına gelir.
+1. **Kırpma düzlemleri** *Near = 0,3* ve *Far = 20* olarak ayarlayın. Bu, işlemenin 30 cm 'den daha yakın veya 20 ölçümden daha büyük olan bir geometriyi kırpmak anlamına gelir.
 
     ![Unity kamera özellikleri](./media/camera-properties.png)
 
@@ -114,7 +114,7 @@ Aşağıdaki adımlarda, projenizin uzaktan işleme paketinin en son sürümün�
 
 1. *> proje ayarlarını Düzenle 'yi aç...*
 1. Sol taraftaki liste menüsünden **kalite** ' yi seçin
-1. Tüm platformların **Varsayılan kalite düzeyini** *düşük*olarak değiştirin. Bu ayar, yerel içeriğin daha verimli işlemesini etkinleştirir ve uzaktan işlenmiş içeriğin kalitesini etkilemez.
+1. Tüm platformların **Varsayılan kalite düzeyini** *düşük* olarak değiştirin. Bu ayar, yerel içeriğin daha verimli işlemesini etkinleştirir ve uzaktan işlenmiş içeriğin kalitesini etkilemez.
 
     ![Proje kalitesi ayarlarını değiştir](./media/settings-quality.png)
 
@@ -141,11 +141,11 @@ Aşağıdaki adımlarda, projenizin uzaktan işleme paketinin en son sürümün�
 1. Aynı pencerede, **XR ayarları**' nda, **Yayımlama ayarları** ' nı genişletin.
 1. **Özellikleri** aşağı kaydırın ve şunları seçin:
     * **InternetClient**
-    * **Internetclientserver**
+    * **InternetClientServer**
     * **SpatialPerception**
     * **PrivateNetworkClientServer** (*isteğe bağlı*). Unity uzaktan hata ayıklayıcısını cihazınıza bağlamak istiyorsanız bu seçeneği belirleyin.
 
-1. **Desteklenen cihaz aileleri**altında **holographic** ve **Desktop** 'ı etkinleştirin
+1. **Desteklenen cihaz aileleri** altında **holographic** ve **Desktop** 'ı etkinleştirin
 1. **Proje ayarları** panelini kapatma veya yerleştirme
 1. *Dosya >derleme ayarlarını* aç
 1. **Evrensel Windows platformu** seçin
@@ -169,9 +169,9 @@ Aşağıdaki akış çizelgesinde özetlenen, uzaktan işlenmiş modelleri göst
 
 ![ARR yığını 0](./media/remote-render-stack-0.png)
 
-1. *Proje* bölmesinde, **varlıklar**altında, *remoterenderingcore*adlı yeni bir klasör oluşturun. Ardından, *Remoterenderingcore*içinde *betikler*adlı başka bir klasör oluşturun.
+1. *Proje* bölmesinde, **varlıklar** altında, *remoterenderingcore* adlı yeni bir klasör oluşturun. Ardından, *Remoterenderingcore* içinde *betikler* adlı başka bir klasör oluşturun.
 
-1. **Remoterenderingcoordinator**adlı [Yeni bir C# betiği](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html) oluşturun.
+1. **Remoterenderingcoordinator** adlı [Yeni bir C# betiği](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html) oluşturun.
 Projeniz şuna benzemelidir:
 
     ![Proje hiyerarşisi](./media/project-structure.png)
@@ -220,7 +220,7 @@ public class RemoteRenderingCoordinator : MonoBehaviour
     public static RemoteRenderingCoordinator instance;
 
     // AccountDomain must be '<region>.mixedreality.azure.com' - if no '<region>' is specified, connections will fail
-    // For most people '<region>' is either 'westus2' or 'westeurope'
+    // The list of regions is available at https://docs.microsoft.com/azure/remote-rendering/reference/regions
     [SerializeField]
     private string accountDomain = "westus2.mixedreality.azure.com";
     public string AccountDomain
@@ -536,7 +536,7 @@ public class RemoteRenderingCoordinator : MonoBehaviour
 
 Uzaktan işleme Düzenleyicisi ve gerekli betiği (*ARRServiceUnity*), sahnedeki bir gameobject 'e eklenmesi gereken MonoBehaviours. *ARRServiceUnity* betiği ARR tarafından, uzak oturumlara bağlanmak ve bunları yönetmek için ARR 'nin işlevselliğinin çoğunu göstermek üzere sağlanır.
 
-1. Sahnede yeni bir Oyunobject oluşturun (CTRL + SHIFT + N veya *gameobject->boş oluştur*) ve bunu **Remoterenderingcoordinator**olarak adlandırın.
+1. Sahnede yeni bir Oyunobject oluşturun (CTRL + SHIFT + N veya *gameobject->boş oluştur*) ve bunu **Remoterenderingcoordinator** olarak adlandırın.
 1. *Remoterenderingcoordinator* **oyunobject** . \ dosyasına
 ![RemoteRenderingCoordinator bileşeni ekleme](./media/add-coordinator-script.png)
 1. Denetçisinde *hizmet* olarak görünen *ARRServiceUnity* betiğini onaylayın, otomatik olarak gameobject öğesine eklenir. Merak ediyorsanız, bu durum, `[RequireComponent(typeof(ARRServiceUnity))]` **Remoterenderingcoordinator** betiğinin en üstünde yer aldığı bir sonuçdır.
@@ -545,7 +545,7 @@ Uzaktan işleme Düzenleyicisi ve gerekli betiği (*ARRServiceUnity*), sahnedeki
 
 ## <a name="initialize-azure-remote-rendering"></a>Azure uzaktan Işlemesini Başlat
 
-Artık düzenleyicimiz için bir çerçevemiz olduğuna göre, **Uzaktan Işlemeyi başlatma**ile başlayan dört aşamanın her birini uygulayacağız.
+Artık düzenleyicimiz için bir çerçevemiz olduğuna göre, **Uzaktan Işlemeyi başlatma** ile başlayan dört aşamanın her birini uygulayacağız.
 
 ![ARR yığını 1](./media/remote-render-stack-1.png)
 
@@ -605,14 +605,14 @@ public async void InitializeSessionService()
 
 ![ARR yığını 2](./media/remote-render-stack-2.png)
 
-Uzak oturum, modellerin nerede işleneceğini görürsünüz. **Joinremotesession ()** yöntemi, **Lastusedsessionıd** özelliğiyle izlenen mevcut bir oturuma katılmayı dener veya **sessionidoverride**üzerinde atanmış bir etkin oturum kimliği vardır. **Sessionidoverride** yalnızca hata ayıklama amacınıza yöneliktir, yalnızca oturumun var olduğunu bildiğiniz ve kendisine açıkça bağlanmak istediğiniz durumlarda kullanılmalıdır.
+Uzak oturum, modellerin nerede işleneceğini görürsünüz. **Joinremotesession ()** yöntemi, **Lastusedsessionıd** özelliğiyle izlenen mevcut bir oturuma katılmayı dener veya **sessionidoverride** üzerinde atanmış bir etkin oturum kimliği vardır. **Sessionidoverride** yalnızca hata ayıklama amacınıza yöneliktir, yalnızca oturumun var olduğunu bildiğiniz ve kendisine açıkça bağlanmak istediğiniz durumlarda kullanılmalıdır.
 
 Kullanılabilir oturum yoksa yeni bir oturum oluşturulur. Ancak, yeni bir oturum oluşturma, zaman alan bir işlemdir. Bu nedenle, yalnızca gerekli olduğunda oturum oluşturmayı ve mümkün olduğunda yeniden kullanmayı denemeniz gerekir (oturumları yönetme hakkında daha fazla bilgi için bkz. [Ticari Basım: oturum kuyruğu oluşturma, zamanlama ve en iyi uygulamalar](../commercial-ready/commercial-ready.md#fast-startup-time-strategies) ).
 
 > [!TIP]
 > **Stopremotesession ()** etkin oturumu sona erdirmek için kullanılır. Gereksiz ücretleri engellemek için, artık gerekli olmayan oturumları her zaman durdurmanız gerekir.
 
-Durum makinesi şimdi, kullanılabilir oturumlara bağlı olarak **Connectingtonewremotesession** veya **Connectingtoexistingremotesession**olarak devam eder. Hem mevcut bir oturum açma ya da yeni bir oturum oluşturma, **ARRSessionService. OnSessionStatusChanged** olayını tetikleyip **onremotesessionstatuschanged** yöntemini tetikler. İdeal olarak, bu durum makinesi **Remotesessionready olarak ilerletmeye**neden olur.
+Durum makinesi şimdi, kullanılabilir oturumlara bağlı olarak **Connectingtonewremotesession** veya **Connectingtoexistingremotesession** olarak devam eder. Hem mevcut bir oturum açma ya da yeni bir oturum oluşturma, **ARRSessionService. OnSessionStatusChanged** olayını tetikleyip **onremotesessionstatuschanged** yöntemini tetikler. İdeal olarak, bu durum makinesi **Remotesessionready olarak ilerletmeye** neden olur.
 
 1. Yeni bir oturuma katmak için, kodu aşağıdaki tamamlanan örneklerle birlikte **Joinremotesession ()** ve **stopremotesession ()** yöntemlerini değiştirecek şekilde değiştirin:
 
@@ -658,7 +658,7 @@ public void StopRemoteSession()
 }
 ```
 
-Oturumları yeniden kullandığınızda zaman kazanmak istiyorsanız, *ARRServiceUnity* bileşeninde **otomatik durdurma oturumu** seçeneğini devre dışı bıraktığınızdan emin olun. Bu, kendisine bağlı bir bağlantı olmadığında bile oturumları çalışır durumda bırakacağını aklınızda bulundurun. Oturumunuz, sunucu tarafından kapatılmadan önce *maxleasetime* 'niz için çalıştırılabilir ( *yeni oturum Varsayılanları*altında *Maxleasetime* değeri uzaktan işleme Düzenleyicisi 'nde değiştirilebilir). Öte yandan, bağlantı kesilirken her oturumu otomatik olarak kapatırsanız, yeni bir oturumun her seferinde başlamasını beklemeniz gerekir, bu da uzun bir işlem olabilir.
+Oturumları yeniden kullandığınızda zaman kazanmak istiyorsanız, *ARRServiceUnity* bileşeninde **otomatik durdurma oturumu** seçeneğini devre dışı bıraktığınızdan emin olun. Bu, kendisine bağlı bir bağlantı olmadığında bile oturumları çalışır durumda bırakacağını aklınızda bulundurun. Oturumunuz, sunucu tarafından kapatılmadan önce *maxleasetime* 'niz için çalıştırılabilir ( *yeni oturum Varsayılanları* altında *Maxleasetime* değeri uzaktan işleme Düzenleyicisi 'nde değiştirilebilir). Öte yandan, bağlantı kesilirken her oturumu otomatik olarak kapatırsanız, yeni bir oturumun her seferinde başlamasını beklemeniz gerekir, bu da uzun bir işlem olabilir.
 
 > [!NOTE]
 > Bir oturumu durdurmak hemen etkili olur ve geri alınamaz. Durdurulduktan sonra, aynı başlangıç yüküyle yeni bir oturum oluşturmanız gerekir.
@@ -669,7 +669,7 @@ Sonra, uygulamanın yerel çalışma zamanını uzak oturuma bağlanması gereki
 
 ![ARR yığını 3](./media/remote-render-stack-3.png)
 
-Uygulamanın Ayrıca, çalışma zamanı ve geçerli oturum arasındaki bağlantıyla ilgili olayları dinlemesi gerekir; Bu durum değişiklikleri **OnLocalRuntimeStatusChanged**içinde işlenir. Bu kod, eyaletimizi **Connectingtoruntime**'a ilerlecektir. **OnLocalRuntimeStatusChanged**' ye bağlandıktan sonra durum, **runtimeconnected**' a ilerlecektir. Çalışma zamanına bağlanmak, düzenleyicinin kendisini ile ilgilendiren son durumdur. Bu, uygulamanın tüm ortak yapılandırma ile yapıldığı ve model yükleme ve işleme modelinin işe özgü çalışmasına başlamaya hazırlanmasıdır.
+Uygulamanın Ayrıca, çalışma zamanı ve geçerli oturum arasındaki bağlantıyla ilgili olayları dinlemesi gerekir; Bu durum değişiklikleri **OnLocalRuntimeStatusChanged** içinde işlenir. Bu kod, eyaletimizi **Connectingtoruntime**'a ilerlecektir. **OnLocalRuntimeStatusChanged**' ye bağlandıktan sonra durum, **runtimeconnected**' a ilerlecektir. Çalışma zamanına bağlanmak, düzenleyicinin kendisini ile ilgilendiren son durumdur. Bu, uygulamanın tüm ortak yapılandırma ile yapıldığı ve model yükleme ve işleme modelinin işe özgü çalışmasına başlamaya hazırlanmasıdır.
 
  1. **ConnectRuntimeToRemoteSession ()** ve **DisconnectRuntimeFromRemoteSession ()** yöntemlerini aşağıdaki tamamlanmış sürümlerle değiştirin.
  1. Unity yöntemi **Lateupdate** ' i ve geçerli etkin oturumu güncelleştirdiğini göz önünde bulundurulmalıdır. Bu, geçerli oturumun ileti göndermesini/almasını ve çerçeve arabelleğini uzak oturumdan alınan çerçevelerle güncelleştirmesini sağlar. Doğru şekilde çalışması için kritik öneme sahiptir.
@@ -828,7 +828,7 @@ Artık uzaktan işlenmiş bir modeli görüntülemek için gereken tüm kod, uza
 1. Azure uzaktan Işleme bağlanma ve yeni bir oturum oluşturma işlemini başlatmak için Unity Düzenleyicisi 'ndeki Oynat düğmesine basın.
 1. Oyun görünümünde çok fazla görmezsiniz, ancak konsol değişen uygulamanın durumunu gösterir. Büyük olasılıkla `ConnectingToNewRemoteSession` en fazla beş dakika boyunca devam eder.
 1. Inspector 'daki ekli komut dosyalarını görmek için **Remoterenderingcoordinator** oyunobject öğesini seçin. Başlatma ve bağlantı adımlarında ilerlerken **hizmet** bileşeni güncelleştirmesini izleyin.
-1. Konsol çıkışını izleme-durumun **Runtimeconnected**olarak değiştirilmesi bekleniyor.
+1. Konsol çıkışını izleme-durumun **Runtimeconnected** olarak değiştirilmesi bekleniyor.
 1. Çalışma zamanı bağlandıktan sonra, bağlam menüsünü kullanıma sunmak için denetçisindeki **Remoterenderingcoordinator** öğesine sağ tıklayın. Daha sonra, yukarıdaki kodumuz bölümü tarafından eklenen bağlam menüsündeki **Yük testi modeli** seçeneğine tıklayın `[ContextMenu("Load Test Model")]` .
 
     ![Bağlam menüsünden yükle](./media/load-test-model.png)

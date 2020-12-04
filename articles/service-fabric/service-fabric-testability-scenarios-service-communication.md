@@ -1,16 +1,14 @@
 ---
 title: 'Test Edilebilirlik: hizmet iletişimi'
 description: Hizmetten hizmete iletişim, Service Fabric bir uygulamanın kritik bir tümleştirme noktasıdır. Bu makalede tasarım konuları ve test teknikleri açıklanmaktadır.
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
-ms.openlocfilehash: 87b922cb9655588a22c739d26c9ce9e49d35781a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fbf889422d69d031d777acd80cf3becfb3184568
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96007129"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575933"
 ---
 # <a name="service-fabric-testability-scenarios-service-communication"></a>Service Fabric test edilebilir senaryolar: hizmet iletişimi
 Azure Service Fabric 'de doğal olarak mikro hizmetler ve hizmet odaklı mimari stilleri yüzeyi. Bu dağıtılmış mimarilerde, bileşen, mikro hizmet uygulamaları genellikle birbirleriyle konuşmak zorunda olan birden çok hizmetten oluşur. En basit durumlar da genellikle en az bir durum bilgisiz Web hizmetiniz ve iletişim kurması gereken durum bilgisi olan bir veri depolama hizmetidir.

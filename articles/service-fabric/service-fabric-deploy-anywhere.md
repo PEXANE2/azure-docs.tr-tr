@@ -3,13 +3,12 @@ title: Azure ve tek başına Service Fabric kümelerine genel bakış
 description: Windows Server veya Linux çalıştıran tüm VM 'lerde veya bilgisayarlarda Service Fabric kümeleri oluşturabilirsiniz. Bu, şirket içinde, Microsoft Azure veya herhangi bir bulut sağlayıcısıyla birbirine bağlı bir Windows Server veya Linux bilgisayar kümesine sahip olduğunuz herhangi bir ortamda Service Fabric uygulamaları dağıtabileceğiniz ve çalıştırabileceğiniz anlamına gelir.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.custom: sfrev
-ms.openlocfilehash: 8313d75bb6398bbe614c6f56b494079548c99954
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d83ec139c367d9a539db173a42ae909f57d5d71a
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842606"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576137"
 ---
 # <a name="comparing-azure-and-standalone-service-fabric-clusters-on-windows-server-and-linux"></a>Windows Server ve Linux 'ta Azure ve tek başına Service Fabric kümelerini karşılaştırma
 

@@ -1,17 +1,15 @@
 ---
 title: Azure Service Fabric aktörleri için yeniden giriş
 description: Çağrı bağlamına göre engellemeyi mantıksal olarak önlemenin bir yolu olan Service Fabric Reliable Actors için yeniden giriş yapın.
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 75512633dae8d9a9f61c37bbc795d8e8d20c4ff1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c2356db0eee82a133afad6aa95299ced0595db32
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89007817"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576069"
 ---
 # <a name="reliable-actors-reentrancy"></a>Reliable Actors yeniden giriş
 Reliable Actors çalışma zamanı, varsayılan olarak mantıksal çağrı bağlamı tabanlı yeniden giriş yapılmasına izin verir. Bu, aktörlerin aynı çağrı bağlamı zincirinde olmaları durumunda yer almasına izin verir. Örneğin, oyuncu aktör C 'ye bir ileti gönderen aktör B 'ye bir ileti gönderir. İleti işlemenin bir parçası olarak, aktör C aktör A 'yı çağırırsa ileti yeniden alınır, bu nedenle izin verilir. Farklı bir çağrı bağlamının parçası olan diğer tüm iletiler, işleme bitene kadar aktör A 'da engellenir.

@@ -8,18 +8,36 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 965c420fa29c4cf82517148c01e17d6d7dd6ea97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d603e5d03480b99eb3d6adb72a3440198fda2e47
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74106499"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575474"
 ---
 # <a name="tutorial-an-end-to-end-solution-using-azure-machine-learning-and-iot-edge"></a>Öğretici: Azure Machine Learning ve IoT Edge kullanarak uçtan uca bir çözüm
 
 IoT uygulamaları, genellikle akıllı buluttan ve akıllı kenarından faydalanmak istiyor. Bu öğreticide, bulutta IoT cihazlarından toplanan verilerle bir makine öğrenimi modeline eğitim vererek, bu modeli IoT Edge için dağıtmakta ve modeli düzenli aralıklarla koruyup iyileştirirken size kılavuzluk ederiz.
 
 Bu öğreticinin birincil amacı, özellikle de kenarda, Machine Learning ile IoT verilerinin işlenmesini tanıtmaktadır. Genel makine öğrenimi iş akışının pek çok yönüyle iletişime geçtiğimiz için, bu öğretici Machine Learning 'e derinlemesine bir giriş olarak tasarlanmamıştır. Bu noktada, kullanım örneği için yüksek düzeyde iyileştirilmiş bir model oluşturmaya çalışıyoruz; IoT veri işleme için uygun bir model oluşturma ve kullanma sürecini göstermek için yeterlidir.
+
+## <a name="prerequisites"></a>Önkoşullar
+
+Öğreticiyi tamamlayabilmeniz için, kaynak oluşturma haklarınız olan bir Azure aboneliğine erişmeniz gerekir. Bu öğreticide kullanılan hizmetlerden bazıları Azure ücretlerine tabi olacaktır. Henüz bir Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı](https://azure.microsoft.com/offers/ms-azr-0044p/)kullanmaya başlamanızı sağlayabilirsiniz.
+
+Ayrıca, geliştirme makineniz olarak bir Azure sanal makinesini kurmak üzere betikleri çalıştırabileceğiniz PowerShell yüklü bir makineye ihtiyacınız vardır.
+
+Bu belgede, aşağıdaki araç kümesini kullanırız:
+
+* Veri yakalama için bir Azure IoT Hub 'ı
+
+* Veri hazırlama ve makine öğrenimi deneme için ana ön uçmız olarak Azure Notebooks. Örnek verilerin bir alt kümesindeki bir not defterinde Python kodu çalıştırmak, veri hazırlama sırasında hızla yinelemeli ve etkileşimli bir şekilde yük açmak için harika bir yoldur. Jupi Not defterleri, komut dosyalarını bir işlem arka ucunda ölçeklendirerek çalışacak şekilde hazırlamak için de kullanılabilir.
+
+* Makine öğrenimi için ölçek ve makine öğrenimi görüntü oluşturma için arka uç olarak Azure Machine Learning. Jupi not defterlerinde hazırlanan ve test edilen betikleri kullanarak Azure Machine Learning arka ucunu sunuyoruz.
+
+* Makine öğrenimi görüntüsünün bulut dışı uygulaması için Azure IoT Edge
+
+Açıktır, başka seçenekler de mevcuttur. Örneğin, IoT Central, IoT cihazlarından ilk eğitim verilerini yakalamaya yönelik kod olmayan bir alternatif olarak kullanılabilir.
 
 ## <a name="target-audience-and-roles"></a>Hedef kitle ve roller
 
@@ -40,9 +58,9 @@ Bu öğreticide kullanılan veriler, [turbofan altyapısının düşme simülasy
 
 Benioku dosyasından:
 
-***Deneysel senaryo***
+***Deneysel senaryo** _
 
-*Veri kümeleri birden fazla çok değişkenli zaman serisinden oluşur. Her veri kümesi, eğitim ve test alt kümelerine bölünmüştür. Her bir serinin farklı bir altyapıdan olması, yani verilerin aynı türdeki bir çok sayıda altyapıdan olduğu kabul edilebilir. Her motor, Kullanıcı tarafından bilinmeyen, farklı ilk aşınma ve üretim çeşitlemesi ile başlar. Bu giyme ve değişim normal olarak değerlendirilir, yani bir hata koşulu olarak kabul edilmez. Altyapı performansına önemli bir etkisi olan üç işlemsel ayar vardır. Bu ayarlar verilere da dahildir. Veriler sensörle gürültü ile ayrılmış.*
+_Data kümeler birden fazla çok değişkenli zaman serisinden oluşur. Her veri kümesi, eğitim ve test alt kümelerine bölünmüştür. Her bir serinin farklı bir altyapıdan olması, yani verilerin aynı türdeki bir çok sayıda altyapıdan olduğu kabul edilebilir. Her motor, Kullanıcı tarafından bilinmeyen, farklı ilk aşınma ve üretim çeşitlemesi ile başlar. Bu giyme ve değişim normal olarak değerlendirilir, yani bir hata koşulu olarak kabul edilmez. Altyapı performansına önemli bir etkisi olan üç işlemsel ayar vardır. Bu ayarlar verilere da dahildir. Veriler sensör gürültüsü ile kirlü. *
 
 *Motor her bir zaman serisinin başlangıcında normal şekilde çalışır ve seri sırasında bir noktada bir hata geliştirir. Eğitim kümesinde hata, sistem hatasına kadar büyüklüğü artar. Test kümesinde, zaman serisi sistem hatasından önce bir süre sona erer. Yarışmanın amacı, test kümesinde hatadan önce kalan işlem döngülerinin sayısını tahmin etmek, yani, altyapının çalışmaya devam etmesi için son döngüden sonra işlem döngüsü sayısı. Ayrıca, test verileri için doğru kalan kullanım ömrü (RUL) değerlerinin vektörünün sağlanması.*
 
@@ -74,23 +92,9 @@ Aşağıdaki resimde, bu öğreticide izlediğimiz kaba adımlar gösterilmekted
 
 1. **Modeli koruyun ve daraltın**. Model dağıtıldıktan sonra çalışmamız yapılmaz. Birçok durumda, verileri toplamaya ve verileri düzenli aralıklarla buluta yüklemeye devam etmek istiyoruz. Daha sonra bu verileri, modelimizi yeniden eğitmek ve iyileştirmek için kullanabiliriz. daha sonra IoT Edge için yeniden dağıtırsınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Öğreticiyi tamamlayabilmeniz için, kaynak oluşturma haklarınız olan bir Azure aboneliğine erişmeniz gerekir. Bu öğreticide kullanılan hizmetlerden bazıları Azure ücretlerine tabi olacaktır. Henüz bir Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı](https://azure.microsoft.com/offers/ms-azr-0044p/)kullanmaya başlamanızı sağlayabilirsiniz.
-
-Ayrıca, geliştirme makineniz olarak bir Azure sanal makinesini kurmak üzere betikleri çalıştırabileceğiniz PowerShell yüklü bir makineye ihtiyacınız vardır.
-
-Bu belgede, aşağıdaki araç kümesini kullanırız:
-
-* Veri yakalama için bir Azure IoT Hub 'ı
-
-* Veri hazırlama ve makine öğrenimi deneme için ana ön uçmız olarak Azure Notebooks. Örnek verilerin bir alt kümesindeki bir not defterinde Python kodu çalıştırmak, veri hazırlama sırasında hızla yinelemeli ve etkileşimli bir şekilde yük açmak için harika bir yoldur. Jupi Not defterleri, komut dosyalarını bir işlem arka ucunda ölçeklendirerek çalışacak şekilde hazırlamak için de kullanılabilir.
-
-* Makine öğrenimi için ölçek ve makine öğrenimi görüntü oluşturma için arka uç olarak Azure Machine Learning. Jupi not defterlerinde hazırlanan ve test edilen betikleri kullanarak Azure Machine Learning arka ucunu sunuyoruz.
-
-* Makine öğrenimi görüntüsünün bulut dışı uygulaması için Azure IoT Edge
-
-Açıktır, başka seçenekler de mevcuttur. Örneğin, IoT Central, IoT cihazlarından ilk eğitim verilerini yakalamaya yönelik kod olmayan bir alternatif olarak kullanılabilir.
+Bu öğretici, her bir makalenin bir önceki bölümde gerçekleştirilen iş üzerinde oluşturulduğu bir küme parçasıdır. Lütfen son öğreticiyi tamamlayana kadar tüm kaynakları temizlemeyi bekleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

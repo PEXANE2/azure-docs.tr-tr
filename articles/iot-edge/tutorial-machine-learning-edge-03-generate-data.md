@@ -8,12 +8,12 @@ ms.date: 1/20/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ef6e86bbb55a2c51779f2dcf60f802ce549516cb
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 4ac7f300fa88d57efe65c6d79645d4e75ca7edd9
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959688"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575491"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>Öğretici: sanal cihaz verileri oluşturma
 
@@ -43,7 +43,7 @@ Bu makalede açıklanan görevlerin tamamlanması yaklaşık 20 dakika sürer.
 
 Bu adımdaki işe yönelik gerçek hayatta büyük olasılıkla cihaz geliştiricileri ve bulut geliştiricileri tarafından gerçekleştirilmesi olasıdır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makale, IoT Edge Azure Machine Learning kullanımı hakkında öğretici için bir serinin bir parçasıdır. Serideki her makale, önceki makaledeki iş üzerinde oluşturulur. Bu makaleye doğrudan ulaşdıysanız, serideki [ilk makaleyi](tutorial-machine-learning-edge-01-intro.md) ziyaret edin.
 
@@ -157,6 +157,10 @@ IoT Hub 'ınıza yeni gönderdiğimiz veriler, önceki makalede oluşturduğumuz
 1. Dosyalar [avro](https://avro.apache.org/) biçiminde yazılır. Başka bir tarayıcı sekmesi açmak ve verileri kısmen işlemek için bu dosyalardan birine çift tıklayın. Dosyayı bir programda açmanız istenirse VS Code seçebilirsiniz ve doğru şekilde işlenir.
 
 1. Şu anda verileri okumaya veya yorumlamaya denemeniz gerekmez; Bunu bir sonraki makalede yapacağız.
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Bu öğretici, her bir makalenin bir önceki bölümde gerçekleştirilen iş üzerinde oluşturulduğu bir küme parçasıdır. Lütfen son öğreticiyi tamamlayana kadar tüm kaynakları temizlemeyi bekleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

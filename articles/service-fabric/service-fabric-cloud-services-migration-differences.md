@@ -1,16 +1,14 @@
 ---
 title: Cloud Services ve Service Fabric arasındaki farklar
 description: Cloud Services 'ten Service Fabric uygulamasına uygulama geçirmeye yönelik kavramsal genel bakış.
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
-ms.openlocfilehash: 763b9977f756075789b826c2f1e01cd41ac60a73
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: c7e7d346b5a39a262d1d55265becadb1c718cc04
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091177"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575780"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>Uygulamaları geçirmeden önce Cloud Services ve Service Fabric arasındaki farklar hakkında bilgi edinin.
 Microsoft Azure Service Fabric, yüksek düzeyde ölçeklenebilir, yüksek oranda güvenilir dağıtılmış uygulamalar için yeni nesil bulut uygulama platformudur. Dağıtılmış bulut uygulamalarının paketlenmesi, dağıtılması, yükseltilmesi ve yönetilmesi için birçok yeni özellik sunar. 

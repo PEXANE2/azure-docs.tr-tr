@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 27cf5fef027b1e4786c0ff77f9f673bafea15f98
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9ef585d83c0606bedaf4c0a05c6c87fd52423b9a
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96487278"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575542"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve ses desteği
 
@@ -41,12 +41,14 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 |Arapça (Bahreyn), modern standart  |`ar-BH` | Dil modeli                                   |
 |Arapça (Mısır)                     |`ar-EG` | Dil modeli                                   |
 |Arapça (Irak)                      |`ar-IQ` | Dil modeli                                   |
+|Arapça (Israil)                              |`ar-IL` | Dil modeli                                                   |
 |Arapça (Ürdün)                    |`ar-JO` | Dil modeli                                   |
 |Arapça (Kuveyt)                    |`ar-KW` | Dil modeli                                   |
 |Arapça (Lübnan)                   |`ar-LB` | Dil modeli                                   |
 |Arapça (Umman)                      |`ar-OM` | Dil modeli                                   |
 |Arapça (Qtor)                     |`ar-QA` | Dil modeli                                   |
 |Arapça (Suudi Arabistan)              |`ar-SA` | Dil modeli                                   |
+|Arapça (Filistin Yönetimi devleti)            |`ar-PS` | Dil modeli                                   |
 |Arapça (Suriye)                     |`ar-SY` | Dil modeli                                   |
 |Arapça (Birleşik Arap Emirlikleri)      |`ar-AE` | Dil modeli                                   |
 |Bulgarca (Bulgaristan)               |`bg-BG` | Dil modeli                                   |
@@ -64,6 +66,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 |İngilizce (Hindistan)                    |`en-IN` | Akustik model<br>Dil modeli                 |
 |İngilizce (İrlanda)                  |`en-IE` | Dil modeli                                   |
 |İngilizce (Yeni Zelanda)              |`en-NZ` | Akustik model<br>Dil modeli                 |
+|İngilizce (Nijerya)                          |`en-NG` | Dil modeli                                                     |
 |İngilizce (Filipinler)              |`en-PH` | Dil modeli                                   |
 |İngilizce (Singapur)                |`en-SG` | Dil modeli                                   |
 |İngilizce (Güney Afrika)             |`en-ZA` | Dil modeli                                   |
@@ -103,6 +106,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 |İspanyolca (Dominik Cumhuriyeti)       |`es-DO` | Dil modeli                                   |
 |İspanyolca (Ekvador)                  |`es-EC` | Dil modeli                                   |
 |İspanyolca (El Salvador)              |`es-SV` | Dil modeli                                   |
+|İspanyolca (Ekvator Ginesi)            |`es-GQ` | Dil modeli                                   |
 |İspanyolca (Guatemala)                |`es-GT` | Dil modeli                                   |
 |İspanyolca (Honduras)                 |`es-HN` | Dil modeli                                   |
 |İspanyolca (Meksika)                   |`es-MX` | Akustik model<br>Dil modeli                 |

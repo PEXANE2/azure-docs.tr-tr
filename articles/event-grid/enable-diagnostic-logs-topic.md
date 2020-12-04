@@ -2,21 +2,21 @@
 title: Azure Event Grid-konular veya etki alanları için tanılama günlüklerini etkinleştirme
 description: Bu makalede, Azure Event Grid için tanılama günlüklerini etkinleştirme konusunda adım adım yönergeler sağlanmaktadır.
 ms.topic: how-to
-ms.date: 07/07/2020
-ms.openlocfilehash: 2d76d3ededd6d241197b26ac357c3b5406f43f02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/03/2020
+ms.openlocfilehash: ff00c1438c49cbc9f9e67eba0cf0acef7991a5a4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91297530"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576460"
 ---
 #  <a name="enable-diagnostic-logs-for-azure-event-grid-topics-or-domains"></a>Azure Event Grid konuları veya etki alanları için tanılama günlüklerini etkinleştirme
-Tanılama ayarları Event Grid kullanıcıların bir depolama hesabında, Olay Hub 'ında veya bir Log Analytics çalışma alanında **Yayımlama ve teslim hatası** günlüklerini yakalayıp görüntülemesine olanak tanır. Bu makalede, Event Grid konu başlığında bu ayarları etkinleştirmek için adım adım yönergeler sağlanmaktadır.
+Bu makalede, Event Grid konular veya etki alanları için tanılama ayarlarını etkinleştirmek üzere adım adım yönergeler sağlanmaktadır.  Bu ayarlar, **Yayımlama ve teslim hatası** günlüklerini yakalamanızı ve görüntülemenizi sağlar. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Sağlanan olay Kılavuzu konusu
-- Tanılama günlüklerini yakalamak için sağlanan hedef. Bu, olay Kılavuzu konusu ile aynı konumdaki aşağıdaki hedefden biri olabilir:
+- Tanılama günlüklerini yakalamak için sağlanan hedef. Olay Kılavuzu konusuyla aynı konumda bulunan aşağıdaki hedefden biri olabilir:
     - Azure depolama hesabı
     - Olay hub'ı
     - Log Analytics çalışma alanı
@@ -26,7 +26,7 @@ Tanılama ayarları Event Grid kullanıcıların bir depolama hesabında, Olay H
 > [!NOTE]
 > Aşağıdaki yordam, bir konu için tanılama günlüklerini etkinleştirmeye yönelik adım adım yönergeler sağlar. Bir etki alanı için tanılama günlüklerini etkinleştirme adımları çok benzerdir. 2. adımda, Azure portal olay Kılavuzu **etki alanına** gidin.  
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure portalda](https://portal.azure.com) oturum açın.
 2. Tanılama günlük ayarlarını etkinleştirmek istediğiniz olay kılavuzu konusuna gidin. 
     1. Üstteki arama çubuğunda **Event Grid konular**' ı arayın. 
     
@@ -55,7 +55,7 @@ Tanılama ayarları Event Grid kullanıcıların bir depolama hesabında, Olay H
 
 ## <a name="enable-diagnostic-logs-for-a-system-topic"></a>Bir sistem konusu için tanılama günlüklerini etkinleştirme
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure portalda](https://portal.azure.com) oturum açın.
 2. Tanılama günlük ayarlarını etkinleştirmek istediğiniz olay kılavuzu konusuna gidin. 
     1. Üstteki arama çubuğunda **Event Grid sistem konuları**' nı arayın. 
     
@@ -76,7 +76,7 @@ Tanılama ayarları Event Grid kullanıcıların bir depolama hesabında, Olay H
 
         ![Azure depolama hesabına Arşivle](./media/enable-diagnostic-logs-topic/system-topic-select-storage-account.png)
     - **Bir olay hub 'ına akış**' yı seçerseniz, **Olay Hub**'ı ' nı seçin ve Event Hubs ad alanı, Olay Hub 'ı ve erişim ilkesini seçin. 
-        ![Bir olay hub 'ına akış](./media/enable-diagnostic-logs-topic/system-topic-select-event-hub.png)
+        ![Olay hub’ına akış yapma](./media/enable-diagnostic-logs-topic/system-topic-select-event-hub.png)
 8. **Kaydet**’i seçin. Sonra sağ köşedeki **X** ' i seçerek sayfayı kapatın. 
 9. Şimdi **Tanılama ayarları** sayfasına geri döndüğünüzde, **Tanılama ayarları** tablosunda yeni bir giriş görtığınızdan emin olun. 
     ![Listedeki tanılama ayarı](./media/enable-diagnostic-logs-topic/system-topic-diagnostic-settings-targets.png)
@@ -87,10 +87,10 @@ Tanılama ayarları Event Grid kullanıcıların bir depolama hesabında, Olay H
 
 ## <a name="view-diagnostic-logs-in-azure-storage"></a>Azure depolama 'da tanılama günlüklerini görüntüleme 
 
-1. Bir depolama hesabını yakalama hedefi olarak etkinleştirdikten ve Event Grid tanılama günlüklerini yaymaya başladıktan sonra depolama hesabında **Öngörüler-logs-deliveryhatalarıyla** ve içgörüler- **günlük-publishhatalarıyla** adlı yeni kapsayıcılar görmeniz gerekir. 
+1. Bir depolama hesabını yakalama hedefi olarak etkinleştirdikten sonra, Event Grid tanılama günlüklerini yaymaya başlar. Depolama hesabında **Öngörüler-logs-deliveryhatalarıyla** ve **Öngörüler-logs-publishhatalarıyla** adlı yeni kapsayıcılar görmeniz gerekir. 
 
     ![Tanılama günlükleri için depolama kapsayıcıları](./media/enable-diagnostic-logs-topic/storage-containers.png)
-2. Kapsayıcılardan birine gitmeniz sırasında JSON biçiminde bir bloba bitecaksınız. Dosya, bir teslim hatası ya da bir yayımlama hatası için günlük girişleri içeriyor. Gezinti yolu, olay Kılavuzu konusunun **RESOURCEID** ve günlük girişleri yayıldıkları zaman damgasına (dakika düzeyi) temsil eder. İndirilebilen blob/JSON dosyası, sonraki bölümde açıklanan şemaya uyar. 
+2. Kapsayıcılardan birine gittiğinizde JSON biçiminde bir blob 'a yönlendirilirsiniz. Dosya, bir teslim hatası ya da bir yayımlama hatası için günlük girişleri içeriyor. Gezinti yolu, olay Kılavuzu konusunun **RESOURCEID** ve günlük girişleri yayıldıkları zaman damgasına (dakika düzeyi) temsil eder. İndirilebilen blob/JSON dosyası, sonraki bölümde açıklanan şemaya uyar. 
 
     [![Depolama ](./media/enable-diagnostic-logs-topic/select-json.png) alanındaki JSON dosyası](./media/enable-diagnostic-logs-topic/select-json.png)
 3. Aşağıdaki örneğe benzer şekilde JSON dosyasında içerik görmeniz gerekir: 
@@ -102,9 +102,8 @@ Tanılama ayarları Event Grid kullanıcıların bir depolama hesabında, Olay H
         "eventSubscriptionName": "SAMPLEDESTINATION",
         "category": "DeliveryFailures",
         "operationName": "Deliver",
-        "message": "Message:outcome=NotFound, latencyInMs=2635, systemId=17284f7c-0044-46fb-84b7-59fda5776017, state=FilteredFailingDelivery, deliveryTime=11/1/2019 12:17:10 AM, deliveryCount=0, probationCount=0, deliverySchema=EventGridEvent, eventSubscriptionDeliverySchema=EventGridEvent, fields=InputEvent, EventSubscriptionId, DeliveryTime, State, Id, DeliverySchema, LastDeliveryAttemptTime, SystemId, fieldCount=, requestExpiration=1/1/0001 12:00:00 AM, delivered=False publishTime=11/1/2019 12:17:10 AM, eventTime=11/1/2019 12:17:09 AM, eventType=Type, deliveryTime=11/1/2019 12:17:10 AM, filteringState=FilteredWithRpc, inputSchema=EventGridEvent, publisher=DIAGNOSTICLOGSTEST-EASTUS.EASTUS-1.EVENTGRID.AZURE.NET, size=363, fields=Id, PublishTime, SerializedBody, EventType, Topic, Subject, FilteringHashCode, SystemId, Publisher, FilteringTopic, TopicCategory, DataVersion, MetadataVersion, InputSchema, EventTime, fieldCount=15, url=sb://diagnosticlogstesting-eastus.servicebus.windows.net/, deliveryResponse=NotFound: The messaging entity 'sb://diagnosticlogstesting-eastus.servicebus.windows.net/eh-diagnosticlogstest' could not be found. TrackingId:c98c5af6-11f0-400b-8f56-c605662fb849_G14, SystemTracker:diagnosticlogstesting-eastus.servicebus.windows.net:eh-diagnosticlogstest, Timestamp:2019-11-01T00:17:13, referenceId: ac141738a9a54451b12b4cc31a10dedc_G14:"
+        "message": "Message:outcome=NotFound, latencyInMs=2635, id=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx, systemId=xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx, state=FilteredFailingDelivery, deliveryTime=11/1/2019 12:17:10 AM, deliveryCount=0, probationCount=0, deliverySchema=EventGridEvent, eventSubscriptionDeliverySchema=EventGridEvent, fields=InputEvent, EventSubscriptionId, DeliveryTime, State, Id, DeliverySchema, LastDeliveryAttemptTime, SystemId, fieldCount=, requestExpiration=1/1/0001 12:00:00 AM, delivered=False publishTime=11/1/2019 12:17:10 AM, eventTime=11/1/2019 12:17:09 AM, eventType=Type, deliveryTime=11/1/2019 12:17:10 AM, filteringState=FilteredWithRpc, inputSchema=EventGridEvent, publisher=DIAGNOSTICLOGSTEST-EASTUS.EASTUS-1.EVENTGRID.AZURE.NET, size=363, fields=Id, PublishTime, SerializedBody, EventType, Topic, Subject, FilteringHashCode, SystemId, Publisher, FilteringTopic, TopicCategory, DataVersion, MetadataVersion, InputSchema, EventTime, fieldCount=15, url=sb://diagnosticlogstesting-eastus.servicebus.windows.net/, deliveryResponse=NotFound: The messaging entity 'sb://diagnosticlogstesting-eastus.servicebus.windows.net/eh-diagnosticlogstest' could not be found. TrackingId:c98c5af6-11f0-400b-8f56-c605662fb849_G14, SystemTracker:diagnosticlogstesting-eastus.servicebus.windows.net:eh-diagnosticlogstest, Timestamp:2019-11-01T00:17:13, referenceId: ac141738a9a54451b12b4cc31a10dedc_G14:"
     }
     ```
-
 ## <a name="next-steps"></a>Sonraki adımlar
 Günlük şeması ve konular veya etki alanları için tanılama günlükleri hakkında diğer kavramsal bilgiler için bkz. [tanılama günlükleri](diagnostic-logs.md).
