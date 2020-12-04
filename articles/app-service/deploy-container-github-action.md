@@ -3,16 +3,16 @@ title: GitHub eylemlerinden özel kapsayıcı CI/CD 'si
 description: Özel Linux kapsayıcınızı bir CI/CD işlem hattından App Service dağıtmak için GitHub eylemlerini nasıl kullanacağınızı öğrenin.
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2020
+ms.date: 12/04/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: 068fc9dcb9a4f4a62c2dd879bf8144097452f1e0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 76d82695f0f43638e840589c52d6713ae36c1608
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099037"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607815"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>GitHub eylemlerini kullanarak App Service özel kapsayıcı dağıtma
 
@@ -31,10 +31,10 @@ Azure App Service kapsayıcı iş akışı için, dosyanın üç bölümü vard�
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-- GitHub hesabı. Bir hesabınız yoksa [ücretsiz](https://github.com/join)kaydolun.  
-- Kapsayıcılar için çalışan bir kapsayıcı kayıt defteri ve Azure App Service uygulaması. Bu örnek Azure Container Registry kullanır. 
+- GitHub hesabı. Bir hesabınız yoksa [ücretsiz](https://github.com/join)kaydolun. Azure App Service dağıtmak için bir GitHub deposunda kodunuz olması gerekir. 
+- Kapsayıcılar için çalışan bir kapsayıcı kayıt defteri ve Azure App Service uygulaması. Bu örnek Azure Container Registry kullanır. Kapsayıcılar için Azure App Service için tam dağıtımı tamamladığınızdan emin olun. Normal web uygulamalarından farklı olarak, kapsayıcılar için Web Apps varsayılan bir giriş sayfasına sahip değildir. Kapsayıcıyı çalışan bir örneğe sahip olacak şekilde yayımlayın.
     - [Docker kullanarak Kapsayıcılı Node.js bir uygulama oluşturmayı, kapsayıcı görüntüsünü bir kayıt defterine göndermeyi ve sonra da görüntüyü dağıtmayı öğrenin Azure App Service](/azure/developer/javascript/tutorial-vscode-docker-node-01)
-
+        
 ## <a name="generate-deployment-credentials"></a>Dağıtım kimlik bilgileri oluştur
 
 GitHub eylemleri için Azure App Services ile kimlik doğrulamak için önerilen yol, bir yayımlama profiliyle birlikte bulunur. Hizmet sorumlusu ile de kimlik doğrulaması yapabilirsiniz ancak işlem daha fazla adım gerektirir. 
@@ -47,10 +47,10 @@ Yayımlama profili, uygulama düzeyinde bir kimlik bilgileridir. Yayımlama prof
 
 1. Azure portal App Service 'e gidin. 
 
-1. **Genel bakış** sayfasında, **Yayımlama profili al** ' ı seçin.
+1. **Genel bakış** sayfasında, **Yayımlama profili al**' ı seçin.
 
     > [!NOTE]
-    > 2020 Ekim itibariyle Linux Web Apps, `WEBSITE_WEBDEPLOY_USE_SCM` `true` **dosyanın indirilmeden önce** uygulama ayarının ayarlanmış olması gerekir. Bu gereksinim gelecekte kaldırılacak.
+    > 2020 Ekim itibariyle Linux Web Apps, `WEBSITE_WEBDEPLOY_USE_SCM` `true` **dosyanın indirilmeden önce** uygulama ayarının ayarlanmış olması gerekir. Bu gereksinim gelecekte kaldırılacak. Ortak Web uygulaması ayarlarını yapılandırma hakkında bilgi edinmek için [Azure portal App Service uygulama yapılandırma](/azure/app-service/configure-common)konusuna bakın.  
 
 1. İndirdiğiniz dosyayı kaydedin. Dosyanın içeriğini bir GitHub parolası oluşturmak için kullanacaksınız.
 
@@ -80,30 +80,15 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 > En az erişim sağlamak her zaman iyi bir uygulamadır. Önceki örnekteki kapsam, kaynak grubunun tamamı değil, belirli App Service uygulamasıyla sınırlandırılmıştır.
 
 ---
-
-## <a name="configure-the-github-secret"></a>GitHub gizliliğini yapılandırma
-
-[GitHub](https://github.com/)'da deponuza gözatıp **Ayarlar > gizlilikler ' ı seçin > yeni bir gizli dizi ekleyin** .
-
-JSON çıktısının içeriğini gizli değişkeninin değeri olarak yapıştırın. Gizli dizi adını gibi verin `AZURE_CREDENTIALS` .
-
-Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure oturum açma eyleminin girişi için gizli anahtarı kullanırsınız. Örneğin:
-
-```yaml
-- uses: azure/login@v1
-  with:
-    creds: ${{ secrets.AZURE_CREDENTIALS }}
-```
-
 ## <a name="configure-the-github-secret-for-authentication"></a>Kimlik doğrulaması için GitHub gizliliğini yapılandırma
 
 # <a name="publish-profile"></a>[Profili Yayımla](#tab/publish-profile)
 
-[GitHub](https://github.com/)'da deponuza gözatıp **Ayarlar > gizlilikler ' ı seçin > yeni bir gizli dizi ekleyin** .
+[GitHub](https://github.com/)'da deponuza gözatıp **Ayarlar > gizlilikler ' ı seçin > yeni bir gizli dizi ekleyin**.
 
 [Uygulama düzeyi kimlik bilgilerini](#generate-deployment-credentials)kullanmak için, indirilen yayımlama profili dosyasının içeriğini gizli dizinin değer alanına yapıştırın. Parolayı adlandırın `AZURE_WEBAPP_PUBLISH_PROFILE` .
 
-GitHub iş akışınızı yapılandırırken, `AZURE_WEBAPP_PUBLISH_PROFILE` Azure Web uygulaması dağıtma eyleminde öğesini kullanırsınız. Örneğin:
+GitHub iş akışınızı yapılandırırken, `AZURE_WEBAPP_PUBLISH_PROFILE` Azure Web uygulaması dağıtma eyleminde öğesini kullanırsınız. Örnek:
     
 ```yaml
 - uses: azure/webapps-deploy@v2
@@ -113,11 +98,11 @@ GitHub iş akışınızı yapılandırırken, `AZURE_WEBAPP_PUBLISH_PROFILE` Azu
 
 # <a name="service-principal"></a>[Hizmet sorumlusu](#tab/service-principal)
 
-[GitHub](https://github.com/)'da deponuza gözatıp **Ayarlar > gizlilikler ' ı seçin > yeni bir gizli dizi ekleyin** .
+[GitHub](https://github.com/)'da deponuza gözatıp **Ayarlar > gizlilikler ' ı seçin > yeni bir gizli dizi ekleyin**.
 
 [Kullanıcı düzeyi kimlik bilgilerini](#generate-deployment-credentials)kullanmak IÇIN Azure CLI KOMUTUNDAN tüm JSON çıkışını gizli dizi değeri alanına yapıştırın. Gizli dizi adını gibi verin `AZURE_CREDENTIALS` .
 
-Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure oturum açma eyleminin girişi için gizli anahtarı kullanırsınız. Örneğin:
+Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure oturum açma eyleminin girişi için gizli anahtarı kullanırsınız. Örnek:
 
 ```yaml
 - uses: azure/login@v1
@@ -129,9 +114,9 @@ Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure otu
 
 ## <a name="configure-github-secrets-for-your-registry"></a>Kayıt defteriniz için GitHub gizli dizilerini yapılandırma
 
-Docker oturum açma eylemiyle kullanılacak gizli dizileri tanımlayın. 
+Docker oturum açma eylemiyle kullanılacak gizli dizileri tanımlayın. Bu belgedeki örnek, kapsayıcı kayıt defteri için Azure Container Registry kullanır. 
 
-1. Azure portal veya Docker 'daki kapsayıcınıza gidin ve Kullanıcı adını ve parolayı kopyalayın. 
+1. Azure portal veya Docker 'daki kapsayıcınıza gidin ve Kullanıcı adını ve parolayı kopyalayın. Azure Container Registry Kullanıcı adı ve parolayı, **Settings**  >  kayıt defteriniz için ayarlar **erişim tuşları** altında Azure Portal bulabilirsiniz. 
 
 2. Adlı kayıt defteri Kullanıcı adı için yeni bir gizli dizi tanımlayın `REGISTRY_USERNAME` . 
 
@@ -163,7 +148,7 @@ jobs:
         docker push mycontainer.azurecr.io/myapp:${{ github.sha }}     
 ```
 
-Aynı anda birden çok kapsayıcı kayıt defterlerine oturum açmak için [Docker oturum açma](https://github.com/azure/docker-login) bilgilerini de kullanabilirsiniz. Bu örnek, docker.io ile kimlik doğrulaması için iki yeni GitHub parolası içerir.
+Aynı anda birden çok kapsayıcı kayıt defterlerine oturum açmak için [Docker oturum açma](https://github.com/azure/docker-login) bilgilerini de kullanabilirsiniz. Bu örnek, docker.io ile kimlik doğrulaması için iki yeni GitHub parolası içerir. Örnek, kayıt defterinin kök düzeyinde bir Dockerfile olduğunu varsayar. 
 
 ```yml
 name: Linux Container Node Workflow
@@ -200,7 +185,7 @@ Görüntünüzü App Service özel bir kapsayıcıya dağıtmak için `azure/web
 | **uygulama adı** | Istenir App Service uygulamasının adı | 
 | **Yayımlama profili** | Seçim Web Apps (Windows ve Linux) ve Web uygulaması kapsayıcıları (Linux) için geçerlidir. Çoklu kapsayıcı senaryosu desteklenmiyor. \*Web dağıtımı gizli dizileri ile profil (. publishsettings) dosya içeriğini yayımlama | 
 | **yuva adı** | Seçim Üretim yuvası dışında mevcut bir yuva girin |
-| **leyebilir** | Seçim Yalnızca Web uygulaması için geçerlidir: paket veya klasör yolu. \*. zip, \* . war, \* . jar veya dağıtılacak bir klasör |
+| **package** | Seçim Yalnızca Web uygulaması için geçerlidir: paket veya klasör yolu. \*. zip, \* . war, \* . jar veya dağıtılacak bir klasör |
 | **yansımasını** | Istenir Yalnızca Web uygulaması kapsayıcıları için geçerlidir: tamamen nitelenmiş kapsayıcı görüntüsü adını belirtin. Örneğin, ' myregistry.azurecr.io/nginx:latest ' veya ' Python: 3.7.2-alçam/'. Çok kapsayıcılı bir uygulama için birden çok kapsayıcı görüntüsü adı sağlanmış olabilir (çok satırlı ayrılmış) |
 | **yapılandırma-dosya** | Seçim Yalnızca Web uygulaması kapsayıcıları için geçerlidir: Docker-Compose dosyanın yolu. Tam olarak nitelenmiş bir yol olmalıdır veya varsayılan çalışma dizinine göre değişir. Çok Kapsayıcılı uygulamalar için gereklidir. |
 | **başlangıç-komut** | Seçim Başlangıç komutunu girin. For ex. DotNet Run veya DotNet filename.dll |
@@ -248,7 +233,7 @@ jobs:
     steps:
     # checkout the repo
     - name: 'Checkout GitHub Action' 
-      uses: actions/checkout@master
+      uses: actions/checkout@main
     
     - name: 'Login via Azure CLI'
       uses: azure/login@v1

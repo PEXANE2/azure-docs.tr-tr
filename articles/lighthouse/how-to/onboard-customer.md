@@ -1,14 +1,14 @@
 ---
 title: Bir müşteriyi Azure Lighthouse’a ekleme
 description: Bir müşteriyi Azure Mathouse 'a eklemeyi öğrenin. böylece, kaynakları Azure tarafından atanan kaynak yönetimi kullanılarak kendi kiracınız aracılığıyla erişilebilir ve yönetilebilir.
-ms.date: 09/24/2020
+ms.date: 12/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 43f28073c996167c82e241476020bdc341486b26
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: b353a8194b9f5dd48b315340435669531359e8d5
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024305"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608478"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Bir müşteriyi Azure Lighthouse’a ekleme
 
@@ -301,8 +301,9 @@ Get-AzManagedServicesAssignment
 az account list
 ```
 
+Müşteri eklendi sonra değişiklik yapmanız gerekirse, [temsilciyi güncelleştirebilirsiniz](update-delegation.md). Ayrıca [, temsilciye erişimi tamamen kaldırabilirsiniz](remove-delegation.md) .
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Çapraz kiracı yönetim deneyimleri](../concepts/cross-tenant-management-experience.md)hakkında bilgi edinin.
 - Azure portal **müşterilerime** giderek [müşterileri görüntüleyin ve yönetin](view-manage-customers.md) .
-- Daha önce eklendi [bir temsilciye erişimi kaldırmayı](remove-delegation.md) öğrenin.

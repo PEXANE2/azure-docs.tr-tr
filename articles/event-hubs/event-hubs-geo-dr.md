@@ -3,15 +3,15 @@ title: Coğrafi olağanüstü durum kurtarma-Azure Event Hubs | Microsoft Docs
 description: Coğrafi bölgeleri kullanarak yük devretme ve Azure Event Hubs olağanüstü durum kurtarma gerçekleştirme
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 1807c22645c3246f4cf18d723fc19da475e4d4f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dd2385a6f6e61136a1284171532aedd70a9cc96
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934081"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608359"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs-coğrafi olağanüstü durum kurtarma 
-Tüm Azure bölgelerinin veya veri merkezlerinin (hiçbir [kullanılabilirlik](../availability-zones/az-overview.md) alanı kullanılmıyorsa) çalışma süresi kapalı olursa, veri işlemenin farklı bir bölgede veya veri merkezinde çalışmaya devam etmesi kritik öneme sahiptir. Bu nedenle, *coğrafi olağanüstü durum kurtarma* ve *coğrafi çoğaltma* , herhangi bir kuruluş için önemli özelliklerdir. Azure Event Hubs, ad alanı düzeyinde hem coğrafi olağanüstü durum kurtarmayı hem de Coğrafi çoğaltmayı destekler. 
+Tüm Azure bölgelerinin veya veri merkezlerinin (hiçbir [kullanılabilirlik](../availability-zones/az-overview.md) alanı kullanılmıyorsa) çalışma süresi kapalı olursa, veri işlemenin farklı bir bölgede veya veri merkezinde çalışmaya devam etmesi kritik öneme sahiptir. Bu nedenle, *coğrafi olağanüstü durum kurtarma* ve *coğrafi çoğaltma* , herhangi bir kuruluş için önemli özelliklerdir. Azure Event Hubs, ad alanı düzeyinde hem coğrafi olağanüstü durum kurtarmayı hem de Coğrafi çoğaltmayı destekler. 
 
 > [!NOTE]
 > Coğrafi olağanüstü durum kurtarma özelliği yalnızca [Standart ve adanmış SKU 'lar](https://azure.microsoft.com/pricing/details/event-hubs/)için kullanılabilir.  
@@ -96,7 +96,7 @@ Bir hata yaptıysanız, Örneğin, ilk kurulum sırasında yanlış bölgeleri e
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-Bu sürümü göz önünde bulundurmanız için aşağıdaki noktalara dikkat edin:
+Aklınızda bulundurmanız gereken aşağıdaki noktalara dikkat edin:
 
 1. Tasarım, coğrafi olağanüstü durum kurtarma Event Hubs verileri çoğaltmaz ve bu nedenle ikincil Olay Hub 'ınızdaki birincil olay hub 'ınızın eski değer değerini yeniden kullanamazsınız. Aşağıdaki yöntemlerden birini kullanarak olay alıcılarınızı yeniden başlatmanız önerilir:
 
@@ -106,7 +106,7 @@ Bu sürümü göz önünde bulundurmanız için aşağıdaki noktalara dikkat ed
 
 2. Yük devretme planlamadaki zaman etmenini de göz önünde bulundurmanız gerekir. Örneğin, 15 ila 20 dakikaya kadar olan bağlantıyı kaybederseniz, yük devretmeyi başlatmaya karar verebilirsiniz. 
  
-3. Hiçbir veri çoğaltılmaması, etkin olan oturumların çoğaltılmadığı anlamına gelir. Ayrıca, yinelenen algılama ve zamanlanan iletiler çalışmayabilir. Yeni oturumlar, zamanlanan mesajlar ve yeni yinelemeler çalışacaktır. 
+3. Hiçbir veri çoğaltılmaması, geçerli etkin oturumların çoğaltılmadığı anlamına gelir. Ayrıca, yinelenen algılama ve zamanlanan iletiler çalışmayabilir. Yeni oturumlar, zamanlanan mesajlar ve yeni yinelemeler çalışacaktır. 
 
 4. Karmaşık bir dağıtılmış altyapının yük devretmesi en az bir kez [prova](/azure/architecture/reliability/disaster-recovery#disaster-recovery-plan) edilmelidir. 
 

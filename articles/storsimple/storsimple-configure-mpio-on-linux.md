@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 75ccfe7a8e62e519b1df89792211433260a6abf6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6584b2ecc54efd257bb30c479fd0f22150e8d9e1
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89294722"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608597"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>CentOS çalıştıran bir StorSimple ana bilgisayarında MPIO yapılandırma
 Bu makalede, CentOS 6,6 ana sunucunuzda çok paiz ıO (MPIO) yapılandırmak için gereken adımlar açıklanmaktadır. Ana bilgisayar sunucusu, Iscsı başlatıcıları aracılığıyla yüksek kullanılabilirlik için Microsoft Azure StorSimple cihazınıza bağlanır. Bu, çok yollu cihazların otomatik olarak keşfedilmesi ve yalnızca StorSimple birimleri için belirli kurulumun ayrıntılarını açıklar.
@@ -21,6 +21,9 @@ Bu yordam, StorSimple 8000 serisi cihazların tüm modellerine uygulanabilir.
 
 > [!NOTE]
 > Bu yordam bir StorSimple Cloud Appliance için kullanılamaz. Daha fazla bilgi için bkz. bulut gereciniz için konak sunucularını yapılandırma.
+
+> [!NOTE]
+> Bu makale, Microsoft 'un artık kullanmadığını gösteren bir terim olan *kara liste* dönemi başvuruları içerir. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
 
 
 ## <a name="about-multipathing"></a>Çoklu yol hakkında
@@ -60,7 +63,7 @@ Linux ana bilgisayarına bağlı bir StorSimple cihazı, yüksek kullanılabilir
 
 Aşağıdaki yordamda, iki ağ arabirimi olan bir StorSimple cihazı iki ağ arabirimi içeren bir konağa bağlı olduğunda çoklu pasıların nasıl yapılandırılacağı açıklanmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu bölümde, CentOS sunucusu ve StorSimple cihazınız için yapılandırma önkoşulları ayrıntılı olarak yapılır.
 
 ### <a name="on-centos-host"></a>CentOS ana bilgisayarında
@@ -101,7 +104,7 @@ Bu bölümde, CentOS sunucusu ve StorSimple cihazınız için yapılandırma ön
         collisions:0 txqueuelen:0
         RX bytes:720 (720.0 b)  TX bytes:720 (720.0 b)
     ```
-1. CentOS sunucunuza *iSCSI-INITIATOR-utils* ' i yükler. *İSCSI-INITIATOR-utils*yüklemek için aşağıdaki adımları gerçekleştirin.
+1. CentOS sunucunuza *iSCSI-INITIATOR-utils* ' i yükler. *İSCSI-INITIATOR-utils* yüklemek için aşağıdaki adımları gerçekleştirin.
    
    1. `root`CentOS ana bilgisayarınızda olarak oturum açın.
    1. *İSCSI başlatıcısı-yardımcı programları*'nı yükler. Şunu yazın:
@@ -147,7 +150,7 @@ StorSimple cihazınız şunları içermelidir:
      
       **Yapılandır** sayfasında
      
-     1. Her iki ağ arabiriminin de Iscsı etkin olduğundan emin olun. **İSCSI etkin** alanı **Evet**olarak ayarlanmalıdır.
+     1. Her iki ağ arabiriminin de Iscsı etkin olduğundan emin olun. **İSCSI etkin** alanı **Evet** olarak ayarlanmalıdır.
      1. Ağ arabirimlerinin aynı hıza sahip olduğundan emin olun, her ikisi de 1 GbE veya 10 GbE olmalıdır.
      1. Iscsı özellikli arabirimlerin IPv4 adreslerini ve daha sonra konakta kullanılmak üzere Kaydet ' i aklınızda saklayın.
 * StorSimple cihazınızdaki Iscsı arabirimlerine CentOS sunucusundan ulaşılabilir olmalıdır.

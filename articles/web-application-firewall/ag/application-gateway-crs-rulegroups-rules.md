@@ -8,16 +8,19 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 37e09612491d41887c5945920488569d3620bf0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 890e2b972818cf9805623d94709ce5631b50aaf5
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85052022"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608614"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web uygulaması güvenlik duvarı, kural grupları ve kuralları
 
 Application Gateway Web uygulaması güvenlik duvarı (WAF), Web uygulamalarını ortak güvenlik açıklarına ve açıklardan yararlanan korur. Bu, OWASP Core kural kümelerine 3,1, 3,0 veya 2.2.9 göre tanımlanan kurallar aracılığıyla yapılır. Bu kurallar kural temelinde devre dışı bırakılabilir. Bu makale, sunulan geçerli kuralları ve kural kümelerini içerir.
+
+> [!NOTE]
+> Bu makale, Microsoft 'un artık kullanmadığını gösteren bir terim olan *kara liste* dönemi başvuruları içerir. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
 
 ## <a name="core-rule-sets"></a>Çekirdek kural kümeleri
 

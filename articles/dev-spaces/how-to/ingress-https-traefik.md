@@ -6,12 +6,12 @@ ms.topic: conceptual
 description: Azure Dev Spaces özel bir traefik ingınress denetleyicisi kullanmak ve bu giriş denetleyicisini kullanarak HTTPS 'yi yapılandırmak için nasıl yapılandırılacağını öğrenin
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 2dcb549078f1f0f5f7168960864d564fd0c169fc
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: a3afa43556bbab29f69b496e46a5e19dc833cd3a
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636835"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607118"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Özel bir traefik giriş denetleyicisi kullanma ve https 'yi yapılandırma
 
@@ -220,7 +220,7 @@ spec:
 kubectl apply -f letsencrypt-clusterissuer.yaml --namespace traefik
 ```
 
-Önceki *traefik* *Clusterrole* ve *clusterrolebinding* ' i KALDıRıN, sonra traefik öğesini kullanarak https kullanacak şekilde yükseltin `helm` .
+Önceki *traefik* *Clusterrole* ve *clusterrolebinding*' i KALDıRıN, sonra traefik öğesini kullanarak https kullanacak şekilde yükseltin `helm` .
 
 > [!NOTE]
 > AKS kümenizde Kubernetes RBAC etkinleştirilmemişse, *--set RBAC. Enabled = true* parametresini kaldırın.
@@ -375,7 +375,7 @@ Azure Dev Spaces nasıl çalıştığı hakkında daha fazla bilgi edinin.
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/a?view=azure-cli-latest#az-network-dns-record-set-a-add-record
 [az-network-dns-record-set-a-remove-record]: /cli/azure/network/dns/record-set/a?view=azure-cli-latest#az-network-dns-record-set-a-remove-record
-[custom-domain]: ../../app-service/manage-custom-dns-buy-domain.md#buy-the-domain
+[custom-domain]: ../../app-service/manage-custom-dns-buy-domain.md#buy-an-app-service-domain
 [dns-zone]: ../../dns/dns-getstarted-cli.md
 [azds-yaml]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/azds.yaml
 [azure-account-create]: https://azure.microsoft.com/free

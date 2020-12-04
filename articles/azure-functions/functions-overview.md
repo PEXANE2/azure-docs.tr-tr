@@ -7,18 +7,18 @@ ms.topic: overview
 ms.date: 11/20/2020
 ms.author: cshoe
 ms.custom: contperfq2
-ms.openlocfilehash: a312c0ff255df4545181755ae6accd0d7dfb13a2
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 8b836ac8bd2255abf9a94e532a0599994c3ede89
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574862"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608261"
 ---
 # <a name="introduction-to-azure-functions"></a>Azure İşlevleri’ne Giriş
 
 Genellikle bir dizi kritik olaya tepki vermek için sistem oluşturacağız. Bir Web API 'SI oluşturuyor, veritabanı değişikliklerine yanıt verme, IoT veri akışlarını işleme veya hatta ileti kuyruklarını yönetme gibi her uygulama, bu olaylar gerçekleştiğinde bazı kodları çalıştırmak için bir yol gerektirir.
 
-Bu gereksinimi karşılamak için Azure Işlevleri, "talep üzerine işlem" sağlar ve iki önemli şekilde yapılır.
+Azure Işlevleri, bu gereksinimi karşılamak için iki önemli şekilde "talep üzerine işlem" sağlar.
 
 İlk olarak, Azure Işlevleri sisteminizin mantığını kolayca kullanılabilir kod bloklarına uygulamanıza olanak tanır. Bu kod blokları "işlevler" olarak adlandırılır. Kritik olaylara yanıt vermek için her zaman farklı işlevler çalıştırılabilir.
 

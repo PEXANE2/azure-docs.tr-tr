@@ -4,12 +4,12 @@ description: İzleme için işlev uygulamanızı Application Insights bağlama v
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperfq2, devx-track-azurecli
-ms.openlocfilehash: 0b8aae707f0fb055677af111f1e88c0a2e19b227
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 02d5ad2e9697c14818a985325267d7caea80f65e
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175755"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607135"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>Azure Işlevleri için izlemeyi yapılandırma
 
@@ -38,6 +38,9 @@ Azure Işlevleri günlükçüsü, her günlük için bir *Kategori* içerir. Kat
 | **`Host.Results`** | **istekler** | Çalışma zamanında oluşturulan bu günlükler bir işlevin başarısını veya başarısızlığını gösterir. Tüm bu Günlükler `Information` düzeyinde yazılır. Veya üzerine filtre yaparsanız `Warning` , bu verilerden herhangi birini görmezsiniz. |
 | **`Microsoft`** | **lerin** | Konak tarafından çağrılan bir .NET çalışma zamanı bileşenini yansıtan tam nitelikli günlük kategorisi.  |
 | **`Worker`** | **lerin** | Non-.NET dilleri için dil çalışan işlemi tarafından oluşturulan Günlükler. Dil çalışanı günlükleri, gibi bir kategoride da kaydedilebilir `Microsoft.*` `Microsoft.Azure.WebJobs.Script.Workers.Rpc.RpcFunctionInvocationDispatcher` . Bu Günlükler `Information` düzeyinde yazılır.|
+
+> [!NOTE]
+> .NET sınıf kitaplığı işlevleri için bu kategoriler kullandığınız ve kullanmadığınız varsayılmaktadır `ILogger` `ILogger<T>` . Daha fazla bilgi edinmek için bkz. [Işlevler ILogger belgeleri](functions-dotnet-class-library.md#ilogger). 
 
 # <a name="v1x"></a>[v1. x](#tab/v1)
 
@@ -260,7 +263,7 @@ Oluşturulan Application Insights kaynağını gözden geçirmek için, **Applic
 
     :::image type="content" source="media/configure-monitoring/ai-general.png" alt-text="Application Insights kaynağı oluşturma":::
 
-1. **Apply** (Uygula) seçeneğini belirleyin. 
+1. **Uygula**’yı seçin. 
 
    Application Insights kaynak, işlev uygulamanız ile aynı kaynak grubunda ve abonelikte oluşturulur. Kaynak oluşturulduktan sonra Application Insights penceresini kapatın.
 

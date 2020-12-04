@@ -4,12 +4,12 @@ description: Azure Kubernetes Service’te bir küme için Azure Active Director
 services: container-service
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 7f62c7dc7aacf9be4a59498aa5c556e9991ad578
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e95eae3ab8d992bc169e54700e7e31715e72102e
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85298557"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607832"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti (AKS) ile hizmet sorumluları
 
@@ -23,7 +23,7 @@ Azure AD hizmet sorumlusu oluşturmak için, Azure AD kiracınızla bir uygulama
 
 Farklı bir Azure AD kiracısından bir hizmet sorumlusu kullanıyorsanız, kümeyi dağıtırken kullanılabilen izinlerle ilgili ek konular vardır. Dizin bilgilerini okumak ve yazmak için uygun izinleriniz olmayabilir. Daha fazla bilgi için bkz [. Azure Active Directory varsayılan kullanıcı Izinleri nelerdir?][azure-ad-permissions]
 
-Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış olmalıdır.  `az --version`Sürümü bulmak için ' i çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse bkz. [Azure CLI 'Yı yüklemek][install-azure-cli].
+Ayrıca Azure CLı sürüm 2.0.59 veya üzeri yüklü ve yapılandırılmış olmalıdır. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][install-azure-cli].
 
 ## <a name="automatically-create-and-use-a-service-principal"></a>Otomatik olarak bir hizmet sorumlusu oluşturma ve kullanma
 
@@ -105,7 +105,6 @@ Sanal ağ ve alt ağ ya da genel IP adreslerinin başka bir kaynak grubunda oldu
 - Özel bir [rol][rbac-custom-role] oluşturun ve aşağıdaki rol izinlerini tanımlayın:
   - *Microsoft. Network/virtualNetworks/alt ağlar/JOIN/Action*
   - *Microsoft. Network/virtualNetworks/alt ağlar/okuma*
-  - *Microsoft. Network/virtualNetworks/alt ağlar/yazma*
   - *Microsoft. Network/publicIPAddresses/JOIN/Action*
   - *Microsoft. Network/publicIPAddresses/Read*
   - *Microsoft. Network/Publicıpaddresses/Write*

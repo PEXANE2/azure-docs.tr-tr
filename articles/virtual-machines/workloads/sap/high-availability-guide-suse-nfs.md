@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 5976649ee396d897b76713b7863668d92279612e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 6b0504f5e4199ee3cd8e86660b866fddf2568485
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484320"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608580"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server üzerinde Azure VM 'lerinde NFS için yüksek kullanılabilirlik
 
@@ -53,6 +53,10 @@ ms.locfileid: "96484320"
 
 Bu makalede, sanal makinelerin nasıl dağıtılacağı, sanal makinelerin nasıl yapılandırılacağı, küme çerçevesinin nasıl yükleneceği ve yüksek oranda kullanılabilir bir SAP sisteminin paylaşılan verilerini depolamak için kullanılabilecek yüksek oranda kullanılabilir bir NFS sunucusunun nasıl yükleneceği açıklanır.
 Bu kılavuzda iki SAP sistemi, NW1 ve NW2 tarafından kullanılan yüksek düzeyde kullanılabilir bir NFS sunucusunun nasıl ayarlanacağı açıklanır. Örnekteki kaynakların (örneğin, sanal makineler, sanal ağlar) adları, kaynak öneki **Üretim** kaynağı ile [SAP dosya sunucusu şablonunu][template-file-server] kullandığınızı varsayar.
+
+
+> [!NOTE]
+> Bu makale, Microsoft 'un artık kullanmadığı *terim ve* *ana* terimlere yönelik başvurular içerir. Koşullar yazılımdan kaldırıldığında, bu makaleden kaldıracağız.
 
 Önce aşağıdaki SAP notlarını ve kağıtları okuyun
 

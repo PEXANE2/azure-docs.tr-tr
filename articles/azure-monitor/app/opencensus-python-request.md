@@ -6,18 +6,21 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 6cf0998eb4d769f2d1a7891892a5a462cd907e32
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 4b88550ad489607bb66eb737067190d45a466a43
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422510"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607084"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>OpenCensus Python ile gelen istekleri izleme
 
 Gelen istek verileri, OpenCensus Python ve çeşitli tümleştirmeler kullanılarak toplanır. Popüler Web çerçeveleri ve üzerinde oluşturulmuş Web uygulamalarınıza gönderilen gelen istek verilerini izleyin `django` `flask` `pyramid` . Veriler daha sonra Azure Izleyici altında telemetri olarak Application Insights gönderilir `requests` .
 
 İlk olarak, Python uygulamanızı en son [Opencensus Python SDK 'sı](./opencensus-python.md)ile işaretleyin.
+
+> [!NOTE]
+> Bu makale, Microsoft 'un artık kullanmadığını gösteren bir terim olan *kara liste* dönemi başvuruları içerir. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
 
 ## <a name="tracking-django-applications"></a>Docgo uygulamalarını izleme
 

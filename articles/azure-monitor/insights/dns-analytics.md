@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/20/2018
-ms.openlocfilehash: 947b509468857b98b868881bdd48adf67a5d60db
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7bdea9239faa4ec66fffa236bea40afd5e628e62
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994647"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607152"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>DNS Analizi Preview çözümüyle DNS altyapınız hakkında Öngörüler toplayın
 
@@ -35,10 +35,10 @@ Aşağıdaki tabloda, bu çözüm tarafından desteklenen bağlı kaynaklar aç�
 
 | **Bağlı kaynak** | **Destek** | **Açıklama** |
 | --- | --- | --- |
-| [Windows aracıları](../platform/agent-windows.md) | Yes | Bu çözüm, Windows aracılarından DNS bilgilerini toplar. |
-| [Linux aracıları](../learn/quick-collect-linux-computer.md) | No | Çözüm, doğrudan Linux aracılarından DNS bilgileri toplamaz. |
-| [System Center Operations Manager yönetim grubu](../platform/om-agents.md) | Yes | Çözüm, bağlı bir Operations Manager yönetim grubundaki aracılardan DNS bilgilerini toplar. Operations Manager aracısından Azure Izleyici 'ye doğrudan bağlantı gerekli değildir. Veriler, yönetim grubundan Log Analytics çalışma alanına iletilir. |
-| [Azure depolama hesabı](../platform/resource-logs.md#send-to-log-analytics-workspace) | No | Azure depolama, çözüm tarafından kullanılmıyor. |
+| [Windows aracıları](../platform/agent-windows.md) | Evet | Bu çözüm, Windows aracılarından DNS bilgilerini toplar. |
+| [Linux aracıları](../learn/quick-collect-linux-computer.md) | Hayır | Çözüm, doğrudan Linux aracılarından DNS bilgileri toplamaz. |
+| [System Center Operations Manager yönetim grubu](../platform/om-agents.md) | Evet | Çözüm, bağlı bir Operations Manager yönetim grubundaki aracılardan DNS bilgilerini toplar. Operations Manager aracısından Azure Izleyici 'ye doğrudan bağlantı gerekli değildir. Veriler, yönetim grubundan Log Analytics çalışma alanına iletilir. |
+| [Azure depolama hesabı](../platform/resource-logs.md#send-to-log-analytics-workspace) | Hayır | Azure depolama, çözüm tarafından kullanılmıyor. |
 
 ### <a name="data-collection-details"></a>Veri toplama ayrıntıları
 
@@ -57,13 +57,13 @@ Aşağıdaki tabloda, bu çözüm tarafından desteklenen bağlı kaynaklar aç�
 
 Çözüm panosunda **yapılandırma** ' ya tıklayarak DNS Analizi yapılandırma sayfasını açın. Yapabileceğiniz iki yapılandırma değişikliği türü vardır:
 
-- **Beyaz listelenmiş etki alanı adları**. Çözüm, tüm arama sorgularını işlemez. Etki alanı adı soneklerinin beyaz bir listesini tutar. Bu beyaz listedeki etki alanı adı sonekleri ile eşleşen etki alanı adlarına çözümlenerek arama sorguları çözüm tarafından işlenmez. Beyaz listeye alınan etki alanı adlarının işlenmemesi, Azure Izleyici 'ye gönderilen verileri iyileştirmenize yardımcı olur. Varsayılan beyaz liste, www.google.com ve www.facebook.com gibi popüler genel etki alanı adlarını içerir. Kaydırma yaparak, tüm varsayılan listeyi görüntüleyebilirsiniz.
+- **Allowlistelenmiş etki alanı adları**. Çözüm, tüm arama sorgularını işlemez. Etki alanı adı soneklerinin izin değerini tutar. Bu izin içindeki etki alanı adı sonekleri ile eşleşen etki alanı adlarına çözümlenerek arama sorguları çözüm tarafından işlenmez. Allowlistelenmiş etki alanı adlarının işlenmemesi, Azure Izleyici 'ye gönderilen verileri iyileştirmenize yardımcı olur. Varsayılan izin, www.Google.com ve www.facebook.com gibi popüler genel etki alanı adlarını içerir. Kaydırma yaparak, tüm varsayılan listeyi görüntüleyebilirsiniz.
 
   Arama öngörülerini görüntülemek istediğiniz herhangi bir etki alanı adı sonekini eklemek için listeyi değiştirebilirsiniz. Ayrıca, arama öngörülerini görüntülemek istemediğiniz tüm etki alanı adı sonekini da kaldırabilirsiniz.
 
 - **Kative Istemci eşiği**. Arama istekleri sayısının eşiğini aşan DNS istemcileri **DNS istemcileri** dikey penceresinde vurgulanır. Varsayılan eşik 1.000 ' dir. Eşiği düzenleyebilirsiniz.
 
-    ![Beyaz listelenmiş etki alanı adları](./media/dns-analytics/dns-config.png)
+    ![Allowlistelenmiş etki alanı adları](./media/dns-analytics/dns-config.png)
 
 ## <a name="management-packs"></a>Yönetim paketleri
 
@@ -110,7 +110,7 @@ Bilgiler şunları belirlemenize yardımcı olur:
 - Etki alanı adının çözümlediği IP adresleri.
 - Kötü amaçlı IP adresi.
 - Sorunun önem derecesi.
-- Kötü amaçlı IP listeleme nedeni.
+- Kötü amaçlı IP 'nin listelenmesi nedeni.
 - Algılama süresi.
 
 **Sorgulanan etki alanları**. , Ortamınızdaki DNS istemcileri tarafından sorgulanmakta olan en sık kullanılan etki alanı adlarını sağlar. Sorgulanan tüm etki alanı adlarının listesini görebilirsiniz. Ayrıca, günlük aramasında belirli bir etki alanı adının arama isteği ayrıntılarına gidebilirsiniz.

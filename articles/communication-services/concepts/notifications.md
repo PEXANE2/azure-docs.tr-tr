@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9cf503f374cd2fd1ca04aad6650b2c07abebbc46
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: a52188dc5058dbc74d3b03fba860b98540cd4a41
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95519362"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608512"
 ---
 # <a name="communication-services-notifications"></a>İletişim Hizmetleri bildirimleri
 
@@ -48,13 +48,10 @@ Bir Azure Notification Hub 'ını, bir kullanıcının mobil cihazına gelen bir
 İstemci cihazlarına Notification Hubs kullanarak anında iletme bildirimleri göndermek için, Iletişim Hizmetleri kaynağınız ile aynı abonelikte [bir Bildirim Hub 'ı oluşturun](../../notification-hubs/create-notification-hub-portal.md) . Kullanmak istediğiniz platform bildirimleri hizmeti için Azure Notification Hubs yapılandırılmalıdır. İstemci uygulamanızda Notification Hubs anında iletme bildirimleri alma hakkında bilgi edinmek için bkz. [Notification Hubs kullanmaya](../../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md) başlama ve sayfanın üst kısmındaki açılan listeden hedef istemci platformunuzu seçme.
 
 > [!NOTE]
-> APNs ve FCM platformları şu anda desteklenmektedir.
+> APNs ve FCM platformları şu anda desteklenmektedir.  
+APNs platformunun belirteç kimlik doğrulama moduyla yapılandırılması gerekir. Sertifika kimlik doğrulama modu şu anda desteklenmiyor. 
 
 Bildirim Hub 'ı yapılandırıldıktan sonra, Azure Resource Manager Istemcisini kullanarak hub için bağlantı dizesi sağlayarak Iletişim Hizmetleri kaynağıyla ilişkilendirebilirsiniz ve Azure portal aracılığıyla ilişkilendirebilirsiniz. Bağlantı dizesi "Gönder" izinleri içermelidir. Yalnızca hub 'ınız için özel olarak "Gönder" izinlerine sahip başka bir erişim ilkesi oluşturmanızı öneririz. [Notification Hubs güvenlik ve erişim ilkeleri](../../notification-hubs/notification-hubs-push-notification-security.md) hakkında daha fazla bilgi edinin
-
-> [!IMPORTANT]
-> Bu yalnızca belirteç kimlik doğrulama modu için geçerlidir. Sertifika kimlik doğrulama modu şu anda desteklenmiyor.  
-APNS VOıP bildirimlerini etkinleştirmek için, Bildirim Hub 'ını son ek ile uygulama paketi KIMLIĞINIZ olacak şekilde yapılandırırken Paket kimliği değerini ayarlamanız gerekir `.voip` . Daha fazla bilgi için bkz. [APNs VoIP 'i Notification Hubs aracılığıyla kullanma](../../notification-hubs/voip-apns.md) .
 
 #### <a name="using-the-azure-resource-manager-client-to-configure-the-notification-hub"></a>Bildirim Hub 'ını yapılandırmak için Azure Resource Manager istemcisini kullanma
 

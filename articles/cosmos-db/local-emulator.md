@@ -7,12 +7,12 @@ author: markjbrown
 ms.author: mjbrown
 ms.date: 09/22/2020
 ms.custom: devx-track-csharp, contperfq1
-ms.openlocfilehash: 6fb1ef45ff4e77ab21480a1013a3cec6bcc7cfa1
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: bfab099c3b81164e0d9ffaa009ea13f42aefb875
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030909"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608648"
 ---
 # <a name="install-and-use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Yerel geliştirme ve test için Azure Cosmos DB öykünücüsü 'nü yükleyip kullanın
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -60,7 +60,7 @@ Azure Cosmos DB öykünücüsü yerel geliştirici iş istasyonunda çalışan b
 Öykünücüyü yüklemeden önce, aşağıdaki donanım ve yazılım gereksinimlerine sahip olduğunuzdan emin olun:
 
 * Yazılım gereksinimleri:
-  * Şu anda Windows Server 2012 R2, Windows Server 2016, 2019 veya Windows 8, 10 ana bilgisayar işletim sistemi destekleniyor. Active Directory etkinleştirilmiş konak işletim sistemi şu anda desteklenmiyor.
+  * Şu anda Windows Server 2016, 2019 veya Windows 10 ana bilgisayar işletim sistemi destekleniyor. Active Directory etkinleştirilmiş konak işletim sistemi şu anda desteklenmiyor.
   * 64 bit işletim sistemi
 
 * En düşük donanım gereksinimleri:

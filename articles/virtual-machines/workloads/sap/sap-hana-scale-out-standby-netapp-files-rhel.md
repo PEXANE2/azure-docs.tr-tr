@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/15/2020
 ms.author: radeltch
-ms.openlocfilehash: f4693af9c29a36aad60b7b525fec024509a4d586
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d2cc8487f9864a27c1a2b02ef6e846bc43727e27
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94958768"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608546"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux Azure NetApp Files kullanarak Azure VM 'lerinde bekleme düğümüne sahip bir SAP HANA genişleme sistemi dağıtma 
 
@@ -59,6 +59,10 @@ ms.locfileid: "94958768"
 Bu makalede, paylaşılan depolama birimleri için [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) kullanarak Azure Red Hat Enterprise Linux sanal makinelerinde (VM) bekleme moduna sahip bir genişleme yapılandırmasında yüksek düzeyde kullanılabilir SAP HANA sisteminin nasıl dağıtılacağı açıklanır.  
 
 Örnek yapılandırmalarda, yükleme komutlarında ve bu durumda, HANA örneği **03** ' dır ve Hana sistem kimliği **HN1**' dir. Örnekler, HANA 2,0 SP4 ve Red Hat Enterprise Linux SAP 7,6 ' i temel alır. 
+
+> [!NOTE]
+> Bu makale, *ana* ve *bağımlı* hüküm, Microsoft 'un artık kullandığı koşullara yönelik başvurular içerir. Bu koşullar yazılımdan kaldırıldığında, bu makaleden kaldıracağız.
+
 
 Başlamadan önce, aşağıdaki SAP notları ve incelemeleri inceleyin:
 

@@ -2,13 +2,13 @@
 title: Kaynak adlandırma kısıtlamaları
 description: Azure kaynaklarını adlandırmayla ilgili kuralları ve kısıtlamaları gösterir.
 ms.topic: conceptual
-ms.date: 10/01/2020
-ms.openlocfilehash: 206bd6604ecd9dfece9c946c653b2720e75ff1e3
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.date: 12/04/2020
+ms.openlocfilehash: a6aac03277a11cf671f5a618bc85ff987cfdc2dd
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347803"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608325"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure kaynaklarına yönelik adlandırma kuralları ve kısıtlamaları
 
@@ -596,6 +596,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | ResourceGroups | aboneliği | 1-90 | Alfasayısal [belgeleriyle](/rest/api/resources/resourcegroups/createorupdate)eşleşen alfasayısal, alt çizgi, parantezler, tire, nokta ve Unicode karakterleri.<br><br>Nokta ile bitemez. |
 > | tagNames | kaynak | 1-512 | Şu kullanılamıyor:<br>`<>%&\?/` |
 > | tagNames/tagValues | etiket adı | 1-256 | Tüm karakterler. |
+> | Templatespec | kaynak grubu | 1-90 | Alfasayısal, alt çizgi, parantezler, tireler ve dönemler. |
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 

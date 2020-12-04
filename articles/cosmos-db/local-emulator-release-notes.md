@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: 42259b36f1a9bfe243df47cc08b33fe8c46d819d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 5d105ad4c2aff03dae52b340037e4c193bf82ca1
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493075"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608444"
 ---
 # <a name="azure-cosmos-db-emulator---release-notes-and-download-information"></a>Azure Cosmos DB öykünücü-sürüm notları ve indirme bilgileri
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,6 +26,12 @@ Bu makalede, Azure Cosmos DB öykünücü sürüm notları her sürümde yapıla
 |**Kullanmaya başlama**|[Azure Cosmos öykünücüsü ile yerel olarak geliştirme](local-emulator.md)|
 
 ## <a name="release-notes"></a>Sürüm notları
+
+### <a name="2119-3-december-2020"></a>2.11.9 (3 Aralık 2020)
+
+ - Bu sürüm, Azure Cosmos DB ' deki en son özellikleri ve geliştirmeleri yansıtan genel içerik güncelleştirmesine ek olarak Azure Cosmos DB öykünücü işlevselliğiyle ilgili her iki sorunu ele alınmaktadır:
+ * Doğrudan mod ve Java istemci uygulamaları kullanılırken büyük belge yükü isteklerinin başarısız olduğu bir sorunu giderme.
+ * .NET tabanlı uygulamalar tarafından hedeflenen MongoDB uç noktası sürüm 3,6 ile bağlantı sorunu için çözüm.
 
 ### <a name="2118-6-november-2020"></a>2.11.8 (6 Kasım 2020)
 

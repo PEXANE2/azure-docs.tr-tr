@@ -1,14 +1,14 @@
 ---
 title: Temsilci erişimini kaldırma
 description: Azure açık Thouse için bir hizmet sağlayıcısına temsilci atanmış kaynaklara erişimi kaldırmayı öğrenin.
-ms.date: 08/12/2020
+ms.date: 12/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 72a2c49dde8cccfcc298d4128384a10bb7e8840f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d3442bb9fd2f6e7423fd4bf28cace1f7fd91ad80
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88167241"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608461"
 ---
 # <a name="remove-access-to-a-delegation"></a>Temsilci erişimini kaldırma
 
@@ -99,3 +99,4 @@ az managedservices assignment delete --assignment <id or full resourceId>
 
 - [Azure tarafından atanan temsilcinin kaynak yönetimi](../concepts/azure-delegated-resource-management.md) hakkında bilgi edinin.
 - Azure portal **müşterilerime** giderek [müşterileri görüntüleyin ve yönetin](view-manage-customers.md) .
+- [Önceki bir temsilciyi güncelleştirme](update-delegation.md)hakkında bilgi edinin.

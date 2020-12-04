@@ -14,18 +14,21 @@ ms.workload: infrastructure
 ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7c1b09cdcf987c7ed0e489a8a67f77a4099e39a9
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: cdc6dd49fe98085edf3c6fb16606b9f540b5a3a0
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955472"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608699"
 ---
 # <a name="operating-system-upgrade"></a>İşletim sistemi yükseltme
 Bu belgede, HANA büyük örneklerinde işletim sistemi yükseltmeleriyle ilgili ayrıntılar açıklanmaktadır.
 
 >[!NOTE]
 >İşletim sistemi yükseltmesi müşterinin sorumluluğundadır, Microsoft operasyon desteği yükseltme sırasında izlenecek önemli alanlara kılavuzluk edebilir. Bir yükseltmeyi planlayabilmeniz için, işletim sistemi satıcınıza da başvurmanız gerekir.
+
+> [!NOTE]
+> Bu makale, Microsoft 'un artık kullanmadığını gösteren bir terim olan *kara liste* dönemi başvuruları içerir. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
 
 HLI birim sağlama sırasında, Microsoft operasyon ekibi işletim sistemini de yüklüyor.
 Zaman içinde, işletim sistemini (örnek: düzeltme eki uygulama, ayarlama, yükseltme vb.), HLI birim üzerinde korumanız gerekir.

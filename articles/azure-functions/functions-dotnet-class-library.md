@@ -4,12 +4,12 @@ description: C# kullanarak Azure Işlevleri geliştirmeyi anlayın.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 3c363d13933e6554a6eefbeaf02d87dc6b382628
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: dc08e378d68743ed7906f4dec7c8f31202959880
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002417"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608291"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Işlevleri C# Geliştirici Başvurusu
 
@@ -31,7 +31,7 @@ Işlevler çalışma zamanının sürümleri .NET 'in belirli sürümleriyle ça
 
 | İşlevler çalışma zamanı sürümü | En yüksek .NET sürümü |
 | ---- | ---- |
-| İşlevler 3. x | .NET Core 3,1 |
+| İşlevler 3. x | .NET Core 3.1 |
 | İşlevler 2.x | .NET Core 2.2 |
 | İşlevler 1.x |  .NET Framework 4.7 |
 
@@ -327,6 +327,8 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogge
 {
     logger.LogInformation("Request for item with key={itemKey}.", id);
 ```
+
+Işlevlerin nasıl uyguladığı hakkında daha fazla bilgi edinmek için `ILogger` bkz. [telemetri verilerini toplama](functions-monitoring.md#collecting-telemetry-data). Ön Ekli kategoriler `Function` bir örnek kullandığınızı varsayar `ILogger` . Bunun yerine bir kullanmayı tercih ederseniz `ILogger<T>` Kategori adı temel alabilir `T` .  
 
 ### <a name="structured-logging"></a>Yapılandırılmış günlüğe kaydetme
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 11/24/2020
 ms.author: alkohli
-ms.openlocfilehash: 5e5cb077868a224620d1a23e1ff1aac9c8d9f095
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: ab9559e1e8265b3adf08b36d1a8097a00297c61a
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874483"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96606999"
 ---
 # <a name="create-certificates-for-your-azure-stack-edge-pro-using-azure-stack-hub-readiness-checker-tool"></a>Azure Stack hub hazırlık Denetleyicisi aracını kullanarak Azure Stack Edge Pro için sertifikalar oluşturma 
 
@@ -23,7 +23,7 @@ Bu makalede Azure Stack hub hazırlık Denetleyicisi Aracı kullanılarak Azure 
 
 ## <a name="using-azure-stack-hub-readiness-checker-tool"></a>Azure Stack hub hazırlık Denetleyicisi aracını kullanma
 
-Bir Azure Stack Edge Pro cihaz dağıtımı için sertifika Imzalama Istekleri (CSR) oluşturmak üzere Azure Stack hub hazırlık Denetleyicisi aracını kullanın. Bu istekleri, Azure Stack Edge Pro cihazı için bir sipariş ettikten sonra ve cihazın gelmesini bekledikten sonra oluşturabilirsiniz. 
+Bir Azure Stack Edge Pro cihaz dağıtımı için sertifika Imzalama Istekleri (CSR) oluşturmak üzere Azure Stack hub hazırlık Denetleyicisi aracını kullanın. Bu istekleri, Azure Stack Edge Pro cihazı için bir sipariş ettikten sonra cihazın gelmesini bekleyip sonra oluşturabilirsiniz.
 
 > [!NOTE]
 > Bu aracı yalnızca, üretim cihazları için değil, test veya geliştirme amacıyla kullanın. 
@@ -37,7 +37,7 @@ Aşağıdaki sertifikaları istemek için Azure Stack hub hazırlık Denetleyici
 - VPN sertifikası
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Stack Edge Pro cihaz dağıtımı için CSR 'Ler oluşturmak üzere şunları yaptığınızdan emin olun: 
 
@@ -59,19 +59,19 @@ Azure Stack Edge Pro cihaz sertifikalarını hazırlamak için aşağıdaki adı
     Install-Module -Name Microsoft.AzureStack.ReadinessChecker
     ```
 
-    Yüklü sürümü doğrulamak için şunu yazın:  
+    Yüklü sürümü almak için şunu yazın:  
 
     ```azurepowershell
     Get-InstalledModule -Name Microsoft.AzureStack.ReadinessChecker  | ft Name, Version 
     ```
 
-3. Mevcut değilse, tüm sertifikalar için bir dizin oluşturun. Şunu yazın: 
+3. Henüz bir tane yoksa, tüm sertifikalar için bir dizin oluşturun. Şunu yazın: 
     
     ```azurepowershell
     New-Item "C:\certrequest" -ItemType Directory
     ``` 
     
-4. Bir sertifika isteği oluşturmak için aşağıdaki bilgileri sağlayın. VPN sertifikası oluşturuyorsanız, bu girişlerin bazıları uygulanmaz. 
+4. Bir sertifika isteği oluşturmak için aşağıdaki bilgileri sağlayın. VPN sertifikası oluşturuyorsanız, bu girişlerin bazıları uygulanmaz.
     
     |Giriş |Açıklama  |
     |---------|---------|
@@ -107,7 +107,7 @@ Azure Stack Edge Pro cihaz sertifikalarını hazırlamak için aşağıdaki adı
     ```
 
     
-5. Sertifika istek dosyalarını yukarıdaki OutputRequestPath parametresinde belirttiğiniz dizin altında bulabilirsiniz. `MultipleCSR`Parametresini kullanırken, uzantısı olan 4 dosya görürsünüz `.req` . Dosyalar aşağıdaki gibidir:
+5. Sertifika istek dosyalarını yukarıdaki OutputRequestPath parametresinde belirttiğiniz dizinde bulabilirsiniz. `MultipleCSR`Parametresini kullanırken, aşağıdaki dört dosyayı `.req` uzantısıyla görürsünüz:
 
     
     |Dosya adları  |Sertifika isteği türü  |
@@ -115,17 +115,17 @@ Azure Stack Edge Pro cihaz sertifikalarını hazırlamak için aşağıdaki adı
     |İle başlangıç `DeviceName`     |Yerel Web Kullanıcı arabirimi sertifika isteği      |
     |İle başlangıç `NodeSerialNumber`     |Düğüm sertifikası isteği         |
     |Başlangıç `login`     |Azure Resource Manager uç noktası sertifika isteği       |
-    |Başlangıç `wildcard`     |BLOB depolama sertifikası isteği; cihazda oluşturabileceğiniz tüm depolama hesaplarını kapsadığından bir joker karakter içeriyor.          |
+    |Başlangıç `wildcard`     |BLOB depolama sertifikası isteği. Cihazda oluşturabileceğiniz tüm depolama hesaplarını kapsadığından bir joker karakter içeriyor.          |
     |Başlangıç `AzureStackEdgeVPNCertificate`     |VPN istemci sertifikası isteği.         |
 
     Ayrıca bir INF klasörü görürsünüz. Bu bir Management. <Edge-aygı> Information dosyası, sertifika ayrıntılarını açıklayan şifresiz metin olarak içerir.  
 
 
-6. Bu dosyaları sertifika yetkilinize (iç veya ortak) gönderebilirsiniz. Sertifika yetkilisinin, [düğüm sertifikaları](azure-stack-edge-j-series-manage-certificates.md#node-certificates), [uç nokta SERTIFIKALARı](azure-stack-edge-j-series-manage-certificates.md#endpoint-certificates)ve [Yerel UI sertifikalarına](azure-stack-edge-j-series-manage-certificates.md#local-ui-certificates)yönelik Azure Stack Edge Pro sertifikası gereksinimlerini karşılayan üretilmiş isteğinizi kullanarak sertifika üretdiğinizden emin olun.
+6. Bu dosyaları sertifika yetkilinize (iç veya ortak) gönderebilirsiniz. Sertifika YETKILISININ, [düğüm sertifikaları](azure-stack-edge-j-series-manage-certificates.md#node-certificates), [uç nokta SERTIFIKALARı](azure-stack-edge-j-series-manage-certificates.md#endpoint-certificates)ve [Yerel UI sertifikalarına](azure-stack-edge-j-series-manage-certificates.md#local-ui-certificates)yönelik Azure Stack Edge Pro sertifikası gereksinimlerini karşılayan, oluşturulan isteğinizi kullanarak sertifika üretdiğinizden emin olun.
 
 ## <a name="prepare-certificates-for-deployment"></a>Dağıtım için sertifikaları hazırlama
 
-Sertifika yetkilinizden (CA) edindiğiniz sertifika dosyaları içeri aktarılmalıdır ve Azure Stack Edge Pro cihazının sertifika gereksinimleriyle eşleşen özelliklerle birlikte verilmelidir. Aşağıdaki adımları, sertifika imzalama isteklerini oluşturduğunuz sistemde doldurun.
+Sertifika yetkilinizden (CA) aldığınız sertifika dosyaları içeri aktarılmalıdır ve Azure Stack Edge Pro cihazının sertifika gereksinimleriyle eşleşen özelliklerle birlikte verilmelidir. Aşağıdaki adımları, sertifika imzalama isteklerini oluşturduğunuz sistemde doldurun.
 
 - Sertifikaları içeri aktarmak için [Azure Stack Edge Pro cihazınıza erişen istemcilerde sertifikaları Içeri aktarma](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)' daki adımları izleyin.
 

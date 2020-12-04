@@ -6,12 +6,12 @@ ms.assetid: ff00902b-9858-4bee-ab95-d3406018c688
 ms.topic: article
 ms.date: 10/01/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 204e087908ff978880966332b4619935dc6f0458
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 7ade24b6478f78a51e0be68ae69ae0b076ecff1f
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96559125"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607883"
 ---
 # <a name="configure-premiumv3-tier-for-azure-app-service"></a>Azure App Service için PremiumV3 katmanını yapılandırma
 
@@ -82,7 +82,7 @@ Temel App Service dağıtımı PremiumV3 ' i desteklemiyorsa bazı App Service p
 Uygulamanız **PremiumV3** ' nin kullanılamadığı bir App Service dağıtımında çalışıyorsa veya uygulamanız Şu anda **PremiumV3**' yi desteklemeyen bir bölgede çalışıyorsa, **PremiumV3**'in avantajlarından yararlanmak için uygulamanızı yeniden dağıtmanız gerekir.  İki seçeneğiniz vardır:
 
 - Yeni bir kaynak grubunda ve yeni bir App Service planına sahip bir uygulama oluşturun. App Service planını oluştururken bir **PremiumV3** katmanını seçin. Bu adım, App Service planının **PremiumV3** destekleyen bir dağıtım birimine dağıtılmasını sağlar. Ardından, uygulama kodunuzu yeni oluşturulan uygulamaya yeniden dağıtın. Maliyetleri kaydetmek için App Service planını daha düşük bir katmana ölçeklendirseniz bile, dağıtım birimi onu desteklediğinden, her zaman **PremiumV3** 'e geri dönebilirsiniz.
-- Uygulamanız zaten mevcut bir **Premium** katmanda çalıştırılıyorsa, uygulamanızı tüm uygulama ayarları, bağlantı dizeleri ve dağıtım yapılandırmasıyla **PremiumV3** kullanan yeni bir App Service planına kopyalayabilirsiniz.
+- Uygulamanız zaten mevcut bir **Premium** katmanda çalıştırılıyorsa, uygulamanızı tüm uygulama ayarları, bağlantı dizeleri ve dağıtım yapılandırmasıyla, **PremiumV3** kullanan yeni bir App Service planında yeni bir kaynak grubuna kopyalayabilirsiniz.
 
     ![Uygulamanızın nasıl klonileceğini gösteren ekran görüntüsü.](media/app-service-configure-premium-tier/clone-app.png)
 

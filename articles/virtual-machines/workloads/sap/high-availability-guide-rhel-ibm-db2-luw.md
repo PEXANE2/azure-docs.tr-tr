@@ -15,16 +15,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/16/2020
 ms.author: juergent
-ms.openlocfilehash: fcc247e9e3122515ebe9230f58860df8c6dd3948
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 85f268990ac9e0c04cba1b9c409a232a24ce0d61
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484337"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608643"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Red Hat Enterprise Linux Server üzerinde Azure VM’lerindeki IBM Db2 LUW’a yönelik yüksek kullanılabilirlik
 
 [Yüksek kullanılabilirlik ve olağanüstü durum kurtarma (HADR) yapılandırmasında](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.ha.doc/doc/c0011267.html) LINUX, UNIX ve Windows (LUW) Için IBM DB2, birincil veritabanı örneği çalıştıran bir düğümden ve ikincil bir veritabanı örneği çalıştıran en az bir düğümden oluşur. Birincil veritabanı örneğindeki değişiklikler, yapılandırmanıza bağlı olarak, eş zamanlı olarak veya zaman uyumsuz olarak ikincil bir veritabanı örneğine çoğaltılır. 
+
+> [!NOTE]
+> Bu makale, *ana* ve *bağımlı* hüküm, Microsoft 'un artık kullandığı koşullara yönelik başvurular içerir. Bu koşullar yazılımdan kaldırıldığında, bu makaleden kaldıracağız.
 
 Bu makalede, Azure sanal makinelerini (VM) dağıtma ve yapılandırma, küme çerçevesini yüklemek ve HADR yapılandırması ile IBM DB2 LUW yüklemesi açıklanmaktadır. 
 
@@ -510,7 +513,7 @@ Günlük arşivleme yalnızca birincil veritabanı tarafından gerçekleştirili
 
 Günlüklerin her iki düğümden de yazıldığı ortak bir NFS paylaşımının veya GlusterFS yapılandırılmasını öneririz. NFS paylaşımının veya GlusterFS, yüksek oranda kullanılabilir olmalıdır. 
 
-Aktarımlar için mevcut olan yüksek oranda kullanılabilir NFS paylaşımlarını veya GlusterFS 'yi veya bir profil dizini kullanabilirsiniz. Daha fazla bilgi için bkz.
+Aktarımlar için mevcut olan yüksek oranda kullanılabilir NFS paylaşımlarını veya GlusterFS 'yi veya bir profil dizini kullanabilirsiniz. Daha fazla bilgi için bkz:
 
 - [SAP NetWeaver için Red Hat Enterprise Linux üzerinde Azure Sanal Makineler'de GlusterFS][glusterfs] 
 - [SAP uygulamaları için Azure NetApp Files Red Hat Enterprise Linux üzerindeki Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik][anf-rhel]
