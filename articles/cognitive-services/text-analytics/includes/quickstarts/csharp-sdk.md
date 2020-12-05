@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 10/07/2020
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: a0ed1ef796412211d1d0871d3e09aed4f7346ae5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 35d5940fbc001d1806711afb14aa4a549bcb1826
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979264"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96615773"
 ---
 <a name="HOLTop"></a>
 
@@ -28,11 +28,11 @@ ms.locfileid: "94979264"
 
 # <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
 
-[v2 başvuru belgeleri](/dotnet/api/overview/azure/cognitiveservices/client/textanalytics)  |  [v2 kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.TextAnalytics)  |  [v2 paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics/)  |  [v2 örnekleri](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
+[v2 başvuru belgeleri](/dotnet/api/overview/azure/cognitiveservices/client?view=azure-dotnet)  |  [v2 kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.TextAnalytics)  |  [v2 paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics/)  |  [v2 örnekleri](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
 
 ---
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * [Visual STUDIO IDE](https://visualstudio.microsoft.com/vs/)
@@ -179,7 +179,7 @@ Hizmetin sürümünü kullanıyorsanız `3.x` , `TextAnalyticsClientOptions` ist
 * [Dil algılama](#language-detection)
 * [Adlandırılmış varlık tanıma](#named-entity-recognition-ner)
 * [Varlık bağlama](#entity-linking)
-* [Anahtar tümceciği ayıklama](#key-phrase-extraction)
+* [Anahtar ifade ayıklama](#key-phrase-extraction)
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
@@ -235,7 +235,7 @@ static void SentimentAnalysisExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Document sentiment: Positive
@@ -302,7 +302,7 @@ static void SentimentAnalysisWithOpinionMiningExample(TextAnalyticsClient client
 }
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Document sentiment: Positive
@@ -362,7 +362,7 @@ static void SentimentAnalysisExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Document sentiment: Positive
@@ -413,7 +413,7 @@ static void LanguageDetectionExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Language:
@@ -437,7 +437,7 @@ static void LanguageDetectionExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Language:
@@ -453,7 +453,7 @@ Language:
 
 [!code-csharp[Language Detection example](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=languageDetection)]
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Language: English
@@ -481,7 +481,7 @@ static void EntityRecognitionExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Named Entities:
@@ -524,7 +524,7 @@ static void EntityLinkingExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Linked Entities:
@@ -608,7 +608,7 @@ static void RecognizePIIExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Redacted Text: A developer with SSN *********** whose phone number is ************ is building tools with our APIs.
@@ -640,7 +640,7 @@ static void EntityRecognitionExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Named Entities:
@@ -681,7 +681,7 @@ static void EntityLinkingExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Linked Entities:
@@ -755,7 +755,7 @@ static void KeyPhraseExtractionExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Key phrases:
@@ -782,7 +782,7 @@ static void KeyPhraseExtractionExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Key phrases:
@@ -797,7 +797,7 @@ Key phrases:
 [!code-csharp[Key phrase extraction example](~/cognitive-services-dotnet-sdk-samples/samples/TextAnalytics/synchronous/Program.cs?name=keyPhraseExtraction)]
 
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Key phrases:

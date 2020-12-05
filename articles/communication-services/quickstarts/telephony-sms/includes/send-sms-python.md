@@ -10,12 +10,12 @@ ms.date: 09/03/2020
 ms.topic: include
 ms.custom: include file
 ms.author: dadoolab
-ms.openlocfilehash: 9265caa3054cde6af311e655db2b2496524e8d24
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: a24d9531b7b2d2d2f31eec275da7db7e48b9c74a
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91757159"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96615855"
 ---
 SMS mesajları göndermek için Iletişim Hizmetleri Python SMS istemci Kitaplığı ' nı kullanarak Azure Iletişim Hizmetleri ile çalışmaya başlayın.
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıcı tamamlamak, Azure hesabınızda birkaç ABD Doları vey
 
 [API reference documentation](../../../references/overview.md) | [Library source code](#todo-sdk-repo) | [Package (PiPy)](#todo-nuget) | [Samples](#todo-samples)--> 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - [Python](https://www.python.org/downloads/) 2,7, 3,5 veya üzeri.
@@ -67,7 +67,7 @@ except Exception as ex:
 Hala uygulama dizininde, komutunu kullanarak Python paketi için Azure Iletişim Hizmetleri SMS istemci Kitaplığı ' nı da yükleyebilirsiniz `pip install` .
 
 ```console
-pip install azure-communication-sms
+pip install azure-communication-sms --pre
 ```
 
 ## <a name="object-model"></a>Nesne modeli
@@ -94,7 +94,7 @@ sms_client = SmsClient.from_connection_string(connection_string)
 
 ## <a name="send-an-sms-message"></a>SMS iletisi gönderme
 
-Send yöntemini çağırarak SMS iletisi gönderin. `try` **Send-SMS.py**içindeki blok sonuna bu kodu ekleyin:
+Send yöntemini çağırarak SMS iletisi gönderin. `try` **Send-SMS.py** içindeki blok sonuna bu kodu ekleyin:
 
 ```python
 
