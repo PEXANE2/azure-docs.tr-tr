@@ -2,20 +2,20 @@
 title: Azure AD Domain Services 'de uzak VM erişiminin güvenliğini sağlama | Microsoft Docs
 description: Ağ Ilkesi sunucusu (NPS) ve Azure AD Multi-Factor Authentication kullanarak VM 'lere uzaktan erişimi Azure Active Directory Domain Services yönetilen bir etki alanında Uzak Masaüstü Hizmetleri dağıtımıyla güvenli hale getirme hakkında bilgi edinin.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: joflore
-ms.openlocfilehash: a08b5bf4fb575f0cd2098b3ef180860bb8fbd6e0
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.author: justinha
+ms.openlocfilehash: f0605cbd81d8131014a1f6a6bf30e3db0ce9aa90
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840245"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618935"
 ---
 # <a name="secure-remote-access-to-virtual-machines-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 'de sanal makinelere uzaktan erişimi güvenli hale getirme
 
@@ -32,7 +32,7 @@ Bu makalede, Azure AD DS 'de RDS 'yi yapılandırma ve isteğe bağlı olarak Az
 
 ![Uzak Masaüstü Hizmetleri (RDS) genel bakış](./media/enable-network-policy-server/remote-desktop-services-overview.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyacınız vardır:
 

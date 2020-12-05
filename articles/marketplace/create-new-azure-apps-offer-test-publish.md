@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: b54e965188be51ec54110bb85d8cda8f01256836
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 461f9354bb3a6eae0af186de8fe9f39c6b5fff2c
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94370453"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620928"
 ---
 # <a name="how-to-test-and-publish-an-azure-application-offer"></a>Azure uygulaması teklifini test etme ve yayımlama
 
@@ -23,14 +23,14 @@ Bu makalede, Iş Ortağı Merkezi 'nin yayımlama için Azure uygulama teklifini
 
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)'nde ticari Market panosunda oturum açın.
 1. **Genel bakış** sayfasında, yayımlamak istediğiniz teklifi seçin.
-1. Portalın sağ üst köşesinde, **gözden geçir ve Yayımla** ' yı seçin.
+1. Portalın sağ üst köşesinde, **gözden geçir ve Yayımla**' yı seçin.
 1. Her bir sayfanın **durum** sütununun **tamamlandığını** belirttiğinizden emin olun. Olası üç durum aşağıdaki gibidir:
     - **Başlatılmamış** – sayfa tamamlanmadı.
     - **Tamamlanmamış** – sayfada gerekli bilgiler eksik veya düzeltilmesi gereken hatalar var. Sayfaya dönüp güncelleştirmeniz gerekir.
     - **Tamam** – sayfa tamamlanmıştır. Gerekli tüm veriler sağlanmış ve hata yok.
 1. Sayfaların herhangi birinde **tamamlanmamış** bir durum varsa, sayfa adını seçin, sorunu giderin, sayfayı kaydedin ve ardından **gözden geçir ve yeniden Yayımla** ' yı seçerek bu sayfaya geri dönün.
 1. Tüm sayfalar tamamlandıktan sonra, **sertifika notları** kutusunda, uygulamanızın doğru şekilde test edilmesini sağlamak için sertifika ekibine test yönergeleri sağlayın. Uygulamanızı anlamak için yardımcı olan tüm ek notları sağlayın.
-1. Teklifinizin yayımlama işlemini başlatmak için **Yayımla** ' yı seçin. **Teklifin genel bakış** sayfası açılır ve teklifin **Yayımlama durumunu** gösterir.
+1. Teklifinizin yayımlama işlemini başlatmak için **Yayımla**' yı seçin. **Teklifin genel bakış** sayfası açılır ve teklifin **Yayımlama durumunu** gösterir.
 
 Teklifinizin yayımlama durumu, yayın sürecinde gezindiğinde değişir. Bu işlemle ilgili ayrıntılı bilgi için bkz. [doğrulama ve yayımlama adımları](review-publish-offer.md#validation-and-publishing-steps).
 
@@ -57,7 +57,7 @@ Teklifinizi önizlemek için aşağıdaki adımları kullanın.
 Önizlemeinizdeki tüm testleri tamamladıktan sonra, teklifinizi ticari Market 'te canlı yayımlamak için **canlı ol** ' u seçin.
 
    > [!TIP]
-   > Teklifiniz ticari Market 'te zaten yaşıyorsanız, yaptığınız güncelleştirmeler **canlı git** ' i seçene kadar canlı olmayacaktır.
+   > Teklifiniz ticari Market 'te zaten yaşıyorsanız, yaptığınız güncelleştirmeler **canlı git**' i seçene kadar canlı olmayacaktır.
 
 Teklifinizi ticari Market 'te kullanılabilir yapmayı seçtiğinizden, canlı teklifin yalnızca teklifin önizleme sürümü gibi yapılandırıldığından emin olmak için bir dizi son doğrulama denetimi gerçekleştirdik. Bu doğrulama denetimleri hakkında daha fazla bilgi için bkz. [Yayımlama aşaması](review-publish-offer.md#publish-phase).
 
@@ -72,4 +72,4 @@ Yayımlama adımlarında bir veya daha fazla hata varsa, teklifinizi yeniden yay
 ## <a name="next-step"></a>Sonraki adım
 
 - [Iş Ortağı Merkezi 'nde ticari Market için analitik raporlara erişin](partner-center-portal/analytics.md)
-- [Azure uygulama teklifinizi](create-new-azure-apps-offer-marketing.md) Microsoft ile ortak satış üzerinden pazara sunma ve CSP programları aracılığıyla yeniden satma hakkında bilgi edinin.
+- [Azure uygulama teklifinizi](create-new-azure-apps-offer-marketing.md) Microsoft ile ortak satış aracılığıyla satma ve CSP programlarını kullanarak yeniden satma hakkında bilgi edinin.

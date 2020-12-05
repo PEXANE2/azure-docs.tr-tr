@@ -2,7 +2,7 @@
 title: SharePoint kullanıcı profili hizmetini Azure AD DS etkinleştirme | Microsoft Docs
 description: Azure Active Directory Domain Services yönetilen bir etki alanını SharePoint Server için profil eşitlemesini destekleyecek şekilde yapılandırma hakkında bilgi edinin
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: joflore
-ms.openlocfilehash: 7bd63ece1ec32e5e4cecfd2a458124a4f24ccaa6
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 8fbde10ccf5a7f083f5fbddaadd6668d880a1fac
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962488"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619836"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>SharePoint Server için Kullanıcı profili eşitlemesini desteklemek üzere Azure Active Directory Domain Services yapılandırma
 
@@ -62,10 +62,10 @@ Azure AD DS Yönetim sanal makinenizde aşağıdaki adımları izleyin:
 
 1. Başlangıç ekranından **Yönetim Araçları**' nı seçin. [Yönetim sanal makinesi oluşturmak][tutorial-create-management-vm]için öğreticide yüklü olan kullanılabilir yönetim araçlarının bir listesi gösterilir.
 1. Grup üyeliğini yönetmek için, yönetim araçları listesinden **Active Directory Yönetim Merkezi** ' yi seçin.
-1. Sol bölmede, *aaddscontoso.com*gibi yönetilen etki alanınızı seçin. Mevcut OU 'ların ve kaynakların bir listesi gösterilir.
+1. Sol bölmede, *aaddscontoso.com* gibi yönetilen etki alanınızı seçin. Mevcut OU 'ların ve kaynakların bir listesi gösterilir.
 1. **Kullanıcılar** OU 'sunu seçin, ardından *AAD DC hizmet hesapları* güvenlik grubunu seçin.
 1. **Üyeler**' i ve ardından **Ekle...** öğesini seçin.
-1. SharePoint hizmet hesabının adını girip **Tamam**' ı seçin. Aşağıdaki örnekte, SharePoint hizmet hesabının adı *SPAdmin*şeklindedir:
+1. SharePoint hizmet hesabının adını girip **Tamam**' ı seçin. Aşağıdaki örnekte, SharePoint hizmet hesabının adı *SPAdmin* şeklindedir:
 
     ![SharePoint hizmet hesabını AAD DC hizmet hesapları güvenlik grubuna ekleyin](./media/deploy-sp-profile-sync/add-member-to-aad-dc-service-accounts-group.png)
 

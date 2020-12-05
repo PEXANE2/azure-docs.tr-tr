@@ -2,7 +2,7 @@
 title: Azure AD Domain Services bir kuruluş birimi (OU) oluşturun | Microsoft Docs '
 description: Azure AD Domain Services yönetilen bir etki alanında özel bir kuruluş birimi (OU) oluşturmayı ve yönetmeyi öğrenin.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 52602ad8-2b93-4082-8487-427bdcfa8126
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: df8d32fb38d9ea6750ef47651e4f660428fd1fbe
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: fbdfcc23553a27aaa4d7bbd4bff9c4f33cb8fd19
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961009"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620027"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services yönetilen bir etki alanında kuruluş birimi (OU) oluşturma
 
@@ -69,15 +69,15 @@ Yönetilen bir etki alanında özel OU 'Lar oluşturduğunuzda, Kullanıcı yön
 1. Yönetim sanal makinenizde oturum açın. Azure portal kullanarak bağlanma adımları için bkz. [Windows Server VM 'ye bağlanma][connect-windows-server-vm].
 1. Başlangıç ekranından **Yönetim Araçları**' nı seçin. [Yönetim sanal makinesi oluşturmak][tutorial-create-management-vm]için öğreticide yüklü olan kullanılabilir yönetim araçlarının bir listesi gösterilir.
 1. OU 'Ları oluşturup yönetmek için, yönetim araçları listesinden **Active Directory Yönetim Merkezi** ' yi seçin.
-1. Sol bölmede, *aaddscontoso.com*gibi yönetilen etki alanınızı seçin. Var olan OU 'ların ve kaynakların listesi gösterilir:
+1. Sol bölmede, *aaddscontoso.com* gibi yönetilen etki alanınızı seçin. Var olan OU 'ların ve kaynakların listesi gösterilir:
 
     ![Active Directory Yönetim Merkezi yönetilen etki alanınızı seçin](./media/create-ou/create-ou-adac-overview.png)
 
-1. **Görevler** bölmesi Active Directory Yönetim Merkezi sağ tarafında gösterilir. *Aaddscontoso.com*gibi etki alanı altında **Yeni > kuruluş birimi**' ni seçin.
+1. **Görevler** bölmesi Active Directory Yönetim Merkezi sağ tarafında gösterilir. *Aaddscontoso.com* gibi etki alanı altında **Yeni > kuruluş birimi**' ni seçin.
 
     ![Active Directory Yönetim Merkezi yeni bir OU oluşturma seçeneğini belirleyin](./media/create-ou/create-ou-adac-new-ou.png)
 
-1. **Kuruluş birimi oluştur** iletişim kutusunda, yeni OU Için *Mycustomou*gibi bir **ad** belirtin. OU için, *hizmet hesapları Için özel OU*gibi kısa bir açıklama sağlayın. İsterseniz, OU için **yönetilen** alanı alanını da ayarlayabilirsiniz. Özel OU 'yu oluşturmak için **Tamam**' ı seçin.
+1. **Kuruluş birimi oluştur** iletişim kutusunda, yeni OU Için *Mycustomou* gibi bir **ad** belirtin. OU için, *hizmet hesapları Için özel OU* gibi kısa bir açıklama sağlayın. İsterseniz, OU için **yönetilen** alanı alanını da ayarlayabilirsiniz. Özel OU 'yu oluşturmak için **Tamam**' ı seçin.
 
     ![Active Directory Yönetim Merkezi özel OU oluşturma](./media/create-ou/create-ou-dialog.png)
 

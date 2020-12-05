@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: af38f68a9709b21989ba787fb5b2c623e07dc440
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 85080c018749f9aab716eff0a4527363da987007
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541292"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620486"
 ---
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning nedir?
 
@@ -49,7 +49,7 @@ Azure Machine Learning, aşağıdakiler dahil olmak üzere makine öğrenimi iş
 
 + + [Birçok model Çözüm Hızlandırıcısı](https://aka.ms/many-models) (önizleme) Azure Machine Learning oluşturur ve yüzlerce veya hatta binlerce makine öğrenimi modelini eğitmenize, çalıştırmanıza ve yönetmenize olanak sağlar.
 
-+ [Visual Studio Code uzantısı](tutorial-setup-vscode-extension.md)
++ [Visual Studio Code kullanıcıları için makine öğrenimi uzantısı](tutorial-setup-vscode-extension.md)
 
 + [Machine learning CLI](reference-azure-machine-learning-cli.md)
 
@@ -111,10 +111,10 @@ Azure Machine Learning kullanmaya başlamak için bkz. [sonraki adımlar](#next-
 
 Azure Machine Learning Azure platformunda diğer hizmetlerle çalışır ve ayrıca git ve MLFlow gibi açık kaynak araçlarla tümleştirilir.
 
-+ __Azure Kubernetes hizmeti__ , __Azure Container Instances__ , __Azure Databricks__ , __Azure Data Lake Analytics__ ve __Azure HDInsight__ gibi işlem hedefleri. İşlem hedefleri hakkında daha fazla bilgi için bkz. [işlem hedefleri nelerdir?](concept-compute-target.md).
++ __Azure Kubernetes hizmeti__, __Azure Container Instances__, __Azure Databricks__, __Azure Data Lake Analytics__ ve __Azure HDInsight__ gibi işlem hedefleri. İşlem hedefleri hakkında daha fazla bilgi için bkz. [işlem hedefleri nelerdir?](concept-compute-target.md).
 + __Azure Event Grid__. Daha fazla bilgi için bkz. [Azure Machine Learning olayları](./how-to-use-event-grid.md)kullanma.
 + __Azure izleyici__. Daha fazla bilgi için bkz. [izleme Azure Machine Learning](monitor-azure-machine-learning.md).
-+ __Azure depolama hesapları__ , __Azure Data Lake Storage__ , __Azure SQL veritabanı__ , __PostgreSQL Için Azure veritabanı__ ve __Azure açık veri kümeleri__ gibi veri depoları. Daha fazla bilgi için bkz. Azure [Storage hizmetlerindeki verilere erişme](how-to-access-data.md) ve [Azure açık veri kümeleri Ile veri kümeleri oluşturma](how-to-create-register-datasets.md).
++ __Azure depolama hesapları__, __Azure Data Lake Storage__, __Azure SQL veritabanı__, __PostgreSQL Için Azure veritabanı__ ve __Azure açık veri kümeleri__ gibi veri depoları. Daha fazla bilgi için bkz. Azure [Storage hizmetlerindeki verilere erişme](how-to-access-data.md) ve [Azure açık veri kümeleri Ile veri kümeleri oluşturma](how-to-create-register-datasets.md).
 + __Azure sanal ağları__. Daha fazla bilgi için bkz. [sanal ağ yalıtımı ve gizliliğe genel bakış](how-to-network-security-overview.md).
 + __Azure Pipelines__. Daha fazla bilgi için bkz. [makine öğrenimi modellerini eğitme ve dağıtma](/azure/devops/pipelines/targets/azure-machine-learning).
 + __Git deposu günlükleri__. Daha fazla bilgi için bkz. [Git tümleştirmesi](concept-train-model-git-integration.md).

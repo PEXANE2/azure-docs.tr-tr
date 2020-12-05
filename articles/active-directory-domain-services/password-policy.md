@@ -2,7 +2,7 @@
 title: Azure AD Domain Services parola ilkeleri oluşturma ve kullanma | Microsoft Docs
 description: Azure AD DS yönetilen bir etki alanında hesap parolalarını güvenli hale getirmek ve denetlemek için hassas parola ilkelerinin nasıl ve neden kullanılacağını öğrenin.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 1a14637e-b3d0-4fd9-ba7a-576b8df62ff2
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 2dbc75ac4f143089db778b260bb2c4bee5b49f6a
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.author: justinha
+ms.openlocfilehash: df132af1675b3f373fe1eab5685c5d2f07813445
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393175"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619241"
 ---
 # <a name="password-and-account-lockout-policies-on-azure-active-directory-domain-services-managed-domains"></a>Azure Active Directory Domain Services yönetilen etki alanlarında parola ve hesap kilitleme ilkeleri
 
@@ -90,7 +90,7 @@ Azure 'da uygulama oluşturup çalıştırdığınızda, özel bir parola ilkesi
 > [!NOTE]
 > Yönetilen bir etki alanında özel bir parola ilkesi oluşturmak için, *AAD DC Administrators* grubunun üyesi olan bir kullanıcı hesabında oturum açmış olmanız gerekir.
 
-1. Başlangıç ekranından **Yönetim Araçları** ' nı seçin. [Yönetim sanal makinesi oluşturmak][tutorial-create-management-vm]için öğreticide yüklü olan kullanılabilir yönetim araçlarının bir listesi gösterilir.
+1. Başlangıç ekranından **Yönetim Araçları**' nı seçin. [Yönetim sanal makinesi oluşturmak][tutorial-create-management-vm]için öğreticide yüklü olan kullanılabilir yönetim araçlarının bir listesi gösterilir.
 1. OU 'Ları oluşturup yönetmek için, yönetim araçları listesinden **Active Directory Yönetim Merkezi** ' yi seçin.
 1. Sol bölmede, *aaddscontoso.com* gibi yönetilen etki alanınızı seçin.
 1. **Sistem** kapsayıcısını ve sonra **parola ayarları kapsayıcısı** açın.
@@ -99,11 +99,11 @@ Azure 'da uygulama oluşturup çalıştırdığınızda, özel bir parola ilkesi
 
     ![Active Directory Yönetim Merkezi parola ilkesi oluşturma](./media/password-policy/create-password-policy-adac.png)
 
-1. Sağdaki **Görevler** panelinde **Yeni > parola ayarları** ' nı seçin.
+1. Sağdaki **Görevler** panelinde **Yeni > parola ayarları**' nı seçin.
 1. **Parola ayarlarını oluştur** iletişim kutusunda, Ilke Için *Mycustomfgpp* gibi bir ad girin.
-1. Birden çok parola ilkesi varsa, en yüksek önceliğe veya önceliğe sahip ilke bir kullanıcıya uygulanır. Sayı ne kadar düşükse öncelik o kadar yüksektir. Varsayılan parola ilkesinin önceliği *200* ' dir.
+1. Birden çok parola ilkesi varsa, en yüksek önceliğe veya önceliğe sahip ilke bir kullanıcıya uygulanır. Sayı ne kadar düşükse öncelik o kadar yüksektir. Varsayılan parola ilkesinin önceliği *200*' dir.
 
-    Varsayılan değer olan *1* ' i geçersiz kılmak için özel parola ilkenizin önceliğini ayarlayın.
+    Varsayılan değer olan *1*' i geçersiz kılmak için özel parola ilkenizin önceliğini ayarlayın.
 
 1. Diğer parola ilkesi ayarlarını istediğiniz gibi düzenleyin. Aşağıdaki anahtar noktalarını unutmayın:
 

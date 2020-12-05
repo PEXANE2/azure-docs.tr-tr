@@ -2,24 +2,24 @@
 title: Çoğaltma kümeleri Azure AD Domain Services için kavramlar | Microsoft Docs
 description: Azure Active Directory Domain Services hangi çoğaltma kümelerinin olduğunu ve kimlik hizmetleri gerektiren uygulamalar için nasıl artıklık sağladığını öğrenin.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.author: joflore
-ms.openlocfilehash: 499f4df303993d97ebb4eb38de98828b085aff00
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 5359a955ea97b559b7e3d244bfb6c4fb09e8681b
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961077"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620044"
 ---
 # <a name="replica-sets-concepts-and-features-for-azure-active-directory-domain-services-preview"></a>Çoğaltma, Azure Active Directory Domain Services için kavramları ve özellikleri belirler (Önizleme)
 
-Azure Active Directory Domain Services (Azure AD DS) yönetilen bir etki alanı oluşturduğunuzda, benzersiz bir ad alanı tanımlarsınız. Bu ad alanı, *aaddscontoso.com*gibi etki alanı adıdır ve iki etki alanı denetleyicisi (DC) seçili Azure bölgenize dağıtılır. Bu DC dağıtımı bir çoğaltma kümesi olarak bilinir.
+Azure Active Directory Domain Services (Azure AD DS) yönetilen bir etki alanı oluşturduğunuzda, benzersiz bir ad alanı tanımlarsınız. Bu ad alanı, *aaddscontoso.com* gibi etki alanı adıdır ve iki etki alanı denetleyicisi (DC) seçili Azure bölgenize dağıtılır. Bu DC dağıtımı bir çoğaltma kümesi olarak bilinir.
 
 Yönetilen bir etki alanını, Azure AD kiracısı başına birden fazla çoğaltma kümesine sahip olacak şekilde genişletebilirsiniz. Çoğaltma kümeleri, Azure AD DS 'yi destekleyen herhangi bir Azure bölgesindeki eşlenen herhangi bir sanal ağa eklenebilir. Farklı Azure bölgelerindeki ek çoğaltma kümeleri, bir Azure bölgesi çevrimdışı kalırsa eski uygulamalar için coğrafi olağanüstü durum kurtarma sağlar.
 
@@ -30,7 +30,7 @@ Yönetilen bir etki alanını, Azure AD kiracısı başına birden fazla çoğal
 
 ## <a name="how-replica-sets-work"></a>Çoğaltma kümeleri nasıl çalışır?
 
-*Aaddscontoso.com*gibi yönetilen bir etki alanı oluşturduğunuzda, bir ilk çoğaltma kümesi oluşturulur. Ek çoğaltma kümeleri aynı ad alanını ve yapılandırmayı paylaşır. Yapılandırma, Kullanıcı kimliği ve kimlik bilgileri, gruplar, Grup İlkesi nesneleri, bilgisayar nesneleri ve diğer değişiklikler dahil olmak üzere Azure AD DS değişiklikleri, yönetilen etki alanındaki tüm çoğaltma kümelerine AD DS çoğaltma kullanılarak uygulanır.
+*Aaddscontoso.com* gibi yönetilen bir etki alanı oluşturduğunuzda, bir ilk çoğaltma kümesi oluşturulur. Ek çoğaltma kümeleri aynı ad alanını ve yapılandırmayı paylaşır. Yapılandırma, Kullanıcı kimliği ve kimlik bilgileri, gruplar, Grup İlkesi nesneleri, bilgisayar nesneleri ve diğer değişiklikler dahil olmak üzere Azure AD DS değişiklikleri, yönetilen etki alanındaki tüm çoğaltma kümelerine AD DS çoğaltma kullanılarak uygulanır.
 
 Bir sanal ağ içinde her bir çoğaltma kümesini oluşturursunuz. Her sanal ağ, yönetilen bir etki alanının çoğaltma kümesini barındıran diğer tüm sanal ağlar için eşlenmelidir. Bu yapılandırma dizin çoğaltmasını destekleyen bir ağ topolojisi oluşturur. Bir sanal ağ, her bir çoğaltma kümesinin farklı bir sanal alt ağda olması şartıyla birden çok çoğaltma kümesini destekleyebilir.
 

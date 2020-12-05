@@ -2,7 +2,7 @@
 title: Azure AD Domain Services bir CoreOS VM 'sine ekleme | Microsoft Docs
 description: Bir CoreOS sanal makinesini Azure AD Domain Services yönetilen bir etki alanına nasıl yapılandıracağınızı ve katılacağınızı öğrenin.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 5db65f30-bf69-4ea3-9ea5-add1db83fdb8
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/13/2020
-ms.author: joflore
-ms.openlocfilehash: c3a88f96f7391fedd973b7965a7c469ce1805d76
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 1e98f32bd6fe7d5373d5ab6621ffdce5e79abc08
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962420"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619598"
 ---
 # <a name="join-a-coreos-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Bir CoreOS sanal makinesini Azure Active Directory Domain Services yönetilen bir etki alanına katma
 
@@ -24,7 +24,7 @@ Kullanıcıların Azure 'da tek bir kimlik bilgileri kümesi kullanarak sanal ma
 
 Bu makalede, bir CoreOS VM 'sini yönetilen bir etki alanına nasıl katmak gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -42,7 +42,7 @@ Azure 'da mevcut bir CoreOS Linux sanal makinesi varsa, SSH kullanarak buna bağ
 
 Bir CoreOS Linux sanal makinesi oluşturmanız veya bu makaleyle kullanmak üzere bir test sanal makinesi oluşturmak istiyorsanız aşağıdaki yöntemlerden birini kullanabilirsiniz:
 
-* [Azure portalı](../virtual-machines/linux/quick-create-portal.md)
+* [Azure Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
@@ -122,7 +122,7 @@ krb5_realm = AADDSCONTOSO.COM
 
 SSSD yapılandırma dosyası güncelleştirildiğinden, artık sanal makineyi yönetilen etki alanına katın.
 
-1. İlk olarak, `adcli info` yönetilen etki alanı hakkında bilgi görebildiğinizi doğrulamak için komutunu kullanın. Aşağıdaki örnek, *AADDSCONTOSO.com*etki alanı için bilgileri alır. Tüm büyük harfle yönetilen etki alanı adınızı belirtin:
+1. İlk olarak, `adcli info` yönetilen etki alanı hakkında bilgi görebildiğinizi doğrulamak için komutunu kullanın. Aşağıdaki örnek, *AADDSCONTOSO.com* etki alanı için bilgileri alır. Tüm büyük harfle yönetilen etki alanı adınızı belirtin:
 
     ```console
     sudo adcli info AADDSCONTOSO.COM
@@ -154,7 +154,7 @@ SSSD yapılandırma dosyası güncelleştirildiğinden, artık sanal makineyi y�
 
 VM 'nin yönetilen etki alanına başarıyla katıldığını doğrulamak için, bir etki alanı kullanıcı hesabı kullanarak yeni bir SSH bağlantısı başlatın. Bir giriş dizininin oluşturulduğunu ve etki alanındaki grup üyeliğinin uygulandığını doğrulayın.
 
-1. Konsolınızdan yeni bir SSH bağlantısı oluşturun. Komutunu kullanarak yönetilen etki alanına ait bir etki alanı hesabı kullanın, örneğin, `ssh -l` `contosoadmin@aaddscontoso.com` *CoreOS.aaddscontoso.com*gibi sanal makinenizin adresini girin. Azure Cloud Shell kullanıyorsanız, iç DNS adı yerine VM 'nin genel IP adresini kullanın.
+1. Konsolınızdan yeni bir SSH bağlantısı oluşturun. Komutunu kullanarak yönetilen etki alanına ait bir etki alanı hesabı kullanın, örneğin, `ssh -l` `contosoadmin@aaddscontoso.com` *CoreOS.aaddscontoso.com* gibi sanal makinenizin adresini girin. Azure Cloud Shell kullanıyorsanız, iç DNS adı yerine VM 'nin genel IP adresini kullanın.
 
     ```console
     ssh -l contosoadmin@AADDSCONTOSO.com coreos.aaddscontoso.com

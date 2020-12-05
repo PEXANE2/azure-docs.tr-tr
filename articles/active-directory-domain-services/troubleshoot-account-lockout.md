@@ -2,20 +2,20 @@
 title: Azure AD Domain Services hesap kilitleme sorunlarını giderme | Microsoft Docs
 description: Azure Active Directory Domain Services ' de Kullanıcı hesaplarının kilitlenmesine neden olan yaygın sorunları nasıl giderebileceğinizi öğrenin.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 340811ee1c518cdccb5bbb0ae9b5f215f5564cfa
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 7967347fa63c657ba6211328bdd1d55512358521
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967622"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618782"
 ---
 # <a name="troubleshoot-account-lockout-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services yönetilen bir etki alanıyla hesap kilitleme sorunlarını giderme
 
@@ -56,7 +56,7 @@ Herhangi bir kötü amaçlı amaç veya etken olmadan bir hesabın kilitlenmesin
 
 Hesap kilitleme olaylarının gerçekleştiği ve nereden geldiği hakkında sorun gidermek için [Azure AD DS güvenlik denetimlerini etkinleştirin][security-audit-events]. Denetim olayları yalnızca özelliği etkinleştirdiğiniz zamandan itibaren yakalanır. İdeal olarak, sorun gidermek için hesap kilitleme sorunu *olmadan önce* güvenlik denetimlerini etkinleştirmeniz gerekir. Bir kullanıcı hesabında sürekli olarak kilitleme sorunları varsa, bir sonraki durumda güvenlik denetimlerini mümkün hale getirebilirsiniz.
 
-Güvenlik denetimlerini etkinleştirdikten sonra, aşağıdaki örnek sorgularda *Hesap kilitleme olaylarını*gözden geçirme, kod *4740*.
+Güvenlik denetimlerini etkinleştirdikten sonra, aşağıdaki örnek sorgularda *Hesap kilitleme olaylarını* gözden geçirme, kod *4740*.
 
 Son yedi güne ait tüm hesap kilitleme olaylarını görüntüleyin:
 
@@ -66,7 +66,7 @@ AADDomainServicesAccountManagement
 | where OperationName has "4740"
 ```
 
-*Drley*adlı hesap için son yedi günün tüm hesap kilitleme olaylarını görüntüleyin.
+*Drley* adlı hesap için son yedi günün tüm hesap kilitleme olaylarını görüntüleyin.
 
 ```Kusto
 AADDomainServicesAccountLogon

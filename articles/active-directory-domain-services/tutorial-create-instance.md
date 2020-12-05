@@ -1,20 +1,20 @@
 ---
 title: Öğretici-Azure Active Directory Domain Services yönetilen bir etki alanı oluşturun | Microsoft Docs
 description: Bu öğreticide, Azure portal kullanarak Azure Active Directory Domain Services yönetilen bir etki alanı oluşturmayı ve yapılandırmayı öğreneceksiniz.
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 53720b19daa436893073b4f40528a49add653ff3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 945c131394a0a3c6273f79044c8500a2feba70fe
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967248"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618153"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain"></a>Öğretici: Azure Active Directory Domain Services yönetilen bir etki alanı oluşturma ve yapılandırma
 
@@ -22,7 +22,7 @@ Azure Active Directory Domain Services (Azure AD DS), Windows Server Active Dire
 
 Ağ ve eşitleme için varsayılan yapılandırma seçeneklerini kullanarak yönetilen bir etki alanı oluşturabilir veya [Bu ayarları el ile tanımlayabilirsiniz][tutorial-create-instance-advanced]. Bu öğreticide, Azure portal kullanarak Azure AD DS yönetilen bir etki alanı oluşturmak ve yapılandırmak için varsayılan seçeneklerin nasıl kullanılacağı gösterilmektedir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Yönetilen bir etki alanı için DNS gereksinimlerini anlama
@@ -31,7 +31,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -65,12 +65,12 @@ Yönetilen bir etki alanı oluşturduğunuzda bir DNS adı belirlersiniz. Bu DNS
 
 * **Yerleşik etki alanı adı:** Varsayılan olarak, dizinin yerleşik etki alanı adı kullanılır (bir *. onmicrosoft.com* soneki). Yönetilen etki alanına internet üzerinden güvenli LDAP erişimini etkinleştirmek istiyorsanız, bu varsayılan etki alanı ile bağlantıyı güvenli hale getirmek için dijital bir sertifika oluşturamazsınız. Microsoft *. onmicrosoft.com* etki alanına sahip olduğundan, bir sertifika YETKILISI (CA) bir sertifika vermez.
 * **Özel etki alanı adları:** En yaygın yaklaşım, genellikle zaten sahip olduğunuz ve yönlendirilebilir olan özel bir etki alanı adı belirtmektir. Yönlendirilebilir, özel bir etki alanı kullandığınızda, uygulamalarınızı desteklemek için gereken şekilde trafik doğru şekilde akabilir.
-* **Yönlendirilemeyen etki alanı sonekleri:** Genellikle, *contoso. Local*gibi yönlendirilebilir olmayan bir etki alanı adı sonekini önlemenize tavsiye ederiz. *. Local* son eki yönlendirilebilir DEĞILDIR ve DNS çözümlenme sorunlarına neden olabilir.
+* **Yönlendirilemeyen etki alanı sonekleri:** Genellikle, *contoso. Local* gibi yönlendirilebilir olmayan bir etki alanı adı sonekini önlemenize tavsiye ederiz. *. Local* son eki yönlendirilebilir DEĞILDIR ve DNS çözümlenme sorunlarına neden olabilir.
 
 > [!TIP]
 > Özel bir etki alanı adı oluşturursanız, mevcut DNS ad alanları ile ilgilenin. Mevcut bir Azure veya şirket içi DNS ad alanından ayrı bir etki alanı adı kullanılması önerilir.
 >
-> Örneğin, *contoso.com*ADLı bir DNS ad alanınız varsa, *aaddscontoso.com*özel etki alanı adına sahip bir yönetilen etki alanı oluşturun. Güvenli LDAP kullanmanız gerekiyorsa, gerekli sertifikaları oluşturmak için bu özel etki alanı adını kaydetmeniz ve sahip olmanız gerekir.
+> Örneğin, *contoso.com* ADLı bir DNS ad alanınız varsa, *aaddscontoso.com* özel etki alanı adına sahip bir yönetilen etki alanı oluşturun. Güvenli LDAP kullanmanız gerekiyorsa, gerekli sertifikaları oluşturmak için bu özel etki alanı adını kaydetmeniz ve sahip olmanız gerekir.
 >
 > Ortamınızdaki diğer hizmetler için bazı ek DNS kayıtları veya ortamınızda var olan DNS adı alanları arasında koşullu DNS ileticileri oluşturmanız gerekebilir. Örneğin, kök DNS adını kullanarak bir siteyi barındıran bir Web sunucusu çalıştırırsanız, ek DNS girişleri gerektiren adlandırma çakışmaları olabilir.
 >
@@ -107,8 +107,8 @@ Yönetilen bir etki alanı oluşturmak için Azure portal *temel bilgiler* pence
 
 Hızlı bir şekilde yönetilen etki alanı oluşturmak için, ek varsayılan yapılandırma seçeneklerini kabul etmek için **gözden geçir + oluştur** seçeneğini belirleyebilirsiniz. Bu oluşturma seçeneğini belirlediğinizde aşağıdaki varsayılanlar yapılandırılır:
 
-* *10.0.2.0/24*IP adresi aralığını kullanan *aeklemeleri-VNET* adlı bir sanal ağ oluşturur.
-* *10.0.2.0/24*IP adresi aralığını kullanarak *aeklemesine-subnet* adlı bir alt ağ oluşturur.
+* *10.0.2.0/24* IP adresi aralığını kullanan *aeklemeleri-VNET* adlı bir sanal ağ oluşturur.
+* *10.0.2.0/24* IP adresi aralığını kullanarak *aeklemesine-subnet* adlı bir alt ağ oluşturur.
 * Azure AD 'deki *Tüm* kullanıcıları yönetilen etki alanına eşitler.
 
 Bu varsayılan yapılandırma seçeneklerini kabul etmek için **gözden geçir + oluştur** ' u seçin.
@@ -123,11 +123,11 @@ Sihirbazın **Özet** sayfasında, yönetilen etki alanınız için yapılandır
     ![Dağıtımın Azure portal bildirim devam ediyor](./media/tutorial-create-instance/deployment-in-progress.png)
 
 1. Bu sayfa, dizininizde yeni kaynakların oluşturulması dahil olmak üzere dağıtım işlemindeki güncelleştirmelerle yüklenir.
-1. Kaynak grubunuzu ( *Myresourcegroup*gibi) seçin ve ardından *aaddscontoso.com*gibi Azure kaynakları listesinden yönetilen etki alanınızı seçin. **Genel bakış** sekmesi, yönetilen etki alanının şu anda *dağıtmakta*olduğunu gösterir. Yönetilen etki alanını, tam olarak sağlanana kadar yapılandıramazsınız.
+1. Kaynak grubunuzu ( *Myresourcegroup* gibi) seçin ve ardından *aaddscontoso.com* gibi Azure kaynakları listesinden yönetilen etki alanınızı seçin. **Genel bakış** sekmesi, yönetilen etki alanının şu anda *dağıtmakta* olduğunu gösterir. Yönetilen etki alanını, tam olarak sağlanana kadar yapılandıramazsınız.
 
     ![Sağlama durumu sırasında etki alanı Hizmetleri durumu](./media/tutorial-create-instance/provisioning-in-progress.png)
 
-1. Yönetilen etki alanı tam olarak sağlandığında **genel bakış** sekmesi, etki alanı durumunu *çalışıyor*olarak gösterir.
+1. Yönetilen etki alanı tam olarak sağlandığında **genel bakış** sekmesi, etki alanı durumunu *çalışıyor* olarak gösterir.
 
     ![Başarılı bir şekilde sağlandıktan sonra etki alanı Hizmetleri durumu](./media/tutorial-create-instance/successfully-provisioned.png)
 
@@ -138,7 +138,7 @@ Sihirbazın **Özet** sayfasında, yönetilen etki alanınız için yapılandır
 
 Azure AD DS başarıyla dağıtıldı, artık sanal ağı diğer bağlı VM 'Lerin ve uygulamaların yönetilen etki alanını kullanmasına izin verecek şekilde yapılandırın. Bu bağlantıyı sağlamak için, sanal ağınızın DNS sunucusu ayarlarını, yönetilen etki alanının dağıtıldığı iki IP adresini işaret etmek üzere güncelleştirin.
 
-1. Yönetilen etki alanınız için **genel bakış** sekmesi bazı **gerekli yapılandırma adımlarını**gösterir. İlk yapılandırma adımı, sanal ağınızın DNS sunucusu ayarlarını güncelleştiryöneliktir. DNS ayarları doğru yapılandırıldıktan sonra bu adım artık gösterilmemektedir.
+1. Yönetilen etki alanınız için **genel bakış** sekmesi bazı **gerekli yapılandırma adımlarını** gösterir. İlk yapılandırma adımı, sanal ağınızın DNS sunucusu ayarlarını güncelleştiryöneliktir. DNS ayarları doğru yapılandırıldıktan sonra bu adım artık gösterilmemektedir.
 
     Listelenen adresler, sanal ağda kullanılacak etki alanı denetleyicileridir. Bu örnekte, bu adresler *10.0.2.4* ve *10.0.2.5*. Daha sonra bu IP adreslerini **Özellikler** sekmesinde bulabilirsiniz.
 

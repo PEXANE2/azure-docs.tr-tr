@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 2f59feb83149042781b624aeb0df73fe3ab32587
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 0226635fe34244bf09bc92f9fe065593d3a79a5a
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574233"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621068"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices-preview"></a>Öğretici: IoT Edge cihazları hiyerarşisi oluşturma (Önizleme)
 
@@ -611,7 +611,7 @@ Kaynakları silmek için:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, iki IoT Edge cihazı ağ geçidi olarak yapılandırdığınıza ve bir tane diğerinin üst aygıtı olarak ayarlayaöğreneceksiniz. Daha sonra, bir ağ geçidi üzerinden bir kapsayıcı görüntüsünü alt cihaza çekiniz. Ayrıca, bir fabrika ortamının benzetimini yapmak için Azure sanal makinelerini önceden yapılandırılmış cihazlar olarak dağıtan [endüstriyel IoT örneği için](https://aka.ms/iotedge-nested-sample)komut dosyalı Azure IoT Edge ' yi izleyerek bu senaryoyu deneyebilirsiniz.
+Bu öğreticide, iki IoT Edge cihazı ağ geçidi olarak yapılandırdığınıza ve bir tane diğerinin üst aygıtı olarak ayarlayaöğreneceksiniz. Daha sonra, bir ağ geçidi üzerinden bir kapsayıcı görüntüsünü alt cihaza çekiniz.
 
 Azure IoT Edge sisteminin işletmeniz için oluşturabileceği ek çözümleri görmek için diğer öğreticilere geçin.
 

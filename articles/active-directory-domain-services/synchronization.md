@@ -2,7 +2,7 @@
 title: Eşitlemenin nasıl çalıştığı Azure AD Domain Services | Microsoft Docs
 description: Eşitleme işleminin, bir Azure AD kiracısından veya şirket içi Active Directory Domain Services ortamından Azure Active Directory Domain Services yönetilen bir etki alanına yönelik nesneler ve kimlik bilgileri için nasıl çalıştığını öğrenin.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 57cbf436-fc1d-4bab-b991-7d25b6e987ef
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 92d440d019942219b322ef084b45317983d04fbe
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.author: justinha
+ms.openlocfilehash: 41ba337765b4a0a93be52f08ae6656707cf7aa73
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602249"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618816"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services yönetilen bir etki alanında nesneleri ve kimlik bilgilerini eşitleme
 

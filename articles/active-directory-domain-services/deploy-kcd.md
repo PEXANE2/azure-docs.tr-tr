@@ -2,7 +2,7 @@
 title: Azure AD Domain Services için Kerberos kısıtlanmış temsili | Microsoft Docs
 description: Azure Active Directory Domain Services yönetilen bir etki alanında kaynak tabanlı Kerberos kısıtlı temsilcisini (KCD) etkinleştirmeyi öğrenin.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 949dbfd4cc2e4ac05cddf035e22119bfb16e306f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 138b90a33ff1dbc4b014f17fa0098112e1da66e4
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960720"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619785"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 'de Kerberos kısıtlanmış temsilcisini (KCD) yapılandırma
 
@@ -26,7 +26,7 @@ Azure Active Directory Domain Services (Azure AD DS) yönetilen etki alanları, 
 
 Bu makalede, Azure AD DS yönetilen bir etki alanında kaynak tabanlı Kerberos kısıtlanmış temsilcinin nasıl yapılandırılacağı gösterilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyacınız vardır:
 
@@ -58,7 +58,7 @@ Kaynak tabanlı KCD, PowerShell kullanılarak yapılandırılır. Kimliğe bür�
 
 ## <a name="configure-resource-based-kcd-for-a-computer-account"></a>Bilgisayar hesabı için kaynak tabanlı KCD 'YI yapılandırma
 
-Bu senaryoda, *contoso-WebApp.aaddscontoso.com*adlı bilgisayarda çalışan bir Web uygulamasına sahip olduğunu varsayalım.
+Bu senaryoda, *contoso-WebApp.aaddscontoso.com* adlı bilgisayarda çalışan bir Web uygulamasına sahip olduğunu varsayalım.
 
 Web uygulamasının, etki alanı kullanıcıları bağlamında *contoso-api.aaddscontoso.com* adlı bilgisayarda çalışan BIR Web API 'sine erişmesi gerekir.
 
@@ -81,7 +81,7 @@ Bu senaryoyu yapılandırmak için aşağıdaki adımları izleyin:
 
 ## <a name="configure-resource-based-kcd-for-a-user-account"></a>Bir kullanıcı hesabı için kaynak tabanlı KCD 'YI yapılandırma
 
-Bu senaryoda, *appsvc*adlı bir hizmet hesabı olarak çalışan bir Web uygulamanız olduğunu varsayalım. Web uygulamasının, etki alanı kullanıcıları bağlamında *backendsvc* adlı bir hizmet hesabı olarak çalışan BIR Web API 'sine erişmesi gerekir. Bu senaryoyu yapılandırmak için aşağıdaki adımları izleyin:
+Bu senaryoda, *appsvc* adlı bir hizmet hesabı olarak çalışan bir Web uygulamanız olduğunu varsayalım. Web uygulamasının, etki alanı kullanıcıları bağlamında *backendsvc* adlı bir hizmet hesabı olarak çalışan BIR Web API 'sine erişmesi gerekir. Bu senaryoyu yapılandırmak için aşağıdaki adımları izleyin:
 
 1. [Özel BIR OU oluşturun](create-ou.md). Bu özel OU 'yu yönetilen etki alanındaki kullanıcılara yönetmek için izinler atayabilirsiniz.
 1. [Etki alanı-][create-join-windows-vm] arka uç Web API 'si/kaynağını çalıştıran sanal makineleri yönetilen etki alanına ekleyin. Kendi bilgisayar hesabını özel OU içinde oluşturun.

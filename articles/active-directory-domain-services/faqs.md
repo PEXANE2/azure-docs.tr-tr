@@ -2,7 +2,7 @@
 title: Azure AD Domain Services hakkında sık sorulan sorular | Microsoft Docs
 description: Azure Active Directory Domain Services için yapılandırma, yönetim ve kullanılabilirlik hakkında sık sorulan sorulardan bazılarını okuyun ve anlayın
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 48731820-9e8c-4ec2-95e8-83dba1e58775
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 09/30/2020
-ms.author: joflore
-ms.openlocfilehash: 07d2d71c13cd054dec46b6eaa9f07079c8cec63b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: e4e7a64b9f9d7283de728216934854f4ef8f8fd1
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962301"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619742"
 ---
 # <a name="frequently-asked-questions-faqs-about-azure-active-directory-ad-domain-services"></a>Azure Active Directory (AD) etki alanı Hizmetleri hakkında sık sorulan sorular (SSS)
 
@@ -122,7 +122,7 @@ Azure AD Domain Services yönetilen bir etki alanında varsayılan parola ömrü
 
 Ayrıca, *Disablepasswordexpiasyon* IÇIN Azure AD parola ilkesi, yönetilen bir etki alanıyla eşitlenir. *Disablepasswordexpiasyon* , Azure AD 'de bir kullanıcıya uygulandığında, yönetilen etki alanındaki eşitlenmiş kullanıcının *UserAccountControl* değeri *DONT_EXPIRE_PASSWORD* uygulanmış olur.
 
-Kullanıcılar Azure AD 'de parolalarını sıfırlarken *Forcechangepasswordnextsignın = true* özniteliği uygulanır. Yönetilen bir etki alanı bu özniteliği Azure AD 'den eşitler. Yönetilen etki alanı, Azure AD 'den eşitlenen bir kullanıcı için *Forcechangepasswordnextsignın* değerini algıladığında, yönetilen etki alanındaki *pwdLastSet* özniteliği *0*olarak ayarlanır ve bu, şu anda ayarlanmış parolayı geçersiz kılar.
+Kullanıcılar Azure AD 'de parolalarını sıfırlarken *Forcechangepasswordnextsignın = true* özniteliği uygulanır. Yönetilen bir etki alanı bu özniteliği Azure AD 'den eşitler. Yönetilen etki alanı, Azure AD 'den eşitlenen bir kullanıcı için *Forcechangepasswordnextsignın* değerini algıladığında, yönetilen etki alanındaki *pwdLastSet* özniteliği *0* olarak ayarlanır ve bu, şu anda ayarlanmış parolayı geçersiz kılar.
 
 ### <a name="does-azure-ad-domain-services-provide-ad-account-lockout-protection"></a>Azure AD Domain Services AD hesabı kilitleme koruması sağlar mi?
 Evet. Yönetilen etki alanında 2 dakika içinde 5 geçersiz parola denemesi, bir kullanıcı hesabının 30 dakika boyunca kilitlenmesine neden olur. 30 dakika sonra, Kullanıcı hesabı otomatik olarak kilidi açılır. Yönetilen etki alanında geçersiz parola denemeleri, Azure AD 'de Kullanıcı hesabını kilitlemez. Kullanıcı hesabı yalnızca Azure AD Domain Services yönetilen etki alanı içinde kilitlenir. Daha fazla bilgi için bkz. [yönetilen etki alanlarında parola ve hesap kilitleme ilkeleri](password-policy.md).

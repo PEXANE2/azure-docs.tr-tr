@@ -2,7 +2,7 @@
 title: Azure AD Domain Services için e-posta bildirimleri | Microsoft Docs
 description: Azure Active Directory Domain Services yönetilen bir etki alanındaki sorunlar hakkında sizi uyarmak için e-posta bildirimlerini nasıl yapılandıracağınızı öğrenin
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: b9af1792-0b7f-4f3e-827a-9426cdb33ba6
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: c273b1a6c497ec8dcb8c5bc5f50ccfccc9fce155
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 4242092af86f8bc06ef9c9eba068ce07725de01f
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968026"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619173"
 ---
 # <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services sorunları için e-posta bildirimlerini yapılandırın
 
@@ -57,8 +57,8 @@ Ayrıca, Azure AD dizini 'nin tüm *genel yöneticilerinin* ve *AAD DC yönetici
 
 Var olan e-posta bildirim alıcılarını gözden geçirmek veya ek alıcılar eklemek için aşağıdaki adımları izleyin:
 
-1. Azure portal, araması yapın ve **Azure AD Domain Services**seçin.
-1. *Aaddscontoso.com*gibi yönetilen etki alanınızı seçin.
+1. Azure portal, araması yapın ve **Azure AD Domain Services** seçin.
+1. *Aaddscontoso.com* gibi yönetilen etki alanınızı seçin.
 1. Azure AD DS kaynak penceresinin sol tarafında **bildirim ayarları**' nı seçin. E-posta bildirimleri için mevcut alıcılar gösterilir.
 1. E-posta alıcısı eklemek için, ek alıcılar tablosuna e-posta adresini girin.
 1. İşiniz bittiğinde, üstteki gezinmede **Kaydet** ' i seçin.
@@ -68,7 +68,7 @@ Var olan e-posta bildirim alıcılarını gözden geçirmek veya ek alıcılar e
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
-### <a name="i-received-an-email-notification-for-an-alert-but-when-i-logged-on-to-the-azure-portal-there-was-no-alert-what-happened"></a>Uyarı için bir e-posta bildirimi aldım, ancak Azure portal oturum açtıklarında hiçbir uyarı yoktu. Neler oldu?
+### <a name="i-received-an-email-notification-for-an-alert-but-when-i-logged-on-to-the-azure-portal-there-was-no-alert-what-happened"></a>Uyarı için bir e-posta bildirimi aldım, ancak Azure portal oturum açtıklarında hiçbir uyarı yoktu. Ne oldu?
 
 Bir uyarı çözümlenirse, uyarı Azure portal temizlenir. En olası neden, e-posta bildirimleri alan başka birinin, yönetilen etki alanındaki uyarıyı çözdüğü veya Azure platformu tarafından yeniden çözümlenmesidir.
 
@@ -76,7 +76,7 @@ Bir uyarı çözümlenirse, uyarı Azure portal temizlenir. En olası neden, e-p
 
 Azure portal bildirim ayarları sayfasına erişemezseniz, yönetilen etki alanını düzenleme izinleriniz yoktur. Azure AD DS kaynağını düzenleme veya alıcı listesinden kaldırma izinleri almak için genel bir yöneticiye başvurun.
 
-### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>E-posta adresimi sağladığım halde e-posta bildirimleri almıyorum. Neden mi?
+### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>E-posta adresimi sağladığım halde e-posta bildirimleri almıyorum. Neden?
 
 Bildirim için e-postalarınızın istenmeyen posta veya istenmeyen klasörünüzü denetleyin ve göndericiye izin vermeyi unutmayın `azure-noreply@microsoft.com` .
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
 ms.openlocfilehash: acb05da0255445de31e08f2724dcb484a3e05b17
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 12/05/2020
 ms.locfileid: "84764274"
 ---
 # <a name="networking-limit-increase"></a>Ağ sınırını artırma
@@ -27,7 +27,7 @@ Geçerli ağ kullanımınızı ve kotayı Azure portal görüntülemek için abo
 **Yardım + Destek** veya portalda **kullanımlar + kotalar** ' i kullanarak artış isteyebilirsiniz.
 
 > [!Note]
-> **Genel IP ön eklerinin**varsayılan boyutunu değiştirmek için, açılan listeden **en az genel IP ağlar arası önek uzunluğu** ' nu seçin.
+> **Genel IP ön eklerinin** varsayılan boyutunu değiştirmek için, açılan listeden **en az genel IP ağlar arası önek uzunluğu** ' nu seçin.
 
 ## <a name="request-networking-quota-increase-at-subscription-level-using-help--support"></a>Yardım + destek kullanarak abonelik düzeyinde ağ kotası artışı iste
 
@@ -41,7 +41,7 @@ Azure portal **Yardım + Destek** kullanarak bir destek isteği oluşturmak içi
 
     ![Yeni destek isteği](./media/networking-quota-request/new-support-request.png)
 
-1. **Sorun türü**için **hizmet ve abonelik sınırları (kotalar)** öğesini seçin.
+1. **Sorun türü** için **hizmet ve abonelik sınırları (kotalar)** öğesini seçin.
 
     ![Sorun türü açılır listesinden abonelik sınırlarını seçin](./media/networking-quota-request/select-quota-issue-type.png)
 
@@ -49,7 +49,7 @@ Azure portal **Yardım + Destek** kullanarak bir destek isteği oluşturmak içi
 
     ![Abonelik newSR 'yi seçin](./media/networking-quota-request/select-subscription-support-request.png)
 
-1. **Kota türü**altında **ağ**' ı seçin. **İleri ' yi seçin: çözümler**.
+1. **Kota türü** altında **ağ**' ı seçin. **İleri ' yi seçin: çözümler**.
 
     ![Kota türünü seçin](./media/networking-quota-request/select-quota-type-network.png)
 
@@ -69,7 +69,7 @@ Azure portal **Yardım + Destek** kullanarak bir destek isteği oluşturmak içi
 
 Azure portal **kullanım + kota** kullanarak bir destek isteği oluşturmak için bu yönergeleri izleyin.
 
-1. İçinden https://portal.azure.com , **abonelik**arayın ve seçin.
+1. İçinden https://portal.azure.com , **abonelik** arayın ve seçin.
 
     ![Abonelikler](./media/networking-quota-request/search-for-suscriptions.png)
 

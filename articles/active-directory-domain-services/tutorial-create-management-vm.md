@@ -1,20 +1,20 @@
 ---
 title: Öğretici-Azure Active Directory Domain Services için bir yönetim sanal makinesi oluşturma | Microsoft Docs
 description: Bu öğreticide, Azure Active Directory Domain Services yönetilen etki alanını yönetmek için kullandığınız bir Windows sanal makinesini nasıl oluşturacağınızı ve yapılandıracağınızı öğreneceksiniz.
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 52a97b824824d8e9eaf79cfa4a447494bf1525cf
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.author: justinha
+ms.openlocfilehash: d017fc3fc53c9f89978893670df10ecd731da904
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175160"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618187"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Öğretici: Azure Active Directory Domain Services yönetilen bir etki alanını yapılandırmak ve yönetmek için bir yönetim sanal makinesi oluşturma
 
@@ -22,7 +22,7 @@ Azure Active Directory Domain Services (Azure AD DS), Windows Server Active Dire
 
 Bu öğreticide, Azure 'da bir Windows Server VM 'sinin nasıl yapılandırılacağı ve Azure AD DS yönetilen bir etki alanını yönetmek için gerekli araçların nasıl yükleneceği gösterilmektedir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Yönetilen bir etki alanındaki kullanılabilir yönetim görevlerini anlayın
@@ -31,7 +31,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 

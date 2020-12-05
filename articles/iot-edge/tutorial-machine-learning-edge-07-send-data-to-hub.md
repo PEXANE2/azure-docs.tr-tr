@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f0695af6922182aa8be7acfb4b0a931bed35ef7d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1927ec00df67522563fb063f2cb127fee4c0bcbf
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959314"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621051"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Öğretici: saydam ağ geçidi aracılığıyla veri gönderme
 
@@ -24,7 +24,7 @@ Sanal cihaz veri gönderirken IoT Edge cihazının işlemini izliyoruz. Cihazın
 
 Bu adım genellikle bir bulut veya cihaz geliştiricisi tarafından gerçekleştirilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makale, IoT Edge Azure Machine Learning kullanımı hakkında öğretici için bir serinin bir parçasıdır. Serideki her makale, önceki makaledeki iş üzerinde oluşturulur. Bu makaleye doğrudan ulaşdıysanız, serideki [ilk makaleyi](tutorial-machine-learning-edge-01-intro.md) ziyaret edin.
 
@@ -111,7 +111,7 @@ AvroFileWriter modülünün çıktısı, IoT Edge cihazına bakarak kolayca göz
 
 1. 10 dakika geçtikten sonra modülün dosyaları karşıya yüklemesi gerekir. Karşıya yükleme başarılı olursa, dosyaları diskten siler.
 
-### <a name="azure-storage"></a>Azure Depolama
+### <a name="azure-storage"></a>Azure Storage
 
 Verilerin yönlendirilmesini beklediğimiz depolama hesaplarına bakarak yaprak cihazımızın sonuçlarını gözlemleyebiliriz.
 
@@ -237,10 +237,7 @@ Bu uçtan uca öğretici tarafından kullanılan kaynakları keşfetmeye çalı�
 
 Bu makalede, IoT Edge cihazımız algılayıcısı ve işletimsel verileri gönderen bir yaprak cihazın benzetimini yapmak için geliştirme sanal makinesini kullandık. Cihazdaki modüllerin, sınır cihazının gerçek zamanlı işlemini inceleyerek ve depolama hesabına yüklenen dosyalara bakarak verileri yönlendirdiğini, sınıflandırdığını, kalıcı ve karşıya yüklediğini doğruladı.
 
-Aşağıdaki sayfalarda daha fazla bilgi bulabilirsiniz:
+IoT Edge özellikleri hakkında öğrenmeye devam etmek için, sonraki öğreticiyi deneyin:
 
 > [!div class="nextstepaction"]
-> [Aşağı akış cihazını Azure IoT Edge ağ geçidine bağlama](how-to-connect-downstream-device.md)
-
-> [!div class="nextstepaction"]
-> [IoT Edge Azure Blob Storage ile verileri kenarda depolayın (Önizleme)](how-to-store-data-blob.md)
+> [IoT Edge cihaz hiyerarşisi oluşturma (Önizleme)](tutorial-nested-iot-edge.md?view=iotedge-2020-11&preserve-view=true)

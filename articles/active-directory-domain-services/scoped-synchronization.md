@@ -2,7 +2,7 @@
 title: Azure AD Domain Services için kapsamlı eşitleme | Microsoft Docs
 description: Azure AD 'den Azure Active Directory Domain Services yönetilen bir etki alanına kapsamlı eşitlemeyi yapılandırmak için Azure portal nasıl kullanacağınızı öğrenin
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 9389cf0f-0036-4b17-95da-80838edd2225
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/24/2020
-ms.author: joflore
+ms.author: justinha
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 514932726d9283af0c3fb404f787a10057ce8842
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 4e65b47b2a1fd71c69ecb350f60df1fedff66b74
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967860"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618918"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services-using-the-azure-portal"></a>Azure AD 'den kapsamlı eşitlemeyi Azure Active Directory Domain Services Azure portal kullanarak yapılandırma
 
@@ -57,9 +57,9 @@ Eşitleme işlemi hakkında daha fazla bilgi edinmek için bkz. [Azure AD Domain
 
 Azure portal kapsamlı eşitlemeyi etkinleştirmek için aşağıdaki adımları izleyin:
 
-1. Azure portal, araması yapın ve **Azure AD Domain Services**seçin. *Aaddscontoso.com*gibi yönetilen etki alanınızı seçin.
+1. Azure portal, araması yapın ve **Azure AD Domain Services** seçin. *Aaddscontoso.com* gibi yönetilen etki alanınızı seçin.
 1. Sol taraftaki menüden **eşitleme** ' yi seçin.
-1. *Eşitleme türü*için **kapsamlı**öğesini seçin.
+1. *Eşitleme türü* için **kapsamlı** öğesini seçin.
 1. **Grupları seç**' i seçin, ardından eklenecek grupları arayıp seçin.
 1. Tüm değişiklikler yapıldığında, **eşitleme kapsamını kaydet**' i seçin.
 
@@ -69,7 +69,7 @@ Eşitleme kapsamını değiştirmek, yönetilen etki alanının tüm verileri ye
 
 Kullanıcıları yönetilen etki alanıyla eşitlenmesi gereken grupların listesini değiştirmek için aşağıdaki adımları izleyin:
 
-1. Azure portal, araması yapın ve **Azure AD Domain Services**seçin. *Aaddscontoso.com*gibi yönetilen etki alanınızı seçin.
+1. Azure portal, araması yapın ve **Azure AD Domain Services** seçin. *Aaddscontoso.com* gibi yönetilen etki alanınızı seçin.
 1. Sol taraftaki menüden **eşitleme** ' yi seçin.
 1. Bir grup eklemek için üstteki **grupları + seç** ' i seçin ve ardından eklenecek grupları seçin.
 1. Bir grubu eşitleme kapsamından kaldırmak için, şu anda eşitlenmiş gruplar listesinden seçin ve **grupları kaldır**' ı seçin.
@@ -81,9 +81,9 @@ Eşitleme kapsamını değiştirmek, yönetilen etki alanının tüm verileri ye
 
 Yönetilen bir etki alanı için grup tabanlı kapsamlı eşitlemeyi devre dışı bırakmak için aşağıdaki adımları izleyin:
 
-1. Azure portal, araması yapın ve **Azure AD Domain Services**seçin. *Aaddscontoso.com*gibi yönetilen etki alanınızı seçin.
+1. Azure portal, araması yapın ve **Azure AD Domain Services** seçin. *Aaddscontoso.com* gibi yönetilen etki alanınızı seçin.
 1. Sol taraftaki menüden **eşitleme** ' yi seçin.
-1. *Eşitleme türünü* **Kapsamsız** olarak değiştirin ve ardından **eşitleme kapsamını kaydet** **' i**seçin.
+1. *Eşitleme türünü* **Kapsamsız** olarak değiştirin ve ardından **eşitleme kapsamını kaydet** **' i** seçin.
 
 Eşitleme kapsamını değiştirmek, yönetilen etki alanının tüm verileri yeniden eşitlemesine neden olur. Yönetilen etki alanında artık gerekli olmayan nesneler silinir ve yeniden eşitleme işleminin tamamlanması biraz zaman alabilir.
 

@@ -1,5 +1,5 @@
 ---
-title: SaaS teklifinizi Microsoft Iş Ortağı Merkezi 'nde pazara sunma
+title: SaaS teklifinizi Microsoft Iş Ortağı Merkezi 'nde satma
 description: Microsoft ticari marketi 'nde hizmet olarak yazılım (SaaS) teklifi için Microsoft ile ortak satış ve bulut çözüm sağlayıcıları (CSP) program seçenekleri aracılığıyla yeniden satış hakkında bilgi edinin.
 author: mingshen-ms
 ms.author: mingshen
@@ -8,22 +8,22 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 4ccc5a63da40950fbf9f05e3e029393fce8814d7
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: e61d85b5f02cb73d078888badc2fa24c4506fe64
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576698"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620894"
 ---
-# <a name="how-to-market-your-saas-offer"></a>SaaS teklifinizi pazara sunma
+# <a name="how-to-sell-your-saas-offer"></a>SaaS teklifinizi satma
 
-Bu makalede, Microsoft aracılığıyla hizmet olarak yazılım (SaaS) teklifi satıyorsanız seçebileceğiniz ek pazarlama seçenekleri açıklanmaktadır. Teklifinizi Microsoft ile birlikte satın alabilir, [bulut çözümü sağlayıcıları (CSP) programı](cloud-solution-providers.md)veya her ikisiyle de yeniden satın alabilirsiniz.
+Bu makalede, Microsoft aracılığıyla hizmet olarak yazılım (SaaS) teklifi satıyorsanız seçebileceğiniz ek seçenekler açıklanmaktadır. Teklifinizi Microsoft ile birlikte satın alabilir, [bulut çözümü sağlayıcıları (CSP) programı](cloud-solution-providers.md)veya her ikisiyle de yeniden satın alabilirsiniz.
 
 ## <a name="co-sell-with-microsoft"></a>Microsoft ile ortak satış yapma
 
 **Microsoft Ile ortak satış** hakkında bilgi sağlamak tamamen isteğe bağlıdır. Ancak, _ortak satış Için hazırlık_ ve _IP ortak satışı için hazırlık_ durumu elde etmek gerekir. Microsoft satış ekipleri, bu bilgileri, müşteri gereksinimlerine uygun şekilde değerlendirirken çözümünüz hakkında daha fazla bilgi edinmek için kullanır. Bu sekmede sağladığınız bilgiler doğrudan müşteriler tarafından kullanılamaz.
 
-**Ortak satışı Microsoft sekmesi ile** yapılandırmaya yönelik ayrıntılar ve yönergeler için bkz. [Partner Center 'da ortak satış seçeneği](commercial-marketplace-co-sell.md).
+**Ortak satışı Microsoft** sekmesiyle yapılandırmaya yönelik ayrıntılar ve yönergeler için, bkz. [ticari Market 'teki ortak satış seçeneği](commercial-marketplace-co-sell.md).
 
 ## <a name="resell-through-csps"></a>CSP’ler aracılığıyla satış
 

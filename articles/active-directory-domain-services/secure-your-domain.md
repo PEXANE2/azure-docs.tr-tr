@@ -2,7 +2,7 @@
 title: Güvenli Azure AD Domain Services | Microsoft Docs
 description: Azure Active Directory Domain Services yönetilen bir etki alanı için zayıf şifrelemeleri, eski protokolleri ve NTLM parola karması eşitlemesini devre dışı bırakmayı öğrenin.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 6b4665b5-4324-42ab-82c5-d36c01192c2a
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: c5a3a7b6cd43bebccdbfb22bb4c81f376abc15d9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: a89c898e150facc9860d86e18a7acc42f5e0f441
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967758"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618867"
 ---
 # <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services yönetilen bir etki alanının güvenliğini sağlamak için zayıf şifre ve parola karma eşitlemesini devre dışı bırakın
 
@@ -24,7 +24,7 @@ Varsayılan olarak, Azure Active Directory Domain Services (Azure AD DS), NTLM v
 
 Bu makalede, NTLM v1 ve TLS v1 şifrelemelerini devre dışı bırakma ve NTLM parola karma eşitlemesini devre dışı bırakma gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyacınız vardır:
 

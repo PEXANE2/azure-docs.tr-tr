@@ -1,26 +1,26 @@
 ---
 title: Windows Server VM 'sini Azure AD Domain Services yönetilen bir etki alanına katma | Microsoft Docs
 description: Bu öğreticide, Windows Server sanal makinesini Azure Active Directory Domain Services yönetilen bir etki alanına nasıl katılacağınızı öğrenin.
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 5481dbfe1f7b185e87ee13f26f23ea563350b0fa
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.author: justinha
+ms.openlocfilehash: 869c827485d9b7a6baf68d2619af98d4c2ee82b9
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96171798"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619581"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Öğretici: Windows Server sanal makinesini Azure Active Directory Domain Services yönetilen bir etki alanına katma
 
 Azure Active Directory Domain Services (Azure AD DS), Windows Server Active Directory ile tamamen uyumlu etki alanına katılması, Grup ilkesi, LDAP, Kerberos/NTLM kimlik doğrulaması gibi yönetilen etki alanı Hizmetleri sağlar. Azure AD DS yönetilen bir etki alanıyla, Azure 'daki sanal makinelere (VM 'Ler) etki alanına ekleme özellikleri ve yönetimi sağlayabilirsiniz. Bu öğreticide, bir Windows Server sanal makinesi oluşturma ve ardından bunu yönetilen bir etki alanına katma gösterilmektedir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Windows Server VM oluşturma
@@ -29,7 +29,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyacınız vardır:
 

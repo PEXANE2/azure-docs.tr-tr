@@ -1,20 +1,20 @@
 ---
 title: Öğretici-Azure AD Domain Services için sanal ağı yapılandırma | Microsoft Docs
 description: Bu öğreticide, Azure portal kullanarak Azure Active Directory Domain Services yönetilen bir etki alanı için Azure sanal ağ alt ağı veya ağ eşlemesi oluşturma ve yapılandırma hakkında bilgi edineceksiniz.
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 33beb0767ef1f21d4fb3d08c9072d7c8479d2cb1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: ddb8f360304bdb41ae359f293af4d10b0afc6558
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967418"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618425"
 ---
 # <a name="tutorial-configure-virtual-networking-for-an-azure-active-directory-domain-services-managed-domain"></a>Öğretici: Azure Active Directory Domain Services yönetilen bir etki alanı için sanal ağ yapılandırma
 
@@ -24,7 +24,7 @@ Kendi VM 'lerinizi ve uygulamalarınızı oluşturduğunuzda, bunlar aynı sanal
 
 Bu öğreticide, ayrılmış bir sanal ağ alt ağı oluşturma ve yapılandırma ya da Azure AD DS yönetilen etki alanının sanal ağına farklı bir ağın nasıl eşkullanılacağı gösterilir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Etki alanına katılmış kaynaklara yönelik sanal ağ bağlantısı seçeneklerini Azure AD DS anlayın
@@ -33,7 +33,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -77,8 +77,8 @@ Varsayılan olarak, yönetilen etki alanı ile oluşturulan Azure sanal ağı te
 
 VM 'Ler ve uygulama iş yükleri için bir sanal ağ alt ağı oluşturmak için aşağıdaki adımları izleyin:
 
-1. Azure portal, yönetilen etki alanınız için *Myresourcegroup*gibi kaynak grubunu seçin. Kaynak listesinden, *aeklemesine-VNET*gibi varsayılan sanal ağı seçin.
-1. Sanal ağ penceresinin sol menüsünde **Adres alanı**' nı seçin. Sanal ağ, varsayılan alt ağ tarafından kullanılan *10.0.2.0/24*tek bir adres alanı ile oluşturulur.
+1. Azure portal, yönetilen etki alanınız için *Myresourcegroup* gibi kaynak grubunu seçin. Kaynak listesinden, *aeklemesine-VNET* gibi varsayılan sanal ağı seçin.
+1. Sanal ağ penceresinin sol menüsünde **Adres alanı**' nı seçin. Sanal ağ, varsayılan alt ağ tarafından kullanılan *10.0.2.0/24* tek bir adres alanı ile oluşturulur.
 
     Sanal ağa ek bir IP adresi aralığı ekleyin. Bu adres aralığının ve kullanılacak gerçek IP adresi aralığının boyutu, zaten dağıtılmış olan diğer ağ kaynaklarına bağlıdır. IP adresi aralığı, Azure veya şirket içi ortamınızda var olan tüm adres aralıklarıyla çakışmamalıdır. Alt ağa dağıtmayı düşündüğünüz VM sayısı için yeterince büyük olan IP adresi aralığını boyutlandırdığınızdan emin olun.
 
@@ -87,7 +87,7 @@ VM 'Ler ve uygulama iş yükleri için bir sanal ağ alt ağı oluşturmak için
     ![Azure portal ek bir sanal ağ IP adresi aralığı ekleyin](./media/tutorial-configure-networking/add-vnet-address-range.png)
 
 1. Sonra, sanal ağ penceresinin sol menüsünde **alt ağlar**' ı seçin, sonra da **+ alt** ağ ' i seçerek alt ağ ekleyin.
-1. Alt ağ için *iş yükleri*gibi bir ad girin. Gerekirse, önceki adımlarda sanal ağ için yapılandırılan IP adresi aralığının bir alt kümesini kullanmak istiyorsanız **adres aralığını** güncelleştirin. Şimdilik, ağ güvenlik grubu, yol tablosu, hizmet uç noktaları gibi seçenekler için varsayılan değerleri bırakın.
+1. Alt ağ için *iş yükleri* gibi bir ad girin. Gerekirse, önceki adımlarda sanal ağ için yapılandırılan IP adresi aralığının bir alt kümesini kullanmak istiyorsanız **adres aralığını** güncelleştirin. Şimdilik, ağ güvenlik grubu, yol tablosu, hizmet uç noktaları gibi seçenekler için varsayılan değerleri bırakın.
 
     Aşağıdaki örnekte, *10.0.3.0/24* IP adresi aralığını kullanan *iş yükleri* adlı bir alt ağ oluşturulur:
 
@@ -95,7 +95,7 @@ VM 'Ler ve uygulama iş yükleri için bir sanal ağ alt ağı oluşturmak için
 
 1. Hazırlık sırasında **Tamam**' ı seçin. Sanal ağ alt ağının oluşturulması birkaç dakika sürer.
 
-Yönetilen etki alanını kullanması gereken bir VM oluşturduğunuzda, bu sanal ağ alt ağını seçtiğinizden emin olun. Varsayılan *aeklemeleri-alt ağında*VM oluşturmayın. Farklı bir sanal ağ seçerseniz, sanal ağ eşlemesini yapılandırmadığınız müddetçe, yönetilen etki alanına ulaşmak için ağ bağlantısı ve DNS çözümlemesi yoktur.
+Yönetilen etki alanını kullanması gereken bir VM oluşturduğunuzda, bu sanal ağ alt ağını seçtiğinizden emin olun. Varsayılan *aeklemeleri-alt ağında* VM oluşturmayın. Farklı bir sanal ağ seçerseniz, sanal ağ eşlemesini yapılandırmadığınız müddetçe, yönetilen etki alanına ulaşmak için ağ bağlantısı ve DNS çözümlemesi yoktur.
 
 ## <a name="configure-virtual-network-peering"></a>Sanal Ağ eşlemesini yapılandırma
 
@@ -107,9 +107,9 @@ Eşleme hakkında daha fazla bilgi için bkz. [Azure sanal ağ eşlemesi genel b
 
 Bir sanal ağı yönetilen etki alanı sanal ağına aktarmak için, şu adımları izleyin:
 
-1. Yönetilen etki alanınız için oluşturulan *aeklemeleri-VNET*adlı varsayılan sanal ağı seçin.
+1. Yönetilen etki alanınız için oluşturulan *aeklemeleri-VNET* adlı varsayılan sanal ağı seçin.
 1. Sanal ağ penceresinin sol menüsünde, eşlemeler ' **i seçin.**
-1. Bir eşleme oluşturmak için **+ Ekle**' yi seçin. Aşağıdaki örnekte, varsayılan *AI* 'Ler *myvnet*adlı bir sanal ağ ile eşlenmez. Aşağıdaki ayarları kendi değerlerinizle yapılandırın:
+1. Bir eşleme oluşturmak için **+ Ekle**' yi seçin. Aşağıdaki örnekte, varsayılan *AI* 'Ler *myvnet* adlı bir sanal ağ ile eşlenmez. Aşağıdaki ayarları kendi değerlerinizle yapılandırın:
 
     * **Aeklemesine-VNET 'ten uzak sanal ağa eşleme adı**: *aeklemeleri-VNET-to-myvnet* gibi iki ağın açıklayıcı bir tanımlayıcısı
     * **Sanal ağ dağıtım türü**: *Kaynak Yöneticisi*
@@ -121,7 +121,7 @@ Bir sanal ağı yönetilen etki alanı sanal ağına aktarmak için, şu adımla
 
     Ortamınız için özel gereksinimleriniz olmadığı takdirde, sanal ağ erişimi veya iletilen trafik için diğer varsayılan değerleri bırakın, ardından **Tamam**' ı seçin.
 
-1. Hem Azure AD DS sanal ağı hem de seçtiğiniz sanal ağ üzerinde eşleme oluşturulması birkaç dakika sürer. ' I hazırsanız, aşağıdaki örnekte gösterildiği gibi, **eşleme durumu** *bağlı*olarak raporlar:
+1. Hem Azure AD DS sanal ağı hem de seçtiğiniz sanal ağ üzerinde eşleme oluşturulması birkaç dakika sürer. ' I hazırsanız, aşağıdaki örnekte gösterildiği gibi, **eşleme durumu** *bağlı* olarak raporlar:
 
     ![Eşlenen ağlar Azure portal başarıyla bağlandı](./media/tutorial-configure-networking/connected-peering.png)
 
@@ -136,7 +136,7 @@ Eşlenen sanal ağdaki VM 'Ler ve uygulamalar için, yönetilen etki alanı ile 
 
 Bu öğreticide, Azure sanal ağ DNS sunucularını tüm sorguları Azure AD DS etki alanı denetleyicilerine yönlendirecek şekilde yapılandıralim.
 
-1. Azure portal, eşlenen sanal ağın kaynak grubunu ( *Myresourcegroup*gibi) seçin. Kaynak listesinden, *Myvnet*gibi eşlenmiş sanal ağı seçin.
+1. Azure portal, eşlenen sanal ağın kaynak grubunu ( *Myresourcegroup* gibi) seçin. Kaynak listesinden, *Myvnet* gibi eşlenmiş sanal ağı seçin.
 1. Sanal ağ penceresinin sol menüsünde **DNS sunucuları**' nı seçin.
 1. Varsayılan olarak, bir sanal ağ yerleşik Azure tarafından sağlanmış DNS sunucularını kullanır. **Özel** DNS sunucuları kullanmayı seçin. Azure AD DS etki alanı denetleyicilerinin IP adreslerini (genellikle *10.0.2.4* ve *10.0.2.5*) girin. Portalda yönetilen etki alanının **genel bakış** PENCERESINDE bu IP adreslerini onaylayın.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d9c4dff1e4a3ba7c7a2b11311e97eb5e66a1585
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8530b74a63f4e5e2c04ff95a0106b896102dda2c
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994256"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618102"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Passwordless güvenlik anahtarı oturumunu etkinleştir (Önizleme)
 
@@ -38,9 +38,9 @@ Web Apps ve hizmetlerinde oturum açmak için güvenlik anahtarlarını kullanma
 
 ## <a name="prepare-devices-for-preview"></a>Cihazları önizleme için hazırlama
 
-Pilot ile birlikte çalıştığınız Azure AD 'ye katılmış cihazların Windows 10 sürüm 1909 veya üstünü çalıştırması gerekir. En iyi deneyim Windows 10 sürüm 1903 veya daha yüksektir.
+Azure AD 'ye katılmış cihazlarda en iyi deneyim Windows 10 sürüm 1903 veya üzeri sürümlerde bulunur.
 
-Karma Azure AD 'ye katılmış cihazların Windows 10 sürüm 2004 veya daha yeni bir sürümü çalıştırması gerekir.
+Karma Azure AD 'ye katılmış cihazlar Windows 10 sürüm 2004 veya üstünü çalıştırmalıdır.
 
 ## <a name="enable-passwordless-authentication-method"></a>Passwordless kimlik doğrulama yöntemini Etkinleştir
 

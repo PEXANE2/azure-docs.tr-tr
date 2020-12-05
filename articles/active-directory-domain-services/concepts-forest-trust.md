@@ -2,20 +2,20 @@
 title: Güvenler Azure AD Domain Services için nasıl çalışır | Microsoft Docs
 description: Orman güveninin nasıl çalıştığı hakkında daha fazla bilgi edinin Azure AD Domain Services
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 50b400ffa047d3865a9df77912da187de1ce9cc9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 5c72ab7d085de558ee95f3c602ccc6be6160b322
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962624"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620214"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Güven ilişkilerinin Azure Active Directory Domain Services içindeki kaynak ormanları için nasıl çalıştığı
 
@@ -45,7 +45,7 @@ Aşağıdaki diyagramda, *ağaç 1* ve *ağaç 2* ' deki tüm etki alanlarının
 
 Güven ilişkileri, kaynaklara erişimin tek yönlü veya iki yönlü olmasını sağlar.
 
-Tek yönlü güven, iki etki alanı arasında oluşturulan tek yönlü kimlik doğrulama yoludur. Etki alanı *a* ve *etki alanı b*arasındaki tek yönlü güvende, *a etki* alanındaki kullanıcılar *etki alanı b*'deki kaynaklara erişebilir. Ancak, *etki alanı B* 'Deki kullanıcılar *A etki alanındaki*kaynaklara erişemez.
+Tek yönlü güven, iki etki alanı arasında oluşturulan tek yönlü kimlik doğrulama yoludur. Etki alanı *a* ve *etki alanı b* arasındaki tek yönlü güvende, *a etki* alanındaki kullanıcılar *etki alanı b*'deki kaynaklara erişebilir. Ancak, *etki alanı B* 'Deki kullanıcılar *A etki alanındaki* kaynaklara erişemez.
 
 Bazı tek yönlü güvenler, oluşturulmakta olan güvenin türüne bağlı olarak geçişli ya da geçişli olabilir.
 
@@ -70,7 +70,7 @@ Orman güvenleri, bölünmüş bir AD DS altyapıları yönetmenize ve birden ç
 
 Orman güvenlerini kullanarak, tek yönlü veya iki yönlü geçişli güven ilişkisi oluşturmak için iki farklı ormanı bağlayabilirsiniz. Orman güveni, yöneticilerin ormanlar genelinde sorunsuz bir kimlik doğrulama ve yetkilendirme deneyimi sağlaması için tek bir güven ilişkisine sahip iki AD DS ormanını bağlanmasına olanak sağlar.
 
-Orman güveni, yalnızca bir ormandaki bir orman kök etki alanı ve başka bir ormandaki bir orman kök etki alanı arasında oluşturulabilir. Orman güvenleri yalnızca iki orman arasında oluşturulabilir ve örtülü olarak üçüncü bir ormana genişletilemez. Bu davranış, orman *1* ile *orman 2*arasında bir orman güveni oluşturulduysa ve *orman 2* ile *orman 3*arasında başka bir orman güveni oluşturulduysa, *Orman 1* ' in *orman 3*ile kapalı bir güveni yoktur anlamına gelir.
+Orman güveni, yalnızca bir ormandaki bir orman kök etki alanı ve başka bir ormandaki bir orman kök etki alanı arasında oluşturulabilir. Orman güvenleri yalnızca iki orman arasında oluşturulabilir ve örtülü olarak üçüncü bir ormana genişletilemez. Bu davranış, orman *1* ile *orman 2* arasında bir orman güveni oluşturulduysa ve *orman 2* ile *orman 3* arasında başka bir orman güveni oluşturulduysa, *Orman 1* ' in *orman 3* ile kapalı bir güveni yoktur anlamına gelir.
 
 Aşağıdaki diyagramda tek bir kuruluşta üç AD DS ormanı arasında iki ayrı orman güven ilişkisi gösterilmektedir.
 
@@ -170,15 +170,15 @@ Aşağıdaki diyagram ve adımlar, Windows çalıştıran bilgisayarlar başka b
 
 1. *Kullanıcı1* , *Europe.tailspintoys.com* etki alanındaki kimlik bilgilerini kullanarak *işistasyona* oturum açar. Kullanıcı daha sonra *USA.wingtiptoys.com* ormanında bulunan *FileServer1* üzerinde paylaşılan bir kaynağa erişmeyi dener.
 
-2. *Işistasyonu* , etki alanındaki bir etki alanı DENETLEYICISINDEKI Kerberos KDC ile iletişim kurar, *ChildDC1*ve *FileServer1* SPN için bir hizmet bileti ister.
+2. *Işistasyonu* , etki alanındaki bir etki alanı DENETLEYICISINDEKI Kerberos KDC ile iletişim kurar, *ChildDC1* ve *FileServer1* SPN için bir hizmet bileti ister.
 
 3. *ChildDC1* , SPN 'yi etki alanı veritabanında bulamaz ve *tailspintoys.com* ormanındaki herhangi BIR etki alanının bu SPN 'yi içerdiğini görmek için genel kataloğu sorgular. Genel Katalog kendi ormanıyla sınırlı olduğundan SPN bulunamadı.
 
-    Genel Katalog daha sonra, ormanı ile oluşturulan tüm orman güvenleri hakkında bilgi için veritabanını denetler. Bulunursa, bir eşleşme bulmak için orman güveni güvenilen etki alanı nesnesinde (TDO) listelenen ad soneklerini hedef SPN 'nin sonekine karşılaştırır. Bir eşleşme bulunduğunda genel katalog, *ChildDC1*için bir yönlendirme ipucu sağlar.
+    Genel Katalog daha sonra, ormanı ile oluşturulan tüm orman güvenleri hakkında bilgi için veritabanını denetler. Bulunursa, bir eşleşme bulmak için orman güveni güvenilen etki alanı nesnesinde (TDO) listelenen ad soneklerini hedef SPN 'nin sonekine karşılaştırır. Bir eşleşme bulunduğunda genel katalog, *ChildDC1* için bir yönlendirme ipucu sağlar.
 
     Yönlendirme ipuçları, kimlik doğrulama isteklerini hedef ormana yönlendirmek için yardım sağlar. İpuçları yalnızca yerel etki alanı denetleyicisi ve genel katalog gibi geleneksel kimlik doğrulama kanalları bir SPN 'yi bulamazsa kullanılır.
 
-4. *ChildDC1* , üst etki alanı için bir başvuruyu *işistasyona*geri gönderir.
+4. *ChildDC1* , üst etki alanı için bir başvuruyu *işistasyona* geri gönderir.
 
 5. *Işistasyonubu* , *wingtiptoys.com* ormanının orman kök etki alanındaki bir etki alanı denetleyicisine (*ForestRootDC2*) bir başvuru için *ForestRootDC1* (üst etki alanı) içindeki bir etki alanı denetleyicisiyle iletişim kurar.
 
@@ -186,7 +186,7 @@ Aşağıdaki diyagram ve adımlar, Windows çalıştıran bilgisayarlar başka b
 
 7. *FORESTROOTDC2* SPN 'yi bulmak için genel kataloğu ile iletişim kurar ve genel katalog SPN için bir eşleşme bulur ve bunu *ForestRootDC2*'e geri gönderir.
 
-8. *ForestRootDC2* daha sonra *USA.wingtiptoys.com* 'e başvurusunu *işistasyona*geri gönderir.
+8. *ForestRootDC2* daha sonra *USA.wingtiptoys.com* 'e başvurusunu *işistasyona* geri gönderir.
 
 9. *Işistasyonubu* , *ChildDC2* üzerindeki KDC Ile iletişim kurar ve *FileServer1*'ye erişim kazanmak için *kullanıcı1* biletini belirler.
 

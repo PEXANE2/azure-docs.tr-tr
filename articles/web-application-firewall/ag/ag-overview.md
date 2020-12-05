@@ -5,15 +5,15 @@ description: Bu makalede, Application Gateway Web uygulaması güvenlik duvarı 
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 09/16/2020
+ms.date: 12/04/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: f15a739904c28361a60210a0cc4606c7048d0f53
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 36f04b02774a01814811ea131388629de27e9f07
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518983"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621034"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Azure Application Gateway Azure Web uygulaması güvenlik duvarı nedir?
 
@@ -143,7 +143,7 @@ Anomali Puanlama modunda, güvenlik duvarı önleme modundayken, herhangi bir ku
 Trafiği engellemek için anomali puanı 5 ' lik bir eşik değeri vardır. Bu nedenle, Application Gateway WAF 'nin önleme modunda bile bir isteği engellemesini engellemek için tek bir *kritik* kural eşleşmesi yeterlidir. Ancak, bir *Uyarı* kuralı eşleşmesi yalnızca 3 Ile anomali puanı artırır ve bu, trafiği engellemek için kendisi tarafından yeterli değildir.
 
 > [!NOTE]
-> Bir WAF kuralı trafik ile eşleştiğinde günlüğe kaydedilen ileti, "engellendi" eylem değerini içerir. Ancak trafik aslında yalnızca 5 veya üzeri bir anomali puanı için engellenmiştir.  
+> Bir WAF kuralı trafik ile eşleştiğinde günlüğe kaydedilen ileti, "engellendi" eylem değerini içerir. Ancak trafik aslında yalnızca 5 veya üzeri bir anomali puanı için engellenmiştir. Daha fazla bilgi için bkz. [Azure Application Gateway Için Web uygulaması güvenlik duvarı (WAF) sorunlarını giderme](web-application-firewall-troubleshoot.md#understanding-waf-logs). 
 
 ### <a name="waf-monitoring"></a>WAF izleme
 
@@ -175,7 +175,7 @@ Yerleşik Azure WAF güvenlik duvarı olayları çalışma kitabı ile WAF 'nizi
 
 Bu çalışma kitabı, birkaç filtrelenebilir panel üzerinde güvenlikle ilgili WAF olaylarının özel görselleştirilmesini mümkün hale getiriyor. Application Gateway, ön kapı ve CDN dahil olmak üzere tüm WAF türleriyle birlikte çalışarak, WAF türüne veya belirli bir WAF örneğine göre filtrelenebilir. ARM şablonu veya Galeri şablonu aracılığıyla içeri aktarın. Bu çalışma kitabını dağıtmak için bkz. [WAF çalışma kitabı](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20WAF/Azure%20Monitor%20Workbook).
 
-#### <a name="logging"></a>Günlüğe Kaydetme
+#### <a name="logging"></a>Günlüğe kaydetme
 
 WAF Application Gateway algıladığı her tehdit üzerinde ayrıntılı raporlama sağlar. Günlüğe kaydetme, Azure Tanılama günlükleriyle tümleşiktir. Uyarılar. JSON biçiminde kaydedilir. Bu Günlükler, [Azure izleyici günlükleri](../../azure-monitor/insights/azure-networking-analytics.md)ile tümleştirilebilir.
 

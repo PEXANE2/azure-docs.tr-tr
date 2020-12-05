@@ -2,20 +2,20 @@
 title: Azure AD Domain Services için bir SLE VM 'ye katılarak | Microsoft Docs
 description: Bir SUSE Linux Enterprise sanal makinesini Azure AD Domain Services yönetilen bir etki alanına nasıl yapılandıracağınızı ve katılacağınızı öğrenin.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 08/12/2020
-ms.author: joflore
-ms.openlocfilehash: 607d3bc8eca3bd969f0f47ca95923040fb22591e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.author: justinha
+ms.openlocfilehash: f2f421d95dfc376aed373c718198db33a870d9dc
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275863"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619615"
 ---
 # <a name="join-a-suse-linux-enterprise-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>SUSE Linux Enterprise sanal makinesini Azure Active Directory Domain Services yönetilen bir etki alanına katma
 
@@ -23,7 +23,7 @@ Kullanıcıların Azure 'da tek bir kimlik bilgileri kümesi kullanarak sanal ma
 
 Bu makalede, bir SUSE Linux Enterprise (SLE) sanal makinesini yönetilen bir etki alanına nasıl katılabilmeniz gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -89,7 +89,7 @@ Bu adları kendi değerlerinizle güncelleştirin:
 
     YaST 'de, **sistem > ağ ayarları**' nı seçin.
 
-1. *Ana bilgisayar adı/DNS* sekmesini seçin ve ardından yönetilen etkı alanının IP adreslerini metin kutusu *adı sunucu 1*' e girin. Bu IP adresleri, *10.0.2.4* ve *10.0.2.5*gibi yönetilen etki alanınız için Azure Portal *Özellikler* penceresinde gösterilir.
+1. *Ana bilgisayar adı/DNS* sekmesini seçin ve ardından yönetilen etkı alanının IP adreslerini metin kutusu *adı sunucu 1*' e girin. Bu IP adresleri, *10.0.2.4* ve *10.0.2.5* gibi yönetilen etki alanınız için Azure Portal *Özellikler* penceresinde gösterilir.
 
     Kendi yönetilen etki alanı IP adreslerinizi ekleyin ve ardından **Tamam**' ı seçin.
 
@@ -105,7 +105,7 @@ VM 'yi yönetilen etki alanına katmak için aşağıdaki adımları izleyin:
 
 1. İletişim kutusunda **etki alanı Ekle**' yi seçin.
 
-1. *Aaddscontoso.com*gibi doğru *etki alanı adını*belirtin ve kimlik verileri ve kimlik doğrulaması için kullanılacak hizmetleri belirtin. Her ikisi için *Microsoft Active Directory* seçin.
+1. *Aaddscontoso.com* gibi doğru *etki alanı adını* belirtin ve kimlik verileri ve kimlik doğrulaması için kullanılacak hizmetleri belirtin. Her ikisi için *Microsoft Active Directory* seçin.
 
     *Etki alanını etkinleştir* seçeneğinin seçili olduğundan emin olun.
 
@@ -115,35 +115,35 @@ VM 'yi yönetilen etki alanına katmak için aşağıdaki adımları izleyin:
 
 1. VM gerektiğinde ek yazılım yüklüyor ve ardından yönetilen etki alanının kullanılabilir olup olmadığını denetler.
 
-    Her şey doğruysa, VM 'nin yönetilen etki alanını bulduğunu ancak *Henüz kaydolmadıysanız*olduğunu göstermek için aşağıdaki örnek iletişim kutusu gösterilir.
+    Her şey doğruysa, VM 'nin yönetilen etki alanını bulduğunu ancak *Henüz kaydolmadıysanız* olduğunu göstermek için aşağıdaki örnek iletişim kutusu gösterilir.
 
     ![YaST 'de Active Directory kayıt penceresinin örnek ekran görüntüsü](./media/join-suse-linux-vm/enroll-window.png)
 
 1. İletişim kutusunda, yönetilen etki alanının bir parçası olan bir *kullanıcının Kullanıcı adını ve* *parolasını* belirtin. Gerekirse, [Azure AD 'de bir gruba bir kullanıcı hesabı ekleyin](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
 
-    Geçerli etki alanının Samba için etkinleştirildiğinden emin olmak için, *Bu ad ile çalışmak üzere Samba yapılandırmasının üzerine yazmayı*etkinleştirin.
+    Geçerli etki alanının Samba için etkinleştirildiğinden emin olmak için, *Bu ad ile çalışmak üzere Samba yapılandırmasının üzerine yazmayı* etkinleştirin.
 
 1. Kaydolmak için **Tamam**' ı seçin.
 
 1. Başarıyla kaydolduğunu doğrulamak için bir ileti gösterilir. Son olarak **Tamam**' ı seçin.
 
-VM, yönetilen etki alanına kaydedildikten sonra aşağıdaki örnekte gösterildiği gibi, *etki alanı kullanıcı oturum açma bilgilerini yönetme*seçeneğini kullanarak istemciyi yapılandırın:
+VM, yönetilen etki alanına kaydedildikten sonra aşağıdaki örnekte gösterildiği gibi, *etki alanı kullanıcı oturum açma bilgilerini yönetme* seçeneğini kullanarak istemciyi yapılandırın:
 
 ![YaST 'de etki alanı kullanıcı oturumu yönetme penceresinin örnek ekran görüntüsü](./media/join-suse-linux-vm/manage-domain-user-logon-window.png)
 
-1. Yönetilen etki alanı tarafından belirtilen verileri kullanarak oturum açma işlemleri için, *etki alanına Izin ver Kullanıcı oturum açmaya izin*ver kutusunu işaretleyin.
+1. Yönetilen etki alanı tarafından belirtilen verileri kullanarak oturum açma işlemleri için, *etki alanına Izin ver Kullanıcı oturum açmaya izin* ver kutusunu işaretleyin.
 
-1. İsteğe bağlı olarak, *etki alanı veri kaynağını etkinleştir*altında ortamınız için gereken ek veri kaynaklarını kontrol edin. Bu seçenekler, hangi kullanıcıların **sudo** kullanmasına izin verileceğini veya hangi ağ sürücülerinin kullanılabilir olduğunu içerir.
+1. İsteğe bağlı olarak, *etki alanı veri kaynağını etkinleştir* altında ortamınız için gereken ek veri kaynaklarını kontrol edin. Bu seçenekler, hangi kullanıcıların **sudo** kullanmasına izin verileceğini veya hangi ağ sürücülerinin kullanılabilir olduğunu içerir.
 
-1. Yönetilen etki alanındaki kullanıcıların VM 'de giriş dizinlerine sahip olmasını sağlamak için *giriş dizinleri oluşturma*kutusunu işaretleyin.
+1. Yönetilen etki alanındaki kullanıcıların VM 'de giriş dizinlerine sahip olmasını sağlamak için *giriş dizinleri oluşturma* kutusunu işaretleyin.
 
-1. Yan çubukta, **hizmet seçenekleri › ad anahtarı**' nı seçin ve *genişletilmiş seçenekler*' e tıklayın. Bu pencereden *fallback_homedir* veya *override_homedir*seçin, sonra **Ekle**' yi seçin.
+1. Yan çubukta, **hizmet seçenekleri › ad anahtarı**' nı seçin ve *genişletilmiş seçenekler*' e tıklayın. Bu pencereden *fallback_homedir* veya *override_homedir* seçin, sonra **Ekle**' yi seçin.
 
-1. Ana Dizin konumu için bir değer belirtin. Giriş dizinlerinin */Home/user_name*biçimini izlemesi için */Home/%u*kullanın. Olası değişkenler hakkında daha fazla bilgi için bkz. sssd. conf man sayfası ( `man 5 sssd.conf` ), bölüm *override_homedir*.
+1. Ana Dizin konumu için bir değer belirtin. Giriş dizinlerinin */Home/user_name* biçimini izlemesi için */Home/%u* kullanın. Olası değişkenler hakkında daha fazla bilgi için bkz. sssd. conf man sayfası ( `man 5 sssd.conf` ), bölüm *override_homedir*.
 
 1. **Tamam**’ı seçin.
 
-1. Değişiklikleri kaydetmek için **Tamam**' ı seçin. Ardından, şimdi görüntülenen değerlerin doğru olduğundan emin olun. İletişim kutusundan çıkmak için **iptal**' i seçin.
+1. Değişiklikleri kaydetmek için **Tamam**’ı seçin. Ardından, şimdi görüntülenen değerlerin doğru olduğundan emin olun. İletişim kutusundan çıkmak için **iptal**' i seçin.
 
 1. SSSD ve winbind 'yi aynı anda çalıştırmayı düşünüyorsanız (SSSD aracılığıyla birleştirme sırasında, ancak Samba dosya sunucusunu çalıştırırken),, SMB. conf dosyasındaki Samba seçeneği *Kerberos yöntemi* *gizli dizi ve keytab* olarak ayarlanmalıdır. Sssd seçeneği *ad_update_samba_machine_account_password* sssd. conf içinde de *true* olarak ayarlanmalıdır. Bu seçenekler, sistem keytab 'ın eşitlenmemiş olmasını engeller.
 
@@ -153,19 +153,19 @@ VM, yönetilen etki alanına kaydedildikten sonra aşağıdaki örnekte gösteri
 
 1. YaST 'de **Windows etki alanı üyeliği > ağ hizmetleri**' ni seçin.
 
-1. *Windows etki alanı üyeliği* ekranındaki *etki alanı veya çalışma grubuna* katılacak etki alanını girin. *Aaddscontoso.com*gibi yönetilen etki alanı adını girin.
+1. *Windows etki alanı üyeliği* ekranındaki *etki alanı veya çalışma grubuna* katılacak etki alanını girin. *Aaddscontoso.com* gibi yönetilen etki alanı adını girin.
 
     ![YaST 'de Windows etki alanı üyeliği penceresinin örnek ekran görüntüsü](./media/join-suse-linux-vm/samba-client-window.png)
 
-1. Linux kimlik doğrulaması için SMB kaynağını kullanmak üzere *Linux kimlik doğrulaması IÇIN SMB bilgilerini kullan*seçeneğini işaretleyin.
+1. Linux kimlik doğrulaması için SMB kaynağını kullanmak üzere *Linux kimlik doğrulaması IÇIN SMB bilgilerini kullan* seçeneğini işaretleyin.
 
-1. VM 'de yönetilen etki alanı kullanıcıları için otomatik olarak yerel bir ana dizin oluşturmak için *oturum açma sırasında giriş dizini oluşturma*seçeneğini işaretleyin.
+1. VM 'de yönetilen etki alanı kullanıcıları için otomatik olarak yerel bir ana dizin oluşturmak için *oturum açma sırasında giriş dizini oluşturma* seçeneğini işaretleyin.
 
 1. Yönetilen etki alanı geçici olarak kullanılamıyor olsa da, etki alanı kullanıcılarınızın oturum açmasını sağlamak için *çevrimdışı kimlik doğrulama* seçeneğini işaretleyin.
 
 1. Samba kullanıcıları ve grupları için UID ve GID aralıklarını değiştirmek istiyorsanız, *uzman ayarları*' nı seçin.
 
-1. *NTP yapılandırması*' nı seçerek yönetilen etki alanınız Için ağ zaman Protokolü (NTP) zaman eşitlemesini yapılandırın. Yönetilen etki alanının IP adreslerini girin. Bu IP adresleri, *10.0.2.4* ve *10.0.2.5*gibi yönetilen etki alanınız için Azure Portal *Özellikler* penceresinde gösterilir.
+1. *NTP yapılandırması*' nı seçerek yönetilen etki alanınız Için ağ zaman Protokolü (NTP) zaman eşitlemesini yapılandırın. Yönetilen etki alanının IP adreslerini girin. Bu IP adresleri, *10.0.2.4* ve *10.0.2.5* gibi yönetilen etki alanınız için Azure Portal *Özellikler* penceresinde gösterilir.
 
 1. **Tamam** ' ı seçin ve istendiğinde etki alanına katılmayı onaylayın.
 
@@ -177,7 +177,7 @@ Yönetilen etki alanına katıldıktan sonra masaüstü veya konsolunun görünt
 
 ## <a name="join-vm-to-the-managed-domain-using-winbind-from-the-yast-command-line-interface"></a>YaST komut satırı arabiriminden winbind kullanarak VM 'yi yönetilen etki alanına katma
 
-Yönetilen etki alanına **winbind** ve *yast komut satırı arabirimini*kullanarak katmak için:
+Yönetilen etki alanına **winbind** ve *yast komut satırı arabirimini* kullanarak katmak için:
 
 * Etki alanına katılarak:
 
@@ -187,7 +187,7 @@ Yönetilen etki alanına **winbind** ve *yast komut satırı arabirimini*kullana
 
 ## <a name="join-vm-to-the-managed-domain-using-winbind-from-the-terminal"></a>Terminalden winbind kullanarak VM 'yi yönetilen etki alanına katma
 
-Yönetilen etki alanına **winbind** kullanarak katmak için ve * `samba net` komutunu*kullanın:
+Yönetilen etki alanına **winbind** kullanarak katmak için ve *`samba net` komutunu* kullanın:
 
 1. Kerberos istemcisi ve Samba-winbind 'yi yükler:
 
@@ -306,7 +306,7 @@ Varsayılan olarak, kullanıcılar yalnızca SSH ortak anahtar tabanlı kimlik d
     sudo vi /etc/ssh/sshd_config
     ```
 
-1. *Passwordaduthentication* satırını *Evet*olarak güncelleştirin:
+1. *Passwordaduthentication* satırını *Evet* olarak güncelleştirin:
 
     ```console
     PasswordAuthentication yes
@@ -322,7 +322,7 @@ Varsayılan olarak, kullanıcılar yalnızca SSH ortak anahtar tabanlı kimlik d
 
 ## <a name="grant-the-aad-dc-administrators-group-sudo-privileges"></a>' AAD DC yöneticileri ' Grup sudo ayrıcalıklarına izin verme
 
-SLE VM 'de *AAD DC yöneticileri* grubunun üyelerine yönetici ayrıcalıkları vermek için, */etc/suoners*öğesine bir giriş ekleyin. Eklendikten sonra *AAD DC yöneticileri* grubunun üyeleri, `sudo` SLE sanal makinesinde komutunu kullanabilir.
+SLE VM 'de *AAD DC yöneticileri* grubunun üyelerine yönetici ayrıcalıkları vermek için, */etc/suoners* öğesine bir giriş ekleyin. Eklendikten sonra *AAD DC yöneticileri* grubunun üyeleri, `sudo` SLE sanal makinesinde komutunu kullanabilir.
 
 1. Şu şekilde düzenlenecek *sudoers* dosyasını açın:
 
@@ -330,7 +330,7 @@ SLE VM 'de *AAD DC yöneticileri* grubunun üyelerine yönetici ayrıcalıkları
     sudo visudo
     ```
 
-1. */Etc/sudoers* dosyasının sonuna aşağıdaki girişi ekleyin. *AAD DC Administrators* grubu adında boşluk içerir, bu nedenle Grup adına ters eğik çizgi kaçış karakteri ekleyin. *Aaddscontoso.com*gibi kendi etki alanı adınızı ekleyin:
+1. */Etc/sudoers* dosyasının sonuna aşağıdaki girişi ekleyin. *AAD DC Administrators* grubu adında boşluk içerir, bu nedenle Grup adına ters eğik çizgi kaçış karakteri ekleyin. *Aaddscontoso.com* gibi kendi etki alanı adınızı ekleyin:
 
     ```console
     # Add 'AAD DC Administrators' group members as admins.
@@ -343,7 +343,7 @@ SLE VM 'de *AAD DC yöneticileri* grubunun üyelerine yönetici ayrıcalıkları
 
 VM 'nin yönetilen etki alanına başarıyla katıldığını doğrulamak için, bir etki alanı kullanıcı hesabı kullanarak yeni bir SSH bağlantısı başlatın. Bir giriş dizininin oluşturulduğunu ve etki alanındaki grup üyeliğinin uygulandığını doğrulayın.
 
-1. Konsolınızdan yeni bir SSH bağlantısı oluşturun. Komutunu kullanarak yönetilen etki alanına ait bir etki alanı hesabı kullanın, örneğin, `ssh -l` `contosoadmin@aaddscontoso.com` *Linux-q2gr.aaddscontoso.com*gibi sanal makinenizin adresini girin. Azure Cloud Shell kullanıyorsanız, iç DNS adı yerine VM 'nin genel IP adresini kullanın.
+1. Konsolınızdan yeni bir SSH bağlantısı oluşturun. Komutunu kullanarak yönetilen etki alanına ait bir etki alanı hesabı kullanın, örneğin, `ssh -l` `contosoadmin@aaddscontoso.com` *Linux-q2gr.aaddscontoso.com* gibi sanal makinenizin adresini girin. Azure Cloud Shell kullanıyorsanız, iç DNS adı yerine VM 'nin genel IP adresini kullanın.
 
     ```console
     ssh -l contosoadmin@AADDSCONTOSO.com linux-q2gr.aaddscontoso.com

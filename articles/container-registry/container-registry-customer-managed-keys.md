@@ -2,14 +2,14 @@
 title: Kayıt defterini müşterinin yönettiği bir anahtarla şifreleyin
 description: Azure Container Registry 'nizin geri kalanı hakkında bilgi edinin ve Premium kayıt defterinizi, Azure Key Vault depolanan müşteri tarafından yönetilen bir anahtarla nasıl şifreleyeceğinizi öğrenin
 ms.topic: article
-ms.date: 11/17/2020
+ms.date: 12/03/2020
 ms.custom: ''
-ms.openlocfilehash: 6dac2239f223b5dee6ec728833caa01562873210
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 708a42a4f965f484060d42d89ea4f535c4365a10
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95255029"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620469"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>Müşteri tarafından yönetilen anahtar kullanarak kayıt defterini şifreleme
 
@@ -45,9 +45,6 @@ Kayıt defteri şifrelemesini müşteri tarafından yönetilen bir anahtarla yap
 * **Anahtar sürümünü otomatik olarak güncelleştir** -Azure Key Vault yeni bir sürüm kullanılabilir olduğunda, müşteri tarafından yönetilen bir anahtarı otomatik olarak güncelleştirmek için, müşteri tarafından yönetilen bir anahtarla kayıt defteri şifrelemesini etkinleştirdiğinizde anahtar sürümünü atlayın. Bir kayıt defteri sürümü olmayan bir anahtarla şifrelendiğinde, Azure Container Registry yeni bir anahtar sürümünün anahtar kasasını düzenli olarak kontrol eder ve müşteri tarafından yönetilen anahtarı 1 saat içinde güncelleştirir. Azure Container Registry, anahtarın en son sürümünü otomatik olarak kullanır.
 
 * **Anahtar sürümünü el ile güncelleştirme** -kayıt defteri şifrelemesi için bir anahtarın belirli bir sürümünü kullanmak üzere, müşteri tarafından yönetilen bir anahtarla kayıt defteri şifrelemesini etkinleştirdiğinizde bu anahtar sürümünü belirtin. Bir kayıt defteri belirli bir anahtar sürümüyle şifrelendiğinde, Azure Container Registry, müşteri tarafından yönetilen anahtarı el ile döndürünceye kadar bu sürümü şifreleme için kullanır.
-
-> [!NOTE]
-> Şu anda, müşteri tarafından yönetilen anahtar sürümünü otomatik olarak güncelleştirmek için kayıt defterini yapılandırmak üzere yalnızca Azure CLı 'yı kullanabilirsiniz. Şifrelemeyi etkinleştirmek için portalını kullanırken, anahtar sürümünü el ile güncelleştirmeniz gerekir.
 
 Ayrıntılar için, bu makalenin sonraki kısımlarında yer alarak anahtar KIMLIĞI, anahtar sürümü ve [güncelleştirme anahtarı sürümünü](#update-key-version) [seçin](#choose-key-id-with-or-without-key-version) bölümüne bakın.
 
@@ -112,7 +109,7 @@ az keyvault create --name <key-vault-name> \
   --enable-purge-protection
 ```
 
-Sonraki adımlarda kullanmak için, anahtar kasasının kaynak kimliğini alın:
+Sonraki adımlarda kullanmak için, anahtar kasasının kaynak KIMLIĞINI alın:
 
 ```azurecli
 keyvaultID=$(az keyvault show --resource-group <resource-group-name> --name <key-vault-name> --query 'id' --output tsv)
@@ -252,7 +249,7 @@ Daha sonraki adımlarda kimliğin adını kullanırsınız.
 
 ### <a name="create-a-key-vault"></a>Anahtar kasası oluşturma
 
-Bir Anahtar Kasası oluşturma adımları için bkz. [hızlı başlangıç: Azure Portal ile Azure Key Vault oluşturma](../key-vault/general/quick-create-portal.md).
+Bir Anahtar Kasası oluşturma adımları için bkz. [hızlı başlangıç: Azure Portal kullanarak bir Anahtar Kasası oluşturma](../key-vault/general/quick-create-portal.md).
 
 Müşteri tarafından yönetilen anahtar için bir Anahtar Kasası oluştururken, **temel bilgiler** sekmesinde, **korumayı temizle** ayarını etkinleştirin. Bu ayar, yanlışlıkla anahtar veya Anahtar Kasası silmeleri nedeniyle oluşan veri kaybını önlemeye yardımcı olur.
 
@@ -279,13 +276,15 @@ Alternatif olarak, anahtar kasasına erişmek için kimliğe izinler atamak üze
     1. **Kullanıcı tarafından atanan yönetilen kimliğe** erişim atayın.
     1. Kullanıcı tarafından atanan yönetilen kimliğinizin kaynak adını seçin ve **Kaydet**' i seçin.
 
-### <a name="create-key"></a>Anahtar oluştur
+### <a name="create-key-optional"></a>Anahtar oluştur (isteğe bağlı)
+
+İsteğe bağlı olarak, kayıt defterini şifrelemek için kullanılacak anahtar kasasında bir anahtar oluşturun. Müşteri tarafından yönetilen anahtar olarak belirli bir anahtar sürümünü seçmek istiyorsanız bu adımları izleyin. 
 
 1. Anahtar kasanıza gidin.
 1. **Ayarlar**  >  **anahtarlar**' ı seçin.
 1. **+ Oluştur/Içeri aktar** ' ı seçin ve anahtar için benzersiz bir ad girin.
 1. Kalan varsayılan değerleri kabul edin ve **Oluştur**' u seçin.
-1. Oluşturulduktan sonra anahtarı seçin ve geçerli anahtar sürümüne göz atın.
+1. Oluşturulduktan sonra anahtarı seçin ve ardından geçerli sürümü seçin. Anahtar sürümü için **anahtar tanımlayıcısı** ' nı kopyalayın.
 
 ### <a name="create-azure-container-registry"></a>Azure kapsayıcı kayıt defteri oluşturma
 
@@ -293,10 +292,11 @@ Alternatif olarak, anahtar kasasına erişmek için kimliğe izinler atamak üze
 1. **Temel bilgiler** sekmesinde, bir kaynak grubu seçin veya oluşturun ve bir kayıt defteri adı girin. **SKU**'da **Premium**' u seçin.
 1. **Şifreleme** sekmesinde, **müşteri tarafından yönetilen anahtar**' ın **etkin**' i seçin.
 1. **Kimlik**' te, oluşturduğunuz yönetilen kimliği seçin.
-1. **Şifreleme**' de **Key Vault seçin**' i seçin.
-1. **Azure Key Vault anahtar seçin** penceresinde, önceki bölümde oluşturduğunuz Anahtar Kasası, anahtar ve sürümü seçin.
+1. **Şifreleme** bölümünde aşağıdakilerden birini seçin:
+    * **Key Vault Seç**' i seçin ve var olan bir anahtar kasası ve anahtarı seçin ya da **Yeni oluştur**' a tıklayın. Seçtiğiniz anahtar sürümlenmemiş ve otomatik anahtar döndürmeyi etkinleştirmesine izin vermez.
+    * **Anahtar URI 'Si girin**' i seçin ve doğrudan bir anahtar tanımlayıcısı sağlayın. Sürümlü anahtar URI 'SI (el ile döndürülmesi gereken bir anahtar için) veya sürümü bulunmayan bir anahtar URI (otomatik anahtar dönüşü sağlayan) sağlayabilirsiniz. 
 1. **Şifreleme** sekmesinde, **gözden geçir + oluştur**' u seçin.
-1. Kayıt defteri örneğini oluşturmak için **Oluştur** ' u seçin.
+1. Kayıt defteri örneğini dağıtmak için **Oluştur** ' u seçin.
 
 :::image type="content" source="media/container-registry-customer-managed-keys/create-encrypted-registry.png" alt-text="Azure portal şifreli kayıt defteri oluşturma":::
 
@@ -454,7 +454,7 @@ Bir anahtar döndürürken, genellikle kayıt defteri oluştururken kullanılan 
 
 Yaygın bir senaryo, müşteri tarafından yönetilen anahtar olarak kullanılan anahtarın sürümünü güncelleştirmedir. Kayıt defteri şifrelemesinin nasıl yapılandırıldığına bağlı olarak, Azure Container Registry içindeki müşteri tarafından yönetilen anahtar otomatik olarak güncelleştirilir veya el ile güncelleştirilmeleri gerekir.
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Anahtar Kasası Anahtarlarınızı oluşturmak veya yönetmek için [az keykasakey][az-keyvault-key] komutları kullanın. Yeni bir anahtar sürümü oluşturmak için [az keykasa Key Create][az-keyvault-key-create] komutunu çalıştırın:
 
@@ -498,11 +498,11 @@ Müşterinin yönettiği anahtar için kullanılan Anahtar Kasası, anahtar veya
 
 1. Portalda Kayıt defterinize gidin.
 1. **Ayarlar** altında **şifreleme**  >  **değişiklik anahtarı**' nı seçin.
-1. **Anahtar Seç**' i seçin.
 
     :::image type="content" source="media/container-registry-customer-managed-keys/rotate-key.png" alt-text="Azure portal anahtarı döndür":::
-1. **Azure Key Vault anahtar seçin** penceresinde, daha önce yapılandırdığınız anahtar kasasını ve anahtarı seçin ve **sürümde** **Yeni oluştur**' u seçin.
-1. **Anahtar oluştur** **penceresinde Oluştur '** u ve ardından **Oluştur**' u seçin.
+1. **Şifreleme** bölümünde aşağıdakilerden birini seçin:
+    * **Key Vault Seç**' i seçin ve var olan bir anahtar kasası ve anahtarı seçin ya da **Yeni oluştur**' a tıklayın. Seçtiğiniz anahtar sürümlenmemiş ve otomatik anahtar döndürmeyi etkinleştirmesine izin vermez.
+    * **Anahtar URI 'Si girin**' i seçin ve doğrudan bir anahtar tanımlayıcısı sağlayın. Sürümlü anahtar URI 'SI (el ile döndürülmesi gereken bir anahtar için) veya sürümü bulunmayan bir anahtar URI (otomatik anahtar dönüşü sağlayan) sağlayabilirsiniz.
 1. Anahtar seçimini tamamlayıp **Kaydet**' i seçin.
 
 ## <a name="revoke-key"></a>Anahtarı iptal et

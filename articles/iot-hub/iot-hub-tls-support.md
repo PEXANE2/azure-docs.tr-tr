@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 11/25/2020
 ms.author: jlian
-ms.openlocfilehash: ddb89f60c9fe380012c299afaafb6046bf6849c9
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: f4438aebcb81d665a19a595ac7ade4fea27fc43f
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602759"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621017"
 ---
 # <a name="transport-layer-security-tls-support-in-iot-hub"></a>IoT Hub 'de Aktarım Katmanı Güvenliği (TLS) desteği
 
@@ -22,7 +22,7 @@ TLS 1,0 ve 1,1 eski olarak değerlendirilir ve kullanımdan kaldırma için plan
 
 ## <a name="iot-hubs-server-tls-certificate"></a>IoT Hub Server TLS sertifikası
 
-Bir TLS anlaşması sırasında, istemcileri bağlamak için RSA anahtarlı sunucu sertifikaları sunar IoT Hub. Kökü, Baltimore Sitrust kök CA 'dır. Son olarak, yeni ara sertifika yetkilileri (IAS) tarafından verenler için bir değişiklik vardı. Daha fazla bilgi için bkz. [IoT Hub TLS sertifikası güncelleştirmesi](https://azure.microsoft.com/updates/iot-hub-tls-certificate-update/)
+Bir TLS anlaşması sırasında, istemcileri bağlamak için RSA anahtarlı sunucu sertifikaları sunar IoT Hub. Kökü, Baltimore Sitrust kök CA 'dır. Son olarak, artık yeni ara sertifika yetkilileri (ICA) tarafından verilmek üzere TLS sunucu sertifikamızda bir değişiklik yaptık. Daha fazla bilgi için bkz. [IoT Hub TLS sertifikası güncelleştirme](https://azure.microsoft.com/updates/iot-hub-tls-certificate-update/).
 
 ### <a name="elliptic-curve-cryptography-ecc-server-tls-certificate-preview"></a>Eliptik Eğri Şifreleme (ECC) sunucusu TLS sertifikası (Önizleme)
 
@@ -31,7 +31,7 @@ IoT Hub ECC Server TLS sertifikası genel önizleme için kullanılabilir. RSA s
 IoT Hub ECC sunucu sertifikasını önizlemek için:
 
 1. [Önizleme modu üzerinde yeni bir IoT Hub oluşturun](iot-hub-preview-mode.md).
-1. [İstemcinizi](#tls-configuration-for-sdk-and-iot-edge) *yalnızca* ECDSA şifre paketleri içerecek şekılde yapılandırın ve tüm RSA paketlerini *hariç tutun* . Bu, ECC sertifikası genel önizlemesi için şifre paketlerdir:
+1. [İstemcinizi](#tls-configuration-for-sdk-and-iot-edge) *yalnızca* ECDSA şifre paketleri içerecek şekılde yapılandırın ve tüm RSA paketlerini *hariç tutun* . ECC sertifikası genel önizlemesi için desteklenen şifre paketleri şunlardır:
     - `TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256`
     - `TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384`
     - `TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256`
@@ -133,7 +133,7 @@ Varsayılan 2 ^ 14 bayttan küçük bir değere en fazla düz metin parça uzunl
 Bu genel önizleme özelliği için resmi SDK desteği henüz kullanılamıyor. Başlamak için
 
 1. [Önizleme modu üzerinde yeni bir IoT Hub oluşturun](iot-hub-preview-mode.md).
-1. İstemcinizi `SSL_CTX_set_tlsext_max_fragment_length` Şu değerlerden birine ayarlanacak şekilde yapılandırın: 2 ^ 9, 2 ^ 10, 2 ^ 11 ve 2 ^ 12.
+1. OpenSSL kullanırken, parça boyutunu belirtmek için [SSL_CTX_set_tlsext_max_fragment_length](https://manpages.debian.org/testing/libssl-doc/SSL_CTX_set_max_send_fragment.3ssl.en.html) çağırın.
 1. İstemcinizi önizleme IoT Hub bağlayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar

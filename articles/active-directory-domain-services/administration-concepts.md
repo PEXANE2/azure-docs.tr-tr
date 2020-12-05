@@ -2,20 +2,20 @@
 title: Azure AD Domain Services için yönetim kavramları | Microsoft Docs
 description: Azure Active Directory Domain Services yönetilen bir etki alanını ve Kullanıcı hesaplarının ve parolaların davranışını yönetme hakkında bilgi edinin
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 06/05/2020
-ms.author: joflore
-ms.openlocfilehash: 95c6a1f24335849fb2d2c4de56b4ed60e8e5f73f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 76af477af8290634d2658c58574b8f96cff7b1fb
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962828"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620350"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services 'de Kullanıcı hesapları, parolalar ve yönetim için yönetim kavramları
 
@@ -64,7 +64,7 @@ Uygun şekilde yapılandırıldıktan sonra, kullanılabilir parola karmaları y
 
 ## <a name="forests-and-trusts"></a>Ormanlar ve güvenler
 
-*Orman* , bir veya daha fazla *etki alanını*gruplamak için Active Directory Domain Services (AD DS) tarafından kullanılan mantıksal bir yapıdır. Etki alanları daha sonra Kullanıcı veya grup için nesneleri depolar ve kimlik doğrulama hizmetleri sağlar.
+*Orman* , bir veya daha fazla *etki alanını* gruplamak için Active Directory Domain Services (AD DS) tarafından kullanılan mantıksal bir yapıdır. Etki alanları daha sonra Kullanıcı veya grup için nesneleri depolar ve kimlik doğrulama hizmetleri sağlar.
 
 Azure AD DS, orman yalnızca bir etki alanı içerir. Şirket içi AD DS ormanları genellikle birçok etki alanı içerir. Büyük kuruluşlarda, özellikle Birleşmeler ve alımlar sonrasında, her biri birden çok etki alanı içeren birden çok şirket içi ormana sahip olabilirsiniz.
 
@@ -81,7 +81,7 @@ Azure AD DS 'de, kullanılabilir performans ve Özellikler SKU 'YU temel alır. 
 | SKU adı   | En fazla nesne sayısı | Yedekleme sıklığı | En fazla giden orman güveni sayısı |
 |------------|----------------------|------------------|----|
 | Standart   | Sınırsız            | Her 7 günde bir     | 0  |
-| Kurumsal | Sınırsız            | 3 günde bir     | 5  |
+| Enterprise | Sınırsız            | 3 günde bir     | 5  |
 | Premium    | Sınırsız            | Günlük            | 10 |
 
 Bu Azure AD DS SKU 'larından önce, yönetilen etki alanındaki nesne sayısına (Kullanıcı ve bilgisayar hesapları) göre bir faturalandırma modeli kullanılmıştır. Yönetilen etki alanındaki nesne sayısına bağlı olarak artık değişken fiyatlandırma yoktur.

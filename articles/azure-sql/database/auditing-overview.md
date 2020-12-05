@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 11/08/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 8cf0652148ad54eeacdec874823ea680f39f670c
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: b09eb03994098f8cb68033f3c42309a77e15f91c
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372736"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621000"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics için denetim
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -54,17 +54,29 @@ Bir denetim ilkesi, belirli bir veritabanı için veya Azure 'da varsayılan [su
 
 - Sunucu ilkesi, sunucuda var olan ve yeni oluşturulan tüm veritabanları için geçerlidir.
 
-- *Sunucu denetimi etkinse* , *her zaman veritabanına uygulanır*. Veritabanı denetim ayarlarından bağımsız olarak veritabanını denetlenecektir.
+- *Sunucu denetimi etkinse*, *her zaman veritabanına uygulanır*. Veritabanı denetim ayarlarından bağımsız olarak veritabanını denetlenecektir.
 
 - Veritabanında etkinleştirmenin yanı sıra sunucu üzerinde denetimi etkinleştirmek, sunucu denetiminin ayarlarından *hiçbirini geçersiz kılmaz veya değiştirmez.* Her iki denetim de yan yana bulunur. Diğer bir deyişle, veritabanı paralel olarak iki kez denetlenir; sunucu ilkesi tarafından bir kez ve veritabanı ilkesi tarafından bir kez.
 
    > [!NOTE]
    > Her iki sunucu denetimi ve veritabanı blobu denetimini birlikte etkinleştirmemeye özen gösterin:
     >
-    > - Belirli bir veritabanı için farklı bir *depolama hesabı* , *bekletme dönemi* veya *Log Analytics çalışma alanı* kullanmak istiyorsunuz.
+    > - Belirli bir veritabanı için farklı bir *depolama hesabı*, *bekletme dönemi* veya *Log Analytics çalışma alanı* kullanmak istiyorsunuz.
     > - Sunucu üzerindeki veritabanlarının geri kalanından farklı olan belirli bir veritabanı için olay türlerini veya kategorilerini denetlemek istiyorsunuz. Örneğin, yalnızca belirli bir veritabanı için denetlenmesi gereken tablo eklemeleri olabilir.
    >
    > Aksi takdirde, yalnızca sunucu düzeyinde denetlemeyi etkinleştirmenizi ve veritabanı düzeyinde denetimi tüm veritabanları için devre dışı bırakmayı öneririz.
+
+#### <a name="remarks"></a>Açıklamalar
+
+- Azure aboneliğinizdeki bir Azure Blob depolama alanındaki **BLOB 'Ları eklemek** için denetim günlükleri yazılır
+- Denetim günlükleri. XEL biçimindedir ve [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)kullanılarak açılabilir.
+- Sunucu veya veritabanı düzeyinde denetim olayları için bir sabit günlük deposu yapılandırmak için, [Azure depolama tarafından sunulan yönergeleri](../../storage/blobs/storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes)izleyin. Sabit blob depolamayı yapılandırırken **ek ekler 'e Izin ver** ' i seçtiğinizden emin olun.
+- Denetim günlüklerini, VNet veya güvenlik duvarının arkasındaki bir Azure depolama hesabına yazabilirsiniz. Belirli yönergeler için bkz. [VNET ve güvenlik duvarının arkasındaki depolama hesabına yönelik denetim yazma](audit-write-storage-account-behind-vnet-firewall.md).
+- Günlük biçimi, depolama klasörü ve adlandırma kurallarının hiyerarşisi hakkında daha fazla bilgi için bkz. [BLOB denetim günlüğü biçim başvurusu](./audit-log-format.md).
+- [Salt okuma Çoğaltmalarından](read-scale-out.md) denetim otomatik olarak etkinleştirilir. Depolama klasörlerinin, adlandırma kurallarının ve günlük biçiminin hiyerarşisi hakkında daha fazla ayrıntı için bkz. [SQL veritabanı denetim günlüğü biçimi](audit-log-format.md).
+- Azure AD kimlik doğrulaması kullanılırken, başarısız oturum açma kayıtları SQL denetim *günlüğünde görünmez.* Başarısız oturum açma denetim kayıtlarını görüntülemek için, bu olayların ayrıntılarını günlüğe kaydeden [Azure Active Directory portalını](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)ziyaret etmeniz gerekir.
+- Oturum açmalar, ağ geçidi tarafından veritabanının bulunduğu belirli örneğe yönlendirilir.  AAD oturum açmaları durumunda, istenen veritabanında oturum açmak için bu kullanıcıyı kullanmaya çalışmadan önce kimlik bilgileri doğrulanır.  Hata durumunda, istenen veritabanına hiçbir şekilde erişilmez, dolayısıyla denetim gerçekleşmez.  SQL oturum açmaları durumunda, kimlik bilgileri istenen verilerde doğrulanır, bu nedenle bu durumda denetlenebilir.  Veritabanına açıkça ulaşan başarılı oturum açma işlemleri her iki durumda da denetlenir.
+- Denetim ayarlarınızı yapılandırdıktan sonra, yeni tehdit algılama özelliğini açıp e-postaları güvenlik uyarılarını alacak şekilde yapılandırabilirsiniz. Tehdit algılama 'yı kullandığınızda, olası güvenlik tehditlerini gösterebilen anormal veritabanı etkinliklerinde proaktif uyarılar alırsınız. Daha fazla bilgi için bkz. [tehdit algılamayı kullanmaya başlama](threat-detection-overview.md).
 
 ## <a name="set-up-auditing-for-your-server"></a><a id="setup-auditing"></a>Sunucunuz için denetim ayarlama
 
@@ -114,27 +126,16 @@ AzureDiagnostics
 
 ### <a name="audit-to-storage-destination"></a><a id="audit-storage-destination"></a>Depolama hedefine yönelik denetim
 
-Bir depolama hesabına denetim günlükleri yazmayı yapılandırmak için **depolama** ve açık **depolama ayrıntıları** ' nı seçin. Günlüklerin kaydedileceği Azure Depolama hesabını seçin ve ardından bekletme dönemini seçin. Daha sonra, **Tamam** 'a tıklayın. Saklama süresinden daha eski Günlükler silinir.
+Bir depolama hesabına denetim günlükleri yazmayı yapılandırmak için **depolama** ve açık **depolama ayrıntıları**' nı seçin. Günlüklerin kaydedileceği Azure Depolama hesabını seçin ve ardından bekletme dönemini seçin. Daha sonra, **Tamam**'a tıklayın. Saklama süresinden daha eski Günlükler silinir.
 
 - Saklama dönemi için varsayılan değer 0 ' dır (sınırsız saklama). Bu değeri, depolama hesabını denetim için yapılandırırken **depolama ayarları** ' nda **bekletme (gün)** kaydırıcısını taşıyarak değiştirebilirsiniz.
   - Saklama süresini 0 ' dan (sınırsız saklama) başka herhangi bir değere değiştirirseniz, lütfen bekletme 'nin yalnızca bekletme değeri değiştirildikten sonra yazılan günlüklere uygulanacağını unutmayın (bekletme etkin olduktan sonra bile, bekletme olarak sınırsız olarak ayarlandığında zaman içinde yazılır).
 
   ![depolama hesabı](./media/auditing-overview/auditing_select_storage.png)
 
-#### <a name="remarks"></a>Açıklamalar
-
-- Azure aboneliğinizdeki bir Azure Blob depolama alanındaki **BLOB 'Ları eklemek** için denetim günlükleri yazılır
-- Denetim günlükleri. XEL biçimindedir ve [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)kullanılarak açılabilir.
-- Sunucu veya veritabanı düzeyinde denetim olayları için bir sabit günlük deposu yapılandırmak için, [Azure depolama tarafından sunulan yönergeleri](../../storage/blobs/storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes)izleyin. Sabit blob depolamayı yapılandırırken **ek ekler 'e Izin ver** ' i seçtiğinizden emin olun.
-- Denetim günlüklerini, VNet veya güvenlik duvarının arkasındaki bir Azure depolama hesabına yazabilirsiniz. Belirli yönergeler için bkz. [VNET ve güvenlik duvarının arkasındaki depolama hesabına yönelik denetim yazma](audit-write-storage-account-behind-vnet-firewall.md).
-- Denetim ayarlarınızı yapılandırdıktan sonra, yeni tehdit algılama özelliğini açıp e-postaları güvenlik uyarılarını alacak şekilde yapılandırabilirsiniz. Tehdit algılama 'yı kullandığınızda, olası güvenlik tehditlerini gösterebilen anormal veritabanı etkinliklerinde proaktif uyarılar alırsınız. Daha fazla bilgi için bkz. [tehdit algılamayı kullanmaya başlama](threat-detection-overview.md).
-- Günlük biçimi, depolama klasörü ve adlandırma kurallarının hiyerarşisi hakkında daha fazla bilgi için bkz. [BLOB denetim günlüğü biçim başvurusu](./audit-log-format.md).
-- Azure AD kimlik doğrulaması kullanılırken, başarısız oturum açma kayıtları SQL denetim *günlüğünde görünmez.* Başarısız oturum açma denetim kayıtlarını görüntülemek için, bu olayların ayrıntılarını günlüğe kaydeden [Azure Active Directory portalını](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)ziyaret etmeniz gerekir.
-- [Salt okuma Çoğaltmalarından](read-scale-out.md) denetim otomatik olarak etkinleştirilir. Depolama klasörlerinin, adlandırma kurallarının ve günlük biçiminin hiyerarşisi hakkında daha fazla ayrıntı için bkz. [SQL veritabanı denetim günlüğü biçimi](audit-log-format.md).
-
 ### <a name="audit-to-log-analytics-destination"></a><a id="audit-log-analytics-destination"></a>Log Analytics hedefe yönelik denetim
   
-Log Analytics çalışma alanına denetim günlükleri yazmayı yapılandırmak için **Log Analytics (Önizleme)** öğesini seçin ve **Log Analytics ayrıntılarını** açın. Günlüklerin yazılacağı Log Analytics çalışma alanını seçin veya oluşturun ve ardından **Tamam** ' a tıklayın.
+Log Analytics çalışma alanına denetim günlükleri yazmayı yapılandırmak için **Log Analytics (Önizleme)** öğesini seçin ve **Log Analytics ayrıntılarını** açın. Günlüklerin yazılacağı Log Analytics çalışma alanını seçin veya oluşturun ve ardından **Tamam**' a tıklayın.
 
    ![Loganalticsworkspace](./media/auditing-overview/auditing_select_oms.png)
 
@@ -142,7 +143,7 @@ Azure Izleyici Log Analytics çalışma alanı hakkında daha fazla bilgi için 
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>Olay Hub 'ı hedefine yönelik denetim
 
-Bir olay hub 'ına denetim günlükleri yazmayı yapılandırmak için **Olay Hub 'ı (Önizleme)** seçin ve **Olay Hub 'ı ayrıntılarını** açın. Günlüklerin yazılacağı Olay Hub 'ını seçin ve ardından **Tamam** ' a tıklayın. Olay Hub 'ının, veritabanınız ve sunucunuz ile aynı bölgede olduğundan emin olun.
+Bir olay hub 'ına denetim günlükleri yazmayı yapılandırmak için **Olay Hub 'ı (Önizleme)** seçin ve **Olay Hub 'ı ayrıntılarını** açın. Günlüklerin yazılacağı Olay Hub 'ını seçin ve ardından **Tamam**' a tıklayın. Olay Hub 'ının, veritabanınız ve sunucunuz ile aynı bölgede olduğundan emin olun.
 
    ![Eventhub](./media/auditing-overview/auditing_select_event_hub.png)
 
@@ -150,7 +151,7 @@ Bir olay hub 'ına denetim günlükleri yazmayı yapılandırmak için **Olay Hu
 
 Denetim günlüklerini Azure Izleyici günlüklerine yazmayı seçtiyseniz:
 
-- [Azure portalını](https://portal.azure.com) kullanın. İlgili veritabanını açın. Veritabanının **Denetim** sayfasının en üstünde **Denetim günlüklerini görüntüle** ' yi seçin.
+- [Azure portalını](https://portal.azure.com) kullanın. İlgili veritabanını açın. Veritabanının **Denetim** sayfasının en üstünde **Denetim günlüklerini görüntüle**' yi seçin.
 
     ![Denetim günlüklerini görüntüle](./media/auditing-overview/auditing-view-audit-logs.png)
 
@@ -168,7 +169,7 @@ Denetim günlüklerini Azure Izleyici günlüklerine yazmayı seçtiyseniz:
 
     ![Log Analytics güvenlik öngörüleri](media/auditing-overview/auditing-log-analytics-dashboard-data.png)
 
-- Alternatif olarak, Log Analytics dikey penceresinden denetim günlüklerine de erişebilirsiniz. Log Analytics çalışma alanınızı açın ve **genel** bölümünde **Günlükler** ' e tıklayın. Denetim günlüklerini görüntülemek için *"SQLSecurityAuditEvents" araması* yapın gibi basit bir sorgu ile başlayabilirsiniz.
+- Alternatif olarak, Log Analytics dikey penceresinden denetim günlüklerine de erişebilirsiniz. Log Analytics çalışma alanınızı açın ve **genel** bölümünde **Günlükler**' e tıklayın. Denetim günlüklerini görüntülemek için *"SQLSecurityAuditEvents" araması* yapın gibi basit bir sorgu ile başlayabilirsiniz.
     Buradan, denetim günlüğü verilerinizde gelişmiş aramalar çalıştırmak için [Azure izleyici günlüklerini](../../azure-monitor/log-query/log-query-overview.md)  de kullanabilirsiniz. Azure Izleyici günlükleri, tüm iş yüklerinizde ve sunucularınızda milyonlarca kaydı kolayca çözümlemek için tümleşik arama ve özel panolar kullanarak gerçek zamanlı operasyonel içgörüler sağlar. Azure Izleyici günlükleri arama dili ve komutları hakkında daha fazla yararlı bilgi için bkz. [Azure izleyici günlükleri arama başvurusu](../../azure-monitor/log-query/log-query-overview.md).
 
 Denetim günlüklerini Olay Hub 'ına yazmayı seçtiyseniz:
@@ -180,7 +181,7 @@ Denetim günlüklerini bir Azure depolama hesabına yazmayı seçerseniz, günl�
 
 - Denetim günlükleri, kurulum sırasında seçtiğiniz hesapta toplanır. [Azure Depolama Gezgini](https://storageexplorer.com/)gibi bir araç kullanarak denetim günlüklerini inceleyebilirsiniz. Azure depolama 'da denetim günlükleri, **sqldbauditlogs** adlı bir kapsayıcı içinde blob dosyaları koleksiyonu olarak kaydedilir. Depolama klasörlerinin, adlandırma kurallarının ve günlük biçiminin hiyerarşisi hakkında daha fazla ayrıntı için bkz. [SQL veritabanı denetim günlüğü biçimi](./audit-log-format.md).
 
-- [Azure portalını](https://portal.azure.com) kullanın.  İlgili veritabanını açın. Veritabanının **Denetim** sayfasının en üstünde **Denetim günlüklerini görüntüle** ' ye tıklayın.
+- [Azure portalını](https://portal.azure.com) kullanın.  İlgili veritabanını açın. Veritabanının **Denetim** sayfasının en üstünde **Denetim günlüklerini görüntüle**' ye tıklayın.
 
     ![Veritabanı denetimi sayfasında denetim günlüklerini görüntüle düğmesinin vurgulandığını gösteren ekran görüntüsü.](./media/auditing-overview/7_auditing_get_started_blob_view_audit_logs.png)
 
@@ -195,7 +196,7 @@ Denetim günlüklerini bir Azure depolama hesabına yazmayı seçerseniz, günl�
 - Denetim günlüğü verilerini tablosal biçiminde döndürmek için **sys.fn_get_audit_file** (T-SQL) sistem işlevini kullanın. Bu işlevi kullanma hakkında daha fazla bilgi için bkz. [sys.fn_get_audit_file](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql).
 
 - SQL Server Management Studio (SSMS 17 ' den başlayarak) **birleştirme denetim dosyalarını** kullanın:
-    1. Ssms menüsünden **Dosya**  >  **açma**  >  **birleştirme denetim dosyaları** ' nı seçin.
+    1. Ssms menüsünden **Dosya**  >  **açma**  >  **birleştirme denetim dosyaları**' nı seçin.
 
         ![Denetim dosyalarını Birleştir menü seçeneğini gösteren ekran görüntüsü.](./media/auditing-overview/9_auditing_get_started_ssms_1.png)
     2. **Denetim dosyaları Ekle** iletişim kutusu açılır. Denetim dosyalarını yerel bir diskten birleştirmeyi veya Azure Storage 'tan içeri aktarmayı seçmek için **Ekle** seçeneklerinden birini seçin. Azure depolama ayrıntılarını ve hesap anahtarınızı sağlamanız gerekir.
@@ -221,7 +222,7 @@ Denetim günlüklerini bir Azure depolama hesabına yazmayı seçerseniz, günl�
 
 Coğrafi olarak çoğaltılan veritabanları ile birincil veritabanında denetimi etkinleştirdiğinizde, ikincil veritabanı aynı denetim ilkesine sahip olur. Birincil veritabanından bağımsız olarak **ikincil sunucuda** denetimi etkinleştirerek ikincil veritabanında denetim kurmak mümkündür.
 
-- Sunucu düzeyi ( **önerilir** ): hem **birincil sunucuda** hem de **ikincil sunucuda** denetimi açın-birincil ve ikincil veritabanlarının her biri kendi sunucu düzeyi ilkeye göre ayrı olarak denetlenir.
+- Sunucu düzeyi (**önerilir**): hem **birincil sunucuda** hem de **ikincil sunucuda** denetimi açın-birincil ve ikincil veritabanlarının her biri kendi sunucu düzeyi ilkeye göre ayrı olarak denetlenir.
 - Veritabanı düzeyi: ikincil veritabanları için veritabanı düzeyinde denetim, yalnızca birincil veritabanı denetim ayarlarından yapılandırılabilir.
   - Sunucuda değil, *birincil veritabanının kendisinde* denetim etkinleştirilmiş olmalıdır.
   - Birincil veritabanında denetim etkinleştirildikten sonra, ikincil veritabanında da etkin hale gelir.
@@ -233,20 +234,20 @@ Coğrafi olarak çoğaltılan veritabanları ile birincil veritabanında denetim
 
 Üretimde, depolama anahtarlarınızı düzenli aralıklarla yenilemeniz olasıdır. Azure depolama 'ya denetim günlükleri yazarken, anahtarlarınızı yenilerken denetim ilkenizi yeniden kaydetmeniz gerekir. Süreç şu şekilde ilerler:
 
-1. **Depolama ayrıntılarını** açın. **Depolama erişim anahtarı** kutusunda **İkincil** ' ı seçin ve **Tamam** ' a tıklayın. Sonra Denetim yapılandırma sayfasının en üstündeki **Kaydet** ' e tıklayın.
+1. **Depolama ayrıntılarını** açın. **Depolama erişim anahtarı** kutusunda **İkincil**' ı seçin ve **Tamam**' a tıklayın. Sonra Denetim yapılandırma sayfasının en üstündeki **Kaydet** ' e tıklayın.
 
     ![İkincil depolama erişim anahtarı seçme işlemini gösteren ekran görüntüsü.](./media/auditing-overview/5_auditing_get_started_storage_key_regeneration.png)
 2. Depolama yapılandırması sayfasına gidin ve birincil erişim tuşunu yeniden oluşturun.
 
     ![Gezinti bölmesi](./media/auditing-overview/6_auditing_get_started_regenerate_key.png)
-3. Denetim yapılandırması sayfasına dönün, depolama erişim anahtarını ikincilden birinciye geçirin ve ardından **Tamam** ' a tıklayın. Sonra Denetim yapılandırma sayfasının en üstündeki **Kaydet** ' e tıklayın.
+3. Denetim yapılandırması sayfasına dönün, depolama erişim anahtarını ikincilden birinciye geçirin ve ardından **Tamam**' a tıklayın. Sonra Denetim yapılandırma sayfasının en üstündeki **Kaydet** ' e tıklayın.
 4. Depolama yapılandırması sayfasına dönün ve ikincil erişim anahtarını yeniden oluşturun (bir sonraki anahtarın yenileme döngüsüne hazırlanın).
 
 ## <a name="manage-azure-sql-database-auditing"></a><a id="manage-auditing"></a>Azure SQL veritabanı denetimini yönetme
 
 ### <a name="using-azure-powershell"></a>Azure PowerShell’i kullanma
 
-**PowerShell cmdlet 'leri (ek filtreleme IÇIN WHERE yan tümcesi desteği dahil)** :
+**PowerShell cmdlet 'leri (ek filtreleme IÇIN WHERE yan tümcesi desteği dahil)**:
 
 - [Veritabanı denetim Ilkesi oluştur veya güncelleştir (set-AzSqlDatabaseAudit)](/powershell/module/az.sql/set-azsqldatabaseaudit)
 - [Sunucu denetim Ilkesi oluştur veya güncelleştir (set-AzSqlServerAudit)](/powershell/module/az.sql/set-azsqlserveraudit)
@@ -259,7 +260,7 @@ Betik örneği için bkz. [PowerShell kullanarak denetim ve tehdit algılamayı 
 
 ### <a name="using-rest-api"></a>REST API kullanma
 
-**REST API** :
+**REST API**:
 
 - [Veritabanı denetim Ilkesi oluştur veya güncelleştir](/rest/api/sql/database%20auditing%20settings/createorupdate)
 - [Sunucu denetim Ilkesi oluştur veya güncelleştir](/rest/api/sql/server%20auditing%20settings/createorupdate)

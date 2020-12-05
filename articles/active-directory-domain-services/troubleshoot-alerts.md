@@ -2,7 +2,7 @@
 title: Azure AD Domain Services 'daki ortak uyarılar ve çözümler | Microsoft Docs
 description: Azure Active Directory Domain Services sistem durumunun bir parçası olarak oluşturulan yaygın uyarıların nasıl çözümleneceğini öğrenin
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 54319292-6aa0-4a08-846b-e3c53ecca483
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/09/2020
-ms.author: joflore
-ms.openlocfilehash: 5324018bace0ad530dea8ae94cecdc5b41b618c7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 80011b2ae2a70ce4c540ac31897cc8be4a6580c3
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967605"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618629"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>Bilinen sorunlar: Azure Active Directory Domain Services Genel uyarılar ve çözümler
 
@@ -73,7 +73,7 @@ Bu uyarıyı çözmek için, mevcut yönetilen etki alanınızı silin ve özel 
 
 1. [Yönetilen etki alanını](delete-aadds.md) dizininizden silin.
 1. Sanal ağ IP adresi aralığını güncelleştirmek için Azure portal *sanal ağ* araması yapın ve seçin. Hatalı bir genel IP adresi aralığı kümesine sahip Azure AD DS sanal ağını seçin.
-1. **Ayarlar**altında *Adres alanı*' nı seçin.
+1. **Ayarlar** altında *Adres alanı*' nı seçin.
 1. Adres aralığını, mevcut adres aralığını seçip düzenleyerek veya ek bir adres aralığı ekleyerek güncelleştirin. Yeni IP adresi aralığının özel bir IP aralığında olduğundan emin olun. Hazırlanıyor, değişiklikleri **kaydedin** .
 1. Sol taraftaki gezinmede **alt ağları** seçin.
 1. Düzenlemek istediğiniz alt ağı seçin veya ek bir alt ağ oluşturun.
@@ -133,9 +133,9 @@ Azure AD DS, genel IP adresleri, sanal ağ arabirimleri ve yük dengeleyici gibi
 
 Bu uyarı, gerekli kaynaklardan biri silindiğinde oluşturulur. Kaynak 4 saatten daha önce silinmişse, Azure platformunun silinen kaynağı otomatik olarak yeniden oluşturalım olasılığı vardır. Aşağıdaki adımlarda, kaynak silme işleminin sistem durumu ve zaman damgasının nasıl kontrol yapılacağı ana hatlarıyla verilmiştir:
 
-1. Azure portal **etki alanı Hizmetleri**' ni arayıp seçin. *Aaddscontoso.com*gibi yönetilen etki alanınızı seçin.
+1. Azure portal **etki alanı Hizmetleri**' ni arayıp seçin. *Aaddscontoso.com* gibi yönetilen etki alanınızı seçin.
 1. Sol taraftaki gezinmede **sistem durumu**' nu seçin.
-1. Sistem durumu sayfasında KIMLIĞI *AADDS109*olan uyarıyı seçin.
+1. Sistem durumu sayfasında KIMLIĞI *AADDS109* olan uyarıyı seçin.
 1. Uyarının ilk bulduğu zamana yönelik bir zaman damgası vardır. Bu zaman damgası 4 saatten daha önce, Azure platformu kaynağı otomatik olarak yeniden oluşturabilir ve uyarıyı kendisi çözebilir.
 
     Uyarı 4 saatten eski olursa, yönetilen etki alanı kurtarılamaz durumda olur. [Yönetilen etki alanını silin](delete-aadds.md) ve ardından [Yeni bir yönetilen etki alanı oluşturun](tutorial-create-instance.md).
@@ -179,7 +179,7 @@ Bu uyarıyı çözmek için, mevcut yönetilen etki alanınızı silin ve yeteri
 
 1. [Yönetilen etki alanını](delete-aadds.md) dizininizden silin.
 1. Sanal ağ IP adresi aralığını güncelleştirmek için Azure portal *sanal ağ* araması yapın ve seçin. Küçük IP adresi aralığına sahip yönetilen etki alanı için sanal ağı seçin.
-1. **Ayarlar**altında *Adres alanı*' nı seçin.
+1. **Ayarlar** altında *Adres alanı*' nı seçin.
 1. Adres aralığını, mevcut adres aralığını seçip düzenleyerek veya ek bir adres aralığı ekleyerek güncelleştirin. Yeni IP adresi aralığının, yönetilen etki alanının alt ağ aralığı için yeterince büyük olduğundan emin olun. Hazırlanıyor, değişiklikleri **kaydedin** .
 1. Sol taraftaki gezinmede **alt ağları** seçin.
 1. Düzenlemek istediğiniz alt ağı seçin veya ek bir alt ağ oluşturun.
@@ -221,7 +221,7 @@ Değişiklik veya silme işlemini engellemek için, kaynak kilitleri Azure kayna
 Azure AD DS bileşenlerinde kaynak kilitlerini denetlemek ve kaldırmak için aşağıdaki adımları izleyin:
 
 1. Kaynak grubunuzda, sanal ağ, ağ arabirimi veya genel IP adresi gibi yönetilen etki alanının ağ bileşenlerinin her biri için Azure portal işlem günlüklerini denetleyin. Bu işlem günlükleri bir işlemin neden başarısız olduğunu ve bir kaynak kilidinin uygulandığını göstermelidir.
-1. Bir kilidin uygulandığı kaynağı seçin ve ardından **kilitler altında kilitleri**seçin ve kilidi kaldırın.
+1. Bir kilidin uygulandığı kaynağı seçin ve ardından **kilitler altında kilitleri** seçin ve kilidi kaldırın.
 
 ## <a name="aadds116-resources-are-unusable"></a>AADDS116: kaynaklar kullanılamaz
 
@@ -236,7 +236,7 @@ Azure AD DS bileşenlerinde kaynak kilitlerini denetlemek ve kaldırmak için a�
 Uygulanan ilkeleri Azure AD DS bileşenlerinde denetlemek ve güncelleştirmek için aşağıdaki adımları izleyin:
 
 1. Kaynak grubunuzda, sanal ağ, NIC veya genel IP adresi gibi, yönetilen etki alanının ağ bileşenlerinin her biri için Azure portal işlem günlüklerini denetleyin. Bu işlem günlükleri bir işlemin neden başarısız olduğunu ve kısıtlayıcı bir ilkenin uygulandığını göstermelidir.
-1. Bir ilkenin uygulandığı kaynağı seçin ve ardından **ilkeler**altında ilkeyi daha az kısıtlayıcı olacak şekilde seçin ve düzenleyin.
+1. Bir ilkenin uygulandığı kaynağı seçin ve ardından **ilkeler** altında ilkeyi daha az kısıtlayıcı olacak şekilde seçin ve düzenleyin.
 
 ## <a name="aadds500-synchronization-has-not-completed-in-a-while"></a>AADDS500: eşitleme bir süre içinde tamamlanmadı
 

@@ -2,7 +2,7 @@
 title: Azure AD Domain Services bir RHEL VM 'ye katma | Microsoft Docs
 description: Red Hat Enterprise Linux bir sanal makineyi Azure AD Domain Services yönetilen bir etki alanına nasıl yapılandıracağınızı ve katılacağınızı öğrenin.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 16100caa-f209-4cb0-86d3-9e218aeb51c6
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/13/2020
-ms.author: joflore
-ms.openlocfilehash: ffde2317ea66a15936df75c4fe2455f627ea6e98
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 285a972936bfdf4b173e2a20223143883cd8b7d3
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962131"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619564"
 ---
 # <a name="join-a-red-hat-enterprise-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Red Hat Enterprise Linux bir sanal makineyi Azure Active Directory Domain Services yönetilen bir etki alanına katma
 
@@ -24,7 +24,7 @@ Kullanıcıların Azure 'da tek bir kimlik bilgileri kümesi kullanarak sanal ma
 
 Bu makalede bir Red Hat Enterprise Linux (RHEL) sanal makinesini yönetilen bir etki alanına nasıl katılabilmeniz gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -42,7 +42,7 @@ Azure 'da var olan bir RHEL Linux sanal makinesi varsa, SSH kullanarak buna bağ
 
 Bir RHEL Linux sanal makinesi oluşturmanız veya bu makaleyle kullanmak üzere bir test sanal makinesi oluşturmak istiyorsanız aşağıdaki yöntemlerden birini kullanabilirsiniz:
 
-* [Azure portalı](../virtual-machines/linux/quick-create-portal.md)
+* [Azure Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
@@ -96,7 +96,7 @@ Gerekli paketler VM 'ye yüklendikten sonra VM 'yi yönetilen etki alanına kat�
 
 ### <a name="rhel-7"></a>RHEL 7
 
-1. `realm discover`Yönetilen etki alanını bulma komutunu kullanın. Aşağıdaki örnek, *AADDSCONTOSO.com*bölgesini bulur. Tüm büyük harfle yönetilen etki alanı adınızı belirtin:
+1. `realm discover`Yönetilen etki alanını bulma komutunu kullanın. Aşağıdaki örnek, *AADDSCONTOSO.com* bölgesini bulur. Tüm büyük harfle yönetilen etki alanı adınızı belirtin:
 
     ```console
     sudo realm discover AADDSCONTOSO.COM
@@ -130,7 +130,7 @@ Successfully enrolled machine in realm
 
 ### <a name="rhel-6"></a>RHEL 6
 
-1. `adcli info`Yönetilen etki alanını bulma komutunu kullanın. Aşağıdaki örnek, *ADDDSCONTOSO.com*bölgesini bulur. Tüm büyük harfle yönetilen etki alanı adınızı belirtin:
+1. `adcli info`Yönetilen etki alanını bulma komutunu kullanın. Aşağıdaki örnek, *ADDDSCONTOSO.com* bölgesini bulur. Tüm büyük harfle yönetilen etki alanı adınızı belirtin:
 
     ```console
     sudo adcli info aaddscontoso.com
@@ -241,7 +241,7 @@ Varsayılan olarak, kullanıcılar yalnızca SSH ortak anahtar tabanlı kimlik d
     sudo vi /etc/ssh/sshd_config
     ```
 
-1. *Passwordaduthentication* satırını *Evet*olarak güncelleştirin:
+1. *Passwordaduthentication* satırını *Evet* olarak güncelleştirin:
 
     ```console
     PasswordAuthentication yes
@@ -273,7 +273,7 @@ RHEL VM 'de *AAD DC yöneticileri* grubunun üyelerine yönetici ayrıcalıklar�
     sudo visudo
     ```
 
-1. */Etc/sudoers* dosyasının sonuna aşağıdaki girişi ekleyin. *AAD DC Administrators* grubu adında boşluk içerir, bu nedenle Grup adına ters eğik çizgi kaçış karakteri ekleyin. *Aaddscontoso.com*gibi kendi etki alanı adınızı ekleyin:
+1. */Etc/sudoers* dosyasının sonuna aşağıdaki girişi ekleyin. *AAD DC Administrators* grubu adında boşluk içerir, bu nedenle Grup adına ters eğik çizgi kaçış karakteri ekleyin. *Aaddscontoso.com* gibi kendi etki alanı adınızı ekleyin:
 
     ```console
     # Add 'AAD DC Administrators' group members as admins.
@@ -286,7 +286,7 @@ RHEL VM 'de *AAD DC yöneticileri* grubunun üyelerine yönetici ayrıcalıklar�
 
 VM 'nin yönetilen etki alanına başarıyla katıldığını doğrulamak için, bir etki alanı kullanıcı hesabı kullanarak yeni bir SSH bağlantısı başlatın. Bir giriş dizininin oluşturulduğunu ve etki alanındaki grup üyeliğinin uygulandığını doğrulayın.
 
-1. Konsolınızdan yeni bir SSH bağlantısı oluşturun. Komutunu kullanarak yönetilen etki alanına ait bir etki alanı hesabı kullanın, örneğin, `ssh -l` `contosoadmin@aaddscontoso.com` *RHEL.aaddscontoso.com*gibi sanal makinenizin adresini girin. Azure Cloud Shell kullanıyorsanız, iç DNS adı yerine VM 'nin genel IP adresini kullanın.
+1. Konsolınızdan yeni bir SSH bağlantısı oluşturun. Komutunu kullanarak yönetilen etki alanına ait bir etki alanı hesabı kullanın, örneğin, `ssh -l` `contosoadmin@aaddscontoso.com` *RHEL.aaddscontoso.com* gibi sanal makinenizin adresini girin. Azure Cloud Shell kullanıyorsanız, iç DNS adı yerine VM 'nin genel IP adresini kullanın.
 
     ```console
     ssh -l contosoadmin@AADDSCONTOSO.com rhel.aaddscontoso.com

@@ -10,14 +10,14 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: 1823de88597756ba3db9aee0dc29501b1ba914a4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: d122cedbad41d6984614a0edccb2fd98269710f2
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646245"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618085"
 ---
-# <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>Azure AD 'de parola tabanlı çoklu oturum açma sorunlarını giderme
+# <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>Azure AD’de parola tabanlı çoklu oturum açma sorunlarını giderme
 
 Uygulamamda parola tabanlı çoklu oturum açma (SSO) kullanmak için tarayıcı uzantısının yüklenmesi gerekir. Parola tabanlı SSO için yapılandırılmış bir uygulama seçtiğinizde uzantı otomatik olarak indirilir. Son Kullanıcı perspektifinden uygulamalarımı kullanma hakkında bilgi edinmek için bkz. [Apps Portal yardımı](../user-help/my-apps-portal-end-user-access.md).
 
@@ -30,7 +30,7 @@ Parola tabanlı çoklu oturum açma 'nın yapılandırıldığından emin olun. 
 ## <a name="users-not-assigned"></a>Atanmayan kullanıcılar
 Kullanıcının uygulamaya atandığından emin olun. Daha fazla bilgi için bkz. bir [uygulamaya Kullanıcı veya Grup atama](assign-user-or-group-access-portal.md).
 
-## <a name="credentials-are-filled-in-but-the-extension-does-not-submit-them"></a>Kimlik bilgileri doldurulmuştur, ancak uzantı onları gönderemiyor
+## <a name="credentials-are-filled-in-but-the-extension-does-not-submit-them"></a>Kimlik bilgileri dolduruluyor ama uzantı bunları göndermiyor
 
 Bu sorun genellikle uygulama satıcısı oturum açma sayfasını son zamanlarda bir alan eklemek, Kullanıcı adı ve parola alanlarını algılamak için kullanılan tanımlayıcıyı değiştirmek veya oturum açma deneyiminin uygulama için nasıl çalıştığını değiştirmek üzere değiştirdiyse meydana gelir. Neyse ki, birçok örnekte Microsoft bu sorunları hızlı bir şekilde çözmek için uygulama satıcılarıyla birlikte çalışabilir.
 
@@ -38,7 +38,7 @@ Microsoft, tümleştirmelerin ne zaman otomatik olarak algılanması için tekno
 
 **Bu uygulamanın satıcısıyla iletişim kursunsam, Microsoft 'un** kendi uygulamasını Azure Active Directory ile yerel olarak tümleştirmeleri için onlarla birlikte çalışmasına yol açabilir. Satıcıyı başlamak için [Azure Active Directory Uygulama galerisinde uygulamanızı listeye](../develop/v2-howto-app-gallery-listing.md) gönderebilirsiniz.
 
-## <a name="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect"></a>Kimlik bilgileri doldurulmuştur ve gönderilir, ancak sayfa kimlik bilgilerinin yanlış olduğunu belirtiyor
+## <a name="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect"></a>Kimlik bilgileri dolduruluyor ve gönderiliyor ama sayfa kimlik bilgilerinin yanlış olduğunu gösteriyor
 
 Bu sorunu çözmek için öncelikle şunları deneyin:
 
@@ -150,6 +150,13 @@ Bu sorunlardan herhangi biriyle karşılaşırsanız şunları yapın:
 - Kullanıcılarınızın uygulamalarımın uygulamada oturum açmaya çalışmalarından *,* *InPrivate* veya *özel moddayken* emin olun.
 - El ile yakalama işlemini yeniden deneyin. Kırmızı işaretçilerin doğru alanların üzerinde olduğundan emin olun.
 - El ile yakalama işlemi yanıt vermeyi durdurmuş gibi görünüyorsa veya oturum açma sayfası yanıt vermezse, el ile yakalama işlemini yeniden deneyin. Ancak, bu kez işlemi tamamladıktan sonra gözatıcının geliştirici konsolunu açmak için F12 tuşuna basın. **Konsol** sekmesini seçin. **Window. Location = "yazın ve *&lt; &gt; Uygulamayı yapılandırırken belirttiğiniz oturum açma URL 'si*"** yazın ve ENTER tuşuna basın. Bu, yakalama işlemini sonlandıran ve yakalanan alanları depolayan bir sayfa yeniden yönlendirmeyi zorlar.
+
+### <a name="i-cant-add-another-user-to-my-password-based-sso-app"></a>Parola tabanlı SSO uygulamama başka bir Kullanıcı ekleyemiyorum
+
+Parola tabanlı SSO uygulamasının 48 Kullanıcı sınırlaması vardır. Bu nedenle, uygulama başına Kullanıcı adı/parola çiftleri için 48 anahtar sınırlaması vardır.
+Ek kullanıcılar eklemek istiyorsanız şunlardan birini yapabilirsiniz:
+-   Uygulamanın başka bir örneğini ekleyin
+-   Önce uygulamayı artık kullanmayan kullanıcıları kaldırın
 
 ## <a name="request-support"></a>Destek iste 
 SSO 'yu ayarlarken ve kullanıcıları atarken bir hata mesajı alırsanız, bir destek bileti açın. Mümkün olduğunca aşağıdaki bilgilerin çoğunu ekleyin:

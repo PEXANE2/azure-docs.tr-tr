@@ -2,7 +2,7 @@
 title: Azure AD DS ağ güvenlik grubu uyarılarını çözümleme | Microsoft Docs
 description: Azure Active Directory Domain Services için ağ güvenlik grubu yapılandırma uyarılarını sorun giderme ve çözümleme hakkında bilgi edinin
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 95f970a7-5867-4108-a87e-471fa0910b8c
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: f8917d7bd8fc1a4091607b9a405cfefbb51bc188
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: d8f2e77b7225306844cec85363a2971eaac4eebd
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962794"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620265"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Bilinen sorunlar: Azure Active Directory Domain Services ağ yapılandırması uyarıları
 
@@ -38,7 +38,7 @@ Aşağıdaki varsayılan gelen ve giden güvenlik kuralları, yönetilen bir etk
 
 ### <a name="inbound-security-rules"></a>Gelen güvenlik kuralları
 
-| Öncelik | Name | Bağlantı noktası | Protokol | Kaynak | Hedef | Eylem |
+| Öncelik | Ad | Bağlantı noktası | Protokol | Kaynak | Hedef | Eylem |
 |----------|------|------|----------|--------|-------------|--------|
 | 101      | AllowSyncWithAzureAD | 443 | TCP | AzureActiveDirectoryDomainServices | Herhangi biri | İzin Ver |
 | 201      | AllowRD | 3389 | TCP | Corpnetgördünüz | Herhangi biri | İzin Ver |
@@ -52,7 +52,7 @@ Aşağıdaki varsayılan gelen ve giden güvenlik kuralları, yönetilen bir etk
 
 ### <a name="outbound-security-rules"></a>Giden güvenlik kuralları
 
-| Öncelik | Name | Bağlantı noktası | Protokol | Kaynak | Hedef | Eylem |
+| Öncelik | Ad | Bağlantı noktası | Protokol | Kaynak | Hedef | Eylem |
 |----------|------|------|----------|--------|-------------|--------|
 | 65000    | Allvnetoutbağlanmadı | Herhangi biri | Herhangi biri | VirtualNetwork | VirtualNetwork | İzin Ver |
 | 65001    | AllowAzureLoadBalancerOutBound | Herhangi biri | Herhangi biri |  Herhangi biri | İnternet | İzin Ver |

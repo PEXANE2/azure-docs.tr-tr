@@ -2,7 +2,7 @@
 title: Azure AD Domain Services bir CentOS VM 'sine ekleme | Microsoft Docs
 description: Bir CentOS Linux sanal makinesini Azure Active Directory Domain Services yönetilen bir etki alanına nasıl yapılandıracağınızı ve katılacağınızı öğrenin.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 16100caa-f209-4cb0-86d3-9e218aeb51c6
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/13/2020
-ms.author: joflore
-ms.openlocfilehash: 6aa85564390728331f682c31d14655844d68b3c3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 76fc11384b55337f581a74239d4a40b90b284f32
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962182"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619666"
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Bir CentOS Linux sanal makinesini Azure Active Directory Domain Services yönetilen bir etki alanına katma
 
@@ -24,7 +24,7 @@ Kullanıcıların Azure 'da tek bir kimlik bilgileri kümesi kullanarak sanal ma
 
 Bu makalede, bir CentOS Linux sanal makinesini yönetilen bir etki alanına nasıl katılabilmeniz gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -42,7 +42,7 @@ Azure 'da var olan bir CentOS Linux sanal makinesi varsa, SSH kullanarak bu maki
 
 Bir CentOS Linux sanal makinesi oluşturmanız veya bu makaleyle kullanmak üzere bir test sanal makinesi oluşturmak istiyorsanız aşağıdaki yöntemlerden birini kullanabilirsiniz:
 
-* [Azure portalı](../virtual-machines/linux/quick-create-portal.md)
+* [Azure Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
@@ -86,7 +86,7 @@ sudo yum install realmd sssd krb5-workstation krb5-libs oddjob oddjob-mkhomedir 
 
 Gerekli paketler VM 'ye yüklendikten sonra VM 'yi yönetilen etki alanına katın.
 
-1. `realm discover`Yönetilen etki alanını bulma komutunu kullanın. Aşağıdaki örnek, *AADDSCONTOSO.com*bölgesini bulur. Tüm büyük harfle yönetilen etki alanı adınızı belirtin:
+1. `realm discover`Yönetilen etki alanını bulma komutunu kullanın. Aşağıdaki örnek, *AADDSCONTOSO.com* bölgesini bulur. Tüm büyük harfle yönetilen etki alanı adınızı belirtin:
 
     ```console
     sudo realm discover AADDSCONTOSO.COM
@@ -130,7 +130,7 @@ Varsayılan olarak, kullanıcılar yalnızca SSH ortak anahtar tabanlı kimlik d
     sudo vi /etc/ssh/sshd_config
     ```
 
-1. *Passwordaduthentication* satırını *Evet*olarak güncelleştirin:
+1. *Passwordaduthentication* satırını *Evet* olarak güncelleştirin:
 
     ```console
     PasswordAuthentication yes
@@ -154,7 +154,7 @@ CentOS sanal makinesinde *AAD DC Administrators* grubu yönetici ayrıcalıklar�
     sudo visudo
     ```
 
-1. */Etc/sudoers* dosyasının sonuna aşağıdaki girişi ekleyin. *AAD DC Administrators* grubu adında boşluk içerir, bu nedenle Grup adına ters eğik çizgi kaçış karakteri ekleyin. *Aaddscontoso.com*gibi kendi etki alanı adınızı ekleyin:
+1. */Etc/sudoers* dosyasının sonuna aşağıdaki girişi ekleyin. *AAD DC Administrators* grubu adında boşluk içerir, bu nedenle Grup adına ters eğik çizgi kaçış karakteri ekleyin. *Aaddscontoso.com* gibi kendi etki alanı adınızı ekleyin:
 
     ```console
     # Add 'AAD DC Administrators' group members as admins.
@@ -167,7 +167,7 @@ CentOS sanal makinesinde *AAD DC Administrators* grubu yönetici ayrıcalıklar�
 
 VM 'nin yönetilen etki alanına başarıyla katıldığını doğrulamak için, bir etki alanı kullanıcı hesabı kullanarak yeni bir SSH bağlantısı başlatın. Bir giriş dizininin oluşturulduğunu ve etki alanındaki grup üyeliğinin uygulandığını doğrulayın.
 
-1. Konsolınızdan yeni bir SSH bağlantısı oluşturun. Komutunu kullanarak yönetilen etki alanına ait bir etki alanı hesabı kullanın, örneğin, `ssh -l` `contosoadmin@aaddscontoso.com` *CentOS.aaddscontoso.com*gibi sanal makinenizin adresini girin. Azure Cloud Shell kullanıyorsanız, iç DNS adı yerine VM 'nin genel IP adresini kullanın.
+1. Konsolınızdan yeni bir SSH bağlantısı oluşturun. Komutunu kullanarak yönetilen etki alanına ait bir etki alanı hesabı kullanın, örneğin, `ssh -l` `contosoadmin@aaddscontoso.com` *CentOS.aaddscontoso.com* gibi sanal makinenizin adresini girin. Azure Cloud Shell kullanıyorsanız, iç DNS adı yerine VM 'nin genel IP adresini kullanın.
 
     ```console
     ssh -l contosoadmin@AADDSCONTOSO.com centos.aaddscontoso.com

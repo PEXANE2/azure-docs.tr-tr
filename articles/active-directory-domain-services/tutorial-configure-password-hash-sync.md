@@ -1,20 +1,20 @@
 ---
 title: Azure AD Domain Services için parola karma eşitlemesini etkinleştir | Microsoft Docs
 description: Bu öğreticide, Azure Active Directory Domain Services yönetilen bir etki alanına Azure AD Connect kullanarak parola karması eşitlemesini nasıl etkinleştireceğinizi öğrenin.
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 4daad0d0739bb3407be13f717572c8aa99947d1a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: e83d8941d1be7fd36f53a881a21716252ad01954
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967299"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618357"
 ---
 # <a name="tutorial-enable-password-synchronization-in-azure-active-directory-domain-services-for-hybrid-environments"></a>Öğretici: karma ortamlarda Azure Active Directory Domain Services parola eşitlemeyi etkinleştirme
 
@@ -22,7 +22,7 @@ Karma ortamlarda, bir Azure Active Directory (Azure AD) kiracısı, Azure AD Con
 
 Azure AD DS 'yi şirket içi AD DS ortamından eşitlenen hesaplarla kullanmak için, NTLM ve Kerberos kimlik doğrulaması için gereken parola karmalarını eşitlemek üzere Azure AD Connect yapılandırmanız gerekir. Azure AD Connect yapılandırıldıktan sonra, şirket içi hesap oluşturma veya parola değiştirme olayı da eski parola karmalarını Azure AD ile eşitler.
 
-Şirket içi AD DS ortamı olmayan veya bir *kaynak ormanı*kullanıyorsanız, yalnızca bulut hesapları kullanıyorsanız bu adımları gerçekleştirmeniz gerekmez. Kaynak ormanı kullanan yönetilen etki alanları için, şirket içi parola karmaları hiçbir zaman eşitlenmez. Şirket içi hesapların kimlik doğrulaması, orman güvenlerini kendi AD DS etki alanı denetleyicilerinize geri kullanır.
+Şirket içi AD DS ortamı olmayan veya bir *kaynak ormanı* kullanıyorsanız, yalnızca bulut hesapları kullanıyorsanız bu adımları gerçekleştirmeniz gerekmez. Kaynak ormanı kullanan yönetilen etki alanları için, şirket içi parola karmaları hiçbir zaman eşitlenmez. Şirket içi hesapların kimlik doğrulaması, orman güvenlerini kendi AD DS etki alanı denetleyicilerinize geri kullanır.
 
 Bu öğreticide şunları öğrenirsiniz:
 
@@ -32,7 +32,7 @@ Bu öğreticide şunları öğrenirsiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklara ihtiyacınız vardır:
 
@@ -59,7 +59,7 @@ Azure AD Connect, Azure AD DS için gerekli NTLM veya Kerberos parola karmaları
 
 Azure AD Connect yüklendi ve Azure AD ile eşitlenecek şekilde yapılandırıldıysa, artık NTLM ve Kerberos için eski parola karması eşitlemesini yapılandırın. Gerekli ayarları yapılandırmak ve ardından Azure AD 'ye tam parola eşitlemeyi başlatmak için bir PowerShell betiği kullanılır. Azure AD Connect Parola karması eşitleme işlemi tamamlandığında, kullanıcılar, eski NTLM veya Kerberos parola karmaları kullanan Azure AD DS aracılığıyla uygulamalarda oturum açabilirler.
 
-1. Azure AD Connect yüklü bilgisayarda, Başlat menüsünden, **Azure AD Connect > eşitleme hizmetini**açın.
+1. Azure AD Connect yüklü bilgisayarda, Başlat menüsünden, **Azure AD Connect > eşitleme hizmetini** açın.
 1. **Bağlayıcılar** sekmesini seçin. Şirket içi AD DS ortamı ile Azure AD arasında eşitleme oluşturmak için kullanılan bağlantı bilgileri listelenir.
 
     **Tür** , Azure AD Bağlayıcısı için *Windows Azure Active Directory (Microsoft)* veya şirket içi AD DS Bağlayıcısı için *Active Directory Domain Services* gösterir. Bir sonraki adımda PowerShell betiğindeki kullanılacak bağlayıcı adlarını bir yere göz önünde alın.

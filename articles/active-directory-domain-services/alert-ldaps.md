@@ -2,7 +2,7 @@
 title: Azure AD Domain Services 'da Güvenli LDAP uyarılarını çözün | Microsoft Docs
 description: Azure Active Directory Domain Services için Güvenli LDAP ile sık karşılaşılan uyarıları nasıl giderebileceğinizi ve çözeceğinizi öğrenin.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 81208c0b-8d41-4f65-be15-42119b1b5957
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/09/2020
-ms.author: joflore
-ms.openlocfilehash: b9bdcc7e338c0dffc97bd05a6ae9b64947542b2e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 15c1f3a1731edf7b45061646d43688b4aacc6104
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962811"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620316"
 ---
 # <a name="known-issues-secure-ldap-alerts-in-azure-active-directory-domain-services"></a>Bilinen sorunlar: Azure Active Directory Domain Services Güvenli LDAP uyarılar
 
@@ -37,10 +37,10 @@ Güvenli LDAP etkinleştirdiğinizde, gelen LDAPS erişimini belirli IP adresler
 1. Azure portal **ağ güvenlik grupları**' nı arayıp seçin.
 1. Yönetilen etki alanınız ile ilişkili ağ güvenlik grubunu seçin (örneğin, *Aeklemesine-contoso.com-NSG*) ve ardından **gelen güvenlik kuralları** ' nı seçin.
 1. 636 numaralı TCP bağlantı noktası için bir kural oluşturmak için **+ Ekle** ' yi seçin. Gerekirse, bir kural oluşturmak için pencerede **Gelişmiş** ' i seçin.
-1. **Kaynak**için açılan menüden *IP adresleri* ' ni seçin. Güvenli LDAP trafiği için erişim vermek istediğiniz kaynak IP adreslerini girin.
-1. **Hedef**olarak *herhangi birini* seçin ve ardından **hedef bağlantı noktası aralıkları**için *636* girin.
+1. **Kaynak** için açılan menüden *IP adresleri* ' ni seçin. Güvenli LDAP trafiği için erişim vermek istediğiniz kaynak IP adreslerini girin.
+1. **Hedef** olarak *herhangi birini* seçin ve ardından **hedef bağlantı noktası aralıkları** için *636* girin.
 1. **Protokol** olarak *TCP* ve *izin ver* **eylemini** ayarlayın.
-1. Kural için öncelik belirtin ve *RestrictLDAPS*gibi bir ad girin.
+1. Kural için öncelik belirtin ve *RestrictLDAPS* gibi bir ad girin.
 1. Hazırsanız, kuralı oluşturmak için **Ekle** ' yi seçin.
 
 Yönetilen etki alanının sistem durumu otomatik olarak iki saat içinde güncelleştirilir ve uyarıyı kaldırır.

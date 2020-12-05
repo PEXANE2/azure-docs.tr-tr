@@ -1,20 +1,26 @@
 ---
 title: Azure İşlevlerine Genel Bakış
-description: Azure Işlevlerinin ölçeklenebilir sunucusuz uygulamalar oluşturmaya nasıl yardımcı olabileceğini öğrenin.
+description: Azure Işlevlerinin sağlam sunucusuz uygulamalar oluşturmaya nasıl yardımcı olabileceğini öğrenin.
 author: craigshoemaker
 ms.assetid: 01d6ca9f-ca3f-44fa-b0b9-7ffee115acd4
 ms.topic: overview
 ms.date: 11/20/2020
 ms.author: cshoe
 ms.custom: contperfq2
-ms.openlocfilehash: 8b836ac8bd2255abf9a94e532a0599994c3ede89
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 269d911c13cbc59a054c5548e106780d630c8e2b
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608261"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620893"
 ---
 # <a name="introduction-to-azure-functions"></a>Azure İşlevleri’ne Giriş
+
+Azure Işlevleri, daha az kod yazmanızı, daha az altyapı bulundurmasını ve maliyetlerden tasarruf etmenizi sağlayan sunucusuz bir çözümdür. Bulut altyapısı, sunucuları dağıtma ve sürdürme hakkında endişelenmek yerine, uygulamalarınızın çalışmasını sağlamak için gereken tüm güncel sunucuları sağlar.
+
+Sizin için büyük bir kod parçasına odaklanırsınız ve Azure Işlevleri Rest 'i işler.<br /><br />
+
+> [!VIDEO https://www.youtube.com/embed/8-jz5f_JyEQ]
 
 Genellikle bir dizi kritik olaya tepki vermek için sistem oluşturacağız. Bir Web API 'SI oluşturuyor, veritabanı değişikliklerine yanıt verme, IoT veri akışlarını işleme veya hatta ileti kuyruklarını yönetme gibi her uygulama, bu olaylar gerçekleştiğinde bazı kodları çalıştırmak için bir yol gerektirir.
 

@@ -2,20 +2,20 @@
 title: Azure AD Domain Services etki alanına ekleme sorunlarını giderme | Microsoft Docs
 description: Bir VM 'ye katılmayı veya bir uygulamayı Azure Active Directory Domain Services bağlamayı denediğinizde ve yönetilen etki alanına bağlanamadığınızda veya kimlik doğrulayabileceğinizden sık karşılaşılan sorunları nasıl giderebileceğinizi öğrenin.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: ee60b684d64ef49fbb669de8c98203e2df5268bf
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 86d6ca79a12e4706f558e92c3c83c5bddaa99b3c
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967520"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618612"
 ---
 # <a name="troubleshoot-domain-join-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services yönetilen bir etki alanı ile etki alanı ekleme sorunlarını giderme
 
@@ -43,7 +43,7 @@ Yönetilen bir etki alanı oluşturduğunuzda, başarılı etki alanı işlemi i
 
 Bağlantı sorunlarıyla karşılaşmaya devam ederseniz, aşağıdaki sorun giderme adımlarını gözden geçirin:
 
-1. Azure portal yönetilen etki alanının sistem durumunu kontrol edin. *AADDS001*için bir uyarıınız varsa, bir ağ güvenlik grubu kuralı erişimi engelliyor demektir.
+1. Azure portal yönetilen etki alanının sistem durumunu kontrol edin. *AADDS001* için bir uyarıınız varsa, bir ağ güvenlik grubu kuralı erişimi engelliyor demektir.
 1. [Gerekli bağlantı noktalarını ve ağ güvenlik grubu kurallarını][network-ports]gözden geçirin. Bağlı olduğunuz VM veya sanal ağa hiçbir ağ güvenlik grubu kuralı, bu ağ bağlantı noktalarını engellemediğinizden emin olun.
 1. Herhangi bir ağ güvenlik grubu yapılandırma sorunu çözümlendikten sonra, *AADDS001* uyarısı yaklaşık 2 saat içinde sistem durumu sayfasından kaldırılır. Ağ bağlantısı artık kullanılabilir olduğundan, VM 'yi yeniden birleştirmeyi deneyin.
 

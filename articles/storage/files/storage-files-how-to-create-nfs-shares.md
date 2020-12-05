@@ -4,16 +4,16 @@ description: Ağ dosya sistemi protokolü kullanılarak iliştirilenebilir bir A
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/15/2020
+ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 7680e251d8411ce154e1f7dfb8af1d66514dd579
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 3cf22ee22c35b850aff33290a59a7043bb57c984
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629470"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620962"
 ---
 # <a name="how-to-create-an-nfs-share"></a>NFS paylaşma oluşturma
 
@@ -27,7 +27,7 @@ Azure dosya paylaşımları, bulutta yaşayan tamamen yönetilen dosya paylaşı
 
 [!INCLUDE [files-nfs-regional-availability](../../../includes/files-nfs-regional-availability.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Bir [dosya depolama hesabı](storage-how-to-create-premium-fileshare.md)oluşturun.
 
@@ -64,7 +64,7 @@ az feature register --name AllowNfsFileShares \
 az provider register --namespace Microsoft.Storage
 ```
 
-## <a name="verify-that-the-feature-is-registered"></a>Özelliğin kayıtlı olduğunu doğrulayın
+## <a name="verify-feature-registration"></a>Özellik kaydını doğrula
 
 Kayıt onayı bir saate kadar sürebilir. Kaydın tamamlandığını doğrulamak için aşağıdaki komutları kullanın:
 
@@ -80,13 +80,41 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNfs
 az feature show --name AllowNfsFileShares --namespace Microsoft.Storage --subscription <yourSubscriptionIDHere>
 ```
 
+## <a name="verify-storage-account-kind"></a>Depolama hesabı türünü doğrulama
+
+Şu anda yalnızca FileStorage hesapları NFS paylaşımları oluşturabilir. 
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+Sahip olduğunuz depolama hesabı türünü doğrulamak için Azure portal gidin. Ardından, depolama hesabınızdan **Özellikler**' i seçin. Özellikler dikey penceresinde, **Hesap türü** altındaki değeri inceleyin, değer **FileStorage** olmalıdır.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+Bir dosya depolama hesabınız olduğunu doğrulamak için aşağıdaki komutu kullanabilirsiniz:
+
+```azurepowershell
+$accountKind=Get-AzStorageAccount -ResourceGroupName "yourResourceGroup" -Name "yourStorageAccountName"
+$accountKind.Kind
+```
+
+Çıktının **dosya depolaması** olması gerekir, aksi takdirde depolama hesabınız yanlış türde. Bir **dosya depolama** hesabı oluşturmak için bkz. [Azure Premium dosya paylaşma oluşturma](storage-how-to-create-premium-fileshare.md).
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+Bir dosya depolama hesabınız olduğunu doğrulamak için aşağıdaki komutu kullanabilirsiniz:
+
+```azurecli
+az storage account show -g yourResourceGroup -n yourStorageAccountName
+```
+
+Çıktı **"tür": "FileStorage"** içermelidir, yoksa depolama hesabınız yanlış türde. Bir **dosya depolama** hesabı oluşturmak için bkz. [Azure Premium dosya paylaşma oluşturma](storage-how-to-create-premium-fileshare.md).
+
+---
 ## <a name="create-an-nfs-share"></a>NFS paylaşımı oluşturma
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Bir dosya depolama hesabı oluşturup ağı yapılandırdığınıza göre, bir NFS dosya paylaşma oluşturabilirsiniz. İşlem SMB paylaşımının oluşturulmasına benzer, ancak paylaşımın oluşturulması sırasında **SMB** yerine **NFS** 'yi seçersiniz.
 
-1. Depolama hesabınıza gidin ve **dosya paylaşımları** ' nı seçin.
+1. Depolama hesabınıza gidin ve **dosya paylaşımları**' nı seçin.
 1. Yeni bir dosya paylaşma oluşturmak için **+ dosya paylaşma** ' yı seçin.
 1. Dosya paylaşımınızı adlandırın, sağlanan kapasiteyi seçin.
 1. **Protokol** için **NFS (Önizleme)** seçeneğini belirleyin.
@@ -96,7 +124,7 @@ Bir dosya depolama hesabı oluşturup ağı yapılandırdığınıza göre, bir 
     - Kök sıkıştırarak-uzak Süper Kullanıcı (root), kök olarak erişim almaz.
     - Tüm sıkıştırarak-tüm Kullanıcı erişimi UID (65534) ve GID (65534) ile eşleştirilir.
     
-1. **Oluştur** ’u seçin.
+1. **Oluştur**’u seçin.
 
     :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/create-nfs-file-share.png" alt-text="Dosya paylaşma oluşturma dikey penceresinin ekran görüntüsü":::
 
@@ -120,7 +148,7 @@ Bir dosya depolama hesabı oluşturup ağı yapılandırdığınıza göre, bir 
 
 1. ' I kapatın ve ardından PowerShell konsolunu yeniden açın.
 
-1. **Az. Storage** Preview Module sürüm **2.5.2 Parallel sections-Preview** ' i yükler.
+1. **Az. Storage** Preview Module sürüm **2.5.2 Parallel sections-Preview**' i yükler.
 
    ```powershell
    Install-Module Az.Storage -Repository PsGallery -RequiredVersion 2.5.2-preview -AllowClobber -AllowPrerelease -Force  

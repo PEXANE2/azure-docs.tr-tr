@@ -2,7 +2,7 @@
 title: Azure Active Directory Domain Services sorunlarını giderme | Microsoft Docs '
 description: Azure Active Directory Domain Services oluştururken veya yönetirken sık karşılaşılan hataların nasıl giderileceği hakkında bilgi edinin
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 4bc8c604-f57c-4f28-9dac-8b9164a0cf0b
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 9593fe71fc4a29678d58d7c67699210a4a39f95e
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: 89b04f86d41f8e4828580f70a9aec8acea3e0053
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967384"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618459"
 ---
 # <a name="common-errors-and-troubleshooting-steps-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services için sık karşılaşılan hatalar ve sorun giderme adımları
 
@@ -59,7 +59,7 @@ Azure AD dizininizde *Azure AD Domain Services eşitleme* adlı bir uygulama olu
 
 1. Azure portal sol taraftaki gezinti menüsünden **Azure Active Directory** ' i seçin.
 1. **Kurumsal uygulamalar**' ı seçin. **Uygulama türü** açılan menüsünden *tüm uygulamalar* ' ı seçin ve ardından **Uygula**' yı seçin.
-1. Arama kutusuna *Azure AD Domain Services eşitleme*yazın. Uygulama varsa, seçin ve **Sil**' i seçin.
+1. Arama kutusuna *Azure AD Domain Services eşitleme* yazın. Uygulama varsa, seçin ve **Sil**' i seçin.
 1. Uygulamayı sildikten sonra Azure AD DS 'yi yeniden etkinleştirmeyi deneyin.
 
 ### <a name="invalid-configuration"></a>Geçersiz yapılandırma
@@ -114,14 +114,14 @@ if ($sp -ne $null)
 
 **Çözünürlük**
 
-*00000002-0000-0000-C000-000000000000*tanımlayıcısına sahip bir uygulamayı devre dışı bırakılıp bırakılmadığını kontrol edin. Bu uygulama Microsoft Azure AD uygulamasıdır ve Azure AD kiracınıza Graph API erişim sağlar. Azure AD kiracınızı eşitlemeniz için bu uygulamanın etkinleştirilmesi gerekir.
+*00000002-0000-0000-C000-000000000000* tanımlayıcısına sahip bir uygulamayı devre dışı bırakılıp bırakılmadığını kontrol edin. Bu uygulama Microsoft Azure AD uygulamasıdır ve Azure AD kiracınıza Graph API erişim sağlar. Azure AD kiracınızı eşitlemeniz için bu uygulamanın etkinleştirilmesi gerekir.
 
 Bu uygulamanın durumunu denetlemek ve gerekirse etkinleştirmek için aşağıdaki adımları izleyin:
 
 1. Azure portal sol taraftaki gezinti menüsünden **Azure Active Directory** ' i seçin.
 1. **Kurumsal uygulamalar**' ı seçin. **Uygulama türü** açılan menüsünden *tüm uygulamalar* ' ı seçin ve ardından **Uygula**' yı seçin.
-1. Arama kutusuna *00000002-0000-0000-C000-00000000000*yazın. Uygulamayı seçin ve ardından **Özellikler**' i seçin.
-1. **Kullanıcıların oturum açması Için etkinleştirilirse** , *Hayır*olarak ayarlanırsa değeri *Evet*olarak ayarlayın, sonra **Kaydet**' i seçin.
+1. Arama kutusuna *00000002-0000-0000-C000-00000000000* yazın. Uygulamayı seçin ve ardından **Özellikler**' i seçin.
+1. **Kullanıcıların oturum açması Için etkinleştirilirse** , *Hayır* olarak ayarlanırsa değeri *Evet* olarak ayarlayın, sonra **Kaydet**' i seçin.
 1. Uygulamayı etkinleştirdikten sonra Azure AD DS yeniden etkinleştirmeyi deneyin.
 
 ## <a name="users-are-unable-to-sign-in-to-the-azure-ad-domain-services-managed-domain"></a>Kullanıcılar Azure AD Domain Services yönetilen etki alanında oturum açamıyor
@@ -138,7 +138,7 @@ Azure AD kiracınızdaki bir veya daha fazla Kullanıcı yönetilen etki alanın
       * [En son önerilen Azure AD Connect sürümünü](https://www.microsoft.com/download/details.aspx?id=47594)dağıttıysanız veya sürümüne güncelleştirdiniz.
       * [Tam eşitleme gerçekleştirmek][hybrid-phs]için Azure AD Connect yapılandırdınız.
       * Dizininizin boyutuna bağlı olarak, Kullanıcı hesapları ve kimlik bilgisi karmalarının yönetilen etki alanında kullanılabilir olması biraz zaman alabilir. Yönetilen etki alanında kimlik doğrulaması yapmayı denemeden önce yeterince uzun süre beklemeniz gerekir.
-      * Önceki adımları doğruladıktan sonra sorun devam ederse, *Microsoft Azure AD eşitleme hizmetini*yeniden başlatmayı deneyin. Azure AD Connect sunucusundan bir komut istemi açın ve aşağıdaki komutları çalıştırın:
+      * Önceki adımları doğruladıktan sonra sorun devam ederse, *Microsoft Azure AD eşitleme hizmetini* yeniden başlatmayı deneyin. Azure AD Connect sunucusundan bir komut istemi açın ve aşağıdaki komutları çalıştırın:
     
         ```console
         net stop 'Microsoft Azure AD Sync'

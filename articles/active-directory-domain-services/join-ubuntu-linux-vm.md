@@ -2,7 +2,7 @@
 title: Ubuntu VM 'sini Azure AD Domain Services 'e ekleme | Microsoft Docs
 description: Ubuntu Linux bir sanal makineyi Azure AD Domain Services yönetilen bir etki alanına nasıl yapılandıracağınızı ve katılacağınızı öğrenin.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 804438c4-51a1-497d-8ccc-5be775980203
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/13/2020
-ms.author: joflore
+ms.author: justinha
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ac620ffa36bdeb35ef524ef2956db03c8edcb566
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8b6d022b9a1f3be70f69943a53754c9dd909ca99
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962097"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619496"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Ubuntu Linux bir sanal makineyi Azure Active Directory Domain Services yönetilen bir etki alanına katma
 
@@ -25,7 +25,7 @@ Kullanıcıların Azure 'da tek bir kimlik bilgileri kümesi kullanarak sanal ma
 
 Bu makalede bir Ubuntu Linux VM 'yi yönetilen bir etki alanına nasıl katılabilmeniz gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -43,7 +43,7 @@ Azure 'da mevcut bir Ubuntu Linux sanal makinesi varsa, SSH kullanarak buna bağ
 
 Bir Ubuntu Linux VM oluşturmanız veya bu makaleyle kullanmak üzere bir test sanal makinesi oluşturmak istemeniz gerekiyorsa, aşağıdaki yöntemlerden birini kullanabilirsiniz:
 
-* [Azure portalı](../virtual-machines/linux/quick-create-portal.md)
+* [Azure Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
@@ -79,7 +79,7 @@ Bu adları kendi değerlerinizle güncelleştirin:
 
 VM 'nin yönetilen etki alanına sanal makineye katılması için bazı ek paketlere ihtiyacı vardır. Bu paketleri yüklemek ve yapılandırmak için, kullanarak etki alanına ekleme araçları 'nı güncelleştirme ve yüklemeyi `apt-get`
 
-Kerberos yüklemesi sırasında, *krb5-User* PAKETI tüm büyük harfle bölge adı ister. Örneğin, yönetilen etki alanının adı *aaddscontoso.com*ise, bölge olarak *AADDSCONTOSO.com* girin. Yükleme, `[realm]` `[domain_realm]` */etc/kronb5,conf* yapılandırma dosyasına ve bölümlerini yazar. Bölgeyi tümü büyük harfle belirttiğinizden emin olun:
+Kerberos yüklemesi sırasında, *krb5-User* PAKETI tüm büyük harfle bölge adı ister. Örneğin, yönetilen etki alanının adı *aaddscontoso.com* ise, bölge olarak *AADDSCONTOSO.com* girin. Yükleme, `[realm]` `[domain_realm]` */etc/kronb5,conf* yapılandırma dosyasına ve bölümlerini yazar. Bölgeyi tümü büyük harfle belirttiğinizden emin olun:
 
 ```console
 sudo apt-get update
@@ -122,7 +122,7 @@ Etki alanı iletişiminin doğru çalışması için Ubuntu VM 'nizin tarih ve s
 
 Gerekli paketler VM 'de yüklü olduğundan ve NTP yapılandırıldıktan sonra VM 'yi yönetilen etki alanına ekleyin.
 
-1. `realm discover`Yönetilen etki alanını bulma komutunu kullanın. Aşağıdaki örnek, *AADDSCONTOSO.com*bölgesini bulur. Tüm büyük harfle yönetilen etki alanı adınızı belirtin:
+1. `realm discover`Yönetilen etki alanını bulma komutunu kullanın. Aşağıdaki örnek, *AADDSCONTOSO.com* bölgesini bulur. Tüm büyük harfle yönetilen etki alanı adınızı belirtin:
 
     ```console
     sudo realm discover AADDSCONTOSO.COM
@@ -200,7 +200,7 @@ Varsayılan olarak, kullanıcılar yalnızca SSH ortak anahtar tabanlı kimlik d
     sudo vi /etc/ssh/sshd_config
     ```
 
-1. *Passwordaduthentication* satırını *Evet*olarak güncelleştirin:
+1. *Passwordaduthentication* satırını *Evet* olarak güncelleştirin:
 
     ```console
     PasswordAuthentication yes
@@ -255,7 +255,7 @@ Ubuntu VM 'de *AAD DC yöneticileri* grubu yönetici ayrıcalıklarının üyele
 
 VM 'nin yönetilen etki alanına başarıyla katıldığını doğrulamak için, bir etki alanı kullanıcı hesabı kullanarak yeni bir SSH bağlantısı başlatın. Bir giriş dizininin oluşturulduğunu ve etki alanındaki grup üyeliğinin uygulandığını doğrulayın.
 
-1. Konsolınızdan yeni bir SSH bağlantısı oluşturun. Komutunu kullanarak yönetilen etki alanına ait bir etki alanı hesabı kullanın, örneğin, `ssh -l` `contosoadmin@aaddscontoso.com` *Ubuntu.aaddscontoso.com*gibi sanal makinenizin adresini girin. Azure Cloud Shell kullanıyorsanız, iç DNS adı yerine VM 'nin genel IP adresini kullanın.
+1. Konsolınızdan yeni bir SSH bağlantısı oluşturun. Komutunu kullanarak yönetilen etki alanına ait bir etki alanı hesabı kullanın, örneğin, `ssh -l` `contosoadmin@aaddscontoso.com` *Ubuntu.aaddscontoso.com* gibi sanal makinenizin adresini girin. Azure Cloud Shell kullanıyorsanız, iç DNS adı yerine VM 'nin genel IP adresini kullanın.
 
     ```console
     ssh -l contosoadmin@AADDSCONTOSO.com ubuntu.aaddscontoso.com

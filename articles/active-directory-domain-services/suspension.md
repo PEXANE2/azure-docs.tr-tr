@@ -2,7 +2,7 @@
 title: Azure AD Domain Services 'de askıya alınan etki alanları | Microsoft Docs
 description: Azure AD DS yönetilen bir etki alanına yönelik farklı sistem durumları ve askıya alınmış bir etki alanını geri yükleme hakkında bilgi edinin.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.assetid: 95e1d8da-60c7-4fc1-987d-f48fde56a8cb
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
-ms.author: joflore
-ms.openlocfilehash: 9bcecdfaf3121ea024fee567dbe83544229373be
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: justinha
+ms.openlocfilehash: b0b48e7ad494386052e6d94c32d7215b3f4f0202
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967707"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96618833"
 ---
 # <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services içindeki sistem durumlarını anlayın ve askıya alınmış etki alanlarını çözün
 
@@ -54,7 +54,7 @@ Düzeltilmesi gereken bir veya daha fazla soruna sahip yönetilen bir etki alan�
 
 Bazı uyarılar geçicidir ve Azure platformu tarafından otomatik olarak çözümlenir. Diğer uyarılar için, sunulan çözüm adımlarını izleyerek sorunu çözebilirsiniz. Kritik bir uyarı var, ek sorun giderme yardımı için [bir Azure destek isteği açın][azure-support] .
 
-Bir uyarı örneği, kısıtlayıcı ağ güvenlik grubu olduğunda oluşur. Bu yapılandırmada Azure platformu, yönetilen etki alanını güncelleştiremeyebilir ve izleyemeyebilir. Bir uyarı oluşturulur ve durum, *dikkat edilmesi gereken*şekilde değişir.
+Bir uyarı örneği, kısıtlayıcı ağ güvenlik grubu olduğunda oluşur. Bu yapılandırmada Azure platformu, yönetilen etki alanını güncelleştiremeyebilir ve izleyemeyebilir. Bir uyarı oluşturulur ve durum, *dikkat edilmesi gereken* şekilde değişir.
 
 Daha fazla bilgi için bkz. [yönetilen etki alanı için uyarılarla ilgili sorun giderme][resolve-alerts].
 
@@ -91,15 +91,15 @@ Yönetilen bir etki alanı *askıda* durumda olduğunda aşağıdaki davranışa
 
 ### <a name="how-do-you-know-if-your-managed-domain-is-suspended"></a>Yönetilen etki alanınız askıya alınmış olup olmadığını nasıl anlarsınız?
 
-Azure AD DS sistem durumu sayfasında, etki alanının askıya alındığını Not eden Azure portal bir [Uyarı][resolve-alerts] görürsünüz. Etki alanının durumu da *askıya alındı*olarak gösterilir.
+Azure AD DS sistem durumu sayfasında, etki alanının askıya alındığını Not eden Azure portal bir [Uyarı][resolve-alerts] görürsünüz. Etki alanının durumu da *askıya alındı* olarak gösterilir.
 
 ### <a name="restore-a-suspended-domain"></a>Askıya alınmış bir etki alanını geri yükleme
 
 *Askıya alınmış* durumda olan bir yönetilen etki alanının durumunu geri yüklemek için aşağıdaki adımları izleyin:
 
 1. Azure portal **etki alanı Hizmetleri**' ni arayıp seçin.
-1. Listeden yönetilen etki alanınızı ( *aaddscontoso.com*gibi) seçin ve ardından **sistem durumu**' nu seçin.
-1. Askıya alma nedenine bağlı olarak, *AADDS503* veya *AADDS504*gibi bir uyarı seçin.
+1. Listeden yönetilen etki alanınızı ( *aaddscontoso.com* gibi) seçin ve ardından **sistem durumu**' nu seçin.
+1. Askıya alma nedenine bağlı olarak, *AADDS503* veya *AADDS504* gibi bir uyarı seçin.
 1. Uyarıda belirtilen çözümleme bağlantısını seçin ve sorunu gidermek için adımları izleyin.
 
 Yönetilen bir etki alanı yalnızca son yedeklemenin tarihine geri yüklenebilir. Son yedeklemelerinizin tarihi, yönetilen etki alanının **sistem durumu** sayfasında görüntülenir. Son yedekleme sonrasında gerçekleşen tüm değişiklikler geri yüklenmez. Yönetilen bir etki alanı için yedeklemeler, en fazla 30 gün boyunca depolanır. 30 günden eski olan yedeklemeler silinir.
