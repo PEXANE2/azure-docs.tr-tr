@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: jlian
-ms.openlocfilehash: 5299a049ab2cc2246a861dd3fb81f466b56afad3
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 864870c4392b12477c321c86afd9da848120490c
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96603487"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621714"
 ---
 # <a name="turn-on-preview-mode-for-iot-hub-to-try-select-new-features"></a>Yeni özellikleri seçmeyi denemek için IoT Hub Önizleme modunu açın
 
@@ -66,7 +66,7 @@ Bir kez oluşturduktan sonra, önizleme modundaki bir IoT Hub her zaman bu başl
 
 Üretim için önizleme modunda IoT Hub *'ı kullanmayın.* Önizleme modu *yalnızca* bu sayfanın en üstünde listelenen seçme özelliklerinin önizlemesini amaçlıdır. IoT Hub önizleme modundaki bazı diğer sınırlamalar
 
-- Özel bağlantı, yönetilen kimlik, cihaz akışları ve yük devretme gibi bazı mevcut IoT Hub Özellikler beklenmedik şekilde çalışabilir veya hiç çalışmayabilir.
+- IP filtresi, özel bağlantı, yönetilen kimlik, cihaz akışları ve yük devretme gibi bazı mevcut IoT Hub Özellikler beklenmedik şekilde çalışabilir veya hiç çalışmayabilir.
 - Önizleme modundaki bir IoT Hub 'ı değiştirilemez veya normal bir IoT Hub 'ına yükseltilemez.
 - Üretime yönelik olmayan normal [IoT Hub SLA 'sını](https://azure.microsoft.com/support/legal/sla/iot-hub/v1_2/) garanti edemeyiz.
 

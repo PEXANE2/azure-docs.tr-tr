@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
 ms.date: 12/04/2020
-ms.openlocfilehash: baa99518498b05b0a658627d9908298eb58f7775
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 7b335c3db5fb52c4323b797556d48e3ed9ae410a
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602742"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621629"
 ---
 # <a name="co-sell-option-in-the-commercial-marketplace"></a>Ticari Market 'teki ortak satış seçeneği
 
-**Microsoft Ile ortak satış** hakkında bilgi sağlamak tamamen isteğe bağlıdır. [Ortak satış Için hazırlık ve IP ortak satışı Incentivized durumu](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)elde etmek gerekir. Sağladığınız bilgiler, Microsoft Sales ekipleri tarafından müşteri gereksinimlerine uygun olarak değerlendirme yaparken teklifiniz hakkında daha fazla bilgi edinmek için kullanılacaktır. Doğrudan müşteriler tarafından kullanılamaz. Daha fazla bilgi için bkz. [Microsoft Ile ortak satış](https://partner.microsoft.com/membership/co-sell-with-microsoft).
+**Microsoft Ile ortak satış** hakkında bilgi sağlamak tamamen isteğe bağlıdır. [Ortak satış Için hazırlık ve IP ortak satışı Incentivized durumu](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)elde etmek gerekir. Sağladığınız bilgiler, Microsoft Sales ekipleri tarafından müşteri gereksinimlerine uygun olarak değerlendirme yaparken teklifiniz hakkında daha fazla bilgi edinmek için kullanılacaktır. Doğrudan müşteriler tarafından kullanılamaz. Daha fazla bilgi için bkz. [Microsoft Ile ortak satış](https://partner.microsoft.com/membership/co-sell-with-microsoft).
 
 Iş Ortağı Merkezi 'ndeki ortak satış seçeneği şu anda aşağıdaki teklif türlerini kullanabilir.
 

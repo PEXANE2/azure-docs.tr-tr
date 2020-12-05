@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/16/2020
-ms.openlocfilehash: 705b0f02682b6aa41cb5c8e77d8da39faa5edb1f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 70dfccb32389d2f1fb492669c9f84a3e6ae77bbb
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450125"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621357"
 ---
 # <a name="publish-an-integrated-solution"></a>Tümleşik bir çözüm yayımlama
 
@@ -32,18 +32,17 @@ Tümleşik çözümler programına genel bakış için [iş ortakları Için gen
 ## <a name="eligibility-criteria"></a>Uygunluk ölçütleri
 
 * Katılımcı iş ortakları bir MPN KIMLIĞINE sahip olmalıdır.
-* Katılım Hizmetleri sağlayıcılarının ortak satış için hazırlanma olması gerekir.
-* Katılan yazılım satıcıları, IP ortak satışı hazırlanmalıdır.
+* Katılım Hizmetleri sağlayıcılarının [ortak satış için hazırlanma](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)olması gerekir.
+* Katılan yazılım satıcıları, [IP ortak satışı](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)hazırlanmalıdır.
 * En az bir katılım ortağının aşağıdaki alanlardan birinde altın uzmanlık olması gerekir:
-
-    * Uygulama Geliştirme
-    * Uygulama Tümleştirme
-    * Uygulama Yaşam Döngüsü Yönetimi
-    * Bulut platformu
-    * Veri Analizi
-    * Veri merkezi
-    * Veri platformu
-    * DevOps
+    - Uygulama Geliştirme
+    - Uygulama Tümleştirme
+    - Uygulama Yaşam Döngüsü Yönetimi
+    - Bulut platformu
+    - Veri Analizi
+    - Veri merkezi
+    - Veri platformu
+    - DevOps
 
 * Çözüm, bir bütün müşteri çözümü ve deneyimi için IP ve Hizmetleri bir araya getiren en az iki iş ortağı kuruluş içermelidir.
 * İş ortağı IP 'si Azure, Dynamics 365 veya güç platformunda oluşturulmalıdır.

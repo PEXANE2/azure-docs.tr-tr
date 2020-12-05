@@ -8,17 +8,20 @@ ms.topic: article
 ms.date: 10/16/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: 01f02efd36c51f3969ee53e9efc78fbe1664b187
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 54bde8c9dd47e88ffdc831ccb9f7833720583238
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486547"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621391"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>Pacemaker ile SUSE Linux Enterprise Server üzerinde Azure VM 'lerinde IBM DB2 LUW 'ın yüksek kullanılabilirliği
 
 [Yüksek kullanılabilirlik ve olağanüstü durum kurtarma (HADR) yapılandırmasında](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.ha.doc/doc/c0011267.html) LINUX, UNIX ve Windows (LUW) Için IBM DB2, birincil veritabanı örneği çalıştıran bir düğümden ve ikincil bir veritabanı örneği çalıştıran en az bir düğümden oluşur. Birincil veritabanı örneğindeki değişiklikler, yapılandırmanıza bağlı olarak, eş zamanlı olarak veya zaman uyumsuz olarak ikincil bir veritabanı örneğine çoğaltılır. 
 
+> [!NOTE]
+> Bu makale, *ana* ve *bağımlı* hüküm, Microsoft 'un artık kullandığı koşullara yönelik başvurular içerir. Bu koşullar yazılımdan kaldırıldığında, bu makaleden kaldıracağız.
+   
 Bu makalede, Azure sanal makinelerini (VM) dağıtma ve yapılandırma, küme çerçevesini yüklemek ve HADR yapılandırması ile IBM DB2 LUW yüklemesi açıklanmaktadır. 
 
 Makalede, HADR veya SAP yazılım yüklemesi ile IBM DB2 LUW yükleme ve yapılandırma ele alınmaktadır. Bu görevleri gerçekleştirmenize yardımcı olmak için SAP ve IBM yükleme kılavuzlarına başvurular sağlıyoruz. Bu makale, Azure ortamına özgü bölümlere odaklanır. 
@@ -492,7 +495,7 @@ Günlük arşivleme yalnızca birincil veritabanı tarafından gerçekleştirili
 
 Günlüklerin her iki düğümden de yazıldığı ortak bir NFS paylaşımının yapılandırılmasını öneririz. NFS paylaşımının yüksek oranda kullanılabilir olması vardır. 
 
-Aktarımlar için mevcut olan yüksek oranda kullanılabilir NFS paylaşımlarını veya bir profil dizini kullanabilirsiniz. Daha fazla bilgi için bkz.
+Aktarımlar için mevcut olan yüksek oranda kullanılabilir NFS paylaşımlarını veya bir profil dizini kullanabilirsiniz. Daha fazla bilgi için bkz:
 
 - [SUSE Linux Enterprise Server üzerinde Azure VM 'lerinde NFS için yüksek kullanılabilirlik][nfs-ha] 
 - [SAP uygulamaları için Azure NetApp Files SUSE Linux Enterprise Server üzerindeki Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik](./high-availability-guide-suse-netapp-files.md)

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 45f990e5426516db5537319d07c11aa705e462e7
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 5b5d60a014cf63bd28f3097ac3131ad4c7018208
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534866"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621255"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Öğretici: Azure Işlevlerini IoT Edge modülleri olarak dağıtma
 
@@ -36,7 +36,7 @@ Bu öğreticide oluşturduğunuz Azure Işlevi, cihazınız tarafından oluştur
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce, Linux kapsayıcı geliştirmesi için geliştirme ortamınızı ayarlamak üzere önceki öğreticiden çıkmalısınız: [Linux cihazları için IoT Edge modülleri](tutorial-develop-for-linux.md)geliştirme. Bu öğreticiyi tamamlayarak aşağıdaki önkoşulların yerine gelmelidir:
 
@@ -55,7 +55,7 @@ Azure Işlevleri ile ' de bir IoT Edge modülü geliştirmek için, aşağıdaki
 
 Önkoşullara yüklediğiniz Visual Studio Code için Azure IoT araçları, bazı kod şablonlarının yanı sıra yönetim özellikleri sağlar. Bu bölümde, Azure Işlevi içeren bir IoT Edge çözümü oluşturmak için Visual Studio Code kullanırsınız.
 
-### <a name="create-a-new-project"></a>Yeni bir proje oluşturma
+### <a name="create-a-new-project"></a>Yeni proje oluşturma
 
 Kendi kodunuzla özelleştirebileceğiniz bir C# işlev çözüm şablonu oluşturun.
 
@@ -69,7 +69,7 @@ Kendi kodunuzla özelleştirebileceğiniz bir C# işlev çözüm şablonu oluşt
    | ----- | ----- |
    | Klasör seçin | Geliştirme makinenizde VS Code'un çözüm dosyalarını oluşturmak için kullanacağı konumu seçin. |
    | Çözüm adı sağlayın | Çözümünüz için **Functionsolution** gibi açıklayıcı bir ad girin veya varsayılan değeri kabul edin. |
-   | Modül şablonunu seçin | **Azure işlevleri-C#** ' ı seçin. |
+   | Modül şablonunu seçin | **Azure işlevleri-C#**' ı seçin. |
    | Modül adı sağlayın | Modülünüze **CSharpFunction** adını verin. |
    | Modül için Docker görüntü deposunu sağlama | Görüntü deposu, kapsayıcı kayıt defterinizin adını ve kapsayıcı görüntünüzün adını içerir. Kapsayıcı görüntünüz bir önceki adımdaki değerle önceden doldurulur. **Localhost: 5000** ' i Azure Container kayıt defterinizin **oturum açma sunucusu** değeriyle değiştirin. Oturum açma sunucusunu Azure portal kapsayıcı kayıt defterinizin genel bakış sayfasından alabilirsiniz. Son dize \<registry name\> . azurecr.io/CSharpFunction gibi görünür. |
 
@@ -91,7 +91,7 @@ IoT Edge uzantısı, Azure 'dan kapsayıcı kayıt defteri kimlik bilgilerinizi 
 
 1. Komut paleti ' ni açın ve Azure IoT Edge için arama yapın **: Edge çözümü Için varsayılan hedef platformunu ayarla** veya pencerenin altındaki yan çubukta kısayol simgesini seçin.
 
-2. Komut paletinde, seçenekler listesinden hedef mimariyi seçin. Bu öğreticide, IoT Edge cihaz olarak bir Ubuntu sanal makinesi kullanıyoruz, bu nedenle varsayılan **AMD64** 'yi tutacağız.
+2. Komut paletinde, seçenekler listesinden hedef mimariyi seçin. Bu öğreticide, IoT Edge cihaz olarak bir Ubuntu sanal makinesi kullanıyoruz, bu nedenle varsayılan **AMD64**'yi tutacağız.
 
 ### <a name="update-the-module-with-custom-code"></a>Modülü özel kodla güncelleştirme
 
@@ -209,9 +209,9 @@ Işlev modülünüzü hızlı başlangıçlarda yaptığınız gibi bir IoT Edge
 
 1. Visual Studio Code Gezgini ' nde, **Azure IoT Hub** bölümünde **aygıtlar** ' ı genişleterek IoT cihazları listesini görüntüleyin.
 
-2. IoT Edge cihazınızın adına sağ tıklayın ve ardından **tek cihaz Için dağıtım oluştur** ' u seçin.
+2. IoT Edge cihazınızın adına sağ tıklayın ve ardından **tek cihaz Için dağıtım oluştur**' u seçin.
 
-3. **CSharpFunction** modülünü içeren çözüm klasörüne göz atın. Yapılandırma klasörünü açın, dosya **üzerindedeployment.amd64.js** seçin ve ardından **kenar dağıtım bildirimini Seç** ' i seçin.
+3. **CSharpFunction** modülünü içeren çözüm klasörüne göz atın. Yapılandırma klasörünü açın, dosya **üzerindedeployment.amd64.js** seçin ve ardından **kenar dağıtım bildirimini Seç**' i seçin.
 
 4. Cihazınızın altında, dağıtılan ve çalışan modüllerin listesini görmek için **modüller** ' i genişletin. Yenile düğmesine tıklayın. **SimulatedTemperatureSensor** modülü ve **$edgeAgent** ve **$EdgeHub** birlikte çalışan yeni **csharpişlevini** görmeniz gerekir.
 
@@ -223,7 +223,7 @@ Işlev modülünüzü hızlı başlangıçlarda yaptığınız gibi bir IoT Edge
 
 Azure IoT Hub çalıştırarak IoT Hub 'ınıza gelen tüm iletileri görebilirsiniz: komut paletinde **yerleşik olay uç noktasını Izlemeye başlayın** .
 
-IoT hub'ınıza belirli bir cihazdan gelen iletilerin gösterilmesi için görünüme filtre de uygulayabilirsiniz. **Azure IoT Hub cihazları** bölümünde cihaza sağ tıklayın ve **Izlemeyi Başlat yerleşik olay uç noktası** ' nı seçin.
+IoT hub'ınıza belirli bir cihazdan gelen iletilerin gösterilmesi için görünüme filtre de uygulayabilirsiniz. **Azure IoT Hub cihazları** bölümünde cihaza sağ tıklayın ve **Izlemeyi Başlat yerleşik olay uç noktası**' nı seçin.
 
 İzleme iletilerini durdurmak için, komut paletinde **Azure IoT Hub: yerleşik olay uç noktasını Izlemeyi durdur** komutunu çalıştırın.
 
@@ -237,7 +237,7 @@ Geçmeyecekseniz ücret kesilmesini önlemek için yerel yapılandırmalarınız
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, IoT Edge cihazınız tarafından oluşturulan ham verileri filtrelemek için kod içeren bir Azure Işlev modülü oluşturdunuz. Kendi modüllerinizi oluşturmaya hazırsanız, [Visual Studio Code için Azure IoT Edge nasıl geliştirileceği](how-to-vs-code-develop-module.md)hakkında daha fazla bilgi edinebilirsiniz.
+Bu öğreticide, IoT Edge cihazınız tarafından oluşturulan ham verileri filtrelemek için kod içeren bir Azure Işlev modülü oluşturdunuz.
 
 Azure IoT Edge'in verileri iş içgörüsüne çevirmenize yardımcı olabilecek diğer yolları öğrenmek için bir sonraki öğreticiye geçin.
 

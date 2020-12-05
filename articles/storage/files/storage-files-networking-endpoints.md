@@ -4,16 +4,16 @@ description: Azure dosya ağı uç noktalarını yapılandırmayı öğrenin.
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/17/2020
+ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 880eeb87d8727d65b2aaecdad8b0ed9ccaacea7a
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 079d7aa9b654a318c7269a41605c3e146b08f127
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629861"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621340"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>Azure dosyaları ağ uç noktalarını yapılandırma
 
@@ -27,7 +27,7 @@ Bu makalede, Azure dosya paylaşımında doğrudan erişim için bir depolama he
 
 Bu nasıl yapılır kılavuzu okumadan önce [Azure dosyaları ağ oluşturma konuları](storage-files-networking-overview.md) okumanız önerilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Bu makalede, zaten bir Azure aboneliği oluşturmuş olduğunuz varsayılmaktadır. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 - Bu makalede, Şirket içinden bağlamak istediğiniz bir depolama hesabında bir Azure dosya paylaşımının zaten oluşturulduğunu varsaymış olursunuz. Azure dosya paylaşımının nasıl oluşturulacağını öğrenmek için bkz. [Azure dosya paylaşma oluşturma](storage-how-to-create-file-share.md).
@@ -45,15 +45,26 @@ Uç noktalarınızı, depolama hesabınıza yönelik ağ erişimini kısıtlamak
 
 Depolama hesabınız için özel bir uç nokta oluşturulması, aşağıdaki Azure kaynaklarının dağıtılmasının oluşmasına neden olur:
 
-- **Özel uç nokta** : depolama hesabının özel uç noktasını temsil eden bir Azure kaynağı. Bunu, depolama hesabını ve ağ arabirimini bağlayan bir kaynak olarak düşünebilirsiniz.
-- **Ağ arabirimi (NIC)** : belirtilen sanal ağ/alt ağ içinde özel bir IP adresi tutan ağ arabirimi. Bu, bir sanal makineyi dağıtırken dağıtılan aynı kaynaktır, ancak bir VM 'ye atanmak yerine özel uç noktaya aittir.
-- **Özel BIR DNS bölgesi** : daha önce bu sanal ağ için özel bir uç nokta dağıtmadıysanız, sanal ağınız için yeni BIR özel DNS bölgesi dağıtılır. DNS A kaydı, bu DNS bölgesindeki depolama hesabı için de oluşturulacaktır. Bu sanal ağda zaten özel bir uç nokta dağıttıysanız, var olan DNS bölgesine depolama hesabı için yeni bir kayıt eklenecektir. Bir DNS bölgesinin dağıtımı isteğe bağlıdır, ancak Azure dosya paylaşımlarınızı bir AD hizmet sorumlusu ile veya FileREST API 'sini kullanarak oluşturursanız gereklidir.
+- **Özel uç nokta**: depolama hesabının özel uç noktasını temsil eden bir Azure kaynağı. Bunu, depolama hesabını ve ağ arabirimini bağlayan bir kaynak olarak düşünebilirsiniz.
+- **Ağ arabirimi (NIC)**: belirtilen sanal ağ/alt ağ içinde özel bir IP adresi tutan ağ arabirimi. Bu, bir sanal makineyi dağıtırken dağıtılan aynı kaynaktır, ancak bir VM 'ye atanmak yerine özel uç noktaya aittir.
+- **Özel BIR DNS bölgesi**: daha önce bu sanal ağ için özel bir uç nokta dağıtmadıysanız, sanal ağınız için yeni BIR özel DNS bölgesi dağıtılır. DNS A kaydı, bu DNS bölgesindeki depolama hesabı için de oluşturulacaktır. Bu sanal ağda zaten özel bir uç nokta dağıttıysanız, var olan DNS bölgesine depolama hesabı için yeni bir kayıt eklenecektir. Bir DNS bölgesinin dağıtımı isteğe bağlıdır, ancak Azure dosya paylaşımlarınızı bir AD hizmet sorumlusu ile veya FileREST API 'sini kullanarak oluşturursanız gereklidir.
 
 > [!Note]  
 > Bu makalede, Azure ortak bölgeleri için depolama hesabı DNS son eki kullanılmaktadır `core.windows.net` . Bu yorum, Azure ABD kamu bulutu ve Azure Çin bulutu gibi Azure Sogeign bulutları için de geçerlidir. ortamınız için uygun son ekleri yerine koyun. 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 [!INCLUDE [storage-files-networking-endpoints-private-portal](../../../includes/storage-files-networking-endpoints-private-portal.md)]
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+[!INCLUDE [storage-files-networking-endpoints-private-powershell](../../../includes/storage-files-networking-endpoints-private-powershell.md)]
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+[!INCLUDE [storage-files-networking-endpoints-private-cli](../../../includes/storage-files-networking-endpoints-private-cli.md)]
+---
+
+## <a name="verify-connectivity"></a>Bağlantıyı doğrulama
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Sanal ağınızın içinde bir sanal makineniz varsa veya [Azure dosyaları IÇIN DNS Iletmeyi yapılandırma](storage-files-networking-dns.md)bölümünde AÇıKLANDıĞı gibi DNS iletmeyi yapılandırdıysanız, PowerShell, komut satırı veya terminalden (Windows, Linux veya MacOS için çalışır) aşağıdaki komutları çalıştırarak özel uç noktanızın doğru şekilde ayarlandığını test edebilirsiniz. `<storage-account-name>`Uygun depolama hesabı adıyla değiştirmeniz gerekir:
 
@@ -74,7 +85,6 @@ Aliases:  storageaccount.file.core.windows.net
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-[!INCLUDE [storage-files-networking-endpoints-private-powershell](../../../includes/storage-files-networking-endpoints-private-powershell.md)]
 
 Sanal ağınızın içinde bir sanal makineniz varsa veya [Azure dosyaları IÇIN DNS Iletmeyi yapılandırma](storage-files-networking-dns.md)bölümünde AÇıKLANDıĞı gibi DNS iletmeyi yapılandırdıysanız, Özel uç noktanızın aşağıdaki komutlarla doğru şekilde ayarlandığını test edebilirsiniz:
 
@@ -101,7 +111,6 @@ IP4Address : 192.168.0.5
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-[!INCLUDE [storage-files-networking-endpoints-private-cli](../../../includes/storage-files-networking-endpoints-private-cli.md)]
 
 Sanal ağınızın içinde bir sanal makineniz varsa veya [Azure dosyaları IÇIN DNS Iletmeyi yapılandırma](storage-files-networking-dns.md)bölümünde AÇıKLANDıĞı gibi DNS iletmeyi yapılandırdıysanız, Özel uç noktanızın aşağıdaki komutlarla doğru şekilde ayarlandığını test edebilirsiniz:
 
@@ -127,10 +136,9 @@ storageaccount.file.core.windows.net      canonical name = storageaccount.privat
 Name:   storageaccount.privatelink.file.core.windows.net
 Address: 192.168.0.5
 ```
-
 ---
 
-### <a name="restrict-public-endpoint-access"></a>Genel uç nokta erişimini kısıtlama
+## <a name="restrict-public-endpoint-access"></a>Genel uç nokta erişimini kısıtlama
 
 Genel uç nokta erişimini sınırlamak için öncelikle genel uç noktaya genel erişimi devre dışı bırakmanız gerekir. Genel uç noktaya erişimi devre dışı bırakmak özel uç noktaları etkilemez. Genel uç nokta devre dışı bırakıldıktan sonra, erişmeye devam edecek belirli ağları veya IP adreslerini seçebilirsiniz. Genellikle, bir depolama hesabı için güvenlik duvarı ilkelerinin çoğu, ağ erişimini bir veya daha fazla sanal ağa kısıtlar.
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: a915b5a348e3167d2cf81906b19abd9850584ce9
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 694f501efc565ed498c1c8d8e2e38326277e8605
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460984"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621425"
 ---
 # <a name="plan-an-azure-managed-application-for-an-azure-application-offer"></a>Azure Uygulama teklifi için Azure yönetilen uygulaması planlayın
 
@@ -32,7 +32,7 @@ Azure uygulaması kullanın: aşağıdaki koşullar gerektiğinde yönetilen uyg
 | ------------ | ------------- |
 | Bir Azure aboneliği | Yönetilen uygulamalar bir müşterinin aboneliğine dağıtılmalıdır, ancak üçüncü taraf tarafından yönetilebilir. |
 | Faturalandırma ve ölçüm | Kaynaklar bir müşterinin Azure aboneliğinde sağlanır. Kullandıkça Öde ödeme modelini kullanan VM 'Ler, müşteri ile Microsoft aracılığıyla işlem yapar ve müşterinin Azure aboneliği aracılığıyla faturalandırılır. <br><br> Kendi lisansını getir VM 'Leri için, Microsoft, müşteri aboneliğinde oluşan tüm altyapı maliyetlerini faturalandırır, ancak müşteriyle doğrudan Transact yazılım lisanslama ücretleri. |
-| Azure ile uyumlu sanal sabit disk (VHD) | VM 'Ler Windows veya Linux üzerinde oluşturulmalıdır. Daha fazla bilgi için bkz.<br> • [Bir Azure VM teknik varlığı oluşturun](./azure-vm-create-certification-faq.md#address-a-vulnerability-or-an-exploit-in-a-vm-offer) (Windows VHD 'ler için).<br> •  [Linux dağıtımları Azure 'da](../virtual-machines/linux/endorsed-distros.md) (Linux VHD 'ler için) onaylı. |
+| Azure ile uyumlu sanal sabit disk (VHD) | VM 'Ler Windows veya Linux üzerinde oluşturulmalıdır. Daha fazla bilgi için bkz:<br> • [Bir Azure VM teknik varlığı oluşturun](./azure-vm-create-certification-faq.md#address-a-vulnerability-or-an-exploit-in-a-vm-offer) (Windows VHD 'ler için).<br> •  [Linux dağıtımları Azure 'da](../virtual-machines/linux/endorsed-distros.md) (Linux VHD 'ler için) onaylı. |
 | Müşteri kullanımı ilişkilendirmesi | Tüm yeni Azure Uygulama teklifleri Ayrıca bir [Azure iş ortağı müşteri kullanımı attributıon](azure-partner-customer-usage-attribution.md) GUID 'i de içermelidir. Müşteri kullanımı atımı ve nasıl etkinleştirileceği hakkında daha fazla bilgi için bkz. [Azure iş ortağı müşteri kullanımı atısyonu](azure-partner-customer-usage-attribution.md). |
 | Dağıtım paketi | Müşterilerin planınızı dağıtmasını sağlayacak bir dağıtım paketi gerekir. Aynı teknik yapılandırmayı gerektiren birden çok plan oluşturuyorsanız aynı paketi kullanabilirsiniz. Ayrıntılar için bkz. sonraki bölüm: dağıtım paketi. |
 |||
@@ -90,7 +90,7 @@ Fiyatlar ABD Doları cinsinden ayarlanır (USD = Birleşik Devletler dolar), kay
 JıT erişimi, sorun giderme ve bakım için yönetilen bir uygulamanın kaynaklarına yükseltilmiş erişim isteme imkanı sağlar. Kaynaklara her zaman salt okuma erişiminizin olması gerekir, ancak belirli bir süre için daha fazla erişime sahip olabilirsiniz. Daha fazla bilgi için bkz. [Azure yönetilen uygulamalar için tam zamanında erişimi etkinleştirme ve isteme](../azure-resource-manager/managed-applications/request-just-in-time-access.md).
 
 > [!NOTE]
-> Skıming, bu özelliği desteklemek için dosyanızı güncelleştirdiğinizden emin olsa bile Kullanıcı bildirim almalıdır `createUiDefinition.json` .
+> `createUiDefinition.json`Bu özelliği desteklemek için dosyanızı güncelleştirdiğinizden emin olun.
 
 ## <a name="deployment-mode"></a>Dağıtım modu
 

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/29/2019
+ms.date: 11/19/2020
 ms.author: jeedes
-ms.openlocfilehash: 648bb5eb5daab20248e16f2d1606f61a3fc52d17
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: cbadf2e072cdd9bfdf64cb2b799355aada8ec4b0
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520431"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621193"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>Öğretici: Xönemli OnDemand ile tümleştirme Azure Active Directory
 
@@ -26,9 +26,6 @@ Azure AD ile Xönemli OnDemand tümleştirme aşağıdaki avantajları sağlar:
 * Azure AD 'de, Xönemli OnDemand erişimi olan bir denetim yapabilirsiniz.
 * Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak bir Xönemli OnDemand (çoklu oturum açma) ile oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
-
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -47,74 +44,57 @@ Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandı
 
 Azure AD 'de Xönemli OnDemand tümleştirmesini yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize Xönemli OnDemand eklemeniz gerekir.
 
-**Galeriden Xönemli OnDemand eklemek için aşağıdaki adımları uygulayın:**
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **xönemli OnDemand** yazın.
+1. Sonuçlar panelinden **Xönemli OnDemand** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-sso-for-xmatters-ondemand"></a>Azure AD SSO 'yu Xönemli OnDemand için yapılandırın ve test edin
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Xönemli OnDemand ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında Xönemli OnDemand arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+Azure AD SSO 'yu Xönemli OnDemand ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
-3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    2. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Xönemli ONDEMAND SSO 'Yu yapılandırın](#configure-xmatters-ondemand-sso)** .
+    1. Kullanıcının Azure AD gösterimine bağlı olan Xönemli bir OnDemand ' de Britta Simon 'ın bir karşılığı olacak şekilde **[xönemli bir test kullanıcısı oluşturun](#create-xmatters-ondemand-test-user)** .
+3. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-    ![Yeni uygulama düğmesi](common/add-new-app.png)
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-4. Arama kutusuna **Xönemli OnDemand**yazın, sonuç panelinden **xönemli OnDemand** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-     ![sonuçlar listesinde Xönemli OnDemand](common/search-new-app.png)
+1. Azure portal, **Xönemli OnDemand** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre Xönemli OnDemand ile yapılandırıp test edersiniz.
-Çoklu oturum açma için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasındaki bir bağlantı ilişkisinin Xönemli OnDemand ' de kurulması gerekir.
+1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
-Azure AD çoklu oturum açma 'yı Xönemli OnDemand ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
+    a. **Tanımlayıcı** metin kutusuna aşağıdaki desenlerden birini kullanarak bir URL yazın:
 
-1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Uygulama tarafında tek Sign-On ayarlarını yapılandırmak için **[Xönemli OnDemand çoklu oturum açmayı yapılandırın](#configure-xmatters-ondemand-single-sign-on)** .
-3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-5. Kullanıcının Azure AD gösterimine bağlı olan Xönemli bir OnDemand ' de Britta Simon 'ın bir karşılığı olacak şekilde **[xönemli bir test kullanıcısı oluşturun](#create-xmatters-ondemand-test-user)** .
-6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
+    | Tanımlayıcı |
+    | ---------- |
+    | `https://<companyname>.au1.xmatters.com.au/` |
+    | `https://<companyname>.cs1.xmatters.com/` |
+    | `https://<companyname>.xmatters.com/` |
+    | `https://www.xmatters.com` |
+    | `https://<companyname>.xmatters.com.au/` |
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
+    b. **Yanıt URL 'si** metin kutusuna aşağıdaki desenlerden birini kullanarak bir URL yazın:
 
-Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
-
-Azure AD çoklu oturum açmayı Xönemli OnDemand olarak yapılandırmak için aşağıdaki adımları uygulayın:
-
-1. [Azure Portal](https://portal.azure.com/), **xönemli OnDemand** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
-
-    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
-
-2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
-
-    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
-
-3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
-
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
-
-4. **SAML Ile tek Sign-On ayarlama** sayfasında, aşağıdaki adımları gerçekleştirin:
-
-    ![Xönemli OnDemand etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/idp-intiated.png)
-
-    a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
-
-    - `https://<companyname>.au1.xmatters.com.au/`
-    - `https://<companyname>.cs1.xmatters.com/`
-    - `https://<companyname>.xmatters.com/`
-    - `https://www.xmatters.com`
-    - `https://<companyname>.xmatters.com.au/`
-
-    b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
-
-    - `https://<companyname>.au1.xmatters.com.au`
-    - `https://<companyname>.xmatters.com/sp/<instancename>`
-    - `https://<companyname>.cs1.xmatters.com/sp/<instancename>`
-    - `https://<companyname>.au1.xmatters.com.au/<instancename>`
+    | Yanıt URL'si |
+    | ---------- |
+    |  `https://<companyname>.au1.xmatters.com.au` |
+    | `https://<companyname>.xmatters.com/sp/<instancename>` |
+    | `https://<companyname>.cs1.xmatters.com/sp/<instancename>` |
+    | `https://<companyname>.au1.xmatters.com.au/<instancename>` |
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için, [Xönemli OnDemand istemci destek ekibine](https://www.xmatters.com/company/contact-us/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
@@ -130,23 +110,42 @@ Azure AD çoklu oturum açmayı Xönemli OnDemand olarak yapılandırmak için a
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-    a. Oturum Açma URL’si
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-    b. Azure AD tanımlayıcısı
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-    c. Oturum kapatma URL 'SI
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+   1. **Ad** alanına `B.Simon` girin.  
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**’a tıklayın.
 
-### <a name="configure-xmatters-ondemand-single-sign-on"></a>Xönemli OnDemand tek Sign-On yapılandırma
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
+
+Bu bölümde, Xönemli OnDemand erişimi vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
+
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, **Xönemli OnDemand** öğesini seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+
+
+## <a name="configure-xmatters-ondemand-sso"></a>Xönemli OnDemand SSO 'yu yapılandırma
 
 1. Farklı bir Web tarayıcısı penceresinde, bir yönetici olarak Xönemli OnDemand şirket sitenizde oturum açın.
 
-2. Üstteki araç çubuğunda, **yönetici**' ye tıklayın ve ardından sol taraftaki Gezinti çubuğunda **Şirket ayrıntıları** ' na tıklayın.
+2. **Yönetici**' ye ve ardından **Şirket ayrıntıları**' na tıklayın.
 
-    ![Yönetici](./media/xmatters-ondemand-tutorial/IC776795.png "Yönetici")
+    ![Yönetici sayfası](./media/xmatters-ondemand-tutorial/admin.png "Yönetici")
 
 3. **SAML yapılandırması** sayfasında, aşağıdaki adımları gerçekleştirin:
 
-    ![SAML yapılandırması](./media/xmatters-ondemand-tutorial/IC776796.png "SAML yapılandırması")
+    ![SAML yapılandırma bölümü ](./media/xmatters-ondemand-tutorial/saml-configuration.png "SAML yapılandırması")
 
     a. **SAML etkinleştir**' i seçin.
 
@@ -154,100 +153,36 @@ Azure AD çoklu oturum açmayı Xönemli OnDemand olarak yapılandırmak için a
 
     c. **Çoklu oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
-    d. **Çoklu oturum kapatma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **Logout URL 'sini**yapıştırın.
+    d. **Oturum kapatma URL 'Si yeniden yönlendirme** metin kutusunda, Azure Portal kopyaladığınız **Logout URL 'sini** yapıştırın.
 
-    e. Şirket ayrıntıları sayfasında, üstteki **Değişiklikleri Kaydet**' e tıklayın.
+    e. Azure portal indirdiğiniz **sertifikayı (base64)** karşıya yüklemek Için **Dosya Seç** ' e tıklayın. 
 
-    ![Şirket ayrıntıları](./media/xmatters-ondemand-tutorial/IC776797.png "Şirket ayrıntıları")
+    f. Şirket ayrıntıları sayfasında, üstteki **Değişiklikleri Kaydet**' e tıklayın.
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
-
-Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
-
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-
-    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
-
-2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
-
-    ![Yeni Kullanıcı düğmesi](common/new-user.png)
-
-3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
-
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
-
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension . Örneğin, BrittaSimon@contoso.com
-
-    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
-
-    d. **Oluştur**’a tıklayın.
-
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
-
-Bu bölümde, Xönemli OnDemand erişimi vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
-
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **xönemli OnDemand**' i seçin.
-
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
-
-2. Uygulamalar listesinde, **Xönemli OnDemand**öğesini seçin.
-
-    ![Uygulamalar listesindeki Xönemli OnDemand bağlantısı](common/all-applications.png)
-
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
-
-    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
-4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Atama Ekle bölmesi](common/add-assign-user.png)
-
-5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-
-6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-
-7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+    ![Şirket ayrıntıları](./media/xmatters-ondemand-tutorial/save-button.png "Şirket ayrıntıları")
 
 ### <a name="create-xmatters-ondemand-test-user"></a>Xönemli OnDemand test kullanıcısı oluşturma
 
-Bu bölümün amacı, Xönemli OnDemand ' de Britta Simon adlı bir Kullanıcı oluşturmaktır.
-
-**Kullanıcı el ile oluşturmanız gerekiyorsa aşağıdaki adımları gerçekleştirin:**
-
 1. **Xönemli OnDemand** kiracınızda oturum açın.
 
-2. **Kullanıcılar** sekmesi ' ne ve ardından **Kullanıcı Ekle**' ye tıklayın.
+2. **Kullanıcılar simgesi**  >  **Kullanıcılar** ' a gidin ve ardından **Kullanıcı Ekle**' ye tıklayın.
 
-    ![Kullanıcılar](./media/xmatters-ondemand-tutorial/IC781048.png "Kullanıcılar")
+    ![Kullanıcılar](./media/xmatters-ondemand-tutorial/add-user.png "Kullanıcılar")
 
-3. **Kullanıcı Ekle** bölümünde aşağıdaki adımları uygulayın:
+3. **Kullanıcıları Ekle** bölümünde gerekli alanları doldurup **Kullanıcı Ekle** düğmesine tıklayın.
 
-    ![Kullanıcı ekleme](./media/xmatters-ondemand-tutorial/IC781049.png "Kullanıcı ekleme")
+    ![Kullanıcı ekleme](./media/xmatters-ondemand-tutorial/add-user-2.png "Kullanıcı ekleme")
 
-    a. **Etkin**' i seçin.
 
-    b. **Kullanıcı kimliği** metin kutusuna, gibi kullanıcının kullanıcı kimliğini yazın Brittasimon@contoso.com .
 
-    c. **Ilk ad** metin kutusuna, Britta gibi kullanıcının adını yazın.
+### <a name="test-sso"></a>Test SSO 'SU
 
-    d. **Soyadı** metin kutusunda, Simon adlı kullanıcının soyadını yazın.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz.
 
-    e. **Site** metin kutusuna, sağlamak istediğiniz geçerli BIR Azure AD hesabının geçerli sitesini girin.
+* Azure portal bu uygulamayı test et ' e tıklayın ve SSO 'yu ayarladığınız Xönemli OnDemand ' de otomatik olarak oturum açmış olmanız gerekir
 
-    f. **Kaydet**’e tıklayın.
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki Xönemli OnDemand kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Xönemli OnDemand ' de otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
+## <a name="next-steps"></a>Sonraki adımlar
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
-
-Erişim panelinde Xönemli OnDemand kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Xönemli OnDemand ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
-
-## <a name="additional-resources"></a>Ek Kaynaklar
-
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
-
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
-
-- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)
+Xönemli OnDemand ' ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 50cce15d14561bb1c8ebfdbbeeedd99dc8efcda1
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 37a989082b63dc101bb519fea1cc4ef16c76ae49
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533001"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621544"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optik Karakter Tanıma (OCR)
 
@@ -147,7 +147,7 @@ OCR destekli dillerin tam listesi için [desteklenen diller](./language-support.
 Okuma işlemi şu anda yalnızca Ingilizce dilinde el yazısı metinleri ayıklamayı desteklemektedir.
 
 ## <a name="use-the-rest-api-and-sdk"></a>REST API ve SDK 'sını kullanma
-[3. x okuma REST API](./QuickStarts/CSharp-hand-text.md) , çoğu müşteri için tercih edilen seçenektir ve bu, kullanıma hazır hale getirerek tümleştirme ve hızlı üretkenlik açısından çok daha hızlı bir şekilde sağlanır. Müşterilerinizin gereksinimlerine odaklanmanız durumunda Azure ve Görüntü İşleme Hizmeti tanıtıcı ölçeği, performansı, veri güvenliği ve uyumluluk gereksinimlerini karşılamanız gerekir.
+[3. x okuma REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) , çoğu müşteri için tercih edilen seçenektir ve bu, kullanıma hazır hale getirerek tümleştirme ve hızlı üretkenlik açısından çok daha hızlı bir şekilde sağlanır. Müşterilerinizin gereksinimlerine odaklanmanız durumunda Azure ve Görüntü İşleme Hizmeti tanıtıcı ölçeği, performansı, veri güvenliği ve uyumluluk gereksinimlerini karşılamanız gerekir.
 
 ## <a name="deploy-on-premise-with-docker-containers"></a>Docker kapsayıcılarıyla şirket içinde dağıtma
 [Docker kapsayıcısını oku (Önizleme)](./computer-vision-how-to-install-containers.md) , yeni OCR özelliklerini kendi yerel ortamınızda dağıtmanıza olanak sağlar. Kapsayıcılar, belirli güvenlik ve veri idare gereksinimleri için çok kullanışlıdır.

@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 0fda0b659dd2500e811fac1f53c99a9987276185
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ef284661d44f700cf0b5282efcd2e6f7b94fa3b6
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537482"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621527"
 ---
 # <a name="azure-cache-for-redis-network-isolation-options"></a>Redsıs ağ yalıtımı seçenekleri için Azure önbelleği 
 Bu makalede, gereksinimlerinize uygun en iyi ağ yalıtımı çözümünü nasıl belirleyebileceğinizi öğreneceksiniz. Azure özel bağlantısı, Azure sanal ağ (VNet) ekleme ve Azure Güvenlik Duvarı kurallarının avantajları ve sınırlamaları ile ilgili temel bilgileri inceleyeceğiz.  
@@ -22,7 +22,7 @@ Azure özel bağlantısı, bir sanal ağdan Azure PaaS hizmetlerine özel bağla
 ### <a name="advantages"></a>Avantajlar
 * Redsıs örnekleri için temel, standart ve Premium Azure önbelleğinde desteklenir. 
 * [Azure özel bağlantısı](../private-link/private-link-overview.md)' nı kullanarak, sanal ağ Içindeki bir Azure önbellek örneğine, sanal ağ içindeki bir alt ağda özel bir IP adresi atanmış özel bir uç nokta aracılığıyla bağlanabilirsiniz. Bununla birlikte, önbellek örnekleri hem VNet içinde hem de genel olarak kullanılabilir.  
-* Özel bir uç nokta oluşturulduktan sonra, genel ağa erişim bayrağı aracılığıyla kısıtlanabilir `publicNetworkAccess` . Bu bayrak `Enabled` Varsayılan olarak olarak ayarlanır ve önbelleğe hem genel hem de özel bağlantı erişimine izin verme seçeneği sunar. Olarak ayarlanırsa `Disabled` , yalnızca özel bağlantı erişimine izin verir. Değerini `Disabled` BIR Patch isteği ile olarak ayarlayabilirsiniz. Daha fazla bilgi için bkz. [Azure özel bağlantısı (Önizleme) Ile Reda Için Azure önbelleği](cache-private-link.md). 
+* Özel bir uç nokta oluşturulduktan sonra, genel ağa erişim bayrağı aracılığıyla kısıtlanabilir `publicNetworkAccess` . Bu bayrak `Disabled` Varsayılan olarak olarak ayarlanır ve yalnızca özel bağlantı erişimine izin verir. Değeri `Enabled` BIR yama isteğiyle veya olarak ayarlayabilirsiniz `Disabled` . Daha fazla bilgi için bkz. [Azure özel bağlantısı (Önizleme) Ile Reda Için Azure önbelleği](cache-private-link.md). 
 * Tüm dış önbellek bağımlılıkları VNet 'in NSG kurallarını etkilemez.
 
 ### <a name="limitations"></a>Sınırlamalar 

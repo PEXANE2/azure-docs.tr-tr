@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: d2d890db3c246ad7f3d0a56a3df264d5f78bd54d
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 5f7278a688147842b7dbfab79a20afea2b4a9288
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571139"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621612"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Ticari Market için SaaS teklifi planlaması
 
@@ -250,15 +250,15 @@ Aşağıdaki örnek, acentelerde bir örnek dökümünü ve kurumlar modelini g�
 | Microsoft, lisans maliyetinizi %80 oranında ödetir<br>`*` Microsoft, tam SaaS uygulamaları için lisans maliyetlerinizin %90 ' ını öder| $80,00/ay<br>``*`` $90,00/ay |
 |||
 
-**`*` Daha az Market servis ücreti** – Microsoft 'un ticari Market 'te yayımladığı belirli SaaS teklifleri için, Microsoft 'un Market hizmet ücretini %20 ' den (Microsoft Publisher anlaşmasında açıklandığı gibi) %10 ' a azaltacak. Tekliflerinizin uygun olmasını sağlamak için teklifinizin Microsoft tarafından Azure IP ortak satışı incentivized olarak belirlenmiş olması gerekir. Uygunluk, ay için en az Market servis ücretini almak üzere her bir takvim ayının sonundan önce en az beş (5) iş gününe ulaşılmalıdır. Daha düşük Market hizmet ücreti, Azure IP ortak satış incentivized VM 'Leri, yönetilen uygulamalar ve ticari Market aracılığıyla sunulan diğer tüm nitelikli transactable IaaS teklifleri için de geçerlidir.
+**`*` Daha az Market servis ücreti** – Microsoft 'un ticari Market 'te yayımladığı belirli SaaS teklifleri için, Microsoft 'un Market hizmet ücretini %20 ' den (Microsoft Publisher anlaşmasında açıklandığı gibi) %10 ' a azaltacak. Tekliflerinizin uygun olmasını sağlamak için teklifinizin Microsoft tarafından Azure IP ortak satışı incentivized olarak belirlenmiş olması gerekir. Uygunluk, ay için en az Market servis ücretini almak üzere her bir takvim ayının sonundan önce en az beş (5) iş gününe ulaşılmalıdır. IP ortak satışı uygunluğu hakkında daha fazla bilgi için bkz. [ortak satış durumu gereksinimleri](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status). Daha düşük Market hizmet ücreti, Azure IP ortak satış incentivized VM 'Leri, yönetilen uygulamalar ve ticari Market aracılığıyla sunulan diğer tüm nitelikli transactable IaaS teklifleri için de geçerlidir.
 
 ## <a name="additional-sales-opportunities"></a>Ek satış fırsatları
 
 Microsoft tarafından desteklenen pazarlama ve satış kanallarını kabul edebilirsiniz. Iş Ortağı Merkezi 'nde teklifinizi oluştururken işlemin sonuna doğru iki sekme görürsünüz:
 
-- **CSP 'ler aracılığıyla yeniden Satım**: Microsoft bulut çözüm SAĞLAYıCıLARıNıN (CSP) iş ortaklarının, çözümünüzü bir paketlenmiş teklifin parçası olarak yeniden satmasına izin vermek için bu seçeneği kullanın. Daha fazla bilgi için bkz. [bulut çözümü sağlayıcısı programı](cloud-solution-providers.md) .
+- **CSP 'ler aracılığıyla yeniden Satım**: Microsoft bulut çözüm SAĞLAYıCıLARıNıN (CSP) iş ortaklarının, çözümünüzü bir paketlenmiş teklifin parçası olarak yeniden satmasına izin vermek için bu seçeneği kullanın. Bu program hakkında daha fazla bilgi için bkz. [bulut çözümü sağlayıcısı programı](cloud-solution-providers.md).
 
-- **Microsoft Ile ortak satış**: Bu seçenek, Microsoft satış ekiplerinin, müşterilerinin IHTIYAÇLARıNı değerlendirirken IP ortak satış için uygun çözümünüzü kabul etmenize olanak tanır. Teklifinizi değerlendirme için hazırlama hakkında ayrıntılı bilgi edinmek için [Iş Ortağı Merkezi 'Nde ortak satış seçeneğine](commercial-marketplace-co-sell.md) bakın.
+- **Microsoft Ile ortak satış**: Bu seçenek, Microsoft satış ekiplerinin, müşterilerinin IHTIYAÇLARıNı değerlendirirken IP ortak satış için uygun çözümünüzü kabul etmenize olanak tanır. Ortak satış uygunluğu hakkında daha fazla bilgi için bkz. [ortak satış durumu gereksinimleri](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status). Teklifinizi değerlendirme için hazırlama hakkında ayrıntılı bilgi için bkz. [Partner Center 'Da ortak satış seçeneği](commercial-marketplace-co-sell.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

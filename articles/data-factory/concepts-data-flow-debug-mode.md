@@ -7,13 +7,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/11/2020
-ms.openlocfilehash: 2cfd498f73646b0021d5fbb3e982dc82871ef35c
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.date: 12/04/2020
+ms.openlocfilehash: 87465ff381c62343a11c54130378b48580ca40e2
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027015"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621662"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Eşleme veri akışı hata ayıklama modu
 
@@ -25,9 +25,9 @@ Azure Data Factory eşleme veri akışının hata ayıklama modu, veri akışlar
 
 ![Hata ayıklama kaydırıcısı](media/data-flow/debugbutton.png "Hata ayıklama kaydırıcısı")
 
-Kaydırıcıyı açtıktan sonra hangi tümleştirme çalışma zamanı yapılandırmasını kullanmak istediğinizi seçmeniz istenir. Oto Resolveıntegrationruntime seçilirse, 60 dakikalık bir yaşam süresine sahip sekiz çekirdekli genel işlem olan bir küme de Sun olur. Veri akışı tümleştirme çalışma zamanları hakkında daha fazla bilgi için bkz. [veri akışı performansı](concepts-data-flow-performance.md#ir).
+Kaydırıcıyı açtıktan sonra hangi tümleştirme çalışma zamanı yapılandırmasını kullanmak istediğinizi seçmeniz istenir. Oto Resolveıntegrationruntime seçilirse, varsayılan 60 dakikalık bir zamana kadar genel işlem içeren sekiz çekirdekli bir küme, ön uca olur. Oturumunuz zaman aşımına uğramadan önce daha fazla boşta takımına izin vermek isterseniz, daha yüksek bir TTL ayarı seçebilirsiniz. Veri akışı tümleştirme çalışma zamanları hakkında daha fazla bilgi için bkz. [veri akışı performansı](concepts-data-flow-performance.md#ir).
 
-![IR seçiminde hata ayıkla](media/data-flow/debugbutton2.png "IR seçiminde hata ayıkla")
+![IR seçiminde hata ayıkla](media/data-flow/debug-new-1.png "IR seçiminde hata ayıkla")
 
 Hata ayıklama modu açık olduğunda, etkin bir Spark kümesi ile veri akışınızı etkileşimli olarak oluşturacaksınız. Azure Data Factory, hata ayıklamayı kapattıktan sonra oturum kapatılacak. Hata ayıklama oturumunun açık olduğu süre boyunca Azure Databricks tarafından tahakkuk edilen saatlik ücretlerden haberdar olmanız gerekir.
 
@@ -36,7 +36,7 @@ Hata ayıklama modu açık olduğunda, etkin bir Spark kümesi ile veri akışı
 ![Veri akışı hata ayıklama oturumlarını görüntüle](media/iterative-development-debugging/view-dataflow-debug-sessions.png)
 
 > [!NOTE]
-> Kullanıcının ADF tarayıcı kullanıcı arabiriminden başlattığı her hata ayıklama oturumu, kendi Spark kümesi ile yeni bir oturumdur. Fabrika başına hata ayıklama oturumlarını görüntülemek ve yönetmek için yukarıdaki hata ayıklama oturumları için izleme görünümünü kullanabilirsiniz.
+> Kullanıcının ADF tarayıcı kullanıcı arabiriminden başlattığı her hata ayıklama oturumu, kendi Spark kümesi ile yeni bir oturumdur. Fabrika başına hata ayıklama oturumlarını görüntülemek ve yönetmek için yukarıdaki hata ayıklama oturumları için izleme görünümünü kullanabilirsiniz. Her bir hata ayıklama oturumunun, TTL saati dahil yürütüldüğü her saat için ücretlendirilirsiniz.
 
 ## <a name="cluster-status"></a>Küme durumu
 

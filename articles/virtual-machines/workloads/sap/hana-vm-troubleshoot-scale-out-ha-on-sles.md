@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: 7cf18e2d375d7a45c3641876b8a3ed5974882927
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 87758100299eb170a7950a1a7a2c6bd2029b27fb
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010036"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621561"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>SLES 12 SP3 üzerinde yüksek kullanılabilirliğe sahip ayarları SAP HANA doğrulama ve sorun giderme 
 
@@ -45,6 +45,9 @@ SAP HANA sistem çoğaltma ve Paceyapıcısı ile birlikte SAP HANA genişleme i
 SUSE [, bu performans için iyileştirilmiş kurulumun ayrıntılı bir açıklamasını][sles-hana-scale-out-ha-paper]yayımladı.
 
 SAP HANA genişleme için desteklenen sanal makine türleri için [SAP HANA sertifikalı IaaS dizinini][sap-hana-iaas-list]denetleyin.
+
+> [!NOTE]
+> Bu makale, *ana* ve *bağımlı* hüküm, Microsoft 'un artık kullandığı koşullara yönelik başvurular içerir. Bu koşullar yazılımdan kaldırıldığında, bu makaleden kaldıracağız.
 
 Birden çok alt ağ ve vNIC ile birlikte SAP HANA genişleme ile ilgili teknik bir sorun vardı ve HSR ayarlanıyor. Bu sorunun düzeltildiği en son SAP HANA 2,0 düzeltme eklerini kullanmak zorunludur. Aşağıdaki SAP HANA sürümleri desteklenir: 
 

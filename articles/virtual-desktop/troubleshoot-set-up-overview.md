@@ -3,15 +3,15 @@ title: Windows sanal masaüstü sorunlarını gidermeye genel bakış-Azure
 description: Windows sanal masaüstü ortamı ayarlanırken sorun gidermeye yönelik genel bakış.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 06/05/2020
+ms.date: 12/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 171322fbec099aa9fafc36c4f951213b33007976
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d051594572f742b290867d12e0fb148f2abbf370
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88009367"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621323"
 ---
 # <a name="troubleshooting-overview-feedback-and-support-for-windows-virtual-desktop"></a>Sorun giderme genel bakış, geri bildirim ve Windows sanal masaüstü desteği
 
@@ -45,7 +45,7 @@ Uzak Masaüstü istemcisi 'ni kullanarak bir ortam ayarlarken karşılaşabilece
 | İstemcileri bağlama                                                                    | Bkz. [Windows sanal masaüstü hizmeti bağlantıları](troubleshoot-service-connection.md) ve bu sorunu çözmezse, bkz. [oturum ana bilgisayar sanal makine yapılandırması](troubleshoot-vm-configuration.md). |
 | Uzak uygulama veya masaüstü yanıtlama hızı                                      | Sorunlar belirli bir uygulama veya ürüne bağlıysa, bu üründen sorumlu olan ekibe başvurun. |
 | Lisanslama iletileri veya hataları                                                          | Sorunlar belirli bir uygulama veya ürüne bağlıysa, bu üründen sorumlu olan ekibe başvurun. |
-| Üçüncü taraf kimlik doğrulama yöntemleriyle ilgili sorunlar | Üçüncü taraf sağlayıcınızın Windows sanal masaüstü senaryolarını desteklediğini ve bilinen sorunlarla ilgili olarak bunları yaklaşımını doğrulayın. |
+| Üçüncü taraf kimlik doğrulama yöntemleriyle veya araçlarıyla ilgili sorunlar | Üçüncü taraf sağlayıcınızın Windows sanal masaüstü senaryolarını desteklediğini ve bilinen sorunlarla ilgili olarak bunları yaklaşımını doğrulayın. |
 | Windows sanal masaüstü için Log Analytics kullanan sorunlar | Tanılama şeması ile ilgili sorunlar için [bir Azure destek isteği açın](https://azure.microsoft.com/support/create-ticket/).<br><br>Log Analytics sorguları, görselleştirme veya diğer sorunlar için Log Analytics altında uygun sorun türünü seçin. |
 | M365 uygulamaları kullanma sorunları | [M365 Yönetim Merkezi yardım seçeneklerinden](/microsoft-365/admin/contact-support-for-business-products/)biriyle M365 yönetim merkezine başvurun. |
 

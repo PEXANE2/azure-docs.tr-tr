@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 7754da168465c58c1481f355f3597a621a99609e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: fc2d1c5dca4265bc0f0c26dd0a6c62a7e1698a38
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92522317"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621493"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-openathens"></a>Öğretici: Openatina ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -55,7 +55,7 @@ Openatina 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-openathens"></a>Openatina için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Openatina Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Openatina 'daki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Openatina Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Openatina 'daki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Openatina ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -76,7 +76,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-1. **Temel SAML yapılandırması** bölümünde, bu öğreticide daha sonra bahsedilen adımlar Için **hizmet sağlayıcı meta veri dosyasını**karşıya yükleyin.
+1. **Temel SAML yapılandırması** bölümünde, bu öğreticide daha sonra bahsedilen adımlar Için **hizmet sağlayıcı meta veri dosyasını** karşıya yükleyin.
 
     a. **Meta veri dosyasını karşıya yükle**' ye tıklayın.
 
@@ -150,7 +150,7 @@ Bu bölümde, Openatina erişimi vererek Azure çoklu oturum açma özelliğini 
 
     a. **Görünen ad eşlemesi**' nde **özniteliği kullan**' ı seçin.
 
-    b. **Görünen ad özniteliği** metin kutusuna değeri girin `http://schema.microsoft.com/identity/claims/displayname` .
+    b. **Görünen ad özniteliği** metin kutusuna değeri girin `http://schemas.microsoft.com/identity/claims/displayname` .
 
     c. **Benzersiz kullanıcı eşlemesi**' nde **özniteliği kullan**' ı seçin.
 
@@ -168,7 +168,7 @@ Bu bölümde, Openatina erişimi vererek Azure çoklu oturum açma özelliğini 
 
 ### <a name="create-openathens-test-user"></a>Openatina test kullanıcısı oluşturma
 
-Bu bölümde, Openatina 'da Britta Simon adlı bir Kullanıcı oluşturulur. Openatina, varsayılan olarak etkinleştirilen **tam zamanında Kullanıcı sağlamayı**destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Openatina 'da bir kullanıcı zaten mevcut değilse, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
+Bu bölümde, Openatina 'da Britta Simon adlı bir Kullanıcı oluşturulur. Openatina, varsayılan olarak etkinleştirilen **tam zamanında Kullanıcı sağlamayı** destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Openatina 'da bir kullanıcı zaten mevcut değilse, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
 
 ## <a name="test-sso"></a>Test SSO 'SU
 

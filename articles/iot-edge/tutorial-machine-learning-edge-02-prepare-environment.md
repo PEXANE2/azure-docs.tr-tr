@@ -8,12 +8,12 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f9471b6b465b63f48feb3bda82e7827308aae945
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: b62790fd8f01b7ffb2df4d242b97e8464c11399b
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575407"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621136"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Öğretici: IoT Edge makine öğrenimi için bir ortam ayarlama
 
@@ -217,12 +217,6 @@ Bu öğretici, her bir makalenin bir önceki bölümde gerçekleştirilen iş ü
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu makalede bir IoT Hub oluşturdunuz ve bir Azure depolama hesabına yol yapılandırdınız. Daha sonra, depolama hesabına IoT Hub aracılığıyla bir sanal cihaz kümesinden veri gönderecağız. Öğreticide daha sonra, IoT Edge cihazımuzu ve modüllerimizi yapılandırdıktan sonra yönlendirmeleri geri ziyaret edeceğiz ve yönlendirme sorgusunda biraz daha fazla görüneceğiz.
-
-IoT Edge öğreticisindeki Machine Learning bu bölümünde ele alınan adımlar hakkında daha fazla bilgi için bkz.:
-
-* [Azure IoT temelleri](../iot-fundamentals/index.yml)
-* [IoT Hub ile ileti yönlendirmeyi yapılandırma](../iot-hub/tutorial-routing.md)
-* [Azure portal kullanarak IoT Hub 'ı oluşturma](../iot-hub/iot-hub-create-through-portal.md)
 
 İzlenecek sanal bir cihaz oluşturmak için sonraki makaleye devam edin.
 

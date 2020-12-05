@@ -6,19 +6,19 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 1a9d5fe69cd9d853d0bf8ec971f31518bbf47c9a
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 31ae4605b6cc9e26c89beea692fe61fcbda49c4c
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504705"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621510"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Redin için Azure önbelleği Azure özel bağlantısı (Genel Önizleme)
 Bu makalede, Azure portal kullanarak özel bir uç nokta ile Redsıs örneği için bir sanal ağ ve Azure önbelleği oluşturmayı öğreneceksiniz. Ayrıca, Redsıs örneği için mevcut bir Azure önbelleğine özel bir uç nokta eklemeyi öğreneceksiniz.
 
 Azure özel uç noktası, Azure özel bağlantısı tarafından desteklenen, özel olarak ve güvenli bir şekilde Azure önbelleğine bağlayan bir ağ arabirimidir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
 
 > [!IMPORTANT]
@@ -33,15 +33,15 @@ Bu bölümde, özel bir uç nokta ile Redsıs örneği için yeni bir Azure önb
 
 ### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma 
 
-1. [Azure Portal](https://portal.azure.com) oturum açın ve **kaynak oluştur** ' u seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın ve **kaynak oluştur**' u seçin.
 
     :::image type="content" source="media/cache-private-link/1-create-resource.png" alt-text="Kaynak oluştur ' u seçin.":::
 
-2. **Yeni** sayfasında **ağ** ' ı seçin ve ardından **sanal ağ** ' ı seçin.
+2. **Yeni** sayfasında **ağ** ' ı seçin ve ardından **sanal ağ**' ı seçin.
 
 3. Sanal ağ oluşturmak için **Ekle** ' yi seçin.
 
-4. **Sanal ağ oluştur** ' da, **temel** bilgiler sekmesinde bu bilgileri girin veya seçin:
+4. **Sanal ağ oluştur**' da, **temel** bilgiler sekmesinde bu bilgileri girin veya seçin:
 
    | Ayar      | Önerilen değer  | Açıklama |
    | ------------ |  ------- | -------------------------------------------------- |
@@ -58,7 +58,7 @@ Bu bölümde, özel bir uç nokta ile Redsıs örneği için yeni bir Azure önb
 
 8. **Alt ağı Düzenle** bölmesinde alt ağ **adını** ve **alt ağ adres aralığını** belirtin. Alt ağın adres aralığı CıDR gösteriminde (ör. 192.168.1.0/24) olmalıdır. Sanal ağın adres alanı tarafından içerilmelidir.
 
-9. **Kaydet** ’i seçin.
+9. **Kaydet**’i seçin.
 
 10. **Gözden geçir + oluştur** sekmesini seçin ya da **gözden geçir + oluştur** düğmesine tıklayın.
 
@@ -67,9 +67,9 @@ Bu bölümde, özel bir uç nokta ile Redsıs örneği için yeni bir Azure önb
 ### <a name="create-an-azure-cache-for-redis-instance-with-a-private-endpoint"></a>Özel bir uç nokta ile Redsıs örneği için Azure önbelleği oluşturma
 Bir önbellek örneği oluşturmak için aşağıdaki adımları izleyin.
 
-1. Azure portal giriş sayfasına dönün veya kenar çubuğu menüsünü açın, sonra **kaynak oluştur** ' u seçin. 
+1. Azure portal giriş sayfasına dönün veya kenar çubuğu menüsünü açın, sonra **kaynak oluştur**' u seçin. 
    
-1. **Yeni** sayfada **veritabanları** ' nı seçin ve ardından **redsıs için Azure önbelleği** ' ni seçin.
+1. **Yeni** sayfada **veritabanları** ' nı seçin ve ardından **redsıs için Azure önbelleği**' ni seçin.
 
     :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Redsıs için Azure önbelleği ' ni seçin.":::
    
@@ -91,7 +91,7 @@ Bir önbellek örneği oluşturmak için aşağıdaki adımları izleyin.
 
     :::image type="content" source="media/cache-private-link/3-add-private-endpoint.png" alt-text="Ağ ' da özel bir uç nokta ekleyin.":::
 
-1. **Özel uç nokta oluştur** sayfasında, Özel uç noktanızın ayarlarını, son bölümde oluşturduğunuz sanal ağ ve alt ağ ile yapılandırın ve **Tamam** ' ı seçin. 
+1. **Özel uç nokta oluştur** sayfasında, Özel uç noktanızın ayarlarını, son bölümde oluşturduğunuz sanal ağ ve alt ağ ile yapılandırın ve **Tamam**' ı seçin. 
 
 1. **İleri: Gelişmiş** sekmesini seçin veya sayfanın altındaki **İleri: Gelişmiş** düğmesine tıklayın.
 
@@ -103,16 +103,16 @@ Bir önbellek örneği oluşturmak için aşağıdaki adımları izleyin.
 
 1. İsteğe bağlı olarak, **Etiketler** sekmesinde, kaynağı sınıflandırmak istiyorsanız ad ve değeri girin. 
 
-1. **Gözden geçir + oluştur** ’u seçin. Azure 'un yapılandırmanızı doğruladığı, gözden geçir + Oluştur sekmesine götürülürsünüz.
+1. **Gözden geçir ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, gözden geçir + Oluştur sekmesine götürülürsünüz.
 
-1. Yeşil doğrulama başarılı iletisi göründüğünde **Oluştur** ' u seçin.
+1. Yeşil doğrulama başarılı iletisi göründüğünde **Oluştur**' u seçin.
 
 Önbelleğin oluşturulması biraz zaman alır. Redsıs **genel bakış** sayfasında ilerlemeyi izleyebilirsiniz. **Durum** **çalışıyor** olarak görüntülendiğinde, önbellek kullanıma hazırdır. 
     
 > [!IMPORTANT]
 > 
-> `publicNetworkAccess`Varsayılan olarak bir bayrak vardır `Enabled` . 
-> Bu bayrak, isteğe bağlı olarak ayarlandıysa önbelleğe hem genel hem de özel uç nokta erişimine izin vermek için tasarlanmıştır `Enabled` . Olarak ayarlanırsa `Disabled` , yalnızca özel uç nokta erişimine izin verir. Değerini `Disabled` aşağıdaki düzeltme eki isteğiyle olarak ayarlayabilirsiniz.
+> `publicNetworkAccess`Varsayılan olarak bir bayrak vardır `Disabled` . 
+> Bu bayrak, isteğe bağlı olarak ayarlandıysa önbelleğe hem genel hem de özel uç nokta erişimine izin vermek için tasarlanmıştır `Enabled` . Olarak ayarlanırsa `Disabled` , yalnızca özel uç nokta erişimine izin verir. Değeri `Disabled` `Enabled` aşağıdaki düzeltme eki isteğiyle veya olarak ayarlayabilirsiniz. Önbelleğiniz için istediğiniz bayrağı yansıtmak için değeri düzenleyin.
 > ```http
 > PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Cache/Redis/{cache}?api-version=2020-06-01
 > {    "properties": {
@@ -134,13 +134,13 @@ Bu bölümde, Redsıs örneği için mevcut bir Azure önbelleğine özel bir u�
 ### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma 
 Bir sanal ağ oluşturmak için aşağıdaki adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın ve **kaynak oluştur** ' u seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın ve **kaynak oluştur**' u seçin.
 
-2. **Yeni** sayfasında **ağ** ' ı seçin ve ardından **sanal ağ** ' ı seçin.
+2. **Yeni** sayfasında **ağ** ' ı seçin ve ardından **sanal ağ**' ı seçin.
 
 3. Sanal ağ oluşturmak için **Ekle** ' yi seçin.
 
-4. **Sanal ağ oluştur** ' da, **temel** bilgiler sekmesinde bu bilgileri girin veya seçin:
+4. **Sanal ağ oluştur**' da, **temel** bilgiler sekmesinde bu bilgileri girin veya seçin:
 
    | Ayar      | Önerilen değer  | Açıklama |
    | ------------ |  ------- | -------------------------------------------------- |
@@ -157,7 +157,7 @@ Bir sanal ağ oluşturmak için aşağıdaki adımları izleyin.
 
 8. **Alt ağı Düzenle** bölmesinde alt ağ **adını** ve **alt ağ adres aralığını** belirtin. Alt ağın adres aralığı CıDR gösteriminde (ör. 192.168.1.0/24) olmalıdır. Sanal ağın adres alanı tarafından içerilmelidir.
 
-9. **Kaydet** ’i seçin.
+9. **Kaydet**’i seçin.
 
 10. **Gözden geçir + oluştur** sekmesini seçin ya da **gözden geçir + oluştur** düğmesine tıklayın.
 
@@ -179,7 +179,7 @@ Bir sanal ağ oluşturmak için aşağıdaki adımları izleyin.
 
     :::image type="content" source="media/cache-private-link/5-add-private-endpoint.png" alt-text="Özel uç nokta ekleyin.":::
 
-5. **Özel uç nokta Oluştur sayfasında** , Özel uç noktanız için ayarları yapılandırın.
+5. **Özel uç nokta Oluştur sayfasında**, Özel uç noktanız için ayarları yapılandırın.
 
    | Ayar      | Önerilen değer  | Açıklama |
    | ------------ |  ------- | -------------------------------------------------- |
@@ -200,9 +200,9 @@ Bir sanal ağ oluşturmak için aşağıdaki adımları izleyin.
 
 11. İsteğe bağlı olarak, **Etiketler** sekmesinde, kaynağı sınıflandırmak istiyorsanız ad ve değeri girin.
 
-12. **Gözden geçir + oluştur** ’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sekmesine götürülürsünüz.
+12. **Gözden geçir ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, **gözden geçir + oluştur** sekmesine götürülürsünüz.
 
-13. Yeşil **doğrulama başarılı** Iletisi göründüğünde **Oluştur** ' u seçin.
+13. Yeşil **doğrulama başarılı** Iletisi göründüğünde **Oluştur**' u seçin.
 
 ## <a name="faq"></a>SSS
 
@@ -212,8 +212,9 @@ Bir sanal ağ oluşturmak için aşağıdaki adımları izleyin.
 ### <a name="what-features-are-not-supported-with-private-endpoints"></a>Özel uç noktalarla hangi özellikler desteklenmez?
 Coğrafi çoğaltma, güvenlik duvarı kuralları, Portal konsolu desteği, kümelenmiş önbellek başına birden fazla uç nokta, güvenlik duvarı kuralları ve bölge artıklığı kalıcılığı. 
 
-### <a name="how-can-i-change-my-private-endpoint-to-be-disabled-from-public-network-access"></a>Özel uç noktadan genel ağ erişiminin devre dışı bırakılması için nasıl değiştirebilirim?
-`publicNetworkAccess`Varsayılan olarak bir bayrak vardır `Enabled` . Bu bayrak, isteğe bağlı olarak ayarlandıysa önbelleğe hem genel hem de özel uç nokta erişimine izin vermek için tasarlanmıştır `Enabled` . Olarak ayarlanırsa `Disabled` , yalnızca özel uç nokta erişimine izin verir. Değerini `Disabled` aşağıdaki düzeltme eki isteğiyle olarak ayarlayabilirsiniz.
+### <a name="how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access"></a>Özel uç noktadan devre dışı bırakmak veya genel ağ erişiminin etkinleştirilmesi için nasıl değiştirebilirim?
+`publicNetworkAccess`Varsayılan olarak bir bayrak vardır `Disabled` . Bu bayrak, isteğe bağlı olarak ayarlandıysa önbelleğe hem genel hem de özel uç nokta erişimine izin vermek için tasarlanmıştır `Enabled` . Olarak ayarlanırsa `Disabled` , yalnızca özel uç nokta erişimine izin verir. Değeri `Disabled` `Enabled` aşağıdaki düzeltme eki isteğiyle veya olarak ayarlayabilirsiniz. Önbelleğiniz için istediğiniz bayrağı yansıtmak için değeri düzenleyin.
+
 ```http
 PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Cache/Redis/{cache}?api-version=2020-06-01
 {    "properties": {

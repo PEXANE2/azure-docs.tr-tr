@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to find a Virtual WAN partner
-ms.openlocfilehash: c689c83e50a42885900f62d1a65d0aa75f36f2ec
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 188bc14de502640ae05f1d1eb55330d86cee50b4
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014044"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621488"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Sanal WAN iş ortakları ve sanal hub konumları
 
@@ -60,7 +60,7 @@ Bu iş ortakları, artık sanal WAN hub 'ına dağıtım için kullanılabilen *
 |[Barracuda Networks](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overviewus/marketplace/apps/barracudanetworks.barracuda_cloudgenwan_gateway?tab=Overview)| [Barrampada CloudGen WAN dağıtım kılavuzu](https://campus.barracuda.com/product/cloudgenwan/doc/91980640/deployment/)|
 |[Cisco bulut hizmeti yönlendiricisi (CSR) VWAN](https://aka.ms/ciscoMarketPlaceOffer)| Cisco Cloud Services (CSR) WAN ' ın VWAN hub 'ına genel önizlemesi sırasında, Cisco, son müşterinin bir e-posta göndererek vwan_public_preview@external.cisco.com ve vManage dağıtım kılavuzunu istediğini bir CISCO EFT (erken alan denemesi) müşterisi olarak kaydetmesini gerektirir. |
 
-Aşağıdaki iş ortakları, sanal hub 'daki NVA 'yı yakın gelecekte sunmakta olacak şekilde hazırlanmıştır: Citrix, tersi ağlar ve VeloCloud.
+Şu iş ortakları, sanal hub 'daki NVA 'yı yakın gelecekte sunmakta olan aviatrix, Citrix, VeloCloud ve tersi ağlar için alınmıştır.
 
 ## <a name="locations"></a><a name="locations"></a>Konumlar
 

@@ -4,16 +4,16 @@ description: Ağ dosya sistemi paylaşımının nasıl bağlanacağını öğren
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/15/2020
+ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 530ae82720e6b4eb6a3e4d1021c0b37b9f4dbf5c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a993d9c1de35132198de5e3becc4f16d6a2a437
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90707450"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621306"
 ---
 # <a name="how-to-mount-an-nfs-file-share"></a>NFS dosya paylaşımından bağlama
 
@@ -27,7 +27,7 @@ ms.locfileid: "90707450"
 
 [!INCLUDE [files-nfs-regional-availability](../../../includes/files-nfs-regional-availability.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [BIR NFS paylaşma oluşturun](storage-files-how-to-create-nfs-shares.md).
 
@@ -43,8 +43,8 @@ ms.locfileid: "90707450"
 ## <a name="disable-secure-transfer"></a>Güvenli aktarımı devre dışı bırak
 
 1. Azure portal oturum açın ve oluşturduğunuz NFS paylaşımının bulunduğu depolama hesabına erişin.
-1. **Yapılandırma**' yı seçin.
-1. **Güvenli aktarım**Için **devre dışı** seçeneğini belirleyin.
+1. **Yapılandırma**'yı seçin.
+1. **Güvenli aktarım** Için **devre dışı** seçeneğini belirleyin.
 1. **Kaydet**’i seçin.
 
     :::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="Güvenli aktarım devre dışı olan depolama hesabı yapılandırma ekranının ekran görüntüsü.":::
@@ -55,9 +55,13 @@ ms.locfileid: "90707450"
 1. Kullanmak istediğiniz bağlama yolunu girip betiği kopyalayın.
 1. İstemcinizin bağlantısını yapın ve belirtilen bağlama betiğini kullanın.
 
-    :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/mount-nfs-file-share-script.png" alt-text="Güvenli aktarım devre dışı olan depolama hesabı yapılandırma ekranının ekran görüntüsü.":::
+    :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/mount-nfs-file-share-script.png" alt-text="Dosya paylaşma bağlantı dikey penceresinin ekran görüntüsü":::
 
 Şimdi NFS paylaşımınızı taktıysanız.
+
+### <a name="validate-connectivity"></a>Bağlantıyı doğrula
+
+Bağlamanız başarısız olursa, Özel uç noktanız doğru şekilde ayarlanmamış veya erişilemez durumda olabilir. Bağlantıyı onaylama hakkında ayrıntılar için, ağ uç noktaları makalesinin [bağlantıyı doğrula](storage-files-networking-endpoints.md#verify-connectivity) bölümüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
