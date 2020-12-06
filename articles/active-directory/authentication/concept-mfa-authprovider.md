@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d69ba7b4393a815c9f9685d2e2679c6423ac65a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2c8454d2ca83d4f406149e7eb73feb19ce59554f
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965259"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744134"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Azure Multi-Factor Authentication sağlayıcısı ne zaman kullanılır?
 
@@ -25,7 +25,7 @@ ms.locfileid: "91965259"
 
 İki aşamalı doğrulama, Azure Active Directory sahip olan genel Yöneticiler ve Microsoft 365 kullanıcıları için varsayılan olarak kullanılabilir. Ancak, [gelişmiş özelliklerden](howto-mfa-mfasettings.md) yararlanmak isterseniz Azure Multi-Factor Authentication’ın (MFA) tam sürümünü satın almanız gerekir.
 
-Azure Multi-Factor auth sağlayıcısı, **lisanslarına sahip olmayan**kullanıcılar için Azure Multi-Factor Authentication tarafından belirtilen özelliklerden faydalanmak için kullanılır.
+Azure Multi-Factor auth sağlayıcısı, **lisanslarına sahip olmayan** kullanıcılar için Azure Multi-Factor Authentication tarafından belirtilen özelliklerden faydalanmak için kullanılır.
 
 ## <a name="caveats-related-to-the-azure-mfa-sdk"></a>Azure MFA SDK ile ilgili uyarılar
 
@@ -52,7 +52,7 @@ Kimlik doğrulama sağlayıcıları **Azure Portal**  >  **Azure Active Director
 
 Bir kimlik doğrulama sağlayıcısını kaldırmadan önce, sağlayıcınızda yapılandırılmış tüm özelleştirilmiş ayarları göz önüne alın. Sağlayıcınızdan hangi ayarların genel MFA ayarlarına geçirilmesi gerektiğine ve bu ayarların geçişini tamamlamaya karar verin. 
 
-Sağlayıcılara bağlı Azure MFA sunucularının, **Azure Portal**  >  **Azure Active Directory**  >  **Security**  >  **MFA**  >  **sunucu ayarları**altında oluşturulan kimlik bilgileri kullanılarak yeniden etkinleştirilmesi gerekir. Yeniden etkinleştirmeden önce, aşağıdaki dosyaların `\Program Files\Multi-Factor Authentication Server\Data\` ortamınızdaki Azure MFA sunucularındaki dizininden silinmesi gerekir:
+Sağlayıcılara bağlı Azure MFA sunucularının, **Azure Portal**  >  **Azure Active Directory**  >  **Security**  >  **MFA**  >  **sunucu ayarları** altında oluşturulan kimlik bilgileri kullanılarak yeniden etkinleştirilmesi gerekir. Yeniden etkinleştirmeden önce, aşağıdaki dosyaların `\Program Files\Multi-Factor Authentication Server\Data\` ortamınızdaki Azure MFA sunucularındaki dizininden silinmesi gerekir:
 
 - caCert
 - cert

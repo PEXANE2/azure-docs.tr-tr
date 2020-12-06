@@ -1,18 +1,15 @@
 ---
 title: Azure Resource Manager şablonu kullanarak Azure portal panosu oluşturma
 description: Azure Resource Manager şablonu kullanarak Azure portal panosu oluşturmayı öğrenin.
-author: mgblythe
-ms.service: azure-portal
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.author: mblythe
 ms.date: 06/15/2020
-ms.openlocfilehash: fd2d7006e0c13f7e652b4edd973a36f94f2e2265
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 55ac24e48c1c976eca1e6e8e51cf6e88361ec630
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85560498"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745735"
 ---
 # <a name="quickstart-create-a-dashboard-in-the-azure-portal-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonunu kullanarak Azure portal bir pano oluşturma
 
@@ -75,10 +72,10 @@ Bu hızlı başlangıçta kullanılan şablon [Azure Hızlı Başlangıç Şablo
     Belirtilmediği takdirde, Panoyu oluşturmak için varsayılan değerleri kullanın.
 
     * **Abonelik**: Bir Azure aboneliği seçin.
-    * **Kaynak grubu**: **Simplewinvmresourcegroup**öğesini seçin.
-    * **Konum**: **Doğu ABD**seçin.
-    * **Sanal makine adı**: **simplewinvm**girin.
-    * **Sanal makine kaynak grubu**: **Simplewinvmresourcegroup**girin.
+    * **Kaynak grubu**: **Simplewinvmresourcegroup** öğesini seçin.
+    * **Konum**: **Doğu ABD** seçin.
+    * **Sanal makine adı**: **simplewinvm** girin.
+    * **Sanal makine kaynak grubu**: **Simplewinvmresourcegroup** girin.
 
 1. **Oluştur** veya **satın al**' ı seçin. Pano başarıyla dağıtıldıktan sonra bir bildirim alırsınız:
 
@@ -106,7 +103,7 @@ Panonun başarıyla oluşturulduğunu ve VM 'den verileri göremediklerini denet
 
 VM 'yi ve ilişkili panoyu kaldırmak istiyorsanız, bunları içeren kaynak grubunu silin.
 
-1. Azure portal, **Simplewinvmresourcegroup**öğesini arayın ve arama sonuçlarında bunu seçin.
+1. Azure portal, **Simplewinvmresourcegroup** öğesini arayın ve arama sonuçlarında bunu seçin.
 
 1. **Simplewınvmresourcegroup** sayfasında, **kaynak grubunu sil**' i seçin, onaylamak için kaynak grubunun adını girin ve **Sil**' i seçin.
 

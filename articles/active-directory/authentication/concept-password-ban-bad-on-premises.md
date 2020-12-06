@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4802c4faf245819f57f9885129fa876110407dd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8f5df1cb158821fb0cd85d90f9ba3b79d80adf45
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965242"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743930"
 ---
 # <a name="enforce-on-premises-azure-ad-password-protection-for-active-directory-domain-services"></a>Active Directory Domain Services için şirket içi Azure AD parola korumasını zorlayın
 
@@ -51,7 +51,7 @@ Azure AD parola korumasını şirket içi AD DS ortamında dağıtmadan önce, t
 
 * Azure AD parola koruma proxy hizmeti, geçerli AD DS ormanındaki etki alanına katılmış herhangi bir makinede çalışır. Hizmetin birincil amacı, DC 'lerden Azure AD 'ye parola ilkesi indirme isteklerini iletmektir ve ardından Azure AD 'den DC 'ye yanıtları döndürür.
 * DC aracısının parola filtresi DLL 'SI, işletim sisteminden Kullanıcı parolası doğrulama isteklerini alır. Filtre, bunları DC üzerinde yerel olarak çalışan DC Aracısı Hizmetine iletir.
-* Azure AD parola koruması 'nın DC Aracısı hizmeti, DC aracısının parola filtresi DLL 'sinden parola doğrulama isteklerini alır. DC Aracısı hizmeti, geçerli (yerel olarak kullanılabilir) parola ilkesini kullanarak bunları işler ve *Pass* veya *Fail*sonucunu döndürür.
+* Azure AD parola koruması 'nın DC Aracısı hizmeti, DC aracısının parola filtresi DLL 'sinden parola doğrulama isteklerini alır. DC Aracısı hizmeti, geçerli (yerel olarak kullanılabilir) parola ilkesini kullanarak bunları işler ve *Pass* veya *Fail* sonucunu döndürür.
 
 ## <a name="how-azure-ad-password-protection-works"></a>Azure AD parola koruması nasıl çalışacaktır?
 

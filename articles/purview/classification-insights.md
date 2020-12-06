@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: 34accbf218a782b79579d2f9857c101cc8147ab8
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 553c33b3d5ea2e3f1ee81503cb69fe15db387af6
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96553743"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745035"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>Azure purview 'daki verilerinize ilişkin öngörüleri sınıflandırma
 
@@ -27,7 +27,7 @@ Bu nasıl yapılır kılavuzunda şunları yapmayı öğreneceksiniz:
 > - Verilerinize ilişkin sınıflandırma öngörülerini görüntüleme
 > - Verileriniz hakkında daha fazla sınıflandırma ayrıntısı için detaya gidin
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Purview Insights 'ı kullanmaya başlamadan önce aşağıdaki adımları tamamladığınızdan emin olun:
 
@@ -42,6 +42,9 @@ Daha fazla bilgi için bkz. [Azure purview 'ta veri kaynaklarını yönetme (Ön
 Azure purview ' de, sınıflandırmalar konu etiketlerine benzerdir ve tarama sırasında veriniz içinde bulunan belirli bir türün verilerini işaretlemek ve tanımlamak için kullanılır.
 
 Purview, Microsoft 365 ile aynı hassas bilgi türlerini kullanır ve bu, mevcut güvenlik ilkelerinizi ve korumanızı tüm veri yayılmanız genelinde uzatmanızı sağlar.
+
+> [!NOTE]
+> Kaynak türlerinizi taradıktan sonra, yeni varlıkları yansıtmak için **Sınıflandırma etiketleme** öngörülerini birkaç saat daha verin.
 
 **Sınıflandırma öngörülerini görüntülemek için:**
 

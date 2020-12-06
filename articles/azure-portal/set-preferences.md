@@ -1,20 +1,15 @@
 ---
-title: Azure portal ayarlarını ve tercihlerini yönetme | Microsoft Docs
+title: Azure portal ayarlarını ve tercihlerini yönetme
 description: Kendi tercihlerinizi karşılamak için Azure portal varsayılan ayarlarını değiştirebilirsiniz. Etkin olmayan oturum zaman aşımı, varsayılan görünüm, menü modu, karşıtlık, tema, bildirimler ve dil ve bölge biçimlerini içeren ayarlar
-services: azure-portal
 keywords: ayarlar, zaman aşımı, dil, bölgesel
-author: mgblythe
-ms.author: mblythe
 ms.date: 08/05/2020
 ms.topic: how-to
-ms.service: azure-portal
-manager: mtillman
-ms.openlocfilehash: 0f94f694163ba836091e522a29f73cabd64e22b5
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 07dd3eb5cb132adf87852f29d867be772294d189
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145948"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745647"
 ---
 # <a name="manage-azure-portal-settings-and-preferences"></a>Azure portal ayarlarını ve tercihlerini yönetme
 
@@ -33,7 +28,7 @@ Azure portal oturum açtığınızda varsayılan olarak açılan aboneliği değ
 
 1. Portalı başlattığınızda varsayılan abonelikler olarak istediğiniz abonelikleri seçin. 
 
-    :::image type="content" source="media/set-preferences/default-directory-subscription-filter.png" alt-text="Kaynak listesini aboneliğe göre filtreleyin."::: 
+    :::image type="content" source="media/set-preferences/default-directory-subscription-filter.png" alt-text="Portalı başlattığınızda varsayılan abonelikler olarak istediğiniz abonelikleri seçin."::: 
 
 
 ## <a name="choose-your-default-view"></a>Varsayılan görünümünüzü seçin 
@@ -44,7 +39,7 @@ Azure portal oturum açtığınızda varsayılan olarak açılan sayfayı deği�
 
 - **Ana sayfa** özelleştirilemiyor.  Popüler Azure hizmetlerinin kısayollarını görüntüler ve en son kullandığınız kaynakları listeler. Ayrıca, Microsoft Learn ve Azure yol haritası gibi kaynaklara yönelik faydalı bağlantılar sunuyoruz.
 
-- Panolar, yalnızca sizin için tasarlanmış bir çalışma alanı oluşturmak üzere özelleştirilebilir. Örneğin, proje, görev veya rol odaklı bir pano oluşturabilirsiniz. **Pano** ' yı seçerseniz, varsayılan görünümlerinizin en son kullanılan panoya gitmesi gerekir. Daha fazla bilgi için, [Azure Portal panoları oluşturma ve paylaşma](azure-portal-dashboards.md)bölümüne bakın.
+- Panolar, yalnızca sizin için tasarlanmış bir çalışma alanı oluşturmak üzere özelleştirilebilir. Örneğin, proje, görev veya rol odaklı bir pano oluşturabilirsiniz. **Pano**' yı seçerseniz, varsayılan görünümlerinizin en son kullanılan panoya gitmesi gerekir. Daha fazla bilgi için, [Azure Portal panoları oluşturma ve paylaşma](azure-portal-dashboards.md)bölümüne bakın.
 
 ## <a name="choose-a-portal-menu-mode"></a>Bir portal menü modu seçin
 
@@ -68,7 +63,7 @@ Alternatif olarak, yüksek karşıtlık temalarından birini de seçebilirsiniz.
 
 Bildirimler, geçerli oturumunuzla ilgili sistem iletilerdir. Bunlar, yeni oluşturduğunuz kaynaklar kullanılabilir hale geldiğinde geçerli kredi bakiyeniz gibi bilgiler sağlar veya Son eyleminizi (örneğin,) onaylayın. Açılır bildirimler açıldığında, iletiler ekranın üst köşesinde kısaca görüntülenir. 
 
-Açılır bildirimleri etkinleştirmek veya devre dışı bırakmak için **açılır bildirimleri etkinleştir** ' i seçin veya temizleyin.
+Açılır bildirimleri etkinleştirmek veya devre dışı bırakmak için **açılır bildirimleri etkinleştir**' i seçin veya temizleyin.
 
 ![Açılır bildirimler vurgulanmış Azure portal ayarlarını gösteren ekran görüntüsü](./media/set-preferences/popup-notifications.png)
 
@@ -90,7 +85,7 @@ Geçerli oturumunuz sırasında alınan tüm bildirimleri okumak için genel üs
 
 Değişiklik otomatik olarak kaydedilir. Boşta değilseniz, Azure portal oturumunuz, ayarladığınız süreden sonra oturumunuzu açacaktır.
 
-Yöneticiniz, etkin olmayan bir zaman aşımı ilkesini etkinleştirmişse, Dizin düzeyi ayarından daha az olduğu sürece kendi ayarlarınızı ayarlamaya devam edebilirsiniz. **Dizin eylemsizlik zaman aşımı Ilkesini geçersiz kıl** ' ı seçin ve ardından bir zaman aralığı ayarlayın.
+Yöneticiniz, etkin olmayan bir zaman aşımı ilkesini etkinleştirmişse, Dizin düzeyi ayarından daha az olduğu sürece kendi ayarlarınızı ayarlamaya devam edebilirsiniz. **Dizin eylemsizlik zaman aşımı Ilkesini geçersiz kıl**' ı seçin ve ardından bir zaman aralığı ayarlayın.
 
 ![Portal ayarlarını geçersiz kılma ile gösteren ekran görüntüsü dizin eylemsizlik zaman aşımı ilkesi ayarını vurguladı](./media/set-preferences/inactive-signout-override.png)
 
@@ -108,7 +103,7 @@ Genel yöneticiyseniz ve Azure portal tüm kullanıcıları için boşta kalma z
 
 1. Sonra, oturumu otomatik olarak kapatmadan önce bir kullanıcının boşta kalabileceği en uzun süreyi **saat** ve **dakika** cinsinden girin.
 
-1. **Uygula** ’yı seçin.
+1. **Uygula**’yı seçin.
 
     ![Dizin düzeyinde eylemsizlik zaman aşımını ayarlamak için sayfayı gösteren ekran görüntüsü](./media/set-preferences/configure.png)
 
@@ -118,7 +113,7 @@ Etkin olmayan zaman aşımı ilkesinin doğru ayarlandığını onaylamak için 
 
 ## <a name="restore-default-settings"></a>Varsayılan ayarları geri yükle
 
-Azure portal ayarlarında değişiklik yaptıysanız ve bunları atmak istiyorsanız **varsayılan ayarları geri yükle** ' yi seçin. Portal ayarlarında yaptığınız tüm değişiklikler kaybedilir. Bu seçenek Pano özelleştirmelerini etkilemez.
+Azure portal ayarlarında değişiklik yaptıysanız ve bunları atmak istiyorsanız **varsayılan ayarları geri yükle**' yi seçin. Portal ayarlarında yaptığınız tüm değişiklikler kaybedilir. Bu seçenek Pano özelleştirmelerini etkilemez.
 
 ![Varsayılan ayarların geri yüklenmesini gösteren ekran görüntüsü](./media/set-preferences/useful-links-restore-defaults.png)
 
@@ -132,7 +127,7 @@ Azure portal ayarlarında değişiklik yaptıysanız ve bunları atmak istiyorsa
 
 Bunları silmeyi planlıyorsanız ayarlarınızı dışarı ve gözden geçirmek iyi bir fikirdir. Panoları yeniden oluşturma veya ayarları yeniden oluşturma zaman alabilir.
 
-Portal ayarlarınızı dışarı aktarmak için **tüm ayarları dışarı aktar** ' ı seçin.
+Portal ayarlarınızı dışarı aktarmak için **tüm ayarları dışarı aktar**' ı seçin.
 
 ![Ayarların dışa aktarılmasını gösteren ekran görüntüsü](./media/set-preferences/useful-links-export-settings.png)
 
@@ -150,7 +145,7 @@ Ayarlarınızı silmeden önce dışa ve gözden geçirmek iyi bir fikirdir. Pan
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-Portal ayarlarınızı silmek için **tüm ayarları ve özel panoları Sil** ' i seçin.
+Portal ayarlarınızı silmek için **tüm ayarları ve özel panoları Sil**' i seçin.
 
 ![Ayarları silmeyi gösteren ekran görüntüsü](./media/set-preferences/useful-links-delete-settings.png)
 

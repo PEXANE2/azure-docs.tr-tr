@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: 8a8b04501bf81f41fb87de8fc0ce42eb4e7fda93
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 8469cad02009d054bd8ba97fb4aabfdae84ef842
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94370457"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744627"
 ---
 # <a name="configure-a-solution-template-plan"></a>Çözüm şablonu planı yapılandırma
 
@@ -50,8 +50,8 @@ Her planı herkese veya yalnızca belirli bir hedef kitleye görünür olacak ş
 1. Abonelik KIMLIĞI olan her satır için **tür** sütununa "SubscriptionID" ekleyin.
 1. Öğesini kaydedin. CSV dosyası.
 1. **Kullanılabilirlik** sekmesinde, **plan görünürlüğü** altında, **izleyiciyi içeri aktar (CSV)** bağlantısını seçin.
-1. Görüntülenen iletişim kutusunda **Evet** ' i seçin.
-1. Öğesini seçin. CSV dosyası ve sonra **Aç** ' ı seçin. Olduğunu belirten bir ileti görüntülenir. CSV dosyası başarıyla içeri aktarıldı.
+1. Görüntülenen iletişim kutusunda **Evet**' i seçin.
+1. Öğesini seçin. CSV dosyası ve sonra **Aç**' ı seçin. Olduğunu belirten bir ileti görüntülenir. CSV dosyası başarıyla içeri aktarıldı.
 
 ### <a name="hide-your-plan"></a>Planınızı gizleyin
 
@@ -83,17 +83,17 @@ Teklifinizi canlı yayımladıktan sonra, **daha önce yayımlanmış paketler**
 
 ## <a name="view-your-plans"></a>Planlarınızı görüntüleyin
 
-- **Taslağı kaydet** ' i seçin ve sayfanın sol üst **kısmında plana genel** bakış ' ı seçerek **plana genel bakış** sayfasına dönün.
+- **Taslağı kaydet**' i seçin ve sayfanın sol üst **kısmında plana genel** bakış ' ı seçerek **plana genel bakış** sayfasına dönün.
 
 Bir veya daha fazla plan oluşturduktan sonra plan adı, plan KIMLIĞI, plan türü, kullanılabilirliği (genel veya özel), geçerli yayımlama durumu ve **plana genel bakış** sekmesinde tüm kullanılabilir eylemler görüntülenir.
 
 **Plana genel bakış** sekmesinin **eylem** sütununda bulunan Eylemler planınızın durumuna göre farklılık gösterir ve şunları içerebilir:
 
-- Plan durumu **taslak** Ise, **eylem** sütunundaki bağlantı **taslak Sil** ' i söylecektir.
+- Plan durumu **taslak** Ise, **eylem** sütunundaki bağlantı **taslak Sil**' i söylecektir.
 - Plan durumu **canlı** Ise, **eylem** sütunundaki bağlantı, **planı satmaya** veya **özel izleyiciyi eşitlemeye** yönelik olur. **Eşitleme özel hedef kitle** bağlantısı, yalnızca özel izleyicilerinizdeki değişiklikleri, teklifte yapmış olabileceğiniz herhangi bir güncelleştirmeyi yayımlamadan yayımlar.
-- Bu teklif için başka bir plan oluşturmak üzere **plana genel bakış** sekmesinin en üstünde **+ Yeni plan oluştur** ' u seçin. Ardından [Azure Uygulama teklifiniz için plan oluşturma](create-new-azure-apps-offer-plans.md)bölümündeki adımları yineleyin. Aksi takdirde, planlar oluşturmayı bitirdiğinizde sonraki bölüme gidin: sonraki adımlar.
+- Bu teklif için başka bir plan oluşturmak üzere **plana genel bakış** sekmesinin en üstünde **+ Yeni plan oluştur**' u seçin. Ardından [Azure Uygulama teklifiniz için plan oluşturma](create-new-azure-apps-offer-plans.md)bölümündeki adımları yineleyin. Aksi takdirde, planlar oluşturmayı bitirdiğinizde sonraki bölüme gidin: sonraki adımlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure uygulama teklifinizi test etme ve yayımlama](create-new-azure-apps-offer-test-publish.md).
-- [Azure uygulama teklifinizi](create-new-azure-apps-offer-marketing.md) Microsoft ile ortak satış üzerinden pazara sunma ve CSP programları aracılığıyla yeniden satma hakkında bilgi edinin.
+- [Azure uygulama teklifinizi](create-new-azure-apps-offer-marketing.md) Microsoft ile ortak satış aracılığıyla satma ve CSP programlarını kullanarak yeniden satma hakkında bilgi edinin.

@@ -1,20 +1,14 @@
 ---
-title: Sorun giderme için bir tarayıcı izleme yakala | Microsoft Docs
+title: Sorun giderme için bir tarayıcı izlemesi yakalama
 description: Azure portal sorunları gidermeye yardımcı olması için bir tarayıcı izağından ağ bilgilerini yakalayın.
-services: azure-portal
-keywords: ''
-author: mgblythe
-ms.author: mblythe
 ms.date: 05/11/2020
 ms.topic: troubleshooting
-ms.service: azure-portal
-manager: mtillman
-ms.openlocfilehash: aac7357939ab2d14949c967630840ed6d267d251
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 504a32fb63022f97e8049c7c1ccc7721bbac31ab
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145744"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746004"
 ---
 # <a name="capture-a-browser-trace-for-troubleshooting"></a>Sorun giderme için bir tarayıcı izlemesi yakalama
 
@@ -30,23 +24,23 @@ Google Chrome ve Microsoft Edge (Kmıum), her ikisi de [kmıum açık kaynak pro
 
 1. Portalda, sorunun oluştuğu yerin hemen öncesindeki adıma gidin.
 
-1. F12 tuşuna basın veya ![ tarayıcı ayarları simgesini gösteren ekran görüntüsü ' nü seçin.](media/capture-browser-trace/chromium-icon-settings.png) > **Diğer araçlar**  >  **Geliştirici Araçları** .
+1. F12 tuşuna basın veya ![ tarayıcı ayarları simgesini gösteren ekran görüntüsü ' nü seçin.](media/capture-browser-trace/chromium-icon-settings.png) > **Diğer araçlar**  >  **Geliştirici Araçları**.
 
 1. Varsayılan olarak tarayıcı, izleme bilgilerini yalnızca şu anda yüklü olan sayfa için tutar. Yeniden üretme, birden fazla sayfaya gitse bile tarayıcının tüm izleme bilgilerini tutabilmesi için aşağıdaki seçenekleri ayarlayın:
 
-    1. **Ağ** sekmesini seçin ve **günlüğü koru** ' yı seçin.
+    1. **Ağ** sekmesini seçin ve **günlüğü koru**' yı seçin.
 
           ![Ağ sekmesinde günlüğü koru seçeneğini vurgulayan ekran görüntüsü.](media/capture-browser-trace/chromium-network-preserve-log.png)
 
-    1. **Konsol** sekmesini seçin, **Konsol ayarları** ' nı seçin ve **günlüğü koru** ' yı seçin. Ayarlar bölmesini kapatmak için **Konsol ayarları** ' nı yeniden seçin.
+    1. **Konsol** sekmesini seçin, **Konsol ayarları**' nı seçin ve **günlüğü koru**' yı seçin. Ayarlar bölmesini kapatmak için **Konsol ayarları** ' nı yeniden seçin.
 
           ![Konsol sekmesinde günlüğü koru seçeneğini vurgulayan ekran görüntüsü.](media/capture-browser-trace/chromium-console-preserve-log.png)
 
-1. **Ağ** sekmesini seçin, sonra **ağ günlüğü kaydını durdur** ve **Temizle** ' yi seçin.
+1. **Ağ** sekmesini seçin, sonra **ağ günlüğü kaydını durdur** ve **Temizle**' yi seçin.
 
     !["Ağ günlüğü kaydını Durdur" ve "Temizle" ekran görüntüsü](media/capture-browser-trace/chromium-stop-clear-session.png)
 
-1. **Ağ günlüğünü kaydet** ' i seçin ve ardından portalda sorunu yeniden oluşturun.
+1. **Ağ günlüğünü kaydet**' i seçin ve ardından portalda sorunu yeniden oluşturun.
 
     ![Ağ günlüğünün nasıl kaydedilecek gösteren ekran görüntüsü.](media/capture-browser-trace/chromium-start-session.png)
 
@@ -54,7 +48,7 @@ Google Chrome ve Microsoft Edge (Kmıum), her ikisi de [kmıum açık kaynak pro
 
     ![Oturum çıkışını gösteren ekran görüntüsü.](media/capture-browser-trace/chromium-browser-trace-results.png)
 
-1. Beklenmeyen Portal davranışını yeniden oluşturduktan sonra, **ağ günlüğü kaydını durdur** ' u seçin, ardından **har 'u dışarı aktar** ' ı seçin ve dosyayı kaydedin.
+1. Beklenmeyen Portal davranışını yeniden oluşturduktan sonra, **ağ günlüğü kaydını durdur**' u seçin, ardından **har 'u dışarı aktar** ' ı seçin ve dosyayı kaydedin.
 
     ![Ağ sekmesinde HAR 'un nasıl dışarı aktarılacağını gösteren ekran görüntüsü.](media/capture-browser-trace/chromium-network-export-har.png)
 
@@ -76,7 +70,7 @@ Aşağıdaki adımlarda, Microsoft Edge 'de (EdgeHTML) Geliştirici araçların�
 
 1. Portalda, sorunun oluştuğu yerin hemen öncesindeki adıma gidin.
 
-1. F12 tuşuna basın veya ![ tarayıcı ayarları simgesinin ekran görüntüsünü seçin.](media/capture-browser-trace/edge-icon-settings.png) > **Diğer araçlar**  >  **Geliştirici Araçları** .
+1. F12 tuşuna basın veya ![ tarayıcı ayarları simgesinin ekran görüntüsünü seçin.](media/capture-browser-trace/edge-icon-settings.png) > **Diğer araçlar**  >  **Geliştirici Araçları**.
 
 1. Varsayılan olarak tarayıcı, izleme bilgilerini yalnızca şu anda yüklü olan sayfa için tutar. Yeniden üretme, birden fazla sayfaya gitse bile tarayıcının tüm izleme bilgilerini tutabilmesi için aşağıdaki seçenekleri ayarlayın:
 
@@ -84,15 +78,15 @@ Aşağıdaki adımlarda, Microsoft Edge 'de (EdgeHTML) Geliştirici araçların�
 
           !["Gezinte girdilerin Işaretini kaldır" ekran görüntüsü](media/capture-browser-trace/edge-network-clear-entries.png)
 
-    1. **Konsol** sekmesini seçin ve **günlüğü koru** ' yı seçin.
+    1. **Konsol** sekmesini seçin ve **günlüğü koru**' yı seçin.
 
           !["Günlüğü koru" ekran görüntüsü](media/capture-browser-trace/edge-console-preserve-log.png)
 
-1. **Ağ** sekmesini seçin, sonra **profil oluşturma oturumunu durdur** ' u ve **oturumu temizle** ' yi seçin.
+1. **Ağ** sekmesini seçin, sonra **profil oluşturma oturumunu durdur** ' u ve **oturumu temizle**' yi seçin.
 
     !["Profil oluşturma oturumunu Durdur" ve "oturumu temizle" ekran görüntüsü](media/capture-browser-trace/edge-stop-clear-session.png)
 
-1. **Profil oluşturma oturumunu Başlat** ' ı seçin ve ardından portalda sorunu yeniden oluşturun.
+1. **Profil oluşturma oturumunu Başlat**' ı seçin ve ardından portalda sorunu yeniden oluşturun.
 
     !["Profil oluşturma oturumu Başlat" ekran görüntüsü](media/capture-browser-trace/edge-start-session.png)
 
@@ -100,13 +94,13 @@ Aşağıdaki adımlarda, Microsoft Edge 'de (EdgeHTML) Geliştirici araçların�
 
     ![Profil oluşturma oturumunun çıkışını gösteren ekran görüntüsü.](media/capture-browser-trace/edge-browser-trace-results.png)
 
-1. Beklenmeyen Portal davranışını yeniden oluşturduktan sonra, **profil oluşturma oturumunu durdur** ' u seçin, ardından **har olarak dışarı aktar** ' ı seçin ve dosyayı kaydedin.
+1. Beklenmeyen Portal davranışını yeniden oluşturduktan sonra, **profil oluşturma oturumunu durdur**' u seçin, ardından **har olarak dışarı aktar** ' ı seçin ve dosyayı kaydedin.
 
     !["HAR olarak dışarı aktar" ekran görüntüsü](media/capture-browser-trace/edge-network-export-har.png)
 
 1. Adımları kaydediciyi durdurun ve kaydı kaydedin.
 
-1. Tarayıcı geliştirici araçları bölmesine geri dönün, **konsol** sekmesini seçin ve pencereyi genişletin. İmlecinizi konsol çıkışının başlangıcına yerleştirin ve ardından çıktının tüm içeriğini sürükleyin ve seçin. Sağ tıklayın ve **Kopyala** ' yı seçin ve konsol çıkışını bir metin dosyasına kaydedin.
+1. Tarayıcı geliştirici araçları bölmesine geri dönün, **konsol** sekmesini seçin ve pencereyi genişletin. İmlecinizi konsol çıkışının başlangıcına yerleştirin ve ardından çıktının tüm içeriğini sürükleyin ve seçin. Sağ tıklayın ve **Kopyala**' yı seçin ve konsol çıkışını bir metin dosyasına kaydedin.
 
     ![Kopyala menü seçeneğini vurgulayan ekran görüntüsü.](media/capture-browser-trace/edge-console-select.png)
 
@@ -118,11 +112,11 @@ Aşağıdaki adımlarda, Apple Safari 'de Geliştirici araçlarının nasıl kul
 
 1. Apple Safari 'de geliştirici araçlarını etkinleştirme:
 
-    1. **Safari** ' yi seçin ve **Tercihler** ' i seçin.
+    1. **Safari**' yi seçin ve **Tercihler**' i seçin.
 
         ![Safari tercihleri ekran görüntüsü](media/capture-browser-trace/safari-preferences.png)
 
-    1. **Gelişmiş** sekmesini seçin ve ardından **menü çubuğunda geliştirmesi menüsünü göster** ' i seçin.
+    1. **Gelişmiş** sekmesini seçin ve ardından **menü çubuğunda geliştirmesi menüsünü göster**' i seçin.
 
         ![Safari gelişmiş tercihlerinin ekran görüntüsü](media/capture-browser-trace/safari-show-develop-menu.png)
 
@@ -132,21 +126,21 @@ Aşağıdaki adımlarda, Apple Safari 'de Geliştirici araçlarının nasıl kul
 
 1. Portalda, sorunun oluştuğu yerin hemen öncesindeki adıma gidin.
 
-1. **Geliştir** ' i seçin, sonra **Web denetçisini göster** ' i seçin.
+1. **Geliştir**' i seçin, sonra **Web denetçisini göster**' i seçin.
 
     !["Web denetçisini göster" ekran görüntüsü](media/capture-browser-trace/safari-show-web-inspector.png)
 
 1. Varsayılan olarak tarayıcı, izleme bilgilerini yalnızca şu anda yüklü olan sayfa için tutar. Yeniden üretme, birden fazla sayfaya gitse bile tarayıcının tüm izleme bilgilerini tutabilmesi için aşağıdaki seçenekleri ayarlayın:
 
-    1. **Ağ** sekmesini seçin ve **günlüğü koru** ' yı seçin.
+    1. **Ağ** sekmesini seçin ve **günlüğü koru**' yı seçin.
 
           ![Günlüğü koru seçeneğini gösteren ekran görüntüsü.](media/capture-browser-trace/safari-network-preserve-log.png)
 
-    1. **Konsol** sekmesini seçin ve **günlüğü koru** ' yı seçin.
+    1. **Konsol** sekmesini seçin ve **günlüğü koru**' yı seçin.
 
           ![Konsol sekmesinde günlüğü koru sekmesini gösteren ekran görüntüsü.](media/capture-browser-trace/safari-console-preserve-log.png)
 
-1. **Ağ** sekmesini seçin ve ardından **ağ öğelerini temizle** ' yi seçin.
+1. **Ağ** sekmesini seçin ve ardından **ağ öğelerini temizle**' yi seçin.
 
     !["Ağ öğelerini temizle" ekran görüntüsü](media/capture-browser-trace/safari-clear-session.png)
 
@@ -176,7 +170,7 @@ Aşağıdaki adımlarda, Firefox 'ta Geliştirici araçlarının nasıl kullanı
 
 1. Portalda, sorunun oluştuğu yerin hemen öncesindeki adıma gidin.
 
-1. F12 tuşuna basın veya ![ tarayıcı ayarları simgesinin ekran görüntüsünü seçin ](media/capture-browser-trace/firefox-icon-settings.png)  >  **Web geliştirici**  >  **geçiş araçları** ' nı seçin.
+1. F12 tuşuna basın veya ![ tarayıcı ayarları simgesinin ekran görüntüsünü seçin ](media/capture-browser-trace/firefox-icon-settings.png)  >  **Web geliştirici**  >  **geçiş araçları**' nı seçin.
 
 1. Varsayılan olarak tarayıcı, izleme bilgilerini yalnızca şu anda yüklü olan sayfa için tutar. Yeniden üretme, birden fazla sayfaya gitse bile tarayıcının tüm izleme bilgilerini tutabilmesi için aşağıdaki seçenekleri ayarlayın:
 
@@ -184,11 +178,11 @@ Aşağıdaki adımlarda, Firefox 'ta Geliştirici araçlarının nasıl kullanı
 
           ![Kalıcı Günlükler seçeneğini vurgulayan ekran görüntüsü.](media/capture-browser-trace/firefox-network-persist-logs.png)
 
-    1. **Konsol** sekmesini seçin, **Konsol ayarları** ' nı seçin ve ardından **günlükleri kalıcı** yap ' ı seçin.
+    1. **Konsol** sekmesini seçin, **Konsol ayarları**' nı seçin ve ardından **günlükleri kalıcı** yap ' ı seçin.
 
           !["Kalıcı günlüklerin" ekran görüntüsü](media/capture-browser-trace/firefox-console-persist-logs.png)
 
-1. **Ağ** sekmesini seçin ve ardından **Temizle** ' yi seçin.
+1. **Ağ** sekmesini seçin ve ardından **Temizle**' yi seçin.
 
     !["Clear" ekran görüntüsü](media/capture-browser-trace/firefox-clear-session.png)
 
@@ -196,13 +190,13 @@ Aşağıdaki adımlarda, Firefox 'ta Geliştirici araçlarının nasıl kullanı
 
     ![Tarayıcı izleme sonuçlarının ekran görüntüsü](media/capture-browser-trace/firefox-browser-trace-results.png)
 
-1. Beklenmeyen Portal davranışını yeniden oluşturduktan sonra, **har dışarı aktar/al** ' ı seçin, sonra **Tümünü har olarak kaydedin** .
+1. Beklenmeyen Portal davranışını yeniden oluşturduktan sonra, **har dışarı aktar/al** ' ı seçin, sonra **Tümünü har olarak kaydedin**.
 
     !["Dışarı aktarma HAR" ekran görüntüsü](media/capture-browser-trace/firefox-network-export-har.png)
 
 1. Windows 'da veya Mac 'teki ekran kaydındaki adımları kaydediciden durdurun ve kaydı kaydedin.
 
-1. Tarayıcı geliştirici araçları bölmesine geri dönerek **konsol** sekmesini seçin. İletilerden birine sağ tıklayın, ardından **görünür Iletiyi gönder** ' i seçin ve konsol çıkışını bir metin dosyasına kaydedin.
+1. Tarayıcı geliştirici araçları bölmesine geri dönerek **konsol** sekmesini seçin. İletilerden birine sağ tıklayın, ardından **görünür Iletiyi gönder**' i seçin ve konsol çıkışını bir metin dosyasına kaydedin.
 
     ![Konsol çıktısının ekran görüntüsü](media/capture-browser-trace/firefox-console-select.png)
 

@@ -1,21 +1,15 @@
 ---
-title: Azure portal sık kullanılanları ekleyin, kaldırın ve düzenleyin | Microsoft Docs
+title: Azure portal sık kullanılanları ekleme, kaldırma ve düzenleme
 description: Sık Kullanılanlar listesine öğe ekleme veya kaldırma ve öğelerin sırasını yeniden düzenleme hakkında bilgi edinin
-services: azure-portal
 keywords: Sık Kullanılanlar, Portal
-author: mgblythe
-ms.author: mblythe
 ms.date: 12/20/2019
 ms.topic: how-to
-ms.service: azure-portal
-ms.custom: ''
-manager: mtillman
-ms.openlocfilehash: 359a544df906a277a89333e3aee2f6203a707f8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 01ed34c2e72890c6aeeef9371312825273722ac6
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84764137"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745800"
 ---
 # <a name="add-remove-and-rearrange-favorites"></a>Sık kullanılanları ekleme, kaldırma ve yeniden düzenleme
 
@@ -23,7 +17,7 @@ En sık kullandığınız hizmetlere hızla gidebilmeniz için **Sık Kullanıla
 
 ## <a name="add-a-favorite"></a>Sık kullanılan ekleme
 
-**Sık Kullanılanlar** altında listelenen öğeler **tüm hizmetlerden**seçilir. Hizmetle ilgili bilgi ve kaynakları göstermek için bir hizmet adının üzerine gelin. Hizmet adının yanında doldurulmuş bir yıldız simgesi ![ doldurulmuş yıldız simgesi ](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-graystar.png) öğenin **Sık Kullanılanlar** listesinde göründüğünü gösterir. **Sık Kullanılanlar** listesine bir hizmet eklemek için yıldız simgesini seçin.
+**Sık Kullanılanlar** altında listelenen öğeler **tüm hizmetlerden** seçilir. Hizmetle ilgili bilgi ve kaynakları göstermek için bir hizmet adının üzerine gelin. Hizmet adının yanında doldurulmuş bir yıldız simgesi ![ doldurulmuş yıldız simgesi ](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-graystar.png) öğenin **Sık Kullanılanlar** listesinde göründüğünü gösterir. **Sık Kullanılanlar** listesine bir hizmet eklemek için yıldız simgesini seçin.
 
 ### <a name="add-cost-management--billing-to-favorites"></a>Maliyet yönetimi ve sık kullanılanlara faturalama ekleme
 
@@ -53,7 +47,7 @@ Artık bir öğeyi doğrudan **Sık Kullanılanlar** listesinden kaldırabilirsi
 
 ## <a name="rearrange-favorites"></a>Sık kullanılanları yeniden Düzenle
 
-En sevdiğiniz hizmetlerin listelenme sırasını değiştirebilirsiniz. Menü öğesini yalnızca **Sık Kullanılanlar**altındaki başka bir konuma sürükleyip bırakın.
+En sevdiğiniz hizmetlerin listelenme sırasını değiştirebilirsiniz. Menü öğesini yalnızca **Sık Kullanılanlar** altındaki başka bir konuma sürükleyip bırakın.
 
 ### <a name="move-cost-management--billing-to-the-top-of-favorites"></a>Maliyet yönetimi + faturalandırmayı sık kullanılanları yukarı taşı
 

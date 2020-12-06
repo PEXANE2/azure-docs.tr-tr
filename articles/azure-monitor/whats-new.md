@@ -5,17 +5,81 @@ ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 11/11/2020
-ms.openlocfilehash: bf15e380eb1a88acc39ca63165d18d04a260b35d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 12/04/2020
+ms.openlocfilehash: 91aa76fd3d9dbb54316f32fdb319e92ca2283b1d
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185904"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745783"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Izleyici belgelerindeki yenilikler nelerdir?
 
 Bu makalede, yeni veya önemli ölçüde güncelleştirilmiş Azure Izleyici makaleleri listelenmektedir. Önceki aydan makale güncelleştirmelerini dahil etmek için her ayın ilk haftası yenilenir.
+
+## <a name="november-2020"></a>Kasım 2020
+
+### <a name="general"></a>Genel
+- [Azure İzleyici hizmeti limitleri](service-limits.md) -Azure Arc desteği için güncelleştirildi.
+
+### <a name="agents"></a>Aracılar
+- Azure [izleme aracılarına genel bakış](platform/agents-overview.md) -Azure Arc desteği için güncelleştirildi.
+- [Azure izleyici aracısını yükler](platform/azure-monitor-agent-install.md) -yeni makale.
+- [Azure izleyici aracısına genel bakış](platform/azure-monitor-agent-overview.md) -Azure Arc desteği için güncelleştirildi.
+- [Aracılar için Kaynak Yöneticisi şablonu örnekleri](samples/resource-manager-agent.md) -Azure Arc desteği için güncelleştirildi.
+
+### <a name="alerts"></a>Uyarılar
+- Web kancaları için Azure portal tarafından eklenen kaynak IP adreslerinde [eylem grupları oluşturun ve yönetin](platform/action-groups.md) .
+
+### <a name="application-insights"></a>Application Insights
+- [Java kodsuz kullanacaksınız uygulama izleme Azure izleyici Application Insights](app/java-in-process-agent.md) -eklenen yapılandırma örneği.
+- Yanıt verme kancalarını kullanarak [Application Insights JavaScript SDK 'sı](app/javascript-react-plugin.md) tarafından eklenen bölüme tepki verir.
+- [Application Insights Java 2. x SDK 'Dan yükseltme](app/java-standalone-upgrade-from-2x.md) -yeni makale.
+- [Microsoft. ApplicationInsights. SnapshotCollector Için sürüm notları](app/snapshot-collector-release-notes.md) -yeni makale.
+
+### <a name="autoscale"></a>Otomatik Ölçeklendirme
+- Otomatik ölçeklendirmeyi farklı bir bölgeye taşımaya yönelik [Azure 'da otomatik ölçeklendirme ile çalışmaya](platform/autoscale-get-started.md) başlayın.
+
+### <a name="data-collection"></a>Veri toplama
+- [Azure izleyici Aracısı (Önizleme) için veri toplamayı yapılandırma](platform/data-collection-rule-azure-monitor-agent.md) -Azure Arc desteği için güncelleştirildi.
+- [Azure izleyici 'de veri toplama kuralları (Önizleme)](platform/data-collection-rule-overview.md) -Azure Arc desteği için güncelleştirildi.
+- [Veri toplama kuralları için şablon örnekleri Kaynak Yöneticisi](samples/resource-manager-data-collection-rules.md) -yeni makale.
+
+### <a name="insights-and-solutions"></a>Öngörüler ve çözümler
+- ServiceNow 'a bağlanma üzerine [güvenli dışarı aktarma ile eklenen bölümü kullanarak Azure 'U ITSM araçlarına bağlayın](platform/it-service-management-connector-secure-webhook-connections.md) .
+
+### <a name="logs"></a>Günlükler
+- [Log Analytics ve Excel 'ı tümleştirin](log-query/log-excel.md) -yeni makale.
+- [Log Analytics Data Security](platform/data-security.md) -ek güvenlik özelliklerine eklenen bölüm.
+- Power BI-yeni makale [ile Log Analytics tümleştirme](log-query/log-powerbi.md) .
+- [Azure izleyici günlük kayıtlarında standart sütunlar](platform/log-standard-columns.md) -_SubscriptionId sütunu eklendi.
+
+Günlük sorgusu içeriğini yeniden yapılandırmak için yeni ve güncelleştirilmiş makaleler.
+
+- [Log Analytics öğreticisi](log-query/log-analytics-tutorial.md)
+- [Azure Izleyici 'de günlük sorguları](log-query/log-query-overview.md)
+- [Azure Izleyici 'de Log Analytics genel bakış](log-query/log-analytics-overview.md)
+- [Azure Veri Gezgini ve Azure Izleyici sorguları için örnekler](/azure/data-explorer/kusto/query/samples?pivots=azuremonitor)
+- [Öğretici: Azure Veri Gezgini ve Azure Izleyici 'de kusto sorguları kullanma](/azure/data-explorer/kusto/query/tutorial?pivots=azuremonitor)
+
+
+
+### <a name="virtual-machines"></a>Sanal makineler
+
+- [VM'ler için Azure izleyici genel bakışı etkinleştir](insights/vminsights-enable-overview.md) -desteklenen bölgeler eklendi.
+
+VM'ler için Azure İzleyici Konuk sistem durumu için yeni makaleler (Önizleme)
+
+- [VM'ler için Azure İzleyici Konuk sistem durumu (Önizleme)](insights/vminsights-health-overview.md)
+- [VM'ler için Azure İzleyici Konuk sistem durumu uyarıları (Önizleme)](insights/vminsights-health-alerts.md)
+- [VM'ler için Azure İzleyici Konuk sistem durumunda izlemeyi yapılandırma (Önizleme)](insights/vminsights-health-configure.md)
+- [Veri toplama kurallarını kullanarak VM'ler için Azure İzleyici Konuk sistem durumunda izlemeyi yapılandırma (Önizleme)](insights/vminsights-health-configure-dcr.md)
+- [Konuk sistem durumunu VM'ler için Azure İzleyici etkinleştirme (Önizleme)](insights/vminsights-health-enable.md)
+- [VM'ler için Azure İzleyici Konuk sistem durumu sorunlarını giderme (Önizleme)](insights/vminsights-health-troubleshoot.md)
+
+
+
+
 
 ## <a name="october-2020"></a>Ekim 2020
 
@@ -126,7 +190,7 @@ Bu makalede, yeni veya önemli ölçüde güncelleştirilmiş Azure Izleyici mak
 - [Azure etkinlik günlüğü olay şeması-Azure izleyici](platform/activity-log-schema.md) -önem düzeyleri eklendi.
 - [Tanılama ayarları için şablon örnekleri Kaynak Yöneticisi](samples/resource-manager-diagnostic-settings.md) -Azure depolama hesabı için örnek eklendi.
 
-### <a name="visualizations"></a>Görsel öğeler
+### <a name="visualizations"></a>Görselleştirmeler
 - [Azure izleyici çalışma kitabı grafik görselleştirmeleri](platform/workbooks-chart-visualizations.md) -yeni makale.
 - [Azure izleyici çalışma kitabı bileşik çubuk Oluşturucusu](platform/workbooks-composite-bar.md) -yeni makale.
 - [Azure izleyici çalışma kitabı grafik görselleştirmeleri](platform/workbooks-graph-visualizations.md) -yeni makale.
@@ -196,7 +260,7 @@ Bu makalede, yeni veya önemli ölçüde güncelleştirilmiş Azure Izleyici mak
 ### <a name="platform-logs"></a>Platform günlükleri
 - [Platform günlüklerini ve ölçümleri, Tanılama ayarları için farklı hedeflerle eklenen bölgesel gereksinime göndermek için Tanılama ayarları oluşturun](platform/diagnostic-settings.md) .
 
-### <a name="visualizations"></a>Görsel öğeler
+### <a name="visualizations"></a>Görselleştirmeler
 - [Azure Izleyici çalışma kitaplarına genel bakış](platform/workbooks-overview.md) -video eklendi.
 - Bir [Azure çalışma kitabı şablonunu başka bir bölgeye taşıma](platform/workbook-templates-move-region.md) -yeni makale.
 - [Bir Azure çalışma kitabını başka bir bölgeye taşıma](platform/workbooks-move-region.md) -yeni makale.
@@ -256,7 +320,7 @@ VM'ler için Azure İzleyici içeriği yeniden yapılandırmak için yeni ve gü
 - [PowerShell veya şablonlarla VM'ler için Azure İzleyici etkinleştirme](./insights/vminsights-enable-powershell.md)
 
 
-### <a name="visualizations"></a>Görsel öğeler
+### <a name="visualizations"></a>Görselleştirmeler
 - [Log Analytics Pano görselleştirmelerinizi yükseltme](log-query/dashboard-upgrade.md) -yenileme oranı güncelleştirildi.
 - [Azure izleyici 'den verileri görselleştirme](visualizations.md) -eklenen video.
 
@@ -334,7 +398,7 @@ Platform günlüğü içeriğinin yeniden ve konsolidasyonundan yeni ve güncell
 - [VM'ler için Azure İzleyici nedir?](insights/vminsights-overview.md) -Azure yayı içerecek şekilde güncelleştirildi.
 
 
-### <a name="visualizations"></a>Görsel öğeler
+### <a name="visualizations"></a>Görselleştirmeler
 - [Azure izleyici çalışma kitapları veri kaynakları](platform/workbooks-data-sources.md) -uyarılar ve özel uç noktalar bölümü eklendi.
 - [Azure izleyici çalışma kitabı tabanlı Öngörüler sorunlarını giderme](insights/troubleshoot-workbooks.md) -yeni makale.
 - [Log Analytics Pano görselleştirmelerinizi yükseltme](log-query/dashboard-upgrade.md) -yeni makale.
@@ -425,7 +489,7 @@ Platform günlüğü içeriğinin yeniden ve konsolidasyonundan yeni ve güncell
 - [VM'ler için Azure izleyici genel bakışı etkinleştirin](insights/vminsights-enable-overview.md) -Ubuntu Server 'ın desteklenen sürümlerine eklenir. Log Analytics çalışma alanı için desteklenen bölgeler eklendi.
 - Kullanılabilir ölçümler için VM'ler için Azure İzleyici eklenen sınırlamalar bölümü [ile performansı grafik olarak belirleme](insights/vminsights-performance.md) .
 
-### <a name="visualizations"></a>Görsel öğeler
+### <a name="visualizations"></a>Görselleştirmeler
 - [Azure izleyici çalışma kitapları ve Azure Resource Manager şablonları](platform/workbooks-automate.md) -çalışma kitabı şablonu dağıtmak için Kaynak Yöneticisi Güncelleştirmesi eklendi.
 - [Azure Izleyici çalışma kitapları grupları](platform/workbooks-groups.md) -yeni makale.
 - [Azure Izleyici çalışma kitapları-JSON verilerini JSONPath Ile Dönüştür](platform/workbooks-jsonpath.md) -yeni makale.
@@ -476,7 +540,7 @@ Platform günlüğü içeriğinin yeniden ve konsolidasyonundan yeni ve güncell
 
 - [Azure Ölçüm Gezgini](platform/metrics-charts.md) ile eklenen toplama bölümünün gelişmiş özellikleri.
 
-### <a name="workbooks"></a>Çalışma kitapları
+### <a name="workbooks"></a>Çalışma Kitapları
 
 - [Azure Izleyici çalışma kitapları ve Azure Resource Manager şablonları](platform/workbooks-automate.md) -çalışma kitabı şablonu dağıtmak için Kaynak Yöneticisi şablonu eklendi.
 
@@ -543,7 +607,7 @@ VM'ler için Azure İzleyici genel kullanıma yönelik genel güncelleştirmeler
 - [VM'ler için Azure İzleyici günlüklerini sorgulama](insights/vminsights-log-search.md)
 - [VM'ler için Azure İzleyici ile uygulama bağımlılıklarını görüntüleme](insights/vminsights-maps.md) 
 
-### <a name="visualizations"></a>Görsel öğeler
+### <a name="visualizations"></a>Görselleştirmeler
 
 - [Azure izleyici 'den verileri görselleştirme](visualizations.md) -Görünüm Tasarımcısı 'nın planlanmış kullanım dışı bırakılmasıyla güncelleştirildi.
 
@@ -591,7 +655,7 @@ Tanılama uzantısı içeriğinin yeniden yazma parçası olarak birden çok gü
 
 - [Azure izleyici platformu ölçümleri, Tanılama ayarları aracılığıyla dışarı aktarılabilir](platform/metrics-supported-export-diagnostic-settings.md) -null ve sıfır değerleri için davranış değişikliğine eklenen bölüm.
 
-### <a name="visualizations"></a>Görsel öğeler
+### <a name="visualizations"></a>Görselleştirmeler
 
 Görünüm Tasarımcısı 'na çalışma kitapları dönüştürme kılavuzuna yönelik birden çok yeni makale.
 

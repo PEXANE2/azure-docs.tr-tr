@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: 63bb235dcebc67b753e01dd8b193ef1a2b66787d
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 222106f5838a1eb237987afaa93924f1efe4a1f4
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96555524"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746293"
 ---
 # <a name="file-extension-insights-about-your-data-from-azure-purview"></a>Azure purview 'daki verilerinize ilişkin dosya uzantısı öngörüleri 
 
@@ -26,7 +26,7 @@ Bu nasıl yapılır kılavuzunda şunları yapmayı öğreneceksiniz:
 > - Verileriniz üzerinde dosya uzantısı öngörülerini görüntüleme
 > - Verilerinize ilişkin daha fazla dosya uzantısı ayrıntısı için detaya gidin
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 Purview Insights 'ı kullanmaya başlamadan önce aşağıdaki adımları tamamladığınızdan emin olun:
 
@@ -39,6 +39,9 @@ Daha fazla bilgi için bkz. [Azure purview 'ta veri kaynaklarını yönetme (Ön
 ## <a name="use-purview-file-extension-insights"></a>Purview dosya uzantısı öngörülerini kullanma
 
 Varlıklarınızı tararken Azure purview, verilerinizde bulunan dosya türlerini tespit edebilir ve her dosya türü hakkında daha fazla ayrıntı sağlar. Ayrıntılar, sahip olduğunuz her türden dosyanın sayısını, bu dosyaların nerede olduğunu ve hassas veriler için tarama yapılıp yapılmayacağını içerir.
+
+> [!NOTE]
+> Kaynak türlerinizi taradıktan sonra, yeni varlıkları yansıtmak için **Dosya Uzantısı** öngörülerini birkaç saat verin.
 
 **Dosya Uzantısı öngörülerini görüntülemek için:**
 

@@ -1,20 +1,15 @@
 ---
-title: Azure portalına genel bakış | Microsoft Docs
+title: Azure portalına genel bakış
 description: Azure portal, Azure hizmetlerinizi yönetmek için kullanabileceğiniz bir grafik kullanıcı arabirimidir. Azure portal nasıl gezineceğinizi ve kaynakların nasıl bulunacağını öğrenin.
-services: azure-portal
 keywords: portal
-author: mgblythe
-ms.author: mblythe
 ms.date: 12/20/2019
 ms.topic: overview
-ms.service: azure-portal
-manager: mtillman
-ms.openlocfilehash: 4a00c1dcf973098895e80d5e3d656efd4a35d0d0
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 1e9cf1a9609b9d4f30e51094f1d0542335ead0e2
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147054"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745936"
 ---
 # <a name="azure-portal-overview"></a>Azure portalına genel bakış
 
@@ -40,11 +35,11 @@ Portal menüsü için yerleşik mod ' u seçerseniz, her zaman görünür olur. 
 
 ## <a name="azure-home"></a>Azure giriş sayfası
 
-Azure hizmetlerine yeni abone olarak, [portalda oturum](https://portal.azure.com) açtıktan sonra ilk gördüğünüz şey **Azure giriş** ' dir. Bu sayfa, Azure aboneliğinizden en iyi şekilde yararlanmanıza yardımcı olan kaynakları derler. Ücretsiz çevrimiçi kurslar, belgeler, Çekirdek Hizmetleri ve yararlı sitelere yönelik bağlantıları, geçerli kalma ve kuruluşunuz için değişiklik yönetme konusunda sunuyoruz. Sürmekte olan çalışmaya hızlı ve kolay erişim için en son ziyaret ettiğiniz kaynakların listesini de gösteririz. Bu sayfayı özelleştiremezsiniz, ancak **Azure Home** veya **Azure panosunu** varsayılan görünümizin olarak görmeyi seçebilirsiniz. İlk kez oturum açtığınızda, sayfanın en üstünde tercihinizi kaydettiğiniz bir istem vardır.
+Azure hizmetlerine yeni abone olarak, [portalda oturum](https://portal.azure.com) açtıktan sonra ilk gördüğünüz şey **Azure giriş**' dir. Bu sayfa, Azure aboneliğinizden en iyi şekilde yararlanmanıza yardımcı olan kaynakları derler. Ücretsiz çevrimiçi kurslar, belgeler, Çekirdek Hizmetleri ve yararlı sitelere yönelik bağlantıları, geçerli kalma ve kuruluşunuz için değişiklik yönetme konusunda sunuyoruz. Sürmekte olan çalışmaya hızlı ve kolay erişim için en son ziyaret ettiğiniz kaynakların listesini de gösteririz. Bu sayfayı özelleştiremezsiniz, ancak **Azure Home** veya **Azure panosunu** varsayılan görünümizin olarak görmeyi seçebilirsiniz. İlk kez oturum açtığınızda, sayfanın en üstünde tercihinizi kaydettiğiniz bir istem vardır.
 
 ![Tercihlerinizin nereye kaydedileceğini gösteren ekran görüntüsü.](./media/azure-portal-overview/azure-portal-default-view.png)
 
-Azure portal menüsü ve Azure varsayılan görünümü **Portal Ayarları** ' nda değiştirilebilir. Seçiminizi değiştirirseniz değişiklik hemen uygulanır.
+Azure portal menüsü ve Azure varsayılan görünümü **Portal Ayarları**' nda değiştirilebilir. Seçiminizi değiştirirseniz değişiklik hemen uygulanır.
 
 ![Varsayılan görünüm seçiciyi gösteren ekran görüntüsü](./media/azure-portal-overview/azure-portal-overview-portal-settings-menu-home.png)
 
@@ -70,7 +65,7 @@ Aşağıdaki şekilde, her biri aşağıdaki tabloda açıklanan Azure portal te
 |2| Genel arama. Belirli bir kaynağı, hizmeti veya belgeleri hızlıca bulmak için arama çubuğunu kullanın.|
 |3|Genel denetimler. Tüm genel öğeler gibi, bu özellikler Portal genelinde kalır ve şunları içerir: Cloud Shell, abonelik filtresi, bildirimler, portal ayarları, yardım ve destek ve bize geri bildirim gönderin.|
 |4|Hesabınız. Hesabınızla ilgili bilgileri görüntüleyin, dizinleri değiştirin, oturumunuzu kapatın veya farklı bir hesapla oturum açın.|
-|5|Portal menüsü. Portal menüsü, hizmetler arasında gezinmenize yardımcı olan genel bir öğedir. Bazen yan çubuk olarak da adlandırılan portal ayarları, portal **ayarları** ' nda değiştirilebilir.|
+|5|Portal menüsü. Portal menüsü, hizmetler arasında gezinmenize yardımcı olan genel bir öğedir. Bazen yan çubuk olarak da adlandırılan portal ayarları, portal **ayarları**' nda değiştirilebilir.|
 |6|Kaynak menüsü. Birçok hizmet, hizmeti yönetmenize yardımcı olacak bir kaynak menüsü içerir. Bu öğe, sol bölme olarak anılabilir.|
 |7|Komut çubuğu. Komut çubuğundaki denetimler geçerli odağınıza bağlıdır.|
 |8|Çalışma bölmesi.  Şu anda odaklanmış olan kaynakla ilgili ayrıntıları görüntüler.|

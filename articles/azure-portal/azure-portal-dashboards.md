@@ -1,24 +1,15 @@
 ---
 title: Azure portalında pano oluşturma ve paylaşma
 description: Bu makalede, Azure portal panoları oluşturma, özelleştirme, yayımlama ve paylaşma açıklanır.
-services: azure-portal
-documentationcenter: ''
-author: sewatson
-manager: mtillman
 ms.assetid: ff422f36-47d2-409b-8a19-02e24b03ffe7
-ms.service: azure-portal
-ms.devlang: NA
 ms.topic: how-to
-ms.tgt_pltfrm: NA
-ms.workload: na
 ms.date: 03/23/2020
-ms.author: mblythe
-ms.openlocfilehash: b4241e51f186ea973702562ab27bb7f13a77de57
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 10c322c9d9d18f7b79a4419bd9efa2e366a5b7c3
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089494"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745834"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Azure portalında pano oluşturma ve paylaşma
 
@@ -30,7 +21,7 @@ Azure portal, başlangıç noktası olarak varsayılan bir pano sağlar. Varsay�
 
 Bu örnekte, yeni, özel bir pano oluşturacağız ve bir ad atamalısınız. Kullanmaya başlamak için bu adımları izleyin:
 
-1. [Azure portalda](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Azure portal menüsünde, **Pano**' yı seçin. Varsayılan görünüm zaten pano olarak ayarlanmış olabilir.
 
@@ -40,7 +31,7 @@ Bu örnekte, yeni, özel bir pano oluşturacağız ve bir ad atamalısınız. Ku
 
     ![Yeni panonun ekran görüntüsü](./media/azure-portal-dashboards/create-new-dashboard.png)
 
-    Bu eylem, kutucukları seçtiğiniz **kutucuk galerisini**ve kutucukları düzenlediğiniz boş bir Kılavuzu açar.
+    Bu eylem, kutucukları seçtiğiniz **kutucuk galerisini** ve kutucukları düzenlediğiniz boş bir Kılavuzu açar.
 
     ![Kutucuk galerisinin ve boş kılavuzun ekran görüntüsü](./media/azure-portal-dashboards/dashboard-name.png)
 
@@ -110,7 +101,7 @@ Panodaki veriler, son 24 saat için etkinliği otomatik olarak gösterir. Yalnı
 
     ![Kutucuk bağlam menüsünün ekran görüntüsü](./media/azure-portal-dashboards/dashboard-customize-tile-data.png)
 
-1. **Kutucuk düzeyinde Pano zaman ayarlarını geçersiz kılmak**için onay kutusunu seçin.
+1. **Kutucuk düzeyinde Pano zaman ayarlarını geçersiz kılmak** için onay kutusunu seçin.
 
     ![Kutucuk zaman ayarlarını yapılandırmak için iletişim kutusunun ekran görüntüsü](./media/azure-portal-dashboards/dashboard-override-time-settings.png)
 
@@ -118,7 +109,7 @@ Panodaki veriler, son 24 saat için etkinliği otomatik olarak gösterir. Yalnı
 
 1. Görüntülenecek zaman parçalı yapısını seçin. Tek dakikalık artışlarla bir ay boyunca herhangi bir yere gösterebilirsiniz.
 
-1. **Apply** (Uygula) seçeneğini belirleyin.
+1. **Uygula**’yı seçin.
 
 ## <a name="delete-a-tile"></a>Kutucukları silme
 
@@ -172,7 +163,7 @@ Paylaşılan bir panoyu bulup açmak için şu adımları izleyin:
 
 1. Sayfa üstbilgisindeki Sil simgesini Sil ' i seçin ![ ](./media/azure-portal-dashboards/dashboard-delete-icon.png) **Delete** .
 
-1. Özel bir Pano için onay iletişim kutusunda **Tamam** ' ı seçerek panoyu kaldırın. Paylaşılan bir Pano için, onay iletişim kutusunda, yayımlanan panonun artık başkaları tarafından görüntülenemeyeceği onaylanacak onay kutusunu seçin. Ardından **Tamam**' ı seçin.
+1. Özel bir Pano için onay iletişim kutusunda **Tamam** ' ı seçerek panoyu kaldırın. Paylaşılan bir Pano için, onay iletişim kutusunda, yayımlanan panonun artık başkaları tarafından görüntülenemeyeceği onaylanacak onay kutusunu seçin. Ardından **Tamam**'ı seçin.
 
     ![Silme onayı ekran görüntüsü](./media/azure-portal-dashboards/dashboard-delete-dash.png)
 

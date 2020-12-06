@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
 ms.date: 09/02/2020
-ms.openlocfilehash: 44f06773eec965fad610da1a4286bdf224e3a88b
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 688fabb7138ad71a978051e742dd8397042ffcf1
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96583105"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744678"
 ---
 # <a name="co-sell-state-and-province-codes-in-azure-marketplace"></a>Azure Marketi 'nde ortak satış eyalet ve eyalet kodları
 
@@ -115,4 +115,4 @@ Bu makalede, teklifinizin ortak satış sayfasında iletişim bilgilerini sağla
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Iş Ortağı Merkezi 'nde ortak satış seçeneği](./commercial-marketplace-co-sell.md)hakkında bilgi edinin.
+- [Ticari Market 'teki ortak satış seçeneği](./commercial-marketplace-co-sell.md)hakkında bilgi edinin.

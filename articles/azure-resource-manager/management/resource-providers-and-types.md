@@ -2,14 +2,14 @@
 title: Kaynak sağlayıcıları ve kaynak türleri
 description: Azure Resource Manager destekleyen kaynak sağlayıcılarını açıklar. Şemaları, kullanılabilir API sürümlerini ve kaynakları barındırabildiğiniz bölgeleri açıklar.
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 12/04/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6413a1279c9c7a995bb144097e3db55d5f3a90d2
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6d114fdfae12dd9ee96a23e4dafc3847c6429d0c
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452099"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745125"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure kaynak sağlayıcıları ve türleri
 
@@ -43,22 +43,30 @@ Uygulama kodunuz, **kayıt** durumunda olan bir kaynak sağlayıcısı için kay
 
 Aboneliğinizde kaynak sağlayıcınızdan hala kaynak türleri varsa, bir kaynak sağlayıcısının kaydını silemezsiniz.
 
-## <a name="azure-portal"></a>Azure portalı
+## <a name="azure-portal"></a>Azure portal
+
+### <a name="register-resource-provider"></a>Kaynak sağlayıcısını kaydetme
 
 Tüm kaynak sağlayıcılarını ve aboneliğiniz için kayıt durumunu görmek için:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-2. Azure portalı menüsünde **Tüm hizmetler**’i seçin.
+1. Azure portal menüsünde **abonelikler**' i arayın. Kullanılabilir seçeneklerden seçin.
 
-    ![abonelikleri Seç](./media/resource-providers-and-types/select-all-services.png)
+   :::image type="content" source="./media/resource-providers-and-types/search-subscriptions.png" alt-text="abonelik ara":::
 
-3. **Tüm hizmetler** kutusunda, **abonelik** girin ve ardından **abonelikler**' i seçin.
-4. Görüntülenecek abonelik listesinden aboneliği seçin.
-5. **Kaynak sağlayıcıları** ' nı seçin ve kullanılabilir kaynak sağlayıcılarının listesini görüntüleyin.
+1. Görüntülemek istediğiniz aboneliği seçin.
 
-    ![Kaynak sağlayıcılarını göster](./media/resource-providers-and-types/show-resource-providers.png)
+   :::image type="content" source="./media/resource-providers-and-types/select-subscription.png" alt-text="abonelikleri Seç":::
 
-6. Bir kaynak sağlayıcısını kaydetmek için **Kaydet**' i seçin. Önceki ekran görüntüsünde, **kayıt** bağlantısı **Microsoft. Blueprint** için vurgulanır. Aboneliğinizde en düşük ayrıcalıklara sahip olmak için, yalnızca kullanmaya hazırsınız kaynak sağlayıcılarını kaydedin.
+1. Sol taraftaki menüde, **Ayarlar**' ın altında **kaynak sağlayıcıları**' nı seçin.
+
+   :::image type="content" source="./media/resource-providers-and-types/select-resource-providers.png" alt-text="Kaynak sağlayıcılarını seçin":::
+
+6. Kaydetmek istediğiniz kaynak sağlayıcısını bulun ve **Kaydet**' i seçin. Aboneliğinizde en düşük ayrıcalıklara sahip olmak için, yalnızca kullanmaya hazırsınız kaynak sağlayıcılarını kaydedin.
+
+   :::image type="content" source="./media/resource-providers-and-types/register-resource-provider.png" alt-text="Kaynak sağlayıcılarını kaydetme":::
+
+### <a name="view-resource-provider"></a>Kaynak sağlayıcısını görüntüle
 
 Belirli bir kaynak sağlayıcısına ilişkin bilgileri görmek için:
 

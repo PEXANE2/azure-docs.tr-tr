@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 04/17/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fa6c28eaa75485e0b45bb4404e685b6ee223b46
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ffddac13009b84aa8253955d265f11aefe2ce5dd
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965599"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744423"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>İOS 'ta sertifika tabanlı kimlik doğrulamasını Azure Active Directory
 
@@ -75,7 +75,7 @@ Daha fazla bilgi için bkz. [AD FS oturum açma sayfasını özelleştirme](/pre
 
 Modern kimlik doğrulaması etkinleştirilmiş bazı Office uygulamaları `prompt=login` , istekleri Içinde Azure AD 'ye gönderilir. Varsayılan olarak, Azure AD `prompt=login` , ISTEğI ADFS 'ye dönüştürür `wauth=usernamepassworduri` (ADFS 'nin U/P auth 'yi yapması istenir) ve `wfresh=0` (ADFS 'nin SSO durumunu yok saymasını ve yeni bir kimlik doğrulaması aramasını ister). Bu uygulamalar için sertifika tabanlı kimlik doğrulamasını etkinleştirmek istiyorsanız, varsayılan Azure AD davranışını değiştirin.
 
-Varsayılan davranışı güncelleştirmek için, Federasyon etki alanı ayarlarınızda '*Promptloginbehavior*' ayarını *devre dışı*olarak ayarlayın. Bu görevi gerçekleştirmek için aşağıdaki örnekte gösterildiği gibi [Msoldomainfederationsettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) cmdlet 'ini kullanabilirsiniz:
+Varsayılan davranışı güncelleştirmek için, Federasyon etki alanı ayarlarınızda '*Promptloginbehavior*' ayarını *devre dışı* olarak ayarlayın. Bu görevi gerçekleştirmek için aşağıdaki örnekte gösterildiği gibi [Msoldomainfederationsettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) cmdlet 'ini kullanabilirsiniz:
 
 ```powershell
 Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled

@@ -7,37 +7,54 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: dd0617536147787f436e5817f3f2367a19ba6aa4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f97facd8d184be05cbfd79af92dbcaab3a022ebd
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009288"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746310"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Azure genel Load Balancer yükseltme
 [Azure Standart Load Balancer](load-balancer-overview.md) , bölge artıklığı aracılığıyla zengin bir işlev kümesi ve yüksek kullanılabilirlik sağlar. Load Balancer SKU 'SU hakkında daha fazla bilgi için bkz. [karşılaştırma tablosu](./skus.md#skus).
 
-Bir yükseltmede üç aşama vardır:
+Bir yükseltmede iki aşama vardır:
 
-1. Yapılandırmayı geçirme
-2. Standart Load Balancer arka uç havuzlarına VM ekleme
-
-Bu makalede yapılandırma geçişi ele alınmaktadır. Arka uç havuzlara sanal makine eklemek, belirli ortamınıza bağlı olarak değişebilir. Ancak, bazı üst düzey genel öneriler [sağlanır](#add-vms-to-backend-pools-of-standard-load-balancer).
+1. IP ayırma yöntemini dinamik iken statik olarak değiştirin.
+2. Yükseltme ve trafik geçişini gerçekleştirmek için PowerShell betiğini çalıştırın.
 
 ## <a name="upgrade-overview"></a>Yükseltmeye genel bakış
 
 Aşağıdakileri gerçekleştiren bir Azure PowerShell betiği vardır:
 
 * Kaynak grubunda ve belirttiğiniz konumda bir standart SKU Load Balancer oluşturur.
+* Temel SKU 'dan ortak IP adreslerini yerinde standart SKU 'ya yükseltir.
 * Temel SKU 'nun yapılandırmalarının Load Balancer yeni oluştur Standart Load Balancer sorunsuzca kopyasını oluşturur.
 * Giden bağlantıyı sağlayan varsayılan bir giden kuralı oluşturur.
 
 ### <a name="caveatslimitations"></a>Caveats\Limitations
 
 * Betik yalnızca ortak Load Balancer yükseltmesini destekler. Iç temel Load Balancer yükseltme için, yönergeler için [Bu sayfaya](./upgrade-basicinternal-standard.md) bakın.
-* Standart Load Balancer yeni bir ortak adrese sahiptir. Farklı SKU 'Lara sahip olduklarından, var olan temel Load Balancer ilişkili IP adreslerini Standart Load Balancer sorunsuzca taşımak olanaksızdır.
-* Standart yük dengeleyici farklı bir bölgede oluşturulduysa, eski bölgede var olan VM 'Leri yeni oluşturulan Standart Load Balancer ilişkilendiremeyeceksiniz. Bu kısıtlamayı geçici olarak çözmek için yeni bölgede yeni bir VM oluşturun.
+* Betiği çalıştırmadan önce genel IP adresinin ayırma yöntemi "static" olarak değiştirilmelidir. 
 * Load Balancer herhangi bir ön uç IP yapılandırması veya arka uç havuzu yoksa, betiği çalıştırırken bir hatayla karşılaşamayacaksınız. Lütfen boş olmadıklarından emin olun.
+
+### <a name="change-allocation-method-of-the-public-ip-address-to-static"></a>Genel IP adresinin ayırma yöntemini statik olarak değiştir
+
+* * * Önerilen adımlarımız şunlardır:
+
+    1. Bu hızlı başlangıçta görevleri yapmak için [Azure Portal](https://portal.azure.com)oturum açın.
+ 
+    1. Sol taraftaki menüden **tüm kaynaklar** ' ı seçin ve ardından kaynak listesinden **temel Load Balancer ILIŞKILI temel genel IP adresini** seçin.
+   
+    1. **Ayarlar** altında, **Konfigürasyonlar**' ı seçin.
+   
+    1. **Atama** altında **statik**' ı seçin.
+    1. **Kaydet**’i seçin.
+    >[!NOTE]
+    >Ortak IP 'leri olan VM 'Ler için, ilk olarak aynı IP adresinin garantili olmadığı standart IP adresleri oluşturmanız gerekecektir. VM 'Lerin temel IP 'lerden ilişkisini kaldırın ve yeni oluşturulan standart IP adresleriyle ilişkilendirin. Ardından, Standart Load Balancer arka uç havuzuna VM 'Ler eklemek için yönergeleri takip edebilirsiniz. 
+
+* **Yeni oluşturulan Standart genel Load Balancer arka uç havuzlarına eklemek için yeni VM 'Ler oluşturma**.
+    * VM oluşturma ve Standart Load Balancer ile ilişkilendirme hakkında daha fazla yönerge [burada](./quickstart-load-balancer-standard-public-portal.md#create-virtual-machines)bulunabilir.
+
 
 ## <a name="download-the-script"></a>Betiği indir
 
@@ -76,39 +93,14 @@ Betiği çalıştırmak için:
    * **Oldrgname: [dize]: gereklidir** – bu, yükseltmek Istediğiniz mevcut temel Load Balancer kaynak grubudur. Bu dize değerini bulmak için Azure portal gidin, temel Load Balancer kaynağınızı seçin ve yük dengeleyiciye **Genel Bakış ' a** tıklayın. Kaynak grubu bu sayfada bulunur.
    * **Oldlbname: [dize]: gerekli** – bu, yükseltmek Istediğiniz mevcut temel dengeleyicinizin adıdır. 
    * **Newrgname: [dize]: gereklidir** – bu, standart Load Balancer oluşturulacağı kaynak grubudur. Yeni bir kaynak grubu veya var olan bir grup olabilir. Var olan bir kaynak grubunu seçerseniz, Load Balancer adının kaynak grubu içinde benzersiz olması gerektiğini unutmayın. 
-   * **newLocation: [dize]: gerekli** – standart Load Balancer oluşturulacağı konumdur. Diğer mevcut kaynaklarla daha iyi ilişki sağlamak için, seçilen temel Load Balancer aynı konumun Standart Load Balancer aynı konuma devralması önerilir.
    * **Newlbname: [dize]: gerekli** – bu, oluşturulacak standart Load Balancer adıdır.
 1. Uygun parametreleri kullanarak betiği çalıştırın. Tamamlanması beş ila yedi dakika sürebilir.
 
     **Örnek**
 
    ```azurepowershell
-   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
+   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newLbName "LBForUpgrade"
    ```
-
-### <a name="add-vms-to-backend-pools-of-standard-load-balancer"></a>Standart Load Balancer arka uç havuzlarına VM ekleme
-
-İlk olarak, betiğin, temel ortak Load Balancer üzerinden geçirilmiş doğru yapılandırmayla yeni bir standart ortak Load Balancer başarıyla oluşturduğunu kontrol edin. Bunu Azure portal doğrulayabilirsiniz.
-
-El ile test olarak Standart Load Balancer aracılığıyla az miktarda trafik gönderdiğinizden emin olun.
-  
-Aşağıda, yeni oluşturulan Standart genel Load Balancer için arka uç havuzlarına sanal makineler eklemenin ve her biri için önerdiğimiz bazı senaryolar verilmiştir:
-
-* **Mevcut VM 'leri eski temel genel Load Balancer arka uç havuzlarından yeni oluşturulan standart ortak Load Balancer arka uç havuzlarından taşıma**.
-    1. Bu hızlı başlangıçta görevleri yapmak için [Azure Portal](https://portal.azure.com)oturum açın.
- 
-    1. Sol taraftaki menüden **tüm kaynaklar** ' ı seçin ve ardından kaynak listesinden **Yeni oluşturulan standart Load Balancer** seçin.
-   
-    1. **Ayarlar**’ın altında **Arka Uç Havuzları**’nı seçin.
-   
-    1. Temel Load Balancer arka uç havuzuyla eşleşen arka uç havuzunu seçin, aşağıdaki değeri seçin: 
-      - **Sanal makine**: açılır ve temel Load Balancer eşleşen arka uç havuzundan VM 'leri seçin.
-    1. **Kaydet**'i seçin.
-    >[!NOTE]
-    >Ortak IP 'leri olan VM 'Ler için, ilk olarak aynı IP adresinin garantili olmadığı standart IP adresleri oluşturmanız gerekecektir. VM 'Lerin temel IP 'lerden ilişkisini kaldırın ve yeni oluşturulan standart IP adresleriyle ilişkilendirin. Ardından, Standart Load Balancer arka uç havuzuna VM 'Ler eklemek için yönergeleri takip edebilirsiniz. 
-
-* **Yeni oluşturulan Standart genel Load Balancer arka uç havuzlarına eklemek için yeni VM 'Ler oluşturma**.
-    * VM oluşturma ve Standart Load Balancer ile ilişkilendirme hakkında daha fazla yönerge [burada](./quickstart-load-balancer-standard-public-portal.md#create-virtual-machines)bulunabilir.
 
 ### <a name="create-an-outbound-rule-for-outbound-connection"></a>Giden bağlantı için giden bir kural oluşturma
 
@@ -122,9 +114,13 @@ Bir giden kuralı oluşturmak için [yönergeleri](./quickstart-load-balancer-st
 
 Evet. Bkz. [Uyarılar/sınırlamalar](#caveatslimitations).
 
+### <a name="how-long-does-the-upgrade-take"></a>Yükseltme ne kadar sürer?
+
+Genellikle betiğin tamamlanması yaklaşık 5-10 dakika sürer ve Load Balancer yapılandırmanızın karmaşıklığına göre daha uzun sürebilir. Bu nedenle, kapalı kalma süresini göz önünde bulundurun ve gerekirse yük devretmeyi planlayın.
+
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Azure PowerShell betiği, temel Load Balancer trafik üzerinde yeni oluşturulan Standart Load Balancer da geçiş yapar mi?
 
-Hayır. Azure PowerShell betiği yalnızca yapılandırmayı geçirir. Gerçek trafik geçişi, sizin ve denetiminizin sorumluluğundadır.
+Evet. Azure PowerShell betiği yalnızca genel IP adresini yükseltmez, yapılandırmayı temel sunucudan Standart Load Balancer kopyalar, ancak aynı zamanda VM 'yi yeni oluşturulan standart ortak Load Balancer arkasına geçirir. 
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Bu betiği kullanmayla ilgili bazı sorunlarla karşılaştım. Nasıl yardım alabilirim?
   

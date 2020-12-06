@@ -8,19 +8,19 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: ed0c7ef98e70774350c9a3ff12b0cc3f4186e1bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 041df9b77e85f09d2cf680773edc995c6288acaa
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89381189"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746429"
 ---
 # <a name="how-to-add-a-preview-audience-for-your-saas-offer"></a>SaaS teklifiniz için Önizleme hedef kitlesi ekleme
 
 Iş Ortağı Merkezi 'nde hizmet olarak yazılım (SaaS) teklifi oluştururken, teklif listelemenizi canlı olmadan önce inceleyebilir bir önizleme izleyiciyi tanımlamanız gerekir. Bu makalede, bir önizleme izleyicisinin nasıl yapılandırılacağı açıklanmaktadır.
 
 > [!NOTE]
-> İşlemleri bağımsız olarak işlemeyi seçerseniz, bu seçeneği görmezsiniz. Bunun yerine, [SaaS teklifinizi pazara sunma](create-new-saas-offer-marketing.md)bölümüne atlayın.
+> İşlemleri bağımsız olarak işlemeyi seçerseniz, bu seçeneği görmezsiniz. Bunun yerine, [SaaS teklifinizi satma](create-new-saas-offer-marketing.md)bölümüne atlayın.
 
 ## <a name="define-a-preview-audience"></a>Önizleme izleyiciyi tanımlama
 

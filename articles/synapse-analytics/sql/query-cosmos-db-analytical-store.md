@@ -6,15 +6,15 @@ author: jovanpop-msft
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
-ms.date: 09/15/2020
+ms.date: 12/04/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: a7e9cdb18d109abeef7d7d7237444ac55f9e7da1
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 129534727248ff05b5d38da60dead7903d9a5815
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576358"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744474"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>Azure SYNAPSE link Preview 'da sunucusuz SQL havuzu ile verileri Azure Cosmos DB sorgulama
 
@@ -71,7 +71,7 @@ OPENROWSET(
     )  [ < with clause > ] AS alias
 ```
 
-Azure Cosmos DB bağlantı dizesi bu durumda anahtar içermez. Bağlantı dizesi aşağıdaki biçimdedir:
+Azure Cosmos DB bağlantı dizesi bu durumda anahtar içermiyor. Bağlantı dizesi aşağıdaki biçimdedir:
 ```sql
 'account=<database account name>;database=<database name>;region=<region name>'
 ```
@@ -98,12 +98,13 @@ Sunucusuz bir SQL havuzuyla Azure Cosmos DB verilerinin nasıl sorgulanalınaca�
 
 * [Azure SYNAPSE bağlantısı etkin](../../cosmos-db/configure-synapse-link.md)olan bir Azure Cosmos DB veritabanı hesabı.
 * Adlı bir Azure Cosmos DB veritabanı `covid` .
-* Adlı `EcdcCases` ve `Cord19` önceki örnek veri kümeleri ile yüklenen iki Azure Cosmos DB kapsayıcısı.
+* Adlı `Ecdc` ve `Cord19` önceki örnek veri kümeleri ile yüklenen iki Azure Cosmos DB kapsayıcısı.
+
+Test amaçlı olarak aşağıdaki bağlantı dizesini kullanabilirsiniz: `Account=synapselink-cosmosdb-sqlsample;Database=covid;Key=s5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==` . Bu bağlantı, SYNAPSE SQL uç noktanıza kıyasla uzak bölgede yer alabileceğinden bu bağlantının performans garantisi vermediğini unutmayın.
 
 ## <a name="explore-azure-cosmos-db-data-with-automatic-schema-inference"></a>Otomatik Şema çıkarımı ile Azure Cosmos DB verileri keşfet
 
 Azure Cosmos DB verileri keşfetmenin en kolay yolu otomatik Şema çıkarımı özelliğini kullanmaktır. `WITH`Deyimden yan tümcesini atlayarak `OPENROWSET` , SUNUCUSUZ SQL havuzunun Azure Cosmos DB kapsayıcısının analitik deposunun şemasını otomatik olarak (çıkarması) otomatik olarak oluşturmasını sağlayabilirsiniz.
-
 
 ### <a name="openrowset-with-key"></a>[Anahtarla OPENROWSET](#tab/openrowset-key)
 
@@ -111,8 +112,8 @@ Azure Cosmos DB verileri keşfetmenin en kolay yolu otomatik Şema çıkarımı 
 SELECT TOP 10 *
 FROM OPENROWSET( 
        'CosmosDB',
-       'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       EcdcCases) as documents
+       'Account=synapselink-cosmosdb-sqlsample;Database=covid;Key=s5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==',
+       Ecdc) as documents
 ```
 
 ### <a name="openrowset-with-credential"></a>[Kimlik bilgisiyle OPENROWSET](#tab/openrowset-credential)
@@ -120,20 +121,20 @@ FROM OPENROWSET(
 ```sql
 /*  Setup - create server-level or database scoped credential with Azure Cosmos DB account key:
     CREATE CREDENTIAL MyCosmosDbAccountCredential
-    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'C0Sm0sDbKey==';
+    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 's5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==';
 */
 SELECT TOP 10 *
 FROM OPENROWSET(
       PROVIDER = 'CosmosDB',
-      CONNECTION = 'account=MyCosmosDbAccount;database=covid;region=westus2',
-      OBJECT = 'EcdcCases',
+      CONNECTION = 'Account=synapselink-cosmosdb-sqlsample;Database=covid',
+      OBJECT = 'Ecdc',
       SERVER_CREDENTIAL = 'MyCosmosDbAccountCredential'
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
 
 ---
 
-Yukarıdaki örnekte, sunucusuz SQL havuzunun, `covid` `MyCosmosDbAccount` Azure Cosmos DB anahtarı (önceki örnekte kukla) kullanılarak kimliği doğrulanmış Azure Cosmos DB hesabındaki veritabanına bağlanmasını sağladık. Daha sonra `EcdcCases` bölgede bulunan analitik depoya eriştik `West US 2` . Belirli özelliklerin projeksiyonu olmadığından, `OPENROWSET` işlev Azure Cosmos DB öğelerinden tüm özellikleri döndürür.
+Yukarıdaki örnekte, sunucusuz SQL havuzunun, `covid` `MyCosmosDbAccount` Azure Cosmos DB anahtarı (önceki örnekte kukla) kullanılarak kimliği doğrulanmış Azure Cosmos DB hesabındaki veritabanına bağlanmasını sağladık. Daha sonra `Ecdc` bölgede bulunan analitik depoya eriştik `West US 2` . Belirli özelliklerin projeksiyonu olmadığından, `OPENROWSET` işlev Azure Cosmos DB öğelerinden tüm özellikleri döndürür.
 
 Azure Cosmos DB kapsayıcısındaki öğelerin, ve özelliklerinin olduğunu varsayarsak, `date_rep` `cases` `geo_id` Bu sorgunun sonuçları aşağıdaki tabloda gösterilmiştir:
 
@@ -149,7 +150,7 @@ Aynı Azure Cosmos DB veritabanındaki diğer kapsayıcıdan verileri araştırm
 SELECT TOP 10 *
 FROM OPENROWSET( 
        'CosmosDB',
-       'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
+       'Account=synapselink-cosmosdb-sqlsample;Database=covid;Key=s5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==',
        Cord19) as cord19
 ```
 
@@ -174,21 +175,21 @@ Azure Cosmos DB içindeki bu düz JSON belgeleri, SYNAPSE SQL 'de bir dizi satı
 SELECT TOP 10 *
 FROM OPENROWSET(
       'CosmosDB',
-      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       EcdcCases
+      'Account=synapselink-cosmosdb-sqlsample;Database=covid;Key=s5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==',
+       Ecdc
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
 ### <a name="openrowset-with-credential"></a>[Kimlik bilgisiyle OPENROWSET](#tab/openrowset-credential)
 ```sql
 /*  Setup - create server-level or database scoped credential with Azure Cosmos DB account key:
     CREATE CREDENTIAL MyCosmosDbAccountCredential
-    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'C0Sm0sDbKey==';
+    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 's5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==';
 */
 SELECT TOP 10 *
 FROM OPENROWSET(
       PROVIDER = 'CosmosDB',
-      CONNECTION = 'account=MyCosmosDbAccount;database=covid;region=westus2',
-      OBJECT = 'EcdcCases',
+      CONNECTION = 'Account=synapselink-cosmosdb-sqlsample;Database=covid',
+      OBJECT = 'Ecdc',
       SERVER_CREDENTIAL = 'MyCosmosDbAccountCredential'
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
@@ -209,14 +210,14 @@ Azure Cosmos DB değerleri için kullanılması gereken SQL türleri hakkında d
 
 ```sql
 CREATE CREDENTIAL MyCosmosDbAccountCredential
-WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'C0Sm0sDbKey==';
+WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 's5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==';
 GO
-CREATE OR ALTER VIEW EcdcCases
+CREATE OR ALTER VIEW Ecdc
 AS SELECT *
 FROM OPENROWSET(
       PROVIDER = 'CosmosDB',
-      CONNECTION = 'account=MyCosmosDbAccount;database=covid;region=westus2',
-      OBJECT = 'EcdcCases',
+      CONNECTION = 'Account=synapselink-cosmosdb-sqlsample;Database=covid',
+      OBJECT = 'Ecdc',
       SERVER_CREDENTIAL = 'MyCosmosDbAccountCredential'
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
@@ -241,41 +242,28 @@ Azure Cosmos DB, bunları iç içe geçmiş nesneler veya diziler olarak oluştu
 }
 ```
 
-Azure Cosmos DB iç içe geçmiş nesneler ve diziler, `OPENROWSET` işlev onları okuduğunda sorgu sonucunda json dizeleri olarak gösterilir. SQL sütunları olarak bu karmaşık türlerin değerlerini okumak için bir seçenek SQL JSON işlevlerini kullanmaktır:
+Azure Cosmos DB iç içe geçmiş nesneler ve diziler, `OPENROWSET` işlev onları okuduğunda sorgu sonucunda json dizeleri olarak gösterilir. Yan tümcesini kullanırken, nesnelerdeki iç içe geçmiş değerlerin yollarını belirtebilirsiniz `WITH` :
 
 ```sql
-SELECT
-    title = JSON_VALUE(metadata, '$.title'),
-    authors = JSON_QUERY(metadata, '$.authors'),
-    first_author_name = JSON_VALUE(metadata, '$.authors[0].first')
-FROM
-    OPENROWSET(
-      'CosmosDB',
-      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       Cord19
-    WITH ( metadata varchar(MAX) ) AS docs;
+SELECT TOP 10 *
+FROM OPENROWSET( 
+       'CosmosDB',
+       'Account=synapselink-cosmosdb-sqlsample;Database=covid;Key=s5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==',
+       Cord19)
+WITH (  paper_id    varchar(8000),
+        title        varchar(1000) '$.metadata.title',
+        metadata     varchar(max),
+        authors      varchar(max) '$.metadata.authors'
+) AS docs;
 ```
 
 Bu sorgunun sonucu aşağıdaki tablo gibi görünebilir:
 
-| başlık | düzenliyor | first_autor_name |
+| paper_id | başlık | meta veriler | düzenliyor |
 | --- | --- | --- |
-| Tamamlayıcı bilgiler ekonomik-epidemi... |   `[{"first":"Julien","last":"Mélade","suffix":"","affiliation":{"laboratory":"Centre de Recher…` | Julien |  
-
-Alternatif bir seçenek olarak, yan tümcesini kullandığınızda nesnelerdeki iç içe geçmiş değerlerin yollarını da belirtebilirsiniz `WITH` :
-
-```sql
-SELECT
-    *
-FROM
-    OPENROWSET(
-      'CosmosDB',
-      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       Cord19
-    WITH ( title varchar(1000) '$.metadata.title',
-           authors varchar(max) '$.metadata.authors'
-    ) AS docs;
-```
+| bb11206963e831f... | Tamamlayıcı bilgiler ekonomik-epidemi... | `{"title":"Supplementary Informati…` | `[{"first":"Julien","last":"Mélade","suffix":"","af…`| 
+| bb1206963e831f1... | Iconyascent sera 'nın Immune-E kullanımı... | `{"title":"The Use of Convalescent…` | `[{"first":"Antonio","last":"Lavazza","suffix":"", …` |
+| bb378eca9aac649... | Tylosema esculentum (marama) tuber ve B... | `{"title":"Tylosema esculentum (Ma…` | `[{"first":"Walter","last":"Chingwaru","suffix":"",…` | 
 
 [Azure SYNAPSE bağlantısı 'nda karmaşık veri türlerini](../how-to-analyze-complex-schema.md) çözümleme ve [SUNUCUSUZ bir SQL havuzundaki iç içe yapılar](query-parquet-nested-types.md)hakkında daha fazla bilgi edinin.
 
@@ -315,7 +303,7 @@ SELECT
 FROM
     OPENROWSET(
       'CosmosDB',
-      'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
+      'Account=synapselink-cosmosdb-sqlsample;Database=covid;Key=s5zarR2pT0JWH9k8roipnWxUYBegOuFGjJpSjGlR36y86cW0GQ6RaaG8kGjsRAQoWMw1QKTkkX8HQtFpJjC8Hg==',
        Cord19
     ) WITH ( title varchar(1000) '$.metadata.title',
              authors varchar(max) '$.metadata.authors' ) AS docs
@@ -365,7 +353,7 @@ SELECT *
 FROM OPENROWSET(
       'CosmosDB',
       'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       EcdcCases
+       Ecdc
     ) as rows
 ```
 
@@ -400,7 +388,7 @@ SELECT geo_id, cases = SUM(cases)
 FROM OPENROWSET(
       'CosmosDB'
       'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       EcdcCases
+       Ecdc
     ) WITH ( geo_id VARCHAR(50) '$.geo_id.string',
              cases INT '$.cases.int32'
     ) as rows
@@ -416,7 +404,7 @@ SELECT geo_id, cases = SUM(cases_int) + SUM(cases_bigint) + SUM(cases_float)
 FROM OPENROWSET(
       'CosmosDB',
       'account=MyCosmosDbAccount;database=covid;region=westus2;key=C0Sm0sDbKey==',
-       EcdcCases
+       Ecdc
     ) WITH ( geo_id VARCHAR(50) '$.geo_id.string', 
              cases_int INT '$.cases.int32',
              cases_bigint BIGINT '$.cases.int64',
@@ -430,13 +418,13 @@ Bu örnekte, servis talebi sayısı, ya da değerleri olarak depolanır `int32` 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
 - Sunucusuz SQL havuzunun [Azure Cosmos DB tam uygunluk şeması](#full-fidelity-schema) için sağladığı sorgu deneyimi, önizleme geri bildirimlerine göre değiştirilecek geçici bir davranıştır. `OPENROWSET` `WITH` Sorgu deneyimi müşteri geri bildirimlerine göre iyi tanımlanmış şemayla hizalanabileceğinden, yan tümcesi olmadan işlevin genel önizleme sırasında sağladığı şemaya güvenmeyin. Geri bildirim sağlamak için [Azure SYNAPSE link ürün ekibine](mailto:cosmosdbsynapselink@microsoft.com)başvurun.
-- `OPENROWSET`Sütun HARMANLAMASıNDA UTF-8 kodlaması yoksa, sunucusuz BIR SQL havuzu derleme zamanı hatası döndürmez. `OPENROWSET`T-SQL ifadesini kullanarak geçerli veritabanında çalışan tüm işlevler için Varsayılan harmanlamayı kolayca değiştirebilirsiniz `alter database current collate Latin1_General_100_CI_AI_SC_UTF8` .
+- `OPENROWSET`Sütun harmanlamasının UTF-8 kodlaması yoksa sunucusuz BIR SQL havuzu bir derleme zamanı uyarısı döndürür. `OPENROWSET`T-SQL ifadesini kullanarak geçerli veritabanında çalışan tüm işlevler için Varsayılan harmanlamayı kolayca değiştirebilirsiniz `alter database current collate Latin1_General_100_CI_AS_SC_UTF8` .
 
 Olası hatalar ve sorun giderme eylemleri aşağıdaki tabloda listelenmiştir.
 
 | Hata | Kök neden |
 | --- | --- |
-| Sözdizimi hataları:<br/> -"OPENROWSET" yakınında yanlış sözdizimi<br/> - `...` tanınan bir toplu OPENROWSET sağlayıcı seçeneği değil.<br/> -Yakınında yanlış söz dizimi `...` | Olası kök nedenler:<br/> -İlk parametre olarak CosmosDB kullanmıyor.<br/> -Üçüncü parametresindeki bir tanımlayıcı yerine dize sabit değeri kullanılıyor.<br/> -Üçüncü parametreyi (kapsayıcı adı) belirtmiyor. |
+| Sözdizimi hataları:<br/> -Yakınında yanlış söz dizimi `Openrowset`<br/> - `...` tanınan bir `BULK OPENROWSET` sağlayıcı seçeneği değil.<br/> -Yakınında yanlış söz dizimi `...` | Olası kök nedenler:<br/> -İlk parametre olarak CosmosDB kullanmıyor.<br/> -Üçüncü parametresindeki bir tanımlayıcı yerine dize sabit değeri kullanılıyor.<br/> -Üçüncü parametreyi (kapsayıcı adı) belirtmiyor. |
 | CosmosDB bağlantı dizesinde bir hata oluştu. | -Hesap, veritabanı veya anahtar belirtilmedi. <br/> -Bir bağlantı dizesinde tanınmayan bir seçenek vardır.<br/> -Noktalı virgül ( `;` ), bağlantı dizesinin sonuna yerleştirilir. |
 | CosmosDB yolunu çözümleme, "yanlış hesap adı" veya "yanlış veritabanı adı" hatasıyla başarısız oldu. | Belirtilen hesap adı, veritabanı adı veya kapsayıcı bulunamıyor ya da analiz depolama alanı belirtilen koleksiyon için etkinleştirilmemiş.|
 | CosmosDB yolu çözümlenirken "yanlış gizli değer" veya "gizli dizi null ya da boş" hatası ile başarısız oldu. | Hesap anahtarı geçerli değil veya eksik. |

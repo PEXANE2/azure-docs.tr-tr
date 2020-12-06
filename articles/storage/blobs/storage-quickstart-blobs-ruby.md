@@ -1,22 +1,22 @@
 ---
-title: Azure Hızlı Başlangıç - Ruby kullanarak nesne depolamada blob oluşturma | Microsoft Docs
-description: Bu hızlı başlangıçta, nesne (Blob) depolamada depolama hesabı ve kapsayıcı oluşturursunuz. Sonra, Azure Depolama’ya blob yüklemek, blob indirmek ve bir kapsayıcıdaki blobları listelemek amacıyla Ruby için depolama istemcisi kitaplığını kullanırsınız.
+title: 'Hızlı başlangıç: Azure Blob depolama istemci kitaplığı-Ruby'
+description: Azure Blob depolamada bir depolama hesabı ve kapsayıcı oluşturun. Bir blob oluşturmak, blob indirmek ve bir kapsayıcıdaki Blobları listelemek için Ruby için depolama istemcisi kitaplığı 'nı kullanın.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/14/2018
+ms.date: 12/04/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 0bde1b7be15d49d82818f26d07c2ec633dc4526c
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 7c09105312bc648c95d24de7582b95baf61bdc10
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95523272"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744814"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-using-ruby"></a>Hızlı Başlangıç: Ruby kullanarak blobları yükleme, indirme ve listeleme
+# <a name="quickstart-azure-blob-storage-client-library-for-ruby"></a>Hızlı başlangıç: Ruby için Azure Blob depolama istemci kitaplığı
 
-Bu hızlı başlangıçta, Azure Blob depolamadaki bir kapsayıcıda blok bloblarını karşıya yüklemek, indirmek ve listelemek için Ruby'yi nasıl kullanabileceğinizi öğreneceksiniz. 
+Ruby kullanarak Microsoft Azure Blob depolamada bulunan bir kapsayıcıda Blobları oluşturma, indirme ve listeleme hakkında bilgi edinin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -24,172 +24,180 @@ Bu hızlı başlangıçta, Azure Blob depolamadaki bir kapsayıcıda blok blobla
 
 Aşağıdaki ek önkoşulların yüklü olduğundan emin olun:
 
-* [Ruby](https://www.ruby-lang.org/en/downloads/)
-* Rubygeı paketini kullanarak [Ruby Için Azure depolama kitaplığı](): 
+- [Ruby](https://www.ruby-lang.org/en/downloads/)
+- [Rubygeı paketini](https://rubygems.org/gems/azure-storage-blob)kullanarak [Ruby için Azure depolama kitaplığı](https://github.com/azure/azure-storage-ruby):
 
-    ```
+    ```console
     gem install azure-storage-blob
     ```
-    
+
 ## <a name="download-the-sample-application"></a>Örnek uygulamayı indirin:
-Bu [hızlı başlangıçta](https://github.com/Azure-Samples/storage-blobs-ruby-quickstart.git) kullanılan örnek uygulama, temel bir Ruby uygulamasıdır.  
 
-Uygulamanın bir kopyasını geliştirme ortamınıza indirmek için [Git](https://git-scm.com/)'i kullanın. 
+Bu [hızlı başlangıçta](https://github.com/Azure-Samples/storage-blobs-ruby-quickstart.git) kullanılan örnek uygulama, temel bir Ruby uygulamasıdır.
 
-```bash
-git clone https://github.com/Azure-Samples/storage-blobs-ruby-quickstart.git 
+Uygulamanın bir kopyasını geliştirme ortamınıza indirmek için [Git](https://git-scm.com/) ' i kullanın. Bu komut, depoyu yerel makinenize kopyalar:
+
+```console
+git clone https://github.com/Azure-Samples/storage-blobs-ruby-quickstart.git
 ```
 
-Bu komut, depoyu yerel Git klasörünüze kopyalar. Örnek Ruby uygulamasını indirmek için storage-blobs-ruby-quickstart klasörünün içindeki example.rb dosyasını açın.  
+*Storage-Blobları-Ruby-QuickStart* klasörüne gidin ve kod Düzenleyicinizde *example. RB* dosyasını açın.
 
 [!INCLUDE [storage-copy-account-key-portal](../../../includes/storage-copy-account-key-portal.md)]
 
 ## <a name="configure-your-storage-connection-string"></a>Depolama bağlantı dizelerinizi yapılandırma
-Uygulamada, uygulamanız için `BlobService` örneği oluşturmak amacıyla depolama hesabı adınızı ve hesap anahtarınızı sağlamanız gerekir. IDE’nizdeki Çözüm Gezgini'nde `example.rb` dosyasını açın. **accountname** ve **accountkey** değerlerini, hesap adınız ve anahtarınızla değiştirin. 
 
-```ruby 
-blob_client = Azure::Storage::Blob::BlobService.create(
-            storage_account_name: account_name,
-            storage_access_key: account_key
-          )
+Uygulamanız için bir [Blobservice](https://www.rubydoc.info/gems/azure-storage-blob/2.0.1/Azure/Storage/Blob/BlobService) örneği oluşturmak üzere depolama hesabı adınızı ve hesap anahtarınızı girin.
+
+*Örnek. RB* dosyasının aşağıdaki kodu yeni bir [blobservice](https://www.rubydoc.info/gems/azure-storage-blob/2.0.1/Azure/Storage/Blob/BlobService) nesnesi oluşturur. *accountname* ve *accountkey* değerlerini, hesap adınız ve anahtarınızla değiştirin.
+
+```ruby
+# Create a BlobService object
+account_name = "accountname"
+account_key = "accountkey"
+
+    blob_client = Azure::Storage::Blob::BlobService.create(
+    storage_account_name: account_name,
+    storage_access_key: account_key
+)
 ```
 
 ## <a name="run-the-sample"></a>Örneği çalıştırma
-Bu örnek, "Belgeler" klasöründe bir sınama dosyası oluşturur. Örnek program sınama dosyasını Blob depolamaya yükler, kapsayıcıdaki blobları listeler ve dosyayı yeni bir adla indirir. 
 
-Örnek uygulamayı çalıştırın. Aşağıdaki çıktı, uygulama çalıştırılırken döndürülen çıktının bir örneğidir:
-  
+Örnek, blob depolamada bir kapsayıcı oluşturur, kapsayıcıda yeni bir blob oluşturur, kapsayıcıdaki Blobları listeler ve blobu yerel bir dosyaya indirir.
+
+Örnek uygulamayı çalıştırın. Uygulamayı çalıştırmanın çıkışının bir örneği aşağıda verilmiştir:
+
+```console
+C:\azure-samples\storage-blobs-ruby-quickstart> ruby example.rb
+
+Creating a container: quickstartblobs18cd9ec0-f4ac-4688-a979-75c31a70503e
+
+Creating blob: QuickStart_6f8f29a8-879a-41fb-9db2-0b8595180728.txt
+
+List blobs in the container following continuation token
+        Blob name: QuickStart_6f8f29a8-879a-41fb-9db2-0b8595180728.txt
+
+Downloading blob to C:/Users/azureuser/Documents/QuickStart_6f8f29a8-879a-41fb-9db2-0b8595180728.txt
+
+Paused, press the Enter key to delete resources created by the sample and exit the application
 ```
-Creating a container: quickstartblobs7b278be3-a0dd-438b-b9cc-473401f0c0e8
 
-Temp file = C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078.txt
+Devam etmek için ENTER tuşuna bastığınızda, örnek program depolama kapsayıcısını ve yerel dosyayı siler. Devam etmeden önce, indirilen dosya için *Belgeler* klasörünüzü kontrol edin.
 
-Uploading to Blob storage as blobQuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078.txt
+Depolama hesabınızdaki dosyaları görüntülemek için [Azure Depolama Gezgini](https://storageexplorer.com) de kullanabilirsiniz. Azure Depolama Gezgini, depolama hesabı bilgilerinize erişmenize olanak tanıyan ücretsiz ve platformlar arası bir araçtır.
 
-List blobs in the container
-         Blob name: QuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078.txt
-
-Downloading blob to C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-98d0-8b2c05c01078_DOWNLOADED.txt
-```
-Devam etmek için herhangi bir tuşa bastığınızda, örnek program depolama kapsayıcısını ve dosyaları siler. Devam etmeden önce, iki dosya için "Belgeler" klasörünüzü kontrol edin. Dosyaları açarak aynı olduklarını görebilirsiniz.
-
-Ayrıca, Blob depolamadaki dosyaları görüntülemek için, [Azure Depolama Gezgini](https://storageexplorer.com) gibi bir araç da kullanabilirsiniz. Azure Depolama Gezgini, depolama hesabı bilgilerinize erişmenize olanak tanıyan ücretsiz ve platformlar arası bir araçtır. 
-
-Dosyaları doğruladıktan sonra, tanıtımı tamamlamak ve test dosyalarını silmek için herhangi bir tuşa basın. Artık örnek dosyanın işlevini gördüğünüze göre, koda göz atmak için example.rb dosyasını açabilirsiniz. 
+Dosyaları doğruladıktan sonra, test dosyalarını silmek ve tanıtımı sonlandırmak için ENTER tuşuna basın. Koda bakmak için *example. RB* dosyasını açın.
 
 ## <a name="understand-the-sample-code"></a>Örnek kodu anlama
 
-Sonraki aşamada, nasıl çalıştığını anlayabilmeniz için örnek kodu inceleyeceğiz.
+Daha sonra, nasıl çalıştığını anlayabilmeniz için örnek kodda geziniriz.
 
 ### <a name="get-references-to-the-storage-objects"></a>Depolama nesneleriyle ilgili başvuruları alma
-İlk önce, Blob depolamaya erişmek ve Blob depolamayı yönetmek için kullanılan nesnelere başvuru oluşturmaktır. Bu nesneler birbirleri üzerinde derlenir ve her bir dosya, listede yanında yer alan dosya tarafından kullanılır.
 
-* Azure depolama örneğini oluşturmak **BlobService** nesne bağlantı kimlik bilgilerini ayarlayın. 
-* Eriştiğiniz kapsayıcıyı ifade eden bir **Container** nesnesi oluşturun. Kapsayıcılar, tıpkı bilgisayarınızdaki dosyaları düzenlemek için klasörleri kullandığınız gibi blobları düzenlemek için kullanılır.
+Yapılacak ilk şey, blob depolamaya erişmek ve bunları yönetmek için kullanılan nesnelerin örneklerini oluşturmaktır. Bu nesneler birbirlerinin üzerinde oluşturulur. Her bir listedeki bir sonraki nesne tarafından kullanılır.
 
-Bulut Blob kapsayıcısına sahip olduğunuzda, dilediğiniz bloba işaret eden **Block** blob nesnesi oluşturabilir ve karşıya yükleme, indirme ve kopyalama işlemleri gerçekleştirebilirsiniz.
+- Azure depolama örneğini oluşturmak [BlobService](https://www.rubydoc.info/gems/azure-storage-blob/2.0.1/Azure/Storage/Blob/BlobService) nesne bağlantı kimlik bilgilerini ayarlayın.
+- Erişmekte olduğunuz kapsayıcıyı temsil eden [kapsayıcı](https://www.rubydoc.info/gems/azure-storage-blob/2.0.1/Azure/Storage/Blob/Container/Container) nesnesini oluşturun. Kapsayıcılar, tıpkı bilgisayarınızdaki dosyaları düzenlemek için klasörleri kullandığınız gibi blobları düzenlemek için kullanılır.
+
+Kapsayıcı nesnesine sahip olduktan sonra, ilgilendiğiniz belirli bir bloba işaret eden bir [blok](https://www.rubydoc.info/gems/azure-storage-blob/2.0.1/Azure/Storage/Blob/Block) blobu nesnesi oluşturabilirsiniz. Blob oluşturmak, indirmek ve kopyalamak için [Block](https://www.rubydoc.info/gems/azure-storage-blob/2.0.1/Azure/Storage/Blob/Block) nesnesini kullanın.
 
 > [!IMPORTANT]
-> Kapsayıcı adlarının küçük harfle yazılması gerekir. Kapsayıcılar ve blob adları hakkında daha fazla bilgi için bkz. [Kapsayıcıları, Blobları ve Meta Verileri Adlandırma ve Bunlara Başvurma](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
+> Kapsayıcı adlarının küçük harfle yazılması gerekir. Kapsayıcı ve BLOB adları hakkında daha fazla bilgi için bkz. [kapsayıcıları, Blobları ve meta verileri adlandırma ve başvuru](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
-Bu bölümde Azure depolama istemcisi örneği kurdunuz, blob hizmeti nesnesini oluşturdunuz, yeni bir kapsayıcı oluşturdunuz ve ardından kapsayıcıdaki izinleri bloblar herkese açık olacak şekilde ayarladınız. Bu kapsayıcının adı **quickstartblobs**’dur. 
+Aşağıdaki örnek kod:
 
-```ruby 
-# Create a BlobService object
-blob_client = Azure::Storage::Blob::BlobService.create(
-    storage_account_name: account_name,
-    storage_access_key: account_key
-    )
+- Yeni bir kapsayıcı oluşturur
+- Blobların ortak olması için kapsayıcıda izinleri ayarlar. Kapsayıcıya, benzersiz bir ID eklenmiş olan *quickstartblob* adı verilir.
 
-# Create a container called 'quickstartblobs'.
-container_name ='quickstartblobs' + SecureRandom.uuid
-container = blob_client.create_container(container_name)   
+```ruby
+# Create a container
+container_name = "quickstartblobs" + SecureRandom.uuid
+puts "\nCreating a container: " + container_name
+container = blob_client.create_container(container_name)
 
-# Set the permission so the blobs are public.
+# Set the permission so the blobs are public
 blob_client.set_container_acl(container_name, "container")
 ```
 
-### <a name="upload-blobs-to-the-container"></a>Blobları kapsayıcıya yükleme
+### <a name="create-a-blob-in-the-container"></a>Kapsayıcıda blob oluşturma
 
-Blob depolama blok blobları, ekleme bloblarını ve sayfa bloblarını destekler. Blok blobları en sık kullanılan bloblardır ve bu hızlı başlangıçta bu bloblar kullanılmıştır.  
+Blob Storage blok Blobları, ekleme Blobları ve sayfa bloblarını destekler. Blob oluşturmak için, blob verilerini geçirerek [create_block_blob](https://www.rubydoc.info/gems/azure-storage-blob/2.0.1/Azure/Storage/Blob#create_block_blob-instance_method) yöntemi çağırın.
 
-Bir dosyayı bloba yüklemek için, yerel diskinizdeki dizin adıyla dosya adını birleştirerek dosyanın tam yolunu alın. Sonra, dosyayı belirtilen yola **Create \_ Block \_ BLOB ()** yöntemini kullanarak yükleyebilirsiniz. 
-
-Örnek kod, karşıya yükleme ve indirme için kullanılacak yerel bir dosya oluşturur, karşıya yüklenecek dosyayı **file\_path\_to\_file** olarak ve blob adını **local\_file\_name** olarak depolar. Aşağıdaki örnek, dosyayı **quickstartblobs** adlı kapsayıcınıza yükler.
+Aşağıdaki örnek, daha önce oluşturulan kapsayıcıda benzersiz bir KIMLIĞE ve *. txt* dosya uzantısına sahip *QuickStart_* adlı bir blob oluşturur.
 
 ```ruby
-# Create a file in Documents to test the upload and download.
-local_path=File.expand_path("~/Documents")
-local_file_name ="QuickStart_" + SecureRandom.uuid + ".txt"
-full_path_to_file =File.join(local_path, local_file_name)
-
-# Write text to the file.
-file = File.open(full_path_to_file,  'w')
-file.write("Hello, World!")
-file.close()
-
-puts "Temp file = " + full_path_to_file
-puts "\nUploading to Blob storage as blob" + local_file_name
-
-# Upload the created file, using local_file_name for the blob name
-blob_client.create_block_blob(container.name, local_file_name, full_path_to_file)
+# Create a new block blob containing 'Hello, World!'
+blob_name = "QuickStart_" + SecureRandom.uuid + ".txt"
+blob_data = "Hello, World!"
+puts "\nCreating blob: " + blob_name
+blob_client.create_block_blob(container.name, blob_name, blob_data)
 ```
 
-Bir blok Blobun içeriğinin kısmi bir güncelleştirmesini gerçekleştirmek için, **Create \_ Block \_ List ()** yöntemini kullanın. Blok bloblarının boyutu 4,7 TB’yi bulabilir ve bu bloblar Excel elektronik tablolarından büyük video dosyalarına kadar birçok türde olabilir. Sayfa blobları öncelikli olarak IaaS VM'leri desteklemek için kullanılan VHD dosyalarında kullanılır. Ekleme blobları, bir dosyaya yazıp daha sonradan daha fazla bilgi eklemek istediğiniz durumlarda günlüğe kaydetme için kullanılır. Ekleme blobu tek bir yazar modelinde kullanılabilir. Blob depolamada depolanan nesnelerin çoğu blok blobudur.
+Blok Blobları 4,7 TB kadar büyük olabilir ve elektronik tablolardan büyük video dosyalarına kadar herhangi bir şey olabilir. Sayfa Blobları birincil olarak IaaS sanal makinelerini geri yükleyen VHD dosyaları için kullanılır. Ekleme Blobları genellikle günlüğe kaydetme için kullanılır (örneğin, bir dosyaya yazmak istediğinizde) ve daha fazla bilgi eklemeye devam edebilirsiniz.
 
 ### <a name="list-the-blobs-in-a-container"></a>Kapsayıcıdaki blobları listeleme
 
-Blobdaki dosyaların listesini, **Listele \_ ()** yöntemini kullanarak alabilirsiniz. Aşağıdaki kod blob listesini alır, ardından bu bloblarda döngü yapar ve kapsayıcıda bulunan blobların adlarını gösterir.  
+[list_blobs](https://www.rubydoc.info/gems/azure-storage-blob/2.0.1/Azure/Storage/Blob/Container#list_blobs-instance_method) metodunu kullanarak kapsayıcıdaki dosya listesini alın. Aşağıdaki kod blob listesini alır, ardından adlarını görüntüler.
 
 ```ruby
 # List the blobs in the container
+puts "\nList blobs in the container following continuation token"
 nextMarker = nil
 loop do
     blobs = blob_client.list_blobs(container_name, { marker: nextMarker })
     blobs.each do |blob|
-        puts "\tBlob name #{blob.name}"
+        puts "\tBlob name: #{blob.name}"
     end
     nextMarker = blobs.continuation_token
     break unless nextMarker && !nextMarker.empty?
 end
 ```
 
-### <a name="download-the-blobs"></a>Blobları indirme
+### <a name="download-a-blob"></a>Blobu indirme
 
-**get\_blob()** metodunu kullanarak blobları yerel diskinize indirin. Aşağıdaki kod, önceki bir bölüme yüklenen blobu indirir. Yerel diskte yer alan iki dosyayı da görebilmeniz için, blob adının sonuna "_DOWNLOADED" son eki getirilir. 
+[Get_blob](https://www.rubydoc.info/gems/azure-storage-blob/2.0.1/Azure/Storage/Blob#get_blob-instance_method) yöntemi kullanarak yerel diskinize bir blob indirin. Aşağıdaki kod, önceki bir bölümde oluşturulan blobu indirir.
 
 ```ruby
-# Download the blob(s).
-# Add '_DOWNLOADED' as prefix to '.txt' so you can see both files in Documents.
-full_path_to_file2 = File.join(local_path, local_file_name.gsub('.txt', '_DOWNLOADED.txt'))
+# Download the blob
 
-puts "\n Downloading blob to " + full_path_to_file2
-blob, content = blob_client.get_blob(container_name,local_file_name)
-File.open(full_path_to_file2,"wb") {|f| f.write(content)}
+# Set the path to the local folder for downloading
+if(is_windows)
+    local_path = File.expand_path("~/Documents")
+else 
+    local_path = File.expand_path("~/")
+end
+
+# Create the full path to the downloaded file
+full_path_to_file = File.join(local_path, blob_name)
+
+puts "\nDownloading blob to " + full_path_to_file
+blob, content = blob_client.get_blob(container_name, blob_name)
+File.open(full_path_to_file,"wb") {|f| f.write(content)}
 ```
 
 ### <a name="clean-up-resources"></a>Kaynakları temizleme
-Bu hızlı başlangıçta karşıya yüklenen bloblara artık ihtiyacınız yoksa, **Delete \_ Container ()** yöntemini kullanarak kapsayıcının tamamını silebilirsiniz. Oluşturulan dosyalara artık ihtiyaç duyulmuyorsa, dosyaları silmek için **Delete \_ BLOB ()** yöntemini kullanırsınız.
+
+Blob artık gerekmiyorsa, kaldırmak için [delete_blob](https://www.rubydoc.info/gems/azure-storage-blob/2.0.1/Azure/Storage/Blob#delete_blob-instance_method) kullanın. [Delete_container](https://www.rubydoc.info/gems/azure-storage-blob/2.0.1/Azure/Storage/Blob/Container#delete_container-instance_method) yöntemini kullanarak kapsayıcının tamamını silin. Kapsayıcının silinmesi, kapsayıcıda depolanan Blobları da siler.
 
 ```ruby
-# Clean up resources. This includes the container and the temp files
+# Clean up resources, including the container and the downloaded file
 blob_client.delete_container(container_name)
 File.delete(full_path_to_file)
-File.delete(full_path_to_file2)    
 ```
+
 ## <a name="resources-for-developing-ruby-applications-with-blobs"></a>Bloblarla Ruby uygulamaları geliştirme kaynakları
 
-Blob depolama ile Ruby geliştirmeye yönelik şu ek kaynaklara bakın:
+Ruby geliştirmesi için şu ek kaynaklara bakın:
 
 - GitHub’da Azure Depolama için [Ruby istemci kitaplığı kaynak kodunu](https://github.com/Azure/azure-storage-ruby) görüntüleyin ve indirin.
-- Ruby istemci kitaplığı kullanılarak yazılmış [Blob depolama örneklerini](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=ruby&term=blob) araştırın.
+- Ruby istemci kitaplığı kullanılarak yazılmış [Azure örneklerini](/samples/browse/?products=azure&languages=ruby) gezin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
- 
-Bu hızlı başlangıçta, dosyaları Ruby kullanarak yerel bir disk ve Azure blob depolama arasında aktarmayı öğrendiniz. Blob depolamayla çalışma hakkında daha fazla bilgi edinmek için, Blob depolama nasıl yapılır öğreticisiyle devam edin.
+
+Bu hızlı başlangıçta, Ruby kullanarak dosyaları Azure Blob depolama ve yerel disk arasında aktarmayı öğrendiniz. BLOB depolama ile çalışma hakkında daha fazla bilgi edinmek için depolama hesabına genel bakış ' a geçin.
 
 > [!div class="nextstepaction"]
-> [Blob Depolama İşlemleri Nasıl Yapılır]()
+> [Depolama hesabına genel bakış](../common/storage-account-overview.md)
 
-
-Depolama Gezgini ve Bloblar hakkında daha fazla bilgi için bkz. [Azure Blob depolama kaynaklarını Depolama Gezgini'yle yönetme](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Depolama Gezgini ve BLOB 'Lar hakkında daha fazla bilgi için bkz. [Depolama Gezgini Ile Azure Blob depolama kaynaklarını yönetme](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).

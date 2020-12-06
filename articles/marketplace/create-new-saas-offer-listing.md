@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: b6b3cac51ffd4ccd138994ac65b4f96b07816970
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 3a47ba2025bcaba542d2dbec0c89643e0900f233
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368704"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746157"
 ---
 # <a name="how-to-configure-your-saas-offer-listing-details"></a>SaaS teklifinizin listeleme ayrıntılarını yapılandırma
 
@@ -37,7 +37,7 @@ Hizmet olarak yazılım (SaaS) teklifi için **teklif listesi** sayfasında sağ
 
 Ek çevrimiçi belgelere bağlantılar eklemek için bu adımları uygulayın.
 
-1. Uygulamanıza veya ilgili hizmetlere ilişkin isteğe bağlı ek çevrimiçi belgeler eklemek için, **yararlı bağlantılar** altında **bağlantı ekle** ' yi seçin.
+1. Uygulamanıza veya ilgili hizmetlere ilişkin isteğe bağlı ek çevrimiçi belgeler eklemek için, **yararlı bağlantılar** altında **bağlantı ekle**' yi seçin.
 1. Görüntülenen alanlara bir başlık (en fazla 255 karakter) ve bağlantıyı (https ile başlayarak) çevrimiçi belgeye girin.
 1. Başka bir bağlantı girmek için 1 ile 2 arasındaki adımları yineleyin.
 
@@ -84,7 +84,7 @@ Her üç logo boyutu, çevrimiçi mağazalardaki farklı yerlerde kullanılır.
 Teklifinizi gösteren en az bir ve en fazla beş ekran görüntüsü eklemeniz gerekir. Tüm görüntüler 1280 x 720 piksel boyutunda ve içinde olmalıdır. PNG biçimi.
 
 1. **Ekran görüntüleri** altında sürükleyip bırakın. Bir **ekran görüntüsü** kutusu üzerine PNG dosyası.
-2. **Resim yazısı ekle** ' nin yanındaki Düzenle simgesine tıklayın.
+2. **Resim yazısı ekle**' nin yanındaki Düzenle simgesine tıklayın.
 3. Görüntülenen iletişim kutusunda bir başlık girin.
 4. Ek ekran görüntüleri eklemek için 1 ile 3 arasındaki adımları yineleyin.
 
@@ -105,4 +105,4 @@ Sonraki sekmeye geçmeden önce **Taslağı kaydet** ' i seçin: izleyiciyi Öni
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Teklifinizi Microsoft üzerinden satıyorsanız, [SaaS teklifiniz için Önizleme hedef kitlesi ekleme](create-new-saas-offer-preview.md)bölümüne gidin. 
-- Aksi takdirde, [SaaS teklifinizi pazara sunma](create-new-saas-offer-marketing.md)bölümüne gidin.
+- Aksi takdirde, [SaaS teklifinizi satma](create-new-saas-offer-marketing.md)konusuna gidin.

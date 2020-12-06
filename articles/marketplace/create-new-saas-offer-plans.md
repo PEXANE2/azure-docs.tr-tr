@@ -8,19 +8,19 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 63629f32c97611fa8bc57ecdac968552375125f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 238ef9ec80b01470e28535d0eb42dbb3a377b005
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89381202"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746446"
 ---
 # <a name="how-to-create-plans-for-your-saas-offer"></a>SaaS teklifiniz için planlar oluşturma
 
 Microsoft Commercial Market aracılığıyla satılan teklifler en az bir plana sahip olmalıdır. Aynı teklifde farklı seçeneklere sahip çeşitli planlar oluşturabilirsiniz. Bu planlar (bazen SKU 'Lar olarak adlandırılır) sürüm, para veya hizmet katmanları bakımından farklılık gösterebilir. Planlar hakkında ayrıntılı yönergeler için bkz. [ticari Market teklifleri Için planlar ve fiyatlandırma](plans-pricing.md).
 
 > [!NOTE]
-> İşlemleri bağımsız olarak işlemeyi seçerseniz, bu seçeneği görmezsiniz. Bunun yerine, [SaaS teklifinizi pazara sunma](create-new-saas-offer-marketing.md)bölümüne atlayın.
+> İşlemleri bağımsız olarak işlemeyi seçerseniz, bu seçeneği görmezsiniz. Bunun yerine, [SaaS teklifinizi satma](create-new-saas-offer-marketing.md)bölümüne atlayın.
 
 ## <a name="create-a-plan"></a>Plan oluşturma
 
@@ -62,14 +62,14 @@ Fiyatlandırma modelini her planla ilişkilendirmeniz gerekir: _sabit oran_ ya d
 
 ### <a name="configure-flat-rate-pricing"></a>Düz oran fiyatlandırmasını yapılandırma
 
-1. **Fiyatlandırma ve kullanılabilirlik** sekmesindeki **fiyatlandırma**bölümünde **sabit fiyat**' ı seçin.
+1. **Fiyatlandırma ve kullanılabilirlik** sekmesindeki **fiyatlandırma** bölümünde **sabit fiyat**' ı seçin.
 1. **Aylık** veya **yıllık** onay kutusunu ya da her ikisini birden seçin ve ardından fiyatı girin.
 
 ### <a name="add-a-custom-meter-dimension"></a>Özel ölçüm boyutu Ekle
 
 Bu seçenek yalnızca sabit oran fiyatlandırması ' nı seçtiğinizde kullanılabilir. Daha fazla bilgi için bkz. [ticari Market ölçüm hizmeti kullanılarak SaaS Için tarifeli faturalandırma](./partner-center-portal/saas-metered-billing.md).
 
-1. **Market ölçüm hizmeti boyutları**altında **özel ölçüm boyutu Ekle (en fazla 30)** bağlantısını seçin.
+1. **Market ölçüm hizmeti boyutları** altında **özel ölçüm boyutu Ekle (en fazla 30)** bağlantısını seçin.
 1. **Kimlik** kutusuna, kullanım olaylarını yayırken sabit tanımlayıcı başvurusunu girin.
 1. **Görünen ad** kutusuna boyutla ilişkili görünen adı girin. Örneğin, "gönderilen metin iletileri".
 1. **Ölçü birimi** kutusuna faturalandırma biriminin açıklamasını girin. Örneğin, "metin başına ileti" veya "100 başına e-posta".
@@ -80,19 +80,19 @@ Bu seçenek yalnızca sabit oran fiyatlandırması ' nı seçtiğinizde kullanı
 
 ### <a name="configure-per-user-pricing"></a>Kullanıcı başına fiyatlandırmayı yapılandırma
 
-1. **Fiyatlandırma ve kullanılabilirlik** sekmesinde, **fiyatlandırma**altında **Kullanıcı başına**' yı seçin.
-2. Uygulanabiliyorsa, **Kullanıcı sınırları**altında bu plan için en düşük ve en fazla kullanıcı sayısını belirtin.
-3. **Fatura dönemi**altında, aylık fiyat, yıllık fiyat veya her ikisini de belirtin.
+1. **Fiyatlandırma ve kullanılabilirlik** sekmesinde, **fiyatlandırma** altında **Kullanıcı başına**' yı seçin.
+2. Uygulanabiliyorsa, **Kullanıcı sınırları** altında bu plan için en düşük ve en fazla kullanıcı sayısını belirtin.
+3. **Fatura dönemi** altında, aylık fiyat, yıllık fiyat veya her ikisini de belirtin.
 
 ### <a name="validate-custom-prices"></a>Özel fiyatları doğrulama
 
 Tek bir pazarda özel fiyatlar ayarlamak için, fiyatlandırma elektronik tablosunu dışarı aktarın, değiştirin ve içeri aktarın. Bu fiyatlandırmayı doğrulamadan ve bu ayarların sahibi olduğunuzdan siz sorumlusunuz. Ayrıntılı bilgi için bkz. [özel fiyatlar](plans-pricing.md#custom-prices).
 
 1. Fiyatlandırma verilerinin dışarı aktarılmasını sağlamak için öncelikle fiyatlandırma değişikliklerinizi kaydetmeniz gerekir. **Fiyatlandırma ve kullanılabilirlik** sekmesinin altındaki **Taslağı kaydet**' i seçin.
-1. **Fiyatlandırma**bölümünde **fiyatlandırma verilerini dışarı aktar** bağlantısını seçin.
+1. **Fiyatlandırma** bölümünde **fiyatlandırma verilerini dışarı aktar** bağlantısını seçin.
 1. exportedPrice.xlsx dosyasını Microsoft Excel 'de açın.
 1. Elektronik tabloda, istediğiniz güncelleştirmeleri Fiyatlandırma bilgileriniz yapın ve ardından öğesini kaydedin. CSV dosyası.<br> Dosyayı güncelleştirebilmeniz için önce Excel 'de düzenlemesini etkinleştirmeniz gerekebilir.
-2. Fiyatlandırma **ve kullanılabilirlik** sekmesindeki **fiyatlandırma**bölümünde **fiyatlandırma verilerini içeri aktar** bağlantısını seçin.
+2. Fiyatlandırma **ve kullanılabilirlik** sekmesindeki **fiyatlandırma** bölümünde **fiyatlandırma verilerini içeri aktar** bağlantısını seçin.
 3. Görüntülenen iletişim kutusunda **Evet**' e tıklayın.
 4. Güncelleştirdiğiniz exportedPrice.xlsx dosyasını seçin ve ardından **Aç**' a tıklayın.
 
@@ -103,7 +103,7 @@ Teklifinizdeki her plan için ücretsiz bir deneme yapılandırabilirsiniz. Bir 
 > [!IMPORTANT]
 > Transactable teklifiniz ücretsiz bir deneme ile yayımlandıktan sonra, bu plan için devre dışı bırakılamaz. Planı yeniden oluşturmak zorunda kalmamak için teklifi yayımlamadan önce bu ayarın doğru olduğundan emin olun.
 
-- **Ücretsiz deneme**bölümünde, **tek aylık ücretsiz denemeye izin ver** onay kutusunu seçin.
+- **Ücretsiz deneme** bölümünde, **tek aylık ücretsiz denemeye izin ver** onay kutusunu seçin.
 
 ## <a name="choose-who-can-see-your-plan"></a>Planınızı kimlerin görebileceğini seçin
 
@@ -114,7 +114,7 @@ Her planı herkese veya yalnızca belirli bir hedef kitleye görünür olacak ş
 
 ### <a name="make-your-plan-public"></a>Planınızı genel yapın
 
-1. **Plan görünürlüğü**altında **ortak** kutusunu seçin.
+1. **Plan görünürlüğü** altında **ortak** kutusunu seçin.
 1. **Taslağı kaydet**' i seçin ve ardından sekmenin sol üst kısmında plana genel **bakış** ' ı seçerek **plana genel** bakış sekmesine dönün.
 1. Bu teklif için, **plana genel bakış** sekmesinin üst kısmına yakın bir plan oluşturmak için **+ Yeni plan oluştur**' u seçin. Ardından [plan oluşturma](#create-a-plan) bölümündeki adımları tekrarlayın. Aksi takdirde, [planlarınızı görüntüleyin](#view-your-plans)sayfasına gidin.
 
@@ -135,7 +135,7 @@ Her planı herkese veya yalnızca belirli bir hedef kitleye görünür olacak ş
 4. İsteğe bağlı olarak, **Açıklama** sütunundaki her bir hedef kitle için bir açıklama girin.
 5. Bir Azure KIMLIĞI olan her satır için **tür** sütununa "tenantıd" ekleyin.
 6. Öğesini kaydedin. CSV dosyası.
-7. **Fiyatlandırma ve kullanılabilirlik** sekmesindeki **plan görünürlüğü**altında, **izleyiciyi içeri aktar (CSV)** bağlantısını seçin.
+7. **Fiyatlandırma ve kullanılabilirlik** sekmesindeki **plan görünürlüğü** altında, **izleyiciyi içeri aktar (CSV)** bağlantısını seçin.
 8. Görüntülenen iletişim kutusunda **Evet**' i seçin.
 9. Öğesini seçin. CSV dosyası ve sonra **Aç**' ı seçin.
 10. **Taslağı kaydet**' i seçin ve ardından sekmenin sol üst kısmında plana genel **bakış** ' ı seçerek **plana genel** bakış sekmesine dönün.
@@ -147,10 +147,10 @@ Bir veya daha fazla plan oluşturduktan sonra plan adı, plan KIMLIĞI, fiyatlan
 
 **Plana genel bakış** sekmesinin **eylem** sütununda bulunan Eylemler planınızın durumuna göre farklılık gösterir ve şunları içerebilir:
 
-- Plan durumu **taslak**Ise, **eylem** sütunundaki bağlantı **taslak Sil**' i söylecektir.
-- Plan durumu **canlı**Ise, Eylem sütunundaki bağlantı, satışı veya **özel Izleyiciyi eşitleme** **işlemini** **durdurur** . **Eşitleme özel hedef kitle** bağlantısı, yalnızca özel izleyicilerinizdeki değişiklikleri, teklifte yapmış olabileceğiniz herhangi bir güncelleştirmeyi yayımlamadan yayımlar.
+- Plan durumu **taslak** Ise, **eylem** sütunundaki bağlantı **taslak Sil**' i söylecektir.
+- Plan durumu **canlı** Ise, Eylem sütunundaki bağlantı, satışı veya **özel Izleyiciyi eşitleme** **işlemini** **durdurur** . **Eşitleme özel hedef kitle** bağlantısı, yalnızca özel izleyicilerinizdeki değişiklikleri, teklifte yapmış olabileceğiniz herhangi bir güncelleştirmeyi yayımlamadan yayımlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- **Microsoft Ile ortak satış** aracılığıyla [SaaS teklifinizi pazara sunma](create-new-saas-offer-marketing.md) ve **CSP programlarını yeniden satma** hakkında bilgi edinin.
+- **Microsoft Ile ortak satış** aracılığıyla [SaaS teklifinizi satma](create-new-saas-offer-marketing.md) ve **CSP programlarını yeniden satma** hakkında bilgi edinin.
 - [Ticari Market 'e SaaS teklifini test etme ve yayımlama](test-publish-saas-offer.md).

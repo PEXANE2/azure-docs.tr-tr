@@ -14,12 +14,12 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab3b655d59e2cb8c6773fa1a34a08638e6926475
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: e15009dd935d91971ce4212ff44b67a1ca6fa363
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180668"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745392"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Uygulama kimlik doğrulamasını Active Directory Federasyon Hizmetleri’nden Azure Active Directory’ye taşıma
 
@@ -293,7 +293,7 @@ Kuralın Azure AD 'ye nasıl eşleştiği aşağıda gösterilmiştir:
 
 AD FS açık kullanıcı yetkilendirmesi:
 
-![Ekran görüntüsü, etki alanı yöneticileri talep kuralına Izin ver iletişim kutusunu, gelen talep türü olan birincil S D ile gösterir.](media/migrate-adfs-apps-to-azure/authorize-a-specific-user-1.png)
+![Ekran görüntüsü, belirli bir Kullanıcı talebine Izin ver kuralı Düzenle iletişim kutusunu gösterir.](media/migrate-adfs-apps-to-azure/authorize-a-specific-user-1.png)
 
 Kuralın Azure AD 'ye nasıl eşleştiği aşağıda gösterilmiştir:
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/01/2020
-ms.openlocfilehash: 8d28a1f2040cfec7b81081754a6abd3bc3e14439
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 5d13a6a77ede6277eebc7fdab7cd42165cb602fa
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511483"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746378"
 ---
 # <a name="azure-private-link-for-azure-data-factory"></a>Azure Data Factory için Azure özel bağlantısı
 
@@ -96,20 +96,26 @@ Kendi DNS sunucunuzu özel uç noktaları destekleyecek şekilde yapılandırma 
 ## <a name="set-up-private-link-for-azure-data-factory"></a>Azure Data Factory için özel bağlantı ayarlama
 [Azure Portal](../private-link/create-private-endpoint-portal.md)kullanarak özel uç noktalar oluşturabilirsiniz.
 
+Şirket içinde barındırılan tümleştirme çalışma zamanından ortak uç nokta veya özel uç nokta aracılığıyla Azure Data Factory bağlanıp bağlanamayacağını seçebilirsiniz. 
+
+![Şirket içinde barındırılan Integration Runtime ortak erişimini engelleme ekran görüntüsü.](./media/data-factory-private-link/disable-public-access-shir.png)
+
+
 Ayrıca, Azure portal Azure Data Factory 'nize giderek aşağıda gösterildiği gibi özel bir uç nokta oluşturabilirsiniz:
 
 ![Özel uç nokta oluşturmak için "özel uç nokta bağlantıları" bölmesinin ekran görüntüsü.](./media/data-factory-private-link/create-private-endpoint.png)
 
+**Kaynak** adımında, **kaynak türü** olarak **Microsoft. DataFactory/Factory** ' yi seçin. Şirket içinde barındırılan tümleştirme çalışma zamanı ve Azure Data Factory hizmeti arasındaki komut iletişimleri için özel uç nokta oluşturmak istiyorsanız, **hedef alt kaynak** olarak **DataFactory** ' yi seçin.
 
-Azure Data Factory 'ye Genel erişimi engellemek ve yalnızca özel bağlantı aracılığıyla erişime izin vermek istiyorsanız, aşağıda gösterildiği gibi Azure portal Azure Data Factory için ağ erişimini devre dışı bırakın:
-
-![Özel uç nokta oluşturmak için "ağ erişimi" bölmesinin ekran görüntüsü.](./media/data-factory-private-link/disable-network-access.png)
+![Kaynak seçme için "özel uç nokta bağlantıları" bölmesinin ekran görüntüsü.](./media/data-factory-private-link/private-endpoint-resource.png)
 
 > [!NOTE]
 > Ortak ağ erişimini devre dışı bırakmak yalnızca şirket içinde barındırılan tümleştirme çalışma zamanı için geçerlidir, Azure Integration Runtime ve SQL Server Integration Services (SSIS) Integration Runtime.
 
+Sanal ağınızda veri fabrikasını yazmak ve izlemek için özel uç nokta oluşturmak istiyorsanız, **hedef alt kaynak** olarak **Portal** ' ı seçin.
+
 > [!NOTE]
-> Ortak ağ erişimini devre dışı bıraktıktan sonra, Azure Data Factory portalına ortak bir ağ üzerinden erişmeye devam edebilirsiniz.
+> Portal için özel uç nokta oluşturduktan sonra, Azure Data Factory portalına ortak bir ağ üzerinden erişmeye devam edebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

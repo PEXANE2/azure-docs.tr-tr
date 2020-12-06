@@ -11,16 +11,16 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46ecc2cba96b07d9105020e69ae3198a3765be7c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 59b304505c29f424d85d5b1e16dc83c060ac2ac1
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96172240"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744607"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>Azure Active Directory Kullanıcı asıl adı değişikliklerini planlayın ve sorun giderin
 
-Kullanıcı asıl adı (UPN), Kullanıcı hesapları için internet iletişim standardı olan bir özniteliktir. UPN, bir UPN öneki (Kullanıcı hesabı adı) ve bir UPN soneki (bir DNS etki alanı adı) içerir. Ön ek, "@" sembolünü kullanarak soneki birleştirir. Örneğin, someone@example.com. Bir UPN, bir Dizin ormanı içindeki tüm güvenlik sorumlusu nesneleri arasında benzersiz olmalıdır. 
+Kullanıcı asıl adı (UPN), Kullanıcı hesapları için internet iletişim standardı olan bir özniteliktir. UPN, bir UPN öneki (Kullanıcı hesabı adı) ve bir UPN soneki (bir DNS etki alanı adı) içerir. Önek, "" sembolünü kullanarak soneki birleştirir \@ . Örneğin, someone@example.com. Bir UPN, bir Dizin ormanı içindeki tüm güvenlik sorumlusu nesneleri arasında benzersiz olmalıdır. 
 
 **Bu makale, Kullanıcı tanımlayıcısı olarak UPN kullandığınızı varsayar. Bu, UPN değişikliklerinin planlanmasına ve UPN değişikliklerinden kaynaklanan sorunlardan kurtarılmasını ele alınmaktadır.**
 

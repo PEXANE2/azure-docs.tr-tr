@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 10/27/2020
+ms.date: 12/04/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b3f7a8fbe2afcf9b5603f288fe6e3bc429b14532
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 674bb67018fcbf7df6285a66c2e0aeb37d24f409
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340204"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744927"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>Azure Cosmos DB akış çekme modelini değiştirme
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -52,7 +52,7 @@ Aşağıda, değişiklik akışı işlemcisi ve çekme modeli arasındaki bazı 
 | Destek düzeyi | Genel kullanıma sunuldu | Önizleme |
 
 > [!NOTE]
-> Değişiklik akışı işlemcisini kullanarak okuma işleminden farklı olarak, hiçbir yeni değişiklik olmadığı durumlarda açıkça işlem yapmanız gerekir. 
+> Değişiklik akışı işlemcisini kullanarak okurken, hiçbir yeni değişiklik olmadığı durumlarda açıkça işlem yapmanız gerekir. 
 
 ## <a name="consuming-an-entire-containers-changes"></a>Kapsayıcının tüm değişikliklerinin kullanılması
 

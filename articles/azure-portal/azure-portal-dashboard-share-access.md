@@ -1,24 +1,15 @@
 ---
 title: Azure rol tabanlı erişim denetimi kullanarak Azure portal panoları paylaşma
 description: Bu makalede, Azure rol tabanlı erişim denetimi kullanarak Azure portal bir panonun nasıl paylaşılacağını açıklanmaktadır.
-services: azure-portal
-documentationcenter: ''
-author: mgblythe
-manager: mtillman
 ms.assetid: 8908a6ce-ae0c-4f60-a0c9-b3acfe823365
-ms.service: azure-portal
-ms.devlang: NA
 ms.topic: how-to
-ms.tgt_pltfrm: NA
-ms.workload: na
 ms.date: 03/23/2020
-ms.author: mblythe
-ms.openlocfilehash: b74cae439ce351a4d720f215679cc0802eebe898
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: de2efd75d07c3dc7df771aad1bd9c73453dad212
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92092214"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745987"
 ---
 # <a name="share-azure-dashboards-by-using-azure-role-based-access-control"></a>Azure rol tabanlı erişim denetimi kullanarak Azure panoları paylaşma
 
@@ -41,7 +32,7 @@ Azure rol tabanlı erişim denetimi (Azure RBAC) sayesinde, kullanıcıları rol
 
 Atadığınız izinler abonelikten kaynağa doğru bir şekilde devralınır. Yayınlanan Pano bir kaynaktır. Yayımlanmış Pano için uygulanan aboneliğin rollerine atanmış kullanıcılarınız zaten olabilir.
 
-Azure aboneliğiniz olduğunu ve takımınızın çeşitli üyelerine abonelik için *sahip*, *katkıda bulunan*veya *okuyucu* rollerinin atandığını varsayalım. Sahip veya katkıda bulunanlar olan kullanıcılar, abonelik içinde panoları listeleyebilir, görüntüleyebilir, oluşturabilir, değiştirebilir veya silebilir. Okuyucular olan kullanıcılar panoları listeleyebilir ve görüntüleyebilir, ancak bunları değiştiremez veya silemez. Okuyucu erişimi olan kullanıcılar, yayımlanan bir panoda bir sorunu giderirken, ancak bu değişiklikleri sunucuya geri yayımlayamazlar. Bunlar için panonun özel bir kopyasını oluşturabilir.
+Azure aboneliğiniz olduğunu ve takımınızın çeşitli üyelerine abonelik için *sahip*, *katkıda bulunan* veya *okuyucu* rollerinin atandığını varsayalım. Sahip veya katkıda bulunanlar olan kullanıcılar, abonelik içinde panoları listeleyebilir, görüntüleyebilir, oluşturabilir, değiştirebilir veya silebilir. Okuyucular olan kullanıcılar panoları listeleyebilir ve görüntüleyebilir, ancak bunları değiştiremez veya silemez. Okuyucu erişimi olan kullanıcılar, yayımlanan bir panoda bir sorunu giderirken, ancak bu değişiklikleri sunucuya geri yayımlayamazlar. Bunlar için panonun özel bir kopyasını oluşturabilir.
 
 Ayrıca, çeşitli panolar veya ayrı bir Pano içeren kaynak grubuna izinler atayabilirsiniz. Örneğin, bir Kullanıcı grubunun abonelik genelinde sınırlı izinleri olması ve belirli bir panoya daha fazla erişimi olması gerektiğine karar verebilirsiniz. Bu kullanıcıları bu pano için bir role atayın.
 
@@ -59,7 +50,7 @@ Erişim atamadan önce Panoyu yayımlamanız gerekir.
 
     ![panonuzu yayımlayın](./media/azure-portal-dashboard-share-access/publish-dashboard-for-access-control.png)
 
-     Varsayılan olarak, paylaşım panonuzu **panolar**adlı bir kaynak grubuna yayınlar. Farklı bir kaynak grubu seçmek için onay kutusunu temizleyin.
+     Varsayılan olarak, paylaşım panonuzu **panolar** adlı bir kaynak grubuna yayınlar. Farklı bir kaynak grubu seçmek için onay kutusunu temizleyin.
 
 Panonuz artık yayımlandı. Abonelikten devralınan izinler uygunsa, daha fazla şey yapmanız gerekmez. Kuruluşunuzdaki diğer kullanıcılar, abonelik düzeyi rolüne göre panoya erişebilir ve panoyu değiştirebilir.
 
@@ -67,7 +58,7 @@ Panonuz artık yayımlandı. Abonelikten devralınan izinler uygunsa, daha fazla
 
 Bu Pano için bir kullanıcı grubunu bir role atayabilirsiniz.
 
-1. Panoyu yayımladıktan sonra **Paylaşım + erişim denetimine**erişmek için **Paylaşım** veya paylaşımı **Kaldır** seçeneğini belirleyin.
+1. Panoyu yayımladıktan sonra **Paylaşım + erişim denetimine** erişmek için **Paylaşım** veya paylaşımı **Kaldır** seçeneğini belirleyin.
 
 1. **Paylaşım ve erişim denetimi**' nde **Kullanıcıları Yönet**' i seçin.
 

@@ -5,14 +5,13 @@ author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 01/27/2020
 ms.topic: how-to
-ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: afdb8b2b677321239f240e74d49711195ac186c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5b5e8c11bfe164aaa3539742dac8c4d267c69e1
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763916"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745613"
 ---
 # <a name="classic-deployment-model"></a>Klasik dağıtım modeli
 
@@ -46,19 +45,19 @@ Azure portal **Yardım + Destek** kullanarak bir destek isteği oluşturmak içi
 
    ![Kotayı artırmak için abonelik seçin](./media/resource-manager-core-quotas-request/select-subscription-support-request.png)
 
-1. **Kota türü**Için, **işlem-VM (çekirdekler-vCPU 'lar) abonelik sınırı artışları**' ni seçin.
+1. **Kota türü** Için, **işlem-VM (çekirdekler-vCPU 'lar) abonelik sınırı artışları**' ni seçin.
 
    ![Arttırmak için kota türünü seçin](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
-1. **İleri ' yi seçin:** **Sorun ayrıntılarını**açma çözümleri. Ek bilgi sağlamak için **Ayrıntılar sağla** ' yı seçin.
+1. **İleri ' yi seçin:** **Sorun ayrıntılarını** açma çözümleri. Ek bilgi sağlamak için **Ayrıntılar sağla** ' yı seçin.
 
    ![İsteğiniz hakkında yardımcı olacak ayrıntılar sağlayın](./media/resource-manager-core-quotas-request/provide-details-link.png)
 
-1. **Kota ayrıntıları**' nda, **Klasik** ' i seçin ve bir **konum**seçin.
+1. **Kota ayrıntıları**' nda, **Klasik** ' i seçin ve bir **konum** seçin.
 
    ![Dağıtım modeli ve konumu dahil olmak üzere ayrıntıları ekleme](./media/resource-manager-core-quotas-request/quota-details-classic.png)
 
-1. **SKU ailesi**için, arttırmak üzere bir veya daha fazla SKU ailesinden birini seçin.
+1. **SKU ailesi** için, arttırmak üzere bir veya daha fazla SKU ailesinden birini seçin.
 
    ![Arttırabileceğiniz SKU ailesini belirtin](./media/resource-manager-core-quotas-request/sku-family-classic.png)
 
@@ -70,7 +69,7 @@ Azure portal **Yardım + Destek** kullanarak bir destek isteği oluşturmak içi
 
 Azure portal **kullanım + kotaları** kullanarak bir destek isteği oluşturmak için aşağıdaki yönergeleri izleyin.
 
-1. [Azure Portal](https://portal.azure.com), **abonelikleri**arayıp seçin.
+1. [Azure Portal](https://portal.azure.com), **abonelikleri** arayıp seçin.
 
    ![Azure portal abonelikler 'e git](./media/resource-manager-core-quotas-request/search-for-subscriptions.png)
 
@@ -86,15 +85,15 @@ Azure portal **kullanım + kotaları** kullanarak bir destek isteği oluşturmak
 
    ![Kotayı artırmak için seçin](./media/resource-manager-core-quotas-request/request-increase-from-subscription.png)
 
-1. **Hesaplama-VM (çekirdek-vCPU) abonelik sınırı** , **Kota türü**olarak artar.
+1. **Hesaplama-VM (çekirdek-vCPU) abonelik sınırı** , **Kota türü** olarak artar.
 
    ![Kota türünü seçin](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
-1. **İleri ' yi seçin:** **Sorun ayrıntılarını**açma çözümleri. Ek bilgi sağlamak için **Ayrıntılar sağla** ' yı seçin.
+1. **İleri ' yi seçin:** **Sorun ayrıntılarını** açma çözümleri. Ek bilgi sağlamak için **Ayrıntılar sağla** ' yı seçin.
 
    ![İsteğiniz için ayrıntıları sağlayın](./media/resource-manager-core-quotas-request/provide-details-link.png)
 
-1. **Kota ayrıntıları**' nda, **Klasik** ve bir **konum**seçin.
+1. **Kota ayrıntıları**' nda, **Klasik** ve bir **konum** seçin.
 
    ![Dağıtım modeli ve konumu dahil olmak üzere Kota ayrıntılarını seçin](./media/resource-manager-core-quotas-request/quota-details-classic.png)
 

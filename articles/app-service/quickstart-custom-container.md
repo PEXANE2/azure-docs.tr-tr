@@ -7,12 +7,12 @@ ms.date: 10/21/2019
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 421f9dc26d184d16a2fe563aefa72062c5d8c7e6
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 360da015f012822593dbb6390cb7df0017ba85b1
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608410"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745086"
 ---
 # <a name="run-a-custom-container-in-azure"></a>Azure 'da özel kapsayıcı çalıştırma
 
@@ -20,6 +20,10 @@ ms.locfileid: "96608410"
 [Azure App Service](overview.md), Windows'da IIS üzerinde çalışan ASP.NET veya Node.js gibi önceden tanımlı uygulama yığınları sunar. Önceden yapılandırılmış Windows kapsayıcı ortamı, işletim sistemini yönetim erişimi, yazılım yüklemeleri, genel derleme önbelleğindeki değişiklikler vb. tarafından kilitlenir. Daha fazla bilgi için bkz. [Azure App Service işletim sistemi işlevselliği](operating-system-functionality.md). Uygulamanız önceden yapılandırılmış ortamın sunduğundan daha fazla erişime ihtiyaç duyuyorsa özel bir Windows kapsayıcısı dağıtabilirsiniz.
 
 Bu hızlı başlangıçta, bir Windows görüntüsünde ASP.NET uygulamasının Visual Studio 'dan [Docker Hub](https://hub.docker.com/) 'a nasıl dağıtılacağı gösterilmektedir. Uygulamayı Azure App Service bir özel kapsayıcıda çalıştırırsınız.
+
+> [!NOTE]
+> Windows kapsayıcıları Azure dosyaları ile sınırlıdır ve şu anda Azure Blob 'U desteklememektedir.
+
 
 ## <a name="prerequisites"></a>Önkoşullar
 

@@ -1,20 +1,15 @@
 ---
-title: Azure destek isteği oluşturma | Microsoft Docs
+title: Azure destek isteği oluşturma
 description: Yardıma ihtiyacı olan müşteriler, self servis çözümlerini bulmak ve destek istekleri oluşturmak ve yönetmek için Azure portal kullanabilir.
-services: Azure Supportability
-author: mgblythe
-manager: scotthit
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
-ms.service: azure-supportability
 ms.topic: how-to
 ms.date: 06/25/2020
-ms.author: mblythe
-ms.openlocfilehash: f937b03b2f838f69f56a4b132d0ea7a7e298b532
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 11ca7925ce1664b5586ab8ec0fb523a2d562ee80
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372132"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745596"
 ---
 # <a name="create-an-azure-support-request"></a>Azure destek isteği oluşturma
 
@@ -73,7 +68,7 @@ Sorununuz hakkında bilgi toplamak ve çözmenize yardımcı olmak için bazı a
 
 Destek isteği işleminin ilk adımı, sorununuz ve Destek planınız hakkında temel bilgileri toplar.
 
-**Yeni destek isteğine**Ilişkin **temel bilgiler** sekmesinde, sorunu bize bildirmek için seçicileri kullanın. İlk olarak, sorun türü için bazı genel kategoriler tanımlayacaksınız ve ilgili aboneliği seçmelisiniz. Hizmeti (örneğin, **Windows çalıştıran sanal makine**) seçin. Sanal makinenizin adı gibi kaynağı seçin. Sorunu kendi sözcüklerinizle anlaın ve daha fazla bilgi almak için **sorun türü** ve **sorun alt türü** ' nü seçin.
+**Yeni destek isteğine** Ilişkin **temel bilgiler** sekmesinde, sorunu bize bildirmek için seçicileri kullanın. İlk olarak, sorun türü için bazı genel kategoriler tanımlayacaksınız ve ilgili aboneliği seçmelisiniz. Hizmeti (örneğin, **Windows çalıştıran sanal makine**) seçin. Sanal makinenizin adı gibi kaynağı seçin. Sorunu kendi sözcüklerinizle anlaın ve daha fazla bilgi almak için **sorun türü** ve **sorun alt türü** ' nü seçin.
 
 ![Temel Bilgiler dikey penceresi](./media/how-to-create-azure-support-request/basics2lower.png)
 

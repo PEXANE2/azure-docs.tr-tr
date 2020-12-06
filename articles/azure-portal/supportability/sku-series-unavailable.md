@@ -1,18 +1,16 @@
 ---
-title: Bölge veya SKU serisi kullanılamıyor-Azure
+title: Bölge veya SKU serisi kullanılamıyor
 description: Bu bölge için seçili abonelik için bazı SKU serisi kullanılamıyor, bu durum abonelik yönetimi destek isteği gerektirebilir.
-services: Azure Supportability
 author: stevendotwang
-ms.service: azure-supportability
 ms.topic: troubleshooting
 ms.date: 01/27/2020
 ms.author: xingwan
-ms.openlocfilehash: fccde344a06d39bd4bb8e3178444ec20677e2f50
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 2bbe1dff6bbf8fed481300db95482c46b0e8a7b7
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078519"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745290"
 ---
 # <a name="region-or-sku-unavailable"></a>Bölge veya SKU kullanılamıyor
 
@@ -60,15 +58,15 @@ Uygun bir bölge veya SKU bulamıyorsanız, şu adımları izleyerek bir **Abone
 
 1. [Azure Portal](https://portal.azure.com) menüsünde **Yardım + Destek**' i seçin. Ardından **Yeni destek isteği**' ni seçin.
 
-1. **Temel bilgiler**Için, **sorun türü**için **Abonelik yönetimi**' ni seçin.
+1. **Temel bilgiler** Için, **sorun türü** için **Abonelik yönetimi**' ni seçin.
 
 1. Bir **abonelik** seçin ve **Özet**' de kısa bir açıklama girin.
 
    ![Yeni destek isteğinin temelleri sekmesi](./media/SKU-series-unavailable/support-request-basics.png)
 
-1. **Sorun türü**için **sorun türünü seç**' i seçin.
+1. **Sorun türü** için **sorun türünü seç**' i seçin.
 
-1. **Sorun türü seç**için bir seçenek belirleyin, örneğin, **aboneliğime veya kaynak**sorunumu  >  **Yukarıda listelenmeyen**bir seçeneğe tıklayın. **Kaydet**'i seçin.
+1. **Sorun türü seç** için bir seçenek belirleyin, örneğin, **aboneliğime veya kaynak** sorunumu  >  **Yukarıda listelenmeyen** bir seçeneğe tıklayın. **Kaydet**’i seçin.
 
    ![İstek için bir sorun belirtin](./media/SKU-series-unavailable/support-request-select-problem-type.png)
 
@@ -76,7 +74,7 @@ Uygun bir bölge veya SKU bulamıyorsanız, şu adımları izleyerek bir **Abone
 
 1. İletişim bilgileriniz ile birlikte sağlayabilmeniz için ek bilgileri girin.
 
-1. **Gözden geçir + oluştur**’u seçin. Bilgilerinizi doğruladıktan sonra, isteği oluşturmak için **Oluştur** ' u seçin.
+1. **Gözden geçir ve oluştur**’u seçin. Bilgilerinizi doğruladıktan sonra, isteği oluşturmak için **Oluştur** ' u seçin.
 
 ## <a name="send-us-your-suggestions"></a>Önerilerinizi bize gönderin
 

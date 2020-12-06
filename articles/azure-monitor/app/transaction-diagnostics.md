@@ -4,12 +4,12 @@ description: Uçtan uca işlem tanılamayı Application Insights
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
-ms.openlocfilehash: 552e80d6c90a18180ab41dce72e995b6804a91bc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7623b7131e6344a67c468d0436884ebfef9b0058
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002060"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746106"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>Birleştirilmiş çapraz bileşen işlem tanılaması
 
@@ -80,9 +80,7 @@ Olası nedenler:
 
 * Diğer bileşenler Application Insights ile işaretlenmiş mı?
 * En son kararlı Application Insights SDK 'sını kullanıyor musunuz?
-* Bu bileşenler Application Insights kaynakları ayırdıysanız, telemetrisine erişiminizin olması gerekir mi?
-
-Erişiminiz varsa ve bileşenler en son Application Insights SDK 'lar ile birlikte işaretlenmiş ise, en iyi geri bildirim kanalı üzerinden bize bilgi verin.
+* Bu bileşenler ayrı Application Insights kaynaklardır, [erişiminiz varsa ve](resources-roles-access-control.md) bileşenler en son Application Insights SDK 'lar ile birlikte izlendiğinizde, en iyi geri bildirim kanalı üzerinden bize bilgi verin.
 
 *Bağımlılıklar için yinelenen satırlar görüyorum. Bu beklensin mi?*
 

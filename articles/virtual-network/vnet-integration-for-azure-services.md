@@ -12,18 +12,18 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: kumud
-ms.openlocfilehash: b01ade25c6592e68e34eeb542a90cdd0124a0446
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 4a6cd529511d4a2e71e1a31c1600f8a51f455a37
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96738049"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746140"
 ---
 # <a name="integrate-azure-services-with-virtual-networks-for-network-isolation"></a>Azure hizmetlerini ağ yalıtımı için sanal ağlarla tümleştirme
 
-Bir Azure hizmeti için sanal ağ tümleştirmesi, hizmete erişiminizi yalnızca sanal ağ altyapınızla kilitlemenizi sağlar. VNet altyapısı, eşlenmiş sanal ağları ve şirket içi ağları da içerir.
+Azure hizmeti için sanal ağ (VNet) tümleştirmesi, hizmete erişiminizi yalnızca sanal ağ altyapınızla kilitlemenizi sağlar. VNet altyapısı, eşlenmiş sanal ağları ve şirket içi ağları da içerir.
 
-Azure hizmetleri aşağıdaki yöntemlerden birini veya daha fazlasını gerçekleştirerek ağ yalıtımı elde etmenizi ister:
+VNet tümleştirmesi, Azure hizmetlerine ağ yalıtımının avantajlarını sağlar ve aşağıdaki yöntemlerden birini veya daha fazlasını gerçekleştirebilir:
 - [Hizmetin adanmış örneklerini bir sanal ağa dağıtma](virtual-network-service-endpoints-overview.md). Daha sonra hizmetlere sanal ağ ve şirket içi ağlardan özel olarak erişilebilir.
 - [Azure özel bağlantısı](../private-link/private-link-overview.md)tarafından desteklenen bir hizmete özel ve güvenli bir şekilde bağlanan [Özel uç nokta](../private-link/private-endpoint-overview.md) kullanımı. Özel uç nokta, VNet 'iniz tarafından sanal ağınıza etkin bir şekilde hizmet getiren özel bir IP adresi kullanır.
 - Hizmet [uç noktaları](virtual-network-service-endpoints-overview.md)aracılığıyla bir sanal ağı hizmete genişleterek genel uç noktaları kullanarak hizmete erişme. Hizmet uç noktaları, hizmet kaynaklarının sanal ağla güvenliğini sağlar.

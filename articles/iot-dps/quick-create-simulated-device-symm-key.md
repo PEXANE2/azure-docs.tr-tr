@@ -1,6 +1,6 @@
 ---
-title: Hızlı başlangıç-C kullanarak sanal cihazı Azure IoT Hub sağlamak için simetrik anahtar kullanma
-description: Bu hızlı başlangıçta, Azure IoT Hub cihaz sağlama hizmeti (DPS) ile simetrik anahtar kullanan bir sanal cihaz oluşturmak için C cihaz SDK 'sını kullanacaksınız
+title: Hızlı başlangıç-C kullanarak Azure IoT Hub cihazları sağlamak için simetrik anahtar kullanın
+description: Bu hızlı başlangıçta, Azure IoT Hub cihaz sağlama hizmeti (DPS) ile simetrik anahtar kullanan bir cihaz sağlamak için C cihaz SDK 'sını kullanacaksınız
 author: wesmc7777
 ms.author: wesmc
 ms.date: 01/14/2020
@@ -9,20 +9,20 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: ab998756f219cd7bc155f98c2d29454be8018825
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7df7c9ab6bfbc8a39050b78a76114ae2a0a9d9b7
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968222"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746514"
 ---
-# <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>Hızlı Başlangıç: Simetrik anahtarlar ile bir simülasyon cihazı sağlama
+# <a name="quickstart-provision-a-device-with-symmetric-keys"></a>Hızlı başlangıç: simetrik anahtarlarla cihaz sağlama
 
-Bu hızlı başlangıçta, Windows geliştirme makinesi üzerinde bir cihaz simülatörü oluşturmayı ve çalıştırmayı öğreneceksiniz. Bu simülasyon cihazını Cihaz Sağlama Hizmeti örneği ile kimlik doğrulaması yapmak ve bir IoT hub'ına atanmak için bir simetrik anahtar kullanmak üzere yapılandıracaksınız. Sağlamayı başlatan cihaz için önyükleme sırası simülasyonu yapmak için [Azure IoT C SDK'sından](https://github.com/Azure/azure-iot-sdk-c) alınan örnek kod kullanılacaktır. Cihaz, sağlama hizmeti örneği ile ayrı kayıt durumuna göre tanınacak ve bir IoT hub'ına atanacaktır.
+Bu hızlı başlangıçta, bir Windows geliştirme makinesinde Cihaz sağlama kodunun nasıl çalıştırılacağını IoT cihazı olarak bir IoT Hub bağlamak öğreneceksiniz. Bu cihazı bir cihaz sağlama hizmeti örneğiyle simetrik anahtar kimlik doğrulaması kullanacak ve bir IoT Hub 'ına atanacak şekilde yapılandıracaksınız. [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 'sindeki örnek kod, cihazı sağlamak için kullanılacaktır. Cihaz, sağlama hizmeti örneği ile ayrı kayıt durumuna göre tanınacak ve bir IoT hub'ına atanacaktır.
 
 Bu makalede tek bir kayıt ile sağlama işlemi gösterilmektedir, ancak kayıt gruplarını kullanabilirsiniz. Kayıt grupları kullanılırken bazı farklılıklar vardır. Örneğin, cihaz için benzersiz bir kayıt KIMLIĞIYLE türetilmiş bir cihaz anahtarı kullanmanız gerekir. Simetrik anahtar kayıt grupları eski cihazlarla sınırlı olmasa da, [Simetrik anahtar kanıtı kullanarak eski cihazları sağlama](how-to-legacy-device-symm-key.md) bölümünde bir kayıt grubu örneği sağlanmaktadır. Daha fazla bilgi için, bkz. [Simetrik Anahtar Kanıtlama için Grup Kayıtları](concepts-symmetric-key-attestation.md#group-enrollments).
 
-Otomatik sağlama işlemini bilmiyorsanız, [sağlamaya](about-iot-dps.md#provisioning-process) genel bakış konusunu gözden geçirin. 
+Oto sağlama işlemini bilmiyorsanız, [sağlamaya](about-iot-dps.md#provisioning-process) genel bakış konusunu gözden geçirin. 
 
 Ayrıca, bu hızlı başlangıçla devam etmeden önce [IoT Hub Cihazı Sağlama Hizmetini Azure portalla ayarlama](./quick-setup-auto-provision.md) bölümünde bulunan adımları tamamladığınızdan emin olun. Bu hızlı başlangıç, Cihaz Sağlama Hizmeti örneğinizi zaten oluşturmuş olmanızı gerektirir.
 
@@ -32,7 +32,7 @@ Bu makale Windows tabanlı bir iş istasyonuna yöneliktir. Ancak yordamları Li
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki Önkoşullar bir Windows geliştirme ortamı içindir. Linux veya macOS için SDK belgelerinde [geliştirme ortamınızı hazırlama](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) konusunun ilgili bölümüne bakın.
 
@@ -46,7 +46,7 @@ Aşağıdaki Önkoşullar bir Windows geliştirme ortamı içindir. Linux veya m
 
 Bu bölümde, [Azure IoT C SDK'sını](https://github.com/Azure/azure-iot-sdk-c) oluşturmak için kullanılan geliştirme ortamını hazırlayacaksınız. 
 
-SDK bir simülasyon cihazı için örnek kod içerir. Simülasyon cihazı, cihazın önyükleme dizisi sırasında sağlamayı dener.
+SDK, cihazlar için sağlama örnek kodunu içerir. Bu kod, cihazın önyükleme sırası sırasında sağlamayı dener.
 
 1. [CMake derleme sistemini](https://cmake.org/download/)indirin.
 
@@ -73,7 +73,7 @@ SDK bir simülasyon cihazı için örnek kod içerir. Simülasyon cihazı, cihaz
     cd cmake
     ```
 
-5. SDK’nın geliştirme istemci platformunuza ve özgü bir sürümünü oluşturmak için aşağıdaki komutu çalıştırın. `cmake` dizininde simülasyon cihazı için bir Visual Studio çözümü de oluşturulur. 
+5. SDK’nın geliştirme istemci platformunuza ve özgü bir sürümünü oluşturmak için aşağıdaki komutu çalıştırın. Dizinde, cihaz sağlama kodu için bir Visual Studio çözümü oluşturulacaktır `cmake` . 
 
     ```cmd
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
@@ -123,7 +123,7 @@ SDK bir simülasyon cihazı için örnek kod içerir. Simülasyon cihazı, cihaz
 
 <a id="firstbootsequence"></a>
 
-## <a name="simulate-first-boot-sequence-for-the-device"></a>Cihazın ilk önyükleme sırasını benzetim olarak çalıştırma
+## <a name="run-the-provisioning-code-for-the-device"></a>Cihaz için sağlama kodunu çalıştırın
 
 Bu bölümde cihazın önyükleme sırasını Cihaz Sağlama Hizmeti örneğinize göndermek için örnek kodu güncelleştireceksiniz. Bu önyükleme sırası cihazın tanınmasına ve Cihaz Sağlama Hizmeti örneğine bağlı bir IoT hub'ına atanmasına neden olur.
 
@@ -158,7 +158,7 @@ Bu bölümde cihazın önyükleme sırasını Cihaz Sağlama Hizmeti örneğiniz
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. `prov_dev_set_symmetric_key_info()` **Prov \_ dev \_ Client \_ Sample. c** ' de, açıklama eklenen çağrısını bulun.
+6. `prov_dev_set_symmetric_key_info()`, Açıklama eklenen **prov \_ dev \_ Client \_ Sample. c** dosyasında öğesine yapılan çağrıyı bulun.
 
     ```c
     // Set the symmetric key if using they auth type
@@ -176,9 +176,9 @@ Bu bölümde cihazın önyükleme sırasını Cihaz Sağlama Hizmeti örneğiniz
 
 7. **prov\_dev\_client\_sample** projesine sağ tıklayın ve **Başlangıç Projesi Olarak Ayarla**’yı seçin. 
 
-8. Çözümü çalıştırmak için Visual Studio menüsünde Hata **ayıklama**  >  **olmadan Başlat** ' ı seçin. Projeyi yeniden oluşturmak için istemde, çalıştırmadan önce projeyi yeniden derlemek için **Evet**' i seçin.
+8. Çözümü çalıştırmak için Visual Studio menüsünde Hata **ayıklama**  >  **olmadan Başlat** ' ı seçin. Projeyi yeniden derle isteminde, çalıştırmadan önce projeyi yeniden derlemek için **Evet** ' i seçin.
 
-    Aşağıdaki çıkış, bir simülasyon cihazının başarıyla önyüklemesini yapma ve bir IoT hub’ına atanmak üzere sağlama Hizmeti örneğine bağlanma işlemlerinin bir örneğidir:
+    Aşağıdaki çıktı, bir IoT Hub 'ına atanacak sağlama hizmeti örneğine başarıyla bağlanan bir cihazın örneğidir:
 
     ```cmd
     Provisioning API Version: 1.2.8
@@ -194,7 +194,7 @@ Bu bölümde cihazın önyükleme sırasını Cihaz Sağlama Hizmeti örneğiniz
     Press enter key to exit:
     ```
 
-9. Portalda, sanal cihazınızın atandığı IoT Hub 'ına gidin ve **IoT cihazları** sekmesini seçin. Hub 'ın simülasyonu başarıyla sağlanmasından sonra cihaz KIMLIĞI **IoT cihazları** dikey penceresinde, *durumu* **etkin** olarak görünür. Üstteki **Yenile** düğmesine basmanız gerekebilir. 
+9. Portalda, cihazınızın atandığı IoT Hub 'ına gidin ve **IoT cihazları** sekmesini seçin. Cihazın hub 'a başarıyla sağlanması sırasında cihaz KIMLIĞI **IoT cihazları** dikey penceresinde *durumu* **etkin** olarak görüntülenir. Üstteki **Yenile** düğmesine basmanız gerekebilir. 
 
     ![Cihaz IOT hub'da kayıtlı](./media/quick-create-simulated-device-symm-key/hub-registration.png) 
 
@@ -209,7 +209,7 @@ Cihaz istemci örneğini üzerinde çalışmaya ve keşfetmeye devam etmeyi plan
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Windows makinenizde bir sanal cihaz oluşturdunuz ve portaldaki Azure IoT Hub cihaz sağlama hizmeti ile simetrik anahtar kullanarak IoT Hub 'ınıza sağladınız. Cihazınızı programlı bir şekilde kaydetmeyi öğrenmek için, X. 509.440 cihazlarının programlı kaydı için hızlı başlangıç 'a geçin. 
+Bu hızlı başlangıçta, Windows makinenizde cihaz sağlama kodu çalıştırdınız.  Cihazın kimliği doğrulandı ve simetrik bir anahtar kullanılarak IoT Hub 'ınıza sağlandı. X. 509.440 sertifika cihazının nasıl sağlanacağını öğrenmek için X. 509.440 cihazlarının hızlı başlangıç adımlarına devam edin. 
 
 > [!div class="nextstepaction"]
-> [Azure hızlı başlangıç-X. 509.440 cihazlarını Azure IoT Hub cihaz sağlama hizmeti 'ne kaydetme](quick-enroll-device-x509-java.md)
+> [Azure hızlı başlangıç-Azure IoT C SDK 'sını kullanarak bir X. 509.440 cihazı sağlama](quick-create-simulated-device-x509.md)

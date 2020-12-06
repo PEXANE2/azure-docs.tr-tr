@@ -1,18 +1,18 @@
 ---
-title: Azure Işlevleri özel işleyiciler (Önizleme)
+title: Azure Işlevleri özel işleyiciler
 description: Herhangi bir dil veya çalışma zamanı sürümü ile Azure Işlevleri 'ni kullanmayı öğrenin.
 author: anthonychu
 ms.author: antchu
-ms.date: 8/18/2020
+ms.date: 12/1/2020
 ms.topic: article
-ms.openlocfilehash: 402ce1e9e92ab87689abe9c18a503a479d7421f9
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 099f90ba8c5d9dabb6c4c505e50d8c077e3eaf0f
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164559"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746038"
 ---
-# <a name="azure-functions-custom-handlers-preview"></a>Azure Işlevleri özel işleyiciler (Önizleme)
+# <a name="azure-functions-custom-handlers"></a>Azure Işlevleri özel işleyiciler
 
 Her Işlevler uygulaması dile özgü bir işleyici tarafından yürütülür. Azure Işlevleri varsayılan olarak birçok [dil işleyicisini](./supported-languages.md) desteklese de, diğer dilleri veya çalışma zamanlarını kullanmak isteyebileceğiniz durumlar vardır.
 
@@ -20,10 +20,12 @@ Her Işlevler uygulaması dile özgü bir işleyici tarafından yürütülür. A
 
 Özel işleyiciler şunları yapmak istediğiniz durumlar için idealdir:
 
-- İşlev uygulamasını, Go ve Rust gibi şu anda desteklenmeyen bir dilde uygulayın.
+- İşlev uygulamasını, Go veya Rust gibi şu anda desteklenmeyen bir dilde uygulayın.
 - Bir işlev uygulamasını Şu anda desteklenmeyen bir çalışma zamanında (deno gibi) uygulayın.
 
 Özel işleyicilerle, [uzantı paketleri](./functions-bindings-register.md)aracılığıyla [Tetikleyicileri ve giriş ve çıkış bağlamalarını](./functions-triggers-bindings.md) kullanabilirsiniz.
+
+[Go ve Rust 'ta hızlı](create-first-function-vs-code-other.md)başlangıçlarla Azure işlevleri özel işleyicileri ile çalışmaya başlayın.
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -36,7 +38,7 @@ Aşağıdaki diyagramda, Işlevler ana bilgisayarı ile özel işleyici olarak u
 1. Web sunucusu bağımsız işlevi yürütür ve Işlevler ana bilgisayarına bir [Yanıt yükü](#response-payload) döndürür.
 1. Işlevler ana bilgisayarı, işleme için işlevin çıkış bağlamalarına yapılan yanıttan verileri geçirir.
 
-Özel işleyici olarak uygulanan bir Azure Işlevleri uygulamasının, dosyalarda *host.js*, *local.settings.js*ve *function.js* bazı kurallara göre yapılandırmak gerekir.
+Özel işleyici olarak uygulanan bir Azure Işlevleri uygulamasının, dosyalarda *host.js*, *local.settings.js* ve *function.js* bazı kurallara göre yapılandırmak gerekir.
 
 ## <a name="application-structure"></a>Uygulama yapısı
 
@@ -47,7 +49,7 @@ Aşağıdaki diyagramda, Işlevler ana bilgisayarı ile özel işleyici olarak u
 - Her işlev için dosyadaki bir *function.js* (işlev adıyla eşleşen bir klasör içinde)
 - Bir Web sunucusu çalıştıran bir komut, betik veya yürütülebilir dosya
 
-Aşağıdaki diyagramda, bu dosyaların "MyQueueFunction" adlı bir işlev ve *handler.exe*adlı özel bir işleyici yürütülebilir dosyası için dosya sistemine nasıl bakılacağı gösterilmektedir.
+Aşağıdaki diyagramda, bu dosyaların "MyQueueFunction" adlı bir işlev ve *handler.exe* adlı özel bir işleyici yürütülebilir dosyası için dosya sistemine nasıl bakılacağı gösterilmektedir.
 
 ```bash
 | /MyQueueFunction
@@ -109,7 +111,7 @@ Giriş ve çıkış bağlamalarıyla birlikte standart Tetikleyiciler, *host.js*
 
 *local.settings.js* , işlev uygulamasını yerel olarak çalıştırırken kullanılan uygulama ayarlarını tanımlar. Gizli dizi içerebilen *local.settings.js* , kaynak denetiminden dışlanmalıdır. Azure 'da bunun yerine uygulama ayarlarını kullanın.
 
-Özel işleyiciler için, `FUNCTIONS_WORKER_RUNTIME` `Custom` * üzerindelocal.settings.js*olarak ayarlayın.
+Özel işleyiciler için, `FUNCTIONS_WORKER_RUNTIME` `Custom` *üzerindelocal.settings.js* olarak ayarlayın.
 
 ```json
 {
@@ -125,9 +127,9 @@ Giriş ve çıkış bağlamalarıyla birlikte standart Tetikleyiciler, *host.js*
 
 ### <a name="function-metadata"></a>İşlev meta verileri
 
-Özel bir işleyiciyle kullanıldığında, içerik * üzerindekifunction.js* başka bir bağlam altında bir işlevi nasıl tanımlayacağınızdan farklı değildir. Tek gereksinim, dosyalardaki *function.js* , işlev adıyla eşleşecek şekilde adlı bir klasörde olmalıdır.
+Özel bir işleyiciyle kullanıldığında, içerik *üzerindekifunction.js* başka bir bağlam altında bir işlevi nasıl tanımlayacağınızdan farklı değildir. Tek gereksinim, dosyalardaki *function.js* , işlev adıyla eşleşecek şekilde adlı bir klasörde olmalıdır.
 
-Üzerinde aşağıdaki *function.js* , bir kuyruk tetikleyicisi ve bir sıra çıkış bağlaması olan bir işlevi yapılandırır. *Myqueuefunction*adlı bir klasörde olduğundan, *myqueuefunction*adlı bir işlevi tanımlar.
+Üzerinde aşağıdaki *function.js* , bir kuyruk tetikleyicisi ve bir sıra çıkış bağlaması olan bir işlevi yapılandırır. *Myqueuefunction* adlı bir klasörde olduğundan, *myqueuefunction* adlı bir işlevi tanımlar.
 
 **Üzerinde MyQueueFunction/function.js**
 
@@ -189,9 +191,9 @@ Kurala göre, işlev yanıtları anahtar/değer çiftleri olarak biçimlendirili
 
 | <nobr>Yük anahtarı</nobr>   | Veri türü | Açıklamalar                                                      |
 | ------------- | --------- | ------------------------------------------------------------ |
-| `Outputs`     | object    | `bindings` *function.json*öğesinde dizi tarafından tanımlanan yanıt değerlerini barındırır.<br /><br />Örneğin, bir işlev "myQueueOutput" adlı bir sıra çıkış bağlaması ile yapılandırıldıysa `Outputs` adlı bir anahtar içerir `myQueueOutput` ve bu, özel işleyici tarafından kuyruğa gönderilen iletilere ayarlanır. |
+| `Outputs`     | object    | `bindings` *function.json* öğesinde dizi tarafından tanımlanan yanıt değerlerini barındırır.<br /><br />Örneğin, bir işlev "myQueueOutput" adlı bir sıra çıkış bağlaması ile yapılandırıldıysa `Outputs` adlı bir anahtar içerir `myQueueOutput` ve bu, özel işleyici tarafından kuyruğa gönderilen iletilere ayarlanır. |
 | `Logs`        | array     | İletiler, Işlev çağırma günlüklerinde görüntülenir.<br /><br />Azure 'da çalışırken iletiler Application Insights görüntülenir. |
-| `ReturnValue` | dize    | function.jsdosyadaki bir çıktı yapılandırıldığında bir yanıt sağlamak için kullanılır `$return` . *function.json* |
+| `ReturnValue` | string    | function.jsdosyadaki bir çıktı yapılandırıldığında bir yanıt sağlamak için kullanılır `$return` . *function.json* |
 
 Bu bir yanıt yükünün örneğidir.
 
@@ -226,7 +228,7 @@ Bu örnekte uygulanan senaryo, `order` bir `POST` ürün sırasını temsil eden
 
 #### <a name="implementation"></a>Uygulama
 
-*Order*adlı bir klasörde, dosyadaki *function.js* , http ile tetiklenen işlevi yapılandırır.
+*Order* adlı bir klasörde, dosyadaki *function.js* , http ile tetiklenen işlevi yapılandırır.
 
 **sipariş/function.jsaçık**
 
@@ -415,7 +417,7 @@ Aşağıdaki örnek, HTTP ile tetiklenen bir işlevin ek bağlama veya çıkış
 
 #### <a name="implementation"></a>Uygulama
 
-*Hello*adlı bir klasörde, dosyadaki *function.js* , http ile tetiklenen işlevi yapılandırır.
+*Hello* adlı bir klasörde, dosyadaki *function.js* , http ile tetiklenen işlevi yapılandırır.
 
 **üzerinde Merhaba/function.js**
 
@@ -544,7 +546,7 @@ func azure functionapp publish $functionAppName
 
 Özel işleyici işleminiz başlayamazsa veya Işlevler ana bilgisayarıyla iletişim kurma sorunları içeriyorsa, `Trace` konaktan daha fazla tanılama iletisi görmek için, işlev uygulamasının günlük düzeyini olarak artırabilirsiniz.
 
-İşlev uygulamasının varsayılan günlük düzeyini değiştirmek için `logLevel` `logging` *host.jsüzerindeki*bölümündeki ayarı yapılandırın.
+İşlev uygulamasının varsayılan günlük düzeyini değiştirmek için `logLevel` `logging` *host.jsüzerindeki* bölümündeki ayarı yapılandırın.
 
 ```json
 {
@@ -578,8 +580,12 @@ Bu stratejiyi, özel işleyicinizde otomatik testler çalıştırmak için CI/CD
 
 Özel işleyiciler, tipik bir Azure Işlevleri uygulamasıyla aynı ortamda çalışır. Ortamın çalışması için gereken tüm bağımlılıkları içerdiğinden emin olmak için işleyicinizi test edin. Ek bağımlılıklar gerektiren uygulamalar için, bunları Azure Işlevleri [Premium planında](functions-premium-plan.md)barındırılan [özel bir kapsayıcı görüntüsü](functions-create-function-linux-custom-image.md) kullanarak çalıştırmanız gerekebilir.
 
-### <a name="get-support"></a>Destek alın
+### <a name="get-support"></a>Destek alma
 
 Özel işleyicilerle bir işlev uygulaması için yardıma ihtiyacınız varsa, normal destek kanalları aracılığıyla bir istek gönderebilirsiniz. Ancak, özel işleyiciler uygulamaları oluşturmak için kullanılan çok çeşitli diller nedeniyle destek sınırsız değildir.
 
 Işlevler ana bilgisayarında özel işleyici işlemiyle başlayan veya iletişim kuran sorunlar varsa destek sağlanır. Özel işleyici sürecinizin, seçilen dil veya çerçeve ile ilgili sorunlar gibi iç çalışmalarını özel sorunlar için, destek ekibimiz bu bağlamda yardım sağlayamadı.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+[Özel işleyiciler hızlı](create-first-function-vs-code-other.md)başlangıcı ile Go veya Rust 'Ta bir Azure işlevleri uygulaması oluşturmaya başlayın.

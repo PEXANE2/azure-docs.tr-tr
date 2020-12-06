@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: 61ee0b769664d1f574177e27b5b1fb10e9845035
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a67a721b8d94112347282e1cd9be4d43f4ac85da
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463095"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744644"
 ---
 # <a name="configure-a-managed-application-plan"></a>Yönetilen uygulama planını yapılandırma
 
@@ -188,4 +188,4 @@ Bir veya daha fazla plan oluşturduktan sonra plan adı, plan KIMLIĞI, plan tü
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure uygulama teklifinizi test etme ve yayımlama](create-new-azure-apps-offer-test-publish.md).
-- [Azure uygulama teklifinizi](create-new-azure-apps-offer-marketing.md) Microsoft ile ortak satış üzerinden pazara sunma ve CSP programları aracılığıyla yeniden satma hakkında bilgi edinin.
+- [Azure uygulama teklifinizi](create-new-azure-apps-offer-marketing.md) Microsoft ile ortak satış aracılığıyla satma ve CSP programlarını kullanarak yeniden satma hakkında bilgi edinin.

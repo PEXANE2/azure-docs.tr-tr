@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: 74f4391fcd071ac510fc66b2f8bc36ec4549dc47
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: e6a92282d2bcd316a771742048dacd9a7181de4f
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575763"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746191"
 ---
 # <a name="sensitivity-label-insights-about-your-data-in-azure-purview"></a>Azure purview 'daki verileriniz hakkında duyarlılık etiketi öngörüleri
 
@@ -48,6 +48,9 @@ Duyarlılık etiketleri, belirli verilerin kuruluşunuzda ne kadar hassas olduğ
 Sınıflandırmalar doğrudan eşleştirirken (sosyal güvenlik numarası bir **sosyal güvenlik numarası** sınıflandırmasına sahiptir), bir veya daha fazla sınıflandırma ve senaryo birlikte bulunduğunda duyarlık etiketleri uygulanır. 
 
 Takip, Microsoft 365 olarak gizli bilgi türleri olarak da bilinen aynı sınıflandırmaları kullanır. Bu, mevcut duyarlılık etiketlerinizi Azure purview varlıklarınız genelinde genişletmenizi sağlar.
+
+> [!NOTE]
+> Kaynak türlerinizi taradıktan sonra, yeni varlıkları yansıtmak için **duyarlık etiketleme** öngörülerini birkaç saat daha verin.
 
 **Duyarlılık etiketleme öngörülerini görüntülemek için:**
 

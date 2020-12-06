@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 06/15/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 204a656194af9473defc8cf983526dd2b8266021
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 63d880146a0b068a5d097c452c14b28db4907098
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839820"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743964"
 ---
 # <a name="features-and-licenses-for-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication yönelik özellikler ve lisanslar
 
@@ -41,7 +41,7 @@ Azure AD Multi-Factor Authentication, kuruluşunuzun ihtiyaçlarına bağlı ola
 
 Aşağıdaki tabloda, çeşitli Azure AD Multi-Factor Authentication sürümlerinde kullanılabilen özelliklerin bir listesi verilmiştir. Kullanıcı kimlik doğrulamasının güvenliğini sağlamak için gereksinimlerinizi planlayın, ardından hangi yaklaşımın bu gereksinimleri karşıladığını saptayın. Örneğin, Azure AD Multi-Factor Authentication sağlayan güvenlik varsayılanlarını Azure AD Ücretsiz, ancak telefon araması veya SMS değil, kimlik doğrulama istemi için yalnızca mobil kimlik doğrulayıcı uygulaması kullanılabilir. Mobil kimlik doğrulama uygulamasının bir kullanıcının kişisel cihazında yüklü olduğundan emin değilseniz bu yaklaşım bir sınırlama olabilir.
 
-| Öne çıkan özelliği | Azure AD Ücretsiz-güvenlik Varsayılanları | Azure AD Ücretsiz-Azure AD Genel yöneticileri | Microsoft 365 uygulamaları | Azure AD Premium P1 veya P2 |
+| Özellik | Azure AD Ücretsiz-güvenlik Varsayılanları | Azure AD Ücretsiz-Azure AD Genel yöneticileri | Microsoft 365 uygulamaları | Azure AD Premium P1 veya P2 |
 | --- |:---:|:---:|:---:|:---:|
 | MFA ile Azure AD kiracı yönetici hesaplarını koruma | ● | ● (Yalnızca *Azure AD Genel yönetici* hesapları) | ● | ● |
 | İkinci bir faktör olarak mobil uygulama | ● | ● | ● | ● |

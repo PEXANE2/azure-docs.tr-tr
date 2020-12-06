@@ -8,19 +8,19 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: d84e1508dec4d4a5802f7a2ac8c0e6ada5a8044c
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 28c0be40387f411286230f94c19fa23a80e650af
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128700"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746412"
 ---
 # <a name="how-to-add-technical-details-for-your-saas-offer"></a>SaaS teklifinizin teknik ayrıntılarını ekleme
 
 Bu makalede, Microsoft Commercial Market 'in çözümünüze bağlanmasına yardımcı olacak teknik ayrıntıların nasıl girilmesi açıklanmaktadır. Bu bağlantı, teklifi edinmeyi ve yönetmeyi tercih ettiklerinde müşteri için teklifinizi sağlamamızı sağlar. Bu ayarlar hakkında daha fazla bilgi için bkz. [Teknik bilgiler](plan-saas-offer.md#technical-information).
 
 > [!NOTE]
-> İşlemleri bağımsız olarak işlemeyi seçerseniz, bu seçeneği görmezsiniz. Bunun yerine, [SaaS teklifinizi pazara sunma](create-new-saas-offer-marketing.md)bölümüne atlayın.
+> İşlemleri bağımsız olarak işlemeyi seçerseniz, bu seçeneği görmezsiniz. Bunun yerine, [SaaS teklifinizi satma](create-new-saas-offer-marketing.md)bölümüne atlayın.
 
 ## <a name="technical-configuration"></a>Teknik yapılandırma
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 96e22beb9f9b088e698f0db12104f526af2b936b
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 5c3bfbdf133777f0bc219d1306f80bd4d38b56ea
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94989462"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746276"
 ---
 # <a name="configure-ddos-attack-mitigation-reports-and-flow-logs"></a>DDoS saldırı azaltma raporları ve akış günlükleri 
 
@@ -74,7 +74,7 @@ Bu [şablon](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%2
 
 ### <a name="azure-sentinel-data-connector"></a>Azure Sentinel veri Bağlayıcısı
 
-Azure Sentinel 'e bağlanarak verilerinizi çalışma kitaplarında görüntüleyebilir ve analiz edebilir, özel uyarılar oluşturabilir ve bunları araştırma işlemlerine ekleyebilirsiniz. Azure Sentinel 'e bağlanmak için bkz. [Azure Sentinel 'e bağlanma](../sentinel/connect-azure-ddos-protection.md). 
+Saldırıya karşı risk azaltma akış günlüklerini Azure Sentinel 'e bağlayabilirsiniz, çalışma kitaplarında verilerinizi görüntüleyip analiz edebilir, özel uyarılar oluşturabilir ve bunları araştırma süreçlerine ekleyebilirsiniz. Azure Sentinel 'e bağlanmak için bkz. [Azure Sentinel 'e bağlanma](../sentinel/connect-azure-ddos-protection.md). 
 
 ![Azure Sentinel DDoS Bağlayıcısı](./media/ddos-attack-telemetry/azure-sentinel-ddos.png)
 

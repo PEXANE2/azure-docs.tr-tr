@@ -5,26 +5,25 @@ author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 01/27/2020
 ms.topic: how-to
-ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: bd4a770aee43709c46ab4c1baf965941d8d2c3ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eadf740c6b5caccbf678a1238f993d4ec0b34095
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763865"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745426"
 ---
 # <a name="standard-quota-increase-limits-by-region"></a>Standart kota: bölgelere göre limitleri artırma
 
 Azure Resource Manager sanal makineler için iki tür vCPU kotasını destekler:
 
-* *Kullandıkça Öde VM 'leri* ve *ayrılmış VM örnekleri* , *Standart bir vCPU kotasına*tabidir.
-* *Spot VM 'ler* bir *spot vCPU kotasına*tabidir.
+* *Kullandıkça Öde VM 'leri* ve *ayrılmış VM örnekleri* , *Standart bir vCPU kotasına* tabidir.
+* *Spot VM 'ler* bir *spot vCPU kotasına* tabidir.
 
 Kullandıkça öde ve ayrılmış sanal makine örnekleri için standart vCPU kotası, her bölgedeki her bir abonelik için iki katmanda zorlanır:
 
 * İlk katman, tüm VM serileri genelinde *Toplam bölgesel vCPU sayısı*.
-* İkinci katman, D serisi vCPU 'Lar gibi *VM başına seri vCPU sayısı sınırı*olur.
+* İkinci katman, D serisi vCPU 'Lar gibi *VM başına seri vCPU sayısı sınırı* olur.
 
 Yeni bir spot VM dağıttığınızda, bu VM Serisi için yeni ve mevcut vCPU kullanımı, söz konusu VM Serisi için onaylanan vCPU kotasını aşmamalıdır. Ayrıca, tüm VM dizileri arasında dağıtılan yeni ve var olan vCPU 'ların toplam sayısı, abonelik için onaylanan toplam bölgesel vCPU kotasını aşmamalıdır. Bu kotalardan biri aşılırsa, VM dağıtımına izin verilmez.
 
@@ -46,27 +45,27 @@ Bölgeye göre vCPU standart kota sınırınıza iki şekilde bir artış isteğ
 
    !["Yardım + destek" bağlantısı](./media/resource-manager-core-quotas-request/help-plus-support.png)
 
-1. **Yardım + Destek**bölümünde **Yeni destek isteği**' ni seçin.
+1. **Yardım + Destek** bölümünde **Yeni destek isteği**' ni seçin.
 
     ![Yeni destek isteği](./media/resource-manager-core-quotas-request/new-support-request.png)
 
-1. **Sorun türü**için **hizmet ve abonelik sınırları (kotalar)** öğesini seçin.
+1. **Sorun türü** için **hizmet ve abonelik sınırları (kotalar)** öğesini seçin.
 
    ![Sorun türü seçin](./media/resource-manager-core-quotas-request/select-quota-issue-type.png)
 
-1. **Abonelik**için, kotasını artırmak istediğiniz aboneliği seçin.
+1. **Abonelik** için, kotasını artırmak istediğiniz aboneliği seçin.
 
    ![Abonelik seçme](./media/resource-manager-core-quotas-request/select-subscription-support-request.png)
 
-1. **Kota türü**Için **diğer istekler**' i seçin.
+1. **Kota türü** Için **diğer istekler**' i seçin.
 
    ![Kota türü seçin](./media/resource-manager-core-quotas-request/regional-quotatype.png)
 
-1. **İleri ' yi seçin:** **Sorun ayrıntılarını**açma çözümleri. **Açıklama**' da aşağıdaki bilgileri sağlayın:
+1. **İleri ' yi seçin:** **Sorun ayrıntılarını** açma çözümleri. **Açıklama**' da aşağıdaki bilgileri sağlayın:
 
-    1. **Dağıtım modeli**için **Kaynak Yöneticisi**belirtin.  
-    1. **Bölge**için gerekli bölgenizi belirtin, örneğin **Doğu ABD 2**.  
-    1. **Yeni sınır**için bölge için yeni bir vCPU sınırı belirtin. Bu değer, bu abonelik için ayrı SKU serisi için onaylanan kotaların toplamını aşmamalıdır.
+    1. **Dağıtım modeli** için **Kaynak Yöneticisi** belirtin.  
+    1. **Bölge** için gerekli bölgenizi belirtin, örneğin **Doğu ABD 2**.  
+    1. **Yeni sınır** için bölge için yeni bir vCPU sınırı belirtin. Bu değer, bu abonelik için ayrı SKU serisi için onaylanan kotaların toplamını aşmamalıdır.
 
     ![Kota isteğine ilişkin ayrıntıları girin](./media/resource-manager-core-quotas-request/regional-details.png)
 
@@ -74,9 +73,9 @@ Bölgeye göre vCPU standart kota sınırınıza iki şekilde bir artış isteğ
 
 ## <a name="request-a-quota-increase-by-region-from-subscriptions"></a>Aboneliklerden bölgeye göre kota artışı isteyin
 
-**Aboneliklerden**bölgeye göre vCPU kotası artışı istemek için:
+**Aboneliklerden** bölgeye göre vCPU kotası artışı istemek için:
 
-1. [Azure Portal](https://portal.azure.com), **abonelikleri**arayıp seçin.
+1. [Azure Portal](https://portal.azure.com), **abonelikleri** arayıp seçin.
 
    ![Azure portal abonelikler 'e git](./media/resource-manager-core-quotas-request/search-for-subscriptions.png)
 
@@ -96,11 +95,11 @@ Bölgeye göre vCPU standart kota sınırınıza iki şekilde bir artış isteğ
 
    ![Kota türünü seçin](./media/resource-manager-core-quotas-request/regional-quotatype.png)
 
-1. **İleri ' yi seçin:** **Sorun ayrıntılarını**açma çözümleri. **Açıklama** kutusunda, aşağıdaki ek bilgileri belirtin:
+1. **İleri ' yi seçin:** **Sorun ayrıntılarını** açma çözümleri. **Açıklama** kutusunda, aşağıdaki ek bilgileri belirtin:
 
-    1. **Dağıtım modeli**için **Kaynak Yöneticisi**belirtin.  
-    1. **Bölge**için gerekli bölgenizi belirtin, örneğin **Doğu ABD 2**.  
-    1. **Yeni sınır**için bölge için yeni bir vCPU sınırı belirtin. Bu değer, bu abonelik için ayrı SKU serisi için onaylanan kotaların toplamını aşmamalıdır.
+    1. **Dağıtım modeli** için **Kaynak Yöneticisi** belirtin.  
+    1. **Bölge** için gerekli bölgenizi belirtin, örneğin **Doğu ABD 2**.  
+    1. **Yeni sınır** için bölge için yeni bir vCPU sınırı belirtin. Bu değer, bu abonelik için ayrı SKU serisi için onaylanan kotaların toplamını aşmamalıdır.
 
     ![Ayrıntılara bilgi girin](./media/resource-manager-core-quotas-request/regional-details.png)
 
