@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 04/15/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7ac03ff017f8beefe7cc487cdc32741ac1c5a35
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5ba1e280e3c14a24e33246799ca0d7ef8221294f
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94838187"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741703"
 ---
 # <a name="troubleshooting-combined-security-information-registration"></a>Birleşik güvenlik bilgileri kaydı sorunlarını giderme
 
@@ -68,7 +68,7 @@ Yönetici olarak, bir kullanıcının Multi-Factor Authentication ayarlarını s
 
 Aşağıdaki adımlar, bir kullanıcıyı veya kullanıcı grubunu geri almanıza yardımcı olur.
 
-#### <a name="prerequisites"></a>Ön koşullar
+#### <a name="prerequisites"></a>Önkoşullar
 
 1. Uygun Azure AD PowerShell modüllerini yükler. Bir PowerShell penceresinde, modülleri yüklemek için şu komutları çalıştırın:
 
@@ -139,7 +139,7 @@ Aşağıdaki adımlar, bir kullanıcıyı veya kullanıcı grubunu geri almanız
    }
    ```
 
-#### <a name="rollback"></a>Etkin
+#### <a name="rollback"></a>Geri alma
 
 Bir PowerShell penceresinde, komut dosyası ve Kullanıcı dosyası konumlarını sağlayarak aşağıdaki komutu çalıştırın. İstendiğinde genel yönetici kimlik bilgilerini girin. Komut dosyası her bir Kullanıcı güncelleştirme işleminin sonucunu çıktı olarak dolacak.
 

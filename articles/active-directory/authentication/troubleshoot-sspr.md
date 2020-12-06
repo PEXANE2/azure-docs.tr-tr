@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 08/26/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e661bd24acbb15ced9f5bb0a0fba7eec51eae06
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 7099de23b825fa7af203dff9696bb53e23a099c8
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363547"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741125"
 ---
 # <a name="troubleshoot-self-service-password-reset-in-azure-active-directory"></a>Azure Active Directory içinde self servis parola sıfırlama sorunlarını giderme
 
@@ -136,7 +136,7 @@ Size uygun bir şekilde yardımcı olması için, bir servis talebi açarken mü
 
   * En altta destek kodu olmayan bir sayfadan karşılaşırsanız, F12 ' yi seçin ve SID ve CıD için arama yapın ve bu iki sonucu destek mühendisine gönderin.
 * **Tarih, saat ve saat dilimi**: Hatanın gerçekleştiği *saat dilimiyle* kesin tarih ve saati dahil edin.
-* **Kullanıcı kimliği**: hatayı seçen kullanıcı kim? *Kullanıcı \@ contoso.com*bir örnektir.
+* **Kullanıcı kimliği**: hatayı seçen kullanıcı kim? *Kullanıcı \@ contoso.com* bir örnektir.
    * Bu bir Federasyon kullanıcısı mı?
    * Bu bir geçişli kimlik doğrulama kullanıcısı mı?
    * Bu, Parola karması ile eşitlenen bir Kullanıcı mı?

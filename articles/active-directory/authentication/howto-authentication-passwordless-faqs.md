@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 08/19/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5cc6847332765419001eadc5944905f55a425ef
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 98cb990ede7c4d6e261bba05b0b8c97d758e6c32
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964800"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743539"
 ---
 # <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad-preview"></a>Azure AD 'de karma FIDO2 güvenlik anahtarları için dağıtım hakkında sık sorulan sorular (SSS) (Önizleme)
 
@@ -69,7 +69,7 @@ FIDO2 güvenlik anahtarlarını kaydetme ve kullanma hakkında daha fazla bilgi 
 
 Hayır, şu anda değil.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Internet bağlantısı yoksa bu özellik çalışır mı?](#does-this-feature-work-if-theres-no-internet-connectivity)
 * [Azure AD 'de açık olması gereken belirli uç noktaları nelerdir?](#what-are-the-specific-end-points-that-are-required-to-be-open-to-azure-ad)
@@ -111,7 +111,7 @@ Windows 10 istemci cihazının doğru etki alanına katılması türü olup olma
 Dsregcmd/status
 ```
 
-Aşağıdaki örnek çıktıda, *Azureadkatıldığında* 'un *Evet*olarak AYARLANDıĞı, cihazın Azure AD 'ye katılmış olduğu gösterilmektedir:
+Aşağıdaki örnek çıktıda, *Azureadkatıldığında* 'un *Evet* olarak AYARLANDıĞı, cihazın Azure AD 'ye katılmış olduğu gösterilmektedir:
 
 ```output
 +---------------------+
@@ -123,7 +123,7 @@ EnterpriseJoined: NO
 DomainedJoined: NO
 ```
 
-Aşağıdaki örnek çıktıda, *Domainedkatıldığında* 'un da *Evet*olarak ayarlandığı, cihazın karma Azure AD 'ye katılmış olduğu gösterilmektedir. *DomainName* de gösterilir:
+Aşağıdaki örnek çıktıda, *Domainedkatıldığında* 'un da *Evet* olarak ayarlandığı, cihazın karma Azure AD 'ye katılmış olduğu gösterilmektedir. *DomainName* de gösterilir:
 
 ```output
 +---------------------+
@@ -160,7 +160,7 @@ Windows Server 2016 veya 2019 etki alanı denetleyicisinde aşağıdaki düzeltm
 
 Hayır, bu özellik yalnızca şirket içi cihaz için desteklenmiyor. FIDO2 kimlik bilgisi sağlayıcısı gösterilmez.
 
-### <a name="fido2-security-key-sign-in-isnt-working-for-my-domain-admin-or-other-high-privilege-accounts-why"></a>FIDO2 güvenlik anahtarı oturum açma, etki alanı yöneticisi veya diğer yüksek ayrıcalıklı hesaplar için çalışmıyor. Neden mi?
+### <a name="fido2-security-key-sign-in-isnt-working-for-my-domain-admin-or-other-high-privilege-accounts-why"></a>FIDO2 güvenlik anahtarı oturum açma, etki alanı yöneticisi veya diğer yüksek ayrıcalıklı hesaplar için çalışmıyor. Neden?
 
 Varsayılan güvenlik ilkesi, şirket içi kaynaklara yönelik yüksek ayrıcalıklı hesapları imzalamak için Azure AD izni vermez.
 
@@ -199,7 +199,7 @@ Azure AD Kerberos sunucusu, bir şirket içi AD DS ortamında etki alanı denetl
 
 Azure AD Kerberos sunucusu, Azure AD 'de bir *KerberosDomain* nesnesi olarak temsil edilir. Her şirket içi AD DS ortamı, Azure AD kiracısında tek bir *KerberosDomain* nesnesi olarak temsil edilir.
 
-Örneğin, *contoso.com* ve *fabrikam.com*gibi iki etki alanına sahip bir AD DS ormanına sahip olabilirsiniz. Azure AD 'nin tüm orman için Kerberos Anahtar verme biletlerini (TGT 'ler) vermesine izin verirseniz, Azure AD 'de iki *KerberosDomain* nesnesi vardır; *contoso.com* için bir nesne ve *fabrikam.com*için bir tane.
+Örneğin, *contoso.com* ve *fabrikam.com* gibi iki etki alanına sahip bir AD DS ormanına sahip olabilirsiniz. Azure AD 'nin tüm orman için Kerberos Anahtar verme biletlerini (TGT 'ler) vermesine izin verirseniz, Azure AD 'de iki *KerberosDomain* nesnesi vardır; *contoso.com* için bir nesne ve *fabrikam.com* için bir tane.
 
 Birden çok AD DS ormanınızda, her ormandaki her etki alanı için bir *KerberosDomain* nesneniz vardır.
 
@@ -236,9 +236,9 @@ Azure AD, şifreli istemci anahtarını ve ileti arabelleğini, ek özellikler o
 
 | Alan              | Tür   | Açıklama  |
 |--------------------|--------|--------------|
-| tgt_client_key     | dize | Base64 kodlamalı istemci anahtarı (gizli). Bu anahtar, TGT 'yi korumak için kullanılan istemci sırrı ' dir. Bu passwordless senaryosunda, istemci parolası her TGT isteğinin bir parçası olarak sunucu tarafından oluşturulur ve ardından yanıtta istemciye döndürülür. |
+| tgt_client_key     | string | Base64 kodlamalı istemci anahtarı (gizli). Bu anahtar, TGT 'yi korumak için kullanılan istemci sırrı ' dir. Bu passwordless senaryosunda, istemci parolası her TGT isteğinin bir parçası olarak sunucu tarafından oluşturulur ve ardından yanıtta istemciye döndürülür. |
 | tgt_key_type       | int    | KERB_MESSAGE_BUFFER dahil olan istemci anahtarı ve Kerberos oturum anahtarı için kullanılan şirket içi AD DS anahtar türü. |
-| tgt_message_buffer | dize | Base64 kodlamalı KERB_MESSAGE_BUFFER. |
+| tgt_message_buffer | string | Base64 kodlamalı KERB_MESSAGE_BUFFER. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

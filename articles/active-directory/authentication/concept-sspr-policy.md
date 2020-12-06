@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: b1583307771dd58053128d71cb0ae5dd7e709f68
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 344fee9482cd935375d25fab80b1f365d72586f8
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174390"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743675"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Azure Active Directory 'deki parola ilkeleri ve hesap kısıtlamaları
 
@@ -97,7 +97,7 @@ Varsayılan olarak, yönetici hesapları self servis parola sıfırlama için et
 
 [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) PowerShell cmdlet 'ini kullanarak yönetici hesaplarının SSPR kullanımını devre dışı bırakabilirsiniz. `-SelfServePasswordResetEnabled $False`Parametresi, Yöneticiler IÇIN SSPR 'yi devre dışı bırakır.
 
-### <a name="exceptions"></a>Özel durumlar
+### <a name="exceptions"></a>Özel Durumlar
 
 Tek bir geçit ilkesi, bir e-posta adresi veya telefon numarası gibi bir dizi kimlik doğrulama verisi gerektirir. Tek bir geçit ilkesi aşağıdaki koşullarda geçerlidir:
 

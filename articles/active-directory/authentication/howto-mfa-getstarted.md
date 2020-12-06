@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6aa093411e40b2fc60c52c2a22434658bab78e59
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 978f404aa9b99819460e46ea89df19d27431b8b8
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839259"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743148"
 ---
 # <a name="plan-an-azure-ad-multi-factor-authentication-deployment"></a>Azure AD Multi-Factor Authentication dağıtımını planlayın
 
@@ -29,9 +29,9 @@ Bu dağıtım kılavuzunda, bir Azure AD Multi-Factor Authentication toplaması 
 Azure AD Multi-Factor Authentication hızlı bir şekilde görmek ve daha sonra ek dağıtım konularını anlamak için geri dönüp:
 
 > [!div class="nextstepaction"]
-> [Azure AD Multi-Factor Authentication etkinleştirme](tutorial-enable-azure-mfa.md)
+> [Azure AD Multi-Factor Authentication’ı etkinleştirme](tutorial-enable-azure-mfa.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD Multi-Factor Authentication dağıtımına başlamadan önce göz önünde bulundurmanız gereken önkoşul öğeleri vardır.
 
@@ -250,7 +250,7 @@ Azure AD kiracınızdan yanlışlıkla kilitlenmesini engellemeniz önemlidir. [
     * **Seç**’e tıklayın.
 1. **Oturum** bölümünü atlayın.
 1. **Ilkeyi etkinleştir** **' i açık** yap olarak ayarlayın.
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’a tıklayın.
 
 ## <a name="plan-integration-with-on-premises-systems"></a>Şirket içi sistemlerle tümleştirmeyi planlayın
 
@@ -370,4 +370,4 @@ Microsoft Desteği merkezindeki [Azure ad Multi-Factor Authentication sorun gide
 Azure AD Multi-Factor Authentication 'yi eylemde görmek için aşağıdaki öğreticiyi izleyin:
 
 > [!div class="nextstepaction"]
-> [Azure AD Multi-Factor Authentication etkinleştirme](tutorial-enable-azure-mfa.md)
+> [Azure AD Multi-Factor Authentication’ı etkinleştirme](tutorial-enable-azure-mfa.md)

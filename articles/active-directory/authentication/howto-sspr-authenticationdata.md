@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 10/05/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ed2366884f53eafe89800e7ae60a6a560dc292b4
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 6b51fe1349b2ece89b97cf9436ad3374374ad309
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165017"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741584"
 ---
 # <a name="pre-populate-user-authentication-contact-information-for-azure-active-directory-self-service-password-reset-sspr"></a>Azure Active Directory self servis parola sıfırlama için Kullanıcı kimlik doğrulaması iletişim bilgilerini önceden doldur (SSPR)
 
@@ -28,7 +28,7 @@ Aşağıdaki gereksinimleri karşıladıysanız kimlik doğrulama iletişim bilg
 * Şirket içi dizininizde verileri doğru biçimlendirmiş olursunuz.
 * Azure AD kiracınız için [Azure AD Connect](../hybrid/how-to-connect-install-express.md) yapılandırdınız.
 
-Telefon numaraları + *1 4251234567*gibi + *CountryCode PhoneNumber*biçiminde olmalıdır.
+Telefon numaraları + *1 4251234567* gibi + *CountryCode PhoneNumber* biçiminde olmalıdır.
 
 > [!NOTE]
 > Ülke kodu ve telefon numarası arasında bir boşluk olması gerekir.
@@ -69,7 +69,7 @@ Bir Kullanıcı kaydettiğinde, kayıt sayfası aşağıdaki alanları ayarlar:
 * **Kimlik doğrulama e-postası**
 * **Güvenlik soruları ve yanıtları**
 
-*Cep telefonu* veya *Alternatif e-posta*için bir değer sağladıysanız, kullanıcılar bu değerleri hizmet için kayıtlı olmasalar bile parolalarını sıfırlamak için hemen kullanabilir.
+*Cep telefonu* veya *Alternatif e-posta* için bir değer sağladıysanız, kullanıcılar bu değerleri hizmet için kayıtlı olmasalar bile parolalarını sıfırlamak için hemen kullanabilir.
 
 Kullanıcılar, ilk kez kaydolduklarında bu değerleri de görür ve isterseniz bunları değiştirebilir. Başarıyla kaydedildikten sonra bu değerler, sırasıyla *kimlik doğrulama telefon* ve *kimlik doğrulama e-posta* alanlarında kalıcı hale getirilir.
 

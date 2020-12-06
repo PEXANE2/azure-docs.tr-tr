@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/13/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59de3123dc991d0314cd9046d83712d17da53d9f
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 924ff6091e7eb6633d36f75fd6d53745139454d7
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837830"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741074"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>Öğretici: kullanıcıların Self servis parola sıfırlama Azure Active Directory kullanarak hesaplarının kilidini açma veya parolaları sıfırlamalarını sağlama
 
@@ -33,7 +33,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * Kimlik doğrulama yöntemlerini ve kayıt seçeneklerini yapılandırma
 > * SSPR işlemini Kullanıcı olarak test etme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 
@@ -149,4 +149,4 @@ Bu öğreticide, seçili bir Kullanıcı grubu için Azure AD self servis parola
 > * SSPR işlemini Kullanıcı olarak test etme
 
 > [!div class="nextstepaction"]
-> [Azure AD Multi-Factor Authentication etkinleştirme](./tutorial-enable-azure-mfa.md)
+> [Azure AD Multi-Factor Authentication’ı etkinleştirme](./tutorial-enable-azure-mfa.md)

@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 10/01/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: c3fcff5673f4498e92f5d66fe96d806a08527197
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: ff6ae6ea6812397e737deb4b97bf1cd15e022c03
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576028"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743182"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Alternatif oturum açma KIMLIĞI (Önizleme) olarak e-posta kullanarak Azure Active Directory için oturum açın
 
@@ -30,7 +30,7 @@ Bazı kuruluşlar aşağıdaki nedenlerden dolayı karma kimlik doğrulamasına 
 * Azure AD UPN 'nin değiştirilmesi, şirket içi ve Azure AD ortamları arasında, belirli uygulama ve hizmetlerle ilgili sorunlara neden olabilecek bir eşleşmeyen eşleşme oluşturur.
 * İşletme veya uyumluluk nedenlerinden dolayı kuruluş, Azure AD 'de oturum açmak için şirket içi UPN 'yi kullanmak istemiyor.
 
-Karma kimlik doğrulamasına taşımaya yardımcı olması için artık Azure AD 'yi yapılandırarak kullanıcıların doğrulanmış etki alanındaki bir e-posta ile farklı bir oturum açma KIMLIĞI olarak oturum açmasını sağlayabilirsiniz. Örneğin, *contoso* , eski UPN ile oturum açmaya devam etmek yerine *fabrikam* 'a yeniden markalı ise, `balas@contoso.com` alternatif bir oturum açma kimliği olarak e-posta artık kullanılabilir. Bir uygulamaya veya hizmetlere erişmek için kullanıcılar, atanmış e-postalarını kullanarak Azure AD 'de oturum açabilirler `balas@fabrikam.com` .
+Karma kimlik doğrulamasına taşımaya yardımcı olması için artık Azure AD 'yi yapılandırarak kullanıcıların doğrulanmış etki alanındaki bir e-posta ile farklı bir oturum açma KIMLIĞI olarak oturum açmasını sağlayabilirsiniz. Örneğin, *contoso* , eski UPN ile oturum açmaya devam etmek yerine *fabrikam*'a yeniden markalı ise, `balas@contoso.com` alternatif bir oturum açma kimliği olarak e-posta artık kullanılabilir. Bir uygulamaya veya hizmetlere erişmek için kullanıcılar, atanmış e-postalarını kullanarak Azure AD 'de oturum açabilirler `balas@fabrikam.com` .
 
 Bu makalede, alternatif bir oturum açma KIMLIĞI olarak e-postayı nasıl etkinleştireceğinizi ve kullanacağınız gösterilmektedir. Bu özellik Azure AD Ücretsiz sürümünde ve üzeri sürümlerde kullanılabilir.
 

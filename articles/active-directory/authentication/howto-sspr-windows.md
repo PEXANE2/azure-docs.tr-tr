@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/17/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1cd40b8df0251aee7692df24e9bc3f7186c155d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 478ae6146caeb8a27cdaf13b7f33e421b8121afc
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966517"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741499"
 ---
 # <a name="enable-azure-active-directory-self-service-password-reset-at-the-windows-sign-in-screen"></a>Windows oturum açma ekranında self servis parola sıfırlamayı Azure Active Directory etkinleştirme
 
@@ -75,14 +75,14 @@ Intune kullanarak oturum açma ekranından SSPR 'yi etkinleştirmek için yapıl
 #### <a name="create-a-device-configuration-policy-in-intune"></a>Intune'da cihaz yapılandırma ilkesi oluşturma
 
 1. [Azure Portal](https://portal.azure.com) oturum açın ve **Intune**' u seçin.
-1. **Cihaz yapılandırma**  >  **profillerine**giderek ve **+ Profil oluştur** ' u seçerek yeni bir cihaz yapılandırma profili oluşturun.
+1. **Cihaz yapılandırma**  >  **profillerine** giderek ve **+ Profil oluştur** ' u seçerek yeni bir cihaz yapılandırma profili oluşturun.
    - **Platform** için *Windows 10 ve üstünü* seçin
-   - **Profil türü**için *özel* ' i seçin
+   - **Profil türü** için *özel* ' i seçin
 1. **Oluştur**' u seçin ve profil için *Windows 10 oturum açma ekranı SSPR* gibi anlamlı bir ad sağlayın
 
     İsteğe bağlı olarak, profilin anlamlı bir açıklamasını girip **İleri**' yi seçin.
 1. *Yapılandırma ayarları*' nın altında **Ekle** ' yi seçin ve Parolayı Sıfırla bağlantısını etkinleştirmek IÇIN aşağıdaki OMA-URI ayarını sağlayın:
-      - Örneğin *SSPR bağlantısı ekleme*gibi ayarların ne yaptığını açıklayan anlamlı bir ad sağlayın.
+      - Örneğin *SSPR bağlantısı ekleme* gibi ayarların ne yaptığını açıklayan anlamlı bir ad sağlayın.
       - İsteğe bağlı olarak, ayarın anlamlı bir açıklamasını sağlayın.
       - **OMA-URI** olarak `./Vendor/MSFT/Policy/Config/Authentication/AllowAadPasswordReset` ayarlayın
       - **Veri türü** olarak **Tamsayı** ayarlayın
@@ -93,7 +93,7 @@ Intune kullanarak oturum açma ekranından SSPR 'yi etkinleştirmek için yapıl
 
     Daha fazla bilgi için bkz. [Microsoft Intune kullanıcı ve cihaz profilleri atama](/mem/intune/configuration/device-profile-assign).
 
-1. *İşletim sistemi sürümü Windows 10 Enterprise ise profil atama*gibi uygulanabilirlik kurallarını ortamınız için istediğiniz şekilde yapılandırın, ardından **İleri**' yi seçin.
+1. *İşletim sistemi sürümü Windows 10 Enterprise ise profil atama* gibi uygulanabilirlik kurallarını ortamınız için istediğiniz şekilde yapılandırın, ardından **İleri**' yi seçin.
 1. Profilinizi gözden geçirin ve ardından **Oluştur**' u seçin.
 
 ### <a name="enable-for-windows-10-using-the-registry"></a>Kayıt defterini kullanarak Windows 10 için etkinleştirme
@@ -101,7 +101,7 @@ Intune kullanarak oturum açma ekranından SSPR 'yi etkinleştirmek için yapıl
 Kayıt defteri anahtarını kullanarak SSPR 'yi oturum açma ekranında etkinleştirmek için aşağıdaki adımları izleyin:
 
 1. Yönetici kimlik bilgilerini kullanarak Windows BILGISAYARıNDA oturum açın.
-1. **Windows**  +  *Çalıştır* iletişim kutusunu açmak için Windows**R** tuşuna basın, ardından **Regedit** komutunu yönetici olarak çalıştırın
+1. **Windows**  +  *Çalıştır* iletişim kutusunu açmak için Windows **R** tuşuna basın, ardından **Regedit** komutunu yönetici olarak çalıştırın
 1. Aşağıdaki kayıt defteri anahtarını ayarlayın:
 
     ```cmd

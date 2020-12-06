@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55c6457ec73c9fe9b39d607f26ffe2a577cc200d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bdadc02c8bb1c3f9450ff34ac935547343989cf6
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994222"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96742978"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Multi-Factor Authentication NPS uzantısı için gelişmiş yapılandırma seçenekleri
 
@@ -30,7 +30,7 @@ NPS uzantısı içinde Azure AD Multi-Factor Authentication için UPN yerine kul
 
 Alternatif oturum açma kimliklerini yapılandırmak için `HKLM\SOFTWARE\Microsoft\AzureMfa` aşağıdaki kayıt defteri değerlerini adresine gidin ve düzenleyin:
 
-| Ad | Tür | Varsayılan değer | Description |
+| Ad | Tür | Varsayılan değer | Açıklama |
 | ---- | ---- | ------------- | ----------- |
 | LDAP_ALTERNATE_LOGINID_ATTRIBUTE | string | Olmamalıdır | UPN yerine kullanmak istediğiniz Active Directory özniteliğin adını belirleyin. Bu öznitelik AlternateLoginID özniteliği olarak kullanılır. Bu kayıt defteri değeri [geçerli bir Active Directory özniteliğine](/windows/win32/adschema/attributes-all) ayarlandıysa (örneğin, posta veya DisplayName), kimlik doğrulaması IÇIN kullanıcının UPN 'si yerine özniteliğin değeri kullanılır. Bu kayıt defteri değeri boş veya yapılandırılmamışsa, AlternateLoginID devre dışıdır ve kullanıcının UPN 'si kimlik doğrulaması için kullanılır. |
 | LDAP_FORCE_GLOBAL_CATALOG | boolean | Yanlış | AlternateLoginID aranırken LDAP aramaları için genel kataloğun kullanımını zorlamak üzere bu bayrağı kullanın. Bir etki alanı denetleyicisini genel katalog olarak yapılandırın, AlternateLoginID özniteliğini genel kataloğa ekleyin ve bu bayrağı etkinleştirin. <br><br> LDAP_LOOKUP_FORESTS yapılandırıldıysa (boş değil), kayıt defteri ayarı değeri ne olursa olsun, **Bu bayrak true olarak zorlanır**. Bu durumda, NPS uzantısı genel kataloğun her orman için AlternateLoginID özniteliğiyle yapılandırılmasını gerektirir. |
@@ -44,7 +44,7 @@ Sunucu kullanılabilirliğini izlemeniz gerekiyorsa, yük dengeleyiciler, iş y�
 
 IP izin verilen listesini yapılandırmak için `HKLM\SOFTWARE\Microsoft\AzureMfa` aşağıdaki kayıt defteri değerini adresine gidin ve yapılandırın:
 
-| Ad | Tür | Varsayılan değer | Description |
+| Ad | Tür | Varsayılan değer | Açıklama |
 | ---- | ---- | ------------- | ----------- |
 | IP_WHITELIST | string | Olmamalıdır | IP adreslerinin noktalı virgülle ayrılmış bir listesini sağlar. NAS/VPN sunucusu gibi hizmet isteklerinin gerçekleştiği makinelerin IP adreslerini ekleyin. IP aralıkları ve alt ağları desteklenmez. <br><br> Örneğin, *10.0.0.1; 10.0.0.2; 10.0.0.3*.
 

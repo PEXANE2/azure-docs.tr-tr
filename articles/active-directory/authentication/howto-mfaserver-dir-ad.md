@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ab61fb57f98f62f2e8e5ca697bb5ef8301cada2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8b3778ea68edf1fbbb41efb899749e6f35b39bae
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994205"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96742298"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Azure MFA Sunucusu ile Active Directory arasında dizin tümleştirme
 
@@ -92,7 +92,7 @@ Belirli bir dizinin özniteliklerini gerektiği şekilde özelleştirebilirsini
 | Soyadı |Kullanıcı kaydındaki soyadını içeren özniteliğin öznitelik adını girin.  sn varsayılandır. |
 | E-posta adresi |Kullanıcı kaydındaki e-posta adresini içeren özniteliğin öznitelik adını girin.  E-posta adresi kullanıcıya karşılama ve güncelleştirme e-postaları göndermek için kullanılır.  mail varsayılandır. |
 | Kullanıcı grubu |Kullanıcı kaydındaki kullanıcı grubunu içeren özniteliğin öznitelik adını girin.  Kullanıcı grubu, aracıda ve Multi-Factor Auth Sunucusu Yönetim Portalı’ndaki raporlarında bulunan kullanıcıları filtrelemek için kullanılabilir. |
-| Description |Kullanıcı kaydındaki açıklamayı içeren özniteliğin öznitelik adını girin.  Açıklama yalnızca arama için kullanılır.  description varsayılandır. |
+| Açıklama |Kullanıcı kaydındaki açıklamayı içeren özniteliğin öznitelik adını girin.  Açıklama yalnızca arama için kullanılır.  description varsayılandır. |
 | Telefon araması dili |Kullanıcıya yönelik sesli aramalar için kullanılacak dilin kısa adını içeren özniteliğin öznitelik adını girin. |
 | SMS dili |Kullanıcıya yönelik SMS iletileri için kullanılacak dilin kısa adını içeren özniteliğin öznitelik adını girin. |
 | Mobil uygulama dili |Kullanıcıya yönelik telefon uygulama metin iletileri için kullanılacak dilin kısa adını içeren özniteliğin öznitelik adını girin. |

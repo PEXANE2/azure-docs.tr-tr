@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 03/09/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88cdad5b2b92d9b7449d93e1abeb09c08df89e7b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e1459442f7d99d1de88a685eed34493da530c1a4
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964766"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743488"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory-preview"></a>Azure Active Directory (Önizleme) ile şirket içi kaynaklarda passwordless güvenlik anahtarı oturum açma özelliğini etkinleştirin
 
@@ -115,7 +115,7 @@ Bu komut, Azure AD Kerberos sunucusunun özelliklerini verir. Her şeyin iyi sı
 | DomainDnsName | Active Directory Etki Alanı DNS etki alanı adı. |
 | Bilgisayar hesabı | Azure AD Kerberos Sunucusu nesnesinin (DC) bilgisayar hesabı nesnesi. |
 | UserAccount | Azure AD Kerberos Sunucusu TGT şifreleme anahtarını tutan devre dışı Kullanıcı hesabı nesnesi. Bu hesabın DN 'si `CN=krbtgt_AzureAD,CN=Users,<Domain-DN>` |
-| KeyVersion | Azure AD Kerberos Sunucusu TGT şifreleme anahtarının anahtar sürümü. Anahtar oluşturulduğunda sürüm atanır. Anahtar her döndürüldüğünde sürüm artar. Artış, çoğaltma meta verilerine ve muhtemelen büyük olasılıkla fazlasına dayanır. Örneğin, ilk *Keyversion* *192272*olabilir. Anahtar ilk kez döndürüldüğünde, sürüm *212621*' e kadar ilerleyebilirsiniz. Doğrulamanız gereken önemli şey, şirket içi nesne için *keyversion* ve bulut nesnesine ait *cloudkeyversion* 'un aynı olmasıdır. |
+| KeyVersion | Azure AD Kerberos Sunucusu TGT şifreleme anahtarının anahtar sürümü. Anahtar oluşturulduğunda sürüm atanır. Anahtar her döndürüldüğünde sürüm artar. Artış, çoğaltma meta verilerine ve muhtemelen büyük olasılıkla fazlasına dayanır. Örneğin, ilk *Keyversion* *192272* olabilir. Anahtar ilk kez döndürüldüğünde, sürüm *212621*' e kadar ilerleyebilirsiniz. Doğrulamanız gereken önemli şey, şirket içi nesne için *keyversion* ve bulut nesnesine ait *cloudkeyversion* 'un aynı olmasıdır. |
 | KeyUpdatedOn | Azure AD Kerberos Sunucusu TGT şifreleme anahtarının güncelleştirildiği veya oluşturulduğu tarih ve saat. |
 | KeyUpdatedFrom | Azure AD Kerberos Sunucusu TGT şifreleme anahtarının en son güncelleştirildiği DC. |
 | Cloudıd | Azure AD nesnesinden KIMLIĞI. Yukarıdaki KIMLIKLE eşleşmelidir. |

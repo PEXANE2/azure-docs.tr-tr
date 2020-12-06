@@ -1,21 +1,21 @@
 ---
-title: Azure AD Multi-Factor Authentication etkinleştirme
+title: Azure AD Multi-Factor Authentication’ı etkinleştirme
 description: Bu öğreticide, bir Kullanıcı grubu için Azure AD Multi-Factor Authentication etkinleştirmeyi ve oturum açma olayı sırasında ikincil faktör isteğini test yapmayı öğreneceksiniz.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/13/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62818ae5be079dc154e6d6faef4a8ebaae8fcd9d
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 32228e90e3cfc064cd5be9cd0655f321ab3e2809
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837881"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741159"
 ---
 # <a name="tutorial-secure-user-sign-in-events-with-azure-ad-multi-factor-authentication"></a>Öğretici: Azure AD Multi-Factor Authentication ile Kullanıcı oturum açma olaylarını güvenli hale getirme
 
@@ -35,7 +35,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * MFA için istemde bulunan ilke koşullarını yapılandırın
 > * MFA işlemini Kullanıcı olarak test etme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
 

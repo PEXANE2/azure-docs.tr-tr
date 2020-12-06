@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ad3d76227e833f648070bd55469861dffe3d540
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 20b0150c18f2c007ed104d34daacd49ab03131a7
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839565"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743386"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Ağ Ilkesi sunucusu (NPS) uzantısını ve Azure AD 'yi kullanarak Uzak Masaüstü Ağ Geçidi altyapınızı tümleştirin
 
@@ -59,7 +59,7 @@ Azure için NPS Uzantısı NPS ve Uzak Masaüstü Ağ Geçidi tümleştirildiği
 1. Uzantının yüklendiği NPS sunucusu, Uzak Masaüstü Ağ Geçidi sunucusuna RD CAP ilkesi için bir RADIUS Access-Accept iletisi gönderir.
 1. Kullanıcıya, RD Ağ Geçidi aracılığıyla istenen ağ kaynağına erişim verilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu bölümde Azure AD MFA 'yı Uzak Masaüstü Ağ Geçidi ile tümleştirmadan önce gerekli Önkoşullar ayrıntılı olarak yer Başlamadan önce, aşağıdaki önkoşulların yerine gelmelidir.  
 

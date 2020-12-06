@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 03/05/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d72aa65f18896ebbecf651da32558059ba782cc
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: f2e11fa1bb9f1d3a3986a19da8ed44229829ec81
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968404"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741788"
 ---
 # <a name="enable-on-premises-azure-active-directory-password-protection"></a>Şirket içi Azure Active Directory parola korumasını etkinleştir
 
@@ -32,12 +32,12 @@ Bu makalede, şirket içi ortamınız için Azure AD parola korumasının nasıl
 
 ## <a name="enable-on-premises-password-protection"></a>Şirket içi parola korumasını etkinleştir
 
-1. [Azure Portal](https://portal.azure.com) oturum açın ve **Azure Active Directory**  >  **güvenlik**  >  **kimlik doğrulama yöntemleri**  >  **parola korumasına**Azure Active Directory gidin.
-1. **Windows Server Active Directory parola korumasını etkinleştir** seçeneğini *Evet*olarak ayarlayın.
+1. [Azure Portal](https://portal.azure.com) oturum açın ve **Azure Active Directory**  >  **güvenlik**  >  **kimlik doğrulama yöntemleri**  >  **parola korumasına** Azure Active Directory gidin.
+1. **Windows Server Active Directory parola korumasını etkinleştir** seçeneğini *Evet* olarak ayarlayın.
 
-    Bu ayar *Hayır*olarak ayarlandığında, tüm DAĞıTıLAN Azure AD parola koruma DC aracıları tüm parolaların olduğu gibi kabul edildiği bir quiescent moduna geçer. Doğrulama etkinliği gerçekleştirilmez ve denetim olayları oluşturulmaz.
+    Bu ayar *Hayır* olarak ayarlandığında, tüm DAĞıTıLAN Azure AD parola koruma DC aracıları tüm parolaların olduğu gibi kabul edildiği bir quiescent moduna geçer. Doğrulama etkinliği gerçekleştirilmez ve denetim olayları oluşturulmaz.
 
-1. Başlangıçta **modunun** *Denetim*olarak ayarlanması önerilir. Özelliği ve kuruluşunuzdaki kullanıcılar üzerindeki etkisini rahat hale getiriyorsanız, **modu** *Zorlanmış*olarak geçirebilirsiniz. Daha fazla bilgi için, [işlem modlarında](#modes-of-operation)aşağıdaki bölüme bakın.
+1. Başlangıçta **modunun** *Denetim* olarak ayarlanması önerilir. Özelliği ve kuruluşunuzdaki kullanıcılar üzerindeki etkisini rahat hale getiriyorsanız, **modu** *Zorlanmış* olarak geçirebilirsiniz. Daha fazla bilgi için, [işlem modlarında](#modes-of-operation)aşağıdaki bölüme bakın.
 1. Hazırlanıyor, **Kaydet**' i seçin.
 
     [![Azure portal kimlik doğrulama yöntemleri altında şirket içi parola korumasını etkinleştirin](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords-cropped.png)](media/howto-password-ban-bad-on-premises-operations/enable-configure-custom-banned-passwords.png#lightbox)

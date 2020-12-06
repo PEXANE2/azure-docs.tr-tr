@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/04/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.date: 12/04/2020
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22f43c5f9848670b9df4b061c5abb6cc30912172
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: c8dce284c0fffe10fe077fcb6c6713ba65c45751
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839803"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743913"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Azure Active Directory genel bakış için Birleşik güvenlik bilgileri kaydı
 
 Birleşik kayıt öncesinde, kullanıcılar Azure AD Multi-Factor Authentication ve self servis parola sıfırlama (SSPR) için kimlik doğrulama yöntemlerini ayrı olarak kaydetti. İnsanlar Multi-Factor Authentication ve SSPR için benzer yöntemlerin kullanıldığını, ancak her iki özelliğe de kaydolmaları gerektiğini karıştı. Artık, birleştirilmiş kayıt ile kullanıcılar bir kez kaydolduktan sonra hem Multi-Factor Authentication hem de SSPR avantajlarından yararlanabilir.
 
 > [!NOTE]
-> 15 Ağustos 2020 ' den itibaren, tüm yeni Azure AD kiracılar Birleşik kayıt için otomatik olarak etkinleştirilir.
+> 15 Ağustos 2020 ' den itibaren, tüm yeni Azure AD kiracılar Birleşik kayıt için otomatik olarak etkinleştirilir. 14 Aralık 2020 ' den başlayarak, tek bir kullanıcıya sahip tüm Azure AD kiracıları, Birleşik kayıt için otomatik olarak etkinleştirilir.
 
 Bu makalede, Birleşik güvenlik kaydının ne olduğu özetlenmektedir. Birleşik güvenlik kaydıyla çalışmaya başlamak için aşağıdaki makaleye bakın:
 
@@ -51,18 +51,18 @@ Belirli bir dili zorlamak istiyorsanız `?lng=<language>` URL 'nin sonuna ekleye
 
 Birleşik kayıt aşağıdaki kimlik doğrulama yöntemlerini ve eylemleri destekler:
 
-| Yöntem | Kaydol | Değiştir | Sil |
+| Yöntem | Yazmaç | Değiştir | Sil |
 | --- | --- | --- | --- |
-| Microsoft Authenticator | Evet (en fazla 5) | Hayır | Yes |
-| Diğer kimlik doğrulayıcı uygulaması | Evet (en fazla 5) | Hayır | Yes |
-| Donanım belirteci | Hayır | Hayır | Yes |
-| Telefon | Yes | Yes | Yes |
-| Alternatif telefon | Yes | Yes | Yes |
-| Ofis telefonu | Yes | Yes | Yes |
-| E-posta | Yes | Yes | Yes |
-| Güvenlik soruları | Yes | Hayır | Yes |
-| Uygulama parolaları | Yes | Hayır | Yes |
-| FIDO2 güvenlik anahtarları<br />*Yalnızca [güvenlik bilgileri](https://mysignins.microsoft.com/security-info) sayfasından yönetilen mod*| Yes | Yes | Yes |
+| Microsoft Authenticator | Evet (en fazla 5) | Hayır | Evet |
+| Diğer kimlik doğrulayıcı uygulaması | Evet (en fazla 5) | Hayır | Evet |
+| Donanım belirteci | Hayır | Hayır | Evet |
+| Telefon | Evet | Evet | Evet |
+| Alternatif telefon | Evet | Evet | Evet |
+| Ofis telefonu | Evet | Evet | Evet |
+| E-posta | Evet | Evet | Evet |
+| Güvenlik soruları | Evet | Hayır | Evet |
+| Uygulama parolaları | Evet | Hayır | Evet |
+| FIDO2 güvenlik anahtarları<br />*Yalnızca [güvenlik bilgileri](https://mysignins.microsoft.com/security-info) sayfasından yönetilen mod*| Evet | Evet | Evet |
 
 > [!NOTE]
 > Uygulama parolaları yalnızca Multi-Factor Authentication için zorlanan kullanıcılar tarafından kullanılabilir. Uygulama parolaları, koşullu erişim ilkesi aracılığıyla Multi-Factor Authentication için etkinleştirilen kullanıcılar tarafından kullanılamaz.

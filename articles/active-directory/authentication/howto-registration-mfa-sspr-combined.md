@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 07/20/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.date: 12/04/2020
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8c67f72a7f0d77284dbb34104754793b36bb8d4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 29a577b50a561cb5b829e453c523e0bd18a70e1a
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94838153"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741686"
 ---
 # <a name="enable-combined-security-information-registration-in-azure-active-directory"></a>Azure Active Directory 'da Birleşik güvenlik bilgileri kaydını etkinleştirme
 
 Birleşik kayıt öncesinde, kullanıcılar Azure AD Multi-Factor Authentication ve self servis parola sıfırlama (SSPR) için kimlik doğrulama yöntemlerini ayrı olarak kaydetti. Kullanıcılar, Azure AD Multi-Factor Authentication ve SSPR için benzer yöntemlerin kullanıldığını, ancak her iki özelliğe de kaydolmaları gerektiğini karıştı. Artık, birleştirilmiş kayıt ile kullanıcılar bir kez kayıt yapabilir ve hem Azure AD Multi-Factor Authentication hem de SSPR 'nin avantajlarını alabilir.
 
 > [!NOTE]
-> 15 Ağustos 2020 ' den itibaren, tüm yeni Azure AD kiracılar Birleşik kayıt için otomatik olarak etkinleştirilir.
+> 15 Ağustos 2020 ' den itibaren, tüm yeni Azure AD kiracılar Birleşik kayıt için otomatik olarak etkinleştirilir. 14 Aralık 2020 ' den başlayarak, tek bir kullanıcıya sahip tüm Azure AD kiracıları, Birleşik kayıt için otomatik olarak etkinleştirilir.
 
 Yeni deneyimi etkinleştirmeden önce işlevselliği ve etkileri anladığınızdan emin olmak için, [Birleşik güvenlik bilgileri kayıt kavramlarını](concept-registration-mfa-sspr-combined.md)inceleyin.
 
